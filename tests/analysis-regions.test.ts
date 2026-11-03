@@ -31,7 +31,9 @@ it('decision records are contiguous in k and determine seats and qualification',
   let checked = 0;
   const cases = Number(process.env.REGION_CASES ?? 200);
   for (let c = 0; c < cases; c++) {
-    const rules = r.chance(0.5) ? r.pick(Object.values(RULESETS)) : randomRules(r, presets);
+    const rules = { ...(r.chance(0.5) ? r.pick(Object.values(RULESETS)) : randomRules(r, presets)) };
+    // the experimental methods added on 4 Nov 2026 (not in the digest-locked corpus) must keep the property too
+    if (c % 3 === 2) rules.remainderMethod = (['dhondt', 'modified-sainte-lague', 'droop'] as const)[c % 9 === 2 ? 0 : c % 9 === 5 ? 1 : 2];
     const n = 2 + r.int(7);
     const scale = r.pick([300, 3000, 30000]);
     const lists = Array.from({ length: n }, (_, i) => ({ id: `L${i}`, votes: BigInt(r.int(scale)), ...(r.chance(0.3) ? { candidateCount: r.int(40) } : {}), ...(r.chance(0.05) ? { withdrawn: true } : {}) }));

@@ -2,6 +2,7 @@ import type { ElectionDataset } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import { votesCast, type Scenario } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
+import { methodOf } from '../derive.ts';
 import { fmtFrac, fmtInt, fmtPct, fmtRat } from '../format.ts';
 import { useLevel, useDigits } from '../store.ts';
 import { DecimalInput, Delta, Info, Tile } from './ui.tsx';
@@ -15,10 +16,7 @@ export function KeyStats({ s, r, ds, baseR }: { s: Scenario; r: AllocationResult
   const { simple, expert } = useLevel();
   const noThreshold = Number(thrPct) === 0;
   // the remainder method of this election (or experiment), named and explained correctly for its era
-  const method = s.rules.remainderMethod === 'largest-remainder' ? { term: 'largest-remainder', en: 'largest remainder', he: 'שיטת השארית הגדולה' }
-    : s.rules.remainderMethod === 'sainte-lague' ? { term: 'sainte-lague', en: 'Sainte-Laguë', he: 'שיטת סנט-לגה' }
-    : s.rules.remainderRequiresInitialSeat ? { term: 'highest-averages', en: 'highest averages', he: 'שיטת הממוצע הגבוה' }
-    : { term: 'baderofer', en: 'Bader–Ofer', he: 'בדר–עופר' };
+  const method = methodOf(s.rules);
   // votes for lists that won no seat: below the threshold, or (1949) without a whole quota
   const seatless = s.lists.reduce((t, l) => t + (!l.withdrawn && (r.lists.find((x) => x.id === l.id)?.seats ?? 0) === 0 ? l.votes : 0), 0);
   const turnoutTile = (

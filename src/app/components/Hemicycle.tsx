@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario, SimList } from '../../model/scenario.ts';
-import { listLabel, seatedOrder } from '../derive.ts';
+import { listLabel, methodOf, seatedOrder } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { arcLayout, placeLabels } from '../layout.ts';
 import { download, isolate } from '../format.ts';
@@ -112,10 +112,8 @@ export function Hemicycle({ s, r, compact: compactProp = false, title }: { s: Sc
   const summary = s.lists.map((l) => ({ l, n: r.lists.find((x) => x.id === l.id)?.seats ?? 0 })).filter((x) => x.n > 0)
     .map(({ l, n }) => `${listLabel(l, lang)} ${n}`).join(', ');
   // how a remainder seat was won depends on the era's method
-  const remainderHow = s.rules.remainderMethod === 'largest-remainder' ? L('Seat won by largest remainder', 'מנדט שהושג בשיטת השארית הגדולה')
-    : s.rules.remainderMethod === 'sainte-lague' ? L('Seat won by Sainte-Laguë', 'מנדט שהושג בשיטת סנט-לגה')
-    : s.rules.remainderRequiresInitialSeat ? L('Seat won by the highest averages', 'מנדט שהושג בשיטת הממוצע הגבוה')
-    : L('Seat won in the remainder stage (Bader–Ofer)', 'מנדט שהושג בחלוקת העודפים (בדר–עופר)');
+  const m = methodOf(s.rules);
+  const remainderHow = L(`Seat won by ${m.en}`, `מנדט שהושג בשיטת ${m.he}`);
   const hv = hover ? listOf(hover.seat.listId) : null;
   const cand = hover && hv ? seatedOrder(hv)[hover.seat.idx] ?? null : null;
 

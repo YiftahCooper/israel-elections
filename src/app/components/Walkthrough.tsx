@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { AllocationResult, RemainderStep } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
-import { listLabel } from '../derive.ts';
+import { listLabel, methodOf } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtFrac, fmtInt, fmtPct, fmtRat } from '../format.ts';
 import { dispatch, setState, useStore, useDigits } from '../store.ts';
@@ -78,9 +78,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
       )}
       {step.kind === 'remainder' && (
         <div>
-          <h4>{s.rules.remainderMethod === 'sainte-lague' ? L(`Seat ${r.initialSeatsTotal + step.st.step}: highest votes ÷ (2 × seats + 1) (Sainte-Laguë)`, `מושב ${r.initialSeatsTotal + step.st.step}: הגבוה ביותר בקולות ÷ (2 × מנדטים + 1) (סנט-לגה)`)
-            : s.rules.remainderMethod === 'largest-remainder' ? L(`Seat ${r.initialSeatsTotal + step.st.step}: largest remainder (votes − quota × seats)`, `מושב ${r.initialSeatsTotal + step.st.step}: השארית הגדולה ביותר (קולות − מודד × מנדטים)`)
-            : L(`Seat ${r.initialSeatsTotal + step.st.step}: highest votes ÷ (seats + 1)`, `מנדט ${r.initialSeatsTotal + step.st.step}: הגבוה ביותר בקולות ÷ (מנדטים + 1)`)} <Info term={s.rules.remainderMethod === 'sainte-lague' ? 'sainte-lague' : s.rules.remainderMethod === 'largest-remainder' ? 'largest-remainder' : s.rules.remainderRequiresInitialSeat ? 'highest-averages' : 'baderofer'} /></h4>
+          <h4>{L(`Seat ${r.initialSeatsTotal + step.st.step}: ${methodOf(s.rules).stepEn}`, `מושב ${r.initialSeatsTotal + step.st.step}: ${methodOf(s.rules).stepHe}`)} <Info term={methodOf(s.rules).term} /></h4>
           <p>{L('Awarded to', 'הוענק ל')} <b>{name(step.st.winnerUnitId)}</b>{r.units.find((u) => u.id === step.st.winnerUnitId)?.isAgreement ? L(' (a surplus-agreement pair; which partner gets it is decided in the pair split step)', ' (צמד בהסכם עודפים; איזו מהשותפות תקבל אותו נקבע בשלב החלוקה בצמד)') : ''}.</p>
           {step.st.tie && (
             <div className="callout small">

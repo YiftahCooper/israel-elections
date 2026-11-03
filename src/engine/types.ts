@@ -1,7 +1,9 @@
 import type { Rational } from './rational.ts';
 
 /** Remainder-seat method. 'bader-ofer' is Israeli law since 1973 (section 81(d)). */
-export type RemainderMethod = 'bader-ofer' | 'largest-remainder' | 'sainte-lague';
+/** bader-ofer, largest-remainder (Hare quota) and sainte-lague are the methods Israel used or the app
+ *  shipped first; dhondt, modified-sainte-lague and droop are experimental alternatives. */
+export type RemainderMethod = 'bader-ofer' | 'largest-remainder' | 'sainte-lague' | 'dhondt' | 'modified-sainte-lague' | 'droop';
 
 export interface RuleSet {
   id: string;

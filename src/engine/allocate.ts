@@ -30,6 +30,15 @@ export const thresholdVotes = (threshold: Rational, total: bigint): bigint => {
 export const passesThreshold = (votes: bigint, total: bigint, threshold: Rational): boolean =>
   votes * threshold.den >= threshold.num * total;
 
+/** Divisor methods allocate every seat one at a time, with no whole-quota stage. */
+export const isHighestAverage = (m: RuleSet['remainderMethod']) => m === 'sainte-lague' || m === 'dhondt' || m === 'modified-sainte-lague';
+
+/** The whole-quota divisor: Droop is ⌊votes ÷ (seats + 1)⌋ + 1; the others use computeQuota. */
+function quotaOf(rules: RuleSet, votes: bigint, seats: number): Rational {
+  if (rules.remainderMethod === 'droop') return seats <= 0 ? rat(0n) : rat(floorDiv(votes, BigInt(seats + 1)) + 1n);
+  return computeQuota(votes, seats + (rules.quotaSeatOffset ?? 0), rules.quotaRounding);
+}
+
 function computeQuota(votes: bigint, seats: number, rounding: RuleSet['quotaRounding']): Rational {
   if (seats <= 0) return rat(0n);
   if (rounding === 'floor') return rat(floorDiv(votes, BigInt(seats)));
@@ -77,7 +86,12 @@ function quotient(u: WorkUnit, o: StageOptions): Rational {
       return o.quotientRounding === 'floor' ? rat(u.votes / BigInt(u.seats + 1)) : rat(u.votes, BigInt(u.seats + 1));
     case 'sainte-lague':
       return rat(u.votes, BigInt(2 * u.seats + 1));
+    case 'dhondt':
+      return rat(u.votes, BigInt(u.seats + 1));
+    case 'modified-sainte-lague': // first divisor 1.4, then 3, 5, 7…
+      return u.seats === 0 ? rat(u.votes * 5n, 7n) : rat(u.votes, BigInt(2 * u.seats + 1));
     case 'largest-remainder':
+    case 'droop':
       return rat(u.votes * o.quota.den - o.quota.num * BigInt(u.seats), o.quota.den);
   }
 }
@@ -92,7 +106,7 @@ const cmpDesc = (a: Rational, b: Rational): number => {
 function runRemainderStage(units: WorkUnit[], remaining: number, o: StageOptions): RemainderStep[] {
   const steps: RemainderStep[] = [];
   const n = units.length;
-  const lr = o.method === 'largest-remainder';
+  const lr = o.method === 'largest-remainder' || o.method === 'droop';
   const trace = o.warnings !== null;
   // a unit's quotient changes only when it wins a seat, so it is recomputed only then
   const value = units.map((u) => quotient(u, o));
@@ -159,9 +173,9 @@ type BaseOptions = Omit<StageOptions, 'stage' | 'seatsTotal' | 'universeVotes' |
  *  member's `seats` holds its result; the record is returned only when tracing. */
 function divideWithinUnit(unitId: string, members: WorkUnit[], seats: number, rules: RuleSet, base: BaseOptions): InternalDivision | null {
   const totalVotes = members.reduce((s, m) => s + m.votes, 0n);
-  const highestAverage = rules.remainderMethod === 'sainte-lague';
-  let quota = highestAverage ? rat(0n) : computeQuota(totalVotes, seats + (rules.quotaSeatOffset ?? 0), rules.quotaRounding);
-  if (!highestAverage && rules.quotaRounding === 'floor') base.decisions?.push(quota.num);
+  const highestAverage = isHighestAverage(rules.remainderMethod);
+  let quota = highestAverage ? rat(0n) : quotaOf(rules, totalVotes, seats);
+  if (!highestAverage && (rules.quotaRounding === 'floor' || rules.remainderMethod === 'droop')) base.decisions?.push(quota.num);
   if (!highestAverage && quota.num === 0n && seats > 0) quota = rat(totalVotes, BigInt(seats));
   const assign = () => {
     let given = 0;
@@ -234,7 +248,7 @@ export function prepareAllocation(input: AllocationInput): PreparedAllocation {
   for (const a of input.agreements) for (const m of a.members) { const i = indexOf.get(m); if (i !== undefined && agreementOf[i] === null) agreementOf[i] = a.id; }
   const departure = rules.maxAgreementSize > 2 && input.agreements.some((a) => a.members.length > 2);
   const lotteryWinners = input.lotteryWinners ?? {};
-  const highestAverage = rules.remainderMethod === 'sainte-lague';
+  const highestAverage = isHighestAverage(rules.remainderMethod);
   const n = lists.length;
 
   function run(votes: readonly bigint[], trace = true, decisions: unknown[] | null = null): AllocationResult {
@@ -256,8 +270,8 @@ export function prepareAllocation(input: AllocationInput): PreparedAllocation {
     }
 
     // --- general quota and initial seats (81(b), 81(c))
-    let quota = highestAverage ? rat(0n) : computeQuota(qualifyingVotes, rules.seats + (rules.quotaSeatOffset ?? 0), rules.quotaRounding);
-    if (!highestAverage && rules.quotaRounding === 'floor') decisions?.push(quota.num);
+    let quota = highestAverage ? rat(0n) : quotaOf(rules, qualifyingVotes, rules.seats);
+    if (!highestAverage && (rules.quotaRounding === 'floor' || rules.remainderMethod === 'droop')) decisions?.push(quota.num);
     if (qualifiedCount === 0) warnings?.push({ code: 'no-qualifying-lists', message: 'No list passed the threshold; no seats can be allocated.' });
     if (!highestAverage && qualifiedCount > 0 && quota.num === 0n) {
       warnings?.push({ code: 'zero-quota', message: 'Qualifying votes are fewer than seats, so the whole-number quota is 0. The exact (unrounded) quota is used instead.' });

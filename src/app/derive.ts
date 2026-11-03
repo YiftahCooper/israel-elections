@@ -19,9 +19,21 @@ export function baselineOf(ds: ElectionDataset): Scenario {
   return s;
 }
 
-const METHOD: Record<SimRules['remainderMethod'], [string, string]> = {
-  'bader-ofer': ['Bader–Ofer', 'בדר–עופר'], 'largest-remainder': ['largest remainder', 'השארית הגדולה'], 'sainte-lague': ['Sainte-Laguë', 'סנט-לגה'],
+/** Names, glossary term and per-seat rule of every allocation method, in one place for all screens. */
+export const METHODS: Record<SimRules['remainderMethod'], { en: string; he: string; term: string; stepEn: string; stepHe: string }> = {
+  'bader-ofer': { en: 'Bader–Ofer', he: 'בדר–עופר', term: 'baderofer', stepEn: 'highest votes ÷ (seats + 1)', stepHe: 'הגבוה ביותר בקולות ÷ (מנדטים + 1)' },
+  'largest-remainder': { en: 'largest remainder (Hare quota)', he: 'השארית הגדולה (מודד הייר)', term: 'largest-remainder', stepEn: 'largest remainder (votes − quota × seats)', stepHe: 'השארית הגדולה ביותר (קולות − מודד × מנדטים)' },
+  'droop': { en: 'largest remainder (Droop quota)', he: 'השארית הגדולה (מודד דרופ)', term: 'droop-quota', stepEn: 'largest remainder (votes − Droop quota × seats)', stepHe: 'השארית הגדולה ביותר (קולות − מודד דרופ × מנדטים)' },
+  'sainte-lague': { en: 'Sainte-Laguë', he: 'סנט-לגה', term: 'sainte-lague', stepEn: 'highest votes ÷ (2 × seats + 1)', stepHe: 'הגבוה ביותר בקולות ÷ (2 × מנדטים + 1)' },
+  'modified-sainte-lague': { en: 'modified Sainte-Laguë', he: 'סנט-לגה מתוקנת', term: 'modified-sainte-lague', stepEn: 'highest votes ÷ 1.4 for a first seat, then ÷ (2 × seats + 1)', stepHe: 'הגבוה ביותר בקולות ÷ 1.4 למושב הראשון, ואחר כך ÷ (2 × מנדטים + 1)' },
+  'dhondt': { en: 'D’Hondt', he: 'ד׳הונדט', term: 'dhondt', stepEn: 'highest votes ÷ (seats + 1)', stepHe: 'הגבוה ביותר בקולות ÷ (מנדטים + 1)' },
 };
+/** The method in force, with 1949's highest-averages rule (only lists with a whole-quota seat compete) named as such. */
+export function methodOf(rules: Pick<SimRules, 'remainderMethod'> & { remainderRequiresInitialSeat?: boolean }) {
+  if (rules.remainderMethod === 'bader-ofer' && rules.remainderRequiresInitialSeat) return { ...METHODS['bader-ofer'], en: 'highest averages', he: 'הממוצע הגבוה', term: 'highest-averages' };
+  return METHODS[rules.remainderMethod];
+}
+const METHOD = Object.fromEntries(Object.entries(METHODS).map(([k, v]) => [k, [v.en, v.he]])) as Record<SimRules['remainderMethod'], [string, string]>;
 /** Every way the scenario's rules differ from the law of its election, in plain words (empty = none). */
 export function ruleChanges(s: Scenario, lang: Lang): string[] {
   const law = historicalRules(electionRuleSetId(s.electionId));

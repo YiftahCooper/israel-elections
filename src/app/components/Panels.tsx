@@ -3,7 +3,7 @@ import { isEnvelopeRow, type ElectionDataset } from '../../data/schema.ts';
 import { ruleDepartures, RULESETS } from '../../engine/rules.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import { electionRuleSetId, toRuleSet, type Action, type Scenario } from '../../model/scenario.ts';
-import { listLabel } from '../derive.ts';
+import { listLabel, methodOf } from '../derive.ts';
 import { GLOSSARY, useL, useLang, type Lang } from '../i18n.ts';
 import { fmtInt, fmtPct } from '../format.ts';
 import { dispatch, getState, redo, replay, setState, undo, useStore, useDigits } from '../store.ts';
@@ -48,11 +48,14 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
           <div className="grid2">
             <label className="field">{L('Seats', 'מושבים')}<NumberInput value={s.rules.seats} onCommit={(n) => set({ seats: n })} label={L('Seats', 'מושבים')} /></label>
             <label className="field">{L('Threshold %', 'אחוז חסימה %')}<TextField value={s.rules.thresholdPct} label={L('Threshold %', 'אחוז חסימה %')} onCommit={(v) => set({ thresholdPct: v.trim().replace('%', '') })} /></label>
-            <div className="field"><span><span id="remainder-method-label">{L('Remainder method', 'שיטת העודפים')}</span> <Info term={s.rules.remainderMethod === 'sainte-lague' ? 'sainte-lague' : s.rules.remainderMethod === 'largest-remainder' ? 'largest-remainder' : 'baderofer'} /></span>
+            <div className="field"><span><span id="remainder-method-label">{L('Remainder method', 'שיטת העודפים')}</span> <Info term={methodOf(s.rules).term} /></span>
               <select aria-labelledby="remainder-method-label" value={s.rules.remainderMethod} onChange={(e) => set({ remainderMethod: e.target.value as Scenario['rules']['remainderMethod'] })}>
                 <option value="bader-ofer">{L('Bader–Ofer (law since 1973)', 'בדר–עופר (החוק מאז 1973)')}</option>
                 <option value="largest-remainder">{L('Largest remainder (pre-1973 Israeli rule)', 'שארית גדולה (השיטה לפני 1973)')}</option>
                 <option value="sainte-lague">{L('Sainte-Laguë (all seats)', 'סנט-לגה (כל המושבים)')}</option>
+                <option value="dhondt">{L('D’Hondt (all seats; same seats as Bader–Ofer without agreements or the half cap)', 'ד׳הונדט (כל המושבים; כמו בדר–עופר ללא הסכמים ומגבלת מחצית)')}</option>
+                <option value="modified-sainte-lague">{L('Modified Sainte-Laguë (first divisor 1.4)', 'סנט-לגה מתוקנת (מחלק ראשון 1.4)')}</option>
+                <option value="droop">{L('Largest remainder, Droop quota', 'שארית גדולה, מודד דרופ')}</option>
               </select>
             </div>
             <label className="field">{L('Quota rounding', 'עיגול המודד')}

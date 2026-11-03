@@ -221,7 +221,7 @@ const ruleFields: Record<keyof SimRules, Check> = {
     if (typeof x !== 'string' || !/^\d+(\.\d+)?$/.test(x)) return false;
     try { const t = percentToRational(x); return t.num <= t.den; } catch { return false; }
   },
-  quotaRounding: oneOf('floor', 'exact'), remainderMethod: oneOf('bader-ofer', 'largest-remainder', 'sainte-lague'),
+  quotaRounding: oneOf('floor', 'exact'), remainderMethod: oneOf('bader-ofer', 'largest-remainder', 'sainte-lague', 'dhondt', 'modified-sainte-lague', 'droop'),
   seatsCappedAtCandidates: optional(boolean),
   majorityCap: boolean, maxAgreementSize: (x) => whole(x) && Number(x) >= 2, agreementRequiresAllQualify: boolean,
   quotaSeatOffset: optional((x) => whole(x) && Number(x) <= 1),
