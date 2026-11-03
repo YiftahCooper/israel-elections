@@ -1,7 +1,7 @@
 // Counterfactual analysis built on the deterministic engine: exact marginal-vote searches,
 // sweeps with exact breakpoints, and allocation comparisons. Every answer is verified by running
 // the full allocation at the reported vote count and at one vote less.
-import { allocate } from './allocate.ts';
+import { prepareAllocation } from './allocate.ts';
 import { cmp, rat, type Rational } from './rational.ts';
 import type { AllocationInput, AllocationResult, ListInput } from './types.ts';
 
@@ -15,37 +15,55 @@ export type VoteSource =
 export type Direction = 'gain' | 'lose';
 
 export function perturb(input: AllocationInput, target: string, source: VoteSource, k: bigint, dir: Direction = 'gain'): AllocationInput | null {
-  const lists = input.lists.map((l) => ({ ...l }));
-  const t = lists.find((l) => l.id === target);
-  if (!t) return null;
+  const votes = perturbation(input.lists, target, source, dir)(k);
+  return votes && { ...input, lists: input.lists.map((l, i) => ({ ...l, votes: votes[i] })) };
+}
+
+/** The vote vector after moving k votes, or null when the move is impossible. The target, the
+ *  other list and the proportional pool are resolved once, for searches over many k. */
+function perturbation(lists: readonly ListInput[], target: string, source: VoteSource, dir: Direction): (k: bigint) => bigint[] | null {
+  const votes = lists.map((l) => l.votes);
+  const t = lists.findIndex((l) => l.id === target);
   const sign = dir === 'gain' ? 1n : -1n;
-  if (dir === 'lose' && t.votes < k) return null;
-  t.votes += sign * k;
-  if (source.kind === 'new') return { ...input, lists };
+  const moveTarget = (k: bigint) => {
+    if (t < 0 || (dir === 'lose' && votes[t] < k)) return null;
+    const v = [...votes];
+    v[t] += sign * k;
+    return v;
+  };
+  if (source.kind === 'new') return moveTarget;
   if (source.kind === 'transfer') {
-    const o = lists.find((l) => l.id === source.listId);
-    if (!o || o.id === target) return null;
-    if (dir === 'gain' && o.votes < k) return null;
-    o.votes -= sign * k;
-    return { ...input, lists };
+    const o = lists.findIndex((l) => l.id === source.listId);
+    return (k) => {
+      const v = moveTarget(k);
+      if (!v || o < 0 || lists[o].id === target || (dir === 'gain' && v[o] < k)) return null;
+      v[o] -= sign * k;
+      return v;
+    };
   }
-  const pool = lists.filter((l) => l.id !== target && (source.listIds.length === 0 || source.listIds.includes(l.id)) && !l.withdrawn);
-  const total = pool.reduce((s, l) => s + l.votes, 0n);
-  if (dir === 'gain' && total < k) return null;
-  if (total === 0n) return null;
-  const share = splitProportional(k, pool.map((l) => l.votes));
-  pool.forEach((l, i) => { l.votes -= sign * share[i]; });
-  return { ...input, lists };
+  const pool = lists.flatMap((l, i) => (l.id !== target && (source.listIds.length === 0 || source.listIds.includes(l.id)) && !l.withdrawn ? [i] : []));
+  const weights = pool.map((i) => votes[i]);
+  const total = weights.reduce((a, b) => a + b, 0n);
+  return (k) => {
+    const v = moveTarget(k);
+    if (!v || (dir === 'gain' && total < k) || total === 0n) return null;
+    const share = splitProportional(k, weights);
+    pool.forEach((i, j) => { v[i] -= sign * share[j]; });
+    return v;
+  };
 }
 
 /** exact largest-remainder split of k in proportion to weights */
-export function splitProportional(k: bigint, weights: bigint[]): bigint[] {
+export function splitProportional(k: bigint, weights: readonly bigint[]): bigint[] {
   const sum = weights.reduce((a, b) => a + b, 0n);
   if (sum === 0n) return weights.map(() => 0n);
   const base = weights.map((w) => (k * w) / sum);
   let left = k - base.reduce((a, b) => a + b, 0n);
-  const order = weights.map((w, i) => ({ i, r: k * w - base[i] * sum })).sort((a, b) => (b.r > a.r ? 1 : b.r < a.r ? -1 : a.i - b.i));
-  for (const { i } of order) { if (left <= 0n) break; base[i] += 1n; left -= 1n; }
+  if (left <= 0n) return base;
+  // the remaining votes go to the largest remainders, equal remainders in order
+  const rem = weights.map((w, i) => k * w - base[i] * sum);
+  const order = weights.map((_, i) => i).sort((a, b) => (rem[b] > rem[a] ? 1 : rem[b] < rem[a] ? -1 : a - b));
+  for (const i of order) { if (left <= 0n) break; base[i] += 1n; left -= 1n; }
   return base;
 }
 
@@ -69,18 +87,22 @@ const seatsOf = (r: AllocationResult, id: string) => r.lists.find((l) => l.id ==
 const qualifiedOf = (r: AllocationResult, id: string) => r.lists.find((l) => l.id === id)?.qualified ?? false;
 
 export type Goal = (after: AllocationResult, before: AllocationResult) => boolean;
+type GoalFlags = { monotone?: boolean; seatsOnly?: boolean };
+/** Built-in goals read only each list's seats and qualification, so searches may evaluate them on
+ *  allocations computed without the audit trail. */
+const seatsOnly = (g: Goal): Goal => Object.assign(g, { seatsOnly: true });
 /** A goal marked monotone is proven to hold for every count above its first success, so the binary
  *  search answer is already minimal. Threshold goals qualify: a list's share of valid votes changes in
  *  one direction only as votes move towards (or away from) it, under every vote source. */
-const monotone = (g: Goal): Goal => Object.assign(g, { monotone: true });
+const monotone = (g: Goal): Goal => Object.assign(seatsOnly(g), { monotone: true });
 export const goals = {
-  seatGain: (id: string): Goal => (a, b) => seatsOf(a, id) > seatsOf(b, id),
-  seatLoss: (id: string): Goal => (a, b) => seatsOf(a, id) < seatsOf(b, id),
+  seatGain: (id: string): Goal => seatsOnly((a, b) => seatsOf(a, id) > seatsOf(b, id)),
+  seatLoss: (id: string): Goal => seatsOnly((a, b) => seatsOf(a, id) < seatsOf(b, id)),
   qualify: (id: string): Goal => monotone((a) => qualifiedOf(a, id)),
   disqualify: (id: string): Goal => monotone((a) => !qualifiedOf(a, id)),
-  seatsAtLeast: (id: string, n: number): Goal => (a) => seatsOf(a, id) >= n,
-  groupSeatsAtLeast: (ids: string[], n: number): Goal => (a) => ids.reduce((s, id) => s + seatsOf(a, id), 0) >= n,
-  groupSeatsBelow: (ids: string[], n: number): Goal => (a) => ids.reduce((s, id) => s + seatsOf(a, id), 0) < n,
+  seatsAtLeast: (id: string, n: number): Goal => seatsOnly((a) => seatsOf(a, id) >= n),
+  groupSeatsAtLeast: (ids: string[], n: number): Goal => seatsOnly((a) => ids.reduce((s, id) => s + seatsOf(a, id), 0) >= n),
+  groupSeatsBelow: (ids: string[], n: number): Goal => seatsOnly((a) => ids.reduce((s, id) => s + seatsOf(a, id), 0) < n),
 };
 
 function limitFor(input: AllocationInput, target: string, source: VoteSource, dir: Direction): bigint {
@@ -94,27 +116,29 @@ function limitFor(input: AllocationInput, target: string, source: VoteSource, di
 
 /** Smallest k ≥ 1 such that goal(allocate(perturb(k))) holds, found by exponential + binary search
  *  and then checked for non-monotonic behaviour by sampling below the answer. */
-/** Counts up to this many votes below a found answer are checked one by one (about 17µs each), which
- *  proves minimality even where the outcome is not monotonic in the vote count. */
+/** Counts up to this many votes below a found answer are checked one by one, which proves
+ *  minimality even where the outcome is not monotonic in the vote count. */
 export const EXHAUSTIVE_LIMIT = 50_000;
 
 export function minimalChange(input: AllocationInput, target: string, source: VoteSource, goal: Goal, dir: Direction = 'gain', exhaustiveLimit = EXHAUSTIVE_LIMIT): SearchResult {
-  const before = allocate(input);
+  const prepared = prepareAllocation(input);
+  const before = prepared.run(input.lists.map((l) => l.votes));
   const limit = limitFor(input, target, source, dir);
-  const test = (k: bigint): AllocationResult | null => { const p = perturb(input, target, source, k, dir); return p ? allocate(p) : null; };
-  const ok = (k: bigint) => { const r = test(k); return r !== null && goal(r, before); };
+  const votesAt = perturbation(input.lists, target, source, dir);
+  const test = (k: bigint): AllocationResult | null => { const v = votesAt(k); return v && prepared.run(v); };
+  const { monotone: isMonotone = false, seatsOnly: untraced = false } = goal as Goal & GoalFlags;
+  const ok = (k: bigint) => { const v = votesAt(k); return v !== null && goal(prepared.run(v, !untraced), before); };
   if (goal(before, before)) return { found: false, votes: null, before, after: null, lastFailing: null, nonMonotonic: false, exact: true, reason: 'already', limit };
   if (limit < 1n) return { found: false, votes: null, before, after: null, lastFailing: null, nonMonotonic: false, exact: true, reason: 'infeasible', limit };
   let hi = 1n;
-  while (hi < limit && !ok(hi)) hi = hi * 2n > limit ? limit : hi * 2n;
-  if (!ok(hi)) {
-    const isMonotone = (goal as Goal & { monotone?: boolean }).monotone === true;
+  let hiOk = ok(hi);
+  while (!hiOk && hi < limit) { hi = hi * 2n > limit ? limit : hi * 2n; hiOk = ok(hi); }
+  if (!hiOk) {
     // Exponential probes can jump over an entire successful interval. An affordable range must
     // be checked in full before concluding that no feasible count achieves a non-monotone goal.
     if (!isMonotone && limit <= BigInt(exhaustiveLimit)) {
       for (let k = 1n; k <= limit; k++) {
-        const after = test(k);
-        if (after && goal(after, before)) return { found: true, votes: k, before, after, lastFailing: k - 1n, nonMonotonic: true, exact: true, limit };
+        if (ok(k)) return { found: true, votes: k, before, after: test(k), lastFailing: k - 1n, nonMonotonic: true, exact: true, limit };
       }
       return { found: false, votes: null, before, after: null, lastFailing: limit, nonMonotonic: false, exact: true, reason: 'limit', limit };
     }
@@ -127,7 +151,6 @@ export function minimalChange(input: AllocationInput, target: string, source: Vo
   // regular grid of them) and report the smallest success.
   const found = hi;
   let exact = true;
-  const isMonotone = (goal as Goal & { monotone?: boolean }).monotone === true;
   const gridLimit = BigInt(Math.max(1, exhaustiveLimit));
   const step = isMonotone ? hi : hi - 1n <= gridLimit ? 1n : (hi - 1n + gridLimit - 1n) / gridLimit;
   if (!isMonotone && step > 1n) exact = false;
@@ -156,7 +179,9 @@ const signature = (r: AllocationResult) => r.lists.map((l) => `${l.seats}${l.qua
  *  on a regular grid of that many points, each change located to the exact vote by bisection; a change
  *  that reverts within one grid step could then be missed, and `exact` is false. */
 export function sweepVotes(input: AllocationInput, target: string, from: bigint, to: bigint, maxEvaluations = EXHAUSTIVE_LIMIT): SweepResult {
-  const at = (v: bigint) => allocate({ ...input, lists: input.lists.map((l) => (l.id === target ? { ...l, votes: v } : l)) });
+  const prepared = prepareAllocation(input);
+  const votes = input.lists.map((l) => l.votes);
+  const at = (v: bigint) => prepared.run(input.lists.map((l, i) => (l.id === target ? v : votes[i])), false);
   const mk = (a: bigint, b: bigint, r: AllocationResult): SweepSegment => ({ from: a, to: b, seats: Object.fromEntries(r.lists.filter((l) => l.seats > 0).map((l) => [l.id, l.seats])), qualified: r.lists.filter((l) => l.qualified).map((l) => l.id) });
   if (to < from) return { segments: [], exact: true, step: 1n };
   const span = to - from;
@@ -200,7 +225,7 @@ export function sweepThreshold(input: AllocationInput, lo: Rational, hi: Rationa
   const bounds = [lo, ...points, hi];
   const segs: ThresholdSegment[] = [];
   const seg = (a: Rational, b: Rational, t: Rational): ThresholdSegment => {
-    const r = allocate({ ...input, rules: { ...input.rules, threshold: t } });
+    const r = prepareAllocation({ ...input, rules: { ...input.rules, threshold: t } }).run(input.lists.map((l) => l.votes), false);
     return { fromPct: a, toPct: b, seats: Object.fromEntries(r.lists.filter((l) => l.seats > 0).map((l) => [l.id, l.seats])), qualified: r.lists.filter((l) => l.qualified).map((l) => l.id) };
   };
   // the qualified set is constant on (a, b]; the single point t = lo can differ when lo is a breakpoint
