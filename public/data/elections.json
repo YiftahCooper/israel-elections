@@ -29,10 +29,11 @@
     "date": "2009-02-10",
     "nameHe": "הבחירות לכנסת ה-18",
     "nameEn": "Election to the 18th Knesset",
-    "available": false,
+    "available": true,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "Official sources downloaded; dataset not built or verified."
+      "stage": "official-final",
+      "noteEn": "Verified seats, gazette rosters and eight agreement pairs. Localities derived from polling stations. Invalid-ballot total follows the CEC allocation memorandum; see decision 0040.",
+      "noteHe": "המנדטים, רשימות המועמדים ושמונה הסכמי עודפים אומתו. היישובים נגזרו מסיכום הקלפיות; הפסולים לפי זכרון הדברים הרשמי. ראו החלטה 0040."
     }
   },
   {
@@ -44,7 +45,8 @@
     "available": false,
     "status": {
       "stage": "pending-data-verification",
-      "noteEn": "Official sources downloaded; dataset not built or verified."
+      "noteEn": "Built; seats, rosters and seven agreement pairs verified. Gazette/CEC final national discrepancies remain unexplained at station level; see decision 0041.",
+      "noteHe": "הנתונים נבנו והמנדטים, המועמדים ושבעה הסכמים אומתו; טרם נמצא הסבר רשמי להבדלים בין רשומות לתוצאות הסופיות וזיהוי הקלפיות. ראו החלטה 0041."
     }
   },
   {

@@ -362,7 +362,7 @@
     "official": true,
     "description": "תוצאות האמת של הבחירות לכנסת ה-18 לפי קלפיות",
     "method": "datagov-datastore-api",
-    "retrievedAt": "2026-11-03T15:06:22.020Z",
+    "retrievedAt": "2026-11-03T15:26:14.538Z",
     "bytes": 4557118,
     "sha256": "50c6aee30ba047f19d44c45430e2b5c6b19c9ff560b382dff2c4fb18374f7d05",
     "lastModified": null
@@ -388,7 +388,7 @@
     "official": true,
     "description": "תוצאות האמת של הבחירות לכנסת ה-19 לפי קלפיות",
     "method": "datagov-datastore-api",
-    "retrievedAt": "2026-11-03T15:06:23.641Z",
+    "retrievedAt": "2026-11-03T15:26:15.924Z",
     "bytes": 5493001,
     "sha256": "2234ec729a7db119e17f627b3d2c9eb088ad2e8b8ff0e2cd5edf3dd525866cb0",
     "lastModified": null
@@ -623,5 +623,65 @@
     "bytes": 118151,
     "sha256": "19ba7a5dfce76f60a41fd1e5509ea16c4495271777dca65ed1247b3f181c5d49",
     "lastModified": "Tue, 15 Sep 2026 10:19:40 GMT"
+  },
+  {
+    "id": "k18-surplus-gazette",
+    "file": "k18/surplus.pdf",
+    "url": "https://olaw.org.il/yalkut/yalkut-5912.pdf",
+    "publisher": "Reshumot / Central Elections Committee (olaw.org.il mirror)",
+    "official": true,
+    "description": "YP 5912 p. 2254: complete eight-pair surplus notice; primary statutory publication retrieved from mirror",
+    "method": "http",
+    "retrievedAt": "2026-11-03T15:35:16.568Z",
+    "bytes": 238377,
+    "sha256": "671ded7a7c4b6d68588cf00cdd9de592941c2ae6d4be2c9263d0f4be788cad33"
+  },
+  {
+    "id": "k19-surplus-gazette",
+    "file": "k19/surplus.pdf",
+    "url": "https://olaw.org.il/yalkut/yalkut-6530.pdf",
+    "publisher": "Reshumot / Central Elections Committee (olaw.org.il mirror)",
+    "official": true,
+    "description": "YP 6530 p. 2156: complete seven-pair surplus notice; primary statutory publication retrieved from mirror",
+    "method": "http",
+    "retrievedAt": "2026-11-03T15:35:16.568Z",
+    "bytes": 99921,
+    "sha256": "432045d8b01b8d3816554582efde50b992e37995350226c88abc0be739a32e72"
+  },
+  {
+    "id": "k18-allocation-memorandum",
+    "file": "k18/allocation.pdf",
+    "url": "https://www.gov.il/apps/elections/elections-knesset-18/heb/about/Electoral_result.pdf",
+    "publisher": "Central Elections Committee",
+    "official": true,
+    "description": "CEC allocation memorandum: electorate, valid/invalid/cast totals, votes per list, threshold and quota",
+    "method": "http",
+    "retrievedAt": "2026-11-03T15:35:16.568Z",
+    "bytes": 344851,
+    "sha256": "a4750a896d9b6e85d7b925c33f71b668b2e65791eee270ae205592e19debaa07"
+  },
+  {
+    "id": "k19-final-results-capture",
+    "file": "k19/final-results.capture.json",
+    "url": "https://www.gov.il/apps/elections/eng/list/Results_eng.html",
+    "publisher": "Central Elections Committee",
+    "official": true,
+    "description": "Numeric capture of the CEC final official national results page, all 32 participating lists; manual transcription, not original HTML",
+    "method": "manual-capture",
+    "retrievedAt": "2026-11-03T15:35:30.386918+00:00",
+    "bytes": 2921,
+    "sha256": "60adf4ca79cc188336624204cd09ce443c7a73193a3dc651bc2780d838db67ad"
+  },
+  {
+    "id": "k19-decisions-book",
+    "file": "k19/decisions.pdf",
+    "url": "https://www.gov.il/apps/elections/elections-knesset-19/heb/law/Decisions2012-13.pdf",
+    "publisher": "Central Elections Committee",
+    "official": true,
+    "description": "CEC decisions book; pp. 362 and 367–368 identify disqualified stations but do not explain the gazette/datastore national deltas",
+    "method": "http",
+    "retrievedAt": "2026-11-03T15:40:15.973209+00:00",
+    "bytes": 3496123,
+    "sha256": "3a91faed44d258c30099ca9628e596b1a03e028b77fce3db0b3c5533ebaa2823"
   }
 ]

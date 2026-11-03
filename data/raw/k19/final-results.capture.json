@@ -1,0 +1,173 @@
+{
+  "title": "Final official results of the Elections for the Nineteenth Knesset",
+  "url": "https://www.gov.il/apps/elections/eng/list/Results_eng.html",
+  "captureMethod": "Numeric fields transcribed from web retrieval; English list names mapped explicitly to the gazette ballot letters. Direct scripted download returned HTTP 403.",
+  "totals": {
+    "registered": 5656705,
+    "votesCast": 3833646,
+    "valid": 3792742,
+    "invalid": 40904
+  },
+  "lists": [
+    {
+      "letters": "מחל",
+      "votes": 885163,
+      "seats": 31
+    },
+    {
+      "letters": "פה",
+      "votes": 543458,
+      "seats": 19
+    },
+    {
+      "letters": "אמת",
+      "votes": 432118,
+      "seats": 15
+    },
+    {
+      "letters": "טב",
+      "votes": 345985,
+      "seats": 12
+    },
+    {
+      "letters": "שס",
+      "votes": 331868,
+      "seats": 11
+    },
+    {
+      "letters": "ג",
+      "votes": 195892,
+      "seats": 7
+    },
+    {
+      "letters": "צפ",
+      "votes": 189167,
+      "seats": 6
+    },
+    {
+      "letters": "מרצ",
+      "votes": 172403,
+      "seats": 6
+    },
+    {
+      "letters": "עם",
+      "votes": 138450,
+      "seats": 4
+    },
+    {
+      "letters": "ו",
+      "votes": 113439,
+      "seats": 4
+    },
+    {
+      "letters": "ד",
+      "votes": 97030,
+      "seats": 3
+    },
+    {
+      "letters": "כן",
+      "votes": 78974,
+      "seats": 2
+    },
+    {
+      "letters": "נץ",
+      "votes": 66775,
+      "seats": 0
+    },
+    {
+      "letters": "ץ",
+      "votes": 45690,
+      "seats": 0
+    },
+    {
+      "letters": "קנ",
+      "votes": 43734,
+      "seats": 0
+    },
+    {
+      "letters": "ז",
+      "votes": 28080,
+      "seats": 0
+    },
+    {
+      "letters": "פז",
+      "votes": 28049,
+      "seats": 0
+    },
+    {
+      "letters": "יק",
+      "votes": 18939,
+      "seats": 0
+    },
+    {
+      "letters": "רק",
+      "votes": 8117,
+      "seats": 0
+    },
+    {
+      "letters": "זך",
+      "votes": 5975,
+      "seats": 0
+    },
+    {
+      "letters": "הפ",
+      "votes": 3640,
+      "seats": 0
+    },
+    {
+      "letters": "ק",
+      "votes": 3546,
+      "seats": 0
+    },
+    {
+      "letters": "פנ",
+      "votes": 2899,
+      "seats": 0
+    },
+    {
+      "letters": "צק",
+      "votes": 2877,
+      "seats": 0
+    },
+    {
+      "letters": "פץ",
+      "votes": 2176,
+      "seats": 0
+    },
+    {
+      "letters": "פ",
+      "votes": 2076,
+      "seats": 0
+    },
+    {
+      "letters": "פי",
+      "votes": 1972,
+      "seats": 0
+    },
+    {
+      "letters": "נק",
+      "votes": 1352,
+      "seats": 0
+    },
+    {
+      "letters": "ני",
+      "votes": 1027,
+      "seats": 0
+    },
+    {
+      "letters": "נ",
+      "votes": 761,
+      "seats": 0
+    },
+    {
+      "letters": "הק",
+      "votes": 649,
+      "seats": 0
+    },
+    {
+      "letters": "הי",
+      "votes": 461,
+      "seats": 0
+    }
+  ]
+}
