@@ -1,90 +1,122 @@
 # Israeli Elections Explorer & Simulator · סייר הבחירות לכנסת
 
-An interactive web application for exploring and simulating Israeli Knesset elections, with an exact,
-tested implementation of the statutory seat allocation (threshold, general quota, Bader–Ofer remainder
-allocation, surplus-vote agreements and their internal division). Hebrew (right-to-left) and English.
+Explore Israeli Knesset election results and see how changing votes changes the 120 seats.
+This bilingual Hebrew/English app is for curious voters, students and anyone who wants to
+understand seat allocation, with detailed tools for researchers and developers.
 
-Elections included: **2022 (25th Knesset)** and **2026 (26th Knesset)**.
+<!-- Screenshot to be added by the owner. -->
+![The elections explorer and seat simulator](docs/screenshot.png)
 
 ## What you can do
 
-* See the 120-seat Knesset with every seat linked to the candidate who holds it; full registered candidate lists with the elected highlighted.
-* Edit any list's votes (exact number, ±, percentages, set a share of valid votes) and choose **where changed votes come from**: new or abstaining voters (valid total changes), a specific other list, or all other lists proportionally. These are different counterfactuals and are never mixed.
-* Exact boundaries: the minimum votes to pass the threshold or win the next seat, and how many votes can be lost before losing one — each verified at *n* and *n − 1* votes, and applicable in one click.
-* Merge and split lists (including by constituent party, where the official data records it), add lists, edit candidate lists (reorder, insert, rename, remove), withdraw lists.
-* Create, toggle and remove surplus-vote agreements; see each agreement's exact seat effect.
-* Step through the allocation seat by seat with every competing quotient (exact fractions), including the internal division inside agreement pairs.
-* Compare with the historical result or any saved scenario, including structure changes: seat-change explanations, bloc totals, candidates entering and leaving.
-* Sensitivity: sweep a list's votes and find every point where seats change; sweep the threshold from 1% to 5% with exact breakpoints; find the smallest transfer that flips a bloc majority.
-* Hypothetical turnout modelling, optionally seeded from official locality results (clearly labelled as a model).
-* Explore official results for every locality.
-* Experimental mode: change seats, threshold, remainder method (Bader–Ofer, pre-1973 largest remainder, Sainte-Laguë), agreement size and more. Every departure from Israeli law is listed.
-* Undo/redo, a full change history, saved scenarios, share links, JSON import/export, CSV export, SVG/PNG export of the chamber.
+Choose an election, select a list and change its votes to watch the seats move.
+The three interface levels use the same exact Bader–Ofer allocation engine:
+
+| Level | Tools |
+|---|---|
+| **Simple** (default) | Chamber and party cards, vote editing balanced proportionally across other lists, elected candidates, “What if…”, coalitions, allocation walkthrough and sources. Undo and start over. |
+| **Standard** | Adds a choice of vote source, comparisons, mergers, splits and surplus agreements, seat security, charts and change history. Save, share, import and export scenarios; withdraw or remove lists. |
+| **Expert** | Adds candidate and list identity editing, turnout models, sensitivity analysis, experimental electoral rules, locality results and chamber display options. |
+
+Hebrew is the default, with right-to-left layout. English and light/dark themes are available.
+The election picker marks unfinished datasets as “not yet available”.
 
 ## Data and provenance
 
-All election figures come from official sources; see `data/raw/SOURCES.json` (URL, retrieval time, SHA-256) and the in-app *Sources* tab.
+Votes, candidates and surplus agreements come from Central Elections Committee (CEC),
+data.gov.il and Reshumot sources. Raw files and a manifest record source URLs, retrieval
+times and SHA-256 hashes. Two 2026 candidate rosters use a labelled secondary source.
+Colours, short names and default blocs are assigned by the app.
 
-| Data | 2022 | 2026 |
-|---|---|---|
-| Votes by list, totals | CEC official final results page + data.gov.il datastore (polling stations and localities; reconciled exactly) | CEC result files `media26.bechirot.gov.il/files/expb.csv` and `expc.csv` (reconciled exactly) |
-| Candidate lists | Reshumot, Yalkut HaPirsumim 10852 (20.10.2022), parsed from the PDF | CEC per-list pages on gov.il (with per-candidate parties, resignations and disqualifications) |
-| Surplus agreements | CEC press release, 23.10.2022 | Reshumot, Yalkut HaPirsumim 15045, p. 1098 (19.10.2026) |
+**Available:** 2022 (25th Knesset) and 2026 (26th Knesset).
+Official historical sources for 2003–2021 (Knessets 16–24) have been added, but those
+elections are **not yet available**: their datasets have not been built and verified.
+See [Data coverage and provenance](docs/DATA.md) for sources, qualifications and gaps.
 
-**Status of 2026:** the CEC has published the final count; the law requires publication in Reshumot by 4 November 2026,
-and the results may change until then. The app shows this status. Two 2026 candidate rosters (צומת בית ישראל, and the
-withdrawn כחול לבן) come from a secondary transcription (bechirot.fyi), because the official pages could not be
-retrieved; they are labelled as secondary. List colours, short and English names and the default blocs are assigned by
-the app for legibility and are not official.
+## Accuracy and limits
 
-## Run it
+The engine uses exact integer and fraction arithmetic for seat decisions. Tests reproduce
+every list’s official **2022** seat count exactly, including all 120 seats.
+For **2026**, tests reproduce the seat totals reported from the CEC final count; that test’s
+comparison figures are labelled as secondary press reports. The dataset has no gazetted
+official seat table yet and records final publication as pending as of 3 November 2026.
+Availability is recorded in [the election index](public/data/elections.json).
 
-Requires Node.js 22 or later.
+Tests also cover threshold boundaries, surplus agreements, statutory ties and model actions.
+An exact tie requires a lottery outcome; the app warns when it is showing a provisional winner.
+Large seat searches and vote sweeps can use sampling; exact arithmetic alone does not
+guarantee that every smallest change or breakpoint has been found.
+See [Electoral law and validation](docs/ELECTORAL-LAW.md).
+
+## Run locally
+
+Install **Node.js 22.18 or later**; CI uses **Node.js 24**. In the project folder:
 
 ```sh
-npm install
-npm run dev        # http://localhost:5173
-npm test           # engine, analysis and model tests (vitest)
-npm run build      # static site in dist/
-npx playwright test   # end-to-end test of the full "definition of success" sequence
+npm ci
+npm run dev
 ```
 
-The built site is static (no server) and can be hosted anywhere.
+Open the address printed by Vite (normally `http://localhost:5173`).
+The production build is a static site; it needs no application backend.
+
+## Tests and checks
+
+```sh
+npm test
+npm run typecheck
+npm run build
+npx playwright install chromium
+npm run test:e2e
+```
+
+The browser tests use the production build, so build before running them.
+See [Development](docs/DEVELOPMENT.md) for CI details and test scope.
 
 ## Rebuild the data
 
 ```sh
-node scripts/fetch-sources.ts            # download sources that are reachable by script
-node scripts/fetch-sources.ts --refresh  # re-download (e.g. after the 2026 results are gazetted)
-node scripts/build-datasets.ts           # rebuild public/data/*.json; fails loudly on any inconsistency
-npm test                                 # confirm the engine still reproduces the official results
+npm run data:fetch
+npm run data:build
+npm test
 ```
 
-The builder checks that list votes sum to valid votes in every row, that locality and polling-station totals agree,
-that candidate ranks are contiguous, and that every agreement appears in its official source. Saved and shared
-scenarios store their changes, not copies of the data, so they are re-applied to corrected data automatically.
+Fetching recovers missing sources; `node scripts/fetch-sources.ts --refresh` downloads
+fresh copies. The builder currently produces only 2022 and 2026 datasets and stops on
+failed consistency checks. A successful build does not verify the historical extension.
+Read [Data coverage](docs/DATA.md) before changing sources or publishing rebuilt files.
 
-## Architecture
+## Project structure
 
-```
-src/engine/   exact seat allocation (bigint, no floating point), analysis (marginal votes, sweeps, comparison) — no UI dependency
-src/model/    scenario state and pure actions (every edit is a logged, replayable action)
-src/data/     versioned dataset schema
-src/app/      React interface (store, components, Hebrew/English, light/dark)
-scripts/      source fetching and dataset building
-data/raw/     the official source files and their provenance manifest
-public/data/  generated datasets loaded by the app
-tests/        unit, property and end-to-end tests
-docs/         the statutory text and how the engine implements it
-```
+| Folder | Contents |
+|---|---|
+| `src/engine/` | Exact allocation and analysis, independent of the interface |
+| `src/model/` | Scenario inputs and replayable editing actions |
+| `src/app/` | React interface, browser storage and Hebrew/English text |
+| `src/data/` | Dataset types and versioning |
+| `scripts/` | Source fetching and dataset building |
+| `data/raw/` | Retained sources and provenance manifest |
+| `public/data/` | Generated datasets loaded by the app |
+| `tests/` | Unit, property and browser tests |
+| `docs/` | Data, law, development and decision records |
 
-See [docs/ELECTORAL-LAW.md](docs/ELECTORAL-LAW.md) for the law, its mapping to code and the validation results.
+## Documentation
 
-## Not included (yet)
+- [Documentation map](docs/README.md)
+- [Data coverage and provenance](docs/DATA.md)
+- [Electoral law and validation](docs/ELECTORAL-LAW.md)
+- [Development](docs/DEVELOPMENT.md)
+- [Decision records](docs/decisions/README.md)
+- [Contributing](CONTRIBUTING.md)
+- [Changelog](CHANGELOG.md)
 
-Earlier elections (the architecture and data pipeline are designed for them: data.gov.il holds results back to the
-16th Knesset and the CEC history page links the earlier candidate gazettes); English transliterations of candidate
-names; candidate portraits and party logos (usage rights); later changes in Knesset membership (resignations,
-replacements, the Norwegian Law); polling-station-level simulation.
+## Disclaimer
 
-Not affiliated with the Central Elections Committee or any party.
+Not affiliated with the Central Elections Committee or any political party.
+Blocs are informal, editable groupings, not official electoral classifications.
+Scenarios and turnout models are hypothetical, not forecasts. Candidate displays follow
+registered lists and do not track later changes in Knesset membership.
+
+## Licence
+
+Licence: to be decided by the owner.
