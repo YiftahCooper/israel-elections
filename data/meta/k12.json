@@ -1,0 +1,589 @@
+{
+  "electionId": "k12",
+  "generatedNote": "Research metadata (joint-list composition, blocs, colours). See data/meta/README.md and docs/research/meta-1981-2006.md.",
+  "lists": [
+    {
+      "letters": "ג",
+      "nameHe": "יהדות התורה המאוחדת – אגודת ישראל",
+      "seats": 5,
+      "rosterRanks": 5,
+      "candidatesTruncated": true,
+      "notes": "Agudat Yisrael list including Poalei Agudat Yisrael (Verdiger).",
+      "parties": [
+        {
+          "id": "agudat-yisrael",
+          "nameHe": "אגודת ישראל",
+          "nameEn": "Agudat Yisrael",
+          "candidateRanks": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "sources": [
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%90%D7%92%D7%95%D7%93%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "אגודת ישראל: משה זאב פלדמן, מנחם פרוש, שמואל הלפרט, אליעזר מזרחי",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%90%D7%92%D7%95%D7%93%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "הכנסת השתים עשרה - 102,714 קולות - 5 מנדטים (כולל פועלי אגודת ישראל)",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=KnessetNum%20eq%2012%20and%20PositionID%20eq%2054",
+              "publisher": "Knesset OData (ParliamentInfo)",
+              "kind": "official",
+              "quote": "KNS_PersonToPosition, KnessetNum 12, PositionID 54 (faction member) — members of this list later recorded in the \"אגודת ישראל\" faction: PersonID 2541 פלדמן משה-זאב: FactionName \"אגודת ישראל\" from 1988-11-21; PersonID 2549 פרוש מנחם: FactionName \"אגודת ישראל\" from 1988-11-21; PersonID 527 הלפרט שמואל: FactionName \"אגודת ישראל\" from 1988-11-21; PersonID 2457 מזרחי אליעזר: FactionName \"אגודת ישראל\" from 1988-11-21",
+              "accessed": "2026-11-04"
+            }
+          ],
+          "confidence": "high"
+        },
+        {
+          "id": "poalei-agudat-yisrael",
+          "nameHe": "פועלי אגודת ישראל",
+          "nameEn": "Poalei Agudat Yisrael",
+          "candidateRanks": [
+            3
+          ],
+          "sources": [
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%90%D7%92%D7%95%D7%93%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "פועלי אגודת ישראל: אברהם ורדיגר",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%A4%D7%95%D7%A2%D7%9C%D7%99_%D7%90%D7%92%D7%95%D7%93%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "מנדט אחד (מתוך 5 לרשימה כולה):",
+              "accessed": "2026-11-04"
+            }
+          ],
+          "confidence": "high"
+        }
+      ],
+      "unassignedRanks": []
+    },
+    {
+      "letters": "ו",
+      "nameHe": "חזית דמוקרטית לשלום ולשוויון – המפלגה הקומוניסטית הישראלית (רק״ח); פנתרים שחורים וחוגי ציבור יהודים וערבים",
+      "seats": 4,
+      "rosterRanks": 4,
+      "candidatesTruncated": true,
+      "notes": "Front named on the ballot as Rakah + Black Panthers + public circles; Charlie Biton held the Black Panthers place. Affiliation of the other elected members comes from their own biographies (party membership), not from a published seat split.",
+      "parties": [
+        {
+          "id": "israeli-communist-party",
+          "nameHe": "המפלגה הקומוניסטית הישראלית (רק\"ח)",
+          "nameEn": "Israeli Communist Party (Rakah)",
+          "candidateRanks": [
+            1,
+            2,
+            4
+          ],
+          "sources": [
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%90%D7%99%D7%A8_%D7%95%D7%99%D7%9C%D7%A0%D7%A8",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "| סיעה = מק\"י, רק\"ח, חד\"ש",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%AA%D7%95%D7%A4%D7%99%D7%A7_%D7%98%D7%95%D7%91%D7%99",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "| סיעה = מק\"י, רק\"ח, חד\"ש",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%AA%D7%90%D7%95%D7%A4%D7%99%D7%A7_%D7%96%D7%99%D7%90%D7%93",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "היה חבר הכנסת מטעם הרשימה הקומוניסטית החדשה (רק\"ח) והחזית הדמוקרטית לשלום ולשוויון (חד\"ש)",
+              "accessed": "2026-11-04"
+            }
+          ],
+          "confidence": "medium"
+        },
+        {
+          "id": "black-panthers",
+          "nameHe": "הפנתרים השחורים",
+          "nameEn": "Black Panthers",
+          "candidateRanks": [
+            3
+          ],
+          "sources": [
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%A6'%D7%A8%D7%9C%D7%99_%D7%91%D7%99%D7%98%D7%95%D7%9F",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "ממייסדי הפנתרים השחורים, וחבר הכנסת מטעם חד\"ש",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=KnessetNum%20eq%2012%20and%20PositionID%20eq%2054",
+              "publisher": "Knesset OData (ParliamentInfo)",
+              "kind": "official",
+              "quote": "KNS_PersonToPosition, KnessetNum 12, PositionID 54 (faction member) — members of this list later recorded in the \"הפנתרים השחורים\" faction: PersonID 2191 ביטון צ'רלי: FactionName \"פנתרים שחורים\" from 1991-01-01",
+              "accessed": "2026-11-04"
+            }
+          ],
+          "confidence": "medium"
+        }
+      ],
+      "unassignedRanks": []
+    },
+    {
+      "letters": "הן",
+      "nameHe": "תנועת המרכז – שינוי (שינוי־לע״מ־המרכז הליברלי)",
+      "seats": 2,
+      "rosterRanks": 2,
+      "candidatesTruncated": true,
+      "notes": "Movement for the Centre – Shinui: Shinui with the Independent Liberals (and the Liberal Centre named in the list title). Both elected members were Shinui.",
+      "parties": [
+        {
+          "id": "shinui",
+          "nameHe": "שינוי",
+          "nameEn": "Shinui",
+          "candidateRanks": [
+            1,
+            2
+          ],
+          "sources": [
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA_%D7%A9%D7%99%D7%A0%D7%95%D7%99",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "אמנון רובינשטיין, אברהם פורז",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%90%D7%91%D7%A8%D7%94%D7%9D_%D7%A4%D7%95%D7%A8%D7%96",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "ב-1988 נבחר לכנסת ה-12 מטעם שינוי",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=KnessetNum%20eq%2012%20and%20PositionID%20eq%2054",
+              "publisher": "Knesset OData (ParliamentInfo)",
+              "kind": "official",
+              "quote": "KNS_PersonToPosition, KnessetNum 12, PositionID 54 (faction member) — members of this list later recorded in the \"שינוי\" faction: PersonID 510 רובינשטיין אמנון: FactionName \"שינוי\" from 1988-11-21",
+              "accessed": "2026-11-04"
+            }
+          ],
+          "confidence": "high",
+          "rankNotes": [
+            {
+              "rank": 2,
+              "datasetName": "פורזומנסקי אברהם",
+              "note": "roster form \"פורזומנסקי אברהם\" = Avraham Poraz"
+            }
+          ]
+        },
+        {
+          "id": "independent-liberals",
+          "nameHe": "הליברלים העצמאיים",
+          "nameEn": "Independent Liberals",
+          "candidateRanks": [],
+          "sources": [
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%9C%D7%99%D7%91%D7%A8%D7%9C%D7%99%D7%9D_%D7%A2%D7%A6%D7%9E%D7%90%D7%99%D7%99%D7%9D",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "מועמדי המפלגה לכנסת ה-12 (1988) במסגרת \"מפלגת המרכז - שינוי\"",
+              "accessed": "2026-11-04"
+            }
+          ],
+          "confidence": "medium",
+          "notes": "Constituent with no elected member; its candidate Tzvika Nir is beyond the transcribed (truncated) roster."
+        }
+      ],
+      "unassignedRanks": []
+    }
+  ],
+  "blocSchemes": [
+    {
+      "id": "first-government",
+      "nameHe": "הממשלה הראשונה של הכנסת ה-12 (ממשלה 23) והאופוזיציה",
+      "nameEn": "First government of the 12th Knesset (government 23) and opposition",
+      "kind": "government",
+      "date": "1988-12-22",
+      "blocs": [
+        {
+          "id": "coalition",
+          "nameHe": "קואליציה",
+          "nameEn": "Coalition",
+          "color": "#2E7D32",
+          "seats": 97,
+          "members": [
+            {
+              "letters": "מחל"
+            },
+            {
+              "letters": "אמת"
+            },
+            {
+              "letters": "ג"
+            },
+            {
+              "letters": "ב"
+            },
+            {
+              "letters": "שס"
+            },
+            {
+              "letters": "עץ",
+              "note": "in the coalition without cabinet ministers"
+            }
+          ]
+        },
+        {
+          "id": "opposition",
+          "nameHe": "אופוזיציה",
+          "nameEn": "Opposition",
+          "color": "#9E9E9E",
+          "seats": 23,
+          "members": [
+            {
+              "letters": "רצ"
+            },
+            {
+              "letters": "ו"
+            },
+            {
+              "letters": "הן"
+            },
+            {
+              "letters": "ת"
+            },
+            {
+              "letters": "פ"
+            },
+            {
+              "letters": "ט"
+            },
+            {
+              "letters": "מפם"
+            },
+            {
+              "letters": "ע"
+            },
+            {
+              "letters": "ץ"
+            }
+          ]
+        }
+      ],
+      "notes": "Membership by list at the swearing-in of the first government after the election, from the coalition table of the Hebrew Wikipedia government article (faction, seats, start/end dates), cross-checked against Knesset OData ministerial records for that GovernmentNum. Bloc colours are neutral display suggestions, not party colours.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%9C%D7%95%D7%A9",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "הממשלה העשרים ושלוש הוקמה לאחר הבחירות לכנסת ה-12 והושבעה בכנסת ב-22 בדצמבר 1988",
+          "accessed": "2026-11-04"
+        },
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%9C%D7%95%D7%A9",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "סיעות הקואליציה==",
+          "accessed": "2026-11-04"
+        },
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=GovernmentNum%20eq%2023",
+          "publisher": "Knesset OData (ParliamentInfo)",
+          "kind": "official",
+          "quote": "KNS_PersonToPosition, GovernmentNum 23: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 1988-12-22: דרעי אריה מכלוף, צור יעקב, שחל משה, ויצמן עזר, מודעי יצחק, רבין יצחק, נבון יצחק, פרץ יצחק-חיים, גור מרדכי, נסים משה, קצב משה, לוי דוד, שרון אריאל, יעקבי גד, פת גדעון, פרס שמעון, שמיר יצחק, מרידור דן, כץ-עוז אברהם, אולמרט אהוד, מילוא רוני, אדרי רפאל, בר-לב חיים, ארנס משה",
+          "accessed": "2026-11-04"
+        }
+      ]
+    }
+  ],
+  "colours": [
+    {
+      "letters": "מחל",
+      "color": "#1F5AA5",
+      "basis": "Colour used for this list/party in Hebrew Wikipedia Knesset and party articles (a convention of that encyclopedia, not an official party colour).",
+      "colourId": "likud",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%AA%D7%99%D7%9D_%D7%A2%D7%A9%D7%A8%D7%94",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#1F5AA5|גבול=1px solid #A9A9A9}}[[הליכוד]] (38)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "אמת",
+      "color": "#EE161F",
+      "basis": "Hebrew Wikipedia colours the Alignment with the same red it uses for Labor (10th–12th Knesset articles).",
+      "colourId": "alignment",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%AA%D7%99%D7%9D_%D7%A2%D7%A9%D7%A8%D7%94",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#EE161F|גבול=1px solid #A9A9A9}}[[המערך]] (38)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "ג",
+      "color": "#122D70",
+      "basis": "Colour used for this list/party in Hebrew Wikipedia Knesset and party articles (a convention of that encyclopedia, not an official party colour).",
+      "colourId": "agudat-yisrael",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%AA%D7%99%D7%9D_%D7%A2%D7%A9%D7%A8%D7%94",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#122D70|גבול=1px solid #A9A9A9}}[[אגודת ישראל]] (4)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "רצ",
+      "color": "#C80004",
+      "basis": "Colour used for this list/party in Hebrew Wikipedia Knesset and party articles (a convention of that encyclopedia, not an official party colour).",
+      "colourId": "ratz",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%AA%D7%99%D7%9D_%D7%A2%D7%A9%D7%A8%D7%94",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#C80004|גבול=1px solid #A9A9A9}}[[רצ]] (5)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "ב",
+      "color": "#623963",
+      "basis": "Colour used for this list/party in Hebrew Wikipedia Knesset and party articles (a convention of that encyclopedia, not an official party colour).",
+      "colourId": "nrp",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%AA%D7%99%D7%9D_%D7%A2%D7%A9%D7%A8%D7%94",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#623963|גבול=1px solid #A9A9A9}}[[מפד\"ל]] (5)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "ו",
+      "color": "#C81F28",
+      "basis": "Colour used for this list/party in Hebrew Wikipedia Knesset and party articles (a convention of that encyclopedia, not an official party colour).",
+      "colourId": "hadash",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%AA%D7%99%D7%9D_%D7%A2%D7%A9%D7%A8%D7%94",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#C81F28|גבול=1px solid #A9A9A9}}[[החזית הדמוקרטית לשלום ולשוויון|חד\"ש]] (4)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "הן",
+      "color": "#2D4277",
+      "basis": "Hebrew Wikipedia uses #2D4277 for Shinui in the 10th–12th Knesset articles.",
+      "colourId": "shinui-1980s",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%AA%D7%99%D7%9D_%D7%A2%D7%A9%D7%A8%D7%94",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#2D4277|גבול=1px solid #A9A9A9}}[[מפלגת שינוי|שינוי]] (2)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "שס",
+      "color": "#000000",
+      "basis": "Colour used for this list/party in Hebrew Wikipedia Knesset and party articles (a convention of that encyclopedia, not an official party colour).",
+      "colourId": "shas",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%AA%D7%99%D7%9D_%D7%A2%D7%A9%D7%A8%D7%94",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#000000|גבול=1px solid #A9A9A9}}[[מפלגת ש\"ס|ש\"ס]] (5)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "ת",
+      "color": "#007FFF",
+      "basis": "Colour used for this list/party in Hebrew Wikipedia Knesset and party articles (a convention of that encyclopedia, not an official party colour).",
+      "colourId": "tehiya",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%AA%D7%99%D7%9D_%D7%A2%D7%A9%D7%A8%D7%94",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#007FFF|גבול=1px solid #A9A9A9}}[[התחיה]] (3)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "פ",
+      "color": "#F07D00",
+      "basis": "Hebrew Wikipedia only; same orange it uses for Balad.",
+      "colourId": "plp",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%AA%D7%99%D7%9D_%D7%A2%D7%A9%D7%A8%D7%94",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#F07D00|גבול=1px solid #A9A9A9}}[[הרשימה המתקדמת לשלום]] (1)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "low"
+    },
+    {
+      "letters": "ט",
+      "color": "#083D7B",
+      "basis": "Hebrew Wikipedia; the same navy is also used for Telem and Ometz.",
+      "colourId": "moledet",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%AA%D7%99%D7%9D_%D7%A2%D7%A9%D7%A8%D7%94",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#083D7B|גבול=1px solid #A9A9A9}}[[מולדת (מפלגה)|מולדת]] (2)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "low"
+    },
+    {
+      "letters": "עץ",
+      "color": "#03428F",
+      "basis": "Hebrew Wikipedia 12th Knesset infobox only; the same blue is used for other parties.",
+      "colourId": "degel-hatorah",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%AA%D7%99%D7%9D_%D7%A2%D7%A9%D7%A8%D7%94",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#03428F|גבול=1px solid #A9A9A9}}[[דגל התורה]] (2)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "low"
+    },
+    {
+      "letters": "מפם",
+      "color": "#AB0E1A",
+      "basis": "Colour used for this list/party in Hebrew Wikipedia Knesset and party articles (a convention of that encyclopedia, not an official party colour).",
+      "colourId": "mapam",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%AA%D7%99%D7%9D_%D7%A2%D7%A9%D7%A8%D7%94",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#AB0E1A|גבול=1px solid #A9A9A9}}[[מפ\"ם]] (3)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "ע",
+      "color": "#15793D",
+      "basis": "Hebrew Wikipedia uses the same green for Mada and Mada–Ra'am.",
+      "colourId": "arab-democratic-party",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%AA%D7%99%D7%9D_%D7%A2%D7%A9%D7%A8%D7%94",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#15793D|גבול=1px solid #A9A9A9}}[[מפלגה דמוקרטית ערבית|מד\"ע]] (1)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "ץ",
+      "color": "#00A4C0",
+      "basis": "Colour used for this list/party in Hebrew Wikipedia Knesset and party articles (a convention of that encyclopedia, not an official party colour).",
+      "colourId": "tzomet",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%AA%D7%99%D7%9D_%D7%A2%D7%A9%D7%A8%D7%94",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#00A4C0|גבול=1px solid #A9A9A9}}[[מפלגת צומת|צומת]] (2)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "party": "agudat-yisrael",
+      "color": "#122D70",
+      "basis": "Colour used for this list/party in Hebrew Wikipedia Knesset and party articles (a convention of that encyclopedia, not an official party colour).",
+      "colourId": "agudat-yisrael",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%AA%D7%99%D7%9D_%D7%A2%D7%A9%D7%A8%D7%94",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#122D70|גבול=1px solid #A9A9A9}}[[אגודת ישראל]] (4)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "party": "shinui",
+      "color": "#2D4277",
+      "basis": "Hebrew Wikipedia uses #2D4277 for Shinui in the 10th–12th Knesset articles.",
+      "colourId": "shinui-1980s",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%AA%D7%99%D7%9D_%D7%A2%D7%A9%D7%A8%D7%94",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#2D4277|גבול=1px solid #A9A9A9}}[[מפלגת שינוי|שינוי]] (2)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "datasetRosterConflicts": []
+}
