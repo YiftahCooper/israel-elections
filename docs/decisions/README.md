@@ -33,6 +33,34 @@ is labelled. Suggested alternatives are not evidence of a past design discussion
 | [0042: K19 release with disclosed differences](0042-k19-release-with-disclosed-gazette-differences.md) | Release 2013 on the CEC final figures: both versions give exactly the same seats. |
 | [0050: K16–K17 progress without release](0050-k16-k17-verified-progress-without-release.md) | Keep 2003 and 2006 unavailable until rosters and documented discrepancies are resolved. |
 | [0051: K16–K17 allocation rules](0051-k16-k17-historical-allocation-evidence.md) | Check the 2003 and 2006 rules without trusting the archive folder's date. |
+| [0052](0052-k16-k17-national-and-locality-release-policy.md) | Release k16/k17 with explicit national source precedence and retained locality sums |
+| [0053](0053-k16-k17-candidate-review-and-release-limitations.md) | Publish verified rosters and explicit per-list transcription limitations |
+| [0054](0054-k16-k17-elected-roster-coverage.md) | Publish every elected rank for k16/k17 and check the official results names |
+| [0060](0060-k1-k7-primary-allocation-rules.md) | K1–K7: primary allocation clauses and explicit simulation limits |
+| [0061](0061-k1-k7-national-evidence-release-held.md) | K1–K7: reconcile the national gazettes, retain failures, withhold release |
+| [0062](0062-k1-k7-connected-list-search.md) | K1–K7: connected-list notices and bounded search limits |
+| [0063](0063-k1-connections-rosters-national-release.md) | K1 national release — sourced connections and reviewed candidate prefixes |
+| [0064](0064-k2-connected-list-notice-national-release.md) | K2 national release — sourced connections and reviewed candidate prefixes |
+| [0065](0065-k3-connected-list-notice-national-release.md) | K3 national release — sourced connections and reviewed candidate prefixes |
+| [0066](0066-k4-connected-lists-resolve-seat-gap.md) | K4 national release — sourced connections and reviewed candidate prefixes |
+| [0067](0067-k5-connected-list-notice-national-release.md) | K5 national release — sourced connections and reviewed candidate prefixes |
+| [0068](0068-k6-allocation-gap-remains-held.md) | K6 allocation discrepancy remains held |
+| [0069](0069-k7-rosters-national-release.md) | K7 national release — sourced connections and reviewed candidate prefixes |
+| [0069a](0069a-k6-corrected-connection-national-release.md) | K6 national release — correct the misread connection, retain the law |
+| [0070](0070-1973-rules-and-unfillable-seat-hold.md) | K8–K12: original Bader–Ofer text, and hold the unfillable-seat exception |
+| [0071](0071-k8-k12-national-evidence-release-holds.md) | K8–K12: retain reconciled national evidence without premature release |
+| [0072](0072-k8-k12-roster-release-standard.md) | K8–K12 release standard and remaining legal limitation |
+| [0073](0073-k9-candidate-cap-inference.md) | K9 candidate capacity: successful hypothesis, explicit legal uncertainty |
+| [0074](0074-k8-agreements-search-and-hold.md) | K8 remains held: no verified agreement notice |
+| [0075](0075-k8-k12-release-evidence.md) | K8–K12 release evidence and roster/seat tables |
+| [0076](0076-k9-ratz-release-and-k8-search.md) | K9 release: official Ratz opening membership; K8 agreement search remains held |
+| [0080](0080-k13-k15-national-votes-and-release-gates.md) | K13–K15: gazetted national inputs, exact seats, incomplete release gates |
+| [0081](0081-k13-k15-agreements-and-roster-progress.md) | K13–K15: agreement notices and bounded candidate transcription |
+| [0082](0082-k13-k15-rule-era-evidence.md) | K13–K15: 1.5% Bader–Ofer preset and point-in-time limits |
+| [0083](0083-k13-k15-elected-prefix-release-standard.md) | K13–K15: release on verified elected-prefix rosters |
+| [0084](0084-k13-k15-roster-transcription-and-reconciliation.md) | K13–K15: roster transcriptions and elected-name reconciliation |
+| [0085](0085-k13-missing-agreement-notice-release.md) | K13: release with the agreement-notice gap disclosed |
+| [0086](0086-k13-k15-release-verification.md) | K13–K15: released artifacts and verification |
+| [0087](0087-constituent-parties-blocs-and-colours.md) | Constituent parties, per-election blocs and per-election colours |
 
-Records 0020–0059 are grouped by election era; numbers in between are left free for that era.
-| [0087: Constituent parties, blocs and colours](0087-constituent-parties-blocs-and-colours.md) | Parties inside joint lists travel with their candidates; per-seat bloc membership; sourced per-election bloc schemes and colours. |
+Records 0020–0086 are grouped by election era; numbers in between are left free for that era. Records from 0087 on are product and design decisions.
