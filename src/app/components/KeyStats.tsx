@@ -50,8 +50,9 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
   const total = s.rules.seats;
   const majority = Math.floor(total / 2) + 1;
   const sums = s.blocs.map((b) => ({ b, n: s.lists.filter((l) => l.bloc === b.id).reduce((t, l) => t + (r.lists.find((x) => x.id === l.id)?.seats ?? 0), 0) }));
-  const other = total - sums.reduce((t, x) => t + x.n, 0);
+  const other = r.seatsAllocated - sums.reduce((t, x) => t + x.n, 0);
   if (!s.blocs.length) return null;
+  if (r.seatsAllocated === 0) return <p className="small muted" style={{ margin: 0 }}>{L('No seats are allocated in this scenario.', 'בתרחיש זה לא חולקו מושבים.')}</p>;
   return (
     <div>
       <div className="row small" style={{ justifyContent: 'space-between', marginBottom: 4 }}>

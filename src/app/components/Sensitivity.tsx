@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { goals, minimalChange, sweepThreshold, sweepVotes, type SweepSegment, type ThresholdSegment } from '../../engine/analysis.ts';
+import { goals, minimalChange, sweepThreshold, sweepVotes, type SweepResult, type ThresholdSegment } from '../../engine/analysis.ts';
 import { percentToRational } from '../../engine/rational.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import { toEngineInput, type Scenario } from '../../model/scenario.ts';
@@ -27,17 +27,18 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
   const thr0 = Number(r.thresholdVotes);
   const range = (x: { votes: number } | undefined) => x ? [Math.max(0, Math.round(Math.min(x.votes * 0.7, thr0 * 0.9))), Math.round(Math.max(x.votes * 1.3, thr0 * 1.1))] : [0, 0];
   const [from, setFrom] = useState(() => range(l)[0]); const [to, setTo] = useState(() => range(l)[1]);
-  const [segs, setSegs] = useState<SweepSegment[] | null>(null);
-  useEffect(() => setSegs(null), [s]); // results describe the scenario they were computed on
+  const [sweep, setSweep] = useState<SweepResult | null>(null);
+  useEffect(() => setSweep(null), [s]); // results describe the scenario they were computed on
+  const segs = sweep?.segments ?? null;
   const pick = (nid: string) => {
-    setId(nid); setSegs(null);
+    setId(nid); setSweep(null);
     const [a, b] = range(s.lists.find((y) => y.id === nid));
     setFrom(a); setTo(b);
   };
   const name = (lid: string) => listLabel(s.lists.find((x) => x.id === lid)!, lang);
   const run = () => {
     if (!l || to <= from) return toast('error', L('Choose a range with “to” above “from”.', 'בחרו טווח שבו "עד" גדול מ"מ".'));
-    setSegs(sweepVotes(toEngineInput(s), l.id, BigInt(from), BigInt(to), 400));
+    setSweep(sweepVotes(toEngineInput(s), l.id, BigInt(from), BigInt(to)));
   };
   const maxSeats = segs ? Math.max(1, ...segs.map((x) => x.seats[id] ?? 0)) : 1;
   return (
@@ -74,7 +75,7 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
               ))}</tbody>
             </table>
           </div>
-          <p className="small muted">{L('Located by sampling 400 points and bisecting each change to the exact vote; a change that reverts between two adjacent samples could be missed.', 'נמצא בדגימת 400 נקודות וחיפוש בינארי לכל שינוי עד הקול המדויק; שינוי שמתהפך בין שתי דגימות סמוכות עלול להיעלם.')}</p>
+          <p className="small muted">{sweep!.exact ? L('Every vote count in the range was calculated: the boundaries are exact.', 'כל מספר קולות בטווח חושב: הגבולות מדויקים.') : L(`The range is wide, so every ${fmtInt(sweep!.step)}th vote count was calculated and each change was then located to the exact vote. A change that reverses within ${fmtInt(sweep!.step)} votes could be missed — narrow the range to 50,000 votes or less for a complete result.`, `הטווח רחב, ולכן חושב כל ${fmtInt(sweep!.step)} קולות וכל שינוי אותר עד הקול המדויק. שינוי שמתהפך בתוך ${fmtInt(sweep!.step)} קולות עלול להיעלם — צמצמו את הטווח ל-50,000 קולות או פחות לתוצאה מלאה.`)}</p>
         </>
       )}
     </div>

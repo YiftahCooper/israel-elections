@@ -97,10 +97,12 @@ function Merge({ s }: { s: Scenario }) {
   // identical to the merge action's rounding
   const kept = Number.isFinite(ret) ? Number((BigInt(total) * BigInt(Math.round(ret * 100))) / 10000n) : 0;
   const defaultName = sel.map((l) => listLabel(l, lang)).join('–');
+  const defaultHe = sel.map((l) => l.shortHe).join('–'), defaultEn = sel.map((l) => l.shortEn ?? l.shortHe).join('–');
   const go = () => {
     const id = newId();
-    const ok = dispatchMany([{ type: 'merge', ids, newId: id, nameHe: nameHe || defaultName, letters: letters || sel[0]?.letters || '', color, retentionPct: ret, candidateOrder: order, nonRetained: 'abstain' },
-      { type: 'setListMeta', listId: id, patch: { shortEn: nameHe || defaultName } }]);
+    // a typed name is used in both languages; otherwise each language gets its own default
+    const ok = dispatchMany([{ type: 'merge', ids, newId: id, nameHe: nameHe || defaultHe, letters: letters || sel[0]?.letters || '', color, retentionPct: ret, candidateOrder: order, nonRetained: 'abstain' },
+      { type: 'setListMeta', listId: id, patch: { shortEn: nameHe || defaultEn } }]);
     if (ok) { setIds([]); setName(''); setLetters(''); setState({ selectedListId: id }); }
   };
   return (
@@ -156,11 +158,12 @@ function Split({ s }: { s: Scenario }) {
     const [ca, cb] = assign();
     const va = Math.round((l.votes * shareA) / 100);
     const a = newId(), b = newId() + 'b';
-    const nA = nameA || (effMode === 'party' ? parties[0] : `${listLabel(l, lang)} A`), nB = nameB || (effMode === 'party' ? parties.slice(1).join(' / ') : `${listLabel(l, lang)} B`);
-    if (dispatch({ type: 'split', id: l.id, parts: [
+    const nA = nameA || (effMode === 'party' ? parties[0] : `${l.shortHe} א`), nB = nameB || (effMode === 'party' ? parties.slice(1).join(' / ') : `${l.shortHe} ב`);
+    const eA = nameA || (effMode === 'party' ? parties[0] : `${l.shortEn ?? l.shortHe} A`), eB = nameB || (effMode === 'party' ? parties.slice(1).join(' / ') : `${l.shortEn ?? l.shortHe} B`);
+    if (dispatchMany([{ type: 'split', id: l.id, parts: [
       { newId: a, nameHe: nA, letters: l.letters, color: l.color, votes: va, candidateIds: ca },
       { newId: b, nameHe: nB, letters: `${l.letters}2`, color: '#8a8f99', votes: l.votes - va, candidateIds: cb },
-    ] })) { setId(''); setState({ selectedListId: a }); }
+    ] }, { type: 'setListMeta', listId: a, patch: { shortEn: eA } }, { type: 'setListMeta', listId: b, patch: { shortEn: eB } }])) { setId(''); setState({ selectedListId: a }); }
   };
   return (
     <div>

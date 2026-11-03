@@ -57,7 +57,7 @@ export function Delta({ v, suffix = '' }: { v: number; suffix?: string }) {
 export function Tile({ k, v, d, term, children }: { k: string; v: ReactNode; d?: ReactNode; term?: string; children?: ReactNode }) {
   return (
     <div className="tile">
-      <div className="k">{k}{(term || children) && <Info term={term}>{children}</Info>}</div>
+      <div className="k">{k}{(term || children) && <Info term={term} title={term ? undefined : k}>{children}</Info>}</div>
       <div className="v">{v}</div>
       {d && <div className="d">{d}</div>}
     </div>
@@ -130,7 +130,8 @@ export function VoteSlider({ l, hist, thr, onCommit }: { s?: unknown; l: { id: s
 export function TextField({ value, onCommit, label, placeholder }: { value: string; onCommit: (v: string) => void; label?: string; placeholder?: string }) {
   const [text, setText] = useState(value);
   useEffect(() => setText(value), [value]);
-  const commit = () => { if (text !== value) onCommit(text); };
+  // after committing, show the value actually in force (a rejected edit reverts)
+  const commit = () => { if (text !== value) onCommit(text); setText(value); };
   return <input type="text" aria-label={label} placeholder={placeholder} value={text} onChange={(e) => setText(e.target.value)} onBlur={commit}
     onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); if (e.key === 'Escape') setText(value); }} />;
 }

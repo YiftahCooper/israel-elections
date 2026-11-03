@@ -71,3 +71,26 @@ describe('import validation', () => {
     expect(problems.join(' ')).toMatch(/vote count/);
   });
 });
+
+describe('withdrawn-list accounting (independent review #1)', () => {
+  it('rejects vote edits on a withdrawn list and resets without double counting', () => {
+    const w = run(base, { type: 'setWithdrawn', listId: '26-מחל', withdrawn: true });
+    expect(() => run(w, { type: 'setVotes', listId: '26-מחל', votes: 5 })).toThrow(ActionError);
+    expect(() => run(w, { type: 'resetVotes', listId: '26-מחל' })).toThrow(ActionError);
+    expect(() => run(w, { type: 'transfer', from: '26-ב', to: '26-מחל', votes: 5 })).toThrow(ActionError);
+    const reset = run(w, { type: 'resetList', listId: '26-מחל' });
+    expect(reset.lists.find((l) => l.id === '26-מחל')!.votes).toBe(1_167_589);
+    expect([validVotes(reset), reset.invalid]).toEqual([validVotes(base), base.invalid]);
+  });
+});
+
+describe('lineage of added lists (independent review #7)', () => {
+  it('an added list compares with itself across scenarios', async () => {
+    const { compareAllocations } = await import('../src/engine/analysis.ts');
+    const a = run(base, { type: 'addList', newId: 'sim-new', nameHe: 'x', letters: 'x', color: '#000', votes: 100_000 });
+    const b = run(a, { type: 'setVotes', listId: 'sim-new', votes: 110_000 });
+    const g = compareAllocations(allocate(toEngineInput(a)), a.lists, allocate(toEngineInput(b)), b.lists).find((x) => x.aIds.includes('sim-new'))!;
+    expect(g.bIds).toEqual(['sim-new']);
+    expect([g.votesA, g.votesB]).toEqual([100_000n, 110_000n]);
+  });
+});

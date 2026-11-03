@@ -12,25 +12,49 @@ import { Info, Seg } from './ui.tsx';
 interface Row { id: string; seats: number; gain: number | null; lose: number | null; qualify: number | null }
 
 /** How close every list is to its next seat and to losing one — the "knife-edge" view. */
+// results per scenario and vote source, so revisiting the tab is instant
+const rowCache = new WeakMap<Scenario, Map<string, Row[]>>();
+
 export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
   const L = useL();
   const lang = useLang();
   const [kind, setKind] = useState<'proportional' | 'new'>('proportional');
-  const rows: Row[] = useMemo(() => {
+  const [rows, setRows] = useState<Row[]>([]);
+  const [progress, setProgress] = useState<{ done: number; total: number }>({ done: 0, total: 0 });
+  // Each figure is an exact search over the whole election (up to ~1 s each), so they are computed
+  // one at a time in the background and shown as they finish.
+  useEffect(() => {
+    const cached = rowCache.get(s)?.get(kind);
+    if (cached) { setRows(cached); setProgress({ done: cached.length, total: cached.length }); return; }
     const input = toEngineInput(s);
     const src = toVoteSource({ kind } as SourceChoice);
     const thr = Number(r.thresholdVotes);
-    return s.lists.filter((l) => !l.withdrawn && l.votes > 0).map((l): Row | null => {
+    const todo = s.lists.filter((l) => !l.withdrawn && l.votes > 0 && (r.lists.find((x) => x.id === l.id)!.qualified || l.votes >= thr * 0.5));
+    const out: Row[] = [];
+    let cancelled = false;
+    setRows([]); setProgress({ done: 0, total: todo.length });
+    const sortRows = (xs: Row[]) => [...xs].sort((a, b) => (b.seats - a.seats) || ((a.qualify ?? 0) - (b.qualify ?? 0)));
+    const step = (i: number) => {
+      if (cancelled) return;
+      if (i >= todo.length) {
+        const m = rowCache.get(s) ?? new Map(); m.set(kind, sortRows(out)); rowCache.set(s, m);
+        return;
+      }
+      const l = todo[i];
       const lr = r.lists.find((x) => x.id === l.id)!;
       if (!lr.qualified) {
-        if (l.votes < thr * 0.5) return null;
         const q = minimalChange(input, l.id, src, goals.qualify(l.id));
-        return { id: l.id, seats: 0, gain: null, lose: null, qualify: q.found ? Number(q.votes) : null };
+        out.push({ id: l.id, seats: 0, gain: null, lose: null, qualify: q.found ? Number(q.votes) : null });
+      } else {
+        const g = minimalChange(input, l.id, src, goals.seatGain(l.id));
+        const lo = minimalChange(input, l.id, src, lr.seats > 0 ? goals.seatLoss(l.id) : goals.disqualify(l.id), 'lose');
+        out.push({ id: l.id, seats: lr.seats, gain: g.found ? Number(g.votes) : null, lose: lo.found ? Number(lo.votes) - 1 : null, qualify: null });
       }
-      const g = minimalChange(input, l.id, src, goals.seatGain(l.id));
-      const lo = minimalChange(input, l.id, src, lr.seats > 0 ? goals.seatLoss(l.id) : goals.disqualify(l.id), 'lose');
-      return { id: l.id, seats: lr.seats, gain: g.found ? Number(g.votes) : null, lose: lo.found ? Number(lo.votes) - 1 : null, qualify: null };
-    }).filter((x): x is Row => x !== null).sort((a, b) => (b.seats - a.seats) || ((a.qualify ?? 0) - (b.qualify ?? 0)));
+      setRows(sortRows(out)); setProgress({ done: i + 1, total: todo.length });
+      setTimeout(() => step(i + 1), 0);
+    };
+    const t = setTimeout(() => step(0), 0);
+    return () => { cancelled = true; clearTimeout(t); };
   }, [s, r, kind]);
 
   const max = Math.max(1, ...rows.flatMap((x) => [x.gain ?? 0, x.lose ?? 0, x.qualify ?? 0]));
@@ -46,7 +70,8 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
         </p>
         <Seg label={L('Votes move', 'הקולות עוברים')} value={kind} onChange={setKind} options={[{ v: 'proportional', label: L('between lists', 'בין רשימות') }, { v: 'new', label: L('new / staying home', 'חדשים / נמנעים') }]} />
       </div>
-      {tightest.length > 0 && (
+      {progress.done < progress.total && <p className="small muted" aria-live="polite">{L(`Calculating exactly… ${progress.done} of ${progress.total} lists`, `מחשב במדויק… ${progress.done} מתוך ${progress.total} רשימות`)}</p>}
+      {tightest.length > 0 && progress.done === progress.total && (
         <div className="callout small" style={{ marginBottom: 10 }}>
           {L('Closest calls: ', 'הקרובים ביותר: ')}{tightest.map((x) => x.t === 'gain' ? L(`${nm(x.id)} is ${fmtInt(x.v)} votes from another seat`, `${nm(x.id)} במרחק ${fmtInt(x.v)} קולות ממנדט נוסף`) : L(`${nm(x.id)} would lose a seat after losing ${fmtInt(x.v + 1)} votes`, `${nm(x.id)} תאבד מנדט באובדן ${fmtInt(x.v + 1)} קולות`)).join(' · ')}
         </div>

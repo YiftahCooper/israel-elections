@@ -85,8 +85,9 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
           {step.st.tie && (
             <div className="callout small">
               {L('Exact tie between ', 'שוויון מדויק בין ')}{step.st.tie.tiedUnitIds.map(name).join(', ')}. {L('The law requires a lottery by the CEC.', 'החוק מחייב הגרלה של ועדת הבחירות.')}
+              {!step.st.tie.forced && <div><b>{L('Not yet decided — showing the first list.', 'טרם הוכרע — מוצגת הרשימה הראשונה.')}</b></div>}
               <div className="row" style={{ marginTop: 4 }}>
-                {L('Lottery winner:', 'זוכה בהגרלה:')} {step.st.tie.tiedUnitIds.map((u) => <button key={u} className={`btn small ${step.st.tie!.chosen === u ? 'primary' : ''}`} onClick={() => dispatch({ type: 'setLottery', key: step.st.tie!.key, winner: u })}>{name(u)}</button>)}
+                {L('Lottery winner:', 'זוכה בהגרלה:')} {step.st.tie.tiedUnitIds.map((u) => <button key={u} className={`btn small ${step.st.tie!.forced && step.st.tie!.chosen === u ? 'primary' : ''}`} onClick={() => dispatch({ type: 'setLottery', key: step.st.tie!.key, winner: u })}>{name(u)}</button>)}
               </div>
             </div>
           )}
@@ -117,7 +118,18 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
               <thead><tr><th>{L('List', 'רשימה')}</th><th className="n">{L('Votes', 'קולות')}</th><th className="n">{L('By pair quota', 'לפי מודד הצמד')}</th><th className="n">{L('Final', 'סופי')}</th></tr></thead>
               <tbody>{Object.keys(d.final).map((m) => <tr key={m}><td>{name(m)}</td><td className="n">{fmtInt(s.lists.find((x) => x.id === m)!.votes)}</td><td className="n">{d.initial[m]}</td><td className="n"><b>{d.final[m]}</b></td></tr>)}</tbody>
             </table>
-            {d.steps.map((st) => <p key={st.step} className="small">{L('Remaining pair seat', 'מנדט נותר בצמד')} {st.step}: {st.quotients.map((q) => `${name(q.unitId)} ${fmtInt(q.votes)}/${q.seats + 1} = ${fmtRat(q.value, 1)}`).join(' · ')} → <b>{name(st.winnerUnitId)}</b>{st.tie ? L(' (tie: lottery)', ' (שוויון: הגרלה)') : ''}</p>)}
+            {d.steps.map((st) => (
+              <div key={st.step} className="small" style={{ marginBottom: 6 }}>
+                {L('Remaining pair seat', 'מנדט נותר בצמד')} {st.step}: <bdi dir="ltr">{st.quotients.map((q) => `${name(q.unitId)} ${fmtInt(q.votes)}/${q.seats + 1} = ${fmtRat(q.value, 1)}`).join(' · ')}</bdi> → <b>{name(st.winnerUnitId)}</b>
+                {st.tie && (
+                  <div className="callout" style={{ marginTop: 4 }}>
+                    {L('Exact tie inside the pair: the law requires a CEC lottery.', 'שוויון מדויק בתוך הצמד: החוק מחייב הגרלה של ועדת הבחירות.')}{' '}
+                    {!st.tie.forced && <b>{L('Not yet decided — showing the first list.', 'טרם הוכרע — מוצגת הרשימה הראשונה.')}</b>}
+                    <div className="row" style={{ marginTop: 4 }}>{L('Lottery winner:', 'זוכה בהגרלה:')} {st.tie.tiedUnitIds.map((u) => <button key={u} className={`btn small ${st.tie!.forced && st.tie!.chosen === u ? 'primary' : ''}`} onClick={() => dispatch({ type: 'setLottery', key: st.tie!.key, winner: u })}>{name(u)}</button>)}</div>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         );
       })()}

@@ -134,7 +134,7 @@ function ShareTable({ s, r }: { s: Scenario; r: AllocationResult }) {
               <td className="n">{fmtInt(l.votes)}</td><td className="n">{fmtPct(l.votes, total, digits)}</td>
               <td className="n">{lr.qualified ? fmtPct(l.votes, r.qualifyingVotes, digits) : '—'}</td>
               <td className="n">{lr.seats}</td><td className="n">{fmtPct(lr.seats, s.rules.seats, digits)}</td>
-              <td className="n">{((lr.seats / s.rules.seats - l.votes / Number(total)) * 100).toFixed(digits)}</td>
+              <td className="n"><bdi dir="ltr">{(() => { const v = (lr.seats / s.rules.seats - l.votes / Number(total)) * 100; return `${v < 0 ? '−' : v > 0 ? '+' : ''}${Math.abs(v).toFixed(digits)}`; })()}</bdi></td>
             </tr>
           ); })}
           <tr><td>{L('Unrepresented votes', 'קולות שלא השתתפו')}</td><td className="n">{fmtInt(r.unrepresentedVotes)}</td><td className="n">{fmtPct(r.unrepresentedVotes, total, digits)}</td><td /><td className="n">0</td><td /><td /></tr>

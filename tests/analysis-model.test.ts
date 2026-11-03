@@ -50,7 +50,7 @@ describe('marginal votes (exact, verified at k and k−1)', () => {
 
 describe('sweeps', () => {
   it('vote sweep segments are contiguous with exact boundaries', () => {
-    const segs = sweepVotes(input, '25-מרצ', 140_000n, 200_000n, 120);
+    const { segments: segs } = sweepVotes(input, '25-מרצ', 140_000n, 200_000n, 120);
     expect(segs[0].from).toBe(140_000n);
     expect(segs.at(-1)!.to).toBe(200_000n);
     for (let i = 1; i < segs.length; i++) expect(segs[i].from).toBe(segs[i - 1].to + 1n);

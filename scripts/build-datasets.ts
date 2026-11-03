@@ -60,6 +60,27 @@ function sumRows(rows: Row[], letters: string[]) {
   return t;
 }
 
+/** Every locality row must equal the sum of its polling stations (votes per list and ballot totals).
+ *  Registered voters are not compared: envelope stations carry none. */
+function reconcileLocalities(label: string, loc: Row[], ballots: Row[], letters: string[]) {
+  const byCode = new Map<number, Row>();
+  for (const b of ballots) {
+    const t = byCode.get(b.code) ?? { committee: b.committee, code: b.code, name: b.name, registered: 0, votesCast: 0, invalid: 0, valid: 0, votes: Object.fromEntries(letters.map((L) => [L, 0])) };
+    t.votesCast += b.votesCast; t.invalid += b.invalid; t.valid += b.valid;
+    for (const L of letters) t.votes[L] += b.votes[L];
+    byCode.set(b.code, t);
+  }
+  const seen = new Set<number>();
+  for (const r of loc) {
+    const b = byCode.get(r.code);
+    assert(b, `${label}: locality ${r.code} (${r.name}) has no polling stations`);
+    seen.add(r.code);
+    assert(b.votesCast === r.votesCast && b.invalid === r.invalid && b.valid === r.valid, `${label}: locality ${r.code} (${r.name}) totals differ from its polling stations`);
+    for (const L of letters) assert(b.votes[L] === r.votes[L], `${label}: locality ${r.code} (${r.name}), list ${L}: ${r.votes[L]} ≠ polling stations ${b.votes[L]}`);
+  }
+  for (const code of byCode.keys()) assert(seen.has(code), `${label}: polling stations for locality ${code} have no locality row`);
+}
+
 function localityDataset(id: 'k25' | 'k26', rows: Row[], lists: ListRecord[]): LocalityDataset {
   return {
     schemaVersion: DATASET_SCHEMA_VERSION, id, listIds: lists.map((l) => l.id),
@@ -107,6 +128,7 @@ async function buildK25() {
     assert(balTot.votes[n.letters] === n.votes, `k25 ${n.letters}: ballots ${balTot.votes[n.letters]} ≠ national ${n.votes}`);
   }
   assert(locTot.valid === valid && locTot.invalid === invalid && locTot.votesCast === votesCast && locTot.registered === registered, 'k25 locality totals ≠ national totals');
+  reconcileLocalities('k25', locRows, ballotRows, letters);
 
   const { lists: gaz, audit } = await parseK25Gazette(join(RAW, 'k25/yp10852-candidates.pdf'));
   const gazByLetters = new Map(gaz.map((g) => [g.letters, g]));
@@ -240,6 +262,7 @@ async function buildK26() {
   const balTot = sumRows(ballotRows, letters);
   for (const L of letters) assert(locTot.votes[L] === balTot.votes[L], `k26 ${L}: localities ≠ ballots`);
   assert(locTot.valid === balTot.valid && locTot.votesCast === balTot.votesCast && locTot.registered === balTot.registered, 'k26 ballot totals ≠ locality totals');
+  reconcileLocalities('k26', locRows, ballotRows, letters);
 
   const pages = parseGovilPages();
   // a ballot image whose alt text omits the letters ("תמונת פתק <name>") is resolved by elimination

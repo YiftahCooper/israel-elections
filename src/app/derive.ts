@@ -1,7 +1,7 @@
 // Memoised derivations: every displayed figure comes from allocate(scenario).
 import type { ElectionDataset } from '../data/schema.ts';
 import { allocate } from '../engine/allocate.ts';
-import type { AllocationResult } from '../engine/types.ts';
+import type { AllocationResult, EngineWarning } from '../engine/types.ts';
 import { scenarioFromDataset, toEngineInput, validVotes, votesCast, type Scenario, type SimList } from '../model/scenario.ts';
 import type { Lang } from './i18n.ts';
 
@@ -40,3 +40,23 @@ export function scenarioIssues(s: Scenario, r: AllocationResult): ScenarioIssue[
 }
 
 export const electedOf = (l: SimList, seats: number) => l.candidates.slice(0, seats);
+
+/** Engine warnings in the interface language (the engine's own messages are English diagnostics). */
+export function warningText(w: EngineWarning, s: Scenario, lang: Lang): string {
+  const he = lang === 'he';
+  const nm = (id: string) => { const l = s.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : id; };
+  const d = (w.data ?? {}) as Record<string, unknown>;
+  switch (w.code) {
+    case 'lottery-required': {
+      const ids = (d.ids as string[] | undefined) ?? [];
+      const names = ids.map((u) => { const a = s.agreements.find((x) => x.id === u); return a ? a.members.map(nm).join('+') : nm(u); }).join(he ? ' ו' : ' and ');
+      return he ? `שוויון מדויק בין ${names}: החוק מחייב הגרלה של ועדת הבחירות. בחרו את תוצאת ההגרלה בלשונית "איך חולקו המנדטים".` : `Exact tie between ${names}: the law requires a CEC lottery. Choose the outcome in the “How the seats were allocated” tab.`;
+    }
+    case 'no-qualifying-lists': return he ? 'אף רשימה לא עברה את אחוז החסימה, ולכן אי אפשר לחלק מושבים.' : 'No list passed the threshold, so no seats can be allocated.';
+    case 'zero-quota': return he ? 'יש פחות קולות משתתפים ממושבים, ולכן המודד השלם הוא 0; נעשה שימוש במודד המדויק (לא מעוגל).' : 'There are fewer qualifying votes than seats, so the whole-number quota is 0; the exact (unrounded) quota is used.';
+    case 'quota-over-allocation': return he ? 'עם מספרי קולות קטנים כל כך, עיגול המודד כלפי מטה נותן יותר מושבים מהקיים. החוק אינו מתייחס למצב זה; נעשה שימוש במודד המדויק.' : 'With vote totals this small, rounding the quota down gives more seats than exist. The law does not cover this; the exact quota is used.';
+    case 'seats-unallocatable': return he ? 'לא ניתן היה לחלק את כל המושבים: אף רשימה אינה זכאית למושב נוסף לפי הכללים הנבחרים.' : 'Not every seat could be allocated: no list is eligible for a further seat under the chosen rules.';
+    case 'internal-loss': return he ? `${nm(String(d.list))} מקבלת פחות מושבים ממה שהמודד השלם שלה לבדה היה נותן, כי סעיף 82(ב) מחלק מחדש את מושבי הצמד מתחילה.` : `${nm(String(d.list))} ends with fewer seats than its own whole quota, because section 82(b) re-divides the pair's seats from scratch.`;
+    case 'agreement-rule-departure': return he ? 'הסכם של יותר משתי רשימות אינו מותר לפי סעיף 67(א); הוא מחושב כאן ככלל ניסיוני.' : 'An agreement of more than two lists is not allowed by section 67(a); it is computed here as an experimental rule.';
+  }
+}

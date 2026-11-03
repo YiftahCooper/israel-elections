@@ -238,3 +238,6 @@ details > summary { cursor: pointer; }
 
 .sec-row > span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex-wrap: nowrap; }
 .sec-row .swatch { flex: none; }
+
+#detail-col { scroll-margin-top: 112px; }
+@media (max-width: 760px) { #detail-col { scroll-margin-top: 8px; } }

@@ -9,7 +9,7 @@ export type SourceChoice = { kind: 'new' } | { kind: 'transfer'; listId: string 
 export const toVoteSource = (c: SourceChoice): VoteSource => (c.kind === 'proportional' ? { kind: 'proportional', listIds: [] } : c);
 
 /** The action that changes `l` by `delta` votes, taking/returning them per `src`. */
-export function deltaAction(s: Scenario, l: SimList, delta: number, src: SourceChoice): Action | null {
+export function deltaAction(s: Scenario, l: SimList, delta: number, src: SourceChoice, fallbackShares?: Record<string, number>): Action | null {
   if (!Number.isFinite(delta) || delta === 0) return null;
   delta = Math.round(delta);
   if (src.kind === 'new') return { type: 'setVotes', listId: l.id, votes: Math.max(0, l.votes + delta) };
@@ -19,10 +19,16 @@ export function deltaAction(s: Scenario, l: SimList, delta: number, src: SourceC
     return delta > 0 ? { type: 'transfer', from: other.id, to: l.id, votes: delta } : { type: 'transfer', from: l.id, to: other.id, votes: -delta };
   }
   const others = s.lists.filter((x) => x.id !== l.id && !x.withdrawn && x.votes > 0);
-  if (!others.length) return { type: 'setVotes', listId: l.id, votes: Math.max(0, l.votes + delta) };
-  return delta > 0
-    ? { type: 'redistribute', from: others.map((x) => x.id), to: [{ listId: l.id, share: 1 }], votes: delta }
-    : { type: 'redistribute', from: [l.id], to: others.map((x) => ({ listId: x.id, share: x.votes })), votes: -delta };
+  if (delta > 0) {
+    if (!others.length) return { type: 'setVotes', listId: l.id, votes: l.votes + delta };
+    return { type: 'redistribute', from: others.map((x) => x.id), to: [{ listId: l.id, share: 1 }], votes: delta };
+  }
+  // giving votes back: in proportion to the other lists' votes, or — if they all have none — to the
+  // supplied fallback shares (e.g. their historical votes), so the national total stays fixed
+  let to = others.map((x) => ({ listId: x.id, share: x.votes }));
+  if (!to.length && fallbackShares) to = s.lists.filter((x) => x.id !== l.id && !x.withdrawn && (fallbackShares[x.id] ?? 0) > 0).map((x) => ({ listId: x.id, share: fallbackShares[x.id] }));
+  if (!to.length) return { type: 'setVotes', listId: l.id, votes: Math.max(0, l.votes + delta) };
+  return { type: 'redistribute', from: [l.id], to, votes: -delta };
 }
 
 /** Largest change the source can supply (for gains); losses are limited by the list's own votes. */

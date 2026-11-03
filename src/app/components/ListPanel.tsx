@@ -46,11 +46,12 @@ export function ListPanel({ s, r, ds, base, baseR }: { s: Scenario; r: Allocatio
   const baseList = base.lists.find((b) => b.id === l.id) ?? null;
   const listChanged = !!baseList && JSON.stringify(baseList) !== JSON.stringify(l);
   const pctValid = r.totalValid > 0n ? (l.votes / Number(r.totalValid)) * 100 : 0;
+  const histShares = Object.fromEntries(base.lists.map((b) => [b.id, b.votes]));
   /** every edit of this list's votes goes through the shared source setting */
   const editTo = (target: number) => {
     const t = clampTarget(s, l, target, src);
     if (t !== Math.round(target)) toast('info', L(`Limited to ${fmtInt(t)}: the chosen source cannot supply more votes.`, `הוגבל ל-${fmtInt(t)}: במקור שנבחר אין יותר קולות.`));
-    const a = deltaAction(s, l, t - l.votes, src);
+    const a = deltaAction(s, l, t - l.votes, src, histShares);
     if (a) dispatch(a);
   };
   const histSeats = baseList ? baseR.lists.find((x) => x.id === l.id)!.seats : l.originIds.reduce((t, o) => t + (baseR.lists.find((x) => x.id === o)?.seats ?? 0), 0);
@@ -86,6 +87,8 @@ export function ListPanel({ s, r, ds, base, baseR }: { s: Scenario; r: Allocatio
         </div>
 
         <div className="section-title">{L('Votes', 'קולות')}</div>
+        {l.withdrawn && <p className="small callout">{L(`This list has withdrawn: its ${fmtInt(l.heldVotes ?? 0)} ballots count as invalid. Reinstate it (Advanced → identity) to change its votes.`, `הרשימה פרשה: ${fmtInt(l.heldVotes ?? 0)} הפתקים שלה נחשבים פסולים. החזירו אותה (מתקדם ← זהות) כדי לשנות את קולותיה.`)}</p>}
+        <fieldset disabled={l.withdrawn} style={{ border: 0, padding: 0, margin: 0, minWidth: 0 }}>
         {advanced ? <SourcePicker s={s} l={l} /> : <p className="small ink2" style={{ margin: '0 0 4px' }}>{L('Changes are balanced by the other parties in proportion, so turnout stays the same. (Advanced mode lets you choose other ways.)', 'השינויים מאוזנים על ידי שאר המפלגות באופן יחסי, כך שההצבעה נשארת זהה. (במצב מתקדם אפשר לבחור דרכים אחרות.)')}</p>}
         <div className="row" style={{ marginTop: 8 }}>
           <NumberInput value={l.votes} label={L('Votes', 'קולות')} width={130} onCommit={(v) => editTo(v)} />
@@ -102,7 +105,7 @@ export function ListPanel({ s, r, ds, base, baseR }: { s: Scenario; r: Allocatio
         <div className="row" style={{ marginTop: 4 }}>
           {baseList && l.votes !== baseList.votes && <button className="btn small" onClick={() => editTo(baseList.votes)} title={L('The difference is balanced as chosen above.', 'ההפרש מאוזן כפי שנבחר למעלה.')}>{L(`Reset votes to ${fmtInt(baseList.votes)}`, `איפוס הקולות ל-${fmtInt(baseList.votes)}`)}</button>}
           {baseList && listChanged && <button className="btn small" onClick={() => {
-            const a = deltaAction(s, l, clampTarget(s, l, baseList.votes, src) - l.votes, src);
+            const a = deltaAction(s, l, clampTarget(s, l, baseList.votes, src) - l.votes, src, histShares);
             dispatchMany([...(a ? [a] : []), { type: 'resetList', listId: l.id }]);
           }}>{L('Reset everything about this list', 'איפוס כל פרטי הרשימה')}</button>}
         </div>
@@ -111,9 +114,9 @@ export function ListPanel({ s, r, ds, base, baseR }: { s: Scenario; r: Allocatio
           {lr.qualified && <><span>{L('Share of qualifying votes', 'מהקולות המשתתפים')} <Info term="qualifying" /></span><span>{fmtPct(l.votes, r.qualifyingVotes, digits)}</span></>}
           {advanced && <><span>{L('Share of all ballots cast', 'מכלל המצביעים')}</span><span>{fmtPct(l.votes, votesCast(s), digits)}</span>
           <span>{L('Share of registered voters', 'מבעלי זכות הבחירה')}</span><span>{fmtPct(l.votes, s.registered, digits)}</span></>}
-          <span>{L('Distance to threshold', 'מרחק מאחוז החסימה')} <Info term="threshold" /></span><span dir="ltr" className={l.votes >= Number(r.thresholdVotes) ? 'up' : 'down'}>{l.votes >= Number(r.thresholdVotes) ? '+' : '−'}{fmtInt(Math.abs(l.votes - Number(r.thresholdVotes)))}</span>
+          <span>{L('Distance to threshold', 'מרחק מאחוז החסימה')} <Info term="threshold" /></span><span className={l.votes >= Number(r.thresholdVotes) ? 'up' : 'down'}><bdi dir="ltr">{l.votes >= Number(r.thresholdVotes) ? '+' : '−'}{fmtInt(Math.abs(l.votes - Number(r.thresholdVotes)))}</bdi></span>
           {lr.qualified && advanced && <>
-            <span>{L('Whole-quota seats', 'מנדטים במודד')}</span><span>{lr.initialSeats} <span className="muted" dir="ltr">= ⌊{fmtInt(l.votes)} ÷ {fmtRat(r.quota, 0)}⌋</span></span>
+            <span>{L('Whole-quota seats', 'מנדטים במודד')}</span><span><bdi dir="ltr"><span className="muted">⌊{fmtInt(l.votes)} ÷ {fmtRat(r.quota, 0)}⌋ =</span> {lr.initialSeats}</bdi></span>
             <span>{L('Remainder-stage seats', 'מנדטים מעודפים')}</span><span>{lr.seats - lr.initialSeats}</span>
             <span>{L('Votes per seat won', 'קולות למנדט')}</span><span>{lr.seats ? fmtInt(Math.round(l.votes / lr.seats)) : '—'}</span>
             {nextQ && <><span>{unit?.isAgreement ? L('Pair’s next-seat quotient', 'מודד הצמד למנדט הבא') : L('Next-seat quotient', 'מודד רשימה למנדט הבא')} <Info term="listquota" /></span><span title={fmtFrac(nextQ)}>{fmtRat(nextQ, 1)}</span></>}
@@ -122,6 +125,7 @@ export function ListPanel({ s, r, ds, base, baseR }: { s: Scenario; r: Allocatio
         </div>
 
         <div style={{ marginTop: 10 }}><VoteTools s={s} r={r} l={l} /></div>
+        </fieldset>
 
         <hr />
         <div className="section-title row">{L('Surplus-vote agreement', 'הסכם עודפים')} <Info term="surplus" /></div>

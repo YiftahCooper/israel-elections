@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { allocationOf, baselineOf, scenarioIssues } from './derive.ts';
+import { allocationOf, baselineOf, scenarioIssues, warningText } from './derive.ts';
 import { LangContext, useL } from './i18n.ts';
 import { dispatch, openElection, readSharedFromHash, redo, setState, undo, useStore } from './store.ts';
 import { Charts } from './components/Charts.tsx';
@@ -96,7 +96,7 @@ function Shell() {
         {s.mode === 'experimental' && <div className="banner info" role="status">{L('Experimental rules: this is an alternative electoral system, not a legally possible Israeli result.', 'כללים ניסיוניים: זוהי שיטת בחירות חלופית ולא תוצאה אפשרית לפי החוק בישראל.')} <button className="btn small" onClick={() => dispatch({ type: 'setMode', mode: 'historical' })}>{L('Back to the real rules', 'חזרה לכללים האמיתיים')}</button></div>}
         {notice && <div className="banner info" role="status">{notice} <button className="btn small ghost" onClick={() => setState({ notice: null })}>✕</button></div>}
         {issues.map((x, i) => <div key={i} className={`banner ${x.level === 'error' ? 'err' : 'warn'}`} role="alert">{lang === 'he' ? x.he : x.en}</div>)}
-        {r.warnings.filter((w) => w.code !== 'internal-loss').map((w, i) => <div key={`w${i}`} className="banner warn" role="alert">{w.message}</div>)}
+        {r.warnings.filter((w) => w.code !== 'internal-loss').map((w, i) => <div key={`w${i}`} className="banner warn" role="alert">{warningText(w, s, lang)}</div>)}
       </div>
       <main>
         <div className="main">

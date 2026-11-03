@@ -31,6 +31,14 @@ const listById = (s: Scenario, id: string) => {
   return l;
 };
 
+/** Votes of a withdrawn list are held as invalid ballots; editing them would double-count on reinstatement. */
+const notWithdrawn = (s: Scenario, ...ids: string[]) => {
+  for (const id of ids) {
+    const l = s.lists.find((x) => x.id === id);
+    need(!l?.withdrawn, 'withdrawn', `${l?.shortHe ?? id} has withdrawn: reinstate it before changing its votes.`);
+  }
+};
+
 const replaceList = (s: Scenario, id: string, f: (l: SimList) => SimList): Scenario => ({ ...s, lists: s.lists.map((l) => (l.id === id ? f(l) : l)) });
 
 function checkAgreements(s: Scenario) {
@@ -61,6 +69,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
   switch (action.type) {
     case 'setVotes':
       need(isWhole(action.votes), 'votes', 'Votes must be a whole number ≥ 0.');
+      notWithdrawn(s, action.listId);
       s = replaceList(s, action.listId, (l) => ({ ...l, votes: action.votes }));
       listById(s, action.listId);
       break;
@@ -68,6 +77,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       need(isWhole(action.votes), 'votes', 'Votes must be a whole number ≥ 0.');
       need(action.from !== action.to, 'transfer-self', 'Choose two different lists.');
       const from = listById(s, action.from); listById(s, action.to);
+      notWithdrawn(s, action.from, action.to);
       need(from.votes >= action.votes, 'transfer-exceeds', `${from.shortHe} has only ${from.votes.toLocaleString()} votes.`);
       s = replaceList(s, action.from, (l) => ({ ...l, votes: l.votes - action.votes }));
       s = replaceList(s, action.to, (l) => ({ ...l, votes: l.votes + action.votes }));
@@ -76,6 +86,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
     case 'addVoters':
       need(isWhole(action.invalid), 'votes', 'Invalid ballots must be a whole number ≥ 0.');
       for (const a of action.allocations) { need(isWhole(a.votes), 'votes', 'Votes must be whole numbers ≥ 0.'); listById(s, a.listId); }
+      notWithdrawn(s, ...action.allocations.filter((a) => a.votes > 0).map((a) => a.listId));
       for (const a of action.allocations) s = replaceList(s, a.listId, (l) => ({ ...l, votes: l.votes + a.votes }));
       s = { ...s, invalid: s.invalid + action.invalid };
       break;
@@ -85,6 +96,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       need(action.to.length > 0 && action.to.reduce((t, x) => t + Math.max(0, x.share), 0) > 0, 'redistribute', 'Choose at least one list to receive the votes.');
       need(!action.to.some((t) => action.from.includes(t.listId)), 'redistribute', 'A list cannot both give and receive votes.');
       const sources = action.from.map((id) => listById(s, id));
+      notWithdrawn(s, ...action.from, ...action.to.map((t) => t.listId));
       const pool = sources.reduce((t, l) => t + l.votes, 0);
       need(pool >= action.votes, 'transfer-exceeds', `The selected lists hold only ${pool.toLocaleString()} votes.`);
       const take = apportion(action.votes, sources.map((l) => l.votes));
@@ -152,7 +164,8 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
     case 'addList':
       need(isWhole(action.votes), 'votes', 'Votes must be a whole number ≥ 0.');
       need(!s.lists.some((l) => l.id === action.newId), 'duplicate-id', 'List id already exists.');
-      s = { ...s, lists: [...s.lists, { id: action.newId, originIds: [], letters: action.letters, nameHe: action.nameHe, shortHe: action.nameHe, shortEn: null, color: action.color, bloc: null, votes: action.votes, withdrawn: false, candidates: [], sponsorsHe: '' }] };
+      // a new list is its own lineage, so comparisons and later merges/splits can follow it
+      s = { ...s, lists: [...s.lists, { id: action.newId, originIds: [action.newId], letters: action.letters, nameHe: action.nameHe, shortHe: action.nameHe, shortEn: null, color: action.color, bloc: null, votes: action.votes, withdrawn: false, candidates: [], sponsorsHe: '' }] };
       break;
     case 'removeList':
       listById(s, action.listId);
@@ -226,6 +239,9 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       break;
     }
     case 'resetList': {
+      // first return any votes held as invalid while the list was withdrawn
+      const cur = s.lists.find((l) => l.id === action.listId);
+      if (cur?.withdrawn && cur.heldVotes) s = { ...s, invalid: Math.max(0, s.invalid - cur.heldVotes) };
       const base = ctx.base ? baseList(action.listId) : action.base ?? null;
       if (base) s = s.lists.some((l) => l.id === action.listId) ? replaceList(s, action.listId, () => base) : { ...s, lists: [...s.lists, base] };
       else s = pruneAgreements({ ...s, lists: s.lists.filter((l) => l.id !== action.listId) });
@@ -235,6 +251,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       const b = baseList(action.listId);
       need(b, 'no-base', 'This list has no historical value to reset to.');
       listById(s, action.listId);
+      notWithdrawn(s, action.listId);
       s = replaceList(s, action.listId, (l) => ({ ...l, votes: b!.votes }));
       break;
     }
