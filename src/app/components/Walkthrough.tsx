@@ -13,7 +13,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
   const L = useL();
   const lang = useLang();
   const digits = useStore((st) => st.digits);
-  const advanced = useStore((st) => st.level === 'advanced');
+  const advanced = useStore((st) => st.level === 'expert');
   const steps: Step[] = useMemo(() => [
     { kind: 'threshold' }, { kind: 'quota' }, { kind: 'initial' },
     ...r.remainderSteps.map((st) => ({ kind: 'remainder' as const, st })),

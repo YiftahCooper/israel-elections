@@ -212,7 +212,7 @@ function AddList({ s }: { s: Scenario }) {
         <label className="field">{L('Votes (new voters)', 'קולות (מצביעים חדשים)')}<NumberInput value={votes} onCommit={setVotes} label={L('Votes', 'קולות')} /></label>
       </div>
       <button className="btn primary" style={{ marginTop: 6 }} disabled={!nameHe} onClick={() => { const id = newId(); if (dispatch({ type: 'addList', newId: id, nameHe, letters, color: '#5f9ea0', votes })) { setName(''); setLetters(''); setState({ selectedListId: id }); } }}>{L('Add list', 'הוספה')}</button>
-      <p className="small muted">{L('A new list starts with no candidates; add them in the list panel (Advanced). Move votes to it with the vote tools.', 'רשימה חדשה מתחילה ללא מועמדים; הוסיפו אותם בחלונית הרשימה (מתקדם).')}</p>
+      <p className="small muted">{L('A new list starts with no candidates; add them in the list panel (Expert). Move votes to it with the vote tools.', 'רשימה חדשה מתחילה ללא מועמדים; הוסיפו אותם בחלונית הרשימה (מומחה).')}</p>
     </div>
   );
 }

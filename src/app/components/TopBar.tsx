@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import type { ElectionDataset, ElectionId } from '../../data/schema.ts';
+import type { ElectionDataset, ElectionId, ElectionIndexEntry } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
@@ -7,12 +7,24 @@ import { csvEscape, download } from '../format.ts';
 import { duplicateCurrent, getState, importScenarioJson, openElection, redo, resetAll, saveCurrent, setState, shareLink, toast, undo, useStore } from '../store.ts';
 import { Seg } from './ui.tsx';
 
+const MONTHS_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const MONTHS_HE = ['ינו׳', 'פבר׳', 'מרץ', 'אפר׳', 'מאי', 'יוני', 'יולי', 'אוג׳', 'ספט׳', 'אוק׳', 'נוב׳', 'דצמ׳'];
+const ordinalEn = (n: number) => `${n}${n % 100 >= 11 && n % 100 <= 13 ? 'th' : ['th', 'st', 'nd', 'rd'][n % 10] ?? 'th'}`;
+/** "2026 · 26th"; the month is added when two elections fall in the same year (2019). */
+export function electionLabel(e: ElectionIndexEntry, all: ElectionIndexEntry[], lang: 'he' | 'en') {
+  const year = e.date.slice(0, 4);
+  const month = Number(e.date.slice(5, 7)) - 1;
+  const when = all.filter((x) => x.date.slice(0, 4) === year).length > 1 ? `${(lang === 'he' ? MONTHS_HE : MONTHS_EN)[month]} ${year}` : year;
+  return lang === 'he' ? `${when} · הכנסת ה-${e.knesset}` : `${when} · ${ordinalEn(e.knesset)} Knesset`;
+}
+
 const fileName = (n: string) => (n || 'scenario').replace(/[^\p{L}\p{N}]+/gu, '_').replace(/^_+|_+$/g, '').slice(0, 60) || 'scenario';
 
 export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationResult | null; ds: ElectionDataset | undefined; baseR: AllocationResult | null }) {
   const L = useL();
   const lang = useLang();
   const electionId = useStore((st) => st.electionId);
+  const elections = useStore((st) => st.elections);
   const theme = useStore((st) => st.theme);
   const level = useStore((st) => st.level);
   const layout = useStore((st) => st.layout);
@@ -34,15 +46,18 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
   return (
     <div className="topbar">
       <div className="brand">{L('Israeli Elections Explorer', 'סייר הבחירות לכנסת')}<small>{L('Exact Bader–Ofer simulator', 'סימולטור מדויק בשיטת בדר–עופר')}</small></div>
-      <Seg label={L('Election', 'בחירות')} value={electionId} onChange={(v: ElectionId) => openElection(v)} options={[{ v: 'k26', label: L('2026 · 26th', '2026 · ה-26') }, { v: 'k25', label: L('2022 · 25th', '2022 · ה-25') }]} />
-      {s && (
+      <select aria-label={L('Election', 'בחירות')} value={electionId} onChange={(e) => openElection(e.target.value as ElectionId)} style={{ fontWeight: 600 }}>
+        {elections.map((e) => <option key={e.id} value={e.id} disabled={!e.available}>{electionLabel(e, elections, lang)}{e.available ? '' : L(' — not yet available', ' — עדיין לא זמין')}</option>)}
+      </select>
+      {s && level !== 'simple' && (
         <input type="text" value={s.name} placeholder={L('Untitled scenario', 'תרחיש ללא שם')} aria-label={L('Scenario name', 'שם התרחיש')} style={{ width: 170 }}
           onChange={(e) => setState({ scenario: { ...s, name: e.target.value } })} />
       )}
-      {s && (s.mode === 'experimental' ? <span className="chip exp" title={L('Electoral rules may differ from Israeli law', 'הכללים עשויים להיות שונים מהחוק')}>{L('Experimental rules', 'כללים ניסיוניים')}</span> : <span className="chip ok">{L('Historical rules', 'כללים היסטוריים')}</span>)}
+      {s && level !== 'simple' && (s.mode === 'experimental' ? <span className="chip exp" title={L('Electoral rules may differ from Israeli law', 'הכללים עשויים להיות שונים מהחוק')}>{L('Experimental rules', 'כללים ניסיוניים')}</span> : <span className="chip ok">{L('Historical rules', 'כללים היסטוריים')}</span>)}
       <button className="btn small" onClick={undo} disabled={!canUndo} title="Ctrl+Z">↶ {L('Undo', 'ביטול')}</button>
-      <button className="btn small" onClick={redo} disabled={!canRedo} title="Ctrl+Y">↷ {L('Redo', 'חזרה')}</button>
-      <button className="btn small" onClick={() => { if (!s?.log.length || confirm(L('Reset the whole election to the historical result? (Undo can restore it.)', 'לאפס את כל הבחירות לתוצאה ההיסטורית? (ניתן לבטל)'))) resetAll(); }} disabled={!s?.log.length}>{L('Reset all', 'איפוס')}</button>
+      {level !== 'simple' && <button className="btn small" onClick={redo} disabled={!canRedo} title="Ctrl+Y">↷ {L('Redo', 'חזרה')}</button>}
+      <button className="btn small" onClick={() => { if (!s?.log.length || confirm(L('Reset the whole election to the historical result? (Undo can restore it.)', 'לאפס את כל הבחירות לתוצאה ההיסטורית? (ניתן לבטל)'))) resetAll(); }} disabled={!s?.log.length}>{level === 'simple' ? L('Start over', 'התחלה מחדש') : L('Reset all', 'איפוס')}</button>
+      {level !== 'simple' && <>
       <button className="btn small" onClick={() => { if (saveCurrent(s?.name || undefined)) toast('info', L('Saved in this browser.', 'נשמר בדפדפן זה.')); }} disabled={!s}>{L('Save', 'שמירה')}</button>
       <div style={{ position: 'relative' }}>
         <button className="btn small" aria-expanded={menu} onClick={() => setMenu((m) => !m)}>{L('Scenarios', 'תרחישים')} ▾</button>
@@ -62,7 +77,7 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
             {saved.length === 0 && <p className="small muted">{L('Nothing saved yet.', 'אין עדיין.')}</p>}
             {saved.map((x) => (
               <div key={x.id} className="row small" style={{ justifyContent: 'space-between' }}>
-                <button className="btn small ghost" onClick={() => { openElection(x.electionId, { name: x.name, log: x.log, baseBuiltAt: x.baseBuiltAt }).then(() => setState((st) => ({ scenario: st.scenario ? { ...st.scenario, id: x.id } : null }))); setMenu(false); }}>{x.name} <span className="muted">({x.electionId === 'k26' ? '2026' : '2022'})</span></button>
+                <button className="btn small ghost" onClick={() => { openElection(x.electionId, { name: x.name, log: x.log, baseBuiltAt: x.baseBuiltAt }).then(() => setState((st) => ({ scenario: st.scenario ? { ...st.scenario, id: x.id } : null }))); setMenu(false); }}>{x.name} <span className="muted">({elections.find((e) => e.id === x.electionId)?.date.slice(0, 4) ?? x.electionId})</span></button>
                 <span>
                   <button className="btn small ghost" onClick={() => { setState({ compareWith: x.id }); setMenu(false); }} disabled={x.electionId !== electionId || x.id === s?.id}>{L('compare', 'השוואה')}</button>
                   <button className="btn small ghost danger" aria-label={L('Delete', 'מחיקה')} onClick={() => setState((st) => ({ saved: st.saved.filter((y) => y.id !== x.id) }))}>✕</button>
@@ -82,14 +97,15 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
           e.target.value = ''; setMenu(false);
         }} />
       </div>
+      </>}
       <span className="spacer" />
-      {level === 'advanced' && <><Seg label={L('Chamber layout', 'פריסה')} value={layout} onChange={(v) => setState({ layout: v })} options={[{ v: 'hemicycle', label: L('Arc', 'קשת') }, { v: 'blocks', label: L('Blocks', 'גושים') }]} />
+      {level === 'expert' && <><Seg label={L('Chamber layout', 'פריסה')} value={layout} onChange={(v) => setState({ layout: v })} options={[{ v: 'hemicycle', label: L('Arc', 'קשת') }, { v: 'blocks', label: L('Blocks', 'גושים') }]} />
       <select aria-label={L('Colour seats by', 'צביעת מושבים לפי')} value={colorBy} onChange={(e) => setState({ colorBy: e.target.value as 'list' | 'bloc' | 'party' })}>
         <option value="list">{L('Colour: list', 'צבע: רשימה')}</option>
         <option value="bloc">{L('Colour: bloc', 'צבע: גוש')}</option>
         <option value="party">{L('Colour: constituent party', 'צבע: מפלגה מרכיבה')}</option>
       </select></>}
-      <Seg label={L('Detail level', 'רמת פירוט')} value={level} onChange={(v) => setState({ level: v })} options={[{ v: 'explore', label: L('Simple', 'פשוט') }, { v: 'advanced', label: L('Advanced', 'מתקדם') }]} />
+      <Seg label={L('Detail level', 'רמת פירוט')} value={level} onChange={(v) => setState({ level: v })} options={[{ v: 'simple', label: L('Simple', 'פשוט') }, { v: 'standard', label: L('Standard', 'רגיל') }, { v: 'expert', label: L('Expert', 'מומחה') }]} />
       <Seg label={L('Language', 'שפה')} value={lang} onChange={(v) => setState({ lang: v })} options={[{ v: 'he', label: 'עב' }, { v: 'en', label: 'EN' }]} />
       <button className="btn small" aria-label={L('Toggle dark theme', 'מצב כהה')} onClick={() => setState({ theme: theme === 'dark' ? 'light' : 'dark' })}>{theme === 'dark' ? '☀' : '☾'}</button>
     </div>

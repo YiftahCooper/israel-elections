@@ -3,7 +3,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import { votesCast, type Scenario } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtFrac, fmtInt, fmtPct, fmtRat } from '../format.ts';
-import { useStore } from '../store.ts';
+import { useLevel, useStore } from '../store.ts';
 import { DecimalInput, Delta, Tile } from './ui.tsx';
 import { dispatch } from '../store.ts';
 
@@ -12,12 +12,18 @@ export function KeyStats({ s, r, ds, baseR }: { s: Scenario; r: AllocationResult
   const digits = useStore((st) => st.digits);
   const cast = votesCast(s);
   const thrPct = s.rules.thresholdPct;
-  const explore = useStore((st) => st.level === 'explore');
+  const { simple, expert } = useLevel();
   const turnoutTile = (
       <Tile k={L('Turnout', 'שיעור ההצבעה')} v={<span className="row" style={{ gap: 4 }}><DecimalInput value={s.registered ? (cast / s.registered) * 100 : 0} digits={2} width={86} label={L('Turnout %', 'שיעור הצבעה %')} onCommit={(p) => dispatch({ type: 'setTurnout', pct: p })} />%</span>} d={<>{L('historical', 'בפועל')} {fmtPct(ds.totals.votesCast, ds.totals.registered, digits)}{Math.abs(cast - ds.totals.votesCast) > 0 && s.registered === ds.totals.registered && <> · <button className="btn small ghost" style={{ padding: 0, minHeight: 0 }} onClick={() => dispatch({ type: 'setTurnout', pct: (ds.totals.votesCast / ds.totals.registered) * 100 })}>{L('restore', 'שחזור')}</button></>}</>}>
         <div>{L('Votes cast ÷ registered voters. Edit it to scale every list (and the invalid ballots) in proportion.', 'מצביעים ÷ בעלי זכות בחירה. עריכה משנה את כל הרשימות (והפסולים) באופן יחסי.')}</div>
       </Tile>);
-  if (explore) return (
+  if (simple) return (
+    <p className="small ink2 simple-stats">
+      {L(`A list needs at least ${fmtInt(r.thresholdVotes)} votes (${thrPct}%) to win seats; each seat takes about ${fmtRat(r.quota, 0)} votes.`,
+        `רשימה צריכה לפחות ${fmtInt(r.thresholdVotes)} קולות (${thrPct}%) כדי להיכנס לכנסת; כל מנדט שווה כ-${fmtRat(r.quota, 0)} קולות.`)}
+    </p>
+  );
+  if (!expert) return (
     <div className="tiles">
       {turnoutTile}
       <Tile k={L('Votes needed to pass the threshold', 'קולות למעבר אחוז החסימה')} term="threshold" v={fmtInt(r.thresholdVotes)} d={`${thrPct}% ${L('of valid votes', 'מהקולות הכשרים')}`} />
@@ -46,6 +52,7 @@ export function KeyStats({ s, r, ds, baseR }: { s: Scenario; r: AllocationResult
 
 export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
   const L = useL();
+  const { expert } = useLevel();
   const lang = useLang();
   const total = s.rules.seats;
   const majority = Math.floor(total / 2) + 1;
@@ -56,7 +63,7 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
   return (
     <div>
       <div className="row small" style={{ justifyContent: 'space-between', marginBottom: 4 }}>
-        <span className="ink2">{L('Seats by bloc (editable grouping, not an official classification)', 'מנדטים לפי גוש (חלוקה ניתנת לעריכה, לא סיווג רשמי)')}</span>
+        <span className="ink2">{expert ? L('Seats by bloc (editable grouping, not an official classification)', 'מנדטים לפי גוש (חלוקה ניתנת לעריכה, לא סיווג רשמי)') : L('Seats by bloc (an informal grouping, not an official classification)', 'מנדטים לפי גוש (חלוקה לא רשמית)')}</span>
         <span className="muted">{L(`majority ${majority}`, `רוב ${majority}`)}</span>
       </div>
       <div className="majority-bar" role="img" aria-label={sums.map((x) => `${lang === 'he' ? x.b.nameHe : x.b.nameEn} ${x.n}`).join(', ')}>

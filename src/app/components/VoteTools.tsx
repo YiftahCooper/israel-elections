@@ -25,7 +25,7 @@ export function SourcePicker({ s, l }: { s: Scenario; l: SimList }) {
         <span className="row" style={{ gap: 6 }}>{L('When this list’s votes change, balance the difference with…', 'כשהקולות של רשימה זו משתנים, ההפרש מאוזן על ידי…')}
           <Info title={L('Different counterfactuals', 'תרחישים שונים')}>{L('Taking votes from all other lists keeps turnout and the valid total fixed. New voters (or voters staying home) change the valid total, and so the threshold in votes. A transfer moves votes from or to one list — if that list is below the threshold, those votes stop being wasted. These give different seat results.', 'לקיחה מכל שאר הרשימות שומרת על ההצבעה ועל סך הכשרים. מצביעים חדשים (או נמנעים) משנים את סך הכשרים ולכן את אחוז החסימה בקולות. מעבר מזיז קולות מול רשימה אחת — אם היא מתחת לחסימה, הקולות מפסיקים להתבזבז. התוצאות שונות.')}</Info>
         </span>
-        <select value={src.kind === 'transfer' ? `t:${src.listId}` : src.kind} onChange={(e) => {
+        <select aria-label={L('When this list’s votes change, balance the difference with…', 'כשהקולות של רשימה זו משתנים, ההפרש מאוזן על ידי…')} value={src.kind === 'transfer' ? `t:${src.listId}` : src.kind} onChange={(e) => {
           const v = e.target.value;
           setState({ voteSource: v === 'new' ? { kind: 'new' } : v === 'proportional' ? { kind: 'proportional' } : { kind: 'transfer', listId: v.slice(2) } });
         }}>
@@ -82,7 +82,7 @@ export function VoteTools({ s, r, l }: { s: Scenario; r: AllocationResult; l: Si
     : (gain ? L('taken proportionally from all other lists', 'שנלקחים באופן יחסי מכל שאר הרשימות') : L('given proportionally to all other lists', 'שעוברים באופן יחסי לכל שאר הרשימות'));
 
   const shown = answer && answer.listId === l.id ? answer : null;
-  const advanced = useStore((st) => st.level === 'advanced');
+  const advanced = useStore((st) => st.level === 'expert');
 
   return (
     <div>

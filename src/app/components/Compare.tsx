@@ -16,7 +16,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
   const saved = useStore((st) => st.saved);
   const compareWith = saved.some((x) => x.id === compareWithRaw && x.electionId === s.electionId && x.id !== s.id) ? compareWithRaw : 'historical';
   const digits = useStore((st) => st.digits);
-  const advanced = useStore((st) => st.level === 'advanced');
+  const advanced = useStore((st) => st.level === 'expert');
   const other = useMemo(() => {
     if (compareWith === 'historical') return base;
     const sv = saved.find((x) => x.id === compareWith && x.electionId === s.electionId);

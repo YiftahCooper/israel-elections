@@ -1,16 +1,25 @@
 // Application state. One authoritative Scenario per open election; everything visible is derived
 // from it. Undo/redo keeps whole snapshots (scenarios share unchanged lists structurally).
 import { useSyncExternalStore } from 'react';
-import type { ElectionDataset, ElectionId } from '../data/schema.ts';
+import type { ElectionDataset, ElectionId, ElectionIndexEntry } from '../data/schema.ts';
 import { ActionError, applyAction } from '../model/actions.ts';
 import { scenarioFromDataset, validateScenario, type Action, type ActionContext, type Scenario } from '../model/scenario.ts';
 import type { Lang } from './i18n.ts';
 import type { SourceChoice } from './voteEdit.ts';
 
+/** Interface level: what is shown, never what is computed. Simple = minimal; Standard = common,
+ * consequential edits; Expert = every tool. */
+export type Level = 'simple' | 'standard' | 'expert';
+const LEVELS: Level[] = ['simple', 'standard', 'expert'];
+/** settings saved by the two-level version ('explore' | 'advanced') map onto the three levels */
+const migrateLevel = (v: unknown): Level => (v === 'advanced' ? 'expert' : v === 'explore' ? 'simple' : LEVELS.includes(v as Level) ? (v as Level) : 'simple');
+
 export interface SavedScenario { id: string; name: string; electionId: ElectionId; savedAt: string; baseBuiltAt: string; log: Action[] }
 
 export interface State {
   datasets: Partial<Record<ElectionId, ElectionDataset>>;
+  /** every election the project knows about (public/data/elections.json), newest first */
+  elections: ElectionIndexEntry[];
   electionId: ElectionId;
   scenario: Scenario | null;
   past: Scenario[];
@@ -19,7 +28,9 @@ export interface State {
   compareWith: string; // 'historical' or a saved scenario id
   lang: Lang;
   theme: 'light' | 'dark';
-  level: 'explore' | 'advanced';
+  level: Level;
+  /** the one-line Simple-mode hint was dismissed (remembered across visits) */
+  hintDismissed: boolean;
   digits: number;
   layout: 'hemicycle' | 'blocks';
   colorBy: 'list' | 'bloc' | 'party';
@@ -34,19 +45,35 @@ export interface State {
 }
 
 const LS = 'israel-elections:v1';
+/** used until (or if) the election index cannot be loaded: the two elections the app has always had */
+const FALLBACK_INDEX: ElectionIndexEntry[] = [
+  { id: 'k26', knesset: 26, date: '2026-10-27', nameHe: 'הבחירות לכנסת ה-26', nameEn: 'Election to the 26th Knesset', available: true, status: { stage: 'final-count-pending-publication' } },
+  { id: 'k25', knesset: 25, date: '2022-11-01', nameHe: 'הבחירות לכנסת ה-25', nameEn: 'Election to the 25th Knesset', available: true, status: { stage: 'official-final' } },
+];
+
+/** Loads the election index; keeps the fallback if it is missing or malformed. */
+export async function loadElectionIndex() {
+  try {
+    const res = await fetch('data/elections.json');
+    if (!res.ok) return;
+    const rows = (await res.json()) as ElectionIndexEntry[];
+    if (!Array.isArray(rows) || !rows.some((r) => r.available)) return;
+    setState({ elections: [...rows].sort((a, b) => b.date.localeCompare(a.date)) });
+  } catch { /* keep the fallback */ }
+}
 const persisted = (() => { try { return JSON.parse(globalThis.localStorage?.getItem(LS) ?? '{}'); } catch { return {}; } })();
 
 let state: State = {
-  datasets: {}, electionId: 'k26', scenario: null, past: [], future: [], selectedListId: null, compareWith: 'historical',
+  datasets: {}, elections: FALLBACK_INDEX, electionId: 'k26', scenario: null, past: [], future: [], selectedListId: null, compareWith: 'historical',
   lang: persisted.lang ?? 'he', theme: persisted.theme ?? (globalThis.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
-  level: persisted.level ?? 'explore', digits: persisted.digits ?? 2, layout: 'hemicycle', colorBy: 'list',
+  level: migrateLevel(persisted.level), hintDismissed: persisted.hintDismissed === true, digits: persisted.digits ?? 2, layout: 'hemicycle', colorBy: 'list',
   saved: persisted.saved ?? [], toast: null, loadError: null, notice: null, voteSource: { kind: 'proportional' }, sessions: {},
 };
 const listeners = new Set<() => void>();
 const emit = () => { for (const l of listeners) l(); };
 /** Writes settings and saved scenarios; returns false if the browser refused (full or disabled). */
 const persist = (): boolean => {
-  try { localStorage.setItem(LS, JSON.stringify({ lang: state.lang, theme: state.theme, level: state.level, digits: state.digits, saved: state.saved })); return true; }
+  try { localStorage.setItem(LS, JSON.stringify({ lang: state.lang, theme: state.theme, level: state.level, hintDismissed: state.hintDismissed, digits: state.digits, saved: state.saved })); return true; }
   catch { return false; }
 };
 
@@ -238,6 +265,11 @@ const PROPORTIONAL: SourceChoice = { kind: 'proportional' };
 /** The vote source actually in force: Simple mode always balances proportionally. */
 export function useVoteSource(): SourceChoice {
   const src = useStore((st) => st.voteSource);
-  const advanced = useStore((st) => st.level === 'advanced');
-  return advanced ? src : PROPORTIONAL;
+  const simple = useStore((st) => st.level === 'simple');
+  return simple ? PROPORTIONAL : src;
+}
+/** Which interface level is on: `standard` is true for Standard and Expert. */
+export function useLevel() {
+  const level = useStore((st) => st.level);
+  return { level, simple: level === 'simple', standard: level !== 'simple', expert: level === 'expert' };
 }

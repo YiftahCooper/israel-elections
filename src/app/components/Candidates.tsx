@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import type { SimCandidate, SimList } from '../../model/scenario.ts';
 import { useL } from '../i18n.ts';
-import { dispatch, useStore } from '../store.ts';
+import { dispatch, useLevel } from '../store.ts';
 
 export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList; seats: number; baseSeats: number; baseCandidates?: SimCandidate[] }) {
   const L = useL();
-  const advanced = useStore((st) => st.level === 'advanced');
+  const { simple, expert: advanced } = useLevel();
   const [showAll, setShowAll] = useState(false);
   const [drag, setDrag] = useState<number | null>(null);
   const [editing, setEditing] = useState<string | null>(null);
   const [draft, setDraft] = useState('');
   const c = l.candidates;
-  const limit = showAll ? c.length : Math.min(c.length, Math.max(seats + 6, 12));
+  const limit = showAll ? c.length : Math.min(c.length, simple ? seats + 1 : Math.max(seats + 6, 12));
   const commit = (next: SimCandidate[], note: string) => dispatch({ type: 'candidates', listId: l.id, candidates: next, note });
   const move = (from: number, to: number) => {
     if (to < 0 || to >= c.length || from === to) return;
@@ -23,11 +23,11 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
 
   return (
     <div>
-      <div className="kv small" style={{ marginBottom: 8 }}>
+      {!simple && <div className="kv small" style={{ marginBottom: 8 }}>
         <span>{L('Registered candidates', 'מועמדים ברשימה')}</span><span>{c.length}</span>
         <span>{L('Last elected', 'האחרון שנבחר')}</span><span>{lastIn ? <><bdi>{lastIn.nameHe}</bdi> <span className="muted">(#{seats})</span></> : '—'}</span>
         <span>{L('Next in line', 'הבא בתור')}</span><span>{nextIn ? <><bdi>{nextIn.nameHe}</bdi> <span className="muted">(#{seats + 1})</span></> : L('none', 'אין')}</span>
-      </div>
+      </div>}
       {baseCandidates && JSON.stringify(baseCandidates) !== JSON.stringify(c) && <button className="btn small" style={{ marginBottom: 6 }} onClick={() => dispatch({ type: 'resetCandidates', listId: l.id })}>{L('Restore the registered candidate list', 'שחזור רשימת המועמדים הרשומה')}</button>}
       {seats > c.length && <p className="down small">{L(`The list has only ${c.length} candidates for ${seats} seats.`, `ברשימה רק ${c.length} מועמדים ל-${seats} מנדטים.`)}</p>}
       {c.length === 0 && <p className="muted small">{L('No candidates registered.', 'אין מועמדים רשומים.')}</p>}
@@ -60,7 +60,7 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
                   <button className="btn small ghost" aria-label={L('Insert candidate below', 'הוספת מועמד מתחת')} onClick={() => { const next = [...c]; next.splice(i + 1, 0, { id: `new-${Date.now().toString(36)}`, nameHe: L('New candidate', 'מועמד חדש') }); commit(next, 'insert'); }}>＋</button>
                   <button className="btn small ghost danger" aria-label={L('Remove', 'הסרה')} onClick={() => commit(c.filter((y) => y.id !== x.id), `remove ${x.nameHe}`)}>✕</button>
                 </span>
-              ) : <span className="tiny muted">{elected ? L('elected', 'נבחר') : ''}</span>}
+              ) : <span className="tiny muted">{elected ? L('elected', 'נבחר') : i === seats ? L('next in line', 'הבא בתור') : ''}</span>}
             </li>
           );
         })}

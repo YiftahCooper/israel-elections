@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { allocationOf, baselineOf, scenarioIssues, warningText } from './derive.ts';
 import { LangContext, useL } from './i18n.ts';
-import { dispatch, openElection, readSharedFromHash, redo, setState, undo, useStore } from './store.ts';
+import { dispatch, loadElectionIndex, openElection, readSharedFromHash, redo, setState, undo, useStore } from './store.ts';
 import { Charts } from './components/Charts.tsx';
 import { Compare } from './components/Compare.tsx';
 import { Hemicycle } from './components/Hemicycle.tsx';
@@ -30,6 +30,7 @@ export function App() {
     document.title = lang === 'he' ? 'סייר הבחירות לכנסת' : 'Israeli Elections Explorer';
   }, [lang, theme]);
   useEffect(() => {
+    loadElectionIndex();
     readSharedFromHash().then((sh) => {
       if (sh) { openElection(sh.electionId, sh); history.replaceState(null, '', location.pathname); }
       else openElection('k26');
@@ -57,7 +58,7 @@ function Shell() {
   const lang = useStore((st) => st.lang);
   const level = useStore((st) => st.level);
   const [tabPick, setTab] = useState<Tab | null>(null);
-  const [introHidden, setIntroHidden] = useState(false);
+  const hintDismissed = useStore((st) => st.hintDismissed);
 
   if (loadError) return <div className="banner err">{L('Could not load election data: ', 'טעינת הנתונים נכשלה: ')}{loadError}</div>;
   if (!s || !ds) return <div className="app"><TopBar s={null} r={null} ds={undefined} baseR={null} /><p style={{ padding: 20 }} className="muted">{L('Loading election data…', 'טוען נתוני בחירות…')}</p></div>;
@@ -81,9 +82,11 @@ function Shell() {
     sources: L('Sources & definitions', 'מקורות ומונחים'),
     history: L(`Change history (${s.log.length})`, `היסטוריית שינויים (${s.log.length})`),
   };
-  const order: Tab[] = level === 'explore'
-    ? ['whatif', 'coal', 'security', 'compare', 'charts', 'walk', 'sources']
-    : ['walk', 'compare', 'charts', 'security', 'coal', 'whatif', 'structure', 'turnout', 'sens', 'rules', 'loc', 'sources', 'history'];
+  const order: Tab[] = level === 'simple'
+    ? ['whatif', 'coal', 'walk', 'sources']
+    : level === 'standard'
+      ? ['whatif', 'compare', 'structure', 'coal', 'security', 'charts', 'walk', 'sources', 'history']
+      : ['walk', 'compare', 'charts', 'security', 'coal', 'whatif', 'structure', 'turnout', 'sens', 'rules', 'loc', 'sources', 'history'];
   const tab: Tab = tabPick && order.includes(tabPick) ? tabPick : order[0];
   const tabs = order.map((id) => ({ id, label: all[id] }));
 
@@ -92,7 +95,7 @@ function Shell() {
       <TopBar s={s} r={r} ds={ds} baseR={baseR} />
       <div>
         {ds.status.stage !== 'official-final' && <div className="banner warn" role="status">⚠ {lang === 'he' ? ds.status.noteHe : ds.status.noteEn}</div>}
-        {level === 'explore' && !introHidden && <div className="banner info" role="status">{L('Simple mode: click a party to change its votes, or open “What if…” below for ready-made scenarios. Switch to Advanced for every tool.', 'מצב פשוט: לחצו על מפלגה כדי לשנות את קולותיה, או פתחו "מה אילו…" למטה לתרחישים מוכנים. במצב מתקדם — כל הכלים.')} <button className="btn small ghost" onClick={() => setIntroHidden(true)} aria-label={L('Dismiss', 'סגירה')}>✕</button></div>}
+        {level === 'simple' && !hintDismissed && <div className="banner info" role="status">{L('Click a party to change its votes and watch the seats move. More tools: Standard and Expert (top right).', 'לחצו על מפלגה כדי לשנות את קולותיה ולראות איך המנדטים זזים. כלים נוספים: מצב רגיל ומומחה (למעלה).')} <button className="btn small ghost" onClick={() => setState({ hintDismissed: true })} aria-label={L('Dismiss', 'סגירה')}>✕</button></div>}
         {s.mode === 'experimental' && <div className="banner info" role="status">{L('Experimental rules: this is an alternative electoral system, not a legally possible Israeli result.', 'כללים ניסיוניים: זוהי שיטת בחירות חלופית ולא תוצאה אפשרית לפי החוק בישראל.')} <button className="btn small" onClick={() => dispatch({ type: 'setMode', mode: 'historical' })}>{L('Back to the real rules', 'חזרה לכללים האמיתיים')}</button></div>}
         {notice && <div className="banner info" role="status">{notice} <button className="btn small ghost" onClick={() => setState({ notice: null })}>✕</button></div>}
         {issues.map((x, i) => <div key={i} className={`banner ${x.level === 'error' ? 'err' : 'warn'}`} role="alert">{lang === 'he' ? x.he : x.en}</div>)}

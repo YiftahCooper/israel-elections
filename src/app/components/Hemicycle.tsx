@@ -5,7 +5,7 @@ import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { arcLayout, placeLabels } from '../layout.ts';
 import { download, isolate } from '../format.ts';
-import { setState, useStore } from '../store.ts';
+import { setState, useLevel, useStore } from '../store.ts';
 
 export interface SeatInfo { listId: string; idx: number; color: string; remainder: boolean }
 
@@ -43,8 +43,10 @@ function shade(hex: string, i: number): string {
 export function Hemicycle({ s, r, compact = false, title }: { s: Scenario; r: AllocationResult; compact?: boolean; title?: string }) {
   const L = useL();
   const lang = useLang();
-  const layout = useStore((st) => st.layout);
-  const colorBy = useStore((st) => st.colorBy);
+  const { standard, expert } = useLevel();
+  // layout and colouring are Expert settings: below Expert the chamber always uses the defaults
+  const layout = useStore((st) => (expert ? st.layout : 'hemicycle'));
+  const colorBy = useStore((st) => (expert ? st.colorBy : 'list'));
   const selected = useStore((st) => st.selectedListId);
   const svgRef = useRef<SVGSVGElement>(null);
   const [hover, setHover] = useState<{ seat: SeatInfo; x: number; y: number } | null>(null);
@@ -158,7 +160,7 @@ export function Hemicycle({ s, r, compact = false, title }: { s: Scenario; r: Al
           <div className="muted small">{hover.seat.remainder ? L('Seat won in the remainder stage (Bader–Ofer)', 'מנדט שהושג בחלוקת העודפים (בדר–עופר)') : L('Seat won by whole quota', 'מנדט שהושג במודד שלם')}</div>
         </div>
       )}
-      {!compact && (
+      {!compact && standard && (
         <div className="legend" role="group" aria-label={L('Lists in the Knesset', 'הרשימות בכנסת')} style={{ marginTop: 6 }}>
           {s.lists.map((l) => ({ l, n: r.lists.find((x) => x.id === l.id)?.seats ?? 0 })).filter((x) => x.n > 0).map(({ l, n }) => (
             <button key={l.id} aria-pressed={selected === l.id} onClick={() => setState({ selectedListId: selected === l.id ? null : l.id })}>
@@ -167,7 +169,7 @@ export function Hemicycle({ s, r, compact = false, title }: { s: Scenario; r: Al
           ))}
         </div>
       )}
-      {!compact && (
+      {!compact && standard && (
         <div className="row" style={{ justifyContent: 'flex-end', marginTop: 4 }}>
           <button className="btn small ghost" onClick={() => exportSvg('svg')}>{L('Export SVG', 'ייצוא SVG')}</button>
           <button className="btn small ghost" onClick={() => exportSvg('png')}>{L('Export PNG', 'ייצוא PNG')}</button>

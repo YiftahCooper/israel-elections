@@ -59,7 +59,7 @@ const K26: Preset[] = [
 export function WhatIf({ ds }: { ds: ElectionDataset }) {
   const L = useL();
   const lang = useLang();
-  const presets = useMemo(() => [...(ds.id === 'k25' ? K25 : K26), ...COMMON], [ds.id]);
+  const presets = useMemo(() => [...(ds.id === 'k25' ? K25 : ds.id === 'k26' ? K26 : []), ...COMMON], [ds.id]);
   const results = useMemo(() => {
     const base = scenarioFromDataset(ds);
     const r0 = allocate(toEngineInput(base));

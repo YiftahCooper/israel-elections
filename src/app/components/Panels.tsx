@@ -1,8 +1,8 @@
 import { Fragment, useEffect, useMemo, useState } from 'react';
 import type { ElectionDataset } from '../../data/schema.ts';
-import { ruleDepartures, ISRAEL_2014 } from '../../engine/rules.ts';
+import { ruleDepartures, RULESETS } from '../../engine/rules.ts';
 import type { AllocationResult } from '../../engine/types.ts';
-import { toRuleSet, type Action, type Scenario } from '../../model/scenario.ts';
+import { electionRuleSetId, toRuleSet, type Action, type Scenario } from '../../model/scenario.ts';
 import { listLabel } from '../derive.ts';
 import { GLOSSARY, useL, useLang, type Lang } from '../i18n.ts';
 import { fmtInt, fmtPct } from '../format.ts';
@@ -17,7 +17,7 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
   const lang = useLang();
   const digits = useStore((st) => st.digits);
   const exp = s.mode === 'experimental';
-  const dep = ruleDepartures(toRuleSet(s.rules, false), ISRAEL_2014);
+  const dep = ruleDepartures(toRuleSet(s.rules, null), RULESETS[electionRuleSetId(s.electionId)]);
   const depName: Record<string, [string, string]> = {
     seats: ['Number of seats', 'מספר המושבים'], threshold: ['Threshold', 'אחוז החסימה'], quotaRounding: ['Quota rounding', 'עיגול המודד'],
     remainderMethod: ['Remainder method', 'שיטת חלוקת העודפים'], majorityCap: ['Half-seats cap (81(d)(4))', 'מגבלת מחצית (81(ד)(4))'],
@@ -37,7 +37,7 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
         </div>
         <p className="small ink2">{exp
           ? L('Experimental: you may change the electoral system itself. Results are labelled as an alternative system, not Israeli law.', 'ניסיוני: ניתן לשנות את שיטת הבחירות עצמה. התוצאות מסומנות כשיטה חלופית ולא כחוק הישראלי.')
-          : L('Historically valid: the law of this election is enforced — 120 seats, 3.25%, Bader–Ofer, two-list agreements. Votes, lists, candidates and agreements can still change.', 'תקף היסטורית: החוק של בחירות אלה נאכף — 120 מושבים, 3.25%, בדר–עופר, הסכמים של שתי רשימות. עדיין ניתן לשנות קולות, רשימות, מועמדים והסכמים.')}</p>
+          : L(`Historically valid: the law of this election is enforced — ${s.rules.seats} seats, ${s.rules.thresholdPct}%, Bader–Ofer, two-list agreements. Votes, lists, candidates and agreements can still change.`, `תקף היסטורית: החוק של בחירות אלה נאכף — ${s.rules.seats} מושבים, ${s.rules.thresholdPct}%, בדר–עופר, הסכמים של שתי רשימות. עדיין ניתן לשנות קולות, רשימות, מועמדים והסכמים.`)}</p>
         {Object.keys(s.lotteryWinners).length > 0 && <p className="small">{L('You have recorded lottery outcomes for tied seats.', 'רשמתם תוצאות הגרלה למושבים בשוויון.')} <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'lottery' })}>{L('Clear them', 'ניקוי')}</button></p>}
         {exp && dep.length > 0 && <div className="callout small" style={{ marginBottom: 8 }}><b>{L('Departs from Israeli law in: ', 'שונה מהחוק הישראלי ב: ')}</b>{dep.map((d) => (lang === 'he' ? depName[d][1] : depName[d][0])).join(', ')}</div>}
         <fieldset disabled={!exp} style={{ border: 0, padding: 0, margin: 0 }}>
@@ -76,7 +76,7 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
           <h4>{L('Blocs (your grouping)', 'גושים (החלוקה שלכם)')}</h4>
           {(JSON.stringify(s.blocs) !== JSON.stringify(base.blocs) || s.lists.some((l) => base.lists.find((b) => b.id === l.id && b.bloc !== l.bloc))) && <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'blocs' })}>{L('Restore default blocs', 'שחזור הגושים')}</button>}
         </div>
-        <p className="small ink2">{L('Blocs are an editable convenience, not an official classification. Assign lists to blocs in each list’s panel (Advanced).', 'הגושים הם חלוקה נוחה הניתנת לעריכה ולא סיווג רשמי. שייכו רשימות לגושים בחלונית הרשימה (מתקדם).')}</p>
+        <p className="small ink2">{L('Blocs are an editable convenience, not an official classification. Assign lists to blocs in each list’s panel (Expert).', 'הגושים הם חלוקה נוחה הניתנת לעריכה ולא סיווג רשמי. שייכו רשימות לגושים בחלונית הרשימה (מומחה).')}</p>
         {s.blocs.map((b, i) => (
           <div key={b.id} className="row" style={{ marginBottom: 4 }}>
             <input type="color" value={b.color} onChange={(e) => dispatch({ type: 'setBlocs', blocs: s.blocs.map((x, k) => (k === i ? { ...x, color: e.target.value } : x)) })} aria-label={L('Bloc colour', 'צבע הגוש')} />
