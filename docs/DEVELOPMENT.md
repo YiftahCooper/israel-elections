@@ -53,8 +53,9 @@ use JSON export for a portable copy. A refused save reports an error and suggest
 Saved entries and share links contain an election id, name, dataset build timestamp and
 action log. Share links compress the payload with deflate-raw, encode it as URL-safe Base64
 and put it after `#s=`. They need the referenced dataset to replay; they are not encrypted.
-The loader reports skipped actions and a changed dataset timestamp. A rebuild alone changes
-the timestamp, so that notice does not by itself prove that source figures changed.
+The loader reports skipped actions and a changed dataset timestamp. The timestamp changes only
+when a rebuild changes the dataset's content, but any content counts (a note, a name or a
+figure), so that notice does not by itself prove that source figures changed.
 
 JSON export contains the full scenario; import checks its structure. It is distinct from
 the action-log payload used for saved entries and share links. CSV exports contain list
@@ -67,20 +68,42 @@ results; the chamber can be exported as SVG or PNG.
 manifest changes before accepting them. `npm run data:build` rebuilds `public/data/`
 from retained inputs and records source hashes and a build timestamp.
 
+A rebuild rewrites only files whose content changed. For each dataset the builder serializes
+the new result with the existing file's `buildInfo.builtAt`; if that matches the file byte for
+byte, the file is left untouched and keeps its timestamp. Any other difference writes the file
+with a new `builtAt`, so `builtAt` records when that dataset's content last changed. Locality
+files and `sources.json` have no timestamp and are written only when their bytes differ. A
+clean rebuild therefore leaves `git status` clean; the final log line counts written and
+unchanged files. (k22–k24 set `builtAt` from their sources' retrieval times instead.)
+
+Elections build in parallel worker threads (up to eight; about 1.2 GB peak memory with all
+polling scratch present). Logs and files are still emitted in election order, and the first
+failed check stops the build with a non-zero exit. `BUILD_JOBS=1 npm run data:build` builds
+serially in one thread (about 0.45 GB), which is easier to debug; `BUILD_JOBS=n` sets the pool size.
+
 Checks reconcile national/list totals, locality/polling-station totals, candidate ranks
 and source evidence for agreements. These checks are explicit, not a guarantee that every
 possible parsing error is caught. The manifest records hashes; the builder’s recording of
 those hashes is not a fresh integrity audit of every input file.
 
-The production builder covers k16–k26; each historical election has its own module in
-`scripts/lib/historical/`. `scripts/lib/parse-historical-gazette.ts` is an unfinished prototype outside the build. Historical polling-station working copies
+`scripts/build-datasets.ts` lists the builders in election order and writes their output. Each
+election has its own module in `scripts/lib/historical/` (k1–k26, with shared code per era in
+`kNN-kMM-common.ts`); era-specific quirks such as envelope codes, column spellings and printed
+gazette exceptions are written and explained there. Rules common to every era live in
+`scripts/lib/build/`: `sources.ts` (paths, manifest, hash verification), `validate.ts` (national
+totals, agreement membership, exact seat reproduction), `locality.ts` (row reading, polling
+aggregation and reconciliation, locality datasets), `roster.ts` (rank contiguity, roster flags,
+not-seated candidates), `records.ts` (list and agreement records, seat order), `cec-html.ts`
+(CEC national-results pages) and `output.ts` (the no-churn writer). Serialized key order still
+differs between eras; `records.ts` keeps each era's order so that rebuilt files stay identical.
+`scripts/lib/parse-historical-gazette.ts` is an unfinished prototype outside the build. Historical polling-station working copies
 are recovered into `.backup-scratch/raw/`; see [DATA.md](DATA.md) and decision
 [0004](decisions/0004-polling-station-storage.md) for storage and recovery details.
 
 Keep disposable downloads, caches and diagnostics in `.backup-scratch/`. Retain unique
 source inputs, accepted outputs and the provenance needed to reproduce them outside
-scratch. The lockfile pins npm dependencies; generated dataset timestamps mean rebuilds
-are not byte-for-byte identical. Do not create a second data ledger.
+scratch. The lockfile pins npm dependencies; with unchanged inputs a rebuild leaves every
+generated file byte-for-byte identical. Do not create a second data ledger.
 
 ## Test scope and current limits
 

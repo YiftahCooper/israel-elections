@@ -48,11 +48,13 @@ export function readCsvRows(path: string, letters: readonly string[], check: Che
   const lines = readFileSync(path, 'utf8').replace(/^﻿/, '').split(/\r?\n/).filter(l => l.trim());
   const head = lines[0].split(',').map(h => h.trim());
   const ix = (k: string) => { const i = head.indexOf(k); check(i >= 0, `${path}: missing column ${k}`); return i; };
+  const [code, name, committee, registered, cast, invalid, valid] = ['סמל ישוב', 'שם ישוב', 'סמל ועדה', 'בזב', 'מצביעים', 'פסולים', 'כשרים'].map(ix);
+  const listColumns = letters.map(ix);
   return lines.slice(1).map((l, n) => {
     const c = l.split(',');
-    const num = (k: string) => { const s = c[ix(k)]; const v = Number(s); if (s === undefined || s.trim() === '' || !whole(v)) check(false, `${path} row ${n}: invalid ${k}`); return v; };
-    const row: VoteRow = { code: num('סמל ישוב'), nameHe: c[ix('שם ישוב')].trim(), committee: num('סמל ועדה'), registered: num('בזב'),
-      votesCast: num('מצביעים'), invalid: num('פסולים'), valid: num('כשרים'), votes: letters.map(num) };
+    const num = (i: number) => { const s = c[i]; const v = Number(s); if (s === undefined || s.trim() === '' || !whole(v)) check(false, `${path} row ${n}: invalid ${head[i]}`); return v; };
+    const row: VoteRow = { code: num(code), nameHe: c[name].trim(), committee: num(committee), registered: num(registered),
+      votesCast: num(cast), invalid: num(invalid), valid: num(valid), votes: listColumns.map(num) };
     checkRowArithmetic(check, () => `${path} row ${n} (${row.code})`, row);
     return row;
   });
