@@ -1,15 +1,14 @@
 import { useEffect, useMemo, useState } from 'react';
-import { goals, minimalChange } from '../../engine/analysis.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import { toEngineInput, type Scenario } from '../../model/scenario.ts';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt } from '../format.ts';
+import { runTasks } from '../analysisPool.ts';
+import { partsOf, securityRow, type SecurityItem, type SecurityPart, type SecurityRow as Row } from '../analysisTasks.ts';
 import { setState } from '../store.ts';
 import { toVoteSource, type SourceChoice } from '../voteEdit.ts';
 import { Info, Seg } from './ui.tsx';
-
-interface Row { id: string; seats: number; gain: number | null; lose: number | null; qualify: number | null }
 
 /** How close every list is to its next seat and to losing one — the "knife-edge" view. */
 // results per scenario and vote source, so revisiting the tab is instant
@@ -22,7 +21,7 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
   const [rows, setRows] = useState<Row[]>([]);
   const [progress, setProgress] = useState<{ done: number; total: number }>({ done: 0, total: 0 });
   // Each figure is an exact search over the whole election (up to ~1 s each), so they are computed
-  // one at a time in the background and shown as they finish.
+  // in background workers and shown as each list finishes.
   useEffect(() => {
     const cached = rowCache.get(s)?.get(kind);
     if (cached) { setRows(cached); setProgress({ done: cached.length, total: cached.length }); return; }
@@ -30,31 +29,26 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
     const src = toVoteSource({ kind } as SourceChoice);
     const thr = Number(r.thresholdVotes);
     const todo = s.lists.filter((l) => !l.withdrawn && l.votes > 0 && (r.lists.find((x) => x.id === l.id)!.qualified || l.votes >= thr * 0.5));
-    const out: Row[] = [];
-    let cancelled = false;
-    setRows([]); setProgress({ done: 0, total: todo.length });
+    const items: SecurityItem[] = todo.map((l) => { const lr = r.lists.find((x) => x.id === l.id)!; return { id: l.id, qualified: lr.qualified, seats: lr.qualified ? lr.seats : 0 }; });
+    const parts = items.map((): Partial<Record<SecurityPart, number | null>> => ({}));
+    // finished rows stay in list order, so equal rows sort the same however the workers finish
+    const finished: (Row | undefined)[] = items.map(() => undefined);
+    let count = 0;
+    setRows([]); setProgress({ done: 0, total: items.length });
     const sortRows = (xs: Row[]) => [...xs].sort((a, b) => (b.seats - a.seats) || ((a.qualify ?? 0) - (b.qualify ?? 0)));
-    const step = (i: number) => {
-      if (cancelled) return;
-      if (i >= todo.length) {
-        const m = rowCache.get(s) ?? new Map(); m.set(kind, sortRows(out)); rowCache.set(s, m);
-        return;
-      }
-      const l = todo[i];
-      const lr = r.lists.find((x) => x.id === l.id)!;
-      if (!lr.qualified) {
-        const q = minimalChange(input, l.id, src, goals.qualify(l.id));
-        out.push({ id: l.id, seats: 0, gain: null, lose: null, qualify: q.found ? Number(q.votes) : null });
-      } else {
-        const g = minimalChange(input, l.id, src, goals.seatGain(l.id));
-        const lo = minimalChange(input, l.id, src, lr.seats > 0 ? goals.seatLoss(l.id) : goals.disqualify(l.id), 'lose');
-        out.push({ id: l.id, seats: lr.seats, gain: g.found ? Number(g.votes) : null, lose: lo.found ? Number(lo.votes) - 1 : null, qualify: null });
-      }
-      setRows(sortRows(out)); setProgress({ done: i + 1, total: todo.length });
-      setTimeout(() => step(i + 1), 0);
-    };
-    const t = setTimeout(() => step(0), 0);
-    return () => { cancelled = true; clearTimeout(t); };
+    const store = () => { const m = rowCache.get(s) ?? new Map(); m.set(kind, sortRows(finished as Row[])); rowCache.set(s, m); };
+    if (!items.length) { store(); return; }
+    const tasks = items.flatMap((item, index) => partsOf(item).map((part) => ({ index, task: { kind: 'security' as const, input, src, part, item } })));
+    return runTasks(tasks.map((x) => x.task), (k, value) => {
+      const { index, task } = tasks[k];
+      const p = parts[index];
+      p[task.part] = value;
+      if (!partsOf(task.item).every((x) => x in p)) return;
+      finished[index] = securityRow(task.item, p);
+      count++;
+      setRows(sortRows(finished.filter((x): x is Row => !!x))); setProgress({ done: count, total: items.length });
+      if (count === items.length) store();
+    });
   }, [s, r, kind]);
 
   const max = Math.max(1, ...rows.flatMap((x) => [x.gain ?? 0, x.lose ?? 0, x.qualify ?? 0]));

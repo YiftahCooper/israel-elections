@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react';
-import { goals, minimalChange, sweepThreshold, sweepVotes, type SweepResult, type ThresholdSegment } from '../../engine/analysis.ts';
+import { useEffect, useRef, useState } from 'react';
+import { sweepThreshold, type SweepResult, type ThresholdSegment } from '../../engine/analysis.ts';
 import { percentToRational } from '../../engine/rational.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import { toEngineInput, type Scenario } from '../../model/scenario.ts';
+import { runTasks } from '../analysisPool.ts';
+import type { AnalysisTask, TransferOutcome } from '../analysisTasks.ts';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtRat, signed } from '../format.ts';
@@ -29,6 +31,10 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
   const [from, setFrom] = useState(() => range(l)[0]); const [to, setTo] = useState(() => range(l)[1]);
   const [sweep, setSweep] = useState<SweepResult | null>(null);
   useEffect(() => setSweep(null), [s]); // results describe the scenario they were computed on
+  // the sweep runs in a background worker; a change to its inputs abandons it
+  const job = useRef<(() => void) | null>(null);
+  const [busy, setBusy] = useState(false);
+  useEffect(() => () => { job.current?.(); job.current = null; setBusy(false); }, [s, id, from, to]);
   const segs = sweep?.segments ?? null;
   const pick = (nid: string) => {
     setId(nid); setSweep(null);
@@ -38,7 +44,10 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
   const name = (lid: string) => listLabel(s.lists.find((x) => x.id === lid)!, lang);
   const run = () => {
     if (!l || to <= from) return toast('error', L('Choose a range with “to” above “from”.', 'בחרו טווח שבו "עד" גדול מ"מ".'));
-    setSweep(sweepVotes(toEngineInput(s), l.id, BigInt(from), BigInt(to)));
+    job.current?.();
+    setBusy(true);
+    const task = { kind: 'sweep', input: toEngineInput(s), target: l.id, from: BigInt(from), to: BigInt(to) } as const;
+    job.current = runTasks([task], (_, result) => { job.current = null; setBusy(false); setSweep(result); });
   };
   const maxSeats = segs ? Math.max(1, ...segs.map((x) => x.seats[id] ?? 0)) : 1;
   return (
@@ -51,6 +60,7 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
         <span className="small">{L('to', 'עד')}</span><NumberInput value={to} onCommit={setTo} label={L('To', 'עד')} width={100} />
         <button className="btn primary small" onClick={run}>{L('Run', 'הרצה')}</button>
       </div>
+      {busy && <p className="small muted" role="status">{L('Calculating exactly…', 'מחשב במדויק…')}</p>}
       {segs && (
         <>
           <svg className="chart" viewBox="0 0 520 140" width="100%" role="img" aria-label={L('Seats against votes', 'מנדטים מול קולות')} style={{ marginTop: 8 }}>
@@ -129,6 +139,10 @@ function BlocFlip({ s, r }: { s: Scenario; r: AllocationResult }) {
   /** some pairs' searches could not rule out an untested interval, so "none" and "smallest" are not proven */
   const [unsure, setUnsure] = useState(false);
   useEffect(() => setRes(null), [s]);
+  // every pair is searched in background workers; a change of scenario or bloc abandons the search
+  const job = useRef<(() => void) | null>(null);
+  const [progress, setProgress] = useState<{ done: number; total: number } | null>(null);
+  useEffect(() => () => { job.current?.(); job.current = null; setProgress(null); }, [s, bloc]);
   const majority = Math.floor(s.rules.seats / 2) + 1;
   const members = s.lists.filter((l) => l.bloc === bloc).map((l) => l.id);
   const seats = members.reduce((t, id) => t + (r.lists.find((x) => x.id === id)?.seats ?? 0), 0);
@@ -136,20 +150,37 @@ function BlocFlip({ s, r }: { s: Scenario; r: AllocationResult }) {
   const run = () => {
     const input = toEngineInput(s);
     const cands = s.lists.filter((l) => !l.withdrawn && BigInt(l.votes) * 200n >= r.totalValid);
-    const goal = has ? goals.groupSeatsBelow(members, majority) : goals.groupSeatsAtLeast(members, majority);
-    let best: { from: string; to: string; votes: bigint } | null = null;
-    let inconclusive = false;
+    const tasks: Extract<AnalysisTask, { kind: 'groupTransfer' }>[] = [];
     for (const to of cands) for (const from of cands) {
       if (from.id === to.id) continue;
       const fromIn = members.includes(from.id), toIn = members.includes(to.id);
       if (has ? !(fromIn && !toIn) : !(!fromIn && toIn)) continue;
-      const m = minimalChange(input, to.id, { kind: 'transfer', listId: from.id }, goal);
-      if (m.found && m.votes !== null && (!best || m.votes < best.votes)) best = { from: from.id, to: to.id, votes: m.votes };
-      if (m.reason === 'inconclusive' || (m.found && !m.exact)) inconclusive = true;
+      tasks.push({ kind: 'groupTransfer', input, from: from.id, to: to.id, ids: members, n: majority, below: has });
     }
-    setUnsure(inconclusive);
-    if (!best) return setRes('none');
-    setRes({ ...best, d: '' });
+    // the answer is chosen in the order above, as before, however the workers finish
+    const finish = (outcomes: TransferOutcome[]) => {
+      let best: { from: string; to: string; votes: bigint } | null = null;
+      let inconclusive = false;
+      for (let k = 0; k < outcomes.length; k++) {
+        const m = outcomes[k];
+        if (m.found && m.votes !== null && (!best || m.votes < best.votes)) best = { from: tasks[k].from, to: tasks[k].to, votes: m.votes };
+        if (m.reason === 'inconclusive' || (m.found && !m.exact)) inconclusive = true;
+      }
+      setUnsure(inconclusive);
+      if (!best) return setRes('none');
+      setRes({ ...best, d: '' });
+    };
+    job.current?.();
+    if (!tasks.length) { job.current = null; setProgress(null); return finish([]); }
+    const outcomes: TransferOutcome[] = new Array(tasks.length);
+    let done = 0;
+    setRes(null); setProgress({ done: 0, total: tasks.length });
+    job.current = runTasks(tasks, (k, m) => {
+      outcomes[k] = m; done++;
+      if (done < tasks.length) return setProgress({ done, total: tasks.length });
+      job.current = null; setProgress(null);
+      finish(outcomes);
+    });
   };
   const name = (lid: string) => listLabel(s.lists.find((x) => x.id === lid)!, lang);
   if (!s.blocs.length) return null;
@@ -162,6 +193,7 @@ function BlocFlip({ s, r }: { s: Scenario; r: AllocationResult }) {
         <button className="btn primary small" onClick={run}>{L('Search', 'חיפוש')}</button>
       </div>
       <p className="small muted">{L('Searches every transfer between a list inside and a list outside the bloc (lists with ≥ 0.5% of votes), using the bloc assignment shown.', 'בודק כל מעבר בין רשימה בגוש לרשימה מחוצה לו (רשימות עם ≥ 0.5%), לפי השיוך לגושים המוצג.')}</p>
+      {progress && <p className="small muted" role="status">{L(`Searching exactly… ${progress.done} of ${progress.total} transfers`, `מחפש במדויק… ${progress.done} מתוך ${progress.total} מעברים`)}</p>}
       {res === 'none' && <p className="small">{unsure
         ? L('No transfer found among the vote counts tested; some searches could not test every count, so one may still exist.', 'לא נמצא מעבר בין מספרי הקולות שנבדקו; חלק מהחיפושים לא בדקו כל מספר, ולכן ייתכן שקיים.')
         : L('No single transfer between two lists achieves it.', 'אין מעבר יחיד בין שתי רשימות שמשיג זאת.')}</p>}

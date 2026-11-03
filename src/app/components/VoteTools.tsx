@@ -1,7 +1,9 @@
-import { useEffect, useMemo, useState } from 'react';
-import { goals, minimalChange, type SearchResult } from '../../engine/analysis.ts';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import type { SearchResult } from '../../engine/analysis.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import { toEngineInput, type Scenario, type SimList } from '../../model/scenario.ts';
+import { runTasks } from '../analysisPool.ts';
+import type { ListGoal } from '../analysisTasks.ts';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct, signed } from '../format.ts';
@@ -40,7 +42,7 @@ export function SourcePicker({ s, l }: { s: Scenario; l: SimList }) {
   );
 }
 
-type GoalKind = 'qualify' | 'gain' | 'lose';
+type GoalKind = ListGoal;
 
 export function VoteTools({ s, r, l }: { s: Scenario; r: AllocationResult; l: SimList }) {
   const L = useL();
@@ -51,6 +53,10 @@ export function VoteTools({ s, r, l }: { s: Scenario; r: AllocationResult; l: Si
   const lr = r.lists.find((x) => x.id === l.id)!;
   // a computed answer is only valid for the scenario it was computed on
   useEffect(() => setAnswer(null), [s, l.id, src]);
+  // searches run in a background worker; a change of scenario, list or source abandons them
+  const job = useRef<(() => void) | null>(null);
+  const [busy, setBusy] = useState(false);
+  useEffect(() => () => { job.current?.(); job.current = null; setBusy(false); }, [s, l.id, src]);
 
   const apply = (delta: number) => {
     if (delta > 0 && delta > maxGain(s, l, src)) return toast('error', L(`The chosen source has only ${fmtInt(maxGain(s, l, src))} votes to give.`, `במקור שנבחר יש רק ${fmtInt(maxGain(s, l, src))} קולות.`));
@@ -60,13 +66,11 @@ export function VoteTools({ s, r, l }: { s: Scenario; r: AllocationResult; l: Si
   };
 
   const run = (kind: GoalKind) => {
-    const input = toEngineInput(s);
-    const vs = toVoteSource(src);
-    let res: SearchResult;
-    if (kind === 'qualify') res = minimalChange(input, l.id, vs, goals.qualify(l.id));
-    else if (kind === 'gain') res = minimalChange(input, l.id, vs, goals.seatGain(l.id));
-    else res = minimalChange(input, l.id, vs, lr.seats > 0 ? goals.seatLoss(l.id) : goals.disqualify(l.id), 'lose');
-    setAnswer({ kind, res, src, listId: l.id });
+    job.current?.();
+    setBusy(true);
+    const listId = l.id;
+    const task = { kind: 'listSearch', input: toEngineInput(s), src: toVoteSource(src), goal: kind, id: listId, seats: lr.seats } as const;
+    job.current = runTasks([task], (_, res) => { job.current = null; setBusy(false); setAnswer({ kind, res, src, listId }); });
   };
 
   const changes = useMemo(() => {
@@ -104,6 +108,7 @@ export function VoteTools({ s, r, l }: { s: Scenario; r: AllocationResult; l: Si
         {lr.qualified && <button className="btn small" onClick={() => run('gain')}>{L(`Votes for seat ${lr.seats + 1}`, `קולות למנדט ה-${lr.seats + 1}`)}</button>}
         {lr.qualified && <button className="btn small" onClick={() => run('lose')}>{lr.seats > 0 ? L('Safety margin (votes before losing a seat)', 'מרווח ביטחון (קולות עד אובדן מנדט)') : L('Margin above threshold', 'מרווח מעל החסימה')}</button>}
       </div>
+      {busy && <p className="small muted" role="status">{L('Calculating exactly…', 'מחשב במדויק…')}</p>}
       {shown && (
         <div className="callout small" style={{ marginTop: 8 }} aria-live="polite">
           {shown.res.reason === 'already' && L('Already true — no change needed.', 'כבר מתקיים — אין צורך בשינוי.')}
