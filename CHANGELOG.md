@@ -8,13 +8,13 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 
 ### Added
 
-- Sixteen more elections: 1977, 1981, 1984, 1988, 1992, 1996, 1999, 2003, 2006, 2009, 2013, 2015,
-  April 2019, September 2019, 2020 and 2021 (Knessets 9–24), built from official sources; every
+- Twenty-two more elections: 1949, 1951, 1955, 1959, 1961, 1969, 1977, 1981, 1984, 1988, 1992, 1996, 1999, 2003, 2006, 2009, 2013, 2015,
+  April 2019, September 2019, 2020 and 2021 (Knessets 1–24 except 1965 and 1973), built from official sources, under each era's
+  allocation law; every
   list's official seats are reproduced exactly (1977 uses an explicitly labelled, inferred rule for
   a list with fewer candidates than seats).
 - Party colours follow the same party across elections.
-- The election picker lists 1949–1973 (Knessets 1–8) as not yet available while their
-  official sources are verified.
+- The election picker lists 1965 and 1973 as not yet available while they are verified.
 - Candidates the official results notice did not seat (e.g. 1999's Deri and Begin) are
   skipped when seats are filled, so the members shown match the notice.
 - Clear messages where data is missing: unavailable or partial candidate rosters, and
