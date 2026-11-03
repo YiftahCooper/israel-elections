@@ -74,7 +74,7 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
             <text x={30} y={135}>{fmtInt(from)}</text><text x={500} y={135} textAnchor="end">{fmtInt(to)}</text>
             <text x={4} y={24}>{maxSeats}</text><text x={4} y={120}>0</text>
           </svg>
-          <div className="tablewrap" style={{ maxHeight: 300 }}>
+          <div className="tablewrap" tabIndex={0} role="region" aria-label={L('Scrollable table', 'טבלה נגללת')} style={{ maxHeight: 300 }}>
             <table className="tbl">
               <thead><tr><th className="n">{L('Votes from', 'קולות מ')}</th><th className="n">{L('to', 'עד')}</th><th className="n">{L('Seats', 'מנדטים')}</th><th>{L('Other lists vs the first row', 'רשימות אחרות לעומת השורה הראשונה')}</th></tr></thead>
               <tbody>{segs.map((sg, k) => (
@@ -114,7 +114,7 @@ function ThresholdSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
         <button className="btn primary small" onClick={run}>{L('Run', 'הרצה')}</button>
       </div>
       {segs && (
-        <div className="tablewrap" style={{ maxHeight: 300, marginTop: 8 }}>
+        <div className="tablewrap" tabIndex={0} role="region" aria-label={L('Scrollable table', 'טבלה נגללת')} style={{ maxHeight: 300, marginTop: 8 }}>
           <table className="tbl">
             <thead><tr><th className="n">{L('Threshold above', 'אחוז חסימה מעל')}</th><th className="n">{L('up to', 'עד')}</th><th className="n">{L('Lists in', 'רשימות')}</th><th>{L('Difference from the current result', 'הבדל מהתוצאה הנוכחית')}</th></tr></thead>
             <tbody>{segs.map((sg, k) => (

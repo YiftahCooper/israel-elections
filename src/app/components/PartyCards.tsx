@@ -53,7 +53,7 @@ export function PartyCards({ s, r, base, baseR }: { s: Scenario; r: AllocationRe
               const next = selected === l.id ? null : l.id;
               setState({ selectedListId: next });
               // on narrow screens the details panel is elsewhere on the page: bring it into view
-              if (next && window.innerWidth <= 1180) requestAnimationFrame(() => document.getElementById('detail-col')?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+              if (next && window.innerWidth <= 1180) requestAnimationFrame(() => document.getElementById('detail-col')?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }));
             }}>
               <Slip letters={l.letters} color={l.color} />
               <div style={{ minWidth: 0 }}>
@@ -63,7 +63,7 @@ export function PartyCards({ s, r, base, baseR }: { s: Scenario; r: AllocationRe
                   <span className="tabnum">{fmtPct(l.votes, total, digits)}</span>
                   {l.withdrawn ? <span className="chip no">{L('Withdrew', 'פרשה')}</span>
                     : lr.qualified ? null : <span className="chip no">{L('Below threshold', 'מתחת לאחוז החסימה')}</span>}
-                  {partner && <span className={`chip ${agr!.active ? 'ok' : ''}`} title={agr!.active ? L('Surplus-vote agreement (active)', 'הסכם עודפים (בתוקף)') : L('Surplus-vote agreement with no effect', 'הסכם עודפים ללא השפעה')}>⇄ {listLabel(partner, lang)}{agr!.active ? '' : ' ✕'}</span>}
+                  {partner && <span className={`chip ${agr!.active ? 'ok' : ''}`} title={agr!.active ? L('Surplus-vote agreement (active)', 'הסכם עודפים (בתוקף)') : L('Surplus-vote agreement with no effect', 'הסכם עודפים ללא השפעה')}><span className="clip">{`⇄ ${listLabel(partner, lang)}`}</span>{agr!.active ? '' : <><span aria-hidden> ✕</span><span className="sr-only">{L(' (no effect)', ' (ללא השפעה)')}</span></>}</span>}
                 </div>
               </div>
               <div className="seats">{lr.seats}<small dir="ltr">{d === 0 ? <span className="muted">±0</span> : <span className={d > 0 ? 'up' : 'down'}>{d > 0 ? `+${d}` : `−${-d}`}</span>}</small></div>

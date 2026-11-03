@@ -160,7 +160,7 @@ function Shell() {
         {level === 'simple' && !hintDismissed && <div className="banner info" role="status">{L('Click a party to change its votes and watch the seats move. More tools: Standard and Expert (top right).', 'לחצו על מפלגה כדי לשנות את קולותיה ולראות איך המנדטים זזים. כלים נוספים: מצב רגיל ומומחה (למעלה).')} <button className="btn small ghost" onClick={() => setState({ hintDismissed: true })} aria-label={L('Dismiss', 'סגירה')}>✕</button></div>}
         {loadBanner}
         {s.mode === 'experimental' && <div className="banner info" role="status">{L('Experimental rules: this is an alternative electoral system, not a legally possible Israeli result.', 'כללים ניסיוניים: זוהי שיטת בחירות חלופית ולא תוצאה אפשרית לפי החוק בישראל.')}{(() => { const c = ruleChanges(s, lang); return c.length ? <> {L('Changed: ', 'שינויים: ')}<b>{c.join(' · ')}</b>.</> : null; })()} <button className="btn small" onClick={() => dispatch({ type: 'setMode', mode: 'historical' })}>{L('Back to the real rules', 'חזרה לכללים האמיתיים')}</button></div>}
-        {notice && <div className="banner info" role="status">{notice} <button className="btn small ghost" onClick={() => setState({ notice: null })}>✕</button></div>}
+        {notice && <div className="banner info" role="status">{notice} <button className="btn small ghost" onClick={() => setState({ notice: null })} aria-label={L('Dismiss', 'סגירה')}>✕</button></div>}
         {issues.map((x, i) => <div key={i} className={`banner ${x.level === 'error' ? 'err' : 'warn'}`} role="alert">{lang === 'he' ? x.he : x.en}</div>)}
         {r.warnings.filter((w) => w.code !== 'internal-loss').map((w, i) => tieAffectsSeats(s, w)
           ? <div key={`w${i}`} className="banner warn" role="alert">{warningText(w, s, lang)}</div>
@@ -181,9 +181,20 @@ function Shell() {
         <div className="bottom">
           <section className="panel">
             <div className="tabs" role="tablist" aria-label={L('Analysis', 'ניתוח')}>
-              {tabs.map((t) => <button key={t.id} role="tab" aria-selected={tab === t.id} onClick={() => setTab(t.id)} onPointerEnter={() => prefetchTab(t.id)} onFocus={() => prefetchTab(t.id)}>{t.label}</button>)}
+              {tabs.map((t, i) => <button key={t.id} id={`tab-${t.id}`} role="tab" aria-selected={tab === t.id} aria-controls="analysis-panel" tabIndex={tab === t.id ? 0 : -1}
+                onClick={() => setTab(t.id)} onPointerEnter={() => prefetchTab(t.id)} onFocus={() => prefetchTab(t.id)}
+                onKeyDown={(e) => {
+                  // WAI-ARIA tabs: arrows move between tabs (mirrored in RTL), Home/End jump to the ends
+                  const rtl = lang === 'he';
+                  const next = e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1
+                    : e.key === (rtl ? 'ArrowLeft' : 'ArrowRight') ? (i + 1) % tabs.length
+                    : e.key === (rtl ? 'ArrowRight' : 'ArrowLeft') ? (i - 1 + tabs.length) % tabs.length : -1;
+                  if (next < 0) return;
+                  e.preventDefault(); setTab(tabs[next].id);
+                  (e.currentTarget.parentElement?.children[next] as HTMLElement | undefined)?.focus();
+                }}>{t.label}</button>)}
             </div>
-            <div className="body" role="tabpanel"><ErrorBoundary label={all[tab]} resetKey={`${tab}|${s.id}|${s.log.length}`}><Suspense fallback={<p className="muted" role="status">{L('Loading…', 'טוען…')}</p>}>
+            <div className="body" role="tabpanel" id="analysis-panel" aria-labelledby={`tab-${tab}`}><ErrorBoundary label={all[tab]} resetKey={`${tab}|${s.id}|${s.log.length}`}><Suspense fallback={<p className="muted" role="status">{L('Loading…', 'טוען…')}</p>}>
               {tab === 'whatif' && <WhatIf ds={ds} />}
               {tab === 'coal' && <Coalitions s={s} r={r} />}
               {tab === 'security' && <SeatSecurity s={s} r={r} />}

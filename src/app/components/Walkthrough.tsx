@@ -91,7 +91,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
               </div>
             </div>
           )}
-          <div className="tablewrap" style={{ maxHeight: 360 }}>
+          <div className="tablewrap" tabIndex={0} role="region" aria-label={L('Scrollable table', 'טבלה נגללת')} style={{ maxHeight: 360 }}>
             <table className="tbl">
               <thead><tr><th>{L('List / pair', 'רשימה / צמד')}</th><th className="n">{L('Votes', 'קולות')}</th><th className="n">{L('Seats so far', 'מנדטים עד כה')}</th><th className="n">{L('Quotient', 'מודד')}</th>{advanced && <th className="n">{L('Exact', 'מדויק')}</th>}</tr></thead>
               <tbody>
@@ -148,7 +148,7 @@ function ListTable({ s, r, rows, cols, heads }: { s: Scenario; r: AllocationResu
   const L = useL();
   void r;
   return (
-    <div className="tablewrap" style={{ maxHeight: 380 }}>
+    <div className="tablewrap" tabIndex={0} role="region" aria-label={L('Scrollable table', 'טבלה נגללת')} style={{ maxHeight: 380 }}>
       <table className="tbl">
         <thead><tr><th>{L('List', 'רשימה')}</th>{heads.map((h) => <th key={h} className="n">{h}</th>)}</tr></thead>
         <tbody>{rows.map((l) => { const sl = s.lists.find((x) => x.id === l.id)!; return (

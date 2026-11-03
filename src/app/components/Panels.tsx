@@ -137,7 +137,7 @@ export function Localities({ s }: { s: Scenario }) {
           <option value="registered">{L('Largest electorate', 'הגדולים ביותר')}</option><option value="turnout">{L('Highest turnout', 'הצבעה גבוהה')}</option><option value="name">{L('Name', 'שם')}</option>
         </select>
       </div>
-      <div className="tablewrap">
+      <div className="tablewrap" tabIndex={0} role="region" aria-label={L('Scrollable table', 'טבלה נגללת')}>
         <table className="tbl">
           <thead><tr><th>{L('Locality', 'יישוב')}</th><th className="n">{L('Registered', 'בעלי זכות')}</th><th className="n">{L('Cast', 'מצביעים')}</th><th className="n">{L('Turnout', 'הצבעה')}</th><th className="n">{L('Valid', 'כשרים')}</th><th>{L('Leading lists', 'רשימות מובילות')}</th></tr></thead>
           <tbody>{rows.map(({ r, key }) => {

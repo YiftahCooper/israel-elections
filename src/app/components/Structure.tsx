@@ -110,7 +110,7 @@ function Merge({ s }: { s: Scenario }) {
     <div>
       <h4>{L('Merge lists into one', 'איחוד רשימות')}</h4>
       <p className="small ink2">{L('The merged list is one list for the threshold and for seat allocation. Its agreements with others are dropped; add new ones afterwards.', 'הרשימה המאוחדת היא רשימה אחת לאחוז החסימה ולחלוקה. הסכמי העודפים של המתאחדות מבוטלים; ניתן להוסיף חדשים.')}</p>
-      <div className="tablewrap" style={{ maxHeight: 180 }}>
+      <div className="tablewrap" tabIndex={0} role="region" aria-label={L('Scrollable table', 'טבלה נגללת')} style={{ maxHeight: 180 }}>
         {[...s.lists].sort((a, b) => b.votes - a.votes).slice(0, 30).map((l) => (
           <label key={l.id} className="row small" style={{ padding: '3px 8px' }}>
             <input type="checkbox" checked={ids.includes(l.id)} onChange={(e) => setIds(e.target.checked ? [...ids, l.id] : ids.filter((x) => x !== l.id))} />

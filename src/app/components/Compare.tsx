@@ -102,7 +102,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
 
       <details open={advanced}>
       <summary className="small">{L('Full table of votes and seats', 'טבלה מלאה של קולות ומנדטים')}</summary>
-      <div className="tablewrap">
+      <div className="tablewrap" tabIndex={0} role="region" aria-label={L('Scrollable table', 'טבלה נגללת')}>
         <table className="tbl">
           <thead><tr>
             <th>{L('List(s)', 'רשימה/ות')}</th><th className="n">{L('Votes before', 'קולות לפני')}</th><th className="n">{L('Votes after', 'קולות אחרי')}</th><th className="n">Δ</th><th className="n">Δ%</th>

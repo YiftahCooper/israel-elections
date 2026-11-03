@@ -124,7 +124,7 @@ function ShareTable({ s, r }: { s: Scenario; r: AllocationResult }) {
   const digits = useDigits();
   const total = r.totalValid;
   return (
-    <div className="tablewrap">
+    <div className="tablewrap" tabIndex={0} role="region" aria-label={L('Scrollable table', 'טבלה נגללת')}>
       <table className="tbl">
         <thead><tr><th>{L('List', 'רשימה')}</th><th className="n">{L('Votes', 'קולות')}</th><th className="n">{L('% valid', '% מהכשרים')}</th><th className="n">{L('% qualifying', '% מהמשתתפים')}</th><th className="n">{L('Seats', 'מנדטים')}</th><th className="n">{L('% seats', '% מנדטים')}</th><th className="n">{L('Seats − votes (pp)', 'מנדטים − קולות (נ"א)')}</th></tr></thead>
         <tbody>

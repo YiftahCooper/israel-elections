@@ -101,7 +101,7 @@ export function Turnout({ s }: { s: Scenario }) {
             <div className="small" style={{ margin: '6px 0' }}>{L('Localities where these lists together received at least', 'יישובים שבהם הרשימות האלה יחד קיבלו לפחות')}{' '}
               <input type="text" value={presetPct} onChange={(e) => setPresetPct(e.target.value)} style={{ width: 56 }} aria-label="%" />%:
             </div>
-            <div className="tablewrap" style={{ maxHeight: 150 }}>
+            <div className="tablewrap" tabIndex={0} role="region" aria-label={L('Scrollable table', 'טבלה נגללת')} style={{ maxHeight: 150 }}>
               {[...s.lists].filter((l) => l.originIds.length).sort((a, b) => b.votes - a.votes).slice(0, 20).map((l) => (
                 <label key={l.id} className="row small" style={{ padding: '2px 8px' }}><input type="checkbox" checked={presetLists.includes(l.id)} onChange={(e) => setPresetLists(e.target.checked ? [...presetLists, l.id] : presetLists.filter((x) => x !== l.id))} />{listLabel(l, lang)}</label>
               ))}
@@ -123,7 +123,7 @@ export function Turnout({ s }: { s: Scenario }) {
             <label className="row"><input type="radio" checked={prefMode === 'group'} disabled={!groupPref} onChange={() => setPrefMode('group')} />{L('Like the group’s current voters', 'כמו המצביעים הנוכחיים בקבוצה')}</label>
             <label className="row"><input type="radio" checked={prefMode === 'custom'} onChange={() => setPrefMode('custom')} />{L('Custom distribution (%)', 'התפלגות מותאמת (%)')}</label>
           </div>
-          <div className="tablewrap" style={{ maxHeight: 260 }}>
+          <div className="tablewrap" tabIndex={0} role="region" aria-label={L('Scrollable table', 'טבלה נגללת')} style={{ maxHeight: 260 }}>
             <table className="tbl">
               <thead><tr><th>{L('List', 'רשימה')}</th><th className="n">{L('Share', 'חלק')}</th><th className="n">{L('Added votes', 'קולות נוספים')}</th></tr></thead>
               <tbody>

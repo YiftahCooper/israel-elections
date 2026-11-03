@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario, SimList } from '../../model/scenario.ts';
 import { listLabel, seatedOrder } from '../derive.ts';
@@ -17,12 +17,14 @@ export function seatOrder(s: Scenario, r: AllocationResult, colorBy: 'list' | 'b
   for (const l of order) {
     const lr = r.lists.find((x) => x.id === l.id);
     if (!lr) continue;
-    const parties = [...new Set(l.candidates.map((c) => c.partyHe ?? ''))];
+    // seats go to the seated order: candidates the official notice did not seat are skipped
+    const seated = seatedOrder(l);
+    const parties = [...new Set(seated.map((c) => c.partyHe ?? ''))];
     for (let i = 0; i < lr.seats; i++) {
       let color = l.color;
       if (colorBy === 'bloc') color = s.blocs.find((b) => b.id === l.bloc)?.color ?? '#8e8e93';
       if (colorBy === 'party' && parties.length > 1) {
-        const pi = parties.indexOf(l.candidates[i]?.partyHe ?? '');
+        const pi = parties.indexOf(seated[i]?.partyHe ?? '');
         color = shade(l.color, pi);
       }
       out.push({ listId: l.id, idx: i, color, remainder: i >= lr.initialSeats });
@@ -40,7 +42,18 @@ function shade(hex: string, i: number): string {
   return `#${((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1)}`;
 }
 
-export function Hemicycle({ s, r, compact = false, title }: { s: Scenario; r: AllocationResult; compact?: boolean; title?: string }) {
+/** True on narrow screens, where list labels around the arc would be unreadably small. */
+function useNarrow(query = '(max-width: 600px)') {
+  const [narrow, setNarrow] = useState(() => typeof matchMedia === 'function' && matchMedia(query).matches);
+  useEffect(() => {
+    if (typeof matchMedia !== 'function') return;
+    const m = matchMedia(query); const on = () => setNarrow(m.matches);
+    m.addEventListener('change', on); return () => m.removeEventListener('change', on);
+  }, [query]);
+  return narrow;
+}
+
+export function Hemicycle({ s, r, compact: compactProp = false, title }: { s: Scenario; r: AllocationResult; compact?: boolean; title?: string }) {
   const L = useL();
   const lang = useLang();
   const { standard, expert } = useLevel();
@@ -49,6 +62,9 @@ export function Hemicycle({ s, r, compact = false, title }: { s: Scenario; r: Al
   const colorBy = useStore((st) => (expert ? st.colorBy : 'list'));
   const selected = useStore((st) => st.selectedListId);
   const svgRef = useRef<SVGSVGElement>(null);
+  // on a phone the arc fills the width without labels; the legend below names the lists instead
+  const narrow = useNarrow();
+  const compact = compactProp || narrow;
   const [hover, setHover] = useState<{ seat: SeatInfo; x: number; y: number } | null>(null);
   const seats = useMemo(() => seatOrder(s, r, colorBy), [s, r, colorBy]);
   const total = s.rules.seats;
@@ -93,6 +109,13 @@ export function Hemicycle({ s, r, compact = false, title }: { s: Scenario; r: Al
     img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(xml);
   };
 
+  const summary = s.lists.map((l) => ({ l, n: r.lists.find((x) => x.id === l.id)?.seats ?? 0 })).filter((x) => x.n > 0)
+    .map(({ l, n }) => `${listLabel(l, lang)} ${n}`).join(', ');
+  // how a remainder seat was won depends on the era's method
+  const remainderHow = s.rules.remainderMethod === 'largest-remainder' ? L('Seat won by largest remainder', 'מנדט שהושג בשיטת השארית הגדולה')
+    : s.rules.remainderMethod === 'sainte-lague' ? L('Seat won by Sainte-Laguë', 'מנדט שהושג בשיטת סנט-לגה')
+    : s.rules.remainderRequiresInitialSeat ? L('Seat won by the highest averages', 'מנדט שהושג בשיטת הממוצע הגבוה')
+    : L('Seat won in the remainder stage (Bader–Ofer)', 'מנדט שהושג בחלוקת העודפים (בדר–עופר)');
   const hv = hover ? listOf(hover.seat.listId) : null;
   const cand = hover && hv ? seatedOrder(hv)[hover.seat.idx] ?? null : null;
 
@@ -100,14 +123,13 @@ export function Hemicycle({ s, r, compact = false, title }: { s: Scenario; r: Al
   if (layout === 'hemicycle') {
     const cx = W / 2, cy = 470, R = 400;
     body = (
-      <svg ref={svgRef} viewBox={compact ? `40 40 920 450` : `-270 0 1540 ${H}`} role="img" aria-label={title ?? L('Knesset seat diagram', 'תרשים מושבי הכנסת')}>
+      <svg ref={svgRef} viewBox={compact ? `40 40 920 450` : `-270 0 1540 ${H}`} role="img" aria-label={`${title ?? L('Knesset seat diagram', 'תרשים מושבי הכנסת')}: ${summary}`}>
         {seats.map((st, i) => {
           const p = pos[rtl ? pos.length - 1 - i : i]; if (!p) return null;
           const dim = selected && selected !== st.listId;
           return (
             <circle key={i} className={`seat ${dim ? 'dim' : ''}`} cx={cx + p.x * R} cy={cy + p.y * R} r={rad * R} fill={st.color}
               stroke="var(--surface)" strokeWidth={2}
-              aria-label={`${listLabel(listOf(st.listId), lang)}, ${L("seat", "מושב")} ${st.idx + 1}: ${listOf(st.listId).candidates[st.idx]?.nameHe ?? L("vacant", "ריק")}`}
               onMouseEnter={(e) => onSeat(st, e)} onMouseLeave={() => setHover(null)} onFocus={(e) => onSeat(st, e)} onBlur={() => setHover(null)}
               onClick={() => setState({ selectedListId: selected === st.listId ? null : st.listId })} />
           );
@@ -132,7 +154,7 @@ export function Hemicycle({ s, r, compact = false, title }: { s: Scenario; r: Al
       const row = { l, n, y }; y += h + 10; return row;
     });
     body = (
-      <svg ref={svgRef} viewBox={`0 0 ${W} ${y + 10}`} role="img" aria-label={title ?? L('Seats by list', 'מנדטים לפי רשימה')}>
+      <svg ref={svgRef} viewBox={`0 0 ${W} ${y + 10}`} role="img" aria-label={`${title ?? L('Seats by list', 'מנדטים לפי רשימה')}: ${summary}`}>
         {rows.map(({ l, n, y: y0 }) => (
           <g key={l.id}>
             <text x={rtl ? W - 10 : 10} y={y0 + 12} textAnchor={rtl ? 'end' : 'start'} fontSize={14} fill="var(--ink)" fontWeight={600}>{isolate(`${listLabel(l, lang)} ${n}`)}</text>
@@ -140,8 +162,8 @@ export function Hemicycle({ s, r, compact = false, title }: { s: Scenario; r: Al
               const col = k % perRow, row = Math.floor(k / perRow);
               const x0 = 260 + col * (cell + gap);
               const x = rtl ? W - x0 - cell : x0;
-              return <rect key={k} className="seat" aria-label={`${listLabel(l, lang)}, ${L('seat', 'מושב')} ${k + 1}: ${l.candidates[k]?.nameHe ?? L('vacant', 'ריק')}`} x={x} y={y0 + row * (cell + gap)} width={cell} height={cell} rx={3} fill={st.color} stroke="var(--surface)" strokeWidth={2}
-                onMouseEnter={(e) => onSeat(st, e)} onMouseLeave={() => setHover(null)} onClick={() => setState({ selectedListId: l.id })} />;
+              return <rect key={k} className="seat" x={x} y={y0 + row * (cell + gap)} width={cell} height={cell} rx={3} fill={st.color} stroke="var(--surface)" strokeWidth={2}
+                onMouseEnter={(e) => onSeat(st, e)} onMouseLeave={() => setHover(null)} onClick={() => setState({ selectedListId: selected === l.id ? null : l.id })} />;
             })}
           </g>
         ))}
@@ -159,10 +181,10 @@ export function Hemicycle({ s, r, compact = false, title }: { s: Scenario; r: Al
             : hv.rosterUnavailable || hv.rosterTruncated ? <div className="muted">{L(`Seat ${hover.seat.idx + 1} of the list; candidate names are not available for this election`, `מושב ${hover.seat.idx + 1} של הרשימה; שמות המועמדים אינם זמינים לבחירות אלה`)}</div>
             : <div className="down">{L('Vacant — the list has too few candidates', 'מושב ריק — אין די מועמדים ברשימה')}</div>}
           {cand?.partyHe && <div className="muted small">{L('Party: ', 'מפלגה: ')}{cand.partyHe}</div>}
-          <div className="muted small">{hover.seat.remainder ? L('Seat won in the remainder stage (Bader–Ofer)', 'מנדט שהושג בחלוקת העודפים (בדר–עופר)') : L('Seat won by whole quota', 'מנדט שהושג במודד שלם')}</div>
+          <div className="muted small">{hover.seat.remainder ? remainderHow : L('Seat won by whole quota', 'מנדט שהושג במודד שלם')}</div>
         </div>
       )}
-      {!compact && standard && (
+      {(!compactProp && (standard || narrow)) && (
         <div className="legend" role="group" aria-label={L('Lists in the Knesset', 'הרשימות בכנסת')} style={{ marginTop: 6 }}>
           {s.lists.map((l) => ({ l, n: r.lists.find((x) => x.id === l.id)?.seats ?? 0 })).filter((x) => x.n > 0).map(({ l, n }) => (
             <button key={l.id} aria-pressed={selected === l.id} onClick={() => setState({ selectedListId: selected === l.id ? null : l.id })}>
@@ -171,7 +193,7 @@ export function Hemicycle({ s, r, compact = false, title }: { s: Scenario; r: Al
           ))}
         </div>
       )}
-      {!compact && standard && (
+      {!compactProp && standard && (
         <div className="row" style={{ justifyContent: 'flex-end', marginTop: 4 }}>
           <button className="btn small ghost" onClick={() => exportSvg('svg')}>{L('Export SVG', 'ייצוא SVG')}</button>
           <button className="btn small ghost" onClick={() => exportSvg('png')}>{L('Export PNG', 'ייצוא PNG')}</button>

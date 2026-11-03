@@ -4,7 +4,7 @@
   --surface-2: #f0efea;
   --ink: #0b0b0b;
   --ink-2: #52514e;
-  --muted: #7a7873;
+  --muted: #67655f;
   --grid: #e1e0d9;
   --axis: #c3c2b7;
   --line: #dcdad2;
@@ -75,6 +75,7 @@ a { color: var(--focus); }
   .left { grid-column: 1 / -1; position: static; max-height: 70vh; order: 3; }
 }
 @media (max-width: 760px) {
+  .legend button { min-height: 32px; } /* comfortable touch targets where the legend replaces arc labels */
   .topbar { position: static; gap: 6px 8px; }
   .brand small { display: none; }
   .main { grid-template-columns: 1fr; padding: 10px; }
@@ -132,7 +133,9 @@ label.field { display: grid; gap: 3px; font-size: 12.5px; color: var(--ink-2); }
 
 /* ---------- info tooltip */
 .info { position: relative; display: inline-flex; }
-.info > button { border: 1px solid var(--axis); background: transparent; color: var(--muted); width: 16px; height: 16px; border-radius: 50%; font-size: 10.5px; line-height: 1; padding: 0; cursor: help; }
+.info > button { position: relative; border: 0; background: transparent; color: var(--muted); width: 24px; height: 24px; margin: -4px; padding: 0; font-size: 10.5px; line-height: 1; cursor: help; display: inline-grid; place-items: center; }
+.info > button::before { content: ''; position: absolute; inset: 4px; border: 1px solid var(--axis); border-radius: 50%; }
+.info > button:hover::before, .info > button[aria-expanded="true"]::before { border-color: var(--ink-2); }
 .info .pop { position: absolute; z-index: 40; inset-block-start: 22px; inset-inline-start: -8px; width: 300px; max-width: 80vw; padding: 10px 12px; border-radius: 8px; background: var(--surface); border: 1px solid var(--line); box-shadow: 0 8px 28px rgba(0,0,0,.18); color: var(--ink); font-size: 12.5px; font-weight: 400; text-align: start; white-space: normal; }
 .info .pop b { display: block; margin-bottom: 3px; }
 
@@ -149,9 +152,11 @@ label.field { display: grid; gap: 3px; font-size: 12.5px; color: var(--ink-2); }
 .card[aria-pressed="true"] { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
 .card .name { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .card .meta { font-size: 12px; color: var(--ink-2); display: flex; gap: 8px; flex-wrap: wrap; }
+.card .meta .chip { max-width: 100%; min-width: 0; } /* long partner names stay inside the card */
+.clip { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
 .card .seats { font-size: 22px; font-weight: 700; text-align: end; line-height: 1; font-variant-numeric: tabular-nums; }
 .card .seats small { display: block; font-size: 11.5px; font-weight: 600; margin-top: 3px; }
-.card.out { opacity: .78; }
+.card.out { background: var(--surface-2); } /* not opacity: faded text fell below 4.5:1 contrast */
 .card.out .seats { color: var(--muted); }
 
 /* ---------- hemicycle */

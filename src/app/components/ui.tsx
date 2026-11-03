@@ -3,7 +3,10 @@ import { GLOSSARY, useL, useLang } from '../i18n.ts';
 
 /** Accessible info popover: opens on hover, focus or click; Escape closes. */
 export function Info({ title, children, term }: { title?: string; children?: ReactNode; term?: string }) {
-  const [open, setOpen] = useState(false);
+  // 'hover' and 'focus' are transient; 'pinned' (a click or tap) stays open until Escape, an outside
+  // press or a second click. A click used to toggle a popover that hover or focus had just opened,
+  // so it closed at once, and touch users could never open it.
+  const [open, setOpen] = useState<false | 'hover' | 'focus' | 'pinned'>(false);
   const id = useId();
   const lang = useLang();
   const ref = useRef<HTMLSpanElement>(null);
@@ -11,14 +14,19 @@ export function Info({ title, children, term }: { title?: string; children?: Rea
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false);
-    const onDoc = (e: MouseEvent) => { if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false); };
-    document.addEventListener('keydown', onKey); document.addEventListener('mousedown', onDoc);
-    return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('mousedown', onDoc); };
+    const onDoc = (e: PointerEvent) => { if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false); };
+    document.addEventListener('keydown', onKey); document.addEventListener('pointerdown', onDoc);
+    return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', onDoc); };
   }, [open]);
   const heading = title ?? (g ? (lang === 'he' ? g.he : `${g.en} (${g.he})`) : '');
   return (
-    <span className="info" ref={ref} onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
-      <button type="button" aria-label={heading || 'info'} aria-expanded={open} aria-describedby={open ? id : undefined} onClick={() => setOpen((o) => !o)} onFocus={() => setOpen(true)} onBlur={() => setOpen(false)}>i</button>
+    <span className="info" ref={ref}
+      onPointerEnter={(e) => { if (e.pointerType === 'mouse') setOpen((o) => o || 'hover'); }}
+      onPointerLeave={(e) => { if (e.pointerType === 'mouse') setOpen((o) => (o === 'hover' ? false : o)); }}>
+      <button type="button" aria-label={heading || 'info'} aria-expanded={!!open} aria-describedby={open ? id : undefined}
+        onClick={() => setOpen((o) => (o === 'pinned' ? false : 'pinned'))}
+        onFocus={(e) => { if (e.currentTarget.matches(':focus-visible')) setOpen((o) => o || 'focus'); }}
+        onBlur={(e) => { if (!ref.current?.contains(e.relatedTarget as Node)) setOpen((o) => (o === 'hover' ? o : false)); }}>i</button>
       {open && (
         <span className="pop" role="tooltip" id={id} ref={(el) => {
           if (!el) return;

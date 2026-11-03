@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { ElectionDataset, ElectionId, ElectionIndexEntry } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
@@ -38,6 +38,17 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
   const saved = useStore((st) => st.saved);
   const fileRef = useRef<HTMLInputElement>(null);
   const [menu, setMenu] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const menuButton = useRef<HTMLButtonElement>(null);
+  // the menu closes on Escape (focus returns to its button) or a press outside it, not on mouse leave,
+  // so keyboard and touch users can use it
+  useEffect(() => {
+    if (!menu) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') { setMenu(false); menuButton.current?.focus(); } };
+    const onDown = (e: PointerEvent) => { if (!menuRef.current?.contains(e.target as Node)) setMenu(false); };
+    document.addEventListener('keydown', onKey); document.addEventListener('pointerdown', onDown);
+    return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', onDown); };
+  }, [menu]);
   const [shareUrl, setShareUrl] = useState('');
 
   const exportCsv = () => {
@@ -63,10 +74,10 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
       <button className="btn small" onClick={() => { if (!s?.log.length || confirm(L('Reset the whole election to the historical result? (Undo can restore it.)', 'לאפס את כל הבחירות לתוצאה ההיסטורית? (ניתן לבטל)'))) resetAll(); }} disabled={!s?.log.length}>{level === 'simple' ? L('Start over', 'התחלה מחדש') : L('Reset all', 'איפוס')}</button>
       {level !== 'simple' && <>
       <button className="btn small" onClick={() => { if (saveCurrent(s?.name || undefined)) toast('info', L('Saved in this browser.', 'נשמר בדפדפן זה.')); }} disabled={!s}>{L('Save', 'שמירה')}</button>
-      <div style={{ position: 'relative' }}>
-        <button className="btn small" aria-expanded={menu} onClick={() => setMenu((m) => !m)}>{L('Scenarios', 'תרחישים')} ▾</button>
+      <div style={{ position: 'relative' }} ref={menuRef}>
+        <button className="btn small" ref={menuButton} aria-expanded={menu} aria-controls="scenarios-menu" onClick={() => setMenu((m) => !m)}>{L('Scenarios', 'תרחישים')} ▾</button>
         {menu && (
-          <div className="panel" style={{ position: 'absolute', zIndex: 50, insetInlineStart: 0, top: 34, width: 300, padding: 8 }} onMouseLeave={() => setMenu(false)}>
+          <div className="panel" id="scenarios-menu" style={{ position: 'absolute', zIndex: 50, insetInlineStart: 0, top: 34, width: 300, maxWidth: 'calc(100vw - 20px)', padding: 8 }}>
             <button className="btn small" style={{ width: '100%', marginBottom: 6 }} onClick={() => { duplicateCurrent(); setMenu(false); }}>{L('Duplicate (branch) current', 'שכפול (הסתעפות) הנוכחי')}</button>
             <button className="btn small" style={{ width: '100%', marginBottom: 6 }} onClick={async () => {
               const url = await shareLink(); setShareUrl(url);
@@ -97,7 +108,11 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
             await openElection(sc.electionId);
             const st = getState(); setState({ scenario: sc, past: st.scenario && st.scenario.electionId === sc.electionId ? [...st.past, st.scenario] : st.past, future: [] });
             toast('info', L('Scenario imported.', 'התרחיש יובא.'));
-          } catch (err) { toast('error', String(err)); }
+          } catch (err) {
+            // importScenarioJson throws messages written for people; show them without the "Error:" prefix
+            const msg = err instanceof Error ? err.message : String(err);
+            toast('error', L(msg, `לא ניתן לייבא את התרחיש (${msg})`));
+          }
           e.target.value = ''; setMenu(false);
         }} />
       </div>
