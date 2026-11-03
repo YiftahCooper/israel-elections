@@ -33,6 +33,6 @@ describe('historical statutory threshold eras', () => {
     expect(ISRAEL_2004.threshold).toEqual({ num: 1n, den: 50n });
     expect(ISRAEL_2014.threshold).toEqual({ num: 13n, den: 400n });
     expect(() => historicalRules('unverified')).toThrow('unknown rule set');
-    expect(validateScenario({ ...scenarioFromDataset(loadDataset('k25')), electionId: 'k15' })).toContain('unknown election "k15"');
+    expect(validateScenario({ ...scenarioFromDataset(loadDataset('k25')), electionId: 'k27' })).toContain('unknown election "k27"');
   });
 });

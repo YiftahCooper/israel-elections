@@ -1,5 +1,200 @@
 [
   {
+    "id": "k1",
+    "knesset": 1,
+    "date": "1949-01-25",
+    "nameHe": "הבחירות לכנסת ה-1",
+    "nameEn": "Election to the 1st Knesset",
+    "available": false,
+    "status": {
+      "stage": "pending-data-verification",
+      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
+      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+    }
+  },
+  {
+    "id": "k2",
+    "knesset": 2,
+    "date": "1951-07-30",
+    "nameHe": "הבחירות לכנסת ה-2",
+    "nameEn": "Election to the 2nd Knesset",
+    "available": false,
+    "status": {
+      "stage": "pending-data-verification",
+      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
+      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+    }
+  },
+  {
+    "id": "k3",
+    "knesset": 3,
+    "date": "1955-07-26",
+    "nameHe": "הבחירות לכנסת ה-3",
+    "nameEn": "Election to the 3rd Knesset",
+    "available": false,
+    "status": {
+      "stage": "pending-data-verification",
+      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
+      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+    }
+  },
+  {
+    "id": "k4",
+    "knesset": 4,
+    "date": "1959-11-03",
+    "nameHe": "הבחירות לכנסת ה-4",
+    "nameEn": "Election to the 4th Knesset",
+    "available": false,
+    "status": {
+      "stage": "pending-data-verification",
+      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
+      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+    }
+  },
+  {
+    "id": "k5",
+    "knesset": 5,
+    "date": "1961-08-15",
+    "nameHe": "הבחירות לכנסת ה-5",
+    "nameEn": "Election to the 5th Knesset",
+    "available": false,
+    "status": {
+      "stage": "pending-data-verification",
+      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
+      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+    }
+  },
+  {
+    "id": "k6",
+    "knesset": 6,
+    "date": "1965-11-02",
+    "nameHe": "הבחירות לכנסת ה-6",
+    "nameEn": "Election to the 6th Knesset",
+    "available": false,
+    "status": {
+      "stage": "pending-data-verification",
+      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
+      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+    }
+  },
+  {
+    "id": "k7",
+    "knesset": 7,
+    "date": "1969-10-28",
+    "nameHe": "הבחירות לכנסת ה-7",
+    "nameEn": "Election to the 7th Knesset",
+    "available": false,
+    "status": {
+      "stage": "pending-data-verification",
+      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
+      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+    }
+  },
+  {
+    "id": "k8",
+    "knesset": 8,
+    "date": "1973-12-31",
+    "nameHe": "הבחירות לכנסת ה-8",
+    "nameEn": "Election to the 8th Knesset",
+    "available": false,
+    "status": {
+      "stage": "pending-data-verification",
+      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
+      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+    }
+  },
+  {
+    "id": "k9",
+    "knesset": 9,
+    "date": "1977-05-17",
+    "nameHe": "הבחירות לכנסת ה-9",
+    "nameEn": "Election to the 9th Knesset",
+    "available": false,
+    "status": {
+      "stage": "pending-data-verification",
+      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
+      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+    }
+  },
+  {
+    "id": "k10",
+    "knesset": 10,
+    "date": "1981-06-30",
+    "nameHe": "הבחירות לכנסת ה-10",
+    "nameEn": "Election to the 10th Knesset",
+    "available": false,
+    "status": {
+      "stage": "pending-data-verification",
+      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
+      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+    }
+  },
+  {
+    "id": "k11",
+    "knesset": 11,
+    "date": "1984-07-23",
+    "nameHe": "הבחירות לכנסת ה-11",
+    "nameEn": "Election to the 11th Knesset",
+    "available": false,
+    "status": {
+      "stage": "pending-data-verification",
+      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
+      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+    }
+  },
+  {
+    "id": "k12",
+    "knesset": 12,
+    "date": "1988-11-01",
+    "nameHe": "הבחירות לכנסת ה-12",
+    "nameEn": "Election to the 12th Knesset",
+    "available": false,
+    "status": {
+      "stage": "pending-data-verification",
+      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
+      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+    }
+  },
+  {
+    "id": "k13",
+    "knesset": 13,
+    "date": "1992-06-23",
+    "nameHe": "הבחירות לכנסת ה-13",
+    "nameEn": "Election to the 13th Knesset",
+    "available": false,
+    "status": {
+      "stage": "pending-data-verification",
+      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
+      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+    }
+  },
+  {
+    "id": "k14",
+    "knesset": 14,
+    "date": "1996-05-29",
+    "nameHe": "הבחירות לכנסת ה-14",
+    "nameEn": "Election to the 14th Knesset",
+    "available": false,
+    "status": {
+      "stage": "pending-data-verification",
+      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
+      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+    }
+  },
+  {
+    "id": "k15",
+    "knesset": 15,
+    "date": "1999-05-17",
+    "nameHe": "הבחירות לכנסת ה-15",
+    "nameEn": "Election to the 15th Knesset",
+    "available": false,
+    "status": {
+      "stage": "pending-data-verification",
+      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
+      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+    }
+  },
+  {
     "id": "k16",
     "knesset": 16,
     "date": "2003-01-28",

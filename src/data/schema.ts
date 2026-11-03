@@ -3,7 +3,7 @@
 
 export const DATASET_SCHEMA_VERSION = 1;
 
-export const ELECTION_IDS = ['k16', 'k17', 'k18', 'k19', 'k20', 'k21', 'k22', 'k23', 'k24', 'k25', 'k26'] as const;
+export const ELECTION_IDS = ['k1', 'k2', 'k3', 'k4', 'k5', 'k6', 'k7', 'k8', 'k9', 'k10', 'k11', 'k12', 'k13', 'k14', 'k15', 'k16', 'k17', 'k18', 'k19', 'k20', 'k21', 'k22', 'k23', 'k24', 'k25', 'k26'] as const;
 export type ElectionId = (typeof ELECTION_IDS)[number];
 
 /** One row of public/data/elections.json: every election the project knows about, built or not. */
@@ -56,6 +56,8 @@ export interface ListRecord {
   candidates: Candidate[];
   candidatesSource: string; // source id
   candidatesSecondary: boolean;
+  /** true when no verifiable roster exists; candidates is then [] */
+  candidatesUnavailable?: boolean;
   /** verbatim official notes: resignations, disqualifications, court rulings */
   notesHe: string[];
 }
@@ -92,6 +94,8 @@ export interface ElectionDataset {
   officialSeats: Record<string, number> | null;
   officialSeatsSourceId: string | null;
   sourceIds: string[];
+  /** false when no locality-level results exist for this election (no <id>-localities.json) */
+  hasLocalities?: boolean;
   buildInfo: { builtAt: string; rawSha256: Record<string, string> };
 }
 

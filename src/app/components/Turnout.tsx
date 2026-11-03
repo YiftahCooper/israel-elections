@@ -5,21 +5,23 @@ import type { Scenario } from '../../model/scenario.ts';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct } from '../format.ts';
-import { dispatch, toast } from '../store.ts';
+import { dispatch, toast, useStore } from '../store.ts';
 import { Info, NumberInput } from './ui.tsx';
 
 const locCache = new Map<ElectionId, Promise<LocalityDataset>>();
-export function useLocalities(id: ElectionId) {
+/** Loads an election's locality results; `available` is false when the election has none. */
+export function useLocalities(id: ElectionId, available = true) {
   const [d, setD] = useState<LocalityDataset | null>(null);
   const [err, setErr] = useState<string | null>(null);
   useEffect(() => {
     let live = true; // ignore a slower response for an election we have already left
     setD(null); setErr(null);
+    if (!available) return;
     let p = locCache.get(id);
     if (!p) { p = fetch(`data/${id}-localities.json`).then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); }); locCache.set(id, p); }
     p.then((x) => live && setD(x), (e) => { locCache.delete(id); if (live) setErr(String(e)); });
     return () => { live = false; };
-  }, [id]);
+  }, [id, available]);
   return { data: d, error: err };
 }
 
@@ -36,7 +38,8 @@ export function mapToScenario(s: Scenario, listIds: string[], votes: number[]): 
 export function Turnout({ s }: { s: Scenario }) {
   const L = useL();
   const lang = useLang();
-  const { data } = useLocalities(s.electionId);
+  const hasLocalities = useStore((st) => st.datasets[s.electionId]?.hasLocalities !== false);
+  const { data } = useLocalities(s.electionId, hasLocalities);
   const [label, setLabel] = useState('');
   const [electorate, setElectorate] = useState(1_000_000);
   const [cur, setCur] = useState('50');
@@ -93,7 +96,7 @@ export function Turnout({ s }: { s: Scenario }) {
       <div className="grid2" style={{ alignItems: 'start', gap: 18 }}>
         <div>
           <h4>{L('1. Define the group', '1. הגדרת הקבוצה')}</h4>
-          <details open={!!data}>
+          {hasLocalities && <details open={!!data}>
             <summary className="small">{L('Start from official locality results (optional)', 'התחלה מהתוצאות הרשמיות לפי יישובים (רשות)')}</summary>
             <div className="small" style={{ margin: '6px 0' }}>{L('Localities where these lists together received at least', 'יישובים שבהם הרשימות האלה יחד קיבלו לפחות')}{' '}
               <input type="text" value={presetPct} onChange={(e) => setPresetPct(e.target.value)} style={{ width: 56 }} aria-label="%" />%:
@@ -105,7 +108,7 @@ export function Turnout({ s }: { s: Scenario }) {
             </div>
             <button className="btn small" style={{ marginTop: 6 }} disabled={!data || !presetLists.length} onClick={buildFromLocalities}>{L('Use these localities', 'שימוש ביישובים אלה')}</button>
             {basis && <p className="small ink2">{L('Basis: ', 'בסיס: ')}{basis}. {L('Electorate, current turnout, invalid rate and party preferences below are measured from these localities.', 'גודל הקבוצה, ההצבעה, שיעור הפסולים וההעדפות להלן נמדדו ביישובים אלה.')}</p>}
-          </details>
+          </details>}
           <div className="grid2" style={{ marginTop: 8 }}>
             <label className="field">{L('Group name', 'שם הקבוצה')}<input type="text" value={label} onChange={(e) => setLabel(e.target.value)} placeholder={L('e.g. Arab voters', 'למשל: מצביעים ערבים')} /></label>
             <label className="field">{L('Electorate (registered voters)', 'בעלי זכות בחירה בקבוצה')}<NumberInput value={electorate} onCommit={setElectorate} label={L('Electorate', 'בעלי זכות בחירה')} /></label>

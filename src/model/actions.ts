@@ -141,6 +141,8 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
         id: action.newId, originIds: [...new Set(parts.flatMap((p) => p.originIds))], letters: action.letters, nameHe: action.nameHe,
         shortHe: action.nameHe, shortEn: null, color: action.color, bloc: blocs.size === 1 ? parts[0].bloc : null,
         votes: kept, withdrawn: false, candidates, sponsorsHe: parts.map((p) => p.sponsorsHe).filter(Boolean).join('; '),
+        // a merged roster is incomplete if any part's roster was unavailable
+        ...(parts.some((p) => p.rosterUnavailable) ? { rosterUnavailable: true } : {}),
       };
       const firstIdx = s.lists.findIndex((l) => action.ids.includes(l.id));
       const rest = s.lists.filter((l) => !action.ids.includes(l.id));
@@ -168,6 +170,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
         id: p.newId, originIds: orig.originIds, letters: p.letters, nameHe: p.nameHe, shortHe: p.nameHe, shortEn: null, color: p.color,
         bloc: orig.bloc, votes: p.votes, withdrawn: false, sponsorsHe: orig.sponsorsHe,
         candidates: p.candidateIds.map((cid) => orig.candidates.find((c) => c.id === cid)!),
+        ...(orig.rosterUnavailable ? { rosterUnavailable: true } : {}),
       }));
       const idx = s.lists.findIndex((l) => l.id === action.id);
       const lists = [...s.lists]; lists.splice(idx, 1, ...newLists);

@@ -105,11 +105,13 @@ export function Localities({ s }: { s: Scenario }) {
   const L = useL();
   const lang = useLang();
   const digits = useDigits();
-  const { data, error } = useLocalities(s.electionId);
+  const hasLocalities = useStore((st) => st.datasets[s.electionId]?.hasLocalities !== false);
+  const { data, error } = useLocalities(s.electionId, hasLocalities);
   const [q, setQ] = useState('');
   const [sort, setSort] = useState<'registered' | 'turnout' | 'name'>('registered');
   const [open, setOpen] = useState<string | null>(null);
   const histLists = useMemo(() => (data ? data.listIds.map((id) => s.lists.find((l) => l.id === id) ?? null) : []), [data, s]);
+  if (!hasLocalities) return <p className="ink2">{L('Locality-level results are not available for this election in the sources used here; only national results are.', 'תוצאות לפי יישובים אינן זמינות לבחירות אלה במקורות שבשימוש כאן; זמינות רק תוצאות ארציות.')}</p>;
   if (error) return <p className="down">{error}</p>;
   if (!data) return <p className="muted">{L('Loading official locality results…', 'טוען תוצאות לפי יישובים…')}</p>;
   // rows are keyed by position in the file: older elections have no locality codes
