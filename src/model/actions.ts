@@ -53,6 +53,12 @@ const notWithdrawn = (s: Scenario, ...ids: string[]) => {
 
 const replaceList = (s: Scenario, id: string, f: (l: SimList) => SimList): Scenario => ({ ...s, lists: s.lists.map((l) => (l.id === id ? f(l) : l)) });
 
+/** A roster built from these lists' candidates is incomplete if any of theirs was (merge, split). */
+const rosterFlags = (sources: SimList[]): Pick<SimList, 'rosterUnavailable' | 'rosterTruncated'> => ({
+  ...(sources.some((p) => p.rosterUnavailable) ? { rosterUnavailable: true } : {}),
+  ...(sources.some((p) => p.rosterTruncated) ? { rosterTruncated: true } : {}),
+});
+
 function checkAgreements(s: Scenario) {
   if (s.mode !== 'historical') return;
   const seen = new Set<string>();
@@ -141,9 +147,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
         id: action.newId, originIds: [...new Set(parts.flatMap((p) => p.originIds))], letters: action.letters, nameHe: action.nameHe,
         shortHe: action.nameHe, shortEn: null, color: action.color, bloc: blocs.size === 1 ? parts[0].bloc : null,
         votes: kept, withdrawn: false, candidates, sponsorsHe: parts.map((p) => p.sponsorsHe).filter(Boolean).join('; '),
-        // a merged roster is incomplete if any part's roster was unavailable
-        ...(parts.some((p) => p.rosterUnavailable) ? { rosterUnavailable: true } : {}),
-        ...(parts.some((p) => p.rosterTruncated) ? { rosterTruncated: true } : {}),
+        ...rosterFlags(parts),
       };
       const firstIdx = s.lists.findIndex((l) => action.ids.includes(l.id));
       const rest = s.lists.filter((l) => !action.ids.includes(l.id));
@@ -162,17 +166,18 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       need(sum <= orig.votes, 'split-exceeds', `The parts total ${sum.toLocaleString()} votes, more than the original ${orig.votes.toLocaleString()}.`);
       need(sum === orig.votes, 'split-total', 'The parts must sum exactly to the original vote count.');
       const used = new Set<string>();
+      const byId = new Map<string, SimCandidate>();
+      for (const c of orig.candidates) if (!byId.has(c.id)) byId.set(c.id, c);
       for (const p of action.parts) for (const cid of p.candidateIds) {
-        need(orig.candidates.some((c) => c.id === cid), 'split-candidate', 'A part contains a candidate who is not on the original list.');
+        need(byId.has(cid), 'split-candidate', 'A part contains a candidate who is not on the original list.');
         need(!used.has(cid), 'split-candidate', 'A candidate can appear on only one of the new lists.');
         used.add(cid);
       }
       const newLists: SimList[] = action.parts.map((p) => ({
         id: p.newId, originIds: orig.originIds, letters: p.letters, nameHe: p.nameHe, shortHe: p.nameHe, shortEn: null, color: p.color,
         bloc: orig.bloc, votes: p.votes, withdrawn: false, sponsorsHe: orig.sponsorsHe,
-        candidates: p.candidateIds.map((cid) => orig.candidates.find((c) => c.id === cid)!),
-        ...(orig.rosterUnavailable ? { rosterUnavailable: true } : {}),
-        ...(orig.rosterTruncated ? { rosterTruncated: true } : {}),
+        candidates: p.candidateIds.map((cid) => byId.get(cid)!),
+        ...rosterFlags([orig]),
       }));
       const idx = s.lists.findIndex((l) => l.id === action.id);
       const lists = [...s.lists]; lists.splice(idx, 1, ...newLists);
@@ -206,7 +211,9 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       s = replaceList(s, action.listId, (l) => ({ ...l, ...action.patch }));
       break;
     case 'setAgreement': {
-      for (const m of action.agreement.members) listById(s, m);
+      const { members } = action.agreement;
+      for (const m of members) listById(s, m);
+      need(members.length >= 2 && new Set(members).size === members.length, 'agreement-members', 'An agreement joins at least two different lists.');
       const exists = s.agreements.some((a) => a.id === action.agreement.id);
       s = { ...s, agreements: exists ? s.agreements.map((a) => (a.id === action.agreement.id ? action.agreement : a)) : [...s.agreements, action.agreement] };
       checkAgreements(s);

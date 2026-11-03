@@ -35,6 +35,19 @@ export const percentToRational = (pct: string | number): Rational => {
   return reduce(rat(BigInt(whole + frac), den));
 };
 
+/** The exact percentage of a fraction with a terminating decimal, e.g. 13/400 → "3.25" (inverse of
+ *  percentToRational). */
+export const toPercentString = (r: Rational): string => {
+  const x = reduce(rat(r.num * 100n, r.den));
+  if (x.num < 0n) throw new RangeError('negative percentage');
+  let rem = x.num % x.den; let frac = '';
+  while (rem !== 0n) {
+    if (frac.length >= 40) throw new RangeError('percentage has no short exact decimal');
+    rem *= 10n; frac += String(rem / x.den); rem %= x.den;
+  }
+  return `${x.num / x.den}${frac ? `.${frac}` : ''}`;
+};
+
 const gcd = (a: bigint, b: bigint): bigint => { a = a < 0n ? -a : a; b = b < 0n ? -b : b; while (b) [a, b] = [b, a % b]; return a; };
 
 export const reduce = (r: Rational): Rational => { const g = gcd(r.num, r.den) || 1n; return { num: r.num / g, den: r.den / g }; };

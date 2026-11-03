@@ -33,7 +33,7 @@ describe('marginal votes (exact, verified at k and k−1)', () => {
       expect(seats(at, '25-שס')).toBe(12);
       expect(seats(below, '25-שס')).toBe(11);
     }
-  }, 30_000); // exhaustive scans of non-monotone goals take a few seconds on a busy CI runner
+  }, 10_000); // the proportional source is scanned vote by vote (about 1 s locally)
 
   it('inverse: the most votes Likud can lose without losing a seat', () => {
     const r = minimalChange(input, '25-מחל', { kind: 'new' }, goals.seatLoss('25-מחל'), 'lose');
