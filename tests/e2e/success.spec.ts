@@ -12,6 +12,7 @@ test('2022: merge, add voters, drop agreement, push Balad over, find Ra’am’s
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto('/');
   await page.getByRole('button', { name: 'EN', exact: true }).click();
+  await page.getByRole('button', { name: 'Advanced' }).click();
   await page.getByRole('button', { name: '2022 · 25th' }).click();
   await expect(page.locator('.card .name', { hasText: 'Yesh Atid' })).toBeVisible();
   expect(await seatsOf(page, 'Likud')).toBe(32);
