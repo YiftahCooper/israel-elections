@@ -49,6 +49,12 @@ claiming global minimality or complete breakpoint coverage. The sensitivity view
 sampled vote sweeps, but the current seat-security table drops the search exactness flag
 and still describes its figures as exact. Treat large seat-security minima with that limit.
 
+In the interface these searches (seat security, list boundaries, vote sweeps, bloc majorities)
+run on a small Web Worker pool (`src/app/analysisPool.ts`), or on the main thread when workers
+are unavailable, with the same code (`src/app/analysisTasks.ts`). Tab panels other than each
+level's first tab are separate chunks, prefetched once the page is idle, and `index.html`
+preloads the default election's dataset.
+
 ## Saving, sharing and corrections
 
 Saved scenarios and preferences use this browser’s `localStorage`. Unsaved per-election

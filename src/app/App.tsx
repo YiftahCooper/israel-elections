@@ -1,24 +1,74 @@
-import { useEffect, useState } from 'react';
+import { createElement, memo, Suspense, use, useEffect, useState, type ReactNode } from 'react';
 import { allocationOf, baselineOf, ruleChanges, scenarioIssues, tieAffectsSeats, warningText } from './derive.ts';
 import { LangContext, useL } from './i18n.ts';
 import { dispatch, loadElectionIndex, openElection, readSharedFromHash, redo, setState, undo, useStore } from './store.ts';
-import { Charts } from './components/Charts.tsx';
-import { Compare } from './components/Compare.tsx';
-import { Hemicycle } from './components/Hemicycle.tsx';
-import { BlocBar, KeyStats } from './components/KeyStats.tsx';
-import { ListPanel } from './components/ListPanel.tsx';
-import { History, Localities, Rules, Sources } from './components/Panels.tsx';
-import { PartyCards } from './components/PartyCards.tsx';
-import { Sensitivity } from './components/Sensitivity.tsx';
-import { Structure } from './components/Structure.tsx';
-import { TopBar } from './components/TopBar.tsx';
-import { Turnout } from './components/Turnout.tsx';
+import { Hemicycle as HemicycleView } from './components/Hemicycle.tsx';
+import { BlocBar as BlocBarView, KeyStats as KeyStatsView } from './components/KeyStats.tsx';
+import { ListPanel as ListPanelView } from './components/ListPanel.tsx';
+import { PartyCards as PartyCardsView } from './components/PartyCards.tsx';
+import { TopBar as TopBarView } from './components/TopBar.tsx';
 import { Walkthrough } from './components/Walkthrough.tsx';
 import { ErrorBoundary } from './components/ErrorBoundary.tsx';
 import { WhatIf } from './components/WhatIf.tsx';
-import { Coalitions, SeatSecurity } from './components/SeatSecurity.tsx';
+
+// The main area's props (scenario, its cached allocation, the dataset) only change with the
+// scenario, so a tab switch, toast or notice does not re-render the cards, chamber and details.
+// Each panel still re-renders on its own store subscriptions (selection, level, language…).
+const TopBar = memo(TopBarView);
+const PartyCards = memo(PartyCardsView);
+const Hemicycle = memo(HemicycleView);
+const BlocBar = memo(BlocBarView);
+const KeyStats = memo(KeyStatsView);
+const ListPanel = memo(ListPanelView);
+
+// The levels' first tabs (What if…, How the seats were allocated) are in the main bundle; every
+// other tab panel is a separate chunk, fetched once the page is idle (or when its tab is pointed at),
+// so the first render does not wait for code most visits never open.
+const loaders = {
+  seats: () => import('./components/SeatSecurity.tsx'),
+  panels: () => import('./components/Panels.tsx'),
+  compare: () => import('./components/Compare.tsx'),
+  charts: () => import('./components/Charts.tsx'),
+  structure: () => import('./components/Structure.tsx'),
+  turnout: () => import('./components/Turnout.tsx'),
+  sens: () => import('./components/Sensitivity.tsx'),
+};
+/** A tab panel from a separate chunk. Unlike React.lazy, a panel whose code has already been
+ *  prefetched renders at once, without showing (and React holding) the loading fallback. */
+// `any` only bounds the export; each panel's own props are still checked through M[K]
+function lazyPanel<M extends Record<K, (props: any) => ReactNode>, K extends keyof M>(load: () => Promise<M>, name: K) {
+  let loaded: M[K] | null = null;
+  let pending: Promise<void> | null = null;
+  // one retry for a dropped request; a second failure reaches the panel's error boundary
+  const preload = () => (pending ??= load().catch(load).then((m) => { loaded = m[name]; }));
+  const Panel = (props: Parameters<M[K]>[0]) => {
+    if (!loaded) use(preload());
+    return createElement(loaded!, props);
+  };
+  return Object.assign(Panel, { preload });
+}
+const Coalitions = lazyPanel(loaders.seats, 'Coalitions');
+const SeatSecurity = lazyPanel(loaders.seats, 'SeatSecurity');
+const Compare = lazyPanel(loaders.compare, 'Compare');
+const Charts = lazyPanel(loaders.charts, 'Charts');
+const Structure = lazyPanel(loaders.structure, 'Structure');
+const Turnout = lazyPanel(loaders.turnout, 'Turnout');
+const Sensitivity = lazyPanel(loaders.sens, 'Sensitivity');
+const Rules = lazyPanel(loaders.panels, 'Rules');
+const Localities = lazyPanel(loaders.panels, 'Localities');
+const Sources = lazyPanel(loaders.panels, 'Sources');
+const History = lazyPanel(loaders.panels, 'History');
+const TAB_PANEL: Partial<Record<Tab, { preload: () => Promise<void> }>> = {
+  coal: Coalitions, security: SeatSecurity, compare: Compare, charts: Charts, structure: Structure,
+  turnout: Turnout, sens: Sensitivity, rules: Rules, loc: Localities, sources: Sources, history: History,
+};
+/** Starts fetching a tab's code ahead of its first use (a no-op once loaded). */
+const prefetchTab = (t: Tab) => { void TAB_PANEL[t]?.preload().catch(() => {}); };
 
 type Tab = 'whatif' | 'coal' | 'security' | 'walk' | 'compare' | 'charts' | 'structure' | 'turnout' | 'sens' | 'rules' | 'loc' | 'sources' | 'history';
+const SIMPLE_TABS: Tab[] = ['whatif', 'coal', 'walk', 'sources'];
+const STANDARD_TABS: Tab[] = ['whatif', 'compare', 'structure', 'coal', 'security', 'charts', 'walk', 'sources', 'history'];
+const EXPERT_TABS: Tab[] = ['walk', 'compare', 'charts', 'security', 'coal', 'whatif', 'structure', 'turnout', 'sens', 'rules', 'loc', 'sources', 'history'];
 
 export function App() {
   const lang = useStore((st) => st.lang);
@@ -60,6 +110,15 @@ function Shell() {
   const level = useStore((st) => st.level);
   const [tabPick, setTab] = useState<Tab | null>(null);
   const hintDismissed = useStore((st) => st.hintDismissed);
+  const ready = !!(s && ds);
+  // once the election is on screen, fetch the code of this level's other tabs while the page is idle
+  useEffect(() => {
+    if (!ready) return;
+    const tabs = level === 'simple' ? SIMPLE_TABS : level === 'standard' ? STANDARD_TABS : EXPERT_TABS;
+    const run = () => tabs.forEach(prefetchTab);
+    if (typeof requestIdleCallback === 'function') { const h = requestIdleCallback(run, { timeout: 2000 }); return () => cancelIdleCallback(h); }
+    const h = setTimeout(run, 200); return () => clearTimeout(h);
+  }, [ready, level]);
 
   const loadBanner = loadError && (
     <div className="banner err" role="alert">
@@ -89,11 +148,7 @@ function Shell() {
     sources: L('Sources & definitions', 'מקורות ומונחים'),
     history: L(`Change history (${s.log.length})`, `היסטוריית שינויים (${s.log.length})`),
   };
-  const order: Tab[] = level === 'simple'
-    ? ['whatif', 'coal', 'walk', 'sources']
-    : level === 'standard'
-      ? ['whatif', 'compare', 'structure', 'coal', 'security', 'charts', 'walk', 'sources', 'history']
-      : ['walk', 'compare', 'charts', 'security', 'coal', 'whatif', 'structure', 'turnout', 'sens', 'rules', 'loc', 'sources', 'history'];
+  const order: Tab[] = level === 'simple' ? SIMPLE_TABS : level === 'standard' ? STANDARD_TABS : EXPERT_TABS;
   const tab: Tab = tabPick && order.includes(tabPick) ? tabPick : order[0];
   const tabs = order.map((id) => ({ id, label: all[id] }));
 
@@ -126,9 +181,9 @@ function Shell() {
         <div className="bottom">
           <section className="panel">
             <div className="tabs" role="tablist" aria-label={L('Analysis', 'ניתוח')}>
-              {tabs.map((t) => <button key={t.id} role="tab" aria-selected={tab === t.id} onClick={() => setTab(t.id)}>{t.label}</button>)}
+              {tabs.map((t) => <button key={t.id} role="tab" aria-selected={tab === t.id} onClick={() => setTab(t.id)} onPointerEnter={() => prefetchTab(t.id)} onFocus={() => prefetchTab(t.id)}>{t.label}</button>)}
             </div>
-            <div className="body" role="tabpanel"><ErrorBoundary label={all[tab]} resetKey={`${tab}|${s.id}|${s.log.length}`}>
+            <div className="body" role="tabpanel"><ErrorBoundary label={all[tab]} resetKey={`${tab}|${s.id}|${s.log.length}`}><Suspense fallback={<p className="muted" role="status">{L('Loading…', 'טוען…')}</p>}>
               {tab === 'whatif' && <WhatIf ds={ds} />}
               {tab === 'coal' && <Coalitions s={s} r={r} />}
               {tab === 'security' && <SeatSecurity s={s} r={r} />}
@@ -142,7 +197,7 @@ function Shell() {
               {tab === 'loc' && <Localities s={s} />}
               {tab === 'sources' && <Sources ds={ds} />}
               {tab === 'history' && <History s={s} r={r} ds={ds} />}
-            </ErrorBoundary></div>
+            </Suspense></ErrorBoundary></div>
           </section>
           <p className="small muted" style={{ marginTop: 10 }}>{L('Seat allocation is computed by deterministic code from official Central Elections Committee data. Not affiliated with the CEC or any party.', 'חלוקת המנדטים מחושבת בקוד דטרמיניסטי מנתוני ועדת הבחירות המרכזית. אין קשר לוועדת הבחירות או לאף מפלגה.')}</p>
         </div>

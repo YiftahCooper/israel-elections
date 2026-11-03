@@ -56,11 +56,23 @@ const K26: Preset[] = [
   { id: 'amcha-in', titleEn: 'Amcha Yisrael passes', titleHe: 'עמך ישראל עוברת', bodyEn: 'Smallest number of additional voters for Ofer Winter’s list.', bodyHe: 'המספר הקטן ביותר של מצביעים נוספים לרשימת עופר וינטר.', actions: (s) => (has(s, '26-ך') ? toPass(s, '26-ך') : null) },
 ];
 
+type Result = { p: Preset; actions: Action[] | null; lines: string[]; votes: string };
+// The cards depend only on the dataset and the language (never on the edited scenario), so their
+// engine runs are kept per dataset: edits, tab switches and level changes reuse them.
+const resultCache = new WeakMap<ElectionDataset, Map<string, Result[]>>();
+
 export function WhatIf({ ds }: { ds: ElectionDataset }) {
   const L = useL();
   const lang = useLang();
   const presets = useMemo(() => [...(ds.id === 'k25' ? K25 : ds.id === 'k26' ? K26 : []), ...COMMON], [ds.id]);
   const results = useMemo(() => {
+    const cached = resultCache.get(ds)?.get(lang);
+    if (cached) return cached;
+    const out = computeResults();
+    const m = resultCache.get(ds) ?? new Map<string, Result[]>(); m.set(lang, out); resultCache.set(ds, m);
+    return out;
+  }, [ds, presets, lang, L]);
+  function computeResults(): Result[] {
     const base = scenarioFromDataset(ds);
     const r0 = allocate(toEngineInput(base));
     return presets.map((p) => {
@@ -86,7 +98,7 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
         : moved?.type === 'setVotes' ? L(`${fmtInt(moved.votes - base.lists.find((x) => x.id === moved.listId)!.votes)} additional voters`, `${fmtInt(moved.votes - base.lists.find((x) => x.id === moved.listId)!.votes)} מצביעים נוספים`) : '';
       return { p, actions, lines, votes };
     });
-  }, [ds, presets, lang, L]);
+  }
 
   const tryIt = (title: string, actions: Action[]) => {
     const st = getState();
