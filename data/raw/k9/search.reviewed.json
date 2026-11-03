@@ -1,0 +1,98 @@
+{
+  "question": "Legal basis of the 1977 unfillable seat and missing Ratz elected-member paragraph",
+  "result": "No specific statutory redistribution text or contemporaneous CEC procedure located. Candidate-cap hypothesis exactly reproduces official seats. Ratz elected-name paragraph absent in both copies of YP2326; no correction found in bounded nearby-cover search.",
+  "queries": [
+    "פלאטו שרון מנדט אחד שני מנדטים ועדת הבחירות 1977 סעיף 83",
+    "רשימת מועמדים פחות מנדטים 1977",
+    "site:gov.il פלאטו מנדט",
+    "site:knesset.gov.il שרון 1977 מנדט עודפי",
+    "site:cbs.gov.il 1977 פלאטו",
+    "תיקון טעות תוצאות הבחירות לכנסת התשיעית"
+  ],
+  "inspection": [
+    "Retained original SH556 p116 sections81–84 and SH692 p108: no explicit unfillable-seat redistribution rule identified.",
+    "YP2326 pp1494–1496, government and mirrored copy: seat table includes Ratz1, elected paragraphs total119; no explanation of unfillable-seat procedure.",
+    "YP2327–2334: covers/contents only, no relevant correction identified.",
+    "Indexed CEC discussion of criminal appeal71/83 concerns election bribery; direct open403.",
+    "Official polling-station scan PDF first6 pages: regional printouts starting printed page59, no methodological introduction. Not a full CBS results/methodology volume."
+  ],
+  "urls": [
+    "https://www.gov.il/apps/elections/elections-knesset-16/heb/cec/view_announcement2e5f.html?id=22",
+    "https://fs.knesset.gov.il/6/law/6_lsr_311009.PDF",
+    "https://fs.knesset.gov.il/7/law/7_lsr_211799.pdf"
+  ],
+  "downloads": [
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-2326.pdf",
+      "httpStatus": 200,
+      "bytes": 171588,
+      "sha256": "91280ceeefd634e75ac360dad1eb49fb5b7a8a570b9ce8913adc945e26fa5dd6",
+      "scope": "elected-member notice pp1494–1496"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-2327.pdf",
+      "httpStatus": 200,
+      "bytes": 128102,
+      "sha256": "f3c82b947403fc5ce0b1fdf5072ba67e1dc79d76f53443fc46237ee592722cb6",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-2328.pdf",
+      "httpStatus": 200,
+      "bytes": 1476076,
+      "sha256": "26b81e8dd8a7ce9414d25520af88672352e5ecad074a0577cf9765f59a12475d",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-2329.pdf",
+      "httpStatus": 200,
+      "bytes": 1648522,
+      "sha256": "0c3da0d65348144fa22199f0fae632ec530674733b54d5f781de8140e7602c12",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-2330.pdf",
+      "httpStatus": 200,
+      "bytes": 1421952,
+      "sha256": "93638ebcb5865eae779fbdeded4ad1350f237f56efcd6b0765c94fa68c0513a8",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-2331.pdf",
+      "httpStatus": 200,
+      "bytes": 522145,
+      "sha256": "dae43dd0260e6071c1c4da26157c41be2b2840e331095f6ce8173fa045894dbc",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-2332.pdf",
+      "httpStatus": 200,
+      "bytes": 1513360,
+      "sha256": "0b94d21c40733f2a3f3e662103e55eb538dc0db032da3fd430abfb661aeb2371",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-2333.pdf",
+      "httpStatus": 200,
+      "bytes": 324607,
+      "sha256": "e86f8772daa4444e33f0a4f9bad1af6a4cabb1e6f5710780f1e8716cf935616b",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-2334.pdf",
+      "httpStatus": 200,
+      "bytes": 1104650,
+      "sha256": "8e0833f40a2d7d21779b2bb19dd8e2f91b401c302b5542af35d798988b30fe07",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/תוצאות כנסת 9 לפי קלפי.pdf",
+      "httpStatus": 200,
+      "bytes": 12380157,
+      "sha256": "8851f14379a9bfb8da3a015268fa6519e0eafd80912fa173658ff11fa464703b",
+      "scope": "PDF pages1–6 only; no method notes in inspected regional printout pages"
+    }
+  ],
+  "reviewedAt": "2026-11-03T16:37:23.593148+00:00",
+  "limitations": "Bounded discovery; not proof of nonexistence. Scratch downloads/renders are reproducible working copies; relevant unique observations retained here."
+}

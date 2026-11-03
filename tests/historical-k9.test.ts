@@ -17,7 +17,7 @@ describe('k9 — checked research evidence; release remains blocked', () => {
     expect(r.supplementalTotals).toMatchObject({ registered: 2236293, votesCast: 1771726 });
     for (const l of r.lists) expect(l.officialSeats, l.letters).toBe(published[l.letters] ?? 0);
   });
-  it('tests every official seat through the application pipeline and preserves any unresolved mismatch', () => {
+  it('tests every official seat through the application pipeline and reproduces every published seat with the inferred capacity procedure', () => {
     const a = verifyK9({ log: false });
     const s = scenarioFromDataset(researchDataset(a));
     expect(validateScenario(JSON.parse(JSON.stringify(s)))).toEqual([]);
@@ -28,10 +28,10 @@ describe('k9 — checked research evidence; release remains blocked', () => {
     expect(result.warnings).toEqual([]);
     for (const l of result.lists) {
       const letters = l.id.slice(2);
-      expect(l.seats, l.id).toBe(unresolved[letters] ?? published[letters] ?? 0);
+      expect(l.seats, l.id).toBe(published[letters] ?? 0);
     }
-    expect(a.review.allocationCheck.exact).toBe(false);
-    expect(a.review.allocationCheck.differences.map(d => d.letters)).toEqual(Object.keys(unresolved));
+    expect(a.review.allocationCheck.exact).toBe(true);
+    expect(a.review.allocationCheck.differences.map(d => d.letters)).toEqual([]);
   });
   it('retains the sourced agreement set without inventing missing pairs', () => {
     const a = verifyK9({ log: false });
@@ -48,10 +48,25 @@ describe('k9 — checked research evidence; release remains blocked', () => {
 
 it('checks the complete Flatto-Sharon roster against the gazetted elected member', () => {
   const a = verifyK9({ log: false });
-  expect(a.rosters).toHaveLength(1);
+  expect(a.rosters).toHaveLength(13);
   expect(a.rosters[0]).toMatchObject({ letters: 'פש', publishedCount: 1, pages: [1330], candidates: [{ rank: 1, nameHe: 'שרון סמואל', page: 1330 }], electedCrossCheck: { pages: [1496], ranks: [1] } });
-  // No candidate cap is smuggled into the existing engine: legal procedure remains unresolved.
+  // The opt-in cap is disclosed as inferred; all other presets retain their results.
   const result = allocate(toEngineInput(scenarioFromDataset(researchDataset(a))));
-  expect(result.lists.find(l => l.id === '9-פש')?.seats).toBe(2);
+  expect(result.lists.find(l => l.id === '9-פש')?.seats).toBe(1);
   expect(a.review.lists.find(l => l.letters === 'פש')?.officialSeats).toBe(1);
+});
+
+it('retains the uncapped seat table and the missing Ratz elected-name check', () => {
+  const a = verifyK9({ log: false });
+  const s = scenarioFromDataset(researchDataset(a));
+  s.mode = 'experimental'; s.rules.seatsCappedAtCandidates = false;
+  expect(validateScenario(s)).toEqual([]);
+  const result = allocate(toEngineInput(s));
+  for (const l of result.lists) expect(l.seats).toBe(unresolved[l.id.slice(2)] ?? published[l.id.slice(2)] ?? 0);
+  expect(a.rosters.find(r => r.letters === 'רצ')?.electedCrossCheck).toBeNull();
+  expect(a.rosters.reduce((sum, r) => sum + (r.electedCrossCheck?.namesHe?.length ?? 0), 0)).toBe(119);
+  const capped = scenarioFromDataset(researchDataset(a));
+  expect(capped.rules.seatsCappedAtCandidates).toBe(true);
+  capped.rules.seatsCappedAtCandidates = false;
+  expect(validateScenario(capped)).toContain('historical rules must match the election statutory preset');
 });

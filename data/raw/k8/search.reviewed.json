@@ -1,0 +1,186 @@
+{
+  "question": "1973 complete surplus-agreement notice",
+  "result": "Not located; no inferred pairs.",
+  "queries": [
+    "1973 הודעה בדבר התקשרות",
+    "1973 התקשרות בין רשימות",
+    "site:gov.il/BlobFolder כנסת השמינית התקשרות"
+  ],
+  "inspection": [
+    "Retained YP1954 candidate issue: cover, page-layout review through closing roster/signature; no agreement notice identified.",
+    "YP1955–1978: covers/contents only, not every page. Python urllib 403; curl subsequently successful for every issue.",
+    "Government BlobFolder indexed searches: no relevant new notice recovered."
+  ],
+  "downloads": [
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-1955.pdf",
+      "httpStatus": 200,
+      "bytes": 1746406,
+      "sha256": "0891eebf49196b52a852d355075b9f307df9035af6cf768b24102f0df5c1812b",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-1956.pdf",
+      "httpStatus": 200,
+      "bytes": 1486592,
+      "sha256": "8fd581a764e09c1823b3edb12a0155a2fa7ad6fcef1cc26d319c5bc668ba2453",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-1957.pdf",
+      "httpStatus": 200,
+      "bytes": 186287,
+      "sha256": "44e035da9de33e2dfa44288a1aebce4b296801824cf1d83b8233e07370d214d6",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-1958.pdf",
+      "httpStatus": 200,
+      "bytes": 1545973,
+      "sha256": "cfa010ee264f3efb366d93639f10b94e58a40fc3bba9675b9d479070f2733aef",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-1959.pdf",
+      "httpStatus": 200,
+      "bytes": 582965,
+      "sha256": "31a1d19fe4d9631ba077e58a6fedf19734ac462469554bc5093ccd60d2f40182",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-1960.pdf",
+      "httpStatus": 200,
+      "bytes": 1485790,
+      "sha256": "65c4d8049ce089d5f14c89395bc84ca504a8795cefc6370294aae1bb63c64c11",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-1961.pdf",
+      "httpStatus": 200,
+      "bytes": 722618,
+      "sha256": "75e0154e719ac93730f07f97cb008f6c0d3e44f8f6e8214ddc4b713173654d9c",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-1962.pdf",
+      "httpStatus": 200,
+      "bytes": 1525021,
+      "sha256": "4ff1b06012d0a7233a8757baa93b4285a221cdeb5f6bfba3d1f81453ba626b6b",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-1963.pdf",
+      "httpStatus": 200,
+      "bytes": 1074324,
+      "sha256": "cdfeb664b0e8d2dc17d14f94f18e4f67ae44f849aa20de09692b6db8693cec09",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-1964.pdf",
+      "httpStatus": 200,
+      "bytes": 164425,
+      "sha256": "d44caafaaded540effa93000b1bdcb767e4a8d94351e4be128e3b3ac3b867b0d",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-1965.pdf",
+      "httpStatus": 200,
+      "bytes": 1383952,
+      "sha256": "7d008730f1235a5ddef09434d72367cfcd3810492e2bea51d7c65e0672662d3d",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-1966.pdf",
+      "httpStatus": 200,
+      "bytes": 224707,
+      "sha256": "8029dd938ef5c3da51f6b8e0d1660badf9eb131e313beb4944613410c2a7dc97",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-1967.pdf",
+      "httpStatus": 200,
+      "bytes": 1921157,
+      "sha256": "ef3c33aab2ff8e8b1eac9a4a794c67a448f07438c748eaa09944470380cfb642",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-1968.pdf",
+      "httpStatus": 200,
+      "bytes": 1555557,
+      "sha256": "91072d7a06f62a93dced1a00d1f7b7c9e1cd53b36bb8881ac52f32324aaae8d5",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-1969.pdf",
+      "httpStatus": 200,
+      "bytes": 1522825,
+      "sha256": "38ec12d7ff7705e99ae704853e6478ea7a2071fb0c9209877ae75a2685dd5a46",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-1970.pdf",
+      "httpStatus": 200,
+      "bytes": 1566913,
+      "sha256": "f0a04722acd510d770fd6232830d3bceda85cedbf0ecd3ec229575eb348795be",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-1971.pdf",
+      "httpStatus": 200,
+      "bytes": 209996,
+      "sha256": "21e9f10539e4d05ddfbe9b045c5bb41cd8c998e405e3da171dc06c0ce96493cc",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-1972.pdf",
+      "httpStatus": 200,
+      "bytes": 118770,
+      "sha256": "fa42cdc295fe70316f858dc79a084bf1aa70958020cbb7dabcfaafc59c148264",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-1973.pdf",
+      "httpStatus": 200,
+      "bytes": 1511712,
+      "sha256": "d0661a1f8f8cefd4e9a99725950af24e2c5c1a1ff8e31fa657f97f18cbdcb14c",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-1974.pdf",
+      "httpStatus": 200,
+      "bytes": 106534,
+      "sha256": "cc933aac1e07152bc92c2a17e4c0e4ddff9273e31d8bcb7c0933eecaf9560e12",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-1975.pdf",
+      "httpStatus": 200,
+      "bytes": 908993,
+      "sha256": "3a1245cfdcb5c0d018f1816e6ca1878c0555ca9bb6d5c7db0ca4de0d1fb86a9d",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-1976.pdf",
+      "httpStatus": 200,
+      "bytes": 940215,
+      "sha256": "f6e4ff4fa783914a236ec5e5ddac8fc64e9b63c7c17442e85d44a9ab2b60d480",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-1977.pdf",
+      "httpStatus": 200,
+      "bytes": 1094316,
+      "sha256": "d102b0b059c21219c551ace2b049c51379a837cfc94a587ead216b457cfab76b",
+      "scope": "cover/contents"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-1978.pdf",
+      "httpStatus": 200,
+      "bytes": 1472492,
+      "sha256": "e1fbb62ca68005715c7bb96cc3fd8cbe5a338fac03758ee7a2154225aca5fa6d",
+      "scope": "cover/contents"
+    }
+  ],
+  "reviewedAt": "2026-11-03T16:37:23.593148+00:00",
+  "limitations": "Bounded discovery; not proof of nonexistence. Scratch downloads/renders are reproducible working copies; relevant unique observations retained here."
+}

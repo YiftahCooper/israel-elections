@@ -20,8 +20,10 @@ export const ISRAEL_1992: RuleSet = { ...ISRAEL_2014, id: 'il-1992-bader-ofer-1.
 export const ISRAEL_1973: RuleSet = { ...ISRAEL_2014, id: 'il-1973-bader-ofer-1', threshold: rat(1, 100) };
 /** 2% applied in the elections to Knessets 17–19. */
 export const ISRAEL_2004: RuleSet = { ...ISRAEL_2014, id: 'il-2004-bader-ofer-2', threshold: rat(1, 50) };
+/** K9 candidate-cap procedure inferred from the published result; see decision 0073. */
+export const ISRAEL_1977: RuleSet = { ...ISRAEL_1973, id: 'il-1977-bader-ofer-1-candidate-cap', seatsCappedAtCandidates: true };
 export const RULESETS: Record<string, RuleSet> = Object.fromEntries(
-  [ISRAEL_1973, ISRAEL_1992, ISRAEL_2004, ISRAEL_2014].map((r) => [r.id, r]),
+  [ISRAEL_1973, ISRAEL_1977, ISRAEL_1992, ISRAEL_2004, ISRAEL_2014].map((r) => [r.id, r]),
 );
 
 /** Lists every way `rules` departs from the historical rule set it is compared against. */
@@ -34,5 +36,6 @@ export function ruleDepartures(rules: RuleSet, historical: RuleSet): string[] {
   if (rules.majorityCap !== historical.majorityCap) out.push('majorityCap');
   if (rules.maxAgreementSize !== historical.maxAgreementSize) out.push('maxAgreementSize');
   if (rules.agreementRequiresAllQualify !== historical.agreementRequiresAllQualify) out.push('agreementRequiresAllQualify');
+  if (Boolean(rules.seatsCappedAtCandidates) !== Boolean(historical.seatsCappedAtCandidates)) out.push('seatsCappedAtCandidates');
   return out;
 }

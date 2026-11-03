@@ -228,7 +228,7 @@
     ]
   },
   "candidateChecks": {
-    "completeWinningRostersVerified": false,
+    "completeWinningRostersVerified": true,
     "lists": [
       {
         "letters": "אמת",
@@ -240,26 +240,133 @@
         "pages": [
           2048
         ],
-        "scope": "First candidate and printed terminal rank checked only; not a complete roster transcription."
+        "scope": "Ranks1–47 transcribed; elected names cross-checked: 47. See candidates.reviewed.json."
+      },
+      {
+        "letters": "ב",
+        "publishedCount": 104,
+        "first": {
+          "rank": 1,
+          "nameHe": "בורג יוסף"
+        },
+        "pages": [
+          2049
+        ],
+        "scope": "Ranks1–6 transcribed; elected names cross-checked: 6. See candidates.reviewed.json."
+      },
+      {
+        "letters": "ג",
+        "publishedCount": 93,
+        "first": {
+          "rank": 1,
+          "nameHe": "שפירא אברהם יוסף"
+        },
+        "pages": [
+          2049
+        ],
+        "scope": "Ranks1–4 transcribed; elected names cross-checked: 4. See candidates.reviewed.json."
+      },
+      {
+        "letters": "הן",
+        "publishedCount": 120,
+        "first": {
+          "rank": 1,
+          "nameHe": "רובינשטיין אמנון"
+        },
+        "pages": [
+          2051
+        ],
+        "scope": "Ranks1–2 transcribed; elected names cross-checked: 2. See candidates.reviewed.json."
+      },
+      {
+        "letters": "ו",
+        "publishedCount": 120,
+        "first": {
+          "rank": 1,
+          "nameHe": "וילנר מאיר"
+        },
+        "pages": [
+          2052
+        ],
+        "scope": "Ranks1–4 transcribed; elected names cross-checked: 4. See candidates.reviewed.json."
+      },
+      {
+        "letters": "כן",
+        "publishedCount": 115,
+        "first": {
+          "rank": 1,
+          "nameHe": "דיין משה"
+        },
+        "pages": [
+          2057
+        ],
+        "scope": "Ranks1–2 transcribed; elected names cross-checked: 2. See candidates.reviewed.json."
+      },
+      {
+        "letters": "מחל",
+        "publishedCount": 120,
+        "first": {
+          "rank": 1,
+          "nameHe": "בגין מנחם"
+        },
+        "pages": [
+          2058,
+          2059
+        ],
+        "scope": "Ranks1–48 transcribed; elected names cross-checked: 48. See candidates.reviewed.json."
+      },
+      {
+        "letters": "ני",
+        "publishedCount": 41,
+        "first": {
+          "rank": 1,
+          "nameHe": "אבו-חצירא אהרון"
+        },
+        "pages": [
+          2059
+        ],
+        "scope": "Ranks1–3 transcribed; elected names cross-checked: 3. See candidates.reviewed.json."
+      },
+      {
+        "letters": "רצ",
+        "publishedCount": 119,
+        "first": {
+          "rank": 1,
+          "nameHe": "אלוני שולמית"
+        },
+        "pages": [
+          2061
+        ],
+        "scope": "Ranks1–1 transcribed; elected names cross-checked: 1. See candidates.reviewed.json."
+      },
+      {
+        "letters": "ת",
+        "publishedCount": 114,
+        "first": {
+          "rank": 1,
+          "nameHe": "נאמן יובל"
+        },
+        "pages": [
+          2063
+        ],
+        "scope": "Ranks1–3 transcribed; elected names cross-checked: 3. See candidates.reviewed.json."
       }
     ],
     "sourceId": "k10-candidates-gazette"
   },
-  "releaseBlockers": [
-    "Complete winning-list candidate rosters and elected-rank cross-checks remain unverified.",
-    "Full point-in-time amendment-chain verification through this election is incomplete; see decision 0070."
-  ],
+  "releaseBlockers": [],
   "sourceIds": [
     "k10-results-gazette",
     "k10-candidates-gazette",
     "k8-k12-cbs-national-totals",
     "k8-k12-law-1969",
     "k8-k12-law-1973",
-    "k10-agreements-gazette"
+    "k10-agreements-gazette",
+    "k10-candidates-reviewed"
   ],
   "allocationCheck": {
     "exact": true,
     "differences": [],
-    "note": "Every list matches the gazetted seats through scenarioFromDataset → toEngineInput → allocate, using complete sourced agreements. Does not clear roster release gates."
+    "note": "Every list matches the gazetted seats through the scenario pipeline, using the complete published agreement notice. Required winning-roster prefixes and all 120 elected-name comparisons verified."
   }
 }

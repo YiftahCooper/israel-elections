@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { it } from 'vitest';
 import { allocate } from '../src/engine/allocate.ts';
 import { ISRAEL_1973, ISRAEL_2014 } from '../src/engine/rules.ts';
@@ -11,20 +12,20 @@ function reference(x: AllocationInput): number[] {
   const live = ls.map((_, i) => i).filter(i => !ls[i].withdrawn && ls[i].votes > 0n && ls[i].votes * r.threshold.den >= total * r.threshold.num);
   const answer = ls.map(() => 0);
   if (!live.length) return answer;
-  function initial(v: bigint[], n: number): number[] {
+  function initial(v: bigint[], n: number, caps: number[] = v.map(() => Infinity)): number[] {
     if (!n) return v.map(() => 0);
     const sum = v.reduce((a, b) => a + b, 0n);
     const quota = sum / BigInt(n);
     let seats = quota ? v.map(w => Number(w / quota)) : v.map(w => Number(w * BigInt(n) / sum));
     if (seats.reduce((a, b) => a + b, 0) > n) seats = v.map(w => Number(w * BigInt(n) / sum));
-    return seats;
+    return seats.map((s, i) => Math.min(s, caps[i]));
   }
-  function finish(v: bigint[], seats: number[], n: number, ids: string[], stage: string): number[] {
+  function finish(v: bigint[], seats: number[], n: number, ids: string[], stage: string, caps: number[] = v.map(() => Infinity)): number[] {
     const sum = v.reduce((a, b) => a + b, 0n);
     let step = 0;
     while (seats.reduce((a, b) => a + b, 0) < n) {
       step++;
-      const eligible = v.map((_, i) => i).filter(i => v[i] > 0n && !(r.majorityCap && 2n * v[i] <= sum && 2 * seats[i] >= n));
+      const eligible = v.map((_, i) => i).filter(i => v[i] > 0n && seats[i] < caps[i] && !(r.majorityCap && 2n * v[i] <= sum && 2 * seats[i] >= n));
       if (!eligible.length) break;
       let best = eligible[0];
       for (const i of eligible) if (v[i] * BigInt(seats[best] + 1) > v[best] * BigInt(seats[i] + 1)) best = i;
@@ -35,7 +36,8 @@ function reference(x: AllocationInput): number[] {
     }
     return seats;
   }
-  const starting = initial(live.map(i => ls[i].votes), r.seats);
+  const capacities = ls.map(l => r.seatsCappedAtCandidates ? l.candidateCount ?? Infinity : Infinity);
+  const starting = initial(live.map(i => ls[i].votes), r.seats, live.map(i => capacities[i]));
   const pairs = x.agreements.filter(a => a.members.length === 2 && a.members.every(id => live.some(i => ls[i].id === id))).map(a => ({ id: a.id, ix: a.members.map(id => ls.findIndex(l => l.id === id)) }));
   const groups: number[][] = []; const unitIds: string[] = []; const claimed = new Set<number>();
   for (const i of live) {
@@ -46,10 +48,10 @@ function reference(x: AllocationInput): number[] {
   }
   const votes = groups.map(g => g.reduce((sum, i) => sum + ls[i].votes, 0n));
   const seats = groups.map(g => g.reduce((sum, i) => sum + starting[live.indexOf(i)], 0));
-  finish(votes, seats, r.seats, unitIds, 'national');
+  finish(votes, seats, r.seats, unitIds, 'national', groups.map(g => g.reduce((s, i) => s + capacities[i], 0)));
   groups.forEach((g, j) => {
     const memberVotes = g.map(i => ls[i].votes);
-    const division = g.length === 1 ? [seats[j]] : finish(memberVotes, initial(memberVotes, seats[j]), seats[j], g.map(i => ls[i].id), `internal:${unitIds[j]}`);
+    const division = g.length === 1 ? [seats[j]] : finish(memberVotes, initial(memberVotes, seats[j], g.map(i => capacities[i])), seats[j], g.map(i => ls[i].id), `internal:${unitIds[j]}`, g.map(i => capacities[i]));
     g.forEach((i, k) => { answer[i] = division[k]; });
   });
   return answer;
@@ -96,5 +98,30 @@ it('also matches the original 1973 section 81(d) at the 1% threshold', () => {
       agreements: paired ? [{ id: 'P', members: ['L0', 'L1'] }] : [],
     };
     assert.deepEqual(allocate(input).lists.map(l => l.seats), reference(input));
+  }
+});
+
+// Independent capacity implementation: constrain whole quotas, sum pair capacities,
+// continue highest quotients nationally and within pairs. Unknown counts are unbounded.
+it('matches the optional candidate cap for initial seats, pairs and exhausted capacity', () => {
+  for (let trial = 0; trial < 200; trial++) {
+    const lists = Array.from({ length: 4 }, (_, i) => ({ id: `L${i}`, votes: BigInt(10_000 + ((trial + 3) * (i + 7) * 7919) % 100_000), candidateCount: (trial * (i + 1) + 3) % 140 }));
+    const input: AllocationInput = { rules: { ...ISRAEL_1973, seatsCappedAtCandidates: true }, lists, agreements: trial % 2 ? [{ id: 'P', members: ['L0', 'L1'] }] : [] };
+    assert.deepEqual(allocate(input).lists.map(l => l.seats), reference(input));
+  }
+});
+
+it('the independent capped and uncapped implementations reproduce the K9 comparison tables', () => {
+  const review = JSON.parse(readFileSync('data/raw/k9/national.reviewed.json', 'utf8'));
+  const rosters = JSON.parse(readFileSync('data/raw/k9/candidates.reviewed.json', 'utf8')).lists;
+  for (const capped of [false, true]) {
+    const input: AllocationInput = {
+      rules: { ...ISRAEL_1973, seatsCappedAtCandidates: capped },
+      lists: review.lists.map((l: { letters: string; gazetteVotes: number }) => ({ id: l.letters, votes: BigInt(l.gazetteVotes), candidateCount: rosters.find((c: {letters: string}) => c.letters === l.letters)?.publishedCount })),
+      agreements: review.agreements.pairs.map((members: string[], i: number) => ({ id: `pair${i}`, members })),
+    };
+    const expected = review.lists.map((l: {letters: string; officialSeats: number}) => capped ? l.officialSeats : l.letters === 'פש' ? 2 : l.letters === 'ש' ? 1 : l.officialSeats);
+    assert.deepEqual(reference(input), expected);
+    assert.deepEqual(allocate(input).lists.map(l => l.seats), expected);
   }
 });

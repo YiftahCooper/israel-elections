@@ -99,8 +99,8 @@
     "available": false,
     "status": {
       "stage": "pending-data-verification",
-      "noteEn": "National gazette votes and CBS totals reconciled. Agreement set not recovered; four seat mismatches without agreements. Complete winning rosters unverified. No locality dataset. See decisions 0070–0071.",
-      "noteHe": "הקולות הארציים אומתו מול רשומות והלמ״ס. רשימות המועמדים המלאות טרם אומתו; הבחירות אינן זמינות. ללא נתוני יישובים. ראו החלטות 0070–0071."
+      "noteEn": "Unavailable: agreement notice not located; four seat mismatches without agreements. Winning rosters and elected-name checks remain incomplete. The full amendment chain is an unverified limitation, not a release gate; no localities.",
+      "noteHe": "לא זמין: הודעת ההתקשרויות לא אותרה; ללא הסכמים יש ארבע אי־התאמות במנדטים. תמלול הרשימות הזוכות והצלבת שמות הנבחרים טרם הושלמו. שרשרת התיקונים שלא אומתה היא מגבלה מתועדת ולא תנאי לשחרור; אין נתוני יישובים."
     }
   },
   {
@@ -112,8 +112,8 @@
     "available": false,
     "status": {
       "stage": "pending-data-verification",
-      "noteEn": "National totals reconciled; complete six-pair agreement notice verified. One-person Flatto-Sharon roster verified; unfillable-seat legal procedure unresolved (Flatto-Sharon/Sheli seat mismatch). Other winning rosters unverified. No localities. See decisions 0070–0071.",
-      "noteHe": "הקולות הארציים אומתו מול רשומות והלמ״ס. רשימות המועמדים המלאות טרם אומתו; הבחירות אינן זמינות. ללא נתוני יישובים. ראו החלטות 0070–0071."
+      "noteEn": "Unavailable: all seats reproduce with the candidate cap (Flatto-Sharon 1, Sheli 2). The procedure is inferred from the officially published result because the statutory text was not located. All 120 winning ranks transcribed, but only 119 elected names cross-checked: YP 2326 omits Ratz’s elected-member paragraph. Later ranks truncated; nonwinning rosters untranscribed. Full amendment chain unverified; no localities.",
+      "noteHe": "לא זמין: כל המנדטים משוחזרים בהגבלת מספר המועמדים (פלאטו שרון 1, שלי 2). ההליך מוסק מהתוצאה הרשמית שפורסמה משום שנוסח החוק המסדיר אותו לא אותר. כל 120 הדרגות הזוכות תומללו, אך רק 119 שמות נבחרים הוצלבו: בפרסום התוצאות י״פ 2326 חסרה פסקת הנבחרת של רצ. דרגות מאוחרות חלקיות ורשימות לא זוכות לא תומללו. שרשרת התיקונים לא אומתה; אין נתוני יישובים."
     }
   },
   {
@@ -122,11 +122,11 @@
     "date": "1981-06-30",
     "nameHe": "הבחירות לכנסת ה-10",
     "nameEn": "Election to the 10th Knesset",
-    "available": false,
+    "available": true,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "National totals reconciled and every gazetted seat reproduced using all three pairs in YP 2720 p. 2027 (official gazette via olaw mirror). Complete winning rosters and full period-law chain unverified. No localities. See decisions 0070–0071.",
-      "noteHe": "הקולות הארציים אומתו מול רשומות והלמ״ס. רשימות המועמדים המלאות טרם אומתו; הבחירות אינן זמינות. ללא נתוני יישובים. ראו החלטות 0070–0071."
+      "stage": "official-final",
+      "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 120 transcribed ranks across all 10 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
+      "noteHe": "תוצאות ארציות בלבד; כל המנדטים הרשמיים שוחזרו. 120 מועמדים תומללו מפרסום הרשימות הרשמי בכל 10 הרשימות הזוכות; שמות כל 120 הנבחרים הוצלבו עם הודעת התוצאות. דרגות מאוחרות לא תומללו; רשימות חלקיות ורשימות לא זוכות שלא תומללו מסומנות במפורש. אין נתוני יישובים. שרשרת התיקונים המלאה למועד הבחירות ושינויים מאוחרים ברשימות טרם אומתו; אלה מגבלות מתועדות."
     }
   },
   {
@@ -135,11 +135,11 @@
     "date": "1984-07-23",
     "nameHe": "הבחירות לכנסת ה-11",
     "nameEn": "Election to the 11th Knesset",
-    "available": false,
+    "available": true,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "National totals reconciled and every gazetted seat reproduced using all four pairs in YP 3073 p. 2839 (official gazette via olaw mirror). Alignment roster: 120 names, elected ranks 1–44 checked; other winning rosters and full period-law chain unverified. No localities. See decisions 0070–0071.",
-      "noteHe": "הקולות הארציים אומתו מול רשומות והלמ״ס. רשימות המועמדים המלאות טרם אומתו; הבחירות אינן זמינות. ללא נתוני יישובים. ראו החלטות 0070–0071."
+      "stage": "official-final",
+      "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 196 transcribed ranks across all 15 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted except the complete 120-name K11 Alignment roster; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
+      "noteHe": "תוצאות ארציות בלבד; כל המנדטים הרשמיים שוחזרו. 196 מועמדים תומללו מפרסום הרשימות הרשמי בכל 15 הרשימות הזוכות; שמות כל 120 הנבחרים הוצלבו עם הודעת התוצאות. דרגות מאוחרות לא תומללו למעט רשימת המערך המלאה בכנסת ה־11; רשימות חלקיות ורשימות לא זוכות שלא תומללו מסומנות במפורש. אין נתוני יישובים. שרשרת התיקונים המלאה למועד הבחירות ושינויים מאוחרים ברשימות טרם אומתו; אלה מגבלות מתועדות."
     }
   },
   {
@@ -148,11 +148,11 @@
     "date": "1988-11-01",
     "nameHe": "הבחירות לכנסת ה-12",
     "nameEn": "Election to the 12th Knesset",
-    "available": false,
+    "available": true,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "National totals reconciled and every gazetted seat reproduced using all five pairs in YP 3588 p. 170. Complete winning rosters and full period-law chain unverified. No localities. See decisions 0070–0071.",
-      "noteHe": "הקולות הארציים אומתו מול רשומות והלמ״ס. רשימות המועמדים המלאות טרם אומתו; הבחירות אינן זמינות. ללא נתוני יישובים. ראו החלטות 0070–0071."
+      "stage": "official-final",
+      "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 120 transcribed ranks across all 15 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
+      "noteHe": "תוצאות ארציות בלבד; כל המנדטים הרשמיים שוחזרו. 120 מועמדים תומללו מפרסום הרשימות הרשמי בכל 15 הרשימות הזוכות; שמות כל 120 הנבחרים הוצלבו עם הודעת התוצאות. דרגות מאוחרות לא תומללו; רשימות חלקיות ורשימות לא זוכות שלא תומללו מסומנות במפורש. אין נתוני יישובים. שרשרת התיקונים המלאה למועד הבחירות ושינויים מאוחרים ברשימות טרם אומתו; אלה מגבלות מתועדות."
     }
   },
   {

@@ -1084,8 +1084,8 @@
     "description": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-03T16:14:46.283817+00:00",
-    "bytes": 5812,
-    "sha256": "b216c54fc086a7c048083ac1061ddbff31946a8fa84abe659348e580e2f1e5a9"
+    "bytes": 5646,
+    "sha256": "db762ff2bab6607ad0c2ea382cc64d0cf5feef8cd75e607c08e83fc5114194f0"
   },
   {
     "id": "k9-results-gazette",
@@ -1120,8 +1120,8 @@
     "description": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-03T16:14:46.283817+00:00",
-    "bytes": 6401,
-    "sha256": "e8574374eba10fa188cc102bcc5aac3f0542c53776610dc1fd05a2d1d081c05a"
+    "bytes": 9837,
+    "sha256": "5903100faf034129cbb5c3f2f559514c2ba05d1f9343f699c55ef3af7b87d198"
   },
   {
     "id": "k9-candidates-reviewed",
@@ -1129,11 +1129,11 @@
     "url": "project:data/raw/k9/candidates.reviewed.json",
     "publisher": "Project reviewed derivative (not an official publication)",
     "official": false,
-    "description": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
+    "description": "Official winning-list leading ranks and name-by-name elected comparisons; page references, spelling variants and incomplete checks explicitly retained.",
     "method": "reviewed-transcription",
-    "retrievedAt": "2026-11-03T16:14:46.283817+00:00",
-    "bytes": 623,
-    "sha256": "46bef80e0a53bcfaf51f201a0016d2feff0f184eea85240e9a10e206c9a44865"
+    "retrievedAt": "2026-11-03T16:34:27.797392+00:00",
+    "bytes": 26290,
+    "sha256": "89a5f685a9201ddc0eed46b0dc5f97c7068fa407c057eb0d0e2d8e3e15024365"
   },
   {
     "id": "k10-results-gazette",
@@ -1168,8 +1168,8 @@
     "description": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-03T16:14:46.283817+00:00",
-    "bytes": 6914,
-    "sha256": "57a711226e31df760929a0ff0fb7b86b614538c5c75822cc925b7868254ac38b"
+    "bytes": 9654,
+    "sha256": "cde3ee5aff994788866a5c60f093e05a39d660cbcd87a7abc8bfa7608be704d7"
   },
   {
     "id": "k11-results-gazette",
@@ -1204,8 +1204,8 @@
     "description": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-03T16:14:46.283817+00:00",
-    "bytes": 6162,
-    "sha256": "942721d434414465f37ee6e42d37ef7ba7cd2a51e22b0fb6b468c5e810bb431c"
+    "bytes": 10445,
+    "sha256": "c3d8a566c32c19558eecd93b43b7418f2fe1c4158af7abe70dada7265ea50c99"
   },
   {
     "id": "k11-candidates-reviewed",
@@ -1213,11 +1213,11 @@
     "url": "project:data/raw/k11/candidates.reviewed.json",
     "publisher": "Project reviewed derivative (not an official publication)",
     "official": false,
-    "description": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
+    "description": "Official winning-list leading ranks and name-by-name elected comparisons; page references, spelling variants and incomplete checks explicitly retained.",
     "method": "reviewed-transcription",
-    "retrievedAt": "2026-11-03T16:14:46.283817+00:00",
-    "bytes": 14441,
-    "sha256": "8f4706fb36c006e6af149ed356a2e6400cada6450ec567fc838c507a639c95ac"
+    "retrievedAt": "2026-11-03T16:34:27.797495+00:00",
+    "bytes": 36533,
+    "sha256": "00627177df4fd5021bf2351243ed59d8dd4ee82e76b598864b4f1d108a5bf051"
   },
   {
     "id": "k12-results-gazette",
@@ -1252,8 +1252,8 @@
     "description": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-03T16:14:46.283817+00:00",
-    "bytes": 6097,
-    "sha256": "ee11472a24ce97890a1adaea0039925deb74c13c2c7937fe848340b26a59b341"
+    "bytes": 10757,
+    "sha256": "c89f4b27b1be27db617d6eaef8b35230f2c8951901b6838c8d7259a941adcd05"
   },
   {
     "id": "k8-k12-cbs-national-totals",
@@ -1302,5 +1302,53 @@
     "retrievedAt": "2026-11-03T16:14:46.283817+00:00",
     "bytes": 1044408,
     "sha256": "4c1af5a77ffe086c94c252fe08b2519e0a28cf9c66f16e00d9913ccb5f3bd34f"
+  },
+  {
+    "id": "k10-candidates-reviewed",
+    "file": "k10/candidates.reviewed.json",
+    "url": "project:k10/candidates.reviewed.json",
+    "publisher": "Project transcription of official candidate/results gazettes",
+    "official": false,
+    "method": "manual-review",
+    "description": "Official winning-list leading ranks and name-by-name elected comparisons; page references, spelling variants and incomplete checks explicitly retained.",
+    "retrievedAt": "2026-11-03T16:34:27.797461+00:00",
+    "bytes": 26136,
+    "sha256": "f23e27697c7ef51609168b2fed0d9d70b459e375281d03d8dd19d0ab77db1b6e"
+  },
+  {
+    "id": "k12-candidates-reviewed",
+    "file": "k12/candidates.reviewed.json",
+    "url": "project:k12/candidates.reviewed.json",
+    "publisher": "Project transcription of official candidate/results gazettes",
+    "official": false,
+    "method": "manual-review",
+    "description": "Official winning-list leading ranks and name-by-name elected comparisons; page references, spelling variants and incomplete checks explicitly retained.",
+    "retrievedAt": "2026-11-03T16:34:27.797524+00:00",
+    "bytes": 27469,
+    "sha256": "69be604d9d890fbed09dffff0e7ba37c37c344c198a7785600ba66baa63dd740"
+  },
+  {
+    "id": "k8-search-reviewed",
+    "file": "k8/search.reviewed.json",
+    "url": "project:k8/search.reviewed.json",
+    "publisher": "Project primary-source search record",
+    "official": false,
+    "description": "1973 complete surplus-agreement notice — bounded search scope, retrieval hashes and evidence gaps.",
+    "method": "manual-review",
+    "retrievedAt": "2026-11-03T16:37:23.593148+00:00",
+    "bytes": 6568,
+    "sha256": "f50567ba2d737fbfcec9080d9c4a75a049eda9a84757b2cb4f8af1510fb54fc0"
+  },
+  {
+    "id": "k9-search-reviewed",
+    "file": "k9/search.reviewed.json",
+    "url": "project:k9/search.reviewed.json",
+    "publisher": "Project primary-source search record",
+    "official": false,
+    "description": "Legal basis of the 1977 unfillable seat and missing Ratz elected-member paragraph — bounded search scope, retrieval hashes and evidence gaps.",
+    "method": "manual-review",
+    "retrievedAt": "2026-11-03T16:37:23.593148+00:00",
+    "bytes": 4424,
+    "sha256": "7e8876b305d906a45638466dc83be2a4634c315134cc274de7a734e02d94733c"
   }
 ]

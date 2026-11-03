@@ -1,6 +1,7 @@
+import { existsSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { buildK12, verifyK12 } from '../scripts/lib/historical/k12.ts';
-import { researchDataset } from '../scripts/lib/historical/k8-k12-common.ts';
+import { researchDataset, releasedDataset } from '../scripts/lib/historical/k8-k12-common.ts';
 import { allocate } from '../src/engine/allocate.ts';
 import { scenarioFromDataset, toEngineInput, validateScenario } from '../src/model/scenario.ts';
 
@@ -8,7 +9,7 @@ import { scenarioFromDataset, toEngineInput, validateScenario } from '../src/mod
 // Zero seats for every other gazetted list; never calculated expectations.
 const published: Record<string, number> = {"אמת": 39, "ב": 5, "ג": 5, "הן": 2, "ו": 4, "ט": 2, "מחל": 40, "מפם": 3, "ע": 1, "עץ": 2, "פ": 1, "ץ": 2, "רצ": 5, "שס": 6, "ת": 3};
 const unresolved: Record<string, number> = {};
-describe('k12 — checked research evidence; release remains blocked', () => {
+describe('k12 — released national dataset', () => {
   it('reconciles every national vote with the gazette and CBS totals', () => {
     const { review: r } = verifyK12({ log: false });
     expect(r.lists).toHaveLength(27);
@@ -38,10 +39,29 @@ describe('k12 — checked research evidence; release remains blocked', () => {
     expect(a.review.agreements.complete).toBe(true);
     expect(a.review.agreements.pairs).toEqual([["אמת", "רצ"], ["הן", "מפם"], ["מחל", "ת"], ["קז", "יע"], ["שס", "עץ"]]);
   });
-  it('cannot publish an incomplete fixture, including a premature availability flip', () => {
-    expect(buildK12({ log: false })).toEqual([]);
-    expect(verifyK12({ log: false }).releaseReady).toBe(false);
-    expect(() => verifyK12({ log: false, available: true })).toThrow(/release blocked/);
-    expect(researchDataset(verifyK12({ log: false })).hasLocalities).toBe(false);
+  it('builds the committed national-only release with every elected rank cross-checked', () => {
+    const a = verifyK12({ log: false });
+    expect(a.releaseReady).toBe(true);
+    expect(buildK12({ log: false })).toHaveLength(1);
+    const ds = JSON.parse(readFileSync('public/data/k12.json', 'utf8'));
+    const rebuilt = releasedDataset(a);
+    expect({ ...ds, buildInfo: { ...ds.buildInfo, builtAt: '' } }).toEqual({ ...rebuilt, lists: ds.lists.map((l: {id: string}) => rebuilt.lists.find(x => x.id === l.id)), buildInfo: { ...rebuilt.buildInfo, builtAt: '' } });
+    expect(ds.hasLocalities).toBe(false);
+    expect(existsSync('public/data/k12-localities.json')).toBe(false);
+    expect(validateScenario(scenarioFromDataset(ds))).toEqual([]);
+    const result = allocate(toEngineInput(scenarioFromDataset(ds)));
+    for (const l of result.lists) expect(l.seats, l.id).toBe(published[l.id.slice(3)] ?? 0);
+    for (const l of ds.lists) {
+      const seats = ds.officialSeats[l.id];
+      if (!seats) { expect(l.candidatesUnavailable).toBe(true); expect(l.candidates).toEqual([]); continue; }
+      const r = a.rosters.find(r => r.letters === l.letters)!;
+      expect(l.candidates.length).toBeGreaterThanOrEqual(seats);
+      expect(l.candidates.map((c: {rank: number}) => c.rank)).toEqual(Array.from({length: l.candidates.length}, (_, i) => i + 1));
+      expect(r.electedCrossCheck?.ranks).toEqual(Array.from({length: seats}, (_, i) => i + 1));
+      expect(r.electedCrossCheck?.namesHe).toHaveLength(seats);
+      expect(Boolean(l.candidatesTruncated)).toBe(!r.complete);
+      expect(l.candidatesUnavailable).toBeUndefined();
+    }
+    expect(a.rosters.reduce((sum, r) => sum + (r.electedCrossCheck?.namesHe?.length ?? 0), 0)).toBe(120);
   });
 });

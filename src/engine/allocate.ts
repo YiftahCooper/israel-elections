@@ -17,7 +17,7 @@ import type {
   Quotient, RemainderStep, RuleSet, TieRecord, UnitResult,
 } from './types.ts';
 
-interface WorkUnit { id: string; votes: bigint; seats: number; initial: number; capped: boolean }
+interface WorkUnit { id: string; votes: bigint; seats: number; initial: number; capped: boolean; capacity?: number }
 
 const ratMulInt = (r: Rational, k: bigint): Rational => rat(r.num * k, r.den);
 
@@ -77,6 +77,7 @@ function runRemainderStage(units: WorkUnit[], remaining: number, o: StageOptions
     if (o.method === 'largest-remainder' && units.every((u) => roundGiven.has(u.id) || u.capped)) roundGiven.clear();
     const quotients: Quotient[] = [];
     for (const u of units) {
+      if (u.capacity !== undefined && u.seats >= u.capacity) u.capped = true;
       if (o.majorityCap && !u.capped && 2n * u.votes <= o.universeVotes && 2 * u.seats >= o.seatsTotal) u.capped = true;
       const value = quotientFor(u, o, roundGiven);
       quotients.push({ unitId: u.id, votes: u.votes, seats: u.seats, value: value ?? rat(-1n), eligible: !u.capped && value !== null && u.votes > 0n, capped: u.capped });
@@ -112,18 +113,19 @@ function runRemainderStage(units: WorkUnit[], remaining: number, o: StageOptions
 }
 
 /** Allocates `seats` among members from scratch using the same method (section 82(b)). */
-function divideWithinUnit(unitId: string, members: { id: string; votes: bigint }[], seats: number, rules: RuleSet, base: Omit<StageOptions, 'stage' | 'seatsTotal' | 'universeVotes' | 'quota'>): InternalDivision {
+function divideWithinUnit(unitId: string, members: { id: string; votes: bigint; candidateCount?: number }[], seats: number, rules: RuleSet, base: Omit<StageOptions, 'stage' | 'seatsTotal' | 'universeVotes' | 'quota'>): InternalDivision {
   const totalVotes = members.reduce((s, m) => s + m.votes, 0n);
   let quota = rules.remainderMethod === 'sainte-lague' ? rat(0n) : computeQuota(totalVotes, seats, rules.quotaRounding);
   if (rules.remainderMethod !== 'sainte-lague' && quota.num === 0n && seats > 0) quota = rat(totalVotes, BigInt(seats));
   const work: WorkUnit[] = members.map((m) => {
-    const init = rules.remainderMethod === 'sainte-lague' ? 0 : initialSeats(m.votes, quota);
-    return { id: m.id, votes: m.votes, seats: init, initial: init, capped: false };
+    const capacity = rules.seatsCappedAtCandidates ? m.candidateCount : undefined;
+    const init = Math.min(capacity ?? Infinity, rules.remainderMethod === 'sainte-lague' ? 0 : initialSeats(m.votes, quota));
+    return { id: m.id, votes: m.votes, seats: init, initial: init, capped: false, capacity };
   });
   let given = work.reduce((s, w) => s + w.seats, 0);
   if (given > seats) {
     quota = rat(totalVotes, BigInt(seats));
-    for (const w of work) { w.seats = initialSeats(w.votes, quota); w.initial = w.seats; }
+    for (const w of work) { w.seats = Math.min(w.capacity ?? Infinity, initialSeats(w.votes, quota)); w.initial = w.seats; }
     given = work.reduce((s, w) => s + w.seats, 0);
   }
   const steps = runRemainderStage(work, seats - given, { ...base, stage: `internal:${unitId}`, seatsTotal: seats, universeVotes: totalVotes, quota });
@@ -137,6 +139,8 @@ function divideWithinUnit(unitId: string, members: { id: string; votes: bigint }
 
 export function allocate(input: AllocationInput): AllocationResult {
   const { rules } = input;
+  if (rules.seatsCappedAtCandidates && input.lists.some(l => l.candidateCount !== undefined && (!Number.isSafeInteger(l.candidateCount) || l.candidateCount < 0))) throw new Error('candidateCount must be a nonnegative safe integer');
+  const capacity = (id: string) => rules.seatsCappedAtCandidates ? input.lists.find(l => l.id === id)!.candidateCount : undefined;
   const warnings: EngineWarning[] = [];
   const ties: TieRecord[] = [];
   const lotteryWinners = input.lotteryWinners ?? {};
@@ -159,7 +163,7 @@ export function allocate(input: AllocationInput): AllocationResult {
   const initial = new Map<string, number>();
   const computeInitial = () => {
     initial.clear();
-    for (const l of input.lists) initial.set(l.id, qualified.has(l.id) && rules.remainderMethod !== 'sainte-lague' ? initialSeats(l.votes, quota) : 0);
+    for (const l of input.lists) initial.set(l.id, qualified.has(l.id) && rules.remainderMethod !== 'sainte-lague' ? Math.min(capacity(l.id) ?? Infinity, initialSeats(l.votes, quota)) : 0);
   };
   computeInitial();
   let initialTotal = [...initial.values()].reduce((a, b) => a + b, 0);
@@ -225,6 +229,11 @@ export function allocate(input: AllocationInput): AllocationResult {
     }
   }
 
+  if (rules.seatsCappedAtCandidates) for (const w of work) {
+    const counts = (unitMembers.get(w.id) ?? [w.id]).map(capacity);
+    w.capacity = counts.every(c => c !== undefined) ? counts.reduce<number>((sum, c) => sum + c!, 0) : undefined;
+  }
+
   const base = { method: rules.remainderMethod, majorityCap: rules.majorityCap, lotteryWinners, warnings, ties };
   const remaining = Math.max(0, rules.seats - initialTotal);
   const remainderSteps = qualified.size > 0
@@ -237,7 +246,7 @@ export function allocate(input: AllocationInput): AllocationResult {
   for (const w of work) {
     const members = unitMembers.get(w.id);
     if (!members) { finalSeats.set(w.id, w.seats); continue; }
-    const div = divideWithinUnit(w.id, members.map((m) => ({ id: m, votes: input.lists.find((l) => l.id === m)!.votes })), w.seats, rules, base);
+    const div = divideWithinUnit(w.id, members.map((m) => ({ id: m, votes: input.lists.find((l) => l.id === m)!.votes, candidateCount: capacity(m) })), w.seats, rules, base);
     internalDivisions.push(div);
     for (const m of members) {
       finalSeats.set(m, div.final[m]);

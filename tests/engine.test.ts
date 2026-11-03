@@ -1,3 +1,4 @@
+import { ISRAEL_2014 } from '../src/engine/rules.ts';
 import { describe, expect, it } from 'vitest';
 import { allocate, passesThreshold, thresholdVotes } from '../src/engine/allocate.ts';
 import { cmp, percentToRational, rat, toDecimal } from '../src/engine/rational.ts';
@@ -210,4 +211,33 @@ describe('lottery outcomes', () => {
     expect(other.remainderSteps[0].tie!.forced).toBe(false);
     expect(other.warnings.map((w) => w.code)).toContain('lottery-required');
   });
+});
+
+it('optionally caps initial and remainder seats at candidate capacity, retaining agreement units', () => {
+  const input = {
+    rules: { ...ISRAEL_2014, seats: 10, majorityCap: false, seatsCappedAtCandidates: true },
+    lists: [{ id: 'a', votes: 60000n, candidateCount: 1 }, { id: 'b', votes: 25000n, candidateCount: 10 }, { id: 'c', votes: 15000n, candidateCount: 10 }],
+    agreements: [{ id: 'bc', members: ['b', 'c'] }],
+  };
+  const r = allocate(input);
+  expect(r.lists.map(l => l.seats)).toEqual([1, 6, 3]);
+  expect(r.seatsAllocated).toBe(10);
+  expect(r.warnings).toEqual([]);
+  expect(allocate({ ...input, rules: { ...input.rules, seatsCappedAtCandidates: false } }).lists.map(l => l.seats)).toEqual([6, 3, 1]);
+  expect(() => allocate({ ...input, lists: [{ id: 'a', votes: 1n, candidateCount: -1 }] })).toThrow(/candidateCount/);
+});
+
+it('caps agreement members internally and reports exhausted total capacity', () => {
+  const input = {
+    rules: { ...ISRAEL_2014, seats: 10, majorityCap: false, seatsCappedAtCandidates: true },
+    lists: [{ id: 'a', votes: 60000n, candidateCount: 1 }, { id: 'b', votes: 25000n, candidateCount: 1 }, { id: 'c', votes: 15000n, candidateCount: 10 }],
+    agreements: [{ id: 'ab', members: ['a', 'b'] }],
+  };
+  expect(allocate(input).lists.map(l => l.seats)).toEqual([1, 1, 8]);
+  const exhausted = allocate({ ...input, lists: input.lists.map(l => ({ ...l, candidateCount: 1 })) });
+  expect(exhausted.lists.map(l => l.seats)).toEqual([1, 1, 1]);
+  expect(exhausted.seatsAllocated).toBe(3);
+  expect(exhausted.warnings.map(w => w.code)).toEqual(['seats-unallocatable']);
+  const unknown = allocate({ ...input, lists: input.lists.map(l => ({ ...l, candidateCount: undefined })) });
+  expect(unknown.lists.map(l => l.seats)).toEqual(allocate({ ...input, rules: { ...input.rules, seatsCappedAtCandidates: false } }).lists.map(l => l.seats));
 });

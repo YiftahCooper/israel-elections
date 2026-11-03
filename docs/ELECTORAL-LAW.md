@@ -104,39 +104,50 @@ They are explicitly research fixtures: both elections remain unavailable because
 figures conflict with polling data, full candidate rosters are unverified and required
 locality fields are missing. Successful allocation does not clear those release gates.
 
-## 1973–1988: original 1% Bader–Ofer text, with release limitations
+## 1973–1988: 1% Bader–Ofer, with the explicit K9 inference
 
 `ISRAEL_1973` (`il-1973-bader-ofer-1`) applies the exact **1/100** threshold to
-Knessets 8–12. [Amendment No. 4 (1973)](https://fs.knesset.gov.il/7/law/7_lsr_211799.pdf),
-**SH 692 p. 108, 9 April 1973**, replaces only section 81(d). It expressly includes
-repeated highest quotients, a CEC lottery for equal quotients and the half-seats
-restriction. These already match the existing engine; no new `RuleSet` option is added.
-The original amendment visibly says **No. 4**, despite some secondary descriptions
-calling it No. 5.
+K8 and K10–K12. [Original Amendment No. 4](https://fs.knesset.gov.il/7/law/7_lsr_211799.pdf),
+**SH 692 p.108, 9 April 1973**, replaces §81(d): repeated highest quotients, CEC lottery
+for equal quotients, and the half-seats restriction. The original visibly says **No.4**.
+The [1969 consolidated law](https://fs.knesset.gov.il/6/law/6_lsr_311009.pdf), SH556 p.116,
+supplies §§81(a–c),82: 1%, floor quota, whole-quota initial seats, combination only for
+remainders when both partners qualify, and full re-division within a pair. §67(a), p.113,
+permits one partner. Original PDFs and hashes are retained in SOURCES.
 
-The [original 1969 consolidated law](https://fs.knesset.gov.il/6/law/6_lsr_311009.pdf),
-SH 556, printed p. 116, supplies sections 81(a–c) and 82: 1%, **floor** quota,
-whole-quota initial seats, combination only for remainders when both partners qualify,
-and full re-division within a linked pair. Section 67(a), p. 113, permits only one
-partner. The 1977/1981/1984/1988 official notices confirm actual paired lists. A full
-primary comparison of intervening amendments and temporary laws through 1988 remains
-unverified, so this preset is not a claim that every special case is implemented.
+A full comparison of intervening ordinary and temporary amendments through 1988
+remains unverified. Under the owner's release decision, this is a bilingual dataset
+limitation, **not a release gate**, when the verified provisions reproduce every seat.
 
-The 1977 gazette publishes one seat for Flatto-Sharon (**פש**, sole candidate
-**שרון סמואל**) and two for Sheli. With all six sourced agreements, the uncapped
-engine gives two and one respectively; all other lists, including NRP's twelve, match.
-Section 83 of the original statute identifies elected members in roster order, but
-provides no explicit redistribution algorithm. No operative provision or CEC ruling
-resolving the unfillable seat has been verified. **K9 stays unavailable**; no candidate
-cap or vote adjustment is guessed. Decision [0070](decisions/0070-1973-rules-and-unfillable-seat-hold.md)
-records the primary text, diagnostic mismatch and remaining legal gate.
+The **optional, default-off** `seatsCappedAtCandidates` field caps a list's initial and
+remainder seats at a known complete `candidateCount`, then continues the highest-quotient
+remainder stage. Pair units retain their combined votes and summed capacities; internal
+re-division applies each member's cap. Unknown full counts are unbounded. In particular,
+a partial transcription is never treated as a complete candidate count. This matters
+for capacity-sensitive counterfactuals; such scenarios are not fully verified when full
+rosters are unknown. Scenario import/export, preset validation and departure detection
+carry the option; other presets leave it off.
 
-K10, K11 and K12 reproduce **every** gazetted seat through the scenario pipeline,
-using complete notices: YP 2720 p. 2027 (three pairs), YP 3073 p. 2839 (four), and
-YP 3588 p. 170 (five). K8's agreement set is still unknown; running without agreements
-produces four list-level differences. All five remain unavailable while full winning
-rosters and complete period-law verification are unfinished. These research tests do
-not clear release gates; see [0071](decisions/0071-k8-k12-national-evidence-release-holds.md).
+Only `ISRAEL_1977` (`il-1977-bader-ofer-1-candidate-cap`) enables it. With all six
+published agreements, it gives Flatto-Sharon **1** and Sheli **2**, exactly as published;
+uncapped they receive **2** and **1**. Every other list is unchanged, including NRP **12**.
+**This procedure is inferred from the officially published result because the statutory
+text was not located.** §83 of the original identifies elected members in order but
+supplies no explicit redistribution algorithm. Further searches did not recover a
+contemporaneous CEC ruling or operative text for this case. Reproduction is not a
+claim of verified legal authority. See [0073](decisions/0073-k9-candidate-cap-inference.md).
+
+**ההליך לשנת 1977 מוסק מהתוצאה הרשמית שפורסמה משום שנוסח החוק המסדיר אותו לא אותר.**
+הגבלת מספר המנדטים למספר המועמדים והמשך חלוקת העודפים משחזרים את כל התוצאות,
+אך אינם מוכיחים את הסמכות המשפטית. שרשרת התיקונים המלאה נותרה מגבלה מתועדת.
+
+K10–K12 are released with complete required winning-roster prefixes and all elected-name
+checks, using notices YP2720 p.2027 (three pairs), YP3073 p.2839 (four), and YP3588 p.170
+(five). K8 remains unavailable: agreement notice not located and four seat differences.
+K9 also remains unavailable: both copies of YP2326 omit Ratz's elected-member paragraph,
+so only 119/120 elected names can be cross-checked against the required results notice.
+The full per-list tables and both K9 computations are in
+[0075](decisions/0075-k8-k12-release-evidence.md). No app Rules panel edit was made.
 
 ## Knessets 13–15 (1992–1999)
 

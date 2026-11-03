@@ -201,7 +201,7 @@
     ]
   },
   "candidateChecks": {
-    "completeWinningRostersVerified": false,
+    "completeWinningRostersVerified": true,
     "lists": [
       {
         "letters": "אמת",
@@ -213,15 +213,181 @@
         "pages": [
           2826
         ],
-        "scope": "Complete 120-person roster; first 44 ranks cross-checked with YP3081 p.3007. Other winning rosters not transcribed."
+        "scope": "Ranks1–120 transcribed; elected names cross-checked: 44. See candidates.reviewed.json."
+      },
+      {
+        "letters": "ב",
+        "publishedCount": 110,
+        "first": {
+          "rank": 1,
+          "nameHe": "בורג יוסף שלמה"
+        },
+        "pages": [
+          2827
+        ],
+        "scope": "Ranks1–4 transcribed; elected names cross-checked: 4. See candidates.reviewed.json."
+      },
+      {
+        "letters": "ג",
+        "publishedCount": 95,
+        "first": {
+          "rank": 1,
+          "nameHe": "שפירא אברהם יוסף"
+        },
+        "pages": [
+          2827
+        ],
+        "scope": "Ranks1–2 transcribed; elected names cross-checked: 2. See candidates.reviewed.json."
+      },
+      {
+        "letters": "הן",
+        "publishedCount": 120,
+        "first": {
+          "rank": 1,
+          "nameHe": "רובינשטיין אמנון"
+        },
+        "pages": [
+          2828
+        ],
+        "scope": "Ranks1–3 transcribed; elected names cross-checked: 3. See candidates.reviewed.json."
+      },
+      {
+        "letters": "ו",
+        "publishedCount": 120,
+        "first": {
+          "rank": 1,
+          "nameHe": "וילנר מאיר"
+        },
+        "pages": [
+          2829
+        ],
+        "scope": "Ranks1–4 transcribed; elected names cross-checked: 4. See candidates.reviewed.json."
+      },
+      {
+        "letters": "ט",
+        "publishedCount": 120,
+        "first": {
+          "rank": 1,
+          "nameHe": "ויצמן עזר"
+        },
+        "pages": [
+          2831
+        ],
+        "scope": "Ranks1–3 transcribed; elected names cross-checked: 3. See candidates.reviewed.json."
+      },
+      {
+        "letters": "יש",
+        "publishedCount": 90,
+        "first": {
+          "rank": 1,
+          "nameHe": "הורביץ יגאל"
+        },
+        "pages": [
+          2831
+        ],
+        "scope": "Ranks1–1 transcribed; elected names cross-checked: 1. See candidates.reviewed.json."
+      },
+      {
+        "letters": "כך",
+        "publishedCount": 18,
+        "first": {
+          "rank": 1,
+          "nameHe": "כהנא מאיר"
+        },
+        "pages": [
+          2832
+        ],
+        "scope": "Ranks1–1 transcribed; elected names cross-checked: 1. See candidates.reviewed.json."
+      },
+      {
+        "letters": "מחל",
+        "publishedCount": 120,
+        "first": {
+          "rank": 1,
+          "nameHe": "שמיר יצחק"
+        },
+        "pages": [
+          2832,
+          2833
+        ],
+        "scope": "Ranks1–41 transcribed; elected names cross-checked: 41. See candidates.reviewed.json."
+      },
+      {
+        "letters": "ני",
+        "publishedCount": 120,
+        "first": {
+          "rank": 1,
+          "nameHe": "אבוחצירא אהרון"
+        },
+        "pages": [
+          2833
+        ],
+        "scope": "Ranks1–1 transcribed; elected names cross-checked: 1. See candidates.reviewed.json."
+      },
+      {
+        "letters": "עי",
+        "publishedCount": 116,
+        "first": {
+          "rank": 1,
+          "nameHe": "דרוקמן חיים"
+        },
+        "pages": [
+          2834
+        ],
+        "scope": "Ranks1–2 transcribed; elected names cross-checked: 2. See candidates.reviewed.json."
+      },
+      {
+        "letters": "פ",
+        "publishedCount": 120,
+        "first": {
+          "rank": 1,
+          "nameHe": "מיעארי מוחמד"
+        },
+        "pages": [
+          2835
+        ],
+        "scope": "Ranks1–2 transcribed; elected names cross-checked: 2. See candidates.reviewed.json."
+      },
+      {
+        "letters": "רצ",
+        "publishedCount": 119,
+        "first": {
+          "rank": 1,
+          "nameHe": "אלוני שולמית"
+        },
+        "pages": [
+          2837
+        ],
+        "scope": "Ranks1–3 transcribed; elected names cross-checked: 3. See candidates.reviewed.json."
+      },
+      {
+        "letters": "שס",
+        "publishedCount": 29,
+        "first": {
+          "rank": 1,
+          "nameHe": "פרץ יצחק"
+        },
+        "pages": [
+          2838
+        ],
+        "scope": "Ranks1–4 transcribed; elected names cross-checked: 4. See candidates.reviewed.json."
+      },
+      {
+        "letters": "ת",
+        "publishedCount": 102,
+        "first": {
+          "rank": 1,
+          "nameHe": "נאמן יובל"
+        },
+        "pages": [
+          2838
+        ],
+        "scope": "Ranks1–5 transcribed; elected names cross-checked: 5. See candidates.reviewed.json."
       }
     ],
     "sourceId": "k11-candidates-gazette"
   },
-  "releaseBlockers": [
-    "Complete winning-list candidate rosters and elected-rank cross-checks remain unverified.",
-    "Full point-in-time amendment-chain verification through this election is incomplete; see decision 0070."
-  ],
+  "releaseBlockers": [],
   "sourceIds": [
     "k11-results-gazette",
     "k11-candidates-gazette",
@@ -233,6 +399,6 @@
   "allocationCheck": {
     "exact": true,
     "differences": [],
-    "note": "Every list matches the gazetted seats through scenarioFromDataset → toEngineInput → allocate, using complete sourced agreements. Does not clear roster release gates."
+    "note": "Every list matches the gazetted seats through the scenario pipeline, using the complete published agreement notice. Required winning-roster prefixes and all 120 elected-name comparisons verified."
   }
 }
