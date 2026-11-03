@@ -38,8 +38,7 @@ import { buildK24 } from './lib/historical/k24.ts';
 import { buildK25 } from './lib/historical/k25.ts';
 import { buildK26 } from './lib/historical/k26.ts';
 import { writeIfChanged } from './lib/build/output.ts';
-import { seatOrder } from './lib/build/records.ts';
-import { applyCandidateNotes } from './lib/build/notes.ts';
+import { finalizeDataset } from './lib/build/finalize.ts';
 import { manifest, OUT } from './lib/build/sources.ts';
 
 interface Built { ds: ElectionDataset; loc?: LocalityDataset | null; warnings?: string[] }
@@ -65,7 +64,7 @@ async function runBuilder(i: number): Promise<Result> {
     const outputs: Built[] = [];
     for (const job of jobs) {
       const built = await job();
-      outputs.push({ ...built, ds: applyCandidateNotes({ ...built.ds, lists: seatOrder(built.ds.lists) }) });
+      outputs.push({ ...built, ds: finalizeDataset(built.ds) });
     }
     return { outputs, logs };
   } catch (e) {

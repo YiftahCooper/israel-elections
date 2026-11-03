@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import { finalizeDataset } from '../scripts/lib/build/finalize.ts';
 import { describe, expect, it } from 'vitest';
 import type { ElectionDataset } from '../src/data/schema.ts';
 import { allocate } from '../src/engine/allocate.ts';
@@ -55,7 +56,7 @@ describe('k22: official final result and release gates', () => {
   });
   it('rebuilds from retained evidence with reconciliation or its durable digest', async () => {
     const built = await buildK22();
-    expect(built.ds).toEqual(ds);
+    expect(finalizeDataset(built.ds)).toEqual(ds); // as the build writes it
     const loc = JSON.parse(readFileSync(new URL('../public/data/k22-localities.json', import.meta.url),'utf8'));
     expect(built.loc).toEqual(loc);
   });

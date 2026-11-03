@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { finalizeDataset } from '../scripts/lib/build/finalize.ts';
 import { readFileSync } from 'node:fs';
 import { buildK9, verifyK9, verifyRatzMembership } from '../scripts/lib/historical/k9.ts';
 import { researchDataset } from '../scripts/lib/historical/k8-k12-common.ts';
@@ -44,7 +45,8 @@ describe('k9 — released national data with a disclosed candidate-cap inference
     expect(a.releaseReady).toBe(true);
     const builders = buildK9({ log: false });
     expect(builders).toHaveLength(1);
-    const { ds, loc } = builders[0]!();
+    const { ds: raw, loc } = builders[0]!();
+    const ds = finalizeDataset(raw); // as the build writes it
     const committed = JSON.parse(readFileSync('public/data/k9.json', 'utf8'));
     expect({ ...ds, lists: committed.lists.map((l: { id: string }) => ds.lists.find(x => x.id === l.id)), buildInfo: { ...ds.buildInfo, builtAt: '' } }).toEqual({ ...committed, buildInfo: { ...committed.buildInfo, builtAt: '' } });
     expect(loc).toBeNull();

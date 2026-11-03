@@ -1,5 +1,5 @@
 import { existsSync, readFileSync } from 'node:fs';
-import { applyCandidateNotes } from '../scripts/lib/build/notes.ts';
+import { finalizeDataset } from '../scripts/lib/build/finalize.ts';
 import { describe, expect, it } from 'vitest';
 import { buildK11, verifyK11 } from '../scripts/lib/historical/k11.ts';
 import { researchDataset, releasedDataset } from '../scripts/lib/historical/k8-k12-common.ts';
@@ -45,7 +45,7 @@ describe('k11 — released national dataset', () => {
     expect(a.releaseReady).toBe(true);
     expect(buildK11({ log: false })).toHaveLength(1);
     const ds = JSON.parse(readFileSync('public/data/k11.json', 'utf8'));
-    const rebuilt = applyCandidateNotes(releasedDataset(a)); // the build merges curated notes (decision 0088)
+    const rebuilt = finalizeDataset(releasedDataset(a)); // as the build writes it
     expect({ ...ds, buildInfo: { ...ds.buildInfo, builtAt: '' } }).toEqual({ ...rebuilt, lists: ds.lists.map((l: {id: string}) => rebuilt.lists.find(x => x.id === l.id)), buildInfo: { ...rebuilt.buildInfo, builtAt: '' } });
     expect(ds.hasLocalities).toBe(false);
     expect(existsSync('public/data/k11-localities.json')).toBe(false);

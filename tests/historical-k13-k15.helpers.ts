@@ -1,4 +1,5 @@
 import { existsSync, readFileSync } from 'node:fs';
+import { finalizeDataset } from '../scripts/lib/build/finalize.ts';
 import { expect, it } from 'vitest';
 import type { ElectionDataset } from '../src/data/schema.ts';
 import { verifyHistoricalProgress, historicalDataset, type ElectedReview } from '../scripts/lib/historical/k13-k15-common.ts';
@@ -16,7 +17,7 @@ export function releasedElection(id: 'k13' | 'k14' | 'k15', expected: {
     const a = audit();
     expect(a.releaseReady).toBe(true);
     expect(a.seatDifferences).toEqual([]);
-    const rebuilt = historicalDataset(a);
+    const rebuilt = finalizeDataset(historicalDataset(a)); // as the build writes it
     expect({ ...ds, buildInfo: { ...ds.buildInfo, builtAt: '' } }).toEqual({ ...rebuilt, buildInfo: { ...rebuilt.buildInfo, builtAt: '' } });
     expect(ds.totals).toMatchObject(expected.totals);
     expect(ds.totals.valid + ds.totals.invalid).toBe(ds.totals.votesCast);

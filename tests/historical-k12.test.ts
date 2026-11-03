@@ -1,4 +1,5 @@
 import { existsSync, readFileSync } from 'node:fs';
+import { finalizeDataset } from '../scripts/lib/build/finalize.ts';
 import { describe, expect, it } from 'vitest';
 import { buildK12, verifyK12 } from '../scripts/lib/historical/k12.ts';
 import { researchDataset, releasedDataset } from '../scripts/lib/historical/k8-k12-common.ts';
@@ -44,7 +45,7 @@ describe('k12 — released national dataset', () => {
     expect(a.releaseReady).toBe(true);
     expect(buildK12({ log: false })).toHaveLength(1);
     const ds = JSON.parse(readFileSync('public/data/k12.json', 'utf8'));
-    const rebuilt = releasedDataset(a);
+    const rebuilt = finalizeDataset(releasedDataset(a)); // as the build writes it
     expect({ ...ds, buildInfo: { ...ds.buildInfo, builtAt: '' } }).toEqual({ ...rebuilt, lists: ds.lists.map((l: {id: string}) => rebuilt.lists.find(x => x.id === l.id)), buildInfo: { ...rebuilt.buildInfo, builtAt: '' } });
     expect(ds.hasLocalities).toBe(false);
     expect(existsSync('public/data/k12-localities.json')).toBe(false);

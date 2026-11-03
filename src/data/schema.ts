@@ -44,6 +44,8 @@ export interface Candidate {
   displayNameHe?: string;
   /** curated bilingual notes, e.g. a replacement before the Knesset's first sitting (decision 0088) */
   notes?: { en: string; he: string }[];
+  /** the constituent party (ListRecord.parties) the candidate represented on a joint list, when sourced */
+  partyId?: string;
 }
 
 export interface ListRecord {
@@ -65,6 +67,8 @@ export interface ListRecord {
   candidatesSecondary: boolean;
   /** true when no verifiable roster exists; candidates is then [] */
   candidatesUnavailable?: boolean;
+  /** constituent parties, for a list that was an alliance of separate parties (decision 0087) */
+  parties?: PartyDef[];
   /** true when candidates holds only the first ranks of the registered roster (at least everyone elected); later ranks were not transcribed */
   candidatesTruncated?: boolean;
   /** verbatim official notes: resignations, disqualifications, court rulings */
@@ -74,6 +78,20 @@ export interface ListRecord {
 export interface AgreementRecord { id: string; members: [string, string]; sourceId: string }
 
 export interface BlocDef { id: string; nameHe: string; nameEn: string; color: string }
+
+/** A sourced grouping of an election (decision 0087): the first government, or a recognised bloc.
+ *  Members are whole lists, constituent parties of joint lists, or individual candidates. */
+export interface BlocScheme {
+  id: string;
+  kind: 'government' | 'parliamentary' | 'pre-election';
+  nameHe: string;
+  nameEn: string;
+  date?: string;
+  blocs: (BlocDef & { lists: string[]; parties: string[]; candidates: string[] })[];
+}
+
+/** A constituent party of a joint list (decision 0087). */
+export interface PartyDef { id: string; nameHe: string; nameEn: string; color?: string }
 
 export interface Totals {
   registered: number; // בעלי זכות בחירה
@@ -99,6 +117,9 @@ export interface ElectionDataset {
   lists: ListRecord[];
   agreements: AgreementRecord[];
   blocs: BlocDef[];
+  /** sourced bloc schemes (data/meta), and the one shown first */
+  blocSchemes?: BlocScheme[];
+  defaultBlocScheme?: string;
   /** officially published seat counts per list id, used to validate the engine; null if none */
   officialSeats: Record<string, number> | null;
   officialSeatsSourceId: string | null;
