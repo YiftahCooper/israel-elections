@@ -149,17 +149,51 @@
     }
   ],
   "agreements": {
-    "complete": false,
-    "pairs": null,
-    "note": "No complete primary notice verified. Empty diagnostic input is not a finding that no agreements existed."
+    "complete": true,
+    "pairs": [
+      [
+        "ב",
+        "ל"
+      ],
+      [
+        "ט",
+        "יג"
+      ],
+      [
+        "יא",
+        "יד"
+      ],
+      [
+        "מ",
+        "ת"
+      ],
+      [
+        "ס",
+        "צ"
+      ]
+    ],
+    "sourceId": "k1-allocation-appendix",
+    "note": "Entire contemporary official connection set transcribed before allocation comparison; includes inactive pairs. See decision 0063."
   },
   "rosters": {
     "completeWinningRosters": false,
-    "reviewedLists": []
+    "meetsReleaseStandard": true,
+    "reviewedLists": [
+      "א",
+      "ב",
+      "ח",
+      "יד",
+      "טו",
+      "ל",
+      "מ",
+      "נ",
+      "ס",
+      "פ",
+      "צ",
+      "ק"
+    ],
+    "sourceId": "k1-rosters-reviewed",
+    "note": "Contiguous prefixes cover every elected member, with results-notice exclusions explicitly mapped. Later ranks omitted, not complete registered lists."
   },
-  "releaseBlockers": [
-    "Complete connected-list notice not verified.",
-    "Complete winning-list candidate rosters and elected-rank cross-checks not transcribed.",
-    "Exact seat reproduction fails with the retained inputs; see decision 0061."
-  ]
+  "releaseBlockers": []
 }

@@ -5,11 +5,11 @@
     "date": "1949-01-25",
     "nameHe": "הבחירות לכנסת ה-1",
     "nameEn": "Election to the 1st Knesset",
-    "available": false,
+    "available": true,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
-      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+      "stage": "official-final",
+      "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. Registered ranks include withdrawals; the elected-rank mappings are retained in the reviewed roster record. See decision 0063. Integer quotients tie at seats 118–119; both lottery choices give the same final seats, but the historical order is unknown.",
+      "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. הדרגות הרשומות כוללות מועמדים שהתפטרו; מיפוי דרגות הנבחרים נשמר ברשומת הבדיקה. ראו החלטה 0063. יש שוויון במודדים השלמים במושבים 118–119; שתי תוצאות ההגרלה נותנות אותה הקצאה סופית, אך הסדר ההיסטורי אינו ידוע."
     }
   },
   {
@@ -18,11 +18,11 @@
     "date": "1951-07-30",
     "nameHe": "הבחירות לכנסת ה-2",
     "nameEn": "Election to the 2nd Knesset",
-    "available": false,
+    "available": true,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
-      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+      "stage": "official-final",
+      "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. See decision 0064.",
+      "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. ראו החלטה 0064."
     }
   },
   {
@@ -31,11 +31,11 @@
     "date": "1955-07-26",
     "nameHe": "הבחירות לכנסת ה-3",
     "nameEn": "Election to the 3rd Knesset",
-    "available": false,
+    "available": true,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
-      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+      "stage": "official-final",
+      "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. See decision 0065.",
+      "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. ראו החלטה 0065."
     }
   },
   {
@@ -44,11 +44,11 @@
     "date": "1959-11-03",
     "nameHe": "הבחירות לכנסת ה-4",
     "nameEn": "Election to the 4th Knesset",
-    "available": false,
+    "available": true,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
-      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+      "stage": "official-final",
+      "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. See decision 0066.",
+      "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. ראו החלטה 0066."
     }
   },
   {
@@ -57,11 +57,11 @@
     "date": "1961-08-15",
     "nameHe": "הבחירות לכנסת ה-5",
     "nameEn": "Election to the 5th Knesset",
-    "available": false,
+    "available": true,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
-      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+      "stage": "official-final",
+      "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. The official results exclude Liberal registered ranks 9 and 11; elected ranks include replacements through rank 19. See decision 0067.",
+      "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. התוצאות הרשמיות מוציאות את מועמדי הליברלים בדרגות 9 ו־11; הנבחרים כוללים מחליפים עד דרגה 19. ראו החלטה 0067."
     }
   },
   {
@@ -73,8 +73,8 @@
     "available": false,
     "status": {
       "stage": "pending-data-verification",
-      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
-      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+      "noteEn": "National totals reconciled. Official two-pair notice retained, but allocation gives Alignment 44/45 and HaOlam HaZeh 2/1. Winning rosters unverified. No locality dataset. See decision 0068.",
+      "noteHe": "הסכומים הארציים אומתו. נשמרה ההודעה הרשמית על שני קשרים, אך ההקצאה נותנת למערך 44 במקום 45 ולעולם הזה 2 במקום 1. רשימות המועמדים הזוכות טרם אומתו. ללא נתוני יישובים. ראו החלטה 0068."
     }
   },
   {
@@ -83,11 +83,11 @@
     "date": "1969-10-28",
     "nameHe": "הבחירות לכנסת ה-7",
     "nameEn": "Election to the 7th Knesset",
-    "available": false,
+    "available": true,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
-      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+      "stage": "official-final",
+      "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. See decision 0069.",
+      "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. ראו החלטה 0069."
     }
   },
   {

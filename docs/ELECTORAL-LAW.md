@@ -128,14 +128,28 @@ The engine options are `quotaSeatOffset: 1`, `remainderRequiresInitialSeat: true
 `agreementRequiresInitialSeat: true`, and `quotientRounding: 'floor'`. All default
 to modern semantics when omitted. The existing highest-average implementation is
 reused; its `bader-ofer` method name does not date that later legislation to 1949.
-The first names on a registered list are elected (s.32); no express candidate
-shortage redistribution rule was located. Quota over-allocation, including within
-a pair at large vote totals, is warned about and uses an **explicit simulation
-fallback**, not a verified statutory remedy. The Rules panel needs to show these
-options and the absence of a percentage threshold before a historical release.
-Decision [0060](decisions/0060-k1-k7-primary-allocation-rules.md) records primary
-amendment inspection and the limits. k1 remains unavailable: without sourced
-connections its seats differ, and complete winning rosters remain untranscribed.
+Registered order governs election of candidates (s.32(a)); s.32(b) provides
+replacement by the next candidate when someone resigns, dies or becomes ineligible.
+The 1949 results explicitly record withdrawals, so the reviewed roster maps the
+published elected names back to registered ranks without rewriting those ranks.
+No express candidate-shortage redistribution rule was located. Quota over-allocation
+uses a warned **simulation fallback**, not a verified statutory remedy.
+
+The [official CEC calculation appendix](https://www.gov.il/BlobFolder/dynamiccollectorresultitem/memorandum-knesset1/he/archive_knesset1_memorandum-apdx1.pdf),
+printed p.5 / PDF p.6, supplies all five actual connections: **ב–ל, ט–יג, יא–יד,
+מ–ת, ס–צ**. Only the first and last meet the two-initial-seat condition. PDF
+pp.11,13 print internal quotas **3,187** and **3,162**, and divisions **16+1** and
+**4+7**. The first handwritten divisor is inconsistent with its stated quotient;
+the other explicitly uses seats+1. The statute and both printed quotient values
+support the existing optional-field implementation; no engine rule was changed.
+
+Every published final seat now reproduces, including Herut 14 and General Zionists
+7. Integer quotients **3,375** tie at seats 118–119. Both lottery choices yield
+identical final seats; the historical order is unknown and is not fabricated.
+The warning remains visible. Decision [0063](decisions/0063-k1-connections-rosters-national-release.md)
+records the evidence, checks both choices and releases the national dataset under
+the owner's prefix-roster standard. Decision 0060's counterfactual simulation
+limits still apply. UI election labels need the reviewed withdrawal mappings.
 
 ## 1951–1969: floor Hare and largest remainders
 
@@ -172,9 +186,21 @@ second connection is justified. The preset is tested as an implementation of the
 inspected text; it is **not proof of a fully verified historical allocation rule**
 until contemporary CEC application evidence resolves that discrepancy. Decision
 [0061](decisions/0061-k1-k7-national-evidence-release-held.md) preserves the exact
-comparison. k7 reproduces every published seat with YP 1565's sourced pair; k2/k3/k5
-match in explicitly labelled no-connections diagnostics. None is released without
-the remaining candidate and agreement gates.
+comparison. Follow-up evidence now supplies complete notices for the released
+1951–1969 datasets: **YP 177 p.1177** (צ–סצ), **YP 427 p.1053** (א–יד, פ–ש,
+צ–צח, סא–ל, נ–ע), **YP 709 p.125** (א–רא, יא–ע), **YP 865 p.1843** (ב–ד,
+מ–תו, יא–רא), and **YP 1565 p.246** (יא–רא). Signed primary notices were read
+in full; inactive pairs are retained. All seats match with the existing preset,
+including the formerly mismatched 1959 Mapai 47 and Cooperation and Brotherhood 2.
+Decisions 0064–0067 and 0069 release k2/k3/k4/k5/k7 with reviewed contiguous winning
+prefixes and official elected-name cross-checks. Later ranks and localities remain
+outside the release. The 1961 Liberal elected-rank exclusions are preserved.
+
+Decision [0068](decisions/0068-k6-allocation-gap-remains-held.md) continues the 1965
+hold. Its pair's pooled remainder exceeds a quota; converting that into an extra
+whole seat is a plausible numerical hypothesis, but no contemporary CEC
+interpretation authorizing it was recovered. It is not implemented because it fits.
+The literal preset and all its warnings remain unchanged.
 
 ## 1973–1988: original 1% Bader–Ofer text, with release limitations
 

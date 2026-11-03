@@ -133,9 +133,24 @@
   },
   "rosters": {
     "completeWinningRosters": false,
-    "reviewedLists": []
+    "meetsReleaseStandard": true,
+    "reviewedLists": [
+      "אמת",
+      "ב",
+      "ג",
+      "ד",
+      "ו",
+      "חל",
+      "ט",
+      "יא",
+      "לע",
+      "עמ",
+      "ק",
+      "רא",
+      "ש"
+    ],
+    "sourceId": "k7-rosters-reviewed",
+    "note": "Contiguous prefixes cover every elected member, with results-notice exclusions explicitly mapped. Later ranks omitted, not complete registered lists."
   },
-  "releaseBlockers": [
-    "Complete winning-list candidate rosters and elected-rank cross-checks not transcribed."
-  ]
+  "releaseBlockers": []
 }

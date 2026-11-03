@@ -136,3 +136,22 @@ it('independently checks early rules and each optional semantic with seeded case
     assert.deepEqual(allocate(forced).lists.map(l=>l.seats),reference(forced),`early forced case ${trial}`);
   }
 },10000);
+
+it('checks the 1949 official appendix pair quotas and the outcome-insensitive integer tie',()=>{
+  // CEC calculation appendix PDF pp.6–13: all five connections, two active.
+  // This table is fixed primary evidence, not inferred from a desired allocation.
+  const votes:Record<string,number>={א:155274,ב:52982,ג:2892,ח:49782,ט:842,יא:3214,יג:2514,יד:7387,טו:5363,יח:2835,יט:239,ל:4399,מ:64018,נ:5173,ס:15287,פ:17786,פד:2796,צ:22661,ק:15148,ש:1280,ת:2812};
+  const x:AllocationInput={rules:ISRAEL_1949,lists:Object.entries(votes).map(([id,v])=>({id,votes:BigInt(v)})),
+    agreements:[['ב','ל'],['ט','יג'],['יא','יד'],['מ','ת'],['ס','צ']].map((members,i)=>({id:`P${i}`,members}))};
+  const a=allocate(x);
+  assert.deepEqual(a.lists.map(l=>l.seats),reference(x));
+  assert.deepEqual(a.internalDivisions.map(d=>[d.seats,d.quota.num]),[[17,3187n],[11,3162n]]);
+  const tie=a.remainderSteps.find(s=>s.tie)!;
+  assert.equal(tie.seatNumber,118);
+  assert.deepEqual(tie.quotients.filter(q=>tie.tie!.tiedUnitIds.includes(q.unitId)).map(q=>q.value),[{num:3375n,den:1n},{num:3375n,den:1n}]);
+  for(const winner of tie.tie!.tiedUnitIds){
+    const forced={...x,lotteryWinners:{[tie.tie!.key]:winner}};
+    assert.deepEqual(allocate(forced).lists.map(l=>l.seats),a.lists.map(l=>l.seats));
+    assert.deepEqual(allocate(forced).lists.map(l=>l.seats),reference(forced));
+  }
+});

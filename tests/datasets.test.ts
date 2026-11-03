@@ -16,6 +16,19 @@ describe('available datasets', () => {
       const r = allocate(toEngineInput(s));
       expect(s.rules.seats).toBe(120);
       expect(r.seatsAllocated).toBe(120);
+      if(id==='k1') {
+        // 1949 s.30(c)(3): the integer 3375 tie changes only the order of
+        // seats 118/119. Do not invent a historical lottery result to erase it.
+        const ties=r.remainderSteps.filter(step=>step.tie);
+        expect(ties).toHaveLength(1);expect(ties[0].seatNumber).toBe(118);
+        expect(r.warnings.map(w=>w.code)).toEqual(['lottery-required']);
+        for(const winner of ties[0].tie!.tiedUnitIds) {
+          const choice=allocate({...toEngineInput(s),lotteryWinners:{[ties[0].tie!.key]:winner}});
+          expect(choice.warnings).toEqual([]);expect(choice.seatsAllocated).toBe(120);
+          expect(Object.fromEntries(choice.lists.map(l=>[l.id,l.seats]))).toEqual(ds.officialSeats);
+        }
+        return;
+      }
       expect(r.warnings.filter((w) => w.code === 'lottery-required')).toEqual([]);
     });
   }

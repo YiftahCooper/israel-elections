@@ -2,15 +2,14 @@ import { describe, expect, it } from 'vitest';
 import { earlyResearchDataset, verifyEarlyProgress } from '../scripts/lib/historical/k1-k7-common.ts';
 // Independently read from YP 1573 p.434; NOT generated from engine output.
 const published = {"אמת": 56, "ב": 12, "ג": 4, "ד": 2, "ו": 3, "חל": 26, "ט": 2, "יא": 2, "כן": 0, "לע": 4, "נס": 0, "עמ": 4, "פז": 0, "ק": 1, "רא": 2, "ש": 2};
-describe('k7: retained national evidence (not a released dataset)', () => {
-  it('reconciles all gazette votes and CBS ballot totals, and protects the availability gate', () => {
+describe('k7: released national evidence', () => {
+  it('reconciles all gazette votes and CBS ballot totals, and clears the evidence gate', () => {
     const audit=verifyEarlyProgress(7,{log:false});
     expect(Object.fromEntries(audit.review.lists.map(l=>[l.letters,l.officialSeats]))).toEqual(published);
     expect(audit.result.totalValid).toBe(1367743n);
     expect(audit.result.quota.num).toBe(11274n);
     expect(audit.review.nationalTotals).toEqual({"registered": 1748710, "votesCast": 1427981, "valid": 1367743, "invalid": 60238});
-    expect(audit.releaseReady).toBe(false);
-    expect(()=>verifyEarlyProgress(7,{available:true,log:false})).toThrow('release blocked');
+    expect(audit.releaseReady).toBe(true);
     expect(earlyResearchDataset(7).hasLocalities).toBe(false);
   });
   it('reproduces every gazetted seat',()=>{
