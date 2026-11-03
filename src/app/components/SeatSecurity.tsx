@@ -9,6 +9,7 @@ import { partsOf, securityRow, type SecurityItem, type SecurityPart, type Securi
 import { setState } from '../store.ts';
 import { toVoteSource, type SourceChoice } from '../voteEdit.ts';
 import { Info, Seg } from './ui.tsx';
+import { minimalWinning } from '../coalitions.ts';
 
 /** How close every list is to its next seat and to losing one — the "knife-edge" view. */
 // results per scenario and vote source, so revisiting the tab is instant
@@ -108,21 +109,11 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
     if (excluded.some((p) => !ids.has(p))) setExcluded(excluded.filter((p) => ids.has(p)));
   }, [seated, picked, excluded]);
   const pickedSeats = seated.filter((x) => picked.includes(x.l.id)).reduce((t, x) => t + x.n, 0);
-  const tooMany = seated.filter((x) => !excluded.includes(x.l.id)).length > 18;
-  const minimal = useMemo(() => {
-    const items = seated.filter((x) => !excluded.includes(x.l.id));
-    const out: { ids: string[]; n: number }[] = [];
-    const N = items.length;
-    if (N > 18) return out;
-    for (let mask = 1; mask < 1 << N; mask++) {
-      let n = 0; const ids: string[] = []; let minSeat = Infinity;
-      for (let i = 0; i < N; i++) if (mask & (1 << i)) { n += items[i].n; ids.push(items[i].l.id); minSeat = Math.min(minSeat, items[i].n); }
-      if (n < majority || n - minSeat >= majority) continue; // winning, and no member is superfluous
-      if (!picked.every((p) => ids.includes(p))) continue;
-      out.push({ ids, n });
-    }
-    return out.sort((a, b) => a.ids.length - b.ids.length || a.n - b.n);
-  }, [seated, majority, picked, excluded]);
+  // pruned search (src/app/coalitions.ts): same coalitions and order as the former 2^N enumeration,
+  // without its 18-list limit; it stops at 100,000 coalitions and says so
+  const { coalitions: minimal, truncated } = useMemo(
+    () => minimalWinning(seated.filter((x) => !excluded.includes(x.l.id)).map((x) => ({ id: x.l.id, n: x.n })), majority, picked),
+    [seated, majority, picked, excluded]);
   const nm = (id: string) => listLabel(s.lists.find((l) => l.id === id)!, lang);
   const toggle = (id: string) => {
     if (picked.includes(id)) { setPicked(picked.filter((x) => x !== id)); setExcluded([...excluded, id]); }
@@ -145,9 +136,9 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
         <span className="majority-line" style={{ insetInlineStart: `calc(${(majority / s.rules.seats) * 100}% - 1px)` }} aria-hidden />
       </div>
       <p><b className="tabnum" style={{ fontSize: 20 }}>{pickedSeats}</b> / {s.rules.seats} {pickedSeats >= majority ? <span className="chip ok">{L('majority', 'רוב')}</span> : <span className="muted">{L(`${majority - pickedSeats} short of ${majority}`, `חסרים ${majority - pickedSeats} ל-${majority}`)}</span>}</p>
-      <h4>{L(`Minimal winning coalitions${picked.length ? ' containing your selection' : ''} (${minimal.length})`, `קואליציות מנצחות מינימליות${picked.length ? ' הכוללות את הבחירה' : ''} (${minimal.length})`)}</h4>
+      <h4>{L(`Minimal winning coalitions${picked.length ? ' containing your selection' : ''} (${minimal.length.toLocaleString('en-US')}${truncated ? '+' : ''})`, `קואליציות מנצחות מינימליות${picked.length ? ' הכוללות את הבחירה' : ''} (${minimal.length.toLocaleString('en-US')}${truncated ? '+' : ''})`)}</h4>
       <p className="small muted" style={{ marginTop: 0 }}>{L('Minimal: removing any one member would lose the majority.', 'מינימלית: הוצאת כל אחת מהחברות תבטל את הרוב.')}</p>
-      {tooMany && <p className="small">{L('More than 18 lists hold seats: rule some out to list the minimal coalitions.', 'יותר מ-18 רשימות במליאה: פסלו חלק כדי לראות את הקואליציות המינימליות.')}</p>}
+      {truncated && <p className="small">{L('There are more than 100,000: include or rule out lists to narrow the search.', 'יש יותר מ-100,000: הכלילו או פסלו רשימות כדי לצמצם את החיפוש.')}</p>}
       <ul className="small" style={{ columns: 2, paddingInlineStart: 18 }}>
         {minimal.slice(0, 40).map((c) => <li key={c.ids.join()} style={{ breakInside: 'avoid', marginBottom: 3 }}><b className="tabnum">{c.n}</b> · {c.ids.map(nm).join(' + ')}</li>)}
       </ul>
