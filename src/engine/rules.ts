@@ -16,10 +16,12 @@ export const ISRAEL_2014: RuleSet = {
 
 /** 1.5% applied in the elections to Knessets 13–16 (before the May 2004 amendment). */
 export const ISRAEL_1992: RuleSet = { ...ISRAEL_2014, id: 'il-1992-bader-ofer-1.5', threshold: rat(3, 200) };
+/** Amendment 4 (SH 692, p.108): Bader–Ofer with 1%, Knessets 8–12. See decision 0070. */
+export const ISRAEL_1973: RuleSet = { ...ISRAEL_2014, id: 'il-1973-bader-ofer-1', threshold: rat(1, 100) };
 /** 2% applied in the elections to Knessets 17–19. */
 export const ISRAEL_2004: RuleSet = { ...ISRAEL_2014, id: 'il-2004-bader-ofer-2', threshold: rat(1, 50) };
 export const RULESETS: Record<string, RuleSet> = Object.fromEntries(
-  [ISRAEL_1992, ISRAEL_2004, ISRAEL_2014].map((r) => [r.id, r]),
+  [ISRAEL_1973, ISRAEL_1992, ISRAEL_2004, ISRAEL_2014].map((r) => [r.id, r]),
 );
 
 /** Lists every way `rules` departs from the historical rule set it is compared against. */

@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest';
-import { ISRAEL_1992, ISRAEL_2004, ISRAEL_2014 } from '../src/engine/rules.ts';
+import { ISRAEL_1973, ISRAEL_1992, ISRAEL_2004, ISRAEL_2014 } from '../src/engine/rules.ts';
 import { electionRuleSetId, historicalRules, scenarioFromDataset, toEngineInput, validateScenario } from '../src/model/scenario.ts';
 import { applyAction } from '../src/model/actions.ts';
 import type { ElectionId } from '../src/data/schema.ts';
 import { loadDataset } from './helpers.ts';
 
 describe('historical statutory threshold eras', () => {
-  for (let n = 13; n <= 26; n++) {
+  for (let n = 8; n <= 26; n++) {
     const id = `k${n}` as ElectionId;
-    const preset = n <= 16 ? ISRAEL_1992 : n <= 19 ? ISRAEL_2004 : ISRAEL_2014;
+    const preset = n <= 12 ? ISRAEL_1973 : n <= 16 ? ISRAEL_1992 : n <= 19 ? ISRAEL_2004 : ISRAEL_2014;
     it(`${id}: dataset rules and historical reset use its own era`, () => {
       // Synthetic dataset tests rule plumbing only; it is NOT historical seat evidence.
       const ds = { ...loadDataset('k25'), id, ruleSetId: preset.id };
@@ -29,6 +29,7 @@ describe('historical statutory threshold eras', () => {
     });
   }
   it('stores exact rational thresholds and rejects unknown eras', () => {
+    expect(ISRAEL_1973.threshold).toEqual({ num: 1n, den: 100n });
     expect(ISRAEL_1992.threshold).toEqual({ num: 3n, den: 200n });
     expect(ISRAEL_2004.threshold).toEqual({ num: 1n, den: 50n });
     expect(ISRAEL_2014.threshold).toEqual({ num: 13n, den: 400n });

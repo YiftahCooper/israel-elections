@@ -4,7 +4,7 @@
 import { ELECTION_IDS, type BlocDef, type ElectionDataset, type ElectionId } from '../data/schema.ts';
 import { percentToRational } from '../engine/rational.ts';
 import type { AllocationInput, RemainderMethod, RuleSet } from '../engine/types.ts';
-import { ISRAEL_1992, ISRAEL_2004, ISRAEL_2014, RULESETS } from '../engine/rules.ts';
+import { ISRAEL_1973, ISRAEL_1992, ISRAEL_2004, ISRAEL_2014, RULESETS } from '../engine/rules.ts';
 
 export const SCENARIO_SCHEMA = 'israel-elections-scenario';
 export const SCENARIO_VERSION = 1;
@@ -113,6 +113,7 @@ export interface ActionContext { base?: Scenario }
 export function electionRuleSetId(id: ElectionId): string {
   if (id === 'k13' || id === 'k14' || id === 'k15') return ISRAEL_1992.id;
   const n = Number(id.slice(1));
+  if (Number.isInteger(n) && n >= 8 && n <= 12) return ISRAEL_1973.id;
   if (!Number.isInteger(n) || n < 16 || n > 26) throw new Error(`unknown election ${id}`);
   return n === 16 ? ISRAEL_1992.id : n <= 19 ? ISRAEL_2004.id : ISRAEL_2014.id;
 }
@@ -120,7 +121,7 @@ export function electionRuleSetId(id: ElectionId): string {
 export function historicalRules(ruleSetId: string): SimRules {
   const r = RULESETS[ruleSetId];
   if (!r) throw new Error(`unknown rule set ${ruleSetId}`);
-  const thresholdPct = r.id === ISRAEL_1992.id ? '1.5' : r.id === ISRAEL_2004.id ? '2' : '3.25';
+  const thresholdPct = r.id === ISRAEL_1973.id ? '1' : r.id === ISRAEL_1992.id ? '1.5' : r.id === ISRAEL_2004.id ? '2' : '3.25';
   return { seats: r.seats, thresholdPct, quotaRounding: r.quotaRounding, remainderMethod: r.remainderMethod,
     majorityCap: r.majorityCap, maxAgreementSize: r.maxAgreementSize, agreementRequiresAllQualify: r.agreementRequiresAllQualify };
 }

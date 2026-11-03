@@ -10,6 +10,11 @@ passed every release gate; `public/data/elections.json` marks them unavailable.
 
 | Id | Election date | Official source files retained | Secondary data used | Still missing from a released dataset |
 |---|---|---|---|---|
+| k8 | 1973-12-31 | YP 1979 p. 608 national votes/seats; YP 1954 rosters; CBS totals | None | Unavailable: missing agreement set, four diagnostic seat mismatches, full winning rosters and complete period-law comparison |
+| k9 | 1977-05-17 | YP 2326 pp. 1494–1496; YP 2319 rosters and all six agreements; CBS totals | None | Unavailable: Flatto-Sharon/Sheli seat mismatch; unfillable-seat legal procedure and other winning rosters unverified |
+| k10 | 1981-06-30 | YP 2727 pp. 2190–2191; YP 2721 rosters; YP 2720 p. 2027 agreements (mirror); CBS totals | None | All seats reproduced; unavailable pending full winning rosters and complete period-law comparison; no localities |
+| k11 | 1984-07-23 | YP 3081 pp. 3006–3008; YP 3073 rosters and four agreements (mirror); CBS totals | None | All seats reproduced; Alignment 120-person roster verified; other winning rosters and complete period-law comparison block release |
+| k12 | 1988-11-01 | YP 3591 p. 242; YP 3588 rosters and five agreements p. 170; CBS totals | None | All seats reproduced; unavailable pending full winning rosters and complete period-law comparison; no localities |
 | k13 | 1992-06-23 | Results YP 4021; candidates YP 4017; CBS totals; reviewed national table | No secondary inputs used | Unavailable: full winning rosters incomplete; agreement notice not recovered; all gazetted seats reproduced with no agreements assumed; no locality dataset (0080–0082) |
 | k14 | 1996-05-29 | Results YP 4414; candidates YP 4408; complete six-pair YP 4411 notice (mirror); CBS totals | No secondary inputs used | Unavailable: winning rosters incomplete (Third Way complete); all seats reproduced; no locality dataset; secondary 550-vote error excluded (0080–0082) |
 | k15 | 1999-05-17 | Results YP 4757; candidates YP 4748; recovered complete nine-pair YP 4755 notice (mirror); CBS totals | No secondary inputs used | Unavailable: full winning rosters incomplete; all gazetted seats reproduced; no locality dataset (0080–0082) |
@@ -288,6 +293,52 @@ These historical sources use code 0 (k18) and 875 (k19). The source codes are pr
 the UI needs an election-aware envelope predicate and accurate derived-source labels
 before its locality presets can exclude these rows correctly. No `src/app/` file was
 changed in this branch, as required by the shared-file boundary.
+
+## Knessets 8–12: national evidence and explicit release holds
+
+The isolated k8–k12 preflights run during every data build, bind retained originals and
+reviewed transcriptions to their manifest SHA-256 values, check national arithmetic,
+check agreement membership and compare every list's seats through the application's
+scenario-to-engine path. They emit **no public dataset** and reject a premature
+`available: true` change. These are evidence preflights, not completed release builders.
+Locality extraction was deliberately excluded: fixtures specify `hasLocalities: false`.
+No locality file or station-derived count is published; fixture zero counts are placeholders.
+
+| Election | Lists | Valid | Invalid | Cast (CBS) | Registered (CBS) | Agreement coverage | Allocation evidence |
+|---|---:|---:|---:|---:|---:|---|---|
+| k8 | 21 | 1,566,855 | 34,243 | 1,601,098 | 2,037,478 | Unknown; no pairs invented | Without agreement inputs: Alignment 52 vs 51, NRP 11 vs 10, Progress and Development 1 vs 2, Ratz 2 vs 3 |
+| k9 | 22 | 1,747,820 | 23,906 | 1,771,726 | 2,236,293 | All six, YP 2319 p. 1319 | Uncapped Flatto-Sharon 2 vs 1; Sheli 1 vs 2; every other list matches |
+| k10 | 31 | 1,937,366 | 17,243 | 1,954,609 | 2,490,014 | All three, YP 2720 p. 2027 | Every published seat, including zero-seat lists, matches; threshold 19,374, quota 15,312 |
+| k11 | 26 | 2,073,321 | 18,081 | 2,091,402 | 2,654,613 | All four, YP 3073 p. 2839 | Every seat matches; threshold 20,734, quota 16,786 |
+| k12 | 27 | 2,283,123 | 22,444 | 2,305,567 | 2,894,267 | All five, YP 3588 p. 170 | Every seat matches; threshold 22,832, quota 18,563 |
+
+Every gazette list sum equals its printed valid total; valid plus gazetted invalid equals
+CBS turnout. No vote was adjusted to reconcile a secondary table. The known IDI 1984
++90 and 1988 −365 (academic +6) row-sum errors are not imported. Exact gazette
+spellings and punctuation are normalized only for readability, not replaced by modern
+party identities. No default blocs are assigned. Display metadata is application-assigned.
+
+The new agreement discoveries are **1981**, in the issue immediately preceding the
+candidate gazette, and **1988**, inside the already retained candidate issue. Complete
+numbered notices were read through their signatures, including ineffective pairs. The
+1981 PDF is retained and registered with its olaw mirror explicitly disclosed. Originals
+already under `data/raw/research/` are referenced rather than copied.
+
+Roster coverage is deliberately partial: k9's entire one-person Flatto-Sharon list,
+**שרון סמואל**, YP 2319 p. 1330, agrees with the elected name in YP 2326 p. 1496;
+k11's entire **120-person Alignment roster**, YP 3073 p. 2826, has contiguous ranks
+and its first 44 names checked against YP 3081 p. 3007. They are retained in
+`candidates.reviewed.json`. K8/K10 Alignment first names and terminal rank 120 were
+checked, not their complete rosters. No k12 roster has been transcribed. All remaining
+winning rosters still need complete transcription and elected-rank comparison. No
+untranscribed official roster is labelled absent from the archives or released as empty.
+
+Decisions [0070](decisions/0070-1973-rules-and-unfillable-seat-hold.md) and
+[0071](decisions/0071-k8-k12-national-evidence-release-holds.md) give legal verification
+limits, the bounded 1973 agreement search and exact blockers. Reproduce the retained
+checks with locked dependencies, `node scripts/build-datasets.ts` and `npx vitest run`;
+no ignored scratch file is needed. Scan inspection used pdfjs-dist 6.5.438 with its
+`wasmUrl` pointed at `node_modules/pdfjs-dist/wasm/`; renders stay in `.backup-scratch/`.
 
 ## Knessets 13–15: national evidence verified; releases held on rosters
 
