@@ -1,0 +1,1806 @@
+{
+  "id": "k17",
+  "method": "Verbatim given-name-first candidate lines captured from official archived CEC HTML via web retrieval on 2026-11-03. Cross-check of scan transcription, not a build-time parser.",
+  "lists": [
+    {
+      "letters": "זך",
+      "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/list/listbb33.html?id=47",
+      "names": [
+        {
+          "rank": 1,
+          "givenFirstHe": "רפאל איתן הנטמן"
+        },
+        {
+          "rank": 2,
+          "givenFirstHe": "יעקב בן יזרי"
+        },
+        {
+          "rank": 3,
+          "givenFirstHe": "משה שרוני"
+        },
+        {
+          "rank": 4,
+          "givenFirstHe": "יצחק זיו"
+        },
+        {
+          "rank": 5,
+          "givenFirstHe": "יצחק גלנטי"
+        },
+        {
+          "rank": 6,
+          "givenFirstHe": "אלחנן גלזר"
+        },
+        {
+          "rank": 7,
+          "givenFirstHe": "שרה מרום"
+        },
+        {
+          "rank": 8,
+          "givenFirstHe": "יעקב אשרי"
+        },
+        {
+          "rank": 9,
+          "givenFirstHe": "ניסן יחזקאלי"
+        },
+        {
+          "rank": 10,
+          "givenFirstHe": "חפצי בה בן נון"
+        },
+        {
+          "rank": 11,
+          "givenFirstHe": "נסים ססבון"
+        },
+        {
+          "rank": 12,
+          "givenFirstHe": "גד גפני"
+        },
+        {
+          "rank": 13,
+          "givenFirstHe": "אורי קראוטהמר"
+        },
+        {
+          "rank": 14,
+          "givenFirstHe": "רפאל שרמן"
+        },
+        {
+          "rank": 15,
+          "givenFirstHe": "יצחק קריצבסקי"
+        },
+        {
+          "rank": 16,
+          "givenFirstHe": "מנחם שלום"
+        }
+      ]
+    },
+    {
+      "letters": "פץ",
+      "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/list/list2580.html?id=43",
+      "names": [
+        {
+          "rank": 1,
+          "givenFirstHe": "אליעזר לוינגר"
+        },
+        {
+          "rank": 2,
+          "givenFirstHe": "מאיה בן ציון"
+        },
+        {
+          "rank": 3,
+          "givenFirstHe": "חיים אילת"
+        },
+        {
+          "rank": 4,
+          "givenFirstHe": "אירינה טבצ'ניקוב"
+        },
+        {
+          "rank": 5,
+          "givenFirstHe": "דוד יוסף"
+        },
+        {
+          "rank": 6,
+          "givenFirstHe": "יאסר אבו סאלח"
+        },
+        {
+          "rank": 7,
+          "givenFirstHe": "מנחם עוזרי"
+        },
+        {
+          "rank": 8,
+          "givenFirstHe": "פרנסוא ישראל מרואני"
+        },
+        {
+          "rank": 9,
+          "givenFirstHe": "אסתר אמור"
+        },
+        {
+          "rank": 10,
+          "givenFirstHe": "רחל צינוביץ חן"
+        }
+      ]
+    },
+    {
+      "letters": "ג",
+      "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/list/list37ab.html?id=59",
+      "names": [
+        {
+          "rank": 1,
+          "givenFirstHe": "יעקב ליצמן"
+        },
+        {
+          "rank": 2,
+          "givenFirstHe": "אברהם רביץ"
+        },
+        {
+          "rank": 3,
+          "givenFirstHe": "מאיר פרוש"
+        },
+        {
+          "rank": 4,
+          "givenFirstHe": "משה רפאל גפני"
+        },
+        {
+          "rank": 5,
+          "givenFirstHe": "שמואל שמלקי הלפרט"
+        },
+        {
+          "rank": 6,
+          "givenFirstHe": "יעקב כהן"
+        },
+        {
+          "rank": 7,
+          "givenFirstHe": "ישראל מאיר אורי מקלב"
+        },
+        {
+          "rank": 8,
+          "givenFirstHe": "יהושע מנחם פולק"
+        },
+        {
+          "rank": 9,
+          "givenFirstHe": "יעקב אשר גוטרמן"
+        },
+        {
+          "rank": 10,
+          "givenFirstHe": "שמעון חדד"
+        },
+        {
+          "rank": 11,
+          "givenFirstHe": "מנחם אליעזר מוזס"
+        },
+        {
+          "rank": 12,
+          "givenFirstHe": "אריה צבי בוימל"
+        },
+        {
+          "rank": 13,
+          "givenFirstHe": "יוסף יהושע קופרברג"
+        },
+        {
+          "rank": 14,
+          "givenFirstHe": "אליהו מרדכי קרליץ"
+        },
+        {
+          "rank": 15,
+          "givenFirstHe": "אברהם שורץ"
+        },
+        {
+          "rank": 16,
+          "givenFirstHe": "אברהם רובינשטיין"
+        },
+        {
+          "rank": 17,
+          "givenFirstHe": "ברוך פולק"
+        },
+        {
+          "rank": 18,
+          "givenFirstHe": "יצחק זאב פינדרוס"
+        },
+        {
+          "rank": 19,
+          "givenFirstHe": "חנוך זייברט"
+        },
+        {
+          "rank": 20,
+          "givenFirstHe": "יצחק רייך"
+        },
+        {
+          "rank": 21,
+          "givenFirstHe": "צבי זלצר"
+        },
+        {
+          "rank": 22,
+          "givenFirstHe": "משה פרנק"
+        },
+        {
+          "rank": 23,
+          "givenFirstHe": "ירחמיאל שמחה שטיצברג"
+        },
+        {
+          "rank": 24,
+          "givenFirstHe": "יעקב ויזבינסקי"
+        },
+        {
+          "rank": 25,
+          "givenFirstHe": "יעקב צבי הרבסט"
+        },
+        {
+          "rank": 26,
+          "givenFirstHe": "שלמה מנחם וידיסלבסקי"
+        },
+        {
+          "rank": 27,
+          "givenFirstHe": "חיים מאיר כץ"
+        },
+        {
+          "rank": 28,
+          "givenFirstHe": "מרדכי בטיטו"
+        },
+        {
+          "rank": 29,
+          "givenFirstHe": "פנחס צנווירט"
+        },
+        {
+          "rank": 30,
+          "givenFirstHe": "משה פייטל שיפמן"
+        },
+        {
+          "rank": 31,
+          "givenFirstHe": "יוסף חיים ביננפלד"
+        },
+        {
+          "rank": 32,
+          "givenFirstHe": "דוד אוחנה"
+        },
+        {
+          "rank": 33,
+          "givenFirstHe": "נטע שלמה בוקשפן"
+        },
+        {
+          "rank": 34,
+          "givenFirstHe": "אברהם בן ציון דייטש"
+        },
+        {
+          "rank": 35,
+          "givenFirstHe": "צבי פייביש מילר"
+        },
+        {
+          "rank": 36,
+          "givenFirstHe": "מוריס חיים וילינגר"
+        },
+        {
+          "rank": 37,
+          "givenFirstHe": "יצחק יוסקוביץ"
+        },
+        {
+          "rank": 38,
+          "givenFirstHe": "יהודה יברוב"
+        },
+        {
+          "rank": 39,
+          "givenFirstHe": "דוד נחמן בלוי"
+        },
+        {
+          "rank": 40,
+          "givenFirstHe": "מרדכי זאב בלוי"
+        },
+        {
+          "rank": 41,
+          "givenFirstHe": "דוד אדלר"
+        },
+        {
+          "rank": 42,
+          "givenFirstHe": "משה אליהו וינמן"
+        },
+        {
+          "rank": 43,
+          "givenFirstHe": "שלמה גינזבורג"
+        },
+        {
+          "rank": 44,
+          "givenFirstHe": "אברהם יצחק מישקובסקי"
+        },
+        {
+          "rank": 45,
+          "givenFirstHe": "נתן נטע בריזל"
+        },
+        {
+          "rank": 46,
+          "givenFirstHe": "מרדכי גולדברג"
+        },
+        {
+          "rank": 47,
+          "givenFirstHe": "ראובן בצלאל ברגר"
+        },
+        {
+          "rank": 48,
+          "givenFirstHe": "יהושע בוכניק"
+        },
+        {
+          "rank": 49,
+          "givenFirstHe": "אברהם חנניה קליין"
+        },
+        {
+          "rank": 50,
+          "givenFirstHe": "יוסף שאול שטרית"
+        },
+        {
+          "rank": 51,
+          "givenFirstHe": "יהודה אריה רוזן"
+        },
+        {
+          "rank": 52,
+          "givenFirstHe": "אריה שטאובר"
+        },
+        {
+          "rank": 53,
+          "givenFirstHe": "חיים מרדכי וינר"
+        },
+        {
+          "rank": 54,
+          "givenFirstHe": "גלעד בניאל"
+        },
+        {
+          "rank": 55,
+          "givenFirstHe": "אליהו צבי הנדלר"
+        },
+        {
+          "rank": 56,
+          "givenFirstHe": "יונה מושקוביץ"
+        },
+        {
+          "rank": 57,
+          "givenFirstHe": "אברהם ברגר"
+        },
+        {
+          "rank": 58,
+          "givenFirstHe": "שלמה מלק"
+        },
+        {
+          "rank": 59,
+          "givenFirstHe": "שלמה דייטש"
+        },
+        {
+          "rank": 60,
+          "givenFirstHe": "יונה פפויפר"
+        },
+        {
+          "rank": 61,
+          "givenFirstHe": "צבי פרץ ביאלוסטוצקי"
+        },
+        {
+          "rank": 62,
+          "givenFirstHe": "משה לחובר"
+        },
+        {
+          "rank": 63,
+          "givenFirstHe": "שמעון קרויזר"
+        },
+        {
+          "rank": 64,
+          "givenFirstHe": "שלמה יהודה גולדנטל"
+        },
+        {
+          "rank": 65,
+          "givenFirstHe": "דוד הרשטיין"
+        },
+        {
+          "rank": 66,
+          "givenFirstHe": "אליהו מלול"
+        },
+        {
+          "rank": 67,
+          "givenFirstHe": "פנחס קליך"
+        },
+        {
+          "rank": 68,
+          "givenFirstHe": "יצחק יעקב לבין"
+        },
+        {
+          "rank": 69,
+          "givenFirstHe": "מרדכי ליברמן"
+        },
+        {
+          "rank": 70,
+          "givenFirstHe": "משה בורשטיין"
+        },
+        {
+          "rank": 71,
+          "givenFirstHe": "שלמה שטרן"
+        },
+        {
+          "rank": 72,
+          "givenFirstHe": "איתמר בר עזר"
+        },
+        {
+          "rank": 73,
+          "givenFirstHe": "יעקב דוד לב"
+        },
+        {
+          "rank": 74,
+          "givenFirstHe": "יקותיאל דרשוביץ"
+        },
+        {
+          "rank": 75,
+          "givenFirstHe": "דוד וינר"
+        },
+        {
+          "rank": 76,
+          "givenFirstHe": "אברהם מקלב"
+        },
+        {
+          "rank": 77,
+          "givenFirstHe": "טוביה פריינד"
+        },
+        {
+          "rank": 78,
+          "givenFirstHe": "שלמה אריה לייב קורלנסקי"
+        },
+        {
+          "rank": 79,
+          "givenFirstHe": "חיים ברוך ויכלדר"
+        },
+        {
+          "rank": 80,
+          "givenFirstHe": "אליעזר גרינבוים"
+        },
+        {
+          "rank": 81,
+          "givenFirstHe": "בנימין משה מרדכי מונטג"
+        },
+        {
+          "rank": 82,
+          "givenFirstHe": "אברהם אלכסנדר ברסלר"
+        },
+        {
+          "rank": 83,
+          "givenFirstHe": "פנחס ברוכשטט"
+        },
+        {
+          "rank": 84,
+          "givenFirstHe": "דוד קירשנבוים"
+        },
+        {
+          "rank": 85,
+          "givenFirstHe": "אלתר בן ציון קלוגמן"
+        },
+        {
+          "rank": 86,
+          "givenFirstHe": "שמואל גרינברג"
+        },
+        {
+          "rank": 87,
+          "givenFirstHe": "אברהם הלר בקנרוט"
+        },
+        {
+          "rank": 88,
+          "givenFirstHe": "שמעון ישראל קלרמן"
+        },
+        {
+          "rank": 89,
+          "givenFirstHe": "שאול פרידמן"
+        },
+        {
+          "rank": 90,
+          "givenFirstHe": "אריה יהודה זיסמן"
+        },
+        {
+          "rank": 91,
+          "givenFirstHe": "בצלאל קאהן"
+        },
+        {
+          "rank": 92,
+          "givenFirstHe": "אריה ליב גוטליב"
+        },
+        {
+          "rank": 93,
+          "givenFirstHe": "אברהם מרדכי טרויבע"
+        },
+        {
+          "rank": 94,
+          "givenFirstHe": "נתן וייס"
+        },
+        {
+          "rank": 95,
+          "givenFirstHe": "דוד רפפורט"
+        },
+        {
+          "rank": 96,
+          "givenFirstHe": "משה מרדכי כהן"
+        },
+        {
+          "rank": 97,
+          "givenFirstHe": "צבי מרדכי בסר"
+        },
+        {
+          "rank": 98,
+          "givenFirstHe": "יצחק בר"
+        },
+        {
+          "rank": 99,
+          "givenFirstHe": "יצחק פיק"
+        },
+        {
+          "rank": 100,
+          "givenFirstHe": "בן-ציון נורדמן"
+        },
+        {
+          "rank": 101,
+          "givenFirstHe": "יוחנן משה הנדלס"
+        },
+        {
+          "rank": 102,
+          "givenFirstHe": "חיים פוקס"
+        },
+        {
+          "rank": 103,
+          "givenFirstHe": "אהרן יוסף דייטש"
+        },
+        {
+          "rank": 104,
+          "givenFirstHe": "משה שלום קרפ"
+        },
+        {
+          "rank": 105,
+          "givenFirstHe": "שאול בורזיקובסקי"
+        },
+        {
+          "rank": 106,
+          "givenFirstHe": "חיים צבי גרין"
+        },
+        {
+          "rank": 107,
+          "givenFirstHe": "ברוך בנימין ברנדויין"
+        },
+        {
+          "rank": 108,
+          "givenFirstHe": "דניאל לזרוס הופנר"
+        },
+        {
+          "rank": 109,
+          "givenFirstHe": "מנחם קלוגמן"
+        },
+        {
+          "rank": 110,
+          "givenFirstHe": "אלחנן ארנטרוי"
+        },
+        {
+          "rank": 111,
+          "givenFirstHe": "משה מאיר הייזלר"
+        },
+        {
+          "rank": 112,
+          "givenFirstHe": "דוד ברויאר"
+        },
+        {
+          "rank": 113,
+          "givenFirstHe": "שבתי שינפלד"
+        },
+        {
+          "rank": 114,
+          "givenFirstHe": "משה מן"
+        },
+        {
+          "rank": 115,
+          "givenFirstHe": "שלמה זלמן זוננפלד"
+        },
+        {
+          "rank": 116,
+          "givenFirstHe": "נתן חיים איינפלד"
+        },
+        {
+          "rank": 117,
+          "givenFirstHe": "חיים משה קנופף"
+        },
+        {
+          "rank": 118,
+          "givenFirstHe": "יוסף אבו"
+        },
+        {
+          "rank": 119,
+          "givenFirstHe": "שמואל אפשטיין"
+        },
+        {
+          "rank": 120,
+          "givenFirstHe": "משה אירנשטין"
+        }
+      ]
+    },
+    {
+      "letters": "ז",
+      "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/list/list6396.html?id=42",
+      "names": [
+        {
+          "rank": 1,
+          "givenFirstHe": "ישראל טויטו"
+        },
+        {
+          "rank": 2,
+          "givenFirstHe": "אילן זהבי"
+        },
+        {
+          "rank": 3,
+          "givenFirstHe": "רינה בכר"
+        },
+        {
+          "rank": 4,
+          "givenFirstHe": "אברהם לוי"
+        },
+        {
+          "rank": 5,
+          "givenFirstHe": "אהרון שוורץ"
+        },
+        {
+          "rank": 6,
+          "givenFirstHe": "רוית אברג'ל"
+        },
+        {
+          "rank": 7,
+          "givenFirstHe": "אפי סדון"
+        },
+        {
+          "rank": 8,
+          "givenFirstHe": "רועי הולר"
+        },
+        {
+          "rank": 9,
+          "givenFirstHe": "גילה שרעבי"
+        },
+        {
+          "rank": 10,
+          "givenFirstHe": "מנשה עובדיה"
+        },
+        {
+          "rank": 11,
+          "givenFirstHe": "מרדכי יצחקוב"
+        },
+        {
+          "rank": 12,
+          "givenFirstHe": "משה קרסיס"
+        },
+        {
+          "rank": 13,
+          "givenFirstHe": "חנניה שרעבי-שוקר"
+        },
+        {
+          "rank": 14,
+          "givenFirstHe": "סגלית אביטל"
+        },
+        {
+          "rank": 15,
+          "givenFirstHe": "אליהו כהן"
+        },
+        {
+          "rank": 16,
+          "givenFirstHe": "דוד מלקוב"
+        },
+        {
+          "rank": 17,
+          "givenFirstHe": "אלינור גיסרוטאה"
+        },
+        {
+          "rank": 18,
+          "givenFirstHe": "מרדכי הייקושלר"
+        },
+        {
+          "rank": 19,
+          "givenFirstHe": "רינת חמדי"
+        },
+        {
+          "rank": 20,
+          "givenFirstHe": "יוסי סיטון"
+        },
+        {
+          "rank": 21,
+          "givenFirstHe": "שלום שרון גביזון"
+        },
+        {
+          "rank": 22,
+          "givenFirstHe": "מיטרה נסיה בר"
+        },
+        {
+          "rank": 23,
+          "givenFirstHe": "שמעון מור יוסף"
+        },
+        {
+          "rank": 24,
+          "givenFirstHe": "אריה חדש"
+        },
+        {
+          "rank": 25,
+          "givenFirstHe": "אורית סימן טוב"
+        },
+        {
+          "rank": 26,
+          "givenFirstHe": "יצחק חטיבי"
+        },
+        {
+          "rank": 27,
+          "givenFirstHe": "עופר ותורי"
+        },
+        {
+          "rank": 28,
+          "givenFirstHe": "יהודה אביטל"
+        },
+        {
+          "rank": 29,
+          "givenFirstHe": "חביב חיים כהן פור"
+        },
+        {
+          "rank": 30,
+          "givenFirstHe": "זכריה עופר יהודה"
+        }
+      ]
+    },
+    {
+      "letters": "זה",
+      "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/list/list850a.html?id=57",
+      "names": [
+        {
+          "rank": 1,
+          "givenFirstHe": "אברהם נגוסה"
+        },
+        {
+          "rank": 2,
+          "givenFirstHe": "יחזקאל שטלצר"
+        },
+        {
+          "rank": 3,
+          "givenFirstHe": "יוסף ישראל אברמוביץ"
+        },
+        {
+          "rank": 4,
+          "givenFirstHe": "דרגה רטה"
+        },
+        {
+          "rank": 5,
+          "givenFirstHe": "מיכאל ברוך פרוינד"
+        },
+        {
+          "rank": 6,
+          "givenFirstHe": "זאודו אבונה"
+        },
+        {
+          "rank": 7,
+          "givenFirstHe": "ישי יעקב פליישר"
+        },
+        {
+          "rank": 8,
+          "givenFirstHe": "לינדה אליאסוף"
+        },
+        {
+          "rank": 9,
+          "givenFirstHe": "מיכאל דאן הומפריס"
+        },
+        {
+          "rank": 10,
+          "givenFirstHe": "מיכאל קורינלדי"
+        }
+      ]
+    },
+    {
+      "letters": "קז",
+      "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/list/listab5e.html?id=40",
+      "names": [
+        {
+          "rank": 1,
+          "givenFirstHe": "יעקב מנדל שלוסר"
+        },
+        {
+          "rank": 2,
+          "givenFirstHe": "יצחק מליק"
+        },
+        {
+          "rank": 3,
+          "givenFirstHe": "יעקב בן יששכר"
+        },
+        {
+          "rank": 4,
+          "givenFirstHe": "אילן לב פלדמן"
+        },
+        {
+          "rank": 5,
+          "givenFirstHe": "סימון פוני"
+        },
+        {
+          "rank": 6,
+          "givenFirstHe": "יגאל אוריאל"
+        },
+        {
+          "rank": 7,
+          "givenFirstHe": "אילן קשי"
+        },
+        {
+          "rank": 8,
+          "givenFirstHe": "יאיר תבון"
+        },
+        {
+          "rank": 9,
+          "givenFirstHe": "יעקב בן דוד"
+        },
+        {
+          "rank": 10,
+          "givenFirstHe": "ארתור שרמן"
+        },
+        {
+          "rank": 11,
+          "givenFirstHe": "ג'רי רוזיצ'נר"
+        },
+        {
+          "rank": 12,
+          "givenFirstHe": "דוויד אוצם"
+        },
+        {
+          "rank": 13,
+          "givenFirstHe": "פליקס אדרי"
+        },
+        {
+          "rank": 14,
+          "givenFirstHe": "רוני ביניאשוילי"
+        }
+      ]
+    },
+    {
+      "letters": "כן",
+      "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/list/list8bcf.html?id=30",
+      "names": [
+        {
+          "rank": 1,
+          "givenFirstHe": "אהוד אולמרט"
+        },
+        {
+          "rank": 2,
+          "givenFirstHe": "שמעון פרס"
+        },
+        {
+          "rank": 3,
+          "givenFirstHe": "ציפי צפורה לבני"
+        },
+        {
+          "rank": 4,
+          "givenFirstHe": "מאיר שיטרית"
+        },
+        {
+          "rank": 5,
+          "givenFirstHe": "אברהם משה דיכטר"
+        },
+        {
+          "rank": 6,
+          "givenFirstHe": "מרינה סולודקין"
+        },
+        {
+          "rank": 7,
+          "givenFirstHe": "חיים רמון"
+        },
+        {
+          "rank": 8,
+          "givenFirstHe": "שאול מופז"
+        },
+        {
+          "rank": 9,
+          "givenFirstHe": "צחי הנגבי"
+        },
+        {
+          "rank": 10,
+          "givenFirstHe": "אברהם הירשזון"
+        },
+        {
+          "rank": 11,
+          "givenFirstHe": "צבי אוריאל רייכמן"
+        },
+        {
+          "rank": 12,
+          "givenFirstHe": "גדעון עזרא"
+        },
+        {
+          "rank": 13,
+          "givenFirstHe": "רוני חיים בר און"
+        },
+        {
+          "rank": 14,
+          "givenFirstHe": "דליה איציק"
+        },
+        {
+          "rank": 15,
+          "givenFirstHe": "זאב דוד בוים"
+        },
+        {
+          "rank": 16,
+          "givenFirstHe": "יעקב אדרי"
+        },
+        {
+          "rank": 17,
+          "givenFirstHe": "זאב אלקין"
+        },
+        {
+          "rank": 18,
+          "givenFirstHe": "מגלי והבה"
+        },
+        {
+          "rank": 19,
+          "givenFirstHe": "רוחמה אברהם"
+        },
+        {
+          "rank": 20,
+          "givenFirstHe": "מנחם בן ששון"
+        },
+        {
+          "rank": 21,
+          "givenFirstHe": "שלמה (יוראי) ברזניץ"
+        },
+        {
+          "rank": 22,
+          "givenFirstHe": "אלי אלברט אפללו"
+        },
+        {
+          "rank": 23,
+          "givenFirstHe": "דוד טל"
+        },
+        {
+          "rank": 24,
+          "givenFirstHe": "אביגדור יצחקי"
+        },
+        {
+          "rank": 25,
+          "givenFirstHe": "רונית תירוש"
+        },
+        {
+          "rank": 26,
+          "givenFirstHe": "עתניאל שנלר"
+        },
+        {
+          "rank": 27,
+          "givenFirstHe": "מיכאל נודלמן"
+        },
+        {
+          "rank": 28,
+          "givenFirstHe": "עמירה דותן"
+        },
+        {
+          "rank": 29,
+          "givenFirstHe": "יואל חסון"
+        },
+        {
+          "rank": 30,
+          "givenFirstHe": "שי שכנאי חרמש"
+        },
+        {
+          "rank": 31,
+          "givenFirstHe": "יצחק אריה בן ישראל"
+        },
+        {
+          "rank": 32,
+          "givenFirstHe": "יוחנן פלסנר"
+        },
+        {
+          "rank": 33,
+          "givenFirstHe": "נגוסאי שלמה מולה"
+        },
+        {
+          "rank": 34,
+          "givenFirstHe": "דן בן דוד"
+        },
+        {
+          "rank": 35,
+          "givenFirstHe": "רחל אדאטו לוי"
+        },
+        {
+          "rank": 36,
+          "givenFirstHe": "רינה פיימן גרינב"
+        },
+        {
+          "rank": 37,
+          "givenFirstHe": "ליאור כרמל"
+        },
+        {
+          "rank": 38,
+          "givenFirstHe": "ליאת יונית רבנר"
+        },
+        {
+          "rank": 39,
+          "givenFirstHe": "שי אביטל רפופורט"
+        },
+        {
+          "rank": 40,
+          "givenFirstHe": "יוליה שמאלוב-ברקוביץ'"
+        },
+        {
+          "rank": 41,
+          "givenFirstHe": "אהוד יהודה ברזלי"
+        },
+        {
+          "rank": 42,
+          "givenFirstHe": "יוסף שלמה תמיר"
+        },
+        {
+          "rank": 43,
+          "givenFirstHe": "שלמה גרביץ"
+        },
+        {
+          "rank": 44,
+          "givenFirstHe": "אנסטסיה מיכל סאמואלסון מיכאלבסקי"
+        },
+        {
+          "rank": 45,
+          "givenFirstHe": "אברהם קרמפה"
+        },
+        {
+          "rank": 46,
+          "givenFirstHe": "שמואל משה ריפמן"
+        },
+        {
+          "rank": 47,
+          "givenFirstHe": "רפאל אלול"
+        },
+        {
+          "rank": 48,
+          "givenFirstHe": "אורי שיטרית"
+        },
+        {
+          "rank": 49,
+          "givenFirstHe": "יצחק חדד"
+        },
+        {
+          "rank": 50,
+          "givenFirstHe": "אמיר הלוי"
+        },
+        {
+          "rank": 51,
+          "givenFirstHe": "אחמד דבאח"
+        },
+        {
+          "rank": 52,
+          "givenFirstHe": "גדעון דורון"
+        },
+        {
+          "rank": 53,
+          "givenFirstHe": "יהודה שביט"
+        },
+        {
+          "rank": 54,
+          "givenFirstHe": "דרור גל"
+        },
+        {
+          "rank": 55,
+          "givenFirstHe": "הראל אליעזר ויזל"
+        },
+        {
+          "rank": 56,
+          "givenFirstHe": "כאיד דאהר"
+        },
+        {
+          "rank": 57,
+          "givenFirstHe": "משה קונפורטי"
+        },
+        {
+          "rank": 58,
+          "givenFirstHe": "יצחק ונונו"
+        },
+        {
+          "rank": 59,
+          "givenFirstHe": "אהרון בן חמו"
+        },
+        {
+          "rank": 60,
+          "givenFirstHe": "מיכאל צולר"
+        },
+        {
+          "rank": 61,
+          "givenFirstHe": "סלומון אברמוביץ"
+        },
+        {
+          "rank": 62,
+          "givenFirstHe": "אברהם אבנר חייט"
+        },
+        {
+          "rank": 63,
+          "givenFirstHe": "נסים אלחדיף"
+        },
+        {
+          "rank": 64,
+          "givenFirstHe": "יוסף שניר"
+        },
+        {
+          "rank": 65,
+          "givenFirstHe": "חוה לוזון"
+        },
+        {
+          "rank": 66,
+          "givenFirstHe": "אסף זמיר"
+        },
+        {
+          "rank": 67,
+          "givenFirstHe": "יצחק פרץ"
+        },
+        {
+          "rank": 68,
+          "givenFirstHe": "חיים שגיא"
+        },
+        {
+          "rank": 69,
+          "givenFirstHe": "שמואל שטרולוביץ"
+        },
+        {
+          "rank": 70,
+          "givenFirstHe": "עדי צבי ליואי"
+        },
+        {
+          "rank": 71,
+          "givenFirstHe": "אמנון לנדאו"
+        },
+        {
+          "rank": 72,
+          "givenFirstHe": "יורי בוצ'רוב"
+        },
+        {
+          "rank": 73,
+          "givenFirstHe": "יהודה טובי"
+        },
+        {
+          "rank": 74,
+          "givenFirstHe": "יואב שמחי"
+        },
+        {
+          "rank": 75,
+          "givenFirstHe": "אוגניה וקסמן"
+        },
+        {
+          "rank": 76,
+          "givenFirstHe": "ניסים אלון"
+        },
+        {
+          "rank": 77,
+          "givenFirstHe": "אבישי בר יהודה"
+        },
+        {
+          "rank": 78,
+          "givenFirstHe": "רומן באזוב"
+        },
+        {
+          "rank": 79,
+          "givenFirstHe": "אביבה בן רפאל"
+        },
+        {
+          "rank": 80,
+          "givenFirstHe": "שלמה רצבי"
+        },
+        {
+          "rank": 81,
+          "givenFirstHe": "גבריאל אברהם"
+        },
+        {
+          "rank": 82,
+          "givenFirstHe": "יעקב יפרח"
+        },
+        {
+          "rank": 83,
+          "givenFirstHe": "מרדכי אמסלם"
+        },
+        {
+          "rank": 84,
+          "givenFirstHe": "נתנאל עמרן"
+        },
+        {
+          "rank": 85,
+          "givenFirstHe": "מונל מיכאל ברג"
+        },
+        {
+          "rank": 86,
+          "givenFirstHe": "איציק יצחק בנישתי"
+        },
+        {
+          "rank": 87,
+          "givenFirstHe": "דורית דגן"
+        },
+        {
+          "rank": 88,
+          "givenFirstHe": "אברהם מידן"
+        },
+        {
+          "rank": 89,
+          "givenFirstHe": "אביינש טסמה"
+        },
+        {
+          "rank": 90,
+          "givenFirstHe": "משה כחלון"
+        },
+        {
+          "rank": 91,
+          "givenFirstHe": "אילן וקנין"
+        },
+        {
+          "rank": 92,
+          "givenFirstHe": "מרדכי מופק אלפריח"
+        },
+        {
+          "rank": 93,
+          "givenFirstHe": "אברהם דרעי"
+        },
+        {
+          "rank": 94,
+          "givenFirstHe": "גדעון יששכר צחר"
+        },
+        {
+          "rank": 95,
+          "givenFirstHe": "אילן לביא"
+        },
+        {
+          "rank": 96,
+          "givenFirstHe": "שושנה ברוך"
+        },
+        {
+          "rank": 97,
+          "givenFirstHe": "נטלי אביעד"
+        },
+        {
+          "rank": 98,
+          "givenFirstHe": "אסתר מלכה קוזלוביץ"
+        },
+        {
+          "rank": 99,
+          "givenFirstHe": "צפורה גורדין"
+        },
+        {
+          "rank": 100,
+          "givenFirstHe": "יואל לביא"
+        },
+        {
+          "rank": 101,
+          "givenFirstHe": "אברהם עומרד"
+        },
+        {
+          "rank": 102,
+          "givenFirstHe": "גיל משה סלמון"
+        },
+        {
+          "rank": 103,
+          "givenFirstHe": "מאיר לוי"
+        },
+        {
+          "rank": 104,
+          "givenFirstHe": "נחום חן שינה"
+        },
+        {
+          "rank": 105,
+          "givenFirstHe": "שלמה צרפתי"
+        },
+        {
+          "rank": 106,
+          "givenFirstHe": "סימה שמיט"
+        },
+        {
+          "rank": 107,
+          "givenFirstHe": "אילנה סיון"
+        },
+        {
+          "rank": 108,
+          "givenFirstHe": "מיכאל לויט"
+        },
+        {
+          "rank": 109,
+          "givenFirstHe": "דוד שורץ"
+        },
+        {
+          "rank": 110,
+          "givenFirstHe": "אברהם נאמן"
+        },
+        {
+          "rank": 111,
+          "givenFirstHe": "עדי אלדר"
+        },
+        {
+          "rank": 112,
+          "givenFirstHe": "זאב בירגר"
+        },
+        {
+          "rank": 113,
+          "givenFirstHe": "רפי סויסה"
+        },
+        {
+          "rank": 114,
+          "givenFirstHe": "יורם פלד"
+        },
+        {
+          "rank": 115,
+          "givenFirstHe": "דב ליטבינוף"
+        },
+        {
+          "rank": 116,
+          "givenFirstHe": "יוסף צבי נשרי"
+        },
+        {
+          "rank": 117,
+          "givenFirstHe": "מאיר ניצן"
+        },
+        {
+          "rank": 118,
+          "givenFirstHe": "יונה יהב"
+        },
+        {
+          "rank": 119,
+          "givenFirstHe": "צבי יהושע צילקר"
+        },
+        {
+          "rank": 120,
+          "givenFirstHe": "מיכאל סלע"
+        }
+      ]
+    },
+    {
+      "letters": "שס",
+      "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/list/list0c98.html?id=50",
+      "names": [
+        {
+          "rank": 1,
+          "givenFirstHe": "אליהו ישי"
+        },
+        {
+          "rank": 2,
+          "givenFirstHe": "יצחק כהן"
+        },
+        {
+          "rank": 3,
+          "givenFirstHe": "אמנון כהן"
+        },
+        {
+          "rank": 4,
+          "givenFirstHe": "משולם נהרי"
+        },
+        {
+          "rank": 5,
+          "givenFirstHe": "אריאל אטיאס"
+        },
+        {
+          "rank": 6,
+          "givenFirstHe": "שלמה בניזרי"
+        },
+        {
+          "rank": 7,
+          "givenFirstHe": "דוד אזולאי"
+        },
+        {
+          "rank": 8,
+          "givenFirstHe": "יצחק וקנין"
+        },
+        {
+          "rank": 9,
+          "givenFirstHe": "נסים מרדכי זאב"
+        },
+        {
+          "rank": 10,
+          "givenFirstHe": "יעקב מרגי"
+        },
+        {
+          "rank": 11,
+          "givenFirstHe": "אמיל אמסלם"
+        },
+        {
+          "rank": 12,
+          "givenFirstHe": "אברהם מיכאלי"
+        },
+        {
+          "rank": 13,
+          "givenFirstHe": "מרוי מזור בהיינה"
+        },
+        {
+          "rank": 14,
+          "givenFirstHe": "יאיר יעיש פרץ"
+        },
+        {
+          "rank": 15,
+          "givenFirstHe": "אביגדור אוחנה"
+        },
+        {
+          "rank": 16,
+          "givenFirstHe": "דוד טלקאר"
+        },
+        {
+          "rank": 17,
+          "givenFirstHe": "רפאל מלאכי"
+        },
+        {
+          "rank": 18,
+          "givenFirstHe": "דוד שטרית"
+        },
+        {
+          "rank": 19,
+          "givenFirstHe": "איתן ברדה"
+        },
+        {
+          "rank": 20,
+          "givenFirstHe": "בנימין אלחרר"
+        },
+        {
+          "rank": 21,
+          "givenFirstHe": "יורם מנחם"
+        },
+        {
+          "rank": 22,
+          "givenFirstHe": "יצחק אבידני"
+        },
+        {
+          "rank": 23,
+          "givenFirstHe": "דוד אוחנונה"
+        },
+        {
+          "rank": 24,
+          "givenFirstHe": "אריאל דרעי"
+        },
+        {
+          "rank": 25,
+          "givenFirstHe": "עמי ביטון"
+        },
+        {
+          "rank": 26,
+          "givenFirstHe": "צבי זאב חי חקוק"
+        },
+        {
+          "rank": 27,
+          "givenFirstHe": "אלון נוריאל"
+        },
+        {
+          "rank": 28,
+          "givenFirstHe": "משה אביטבול"
+        },
+        {
+          "rank": 29,
+          "givenFirstHe": "שרלי בוחבוט"
+        },
+        {
+          "rank": 30,
+          "givenFirstHe": "אורן מלכה"
+        },
+        {
+          "rank": 31,
+          "givenFirstHe": "עופר כרדי"
+        },
+        {
+          "rank": 32,
+          "givenFirstHe": "נסים ישי"
+        },
+        {
+          "rank": 33,
+          "givenFirstHe": "מאיר דנינו"
+        },
+        {
+          "rank": 34,
+          "givenFirstHe": "אבי בן אברהם"
+        },
+        {
+          "rank": 35,
+          "givenFirstHe": "אלברט זגורי"
+        },
+        {
+          "rank": 36,
+          "givenFirstHe": "רפאל אוחיון"
+        },
+        {
+          "rank": 37,
+          "givenFirstHe": "יעקב אדמוני"
+        },
+        {
+          "rank": 38,
+          "givenFirstHe": "אבנר אקוע"
+        },
+        {
+          "rank": 39,
+          "givenFirstHe": "גדעון הכהן"
+        },
+        {
+          "rank": 40,
+          "givenFirstHe": "חיים יוסף דוד גנאסיה"
+        },
+        {
+          "rank": 41,
+          "givenFirstHe": "אשר חי גבריאל מישאל"
+        },
+        {
+          "rank": 42,
+          "givenFirstHe": "ציון רצון"
+        },
+        {
+          "rank": 43,
+          "givenFirstHe": "יצחק מנחם קקון"
+        },
+        {
+          "rank": 44,
+          "givenFirstHe": "חזקיה נהרי"
+        },
+        {
+          "rank": 45,
+          "givenFirstHe": "דוד פרץ"
+        },
+        {
+          "rank": 46,
+          "givenFirstHe": "שמואל לוי"
+        },
+        {
+          "rank": 47,
+          "givenFirstHe": "אורי לוי"
+        },
+        {
+          "rank": 48,
+          "givenFirstHe": "ששון שמשון עמרם"
+        },
+        {
+          "rank": 49,
+          "givenFirstHe": "אסף צפניה העצני"
+        },
+        {
+          "rank": 50,
+          "givenFirstHe": "שמעון אביטן"
+        },
+        {
+          "rank": 51,
+          "givenFirstHe": "מנשה לוי"
+        },
+        {
+          "rank": 52,
+          "givenFirstHe": "רחמים היררי"
+        },
+        {
+          "rank": 53,
+          "givenFirstHe": "יוסף דיין"
+        },
+        {
+          "rank": 54,
+          "givenFirstHe": "עמיקם אתירם"
+        },
+        {
+          "rank": 55,
+          "givenFirstHe": "עופר עוזי"
+        },
+        {
+          "rank": 56,
+          "givenFirstHe": "שמעון עמר"
+        },
+        {
+          "rank": 57,
+          "givenFirstHe": "חנניה צפר"
+        },
+        {
+          "rank": 58,
+          "givenFirstHe": "יהושע עמר"
+        },
+        {
+          "rank": 59,
+          "givenFirstHe": "ישי מימון"
+        },
+        {
+          "rank": 60,
+          "givenFirstHe": "נתן מימון"
+        },
+        {
+          "rank": 61,
+          "givenFirstHe": "שריה מלאכי"
+        },
+        {
+          "rank": 62,
+          "givenFirstHe": "מיכאל מלמד"
+        },
+        {
+          "rank": 63,
+          "givenFirstHe": "שלמה ממן"
+        },
+        {
+          "rank": 64,
+          "givenFirstHe": "מיכאל מישל טפירו"
+        },
+        {
+          "rank": 65,
+          "givenFirstHe": "נתנאל אמסלם"
+        },
+        {
+          "rank": 66,
+          "givenFirstHe": "אליהו אבני"
+        },
+        {
+          "rank": 67,
+          "givenFirstHe": "נרקיס אדוואר"
+        },
+        {
+          "rank": 68,
+          "givenFirstHe": "שי אסולין"
+        },
+        {
+          "rank": 69,
+          "givenFirstHe": "רפאל בובליל"
+        },
+        {
+          "rank": 70,
+          "givenFirstHe": "מוטי בוסקילה"
+        },
+        {
+          "rank": 71,
+          "givenFirstHe": "יהודה גארלה"
+        },
+        {
+          "rank": 72,
+          "givenFirstHe": "דניאל גבאי"
+        },
+        {
+          "rank": 73,
+          "givenFirstHe": "אלדד פנחס גדסי"
+        },
+        {
+          "rank": 74,
+          "givenFirstHe": "אליהו דוד"
+        },
+        {
+          "rank": 75,
+          "givenFirstHe": "יונה עטייה"
+        },
+        {
+          "rank": 76,
+          "givenFirstHe": "ציון דחבש"
+        },
+        {
+          "rank": 77,
+          "givenFirstHe": "ישראל דידי"
+        },
+        {
+          "rank": 78,
+          "givenFirstHe": "שמעון חיים וקנין"
+        },
+        {
+          "rank": 79,
+          "givenFirstHe": "תמיר ישראלי"
+        },
+        {
+          "rank": 80,
+          "givenFirstHe": "חיים כהן"
+        },
+        {
+          "rank": 81,
+          "givenFirstHe": "נסים כהן"
+        },
+        {
+          "rank": 82,
+          "givenFirstHe": "ראובן כהן"
+        },
+        {
+          "rank": 83,
+          "givenFirstHe": "שלמה לוי"
+        },
+        {
+          "rank": 84,
+          "givenFirstHe": "יהודה עטיה"
+        },
+        {
+          "rank": 85,
+          "givenFirstHe": "אפרים פורת"
+        },
+        {
+          "rank": 86,
+          "givenFirstHe": "אילן גיא צ'קוטאי"
+        },
+        {
+          "rank": 87,
+          "givenFirstHe": "יהודה קהתי"
+        },
+        {
+          "rank": 88,
+          "givenFirstHe": "ישראל רוימי"
+        },
+        {
+          "rank": 89,
+          "givenFirstHe": "שמואל שבתאי"
+        },
+        {
+          "rank": 90,
+          "givenFirstHe": "אשר ברוך שטרית"
+        },
+        {
+          "rank": 91,
+          "givenFirstHe": "שלמה שרעבי"
+        },
+        {
+          "rank": 92,
+          "givenFirstHe": "שמעון שעירי"
+        },
+        {
+          "rank": 93,
+          "givenFirstHe": "גבריאל רחמים"
+        },
+        {
+          "rank": 94,
+          "givenFirstHe": "חיים אלי רואש"
+        },
+        {
+          "rank": 95,
+          "givenFirstHe": "אמיר קריספל"
+        },
+        {
+          "rank": 96,
+          "givenFirstHe": "יהודה קלימי"
+        },
+        {
+          "rank": 97,
+          "givenFirstHe": "נח עוזיאל צדוק"
+        },
+        {
+          "rank": 98,
+          "givenFirstHe": "מאיר אוחנא"
+        },
+        {
+          "rank": 99,
+          "givenFirstHe": "מיכאל צארום"
+        },
+        {
+          "rank": 100,
+          "givenFirstHe": "שמעון פרץ"
+        },
+        {
+          "rank": 101,
+          "givenFirstHe": "סלומון עזרן"
+        },
+        {
+          "rank": 102,
+          "givenFirstHe": "דן עזרא"
+        },
+        {
+          "rank": 103,
+          "givenFirstHe": "יצחק סולטן"
+        },
+        {
+          "rank": 104,
+          "givenFirstHe": "אבנר סויסה"
+        },
+        {
+          "rank": 105,
+          "givenFirstHe": "חיים סברלי"
+        },
+        {
+          "rank": 106,
+          "givenFirstHe": "דוד ניסנוף"
+        },
+        {
+          "rank": 107,
+          "givenFirstHe": "ראובן נגאר"
+        },
+        {
+          "rank": 108,
+          "givenFirstHe": "ברוך נאמני"
+        },
+        {
+          "rank": 109,
+          "givenFirstHe": "אליהו ממן"
+        },
+        {
+          "rank": 110,
+          "givenFirstHe": "גרשון לוי"
+        },
+        {
+          "rank": 111,
+          "givenFirstHe": "נפתלי כהן"
+        },
+        {
+          "rank": 112,
+          "givenFirstHe": "משה בן זקרי"
+        },
+        {
+          "rank": 113,
+          "givenFirstHe": "דוד בן גיגי"
+        },
+        {
+          "rank": 114,
+          "givenFirstHe": "יעקב בן שלמה"
+        },
+        {
+          "rank": 115,
+          "givenFirstHe": "עוזי ויצמן אהרן"
+        },
+        {
+          "rank": 116,
+          "givenFirstHe": "רחמים ארבל"
+        },
+        {
+          "rank": 117,
+          "givenFirstHe": "שמעון בן שלמה"
+        },
+        {
+          "rank": 118,
+          "givenFirstHe": "רפאל פנחסי"
+        }
+      ]
+    }
+  ]
+}

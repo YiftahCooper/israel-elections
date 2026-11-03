@@ -50,7 +50,8 @@ export function scenarioIssues(s: Scenario, r: AllocationResult): ScenarioIssue[
   if (cast > s.registered) out.push({ level: 'warning', en: `Votes cast (${cast.toLocaleString()}) exceed registered voters (${s.registered.toLocaleString()}); turnout would be above 100%. Raise the electorate or reduce votes.`, he: `מספר המצביעים (${cast.toLocaleString()}) עולה על מספר בעלי זכות הבחירה (${s.registered.toLocaleString()}); שיעור ההצבעה עולה על 100%.` });
   for (const l of r.lists) {
     const sl = s.lists.find((x) => x.id === l.id)!;
-    if (l.seats > sl.candidates.length) out.push({ level: 'error', en: `${sl.shortEn ?? sl.shortHe} wins ${l.seats} seats but has only ${sl.candidates.length} candidates; ${l.seats - sl.candidates.length} seat(s) would stay vacant.`, he: `${sl.shortHe} זוכה ב-${l.seats} מנדטים אך יש בה רק ${sl.candidates.length} מועמדים; ${l.seats - sl.candidates.length} מושבים יישארו ריקים.` });
+    // an unavailable or truncated roster is unknown beyond what is listed, not short of candidates
+    if (l.seats > sl.candidates.length && !sl.rosterUnavailable && !sl.rosterTruncated) out.push({ level: 'error', en: `${sl.shortEn ?? sl.shortHe} wins ${l.seats} seats but has only ${sl.candidates.length} candidates; ${l.seats - sl.candidates.length} seat(s) would stay vacant.`, he: `${sl.shortHe} זוכה ב-${l.seats} מנדטים אך יש בה רק ${sl.candidates.length} מועמדים; ${l.seats - sl.candidates.length} מושבים יישארו ריקים.` });
   }
   const letters = new Map<string, number>();
   for (const l of s.lists) letters.set(l.letters, (letters.get(l.letters) ?? 0) + 1);

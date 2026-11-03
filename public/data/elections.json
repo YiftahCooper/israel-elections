@@ -200,10 +200,11 @@
     "date": "2003-01-28",
     "nameHe": "הבחירות לכנסת ה-16",
     "nameEn": "Election to the 16th Knesset",
-    "available": false,
+    "available": true,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "Seat reproduction verified in research fixtures; release blocked by unresolved gazette differences, unverified full candidate rosters and missing locality metadata."
+      "stage": "official-final",
+      "noteEn": "National seats verified; derived polling-station localities. 14 complete candidate rosters unavailable after transcription review; see per-list notes. CBS electorate; gazette valid/invalid totals; documented source discrepancies.",
+      "noteHe": "המנדטים הארציים אומתו; נתוני יישובים נגזרו מקלפיות. 14 רשימות מועמדים מלאות אינן זמינות לאחר בדיקת התמלול; ראו הערות לכל רשימה. בעלי זכות בחירה מלמ״ס; כשרים ופסולים מהילקוט; פערי המקורות מתועדים."
     }
   },
   {
@@ -212,10 +213,11 @@
     "date": "2006-03-28",
     "nameHe": "הבחירות לכנסת ה-17",
     "nameEn": "Election to the 17th Knesset",
-    "available": false,
+    "available": true,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "Seat reproduction verified in research fixtures; release blocked by unresolved gazette differences, unverified full candidate rosters and missing locality metadata."
+      "stage": "official-final",
+      "noteEn": "National seats verified; derived polling-station localities. 13 complete candidate rosters unavailable after transcription review; see per-list notes. CBS electorate; gazette valid/invalid totals; documented source discrepancies.",
+      "noteHe": "המנדטים הארציים אומתו; נתוני יישובים נגזרו מקלפיות. 13 רשימות מועמדים מלאות אינן זמינות לאחר בדיקת התמלול; ראו הערות לכל רשימה. בעלי זכות בחירה מלמ״ס; כשרים ופסולים מהילקוט; פערי המקורות מתועדים."
     }
   },
   {

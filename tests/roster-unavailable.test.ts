@@ -2,7 +2,9 @@
 // so the interface never presents an empty roster as "no candidates registered".
 import { describe, expect, it } from 'vitest';
 import { applyAction } from '../src/model/actions.ts';
-import { scenarioFromDataset } from '../src/model/scenario.ts';
+import { scenarioFromDataset, toEngineInput } from '../src/model/scenario.ts';
+import { allocate } from '../src/engine/allocate.ts';
+import { scenarioIssues } from '../src/app/derive.ts';
 import { loadDataset } from './helpers.ts';
 
 describe('unavailable rosters', () => {
@@ -30,5 +32,11 @@ describe('unavailable rosters', () => {
     expect(tr.lists.find((l) => l.id === b.id)!.rosterTruncated).toBe(true);
     const m = applyAction(tr, { type: 'merge', ids: [a.id, b.id], newId: 'm', nameHe: 'm', letters: 'm', color: '#000000', retentionPct: 100, candidateOrder: 'concat', nonRetained: 'abstain' });
     expect(m.lists.find((l) => l.id === 'm')!.rosterTruncated).toBe(true);
+  });
+  it('does not report the seats of a list with an unavailable roster as vacant', () => {
+    const issues = scenarioIssues(s, allocate(toEngineInput(s)));
+    expect(issues.filter((x) => x.en.includes('vacant'))).toEqual([]);
+    const empty = { ...s, lists: s.lists.map((l) => (l.id === a.id ? { ...l, rosterUnavailable: undefined } : l)) };
+    expect(scenarioIssues(empty, allocate(toEngineInput(empty))).some((x) => x.en.includes('vacant'))).toBe(true);
   });
 });

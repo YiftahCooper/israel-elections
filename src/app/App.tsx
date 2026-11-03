@@ -116,7 +116,7 @@ function Shell() {
             <section className="panel">
               <div className="body"><ErrorBoundary label={L('Chamber', 'המליאה')} resetKey={s}><Hemicycle s={s} r={r} /></ErrorBoundary></div>
             </section>
-            <section className="panel"><div className="body"><BlocBar s={s} r={r} /></div></section>
+            {s.blocs.length > 0 && <section className="panel"><div className="body"><BlocBar s={s} r={r} /></div></section>}
             <KeyStats s={s} r={r} ds={ds} baseR={baseR} />
           </div>
           <div className="col" id="detail-col"><ErrorBoundary label={L('List details', 'פרטי רשימה')} resetKey={s}><ListPanel s={s} r={r} ds={ds} base={base} baseR={baseR} /></ErrorBoundary></div>

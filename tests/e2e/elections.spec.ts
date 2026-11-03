@@ -1,8 +1,15 @@
 // The election picker lists every election in public/data/elections.json, newest first. Elections whose
 // dataset is not yet built and verified are listed but cannot be chosen.
+import { readFileSync } from 'node:fs';
 import { expect, test } from '@playwright/test';
 
+// The real index, except that 2003 is forced to "not available", so the test does not depend on
+// which elections happen to be released.
+const index = (JSON.parse(readFileSync('public/data/elections.json', 'utf8')) as { id: string; available: boolean }[])
+  .map((e) => (e.id === 'k16' ? { ...e, available: false } : e));
+
 test.beforeEach(async ({ page }) => {
+  await page.route('**/data/elections.json', (route) => route.fulfill({ json: index }));
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en' })));
   await page.goto('/');
 });

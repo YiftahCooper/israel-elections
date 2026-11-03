@@ -1,10 +1,11 @@
 # Election data: coverage and remaining verification
 
-The app offers **nine verified election datasets: k18–k26** (2009–2026). For each, the engine
+The app offers **eleven verified election datasets: k16–k26** (2003–2026). For each, the engine
 reproduces every list's officially published seats, checked by `tests/historical-kNN.test.ts`
 and `tests/engine.test.ts` (2026: the reported final count, pending gazettement).
-Official sources for **k16–k17** (2003–2006) are retained, but those elections have not yet
-passed every release gate; `public/data/elections.json` marks them unavailable.
+The 2003 and 2006 releases are **not full-roster releases**: several lists' rosters are marked
+unavailable (see their section below). Official sources for **k1–k15** (1949–1999) are retained
+and partly verified; `public/data/elections.json` marks those not yet released as unavailable.
 
 ## Sources by election
 
@@ -18,8 +19,8 @@ passed every release gate; `public/data/elections.json` marks them unavailable.
 | k13 | 1992-06-23 | Results YP 4021; candidates YP 4017; CBS totals; reviewed national table | No secondary inputs used | Unavailable: full winning rosters incomplete; agreement notice not recovered; all gazetted seats reproduced with no agreements assumed; no locality dataset (0080–0082) |
 | k14 | 1996-05-29 | Results YP 4414; candidates YP 4408; complete six-pair YP 4411 notice (mirror); CBS totals | No secondary inputs used | Unavailable: winning rosters incomplete (Third Way complete); all seats reproduced; no locality dataset; secondary 550-vote error excluded (0080–0082) |
 | k15 | 1999-05-17 | Results YP 4757; candidates YP 4748; recovered complete nine-pair YP 4755 notice (mirror); CBS totals | No secondary inputs used | Unavailable: full winning rosters incomplete; all gazetted seats reproduced; no locality dataset (0080–0082) |
-| k16 | 2003-01-28 | Polling stations; CEC candidates/results; complete agreement notice YP 5151; official CBS totals; reviewed national transcription and locality digest | No secondary rosters; project derivatives labelled | Two gazette vote discrepancies (410 total); full rosters; locality committee metadata; release blocked |
-| k17 | 2006-03-28 | Polling stations; CEC candidates/results; complete agreement notice YP 5510; official CBS totals; reviewed national transcription and locality digest | No secondary rosters; project derivatives labelled | Nine-invalid-vote discrepancy; full rosters; locality code/electorate/committee fields; release blocked |
+| k16 | 2003-01-28 | CEC results/candidate scans; YP 5151 agreements; CBS electorate; retained reviewed roster and locality JSONs with hashes | Secondary membership identity cross-checks and Sharansky withdrawal report; roster spellings from scans | Available with 14 explicitly unavailable complete rosters; documented printed-vote discrepancy and UI caveats |
+| k17 | 2006-03-28 | CEC results/candidate scans; YP 5510 agreements; CBS electorate; retained reviewed roster and locality JSONs with hashes | Secondary membership identity cross-checks; roster spellings from scans | Available with 13 explicitly unavailable complete rosters; documented nine-cast-vote discrepancy and UI caveat |
 | k18 | 2009-02-10 | Polling stations; CEC candidate/results gazettes; allocation memorandum; YP 5912 agreement notice (mirror) | None | Released; derived localities and sourced invalid-count exception disclosed (0040) |
 | k19 | 2013-01-22 | Localities/polling; CEC candidate/results gazettes; final-results numeric capture; decisions book; YP 6530 agreements (mirror) | None | Released on the CEC final figures; gazette total/list differences disclosed, seats identical either way (0041, 0042) |
 | k20 | 2015-03-17 | data.gov.il localities and polling stations; CEC candidate gazette YP 7000, results YP 7010; agreement notice YP 7001 (mirror) | None | Released: every list’s seats reproduced; all 1,196 locality rows reconcile with 10,414 polling rows; 1,284 registered candidates; complete four-pair notice |
@@ -109,59 +110,78 @@ and review the resulting data changes; normal builds never rewrite this evidence
   datastore column `מרץ` is explicitly mapped to official `מרצ` and tested.
 * The Knesset 24 results page succeeded on retry; a fallback national total is unnecessary.
 
-## Knessets 16–17: verified progress, not released datasets
+## Knessets 16–17: available with explicit candidate limitations
 
-Both remain `available: false`, with no `k16.json`, `k17.json` or public locality files.
-The per-election preflights run during `build-datasets.ts`, validate retained evidence and
-refuse a premature availability change. They return no public build jobs while blocked.
-This is intentional partial implementation, not a claim that either release builder is complete.
+Both national and locality datasets are built and `available: true`. Decisions
+[0052](decisions/0052-k16-k17-national-and-locality-release-policy.md) and
+[0053](decisions/0053-k16-k17-candidate-review-and-release-limitations.md) record the
+owner-approved treatment, candidate counts/pages for every list and remaining limits.
+They supersede the relevant release gates in 0050; 0051's historical-law caveat remains.
 
-* **k16:** results gazette YP 5155 p. 1406 prints Mafdal **132,730** and Lider **883**;
-  polling sums are **132,370** and **833**. Printed counts sum to **3,148,774**, whereas
-  the gazette's valid total and polling sum are **3,148,364**. The Knesset's official
-  allocation example supports Mafdal's polling count; no formal correction was verified
-  for either difference. Invalid **52,409**, cast **3,200,773**. Excluding the envelope
-  batches' repeated “voters” field gives electorate **4,720,075**, matching official CBS.
-  There are **7,885** polling rows, including **149** envelope batches; one separate XLS
-  EOF record is explicitly excluded. The **1,172** research locality groups include the
-  envelope group. Committee identifiers are missing and remain null in research rows.
-* **k17:** all **31** gazetted list counts and **3,137,064** valid votes agree exactly
-  with **8,426** polling rows (including **149** envelope batches). Gazette invalid is
-  **49,684**, but datastore cast **3,186,739** minus valid is **49,675**. Official CBS
-  corroborates that turnout and electorate **5,014,622**. No correction explaining the
-  nine votes was verified. The source supplies neither numeric locality codes, electorate
-  nor committee identifiers; **1,150** research groups use exact trimmed locality names.
-  Required unknown fields stay null; these research rows are not `LocalityDataset` files.
+* **k16:** 27 lists. Use official polling list votes, including Mafdal **132,370** and
+  Lider **833**. YP 5155 p. 1406 prints **132,730** and **883**, making its list sum
+  **3,148,774**, **410 above** its own valid total **3,148,364**. Both printed figures
+  and the inconsistency remain in Hebrew list notes. The official Knesset historical
+  table corroborates Mafdal 132,370; no formal correction is asserted. Gazette valid
+  **3,148,364** and invalid **52,409** imply cast **3,200,773**. Official CBS supplies
+  registered **4,720,075**. With polling votes, the threshold is **47,226**, quota
+  **25,138**. Using the inconsistent printed votes instead gives threshold **47,232**,
+  quota **25,141**, and **exactly the same seats for every list**; tests assert both.
+* **k17:** 31 lists. All list counts match the gazette and polling sums. Use gazette
+  valid **3,137,064**, invalid **49,684**, and cast = their sum **3,186,748**. CBS
+  supplies registered **5,014,622**. Polling cast **3,186,739** is **9 lower**, implying
+  invalid **49,675**; CBS corroborates the lower turnout. No authoritative explanation
+  is known. Preserve the gap rather than altering locality rows. Threshold **62,742**,
+  quota **24,619**; every gazetted seat reproduces.
 
-Neither results gazette states registered voters or total turnout. The retained official
-CBS table (`data/raw/k16/cbs-national-summary.pdf`, table 27.2, source CEC) supplements
-those facts; the transcriptions explicitly use null for their absence from the gazette.
+The retained official CBS table (`data/raw/k16/cbs-national-summary.pdf`, table 27.2,
+29 August 2023, source CEC) is referenced by both elections. Dataset status and SOURCES
+explicitly distinguish its electorate from gazette valid/invalid totals and derived cast.
 
-Agreements were read in full from official scanned notices mirrored by olaw.org.il:
-**YP 5151 p. 1312** (26 January 2003) contains all six pairs: Labor–Meretz,
-Shinui–Greens, National Union–Yisrael BaAliyah, Mafdal–Am Ehad, Shas–UTJ and Hadash–Balad.
-**YP 5510 p. 2386** (26 March 2006) contains all four: Labor–Meretz, Shas–UTJ,
-Hadash–Balad and Yisrael Beiteinu–Likud. Completeness is from the entire notices,
-including their final pair and signature, not inferred from the seat outcome.
+Agreements are the complete previously reviewed official notices: **YP 5151 p. 1312**
+(six pairs: Labor–Meretz, Shinui–Greens, National Union–Yisrael BaAliyah, Mafdal–Am Ehad,
+Shas–UTJ and Hadash–Balad) and **YP 5510 p. 2386** (four: Labor–Meretz, Shas–UTJ,
+Hadash–Balad and Yisrael Beiteinu–Likud). Notices are primary publications obtained
+from the disclosed olaw.org.il mirror, not inferred from seat reproduction.
 
-Tests reproduce **every list's gazetted seats** through the application scenario pipeline
-using explicitly labelled research fixtures with polling counts. k16: threshold **47,226**,
-quota **25,138**; k17: threshold **62,742**, quota **24,619**. This verifies allocation,
-not the missing release gates. Candidate checks cover only the largest list's first name
-and terminal rank: Likud's **שרון אריאל**, **114** names in YP 5148 pp. 1197–1198;
-Kadima's **אולמרט אהוד**, **120** in YP 5504 pp. 2192–2193. Full rosters, contiguous
-ranks and counts for all other lists remain unverified. No secondary roster or fabricated
-name was used, and no `candidatesUnavailable` field was added: verifiable scans exist.
+Locality JSONs contain **1,172 / 1,150** groups, including one explicitly flagged
+double-envelope row each. Bilingual notes explain they are sums of official polling
+stations because no official locality table exists. k16 retains source numeric codes;
+k17 code and registered are null. Committee is null in both. Envelope registered is
+null, excluding the bogus repeated “voters” field. Counts excluding envelopes are
+**1,171 / 1,149** localities. k16 has **7,885** actual polling rows (one separate EOF
+sentinel excluded); k17 **8,426**; both include **149** envelope batches.
 
-Each `data/raw/kNN/national.reviewed.json` preserves the gazette values, discrepancy
-records and partial candidate checks. Each `reconciliation.reviewed.json` retains per-list
-polling sums, source SHA-256 and the SHA-256 of derived research locality rows. The rows
-are reproducible by `derivePolling()` in `scripts/lib/historical/k16-k17-common.ts` from
-fetched scratch input; its comment defines ordering and serialization. No polling JSON
-or intermediate render is committed. When scratch is absent the build logs a clear
-polling-check skip, but still checks retained source/derivative hashes, national arithmetic,
-agreement structure and every official seat. This does not independently validate missing
-locality rows. Decisions **0050–0051** record the evidence and the historical-law caveat.
+Candidate scans were rendered with pdfjs and its local `wasmUrl`, then visually
+transcribed. The retained `candidates.reviewed.json` files contain page references,
+last printed ranks and either contiguous complete names or the explicitly authorized
+per-list unavailable fallback. **295 / 664 candidate names** are published. **14 / 13
+complete rosters remain unverified**, with `candidatesUnavailable: true`, empty arrays
+and Hebrew reasons naming unresolved ranks. This does not mean no official roster
+exists. Likud 2003 has exactly **114** names beginning **שרון אריאל**; Kadima 2006 has
+**120**, beginning **אולמרט אהוד**. No padding or guessed names are published.
+
+For every winning list, the reviewed artifact records elected identity cross-checks
+and a second reading of the next five non-elected scan ranks, even when the complete
+roster remains unavailable. Official Knesset membership pages were inaccessible;
+**labelled secondary membership tables** were used, reversing subsequent replacements
+rather than comparing with end-of-term membership. Yisrael BaAliyah 2003 has a real
+exception: Sharansky #1 withdrew after the election; Edelstein #2 and Solodkin #3 served
+at inauguration. The registered roster remains in its printed order, with an explanatory
+note and a contemporaneous Ynet source. The source manifest distinguishes successful
+secondary evidence from failed official-page attempts.
+
+**Known app limitations (no app files changed):** the existing candidate-capacity warning
+treats missing rosters as vacant seats and the candidate panel says “No candidates registered”, and the elected-name view selects the first n
+registered candidates without applying Sharansky's withdrawal. Those are UI/model
+limitations, not claims that historical seats were vacant or that Sharansky was sworn in.
+
+`localities.reviewed.json` retains the rows themselves, not just a digest. The builder
+checks manifest SHA-256, every row's arithmetic and list sums, the original compact-row
+digest, candidate rank integrity and retained membership/reserve evidence. If polling
+scratch exists it repeats all station aggregation; otherwise it explicitly logs the
+skipped additional check and rebuilds from retained inputs. The original national review
+and reconciliation JSONs remain historical evidence of the source disagreements.
 
 ## Size and rebuilding
 
@@ -178,8 +198,8 @@ paged official CKAN API. It discovers resource IDs from the retained package cat
 dependencies are required. This is reproducible working material, not the only copy of
 unique data. Scratch's git exclusion is verified; no claim is made about backup software.
 
-`node scripts/build-datasets.ts` builds every available election (k18–k26) with strict checks.
-For k16–k17 it validates the retained evidence but emits no dataset.
+`node scripts/build-datasets.ts` builds every available election (k16–k26) with strict checks.
+For k8–k15 it validates the evidence gathered so far but emits no dataset until released.
 
 ## K20 and K21 release verification
 
@@ -366,3 +386,8 @@ all-elected-rank cross-checks, later candidate amendments and an exhaustive hist
 allocation-law amendment-chain check remain unverified. The exact 1.5% rule mapping,
 original threshold amendment and original Bader–Ofer half-seats cap are documented
 separately from those gaps.
+
+The k16/k17 tests read the public datasets and verify every official seat, era threshold/quota,
+agreement pairs, national totals, locality columns and explicit candidate counts/limitations. To
+simulate a clean checkout, move `.backup-scratch/raw` aside, rebuild, and restore it; k16/k17
+retained reviewed JSONs and digests suffice without those copies.
