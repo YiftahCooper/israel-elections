@@ -32,12 +32,13 @@ export function readDatastoreRows(path: string, letters: readonly string[], chec
   const column = o.column ?? ((l: string) => l);
   const name = o.name ?? collapse;
   return records.map((r, i) => {
-    const num = (key: string) => { const v = Number(r[key]); check(r[key] !== null && r[key] !== undefined && whole(v), `${path} row ${i}: invalid ${key}`); return v; };
+    // messages are built only on failure: these run for every cell of every polling table
+    const num = (key: string) => { const v = Number(r[key]); if (r[key] === null || r[key] === undefined || !whole(v)) check(false, `${path} row ${i}: invalid ${key}`); return v; };
     const committee = o.committee === 'zero' || (o.committee === 'optional' && r['סמל ועדה'] === undefined) ? 0 : num('סמל ועדה');
     const row: VoteRow = { code: num('סמל ישוב'), nameHe: name(String(r['שם ישוב'])), committee, registered: num(o.registered ?? 'בזב'),
       votesCast: num('מצביעים'), invalid: num('פסולים'), valid: num('כשרים'), votes: letters.map(l => num(column(l))) };
-    checkRowArithmetic(check, `${path} row ${i} (${row.code})`, row);
-    for (const k of o.zeroColumns ?? []) check(num(k) === 0, `${path}: withdrawn ${k} has votes`);
+    checkRowArithmetic(check, () => `${path} row ${i} (${row.code})`, row);
+    for (const k of o.zeroColumns ?? []) if (num(k) !== 0) check(false, `${path}: withdrawn ${k} has votes`);
     return row;
   });
 }
@@ -49,17 +50,19 @@ export function readCsvRows(path: string, letters: readonly string[], check: Che
   const ix = (k: string) => { const i = head.indexOf(k); check(i >= 0, `${path}: missing column ${k}`); return i; };
   return lines.slice(1).map((l, n) => {
     const c = l.split(',');
-    const num = (k: string) => { const s = c[ix(k)]; const v = Number(s); check(s !== undefined && s.trim() !== '' && whole(v), `${path} row ${n}: invalid ${k}`); return v; };
+    const num = (k: string) => { const s = c[ix(k)]; const v = Number(s); if (s === undefined || s.trim() === '' || !whole(v)) check(false, `${path} row ${n}: invalid ${k}`); return v; };
     const row: VoteRow = { code: num('סמל ישוב'), nameHe: c[ix('שם ישוב')].trim(), committee: num('סמל ועדה'), registered: num('בזב'),
       votesCast: num('מצביעים'), invalid: num('פסולים'), valid: num('כשרים'), votes: letters.map(num) };
-    checkRowArithmetic(check, `${path} row ${n} (${row.code})`, row);
+    checkRowArithmetic(check, () => `${path} row ${n} (${row.code})`, row);
     return row;
   });
 }
 
-export function checkRowArithmetic(check: Check, label: string, r: Pick<VoteRow, 'votesCast' | 'invalid' | 'valid' | 'votes'>) {
-  check(sum(r.votes) === r.valid, `${label}: list votes ${sum(r.votes)} ≠ valid ${r.valid}`);
-  check(r.valid + r.invalid === r.votesCast, `${label}: valid + invalid ≠ cast`);
+export function checkRowArithmetic(check: Check, label: string | (() => string), r: Pick<VoteRow, 'votesCast' | 'invalid' | 'valid' | 'votes'>) {
+  const name = () => typeof label === 'string' ? label : label();
+  const listVotes = sum(r.votes);
+  if (listVotes !== r.valid) check(false, `${name()}: list votes ${listVotes} ≠ valid ${r.valid}`);
+  if (r.valid + r.invalid !== r.votesCast) check(false, `${name()}: valid + invalid ≠ cast`);
 }
 
 export interface RowTotals { registered: number; votesCast: number; invalid: number; valid: number; votes: number[] }
@@ -94,7 +97,7 @@ export function checkLocalitiesMatchPolling(check: Check, id: string, localities
     const b = byCode.get(r.code);
     check(b, `${id}: locality ${r.code} (${r.nameHe}) has no polling stations`);
     check(b.votesCast === r.votesCast && b.invalid === r.invalid && b.valid === r.valid, `${id}: locality ${r.code} (${r.nameHe}) totals differ from its polling stations`);
-    r.votes.forEach((v, i) => check(b.votes[i] === v, `${id}: locality ${r.code} (${r.nameHe}), list #${i + 1}: ${v} ≠ polling stations ${b.votes[i]}`));
+    r.votes.forEach((v, i) => { if (b.votes[i] !== v) check(false, `${id}: locality ${r.code} (${r.nameHe}), list #${i + 1}: ${v} ≠ polling stations ${b.votes[i]}`); });
   }
   check(byCode.size === localities.length, `${id}: polling stations cover localities without a locality row`);
 }
