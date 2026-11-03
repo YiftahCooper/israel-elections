@@ -1,0 +1,59 @@
+{
+  "id": "k8",
+  "status": "PROPOSED for integration by the parent; not yet read by any builder. Apply letterCorrections and agreements together to national.reviewed.json, then re-hash it in SOURCES.json.",
+  "reviewedOn": "2026-11-04",
+  "agreements": {
+    "sourceId": "k8-cec-memorandum-appendix",
+    "page": 10,
+    "complete": true,
+    "pairs": [
+      ["ב", "גד"],
+      ["חל טעם", "ער"],
+      ["סנ", "ענ"],
+      ["קנ", "ז"],
+      ["רא", "עא"],
+      ["לע", "רצ"]
+    ]
+  },
+  "agreementsEvidence": {
+    "document": "ועדת הבחירות המרכזית לכנסת השמינית — נספח לזכרון דברים על תוצאות הבחירות לכנסת השמינית (פרטי חישוב של חלוקת המנדטים), טופס 30 (תקנה 125)",
+    "section": "ז. התקשרויות בין רשימות מועמדים",
+    "printedPages": [10, 11],
+    "extractPdfPages": [3, 4],
+    "transcription": [
+      { "item": 1, "printed": "רשימות ב+גד התקשרו ביניהן", "votes": [130349, 60012], "combinedVotes": 190361, "combinedSeats": 15 },
+      { "item": 2, "printed": "רשימות חל טעם+ער התקשרו ביניהן", "votes": null, "combinedVotes": null, "combinedSeats": null, "note": "Blank in the form: ער (3,269 votes) is below the 15,669 threshold, so the connection has no effect (section 82(a))." },
+      { "item": 3, "printed": "רשימות סנ+ענ התקשרו ביניהן", "votes": null, "combinedVotes": null, "combinedSeats": null, "note": "Blank: both below threshold." },
+      { "item": 4, "printed": "רשימות קנ+ז התקשרו ביניהן", "votes": null, "combinedVotes": null, "combinedSeats": null, "note": "Blank: ז (13,332) below threshold." },
+      { "item": 5, "printed": "רשימות רא+עא התקשרו ביניהן", "votes": [22604, 16408], "combinedVotes": 39012, "combinedSeats": 3 },
+      { "item": 6, "printed": "רשימות לע+רצ התקשרו ביניהן", "votes": [56560, 35023], "combinedVotes": 91583, "combinedSeats": 7 }
+    ],
+    "pairReDivision": [
+      { "printedPage": 16, "pair": ["ב", "גד"], "quota": 12690, "final": { "ב": 10, "גד": 5 } },
+      { "printedPage": 17, "pair": ["לע", "רצ"], "quota": 13083, "final": { "לע": 4, "רצ": 3 } },
+      { "printedPage": 18, "pair": ["רא", "עא"], "quota": 13004, "final": { "רא": 2, "עא": 1 } }
+    ],
+    "finalSeatsPrintedPage": 22
+  },
+  "letterCorrections": [
+    { "from": "ל", "to": "לע", "nameHe": "המפלגה הליברלית העצמאית", "evidence": "YP 1979 p.608 rows 9 and seat table; CEC appendix pp.3, 11, 17, 22" },
+    { "from": "סז", "to": "סנ", "nameHe": "תנועה עממית", "evidence": "YP 1979 p.608 row 11; CEC appendix pp.3, 10, 22" },
+    { "from": "רם", "to": "רה", "nameHe": "רשימת תימנים בישראל", "previousNameHe": "רשימת מגינים בישראל", "evidence": "YP 1979 p.608 row 18; CEC appendix pp.3, 22" }
+  ],
+  "nameCorrections": [
+    { "letters": "כך", "from": "רשימה הלכה (מיסודו של הליגה להגנה יהודית בארה״ב)", "to": "רשימת הליגה (מיסודה של הליגה להגנה יהודית בא״י)", "evidence": "YP 1979 p.608 row 8; CEC appendix p.3" },
+    { "letters": "ענ", "from": "תנועת לאחדות", "to": "תנועה לאחוה", "evidence": "YP 1979 p.608 row 13; CEC appendix p.3" },
+    { "letters": "רא", "from": "קדמה ופיתוח", "to": "קידמה ופיתוח", "evidence": "YP 1979 p.608 rows 17 and seat table" },
+    { "letters": "עא", "from": "רשימה ערבית לבדווים וכפריים", "to": "רשימה ערבית לבדוים וכפרים", "evidence": "YP 1979 p.608 row 12 (historical spelling as printed)" }
+  ],
+  "metaKeysToRename": { "8-ל": "8-לע", "8-סז": "8-סנ", "8-רם": "8-רה" },
+  "reproduction": {
+    "engine": "src/engine/allocate.ts via researchDataset → scenarioFromDataset → toEngineInput, ISRAEL_1973",
+    "thresholdVotes": 15669,
+    "quota": 12424,
+    "seatsAllocated": 120,
+    "warnings": [],
+    "result": "EXACT: every one of the 21 gazetted seat counts reproduced with all six pairs (and identically with only the three effective pairs).",
+    "seats": { "אמת": 51, "חל טעם": 39, "ב": 10, "גד": 5, "לע": 4, "ו": 4, "רצ": 3, "רא": 2, "עא": 1, "קנ": 1 }
+  }
+}
