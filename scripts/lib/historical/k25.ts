@@ -15,7 +15,6 @@ import { checker, type Check } from '../build/validate.ts';
 
 const check: Check = checker('build-datasets');
 const norm = (s: string) => s.replace(/[`׳']/g, "'").replace(/[״"]/g, '"').replace(/[–—]/g, '-').replace(/\s+/g, ' ').trim();
-const trim = (s: string) => s.trim();
 
 const SOURCE_IDS = ['k25-national-html', 'k25-localities-datagov', 'k25-ballots-datagov', 'k25-candidates-gazette', 'k25-surplus-press'];
 
@@ -24,8 +23,8 @@ export async function buildK25() {
   const national = nationalResultsHtml('k25/nationalresults.html', 40, check, 'k25');
   const letters = national.lists.map(n => n.letters);
 
-  const locRows = readDatastoreRows(join(RAW, 'k25/localities.datagov.json'), letters, check, { name: trim });
-  const ballotRows = readDatastoreRows(join(RAW, 'k25/ballots.datagov.json'), letters, check, { name: trim });
+  const locRows = readDatastoreRows(join(RAW, 'k25/localities.datagov.json'), letters, check);
+  const ballotRows = readDatastoreRows(join(RAW, 'k25/ballots.datagov.json'), letters, check);
   checkRowsMatchNational(check, 'k25 localities', locRows, national, ['registered', 'votesCast', 'invalid', 'valid']);
   checkRowsMatchNational(check, 'k25 ballots', ballotRows, national, []);
   checkLocalitiesMatchPolling(check, 'k25', locRows, ballotRows);
