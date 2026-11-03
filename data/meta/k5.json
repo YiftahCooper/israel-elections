@@ -1,0 +1,338 @@
+{
+  "electionId": "k5",
+  "electionDate": "1961-08-15",
+  "era": "1949-1977",
+  "generated": "2026-11-04",
+  "lists": [],
+  "blocSchemes": [
+    {
+      "id": "first-government",
+      "nameHe": "הממשלה ה-10 (הממשלה הראשונה של הכנסת)",
+      "nameEn": "Government 10 (first government of the Knesset)",
+      "kind": "government",
+      "date": "1961-11-02",
+      "governmentNumber": 10,
+      "blocs": [
+        {
+          "id": "coalition",
+          "nameHe": "קואליציה",
+          "nameEn": "Coalition",
+          "color": "#3A6EA5",
+          "seats": 68,
+          "members": [
+            {
+              "letters": "א"
+            },
+            {
+              "letters": "ב"
+            },
+            {
+              "letters": "תו"
+            },
+            {
+              "letters": "ד"
+            },
+            {
+              "letters": "יא"
+            },
+            {
+              "letters": "רא"
+            }
+          ]
+        },
+        {
+          "id": "opposition",
+          "nameHe": "אופוזיציה",
+          "nameEn": "Opposition",
+          "color": "#8C8C8C",
+          "seats": 52,
+          "members": [
+            {
+              "letters": "ח"
+            },
+            {
+              "letters": "ל"
+            },
+            {
+              "letters": "מ"
+            },
+            {
+              "letters": "ק"
+            },
+            {
+              "letters": "ג"
+            }
+          ],
+          "mainOpposition": [
+            {
+              "letters": "ח"
+            },
+            {
+              "letters": "ל"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2010&$format=json",
+          "publisher": "Knesset OData (ParliamentInfo)",
+          "kind": "official",
+          "quote": "Government 10 sworn in 1961-11-02. Ministers at swearing-in by their Knesset faction (project tabulation of the OData records): {'מפלגה דתית לאומית': 3, 'מפלגת פועלי ארץ-ישראל': 9, 'NON-MK': 2, 'אחדות העבודה - פועלי ציון': 2}",
+          "accessed": "2026-11-04"
+        },
+        {
+          "url": "https://he.wikipedia.org/wiki/ממשלת_ישראל_העשירית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "קואליציה: מפא\"י, מפד\"ל, אחדות העבודה-פועלי ציון, פא\"י, שיתוף ואחווה, קידמה ופיתוח | אופוזיציה: חרות, המפלגה הליברלית, מפ\"ם, מק\"י, אגודת ישראל",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "notes": [
+        "Coalition = lists that joined or supported the government at its formation. Official records give ministers only; support-only lists (e.g. Mapai-affiliated Arab lists) rest on Hebrew Wikipedia."
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "labour-affiliated-arab-lists",
+      "nameHe": "מפא\"י/המערך והרשימות הערביות המסונפות אליה (רשימות לוויין)",
+      "nameEn": "Mapai/Alignment and its affiliated Arab (satellite) lists",
+      "kind": "parliamentary",
+      "date": "1961-08-15",
+      "blocs": [
+        {
+          "id": "labour-and-affiliates",
+          "nameHe": "מפא\"י ורשימות הלוויין",
+          "nameEn": "Mapai and affiliated Arab lists",
+          "color": "#AD0101",
+          "members": [
+            {
+              "letters": "א"
+            },
+            {
+              "letters": "יא"
+            },
+            {
+              "letters": "רא"
+            }
+          ],
+          "affiliatedLists": [
+            {
+              "letters": "יא"
+            },
+            {
+              "letters": "רא"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/שיתוף_ואחווה",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "הייתה מפלגת מיעוטים שהייתה קשורה למפא\"י ומפלגת העבודה, והיוותה ... מפלגת לוויין",
+          "accessed": "2026-11-04"
+        },
+        {
+          "url": "https://he.wikipedia.org/wiki/קידמה_ופיתוח",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "הייתה מפלגת מיעוטים ששימשה כמפלגת לוויין של מפא\"י והמערך",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "notes": [
+        "Widely described affiliation, not a joint list or formal bloc agreement; satellites ran separately and sat as separate factions."
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "colours": [
+    {
+      "letters": "א",
+      "colorKey": "mapai",
+      "color": "#AD0101",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_החמישית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #AD0101",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "ח",
+      "colorKey": "herut",
+      "color": "#0078BA",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_החמישית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #0078BA",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "ל",
+      "colorKey": "liberal-party",
+      "color": "#FECA0A",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded).",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_החמישית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #FECA0A",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium",
+      "note": "Same yellow Hebrew Wikipedia uses for the Progressive Party (a predecessor) and later the Independent Liberals."
+    },
+    {
+      "letters": "ב",
+      "colorKey": "national-religious",
+      "color": "#4D1552",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_החמישית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #4D1552",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium",
+      "note": "Results tables use #4D1552; the NRP article infobox uses #623963."
+    },
+    {
+      "letters": "מ",
+      "colorKey": "mapam",
+      "color": "#96342E",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_החמישית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #96342E",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "תו",
+      "colorKey": "ahdut-haavoda",
+      "color": "#CE2029",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_החמישית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #CE2029",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "ק",
+      "colorKey": "maki",
+      "color": "#FF0000",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_החמישית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #FF0000",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "ג",
+      "colorKey": "agudat-yisrael",
+      "color": "#C5AE6D",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_החמישית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #C5AE6D",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium",
+      "note": "Hebrew Wikipedia results tables use #C5AE6D; its 6th Knesset article legend uses #122D70."
+    },
+    {
+      "letters": "ד",
+      "colorKey": "poalei-agudat-yisrael",
+      "color": "#DF561D",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_החמישית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #DF561D",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "יא",
+      "colorKey": "satellite",
+      "color": "#AF2F2F",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded).",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_החמישית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #AF2F2F",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "low",
+      "note": "Hebrew Wikipedia gives the Mapai-affiliated Arab lists similar reds that change between elections; not distinctive."
+    },
+    {
+      "letters": "רא",
+      "colorKey": "satellite",
+      "color": "#AF0000",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded).",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_החמישית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #AF0000",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "low",
+      "note": "Hebrew Wikipedia gives the Mapai-affiliated Arab lists similar reds that change between elections; not distinctive."
+    }
+  ],
+  "notes": [
+    "No list in this election was an alliance of separate parties (Mizrachi, Hapoel HaMizrachi, Agudat Yisrael and Poalei Agudat Yisrael ran separately in 1951 and 1961; the 1961 Liberal Party and the NRP were already merged parties)."
+  ]
+}

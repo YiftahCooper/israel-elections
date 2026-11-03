@@ -1,0 +1,2059 @@
+{
+  "electionId": "k9",
+  "electionDate": "1977-05-17",
+  "era": "1949-1977",
+  "generated": "2026-11-04",
+  "lists": [
+    {
+      "letters": "מחל",
+      "nameHe": "הליכוד",
+      "parties": [
+        {
+          "id": "herut",
+          "nameHe": "תנועת החרות",
+          "nameEn": "Herut",
+          "candidateRanks": [
+            1,
+            4,
+            6,
+            8,
+            11,
+            13,
+            17,
+            19,
+            22,
+            24,
+            26,
+            27,
+            29,
+            32,
+            33,
+            35,
+            37,
+            39,
+            42
+          ],
+          "sources": [
+            {
+              "url": "https://he.wikipedia.org/wiki/הליכוד",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "הכנסת התשיעית: תנועת החרות: מנחם בגין, עזר ויצמן, יצחק שמיר, ... / המפלגה הליברלית: שמחה ארליך, משה נסים, ..., הלל זיידל, ... / לע\"ם: יגאל הורביץ, אליעזר שוסטק, משה שמיר, יגאל כהן, אמנון לין, אהוד אולמרט, זלמן שובל, יצחק פרץ",
+              "accessed": "2026-11-04",
+              "quoteNote": "Condensed transcription of a member list in the source; \"/\" separates its party headings, \"...\" marks omitted names and [ ] marks editorial notes."
+            },
+            {
+              "url": "https://www.idi.org.il/media/6978/כנסת-9-הליכוד.pdf",
+              "publisher": "Israel Democracy Institute (scan of the official candidates gazette, with handwritten party marks of unknown authorship)",
+              "kind": "secondary",
+              "quote": "Scan of YP 2319 (9.5.1977) p. 1328, list מחל; handwritten marks ח / ל / לע\"ם beside each candidate (ranks 1-43 inspected); rank 16 marked \"אחדות\"; ranks 21 and 24 (both \"כהן יגאל\") marked ח and לע\"ם respectively but joined by a swap arrow and a question mark",
+              "accessed": "2026-11-04"
+            }
+          ],
+          "confidence": "high",
+          "members": [
+            {
+              "rank": 1,
+              "nameHe": "בגין מנחם",
+              "knessetPersonId": 2179,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=692&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "באוגוסט 1948 הקים עם חברים נוספים ממפקדת אצ”ל לשעבר את תנועת החרות, והנהיג אותה (לימים גח”ל – גוש חרות–ליברלים) באופוזיציה עד שנת 1967.",
+                  "accessed": "2026-11-04"
+                },
+                {
+                  "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=FactionID%20eq%20115&$format=json",
+                  "publisher": "Knesset OData (ParliamentInfo)",
+                  "kind": "official",
+                  "quote": "PersonID 2179: member of faction \"תנועת החרות\" (FactionID 115), Knesset 1, 1949-02-14 to 1951-08-20",
+                  "accessed": "2026-11-04"
+                },
+                {
+                  "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=FactionID%20eq%20153&$format=json",
+                  "publisher": "Knesset OData (ParliamentInfo)",
+                  "kind": "official",
+                  "quote": "PersonID 2179: member of faction \"תנועת החרות\" (FactionID 153), Knesset 2, 1951-08-20 to 1955-08-15",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 4,
+              "nameHe": "ויצמן עזר",
+              "knessetPersonId": 2320,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=690&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בשנים 1971–1972 כיהן כיושב-ראש הנהלת תנועת החרות, ובדצמבר 1972 התפטר מתפקידו.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 6,
+              "nameHe": "שמיר יצחק",
+              "knessetPersonId": 2652,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=175&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בשנת 1970 הצטרף לתנועת החרות ונבחר להנהלתה. ניהל את מחלקת העלייה של התנועה, ומאוחר יותר את מחלקת הארגון. בשנת 1975 נבחר ליושב-ראש הנהלת התנועה.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 8,
+              "nameHe": "ארנס משה",
+              "knessetPersonId": 463,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=278&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בשנים 1977–1978 שימש בתפקיד יושב-ראש תנועת ”חרות”.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 11,
+              "nameHe": "לוי דוד",
+              "knessetPersonId": 536,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=72&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בשנת 1965 נבחר לחבר המועצה המוניציפלית של בית שאן ולסגן ראש העיר מטעם תנועת חירות.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 13,
+              "nameHe": "ארידור יורם",
+              "knessetPersonId": 2168,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=274&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בשנת 1961 הצטרף לתנועת חרות.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 17,
+              "nameHe": "כהן גאולה",
+              "knessetPersonId": 2392,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=444&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בשנת 1972 הצטרפה לתנועת החירות.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 19,
+              "nameHe": "קורפו חיים",
+              "knessetPersonId": 2581,
+              "knessetBioMentionsParty": false,
+              "evidence": [],
+              "confidence": "medium"
+            },
+            {
+              "rank": 22,
+              "nameHe": "לבני איתן",
+              "knessetPersonId": 2419,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=471&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בשנת 1960 נבחר לחבר הנהלת תנועת החירות.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 24,
+              "nameHe": "כהן יגאל",
+              "knessetPersonId": 2399,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=451&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "היה חבר בתנועת הנוער ”בני האצ”ל”, שהייתה מסונפת לתנועת החירות והתמזגה עם תנועת בית”ר.",
+                  "accessed": "2026-11-04"
+                },
+                {
+                  "url": "https://he.wikipedia.org/wiki/יגאל_כהן-אורגד",
+                  "publisher": "Hebrew Wikipedia (citing Maariv, 31.3.1977 and 1.4.1977)",
+                  "kind": "secondary",
+                  "quote": "היה בין הפנים החדשות שהשתבצו במקום גבוה ברשימה של תנועת החרות, והוא שובץ במקום ה-24 ברשימת הליכוד. עוד לפני הבחירות, כדי למנוע בלבול בינו ובין חבר הכנסת יגאל כהן, הוסיף לשם",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "medium",
+              "note": "Two candidates are printed \"כהן יגאל\" (ranks 21, 24). Yigal Cohen-Orgad (Herut, PersonID 2399) is placed at 24 by Hebrew Wikipedia citing Maariv 1977; the annotated scan agrees only after its swap arrow."
+            },
+            {
+              "rank": 26,
+              "nameHe": "ציפורי מרדכי",
+              "knessetPersonId": 2573,
+              "knessetBioMentionsParty": false,
+              "evidence": [],
+              "confidence": "medium"
+            },
+            {
+              "rank": 27,
+              "nameHe": "שילנסקי דב",
+              "knessetPersonId": 2642,
+              "knessetBioMentionsParty": false,
+              "evidence": [],
+              "confidence": "medium"
+            },
+            {
+              "rank": 29,
+              "nameHe": "רבינוביץ (רום) יוסף",
+              "knessetPersonId": 2602,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=617&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בשנת 1976 הצטרף לתנועת חרות.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 32,
+              "nameHe": "קצב משה",
+              "knessetPersonId": 862,
+              "knessetBioMentionsParty": false,
+              "evidence": [],
+              "confidence": "medium"
+            },
+            {
+              "rank": 33,
+              "nameHe": "מילוא רוני",
+              "knessetPersonId": 545,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=155&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "יו”ר אגף ההסברה בתנועת החרות",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 35,
+              "nameHe": "דייקסל מיכאל",
+              "knessetPersonId": 2285,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=368&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "משנת 1966: חבר מרכז תנועת החירות והנהלתה.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 37,
+              "nameHe": "כהן מאיר",
+              "knessetPersonId": 2398,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=450&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "היה יו”ר סניף תנועת החירות בחיפה.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 39,
+              "nameHe": "נסראלדין אמל",
+              "knessetPersonId": 2490,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=526&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בשנת 1971 הצטרף לתנועת החרות",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 42,
+              "nameHe": "קאופמן חיים",
+              "knessetPersonId": 2577,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=166&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "יו”ר דור ההמשך של תנועת חרות",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "liberal-party",
+          "nameHe": "המפלגה הליברלית",
+          "nameEn": "Liberal Party",
+          "candidateRanks": [
+            2,
+            5,
+            7,
+            9,
+            12,
+            14,
+            18,
+            20,
+            23,
+            25,
+            30,
+            34,
+            38,
+            41,
+            43
+          ],
+          "sources": [
+            {
+              "url": "https://he.wikipedia.org/wiki/הליכוד",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "הכנסת התשיעית: תנועת החרות: מנחם בגין, עזר ויצמן, יצחק שמיר, ... / המפלגה הליברלית: שמחה ארליך, משה נסים, ..., הלל זיידל, ... / לע\"ם: יגאל הורביץ, אליעזר שוסטק, משה שמיר, יגאל כהן, אמנון לין, אהוד אולמרט, זלמן שובל, יצחק פרץ",
+              "accessed": "2026-11-04",
+              "quoteNote": "Condensed transcription of a member list in the source; \"/\" separates its party headings, \"...\" marks omitted names and [ ] marks editorial notes."
+            },
+            {
+              "url": "https://www.idi.org.il/media/6978/כנסת-9-הליכוד.pdf",
+              "publisher": "Israel Democracy Institute (scan of the official candidates gazette, with handwritten party marks of unknown authorship)",
+              "kind": "secondary",
+              "quote": "Scan of YP 2319 (9.5.1977) p. 1328, list מחל; handwritten marks ח / ל / לע\"ם beside each candidate (ranks 1-43 inspected); rank 16 marked \"אחדות\"; ranks 21 and 24 (both \"כהן יגאל\") marked ח and לע\"ם respectively but joined by a swap arrow and a question mark",
+              "accessed": "2026-11-04"
+            }
+          ],
+          "confidence": "high",
+          "members": [
+            {
+              "rank": 2,
+              "nameHe": "ארליך שמחה",
+              "knessetPersonId": 2169,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=275&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בשנים 1955–1961 היה חבר מועצת עיריית תל-אביב מטעם הציונים הכלליים.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 5,
+              "nameHe": "נסים משה",
+              "knessetPersonId": 2489,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=159&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "ציר לקונגרסים הציוניים מטעם האיגוד העולמי של הציונים הכלליים",
+                  "accessed": "2026-11-04"
+                },
+                {
+                  "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=FactionID%20eq%20241&$format=json",
+                  "publisher": "Knesset OData (ParliamentInfo)",
+                  "kind": "official",
+                  "quote": "PersonID 2489: member of faction \"מפלגה ליברלית ישראלית\" (FactionID 241), Knesset 4, 1961-05-08 to 1961-09-04",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 7,
+              "nameHe": "פת גדעון",
+              "knessetPersonId": 2560,
+              "knessetBioMentionsParty": false,
+              "evidence": [],
+              "confidence": "medium"
+            },
+            {
+              "rank": 9,
+              "nameHe": "פלומין יחזקאל",
+              "knessetPersonId": 2543,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=569&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בשנת 1953 הצטרף למפלגה הליברלית.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 12,
+              "nameHe": "שריר אברהם",
+              "knessetPersonId": 2667,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=670&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "המזכיר הכללי של המפלגה הליברלית, 1974–1977",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 14,
+              "nameHe": "גרופר פסח",
+              "knessetPersonId": 2262,
+              "knessetBioMentionsParty": false,
+              "evidence": [],
+              "confidence": "medium"
+            },
+            {
+              "rank": 18,
+              "nameHe": "מודעי יצחק",
+              "knessetPersonId": 2451,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=493&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "הצטרף למפלגה הליברלית (1961)",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 20,
+              "nameHe": "כץ אברהם",
+              "knessetPersonId": 2409,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=461&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "משנת 1955 היה פעיל במפלגת הציונים הכלליים וחבר מוסדותיה העליונים.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 23,
+              "nameHe": "רכטמן שמואל",
+              "knessetPersonId": 2611,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=626&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בשנת 1949 הצטרף למפלגת הציונים הכלליים.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 25,
+              "nameHe": "ברמן יצחק",
+              "knessetPersonId": 2222,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=317&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בשנת 1951 הצטרף למפלגת הציונים הכלליים.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 30,
+              "nameHe": "בדיאן גוסטב",
+              "knessetPersonId": 2180,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=283&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "היה חבר הנהגת תנועת הציונים הכלליים ”דור חדש”.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 34,
+              "nameHe": "דורון שרה",
+              "knessetPersonId": 2273,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=359&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "יושבת-ראש ארגון הנשים הליברליות.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 38,
+              "nameHe": "מרון משה",
+              "knessetPersonId": 2469,
+              "knessetBioMentionsParty": false,
+              "evidence": [],
+              "confidence": "medium"
+            },
+            {
+              "rank": 41,
+              "nameHe": "תמיר יוסף",
+              "knessetPersonId": 2675,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=678&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "היה מזכ”ל הסתדרות הציונים הכלליים, שהיו אחר כך למפלגה הליברלית.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 43,
+              "nameHe": "סבידור מנחם",
+              "knessetPersonId": 2497,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=533&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "משנת 1953:  חבר מפלגת הציונים הכלליים והמפלגה הליברלית.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "laam",
+          "nameHe": "לע\"ם",
+          "nameEn": "La'am",
+          "candidateRanks": [
+            3,
+            10,
+            15,
+            21,
+            28,
+            31,
+            36,
+            40
+          ],
+          "sources": [
+            {
+              "url": "https://he.wikipedia.org/wiki/הליכוד",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "הכנסת התשיעית: תנועת החרות: מנחם בגין, עזר ויצמן, יצחק שמיר, ... / המפלגה הליברלית: שמחה ארליך, משה נסים, ..., הלל זיידל, ... / לע\"ם: יגאל הורביץ, אליעזר שוסטק, משה שמיר, יגאל כהן, אמנון לין, אהוד אולמרט, זלמן שובל, יצחק פרץ",
+              "accessed": "2026-11-04",
+              "quoteNote": "Condensed transcription of a member list in the source; \"/\" separates its party headings, \"...\" marks omitted names and [ ] marks editorial notes."
+            },
+            {
+              "url": "https://he.wikipedia.org/wiki/הליכוד",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "ב-1976 התאחדו המפלגות המרכז העצמאי, הרשימה הממלכתית, והתנועה למען ארץ ישראל השלמה, והקימו את מפלגת לע\"ם, שנשארה חברה בסיעת הליכוד",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://www.idi.org.il/media/6978/כנסת-9-הליכוד.pdf",
+              "publisher": "Israel Democracy Institute (scan of the official candidates gazette, with handwritten party marks of unknown authorship)",
+              "kind": "secondary",
+              "quote": "Scan of YP 2319 (9.5.1977) p. 1328, list מחל; handwritten marks ח / ל / לע\"ם beside each candidate (ranks 1-43 inspected); rank 16 marked \"אחדות\"; ranks 21 and 24 (both \"כהן יגאל\") marked ח and לע\"ם respectively but joined by a swap arrow and a question mark",
+              "accessed": "2026-11-04"
+            }
+          ],
+          "confidence": "high",
+          "members": [
+            {
+              "rank": 3,
+              "nameHe": "הורביץ יגאל",
+              "knessetPersonId": 2294,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=375&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "• בשנים 1938–1941 שימש חבר מזכירות הנוער העובד והלומד.\r\n• בשנת 1940 התנדב לבריגדה היהודית ושירת בה במלחמת העולם השנייה.\r\n• לאחר המלחמה התיישב בכפר-ורבורג.\r\n• השתתף בייסוד תנועת המחתרת ”עם לוחם”.\r\n• בשנת 1946 נמנה עם מקימי מפלגת ”תנועת העם”.\r\n• לאחר מלחמת העצמאות עמד בראש תנועת המושבים בדרום, ועד שנת",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 10,
+              "nameHe": "שוסטק אליעזר",
+              "knessetPersonId": 2627,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=638&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בשנת 1967 פרש מחרות ונמנה עם מקימי המרכז החופשי, מפלגה שנמנתה עם המפלגות שהקימו את הליכוד בשנת 1973.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 15,
+              "nameHe": "שמיר משה",
+              "knessetPersonId": 2653,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=656&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "נמנה עם מייסדי התנועה למען ארץ ישראל השלמה.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 21,
+              "nameHe": "כהן יגאל",
+              "knessetPersonId": 2394,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=446&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בשנת 1968 הצטרף לרשימה הממלכתית",
+                  "accessed": "2026-11-04"
+                },
+                {
+                  "url": "https://he.wikipedia.org/wiki/יגאל_כהן-אורגד",
+                  "publisher": "Hebrew Wikipedia (citing Maariv, 31.3.1977 and 1.4.1977)",
+                  "kind": "secondary",
+                  "quote": "היה בין הפנים החדשות שהשתבצו במקום גבוה ברשימה של תנועת החרות, והוא שובץ במקום ה-24 ברשימת הליכוד. עוד לפני הבחירות, כדי למנוע בלבול בינו ובין חבר הכנסת יגאל כהן, הוסיף לשם",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "medium",
+              "note": "Yigal Cohen (La'am, PersonID 2394) by elimination against the rank-24 statement; see rank 24."
+            },
+            {
+              "rank": 28,
+              "nameHe": "לין אמנון",
+              "knessetPersonId": 2437,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=485&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "היה חבר הרשימה הממלכתית לע”ם.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 31,
+              "nameHe": "אולמרט אהוד",
+              "knessetPersonId": 1064,
+              "knessetBioMentionsParty": false,
+              "evidence": [],
+              "confidence": "medium"
+            },
+            {
+              "rank": 36,
+              "nameHe": "שובל זלמן",
+              "knessetPersonId": 2625,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=637&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "נמנה עם ראשי הרשימה הממלכתית (1969).",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 40,
+              "nameHe": "פרץ יצחק",
+              "knessetPersonId": 2558,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=582&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "היה מראשי הרשימה הממלכתית (1968) וממקימי תנועת לע”ם, שהצטרפה לליכוד (1973).",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "ahdut-seidel-1977",
+          "nameHe": "סיעת \"אחדות\" (הלל זיידל)",
+          "nameEn": "Ahdut faction (Hillel Seidel)",
+          "candidateRanks": [
+            16
+          ],
+          "sources": [
+            {
+              "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=408&languageKey=he",
+              "publisher": "Knesset website, member biography (public activity)",
+              "kind": "official",
+              "quote": "פרש מהמפלגה הליברלית העצמאית והקים את סיעת אחדות, שהצטרפה לליכוד, פברואר 1977",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://www.idi.org.il/media/6978/כנסת-9-הליכוד.pdf",
+              "publisher": "Israel Democracy Institute (scan of the official candidates gazette, with handwritten party marks of unknown authorship)",
+              "kind": "secondary",
+              "quote": "Scan of YP 2319 (9.5.1977) p. 1328, list מחל; handwritten marks ח / ל / לע\"ם beside each candidate (ranks 1-43 inspected); rank 16 marked \"אחדות\"; ranks 21 and 24 (both \"כהן יגאל\") marked ח and לע\"ם respectively but joined by a swap arrow and a question mark",
+              "accessed": "2026-11-04"
+            }
+          ],
+          "confidence": "medium",
+          "members": [
+            {
+              "rank": 16,
+              "nameHe": "זיידל הלל",
+              "knessetPersonId": 2337,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=408&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "פרש מהמפלגה הליברלית העצמאית והקים את סיעת אחדות, שהצטרפה לליכוד, פברואר 1977",
+                  "accessed": "2026-11-04"
+                },
+                {
+                  "url": "https://www.idi.org.il/media/6978/כנסת-9-הליכוד.pdf",
+                  "publisher": "Israel Democracy Institute (scan of the official candidates gazette, with handwritten party marks of unknown authorship)",
+                  "kind": "secondary",
+                  "quote": "Scan of YP 2319 (9.5.1977) p. 1328, list מחל; handwritten marks ח / ל / לע\"ם beside each candidate (ranks 1-43 inspected); rank 16 marked \"אחדות\"; ranks 21 and 24 (both \"כהן יגאל\") marked ח and לע\"ם respectively but joined by a swap arrow and a question mark",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "medium",
+              "note": "Conflict: Hebrew Wikipedia lists Hillel Seidel under the Liberal Party; his Knesset biography says he founded the Ahdut faction that joined the Likud in February 1977, and the annotated scan appears to mark him \"אחדות\"."
+            }
+          ]
+        }
+      ],
+      "unassignedRanks": [],
+      "notes": [
+        "La'am (1976) merged the Independent Centre, State List and Movement for Greater Israel; it is treated as one party here."
+      ]
+    },
+    {
+      "letters": "אמת",
+      "nameHe": "המערך – מפלגת העבודה הישראלית, מפלגת הפועלים המאוחדת ובלתי מפלגתיים",
+      "parties": [
+        {
+          "id": "israeli-labor-party",
+          "nameHe": "מפלגת העבודה הישראלית",
+          "nameEn": "Israeli Labor Party",
+          "candidateRanks": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8,
+            9,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "sources": [
+            {
+              "url": "https://he.wikipedia.org/wiki/המערך",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "הכנסת התשיעית (1977): מפ\"ם: מאיר תלמי, נפתלי פדר, חייקה גרוסמן, משה עמאר, [אמרי רון – מחליף] / העבודה: [שאר הנבחרים]",
+              "accessed": "2026-11-04",
+              "quoteNote": "Condensed transcription of a member list in the source; \"/\" separates its party headings, \"...\" marks omitted names and [ ] marks editorial notes."
+            }
+          ],
+          "confidence": "high",
+          "members": [
+            {
+              "rank": 1,
+              "nameHe": "פרס שמעון",
+              "knessetPersonId": 456,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=104&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בשנת 1946 בחרה סיעת מפא”י בו ובמשה דיין לצירים במשלחת לקונגרס הציוני בבאזל.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 2,
+              "nameHe": "אלון יגאל",
+              "knessetPersonId": 2142,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=682&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "מראשי אחדות העבודה ומפ”ם",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 3,
+              "nameHe": "אבן אבא",
+              "knessetPersonId": 2122,
+              "knessetBioMentionsParty": false,
+              "evidence": [],
+              "confidence": "medium"
+            },
+            {
+              "rank": 4,
+              "nameHe": "הלל שלמה",
+              "knessetPersonId": 2299,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=380&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בתקופת כהונתו בכנסת פעל להגדלת ייצוגם של יוצאי עדות המזרח ברשימת מפלגת העבודה.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 6,
+              "nameHe": "צדוק חיים יוסף",
+              "knessetPersonId": 2565,
+              "knessetBioMentionsParty": false,
+              "evidence": [],
+              "confidence": "medium"
+            },
+            {
+              "rank": 7,
+              "nameHe": "דיין משה",
+              "knessetPersonId": 2277,
+              "knessetBioMentionsParty": false,
+              "evidence": [],
+              "confidence": "medium"
+            },
+            {
+              "rank": 8,
+              "nameHe": "ארבלי-אלמוזלינו שושנה",
+              "knessetPersonId": 2162,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=269&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בתחילת 1948 הצטרפה לאחדות העבודה.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 9,
+              "nameHe": "נבון יצחק",
+              "knessetPersonId": 2476,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=687&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "חבר מפא”י",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 11,
+              "nameHe": "בר-לב חיים",
+              "knessetPersonId": 2216,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=311&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בשנים 1978–1984  שימש מזכ”ל מפלגת העבודה.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 12,
+              "nameHe": "יעקבי גד",
+              "knessetPersonId": 2380,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=193&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בשנת 1965 היה ממייסדי רפ”י.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 13,
+              "nameHe": "ידלין אהרן",
+              "knessetPersonId": 2370,
+              "knessetBioMentionsParty": false,
+              "evidence": [],
+              "confidence": "medium"
+            },
+            {
+              "rank": 14,
+              "nameHe": "רבינוביץ יהושע",
+              "knessetPersonId": 2596,
+              "knessetBioMentionsParty": false,
+              "evidence": [],
+              "confidence": "medium"
+            },
+            {
+              "rank": 15,
+              "nameHe": "משל ירוחם",
+              "knessetPersonId": 2474,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=514&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "חבר מזכירות מפלגת העבודה.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 16,
+              "nameHe": "אשל תמר (שדה)",
+              "knessetPersonId": 2174,
+              "knessetBioMentionsParty": false,
+              "evidence": [],
+              "confidence": "medium"
+            },
+            {
+              "rank": 17,
+              "nameHe": "הדר עמוס",
+              "knessetPersonId": 2293,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=374&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "חבר רפ”י (1964–1968).",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 18,
+              "nameHe": "רוזוליו דניאל",
+              "knessetPersonId": 2599,
+              "knessetBioMentionsParty": false,
+              "evidence": [],
+              "confidence": "medium"
+            },
+            {
+              "rank": 20,
+              "nameHe": "רבין יצחק",
+              "knessetPersonId": 2595,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=168&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בשנים 1974–1977 כיהן כיושב-ראש מפלגת העבודה.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 21,
+              "nameHe": "הכהן מנחם",
+              "knessetPersonId": 2296,
+              "knessetBioMentionsParty": false,
+              "evidence": [],
+              "confidence": "medium"
+            },
+            {
+              "rank": 22,
+              "nameHe": "מויאל אליהו",
+              "knessetPersonId": 2453,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=496&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בשנת 1946, לאחר עלייתו ארצה, הצטרף למפא”י.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 23,
+              "nameHe": "שחל משה",
+              "knessetPersonId": 2633,
+              "knessetBioMentionsParty": false,
+              "evidence": [],
+              "confidence": "medium"
+            },
+            {
+              "rank": 24,
+              "nameHe": "שפייזר אליהו",
+              "knessetPersonId": 2659,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=661&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "חבר מפא”י,  1965",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 25,
+              "nameHe": "ברעם עוזי",
+              "knessetPersonId": 861,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=27&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בשנים 1964–1965 שימש יושב-ראש איחוד הסטודנטים הארצי מטעם מפא”י.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 27,
+              "nameHe": "אמיר יעקב-ז׳אק",
+              "knessetPersonId": 2153,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=262&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "חבר מפלגת אחדות העבודה משנת 1952 .",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 28,
+              "nameHe": "זכאי יחזקאל",
+              "knessetPersonId": 2341,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=411&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "מזכיר מחוז המושבים במפלגת העבודה, 1977",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 29,
+              "nameHe": "נמיר אורה",
+              "knessetPersonId": 2487,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=158&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בכנסת השנייה הייתה מזכירת סיעת מפא”י ומזכירת הנהלת הקואליציה.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 30,
+              "nameHe": "שריד יוסף (יוסי)",
+              "knessetPersonId": 512,
+              "knessetBioMentionsParty": false,
+              "evidence": [],
+              "confidence": "medium"
+            },
+            {
+              "rank": 31,
+              "nameHe": "אמוראי עדי(אל)",
+              "knessetPersonId": 2152,
+              "knessetBioMentionsParty": false,
+              "evidence": [],
+              "confidence": "medium"
+            },
+            {
+              "rank": 32,
+              "nameHe": "חריש מיכאל",
+              "knessetPersonId": 2357,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=149&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "יו”ר החוג ”לשילוב” במפלגת העבודה",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "mapam",
+          "nameHe": "מפ\"ם – מפלגת הפועלים המאוחדת",
+          "nameEn": "Mapam",
+          "candidateRanks": [
+            5,
+            10,
+            19,
+            26
+          ],
+          "sources": [
+            {
+              "url": "https://he.wikipedia.org/wiki/המערך",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "הכנסת התשיעית (1977): מפ\"ם: מאיר תלמי, נפתלי פדר, חייקה גרוסמן, משה עמאר, [אמרי רון – מחליף] / העבודה: [שאר הנבחרים]",
+              "accessed": "2026-11-04",
+              "quoteNote": "Condensed transcription of a member list in the source; \"/\" separates its party headings, \"...\" marks omitted names and [ ] marks editorial notes."
+            }
+          ],
+          "confidence": "high",
+          "members": [
+            {
+              "rank": 5,
+              "nameHe": "תלמי מאיר",
+              "knessetPersonId": 2674,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=677&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "חבר ההנהגה הראשית של \"השומר הצעיר\" בפולין",
+                  "accessed": "2026-11-04"
+                },
+                {
+                  "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=FactionID%20eq%20999&$format=json",
+                  "publisher": "Knesset OData (ParliamentInfo)",
+                  "kind": "official",
+                  "quote": "PersonID 2674: member of faction \"מפלגת פועלים מאוחדת\" (FactionID 999), Knesset 8, 1977-04-10 to 1977-04-12",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 10,
+              "nameHe": "פדר נפתלי",
+              "knessetPersonId": 2530,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=559&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "חבר ההנהגה הראשית של ”השומר הצעיר” (1946–1949)",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 19,
+              "nameHe": "גרוסמן-אורקין חייקה",
+              "knessetPersonId": 2261,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=347&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בגיל צעיר הצטרפה לתנועת ”השומר הצעיר”.",
+                  "accessed": "2026-11-04"
+                },
+                {
+                  "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=FactionID%20eq%20999&$format=json",
+                  "publisher": "Knesset OData (ParliamentInfo)",
+                  "kind": "official",
+                  "quote": "PersonID 2261: member of faction \"מפלגת פועלים מאוחדת\" (FactionID 999), Knesset 8, 1977-04-10 to 1977-04-12",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 26,
+              "nameHe": "עמאר משה",
+              "knessetPersonId": 2525,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=555&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "היה חבר תנועת הנוער ”השומר הצעיר”.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            }
+          ]
+        }
+      ],
+      "unassignedRanks": []
+    },
+    {
+      "letters": "ו",
+      "nameHe": "חזית דמוקרטית לשלום ולשוויון – המפלגה הקומוניסטית הישראלית (רק״ח); פנתרים שחורים וחוגי ציבור יהודים וערבים",
+      "parties": [
+        {
+          "id": "rakah",
+          "nameHe": "רק\"ח – הרשימה הקומוניסטית החדשה",
+          "nameEn": "Rakah",
+          "candidateRanks": [
+            1,
+            2,
+            4
+          ],
+          "sources": [
+            {
+              "url": "https://he.wikipedia.org/wiki/החזית_הדמוקרטית_לשלום_ולשוויון",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "הארגונים והקבוצות המייסדות שחברו לחזית כללו: המפלגה הקומוניסטית הישראלית (רק\"ח); הפנתרים השחורים מסיעתו של צ'רלי ביטון; נבחרי ציבור מהרשויות המקומיות ביישובים הערביים; שמאל סוציאליסטי ישראלי (שס\"י) ...",
+              "accessed": "2026-11-04"
+            }
+          ],
+          "confidence": "high",
+          "members": [
+            {
+              "rank": 1,
+              "nameHe": "וילנר מאיר",
+              "knessetPersonId": 2319,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=395&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "ארגן חוגים קומוניסטיים לסטודנטים באוניברסיטה העברית.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 2,
+              "nameHe": "טובי תופיק",
+              "knessetPersonId": 2363,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=430&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בשנת 1940 הצטרף למפלגה הקומוניסטית הפלסטינית.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 4,
+              "nameHe": "זיאד תופיק",
+              "knessetPersonId": 2334,
+              "knessetBioMentionsParty": false,
+              "evidence": [
+                {
+                  "url": "https://he.wikipedia.org/wiki/תאופיק_זיאד",
+                  "publisher": "Hebrew Wikipedia",
+                  "kind": "secondary",
+                  "quote": "מפלגה = המפלגה הקומוניסטית הישראלית, החזית הדמוקרטית לשלום ולשוויון | סיעה = רק\"ח, חד\"ש",
+                  "accessed": "2026-11-04"
+                },
+                {
+                  "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=FactionID%20eq%20389&$format=json",
+                  "publisher": "Knesset OData (ParliamentInfo)",
+                  "kind": "official",
+                  "quote": "PersonID 2334: member of faction \"הרשימה הקומוניסטית החדשה\" (FactionID 389), Knesset 8, 1974-01-21 to 1977-03-15",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "medium"
+            }
+          ]
+        },
+        {
+          "id": "black-panthers",
+          "nameHe": "הפנתרים השחורים",
+          "nameEn": "Black Panthers",
+          "candidateRanks": [
+            3
+          ],
+          "sources": [
+            {
+              "url": "https://he.wikipedia.org/wiki/החזית_הדמוקרטית_לשלום_ולשוויון",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "הארגונים והקבוצות המייסדות שחברו לחזית כללו: המפלגה הקומוניסטית הישראלית (רק\"ח); הפנתרים השחורים מסיעתו של צ'רלי ביטון; נבחרי ציבור מהרשויות המקומיות ביישובים הערביים; שמאל סוציאליסטי ישראלי (שס\"י) ...",
+              "accessed": "2026-11-04"
+            }
+          ],
+          "confidence": "high",
+          "members": [
+            {
+              "rank": 3,
+              "nameHe": "ביטון שלום צ׳רלי",
+              "knessetPersonId": 2191,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=292&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "נמנה עם מייסדי תנועת ”הפנתרים השחורים” בישראל ועם ראשיה (1971).",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            }
+          ]
+        }
+      ],
+      "unassignedRanks": [
+        5
+      ],
+      "notes": [
+        "Rank 5 Hanna Mwais: no source states a constituent party (Hebrew Wikipedia gives only Hadash); Hadash also included Arab local office-holders and other groups."
+      ]
+    },
+    {
+      "letters": "ש",
+      "nameHe": "מחנה שלי",
+      "parties": [
+        {
+          "id": "independent-socialists",
+          "nameHe": "הסיעה הסוציאליסטית העצמאית (הסיעה הסוציאל-דמוקרטית)",
+          "nameEn": "Independent Socialist (Social-Democratic) Faction",
+          "candidateRanks": [
+            1
+          ],
+          "sources": [
+            {
+              "url": "https://he.wikipedia.org/wiki/מחנה_של\"י",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "המפלגה הוקמה לקראת הבחירות לכנסת התשיעית (1977) כאיחוד של תנועות שמאל שונות – \"מוקד\" של מאיר פעיל, \"מר\"י\" של אורי אבנרי, \"הסיעה הסוציאל-דמוקרטית\" (אריה לובה אליאב), כמה חברים בולטים מ\"הפנתרים השחורים\" בהובלת סעדיה מרציאנו ...",
+              "accessed": "2026-11-04"
+            }
+          ],
+          "confidence": "high",
+          "members": [
+            {
+              "rank": 1,
+              "nameHe": "אליאב אריה",
+              "knessetPersonId": 2146,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=255&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בינואר 1976 עזב את סיעת יעד והקים את הסיעה הסוציאל-דמוקרטית שמאוחר יותר שינתה את שמה ל”סיעה סוציאליסטית עצמאית”.",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "moked",
+          "nameHe": "מוקד",
+          "nameEn": "Moked",
+          "candidateRanks": [
+            2
+          ],
+          "sources": [
+            {
+              "url": "https://he.wikipedia.org/wiki/מחנה_של\"י",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "המפלגה הוקמה לקראת הבחירות לכנסת התשיעית (1977) כאיחוד של תנועות שמאל שונות – \"מוקד\" של מאיר פעיל, \"מר\"י\" של אורי אבנרי, \"הסיעה הסוציאל-דמוקרטית\" (אריה לובה אליאב), כמה חברים בולטים מ\"הפנתרים השחורים\" בהובלת סעדיה מרציאנו ...",
+              "accessed": "2026-11-04"
+            }
+          ],
+          "confidence": "high",
+          "members": [
+            {
+              "rank": 2,
+              "nameHe": "פעיל מאיר",
+              "knessetPersonId": 2547,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=572&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "ממייסדי תנועת תכלת-אדום (1973).",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "meri",
+          "nameHe": "מר\"י – מחנה רדיקלי ישראלי",
+          "nameEn": "Meri (Israeli Radical Camp)",
+          "candidateRanks": [],
+          "sources": [
+            {
+              "url": "https://he.wikipedia.org/wiki/מחנה_של\"י",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "המפלגה הוקמה לקראת הבחירות לכנסת התשיעית (1977) כאיחוד של תנועות שמאל שונות – \"מוקד\" של מאיר פעיל, \"מר\"י\" של אורי אבנרי, \"הסיעה הסוציאל-דמוקרטית\" (אריה לובה אליאב), כמה חברים בולטים מ\"הפנתרים השחורים\" בהובלת סעדיה מרציאנו ...",
+              "accessed": "2026-11-04"
+            }
+          ],
+          "confidence": "high"
+        },
+        {
+          "id": "black-panthers",
+          "nameHe": "הפנתרים השחורים",
+          "nameEn": "Black Panthers",
+          "candidateRanks": [],
+          "sources": [
+            {
+              "url": "https://he.wikipedia.org/wiki/מחנה_של\"י",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "המפלגה הוקמה לקראת הבחירות לכנסת התשיעית (1977) כאיחוד של תנועות שמאל שונות – \"מוקד\" של מאיר פעיל, \"מר\"י\" של אורי אבנרי, \"הסיעה הסוציאל-דמוקרטית\" (אריה לובה אליאב), כמה חברים בולטים מ\"הפנתרים השחורים\" בהובלת סעדיה מרציאנו ...",
+              "accessed": "2026-11-04"
+            }
+          ],
+          "confidence": "medium",
+          "note": "Only a group of Black Panthers activists (Saadia Marciano) joined Sheli."
+        }
+      ],
+      "unassignedRanks": []
+    }
+  ],
+  "blocSchemes": [
+    {
+      "id": "first-government",
+      "nameHe": "הממשלה ה-18 (הממשלה הראשונה של הכנסת)",
+      "nameEn": "Government 18 (first government of the Knesset)",
+      "kind": "government",
+      "date": "1977-06-20",
+      "governmentNumber": 18,
+      "blocs": [
+        {
+          "id": "coalition",
+          "nameHe": "קואליציה",
+          "nameEn": "Coalition",
+          "color": "#3A6EA5",
+          "seats": 61,
+          "members": [
+            {
+              "letters": "מחל"
+            },
+            {
+              "letters": "ב"
+            },
+            {
+              "letters": "ג"
+            },
+            {
+              "letters": "כנ"
+            }
+          ]
+        },
+        {
+          "id": "opposition",
+          "nameHe": "אופוזיציה",
+          "nameEn": "Opposition",
+          "color": "#8C8C8C",
+          "seats": 59,
+          "members": [
+            {
+              "letters": "אמת"
+            },
+            {
+              "letters": "רצ"
+            },
+            {
+              "letters": "ו"
+            },
+            {
+              "letters": "יש"
+            },
+            {
+              "letters": "לע"
+            },
+            {
+              "letters": "ים"
+            },
+            {
+              "letters": "ש"
+            },
+            {
+              "letters": "פש"
+            },
+            {
+              "letters": "ד"
+            }
+          ],
+          "mainOpposition": [
+            {
+              "letters": "אמת"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2018&$format=json",
+          "publisher": "Knesset OData (ParliamentInfo)",
+          "kind": "official",
+          "quote": "Government 18 sworn in 1977-06-20. Ministers at swearing-in by their Knesset faction (project tabulation of the OData records): {'שלומציון': 1, 'הליכוד': 7, 'חה\"כ משה דיין': 1, 'מפלגה דתית לאומית': 3}",
+          "accessed": "2026-11-04"
+        },
+        {
+          "url": "https://he.wikipedia.org/wiki/ממשלת_ישראל_השמונה_עשרה",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "קואליציה: הליכוד, ד\"ש, מפד\"ל, אגו\"י, שלומציון | אופוזיציה: המערך, חד\"ש, פלאטו שרון, מחנה של\"י, רע\"ם, פועלי אגודת ישראל, רצ, ל\"ע",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "notes": [
+        "Coalition = lists that joined or supported the government at its formation. Official records give ministers only; support-only lists (e.g. Mapai-affiliated Arab lists) rest on Hebrew Wikipedia.",
+        "The Democratic Movement for Change (יש) joined on 24 October 1977 (its ministers start 1977-10-24 in Knesset OData), so it is not a member at formation.",
+        "Agudat Yisrael supported the coalition without ministers (Hebrew Wikipedia).",
+        "Moshe Dayan, elected on the Alignment list (אמת), joined the government as an individual minister; the Alignment list itself was in opposition."
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "labour-affiliated-arab-lists",
+      "nameHe": "מפא\"י/המערך והרשימות הערביות המסונפות אליה (רשימות לוויין)",
+      "nameEn": "Mapai/Alignment and its affiliated Arab (satellite) lists",
+      "kind": "parliamentary",
+      "date": "1977-05-17",
+      "blocs": [
+        {
+          "id": "labour-and-affiliates",
+          "nameHe": "המערך ורשימות הלוויין",
+          "nameEn": "Alignment and affiliated Arab lists",
+          "color": "#AD0101",
+          "members": [
+            {
+              "letters": "אמת"
+            },
+            {
+              "letters": "ים"
+            }
+          ],
+          "affiliatedLists": [
+            {
+              "letters": "ים"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הכנסת_התשיעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "הרשימה הערבית המאוחדת, שאיחדה את סיעות הלוויין של המערך, הסתפקה אף היא במושב אחד",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "notes": [
+        "Widely described affiliation, not a joint list or formal bloc agreement; satellites ran separately and sat as separate factions. In 1977 the United Arab List sat in opposition."
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "colours": [
+    {
+      "letters": "מחל",
+      "colorKey": "likud",
+      "color": "#1F5AA5",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded).",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_התשיעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #1F5AA5",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium",
+      "note": "Convention only: per Haaretz (cited by Hebrew Wikipedia) the Likud logo became blue only in 1981."
+    },
+    {
+      "letters": "אמת",
+      "colorKey": "alignment",
+      "color": "#EE1C25",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_התשיעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #EE1C25",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "יש",
+      "colorKey": "dash",
+      "color": "#336EB2",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded).",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_התשיעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #336EB2",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "low"
+    },
+    {
+      "letters": "ב",
+      "colorKey": "national-religious",
+      "color": "#4D1552",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_התשיעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #4D1552",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium",
+      "note": "Results tables use #4D1552; the NRP article infobox uses #623963."
+    },
+    {
+      "letters": "ו",
+      "colorKey": "hadash",
+      "color": "#EA1F25",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded).",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_התשיעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #EA1F25",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "low"
+    },
+    {
+      "letters": "ג",
+      "colorKey": "agudat-yisrael",
+      "color": "#C5AE6D",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_התשיעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #C5AE6D",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium",
+      "note": "Hebrew Wikipedia results tables use #C5AE6D; its 6th Knesset article legend uses #122D70."
+    },
+    {
+      "letters": "פש",
+      "colorKey": "flatto-sharon",
+      "color": "#404042",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded).",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_התשיעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #404042",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "low"
+    },
+    {
+      "letters": "כנ",
+      "colorKey": "shlomtzion",
+      "color": "#0D316C",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded).",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_התשיעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #0D316C",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "low"
+    },
+    {
+      "letters": "ש",
+      "colorKey": "sheli",
+      "color": "#AB0E1A",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded).",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_התשיעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #AB0E1A",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "low",
+      "note": "Same colour Hebrew Wikipedia uses for Rakah."
+    },
+    {
+      "letters": "ים",
+      "colorKey": "satellite",
+      "color": "#297C32",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded).",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_התשיעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #297C32",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "low",
+      "note": "Hebrew Wikipedia gives the Mapai-affiliated Arab lists similar reds that change between elections; not distinctive."
+    },
+    {
+      "letters": "ד",
+      "colorKey": "poalei-agudat-yisrael",
+      "color": "#DF561D",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_התשיעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #DF561D",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "רצ",
+      "colorKey": "ratz",
+      "color": "#002A0C",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded).",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_התשיעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #002A0C",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "low"
+    },
+    {
+      "letters": "לע",
+      "colorKey": "independent-liberals",
+      "color": "#FECA0A",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded).",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_התשיעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #FECA0A",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "low"
+    },
+    {
+      "party": "herut",
+      "color": "#0078BA",
+      "basis": "Hebrew Wikipedia convention (הליכוד member legend; results tables 1949-1961). No official colour source found.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הליכוד",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "colour #0078BA",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "party": "liberal-party",
+      "color": "#FECA0A",
+      "basis": "Hebrew Wikipedia convention (הליכוד member legend; 1961 results table. Shared with the Independent Liberals and Progressives.). No official colour source found.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הליכוד",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "colour #FECA0A",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "party": "laam",
+      "color": "#3B916A",
+      "basis": "Hebrew Wikipedia convention (הליכוד member legend only). No official colour source found.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הליכוד",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "colour #3B916A",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "low"
+    },
+    {
+      "party": "israeli-labor-party",
+      "color": "#EE1C25",
+      "basis": "Hebrew Wikipedia convention (used for the Alignment 1969-1977 and for Labor in the 6th Knesset article (#EE161F)). No official colour source found.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_התשיעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "colour #EE1C25",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "party": "mapam",
+      "color": "#96342E",
+      "basis": "Hebrew Wikipedia convention (results tables 1949-1965). No official colour source found.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_התשיעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "colour #96342E",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "party": "rakah",
+      "color": "#AB0E1A",
+      "basis": "Hebrew Wikipedia convention (results tables 1965-1973). No official colour source found.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_התשיעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "colour #AB0E1A",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "party": "moked",
+      "color": "#FF2A24",
+      "basis": "Hebrew Wikipedia convention (1973 results table only). No official colour source found.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_התשיעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "colour #FF2A24",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "low"
+    }
+  ],
+  "notes": [
+    "List יש (Democratic Movement for Change) is not split: Hebrew Wikipedia describes it as a merger (התמזגו למפלגה חדשה) of Yadin's Democratic Movement and Shinui. List ים (United Arab List) is not split either: no source found describing it as an alliance of parties that kept separate identities."
+  ]
+}

@@ -1,0 +1,638 @@
+{
+  "electionId": "k4",
+  "electionDate": "1959-11-03",
+  "era": "1949-1977",
+  "generated": "2026-11-04",
+  "lists": [
+    {
+      "letters": "גד",
+      "nameHe": "חזית דתית תורתית אגודת ישראל פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
+      "parties": [
+        {
+          "id": "agudat-yisrael",
+          "nameHe": "אגודת ישראל",
+          "nameEn": "Agudat Yisrael",
+          "candidateRanks": [
+            1,
+            3,
+            5
+          ],
+          "sources": [
+            {
+              "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=FactionID%20eq%20215&$format=json",
+              "publisher": "Knesset OData (ParliamentInfo)",
+              "kind": "official",
+              "quote": "After the Torah Religious Front faction split on 1960-08-09: faction 215 \"אגודת ישראל\" = לוין, לורינץ, פרוש (+ גרוס from 1961-05-30); faction 233 \"פועלי אגודת ישראל\" = מינץ, כהנא, כ\"ץ",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://he.wikipedia.org/wiki/חזית_דתית_תורתית",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "הכנסת הרביעית (1959): אגודת ישראל: יצחק מאיר לוין, שלמה לורינץ, מנחם פרוש, [שלמה יעקב גרוס – מחליף] / פועלי אגודת ישראל: בנימין מינץ, קלמן כהנא, יעקב כ\"ץ",
+              "accessed": "2026-11-04",
+              "quoteNote": "Condensed transcription of a member list in the source; \"/\" separates its party headings, \"...\" marks omitted names and [ ] marks editorial notes."
+            }
+          ],
+          "confidence": "high",
+          "members": [
+            {
+              "rank": 1,
+              "nameHe": "לוין יצחק מאיר",
+              "knessetPersonId": 2427,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=477&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "היה ממייסדי אגודת ישראל בפולין וממנהיגיה.",
+                  "accessed": "2026-11-04"
+                },
+                {
+                  "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=FactionID%20eq%20171&$format=json",
+                  "publisher": "Knesset OData (ParliamentInfo)",
+                  "kind": "official",
+                  "quote": "PersonID 2427: member of faction \"אגודת ישראל\" (FactionID 171), Knesset 2, 1951-08-20 to 1955-08-15",
+                  "accessed": "2026-11-04"
+                },
+                {
+                  "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=FactionID%20eq%20215&$format=json",
+                  "publisher": "Knesset OData (ParliamentInfo)",
+                  "kind": "official",
+                  "quote": "PersonID 2427: member of faction \"אגודת ישראל\" (FactionID 215), Knesset 4, 1960-08-09 to 1961-09-04",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 3,
+              "nameHe": "לורינץ שלמה",
+              "knessetPersonId": 2431,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=481&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "פעיל בארגון עלייה ב` מטעם אגודת ישראל בהונגריה (1938–1939)",
+                  "accessed": "2026-11-04"
+                },
+                {
+                  "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=FactionID%20eq%20171&$format=json",
+                  "publisher": "Knesset OData (ParliamentInfo)",
+                  "kind": "official",
+                  "quote": "PersonID 2431: member of faction \"אגודת ישראל\" (FactionID 171), Knesset 2, 1951-08-20 to 1955-08-15",
+                  "accessed": "2026-11-04"
+                },
+                {
+                  "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=FactionID%20eq%20215&$format=json",
+                  "publisher": "Knesset OData (ParliamentInfo)",
+                  "kind": "official",
+                  "quote": "PersonID 2431: member of faction \"אגודת ישראל\" (FactionID 215), Knesset 4, 1960-08-09 to 1961-09-04",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 5,
+              "nameHe": "פרוש מנחם",
+              "knessetPersonId": 2549,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=686&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "היה חבר הנהלת מרכז אגודת ישראל בארץ ישראל וחבר הנהלת אגודת ישראל העולמית (1954).",
+                  "accessed": "2026-11-04"
+                },
+                {
+                  "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=FactionID%20eq%20215&$format=json",
+                  "publisher": "Knesset OData (ParliamentInfo)",
+                  "kind": "official",
+                  "quote": "PersonID 2549: member of faction \"אגודת ישראל\" (FactionID 215), Knesset 4, 1960-08-09 to 1961-09-04",
+                  "accessed": "2026-11-04"
+                },
+                {
+                  "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=FactionID%20eq%20245&$format=json",
+                  "publisher": "Knesset OData (ParliamentInfo)",
+                  "kind": "official",
+                  "quote": "PersonID 2549: member of faction \"אגודת ישראל\" (FactionID 245), Knesset 5, 1961-09-04 to 1965-11-22",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            }
+          ]
+        },
+        {
+          "id": "poalei-agudat-yisrael",
+          "nameHe": "פועלי אגודת ישראל",
+          "nameEn": "Poalei Agudat Yisrael",
+          "candidateRanks": [
+            2,
+            4,
+            6
+          ],
+          "sources": [
+            {
+              "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=FactionID%20eq%20215&$format=json",
+              "publisher": "Knesset OData (ParliamentInfo)",
+              "kind": "official",
+              "quote": "After the Torah Religious Front faction split on 1960-08-09: faction 215 \"אגודת ישראל\" = לוין, לורינץ, פרוש (+ גרוס from 1961-05-30); faction 233 \"פועלי אגודת ישראל\" = מינץ, כהנא, כ\"ץ",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://he.wikipedia.org/wiki/חזית_דתית_תורתית",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "הכנסת הרביעית (1959): אגודת ישראל: יצחק מאיר לוין, שלמה לורינץ, מנחם פרוש, [שלמה יעקב גרוס – מחליף] / פועלי אגודת ישראל: בנימין מינץ, קלמן כהנא, יעקב כ\"ץ",
+              "accessed": "2026-11-04",
+              "quoteNote": "Condensed transcription of a member list in the source; \"/\" separates its party headings, \"...\" marks omitted names and [ ] marks editorial notes."
+            }
+          ],
+          "confidence": "high",
+          "members": [
+            {
+              "rank": 2,
+              "nameHe": "מינץ בנימין",
+              "knessetPersonId": 2462,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=505&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "בשנת 1933 הקים את פועלי אגודת ישראל.",
+                  "accessed": "2026-11-04"
+                },
+                {
+                  "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=FactionID%20eq%20165&$format=json",
+                  "publisher": "Knesset OData (ParliamentInfo)",
+                  "kind": "official",
+                  "quote": "PersonID 2462: member of faction \"פועלי אגודת ישראל\" (FactionID 165), Knesset 2, 1951-08-20 to 1955-08-15",
+                  "accessed": "2026-11-04"
+                },
+                {
+                  "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=FactionID%20eq%20233&$format=json",
+                  "publisher": "Knesset OData (ParliamentInfo)",
+                  "kind": "official",
+                  "quote": "PersonID 2462: member of faction \"פועלי אגודת ישראל\" (FactionID 233), Knesset 4, 1960-08-09 to 1961-05-30",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 4,
+              "nameHe": "כהן קלמן",
+              "knessetPersonId": 2404,
+              "knessetBioMentionsParty": true,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkPublicActivity?mkId=456&languageKey=he",
+                  "publisher": "Knesset website, member biography (public activity)",
+                  "kind": "official",
+                  "quote": "חבר מזכירות הוועד הפועל של פועלי אגודת ישראל בארץ ישראל והמרכז העולמי של פועלי אגודת ישראל",
+                  "accessed": "2026-11-04"
+                },
+                {
+                  "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=FactionID%20eq%20165&$format=json",
+                  "publisher": "Knesset OData (ParliamentInfo)",
+                  "kind": "official",
+                  "quote": "PersonID 2404: member of faction \"פועלי אגודת ישראל\" (FactionID 165), Knesset 2, 1951-08-20 to 1955-08-15",
+                  "accessed": "2026-11-04"
+                },
+                {
+                  "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=FactionID%20eq%20233&$format=json",
+                  "publisher": "Knesset OData (ParliamentInfo)",
+                  "kind": "official",
+                  "quote": "PersonID 2404: member of faction \"פועלי אגודת ישראל\" (FactionID 233), Knesset 4, 1960-08-09 to 1961-09-04",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            },
+            {
+              "rank": 6,
+              "nameHe": "כץ יעקב",
+              "knessetPersonId": 2411,
+              "knessetBioMentionsParty": false,
+              "evidence": [
+                {
+                  "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=FactionID%20eq%20233&$format=json",
+                  "publisher": "Knesset OData (ParliamentInfo)",
+                  "kind": "official",
+                  "quote": "PersonID 2411: member of faction \"פועלי אגודת ישראל\" (FactionID 233), Knesset 4, 1960-08-09 to 1961-09-04",
+                  "accessed": "2026-11-04"
+                },
+                {
+                  "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=FactionID%20eq%20263&$format=json",
+                  "publisher": "Knesset OData (ParliamentInfo)",
+                  "kind": "official",
+                  "quote": "PersonID 2411: member of faction \"פועלי אגודת ישראל\" (FactionID 263), Knesset 5, 1961-09-04 to 1965-11-22",
+                  "accessed": "2026-11-04"
+                }
+              ],
+              "confidence": "high"
+            }
+          ]
+        }
+      ],
+      "unassignedRanks": []
+    }
+  ],
+  "blocSchemes": [
+    {
+      "id": "first-government",
+      "nameHe": "הממשלה ה-9 (הממשלה הראשונה של הכנסת)",
+      "nameEn": "Government 9 (first government of the Knesset)",
+      "kind": "government",
+      "date": "1959-12-17",
+      "governmentNumber": 9,
+      "blocs": [
+        {
+          "id": "coalition",
+          "nameHe": "קואליציה",
+          "nameEn": "Coalition",
+          "color": "#3A6EA5",
+          "seats": 86,
+          "members": [
+            {
+              "letters": "א"
+            },
+            {
+              "letters": "ב"
+            },
+            {
+              "letters": "מ"
+            },
+            {
+              "letters": "תו"
+            },
+            {
+              "letters": "פ"
+            },
+            {
+              "letters": "רא"
+            },
+            {
+              "letters": "יא"
+            },
+            {
+              "letters": "ע"
+            }
+          ]
+        },
+        {
+          "id": "opposition",
+          "nameHe": "אופוזיציה",
+          "nameEn": "Opposition",
+          "color": "#8C8C8C",
+          "seats": 34,
+          "members": [
+            {
+              "letters": "ח"
+            },
+            {
+              "letters": "צ"
+            },
+            {
+              "letters": "גד"
+            },
+            {
+              "letters": "ק"
+            }
+          ],
+          "mainOpposition": [
+            {
+              "letters": "ח"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%209&$format=json",
+          "publisher": "Knesset OData (ParliamentInfo)",
+          "kind": "official",
+          "quote": "Government 9 sworn in 1959-12-17. Ministers at swearing-in by their Knesset faction (project tabulation of the OData records): {'מפלגת פועלים מאוחדת': 2, 'מפלגה דתית לאומית': 2, 'מפלגת פועלי ארץ-ישראל': 9, 'מפלגה פרוגרסיבית': 1, 'אחדות העבודה - פועלי ציון': 1, 'NON-MK': 1}",
+          "accessed": "2026-11-04"
+        },
+        {
+          "url": "https://he.wikipedia.org/wiki/ממשלת_ישראל_התשיעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "קואליציה: מפא\"י, מפד\"ל, מפ\"ם, אחדות העבודה-פועלי ציון, המפלגה הפרוגרסיבית, קידמה ופיתוח, שיתוף ואחווה, חקלאות ופיתוח | אופוזיציה: חרות, הציונים הכלליים, חזית דתית תורתית, מק\"י",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "notes": [
+        "Coalition = lists that joined or supported the government at its formation. Official records give ministers only; support-only lists (e.g. Mapai-affiliated Arab lists) rest on Hebrew Wikipedia.",
+        "Hebrew Wikipedia marks the Torah Religious Front as opposition at formation, part of it joining the coalition later."
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "labour-affiliated-arab-lists",
+      "nameHe": "מפא\"י/המערך והרשימות הערביות המסונפות אליה (רשימות לוויין)",
+      "nameEn": "Mapai/Alignment and its affiliated Arab (satellite) lists",
+      "kind": "parliamentary",
+      "date": "1959-11-03",
+      "blocs": [
+        {
+          "id": "labour-and-affiliates",
+          "nameHe": "מפא\"י ורשימות הלוויין",
+          "nameEn": "Mapai and affiliated Arab lists",
+          "color": "#AD0101",
+          "members": [
+            {
+              "letters": "א"
+            },
+            {
+              "letters": "רא"
+            },
+            {
+              "letters": "יא"
+            },
+            {
+              "letters": "ע"
+            }
+          ],
+          "affiliatedLists": [
+            {
+              "letters": "רא"
+            },
+            {
+              "letters": "יא"
+            },
+            {
+              "letters": "ע"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/קידמה_ופיתוח",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "הייתה מפלגת מיעוטים ששימשה כמפלגת לוויין של מפא\"י והמערך",
+          "accessed": "2026-11-04"
+        },
+        {
+          "url": "https://he.wikipedia.org/wiki/שיתוף_ואחווה",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "הייתה מפלגת מיעוטים שהייתה קשורה למפא\"י ומפלגת העבודה, והיוותה ... מפלגת לוויין",
+          "accessed": "2026-11-04"
+        },
+        {
+          "url": "https://he.wikipedia.org/wiki/חקלאות_ופיתוח",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "הייתה מפלגת מיעוטים שהיוותה, כמו כלל המפלגות הערביות בשנות המדינה הראשונות, מפלגת לוויין של מפא\"י",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "notes": [
+        "Widely described affiliation, not a joint list or formal bloc agreement; satellites ran separately and sat as separate factions."
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "colours": [
+    {
+      "letters": "א",
+      "colorKey": "mapai",
+      "color": "#AD0101",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_הרביעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #AD0101",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "ח",
+      "colorKey": "herut",
+      "color": "#0078BA",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_הרביעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #0078BA",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "ב",
+      "colorKey": "national-religious",
+      "color": "#4D1552",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_הרביעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #4D1552",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium",
+      "note": "Results tables use #4D1552; the NRP article infobox uses #623963."
+    },
+    {
+      "letters": "מ",
+      "colorKey": "mapam",
+      "color": "#96342E",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_הרביעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #96342E",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "צ",
+      "colorKey": "general-zionists",
+      "color": "#00ADCC",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_הרביעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #00ADCC",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "תו",
+      "colorKey": "ahdut-haavoda",
+      "color": "#CE2029",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_הרביעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #CE2029",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "גד",
+      "colorKey": "religious-torah-front",
+      "color": "#172D81",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded).",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_הרביעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #172D81",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "low"
+    },
+    {
+      "letters": "פ",
+      "colorKey": "progressive-party",
+      "color": "#FECA0A",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_הרביעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #FECA0A",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "ק",
+      "colorKey": "maki",
+      "color": "#FF0000",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_הרביעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #FF0000",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "רא",
+      "colorKey": "satellite",
+      "color": "#AF0000",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded).",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_הרביעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #AF0000",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "low",
+      "note": "Hebrew Wikipedia gives the Mapai-affiliated Arab lists similar reds that change between elections; not distinctive."
+    },
+    {
+      "letters": "יא",
+      "colorKey": "satellite",
+      "color": "#AF2F2F",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded).",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_הרביעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #AF2F2F",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "low",
+      "note": "Hebrew Wikipedia gives the Mapai-affiliated Arab lists similar reds that change between elections; not distinctive."
+    },
+    {
+      "letters": "ע",
+      "colorKey": "satellite",
+      "color": "#FF5252",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded).",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_הרביעית",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "results-table row background #FF5252",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "low",
+      "note": "Hebrew Wikipedia gives the Mapai-affiliated Arab lists similar reds that change between elections; not distinctive."
+    },
+    {
+      "party": "agudat-yisrael",
+      "color": "#C5AE6D",
+      "basis": "Hebrew Wikipedia convention (החזית הדתית המאוחדת legend; results tables 1951-1977). No official colour source found.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/החזית_הדתית_המאוחדת",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "colour #C5AE6D",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "party": "poalei-agudat-yisrael",
+      "color": "#DF561D",
+      "basis": "Hebrew Wikipedia convention (החזית הדתית המאוחדת legend; results tables 1951-1977). No official colour source found.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/החזית_הדתית_המאוחדת",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "colour #DF561D",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "notes": [
+    "List ב (חזית דתית לאומית) is not split: Mizrachi and Hapoel HaMizrachi merged into the National Religious Party in 1956-57 (OData faction 981; Hebrew Wikipedia). The same applies to ב in 1961-1977."
+  ]
+}
