@@ -17,6 +17,10 @@ export interface SimCandidate {
   originListId?: string;
   /** skipped when seats are filled (see Candidate.notSeated) */
   notSeated?: boolean;
+  /** shown instead of nameHe where the candidate notice misprints the name (Candidate.displayNameHe) */
+  displayNameHe?: string;
+  /** curated bilingual notes (Candidate.notes) */
+  notes?: { en: string; he: string }[];
 }
 
 export interface SimList {
@@ -167,7 +171,8 @@ export function scenarioFromDataset(ds: ElectionDataset, name = ''): Scenario {
     lists: ds.lists.map((l) => ({
       id: l.id, originIds: [l.id], letters: l.letters, nameHe: l.nameHe, shortHe: l.shortHe, shortEn: l.shortEn,
       color: l.color, bloc: l.bloc, votes: l.votes, withdrawn: l.withdrawn, sponsorsHe: l.sponsorsHe,
-      candidates: l.candidates.map((c) => ({ id: c.id, nameHe: c.nameHe, partyHe: c.partyHe, originListId: l.id, ...(c.notSeated ? { notSeated: true } : {}) })),
+      candidates: l.candidates.map((c) => ({ id: c.id, nameHe: c.nameHe, partyHe: c.partyHe, originListId: l.id, ...(c.notSeated ? { notSeated: true } : {}),
+        ...(c.displayNameHe ? { displayNameHe: c.displayNameHe } : {}), ...(c.notes?.length ? { notes: c.notes } : {}) })),
       ...(l.candidatesUnavailable ? { rosterUnavailable: true } : {}),
       ...(l.candidatesTruncated ? { rosterTruncated: true } : {}),
     })),
@@ -207,7 +212,8 @@ const shape = (fields: Record<string, Check>): Check => {
 };
 const oneOf = (...values: unknown[]): Check => (x) => values.includes(x);
 const uniqueStrings: Check = (x) => array(string)(x) && new Set(x as string[]).size === (x as string[]).length;
-const candidate = shape({ id: string, nameHe: string, partyHe: optional(string), originListId: optional(string) });
+const candidate = shape({ id: string, nameHe: string, partyHe: optional(string), originListId: optional(string),
+  displayNameHe: optional(string), notes: optional(array(shape({ en: string, he: string }))) });
 const candidates: Check = (x) => array(candidate)(x) && new Set((x as SimCandidate[]).map((c) => c.id)).size === (x as SimCandidate[]).length;
 const bloc = shape({ id: string, nameHe: string, nameEn: string, color: string });
 const agreement = shape({ id: string, members: uniqueStrings, enabled: boolean });

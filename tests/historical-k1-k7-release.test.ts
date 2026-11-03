@@ -55,7 +55,7 @@ describe.each([1,2,3,4,5,6,7])('k%i built national release',n=>{
       if(ds.officialSeats![list.id]===0){expect(list.candidates).toEqual([]);expect(list.candidatesUnavailable).toBe(true);continue;}
       expect(rr).toBeDefined();expect(list.candidatesTruncated).toBe(true);expect(list.candidatesUnavailable).toBeUndefined();
       expect(list.candidatesSecondary).toBe(false);expect(list.candidatesSource).toBe(reviewed.candidateSourceId);
-      expect(list.candidates.map(({id,notSeated,...c})=>{expect(id).toBe(`${list.id}#${c.rank}`);return c;})).toEqual(rr!.candidates);
+      expect(list.candidates.map(({id,notSeated,notes,displayNameHe,...c})=>{expect(id).toBe(`${list.id}#${c.rank}`);return c;})).toEqual(rr!.candidates);
       // candidates the results notice skipped (below the last elected rank) are flagged not seated, and only they
       const lastElected=Math.max(...rr!.electedCandidateRanks);
       expect(list.candidates.filter(c=>c.notSeated).map(c=>c.rank)).toEqual(list.candidates.filter(c=>c.rank<lastElected&&!rr!.electedCandidateRanks.includes(c.rank)).map(c=>c.rank));

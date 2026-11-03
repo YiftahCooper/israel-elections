@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import type { SimCandidate, SimList } from '../../model/scenario.ts';
-import { useL } from '../i18n.ts';
+import { useL, useLang } from '../i18n.ts';
+import { shownName } from '../derive.ts';
 import { dispatch, useLevel } from '../store.ts';
 
 export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList; seats: number; baseSeats: number; baseCandidates?: SimCandidate[] }) {
   const L = useL();
+  const lang = useLang();
   const { simple, expert: advanced } = useLevel();
   const [showAll, setShowAll] = useState(false);
   const [drag, setDrag] = useState<number | null>(null);
@@ -33,8 +35,8 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
       {l.rosterTruncated && !l.rosterUnavailable && <p className="small callout">{L(`Only the first ${c.length} candidates of this list’s official roster are available here (everyone elected is included); later names were not transcribed.`, `כאן זמינים רק ${c.length} המועמדים הראשונים ברשימה הרשמית (כולל כל הנבחרים); השמות שאחריהם לא הוקלדו.`)}</p>}
       {!simple && !l.rosterUnavailable && <div className="kv small" style={{ marginBottom: 8 }}>
         <span>{l.rosterTruncated ? L('Candidates available', 'מועמדים זמינים') : L('Registered candidates', 'מועמדים ברשימה')}</span><span>{c.length}</span>
-        <span>{L('Last elected', 'האחרון שנבחר')}</span><span>{lastIn ? <><bdi>{lastIn.nameHe}</bdi> <span className="muted">(#{c.indexOf(lastIn) + 1})</span></> : '—'}</span>
-        <span>{L('Next in line', 'הבא בתור')}</span><span>{nextIn ? <><bdi>{nextIn.nameHe}</bdi> <span className="muted">(#{c.indexOf(nextIn) + 1})</span></> : l.rosterTruncated ? L('not available', 'לא זמין') : L('none', 'אין')}</span>
+        <span>{L('Last elected', 'האחרון שנבחר')}</span><span>{lastIn ? <><bdi>{shownName(lastIn)}</bdi> <span className="muted">(#{c.indexOf(lastIn) + 1})</span></> : '—'}</span>
+        <span>{L('Next in line', 'הבא בתור')}</span><span>{nextIn ? <><bdi>{shownName(nextIn)}</bdi> <span className="muted">(#{c.indexOf(nextIn) + 1})</span></> : l.rosterTruncated ? L('not available', 'לא זמין') : L('none', 'אין')}</span>
       </div>}
       {baseCandidates && JSON.stringify(baseCandidates) !== JSON.stringify(c) && <button className="btn small" style={{ marginBottom: 6 }} onClick={() => dispatch({ type: 'resetCandidates', listId: l.id })}>{L('Restore the registered candidate list', 'שחזור רשימת המועמדים הרשומה')}</button>}
       {seats > seated.length && !l.rosterUnavailable && !l.rosterTruncated && <p className="down small">{L(`The list has only ${seated.length} candidates for ${seats} seats.`, `ברשימה רק ${seated.length} מועמדים ל-${seats} מנדטים.`)}</p>}
@@ -52,11 +54,12 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
               <span style={{ minWidth: 0 }}>
                 {editing === x.id ? (
                   <input type="text" autoFocus value={draft} onChange={(e) => setDraft(e.target.value)} aria-label={L('Candidate name', 'שם המועמד')}
-                    onBlur={() => { if (draft.trim() && draft !== x.nameHe) commit(c.map((y) => (y.id === x.id ? { ...y, nameHe: draft.trim() } : y)), `rename ${x.nameHe}`); setEditing(null); }}
+                    onBlur={() => { if (draft.trim() && draft !== x.nameHe) commit(c.map((y) => (y.id === x.id ? { ...y, nameHe: draft.trim(), displayNameHe: undefined } : y)), `rename ${shownName(x)}`); setEditing(null); }}
                     onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); if (e.key === 'Escape') setEditing(null); }} />
                 ) : (
-                  <span lang="he">{x.nameHe}</span>
+                  <span lang="he">{shownName(x)}</span>
                 )}
+                {x.notes?.map((n, k) => <span key={k} className="muted tiny cand-note"> · {lang === 'he' ? n.he : n.en}</span>)}
                 {x.partyHe && l.sponsorsHe.includes(';') && <span className="muted tiny"> · {x.partyHe}</span>}
                 {x.originListId && x.originListId !== l.id && !l.originIds.includes(x.originListId) && <span className="muted tiny"> · {L('moved', 'הועבר')}</span>}
                 {changed && <span className={`tiny ${elected ? 'up' : 'down'}`}> · {elected ? L('enters', 'נכנס') : L('leaves', 'יוצא')}</span>}

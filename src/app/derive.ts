@@ -73,6 +73,9 @@ export function scenarioIssues(s: Scenario, r: AllocationResult): ScenarioIssue[
   return out;
 }
 
+/** The name to show: the curated correction of a misprinted candidate-notice name, else the name as printed. */
+export const shownName = (c: { nameHe: string; displayNameHe?: string }) => c.displayNameHe ?? c.nameHe;
+
 /** The candidates who fill a list's seats, in order: the roster minus those the official notice did not seat. */
 export const seatedOrder = (l: Pick<SimList, 'candidates'>) => l.candidates.filter((c) => !c.notSeated);
 export const electedOf = (l: SimList, seats: number) => seatedOrder(l).slice(0, seats);

@@ -40,6 +40,10 @@ export interface Candidate {
   /** on the registered roster but not among those the official results notice names as elected
    * (withdrew or resigned before the members were named); seats pass to the next candidates */
   notSeated?: boolean;
+  /** the name to show when the candidate notice misprints it (from data/meta/candidate-notes.json) */
+  displayNameHe?: string;
+  /** curated bilingual notes, e.g. a replacement before the Knesset's first sitting (decision 0088) */
+  notes?: { en: string; he: string }[];
 }
 
 export interface ListRecord {

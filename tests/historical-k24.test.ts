@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import { applyCandidateNotes } from '../scripts/lib/build/notes.ts';
 import { describe, expect, it } from 'vitest';
 import type { ElectionDataset } from '../src/data/schema.ts';
 import { allocate } from '../src/engine/allocate.ts';
@@ -50,7 +51,7 @@ describe('k24: official final result and release gates', () => {
   });
   it('rebuilds from retained evidence with reconciliation or its durable digest', async () => {
     const built = await buildK24();
-    expect(built.ds).toEqual(ds);
+    expect(applyCandidateNotes(built.ds)).toEqual(ds); // the build merges curated notes (decision 0088)
     const loc = JSON.parse(readFileSync(new URL('../public/data/k24-localities.json', import.meta.url),'utf8'));
     expect(built.loc).toEqual(loc);
   });

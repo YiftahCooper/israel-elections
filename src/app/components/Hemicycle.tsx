@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario, SimList } from '../../model/scenario.ts';
-import { listLabel, methodOf, seatedOrder } from '../derive.ts';
+import { listLabel, methodOf, seatedOrder, shownName } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { arcLayout, placeLabels } from '../layout.ts';
 import { download, isolate } from '../format.ts';
@@ -175,7 +175,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title }: { s: Sc
       {hover && hv && (
         <div className="tip" style={{ left: Math.max(0, hover.x - 100), top: Math.max(0, hover.y - 96) }}>
           <div className="row"><span className="swatch" style={{ background: hover.seat.color }} /><b>{listLabel(hv, lang)}</b> <span className="muted">({hv.letters})</span></div>
-          {cand ? <div><b>{cand.nameHe}</b> · {L('rank', 'מקום')} {hover.seat.idx + 1}</div>
+          {cand ? <div><b>{shownName(cand)}</b> · {L('rank', 'מקום')} {hover.seat.idx + 1}{cand.notes?.map((n, k) => <div key={k} className="muted small">{lang === 'he' ? n.he : n.en}</div>)}</div>
             : hv.rosterUnavailable || hv.rosterTruncated ? <div className="muted">{L(`Seat ${hover.seat.idx + 1} of the list; candidate names are not available for this election`, `מושב ${hover.seat.idx + 1} של הרשימה; שמות המועמדים אינם זמינים לבחירות אלה`)}</div>
             : <div className="down">{L('Vacant — the list has too few candidates', 'מושב ריק — אין די מועמדים ברשימה')}</div>}
           {cand?.partyHe && <div className="muted small">{L('Party: ', 'מפלגה: ')}{cand.partyHe}</div>}
