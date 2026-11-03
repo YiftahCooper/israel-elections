@@ -26,3 +26,13 @@ Exact allocation arithmetic does not imply globally exact analysis searches. Cal
 - `src/app/components/SeatSecurity.tsx`.
 - `tests/exactness.test.ts`.
 - Repository history: `ad479ee, 2abba95` (3 November 2026).
+
+## Addendum, 4 November 2026: provably equal counts are skipped
+
+The searches still visit every count they report on, but for new-voter moves, transfers and vote
+sweeps they now skip ranges that provably allocate identically: every engine decision there either
+flips once at a fixed count or changes in one direction, so two counts with the same recorded
+decisions bound a range with the same outcome. `tests/analysis-regions.test.ts` checks this count by
+count on random elections under every rule set. Proportional redistribution uses largest-remainder
+splitting, which is not monotone, so it gets no skipping. Results are identical to the exhaustive
+search (`tests/differential.test.ts`).
