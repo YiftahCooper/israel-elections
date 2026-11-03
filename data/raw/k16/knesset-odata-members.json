@@ -1,0 +1,2221 @@
+{
+ "source": "Knesset OData ParliamentInfo.svc",
+ "retrievedAt": "2026-11-04",
+ "queries": [
+  "KNS_PersonToPosition?$filter=KnessetNum eq 16 and (PositionID eq 43 or PositionID eq 61)",
+  "KNS_Person?$filter=PersonID eq … (every PersonID above)"
+ ],
+ "note": "PositionID 43/61 = Knesset member. Members whose StartDate is the opening day (2003-02-17) are the opening membership.",
+ "positions": [
+  {
+   "PersonToPositionID": 564,
+   "PersonID": 3175,
+   "PositionID": 61,
+   "KnessetNum": 16,
+   "StartDate": "2004-12-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 570,
+   "PersonID": 527,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2005-02-23T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 572,
+   "PersonID": 448,
+   "PositionID": 61,
+   "KnessetNum": 16,
+   "StartDate": "2006-01-11T00:00:00",
+   "FinishDate": "2006-02-08T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 574,
+   "PersonID": 460,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2006-01-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 575,
+   "PersonID": 444,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2006-01-17T00:00:00",
+   "FinishDate": "2006-01-28T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 576,
+   "PersonID": 4155,
+   "PositionID": 61,
+   "KnessetNum": 16,
+   "StartDate": "2006-01-21T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 577,
+   "PersonID": 4156,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2006-01-25T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 627,
+   "PersonID": 4218,
+   "PositionID": 61,
+   "KnessetNum": 16,
+   "StartDate": "2006-02-08T00:00:00",
+   "FinishDate": "2006-02-15T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 965,
+   "PersonID": 4035,
+   "PositionID": 61,
+   "KnessetNum": 16,
+   "StartDate": "2005-12-10T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1203,
+   "PersonID": 442,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2005-11-18T00:00:00",
+   "FinishDate": "2006-01-25T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1204,
+   "PersonID": 4217,
+   "PositionID": 61,
+   "KnessetNum": 16,
+   "StartDate": "2006-02-08T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1261,
+   "PersonID": 492,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2006-03-25T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1331,
+   "PersonID": 4175,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2006-01-28T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1986,
+   "PersonID": 421,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-03-26T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1989,
+   "PersonID": 2014,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2004-06-29T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2087,
+   "PersonID": 965,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2091,
+   "PersonID": 482,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2094,
+   "PersonID": 467,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2005-12-10T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2100,
+   "PersonID": 558,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2106,
+   "PersonID": 1061,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2107,
+   "PersonID": 1062,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2113,
+   "PersonID": 427,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2003-03-26T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2115,
+   "PersonID": 405,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2121,
+   "PersonID": 430,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2122,
+   "PersonID": 412,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2123,
+   "PersonID": 565,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-02-08T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2124,
+   "PersonID": 713,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2125,
+   "PersonID": 1055,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2126,
+   "PersonID": 479,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2127,
+   "PersonID": 473,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2128,
+   "PersonID": 470,
+   "PositionID": 61,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2129,
+   "PersonID": 468,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2130,
+   "PersonID": 474,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2131,
+   "PersonID": 465,
+   "PositionID": 61,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2132,
+   "PersonID": 471,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2134,
+   "PersonID": 1025,
+   "PositionID": 61,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2135,
+   "PersonID": 477,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2136,
+   "PersonID": 469,
+   "PositionID": 61,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2137,
+   "PersonID": 462,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2138,
+   "PersonID": 478,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2139,
+   "PersonID": 536,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2140,
+   "PersonID": 1026,
+   "PositionID": 61,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2141,
+   "PersonID": 1027,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2142,
+   "PersonID": 1028,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2143,
+   "PersonID": 1029,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2144,
+   "PersonID": 1030,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2145,
+   "PersonID": 1031,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2146,
+   "PersonID": 1032,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2147,
+   "PersonID": 1033,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2148,
+   "PersonID": 1034,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2149,
+   "PersonID": 1035,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-01-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2150,
+   "PersonID": 1036,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2151,
+   "PersonID": 1037,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2152,
+   "PersonID": 1038,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2153,
+   "PersonID": 1039,
+   "PositionID": 61,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2154,
+   "PersonID": 1040,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2155,
+   "PersonID": 1064,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2156,
+   "PersonID": 464,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2157,
+   "PersonID": 466,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2158,
+   "PersonID": 1041,
+   "PositionID": 61,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2159,
+   "PersonID": 476,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2160,
+   "PersonID": 556,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2161,
+   "PersonID": 1042,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2005-11-18T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2162,
+   "PersonID": 435,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2163,
+   "PersonID": 456,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-01-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2164,
+   "PersonID": 1067,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2165,
+   "PersonID": 434,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2004-06-29T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2166,
+   "PersonID": 433,
+   "PositionID": 61,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-01-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2167,
+   "PersonID": 455,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2168,
+   "PersonID": 454,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2169,
+   "PersonID": 1043,
+   "PositionID": 61,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2170,
+   "PersonID": 449,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2171,
+   "PersonID": 1044,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2172,
+   "PersonID": 458,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-01-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2173,
+   "PersonID": 1045,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2174,
+   "PersonID": 445,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2175,
+   "PersonID": 459,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-01-11T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2176,
+   "PersonID": 431,
+   "PositionID": 61,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2177,
+   "PersonID": 461,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2178,
+   "PersonID": 865,
+   "PositionID": 61,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2179,
+   "PersonID": 437,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2180,
+   "PersonID": 540,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2181,
+   "PersonID": 542,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2182,
+   "PersonID": 560,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2183,
+   "PersonID": 475,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2184,
+   "PersonID": 528,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2185,
+   "PersonID": 531,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2186,
+   "PersonID": 563,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2187,
+   "PersonID": 526,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2188,
+   "PersonID": 1057,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2005-02-23T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2189,
+   "PersonID": 532,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2190,
+   "PersonID": 763,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2191,
+   "PersonID": 521,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2192,
+   "PersonID": 524,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2193,
+   "PersonID": 765,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2194,
+   "PersonID": 1059,
+   "PositionID": 61,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2195,
+   "PersonID": 512,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2196,
+   "PersonID": 1065,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2197,
+   "PersonID": 507,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2198,
+   "PersonID": 504,
+   "PositionID": 61,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2199,
+   "PersonID": 552,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2200,
+   "PersonID": 505,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2201,
+   "PersonID": 557,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2202,
+   "PersonID": 1063,
+   "PositionID": 61,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2203,
+   "PersonID": 493,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2204,
+   "PersonID": 1068,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2205,
+   "PersonID": 549,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2206,
+   "PersonID": 550,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2207,
+   "PersonID": 494,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2208,
+   "PersonID": 484,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2209,
+   "PersonID": 487,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2210,
+   "PersonID": 495,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2211,
+   "PersonID": 580,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2212,
+   "PersonID": 483,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2213,
+   "PersonID": 498,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2214,
+   "PersonID": 488,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2215,
+   "PersonID": 501,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-03-25T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2216,
+   "PersonID": 490,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2217,
+   "PersonID": 1056,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2218,
+   "PersonID": 517,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2219,
+   "PersonID": 519,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2220,
+   "PersonID": 518,
+   "PositionID": 61,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2004-12-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2221,
+   "PersonID": 520,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2222,
+   "PersonID": 567,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2223,
+   "PersonID": 513,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2224,
+   "PersonID": 1046,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2225,
+   "PersonID": 1047,
+   "PositionID": 61,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2226,
+   "PersonID": 1048,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2227,
+   "PersonID": 1049,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2228,
+   "PersonID": 1050,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2229,
+   "PersonID": 1051,
+   "PositionID": 61,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2230,
+   "PersonID": 1052,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2231,
+   "PersonID": 1053,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2232,
+   "PersonID": 1054,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2233,
+   "PersonID": 533,
+   "PositionID": 61,
+   "KnessetNum": 16,
+   "StartDate": "2003-02-17T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3186,
+   "PersonID": 2467,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2006-01-05T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3187,
+   "PersonID": 4235,
+   "PositionID": 61,
+   "KnessetNum": 16,
+   "StartDate": "2006-02-15T00:00:00",
+   "FinishDate": "2006-04-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 18932,
+   "PersonID": 432,
+   "PositionID": 43,
+   "KnessetNum": 16,
+   "StartDate": "2006-01-17T00:00:00",
+   "FinishDate": "2006-01-21T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  }
+ ],
+ "persons": [
+  {
+   "PersonID": 405,
+   "LastName": "אלון",
+   "FirstName": "בנימין",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 412,
+   "LastName": "הנדל",
+   "FirstName": "צבי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 421,
+   "LastName": "כהן",
+   "FirstName": "אליעזר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 427,
+   "LastName": "ליברמן",
+   "FirstName": "אביגדור",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 430,
+   "LastName": "שטרן",
+   "FirstName": "יורי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 431,
+   "LastName": "אביטל",
+   "FirstName": "קולט",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 432,
+   "LastName": "אושעיה",
+   "FirstName": "אפי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 433,
+   "LastName": "איציק",
+   "FirstName": "דליה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 434,
+   "LastName": "בורג",
+   "FirstName": "אברהם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 435,
+   "LastName": "בן-אליעזר",
+   "FirstName": "בנימין",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 437,
+   "LastName": "בן-מנחם",
+   "FirstName": "אלי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 442,
+   "LastName": "טריף",
+   "FirstName": "סאלח",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 444,
+   "LastName": "יחזקאל",
+   "FirstName": "אברהם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 445,
+   "LastName": "כבל",
+   "FirstName": "איתן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 448,
+   "LastName": "לנדבר",
+   "FirstName": "סופה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 449,
+   "LastName": "מלכיאור",
+   "FirstName": "מיכאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 454,
+   "LastName": "סנה",
+   "FirstName": "אפרים",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 455,
+   "LastName": "פינס-פז",
+   "FirstName": "אופיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 456,
+   "LastName": "פרס",
+   "FirstName": "שמעון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 458,
+   "LastName": "רמון",
+   "FirstName": "חיים",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 459,
+   "LastName": "שוחט",
+   "FirstName": "אברהם-בייגה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 460,
+   "LastName": "שירי",
+   "FirstName": "ויצמן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 461,
+   "LastName": "שמחון",
+   "FirstName": "שלום",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 462,
+   "LastName": "איתן",
+   "FirstName": "מיכאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 464,
+   "LastName": "בוים",
+   "FirstName": "זאב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 465,
+   "LastName": "בלומנטל",
+   "FirstName": "נעמי",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 466,
+   "LastName": "הירשזון",
+   "FirstName": "אברהם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 467,
+   "LastName": "הנגבי",
+   "FirstName": "צחי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 468,
+   "LastName": "כץ",
+   "FirstName": "ישראל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 469,
+   "LastName": "לבני",
+   "FirstName": "ציפי",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 470,
+   "LastName": "לבנת",
+   "FirstName": "לימור",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 471,
+   "LastName": "לנדאו",
+   "FirstName": "עוזי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 473,
+   "LastName": "נוה",
+   "FirstName": "דני",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 474,
+   "LastName": "עזרא",
+   "FirstName": "גדעון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 475,
+   "LastName": "קרא",
+   "FirstName": "איוב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 476,
+   "LastName": "ריבלין",
+   "FirstName": "ראובן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 477,
+   "LastName": "שטייניץ",
+   "FirstName": "יובל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 478,
+   "LastName": "שטרית",
+   "FirstName": "מאיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 479,
+   "LastName": "שלום",
+   "FirstName": "סילבן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 482,
+   "LastName": "שרון",
+   "FirstName": "אריאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 483,
+   "LastName": "אזולאי",
+   "FirstName": "דוד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 484,
+   "LastName": "בניזרי",
+   "FirstName": "שלמה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 487,
+   "LastName": "דהן",
+   "FirstName": "נסים",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 488,
+   "LastName": "וקנין",
+   "FirstName": "יצחק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 490,
+   "LastName": "זאב",
+   "FirstName": "נסים",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 492,
+   "LastName": "חוגי",
+   "FirstName": "עופר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 493,
+   "LastName": "טל",
+   "FirstName": "דוד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 494,
+   "LastName": "ישי",
+   "FirstName": "אליהו",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 495,
+   "LastName": "כהן",
+   "FirstName": "אמנון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 498,
+   "LastName": "נהרי",
+   "FirstName": "משולם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 501,
+   "LastName": "פרץ",
+   "FirstName": "יאיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 504,
+   "LastName": "גלאון",
+   "FirstName": "זהבה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 505,
+   "LastName": "וילן",
+   "FirstName": "אבשלום",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 507,
+   "LastName": "כהן",
+   "FirstName": "רן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 512,
+   "LastName": "שריד",
+   "FirstName": "יוסי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 513,
+   "LastName": "בריילובסקי",
+   "FirstName": "ויקטור",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 517,
+   "LastName": "לפיד",
+   "FirstName": "יוסף (טומי)",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 518,
+   "LastName": "נאות",
+   "FirstName": "יהודית",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 519,
+   "LastName": "פורז",
+   "FirstName": "אברהם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 520,
+   "LastName": "פריצקי",
+   "FirstName": "יוסף יצחק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 521,
+   "LastName": "אורלב",
+   "FirstName": "זבולון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 524,
+   "LastName": "יהלום",
+   "FirstName": "שאול",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 526,
+   "LastName": "גפני",
+   "FirstName": "משה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 527,
+   "LastName": "הלפרט",
+   "FirstName": "שמואל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 528,
+   "LastName": "ליצמן",
+   "FirstName": "יעקב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 531,
+   "LastName": "רביץ",
+   "FirstName": "אברהם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 532,
+   "LastName": "אדלשטיין",
+   "FirstName": "יולי יואל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 533,
+   "LastName": "סולודקין",
+   "FirstName": "מרינה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 536,
+   "LastName": "לוי",
+   "FirstName": "דוד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 540,
+   "LastName": "ברכה",
+   "FirstName": "מוחמד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 542,
+   "LastName": "מח'ול",
+   "FirstName": "עסאם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 549,
+   "LastName": "אלסאנע",
+   "FirstName": "טלב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 550,
+   "LastName": "דהאמשה",
+   "FirstName": "עבד-אלמאלכ",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 552,
+   "LastName": "ברונפמן",
+   "FirstName": "רומן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 556,
+   "LastName": "כץ",
+   "FirstName": "חיים",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 557,
+   "LastName": "פרץ",
+   "FirstName": "עמיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 558,
+   "LastName": "בשארה",
+   "FirstName": "עזמי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 560,
+   "LastName": "טיבי",
+   "FirstName": "אחמד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 563,
+   "LastName": "פרוש",
+   "FirstName": "מאיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 565,
+   "LastName": "נודלמן",
+   "FirstName": "מיכאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 567,
+   "LastName": "זנדברג",
+   "FirstName": "אליעזר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 580,
+   "LastName": "כהן",
+   "FirstName": "יצחק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 713,
+   "LastName": "אריאל",
+   "FirstName": "אורי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 763,
+   "LastName": "איתם",
+   "FirstName": "אפי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 765,
+   "LastName": "לוי",
+   "FirstName": "יצחק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 865,
+   "LastName": "נוקד",
+   "FirstName": "אורית",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 965,
+   "LastName": "נתניהו",
+   "FirstName": "בנימין",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1025,
+   "LastName": "גמליאל",
+   "FirstName": "גילה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 1026,
+   "LastName": "אברהם-בלילא",
+   "FirstName": "רוחמה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 1027,
+   "LastName": "סער",
+   "FirstName": "גדעון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1028,
+   "LastName": "בנלולו",
+   "FirstName": "דניאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1029,
+   "LastName": "רצון",
+   "FirstName": "מיכאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1030,
+   "LastName": "והבה",
+   "FirstName": "מגלי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1031,
+   "LastName": "אדרי",
+   "FirstName": "יעקב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1032,
+   "LastName": "יתום",
+   "FirstName": "אהוד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1033,
+   "LastName": "אפללו",
+   "FirstName": "אלי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1034,
+   "LastName": "כחלון",
+   "FirstName": "משה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1035,
+   "LastName": "שרון",
+   "FirstName": "עמרי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1036,
+   "LastName": "גורלובסקי",
+   "FirstName": "מיכאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1037,
+   "LastName": "ארדן",
+   "FirstName": "גלעד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1038,
+   "LastName": "בר-און",
+   "FirstName": "רוני",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1039,
+   "LastName": "גבריאלי",
+   "FirstName": "ענבל",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 1040,
+   "LastName": "חזן",
+   "FirstName": "יחיאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1041,
+   "LastName": "נס",
+   "FirstName": "לאה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 1042,
+   "LastName": "מצנע",
+   "FirstName": "עמרם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1043,
+   "LastName": "תמיר",
+   "FirstName": "יולי",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 1044,
+   "LastName": "הרצוג",
+   "FirstName": "יצחק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1045,
+   "LastName": "יתום",
+   "FirstName": "דני",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1046,
+   "LastName": "שלגי",
+   "FirstName": "אילן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1047,
+   "LastName": "פולישוק-בלוך",
+   "FirstName": "מלי",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 1048,
+   "LastName": "חן",
+   "FirstName": "רשף",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1049,
+   "LastName": "בריזון",
+   "FirstName": "רוני",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1050,
+   "LastName": "רצאבי",
+   "FirstName": "אהוד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1051,
+   "LastName": "לבני",
+   "FirstName": "אתי",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 1052,
+   "LastName": "ליבוביץ",
+   "FirstName": "אילן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1053,
+   "LastName": "דורון",
+   "FirstName": "חמי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1054,
+   "LastName": "יאסינוב",
+   "FirstName": "יגאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1055,
+   "LastName": "אלדד",
+   "FirstName": "אריה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1056,
+   "LastName": "מרגי",
+   "FirstName": "יעקב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1057,
+   "LastName": "אייכלר",
+   "FirstName": "ישראל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1059,
+   "LastName": "פינקלשטיין",
+   "FirstName": "גילה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 1061,
+   "LastName": "זחאלקה",
+   "FirstName": "ג'מאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1062,
+   "LastName": "טאהא",
+   "FirstName": "ואסל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1063,
+   "LastName": "כהן",
+   "FirstName": "אילנה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 1064,
+   "LastName": "אולמרט",
+   "FirstName": "אהוד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1065,
+   "LastName": "אורון",
+   "FirstName": "חיים",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1067,
+   "LastName": "וילנאי",
+   "FirstName": "מתן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1068,
+   "LastName": "סלומינסקי",
+   "FirstName": "ניסן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2014,
+   "LastName": "מג'אדלה",
+   "FirstName": "ראלב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2467,
+   "LastName": "מנע",
+   "FirstName": "דוד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 3175,
+   "LastName": "גולן",
+   "FirstName": "אראלה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 4035,
+   "LastName": "רוזנבלום",
+   "FirstName": "פנינה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 4155,
+   "LastName": "אילן",
+   "FirstName": "טובה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 4156,
+   "LastName": "צור",
+   "FirstName": "רונן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 4175,
+   "LastName": "קורן",
+   "FirstName": "דני",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 4217,
+   "LastName": "טרטמן",
+   "FirstName": "אסתרינה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 4218,
+   "LastName": "אנג'ל",
+   "FirstName": "אורנה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 4235,
+   "LastName": "דוברין",
+   "FirstName": "נטע",
+   "GenderDesc": "נקבה"
+  }
+ ]
+}

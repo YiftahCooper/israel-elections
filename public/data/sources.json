@@ -1330,14 +1330,17 @@
   "sha256": "74d55066e32a7754066002bb0c87233c761589e909fd5d39a75a884e3cd3a3e0"
  },
  {
-  "id": "k16-membership-secondary",
-  "url": "https://en.wikipedia.org/wiki/List_of_members_of_the_sixteenth_Knesset",
-  "publisher": "Wikipedia (secondary)",
-  "official": false,
-  "description": "Membership identity cross-check only; reverse later replacements to inauguration. Candidate spellings remain from the gazette scan.",
-  "method": "manual-capture",
-  "retrievedAt": "2026-11-03",
-  "note": "Used because main.knesset.gov.il/mk/Pages/Members.aspx?KnessetID=16 was inaccessible (web tool failed; direct HTTP 247 challenge). Faction page redirected to an explicit geographic maintenance denial. Not an official roster source; not used to transcribe non-elected names."
+  "id": "k16-membership-odata",
+  "file": "k16/knesset-odata-members.json",
+  "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2016%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+  "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+  "official": true,
+  "description": "Membership identity cross-check of the sixteenth Knesset: MK positions and person names. The opening membership (2003-02-17) was compared with every elected member in the dataset; all 120 match apart from spelling and short-name forms, and Natan Sharansky, elected per the results notice, whose seat Marina Solodkin took before the opening (see k16-sharansky-withdrawal). Candidate spellings remain from the gazette scan.",
+  "method": "http",
+  "retrievedAt": "2026-11-04",
+  "bytes": 47290,
+  "sha256": "fc0d1cf10d5b668260c43e7c4e3d1094a64a70f74525e785ebce3e204d8ed11a",
+  "note": "Replaces an English Wikipedia list used as the fallback cross-check on 3 November 2026; the owner does not accept English Wikipedia as a source."
  },
  {
   "id": "k17-candidates-reviewed",
@@ -1364,14 +1367,17 @@
   "sha256": "b5fc87c3b3a8e19e2aa8f302d14e1872c1342089d232a6abbe950822ba4d4464"
  },
  {
-  "id": "k17-membership-secondary",
-  "url": "https://en.wikipedia.org/wiki/List_of_members_of_the_seventeenth_Knesset",
-  "publisher": "Wikipedia (secondary)",
-  "official": false,
-  "description": "Membership identity cross-check only; reverse later replacements to inauguration. Candidate spellings remain from the gazette scan.",
-  "method": "manual-capture",
-  "retrievedAt": "2026-11-03",
-  "note": "Used because main.knesset.gov.il/mk/Pages/Members.aspx?KnessetID=17 was inaccessible (web tool failed; direct HTTP 247 challenge). Faction page redirected to an explicit geographic maintenance denial. Not an official roster source; not used to transcribe non-elected names."
+  "id": "k17-membership-odata",
+  "file": "k17/knesset-odata-members.json",
+  "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2017%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+  "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+  "official": true,
+  "description": "Membership identity cross-check of the seventeenth Knesset: MK positions and person names. The opening membership (2006-04-17) was compared with every elected member in the dataset; all 120 match apart from spelling and short-name forms. Candidate spellings remain from the gazette scan.",
+  "method": "http",
+  "retrievedAt": "2026-11-04",
+  "bytes": 45880,
+  "sha256": "0ff469efe572fba7a4b1207f8d8c2756cfb5bbaf9bec246a677275557c60410d",
+  "note": "Replaces an English Wikipedia list used as the fallback cross-check on 3 November 2026; the owner does not accept English Wikipedia as a source."
  },
  {
   "id": "k16-sharansky-withdrawal",

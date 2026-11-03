@@ -34,3 +34,9 @@ marks historical datasets unavailable. This avoids exposing speculative data as 
 
 * CEC PDFs retained under data/raw/k16 through data/raw/k24.
 * Existing candidatesSecondary and source official fields in src/data/schema.ts and data/raw/SOURCES.json.
+
+## Addendum, 4 November 2026
+
+English-language Wikipedia is excluded entirely: it is never used, cited or linked, at the owner's direction
+(unreliable on Israel-related information). Hebrew Wikipedia may only lead to an official document or serve as a
+labelled secondary source.

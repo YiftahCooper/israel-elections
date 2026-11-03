@@ -6,6 +6,14 @@ The app offers **twenty-five verified election datasets: every election from 194
 Rosters list everyone elected; many lists' later candidates (and some rosters of lists without seats) are not
 transcribed, and the data says so. k8 is held (see its section); `public/data/elections.json` marks it unavailable.
 
+## Source policy
+
+Official sources come first: the law, the Central Elections Committee, Reshumot, the Knesset (including its
+OData service), the Central Bureau of Statistics and gov.il. Secondary sources are labelled as such in
+`SOURCES.json` and in the app. **English-language Wikipedia is never used, cited or linked**: the owner
+considers it unreliable on Israel-related information. Hebrew Wikipedia may serve only as a lead to an
+official document or as a labelled secondary source.
+
 ## Sources by election
 
 | Id | Election date | Official source files retained | Secondary data used | Still missing from a released dataset |
@@ -185,6 +193,10 @@ hyphen is retained; the results notice omits it. Earlier readings of **חסון 
 and Labor's **מגדלה גאלב** are corrected from both scans. No elected identity or rank
 replacement between the candidate and results notices was found.
 
+The membership identity cross-check now uses the Knesset's official OData service
+(`k16-membership-odata`, `k17-membership-odata`; retained snapshots in `data/raw/k16|k17/knesset-odata-members.json`).
+All 120 elected members of each Knesset match the opening membership apart from spelling and short-name
+forms, except the Sharansky/Solodkin case below, which the OData opening membership confirms.
 The earlier secondary membership comparisons remain under `previousMembershipCrossCheck`
 for history; they do not supply the new names or the official cross-check. The distinct
 post-election exception remains: Sharansky #1 and Edelstein #2 are both printed as elected

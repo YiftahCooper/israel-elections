@@ -195,6 +195,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
           <span>{L('Dataset built', 'נבנה')}</span><span>{ds.buildInfo.builtAt.slice(0, 10)}</span>
         </div>
         <h4 style={{ marginTop: 14 }}>{L('Sources', 'מקורות')}</h4>
+        <p className="small ink2">{L('Official sources come first; secondary sources are labelled. English-language Wikipedia is never used or linked: it is unreliable on Israel-related information.', 'מקורות רשמיים קודמים לכול; מקורות משניים מסומנים. ויקיפדיה באנגלית אינה משמשת כמקור ואין אליה קישורים: היא אינה אמינה במידע הנוגע לישראל.')}</p>
         <ul className="small" style={{ paddingInlineStart: 18 }}>
           {used.map((x) => (
             <li key={x.id} style={{ marginBottom: 8 }}>

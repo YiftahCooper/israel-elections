@@ -171,3 +171,15 @@ rewrites were checked to contain only timestamp changes and restored before comm
 These checks establish reproducible arithmetic, retained-input integrity and the
 explicit roster contracts. They do not establish names for unavailable rosters or
 resolve the source discrepancies recorded in 0052.
+
+## Addendum, 4 November 2026: official membership cross-check replaces English Wikipedia
+
+The owner does not accept English-language Wikipedia as a source. The two fallback identity cross-checks
+(`k16-membership-secondary`, `k17-membership-secondary`) are replaced by the Knesset's official OData
+service (`k16-membership-odata`, `k17-membership-odata`), retained as `data/raw/k16|k17/knesset-odata-members.json`.
+Comparing the opening membership (17 February 2003; 17 April 2006) with every elected member in the
+datasets matched all 240 identities, allowing only spelling and short-name forms (for example יוסף/יוסי,
+אברהם/אברהם-בלילא, מגדלה/מג'אדלה). The one substantive difference is Sharansky, elected per the 2003
+results notice, whose seat Solodkin held at the opening; the OData record confirms that caveat officially.
+No dataset value changed. The English Wikipedia URLs listed in the Sources section below are historical
+references only and are no longer used.

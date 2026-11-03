@@ -110,7 +110,7 @@ describe('k17 — released national and locality datasets; explicit roster limit
       wrong.electedCrossCheck!.resultsNamesHe[0] = 'שם שגוי';
       expect(() => verifyElectedRoster(wrong, seats, 'k17-results-gazette')).toThrow();
       const secondary = structuredClone(r);
-      secondary.electedCrossCheck!.sourceId = 'k17-membership-secondary';
+      secondary.electedCrossCheck!.sourceId = 'k17-membership-odata';
       expect(() => verifyElectedRoster(secondary, seats, 'k17-results-gazette')).toThrow(/official elected cross-check/);
     }
     expect(ds.status.noteEn).toContain('Every winning list includes all elected ranks');

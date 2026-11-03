@@ -24,7 +24,8 @@ changed behaviour, especially allocation boundaries and official-result reproduc
 
 Never invent votes, candidates, affiliations or agreements. Retain sources and record
 URLs, retrieval times and hashes in `data/raw/SOURCES.json`. Prefer primary publications;
-label secondary sources explicitly, including affected candidate rosters. A downloaded
+label secondary sources explicitly, including affected candidate rosters. Never use, cite or
+link English-language Wikipedia (see the source policy in [DATA.md](docs/DATA.md)). A downloaded
 source is not a verified dataset. Keep elections unavailable until their data and
 allocation checks pass. See [DATA.md](docs/DATA.md) for outstanding verification work.
 

@@ -292,7 +292,7 @@ export function releaseDataset(audit: Audit): { ds: ElectionDataset; loc: Locali
       candidatesSource: review.candidateChecks.sourceId, notesHe }, LIST_KEYS) as unknown as ElectionDataset['lists'][number];
   });
   ds.sourceIds = [review.resultsSourceId, review.candidateChecks.sourceId, review.agreements.sourceId, review.supplementalTotals.sourceId,
-    `${review.id}-ballots-datagov`, `${review.id}-national-reviewed`, `${review.id}-reconciliation-reviewed`, ...retained.sourceIds, `${review.id}-membership-secondary`, ...(n === 16 ? ['k16-sharansky-withdrawal', 'k16-knesset-vote-crosscheck'] : [])];
+    `${review.id}-ballots-datagov`, `${review.id}-national-reviewed`, `${review.id}-reconciliation-reviewed`, ...retained.sourceIds, `${review.id}-membership-odata`, ...(n === 16 ? ['k16-sharansky-withdrawal', 'k16-knesset-vote-crosscheck'] : [])];
   ds.buildInfo = { builtAt: new Date().toISOString(), rawSha256: manifestHashes(ds.sourceIds) };
   const env = retained.rows.find(r => r.nameHe === 'מעטפות כפולות');
   ds.totals.envelopeVotes = env?.votesCast;
