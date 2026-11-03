@@ -90,3 +90,12 @@ code consistency, not that missing CEC interpretation has been recovered. Do not
 release k6, reinterpret connected-unit quotas or permit a second pair remainder
 seat merely to force the published result. A contemporaneous allocation memorandum
 or ruling is needed to resolve that discrepancy.
+
+## Correction addendum — 1965 connection (3 November 2026)
+
+Fresh visual inspection of the retained YP 1225 p.189 reads **את–רא**,
+Alignment–Progress and Development, not את–יא. The printed name and letters both
+contradict the earlier transcription. Correcting that input reproduces every k6
+seat without changing the engine; all elected names are now checked and k6 is
+released nationally. [0069a](0069a-k6-corrected-connection-national-release.md)
+supersedes the 1965-specific mismatch/hold above. Other stated legal limits remain.

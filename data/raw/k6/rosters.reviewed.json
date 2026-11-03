@@ -1,0 +1,964 @@
+{
+  "id": "k6",
+  "reviewedOn": "2026-11-03",
+  "candidateSourceId": "k6-candidates-gazette",
+  "resultsSourceId": "k6-results-gazette",
+  "method": "Visual transcription of official candidate gazette YP 1222; name-by-name comparison to elected names in YP 1230 pp.312–313. PDF pages are 1-based. Candidate spellings retained; punctuation and spacing normalized. No secondary candidate names.",
+  "lists": [
+    {
+      "letters": "את",
+      "candidatePdfPages": [
+        2,
+        3
+      ],
+      "truncated": true,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "אשכול לוי"
+        },
+        {
+          "rank": 2,
+          "nameHe": "לוז קדיש"
+        },
+        {
+          "rank": 3,
+          "nameHe": "גלילי ישראל"
+        },
+        {
+          "rank": 4,
+          "nameHe": "מאיר גולדה"
+        },
+        {
+          "rank": 5,
+          "nameHe": "שיטרית בכור שלום"
+        },
+        {
+          "rank": 6,
+          "nameHe": "אלון יגאל"
+        },
+        {
+          "rank": 7,
+          "nameHe": "ארן זלמן"
+        },
+        {
+          "rank": 8,
+          "nameHe": "ספיר פנחס"
+        },
+        {
+          "rank": 9,
+          "nameHe": "אבן אבא"
+        },
+        {
+          "rank": 10,
+          "nameHe": "ששון אליהו"
+        },
+        {
+          "rank": 11,
+          "nameHe": "כרמל משה"
+        },
+        {
+          "rank": 12,
+          "nameHe": "גוברין עקיבא"
+        },
+        {
+          "rank": 13,
+          "nameHe": "גבתי חיים"
+        },
+        {
+          "rank": 14,
+          "nameHe": "צדוק חיים יוסף"
+        },
+        {
+          "rank": 15,
+          "nameHe": "ברקת ראובן"
+        },
+        {
+          "rank": 16,
+          "nameHe": "ישעיהו-שרעבי ישראל"
+        },
+        {
+          "rank": 17,
+          "nameHe": "ביבי מרדכי"
+        },
+        {
+          "rank": 18,
+          "nameHe": "נמיר מרדכי"
+        },
+        {
+          "rank": 19,
+          "nameHe": "בקר אהרון"
+        },
+        {
+          "rank": 20,
+          "nameHe": "הכהן דוד"
+        },
+        {
+          "rank": 21,
+          "nameHe": "הקטין רות"
+        },
+        {
+          "rank": 22,
+          "nameHe": "קרגמן ישראל"
+        },
+        {
+          "rank": 23,
+          "nameHe": "סדן דב"
+        },
+        {
+          "rank": 24,
+          "nameHe": "אליאב אריה"
+        },
+        {
+          "rank": 25,
+          "nameHe": "ידלין אהרון"
+        },
+        {
+          "rank": 26,
+          "nameHe": "צור זאב"
+        },
+        {
+          "rank": 27,
+          "nameHe": "נצר דבורה"
+        },
+        {
+          "rank": 28,
+          "nameHe": "ברעם משה"
+        },
+        {
+          "rank": 29,
+          "nameHe": "שורש שמואל"
+        },
+        {
+          "rank": 30,
+          "nameHe": "סרדינס משה"
+        },
+        {
+          "rank": 31,
+          "nameHe": "ארם משה"
+        },
+        {
+          "rank": 32,
+          "nameHe": "שרף זאב"
+        },
+        {
+          "rank": 33,
+          "nameHe": "כהן מנחם"
+        },
+        {
+          "rank": 34,
+          "nameHe": "דינשטיין צבי"
+        },
+        {
+          "rank": 35,
+          "nameHe": "זר מרדכי"
+        },
+        {
+          "rank": 36,
+          "nameHe": "כהן גבריאל"
+        },
+        {
+          "rank": 37,
+          "nameHe": "חסין אשר"
+        },
+        {
+          "rank": 38,
+          "nameHe": "צברי רחל"
+        },
+        {
+          "rank": 39,
+          "nameHe": "אזניה ברוך"
+        },
+        {
+          "rank": 40,
+          "nameHe": "פתל דוד"
+        },
+        {
+          "rank": 41,
+          "nameHe": "ביטון אברהם"
+        },
+        {
+          "rank": 42,
+          "nameHe": "אלוני שולמית"
+        },
+        {
+          "rank": 43,
+          "nameHe": "עופר מרדכי"
+        },
+        {
+          "rank": 44,
+          "nameHe": "אוזן אהרון"
+        },
+        {
+          "rank": 45,
+          "nameHe": "פישר יוסף"
+        }
+      ],
+      "resultsPdfPages": [
+        2
+      ],
+      "electedCandidateRanks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45
+      ],
+      "electedNames": [
+        "אשכול לוי",
+        "לוז קדיש",
+        "גלילי ישראל",
+        "מאיר גולדה",
+        "שיטרית בכור שלום",
+        "אלון יגאל",
+        "ארן זלמן",
+        "ספיר פנחס",
+        "אבן אבא",
+        "ששון אליהו",
+        "כרמל משה",
+        "גוברין עקיבא",
+        "גבתי חיים",
+        "צדוק חיים יוסף",
+        "ברקת ראובן",
+        "ישעיהו-שרעבי ישראל",
+        "ביבי מרדכי",
+        "נמיר מרדכי",
+        "בקר אהרון",
+        "הכהן דוד",
+        "הקטין רות",
+        "קרגמן ישראל",
+        "סדן דב",
+        "אליאב אריה",
+        "ידלין אהרון",
+        "צור זאב",
+        "נצר דבורה",
+        "ברעם משה",
+        "שורש שמואל",
+        "סרדינס משה",
+        "ארם משה",
+        "שרף זאב",
+        "כהן מנחם",
+        "דינשטיין צבי",
+        "זר מרדכי",
+        "כהן גבריאל",
+        "חסין אשר",
+        "צברי רחל",
+        "אזניה ברוך",
+        "פתל דוד",
+        "ביטון אברהם",
+        "אלוני שולמית",
+        "עופר מרדכי",
+        "אוזן אהרון",
+        "פישר יוסף"
+      ],
+      "excludedCandidateRanks": [],
+      "crossCheck": "All elected identities visually compared name by name with YP 1230; elected order is the contiguous registered prefix. Candidate spelling retained with punctuation/spacing normalized."
+    },
+    {
+      "letters": "ב",
+      "candidatePdfPages": [
+        5
+      ],
+      "truncated": true,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "שפירא חיים משה"
+        },
+        {
+          "rank": 2,
+          "nameHe": "בורג יוסף ד״ר"
+        },
+        {
+          "rank": 3,
+          "nameHe": "ורהפטיג זרח ד״ר"
+        },
+        {
+          "rank": 4,
+          "nameHe": "רפאל יצחק"
+        },
+        {
+          "rank": 5,
+          "nameHe": "הרב בן מאיר ישראל שלמה ד״ר"
+        },
+        {
+          "rank": 6,
+          "nameHe": "אונא משה"
+        },
+        {
+          "rank": 7,
+          "nameHe": "לוי דניאל יצחק"
+        },
+        {
+          "rank": 8,
+          "nameHe": "שחור בנימין"
+        },
+        {
+          "rank": 9,
+          "nameHe": "חזני מיכאל"
+        },
+        {
+          "rank": 10,
+          "nameHe": "סנהדראי טובה"
+        },
+        {
+          "rank": 11,
+          "nameHe": "דיין יחיא שבתי"
+        }
+      ],
+      "resultsPdfPages": [
+        2
+      ],
+      "electedCandidateRanks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "electedNames": [
+        "שפירא חיים משה",
+        "בורג יוסף ד״ר",
+        "ורהפטיג זרח ד״ר",
+        "רפאל יצחק",
+        "הרב בן מאיר ישראל שלמה ד״ר",
+        "אונא משה",
+        "לוי דניאל יצחק",
+        "שחור בנימין",
+        "חזני מיכאל",
+        "סנהדראי טובה",
+        "דיין יחיא שבתי"
+      ],
+      "excludedCandidateRanks": [],
+      "crossCheck": "All elected identities visually compared name by name with YP 1230; elected order is the contiguous registered prefix. Candidate spelling retained with punctuation/spacing normalized."
+    },
+    {
+      "letters": "ג",
+      "candidatePdfPages": [
+        7
+      ],
+      "truncated": true,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "לוין יצחק מאיר"
+        },
+        {
+          "rank": 2,
+          "nameHe": "לורנץ שלמה"
+        },
+        {
+          "rank": 3,
+          "nameHe": "פרוש מנחם"
+        },
+        {
+          "rank": 4,
+          "nameHe": "גרוס שלמה יעקב"
+        }
+      ],
+      "resultsPdfPages": [
+        2
+      ],
+      "electedCandidateRanks": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "electedNames": [
+        "לוין יצחק מאיר",
+        "לורנץ שלמה",
+        "פרוש מנחם",
+        "גרוס שלמה יעקב"
+      ],
+      "excludedCandidateRanks": [],
+      "crossCheck": "All elected identities visually compared name by name with YP 1230; elected order is the contiguous registered prefix. Candidate spelling retained with punctuation/spacing normalized."
+    },
+    {
+      "letters": "ד",
+      "candidatePdfPages": [
+        9
+      ],
+      "truncated": true,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "כהן (כהנא) קלמן"
+        },
+        {
+          "rank": 2,
+          "nameHe": "כ״ץ יעקב"
+        }
+      ],
+      "resultsPdfPages": [
+        3
+      ],
+      "electedCandidateRanks": [
+        1,
+        2
+      ],
+      "electedNames": [
+        "כהן (כהנא) קלמן",
+        "כ״ץ יעקב"
+      ],
+      "excludedCandidateRanks": [],
+      "crossCheck": "All elected identities visually compared name by name with YP 1230; elected order is the contiguous registered prefix. Candidate spelling retained with punctuation/spacing normalized."
+    },
+    {
+      "letters": "ו",
+      "candidatePdfPages": [
+        11
+      ],
+      "truncated": true,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "וילנר מאיר"
+        },
+        {
+          "rank": 2,
+          "nameHe": "טובי תופיק"
+        },
+        {
+          "rank": 3,
+          "nameHe": "חביבי אמיל"
+        }
+      ],
+      "resultsPdfPages": [
+        3
+      ],
+      "electedCandidateRanks": [
+        1,
+        2,
+        3
+      ],
+      "electedNames": [
+        "וילנר מאיר",
+        "טובי תופיק",
+        "חביבי אמיל"
+      ],
+      "excludedCandidateRanks": [],
+      "crossCheck": "All elected identities visually compared name by name with YP 1230; elected order is the contiguous registered prefix. Candidate spelling retained with punctuation/spacing normalized."
+    },
+    {
+      "letters": "חל",
+      "candidatePdfPages": [
+        13
+      ],
+      "truncated": true,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "בגין מנחם"
+        },
+        {
+          "rank": 2,
+          "nameHe": "ספיר יוסף"
+        },
+        {
+          "rank": 3,
+          "nameHe": "בדר יוחנן ד״ר"
+        },
+        {
+          "rank": 4,
+          "nameHe": "רימלט אלימלך ד״ר"
+        },
+        {
+          "rank": 5,
+          "nameHe": "בן אליעזר אריה"
+        },
+        {
+          "rank": 6,
+          "nameHe": "סרלין יוסף"
+        },
+        {
+          "rank": 7,
+          "nameHe": "מרידור יעקב"
+        },
+        {
+          "rank": 8,
+          "nameHe": "שטרן מרדכי חיים"
+        },
+        {
+          "rank": 9,
+          "nameHe": "לנדאו חיים"
+        },
+        {
+          "rank": 10,
+          "nameHe": "קלינגהופר יצחק הנס"
+        },
+        {
+          "rank": 11,
+          "nameHe": "שופמן יוסף"
+        },
+        {
+          "rank": 12,
+          "nameHe": "צימרמן צבי"
+        },
+        {
+          "rank": 13,
+          "nameHe": "תמיר שמואל"
+        },
+        {
+          "rank": 14,
+          "nameHe": "אברמוב שניאור זלמן"
+        },
+        {
+          "rank": 15,
+          "nameHe": "שוסטק אליעזר"
+        },
+        {
+          "rank": 16,
+          "nameHe": "עוזיאל ברוך"
+        },
+        {
+          "rank": 17,
+          "nameHe": "אבניאל בנימין ד״ר"
+        },
+        {
+          "rank": 18,
+          "nameHe": "פרלשטיין שלמה"
+        },
+        {
+          "rank": 19,
+          "nameHe": "רזיאל-נאור אסתר"
+        },
+        {
+          "rank": 20,
+          "nameHe": "גולדשטיין אהרן"
+        },
+        {
+          "rank": 21,
+          "nameHe": "טיאר אברהם אלברט-ראול"
+        },
+        {
+          "rank": 22,
+          "nameHe": "תמיר יוסף"
+        },
+        {
+          "rank": 23,
+          "nameHe": "קרמרמן יוסף"
+        },
+        {
+          "rank": 24,
+          "nameHe": "מרידור אליהו"
+        },
+        {
+          "rank": 25,
+          "nameHe": "כהן-מגורי חיים"
+        },
+        {
+          "rank": 26,
+          "nameHe": "ידיד מנחם"
+        }
+      ],
+      "resultsPdfPages": [
+        3
+      ],
+      "electedCandidateRanks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "electedNames": [
+        "בגין מנחם",
+        "ספיר יוסף",
+        "בדר יוחנן ד״ר",
+        "רימלט אלימלך ד״ר",
+        "בן אליעזר אריה",
+        "סרלין יוסף",
+        "מרידור יעקב",
+        "שטרן מרדכי חיים",
+        "לנדאו חיים",
+        "קלינגהופר יצחק הנס",
+        "שופמן יוסף",
+        "צימרמן צבי",
+        "תמיר שמואל",
+        "אברמוב שניאור זלמן",
+        "שוסטק אליעזר",
+        "עוזיאל ברוך",
+        "אבניאל בנימין ד״ר",
+        "פרלשטיין שלמה",
+        "רזיאל-נאור אסתר",
+        "גולדשטיין אהרן",
+        "טיאר אברהם אלברט-ראול",
+        "תמיר יוסף",
+        "קרמרמן יוסף",
+        "מרידור אליהו",
+        "כהן-מגורי חיים",
+        "ידיד מנחם"
+      ],
+      "excludedCandidateRanks": [],
+      "crossCheck": "All elected identities visually compared name by name with YP 1230; elected order is the contiguous registered prefix. Candidate spelling retained with punctuation/spacing normalized."
+    },
+    {
+      "letters": "יא",
+      "candidatePdfPages": [
+        15
+      ],
+      "truncated": true,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "עוביד דיאב"
+        },
+        {
+          "rank": 2,
+          "nameHe": "מעדי ג׳בר"
+        }
+      ],
+      "resultsPdfPages": [
+        3
+      ],
+      "electedCandidateRanks": [
+        1,
+        2
+      ],
+      "electedNames": [
+        "עוביד דיאב",
+        "מעדי ג׳בר"
+      ],
+      "excludedCandidateRanks": [],
+      "crossCheck": "All elected identities visually compared name by name with YP 1230; elected order is the contiguous registered prefix. Candidate spelling retained with punctuation/spacing normalized."
+    },
+    {
+      "letters": "כא",
+      "candidatePdfPages": [
+        17
+      ],
+      "truncated": true,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "בן-גוריון דוד"
+        },
+        {
+          "rank": 2,
+          "nameHe": "סמילנסקי יזהר"
+        },
+        {
+          "rank": 3,
+          "nameHe": "פרס שמעון"
+        },
+        {
+          "rank": 4,
+          "nameHe": "גז מטילדה"
+        },
+        {
+          "rank": 5,
+          "nameHe": "אלמוגי יוסף אהרן"
+        },
+        {
+          "rank": 6,
+          "nameHe": "נבון יצחק"
+        },
+        {
+          "rank": 7,
+          "nameHe": "דיין משה"
+        },
+        {
+          "rank": 8,
+          "nameHe": "צור צבי"
+        },
+        {
+          "rank": 9,
+          "nameHe": "סורקיס מרדכי"
+        },
+        {
+          "rank": 10,
+          "nameHe": "בן-פורת מרדכי"
+        }
+      ],
+      "resultsPdfPages": [
+        3
+      ],
+      "electedCandidateRanks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "electedNames": [
+        "בן-גוריון דוד",
+        "סמילנסקי יזהר",
+        "פרס שמעון",
+        "גז מטילדה",
+        "אלמוגי יוסף אהרן",
+        "נבון יצחק",
+        "דיין משה",
+        "צור צבי",
+        "סורקיס מרדכי",
+        "בן-פורת מרדכי"
+      ],
+      "excludedCandidateRanks": [],
+      "crossCheck": "All elected identities visually compared name by name with YP 1230; elected order is the contiguous registered prefix. Candidate spelling retained with punctuation/spacing normalized."
+    },
+    {
+      "letters": "לע",
+      "candidatePdfPages": [
+        20
+      ],
+      "truncated": true,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "רוזן פנחס"
+        },
+        {
+          "rank": 2,
+          "nameHe": "קול משה"
+        },
+        {
+          "rank": 3,
+          "nameHe": "הררי יזהר"
+        },
+        {
+          "rank": 4,
+          "nameHe": "האוזנר גדעון"
+        },
+        {
+          "rank": 5,
+          "nameHe": "שערי יהודה"
+        }
+      ],
+      "resultsPdfPages": [
+        3
+      ],
+      "electedCandidateRanks": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "electedNames": [
+        "רוזן פנחס",
+        "קול משה",
+        "הררי יזהר",
+        "האוזנר גדעון",
+        "שערי יהודה"
+      ],
+      "excludedCandidateRanks": [],
+      "crossCheck": "All elected identities visually compared name by name with YP 1230; elected order is the contiguous registered prefix. Candidate spelling retained with punctuation/spacing normalized."
+    },
+    {
+      "letters": "מ",
+      "candidatePdfPages": [
+        23
+      ],
+      "truncated": true,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "יערי מאיר"
+        },
+        {
+          "rank": 2,
+          "nameHe": "חזן יעקב"
+        },
+        {
+          "rank": 3,
+          "nameHe": "שם-טוב ויקטור"
+        },
+        {
+          "rank": 4,
+          "nameHe": "רוזן שלמה"
+        },
+        {
+          "rank": 5,
+          "nameHe": "ארזי ראובן"
+        },
+        {
+          "rank": 6,
+          "nameHe": "תלמי אמה"
+        },
+        {
+          "rank": 7,
+          "nameHe": "זועבי עבדל-עזיז"
+        },
+        {
+          "rank": 8,
+          "nameHe": "פלד נתן"
+        }
+      ],
+      "resultsPdfPages": [
+        3
+      ],
+      "electedCandidateRanks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "electedNames": [
+        "יערי מאיר",
+        "חזן יעקב",
+        "שם-טוב ויקטור",
+        "רוזן שלמה",
+        "ארזי ראובן",
+        "תלמי אמה",
+        "זועבי עבדל-עזיז",
+        "פלד נתן"
+      ],
+      "excludedCandidateRanks": [],
+      "crossCheck": "All elected identities visually compared name by name with YP 1230; elected order is the contiguous registered prefix. Candidate spelling retained with punctuation/spacing normalized."
+    },
+    {
+      "letters": "ק",
+      "candidatePdfPages": [
+        27
+      ],
+      "truncated": true,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "מיקוניס שמואל"
+        }
+      ],
+      "resultsPdfPages": [
+        3
+      ],
+      "electedCandidateRanks": [
+        1
+      ],
+      "electedNames": [
+        "מיקוניס שמואל"
+      ],
+      "excludedCandidateRanks": [],
+      "crossCheck": "All elected identities visually compared name by name with YP 1230; elected order is the contiguous registered prefix. Candidate spelling retained with punctuation/spacing normalized."
+    },
+    {
+      "letters": "רא",
+      "candidatePdfPages": [
+        29
+      ],
+      "truncated": true,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "אלזועבי סיף-אלדין"
+        },
+        {
+          "rank": 2,
+          "nameHe": "נכלה אליאס"
+        }
+      ],
+      "resultsPdfPages": [
+        3
+      ],
+      "electedCandidateRanks": [
+        1,
+        2
+      ],
+      "electedNames": [
+        "אלזועבי סיף-אלדין",
+        "נכלה אליאס"
+      ],
+      "excludedCandidateRanks": [],
+      "crossCheck": "All elected identities visually compared name by name with YP 1230; elected order is the contiguous registered prefix. Candidate spelling retained with punctuation/spacing normalized."
+    },
+    {
+      "letters": "ש",
+      "candidatePdfPages": [
+        31
+      ],
+      "truncated": true,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "אבנרי אורי"
+        }
+      ],
+      "resultsPdfPages": [
+        3
+      ],
+      "electedCandidateRanks": [
+        1
+      ],
+      "electedNames": [
+        "אבנרי אורי"
+      ],
+      "excludedCandidateRanks": [],
+      "crossCheck": "All elected identities visually compared name by name with YP 1230; elected order is the contiguous registered prefix. Candidate spelling retained with punctuation/spacing normalized."
+    }
+  ]
+}

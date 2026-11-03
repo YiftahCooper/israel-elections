@@ -129,7 +129,7 @@
     "pairs": [
       [
         "את",
-        "יא"
+        "רא"
       ],
       [
         "כא",
@@ -139,14 +139,27 @@
     "sourceId": "k6-agreements-gazette",
     "page": 189,
     "pdfPage": 1,
-    "note": "Entire signed notice in YP 1225 read visually, including final pair; olaw.org.il mirror disclosed."
+    "note": "YP 1225 p.189, PDF p.1: the complete signed notice explicitly names Alignment (את) with Progress and Development (קדמה ופתוח, רא), NOT Cooperation and Brotherhood (יא). Second pair כא–כס retained; Peace fails 1%. Corrected after fresh visual inspection; see decision 0069a. Official publication on the disclosed olaw.org.il mirror."
   },
   "rosters": {
     "completeWinningRosters": false,
-    "reviewedLists": []
+    "meetsReleaseStandard": true,
+    "reviewedLists": [
+      "את",
+      "ב",
+      "ג",
+      "ד",
+      "ו",
+      "חל",
+      "יא",
+      "כא",
+      "לע",
+      "מ",
+      "ק",
+      "רא",
+      "ש"
+    ],
+    "sourceId": "k6-rosters-reviewed"
   },
-  "releaseBlockers": [
-    "Required winning-list candidate prefixes and elected-name cross-checks have not been transcribed.",
-    "Exact seat reproduction fails with the complete retained two-pair notice; see decision 0068."
-  ]
+  "releaseBlockers": []
 }

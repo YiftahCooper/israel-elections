@@ -70,11 +70,11 @@
     "date": "1965-11-02",
     "nameHe": "הבחירות לכנסת ה-6",
     "nameEn": "Election to the 6th Knesset",
-    "available": false,
+    "available": true,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "National totals reconciled. Official two-pair notice retained, but allocation gives Alignment 44/45 and HaOlam HaZeh 2/1. Winning rosters unverified. No locality dataset. See decision 0068.",
-      "noteHe": "הסכומים הארציים אומתו. נשמרה ההודעה הרשמית על שני קשרים, אך ההקצאה נותנת למערך 44 במקום 45 ולעולם הזה 2 במקום 1. רשימות המועמדים הזוכות טרם אומתו. ללא נתוני יישובים. ראו החלטה 0068."
+      "stage": "official-final",
+      "noteEn": "Official national votes, agreements and all 120 seats verified. YP 1225 connects Alignment (את) to Progress and Development (רא); the earlier יא transcription was incorrect. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. See decision 0069a.",
+      "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. ילקוט הפרסומים 1225 מחבר את המערך (את) לקדמה ופתוח (רא); התמלול הקודם יא היה שגוי. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. ראו החלטה 0069a."
     }
   },
   {

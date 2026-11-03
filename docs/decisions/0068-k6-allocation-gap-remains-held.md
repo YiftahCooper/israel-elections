@@ -35,3 +35,15 @@ No k6 winning prefix has been promoted or claimed cross-checked. The roster requ
 | ש | 1 | 2 | Not transcribed | Unverified |
 
 **Keep `available: false`. No `public/data/k6.json` or locality file is emitted.** The bilingual status note identifies both seat differences, incomplete winning rosters and no localities. Tests retain the independent official seat table and assert the exact two mismatches; the build rejects a forced availability change. No engine or app code was changed for this hypothesis.
+
+## Addendum — hold resolved by primary-notice re-reading (3 November 2026)
+
+[0069a](0069a-k6-corrected-connection-national-release.md) supersedes this hold.
+The unchanged retained YP 1225 p.189 **names Progress and Development (רא)** as
+Alignment's partner, not Cooperation and Brotherhood (יא). The earlier transcription
+and this record's description of it were wrong. Correcting את–יא to **את–רא**
+reproduces every seat under the existing `ISRAEL_1951` rules, including Alignment
+45 and HaOlam HaZeh 1. No alternative allocation interpretation is needed or adopted.
+All 120 elected identities are now cross-checked against the gazette, winning
+prefixes retained, and k6 released nationally without localities. The original
+failed diagnostic above remains historical evidence of the transcription error.
