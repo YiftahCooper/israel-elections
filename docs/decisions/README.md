@@ -25,3 +25,10 @@ is labelled. Suggested alternatives are not evidence of a past design discussion
 | [0017: Track list lineage across mergers and splits](0017-list-lineage-comparisons.md) | Keep originIds on lists and originListId on historical candidates. |
 | [0018: Report exact ties and record lottery choices](0018-explicit-lottery-outcomes.md) | Detect ties with exact fractions, record tied units and warn lottery-required unless a valid choice is supplied. |
 | [0019: Gate election selection on dataset availability](0019-election-availability-and-sessions.md) | Load public/data/elections.json, sort newest first and disable unavailable elections in the picker. |
+| [0020: K22 national electorate](0020-k22-national-electorate.md) | Keep the CEC national electorate (6,394,030) and disclose the 2,812-voter gap to the locality files. |
+| [0021: K22–K24 gazettes and reconciliation](0021-k22-k24-gazettes-and-reconciliation.md) | Gazetted rosters, complete official agreement notices and portable locality digests for 2019b–2021. |
+| [0030: K20–K21 release evidence](0030-k20-k21-release-evidence.md) | Official rosters, agreements and reproducible verification for 2015 and April 2019. |
+| [0050: K16–K17 progress without release](0050-k16-k17-verified-progress-without-release.md) | Keep 2003 and 2006 unavailable until rosters and documented discrepancies are resolved. |
+| [0051: K16–K17 allocation rules](0051-k16-k17-historical-allocation-evidence.md) | Check the 2003 and 2006 rules without trusting the archive folder's date. |
+
+Records 0020–0059 are grouped by election era; numbers in between are left free for that era.

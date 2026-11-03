@@ -1,9 +1,10 @@
 # Election data: coverage and remaining verification
 
-This checkout contains **two usable election datasets, k25 and k26**. The historical
-extension is incomplete. Official sources for k16–k24 have been downloaded, but no
-new election has passed all release gates. Do not describe those sources as nine
-verified application datasets. `public/data/elections.json` explicitly marks them unavailable.
+The app offers **seven verified election datasets: k20–k26** (2015–2026). For each, the engine
+reproduces every list's officially published seats, checked by `tests/historical-kNN.test.ts`
+and `tests/engine.test.ts` (2026: the reported final count, pending gazettement).
+Official sources for **k16–k19** (2003–2013) are retained, but those elections have not yet
+passed every release gate; `public/data/elections.json` marks them unavailable.
 
 ## Sources by election
 
@@ -166,10 +167,8 @@ paged official CKAN API. It discovers resource IDs from the retained package cat
 dependencies are required. This is reproducible working material, not the only copy of
 unique data. Scratch's git exclusion is verified; no claim is made about backup software.
 
-`node scripts/build-datasets.ts` still builds **only k25/k26** with their existing strict
-checks. Success is not evidence that k16–k24 build. The new rule-era tests use synthetic
-inputs to test resetting rules; nine actual per-election reproduction, threshold/quota,
-candidate-leader and agreement tests are still required before releasing those datasets.
+`node scripts/build-datasets.ts` builds every available election (k20–k26) with strict checks.
+For k16–k17 it validates the retained evidence but emits no dataset; k18–k19 are not yet built.
 
 ## K20 and K21 release verification
 

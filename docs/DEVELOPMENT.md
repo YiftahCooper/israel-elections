@@ -70,8 +70,8 @@ and source evidence for agreements. These checks are explicit, not a guarantee t
 possible parsing error is caught. The manifest records hashes; the builder’s recording of
 those hashes is not a fresh integrity audit of every input file.
 
-The production builder currently covers only k25/k26. The historical gazette parser is
-an unfinished prototype, outside that build. Historical polling-station working copies
+The production builder covers k20–k26; each historical election has its own module in
+`scripts/lib/historical/`. `scripts/lib/parse-historical-gazette.ts` is an unfinished prototype outside the build. Historical polling-station working copies
 are recovered into `.backup-scratch/raw/`; see [DATA.md](DATA.md) and decision
 [0004](decisions/0004-polling-station-storage.md) for storage and recovery details.
 
@@ -85,13 +85,13 @@ are not byte-for-byte identical. Do not create a second data ledger.
 Vitest covers official 2022 seats, reported 2026 final-count seats, exact threshold and
 agreement cases, randomised D’Hondt comparisons, scenario actions, vote edits and analysis.
 The 2026 comparison is explicitly secondary; `officialSeats` remains null in that dataset.
-Historical-era tests cover rule selection and resets, not actual 2003–2021 seat reproduction.
+Per-election tests (`tests/historical-kNN.test.ts`) reproduce the official seats of 2015–2021.
 
 Playwright covers the election picker, interface levels and a scenario involving a merger,
 added voters, an agreement change, boundary tools, comparison, saving and share-link replay.
 These tests do not certify all possible scenarios or constitute an accessibility audit.
 
-Not implemented: released 2003–2021 datasets, English candidate transliterations,
+Not implemented: released 2003–2013 datasets, English candidate transliterations,
 candidate portraits/party logos, later membership replacements and polling-station-level
 simulation. Locality results can seed a hypothetical turnout model; that model is not
 an official forecast.
