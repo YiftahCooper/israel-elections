@@ -114,6 +114,54 @@ function limitFor(input: AllocationInput, target: string, source: VoteSource, di
   return input.lists.filter((l) => l.id !== target && (source.listIds.length === 0 || source.listIds.includes(l.id))).reduce((s, l) => s + l.votes, 0n);
 }
 
+// ------------------------------------------------- exact skipping for linear vote moves
+//
+// When every list's votes are linear in a count k (new voters: the target ± k; a transfer: the
+// target ± k and the other list ∓ k; a sweep: the target's own count), each decision the engine
+// records (PreparedAllocation.run `decisions`) is either the sign of a function linear in k or a
+// whole number that is monotone in k, given the decisions before it. The counts sharing a full
+// record therefore form one contiguous range, on which every seat and qualification is the same.
+// So when two counts have equal records, every count between them has the same allocation and
+// need not be evaluated. tests/analysis-regions.test.ts checks this vote by vote. Proportional
+// moves are not linear (largest-remainder splitting is not monotone), so they are scanned in full.
+
+const sameDecisions = (a: unknown[] | null, b: unknown[] | null) =>
+  a !== null && b !== null && a.length === b.length && a.every((x, i) => x === b[i]);
+
+/** The last index in [i, last] whose decisions equal `ref`, the decisions at i: every index up to
+ *  it shares them. Found by doubling then bisection; `next` is the probe at the following index
+ *  when that was evaluated. */
+function extent<P>(i: bigint, last: bigint, probe: (j: bigint) => P, decisionsOf: (p: P) => unknown[] | null, ref: unknown[]): { end: bigint; next: P | null } {
+  let good = i; let bad = last + 1n; let next: P | null = null;
+  for (let d = 1n; good + d <= last; d *= 2n) {
+    const q = probe(good + d);
+    if (!sameDecisions(decisionsOf(q), ref)) { bad = good + d; next = q; break; }
+    good += d;
+  }
+  while (bad - good > 1n) {
+    const mid = (good + bad) / 2n; const q = probe(mid);
+    if (sameDecisions(decisionsOf(q), ref)) good = mid; else { bad = mid; next = q; }
+  }
+  return { end: good, next };
+}
+
+interface Probe { ok: boolean; decisions: unknown[] | null }
+
+/** The first index j in [0, count) with probe(j).ok, or −1. With `linear`, indices sharing the
+ *  previous probe's decisions are skipped (they share its outcome). */
+function firstOk(count: bigint, probe: (j: bigint) => Probe, linear: boolean): bigint {
+  let p = count > 0n ? probe(0n) : null;
+  for (let j = 0n; p;) {
+    if (p.ok) return j;
+    if (linear && p.decisions) {
+      const { end, next } = extent(j, count - 1n, probe, (q) => q.decisions, p.decisions);
+      j = end + 1n;
+      p = j < count ? next ?? probe(j) : null;
+    } else { j++; p = j < count ? probe(j) : null; }
+  }
+  return -1n;
+}
+
 /** Smallest k ≥ 1 such that goal(allocate(perturb(k))) holds, found by exponential + binary search
  *  and then checked for non-monotonic behaviour by sampling below the answer. */
 /** Counts up to this many votes below a found answer are checked one by one, which proves
@@ -128,6 +176,14 @@ export function minimalChange(input: AllocationInput, target: string, source: Vo
   const test = (k: bigint): AllocationResult | null => { const v = votesAt(k); return v && prepared.run(v); };
   const { monotone: isMonotone = false, seatsOnly: untraced = false } = goal as Goal & GoalFlags;
   const ok = (k: bigint) => { const v = votesAt(k); return v !== null && goal(prepared.run(v, !untraced), before); };
+  // scans: seats-only goals under linear moves may skip counts with equal decisions
+  const linear = untraced && source.kind !== 'proportional';
+  const probe = (k: bigint): Probe => {
+    const v = votesAt(k);
+    if (!v) return { ok: false, decisions: null };
+    const decisions: unknown[] | undefined = linear ? [] : undefined;
+    return { ok: goal(prepared.run(v, !untraced, decisions), before), decisions: decisions ?? null };
+  };
   if (goal(before, before)) return { found: false, votes: null, before, after: null, lastFailing: null, nonMonotonic: false, exact: true, reason: 'already', limit };
   if (limit < 1n) return { found: false, votes: null, before, after: null, lastFailing: null, nonMonotonic: false, exact: true, reason: 'infeasible', limit };
   let hi = 1n;
@@ -137,9 +193,8 @@ export function minimalChange(input: AllocationInput, target: string, source: Vo
     // Exponential probes can jump over an entire successful interval. An affordable range must
     // be checked in full before concluding that no feasible count achieves a non-monotone goal.
     if (!isMonotone && limit <= BigInt(exhaustiveLimit)) {
-      for (let k = 1n; k <= limit; k++) {
-        if (ok(k)) return { found: true, votes: k, before, after: test(k), lastFailing: k - 1n, nonMonotonic: true, exact: true, limit };
-      }
+      const j = firstOk(limit, (j) => probe(1n + j), linear);
+      if (j >= 0n) { const k = 1n + j; return { found: true, votes: k, before, after: test(k), lastFailing: k - 1n, nonMonotonic: true, exact: true, limit }; }
       return { found: false, votes: null, before, after: null, lastFailing: limit, nonMonotonic: false, exact: true, reason: 'limit', limit };
     }
     return { found: false, votes: null, before, after: null, lastFailing: hi, nonMonotonic: false, exact: isMonotone, reason: isMonotone ? 'limit' : 'inconclusive', limit };
@@ -154,14 +209,13 @@ export function minimalChange(input: AllocationInput, target: string, source: Vo
   const gridLimit = BigInt(Math.max(1, exhaustiveLimit));
   const step = isMonotone ? hi : hi - 1n <= gridLimit ? 1n : (hi - 1n + gridLimit - 1n) / gridLimit;
   if (!isMonotone && step > 1n) exact = false;
-  for (let k = step; k < hi; k += step) {
-    if (ok(k)) {
-      // with a grid, refine to the first success after the last checked failure
-      let b = k;
-      if (step > 1n) for (let x = k - step + 1n; x < k; x++) if (ok(x)) { b = x; break; }
-      hi = b; lo = b - 1n;
-      break;
-    }
+  // the counts step, 2·step, … below hi
+  const j = firstOk((hi - 1n) / step, (j) => probe(step * (j + 1n)), linear);
+  if (j >= 0n) {
+    const k = step * (j + 1n);
+    // with a grid, refine to the first success after the last checked failure
+    const x = step > 1n ? firstOk(step - 1n, (i) => probe(k - step + 1n + i), linear) : -1n;
+    hi = x >= 0n ? k - step + 1n + x : k; lo = hi - 1n;
   }
   const nonMonotonic = hi < found;
   return { found: true, votes: hi, before, after: test(hi), lastFailing: lo, nonMonotonic, exact, limit };
@@ -181,17 +235,22 @@ const signature = (r: AllocationResult) => r.lists.map((l) => `${l.seats}${l.qua
 export function sweepVotes(input: AllocationInput, target: string, from: bigint, to: bigint, maxEvaluations = EXHAUSTIVE_LIMIT): SweepResult {
   const prepared = prepareAllocation(input);
   const votes = input.lists.map((l) => l.votes);
-  const at = (v: bigint) => prepared.run(input.lists.map((l, i) => (l.id === target ? v : votes[i])), false);
+  const at = (v: bigint, decisions?: unknown[]) => prepared.run(input.lists.map((l, i) => (l.id === target ? v : votes[i])), false, decisions);
   const mk = (a: bigint, b: bigint, r: AllocationResult): SweepSegment => ({ from: a, to: b, seats: Object.fromEntries(r.lists.filter((l) => l.seats > 0).map((l) => [l.id, l.seats])), qualified: r.lists.filter((l) => l.qualified).map((l) => l.id) });
   if (to < from) return { segments: [], exact: true, step: 1n };
   const span = to - from;
   const step = span <= BigInt(maxEvaluations) ? 1n : (span + BigInt(maxEvaluations) - 1n) / BigInt(maxEvaluations);
+  // evaluated counts: from + step, from + 2·step, …, ending exactly at `to`
+  const last = span === 0n ? 1n : (span + step - 1n) / step;
+  const point = (j: bigint) => (from + j * step > to ? to : from + j * step);
+  const decisionsAt = (j: bigint) => { const d: unknown[] = []; at(point(j), d); return d; };
   const segs: SweepSegment[] = [];
   let curStart = from; let curRes = at(from); let curSig = signature(curRes);
   let prev = from;
-  for (let x = from + step; ; x += step) {
-    const v = x > to ? to : x;
-    const r = at(v); const sig = signature(r);
+  for (let j = 1n; j <= last; j++) {
+    const v = point(j);
+    const decisions: unknown[] = [];
+    const r = at(v, decisions); const sig = signature(r);
     if (sig !== curSig) {
       let a = prev;
       // locate every change between the previous evaluated count and v
@@ -204,8 +263,9 @@ export function sweepVotes(input: AllocationInput, target: string, from: bigint,
         a = hi;
       }
     }
-    prev = v;
-    if (v === to) break;
+    // the following evaluated counts with v's decisions have v's allocation: no change there
+    j = extent(j, last, decisionsAt, (d) => d, decisions).end;
+    prev = point(j);
   }
   segs.push(mk(curStart, to, curRes));
   return { segments: segs, exact: step === 1n, step };

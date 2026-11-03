@@ -63,6 +63,8 @@ interface StageOptions {
   lotteryWinners: Record<string, string>;
   /** null when only the seat outcome is wanted: no steps or warnings are recorded */
   warnings: EngineWarning[] | null;
+  /** receives each vote-dependent decision when not null (see `PreparedAllocation.run`) */
+  decisions: unknown[] | null;
 }
 
 const NOT_COMPETING: Rational = rat(-1n);
@@ -96,6 +98,7 @@ function runRemainderStage(units: WorkUnit[], remaining: number, o: StageOptions
   const value = units.map((u) => quotient(u, o));
   // 81(d)(4): votes are fixed within the stage, so "no more than half the votes" is too
   const halfOrLess = units.map((u) => 2n * u.votes <= o.universeVotes);
+  if (o.majorityCap) o.decisions?.push(...halfOrLess);
   const givenThisRound = units.map(() => false); // largest remainders: one seat per unit per round
   const eligible = units.map(() => false);
   const tied: number[] = [];
@@ -115,6 +118,7 @@ function runRemainderStage(units: WorkUnit[], remaining: number, o: StageOptions
       const c = value[i].num * value[best].den - value[best].num * value[i].den;
       if (c > 0n) { best = i; tied.length = 0; tied.push(i); } else if (c === 0n) tied.push(i);
     }
+    o.decisions?.push(tied.length, ...tied);
     if (best < 0) {
       o.warnings?.push({ code: 'seats-unallocatable', message: `No list can receive seat ${awarded + 1} in stage ${o.stage}.`, data: { stage: o.stage, remaining: remaining - step + 1 } });
       break;
@@ -157,10 +161,12 @@ function divideWithinUnit(unitId: string, members: WorkUnit[], seats: number, ru
   const totalVotes = members.reduce((s, m) => s + m.votes, 0n);
   const highestAverage = rules.remainderMethod === 'sainte-lague';
   let quota = highestAverage ? rat(0n) : computeQuota(totalVotes, seats + (rules.quotaSeatOffset ?? 0), rules.quotaRounding);
+  if (!highestAverage && rules.quotaRounding === 'floor') base.decisions?.push(quota.num);
   if (!highestAverage && quota.num === 0n && seats > 0) quota = rat(totalVotes, BigInt(seats));
   const assign = () => {
     let given = 0;
     for (const w of members) { w.seats = w.initial = Math.min(w.capacity ?? Infinity, highestAverage ? 0 : initialSeats(w.votes, quota)); given += w.seats; }
+    base.decisions?.push(...members.map((w) => w.initial));
     return given;
   };
   let given = assign();
@@ -195,8 +201,11 @@ interface PreparedAgreement {
 /** An allocation whose structure is fixed; `run` evaluates it for one vector of vote counts. */
 export interface PreparedAllocation {
   input: AllocationInput;
-  /** `votes[i]` replaces `input.lists[i].votes`; `trace` false omits steps, divisions and warnings */
-  run(votes: readonly bigint[], trace?: boolean): AllocationResult;
+  /** `votes[i]` replaces `input.lists[i].votes`; `trace` false omits steps, divisions and warnings.
+   *  `decisions`, when given, receives every vote-dependent decision in order: each list's
+   *  qualification, floor quotas, whole-quota seats, the half-votes test and each remainder
+   *  step's tied set (winner first). Everything else, seats included, follows from these. */
+  run(votes: readonly bigint[], trace?: boolean, decisions?: unknown[]): AllocationResult;
 }
 
 export function prepareAllocation(input: AllocationInput): PreparedAllocation {
@@ -228,7 +237,7 @@ export function prepareAllocation(input: AllocationInput): PreparedAllocation {
   const highestAverage = rules.remainderMethod === 'sainte-lague';
   const n = lists.length;
 
-  function run(votes: readonly bigint[], trace = true): AllocationResult {
+  function run(votes: readonly bigint[], trace = true, decisions: unknown[] | null = null): AllocationResult {
     const allWarnings: EngineWarning[] = [];
     const warnings = trace ? allWarnings : null;
     // ballots for a list that does not contest are not valid votes for the threshold base
@@ -239,12 +248,16 @@ export function prepareAllocation(input: AllocationInput): PreparedAllocation {
     let qualifiedCount = 0;
     const needed = rules.threshold.num * totalValid; // 81(a): votes × den ≥ num × total
     for (let i = 0; i < n; i++) {
-      qualified[i] = !withdrawn[i] && votes[i] > 0n && votes[i] * rules.threshold.den >= needed;
+      if (withdrawn[i]) { qualified[i] = false; continue; }
+      const positive = votes[i] > 0n; const passes = votes[i] * rules.threshold.den >= needed;
+      decisions?.push(positive, passes);
+      qualified[i] = positive && passes;
       if (qualified[i]) { qualifyingVotes += votes[i]; qualifiedCount++; }
     }
 
     // --- general quota and initial seats (81(b), 81(c))
     let quota = highestAverage ? rat(0n) : computeQuota(qualifyingVotes, rules.seats + (rules.quotaSeatOffset ?? 0), rules.quotaRounding);
+    if (!highestAverage && rules.quotaRounding === 'floor') decisions?.push(quota.num);
     if (qualifiedCount === 0) warnings?.push({ code: 'no-qualifying-lists', message: 'No list passed the threshold; no seats can be allocated.' });
     if (!highestAverage && qualifiedCount > 0 && quota.num === 0n) {
       warnings?.push({ code: 'zero-quota', message: 'Qualifying votes are fewer than seats, so the whole-number quota is 0. The exact (unrounded) quota is used instead.' });
@@ -254,6 +267,7 @@ export function prepareAllocation(input: AllocationInput): PreparedAllocation {
     const computeInitial = () => {
       let total = 0;
       for (let i = 0; i < n; i++) total += initial[i] = qualified[i] && !highestAverage ? Math.min(capacity[i] ?? Infinity, initialSeats(votes[i], quota)) : 0;
+      decisions?.push(...initial);
       return total;
     };
     let initialTotal = computeInitial();
@@ -314,7 +328,7 @@ export function prepareAllocation(input: AllocationInput): PreparedAllocation {
 
     const base: BaseOptions = { method: rules.remainderMethod, majorityCap: rules.majorityCap,
       remainderRequiresInitialSeat: rules.remainderRequiresInitialSeat, quotientRounding: rules.quotientRounding,
-      largestRemainderRepeat: rules.largestRemainderRepeat, tiePolicy: rules.tiePolicy, lotteryWinners, warnings };
+      largestRemainderRepeat: rules.largestRemainderRepeat, tiePolicy: rules.tiePolicy, lotteryWinners, warnings, decisions };
     const remaining = Math.max(0, rules.seats - initialTotal);
     const remainderSteps = qualifiedCount > 0
       ? runRemainderStage(units, remaining, { ...base, stage: 'national', seatsTotal: rules.seats, universeVotes: qualifyingVotes, quota })
