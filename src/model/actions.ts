@@ -10,8 +10,20 @@ export class ActionError extends Error {
 const isWhole = (n: number) => Number.isSafeInteger(n) && n >= 0;
 const need = (cond: unknown, code: string, msg: string) => { if (!cond) throw new ActionError(code, msg); };
 
+const safeCount = (n: bigint): number => {
+  need(n >= 0n && n <= BigInt(Number.MAX_SAFE_INTEGER), 'votes', 'Vote counts and totals must be safe integers ≥ 0.');
+  return Number(n);
+};
+const sumVotes = (values: number[]) => safeCount(values.reduce((sum, n) => {
+  need(isWhole(n), 'votes', 'Vote counts must be safe integers ≥ 0.');
+  return sum + BigInt(n);
+}, 0n));
+const addVotes = (a: number, b: number) => sumVotes([a, b]);
+
 /** Splits `total` into integers proportional to `weights` (largest remainder; ties by order). */
 export function apportion(total: number, weights: number[]): number[] {
+  need(isWhole(total), 'votes', 'Vote counts must be safe integers ≥ 0.');
+  need(weights.every((w) => Number.isFinite(w) && w >= 0), 'votes', 'Weights must be finite numbers ≥ 0.');
   const T = BigInt(total);
   const W = weights.map((w) => BigInt(Math.max(0, Math.round(w * 1e6))));
   const sum = W.reduce((a, b) => a + b, 0n);
@@ -80,15 +92,15 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       notWithdrawn(s, action.from, action.to);
       need(from.votes >= action.votes, 'transfer-exceeds', `${from.shortHe} has only ${from.votes.toLocaleString()} votes.`);
       s = replaceList(s, action.from, (l) => ({ ...l, votes: l.votes - action.votes }));
-      s = replaceList(s, action.to, (l) => ({ ...l, votes: l.votes + action.votes }));
+      s = replaceList(s, action.to, (l) => ({ ...l, votes: addVotes(l.votes, action.votes) }));
       break;
     }
     case 'addVoters':
       need(isWhole(action.invalid), 'votes', 'Invalid ballots must be a whole number ≥ 0.');
       for (const a of action.allocations) { need(isWhole(a.votes), 'votes', 'Votes must be whole numbers ≥ 0.'); listById(s, a.listId); }
       notWithdrawn(s, ...action.allocations.filter((a) => a.votes > 0).map((a) => a.listId));
-      for (const a of action.allocations) s = replaceList(s, a.listId, (l) => ({ ...l, votes: l.votes + a.votes }));
-      s = { ...s, invalid: s.invalid + action.invalid };
+      for (const a of action.allocations) s = replaceList(s, a.listId, (l) => ({ ...l, votes: addVotes(l.votes, a.votes) }));
+      s = { ...s, invalid: addVotes(s.invalid, action.invalid) };
       break;
     case 'redistribute': {
       need(isWhole(action.votes), 'votes', 'Votes must be a whole number ≥ 0.');
@@ -97,18 +109,18 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       need(!action.to.some((t) => action.from.includes(t.listId)), 'redistribute', 'A list cannot both give and receive votes.');
       const sources = action.from.map((id) => listById(s, id));
       notWithdrawn(s, ...action.from, ...action.to.map((t) => t.listId));
-      const pool = sources.reduce((t, l) => t + l.votes, 0);
+      const pool = sumVotes(sources.map((l) => l.votes));
       need(pool >= action.votes, 'transfer-exceeds', `The selected lists hold only ${pool.toLocaleString()} votes.`);
       const take = apportion(action.votes, sources.map((l) => l.votes));
       sources.forEach((l, i) => { s = replaceList(s, l.id, (x) => ({ ...x, votes: x.votes - take[i] })); });
       const give = apportion(action.votes, action.to.map((t) => t.share));
-      action.to.forEach((t, i) => { listById(s, t.listId); s = replaceList(s, t.listId, (x) => ({ ...x, votes: x.votes + give[i] })); });
+      action.to.forEach((t, i) => { listById(s, t.listId); s = replaceList(s, t.listId, (x) => ({ ...x, votes: addVotes(x.votes, give[i]) })); });
       break;
     }
     case 'scaleAll': {
-      need(action.factorPct >= 0, 'factor', 'Scale must be ≥ 0%.');
-      const total = s.lists.reduce((t, l) => t + l.votes, 0);
-      const target = Math.round((total * action.factorPct) / 100);
+      need(Number.isFinite(action.factorPct) && action.factorPct >= 0, 'factor', 'Scale must be ≥ 0%.');
+      const total = sumVotes(s.lists.map((l) => l.votes));
+      const target = Math.round(total * (action.factorPct / 100));
       const parts = apportion(target, s.lists.map((l) => l.votes));
       s = { ...s, lists: s.lists.map((l, i) => ({ ...l, votes: parts[i] })) };
       break;
@@ -119,7 +131,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       need(Number.isFinite(action.retentionPct), 'retention', 'Retention must be a number.');
       need(action.retentionPct >= 0 && action.retentionPct <= 100, 'retention', 'Retention must be between 0% and 100%.');
       const parts = action.ids.map((id) => listById(s, id));
-      const total = parts.reduce((t, l) => t + l.votes, 0);
+      const total = sumVotes(parts.map((l) => l.votes));
       const kept = Number((BigInt(total) * BigInt(Math.round(action.retentionPct * 100))) / 10000n);
       const seen = new Set<string>();
       const ordered = action.candidateOrder === 'interleave' ? interleave(parts.map((p) => p.candidates)) : parts.flatMap((p) => p.candidates);
@@ -133,7 +145,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       const firstIdx = s.lists.findIndex((l) => action.ids.includes(l.id));
       const rest = s.lists.filter((l) => !action.ids.includes(l.id));
       rest.splice(Math.min(firstIdx, rest.length), 0, merged);
-      s = { ...s, lists: rest, invalid: s.invalid + (action.nonRetained === 'invalid' ? total - kept : 0) };
+      s = { ...s, lists: rest, invalid: addVotes(s.invalid, (action.nonRetained === 'invalid' ? total - kept : 0)) };
       s = { ...s, agreements: s.agreements.filter((a) => !a.members.some((m) => action.ids.includes(m))) };
       break;
     }
@@ -142,9 +154,10 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       need(action.parts.length >= 2, 'split-size', 'A split needs at least two resulting lists.');
       need(new Set(action.parts.map((p) => p.newId)).size === action.parts.length, 'duplicate-id', 'The new lists need different ids.');
       need(!action.parts.some((p) => s.lists.some((l) => l.id === p.newId && l.id !== action.id)), 'duplicate-id', 'A list with that id already exists.');
-      const sum = action.parts.reduce((t, p) => t + p.votes, 0);
+      const sum = sumVotes(action.parts.map((p) => p.votes));
       for (const p of action.parts) need(isWhole(p.votes), 'votes', 'Votes must be whole numbers ≥ 0.');
       need(sum <= orig.votes, 'split-exceeds', `The parts total ${sum.toLocaleString()} votes, more than the original ${orig.votes.toLocaleString()}.`);
+      need(sum === orig.votes, 'split-total', 'The parts must sum exactly to the original vote count.');
       const used = new Set<string>();
       for (const p of action.parts) for (const cid of p.candidateIds) {
         need(orig.candidates.some((c) => c.id === cid), 'split-candidate', 'A part contains a candidate who is not on the original list.');
@@ -176,10 +189,10 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       // return if the list is reinstated.
       const l = listById(s, action.listId);
       if (action.withdrawn && !l.withdrawn) {
-        s = replaceList({ ...s, invalid: s.invalid + l.votes }, l.id, (x) => ({ ...x, withdrawn: true, heldVotes: x.votes, votes: 0 }));
+        s = replaceList({ ...s, invalid: addVotes(s.invalid, l.votes) }, l.id, (x) => ({ ...x, withdrawn: true, heldVotes: x.votes, votes: 0 }));
       } else if (!action.withdrawn && l.withdrawn) {
         const back = Math.min(l.heldVotes ?? 0, s.invalid);
-        s = replaceList({ ...s, invalid: s.invalid - back }, l.id, (x) => ({ ...x, withdrawn: false, heldVotes: undefined, votes: x.votes + back }));
+        s = replaceList({ ...s, invalid: s.invalid - back }, l.id, (x) => ({ ...x, withdrawn: false, heldVotes: undefined, votes: addVotes(x.votes, back) }));
       }
       break;
     }
@@ -241,9 +254,10 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
     case 'resetList': {
       // first return any votes held as invalid while the list was withdrawn
       const cur = s.lists.find((l) => l.id === action.listId);
-      if (cur?.withdrawn && cur.heldVotes) s = { ...s, invalid: Math.max(0, s.invalid - cur.heldVotes) };
+      if (!action.keepVotes && cur?.withdrawn && cur.heldVotes) s = { ...s, invalid: Math.max(0, s.invalid - cur.heldVotes) };
       const base = ctx.base ? baseList(action.listId) : action.base ?? null;
-      if (base) s = s.lists.some((l) => l.id === action.listId) ? replaceList(s, action.listId, () => base) : { ...s, lists: [...s.lists, base] };
+      const restored = base && action.keepVotes && cur ? { ...base, votes: cur.votes, withdrawn: cur.withdrawn, ...(cur.heldVotes !== undefined ? { heldVotes: cur.heldVotes } : {}) } : base;
+      if (restored) s = s.lists.some((l) => l.id === action.listId) ? replaceList(s, action.listId, () => restored) : { ...s, lists: [...s.lists, restored] };
       else s = pruneAgreements({ ...s, lists: s.lists.filter((l) => l.id !== action.listId) });
       break;
     }
@@ -267,10 +281,10 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       break;
     case 'setTurnout': {
       need(action.pct > 0 && action.pct <= 100, 'turnout', 'Turnout must be above 0% and at most 100%.');
-      const valid = s.lists.reduce((t, l) => t + l.votes, 0);
-      const cast = valid + s.invalid;
+      const valid = sumVotes(s.lists.map((l) => l.votes));
+      const cast = addVotes(valid, s.invalid);
       need(cast > 0, 'turnout', 'There are no votes to scale.');
-      const target = Math.round((s.registered * action.pct) / 100);
+      const target = Math.round(s.registered * (action.pct / 100));
       const invalid = Math.round((s.invalid * target) / cast);
       const parts = apportion(target - invalid, s.lists.map((l) => l.votes));
       s = { ...s, invalid, lists: s.lists.map((l, i) => ({ ...l, votes: parts[i] })) };
@@ -296,5 +310,8 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       break;
     }
   }
+  // All transitions, including resets/restores, must keep both counts and derived totals exact.
+  need(isWhole(s.registered) && isWhole(s.invalid), 'votes', 'Totals must be safe integers ≥ 0.');
+  addVotes(sumVotes(s.lists.map((l) => l.votes)), s.invalid);
   return { ...s, log: [...s0.log, { at: now, action }] };
 }
