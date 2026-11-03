@@ -28,10 +28,11 @@ data.gov.il and Reshumot sources. Raw files and a manifest record source URLs, r
 times and SHA-256 hashes. Two 2026 candidate rosters use a labelled secondary source.
 Colours, short names and default blocs are assigned by the app.
 
-**Available:** every election from 2003 to 2026 (Knessets 16–26). For 2003 and 2006 some
-candidate rosters could not yet be transcribed from the scanned gazettes; the app says so.
-Official sources for 1949–1999 (Knessets 1–15) have been gathered, and those elections are being
-verified; until then the picker lists them as not yet available.
+**Available:** every election from 1992 to 2026 (Knessets 13–26). Every member elected is listed;
+for 1992–2006 some lists' later candidates (and a few rosters of lists that won no seats) are
+not yet transcribed from the scanned gazettes, and the app says so. Official sources for
+1949–1988 (Knessets 1–12) have been gathered, and those elections are being verified; until then
+the picker lists them as not yet available.
 See [Data coverage and provenance](docs/DATA.md) for sources, qualifications and gaps.
 
 ## Accuracy and limits
