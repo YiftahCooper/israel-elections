@@ -4,7 +4,7 @@
 import { ELECTION_IDS, type BlocDef, type ElectionDataset, type ElectionId } from '../data/schema.ts';
 import { percentToRational } from '../engine/rational.ts';
 import type { AllocationInput, RemainderMethod, RuleSet } from '../engine/types.ts';
-import { ISRAEL_1973, ISRAEL_1992, ISRAEL_2004, ISRAEL_2014, RULESETS } from '../engine/rules.ts';
+import { ISRAEL_1949, ISRAEL_1951, ISRAEL_1973, ISRAEL_1992, ISRAEL_2004, ISRAEL_2014, RULESETS } from '../engine/rules.ts';
 
 export const SCENARIO_SCHEMA = 'israel-elections-scenario';
 export const SCENARIO_VERSION = 1;
@@ -48,6 +48,13 @@ export interface SimRules {
   majorityCap: boolean;
   maxAgreementSize: number;
   agreementRequiresAllQualify: boolean;
+  quotaSeatOffset?: number;
+  remainderRequiresInitialSeat?: boolean;
+  agreementRequiresInitialSeat?: boolean;
+  quotientRounding?: RuleSet['quotientRounding'];
+  largestRemainderRepeat?: boolean;
+  /** Default lottery; unspecified preserves a provisional tie without asserting a statutory procedure. */
+  tiePolicy?: 'lottery' | 'unspecified';
 }
 
 export interface ChangeEntry { at: string; action: Action }
@@ -113,6 +120,8 @@ export interface ActionContext { base?: Scenario }
 export function electionRuleSetId(id: ElectionId): string {
   if (id === 'k13' || id === 'k14' || id === 'k15') return ISRAEL_1992.id;
   const n = Number(id.slice(1));
+  if (n === 1) return ISRAEL_1949.id;
+  if (n >= 2 && n <= 7) return ISRAEL_1951.id;
   if (Number.isInteger(n) && n >= 8 && n <= 12) return ISRAEL_1973.id;
   if (!Number.isInteger(n) || n < 16 || n > 26) throw new Error(`unknown election ${id}`);
   return n === 16 ? ISRAEL_1992.id : n <= 19 ? ISRAEL_2004.id : ISRAEL_2014.id;
@@ -121,9 +130,16 @@ export function electionRuleSetId(id: ElectionId): string {
 export function historicalRules(ruleSetId: string): SimRules {
   const r = RULESETS[ruleSetId];
   if (!r) throw new Error(`unknown rule set ${ruleSetId}`);
-  const thresholdPct = r.id === ISRAEL_1973.id ? '1' : r.id === ISRAEL_1992.id ? '1.5' : r.id === ISRAEL_2004.id ? '2' : '3.25';
+  const thresholdPct = r.id === ISRAEL_1949.id ? '0' : r.id === ISRAEL_1951.id || r.id === ISRAEL_1973.id ? '1' : r.id === ISRAEL_1992.id ? '1.5' : r.id === ISRAEL_2004.id ? '2' : '3.25';
   return { seats: r.seats, thresholdPct, quotaRounding: r.quotaRounding, remainderMethod: r.remainderMethod,
-    majorityCap: r.majorityCap, maxAgreementSize: r.maxAgreementSize, agreementRequiresAllQualify: r.agreementRequiresAllQualify };
+    majorityCap: r.majorityCap, maxAgreementSize: r.maxAgreementSize, agreementRequiresAllQualify: r.agreementRequiresAllQualify,
+    ...(r.quotaSeatOffset !== undefined ? { quotaSeatOffset: r.quotaSeatOffset } : {}),
+    ...(r.remainderRequiresInitialSeat !== undefined ? { remainderRequiresInitialSeat: r.remainderRequiresInitialSeat } : {}),
+    ...(r.agreementRequiresInitialSeat !== undefined ? { agreementRequiresInitialSeat: r.agreementRequiresInitialSeat } : {}),
+    ...(r.quotientRounding !== undefined ? { quotientRounding: r.quotientRounding } : {}),
+    ...(r.largestRemainderRepeat !== undefined ? { largestRemainderRepeat: r.largestRemainderRepeat } : {}),
+    ...(r.tiePolicy !== undefined ? { tiePolicy: r.tiePolicy } : {}),
+  };
 }
 
 /** `historicalId` is the statutory rule set the rules are labelled with, or null for experimental rules. */
@@ -132,6 +148,9 @@ export function toRuleSet(r: SimRules, historicalId: string | null): RuleSet {
     id: historicalId ?? 'experimental', historical: historicalId !== null, seats: r.seats,
     threshold: percentToRational(r.thresholdPct), quotaRounding: r.quotaRounding, remainderMethod: r.remainderMethod,
     majorityCap: r.majorityCap, maxAgreementSize: r.maxAgreementSize, agreementRequiresAllQualify: r.agreementRequiresAllQualify,
+    quotaSeatOffset: r.quotaSeatOffset, remainderRequiresInitialSeat: r.remainderRequiresInitialSeat,
+    agreementRequiresInitialSeat: r.agreementRequiresInitialSeat, quotientRounding: r.quotientRounding,
+    largestRemainderRepeat: r.largestRemainderRepeat, tiePolicy: r.tiePolicy,
   };
 }
 
@@ -195,6 +214,10 @@ const ruleFields: Record<keyof SimRules, Check> = {
   },
   quotaRounding: oneOf('floor', 'exact'), remainderMethod: oneOf('bader-ofer', 'largest-remainder', 'sainte-lague'),
   majorityCap: boolean, maxAgreementSize: (x) => whole(x) && Number(x) >= 2, agreementRequiresAllQualify: boolean,
+  quotaSeatOffset: optional((x) => whole(x) && Number(x) <= 1),
+  remainderRequiresInitialSeat: optional(boolean), agreementRequiresInitialSeat: optional(boolean),
+  quotientRounding: optional(oneOf('exact', 'floor')), largestRemainderRepeat: optional(boolean),
+  tiePolicy: optional(oneOf('lottery', 'unspecified')),
 };
 const rules = shape(ruleFields);
 const partial = (fields: Record<string, Check>): Check => (x) => record(x) && Object.entries(x).every(([k, v]) => Object.hasOwn(fields, k) && fields[k](v));
@@ -240,7 +263,13 @@ export function validateScenario(x: unknown): string[] {
   if (!rules(s.rules)) e.push('invalid rules (seats, threshold, rounding, method, agreement size or flags)');
   if (s.mode === 'historical' && electionKnown) {
     const expected = historicalRules(electionRuleSetId(s.electionId as ElectionId));
-    if (!record(s.rules) || Object.entries(expected).some(([k, v]) => (s.rules as Record<string, unknown>)[k] !== v)) e.push('historical rules must match the election statutory preset');
+    if (!record(s.rules) || Object.entries(expected).some(([k, v]) => (s.rules as Record<string, unknown>)[k] !== v)
+      || record(s.rules) && (s.rules.quotaSeatOffset ?? 0) !== (expected.quotaSeatOffset ?? 0)
+      || record(s.rules) && (s.rules.remainderRequiresInitialSeat ?? false) !== (expected.remainderRequiresInitialSeat ?? false)
+      || record(s.rules) && (s.rules.agreementRequiresInitialSeat ?? false) !== (expected.agreementRequiresInitialSeat ?? false)
+      || record(s.rules) && (s.rules.quotientRounding ?? 'exact') !== (expected.quotientRounding ?? 'exact')
+      || record(s.rules) && (s.rules.largestRemainderRepeat ?? true) !== (expected.largestRemainderRepeat ?? true)
+      || record(s.rules) && (s.rules.tiePolicy ?? 'lottery') !== (expected.tiePolicy ?? 'lottery')) e.push('historical rules must match the election statutory preset');
   }
   if (!whole(s.registered) || !whole(s.invalid)) e.push('registered voters and invalid ballots must be safe whole numbers ≥ 0');
   const blocIds = new Set<string>();

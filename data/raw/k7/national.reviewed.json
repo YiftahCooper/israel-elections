@@ -1,0 +1,141 @@
+{
+  "id": "k7",
+  "reviewedOn": "2026-11-03",
+  "resultsSourceId": "k7-results-gazette",
+  "candidateSourceId": "k7-candidates-gazette",
+  "pages": {
+    "votes": 1,
+    "seats": 2,
+    "invalid": 2
+  },
+  "nationalTotals": {
+    "registered": 1748710,
+    "votesCast": 1427981,
+    "valid": 1367743,
+    "invalid": 60238
+  },
+  "totalsProvenance": {
+    "registered": "k1-k7-cbs-national-totals",
+    "votesCast": "k1-k7-cbs-national-totals",
+    "valid": "sum of gazetted list votes; CBS cross-check",
+    "invalid": "results gazette"
+  },
+  "lists": [
+    {
+      "letters": "אמת",
+      "nameHe": "המערך — מפלגת העבודה הישראלית, מפלגת הפועלים המאוחדת ובלתי מפלגתיים",
+      "votes": 632035,
+      "officialSeats": 56
+    },
+    {
+      "letters": "ב",
+      "nameHe": "חזית דתית לאומית, המזרחי-הפועל המזרחי ובלתי מפלגתיים",
+      "votes": 133238,
+      "officialSeats": 12
+    },
+    {
+      "letters": "ג",
+      "nameHe": "יהדות התורה — אגודת ישראל ודתיים בלתי מפלגתיים",
+      "votes": 44002,
+      "officialSeats": 4
+    },
+    {
+      "letters": "ד",
+      "nameHe": "המחנה התורתי פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
+      "votes": 24968,
+      "officialSeats": 2
+    },
+    {
+      "letters": "ו",
+      "nameHe": "הרשימה הקומוניסטית החדשה בישראל (רק\"ח) ובלתי מפלגתיים",
+      "votes": 38827,
+      "officialSeats": 3
+    },
+    {
+      "letters": "חל",
+      "nameHe": "גח\"ל — גוש חרות ליברלים",
+      "votes": 296294,
+      "officialSeats": 26
+    },
+    {
+      "letters": "ט",
+      "nameHe": "המרכז החופשי",
+      "votes": 16393,
+      "officialSeats": 2
+    },
+    {
+      "letters": "יא",
+      "nameHe": "שיתוף ואחוה",
+      "votes": 19943,
+      "officialSeats": 2
+    },
+    {
+      "letters": "כן",
+      "nameHe": "רשימה למען ארץ-ישראל",
+      "votes": 7591,
+      "officialSeats": 0
+    },
+    {
+      "letters": "לע",
+      "nameHe": "המפלגה הליברלית העצמאית",
+      "votes": 43933,
+      "officialSeats": 4
+    },
+    {
+      "letters": "נס",
+      "nameHe": "רשימת שלום",
+      "votes": 5138,
+      "officialSeats": 0
+    },
+    {
+      "letters": "עמ",
+      "nameHe": "רשימה ממלכתית",
+      "votes": 42654,
+      "officialSeats": 4
+    },
+    {
+      "letters": "פז",
+      "nameHe": "ישראל הצעירה",
+      "votes": 2116,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ק",
+      "nameHe": "רשימת מק\"י — המפלגה הקומוניסטית הישראלית ובלתי מפלגתיים",
+      "votes": 15712,
+      "officialSeats": 1
+    },
+    {
+      "letters": "רא",
+      "nameHe": "קידמה ופיתוח",
+      "votes": 28046,
+      "officialSeats": 2
+    },
+    {
+      "letters": "ש",
+      "nameHe": "תנועת העולם הזה — כוח חדש",
+      "votes": 16853,
+      "officialSeats": 2
+    }
+  ],
+  "agreements": {
+    "complete": true,
+    "pairs": [
+      [
+        "יא",
+        "רא"
+      ]
+    ],
+    "sourceId": "k7-agreements-gazette",
+    "page": 246,
+    "pdfPage": 2,
+    "note": "Entire signed notice in YP 1565 read visually, including final pair; olaw.org.il mirror disclosed."
+  },
+  "rosters": {
+    "completeWinningRosters": false,
+    "reviewedLists": []
+  },
+  "releaseBlockers": [
+    "Complete winning-list candidate rosters and elected-rank cross-checks not transcribed."
+  ]
+}

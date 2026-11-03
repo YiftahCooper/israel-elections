@@ -22,6 +22,9 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
     seats: ['Number of seats', 'מספר המושבים'], threshold: ['Threshold', 'אחוז החסימה'], quotaRounding: ['Quota rounding', 'עיגול המודד'],
     remainderMethod: ['Remainder method', 'שיטת חלוקת העודפים'], majorityCap: ['Half-seats cap (81(d)(4))', 'מגבלת מחצית (81(ד)(4))'],
     maxAgreementSize: ['Agreement size', 'גודל הסכם עודפים'], agreementRequiresAllQualify: ['Agreement threshold condition', 'תנאי החסימה בהסכם'],
+    quotaSeatOffset: ['Quota divisor (seats + 1 in 1949)', 'מחלק המודד (מושבים + 1 ב-1949)'], remainderRequiresInitialSeat: ['Remainder seats only for lists with a whole quota', 'עודפים רק לרשימות עם מודד שלם'],
+    agreementRequiresInitialSeat: ['Agreement needs a whole quota for each partner', 'הסכם מחייב מודד שלם לכל שותפה'], quotientRounding: ['Quotient rounding', 'עיגול המודדים'],
+    largestRemainderRepeat: ['Several largest-remainder seats per list', 'כמה מנדטי שארית לרשימה'], tiePolicy: ['Tie procedure', 'הכרעה בשוויון'],
   };
   const set = (patch: Partial<Scenario['rules']>) => dispatch({ type: 'setRules', patch });
   const [blocDraft, setBlocDraft] = useState('');
@@ -37,7 +40,7 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
         </div>
         <p className="small ink2">{exp
           ? L('Experimental: you may change the electoral system itself. Results are labelled as an alternative system, not Israeli law.', 'ניסיוני: ניתן לשנות את שיטת הבחירות עצמה. התוצאות מסומנות כשיטה חלופית ולא כחוק הישראלי.')
-          : L(`Historically valid: the law of this election is enforced — ${s.rules.seats} seats, ${s.rules.thresholdPct}%, Bader–Ofer, two-list agreements. Votes, lists, candidates and agreements can still change.`, `תקף היסטורית: החוק של בחירות אלה נאכף — ${s.rules.seats} מושבים, ${s.rules.thresholdPct}%, בדר–עופר, הסכמים של שתי רשימות. עדיין ניתן לשנות קולות, רשימות, מועמדים והסכמים.`)}</p>
+          : L(`Historically valid: the law of this election is enforced — ${s.rules.seats} seats, ${Number(s.rules.thresholdPct) > 0 ? `${s.rules.thresholdPct}% threshold` : 'no percentage threshold'}, ${s.rules.remainderMethod === 'largest-remainder' ? 'largest remainder' : s.rules.remainderRequiresInitialSeat ? 'highest averages' : 'Bader–Ofer'}, two-list agreements. Votes, lists, candidates and agreements can still change.`, `תקף היסטורית: החוק של בחירות אלה נאכף — ${s.rules.seats} מושבים, ${Number(s.rules.thresholdPct) > 0 ? `אחוז חסימה ${s.rules.thresholdPct}%` : 'ללא אחוז חסימה'}, ${s.rules.remainderMethod === 'largest-remainder' ? 'השארית הגדולה' : s.rules.remainderRequiresInitialSeat ? 'הממוצע הגבוה' : 'בדר–עופר'}, הסכמים של שתי רשימות. עדיין ניתן לשנות קולות, רשימות, מועמדים והסכמים.`)}</p>
         {Object.keys(s.lotteryWinners).length > 0 && <p className="small">{L('You have recorded lottery outcomes for tied seats.', 'רשמתם תוצאות הגרלה למושבים בשוויון.')} <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'lottery' })}>{L('Clear them', 'ניקוי')}</button></p>}
         {exp && dep.length > 0 && <div className="callout small" style={{ marginBottom: 8 }}><b>{L('Departs from Israeli law in: ', 'שונה מהחוק הישראלי ב: ')}</b>{dep.map((d) => (lang === 'he' ? depName[d][1] : depName[d][0])).join(', ')}</div>}
         <fieldset disabled={!exp} style={{ border: 0, padding: 0, margin: 0 }}>

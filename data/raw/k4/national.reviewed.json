@@ -1,0 +1,183 @@
+{
+  "id": "k4",
+  "reviewedOn": "2026-11-03",
+  "resultsSourceId": "k4-results-gazette",
+  "candidateSourceId": "k4-candidates-gazette",
+  "pages": {
+    "votes": 1,
+    "seats": 2,
+    "invalid": 2
+  },
+  "nationalTotals": {
+    "registered": 1218483,
+    "votesCast": 994306,
+    "valid": 969337,
+    "invalid": 24969
+  },
+  "totalsProvenance": {
+    "registered": "k1-k7-cbs-national-totals",
+    "votesCast": "k1-k7-cbs-national-totals",
+    "valid": "sum of gazetted list votes; CBS cross-check",
+    "invalid": "results gazette"
+  },
+  "lists": [
+    {
+      "letters": "א",
+      "nameHe": "מפלגת פועלי ארץ-ישראל ובלתי מפלגתיים",
+      "votes": 370585,
+      "officialSeats": 47
+    },
+    {
+      "letters": "ב",
+      "nameHe": "חזית דתית לאומית הפועל המזרחי המזרחי ובלתי מפלגתיים",
+      "votes": 95581,
+      "officialSeats": 12
+    },
+    {
+      "letters": "גד",
+      "nameHe": "חזית דתית תורתית אגודת ישראל פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
+      "votes": 45569,
+      "officialSeats": 6
+    },
+    {
+      "letters": "ח",
+      "nameHe": "תנועת החרות",
+      "votes": 130515,
+      "officialSeats": 17
+    },
+    {
+      "letters": "טט",
+      "nameHe": "כוח לעלות",
+      "votes": 594,
+      "officialSeats": 0
+    },
+    {
+      "letters": "יא",
+      "nameHe": "שיתוף ואחווה",
+      "votes": 11104,
+      "officialSeats": 2
+    },
+    {
+      "letters": "יד",
+      "nameHe": "סיעה עצמאית לערביי ישראל",
+      "votes": 3818,
+      "officialSeats": 0
+    },
+    {
+      "letters": "יס",
+      "nameHe": "ליכוד יוצאי צפון-אפריקה — בלתי תלוי",
+      "votes": 8199,
+      "officialSeats": 0
+    },
+    {
+      "letters": "לש",
+      "nameHe": "סיעת התימנים",
+      "votes": 1711,
+      "officialSeats": 0
+    },
+    {
+      "letters": "מ",
+      "nameHe": "מפלגת הפועלים המאוחדת ובלתי מפלגתיים",
+      "votes": 69468,
+      "officialSeats": 9
+    },
+    {
+      "letters": "נ",
+      "nameHe": "הקידמה והעבודה",
+      "votes": 4651,
+      "officialSeats": 0
+    },
+    {
+      "letters": "סר",
+      "nameHe": "איחוד לאומי מיסודם של ספרדים ובני עדות מזרח",
+      "votes": 2456,
+      "officialSeats": 0
+    },
+    {
+      "letters": "סט",
+      "nameHe": "מפלגה לאומית ספרדית, עדות מזרח ובלתי מפלגתיים",
+      "votes": 3133,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ע",
+      "nameHe": "החקלאות ופתוח",
+      "votes": 10902,
+      "officialSeats": 1
+    },
+    {
+      "letters": "פ",
+      "nameHe": "המפלגה הפרוגרסיבית",
+      "votes": 44889,
+      "officialSeats": 6
+    },
+    {
+      "letters": "צ",
+      "nameHe": "הסתדרות הציונים הכלליים, מפלגת המרכז",
+      "votes": 59700,
+      "officialSeats": 8
+    },
+    {
+      "letters": "ק",
+      "nameHe": "המפלגה הקומוניסטית הישראלית ובלתי מפלגתיים",
+      "votes": 27374,
+      "officialSeats": 3
+    },
+    {
+      "letters": "רא",
+      "nameHe": "קידמה ופתוח",
+      "votes": 12347,
+      "officialSeats": 2
+    },
+    {
+      "letters": "רט",
+      "nameHe": "בלתי תלויים",
+      "votes": 1611,
+      "officialSeats": 0
+    },
+    {
+      "letters": "רי",
+      "nameHe": "חזית העולה החדש",
+      "votes": 631,
+      "officialSeats": 0
+    },
+    {
+      "letters": "רו",
+      "nameHe": "איגוד סוציאליסטי \"בונד\" ובלתי מפלגתיים",
+      "votes": 1322,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ש",
+      "nameHe": "סיעת נכים נפגעי נאצים",
+      "votes": 1765,
+      "officialSeats": 0
+    },
+    {
+      "letters": "שת",
+      "nameHe": "מפלגת עבודה ערבית ישראלית",
+      "votes": 3369,
+      "officialSeats": 0
+    },
+    {
+      "letters": "תו",
+      "nameHe": "מפלגת אחדות העבודה — פועלי ציון ובלתי מפלגתיים",
+      "votes": 58043,
+      "officialSeats": 7
+    }
+  ],
+  "agreements": {
+    "complete": false,
+    "pairs": null,
+    "note": "No complete primary notice verified. Empty diagnostic input is not a finding that no agreements existed."
+  },
+  "rosters": {
+    "completeWinningRosters": false,
+    "reviewedLists": []
+  },
+  "releaseBlockers": [
+    "Complete connected-list notice not verified.",
+    "Complete winning-list candidate rosters and elected-rank cross-checks not transcribed.",
+    "Exact seat reproduction fails with the retained inputs; see decision 0061."
+  ]
+}

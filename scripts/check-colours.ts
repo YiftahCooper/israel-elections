@@ -10,7 +10,7 @@ const ids = process.argv.slice(2).length ? process.argv.slice(2) : (JSON.parse(r
 let failed = false;
 for (const id of ids) {
   const ds = JSON.parse(readFileSync(`public/data/${id}.json`, 'utf8'));
-  const thr = Number(ds.ruleSetId.split('-').pop()) / 100; const won = ds.lists.filter((l: any) => l.votes >= thr * ds.totals.valid); // seat order
+  const thr = Number(ds.ruleSetId.split('-').pop()) / 100; const won = ds.lists.filter((l: any) => ds.officialSeats ? ds.officialSeats[l.id] > 0 : l.votes >= thr * ds.totals.valid); // seat order
   const bad: string[] = [];
   const top = won.slice(0, 16);
   for (let i = 1; i < top.length; i++) { const dd = d(top[i - 1].color, top[i].color); if (dd < 20) bad.push(`${top[i - 1].shortEn}/${top[i].shortEn} ${dd.toFixed(1)}`); }

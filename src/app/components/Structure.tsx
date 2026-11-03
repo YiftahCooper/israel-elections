@@ -47,6 +47,7 @@ function Agreements({ s, r, base }: { s: Scenario; r: AllocationResult; base: Sc
               <span>
                 <b>{ag.members.map(name).join(' ⇄ ')}</b>{' '}
                 {!ag.enabled ? <span className="chip">{L('off', 'כבוי')}</span> : st?.active ? <span className="chip ok">{L('active', 'בתוקף')}</span> : <span className="chip no">{st?.reason === 'member-failed-threshold' ? L(`no effect: ${st.failedMembers.map(name).join(', ')} below threshold`, `ללא השפעה: ${st.failedMembers.map(name).join(', ')} מתחת לחסימה`)
+                  : st?.reason === 'member-no-initial-seat' ? L(`no effect: ${st.failedMembers.map(name).join(', ')} won no whole-quota seat`, `ללא השפעה: ${st.failedMembers.map(name).join(', ')} לא זכתה במנדט במודד שלם`)
                   : st?.reason === 'member-withdrawn' ? L('no effect: a partner withdrew', 'ללא השפעה: שותפה פרשה')
                   : st?.reason === 'duplicate-membership' ? L('no effect: a list is already in another agreement', 'ללא השפעה: רשימה כבר בהסכם אחר')
                   : st?.reason === 'too-many-members' ? L('not allowed under these rules', 'לא מותר לפי הכללים')

@@ -1,0 +1,21 @@
+import { describe, expect, it } from 'vitest';
+import { earlyResearchDataset, verifyEarlyProgress } from '../scripts/lib/historical/k1-k7-common.ts';
+// Independently read from YP 717 p.264; NOT generated from engine output.
+const published = {"א": 47, "ב": 12, "גד": 6, "ח": 17, "טט": 0, "יא": 2, "יד": 0, "יס": 0, "לש": 0, "מ": 9, "נ": 0, "סר": 0, "סט": 0, "ע": 1, "פ": 6, "צ": 8, "ק": 3, "רא": 2, "רט": 0, "רי": 0, "רו": 0, "ש": 0, "שת": 0, "תו": 7};
+describe('k4: retained national evidence (not a released dataset)', () => {
+  it('reconciles all gazette votes and CBS ballot totals, and protects the availability gate', () => {
+    const audit=verifyEarlyProgress(4,{log:false});
+    expect(Object.fromEntries(audit.review.lists.map(l=>[l.letters,l.officialSeats]))).toEqual(published);
+    expect(audit.result.totalValid).toBe(969337n);
+    expect(audit.result.quota.num).toBe(7800n);
+    expect(audit.review.nationalTotals).toEqual({"registered": 1218483, "votesCast": 994306, "valid": 969337, "invalid": 24969});
+    expect(audit.releaseReady).toBe(false);
+    expect(()=>verifyEarlyProgress(4,{available:true,log:false})).toThrow('release blocked');
+    expect(earlyResearchDataset(4).hasLocalities).toBe(false);
+  });
+  it('keeps the unresolved seat mismatch visible and does not fabricate inputs to remove it',()=>{
+    const a=verifyEarlyProgress(4,{log:false});
+    expect(a.differences).toEqual([{"id": "4-א", "published": 47, "computed": 48}, {"id": "4-יא", "published": 2, "computed": 1}]);
+    expect(a.review.agreements.complete).toBe(false);
+  });
+});

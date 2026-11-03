@@ -1,0 +1,146 @@
+{
+  "id": "k3",
+  "reviewedOn": "2026-11-03",
+  "resultsSourceId": "k3-results-gazette",
+  "candidateSourceId": "k3-candidates-gazette",
+  "pages": {
+    "votes": 1,
+    "seats": 2,
+    "invalid": 2
+  },
+  "nationalTotals": {
+    "registered": 1057795,
+    "votesCast": 876085,
+    "valid": 853219,
+    "invalid": 22866
+  },
+  "totalsProvenance": {
+    "registered": "k1-k7-cbs-national-totals",
+    "votesCast": "k1-k7-cbs-national-totals",
+    "valid": "sum of gazetted list votes; CBS cross-check",
+    "invalid": "results gazette"
+  },
+  "lists": [
+    {
+      "letters": "א",
+      "nameHe": "מפלגת פועלי ארץ-ישראל ובלתי מפלגתיים",
+      "votes": 274735,
+      "officialSeats": 40
+    },
+    {
+      "letters": "ב",
+      "nameHe": "חזית דתית לאומית (הפועל המזרחי, המזרחי ודתיים בלתי מפלגתיים)",
+      "votes": 77936,
+      "officialSeats": 11
+    },
+    {
+      "letters": "גד",
+      "nameHe": "חזית דתית תורתית (אגודת ישראל, פועלי אגודת ישראל ודתיים בלתי מפלגתיים)",
+      "votes": 39836,
+      "officialSeats": 6
+    },
+    {
+      "letters": "ח",
+      "nameHe": "תנועת החרות",
+      "votes": 107190,
+      "officialSeats": 15
+    },
+    {
+      "letters": "יד",
+      "nameHe": "הרשימה הדמוקרטית לערביי ארץ-ישראל",
+      "votes": 15475,
+      "officialSeats": 2
+    },
+    {
+      "letters": "יט",
+      "nameHe": "רשימה דתית מקורית, נציגה בני תימן ודתיים בלתי מפלגתיים",
+      "votes": 2448,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ל",
+      "nameHe": "התאחדות התימנים בישראל",
+      "votes": 2459,
+      "officialSeats": 0
+    },
+    {
+      "letters": "מ",
+      "nameHe": "מפלגת הפועלים המאוחדת ובלתי מפלגתיים",
+      "votes": 62401,
+      "officialSeats": 9
+    },
+    {
+      "letters": "נ",
+      "nameHe": "הקידמה והעבודה",
+      "votes": 12511,
+      "officialSeats": 2
+    },
+    {
+      "letters": "סא",
+      "nameHe": "רשימת ספרדים ועדות המזרח, עולים, ותיקים ובלתי מפלגתיים",
+      "votes": 6994,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ע",
+      "nameHe": "החקלאות ופיתוח",
+      "votes": 9791,
+      "officialSeats": 1
+    },
+    {
+      "letters": "פ",
+      "nameHe": "המפלגה הפרוגרסיבית",
+      "votes": 37661,
+      "officialSeats": 5
+    },
+    {
+      "letters": "צ",
+      "nameHe": "הסתדרות הציונים הכלליים, מפלגת המרכז",
+      "votes": 87099,
+      "officialSeats": 13
+    },
+    {
+      "letters": "צח",
+      "nameHe": "הרשימה הערבית — המרכז",
+      "votes": 4484,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ק",
+      "nameHe": "המפלגה הקומוניסטית הישראלית ובלתי מפלגתיים",
+      "votes": 38492,
+      "officialSeats": 6
+    },
+    {
+      "letters": "רי",
+      "nameHe": "רשימת העולה החדש",
+      "votes": 1188,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ש",
+      "nameHe": "ליכוד — תנועה כללית עממית",
+      "votes": 3044,
+      "officialSeats": 0
+    },
+    {
+      "letters": "תו",
+      "nameHe": "מפלגת אחדות העבודה — פועלי ציון ובלתי מפלגתיים",
+      "votes": 69475,
+      "officialSeats": 10
+    }
+  ],
+  "agreements": {
+    "complete": false,
+    "pairs": null,
+    "note": "No complete primary notice verified. Empty diagnostic input is not a finding that no agreements existed."
+  },
+  "rosters": {
+    "completeWinningRosters": false,
+    "reviewedLists": []
+  },
+  "releaseBlockers": [
+    "Complete connected-list notice not verified.",
+    "Complete winning-list candidate rosters and elected-rank cross-checks not transcribed."
+  ]
+}
