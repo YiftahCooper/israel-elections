@@ -1311,11 +1311,11 @@
     "url": "project:k16/candidates.reviewed.json",
     "publisher": "Project visual transcription / polling aggregation",
     "official": false,
-    "description": "Reviewed manual scan transcription, page references, explicitly unavailable rosters and membership/reserve checks",
+    "description": "Reviewed manual candidate-scan transcription with complete or elected-prefix coverage, page references, independent section 4 results-notice names and explicit printed-name variants; non-winning unavailable rosters and prior membership/reserve checks retained",
     "method": "manual-capture",
     "retrievedAt": "2026-11-03",
-    "bytes": 67767,
-    "sha256": "4409011083955ab6435932e8cc231049bccb1dded64f2132b8d1907166fa8167"
+    "bytes": 101344,
+    "sha256": "cb071e44c44f61d97217fa577fb00923c5557f71a320b7fa08d5d6212246ea18"
   },
   {
     "id": "k16-localities-reviewed",
@@ -1345,11 +1345,11 @@
     "url": "project:k17/candidates.reviewed.json",
     "publisher": "Project visual transcription / polling aggregation",
     "official": false,
-    "description": "Reviewed manual scan transcription, page references, explicitly unavailable rosters and membership/reserve checks",
+    "description": "Reviewed manual candidate-scan transcription with complete or elected-prefix coverage, page references, independent section 4 results-notice names and explicit printed-name variants; non-winning unavailable rosters and prior membership/reserve checks retained",
     "method": "manual-capture",
     "retrievedAt": "2026-11-03",
-    "bytes": 110414,
-    "sha256": "20af50adfb1c8bccbfd598a1edb195c6b86fec17ab1df7d0d5911eb8edda864d"
+    "bytes": 140258,
+    "sha256": "fcbcb6c2a721da9a200675141a0fc1c8bb5c5a09fd6d32a72fa3cd292c905fcb"
   },
   {
     "id": "k17-localities-reviewed",

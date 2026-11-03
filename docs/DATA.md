@@ -3,8 +3,10 @@
 The app offers **eleven verified election datasets: k16–k26** (2003–2026). For each, the engine
 reproduces every list's officially published seats, checked by `tests/historical-kNN.test.ts`
 and `tests/engine.test.ts` (2026: the reported final count, pending gazettement).
-The 2003 and 2006 releases are **not full-roster releases**: several lists' rosters are marked
-unavailable (see their section below). Official sources for **k1–k15** (1949–1999) are retained
+The 2003 and 2006 releases include **every elected rank**, cross-checked against the official
+results notices. They are **not full-roster releases**: later ranks on truncated winning lists
+and some non-winning rosters remain unverified (see their section below). Official sources
+for **k1–k15** (1949–1999) are retained
 and partly verified; `public/data/elections.json` marks those not yet released as unavailable.
 
 ## Sources by election
@@ -19,8 +21,8 @@ and partly verified; `public/data/elections.json` marks those not yet released a
 | k13 | 1992-06-23 | Results YP 4021; candidates YP 4017; CBS totals; reviewed national table | No secondary inputs used | Unavailable: full winning rosters incomplete; agreement notice not recovered; all gazetted seats reproduced with no agreements assumed; no locality dataset (0080–0082) |
 | k14 | 1996-05-29 | Results YP 4414; candidates YP 4408; complete six-pair YP 4411 notice (mirror); CBS totals | No secondary inputs used | Unavailable: winning rosters incomplete (Third Way complete); all seats reproduced; no locality dataset; secondary 550-vote error excluded (0080–0082) |
 | k15 | 1999-05-17 | Results YP 4757; candidates YP 4748; recovered complete nine-pair YP 4755 notice (mirror); CBS totals | No secondary inputs used | Unavailable: full winning rosters incomplete; all gazetted seats reproduced; no locality dataset (0080–0082) |
-| k16 | 2003-01-28 | CEC results/candidate scans; YP 5151 agreements; CBS electorate; retained reviewed roster and locality JSONs with hashes | Secondary membership identity cross-checks and Sharansky withdrawal report; roster spellings from scans | Available with 14 explicitly unavailable complete rosters; documented printed-vote discrepancy and UI caveats |
-| k17 | 2006-03-28 | CEC results/candidate scans; YP 5510 agreements; CBS electorate; retained reviewed roster and locality JSONs with hashes | Secondary membership identity cross-checks; roster spellings from scans | Available with 13 explicitly unavailable complete rosters; documented nine-cast-vote discrepancy and UI caveat |
+| k16 | 2003-01-28 | CEC results/candidate scans; YP 5151 agreements; CBS electorate; retained reviewed roster and locality JSONs with hashes | Prior secondary membership checks and Sharansky withdrawal report; elected-name comparison now uses official notices | All 120 elected ranks covered; 10 truncated winning rosters, 4 unavailable non-winning rosters; printed-vote discrepancy and withdrawal caveat |
+| k17 | 2006-03-28 | CEC results/candidate scans; YP 5510 agreements; CBS electorate; retained reviewed roster and locality JSONs with hashes | Prior secondary membership checks; elected-name comparison now uses official notices | All 120 elected ranks covered; 7 truncated winning rosters, 6 unavailable non-winning rosters; nine-cast-vote discrepancy |
 | k18 | 2009-02-10 | Polling stations; CEC candidate/results gazettes; allocation memorandum; YP 5912 agreement notice (mirror) | None | Released; derived localities and sourced invalid-count exception disclosed (0040) |
 | k19 | 2013-01-22 | Localities/polling; CEC candidate/results gazettes; final-results numeric capture; decisions book; YP 6530 agreements (mirror) | None | Released on the CEC final figures; gazette total/list differences disclosed, seats identical either way (0041, 0042) |
 | k20 | 2015-03-17 | data.gov.il localities and polling stations; CEC candidate gazette YP 7000, results YP 7010; agreement notice YP 7001 (mirror) | None | Released: every list’s seats reproduced; all 1,196 locality rows reconcile with 10,414 polling rows; 1,284 registered candidates; complete four-pair notice |
@@ -115,8 +117,12 @@ and review the resulting data changes; normal builds never rewrite this evidence
 Both national and locality datasets are built and `available: true`. Decisions
 [0052](decisions/0052-k16-k17-national-and-locality-release-policy.md) and
 [0053](decisions/0053-k16-k17-candidate-review-and-release-limitations.md) record the
-owner-approved treatment, candidate counts/pages for every list and remaining limits.
-They supersede the relevant release gates in 0050; 0051's historical-law caveat remains.
+owner-approved treatment and the earlier roster limitations.
+[0054](decisions/0054-k16-k17-elected-roster-coverage.md) supersedes 0053's winning-list
+unavailable fallback: every winning list must publish at least all elected ranks, with
+`candidatesTruncated: true` when later registered ranks are omitted. It records current
+counts/pages and official elected-name comparisons. The other source limitations in
+0052 and historical-law caveat in 0051 remain.
 
 * **k16:** 27 lists. Use official polling list votes, including Mafdal **132,370** and
   Lider **833**. YP 5155 p. 1406 prints **132,730** and **883**, making its list sum
@@ -152,34 +158,47 @@ null, excluding the bogus repeated “voters” field. Counts excluding envelope
 **1,171 / 1,149** localities. k16 has **7,885** actual polling rows (one separate EOF
 sentinel excluded); k17 **8,426**; both include **149** envelope batches.
 
-Candidate scans were rendered with pdfjs and its local `wasmUrl`, then visually
-transcribed. The retained `candidates.reviewed.json` files contain page references,
-last printed ranks and either contiguous complete names or the explicitly authorized
-per-list unavailable fallback. **295 / 664 candidate names** are published. **14 / 13
-complete rosters remain unverified**, with `candidatesUnavailable: true`, empty arrays
-and Hebrew reasons naming unresolved ranks. This does not mean no official roster
-exists. Likud 2003 has exactly **114** names beginning **שרון אריאל**; Kadima 2006 has
-**120**, beginning **אולמרט אהוד**. No padding or guessed names are published.
+Candidate and results scans were rendered at **scale 4** with locked **pdfjs-dist 6.5.438**,
+`wasmUrl` pointing to `node_modules/pdfjs-dist/wasm/`, and `@napi-rs/canvas 1.1.0`.
+Every winning list now includes ranks **1..seats** or its already complete roster:
+**13 / 12 winning lists**, **120 elected ranks each**, and **368 / 719 total published
+candidate names**. The previously unavailable winning lists publish exactly their elected
+prefixes (**73 / 55 added names**). Their remaining ranks are omitted, with
+`candidatesTruncated: true` and bilingual coverage reasons. **10 / 7 winning rosters**
+are truncated; **4 / 6 non-winning rosters** still have `candidatesUnavailable: true`,
+empty arrays and the original unresolved-rank reasons. Complete rosters have neither flag.
+Likud 2003 retains **114** candidates; Kadima 2006 retains **120**. No guessed names
+or padding are published. Full coverage tables are in 0054.
 
-For every winning list, the reviewed artifact records elected identity cross-checks
-and a second reading of the next five non-elected scan ranks, even when the complete
-roster remains unavailable. Official Knesset membership pages were inaccessible;
-**labelled secondary membership tables** were used, reversing subsequent replacements
-rather than comparing with end-of-term membership. Yisrael BaAliyah 2003 has a real
-exception: Sharansky #1 withdrew after the election; Edelstein #2 and Solodkin #3 served
-at inauguration. The registered roster remains in its printed order, with an explanatory
-note and a contemporaneous Ynet source. The source manifest distinguishes successful
-secondary evidence from failed official-page attempts.
+The retained `candidates.reviewed.json` files independently transcribe **section 4** of
+**YP 5155 pp. 1407–1408** and **YP 5514 pp. 2465–2468**. Every elected registered name
+is compared in rank order with that notice, with page references and explicit literal
+name variants (given-name order, punctuation or hyphenation). Both readings are retained;
+tests accept only the enumerated differences, never general fuzzy matching. The official
+results notice also resolves the 2006 Yisrael Beiteinu wrapped surname: **אהרון-** is the
+continuation of **לנדבר** at rank 7, not rank 8's given name. The candidate-notice trailing
+hyphen is retained; the results notice omits it. Earlier readings of **חסון ארדי ישראל**
+and Labor's **מגדלה גאלב** are corrected from both scans. No elected identity or rank
+replacement between the candidate and results notices was found.
 
-**Known app limitations (no app files changed):** the existing candidate-capacity warning
-treats missing rosters as vacant seats and the candidate panel says “No candidates registered”, and the elected-name view selects the first n
-registered candidates without applying Sharansky's withdrawal. Those are UI/model
-limitations, not claims that historical seats were vacant or that Sharansky was sworn in.
+The earlier secondary membership comparisons remain under `previousMembershipCrossCheck`
+for history; they do not supply the new names or the official cross-check. The distinct
+post-election exception remains: Sharansky #1 and Edelstein #2 are both printed as elected
+in the 2003 results notice, but Sharansky later withdrew and Solodkin #3 served at
+inauguration (0053, contemporaneous secondary Ynet report). The registered roster stays
+in printed order. An official withdrawal/correction notice has not been verified.
+
+**Application limits (no app/model files changed):** the elected-name view still selects
+the first n registered candidates without applying Sharansky's withdrawal. All official
+seats now have candidate coverage; scenarios awarding more seats than a retained prefix
+can exhaust the transcribed names. Truncation discloses missing later ranks, not the
+absence of further registered candidates. Unavailable rosters now belong only to lists
+that won no seats.
 
 `localities.reviewed.json` retains the rows themselves, not just a digest. The builder
 checks manifest SHA-256, every row's arithmetic and list sums, the original compact-row
-digest, candidate rank integrity and retained membership/reserve evidence. If polling
-scratch exists it repeats all station aggregation; otherwise it explicitly logs the
+digest, candidate rank/coverage flags, official elected-name comparisons and retained
+reserve evidence. If polling scratch exists it repeats all station aggregation; otherwise it explicitly logs the
 skipped additional check and rebuilds from retained inputs. The original national review
 and reconciliation JSONs remain historical evidence of the source disagreements.
 
@@ -388,6 +407,7 @@ original threshold amendment and original Bader–Ofer half-seats cap are docume
 separately from those gaps.
 
 The k16/k17 tests read the public datasets and verify every official seat, era threshold/quota,
-agreement pairs, national totals, locality columns and explicit candidate counts/limitations. To
-simulate a clean checkout, move `.backup-scratch/raw` aside, rebuild, and restore it; k16/k17
+agreement pairs, national totals, locality columns, contiguous candidate ranks and coverage
+flags, all 240 elected-name comparisons and rejection of unknown name differences or
+secondary-only evidence. To simulate a clean checkout, move `.backup-scratch/raw` aside, rebuild, and restore it; k16/k17
 retained reviewed JSONs and digests suffice without those copies.

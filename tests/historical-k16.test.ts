@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import type { ElectionDataset, LocalityDataset } from '../src/data/schema.ts';
 import { describe, expect, it } from 'vitest';
 import { buildK16, verifyK16 } from '../scripts/lib/historical/k16.ts';
-import { derivePolling, researchDataset, verifyPolling } from '../scripts/lib/historical/k16-k17-common.ts';
+import { derivePolling, researchDataset, verifyPolling, verifyElectedRoster, type ReviewedRoster } from '../scripts/lib/historical/k16-k17-common.ts';
 import { allocate } from '../src/engine/allocate.ts';
 import { scenarioFromDataset, toEngineInput } from '../src/model/scenario.ts';
 const ds: ElectionDataset = JSON.parse(readFileSync(new URL('../public/data/k16.json', import.meta.url), 'utf8'));
@@ -10,7 +10,7 @@ const loc: LocalityDataset = JSON.parse(readFileSync(new URL('../public/data/k16
 
 
 const publishedCounts = {"אמת": 120, "ב": 120, "ג": 120, "ד": 118, "ו": 118, "ז": 17, "זנ": 10, "ט": 7, "יש": 120, "כן": 24, "ל": 35, "מחל": 114, "מרצ": 120, "ם": 119, "נ": 17, "נץ": 25, "עם": 119, "פה": 18, "ף": 11, "צ": 11, "צף": 77, "ק": 7, "קך": 10, "קנ": 18, "קץ": 12, "רק": 7, "שס": 111};
-const counts = {"אמת": 0, "ב": 0, "ג": 0, "ד": 0, "ו": 0, "ז": 17, "זנ": 10, "ט": 7, "יש": 0, "כן": 24, "ל": 35, "מחל": 114, "מרצ": 0, "ם": 0, "נ": 17, "נץ": 0, "עם": 0, "פה": 18, "ף": 0, "צ": 11, "צף": 0, "ק": 7, "קך": 10, "קנ": 18, "קץ": 0, "רק": 7, "שס": 0};
+const counts = {"אמת": 19, "ב": 6, "ג": 5, "ד": 3, "ו": 3, "ז": 17, "זנ": 10, "ט": 7, "יש": 15, "כן": 24, "ל": 35, "מחל": 114, "מרצ": 6, "ם": 3, "נ": 17, "נץ": 0, "עם": 2, "פה": 18, "ף": 0, "צ": 11, "צף": 0, "ק": 7, "קך": 10, "קנ": 18, "קץ": 0, "רק": 7, "שס": 11};
 
 describe('k16 — released national and locality datasets; explicit roster limitations', () => {
   it('reproduces every gazetted seat using the explicitly reconciled polling counts', () => {
@@ -72,7 +72,7 @@ describe('k16 — released national and locality datasets; explicit roster limit
     expect(() => derivePolling(review, table({ 'אמת': 1 }))).toThrow(/list votes ≠ valid/);
     expect(() => derivePolling(review, table({ 'סמל ישוב': '\x1a', 'שם ישוב': '' }))).toThrow(/nonempty EOF/);
   });
-  it('builds from retained reviewed inputs and exposes complete or explicitly unavailable rosters', () => {
+  it('builds from retained reviewed inputs and exposes complete, truncated or explicitly unavailable rosters', () => {
     expect(buildK16({ log: false })).toHaveLength(1);
     expect(verifyK16({ log: false, available: true }).releaseReady).toBe(true);
     const reviewed = JSON.parse(readFileSync(new URL('../data/raw/k16/candidates.reviewed.json', import.meta.url), 'utf8'));
@@ -81,12 +81,17 @@ describe('k16 — released national and locality datasets; explicit roster limit
       expect(r.publishedCount, l.id).toBe(publishedCounts[l.letters as keyof typeof publishedCounts]);
       expect(l.candidates.length, l.id).toBe(counts[l.letters as keyof typeof counts]);
       expect(l.candidatesUnavailable ?? false, l.id).toBe(r.candidatesUnavailable);
+      expect(l.candidatesTruncated ?? false, l.id).toBe(!r.candidatesUnavailable && l.candidates.length < r.publishedCount);
+      expect(l.candidatesTruncated ?? false, l.id).toBe(r.candidatesTruncated ?? false);
       if (r.candidatesUnavailable) {
         expect(l.candidates).toEqual([]);
         expect(l.notesHe).toContain(r.unavailableReasonHe);
         expect(r.unresolvedRanks.length).toBeGreaterThan(0);
       } else {
-        expect(l.candidates.length).toBe(r.publishedCount);
+        if (r.candidatesTruncated) {
+          expect(l.candidates.length).toBeLessThan(r.publishedCount);
+          expect(l.notesHe).toContain(r.truncatedReasonHe);
+        } else expect(l.candidates.length).toBe(r.publishedCount);
         expect(l.candidates.map(c => c.rank)).toEqual(Array.from({ length: l.candidates.length }, (_, i) => i + 1));
         expect(l.candidates.map(c => c.nameHe)).toEqual(r.candidates.map((c: { nameHe: string }) => c.nameHe));
       }
@@ -95,6 +100,49 @@ describe('k16 — released national and locality datasets; explicit roster limit
         expect(r.reserveSecondReading.ranks).toEqual(Array.from({ length: 5 }, (_, i) => ds.officialSeats![l.id] + i + 1));
       }
     }
+  });
+  it('includes every elected rank and matches the independent section 4 results transcription', () => {
+    const reviewed: { lists: ReviewedRoster[] } = JSON.parse(readFileSync(new URL('../data/raw/k16/candidates.reviewed.json', import.meta.url), 'utf8'));
+    const winners = ds.lists.filter(l => ds.officialSeats![l.id] > 0);
+    expect(winners).toHaveLength(13);
+    expect(winners.reduce((sum, l) => sum + ds.officialSeats![l.id], 0)).toBe(120);
+    for (const l of winners) {
+      const seats = ds.officialSeats![l.id];
+      const r = reviewed.lists.find(r => r.letters === l.letters)!;
+      expect(l.candidatesUnavailable ?? false, l.id).toBe(false);
+      expect(l.candidates.length, l.id).toBeGreaterThanOrEqual(seats);
+      const check = r.electedCrossCheck!;
+      expect(check.sourceId).toBe('k16-results-gazette');
+      expect(check.section).toBe(4);
+      expect(check.pages).toEqual([['ם', 'עם', 'שס'].includes(l.letters) ? 1408 : 1407]);
+      expect(check.resultsNamesHe).toHaveLength(seats);
+      expect(l.candidates.slice(0, seats).map(c => c.rank)).toEqual(Array.from({ length: seats }, (_, i) => i + 1));
+      expect(l.candidates.slice(0, seats).map(c => c.nameHe)).toEqual(check.namesHe);
+      expect(check.resultsNamesHe.map((name, i) => check.nameVariants.find(v => v.rank === i + 1)?.candidateNameHe ?? name)).toEqual(check.namesHe);
+      expect(() => verifyElectedRoster(r, seats, 'k16-results-gazette')).not.toThrow();
+
+      // The gate rejects gaps in elected coverage and unknown spelling differences.
+      const missing = structuredClone(r);
+      missing.candidates = missing.candidates.slice(0, seats - 1);
+      expect(() => verifyElectedRoster(missing, seats, 'k16-results-gazette')).toThrow(/elected ranks missing/);
+      const wrong = structuredClone(r);
+      wrong.electedCrossCheck!.resultsNamesHe[0] = 'שם שגוי';
+      expect(() => verifyElectedRoster(wrong, seats, 'k16-results-gazette')).toThrow();
+      const secondary = structuredClone(r);
+      secondary.electedCrossCheck!.sourceId = 'k16-membership-secondary';
+      expect(() => verifyElectedRoster(secondary, seats, 'k16-results-gazette')).toThrow(/official elected cross-check/);
+    }
+    expect(ds.status.noteEn).toContain('Every winning list includes all elected ranks');
+    expect(ds.status.noteHe).toContain('סעיף 4');
+  });
+  it('distinguishes the gazetted election of Sharansky from his later withdrawal', () => {
+    const list = ds.lists.find(l => l.letters === 'כן')!;
+    expect(list.candidates.slice(0, 3).map(c => c.nameHe)).toEqual(['שרנסקי נתן', 'אדלשטיין יולי-יואל', 'סולודקין מרינה']);
+    const reviewed = JSON.parse(readFileSync(new URL('../data/raw/k16/candidates.reviewed.json', import.meta.url), 'utf8'));
+    const check = reviewed.lists.find((r: { letters: string }) => r.letters === 'כן').electedCrossCheck;
+    expect(check.resultsNamesHe).toEqual(['שרנסקי נתן', 'אדלשטיין יולי-יואל']);
+    expect(check.nameVariants).toEqual([]);
+    expect(list.notesHe.join(' ')).toContain('ויתר לאחר הבחירות');
   });
   it('has aligned locality columns, null metadata, envelope flags and reconciling totals', () => {
     expect(loc.noteEn).toMatch(/summed from official polling-station/);
