@@ -109,11 +109,11 @@
     "date": "1977-05-17",
     "nameHe": "הבחירות לכנסת ה-9",
     "nameEn": "Election to the 9th Knesset",
-    "available": false,
+    "available": true,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "Unavailable: all seats reproduce with the candidate cap (Flatto-Sharon 1, Sheli 2). The procedure is inferred from the officially published result because the statutory text was not located. All 120 winning ranks transcribed, but only 119 elected names cross-checked: YP 2326 omits Ratz’s elected-member paragraph. Later ranks truncated; nonwinning rosters untranscribed. Full amendment chain unverified; no localities.",
-      "noteHe": "לא זמין: כל המנדטים משוחזרים בהגבלת מספר המועמדים (פלאטו שרון 1, שלי 2). ההליך מוסק מהתוצאה הרשמית שפורסמה משום שנוסח החוק המסדיר אותו לא אותר. כל 120 הדרגות הזוכות תומללו, אך רק 119 שמות נבחרים הוצלבו: בפרסום התוצאות י״פ 2326 חסרה פסקת הנבחרת של רצ. דרגות מאוחרות חלקיות ורשימות לא זוכות לא תומללו. שרשרת התיקונים לא אומתה; אין נתוני יישובים."
+      "stage": "official-final",
+      "noteEn": "National results; all seats reproduce with six official agreements and the k9-only candidate cap (Flatto-Sharon 1, Sheli 2). The procedure is inferred from the officially published result because the statutory text was not located. All 120 winning ranks are cross-checked: 119 names in YP 2326; Ratz’s rank 1 Shulamit Aloni confirmed by official Knesset OData membership and faction records from the first session, 13 June 1977 (the notice omits her paragraph). Later ranks truncated; nonwinning rosters untranscribed. Full amendment chain and unknown full-roster counterfactual capacities unverified; no localities.",
+      "noteHe": "תוצאות ארציות; כל המנדטים משוחזרים עם ששת ההסכמים הרשמיים והגבלת מספר המועמדים המופעלת רק לשנת 1977 (פלאטו שרון 1, שלי 2). ההליך מוסק מהתוצאה הרשמית שפורסמה משום שנוסח החוק המסדיר אותו לא אותר. כל 120 הדרגות הזוכות הוצלבו: 119 שמות בי״פ 2326; שולמית אלוני, דרגה 1 ברצ, אומתה ברישומי החברות בכנסת ובסיעה בממשק OData הרשמי של הכנסת מיום הישיבה הראשונה, 13 ביוני 1977 (פסקתה חסרה בהודעה). דרגות מאוחרות חלקיות ורשימות לא זוכות לא תומללו. שרשרת התיקונים ומגבלות רשימות שמספר מועמדיהן המלא אינו ידוע בתרחישים חלופיים לא אומתו; אין נתוני יישובים."
     }
   },
   {

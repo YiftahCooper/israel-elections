@@ -2,7 +2,7 @@
   "id": "k9",
   "sourceId": "k9-candidates-gazette",
   "issue": 2319,
-  "scope": "Winning lists: contiguous leading ranks covering every elected member; later ranks optional. Nonwinning lists not transcribed.",
+  "scope": "Winning leading ranks covering all 120 seats; 119 elected names checked against YP2326 and Ratz rank1 against official opening-date Knesset OData. Later ranks omitted unless complete.",
   "lists": [
     {
       "letters": "פש",
@@ -103,7 +103,7 @@
         },
         {
           "rank": 13,
-          "nameHe": "ילין אהרן",
+          "nameHe": "ידלין אהרן",
           "page": 1320
         },
         {
@@ -193,7 +193,7 @@
         },
         {
           "rank": 31,
-          "nameHe": "אמוראי עדיאל (עדיאל)",
+          "nameHe": "אמוראי עדי(אל)",
           "page": 1320
         },
         {
@@ -254,7 +254,7 @@
           "פדר נפתלי",
           "בר-לב חיים",
           "יעקבי גד",
-          "ילין אהרן",
+          "ידלין אהרן",
           "רבינוביץ יהושע",
           "משל ירוחם",
           "אשל תמר (שדה)",
@@ -272,7 +272,7 @@
           "זכאי יחזקאל",
           "נמיר אורה",
           "שריד יוסף (יוסי)",
-          "אמוראי עדיאל (עדיאל)",
+          "אמוראי עדי(אל)",
           "חריש מיכאל"
         ],
         "note": "Visually compared name by name; namesHe uses surname/given order also when results print given/surname order. Punctuation normalized; explicit variants retain other differences.",
@@ -580,7 +580,7 @@
         },
         {
           "rank": 5,
-          "nameHe": "זרע מאיר",
+          "nameHe": "זורע מאיר",
           "page": 1325
         },
         {
@@ -620,7 +620,7 @@
         },
         {
           "rank": 13,
-          "nameHe": "ששי וידאן",
+          "nameHe": "עטשי זידאן",
           "page": 1325
         },
         {
@@ -661,7 +661,7 @@
           "רובינשטיין אמנון",
           "עמית מאיר",
           "תמיר שמואל",
-          "זרע מאיר",
+          "זורע מאיר",
           "ורטהימר זאב",
           "טולידאנו שמואל",
           "נוף עקיבא",
@@ -669,7 +669,7 @@
           "יגורי אסף",
           "גולומב דוד",
           "אסעד שפיק",
-          "ששי וידאן",
+          "עטשי זידאן",
           "וירשובסקי מרדכי",
           "אלגרבלי מרדכי"
         ],
@@ -827,7 +827,7 @@
         },
         {
           "rank": 16,
-          "nameHe": "ידלין הלל",
+          "nameHe": "זיידל הלל",
           "page": 1328
         },
         {
@@ -892,12 +892,12 @@
         },
         {
           "rank": 29,
-          "nameHe": "ריבוביץ (רום) יוסף",
+          "nameHe": "רבינוביץ (רום) יוסף",
           "page": 1328
         },
         {
           "rank": 30,
-          "nameHe": "בריאן גוסטב",
+          "nameHe": "בדיאן גוסטב",
           "page": 1328
         },
         {
@@ -1032,7 +1032,7 @@
           "ארידור יורם",
           "גרופר פסח",
           "שמיר משה",
-          "ידלין הלל",
+          "זיידל הלל",
           "כהן גאולה",
           "מודעי יצחק",
           "קורפו חיים",
@@ -1045,8 +1045,8 @@
           "ציפורי מרדכי",
           "שילנסקי דב",
           "לין אמנון",
-          "ריבוביץ (רום) יוסף",
-          "בריאן גוסטב",
+          "רבינוביץ (רום) יוסף",
+          "בדיאן גוסטב",
           "אולמרט אהוד",
           "קצב משה",
           "מילוא רוני",
@@ -1115,8 +1115,18 @@
           "page": 1330
         }
       ],
-      "electedCrossCheck": null,
-      "note": "YP 2326 pp.1495–1496 lists 1 seat for Ratz but omits its elected-member paragraph; no name cross-check claimed."
+      "electedCrossCheck": {
+        "sourceId": "k9-ratz-odata",
+        "pages": [],
+        "ranks": [
+          1
+        ],
+        "namesHe": [
+          "אלוני שולמית"
+        ],
+        "note": "Official Knesset OData: PersonID2143; membership record997 (PositionID61) and Ratz faction record27111 (PositionID54, FactionID405), both start1977-06-13, first session. Registered rank1 is Aloni Shulamit in YP2319 p1330. YP2326 omits the paragraph; no gazette-page cross-check is claimed."
+      },
+      "note": "YP2326 omits the elected-member paragraph; rank1 is instead checked against official Knesset opening-date membership and Ratz affiliation, retained as k9-ratz-odata."
     }
   ]
 }

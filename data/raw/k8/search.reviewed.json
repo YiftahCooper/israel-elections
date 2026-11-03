@@ -182,5 +182,192 @@
     }
   ],
   "reviewedAt": "2026-11-03T16:37:23.593148+00:00",
-  "limitations": "Bounded discovery; not proof of nonexistence. Scratch downloads/renders are reproducible working copies; relevant unique observations retained here."
+  "limitations": "Bounded discovery; not proof of nonexistence. Scratch downloads/renders are reproducible working copies; relevant unique observations retained here.",
+  "followUp": {
+    "reviewedAt": "2026-11-03T17:01:30.664880+00:00",
+    "result": "No official complete agreement notice recovered; no pairs inferred, k8 remains unavailable.",
+    "gazetteInspection": {
+      "issues": [
+        1955,
+        1956,
+        1957,
+        1958,
+        1959,
+        1960,
+        1961,
+        1962,
+        1963,
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1971,
+        1972,
+        1973,
+        1974,
+        1975,
+        1976,
+        1977,
+        1978
+      ],
+      "scope": "All 24 covers/contents visually rechecked, including late issues through 10 January 1974. Not every internal page. YP1972 and1974 covers contain election emergency-direction notices, not agreements.",
+      "candidateGazette": "All 13 PDF pages of retained YP1954 inspected for notice/layout: cover p87 financing directions; candidate rosters pp88–98 through signature; final PDF page is digitization notice. No agreement notice identified; no full roster transcription claimed.",
+      "downloads": [
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-1957.pdf",
+          "bytes": 186287,
+          "sha256": "44e035da9de33e2dfa44288a1aebce4b296801824cf1d83b8233e07370d214d6"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-1955.pdf",
+          "bytes": 1746406,
+          "sha256": "0891eebf49196b52a852d355075b9f307df9035af6cf768b24102f0df5c1812b"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-1956.pdf",
+          "bytes": 1486592,
+          "sha256": "8fd581a764e09c1823b3edb12a0155a2fa7ad6fcef1cc26d319c5bc668ba2453"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-1959.pdf",
+          "bytes": 582965,
+          "sha256": "31a1d19fe4d9631ba077e58a6fedf19734ac462469554bc5093ccd60d2f40182"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-1958.pdf",
+          "bytes": 1545973,
+          "sha256": "cfa010ee264f3efb366d93639f10b94e58a40fc3bba9675b9d479070f2733aef"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-1960.pdf",
+          "bytes": 1485790,
+          "sha256": "65c4d8049ce089d5f14c89395bc84ca504a8795cefc6370294aae1bb63c64c11"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-1961.pdf",
+          "bytes": 722618,
+          "sha256": "75e0154e719ac93730f07f97cb008f6c0d3e44f8f6e8214ddc4b713173654d9c"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-1964.pdf",
+          "bytes": 164425,
+          "sha256": "d44caafaaded540effa93000b1bdcb767e4a8d94351e4be128e3b3ac3b867b0d"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-1962.pdf",
+          "bytes": 1525021,
+          "sha256": "4ff1b06012d0a7233a8757baa93b4285a221cdeb5f6bfba3d1f81453ba626b6b"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-1963.pdf",
+          "bytes": 1074324,
+          "sha256": "cdfeb664b0e8d2dc17d14f94f18e4f67ae44f849aa20de09692b6db8693cec09"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-1966.pdf",
+          "bytes": 224707,
+          "sha256": "8029dd938ef5c3da51f6b8e0d1660badf9eb131e313beb4944613410c2a7dc97"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-1965.pdf",
+          "bytes": 1383952,
+          "sha256": "7d008730f1235a5ddef09434d72367cfcd3810492e2bea51d7c65e0672662d3d"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-1967.pdf",
+          "bytes": 1921157,
+          "sha256": "ef3c33aab2ff8e8b1eac9a4a794c67a448f07438c748eaa09944470380cfb642"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-1968.pdf",
+          "bytes": 1555557,
+          "sha256": "91072d7a06f62a93dced1a00d1f7b7c9e1cd53b36bb8881ac52f32324aaae8d5"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-1969.pdf",
+          "bytes": 1522825,
+          "sha256": "38ec12d7ff7705e99ae704853e6478ea7a2071fb0c9209877ae75a2685dd5a46"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-1971.pdf",
+          "bytes": 209996,
+          "sha256": "21e9f10539e4d05ddfbe9b045c5bb41cd8c998e405e3da171dc06c0ce96493cc"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-1970.pdf",
+          "bytes": 1566913,
+          "sha256": "f0a04722acd510d770fd6232830d3bceda85cedbf0ecd3ec229575eb348795be"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-1972.pdf",
+          "bytes": 118770,
+          "sha256": "fa42cdc295fe70316f858dc79a084bf1aa70958020cbb7dabcfaafc59c148264"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-1974.pdf",
+          "bytes": 106534,
+          "sha256": "cc933aac1e07152bc92c2a17e4c0e4ddff9273e31d8bcb7c0933eecaf9560e12"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-1975.pdf",
+          "bytes": 908993,
+          "sha256": "3a1245cfdcb5c0d018f1816e6ca1878c0555ca9bb6d5c7db0ca4de0d1fb86a9d"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-1973.pdf",
+          "bytes": 1511712,
+          "sha256": "d0661a1f8f8cefd4e9a99725950af24e2c5c1a1ff8e31fa657f97f18cbdcb14c"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-1976.pdf",
+          "bytes": 940215,
+          "sha256": "f6e4ff4fa783914a236ec5e5ddac8fc64e9b63c7c17442e85d44a9ab2b60d480"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-1978.pdf",
+          "bytes": 1472492,
+          "sha256": "e1fbb62ca68005715c7bb96cc3fd8cbe5a338fac03758ee7a2154225aca5fa6d"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-1977.pdf",
+          "bytes": 1094316,
+          "sha256": "d102b0b059c21219c551ace2b049c51379a837cfc94a587ead216b457cfab76b"
+        }
+      ]
+    },
+    "officialStationScan": {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%208%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A41.pdf",
+      "bytes": 16954260,
+      "sha256": "d8e24a85e310ab7e10b31e8ffecd7913016504d72dbdca57ce46f8ae0a325b2f",
+      "pdfPages": 263,
+      "inspectedPdfPages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        263
+      ],
+      "scope": "Archive cover and station-table pages at the beginning, plus final table. No agreement notice or methodology introduction in the inspected pages. Not a full CBS461 volume inspection."
+    },
+    "queries": [
+      "\"1973\" \"התקשרות\" \"רשימות\" בחירות",
+      "\"הבחירות לכנסת השמינית\" \"הסכמי\"",
+      "site.cbs.gov.il \"461\" \"בחירות\"",
+      "\"ועדת הבחירות\" \"השמינית\" \"דין וחשבון\"",
+      "\"תוצאות הבחירות לכנסת השמינית\" \"461\"",
+      "site.gov.il \"השמינית\" \"התקשרויות\"",
+      "\"ילקוט\" \"1973\" \"התקשרות בין רשימות\"",
+      "\"ועדת הבחירות המרכזית לכנסת השמינית\" \"דין\""
+    ],
+    "catalogueLead": {
+      "url": "https://www.cbs.gov.il/he/publications/DocLib/2022/service/%D7%A8%D7%A9%D7%99%D7%9E%D7%AA%20%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D%20%D7%9C%D7%A4%D7%99%20%D7%A0%D7%95%D7%A9%D7%90%20%D7%95%D7%9C%D7%A4%D7%99%20%D7%9E%D7%A1%D7%A4%D7%A8.pdf",
+      "result": "Indexed official CBS catalogue confirms publication461. No complete volume461 or CEC election report located/retrieved; no agreement list recovered from search results."
+    },
+    "limitations": "Bounded contents/layout/selected-page search only. All interior gazette pages and the full CBS461/CEC report were not inspected. Absence in this search is not evidence of nonexistence."
+  }
 }

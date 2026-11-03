@@ -19,7 +19,7 @@ marks those not yet released as unavailable.
 | k6 | 1965-11-02 | Results and candidate gazettes; CBS totals; reviewed national votes/seats; complete signed agreement notice via mirror | None imported | Unavailable; see K1–K7 section and decisions 0060–0062 |
 | k7 | 1969-10-28 | Results and candidate gazettes; CBS totals; reviewed national votes/seats; complete signed agreement notice via mirror | None imported | Unavailable; see K1–K7 section and decisions 0060–0062 |
 | k8 | unfinished | unfinished | held: agreements and rosters |
-| k9 | 120 across all 13 winners | 119/120 | held: YP 2326 omits the Ratz elected-member paragraph |
+| k9 | 120 across all 13 winners | 120/120 (119 gazette + 1 official Knesset OData) | released |
 | k10 | 120 across all 10 winners | 120/120 | released |
 | k11 | 196 across all 15 winners, including complete Alignment 120 | 120/120 | released |
 | k12 | 120 across all 15 winners | 120/120 | released |
@@ -391,14 +391,14 @@ retained record; no scratch files or test logs are needed in CI.
 
 The isolated k8–k12 modules bind retained originals and reviewed transcriptions to
 manifest SHA-256 values, check national arithmetic and agreement membership, and
-compare every list's seats through the scenario-to-engine path. **K10–K12 are released**
-as national-only JSON with `hasLocalities: false`. K8 and K9 emit no public dataset and
-reject a premature availability flip. Zero station/locality counts mean unavailable data.
+compare every list's seats through the scenario-to-engine path. **K9–K12 are released**
+as national-only JSON with `hasLocalities: false`. K8 emits no public dataset and
+rejects a premature availability flip. Zero station/locality counts mean unavailable data.
 
 | Election | Lists | Valid | Invalid | Cast (CBS) | Registered (CBS) | Agreement coverage | Allocation evidence |
 |---|---:|---:|---:|---:|---:|---|---|
 | k8 | unfinished | unfinished | held: agreements and rosters |
-| k9 | 120 across all 13 winners | 119/120 | held: YP 2326 omits the Ratz elected-member paragraph |
+| k9 | 120 across all 13 winners | 120/120 (119 gazette + 1 official Knesset OData) | released |
 | k10 | 120 across all 10 winners | 120/120 | released |
 | k11 | 196 across all 15 winners, including complete Alignment 120 | 120/120 | released |
 | k12 | 120 across all 15 winners | 120/120 | released |
@@ -413,14 +413,15 @@ disclosed olaw mirror; 1984 and 1988 notices are inside their candidate issues.
 | Election | Winning-list ranks retained | Elected-name comparison | Release |
 |---|---:|---:|---|
 | k8 | unfinished | unfinished | held: agreements and rosters |
-| k9 | 120 across all 13 winners | 119/120 | held: YP 2326 omits the Ratz elected-member paragraph |
+| k9 | 120 across all 13 winners | 120/120 (119 gazette + 1 official Knesset OData) | released |
 | k10 | 120 across all 10 winners | 120/120 | released |
 | k11 | 196 across all 15 winners, including complete Alignment 120 | 120/120 | released |
 | k12 | 120 across all 15 winners | 120/120 | released |
 
 The owner's roster standard requires contiguous leading ranks covering everyone
 elected, transcribed from the candidate gazette and compared name by name against
-the results notice. Later ranks are optional (`candidatesTruncated: true`); nonwinning
+the results notice, with the official OData supplement for k9 Ratz documented below.
+Later ranks are optional (`candidatesTruncated: true`); nonwinning
 lists have empty arrays and `candidatesUnavailable: true` when not transcribed.
 This describes dataset coverage, not absence of the official archives. Reviewed JSON
 retains page references, elected names and spelling/alias differences. Dataset status
@@ -430,17 +431,50 @@ and subsequent roster changes remain unverified limitations, **not release gates
 K9's optional candidate cap reproduces every official seat, but **the procedure is
 inferred from the officially published result because the statutory text was not located**.
 ההליך לשנת 1977 מוסק מהתוצאה הרשמית שפורסמה משום שנוסח החוק המסדיר אותו לא אותר.
-Both copies of YP 2326 omit Ratz's elected-name paragraph, preventing the required final
-cross-check even though the candidate gazette supplies Shulamit Aloni at rank 1.
-K8's repeated bounded 1955–1978 cover search and candidate-issue inspection found no
-agreement notice. Neither search establishes nonexistence.
+Both copies of YP 2326 omit Ratz's elected-name paragraph. The official Knesset OData
+API now supplies the final cross-check: **אלוני שולמית**, PersonID **2143**, MK record
+**997** and Ratz faction record **27111** (FactionID **405**), both starting on the first
+session, **13 June 1977**. This matches registered rank 1 in YP 2319 p.1330; no gazette
+correction is claimed. The original response and position definitions are retained under
+`data/raw/k9/` and hashed in SOURCES. The k9-specific verifier checks the official
+identity, opening service dates and faction; the shared gazette-only verifier is unchanged.
+The released dataset and picker disclose this source and the inferred cap in both languages.
+Seven k9 name transcription errors flagged during the API comparison were corrected only
+after rereading both official scans (YP2319 pp.1320,1325,1328; YP2326 pp.1495–1496);
+exact before/after names and page references are in `k9/search.reviewed.json`.
+
+K8's renewed bounded search checked **all 24 covers/contents, YP1955–1978**, including
+late notices through 10 January 1974; all **13 PDF pages** of candidate YP1954 for notice
+layout, through its p.98 signature and digitization page; and PDF pages **1–6 and 263**
+of the **263-page official station scan**. No agreement notice was recovered. The station
+pages inspected are tables, not a verified complete CBS 461 methodological volume.
+Targeted Hebrew CEC/government/CBS queries confirmed the CBS 461 catalogue reference but
+did not locate the full volume or a CEC report. Exact queries, URLs, download hashes and
+inspection limits are in `k8/search.reviewed.json`. Interior gazette pages and the whole
+station scan were not searched exhaustively. No pairs are inferred; the four seat
+mismatches and unfinished rosters keep k8 unavailable. This does not establish nonexistence.
+
+The requested additional **k10–k15 opening-membership comparison** is retained as
+`k9/opening-membership-cross-check.reviewed.json`, a project extraction from official
+OData, with all pagination URLs/hashes, opening-date records, 120 selected members and
+factions per election, and every unmatched dataset/API name. It uses the app's `electedOf`
+selection, including `notSeated`, rather than treating every leading registered rank as
+seated. After punctuation-only normalization, exact matches are **99, 102, 106, 103, 106, 101**
+out of 120 respectively. The remaining differences include aliases/middle names and
+substantive discrepancies requiring gazette review, including k10's בן-אהרן אברהם and
+ורד תמר, k11's שפירא אליהו and רן נחמן, k12's רייסר מיכאל versus opening member
+גולדברג יוסף, and k14's ריבלין חיים and ליבני יהודה. None of these other elections
+was changed. These are comparison findings, not a claim that every unequal string is a
+different person or that API spelling overrides the registered gazette spelling.
 
 Decisions [0072](decisions/0072-k8-k12-roster-release-standard.md),
 [0073](decisions/0073-k9-candidate-cap-inference.md),
 [0074](decisions/0074-k8-agreements-search-and-hold.md) and
 [0075](decisions/0075-k8-k12-release-evidence.md) supersede the earlier release holds in
 0070–0071 and give per-list coverage, elected checks, agreement pairs and seat tables,
-including **both K9 procedures**. SOURCES registers the bounded search records.
+including **both K9 procedures**. [0076](decisions/0076-k9-ratz-release-and-k8-search.md)
+supersedes the k9 name-cross-check hold and records the new official evidence, k8 search
+and cross-election findings. SOURCES registers the bounded search records.
 Reproduce with locked dependencies, `node scripts/build-datasets.ts`,
 `node scripts/check-colours.ts`, `npx tsc -p tsconfig.json --noEmit` and `npx vitest run`.
 No scratch input is required. pdfjs-dist 6.5.438 uses its matching wasm directory;
