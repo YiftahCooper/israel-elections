@@ -1,3 +1,3 @@
 import { buildEarlyDataset } from './k1-k7-common.ts';
-/** Emit only a verified national dataset; k6 remains evidence-only. */
-export function buildK2(): never[] { return buildEarlyDataset(2); }
+/** Release job for a verified national-only dataset; [] while blocked. */
+export const buildK2 = () => buildEarlyDataset(2);
