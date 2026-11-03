@@ -10,6 +10,13 @@ passed every release gate; `public/data/elections.json` marks them unavailable.
 
 | Id | Election date | Official source files retained | Secondary data used | Still missing from a released dataset |
 |---|---|---|---|---|
+| k1 | 1949-01-25 | Results and candidate gazettes; CBS totals; reviewed national votes/seats | None imported | Unavailable; see K1–K7 section and decisions 0060–0062 |
+| k2 | 1951-07-30 | Results and candidate gazettes; CBS totals; reviewed national votes/seats | None imported | Unavailable; see K1–K7 section and decisions 0060–0062 |
+| k3 | 1955-07-26 | Results and candidate gazettes; CBS totals; reviewed national votes/seats | None imported | Unavailable; see K1–K7 section and decisions 0060–0062 |
+| k4 | 1959-11-03 | Results and candidate gazettes; CBS totals; reviewed national votes/seats | None imported | Unavailable; see K1–K7 section and decisions 0060–0062 |
+| k5 | 1961-08-15 | Results and candidate gazettes; CBS totals; reviewed national votes/seats | None imported | Unavailable; see K1–K7 section and decisions 0060–0062 |
+| k6 | 1965-11-02 | Results and candidate gazettes; CBS totals; reviewed national votes/seats; complete signed agreement notice via mirror | None imported | Unavailable; see K1–K7 section and decisions 0060–0062 |
+| k7 | 1969-10-28 | Results and candidate gazettes; CBS totals; reviewed national votes/seats; complete signed agreement notice via mirror | None imported | Unavailable; see K1–K7 section and decisions 0060–0062 |
 | k16 | 2003-01-28 | Polling stations; CEC candidates/results; complete agreement notice YP 5151; official CBS totals; reviewed national transcription and locality digest | No secondary rosters; project derivatives labelled | Two gazette vote discrepancies (410 total); full rosters; locality committee metadata; release blocked |
 | k17 | 2006-03-28 | Polling stations; CEC candidates/results; complete agreement notice YP 5510; official CBS totals; reviewed national transcription and locality digest | No secondary rosters; project derivatives labelled | Nine-invalid-vote discrepancy; full rosters; locality code/electorate/committee fields; release blocked |
 | k18 | 2009-02-10 | Polling stations; CEC candidate/results gazettes; allocation memorandum; YP 5912 agreement notice (mirror) | None | Released; derived localities and sourced invalid-count exception disclosed (0040) |
@@ -285,3 +292,52 @@ These historical sources use code 0 (k18) and 875 (k19). The source codes are pr
 the UI needs an election-aware envelope predicate and accurate derived-source labels
 before its locality presets can exclude these rows correctly. No `src/app/` file was
 changed in this branch, as required by the shared-file boundary.
+
+## K1–K7: national evidence retained, release gates still open
+
+The isolated `scripts/lib/historical/k1.ts` … `k7.ts` entry points run evidence
+preflights and return no build jobs. All seven `national.reviewed.json` files
+retain gazetted national votes and seats with PDF page references. Each vote sum
+matches official CBS table 27.2, and each gazetted invalid count equals CBS cast
+minus valid. The new tests fix every list's published seats independently of the
+engine. They do not turn a diagnostic seat match into a released dataset.
+
+| Id | Valid | Lists | Allocation evidence | Remaining release gates |
+|---|---:|---:|---|---|
+| k1 | 434,684 | 21 | Quota 3,592; no-connections diagnostic gives Herut 15/official 14, General Zionists 6/7 | Actual connections; exact seats; all winning rosters |
+| k2 | 687,492 | 17 | Quota 5,692; all seats match in no-connections diagnostic | Complete connection notice (official memorandum points to YP 177); all winning rosters |
+| k3 | 853,219 | 18 | Quota 6,938; all seats match in no-connections diagnostic | Complete connection notice; all winning rosters |
+| k4 | 969,337 | 24 | Quota 7,800; no-connections diagnostic gives Mapai 48/47, Cooperation and Brotherhood 1/2 | Actual connections; exact seats; all winning rosters |
+| k5 | 1,006,964 | 14 | Quota 8,332; all seats match in no-connections diagnostic | Complete connection notice; all winning rosters |
+| k6 | 1,206,728 | 17 | Quota 9,881; signed YP 1225 has two pairs; Alignment 44/45, HaOlam HaZeh 2/1 remain unresolved | Historical agreement application/exact seats; all winning rosters |
+| k7 | 1,367,743 | 16 | Quota 11,274; YP 1565's one pair reproduces every official seat | All winning rosters and elected-rank cross-checks |
+
+The complete primary notices were retrieved from the **olaw.org.il mirror**:
+YP 1225 p.189, Alignment–Cooperation and Brotherhood and Rafi–Peace (the latter
+inactive); YP 1565 p.246, Cooperation and Brotherhood–Progress and Development.
+Completeness comes from reading the signed notices, not from seat outcomes.
+Decision [0062](decisions/0062-k1-k7-connected-list-search.md) records issue ranges,
+404 retrieval limits, and 1949's amended requirement to publish connections in
+**daily newspapers**. Missing sets remain `pairs: null`, never a claimed empty set.
+
+**Zero complete candidate rosters are claimed in this increment.** All seven
+candidate gazettes are retained, but complete winning-list transcriptions and
+elected-rank comparisons remain work to do. No names are fabricated, and no
+winning list is given `candidatesUnavailable` merely because transcription is
+unfinished. National long names/ballot typography still need candidate-gazette
+editorial review before promotion. Station scans are out of scope: research
+fixtures have `hasLocalities: false` and no public locality files are emitted.
+
+The literal early-law presets and their limitations are documented in
+[ELECTORAL-LAW.md](ELECTORAL-LAW.md) and decisions 0060–0061. In particular, the
+1965 discrepancy means the full historical application of connected-list
+largest remainder is not yet established. No ad hoc algorithm or agreement was
+chosen to fit it. IDI's 1949 −7, 1959 +6,994 and 1965 −53,104 errors were not
+imported; gazette/CBS figures reconcile without changing any list.
+
+Reproduction uses committed inputs only: `npm ci`, `node scripts/build-datasets.ts`,
+`npx vitest run`. Scans were rendered with locked `pdfjs-dist` and
+`wasmUrl` pointing at `node_modules/pdfjs-dist/wasm/`; temporary renders and search
+copies live only in `.backup-scratch/k1-k7/`. The preflights bind source hashes and
+refuse premature availability/public outputs. Decisions 0060–0062 are the compact
+retained record; no scratch files or test logs are needed in CI.

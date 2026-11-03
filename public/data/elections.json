@@ -7,9 +7,9 @@
     "nameEn": "Election to the 1st Knesset",
     "available": false,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
-      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+      "stage": "verification-incomplete",
+      "noteEn": "National votes reconcile with CBS. Unavailable: actual connections and complete winning rosters unverified; diagnostic seats differ (Herut/General Zionists).",
+      "noteHe": "הקולות הארציים תואמים ללמ״ס; הסכמי ההתקשרות והרשימות המלאות טרם אומתו, ושחזור המנדטים אינו תואם."
     }
   },
   {
@@ -20,9 +20,9 @@
     "nameEn": "Election to the 2nd Knesset",
     "available": false,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
-      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+      "stage": "verification-incomplete",
+      "noteEn": "National votes reconcile with CBS; no-connections diagnostic reproduces seats. Unavailable: complete connection notice and winning rosters unverified.",
+      "noteHe": "הקולות הארציים תואמים ללמ״ס; בדיקה ללא הסכמים משחזרת את המנדטים. הסכמי ההתקשרות והרשימות המלאות טרם אומתו."
     }
   },
   {
@@ -33,9 +33,9 @@
     "nameEn": "Election to the 3rd Knesset",
     "available": false,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
-      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+      "stage": "verification-incomplete",
+      "noteEn": "National votes reconcile with CBS; no-connections diagnostic reproduces seats. Unavailable: complete connection notice and winning rosters unverified.",
+      "noteHe": "הקולות הארציים תואמים ללמ״ס; בדיקה ללא הסכמים משחזרת את המנדטים. הסכמי ההתקשרות והרשימות המלאות טרם אומתו."
     }
   },
   {
@@ -46,9 +46,9 @@
     "nameEn": "Election to the 4th Knesset",
     "available": false,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
-      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+      "stage": "verification-incomplete",
+      "noteEn": "National votes reconcile with CBS. Unavailable: actual connections and complete winning rosters unverified; diagnostic seats differ (Mapai/Cooperation and Brotherhood).",
+      "noteHe": "הקולות הארציים תואמים ללמ״ס; הסכמי ההתקשרות והרשימות המלאות טרם אומתו, ושחזור המנדטים אינו תואם."
     }
   },
   {
@@ -59,9 +59,9 @@
     "nameEn": "Election to the 5th Knesset",
     "available": false,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
-      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+      "stage": "verification-incomplete",
+      "noteEn": "National votes reconcile with CBS; no-connections diagnostic reproduces seats. Unavailable: complete connection notice and winning rosters unverified.",
+      "noteHe": "הקולות הארציים תואמים ללמ״ס; בדיקה ללא הסכמים משחזרת את המנדטים. הסכמי ההתקשרות והרשימות המלאות טרם אומתו."
     }
   },
   {
@@ -72,9 +72,9 @@
     "nameEn": "Election to the 6th Knesset",
     "available": false,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
-      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+      "stage": "verification-incomplete",
+      "noteEn": "National votes reconcile with CBS; complete two-pair notice YP 1225 retained via mirror. Unavailable: one-seat Alignment/HaOlam HaZeh discrepancy under inspected rules; full winning rosters unverified.",
+      "noteHe": "הקולות הארציים ושני הסכמי ההתקשרות אומתו; נותר פער מנדט בין המערך לעולם הזה, והרשימות המלאות טרם תומללו."
     }
   },
   {
@@ -85,9 +85,9 @@
     "nameEn": "Election to the 7th Knesset",
     "available": false,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
-      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+      "stage": "verification-incomplete",
+      "noteEn": "National votes reconcile with CBS; complete one-pair notice YP 1565 via mirror reproduces every seat. Unavailable: full winning rosters and elected-rank checks not transcribed.",
+      "noteHe": "הקולות הארציים, הסכם ההתקשרות וכל המנדטים אומתו. הרשימות המלאות ובדיקת דירוג הנבחרים טרם הושלמו."
     }
   },
   {

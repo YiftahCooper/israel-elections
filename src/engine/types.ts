@@ -19,6 +19,18 @@ export interface RuleSet {
   maxAgreementSize: number;
   /** section 82(a): agreement only takes effect when every partner passed the threshold */
   agreementRequiresAllQualify: boolean;
+  /** 1949 s.30(a): divide by seats + 1. Default 0 (modern Hare quota). Also applies internally. */
+  quotaSeatOffset?: number;
+  /** 1949 s.30(c)(1): only lists with whole-quota seats compete. Default false. */
+  remainderRequiresInitialSeat?: boolean;
+  /** 1949 s.31(a): both connected lists must have whole-quota seats. Default false. */
+  agreementRequiresInitialSeat?: boolean;
+  /** 1949 s.30(c)(3): discard quotient fractions before comparison. Default exact. */
+  quotientRounding?: 'exact' | 'floor';
+  /** false: at most one largest-remainder seat per unit (1951–1969). Default true. */
+  largestRemainderRepeat?: boolean;
+  /** Default lottery; unspecified preserves a provisional tie without asserting a statutory procedure. */
+  tiePolicy?: 'lottery' | 'unspecified';
 }
 
 export interface ListInput {
@@ -94,7 +106,7 @@ export interface AgreementStatus {
   id: string;
   members: string[];
   active: boolean;
-  reason?: 'member-failed-threshold' | 'member-withdrawn' | 'too-many-members' | 'duplicate-membership' | 'unknown-list';
+  reason?: 'member-failed-threshold' | 'member-no-initial-seat' | 'member-withdrawn' | 'too-many-members' | 'duplicate-membership' | 'unknown-list';
   failedMembers: string[];
 }
 

@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest';
-import { ISRAEL_1992, ISRAEL_2004, ISRAEL_2014 } from '../src/engine/rules.ts';
+import { ISRAEL_1949, ISRAEL_1951, ISRAEL_1992, ISRAEL_2004, ISRAEL_2014 } from '../src/engine/rules.ts';
 import { electionRuleSetId, historicalRules, scenarioFromDataset, toEngineInput, validateScenario } from '../src/model/scenario.ts';
 import { applyAction } from '../src/model/actions.ts';
 import type { ElectionId } from '../src/data/schema.ts';
 import { loadDataset } from './helpers.ts';
 
 describe('historical statutory threshold eras', () => {
-  for (let n = 16; n <= 26; n++) {
+  for (const n of [1,2,3,4,5,6,7,16,17,18,19,20,21,22,23,24,25,26]) {
     const id = `k${n}` as ElectionId;
-    const preset = n === 16 ? ISRAEL_1992 : n <= 19 ? ISRAEL_2004 : ISRAEL_2014;
+    const preset = n === 1 ? ISRAEL_1949 : n <= 7 ? ISRAEL_1951 : n === 16 ? ISRAEL_1992 : n <= 19 ? ISRAEL_2004 : ISRAEL_2014;
     it(`${id}: dataset rules and historical reset use its own era`, () => {
       // Synthetic dataset tests rule plumbing only; it is NOT historical seat evidence.
       const ds = { ...loadDataset('k25'), id, ruleSetId: preset.id };
@@ -35,4 +35,15 @@ describe('historical statutory threshold eras', () => {
     expect(() => historicalRules('unverified')).toThrow('unknown rule set');
     expect(validateScenario({ ...scenarioFromDataset(loadDataset('k25')), electionId: 'k27' })).toContain('unknown election "k27"');
   });
+});
+
+it('validates new options in imported rules and rejects historical semantic overrides', () => {
+  const s=scenarioFromDataset(loadDataset('k25'));
+  for(const patch of [{quotaSeatOffset:1},{remainderRequiresInitialSeat:true},{agreementRequiresInitialSeat:true},
+    {quotientRounding:'floor'},{largestRemainderRepeat:false},{tiePolicy:'unspecified'}]) {
+    expect(validateScenario({...s,rules:{...s.rules,...patch}})).toContain('historical rules must match the election statutory preset');
+  }
+  for(const patch of [{quotaSeatOffset:-1},{quotaSeatOffset:2},{quotientRounding:'nearest'},{largestRemainderRepeat:'false'},{tiePolicy:'votes'}]) {
+    expect(validateScenario({...s,mode:'experimental',rules:{...s.rules,...patch}}).some(e=>e.startsWith('invalid rules'))).toBe(true);
+  }
 });

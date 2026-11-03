@@ -1,0 +1,165 @@
+{
+  "id": "k1",
+  "reviewedOn": "2026-11-03",
+  "resultsSourceId": "k1-results-gazette",
+  "candidateSourceId": "k1-candidates-gazette",
+  "pages": {
+    "votes": 2,
+    "seats": 2,
+    "invalid": 4
+  },
+  "nationalTotals": {
+    "registered": 506567,
+    "votesCast": 440095,
+    "valid": 434684,
+    "invalid": 5411
+  },
+  "totalsProvenance": {
+    "registered": "k1-k7-cbs-national-totals",
+    "votesCast": "k1-k7-cbs-national-totals",
+    "valid": "sum of gazetted list votes; CBS cross-check",
+    "invalid": "results gazette"
+  },
+  "lists": [
+    {
+      "letters": "א",
+      "nameHe": "מפלגת פועלי ארץ-ישראל ובלתי מפלגתיים",
+      "votes": 155274,
+      "officialSeats": 46
+    },
+    {
+      "letters": "ב",
+      "nameHe": "החזית הדתית המאוחדת",
+      "votes": 52982,
+      "officialSeats": 16
+    },
+    {
+      "letters": "ג",
+      "nameHe": "תנועת ז'בוטינסקי — ברית הצה\"ר",
+      "votes": 2892,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ח",
+      "nameHe": "תנועת החרות — מיסודו של הארגון הצבאי הלאומי",
+      "votes": 49782,
+      "officialSeats": 14
+    },
+    {
+      "letters": "ט",
+      "nameHe": "למען ירושלים",
+      "votes": 842,
+      "officialSeats": 0
+    },
+    {
+      "letters": "יא",
+      "nameHe": "הגוש העובד אלכתלה אלעאמלה",
+      "votes": 3214,
+      "officialSeats": 0
+    },
+    {
+      "letters": "יג",
+      "nameHe": "רשימת יצחק גרינבוים",
+      "votes": 2514,
+      "officialSeats": 0
+    },
+    {
+      "letters": "יד",
+      "nameHe": "הרשימה הדמוקרטית של נצרת ומחוזה",
+      "votes": 7387,
+      "officialSeats": 2
+    },
+    {
+      "letters": "טו",
+      "nameHe": "רשימת לוחמים",
+      "votes": 5363,
+      "officialSeats": 1
+    },
+    {
+      "letters": "יח",
+      "nameHe": "רשימת חרדים",
+      "votes": 2835,
+      "officialSeats": 0
+    },
+    {
+      "letters": "יט",
+      "nameHe": "רשימת היהדות המסורתית",
+      "votes": 239,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ל",
+      "nameHe": "התאחדות התימנים בישראל",
+      "votes": 4399,
+      "officialSeats": 1
+    },
+    {
+      "letters": "מ",
+      "nameHe": "מפלגת הפועלים המאוחדת",
+      "votes": 64018,
+      "officialSeats": 19
+    },
+    {
+      "letters": "נ",
+      "nameHe": "הסתדרות נשים ציוניות \"ויצו\" והתאחדות נשים לשווי זכויות בישראל",
+      "votes": 5173,
+      "officialSeats": 1
+    },
+    {
+      "letters": "ס",
+      "nameHe": "רשימת האיחוד הארצי של הספרדים ובני עדות המזרח",
+      "votes": 15287,
+      "officialSeats": 4
+    },
+    {
+      "letters": "פ",
+      "nameHe": "המפלגה הפרוגרסיבית",
+      "votes": 17786,
+      "officialSeats": 5
+    },
+    {
+      "letters": "פד",
+      "nameHe": "הפועלת והאשה הדתית",
+      "votes": 2796,
+      "officialSeats": 0
+    },
+    {
+      "letters": "צ",
+      "nameHe": "הסתדרות הציונים הכלליים — מפלגת המרכז",
+      "votes": 22661,
+      "officialSeats": 7
+    },
+    {
+      "letters": "ק",
+      "nameHe": "רשימת הקומוניסטים ובלתי מפלגתיים למען עצמאות דמוקרטיה ושלום",
+      "votes": 15148,
+      "officialSeats": 4
+    },
+    {
+      "letters": "ש",
+      "nameHe": "הרשימה המאוחדת של פועלים דתיים",
+      "votes": 1280,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ת",
+      "nameHe": "הגוש העממי הערבי",
+      "votes": 2812,
+      "officialSeats": 0
+    }
+  ],
+  "agreements": {
+    "complete": false,
+    "pairs": null,
+    "note": "No complete primary notice verified. Empty diagnostic input is not a finding that no agreements existed."
+  },
+  "rosters": {
+    "completeWinningRosters": false,
+    "reviewedLists": []
+  },
+  "releaseBlockers": [
+    "Complete connected-list notice not verified.",
+    "Complete winning-list candidate rosters and elected-rank cross-checks not transcribed.",
+    "Exact seat reproduction fails with the retained inputs; see decision 0061."
+  ]
+}

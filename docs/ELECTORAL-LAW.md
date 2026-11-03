@@ -103,3 +103,75 @@ gazetted seats, with thresholds **47,226 / 62,742** and quotas **25,138 / 24,619
 They are explicitly research fixtures: both elections remain unavailable because gazette
 figures conflict with polling data, full candidate rosters are unverified and required
 locality fields are missing. Successful allocation does not clear those release gates.
+
+## 1949: Constituent Assembly ordinance
+
+The [primary ordinance](https://fs.knesset.gov.il/0/law/0_lsr_312706.pdf), Official
+Gazette 33, supplement A, p.57 (PDF p.6), ss.30–31, defines a different method.
+`ISRAEL_1949` (`il-1949-highest-average-0`) has **no statutory percentage threshold**:
+`thresholdPct: '0'` represents that absence. The general quota is
+`floor(all valid votes / 121)`; each list initially receives whole quotas.
+Only lists with an initial seat compete for further seats, repeatedly awarded by
+`votes / (current seats + 1)`. Section 30(c)(3) requires **discarding fractions
+before comparing**; equal integer quotients require a CEC lottery. There is no
+half-seats cap in these clauses.
+
+Two connected lists are one remainder competitor only if **each already has an
+initial seat**. Their summed initial seats and votes enter that stage; their total
+seats are then divided afresh by s.30, including a pair quota whose divisor is the
+pair's seats **plus one**. Section 26 limits each list to one connection. The
+[21 January 1949 amendment](https://fs.knesset.gov.il/0/law/0_lsr_312737.pdf), s.1(c),
+changes publication of connections to **daily newspapers at least a day before
+voting**. A gazette-only search cannot establish the election-day set.
+
+The engine options are `quotaSeatOffset: 1`, `remainderRequiresInitialSeat: true`,
+`agreementRequiresInitialSeat: true`, and `quotientRounding: 'floor'`. All default
+to modern semantics when omitted. The existing highest-average implementation is
+reused; its `bader-ofer` method name does not date that later legislation to 1949.
+The first names on a registered list are elected (s.32); no express candidate
+shortage redistribution rule was located. Quota over-allocation, including within
+a pair at large vote totals, is warned about and uses an **explicit simulation
+fallback**, not a verified statutory remedy. The Rules panel needs to show these
+options and the absence of a percentage threshold before a historical release.
+Decision [0060](decisions/0060-k1-k7-primary-allocation-rules.md) records primary
+amendment inspection and the limits. k1 remains unavailable: without sourced
+connections its seats differ, and complete winning rosters remain untranscribed.
+
+## 1951–1969: floor Hare and largest remainders
+
+The primary [1951 law](https://fs.knesset.gov.il/1/law/1_lsr_208018.pdf), ss.38–40,
+SH 74 p.116 (PDF p.7), sets a **1%** threshold, quota
+`floor(qualifying votes / 120)`, whole-quota initial seats and largest unused vote
+remainders. The [1955 consolidation](https://fs.knesset.gov.il/2/law/2_lsr_311000.pdf),
+ss.43–45 (PDF pp.8–9), [1959 consolidation](https://fs.knesset.gov.il/3/law/3_lsr_311002.pdf),
+ss.37–39 (PDF pp.7–8), and [original 1969 consolidation](https://fs.knesset.gov.il/6/law/6_lsr_311009.pdf),
+ss.81–83 (PDF pp.14–15), retain those allocation clauses. Inspected amendments
+through the October 1969 election establish no formula change; details and retained
+primary files are listed in decision 0060.
+
+`ISRAEL_1951` (`il-1951-largest-remainder-1`) represents the inspected wording:
+`remainderMethod: 'largest-remainder'`, `quotaRounding: 'floor'`, no majority cap,
+and `largestRemainderRepeat: false`. The last option implements the text's **one
+additional seat per competing list**, without silently starting another remainder
+round. Both connected partners must separately pass 1%; they combine for the
+remainder stage with summed initial seats and votes, and re-divide their total
+seats afresh by the same formula. There is no 1949 initial-seat eligibility condition.
+
+**Equal remainders are not resolved in the inspected allocation clauses.**
+`tiePolicy: 'unspecified'` warns explicitly and keeps any result provisional; a
+scenario's supplied choice is not evidence of a statutory lottery. For compatibility
+with the unchanged app warning switch, the warning uses `lottery-required` plus
+`data.tiePolicy: 'unspecified'`; the UI must render the qualified diagnostic instead
+of asserting that the law mandates a lottery. No express candidate shortage
+redistribution provision was found; that behavior is unverified.
+
+**Historical application of the agreement clauses remains unresolved for 1965.**
+The complete notice YP 1225 yields Alignment 44 and HaOlam HaZeh 2 under this literal
+implementation, against published 45 and 1. Neither changing votes nor inventing a
+second connection is justified. The preset is tested as an implementation of the
+inspected text; it is **not proof of a fully verified historical allocation rule**
+until contemporary CEC application evidence resolves that discrepancy. Decision
+[0061](decisions/0061-k1-k7-national-evidence-release-held.md) preserves the exact
+comparison. k7 reproduces every published seat with YP 1565's sourced pair; k2/k3/k5
+match in explicitly labelled no-connections diagnostics. None is released without
+the remaining candidate and agreement gates.

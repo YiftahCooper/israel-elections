@@ -48,6 +48,10 @@ interface StageOptions {
   universeVotes: bigint; // all votes taking part in this universe
   quota: Rational;
   majorityCap: boolean;
+  remainderRequiresInitialSeat?: boolean;
+  quotientRounding?: RuleSet['quotientRounding'];
+  largestRemainderRepeat?: boolean;
+  tiePolicy?: RuleSet['tiePolicy'];
   lotteryWinners: Record<string, string>;
   warnings: EngineWarning[];
   ties: TieRecord[];
@@ -56,7 +60,7 @@ interface StageOptions {
 function quotientFor(u: WorkUnit, o: StageOptions, roundGiven: Set<string>): Rational | null {
   switch (o.method) {
     case 'bader-ofer':
-      return rat(u.votes, BigInt(u.seats + 1));
+      return o.quotientRounding === 'floor' ? rat(u.votes / BigInt(u.seats + 1)) : rat(u.votes, BigInt(u.seats + 1));
     case 'sainte-lague':
       return rat(u.votes, BigInt(2 * u.seats + 1));
     case 'largest-remainder': {
@@ -74,12 +78,12 @@ function runRemainderStage(units: WorkUnit[], remaining: number, o: StageOptions
   const roundGiven = new Set<string>();
   let awarded = units.reduce((s, u) => s + u.seats, 0);
   for (let step = 1; step <= remaining; step++) {
-    if (o.method === 'largest-remainder' && units.every((u) => roundGiven.has(u.id) || u.capped)) roundGiven.clear();
+    if (o.method === 'largest-remainder' && o.largestRemainderRepeat !== false && units.every((u) => roundGiven.has(u.id) || u.capped)) roundGiven.clear();
     const quotients: Quotient[] = [];
     for (const u of units) {
       if (o.majorityCap && !u.capped && 2n * u.votes <= o.universeVotes && 2 * u.seats >= o.seatsTotal) u.capped = true;
       const value = quotientFor(u, o, roundGiven);
-      quotients.push({ unitId: u.id, votes: u.votes, seats: u.seats, value: value ?? rat(-1n), eligible: !u.capped && value !== null && u.votes > 0n, capped: u.capped });
+      quotients.push({ unitId: u.id, votes: u.votes, seats: u.seats, value: value ?? rat(-1n), eligible: !u.capped && value !== null && u.votes > 0n && (!o.remainderRequiresInitialSeat || u.initial > 0), capped: u.capped });
     }
     const eligible = quotients.filter((q) => q.eligible);
     if (eligible.length === 0) {
@@ -99,7 +103,8 @@ function runRemainderStage(units: WorkUnit[], remaining: number, o: StageOptions
       winnerId = forced && ids.includes(forced) ? forced : ids[0];
       tie = { key, tiedUnitIds: ids, chosen: winnerId, forced: Boolean(forced && ids.includes(forced)) };
       o.ties.push(tie);
-      if (!tie.forced) o.warnings.push({ code: 'lottery-required', message: `Seat ${awarded + 1} (${o.stage}) is an exact tie between ${ids.join(', ')}; the law requires a CEC lottery. Showing ${winnerId} as the winner — choose the lottery outcome to change it.`, data: { key, ids } });
+      if (o.tiePolicy === 'unspecified') o.warnings.push({ code: 'lottery-required', message: `Equal remainders in ${o.stage}; the inspected historical statute does not specify a tie procedure. ${tie.forced ? 'A supplied outcome is shown.' : 'The first unit is provisional.'}`, data: { key, ids, tiePolicy: 'unspecified' } });
+      else if (!tie.forced) o.warnings.push({ code: 'lottery-required', message: `Seat ${awarded + 1} (${o.stage}) is an exact tie between ${ids.join(', ')}; the law requires a CEC lottery. Showing ${winnerId} as the winner — choose the lottery outcome to change it.`, data: { key, ids } });
     }
     const winner = units.find((u) => u.id === winnerId)!;
     winner.seats += 1;
@@ -114,7 +119,7 @@ function runRemainderStage(units: WorkUnit[], remaining: number, o: StageOptions
 /** Allocates `seats` among members from scratch using the same method (section 82(b)). */
 function divideWithinUnit(unitId: string, members: { id: string; votes: bigint }[], seats: number, rules: RuleSet, base: Omit<StageOptions, 'stage' | 'seatsTotal' | 'universeVotes' | 'quota'>): InternalDivision {
   const totalVotes = members.reduce((s, m) => s + m.votes, 0n);
-  let quota = rules.remainderMethod === 'sainte-lague' ? rat(0n) : computeQuota(totalVotes, seats, rules.quotaRounding);
+  let quota = rules.remainderMethod === 'sainte-lague' ? rat(0n) : computeQuota(totalVotes, seats + (rules.quotaSeatOffset ?? 0), rules.quotaRounding);
   if (rules.remainderMethod !== 'sainte-lague' && quota.num === 0n && seats > 0) quota = rat(totalVotes, BigInt(seats));
   const work: WorkUnit[] = members.map((m) => {
     const init = rules.remainderMethod === 'sainte-lague' ? 0 : initialSeats(m.votes, quota);
@@ -122,6 +127,7 @@ function divideWithinUnit(unitId: string, members: { id: string; votes: bigint }
   });
   let given = work.reduce((s, w) => s + w.seats, 0);
   if (given > seats) {
+    if (rules.quotaSeatOffset) base.warnings.push({ code: 'quota-over-allocation', message: `The historical pair quota gives ${given} seats for ${seats} places. The inspected statute does not resolve this; exact Hare is a simulation fallback.`, data: { stage: `internal:${unitId}`, initialTotal: given } });
     quota = rat(totalVotes, BigInt(seats));
     for (const w of work) { w.seats = initialSeats(w.votes, quota); w.initial = w.seats; }
     given = work.reduce((s, w) => s + w.seats, 0);
@@ -150,7 +156,7 @@ export function allocate(input: AllocationInput): AllocationResult {
   const qualifyingVotes = input.lists.filter((l) => qualified.has(l.id)).reduce((s, l) => s + l.votes, 0n);
 
   // --- general quota and initial seats (81(b), 81(c))
-  let quota = rules.remainderMethod === 'sainte-lague' ? rat(0n) : computeQuota(qualifyingVotes, rules.seats, rules.quotaRounding);
+  let quota = rules.remainderMethod === 'sainte-lague' ? rat(0n) : computeQuota(qualifyingVotes, rules.seats + (rules.quotaSeatOffset ?? 0), rules.quotaRounding);
   if (qualified.size === 0) warnings.push({ code: 'no-qualifying-lists', message: 'No list passed the threshold; no seats can be allocated.' });
   if (rules.remainderMethod !== 'sainte-lague' && qualified.size > 0 && quota.num === 0n) {
     warnings.push({ code: 'zero-quota', message: 'Qualifying votes are fewer than seats, so the whole-number quota is 0. The exact (unrounded) quota is used instead.' });
@@ -164,7 +170,7 @@ export function allocate(input: AllocationInput): AllocationResult {
   computeInitial();
   let initialTotal = [...initial.values()].reduce((a, b) => a + b, 0);
   if (initialTotal > rules.seats) {
-    warnings.push({ code: 'quota-over-allocation', message: `Rounding the quota down gives ${initialTotal} initial seats, more than ${rules.seats}. The statute does not cover this (it only arises with very small vote totals); the exact quota is used instead.`, data: { initialTotal } });
+    warnings.push({ code: 'quota-over-allocation', message: rules.quotaSeatOffset ? `The historical seats-plus-one quota gives ${initialTotal} initial seats for ${rules.seats} places. The inspected statute does not resolve this; exact Hare is a simulation fallback.` : `Rounding the quota down gives ${initialTotal} initial seats, more than ${rules.seats}. The statute does not cover this (it only arises with very small vote totals); the exact quota is used instead.`, data: { initialTotal } });
     quota = rat(qualifyingVotes, BigInt(rules.seats));
     computeInitial();
     initialTotal = [...initial.values()].reduce((a, b) => a + b, 0);
@@ -199,6 +205,10 @@ export function allocate(input: AllocationInput): AllocationResult {
       if (status.failedMembers.length > 0 && rules.agreementRequiresAllQualify) status.reason = 'member-failed-threshold';
       else status.active = members.filter((m) => qualified.has(m)).length >= 2;
       if (!status.active && !status.reason) status.reason = 'member-failed-threshold';
+      if (status.active && rules.agreementRequiresInitialSeat) {
+        const noSeat = members.filter(m => (initial.get(m) ?? 0) === 0);
+        if (noSeat.length) { status.active = false; status.reason = 'member-no-initial-seat'; status.failedMembers = noSeat; }
+      }
     }
     members.forEach((m) => seenMember.add(m));
     if (status.active) {
@@ -225,7 +235,9 @@ export function allocate(input: AllocationInput): AllocationResult {
     }
   }
 
-  const base = { method: rules.remainderMethod, majorityCap: rules.majorityCap, lotteryWinners, warnings, ties };
+  const base = { method: rules.remainderMethod, majorityCap: rules.majorityCap,
+    remainderRequiresInitialSeat: rules.remainderRequiresInitialSeat, quotientRounding: rules.quotientRounding,
+    largestRemainderRepeat: rules.largestRemainderRepeat, tiePolicy: rules.tiePolicy, lotteryWinners, warnings, ties };
   const remaining = Math.max(0, rules.seats - initialTotal);
   const remainderSteps = qualified.size > 0
     ? runRemainderStage(work, remaining, { ...base, stage: 'national', seatsTotal: rules.seats, universeVotes: qualifyingVotes, quota })

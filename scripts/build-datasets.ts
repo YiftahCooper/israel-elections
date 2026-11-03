@@ -1,3 +1,10 @@
+import { buildK1 } from './lib/historical/k1.ts';
+import { buildK2 } from './lib/historical/k2.ts';
+import { buildK3 } from './lib/historical/k3.ts';
+import { buildK4 } from './lib/historical/k4.ts';
+import { buildK5 } from './lib/historical/k5.ts';
+import { buildK6 } from './lib/historical/k6.ts';
+import { buildK7 } from './lib/historical/k7.ts';
 // Builds the app datasets in public/data/ from the raw official sources in data/raw/.
 //   node scripts/build-datasets.ts
 // Every figure is derived from a raw file listed in data/raw/SOURCES.json; the script fails loudly
@@ -361,7 +368,7 @@ async function buildK26() {
 // Seat-diagram order: app-defined order (validated colour adjacency), then by votes.
 const seatOrder = (lists: ListRecord[]) => [...lists].sort((a, b) => (META[a.id]?.order ?? 999) - (META[b.id]?.order ?? 999) || b.votes - a.votes);
 
-for (const build of [...buildK16(), ...buildK17(), buildK18, buildK19, buildK20, buildK21, buildK22, buildK23, buildK24, buildK25, buildK26]) {
+for (const build of [...buildK1(), ...buildK2(), ...buildK3(), ...buildK4(), ...buildK5(), ...buildK6(), ...buildK7(), ...buildK16(), ...buildK17(), buildK18, buildK19, buildK20, buildK21, buildK22, buildK23, buildK24, buildK25, buildK26]) {
   const built = await build();
   const ds = { ...built.ds, lists: seatOrder(built.ds.lists) };
   const loc = built.loc;

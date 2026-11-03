@@ -1,0 +1,122 @@
+{
+  "id": "k5",
+  "reviewedOn": "2026-11-03",
+  "resultsSourceId": "k5-results-gazette",
+  "candidateSourceId": "k5-candidates-gazette",
+  "pages": {
+    "votes": 1,
+    "seats": 2,
+    "invalid": 2
+  },
+  "nationalTotals": {
+    "registered": 1271285,
+    "votesCast": 1037030,
+    "valid": 1006964,
+    "invalid": 30066
+  },
+  "totalsProvenance": {
+    "registered": "k1-k7-cbs-national-totals",
+    "votesCast": "k1-k7-cbs-national-totals",
+    "valid": "sum of gazetted list votes; CBS cross-check",
+    "invalid": "results gazette"
+  },
+  "lists": [
+    {
+      "letters": "א",
+      "nameHe": "מפלגת פועלי ארץ-ישראל ובלתי מפלגתיים",
+      "votes": 349330,
+      "officialSeats": 42
+    },
+    {
+      "letters": "ב",
+      "nameHe": "חזית דתית לאומית המזרחי הפועל המזרחי ובלתי מפלגתיים",
+      "votes": 98786,
+      "officialSeats": 12
+    },
+    {
+      "letters": "ג",
+      "nameHe": "יהדות התורה — אגודת ישראל ודתיים בלתי מפלגתיים",
+      "votes": 37178,
+      "officialSeats": 4
+    },
+    {
+      "letters": "ד",
+      "nameHe": "המחנה התורתי פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
+      "votes": 19428,
+      "officialSeats": 2
+    },
+    {
+      "letters": "ח",
+      "nameHe": "תנועת החרות",
+      "votes": 138599,
+      "officialSeats": 17
+    },
+    {
+      "letters": "יא",
+      "nameHe": "שיתוף ואחווה",
+      "votes": 19342,
+      "officialSeats": 2
+    },
+    {
+      "letters": "ל",
+      "nameHe": "המפלגה הליברלית",
+      "votes": 137255,
+      "officialSeats": 17
+    },
+    {
+      "letters": "מ",
+      "nameHe": "מפלגת הפועלים המאוחדת ובלתי מפלגתיים",
+      "votes": 75654,
+      "officialSeats": 9
+    },
+    {
+      "letters": "נ",
+      "nameHe": "קידמה ועבודה",
+      "votes": 3561,
+      "officialSeats": 0
+    },
+    {
+      "letters": "סס",
+      "nameHe": "למען הצדק והאחווה, רשימה ספרדית דתית",
+      "votes": 3181,
+      "officialSeats": 0
+    },
+    {
+      "letters": "עע",
+      "nameHe": "הגוש העממי",
+      "votes": 335,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ק",
+      "nameHe": "המפלגה הקומוניסטית הישראלית ובלתי מפלגתיים",
+      "votes": 42111,
+      "officialSeats": 5
+    },
+    {
+      "letters": "רא",
+      "nameHe": "קידמה ופיתוח",
+      "votes": 16034,
+      "officialSeats": 2
+    },
+    {
+      "letters": "תו",
+      "nameHe": "אחדות העבודה פועלי-ציון ובלתי מפלגתיים",
+      "votes": 66170,
+      "officialSeats": 8
+    }
+  ],
+  "agreements": {
+    "complete": false,
+    "pairs": null,
+    "note": "No complete primary notice verified. Empty diagnostic input is not a finding that no agreements existed."
+  },
+  "rosters": {
+    "completeWinningRosters": false,
+    "reviewedLists": []
+  },
+  "releaseBlockers": [
+    "Complete connected-list notice not verified.",
+    "Complete winning-list candidate rosters and elected-rank cross-checks not transcribed."
+  ]
+}
