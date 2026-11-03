@@ -1,0 +1,1738 @@
+{
+ "electionId": "k23",
+ "lists": [
+  {
+   "letters": "מחל",
+   "nameHe": "הליכוד בהנהגת בנימין נתניהו לראשות הממשלה",
+   "seats": 36,
+   "sources": [
+    {
+     "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+     "publisher": "Central Elections Committee / Reshumot (candidate-list gazette)",
+     "kind": "official",
+     "quote": "מטעם המפלגות: הליכוד – תנועה לאומית ליברלית (להלן – הליכוד); כולנו בראשות משה כחלון (להלן – כולנו)",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "parties": [
+    {
+     "id": "likud",
+     "nameHe": "הליכוד",
+     "nameEn": "Likud",
+     "candidateRanks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120
+     ],
+     "sources": [
+      {
+       "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+       "publisher": "Central Elections Committee / Reshumot (candidate-list gazette)",
+       "kind": "official",
+       "quote": "מטעם המפלגות: הליכוד – תנועה לאומית ליברלית (להלן – הליכוד); כולנו בראשות משה כחלון (להלן – כולנו) — party column for these candidates: הליכוד",
+       "accessed": "2026-11-04"
+      }
+     ],
+     "confidence": "high"
+    },
+    {
+     "id": "kulanu",
+     "nameHe": "כולנו",
+     "nameEn": "Kulanu",
+     "candidateRanks": [
+      29,
+      59,
+      74
+     ],
+     "sources": [
+      {
+       "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+       "publisher": "Central Elections Committee / Reshumot (candidate-list gazette)",
+       "kind": "official",
+       "quote": "מטעם המפלגות: הליכוד – תנועה לאומית ליברלית (להלן – הליכוד); כולנו בראשות משה כחלון (להלן – כולנו) — party column for these candidates: כולנו",
+       "accessed": "2026-11-04"
+      }
+     ],
+     "confidence": "high"
+    }
+   ],
+   "unassignedRanks": [],
+   "coverage": {
+    "roster": 120,
+    "assigned": 120,
+    "elected": 36,
+    "electedAssigned": 36
+   }
+  },
+  {
+   "letters": "פה",
+   "nameHe": "כחול לבן בראשות בני גנץ",
+   "seats": 33,
+   "sources": [
+    {
+     "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+     "publisher": "Central Elections Committee / Reshumot (candidate-list gazette)",
+     "kind": "official",
+     "quote": "מטעם המפלגות: יש עתיד – בראשות יאיר לפיד (להלן – יש עתיד); חוסן ישראל; תל\"ם – תנועה לאומית ממלכתית בהנהגת משה (בוגי) יעלון (להלן – תל\"ם)",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "parties": [
+    {
+     "id": "israel-resilience",
+     "nameHe": "חוסן ישראל",
+     "nameEn": "Israel Resilience",
+     "candidateRanks": [
+      1,
+      4,
+      5,
+      7,
+      11,
+      12,
+      15,
+      17,
+      19,
+      20,
+      23,
+      25,
+      27,
+      29,
+      32,
+      37,
+      39,
+      40,
+      43,
+      45,
+      48,
+      50,
+      52,
+      54,
+      57,
+      59,
+      61,
+      64,
+      66,
+      68,
+      70,
+      72,
+      75,
+      77,
+      79,
+      81,
+      85,
+      87,
+      89,
+      91,
+      94,
+      96,
+      98,
+      101,
+      104,
+      106,
+      108,
+      110,
+      112,
+      118,
+      119
+     ],
+     "sources": [
+      {
+       "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+       "publisher": "Central Elections Committee / Reshumot (candidate-list gazette)",
+       "kind": "official",
+       "quote": "מטעם המפלגות: יש עתיד – בראשות יאיר לפיד (להלן – יש עתיד); חוסן ישראל; תל\"ם – תנועה לאומית ממלכתית בהנהגת משה (בוגי) יעלון (להלן – תל\"ם) — party column for these candidates: חוסן ישראל",
+       "accessed": "2026-11-04"
+      }
+     ],
+     "confidence": "high",
+     "note": "Ranks [40] carry a transcription artefact in public/data partyHe (hyphen or surname spill-over); normalised here."
+    },
+    {
+     "id": "yesh-atid",
+     "nameHe": "יש עתיד",
+     "nameEn": "Yesh Atid",
+     "candidateRanks": [
+      2,
+      6,
+      8,
+      10,
+      13,
+      16,
+      18,
+      21,
+      22,
+      24,
+      26,
+      28,
+      30,
+      34,
+      35,
+      38,
+      41,
+      42,
+      44,
+      47,
+      49,
+      51,
+      53,
+      55,
+      58,
+      60,
+      62,
+      65,
+      67,
+      69,
+      71,
+      74,
+      76,
+      78,
+      80,
+      82,
+      84,
+      86,
+      88,
+      90,
+      92,
+      95,
+      97,
+      99,
+      100,
+      102,
+      105,
+      107,
+      109,
+      111,
+      114,
+      115,
+      116,
+      117,
+      120
+     ],
+     "sources": [
+      {
+       "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+       "publisher": "Central Elections Committee / Reshumot (candidate-list gazette)",
+       "kind": "official",
+       "quote": "מטעם המפלגות: יש עתיד – בראשות יאיר לפיד (להלן – יש עתיד); חוסן ישראל; תל\"ם – תנועה לאומית ממלכתית בהנהגת משה (בוגי) יעלון (להלן – תל\"ם) — party column for these candidates: יש עתיד",
+       "accessed": "2026-11-04"
+      }
+     ],
+     "confidence": "high"
+    },
+    {
+     "id": "telem",
+     "nameHe": "תל\"ם",
+     "nameEn": "Telem",
+     "candidateRanks": [
+      3,
+      9,
+      14,
+      31,
+      33,
+      36,
+      46,
+      56,
+      63,
+      73,
+      83,
+      93,
+      103,
+      113
+     ],
+     "sources": [
+      {
+       "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+       "publisher": "Central Elections Committee / Reshumot (candidate-list gazette)",
+       "kind": "official",
+       "quote": "מטעם המפלגות: יש עתיד – בראשות יאיר לפיד (להלן – יש עתיד); חוסן ישראל; תל\"ם – תנועה לאומית ממלכתית בהנהגת משה (בוגי) יעלון (להלן – תל\"ם) — party column for these candidates: תל\"ם",
+       "accessed": "2026-11-04"
+      }
+     ],
+     "confidence": "high"
+    }
+   ],
+   "unassignedRanks": [],
+   "coverage": {
+    "roster": 120,
+    "assigned": 120,
+    "elected": 33,
+    "electedAssigned": 33
+   }
+  },
+  {
+   "letters": "ודעם",
+   "nameHe": "הרשימה המשותפת חד\"ש, רע\"מ, תע\"ל, בל\"ד",
+   "seats": 15,
+   "sources": [
+    {
+     "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+     "publisher": "Central Elections Committee / Reshumot (candidate-list gazette)",
+     "kind": "official",
+     "quote": "מטעם המפלגות: המפלגה הקומוניסטית הישראלית (להלן – חד\"ש); רשימת האיחוד הערבי (להלן – רע\"מ); התנועה הערבית להתחדשות (להלן – תע\"ל); אלתג'מוע אלווטני אלדמוקרטי (להלן – בל\"ד)",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "parties": [
+    {
+     "id": "hadash",
+     "nameHe": "חד\"ש (המפלגה הקומוניסטית הישראלית)",
+     "nameEn": "Hadash (Israeli Communist Party)",
+     "candidateRanks": [
+      1,
+      5,
+      7,
+      10,
+      12,
+      16,
+      19,
+      21,
+      23,
+      25,
+      28,
+      31,
+      33,
+      37,
+      41,
+      42,
+      44,
+      47,
+      50,
+      51,
+      53,
+      57,
+      60,
+      62,
+      64,
+      67,
+      70,
+      72,
+      74,
+      77,
+      80,
+      82,
+      84,
+      87,
+      90,
+      92,
+      94,
+      97,
+      100,
+      102,
+      104,
+      107,
+      110,
+      112,
+      114,
+      117,
+      120
+     ],
+     "sources": [
+      {
+       "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+       "publisher": "Central Elections Committee / Reshumot (candidate-list gazette)",
+       "kind": "official",
+       "quote": "מטעם המפלגות: המפלגה הקומוניסטית הישראלית (להלן – חד\"ש); רשימת האיחוד הערבי (להלן – רע\"מ); התנועה הערבית להתחדשות (להלן – תע\"ל); אלתג'מוע אלווטני אלדמוקרטי (להלן – בל\"ד) — party column for these candidates: חד\"ש",
+       "accessed": "2026-11-04"
+      }
+     ],
+     "confidence": "high",
+     "note": "Ranks [23] carry a transcription artefact in public/data partyHe (hyphen or surname spill-over); normalised here."
+    },
+    {
+     "id": "balad",
+     "nameHe": "בל\"ד",
+     "nameEn": "Balad",
+     "candidateRanks": [
+      2,
+      8,
+      13,
+      18,
+      22,
+      27,
+      32,
+      36,
+      40,
+      46,
+      55,
+      56,
+      61,
+      66,
+      71,
+      76,
+      81,
+      86,
+      91,
+      99,
+      101,
+      106,
+      111,
+      118
+     ],
+     "sources": [
+      {
+       "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+       "publisher": "Central Elections Committee / Reshumot (candidate-list gazette)",
+       "kind": "official",
+       "quote": "מטעם המפלגות: המפלגה הקומוניסטית הישראלית (להלן – חד\"ש); רשימת האיחוד הערבי (להלן – רע\"מ); התנועה הערבית להתחדשות (להלן – תע\"ל); אלתג'מוע אלווטני אלדמוקרטי (להלן – בל\"ד) — party column for these candidates: בל\"ד",
+       "accessed": "2026-11-04"
+      }
+     ],
+     "confidence": "high"
+    },
+    {
+     "id": "taal",
+     "nameHe": "תע\"ל",
+     "nameEn": "Ta'al",
+     "candidateRanks": [
+      3,
+      9,
+      14,
+      17,
+      24,
+      29,
+      34,
+      38,
+      43,
+      48,
+      52,
+      58,
+      63,
+      68,
+      73,
+      78,
+      83,
+      88,
+      93,
+      98,
+      103,
+      108,
+      113,
+      116
+     ],
+     "sources": [
+      {
+       "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+       "publisher": "Central Elections Committee / Reshumot (candidate-list gazette)",
+       "kind": "official",
+       "quote": "מטעם המפלגות: המפלגה הקומוניסטית הישראלית (להלן – חד\"ש); רשימת האיחוד הערבי (להלן – רע\"מ); התנועה הערבית להתחדשות (להלן – תע\"ל); אלתג'מוע אלווטני אלדמוקרטי (להלן – בל\"ד) — party column for these candidates: תע\"ל",
+       "accessed": "2026-11-04"
+      }
+     ],
+     "confidence": "high"
+    },
+    {
+     "id": "raam",
+     "nameHe": "רע\"ם – רשימת האיחוד הערבי",
+     "nameEn": "Ra'am (United Arab List)",
+     "candidateRanks": [
+      4,
+      6,
+      11,
+      15,
+      20,
+      26,
+      30,
+      35,
+      39,
+      45,
+      49,
+      54,
+      59,
+      65,
+      69,
+      75,
+      79,
+      85,
+      89,
+      95,
+      96,
+      105,
+      109,
+      115,
+      119
+     ],
+     "sources": [
+      {
+       "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+       "publisher": "Central Elections Committee / Reshumot (candidate-list gazette)",
+       "kind": "official",
+       "quote": "מטעם המפלגות: המפלגה הקומוניסטית הישראלית (להלן – חד\"ש); רשימת האיחוד הערבי (להלן – רע\"מ); התנועה הערבית להתחדשות (להלן – תע\"ל); אלתג'מוע אלווטני אלדמוקרטי (להלן – בל\"ד) — party column for these candidates: רע\"מ",
+       "accessed": "2026-11-04"
+      }
+     ],
+     "confidence": "high"
+    }
+   ],
+   "unassignedRanks": [],
+   "coverage": {
+    "roster": 120,
+    "assigned": 120,
+    "elected": 15,
+    "electedAssigned": 15
+   }
+  },
+  {
+   "letters": "אמת",
+   "nameHe": "העבודה – גשר – מרצ",
+   "seats": 7,
+   "sources": [
+    {
+     "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+     "publisher": "Central Elections Committee / Reshumot (candidate-list gazette)",
+     "kind": "official",
+     "quote": "מטעם המפלגות: מפלגת העבודה הישראלית (להלן – העבודה); גשר – בראשות אורלי לוי אבקסיס (להלן – גשר); מרצ",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "parties": [
+    {
+     "id": "labor",
+     "nameHe": "העבודה",
+     "nameEn": "Labor",
+     "candidateRanks": [
+      1,
+      5,
+      6,
+      9,
+      10,
+      13,
+      16,
+      20,
+      21,
+      24,
+      25,
+      28,
+      29,
+      33,
+      36,
+      40,
+      41,
+      42,
+      44,
+      45,
+      48,
+      49,
+      51,
+      52,
+      53,
+      56,
+      57,
+      60,
+      61,
+      62,
+      64,
+      65,
+      68,
+      70,
+      72,
+      73,
+      76,
+      77,
+      78,
+      81,
+      84,
+      85,
+      88,
+      89,
+      92,
+      94,
+      96,
+      98,
+      100,
+      102,
+      103,
+      105,
+      107,
+      109,
+      110,
+      112,
+      114,
+      116,
+      118,
+      120
+     ],
+     "sources": [
+      {
+       "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+       "publisher": "Central Elections Committee / Reshumot (candidate-list gazette)",
+       "kind": "official",
+       "quote": "מטעם המפלגות: מפלגת העבודה הישראלית (להלן – העבודה); גשר – בראשות אורלי לוי אבקסיס (להלן – גשר); מרצ — party column for these candidates: העבודה",
+       "accessed": "2026-11-04"
+      }
+     ],
+     "confidence": "high",
+     "note": "Ranks [78] carry a transcription artefact in public/data partyHe (hyphen or surname spill-over); normalised here."
+    },
+    {
+     "id": "gesher",
+     "nameHe": "גשר",
+     "nameEn": "Gesher",
+     "candidateRanks": [
+      2,
+      12,
+      17,
+      32,
+      37,
+      80
+     ],
+     "sources": [
+      {
+       "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+       "publisher": "Central Elections Committee / Reshumot (candidate-list gazette)",
+       "kind": "official",
+       "quote": "מטעם המפלגות: מפלגת העבודה הישראלית (להלן – העבודה); גשר – בראשות אורלי לוי אבקסיס (להלן – גשר); מרצ — party column for these candidates: גשר",
+       "accessed": "2026-11-04"
+      }
+     ],
+     "confidence": "high",
+     "note": "Ranks [17] carry a transcription artefact in public/data partyHe (hyphen or surname spill-over); normalised here."
+    },
+    {
+     "id": "meretz",
+     "nameHe": "מרצ",
+     "nameEn": "Meretz",
+     "candidateRanks": [
+      3,
+      4,
+      7,
+      8,
+      11,
+      14,
+      15,
+      18,
+      19,
+      22,
+      23,
+      26,
+      27,
+      30,
+      31,
+      34,
+      35,
+      38,
+      39,
+      43,
+      46,
+      47,
+      50,
+      54,
+      55,
+      58,
+      59,
+      63,
+      66,
+      67,
+      69,
+      71,
+      74,
+      75,
+      79,
+      82,
+      83,
+      86,
+      87,
+      90,
+      91,
+      93,
+      95,
+      97,
+      99,
+      101,
+      104,
+      106,
+      108,
+      111,
+      113,
+      115,
+      117,
+      119
+     ],
+     "sources": [
+      {
+       "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+       "publisher": "Central Elections Committee / Reshumot (candidate-list gazette)",
+       "kind": "official",
+       "quote": "מטעם המפלגות: מפלגת העבודה הישראלית (להלן – העבודה); גשר – בראשות אורלי לוי אבקסיס (להלן – גשר); מרצ — party column for these candidates: מרצ",
+       "accessed": "2026-11-04"
+      }
+     ],
+     "confidence": "high",
+     "note": "Ranks [43] carry a transcription artefact in public/data partyHe (hyphen or surname spill-over); normalised here."
+    }
+   ],
+   "unassignedRanks": [],
+   "coverage": {
+    "roster": 120,
+    "assigned": 120,
+    "elected": 7,
+    "electedAssigned": 7
+   }
+  },
+  {
+   "letters": "ג",
+   "nameHe": "יהדות התורה והשבת אגודת ישראל – דגל התורה",
+   "seats": 7,
+   "sources": [
+    {
+     "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+     "publisher": "Central Elections Committee / Reshumot (candidate-list gazette)",
+     "kind": "official",
+     "quote": "מטעם המפלגות: אגודת החרדים – דגל התורה (להלן – דגל התורה); הסתדרות אגודת ישראל בארץ ישראל (להלן – אגודת ישראל)",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "parties": [
+    {
+     "id": "agudat-yisrael",
+     "nameHe": "אגודת ישראל",
+     "nameEn": "Agudat Yisrael",
+     "candidateRanks": [
+      1,
+      3,
+      5,
+      7,
+      9,
+      11,
+      13,
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      27,
+      29,
+      31,
+      33,
+      35,
+      37,
+      39,
+      41,
+      43,
+      45,
+      47,
+      50,
+      52,
+      54,
+      56,
+      58,
+      60,
+      62,
+      64,
+      66,
+      68,
+      70,
+      72,
+      74,
+      76,
+      78,
+      80,
+      82,
+      84,
+      86,
+      88,
+      90,
+      92,
+      94,
+      96,
+      98,
+      100,
+      102,
+      104,
+      106,
+      108,
+      110,
+      112,
+      114,
+      116,
+      118
+     ],
+     "sources": [
+      {
+       "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+       "publisher": "Central Elections Committee / Reshumot (candidate-list gazette)",
+       "kind": "official",
+       "quote": "מטעם המפלגות: אגודת החרדים – דגל התורה (להלן – דגל התורה); הסתדרות אגודת ישראל בארץ ישראל (להלן – אגודת ישראל) — party column for these candidates: אגודת ישראל",
+       "accessed": "2026-11-04"
+      }
+     ],
+     "confidence": "high"
+    },
+    {
+     "id": "degel-hatorah",
+     "nameHe": "דגל התורה",
+     "nameEn": "Degel HaTorah",
+     "candidateRanks": [
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18,
+      20,
+      22,
+      24,
+      26,
+      28,
+      30,
+      32,
+      34,
+      36,
+      38,
+      40,
+      42,
+      44,
+      46,
+      48,
+      49,
+      51,
+      53,
+      55,
+      57,
+      59,
+      61,
+      63,
+      65,
+      67,
+      69,
+      71,
+      73,
+      75,
+      77,
+      79,
+      81,
+      83,
+      85,
+      87,
+      89,
+      91,
+      93,
+      95,
+      97,
+      99,
+      101,
+      103,
+      105,
+      107,
+      109,
+      111,
+      113,
+      115,
+      117,
+      119
+     ],
+     "sources": [
+      {
+       "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+       "publisher": "Central Elections Committee / Reshumot (candidate-list gazette)",
+       "kind": "official",
+       "quote": "מטעם המפלגות: אגודת החרדים – דגל התורה (להלן – דגל התורה); הסתדרות אגודת ישראל בארץ ישראל (להלן – אגודת ישראל) — party column for these candidates: דגל התורה",
+       "accessed": "2026-11-04"
+      }
+     ],
+     "confidence": "high"
+    }
+   ],
+   "unassignedRanks": [],
+   "coverage": {
+    "roster": 119,
+    "assigned": 119,
+    "elected": 7,
+    "electedAssigned": 7
+   }
+  },
+  {
+   "letters": "טב",
+   "nameHe": "ימינה הימין החדש – הבית היהודי האיחוד הלאומי",
+   "seats": 6,
+   "sources": [
+    {
+     "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+     "publisher": "Central Elections Committee / Reshumot (candidate-list gazette)",
+     "kind": "official",
+     "quote": "מטעם המפלגות: אח\"י – ארץ חברה יהדות (להלן – אח\"י), צל\"ש – ציונות ליברליות ושיוויון (להלן – צל\"ש;) האיחוד הלאומי – תקומה (להלן– האיחוד הלאומי;) הבית היהודי, מיסודה של המפד\"ל – המפלגה הדתית לאומית המזרחי הפועל המזרחי בארץ ישראל (להלן – הבית היהודי)",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "parties": [
+    {
+     "id": "new-right",
+     "nameHe": "הימין החדש (צל\"ש)",
+     "nameEn": "New Right (registered as Tzalash)",
+     "candidateRanks": [
+      1,
+      3,
+      5,
+      7,
+      9,
+      12,
+      14,
+      16,
+      17
+     ],
+     "sources": [
+      {
+       "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+       "publisher": "Central Elections Committee / Reshumot (candidate-list gazette)",
+       "kind": "official",
+       "quote": "מטעם המפלגות: אח\"י – ארץ חברה יהדות (להלן – אח\"י), צל\"ש – ציונות ליברליות ושיוויון (להלן – צל\"ש;) האיחוד הלאומי – תקומה (להלן– האיחוד הלאומי;) הבית היהודי, מיסודה של המפד\"ל – המפלגה הדתית לאומית המזרחי הפועל המזרחי בארץ ישראל (להלן – הבית היהודי) — party column for these candidates: צל\"ש",
+       "accessed": "2026-11-04"
+      }
+     ],
+     "confidence": "high"
+    },
+    {
+     "id": "jewish-home",
+     "nameHe": "הבית היהודי",
+     "nameEn": "The Jewish Home",
+     "candidateRanks": [
+      2,
+      11,
+      15
+     ],
+     "sources": [
+      {
+       "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+       "publisher": "Central Elections Committee / Reshumot (candidate-list gazette)",
+       "kind": "official",
+       "quote": "מטעם המפלגות: אח\"י – ארץ חברה יהדות (להלן – אח\"י), צל\"ש – ציונות ליברליות ושיוויון (להלן – צל\"ש;) האיחוד הלאומי – תקומה (להלן– האיחוד הלאומי;) הבית היהודי, מיסודה של המפד\"ל – המפלגה הדתית לאומית המזרחי הפועל המזרחי בארץ ישראל (להלן – הבית היהודי) — party column for these candidates: הבית היהודי",
+       "accessed": "2026-11-04"
+      }
+     ],
+     "confidence": "high"
+    },
+    {
+     "id": "tkuma",
+     "nameHe": "האיחוד הלאומי – תקומה",
+     "nameEn": "National Union–Tkuma",
+     "candidateRanks": [
+      4,
+      6,
+      10,
+      13
+     ],
+     "sources": [
+      {
+       "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+       "publisher": "Central Elections Committee / Reshumot (candidate-list gazette)",
+       "kind": "official",
+       "quote": "מטעם המפלגות: אח\"י – ארץ חברה יהדות (להלן – אח\"י), צל\"ש – ציונות ליברליות ושיוויון (להלן – צל\"ש;) האיחוד הלאומי – תקומה (להלן– האיחוד הלאומי;) הבית היהודי, מיסודה של המפד\"ל – המפלגה הדתית לאומית המזרחי הפועל המזרחי בארץ ישראל (להלן – הבית היהודי) — party column for these candidates: האיחוד הלאומי",
+       "accessed": "2026-11-04"
+      }
+     ],
+     "confidence": "high"
+    },
+    {
+     "id": "ahi",
+     "nameHe": "אח\"י – ארץ חברה יהדות",
+     "nameEn": "Ahi",
+     "candidateRanks": [
+      8
+     ],
+     "sources": [
+      {
+       "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+       "publisher": "Central Elections Committee / Reshumot (candidate-list gazette)",
+       "kind": "official",
+       "quote": "מטעם המפלגות: אח\"י – ארץ חברה יהדות (להלן – אח\"י), צל\"ש – ציונות ליברליות ושיוויון (להלן – צל\"ש;) האיחוד הלאומי – תקומה (להלן– האיחוד הלאומי;) הבית היהודי, מיסודה של המפד\"ל – המפלגה הדתית לאומית המזרחי הפועל המזרחי בארץ ישראל (להלן – הבית היהודי) — party column for these candidates: אח\"י",
+       "accessed": "2026-11-04"
+      }
+     ],
+     "confidence": "high"
+    }
+   ],
+   "unassignedRanks": [],
+   "coverage": {
+    "roster": 17,
+    "assigned": 17,
+    "elected": 6,
+    "electedAssigned": 6
+   }
+  }
+ ],
+ "blocSchemes": [
+  {
+   "id": "first-government",
+   "nameHe": "ממשלת ישראל ה-35 (נתניהו–גנץ)",
+   "nameEn": "35th government (Netanyahu–Gantz)",
+   "kind": "government",
+   "date": "2020-05-17",
+   "governmentNumber": 35,
+   "blocs": [
+    {
+     "id": "coalition",
+     "nameHe": "קואליציה",
+     "nameEn": "Coalition",
+     "color": "#1f5aa5",
+     "members": [
+      {
+       "letters": "מחל"
+      },
+      {
+       "letters": "שס"
+      },
+      {
+       "letters": "ג"
+      },
+      {
+       "letters": "פה",
+       "ranks": [
+        1,
+        4,
+        5,
+        7,
+        11,
+        12,
+        15,
+        17,
+        19,
+        20,
+        23,
+        24,
+        27,
+        29,
+        32
+       ],
+       "note": "Gantz's Blue and White faction (Israel Resilience, plus Tamano-Shata, elected in a Yesh Atid slot); Ashkenazi (4), Nissenkorn (5) and Tropper (12) were ministers who had resigned their seats under the Norwegian law."
+      },
+      {
+       "letters": "פה",
+       "ranks": [
+        9,
+        14
+       ],
+       "note": "Derech Eretz (Hendel, Hauser), elected in Telem slots"
+      },
+      {
+       "letters": "אמת",
+       "ranks": [
+        1,
+        5
+       ],
+       "note": "Labor: Peretz and Shmuli; Michaeli stayed in opposition"
+      },
+      {
+       "letters": "אמת",
+       "ranks": [
+        2
+       ],
+       "note": "Gesher: Orly Levy-Abekasis"
+      },
+      {
+       "letters": "טב",
+       "ranks": [
+        2
+       ],
+       "note": "Jewish Home: Rafi Peretz"
+      }
+     ],
+     "seats": 73
+    },
+    {
+     "id": "opposition",
+     "nameHe": "אופוזיציה",
+     "nameEn": "Opposition",
+     "color": "#7f7f7f",
+     "members": [
+      {
+       "letters": "פה",
+       "ranks": [
+        2,
+        3,
+        6,
+        8,
+        10,
+        13,
+        16,
+        18,
+        21,
+        22,
+        25,
+        26,
+        28,
+        30,
+        31,
+        33
+       ],
+       "note": "Yesh Atid–Telem faction (Kamal Mariach, elected in an Israel Resilience slot, sat with it)"
+      },
+      {
+       "letters": "ודעם"
+      },
+      {
+       "letters": "ל"
+      },
+      {
+       "letters": "אמת",
+       "ranks": [
+        3,
+        4,
+        6,
+        7
+       ],
+       "note": "Meretz (3, 4, 7) and Labor's Michaeli (6)"
+      },
+      {
+       "letters": "טב",
+       "ranks": [
+        1,
+        3,
+        4,
+        5,
+        6
+       ],
+       "note": "Yamina except Rafi Peretz"
+      }
+     ],
+     "seats": 47
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D_%D7%95%D7%97%D7%9E%D7%A9",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "שקיבלה ב-17 במאי 2020 את אמון הכנסת העשרים ושלוש",
+     "accessed": "2026-11-04"
+    },
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D_%D7%95%D7%97%D7%9E%D7%A9",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "סיעות הקבינט=הליכוד ... כחול לבן ... ש\"ס ... יהדות התורה ... העבודה ... דרך ארץ ... גשר ... הבית היהודי",
+     "accessed": "2026-11-04"
+    },
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D_%D7%95%D7%97%D7%9E%D7%A9",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "בעת הקמת הממשלה הסיעה מנתה 15 ח\"כים",
+     "accessed": "2026-11-04"
+    },
+    {
+     "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum eq 35",
+     "publisher": "Knesset OData (KNS_PersonToPosition, GovernmentNum)",
+     "kind": "official",
+     "quote": "Ministers/deputy ministers starting 2020-05-17, by Knesset faction on that date: Likud 15, Blue and White 13, Labor 2, Shas, UTJ, Gesher, Derech Eretz and Yamina (Rafi Peretz) 1 each",
+     "accessed": "2026-11-04"
+    },
+    {
+     "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum eq 23 and FactionID ne null",
+     "publisher": "Knesset OData (KNS_PersonToPosition / KNS_Faction)",
+     "kind": "official",
+     "quote": "Faction \"כחול לבן / יש עתיד - תל\"ם / דרך ארץ\" from 2020-03-29: faction membership on 2020-05-17 used to split the Blue and White list by rank",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "notes": [
+    "Coalition at swearing-in = 73 elected seats. Split lists are given by rank from Knesset faction membership on 17 May 2020."
+   ]
+  },
+  {
+   "id": "pm-recommendations",
+   "nameHe": "המלצות לנשיא על הרכבת הממשלה",
+   "nameEn": "Recommendations to the President for prime minister",
+   "kind": "parliamentary",
+   "date": "2020-03-15",
+   "blocs": [
+    {
+     "id": "gantz",
+     "nameHe": "המליצו על גנץ",
+     "nameEn": "Recommended Gantz",
+     "color": "#2aa198",
+     "members": [
+      {
+       "letters": "פה"
+      },
+      {
+       "letters": "ודעם"
+      },
+      {
+       "letters": "ל"
+      },
+      {
+       "letters": "אמת",
+       "parties": [
+        "labor",
+        "meretz"
+       ]
+      }
+     ],
+     "seats": 61
+    },
+    {
+     "id": "netanyahu",
+     "nameHe": "המליצו על נתניהו",
+     "nameEn": "Recommended Netanyahu",
+     "color": "#1f5aa5",
+     "members": [
+      {
+       "letters": "מחל"
+      },
+      {
+       "letters": "שס"
+      },
+      {
+       "letters": "ג"
+      },
+      {
+       "letters": "טב"
+      }
+     ],
+     "seats": 58
+    },
+    {
+     "id": "none",
+     "nameHe": "לא המליצה",
+     "nameEn": "No recommendation",
+     "color": "#9e9e9e",
+     "members": [
+      {
+       "letters": "אמת",
+       "parties": [
+        "gesher"
+       ]
+      }
+     ],
+     "seats": 1
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.jns.org/israel-news/netanyahu-rival-gantz-to-get-first-chance-to-form-a-government",
+     "publisher": "JNS",
+     "kind": "secondary",
+     "quote": "heard 61 recommendations for Gantz as prime minister—33 from his own Blue and White Party, six from Labor/Meretz ... seven from Avigdor Lieberman's Yisrael Beiteinu and an unprecedented 15 from the Joint Arab List ... received the support of 58 MKs—36 from his Likud Party, nine from Shas, seven from United Torah Judaism ... six from Yamina",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "notes": [
+    "Gesher's Orly Levy-Abekasis is the one remaining MK (120 − 61 − 58); \"six from Labor/Meretz\" excludes her. Her abstention is inferred from the totals, not quoted."
+   ]
+  }
+ ],
+ "colours": [
+  {
+   "letters": "מחל",
+   "color": "#1F5AA5",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"הליכוד\"; the infobox states official colours: [#1f5aa5] כחול, [white] לבן. Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת = 1f5aa5 | צבעים רשמיים (infobox templates rendered) = [#1f5aa5] כחול, [white] לבן",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "medium"
+  },
+  {
+   "letters": "פה",
+   "color": "#00C4F3",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"כחול לבן (רשימה)\"; the infobox states official colours: כחול, לבן ותכלת. Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%9B%D7%97%D7%95%D7%9C_%D7%9C%D7%91%D7%9F_%28%D7%A8%D7%A9%D7%99%D7%9E%D7%94%29",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת = 00C4F3 | צבעים רשמיים (infobox templates rendered) = כחול, לבן ותכלת",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "medium"
+  },
+  {
+   "letters": "ודעם",
+   "color": "#51B2AB",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"הרשימה המשותפת\"; the infobox states official colours: טורקיז ושחור. Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%94%D7%A8%D7%A9%D7%99%D7%9E%D7%94_%D7%94%D7%9E%D7%A9%D7%95%D7%AA%D7%A4%D7%AA",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת = 51B2AB | צבעים רשמיים (infobox templates rendered) = טורקיז ושחור",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "medium"
+  },
+  {
+   "letters": "שס",
+   "color": "#000000",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"מפלגת ש\"ס\"; the infobox states official colours: [black] שחור, [gold] זהב (בעבר תכלת). Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA_%D7%A9%22%D7%A1",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת = 000000 | צבעים רשמיים (infobox templates rendered) = [black] שחור, [gold] זהב (בעבר תכלת)",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "medium"
+  },
+  {
+   "letters": "ג",
+   "color": "#122D70",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"יהדות התורה\"; no official colours stated there. Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%99%D7%94%D7%93%D7%95%D7%AA_%D7%94%D7%AA%D7%95%D7%A8%D7%94",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת = 122D70",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "low"
+  },
+  {
+   "letters": "אמת",
+   "color": "#EE161F",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"העבודה-גשר-מרצ\"; the infobox states official colours: אדום, כחול וירוק. Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%94%D7%A2%D7%91%D7%95%D7%93%D7%94-%D7%92%D7%A9%D7%A8-%D7%9E%D7%A8%D7%A6",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת = EE161F | צבעים רשמיים (infobox templates rendered) = אדום, כחול וירוק",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "medium"
+  },
+  {
+   "letters": "ל",
+   "color": "#99C3E1",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"ישראל ביתנו\"; the infobox states official colours: [#212d66] כחול כהה, [#2988c9] כחול בהיר, [#13c2e9] תכלת. Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%91%D7%99%D7%AA%D7%A0%D7%95",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת = 99C3E1 | צבעים רשמיים (infobox templates rendered) = [#212d66] כחול כהה, [#2988c9] כחול בהיר, [#13c2e9] תכלת",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "medium"
+  },
+  {
+   "letters": "טב",
+   "color": "#19A3BD",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"ימינה\"; the infobox states official colours: [#00A3A1][#0A4C74] תכלת, כחול וטורקיז. Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%99%D7%9E%D7%99%D7%A0%D7%94",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת = 19A3BD | צבעים רשמיים (infobox templates rendered) = [#00A3A1][#0A4C74] תכלת, כחול וטורקיז",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "medium"
+  },
+  {
+   "letters": "נץ",
+   "color": "#F0491C",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"עוצמה יהודית\"; no official colours stated there. Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%A2%D7%95%D7%A6%D7%9E%D7%94_%D7%99%D7%94%D7%95%D7%93%D7%99%D7%AA",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת = F0491C",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "low"
+  },
+  {
+   "party": "agudat-yisrael",
+   "color": "#C5AE6D",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"אגודת ישראל\"; no official colours stated there. Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%90%D7%92%D7%95%D7%93%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת = C5AE6D",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "low"
+  },
+  {
+   "party": "ahi",
+   "color": "#008BD3",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"מפלגת אח\"י\"; the infobox states official colours: [#008BD3] תכלת. Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA_%D7%90%D7%97%22%D7%99",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת = 008BD3 | צבעים רשמיים (infobox templates rendered) = [#008BD3] תכלת",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "medium"
+  },
+  {
+   "party": "balad",
+   "color": "#F65F0C",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"ברית לאומית דמוקרטית\"; the infobox states official colours: כתום. Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%91%D7%A8%D7%99%D7%AA_%D7%9C%D7%90%D7%95%D7%9E%D7%99%D7%AA_%D7%93%D7%9E%D7%95%D7%A7%D7%A8%D7%98%D7%99%D7%AA",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת = F65F0C | צבעים רשמיים (infobox templates rendered) = כתום",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "medium"
+  },
+  {
+   "party": "degel-hatorah",
+   "color": "#1B1B1B",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"דגל התורה\"; no official colours stated there. Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%93%D7%92%D7%9C_%D7%94%D7%AA%D7%95%D7%A8%D7%94",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת = 1b1b1b",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "low"
+  },
+  {
+   "party": "gesher",
+   "color": "#101E6D",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"מפלגת גשר (2018)\"; the infobox states official colours: כחול, ורוד. Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA_%D7%92%D7%A9%D7%A8_%282018%29",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת = 101E6D | צבעים רשמיים (infobox templates rendered) = כחול, ורוד",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "medium"
+  },
+  {
+   "party": "hadash",
+   "color": "#EA1F26",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"החזית הדמוקרטית לשלום ולשוויון\"; the infobox states official colours: [red] אדום, [green] ירוק. Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%94%D7%97%D7%96%D7%99%D7%AA_%D7%94%D7%93%D7%9E%D7%95%D7%A7%D7%A8%D7%98%D7%99%D7%AA_%D7%9C%D7%A9%D7%9C%D7%95%D7%9D_%D7%95%D7%9C%D7%A9%D7%95%D7%95%D7%99%D7%95%D7%9F",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת = EA1F26 | צבעים רשמיים (infobox templates rendered) = [red] אדום, [green] ירוק",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "medium"
+  },
+  {
+   "party": "israel-resilience",
+   "color": "#00C4F3",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"כחול לבן חוסן לישראל\"; the infobox states official colours: כחול ולבן. Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%9B%D7%97%D7%95%D7%9C_%D7%9C%D7%91%D7%9F_%D7%97%D7%95%D7%A1%D7%9F_%D7%9C%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת = 00C4F3 | צבעים רשמיים (infobox templates rendered) = כחול ולבן",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "medium"
+  },
+  {
+   "party": "jewish-home",
+   "color": "#8DC63F",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"הבית היהודי\"; the infobox states official colours: [#006088] כחול, [#8DC63F] ירוק בהיר. Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%99%D7%AA_%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת = 8dc63f | צבעים רשמיים (infobox templates rendered) = [#006088] כחול, [#8DC63F] ירוק בהיר",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "medium"
+  },
+  {
+   "party": "kulanu",
+   "color": "#00AFF0",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"כולנו\"; the infobox states official colours: [#00AFF0] תכלת, [black] שחור, [white] לבן. Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%9B%D7%95%D7%9C%D7%A0%D7%95",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת = 00AFF0 | צבעים רשמיים (infobox templates rendered) = [#00AFF0] תכלת, [black] שחור, [white] לבן",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "medium"
+  },
+  {
+   "party": "labor",
+   "color": "#EE161F",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"מפלגת העבודה הישראלית\"; the infobox states official colours: [red] אדום, [white] לבן. Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA_%D7%94%D7%A2%D7%91%D7%95%D7%93%D7%94_%D7%94%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%D7%AA",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת = EE161F | צבעים רשמיים (infobox templates rendered) = [red] אדום, [white] לבן",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "medium"
+  },
+  {
+   "party": "likud",
+   "color": "#1F5AA5",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"הליכוד\"; the infobox states official colours: [#1f5aa5] כחול, [white] לבן. Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת = 1f5aa5 | צבעים רשמיים (infobox templates rendered) = [#1f5aa5] כחול, [white] לבן",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "medium"
+  },
+  {
+   "party": "meretz",
+   "color": "#42B23C",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"מרצ\"; the infobox states official colours: ראשיים: [#42b23c] ירוק, [white] לבן;; משני: [#141E63] כחול כהה. Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A8%D7%A6",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת = 42b23c | צבעים רשמיים (infobox templates rendered) = ראשיים: [#42b23c] ירוק, [white] לבן;; משני: [#141E63] כחול כהה",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "medium"
+  },
+  {
+   "party": "new-right",
+   "color": "#25ABE4",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"הימין החדש\"; the infobox states official colours: [#29AAE3] תכלת, [#2C479E] כחול, [white] לבן. Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%94%D7%99%D7%9E%D7%99%D7%9F_%D7%94%D7%97%D7%93%D7%A9",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת = 25ABE4 | צבעים רשמיים (infobox templates rendered) = [#29AAE3] תכלת, [#2C479E] כחול, [white] לבן",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "medium"
+  },
+  {
+   "party": "raam",
+   "color": "#297C32",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"הרשימה הערבית המאוחדת\"; no official colours stated there. Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%94%D7%A8%D7%A9%D7%99%D7%9E%D7%94_%D7%94%D7%A2%D7%A8%D7%91%D7%99%D7%AA_%D7%94%D7%9E%D7%90%D7%95%D7%97%D7%93%D7%AA",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת=297C32",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "low"
+  },
+  {
+   "party": "taal",
+   "color": "#F2CB06",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"תנועה ערבית להתחדשות\"; the infobox states official colours: [#f2cb06] צהוב, [#000000] שחור. Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%AA%D7%A0%D7%95%D7%A2%D7%94_%D7%A2%D7%A8%D7%91%D7%99%D7%AA_%D7%9C%D7%94%D7%AA%D7%97%D7%93%D7%A9%D7%95%D7%AA",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת = f2cb06 | צבעים רשמיים (infobox templates rendered) = [#f2cb06] צהוב, [#000000] שחור",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "medium"
+  },
+  {
+   "party": "telem",
+   "color": "#093566",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"תל\"ם – תנועה לאומית ממלכתית\"; no official colours stated there. Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%AA%D7%9C%22%D7%9D_%E2%80%93_%D7%AA%D7%A0%D7%95%D7%A2%D7%94_%D7%9C%D7%90%D7%95%D7%9E%D7%99%D7%AA_%D7%9E%D7%9E%D7%9C%D7%9B%D7%AA%D7%99%D7%AA",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת = 093566",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "low"
+  },
+  {
+   "party": "tkuma",
+   "color": "#F47E49",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"האיחוד הלאומי–תקומה\"; the infobox states official colours: [#F67234] כתום, [#0245A0] כחול כהה. Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%94%D7%90%D7%99%D7%97%D7%95%D7%93_%D7%94%D7%9C%D7%90%D7%95%D7%9E%D7%99%E2%80%93%D7%AA%D7%A7%D7%95%D7%9E%D7%94",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת = F47E49 | צבעים רשמיים (infobox templates rendered) = [#F67234] כתום, [#0245A0] כחול כהה",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "medium"
+  },
+  {
+   "party": "yesh-atid",
+   "color": "#003AA7",
+   "basis": "Infobox header colour of the Hebrew Wikipedia page \"יש עתיד\"; the infobox states official colours: [#003AA7] כחול. Not an official party specification.",
+   "sources": [
+    {
+     "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A9_%D7%A2%D7%AA%D7%99%D7%93",
+     "publisher": "Wikipedia (he)",
+     "kind": "secondary",
+     "quote": "צבע כותרת = 003AA7 | צבעים רשמיים (infobox templates rendered) = [#003AA7] כחול",
+     "accessed": "2026-11-04"
+    }
+   ],
+   "confidence": "medium"
+  }
+ ]
+}
