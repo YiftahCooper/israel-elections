@@ -131,7 +131,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
   };
   return (
     <div>
-      <p className="small ink2" style={{ marginTop: 0 }}>{L('Click a list once to include it, again to rule it out, a third time to clear. Coalitions are arithmetic only — they say nothing about political feasibility.', 'לחיצה אחת מכלילה רשימה, שנייה פוסלת אותה, שלישית מנקה. קואליציות כאן הן חשבון בלבד — לא הערכה פוליטית.')}</p>
+      <p className="small ink2" style={{ marginTop: 0 }}>{L('Click a list once to include it, again to rule it out, a third time to clear. Coalitions are arithmetic only — they say nothing about political feasibility.', 'לחיצה אחת מכלילה רשימה, שנייה פוסלת אותה, שלישית מנקה. קואליציות כאן הן חשבון בלבד — לא הערכה פוליטית.')} <Info term="minimal-winning-coalition" /> <Info term="majority-61" /></p>
       <div className="row" style={{ marginBottom: 10 }}>
         {seated.map(({ l, n }) => {
           const st = picked.includes(l.id) ? 'in' : excluded.includes(l.id) ? 'out' : '';

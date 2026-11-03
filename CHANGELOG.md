@@ -18,6 +18,12 @@ below groups all existing commits from 3 November 2026. `package.json` currently
   (decision 0077); every seat reproduces, all 120 elected members are cross-checked, and three ballot letters and four list
   names were corrected from the notices. All 26 elections are now available.
 - English-language Wikipedia is never used or linked; the 2003/2006 membership cross-check now uses the Knesset's official data.
+- A 47-term bilingual glossary: (i) icons explain terms in the interface language, with a "learn more" link to the law,
+  the Central Elections Committee or the Israel Democracy Institute (every link checked; no Wikipedia).
+- Faster: heavy analyses run in background workers (no page freezes), tabs load on demand, searches skip
+  provably equal counts (2–8× faster), with results identical to before.
+- Accessibility and phone fixes: info icons open on tap, keyboard tab navigation, a readable chamber on phones,
+  better contrast, and era-correct method names (no more "Bader–Ofer" for 1949–1969).
 - Candidates the official results notice did not seat (e.g. 1999's Deri and Begin) are
   skipped when seats are filled, so the members shown match the notice.
 - Clear messages where data is missing: unavailable or partial candidate rosters, and

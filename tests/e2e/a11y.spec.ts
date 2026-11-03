@@ -13,7 +13,8 @@ test('an info button stays open when clicked, and Escape closes it', async ({ pa
   const info = page.getByRole('button', { name: /^Valid votes/ }).first();
   await info.click();
   await expect(info).toHaveAttribute('aria-expanded', 'true');
-  await expect(page.getByRole('tooltip')).toContainText('Every vote counted');
+  await expect(page.getByRole('tooltip')).toContainText('counted for some list');
+  await expect(page.getByRole('tooltip').getByRole('link', { name: /Learn more/ })).toHaveAttribute('href', /^https:\/\//);
   await page.keyboard.press('Escape');
   await expect(page.getByRole('tooltip')).toHaveCount(0);
 });

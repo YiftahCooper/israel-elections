@@ -117,7 +117,7 @@ input[type="text"], input[type="number"], input[type="search"], select, textarea
 input.num-in { width: 120px; text-align: end; font-variant-numeric: tabular-nums; }
 input[type="range"] { width: 100%; accent-color: var(--ink); }
 input[type="color"] { width: 34px; height: 28px; padding: 0 2px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
-label.field { display: grid; gap: 3px; font-size: 12.5px; color: var(--ink-2); }
+.field { display: grid; gap: 3px; font-size: 12.5px; color: var(--ink-2); }
 .chip { display: inline-flex; align-items: center; gap: 5px; padding: 1px 7px; border-radius: 999px; border: 1px solid var(--line); font-size: 12px; white-space: nowrap; background: var(--surface); }
 .chip.ok { border-color: color-mix(in srgb, var(--good) 45%, var(--line)); }
 .chip.no { border-color: color-mix(in srgb, var(--bad) 45%, var(--line)); }
@@ -138,6 +138,7 @@ label.field { display: grid; gap: 3px; font-size: 12.5px; color: var(--ink-2); }
 .info > button:hover::before, .info > button[aria-expanded="true"]::before { border-color: var(--ink-2); }
 .info .pop { position: absolute; z-index: 40; inset-block-start: 22px; inset-inline-start: -8px; width: 300px; max-width: 80vw; padding: 10px 12px; border-radius: 8px; background: var(--surface); border: 1px solid var(--line); box-shadow: 0 8px 28px rgba(0,0,0,.18); color: var(--ink); font-size: 12.5px; font-weight: 400; text-align: start; white-space: normal; }
 .info .pop b { display: block; margin-bottom: 3px; }
+.info .pop .glossary-link { display: block; margin-top: 6px; font-size: 12px; }
 
 /* ---------- ballot slip (פתק) */
 .slip { flex: none; display: inline-grid; place-items: center; min-width: 40px; height: 46px; padding: 0 6px; background: var(--slip); color: #111; border: 1px solid #cfcdc4; border-radius: 3px; box-shadow: 0 1px 0 rgba(0,0,0,.06); position: relative; font-weight: 800; font-size: 19px; letter-spacing: .02em; font-family: "Frank Ruehl CLM", "David", "Times New Roman", serif; }

@@ -69,7 +69,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
       )}
       {step.kind === 'initial' && (
         <div>
-          <h4>3. {L('Seats by whole quota', 'מנדטים לפי מודד שלם')}</h4>
+          <h4>3. {L('Seats by whole quota', 'מנדטים לפי מודד שלם')} <Info term="whole-quota-seats" /></h4>
           {r.quota.num === 0n
             ? <p className="small ink2">{L('This method has no whole-quota stage: every seat is allocated one at a time in the next steps.', 'בשיטה זו אין שלב של מודד שלם: כל המושבים מחולקים אחד־אחד בצעדים הבאים.')}</p>
             : <ListTable s={s} r={r} rows={r.lists.filter((l) => l.qualified).sort((a, b) => Number(b.votes - a.votes))} cols={(l) => [fmtInt(l.votes), `${fmtRat({ num: l.votes * r.quota.den, den: r.quota.num }, 3)}`, String(l.initialSeats)]} heads={[L('Votes', 'קולות'), L('Votes ÷ quota', 'קולות ÷ מודד'), L('Seats', 'מנדטים')]} />}
@@ -80,11 +80,11 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
         <div>
           <h4>{s.rules.remainderMethod === 'sainte-lague' ? L(`Seat ${r.initialSeatsTotal + step.st.step}: highest votes ÷ (2 × seats + 1) (Sainte-Laguë)`, `מושב ${r.initialSeatsTotal + step.st.step}: הגבוה ביותר בקולות ÷ (2 × מנדטים + 1) (סנט-לגה)`)
             : s.rules.remainderMethod === 'largest-remainder' ? L(`Seat ${r.initialSeatsTotal + step.st.step}: largest remainder (votes − quota × seats)`, `מושב ${r.initialSeatsTotal + step.st.step}: השארית הגדולה ביותר (קולות − מודד × מנדטים)`)
-            : L(`Seat ${r.initialSeatsTotal + step.st.step}: highest votes ÷ (seats + 1)`, `מנדט ${r.initialSeatsTotal + step.st.step}: הגבוה ביותר בקולות ÷ (מנדטים + 1)`)} {s.rules.remainderMethod === 'bader-ofer' && <Info term="baderofer" />}</h4>
+            : L(`Seat ${r.initialSeatsTotal + step.st.step}: highest votes ÷ (seats + 1)`, `מנדט ${r.initialSeatsTotal + step.st.step}: הגבוה ביותר בקולות ÷ (מנדטים + 1)`)} <Info term={s.rules.remainderMethod === 'sainte-lague' ? 'sainte-lague' : s.rules.remainderMethod === 'largest-remainder' ? 'largest-remainder' : s.rules.remainderRequiresInitialSeat ? 'highest-averages' : 'baderofer'} /></h4>
           <p>{L('Awarded to', 'הוענק ל')} <b>{name(step.st.winnerUnitId)}</b>{r.units.find((u) => u.id === step.st.winnerUnitId)?.isAgreement ? L(' (a surplus-agreement pair; which partner gets it is decided in the pair split step)', ' (צמד בהסכם עודפים; איזו מהשותפות תקבל אותו נקבע בשלב החלוקה בצמד)') : ''}.</p>
           {step.st.tie && (
             <div className="callout small">
-              {L('Exact tie between ', 'שוויון מדויק בין ')}{step.st.tie.tiedUnitIds.map(name).join(', ')}. {L('The law requires a lottery by the CEC.', 'החוק מחייב הגרלה של ועדת הבחירות.')}
+              {L('Exact tie between ', 'שוויון מדויק בין ')}{step.st.tie.tiedUnitIds.map(name).join(', ')}. {L('The law requires a lottery by the CEC.', 'החוק מחייב הגרלה של ועדת הבחירות.')} <Info term="tie-lottery" />
               {!step.st.tie.forced && <div><b>{L('Not yet decided — showing the first list.', 'טרם הוכרע — מוצגת הרשימה הראשונה.')}</b></div>}
               <div className="row" style={{ marginTop: 4 }}>
                 {L('Lottery winner:', 'זוכה בהגרלה:')} {step.st.tie.tiedUnitIds.map((u) => <button key={u} className={`btn small ${step.st.tie!.forced && step.st.tie!.chosen === u ? 'primary' : ''}`} onClick={() => dispatch({ type: 'setLottery', key: step.st.tie!.key, winner: u })}>{name(u)}</button>)}

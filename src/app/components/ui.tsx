@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
-import { GLOSSARY, useL, useLang } from '../i18n.ts';
+import { GLOSSARY, useL, useLang, type GlossaryTerm } from '../i18n.ts';
 
 /** Accessible info popover: opens on hover, focus or click; Escape closes. */
 export function Info({ title, children, term }: { title?: string; children?: ReactNode; term?: string }) {
@@ -18,7 +18,7 @@ export function Info({ title, children, term }: { title?: string; children?: Rea
     document.addEventListener('keydown', onKey); document.addEventListener('pointerdown', onDoc);
     return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', onDoc); };
   }, [open]);
-  const heading = title ?? (g ? (lang === 'he' ? g.he : `${g.en} (${g.he})`) : '');
+  const heading = title ?? (g ? (lang === 'he' ? g.nameHe : `${g.nameEn} (${g.nameHe})`) : '');
   return (
     <span className="info" ref={ref}
       onPointerEnter={(e) => { if (e.pointerType === 'mouse') setOpen((o) => o || 'hover'); }}
@@ -37,6 +37,7 @@ export function Info({ title, children, term }: { title?: string; children?: Rea
         }}>
           {heading && <b>{heading}</b>}
           {g && <span>{lang === 'he' ? g.defHe : g.defEn}</span>}
+          {g && <GlossaryLink g={g} lang={lang} />}
           {children}
         </span>
       )}
@@ -147,4 +148,19 @@ export function TextField({ value, onCommit, label, placeholder }: { value: stri
   const commit = () => { if (text !== value) onCommit(text); setCommits((c) => c + 1); };
   return <input type="text" aria-label={label} placeholder={placeholder} value={text} onChange={(e) => setText(e.target.value)} onBlur={commit}
     onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); if (e.key === 'Escape') setText(value); }} />;
+}
+
+/** "Learn more" link for a glossary term, in the interface language, with its publisher. Terms that
+ *  describe the app's own tools or an inferred procedure say so, since the link is only background. */
+export function GlossaryLink({ g, lang }: { g: GlossaryTerm; lang: 'he' | 'en' }) {
+  const link = lang === 'he' ? g.linkHe : g.linkEn;
+  const note = g.provenance === 'app' ? (lang === 'he' ? 'מתאר כלי של היישום; הקישור לרקע בלבד.' : 'Describes a tool in this app; the link is background only.')
+    : g.provenance === 'inferred' ? (lang === 'he' ? 'הנוסח המחייב לא אותר; ההליך מוסק מהתוצאה הרשמית.' : 'The governing text was not located; the procedure is inferred from the official result.') : null;
+  return (
+    <span className="glossary-link">
+      {note && <i className="muted">{note} </i>}
+      <a href={link.url} target="_blank" rel="noreferrer">{lang === 'he' ? 'למידע נוסף' : 'Learn more'}: {link.title}</a>
+      <span className="muted"> · {link.publisher}</span>
+    </span>
+  );
 }

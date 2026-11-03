@@ -8,7 +8,7 @@ import { GLOSSARY, useL, useLang, type Lang } from '../i18n.ts';
 import { fmtInt, fmtPct } from '../format.ts';
 import { dispatch, getState, redo, replay, setState, undo, useStore, useDigits } from '../store.ts';
 import { useLocalities } from './Turnout.tsx';
-import { NumberInput, TextField } from './ui.tsx';
+import { GlossaryLink, Info, NumberInput, TextField } from './ui.tsx';
 
 // ------------------------------------------------------------------ rules
 
@@ -48,13 +48,13 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
           <div className="grid2">
             <label className="field">{L('Seats', 'מושבים')}<NumberInput value={s.rules.seats} onCommit={(n) => set({ seats: n })} label={L('Seats', 'מושבים')} /></label>
             <label className="field">{L('Threshold %', 'אחוז חסימה %')}<TextField value={s.rules.thresholdPct} label={L('Threshold %', 'אחוז חסימה %')} onCommit={(v) => set({ thresholdPct: v.trim().replace('%', '') })} /></label>
-            <label className="field">{L('Remainder method', 'שיטת העודפים')}
-              <select value={s.rules.remainderMethod} onChange={(e) => set({ remainderMethod: e.target.value as Scenario['rules']['remainderMethod'] })}>
+            <div className="field"><span><span id="remainder-method-label">{L('Remainder method', 'שיטת העודפים')}</span> <Info term={s.rules.remainderMethod === 'sainte-lague' ? 'sainte-lague' : s.rules.remainderMethod === 'largest-remainder' ? 'largest-remainder' : 'baderofer'} /></span>
+              <select aria-labelledby="remainder-method-label" value={s.rules.remainderMethod} onChange={(e) => set({ remainderMethod: e.target.value as Scenario['rules']['remainderMethod'] })}>
                 <option value="bader-ofer">{L('Bader–Ofer (law since 1973)', 'בדר–עופר (החוק מאז 1973)')}</option>
                 <option value="largest-remainder">{L('Largest remainder (pre-1973 Israeli rule)', 'שארית גדולה (השיטה לפני 1973)')}</option>
                 <option value="sainte-lague">{L('Sainte-Laguë (all seats)', 'סנט-לגה (כל המושבים)')}</option>
               </select>
-            </label>
+            </div>
             <label className="field">{L('Quota rounding', 'עיגול המודד')}
               <select value={s.rules.quotaRounding} onChange={(e) => set({ quotaRounding: e.target.value as 'floor' | 'exact' })}>
                 <option value="floor">{L('Whole number (law)', 'מספר שלם (החוק)')}</option><option value="exact">{L('Exact fraction', 'שבר מדויק')}</option>
@@ -188,9 +188,9 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
           <span>{L('Votes cast', 'מצביעים')}</span><span>{fmtInt(ds.totals.votesCast)}</span>
           <span>{L('Valid', 'כשרים')}</span><span>{fmtInt(ds.totals.valid)}</span>
           <span>{L('Invalid', 'פסולים')}</span><span>{fmtInt(ds.totals.invalid)}</span>
-          <span>{L('Polling stations', 'קלפיות')}</span><span>{fmtInt(ds.totals.ballotBoxes)}</span>
+          <span>{L('Polling stations', 'קלפיות')} <Info term="polling-station" /></span><span>{fmtInt(ds.totals.ballotBoxes)}</span>
           <span>{L('Localities', 'יישובים')}</span><span>{fmtInt(ds.totals.localities)}</span>
-          {ds.totals.envelopeVotes !== undefined && <><span>{L('Double-envelope votes', 'מעטפות חיצוניות')}</span><span>{fmtInt(ds.totals.envelopeVotes)}</span></>}
+          {ds.totals.envelopeVotes !== undefined && <><span>{L('Double-envelope votes', 'מעטפות חיצוניות')} <Info term="envelopes" /></span><span>{fmtInt(ds.totals.envelopeVotes)}</span></>}
           <span>{L('Lists / candidates', 'רשימות / מועמדים')}</span><span>{ds.lists.length} / {fmtInt(ds.lists.reduce((t, l) => t + l.candidates.length, 0))}</span>
           <span>{L('Dataset built', 'נבנה')}</span><span>{ds.buildInfo.builtAt.slice(0, 10)}</span>
         </div>
@@ -210,7 +210,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
       </div>
       <div>
         <h4>{L('Glossary', 'מונחים')}</h4>
-        <dl className="small">{GLOSSARY.map((g) => <div key={g.id} style={{ marginBottom: 8 }}><dt><b>{g.he}</b> · {g.en}</dt><dd style={{ margin: 0 }}>{lang === 'he' ? g.defHe : g.defEn}</dd></div>)}</dl>
+        <dl className="small">{GLOSSARY.map((g) => <div key={g.id} id={`term-${g.id}`} style={{ marginBottom: 10 }}><dt><b>{lang === 'he' ? g.nameHe : g.nameEn}</b>{lang === 'he' ? '' : <span className="muted"> · {g.nameHe}</span>}</dt><dd style={{ margin: 0 }}>{lang === 'he' ? g.defHe : g.defEn}<br /><GlossaryLink g={g} lang={lang} /></dd></div>)}</dl>
         <h4>{L('Method and limits', 'שיטה ומגבלות')}</h4>
         <ul className="small" style={{ paddingInlineStart: 18 }}>
           <li>{L('Seats are computed by deterministic code implementing sections 81–82 of the Knesset Elections Law with exact integer arithmetic. Automated tests check that it reproduces the officially published seats of every list in every election offered here (2026: the reported final count).', 'המנדטים מחושבים בקוד דטרמיניסטי המממש את סעיפים 81–82 לחוק הבחירות בחשבון שלמים מדויק. בדיקות אוטומטיות מוודאות שהוא משחזר את המנדטים שפורסמו רשמית לכל רשימה בכל מערכת בחירות המוצגת כאן (2026: הספירה הסופית שדווחה).')}</li>
