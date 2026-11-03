@@ -13,6 +13,11 @@ function noticeRanks(id: string): { letters: string; ranks: number[]; names?: st
     const e = JSON.parse(readFileSync(`data/raw/${id}/elected.reviewed.json`, 'utf8')) as { lists: { letters: string; names: string[]; candidateRanks: number[] }[] };
     return e.lists.map((l) => ({ letters: l.letters, ranks: l.candidateRanks, names: l.names }));
   }
+  if (existsSync(`data/raw/${id}/rosters.reviewed.json`)) {
+    const r = JSON.parse(readFileSync(`data/raw/${id}/rosters.reviewed.json`, 'utf8')) as { lists: { letters: string; electedCandidateRanks?: number[]; electedNames?: string[] }[] };
+    const lists = r.lists.filter((l) => l.electedCandidateRanks?.length).map((l) => ({ letters: l.letters, ranks: l.electedCandidateRanks!, names: l.electedNames }));
+    if (lists.length) return lists;
+  }
   if (!existsSync(`data/raw/${id}/candidates.reviewed.json`)) return null;
   const c = JSON.parse(readFileSync(`data/raw/${id}/candidates.reviewed.json`, 'utf8')) as { lists: { letters: string; electedCrossCheck?: { ranks?: number[] } }[] };
   const lists = c.lists.filter((l) => l.electedCrossCheck?.ranks?.length).map((l) => ({ letters: l.letters, ranks: l.electedCrossCheck!.ranks! }));

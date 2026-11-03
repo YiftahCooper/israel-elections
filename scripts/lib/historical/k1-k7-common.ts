@@ -1,5 +1,5 @@
-// Early-election evidence preflight. No public dataset is emitted until every release gate passes.
-import { readFileSync, existsSync } from 'node:fs';
+// National-only early elections. Retained primary evidence gates every public output.
+import { readFileSync, existsSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 import assert from 'node:assert/strict';
@@ -16,10 +16,20 @@ export interface EarlyReview {
   nationalTotals: { registered: number; votesCast: number; valid: number; invalid: number };
   lists: { letters: string; nameHe: string; votes: number; officialSeats: number }[];
   agreements: { complete: boolean; pairs: [string,string][] | null; note: string; sourceId?: string };
-  rosters: { completeWinningRosters: boolean; reviewedLists: string[] };
+  rosters: { completeWinningRosters: boolean; meetsReleaseStandard?: boolean; reviewedLists: string[]; sourceId?: string };
   releaseBlockers: string[];
 }
+export interface EarlyRosterReview {
+  id: ElectionId; candidateSourceId: string; resultsSourceId: string;
+  lists: {
+    letters: string; candidatePdfPages: number[]; resultsPdfPages: number[]; truncated: boolean;
+    candidates: {rank: number; nameHe: string}[];
+    electedCandidateRanks: number[]; electedNames: string[]; excludedCandidateRanks?: number[];
+    crossCheck: string;
+  }[];
+}
 export function earlyReview(n:number):EarlyReview { assert(n>=1&&n<=7);return json(`data/raw/k${n}/national.reviewed.json`); }
+export function earlyRosterReview(n:number):EarlyRosterReview { return json(`data/raw/k${n}/rosters.reviewed.json`); }
 /** Research only: [] means the no-connections counterfactual when notice is missing.
  * Missing rosters are deliberately NOT labelled candidatesUnavailable: the scans exist.
  * This fixture is never returned as a build job or written under public/data/. */
@@ -44,9 +54,16 @@ export function earlyDiagnostic(n:number) {
   const ds=earlyResearchDataset(n),result=allocate(toEngineInput(scenarioFromDataset(ds)));
   return { result, differences:result.lists.filter(l=>l.seats!==ds.officialSeats![l.id]).map(l=>({id:l.id,published:ds.officialSeats![l.id],computed:l.seats})) };
 }
+function evidenceIds(n:number,r:EarlyReview) {
+  return [r.resultsSourceId,r.candidateSourceId,'k1-k7-cbs-national-totals',`k${n}-national-reviewed`,
+    ...(r.agreements.sourceId?[r.agreements.sourceId]:[]),...(r.rosters.sourceId?[r.rosters.sourceId]:[]),
+    ...(n===3?['k3-candidates-mirror']:[]),
+    `k1-k7-law-${n===1?'1948':n===2?'1951':n===3?'1955':n===7?'1969':'1959'}`,
+    ...(n===1?['k1-k7-law-1948-312737']:[])];
+}
 export function verifyEarlyProgress(n:number,opts:{available?:boolean;log?:boolean}={}) {
   const r=earlyReview(n), manifest=json('data/raw/SOURCES.json') as {id:string;file:string;sha256:string}[];
-  const sourceIds=[r.resultsSourceId,r.candidateSourceId,'k1-k7-cbs-national-totals',`k${n}-national-reviewed`,...(r.agreements.sourceId?[r.agreements.sourceId]:[])];
+  const sourceIds=evidenceIds(n,r);
   for(const id of sourceIds){const s=manifest.find(s=>s.id===id);assert(s,`missing source ${id}`);assert.equal(createHash('sha256').update(readFileSync(join(ROOT,'data/raw',s.file))).digest('hex'),s.sha256,`${id}: source hash changed`);}
   assert.equal(r.id,`k${n}`);assert.equal(new Set(r.lists.map(l=>l.letters)).size,r.lists.length);
   for(const l of r.lists){assert(Number.isSafeInteger(l.votes)&&l.votes>=0);assert(Number.isInteger(l.officialSeats)&&l.officialSeats>=0);}
@@ -55,9 +72,76 @@ export function verifyEarlyProgress(n:number,opts:{available?:boolean;log?:boole
   assert.equal(r.nationalTotals.valid+r.nationalTotals.invalid,r.nationalTotals.votesCast);
   const diagnostic=earlyDiagnostic(n);
   const e=json('public/data/elections.json').find((e:{id:string})=>e.id===r.id);
-  assert(!(opts.available??e.available),`${r.id}: release blocked — ${r.releaseBlockers.join(' ')}`);
-  assert(!existsSync(join(ROOT,`public/data/${r.id}.json`)),`${r.id}: unverified public output must not exist`);
+  const releaseReady=r.releaseBlockers.length===0 && r.agreements.complete && r.rosters.meetsReleaseStandard===true;
+  if(releaseReady) {
+    assert(r.agreements.pairs && r.agreements.sourceId,`${r.id}: connection evidence required`);
+    assert.deepEqual(diagnostic.differences,[],`${r.id}: published seats differ`);
+    assert.equal(diagnostic.result.seatsAllocated,120);
+    if(n===1) {
+      // Section 30(c)(3) compares integer quotients: 3375 ties at seats 118/119.
+      // The appendix records both final entitlements, not their lottery order.
+      const ties=diagnostic.result.remainderSteps.filter(s=>s.tie);
+      assert.equal(ties.length,1);assert.equal(ties[0].seatNumber,118);
+      assert.deepEqual(diagnostic.result.warnings.map(w=>w.code),['lottery-required']);
+      for(const winner of ties[0].tie!.tiedUnitIds) {
+        const ds=earlyResearchDataset(n);
+        const result=allocate({...toEngineInput(scenarioFromDataset(ds)),lotteryWinners:{[ties[0].tie!.key]:winner}});
+        assert.deepEqual(result.warnings,[]);
+        assert.deepEqual(Object.fromEntries(result.lists.map(l=>[l.id,l.seats])),ds.officialSeats);
+      }
+    } else assert.deepEqual(diagnostic.result.warnings,[]);
+    const roster=earlyRosterReview(n);
+    assert.equal(roster.id,r.id);assert.equal(roster.candidateSourceId,r.candidateSourceId);assert.equal(roster.resultsSourceId,r.resultsSourceId);
+    const winners=r.lists.filter(l=>l.officialSeats>0).map(l=>l.letters).sort();
+    assert.deepEqual(roster.lists.map(l=>l.letters).sort(),winners);
+    assert.deepEqual([...r.rosters.reviewedLists].sort(),winners);
+    for(const l of roster.lists) {
+      const seats=r.lists.find(x=>x.letters===l.letters)!.officialSeats;
+      assert(l.candidates.length>=seats,`${r.id}/${l.letters}: insufficient candidate coverage`);
+      assert.deepEqual(l.candidates.map(c=>c.rank),Array.from({length:l.candidates.length},(_,i)=>i+1));
+      assert(l.candidates.every(c=>c.nameHe.trim().length>0));
+      assert.equal(l.electedCandidateRanks.length,seats);assert.equal(new Set(l.electedCandidateRanks).size,seats);
+      assert.deepEqual(l.electedCandidateRanks,[...l.electedCandidateRanks].sort((a,b)=>a-b));
+      assert.deepEqual(l.electedNames,l.electedCandidateRanks.map(rank=>l.candidates[rank-1]?.nameHe));
+      const excluded=l.excludedCandidateRanks??[];
+      assert.deepEqual(l.candidates.filter(c=>!l.electedCandidateRanks.includes(c.rank)).map(c=>c.rank),excluded);
+      assert(l.candidatePdfPages.length>0 && l.resultsPdfPages.length>0 && l.crossCheck.length>0);
+      assert([...l.candidatePdfPages,...l.resultsPdfPages].every(p=>Number.isInteger(p)&&p>0));
+    }
+  } else {
+    assert(!(opts.available??e.available),`${r.id}: release blocked — ${r.releaseBlockers.join(' ')}`);
+    assert(!existsSync(join(ROOT,`public/data/${r.id}.json`)),`${r.id}: unverified public output must not exist`);
+  }
   assert(!existsSync(join(ROOT,`public/data/${r.id}-localities.json`)),`${r.id}: locality scans are out of scope`);
-  if(opts.log!==false)console.log(`${r.id}: UNAVAILABLE; ${diagnostic.differences.length} list differences in ${r.agreements.complete?'sourced':'NO-CONNECTIONS DIAGNOSTIC'} allocation; ${r.releaseBlockers.join(' ')}`);
-  return {review:r,...diagnostic,releaseReady:false as const};
+  if(opts.log!==false)console.log(`${r.id}: ${releaseReady?'VERIFIED':'UNAVAILABLE'}; ${diagnostic.differences.length} list differences in ${r.agreements.complete?'sourced':'NO-CONNECTIONS DIAGNOSTIC'} allocation; ${r.releaseBlockers.join(' ')}`);
+  return {review:r,...diagnostic,releaseReady};
+}
+
+export function earlyReleasedDataset(n:number):ElectionDataset {
+  const audit=verifyEarlyProgress(n,{log:false});assert(audit.releaseReady,`k${n}: release blocked`);
+  const r=audit.review,roster=earlyRosterReview(n),ds=earlyResearchDataset(n);
+  const e=json('public/data/elections.json').find((e:{id:string})=>e.id===r.id);
+  ds.status={stage:'official-final',asOf:r.reviewedOn,noteHe:e.status.noteHe,noteEn:e.status.noteEn};
+  ds.lists=ds.lists.map(l=>{
+    const reviewed=roster.lists.find(x=>x.letters===l.letters);
+    // registered candidates the official results notice did not seat (e.g. 1949 withdrawals, 1961 Liberals)
+    const excluded=new Set((reviewed?.excludedCandidateRanks??[]).filter(rank=>rank<Math.max(0,...(reviewed?.electedCandidateRanks??[]))));
+    return {...l,
+      notesHe:(reviewed?.candidates??[]).filter(c=>excluded.has(c.rank)).map(c=>`${c.nameHe} (מקום ${c.rank}) אינו מופיע בין הנבחרים בהודעת התוצאות הרשמית; המנדט עבר למועמד הבא.`),
+      candidates:reviewed?.candidates.map(c=>({...c,id:`${l.id}#${c.rank}`,...(excluded.has(c.rank)?{notSeated:true}:{})}))??[],
+      ...(reviewed?{candidatesTruncated:reviewed.truncated}:{candidatesUnavailable:true}),
+    };
+  }).sort((a,b)=>(META[a.id]?.order??999)-(META[b.id]?.order??999)||b.votes-a.votes);
+  ds.sourceIds=evidenceIds(n,r);
+  const manifest=json('data/raw/SOURCES.json') as {id:string;sha256:string}[];
+  ds.buildInfo={builtAt:new Date().toISOString(),rawSha256:Object.fromEntries(ds.sourceIds.map(id=>[id,manifest.find(s=>s.id===id)!.sha256]))};
+  return ds;
+}
+
+/** The shared build-job writer requires locality rows. Emit these national-only
+ * datasets here instead, leaving that writer and every later election unchanged. */
+export function buildEarlyDataset(n:number):never[] {
+  const audit=verifyEarlyProgress(n);
+  if(audit.releaseReady)writeFileSync(join(ROOT,`public/data/k${n}.json`),JSON.stringify(earlyReleasedDataset(n)));
+  return [];
 }

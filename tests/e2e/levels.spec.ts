@@ -105,7 +105,7 @@ test('rules changed by an experimental preset are named at every level, and no z
   await start(page);
   await page.getByText('Pure proportional representation').locator('..').getByRole('button', { name: 'Try it' }).click();
   await expect(page.getByRole('status').filter({ hasText: 'Experimental rules' })).toContainText('remainder seats by Sainte-Laguë (law: Bader–Ofer)');
-  await expect(page.getByText(/A list needs at least 0 votes \(0%\) to win seats\.$/)).toBeVisible();
+  await expect(page.getByText(/^No percentage threshold applies\.$/)).toBeVisible();
 });
 
 test('a search typed in Standard does not keep filtering the lists in Simple', async ({ page }) => {

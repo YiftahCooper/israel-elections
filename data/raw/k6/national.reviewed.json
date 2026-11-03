@@ -146,7 +146,7 @@
     "reviewedLists": []
   },
   "releaseBlockers": [
-    "Complete winning-list candidate rosters and elected-rank cross-checks not transcribed.",
-    "Exact seat reproduction fails with the retained inputs; see decision 0061."
+    "Required winning-list candidate prefixes and elected-name cross-checks have not been transcribed.",
+    "Exact seat reproduction fails with the complete retained two-pair notice; see decision 0068."
   ]
 }

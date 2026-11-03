@@ -1,23 +1,22 @@
 # Election data: coverage and remaining verification
 
-The app offers **seventeen verified election datasets: k10–k26** (1981–2026), except k9 (1977), which is
-held (see its section). For each, the engine reproduces every list's officially published seats, checked by
+The app offers **twenty-four verified election datasets: every election from 1949 to 2026 except 1965
+(k6) and 1973 (k8)**. For each, the engine reproduces every list's officially published seats, checked by
 `tests/historical-kNN.test.ts` and `tests/engine.test.ts` (2026: the reported final count, pending gazettement).
-Rosters list everyone elected; several lists' later candidates are not transcribed, and the data says so.
-Official sources for **k1–k9** (1949–1977) are retained and partly verified; `public/data/elections.json`
-marks those not yet released as unavailable.
+Rosters list everyone elected; many lists' later candidates (and some rosters of lists without seats) are not
+transcribed, and the data says so. k6 and k8 are held (see their sections); `public/data/elections.json` marks them unavailable.
 
 ## Sources by election
 
 | Id | Election date | Official source files retained | Secondary data used | Still missing from a released dataset |
 |---|---|---|---|---|
-| k1 | 1949-01-25 | Results and candidate gazettes; CBS totals; reviewed national votes/seats | None imported | Unavailable; see K1–K7 section and decisions 0060–0062 |
-| k2 | 1951-07-30 | Results and candidate gazettes; CBS totals; reviewed national votes/seats | None imported | Unavailable; see K1–K7 section and decisions 0060–0062 |
-| k3 | 1955-07-26 | Results and candidate gazettes; CBS totals; reviewed national votes/seats | None imported | Unavailable; see K1–K7 section and decisions 0060–0062 |
-| k4 | 1959-11-03 | Results and candidate gazettes; CBS totals; reviewed national votes/seats | None imported | Unavailable; see K1–K7 section and decisions 0060–0062 |
-| k5 | 1961-08-15 | Results and candidate gazettes; CBS totals; reviewed national votes/seats | None imported | Unavailable; see K1–K7 section and decisions 0060–0062 |
-| k6 | 1965-11-02 | Results and candidate gazettes; CBS totals; reviewed national votes/seats; complete signed agreement notice via mirror | None imported | Unavailable; see K1–K7 section and decisions 0060–0062 |
-| k7 | 1969-10-28 | Results and candidate gazettes; CBS totals; reviewed national votes/seats; complete signed agreement notice via mirror | None imported | Unavailable; see K1–K7 section and decisions 0060–0062 |
+| k1 | 1949-01-25 | Results and candidate gazettes; CBS totals; CEC allocation appendix; five connections; reviewed national table; reviewed roster prefixes | None | Released national dataset; winning prefixes and elected cross-checks verified; later ranks, losing rosters and localities omitted (0063) |
+| k2 | 1951-07-30 | Results and candidate gazettes; CBS totals; YP 177 connection notice; reviewed national table; reviewed roster prefixes | None | Released national dataset; winning prefixes and elected cross-checks verified; later ranks, losing rosters and localities omitted (0064) |
+| k3 | 1955-07-26 | Results and candidate gazettes; CBS totals; YP 427 five-pair notice; reviewed national table; reviewed roster prefixes | None | Released national dataset; winning prefixes and elected cross-checks verified; later ranks, losing rosters and localities omitted (0065) |
+| k4 | 1959-11-03 | Results and candidate gazettes; CBS totals; YP 709 two connection notices; reviewed national table; reviewed roster prefixes | None | Released national dataset; winning prefixes and elected cross-checks verified; later ranks, losing rosters and localities omitted (0066) |
+| k5 | 1961-08-15 | Results and candidate gazettes; CBS totals; YP 865 three-pair notice; reviewed national table; reviewed roster prefixes | None | Released national dataset; winning prefixes and elected cross-checks verified; later ranks, losing rosters and localities omitted (0067) |
+| k6 | 1965-11-02 | Results and candidate gazettes; CBS totals; YP 1225 two-pair notice; reviewed national table | None | Unavailable: Alignment 44/45 and HaOlam HaZeh 2/1; winning prefixes unverified; no localities (0068) |
+| k7 | 1969-10-28 | Results and candidate gazettes; CBS totals; YP 1565 one-pair notice; reviewed national table; reviewed roster prefixes | None | Released national dataset; winning prefixes and elected cross-checks verified; later ranks, losing rosters and localities omitted (0069) |
 | k8 | unfinished | unfinished | held: agreements and rosters |
 | k9 | 120 across all 13 winners | 120/120 (119 gazette + 1 official Knesset OData) | released |
 | k10 | 120 across all 10 winners | 120/120 | released |
@@ -222,7 +221,7 @@ paged official CKAN API. It discovers resource IDs from the retained package cat
 dependencies are required. This is reproducible working material, not the only copy of
 unique data. Scratch's git exclusion is verified; no claim is made about backup software.
 
-`node scripts/build-datasets.ts` builds every available election (k16–k26) with strict checks.
+`node scripts/build-datasets.ts` builds every available election (k1–k5, k7, k16–k26) with strict checks.
 For k8–k15 it validates the evidence gathered so far but emits no dataset until released.
 
 ## K20 and K21 release verification
@@ -338,54 +337,91 @@ the UI needs an election-aware envelope predicate and accurate derived-source la
 before its locality presets can exclude these rows correctly. No `src/app/` file was
 changed in this branch, as required by the shared-file boundary.
 
-## K1–K7: national evidence retained, release gates still open
+## K1–K7: six national releases, 1965 held
 
-The isolated `scripts/lib/historical/k1.ts` … `k7.ts` entry points run evidence
-preflights and return no build jobs. All seven `national.reviewed.json` files
-retain gazetted national votes and seats with PDF page references. Each vote sum
-matches official CBS table 27.2, and each gazetted invalid count equals CBS cast
-minus valid. The new tests fix every list's published seats independently of the
-engine. They do not turn a diagnostic seat match into a released dataset.
+The owner-approved roster standard for these elections is a **contiguous registered
+prefix from rank 1 covering every elected member**, checked name by name against the
+official results notice. Complete later ranks are optional. This standard releases
+**k1–k5 and k7**; **k6 remains unavailable**. Decisions 0063–0069 supersede 0061–0062's
+holds election by election. The earlier decisions and research document remain dated
+investigation records, not current release status.
 
-| Id | Valid | Lists | Allocation evidence | Remaining release gates |
-|---|---:|---:|---|---|
-| k1 | 434,684 | 21 | Quota 3,592; no-connections diagnostic gives Herut 15/official 14, General Zionists 6/7 | Actual connections; exact seats; all winning rosters |
-| k2 | 687,492 | 17 | Quota 5,692; all seats match in no-connections diagnostic | Complete connection notice (official memorandum points to YP 177); all winning rosters |
-| k3 | 853,219 | 18 | Quota 6,938; all seats match in no-connections diagnostic | Complete connection notice; all winning rosters |
-| k4 | 969,337 | 24 | Quota 7,800; no-connections diagnostic gives Mapai 48/47, Cooperation and Brotherhood 1/2 | Actual connections; exact seats; all winning rosters |
-| k5 | 1,006,964 | 14 | Quota 8,332; all seats match in no-connections diagnostic | Complete connection notice; all winning rosters |
-| k6 | 1,206,728 | 17 | Quota 9,881; signed YP 1225 has two pairs; Alignment 44/45, HaOlam HaZeh 2/1 remain unresolved | Historical agreement application/exact seats; all winning rosters |
-| k7 | 1,367,743 | 16 | Quota 11,274; YP 1565's one pair reproduces every official seat | All winning rosters and elected-rank cross-checks |
+| Id | Valid votes | Lists | Quota | Complete connection evidence | Result | Winning lists / registered names / elected identities checked |
+|---|---:|---:|---:|---|---|---|
+| k1 | 434,684 | 21 | 3,592 | CEC allocation appendix p.5 (PDF p.6): ב–ל, ט–יג, יא–יד, מ–ת, ס–צ | All seats match; both choices in an integer-quotient tie yield the same totals | 12 / 128 / 120 |
+| k2 | 687,492 | 17 | 5,692 | YP 177 p.1177: צ–סצ | All seats match | 15 / 120 / 120 |
+| k3 | 853,219 | 18 | 6,938 | YP 427 p.1053: א–יד, פ–ש, צ–צח, סא–ל, נ–ע | All seats match | 12 / 120 / 120 |
+| k4 | 969,337 | 24 | 7,800 | YP 709 p.125: א–רא, יא–ע | All seats match; resolves former Mapai/Cooperation gap | 12 / 120 / 120 |
+| k5 | 1,006,964 | 14 | 8,332 | YP 865 p.1843: ב–ד, מ–תו, יא–רא | All seats match | 11 / 122 / 120 |
+| k6 | 1,206,728 | 17 | 9,881 | YP 1225 p.189: את–יא, כא–כס | Alignment 44 vs 45; HaOlam HaZeh 2 vs 1; held | None promoted |
+| k7 | 1,367,743 | 16 | 11,274 | YP 1565 p.246: יא–רא | All seats match | 13 / 120 / 120 |
 
-The complete primary notices were retrieved from the **olaw.org.il mirror**:
-YP 1225 p.189, Alignment–Cooperation and Brotherhood and Rafi–Peace (the latter
-inactive); YP 1565 p.246, Cooperation and Brotherhood–Progress and Development.
-Completeness comes from reading the signed notices, not from seat outcomes.
-Decision [0062](decisions/0062-k1-k7-connected-list-search.md) records issue ranges,
-404 retrieval limits, and 1949's amended requirement to publish connections in
-**daily newspapers**. Missing sets remain `pairs: null`, never a claimed empty set.
+All seven national tables reconcile list votes and invalid/cast/registered totals
+with retained CBS table 27.2. Each release preserves every gazetted list, including
+zero-seat lists. No secondary vote correction or fitted agreement is used. The
+1949 and 1959 one-seat differences were resolved by **contemporary official
+connection evidence**, with the existing rules. The 1965 difference remains
+unexplained by sourced application evidence; see [0068](decisions/0068-k6-allocation-gap-remains-held.md).
 
-**Zero complete candidate rosters are claimed in this increment.** All seven
-candidate gazettes are retained, but complete winning-list transcriptions and
-elected-rank comparisons remain work to do. No names are fabricated, and no
-winning list is given `candidatesUnavailable` merely because transcription is
-unfinished. National long names/ballot typography still need candidate-gazette
-editorial review before promotion. Station scans are out of scope: research
-fixtures have `hasLocalities: false` and no public locality files are emitted.
+A fresh connected-list search for 1951, 1955 and 1961 recovered the notices on the
+olaw mirror by using **four-digit zero padding** (`0177`, `0427`, `0865`). Decision
+0062's unpadded URLs had returned 404, which was a retrieval failure, not evidence
+of absent issues. The new decisions record issue bounds, gov.il BlobFolder checks
+and fresh NLI newspaper-query attempts (HTTP 403; content inaccessible). Every
+signed notice was read in full, including inactive pairs. Since notices were found,
+no released election uses an assumed empty agreement set. The 1949 CEC calculation
+appendix supplies all five connections despite the newspaper archive access limit.
 
-The literal early-law presets and their limitations are documented in
-[ELECTORAL-LAW.md](ELECTORAL-LAW.md) and decisions 0060–0061. In particular, the
-1965 discrepancy means the full historical application of connected-list
-largest remainder is not yet established. No ad hoc algorithm or agreement was
-chosen to fit it. IDI's 1949 −7, 1959 +6,994 and 1965 −53,104 errors were not
-imported; gazette/CBS figures reconcile without changing any list.
+**75 winning lists; 730 registered candidates retained; 720 elected identities
+cross-checked.** Each released `data/raw/kN/rosters.reviewed.json` contains candidate
+and results PDF page references, contiguous registered ranks, reviewed elected
+identities in candidate spelling, and explicit elected-rank mappings. Old names and
+honorifics are retained; commas, hyphens and typographical spacing are normalized.
+The record is not a modern membership list or a diplomatic results transcription.
 
-Reproduction uses committed inputs only: `npm ci`, `node scripts/build-datasets.ts`,
-`npx vitest run`. Scans were rendered with locked `pdfjs-dist` and
-`wasmUrl` pointing at `node_modules/pdfjs-dist/wasm/`; temporary renders and search
-copies live only in `.backup-scratch/k1-k7/`. The preflights bind source hashes and
-refuse premature availability/public outputs. Decisions 0060–0062 are the compact
-retained record; no scratch files or test logs are needed in CI.
+For 1949, Mapai registered ranks 10,12,13,29, Herut 10,15,16 and Progressive 3 were
+excluded in the official results; prefixes extend to ranks **50,17,6** respectively.
+The 1961 Liberal notice excludes ranks **9,11** and declares replacements through
+**19** elected. It is not used to infer deaths or another biographical reason.
+The current UI still labels the first N registered candidates as elected; it needs
+the retained mappings to describe those historical elected identities accurately.
+No registered rank is deleted or moved to make that UI assumption appear true.
+
+All released winning lists have `candidatesTruncated: true`. Losing-list candidate
+arrays are empty with `candidatesUnavailable: true`; the scans exist, but those
+rosters were not transcribed. Bilingual dataset/index notes state that coverage.
+Every release has **`hasLocalities: false`** and no locality JSON; zero `ballotBoxes`
+and `localities` are unavailable-detail placeholders. Polling/locality scans were
+outside this task. No k6 public dataset is emitted.
+
+1949 integer quotients tie at seats **118–119**, at 3,375. The historical order is
+unknown. The build and dataset tests try **both** choices and require the same
+published final seats; they preserve the engine's lottery warning. A narrowly
+scoped k1 check extends the general `datasets.test.ts` criterion to prove that
+invariance instead of inventing a lottery outcome. No engine rule was changed.
+
+Reproduction requires only committed inputs: install the lockfile dependencies,
+then run `npx tsc -p tsconfig.json --noEmit`, `node scripts/build-datasets.ts`,
+`node scripts/check-colours.ts` and `npx vitest run`. The isolated early modules
+write national-only outputs after all evidence gates pass; the shared later-election
+writer is unchanged. Tests fix gazetted seats independently and check built totals,
+quota, complete pairs, source hashes, candidate coverage/ranks and elected mappings.
+The CI-style rebuild also succeeds with `.backup-scratch/raw` absent (already absent
+in this worktree). Scratch absence does not bypass any early-election check.
+
+Scans were rendered using locked **pdfjs-dist 6.5.438**, with `wasmUrl` pointing to
+`node_modules/pdfjs-dist/wasm/`, at scale 2.5–3 and higher-detail crops/renders for
+unclear text. Rendering/search copies and dependency caches live in
+`.backup-scratch/`; retained PDFs, reviewed JSON, hashes and decisions reproduce the
+release without those copies. Git ignores scratch; no backup-software exclusion is
+assumed. Per-list coverage tables and source links are in decisions
+[0063](decisions/0063-k1-connections-rosters-national-release.md),
+[0064](decisions/0064-k2-connected-list-notice-national-release.md),
+[0065](decisions/0065-k3-connected-list-notice-national-release.md),
+[0066](decisions/0066-k4-connected-lists-resolve-seat-gap.md),
+[0067](decisions/0067-k5-connected-list-notice-national-release.md),
+[0068](decisions/0068-k6-allocation-gap-remains-held.md) and
+[0069](decisions/0069-k7-rosters-national-release.md).
 
 ## Knessets 8–12: national evidence and explicit release holds
 

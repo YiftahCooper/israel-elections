@@ -65,6 +65,20 @@ export function scenarioIssues(s: Scenario, r: AllocationResult): ScenarioIssue[
 export const seatedOrder = (l: Pick<SimList, 'candidates'>) => l.candidates.filter((c) => !c.notSeated);
 export const electedOf = (l: SimList, seats: number) => seatedOrder(l).slice(0, seats);
 
+const tieCache = new WeakMap<Scenario, Map<string, boolean>>();
+/** Whether choosing a different winner for this tie would change any list's final seats. */
+export function tieAffectsSeats(s: Scenario, w: EngineWarning): boolean {
+  const d = (w.data ?? {}) as { key?: string; ids?: string[] };
+  if (w.code !== 'lottery-required' || !d.key || !d.ids?.length) return true;
+  let c = tieCache.get(s); if (!c) { c = new Map(); tieCache.set(s, c); }
+  if (!c.has(d.key)) {
+    const base = toEngineInput(s);
+    const outcomes = d.ids.map((winner) => JSON.stringify(allocate({ ...base, lotteryWinners: { ...base.lotteryWinners, [d.key!]: winner } }).lists.map((l) => l.seats)));
+    c.set(d.key, new Set(outcomes).size > 1);
+  }
+  return c.get(d.key)!;
+}
+
 /** Engine warnings in the interface language (the engine's own messages are English diagnostics). */
 export function warningText(w: EngineWarning, s: Scenario, lang: Lang): string {
   const he = lang === 'he';
@@ -74,6 +88,8 @@ export function warningText(w: EngineWarning, s: Scenario, lang: Lang): string {
     case 'lottery-required': {
       const ids = (d.ids as string[] | undefined) ?? [];
       const names = ids.map((u) => { const a = s.agreements.find((x) => x.id === u); return a ? a.members.map(nm).join('+') : nm(u); }).join(he ? ' ו' : ' and ');
+      if (!tieAffectsSeats(s, w)) return he ? `שוויון מדויק בין ${names} קובע רק את סדר חלוקת המושבים: כל תוצאה אפשרית נותנת אותם מנדטים בדיוק.` : `An exact tie between ${names} only decides the order in which seats are awarded: every possible outcome gives exactly the same seats.`;
+      if (d.tiePolicy === 'unspecified') return he ? `שוויון מדויק בין ${names}: החוק של אותה תקופה אינו קובע כיצד להכריע, ולכן מוצגת תוצאה זמנית. ניתן לבחור תוצאה בלשונית "איך חולקו המנדטים".` : `Exact tie between ${names}: the law of the time does not say how to decide it, so a provisional outcome is shown. You can choose one in the “How the seats were allocated” tab.`;
       return he ? `שוויון מדויק בין ${names}: החוק מחייב הגרלה של ועדת הבחירות. בחרו את תוצאת ההגרלה בלשונית "איך חולקו המנדטים".` : `Exact tie between ${names}: the law requires a CEC lottery. Choose the outcome in the “How the seats were allocated” tab.`;
     }
     case 'no-qualifying-lists': return he ? 'אף רשימה לא עברה את אחוז החסימה, ולכן אי אפשר לחלק מושבים.' : 'No list passed the threshold, so no seats can be allocated.';

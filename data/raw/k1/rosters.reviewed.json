@@ -1,0 +1,982 @@
+{
+  "id": "k1",
+  "reviewedOn": "2026-11-03",
+  "candidateSourceId": "k1-candidates-gazette",
+  "resultsSourceId": "k1-results-gazette",
+  "method": "Visual transcription of official candidate gazette; name-by-name comparison to elected names in official results. PDF pages are 1-based. No secondary candidate names.",
+  "lists": [
+    {
+      "letters": "א",
+      "candidatePdfPages": [
+        2
+      ],
+      "truncated": true,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "בןגוריון דוד"
+        },
+        {
+          "rank": 2,
+          "nameHe": "שרתוק משה"
+        },
+        {
+          "rank": 3,
+          "nameHe": "קפלן אליעזר"
+        },
+        {
+          "rank": 4,
+          "nameHe": "רמז דוד"
+        },
+        {
+          "rank": 5,
+          "nameHe": "שפרינצק יוסף"
+        },
+        {
+          "rank": 6,
+          "nameHe": "מאירסון גולדה"
+        },
+        {
+          "rank": 7,
+          "nameHe": "בן-צבי יצחק"
+        },
+        {
+          "rank": 8,
+          "nameHe": "רובשוב זלמן"
+        },
+        {
+          "rank": 9,
+          "nameHe": "יוסף דב"
+        },
+        {
+          "rank": 10,
+          "nameHe": "דיין משה"
+        },
+        {
+          "rank": 11,
+          "nameHe": "בן-אשר חיים"
+        },
+        {
+          "rank": 12,
+          "nameHe": "שמחוני אסף"
+        },
+        {
+          "rank": 13,
+          "nameHe": "פלגי יואל"
+        },
+        {
+          "rank": 14,
+          "nameHe": "הרצפלד אברהם"
+        },
+        {
+          "rank": 15,
+          "nameHe": "פישמן עדה"
+        },
+        {
+          "rank": 16,
+          "nameHe": "לביא שלמה"
+        },
+        {
+          "rank": 17,
+          "nameHe": "דיין שמואל"
+        },
+        {
+          "rank": 18,
+          "nameHe": "ברץ יוסף"
+        },
+        {
+          "rank": 19,
+          "nameHe": "דובדבני יחיאל"
+        },
+        {
+          "rank": 20,
+          "nameHe": "אידלסון בבה"
+        },
+        {
+          "rank": 21,
+          "nameHe": "נפתלי פריץ"
+        },
+        {
+          "rank": 22,
+          "nameHe": "לוביאניקר פנחס"
+        },
+        {
+          "rank": 23,
+          "nameHe": "אהרונוביץ זלמן"
+        },
+        {
+          "rank": 24,
+          "nameHe": "דינבורג בן-ציון"
+        },
+        {
+          "rank": 25,
+          "nameHe": "הכרמלי (לולו) אליהו"
+        },
+        {
+          "rank": 26,
+          "nameHe": "הרפז נטע"
+        },
+        {
+          "rank": 27,
+          "nameHe": "שמחונית יהודית"
+        },
+        {
+          "rank": 28,
+          "nameHe": "חושי אבא"
+        },
+        {
+          "rank": 29,
+          "nameHe": "נצר (נוסוביצקי) משה"
+        },
+        {
+          "rank": 30,
+          "nameHe": "סמילנסקי יזהר"
+        },
+        {
+          "rank": 31,
+          "nameHe": "שריבמן ראובן"
+        },
+        {
+          "rank": 32,
+          "nameHe": "קוסוי יונה"
+        },
+        {
+          "rank": 33,
+          "nameHe": "תבורי אפרים"
+        },
+        {
+          "rank": 34,
+          "nameHe": "לם יוסף"
+        },
+        {
+          "rank": 35,
+          "nameHe": "שפטל אריה"
+        },
+        {
+          "rank": 36,
+          "nameHe": "טביב אברהם"
+        },
+        {
+          "rank": 37,
+          "nameHe": "יהודה צבי"
+        },
+        {
+          "rank": 38,
+          "nameHe": "גלובמן עקיבא"
+        },
+        {
+          "rank": 39,
+          "nameHe": "אפרתי יוסף"
+        },
+        {
+          "rank": 40,
+          "nameHe": "בהיר אריה"
+        },
+        {
+          "rank": 41,
+          "nameHe": "דרורי חסיה"
+        },
+        {
+          "rank": 42,
+          "nameHe": "ליבנשטין אליעזר"
+        },
+        {
+          "rank": 43,
+          "nameHe": "הכהן דוד"
+        },
+        {
+          "rank": 44,
+          "nameHe": "גורפינקל ישראל"
+        },
+        {
+          "rank": 45,
+          "nameHe": "אסף (וילקומיץ) עמי"
+        },
+        {
+          "rank": 46,
+          "nameHe": "גרבובסקי מאיר"
+        },
+        {
+          "rank": 47,
+          "nameHe": "נצר (נוסוביצקי) דבורה"
+        },
+        {
+          "rank": 48,
+          "nameHe": "גורוחובסקי (גורן) שרגא"
+        },
+        {
+          "rank": 49,
+          "nameHe": "פרומקין השל"
+        },
+        {
+          "rank": 50,
+          "nameHe": "בר-רב-האי דוד"
+        }
+      ],
+      "electedNames": [
+        "בןגוריון דוד",
+        "שרתוק משה",
+        "קפלן אליעזר",
+        "רמז דוד",
+        "שפרינצק יוסף",
+        "מאירסון גולדה",
+        "בן-צבי יצחק",
+        "רובשוב זלמן",
+        "יוסף דב",
+        "בן-אשר חיים",
+        "הרצפלד אברהם",
+        "פישמן עדה",
+        "לביא שלמה",
+        "דיין שמואל",
+        "ברץ יוסף",
+        "דובדבני יחיאל",
+        "אידלסון בבה",
+        "נפתלי פריץ",
+        "לוביאניקר פנחס",
+        "אהרונוביץ זלמן",
+        "דינבורג בן-ציון",
+        "הכרמלי (לולו) אליהו",
+        "הרפז נטע",
+        "שמחונית יהודית",
+        "חושי אבא",
+        "סמילנסקי יזהר",
+        "שריבמן ראובן",
+        "קוסוי יונה",
+        "תבורי אפרים",
+        "לם יוסף",
+        "שפטל אריה",
+        "טביב אברהם",
+        "יהודה צבי",
+        "גלובמן עקיבא",
+        "אפרתי יוסף",
+        "בהיר אריה",
+        "דרורי חסיה",
+        "ליבנשטין אליעזר",
+        "הכהן דוד",
+        "גורפינקל ישראל",
+        "אסף (וילקומיץ) עמי",
+        "גרבובסקי מאיר",
+        "נצר (נוסוביצקי) דבורה",
+        "גורוחובסקי (גורן) שרגא",
+        "פרומקין השל",
+        "בר-רב-האי דוד"
+      ],
+      "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted. The results notice explicitly records these withdrawals.",
+      "electedCandidateRanks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50
+      ],
+      "resultsPdfPages": [
+        2,
+        3
+      ],
+      "excludedCandidateRanks": [
+        10,
+        12,
+        13,
+        29
+      ],
+      "readingNote": "Rank 19: the damaged candidate print was compared with the clearly printed elected name דובדבני יחיאל in Official Gazette 49 p.400. No secondary spelling used."
+    },
+    {
+      "letters": "ב",
+      "candidatePdfPages": [
+        3
+      ],
+      "truncated": true,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "פישמן הרב יהודה לייב"
+        },
+        {
+          "rank": 2,
+          "nameHe": "לוין הרב יצחק מאיר"
+        },
+        {
+          "rank": 3,
+          "nameHe": "שפירא משה"
+        },
+        {
+          "rank": 4,
+          "nameHe": "אונא משה"
+        },
+        {
+          "rank": 5,
+          "nameHe": "מינץ בנימין"
+        },
+        {
+          "rank": 6,
+          "nameHe": "פנקס דוד-צבי"
+        },
+        {
+          "rank": 7,
+          "nameHe": "לונשטיין מאיר דוד"
+        },
+        {
+          "rank": 8,
+          "nameHe": "ורהפטיג ד״ר זרח"
+        },
+        {
+          "rank": 9,
+          "nameHe": "גנחובסקי אליהו משה"
+        },
+        {
+          "rank": 10,
+          "nameHe": "כהנא הרב ד״ר קלמן"
+        },
+        {
+          "rank": 11,
+          "nameHe": "נורוק הרב ד״ר מרדכי"
+        },
+        {
+          "rank": 12,
+          "nameHe": "בורג ד״ר יוסף"
+        },
+        {
+          "rank": 13,
+          "nameHe": "גרינברג אהרן יעקב"
+        },
+        {
+          "rank": 14,
+          "nameHe": "גולדרט אברהם"
+        },
+        {
+          "rank": 15,
+          "nameHe": "צנובר אברהם חיים"
+        },
+        {
+          "rank": 16,
+          "nameHe": "קלמר משה"
+        }
+      ],
+      "electedNames": [
+        "פישמן הרב יהודה לייב",
+        "לוין הרב יצחק מאיר",
+        "שפירא משה",
+        "אונא משה",
+        "מינץ בנימין",
+        "פנקס דוד-צבי",
+        "לונשטיין מאיר דוד",
+        "ורהפטיג ד״ר זרח",
+        "גנחובסקי אליהו משה",
+        "כהנא הרב ד״ר קלמן",
+        "נורוק הרב ד״ר מרדכי",
+        "בורג ד״ר יוסף",
+        "גרינברג אהרן יעקב",
+        "גולדרט אברהם",
+        "צנובר אברהם חיים",
+        "קלמר משה"
+      ],
+      "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted.",
+      "electedCandidateRanks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "resultsPdfPages": [
+        3
+      ]
+    },
+    {
+      "letters": "ח",
+      "candidatePdfPages": [
+        5
+      ],
+      "truncated": true,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "בגין מנחם"
+        },
+        {
+          "rank": 2,
+          "nameHe": "גרינברג אורי צבי"
+        },
+        {
+          "rank": 3,
+          "nameHe": "מרידור יעקב"
+        },
+        {
+          "rank": 4,
+          "nameHe": "בןאליעזר (רובובסקי) אריה"
+        },
+        {
+          "rank": 5,
+          "nameHe": "רקנטי אברהם"
+        },
+        {
+          "rank": 6,
+          "nameHe": "באדר ד״ר יוחנן (יאן)"
+        },
+        {
+          "rank": 7,
+          "nameHe": "קוק הלל"
+        },
+        {
+          "rank": 8,
+          "nameHe": "לנדאו (הנריך) חיים"
+        },
+        {
+          "rank": 9,
+          "nameHe": "מרלין שמואל"
+        },
+        {
+          "rank": 10,
+          "nameHe": "שוינשל ד״ר אברהם"
+        },
+        {
+          "rank": 11,
+          "nameHe": "כהן מגורי חיים"
+        },
+        {
+          "rank": 12,
+          "nameHe": "לנקין אליהו"
+        },
+        {
+          "rank": 13,
+          "nameHe": "כץ שמואל"
+        },
+        {
+          "rank": 14,
+          "nameHe": "ז׳בוטינסקי ערי"
+        },
+        {
+          "rank": 15,
+          "nameHe": "רובין מאיר"
+        },
+        {
+          "rank": 16,
+          "nameHe": "כהן מ׳ משה"
+        },
+        {
+          "rank": 17,
+          "nameHe": "רזיאל-נאור אסתר"
+        }
+      ],
+      "electedNames": [
+        "בגין מנחם",
+        "גרינברג אורי צבי",
+        "מרידור יעקב",
+        "בןאליעזר (רובובסקי) אריה",
+        "רקנטי אברהם",
+        "באדר ד״ר יוחנן (יאן)",
+        "קוק הלל",
+        "לנדאו (הנריך) חיים",
+        "מרלין שמואל",
+        "כהן מגורי חיים",
+        "לנקין אליהו",
+        "כץ שמואל",
+        "ז׳בוטינסקי ערי",
+        "רזיאל-נאור אסתר"
+      ],
+      "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted. The results notice explicitly records these withdrawals.",
+      "electedCandidateRanks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        17
+      ],
+      "resultsPdfPages": [
+        3
+      ],
+      "excludedCandidateRanks": [
+        10,
+        15,
+        16
+      ]
+    },
+    {
+      "letters": "יד",
+      "candidatePdfPages": [
+        7
+      ],
+      "truncated": true,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "אלזועבי סיף-אלדין-מחמד סעיד"
+        },
+        {
+          "rank": 2,
+          "nameHe": "ג׳רג׳ורה אמין סלים ג׳רג׳ורה"
+        }
+      ],
+      "electedNames": [
+        "אלזועבי סיף-אלדין-מחמד סעיד",
+        "ג׳רג׳ורה אמין סלים ג׳רג׳ורה"
+      ],
+      "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted.",
+      "electedCandidateRanks": [
+        1,
+        2
+      ],
+      "resultsPdfPages": [
+        3
+      ]
+    },
+    {
+      "letters": "טו",
+      "candidatePdfPages": [
+        7
+      ],
+      "truncated": true,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "פרידמן-ילין (מור) נתן"
+        }
+      ],
+      "electedNames": [
+        "פרידמן-ילין (מור) נתן"
+      ],
+      "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted.",
+      "electedCandidateRanks": [
+        1
+      ],
+      "resultsPdfPages": [
+        3
+      ]
+    },
+    {
+      "letters": "ל",
+      "candidatePdfPages": [
+        7
+      ],
+      "truncated": true,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "גלוסקא זכריה"
+        }
+      ],
+      "electedNames": [
+        "גלוסקא זכריה"
+      ],
+      "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted.",
+      "electedCandidateRanks": [
+        1
+      ],
+      "resultsPdfPages": [
+        3
+      ]
+    },
+    {
+      "letters": "מ",
+      "candidatePdfPages": [
+        8
+      ],
+      "truncated": true,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "טבנקין יצחק"
+        },
+        {
+          "rank": 2,
+          "nameHe": "יערי מאיר"
+        },
+        {
+          "rank": 3,
+          "nameHe": "חזן יעקב"
+        },
+        {
+          "rank": 4,
+          "nameHe": "ניר-רפאלקס נחום"
+        },
+        {
+          "rank": 5,
+          "nameHe": "ציזלינג אהרון"
+        },
+        {
+          "rank": 6,
+          "nameHe": "בנטוב מרדכי"
+        },
+        {
+          "rank": 7,
+          "nameHe": "גלילי ישראל"
+        },
+        {
+          "rank": 8,
+          "nameHe": "ריפטין יעקב"
+        },
+        {
+          "rank": 9,
+          "nameHe": "סנה משה"
+        },
+        {
+          "rank": 10,
+          "nameHe": "רפטור ברל"
+        },
+        {
+          "rank": 11,
+          "nameHe": "וילדר (פראי) אלעזר"
+        },
+        {
+          "rank": 12,
+          "nameHe": "ארם משה"
+        },
+        {
+          "rank": 13,
+          "nameHe": "למדן חנה"
+        },
+        {
+          "rank": 14,
+          "nameHe": "רובין ד״ר הנס"
+        },
+        {
+          "rank": 15,
+          "nameHe": "אידלסון ישראל"
+        },
+        {
+          "rank": 16,
+          "nameHe": "בדר מנחם"
+        },
+        {
+          "rank": 17,
+          "nameHe": "אילנית פייגה"
+        },
+        {
+          "rank": 18,
+          "nameHe": "בן אהרון יצחק"
+        },
+        {
+          "rank": 19,
+          "nameHe": "בר-ניר דב"
+        }
+      ],
+      "electedNames": [
+        "טבנקין יצחק",
+        "יערי מאיר",
+        "חזן יעקב",
+        "ניר-רפאלקס נחום",
+        "ציזלינג אהרון",
+        "בנטוב מרדכי",
+        "גלילי ישראל",
+        "ריפטין יעקב",
+        "סנה משה",
+        "רפטור ברל",
+        "וילדר (פראי) אלעזר",
+        "ארם משה",
+        "למדן חנה",
+        "רובין ד״ר הנס",
+        "אידלסון ישראל",
+        "בדר מנחם",
+        "אילנית פייגה",
+        "בן אהרון יצחק",
+        "בר-ניר דב"
+      ],
+      "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted.",
+      "electedCandidateRanks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "resultsPdfPages": [
+        3
+      ]
+    },
+    {
+      "letters": "נ",
+      "candidatePdfPages": [
+        9
+      ],
+      "truncated": true,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "כהן רחל"
+        }
+      ],
+      "electedNames": [
+        "כהן רחל"
+      ],
+      "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted.",
+      "electedCandidateRanks": [
+        1
+      ],
+      "resultsPdfPages": [
+        4
+      ]
+    },
+    {
+      "letters": "ס",
+      "candidatePdfPages": [
+        10
+      ],
+      "truncated": true,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "שיטרית בכור שלום"
+        },
+        {
+          "rank": 2,
+          "nameHe": "אלישר אליהו"
+        },
+        {
+          "rank": 3,
+          "nameHe": "אלמאליח אברהם"
+        },
+        {
+          "rank": 4,
+          "nameHe": "בן-עמי משה"
+        }
+      ],
+      "electedNames": [
+        "שיטרית בכור שלום",
+        "אלישר אליהו",
+        "אלמאליח אברהם",
+        "בן-עמי משה"
+      ],
+      "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted.",
+      "electedCandidateRanks": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "resultsPdfPages": [
+        4
+      ]
+    },
+    {
+      "letters": "פ",
+      "candidatePdfPages": [
+        11
+      ],
+      "truncated": true,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "רוזנבליט פליכס"
+        },
+        {
+          "rank": 2,
+          "nameHe": "גרנובסקי אברהם"
+        },
+        {
+          "rank": 3,
+          "nameHe": "קול משה"
+        },
+        {
+          "rank": 4,
+          "nameHe": "כהן אידוב"
+        },
+        {
+          "rank": 5,
+          "nameHe": "הררי יזהר"
+        },
+        {
+          "rank": 6,
+          "nameHe": "פרדר הרברט"
+        }
+      ],
+      "electedNames": [
+        "רוזנבליט פליכס",
+        "גרנובסקי אברהם",
+        "כהן אידוב",
+        "הררי יזהר",
+        "פרדר הרברט"
+      ],
+      "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted. The results notice explicitly records these withdrawals.",
+      "electedCandidateRanks": [
+        1,
+        2,
+        4,
+        5,
+        6
+      ],
+      "resultsPdfPages": [
+        4
+      ],
+      "excludedCandidateRanks": [
+        3
+      ]
+    },
+    {
+      "letters": "צ",
+      "candidatePdfPages": [
+        13
+      ],
+      "truncated": true,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "ברנשטיין פרץ"
+        },
+        {
+          "rank": 2,
+          "nameHe": "רוקח ישראל"
+        },
+        {
+          "rank": 3,
+          "nameHe": "פרסיץ שושנה"
+        },
+        {
+          "rank": 4,
+          "nameHe": "ספיר יוסף"
+        },
+        {
+          "rank": 5,
+          "nameHe": "קליבנוב יעקב"
+        },
+        {
+          "rank": 6,
+          "nameHe": "קסטן גיל (ליפשיץ) יעקב"
+        },
+        {
+          "rank": 7,
+          "nameHe": "סרלין יוסף"
+        }
+      ],
+      "electedNames": [
+        "ברנשטיין פרץ",
+        "רוקח ישראל",
+        "פרסיץ שושנה",
+        "ספיר יוסף",
+        "קליבנוב יעקב",
+        "קסטן גיל (ליפשיץ) יעקב",
+        "סרלין יוסף"
+      ],
+      "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted.",
+      "electedCandidateRanks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "resultsPdfPages": [
+        4
+      ]
+    },
+    {
+      "letters": "ק",
+      "candidatePdfPages": [
+        14
+      ],
+      "truncated": true,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "מיקוניס שמואל"
+        },
+        {
+          "rank": 2,
+          "nameHe": "טובי תופיק"
+        },
+        {
+          "rank": 3,
+          "nameHe": "פרמינגר אליעזר"
+        },
+        {
+          "rank": 4,
+          "nameHe": "וילנר (קובנר) מאיר (בר)"
+        }
+      ],
+      "electedNames": [
+        "מיקוניס שמואל",
+        "טובי תופיק",
+        "פרמינגר אליעזר",
+        "וילנר (קובנר) מאיר (בר)"
+      ],
+      "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted.",
+      "electedCandidateRanks": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "resultsPdfPages": [
+        4
+      ]
+    }
+  ],
+  "electedNamesConvention": "Reviewed elected identities, in the candidate-gazette spelling, not a diplomatic transcription of results typography. electedCandidateRanks maps the results order back to registered candidate ranks. Honorifics, commas, spacing and hyphens are not identity differences."
+}

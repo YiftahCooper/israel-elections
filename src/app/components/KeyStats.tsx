@@ -13,13 +13,18 @@ export function KeyStats({ s, r, ds, baseR }: { s: Scenario; r: AllocationResult
   const cast = votesCast(s);
   const thrPct = s.rules.thresholdPct;
   const { simple, expert } = useLevel();
+  const noThreshold = Number(thrPct) === 0;
+  // votes for lists that won no seat: below the threshold, or (1949) without a whole quota
+  const seatless = s.lists.reduce((t, l) => t + (!l.withdrawn && (r.lists.find((x) => x.id === l.id)?.seats ?? 0) === 0 ? l.votes : 0), 0);
   const turnoutTile = (
       <Tile k={L('Turnout', 'שיעור ההצבעה')} v={<span className="row" style={{ gap: 4 }}><DecimalInput value={s.registered ? (cast / s.registered) * 100 : 0} digits={2} width={86} label={L('Turnout %', 'שיעור הצבעה %')} onCommit={(p) => dispatch({ type: 'setTurnout', pct: p })} />%</span>} d={<>{L('historical', 'בפועל')} {fmtPct(ds.totals.votesCast, ds.totals.registered, digits)}{Math.abs(cast - ds.totals.votesCast) > 0 && s.registered === ds.totals.registered && <> · <button className="btn small ghost" style={{ padding: 0, minHeight: 0 }} onClick={() => dispatch({ type: 'setTurnout', pct: (ds.totals.votesCast / ds.totals.registered) * 100 })}>{L('restore', 'שחזור')}</button></>}</>}>
         <div>{L('Votes cast ÷ registered voters. Edit it to scale every list (and the invalid ballots) in proportion.', 'מצביעים ÷ בעלי זכות בחירה. עריכה משנה את כל הרשימות (והפסולים) באופן יחסי.')}</div>
       </Tile>);
   if (simple) return (
     <p className="small ink2 simple-stats">
-      {L(`A list needs at least ${fmtInt(r.thresholdVotes)} votes (${thrPct}%) to win seats`, `רשימה צריכה לפחות ${fmtInt(r.thresholdVotes)} קולות (${thrPct}%) כדי להיכנס לכנסת`)}
+      {noThreshold
+        ? L('No percentage threshold applies', 'אין אחוז חסימה')
+        : L(`A list needs at least ${fmtInt(r.thresholdVotes)} votes (${thrPct}%) to win seats`, `רשימה צריכה לפחות ${fmtInt(r.thresholdVotes)} קולות (${thrPct}%) כדי להיכנס לכנסת`)}
       {/* methods without a quota stage (Sainte-Laguë) have no general quota: say nothing rather than "0 votes" */}
       {r.quota.num > 0n ? L(`; each seat takes about ${fmtRat(r.quota, 0)} votes.`, `; כל מנדט שווה כ-${fmtRat(r.quota, 0)} קולות.`) : '.'}
     </p>
@@ -27,8 +32,10 @@ export function KeyStats({ s, r, ds, baseR }: { s: Scenario; r: AllocationResult
   if (!expert) return (
     <div className="tiles">
       {turnoutTile}
-      <Tile k={L('Votes needed to pass the threshold', 'קולות למעבר אחוז החסימה')} term="threshold" v={fmtInt(r.thresholdVotes)} d={`${thrPct}% ${L('of valid votes', 'מהקולות הכשרים')}`} />
-      <Tile k={L('Wasted votes', 'קולות שהלכו לאיבוד')} term="unrepresented" v={fmtPct(r.unrepresentedVotes, r.totalValid, 1)} d={`${fmtInt(r.unrepresentedVotes)} ${L('votes for lists that did not get in', 'קולות לרשימות שלא נכנסו')}`} />
+      {noThreshold
+        ? <Tile k={L('Threshold', 'אחוז החסימה')} term="threshold" v={L('None', 'אין')} d={L('no percentage threshold in this election', 'לא היה אחוז חסימה בבחירות אלה')} />
+        : <Tile k={L('Votes needed to pass the threshold', 'קולות למעבר אחוז החסימה')} term="threshold" v={fmtInt(r.thresholdVotes)} d={`${thrPct}% ${L('of valid votes', 'מהקולות הכשרים')}`} />}
+      <Tile k={L('Wasted votes', 'קולות שהלכו לאיבוד')} term="unrepresented" v={fmtPct(seatless, r.totalValid, 1)} d={`${fmtInt(seatless)} ${L('votes for lists that won no seat', 'קולות לרשימות שלא זכו במושב')}`} />
       <Tile k={L('Votes per seat', 'קולות למנדט')} term="quota" v={fmtRat(r.quota, 0)} d={L('the general quota', 'המודד הכללי')} />
     </div>
   );

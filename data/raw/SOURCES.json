@@ -1546,8 +1546,8 @@
     "description": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T18:20:00Z",
-    "bytes": 4343,
-    "sha256": "6c459695248b52d616057a14ebd3f126a057d27cfd366b872335c18c646951f9"
+    "bytes": 4797,
+    "sha256": "48d9146d5d9c2466be9361a11276ed2262e1b8d9649dd0f3a4ba333befb9d3f0"
   },
   {
     "id": "k2-results-gazette",
@@ -1582,8 +1582,8 @@
     "description": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T18:20:00Z",
-    "bytes": 3685,
-    "sha256": "f3c42a880f3f020ea98eaa6b5d4b9ce6abc1ea13a15275e53b0a7ebb7a7e902c"
+    "bytes": 4076,
+    "sha256": "37e63f1e79082ae3887684530f1a521368253d19cfb92705aa8f9abb22c79a61"
   },
   {
     "id": "k3-results-gazette",
@@ -1618,8 +1618,8 @@
     "description": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T18:20:00Z",
-    "bytes": 3997,
-    "sha256": "a4a42accfbaf179b139a091458a0ee1fef4becba5256efd10c368cf5986e54c2"
+    "bytes": 4534,
+    "sha256": "97a7bc1f02ff67e67e56fbb9acfe8a07a2e1357a17c247f4d5a0f63afc00ec83"
   },
   {
     "id": "k4-results-gazette",
@@ -1654,8 +1654,8 @@
     "description": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T18:20:00Z",
-    "bytes": 4827,
-    "sha256": "3eb4be681f956314fc0dd9ee40e8829bb870a08616f4aff19efd879341ce7a32"
+    "bytes": 5150,
+    "sha256": "ef7105025722195b6b4162c558dea7ff4b7d7b321cb3dc5e56700a9c6829ee9a"
   },
   {
     "id": "k5-results-gazette",
@@ -1690,8 +1690,8 @@
     "description": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T18:20:00Z",
-    "bytes": 3219,
-    "sha256": "eb59456cca154e861393ae9d5587f48fa390c8f4aa598d7d1b64e413c848f836"
+    "bytes": 3656,
+    "sha256": "76d043f12517c25c3fed74c434ecc3b20bd43f5f16e160c11e9f4d2facd33c68"
   },
   {
     "id": "k6-results-gazette",
@@ -1726,8 +1726,8 @@
     "description": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T18:20:00Z",
-    "bytes": 4095,
-    "sha256": "97418f81b2fa1c3eef6ebfcce3b4bd5c65ef04a22e836c3b164d83198cc4dfa1"
+    "bytes": 4124,
+    "sha256": "714d9efaa00592ffd9f94e2925a2d54807f0f27f205400480c49c6a81bb54753"
   },
   {
     "id": "k7-results-gazette",
@@ -1762,8 +1762,8 @@
     "description": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T18:20:00Z",
-    "bytes": 3644,
-    "sha256": "a9c20c168657b534ed8bae5acde9706c316dcfcdc16fd3ab173021243dd926e4"
+    "bytes": 3960,
+    "sha256": "4626a16731e13440b0442395c3f99946f99157701e84d41bf0f6ccc9590fb697"
   },
   {
     "id": "k1-k7-cbs-national-totals",
@@ -2496,5 +2496,161 @@
     "retrievedAt": "2026-11-03T17:01:30.664880+00:00",
     "bytes": 519760,
     "sha256": "7f5afe0fb0d92c36214e7fb4b470fe47d222c6ba11d4f78199a1722245afa79c"
+  },
+  {
+    "id": "k1-allocation-appendix",
+    "file": "k1/allocation-appendix.pdf",
+    "url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/memorandum-knesset1/he/archive_knesset1_memorandum-apdx1.pdf",
+    "publisher": "ועדת הבחירות המרכזית — נספח לחוברת הבחירות לאספה המכוננת",
+    "official": true,
+    "description": "Official calculation appendix: five connections p.5 (PDF p.6), national allocation and pair divisions pp.9–11 (PDF pp.11–13).",
+    "method": "http",
+    "retrievedAt": "2026-11-03",
+    "bytes": 27567306,
+    "sha256": "37a1235d1d2a4628df615cce09e7954b4de65b5952d39dd23ec4af34165be847",
+    "lastModified": null
+  },
+  {
+    "id": "k2-agreements-gazette",
+    "file": "k2/agreements.pdf",
+    "url": "https://olaw.org.il/yalkut/yalkut-0177.pdf",
+    "publisher": "רשומות — ילקוט הפרסומים 177, עמ׳ 1177",
+    "official": true,
+    "description": "Complete signed connected-list notice, PDF p.3. Official issue reproduced by olaw.org.il.",
+    "method": "http",
+    "retrievedAt": "2026-11-03",
+    "bytes": 1476823,
+    "sha256": "ffe25a0fbb4d3fcef529508b3cefb3d13433722b6584a21b6d9bdaa9e69bef22",
+    "lastModified": null
+  },
+  {
+    "id": "k3-agreements-gazette",
+    "file": "k3/agreements.pdf",
+    "url": "https://olaw.org.il/yalkut/yalkut-0427.pdf",
+    "publisher": "רשומות — ילקוט הפרסומים 427, עמ׳ 1053",
+    "official": true,
+    "description": "Complete signed five-pair notice, PDF p.1. Official issue reproduced by olaw.org.il.",
+    "method": "http",
+    "retrievedAt": "2026-11-03",
+    "bytes": 140330,
+    "sha256": "3d6be9d25aa85d147c83fdb8d20a33c0e687f8681e48fcb3919f39083341733e",
+    "lastModified": null
+  },
+  {
+    "id": "k4-agreements-gazette",
+    "file": "k4/agreements.pdf",
+    "url": "https://olaw.org.il/yalkut/yalkut-0709.pdf",
+    "publisher": "רשומות — ילקוט הפרסומים 709, עמ׳ 125",
+    "official": true,
+    "description": "Both signed connected-list notices on PDF p.1, two pairs in total. Official issue reproduced by olaw.org.il.",
+    "method": "http",
+    "retrievedAt": "2026-11-03",
+    "bytes": 138468,
+    "sha256": "833fc801518621a224745860f69db72d2d3862ec7e186506e705b5c6ffc181cf",
+    "lastModified": null
+  },
+  {
+    "id": "k5-agreements-gazette",
+    "file": "k5/agreements.pdf",
+    "url": "https://olaw.org.il/yalkut/yalkut-0865.pdf",
+    "publisher": "רשומות — ילקוט הפרסומים 865, עמ׳ 1843",
+    "official": true,
+    "description": "Complete signed three-pair notice, PDF p.1. Official issue reproduced by olaw.org.il.",
+    "method": "http",
+    "retrievedAt": "2026-11-03",
+    "bytes": 110172,
+    "sha256": "51b753717e79bedea5b3e47c8ff81cad18ce35ae7060c6a490f3a7d5385d0946",
+    "lastModified": null
+  },
+  {
+    "id": "k3-candidates-mirror",
+    "file": "k3/candidates-mirror.pdf",
+    "url": "https://olaw.org.il/yalkut/yalkut-0425.pdf",
+    "publisher": "רשומות — ילקוט הפרסומים 425",
+    "official": true,
+    "description": "Second scan copy used to resolve the Agriculture and Development candidate spelling on p.1017 (PDF p.13).",
+    "method": "http",
+    "retrievedAt": "2026-11-03",
+    "bytes": 818680,
+    "sha256": "25a334b5df28fef5c5fea0662e03cab50da94281b365fab18f464b6d37a9df19",
+    "lastModified": null
+  },
+  {
+    "id": "k1-rosters-reviewed",
+    "file": "k1/rosters.reviewed.json",
+    "url": "local:reviewed/k1/rosters",
+    "publisher": "Project transcription of official candidate and results gazettes",
+    "official": false,
+    "description": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
+    "method": "visual-primary-review",
+    "retrievedAt": "2026-11-03",
+    "bytes": 23700,
+    "sha256": "d1893a8148f6bf02d454735b19b6b68cbfa1de896a8f95d691c0f5229d5674b1",
+    "lastModified": null
+  },
+  {
+    "id": "k2-rosters-reviewed",
+    "file": "k2/rosters.reviewed.json",
+    "url": "local:reviewed/k2/rosters",
+    "publisher": "Project transcription of official candidate and results gazettes",
+    "official": false,
+    "description": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
+    "method": "visual-primary-review",
+    "retrievedAt": "2026-11-03",
+    "bytes": 23473,
+    "sha256": "fd72b813fd5a88994f333bc7a325817cab9d5a2b4c1e03b039162aae537060a4",
+    "lastModified": null
+  },
+  {
+    "id": "k3-rosters-reviewed",
+    "file": "k3/rosters.reviewed.json",
+    "url": "local:reviewed/k3/rosters",
+    "publisher": "Project transcription of official candidate and results gazettes",
+    "official": false,
+    "description": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
+    "method": "visual-primary-review",
+    "retrievedAt": "2026-11-03",
+    "bytes": 21869,
+    "sha256": "cc9014f5e6ddfbbc6e6ffe0183e1ef848a58669e3162e20e607a423fb9671683",
+    "lastModified": null
+  },
+  {
+    "id": "k4-rosters-reviewed",
+    "file": "k4/rosters.reviewed.json",
+    "url": "local:reviewed/k4/rosters",
+    "publisher": "Project transcription of official candidate and results gazettes",
+    "official": false,
+    "description": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
+    "method": "visual-primary-review",
+    "retrievedAt": "2026-11-03",
+    "bytes": 21854,
+    "sha256": "dcc5a520e4bacc84162ea24d2532479e57a4a9bf40f864d8fda76a3f7581ad3e",
+    "lastModified": null
+  },
+  {
+    "id": "k5-rosters-reviewed",
+    "file": "k5/rosters.reviewed.json",
+    "url": "local:reviewed/k5/rosters",
+    "publisher": "Project transcription of official candidate and results gazettes",
+    "official": false,
+    "description": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
+    "method": "visual-primary-review",
+    "retrievedAt": "2026-11-03",
+    "bytes": 21552,
+    "sha256": "77eb42428138a09986eb8b27e5e1f6cccc918e200b1f7deefac692de93031f92",
+    "lastModified": null
+  },
+  {
+    "id": "k7-rosters-reviewed",
+    "file": "k7/rosters.reviewed.json",
+    "url": "local:reviewed/k7/rosters",
+    "publisher": "Project transcription of official candidate and results gazettes",
+    "official": false,
+    "description": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
+    "method": "visual-primary-review",
+    "retrievedAt": "2026-11-03",
+    "bytes": 22516,
+    "sha256": "7437065d2a6c00eba06939377148aba88b1af3e03a1d3b0e526d02c2c7412eee",
+    "lastModified": null
   }
 ]

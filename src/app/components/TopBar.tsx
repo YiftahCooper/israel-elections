@@ -49,7 +49,7 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
 
   return (
     <div className="topbar">
-      <div className="brand">{L('Israeli Elections Explorer', 'סייר הבחירות לכנסת')}<small>{L('Exact Bader–Ofer simulator', 'סימולטור מדויק בשיטת בדר–עופר')}</small></div>
+      <div className="brand">{L('Israeli Elections Explorer', 'סייר הבחירות לכנסת')}<small>{L('Exact seat simulator under each election’s law', 'סימולטור מנדטים מדויק לפי החוק של כל בחירות')}</small></div>
       <select aria-label={L('Election', 'בחירות')} value={electionId} onChange={(e) => openElection(e.target.value as ElectionId)} style={{ fontWeight: 600 }}>
         {elections.map((e) => <option key={e.id} value={e.id} disabled={!e.available}>{electionLabel(e, elections, lang)}{e.available ? '' : L(' — not yet available', ' — עדיין לא זמין')}</option>)}
       </select>
