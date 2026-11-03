@@ -4,6 +4,8 @@
 // on any internal inconsistency (totals that do not reconcile, rank gaps, unknown letters).
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
+import { buildK16 } from './lib/historical/k16.ts';
+import { buildK17 } from './lib/historical/k17.ts';
 import { parseK25Gazette } from './lib/parse-k25-gazette.ts';
 import { joinItems, pdfLines } from './lib/pdf-text.ts';
 import { BLOCS, META, neutralColor } from './lib/list-meta.ts';
@@ -352,7 +354,7 @@ async function buildK26() {
 // Seat-diagram order: app-defined order (validated colour adjacency), then by votes.
 const seatOrder = (lists: ListRecord[]) => [...lists].sort((a, b) => (META[a.id]?.order ?? 999) - (META[b.id]?.order ?? 999) || b.votes - a.votes);
 
-for (const build of [buildK25, buildK26]) {
+for (const build of [...buildK16(), ...buildK17(), buildK25, buildK26]) {
   const built = await build();
   const ds = { ...built.ds, lists: seatOrder(built.ds.lists) };
   const loc = built.loc;

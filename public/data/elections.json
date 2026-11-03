@@ -8,7 +8,7 @@
     "available": false,
     "status": {
       "stage": "pending-data-verification",
-      "noteEn": "Official sources downloaded; dataset not built or verified."
+      "noteEn": "Seat reproduction verified in research fixtures; release blocked by unresolved gazette differences, unverified full candidate rosters and missing locality metadata."
     }
   },
   {
@@ -20,7 +20,7 @@
     "available": false,
     "status": {
       "stage": "pending-data-verification",
-      "noteEn": "Official sources downloaded; dataset not built or verified."
+      "noteEn": "Seat reproduction verified in research fixtures; release blocked by unresolved gazette differences, unverified full candidate rosters and missing locality metadata."
     }
   },
   {

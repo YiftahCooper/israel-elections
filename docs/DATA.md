@@ -9,8 +9,8 @@ verified application datasets. `public/data/elections.json` explicitly marks the
 
 | Id | Election date | Official source files retained | Secondary data used | Still missing from a released dataset |
 |---|---|---|---|---|
-| k16 | 2003-01-28 | data.gov.il polling stations; CEC candidates and results gazettes | None | National transcription, full candidates, agreements, electorate and validation |
-| k17 | 2006-03-28 | data.gov.il polling stations; CEC candidates and results gazettes | None | National transcription, full candidates, agreements, electorate and validation |
+| k16 | 2003-01-28 | Polling stations; CEC candidates/results; complete agreement notice YP 5151; official CBS totals; reviewed national transcription and locality digest | No secondary rosters; project derivatives labelled | Two gazette vote discrepancies (410 total); full rosters; locality committee metadata; release blocked |
+| k17 | 2006-03-28 | Polling stations; CEC candidates/results; complete agreement notice YP 5510; official CBS totals; reviewed national transcription and locality digest | No secondary rosters; project derivatives labelled | Nine-invalid-vote discrepancy; full rosters; locality code/electorate/committee fields; release blocked |
 | k18 | 2009-02-10 | data.gov.il polling stations; CEC candidates and results gazettes | None | Verified candidate extraction, agreements and complete validation |
 | k19 | 2013-01-22 | data.gov.il localities and polling stations; CEC candidates and results gazettes | None | Gazette corrections, verified candidate extraction, agreements and validation |
 | k20 | 2015-03-17 | data.gov.il localities and polling stations; CEC candidates and results gazettes; agreement notice YP 7001 | None | Verified candidate extraction and complete validation |
@@ -51,6 +51,60 @@ No unparsed roster is represented as an empty, supposedly complete roster in an 
   correction or other explanation before asserting exact national reconciliation.
   The datastore also spells Meretz's column `מרץ`, versus ballot letters `מרצ` in Reshumot.
 * The Knesset 24 results page succeeded on retry; a fallback national total is unnecessary.
+
+## Knessets 16–17: verified progress, not released datasets
+
+Both remain `available: false`, with no `k16.json`, `k17.json` or public locality files.
+The per-election preflights run during `build-datasets.ts`, validate retained evidence and
+refuse a premature availability change. They return no public build jobs while blocked.
+This is intentional partial implementation, not a claim that either release builder is complete.
+
+* **k16:** results gazette YP 5155 p. 1406 prints Mafdal **132,730** and Lider **883**;
+  polling sums are **132,370** and **833**. Printed counts sum to **3,148,774**, whereas
+  the gazette's valid total and polling sum are **3,148,364**. The Knesset's official
+  allocation example supports Mafdal's polling count; no formal correction was verified
+  for either difference. Invalid **52,409**, cast **3,200,773**. Excluding the envelope
+  batches' repeated “voters” field gives electorate **4,720,075**, matching official CBS.
+  There are **7,885** polling rows, including **149** envelope batches; one separate XLS
+  EOF record is explicitly excluded. The **1,172** research locality groups include the
+  envelope group. Committee identifiers are missing and remain null in research rows.
+* **k17:** all **31** gazetted list counts and **3,137,064** valid votes agree exactly
+  with **8,426** polling rows (including **149** envelope batches). Gazette invalid is
+  **49,684**, but datastore cast **3,186,739** minus valid is **49,675**. Official CBS
+  corroborates that turnout and electorate **5,014,622**. No correction explaining the
+  nine votes was verified. The source supplies neither numeric locality codes, electorate
+  nor committee identifiers; **1,150** research groups use exact trimmed locality names.
+  Required unknown fields stay null; these research rows are not `LocalityDataset` files.
+
+Neither results gazette states registered voters or total turnout. The retained official
+CBS table (`data/raw/k16/cbs-national-summary.pdf`, table 27.2, source CEC) supplements
+those facts; the transcriptions explicitly use null for their absence from the gazette.
+
+Agreements were read in full from official scanned notices mirrored by olaw.org.il:
+**YP 5151 p. 1312** (26 January 2003) contains all six pairs: Labor–Meretz,
+Shinui–Greens, National Union–Yisrael BaAliyah, Mafdal–Am Ehad, Shas–UTJ and Hadash–Balad.
+**YP 5510 p. 2386** (26 March 2006) contains all four: Labor–Meretz, Shas–UTJ,
+Hadash–Balad and Yisrael Beiteinu–Likud. Completeness is from the entire notices,
+including their final pair and signature, not inferred from the seat outcome.
+
+Tests reproduce **every list's gazetted seats** through the application scenario pipeline
+using explicitly labelled research fixtures with polling counts. k16: threshold **47,226**,
+quota **25,138**; k17: threshold **62,742**, quota **24,619**. This verifies allocation,
+not the missing release gates. Candidate checks cover only the largest list's first name
+and terminal rank: Likud's **שרון אריאל**, **114** names in YP 5148 pp. 1197–1198;
+Kadima's **אולמרט אהוד**, **120** in YP 5504 pp. 2192–2193. Full rosters, contiguous
+ranks and counts for all other lists remain unverified. No secondary roster or fabricated
+name was used, and no `candidatesUnavailable` field was added: verifiable scans exist.
+
+Each `data/raw/kNN/national.reviewed.json` preserves the gazette values, discrepancy
+records and partial candidate checks. Each `reconciliation.reviewed.json` retains per-list
+polling sums, source SHA-256 and the SHA-256 of derived research locality rows. The rows
+are reproducible by `derivePolling()` in `scripts/lib/historical/k16-k17-common.ts` from
+fetched scratch input; its comment defines ordering and serialization. No polling JSON
+or intermediate render is committed. When scratch is absent the build logs a clear
+polling-check skip, but still checks retained source/derivative hashes, national arithmetic,
+agreement structure and every official seat. This does not independently validate missing
+locality rows. Decisions **0050–0051** record the evidence and the historical-law caveat.
 
 ## Size and rebuilding
 
