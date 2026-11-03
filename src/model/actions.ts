@@ -143,6 +143,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
         votes: kept, withdrawn: false, candidates, sponsorsHe: parts.map((p) => p.sponsorsHe).filter(Boolean).join('; '),
         // a merged roster is incomplete if any part's roster was unavailable
         ...(parts.some((p) => p.rosterUnavailable) ? { rosterUnavailable: true } : {}),
+        ...(parts.some((p) => p.rosterTruncated) ? { rosterTruncated: true } : {}),
       };
       const firstIdx = s.lists.findIndex((l) => action.ids.includes(l.id));
       const rest = s.lists.filter((l) => !action.ids.includes(l.id));
@@ -171,6 +172,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
         bloc: orig.bloc, votes: p.votes, withdrawn: false, sponsorsHe: orig.sponsorsHe,
         candidates: p.candidateIds.map((cid) => orig.candidates.find((c) => c.id === cid)!),
         ...(orig.rosterUnavailable ? { rosterUnavailable: true } : {}),
+        ...(orig.rosterTruncated ? { rosterTruncated: true } : {}),
       }));
       const idx = s.lists.findIndex((l) => l.id === action.id);
       const lists = [...s.lists]; lists.splice(idx, 1, ...newLists);

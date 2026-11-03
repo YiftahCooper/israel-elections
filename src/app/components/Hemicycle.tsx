@@ -156,7 +156,7 @@ export function Hemicycle({ s, r, compact = false, title }: { s: Scenario; r: Al
         <div className="tip" style={{ left: Math.max(0, hover.x - 100), top: Math.max(0, hover.y - 96) }}>
           <div className="row"><span className="swatch" style={{ background: hover.seat.color }} /><b>{listLabel(hv, lang)}</b> <span className="muted">({hv.letters})</span></div>
           {cand ? <div><b>{cand.nameHe}</b> · {L('rank', 'מקום')} {hover.seat.idx + 1}</div>
-            : hv.rosterUnavailable ? <div className="muted">{L(`Seat ${hover.seat.idx + 1} of the list; candidate names are not available for this election`, `מושב ${hover.seat.idx + 1} של הרשימה; שמות המועמדים אינם זמינים לבחירות אלה`)}</div>
+            : hv.rosterUnavailable || hv.rosterTruncated ? <div className="muted">{L(`Seat ${hover.seat.idx + 1} of the list; candidate names are not available for this election`, `מושב ${hover.seat.idx + 1} של הרשימה; שמות המועמדים אינם זמינים לבחירות אלה`)}</div>
             : <div className="down">{L('Vacant — the list has too few candidates', 'מושב ריק — אין די מועמדים ברשימה')}</div>}
           {cand?.partyHe && <div className="muted small">{L('Party: ', 'מפלגה: ')}{cand.partyHe}</div>}
           <div className="muted small">{hover.seat.remainder ? L('Seat won in the remainder stage (Bader–Ofer)', 'מנדט שהושג בחלוקת העודפים (בדר–עופר)') : L('Seat won by whole quota', 'מנדט שהושג במודד שלם')}</div>

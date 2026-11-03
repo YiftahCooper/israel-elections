@@ -24,13 +24,14 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
   return (
     <div>
       {l.rosterUnavailable && <p className="small callout">{L('The official candidate list for this election is not available in the sources used here, so the names of those elected are not shown.', 'רשימת המועמדים הרשמית לבחירות אלה אינה זמינה במקורות שבשימוש כאן, ולכן שמות הנבחרים אינם מוצגים.')}</p>}
+      {l.rosterTruncated && !l.rosterUnavailable && <p className="small callout">{L(`Only the first ${c.length} candidates of this list’s official roster are available here (everyone elected is included); later names were not transcribed.`, `כאן זמינים רק ${c.length} המועמדים הראשונים ברשימה הרשמית (כולל כל הנבחרים); השמות שאחריהם לא הוקלדו.`)}</p>}
       {!simple && !l.rosterUnavailable && <div className="kv small" style={{ marginBottom: 8 }}>
-        <span>{L('Registered candidates', 'מועמדים ברשימה')}</span><span>{c.length}</span>
+        <span>{l.rosterTruncated ? L('Candidates available', 'מועמדים זמינים') : L('Registered candidates', 'מועמדים ברשימה')}</span><span>{c.length}</span>
         <span>{L('Last elected', 'האחרון שנבחר')}</span><span>{lastIn ? <><bdi>{lastIn.nameHe}</bdi> <span className="muted">(#{seats})</span></> : '—'}</span>
-        <span>{L('Next in line', 'הבא בתור')}</span><span>{nextIn ? <><bdi>{nextIn.nameHe}</bdi> <span className="muted">(#{seats + 1})</span></> : L('none', 'אין')}</span>
+        <span>{L('Next in line', 'הבא בתור')}</span><span>{nextIn ? <><bdi>{nextIn.nameHe}</bdi> <span className="muted">(#{seats + 1})</span></> : l.rosterTruncated ? L('not available', 'לא זמין') : L('none', 'אין')}</span>
       </div>}
       {baseCandidates && JSON.stringify(baseCandidates) !== JSON.stringify(c) && <button className="btn small" style={{ marginBottom: 6 }} onClick={() => dispatch({ type: 'resetCandidates', listId: l.id })}>{L('Restore the registered candidate list', 'שחזור רשימת המועמדים הרשומה')}</button>}
-      {seats > c.length && !l.rosterUnavailable && <p className="down small">{L(`The list has only ${c.length} candidates for ${seats} seats.`, `ברשימה רק ${c.length} מועמדים ל-${seats} מנדטים.`)}</p>}
+      {seats > c.length && !l.rosterUnavailable && !l.rosterTruncated && <p className="down small">{L(`The list has only ${c.length} candidates for ${seats} seats.`, `ברשימה רק ${c.length} מועמדים ל-${seats} מנדטים.`)}</p>}
       {c.length === 0 && !l.rosterUnavailable && <p className="muted small">{L('No candidates registered.', 'אין מועמדים רשומים.')}</p>}
       <ol className="cands" style={{ ['--c' as string]: l.color }} aria-label={L('Candidate list', 'רשימת המועמדים')}>
         {c.slice(0, limit).map((x, i) => {

@@ -58,6 +58,8 @@ export interface ListRecord {
   candidatesSecondary: boolean;
   /** true when no verifiable roster exists; candidates is then [] */
   candidatesUnavailable?: boolean;
+  /** true when candidates holds only the first ranks of the registered roster (at least everyone elected); later ranks were not transcribed */
+  candidatesTruncated?: boolean;
   /** verbatim official notes: resignations, disqualifications, court rulings */
   notesHe: string[];
 }

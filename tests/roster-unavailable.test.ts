@@ -25,4 +25,10 @@ describe('unavailable rosters', () => {
       { newId: 'p2', nameHe: 'p2', letters: 'p2', color: '#111111', votes: v - Math.floor(v / 2), candidateIds: [] }] });
     expect(sp.lists.filter((l) => l.id === 'p1' || l.id === 'p2').map((l) => l.rosterUnavailable)).toEqual([true, true]);
   });
+  it('carries a truncated roster through scenario and merge', () => {
+    const tr = scenarioFromDataset({ ...ds, lists: ds.lists.map((l) => (l.id === b.id ? { ...l, candidates: l.candidates.slice(0, 5), candidatesTruncated: true } : l)) });
+    expect(tr.lists.find((l) => l.id === b.id)!.rosterTruncated).toBe(true);
+    const m = applyAction(tr, { type: 'merge', ids: [a.id, b.id], newId: 'm', nameHe: 'm', letters: 'm', color: '#000000', retentionPct: 100, candidateOrder: 'concat', nonRetained: 'abstain' });
+    expect(m.lists.find((l) => l.id === 'm')!.rosterTruncated).toBe(true);
+  });
 });

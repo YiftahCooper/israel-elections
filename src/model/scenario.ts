@@ -34,6 +34,8 @@ export interface SimList {
   sponsorsHe: string;
   /** the official roster could not be obtained: candidates is empty for that reason, not because none registered */
   rosterUnavailable?: boolean;
+  /** only the first ranks of the official roster are known (at least everyone elected) */
+  rosterTruncated?: boolean;
 }
 
 export interface SimAgreement { id: string; members: string[]; enabled: boolean }
@@ -142,6 +144,7 @@ export function scenarioFromDataset(ds: ElectionDataset, name = ''): Scenario {
       color: l.color, bloc: l.bloc, votes: l.votes, withdrawn: l.withdrawn, sponsorsHe: l.sponsorsHe,
       candidates: l.candidates.map((c) => ({ id: c.id, nameHe: c.nameHe, partyHe: c.partyHe, originListId: l.id })),
       ...(l.candidatesUnavailable ? { rosterUnavailable: true } : {}),
+      ...(l.candidatesTruncated ? { rosterTruncated: true } : {}),
     })),
     agreements: ds.agreements.map((a) => ({ id: a.id, members: [...a.members], enabled: true })),
     blocs: ds.blocs.map((b) => ({ ...b })),
