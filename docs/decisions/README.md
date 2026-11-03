@@ -63,5 +63,6 @@ is labelled. Suggested alternatives are not evidence of a past design discussion
 | [0085](0085-k13-missing-agreement-notice-release.md) | K13: release with the agreement-notice gap disclosed |
 | [0086](0086-k13-k15-release-verification.md) | K13–K15: released artifacts and verification |
 | [0087](0087-constituent-parties-blocs-and-colours.md) | Constituent parties, per-election blocs and per-election colours |
+| [0088](0088-roster-corrections-and-odata-audit.md) | Roster corrections from re-read scans and an official membership audit of every election |
 
 Records 0020–0086 are grouped by election era; numbers in between are left free for that era. Records from 0087 on are product and design decisions.

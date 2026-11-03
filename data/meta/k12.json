@@ -187,7 +187,7 @@
             {
               "rank": 2,
               "datasetName": "פורז-פוזמנטיר אברהם",
-              "note": "Roster corrected on 2026-11-04 from the misreading \"פורזומנסקי אברהם\" to \"פורז-פוזמנטיר אברהם\" as printed (YP 3588 p. 150; YP 3591 p. 243); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
+              "note": "Roster corrected on 2026-11-04 from the misreading \"פורזומנסקי אברהם\" to \"פורז-פוזמנטיר אברהם\" as printed (YP 3588 p. 150; YP 3591 p. 243); see docs/decisions/0088-roster-corrections-and-odata-audit.md."
             }
           ]
         },

@@ -1,5 +1,5 @@
 // Pins elected names corrected on 4 November 2026 after re-reading the official scans
-// (docs/decisions/DRAFT-roster-corrections-and-odata-audit.md). Each corrected name must be what
+// (docs/decisions/0088-roster-corrections-and-odata-audit.md). Each corrected name must be what
 // the app shows as elected, the old misreading must be gone, and the person must be in the
 // retained Knesset OData opening membership (data/raw/kNN/knesset-odata-members.json).
 import { readFileSync } from 'node:fs';

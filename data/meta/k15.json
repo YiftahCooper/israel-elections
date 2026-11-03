@@ -345,7 +345,7 @@
             {
               "rank": 2,
               "datasetName": "סאנע טלב",
-              "note": "Roster corrected on 2026-11-04 from the misreading \"צאנע טלב\" to \"סאנע טלב\" as printed (YP 4748 p. 3044; YP 4757 p. 3378); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
+              "note": "Roster corrected on 2026-11-04 from the misreading \"צאנע טלב\" to \"סאנע טלב\" as printed (YP 4748 p. 3044; YP 4757 p. 3378); see docs/decisions/0088-roster-corrections-and-odata-audit.md."
             }
           ]
         }

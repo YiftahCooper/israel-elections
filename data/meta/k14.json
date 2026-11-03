@@ -88,7 +88,7 @@
             {
               "rank": 30,
               "datasetName": "לנקרי יהודה",
-              "note": "Roster corrected on 2026-11-04 from the misreading \"ליבני יהודה\" to \"לנקרי יהודה\" as printed (YP 4408 p. 3290; YP 4414 p. 3483); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
+              "note": "Roster corrected on 2026-11-04 from the misreading \"ליבני יהודה\" to \"לנקרי יהודה\" as printed (YP 4408 p. 3290; YP 4414 p. 3483); see docs/decisions/0088-roster-corrections-and-odata-audit.md."
             }
           ]
         },
@@ -131,12 +131,12 @@
             {
               "rank": 15,
               "datasetName": "דיין חיים",
-              "note": "Roster corrected on 2026-11-04 from the misreading \"ריבלין חיים\" to \"דיין חיים\" as printed (YP 4408 p. 3290; YP 4414 p. 3483); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
+              "note": "Roster corrected on 2026-11-04 from the misreading \"ריבלין חיים\" to \"דיין חיים\" as printed (YP 4408 p. 3290; YP 4414 p. 3483); see docs/decisions/0088-roster-corrections-and-odata-audit.md."
             },
             {
               "rank": 31,
               "datasetName": "בדש פיני פנחס",
-              "note": "Roster corrected on 2026-11-04 from the misreading \"בדש פנחס\" to \"בדש פיני פנחס\" as printed (YP 4408 p. 3290; YP 4414 p. 3483); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
+              "note": "Roster corrected on 2026-11-04 from the misreading \"בדש פנחס\" to \"בדש פיני פנחס\" as printed (YP 4408 p. 3290; YP 4414 p. 3483); see docs/decisions/0088-roster-corrections-and-odata-audit.md."
             }
           ]
         }
@@ -420,7 +420,7 @@
             {
               "rank": 3,
               "datasetName": "אלסאנע טלב",
-              "note": "Roster corrected on 2026-11-04 from the misreading \"אלצאנע טלב\" to \"אלסאנע טלב\" as printed (YP 4408 p. 3292; YP 4414 p. 3483); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
+              "note": "Roster corrected on 2026-11-04 from the misreading \"אלצאנע טלב\" to \"אלסאנע טלב\" as printed (YP 4408 p. 3292; YP 4414 p. 3483); see docs/decisions/0088-roster-corrections-and-odata-audit.md."
             }
           ]
         },
@@ -927,7 +927,7 @@
       "resolution": "transcription error corrected",
       "evidence": "YP 4408 p. 3290; YP 4414 p. 3483",
       "resolvedOn": "2026-11-04",
-      "record": "docs/decisions/DRAFT-roster-corrections-and-odata-audit.md"
+      "record": "docs/decisions/0088-roster-corrections-and-odata-audit.md"
     },
     {
       "letters": "מחל",
@@ -937,7 +937,7 @@
       "resolution": "transcription error corrected",
       "evidence": "YP 4408 p. 3290; YP 4414 p. 3483",
       "resolvedOn": "2026-11-04",
-      "record": "docs/decisions/DRAFT-roster-corrections-and-odata-audit.md"
+      "record": "docs/decisions/0088-roster-corrections-and-odata-audit.md"
     }
   ]
 }

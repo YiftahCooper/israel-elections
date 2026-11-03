@@ -5,7 +5,7 @@ Audit of 4 November 2026. For every election, the members the app shows as elect
 so `notSeated` candidates are skipped) were compared with the Knesset OData membership on the
 Knesset's opening day. Every substantive difference was then checked in the official scans.
 The resulting corrections and the reasoning behind them are in
-[the draft decision record](../decisions/DRAFT-roster-corrections-and-odata-audit.md).
+[decision 0088](../decisions/0088-roster-corrections-and-odata-audit.md).
 
 ## Method
 

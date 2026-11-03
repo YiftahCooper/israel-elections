@@ -9,7 +9,9 @@
 //
 // The corpus reads public/data, so a dataset change (a new election, a corrected roster) also changes the
 // allocation and model digests. On 4 November 2026 they were re-recorded after 1973 was released; the
-// pre-refactor engine (main at 9d8c3c1) produced the same digests on the same data.
+// pre-refactor engine (main at 9d8c3c1) produced the same digests on the same data. The model digest was
+// re-recorded again after the 4 November roster corrections (53 names; 1988 Likud rank 25 not seated), with
+// the same check.
 //
 // A changed digest means some output changed. Find the first differing case with
 // tests/differential-compare.ts; update a digest only for a reviewed, intended output change.
@@ -24,7 +26,7 @@ import { FAMILIES, families, type Family, type Modules } from './differential.ca
 const EXPECTED: Record<Family, string> = {
   allocation: 'aba4d7b5256328d6a1db6591b83369cb066c5c6f0ecb2cc369209b9ee2a7eacf',
   analysis: 'f04635df61b1ca12d56e177f0b249a60ed8056c24b2a003f4a7791f161390ee2',
-  model: 'ea523777a5156cbaf4ea40d27075266f11917c0dfa47535220b837fb5e101c83',
+  model: '4c44375417031cf623a6c667f258cbc9f8c6c2593fd335cf49e0725251411494',
   validation: '20096790e5f352f39e4bf3074fd757e6fdef00abe16b202c6707329811ee3675',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

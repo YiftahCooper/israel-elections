@@ -107,7 +107,7 @@
             {
               "rank": 19,
               "datasetName": "זיגר יצחק",
-              "note": "Roster corrected on 2026-11-04 from the misreading \"יגר יצחק\" to \"זיגר יצחק\" as printed (YP 3073 p. 2832; YP 3081 p. 3008); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
+              "note": "Roster corrected on 2026-11-04 from the misreading \"יגר יצחק\" to \"זיגר יצחק\" as printed (YP 3073 p. 2832; YP 3081 p. 3008); see docs/decisions/0088-roster-corrections-and-odata-audit.md."
             }
           ]
         }
@@ -206,7 +206,7 @@
             {
               "rank": 37,
               "datasetName": "רז נחמן",
-              "note": "Roster corrected on 2026-11-04 from the misreading \"רן נחמן\" to \"רז נחמן\" as printed (YP 3073 p. 2826; YP 3081 p. 3007); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
+              "note": "Roster corrected on 2026-11-04 from the misreading \"רן נחמן\" to \"רז נחמן\" as printed (YP 3073 p. 2826; YP 3081 p. 3007); see docs/decisions/0088-roster-corrections-and-odata-audit.md."
             }
           ]
         },
@@ -256,7 +256,7 @@
             {
               "rank": 40,
               "datasetName": "גרוסמן ארקין חיה",
-              "note": "Roster corrected on 2026-11-04 from the misreading \"גרוסמן אריקה חיה\" to \"גרוסמן ארקין חיה\" as printed (YP 3073 p. 2826; YP 3081 p. 3007); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
+              "note": "Roster corrected on 2026-11-04 from the misreading \"גרוסמן אריקה חיה\" to \"גרוסמן ארקין חיה\" as printed (YP 3073 p. 2826; YP 3081 p. 3007); see docs/decisions/0088-roster-corrections-and-odata-audit.md."
             },
             {
               "rank": 46,
@@ -978,7 +978,7 @@
       "resolution": "not a transcription error: gazette misprint, candidate-notice reading kept",
       "evidence": "Checked, unchanged: the candidate notice itself prints \"שפירא אליהו\" (YP 3073 p. 2826); the results notice prints \"שפייזר אליהו\" (YP 3081 p. 3007). The person is Eliyahu Speiser; the dataset keeps the candidate-notice reading with a recorded spelling variant.",
       "resolvedOn": "2026-11-04",
-      "record": "docs/decisions/DRAFT-roster-corrections-and-odata-audit.md"
+      "record": "docs/decisions/0088-roster-corrections-and-odata-audit.md"
     },
     {
       "letters": "אמת",
@@ -988,7 +988,7 @@
       "resolution": "transcription error corrected",
       "evidence": "YP 3073 p. 2826; YP 3081 p. 3007",
       "resolvedOn": "2026-11-04",
-      "record": "docs/decisions/DRAFT-roster-corrections-and-odata-audit.md"
+      "record": "docs/decisions/0088-roster-corrections-and-odata-audit.md"
     },
     {
       "letters": "הן",
@@ -998,7 +998,7 @@
       "resolution": "transcription error corrected",
       "evidence": "YP 3073 p. 2828; YP 3081 p. 3007",
       "resolvedOn": "2026-11-04",
-      "record": "docs/decisions/DRAFT-roster-corrections-and-odata-audit.md"
+      "record": "docs/decisions/0088-roster-corrections-and-odata-audit.md"
     },
     {
       "letters": "מחל",
@@ -1008,7 +1008,7 @@
       "resolution": "transcription error corrected",
       "evidence": "YP 3073 p. 2832; YP 3081 p. 3008",
       "resolvedOn": "2026-11-04",
-      "record": "docs/decisions/DRAFT-roster-corrections-and-odata-audit.md"
+      "record": "docs/decisions/0088-roster-corrections-and-odata-audit.md"
     }
   ]
 }

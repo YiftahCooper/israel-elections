@@ -1,6 +1,6 @@
 # Roster corrections from re-read scans and an official membership audit of every election
 
-Status: **draft** (the parent assigns the number). Written on 4 November 2026. It corrects reviewed
+Status: **accepted** (numbered and merged by the parent on 4 November 2026; the parent independently confirmed the 1988 Likud correction against the Knesset opening membership). Written on 4 November 2026. It corrects reviewed
 transcriptions for k1–k5, k7 and k9–k15, extends the k8–k12 roster gate, and retains the Knesset
 OData opening membership for k1–k26 as official identity cross-checks. It amends 0084 (the 1992
 "given-name variant") and the contiguous elected-rank rule that 0072 applies to k8–k12. It does not
