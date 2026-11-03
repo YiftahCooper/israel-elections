@@ -15,7 +15,10 @@ The official publication is supplied by the disclosed olaw mirror.
 Fresh enlarged visual inspection of the **whole signed notice** establishes:
 
 1. Alignment, letters **את**, with **רשימת קדמה ופתוח, האותיות רא**.
-2. Rafi, letters **כא**, with Peace, letters **כס**.
+2. Rafi, letters **כא**, with **רשימת השלום** (the Peace List). The printed letters after it are not
+   **כס** on an enlarged reading (the second letter resembles ג or נ, not ס), but no 1965 list bears
+   such letters; the Peace List's ballot letters in the results notice are **כס**, so the pair is matched
+   by the printed list name. *(Parent review, 3 Nov 2026: the earlier wording said the notice prints כס.)*
 
 The first partner is **Progress and Development (רא)**. The earlier **Cooperation
 and Brotherhood (יא)** reading is contradicted by **both the printed name and the
