@@ -98,13 +98,13 @@ export function Hemicycle({ s, r, compact = false, title }: { s: Scenario; r: Al
   if (layout === 'hemicycle') {
     const cx = W / 2, cy = 470, R = 400;
     body = (
-      <svg ref={svgRef} viewBox={compact ? `40 40 920 450` : `-170 0 1340 ${H}`} role="img" aria-label={title ?? L('Knesset seat diagram', 'תרשים מושבי הכנסת')}>
+      <svg ref={svgRef} viewBox={compact ? `40 40 920 450` : `-270 0 1540 ${H}`} role="img" aria-label={title ?? L('Knesset seat diagram', 'תרשים מושבי הכנסת')}>
         {seats.map((st, i) => {
           const p = pos[rtl ? pos.length - 1 - i : i]; if (!p) return null;
           const dim = selected && selected !== st.listId;
           return (
             <circle key={i} className={`seat ${dim ? 'dim' : ''}`} cx={cx + p.x * R} cy={cy + p.y * R} r={rad * R} fill={st.color}
-              stroke="var(--surface)" strokeWidth={2} tabIndex={compact ? -1 : 0}
+              stroke="var(--surface)" strokeWidth={2}
               aria-label={`${listLabel(listOf(st.listId), lang)}, ${L("seat", "מושב")} ${st.idx + 1}: ${listOf(st.listId).candidates[st.idx]?.nameHe ?? L("vacant", "ריק")}`}
               onMouseEnter={(e) => onSeat(st, e)} onMouseLeave={() => setHover(null)} onFocus={(e) => onSeat(st, e)} onBlur={() => setHover(null)}
               onClick={() => setState({ selectedListId: selected === st.listId ? null : st.listId })} />
@@ -114,7 +114,7 @@ export function Hemicycle({ s, r, compact = false, title }: { s: Scenario; r: Al
           const a = rtl ? Math.PI - g.a : g.a;
           return { id: g.id, n: g.n, a, text: `${listLabel(listOf(g.id), lang)} ${g.n}` };
         }), cx, cy, R).map((p) => (
-          <text key={p.id} x={p.x} y={p.y} textAnchor={p.anchor} dominantBaseline="middle" fontSize={p.n < 4 ? 15 : 17} fill="var(--ink)" fontWeight={600}>{isolate(p.text)}</text>
+          <text key={p.id} x={p.x} y={p.y} textAnchor={p.anchor} dominantBaseline="middle" fontSize={p.n < 4 ? 20 : 23} fill="var(--ink)" fontWeight={600}>{isolate(p.text)}</text>
         ))}
         <text x={cx} y={cy - 40} textAnchor="middle" fontSize={44} fontWeight={700} fill="var(--ink)">{r.seatsAllocated}</text>
         <text x={cx} y={cy - 6} textAnchor="middle" fontSize={16} fill="var(--ink-2)">{isolate(L(`seats · majority ${Math.floor(total / 2) + 1}`, `מנדטים · רוב ${Math.floor(total / 2) + 1}`))}</text>
@@ -138,7 +138,7 @@ export function Hemicycle({ s, r, compact = false, title }: { s: Scenario; r: Al
               const col = k % perRow, row = Math.floor(k / perRow);
               const x0 = 260 + col * (cell + gap);
               const x = rtl ? W - x0 - cell : x0;
-              return <rect key={k} className="seat" x={x} y={y0 + row * (cell + gap)} width={cell} height={cell} rx={3} fill={st.color} stroke="var(--surface)" strokeWidth={2}
+              return <rect key={k} className="seat" aria-label={`${listLabel(l, lang)}, ${L('seat', 'מושב')} ${k + 1}: ${l.candidates[k]?.nameHe ?? L('vacant', 'ריק')}`} x={x} y={y0 + row * (cell + gap)} width={cell} height={cell} rx={3} fill={st.color} stroke="var(--surface)" strokeWidth={2}
                 onMouseEnter={(e) => onSeat(st, e)} onMouseLeave={() => setHover(null)} onClick={() => setState({ selectedListId: l.id })} />;
             })}
           </g>
@@ -156,6 +156,15 @@ export function Hemicycle({ s, r, compact = false, title }: { s: Scenario; r: Al
           {cand ? <div><b>{cand.nameHe}</b> · {L('rank', 'מקום')} {hover.seat.idx + 1}</div> : <div className="down">{L('Vacant — the list has too few candidates', 'מושב ריק — אין די מועמדים ברשימה')}</div>}
           {cand?.partyHe && <div className="muted small">{L('Party: ', 'מפלגה: ')}{cand.partyHe}</div>}
           <div className="muted small">{hover.seat.remainder ? L('Seat won in the remainder stage (Bader–Ofer)', 'מנדט שהושג בחלוקת העודפים (בדר–עופר)') : L('Seat won by whole quota', 'מנדט שהושג במודד שלם')}</div>
+        </div>
+      )}
+      {!compact && (
+        <div className="legend" role="group" aria-label={L('Lists in the Knesset', 'הרשימות בכנסת')} style={{ marginTop: 6 }}>
+          {s.lists.map((l) => ({ l, n: r.lists.find((x) => x.id === l.id)?.seats ?? 0 })).filter((x) => x.n > 0).map(({ l, n }) => (
+            <button key={l.id} aria-pressed={selected === l.id} onClick={() => setState({ selectedListId: selected === l.id ? null : l.id })}>
+              <span className="swatch" style={{ background: l.color }} />{listLabel(l, lang)} <b className="tabnum">{n}</b>
+            </button>
+          ))}
         </div>
       )}
       {!compact && (

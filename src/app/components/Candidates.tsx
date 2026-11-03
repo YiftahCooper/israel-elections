@@ -25,10 +25,10 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
     <div>
       <div className="kv small" style={{ marginBottom: 8 }}>
         <span>{L('Registered candidates', 'מועמדים ברשימה')}</span><span>{c.length}</span>
-        <span>{L('Last elected', 'האחרון שנבחר')}</span><span>{lastIn ? `${seats}. ${lastIn.nameHe}` : '—'}</span>
-        <span>{L('Next in line', 'הבא בתור')}</span><span>{nextIn ? `${seats + 1}. ${nextIn.nameHe}` : L('none', 'אין')}</span>
+        <span>{L('Last elected', 'האחרון שנבחר')}</span><span>{lastIn ? <><bdi>{lastIn.nameHe}</bdi> <span className="muted">(#{seats})</span></> : '—'}</span>
+        <span>{L('Next in line', 'הבא בתור')}</span><span>{nextIn ? <><bdi>{nextIn.nameHe}</bdi> <span className="muted">(#{seats + 1})</span></> : L('none', 'אין')}</span>
       </div>
-      {baseCandidates && JSON.stringify(baseCandidates) !== JSON.stringify(c) && <button className="btn small" style={{ marginBottom: 6 }} onClick={() => commit(baseCandidates, 'reset')}>{L('Restore the registered candidate list', 'שחזור רשימת המועמדים הרשומה')}</button>}
+      {baseCandidates && JSON.stringify(baseCandidates) !== JSON.stringify(c) && <button className="btn small" style={{ marginBottom: 6 }} onClick={() => dispatch({ type: 'resetCandidates', listId: l.id })}>{L('Restore the registered candidate list', 'שחזור רשימת המועמדים הרשומה')}</button>}
       {seats > c.length && <p className="down small">{L(`The list has only ${c.length} candidates for ${seats} seats.`, `ברשימה רק ${c.length} מועמדים ל-${seats} מנדטים.`)}</p>}
       {c.length === 0 && <p className="muted small">{L('No candidates registered.', 'אין מועמדים רשומים.')}</p>}
       <ol className="cands" style={{ ['--c' as string]: l.color }} aria-label={L('Candidate list', 'רשימת המועמדים')}>

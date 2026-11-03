@@ -92,9 +92,10 @@ function runRemainderStage(units: WorkUnit[], remaining: number, o: StageOptions
     let winnerId = best.unitId;
     let tie: TieRecord | undefined;
     if (tied.length > 1) {
-      const key = `${o.stage}:${step}`;
-      const forced = o.lotteryWinners[key];
       const ids = tied.map((t) => t.unitId);
+      // keyed by the exact tied set, so a recorded outcome can never decide a different tie
+      const key = `${o.stage}:${step}:${[...ids].sort().join('|')}`;
+      const forced = o.lotteryWinners[key];
       winnerId = forced && ids.includes(forced) ? forced : ids[0];
       tie = { key, tiedUnitIds: ids, chosen: winnerId, forced: Boolean(forced && ids.includes(forced)) };
       o.ties.push(tie);
@@ -139,7 +140,8 @@ export function allocate(input: AllocationInput): AllocationResult {
   const warnings: EngineWarning[] = [];
   const ties: TieRecord[] = [];
   const lotteryWinners = input.lotteryWinners ?? {};
-  const totalValid = input.lists.reduce((s, l) => s + l.votes, 0n);
+  // ballots for a list that does not contest are not valid votes for the threshold base
+  const totalValid = input.lists.reduce((s, l) => s + (l.withdrawn ? 0n : l.votes), 0n);
   const thrVotes = thresholdVotes(rules.threshold, totalValid);
 
   const qualified = new Set(

@@ -13,9 +13,12 @@ export function useLocalities(id: ElectionId) {
   const [d, setD] = useState<LocalityDataset | null>(null);
   const [err, setErr] = useState<string | null>(null);
   useEffect(() => {
+    let live = true; // ignore a slower response for an election we have already left
+    setD(null); setErr(null);
     let p = locCache.get(id);
     if (!p) { p = fetch(`data/${id}-localities.json`).then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); }); locCache.set(id, p); }
-    p.then(setD, (e) => setErr(String(e)));
+    p.then((x) => live && setD(x), (e) => { locCache.delete(id); if (live) setErr(String(e)); });
+    return () => { live = false; };
   }, [id]);
   return { data: d, error: err };
 }
@@ -41,18 +44,24 @@ export function Turnout({ s }: { s: Scenario }) {
   const [inv, setInv] = useState('1');
   const [prefMode, setPrefMode] = useState<'group' | 'custom'>('custom');
   const [custom, setCustom] = useState<Record<string, string>>({});
-  const [groupPref, setGroupPref] = useState<number[] | null>(null);
+  // preferences are keyed by list id (never by position) and dropped when the lists change
+  const [groupPref, setGroupPref] = useState<Record<string, number> | null>(null);
+  const listKey = s.lists.map((l) => l.id).join('|');
+  useEffect(() => { setGroupPref(null); setBasis(''); setPrefMode('custom'); }, [listKey]);
   const [basis, setBasis] = useState<string>('');
   // locality preset
   const [presetLists, setPresetLists] = useState<string[]>([]);
   const [presetPct, setPresetPct] = useState('50');
 
-  const added = Math.max(0, Math.round((electorate * (Number(hyp) - Number(cur))) / 100));
-  const invalid = Math.round((added * Number(inv)) / 100);
+  const num = (t: string) => { const n = Number(String(t).replace('%', '').trim()); return t.trim() !== '' && Number.isFinite(n) ? n : NaN; };
+  const curN = num(cur), hypN = num(hyp), invN = num(inv);
+  const inputsOk = Number.isFinite(curN) && Number.isFinite(hypN) && Number.isFinite(invN) && curN >= 0 && hypN <= 100 && invN >= 0 && invN < 100;
+  const added = inputsOk ? Math.max(0, Math.round((electorate * (hypN - curN)) / 100)) : 0;
+  const invalid = Math.round((added * (inputsOk ? invN : 0)) / 100);
   const valid = added - invalid;
-  const weights = prefMode === 'group' && groupPref ? groupPref : s.lists.map((l) => Number(custom[l.id] ?? 0) || 0);
-  const alloc = useMemo(() => apportion(valid, weights), [valid, weights]);
+  const weights = s.lists.map((l) => (prefMode === 'group' && groupPref ? groupPref[l.id] ?? 0 : Math.max(0, num(custom[l.id] ?? '') || 0)));
   const wsum = weights.reduce((a, b) => a + b, 0);
+  const alloc = useMemo(() => (wsum > 0 && valid > 0 ? apportion(valid, weights) : weights.map(() => 0)), [valid, weights, wsum]);
 
   const buildFromLocalities = () => {
     if (!data) return;
@@ -61,10 +70,13 @@ export function Turnout({ s }: { s: Scenario }) {
     const rows = data.rows.filter((r) => r.code !== 9999 && r.valid > 0 && cols.reduce((t, k) => t + r.votes[k], 0) >= p * r.valid);
     const reg = rows.reduce((t, r) => t + r.registered, 0), cast = rows.reduce((t, r) => t + r.votesCast, 0), inval = rows.reduce((t, r) => t + r.invalid, 0);
     const sum = data.listIds.map((_, k) => rows.reduce((t, r) => t + r.votes[k], 0));
+    const curPct = (cast / Math.max(1, reg)) * 100;
     setElectorate(reg);
-    setCur(((cast / Math.max(1, reg)) * 100).toFixed(2));
+    setCur(curPct.toFixed(2));
+    setHyp(Math.min(100, curPct + 10).toFixed(2)); // a starting assumption the user can change
     setInv(((inval / Math.max(1, cast)) * 100).toFixed(2));
-    setGroupPref(mapToScenario(s, data.listIds, sum));
+    const mapped = mapToScenario(s, data.listIds, sum);
+    setGroupPref(Object.fromEntries(s.lists.map((l, i) => [l.id, mapped[i]])));
     setPrefMode('group');
     setBasis(L(`${rows.length} localities where ${presetLists.map((id) => listLabel(s.lists.find((l) => l.id === id)!, lang)).join(' + ')} received ≥ ${presetPct}% of valid votes`, `${rows.length} יישובים שבהם ${presetLists.map((id) => listLabel(s.lists.find((l) => l.id === id)!, lang)).join(' + ')} קיבלו ≥ ${presetPct}% מהקולות הכשרים`));
     if (!label) setLabel(L('Locality group', 'קבוצת יישובים'));
@@ -121,7 +133,8 @@ export function Turnout({ s }: { s: Scenario }) {
             </table>
           </div>
           <p className="small">{L(`Additional voters: ${fmtInt(added)} · invalid: ${fmtInt(invalid)} · valid: ${fmtInt(valid)}`, `מצביעים נוספים: ${fmtInt(added)} · פסולים: ${fmtInt(invalid)} · כשרים: ${fmtInt(valid)}`)}{prefMode === 'custom' && wsum > 0 && Math.abs(wsum - 100) > 0.01 ? L(` (shares sum to ${wsum}%; they are normalised)`, ` (סך החלקים ${wsum}%; מנורמל)`) : ''}</p>
-          {Number(hyp) < Number(cur) && <p className="small down">{L('Only turnout increases are modelled here; use the vote tools to remove votes.', 'כאן ממודלת רק עלייה בהצבעה; להסרת קולות השתמשו בכלי הקולות.')}</p>}
+          {!inputsOk && <p className="small down">{L('Enter turnout and invalid rates as numbers between 0 and 100.', 'הזינו שיעורי הצבעה ופסולים כמספרים בין 0 ל-100.')}</p>}
+          {inputsOk && hypN < curN && <p className="small down">{L('Only turnout increases are modelled here; use the vote tools to remove votes.', 'כאן ממודלת רק עלייה בהצבעה; להסרת קולות השתמשו בכלי הקולות.')}</p>}
           <button className="btn primary" disabled={valid <= 0 || wsum <= 0} onClick={() => dispatch({ type: 'addVoters', allocations: s.lists.map((l, i) => ({ listId: l.id, votes: alloc[i] ?? 0 })).filter((x) => x.votes > 0), invalid, label: label || 'turnout' })}>
             {L('Add these voters', 'הוספת המצביעים')}
           </button>

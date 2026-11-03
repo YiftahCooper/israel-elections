@@ -14,7 +14,7 @@ export function KeyStats({ s, r, ds, baseR }: { s: Scenario; r: AllocationResult
   const thrPct = s.rules.thresholdPct;
   const explore = useStore((st) => st.level === 'explore');
   const turnoutTile = (
-      <Tile k={L('Turnout', 'שיעור ההצבעה')} v={<span className="row" style={{ gap: 4 }}><DecimalInput value={s.registered ? (cast / s.registered) * 100 : 0} digits={2} width={86} label={L('Turnout %', 'שיעור הצבעה %')} onCommit={(p) => dispatch({ type: 'setTurnout', pct: p })} />%</span>} d={`${L('historical', 'בפועל')} ${fmtPct(ds.totals.votesCast, ds.totals.registered, digits)}`}>
+      <Tile k={L('Turnout', 'שיעור ההצבעה')} v={<span className="row" style={{ gap: 4 }}><DecimalInput value={s.registered ? (cast / s.registered) * 100 : 0} digits={2} width={86} label={L('Turnout %', 'שיעור הצבעה %')} onCommit={(p) => dispatch({ type: 'setTurnout', pct: p })} />%</span>} d={<>{L('historical', 'בפועל')} {fmtPct(ds.totals.votesCast, ds.totals.registered, digits)}{Math.abs(cast - ds.totals.votesCast) > 0 && s.registered === ds.totals.registered && <> · <button className="btn small ghost" style={{ padding: 0, minHeight: 0 }} onClick={() => dispatch({ type: 'setTurnout', pct: (ds.totals.votesCast / ds.totals.registered) * 100 })}>{L('restore', 'שחזור')}</button></>}</>}>
         <div>{L('Votes cast ÷ registered voters. Edit it to scale every list (and the invalid ballots) in proportion.', 'מצביעים ÷ בעלי זכות בחירה. עריכה משנה את כל הרשימות (והפסולים) באופן יחסי.')}</div>
       </Tile>);
   if (explore) return (

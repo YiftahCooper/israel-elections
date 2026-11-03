@@ -20,7 +20,13 @@ export function Info({ title, children, term }: { title?: string; children?: Rea
     <span className="info" ref={ref} onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
       <button type="button" aria-label={heading || 'info'} aria-expanded={open} aria-describedby={open ? id : undefined} onClick={() => setOpen((o) => !o)} onFocus={() => setOpen(true)} onBlur={() => setOpen(false)}>i</button>
       {open && (
-        <span className="pop" role="tooltip" id={id}>
+        <span className="pop" role="tooltip" id={id} ref={(el) => {
+          if (!el) return;
+          el.style.transform = '';
+          const r = el.getBoundingClientRect(); const vw = document.documentElement.clientWidth;
+          const dx = r.right > vw - 8 ? vw - 8 - r.right : r.left < 8 ? 8 - r.left : 0;
+          if (dx) el.style.transform = `translateX(${dx}px)`;
+        }}>
           {heading && <b>{heading}</b>}
           {g && <span>{lang === 'he' ? g.defHe : g.defEn}</span>}
           {children}
@@ -31,7 +37,8 @@ export function Info({ title, children, term }: { title?: string; children?: Rea
 }
 
 export function Slip({ letters, color, size }: { letters: string; color: string; size?: 'sm' | 'lg' }) {
-  return <span className={`slip ${size ?? ''}`} style={{ ['--c' as string]: color }} aria-label={`ballot letters ${letters}`} lang="he" dir="rtl">{letters || '—'}</span>;
+  const lang = useLang();
+  return <span className={`slip ${size ?? ''}`} style={{ ['--c' as string]: color }} aria-label={`${lang === 'he' ? 'אותיות הפתק' : 'ballot letters'} ${letters}`} lang="he" dir="rtl">{letters || '—'}</span>;
 }
 
 export function Seg<T extends string>({ value, options, onChange, label }: { value: T; options: { v: T; label: string }[]; onChange: (v: T) => void; label: string }) {
@@ -43,8 +50,8 @@ export function Seg<T extends string>({ value, options, onChange, label }: { val
 }
 
 export function Delta({ v, suffix = '' }: { v: number; suffix?: string }) {
-  if (v === 0) return <span className="muted">±0{suffix}</span>;
-  return <span className={v > 0 ? 'up' : 'down'}>{v > 0 ? '▲ +' : '▼ −'}{Math.abs(v).toLocaleString('en-US')}{suffix}</span>;
+  if (v === 0) return <span className="muted" dir="ltr" style={{ unicodeBidi: 'isolate' }}>±0{suffix}</span>;
+  return <span className={v > 0 ? 'up' : 'down'} dir="ltr" style={{ unicodeBidi: 'isolate' }}>{v > 0 ? '▲ +' : '▼ −'}{Math.abs(v).toLocaleString('en-US')}{suffix}</span>;
 }
 
 export function Tile({ k, v, d, term, children }: { k: string; v: ReactNode; d?: ReactNode; term?: string; children?: ReactNode }) {
@@ -62,8 +69,9 @@ export function NumberInput({ value, onCommit, label, width }: { value: number; 
   const L = useL();
   useEffect(() => setText(value.toLocaleString('en-US')), [value]);
   const commit = () => {
-    const n = Number(text.replace(/[,\s_]/g, ''));
-    if (Number.isSafeInteger(n) && n >= 0) { if (n !== value) onCommit(n); setText(n.toLocaleString('en-US')); }
+    const t = text.replace(/[,\s_]/g, '');
+    const n = Number(t);
+    if (t !== '' && /^\d+$/.test(t) && Number.isSafeInteger(n)) { if (n !== value) onCommit(n); setText(n.toLocaleString('en-US')); }
     else setText(value.toLocaleString('en-US'));
   };
   return (
@@ -116,4 +124,13 @@ export function VoteSlider({ l, hist, thr, onCommit }: { s?: unknown; l: { id: s
       </div>
     </div>
   );
+}
+
+/** Text field that applies on Enter or blur (one undo step per edit, not per keystroke). */
+export function TextField({ value, onCommit, label, placeholder }: { value: string; onCommit: (v: string) => void; label?: string; placeholder?: string }) {
+  const [text, setText] = useState(value);
+  useEffect(() => setText(value), [value]);
+  const commit = () => { if (text !== value) onCommit(text); };
+  return <input type="text" aria-label={label} placeholder={placeholder} value={text} onChange={(e) => setText(e.target.value)} onBlur={commit}
+    onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); if (e.key === 'Escape') setText(value); }} />;
 }

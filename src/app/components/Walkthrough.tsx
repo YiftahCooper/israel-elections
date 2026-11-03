@@ -13,6 +13,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
   const L = useL();
   const lang = useLang();
   const digits = useStore((st) => st.digits);
+  const advanced = useStore((st) => st.level === 'advanced');
   const steps: Step[] = useMemo(() => [
     { kind: 'threshold' }, { kind: 'quota' }, { kind: 'initial' },
     ...r.remainderSteps.map((st) => ({ kind: 'remainder' as const, st })),
@@ -35,12 +36,12 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
     return u ? u.memberIds.map((m) => listLabel(s.lists.find((x) => x.id === m)!, lang)).join(' + ') : id;
   };
   const step = steps[Math.min(i, steps.length - 1)];
-  const label = (st: Step, k: number) => st.kind === 'remainder' ? `${L('Seat', 'מנדט')} ${r.initialSeatsTotal + st.st.step}` : st.kind === 'internal' ? L('Pair split', 'חלוקה בצמד') : String(k + 1);
+  const label = (st: Step, k: number) => st.kind === 'remainder' ? `${L('Seat', 'מנדט')} ${r.initialSeatsTotal + st.st.step}` : st.kind === 'internal' ? `${L('Split', 'חלוקה')}: ${r.units.find((u) => u.id === st.unitId)?.memberIds.map((m) => listLabel(s.lists.find((x) => x.id === m)!, lang)).join('+') ?? ''}` : st.kind === 'final' ? L('Result', 'תוצאה') : String(k + 1);
 
   return (
     <div>
       <div className="row" style={{ marginBottom: 10 }}>
-        <button className="btn small" onClick={() => setI(0)} aria-label={L('First step', 'צעד ראשון')}>⏮</button>
+        <button className="btn small" onClick={() => setI(0)}>{L('Start', 'להתחלה')}</button>
         <button className="btn small" onClick={() => setI((x) => Math.max(0, x - 1))} disabled={i === 0}>{L('Previous', 'הקודם')}</button>
         <button className="btn small primary" onClick={() => { if (i >= steps.length - 1) setI(0); setPlaying((p) => !p); }}>{playing ? L('Pause', 'השהיה') : L('Play', 'הפעלה')}</button>
         <button className="btn small" onClick={() => setI((x) => Math.min(steps.length - 1, x + 1))} disabled={i >= steps.length - 1}>{L('Next', 'הבא')}</button>
@@ -69,13 +70,17 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
       {step.kind === 'initial' && (
         <div>
           <h4>3. {L('Seats by whole quota', 'מנדטים לפי מודד שלם')}</h4>
-          <ListTable s={s} r={r} rows={r.lists.filter((l) => l.qualified).sort((a, b) => Number(b.votes - a.votes))} cols={(l) => [fmtInt(l.votes), `${fmtRat({ num: l.votes * r.quota.den, den: r.quota.num }, 3)}`, String(l.initialSeats)]} heads={[L('Votes', 'קולות'), L('Votes ÷ quota', 'קולות ÷ מודד'), L('Seats', 'מנדטים')]} />
+          {r.quota.num === 0n
+            ? <p className="small ink2">{L('This method has no whole-quota stage: every seat is allocated one at a time in the next steps.', 'בשיטה זו אין שלב של מודד שלם: כל המושבים מחולקים אחד־אחד בצעדים הבאים.')}</p>
+            : <ListTable s={s} r={r} rows={r.lists.filter((l) => l.qualified).sort((a, b) => Number(b.votes - a.votes))} cols={(l) => [fmtInt(l.votes), `${fmtRat({ num: l.votes * r.quota.den, den: r.quota.num }, 3)}`, String(l.initialSeats)]} heads={[L('Votes', 'קולות'), L('Votes ÷ quota', 'קולות ÷ מודד'), L('Seats', 'מנדטים')]} />}
           <p>{L(`${r.initialSeatsTotal} seats allocated; ${r.remainderSeatsTotal} remain.`, `חולקו ${r.initialSeatsTotal} מנדטים; נותרו ${r.remainderSeatsTotal}.`)} <span className="muted small">{L('The number remaining depends on the fractions, so it differs between elections.', 'מספר הנותרים תלוי בשברים ולכן משתנה בין בחירות.')}</span></p>
         </div>
       )}
       {step.kind === 'remainder' && (
         <div>
-          <h4>{L(`Seat ${r.initialSeatsTotal + step.st.step}: highest votes ÷ (seats + 1)`, `מנדט ${r.initialSeatsTotal + step.st.step}: הגבוה ביותר בקולות ÷ (מנדטים + 1)`)} <Info term="baderofer" /></h4>
+          <h4>{s.rules.remainderMethod === 'sainte-lague' ? L(`Seat ${r.initialSeatsTotal + step.st.step}: highest votes ÷ (2 × seats + 1) (Sainte-Laguë)`, `מושב ${r.initialSeatsTotal + step.st.step}: הגבוה ביותר בקולות ÷ (2 × מנדטים + 1) (סנט-לגה)`)
+            : s.rules.remainderMethod === 'largest-remainder' ? L(`Seat ${r.initialSeatsTotal + step.st.step}: largest remainder (votes − quota × seats)`, `מושב ${r.initialSeatsTotal + step.st.step}: השארית הגדולה ביותר (קולות − מודד × מנדטים)`)
+            : L(`Seat ${r.initialSeatsTotal + step.st.step}: highest votes ÷ (seats + 1)`, `מנדט ${r.initialSeatsTotal + step.st.step}: הגבוה ביותר בקולות ÷ (מנדטים + 1)`)} {s.rules.remainderMethod === 'bader-ofer' && <Info term="baderofer" />}</h4>
           <p>{L('Awarded to', 'הוענק ל')} <b>{name(step.st.winnerUnitId)}</b>{r.units.find((u) => u.id === step.st.winnerUnitId)?.isAgreement ? L(' (a surplus-agreement pair; which partner gets it is decided in the pair split step)', ' (צמד בהסכם עודפים; איזו מהשותפות תקבל אותו נקבע בשלב החלוקה בצמד)') : ''}.</p>
           {step.st.tie && (
             <div className="callout small">
@@ -87,13 +92,13 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
           )}
           <div className="tablewrap" style={{ maxHeight: 360 }}>
             <table className="tbl">
-              <thead><tr><th>{L('List / pair', 'רשימה / צמד')}</th><th className="n">{L('Votes', 'קולות')}</th><th className="n">{L('Seats so far', 'מנדטים עד כה')}</th><th className="n">{L('Quotient', 'מודד')}</th><th className="n">{L('Exact', 'מדויק')}</th></tr></thead>
+              <thead><tr><th>{L('List / pair', 'רשימה / צמד')}</th><th className="n">{L('Votes', 'קולות')}</th><th className="n">{L('Seats so far', 'מנדטים עד כה')}</th><th className="n">{L('Quotient', 'מודד')}</th>{advanced && <th className="n">{L('Exact', 'מדויק')}</th>}</tr></thead>
               <tbody>
                 {step.st.quotients.filter((q) => q.votes > 0n).map((q) => (
                   <tr key={q.unitId} className={q.unitId === step.st.winnerUnitId ? 'win' : ''}>
                     <td>{name(q.unitId)}{q.capped ? <span className="chip" title={L('Section 81(d)(4)', 'סעיף 81(ד)(4)')}> {L('capped at half', 'מוגבל למחצית')}</span> : ''}</td>
                     <td className="n">{fmtInt(q.votes)}</td><td className="n">{q.seats}</td>
-                    <td className="n">{q.eligible ? fmtRat(q.value, 3) : '—'}</td><td className="n mono">{q.eligible ? `${fmtInt(q.votes)}/${q.seats + 1}` : ''}</td>
+                    <td className="n">{q.eligible ? fmtRat(q.value, 3) : '—'}</td>{advanced && <td className="n mono" dir="ltr">{q.eligible && s.rules.remainderMethod === 'bader-ofer' ? `${fmtInt(q.votes)}/${q.seats + 1}` : q.eligible && s.rules.remainderMethod === 'sainte-lague' ? `${fmtInt(q.votes)}/${2 * q.seats + 1}` : ''}</td>}
                   </tr>
                 ))}
               </tbody>

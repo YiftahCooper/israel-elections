@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { allocationOf, baselineOf, scenarioIssues } from './derive.ts';
 import { LangContext, useL } from './i18n.ts';
-import { openElection, readSharedFromHash, redo, setState, undo, useStore } from './store.ts';
+import { dispatch, openElection, readSharedFromHash, redo, setState, undo, useStore } from './store.ts';
 import { Charts } from './components/Charts.tsx';
 import { Compare } from './components/Compare.tsx';
 import { Hemicycle } from './components/Hemicycle.tsx';
@@ -14,6 +14,7 @@ import { Structure } from './components/Structure.tsx';
 import { TopBar } from './components/TopBar.tsx';
 import { Turnout } from './components/Turnout.tsx';
 import { Walkthrough } from './components/Walkthrough.tsx';
+import { ErrorBoundary } from './components/ErrorBoundary.tsx';
 import { WhatIf } from './components/WhatIf.tsx';
 import { Coalitions, SeatSecurity } from './components/SeatSecurity.tsx';
 
@@ -56,6 +57,7 @@ function Shell() {
   const lang = useStore((st) => st.lang);
   const level = useStore((st) => st.level);
   const [tabPick, setTab] = useState<Tab | null>(null);
+  const [introHidden, setIntroHidden] = useState(false);
 
   if (loadError) return <div className="banner err">{L('Could not load election data: ', 'טעינת הנתונים נכשלה: ')}{loadError}</div>;
   if (!s || !ds) return <div className="app"><TopBar s={null} r={null} ds={undefined} baseR={null} /><p style={{ padding: 20 }} className="muted">{L('Loading election data…', 'טוען נתוני בחירות…')}</p></div>;
@@ -90,30 +92,30 @@ function Shell() {
       <TopBar s={s} r={r} ds={ds} baseR={baseR} />
       <div>
         {ds.status.stage !== 'official-final' && <div className="banner warn" role="status">⚠ {lang === 'he' ? ds.status.noteHe : ds.status.noteEn}</div>}
-        {level === 'explore' && s.log.length === 0 && <div className="banner info" role="status">{L('Simple mode: click a party to change its votes, or open “What if…” below for ready-made scenarios. Switch to Advanced for every tool.', 'מצב פשוט: לחצו על מפלגה כדי לשנות את קולותיה, או פתחו "מה אילו…" למטה לתרחישים מוכנים. במצב מתקדם — כל הכלים.')}</div>}
-        {s.mode === 'experimental' && <div className="banner info" role="status">{L('Experimental rules: this is an alternative electoral system, not a legally possible Israeli result.', 'כללים ניסיוניים: זוהי שיטת בחירות חלופית ולא תוצאה אפשרית לפי החוק בישראל.')}</div>}
+        {level === 'explore' && !introHidden && <div className="banner info" role="status">{L('Simple mode: click a party to change its votes, or open “What if…” below for ready-made scenarios. Switch to Advanced for every tool.', 'מצב פשוט: לחצו על מפלגה כדי לשנות את קולותיה, או פתחו "מה אילו…" למטה לתרחישים מוכנים. במצב מתקדם — כל הכלים.')} <button className="btn small ghost" onClick={() => setIntroHidden(true)} aria-label={L('Dismiss', 'סגירה')}>✕</button></div>}
+        {s.mode === 'experimental' && <div className="banner info" role="status">{L('Experimental rules: this is an alternative electoral system, not a legally possible Israeli result.', 'כללים ניסיוניים: זוהי שיטת בחירות חלופית ולא תוצאה אפשרית לפי החוק בישראל.')} <button className="btn small" onClick={() => dispatch({ type: 'setMode', mode: 'historical' })}>{L('Back to the real rules', 'חזרה לכללים האמיתיים')}</button></div>}
         {notice && <div className="banner info" role="status">{notice} <button className="btn small ghost" onClick={() => setState({ notice: null })}>✕</button></div>}
         {issues.map((x, i) => <div key={i} className={`banner ${x.level === 'error' ? 'err' : 'warn'}`} role="alert">{lang === 'he' ? x.he : x.en}</div>)}
         {r.warnings.filter((w) => w.code !== 'internal-loss').map((w, i) => <div key={`w${i}`} className="banner warn" role="alert">{w.message}</div>)}
       </div>
       <main>
         <div className="main">
-          <PartyCards s={s} r={r} base={base} baseR={baseR} />
+          <ErrorBoundary label={L('Lists', 'רשימות')} resetKey={s}><PartyCards s={s} r={r} base={base} baseR={baseR} /></ErrorBoundary>
           <div className="col">
             <section className="panel">
-              <div className="body"><Hemicycle s={s} r={r} /></div>
+              <div className="body"><ErrorBoundary label={L('Chamber', 'המליאה')} resetKey={s}><Hemicycle s={s} r={r} /></ErrorBoundary></div>
             </section>
             <section className="panel"><div className="body"><BlocBar s={s} r={r} /></div></section>
             <KeyStats s={s} r={r} ds={ds} baseR={baseR} />
           </div>
-          <div className="col"><ListPanel s={s} r={r} ds={ds} base={base} baseR={baseR} /></div>
+          <div className="col" id="detail-col"><ErrorBoundary label={L('List details', 'פרטי רשימה')} resetKey={s}><ListPanel s={s} r={r} ds={ds} base={base} baseR={baseR} /></ErrorBoundary></div>
         </div>
         <div className="bottom">
           <section className="panel">
             <div className="tabs" role="tablist" aria-label={L('Analysis', 'ניתוח')}>
               {tabs.map((t) => <button key={t.id} role="tab" aria-selected={tab === t.id} onClick={() => setTab(t.id)}>{t.label}</button>)}
             </div>
-            <div className="body" role="tabpanel">
+            <div className="body" role="tabpanel"><ErrorBoundary label={all[tab]} resetKey={`${tab}|${s.id}|${s.log.length}`}>
               {tab === 'whatif' && <WhatIf ds={ds} />}
               {tab === 'coal' && <Coalitions s={s} r={r} />}
               {tab === 'security' && <SeatSecurity s={s} r={r} />}
@@ -121,18 +123,18 @@ function Shell() {
               {tab === 'compare' && <Compare s={s} r={r} base={base} ds={ds} />}
               {tab === 'charts' && <Charts s={s} r={r} />}
               {tab === 'structure' && <Structure s={s} r={r} base={base} />}
-              {tab === 'turnout' && <Turnout s={s} />}
+              {tab === 'turnout' && <Turnout key={s.electionId} s={s} />}
               {tab === 'sens' && <Sensitivity s={s} r={r} />}
               {tab === 'rules' && <Rules s={s} base={base} />}
               {tab === 'loc' && <Localities s={s} />}
               {tab === 'sources' && <Sources ds={ds} />}
               {tab === 'history' && <History s={s} r={r} ds={ds} />}
-            </div>
+            </ErrorBoundary></div>
           </section>
           <p className="small muted" style={{ marginTop: 10 }}>{L('Seat allocation is computed by deterministic code from official Central Elections Committee data. Not affiliated with the CEC or any party.', 'חלוקת המנדטים מחושבת בקוד דטרמיניסטי מנתוני ועדת הבחירות המרכזית. אין קשר לוועדת הבחירות או לאף מפלגה.')}</p>
         </div>
       </main>
-      {toast && <div className={`toast ${toast.kind}`} role={toast.kind === 'error' ? 'alert' : 'status'}>{toast.text}</div>}
+      {toast && <div className={`toast toast-${toast.kind}`} role={toast.kind === 'error' ? 'alert' : 'status'}>{toast.text}</div>}
     </div>
   );
 }

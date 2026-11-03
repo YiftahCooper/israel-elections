@@ -1,6 +1,6 @@
 // Pure scenario transitions. Each returns a new Scenario and never mutates its input.
 // Vote counts stay non-negative integers; every integer split uses exact largest-remainder rounding.
-import { historicalRules, type Action, type Scenario, type SimCandidate, type SimList } from './scenario.ts';
+import { historicalRules, type Action, type ActionContext, type Scenario, type SimCandidate, type SimList } from './scenario.ts';
 
 export class ActionError extends Error {
   readonly code: string;
@@ -55,8 +55,9 @@ function interleave<T>(arrays: T[][]): T[] {
   return out;
 }
 
-export function applyAction(s0: Scenario, action: Action, now = new Date().toISOString()): Scenario {
+export function applyAction(s0: Scenario, action: Action, now = new Date().toISOString(), ctx: ActionContext = {}): Scenario {
   let s: Scenario = s0;
+  const baseList = (id: string) => ctx.base?.lists.find((l) => l.id === id) ?? null;
   switch (action.type) {
     case 'setVotes':
       need(isWhole(action.votes), 'votes', 'Votes must be a whole number ≥ 0.');
@@ -80,6 +81,9 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       break;
     case 'redistribute': {
       need(isWhole(action.votes), 'votes', 'Votes must be a whole number ≥ 0.');
+      need(new Set(action.from).size === action.from.length, 'redistribute', 'A list appears twice among the sources.');
+      need(action.to.length > 0 && action.to.reduce((t, x) => t + Math.max(0, x.share), 0) > 0, 'redistribute', 'Choose at least one list to receive the votes.');
+      need(!action.to.some((t) => action.from.includes(t.listId)), 'redistribute', 'A list cannot both give and receive votes.');
       const sources = action.from.map((id) => listById(s, id));
       const pool = sources.reduce((t, l) => t + l.votes, 0);
       need(pool >= action.votes, 'transfer-exceeds', `The selected lists hold only ${pool.toLocaleString()} votes.`);
@@ -98,7 +102,9 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       break;
     }
     case 'merge': {
-      need(action.ids.length >= 2, 'merge-size', 'Select at least two lists to merge.');
+      need(new Set(action.ids).size === action.ids.length && action.ids.length >= 2, 'merge-size', 'Select at least two different lists to merge.');
+      need(!s.lists.some((l) => l.id === action.newId && !action.ids.includes(l.id)), 'duplicate-id', 'A list with that id already exists.');
+      need(Number.isFinite(action.retentionPct), 'retention', 'Retention must be a number.');
       need(action.retentionPct >= 0 && action.retentionPct <= 100, 'retention', 'Retention must be between 0% and 100%.');
       const parts = action.ids.map((id) => listById(s, id));
       const total = parts.reduce((t, l) => t + l.votes, 0);
@@ -122,6 +128,8 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
     case 'split': {
       const orig = listById(s, action.id);
       need(action.parts.length >= 2, 'split-size', 'A split needs at least two resulting lists.');
+      need(new Set(action.parts.map((p) => p.newId)).size === action.parts.length, 'duplicate-id', 'The new lists need different ids.');
+      need(!action.parts.some((p) => s.lists.some((l) => l.id === p.newId && l.id !== action.id)), 'duplicate-id', 'A list with that id already exists.');
       const sum = action.parts.reduce((t, p) => t + p.votes, 0);
       for (const p of action.parts) need(isWhole(p.votes), 'votes', 'Votes must be whole numbers ≥ 0.');
       need(sum <= orig.votes, 'split-exceeds', `The parts total ${sum.toLocaleString()} votes, more than the original ${orig.votes.toLocaleString()}.`);
@@ -150,9 +158,18 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       listById(s, action.listId);
       s = pruneAgreements({ ...s, lists: s.lists.filter((l) => l.id !== action.listId) });
       break;
-    case 'setWithdrawn':
-      s = replaceList(s, action.listId, (l) => ({ ...l, withdrawn: action.withdrawn }));
+    case 'setWithdrawn': {
+      // Ballots for a list that does not contest are invalid: its votes move to the invalid count and
+      // return if the list is reinstated.
+      const l = listById(s, action.listId);
+      if (action.withdrawn && !l.withdrawn) {
+        s = replaceList({ ...s, invalid: s.invalid + l.votes }, l.id, (x) => ({ ...x, withdrawn: true, heldVotes: x.votes, votes: 0 }));
+      } else if (!action.withdrawn && l.withdrawn) {
+        const back = Math.min(l.heldVotes ?? 0, s.invalid);
+        s = replaceList({ ...s, invalid: s.invalid - back }, l.id, (x) => ({ ...x, withdrawn: false, heldVotes: undefined, votes: x.votes + back }));
+      }
       break;
+    }
     case 'setListMeta':
       listById(s, action.listId);
       s = replaceList(s, action.listId, (l) => ({ ...l, ...action.patch }));
@@ -168,6 +185,8 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       s = { ...s, agreements: s.agreements.filter((a) => a.id !== action.id) };
       break;
     case 'candidates': {
+      listById(s, action.listId);
+      need(Array.isArray(action.candidates), 'candidates', 'Invalid candidate list.');
       const ids = new Set<string>();
       for (const c of action.candidates) { need(c.nameHe.trim().length > 0, 'candidate-name', 'Every candidate needs a name.'); need(!ids.has(c.id), 'candidate-dup', 'Duplicate candidate.'); ids.add(c.id); }
       s = replaceList(s, action.listId, (l) => ({ ...l, candidates: action.candidates as SimCandidate[] }));
@@ -206,10 +225,26 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       s = { ...s, lotteryWinners: lw };
       break;
     }
-    case 'resetList':
-      if (action.base) s = s.lists.some((l) => l.id === action.listId) ? replaceList(s, action.listId, () => action.base!) : { ...s, lists: [...s.lists, action.base] };
+    case 'resetList': {
+      const base = ctx.base ? baseList(action.listId) : action.base ?? null;
+      if (base) s = s.lists.some((l) => l.id === action.listId) ? replaceList(s, action.listId, () => base) : { ...s, lists: [...s.lists, base] };
       else s = pruneAgreements({ ...s, lists: s.lists.filter((l) => l.id !== action.listId) });
       break;
+    }
+    case 'resetVotes': {
+      const b = baseList(action.listId);
+      need(b, 'no-base', 'This list has no historical value to reset to.');
+      listById(s, action.listId);
+      s = replaceList(s, action.listId, (l) => ({ ...l, votes: b!.votes }));
+      break;
+    }
+    case 'resetCandidates': {
+      const b = baseList(action.listId);
+      need(b, 'no-base', 'This list has no historical candidate list.');
+      listById(s, action.listId);
+      s = replaceList(s, action.listId, (l) => ({ ...l, candidates: b!.candidates }));
+      break;
+    }
     case 'rename':
       s = { ...s, name: action.name };
       break;
@@ -224,14 +259,25 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       s = { ...s, invalid, lists: s.lists.map((l, i) => ({ ...l, votes: parts[i] })) };
       break;
     }
-    case 'restore':
+    case 'restore': {
+      const B = ctx.base;
       if (action.what === 'agreements') {
+        const src = B?.agreements ?? action.agreements;
+        need(src, 'no-base', 'Historical agreements are unavailable.');
         const ids = new Set(s.lists.map((l) => l.id));
-        s = { ...s, agreements: action.agreements.filter((a) => a.members.every((m) => ids.has(m))).map((a) => ({ ...a, members: [...a.members] })) };
-      } else if (action.what === 'totals') s = { ...s, registered: action.registered, invalid: action.invalid };
-      else if (action.what === 'blocs') s = { ...s, blocs: action.blocs, lists: s.lists.map((l) => (l.id in action.listBlocs ? { ...l, bloc: action.listBlocs[l.id] } : l)) };
-      else s = { ...s, lotteryWinners: {} };
+        s = { ...s, agreements: src!.filter((a) => a.members.every((m) => ids.has(m))).map((a) => ({ ...a, members: [...a.members] })) };
+      } else if (action.what === 'totals') {
+        const reg = B?.registered ?? action.registered, inv = B?.invalid ?? action.invalid;
+        need(reg !== undefined && inv !== undefined, 'no-base', 'Historical totals are unavailable.');
+        s = { ...s, registered: reg!, invalid: inv! };
+      } else if (action.what === 'blocs') {
+        const blocs = B?.blocs ?? action.blocs;
+        const listBlocs = B ? Object.fromEntries(B.lists.map((l) => [l.id, l.bloc])) : action.listBlocs;
+        need(blocs && listBlocs, 'no-base', 'Historical blocs are unavailable.');
+        s = { ...s, blocs: blocs!, lists: s.lists.map((l) => (l.id in listBlocs! ? { ...l, bloc: listBlocs![l.id] } : l)) };
+      } else s = { ...s, lotteryWinners: {} };
       break;
+    }
   }
   return { ...s, log: [...s0.log, { at: now, action }] };
 }

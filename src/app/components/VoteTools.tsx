@@ -4,7 +4,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import { toEngineInput, type Scenario, type SimList } from '../../model/scenario.ts';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, fmtPct } from '../format.ts';
+import { fmtInt, fmtPct, signed } from '../format.ts';
 import { dispatch, setState, toast, useStore, useVoteSource } from '../store.ts';
 import { deltaAction, maxGain, toVoteSource, type SourceChoice } from '../voteEdit.ts';
 import { Info, NumberInput } from './ui.tsx';
@@ -87,15 +87,15 @@ export function VoteTools({ s, r, l }: { s: Scenario; r: AllocationResult; l: Si
   return (
     <div>
       <div className="row" role="group" aria-label={L('Quick changes', 'שינויים מהירים')}>
-        {[-10000, -1000, -100, -1].map((d) => <button key={d} className="btn small" onClick={() => apply(d)} disabled={l.votes + d < 0}>−{fmtInt(-d)}</button>)}
-        {[1, 100, 1000, 10000].map((d) => <button key={d} className="btn small" onClick={() => apply(d)}>+{fmtInt(d)}</button>)}
+        {[-10000, -1000, -100, -1].map((d) => <button key={d} dir="ltr" className="btn small" onClick={() => apply(d)} disabled={l.votes + d < 0}>−{fmtInt(-d)}</button>)}
+        {[1, 100, 1000, 10000].map((d) => <button key={d} dir="ltr" className="btn small" onClick={() => apply(d)}>+{fmtInt(d)}</button>)}
       </div>
       {advanced && <div className="row" style={{ marginTop: 6 }}>
         <NumberInput value={custom} onCommit={setCustom} label={L('Custom amount', 'כמות מותאמת')} width={100} />
         <button className="btn small" onClick={() => apply(-custom)} disabled={l.votes < custom || custom === 0} aria-label={L('Subtract custom amount', 'הפחתת הכמות')}>−</button>
         <button className="btn small" onClick={() => apply(custom)} disabled={custom === 0} aria-label={L('Add custom amount', 'הוספת הכמות')}>+</button>
         <span className="muted small">{L('or by', 'או ב-')}</span>
-        {[-10, -5, 5, 10].map((p) => <button key={p} className="btn small" onClick={() => apply(Math.round((l.votes * p) / 100))} disabled={l.votes === 0}>{p > 0 ? '+' : '−'}{Math.abs(p)}%</button>)}
+        {[-10, -5, 5, 10].map((p) => <button key={p} dir="ltr" className="btn small" onClick={() => apply(Math.round((l.votes * p) / 100))} disabled={l.votes === 0}>{p > 0 ? '+' : '−'}{Math.abs(p)}%</button>)}
       </div>}
 
       <div className="section-title">{advanced ? L('Exact electoral boundaries', 'גבולות מדויקים') : L('How close is the next seat?', 'כמה רחוק המנדט הבא?')}</div>
@@ -112,9 +112,14 @@ export function VoteTools({ s, r, l }: { s: Scenario; r: AllocationResult; l: Si
           {shown.res.found && shown.res.votes !== null && (
             <>
               {shown.kind === 'lose'
-                ? <div><b>{fmtInt(shown.res.votes - 1n)}</b> {L('votes can be lost', 'קולות אפשר לאבד')} ({srcText(shown.src, false)}) {L('with no change; losing', 'ללא שינוי; באובדן')} <b>{fmtInt(shown.res.votes)}</b> {lr.seats > 0 ? L('costs a seat.', 'יאבד מנדט.') : L('drops below the threshold.', 'יורד מתחת לחסימה.')}</div>
+                ? <div><b>{fmtInt(shown.res.votes - 1n)}</b> {L('votes can be lost', 'קולות אפשר לאבד')} ({srcText(shown.src, false)}) {L('with no change; losing', 'ללא שינוי; באובדן')} <b>{fmtInt(shown.res.votes)}</b> {(() => {
+                  const after = shown.res.after!.lists.find((x) => x.id === l.id)!;
+                  if (!after.qualified) return lr.seats > 0 ? L(`drops below the threshold and loses all ${lr.seats} seats.`, `יורדת מתחת לאחוז החסימה ומאבדת את כל ${lr.seats} המנדטים.`) : L('drops below the threshold.', 'יורדת מתחת לאחוז החסימה.');
+                  const lost = lr.seats - after.seats;
+                  return lost > 1 ? L(`costs ${lost} seats.`, `יאבד ${lost} מנדטים.`) : L('costs a seat.', 'יאבד מנדט.');
+                })()}</div>
                 : <div><b>{fmtInt(shown.res.votes)}</b> {L('more votes', 'קולות נוספים')}, {srcText(shown.src, true)}. {L(`At ${fmtInt(shown.res.votes - 1n)} the result does not change.`, `ב-${fmtInt(shown.res.votes - 1n)} התוצאה אינה משתנה.`)}</div>}
-              {changes.length > 0 && <div style={{ marginTop: 4 }}>{L('Resulting seat changes: ', 'שינויי מנדטים: ')}{changes.map((c) => `${nameOf(c.id)} ${c.d > 0 ? '+' : '−'}${Math.abs(c.d)}`).join(' · ')}</div>}
+              {changes.length > 0 && <div style={{ marginTop: 4 }}>{L('Resulting seat changes: ', 'שינויי מנדטים: ')}{changes.map((c) => `${nameOf(c.id)} ${signed(c.d)}`).join(' · ')}</div>}
               {shown.res.nonMonotonic && <div style={{ marginTop: 4 }}>{L('Note: the outcome is not monotonic here (another list crosses the threshold along the way); this is the smallest count found.', 'שימו לב: התוצאה אינה מונוטונית כאן (רשימה אחרת חוצה את החסימה בדרך); זה המספר הקטן ביותר שנמצא.')}</div>}
               {shown.kind === 'gain' && <div className="muted" style={{ marginTop: 4 }}>{L('This depends on where the votes come from (the setting above): it is not the general quota, and other sources give other answers.', 'התשובה תלויה במקור הקולות (ההגדרה למעלה): אין זה המודד הכללי, ומקורות אחרים נותנים תשובות אחרות.')}</div>}
               <div className="row" style={{ marginTop: 6 }}>

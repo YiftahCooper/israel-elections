@@ -28,6 +28,8 @@ export interface SimList {
   bloc: string | null;
   votes: number;
   withdrawn: boolean;
+  /** votes set aside as invalid while the list is withdrawn (returned on reinstatement) */
+  heldVotes?: number;
   candidates: SimCandidate[];
   sponsorsHe: string;
 }
@@ -86,15 +88,22 @@ export type Action =
   | { type: 'setTotals'; registered?: number; invalid?: number }
   | { type: 'setBlocs'; blocs: BlocDef[] }
   | { type: 'setLottery'; key: string; winner: string | null }
-  | { type: 'resetList'; listId: string; base: SimList | null }
+  /** restores a list from the historical dataset (`base` is only a fallback for logs made before v2) */
+  | { type: 'resetList'; listId: string; base?: SimList | null }
+  | { type: 'resetVotes'; listId: string }
+  | { type: 'resetCandidates'; listId: string }
   | { type: 'rename'; name: string }
   /** sets votes cast to pct% of registered voters; every list and the invalid count scale in proportion */
   | { type: 'setTurnout'; pct: number }
   /** restores one part of the scenario to the given (historical) value */
-  | { type: 'restore'; what: 'agreements'; agreements: SimAgreement[] }
-  | { type: 'restore'; what: 'totals'; registered: number; invalid: number }
-  | { type: 'restore'; what: 'blocs'; blocs: BlocDef[]; listBlocs: Record<string, string | null> }
+  /** restores one part from the historical dataset (payload fields are fallbacks for old logs) */
+  | { type: 'restore'; what: 'agreements'; agreements?: SimAgreement[] }
+  | { type: 'restore'; what: 'totals'; registered?: number; invalid?: number }
+  | { type: 'restore'; what: 'blocs'; blocs?: BlocDef[]; listBlocs?: Record<string, string | null> }
   | { type: 'restore'; what: 'lottery' };
+
+/** What reset/restore actions resolve against: the historical scenario of the same dataset. */
+export interface ActionContext { base?: Scenario }
 
 export function historicalRules(ruleSetId: string): SimRules {
   if (ruleSetId !== ISRAEL_2014.id) throw new Error(`unknown rule set ${ruleSetId}`);
@@ -137,3 +146,45 @@ export function toEngineInput(s: Scenario): AllocationInput {
 
 export const validVotes = (s: Scenario) => s.lists.reduce((t, l) => t + l.votes, 0);
 export const votesCast = (s: Scenario) => validVotes(s) + s.invalid;
+
+/** Full structural validation of an imported scenario; returns a list of problems (empty = valid). */
+export function validateScenario(x: unknown): string[] {
+  const e: string[] = [];
+  const s = x as Partial<Scenario>;
+  const whole = (n: unknown) => typeof n === 'number' && Number.isSafeInteger(n) && n >= 0;
+  if (!s || typeof s !== 'object') return ['not an object'];
+  if (s.schema !== SCENARIO_SCHEMA) e.push('not a scenario file exported by this application');
+  if (s.electionId !== 'k25' && s.electionId !== 'k26') e.push(`unknown election "${String(s.electionId)}"`);
+  if (s.mode !== 'historical' && s.mode !== 'experimental') e.push('invalid mode');
+  const r = s.rules as SimRules | undefined;
+  if (!r) e.push('missing rules');
+  else {
+    if (!Number.isInteger(r.seats) || r.seats < 1 || r.seats > 1000) e.push('seats must be 1–1000');
+    try { const t = percentToRational(String(r.thresholdPct)); if (t.num > t.den) e.push('threshold above 100%'); } catch { e.push(`invalid threshold "${String(r.thresholdPct)}"`); }
+    if (r.quotaRounding !== 'floor' && r.quotaRounding !== 'exact') e.push('invalid quota rounding');
+    if (!['bader-ofer', 'largest-remainder', 'sainte-lague'].includes(r.remainderMethod)) e.push('invalid remainder method');
+    if (!Number.isInteger(r.maxAgreementSize) || r.maxAgreementSize < 2) e.push('invalid agreement size');
+    if (typeof r.majorityCap !== 'boolean' || typeof r.agreementRequiresAllQualify !== 'boolean') e.push('invalid rule flags');
+  }
+  if (!whole(s.registered) || !whole(s.invalid)) e.push('registered voters and invalid ballots must be whole numbers ≥ 0');
+  if (!Array.isArray(s.lists) || s.lists.length === 0) e.push('no lists');
+  else {
+    const ids = new Set<string>();
+    for (const l of s.lists) {
+      if (!l || typeof l.id !== 'string') { e.push('a list without an id'); continue; }
+      if (ids.has(l.id)) e.push(`duplicate list id ${l.id}`);
+      ids.add(l.id);
+      if (!whole(l.votes)) e.push(`invalid vote count for ${l.id}`);
+      if (typeof l.nameHe !== 'string' || typeof l.shortHe !== 'string' || typeof l.letters !== 'string' || typeof l.color !== 'string') e.push(`missing names or colour for ${l.id}`);
+      if (!Array.isArray(l.candidates) || l.candidates.some((c) => !c || typeof c.id !== 'string' || typeof c.nameHe !== 'string')) e.push(`invalid candidates for ${l.id}`);
+      if (!Array.isArray(l.originIds)) e.push(`missing origins for ${l.id}`);
+      if (typeof l.withdrawn !== 'boolean') e.push(`missing withdrawn flag for ${l.id}`);
+    }
+    if (!Array.isArray(s.agreements)) e.push('missing agreements');
+    else for (const a of s.agreements) if (!Array.isArray(a.members) || a.members.some((m) => !ids.has(m))) e.push(`agreement ${String(a.id)} refers to an unknown list`);
+  }
+  if (!Array.isArray(s.blocs)) e.push('missing blocs');
+  if (!s.lotteryWinners || typeof s.lotteryWinners !== 'object') e.push('missing lottery outcomes');
+  if (!Array.isArray(s.log)) e.push('missing change log');
+  return e;
+}

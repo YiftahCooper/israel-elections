@@ -8,7 +8,7 @@ import { GLOSSARY, useL, useLang, type Lang } from '../i18n.ts';
 import { fmtInt, fmtPct } from '../format.ts';
 import { dispatch, getState, redo, replay, setState, undo, useStore } from '../store.ts';
 import { useLocalities } from './Turnout.tsx';
-import { NumberInput } from './ui.tsx';
+import { NumberInput, TextField } from './ui.tsx';
 
 // ------------------------------------------------------------------ rules
 
@@ -43,7 +43,7 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
         <fieldset disabled={!exp} style={{ border: 0, padding: 0, margin: 0 }}>
           <div className="grid2">
             <label className="field">{L('Seats', 'מושבים')}<NumberInput value={s.rules.seats} onCommit={(n) => set({ seats: n })} label={L('Seats', 'מושבים')} /></label>
-            <label className="field">{L('Threshold %', 'אחוז חסימה %')}<input type="text" inputMode="decimal" defaultValue={s.rules.thresholdPct} key={s.rules.thresholdPct} onBlur={(e) => e.target.value !== s.rules.thresholdPct && set({ thresholdPct: e.target.value.trim() })} /></label>
+            <label className="field">{L('Threshold %', 'אחוז חסימה %')}<TextField value={s.rules.thresholdPct} label={L('Threshold %', 'אחוז חסימה %')} onCommit={(v) => set({ thresholdPct: v.trim().replace('%', '') })} /></label>
             <label className="field">{L('Remainder method', 'שיטת העודפים')}
               <select value={s.rules.remainderMethod} onChange={(e) => set({ remainderMethod: e.target.value as Scenario['rules']['remainderMethod'] })}>
                 <option value="bader-ofer">{L('Bader–Ofer (law since 1973)', 'בדר–עופר (החוק מאז 1973)')}</option>
@@ -64,7 +64,7 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
         <hr />
         <div className="row" style={{ justifyContent: 'space-between' }}>
           <h4>{L('Electorate', 'ציבור הבוחרים')}</h4>
-          {(s.registered !== base.registered || s.invalid !== base.invalid) && <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'totals', registered: base.registered, invalid: base.invalid })}>{L('Restore historical', 'שחזור הנתונים ההיסטוריים')}</button>}
+          {(s.registered !== base.registered || s.invalid !== base.invalid) && <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'totals' })}>{L('Restore historical', 'שחזור הנתונים ההיסטוריים')}</button>}
         </div>
         <div className="grid2">
           <label className="field">{L('Registered voters', 'בעלי זכות בחירה')}<NumberInput value={s.registered} onCommit={(n) => dispatch({ type: 'setTotals', registered: n })} label={L('Registered voters', 'בעלי זכות בחירה')} /></label>
@@ -74,7 +74,7 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
       <div>
         <div className="row" style={{ justifyContent: 'space-between' }}>
           <h4>{L('Blocs (your grouping)', 'גושים (החלוקה שלכם)')}</h4>
-          {(JSON.stringify(s.blocs) !== JSON.stringify(base.blocs) || s.lists.some((l) => base.lists.find((b) => b.id === l.id && b.bloc !== l.bloc))) && <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'blocs', blocs: base.blocs, listBlocs: Object.fromEntries(base.lists.map((b) => [b.id, b.bloc])) })}>{L('Restore default blocs', 'שחזור הגושים')}</button>}
+          {(JSON.stringify(s.blocs) !== JSON.stringify(base.blocs) || s.lists.some((l) => base.lists.find((b) => b.id === l.id && b.bloc !== l.bloc))) && <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'blocs' })}>{L('Restore default blocs', 'שחזור הגושים')}</button>}
         </div>
         <p className="small ink2">{L('Blocs are an editable convenience, not an official classification. Assign lists to blocs in each list’s panel (Advanced).', 'הגושים הם חלוקה נוחה הניתנת לעריכה ולא סיווג רשמי. שייכו רשימות לגושים בחלונית הרשימה (מתקדם).')}</p>
         {s.blocs.map((b, i) => (
@@ -131,7 +131,7 @@ export function Localities({ s }: { s: Scenario }) {
             const top = r.votes.map((v, k) => ({ v, k })).sort((a, b) => b.v - a.v);
             return (
               <Fragment key={r.code}>
-                <tr onClick={() => setOpen(open === r.code ? null : r.code)} style={{ cursor: 'pointer' }} className={open === r.code ? 'sel' : ''}>
+                <tr onClick={() => setOpen(open === r.code ? null : r.code)} style={{ cursor: 'pointer' }} className={open === r.code ? 'sel' : ''} tabIndex={0} aria-expanded={open === r.code} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setOpen(open === r.code ? null : r.code); } }}>
                   <td lang="he">{r.nameHe} <span className="muted tiny">{r.code}</span></td>
                   <td className="n">{r.registered ? fmtInt(r.registered) : '—'}</td><td className="n">{fmtInt(r.votesCast)}</td>
                   <td className="n">{r.registered ? fmtPct(r.votesCast, r.registered, 1) : '—'}</td><td className="n">{fmtInt(r.valid)}</td>
@@ -148,6 +148,8 @@ export function Localities({ s }: { s: Scenario }) {
           })}</tbody>
         </table>
       </div>
+      {rows.length === 0 && <p className="small">{L('No locality matches the search.', 'אין יישוב תואם לחיפוש.')}</p>}
+      {rows.length === 300 && <p className="small muted">{L('Showing the first 300 localities in this order; search to find others.', 'מוצגים 300 היישובים הראשונים לפי המיון; חפשו כדי למצוא אחרים.')}</p>}
       <p className="small muted">{L('Locality turnout excludes double-envelope votes (soldiers, patients, diplomats…), so it understates true turnout.', 'ההצבעה ביישוב אינה כוללת מעטפות חיצוניות ולכן נמוכה מההצבעה האמיתית.')}</p>
     </div>
   );
@@ -234,6 +236,8 @@ export function describe(a: Action, s: Scenario, lang: Lang): string {
     case 'setLottery': return he ? 'נבחרה תוצאת הגרלה' : 'Chose a lottery outcome';
     case 'resetList': return he ? `${n(a.listId)}: אופסה` : `${n(a.listId)}: reset`;
     case 'rename': return he ? `שם התרחיש: ${a.name}` : `Renamed to ${a.name}`;
+    case 'resetVotes': return he ? `${n(a.listId)}: הקולות אופסו` : `${n(a.listId)}: votes reset`;
+    case 'resetCandidates': return he ? `${n(a.listId)}: רשימת המועמדים שוחזרה` : `${n(a.listId)}: candidate list restored`;
     case 'setTurnout': return he ? `שיעור ההצבעה נקבע ל-${a.pct}%` : `Turnout set to ${a.pct}%`;
     case 'restore': return he ? ({ agreements: 'שוחזרו הסכמי העודפים', totals: 'שוחזרו בעלי זכות הבחירה והפסולים', blocs: 'שוחזרו הגושים', lottery: 'בוטלו תוצאות ההגרלה' } as const)[a.what] : ({ agreements: 'Restored the historical agreements', totals: 'Restored electorate and invalid ballots', blocs: 'Restored the default blocs', lottery: 'Cleared lottery outcomes' } as const)[a.what];
   }

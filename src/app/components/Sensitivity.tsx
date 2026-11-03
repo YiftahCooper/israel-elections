@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { goals, minimalChange, sweepThreshold, sweepVotes, type SweepSegment, type ThresholdSegment } from '../../engine/analysis.ts';
 import { percentToRational } from '../../engine/rational.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import { toEngineInput, type Scenario } from '../../model/scenario.ts';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, fmtRat } from '../format.ts';
+import { fmtInt, fmtRat, signed } from '../format.ts';
 import { dispatch, toast } from '../store.ts';
 import { NumberInput } from './ui.tsx';
 
@@ -24,13 +24,15 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
   const main = [...s.lists].sort((a, b) => b.votes - a.votes);
   const [id, setId] = useState(main[0]?.id ?? '');
   const l = s.lists.find((x) => x.id === id);
-  const [from, setFrom] = useState(0); const [to, setTo] = useState(0);
+  const thr0 = Number(r.thresholdVotes);
+  const range = (x: { votes: number } | undefined) => x ? [Math.max(0, Math.round(Math.min(x.votes * 0.7, thr0 * 0.9))), Math.round(Math.max(x.votes * 1.3, thr0 * 1.1))] : [0, 0];
+  const [from, setFrom] = useState(() => range(l)[0]); const [to, setTo] = useState(() => range(l)[1]);
   const [segs, setSegs] = useState<SweepSegment[] | null>(null);
+  useEffect(() => setSegs(null), [s]); // results describe the scenario they were computed on
   const pick = (nid: string) => {
     setId(nid); setSegs(null);
-    const x = s.lists.find((y) => y.id === nid)!;
-    const thr = Number(r.thresholdVotes);
-    setFrom(Math.max(0, Math.round(Math.min(x.votes * 0.7, thr * 0.9)))); setTo(Math.round(Math.max(x.votes * 1.3, thr * 1.1)));
+    const [a, b] = range(s.lists.find((y) => y.id === nid));
+    setFrom(a); setTo(b);
   };
   const name = (lid: string) => listLabel(s.lists.find((x) => x.id === lid)!, lang);
   const run = () => {
@@ -67,7 +69,7 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
               <tbody>{segs.map((sg, k) => (
                 <tr key={k}>
                   <td className="n">{fmtInt(sg.from)}</td><td className="n">{fmtInt(sg.to)}</td><td className="n"><b>{sg.seats[id] ?? 0}</b>{!sg.qualified.includes(id) ? <span className="muted"> ✕</span> : ''}</td>
-                  <td className="small">{Object.keys({ ...segs[0].seats, ...sg.seats }).filter((x) => x !== id && (sg.seats[x] ?? 0) !== (segs[0].seats[x] ?? 0)).map((x) => `${name(x)} ${(sg.seats[x] ?? 0) - (segs[0].seats[x] ?? 0) > 0 ? '+' : '−'}${Math.abs((sg.seats[x] ?? 0) - (segs[0].seats[x] ?? 0))}`).join(' · ')}</td>
+                  <td className="small">{Object.keys({ ...segs[0].seats, ...sg.seats }).filter((x) => x !== id && (sg.seats[x] ?? 0) !== (segs[0].seats[x] ?? 0)).map((x) => `${name(x)} ${signed((sg.seats[x] ?? 0) - (segs[0].seats[x] ?? 0))}`).join(' · ')}</td>
                 </tr>
               ))}</tbody>
             </table>
@@ -84,6 +86,7 @@ function ThresholdSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
   const lang = useLang();
   const [lo, setLo] = useState('1'); const [hi, setHi] = useState('5');
   const [segs, setSegs] = useState<ThresholdSegment[] | null>(null);
+  useEffect(() => setSegs(null), [s]);
   const name = (lid: string) => listLabel(s.lists.find((x) => x.id === lid)!, lang);
   const run = () => {
     try { setSegs(sweepThreshold(toEngineInput(s), percentToRational(lo.trim()), percentToRational(hi.trim()))); }
@@ -107,7 +110,7 @@ function ThresholdSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
               <tr key={k}>
                 <td className="n">{fmtRat({ num: sg.fromPct.num * 100n, den: sg.fromPct.den }, 4)}%</td><td className="n">{fmtRat({ num: sg.toPct.num * 100n, den: sg.toPct.den }, 4)}%</td>
                 <td className="n">{sg.qualified.length}</td>
-                <td className="small">{Object.keys({ ...current, ...sg.seats }).filter((x) => (sg.seats[x] ?? 0) !== (current[x] ?? 0)).map((x) => `${name(x)} ${(sg.seats[x] ?? 0) - (current[x] ?? 0) > 0 ? '+' : '−'}${Math.abs((sg.seats[x] ?? 0) - (current[x] ?? 0))}`).join(' · ') || L('same as current', 'כמו הנוכחית')}</td>
+                <td className="small">{Object.keys({ ...current, ...sg.seats }).filter((x) => (sg.seats[x] ?? 0) !== (current[x] ?? 0)).map((x) => `${name(x)} ${signed((sg.seats[x] ?? 0) - (current[x] ?? 0))}`).join(' · ') || L('same as current', 'כמו הנוכחית')}</td>
               </tr>
             ))}</tbody>
           </table>
@@ -122,6 +125,7 @@ function BlocFlip({ s, r }: { s: Scenario; r: AllocationResult }) {
   const lang = useLang();
   const [bloc, setBloc] = useState(s.blocs[0]?.id ?? '');
   const [res, setRes] = useState<{ from: string; to: string; votes: bigint; d: string } | null | 'none'>(null);
+  useEffect(() => setRes(null), [s]);
   const majority = Math.floor(s.rules.seats / 2) + 1;
   const members = s.lists.filter((l) => l.bloc === bloc).map((l) => l.id);
   const seats = members.reduce((t, id) => t + (r.lists.find((x) => x.id === id)?.seats ?? 0), 0);

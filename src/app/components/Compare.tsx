@@ -5,16 +5,18 @@ import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { allocationOf, electedOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, fmtPct, fmtRat, fmtSigned, isolate } from '../format.ts';
+import { fmtInt, fmtPct, fmtRat, fmtSigned, isolate, signed } from '../format.ts';
 import { replay, setState, useStore } from '../store.ts';
 import { Hemicycle } from './Hemicycle.tsx';
 
 export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; base: Scenario; ds: ElectionDataset }) {
   const L = useL();
   const lang = useLang();
-  const compareWith = useStore((st) => st.compareWith);
+  const compareWithRaw = useStore((st) => st.compareWith);
   const saved = useStore((st) => st.saved);
+  const compareWith = saved.some((x) => x.id === compareWithRaw && x.electionId === s.electionId && x.id !== s.id) ? compareWithRaw : 'historical';
   const digits = useStore((st) => st.digits);
+  const advanced = useStore((st) => st.level === 'advanced');
   const other = useMemo(() => {
     if (compareWith === 'historical') return base;
     const sv = saved.find((x) => x.id === compareWith && x.electionId === s.electionId);
@@ -63,7 +65,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
           <div>
             {gainers.length === 1 ? (
               <p style={{ margin: 0 }}>
-                <b>{gName(gainers[0].bIds, s)}</b> {gainers[0].seatsA === 0 ? L(`enters the Knesset with ${gainers[0].seatsB} seats`, `נכנסת לכנסת עם ${gainers[0].seatsB} מנדטים`) : L(`gains ${gainers[0].seatsB - gainers[0].seatsA} seats (${gainers[0].seatsA} → ${gainers[0].seatsB})`, `מוסיפה ${gainers[0].seatsB - gainers[0].seatsA} מנדטים (${gainers[0].seatsA} → ${gainers[0].seatsB})`)}.{' '}
+                <b>{gName(gainers[0].bIds, s)}</b> {gainers[0].seatsA === 0 ? L(`enters the Knesset with ${gainers[0].seatsB} seats`, `נכנסת לכנסת עם ${gainers[0].seatsB} מנדטים`) : L(`gains ${gainers[0].seatsB - gainers[0].seatsA} seat${gainers[0].seatsB - gainers[0].seatsA === 1 ? '' : 's'} (${gainers[0].seatsA} → ${gainers[0].seatsB})`, `מוסיפה ${gainers[0].seatsB - gainers[0].seatsA} מנדטים (${gainers[0].seatsA} → ${gainers[0].seatsB})`)}.{' '}
                 {L('The seats come from: ', 'המנדטים באים מ: ')}
                 {Object.entries(losers.reduce<Record<string, { n: number; names: string[] }>>((acc, g) => { const b = blocName(blocOf(g)); acc[b] ??= { n: 0, names: [] }; acc[b].n += g.seatsA - g.seatsB; acc[b].names.push(`${gName(g.aIds, a)} −${g.seatsA - g.seatsB}`); return acc; }, {}))
                   .map(([b, v]) => `${b}: ${v.n} (${v.names.join(', ')})`).join('; ')}.
@@ -75,7 +77,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
               </p>
             )}
             {s.blocs.length > 0 && <p className="small" style={{ margin: '6px 0 0' }}>{L('Blocs: ', 'גושים: ')}{s.blocs.map((b) => `${lang === 'he' ? b.nameHe : b.nameEn} ${ba[b.id]} → ${bb[b.id]}`).join(' · ')}</p>}
-            {indirect.length > 0 && <p className="small" style={{ margin: '6px 0 0' }}>{L('Indirect consequences (votes unchanged, seats changed by recalculation): ', 'השלכות עקיפות (הקולות לא השתנו, המנדטים השתנו בחישוב מחדש): ')}{indirect.map((g) => `${gName(g.bIds, s)} ${g.seatsB > g.seatsA ? '+' : '−'}${Math.abs(g.seatsB - g.seatsA)}`).join(', ')}</p>}
+            {indirect.length > 0 && <p className="small" style={{ margin: '6px 0 0' }}>{L('Indirect consequences (votes unchanged, seats changed by recalculation): ', 'השלכות עקיפות (הקולות לא השתנו, המנדטים השתנו בחישוב מחדש): ')}{indirect.map((g) => `${gName(g.bIds, s)} ${signed(g.seatsB - g.seatsA)}`).join(', ')}</p>}
           </div>
         )}
       </div>
@@ -98,6 +100,8 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
         <span>{L('Unrepresented votes', 'קולות שלא השתתפו')}</span><span>{fmtPct(ar.unrepresentedVotes, ar.totalValid, digits)} → {fmtPct(r.unrepresentedVotes, r.totalValid, digits)}</span>
       </div>
 
+      <details open={advanced}>
+      <summary className="small">{L('Full table of votes and seats', 'טבלה מלאה של קולות ומנדטים')}</summary>
       <div className="tablewrap">
         <table className="tbl">
           <thead><tr>
@@ -121,6 +125,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
           </tbody>
         </table>
       </div>
+      </details>
 
       <div className="grid2" style={{ marginTop: 12 }}>
         <div>
@@ -166,7 +171,7 @@ export function Slope({ groups, nameA, nameB, colorOf }: { groups: { key: string
             <circle cx={x1} cy={y(g.seatsA)} r={4} fill={c} stroke="var(--surface)" strokeWidth={2} />
             <circle cx={x2} cy={y(g.seatsB)} r={4} fill={c} stroke="var(--surface)" strokeWidth={2} />
             <text x={x1 - 8} y={ly.get(g.key)} textAnchor="end" dominantBaseline="middle" fill="var(--ink)">{isolate(`${g.label} ${g.seatsA}`)}</text>
-            <text x={x2 + 8} y={ry.get(g.key)} textAnchor="start" dominantBaseline="middle" fill="var(--ink)" fontWeight={changed ? 700 : 400}>{g.seatsB}{changed ? ` (${g.seatsB > g.seatsA ? '+' : '−'}${Math.abs(g.seatsB - g.seatsA)})` : ''}</text>
+            <text x={x2 + 8} y={ry.get(g.key)} textAnchor="start" dominantBaseline="middle" fill="var(--ink)" fontWeight={changed ? 700 : 400}>{g.seatsB}{changed ? ` (${signed(g.seatsB - g.seatsA)})` : ''}</text>
           </g>
         );
       })}

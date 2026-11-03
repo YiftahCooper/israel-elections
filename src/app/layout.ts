@@ -22,7 +22,8 @@ export function arcLayout(n: number): { seats: SeatPos[]; r: number } {
   });
   seats.sort((p, q) => q.a - p.a || Math.hypot(p.x, p.y) - Math.hypot(q.x, q.y));
   const rowGap = rows > 1 ? (1 - inner) / (rows - 1) : 0.3;
-  return { seats, r: Math.min(rowGap * 0.42, (Math.PI * inner) / Math.max(1, counts[0]) * 0.45) };
+  // seat radius: limited by row spacing, by spacing within the innermost row, and by an absolute cap
+  return { seats, r: Math.min(rowGap * 0.42, (Math.PI * inner) / Math.max(1, counts[0]) * 0.45, 0.07) };
 }
 
 /** Places one label per list outside the arc, pushing overlapping labels outwards. */
@@ -30,10 +31,10 @@ export function placeLabels(items: { id: string; n: number; a: number; text: str
   const placed: { id: string; n: number; text: string; x: number; y: number; anchor: 'start' | 'end' | 'middle'; box: [number, number, number, number] }[] = [];
   const sorted = [...items].sort((p, q) => Math.abs(Math.cos(p.a)) - Math.abs(Math.cos(q.a)));
   for (const it of sorted) {
-    const w = it.text.length * 8.6 + 6, h = 20;
+    const w = it.text.length * 11.5 + 8, h = 26;
     let placedOne = null as (typeof placed)[number] | null;
-    for (let k = 0; k < 8 && !placedOne; k++) {
-      const rr = R + 26 + k * 22;
+    for (let k = 0; k < 14 && !placedOne; k++) {
+      const rr = R + 30 + k * 26;
       const x = cx + Math.cos(it.a) * rr, y = cy - Math.sin(it.a) * rr;
       const anchor: 'start' | 'end' | 'middle' = Math.cos(it.a) > 0.25 ? 'start' : Math.cos(it.a) < -0.25 ? 'end' : 'middle';
       const x0 = anchor === 'start' ? x : anchor === 'end' ? x - w : x - w / 2;

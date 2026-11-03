@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { goals, minimalChange } from '../../engine/analysis.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import { toEngineInput, type Scenario } from '../../model/scenario.ts';
@@ -41,7 +41,7 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
   return (
     <div>
       <div className="row" style={{ marginBottom: 8, justifyContent: 'space-between' }}>
-        <p className="small ink2" style={{ margin: 0, maxWidth: 720 }}>{L('For each list: how many votes it could lose before losing a seat (left), and how many more it needs for one more seat (right). Short bars are knife-edge seats.', 'לכל רשימה: כמה קולות היא יכולה לאבד לפני שתאבד מנדט (שמאל), וכמה קולות נוספים היא צריכה למנדט נוסף (ימין). פסים קצרים = מנדטים על חוט השערה.')}
+        <p className="small ink2" style={{ margin: 0, maxWidth: 720 }}>{L('For each list: how many votes it could lose before losing a seat (left column), and how many more it needs for one more seat (right column). Short bars are knife-edge seats.', 'לכל רשימה: כמה קולות היא יכולה לאבד בלי לאבד מנדט (העמודה הימנית), וכמה קולות נוספים היא צריכה למנדט נוסף (העמודה השמאלית). פסים קצרים = מנדטים על חוט השערה.')}
           <Info title={L('How this is computed', 'איך זה מחושב')}>{L('Each figure is the exact minimum found by recomputing the whole election vote by vote, with votes moved as selected. Bars use a square-root scale so small margins stay visible; the numbers are exact.', 'כל מספר הוא המינימום המדויק שנמצא בחישוב מחדש של כל הבחירות, עם הקולות מועברים לפי הבחירה. הפסים בסקאלת שורש כדי שמרווחים קטנים ייראו; המספרים מדויקים.')}</Info>
         </p>
         <Seg label={L('Votes move', 'הקולות עוברים')} value={kind} onChange={setKind} options={[{ v: 'proportional', label: L('between lists', 'בין רשימות') }, { v: 'new', label: L('new / staying home', 'חדשים / נמנעים') }]} />
@@ -52,7 +52,7 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
         </div>
       )}
       <div className="security" role="table" aria-label={L('Seat security', 'ביטחון המנדטים')}>
-        <div className="sec-row head" role="row"><span role="columnheader">{L('List', 'רשימה')}</span><span role="columnheader" className="sec-l">{L('can lose before −1 seat', 'אפשר לאבד עד −1')}</span><span role="columnheader">{L('Seats', 'מנדטים')}</span><span role="columnheader">{L('needs for +1 seat', 'צריכה ל-+1')}</span></div>
+        <div className="sec-row head" role="row"><span role="columnheader">{L('List', 'רשימה')}</span><span role="columnheader" className="sec-l">{L('can lose without losing a seat', 'אפשר לאבד בלי לאבד מנדט')}</span><span role="columnheader">{L('Seats', 'מנדטים')}</span><span role="columnheader">{L('needs for one more seat', 'חסר למנדט נוסף')}</span></div>
         {rows.map((x) => {
           const l = s.lists.find((y) => y.id === x.id)!;
           return (
@@ -82,7 +82,14 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
   const majority = Math.floor(s.rules.seats / 2) + 1;
   const [picked, setPicked] = useState<string[]>([]);
   const [excluded, setExcluded] = useState<string[]>([]);
+  // a list that has lost its seats (after an edit) can no longer be part of a coalition
+  useEffect(() => {
+    const ids = new Set(seated.map((x) => x.l.id));
+    if (picked.some((p) => !ids.has(p))) setPicked(picked.filter((p) => ids.has(p)));
+    if (excluded.some((p) => !ids.has(p))) setExcluded(excluded.filter((p) => ids.has(p)));
+  }, [seated, picked, excluded]);
   const pickedSeats = seated.filter((x) => picked.includes(x.l.id)).reduce((t, x) => t + x.n, 0);
+  const tooMany = seated.filter((x) => !excluded.includes(x.l.id)).length > 18;
   const minimal = useMemo(() => {
     const items = seated.filter((x) => !excluded.includes(x.l.id));
     const out: { ids: string[]; n: number }[] = [];
@@ -121,6 +128,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
       <p><b className="tabnum" style={{ fontSize: 20 }}>{pickedSeats}</b> / {s.rules.seats} {pickedSeats >= majority ? <span className="chip ok">{L('majority', 'רוב')}</span> : <span className="muted">{L(`${majority - pickedSeats} short of ${majority}`, `חסרים ${majority - pickedSeats} ל-${majority}`)}</span>}</p>
       <h4>{L(`Minimal winning coalitions${picked.length ? ' containing your selection' : ''} (${minimal.length})`, `קואליציות מנצחות מינימליות${picked.length ? ' הכוללות את הבחירה' : ''} (${minimal.length})`)}</h4>
       <p className="small muted" style={{ marginTop: 0 }}>{L('Minimal: removing any one member would lose the majority.', 'מינימלית: הוצאת כל אחת מהחברות תבטל את הרוב.')}</p>
+      {tooMany && <p className="small">{L('More than 18 lists hold seats: rule some out to list the minimal coalitions.', 'יותר מ-18 רשימות במליאה: פסלו חלק כדי לראות את הקואליציות המינימליות.')}</p>}
       <ul className="small" style={{ columns: 2, paddingInlineStart: 18 }}>
         {minimal.slice(0, 40).map((c) => <li key={c.ids.join()} style={{ breakInside: 'avoid', marginBottom: 3 }}><b className="tabnum">{c.n}</b> · {c.ids.map(nm).join(' + ')}</li>)}
       </ul>

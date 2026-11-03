@@ -46,7 +46,12 @@ export function PartyCards({ s, r, base, baseR }: { s: Scenario; r: AllocationRe
           const agr = r.agreements.find((a) => a.members.includes(l.id));
           const partner = agr ? s.lists.find((x) => x.id === agr.members.find((m) => m !== l.id)) : null;
           return (
-            <button key={l.id} className={`card ${lr.qualified ? '' : 'out'}`} aria-pressed={selected === l.id} onClick={() => setState({ selectedListId: selected === l.id ? null : l.id })}>
+            <button key={l.id} className={`card ${lr.qualified ? '' : 'out'}`} aria-pressed={selected === l.id} onClick={() => {
+              const next = selected === l.id ? null : l.id;
+              setState({ selectedListId: next });
+              // on narrow screens the details panel is elsewhere on the page: bring it into view
+              if (next && window.innerWidth <= 1180) requestAnimationFrame(() => document.getElementById('detail-col')?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+            }}>
               <Slip letters={l.letters} color={l.color} />
               <div style={{ minWidth: 0 }}>
                 <div className="name" title={l.nameHe}>{listLabel(l, lang)}</div>
@@ -55,10 +60,10 @@ export function PartyCards({ s, r, base, baseR }: { s: Scenario; r: AllocationRe
                   <span className="tabnum">{fmtPct(l.votes, total, digits)}</span>
                   {l.withdrawn ? <span className="chip no">{L('Withdrew', 'פרשה')}</span>
                     : lr.qualified ? null : <span className="chip no">{L('Below threshold', 'מתחת לאחוז החסימה')}</span>}
-                  {partner && <span className={`chip ${agr!.active ? 'ok' : ''}`} title={L('Surplus-vote agreement', 'הסכם עודפים')}>⇄ {listLabel(partner, lang)}{agr!.active ? '' : ' ✕'}</span>}
+                  {partner && <span className={`chip ${agr!.active ? 'ok' : ''}`} title={agr!.active ? L('Surplus-vote agreement (active)', 'הסכם עודפים (בתוקף)') : L('Surplus-vote agreement with no effect', 'הסכם עודפים ללא השפעה')}>⇄ {listLabel(partner, lang)}{agr!.active ? '' : ' ✕'}</span>}
                 </div>
               </div>
-              <div className="seats">{lr.seats}<small>{d === 0 ? <span className="muted">±0</span> : <span className={d > 0 ? 'up' : 'down'}>{d > 0 ? `+${d}` : `−${-d}`}</span>}</small></div>
+              <div className="seats">{lr.seats}<small dir="ltr">{d === 0 ? <span className="muted">±0</span> : <span className={d > 0 ? 'up' : 'down'}>{d > 0 ? `+${d}` : `−${-d}`}</span>}</small></div>
             </button>
           );
         })}

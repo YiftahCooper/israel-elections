@@ -34,14 +34,14 @@ export interface AllocationInput {
   rules: RuleSet;
   lists: ListInput[];
   agreements: AgreementInput[];
-  /** forced lottery outcomes, keyed by `${stage}:${step}` (see TieRecord.key) */
+  /** forced lottery outcomes, keyed by TieRecord.key (stage, step and the exact tied set) */
   lotteryWinners?: Record<string, string>;
 }
 
 export interface Quotient { unitId: string; votes: bigint; seats: number; value: Rational; eligible: boolean; capped?: boolean }
 
 export interface TieRecord {
-  key: string; // `${stage}:${step}`
+  key: string; // `${stage}:${step}:${sorted tied ids joined by |}`
   tiedUnitIds: string[];
   chosen: string;
   forced: boolean; // true when the user/data supplied the lottery outcome

@@ -5,7 +5,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { parseK25Gazette } from './lib/parse-k25-gazette.ts';
-import { pdfLines } from './lib/pdf-text.ts';
+import { joinItems, pdfLines } from './lib/pdf-text.ts';
 import { BLOCS, META, neutralColor } from './lib/list-meta.ts';
 import type { AgreementRecord, Candidate, ElectionDataset, ListRecord, LocalityDataset } from '../src/data/schema.ts';
 import { DATASET_SCHEMA_VERSION } from '../src/data/schema.ts';
@@ -151,9 +151,15 @@ async function buildK25() {
 // ================================================================ 26th Knesset (2026)
 interface PageList { url: string; nameHe: string; letters: string; sponsors: string[]; candidates: { rank: number; name: string; party?: string }[]; notes: string[]; updated: string }
 
+// Official note paragraphs on the CEC list pages: resignations, disqualifications, court rulings, withdrawal.
+const NOTE_RE = /התפטר|מנוע|אינה מתמודדת|בית המשפט|לא נכלל|נמחק|הוועדה|סעיף 62|הוחלף/;
+const unrecognised: string[] = [];
+
 function parseGovilPages(): PageList[] {
   const d = JSON.parse(readFileSync(join(RAW, 'k26/govil-list-pages.exa.json'), 'utf8')) as { text: string }[];
-  const all = d.map((x) => x.text).join('');
+  // The capture service appends "Error fetching <url>: …" for pages it could not render; split those off
+  // so they cannot be mistaken for content of the preceding page (they are covered by the fallback).
+  const all = d.map((x) => x.text).join('').replace(/\n*Error fetching (\S+): [A-Z_]+\s*/g, '\n');
   const pages = all.split(/\n(?=# [^\n]*\nURL: )/);
   const out: PageList[] = [];
   for (const p of pages) {
@@ -174,7 +180,10 @@ function parseGovilPages(): PageList[] {
       if (l.startsWith('|')) {
         for (const cell of l.split('|').map((c) => c.trim())) {
           const m = cell.match(/^(\d+)\.\s*(.+)$/);
-          if (m) candidates.push({ rank: Number(m[1]), name: m[2].trim() });
+          if (!m) continue;
+          // some pages put the sponsoring party in the cell: "<name> מטעם מפלגת <party>"
+          const [name, party] = m[2].split(/\s+מטעם\s+/);
+          candidates.push({ rank: Number(m[1]), name: name.trim(), party: party ? party.replace(/^מפלגת\s+/, '').trim() : undefined });
         }
         continue;
       }
@@ -187,7 +196,9 @@ function parseGovilPages(): PageList[] {
         continue;
       }
       if (/^מטעם /.test(l) || /^סוג: /.test(l) || /^### /.test(l)) continue;
-      notes.push(l);
+      // a failed capture of the NEXT page can leak into this one: never publish it as a note
+      assert(!/Error fetching|CRAWL_|LIVECRAWL/i.test(l), `k26 capture error inside ${url}: ${l}`);
+      if (NOTE_RE.test(l)) notes.push(l); else unrecognised.push(`${url}: ${l.slice(0, 80)}`);
     }
     out.push({ url, nameHe, letters: ballot?.[1] ?? '', sponsors, candidates, notes, updated });
   }
@@ -262,6 +273,7 @@ async function buildK26() {
     const withdrawn = L === 'כן' || L === 'צבי';
     if (L === 'כן') notes.push('ועדת הבחירות המרכזית: "הרשימה אינה מתמודדת בבחירות לכנסת ה-26".');
     cands.sort((a, b) => a.rank - b.rank);
+    assert(!cands.some((c) => /מטעם|\|/.test(c.name)), `k26 ${L}: a candidate name still contains party text or table syntax`);
     assert(cands.every((c, k) => c.rank === k + 1), `k26 ${L}: ranks not contiguous (${cands.map((c) => c.rank).join(',')})`);
     if (!withdrawn) assert(cands.length > 0, `k26 ${L}: no candidates`);
     const singleSponsor = sponsors.length === 1 ? sponsors[0] : undefined;
@@ -272,13 +284,27 @@ async function buildK26() {
     }, i);
   });
 
-  // agreements: Yalkut HaPirsumim 15045, p. 1098 (verified against the PDF text)
-  const gz = (await pdfLines(join(RAW, 'k26/yp15045-surplus.pdf'))).flat().map((l) => l.text).join('\n');
-  const pairs: [string, string][] = [['רק', 'ל'], ['ודם', 'עם'], ['ט', 'מחל'], ['ג', 'שס'], ['אמת', 'דרך']];
-  for (const [a, b] of pairs) {
-    assert(gz.includes(`- ${a}`) || gz.includes(`- ${a};`), `k26 agreement letter ${a} not found in gazette`);
-    assert(gz.includes(`- ${b}`), `k26 agreement letter ${b} not found in gazette`);
+  // agreements: Yalkut HaPirsumim 15045, p. 1098. The notice sits in the right-hand column of page 4;
+  // each numbered item reads "(n) <list> - <letters> / עם / <list> - <letters>;". Pairs are parsed
+  // from the gazette itself, and must name existing ballot letters.
+  const page4 = (await pdfLines(join(RAW, 'k26/yp15045-surplus.pdf')))[3];
+  const col = page4.map((l) => joinItems(l.items.filter((i) => i.x >= 240))).filter(Boolean).join('\n');
+  const nStart = col.indexOf('הודעה בדבר התקשרות');
+  const notice = col.slice(nStart, col.indexOf('ז\' בחשוון התשפ"ז', nStart));
+  assert(nStart >= 0 && notice.length > 100, 'k26 agreements: notice not found in gazette page 4');
+  const items = notice.split(/\n?\((\d+)\)\s*/).slice(1);
+  const pairs: [string, string][] = [];
+  for (let k = 0; k < items.length; k += 2) {
+    const body = items[k + 1];
+    const parts = body.split(/\nעם\n/);
+    assert(parts.length === 2, `k26 agreement item (${items[k]}) does not have exactly two parties: ${body}`);
+    const letter = (p: string) => p.replace(/\s+/g, ' ').trim().match(/-\s*([\u0590-\u05FF]+)\s*[;.]?$/)?.[1];
+    const [a, b] = parts.map(letter);
+    assert(a && b && letters.includes(a) && letters.includes(b), `k26 agreement item (${items[k]}): letters not recognised (${a}, ${b})`);
+    pairs.push([a!, b!]);
   }
+  assert(pairs.length >= 1 && pairs.every((_, i) => Number(items[i * 2]) === i + 1), 'k26 agreements: numbering not contiguous');
+  assert(new Set(pairs.flat()).size === pairs.length * 2, 'k26 agreements: a list appears in two agreements');
   const agreements: AgreementRecord[] = pairs.map(([a, b], i) => ({ id: `26-agr-${i + 1}`, members: [`26-${a}`, `26-${b}`], sourceId: 'k26-surplus-gazette' }));
 
   const env = locRows.find((r) => r.code === 9999);
@@ -312,5 +338,6 @@ for (const build of [buildK25, buildK26]) {
   const cands = ds.lists.reduce((s, l) => s + l.candidates.length, 0);
   console.log(`${ds.id}: ${ds.lists.length} lists, ${cands} candidates, ${ds.agreements.length} agreements, valid ${ds.totals.valid}, ${loc.rows.length} locality rows`);
 }
+if (unrecognised.length) console.warn(`k26: ${unrecognised.length} unrecognised line(s) on list pages were not published as notes:\n  ${unrecognised.join('\n  ')}`);
 const sourcesOut = sources.map(({ id, ...rest }) => ({ id, ...rest }));
 writeFileSync(join(OUT, 'sources.json'), JSON.stringify(sourcesOut, null, 1));

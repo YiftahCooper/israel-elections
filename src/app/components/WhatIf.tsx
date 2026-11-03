@@ -9,14 +9,14 @@ import { applyAction } from '../../model/actions.ts';
 import { scenarioFromDataset, toEngineInput, type Action, type Scenario } from '../../model/scenario.ts';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt } from '../format.ts';
+import { fmtInt, signed } from '../format.ts';
 import { getState, setState } from '../store.ts';
 
 interface Preset { id: string; titleEn: string; titleHe: string; bodyEn: string; bodyHe: string; actions: (s: Scenario) => Action[] | null }
 
 const has = (s: Scenario, ...ids: string[]) => ids.every((id) => s.lists.some((l) => l.id === id));
 const agreementWith = (s: Scenario, id: string) => s.agreements.find((a) => a.members.includes(id));
-const name = (s: Scenario, id: string) => s.lists.find((l) => l.id === id)?.shortHe ?? id;
+
 
 /** minimal transfer/new votes for `id` to pass the threshold, as an action */
 function toPass(s: Scenario, id: string, from?: string): Action[] | null {
@@ -27,8 +27,9 @@ function toPass(s: Scenario, id: string, from?: string): Action[] | null {
   return [from ? { type: 'transfer', from, to: id, votes: k } : { type: 'setVotes', listId: id, votes: s.lists.find((l) => l.id === id)!.votes + k }];
 }
 
-const merge = (s: Scenario, ids: string[], nameHe: string, letters: string, color: string): Action[] | null =>
-  has(s, ...ids) ? [{ type: 'merge', ids, newId: `sim-${ids.join('+')}`, nameHe, letters, color, retentionPct: 100, candidateOrder: 'interleave', nonRetained: 'abstain' }] : null;
+const merge = (s: Scenario, ids: string[], nameHe: string, letters: string, color: string, nameEn?: string): Action[] | null =>
+  has(s, ...ids) ? [{ type: 'merge', ids, newId: `sim-${ids.join('+')}`, nameHe, letters, color, retentionPct: 100, candidateOrder: 'interleave', nonRetained: 'abstain' },
+    ...(nameEn ? [{ type: 'setListMeta', listId: `sim-${ids.join('+')}`, patch: { shortEn: nameEn } } as Action] : [])] : null;
 
 const COMMON: Preset[] = [
   { id: 'no-agreements', titleEn: 'No surplus agreements at all', titleHe: 'בלי הסכמי עודפים בכלל', bodyEn: 'Every list competes alone for the remainder seats.', bodyHe: 'כל רשימה מתחרה לבדה על המנדטים העודפים.', actions: (s) => s.agreements.map((a) => ({ type: 'removeAgreement', id: a.id })) },
@@ -39,9 +40,9 @@ const COMMON: Preset[] = [
 
 const K25: Preset[] = [
   { id: 'meretz-in', titleEn: 'Meretz passes the threshold', titleHe: 'מרצ עוברת את אחוז החסימה', bodyEn: 'The smallest number of Labor voters switching to Meretz that gets it in.', bodyHe: 'המספר הקטן ביותר של מצביעי העבודה שעוברים למרצ ומכניסים אותה.', actions: (s) => (has(s, '25-מרצ', '25-אמת') ? toPass(s, '25-מרצ', '25-אמת') : null) },
-  { id: 'labor-meretz', titleEn: 'Labor and Meretz run together', titleHe: 'העבודה ומרצ רצות יחד', bodyEn: 'One joint list keeping every vote of both.', bodyHe: 'רשימה משותפת אחת ששומרת על כל הקולות של שתיהן.', actions: (s) => merge(s, ['25-אמת', '25-מרצ'], 'העבודה–מרצ', 'אמת', '#eb6834') },
+  { id: 'labor-meretz', titleEn: 'Labor and Meretz run together', titleHe: 'העבודה ומרצ רצות יחד', bodyEn: 'One joint list keeping every vote of both.', bodyHe: 'רשימה משותפת אחת ששומרת על כל הקולות של שתיהן.', actions: (s) => merge(s, ['25-אמת', '25-מרצ'], 'העבודה–מרצ', 'אמת', '#eb6834', 'Labor–Meretz') },
   { id: 'balad-in', titleEn: 'Balad passes the threshold', titleHe: 'בל״ד עוברת את אחוז החסימה', bodyEn: 'The smallest number of additional Balad voters.', bodyHe: 'המספר הקטן ביותר של מצביעים נוספים לבל״ד.', actions: (s) => (has(s, '25-ד') ? toPass(s, '25-ד') : null) },
-  { id: 'arab-joint', titleEn: 'A joint Arab list', titleHe: 'רשימה ערבית משותפת', bodyEn: 'Ra’am, Hadash–Ta’al and Balad on one list.', bodyHe: 'רע״ם, חד״ש–תע״ל ובל״ד ברשימה אחת.', actions: (s) => merge(s, ['25-עם', '25-ום', '25-ד'], 'הרשימה המשותפת', 'ודעם', '#e34948') },
+  { id: 'arab-joint', titleEn: 'A joint Arab list', titleHe: 'רשימה ערבית משותפת', bodyEn: 'Ra’am, Hadash–Ta’al and Balad on one list.', bodyHe: 'רע״ם, חד״ש–תע״ל ובל״ד ברשימה אחת.', actions: (s) => merge(s, ['25-עם', '25-ום', '25-ד'], 'הרשימה המשותפת', 'ודעם', '#e34948', 'Joint Arab list') },
   { id: 'no-likud-rz', titleEn: 'No Likud–Religious Zionism agreement', titleHe: 'בלי הסכם הליכוד–הציונות הדתית', bodyEn: 'Remove only that agreement.', bodyHe: 'הסרת ההסכם הזה בלבד.', actions: (s) => { const a = agreementWith(s, '25-מחל'); return a ? [{ type: 'removeAgreement', id: a.id }] : null; } },
   { id: 'jewish-home-in', titleEn: 'The Jewish Home passes', titleHe: 'הבית היהודי עובר', bodyEn: 'Smallest number of additional voters for Ayelet Shaked’s list.', bodyHe: 'המספר הקטן ביותר של מצביעים נוספים לרשימת איילת שקד.', actions: (s) => (has(s, '25-ב') ? toPass(s, '25-ב') : null) },
 ];
@@ -49,9 +50,9 @@ const K25: Preset[] = [
 const K26: Preset[] = [
   { id: 'no-likud-rz', titleEn: 'No Likud–Religious Zionism agreement', titleHe: 'בלי הסכם הליכוד–הציונות הדתית', bodyEn: 'Remove only that agreement.', bodyHe: 'הסרת ההסכם הזה בלבד.', actions: (s) => { const a = agreementWith(s, '26-מחל'); return a ? [{ type: 'removeAgreement', id: a.id }] : null; } },
   { id: 'reservists-in', titleEn: 'Hendel–Zelicha passes the threshold', titleHe: 'המילואימניקים והכלכלית עוברת', bodyEn: 'The smallest number of additional voters for the Reservists & New Economic list.', bodyHe: 'המספר הקטן ביותר של מצביעים נוספים לרשימה.', actions: (s) => (has(s, '26-די') ? toPass(s, '26-די') : null) },
-  { id: 'otzma-rz', titleEn: 'Otzma Yehudit and Religious Zionism together', titleHe: 'עוצמה יהודית והציונות הדתית יחד', bodyEn: 'As in 2022: one list keeping every vote of both.', bodyHe: 'כמו ב-2022: רשימה אחת ששומרת על כל הקולות.', actions: (s) => merge(s, ['26-ב', '26-ט'], 'הציונות הדתית ועוצמה יהודית', 'ט', '#eda100') },
-  { id: 'bennett-yashar', titleEn: 'Bennett and Eisenkot run together', titleHe: 'בנט ואיזנקוט רצים יחד', bodyEn: 'Together and Yashar! on one list.', bodyHe: 'ביחד וישר! ברשימה אחת.', actions: (s) => merge(s, ['26-רק', '26-דרך'], 'ביחד–ישר!', 'רק', '#1baf7a') },
-  { id: 'arab-joint', titleEn: 'One Arab list', titleHe: 'רשימה ערבית אחת', bodyEn: 'Ra’am and the Joint List on one list.', bodyHe: 'רע״ם והרשימה המשותפת ברשימה אחת.', actions: (s) => merge(s, ['26-עם', '26-ודם'], 'הרשימה הערבית המאוחדת', 'עם', '#e34948') },
+  { id: 'otzma-rz', titleEn: 'Otzma Yehudit and Religious Zionism together', titleHe: 'עוצמה יהודית והציונות הדתית יחד', bodyEn: 'As in 2022: one list keeping every vote of both.', bodyHe: 'כמו ב-2022: רשימה אחת ששומרת על כל הקולות.', actions: (s) => merge(s, ['26-ב', '26-ט'], 'הציונות הדתית ועוצמה יהודית', 'ט', '#eda100', 'Religious Zionism–Otzma') },
+  { id: 'bennett-yashar', titleEn: 'Bennett and Eisenkot run together', titleHe: 'בנט ואיזנקוט רצים יחד', bodyEn: 'Together and Yashar! on one list.', bodyHe: 'ביחד וישר! ברשימה אחת.', actions: (s) => merge(s, ['26-רק', '26-דרך'], 'ביחד–ישר!', 'רק', '#1baf7a', 'Together–Yashar!') },
+  { id: 'arab-joint', titleEn: 'One Arab list', titleHe: 'רשימה ערבית אחת', bodyEn: 'Ra’am and the Joint List on one list.', bodyHe: 'רע״ם והרשימה המשותפת ברשימה אחת.', actions: (s) => merge(s, ['26-עם', '26-ודם'], 'הרשימה הערבית המאוחדת', 'עם', '#e34948', 'United Arab list') },
   { id: 'amcha-in', titleEn: 'Amcha Yisrael passes', titleHe: 'עמך ישראל עוברת', bodyEn: 'Smallest number of additional voters for Ofer Winter’s list.', bodyHe: 'המספר הקטן ביותר של מצביעים נוספים לרשימת עופר וינטר.', actions: (s) => (has(s, '26-ך') ? toPass(s, '26-ך') : null) },
 ];
 
@@ -78,9 +79,10 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
         if (!groups.has(key)) g.before = before;
         groups.set(key, g);
       }
-      const lines = [...groups.values()].filter((g) => g.before !== g.after).sort((a, b) => (b.after - b.before) - (a.after - a.before)).map((g) => `${g.label} ${g.after > g.before ? '+' : '−'}${Math.abs(g.after - g.before)}`);
+      const lines = [...groups.values()].filter((g) => g.before !== g.after).sort((a, b) => (b.after - b.before) - (a.after - a.before)).map((g) => `${g.label} ${signed(g.after - g.before)}`);
       const moved = actions.find((a) => a.type === 'transfer' || a.type === 'setVotes');
-      const votes = moved?.type === 'transfer' ? L(`${fmtInt(moved.votes)} voters switch from ${name(base, moved.from)}`, `${fmtInt(moved.votes)} מצביעים עוברים מ${name(base, moved.from)}`)
+      const nm = (id: string) => { const x = base.lists.find((l) => l.id === id); return x ? listLabel(x, lang) : id; };
+      const votes = moved?.type === 'transfer' ? L(`${fmtInt(moved.votes)} voters switch from ${nm(moved.from)}`, `${fmtInt(moved.votes)} מצביעים עוברים מ${nm(moved.from)}`)
         : moved?.type === 'setVotes' ? L(`${fmtInt(moved.votes - base.lists.find((x) => x.id === moved.listId)!.votes)} additional voters`, `${fmtInt(moved.votes - base.lists.find((x) => x.id === moved.listId)!.votes)} מצביעים נוספים`) : '';
       return { p, actions, lines, votes };
     });

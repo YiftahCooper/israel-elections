@@ -4,8 +4,8 @@ import type { AllocationResult } from '../../engine/types.ts';
 import { toEngineInput, type Scenario } from '../../model/scenario.ts';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt } from '../format.ts';
-import { dispatch, setState } from '../store.ts';
+import { fmtInt, signed } from '../format.ts';
+import { dispatch, dispatchMany, setState } from '../store.ts';
 import { Info, NumberInput } from './ui.tsx';
 
 const newId = () => `sim-${Date.now().toString(36)}${Math.floor(Math.random() * 1e4).toString(36)}`;
@@ -35,7 +35,7 @@ function Agreements({ s, r, base }: { s: Scenario; r: AllocationResult; base: Sc
     <div>
       <div className="row" style={{ justifyContent: 'space-between' }}>
         <h4>{L('Surplus-vote agreements', 'הסכמי עודפים')} <Info term="surplus" /></h4>
-        {JSON.stringify(s.agreements) !== JSON.stringify(base.agreements) && <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'agreements', agreements: base.agreements })}>{L('Restore historical agreements', 'שחזור ההסכמים ההיסטוריים')}</button>}
+        {JSON.stringify(s.agreements) !== JSON.stringify(base.agreements) && <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'agreements' })}>{L('Restore historical agreements', 'שחזור ההסכמים ההיסטוריים')}</button>}
       </div>
       {s.agreements.length === 0 && <p className="muted small">{L('None.', 'אין.')}</p>}
       <ul className="cands">
@@ -46,9 +46,13 @@ function Agreements({ s, r, base }: { s: Scenario; r: AllocationResult; base: Sc
             <li key={ag.id} className="cand" style={{ gridTemplateColumns: 'minmax(0,1fr) auto' }}>
               <span>
                 <b>{ag.members.map(name).join(' ⇄ ')}</b>{' '}
-                {!ag.enabled ? <span className="chip">{L('off', 'כבוי')}</span> : st?.active ? <span className="chip ok">{L('active', 'בתוקף')}</span> : <span className="chip no">{st?.reason === 'member-failed-threshold' ? L(`no effect: ${st.failedMembers.map(name).join(', ')} below threshold`, `ללא השפעה: ${st.failedMembers.map(name).join(', ')} מתחת לחסימה`) : st?.reason ?? ''}</span>}
+                {!ag.enabled ? <span className="chip">{L('off', 'כבוי')}</span> : st?.active ? <span className="chip ok">{L('active', 'בתוקף')}</span> : <span className="chip no">{st?.reason === 'member-failed-threshold' ? L(`no effect: ${st.failedMembers.map(name).join(', ')} below threshold`, `ללא השפעה: ${st.failedMembers.map(name).join(', ')} מתחת לחסימה`)
+                  : st?.reason === 'member-withdrawn' ? L('no effect: a partner withdrew', 'ללא השפעה: שותפה פרשה')
+                  : st?.reason === 'duplicate-membership' ? L('no effect: a list is already in another agreement', 'ללא השפעה: רשימה כבר בהסכם אחר')
+                  : st?.reason === 'too-many-members' ? L('not allowed under these rules', 'לא מותר לפי הכללים')
+                  : st?.reason === 'unknown-list' ? L('refers to a list that no longer exists', 'מתייחס לרשימה שאינה קיימת') : ''}</span>}
                 {ag.members.length > 2 && <span className="chip exp">{L('not legal in Israel', 'לא חוקי בישראל')}</span>}
-                <div className="small muted">{eff.length === 0 ? L(ag.enabled ? 'Switching it off changes no seats.' : 'Switching it on changes no seats.', ag.enabled ? 'כיבויו אינו משנה מנדטים.' : 'הפעלתו אינה משנה מנדטים.') : `${ag.enabled ? L('Effect of the agreement: ', 'השפעת ההסכם: ') : L('Switching it on would give: ', 'הפעלתו הייתה נותנת: ')}${eff.map((e) => `${name(e.id)} ${(ag.enabled ? e.d : -e.d) > 0 ? '+' : '−'}${Math.abs(e.d)}`).join(' · ')}`}</div>
+                <div className="small muted">{eff.length === 0 ? L(ag.enabled ? 'Switching it off changes no seats.' : 'Switching it on changes no seats.', ag.enabled ? 'כיבויו אינו משנה מנדטים.' : 'הפעלתו אינה משנה מנדטים.') : `${ag.enabled ? L('Effect of the agreement: ', 'השפעת ההסכם: ') : L('Switching it on would give: ', 'הפעלתו הייתה נותנת: ')}${eff.map((e) => `${name(e.id)} ${signed(ag.enabled ? e.d : -e.d)}`).join(' · ')}`}</div>
               </span>
               <span className="tools">
                 <button className="btn small" onClick={() => dispatch({ type: 'setAgreement', agreement: { ...ag, enabled: !ag.enabled } })}>{ag.enabled ? L('Off', 'כיבוי') : L('On', 'הפעלה')}</button>
@@ -89,10 +93,14 @@ function Merge({ s }: { s: Scenario }) {
   const [order, setOrder] = useState<'interleave' | 'concat'>('interleave');
   const sel = s.lists.filter((l) => ids.includes(l.id));
   const total = sel.reduce((t, l) => t + l.votes, 0);
-  const ret = Number(retention);
+  const ret = retention.trim() === '' ? NaN : Number(retention);
+  // identical to the merge action's rounding
+  const kept = Number.isFinite(ret) ? Number((BigInt(total) * BigInt(Math.round(ret * 100))) / 10000n) : 0;
+  const defaultName = sel.map((l) => listLabel(l, lang)).join('–');
   const go = () => {
     const id = newId();
-    const ok = dispatch({ type: 'merge', ids, newId: id, nameHe: nameHe || sel.map((l) => l.shortHe).join('–'), letters: letters || sel[0]?.letters || '', color, retentionPct: ret, candidateOrder: order, nonRetained: 'abstain' });
+    const ok = dispatchMany([{ type: 'merge', ids, newId: id, nameHe: nameHe || defaultName, letters: letters || sel[0]?.letters || '', color, retentionPct: ret, candidateOrder: order, nonRetained: 'abstain' },
+      { type: 'setListMeta', listId: id, patch: { shortEn: nameHe || defaultName } }]);
     if (ok) { setIds([]); setName(''); setLetters(''); setState({ selectedListId: id }); }
   };
   return (
@@ -108,7 +116,7 @@ function Merge({ s }: { s: Scenario }) {
         ))}
       </div>
       <div className="grid2" style={{ marginTop: 8 }}>
-        <label className="field">{L('Merged list name', 'שם הרשימה המאוחדת')}<input type="text" value={nameHe} placeholder={sel.map((l) => l.shortHe).join('–')} onChange={(e) => setName(e.target.value)} /></label>
+        <label className="field">{L('Merged list name', 'שם הרשימה המאוחדת')}<input type="text" value={nameHe} placeholder={defaultName} onChange={(e) => setName(e.target.value)} /></label>
         <label className="field">{L('Merged list letters', 'אותיות הרשימה המאוחדת')}<input type="text" value={letters} placeholder={sel[0]?.letters} onChange={(e) => setLetters(e.target.value)} /></label>
         <label className="field">{L('Voters retained %', 'שימור מצביעים %')}<input type="text" inputMode="decimal" value={retention} onChange={(e) => setRetention(e.target.value)} /></label>
         <label className="field">{L('Colour', 'צבע')}<input type="color" value={color} onChange={(e) => setColor(e.target.value)} /></label>
@@ -119,7 +127,7 @@ function Merge({ s }: { s: Scenario }) {
           </select>
         </label>
       </div>
-      <p className="small muted">{ids.length >= 2 ? L(`Combined ${fmtInt(total)} votes; at ${ret}% retention the merged list keeps ${fmtInt(Math.floor((total * ret) / 100))} and ${fmtInt(total - Math.floor((total * ret) / 100))} voters abstain. Reorder candidates afterwards in the list panel (Advanced).`, `יחד ${fmtInt(total)} קולות; בשימור ${ret}% נשארים ${fmtInt(Math.floor((total * ret) / 100))} ו-${fmtInt(total - Math.floor((total * ret) / 100))} נמנעים. אפשר לסדר מחדש את המועמדים בחלונית הרשימה (מתקדם).`) : L('Select two or more lists.', 'בחרו שתי רשימות או יותר.')}</p>
+      <p className="small muted">{ids.length >= 2 ? L(`Combined ${fmtInt(total)} votes; at ${ret}% retention the merged list keeps ${fmtInt(kept)} and ${fmtInt(total - kept)} voters stay home. Reorder candidates afterwards in the list panel.`, `יחד ${fmtInt(total)} קולות; בשימור ${ret}% נשארים ${fmtInt(kept)} ו-${fmtInt(total - kept)} נמנעים. אפשר לסדר מחדש את המועמדים בחלונית הרשימה.`) : L('Select two or more lists.', 'בחרו שתי רשימות או יותר.')}</p>
       <button className="btn primary" disabled={ids.length < 2 || !(ret >= 0 && ret <= 100)} onClick={go}>{L('Merge', 'איחוד')}</button>
     </div>
   );
@@ -148,9 +156,10 @@ function Split({ s }: { s: Scenario }) {
     const [ca, cb] = assign();
     const va = Math.round((l.votes * shareA) / 100);
     const a = newId(), b = newId() + 'b';
+    const nA = nameA || (effMode === 'party' ? parties[0] : `${listLabel(l, lang)} A`), nB = nameB || (effMode === 'party' ? parties.slice(1).join(' / ') : `${listLabel(l, lang)} B`);
     if (dispatch({ type: 'split', id: l.id, parts: [
-      { newId: a, nameHe: nameA || (effMode === 'party' ? parties[0] : `${l.shortHe} א`), letters: l.letters, color: l.color, votes: va, candidateIds: ca },
-      { newId: b, nameHe: nameB || (effMode === 'party' ? parties.slice(1).join(' / ') : `${l.shortHe} ב`), letters: `${l.letters}2`, color: '#8a8f99', votes: l.votes - va, candidateIds: cb },
+      { newId: a, nameHe: nA, letters: l.letters, color: l.color, votes: va, candidateIds: ca },
+      { newId: b, nameHe: nB, letters: `${l.letters}2`, color: '#8a8f99', votes: l.votes - va, candidateIds: cb },
     ] })) { setId(''); setState({ selectedListId: a }); }
   };
   return (

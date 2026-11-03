@@ -200,3 +200,14 @@ describe('degenerate inputs', () => {
     expect(toDecimal(rat(2n, 3n), 2)).toBe('0.67');
   });
 });
+
+describe('lottery outcomes', () => {
+  it('a recorded outcome applies only to the exact tie it was recorded for', () => {
+    const first = allocate(simple({ A: 300, B: 300, C: 100 }, [], { seats: 1, threshold: rat(0n) }));
+    const key = first.remainderSteps[0].tie!.key;
+    // a different tie at the same step (B vs C) must not be decided by the A/B choice
+    const other = allocate(simple({ A: 100, B: 300, C: 300 }, [], { seats: 1, threshold: rat(0n) }, { [key]: 'B' }));
+    expect(other.remainderSteps[0].tie!.forced).toBe(false);
+    expect(other.warnings.map((w) => w.code)).toContain('lottery-required');
+  });
+});

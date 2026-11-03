@@ -32,3 +32,9 @@ export const csvEscape = (v: unknown) => {
 /** Wraps text containing Hebrew in a right-to-left isolate, so it reads correctly inside a
  *  left-to-right SVG while text-anchor keeps its left-to-right meaning. */
 export const isolate = (t: string) => (/[\u0590-\u05FF]/.test(t) ? `\u2067${t}\u2069` : t);
+
+/** A signed whole number isolated left-to-right ("+3", "−2"), so the sign stays put in Hebrew text. */
+export const signed = (d: number | bigint) => {
+  const n = Number(d);
+  return `\u2066${n > 0 ? '+' : n < 0 ? '−' : '±'}${Math.abs(n).toLocaleString('en-US')}\u2069`;
+};

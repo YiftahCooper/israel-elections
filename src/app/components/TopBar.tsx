@@ -7,6 +7,8 @@ import { csvEscape, download } from '../format.ts';
 import { duplicateCurrent, getState, importScenarioJson, openElection, redo, resetAll, saveCurrent, setState, shareLink, toast, undo, useStore } from '../store.ts';
 import { Seg } from './ui.tsx';
 
+const fileName = (n: string) => (n || 'scenario').replace(/[^\p{L}\p{N}]+/gu, '_').replace(/^_+|_+$/g, '').slice(0, 60) || 'scenario';
+
 export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationResult | null; ds: ElectionDataset | undefined; baseR: AllocationResult | null }) {
   const L = useL();
   const lang = useLang();
@@ -26,7 +28,7 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
     if (!s || !r || !baseR) return;
     const head = ['letters', 'list', 'votes', 'pct_valid', 'qualified', 'whole_quota_seats', 'seats', 'historical_seats'];
     const rows = s.lists.map((l) => { const lr = r.lists.find((x) => x.id === l.id)!; return [l.letters, l.nameHe, l.votes, ((l.votes / Number(r.totalValid)) * 100).toFixed(6), lr.qualified, lr.initialSeats, lr.seats, baseR.lists.find((x) => x.id === l.id)?.seats ?? '']; });
-    download(`${s.electionId}-${(s.name || 'scenario').replace(/\W+/g, '_')}.csv`, '﻿' + [head, ...rows].map((row) => row.map(csvEscape).join(',')).join('\n'), 'text/csv');
+    download(`${s.electionId}-${fileName(s.name)}.csv`, '﻿' + [head, ...rows].map((row) => row.map(csvEscape).join(',')).join('\n'), 'text/csv');
   };
 
   return (
@@ -41,7 +43,7 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
       <button className="btn small" onClick={undo} disabled={!canUndo} title="Ctrl+Z">↶ {L('Undo', 'ביטול')}</button>
       <button className="btn small" onClick={redo} disabled={!canRedo} title="Ctrl+Y">↷ {L('Redo', 'חזרה')}</button>
       <button className="btn small" onClick={() => { if (!s?.log.length || confirm(L('Reset the whole election to the historical result? (Undo can restore it.)', 'לאפס את כל הבחירות לתוצאה ההיסטורית? (ניתן לבטל)'))) resetAll(); }} disabled={!s?.log.length}>{L('Reset all', 'איפוס')}</button>
-      <button className="btn small" onClick={() => { saveCurrent(s?.name || undefined); toast('info', L('Saved in this browser.', 'נשמר בדפדפן זה.')); }} disabled={!s}>{L('Save', 'שמירה')}</button>
+      <button className="btn small" onClick={() => { if (saveCurrent(s?.name || undefined)) toast('info', L('Saved in this browser.', 'נשמר בדפדפן זה.')); }} disabled={!s}>{L('Save', 'שמירה')}</button>
       <div style={{ position: 'relative' }}>
         <button className="btn small" aria-expanded={menu} onClick={() => setMenu((m) => !m)}>{L('Scenarios', 'תרחישים')} ▾</button>
         {menu && (
@@ -53,7 +55,7 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
               catch { toast('info', L('Copy the link from the field below.', 'העתיקו את הקישור מהשדה שלמטה.')); }
             }}>{L('Create share link', 'יצירת קישור שיתוף')}</button>
             {shareUrl && <input type="text" readOnly value={shareUrl} aria-label={L('Share link', 'קישור שיתוף')} onFocus={(e) => e.target.select()} style={{ width: '100%', marginBottom: 6 }} />}
-            <button className="btn small" style={{ width: '100%', marginBottom: 6 }} onClick={() => { if (s && ds) download(`${s.electionId}-${(s.name || 'scenario').replace(/\W+/g, '_')}.json`, JSON.stringify({ ...s, datasetBuiltAt: ds.buildInfo.builtAt }, null, 1), 'application/json'); setMenu(false); }}>{L('Export scenario (JSON)', 'ייצוא תרחיש (JSON)')}</button>
+            <button className="btn small" style={{ width: '100%', marginBottom: 6 }} onClick={() => { if (s && ds) download(`${s.electionId}-${fileName(s.name)}.json`, JSON.stringify({ ...s, datasetBuiltAt: ds.buildInfo.builtAt }, null, 1), 'application/json'); setMenu(false); }}>{L('Export scenario (JSON)', 'ייצוא תרחיש (JSON)')}</button>
             <button className="btn small" style={{ width: '100%', marginBottom: 6 }} onClick={() => fileRef.current?.click()}>{L('Import scenario (JSON)', 'ייבוא תרחיש (JSON)')}</button>
             <button className="btn small" style={{ width: '100%', marginBottom: 6 }} onClick={() => { exportCsv(); setMenu(false); }}>{L('Export results table (CSV)', 'ייצוא טבלת תוצאות (CSV)')}</button>
             <div className="section-title">{L('Saved in this browser', 'שמורים בדפדפן')}</div>
@@ -62,7 +64,7 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
               <div key={x.id} className="row small" style={{ justifyContent: 'space-between' }}>
                 <button className="btn small ghost" onClick={() => { openElection(x.electionId, { name: x.name, log: x.log, baseBuiltAt: x.baseBuiltAt }).then(() => setState((st) => ({ scenario: st.scenario ? { ...st.scenario, id: x.id } : null }))); setMenu(false); }}>{x.name} <span className="muted">({x.electionId === 'k26' ? '2026' : '2022'})</span></button>
                 <span>
-                  <button className="btn small ghost" onClick={() => { setState({ compareWith: x.id }); setMenu(false); }} disabled={x.electionId !== electionId}>{L('compare', 'השוואה')}</button>
+                  <button className="btn small ghost" onClick={() => { setState({ compareWith: x.id }); setMenu(false); }} disabled={x.electionId !== electionId || x.id === s?.id}>{L('compare', 'השוואה')}</button>
                   <button className="btn small ghost danger" aria-label={L('Delete', 'מחיקה')} onClick={() => setState((st) => ({ saved: st.saved.filter((y) => y.id !== x.id) }))}>✕</button>
                 </span>
               </div>
@@ -74,7 +76,7 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
           try {
             const sc = importScenarioJson(await f.text());
             await openElection(sc.electionId);
-            setState({ scenario: sc, past: [...getState().past], future: [] });
+            const st = getState(); setState({ scenario: sc, past: st.scenario && st.scenario.electionId === sc.electionId ? [...st.past, st.scenario] : st.past, future: [] });
             toast('info', L('Scenario imported.', 'התרחיש יובא.'));
           } catch (err) { toast('error', String(err)); }
           e.target.value = ''; setMenu(false);

@@ -39,8 +39,9 @@ export function votesForShare(s: Scenario, l: SimList, pct: number, src: SourceC
   if (!(pct >= 0 && pct < 100)) return null;
   const V = s.lists.reduce((t, x) => t + x.votes, 0);
   const p = pct / 100;
-  if (src.kind === 'new') return Math.round((p * (V - l.votes)) / (1 - p));
-  return Math.round(p * V);
+  // rounded up, so the list reaches at least the requested share (e.g. 3.25% means passing the threshold)
+  if (src.kind === 'new') return Math.ceil((p * (V - l.votes)) / (1 - p) - 1e-9);
+  return Math.ceil(p * V - 1e-9);
 }
 
 /** Clamps a requested target to what the source can supply, so an edit never fails silently. */

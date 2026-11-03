@@ -6,11 +6,11 @@ import type { AllocationResult } from '../../engine/types.ts';
 import { toEngineInput, votesCast, type Scenario, type SimList } from '../../model/scenario.ts';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtFrac, fmtInt, fmtPct, fmtRat } from '../format.ts';
-import { dispatch, setState, toast, useStore, useVoteSource } from '../store.ts';
+import { fmtFrac, fmtInt, fmtPct, fmtRat, signed } from '../format.ts';
+import { dispatch, dispatchMany, setState, toast, useStore, useVoteSource } from '../store.ts';
 import { clampTarget, deltaAction, votesForShare } from '../voteEdit.ts';
 import { Candidates } from './Candidates.tsx';
-import { DecimalInput, Delta, Info, NumberInput, Slip, VoteSlider } from './ui.tsx';
+import { DecimalInput, Delta, Info, NumberInput, Slip, TextField, VoteSlider } from './ui.tsx';
 import { SourcePicker, VoteTools } from './VoteTools.tsx';
 
 export function ListPanel({ s, r, ds, base, baseR }: { s: Scenario; r: AllocationResult; ds: ElectionDataset; base: Scenario; baseR: AllocationResult }) {
@@ -100,15 +100,18 @@ export function ListPanel({ s, r, ds, base, baseR }: { s: Scenario; r: Allocatio
         </div>
         <VoteSlider key={l.id} s={s} l={l} hist={histVotes} thr={Number(r.thresholdVotes)} onCommit={editTo} />
         <div className="row" style={{ marginTop: 4 }}>
-          {baseList && l.votes !== baseList.votes && <button className="btn small" onClick={() => dispatch({ type: 'setVotes', listId: l.id, votes: baseList.votes })}>{L(`Reset votes to ${fmtInt(baseList.votes)}`, `איפוס הקולות ל-${fmtInt(baseList.votes)}`)}</button>}
-          {baseList && listChanged && <button className="btn small" onClick={() => dispatch({ type: 'resetList', listId: l.id, base: baseList })}>{L('Reset everything about this list', 'איפוס כל פרטי הרשימה')}</button>}
+          {baseList && l.votes !== baseList.votes && <button className="btn small" onClick={() => editTo(baseList.votes)} title={L('The difference is balanced as chosen above.', 'ההפרש מאוזן כפי שנבחר למעלה.')}>{L(`Reset votes to ${fmtInt(baseList.votes)}`, `איפוס הקולות ל-${fmtInt(baseList.votes)}`)}</button>}
+          {baseList && listChanged && <button className="btn small" onClick={() => {
+            const a = deltaAction(s, l, clampTarget(s, l, baseList.votes, src) - l.votes, src);
+            dispatchMany([...(a ? [a] : []), { type: 'resetList', listId: l.id }]);
+          }}>{L('Reset everything about this list', 'איפוס כל פרטי הרשימה')}</button>}
         </div>
 
         <div className="kv small" style={{ marginTop: 6 }}>
           {lr.qualified && <><span>{L('Share of qualifying votes', 'מהקולות המשתתפים')} <Info term="qualifying" /></span><span>{fmtPct(l.votes, r.qualifyingVotes, digits)}</span></>}
           {advanced && <><span>{L('Share of all ballots cast', 'מכלל המצביעים')}</span><span>{fmtPct(l.votes, votesCast(s), digits)}</span>
           <span>{L('Share of registered voters', 'מבעלי זכות הבחירה')}</span><span>{fmtPct(l.votes, s.registered, digits)}</span></>}
-          <span>{L('Distance to threshold', 'מרחק מאחוז החסימה')} <Info term="threshold" /></span><span className={l.votes >= Number(r.thresholdVotes) ? 'up' : 'down'}>{l.votes >= Number(r.thresholdVotes) ? '+' : '−'}{fmtInt(Math.abs(l.votes - Number(r.thresholdVotes)))}</span>
+          <span>{L('Distance to threshold', 'מרחק מאחוז החסימה')} <Info term="threshold" /></span><span dir="ltr" className={l.votes >= Number(r.thresholdVotes) ? 'up' : 'down'}>{l.votes >= Number(r.thresholdVotes) ? '+' : '−'}{fmtInt(Math.abs(l.votes - Number(r.thresholdVotes)))}</span>
           {lr.qualified && advanced && <>
             <span>{L('Whole-quota seats', 'מנדטים במודד')}</span><span>{lr.initialSeats} <span className="muted" dir="ltr">= ⌊{fmtInt(l.votes)} ÷ {fmtRat(r.quota, 0)}⌋</span></span>
             <span>{L('Remainder-stage seats', 'מנדטים מעודפים')}</span><span>{lr.seats - lr.initialSeats}</span>
@@ -126,16 +129,16 @@ export function ListPanel({ s, r, ds, base, baseR }: { s: Scenario; r: Allocatio
           <div>
             <div className="row">
               <span>⇄ <b>{listLabel(s.lists.find((x) => x.id === agr.members.find((m) => m !== l.id))!, lang)}</b></span>
-              {agrStatus?.active ? <span className="chip ok">{L('Active', 'בתוקף')}</span> : <span className="chip no">{agr.enabled ? L('No effect: a partner failed the threshold', 'ללא השפעה: שותפה לא עברה את החסימה') : L('Switched off', 'כבוי')}</span>}
+              {agrStatus?.active ? <span className="chip ok">{L('Active', 'בתוקף')}</span> : <span className="chip no">{!agr.enabled ? L('Switched off', 'כבוי') : agrStatus?.reason === 'member-withdrawn' ? L('No effect: a partner withdrew', 'ללא השפעה: שותפה פרשה') : agrStatus?.reason === 'duplicate-membership' ? L('No effect: a list is in two agreements', 'ללא השפעה: רשימה בשני הסכמים') : agrStatus?.reason === 'too-many-members' ? L('Not allowed under these rules', 'לא מותר לפי הכללים') : L('No effect: a partner failed the threshold', 'ללא השפעה: שותפה לא עברה את החסימה')}</span>}
               <span className="spacer" />
               <button className="btn small" onClick={() => dispatch({ type: 'setAgreement', agreement: { ...agr, enabled: !agr.enabled } })}>{agr.enabled ? L('Switch off', 'כיבוי') : L('Switch on', 'הפעלה')}</button>
-              <button className="btn small danger" onClick={() => dispatch({ type: 'removeAgreement', id: agr.id })}>{L('Remove', 'הסרה')}</button>
+              {advanced && <button className="btn small danger" onClick={() => dispatch({ type: 'removeAgreement', id: agr.id })}>{L('Remove', 'הסרה')}</button>}
             </div>
             {agreementEffect && (
-              <p className="small" style={{ marginBottom: 0 }}>{agreementEffect.length === 0 ? L('Effect: none — the same seats are won without it.', 'השפעה: אין — אותם מנדטים גם בלעדיו.') : <>{L('Effect versus no agreement: ', 'השפעה לעומת ללא הסכם: ')}{agreementEffect.map((e) => `${listLabel(s.lists.find((x) => x.id === e.id)!, lang)} ${e.d > 0 ? '+' : '−'}${Math.abs(e.d)}`).join(' · ')}</>}</p>
+              <p className="small" style={{ marginBottom: 0 }}>{agreementEffect.length === 0 ? L('Effect: none — the same seats are won without it.', 'השפעה: אין — אותם מנדטים גם בלעדיו.') : <>{L('Effect versus no agreement: ', 'השפעה לעומת ללא הסכם: ')}{agreementEffect.map((e) => `${listLabel(s.lists.find((x) => x.id === e.id)!, lang)} ${signed(e.d)}`).join(' · ')}</>}</p>
             )}
           </div>
-        ) : (
+        ) : !advanced ? <p className="small muted">{L('No agreement. (Advanced mode lets you sign one.)', 'אין הסכם. (במצב מתקדם אפשר לחתום.)')}</p> : (
           <div className="row">
             <select aria-label={L('Choose partner', 'בחירת שותפה')} defaultValue="" onChange={(e) => { if (e.target.value) dispatch({ type: 'setAgreement', agreement: { id: `sim-agr-${Date.now().toString(36)}`, members: [l.id, e.target.value], enabled: true } }); }}>
               <option value="">{L('Sign an agreement with…', 'חתימת הסכם עם…')}</option>
@@ -149,9 +152,9 @@ export function ListPanel({ s, r, ds, base, baseR }: { s: Scenario; r: Allocatio
             <hr />
             <div className="section-title">{L('Identity (display only — does not change results)', 'זהות (תצוגה בלבד — אינה משנה תוצאות)')}</div>
             <div className="grid2">
-              <label className="field">{L('Short name (Hebrew)', 'שם מקוצר')}<input type="text" value={l.shortHe} onChange={(e) => dispatch({ type: 'setListMeta', listId: l.id, patch: { shortHe: e.target.value } })} /></label>
-              <label className="field">{L('Short name (English)', 'שם באנגלית')}<input type="text" value={l.shortEn ?? ''} onChange={(e) => dispatch({ type: 'setListMeta', listId: l.id, patch: { shortEn: e.target.value || null } })} /></label>
-              <label className="field">{L('Ballot letters', 'אותיות הרשימה')}<input type="text" value={l.letters} onChange={(e) => dispatch({ type: 'setListMeta', listId: l.id, patch: { letters: e.target.value } })} /></label>
+              <label className="field">{L('Short name (Hebrew)', 'שם מקוצר')}<TextField value={l.shortHe} onCommit={(v) => dispatch({ type: 'setListMeta', listId: l.id, patch: { shortHe: v } })} /></label>
+              <label className="field">{L('Short name (English)', 'שם באנגלית')}<TextField value={l.shortEn ?? ''} onCommit={(v) => dispatch({ type: 'setListMeta', listId: l.id, patch: { shortEn: v || null } })} /></label>
+              <label className="field">{L('Ballot letters', 'אותיות הרשימה')}<TextField value={l.letters} onCommit={(v) => dispatch({ type: 'setListMeta', listId: l.id, patch: { letters: v } })} /></label>
               <label className="field">{L('Colour', 'צבע')}<input type="color" value={l.color} onChange={(e) => dispatch({ type: 'setListMeta', listId: l.id, patch: { color: e.target.value } })} /></label>
               <label className="field">{L('Bloc', 'גוש')}
                 <select value={l.bloc ?? ''} onChange={(e) => dispatch({ type: 'setListMeta', listId: l.id, patch: { bloc: e.target.value || null } })}>
@@ -159,7 +162,7 @@ export function ListPanel({ s, r, ds, base, baseR }: { s: Scenario; r: Allocatio
                   {s.blocs.map((b) => <option key={b.id} value={b.id}>{lang === 'he' ? b.nameHe : b.nameEn}</option>)}
                 </select>
               </label>
-              <label className="field">{L('Full name', 'שם מלא')}<input type="text" value={l.nameHe} onChange={(e) => dispatch({ type: 'setListMeta', listId: l.id, patch: { nameHe: e.target.value } })} /></label>
+              <label className="field">{L('Full name', 'שם מלא')}<TextField value={l.nameHe} onCommit={(v) => dispatch({ type: 'setListMeta', listId: l.id, patch: { nameHe: v } })} /></label>
             </div>
             <div className="row" style={{ marginTop: 8 }}>
               <button className="btn small" onClick={() => dispatch({ type: 'setWithdrawn', listId: l.id, withdrawn: !l.withdrawn })}>{l.withdrawn ? L('Reinstate list', 'החזרת הרשימה') : L('Withdraw list', 'פרישת הרשימה')}</button>
