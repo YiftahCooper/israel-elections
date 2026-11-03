@@ -95,10 +95,32 @@ export interface ElectionDataset {
   buildInfo: { builtAt: string; rawSha256: Record<string, string> };
 }
 
+/** One locality's results. Older elections lack some identifiers: those fields are null, never invented. */
+export interface LocalityRow {
+  /** CBS locality code; null when the source has none (2006) */
+  code: number | null;
+  nameHe: string;
+  /** regional election committee number; null when the source has none */
+  committee: number | null;
+  /** null when the source has no registered-voter count for the locality */
+  registered: number | null;
+  votesCast: number;
+  invalid: number;
+  valid: number;
+  votes: number[];
+  /** double-envelope votes (soldiers, patients, diplomats…), not attributable to a locality. Code 9999 also means this. */
+  envelopes?: boolean;
+}
+
 /** Locality-level results (public/data/<id>-localities.json), columns aligned to `listIds`. */
 export interface LocalityDataset {
   schemaVersion: number;
   id: ElectionId;
   listIds: string[];
-  rows: { code: number; nameHe: string; committee: number; registered: number; votesCast: number; invalid: number; valid: number; votes: number[] }[];
+  rows: LocalityRow[];
+  /** how the rows were obtained, when not an official locality table (e.g. summed from polling stations) */
+  noteEn?: string;
+  noteHe?: string;
 }
+
+export const isEnvelopeRow = (r: LocalityRow) => r.envelopes === true || r.code === 9999;

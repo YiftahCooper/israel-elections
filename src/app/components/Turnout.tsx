@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
-import type { ElectionId, LocalityDataset } from '../../data/schema.ts';
+import { isEnvelopeRow, type ElectionId, type LocalityDataset } from '../../data/schema.ts';
 import { apportion } from '../../model/actions.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct } from '../format.ts';
-import { dispatch } from '../store.ts';
+import { dispatch, toast } from '../store.ts';
 import { Info, NumberInput } from './ui.tsx';
 
 const locCache = new Map<ElectionId, Promise<LocalityDataset>>();
@@ -67,8 +67,10 @@ export function Turnout({ s }: { s: Scenario }) {
     if (!data) return;
     const cols = presetLists.map((id) => s.lists.find((l) => l.id === id)!).flatMap((l) => l.originIds).map((o) => data.listIds.indexOf(o)).filter((k) => k >= 0);
     const p = Number(presetPct) / 100;
-    const rows = data.rows.filter((r) => r.code !== 9999 && r.valid > 0 && cols.reduce((t, k) => t + r.votes[k], 0) >= p * r.valid);
-    const reg = rows.reduce((t, r) => t + r.registered, 0), cast = rows.reduce((t, r) => t + r.votesCast, 0), inval = rows.reduce((t, r) => t + r.invalid, 0);
+    const rows = data.rows.filter((r) => !isEnvelopeRow(r) && r.valid > 0 && cols.reduce((t, k) => t + r.votes[k], 0) >= p * r.valid);
+    // older elections lack locality electorates: the turnout model cannot be built from them
+    if (rows.some((r) => r.registered === null)) { toast('error', L('This election’s locality data has no registered-voter counts, so turnout cannot be estimated from it.', 'בנתוני היישובים של בחירות אלה אין מספרי בעלי זכות בחירה, ולכן אי אפשר לאמוד מהם הצבעה.')); return; }
+    const reg = rows.reduce((t, r) => t + (r.registered ?? 0), 0), cast = rows.reduce((t, r) => t + r.votesCast, 0), inval = rows.reduce((t, r) => t + r.invalid, 0);
     const sum = data.listIds.map((_, k) => rows.reduce((t, r) => t + r.votes[k], 0));
     const curPct = (cast / Math.max(1, reg)) * 100;
     setElectorate(reg);

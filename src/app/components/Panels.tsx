@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useMemo, useState } from 'react';
-import type { ElectionDataset } from '../../data/schema.ts';
+import { isEnvelopeRow, type ElectionDataset } from '../../data/schema.ts';
 import { ruleDepartures, RULESETS } from '../../engine/rules.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import { electionRuleSetId, toRuleSet, type Action, type Scenario } from '../../model/scenario.ts';
@@ -108,16 +108,23 @@ export function Localities({ s }: { s: Scenario }) {
   const { data, error } = useLocalities(s.electionId);
   const [q, setQ] = useState('');
   const [sort, setSort] = useState<'registered' | 'turnout' | 'name'>('registered');
-  const [open, setOpen] = useState<number | null>(null);
+  const [open, setOpen] = useState<string | null>(null);
   const histLists = useMemo(() => (data ? data.listIds.map((id) => s.lists.find((l) => l.id === id) ?? null) : []), [data, s]);
   if (error) return <p className="down">{error}</p>;
   if (!data) return <p className="muted">{L('Loading official locality results…', 'טוען תוצאות לפי יישובים…')}</p>;
-  const rows = data.rows.filter((r) => !q || r.nameHe.includes(q) || String(r.code) === q)
-    .sort((a, b) => sort === 'name' ? a.nameHe.localeCompare(b.nameHe, 'he') : sort === 'turnout' ? (b.registered ? b.votesCast / b.registered : -1) - (a.registered ? a.votesCast / a.registered : -1) : b.registered - a.registered).slice(0, 300);
+  // rows are keyed by position in the file: older elections have no locality codes
+  const keyed = data.rows.map((r, i) => ({ r, key: String(i) }));
+  const hasRegistered = data.rows.some((r) => r.registered !== null);
+  const rows = keyed.filter(({ r }) => !q || r.nameHe.includes(q) || String(r.code) === q)
+    .sort(({ r: a }, { r: b }) => sort === 'name' || (!hasRegistered && sort !== 'turnout') ? a.nameHe.localeCompare(b.nameHe, 'he')
+      : sort === 'turnout' ? (b.registered ? b.votesCast / b.registered : -1) - (a.registered ? a.votesCast / a.registered : -1)
+      : (b.registered ?? 0) - (a.registered ?? 0)).slice(0, 300);
+  const localityCount = data.rows.filter((r) => !isEnvelopeRow(r)).length;
   const nameOf = (k: number) => histLists[k] ? listLabel(histLists[k]!, lang) : data.listIds[k];
   return (
     <div>
-      <p className="small ink2">{L(`Official CEC results for ${data.rows.length - 1} localities plus double-envelope votes (code 9999). These are the historical figures; your scenario changes are national and are not distributed to localities.`, `תוצאות רשמיות של ועדת הבחירות ל-${data.rows.length - 1} יישובים ולמעטפות החיצוניות (סמל 9999). אלה הנתונים ההיסטוריים; שינויי התרחיש הם ארציים ואינם מחולקים ליישובים.`)}</p>
+      <p className="small ink2">{L(`Official CEC results for ${localityCount} localities plus double-envelope votes. These are the historical figures; your scenario changes are national and are not distributed to localities.`, `תוצאות רשמיות של ועדת הבחירות ל-${localityCount} יישובים ולמעטפות החיצוניות. אלה הנתונים ההיסטוריים; שינויי התרחיש הם ארציים ואינם מחולקים ליישובים.`)}</p>
+      {(data.noteEn || data.noteHe) && <p className="small callout">{lang === 'he' ? data.noteHe ?? data.noteEn : data.noteEn ?? data.noteHe}</p>}
       <div className="row" style={{ marginBottom: 8 }}>
         <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder={L('Locality name or code', 'שם יישוב או סמל')} aria-label={L('Search localities', 'חיפוש יישוב')} />
         <select value={sort} onChange={(e) => setSort(e.target.value as typeof sort)} aria-label={L('Sort', 'מיון')}>
@@ -127,20 +134,20 @@ export function Localities({ s }: { s: Scenario }) {
       <div className="tablewrap">
         <table className="tbl">
           <thead><tr><th>{L('Locality', 'יישוב')}</th><th className="n">{L('Registered', 'בעלי זכות')}</th><th className="n">{L('Cast', 'מצביעים')}</th><th className="n">{L('Turnout', 'הצבעה')}</th><th className="n">{L('Valid', 'כשרים')}</th><th>{L('Leading lists', 'רשימות מובילות')}</th></tr></thead>
-          <tbody>{rows.map((r) => {
+          <tbody>{rows.map(({ r, key }) => {
             const top = r.votes.map((v, k) => ({ v, k })).sort((a, b) => b.v - a.v);
             return (
-              <Fragment key={r.code}>
-                <tr onClick={() => setOpen(open === r.code ? null : r.code)} style={{ cursor: 'pointer' }} className={open === r.code ? 'sel' : ''} tabIndex={0} aria-expanded={open === r.code} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setOpen(open === r.code ? null : r.code); } }}>
+              <Fragment key={key}>
+                <tr onClick={() => setOpen(open === key ? null : key)} style={{ cursor: 'pointer' }} className={open === key ? 'sel' : ''} tabIndex={0} aria-expanded={open === key} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setOpen(open === key ? null : key); } }}>
                   <td lang="he">{r.nameHe} <span className="muted tiny">{r.code}</span></td>
                   <td className="n">{r.registered ? fmtInt(r.registered) : '—'}</td><td className="n">{fmtInt(r.votesCast)}</td>
                   <td className="n">{r.registered ? fmtPct(r.votesCast, r.registered, 1) : '—'}</td><td className="n">{fmtInt(r.valid)}</td>
                   <td className="small">{top.slice(0, 3).filter((x) => x.v > 0).map((x) => `${nameOf(x.k)} ${fmtPct(x.v, r.valid, 0)}`).join(' · ')}</td>
                 </tr>
-                {open === r.code && (
+                {open === key && (
                   <tr><td colSpan={6}>
                     <div className="grid2 small">{top.filter((x) => x.v > 0).slice(0, 16).map((x) => <span key={x.k}>{nameOf(x.k)}: {fmtInt(x.v)} ({fmtPct(x.v, r.valid, digits)})</span>)}</div>
-                    {r.code === 9999 && <p className="small muted">{L('Double-envelope votes: cast away from home polling stations; not attributable to localities.', 'מעטפות חיצוניות: קולות שהוטלו מחוץ לקלפי הבית; אינם משויכים ליישובים.')}</p>}
+                    {isEnvelopeRow(r) && <p className="small muted">{L('Double-envelope votes: cast away from home polling stations; not attributable to localities.', 'מעטפות חיצוניות: קולות שהוטלו מחוץ לקלפי הבית; אינם משויכים ליישובים.')}</p>}
                   </td></tr>
                 )}
               </Fragment>
