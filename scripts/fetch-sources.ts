@@ -112,7 +112,7 @@ export const MANUAL_SOURCES: SourceRecord[] = [
 function sha256(buf: Buffer) { return createHash('sha256').update(buf).digest('hex'); }
 
 async function fetchHttp(src: Omit<SourceRecord, 'method'>): Promise<SourceRecord> {
-  const res = await fetch(src.url, { headers: { 'User-Agent': UA } });
+  const res = await fetch(src.url, { signal: AbortSignal.timeout(60000), headers: { 'User-Agent': UA } });
   if (!res.ok) throw new Error(`${src.url}: HTTP ${res.status}`);
   const buf = Buffer.from(await res.arrayBuffer());
   const head = buf.subarray(0, 200).toString('utf8');
@@ -128,7 +128,7 @@ async function fetchDatastore(src: Omit<SourceRecord, 'method'>): Promise<Source
   let fields: unknown = null;
   let total = Infinity;
   for (let offset = 0; offset < total; offset += 5000) {
-    const res = await fetch(`${src.url}&limit=5000&offset=${offset}`, { headers: { 'User-Agent': UA } });
+    const res = await fetch(`${src.url}&limit=5000&offset=${offset}`, { signal: AbortSignal.timeout(60000), headers: { 'User-Agent': UA } });
     if (!res.ok) throw new Error(`${src.url}: HTTP ${res.status}`);
     const json = (await res.json()) as any;
     if (!json.success) throw new Error(`${src.url}: API error`);
@@ -147,14 +147,56 @@ async function fetchDatastore(src: Omit<SourceRecord, 'method'>): Promise<Source
 const previous: SourceRecord[] = existsSync(MANIFEST) ? JSON.parse(readFileSync(MANIFEST, 'utf8')) : [];
 const byId = new Map(previous.map((s) => [s.id, s]));
 
+// Discover resource IDs from the official catalogue rather than assuming download filenames.
+const catalogue: Omit<SourceRecord, 'method'> = {
+  id: 'datagov-catalogue', file: 'votes-knesset.catalogue.json',
+  url: 'https://data.gov.il/api/3/action/package_show?id=votes-knesset',
+  publisher: 'data.gov.il / Central Elections Committee', official: true,
+  description: 'Catalogue of official election result resources, including original XLS resources',
+};
+if (refresh || !existsSync(join(RAW, catalogue.file))) byId.set(catalogue.id, await fetchHttp(catalogue));
+const resources = JSON.parse(readFileSync(join(RAW, catalogue.file), 'utf8')).result.resources;
+for (let n = 16; n <= 24; n++) {
+  for (const r of resources.filter((r: any) => r.name.includes(`-${n} `))) {
+    const kind = /קלפי/.test(r.name) ? 'ballots' : 'localities';
+    DATASTORE_SOURCES.push({
+      id: `k${n}-${kind}-datagov`,
+      file: kind === 'ballots' ? `../../.backup-scratch/raw/k${n}/ballots.datagov.json` : `k${n}/localities.datagov.json`,
+      url: `https://data.gov.il/api/3/action/datastore_search?resource_id=${r.id}`,
+      publisher: 'Central Elections Committee via data.gov.il', official: true, description: r.name,
+    });
+  }
+  HTTP_SOURCES.push({
+    id: `k${n}-candidates-gazette`, file: `k${n}/candidates.pdf`,
+    url: 'https://www.gov.il/BlobFolder/guide/election-committee-history/he/' +
+      (n <= 20 ? `knesset${n}-cand.pdf` : encodeURIComponent(`ילקוט הפרסומים-${({21:8168,22:8420,23:8698,24:9476} as Record<number, number>)[n]}.pdf`)),
+    publisher: 'Central Elections Committee / Reshumot', official: true, description: `Knesset ${n} registered candidate lists`,
+  });
+  if (n <= 20) HTTP_SOURCES.push({
+    id: `k${n}-results-gazette`, file: `k${n}/results.pdf`,
+    url: `https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset${n}-results.pdf`,
+    publisher: 'Central Elections Committee / Reshumot', official: true, description: `Knesset ${n} gazetted national results`,
+  });
+  if (n >= 21) HTTP_SOURCES.push({
+    id: `k${n}-national-html`, file: `k${n}/nationalresults.html`,
+    url: `https://votes${n}.bechirot.gov.il/nationalresults`, publisher: 'Central Elections Committee',
+    official: true, description: `Knesset ${n} final national results`,
+  });
+}
+// Retain regeneration for primary gazettes located during research (including mirror URLs).
+for (const source of previous.filter(s => /^k(1[6-9]|2[0-4])-surplus-gazette$/.test(s.id))) {
+  const { method: _method, ...http } = source; HTTP_SOURCES.push(http);
+}
+const persist = () => writeFileSync(MANIFEST, JSON.stringify([...byId.values()], null, 2) + '\n');
+const failures: string[] = [];
 for (const src of HTTP_SOURCES) {
   if (!refresh && existsSync(join(RAW, src.file)) && byId.get(src.id)?.sha256) continue;
-  byId.set(src.id, await fetchHttp(src));
+  try { byId.set(src.id, await fetchHttp(src)); persist(); } catch (e) { failures.push(`${src.id}: ${e}`); byId.set(src.id, { ...src, method: 'manual-capture', note: `Download failed; no data inferred: ${e}` }); persist(); console.error(String(e)); continue; }
   console.log('fetched', src.id);
 }
 for (const src of DATASTORE_SOURCES) {
   if (!refresh && existsSync(join(RAW, src.file)) && byId.get(src.id)?.sha256) continue;
-  byId.set(src.id, await fetchDatastore(src));
+  try { byId.set(src.id, await fetchDatastore(src)); persist(); } catch (e) { failures.push(`${src.id}: ${e}`); byId.set(src.id, { ...src, method: 'manual-capture', note: `Download failed; no data inferred: ${e}` }); persist(); console.error(String(e)); continue; }
   console.log('fetched', src.id);
 }
 for (const m of MANUAL_SOURCES) {
@@ -168,3 +210,5 @@ for (const m of MANUAL_SOURCES) {
 }
 writeFileSync(MANIFEST, JSON.stringify([...byId.values()], null, 2) + '\n');
 console.log('manifest written:', byId.size, 'sources');
+
+if (failures.length) { console.error(failures.join('\n')); process.exitCode = 1; }

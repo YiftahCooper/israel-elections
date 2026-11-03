@@ -1,0 +1,138 @@
+[
+  {
+    "id": "k16",
+    "knesset": 16,
+    "date": "2003-01-28",
+    "nameHe": "הבחירות לכנסת ה-16",
+    "nameEn": "Election to the 16th Knesset",
+    "available": false,
+    "status": {
+      "stage": "pending-data-verification",
+      "noteEn": "Official sources downloaded; dataset not built or verified."
+    }
+  },
+  {
+    "id": "k17",
+    "knesset": 17,
+    "date": "2006-03-28",
+    "nameHe": "הבחירות לכנסת ה-17",
+    "nameEn": "Election to the 17th Knesset",
+    "available": false,
+    "status": {
+      "stage": "pending-data-verification",
+      "noteEn": "Official sources downloaded; dataset not built or verified."
+    }
+  },
+  {
+    "id": "k18",
+    "knesset": 18,
+    "date": "2009-02-10",
+    "nameHe": "הבחירות לכנסת ה-18",
+    "nameEn": "Election to the 18th Knesset",
+    "available": false,
+    "status": {
+      "stage": "pending-data-verification",
+      "noteEn": "Official sources downloaded; dataset not built or verified."
+    }
+  },
+  {
+    "id": "k19",
+    "knesset": 19,
+    "date": "2013-01-22",
+    "nameHe": "הבחירות לכנסת ה-19",
+    "nameEn": "Election to the 19th Knesset",
+    "available": false,
+    "status": {
+      "stage": "pending-data-verification",
+      "noteEn": "Official sources downloaded; dataset not built or verified."
+    }
+  },
+  {
+    "id": "k20",
+    "knesset": 20,
+    "date": "2015-03-17",
+    "nameHe": "הבחירות לכנסת ה-20",
+    "nameEn": "Election to the 20th Knesset",
+    "available": false,
+    "status": {
+      "stage": "pending-data-verification",
+      "noteEn": "Official sources downloaded; dataset not built or verified."
+    }
+  },
+  {
+    "id": "k21",
+    "knesset": 21,
+    "date": "2019-04-09",
+    "nameHe": "הבחירות לכנסת ה-21",
+    "nameEn": "Election to the 21st Knesset",
+    "available": false,
+    "status": {
+      "stage": "pending-data-verification",
+      "noteEn": "Official sources downloaded; dataset not built or verified."
+    }
+  },
+  {
+    "id": "k22",
+    "knesset": 22,
+    "date": "2019-09-17",
+    "nameHe": "הבחירות לכנסת ה-22",
+    "nameEn": "Election to the 22nd Knesset",
+    "available": false,
+    "status": {
+      "stage": "pending-data-verification",
+      "noteEn": "Official sources downloaded; dataset not built or verified."
+    }
+  },
+  {
+    "id": "k23",
+    "knesset": 23,
+    "date": "2020-03-02",
+    "nameHe": "הבחירות לכנסת ה-23",
+    "nameEn": "Election to the 23rd Knesset",
+    "available": false,
+    "status": {
+      "stage": "pending-data-verification",
+      "noteEn": "Official sources downloaded; dataset not built or verified."
+    }
+  },
+  {
+    "id": "k24",
+    "knesset": 24,
+    "date": "2021-03-23",
+    "nameHe": "הבחירות לכנסת ה-24",
+    "nameEn": "Election to the 24th Knesset",
+    "available": false,
+    "status": {
+      "stage": "pending-data-verification",
+      "noteEn": "Official sources downloaded; dataset not built or verified."
+    }
+  },
+  {
+    "id": "k25",
+    "knesset": 25,
+    "date": "2022-11-01",
+    "nameHe": "הבחירות לכנסת ה-25",
+    "nameEn": "Election to the 25th Knesset",
+    "available": true,
+    "status": {
+      "stage": "official-final",
+      "asOf": "2022-11-10",
+      "noteHe": "תוצאות סופיות רשמיות של ועדת הבחירות המרכזית.",
+      "noteEn": "Official final results of the Central Elections Committee."
+    }
+  },
+  {
+    "id": "k26",
+    "knesset": 26,
+    "date": "2026-10-27",
+    "nameHe": "הבחירות לכנסת ה-26",
+    "nameEn": "Election to the 26th Knesset",
+    "available": true,
+    "status": {
+      "stage": "final-count-pending-publication",
+      "asOf": "2026-11-03",
+      "noteHe": "ספירה סופית שפרסמה ועדת הבחירות המרכזית (קבצי התוצאות מיום 3.11.2026). התוצאות הסופיות יפורסמו ברשומות עד 4.11.2026 ועד אז עשויות להשתנות.",
+      "noteEn": "Final count published by the Central Elections Committee (result files of 3 Nov 2026). Final results are due to be gazetted in Reshumot by 4 Nov 2026 and may change until then."
+    }
+  }
+]

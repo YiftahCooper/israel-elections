@@ -3,7 +3,20 @@
 
 export const DATASET_SCHEMA_VERSION = 1;
 
-export type ElectionId = 'k25' | 'k26';
+export const ELECTION_IDS = ['k16', 'k17', 'k18', 'k19', 'k20', 'k21', 'k22', 'k23', 'k24', 'k25', 'k26'] as const;
+export type ElectionId = (typeof ELECTION_IDS)[number];
+
+/** One row of public/data/elections.json: every election the project knows about, built or not. */
+export interface ElectionIndexEntry {
+  id: ElectionId;
+  knesset: number;
+  date: string;
+  nameHe: string;
+  nameEn: string;
+  /** false = sources are downloaded but the dataset is not yet built and verified */
+  available: boolean;
+  status: { stage: string; noteEn?: string; noteHe?: string };
+}
 
 export interface DatasetStatus {
   /** 'official-final' = CEC published final results; 'final-count-pending-publication' = full count

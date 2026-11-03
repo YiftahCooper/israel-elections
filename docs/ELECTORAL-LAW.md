@@ -49,3 +49,33 @@ Notes on interpretation, each covered by tests (`tests/engine.test.ts`):
 * 25th Knesset (2022): every list's seats equal the official CEC result; quota 36,227; 113 whole-quota seats and 7 remainder seats; threshold 154,855 votes.
 * 26th Knesset (2026): the result equals the seat counts reported from the CEC final count (Likud 27, Yashar! 21, Together 12, Joint List 11, Democrats 8, Ra'am 8, Otzma Yehudit 7, UTJ 7, Yisrael Beiteinu 7, Religious Zionism–Zehut 6, Shas 6); quota 44,873; 5 remainder seats.
 * Without agreements and with an exact quota, Bader–Ofer equals D'Hondt; 200 random elections are cross-checked against an independent D'Hondt implementation.
+
+## Earlier statutory eras (Knessets 16–24)
+
+The engine now defines three exact presets. All retain Bader–Ofer, 120 seats, the floor
+quota, two-list agreements effective only when both lists qualify, and the statutory
+majority cap. The changed parameter is the qualifying threshold:
+
+| Election | Preset | Exact threshold |
+|---|---|---|
+| 16 (2003) | `il-1992-bader-ofer-1.5` | 3/200 = 1.5% |
+| 17–19 (2006–2013) | `il-2004-bader-ofer-2` | 1/50 = 2% |
+| 20–26 (2015 onward) | `il-2014-bader-ofer-3.25` | 13/400 = 3.25% |
+
+The Knesset's [threshold history](https://main.knesset.gov.il/About/Lexicon/pages/qualifying-threshold.aspx)
+identifies the 1992 change, May 2004 change, and 11 March 2014 change. The CEC's
+[2006 electoral-system explanation](https://www.gov.il/apps/elections/elections-knesset-17/heb/about/ElectoralSystem.html)
+explicitly describes the change from 1.5% to 2% during the 16th Knesset. Thus the
+2004 change applies to the **17th election**, not retroactively to the 2003 election.
+The Knesset Research and Information Center's
+[2021 research note](https://fs.knesset.gov.il/globaldocs/MMM/d5c6ad87-7f7a-eb11-810c-00155d0aee38/2_d5c6ad87-7f7a-eb11-810c-00155d0aee38_11_17733.pdf)
+also explicitly places the 1.5% era at elections 13–16.
+
+These are institutional historical descriptions. Historical amendment texts and every
+other clause's point-in-time wording have **not** yet been compared exhaustively.
+No additional allocation-method difference has been established in this implementation.
+
+`historicalRules()` resolves each preset; returning from experimental mode restores the
+election's era, using its historical base scenario when provided. Tests cover that rule
+plumbing for each election id. They do **not** establish seat reproduction for Knessets
+16–24: those datasets remain unreleased pending the checks in DATA.md.

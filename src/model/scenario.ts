@@ -1,10 +1,10 @@
 // Editable simulation state. A Scenario is a full, self-contained copy of an election's inputs;
 // the historical dataset it was created from is never modified. Every displayed figure is derived
 // from a Scenario through the engine — no totals are stored separately.
-import type { BlocDef, ElectionDataset, ElectionId } from '../data/schema.ts';
+import { ELECTION_IDS, type BlocDef, type ElectionDataset, type ElectionId } from '../data/schema.ts';
 import { percentToRational } from '../engine/rational.ts';
 import type { AllocationInput, RemainderMethod, RuleSet } from '../engine/types.ts';
-import { ISRAEL_2014 } from '../engine/rules.ts';
+import { ISRAEL_1992, ISRAEL_2004, ISRAEL_2014, RULESETS } from '../engine/rules.ts';
 
 export const SCENARIO_SCHEMA = 'israel-elections-scenario';
 export const SCENARIO_VERSION = 1;
@@ -105,14 +105,25 @@ export type Action =
 /** What reset/restore actions resolve against: the historical scenario of the same dataset. */
 export interface ActionContext { base?: Scenario }
 
-export function historicalRules(ruleSetId: string): SimRules {
-  if (ruleSetId !== ISRAEL_2014.id) throw new Error(`unknown rule set ${ruleSetId}`);
-  return { seats: 120, thresholdPct: '3.25', quotaRounding: 'floor', remainderMethod: 'bader-ofer', majorityCap: true, maxAgreementSize: 2, agreementRequiresAllQualify: true };
+/** Election date determines the statutory era, not the year a scenario is edited. */
+export function electionRuleSetId(id: ElectionId): string {
+  const n = Number(id.slice(1));
+  if (!Number.isInteger(n) || n < 16 || n > 26) throw new Error(`unknown election ${id}`);
+  return n === 16 ? ISRAEL_1992.id : n <= 19 ? ISRAEL_2004.id : ISRAEL_2014.id;
 }
 
-export function toRuleSet(r: SimRules, historical: boolean): RuleSet {
+export function historicalRules(ruleSetId: string): SimRules {
+  const r = RULESETS[ruleSetId];
+  if (!r) throw new Error(`unknown rule set ${ruleSetId}`);
+  const thresholdPct = r.id === ISRAEL_1992.id ? '1.5' : r.id === ISRAEL_2004.id ? '2' : '3.25';
+  return { seats: r.seats, thresholdPct, quotaRounding: r.quotaRounding, remainderMethod: r.remainderMethod,
+    majorityCap: r.majorityCap, maxAgreementSize: r.maxAgreementSize, agreementRequiresAllQualify: r.agreementRequiresAllQualify };
+}
+
+/** `historicalId` is the statutory rule set the rules are labelled with, or null for experimental rules. */
+export function toRuleSet(r: SimRules, historicalId: string | null): RuleSet {
   return {
-    id: historical ? ISRAEL_2014.id : 'experimental', historical, seats: r.seats,
+    id: historicalId ?? 'experimental', historical: historicalId !== null, seats: r.seats,
     threshold: percentToRational(r.thresholdPct), quotaRounding: r.quotaRounding, remainderMethod: r.remainderMethod,
     majorityCap: r.majorityCap, maxAgreementSize: r.maxAgreementSize, agreementRequiresAllQualify: r.agreementRequiresAllQualify,
   };
@@ -137,7 +148,7 @@ export function scenarioFromDataset(ds: ElectionDataset, name = ''): Scenario {
 
 export function toEngineInput(s: Scenario): AllocationInput {
   return {
-    rules: toRuleSet(s.rules, s.mode === 'historical'),
+    rules: toRuleSet(s.rules, s.mode === 'historical' ? electionRuleSetId(s.electionId) : null),
     lists: s.lists.map((l) => ({ id: l.id, votes: BigInt(l.votes), withdrawn: l.withdrawn })),
     agreements: s.agreements.filter((a) => a.enabled).map((a) => ({ id: a.id, members: a.members })),
     lotteryWinners: s.lotteryWinners,
@@ -154,7 +165,7 @@ export function validateScenario(x: unknown): string[] {
   const whole = (n: unknown) => typeof n === 'number' && Number.isSafeInteger(n) && n >= 0;
   if (!s || typeof s !== 'object') return ['not an object'];
   if (s.schema !== SCENARIO_SCHEMA) e.push('not a scenario file exported by this application');
-  if (s.electionId !== 'k25' && s.electionId !== 'k26') e.push(`unknown election "${String(s.electionId)}"`);
+  if (!ELECTION_IDS.includes(s.electionId as ElectionId)) e.push(`unknown election "${String(s.electionId)}"`);
   if (s.mode !== 'historical' && s.mode !== 'experimental') e.push('invalid mode');
   const r = s.rules as SimRules | undefined;
   if (!r) e.push('missing rules');

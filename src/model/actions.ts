@@ -1,6 +1,6 @@
 // Pure scenario transitions. Each returns a new Scenario and never mutates its input.
 // Vote counts stay non-negative integers; every integer split uses exact largest-remainder rounding.
-import { historicalRules, type Action, type ActionContext, type Scenario, type SimCandidate, type SimList } from './scenario.ts';
+import { electionRuleSetId, historicalRules, type Action, type ActionContext, type Scenario, type SimCandidate, type SimList } from './scenario.ts';
 
 export class ActionError extends Error {
   readonly code: string;
@@ -221,7 +221,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
           if (a.members.length !== 2 || a.members.some((m) => seen.has(m))) disabled.add(a.id);
           else a.members.forEach((m) => seen.add(m));
         }
-        s = { ...s, mode: 'historical', rules: historicalRules('il-2014-bader-ofer-3.25'), agreements: s.agreements.map((a) => (disabled.has(a.id) ? { ...a, enabled: false } : a)) };
+        s = { ...s, mode: 'historical', rules: ctx.base && ctx.base.electionId === s.electionId ? { ...ctx.base.rules } : historicalRules(electionRuleSetId(s.electionId)), agreements: s.agreements.map((a) => (disabled.has(a.id) ? { ...a, enabled: false } : a)) };
       } else s = { ...s, mode: 'experimental' };
       break;
     case 'setTotals':
