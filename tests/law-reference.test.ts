@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { it } from 'vitest';
 import { allocate } from '../src/engine/allocate.ts';
-import { ISRAEL_2014 } from '../src/engine/rules.ts';
+import { ISRAEL_1973, ISRAEL_2014 } from '../src/engine/rules.ts';
 import type { AllocationInput } from '../src/engine/types.ts';
 
 // Independent implementation supplied by the bug hunt: do not share allocation helpers.
@@ -79,3 +79,22 @@ it('matches sections 81/82 and separates agreement/list IDs', () => {
   const collision: AllocationInput = { rules: ISRAEL_2014, lists: [{ id: 'a', votes: 60000n }, { id: 'b', votes: 40000n }, { id: 'c', votes: 100000n }], agreements: [{ id: 'c', members: ['a', 'b'] }] };
   assert.deepEqual(allocate(collision).lists.map(l => l.seats), reference(collision), 'agreement/list id namespaces');
 }, 10_000);
+
+it('also matches the original 1973 section 81(d) at the 1% threshold', () => {
+  // The reference algorithm is unchanged: SH 692 p.108 uses the same quotients,
+  // lottery and half-seats restriction. SH 556 p.116 supplies the floor quota.
+  const cases = [
+    [980_000, 10_000, 9_999, 1], // exact 1% boundary and immediately below it
+    [500_000, 500_000], // half-seats restriction and equal quotients
+    [621_183, 473_309, 130_349, 60_012, 53_353, 56_560, 35_023],
+    [1, 1], [39, 45, 70], // same documented small-number quota fallback
+  ];
+  for (const votes of cases) for (const paired of [false, true]) {
+    const input: AllocationInput = {
+      rules: ISRAEL_1973,
+      lists: votes.map((v, i) => ({ id: `L${i}`, votes: BigInt(v) })),
+      agreements: paired ? [{ id: 'P', members: ['L0', 'L1'] }] : [],
+    };
+    assert.deepEqual(allocate(input).lists.map(l => l.seats), reference(input));
+  }
+});

@@ -99,8 +99,8 @@
     "available": false,
     "status": {
       "stage": "pending-data-verification",
-      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
-      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+      "noteEn": "National gazette votes and CBS totals reconciled. Agreement set not recovered; four seat mismatches without agreements. Complete winning rosters unverified. No locality dataset. See decisions 0070–0071.",
+      "noteHe": "הקולות הארציים אומתו מול רשומות והלמ״ס. רשימות המועמדים המלאות טרם אומתו; הבחירות אינן זמינות. ללא נתוני יישובים. ראו החלטות 0070–0071."
     }
   },
   {
@@ -112,8 +112,8 @@
     "available": false,
     "status": {
       "stage": "pending-data-verification",
-      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
-      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+      "noteEn": "National totals reconciled; complete six-pair agreement notice verified. One-person Flatto-Sharon roster verified; unfillable-seat legal procedure unresolved (Flatto-Sharon/Sheli seat mismatch). Other winning rosters unverified. No localities. See decisions 0070–0071.",
+      "noteHe": "הקולות הארציים אומתו מול רשומות והלמ״ס. רשימות המועמדים המלאות טרם אומתו; הבחירות אינן זמינות. ללא נתוני יישובים. ראו החלטות 0070–0071."
     }
   },
   {
@@ -125,8 +125,8 @@
     "available": false,
     "status": {
       "stage": "pending-data-verification",
-      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
-      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+      "noteEn": "National totals reconciled and every gazetted seat reproduced using all three pairs in YP 2720 p. 2027 (official gazette via olaw mirror). Complete winning rosters and full period-law chain unverified. No localities. See decisions 0070–0071.",
+      "noteHe": "הקולות הארציים אומתו מול רשומות והלמ״ס. רשימות המועמדים המלאות טרם אומתו; הבחירות אינן זמינות. ללא נתוני יישובים. ראו החלטות 0070–0071."
     }
   },
   {
@@ -138,8 +138,8 @@
     "available": false,
     "status": {
       "stage": "pending-data-verification",
-      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
-      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+      "noteEn": "National totals reconciled and every gazetted seat reproduced using all four pairs in YP 3073 p. 2839 (official gazette via olaw mirror). Alignment roster: 120 names, elected ranks 1–44 checked; other winning rosters and full period-law chain unverified. No localities. See decisions 0070–0071.",
+      "noteHe": "הקולות הארציים אומתו מול רשומות והלמ״ס. רשימות המועמדים המלאות טרם אומתו; הבחירות אינן זמינות. ללא נתוני יישובים. ראו החלטות 0070–0071."
     }
   },
   {
@@ -151,8 +151,8 @@
     "available": false,
     "status": {
       "stage": "pending-data-verification",
-      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
-      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+      "noteEn": "National totals reconciled and every gazetted seat reproduced using all five pairs in YP 3588 p. 170. Complete winning rosters and full period-law chain unverified. No localities. See decisions 0070–0071.",
+      "noteHe": "הקולות הארציים אומתו מול רשומות והלמ״ס. רשימות המועמדים המלאות טרם אומתו; הבחירות אינן זמינות. ללא נתוני יישובים. ראו החלטות 0070–0071."
     }
   },
   {

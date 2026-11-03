@@ -103,3 +103,37 @@ gazetted seats, with thresholds **47,226 / 62,742** and quotas **25,138 / 24,619
 They are explicitly research fixtures: both elections remain unavailable because gazette
 figures conflict with polling data, full candidate rosters are unverified and required
 locality fields are missing. Successful allocation does not clear those release gates.
+
+## 1973–1988: original 1% Bader–Ofer text, with release limitations
+
+`ISRAEL_1973` (`il-1973-bader-ofer-1`) applies the exact **1/100** threshold to
+Knessets 8–12. [Amendment No. 4 (1973)](https://fs.knesset.gov.il/7/law/7_lsr_211799.pdf),
+**SH 692 p. 108, 9 April 1973**, replaces only section 81(d). It expressly includes
+repeated highest quotients, a CEC lottery for equal quotients and the half-seats
+restriction. These already match the existing engine; no new `RuleSet` option is added.
+The original amendment visibly says **No. 4**, despite some secondary descriptions
+calling it No. 5.
+
+The [original 1969 consolidated law](https://fs.knesset.gov.il/6/law/6_lsr_311009.pdf),
+SH 556, printed p. 116, supplies sections 81(a–c) and 82: 1%, **floor** quota,
+whole-quota initial seats, combination only for remainders when both partners qualify,
+and full re-division within a linked pair. Section 67(a), p. 113, permits only one
+partner. The 1977/1981/1984/1988 official notices confirm actual paired lists. A full
+primary comparison of intervening amendments and temporary laws through 1988 remains
+unverified, so this preset is not a claim that every special case is implemented.
+
+The 1977 gazette publishes one seat for Flatto-Sharon (**פש**, sole candidate
+**שרון סמואל**) and two for Sheli. With all six sourced agreements, the uncapped
+engine gives two and one respectively; all other lists, including NRP's twelve, match.
+Section 83 of the original statute identifies elected members in roster order, but
+provides no explicit redistribution algorithm. No operative provision or CEC ruling
+resolving the unfillable seat has been verified. **K9 stays unavailable**; no candidate
+cap or vote adjustment is guessed. Decision [0070](decisions/0070-1973-rules-and-unfillable-seat-hold.md)
+records the primary text, diagnostic mismatch and remaining legal gate.
+
+K10, K11 and K12 reproduce **every** gazetted seat through the scenario pipeline,
+using complete notices: YP 2720 p. 2027 (three pairs), YP 3073 p. 2839 (four), and
+YP 3588 p. 170 (five). K8's agreement set is still unknown; running without agreements
+produces four list-level differences. All five remain unavailable while full winning
+rosters and complete period-law verification are unfinished. These research tests do
+not clear release gates; see [0071](decisions/0071-k8-k12-national-evidence-release-holds.md).

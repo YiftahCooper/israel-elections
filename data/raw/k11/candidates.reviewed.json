@@ -1,0 +1,671 @@
+{
+  "id": "k11",
+  "sourceId": "k11-candidates-gazette",
+  "issue": 3073,
+  "scope": "Partial roster coverage: only Alignment transcribed completely. Other winning rosters remain unverified. Gazette snapshot, not later membership.",
+  "lists": [
+    {
+      "letters": "אמת",
+      "complete": true,
+      "publishedCount": 120,
+      "pages": [
+        2826
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k11-results-gazette",
+        "pages": [
+          3007
+        ],
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44
+        ],
+        "note": "First 44 names compared in gazetted order. Result spelling/punctuation can differ; registration spelling retained."
+      },
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "פרס שמעון",
+          "page": 2826
+        },
+        {
+          "rank": 2,
+          "nameHe": "נבון יצחק",
+          "page": 2826
+        },
+        {
+          "rank": 3,
+          "nameHe": "רבין יצחק",
+          "page": 2826
+        },
+        {
+          "rank": 4,
+          "nameHe": "בר לב חיים",
+          "page": 2826
+        },
+        {
+          "rank": 5,
+          "nameHe": "אבן אבא",
+          "page": 2826
+        },
+        {
+          "rank": 6,
+          "nameHe": "שם טוב ויקטור",
+          "page": 2826
+        },
+        {
+          "rank": 7,
+          "nameHe": "קיסר ישראל",
+          "page": 2826
+        },
+        {
+          "rank": 8,
+          "nameHe": "יעקבי גד",
+          "page": 2826
+        },
+        {
+          "rank": 9,
+          "nameHe": "ארבלי אלמוזלינו שושנה",
+          "page": 2826
+        },
+        {
+          "rank": 10,
+          "nameHe": "גרנות אלעזר",
+          "page": 2826
+        },
+        {
+          "rank": 11,
+          "nameHe": "גור מרדכי",
+          "page": 2826
+        },
+        {
+          "rank": 12,
+          "nameHe": "שחל משה",
+          "page": 2826
+        },
+        {
+          "rank": 13,
+          "nameHe": "אדרי רפאל",
+          "page": 2826
+        },
+        {
+          "rank": 14,
+          "nameHe": "הלל שלמה",
+          "page": 2826
+        },
+        {
+          "rank": 15,
+          "nameHe": "נמיר אורה",
+          "page": 2826
+        },
+        {
+          "rank": 16,
+          "nameHe": "שפירא אליהו",
+          "page": 2826
+        },
+        {
+          "rank": 17,
+          "nameHe": "ברעם עוזי",
+          "page": 2826
+        },
+        {
+          "rank": 18,
+          "nameHe": "נחמקין אריה",
+          "page": 2826
+        },
+        {
+          "rank": 19,
+          "nameHe": "צבן יאיר",
+          "page": 2826
+        },
+        {
+          "rank": 20,
+          "nameHe": "כץ עוז אברהם",
+          "page": 2826
+        },
+        {
+          "rank": 21,
+          "nameHe": "צור יעקב",
+          "page": 2826
+        },
+        {
+          "rank": 22,
+          "nameHe": "פרץ יצחק",
+          "page": 2826
+        },
+        {
+          "rank": 23,
+          "nameHe": "הכהן מנחם",
+          "page": 2826
+        },
+        {
+          "rank": 24,
+          "nameHe": "ארד נאוה",
+          "page": 2826
+        },
+        {
+          "rank": 25,
+          "nameHe": "שריד יוסף יוסי",
+          "page": 2826
+        },
+        {
+          "rank": 26,
+          "nameHe": "סרטני אמירה",
+          "page": 2826
+        },
+        {
+          "rank": 27,
+          "nameHe": "אמיר יעקב ז׳אק",
+          "page": 2826
+        },
+        {
+          "rank": 28,
+          "nameHe": "חריש מיכאל",
+          "page": 2826
+        },
+        {
+          "rank": 29,
+          "nameHe": "וייס שבח",
+          "page": 2826
+        },
+        {
+          "rank": 30,
+          "nameHe": "לין אמנון",
+          "page": 2826
+        },
+        {
+          "rank": 31,
+          "nameHe": "אמוראי עדיאל",
+          "page": 2826
+        },
+        {
+          "rank": 32,
+          "nameHe": "ליבאי דוד",
+          "page": 2826
+        },
+        {
+          "rank": 33,
+          "nameHe": "ותד מחמד",
+          "page": 2826
+        },
+        {
+          "rank": 34,
+          "nameHe": "בן מאיר דב",
+          "page": 2826
+        },
+        {
+          "rank": 35,
+          "nameHe": "רמון חיים",
+          "page": 2826
+        },
+        {
+          "rank": 36,
+          "nameHe": "שלום אפרים",
+          "page": 2826
+        },
+        {
+          "rank": 37,
+          "nameHe": "רן נחמן",
+          "page": 2826
+        },
+        {
+          "rank": 38,
+          "nameHe": "סולודר עדנה",
+          "page": 2826
+        },
+        {
+          "rank": 39,
+          "nameHe": "ארצי יצחק",
+          "page": 2826
+        },
+        {
+          "rank": 40,
+          "nameHe": "גרוסמן אריקה חיה",
+          "page": 2826
+        },
+        {
+          "rank": 41,
+          "nameHe": "הראל אהרן",
+          "page": 2826
+        },
+        {
+          "rank": 42,
+          "nameHe": "דראושה עבד אלוהאב",
+          "page": 2826
+        },
+        {
+          "rank": 43,
+          "nameHe": "דיניץ שמחה",
+          "page": 2826
+        },
+        {
+          "rank": 44,
+          "nameHe": "נחמיאס אהרן רפאל",
+          "page": 2826
+        },
+        {
+          "rank": 45,
+          "nameHe": "גיל יעקב",
+          "page": 2826
+        },
+        {
+          "rank": 46,
+          "nameHe": "יציב גד",
+          "page": 2826
+        },
+        {
+          "rank": 47,
+          "nameHe": "שוחט אברהם",
+          "page": 2826
+        },
+        {
+          "rank": 48,
+          "nameHe": "סויסה רפאל",
+          "page": 2826
+        },
+        {
+          "rank": 49,
+          "nameHe": "סבג אורי",
+          "page": 2826
+        },
+        {
+          "rank": 50,
+          "nameHe": "לקט יחיאל",
+          "page": 2826
+        },
+        {
+          "rank": 51,
+          "nameHe": "בר זהר מיכאל",
+          "page": 2826
+        },
+        {
+          "rank": 52,
+          "nameHe": "חשאי יהודה",
+          "page": 2826
+        },
+        {
+          "rank": 53,
+          "nameHe": "בן שמחון שאול",
+          "page": 2826
+        },
+        {
+          "rank": 54,
+          "nameHe": "ביילין יוסף",
+          "page": 2826
+        },
+        {
+          "rank": 55,
+          "nameHe": "גולדמן מיכה",
+          "page": 2826
+        },
+        {
+          "rank": 56,
+          "nameHe": "שטרית שמעון",
+          "page": 2826
+        },
+        {
+          "rank": 57,
+          "nameHe": "אלישוב יצחק",
+          "page": 2826
+        },
+        {
+          "rank": 58,
+          "nameHe": "דותן רינה",
+          "page": 2826
+        },
+        {
+          "rank": 59,
+          "nameHe": "חדאד חנא",
+          "page": 2826
+        },
+        {
+          "rank": 60,
+          "nameHe": "שפירא אלישע",
+          "page": 2826
+        },
+        {
+          "rank": 61,
+          "nameHe": "חייט יהודה יצחק",
+          "page": 2826
+        },
+        {
+          "rank": 62,
+          "nameHe": "גלס דוד",
+          "page": 2826
+        },
+        {
+          "rank": 63,
+          "nameHe": "אריאב מנחם",
+          "page": 2826
+        },
+        {
+          "rank": 64,
+          "nameHe": "בר לביא רפי",
+          "page": 2826
+        },
+        {
+          "rank": 65,
+          "nameHe": "מרציאנו סעדיה",
+          "page": 2826
+        },
+        {
+          "rank": 66,
+          "nameHe": "נעים רענן",
+          "page": 2826
+        },
+        {
+          "rank": 67,
+          "nameHe": "פרי ישעיהו",
+          "page": 2826
+        },
+        {
+          "rank": 68,
+          "nameHe": "שוסטר יהודה",
+          "page": 2826
+        },
+        {
+          "rank": 69,
+          "nameHe": "בן הרוש יהודה",
+          "page": 2826
+        },
+        {
+          "rank": 70,
+          "nameHe": "עמאר משה",
+          "page": 2826
+        },
+        {
+          "rank": 71,
+          "nameHe": "לוי דוד",
+          "page": 2826
+        },
+        {
+          "rank": 72,
+          "nameHe": "לוק עמרם",
+          "page": 2826
+        },
+        {
+          "rank": 73,
+          "nameHe": "שפרלינג יוסף",
+          "page": 2826
+        },
+        {
+          "rank": 74,
+          "nameHe": "כץ יוסף",
+          "page": 2826
+        },
+        {
+          "rank": 75,
+          "nameHe": "תמיר עליזה",
+          "page": 2826
+        },
+        {
+          "rank": 76,
+          "nameHe": "וילן אבשלום",
+          "page": 2826
+        },
+        {
+          "rank": 77,
+          "nameHe": "בילסקי בן חור רפאלה",
+          "page": 2826
+        },
+        {
+          "rank": 78,
+          "nameHe": "זיסמן עמנואל",
+          "page": 2826
+        },
+        {
+          "rank": 79,
+          "nameHe": "שיאון דיין יעל",
+          "page": 2826
+        },
+        {
+          "rank": 80,
+          "nameHe": "ליכטנברג חיים",
+          "page": 2826
+        },
+        {
+          "rank": 81,
+          "nameHe": "אברקוביץ יורם",
+          "page": 2826
+        },
+        {
+          "rank": 82,
+          "nameHe": "חורי סברי",
+          "page": 2826
+        },
+        {
+          "rank": 83,
+          "nameHe": "כרמל עמוס",
+          "page": 2826
+        },
+        {
+          "rank": 84,
+          "nameHe": "צור צפורה",
+          "page": 2826
+        },
+        {
+          "rank": 85,
+          "nameHe": "אליעד נסים",
+          "page": 2826
+        },
+        {
+          "rank": 86,
+          "nameHe": "בן מנחם אליהו",
+          "page": 2826
+        },
+        {
+          "rank": 87,
+          "nameHe": "גזי עמרם",
+          "page": 2826
+        },
+        {
+          "rank": 88,
+          "nameHe": "אוחנה שמואל",
+          "page": 2826
+        },
+        {
+          "rank": 89,
+          "nameHe": "קורן אפרים",
+          "page": 2826
+        },
+        {
+          "rank": 90,
+          "nameHe": "חדד שלום",
+          "page": 2826
+        },
+        {
+          "rank": 91,
+          "nameHe": "שטרסברג וקטוריה",
+          "page": 2826
+        },
+        {
+          "rank": 92,
+          "nameHe": "אמיתי מאיר",
+          "page": 2826
+        },
+        {
+          "rank": 93,
+          "nameHe": "שמוש אמנון",
+          "page": 2826
+        },
+        {
+          "rank": 94,
+          "nameHe": "גור אפרים",
+          "page": 2826
+        },
+        {
+          "rank": 95,
+          "nameHe": "אלפרט אורי",
+          "page": 2826
+        },
+        {
+          "rank": 96,
+          "nameHe": "שביט מיכה",
+          "page": 2826
+        },
+        {
+          "rank": 97,
+          "nameHe": "אלמוגי יוסף",
+          "page": 2826
+        },
+        {
+          "rank": 98,
+          "nameHe": "כספי רם",
+          "page": 2826
+        },
+        {
+          "rank": 99,
+          "nameHe": "ברעם משה",
+          "page": 2826
+        },
+        {
+          "rank": 100,
+          "nameHe": "כרמל משה",
+          "page": 2826
+        },
+        {
+          "rank": 101,
+          "nameHe": "מרון חנה",
+          "page": 2826
+        },
+        {
+          "rank": 102,
+          "nameHe": "ידלין אהרן",
+          "page": 2826
+        },
+        {
+          "rank": 103,
+          "nameHe": "קרוננבלום לאה",
+          "page": 2826
+        },
+        {
+          "rank": 104,
+          "nameHe": "אילון פנחס",
+          "page": 2826
+        },
+        {
+          "rank": 105,
+          "nameHe": "גז מטילדה",
+          "page": 2826
+        },
+        {
+          "rank": 106,
+          "nameHe": "חלבי נאוף",
+          "page": 2826
+        },
+        {
+          "rank": 107,
+          "nameHe": "אשכול מרים",
+          "page": 2826
+        },
+        {
+          "rank": 108,
+          "nameHe": "בן נתן אשר",
+          "page": 2826
+        },
+        {
+          "rank": 109,
+          "nameHe": "יהושע אברהם",
+          "page": 2826
+        },
+        {
+          "rank": 110,
+          "nameHe": "עוז עמוס",
+          "page": 2826
+        },
+        {
+          "rank": 111,
+          "nameHe": "סמילנסקי יזהר",
+          "page": 2826
+        },
+        {
+          "rank": 112,
+          "nameHe": "חזן יעקב",
+          "page": 2826
+        },
+        {
+          "rank": 113,
+          "nameHe": "בלומנטל נפתלי",
+          "page": 2826
+        },
+        {
+          "rank": 114,
+          "nameHe": "רוטנשטרייך נתן",
+          "page": 2826
+        },
+        {
+          "rank": 115,
+          "nameHe": "נאוי אליהו",
+          "page": 2826
+        },
+        {
+          "rank": 116,
+          "nameHe": "קולק טדי",
+          "page": 2826
+        },
+        {
+          "rank": 117,
+          "nameHe": "גלילי ישראל",
+          "page": 2826
+        },
+        {
+          "rank": 118,
+          "nameHe": "צדוק חיים",
+          "page": 2826
+        },
+        {
+          "rank": 119,
+          "nameHe": "יערי מאיר",
+          "page": 2826
+        },
+        {
+          "rank": 120,
+          "nameHe": "קציר אפרים",
+          "page": 2826
+        }
+      ]
+    }
+  ]
+}

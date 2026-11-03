@@ -1,0 +1,32 @@
+{
+  "id": "k9",
+  "sourceId": "k9-candidates-gazette",
+  "issue": 2319,
+  "scope": "Partial roster coverage: only Flatto-Sharon’s one-person list transcribed completely.",
+  "lists": [
+    {
+      "letters": "פש",
+      "complete": true,
+      "publishedCount": 1,
+      "pages": [
+        1330
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "שרון סמואל",
+          "page": 1330
+        }
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k9-results-gazette",
+        "pages": [
+          1496
+        ],
+        "ranks": [
+          1
+        ]
+      }
+    }
+  ]
+}

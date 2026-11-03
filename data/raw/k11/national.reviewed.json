@@ -1,0 +1,238 @@
+{
+  "id": "k11",
+  "reviewedOn": "2026-11-03",
+  "scope": "National votes and seats visually transcribed from the official scanned results gazette. Partial research evidence; not a released application dataset.",
+  "resultsSourceId": "k11-results-gazette",
+  "resultsIssue": 3081,
+  "resultsPages": [
+    3006,
+    3007
+  ],
+  "gazetteTotals": {
+    "valid": 2073321,
+    "invalid": 18081,
+    "registered": null,
+    "votesCast": null
+  },
+  "supplementalTotals": {
+    "registered": 2654613,
+    "votesCast": 2091402,
+    "sourceId": "k8-k12-cbs-national-totals"
+  },
+  "lists": [
+    {
+      "letters": "אמת",
+      "nameHe": "המערך",
+      "gazetteVotes": 724074,
+      "officialSeats": 44
+    },
+    {
+      "letters": "ב",
+      "nameHe": "חזית דתית לאומית – המזרחי הפועל המזרחי ובלתי מפלגתיים",
+      "gazetteVotes": 73530,
+      "officialSeats": 4
+    },
+    {
+      "letters": "ג",
+      "nameHe": "יהדות התורה אגודת ישראל",
+      "gazetteVotes": 36079,
+      "officialSeats": 2
+    },
+    {
+      "letters": "דף",
+      "nameHe": "לבא אליאב לכנסת",
+      "gazetteVotes": 15348,
+      "officialSeats": 0
+    },
+    {
+      "letters": "הן",
+      "nameHe": "שינוי – מפלגת המרכז",
+      "gazetteVotes": 54747,
+      "officialSeats": 3
+    },
+    {
+      "letters": "הם",
+      "nameHe": "הס מס, תנועה לביטול חוק מס הכנסה",
+      "gazetteVotes": 1472,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ו",
+      "nameHe": "חזית דמוקרטית לשלום ולשוויון – המפלגה הקומוניסטית הישראלית (רק״ח), פנתרים שחורים וחוגי ציבור יהודים וערבים",
+      "gazetteVotes": 69815,
+      "officialSeats": 4
+    },
+    {
+      "letters": "זה",
+      "nameHe": "התנועה להתחדשות בראשות ח״כ מרדכי בן־פורת",
+      "gazetteVotes": 5876,
+      "officialSeats": 0
+    },
+    {
+      "letters": "זך",
+      "nameHe": "עמך",
+      "gazetteVotes": 733,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ט",
+      "nameHe": "יחד – התנועה לאחדות לאומית",
+      "gazetteVotes": 46302,
+      "officialSeats": 3
+    },
+    {
+      "letters": "טן",
+      "nameHe": "התנועה למען המולדת",
+      "gazetteVotes": 1415,
+      "officialSeats": 0
+    },
+    {
+      "letters": "יש",
+      "nameHe": "אומץ – להבראת המשק",
+      "gazetteVotes": 23845,
+      "officialSeats": 1
+    },
+    {
+      "letters": "פט",
+      "nameHe": "עצמאות בראשות עזרא זהר",
+      "gazetteVotes": 4887,
+      "officialSeats": 0
+    },
+    {
+      "letters": "כך",
+      "nameHe": "תנועת כך מיסודו של הרב מאיר כהנא",
+      "gazetteVotes": 25907,
+      "officialSeats": 1
+    },
+    {
+      "letters": "מחל",
+      "nameHe": "הליכוד",
+      "gazetteVotes": 661302,
+      "officialSeats": 41
+    },
+    {
+      "letters": "ני",
+      "nameHe": "תמ״י – תנועת מסורת ישראל",
+      "gazetteVotes": 31103,
+      "officialSeats": 1
+    },
+    {
+      "letters": "נ",
+      "nameHe": "תנועת עליה וצעירים",
+      "gazetteVotes": 5794,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ע",
+      "nameHe": "ארגון ארצי להגנת הדייר",
+      "gazetteVotes": 3195,
+      "officialSeats": 0
+    },
+    {
+      "letters": "עי",
+      "nameHe": "מורשה מצ״ד – פא״י",
+      "gazetteVotes": 33287,
+      "officialSeats": 2
+    },
+    {
+      "letters": "פ",
+      "nameHe": "הרשימה המתקדמת לשלום",
+      "gazetteVotes": 38012,
+      "officialSeats": 2
+    },
+    {
+      "letters": "פז",
+      "nameHe": "א.נ.י. – ארגון נכים",
+      "gazetteVotes": 12329,
+      "officialSeats": 0
+    },
+    {
+      "letters": "פש",
+      "nameHe": "פיתוח ושלום",
+      "gazetteVotes": 2430,
+      "officialSeats": 0
+    },
+    {
+      "letters": "רצ",
+      "nameHe": "התנועה לזכויות האזרח ולשלום",
+      "gazetteVotes": 49698,
+      "officialSeats": 3
+    },
+    {
+      "letters": "ש",
+      "nameHe": "שילוב רשימה עצמאית של עולי ההר לכנסת",
+      "gazetteVotes": 5499,
+      "officialSeats": 0
+    },
+    {
+      "letters": "שס",
+      "nameHe": "התאחדות הספרדים שומרי תורה",
+      "gazetteVotes": 63605,
+      "officialSeats": 4
+    },
+    {
+      "letters": "ת",
+      "nameHe": "התחיה צומת",
+      "gazetteVotes": 83037,
+      "officialSeats": 5
+    }
+  ],
+  "agreements": {
+    "sourceId": "k11-candidates-gazette",
+    "page": 2839,
+    "complete": true,
+    "pairs": [
+      [
+        "אמת",
+        "רצ"
+      ],
+      [
+        "ג",
+        "שס"
+      ],
+      [
+        "הן",
+        "ט"
+      ],
+      [
+        "מחל",
+        "ת"
+      ]
+    ]
+  },
+  "candidateChecks": {
+    "completeWinningRostersVerified": false,
+    "lists": [
+      {
+        "letters": "אמת",
+        "publishedCount": 120,
+        "first": {
+          "rank": 1,
+          "nameHe": "פרס שמעון"
+        },
+        "pages": [
+          2826
+        ],
+        "scope": "Complete 120-person roster; first 44 ranks cross-checked with YP3081 p.3007. Other winning rosters not transcribed."
+      }
+    ],
+    "sourceId": "k11-candidates-gazette"
+  },
+  "releaseBlockers": [
+    "Complete winning-list candidate rosters and elected-rank cross-checks remain unverified.",
+    "Full point-in-time amendment-chain verification through this election is incomplete; see decision 0070."
+  ],
+  "sourceIds": [
+    "k11-results-gazette",
+    "k11-candidates-gazette",
+    "k8-k12-cbs-national-totals",
+    "k8-k12-law-1969",
+    "k8-k12-law-1973",
+    "k11-candidates-reviewed"
+  ],
+  "allocationCheck": {
+    "exact": true,
+    "differences": [],
+    "note": "Every list matches the gazetted seats through scenarioFromDataset → toEngineInput → allocate, using complete sourced agreements. Does not clear roster release gates."
+  }
+}

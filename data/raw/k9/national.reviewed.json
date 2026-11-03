@@ -1,0 +1,234 @@
+{
+  "id": "k9",
+  "reviewedOn": "2026-11-03",
+  "scope": "National votes and seats visually transcribed from the official scanned results gazette. Partial research evidence; not a released application dataset.",
+  "resultsSourceId": "k9-results-gazette",
+  "resultsIssue": 2326,
+  "resultsPages": [
+    1494,
+    1495
+  ],
+  "gazetteTotals": {
+    "valid": 1747820,
+    "invalid": 23906,
+    "registered": null,
+    "votesCast": null
+  },
+  "supplementalTotals": {
+    "registered": 2236293,
+    "votesCast": 1771726,
+    "sourceId": "k8-k12-cbs-national-totals"
+  },
+  "lists": [
+    {
+      "letters": "אמת",
+      "nameHe": "המערך – מפלגת העבודה הישראלית, מפלגת הפועלים המאוחדת ובלתי מפלגתיים",
+      "gazetteVotes": 430023,
+      "officialSeats": 32
+    },
+    {
+      "letters": "ב",
+      "nameHe": "חזית דתית לאומית, המזרחי, הפועל המזרחי ובלתי מפלגתיים",
+      "gazetteVotes": 160787,
+      "officialSeats": 12
+    },
+    {
+      "letters": "ג",
+      "nameHe": "יהדות התורה, אגודת ישראל",
+      "gazetteVotes": 58652,
+      "officialSeats": 4
+    },
+    {
+      "letters": "ד",
+      "nameHe": "המחנה התורתי, פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
+      "gazetteVotes": 23571,
+      "officialSeats": 1
+    },
+    {
+      "letters": "הם",
+      "nameHe": "דמוקרטים בצדק",
+      "gazetteVotes": 1085,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ו",
+      "nameHe": "חזית דמוקרטית לשלום ולשוויון – המפלגה הקומוניסטית הישראלית (רק״ח); פנתרים שחורים וחוגי ציבור יהודים וערבים",
+      "gazetteVotes": 80118,
+      "officialSeats": 5
+    },
+    {
+      "letters": "זה",
+      "nameHe": "התנועה להתחדשות חברתית בראשותו של מרדכי בן־פורת",
+      "gazetteVotes": 14516,
+      "officialSeats": 0
+    },
+    {
+      "letters": "חך",
+      "nameHe": "בית ישראל, ברית נאמני תימן ועדות ישראל",
+      "gazetteVotes": 9505,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ים",
+      "nameHe": "הרשימה הערבית המאוחדת",
+      "gazetteVotes": 24185,
+      "officialSeats": 1
+    },
+    {
+      "letters": "יש",
+      "nameHe": "התנועה הדמוקרטית לשינוי",
+      "gazetteVotes": 202265,
+      "officialSeats": 15
+    },
+    {
+      "letters": "כה",
+      "nameHe": "הדור החדש – תנועת הצעירים של ישראל",
+      "gazetteVotes": 1802,
+      "officialSeats": 0
+    },
+    {
+      "letters": "כך",
+      "nameHe": "תנועת כך מיסודו של הרב מאיר כהנא",
+      "gazetteVotes": 4396,
+      "officialSeats": 0
+    },
+    {
+      "letters": "כנ",
+      "nameHe": "שלומציון, תנועה להגשמת הציונות",
+      "gazetteVotes": 33947,
+      "officialSeats": 2
+    },
+    {
+      "letters": "לע",
+      "nameHe": "המפלגה הליברלית העצמאית",
+      "gazetteVotes": 20384,
+      "officialSeats": 1
+    },
+    {
+      "letters": "מחל",
+      "nameHe": "הליכוד",
+      "gazetteVotes": 583968,
+      "officialSeats": 43
+    },
+    {
+      "letters": "נס",
+      "nameHe": "מפלגת הנשים",
+      "gazetteVotes": 5674,
+      "officialSeats": 0
+    },
+    {
+      "letters": "סם",
+      "nameHe": "תנועת הרפורמה הערבית",
+      "gazetteVotes": 5695,
+      "officialSeats": 0
+    },
+    {
+      "letters": "פז",
+      "nameHe": "הפנתרים הציוניים, רשימת ציבור ודורשי עבודה",
+      "gazetteVotes": 1798,
+      "officialSeats": 0
+    },
+    {
+      "letters": "פח",
+      "nameHe": "חופש, חזית פועלים, פנתרים שחורים, ישראל הצעירה, יוצאי עדות, ועדי שכונות עוני ובלתי מפלגתיים",
+      "gazetteVotes": 2498,
+      "officialSeats": 0
+    },
+    {
+      "letters": "פש",
+      "nameHe": "פלאטו שרון",
+      "gazetteVotes": 35049,
+      "officialSeats": 1
+    },
+    {
+      "letters": "רצ",
+      "nameHe": "התנועה לזכויות האזרח",
+      "gazetteVotes": 20621,
+      "officialSeats": 1
+    },
+    {
+      "letters": "ש",
+      "nameHe": "מחנה שלי",
+      "gazetteVotes": 27281,
+      "officialSeats": 2
+    }
+  ],
+  "agreements": {
+    "sourceId": "k9-candidates-gazette",
+    "page": 1319,
+    "complete": true,
+    "pairs": [
+      [
+        "אמת",
+        "ים"
+      ],
+      [
+        "לע",
+        "יש"
+      ],
+      [
+        "מחל",
+        "כנ"
+      ],
+      [
+        "ב",
+        "ג"
+      ],
+      [
+        "ש",
+        "נס"
+      ],
+      [
+        "רצ",
+        "סם"
+      ]
+    ]
+  },
+  "candidateChecks": {
+    "completeWinningRostersVerified": false,
+    "lists": [
+      {
+        "letters": "פש",
+        "publishedCount": 1,
+        "first": {
+          "rank": 1,
+          "nameHe": "שרון סמואל"
+        },
+        "pages": [
+          1330
+        ],
+        "scope": "Complete one-person roster; elected name agrees with YP2326 p.1496."
+      }
+    ],
+    "sourceId": "k9-candidates-gazette"
+  },
+  "releaseBlockers": [
+    "Complete winning-list candidate rosters and elected-rank cross-checks remain unverified.",
+    "Flatto-Sharon list has one candidate; statutory authority/procedure for its unfillable second seat remains unverified. Engine differs for Flatto-Sharon and Sheli.",
+    "Full point-in-time amendment-chain verification through this election is incomplete; see decision 0070."
+  ],
+  "sourceIds": [
+    "k9-results-gazette",
+    "k9-candidates-gazette",
+    "k8-k12-cbs-national-totals",
+    "k8-k12-law-1969",
+    "k8-k12-law-1973",
+    "k9-candidates-reviewed"
+  ],
+  "allocationCheck": {
+    "exact": false,
+    "differences": [
+      {
+        "letters": "פש",
+        "computed": 2,
+        "official": 1
+      },
+      {
+        "letters": "ש",
+        "computed": 1,
+        "official": 2
+      }
+    ],
+    "note": "Complete six-pair agreement notice used. Uncapped allocation gives Flatto-Sharon two and Sheli one; gazette publishes one and two. Exact unfillable-seat rule/CEC ruling remains unverified; no speculative reallocation implemented."
+  }
+}

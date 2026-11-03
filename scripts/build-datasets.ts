@@ -1,3 +1,8 @@
+import { buildK8 } from './lib/historical/k8.ts';
+import { buildK9 } from './lib/historical/k9.ts';
+import { buildK10 } from './lib/historical/k10.ts';
+import { buildK11 } from './lib/historical/k11.ts';
+import { buildK12 } from './lib/historical/k12.ts';
 // Builds the app datasets in public/data/ from the raw official sources in data/raw/.
 //   node scripts/build-datasets.ts
 // Every figure is derived from a raw file listed in data/raw/SOURCES.json; the script fails loudly
@@ -361,7 +366,7 @@ async function buildK26() {
 // Seat-diagram order: app-defined order (validated colour adjacency), then by votes.
 const seatOrder = (lists: ListRecord[]) => [...lists].sort((a, b) => (META[a.id]?.order ?? 999) - (META[b.id]?.order ?? 999) || b.votes - a.votes);
 
-for (const build of [...buildK16(), ...buildK17(), buildK18, buildK19, buildK20, buildK21, buildK22, buildK23, buildK24, buildK25, buildK26]) {
+for (const build of [...buildK8(), ...buildK9(), ...buildK10(), ...buildK11(), ...buildK12(), ...buildK16(), ...buildK17(), buildK18, buildK19, buildK20, buildK21, buildK22, buildK23, buildK24, buildK25, buildK26]) {
   const built = await build();
   const ds = { ...built.ds, lists: seatOrder(built.ds.lists) };
   const loc = built.loc;
