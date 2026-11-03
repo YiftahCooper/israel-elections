@@ -4,7 +4,7 @@ import type { Scenario, SimList } from '../../model/scenario.ts';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { arcLayout, placeLabels } from '../layout.ts';
-import { download } from '../format.ts';
+import { download, isolate } from '../format.ts';
 import { setState, useStore } from '../store.ts';
 
 export interface SeatInfo { listId: string; idx: number; color: string; remainder: boolean }
@@ -114,10 +114,10 @@ export function Hemicycle({ s, r, compact = false, title }: { s: Scenario; r: Al
           const a = rtl ? Math.PI - g.a : g.a;
           return { id: g.id, n: g.n, a, text: `${listLabel(listOf(g.id), lang)} ${g.n}` };
         }), cx, cy, R).map((p) => (
-          <text key={p.id} x={p.x} y={p.y} textAnchor={p.anchor} dominantBaseline="middle" fontSize={p.n < 4 ? 15 : 17} fill="var(--ink)" fontWeight={600}>{p.text}</text>
+          <text key={p.id} x={p.x} y={p.y} textAnchor={p.anchor} dominantBaseline="middle" fontSize={p.n < 4 ? 15 : 17} fill="var(--ink)" fontWeight={600}>{isolate(p.text)}</text>
         ))}
         <text x={cx} y={cy - 40} textAnchor="middle" fontSize={44} fontWeight={700} fill="var(--ink)">{r.seatsAllocated}</text>
-        <text x={cx} y={cy - 6} textAnchor="middle" fontSize={16} fill="var(--ink-2)">{L(`seats · majority ${Math.floor(total / 2) + 1}`, `מנדטים · רוב ${Math.floor(total / 2) + 1}`)}</text>
+        <text x={cx} y={cy - 6} textAnchor="middle" fontSize={16} fill="var(--ink-2)">{isolate(L(`seats · majority ${Math.floor(total / 2) + 1}`, `מנדטים · רוב ${Math.floor(total / 2) + 1}`))}</text>
       </svg>
     );
   } else {
@@ -133,7 +133,7 @@ export function Hemicycle({ s, r, compact = false, title }: { s: Scenario; r: Al
       <svg ref={svgRef} viewBox={`0 0 ${W} ${y + 10}`} role="img" aria-label={title ?? L('Seats by list', 'מנדטים לפי רשימה')}>
         {rows.map(({ l, n, y: y0 }) => (
           <g key={l.id}>
-            <text x={rtl ? W - 10 : 10} y={y0 + 12} textAnchor={rtl ? 'end' : 'start'} fontSize={14} fill="var(--ink)" fontWeight={600}>{listLabel(l, lang)} {n}</text>
+            <text x={rtl ? W - 10 : 10} y={y0 + 12} textAnchor={rtl ? 'end' : 'start'} fontSize={14} fill="var(--ink)" fontWeight={600}>{isolate(`${listLabel(l, lang)} ${n}`)}</text>
             {seats.filter((x) => x.listId === l.id).map((st, k) => {
               const col = k % perRow, row = Math.floor(k / perRow);
               const x0 = 260 + col * (cell + gap);

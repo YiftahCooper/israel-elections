@@ -3,7 +3,7 @@ import type { SimCandidate, SimList } from '../../model/scenario.ts';
 import { useL } from '../i18n.ts';
 import { dispatch, useStore } from '../store.ts';
 
-export function Candidates({ l, seats, baseSeats }: { l: SimList; seats: number; baseSeats: number }) {
+export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList; seats: number; baseSeats: number; baseCandidates?: SimCandidate[] }) {
   const L = useL();
   const advanced = useStore((st) => st.level === 'advanced');
   const [showAll, setShowAll] = useState(false);
@@ -28,6 +28,7 @@ export function Candidates({ l, seats, baseSeats }: { l: SimList; seats: number;
         <span>{L('Last elected', 'האחרון שנבחר')}</span><span>{lastIn ? `${seats}. ${lastIn.nameHe}` : '—'}</span>
         <span>{L('Next in line', 'הבא בתור')}</span><span>{nextIn ? `${seats + 1}. ${nextIn.nameHe}` : L('none', 'אין')}</span>
       </div>
+      {baseCandidates && JSON.stringify(baseCandidates) !== JSON.stringify(c) && <button className="btn small" style={{ marginBottom: 6 }} onClick={() => commit(baseCandidates, 'reset')}>{L('Restore the registered candidate list', 'שחזור רשימת המועמדים הרשומה')}</button>}
       {seats > c.length && <p className="down small">{L(`The list has only ${c.length} candidates for ${seats} seats.`, `ברשימה רק ${c.length} מועמדים ל-${seats} מנדטים.`)}</p>}
       {c.length === 0 && <p className="muted small">{L('No candidates registered.', 'אין מועמדים רשומים.')}</p>}
       <ol className="cands" style={{ ['--c' as string]: l.color }} aria-label={L('Candidate list', 'רשימת המועמדים')}>

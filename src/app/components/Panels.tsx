@@ -12,7 +12,7 @@ import { NumberInput } from './ui.tsx';
 
 // ------------------------------------------------------------------ rules
 
-export function Rules({ s }: { s: Scenario }) {
+export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
   const L = useL();
   const lang = useLang();
   const digits = useStore((st) => st.digits);
@@ -38,6 +38,7 @@ export function Rules({ s }: { s: Scenario }) {
         <p className="small ink2">{exp
           ? L('Experimental: you may change the electoral system itself. Results are labelled as an alternative system, not Israeli law.', 'ניסיוני: ניתן לשנות את שיטת הבחירות עצמה. התוצאות מסומנות כשיטה חלופית ולא כחוק הישראלי.')
           : L('Historically valid: the law of this election is enforced — 120 seats, 3.25%, Bader–Ofer, two-list agreements. Votes, lists, candidates and agreements can still change.', 'תקף היסטורית: החוק של בחירות אלה נאכף — 120 מושבים, 3.25%, בדר–עופר, הסכמים של שתי רשימות. עדיין ניתן לשנות קולות, רשימות, מועמדים והסכמים.')}</p>
+        {Object.keys(s.lotteryWinners).length > 0 && <p className="small">{L('You have recorded lottery outcomes for tied seats.', 'רשמתם תוצאות הגרלה למושבים בשוויון.')} <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'lottery' })}>{L('Clear them', 'ניקוי')}</button></p>}
         {exp && dep.length > 0 && <div className="callout small" style={{ marginBottom: 8 }}><b>{L('Departs from Israeli law in: ', 'שונה מהחוק הישראלי ב: ')}</b>{dep.map((d) => (lang === 'he' ? depName[d][1] : depName[d][0])).join(', ')}</div>}
         <fieldset disabled={!exp} style={{ border: 0, padding: 0, margin: 0 }}>
           <div className="grid2">
@@ -61,14 +62,20 @@ export function Rules({ s }: { s: Scenario }) {
           </div>
         </fieldset>
         <hr />
-        <h4>{L('Electorate', 'ציבור הבוחרים')}</h4>
+        <div className="row" style={{ justifyContent: 'space-between' }}>
+          <h4>{L('Electorate', 'ציבור הבוחרים')}</h4>
+          {(s.registered !== base.registered || s.invalid !== base.invalid) && <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'totals', registered: base.registered, invalid: base.invalid })}>{L('Restore historical', 'שחזור הנתונים ההיסטוריים')}</button>}
+        </div>
         <div className="grid2">
           <label className="field">{L('Registered voters', 'בעלי זכות בחירה')}<NumberInput value={s.registered} onCommit={(n) => dispatch({ type: 'setTotals', registered: n })} label={L('Registered voters', 'בעלי זכות בחירה')} /></label>
           <label className="field">{L('Invalid ballots', 'קולות פסולים')}<NumberInput value={s.invalid} onCommit={(n) => dispatch({ type: 'setTotals', invalid: n })} label={L('Invalid ballots', 'קולות פסולים')} /></label>
         </div>
       </div>
       <div>
-        <h4>{L('Blocs (your grouping)', 'גושים (החלוקה שלכם)')}</h4>
+        <div className="row" style={{ justifyContent: 'space-between' }}>
+          <h4>{L('Blocs (your grouping)', 'גושים (החלוקה שלכם)')}</h4>
+          {(JSON.stringify(s.blocs) !== JSON.stringify(base.blocs) || s.lists.some((l) => base.lists.find((b) => b.id === l.id && b.bloc !== l.bloc))) && <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'blocs', blocs: base.blocs, listBlocs: Object.fromEntries(base.lists.map((b) => [b.id, b.bloc])) })}>{L('Restore default blocs', 'שחזור הגושים')}</button>}
+        </div>
         <p className="small ink2">{L('Blocs are an editable convenience, not an official classification. Assign lists to blocs in each list’s panel (Advanced).', 'הגושים הם חלוקה נוחה הניתנת לעריכה ולא סיווג רשמי. שייכו רשימות לגושים בחלונית הרשימה (מתקדם).')}</p>
         {s.blocs.map((b, i) => (
           <div key={b.id} className="row" style={{ marginBottom: 4 }}>
@@ -227,6 +234,8 @@ export function describe(a: Action, s: Scenario, lang: Lang): string {
     case 'setLottery': return he ? 'נבחרה תוצאת הגרלה' : 'Chose a lottery outcome';
     case 'resetList': return he ? `${n(a.listId)}: אופסה` : `${n(a.listId)}: reset`;
     case 'rename': return he ? `שם התרחיש: ${a.name}` : `Renamed to ${a.name}`;
+    case 'setTurnout': return he ? `שיעור ההצבעה נקבע ל-${a.pct}%` : `Turnout set to ${a.pct}%`;
+    case 'restore': return he ? ({ agreements: 'שוחזרו הסכמי העודפים', totals: 'שוחזרו בעלי זכות הבחירה והפסולים', blocs: 'שוחזרו הגושים', lottery: 'בוטלו תוצאות ההגרלה' } as const)[a.what] : ({ agreements: 'Restored the historical agreements', totals: 'Restored electorate and invalid ballots', blocs: 'Restored the default blocs', lottery: 'Cleared lottery outcomes' } as const)[a.what];
   }
 }
 

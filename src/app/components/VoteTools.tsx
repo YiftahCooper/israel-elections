@@ -1,66 +1,72 @@
-import { useMemo, useState } from 'react';
-import { goals, minimalChange, type SearchResult, type VoteSource } from '../../engine/analysis.ts';
+import { useEffect, useMemo, useState } from 'react';
+import { goals, minimalChange, type SearchResult } from '../../engine/analysis.ts';
 import type { AllocationResult } from '../../engine/types.ts';
-import { toEngineInput, type Action, type Scenario, type SimList } from '../../model/scenario.ts';
+import { toEngineInput, type Scenario, type SimList } from '../../model/scenario.ts';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct } from '../format.ts';
-import { dispatch, toast } from '../store.ts';
+import { dispatch, setState, toast, useStore, useVoteSource } from '../store.ts';
+import { deltaAction, maxGain, toVoteSource, type SourceChoice } from '../voteEdit.ts';
 import { Info, NumberInput } from './ui.tsx';
 
-export type SourceChoice = { kind: 'new' } | { kind: 'transfer'; listId: string } | { kind: 'proportional' };
-
-export const toVoteSource = (c: SourceChoice): VoteSource => (c.kind === 'proportional' ? { kind: 'proportional', listIds: [] } : c);
-
-/** The action that changes `l` by `delta` votes taking/returning them per `src`. Mirrors
- *  analysis.perturb exactly, so applying a computed answer reproduces it. */
-export function deltaAction(s: Scenario, l: SimList, delta: number, src: SourceChoice): Action | null {
-  if (delta === 0) return null;
-  if (src.kind === 'new') return { type: 'setVotes', listId: l.id, votes: Math.max(0, l.votes + delta) };
-  if (src.kind === 'transfer') return delta > 0 ? { type: 'transfer', from: src.listId, to: l.id, votes: delta } : { type: 'transfer', from: l.id, to: src.listId, votes: -delta };
+/** The single setting that decides how every vote edit on a list is balanced. */
+export function SourcePicker({ s, l }: { s: Scenario; l: SimList }) {
+  const L = useL();
+  const lang = useLang();
+  const src = useVoteSource();
   const others = s.lists.filter((x) => x.id !== l.id && !x.withdrawn);
-  return delta > 0
-    ? { type: 'redistribute', from: others.map((x) => x.id), to: [{ listId: l.id, share: 1 }], votes: delta }
-    : { type: 'redistribute', from: [l.id], to: others.map((x) => ({ listId: x.id, share: x.votes })), votes: -delta };
+  // a transfer partner that no longer exists (or is this list) falls back to proportional
+  useEffect(() => {
+    if (src.kind === 'transfer' && (src.listId === l.id || !s.lists.some((x) => x.id === src.listId))) setState({ voteSource: { kind: 'proportional' } });
+  }, [src, l.id, s.lists]);
+  return (
+    <div>
+      <label className="field">
+        <span className="row" style={{ gap: 6 }}>{L('When this list’s votes change, balance the difference with…', 'כשהקולות של רשימה זו משתנים, ההפרש מאוזן על ידי…')}
+          <Info title={L('Different counterfactuals', 'תרחישים שונים')}>{L('Taking votes from all other lists keeps turnout and the valid total fixed. New voters (or voters staying home) change the valid total, and so the threshold in votes. A transfer moves votes from or to one list — if that list is below the threshold, those votes stop being wasted. These give different seat results.', 'לקיחה מכל שאר הרשימות שומרת על ההצבעה ועל סך הכשרים. מצביעים חדשים (או נמנעים) משנים את סך הכשרים ולכן את אחוז החסימה בקולות. מעבר מזיז קולות מול רשימה אחת — אם היא מתחת לחסימה, הקולות מפסיקים להתבזבז. התוצאות שונות.')}</Info>
+        </span>
+        <select value={src.kind === 'transfer' ? `t:${src.listId}` : src.kind} onChange={(e) => {
+          const v = e.target.value;
+          setState({ voteSource: v === 'new' ? { kind: 'new' } : v === 'proportional' ? { kind: 'proportional' } : { kind: 'transfer', listId: v.slice(2) } });
+        }}>
+          <option value="proportional">{L('All other lists, in proportion (turnout unchanged)', 'כל שאר הרשימות, באופן יחסי (ההצבעה ללא שינוי)')}</option>
+          <option value="new">{L('New voters / voters staying home (turnout changes)', 'מצביעים חדשים / נמנעים (ההצבעה משתנה)')}</option>
+          <optgroup label={L('One specific list (transfer)', 'רשימה אחת מסוימת (מעבר)')}>
+            {[...others].sort((a, b) => b.votes - a.votes).map((x) => <option key={x.id} value={`t:${x.id}`}>{listLabel(x, lang)} ({fmtInt(x.votes)})</option>)}
+          </optgroup>
+        </select>
+      </label>
+    </div>
+  );
 }
 
-type GoalKind = 'qualify' | 'gain' | 'keep' | 'lose';
+type GoalKind = 'qualify' | 'gain' | 'lose';
 
 export function VoteTools({ s, r, l }: { s: Scenario; r: AllocationResult; l: SimList }) {
   const L = useL();
   const lang = useLang();
-  const [src, setSrc] = useState<SourceChoice>({ kind: 'new' });
+  const src = useVoteSource();
   const [custom, setCustom] = useState(5000);
-  const [pctIn, setPctIn] = useState('');
-  const [answer, setAnswer] = useState<{ kind: GoalKind; res: SearchResult; src: SourceChoice } | null>(null);
+  const [answer, setAnswer] = useState<{ kind: GoalKind; res: SearchResult; src: SourceChoice; listId: string } | null>(null);
   const lr = r.lists.find((x) => x.id === l.id)!;
-  const others = s.lists.filter((x) => x.id !== l.id && !x.withdrawn);
-  const srcList = src.kind === 'transfer' ? s.lists.find((x) => x.id === src.listId) : null;
+  // a computed answer is only valid for the scenario it was computed on
+  useEffect(() => setAnswer(null), [s, l.id, src]);
 
   const apply = (delta: number) => {
-    if (src.kind === 'transfer' && !srcList) return toast('error', L('Choose the list votes come from.', 'בחרו את הרשימה שממנה עוברים הקולות.'));
+    if (delta > 0 && delta > maxGain(s, l, src)) return toast('error', L(`The chosen source has only ${fmtInt(maxGain(s, l, src))} votes to give.`, `במקור שנבחר יש רק ${fmtInt(maxGain(s, l, src))} קולות.`));
+    if (delta < 0 && -delta > l.votes) return toast('error', L(`${listLabel(l, lang)} has only ${fmtInt(l.votes)} votes.`, `ל${listLabel(l, lang)} יש רק ${fmtInt(l.votes)} קולות.`));
     const a = deltaAction(s, l, delta, src);
     if (a) dispatch(a);
   };
 
-  const setPercent = () => {
-    const p = Number(pctIn);
-    if (!(p >= 0 && p < 100)) return toast('error', L('Enter a percentage between 0 and 100.', 'הזינו אחוז בין 0 ל-100.'));
-    const V = Number(r.totalValid), v = l.votes;
-    // new voters: v' / (V − v + v') = p  ⇒  v' = p(V − v)/(1 − p); fixed total: v' = pV
-    const target = src.kind === 'new' ? Math.round(((p / 100) * (V - v)) / (1 - p / 100)) : Math.round((p / 100) * V);
-    apply(target - v);
-  };
-
   const run = (kind: GoalKind) => {
-    if (src.kind === 'transfer' && !srcList) return toast('error', L('Choose the list votes come from.', 'בחרו את הרשימה שממנה עוברים הקולות.'));
     const input = toEngineInput(s);
     const vs = toVoteSource(src);
     let res: SearchResult;
     if (kind === 'qualify') res = minimalChange(input, l.id, vs, goals.qualify(l.id));
     else if (kind === 'gain') res = minimalChange(input, l.id, vs, goals.seatGain(l.id));
-    else res = minimalChange(input, l.id, vs, lr.qualified && lr.seats > 0 ? goals.seatLoss(l.id) : goals.disqualify(l.id), 'lose');
-    setAnswer({ kind, res, src });
+    else res = minimalChange(input, l.id, vs, lr.seats > 0 ? goals.seatLoss(l.id) : goals.disqualify(l.id), 'lose');
+    setAnswer({ kind, res, src, listId: l.id });
   };
 
   const changes = useMemo(() => {
@@ -71,69 +77,51 @@ export function VoteTools({ s, r, l }: { s: Scenario; r: AllocationResult; l: Si
 
   const nameOf = (id: string) => { const x = s.lists.find((y) => y.id === id); return x ? listLabel(x, lang) : id; };
   const srcText = (c: SourceChoice, gain: boolean) => c.kind === 'new'
-    ? (gain ? L('additional voters (valid total rises)', 'מצביעים נוספים (סך הכשרים עולה)') : L('voters abstaining (valid total falls)', 'מצביעים שנמנעים (סך הכשרים יורד)'))
-    : c.kind === 'transfer' ? (gain ? L(`transferred from ${nameOf(c.listId)}`, `מעבר מ${nameOf(c.listId)}`) : L(`transferred to ${nameOf(c.listId)}`, `מעבר ל${nameOf(c.listId)}`))
-    : (gain ? L('taken proportionally from all other lists', 'נלקחים באופן יחסי מכל שאר הרשימות') : L('given proportionally to all other lists', 'עוברים באופן יחסי לכל שאר הרשימות'));
+    ? (gain ? L('from additional voters (valid total rises)', 'ממצביעים נוספים (סך הכשרים עולה)') : L('to voters staying home (valid total falls)', 'למצביעים שנמנעים (סך הכשרים יורד)'))
+    : c.kind === 'transfer' ? (gain ? L(`transferred from ${nameOf(c.listId)}`, `במעבר מ${nameOf(c.listId)}`) : L(`transferred to ${nameOf(c.listId)}`, `במעבר ל${nameOf(c.listId)}`))
+    : (gain ? L('taken proportionally from all other lists', 'שנלקחים באופן יחסי מכל שאר הרשימות') : L('given proportionally to all other lists', 'שעוברים באופן יחסי לכל שאר הרשימות'));
+
+  const shown = answer && answer.listId === l.id ? answer : null;
+  const advanced = useStore((st) => st.level === 'advanced');
 
   return (
     <div>
-      <div className="section-title row">{L('Where do changed votes come from?', 'מאין מגיעים הקולות שמשתנים?')}
-        <Info title={L('Different counterfactuals', 'תרחישים שונים')}>{L('Adding new voters raises the valid total (and so the threshold); a transfer keeps the total fixed; votes moved from a list below the threshold stop being wasted. These give different seat results and are never treated as interchangeable.', 'הוספת מצביעים מגדילה את סך הכשרים (ואת אחוז החסימה בקולות); מעבר בין רשימות שומר על הסך; מעבר מרשימה שלא עברה את החסימה הופך קולות "מבוזבזים" למשתתפים. התוצאות שונות ואינן חלופיות.')}</Info>
-      </div>
-      <div className="row">
-        <select aria-label={L('Vote source', 'מקור הקולות')} value={src.kind === 'transfer' ? `t:${src.listId}` : src.kind} onChange={(e) => {
-          const v = e.target.value;
-          setSrc(v === 'new' ? { kind: 'new' } : v === 'proportional' ? { kind: 'proportional' } : { kind: 'transfer', listId: v.slice(2) });
-          setAnswer(null);
-        }} style={{ flex: 1 }}>
-          <option value="new">{L('New / abstaining voters (total changes)', 'מצביעים חדשים / נמנעים (הסך משתנה)')}</option>
-          <option value="proportional">{L('All other lists, proportionally (total fixed)', 'כל שאר הרשימות, יחסית (הסך קבוע)')}</option>
-          <optgroup label={L('Transfer with one list (total fixed)', 'מעבר מול רשימה אחת (הסך קבוע)')}>
-            {[...others].sort((a, b) => b.votes - a.votes).map((x) => <option key={x.id} value={`t:${x.id}`}>{listLabel(x, lang)} ({fmtInt(x.votes)}){r.lists.find((y) => y.id === x.id)?.qualified ? '' : L(' · below threshold', ' · מתחת לחסימה')}</option>)}
-          </optgroup>
-        </select>
-      </div>
-
-      <div className="row" style={{ marginTop: 8 }} role="group" aria-label={L('Quick changes', 'שינויים מהירים')}>
+      <div className="row" role="group" aria-label={L('Quick changes', 'שינויים מהירים')}>
         {[-10000, -1000, -100, -1].map((d) => <button key={d} className="btn small" onClick={() => apply(d)} disabled={l.votes + d < 0}>−{fmtInt(-d)}</button>)}
         {[1, 100, 1000, 10000].map((d) => <button key={d} className="btn small" onClick={() => apply(d)}>+{fmtInt(d)}</button>)}
       </div>
-      <div className="row" style={{ marginTop: 6 }}>
+      {advanced && <div className="row" style={{ marginTop: 6 }}>
         <NumberInput value={custom} onCommit={setCustom} label={L('Custom amount', 'כמות מותאמת')} width={100} />
-        <button className="btn small" onClick={() => apply(-custom)} disabled={l.votes < custom}>−</button>
-        <button className="btn small" onClick={() => apply(custom)}>+</button>
+        <button className="btn small" onClick={() => apply(-custom)} disabled={l.votes < custom || custom === 0} aria-label={L('Subtract custom amount', 'הפחתת הכמות')}>−</button>
+        <button className="btn small" onClick={() => apply(custom)} disabled={custom === 0} aria-label={L('Add custom amount', 'הוספת הכמות')}>+</button>
         <span className="muted small">{L('or by', 'או ב-')}</span>
-        {[-10, -5, 5, 10].map((p) => <button key={p} className="btn small" onClick={() => apply(Math.round((l.votes * p) / 100))}>{p > 0 ? '+' : '−'}{Math.abs(p)}%</button>)}
-      </div>
-      <div className="row" style={{ marginTop: 6 }}>
-        <input type="text" inputMode="decimal" placeholder="%" value={pctIn} onChange={(e) => setPctIn(e.target.value)} style={{ width: 80 }} aria-label={L('Target share of valid votes', 'שיעור יעד מהקולות הכשרים')} />
-        <button className="btn small" onClick={setPercent}>{L('Set share of valid votes', 'קבעו שיעור מהקולות הכשרים')}</button>
-      </div>
+        {[-10, -5, 5, 10].map((p) => <button key={p} className="btn small" onClick={() => apply(Math.round((l.votes * p) / 100))} disabled={l.votes === 0}>{p > 0 ? '+' : '−'}{Math.abs(p)}%</button>)}
+      </div>}
 
-      <div className="section-title">{L('Exact electoral boundaries', 'גבולות מדויקים')}</div>
+      <div className="section-title">{advanced ? L('Exact electoral boundaries', 'גבולות מדויקים') : L('How close is the next seat?', 'כמה רחוק המנדט הבא?')}</div>
       <div className="row">
         {!lr.qualified && !l.withdrawn && <button className="btn small" onClick={() => run('qualify')}>{L('Minimum to pass threshold', 'מינימום למעבר החסימה')}</button>}
         {lr.qualified && <button className="btn small" onClick={() => run('gain')}>{L(`Votes for seat ${lr.seats + 1}`, `קולות למנדט ה-${lr.seats + 1}`)}</button>}
         {lr.qualified && <button className="btn small" onClick={() => run('lose')}>{lr.seats > 0 ? L('Safety margin (votes before losing a seat)', 'מרווח ביטחון (קולות עד אובדן מנדט)') : L('Margin above threshold', 'מרווח מעל החסימה')}</button>}
       </div>
-      {answer && (
+      {shown && (
         <div className="callout small" style={{ marginTop: 8 }} aria-live="polite">
-          {answer.res.reason === 'already' && L('Already true — no change needed.', 'כבר מתקיים — אין צורך בשינוי.')}
-          {answer.res.reason === 'infeasible' && L('Not possible with this source (no votes available).', 'לא אפשרי ממקור זה (אין קולות זמינים).')}
-          {answer.res.reason === 'limit' && L(`Not reachable: even ${fmtInt(answer.res.limit)} votes from this source are not enough.`, `לא ניתן להשגה: אפילו ${fmtInt(answer.res.limit)} קולות ממקור זה אינם מספיקים.`)}
-          {answer.res.found && answer.res.votes !== null && (
+          {shown.res.reason === 'already' && L('Already true — no change needed.', 'כבר מתקיים — אין צורך בשינוי.')}
+          {shown.res.reason === 'infeasible' && L('Not possible with this source (no votes available).', 'לא אפשרי ממקור זה (אין קולות זמינים).')}
+          {shown.res.reason === 'limit' && L(`Not reachable: even ${fmtInt(shown.res.limit)} votes from this source are not enough.`, `לא ניתן להשגה: אפילו ${fmtInt(shown.res.limit)} קולות ממקור זה אינם מספיקים.`)}
+          {shown.res.found && shown.res.votes !== null && (
             <>
-              {answer.kind === 'lose'
-                ? <div><b>{fmtInt(answer.res.votes - 1n)}</b> {L('votes can be lost', 'קולות אפשר לאבד')} ({srcText(answer.src, false)}) {L('with no change; losing', 'ללא שינוי; באובדן')} <b>{fmtInt(answer.res.votes)}</b> {lr.seats > 0 ? L('costs a seat.', 'יאבד מנדט.') : L('drops below the threshold.', 'יורד מתחת לחסימה.')}</div>
-                : <div><b>{fmtInt(answer.res.votes)}</b> {L('more votes', 'קולות נוספים')}, {srcText(answer.src, true)}. {L(`At ${fmtInt(answer.res.votes - 1n)} the result does not change.`, `ב-${fmtInt(answer.res.votes - 1n)} התוצאה אינה משתנה.`)}</div>}
+              {shown.kind === 'lose'
+                ? <div><b>{fmtInt(shown.res.votes - 1n)}</b> {L('votes can be lost', 'קולות אפשר לאבד')} ({srcText(shown.src, false)}) {L('with no change; losing', 'ללא שינוי; באובדן')} <b>{fmtInt(shown.res.votes)}</b> {lr.seats > 0 ? L('costs a seat.', 'יאבד מנדט.') : L('drops below the threshold.', 'יורד מתחת לחסימה.')}</div>
+                : <div><b>{fmtInt(shown.res.votes)}</b> {L('more votes', 'קולות נוספים')}, {srcText(shown.src, true)}. {L(`At ${fmtInt(shown.res.votes - 1n)} the result does not change.`, `ב-${fmtInt(shown.res.votes - 1n)} התוצאה אינה משתנה.`)}</div>}
               {changes.length > 0 && <div style={{ marginTop: 4 }}>{L('Resulting seat changes: ', 'שינויי מנדטים: ')}{changes.map((c) => `${nameOf(c.id)} ${c.d > 0 ? '+' : '−'}${Math.abs(c.d)}`).join(' · ')}</div>}
-              {answer.res.nonMonotonic && <div style={{ marginTop: 4 }}>{L('Note: the outcome is not monotonic here (another list crosses the threshold along the way); this is the smallest count found.', 'שימו לב: התוצאה אינה מונוטונית כאן (רשימה אחרת חוצה את החסימה בדרך); זה המספר הקטן ביותר שנמצא.')}</div>}
-              {answer.kind === 'gain' && <div className="muted" style={{ marginTop: 4 }}>{L('This is specific to the chosen source: it is not the general quota, and other sources give other answers.', 'התשובה תלויה במקור שנבחר: אין זה המודד הכללי, ומקורות אחרים נותנים תשובות אחרות.')}</div>}
+              {shown.res.nonMonotonic && <div style={{ marginTop: 4 }}>{L('Note: the outcome is not monotonic here (another list crosses the threshold along the way); this is the smallest count found.', 'שימו לב: התוצאה אינה מונוטונית כאן (רשימה אחרת חוצה את החסימה בדרך); זה המספר הקטן ביותר שנמצא.')}</div>}
+              {shown.kind === 'gain' && <div className="muted" style={{ marginTop: 4 }}>{L('This depends on where the votes come from (the setting above): it is not the general quota, and other sources give other answers.', 'התשובה תלויה במקור הקולות (ההגדרה למעלה): אין זה המודד הכללי, ומקורות אחרים נותנים תשובות אחרות.')}</div>}
               <div className="row" style={{ marginTop: 6 }}>
-                <button className="btn small primary" onClick={() => { const delta = answer.kind === 'lose' ? -Number(answer.res.votes) : Number(answer.res.votes); const a = deltaAction(s, l, delta, answer.src); if (a && dispatch(a)) setAnswer(null); }}>
-                  {answer.kind === 'lose' ? L('Apply the loss', 'החילו את האובדן') : L('Apply', 'החילו')}
+                <button className="btn small primary" onClick={() => { const delta = shown.kind === 'lose' ? -Number(shown.res.votes) : Number(shown.res.votes); const a = deltaAction(s, l, delta, shown.src); if (a) dispatch(a); }}>
+                  {shown.kind === 'lose' ? L('Apply the loss', 'החילו את האובדן') : L('Apply', 'החילו')}
                 </button>
-                <span className="muted">{fmtPct(l.votes + (answer.kind === 'lose' ? -Number(answer.res.votes) : Number(answer.res.votes)), Number(answer.res.after!.totalValid), 3)} {L('of valid votes after', 'מהכשרים לאחר השינוי')}</span>
+                <span className="muted">{fmtPct(l.votes + (shown.kind === 'lose' ? -Number(shown.res.votes) : Number(shown.res.votes)), Number(shown.res.after!.totalValid), 3)} {L('of valid votes after', 'מהכשרים לאחר השינוי')}</span>
               </div>
             </>
           )}

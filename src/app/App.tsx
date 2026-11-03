@@ -14,8 +14,10 @@ import { Structure } from './components/Structure.tsx';
 import { TopBar } from './components/TopBar.tsx';
 import { Turnout } from './components/Turnout.tsx';
 import { Walkthrough } from './components/Walkthrough.tsx';
+import { WhatIf } from './components/WhatIf.tsx';
+import { Coalitions, SeatSecurity } from './components/SeatSecurity.tsx';
 
-type Tab = 'walk' | 'compare' | 'charts' | 'structure' | 'turnout' | 'sens' | 'rules' | 'loc' | 'sources' | 'history';
+type Tab = 'whatif' | 'coal' | 'security' | 'walk' | 'compare' | 'charts' | 'structure' | 'turnout' | 'sens' | 'rules' | 'loc' | 'sources' | 'history';
 
 export function App() {
   const lang = useStore((st) => st.lang);
@@ -53,7 +55,7 @@ function Shell() {
   const notice = useStore((st) => st.notice);
   const lang = useStore((st) => st.lang);
   const level = useStore((st) => st.level);
-  const [tab, setTab] = useState<Tab>('walk');
+  const [tabPick, setTab] = useState<Tab | null>(null);
 
   if (loadError) return <div className="banner err">{L('Could not load election data: ', 'טעינת הנתונים נכשלה: ')}{loadError}</div>;
   if (!s || !ds) return <div className="app"><TopBar s={null} r={null} ds={undefined} baseR={null} /><p style={{ padding: 20 }} className="muted">{L('Loading election data…', 'טוען נתוני בחירות…')}</p></div>;
@@ -62,25 +64,33 @@ function Shell() {
   const base = baselineOf(ds);
   const baseR = allocationOf(base);
   const issues = scenarioIssues(s, r);
-  const tabs: { id: Tab; label: string; adv?: boolean }[] = [
-    { id: 'walk', label: L('How the seats were allocated', 'איך חולקו המנדטים') },
-    { id: 'compare', label: L('Compare', 'השוואה') },
-    { id: 'charts', label: L('Charts', 'תרשימים') },
-    { id: 'structure', label: L('Mergers, splits & agreements', 'איחודים, פיצולים והסכמים') },
-    { id: 'turnout', label: L('Turnout model', 'מודל הצבעה') },
-    { id: 'sens', label: L('Sensitivity', 'רגישות') },
-    { id: 'rules', label: L('Rules & settings', 'כללים והגדרות') },
-    { id: 'loc', label: L('Localities', 'יישובים') },
-    { id: 'sources', label: L('Sources & definitions', 'מקורות ומונחים') },
-    { id: 'history', label: L(`Change history (${s.log.length})`, `היסטוריית שינויים (${s.log.length})`) },
-  ];
-  void level;
+  const all: Record<Tab, string> = {
+    whatif: L('What if…', 'מה אילו…'),
+    coal: L('Coalitions', 'קואליציות'),
+    security: L('How safe is each seat', 'עד כמה כל מנדט בטוח'),
+    walk: L('How the seats were allocated', 'איך חולקו המנדטים'),
+    compare: L('Compare', 'השוואה'),
+    charts: L('Charts', 'תרשימים'),
+    structure: L('Mergers, splits & agreements', 'איחודים, פיצולים והסכמים'),
+    turnout: L('Turnout model', 'מודל הצבעה'),
+    sens: L('Sensitivity', 'רגישות'),
+    rules: L('Rules & settings', 'כללים והגדרות'),
+    loc: L('Localities', 'יישובים'),
+    sources: L('Sources & definitions', 'מקורות ומונחים'),
+    history: L(`Change history (${s.log.length})`, `היסטוריית שינויים (${s.log.length})`),
+  };
+  const order: Tab[] = level === 'explore'
+    ? ['whatif', 'coal', 'security', 'compare', 'charts', 'walk', 'sources']
+    : ['walk', 'compare', 'charts', 'security', 'coal', 'whatif', 'structure', 'turnout', 'sens', 'rules', 'loc', 'sources', 'history'];
+  const tab: Tab = tabPick && order.includes(tabPick) ? tabPick : order[0];
+  const tabs = order.map((id) => ({ id, label: all[id] }));
 
   return (
     <div className="app">
       <TopBar s={s} r={r} ds={ds} baseR={baseR} />
       <div>
         {ds.status.stage !== 'official-final' && <div className="banner warn" role="status">⚠ {lang === 'he' ? ds.status.noteHe : ds.status.noteEn}</div>}
+        {level === 'explore' && s.log.length === 0 && <div className="banner info" role="status">{L('Simple mode: click a party to change its votes, or open “What if…” below for ready-made scenarios. Switch to Advanced for every tool.', 'מצב פשוט: לחצו על מפלגה כדי לשנות את קולותיה, או פתחו "מה אילו…" למטה לתרחישים מוכנים. במצב מתקדם — כל הכלים.')}</div>}
         {s.mode === 'experimental' && <div className="banner info" role="status">{L('Experimental rules: this is an alternative electoral system, not a legally possible Israeli result.', 'כללים ניסיוניים: זוהי שיטת בחירות חלופית ולא תוצאה אפשרית לפי החוק בישראל.')}</div>}
         {notice && <div className="banner info" role="status">{notice} <button className="btn small ghost" onClick={() => setState({ notice: null })}>✕</button></div>}
         {issues.map((x, i) => <div key={i} className={`banner ${x.level === 'error' ? 'err' : 'warn'}`} role="alert">{lang === 'he' ? x.he : x.en}</div>)}
@@ -104,13 +114,16 @@ function Shell() {
               {tabs.map((t) => <button key={t.id} role="tab" aria-selected={tab === t.id} onClick={() => setTab(t.id)}>{t.label}</button>)}
             </div>
             <div className="body" role="tabpanel">
+              {tab === 'whatif' && <WhatIf ds={ds} />}
+              {tab === 'coal' && <Coalitions s={s} r={r} />}
+              {tab === 'security' && <SeatSecurity s={s} r={r} />}
               {tab === 'walk' && <Walkthrough s={s} r={r} />}
               {tab === 'compare' && <Compare s={s} r={r} base={base} ds={ds} />}
               {tab === 'charts' && <Charts s={s} r={r} />}
-              {tab === 'structure' && <Structure s={s} r={r} />}
+              {tab === 'structure' && <Structure s={s} r={r} base={base} />}
               {tab === 'turnout' && <Turnout s={s} />}
               {tab === 'sens' && <Sensitivity s={s} r={r} />}
-              {tab === 'rules' && <Rules s={s} />}
+              {tab === 'rules' && <Rules s={s} base={base} />}
               {tab === 'loc' && <Localities s={s} />}
               {tab === 'sources' && <Sources ds={ds} />}
               {tab === 'history' && <History s={s} r={r} ds={ds} />}

@@ -28,3 +28,7 @@ export const csvEscape = (v: unknown) => {
   const s = String(v ?? '');
   return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
 };
+
+/** Wraps text containing Hebrew in a right-to-left isolate, so it reads correctly inside a
+ *  left-to-right SVG while text-anchor keeps its left-to-right meaning. */
+export const isolate = (t: string) => (/[\u0590-\u05FF]/.test(t) ? `\u2067${t}\u2069` : t);

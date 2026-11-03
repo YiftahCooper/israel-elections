@@ -5,6 +5,7 @@ import type { ElectionDataset, ElectionId } from '../data/schema.ts';
 import { ActionError, applyAction } from '../model/actions.ts';
 import { SCENARIO_SCHEMA, scenarioFromDataset, type Action, type Scenario } from '../model/scenario.ts';
 import type { Lang } from './i18n.ts';
+import type { SourceChoice } from './voteEdit.ts';
 
 export interface SavedScenario { id: string; name: string; electionId: ElectionId; savedAt: string; baseBuiltAt: string; log: Action[] }
 
@@ -26,6 +27,8 @@ export interface State {
   toast: { kind: 'error' | 'info'; text: string } | null;
   loadError: string | null;
   notice: string | null;
+  /** how every vote edit on a list is balanced (shared by all vote controls) */
+  voteSource: SourceChoice;
 }
 
 const LS = 'israel-elections:v1';
@@ -35,7 +38,7 @@ let state: State = {
   datasets: {}, electionId: 'k26', scenario: null, past: [], future: [], selectedListId: null, compareWith: 'historical',
   lang: persisted.lang ?? 'he', theme: persisted.theme ?? (globalThis.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
   level: persisted.level ?? 'explore', digits: persisted.digits ?? 2, layout: 'hemicycle', colorBy: 'list',
-  saved: persisted.saved ?? [], toast: null, loadError: null, notice: null,
+  saved: persisted.saved ?? [], toast: null, loadError: null, notice: null, voteSource: { kind: 'proportional' },
 };
 const listeners = new Set<() => void>();
 const emit = () => { for (const l of listeners) l(); };
@@ -115,7 +118,7 @@ export async function openElection(id: ElectionId, from?: { name: string; log: A
       if (r.failed) notice = `${r.failed} change(s) could not be re-applied to the current data.`;
       if (from.baseBuiltAt && from.baseBuiltAt !== ds.buildInfo.builtAt) notice = (notice ? notice + ' ' : '') + 'The historical data has been rebuilt since this scenario was made; it was re-applied to the current data.';
     }
-    setState({ electionId: id, scenario, past: [], future: [], selectedListId: null, compareWith: 'historical', loadError: null, notice });
+    setState({ electionId: id, scenario, past: [], future: [], selectedListId: null, compareWith: 'historical', loadError: null, notice, voteSource: { kind: 'proportional' } });
   } catch (e) {
     setState({ loadError: String(e) });
   }
@@ -176,4 +179,12 @@ export function importScenarioJson(text: string): Scenario {
   if (!Array.isArray(s.lists) || !s.rules) throw new Error('Scenario file is incomplete.');
   for (const l of s.lists) if (!Number.isSafeInteger(l.votes) || l.votes < 0) throw new Error(`Invalid vote count for ${l.id}.`);
   return s;
+}
+
+const PROPORTIONAL: SourceChoice = { kind: 'proportional' };
+/** The vote source actually in force: Simple mode always balances proportionally. */
+export function useVoteSource(): SourceChoice {
+  const src = useStore((st) => st.voteSource);
+  const advanced = useStore((st) => st.level === 'advanced');
+  return advanced ? src : PROPORTIONAL;
 }

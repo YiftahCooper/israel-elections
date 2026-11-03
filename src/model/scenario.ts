@@ -87,7 +87,14 @@ export type Action =
   | { type: 'setBlocs'; blocs: BlocDef[] }
   | { type: 'setLottery'; key: string; winner: string | null }
   | { type: 'resetList'; listId: string; base: SimList | null }
-  | { type: 'rename'; name: string };
+  | { type: 'rename'; name: string }
+  /** sets votes cast to pct% of registered voters; every list and the invalid count scale in proportion */
+  | { type: 'setTurnout'; pct: number }
+  /** restores one part of the scenario to the given (historical) value */
+  | { type: 'restore'; what: 'agreements'; agreements: SimAgreement[] }
+  | { type: 'restore'; what: 'totals'; registered: number; invalid: number }
+  | { type: 'restore'; what: 'blocs'; blocs: BlocDef[]; listBlocs: Record<string, string | null> }
+  | { type: 'restore'; what: 'lottery' };
 
 export function historicalRules(ruleSetId: string): SimRules {
   if (ruleSetId !== ISRAEL_2014.id) throw new Error(`unknown rule set ${ruleSetId}`);

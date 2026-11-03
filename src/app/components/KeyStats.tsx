@@ -4,13 +4,27 @@ import { votesCast, type Scenario } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtFrac, fmtInt, fmtPct, fmtRat } from '../format.ts';
 import { useStore } from '../store.ts';
-import { Delta, Tile } from './ui.tsx';
+import { DecimalInput, Delta, Tile } from './ui.tsx';
+import { dispatch } from '../store.ts';
 
 export function KeyStats({ s, r, ds, baseR }: { s: Scenario; r: AllocationResult; ds: ElectionDataset; baseR: AllocationResult }) {
   const L = useL();
   const digits = useStore((st) => st.digits);
   const cast = votesCast(s);
   const thrPct = s.rules.thresholdPct;
+  const explore = useStore((st) => st.level === 'explore');
+  const turnoutTile = (
+      <Tile k={L('Turnout', 'שיעור ההצבעה')} v={<span className="row" style={{ gap: 4 }}><DecimalInput value={s.registered ? (cast / s.registered) * 100 : 0} digits={2} width={86} label={L('Turnout %', 'שיעור הצבעה %')} onCommit={(p) => dispatch({ type: 'setTurnout', pct: p })} />%</span>} d={`${L('historical', 'בפועל')} ${fmtPct(ds.totals.votesCast, ds.totals.registered, digits)}`}>
+        <div>{L('Votes cast ÷ registered voters. Edit it to scale every list (and the invalid ballots) in proportion.', 'מצביעים ÷ בעלי זכות בחירה. עריכה משנה את כל הרשימות (והפסולים) באופן יחסי.')}</div>
+      </Tile>);
+  if (explore) return (
+    <div className="tiles">
+      {turnoutTile}
+      <Tile k={L('Votes needed to pass the threshold', 'קולות למעבר אחוז החסימה')} term="threshold" v={fmtInt(r.thresholdVotes)} d={`${thrPct}% ${L('of valid votes', 'מהקולות הכשרים')}`} />
+      <Tile k={L('Wasted votes', 'קולות שהלכו לאיבוד')} term="unrepresented" v={fmtPct(r.unrepresentedVotes, r.totalValid, 1)} d={`${fmtInt(r.unrepresentedVotes)} ${L('votes for lists that did not get in', 'קולות לרשימות שלא נכנסו')}`} />
+      <Tile k={L('Votes per seat', 'קולות למנדט')} term="quota" v={fmtRat(r.quota, 0)} d={L('the general quota', 'המודד הכללי')} />
+    </div>
+  );
   return (
     <div className="tiles">
       <Tile k={L('Valid votes', 'קולות כשרים')} term="valid" v={fmtInt(r.totalValid)} d={<Delta v={Number(r.totalValid - baseR.totalValid)} />} />
@@ -24,10 +38,7 @@ export function KeyStats({ s, r, ds, baseR }: { s: Scenario; r: AllocationResult
         <div className="small" style={{ marginTop: 6 }}>{L('Not a price per extra seat: the cost of a further seat depends on every list’s remainder.', 'אין זה "מחיר" למנדט נוסף: המחיר תלוי בעודפים של כל הרשימות.')}</div>
       </Tile>
       <Tile k={L('Seats: quota / remainder', 'מנדטים: מודד / עודפים')} term="baderofer" v={`${r.initialSeatsTotal} + ${r.remainderSeatsTotal}`} d={L(`${r.remainderSeatsTotal} seats allocated by Bader–Ofer`, `${r.remainderSeatsTotal} מנדטים חולקו בבדר–עופר`)} />
-      <Tile k={L('Turnout', 'שיעור ההצבעה')} v={fmtPct(cast, s.registered, digits)} d={`${L('historical', 'בפועל')} ${fmtPct(ds.totals.votesCast, ds.totals.registered, digits)}`}>
-        <div>{L('Votes cast (valid + invalid) ÷ registered voters.', 'מצביעים (כשרים + פסולים) ÷ בעלי זכות בחירה.')}</div>
-        <div className="formula">{fmtInt(cast)} ÷ {fmtInt(s.registered)}</div>
-      </Tile>
+      {turnoutTile}
       <Tile k={L('Invalid ballots', 'קולות פסולים')} v={fmtInt(s.invalid)} d={fmtPct(s.invalid, cast, digits) + L(' of cast', ' מהמצביעים')} />
     </div>
   );

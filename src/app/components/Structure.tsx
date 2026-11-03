@@ -10,16 +10,16 @@ import { Info, NumberInput } from './ui.tsx';
 
 const newId = () => `sim-${Date.now().toString(36)}${Math.floor(Math.random() * 1e4).toString(36)}`;
 
-export function Structure({ s, r }: { s: Scenario; r: AllocationResult }) {
+export function Structure({ s, r, base }: { s: Scenario; r: AllocationResult; base: Scenario }) {
   return (
     <div className="grid2" style={{ alignItems: 'start', gap: 18 }}>
-      <div><Agreements s={s} r={r} /><hr /><AddList s={s} /></div>
+      <div><Agreements s={s} r={r} base={base} /><hr /><AddList s={s} /></div>
       <div><Merge s={s} /><hr /><Split s={s} /></div>
     </div>
   );
 }
 
-function Agreements({ s, r }: { s: Scenario; r: AllocationResult }) {
+function Agreements({ s, r, base }: { s: Scenario; r: AllocationResult; base: Scenario }) {
   const L = useL();
   const lang = useLang();
   const [a, setA] = useState(''); const [b, setB] = useState('');
@@ -33,7 +33,10 @@ function Agreements({ s, r }: { s: Scenario; r: AllocationResult }) {
   const exp = s.mode === 'experimental';
   return (
     <div>
-      <h4>{L('Surplus-vote agreements', 'הסכמי עודפים')} <Info term="surplus" /></h4>
+      <div className="row" style={{ justifyContent: 'space-between' }}>
+        <h4>{L('Surplus-vote agreements', 'הסכמי עודפים')} <Info term="surplus" /></h4>
+        {JSON.stringify(s.agreements) !== JSON.stringify(base.agreements) && <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'agreements', agreements: base.agreements })}>{L('Restore historical agreements', 'שחזור ההסכמים ההיסטוריים')}</button>}
+      </div>
       {s.agreements.length === 0 && <p className="muted small">{L('None.', 'אין.')}</p>}
       <ul className="cands">
         {s.agreements.map((ag) => {

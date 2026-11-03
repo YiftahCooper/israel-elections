@@ -213,6 +213,25 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
     case 'rename':
       s = { ...s, name: action.name };
       break;
+    case 'setTurnout': {
+      need(action.pct > 0 && action.pct <= 100, 'turnout', 'Turnout must be above 0% and at most 100%.');
+      const valid = s.lists.reduce((t, l) => t + l.votes, 0);
+      const cast = valid + s.invalid;
+      need(cast > 0, 'turnout', 'There are no votes to scale.');
+      const target = Math.round((s.registered * action.pct) / 100);
+      const invalid = Math.round((s.invalid * target) / cast);
+      const parts = apportion(target - invalid, s.lists.map((l) => l.votes));
+      s = { ...s, invalid, lists: s.lists.map((l, i) => ({ ...l, votes: parts[i] })) };
+      break;
+    }
+    case 'restore':
+      if (action.what === 'agreements') {
+        const ids = new Set(s.lists.map((l) => l.id));
+        s = { ...s, agreements: action.agreements.filter((a) => a.members.every((m) => ids.has(m))).map((a) => ({ ...a, members: [...a.members] })) };
+      } else if (action.what === 'totals') s = { ...s, registered: action.registered, invalid: action.invalid };
+      else if (action.what === 'blocs') s = { ...s, blocs: action.blocs, lists: s.lists.map((l) => (l.id in action.listBlocs ? { ...l, bloc: action.listBlocs[l.id] } : l)) };
+      else s = { ...s, lotteryWinners: {} };
+      break;
   }
   return { ...s, log: [...s0.log, { at: now, action }] };
 }

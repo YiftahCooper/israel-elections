@@ -3,8 +3,9 @@ import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, fmtPct } from '../format.ts';
+import { fmtInt, fmtPct, isolate } from '../format.ts';
 import { setState, useStore } from '../store.ts';
+import { apportion } from '../../model/actions.ts';
 import { Seg } from './ui.tsx';
 
 type Tip = { x: number; y: number; html: React.ReactNode } | null;
@@ -18,10 +19,14 @@ export function Charts({ s, r }: { s: Scenario; r: AllocationResult }) {
         <Seg label={L('View', 'תצוגה')} value={view} onChange={setView} options={[{ v: 'chart', label: L('Charts', 'תרשימים') }, { v: 'table', label: L('Table', 'טבלה') }]} />
       </div>
       {view === 'chart' ? (
+        <>
+        <Waffles s={s} r={r} />
+        <hr />
         <div className="grid2" style={{ alignItems: 'start' }}>
           <VotesVsSeats s={s} r={r} />
           <ThresholdDistance s={s} r={r} />
         </div>
+        </>
       ) : <ShareTable s={s} r={r} />}
     </div>
   );
@@ -41,10 +46,10 @@ function VotesVsSeats({ s, r }: { s: Scenario; r: AllocationResult }) {
   const rows = rowsFor(s, r);
   const total = Number(r.totalValid), seats = s.rules.seats;
   const max = Math.max(...rows.map(({ l, lr }) => Math.max(l.votes / total, lr.seats / seats)), Number(r.unrepresentedVotes) / total, 0.05);
-  const W = 520, labelW = 140, barH = 9, gap = 2, rowH = barH * 2 + gap + 12;
+  const W = 600, labelW = 150, barH = 9, gap = 2, rowH = barH * 2 + gap + 12;
   const H = (rows.length + 1) * rowH + 30;
   const rtl = lang === 'he';
-  const xs = (v: number) => (v / max) * (W - labelW - 70);
+  const xs = (v: number) => (v / max) * (W - labelW - 120);
   const all = [...rows.map(({ l, lr }) => ({ id: l.id, name: listLabel(l, lang), color: l.color, v: l.votes, seats: lr.seats })), { id: '__unrep', name: L('Unrepresented votes', 'קולות שלא השתתפו'), color: 'var(--axis)', v: Number(r.unrepresentedVotes), seats: 0 }];
   return (
     <figure style={{ margin: 0, position: 'relative' }}>
@@ -61,7 +66,7 @@ function VotesVsSeats({ s, r }: { s: Scenario; r: AllocationResult }) {
             <g key={row.id} onMouseMove={(e) => setTip({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY, html: <><b>{row.name}</b><div>{L('Votes', 'קולות')}: {fmtInt(row.v)} ({fmtPct(row.v, total, digits)})</div>{row.id !== '__unrep' && <div>{L('Seats', 'מנדטים')}: {row.seats} ({fmtPct(row.seats, seats, digits)})</div>}</> })}
               onMouseLeave={() => setTip(null)} onClick={() => row.id !== '__unrep' && setState({ selectedListId: row.id })} style={{ cursor: 'pointer' }}>
               <rect x={0} y={y - 2} width={W} height={rowH - 4} fill="transparent" />
-              <text x={rtl ? W - 4 : 4} y={y + barH + 3} textAnchor={rtl ? 'end' : 'start'} fill="var(--ink)">{row.name.length > 20 ? row.name.slice(0, 19) + '…' : row.name}</text>
+              <text x={rtl ? W - 4 : 4} y={y + barH + 3} textAnchor={rtl ? 'end' : 'start'} fill="var(--ink)">{isolate(row.name.length > 20 ? row.name.slice(0, 19) + '…' : row.name)}</text>
               <rect className="bar" x={rtl ? W - labelW - vw : labelW} y={y} width={vw} height={barH} rx={2} fill={row.color} opacity={0.38} />
               <rect className="bar" x={rtl ? W - labelW - sw : labelW} y={y + barH + gap} width={sw} height={barH} rx={2} fill={row.color} />
               <text x={rtl ? W - labelW - Math.max(vw, sw) - 4 : labelW + Math.max(vw, sw) + 4} y={y + barH + 3} textAnchor={rtl ? 'end' : 'start'} className="tabnum">
@@ -84,7 +89,9 @@ function ThresholdDistance({ s, r }: { s: Scenario; r: AllocationResult }) {
   const thr = Number(r.thresholdVotes);
   const rows = s.lists.filter((l) => !l.withdrawn && l.votes > 0).map((l) => ({ l, d: l.votes - thr })).sort((a, b) => Math.abs(a.d) - Math.abs(b.d)).slice(0, 10).sort((a, b) => b.d - a.d);
   const max = Math.max(...rows.map((x) => Math.abs(x.d)), 1);
-  const W = 520, rowH = 24, H = rows.length * rowH + 30, mid = W / 2 + 40, half = W / 2 - 60;
+  // fixed label column, then a symmetric bar area with room for numbers on both sides
+  const W = 600, rowH = 24, H = rows.length * rowH + 30, labelW = 160, numW = 78;
+  const half = (W - labelW - 2 * numW) / 2, mid = labelW + numW + half;
   return (
     <figure style={{ margin: 0, position: 'relative' }}>
       <figcaption><h4>{L('Distance from the threshold (closest lists)', 'מרחק מאחוז החסימה (הרשימות הקרובות)')}</h4></figcaption>
@@ -98,7 +105,7 @@ function ThresholdDistance({ s, r }: { s: Scenario; r: AllocationResult }) {
             <g key={l.id} onMouseMove={(e) => setTip({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY, html: <><b>{listLabel(l, lang)}</b><div>{fmtInt(l.votes)} {L('votes', 'קולות')}</div><div>{d >= 0 ? '+' : '−'}{fmtInt(Math.abs(d))} {L('vs threshold', 'מול החסימה')}</div></> })}
               onMouseLeave={() => setTip(null)} onClick={() => setState({ selectedListId: l.id })} style={{ cursor: 'pointer' }}>
               <rect x={0} y={y - 3} width={W} height={rowH - 2} fill="transparent" />
-              <text x={8} y={y + 11} fill="var(--ink)">{listLabel(l, lang).slice(0, 18)}</text>
+              <text x={8} y={y + 11} fill="var(--ink)">{isolate(listLabel(l, lang).length > 22 ? listLabel(l, lang).slice(0, 21) + '…' : listLabel(l, lang))}</text>
               <rect className="bar" x={x} y={y + 2} width={Math.max(1, w)} height={12} rx={2} fill={l.color} />
               <text x={d >= 0 ? mid + w + 4 : mid - w - 4} y={y + 12} textAnchor={d >= 0 ? 'start' : 'end'} className="tabnum">{d >= 0 ? '+' : '−'}{fmtInt(Math.abs(d))}</text>
             </g>
@@ -133,6 +140,49 @@ function ShareTable({ s, r }: { s: Scenario; r: AllocationResult }) {
           <tr><td>{L('Unrepresented votes', 'קולות שלא השתתפו')}</td><td className="n">{fmtInt(r.unrepresentedVotes)}</td><td className="n">{fmtPct(r.unrepresentedVotes, total, digits)}</td><td /><td className="n">0</td><td /><td /></tr>
         </tbody>
       </table>
+    </div>
+  );
+}
+
+/** Votes vs seats as two unit charts: 200 squares of 0.5% of valid votes, and one square per seat.
+ *  Votes for lists below the threshold are drawn hatched grey, so wasted votes stay visible. */
+export function Waffles({ s, r }: { s: Scenario; r: AllocationResult }) {
+  const L = useL();
+  const lang = useLang();
+  const cells = 200;
+  const lists = s.lists.map((l) => ({ l, lr: r.lists.find((x) => x.id === l.id)! }));
+  const qualified = lists.filter((x) => x.lr.qualified);
+  const wasted = lists.filter((x) => !x.lr.qualified).reduce((t, x) => t + x.l.votes, 0);
+  const weights = [...qualified.map((x) => x.l.votes), wasted];
+  const counts = apportion(cells, weights);
+  const voteCells: { color: string; id: string | null }[] = [];
+  qualified.forEach((x, i) => { for (let k = 0; k < counts[i]; k++) voteCells.push({ color: x.l.color, id: x.l.id }); });
+  for (let k = 0; k < counts[counts.length - 1]; k++) voteCells.push({ color: 'url(#hatch)', id: null });
+  const seatCells: { color: string; id: string }[] = [];
+  qualified.forEach((x) => { for (let k = 0; k < x.lr.seats; k++) seatCells.push({ color: x.l.color, id: x.l.id }); });
+  const grid = (items: { color: string; id: string | null }[], cols: number, title: string) => {
+    const size = 14, gap = 3;
+    const rows = Math.ceil(items.length / cols);
+    return (
+      <figure style={{ margin: 0 }}>
+        <figcaption className="small ink2" style={{ marginBottom: 4 }}>{title}</figcaption>
+        <svg viewBox={`0 0 ${cols * (size + gap)} ${rows * (size + gap)}`} width="100%" style={{ maxWidth: cols * (size + gap) }} role="img" aria-label={title}>
+          <defs><pattern id="hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="4" height="4" fill="var(--grid)" /><line x1="0" y1="0" x2="0" y2="4" stroke="var(--muted)" strokeWidth="1.6" /></pattern></defs>
+          {items.map((c, i) => <rect key={i} x={(i % cols) * (size + gap)} y={Math.floor(i / cols) * (size + gap)} width={size} height={size} rx={3} fill={c.color} style={{ cursor: c.id ? 'pointer' : 'default' }} onClick={() => c.id && setState({ selectedListId: c.id })}><title>{c.id ? listLabel(s.lists.find((l) => l.id === c.id)!, lang) : L('Votes for lists below the threshold', 'קולות לרשימות מתחת לחסימה')}</title></rect>)}
+        </svg>
+      </figure>
+    );
+  };
+  return (
+    <div>
+      <div className="grid2" style={{ alignItems: 'start' }}>
+        {grid(voteCells, 20, L('Votes: each square is 0.5% of valid votes', 'קולות: כל ריבוע = 0.5% מהקולות הכשרים'))}
+        {grid(seatCells, 12, L('Seats: each square is one seat', 'מנדטים: כל ריבוע = מנדט אחד'))}
+      </div>
+      <div className="legend" style={{ marginTop: 8 }}>
+        {qualified.sort((a, b) => b.l.votes - a.l.votes).map(({ l, lr }) => <span key={l.id} className="row" style={{ gap: 5 }}><span className="swatch" style={{ background: l.color }} />{listLabel(l, lang)} <span className="muted tabnum">{lr.seats}</span></span>)}
+        <span className="row" style={{ gap: 5 }}><svg width="10" height="10" aria-hidden><rect width="10" height="10" rx="2" fill="url(#hatch)" /></svg>{L(`Below threshold: ${fmtPct(wasted, r.totalValid, 1)} of votes, 0 seats`, `מתחת לחסימה: ${fmtPct(wasted, r.totalValid, 1)} מהקולות, 0 מנדטים`)}</span>
+      </div>
     </div>
   );
 }

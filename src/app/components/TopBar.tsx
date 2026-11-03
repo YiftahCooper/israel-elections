@@ -81,13 +81,13 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
         }} />
       </div>
       <span className="spacer" />
-      <Seg label={L('Chamber layout', 'פריסה')} value={layout} onChange={(v) => setState({ layout: v })} options={[{ v: 'hemicycle', label: L('Arc', 'קשת') }, { v: 'blocks', label: L('Blocks', 'גושים') }]} />
+      {level === 'advanced' && <><Seg label={L('Chamber layout', 'פריסה')} value={layout} onChange={(v) => setState({ layout: v })} options={[{ v: 'hemicycle', label: L('Arc', 'קשת') }, { v: 'blocks', label: L('Blocks', 'גושים') }]} />
       <select aria-label={L('Colour seats by', 'צביעת מושבים לפי')} value={colorBy} onChange={(e) => setState({ colorBy: e.target.value as 'list' | 'bloc' | 'party' })}>
         <option value="list">{L('Colour: list', 'צבע: רשימה')}</option>
         <option value="bloc">{L('Colour: bloc', 'צבע: גוש')}</option>
         <option value="party">{L('Colour: constituent party', 'צבע: מפלגה מרכיבה')}</option>
-      </select>
-      <Seg label={L('Detail level', 'רמת פירוט')} value={level} onChange={(v) => setState({ level: v })} options={[{ v: 'explore', label: L('Explore', 'סיור') }, { v: 'advanced', label: L('Advanced', 'מתקדם') }]} />
+      </select></>}
+      <Seg label={L('Detail level', 'רמת פירוט')} value={level} onChange={(v) => setState({ level: v })} options={[{ v: 'explore', label: L('Simple', 'פשוט') }, { v: 'advanced', label: L('Advanced', 'מתקדם') }]} />
       <Seg label={L('Language', 'שפה')} value={lang} onChange={(v) => setState({ lang: v })} options={[{ v: 'he', label: 'עב' }, { v: 'en', label: 'EN' }]} />
       <button className="btn small" aria-label={L('Toggle dark theme', 'מצב כהה')} onClick={() => setState({ theme: theme === 'dark' ? 'light' : 'dark' })}>{theme === 'dark' ? '☀' : '☾'}</button>
     </div>

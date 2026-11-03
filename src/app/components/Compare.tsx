@@ -5,7 +5,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { allocationOf, electedOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, fmtPct, fmtRat, fmtSigned } from '../format.ts';
+import { fmtInt, fmtPct, fmtRat, fmtSigned, isolate } from '../format.ts';
 import { replay, setState, useStore } from '../store.ts';
 import { Hemicycle } from './Hemicycle.tsx';
 
@@ -80,9 +80,14 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
         )}
       </div>
 
-      <div className="grid2" style={{ marginBottom: 12 }}>
-        <div><h4>{compareWith === 'historical' ? L('Historical', 'בפועל') : a.name}</h4><Hemicycle s={a} r={ar} compact title={L('Before', 'לפני')} /></div>
-        <div><h4>{s.name || L('Current scenario', 'התרחיש הנוכחי')}</h4><Hemicycle s={s} r={r} compact title={L('After', 'אחרי')} /></div>
+      <div className="grid2" style={{ marginBottom: 12, alignItems: 'start' }}>
+        <Slope groups={groups.map((g) => ({ key: g.key, seatsA: g.seatsA, seatsB: g.seatsB, label: gName(g.bIds.length ? g.bIds : g.aIds, g.bIds.length ? s : a) }))}
+          nameA={compareWith === 'historical' ? L('Historical', 'בפועל') : a.name} nameB={s.name || L('Scenario', 'התרחיש')}
+          colorOf={(key) => { const g = groups.find((x) => x.key === key)!; return (s.lists.find((l) => l.id === g.bIds[0]) ?? a.lists.find((l) => l.id === g.aIds[0]))?.color ?? '#888'; }} />
+        <div>
+          <h4>{compareWith === 'historical' ? L('Historical', 'בפועל') : a.name}</h4><Hemicycle s={a} r={ar} compact title={L('Before', 'לפני')} />
+          <h4>{s.name || L('Current scenario', 'התרחיש הנוכחי')}</h4><Hemicycle s={s} r={r} compact title={L('After', 'אחרי')} />
+        </div>
       </div>
 
       <div className="kv small" style={{ maxWidth: 520, marginBottom: 12 }}>
@@ -129,5 +134,42 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
       </div>
       <p className="small muted">{L('Elected candidates are the first names on each list as registered, i.e. those elected on election night. Later changes in membership (resignations, replacements, the Norwegian Law) are not modelled.', 'הנבחרים הם המועמדים הראשונים בכל רשימה כפי שנרשמה — כלומר מי שנבחרו בליל הבחירות. שינויים מאוחרים בהרכב (התפטרויות, מחליפים, החוק הנורבגי) אינם מוצגים.')}</p>
     </div>
+  );
+}
+
+/** Seats before → after as a slope chart; one line per list (merged lists line up with their parts). */
+export function Slope({ groups, nameA, nameB, colorOf }: { groups: { key: string; seatsA: number; seatsB: number; label: string }[]; nameA: string; nameB: string; colorOf: (key: string) => string }) {
+  const rows = groups.filter((g) => g.seatsA || g.seatsB);
+  const max = Math.max(1, ...rows.flatMap((g) => [g.seatsA, g.seatsB]));
+  const W = 560, H = 360, x1 = 170, x2 = W - 170, top = 30, bottom = H - 16;
+  const y = (v: number) => bottom - (v / max) * (bottom - top);
+  // keep labels at least 15 units apart on each side
+  const spread = (vals: { key: string; y: number }[]) => {
+    const s = [...vals].sort((a, b) => a.y - b.y);
+    for (let i = 1; i < s.length; i++) if (s[i].y - s[i - 1].y < 15) s[i].y = s[i - 1].y + 15;
+    return new Map(s.map((v) => [v.key, v.y]));
+  };
+  const ly = spread(rows.map((g) => ({ key: g.key, y: y(g.seatsA) })));
+  const ry = spread(rows.map((g) => ({ key: g.key, y: y(g.seatsB) })));
+  return (
+    <svg className="chart" viewBox={`0 0 ${W} ${H + 10}`} width="100%" style={{ maxWidth: 640 }} role="img" aria-label={`${nameA} → ${nameB}`}>
+      <text x={x1} y={16} textAnchor="middle" fontWeight={600}>{isolate(nameA)}</text>
+      <text x={x2} y={16} textAnchor="middle" fontWeight={600}>{isolate(nameB.length > 34 ? nameB.slice(0, 33) + '…' : nameB)}</text>
+      <line x1={x1} x2={x1} y1={top - 6} y2={bottom} stroke="var(--axis)" />
+      <line x1={x2} x2={x2} y1={top - 6} y2={bottom} stroke="var(--axis)" />
+      {rows.map((g) => {
+        const c = colorOf(g.key);
+        const changed = g.seatsA !== g.seatsB;
+        return (
+          <g key={g.key} opacity={changed ? 1 : 0.45}>
+            <line x1={x1} y1={y(g.seatsA)} x2={x2} y2={y(g.seatsB)} stroke={c} strokeWidth={changed ? 3 : 2} />
+            <circle cx={x1} cy={y(g.seatsA)} r={4} fill={c} stroke="var(--surface)" strokeWidth={2} />
+            <circle cx={x2} cy={y(g.seatsB)} r={4} fill={c} stroke="var(--surface)" strokeWidth={2} />
+            <text x={x1 - 8} y={ly.get(g.key)} textAnchor="end" dominantBaseline="middle" fill="var(--ink)">{isolate(`${g.label} ${g.seatsA}`)}</text>
+            <text x={x2 + 8} y={ry.get(g.key)} textAnchor="start" dominantBaseline="middle" fill="var(--ink)" fontWeight={changed ? 700 : 400}>{g.seatsB}{changed ? ` (${g.seatsB > g.seatsA ? '+' : '−'}${Math.abs(g.seatsB - g.seatsA)})` : ''}</text>
+          </g>
+        );
+      })}
+    </svg>
   );
 }

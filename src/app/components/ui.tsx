@@ -72,3 +72,48 @@ export function NumberInput({ value, onCommit, label, width }: { value: number; 
       onKeyDown={(e) => { if (e.key === 'Enter') commit(); if (e.key === 'Escape') setText(value.toLocaleString('en-US')); }} />
   );
 }
+
+/** Decimal field (e.g. a percentage) that commits on Enter or blur; shows the live value otherwise. */
+export function DecimalInput({ value, onCommit, label, digits = 2, width = 84 }: { value: number; onCommit: (n: number) => void; label: string; digits?: number; width?: number }) {
+  const shown = Number.isFinite(value) ? value.toFixed(digits) : '';
+  const [text, setText] = useState(shown);
+  const [editing, setEditing] = useState(false);
+  useEffect(() => { if (!editing) setText(shown); }, [shown, editing]);
+  const commit = () => {
+    setEditing(false);
+    const n = Number(text.replace(/[%\s,]/g, ''));
+    if (text.trim() !== '' && Number.isFinite(n) && text !== shown) onCommit(n);
+    else setText(shown);
+  };
+  return (
+    <input type="text" inputMode="decimal" className="num-in" aria-label={label} style={{ width }} value={text}
+      onFocus={(e) => { setEditing(true); e.target.select(); }} onChange={(e) => setText(e.target.value)} onBlur={commit}
+      onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); if (e.key === 'Escape') { setText(shown); setEditing(false); } }} />
+  );
+}
+
+const niceCeil = (n: number) => { const p = 10 ** Math.max(0, Math.floor(Math.log10(Math.max(1, n))) - 1); return Math.ceil(n / p) * p; };
+
+/** Vote slider with a fixed scale (twice the historical votes or the threshold, whichever is larger),
+ *  so the thumb tracks the pointer. Dragging previews the value; the change is applied once, on release. */
+export function VoteSlider({ l, hist, thr, onCommit }: { s?: unknown; l: { id: string; votes: number }; hist: number; thr: number; onCommit: (v: number) => void }) {
+  const L = useL();
+  const [drag, setDrag] = useState<number | null>(null);
+  const [scale] = useState(() => niceCeil(Math.max(hist * 2, thr * 2, 20_000)));
+  const max = Math.max(scale, l.votes);
+  const value = drag ?? l.votes;
+  const commit = () => { if (drag !== null) { const v = drag; setDrag(null); if (v !== l.votes) onCommit(v); } };
+  const step = Math.max(1, Math.round(max / 2000));
+  return (
+    <div style={{ marginTop: 6 }}>
+      <input type="range" min={0} max={max} step={step} value={value} aria-label={L('Votes slider', 'מחוון קולות')}
+        aria-valuetext={`${value.toLocaleString('en-US')}`}
+        onChange={(e) => setDrag(Number(e.target.value))} onPointerUp={commit} onKeyUp={commit} onBlur={commit} onTouchEnd={commit} />
+      <div className="row tiny muted" style={{ justifyContent: 'space-between' }}>
+        <span>0</span>
+        {drag !== null ? <b className="ink2">→ {drag.toLocaleString('en-US')}</b> : <span>{L('drag, then release to apply', 'גררו ושחררו כדי להחיל')}</span>}
+        <span>{max.toLocaleString('en-US')}</span>
+      </div>
+    </div>
+  );
+}
