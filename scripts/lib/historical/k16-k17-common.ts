@@ -1,9 +1,8 @@
-// Evidence preflight for the two scanned elections. No application dataset is emitted
-// until the documented national, candidate and locality-schema gates can be met.
+// Retained, hash-checked inputs for the two scanned elections; decisions 0052–0053.
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import type { ElectionDataset } from '../../../src/data/schema.ts';
+import type { ElectionDataset, LocalityDataset } from '../../../src/data/schema.ts';
 import { allocate } from '../../../src/engine/allocate.ts';
 import { scenarioFromDataset, toEngineInput } from '../../../src/model/scenario.ts';
 import { META, neutralColor } from '../list-meta.ts';
@@ -50,7 +49,7 @@ export interface Reconciliation {
   totals: { registered: number | null; votesCast: number; invalid: number; valid: number };
   missingLocalityFields: string[];
 }
-export interface Audit { review: Review; reconciliation: Reconciliation; releaseReady: false }
+export interface Audit { review: Review; reconciliation: Reconciliation; releaseReady: boolean }
 export interface VerifyOptions { log?: boolean; available?: boolean }
 const hash = (bytes: string | Buffer) => createHash('sha256').update(bytes).digest('hex');
 function assert(ok: unknown, msg: string): asserts ok {
@@ -68,7 +67,7 @@ export function pollingVotes(review: Review): Record<string, number> {
     review.discrepancies.find(d => d.field === `votes:${l.letters}`)?.polling ?? l.gazetteVotes]));
 }
 
-/** Produces research rows with explicit nulls, NOT LocalityDataset rows. The hash is of
+/** Produces retained polling aggregates with explicit nulls. The hash is of
  * JSON.stringify(rows); columns follow review.lists, groups sort by numeric code (k16)
  * or exact trimmed Unicode name (k17). No external code/name crosswalk is invented. */
 export function derivePolling(review: Review, bytes: Buffer): { reconciliation: Reconciliation; rows: DerivedRow[] } {
@@ -174,16 +173,11 @@ export function verifyHistoricalProgress(id: HistoricalId, opts: VerifyOptions =
   assert(new Set(members).size === members.length && members.every(m => m in votes), `${id}: invalid agreement members`);
   assert(review.agreements.complete, `${id}: incomplete agreement notice`);
   verifyPolling(review, reconciliation, opts);
-  const audit: Audit = { review, reconciliation, releaseReady: false };
+  const audit: Audit = { review, reconciliation, releaseReady: true };
   const res = allocate(toEngineInput(scenarioFromDataset(researchDataset(audit))));
   assert(res.seatsAllocated === 120 && res.warnings.length === 0, `${id}: allocation incomplete or ambiguous`);
   for (const list of res.lists) assert(list.seats === review.lists.find(l => `${id.slice(1)}-${l.letters}` === list.id)?.officialSeats, `${id}: official seats differ for ${list.id}`);
-  const index = readJson(join(ROOT, 'public/data/elections.json')) as { id: string; available: boolean }[];
-  const entry = index.find(e => e.id === id);
-  assert(entry, `${id}: missing election index entry`);
-  assert(!(opts.available ?? entry.available), `${id}: release blocked: ${review.releaseBlockers.join(' ')}`);
-  assert(review.releaseBlockers.length > 0 && !review.candidateChecks.completeRostersVerified, `${id}: evidence preflight needs a completed release builder`);
-  if (opts.log !== false) console.log(`${id}: UNAVAILABLE — ${review.releaseBlockers.join(' ')}`);
+  verifyReleaseInputs(audit);
   return audit;
 }
 
@@ -197,7 +191,7 @@ export function researchDataset({ review, reconciliation }: Audit): ElectionData
     nameHe: `בדיקת מחקר בלבד — הכנסת ה-${n}`, nameEn: 'RESEARCH ONLY — not a release dataset',
     status: { stage: 'official-final', asOf: review.reviewedOn, noteHe: 'נתוני בדיקה בלבד; הרשימות המלאות לא אומתו.', noteEn: 'Research fixture only; complete candidate rosters unverified.' },
     ruleSetId: n === 16 ? 'il-1992-bader-ofer-1.5' : 'il-2004-bader-ofer-2',
-    totals: { registered: review.supplementalTotals.registered, votesCast: reconciliation.totals.votesCast, invalid: reconciliation.totals.invalid, valid: review.gazetteTotals.valid, ballotBoxes: reconciliation.pollingRows, localities: reconciliation.localityRowsIncludingEnvelopes - 1 },
+    totals: { registered: review.supplementalTotals.registered, votesCast: review.gazetteTotals.valid + review.gazetteTotals.invalid, invalid: review.gazetteTotals.invalid, valid: review.gazetteTotals.valid, ballotBoxes: reconciliation.pollingRows, localities: reconciliation.localityRowsIncludingEnvelopes - 1 },
     lists: review.lists.map((l, i) => {
       const id = `${n}-${l.letters}`; const meta = META[id];
       return { id, letters: l.letters, nameHe: l.nameHe, shortHe: meta?.he ?? l.nameHe, shortEn: meta?.en ?? null,
@@ -209,4 +203,93 @@ export function researchDataset({ review, reconciliation }: Audit): ElectionData
     officialSeatsSourceId: review.resultsSourceId, sourceIds: [review.resultsSourceId, review.agreements.sourceId],
     buildInfo: { builtAt: review.reviewedOn, rawSha256: {} },
   };
+}
+
+interface ReviewedCandidate { rank: number; nameHe: string; page: number }
+export interface ReviewedRoster {
+  letters: string; publishedCount: number; pages: number[];
+  candidatesUnavailable: boolean; candidates: ReviewedCandidate[];
+  unavailableReasonEn?: string; unavailableReasonHe?: string; unresolvedRanks?: number[];
+  electedCrossCheck?: { sourceId: string; ranks: number[]; namesHe: string[]; result: string; note: string };
+  reserveSecondReading?: { ranks: number[]; candidates: ReviewedCandidate[]; result: string };
+}
+export function verifyReleaseInputs({ review, reconciliation }: Audit) {
+  const id = review.id;
+  const manifest = readJson(join(RAW, 'SOURCES.json')) as { id: string; file?: string; sha256?: string }[];
+  const sourceIds = [`${id}-candidates-reviewed`, `${id}-localities-reviewed`, ...(id === 'k17' ? ['k17-candidates-archive-crosscheck'] : [])];
+  for (const sid of sourceIds) {
+    const source = manifest.find(s => s.id === sid);
+    assert(source?.file && source.sha256, `${sid}: missing retained source`);
+    assert(hash(readFileSync(join(RAW, source.file))) === source.sha256, `${sid}: hash mismatch`);
+  }
+  const rosters = readJson(join(RAW, id, 'candidates.reviewed.json')) as { id: string; sourceId: string; lists: ReviewedRoster[] };
+  const localities = readJson(join(RAW, id, 'localities.reviewed.json')) as { id: string; listLetters: string[]; rows: DerivedRow[] };
+  assert(rosters.id === id && rosters.sourceId === review.candidateChecks.sourceId, `${id}: wrong roster provenance`);
+  assert(rosters.lists.length === review.lists.length && new Set(rosters.lists.map(l => l.letters)).size === review.lists.length, `${id}: duplicate/missing rosters`);
+  for (const l of review.lists) {
+    const r = rosters.lists.find(r => r.letters === l.letters);
+    assert(r && Number.isSafeInteger(r.publishedCount) && r.publishedCount > 0, `${id}/${l.letters}: missing terminal rank`);
+    assert(r.pages.length > 0 && r.pages.every(p => Number.isSafeInteger(p) && p > 0), `${id}/${l.letters}: missing page references`);
+    const validName = (c: ReviewedCandidate, rank: number) => c.rank === rank && /[א-ת]/.test(c.nameHe) && c.nameHe.trim() === c.nameHe && r.pages.includes(c.page);
+    if (r.candidatesUnavailable) {
+      assert(r.candidates.length === 0 && r.unavailableReasonHe && r.unavailableReasonEn && r.unresolvedRanks?.length, `${id}/${l.letters}: unjustified unavailable roster`);
+      assert(r.unresolvedRanks.every(n => Number.isSafeInteger(n) && n >= 1 && n <= r.publishedCount), `${id}/${l.letters}: invalid unresolved rank`);
+    } else {
+      assert(r.candidates.length === r.publishedCount && r.candidates.every((c, i) => validName(c, i + 1)), `${id}/${l.letters}: incomplete/noncontiguous roster`);
+    }
+    if (l.officialSeats > 0) {
+      const check = r.electedCrossCheck; const reserve = r.reserveSecondReading;
+      assert(check && manifest.some(s => s.id === check.sourceId) && check.namesHe.length === l.officialSeats
+        && check.ranks.length === l.officialSeats && check.ranks.every((n, i) => n === i + 1), `${id}/${l.letters}: missing elected cross-check`);
+      assert(reserve && reserve.ranks.length === 5 && reserve.candidates.length === 5
+        && reserve.candidates.every((c, i) => reserve.ranks[i] === l.officialSeats + i + 1 && validName(c, reserve.ranks[i])), `${id}/${l.letters}: missing five-rank second reading`);
+      if (!r.candidatesUnavailable) {
+        assert(check.namesHe.every((name, i) => name === r.candidates[i].nameHe), `${id}/${l.letters}: elected names changed`);
+        assert(reserve.candidates.every(c => JSON.stringify(c) === JSON.stringify(r.candidates[c.rank - 1])), `${id}/${l.letters}: reserve names changed`);
+      }
+    }
+  }
+  assert(localities.id === id && JSON.stringify(localities.listLetters) === JSON.stringify(reconciliation.listLetters), `${id}: locality columns differ`);
+  assert(hash(JSON.stringify(localities.rows)) === reconciliation.derivedRowsSha256, `${id}: retained locality digest mismatch`);
+  assert(localities.rows.length === reconciliation.localityRowsIncludingEnvelopes, `${id}: wrong locality count`);
+  for (const row of localities.rows) {
+    assert(row.committee === null && (id === 'k16' || row.code === null && row.registered === null), `${id}: invented locality metadata`);
+    assert(row.votes.length === review.lists.length && row.votes.every(n => Number.isSafeInteger(n) && n >= 0)
+      && row.votes.reduce((a, b) => a + b, 0) === row.valid && row.valid + row.invalid === row.votesCast, `${id}: invalid locality arithmetic`);
+    if (row.nameHe === 'מעטפות כפולות') assert(row.registered === null, `${id}: bogus envelope electorate`);
+  }
+  const sum = (field: 'valid' | 'invalid' | 'votesCast') => localities.rows.reduce((n, r) => n + r[field], 0);
+  const totalFields = ['valid', 'invalid', 'votesCast'] as const;
+  assert(totalFields.every(f => sum(f) === reconciliation.totals[f]), `${id}: retained locality totals differ`);
+  reconciliation.listLetters.forEach((l, i) => assert(localities.rows.reduce((n, r) => n + r.votes[i], 0) === reconciliation.nationalVotes[l], `${id}/${l}: retained locality votes differ`));
+  return { rosters: rosters.lists, rows: localities.rows, sourceIds };
+}
+
+export function releaseDataset(audit: Audit): { ds: ElectionDataset; loc: LocalityDataset } {
+  const { review } = audit; const n = Number(review.id.slice(1));
+  const retained = verifyReleaseInputs(audit); const ds = researchDataset(audit);
+  const missing = retained.rosters.filter(r => r.candidatesUnavailable).length;
+  ds.nameHe = `הבחירות לכנסת ה-${n}`; ds.nameEn = `${n}th Knesset election (${n === 16 ? 2003 : 2006})`;
+  ds.status.noteEn = `Registered voters: official CBS table 27.2; valid and invalid votes: results gazette; cast = valid + invalid. ${n === 16 ? 'Mafdal and Lider use polling sums; printed gazette figures exceed its own valid total by 410.' : 'Polling-station cast votes are 9 below the gazette-derived national cast total; no authoritative explanation is known.'} Localities are summed polling rows. ${missing} complete candidate rosters could not be verified; those lists have candidatesUnavailable and empty candidates. Membership cross-checks use labelled secondary sources because Knesset membership pages were inaccessible.`;
+  ds.status.noteHe = `בעלי זכות בחירה: לוח למ״ס 27.2; קולות כשרים ופסולים: ילקוט הפרסומים; מצביעים = כשרים + פסולים. ${n === 16 ? 'קולות המפד״ל ולידר לפי סיכומי הקלפיות; הנתונים המודפסים עולים ב-410 על סך הכשרים שבילקוט עצמו.' : 'מספר המצביעים בסיכומי הקלפיות נמוך ב-9 מהסכום הארצי הנגזר מהילקוט; לא ידוע הסבר מוסמך.'} נתוני היישובים סוכמו מקלפיות. ${missing} רשימות מועמדים מלאות לא אומתו ומסומנות כחסרות; הצלבת חברי הכנסת נעשתה במקורות משניים מסומנים משום שדפי הכנסת לא היו נגישים.`;
+  ds.lists = ds.lists.map(l => {
+    const r = retained.rosters.find(r => r.letters === l.letters)!;
+    const notesHe: string[] = [];
+    if (r.candidatesUnavailable) notesHe.push(r.unavailableReasonHe!);
+    if (n === 16 && l.letters === 'ב') notesHe.push('בילקוט הפרסומים 5155, עמ׳ 1406, מודפס 132,730; נתון זה אינו מתיישב עם סך הקולות הכשרים שבילקוט עצמו (3,148,364). כאן נעשה שימוש בסיכום הקלפיות הרשמי: 132,370.');
+    if (n === 16 && l.letters === 'ף') notesHe.push('בילקוט הפרסומים 5155, עמ׳ 1406, מודפס 883; נתון זה אינו מתיישב עם סך הקולות הכשרים שבילקוט עצמו (3,148,364). כאן נעשה שימוש בסיכום הקלפיות הרשמי: 833.');
+    if (n === 16 && l.letters === 'כן') notesHe.push('זו הרשימה הרשומה. נתן שרנסקי (מקום 1) ויתר לאחר הבחירות; בהשבעה כיהנו יולי-יואל אדלשטיין (2) ומרינה סולודקין (3). המקור המשני להודעת הוויתור: ynet, 29.1.2003.');
+    return { ...l, candidates: r.candidates.map(c => ({ id: `${l.id}#${c.rank}`, rank: c.rank, nameHe: c.nameHe })),
+      ...(r.candidatesUnavailable ? { candidatesUnavailable: true } : {}), candidatesSource: review.candidateChecks.sourceId, notesHe };
+  });
+  ds.sourceIds = [review.resultsSourceId, review.candidateChecks.sourceId, review.agreements.sourceId, review.supplementalTotals.sourceId,
+    `${review.id}-ballots-datagov`, `${review.id}-national-reviewed`, `${review.id}-reconciliation-reviewed`, ...retained.sourceIds, `${review.id}-membership-secondary`, ...(n === 16 ? ['k16-sharansky-withdrawal', 'k16-knesset-vote-crosscheck'] : [])];
+  const manifest = readJson(join(RAW, 'SOURCES.json')) as { id: string; sha256?: string }[];
+  ds.buildInfo = { builtAt: new Date().toISOString(), rawSha256: Object.fromEntries(ds.sourceIds.flatMap(id => { const s = manifest.find(s => s.id === id); return s?.sha256 ? [[id, s.sha256]] : []; })) };
+  const env = retained.rows.find(r => r.nameHe === 'מעטפות כפולות');
+  ds.totals.envelopeVotes = env?.votesCast;
+  return { ds, loc: { schemaVersion: 1, id: review.id, listIds: ds.lists.map(l => l.id),
+    noteEn: 'Rows are summed from official polling-station results because no official locality table exists for this election. Missing metadata is null. Double-envelope batches exclude the source’s bogus registered-voter field.' + (n === 17 ? ' National totals follow the results gazette; the polling cast total is 9 lower, with no known authoritative explanation.' : ''),
+    noteHe: 'השורות סוכמו מתוצאות הקלפיות הרשמיות משום שלא קיימת טבלת יישובים רשמית לבחירות אלה. נתוני זיהוי חסרים מסומנים null. שדה הבוחרים השגוי באצוות המעטפות הכפולות אינו נסכם.' + (n === 17 ? ' הסיכום הארצי לפי ילקוט הפרסומים; סך המצביעים בקלפיות נמוך ב-9, ללא הסבר מוסמך ידוע.' : ''),
+    rows: retained.rows.map(r => ({ ...r, ...(r.nameHe === 'מעטפות כפולות' ? { envelopes: true as const } : {}) })) } };
 }

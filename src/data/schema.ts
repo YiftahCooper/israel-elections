@@ -56,6 +56,8 @@ export interface ListRecord {
   candidates: Candidate[];
   candidatesSource: string; // source id
   candidatesSecondary: boolean;
+  /** true when no verifiable roster exists; candidates is then [] */
+  candidatesUnavailable?: boolean;
   /** verbatim official notes: resignations, disqualifications, court rulings */
   notesHe: string[];
 }

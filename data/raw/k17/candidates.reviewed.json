@@ -1,0 +1,4546 @@
+{
+  "id": "k17",
+  "sourceId": "k17-candidates-gazette",
+  "reviewedOn": "2026-11-03",
+  "method": "Manual visual reading of pdfjs PNG renderings; wasmUrl=node_modules/pdfjs-dist/wasm/. Ranks are printed ranks, page is the gazette page number. Uncertain complete rosters omitted under the owner-approved per-list fallback; no guessed names published. Punctuation in confirmed names follows the scan. Archived primary CEC candidate HTML additionally resolved UTJ/Shas spellings and Kadima line wrapping; all consulted URLs and captured names are retained in candidates-archive.crosscheck.json.",
+  "lists": [
+    {
+      "letters": "אמת",
+      "publishedCount": 120,
+      "pages": [
+        2184
+      ],
+      "candidatesUnavailable": true,
+      "candidates": [],
+      "unavailableReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 54, 99. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
+      "unavailableReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 54, 99. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "unresolvedRanks": [
+        54,
+        99
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k17-membership-secondary",
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "namesHe": [
+          "פרץ ארמונד עמיר",
+          "הרצוג יצחק",
+          "פינס-פז אופיר",
+          "ברורמן אבישי",
+          "תמיר יולי",
+          "אילון עמיחי",
+          "כבל איתן",
+          "בן אליעזר בנימין פואד",
+          "יחימוביץ שלי רחל",
+          "מלכיאור מיכאל",
+          "וילנאי מתן",
+          "אביטל קולט",
+          "סנה אפרים",
+          "יתום דני",
+          "חילו נאדיה",
+          "שמחון שלום",
+          "נוקד אורית עירית",
+          "מרציאנו יורם",
+          "מג'דלה גאלב"
+        ],
+        "result": "matches-original-membership",
+        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+      },
+      "reserveSecondReading": {
+        "ranks": [
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "candidates": [
+          {
+            "rank": 20,
+            "nameHe": "שנאן שכיב",
+            "page": 2184
+          },
+          {
+            "rank": 21,
+            "nameHe": "ליטינצקי לאון",
+            "page": 2184
+          },
+          {
+            "rank": 22,
+            "nameHe": "יחזקאל אברהם",
+            "page": 2184
+          },
+          {
+            "rank": 23,
+            "nameHe": "סמיה משה",
+            "page": 2184
+          },
+          {
+            "rank": 24,
+            "nameHe": "ביצור אברהם",
+            "page": 2184
+          }
+        ],
+        "result": "verified-against-enlarged-scan"
+      }
+    },
+    {
+      "letters": "ג",
+      "publishedCount": 120,
+      "pages": [
+        2185
+      ],
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "ליצמן יעקב",
+          "page": 2185
+        },
+        {
+          "rank": 2,
+          "nameHe": "רביץ אברהם",
+          "page": 2185
+        },
+        {
+          "rank": 3,
+          "nameHe": "פרוש מאיר",
+          "page": 2185
+        },
+        {
+          "rank": 4,
+          "nameHe": "גפני משה רפאל",
+          "page": 2185
+        },
+        {
+          "rank": 5,
+          "nameHe": "הלפרט שמואל שמלקי",
+          "page": 2185
+        },
+        {
+          "rank": 6,
+          "nameHe": "כהן יעקב",
+          "page": 2185
+        },
+        {
+          "rank": 7,
+          "nameHe": "מקלב ישראל מאיר אורי",
+          "page": 2185
+        },
+        {
+          "rank": 8,
+          "nameHe": "פולק יהושע מנחם",
+          "page": 2185
+        },
+        {
+          "rank": 9,
+          "nameHe": "גוטרמן יעקב אשר",
+          "page": 2185
+        },
+        {
+          "rank": 10,
+          "nameHe": "חדד שמעון",
+          "page": 2185
+        },
+        {
+          "rank": 11,
+          "nameHe": "מוזס מנחם אליעזר",
+          "page": 2185
+        },
+        {
+          "rank": 12,
+          "nameHe": "בוימל אריה צבי",
+          "page": 2185
+        },
+        {
+          "rank": 13,
+          "nameHe": "קופרברג יוסף יהושע",
+          "page": 2185
+        },
+        {
+          "rank": 14,
+          "nameHe": "קרליץ אליהו מרדכי",
+          "page": 2185
+        },
+        {
+          "rank": 15,
+          "nameHe": "שורץ אברהם",
+          "page": 2185
+        },
+        {
+          "rank": 16,
+          "nameHe": "רובינשטיין אברהם",
+          "page": 2185
+        },
+        {
+          "rank": 17,
+          "nameHe": "פולק ברוך",
+          "page": 2185
+        },
+        {
+          "rank": 18,
+          "nameHe": "פינדרוס יצחק זאב",
+          "page": 2185
+        },
+        {
+          "rank": 19,
+          "nameHe": "זייברט חנוך",
+          "page": 2185
+        },
+        {
+          "rank": 20,
+          "nameHe": "רייך יצחק",
+          "page": 2185
+        },
+        {
+          "rank": 21,
+          "nameHe": "זלצר צבי",
+          "page": 2185
+        },
+        {
+          "rank": 22,
+          "nameHe": "פרנק משה",
+          "page": 2185
+        },
+        {
+          "rank": 23,
+          "nameHe": "שטיצברג ירחמיאל שמחה",
+          "page": 2185
+        },
+        {
+          "rank": 24,
+          "nameHe": "ויזבינסקי יעקב",
+          "page": 2185
+        },
+        {
+          "rank": 25,
+          "nameHe": "הרבסט יעקב צבי",
+          "page": 2185
+        },
+        {
+          "rank": 26,
+          "nameHe": "וידיסלבסקי שלמה מנחם",
+          "page": 2185
+        },
+        {
+          "rank": 27,
+          "nameHe": "כץ חיים מאיר",
+          "page": 2185
+        },
+        {
+          "rank": 28,
+          "nameHe": "בטיטו מרדכי",
+          "page": 2185
+        },
+        {
+          "rank": 29,
+          "nameHe": "צנווירט פנחס",
+          "page": 2185
+        },
+        {
+          "rank": 30,
+          "nameHe": "שיפמן משה פייטל",
+          "page": 2185
+        },
+        {
+          "rank": 31,
+          "nameHe": "ביננפלד יוסף חיים",
+          "page": 2185
+        },
+        {
+          "rank": 32,
+          "nameHe": "אוחנה דוד",
+          "page": 2185
+        },
+        {
+          "rank": 33,
+          "nameHe": "בוקשפן נטע שלמה",
+          "page": 2185
+        },
+        {
+          "rank": 34,
+          "nameHe": "דייטש אברהם בן ציון",
+          "page": 2185
+        },
+        {
+          "rank": 35,
+          "nameHe": "מילר צבי פייביש",
+          "page": 2185
+        },
+        {
+          "rank": 36,
+          "nameHe": "וילינגר מוריס חיים",
+          "page": 2185
+        },
+        {
+          "rank": 37,
+          "nameHe": "יוסקוביץ יצחק",
+          "page": 2185
+        },
+        {
+          "rank": 38,
+          "nameHe": "יברוב יהודה",
+          "page": 2185
+        },
+        {
+          "rank": 39,
+          "nameHe": "בלוי דוד נחמן",
+          "page": 2185
+        },
+        {
+          "rank": 40,
+          "nameHe": "בלוי מרדכי זאב",
+          "page": 2185
+        },
+        {
+          "rank": 41,
+          "nameHe": "אדלר דוד",
+          "page": 2185
+        },
+        {
+          "rank": 42,
+          "nameHe": "וינמן משה אליהו",
+          "page": 2185
+        },
+        {
+          "rank": 43,
+          "nameHe": "גינזבורג שלמה",
+          "page": 2185
+        },
+        {
+          "rank": 44,
+          "nameHe": "מישקובסקי אברהם יצחק",
+          "page": 2185
+        },
+        {
+          "rank": 45,
+          "nameHe": "בריזל נתן נטע",
+          "page": 2185
+        },
+        {
+          "rank": 46,
+          "nameHe": "גולדברג מרדכי",
+          "page": 2185
+        },
+        {
+          "rank": 47,
+          "nameHe": "ברגר ראובן בצלאל",
+          "page": 2185
+        },
+        {
+          "rank": 48,
+          "nameHe": "בוכניק יהושע",
+          "page": 2185
+        },
+        {
+          "rank": 49,
+          "nameHe": "קליין אברהם חנניה",
+          "page": 2185
+        },
+        {
+          "rank": 50,
+          "nameHe": "שטרית יוסף שאול",
+          "page": 2185
+        },
+        {
+          "rank": 51,
+          "nameHe": "רוזן יהודה אריה",
+          "page": 2185
+        },
+        {
+          "rank": 52,
+          "nameHe": "שטאובר אריה",
+          "page": 2185
+        },
+        {
+          "rank": 53,
+          "nameHe": "וינר חיים מרדכי",
+          "page": 2185
+        },
+        {
+          "rank": 54,
+          "nameHe": "בניאל גלעד",
+          "page": 2185
+        },
+        {
+          "rank": 55,
+          "nameHe": "הנדלר אליהו צבי",
+          "page": 2185
+        },
+        {
+          "rank": 56,
+          "nameHe": "מושקוביץ יונה",
+          "page": 2185
+        },
+        {
+          "rank": 57,
+          "nameHe": "ברגר אברהם",
+          "page": 2185
+        },
+        {
+          "rank": 58,
+          "nameHe": "מלק שלמה",
+          "page": 2185
+        },
+        {
+          "rank": 59,
+          "nameHe": "דייטש שלמה",
+          "page": 2185
+        },
+        {
+          "rank": 60,
+          "nameHe": "פפויפר יונה",
+          "page": 2185
+        },
+        {
+          "rank": 61,
+          "nameHe": "ביאלוסטוצקי צבי פרץ",
+          "page": 2185
+        },
+        {
+          "rank": 62,
+          "nameHe": "לחובר משה",
+          "page": 2185
+        },
+        {
+          "rank": 63,
+          "nameHe": "קרויזר שמעון",
+          "page": 2185
+        },
+        {
+          "rank": 64,
+          "nameHe": "גולדנטל שלמה יהודה",
+          "page": 2185
+        },
+        {
+          "rank": 65,
+          "nameHe": "הרשטיין דוד",
+          "page": 2185
+        },
+        {
+          "rank": 66,
+          "nameHe": "מלול אליהו",
+          "page": 2185
+        },
+        {
+          "rank": 67,
+          "nameHe": "קליך פנחס",
+          "page": 2185
+        },
+        {
+          "rank": 68,
+          "nameHe": "לבין יצחק יעקב",
+          "page": 2185
+        },
+        {
+          "rank": 69,
+          "nameHe": "ליברמן מרדכי",
+          "page": 2185
+        },
+        {
+          "rank": 70,
+          "nameHe": "בורשטיין משה",
+          "page": 2185
+        },
+        {
+          "rank": 71,
+          "nameHe": "שטרן שלמה",
+          "page": 2185
+        },
+        {
+          "rank": 72,
+          "nameHe": "בר עזר איתמר",
+          "page": 2185
+        },
+        {
+          "rank": 73,
+          "nameHe": "לב יעקב דוד",
+          "page": 2185
+        },
+        {
+          "rank": 74,
+          "nameHe": "דרשוביץ יקותיאל",
+          "page": 2185
+        },
+        {
+          "rank": 75,
+          "nameHe": "וינר דוד",
+          "page": 2185
+        },
+        {
+          "rank": 76,
+          "nameHe": "מקלב אברהם",
+          "page": 2185
+        },
+        {
+          "rank": 77,
+          "nameHe": "פריינד טוביה",
+          "page": 2185
+        },
+        {
+          "rank": 78,
+          "nameHe": "קורלנסקי שלמה אריה לייב",
+          "page": 2185
+        },
+        {
+          "rank": 79,
+          "nameHe": "ויכלדר חיים ברוך",
+          "page": 2185
+        },
+        {
+          "rank": 80,
+          "nameHe": "גרינבוים אליעזר",
+          "page": 2185
+        },
+        {
+          "rank": 81,
+          "nameHe": "מונטג בנימין משה מרדכי",
+          "page": 2185
+        },
+        {
+          "rank": 82,
+          "nameHe": "ברסלר אברהם אלכסנדר",
+          "page": 2185
+        },
+        {
+          "rank": 83,
+          "nameHe": "ברוכשטט פנחס",
+          "page": 2185
+        },
+        {
+          "rank": 84,
+          "nameHe": "קירשנבוים דוד",
+          "page": 2185
+        },
+        {
+          "rank": 85,
+          "nameHe": "קלוגמן אלתר בן ציון",
+          "page": 2185
+        },
+        {
+          "rank": 86,
+          "nameHe": "גרינברג שמואל",
+          "page": 2185
+        },
+        {
+          "rank": 87,
+          "nameHe": "הלר בקנרוט אברהם",
+          "page": 2185
+        },
+        {
+          "rank": 88,
+          "nameHe": "קלרמן שמעון ישראל",
+          "page": 2185
+        },
+        {
+          "rank": 89,
+          "nameHe": "פרידמן שאול",
+          "page": 2185
+        },
+        {
+          "rank": 90,
+          "nameHe": "זיסמן אריה יהודה",
+          "page": 2185
+        },
+        {
+          "rank": 91,
+          "nameHe": "קאהן בצלאל",
+          "page": 2185
+        },
+        {
+          "rank": 92,
+          "nameHe": "גוטליב אריה ליב",
+          "page": 2185
+        },
+        {
+          "rank": 93,
+          "nameHe": "טרויבע אברהם מרדכי",
+          "page": 2185
+        },
+        {
+          "rank": 94,
+          "nameHe": "וייס נתן",
+          "page": 2185
+        },
+        {
+          "rank": 95,
+          "nameHe": "רפפורט דוד",
+          "page": 2185
+        },
+        {
+          "rank": 96,
+          "nameHe": "כהן משה מרדכי",
+          "page": 2185
+        },
+        {
+          "rank": 97,
+          "nameHe": "בסר צבי מרדכי",
+          "page": 2185
+        },
+        {
+          "rank": 98,
+          "nameHe": "בר יצחק",
+          "page": 2185
+        },
+        {
+          "rank": 99,
+          "nameHe": "פיק יצחק",
+          "page": 2185
+        },
+        {
+          "rank": 100,
+          "nameHe": "נורדמן בן-ציון",
+          "page": 2185
+        },
+        {
+          "rank": 101,
+          "nameHe": "הנדלס יוחנן משה",
+          "page": 2185
+        },
+        {
+          "rank": 102,
+          "nameHe": "פוקס חיים",
+          "page": 2185
+        },
+        {
+          "rank": 103,
+          "nameHe": "דייטש אהרן יוסף",
+          "page": 2185
+        },
+        {
+          "rank": 104,
+          "nameHe": "קרפ משה שלום",
+          "page": 2185
+        },
+        {
+          "rank": 105,
+          "nameHe": "בורזיקובסקי שאול",
+          "page": 2185
+        },
+        {
+          "rank": 106,
+          "nameHe": "גרין חיים צבי",
+          "page": 2185
+        },
+        {
+          "rank": 107,
+          "nameHe": "ברנדויין ברוך בנימין",
+          "page": 2185
+        },
+        {
+          "rank": 108,
+          "nameHe": "הופנר דניאל לזרוס",
+          "page": 2185
+        },
+        {
+          "rank": 109,
+          "nameHe": "קלוגמן מנחם",
+          "page": 2185
+        },
+        {
+          "rank": 110,
+          "nameHe": "ארנטרוי אלחנן",
+          "page": 2185
+        },
+        {
+          "rank": 111,
+          "nameHe": "הייזלר משה מאיר",
+          "page": 2185
+        },
+        {
+          "rank": 112,
+          "nameHe": "ברויאר דוד",
+          "page": 2185
+        },
+        {
+          "rank": 113,
+          "nameHe": "שינפלד שבתי",
+          "page": 2185
+        },
+        {
+          "rank": 114,
+          "nameHe": "מן משה",
+          "page": 2185
+        },
+        {
+          "rank": 115,
+          "nameHe": "זוננפלד שלמה זלמן",
+          "page": 2185
+        },
+        {
+          "rank": 116,
+          "nameHe": "איינפלד נתן חיים",
+          "page": 2185
+        },
+        {
+          "rank": 117,
+          "nameHe": "קנופף חיים משה",
+          "page": 2185
+        },
+        {
+          "rank": 118,
+          "nameHe": "אבו יוסף",
+          "page": 2185
+        },
+        {
+          "rank": 119,
+          "nameHe": "אפשטיין שמואל",
+          "page": 2185
+        },
+        {
+          "rank": 120,
+          "nameHe": "אירנשטין משה",
+          "page": 2185
+        }
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k17-membership-secondary",
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "namesHe": [
+          "ליצמן יעקב",
+          "רביץ אברהם",
+          "פרוש מאיר",
+          "גפני משה רפאל",
+          "הלפרט שמואל שמלקי",
+          "כהן יעקב"
+        ],
+        "result": "matches-original-membership",
+        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+      },
+      "reserveSecondReading": {
+        "ranks": [
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "candidates": [
+          {
+            "rank": 7,
+            "nameHe": "מקלב ישראל מאיר אורי",
+            "page": 2185
+          },
+          {
+            "rank": 8,
+            "nameHe": "פולק יהושע מנחם",
+            "page": 2185
+          },
+          {
+            "rank": 9,
+            "nameHe": "גוטרמן יעקב אשר",
+            "page": 2185
+          },
+          {
+            "rank": 10,
+            "nameHe": "חדד שמעון",
+            "page": 2185
+          },
+          {
+            "rank": 11,
+            "nameHe": "מוזס מנחם אליעזר",
+            "page": 2185
+          }
+        ],
+        "result": "verified-against-enlarged-scan"
+      },
+      "archiveCrossCheck": {
+        "sourceId": "k17-candidates-archive-crosscheck",
+        "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/list/list37ab.html?id=59",
+        "count": 120
+      }
+    },
+    {
+      "letters": "ד",
+      "publishedCount": 120,
+      "pages": [
+        2186
+      ],
+      "candidatesUnavailable": true,
+      "candidates": [],
+      "unavailableReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 62, 108, 116. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
+      "unavailableReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 62, 108, 116. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "unresolvedRanks": [
+        62,
+        108,
+        116
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k17-membership-secondary",
+        "ranks": [
+          1,
+          2,
+          3
+        ],
+        "namesHe": [
+          "בשארה עזמי",
+          "זחאלקה ג'מאל",
+          "טאהא ואסל"
+        ],
+        "result": "matches-original-membership",
+        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+      },
+      "reserveSecondReading": {
+        "ranks": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "candidates": [
+          {
+            "rank": 4,
+            "nameHe": "נפאע סעיד",
+            "page": 2186
+          },
+          {
+            "rank": 5,
+            "nameHe": "אזברגה ג'מעה",
+            "page": 2186
+          },
+          {
+            "rank": 6,
+            "nameHe": "פוקרא עבד אלרחים",
+            "page": 2186
+          },
+          {
+            "rank": 7,
+            "nameHe": "ראבוס מחאסן",
+            "page": 2186
+          },
+          {
+            "rank": 8,
+            "nameHe": "גנאים מאזן",
+            "page": 2186
+          }
+        ],
+        "result": "verified-against-enlarged-scan"
+      }
+    },
+    {
+      "letters": "ה",
+      "publishedCount": 22,
+      "pages": [
+        2187
+      ],
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "ליפשיץ עפר פנחס",
+          "page": 2187
+        },
+        {
+          "rank": 2,
+          "nameHe": "חלבי ראפע",
+          "page": 2187
+        },
+        {
+          "rank": 3,
+          "nameHe": "בן זיכרי מאיר",
+          "page": 2187
+        },
+        {
+          "rank": 4,
+          "nameHe": "זיאדאת נזיה",
+          "page": 2187
+        },
+        {
+          "rank": 5,
+          "nameHe": "תורג'מן רוחלה",
+          "page": 2187
+        },
+        {
+          "rank": 6,
+          "nameHe": "אבו עראר נאיף",
+          "page": 2187
+        },
+        {
+          "rank": 7,
+          "nameHe": "חן אהרון אריה",
+          "page": 2187
+        },
+        {
+          "rank": 8,
+          "nameHe": "מחאמיד איבתסאם",
+          "page": 2187
+        },
+        {
+          "rank": 9,
+          "nameHe": "בסין רן זהר",
+          "page": 2187
+        },
+        {
+          "rank": 10,
+          "nameHe": "שלום איל",
+          "page": 2187
+        },
+        {
+          "rank": 11,
+          "nameHe": "רוני אורנה",
+          "page": 2187
+        },
+        {
+          "rank": 12,
+          "nameHe": "קדוש מרים",
+          "page": 2187
+        },
+        {
+          "rank": 13,
+          "nameHe": "משאש ברק",
+          "page": 2187
+        },
+        {
+          "rank": 14,
+          "nameHe": "ניימן יואב אבי",
+          "page": 2187
+        },
+        {
+          "rank": 15,
+          "nameHe": "נעלי ענבר רחל",
+          "page": 2187
+        },
+        {
+          "rank": 16,
+          "nameHe": "ישראל מירב",
+          "page": 2187
+        },
+        {
+          "rank": 17,
+          "nameHe": "שוסטר גניה",
+          "page": 2187
+        },
+        {
+          "rank": 18,
+          "nameHe": "סלמה יורי",
+          "page": 2187
+        },
+        {
+          "rank": 19,
+          "nameHe": "אבני ליאור",
+          "page": 2187
+        },
+        {
+          "rank": 20,
+          "nameHe": "פנחסי טל",
+          "page": 2187
+        },
+        {
+          "rank": 21,
+          "nameHe": "כרמי יובל",
+          "page": 2187
+        },
+        {
+          "rank": 22,
+          "nameHe": "קדוש יצחק",
+          "page": 2187
+        }
+      ]
+    },
+    {
+      "letters": "ו",
+      "publishedCount": 119,
+      "pages": [
+        2187,
+        2188
+      ],
+      "candidatesUnavailable": true,
+      "candidates": [],
+      "unavailableReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 30, 60, 78. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
+      "unavailableReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 30, 60, 78. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "unresolvedRanks": [
+        30,
+        60,
+        78
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k17-membership-secondary",
+        "ranks": [
+          1,
+          2,
+          3
+        ],
+        "namesHe": [
+          "ברכה מוחמד",
+          "סוייד חנא",
+          "חנין דב-בוריס"
+        ],
+        "result": "matches-original-membership",
+        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+      },
+      "reserveSecondReading": {
+        "ranks": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "candidates": [
+          {
+            "rank": 4,
+            "nameHe": "אגבאריה עפו",
+            "page": 2187
+          },
+          {
+            "rank": 5,
+            "nameHe": "עטאונה יוסף",
+            "page": 2187
+          },
+          {
+            "rank": 6,
+            "nameHe": "שלבי מנאל",
+            "page": 2187
+          },
+          {
+            "rank": 7,
+            "nameHe": "אבו זייד דח׳יל",
+            "page": 2187
+          },
+          {
+            "rank": 8,
+            "nameHe": "אבו מערוף עבדאללה",
+            "page": 2187
+          }
+        ],
+        "result": "verified-against-enlarged-scan"
+      }
+    },
+    {
+      "letters": "ז",
+      "publishedCount": 30,
+      "pages": [
+        2188
+      ],
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "טויטו ישראל",
+          "page": 2188
+        },
+        {
+          "rank": 2,
+          "nameHe": "זהבי אילן",
+          "page": 2188
+        },
+        {
+          "rank": 3,
+          "nameHe": "בכר רינה",
+          "page": 2188
+        },
+        {
+          "rank": 4,
+          "nameHe": "לוי אברהם",
+          "page": 2188
+        },
+        {
+          "rank": 5,
+          "nameHe": "שוורץ אהרון",
+          "page": 2188
+        },
+        {
+          "rank": 6,
+          "nameHe": "אברג'ל רוית",
+          "page": 2188
+        },
+        {
+          "rank": 7,
+          "nameHe": "סדון אפי",
+          "page": 2188
+        },
+        {
+          "rank": 8,
+          "nameHe": "הולר רועי",
+          "page": 2188
+        },
+        {
+          "rank": 9,
+          "nameHe": "שרעבי גילה",
+          "page": 2188
+        },
+        {
+          "rank": 10,
+          "nameHe": "עובדיה מנשה",
+          "page": 2188
+        },
+        {
+          "rank": 11,
+          "nameHe": "יצחקוב מרדכי",
+          "page": 2188
+        },
+        {
+          "rank": 12,
+          "nameHe": "קרסיס משה",
+          "page": 2188
+        },
+        {
+          "rank": 13,
+          "nameHe": "שרעבי-שוקר חנניה",
+          "page": 2188
+        },
+        {
+          "rank": 14,
+          "nameHe": "אביטל סגלית",
+          "page": 2188
+        },
+        {
+          "rank": 15,
+          "nameHe": "כהן אליהו",
+          "page": 2188
+        },
+        {
+          "rank": 16,
+          "nameHe": "מלקוב דוד",
+          "page": 2188
+        },
+        {
+          "rank": 17,
+          "nameHe": "גיסרוטאה אלינור",
+          "page": 2188
+        },
+        {
+          "rank": 18,
+          "nameHe": "הייקושלר מרדכי",
+          "page": 2188
+        },
+        {
+          "rank": 19,
+          "nameHe": "חמדי רינת",
+          "page": 2188
+        },
+        {
+          "rank": 20,
+          "nameHe": "סיטון יוסי",
+          "page": 2188
+        },
+        {
+          "rank": 21,
+          "nameHe": "גביזון שלום שרון",
+          "page": 2188
+        },
+        {
+          "rank": 22,
+          "nameHe": "בר מיטרה נסיה",
+          "page": 2188
+        },
+        {
+          "rank": 23,
+          "nameHe": "מור יוסף שמעון",
+          "page": 2188
+        },
+        {
+          "rank": 24,
+          "nameHe": "חדש אריה",
+          "page": 2188
+        },
+        {
+          "rank": 25,
+          "nameHe": "סימן טוב אורית",
+          "page": 2188
+        },
+        {
+          "rank": 26,
+          "nameHe": "חטיבי יצחק",
+          "page": 2188
+        },
+        {
+          "rank": 27,
+          "nameHe": "ותורי עופר",
+          "page": 2188
+        },
+        {
+          "rank": 28,
+          "nameHe": "אביטל יהודה",
+          "page": 2188
+        },
+        {
+          "rank": 29,
+          "nameHe": "כהן פור חביב חיים",
+          "page": 2188
+        },
+        {
+          "rank": 30,
+          "nameHe": "יהודה זכריה עופר",
+          "page": 2188
+        }
+      ],
+      "archiveCrossCheck": {
+        "sourceId": "k17-candidates-archive-crosscheck",
+        "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/list/list6396.html?id=42",
+        "count": 30
+      }
+    },
+    {
+      "letters": "זה",
+      "publishedCount": 10,
+      "pages": [
+        2188
+      ],
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "נגוסה אברהם",
+          "page": 2188
+        },
+        {
+          "rank": 2,
+          "nameHe": "שטלצר יחזקאל",
+          "page": 2188
+        },
+        {
+          "rank": 3,
+          "nameHe": "אברמוביץ יוסף ישראל",
+          "page": 2188
+        },
+        {
+          "rank": 4,
+          "nameHe": "רטה דרגה",
+          "page": 2188
+        },
+        {
+          "rank": 5,
+          "nameHe": "פרוינד מיכאל ברוך",
+          "page": 2188
+        },
+        {
+          "rank": 6,
+          "nameHe": "אבונה זאודו",
+          "page": 2188
+        },
+        {
+          "rank": 7,
+          "nameHe": "פליישר ישי יעקב",
+          "page": 2188
+        },
+        {
+          "rank": 8,
+          "nameHe": "אליאסוף לינדה",
+          "page": 2188
+        },
+        {
+          "rank": 9,
+          "nameHe": "הומפריס מיכאל דאן",
+          "page": 2188
+        },
+        {
+          "rank": 10,
+          "nameHe": "קורינלדי מיכאל",
+          "page": 2188
+        }
+      ],
+      "archiveCrossCheck": {
+        "sourceId": "k17-candidates-archive-crosscheck",
+        "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/list/list850a.html?id=57",
+        "count": 10
+      }
+    },
+    {
+      "letters": "זך",
+      "publishedCount": 16,
+      "pages": [
+        2189
+      ],
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "איתן הנטמן רפאל",
+          "page": 2189
+        },
+        {
+          "rank": 2,
+          "nameHe": "בן יזרי יעקב",
+          "page": 2189
+        },
+        {
+          "rank": 3,
+          "nameHe": "שרוני משה",
+          "page": 2189
+        },
+        {
+          "rank": 4,
+          "nameHe": "זיו יצחק",
+          "page": 2189
+        },
+        {
+          "rank": 5,
+          "nameHe": "גלנטי יצחק",
+          "page": 2189
+        },
+        {
+          "rank": 6,
+          "nameHe": "גלזר אלחנן",
+          "page": 2189
+        },
+        {
+          "rank": 7,
+          "nameHe": "מרום שרה",
+          "page": 2189
+        },
+        {
+          "rank": 8,
+          "nameHe": "אשרי יעקב",
+          "page": 2189
+        },
+        {
+          "rank": 9,
+          "nameHe": "יחזקאלי ניסן",
+          "page": 2189
+        },
+        {
+          "rank": 10,
+          "nameHe": "בן נון חפצי בה",
+          "page": 2189
+        },
+        {
+          "rank": 11,
+          "nameHe": "ססבון נסים",
+          "page": 2189
+        },
+        {
+          "rank": 12,
+          "nameHe": "גפני גד",
+          "page": 2189
+        },
+        {
+          "rank": 13,
+          "nameHe": "קראוטהמר אורי",
+          "page": 2189
+        },
+        {
+          "rank": 14,
+          "nameHe": "שרמן רפאל",
+          "page": 2189
+        },
+        {
+          "rank": 15,
+          "nameHe": "קריצבסקי יצחק",
+          "page": 2189
+        },
+        {
+          "rank": 16,
+          "nameHe": "שלום מנחם",
+          "page": 2189
+        }
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k17-membership-secondary",
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "namesHe": [
+          "איתן הנטמן רפאל",
+          "בן יזרי יעקב",
+          "שרוני משה",
+          "זיו יצחק",
+          "גלנטי יצחק",
+          "גלזר אלחנן",
+          "מרום שרה"
+        ],
+        "result": "matches-original-membership",
+        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+      },
+      "reserveSecondReading": {
+        "ranks": [
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "candidates": [
+          {
+            "rank": 8,
+            "nameHe": "אשרי יעקב",
+            "page": 2189
+          },
+          {
+            "rank": 9,
+            "nameHe": "יחזקאלי ניסן",
+            "page": 2189
+          },
+          {
+            "rank": 10,
+            "nameHe": "בן נון חפצי בה",
+            "page": 2189
+          },
+          {
+            "rank": 11,
+            "nameHe": "ססבון נסים",
+            "page": 2189
+          },
+          {
+            "rank": 12,
+            "nameHe": "גפני גד",
+            "page": 2189
+          }
+        ],
+        "result": "verified-against-enlarged-scan"
+      },
+      "archiveCrossCheck": {
+        "sourceId": "k17-candidates-archive-crosscheck",
+        "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/list/listbb33.html?id=47",
+        "count": 16
+      }
+    },
+    {
+      "letters": "חץ",
+      "publishedCount": 61,
+      "pages": [
+        2189
+      ],
+      "candidatesUnavailable": true,
+      "candidates": [],
+      "unavailableReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 6, 38, 41. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
+      "unavailableReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 6, 38, 41. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "unresolvedRanks": [
+        6,
+        38,
+        41
+      ]
+    },
+    {
+      "letters": "טב",
+      "publishedCount": 120,
+      "pages": [
+        2190
+      ],
+      "candidatesUnavailable": true,
+      "candidates": [],
+      "unavailableReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 12, 65, 96. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
+      "unavailableReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 12, 65, 96. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "unresolvedRanks": [
+        12,
+        65,
+        96
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k17-membership-secondary",
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "namesHe": [
+          "אלון בנימין",
+          "אורלב זבולון",
+          "הנדל צבי",
+          "איתם אפרים",
+          "סלומינסקי ניסן",
+          "לוי יצחק",
+          "גבאי אליהו ברוך",
+          "אלדד אריה",
+          "אריאל אורי יהודה"
+        ],
+        "result": "matches-original-membership",
+        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+      },
+      "reserveSecondReading": {
+        "ranks": [
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "candidates": [
+          {
+            "rank": 10,
+            "nameHe": "פינקלשטיין פרידה גילה",
+            "page": 2190
+          },
+          {
+            "rank": 11,
+            "nameHe": "יהלום שאול נחום",
+            "page": 2190
+          },
+          {
+            "rank": 12,
+            "nameHe": "ליברמן יהודה דב הור",
+            "page": 2190
+          },
+          {
+            "rank": 13,
+            "nameHe": "סטרוק אורית מלכה",
+            "page": 2190
+          },
+          {
+            "rank": 14,
+            "nameHe": "יוגב מרדכי",
+            "page": 2190
+          }
+        ],
+        "result": "verified-against-enlarged-scan"
+      }
+    },
+    {
+      "letters": "יש",
+      "publishedCount": 100,
+      "pages": [
+        2191
+      ],
+      "candidatesUnavailable": true,
+      "candidates": [],
+      "unavailableReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 59, 89. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
+      "unavailableReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 59, 89. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "unresolvedRanks": [
+        59,
+        89
+      ]
+    },
+    {
+      "letters": "כ",
+      "publishedCount": 10,
+      "pages": [
+        2192
+      ],
+      "candidatesUnavailable": true,
+      "candidates": [],
+      "unavailableReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 2. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
+      "unavailableReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 2. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "unresolvedRanks": [
+        2
+      ]
+    },
+    {
+      "letters": "כן",
+      "publishedCount": 120,
+      "pages": [
+        2192,
+        2193
+      ],
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "אולמרט אהוד",
+          "page": 2192
+        },
+        {
+          "rank": 2,
+          "nameHe": "פרס שמעון",
+          "page": 2192
+        },
+        {
+          "rank": 3,
+          "nameHe": "לבני ציפי צפורה",
+          "page": 2192
+        },
+        {
+          "rank": 4,
+          "nameHe": "שיטרית מאיר",
+          "page": 2192
+        },
+        {
+          "rank": 5,
+          "nameHe": "דיכטר אברהם משה",
+          "page": 2192
+        },
+        {
+          "rank": 6,
+          "nameHe": "סולודקין מרינה",
+          "page": 2192
+        },
+        {
+          "rank": 7,
+          "nameHe": "רמון חיים",
+          "page": 2192
+        },
+        {
+          "rank": 8,
+          "nameHe": "מופז שאול",
+          "page": 2192
+        },
+        {
+          "rank": 9,
+          "nameHe": "הנגבי צחי",
+          "page": 2192
+        },
+        {
+          "rank": 10,
+          "nameHe": "הירשזון אברהם",
+          "page": 2192
+        },
+        {
+          "rank": 11,
+          "nameHe": "רייכמן צבי אוריאל",
+          "page": 2192
+        },
+        {
+          "rank": 12,
+          "nameHe": "עזרא גדעון",
+          "page": 2192
+        },
+        {
+          "rank": 13,
+          "nameHe": "בר און רוני חיים",
+          "page": 2192
+        },
+        {
+          "rank": 14,
+          "nameHe": "איציק דליה",
+          "page": 2192
+        },
+        {
+          "rank": 15,
+          "nameHe": "בוים זאב דוד",
+          "page": 2192
+        },
+        {
+          "rank": 16,
+          "nameHe": "אדרי יעקב",
+          "page": 2192
+        },
+        {
+          "rank": 17,
+          "nameHe": "אלקין זאב",
+          "page": 2192
+        },
+        {
+          "rank": 18,
+          "nameHe": "והבה מגלי",
+          "page": 2192
+        },
+        {
+          "rank": 19,
+          "nameHe": "אברהם רוחמה",
+          "page": 2192
+        },
+        {
+          "rank": 20,
+          "nameHe": "בן ששון מנחם",
+          "page": 2192
+        },
+        {
+          "rank": 21,
+          "nameHe": "ברזניץ שלמה (יוראי)",
+          "page": 2192
+        },
+        {
+          "rank": 22,
+          "nameHe": "אפללו אלי אלברט",
+          "page": 2192
+        },
+        {
+          "rank": 23,
+          "nameHe": "טל דוד",
+          "page": 2192
+        },
+        {
+          "rank": 24,
+          "nameHe": "יצחקי אביגדור",
+          "page": 2192
+        },
+        {
+          "rank": 25,
+          "nameHe": "תירוש רונית",
+          "page": 2192
+        },
+        {
+          "rank": 26,
+          "nameHe": "שנלר עתניאל",
+          "page": 2192
+        },
+        {
+          "rank": 27,
+          "nameHe": "נודלמן מיכאל",
+          "page": 2192
+        },
+        {
+          "rank": 28,
+          "nameHe": "דותן עמירה",
+          "page": 2192
+        },
+        {
+          "rank": 29,
+          "nameHe": "חסון יואל",
+          "page": 2192
+        },
+        {
+          "rank": 30,
+          "nameHe": "חרמש שי שכנאי",
+          "page": 2192
+        },
+        {
+          "rank": 31,
+          "nameHe": "בן ישראל יצחק אריה",
+          "page": 2192
+        },
+        {
+          "rank": 32,
+          "nameHe": "פלסנר יוחנן",
+          "page": 2193
+        },
+        {
+          "rank": 33,
+          "nameHe": "מולה נגוסאי שלמה",
+          "page": 2193
+        },
+        {
+          "rank": 34,
+          "nameHe": "בן דוד דן",
+          "page": 2193
+        },
+        {
+          "rank": 35,
+          "nameHe": "אדאטו לוי רחל",
+          "page": 2193
+        },
+        {
+          "rank": 36,
+          "nameHe": "פיימן גרינב רינה",
+          "page": 2193
+        },
+        {
+          "rank": 37,
+          "nameHe": "כרמל ליאור",
+          "page": 2193
+        },
+        {
+          "rank": 38,
+          "nameHe": "רבנר ליאת יונית",
+          "page": 2193
+        },
+        {
+          "rank": 39,
+          "nameHe": "רפופורט שי אביטל",
+          "page": 2193
+        },
+        {
+          "rank": 40,
+          "nameHe": "שמאלוב-ברקוביץ' יוליה",
+          "page": 2193
+        },
+        {
+          "rank": 41,
+          "nameHe": "ברזלי אהוד יהודה",
+          "page": 2192
+        },
+        {
+          "rank": 42,
+          "nameHe": "תמיר יוסף שלמה",
+          "page": 2192
+        },
+        {
+          "rank": 43,
+          "nameHe": "גרביץ שלמה",
+          "page": 2192
+        },
+        {
+          "rank": 44,
+          "nameHe": "סאמואלסון מיכאלבסקי אנסטסיה מיכל",
+          "page": 2192
+        },
+        {
+          "rank": 45,
+          "nameHe": "קרמפה אברהם",
+          "page": 2192
+        },
+        {
+          "rank": 46,
+          "nameHe": "ריפמן שמואל משה",
+          "page": 2192
+        },
+        {
+          "rank": 47,
+          "nameHe": "אלול רפאל",
+          "page": 2192
+        },
+        {
+          "rank": 48,
+          "nameHe": "שיטרית אורי",
+          "page": 2192
+        },
+        {
+          "rank": 49,
+          "nameHe": "חדד יצחק",
+          "page": 2192
+        },
+        {
+          "rank": 50,
+          "nameHe": "הלוי אמיר",
+          "page": 2192
+        },
+        {
+          "rank": 51,
+          "nameHe": "דבאח אחמד",
+          "page": 2192
+        },
+        {
+          "rank": 52,
+          "nameHe": "דורון גדעון",
+          "page": 2192
+        },
+        {
+          "rank": 53,
+          "nameHe": "שביט יהודה",
+          "page": 2192
+        },
+        {
+          "rank": 54,
+          "nameHe": "גל דרור",
+          "page": 2192
+        },
+        {
+          "rank": 55,
+          "nameHe": "ויזל הראל אליעזר",
+          "page": 2192
+        },
+        {
+          "rank": 56,
+          "nameHe": "דאהר כאיד",
+          "page": 2192
+        },
+        {
+          "rank": 57,
+          "nameHe": "קונפורטי משה",
+          "page": 2192
+        },
+        {
+          "rank": 58,
+          "nameHe": "ונונו יצחק",
+          "page": 2192
+        },
+        {
+          "rank": 59,
+          "nameHe": "בן חמו אהרון",
+          "page": 2192
+        },
+        {
+          "rank": 60,
+          "nameHe": "צולר מיכאל",
+          "page": 2192
+        },
+        {
+          "rank": 61,
+          "nameHe": "אברמוביץ סלומון",
+          "page": 2192
+        },
+        {
+          "rank": 62,
+          "nameHe": "חייט אברהם אבנר",
+          "page": 2192
+        },
+        {
+          "rank": 63,
+          "nameHe": "אלחדיף נסים",
+          "page": 2192
+        },
+        {
+          "rank": 64,
+          "nameHe": "שניר יוסף",
+          "page": 2192
+        },
+        {
+          "rank": 65,
+          "nameHe": "לוזון חוה",
+          "page": 2192
+        },
+        {
+          "rank": 66,
+          "nameHe": "זמיר אסף",
+          "page": 2192
+        },
+        {
+          "rank": 67,
+          "nameHe": "פרץ יצחק",
+          "page": 2192
+        },
+        {
+          "rank": 68,
+          "nameHe": "שגיא חיים",
+          "page": 2192
+        },
+        {
+          "rank": 69,
+          "nameHe": "שטרולוביץ שמואל",
+          "page": 2192
+        },
+        {
+          "rank": 70,
+          "nameHe": "ליואי עדי צבי",
+          "page": 2192
+        },
+        {
+          "rank": 71,
+          "nameHe": "לנדאו אמנון",
+          "page": 2192
+        },
+        {
+          "rank": 72,
+          "nameHe": "בוצ'רוב יורי",
+          "page": 2193
+        },
+        {
+          "rank": 73,
+          "nameHe": "טובי יהודה",
+          "page": 2193
+        },
+        {
+          "rank": 74,
+          "nameHe": "שמחי יואב",
+          "page": 2193
+        },
+        {
+          "rank": 75,
+          "nameHe": "וקסמן אוגניה",
+          "page": 2193
+        },
+        {
+          "rank": 76,
+          "nameHe": "אלון ניסים",
+          "page": 2193
+        },
+        {
+          "rank": 77,
+          "nameHe": "בר יהודה אבישי",
+          "page": 2193
+        },
+        {
+          "rank": 78,
+          "nameHe": "באזוב רומן",
+          "page": 2193
+        },
+        {
+          "rank": 79,
+          "nameHe": "בן רפאל אביבה",
+          "page": 2193
+        },
+        {
+          "rank": 80,
+          "nameHe": "רצבי שלמה",
+          "page": 2193
+        },
+        {
+          "rank": 81,
+          "nameHe": "אברהם גבריאל",
+          "page": 2192
+        },
+        {
+          "rank": 82,
+          "nameHe": "יפרח יעקב",
+          "page": 2192
+        },
+        {
+          "rank": 83,
+          "nameHe": "אמסלם מרדכי",
+          "page": 2192
+        },
+        {
+          "rank": 84,
+          "nameHe": "עמרן נתנאל",
+          "page": 2192
+        },
+        {
+          "rank": 85,
+          "nameHe": "ברג מונל מיכאל",
+          "page": 2192
+        },
+        {
+          "rank": 86,
+          "nameHe": "בנישתי איציק יצחק",
+          "page": 2192
+        },
+        {
+          "rank": 87,
+          "nameHe": "דגן דורית",
+          "page": 2192
+        },
+        {
+          "rank": 88,
+          "nameHe": "מידן אברהם",
+          "page": 2192
+        },
+        {
+          "rank": 89,
+          "nameHe": "טסמה אביינש",
+          "page": 2192
+        },
+        {
+          "rank": 90,
+          "nameHe": "כחלון משה",
+          "page": 2192
+        },
+        {
+          "rank": 91,
+          "nameHe": "וקנין אילן",
+          "page": 2192
+        },
+        {
+          "rank": 92,
+          "nameHe": "אלפריח מרדכי מופק",
+          "page": 2192
+        },
+        {
+          "rank": 93,
+          "nameHe": "דרעי אברהם",
+          "page": 2192
+        },
+        {
+          "rank": 94,
+          "nameHe": "צחר גדעון יששכר",
+          "page": 2192
+        },
+        {
+          "rank": 95,
+          "nameHe": "לביא אילן",
+          "page": 2192
+        },
+        {
+          "rank": 96,
+          "nameHe": "ברוך שושנה",
+          "page": 2192
+        },
+        {
+          "rank": 97,
+          "nameHe": "אביעד נטלי",
+          "page": 2192
+        },
+        {
+          "rank": 98,
+          "nameHe": "קוזלוביץ אסתר מלכה",
+          "page": 2192
+        },
+        {
+          "rank": 99,
+          "nameHe": "גורדין צפורה",
+          "page": 2192
+        },
+        {
+          "rank": 100,
+          "nameHe": "לביא יואל",
+          "page": 2192
+        },
+        {
+          "rank": 101,
+          "nameHe": "עומרד אברהם",
+          "page": 2192
+        },
+        {
+          "rank": 102,
+          "nameHe": "סלמון גיל משה",
+          "page": 2192
+        },
+        {
+          "rank": 103,
+          "nameHe": "לוי מאיר",
+          "page": 2192
+        },
+        {
+          "rank": 104,
+          "nameHe": "שינה נחום חן",
+          "page": 2192
+        },
+        {
+          "rank": 105,
+          "nameHe": "צרפתי שלמה",
+          "page": 2192
+        },
+        {
+          "rank": 106,
+          "nameHe": "שמיט סימה",
+          "page": 2192
+        },
+        {
+          "rank": 107,
+          "nameHe": "סיון אילנה",
+          "page": 2192
+        },
+        {
+          "rank": 108,
+          "nameHe": "לויט מיכאל",
+          "page": 2192
+        },
+        {
+          "rank": 109,
+          "nameHe": "שורץ דוד",
+          "page": 2192
+        },
+        {
+          "rank": 110,
+          "nameHe": "נאמן אברהם",
+          "page": 2192
+        },
+        {
+          "rank": 111,
+          "nameHe": "אלדר עדי",
+          "page": 2192
+        },
+        {
+          "rank": 112,
+          "nameHe": "בירגר זאב",
+          "page": 2193
+        },
+        {
+          "rank": 113,
+          "nameHe": "סויסה רפי",
+          "page": 2193
+        },
+        {
+          "rank": 114,
+          "nameHe": "פלד יורם",
+          "page": 2193
+        },
+        {
+          "rank": 115,
+          "nameHe": "ליטבינוף דב",
+          "page": 2193
+        },
+        {
+          "rank": 116,
+          "nameHe": "נשרי יוסף צבי",
+          "page": 2193
+        },
+        {
+          "rank": 117,
+          "nameHe": "ניצן מאיר",
+          "page": 2193
+        },
+        {
+          "rank": 118,
+          "nameHe": "יהב יונה",
+          "page": 2193
+        },
+        {
+          "rank": 119,
+          "nameHe": "צילקר צבי יהושע",
+          "page": 2193
+        },
+        {
+          "rank": 120,
+          "nameHe": "סלע מיכאל",
+          "page": 2193
+        }
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k17-membership-secondary",
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29
+        ],
+        "namesHe": [
+          "אולמרט אהוד",
+          "פרס שמעון",
+          "לבני ציפי צפורה",
+          "שיטרית מאיר",
+          "דיכטר אברהם משה",
+          "סולודקין מרינה",
+          "רמון חיים",
+          "מופז שאול",
+          "הנגבי צחי",
+          "הירשזון אברהם",
+          "רייכמן צבי אוריאל",
+          "עזרא גדעון",
+          "בר און רוני חיים",
+          "איציק דליה",
+          "בוים זאב דוד",
+          "אדרי יעקב",
+          "אלקין זאב",
+          "והבה מגלי",
+          "אברהם רוחמה",
+          "בן ששון מנחם",
+          "ברזניץ שלמה (יוראי)",
+          "אפללו אלי אלברט",
+          "טל דוד",
+          "יצחקי אביגדור",
+          "תירוש רונית",
+          "שנלר עתניאל",
+          "נודלמן מיכאל",
+          "דותן עמירה",
+          "חסון יואל"
+        ],
+        "result": "matches-original-membership",
+        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+      },
+      "reserveSecondReading": {
+        "ranks": [
+          30,
+          31,
+          32,
+          33,
+          34
+        ],
+        "candidates": [
+          {
+            "rank": 30,
+            "nameHe": "חרמש שי שכנאי",
+            "page": 2192
+          },
+          {
+            "rank": 31,
+            "nameHe": "בן ישראל יצחק אריה",
+            "page": 2192
+          },
+          {
+            "rank": 32,
+            "nameHe": "פלסנר יוחנן",
+            "page": 2193
+          },
+          {
+            "rank": 33,
+            "nameHe": "מולה נגוסאי שלמה",
+            "page": 2193
+          },
+          {
+            "rank": 34,
+            "nameHe": "בן דוד דן",
+            "page": 2193
+          }
+        ],
+        "result": "verified-against-enlarged-scan"
+      },
+      "archiveCrossCheck": {
+        "sourceId": "k17-candidates-archive-crosscheck",
+        "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/list/list8bcf.html?id=30",
+        "count": 120
+      }
+    },
+    {
+      "letters": "כץ",
+      "publishedCount": 10,
+      "pages": [
+        2193
+      ],
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "גרין משה",
+          "page": 2193
+        },
+        {
+          "rank": 2,
+          "nameHe": "צמח יעקב",
+          "page": 2193
+        },
+        {
+          "rank": 3,
+          "nameHe": "רוזנולד יעקב אליהו",
+          "page": 2193
+        },
+        {
+          "rank": 4,
+          "nameHe": "הרצברג ולדימיר",
+          "page": 2193
+        },
+        {
+          "rank": 5,
+          "nameHe": "אקל סיגל",
+          "page": 2193
+        },
+        {
+          "rank": 6,
+          "nameHe": "גנאפולסקי מרה",
+          "page": 2193
+        },
+        {
+          "rank": 7,
+          "nameHe": "יאול מיכאל",
+          "page": 2193
+        },
+        {
+          "rank": 8,
+          "nameHe": "צוקרמן שגיא",
+          "page": 2193
+        },
+        {
+          "rank": 9,
+          "nameHe": "אונגר שמואל",
+          "page": 2193
+        },
+        {
+          "rank": 10,
+          "nameHe": "דוברוב אריה",
+          "page": 2193
+        }
+      ]
+    },
+    {
+      "letters": "ל",
+      "publishedCount": 23,
+      "pages": [
+        2193
+      ],
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "ליברמן אביגדור",
+          "page": 2193
+        },
+        {
+          "rank": 2,
+          "nameHe": "שטרן יורי",
+          "page": 2193
+        },
+        {
+          "rank": 3,
+          "nameHe": "חסון ארני ישראל",
+          "page": 2193
+        },
+        {
+          "rank": 4,
+          "nameHe": "שגל יוסף",
+          "page": 2193
+        },
+        {
+          "rank": 5,
+          "nameHe": "טרטמן אסתרינה",
+          "page": 2193
+        },
+        {
+          "rank": 6,
+          "nameHe": "מיסז'ניקוב סטס",
+          "page": 2193
+        },
+        {
+          "rank": 7,
+          "nameHe": "לנדבר סופיה סוניה",
+          "page": 2193
+        },
+        {
+          "rank": 8,
+          "nameHe": "אהרונוביץ' יצחק אהרון-",
+          "page": 2193
+        },
+        {
+          "rank": 9,
+          "nameHe": "אילטוב רוברט",
+          "page": 2193
+        },
+        {
+          "rank": 10,
+          "nameHe": "מילר אלכס",
+          "page": 2193
+        },
+        {
+          "rank": 11,
+          "nameHe": "שמטוב ליה",
+          "page": 2193
+        },
+        {
+          "rank": 12,
+          "nameHe": "רותם דוד אייזיק",
+          "page": 2193
+        },
+        {
+          "rank": 13,
+          "nameHe": "ברונשטיין אליה",
+          "page": 2193
+        },
+        {
+          "rank": 14,
+          "nameHe": "יאסינוב יגאל",
+          "page": 2193
+        },
+        {
+          "rank": 15,
+          "nameHe": "עמנואל מצליח",
+          "page": 2193
+        },
+        {
+          "rank": 16,
+          "nameHe": "נחום טל",
+          "page": 2193
+        },
+        {
+          "rank": 17,
+          "nameHe": "אפרימוב אירינה",
+          "page": 2193
+        },
+        {
+          "rank": 18,
+          "nameHe": "שצ'גול איליה",
+          "page": 2193
+        },
+        {
+          "rank": 19,
+          "nameHe": "גרוסמן מיכאל",
+          "page": 2193
+        },
+        {
+          "rank": 20,
+          "nameHe": "נודלמן אריאל",
+          "page": 2193
+        },
+        {
+          "rank": 21,
+          "nameHe": "גולדשטיין יורי",
+          "page": 2193
+        },
+        {
+          "rank": 22,
+          "nameHe": "טיכונוביץ' קלרה",
+          "page": 2193
+        },
+        {
+          "rank": 23,
+          "nameHe": "כהן אליעזר",
+          "page": 2193
+        }
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k17-membership-secondary",
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "namesHe": [
+          "ליברמן אביגדור",
+          "שטרן יורי",
+          "חסון ארני ישראל",
+          "שגל יוסף",
+          "טרטמן אסתרינה",
+          "מיסז'ניקוב סטס",
+          "לנדבר סופיה סוניה",
+          "אהרונוביץ' יצחק אהרון-",
+          "אילטוב רוברט",
+          "מילר אלכס",
+          "שמטוב ליה"
+        ],
+        "result": "matches-original-membership",
+        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+      },
+      "reserveSecondReading": {
+        "ranks": [
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "candidates": [
+          {
+            "rank": 12,
+            "nameHe": "רותם דוד אייזיק",
+            "page": 2193
+          },
+          {
+            "rank": 13,
+            "nameHe": "ברונשטיין אליה",
+            "page": 2193
+          },
+          {
+            "rank": 14,
+            "nameHe": "יאסינוב יגאל",
+            "page": 2193
+          },
+          {
+            "rank": 15,
+            "nameHe": "עמנואל מצליח",
+            "page": 2193
+          },
+          {
+            "rank": 16,
+            "nameHe": "נחום טל",
+            "page": 2193
+          }
+        ],
+        "result": "verified-against-enlarged-scan"
+      }
+    },
+    {
+      "letters": "מחל",
+      "publishedCount": 119,
+      "pages": [
+        2194
+      ],
+      "candidatesUnavailable": true,
+      "candidates": [],
+      "unavailableReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 60, 80, 117. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
+      "unavailableReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 60, 80, 117. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "unresolvedRanks": [
+        60,
+        80,
+        117
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k17-membership-secondary",
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "namesHe": [
+          "נתניהו בנימין",
+          "שלום ציון סילבן",
+          "כחלון משה",
+          "ארדן גלעד מנשה",
+          "סער גדעון",
+          "איתן מיקי מיכאל",
+          "ריבלין ראובן רובי",
+          "נוה דני",
+          "שטייניץ יובל",
+          "לבנת לימור אהובה",
+          "שרנסקי נתן אנטולי",
+          "כץ ישראל"
+        ],
+        "result": "matches-original-membership",
+        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+      },
+      "reserveSecondReading": {
+        "ranks": [
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "candidates": [
+          {
+            "rank": 13,
+            "nameHe": "כץ חיים",
+            "page": 2194
+          },
+          {
+            "rank": 14,
+            "nameHe": "לנדאו עוזי",
+            "page": 2194
+          },
+          {
+            "rank": 15,
+            "nameHe": "אדלשטיין יולי יואל",
+            "page": 2194
+          },
+          {
+            "rank": 16,
+            "nameHe": "בנלולו דניאל",
+            "page": 2194
+          },
+          {
+            "rank": 17,
+            "nameHe": "נס לאה",
+            "page": 2194
+          }
+        ],
+        "result": "verified-against-enlarged-scan"
+      }
+    },
+    {
+      "letters": "מרצ",
+      "publishedCount": 120,
+      "pages": [
+        2195
+      ],
+      "candidatesUnavailable": true,
+      "candidates": [],
+      "unavailableReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 64, 95, 106. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
+      "unavailableReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 64, 95, 106. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "unresolvedRanks": [
+        64,
+        95,
+        106
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k17-membership-secondary",
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "namesHe": [
+          "ביילין יוסף",
+          "אורון חיים",
+          "כהן רן",
+          "גלאון זהבה",
+          "וילן אבשלום"
+        ],
+        "result": "matches-original-membership",
+        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+      },
+      "reserveSecondReading": {
+        "ranks": [
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "candidates": [
+          {
+            "rank": 6,
+            "nameHe": "גרינפלד צביה",
+            "page": 2195
+          },
+          {
+            "rank": 7,
+            "nameHe": "פריג' עיסווי",
+            "page": 2195
+          },
+          {
+            "rank": 8,
+            "nameHe": "גיל און אילן",
+            "page": 2195
+          },
+          {
+            "rank": 9,
+            "nameHe": "רוזין מיכל",
+            "page": 2195
+          },
+          {
+            "rank": 10,
+            "nameHe": "רז מוסי",
+            "page": 2195
+          }
+        ],
+        "result": "verified-against-enlarged-scan"
+      }
+    },
+    {
+      "letters": "נץ",
+      "publishedCount": 19,
+      "pages": [
+        2196
+      ],
+      "candidatesUnavailable": true,
+      "candidates": [],
+      "unavailableReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 4, 10. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
+      "unavailableReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 4, 10. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "unresolvedRanks": [
+        4,
+        10
+      ]
+    },
+    {
+      "letters": "עם",
+      "publishedCount": 117,
+      "pages": [
+        2196,
+        2197
+      ],
+      "candidatesUnavailable": true,
+      "candidates": [],
+      "unavailableReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 49, 78, 101. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
+      "unavailableReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 49, 78, 101. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "unresolvedRanks": [
+        49,
+        78,
+        101
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k17-membership-secondary",
+        "ranks": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "namesHe": [
+          "צרצור אברהים",
+          "טיבי אחמד",
+          "סאנע טלב",
+          "זכור עבאס"
+        ],
+        "result": "matches-original-membership",
+        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+      },
+      "reserveSecondReading": {
+        "ranks": [
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "candidates": [
+          {
+            "rank": 5,
+            "nameHe": "אבו אחמד סלמאן",
+            "page": 2196
+          },
+          {
+            "rank": 6,
+            "nameHe": "דראושה באסל",
+            "page": 2196
+          },
+          {
+            "rank": 7,
+            "nameHe": "שחאדה יוסף",
+            "page": 2196
+          },
+          {
+            "rank": 8,
+            "nameHe": "מואסי מחמוד",
+            "page": 2196
+          },
+          {
+            "rank": 9,
+            "nameHe": "דגלי רסן",
+            "page": 2196
+          }
+        ],
+        "result": "verified-against-enlarged-scan"
+      }
+    },
+    {
+      "letters": "פ",
+      "publishedCount": 24,
+      "pages": [
+        2197
+      ],
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "דיין עוזי",
+          "page": 2197
+        },
+        {
+          "rank": 2,
+          "nameHe": "פרץ אסתר",
+          "page": 2197
+        },
+        {
+          "rank": 3,
+          "nameHe": "גלעד יהודה אריה",
+          "page": 2197
+        },
+        {
+          "rank": 4,
+          "nameHe": "ברונשטיין לאוניד",
+          "page": 2197
+        },
+        {
+          "rank": 5,
+          "nameHe": "אלגרבלי אריה מרדכי",
+          "page": 2197
+        },
+        {
+          "rank": 6,
+          "nameHe": "שומר אריה דב",
+          "page": 2197
+        },
+        {
+          "rank": 7,
+          "nameHe": "ברשדסקי עדי",
+          "page": 2197
+        },
+        {
+          "rank": 8,
+          "nameHe": "ג'ובראן רימון",
+          "page": 2197
+        },
+        {
+          "rank": 9,
+          "nameHe": "רן אלכסנדר",
+          "page": 2197
+        },
+        {
+          "rank": 10,
+          "nameHe": "עוררי יצחק שמעון",
+          "page": 2197
+        },
+        {
+          "rank": 11,
+          "nameHe": "אולבינסקי אירינה",
+          "page": 2197
+        },
+        {
+          "rank": 12,
+          "nameHe": "יעיש אליהו חי",
+          "page": 2197
+        },
+        {
+          "rank": 13,
+          "nameHe": "קבדה ג'מבר אורי",
+          "page": 2197
+        },
+        {
+          "rank": 14,
+          "nameHe": "גברילוב צבי",
+          "page": 2197
+        },
+        {
+          "rank": 15,
+          "nameHe": "הוכמן ענבל",
+          "page": 2197
+        },
+        {
+          "rank": 16,
+          "nameHe": "פינסקר אילן",
+          "page": 2197
+        },
+        {
+          "rank": 17,
+          "nameHe": "פרי ארז",
+          "page": 2197
+        },
+        {
+          "rank": 18,
+          "nameHe": "רכס גדליהו",
+          "page": 2197
+        },
+        {
+          "rank": 19,
+          "nameHe": "מידן זאב",
+          "page": 2197
+        },
+        {
+          "rank": 20,
+          "nameHe": "חולי אברהם",
+          "page": 2197
+        },
+        {
+          "rank": 21,
+          "nameHe": "פלד חן",
+          "page": 2197
+        },
+        {
+          "rank": 22,
+          "nameHe": "בומס ניר טוביה",
+          "page": 2197
+        },
+        {
+          "rank": 23,
+          "nameHe": "לוריא מרק ארתור",
+          "page": 2197
+        },
+        {
+          "rank": 24,
+          "nameHe": "צור יוסף",
+          "page": 2197
+        }
+      ]
+    },
+    {
+      "letters": "פז",
+      "publishedCount": 7,
+      "pages": [
+        2197
+      ],
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "פתחוב עובדיה",
+          "page": 2197
+        },
+        {
+          "rank": 2,
+          "nameHe": "טהור יוחאי יוריק",
+          "page": 2197
+        },
+        {
+          "rank": 3,
+          "nameHe": "אמינוב רפיק",
+          "page": 2197
+        },
+        {
+          "rank": 4,
+          "nameHe": "פנחסוב ברוך חי",
+          "page": 2197
+        },
+        {
+          "rank": 5,
+          "nameHe": "ברייב אלכס",
+          "page": 2197
+        },
+        {
+          "rank": 6,
+          "nameHe": "מולוקנדוב נריה",
+          "page": 2197
+        },
+        {
+          "rank": 7,
+          "nameHe": "קטנוב ינינה",
+          "page": 2197
+        }
+      ]
+    },
+    {
+      "letters": "פכ",
+      "publishedCount": 21,
+      "pages": [
+        2198
+      ],
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "אנג'ל פליקס",
+          "page": 2198
+        },
+        {
+          "rank": 2,
+          "nameHe": "פרץ אברהם עמי",
+          "page": 2198
+        },
+        {
+          "rank": 3,
+          "nameHe": "ברונסון אילן",
+          "page": 2198
+        },
+        {
+          "rank": 4,
+          "nameHe": "גניש יצחק",
+          "page": 2198
+        },
+        {
+          "rank": 5,
+          "nameHe": "אברג'ל צ'רלי",
+          "page": 2198
+        },
+        {
+          "rank": 6,
+          "nameHe": "קחלון דוד",
+          "page": 2198
+        },
+        {
+          "rank": 7,
+          "nameHe": "דהן ירון",
+          "page": 2198
+        },
+        {
+          "rank": 8,
+          "nameHe": "יהב קרן",
+          "page": 2198
+        },
+        {
+          "rank": 9,
+          "nameHe": "מריאנופסקי ראובן",
+          "page": 2198
+        },
+        {
+          "rank": 10,
+          "nameHe": "סנדר מיטל",
+          "page": 2198
+        },
+        {
+          "rank": 11,
+          "nameHe": "חביב אשר",
+          "page": 2198
+        },
+        {
+          "rank": 12,
+          "nameHe": "שחר בצלאל",
+          "page": 2198
+        },
+        {
+          "rank": 13,
+          "nameHe": "דואני רבקה",
+          "page": 2198
+        },
+        {
+          "rank": 14,
+          "nameHe": "שלמה שמעון",
+          "page": 2198
+        },
+        {
+          "rank": 15,
+          "nameHe": "יהב יוסף חיים",
+          "page": 2198
+        },
+        {
+          "rank": 16,
+          "nameHe": "ברזלאי דורון",
+          "page": 2198
+        },
+        {
+          "rank": 17,
+          "nameHe": "נתיב אלה",
+          "page": 2198
+        },
+        {
+          "rank": 18,
+          "nameHe": "מערבי יהודה",
+          "page": 2198
+        },
+        {
+          "rank": 19,
+          "nameHe": "מערבי צביה",
+          "page": 2198
+        },
+        {
+          "rank": 20,
+          "nameHe": "סנדר יגאל",
+          "page": 2198
+        },
+        {
+          "rank": 21,
+          "nameHe": "לוי שמואל שרון",
+          "page": 2198
+        }
+      ]
+    },
+    {
+      "letters": "פץ",
+      "publishedCount": 10,
+      "pages": [
+        2198
+      ],
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "לוינגר אליעזר",
+          "page": 2198
+        },
+        {
+          "rank": 2,
+          "nameHe": "בן ציון מאיה",
+          "page": 2198
+        },
+        {
+          "rank": 3,
+          "nameHe": "אילת חיים",
+          "page": 2198
+        },
+        {
+          "rank": 4,
+          "nameHe": "טבצ'ניקוב אירינה",
+          "page": 2198
+        },
+        {
+          "rank": 5,
+          "nameHe": "יוסף דוד",
+          "page": 2198
+        },
+        {
+          "rank": 6,
+          "nameHe": "אבו סאלח יאסר",
+          "page": 2198
+        },
+        {
+          "rank": 7,
+          "nameHe": "עוזרי מנחם",
+          "page": 2198
+        },
+        {
+          "rank": 8,
+          "nameHe": "מרואני פרנסוא ישראל",
+          "page": 2198
+        },
+        {
+          "rank": 9,
+          "nameHe": "אמור אסתר",
+          "page": 2198
+        },
+        {
+          "rank": 10,
+          "nameHe": "צינוביץ חן רחל",
+          "page": 2198
+        }
+      ],
+      "archiveCrossCheck": {
+        "sourceId": "k17-candidates-archive-crosscheck",
+        "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/list/list2580.html?id=43",
+        "count": 10
+      }
+    },
+    {
+      "letters": "ף",
+      "publishedCount": 11,
+      "pages": [
+        2197
+      ],
+      "candidatesUnavailable": true,
+      "candidates": [],
+      "unavailableReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 3, 7. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
+      "unavailableReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 3, 7. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "unresolvedRanks": [
+        3,
+        7
+      ]
+    },
+    {
+      "letters": "צה",
+      "publishedCount": 11,
+      "pages": [
+        2198
+      ],
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "כספי יעקב",
+          "page": 2198
+        },
+        {
+          "rank": 2,
+          "nameHe": "אחישחר יחזקאל משה",
+          "page": 2198
+        },
+        {
+          "rank": 3,
+          "nameHe": "כפיר צבי",
+          "page": 2198
+        },
+        {
+          "rank": 4,
+          "nameHe": "חביב מסעוד",
+          "page": 2198
+        },
+        {
+          "rank": 5,
+          "nameHe": "לאופמן צבי",
+          "page": 2198
+        },
+        {
+          "rank": 6,
+          "nameHe": "אונגר בנימין",
+          "page": 2198
+        },
+        {
+          "rank": 7,
+          "nameHe": "כריז חנה",
+          "page": 2198
+        },
+        {
+          "rank": 8,
+          "nameHe": "הרשטיין עקיבא",
+          "page": 2198
+        },
+        {
+          "rank": 9,
+          "nameHe": "אחימאיר אברהם",
+          "page": 2198
+        },
+        {
+          "rank": 10,
+          "nameHe": "פסח מלכה",
+          "page": 2198
+        },
+        {
+          "rank": 11,
+          "nameHe": "גולן זיווה",
+          "page": 2198
+        }
+      ]
+    },
+    {
+      "letters": "ק",
+      "publishedCount": 55,
+      "pages": [
+        2198,
+        2199
+      ],
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "אגבארייה אסמא",
+          "page": 2198
+        },
+        {
+          "rank": 2,
+          "nameHe": "נאדר ניר",
+          "page": 2198
+        },
+        {
+          "rank": 3,
+          "nameHe": "חטיב סאמיה",
+          "page": 2198
+        },
+        {
+          "rank": 4,
+          "nameHe": "קעוור מוניר",
+          "page": 2198
+        },
+        {
+          "rank": 5,
+          "nameHe": "מוראד מאלכ",
+          "page": 2198
+        },
+        {
+          "rank": 6,
+          "nameHe": "חטיב עבד אלמונעם",
+          "page": 2198
+        },
+        {
+          "rank": 7,
+          "nameHe": "בר אור אסנת",
+          "page": 2198
+        },
+        {
+          "rank": 8,
+          "nameHe": "טיארה יפא",
+          "page": 2198
+        },
+        {
+          "rank": 9,
+          "nameHe": "אבו חישב מוסטפא",
+          "page": 2198
+        },
+        {
+          "rank": 10,
+          "nameHe": "ג'בארין מוחמד",
+          "page": 2198
+        },
+        {
+          "rank": 11,
+          "nameHe": "מנאדרה נסים",
+          "page": 2199
+        },
+        {
+          "rank": 12,
+          "nameHe": "עתאמנה אמיר",
+          "page": 2199
+        },
+        {
+          "rank": 13,
+          "nameHe": "היג'אני מחמוד",
+          "page": 2199
+        },
+        {
+          "rank": 14,
+          "nameHe": "אבו אל היג'ה מוראד",
+          "page": 2199
+        },
+        {
+          "rank": 15,
+          "nameHe": "אבו ואסל וליד",
+          "page": 2199
+        },
+        {
+          "rank": 16,
+          "nameHe": "טאהא קאהר",
+          "page": 2199
+        },
+        {
+          "rank": 17,
+          "nameHe": "עלאוי סיהאם",
+          "page": 2199
+        },
+        {
+          "rank": 18,
+          "nameHe": "בוטרוס עפיף",
+          "page": 2199
+        },
+        {
+          "rank": 19,
+          "nameHe": "טיארה נור אל דין",
+          "page": 2199
+        },
+        {
+          "rank": 20,
+          "nameHe": "מרעי עאידה",
+          "page": 2198
+        },
+        {
+          "rank": 21,
+          "nameHe": "חסאן טלאל",
+          "page": 2198
+        },
+        {
+          "rank": 22,
+          "nameHe": "טאהא ג'לאל",
+          "page": 2198
+        },
+        {
+          "rank": 23,
+          "nameHe": "אבו ח'אטר אבראהים",
+          "page": 2198
+        },
+        {
+          "rank": 24,
+          "nameHe": "בשארה באסם",
+          "page": 2198
+        },
+        {
+          "rank": 25,
+          "nameHe": "אבו סלאח עבד",
+          "page": 2198
+        },
+        {
+          "rank": 26,
+          "nameHe": "דראושה חנא",
+          "page": 2198
+        },
+        {
+          "rank": 27,
+          "nameHe": "ספאעיה אחמד",
+          "page": 2198
+        },
+        {
+          "rank": 28,
+          "nameHe": "טלוזי יוסף",
+          "page": 2198
+        },
+        {
+          "rank": 29,
+          "nameHe": "מנאסרה עומר",
+          "page": 2198
+        },
+        {
+          "rank": 30,
+          "nameHe": "מסארוה עבד",
+          "page": 2199
+        },
+        {
+          "rank": 31,
+          "nameHe": "תורכי אחמד",
+          "page": 2199
+        },
+        {
+          "rank": 32,
+          "nameHe": "אבו ימין תאופיק",
+          "page": 2199
+        },
+        {
+          "rank": 33,
+          "nameHe": "חסאן סלאם",
+          "page": 2199
+        },
+        {
+          "rank": 34,
+          "nameHe": "מנאדרה חנאן",
+          "page": 2199
+        },
+        {
+          "rank": 35,
+          "nameHe": "נעאמנה חתאם",
+          "page": 2199
+        },
+        {
+          "rank": 36,
+          "nameHe": "פרידמן מיכל",
+          "page": 2199
+        },
+        {
+          "rank": 37,
+          "nameHe": "הורודי שרון",
+          "page": 2199
+        },
+        {
+          "rank": 38,
+          "nameHe": "פרמינגר יונתן",
+          "page": 2199
+        },
+        {
+          "rank": 39,
+          "nameHe": "פרידמן פניה",
+          "page": 2198
+        },
+        {
+          "rank": 40,
+          "nameHe": "להב תומר",
+          "page": 2198
+        },
+        {
+          "rank": 41,
+          "nameHe": "סודרי אורית",
+          "page": 2198
+        },
+        {
+          "rank": 42,
+          "nameHe": "בן אפרת יהונתן",
+          "page": 2198
+        },
+        {
+          "rank": 43,
+          "nameHe": "להב אדיב הרט",
+          "page": 2198
+        },
+        {
+          "rank": 44,
+          "nameHe": "אדיב אסף",
+          "page": 2198
+        },
+        {
+          "rank": 45,
+          "nameHe": "בן אפרת רותי",
+          "page": 2198
+        },
+        {
+          "rank": 46,
+          "nameHe": "גולן ישי",
+          "page": 2198
+        },
+        {
+          "rank": 47,
+          "nameHe": "וולק שירי",
+          "page": 2198
+        },
+        {
+          "rank": 48,
+          "nameHe": "שרלין בן-אפרת מירל",
+          "page": 2198
+        },
+        {
+          "rank": 49,
+          "nameHe": "זחאלקה אבראהים",
+          "page": 2199
+        },
+        {
+          "rank": 50,
+          "nameHe": "בן שמחון דניאל",
+          "page": 2199
+        },
+        {
+          "rank": 51,
+          "nameHe": "אגבאריה מוחמד ג'מאל",
+          "page": 2199
+        },
+        {
+          "rank": 52,
+          "nameHe": "חוטאב ראפת",
+          "page": 2199
+        },
+        {
+          "rank": 53,
+          "nameHe": "בן אפרת רוני",
+          "page": 2199
+        },
+        {
+          "rank": 54,
+          "nameHe": "בן אפרת יעקב יוסף",
+          "page": 2199
+        },
+        {
+          "rank": 55,
+          "nameHe": "ליאור שרון",
+          "page": 2199
+        }
+      ]
+    },
+    {
+      "letters": "קז",
+      "publishedCount": 14,
+      "pages": [
+        2199
+      ],
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "שלוסר יעקב מנדל",
+          "page": 2199
+        },
+        {
+          "rank": 2,
+          "nameHe": "מליק יצחק",
+          "page": 2199
+        },
+        {
+          "rank": 3,
+          "nameHe": "בן יששכר יעקב",
+          "page": 2199
+        },
+        {
+          "rank": 4,
+          "nameHe": "פלדמן אילן לב",
+          "page": 2199
+        },
+        {
+          "rank": 5,
+          "nameHe": "פוני סימון",
+          "page": 2199
+        },
+        {
+          "rank": 6,
+          "nameHe": "אוריאל יגאל",
+          "page": 2199
+        },
+        {
+          "rank": 7,
+          "nameHe": "קשי אילן",
+          "page": 2199
+        },
+        {
+          "rank": 8,
+          "nameHe": "תבון יאיר",
+          "page": 2199
+        },
+        {
+          "rank": 9,
+          "nameHe": "בן דוד יעקב",
+          "page": 2199
+        },
+        {
+          "rank": 10,
+          "nameHe": "שרמן ארתור",
+          "page": 2199
+        },
+        {
+          "rank": 11,
+          "nameHe": "רוזיצ'נר ג'רי",
+          "page": 2199
+        },
+        {
+          "rank": 12,
+          "nameHe": "אוצם דוויד",
+          "page": 2199
+        },
+        {
+          "rank": 13,
+          "nameHe": "אדרי פליקס",
+          "page": 2199
+        },
+        {
+          "rank": 14,
+          "nameHe": "ביניאשוילי רוני",
+          "page": 2199
+        }
+      ],
+      "archiveCrossCheck": {
+        "sourceId": "k17-candidates-archive-crosscheck",
+        "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/list/listab5e.html?id=40",
+        "count": 14
+      }
+    },
+    {
+      "letters": "קנ",
+      "publishedCount": 27,
+      "pages": [
+        2199
+      ],
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "וכטל בועז",
+          "page": 2199
+        },
+        {
+          "rank": 2,
+          "nameHe": "סנדק שלמה",
+          "page": 2199
+        },
+        {
+          "rank": 3,
+          "nameHe": "שם טוב אוהד יעקב",
+          "page": 2199
+        },
+        {
+          "rank": 4,
+          "nameHe": "פרי ליאור",
+          "page": 2199
+        },
+        {
+          "rank": 5,
+          "nameHe": "וילנקין אולגה",
+          "page": 2199
+        },
+        {
+          "rank": 6,
+          "nameHe": "לבוביץ ברק",
+          "page": 2199
+        },
+        {
+          "rank": 7,
+          "nameHe": "ברנהולץ לימור",
+          "page": 2199
+        },
+        {
+          "rank": 8,
+          "nameHe": "גלעד אילון",
+          "page": 2199
+        },
+        {
+          "rank": 9,
+          "nameHe": "צימרמן הגר",
+          "page": 2199
+        },
+        {
+          "rank": 10,
+          "nameHe": "פרייזינגר ברי",
+          "page": 2199
+        },
+        {
+          "rank": 11,
+          "nameHe": "פרי רון",
+          "page": 2199
+        },
+        {
+          "rank": 12,
+          "nameHe": "ששון משה",
+          "page": 2199
+        },
+        {
+          "rank": 13,
+          "nameHe": "שלוש יהושע שי",
+          "page": 2199
+        },
+        {
+          "rank": 14,
+          "nameHe": "לוזון מישל טובה",
+          "page": 2199
+        },
+        {
+          "rank": 15,
+          "nameHe": "שריקי שלמה",
+          "page": 2199
+        },
+        {
+          "rank": 16,
+          "nameHe": "קניאל זהר",
+          "page": 2199
+        },
+        {
+          "rank": 17,
+          "nameHe": "לוין חן",
+          "page": 2199
+        },
+        {
+          "rank": 18,
+          "nameHe": "גוטמן ורד",
+          "page": 2199
+        },
+        {
+          "rank": 19,
+          "nameHe": "גל-תמיר הילה",
+          "page": 2199
+        },
+        {
+          "rank": 20,
+          "nameHe": "שבתאי עמית",
+          "page": 2199
+        },
+        {
+          "rank": 21,
+          "nameHe": "סנדק אסתר",
+          "page": 2199
+        },
+        {
+          "rank": 22,
+          "nameHe": "אבין נדב-חיים",
+          "page": 2199
+        },
+        {
+          "rank": 23,
+          "nameHe": "עאמר ראבעה",
+          "page": 2199
+        },
+        {
+          "rank": 24,
+          "nameHe": "נאור רן",
+          "page": 2199
+        },
+        {
+          "rank": 25,
+          "nameHe": "מנטל דורית",
+          "page": 2199
+        },
+        {
+          "rank": 26,
+          "nameHe": "מנדלסון מאיר",
+          "page": 2199
+        },
+        {
+          "rank": 27,
+          "nameHe": "כוז ויסבורג נועם",
+          "page": 2199
+        }
+      ]
+    },
+    {
+      "letters": "קפ",
+      "publishedCount": 32,
+      "pages": [
+        2200
+      ],
+      "candidatesUnavailable": true,
+      "candidates": [],
+      "unavailableReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 19, 22. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
+      "unavailableReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 19, 22. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "unresolvedRanks": [
+        19,
+        22
+      ]
+    },
+    {
+      "letters": "רק",
+      "publishedCount": 26,
+      "pages": [
+        2200
+      ],
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "ויסנר פאר",
+          "page": 2200
+        },
+        {
+          "rank": 2,
+          "nameHe": "שכנאי הדס",
+          "page": 2200
+        },
+        {
+          "rank": 3,
+          "nameHe": "קנצפולסקי אוריאן",
+          "page": 2200
+        },
+        {
+          "rank": 4,
+          "nameHe": "רודריגז ראול",
+          "page": 2200
+        },
+        {
+          "rank": 5,
+          "nameHe": "צדקה סופי שרה",
+          "page": 2200
+        },
+        {
+          "rank": 6,
+          "nameHe": "עזרא דרור יחזקאל",
+          "page": 2200
+        },
+        {
+          "rank": 7,
+          "nameHe": "פרימן שלי",
+          "page": 2200
+        },
+        {
+          "rank": 8,
+          "nameHe": "כרמלי שושנה",
+          "page": 2200
+        },
+        {
+          "rank": 9,
+          "nameHe": "פלקסר יעקב",
+          "page": 2200
+        },
+        {
+          "rank": 10,
+          "nameHe": "ויסנר גיא יצחק",
+          "page": 2200
+        },
+        {
+          "rank": 11,
+          "nameHe": "רונן ניר",
+          "page": 2200
+        },
+        {
+          "rank": 12,
+          "nameHe": "זקלר ענת ליהי",
+          "page": 2200
+        },
+        {
+          "rank": 13,
+          "nameHe": "צמני שלמה",
+          "page": 2200
+        },
+        {
+          "rank": 14,
+          "nameHe": "עזי חגית",
+          "page": 2200
+        },
+        {
+          "rank": 15,
+          "nameHe": "גולדמן גיא אבי",
+          "page": 2200
+        },
+        {
+          "rank": 16,
+          "nameHe": "שלם ספי",
+          "page": 2200
+        },
+        {
+          "rank": 17,
+          "nameHe": "ויסנר אלי",
+          "page": 2200
+        },
+        {
+          "rank": 18,
+          "nameHe": "קרימן רפאל",
+          "page": 2200
+        },
+        {
+          "rank": 19,
+          "nameHe": "לאור אילן",
+          "page": 2200
+        },
+        {
+          "rank": 20,
+          "nameHe": "חרידה יואל",
+          "page": 2200
+        },
+        {
+          "rank": 21,
+          "nameHe": "אלעזרי עמי",
+          "page": 2200
+        },
+        {
+          "rank": 22,
+          "nameHe": "נעאמנה עלי",
+          "page": 2200
+        },
+        {
+          "rank": 23,
+          "nameHe": "ציט אמיר",
+          "page": 2200
+        },
+        {
+          "rank": 24,
+          "nameHe": "הרשטיין ניסן",
+          "page": 2200
+        },
+        {
+          "rank": 25,
+          "nameHe": "מימון גיא גבריאל",
+          "page": 2200
+        },
+        {
+          "rank": 26,
+          "nameHe": "זבידה אסף נצח",
+          "page": 2200
+        }
+      ]
+    },
+    {
+      "letters": "שס",
+      "publishedCount": 118,
+      "pages": [
+        2200,
+        2201
+      ],
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "ישי אליהו",
+          "page": 2200
+        },
+        {
+          "rank": 2,
+          "nameHe": "כהן יצחק",
+          "page": 2200
+        },
+        {
+          "rank": 3,
+          "nameHe": "כהן אמנון",
+          "page": 2200
+        },
+        {
+          "rank": 4,
+          "nameHe": "נהרי משולם",
+          "page": 2200
+        },
+        {
+          "rank": 5,
+          "nameHe": "אטיאס אריאל",
+          "page": 2200
+        },
+        {
+          "rank": 6,
+          "nameHe": "בניזרי שלמה",
+          "page": 2200
+        },
+        {
+          "rank": 7,
+          "nameHe": "אזולאי דוד",
+          "page": 2200
+        },
+        {
+          "rank": 8,
+          "nameHe": "וקנין יצחק",
+          "page": 2200
+        },
+        {
+          "rank": 9,
+          "nameHe": "זאב נסים מרדכי",
+          "page": 2201
+        },
+        {
+          "rank": 10,
+          "nameHe": "מרגי יעקב",
+          "page": 2201
+        },
+        {
+          "rank": 11,
+          "nameHe": "אמסלם אמיל",
+          "page": 2201
+        },
+        {
+          "rank": 12,
+          "nameHe": "מיכאלי אברהם",
+          "page": 2201
+        },
+        {
+          "rank": 13,
+          "nameHe": "בהיינה מרוי מזור",
+          "page": 2201
+        },
+        {
+          "rank": 14,
+          "nameHe": "פרץ יאיר יעיש",
+          "page": 2201
+        },
+        {
+          "rank": 15,
+          "nameHe": "אוחנה אביגדור",
+          "page": 2201
+        },
+        {
+          "rank": 16,
+          "nameHe": "טלקאר דוד",
+          "page": 2201
+        },
+        {
+          "rank": 17,
+          "nameHe": "מלאכי רפאל",
+          "page": 2201
+        },
+        {
+          "rank": 18,
+          "nameHe": "שטרית דוד",
+          "page": 2201
+        },
+        {
+          "rank": 19,
+          "nameHe": "ברדה איתן",
+          "page": 2201
+        },
+        {
+          "rank": 20,
+          "nameHe": "אלחרר בנימין",
+          "page": 2201
+        },
+        {
+          "rank": 21,
+          "nameHe": "מנחם יורם",
+          "page": 2201
+        },
+        {
+          "rank": 22,
+          "nameHe": "אבידני יצחק",
+          "page": 2201
+        },
+        {
+          "rank": 23,
+          "nameHe": "אוחנונה דוד",
+          "page": 2201
+        },
+        {
+          "rank": 24,
+          "nameHe": "דרעי אריאל",
+          "page": 2201
+        },
+        {
+          "rank": 25,
+          "nameHe": "ביטון עמי",
+          "page": 2201
+        },
+        {
+          "rank": 26,
+          "nameHe": "חקוק צבי זאב חי",
+          "page": 2201
+        },
+        {
+          "rank": 27,
+          "nameHe": "נוריאל אלון",
+          "page": 2201
+        },
+        {
+          "rank": 28,
+          "nameHe": "אביטבול משה",
+          "page": 2201
+        },
+        {
+          "rank": 29,
+          "nameHe": "בוחבוט שרלי",
+          "page": 2201
+        },
+        {
+          "rank": 30,
+          "nameHe": "מלכה אורן",
+          "page": 2201
+        },
+        {
+          "rank": 31,
+          "nameHe": "כרדי עופר",
+          "page": 2201
+        },
+        {
+          "rank": 32,
+          "nameHe": "ישי נסים",
+          "page": 2201
+        },
+        {
+          "rank": 33,
+          "nameHe": "דנינו מאיר",
+          "page": 2201
+        },
+        {
+          "rank": 34,
+          "nameHe": "בן אברהם אבי",
+          "page": 2201
+        },
+        {
+          "rank": 35,
+          "nameHe": "זגורי אלברט",
+          "page": 2201
+        },
+        {
+          "rank": 36,
+          "nameHe": "אוחיון רפאל",
+          "page": 2201
+        },
+        {
+          "rank": 37,
+          "nameHe": "אדמוני יעקב",
+          "page": 2201
+        },
+        {
+          "rank": 38,
+          "nameHe": "אקוע אבנר",
+          "page": 2201
+        },
+        {
+          "rank": 39,
+          "nameHe": "הכהן גדעון",
+          "page": 2201
+        },
+        {
+          "rank": 40,
+          "nameHe": "גנאסיה חיים יוסף דוד",
+          "page": 2201
+        },
+        {
+          "rank": 41,
+          "nameHe": "מישאל אשר חי גבריאל",
+          "page": 2200
+        },
+        {
+          "rank": 42,
+          "nameHe": "רצון ציון",
+          "page": 2200
+        },
+        {
+          "rank": 43,
+          "nameHe": "קקון יצחק מנחם",
+          "page": 2200
+        },
+        {
+          "rank": 44,
+          "nameHe": "נהרי חזקיה",
+          "page": 2200
+        },
+        {
+          "rank": 45,
+          "nameHe": "פרץ דוד",
+          "page": 2200
+        },
+        {
+          "rank": 46,
+          "nameHe": "לוי שמואל",
+          "page": 2200
+        },
+        {
+          "rank": 47,
+          "nameHe": "לוי אורי",
+          "page": 2200
+        },
+        {
+          "rank": 48,
+          "nameHe": "עמרם ששון שמשון",
+          "page": 2200
+        },
+        {
+          "rank": 49,
+          "nameHe": "העצני אסף צפניה",
+          "page": 2201
+        },
+        {
+          "rank": 50,
+          "nameHe": "אביטן שמעון",
+          "page": 2201
+        },
+        {
+          "rank": 51,
+          "nameHe": "לוי מנשה",
+          "page": 2201
+        },
+        {
+          "rank": 52,
+          "nameHe": "היררי רחמים",
+          "page": 2201
+        },
+        {
+          "rank": 53,
+          "nameHe": "דיין יוסף",
+          "page": 2201
+        },
+        {
+          "rank": 54,
+          "nameHe": "אתירם עמיקם",
+          "page": 2201
+        },
+        {
+          "rank": 55,
+          "nameHe": "עוזי עופר",
+          "page": 2201
+        },
+        {
+          "rank": 56,
+          "nameHe": "עמר שמעון",
+          "page": 2201
+        },
+        {
+          "rank": 57,
+          "nameHe": "צפר חנניה",
+          "page": 2201
+        },
+        {
+          "rank": 58,
+          "nameHe": "עמר יהושע",
+          "page": 2201
+        },
+        {
+          "rank": 59,
+          "nameHe": "מימון ישי",
+          "page": 2201
+        },
+        {
+          "rank": 60,
+          "nameHe": "מימון נתן",
+          "page": 2201
+        },
+        {
+          "rank": 61,
+          "nameHe": "מלאכי שריה",
+          "page": 2201
+        },
+        {
+          "rank": 62,
+          "nameHe": "מלמד מיכאל",
+          "page": 2201
+        },
+        {
+          "rank": 63,
+          "nameHe": "ממן שלמה",
+          "page": 2201
+        },
+        {
+          "rank": 64,
+          "nameHe": "טפירו מיכאל מישל",
+          "page": 2201
+        },
+        {
+          "rank": 65,
+          "nameHe": "אמסלם נתנאל",
+          "page": 2201
+        },
+        {
+          "rank": 66,
+          "nameHe": "אבני אליהו",
+          "page": 2201
+        },
+        {
+          "rank": 67,
+          "nameHe": "אדוואר נרקיס",
+          "page": 2201
+        },
+        {
+          "rank": 68,
+          "nameHe": "אסולין שי",
+          "page": 2201
+        },
+        {
+          "rank": 69,
+          "nameHe": "בובליל רפאל",
+          "page": 2201
+        },
+        {
+          "rank": 70,
+          "nameHe": "בוסקילה מוטי",
+          "page": 2201
+        },
+        {
+          "rank": 71,
+          "nameHe": "גארלה יהודה",
+          "page": 2201
+        },
+        {
+          "rank": 72,
+          "nameHe": "גבאי דניאל",
+          "page": 2201
+        },
+        {
+          "rank": 73,
+          "nameHe": "גדסי אלדד פנחס",
+          "page": 2201
+        },
+        {
+          "rank": 74,
+          "nameHe": "דוד אליהו",
+          "page": 2201
+        },
+        {
+          "rank": 75,
+          "nameHe": "עטייה יונה",
+          "page": 2201
+        },
+        {
+          "rank": 76,
+          "nameHe": "דחבש ציון",
+          "page": 2201
+        },
+        {
+          "rank": 77,
+          "nameHe": "דידי ישראל",
+          "page": 2201
+        },
+        {
+          "rank": 78,
+          "nameHe": "וקנין שמעון חיים",
+          "page": 2201
+        },
+        {
+          "rank": 79,
+          "nameHe": "ישראלי תמיר",
+          "page": 2201
+        },
+        {
+          "rank": 80,
+          "nameHe": "כהן חיים",
+          "page": 2201
+        },
+        {
+          "rank": 81,
+          "nameHe": "כהן נסים",
+          "page": 2200
+        },
+        {
+          "rank": 82,
+          "nameHe": "כהן ראובן",
+          "page": 2200
+        },
+        {
+          "rank": 83,
+          "nameHe": "לוי שלמה",
+          "page": 2200
+        },
+        {
+          "rank": 84,
+          "nameHe": "עטיה יהודה",
+          "page": 2200
+        },
+        {
+          "rank": 85,
+          "nameHe": "פורת אפרים",
+          "page": 2200
+        },
+        {
+          "rank": 86,
+          "nameHe": "צ'קוטאי אילן גיא",
+          "page": 2200
+        },
+        {
+          "rank": 87,
+          "nameHe": "קהתי יהודה",
+          "page": 2200
+        },
+        {
+          "rank": 88,
+          "nameHe": "רוימי ישראל",
+          "page": 2200
+        },
+        {
+          "rank": 89,
+          "nameHe": "שבתאי שמואל",
+          "page": 2201
+        },
+        {
+          "rank": 90,
+          "nameHe": "שטרית אשר ברוך",
+          "page": 2201
+        },
+        {
+          "rank": 91,
+          "nameHe": "שרעבי שלמה",
+          "page": 2201
+        },
+        {
+          "rank": 92,
+          "nameHe": "שעירי שמעון",
+          "page": 2201
+        },
+        {
+          "rank": 93,
+          "nameHe": "רחמים גבריאל",
+          "page": 2201
+        },
+        {
+          "rank": 94,
+          "nameHe": "רואש חיים אלי",
+          "page": 2201
+        },
+        {
+          "rank": 95,
+          "nameHe": "קריספל אמיר",
+          "page": 2201
+        },
+        {
+          "rank": 96,
+          "nameHe": "קלימי יהודה",
+          "page": 2201
+        },
+        {
+          "rank": 97,
+          "nameHe": "צדוק נח עוזיאל",
+          "page": 2201
+        },
+        {
+          "rank": 98,
+          "nameHe": "אוחנא מאיר",
+          "page": 2201
+        },
+        {
+          "rank": 99,
+          "nameHe": "צארום מיכאל",
+          "page": 2201
+        },
+        {
+          "rank": 100,
+          "nameHe": "פרץ שמעון",
+          "page": 2201
+        },
+        {
+          "rank": 101,
+          "nameHe": "עזרן סלומון",
+          "page": 2201
+        },
+        {
+          "rank": 102,
+          "nameHe": "עזרא דן",
+          "page": 2201
+        },
+        {
+          "rank": 103,
+          "nameHe": "סולטן יצחק",
+          "page": 2201
+        },
+        {
+          "rank": 104,
+          "nameHe": "סויסה אבנר",
+          "page": 2201
+        },
+        {
+          "rank": 105,
+          "nameHe": "סברלי חיים",
+          "page": 2201
+        },
+        {
+          "rank": 106,
+          "nameHe": "ניסנוף דוד",
+          "page": 2201
+        },
+        {
+          "rank": 107,
+          "nameHe": "נגאר ראובן",
+          "page": 2201
+        },
+        {
+          "rank": 108,
+          "nameHe": "נאמני ברוך",
+          "page": 2201
+        },
+        {
+          "rank": 109,
+          "nameHe": "ממן אליהו",
+          "page": 2201
+        },
+        {
+          "rank": 110,
+          "nameHe": "לוי גרשון",
+          "page": 2201
+        },
+        {
+          "rank": 111,
+          "nameHe": "כהן נפתלי",
+          "page": 2201
+        },
+        {
+          "rank": 112,
+          "nameHe": "בן זקרי משה",
+          "page": 2201
+        },
+        {
+          "rank": 113,
+          "nameHe": "בן גיגי דוד",
+          "page": 2201
+        },
+        {
+          "rank": 114,
+          "nameHe": "בן שלמה יעקב",
+          "page": 2201
+        },
+        {
+          "rank": 115,
+          "nameHe": "אהרן עוזי ויצמן",
+          "page": 2201
+        },
+        {
+          "rank": 116,
+          "nameHe": "ארבל רחמים",
+          "page": 2201
+        },
+        {
+          "rank": 117,
+          "nameHe": "בן שלמה שמעון",
+          "page": 2201
+        },
+        {
+          "rank": 118,
+          "nameHe": "פנחסי רפאל",
+          "page": 2201
+        }
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k17-membership-secondary",
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "namesHe": [
+          "ישי אליהו",
+          "כהן יצחק",
+          "כהן אמנון",
+          "נהרי משולם",
+          "אטיאס אריאל",
+          "בניזרי שלמה",
+          "אזולאי דוד",
+          "וקנין יצחק",
+          "זאב נסים מרדכי",
+          "מרגי יעקב",
+          "אמסלם אמיל",
+          "מיכאלי אברהם"
+        ],
+        "result": "matches-original-membership",
+        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+      },
+      "reserveSecondReading": {
+        "ranks": [
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "candidates": [
+          {
+            "rank": 13,
+            "nameHe": "בהיינה מרוי מזור",
+            "page": 2201
+          },
+          {
+            "rank": 14,
+            "nameHe": "פרץ יאיר יעיש",
+            "page": 2201
+          },
+          {
+            "rank": 15,
+            "nameHe": "אוחנה אביגדור",
+            "page": 2201
+          },
+          {
+            "rank": 16,
+            "nameHe": "טלקאר דוד",
+            "page": 2201
+          },
+          {
+            "rank": 17,
+            "nameHe": "מלאכי רפאל",
+            "page": 2201
+          }
+        ],
+        "result": "verified-against-enlarged-scan"
+      },
+      "archiveCrossCheck": {
+        "sourceId": "k17-candidates-archive-crosscheck",
+        "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/list/list0c98.html?id=50",
+        "count": 118
+      }
+    }
+  ]
+}

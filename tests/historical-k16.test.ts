@@ -1,13 +1,19 @@
+import { readFileSync } from 'node:fs';
+import type { ElectionDataset, LocalityDataset } from '../src/data/schema.ts';
 import { describe, expect, it } from 'vitest';
 import { buildK16, verifyK16 } from '../scripts/lib/historical/k16.ts';
 import { derivePolling, researchDataset, verifyPolling } from '../scripts/lib/historical/k16-k17-common.ts';
 import { allocate } from '../src/engine/allocate.ts';
 import { scenarioFromDataset, toEngineInput } from '../src/model/scenario.ts';
+const ds: ElectionDataset = JSON.parse(readFileSync(new URL('../public/data/k16.json', import.meta.url), 'utf8'));
+const loc: LocalityDataset = JSON.parse(readFileSync(new URL('../public/data/k16-localities.json', import.meta.url), 'utf8'));
 
-describe('k16 — verified research evidence; release remains blocked', () => {
+
+const publishedCounts = {"אמת": 120, "ב": 120, "ג": 120, "ד": 118, "ו": 118, "ז": 17, "זנ": 10, "ט": 7, "יש": 120, "כן": 24, "ל": 35, "מחל": 114, "מרצ": 120, "ם": 119, "נ": 17, "נץ": 25, "עם": 119, "פה": 18, "ף": 11, "צ": 11, "צף": 77, "ק": 7, "קך": 10, "קנ": 18, "קץ": 12, "רק": 7, "שס": 111};
+const counts = {"אמת": 0, "ב": 0, "ג": 0, "ד": 0, "ו": 0, "ז": 17, "זנ": 10, "ט": 7, "יש": 0, "כן": 24, "ל": 35, "מחל": 114, "מרצ": 0, "ם": 0, "נ": 17, "נץ": 0, "עם": 0, "פה": 18, "ף": 0, "צ": 11, "צף": 0, "ק": 7, "קך": 10, "קנ": 18, "קץ": 0, "רק": 7, "שס": 0};
+
+describe('k16 — released national and locality datasets; explicit roster limitations', () => {
   it('reproduces every gazetted seat using the explicitly reconciled polling counts', () => {
-    const audit = verifyK16({ log: false });
-    const ds = researchDataset(audit);
     const r = allocate(toEngineInput(scenarioFromDataset(ds)));
     // YP 5155 pp. 1406–1407, read from the scan; never derived from engine output.
     const elected = { אמת: 19, ב: 6, ג: 5, ד: 3, ו: 3, יש: 15, כן: 2, ל: 7, ם: 3, מחל: 38, מרצ: 6, עם: 2, שס: 11 };
@@ -17,18 +23,33 @@ describe('k16 — verified research evidence; release remains blocked', () => {
     expect(r.quota).toEqual({ num: 25_138n, den: 1n });
     expect(r.warnings).toEqual([]);
   });
+  it('reproduces the same seats with the inconsistent printed vote figures, while changing threshold and quota', () => {
+    const printed = structuredClone(ds);
+    const review = verifyK16({ log: false }).review;
+    printed.lists.forEach(l => { l.votes = review.lists.find(r => r.letters === l.letters)!.gazetteVotes; });
+    printed.totals.valid = 3_148_774;
+    printed.totals.votesCast = printed.totals.valid + printed.totals.invalid;
+    const r = allocate(toEngineInput(scenarioFromDataset(printed)));
+    expect(r.thresholdVotes).toBe(47_232n);
+    expect(r.quota).toEqual({ num: 25_141n, den: 1n });
+    for (const l of r.lists) expect(l.seats, l.id).toBe(ds.officialSeats![l.id]);
+    expect(r.seatsAllocated).toBe(120);
+    expect(r.warnings).toEqual([]);
+    expect(ds.lists.find(l => l.letters === 'ב')?.notesHe.join(' ')).toContain('132,730');
+    expect(ds.lists.find(l => l.letters === 'ף')?.notesHe.join(' ')).toContain('883');
+  });
   it('retains all six official agreement pairs, including the ineffective Shinui–Greens pair', () => {
     const a = verifyK16({ log: false });
     expect(a.review.agreements.pairs).toEqual([['אמת', 'מרצ'], ['יש', 'רק'], ['ל', 'כן'], ['ב', 'ם'], ['שס', 'ג'], ['ו', 'ד']]);
     expect(a.review.agreements.complete).toBe(true);
+    expect(ds.agreements.map(a => a.members.map(id => id.slice(3)))).toEqual([['אמת', 'מרצ'], ['יש', 'רק'], ['ל', 'כן'], ['ב', 'ם'], ['שס', 'ג'], ['ו', 'ד']]);
     const r = allocate(toEngineInput(scenarioFromDataset(researchDataset(a))));
     expect(r.agreements.find(x => x.members.includes('16-יש'))?.active).toBe(false);
   });
-  it('preserves the actual gazette terminal rank, Sharon, and the unverified-roster gap', () => {
-    expect(verifyK16({ log: false }).review.candidateChecks).toMatchObject({
-      completeRostersVerified: false,
-      lists: [{ letters: 'מחל', publishedCount: 114, first: { rank: 1, nameHe: 'שרון אריאל' } }],
-    });
+  it('publishes the verified leader and actual terminal rank', () => {
+    const list = ds.lists.find(l => l.letters === 'מחל')!;
+    expect(list.candidates[0]).toMatchObject({ id: '16-מחל#1', rank: 1, nameHe: 'שרון אריאל' });
+    expect(list.candidates.at(-1)?.rank).toBe(114);
   });
   it('preserves both gazette discrepancies and the derived-locality checksum', () => {
     const a = verifyK16({ log: false });
@@ -51,9 +72,50 @@ describe('k16 — verified research evidence; release remains blocked', () => {
     expect(() => derivePolling(review, table({ 'אמת': 1 }))).toThrow(/list votes ≠ valid/);
     expect(() => derivePolling(review, table({ 'סמל ישוב': '\x1a', 'שם ישוב': '' }))).toThrow(/nonempty EOF/);
   });
-  it('does not register a public dataset or permit premature availability', () => {
-    expect(buildK16({ log: false })).toEqual([]);
-    expect(verifyK16({ log: false }).releaseReady).toBe(false);
-    expect(() => verifyK16({ log: false, available: true })).toThrow(/release blocked/);
+  it('builds from retained reviewed inputs and exposes complete or explicitly unavailable rosters', () => {
+    expect(buildK16({ log: false })).toHaveLength(1);
+    expect(verifyK16({ log: false, available: true }).releaseReady).toBe(true);
+    const reviewed = JSON.parse(readFileSync(new URL('../data/raw/k16/candidates.reviewed.json', import.meta.url), 'utf8'));
+    for (const l of ds.lists) {
+      const r = reviewed.lists.find((r: { letters: string }) => r.letters === l.letters);
+      expect(r.publishedCount, l.id).toBe(publishedCounts[l.letters as keyof typeof publishedCounts]);
+      expect(l.candidates.length, l.id).toBe(counts[l.letters as keyof typeof counts]);
+      expect(l.candidatesUnavailable ?? false, l.id).toBe(r.candidatesUnavailable);
+      if (r.candidatesUnavailable) {
+        expect(l.candidates).toEqual([]);
+        expect(l.notesHe).toContain(r.unavailableReasonHe);
+        expect(r.unresolvedRanks.length).toBeGreaterThan(0);
+      } else {
+        expect(l.candidates.length).toBe(r.publishedCount);
+        expect(l.candidates.map(c => c.rank)).toEqual(Array.from({ length: l.candidates.length }, (_, i) => i + 1));
+        expect(l.candidates.map(c => c.nameHe)).toEqual(r.candidates.map((c: { nameHe: string }) => c.nameHe));
+      }
+      if ((ds.officialSeats?.[l.id] ?? 0) > 0) {
+        expect(r.electedCrossCheck.namesHe).toHaveLength(ds.officialSeats![l.id]);
+        expect(r.reserveSecondReading.ranks).toEqual(Array.from({ length: 5 }, (_, i) => ds.officialSeats![l.id] + i + 1));
+      }
+    }
+  });
+  it('has aligned locality columns, null metadata, envelope flags and reconciling totals', () => {
+    expect(loc.noteEn).toMatch(/summed from official polling-station/);
+    expect(loc.noteHe).toMatch(/לא קיימת טבלת יישובים רשמית/);
+    expect(loc.rows).toHaveLength(1172);
+    expect(loc.rows.filter(r => r.envelopes)).toHaveLength(1);
+    expect(loc.rows.find(r => r.envelopes)?.registered).toBe(null);
+    expect(loc.rows.every(r => r.committee === null)).toBe(true);
+    for (const row of loc.rows) {
+      expect(row.votes.reduce((a, b) => a + b, 0)).toBe(row.valid);
+      expect(row.valid + row.invalid).toBe(row.votesCast);
+    }
+    for (const l of ds.lists) {
+      const column = loc.listIds.indexOf(l.id);
+      expect(column).toBeGreaterThanOrEqual(0);
+      expect(loc.rows.reduce((s, r) => s + r.votes[column], 0)).toBe(l.votes);
+    }
+    expect(ds.totals.valid + ds.totals.invalid).toBe(ds.totals.votesCast);
+    expect(ds.lists.reduce((s, l) => s + l.votes, 0)).toBe(ds.totals.valid);
+    expect(ds.totals).toMatchObject({ registered: 4_720_075, votesCast: 3_200_773, valid: 3_148_364, invalid: 52_409, ballotBoxes: 7885, localities: 1171 });
+    expect(loc.rows.reduce((s, r) => s + r.votesCast, 0)).toBe(ds.totals.votesCast - 0);
+    expect(ds.status.noteEn).toMatch(/CBS/);
   });
 });

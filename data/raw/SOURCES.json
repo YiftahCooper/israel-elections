@@ -336,7 +336,7 @@
     "official": true,
     "description": "תוצאות האמת של הבחירות לכנסת ה-16 לפי קלפיות",
     "method": "datagov-datastore-api",
-    "retrievedAt": "2026-11-03T15:26:38.113Z",
+    "retrievedAt": "2026-11-03T15:43:46.956Z",
     "bytes": 3268493,
     "sha256": "4079e77b978cc68d7f4b085f2549a309f5ae241ebe1653a1d041aa243a180473",
     "lastModified": null
@@ -349,7 +349,7 @@
     "official": true,
     "description": "תוצאות האמת של הבחירות לכנסת ה-17 לפי קלפיות",
     "method": "datagov-datastore-api",
-    "retrievedAt": "2026-11-03T15:26:41.120Z",
+    "retrievedAt": "2026-11-03T15:43:48.917Z",
     "bytes": 3518955,
     "sha256": "28c9b00394a850bef6c3b5ee381fab63d6ffb8e889f70516366752466852f1a0",
     "lastModified": null
@@ -646,7 +646,8 @@
     "method": "http",
     "retrievedAt": "2026-11-03T15:31:36.321123+00:00",
     "bytes": 123365,
-    "sha256": "d72d79f8e8f30ae85281e0b7a9a24245ba4a7fa0e50ca0165990d99b8e0b6a12"
+    "sha256": "d72d79f8e8f30ae85281e0b7a9a24245ba4a7fa0e50ca0165990d99b8e0b6a12",
+    "note": " Release uses this official CBS table for registered voters only. National valid/invalid totals come from the results gazette; cast is their sum. CBS/polling 2006 cast is nine below that sum; no authoritative explanation is known."
   },
   {
     "id": "k16-national-reviewed",
@@ -682,7 +683,8 @@
     "method": "http",
     "retrievedAt": "2026-11-03T15:31:36.321383+00:00",
     "bytes": 123365,
-    "sha256": "d72d79f8e8f30ae85281e0b7a9a24245ba4a7fa0e50ca0165990d99b8e0b6a12"
+    "sha256": "d72d79f8e8f30ae85281e0b7a9a24245ba4a7fa0e50ca0165990d99b8e0b6a12",
+    "note": " Release uses this official CBS table for registered voters only. National valid/invalid totals come from the results gazette; cast is their sum. CBS/polling 2006 cast is nine below that sum; no authoritative explanation is known."
   },
   {
     "id": "k17-national-reviewed",
@@ -719,5 +721,213 @@
     "retrievedAt": "2026-11-03T15:33:00.088Z",
     "bytes": 1535,
     "sha256": "6c06dfb518f650693f15308e2a624383698bfff856f00eaa6d33db56d9f3cfd5"
+  },
+  {
+    "id": "k16-candidates-reviewed",
+    "file": "k16/candidates.reviewed.json",
+    "url": "project:k16/candidates.reviewed.json",
+    "publisher": "Project visual transcription / polling aggregation",
+    "official": false,
+    "description": "Reviewed manual scan transcription, page references, explicitly unavailable rosters and membership/reserve checks",
+    "method": "manual-capture",
+    "retrievedAt": "2026-11-03",
+    "bytes": 67767,
+    "sha256": "4409011083955ab6435932e8cc231049bccb1dded64f2132b8d1907166fa8167"
+  },
+  {
+    "id": "k16-localities-reviewed",
+    "file": "k16/localities.reviewed.json",
+    "url": "project:k16/localities.reviewed.json",
+    "publisher": "Project visual transcription / polling aggregation",
+    "official": false,
+    "description": "Retained locality sums from official polling stations; null missing metadata; excludes envelope electorate",
+    "method": "manual-capture",
+    "retrievedAt": "2026-11-03",
+    "bytes": 217918,
+    "sha256": "74d55066e32a7754066002bb0c87233c761589e909fd5d39a75a884e3cd3a3e0"
+  },
+  {
+    "id": "k16-membership-secondary",
+    "url": "https://en.wikipedia.org/wiki/List_of_members_of_the_sixteenth_Knesset",
+    "publisher": "Wikipedia (secondary)",
+    "official": false,
+    "description": "Membership identity cross-check only; reverse later replacements to inauguration. Candidate spellings remain from the gazette scan.",
+    "method": "manual-capture",
+    "retrievedAt": "2026-11-03",
+    "note": "Used because main.knesset.gov.il/mk/Pages/Members.aspx?KnessetID=16 was inaccessible (web tool failed; direct HTTP 247 challenge). Faction page redirected to an explicit geographic maintenance denial. Not an official roster source; not used to transcribe non-elected names."
+  },
+  {
+    "id": "k17-candidates-reviewed",
+    "file": "k17/candidates.reviewed.json",
+    "url": "project:k17/candidates.reviewed.json",
+    "publisher": "Project visual transcription / polling aggregation",
+    "official": false,
+    "description": "Reviewed manual scan transcription, page references, explicitly unavailable rosters and membership/reserve checks",
+    "method": "manual-capture",
+    "retrievedAt": "2026-11-03",
+    "bytes": 110414,
+    "sha256": "20af50adfb1c8bccbfd598a1edb195c6b86fec17ab1df7d0d5911eb8edda864d"
+  },
+  {
+    "id": "k17-localities-reviewed",
+    "file": "k17/localities.reviewed.json",
+    "url": "project:k17/localities.reviewed.json",
+    "publisher": "Project visual transcription / polling aggregation",
+    "official": false,
+    "description": "Retained locality sums from official polling stations; null missing metadata; excludes envelope electorate",
+    "method": "manual-capture",
+    "retrievedAt": "2026-11-03",
+    "bytes": 225559,
+    "sha256": "b5fc87c3b3a8e19e2aa8f302d14e1872c1342089d232a6abbe950822ba4d4464"
+  },
+  {
+    "id": "k17-membership-secondary",
+    "url": "https://en.wikipedia.org/wiki/List_of_members_of_the_seventeenth_Knesset",
+    "publisher": "Wikipedia (secondary)",
+    "official": false,
+    "description": "Membership identity cross-check only; reverse later replacements to inauguration. Candidate spellings remain from the gazette scan.",
+    "method": "manual-capture",
+    "retrievedAt": "2026-11-03",
+    "note": "Used because main.knesset.gov.il/mk/Pages/Members.aspx?KnessetID=17 was inaccessible (web tool failed; direct HTTP 247 challenge). Faction page redirected to an explicit geographic maintenance denial. Not an official roster source; not used to transcribe non-elected names."
+  },
+  {
+    "id": "k16-sharansky-withdrawal",
+    "url": "https://www.ynet.co.il/articles/0,7340,L-2403135,00.html",
+    "publisher": "Ynet / Hanan Greenberg",
+    "official": false,
+    "description": "29 January 2003 report: Sharansky withdrew after the election; rank 3 Marina Solodkin replaces him. Cross-check of the inauguration exception, not a replacement registered roster.",
+    "method": "manual-capture",
+    "retrievedAt": "2026-11-03"
+  },
+  {
+    "id": "k16-knesset-vote-crosscheck",
+    "url": "https://main.knesset.gov.il/About/History/pages/knessethistory.aspx?kns=16",
+    "publisher": "Knesset",
+    "official": true,
+    "description": "Official historical election table corroborates Mafdal 132,370, valid 3,148,364, threshold 47,226 and quota 25,138. Search-index text inspected; direct page returned no readable body.",
+    "method": "manual-capture",
+    "retrievedAt": "2026-11-03"
+  },
+  {
+    "id": "k16-knesset-membership-attempt",
+    "url": "https://main.knesset.gov.il/mk/Pages/Members.aspx?KnessetID=16",
+    "publisher": "Knesset",
+    "official": true,
+    "description": "Attempted official membership cross-check; inaccessible, NOT verification evidence.",
+    "method": "manual-capture",
+    "retrievedAt": "2026-11-03",
+    "note": "Direct request returned HTTP 247 challenge; web retrieval failed. Secondary membership source used and labelled."
+  },
+  {
+    "id": "k17-knesset-membership-attempt",
+    "url": "https://main.knesset.gov.il/mk/Pages/Members.aspx?KnessetID=17",
+    "publisher": "Knesset",
+    "official": true,
+    "description": "Attempted official membership cross-check; inaccessible, NOT verification evidence.",
+    "method": "manual-capture",
+    "retrievedAt": "2026-11-03",
+    "note": "Direct request returned HTTP 247 challenge; web retrieval failed. Secondary membership source used and labelled."
+  },
+  {
+    "id": "k16-knesset-faction-attempt",
+    "url": "https://main.knesset.gov.il/mk/apps/faction/faction-lobby?FactionID=586&KnessetID=16",
+    "publisher": "Knesset",
+    "official": true,
+    "description": "Attempted membership cross-check; redirected to geographic maintenance denial. Not verification evidence.",
+    "method": "manual-capture",
+    "retrievedAt": "2026-11-03"
+  },
+  {
+    "id": "k17-knesset-history-attempt",
+    "url": "https://main.knesset.gov.il/About/History/pages/knessethistory.aspx?kns=17",
+    "publisher": "Knesset",
+    "official": true,
+    "description": "Official history page attempted; no readable body. Not membership verification evidence.",
+    "method": "manual-capture",
+    "retrievedAt": "2026-11-03"
+  },
+  {
+    "id": "k17-candidates-archive-crosscheck",
+    "file": "k17/candidates-archive.crosscheck.json",
+    "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/list/ListIndex.html",
+    "publisher": "Project capture of primary CEC archive pages",
+    "official": false,
+    "description": "Verbatim candidate-name lines from eight archived official CEC pages, used to resolve scan glyphs and line wrapping. Each list includes its actual official URL. Project capture; not a new official publication.",
+    "method": "manual-capture",
+    "retrievedAt": "2026-11-03",
+    "bytes": 42789,
+    "sha256": "a82ada50f0073e41d72f188c105dfc0d1d8d3ffeaad7d7d36c6cc27e2e8037d3"
+  },
+  {
+    "id": "k17-candidates-archive-זך",
+    "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/list/listbb33.html?id=47",
+    "publisher": "Central Elections Committee",
+    "official": true,
+    "description": "Archived registered candidate page used as a second primary reading of scan names. Given-name-first HTML differs in order from gazette columns.",
+    "method": "manual-capture",
+    "retrievedAt": "2026-11-03"
+  },
+  {
+    "id": "k17-candidates-archive-פץ",
+    "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/list/list2580.html?id=43",
+    "publisher": "Central Elections Committee",
+    "official": true,
+    "description": "Archived registered candidate page used as a second primary reading of scan names. Given-name-first HTML differs in order from gazette columns.",
+    "method": "manual-capture",
+    "retrievedAt": "2026-11-03"
+  },
+  {
+    "id": "k17-candidates-archive-ג",
+    "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/list/list37ab.html?id=59",
+    "publisher": "Central Elections Committee",
+    "official": true,
+    "description": "Archived registered candidate page used as a second primary reading of scan names. Given-name-first HTML differs in order from gazette columns.",
+    "method": "manual-capture",
+    "retrievedAt": "2026-11-03"
+  },
+  {
+    "id": "k17-candidates-archive-ז",
+    "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/list/list6396.html?id=42",
+    "publisher": "Central Elections Committee",
+    "official": true,
+    "description": "Archived registered candidate page used as a second primary reading of scan names. Given-name-first HTML differs in order from gazette columns.",
+    "method": "manual-capture",
+    "retrievedAt": "2026-11-03"
+  },
+  {
+    "id": "k17-candidates-archive-זה",
+    "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/list/list850a.html?id=57",
+    "publisher": "Central Elections Committee",
+    "official": true,
+    "description": "Archived registered candidate page used as a second primary reading of scan names. Given-name-first HTML differs in order from gazette columns.",
+    "method": "manual-capture",
+    "retrievedAt": "2026-11-03"
+  },
+  {
+    "id": "k17-candidates-archive-קז",
+    "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/list/listab5e.html?id=40",
+    "publisher": "Central Elections Committee",
+    "official": true,
+    "description": "Archived registered candidate page used as a second primary reading of scan names. Given-name-first HTML differs in order from gazette columns.",
+    "method": "manual-capture",
+    "retrievedAt": "2026-11-03"
+  },
+  {
+    "id": "k17-candidates-archive-כן",
+    "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/list/list8bcf.html?id=30",
+    "publisher": "Central Elections Committee",
+    "official": true,
+    "description": "Archived registered candidate page used as a second primary reading of scan names. Given-name-first HTML differs in order from gazette columns.",
+    "method": "manual-capture",
+    "retrievedAt": "2026-11-03"
+  },
+  {
+    "id": "k17-candidates-archive-שס",
+    "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/list/list0c98.html?id=50",
+    "publisher": "Central Elections Committee",
+    "official": true,
+    "description": "Archived registered candidate page used as a second primary reading of scan names. Given-name-first HTML differs in order from gazette columns.",
+    "method": "manual-capture",
+    "retrievedAt": "2026-11-03"
   }
 ]
