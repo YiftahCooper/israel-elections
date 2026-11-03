@@ -21,6 +21,8 @@ export interface ReadRowsOptions {
   committee?: 'column' | 'optional' | 'zero';
   /** Locality name normalisation (default: collapse whitespace). */
   name?: (raw: string) => string;
+  /** Columns retained in the source (withdrawn lists) that must hold 0 in every row. */
+  zeroColumns?: readonly string[];
 }
 /** Reads a CKAN datastore dump (`{ fields, records }`). Every numeric field must be a nonnegative
  *  safe integer and every row must reconcile: list votes = valid, valid + invalid = cast. */
@@ -35,6 +37,7 @@ export function readDatastoreRows(path: string, letters: readonly string[], chec
     const row: VoteRow = { code: num('סמל ישוב'), nameHe: name(String(r['שם ישוב'])), committee, registered: num(o.registered ?? 'בזב'),
       votesCast: num('מצביעים'), invalid: num('פסולים'), valid: num('כשרים'), votes: letters.map(l => num(column(l))) };
     checkRowArithmetic(check, `${path} row ${i} (${row.code})`, row);
+    for (const k of o.zeroColumns ?? []) check(num(k) === 0, `${path}: withdrawn ${k} has votes`);
     return row;
   });
 }
@@ -106,7 +109,7 @@ export function checkRowsMatchNational(check: Check, label: string, rows: readon
 
 /** Locality count and envelope votes for dataset totals. Envelope (double/external envelope) rows
  *  are not localities; their code differs by era (9999 from k20; 0/875 or a name earlier). */
-export function geographyTotals(rows: readonly { code: number | null; votesCast: number }[], isEnvelope: (r: { code: number | null }) => boolean = r => r.code === 9999) {
+export function geographyTotals<R extends { code: number | null; votesCast: number }>(rows: readonly R[], isEnvelope: (r: R) => boolean = r => r.code === 9999) {
   return { localities: rows.filter(r => !isEnvelope(r)).length, envelopeVotes: rows.find(isEnvelope)?.votesCast };
 }
 
