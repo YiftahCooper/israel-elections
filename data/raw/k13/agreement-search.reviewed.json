@@ -31,5 +31,26 @@
       "inspection": "Cover/table of contents only; no agreement notice listed."
     }
   ],
-  "note": "YP 4017 candidate publication and YP 4021 results were also inspected; no agreement notice found. A negative contents search is not proof that no agreements existed."
+  "note": "YP 4017 candidate publication and YP 4021 results were also inspected; no agreement notice found. A negative contents search is not proof that no agreements existed.",
+  "releaseSearch": {
+    "reviewedOn": "2026-11-03",
+    "queries": [
+      "\"הודעה בדבר התקשרות בין רשימות מועמדים\" \"1992\"",
+      "site:olaw.org.il/yalkut \"4017\" \"התקשרות\"",
+      "\"התקשרות בין רשימות\" \"תשנ״ב\""
+    ],
+    "candidateIssueMirror": "https://olaw.org.il/yalkut/yalkut-4017.pdf",
+    "mirrorSha256": "727acb19589ca12516dd1c8cc96e3bf4811ff8d5a512acce7f1fa753c1165943",
+    "inspection": "Downloaded mirror is byte-identical to retained gov.il scan. Only 21 gazette image pages plus a scan-attestation page; numerous printed pages, including 3654, are absent. No complete agreement notice in the retained scan.",
+    "additionalLead": {
+      "discovery": "Hebrew Wikipedia footnote points to YP 4017 p. 3654; discovery only, not promoted as agreement evidence.",
+      "url": "https://www.nevo.co.il/law_html/Law10/YALKUT-4017.pdf",
+      "result": "HTTP 403; notice not read."
+    },
+    "officialAlternative": {
+      "url": "https://free-justice.openapi.gov.il/free/moj/portal/rest/searchpredefinedapi/v1/SearchPredefinedApi/Documents/79oQ2sjtYUgnzxHxZgICPgimsoZQKPfBQo0%2BPSGvThc%3D",
+      "result": "Retrieved 22-page Ministry of Justice variant; same missing roster pages. Did not recover p. 3654."
+    },
+    "conclusion": "Notice not recovered. Release with empty agreements only because every published seat reproduces; ineffective agreements may be missing. No claim that no agreements existed."
+  }
 }

@@ -176,9 +176,7 @@
     "note": "No notice recovered in the bounded search. Empty sourced inputs reproduce the published seats, but do not prove absence or completeness of agreements."
   },
   "discrepancies": [],
-  "releaseBlockers": [
-    "Complete candidate rosters for every seat-winning list have not been transcribed and checked."
-  ],
+  "releaseBlockers": [],
   "hasLocalities": false,
   "localityNote": "No reconciled locality dataset is released. Secondary polling spreadsheets are not treated as reconciled national evidence.",
   "sourceNotes": [

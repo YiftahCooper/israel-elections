@@ -1,7 +1,7 @@
 import { useMemo, useRef, useState } from 'react';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario, SimList } from '../../model/scenario.ts';
-import { listLabel } from '../derive.ts';
+import { listLabel, seatedOrder } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { arcLayout, placeLabels } from '../layout.ts';
 import { download, isolate } from '../format.ts';
@@ -94,7 +94,7 @@ export function Hemicycle({ s, r, compact = false, title }: { s: Scenario; r: Al
   };
 
   const hv = hover ? listOf(hover.seat.listId) : null;
-  const cand = hover && hv ? hv.candidates[hover.seat.idx] : null;
+  const cand = hover && hv ? seatedOrder(hv)[hover.seat.idx] ?? null : null;
 
   let body: React.ReactNode;
   if (layout === 'hemicycle') {

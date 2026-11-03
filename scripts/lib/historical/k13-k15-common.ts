@@ -1,5 +1,5 @@
-/** CI-safe evidence preflight. These research fixtures MUST NOT be emitted as public datasets.
- * Reviewed transcriptions are durable; no PDF parser, downloads or scratch files are needed. */
+/** CI-safe release builder. Reviewed transcriptions and hashed scans are durable;
+ * no PDF parser, downloads or scratch files are needed to rebuild. */
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -23,26 +23,33 @@ export interface Review {
   discrepancies: unknown[]; releaseBlockers: string[]; hasLocalities: false; localityNote: string;
 }
 export interface RosterReview {
-  id: ElectionId; sourceId: string; reviewedOn: string; allWinningRostersVerified: boolean; note: string;
-  lists: { letters: string; complete: boolean; publishedCount: number; gazettePages: number[];
+  id: ElectionId; sourceId: string; reviewedOn: string; allWinningElectedPrefixesVerified: boolean; note: string;
+  lists: { letters: string; sourceId?: string; complete: boolean; publishedCount: number; gazettePages: number[];
     candidates: { rank: number; nameHe: string; page: number }[];
-    electedCrossCheck: { resultsPages: number[]; checkedThroughRank: number; note: string } }[];
+    electedCrossCheck: { resultsPages: number[]; checkedThroughRank: number; note: string; differences?: { electedRank: number; candidateRank: number; candidateNameHe: string; electedNameHe: string; reason: string }[] } }[];
+}
+export interface ElectedReview {
+  id: ElectionId; sourceId: string; section: number;
+  lists: { letters: string; resultsPages: number[]; names: string[]; candidateRanks: number[] }[];
 }
 export interface Audit {
-  review: Review; rosters: RosterReview; rawSha256: Record<string, string>; releaseReady: false;
+  review: Review; rosters: RosterReview; elected: ElectedReview; rawSha256: Record<string, string>; releaseReady: true;
   seatDifferences: { letters: string; official: number; computed: number }[];
 }
-export interface VerifyOptions { log?: boolean; available?: boolean }
+export interface VerifyOptions { log?: boolean }
 
 export function verifyHistoricalProgress(id: 'k13' | 'k14' | 'k15', options: VerifyOptions = {}): Audit {
   const review = json<Review>(`data/raw/${id}/national.reviewed.json`);
   const rosters = json<RosterReview>(`data/raw/${id}/candidates.reviewed.json`);
-  assert(review.id === id && rosters.id === id, `${id}: wrong evidence identity`);
+  const elected = json<ElectedReview>(`data/raw/${id}/elected.reviewed.json`);
+  assert(review.id === id && rosters.id === id && elected.id === id && elected.sourceId === review.resultsSourceId && elected.section === 4, `${id}: wrong evidence identity`);
   const sources = json<Source[]>('data/raw/SOURCES.json');
   const sourceIds = [review.resultsSourceId, review.supplementalTotals.sourceId, rosters.sourceId,
+    `${id}-national-reviewed`, `${id}-rosters-reviewed`, `${id}-elected-reviewed`,
+    ...rosters.lists.flatMap(l => l.sourceId ? [l.sourceId] : []),
     'k13-k15-bader-ofer-amendment', 'k13-k15-threshold-amendment', ...(review.agreements.sourceId ? [review.agreements.sourceId] : [])];
   const rawSha256: Record<string, string> = {};
-  for (const sourceId of sourceIds) {
+  for (const sourceId of new Set(sourceIds)) {
     const source = sources.find(s => s.id === sourceId);
     assert(source, `${id}: missing provenance ${sourceId}`);
     const bytes = readFileSync(join(ROOT, 'data/raw', source.file));
@@ -62,15 +69,37 @@ export function verifyHistoricalProgress(id: 'k13' | 'k14' | 'k15', options: Ver
   for (const list of rosters.lists) {
     assert(review.lists.some(l => l.letters === list.letters), `${id}: unknown roster ${list.letters}`);
     assert(list.candidates.length > 0 && list.candidates.length <= list.publishedCount, `${id}: invalid roster size`);
-    assert(!list.complete || list.candidates.length === list.publishedCount, `${id}: falsely complete roster`);
+    assert(list.complete === (list.candidates.length === list.publishedCount), `${id}: falsely complete roster`);
     assert(list.candidates.every((c, i) => c.rank === i + 1 && c.nameHe.trim() && list.gazettePages.includes(c.page)), `${id}: missing name, rank or page`);
     const won = review.lists.find(l => l.letters === list.letters)!.officialSeats;
-    assert(list.electedCrossCheck.checkedThroughRank === Math.min(won, list.candidates.length), `${id}: incomplete elected-prefix check`);
+    const members = elected.lists.find(e => e.letters === list.letters);
+    assert(members && members.names.length === won && members.candidateRanks.length === won, `${id}: incomplete elected names ${list.letters}`);
+    assert(members.resultsPages.length > 0 && members.resultsPages.every(p => review.resultsPages.includes(p)), `${id}: invalid results page`);
+    assert(JSON.stringify(members.resultsPages) === JSON.stringify(list.electedCrossCheck.resultsPages), `${id}: cross-check pages differ`);
+    assert(list.electedCrossCheck.checkedThroughRank === Math.max(...members.candidateRanks), `${id}: incomplete elected-prefix check`);
+    const normalize = (name: string) => name.replace(/[\s\-־–—׳’']/g, '');
+    const differences = list.electedCrossCheck.differences ?? [];
+    const used = new Set<number>();
+    members.names.forEach((name, i) => {
+      const rank = members.candidateRanks[i];
+      assert(Number.isSafeInteger(rank) && rank > (members.candidateRanks[i - 1] ?? 0), `${id}: elected ranks out of order`);
+      const candidate = list.candidates[rank - 1];
+      assert(candidate && name.trim(), `${id}: elected candidate missing at ${list.letters}/${rank}`);
+      if (normalize(candidate.nameHe) !== normalize(name)) {
+        const d = differences.findIndex(d => d.electedRank === i + 1 && d.candidateRank === rank && d.candidateNameHe === candidate.nameHe && d.electedNameHe === name && d.reason.trim());
+        assert(d >= 0, `${id}: unresolved elected name ${list.letters}/${rank}: ${candidate.nameHe} / ${name}`);
+        used.add(d);
+      }
+    });
+    assert(used.size === differences.length, `${id}: stale/duplicate name resolution`);
   }
-  const allWinningRostersVerified = review.lists.filter(l => l.officialSeats > 0).every(l => rosters.lists.some(r => r.letters === l.letters && r.complete));
-  assert(rosters.allWinningRostersVerified === allWinningRostersVerified && !allWinningRostersVerified, `${id}: stale roster gate`);
-  const audit: Audit = { review, rosters, rawSha256, releaseReady: false, seatDifferences: [] };
-  const ds = researchDataset(audit);
+  const winners = review.lists.filter(l => l.officialSeats > 0);
+  assert(new Set(elected.lists.map(l => l.letters)).size === elected.lists.length && elected.lists.length === winners.length, `${id}: duplicate/extra elected lists`);
+  const allWinningElectedPrefixesVerified = winners.every(l => rosters.lists.some(r => r.letters === l.letters && r.candidates.length >= l.officialSeats));
+  assert(rosters.allWinningElectedPrefixesVerified && allWinningElectedPrefixesVerified, `${id}: winning elected-prefix coverage incomplete`);
+  assert(review.releaseBlockers.length === 0 && review.hasLocalities === false, `${id}: unresolved release blocker or locality claim`);
+  const audit: Audit = { review, rosters, elected, rawSha256, releaseReady: true, seatDifferences: [] };
+  const ds = historicalDataset(audit);
   const s = scenarioFromDataset(ds);
   assert(validateScenario(JSON.parse(JSON.stringify(s))).length === 0, `${id}: invalid historical scenario`);
   const result = allocate(toEngineInput(s));
@@ -79,37 +108,51 @@ export function verifyHistoricalProgress(id: 'k13' | 'k14' | 'k15', options: Ver
   // Missing agreements are NOT reverse-engineered to obtain a matching result.
   assert(audit.seatDifferences.length === 0, `${id}: sourced inputs do not reproduce every official seat`);
   const entry = json<{ id: string; available: boolean }[]>('public/data/elections.json').find(e => e.id === id);
-  assert(entry, `${id}: missing election index`);
-  assert(!(options.available ?? entry.available), `${id}: release blocked: ${review.releaseBlockers.join(' ')}`);
-  assert(review.releaseBlockers.length > 0, `${id}: missing explanation of blocked release`);
-  if (options.log !== false) console.log(`${id}: UNAVAILABLE — ${review.releaseBlockers.join(' ')} Seat differences: ${JSON.stringify(audit.seatDifferences)}`);
+  assert(entry?.available, `${id}: missing election index`);
+  if (options.log !== false) console.log(`${id}: READY — all elected names cross-checked; every official seat reproduced.`);
   return audit;
 }
 
-/** Diagnostic only. Missing rosters are explicitly flagged; partial names stay in reviewed
- * evidence, never masquerade as a complete registered roster in the application. */
-export function researchDataset({ review, rosters, rawSha256 }: Audit): ElectionDataset {
+/** Original registered rank order; omissions in the elected notice are explicit in reviewed evidence. */
+export function historicalDataset({ review, rosters, rawSha256 }: Audit): ElectionDataset {
   const n = Number(review.id.slice(1));
+  // candidates ranked above the last elected member but absent from the notice's elected names
+  const elected = json<ElectedReview>(`data/raw/${review.id}/elected.reviewed.json`);
+  const notSeated = (letters: string, rank: number) => { const e = elected.lists.find((x) => x.letters === letters); return !!e && rank < Math.max(...e.candidateRanks) && !e.candidateRanks.includes(rank); };
   return {
     schemaVersion: 1, id: review.id, knesset: n,
     electionDate: n === 13 ? '1992-06-23' : n === 14 ? '1996-05-29' : '1999-05-17',
-    nameHe: `בדיקת מחקר בלבד — הכנסת ה-${n}`, nameEn: 'RESEARCH ONLY — not a released dataset',
-    status: { stage: 'official-final', asOf: review.reviewedOn, noteHe: 'בדיקת מחקר בלבד; תעתיק המועמדים אינו מלא. אין נתוני יישובים מאומתים.', noteEn: `Research only; winning rosters incomplete; no reconciled localities. Agreements ${review.agreements.complete ? 'complete' : 'unverified; none assumed'}.` },
+    nameHe: `הבחירות לכנסת ה-${n}`, nameEn: `Election to the ${n === 13 ? "13th" : n === 14 ? "14th" : "15th"} Knesset`,
+    status: releaseStatus(review.id),
     ruleSetId: 'il-1992-bader-ofer-1.5', hasLocalities: false,
-    // Zero geographic counts mean no geography supplied in this research fixture, not an official count.
+    // Zero geographic counts mean no geography supplied in this dataset, not an official count.
     totals: { ...review.gazetteTotals, registered: review.supplementalTotals.registered, votesCast: review.supplementalTotals.votesCast, ballotBoxes: 0, localities: 0 },
     lists: review.lists.map((l, i) => {
       const id = `${n}-${l.letters}`; const meta = META[id];
-      const roster = rosters.lists.find(r => r.letters === l.letters && r.complete);
+      const roster = rosters.lists.find(r => r.letters === l.letters);
       return { id, letters: l.letters, nameHe: l.nameHe, shortHe: meta?.he ?? l.nameHe, shortEn: meta?.en ?? null,
         sponsorsHe: '', partiesHe: null, votes: l.votes, withdrawn: false, color: meta?.color ?? neutralColor(i), bloc: null,
-        candidates: roster?.candidates.map(c => ({ id: `${id}#${c.rank}`, rank: c.rank, nameHe: c.nameHe })) ?? [],
-        candidatesSource: roster ? rosters.sourceId : '', candidatesSecondary: false, candidatesUnavailable: !roster,
-        notesHe: roster ? [] : ['בדיקת מחקר בלבד; רשימת המועמדים המלאה טרם תועתקה ואומתה.'] };
+        candidates: roster?.candidates.map(c => ({ id: `${id}#${c.rank}`, rank: c.rank, nameHe: c.nameHe, ...(notSeated(l.letters, c.rank) ? { notSeated: true } : {}) })) ?? [],
+        candidatesSource: roster ? (roster.sourceId ?? rosters.sourceId) : '', candidatesSecondary: false,
+        ...(roster ? { candidatesTruncated: !roster.complete } : { candidatesUnavailable: true }),
+        notesHe: (roster?.candidates ?? []).filter(c => notSeated(l.letters, c.rank)).map(c => `${c.nameHe} (מקום ${c.rank}) אינו מופיע בין הנבחרים בהודעת התוצאות הרשמית; המנדט עבר למועמד הבא.`) };
     }).sort((a, b) => (META[a.id]?.order ?? 999) - (META[b.id]?.order ?? 999) || b.votes - a.votes),
     agreements: review.agreements.pairs.map(([a, b], i) => ({ id: `${n}-agr-${i + 1}`, members: [`${n}-${a}`, `${n}-${b}`], sourceId: review.agreements.sourceId! })),
     blocs: [], officialSeats: Object.fromEntries(review.lists.map(l => [`${n}-${l.letters}`, l.officialSeats])),
     officialSeatsSourceId: review.resultsSourceId, sourceIds: Object.keys(rawSha256),
-    buildInfo: { builtAt: review.reviewedOn, rawSha256 },
+    buildInfo: { builtAt: new Date().toISOString(), rawSha256 },
   };
+}
+
+/** Shared by the public dataset and picker entry, preventing divergent coverage claims. */
+export function releaseStatus(id: ElectionId): ElectionDataset['status'] {
+  const entries = json<{ id: ElectionId; status: { stage: string; noteHe: string; noteEn: string } }[]>('public/data/elections.json');
+  const entry = entries.find(e => e.id === id);
+  assert(entry?.status.stage === 'official-final', `${id}: index release status missing`);
+  return { ...entry.status, stage: 'official-final', asOf: '2026-11-03' };
+}
+
+export function historicalBuildJobs(id: 'k13' | 'k14' | 'k15', options: VerifyOptions = {}) {
+  const audit = verifyHistoricalProgress(id, options);
+  return [() => ({ ds: historicalDataset(audit), loc: undefined })];
 }

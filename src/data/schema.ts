@@ -37,6 +37,9 @@ export interface Candidate {
   familyHe?: string;
   /** sponsoring party for this candidate, when the official source states it */
   partyHe?: string;
+  /** on the registered roster but not among those the official results notice names as elected
+   * (withdrew or resigned before the members were named); seats pass to the next candidates */
+  notSeated?: boolean;
 }
 
 export interface ListRecord {

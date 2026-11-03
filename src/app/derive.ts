@@ -51,7 +51,8 @@ export function scenarioIssues(s: Scenario, r: AllocationResult): ScenarioIssue[
   for (const l of r.lists) {
     const sl = s.lists.find((x) => x.id === l.id)!;
     // an unavailable or truncated roster is unknown beyond what is listed, not short of candidates
-    if (l.seats > sl.candidates.length && !sl.rosterUnavailable && !sl.rosterTruncated) out.push({ level: 'error', en: `${sl.shortEn ?? sl.shortHe} wins ${l.seats} seats but has only ${sl.candidates.length} candidates; ${l.seats - sl.candidates.length} seat(s) would stay vacant.`, he: `${sl.shortHe} זוכה ב-${l.seats} מנדטים אך יש בה רק ${sl.candidates.length} מועמדים; ${l.seats - sl.candidates.length} מושבים יישארו ריקים.` });
+    const n = seatedOrder(sl).length;
+    if (l.seats > n && !sl.rosterUnavailable && !sl.rosterTruncated) out.push({ level: 'error', en: `${sl.shortEn ?? sl.shortHe} wins ${l.seats} seats but has only ${n} candidates; ${l.seats - n} seat(s) would stay vacant.`, he: `${sl.shortHe} זוכה ב-${l.seats} מנדטים אך יש בה רק ${n} מועמדים; ${l.seats - n} מושבים יישארו ריקים.` });
   }
   const letters = new Map<string, number>();
   for (const l of s.lists) letters.set(l.letters, (letters.get(l.letters) ?? 0) + 1);
@@ -60,7 +61,9 @@ export function scenarioIssues(s: Scenario, r: AllocationResult): ScenarioIssue[
   return out;
 }
 
-export const electedOf = (l: SimList, seats: number) => l.candidates.slice(0, seats);
+/** The candidates who fill a list's seats, in order: the roster minus those the official notice did not seat. */
+export const seatedOrder = (l: Pick<SimList, 'candidates'>) => l.candidates.filter((c) => !c.notSeated);
+export const electedOf = (l: SimList, seats: number) => seatedOrder(l).slice(0, seats);
 
 /** Engine warnings in the interface language (the engine's own messages are English diagnostics). */
 export function warningText(w: EngineWarning, s: Scenario, lang: Lang): string {

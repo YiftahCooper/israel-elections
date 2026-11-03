@@ -15,6 +15,8 @@ export interface SimCandidate {
   partyHe?: string;
   /** id of the list the candidate was originally registered on */
   originListId?: string;
+  /** skipped when seats are filled (see Candidate.notSeated) */
+  notSeated?: boolean;
 }
 
 export interface SimList {
@@ -162,7 +164,7 @@ export function scenarioFromDataset(ds: ElectionDataset, name = ''): Scenario {
     lists: ds.lists.map((l) => ({
       id: l.id, originIds: [l.id], letters: l.letters, nameHe: l.nameHe, shortHe: l.shortHe, shortEn: l.shortEn,
       color: l.color, bloc: l.bloc, votes: l.votes, withdrawn: l.withdrawn, sponsorsHe: l.sponsorsHe,
-      candidates: l.candidates.map((c) => ({ id: c.id, nameHe: c.nameHe, partyHe: c.partyHe, originListId: l.id })),
+      candidates: l.candidates.map((c) => ({ id: c.id, nameHe: c.nameHe, partyHe: c.partyHe, originListId: l.id, ...(c.notSeated ? { notSeated: true } : {}) })),
       ...(l.candidatesUnavailable ? { rosterUnavailable: true } : {}),
       ...(l.candidatesTruncated ? { rosterTruncated: true } : {}),
     })),

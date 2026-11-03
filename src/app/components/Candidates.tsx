@@ -11,15 +11,21 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
   const [editing, setEditing] = useState<string | null>(null);
   const [draft, setDraft] = useState('');
   const c = l.candidates;
-  const limit = showAll ? c.length : Math.min(c.length, simple ? seats + 1 : Math.max(seats + 6, 12));
+
   const commit = (next: SimCandidate[], note: string) => dispatch({ type: 'candidates', listId: l.id, candidates: next, note });
   const move = (from: number, to: number) => {
     if (to < 0 || to >= c.length || from === to) return;
     const next = [...c]; const [x] = next.splice(from, 1); next.splice(to, 0, x);
     commit(next, `move ${x.nameHe} ${from + 1}→${to + 1}`);
   };
-  const lastIn = seats > 0 ? c[Math.min(seats, c.length) - 1] : null;
-  const nextIn = c[seats] ?? null;
+  // candidates the official notice did not seat are skipped when seats are filled
+  const seated = c.filter((x) => !x.notSeated);
+  const seatPos = new Map(seated.map((x, k) => [x.id, k]));
+  const lastIn = seats > 0 ? seated[Math.min(seats, seated.length) - 1] ?? null : null;
+  const nextIn = seated[seats] ?? null;
+  // Simple shows those elected and the next in line (skipped candidates in between stay visible)
+  const cut = nextIn ? c.indexOf(nextIn) + 1 : lastIn ? c.indexOf(lastIn) + 1 : 0;
+  const limit = showAll ? c.length : Math.min(c.length, simple ? Math.max(cut, seats + 1) : Math.max(cut + 5, seats + 6, 12));
 
   return (
     <div>
@@ -27,18 +33,19 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
       {l.rosterTruncated && !l.rosterUnavailable && <p className="small callout">{L(`Only the first ${c.length} candidates of this list’s official roster are available here (everyone elected is included); later names were not transcribed.`, `כאן זמינים רק ${c.length} המועמדים הראשונים ברשימה הרשמית (כולל כל הנבחרים); השמות שאחריהם לא הוקלדו.`)}</p>}
       {!simple && !l.rosterUnavailable && <div className="kv small" style={{ marginBottom: 8 }}>
         <span>{l.rosterTruncated ? L('Candidates available', 'מועמדים זמינים') : L('Registered candidates', 'מועמדים ברשימה')}</span><span>{c.length}</span>
-        <span>{L('Last elected', 'האחרון שנבחר')}</span><span>{lastIn ? <><bdi>{lastIn.nameHe}</bdi> <span className="muted">(#{seats})</span></> : '—'}</span>
-        <span>{L('Next in line', 'הבא בתור')}</span><span>{nextIn ? <><bdi>{nextIn.nameHe}</bdi> <span className="muted">(#{seats + 1})</span></> : l.rosterTruncated ? L('not available', 'לא זמין') : L('none', 'אין')}</span>
+        <span>{L('Last elected', 'האחרון שנבחר')}</span><span>{lastIn ? <><bdi>{lastIn.nameHe}</bdi> <span className="muted">(#{c.indexOf(lastIn) + 1})</span></> : '—'}</span>
+        <span>{L('Next in line', 'הבא בתור')}</span><span>{nextIn ? <><bdi>{nextIn.nameHe}</bdi> <span className="muted">(#{c.indexOf(nextIn) + 1})</span></> : l.rosterTruncated ? L('not available', 'לא זמין') : L('none', 'אין')}</span>
       </div>}
       {baseCandidates && JSON.stringify(baseCandidates) !== JSON.stringify(c) && <button className="btn small" style={{ marginBottom: 6 }} onClick={() => dispatch({ type: 'resetCandidates', listId: l.id })}>{L('Restore the registered candidate list', 'שחזור רשימת המועמדים הרשומה')}</button>}
-      {seats > c.length && !l.rosterUnavailable && !l.rosterTruncated && <p className="down small">{L(`The list has only ${c.length} candidates for ${seats} seats.`, `ברשימה רק ${c.length} מועמדים ל-${seats} מנדטים.`)}</p>}
+      {seats > seated.length && !l.rosterUnavailable && !l.rosterTruncated && <p className="down small">{L(`The list has only ${seated.length} candidates for ${seats} seats.`, `ברשימה רק ${seated.length} מועמדים ל-${seats} מנדטים.`)}</p>}
       {c.length === 0 && !l.rosterUnavailable && <p className="muted small">{L('No candidates registered.', 'אין מועמדים רשומים.')}</p>}
       <ol className="cands" style={{ ['--c' as string]: l.color }} aria-label={L('Candidate list', 'רשימת המועמדים')}>
         {c.slice(0, limit).map((x, i) => {
-          const elected = i < seats;
-          const changed = elected !== i < baseSeats;
+          const pos = seatPos.get(x.id);
+          const elected = pos !== undefined && pos < seats;
+          const changed = !x.notSeated && elected !== (pos !== undefined && pos < baseSeats);
           return (
-            <li key={x.id} className={`cand ${elected ? 'el' : 'out'} ${i === seats && seats > 0 ? 'cut' : ''} ${drag === i ? 'drag' : ''}`}
+            <li key={x.id} className={`cand ${elected ? 'el' : 'out'} ${x === nextIn && seats > 0 ? 'cut' : ''} ${drag === i ? 'drag' : ''}`}
               draggable={advanced} onDragStart={() => setDrag(i)} onDragEnd={() => setDrag(null)}
               onDragOver={(e) => advanced && e.preventDefault()} onDrop={() => { if (drag !== null) move(drag, i); setDrag(null); }}>
               <span className="rk">{i + 1}</span>
@@ -62,7 +69,7 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
                   <button className="btn small ghost" aria-label={L('Insert candidate below', 'הוספת מועמד מתחת')} onClick={() => { const next = [...c]; next.splice(i + 1, 0, { id: `new-${Date.now().toString(36)}`, nameHe: L('New candidate', 'מועמד חדש') }); commit(next, 'insert'); }}>＋</button>
                   <button className="btn small ghost danger" aria-label={L('Remove', 'הסרה')} onClick={() => commit(c.filter((y) => y.id !== x.id), `remove ${x.nameHe}`)}>✕</button>
                 </span>
-              ) : <span className="tiny muted">{elected ? L('elected', 'נבחר') : i === seats ? L('next in line', 'הבא בתור') : ''}</span>}
+              ) : <span className="tiny muted">{x.notSeated ? L('not seated', 'לא כיהן') : elected ? L('elected', 'נבחר') : x === nextIn ? L('next in line', 'הבא בתור') : ''}</span>}
             </li>
           );
         })}

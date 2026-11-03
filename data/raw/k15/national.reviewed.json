@@ -251,9 +251,7 @@
     ]
   },
   "discrepancies": [],
-  "releaseBlockers": [
-    "Complete candidate rosters for every seat-winning list have not been transcribed and checked."
-  ],
+  "releaseBlockers": [],
   "hasLocalities": false,
   "localityNote": "No reconciled locality dataset is released. Secondary polling spreadsheets are not treated as reconciled national evidence.",
   "sourceNotes": [
