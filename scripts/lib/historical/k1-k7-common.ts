@@ -1,15 +1,17 @@
 // National-only early elections. Retained primary evidence gates every public output.
-import { readFileSync, existsSync, writeFileSync } from 'node:fs';
-import { createHash } from 'node:crypto';
+import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import assert from 'node:assert/strict';
 import { allocate } from '../../../src/engine/allocate.ts';
 import { scenarioFromDataset, toEngineInput } from '../../../src/model/scenario.ts';
 import { ISRAEL_1949, ISRAEL_1951 } from '../../../src/engine/rules.ts';
 import type { ElectionDataset, ElectionId } from '../../../src/data/schema.ts';
-import { META, neutralColor } from '../list-meta.ts';
-const ROOT=join(import.meta.dirname,'../../..');
-const json=(p:string)=>JSON.parse(readFileSync(join(ROOT,p),'utf8'));
+import { agreementRecords, inKeyOrder, listRecord, officialSeatsOf, seatOrder } from '../build/records.ts';
+import { candidateId, notSeatedNoteHe, notSeatedRanks, rosterFlags } from '../build/roster.ts';
+import { indexEntry, OUT, rawJson, verifySources } from '../build/sources.ts';
+import { allocateDataset, checker, checkNationalTable, seatDifferences, type Check } from '../build/validate.ts';
+
+const check: Check = checker('k1–k7 evidence');
 export interface EarlyReview {
   id: ElectionId; reviewedOn: string; resultsSourceId: string; candidateSourceId: string;
   pages: { votes: number; seats: number; invalid: number };
@@ -28,31 +30,33 @@ export interface EarlyRosterReview {
     crossCheck: string;
   }[];
 }
-export function earlyReview(n:number):EarlyReview { assert(n>=1&&n<=7);return json(`data/raw/k${n}/national.reviewed.json`); }
-export function earlyRosterReview(n:number):EarlyRosterReview { return json(`data/raw/k${n}/rosters.reviewed.json`); }
+export function earlyReview(n:number):EarlyReview { assert(n>=1&&n<=7);return rawJson(`k${n}/national.reviewed.json`); }
+export function earlyRosterReview(n:number):EarlyRosterReview { return rawJson(`k${n}/rosters.reviewed.json`); }
+
+/** k1–k7 serialize color/votes earlier and sponsors/parties later than other eras; roster flags last. */
+const EARLY_LIST_KEYS = ['id', 'letters', 'nameHe', 'shortHe', 'shortEn', 'color', 'votes', 'withdrawn', 'bloc', 'candidates', 'candidatesSource',
+  'candidatesSecondary', 'sponsorsHe', 'partiesHe', 'notesHe', 'candidatesUnavailable', 'candidatesTruncated'];
+
 /** Research only: [] means the no-connections counterfactual when notice is missing.
  * Missing rosters are deliberately NOT labelled candidatesUnavailable: the scans exist.
  * This fixture is never returned as a build job or written under public/data/. */
 export function earlyResearchDataset(n:number):ElectionDataset {
-  const r=earlyReview(n); const e=json('public/data/elections.json').find((e:{id:string})=>e.id===r.id);
+  const r=earlyReview(n); const e=indexEntry(r.id)!;
   return {
     schemaVersion:1,id:r.id,knesset:n,electionDate:e.date,nameHe:e.nameHe,nameEn:e.nameEn,
     status:{stage:'official-final',asOf:r.reviewedOn,noteHe:'נתוני מחקר בלבד; רשימות המועמדים לא תומללו.',noteEn:'RESEARCH ONLY. No-connections diagnostic when notice missing; candidate rosters unverified.'},
     ruleSetId:n===1?ISRAEL_1949.id:ISRAEL_1951.id,
     totals:{...r.nationalTotals,ballotBoxes:0,localities:0},
-    lists:r.lists.map((l,i)=>{const id=`${n}-${l.letters}`,m=META[id];return {
-      id,letters:l.letters,nameHe:l.nameHe,shortHe:m?.he??l.nameHe,shortEn:m?.en??null,color:m?.color??neutralColor(i),
-      votes:l.votes,withdrawn:false,bloc:null,candidates:[],candidatesSource:r.candidateSourceId,candidatesSecondary:false,
-      sponsorsHe:'',partiesHe:null,notesHe:['RESEARCH ONLY — full candidate roster unverified.'],
-    };}),
-    agreements:(r.agreements.pairs??[]).map((members,i)=>({id:`${n}-agr-${i+1}`,members:members.map(l=>`${n}-${l}`) as [string,string],sourceId:r.agreements.sourceId!})),
-    blocs:[],hasLocalities:false,officialSeats:Object.fromEntries(r.lists.map(l=>[`${n}-${l.letters}`,l.officialSeats])),officialSeatsSourceId:r.resultsSourceId,
+    lists:r.lists.map((l,i)=>listRecord(n,i,{letters:l.letters,nameHe:l.nameHe,votes:l.votes,candidatesSource:r.candidateSourceId,
+      notesHe:['RESEARCH ONLY — full candidate roster unverified.']},EARLY_LIST_KEYS)),
+    agreements:agreementRecords(n,r.agreements.pairs??[],r.agreements.sourceId!),
+    blocs:[],hasLocalities:false,officialSeats:officialSeatsOf(n,r.lists.map(l=>({letters:l.letters,seats:l.officialSeats}))),officialSeatsSourceId:r.resultsSourceId,
     sourceIds:[r.resultsSourceId,r.candidateSourceId,'k1-k7-cbs-national-totals'],buildInfo:{builtAt:r.reviewedOn,rawSha256:{}},
   };
 }
 export function earlyDiagnostic(n:number) {
-  const ds=earlyResearchDataset(n),result=allocate(toEngineInput(scenarioFromDataset(ds)));
-  return { result, differences:result.lists.filter(l=>l.seats!==ds.officialSeats![l.id]).map(l=>({id:l.id,published:ds.officialSeats![l.id],computed:l.seats})) };
+  const ds=earlyResearchDataset(n),result=allocateDataset(ds);
+  return { result, differences:seatDifferences(ds,result).map(({id,official,computed})=>({id,published:official,computed})) };
 }
 function evidenceIds(n:number,r:EarlyReview) {
   return [r.resultsSourceId,r.candidateSourceId,'k1-k7-cbs-national-totals',`k${n}-national-reviewed`,
@@ -61,17 +65,14 @@ function evidenceIds(n:number,r:EarlyReview) {
     `k1-k7-law-${n===1?'1948':n===2?'1951':n===3?'1955':n===7?'1969':'1959'}`,
     ...(n===1?['k1-k7-law-1948-312737']:[])];
 }
+export type EarlyAudit = ReturnType<typeof verifyEarlyProgress>;
 export function verifyEarlyProgress(n:number,opts:{available?:boolean;log?:boolean}={}) {
-  const r=earlyReview(n), manifest=json('data/raw/SOURCES.json') as {id:string;file:string;sha256:string}[];
-  const sourceIds=evidenceIds(n,r);
-  for(const id of sourceIds){const s=manifest.find(s=>s.id===id);assert(s,`missing source ${id}`);assert.equal(createHash('sha256').update(readFileSync(join(ROOT,'data/raw',s.file))).digest('hex'),s.sha256,`${id}: source hash changed`);}
-  assert.equal(r.id,`k${n}`);assert.equal(new Set(r.lists.map(l=>l.letters)).size,r.lists.length);
-  for(const l of r.lists){assert(Number.isSafeInteger(l.votes)&&l.votes>=0);assert(Number.isInteger(l.officialSeats)&&l.officialSeats>=0);}
-  assert.equal(r.lists.reduce((s,l)=>s+l.votes,0),r.nationalTotals.valid);
-  assert.equal(r.lists.reduce((s,l)=>s+l.officialSeats,0),120);
-  assert.equal(r.nationalTotals.valid+r.nationalTotals.invalid,r.nationalTotals.votesCast);
+  const r=earlyReview(n);
+  const rawSha256=verifySources(evidenceIds(n,r),check);
+  assert.equal(r.id,`k${n}`);
+  checkNationalTable(check,r.id,r.lists.map(l=>({letters:l.letters,votes:l.votes,seats:l.officialSeats})),r.nationalTotals);
   const diagnostic=earlyDiagnostic(n);
-  const e=json('public/data/elections.json').find((e:{id:string})=>e.id===r.id);
+  const e=indexEntry(r.id)!;
   const releaseReady=r.releaseBlockers.length===0 && r.agreements.complete && r.rosters.meetsReleaseStandard===true;
   if(releaseReady) {
     assert(r.agreements.pairs && r.agreements.sourceId,`${r.id}: connection evidence required`);
@@ -110,38 +111,35 @@ export function verifyEarlyProgress(n:number,opts:{available?:boolean;log?:boole
     }
   } else {
     assert(!(opts.available??e.available),`${r.id}: release blocked — ${r.releaseBlockers.join(' ')}`);
-    assert(!existsSync(join(ROOT,`public/data/${r.id}.json`)),`${r.id}: unverified public output must not exist`);
+    assert(!existsSync(join(OUT,`${r.id}.json`)),`${r.id}: unverified public output must not exist`);
   }
-  assert(!existsSync(join(ROOT,`public/data/${r.id}-localities.json`)),`${r.id}: locality scans are out of scope`);
+  assert(!existsSync(join(OUT,`${r.id}-localities.json`)),`${r.id}: locality scans are out of scope`);
   if(opts.log!==false)console.log(`${r.id}: ${releaseReady?'VERIFIED':'UNAVAILABLE'}; ${diagnostic.differences.length} list differences in ${r.agreements.complete?'sourced':'NO-CONNECTIONS DIAGNOSTIC'} allocation; ${r.releaseBlockers.join(' ')}`);
-  return {review:r,...diagnostic,releaseReady};
+  return {review:r,...diagnostic,releaseReady,rawSha256};
 }
 
-export function earlyReleasedDataset(n:number):ElectionDataset {
-  const audit=verifyEarlyProgress(n,{log:false});assert(audit.releaseReady,`k${n}: release blocked`);
+export function earlyReleasedDataset(n:number,audit:EarlyAudit=verifyEarlyProgress(n,{log:false})):ElectionDataset {
+  assert(audit.releaseReady,`k${n}: release blocked`);
   const r=audit.review,roster=earlyRosterReview(n),ds=earlyResearchDataset(n);
-  const e=json('public/data/elections.json').find((e:{id:string})=>e.id===r.id);
+  const e=indexEntry(r.id)!;
   ds.status={stage:'official-final',asOf:r.reviewedOn,noteHe:e.status.noteHe,noteEn:e.status.noteEn};
-  ds.lists=ds.lists.map(l=>{
+  ds.lists=seatOrder(ds.lists.map(l=>{
     const reviewed=roster.lists.find(x=>x.letters===l.letters);
-    // registered candidates the official results notice did not seat (e.g. 1949 withdrawals, 1961 Liberals)
-    const excluded=new Set((reviewed?.excludedCandidateRanks??[]).filter(rank=>rank<Math.max(0,...(reviewed?.electedCandidateRanks??[]))));
-    return {...l,
-      notesHe:(reviewed?.candidates??[]).filter(c=>excluded.has(c.rank)).map(c=>`${c.nameHe} (מקום ${c.rank}) אינו מופיע בין הנבחרים בהודעת התוצאות הרשמית; המנדט עבר למועמד הבא.`),
-      candidates:reviewed?.candidates.map(c=>({...c,id:`${l.id}#${c.rank}`,...(excluded.has(c.rank)?{notSeated:true}:{})}))??[],
-      ...(reviewed?{candidatesTruncated:reviewed.truncated}:{candidatesUnavailable:true}),
-    };
-  }).sort((a,b)=>(META[a.id]?.order??999)-(META[b.id]?.order??999)||b.votes-a.votes);
+    // the verifier proved excludedCandidateRanks are exactly the registered candidates not elected
+    const excluded=notSeatedRanks(reviewed?.electedCandidateRanks??[],(reviewed?.candidates??[]).map(c=>c.rank));
+    return inKeyOrder({...l,
+      notesHe:(reviewed?.candidates??[]).filter(c=>excluded.has(c.rank)).map(notSeatedNoteHe),
+      candidates:reviewed?.candidates.map(c=>({...c,id:candidateId(l.id,c.rank),...(excluded.has(c.rank)?{notSeated:true}:{})}))??[],
+      ...rosterFlags(!reviewed?'unavailable':reviewed.truncated?'truncated':'complete','explicit'),
+    },EARLY_LIST_KEYS) as unknown as ElectionDataset['lists'][number];
+  }));
   ds.sourceIds=evidenceIds(n,r);
-  const manifest=json('data/raw/SOURCES.json') as {id:string;sha256:string}[];
-  ds.buildInfo={builtAt:new Date().toISOString(),rawSha256:Object.fromEntries(ds.sourceIds.map(id=>[id,manifest.find(s=>s.id===id)!.sha256]))};
+  ds.buildInfo={builtAt:new Date().toISOString(),rawSha256:audit.rawSha256};
   return ds;
 }
 
-/** The shared build-job writer requires locality rows. Emit these national-only
- * datasets here instead, leaving that writer and every later election unchanged. */
-export function buildEarlyDataset(n:number):never[] {
+/** Release job for a verified national-only dataset; [] while the election is blocked. */
+export function buildEarlyDataset(n:number) {
   const audit=verifyEarlyProgress(n);
-  if(audit.releaseReady)writeFileSync(join(ROOT,`public/data/k${n}.json`),JSON.stringify(earlyReleasedDataset(n)));
-  return [];
+  return audit.releaseReady?[()=>({ds:earlyReleasedDataset(n,audit),loc:null})]:[];
 }

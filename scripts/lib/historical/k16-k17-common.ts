@@ -1,14 +1,12 @@
 // Retained, hash-checked inputs for the two scanned elections; decisions 0052–0054.
-import { createHash } from 'node:crypto';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import type { ElectionDataset, LocalityDataset } from '../../../src/data/schema.ts';
-import { allocate } from '../../../src/engine/allocate.ts';
-import { scenarioFromDataset, toEngineInput } from '../../../src/model/scenario.ts';
-import { META, neutralColor } from '../list-meta.ts';
+import { agreementRecords, inKeyOrder, LIST_KEYS, listRecord, officialSeatsOf } from '../build/records.ts';
+import { candidateId, rosterFlags } from '../build/roster.ts';
+import { manifestHashes, rawJson, ROOT, sha256 as hash, sourceRecord, verifySources } from '../build/sources.ts';
+import { checker, checkReproducesOfficialSeats, type Check } from '../build/validate.ts';
 
-const ROOT = join(import.meta.dirname, '../../..');
-const RAW = join(ROOT, 'data/raw');
 export type HistoricalId = 'k16' | 'k17';
 export interface Review {
   id: HistoricalId;
@@ -51,17 +49,13 @@ export interface Reconciliation {
 }
 export interface Audit { review: Review; reconciliation: Reconciliation; releaseReady: boolean }
 export interface VerifyOptions { log?: boolean; available?: boolean }
-const hash = (bytes: string | Buffer) => createHash('sha256').update(bytes).digest('hex');
-function assert(ok: unknown, msg: string): asserts ok {
-  if (!ok) throw new Error(`k16/k17 evidence: ${msg}`);
-}
+const assert: Check = checker('k16/k17 evidence');
 function num(x: unknown, label: string): number {
   assert(typeof x === 'number' || (typeof x === 'string' && /^\d+(?:\.0+)?$/.test(x)), `${label}: missing/non-numeric value`);
   const n = Number(x);
   assert(Number.isSafeInteger(n) && n >= 0, `${label}: not a nonnegative integer`);
   return n;
 }
-const readJson = (file: string) => JSON.parse(readFileSync(file, 'utf8'));
 export function pollingVotes(review: Review): Record<string, number> {
   return Object.fromEntries(review.lists.map(l => [l.letters,
     review.discrepancies.find(d => d.field === `votes:${l.letters}`)?.polling ?? l.gazetteVotes]));
@@ -141,17 +135,11 @@ export function verifyPolling(review: Review, expected: Reconciliation, opts: { 
 }
 
 export function verifyHistoricalProgress(id: HistoricalId, opts: VerifyOptions = {}): Audit {
-  const review: Review = readJson(join(RAW, id, 'national.reviewed.json'));
-  const reconciliation: Reconciliation = readJson(join(RAW, id, 'reconciliation.reviewed.json'));
-  const manifest = readJson(join(RAW, 'SOURCES.json')) as { id: string; file: string; sha256: string }[];
-  const ids = [review.resultsSourceId, review.agreements.sourceId, review.candidateChecks.sourceId, review.supplementalTotals.sourceId, `${id}-national-reviewed`, `${id}-reconciliation-reviewed`];
-  for (const sourceId of ids) {
-    const source = manifest.find(s => s.id === sourceId);
-    assert(source?.file && source.sha256, `${id}: missing manifest record ${sourceId}`);
-    assert(hash(readFileSync(join(RAW, source.file))) === source.sha256, `${sourceId}: source hash changed`);
-  }
+  const review: Review = rawJson(`${id}/national.reviewed.json`);
+  const reconciliation: Reconciliation = rawJson(`${id}/reconciliation.reviewed.json`);
+  verifySources([review.resultsSourceId, review.agreements.sourceId, review.candidateChecks.sourceId, review.supplementalTotals.sourceId, `${id}-national-reviewed`, `${id}-reconciliation-reviewed`], assert);
   assert(review.id === id && reconciliation.id === id, `${id}: mismatched evidence ids`);
-  assert(manifest.find(s => s.id === `${id}-ballots-datagov`)?.sha256 === reconciliation.pollingSourceSha256, `${id}: polling source hash differs from reviewed reconciliation`);
+  assert(sourceRecord(`${id}-ballots-datagov`)?.sha256 === reconciliation.pollingSourceSha256, `${id}: polling source hash differs from reviewed reconciliation`);
   const votes = pollingVotes(review);
   assert(new Set(review.lists.map(l => l.letters)).size === review.lists.length, `${id}: duplicate letters`);
   assert(review.lists.every(l => Number.isSafeInteger(l.officialSeats) && l.officialSeats >= 0), `${id}: invalid gazette seats`);
@@ -174,10 +162,8 @@ export function verifyHistoricalProgress(id: HistoricalId, opts: VerifyOptions =
   assert(review.agreements.complete, `${id}: incomplete agreement notice`);
   verifyPolling(review, reconciliation, opts);
   const audit: Audit = { review, reconciliation, releaseReady: true };
-  const res = allocate(toEngineInput(scenarioFromDataset(researchDataset(audit))));
-  assert(res.seatsAllocated === 120 && res.warnings.length === 0, `${id}: allocation incomplete or ambiguous`);
-  for (const list of res.lists) assert(list.seats === review.lists.find(l => `${id.slice(1)}-${l.letters}` === list.id)?.officialSeats, `${id}: official seats differ for ${list.id}`);
-  verifyReleaseInputs(audit);
+  checkReproducesOfficialSeats(assert, researchDataset(audit));
+  retainedInputs.set(audit, verifyReleaseInputs(audit));
   return audit;
 }
 
@@ -192,14 +178,10 @@ export function researchDataset({ review, reconciliation }: Audit): ElectionData
     status: { stage: 'official-final', asOf: review.reviewedOn, noteHe: 'נתוני בדיקה בלבד; הרשימות המלאות לא אומתו.', noteEn: 'Research fixture only; complete candidate rosters unverified.' },
     ruleSetId: n === 16 ? 'il-1992-bader-ofer-1.5' : 'il-2004-bader-ofer-2',
     totals: { registered: review.supplementalTotals.registered, votesCast: review.gazetteTotals.valid + review.gazetteTotals.invalid, invalid: review.gazetteTotals.invalid, valid: review.gazetteTotals.valid, ballotBoxes: reconciliation.pollingRows, localities: reconciliation.localityRowsIncludingEnvelopes - 1 },
-    lists: review.lists.map((l, i) => {
-      const id = `${n}-${l.letters}`; const meta = META[id];
-      return { id, letters: l.letters, nameHe: l.nameHe, shortHe: meta?.he ?? l.nameHe, shortEn: meta?.en ?? null,
-        sponsorsHe: '', partiesHe: null, votes: votes[l.letters], withdrawn: false, color: meta?.color ?? neutralColor(i), bloc: null,
-        candidates: [], candidatesSource: '', candidatesSecondary: false, notesHe: ['RESEARCH ONLY: candidate roster not transcribed or verified.'] };
-    }),
-    agreements: review.agreements.pairs.map(([a, b], i) => ({ id: `${n}-agr-${i + 1}`, members: [`${n}-${a}`, `${n}-${b}`], sourceId: review.agreements.sourceId })),
-    blocs: [], officialSeats: Object.fromEntries(review.lists.map(l => [`${n}-${l.letters}`, l.officialSeats])),
+    lists: review.lists.map((l, i) => listRecord(n, i, { letters: l.letters, nameHe: l.nameHe, votes: votes[l.letters],
+      notesHe: ['RESEARCH ONLY: candidate roster not transcribed or verified.'] })),
+    agreements: agreementRecords(n, review.agreements.pairs, review.agreements.sourceId),
+    blocs: [], officialSeats: officialSeatsOf(n, review.lists.map(l => ({ letters: l.letters, seats: l.officialSeats }))),
     officialSeatsSourceId: review.resultsSourceId, sourceIds: [review.resultsSourceId, review.agreements.sourceId],
     buildInfo: { builtAt: review.reviewedOn, rawSha256: {} },
   };
@@ -238,17 +220,14 @@ export function verifyElectedRoster(r: ReviewedRoster, seats: number, resultsSou
     assert(name === check.namesHe[i] || variants.some(v => v.rank === i + 1), `${r.letters}: unexplained elected-name mismatch at ${i + 1}`);
   });
 }
+/** Retained-input checks run once per audit by the verifier; releaseDataset reuses the result. */
+const retainedInputs = new WeakMap<Audit, ReturnType<typeof verifyReleaseInputs>>();
 export function verifyReleaseInputs({ review, reconciliation }: Audit) {
   const id = review.id;
-  const manifest = readJson(join(RAW, 'SOURCES.json')) as { id: string; file?: string; sha256?: string }[];
   const sourceIds = [`${id}-candidates-reviewed`, `${id}-localities-reviewed`, ...(id === 'k17' ? ['k17-candidates-archive-crosscheck'] : [])];
-  for (const sid of sourceIds) {
-    const source = manifest.find(s => s.id === sid);
-    assert(source?.file && source.sha256, `${sid}: missing retained source`);
-    assert(hash(readFileSync(join(RAW, source.file))) === source.sha256, `${sid}: hash mismatch`);
-  }
-  const rosters = readJson(join(RAW, id, 'candidates.reviewed.json')) as { id: string; sourceId: string; lists: ReviewedRoster[] };
-  const localities = readJson(join(RAW, id, 'localities.reviewed.json')) as { id: string; listLetters: string[]; rows: DerivedRow[] };
+  verifySources(sourceIds, assert);
+  const rosters = rawJson<{ id: string; sourceId: string; lists: ReviewedRoster[] }>(`${id}/candidates.reviewed.json`);
+  const localities = rawJson<{ id: string; listLetters: string[]; rows: DerivedRow[] }>(`${id}/localities.reviewed.json`);
   assert(rosters.id === id && rosters.sourceId === review.candidateChecks.sourceId, `${id}: wrong roster provenance`);
   assert(rosters.lists.length === review.lists.length && new Set(rosters.lists.map(l => l.letters)).size === review.lists.length, `${id}: duplicate/missing rosters`);
   for (const l of review.lists) {
@@ -294,7 +273,7 @@ export function verifyReleaseInputs({ review, reconciliation }: Audit) {
 
 export function releaseDataset(audit: Audit): { ds: ElectionDataset; loc: LocalityDataset } {
   const { review } = audit; const n = Number(review.id.slice(1));
-  const retained = verifyReleaseInputs(audit); const ds = researchDataset(audit);
+  const retained = retainedInputs.get(audit) ?? verifyReleaseInputs(audit); const ds = researchDataset(audit);
   const missing = retained.rosters.filter(r => r.candidatesUnavailable).length;
   const truncated = retained.rosters.filter(r => r.candidatesTruncated).length;
   ds.nameHe = `הבחירות לכנסת ה-${n}`; ds.nameEn = `${n}th Knesset election (${n === 16 ? 2003 : 2006})`;
@@ -308,14 +287,13 @@ export function releaseDataset(audit: Audit): { ds: ElectionDataset; loc: Locali
     if (n === 16 && l.letters === 'ב') notesHe.push('בילקוט הפרסומים 5155, עמ׳ 1406, מודפס 132,730; נתון זה אינו מתיישב עם סך הקולות הכשרים שבילקוט עצמו (3,148,364). כאן נעשה שימוש בסיכום הקלפיות הרשמי: 132,370.');
     if (n === 16 && l.letters === 'ף') notesHe.push('בילקוט הפרסומים 5155, עמ׳ 1406, מודפס 883; נתון זה אינו מתיישב עם סך הקולות הכשרים שבילקוט עצמו (3,148,364). כאן נעשה שימוש בסיכום הקלפיות הרשמי: 833.');
     if (n === 16 && l.letters === 'כן') notesHe.push('זו הרשימה הרשומה. נתן שרנסקי (מקום 1) ויתר לאחר הבחירות; בהשבעה כיהנו יולי-יואל אדלשטיין (2) ומרינה סולודקין (3). המקור המשני להודעת הוויתור: ynet, 29.1.2003.');
-    return { ...l, candidates: r.candidates.map(c => ({ id: `${l.id}#${c.rank}`, rank: c.rank, nameHe: c.nameHe })),
-      ...(r.candidatesUnavailable ? { candidatesUnavailable: true } : {}),
-      ...(r.candidatesTruncated ? { candidatesTruncated: true } : {}), candidatesSource: review.candidateChecks.sourceId, notesHe };
+    return inKeyOrder({ ...l, candidates: r.candidates.map(c => ({ id: candidateId(l.id, c.rank), rank: c.rank, nameHe: c.nameHe })),
+      ...rosterFlags(r.candidatesUnavailable ? 'unavailable' : r.candidatesTruncated ? 'truncated' : 'complete', 'when-set'),
+      candidatesSource: review.candidateChecks.sourceId, notesHe }, LIST_KEYS) as unknown as ElectionDataset['lists'][number];
   });
   ds.sourceIds = [review.resultsSourceId, review.candidateChecks.sourceId, review.agreements.sourceId, review.supplementalTotals.sourceId,
     `${review.id}-ballots-datagov`, `${review.id}-national-reviewed`, `${review.id}-reconciliation-reviewed`, ...retained.sourceIds, `${review.id}-membership-secondary`, ...(n === 16 ? ['k16-sharansky-withdrawal', 'k16-knesset-vote-crosscheck'] : [])];
-  const manifest = readJson(join(RAW, 'SOURCES.json')) as { id: string; sha256?: string }[];
-  ds.buildInfo = { builtAt: new Date().toISOString(), rawSha256: Object.fromEntries(ds.sourceIds.flatMap(id => { const s = manifest.find(s => s.id === id); return s?.sha256 ? [[id, s.sha256]] : []; })) };
+  ds.buildInfo = { builtAt: new Date().toISOString(), rawSha256: manifestHashes(ds.sourceIds) };
   const env = retained.rows.find(r => r.nameHe === 'מעטפות כפולות');
   ds.totals.envelopeVotes = env?.votesCast;
   return { ds, loc: { schemaVersion: 1, id: review.id, listIds: ds.lists.map(l => l.id),

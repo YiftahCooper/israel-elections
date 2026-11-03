@@ -1,20 +1,18 @@
 // K20/K21-specific extraction and release gates. No synthetic candidate rosters.
-import { createHash } from 'node:crypto';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { pdfLines, joinItems, type PdfItem } from '../pdf-text.ts';
-import { META, neutralColor } from '../list-meta.ts';
-import { DATASET_SCHEMA_VERSION, type ElectionDataset, type ListRecord, type LocalityDataset } from '../../../src/data/schema.ts';
-import { scenarioFromDataset, toEngineInput } from '../../../src/model/scenario.ts';
-import { allocate } from '../../../src/engine/allocate.ts';
+import { DATASET_SCHEMA_VERSION, type ElectionDataset, type ListRecord } from '../../../src/data/schema.ts';
+import { nationalResultsHtml } from '../build/cec-html.ts';
+import { checkLocalitiesMatchPolling, checkRowsMatchNational, collapse, geographyTotals, localityDataset, readDatastoreRows, TOTAL_FIELDS, type VoteRow } from '../build/locality.ts';
+import { agreementRecords, inKeyOrder, listRecord, officialSeatsOf } from '../build/records.ts';
+import { candidateId, checkContiguousRanks } from '../build/roster.ts';
+import { fileSha256, RAW, rawJson, ROOT, sha256 as hash, sourceRecord, verifySources } from '../build/sources.ts';
+import { checkAgreementPairs, checker, checkReproducesOfficialSeats, type Check } from '../build/validate.ts';
 
-export const ROOT = join(import.meta.dirname, '../../..');
-export const RAW = join(ROOT, 'data/raw');
-export function check(value: unknown, message: string): asserts value {
-  if (!value) throw new Error(`k20/k21 build: ${message}`);
-}
-export const hash = (data: string | Buffer) => createHash('sha256').update(data).digest('hex');
-export const clean = (s: string) => s.replace(/\s+/g, ' ').trim();
+export { RAW };
+export const check: Check = checker('k20/k21 build');
+export const clean = collapse;
 const stripPeriod = (s: string) => clean(s).replace(/\.$/, '');
 interface GazetteList {
   letters: string; nameHe: string; sponsorsHe: string;
@@ -112,84 +110,40 @@ export async function candidates(n: 20 | 21): Promise<GazetteList[]> {
   flush();
   for (const g of lists) {
     g.candidates.sort((a, b) => a.rank - b.rank);
-    check(g.candidates.length && g.candidates.every((c, i) => c.rank === i + 1), `k${n} ${g.letters}: non-contiguous ranks`);
+    checkContiguousRanks(check, `k${n} ${g.letters}`, g.candidates);
   }
   return lists;
 }
 
 export interface NationalList { letters: string; name: string; votes: number; seats: number }
 export interface National { lists: NationalList[]; registered: number; votesCast: number; invalid: number; valid: number }
-export function nationalHtml(n: 21): National {
-  const cells = readFileSync(join(RAW, `k${n}/nationalresults.html`), 'utf8')
-    .replace(/<script[\s\S]*?<\/script>/g, '').replace(/<[^>]+>/g, '\n')
-    .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, '&')
-    .split('\n').map(clean).filter(Boolean);
-  const idx = cells.findIndex(c => c.startsWith('סה"כ הקולות הפסולים'));
-  check(idx >= 0, `k${n}: missing national totals`);
-  const [registered, votesCast, , valid, invalid] = cells.slice(idx + 1, idx + 6).map(s => Number(s.replace(/[,%]/g, '')));
-  const lists: NationalList[] = [];
-  const tab = cells.findIndex(c => c.startsWith('מספר הקולות הכשרים לרשימה'));
-  for (let i = tab + 1; i + 4 < cells.length; i += 5) {
-    if (!/^\d+$/.test(cells[i + 2]) || !/%$/.test(cells[i + 3])) break;
-    lists.push({ name: cells[i], letters: cells[i + 1], seats: Number(cells[i + 2]), votes: Number(cells[i + 4].replace(/,/g, '')) });
-  }
-  check(lists.length === 43 && lists.reduce((s, l) => s + l.seats, 0) === 120, `k${n}: incomplete national table`);
-  return { lists, registered, votesCast, valid, invalid };
-}
+export const nationalHtml = (n: 21): National => nationalResultsHtml(`k${n}/nationalresults.html`, 43, check, `k${n}`);
 
-interface Row { committee: number; code: number; nameHe: string; registered: number; votesCast: number; invalid: number; valid: number; votes: number[] }
-function rows(file: string, letters: string[]): Row[] {
-  const data = JSON.parse(readFileSync(file, 'utf8')) as { fields: { id: string }[]; records: Record<string, unknown>[] };
-  for (const l of letters) check(data.fields.some(f => f.id === l), `${file}: missing list column ${l}`);
-  return data.records.map(r => {
-    const numeric = (key: string) => { const x = Number(r[key]); check(r[key] !== undefined && r[key] !== null && Number.isSafeInteger(x) && x >= 0, `${file}: invalid ${key}`); return x; };
-    const sourceCode = numeric('סמל ישוב');
-    // K20 polling file uses 875 for envelopes, its locality file uses 0.
-    const code = r['שם ישוב'] === 'מעטפות חיצוניות' ? 9999 : sourceCode;
-    return { committee: r['סמל ועדה'] === undefined ? 0 : numeric('סמל ועדה'),
-      // Canonical application code for double envelopes; preserve normal locality codes.
-      code: code === 0 || code === 99999 ? 9999 : code,
-      nameHe: code === 0 || code === 99999 ? 'מעטפות חיצוניות' : clean(String(r['שם ישוב'])),
-      registered: numeric('בזב'), votesCast: numeric('מצביעים'), invalid: numeric('פסולים'), valid: numeric('כשרים'), votes: letters.map(numeric) };
+/** k20/k21 locality rows serialize committee first. */
+const ROW_KEYS = ['committee', 'code', 'nameHe', 'registered', 'votesCast', 'invalid', 'valid', 'votes'];
+function rows(file: string, letters: string[]): VoteRow[] {
+  return readDatastoreRows(file, letters, check, { committee: 'optional' }).map(r => {
+    // K20 polling file uses 875 for envelopes, its locality file uses 0; canonical application code 9999.
+    const envelope = r.nameHe === 'מעטפות חיצוניות' || r.code === 0 || r.code === 99999;
+    return inKeyOrder({ ...r, code: envelope ? 9999 : r.code, nameHe: envelope ? 'מעטפות חיצוניות' : r.nameHe }, ROW_KEYS) as unknown as VoteRow;
   });
-}
-const sum = (values: number[]) => values.reduce((a, b) => a + b, 0);
-function validateRows(data: Row[], national: National, label: string) {
-  for (const r of data) {
-    check(sum(r.votes) === r.valid, `${label} ${r.code}: list votes differ from valid`);
-    check(r.valid + r.invalid === r.votesCast, `${label} ${r.code}: valid + invalid differs from cast`);
-  }
-  for (const key of ['registered', 'votesCast', 'invalid', 'valid'] as const) check(sum(data.map(r => r[key])) === national[key], `${label}: ${key} differs from national total`);
-  national.lists.forEach((l, i) => check(sum(data.map(r => r.votes[i])) === l.votes, `${label}: ${l.letters} differs from national result`));
 }
 export function geographical(n: 20 | 21, national: National) {
   const letters = national.lists.map(l => l.letters);
   const loc = rows(join(RAW, `k${n}/localities.datagov.json`), letters).sort((a, b) => a.code - b.code);
   check(new Set(loc.map(r => r.code)).size === loc.length, `k${n}: duplicate locality`);
-  validateRows(loc, national, `k${n} localities`);
-  const evidence = JSON.parse(readFileSync(join(RAW, `k${n}/locality-verification.json`), 'utf8')) as { localitySha256: string; ballotSha256: string; ballotRows: number };
+  checkRowsMatchNational(check, `k${n} localities`, loc, national, TOTAL_FIELDS);
+  const evidence = rawJson<{ localitySha256: string; ballotSha256: string; ballotRows: number }>(`k${n}/locality-verification.json`);
   check(hash(JSON.stringify(loc)) === evidence.localitySha256, `k${n}: derived locality SHA-256 differs from retained reconciliation evidence`);
-  const sources = JSON.parse(readFileSync(join(RAW, 'SOURCES.json'), 'utf8')) as { id: string; sha256?: string }[];
-  check(evidence.ballotSha256 === sources.find(s => s.id === `k${n}-ballots-datagov`)?.sha256,
-    `k${n}: retained polling evidence differs from source provenance`);
+  check(evidence.ballotSha256 === sourceRecord(`k${n}-ballots-datagov`)?.sha256, `k${n}: retained polling evidence differs from source provenance`);
   check(Number.isSafeInteger(evidence.ballotRows) && evidence.ballotRows > 0, `k${n}: invalid retained polling row count`);
   const polling = join(ROOT, `.backup-scratch/raw/k${n}/ballots.datagov.json`);
   if (existsSync(polling)) {
-    check(hash(readFileSync(polling)) === evidence.ballotSha256, `k${n}: polling source hash changed; reconciliation evidence must be reviewed`);
+    check(fileSha256(polling) === evidence.ballotSha256, `k${n}: polling source hash changed; reconciliation evidence must be reviewed`);
     const bal = rows(polling, letters);
     check(bal.length === evidence.ballotRows, `k${n}: polling row count changed`);
-    validateRows(bal, national, `k${n} ballots`);
-    const byCode = new Map<number, Row>();
-    for (const r of bal) {
-      const old = byCode.get(r.code);
-      if (!old) byCode.set(r.code, { ...r, votes: [...r.votes] });
-      else { old.votesCast += r.votesCast; old.invalid += r.invalid; old.valid += r.valid; r.votes.forEach((v, i) => old.votes[i] += v); }
-    }
-    check(byCode.size === loc.length, `k${n}: polling/locality coverage differs`);
-    for (const r of loc) {
-      const b = byCode.get(r.code);
-      check(b && b.votesCast === r.votesCast && b.invalid === r.invalid && b.valid === r.valid && JSON.stringify(b.votes) === JSON.stringify(r.votes), `k${n}: locality ${r.code} differs from polling stations`);
-    }
+    checkRowsMatchNational(check, `k${n} ballots`, bal, national, TOTAL_FIELDS);
+    checkLocalitiesMatchPolling(check, `k${n}`, loc, bal);
     console.log(`k${n}: reconciled all ${bal.length} polling rows with ${loc.length} locality rows`);
   } else console.log(`k${n}: scratch polling stations absent; skipping full polling reconciliation; retained locality SHA-256 verified`);
   return { rows: loc, ballotRows: evidence.ballotRows };
@@ -228,40 +182,28 @@ export async function build(n: 20 | 21, national: National, expectedCounts: Reco
     check(g && g.candidates.length === expectedCounts[l.letters], `k${n} ${l.letters}: roster count differs from audited gazette endpoint`);
     if (leaders[l.letters]) check(g.candidates[0].nameHe === leaders[l.letters], `k${n} ${l.letters}: first candidate differs from verified leader`);
     check(g.candidates.length >= l.seats, `k${n} ${l.letters}: fewer candidates than elected seats`);
-    const id = `${n}-${l.letters}`; const meta = META[id];
+    const id = `${n}-${l.letters}`;
     const notesHe: string[] = [];
     if (n === 20 && l.letters === 'מחל') notesHe.push('ילקוט הפרסומים 7001: המועמדת נטליה ילינסון התפטרה ביום 26.2.2015. הרשימה כאן מציגה את סדר הרישום בילקוט 7000.');
     if (n === 20 && l.letters === 'יץ') notesHe.push('ילקוט הפרסומים 7001: סעיד בדראן ואבו עאבד ראאף התפטרו ביום 2.3.2015. הרשימה כאן מציגה את סדר הרישום בילקוט 7000.');
-    return { id, letters: l.letters, nameHe: g.nameHe, shortHe: meta?.he ?? g.nameHe, shortEn: meta?.en ?? null,
-      sponsorsHe: g.sponsorsHe, partiesHe: g.sponsorsHe.includes(';') ? null : [g.sponsorsHe], votes: l.votes,
-      withdrawn: false, color: meta?.color ?? neutralColor(i), bloc: null,
-      candidates: g.candidates.map(c => ({ id: `${id}#${c.rank}`, ...c })), candidatesSource: `k${n}-candidates-gazette`, candidatesSecondary: false, notesHe };
+    return listRecord(n, i, { letters: l.letters, nameHe: g.nameHe, votes: l.votes,
+      sponsorsHe: g.sponsorsHe, partiesHe: g.sponsorsHe.includes(';') ? null : [g.sponsorsHe],
+      candidates: g.candidates.map(c => ({ id: candidateId(id, c.rank), ...c })), candidatesSource: `k${n}-candidates-gazette`, notesHe });
   });
   const pairs = await surplus(n);
-  const agreements = pairs.map(([a, b], i) => {
-    check(lists.some(l => l.letters === a) && lists.some(l => l.letters === b), `k${n}: agreement letters absent from results`);
-    return { id: `${n}-agr-${i + 1}`, members: [`${n}-${a}`, `${n}-${b}`] as [string, string], sourceId: `k${n}-surplus-gazette` };
-  });
+  checkAgreementPairs(check, `k${n}`, pairs, lists.map(l => l.letters));
   const ids = [nationalSource, `k${n}-localities-datagov`, `k${n}-ballots-datagov`, `k${n}-candidates-gazette`, `k${n}-surplus-gazette`];
-  const manifest = JSON.parse(readFileSync(join(RAW, 'SOURCES.json'), 'utf8')) as { id: string; file: string; sha256?: string }[];
-  const rawSha256 = Object.fromEntries(ids.map(id => {
-    const src = manifest.find(s => s.id === id); check(src?.sha256, `missing source hash ${id}`);
-    const path = join(RAW, src.file);
-    if (existsSync(path)) check(hash(readFileSync(path)) === src.sha256, `source hash mismatch ${id}`);
-    return [id, src.sha256];
-  }));
+  // the polling-station copy lives in ignored scratch; its hash is checked when present
+  const rawSha256 = verifySources(ids, check, { allowMissingFile: true });
   const ds: ElectionDataset = {
     schemaVersion: DATASET_SCHEMA_VERSION, id: `k${n}`, knesset: n, electionDate: date, nameHe: `הבחירות לכנסת ה-${n}`, nameEn: `Election to the ${n === 20 ? '20th' : '21st'} Knesset`,
     status: { stage: 'official-final', asOf,
       noteHe: 'תוצאות רשמיות סופיות. המועמדים לפי סדר הרישום בילקוט הפרסומים; הודעות התפטרות ידועות בהערות. לא מוצגת השתייכות לגושים.',
       noteEn: 'Official final results. Candidates follow the gazetted registration order; known resignation notices are labelled. No default blocs assigned.' },
-    ruleSetId: 'il-2014-bader-ofer-3.25', totals: { registered: national.registered, votesCast: national.votesCast, invalid: national.invalid, valid: national.valid, ballotBoxes: geo.ballotRows, localities: geo.rows.filter(r => r.code !== 9999).length, envelopeVotes: geo.rows.find(r => r.code === 9999)?.votesCast },
-    lists, agreements, blocs: [], officialSeats: Object.fromEntries(national.lists.map(l => [`${n}-${l.letters}`, l.seats])), officialSeatsSourceId: nationalSource,
+    ruleSetId: 'il-2014-bader-ofer-3.25', totals: { registered: national.registered, votesCast: national.votesCast, invalid: national.invalid, valid: national.valid, ballotBoxes: geo.ballotRows, ...geographyTotals(geo.rows) },
+    lists, agreements: agreementRecords(n, pairs, `k${n}-surplus-gazette`), blocs: [], officialSeats: officialSeatsOf(n, national.lists), officialSeatsSourceId: nationalSource,
     sourceIds: [...ids, 'law-elections'], buildInfo: { builtAt: new Date().toISOString(), rawSha256 },
   };
-  const res = allocate(toEngineInput(scenarioFromDataset(ds)));
-  check(res.seatsAllocated === 120 && !res.warnings.length, `k${n}: incomplete allocation or engine warning`);
-  for (const l of res.lists) check(l.seats === ds.officialSeats![l.id], `k${n}: ${l.id} engine ${l.seats} differs from published ${ds.officialSeats![l.id]}`);
-  const loc: LocalityDataset = { schemaVersion: DATASET_SCHEMA_VERSION, id: `k${n}`, listIds: lists.map(l => l.id), rows: geo.rows };
-  return { ds, loc };
+  checkReproducesOfficialSeats(check, ds);
+  return { ds, loc: localityDataset(`k${n}`, geo.rows, lists) };
 }

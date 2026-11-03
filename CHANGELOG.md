@@ -26,6 +26,10 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 
 - Reworked the project overview for readers who are new to the app; moved detailed
   development guidance into its own document.
+- Rebuilding the data no longer rewrites unchanged files: a dataset keeps its build timestamp
+  until its content changes, so a clean rebuild leaves nothing to commit or restore. The
+  builder shares one set of validation, roster and locality rules across all elections and
+  builds elections in parallel (about 3.6 s → 1.2 s here). Published data is unchanged.
 
 ## 2026-11-03
 

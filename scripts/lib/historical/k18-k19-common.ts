@@ -1,17 +1,15 @@
-import { createHash } from 'node:crypto';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { getDocument } from 'pdfjs-dist/legacy/build/pdf.mjs';
 import { joinItems, pdfLines, type PdfItem, type PdfLine } from '../pdf-text.ts';
-import { META, neutralColor } from '../list-meta.ts';
 import type { Candidate, ElectionDataset, ListRecord, LocalityDataset } from '../../../src/data/schema.ts';
-import { allocate } from '../../../src/engine/allocate.ts';
-import { scenarioFromDataset, toEngineInput } from '../../../src/model/scenario.ts';
+import { aggregateByCode, checkRowArithmetic, geographyTotals, readDatastoreRows, sumRows, type VoteRow } from '../build/locality.ts';
+import { agreementRecords, listRecord, officialSeatsOf } from '../build/records.ts';
+import { candidateId, checkContiguousRanks } from '../build/roster.ts';
+import { RAW, rawJson, ROOT, sha256 as hash, sourceRecord, verifySources } from '../build/sources.ts';
+import { checkAgreementPairs, checker, checkReproducesOfficialSeats, whole, type Check } from '../build/validate.ts';
 
-export const ROOT = join(import.meta.dirname, '../../..');
-export const RAW = join(ROOT, 'data/raw');
-export function check(ok: unknown, message: string): asserts ok { if (!ok) throw new Error(`k18/k19: ${message}`); }
-const hash = (b: string | Buffer) => createHash('sha256').update(b).digest('hex');
+export const check: Check = checker('k18/k19');
 export const datastoreLetter = (n: 18 | 19, letter: string) => n === 19 && letter === 'מרצ' ? 'מרץ' : letter;
 interface Roster { letters: string; nameHe: string; candidates: Candidate[] }
 
@@ -91,7 +89,7 @@ export async function parseCandidates(n: 18 | 19): Promise<Roster[]> {
       check(/[א-ת]/.test(nameHe) && !/\d/.test(nameHe), `k${n} ${cur.letters} #${r.str}: bad name ${nameHe}`);
       const old = cur.candidates.find(c => c.rank === +r.str);
       check(!old || old.nameHe === nameHe, `k${n} ${cur.letters}: conflicting duplicate rank ${r.str}`);
-      if (!old) cur.candidates.push({ id: `${n}-${cur.letters}#${+r.str}`, rank: +r.str, nameHe });
+      if (!old) cur.candidates.push({ id: candidateId(`${n}-${cur.letters}`, +r.str), rank: +r.str, nameHe });
     }
     const unattached = items.filter(i => !ranks.includes(i) && !assigned.has(i) && /[א-ת]/.test(i.str));
     check(unattached.length === 0, `k${n} ${cur.letters}: unattached name text: ${unattached.map(i => i.str).join(' / ')}`);
@@ -114,7 +112,7 @@ export async function parseCandidates(n: 18 | 19): Promise<Roster[]> {
   flush();
   for (const l of lists) {
     l.candidates.sort((a, b) => a.rank - b.rank);
-    check(l.candidates.length > 0 && l.candidates.every((c, i) => c.rank === i + 1), `k${n} ${l.letters}: noncontiguous roster`);
+    checkContiguousRanks(check, `k${n} ${l.letters}`, l.candidates);
   }
   return lists;
 }
@@ -150,30 +148,14 @@ export async function gazetteNational(n: 18 | 19): Promise<{ lists: National[]; 
   return { lists, printedValid: number(p[1].find(l => /סך כל הקולות הכשרים/.test(l.text))!.text), printedInvalid: number(p[2].find(l => /מספר הקולות שנמצאו פסולים/.test(l.text))!.text) };
 }
 
-// these sources always provide a locality code and electorate, so the rows are non-null in those fields
-type LocRow = Omit<LocalityDataset['rows'][number], 'code' | 'registered'> & { code: number; registered: number };
+// These sources always provide a locality code and electorate (the committee is not given: 0).
+type LocRow = VoteRow;
 export function readRows(n: 18 | 19, path: string, letters: string[]): LocRow[] {
-  const { records } = JSON.parse(readFileSync(path, 'utf8')) as { records: Record<string, string | number>[] };
-  return records.map((r, i) => {
-    const num = (key: string) => { const v = Number(r[key]); check(Number.isSafeInteger(v) && v >= 0, `${path} row ${i}: invalid ${key}`); return v; };
-    const row: LocRow = { code: num('סמל ישוב'), nameHe: String(r['שם ישוב']).trim(), committee: 0,
-      registered: num(n === 18 ? "בז''ב" : 'בזב'), votesCast: num('מצביעים'), invalid: num('פסולים'), valid: num('כשרים'), votes: letters.map(l => num(datastoreLetter(n, l))) };
-    check(row.votes.reduce((a, b) => a + b, 0) === row.valid && row.valid + row.invalid === row.votesCast, `${path} row ${i}: votes do not reconcile`);
-    // Columns for withdrawn lists are retained in the source but must contain no votes.
-    for (const l of n === 18 ? ['פח'] : ['זה', 'פך']) check(num(l) === 0, `${path}: withdrawn ${l} has votes`);
-    return row;
-  });
+  return readDatastoreRows(path, letters, check, { column: l => datastoreLetter(n, l), registered: n === 18 ? "בז''ב" : 'בזב', committee: 'zero',
+    name: s => s.trim(), zeroColumns: n === 18 ? ['פח'] : ['זה', 'פך'] }); // withdrawn lists' columns must hold no votes
 }
-export function aggregate(rows: LocRow[]): LocRow[] {
-  const out = new Map<number, LocRow>();
-  for (const r of rows) {
-    let t = out.get(r.code);
-    if (!t) { t = { ...r, registered: 0, votesCast: 0, invalid: 0, valid: 0, votes: r.votes.map(() => 0) }; out.set(r.code, t); }
-    for (const k of ['registered', 'votesCast', 'invalid', 'valid'] as const) t[k] += r[k];
-    r.votes.forEach((v, i) => t!.votes[i] += v);
-  }
-  return [...out.values()].sort((a, b) => a.code - b.code);
-}
+/** Polling stations summed per official locality code, sorted by code. */
+export const aggregate = (rows: LocRow[]): LocRow[] => aggregateByCode(rows).sort((a, b) => a.code - b.code);
 export async function agreements(n: 18 | 19, pairs: [string, string][]): Promise<ElectionDataset['agreements']> {
   const pages = await pdfLines(join(RAW, `k${n}/surplus.pdf`));
   // Only the notice's column; adjacent notices can contain the same ballot letters.
@@ -183,7 +165,7 @@ export async function agreements(n: 18 | 19, pairs: [string, string][]): Promise
   const body = text.slice(start).split(n === 18 ? 'ז\' בשבט' : 'ב\' בשבט')[0];
   const actual = [...body.matchAll(/-\s*([א-ת]{1,3})[.\s]*(?=\n|$)/g)].map(m => m[1]);
   check(JSON.stringify(actual) === JSON.stringify(pairs.flat()), `k${n}: agreement notice mismatch: ${actual}`);
-  return pairs.map(([a, b], i) => ({ id: `${n}-agr-${i + 1}`, members: [`${n}-${a}`, `${n}-${b}`], sourceId: `k${n}-surplus-gazette` }));
+  return agreementRecords(n, pairs, `k${n}-surplus-gazette`);
 }
 
 export interface BuildOptions {
@@ -209,35 +191,33 @@ export async function buildHistorical(o: BuildOptions): Promise<{ ds: ElectionDa
     const r = rosters.find(r => r.letters === l.letters);
     check(r, `k${n}: roster missing for ${l.letters}`);
     check(r.candidates.length === o.candidateCounts[l.letters], `k${n} ${l.letters}: candidate count differs from reviewed last rank`);
-    const m = META[`${n}-${l.letters}`];
-    return { id: `${n}-${l.letters}`, letters: l.letters, nameHe: l.nameHe, shortHe: m?.he ?? r.nameHe, shortEn: m?.en ?? null,
-      sponsorsHe: '', partiesHe: null, votes: finalCapture?.lists.find(r => r.letters === l.letters)?.votes ?? l.votes, withdrawn: false,
-      color: m?.color ?? neutralColor(i), bloc: null, candidates: r.candidates, candidatesSource: `k${n}-candidates-gazette`, candidatesSecondary: false,
-      notesHe: n === 19 && l.letters in correction ? ['מספר הקולות לפי התוצאות הסופיות באתר ועדת הבחירות; שונה מפרסום רשומות המקורי. ראו החלטה 0041.'] : [] };
+    return listRecord(n, i, { letters: l.letters, nameHe: l.nameHe, fallbackShortHe: r.nameHe,
+      votes: finalCapture?.lists.find(r => r.letters === l.letters)?.votes ?? l.votes,
+      candidates: r.candidates, candidatesSource: `k${n}-candidates-gazette`,
+      notesHe: n === 19 && l.letters in correction ? ['מספר הקולות לפי התוצאות הסופיות באתר ועדת הבחירות; שונה מפרסום רשומות המקורי. ראו החלטה 0041.'] : [] });
   });
   for (const [letters, leader] of Object.entries(o.candidateLeaders)) check(lists.find(l => l.letters === letters)?.candidates[0].nameHe === leader, `k${n} ${letters}: unexpected first candidate`);
   const letters = lists.map(l => l.letters);
+  checkAgreementPairs(check, `k${n}`, o.pairs, letters);
   const sourceIds = [`k${n}-results-gazette`, `k${n}-candidates-gazette`, `k${n}-surplus-gazette`, `k${n}-ballots-datagov`, ...(n === 18 ? ['k18-allocation-memorandum'] : ['k19-localities-datagov', 'k19-final-results-capture'])];
-  const manifest = JSON.parse(readFileSync(join(RAW, 'SOURCES.json'), 'utf8')) as { id: string; file: string; sha256: string }[];
-  const rawSha256: Record<string, string> = {};
-  for (const id of sourceIds) {
-    const s = manifest.find(s => s.id === id); check(s?.sha256, `missing provenance for ${id}`);
-    rawSha256[id] = s.sha256;
-    if (existsSync(join(RAW, s.file))) check(hash(readFileSync(join(RAW, s.file))) === s.sha256, `${id}: source hash differs`);
-  }
+  // the polling-station copy lives in ignored scratch; its hash is checked when present
+  const rawSha256 = verifySources(sourceIds, check, { allowMissingFile: true });
   const loc = JSON.parse(readFileSync(join(ROOT, `public/data/k${n}-localities.json`), 'utf8')) as Omit<LocalityDataset, 'rows'> & { rows: LocRow[] };
   check(loc.id === `k${n}` && JSON.stringify(loc.listIds) === JSON.stringify(lists.map(l => l.id)), `k${n}: locality schema/list order mismatch`);
-  const fingerprint = JSON.parse(readFileSync(join(RAW, `k${n}/localities.sha256.json`), 'utf8'));
+  const fingerprint = rawJson(`k${n}/localities.sha256.json`);
   check(hash(JSON.stringify(loc)) === fingerprint.sha256, `k${n}: committed locality checksum differs`);
   check(loc.rows.length === fingerprint.rows, `k${n}: locality row count differs`);
-  for (const row of loc.rows) check(row.votes.length === lists.length && row.votes.every(v => Number.isSafeInteger(v) && v >= 0) && row.votes.reduce((s, v) => s + v, 0) === row.valid && row.valid + row.invalid === row.votesCast, `k${n} locality ${row.code}: invalid totals`);
-  const sums = aggregate(loc.rows.map(r => ({ ...r, code: 0 })))[0];
+  for (const row of loc.rows) {
+    check(row.votes.length === lists.length && row.votes.every(whole), `k${n} locality ${row.code}: invalid totals`);
+    checkRowArithmetic(check, `k${n} locality ${row.code}`, row);
+  }
+  const sums = sumRows(loc.rows, lists.length);
   check(sums.valid === o.totals.valid && sums.invalid === o.totals.invalid && sums.votesCast === o.totals.votesCast, `k${n}: locality totals differ from national`);
   lists.forEach((l, i) => check(l.votes === sums.votes[i], `k${n} ${l.letters}: national/locality votes differ`));
   check(lists.reduce((s, l) => s + l.votes, 0) === o.totals.valid, `k${n}: national lists do not sum to valid`);
   if (n === 19) {
     check(sums.registered === o.totals.registered, 'k19: registered total differs');
-    const envelope = JSON.parse(readFileSync(join(RAW, 'k19/envelopes.derived.json'), 'utf8'));
+    const envelope = rawJson('k19/envelopes.derived.json');
     check(envelope.sourceSha256 === rawSha256['k19-ballots-datagov'] && envelope.row.code === 875 && envelope.pollingRows === 228, 'k19: external envelope provenance differs');
     const independent = [...readRows(n, join(RAW, 'k19/localities.datagov.json'), letters), envelope.row].sort((a, b) => a.code - b.code);
     check(JSON.stringify(independent) === JSON.stringify(loc.rows), 'k19: locality rows differ from independent source');
@@ -254,20 +234,20 @@ export async function buildHistorical(o: BuildOptions): Promise<{ ds: ElectionDa
   const ds: ElectionDataset = { schemaVersion: 1, id: `k${n}`, knesset: n, electionDate: o.date,
     nameHe: `הבחירות לכנסת ה-${n}`, nameEn: `Election to the ${n}th Knesset`,
     status: { stage: 'official-final', asOf: o.asOf, noteHe: o.noteHe, noteEn: o.noteEn },
-    ruleSetId: 'il-2004-bader-ofer-2', totals: { ...o.totals, localities: loc.rows.filter(r => r.code !== 0 && r.code !== 9999 && r.nameHe !== 'מעטפות חיצוניות').length }, lists, agreements: await agreements(n, o.pairs), blocs: [],
-    officialSeats: Object.fromEntries(national.lists.map(l => [`${n}-${l.letters}`, l.seats])), officialSeatsSourceId: `k${n}-results-gazette`, sourceIds,
+    // envelope rows are not localities: code 0 (double envelopes), 9999, or the external-envelope group by name
+    ruleSetId: 'il-2004-bader-ofer-2', totals: { ...o.totals, localities: geographyTotals(loc.rows, r => r.code === 0 || r.code === 9999 || r.nameHe === 'מעטפות חיצוניות').localities }, lists, agreements: await agreements(n, o.pairs), blocs: [],
+    officialSeats: officialSeatsOf(n, national.lists), officialSeatsSourceId: `k${n}-results-gazette`, sourceIds,
     buildInfo: { builtAt: new Date().toISOString(), rawSha256 } };
   // Independently retained CEC totals corroborate each documented national exception.
   if (n === 19) {
-    const final = JSON.parse(readFileSync(join(RAW, 'k19/final-results.capture.json'), 'utf8'));
+    const final = rawJson('k19/final-results.capture.json');
     check(['registered', 'votesCast', 'invalid', 'valid'].every(k => final.totals[k] === o.totals[k as keyof typeof o.totals]), 'k19: CEC final totals differ');
     check(final.lists.length === lists.length && final.lists.every((r: National) => lists.some(l => l.letters === r.letters && l.votes === r.votes && ds.officialSeats![l.id] === r.seats)), 'k19: CEC final per-list numbers differ');
   } else {
     const memorandum = (await pdfLines(join(RAW, 'k18/allocation.pdf')))[2].map(l => l.text).join(' ');
     for (const value of ['5,278,985', '3,416,587', '43,097', '3,373,490']) check(memorandum.includes(value), `k18: CEC memorandum lacks ${value}`);
   }
-  const allocation = allocate(toEngineInput(scenarioFromDataset(ds)));
-  check(allocation.seatsAllocated === 120 && allocation.warnings.length === 0 && allocation.lists.every(l => l.seats === ds.officialSeats![l.id]), `k${n}: engine does not reproduce every official seat`);
+  checkReproducesOfficialSeats(check, ds);
   return { ds, loc };
 }
 
@@ -276,12 +256,11 @@ export async function buildHistorical(o: BuildOptions): Promise<{ ds: ElectionDa
  */
 export async function regenerateLocalities() {
   const { writeFileSync } = await import('node:fs');
-  const manifest = JSON.parse(readFileSync(join(RAW, 'SOURCES.json'), 'utf8')) as { id: string; sha256: string }[];
   for (const n of [18, 19] as const) {
     const letters = (await gazetteNational(n)).lists.map(l => l.letters);
     const ballots = readRows(n, join(ROOT, `.backup-scratch/raw/k${n}/ballots.datagov.json`), letters);
     const rows = aggregate(ballots);
-    const sourceSha256 = manifest.find(s => s.id === `k${n}-ballots-datagov`)!.sha256;
+    const sourceSha256 = sourceRecord(`k${n}-ballots-datagov`)!.sha256!;
     check(hash(readFileSync(join(ROOT, `.backup-scratch/raw/k${n}/ballots.datagov.json`))) === sourceSha256, `k${n}: source hash differs before regeneration`);
     if (n === 19) {
       const independent = readRows(n, join(RAW, 'k19/localities.datagov.json'), letters).sort((a, b) => a.code - b.code);

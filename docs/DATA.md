@@ -221,8 +221,8 @@ paged official CKAN API. It discovers resource IDs from the retained package cat
 dependencies are required. This is reproducible working material, not the only copy of
 unique data. Scratch's git exclusion is verified; no claim is made about backup software.
 
-`node scripts/build-datasets.ts` builds every available election (k1–k5, k7, k16–k26) with strict checks.
-For k8–k15 it validates the evidence gathered so far but emits no dataset until released.
+`node scripts/build-datasets.ts` builds every available election (all but k8) with strict checks.
+For k8 (1973) it validates the evidence gathered so far but emits no dataset until released.
 
 ## K20 and K21 release verification
 
@@ -404,9 +404,9 @@ invariance instead of inventing a lottery outcome. No engine rule was changed.
 
 Reproduction requires only committed inputs: install the lockfile dependencies,
 then run `npx tsc -p tsconfig.json --noEmit`, `node scripts/build-datasets.ts`,
-`node scripts/check-colours.ts` and `npx vitest run`. The isolated early modules
-write national-only outputs after all evidence gates pass; the shared later-election
-writer is unchanged. Tests fix gazetted seats independently and check built totals,
+`node scripts/check-colours.ts` and `npx vitest run`. The early modules hand
+national-only outputs to the shared writer only after all evidence gates pass.
+Tests fix gazetted seats independently and check built totals,
 quota, complete pairs, source hashes, candidate coverage/ranks and elected mappings.
 The CI-style rebuild also succeeds with `.backup-scratch/raw` absent (already absent
 in this worktree). Scratch absence does not bypass any early-election check.

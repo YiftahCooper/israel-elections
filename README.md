@@ -84,7 +84,7 @@ npm test
 
 Fetching recovers missing sources; `node scripts/fetch-sources.ts --refresh` downloads
 fresh copies. The builder produces every available election's dataset and stops on
-failed consistency checks; for 1973–1999 it checks the evidence gathered so far but emits no dataset until released.
+failed consistency checks; for 1973 it checks the evidence gathered so far but emits no dataset until released.
 Read [Data coverage](docs/DATA.md) before changing sources or publishing rebuilt files.
 
 ## Project structure
