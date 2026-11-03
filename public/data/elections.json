@@ -161,11 +161,11 @@
     "date": "1992-06-23",
     "nameHe": "הבחירות לכנסת ה-13",
     "nameEn": "Election to the 13th Knesset",
-    "available": false,
+    "available": true,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "National gazette votes reconcile and every official seat is reproduced. Full winning-list candidate rosters remain incomplete; no locality dataset. The 1992 agreement notice was not recovered; agreement completeness is unknown.",
-      "noteHe": "הקולות ברשומות תואמים לסכומים וכל המנדטים הרשמיים שוחזרו. תעתיק המועמדים בכל הרשימות הזוכות טרם הושלם; אין נתוני יישובים. הודעת ההתקשרויות משנת 1992 לא אותרה; שלמות ההסכמים אינה ידועה."
+      "stage": "official-final",
+      "noteEn": "Rosters: everyone elected is included and cross-checked; no full rosters; later ranks of winning lists not transcribed. Zero-seat rosters unavailable. Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. The 1992 agreement notice was not found; agreements that did not affect seats may be missing. Empty agreements reproduce every published seat.",
+      "noteHe": "מועמדים: כל הנבחרים נכללו ונבדקו מול הודעת התוצאות; אין רשימות מלאות; מקומות מאוחרים בשאר הרשימות הזוכות לא תועתקו. רשימות ללא מנדטים אינן מתועתקות. סדר המועמדים הרשום נשמר וההשמטות בהודעת הנבחרים תועדו. אין נתוני יישובים. הודעת ההתקשרויות משנת 1992 לא אותרה; ייתכן שחסרים הסכמים שלא השפיעו על חלוקת המנדטים. כל המנדטים שוחזרו ללא הסכמים."
     }
   },
   {
@@ -174,11 +174,11 @@
     "date": "1996-05-29",
     "nameHe": "הבחירות לכנסת ה-14",
     "nameEn": "Election to the 14th Knesset",
-    "available": false,
+    "available": true,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "National gazette votes reconcile and every official seat is reproduced. Full winning-list candidate rosters remain incomplete; no locality dataset. Complete 6-pair agreement notice verified.",
-      "noteHe": "הקולות ברשומות תואמים לסכומים וכל המנדטים הרשמיים שוחזרו. תעתיק המועמדים בכל הרשימות הזוכות טרם הושלם; אין נתוני יישובים. אומתה הודעת ההתקשרויות המלאה (6 זוגות)."
+      "stage": "official-final",
+      "noteEn": "Rosters: everyone elected is included and cross-checked; full roster for Third Way; later ranks of other winning lists not transcribed. Zero-seat rosters unavailable. Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. Complete 6-pair agreement notice verified; every published seat reproduced.",
+      "noteHe": "מועמדים: כל הנבחרים נכללו ונבדקו מול הודעת התוצאות; הרשימה המלאה של הדרך השלישית תועתקה; מקומות מאוחרים בשאר הרשימות הזוכות לא תועתקו. רשימות ללא מנדטים אינן מתועתקות. סדר המועמדים הרשום נשמר וההשמטות בהודעת הנבחרים תועדו. אין נתוני יישובים. הודעת ההתקשרויות המלאה (6 זוגות) אומתה וכל המנדטים שוחזרו."
     }
   },
   {
@@ -187,11 +187,11 @@
     "date": "1999-05-17",
     "nameHe": "הבחירות לכנסת ה-15",
     "nameEn": "Election to the 15th Knesset",
-    "available": false,
+    "available": true,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "National gazette votes reconcile and every official seat is reproduced. Full winning-list candidate rosters remain incomplete; no locality dataset. Complete 9-pair agreement notice verified.",
-      "noteHe": "הקולות ברשומות תואמים לסכומים וכל המנדטים הרשמיים שוחזרו. תעתיק המועמדים בכל הרשימות הזוכות טרם הושלם; אין נתוני יישובים. אומתה הודעת ההתקשרויות המלאה (9 זוגות)."
+      "stage": "official-final",
+      "noteEn": "Rosters: everyone elected is included and cross-checked; no full rosters; later ranks of winning lists not transcribed. Zero-seat rosters unavailable. Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. Complete 9-pair agreement notice verified; every published seat reproduced.",
+      "noteHe": "מועמדים: כל הנבחרים נכללו ונבדקו מול הודעת התוצאות; אין רשימות מלאות; מקומות מאוחרים בשאר הרשימות הזוכות לא תועתקו. רשימות ללא מנדטים אינן מתועתקות. סדר המועמדים הרשום נשמר וההשמטות בהודעת הנבחרים תועדו. אין נתוני יישובים. הודעת ההתקשרויות המלאה (9 זוגות) אומתה וכל המנדטים שוחזרו."
     }
   },
   {

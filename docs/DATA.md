@@ -10,9 +10,9 @@ passed every release gate; `public/data/elections.json` marks them unavailable.
 
 | Id | Election date | Official source files retained | Secondary data used | Still missing from a released dataset |
 |---|---|---|---|---|
-| k13 | 1992-06-23 | Results YP 4021; candidates YP 4017; CBS totals; reviewed national table | No secondary inputs used | Unavailable: full winning rosters incomplete; agreement notice not recovered; all gazetted seats reproduced with no agreements assumed; no locality dataset (0080–0082) |
-| k14 | 1996-05-29 | Results YP 4414; candidates YP 4408; complete six-pair YP 4411 notice (mirror); CBS totals | No secondary inputs used | Unavailable: winning rosters incomplete (Third Way complete); all seats reproduced; no locality dataset; secondary 550-vote error excluded (0080–0082) |
-| k15 | 1999-05-17 | Results YP 4757; candidates YP 4748; recovered complete nine-pair YP 4755 notice (mirror); CBS totals | No secondary inputs used | Unavailable: full winning rosters incomplete; all gazetted seats reproduced; no locality dataset (0080–0082) |
+| k13 | 1992-06-23 | Results YP 4021; candidates YP 4017; CBS totals; reviewed national table | No secondary inputs used | Released: every elected name cross-checked in 121 registered candidates; all winning rosters truncated; zero-seat rosters unavailable; agreement notice not recovered (possibly missing ineffective pairs); every seat reproduced; no localities (0083–0086) |
+| k14 | 1996-05-29 | Results YP 4414; candidates YP 4408; complete six-pair YP 4411 notice (mirror); CBS totals | No secondary inputs used | Released: every elected name cross-checked in 129 registered candidates; Third Way full (12), other winners truncated; zero-seat rosters unavailable; six agreement pairs; every seat reproduced; no localities; secondary 550-vote error excluded (0083–0086) |
+| k15 | 1999-05-17 | Results YP 4757; candidates YP 4748; recovered complete nine-pair YP 4755 notice (mirror); CBS totals | No secondary inputs used | Released: every elected name cross-checked in 122 registered candidates; all winning rosters truncated; zero-seat rosters unavailable; nine agreement pairs; every seat reproduced; no localities (0083–0086) |
 | k16 | 2003-01-28 | Polling stations; CEC candidates/results; complete agreement notice YP 5151; official CBS totals; reviewed national transcription and locality digest | No secondary rosters; project derivatives labelled | Two gazette vote discrepancies (410 total); full rosters; locality committee metadata; release blocked |
 | k17 | 2006-03-28 | Polling stations; CEC candidates/results; complete agreement notice YP 5510; official CBS totals; reviewed national transcription and locality digest | No secondary rosters; project derivatives labelled | Nine-invalid-vote discrepancy; full rosters; locality code/electorate/committee fields; release blocked |
 | k18 | 2009-02-10 | Polling stations; CEC candidate/results gazettes; allocation memorandum; YP 5912 agreement notice (mirror) | None | Released; derived localities and sourced invalid-count exception disclosed (0040) |
@@ -289,29 +289,53 @@ the UI needs an election-aware envelope predicate and accurate derived-source la
 before its locality presets can exclude these rows correctly. No `src/app/` file was
 changed in this branch, as required by the shared-file boundary.
 
-## Knessets 13–15: national evidence verified; releases held on rosters
+## Knessets 13–15: released national datasets and verified elected prefixes
 
-The isolated k13/k14/k15 preflights check retained source hashes, every gazetted list
-vote, national arithmetic, and every official seat through the app scenario pipeline.
+The k13/k14/k15 builders verify retained scan and reviewed-JSON hashes, every gazetted
+list vote, national arithmetic and every official seat through the app scenario pipeline.
 All three allocate 120 seats without warnings. Knesset votes alone are used for 1996
 and 1999; their separate prime-minister ballots are excluded. Gazette valid/invalid
 plus official CBS cast/electorate reconcile exactly, without a list adjustment.
 For k14 the gazette has Likud–Gesher–Tzomet **767,401**, excluding the secondary
-tables' erroneous 550 extra votes. Decisions 0080–0082 record the evidence and limits.
+tables' erroneous 550 extra votes. The rule evidence and its limits remain in 0082.
 
-1996's complete six-pair notice is YP 4411 p. 3398; 1999's newly recovered nine-pair
-notice is YP 4755 p. 3305. Both are official statutory publications on a disclosed
-olaw.org.il mirror. The 1992 notice remains unfound in the bounded search documented
-in 0081; empty sourced agreement inputs reproduce seats but do not prove no agreements
-existed. No pairs are inferred. No locality dataset has passed reconciliation; fixtures
-use `hasLocalities: false` and no public locality file is emitted.
+The owner-approved release standard (0083) requires every elected name, rather than
+full winning-list rosters. Candidate gazettes YP 4017 / 4408 / 4748 were visually
+transcribed using pdfjs-dist 6.5.438 with its wasm directory configured. Independent
+results-section-4 transcriptions from YP 4021 / 4414 / 4757 cross-check all **360**
+elected names. Reviewed candidate JSON has printed page references; separate
+`elected.reviewed.json` files have results pages and explicit registered-rank mappings.
+The k13 scan omits several roster starts; seven retained **official-gazette facsimiles
+hosted by IDI** fill those pages, with individual provenance in SOURCES. No secondary
+name list or handwritten annotation supplies a candidate name.
 
-Reviewed candidate evidence covers Labor/Israel One's first ten names in each election
-and all **12** Third Way candidates in 1996, checked against elected ranks. It does
-**not** meet full winning-list roster coverage. All three remain unavailable and no
-public k13/k14/k15 JSON is produced. Reviewed JSON and hashed primary sources are
-committed; clean builds require no scratch or downloads. Full original rosters,
-all-elected-rank cross-checks, later candidate amendments and an exhaustive historical
-allocation-law amendment-chain check remain unverified. The exact 1.5% rule mapping,
-original threshold amendment and original Bader–Ofer half-seats cap are documented
-separately from those gaps.
+Coverage: **121** registered candidates in k13; **129** in k14, including the full
+**12-person Third Way** roster; **122** in k15. Every other winning roster is marked
+`candidatesTruncated: true`; all zero-seat lists have empty candidates and
+`candidatesUnavailable: true`. Original registered ranks remain contiguous from 1.
+They include Arens (1992), Namir (1996), Begin and Deri (1999), although the elected
+notice omits those names; the explicit cross-check maps include every successor.
+Only Deri's exact departure date (19 May 1999, after the election) is established
+by the retained results notice. Other separate withdrawal notices/dates remain
+unverified, and no pre-election renumbering is inferred. The sole substantive spelling
+variant is Labor's registered `אור אריה` versus elected `אור אורי` in 1992; the
+registered spelling is preserved with an exact rank-specific resolution. See 0084
+for every list's coverage table, page provenance and reconciliation details.
+
+1996's complete six-pair notice is YP 4411 p. 3398; 1999's complete nine-pair notice
+is YP 4755 p. 3305. Both are statutory publications on the disclosed olaw mirror,
+and ineffective pairs are retained. The repeat 1992 search did not recover the notice:
+YP 4017 p. 3654 was identified as a secondary discovery lead, but is absent in the
+retrieved official/olaw scans; the linked Nevo PDF returned 403. Per the explicit
+fallback decision in 0085, k13 releases with `agreements: []` because seats still
+reproduce exactly. Both languages warn that agreements that did not affect seats may
+be missing. No pair is inferred from seat reproduction.
+
+All three are available as `public/data/kNN.json`, with matching bilingual status notes
+in the picker. They set `hasLocalities: false`; no locality file is emitted. Geographic
+counts of zero mean no supplied geography, not official zero station/locality counts.
+Tests compare built files to the verified builder, independent official seat/totals
+constants, threshold/quota, agreement pairs, all elected names and contiguous ranks.
+Clean builds require retained evidence and locked dependencies, with no scratch or
+network downloads. Original later roster ranks, separate withdrawal chronology and
+an exhaustive historical-law amendment chain remain outside the verified scope.

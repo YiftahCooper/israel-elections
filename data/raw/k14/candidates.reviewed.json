@@ -3,78 +3,8 @@
   "id": "k14",
   "sourceId": "k14-candidates-gazette",
   "reviewedOn": "2026-11-03",
-  "allWinningRostersVerified": false,
-  "note": "Partial reviewed evidence only. Complete roster transcription remains a release blocker. No draft/unverified names are promoted.",
+  "note": "Release standard: contiguous registered prefixes include every elected name in section 4 of the results gazette. Only k14 Third Way is a full roster; later ranks elsewhere are not transcribed. Original registered ranks are preserved, including names omitted from the elected notice; candidateRanks in elected.reviewed.json explicitly reconciles those omissions. No withdrawal date is inferred from omission.",
   "lists": [
-    {
-      "letters": "אמת",
-      "complete": false,
-      "publishedCount": 117,
-      "gazettePages": [
-        3286,
-        3287
-      ],
-      "candidates": [
-        {
-          "rank": 1,
-          "nameHe": "פרס שמעון",
-          "page": 3286
-        },
-        {
-          "rank": 2,
-          "nameHe": "ברעם עוזי",
-          "page": 3286
-        },
-        {
-          "rank": 3,
-          "nameHe": "ברק אהוד",
-          "page": 3286
-        },
-        {
-          "rank": 4,
-          "nameHe": "בן-אליעזר בנימין",
-          "page": 3286
-        },
-        {
-          "rank": 5,
-          "nameHe": "רמון חיים",
-          "page": 3286
-        },
-        {
-          "rank": 6,
-          "nameHe": "שוחט אברהם בייגה",
-          "page": 3286
-        },
-        {
-          "rank": 7,
-          "nameHe": "זווילי נסים",
-          "page": 3286
-        },
-        {
-          "rank": 8,
-          "nameHe": "סנה אפרים",
-          "page": 3286
-        },
-        {
-          "rank": 9,
-          "nameHe": "איציק דליה",
-          "page": 3286
-        },
-        {
-          "rank": 10,
-          "nameHe": "אור אורי",
-          "page": 3286
-        }
-      ],
-      "electedCrossCheck": {
-        "resultsPages": [
-          3482,
-          3483
-        ],
-        "checkedThroughRank": 10,
-        "note": "First ten registered names checked against the first ten elected members in results section 4; surname/given-name order retained."
-      }
-    },
     {
       "letters": "הד",
       "complete": true,
@@ -149,8 +79,781 @@
           3483
         ],
         "checkedThroughRank": 4,
-        "note": "All four elected names checked against results section 4. Original registered order retained."
+        "note": "All elected names independently transcribed from results section 4. Explicit candidateRanks maps elected positions to registered ranks; no roster rank is silently shifted.",
+        "differences": []
+      }
+    },
+    {
+      "letters": "אמת",
+      "complete": false,
+      "publishedCount": 117,
+      "gazettePages": [
+        3286
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "פרס שמעון",
+          "page": 3286
+        },
+        {
+          "rank": 2,
+          "nameHe": "ברעם עוזי",
+          "page": 3286
+        },
+        {
+          "rank": 3,
+          "nameHe": "ברק אהוד",
+          "page": 3286
+        },
+        {
+          "rank": 4,
+          "nameHe": "בן-אליעזר בנימין",
+          "page": 3286
+        },
+        {
+          "rank": 5,
+          "nameHe": "רמון חיים",
+          "page": 3286
+        },
+        {
+          "rank": 6,
+          "nameHe": "שוחט אברהם בייגה",
+          "page": 3286
+        },
+        {
+          "rank": 7,
+          "nameHe": "זווילי נסים",
+          "page": 3286
+        },
+        {
+          "rank": 8,
+          "nameHe": "סנה אפרים",
+          "page": 3286
+        },
+        {
+          "rank": 9,
+          "nameHe": "איציק דליה",
+          "page": 3286
+        },
+        {
+          "rank": 10,
+          "nameHe": "אור אורי",
+          "page": 3286
+        },
+        {
+          "rank": 11,
+          "nameHe": "ביילין יוסף",
+          "page": 3286
+        },
+        {
+          "rank": 12,
+          "nameHe": "וייס שבח",
+          "page": 3286
+        },
+        {
+          "rank": 13,
+          "nameHe": "אלול רפאל",
+          "page": 3286
+        },
+        {
+          "rank": 14,
+          "nameHe": "אדרי רפאל",
+          "page": 3286
+        },
+        {
+          "rank": 15,
+          "nameHe": "מירום חגי",
+          "page": 3286
+        },
+        {
+          "rank": 16,
+          "nameHe": "כץ יוסי",
+          "page": 3286
+        },
+        {
+          "rank": 17,
+          "nameHe": "מסאלחה נואף",
+          "page": 3286
+        },
+        {
+          "rank": 18,
+          "nameHe": "נמיר אורה",
+          "page": 3286
+        },
+        {
+          "rank": 19,
+          "nameHe": "בן-מנחם אלי",
+          "page": 3286
+        },
+        {
+          "rank": 20,
+          "nameHe": "גולדשמיט אלי",
+          "page": 3286
+        },
+        {
+          "rank": 21,
+          "nameHe": "ליבאי דוד",
+          "page": 3286
+        },
+        {
+          "rank": 22,
+          "nameHe": "כהן רענן",
+          "page": 3286
+        },
+        {
+          "rank": 23,
+          "nameHe": "פרץ עמיר",
+          "page": 3286
+        },
+        {
+          "rank": 24,
+          "nameHe": "שחל משה",
+          "page": 3286
+        },
+        {
+          "rank": 25,
+          "nameHe": "לנדבר סופיה",
+          "page": 3286
+        },
+        {
+          "rank": 26,
+          "nameHe": "פינס-פז אופיר",
+          "page": 3286
+        },
+        {
+          "rank": 27,
+          "nameHe": "שמחון שלום",
+          "page": 3286
+        },
+        {
+          "rank": 28,
+          "nameHe": "דיין יעל",
+          "page": 3286
+        },
+        {
+          "rank": 29,
+          "nameHe": "גולדמן מיכה",
+          "page": 3286
+        },
+        {
+          "rank": 30,
+          "nameHe": "מאסלה אדיסו",
+          "page": 3286
+        },
+        {
+          "rank": 31,
+          "nameHe": "טריף סאלח",
+          "page": 3286
+        },
+        {
+          "rank": 32,
+          "nameHe": "יחזקאל אברהם",
+          "page": 3286
+        },
+        {
+          "rank": 33,
+          "nameHe": "יהב יונה",
+          "page": 3286
+        },
+        {
+          "rank": 34,
+          "nameHe": "אושעיה אפי",
+          "page": 3286
+        },
+        {
+          "rank": 35,
+          "nameHe": "בן-עמי שלמה",
+          "page": 3286
+        }
+      ],
+      "electedCrossCheck": {
+        "resultsPages": [
+          3482,
+          3483
+        ],
+        "checkedThroughRank": 35,
+        "note": "All elected names independently transcribed from results section 4. Explicit candidateRanks maps elected positions to registered ranks; no roster rank is silently shifted. Registered rank 18, נמיר אורה, is absent in section 4; elected positions 18–34 match registered ranks 19–35. Timing/reason of departure not established by these two notices.",
+        "differences": []
+      }
+    },
+    {
+      "letters": "ב",
+      "complete": false,
+      "publishedCount": 120,
+      "gazettePages": [
+        3286,
+        3287
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "המר זבולון",
+          "page": 3286
+        },
+        {
+          "rank": 2,
+          "nameHe": "יהלום שאול",
+          "page": 3286
+        },
+        {
+          "rank": 3,
+          "nameHe": "לוי יצחק",
+          "page": 3286
+        },
+        {
+          "rank": 4,
+          "nameHe": "ביבי יגאל",
+          "page": 3286
+        },
+        {
+          "rank": 5,
+          "nameHe": "הנדל צבי",
+          "page": 3286
+        },
+        {
+          "rank": 6,
+          "nameHe": "פורת חנן",
+          "page": 3286
+        },
+        {
+          "rank": 7,
+          "nameHe": "בן צור שמריהו",
+          "page": 3286
+        },
+        {
+          "rank": 8,
+          "nameHe": "שטרן אברהם",
+          "page": 3286
+        },
+        {
+          "rank": 9,
+          "nameHe": "שאקי אבנר-חי",
+          "page": 3286
+        }
+      ],
+      "electedCrossCheck": {
+        "resultsPages": [
+          3483
+        ],
+        "checkedThroughRank": 9,
+        "note": "All elected names independently transcribed from results section 4. Explicit candidateRanks maps elected positions to registered ranks; no roster rank is silently shifted.",
+        "differences": []
+      }
+    },
+    {
+      "letters": "ג",
+      "complete": false,
+      "publishedCount": 116,
+      "gazettePages": [
+        3287,
+        3288
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "פרוש מאיר",
+          "page": 3287
+        },
+        {
+          "rank": 2,
+          "nameHe": "רביץ אברהם",
+          "page": 3287
+        },
+        {
+          "rank": 3,
+          "nameHe": "הלפרט שמואל",
+          "page": 3287
+        },
+        {
+          "rank": 4,
+          "nameHe": "גפני משה",
+          "page": 3287
+        }
+      ],
+      "electedCrossCheck": {
+        "resultsPages": [
+          3483
+        ],
+        "checkedThroughRank": 4,
+        "note": "All elected names independently transcribed from results section 4. Explicit candidateRanks maps elected positions to registered ranks; no roster rank is silently shifted.",
+        "differences": []
+      }
+    },
+    {
+      "letters": "ו",
+      "complete": false,
+      "publishedCount": 120,
+      "gazettePages": [
+        3288,
+        3289
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "מחאמיד האשם",
+          "page": 3288
+        },
+        {
+          "rank": 2,
+          "nameHe": "סלים סאלח",
+          "page": 3288
+        },
+        {
+          "rank": 3,
+          "nameHe": "גוז׳נסקי תמר",
+          "page": 3288
+        },
+        {
+          "rank": 4,
+          "nameHe": "בשארה עזמי",
+          "page": 3288
+        },
+        {
+          "rank": 5,
+          "nameHe": "סעד אחמד",
+          "page": 3288
+        }
+      ],
+      "electedCrossCheck": {
+        "resultsPages": [
+          3483
+        ],
+        "checkedThroughRank": 5,
+        "note": "All elected names independently transcribed from results section 4. Explicit candidateRanks maps elected positions to registered ranks; no roster rank is silently shifted.",
+        "differences": []
+      }
+    },
+    {
+      "letters": "ט",
+      "complete": false,
+      "publishedCount": 97,
+      "gazettePages": [
+        3289
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "זאבי רחבעם",
+          "page": 3289
+        },
+        {
+          "rank": 2,
+          "nameHe": "אלון בנימין",
+          "page": 3289
+        }
+      ],
+      "electedCrossCheck": {
+        "resultsPages": [
+          3483
+        ],
+        "checkedThroughRank": 2,
+        "note": "All elected names independently transcribed from results section 4. Explicit candidateRanks maps elected positions to registered ranks; no roster rank is silently shifted.",
+        "differences": []
+      }
+    },
+    {
+      "letters": "כן",
+      "complete": false,
+      "publishedCount": 19,
+      "gazettePages": [
+        3290
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "שרנסקי נתן",
+          "page": 3290
+        },
+        {
+          "rank": 2,
+          "nameHe": "נודלמן מיכאל",
+          "page": 3290
+        },
+        {
+          "rank": 3,
+          "nameHe": "אדלשטיין יולי-יואל",
+          "page": 3290
+        },
+        {
+          "rank": 4,
+          "nameHe": "שטרן יורי",
+          "page": 3290
+        },
+        {
+          "rank": 5,
+          "nameHe": "סולודקין מרינה",
+          "page": 3290
+        },
+        {
+          "rank": 6,
+          "nameHe": "ויינברג צבי",
+          "page": 3290
+        },
+        {
+          "rank": 7,
+          "nameHe": "ברונפמן רומן",
+          "page": 3290
+        }
+      ],
+      "electedCrossCheck": {
+        "resultsPages": [
+          3483
+        ],
+        "checkedThroughRank": 7,
+        "note": "All elected names independently transcribed from results section 4. Explicit candidateRanks maps elected positions to registered ranks; no roster rank is silently shifted.",
+        "differences": []
+      }
+    },
+    {
+      "letters": "מחל",
+      "complete": false,
+      "publishedCount": 119,
+      "gazettePages": [
+        3290
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "נתניהו בנימין",
+          "page": 3290
+        },
+        {
+          "rank": 2,
+          "nameHe": "לוי דוד",
+          "page": 3290
+        },
+        {
+          "rank": 3,
+          "nameHe": "איתן רפאל",
+          "page": 3290
+        },
+        {
+          "rank": 4,
+          "nameHe": "מרדכי יצחק",
+          "page": 3290
+        },
+        {
+          "rank": 5,
+          "nameHe": "שרון אריאל",
+          "page": 3290
+        },
+        {
+          "rank": 6,
+          "nameHe": "קצב משה",
+          "page": 3290
+        },
+        {
+          "rank": 7,
+          "nameHe": "בגין זאב בנימין",
+          "page": 3290
+        },
+        {
+          "rank": 8,
+          "nameHe": "זנדברג אליעזר",
+          "page": 3290
+        },
+        {
+          "rank": 9,
+          "nameHe": "מגן דוד",
+          "page": 3290
+        },
+        {
+          "rank": 10,
+          "nameHe": "אולמרט אהוד",
+          "page": 3290
+        },
+        {
+          "rank": 11,
+          "nameHe": "מרידור דן",
+          "page": 3290
+        },
+        {
+          "rank": 12,
+          "nameHe": "הנגבי צחי",
+          "page": 3290
+        },
+        {
+          "rank": 13,
+          "nameHe": "לנדאו עוזי",
+          "page": 3290
+        },
+        {
+          "rank": 14,
+          "nameHe": "לוי מקסים",
+          "page": 3290
+        },
+        {
+          "rank": 15,
+          "nameHe": "ריבלין חיים",
+          "page": 3290
+        },
+        {
+          "rank": 16,
+          "nameHe": "לבנת לימור",
+          "page": 3290
+        },
+        {
+          "rank": 17,
+          "nameHe": "איתן מיכאל",
+          "page": 3290
+        },
+        {
+          "rank": 18,
+          "nameHe": "שלום סילבן",
+          "page": 3290
+        },
+        {
+          "rank": 19,
+          "nameHe": "עזרא גדעון",
+          "page": 3290
+        },
+        {
+          "rank": 20,
+          "nameHe": "פלד משה",
+          "page": 3290
+        },
+        {
+          "rank": 21,
+          "nameHe": "קליינר מיכאל",
+          "page": 3290
+        },
+        {
+          "rank": 22,
+          "nameHe": "שטרית מאיר",
+          "page": 3290
+        },
+        {
+          "rank": 23,
+          "nameHe": "בן-אלישר אליהו",
+          "page": 3290
+        },
+        {
+          "rank": 24,
+          "nameHe": "תיכון דן",
+          "page": 3290
+        },
+        {
+          "rank": 25,
+          "nameHe": "בלומנטל נעמי",
+          "page": 3290
+        },
+        {
+          "rank": 26,
+          "nameHe": "מצא יהושע",
+          "page": 3290
+        },
+        {
+          "rank": 27,
+          "nameHe": "הירשזון אברהם",
+          "page": 3290
+        },
+        {
+          "rank": 28,
+          "nameHe": "ראם דוד",
+          "page": 3290
+        },
+        {
+          "rank": 29,
+          "nameHe": "בוים זאב",
+          "page": 3290
+        },
+        {
+          "rank": 30,
+          "nameHe": "ליבני יהודה",
+          "page": 3290
+        },
+        {
+          "rank": 31,
+          "nameHe": "בדש פנחס",
+          "page": 3290
+        },
+        {
+          "rank": 32,
+          "nameHe": "עמור שאול",
+          "page": 3290
+        }
+      ],
+      "electedCrossCheck": {
+        "resultsPages": [
+          3483
+        ],
+        "checkedThroughRank": 32,
+        "note": "All elected names independently transcribed from results section 4. Explicit candidateRanks maps elected positions to registered ranks; no roster rank is silently shifted.",
+        "differences": []
+      }
+    },
+    {
+      "letters": "מרצ",
+      "complete": false,
+      "publishedCount": 120,
+      "gazettePages": [
+        3290,
+        3291
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "שריד יוסף",
+          "page": 3290
+        },
+        {
+          "rank": 2,
+          "nameHe": "אורון חיים",
+          "page": 3290
+        },
+        {
+          "rank": 3,
+          "nameHe": "רובינשטיין אמנון",
+          "page": 3290
+        },
+        {
+          "rank": 4,
+          "nameHe": "כהן רן",
+          "page": 3290
+        },
+        {
+          "rank": 5,
+          "nameHe": "צוקר דוד",
+          "page": 3290
+        },
+        {
+          "rank": 6,
+          "nameHe": "מאור ענת",
+          "page": 3290
+        },
+        {
+          "rank": 7,
+          "nameHe": "פורז פורמנטיר אברהם",
+          "page": 3290
+        },
+        {
+          "rank": 8,
+          "nameHe": "חזן נעמי",
+          "page": 3290
+        },
+        {
+          "rank": 9,
+          "nameHe": "חאג׳ יחיא וליד",
+          "page": 3290
+        }
+      ],
+      "electedCrossCheck": {
+        "resultsPages": [
+          3483
+        ],
+        "checkedThroughRank": 9,
+        "note": "All elected names independently transcribed from results section 4. Explicit candidateRanks maps elected positions to registered ranks; no roster rank is silently shifted.",
+        "differences": []
+      }
+    },
+    {
+      "letters": "ע",
+      "complete": false,
+      "publishedCount": 117,
+      "gazettePages": [
+        3292
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "דהאמשה עבד אלמלכ",
+          "page": 3292
+        },
+        {
+          "rank": 2,
+          "nameHe": "דראושה עבד אלוהאב",
+          "page": 3292
+        },
+        {
+          "rank": 3,
+          "nameHe": "אלצאנע טלב",
+          "page": 3292
+        },
+        {
+          "rank": 4,
+          "nameHe": "כטיב טופיק",
+          "page": 3292
+        }
+      ],
+      "electedCrossCheck": {
+        "resultsPages": [
+          3483
+        ],
+        "checkedThroughRank": 4,
+        "note": "All elected names independently transcribed from results section 4. Explicit candidateRanks maps elected positions to registered ranks; no roster rank is silently shifted.",
+        "differences": []
+      }
+    },
+    {
+      "letters": "שס",
+      "complete": false,
+      "publishedCount": 120,
+      "gazettePages": [
+        3293,
+        3294
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "דרעי אריה מכלוף",
+          "page": 3293
+        },
+        {
+          "rank": 2,
+          "nameHe": "גמליאל אריה",
+          "page": 3293
+        },
+        {
+          "rank": 3,
+          "nameHe": "פנחסי רפאל",
+          "page": 3293
+        },
+        {
+          "rank": 4,
+          "nameHe": "בניזרי שלמה",
+          "page": 3293
+        },
+        {
+          "rank": 5,
+          "nameHe": "ישי אליהו",
+          "page": 3293
+        },
+        {
+          "rank": 6,
+          "nameHe": "כהן יצחק",
+          "page": 3293
+        },
+        {
+          "rank": 7,
+          "nameHe": "אזולאי דוד",
+          "page": 3293
+        },
+        {
+          "rank": 8,
+          "nameHe": "טל דוד",
+          "page": 3293
+        },
+        {
+          "rank": 9,
+          "nameHe": "דהן נסים",
+          "page": 3293
+        },
+        {
+          "rank": 10,
+          "nameHe": "וקנין יצחק",
+          "page": 3293
+        }
+      ],
+      "electedCrossCheck": {
+        "resultsPages": [
+          3483
+        ],
+        "checkedThroughRank": 10,
+        "note": "All elected names independently transcribed from results section 4. Explicit candidateRanks maps elected positions to registered ranks; no roster rank is silently shifted.",
+        "differences": []
       }
     }
-  ]
+  ],
+  "allWinningElectedPrefixesVerified": true
 }

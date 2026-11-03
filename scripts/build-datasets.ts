@@ -369,9 +369,9 @@ for (const build of [...buildK13(), ...buildK14(), ...buildK15(), ...buildK16(),
   const ds = { ...built.ds, lists: seatOrder(built.ds.lists) };
   const loc = built.loc;
   writeFileSync(join(OUT, `${ds.id}.json`), JSON.stringify(ds));
-  writeFileSync(join(OUT, `${ds.id}-localities.json`), JSON.stringify(loc));
+  if (loc) writeFileSync(join(OUT, `${ds.id}-localities.json`), JSON.stringify(loc));
   const cands = ds.lists.reduce((s, l) => s + l.candidates.length, 0);
-  console.log(`${ds.id}: ${ds.lists.length} lists, ${cands} candidates, ${ds.agreements.length} agreements, valid ${ds.totals.valid}, ${loc.rows.length} locality rows`);
+  console.log(`${ds.id}: ${ds.lists.length} lists, ${cands} candidates, ${ds.agreements.length} agreements, valid ${ds.totals.valid}, ${loc?.rows.length ?? 0} locality rows`);
 }
 if (unrecognised.length) console.warn(`k26: ${unrecognised.length} unrecognised line(s) on list pages were not published as notes:\n  ${unrecognised.join('\n  ')}`);
 const sourcesOut = sources.map(({ id, ...rest }) => ({ id, ...rest }));
