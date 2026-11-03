@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "id": "k15",
+  "sourceId": "k15-candidates-gazette",
+  "reviewedOn": "2026-11-03",
+  "allWinningRostersVerified": false,
+  "note": "Partial reviewed evidence only. Complete roster transcription remains a release blocker. No draft/unverified names are promoted.",
+  "lists": [
+    {
+      "letters": "אמת",
+      "complete": false,
+      "publishedCount": 120,
+      "gazettePages": [
+        3036
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "ברק אהוד",
+          "page": 3036
+        },
+        {
+          "rank": 2,
+          "nameHe": "פרס שמעון",
+          "page": 3036
+        },
+        {
+          "rank": 3,
+          "nameHe": "לוי דוד",
+          "page": 3036
+        },
+        {
+          "rank": 4,
+          "nameHe": "בן עמי שלמה",
+          "page": 3036
+        },
+        {
+          "rank": 5,
+          "nameHe": "ביילין יוסף",
+          "page": 3036
+        },
+        {
+          "rank": 6,
+          "nameHe": "וילנאי מתן",
+          "page": 3036
+        },
+        {
+          "rank": 7,
+          "nameHe": "בורג אברהם",
+          "page": 3036
+        },
+        {
+          "rank": 8,
+          "nameHe": "כהן רענן",
+          "page": 3036
+        },
+        {
+          "rank": 9,
+          "nameHe": "ברעם עוזי",
+          "page": 3036
+        },
+        {
+          "rank": 10,
+          "nameHe": "איציק דליה",
+          "page": 3036
+        }
+      ],
+      "electedCrossCheck": {
+        "resultsPages": [
+          3377
+        ],
+        "checkedThroughRank": 10,
+        "note": "First ten registered names checked against the first ten elected members in results section 4; surname/given-name order retained."
+      }
+    }
+  ]
+}

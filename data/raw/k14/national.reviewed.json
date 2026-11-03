@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "id": "k14",
+  "reviewedOn": "2026-11-03",
+  "resultsSourceId": "k14-results-gazette",
+  "resultsPages": [
+    3482,
+    3483
+  ],
+  "gazetteTotals": {
+    "valid": 3052130,
+    "invalid": 67702
+  },
+  "supplementalTotals": {
+    "sourceId": "k13-k15-cbs-national-totals",
+    "registered": 3933250,
+    "votesCast": 3119832
+  },
+  "lists": [
+    {
+      "letters": "אמת",
+      "nameHe": "העבודה",
+      "votes": 818741,
+      "officialSeats": 34
+    },
+    {
+      "letters": "ב",
+      "nameHe": "מפד״ל המפלגה הדתית לאומית המזרחי - הפועל המזרחי",
+      "votes": 240271,
+      "officialSeats": 9
+    },
+    {
+      "letters": "ג",
+      "nameHe": "יהדות התורה המאוחדת אגודת ישראל - דגל התורה",
+      "votes": 98657,
+      "officialSeats": 4
+    },
+    {
+      "letters": "ד",
+      "nameHe": "אירגון הפעולה הדמוקרטי דע״ם",
+      "votes": 1351,
+      "officialSeats": 0
+    },
+    {
+      "letters": "דן",
+      "nameHe": "מפלגת ההתפתחות",
+      "votes": 5533,
+      "officialSeats": 0
+    },
+    {
+      "letters": "הד",
+      "nameHe": "הדרך השלישית להסכמה לאומית",
+      "votes": 96474,
+      "officialSeats": 4
+    },
+    {
+      "letters": "ו",
+      "nameHe": "חזית דמוקרטית לשלום ולשוויון (המפלגה הקומוניסטית הישראלית וחוגי ציבור יהודים וערבים) והברית הלאומית הדמוקרטית",
+      "votes": 129455,
+      "officialSeats": 5
+    },
+    {
+      "letters": "ז",
+      "nameHe": "מפלגת זכויות הגבר במשפחה - רע״ש",
+      "votes": 2338,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ט",
+      "nameHe": "מולדת",
+      "votes": 72002,
+      "officialSeats": 2
+    },
+    {
+      "letters": "יד",
+      "nameHe": "ימין ישראל",
+      "votes": 2845,
+      "officialSeats": 0
+    },
+    {
+      "letters": "כן",
+      "nameHe": "ישראל בעליה בראשותו של נתן שרנסקי",
+      "votes": 174994,
+      "officialSeats": 7
+    },
+    {
+      "letters": "מחל",
+      "nameHe": "הליכוד גשר צומת",
+      "votes": 767401,
+      "officialSeats": 32
+    },
+    {
+      "letters": "מרצ",
+      "nameHe": "מרצ - ישראל הדמוקרטית רצ מפם שינוי",
+      "votes": 226275,
+      "officialSeats": 9
+    },
+    {
+      "letters": "נ",
+      "nameHe": "האיחוד הערבי לקידמה והתחדשות בראשות ד״ר אחמד טיבי",
+      "votes": 2087,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ע",
+      "nameHe": "המפלגה הדמוקרטית הערבית - הרשימה הערבית המאוחדת",
+      "votes": 89514,
+      "officialSeats": 4
+    },
+    {
+      "letters": "פ",
+      "nameHe": "גימלאי ישראל לכנסת - גיל",
+      "votes": 14935,
+      "officialSeats": 0
+    },
+    {
+      "letters": "פא",
+      "nameHe": "הברית הדמוקרטית",
+      "votes": 13983,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ק",
+      "nameHe": "אחדות למען השלום בראשות אפרים גור",
+      "votes": 22741,
+      "officialSeats": 0
+    },
+    {
+      "letters": "שס",
+      "nameHe": "ש״ס התאחדות הספרדים העולמית שומרי תורה",
+      "votes": 259796,
+      "officialSeats": 10
+    },
+    {
+      "letters": "ת",
+      "nameHe": "תלם אמונה תימן בדרכי נועם בראשות הרב יוסף עזרן",
+      "votes": 12737,
+      "officialSeats": 0
+    }
+  ],
+  "agreements": {
+    "sourceId": "k14-agreements-gazette",
+    "complete": true,
+    "pages": [
+      3398
+    ],
+    "pairs": [
+      [
+        "אמת",
+        "מרצ"
+      ],
+      [
+        "ב",
+        "ג"
+      ],
+      [
+        "הד",
+        "כן"
+      ],
+      [
+        "ו",
+        "ע"
+      ],
+      [
+        "ט",
+        "ת"
+      ],
+      [
+        "מחל",
+        "שס"
+      ]
+    ]
+  },
+  "discrepancies": [],
+  "releaseBlockers": [
+    "Complete candidate rosters for every seat-winning list have not been transcribed and checked."
+  ],
+  "hasLocalities": false,
+  "localityNote": "No reconciled locality dataset is released. Secondary polling spreadsheets are not treated as reconciled national evidence.",
+  "sourceNotes": [
+    "Likud–Gesher–Tzomet is 767,401 in YP 4414 p.3482, not the 767,951 in secondary tables (550 more). Gazette rows sum exactly to 3,052,130.",
+    "PM-ballot valid 2,972,589 is excluded; Knesset valid is 3,052,130."
+  ]
+}

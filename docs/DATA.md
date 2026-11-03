@@ -10,6 +10,9 @@ passed every release gate; `public/data/elections.json` marks them unavailable.
 
 | Id | Election date | Official source files retained | Secondary data used | Still missing from a released dataset |
 |---|---|---|---|---|
+| k13 | 1992-06-23 | Results YP 4021; candidates YP 4017; CBS totals; reviewed national table | No secondary inputs used | Unavailable: full winning rosters incomplete; agreement notice not recovered; all gazetted seats reproduced with no agreements assumed; no locality dataset (0080–0082) |
+| k14 | 1996-05-29 | Results YP 4414; candidates YP 4408; complete six-pair YP 4411 notice (mirror); CBS totals | No secondary inputs used | Unavailable: winning rosters incomplete (Third Way complete); all seats reproduced; no locality dataset; secondary 550-vote error excluded (0080–0082) |
+| k15 | 1999-05-17 | Results YP 4757; candidates YP 4748; recovered complete nine-pair YP 4755 notice (mirror); CBS totals | No secondary inputs used | Unavailable: full winning rosters incomplete; all gazetted seats reproduced; no locality dataset (0080–0082) |
 | k16 | 2003-01-28 | Polling stations; CEC candidates/results; complete agreement notice YP 5151; official CBS totals; reviewed national transcription and locality digest | No secondary rosters; project derivatives labelled | Two gazette vote discrepancies (410 total); full rosters; locality committee metadata; release blocked |
 | k17 | 2006-03-28 | Polling stations; CEC candidates/results; complete agreement notice YP 5510; official CBS totals; reviewed national transcription and locality digest | No secondary rosters; project derivatives labelled | Nine-invalid-vote discrepancy; full rosters; locality code/electorate/committee fields; release blocked |
 | k18 | 2009-02-10 | Polling stations; CEC candidate/results gazettes; allocation memorandum; YP 5912 agreement notice (mirror) | None | Released; derived localities and sourced invalid-count exception disclosed (0040) |
@@ -285,3 +288,30 @@ These historical sources use code 0 (k18) and 875 (k19). The source codes are pr
 the UI needs an election-aware envelope predicate and accurate derived-source labels
 before its locality presets can exclude these rows correctly. No `src/app/` file was
 changed in this branch, as required by the shared-file boundary.
+
+## Knessets 13–15: national evidence verified; releases held on rosters
+
+The isolated k13/k14/k15 preflights check retained source hashes, every gazetted list
+vote, national arithmetic, and every official seat through the app scenario pipeline.
+All three allocate 120 seats without warnings. Knesset votes alone are used for 1996
+and 1999; their separate prime-minister ballots are excluded. Gazette valid/invalid
+plus official CBS cast/electorate reconcile exactly, without a list adjustment.
+For k14 the gazette has Likud–Gesher–Tzomet **767,401**, excluding the secondary
+tables' erroneous 550 extra votes. Decisions 0080–0082 record the evidence and limits.
+
+1996's complete six-pair notice is YP 4411 p. 3398; 1999's newly recovered nine-pair
+notice is YP 4755 p. 3305. Both are official statutory publications on a disclosed
+olaw.org.il mirror. The 1992 notice remains unfound in the bounded search documented
+in 0081; empty sourced agreement inputs reproduce seats but do not prove no agreements
+existed. No pairs are inferred. No locality dataset has passed reconciliation; fixtures
+use `hasLocalities: false` and no public locality file is emitted.
+
+Reviewed candidate evidence covers Labor/Israel One's first ten names in each election
+and all **12** Third Way candidates in 1996, checked against elected ranks. It does
+**not** meet full winning-list roster coverage. All three remain unavailable and no
+public k13/k14/k15 JSON is produced. Reviewed JSON and hashed primary sources are
+committed; clean builds require no scratch or downloads. Full original rosters,
+all-elected-rank cross-checks, later candidate amendments and an exhaustive historical
+allocation-law amendment-chain check remain unverified. The exact 1.5% rule mapping,
+original threshold amendment and original Bader–Ofer half-seats cap are documented
+separately from those gaps.

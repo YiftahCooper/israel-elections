@@ -109,6 +109,7 @@ export interface ActionContext { base?: Scenario }
 
 /** Election date determines the statutory era, not the year a scenario is edited. */
 export function electionRuleSetId(id: ElectionId): string {
+  if (id === 'k13' || id === 'k14' || id === 'k15') return ISRAEL_1992.id;
   const n = Number(id.slice(1));
   if (!Number.isInteger(n) || n < 16 || n > 26) throw new Error(`unknown election ${id}`);
   return n === 16 ? ISRAEL_1992.id : n <= 19 ? ISRAEL_2004.id : ISRAEL_2014.id;

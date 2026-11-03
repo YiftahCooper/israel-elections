@@ -103,3 +103,26 @@ gazetted seats, with thresholds **47,226 / 62,742** and quotas **25,138 / 24,619
 They are explicitly research fixtures: both elections remain unavailable because gazette
 figures conflict with polling data, full candidate rosters are unverified and required
 locality fields are missing. Successful allocation does not clear those release gates.
+
+## Knessets 13–15 (1992–1999)
+
+All three elections map to `ISRAEL_1992`: exact threshold **3/200**, 120 seats,
+floor quota, Bader–Ofer, the half-seats cap, and two-list agreements requiring both
+partners to qualify. The original [1991 Amendment No. 23](https://fs.knesset.gov.il/12/law/12_lsr_210711.PDF)
+changes section 81(a) to 1.5%. The original [1973 Amendment No. 4](https://fs.knesset.gov.il/7/law/7_lsr_211799.pdf)
+expressly establishes section 81(d)'s highest quotients, lottery and half-seats cap.
+Both are retained and hashed in the research manifest and k13–k15 source entries.
+
+The recovered agreement notices for 1996 and 1999 are section 67 publications of
+six and nine pairs respectively. Current agreement behavior agrees with the CEC's
+sections 67/82 text; a complete point-in-time intervening amendment-chain audit is
+**not complete**. See decision [0082](decisions/0082-k13-k15-rule-era-evidence.md)
+for exactly what was checked and why result reproduction is not statutory proof.
+
+Research fixtures reproduce every gazetted seat with thresholds/quotas **39,253 /
+20,715** (1992), **45,782 / 24,779** (1996), **49,642 / 25,936** (1999). All fill
+120 seats and need no lottery. The 1992 fixture uses only sourced inputs: no agreement
+notice was found, and no agreement was inferred. This reproduces seats but does not
+establish agreement completeness. Candidate coverage still blocks all three releases;
+no public election datasets are emitted. Tests also exercise historical rule reset and
+scenario import for ids k13–k15, independently of the real-seat checks.
