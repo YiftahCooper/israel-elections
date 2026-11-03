@@ -1,19 +1,13 @@
 /** CI-safe release builder. Reviewed transcriptions and hashed scans are durable;
  * no PDF parser, downloads or scratch files are needed to rebuild. */
-import { createHash } from 'node:crypto';
-import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
 import type { ElectionDataset, ElectionId } from '../../../src/data/schema.ts';
-import { allocate } from '../../../src/engine/allocate.ts';
-import { scenarioFromDataset, toEngineInput, validateScenario } from '../../../src/model/scenario.ts';
-import { META, neutralColor } from '../list-meta.ts';
+import { scenarioFromDataset, validateScenario } from '../../../src/model/scenario.ts';
+import { agreementRecords, listRecord, officialSeatsOf, seatOrder } from '../build/records.ts';
+import { candidateId, notSeatedNoteHe, notSeatedRanks, rosterFlags } from '../build/roster.ts';
+import { indexEntry, rawJson, verifySources } from '../build/sources.ts';
+import { allocateDataset, checkAgreementPairs, checker, checkNationalTable, type Check } from '../build/validate.ts';
 
-const ROOT = join(import.meta.dirname, '../../..');
-const json = <T>(file: string): T => JSON.parse(readFileSync(join(ROOT, file), 'utf8'));
-function assert(condition: unknown, message: string): asserts condition {
-  if (!condition) throw new Error(`k13–k15 preflight: ${message}`);
-}
-interface Source { id: string; file: string; sha256: string; bytes: number }
+const assert: Check = checker('k13–k15 preflight');
 export interface Review {
   id: ElectionId; reviewedOn: string; resultsSourceId: string; resultsPages: number[];
   gazetteTotals: { valid: number; invalid: number };
@@ -39,32 +33,18 @@ export interface Audit {
 export interface VerifyOptions { log?: boolean }
 
 export function verifyHistoricalProgress(id: 'k13' | 'k14' | 'k15', options: VerifyOptions = {}): Audit {
-  const review = json<Review>(`data/raw/${id}/national.reviewed.json`);
-  const rosters = json<RosterReview>(`data/raw/${id}/candidates.reviewed.json`);
-  const elected = json<ElectedReview>(`data/raw/${id}/elected.reviewed.json`);
+  const review = rawJson<Review>(`${id}/national.reviewed.json`);
+  const rosters = rawJson<RosterReview>(`${id}/candidates.reviewed.json`);
+  const elected = rawJson<ElectedReview>(`${id}/elected.reviewed.json`);
   assert(review.id === id && rosters.id === id && elected.id === id && elected.sourceId === review.resultsSourceId && elected.section === 4, `${id}: wrong evidence identity`);
-  const sources = json<Source[]>('data/raw/SOURCES.json');
-  const sourceIds = [review.resultsSourceId, review.supplementalTotals.sourceId, rosters.sourceId,
+  const rawSha256 = verifySources([review.resultsSourceId, review.supplementalTotals.sourceId, rosters.sourceId,
     `${id}-national-reviewed`, `${id}-rosters-reviewed`, `${id}-elected-reviewed`,
     ...rosters.lists.flatMap(l => l.sourceId ? [l.sourceId] : []),
-    'k13-k15-bader-ofer-amendment', 'k13-k15-threshold-amendment', ...(review.agreements.sourceId ? [review.agreements.sourceId] : [])];
-  const rawSha256: Record<string, string> = {};
-  for (const sourceId of new Set(sourceIds)) {
-    const source = sources.find(s => s.id === sourceId);
-    assert(source, `${id}: missing provenance ${sourceId}`);
-    const bytes = readFileSync(join(ROOT, 'data/raw', source.file));
-    assert(bytes.length === source.bytes && createHash('sha256').update(bytes).digest('hex') === source.sha256, `${id}: source changed: ${sourceId}`);
-    rawSha256[sourceId] = source.sha256;
-  }
-  assert(review.lists.length > 0 && new Set(review.lists.map(l => l.letters)).size === review.lists.length, `${id}: duplicate/empty lists`);
-  for (const l of review.lists) assert(l.nameHe && l.letters && Number.isSafeInteger(l.votes) && l.votes >= 0 && Number.isSafeInteger(l.officialSeats) && l.officialSeats >= 0, `${id}: invalid national row`);
-  assert(review.lists.reduce((s, l) => s + l.votes, 0) === review.gazetteTotals.valid, `${id}: list votes do not sum to gazetted valid`);
-  assert(review.gazetteTotals.valid + review.gazetteTotals.invalid === review.supplementalTotals.votesCast, `${id}: valid + invalid differs from CBS cast`);
-  assert(review.supplementalTotals.registered >= review.supplementalTotals.votesCast, `${id}: turnout exceeds electorate`);
-  assert(review.lists.reduce((s, l) => s + l.officialSeats, 0) === 120, `${id}: gazetted seats do not sum to 120`);
-  const members = review.agreements.pairs.flat();
-  assert(new Set(members).size === members.length && members.every(m => review.lists.some(l => l.letters === m)), `${id}: invalid/duplicate agreement member`);
-  assert(review.agreements.pairs.every(p => p.length === 2) && (review.agreements.sourceId !== null || members.length === 0), `${id}: unsourced agreement`);
+    'k13-k15-bader-ofer-amendment', 'k13-k15-threshold-amendment', ...(review.agreements.sourceId ? [review.agreements.sourceId] : [])], assert, { checkBytes: true });
+  checkNationalTable(assert, id, review.lists.map(l => ({ letters: l.letters, nameHe: l.nameHe, votes: l.votes, seats: l.officialSeats })),
+    { valid: review.gazetteTotals.valid, invalid: review.gazetteTotals.invalid, votesCast: review.supplementalTotals.votesCast, registered: review.supplementalTotals.registered });
+  checkAgreementPairs(assert, id, review.agreements.pairs, review.lists.map(l => l.letters));
+  assert(review.agreements.sourceId !== null || review.agreements.pairs.length === 0, `${id}: unsourced agreement`);
   assert(new Set(rosters.lists.map(l => l.letters)).size === rosters.lists.length, `${id}: duplicate roster`);
   for (const list of rosters.lists) {
     assert(review.lists.some(l => l.letters === list.letters), `${id}: unknown roster ${list.letters}`);
@@ -102,23 +82,25 @@ export function verifyHistoricalProgress(id: 'k13' | 'k14' | 'k15', options: Ver
   const ds = historicalDataset(audit);
   const s = scenarioFromDataset(ds);
   assert(validateScenario(JSON.parse(JSON.stringify(s))).length === 0, `${id}: invalid historical scenario`);
-  const result = allocate(toEngineInput(s));
+  const result = allocateDataset(ds);
   assert(result.seatsAllocated === 120 && result.warnings.length === 0, `${id}: incomplete/ambiguous allocation`);
   audit.seatDifferences = result.lists.filter(l => l.seats !== ds.officialSeats![l.id]).map(l => ({ letters: l.id.slice(3), official: ds.officialSeats![l.id], computed: l.seats }));
   // Missing agreements are NOT reverse-engineered to obtain a matching result.
   assert(audit.seatDifferences.length === 0, `${id}: sourced inputs do not reproduce every official seat`);
-  const entry = json<{ id: string; available: boolean }[]>('public/data/elections.json').find(e => e.id === id);
+  const entry = indexEntry(id);
   assert(entry?.available, `${id}: missing election index`);
   if (options.log !== false) console.log(`${id}: READY — all elected names cross-checked; every official seat reproduced.`);
   return audit;
 }
 
 /** Original registered rank order; omissions in the elected notice are explicit in reviewed evidence. */
+/** k13–k15 place roster flags after candidatesSecondary. */
+const LIST_KEYS = ['id', 'letters', 'nameHe', 'shortHe', 'shortEn', 'sponsorsHe', 'partiesHe', 'votes', 'withdrawn', 'color', 'bloc', 'candidates',
+  'candidatesSource', 'candidatesSecondary', 'candidatesTruncated', 'candidatesUnavailable', 'notesHe'];
+
 export function historicalDataset({ review, rosters, rawSha256 }: Audit): ElectionDataset {
   const n = Number(review.id.slice(1));
-  // candidates ranked above the last elected member but absent from the notice's elected names
-  const elected = json<ElectedReview>(`data/raw/${review.id}/elected.reviewed.json`);
-  const notSeated = (letters: string, rank: number) => { const e = elected.lists.find((x) => x.letters === letters); return !!e && rank < Math.max(...e.candidateRanks) && !e.candidateRanks.includes(rank); };
+  const elected = rawJson<ElectedReview>(`${review.id}/elected.reviewed.json`);
   return {
     schemaVersion: 1, id: review.id, knesset: n,
     electionDate: n === 13 ? '1992-06-23' : n === 14 ? '1996-05-29' : '1999-05-17',
@@ -127,18 +109,19 @@ export function historicalDataset({ review, rosters, rawSha256 }: Audit): Electi
     ruleSetId: 'il-1992-bader-ofer-1.5', hasLocalities: false,
     // Zero geographic counts mean no geography supplied in this dataset, not an official count.
     totals: { ...review.gazetteTotals, registered: review.supplementalTotals.registered, votesCast: review.supplementalTotals.votesCast, ballotBoxes: 0, localities: 0 },
-    lists: review.lists.map((l, i) => {
-      const id = `${n}-${l.letters}`; const meta = META[id];
+    lists: seatOrder(review.lists.map((l, i) => {
+      const id = `${n}-${l.letters}`;
       const roster = rosters.lists.find(r => r.letters === l.letters);
-      return { id, letters: l.letters, nameHe: l.nameHe, shortHe: meta?.he ?? l.nameHe, shortEn: meta?.en ?? null,
-        sponsorsHe: '', partiesHe: null, votes: l.votes, withdrawn: false, color: meta?.color ?? neutralColor(i), bloc: null,
-        candidates: roster?.candidates.map(c => ({ id: `${id}#${c.rank}`, rank: c.rank, nameHe: c.nameHe, ...(notSeated(l.letters, c.rank) ? { notSeated: true } : {}) })) ?? [],
-        candidatesSource: roster ? (roster.sourceId ?? rosters.sourceId) : '', candidatesSecondary: false,
-        ...(roster ? { candidatesTruncated: !roster.complete } : { candidatesUnavailable: true }),
-        notesHe: (roster?.candidates ?? []).filter(c => notSeated(l.letters, c.rank)).map(c => `${c.nameHe} (מקום ${c.rank}) אינו מופיע בין הנבחרים בהודעת התוצאות הרשמית; המנדט עבר למועמד הבא.`) };
-    }).sort((a, b) => (META[a.id]?.order ?? 999) - (META[b.id]?.order ?? 999) || b.votes - a.votes),
-    agreements: review.agreements.pairs.map(([a, b], i) => ({ id: `${n}-agr-${i + 1}`, members: [`${n}-${a}`, `${n}-${b}`], sourceId: review.agreements.sourceId! })),
-    blocs: [], officialSeats: Object.fromEntries(review.lists.map(l => [`${n}-${l.letters}`, l.officialSeats])),
+      // candidates ranked above the last elected member but absent from the notice's elected names
+      const notSeated = notSeatedRanks(elected.lists.find(x => x.letters === l.letters)?.candidateRanks ?? [], (roster?.candidates ?? []).map(c => c.rank));
+      return listRecord(n, i, { letters: l.letters, nameHe: l.nameHe, votes: l.votes,
+        candidates: roster?.candidates.map(c => ({ id: candidateId(id, c.rank), rank: c.rank, nameHe: c.nameHe, ...(notSeated.has(c.rank) ? { notSeated: true } : {}) })) ?? [],
+        candidatesSource: roster ? (roster.sourceId ?? rosters.sourceId) : '',
+        ...rosterFlags(!roster ? 'unavailable' : roster.complete ? 'complete' : 'truncated', 'explicit'),
+        notesHe: (roster?.candidates ?? []).filter(c => notSeated.has(c.rank)).map(notSeatedNoteHe) }, LIST_KEYS);
+    })),
+    agreements: agreementRecords(n, review.agreements.pairs, review.agreements.sourceId!),
+    blocs: [], officialSeats: officialSeatsOf(n, review.lists.map(l => ({ letters: l.letters, seats: l.officialSeats }))),
     officialSeatsSourceId: review.resultsSourceId, sourceIds: Object.keys(rawSha256),
     buildInfo: { builtAt: new Date().toISOString(), rawSha256 },
   };
@@ -146,8 +129,7 @@ export function historicalDataset({ review, rosters, rawSha256 }: Audit): Electi
 
 /** Shared by the public dataset and picker entry, preventing divergent coverage claims. */
 export function releaseStatus(id: ElectionId): ElectionDataset['status'] {
-  const entries = json<{ id: ElectionId; status: { stage: string; noteHe: string; noteEn: string } }[]>('public/data/elections.json');
-  const entry = entries.find(e => e.id === id);
+  const entry = indexEntry(id);
   assert(entry?.status.stage === 'official-final', `${id}: index release status missing`);
   return { ...entry.status, stage: 'official-final', asOf: '2026-11-03' };
 }
