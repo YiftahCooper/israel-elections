@@ -8,9 +8,13 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 
 ### Added
 
-- Seven more elections: 2009, 2013, 2015, April 2019, September 2019, 2020 and 2021
-  (Knessets 18–24), built from official sources; every list's official seats are reproduced exactly.
+- Nine more elections: 2003, 2006, 2009, 2013, 2015, April 2019, September 2019, 2020 and 2021
+  (Knessets 16–24), built from official sources; every list's official seats are reproduced exactly.
 - Party colours follow the same party across elections.
+- The election picker lists 1949–1999 (Knessets 1–15) as not yet available while their
+  official sources are verified.
+- Clear messages where data is missing: unavailable or partial candidate rosters, and
+  elections without locality results.
 - A documentation map, contributor guidance and retrospective decision records.
 
 ### Changed

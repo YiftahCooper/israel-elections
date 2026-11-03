@@ -70,7 +70,7 @@ and source evidence for agreements. These checks are explicit, not a guarantee t
 possible parsing error is caught. The manifest records hashes; the builder’s recording of
 those hashes is not a fresh integrity audit of every input file.
 
-The production builder covers k18–k26; each historical election has its own module in
+The production builder covers k16–k26; each historical election has its own module in
 `scripts/lib/historical/`. `scripts/lib/parse-historical-gazette.ts` is an unfinished prototype outside the build. Historical polling-station working copies
 are recovered into `.backup-scratch/raw/`; see [DATA.md](DATA.md) and decision
 [0004](decisions/0004-polling-station-storage.md) for storage and recovery details.
@@ -91,7 +91,7 @@ Playwright covers the election picker, interface levels and a scenario involving
 added voters, an agreement change, boundary tools, comparison, saving and share-link replay.
 These tests do not certify all possible scenarios or constitute an accessibility audit.
 
-Not implemented: released 2003 and 2006 datasets, English candidate transliterations,
+Not implemented: released 1949–1999 datasets, complete 2003/2006 rosters, English candidate transliterations,
 candidate portraits/party logos, later membership replacements and polling-station-level
 simulation. Locality results can seed a hypothetical turnout model; that model is not
 an official forecast.
