@@ -310,8 +310,11 @@ export function validateScenario(x: unknown): string[] {
     if (agreementIds.has(ag.id)) e.push(`duplicate agreement id ${ag.id}`);
     agreementIds.add(ag.id);
     if (ag.members.some((m) => !ids.has(m))) e.push(`agreement ${ag.id} refers to an unknown list`);
-    if (ag.members.length < 2 || ag.enabled && ag.members.length > (record(s.rules) ? Number(s.rules.maxAgreementSize) : 2)) e.push(`invalid agreement size for ${ag.id}`);
-    if (ag.enabled) for (const m of ag.members) {
+    // Section 67(a) binds historical scenarios. Experimental ones may hold agreements the engine
+    // reports as inactive (too many members, a list already in another agreement).
+    const statutory = s.mode !== 'experimental';
+    if (ag.members.length < 2 || statutory && ag.enabled && ag.members.length > (record(s.rules) ? Number(s.rules.maxAgreementSize) : 2)) e.push(`invalid agreement size for ${ag.id}`);
+    if (statutory && ag.enabled) for (const m of ag.members) {
       if (members.has(m)) e.push(`duplicate active agreement membership for ${m}`);
       members.add(m);
     }

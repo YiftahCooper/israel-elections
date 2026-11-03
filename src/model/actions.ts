@@ -211,7 +211,9 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       s = replaceList(s, action.listId, (l) => ({ ...l, ...action.patch }));
       break;
     case 'setAgreement': {
-      for (const m of action.agreement.members) listById(s, m);
+      const { members } = action.agreement;
+      for (const m of members) listById(s, m);
+      need(members.length >= 2 && new Set(members).size === members.length, 'agreement-members', 'An agreement joins at least two different lists.');
       const exists = s.agreements.some((a) => a.id === action.agreement.id);
       s = { ...s, agreements: exists ? s.agreements.map((a) => (a.id === action.agreement.id ? action.agreement : a)) : [...s.agreements, action.agreement] };
       checkAgreements(s);

@@ -94,3 +94,30 @@ describe('lineage of added lists (independent review #7)', () => {
     expect([g.votesA, g.votesB]).toEqual([100_000n, 110_000n]);
   });
 });
+
+describe('experimental agreement states the app creates re-import (found by tests/model-properties.test.ts)', () => {
+  const exp = run(base, { type: 'setMode', mode: 'experimental' });
+  const [a, b, c] = base.lists.filter((l) => !base.agreements.some((g) => g.members.includes(l.id))).map((l) => l.id);
+  const roundTrip = (s: typeof base) => validateScenario(JSON.parse(JSON.stringify(s)));
+  it('two enabled agreements sharing a list (switching an old agreement back on)', () => {
+    const s = run(exp, { type: 'setAgreement', agreement: { id: 'x1', members: [a, b], enabled: false } },
+      { type: 'setAgreement', agreement: { id: 'x2', members: [a, c], enabled: true } },
+      { type: 'setAgreement', agreement: { id: 'x1', members: [a, b], enabled: true } });
+    expect(allocate(toEngineInput(s)).agreements.find((g) => g.id === 'x2')!.reason).toBe('duplicate-membership');
+    expect(roundTrip(s)).toEqual([]);
+  });
+  it('an agreement larger than a later, smaller maximum size', () => {
+    const s = run(exp, { type: 'setRules', patch: { maxAgreementSize: 3 } },
+      { type: 'setAgreement', agreement: { id: 'x3', members: [a, b, c], enabled: true } },
+      { type: 'setRules', patch: { maxAgreementSize: 2 } });
+    expect(allocate(toEngineInput(s)).agreements.find((g) => g.id === 'x3')!.reason).toBe('too-many-members');
+    expect(roundTrip(s)).toEqual([]);
+  });
+  it('historical imports still require the section 67(a) structure', () => {
+    const s = { ...base, agreements: [{ id: 'x1', members: [a, b], enabled: true }, { id: 'x2', members: [a, c], enabled: true }] };
+    expect(roundTrip(s)).toContain(`duplicate active agreement membership for ${a}`);
+  });
+  it('rejects an agreement naming a list twice or only one list', () => {
+    for (const members of [[a, b, b], [a]]) expect(() => run(exp, { type: 'setAgreement', agreement: { id: 'x4', members, enabled: false } })).toThrow(ActionError);
+  });
+});
