@@ -1,0 +1,91 @@
+// Versioned on-disk format of an election dataset (public/data/<id>.json).
+// Historical datasets are immutable inputs: the app never edits them, it derives scenarios.
+
+export const DATASET_SCHEMA_VERSION = 1;
+
+export type ElectionId = 'k25' | 'k26';
+
+export interface DatasetStatus {
+  /** 'official-final' = CEC published final results; 'final-count-pending-publication' = full count
+   *  published by the CEC but not yet gazetted in Reshumot (section 84) */
+  stage: 'official-final' | 'final-count-pending-publication';
+  asOf: string; // ISO date of the data files
+  noteHe: string;
+  noteEn: string;
+}
+
+export interface Candidate {
+  /** stable within the dataset: `${listId}#${rank}` as approved */
+  id: string;
+  rank: number;
+  /** name exactly as published (family name first, as in CEC publications) */
+  nameHe: string;
+  givenHe?: string;
+  familyHe?: string;
+  /** sponsoring party for this candidate, when the official source states it */
+  partyHe?: string;
+}
+
+export interface ListRecord {
+  id: string; // `${knesset}-${letters}`
+  letters: string; // ballot letters (אותיות הרשימה)
+  nameHe: string; // full approved list name (כינוי הרשימה)
+  shortHe: string;
+  shortEn: string | null; // app-assigned common English name; null when none is in common use
+  /** sponsoring parties exactly as published */
+  sponsorsHe: string;
+  /** individual parties, only when the source separates them unambiguously */
+  partiesHe: string[] | null;
+  votes: number;
+  withdrawn: boolean;
+  color: string; // app-assigned display colour (not an official party colour)
+  bloc: string | null; // app-assigned default grouping, user-editable
+  candidates: Candidate[];
+  candidatesSource: string; // source id
+  candidatesSecondary: boolean;
+  /** verbatim official notes: resignations, disqualifications, court rulings */
+  notesHe: string[];
+}
+
+export interface AgreementRecord { id: string; members: [string, string]; sourceId: string }
+
+export interface BlocDef { id: string; nameHe: string; nameEn: string; color: string }
+
+export interface Totals {
+  registered: number; // בעלי זכות בחירה
+  votesCast: number; // מצביעים
+  invalid: number; // פסולים
+  valid: number; // כשרים
+  ballotBoxes: number;
+  localities: number;
+  /** votes cast in double envelopes (מעטפות חיצוניות), when the source reports them */
+  envelopeVotes?: number;
+}
+
+export interface ElectionDataset {
+  schemaVersion: number;
+  id: ElectionId;
+  knesset: number;
+  electionDate: string;
+  nameHe: string;
+  nameEn: string;
+  status: DatasetStatus;
+  ruleSetId: string;
+  totals: Totals;
+  lists: ListRecord[];
+  agreements: AgreementRecord[];
+  blocs: BlocDef[];
+  /** officially published seat counts per list id, used to validate the engine; null if none */
+  officialSeats: Record<string, number> | null;
+  officialSeatsSourceId: string | null;
+  sourceIds: string[];
+  buildInfo: { builtAt: string; rawSha256: Record<string, string> };
+}
+
+/** Locality-level results (public/data/<id>-localities.json), columns aligned to `listIds`. */
+export interface LocalityDataset {
+  schemaVersion: number;
+  id: ElectionId;
+  listIds: string[];
+  rows: { code: number; nameHe: string; committee: number; registered: number; votesCast: number; invalid: number; valid: number; votes: number[] }[];
+}

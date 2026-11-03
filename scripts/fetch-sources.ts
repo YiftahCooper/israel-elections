@@ -1,0 +1,170 @@
+// Downloads every programmatically retrievable primary source into data/raw/ and records
+// provenance (URL, retrieval time, byte size, SHA-256, publisher) in data/raw/SOURCES.json.
+//
+//   node scripts/fetch-sources.ts            # fetch everything missing
+//   node scripts/fetch-sources.ts --refresh  # re-download everything (e.g. after certification)
+//
+// Sources that cannot be fetched by script (gov.il HTML pages answer automated clients with
+// HTTP 403) were captured manually; they are listed in MANUAL_SOURCES and kept in the manifest.
+import { createHash } from 'node:crypto';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+
+const ROOT = join(import.meta.dirname, '..');
+const RAW = join(ROOT, 'data', 'raw');
+const MANIFEST = join(RAW, 'SOURCES.json');
+const refresh = process.argv.includes('--refresh');
+const UA = 'israel-elections-explorer/0.1 (research; +https://github.com/YiftahCooper/israel-elections)';
+
+export interface SourceRecord {
+  id: string;
+  file: string; // relative to data/raw
+  url: string;
+  publisher: string;
+  official: boolean;
+  description: string;
+  retrievedAt?: string;
+  bytes?: number;
+  sha256?: string;
+  lastModified?: string | null;
+  method: 'http' | 'datagov-datastore-api' | 'manual-capture';
+  note?: string;
+}
+
+const HTTP_SOURCES: Omit<SourceRecord, 'method'>[] = [
+  {
+    id: 'k26-ballots-csv', file: 'k26/expb.csv', url: 'https://media26.bechirot.gov.il/files/expb.csv',
+    publisher: 'ועדת הבחירות המרכזית לכנסת ה-26', official: true,
+    description: '26th Knesset results by polling station (קלפי), final count before publication in Reshumot',
+  },
+  {
+    id: 'k26-localities-csv', file: 'k26/expc.csv', url: 'https://media26.bechirot.gov.il/files/expc.csv',
+    publisher: 'ועדת הבחירות המרכזית לכנסת ה-26', official: true,
+    description: '26th Knesset results by locality (יישוב)',
+  },
+  {
+    id: 'k26-surplus-gazette', file: 'k26/yp15045-surplus.pdf', url: 'https://www.gov.il/BlobFolder/guide/candidates-lists-26/he/yp15045.pdf',
+    publisher: 'רשומות — ילקוט הפרסומים 15045 (19.10.2026), עמ׳ 1098', official: true,
+    description: 'Notice of surplus-vote agreements (התקשרות בין רשימות) for the 26th Knesset, section 67(c)',
+  },
+  {
+    id: 'k25-national-html', file: 'k25/nationalresults.html', url: 'https://votes25.bechirot.gov.il/nationalresults',
+    publisher: 'ועדת הבחירות המרכזית לכנסת ה-25', official: true,
+    description: '25th Knesset official final national results: list names, letters, seats, votes, totals',
+  },
+  {
+    id: 'k25-candidates-gazette', file: 'k25/yp10852-candidates.pdf',
+    url: 'https://www.gov.il/BlobFolder/guide/election-committee-history/ar/history_election-dates_records_dandidates25.pdf',
+    publisher: 'רשומות — ילקוט הפרסומים 10852 (20.10.2022), עמ׳ 292 ואילך', official: true,
+    description: '25th Knesset approved candidate lists published under section 65',
+  },
+  {
+    id: 'k25-surplus-press', file: 'k25/cec-press-surplus-2022-10-23.pdf',
+    url: 'https://www.gov.il/BlobFolder/news/dover41/he/press-releases_dover41.pdf',
+    publisher: 'ועדת הבחירות המרכזית — הודעה לעיתונות 23.10.2022', official: true,
+    description: 'CEC press release listing the surplus-vote agreements filed for the 25th Knesset',
+  },
+];
+
+const DATASTORE_SOURCES: Omit<SourceRecord, 'method'>[] = [
+  {
+    id: 'k25-ballots-datagov', file: 'k25/ballots.datagov.json',
+    url: 'https://data.gov.il/api/3/action/datastore_search?resource_id=cc223336-07bc-485d-b160-62df92967c0a',
+    publisher: 'ועדת הבחירות המרכזית via data.gov.il (dataset votes-knesset)', official: true,
+    description: '25th Knesset final results by polling station',
+  },
+  {
+    id: 'k25-localities-datagov', file: 'k25/localities.datagov.json',
+    url: 'https://data.gov.il/api/3/action/datastore_search?resource_id=b392b8ee-ba45-4ea0-bfed-f03a1a36e99c',
+    publisher: 'ועדת הבחירות המרכזית via data.gov.il (dataset votes-knesset)', official: true,
+    description: '25th Knesset final results by locality',
+  },
+];
+
+export const MANUAL_SOURCES: SourceRecord[] = [
+  {
+    id: 'k26-list-pages', file: 'k26/govil-list-pages.exa.json', method: 'manual-capture',
+    url: 'https://www.gov.il/he/pages/candidates-lists-26 (38 per-list pages)',
+    publisher: 'ועדת הבחירות המרכזית לכנסת ה-26 (gov.il)', official: true,
+    description: 'Official per-list pages: list name, letters, sponsoring parties, full ranked roster, per-candidate party, resignations',
+    note: 'gov.il returns HTTP 403 to scripted clients; captured on 2026-11-03 through the Exa page-fetch service, whose text extraction is stored verbatim. Each page carries its own "תאריך עדכון". Two pages (בי, כן) failed to render and come from the secondary source below.',
+  },
+  {
+    id: 'k26-secondary-fyi', file: 'k26/secondary/', method: 'manual-capture',
+    url: 'https://bechirot.fyi/lists/26/בי and /lists/26/כן',
+    publisher: 'bechirot.fyi (independent; transcribes the official CEC pages)', official: false,
+    description: 'Fallback rosters for צומת בית ישראל (בי) and כחול לבן (כן) only; marked secondary in the dataset',
+  },
+  {
+    id: 'k26-national-snapshot', file: '', method: 'manual-capture',
+    url: 'https://cdn-votes26.bechirot.gov.il/',
+    publisher: 'ועדת הבחירות המרכזית לכנסת ה-26', official: true,
+    description: 'Official results site. Refuses connections from outside Israel; a cached early-count snapshot was read only to confirm the list-name/letter mapping and the statement that final results will be published in Reshumot by 4 Nov 2026. No vote figures are taken from it.',
+  },
+  {
+    id: 'law-elections', file: '', method: 'manual-capture',
+    url: 'https://main.knesset.gov.il/Activity/Legislation/Laws/pages/lawbill.aspx?t=lawreshumot&lawitemid=488120',
+    publisher: 'חוק הבחירות לכנסת [נוסח משולב], התשכ"ט-1969', official: true,
+    description: 'Sections 81–83 (threshold, general quota, Bader–Ofer, surplus agreements, lottery tie-break). Text quoted in docs/ELECTORAL-LAW.md.',
+  },
+];
+
+function sha256(buf: Buffer) { return createHash('sha256').update(buf).digest('hex'); }
+
+async function fetchHttp(src: Omit<SourceRecord, 'method'>): Promise<SourceRecord> {
+  const res = await fetch(src.url, { headers: { 'User-Agent': UA } });
+  if (!res.ok) throw new Error(`${src.url}: HTTP ${res.status}`);
+  const buf = Buffer.from(await res.arrayBuffer());
+  const head = buf.subarray(0, 200).toString('utf8');
+  if (/<title>\s*שגיאה|ERROR: The request could not be satisfied/.test(head)) throw new Error(`${src.url}: error page returned`);
+  const out = join(RAW, src.file);
+  mkdirSync(dirname(out), { recursive: true });
+  writeFileSync(out, buf);
+  return { ...src, method: 'http', retrievedAt: new Date().toISOString(), bytes: buf.length, sha256: sha256(buf), lastModified: res.headers.get('last-modified') };
+}
+
+async function fetchDatastore(src: Omit<SourceRecord, 'method'>): Promise<SourceRecord> {
+  const records: unknown[] = [];
+  let fields: unknown = null;
+  let total = Infinity;
+  for (let offset = 0; offset < total; offset += 5000) {
+    const res = await fetch(`${src.url}&limit=5000&offset=${offset}`, { headers: { 'User-Agent': UA } });
+    if (!res.ok) throw new Error(`${src.url}: HTTP ${res.status}`);
+    const json = (await res.json()) as any;
+    if (!json.success) throw new Error(`${src.url}: API error`);
+    total = json.result.total;
+    fields = json.result.fields;
+    records.push(...json.result.records);
+  }
+  if (records.length !== total) throw new Error(`${src.url}: expected ${total} records, got ${records.length}`);
+  const buf = Buffer.from(JSON.stringify({ fields, records }, null, 0));
+  const out = join(RAW, src.file);
+  mkdirSync(dirname(out), { recursive: true });
+  writeFileSync(out, buf);
+  return { ...src, method: 'datagov-datastore-api', retrievedAt: new Date().toISOString(), bytes: buf.length, sha256: sha256(buf), lastModified: null };
+}
+
+const previous: SourceRecord[] = existsSync(MANIFEST) ? JSON.parse(readFileSync(MANIFEST, 'utf8')) : [];
+const byId = new Map(previous.map((s) => [s.id, s]));
+
+for (const src of HTTP_SOURCES) {
+  if (!refresh && existsSync(join(RAW, src.file)) && byId.get(src.id)?.sha256) continue;
+  byId.set(src.id, await fetchHttp(src));
+  console.log('fetched', src.id);
+}
+for (const src of DATASTORE_SOURCES) {
+  if (!refresh && existsSync(join(RAW, src.file)) && byId.get(src.id)?.sha256) continue;
+  byId.set(src.id, await fetchDatastore(src));
+  console.log('fetched', src.id);
+}
+for (const m of MANUAL_SOURCES) {
+  const prev = byId.get(m.id);
+  const rec: SourceRecord = { ...m, retrievedAt: prev?.retrievedAt ?? '2026-11-03' };
+  if (m.file && existsSync(join(RAW, m.file)) && !m.file.endsWith('/')) {
+    const buf = readFileSync(join(RAW, m.file));
+    rec.bytes = buf.length; rec.sha256 = sha256(buf);
+  }
+  byId.set(m.id, rec);
+}
+writeFileSync(MANIFEST, JSON.stringify([...byId.values()], null, 2) + '\n');
+console.log('manifest written:', byId.size, 'sources');
