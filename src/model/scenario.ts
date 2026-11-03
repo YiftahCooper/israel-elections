@@ -2,9 +2,9 @@
 // the historical dataset it was created from is never modified. Every displayed figure is derived
 // from a Scenario through the engine — no totals are stored separately.
 import { ELECTION_IDS, type BlocDef, type ElectionDataset, type ElectionId } from '../data/schema.ts';
-import { percentToRational } from '../engine/rational.ts';
+import { percentToRational, toPercentString } from '../engine/rational.ts';
 import type { AllocationInput, RemainderMethod, RuleSet } from '../engine/types.ts';
-import { ISRAEL_1949, ISRAEL_1951, ISRAEL_1973, ISRAEL_1977, ISRAEL_1992, ISRAEL_2004, ISRAEL_2014, RULESETS } from '../engine/rules.ts';
+import { ISRAEL_1949, ISRAEL_1951, ISRAEL_1973, ISRAEL_1977, ISRAEL_1992, ISRAEL_2004, ISRAEL_2014, OPTIONAL_RULES, RULE_DEFAULTS, RULESETS } from '../engine/rules.ts';
 
 export const SCENARIO_SCHEMA = 'israel-elections-scenario';
 export const SCENARIO_VERSION = 1;
@@ -134,17 +134,18 @@ export function electionRuleSetId(id: ElectionId): string {
 export function historicalRules(ruleSetId: string): SimRules {
   const r = RULESETS[ruleSetId];
   if (!r) throw new Error(`unknown rule set ${ruleSetId}`);
-  const thresholdPct = r.id === ISRAEL_1949.id ? '0' : r.id === ISRAEL_1951.id || r.id === ISRAEL_1973.id || r.id === ISRAEL_1977.id ? '1' : r.id === ISRAEL_1992.id ? '1.5' : r.id === ISRAEL_2004.id ? '2' : '3.25';
-  return { seats: r.seats, thresholdPct, quotaRounding: r.quotaRounding, remainderMethod: r.remainderMethod,
-    majorityCap: r.majorityCap, ...(r.seatsCappedAtCandidates ? { seatsCappedAtCandidates: true } : {}), maxAgreementSize: r.maxAgreementSize, agreementRequiresAllQualify: r.agreementRequiresAllQualify,
-    ...(r.quotaSeatOffset !== undefined ? { quotaSeatOffset: r.quotaSeatOffset } : {}),
-    ...(r.remainderRequiresInitialSeat !== undefined ? { remainderRequiresInitialSeat: r.remainderRequiresInitialSeat } : {}),
-    ...(r.agreementRequiresInitialSeat !== undefined ? { agreementRequiresInitialSeat: r.agreementRequiresInitialSeat } : {}),
-    ...(r.quotientRounding !== undefined ? { quotientRounding: r.quotientRounding } : {}),
-    ...(r.largestRemainderRepeat !== undefined ? { largestRemainderRepeat: r.largestRemainderRepeat } : {}),
-    ...(r.tiePolicy !== undefined ? { tiePolicy: r.tiePolicy } : {}),
-  };
+  const out: SimRules = { seats: r.seats, thresholdPct: toPercentString(r.threshold), quotaRounding: r.quotaRounding, remainderMethod: r.remainderMethod,
+    majorityCap: r.majorityCap, ...(r.seatsCappedAtCandidates ? { seatsCappedAtCandidates: true } : {}), maxAgreementSize: r.maxAgreementSize, agreementRequiresAllQualify: r.agreementRequiresAllQualify };
+  // optional semantics only where the preset states them
+  for (const k of OPTIONAL_RULES) if (r[k] !== undefined) Object.assign(out, { [k]: r[k] });
+  return out;
 }
+
+/** Historical rules equal the preset field by field; an absent optional field means its default. */
+const matchesPreset = (rules: Record<string, unknown>, expected: SimRules) =>
+  Boolean(rules.seatsCappedAtCandidates) === Boolean(expected.seatsCappedAtCandidates)
+  && Object.entries(expected).every(([k, v]) => rules[k] === v)
+  && OPTIONAL_RULES.every((k) => (rules[k] ?? RULE_DEFAULTS[k]) === (expected[k] ?? RULE_DEFAULTS[k]));
 
 /** `historicalId` is the statutory rule set the rules are labelled with, or null for experimental rules. */
 export function toRuleSet(r: SimRules, historicalId: string | null): RuleSet {
@@ -200,16 +201,20 @@ const finite: Check = (x) => typeof x === 'number' && Number.isFinite(x);
 const optional = (check: Check): Check => (x) => x === undefined || check(x);
 const nullable = (check: Check): Check => (x) => x === null || check(x);
 const array = (check: Check): Check => (x) => Array.isArray(x) && x.every(check);
-const shape = (fields: Record<string, Check>): Check => (x) => record(x) && Object.entries(fields).every(([k, check]) => check(x[k]));
+const shape = (fields: Record<string, Check>): Check => {
+  const entries = Object.entries(fields);
+  return (x) => record(x) && entries.every(([k, check]) => check(x[k]));
+};
 const oneOf = (...values: unknown[]): Check => (x) => values.includes(x);
 const uniqueStrings: Check = (x) => array(string)(x) && new Set(x as string[]).size === (x as string[]).length;
 const candidate = shape({ id: string, nameHe: string, partyHe: optional(string), originListId: optional(string) });
 const candidates: Check = (x) => array(candidate)(x) && new Set((x as SimCandidate[]).map((c) => c.id)).size === (x as SimCandidate[]).length;
 const bloc = shape({ id: string, nameHe: string, nameEn: string, color: string });
 const agreement = shape({ id: string, members: uniqueStrings, enabled: boolean });
-const list = shape({ id: string, originIds: uniqueStrings, letters: string, nameHe: string, shortHe: string,
+const listFields = shape({ id: string, originIds: uniqueStrings, letters: string, nameHe: string, shortHe: string,
   shortEn: nullable(string), color: string, bloc: nullable(string), votes: whole, withdrawn: boolean,
-  heldVotes: optional(whole), candidates, sponsorsHe: string });
+  heldVotes: optional(whole), sponsorsHe: string });
+const list: Check = (x) => listFields(x) && candidates((x as Record<string, unknown>).candidates);
 const ruleFields: Record<keyof SimRules, Check> = {
   seats: (x) => whole(x) && Number(x) >= 1 && Number(x) <= 1000,
   thresholdPct: (x) => {
@@ -268,13 +273,7 @@ export function validateScenario(x: unknown): string[] {
   if (!rules(s.rules)) e.push('invalid rules (seats, threshold, rounding, method, agreement size or flags)');
   if (s.mode === 'historical' && electionKnown) {
     const expected = historicalRules(electionRuleSetId(s.electionId as ElectionId));
-    if (!record(s.rules) || Boolean(s.rules.seatsCappedAtCandidates) !== Boolean(expected.seatsCappedAtCandidates) || Object.entries(expected).some(([k, v]) => (s.rules as Record<string, unknown>)[k] !== v)
-      || record(s.rules) && (s.rules.quotaSeatOffset ?? 0) !== (expected.quotaSeatOffset ?? 0)
-      || record(s.rules) && (s.rules.remainderRequiresInitialSeat ?? false) !== (expected.remainderRequiresInitialSeat ?? false)
-      || record(s.rules) && (s.rules.agreementRequiresInitialSeat ?? false) !== (expected.agreementRequiresInitialSeat ?? false)
-      || record(s.rules) && (s.rules.quotientRounding ?? 'exact') !== (expected.quotientRounding ?? 'exact')
-      || record(s.rules) && (s.rules.largestRemainderRepeat ?? true) !== (expected.largestRemainderRepeat ?? true)
-      || record(s.rules) && (s.rules.tiePolicy ?? 'lottery') !== (expected.tiePolicy ?? 'lottery')) e.push('historical rules must match the election statutory preset');
+    if (!record(s.rules) || !matchesPreset(s.rules, expected)) e.push('historical rules must match the election statutory preset');
   }
   if (!whole(s.registered) || !whole(s.invalid)) e.push('registered voters and invalid ballots must be safe whole numbers ≥ 0');
   const blocIds = new Set<string>();
@@ -292,8 +291,9 @@ export function validateScenario(x: unknown): string[] {
       if (ids.has(l.id)) e.push(`duplicate list id ${l.id}`);
       ids.add(l.id);
       if (!whole(l.votes)) e.push(`invalid vote count for ${l.id}`);
-      if (!candidates(l.candidates)) e.push(`invalid candidates for ${l.id}`);
-      if (!list(l)) e.push(`invalid list fields for ${l.id}`);
+      const rosterValid = candidates(l.candidates);
+      if (!rosterValid) e.push(`invalid candidates for ${l.id}`);
+      if (!rosterValid || !listFields(l)) e.push(`invalid list fields for ${l.id}`);
       if (l.bloc !== null && (typeof l.bloc !== 'string' || !blocIds.has(l.bloc))) e.push(`unknown bloc for ${l.id}`);
     }
     if (s.lists.every((l) => record(l) && whole(l.votes)) && whole(s.invalid)) {

@@ -163,7 +163,7 @@ export function* analysisCases(m: Modules, count: number): Generator<[string, ()
 }
 
 /** A random action against a scenario: plausible, malformed or referring to unknown lists. */
-function randomAction(r: Rng, s: Any): Any {
+export function randomAction(r: Rng, s: Any): Any {
   const ids = s.lists.map((l: Any) => l.id);
   const id = () => (r.chance(0.05) ? 'nope' : r.pick(ids));
   const v = () => r.pick([0, 1, 1000, r.int(500_000), -1, 1.5]);
