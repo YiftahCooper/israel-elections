@@ -1,0 +1,267 @@
+{
+  "id": "k16",
+  "reviewedOn": "2026-11-03",
+  "scope": "Partial evidence only; not an application dataset. Numbers visually transcribed from the retained scans. Names use normalized punctuation. No complete candidate roster has been verified.",
+  "resultsSourceId": "k16-results-gazette",
+  "resultsPages": [
+    1406,
+    1407
+  ],
+  "gazetteTotals": {
+    "registered": null,
+    "votesCast": null,
+    "valid": 3148364,
+    "invalid": 52409
+  },
+  "supplementalTotals": {
+    "registered": 4720075,
+    "votesCast": 3200773,
+    "sourceId": "k16-cbs-national-summary",
+    "note": "Official CBS table 27.2 (29 August 2023), source CEC. The gazette does not state registered voters or total voters."
+  },
+  "lists": [
+    {
+      "letters": "אמת",
+      "nameHe": "העבודה-מימד בראשות מצנע",
+      "gazetteVotes": 455183,
+      "officialSeats": 19
+    },
+    {
+      "letters": "ב",
+      "nameHe": "המפד״ל - המפלגה הדתית לאומית, המזרחי - הפועל המזרחי בארץ ישראל",
+      "gazetteVotes": 132730,
+      "officialSeats": 6
+    },
+    {
+      "letters": "ג",
+      "nameHe": "יהדות התורה והשבת אגודת ישראל - דגל התורה",
+      "gazetteVotes": 135087,
+      "officialSeats": 5
+    },
+    {
+      "letters": "ד",
+      "nameHe": "בל״ד (ברית לאומית דמוקרטית)",
+      "gazetteVotes": 71299,
+      "officialSeats": 3
+    },
+    {
+      "letters": "ו",
+      "nameHe": "החזית הדמוקרטית לשלום ולשוויון (המפלגה הקומוניסטית הישראלית וחוגי ציבור יהודים וערבים) והתנועה הערבית להתחדשות",
+      "gazetteVotes": 93819,
+      "officialSeats": 3
+    },
+    {
+      "letters": "ז",
+      "nameHe": "זעם צדק חברתי",
+      "gazetteVotes": 894,
+      "officialSeats": 0
+    },
+    {
+      "letters": "זנ",
+      "nameHe": "אהבת ישראל בנשיאות גדול המקובלים הרב כדורי",
+      "gazetteVotes": 5468,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ט",
+      "nameHe": "מפלגת זכויות הגבר במשפחה - רע״ש",
+      "gazetteVotes": 1284,
+      "officialSeats": 0
+    },
+    {
+      "letters": "יש",
+      "nameHe": "שינוי מפלגת החילונים ומעמד הביניים",
+      "gazetteVotes": 386535,
+      "officialSeats": 15
+    },
+    {
+      "letters": "כן",
+      "nameHe": "ישראל בעליה בראשות נתן שרנסקי",
+      "gazetteVotes": 67719,
+      "officialSeats": 2
+    },
+    {
+      "letters": "ל",
+      "nameHe": "האיחוד הלאומי - ישראל ביתנו - מולדת - תקומה",
+      "gazetteVotes": 173973,
+      "officialSeats": 7
+    },
+    {
+      "letters": "מחל",
+      "nameHe": "הליכוד עם אריאל שרון לראשות הממשלה",
+      "gazetteVotes": 925279,
+      "officialSeats": 38
+    },
+    {
+      "letters": "מרצ",
+      "nameHe": "מרצ - הבחירה הדמוקרטית - שחר",
+      "gazetteVotes": 164122,
+      "officialSeats": 6
+    },
+    {
+      "letters": "ם",
+      "nameHe": "עם אחד בראשות עמיר פרץ",
+      "gazetteVotes": 86808,
+      "officialSeats": 3
+    },
+    {
+      "letters": "נ",
+      "nameHe": "ישראל אחרת כי נשבר מפוליטיקאים",
+      "gazetteVotes": 7144,
+      "officialSeats": 0
+    },
+    {
+      "letters": "נץ",
+      "nameHe": "חרות",
+      "gazetteVotes": 36202,
+      "officialSeats": 0
+    },
+    {
+      "letters": "עם",
+      "nameHe": "הרשימה הערבית המאוחדת",
+      "gazetteVotes": 65551,
+      "officialSeats": 2
+    },
+    {
+      "letters": "פה",
+      "nameHe": "המרכז - תנועה חברתית לאומית בראשות דוד מגן",
+      "gazetteVotes": 1961,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ף",
+      "nameHe": "לידר - מפלגה מתקדמת ליברלית דמוקרטית",
+      "gazetteVotes": 883,
+      "officialSeats": 0
+    },
+    {
+      "letters": "צ",
+      "nameHe": "צומת",
+      "gazetteVotes": 2023,
+      "officialSeats": 0
+    },
+    {
+      "letters": "צף",
+      "nameHe": "הברית הלאומית המתקדמת - מפלגת האחדות הלאומית",
+      "gazetteVotes": 20571,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ק",
+      "nameHe": "ארגון הפעולה הדמוקרטי - דע״ם",
+      "gazetteVotes": 1925,
+      "officialSeats": 0
+    },
+    {
+      "letters": "קך",
+      "nameHe": "אזרח ומדינה",
+      "gazetteVotes": 1566,
+      "officialSeats": 0
+    },
+    {
+      "letters": "קנ",
+      "nameHe": "עלה ירוק",
+      "gazetteVotes": 37855,
+      "officialSeats": 0
+    },
+    {
+      "letters": "קץ",
+      "nameHe": "ל.ה.ב.ה",
+      "gazetteVotes": 1181,
+      "officialSeats": 0
+    },
+    {
+      "letters": "רק",
+      "nameHe": "הירוקים",
+      "gazetteVotes": 12833,
+      "officialSeats": 0
+    },
+    {
+      "letters": "שס",
+      "nameHe": "התאחדות הספרדים העולמית שומרי תורה",
+      "gazetteVotes": 258879,
+      "officialSeats": 11
+    }
+  ],
+  "pollingColumnsNotInGazette": {
+    "זך": {
+      "votes": 0,
+      "note": "No result line in gazette; zero column in datastore. Not treated as a verified roster or list record."
+    }
+  },
+  "columnAliases": {},
+  "agreements": {
+    "sourceId": "k16-surplus-gazette",
+    "issue": 5151,
+    "page": 1312,
+    "noticeDate": "2003-01-20",
+    "publicationDate": "2003-01-26",
+    "complete": true,
+    "pairs": [
+      [
+        "אמת",
+        "מרצ"
+      ],
+      [
+        "יש",
+        "רק"
+      ],
+      [
+        "ל",
+        "כן"
+      ],
+      [
+        "ב",
+        "ם"
+      ],
+      [
+        "שס",
+        "ג"
+      ],
+      [
+        "ו",
+        "ד"
+      ]
+    ]
+  },
+  "candidateChecks": {
+    "sourceId": "k16-candidates-gazette",
+    "completeRostersVerified": false,
+    "lists": [
+      {
+        "letters": "מחל",
+        "publishedCount": 114,
+        "first": {
+          "rank": 1,
+          "nameHe": "שרון אריאל"
+        },
+        "pages": [
+          1197,
+          1198
+        ],
+        "scope": "Only the first candidate and terminal rank were checked, not the full roster."
+      }
+    ]
+  },
+  "discrepancies": [
+    {
+      "field": "votes:ב",
+      "gazette": 132730,
+      "polling": 132370,
+      "status": "unresolved-gazette-discrepancy",
+      "note": "Official Knesset history and seat-distribution example also report 132370, but no formal gazette correction was located."
+    },
+    {
+      "field": "votes:ף",
+      "gazette": 883,
+      "polling": 833,
+      "status": "unresolved-gazette-discrepancy",
+      "note": "The retained scan reads 883. No official correction located."
+    }
+  ],
+  "releaseBlockers": [
+    "National figures do not match the gazette exactly; no formal correction was verified.",
+    "Full approved candidate rosters and contiguous ranks have not been transcribed and verified.",
+    "The locality schema requires committee numbers absent from the polling source."
+  ]
+}

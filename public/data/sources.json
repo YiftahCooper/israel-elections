@@ -336,7 +336,7 @@
   "official": true,
   "description": "תוצאות האמת של הבחירות לכנסת ה-16 לפי קלפיות",
   "method": "datagov-datastore-api",
-  "retrievedAt": "2026-11-03T15:06:18.003Z",
+  "retrievedAt": "2026-11-03T15:26:38.113Z",
   "bytes": 3268493,
   "sha256": "4079e77b978cc68d7f4b085f2549a309f5ae241ebe1653a1d041aa243a180473",
   "lastModified": null
@@ -349,7 +349,7 @@
   "official": true,
   "description": "תוצאות האמת של הבחירות לכנסת ה-17 לפי קלפיות",
   "method": "datagov-datastore-api",
-  "retrievedAt": "2026-11-03T15:06:19.380Z",
+  "retrievedAt": "2026-11-03T15:26:41.120Z",
   "bytes": 3518955,
   "sha256": "28c9b00394a850bef6c3b5ee381fab63d6ffb8e889f70516366752466852f1a0",
   "lastModified": null
@@ -623,5 +623,101 @@
   "bytes": 118151,
   "sha256": "19ba7a5dfce76f60a41fd1e5509ea16c4495271777dca65ed1247b3f181c5d49",
   "lastModified": "Tue, 15 Sep 2026 10:19:40 GMT"
+ },
+ {
+  "id": "k16-surplus-gazette",
+  "file": "k16/yp5151-surplus.pdf",
+  "url": "https://olaw.org.il/yalkut/yalkut-5151.pdf",
+  "publisher": "Reshumot / Yalkut HaPirsumim 5151 (olaw.org.il mirror)",
+  "official": true,
+  "description": "Complete official surplus-agreement notice, visually verified from the scan; six pairs for 2003, four for 2006.",
+  "method": "http",
+  "retrievedAt": "2026-11-03T15:31:36.320940+00:00",
+  "bytes": 221023,
+  "sha256": "f9384f5e3adeb038eb84d4f1fd509e89a2c36eb2c59407a23b17fa94ca8a3f81"
+ },
+ {
+  "id": "k16-cbs-national-summary",
+  "file": "k16/cbs-national-summary.pdf",
+  "url": "https://www.cbs.gov.il/he/publications/DocLib/2023/ShnatonElectionsTheKnessetandGovernment.27/st27_02.pdf",
+  "publisher": "Central Bureau of Statistics; source: Central Elections Committee",
+  "official": true,
+  "description": "Official table 27.2 published 29 August 2023: registered voters and turnout, supplemental to the gazette.",
+  "method": "http",
+  "retrievedAt": "2026-11-03T15:31:36.321123+00:00",
+  "bytes": 123365,
+  "sha256": "d72d79f8e8f30ae85281e0b7a9a24245ba4a7fa0e50ca0165990d99b8e0b6a12"
+ },
+ {
+  "id": "k16-national-reviewed",
+  "file": "k16/national.reviewed.json",
+  "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset16-results.pdf",
+  "publisher": "Project transcription of official CEC / Reshumot scans",
+  "official": false,
+  "description": "Partial reviewed national and agreement transcription. Not a released dataset; preserves unresolved source discrepancies.",
+  "method": "manual-capture",
+  "retrievedAt": "2026-11-03T15:31:36.321195+00:00",
+  "bytes": 7213,
+  "sha256": "18763593e4136eee06605f76e3b09e948ce8c132b8b7f165ebf12c7ad77c5c30"
+ },
+ {
+  "id": "k17-surplus-gazette",
+  "file": "k17/yp5510-surplus.pdf",
+  "url": "https://olaw.org.il/yalkut/yalkut-5510.pdf",
+  "publisher": "Reshumot / Yalkut HaPirsumim 5510 (olaw.org.il mirror)",
+  "official": true,
+  "description": "Complete official surplus-agreement notice, visually verified from the scan; six pairs for 2003, four for 2006.",
+  "method": "http",
+  "retrievedAt": "2026-11-03T15:31:36.321271+00:00",
+  "bytes": 223337,
+  "sha256": "6449cf9a909c041d038c89fb272620c4b8eb8d01b3e866cb0d5dbe037671bb65"
+ },
+ {
+  "id": "k17-cbs-national-summary",
+  "file": "k16/cbs-national-summary.pdf",
+  "url": "https://www.cbs.gov.il/he/publications/DocLib/2023/ShnatonElectionsTheKnessetandGovernment.27/st27_02.pdf",
+  "publisher": "Central Bureau of Statistics; source: Central Elections Committee",
+  "official": true,
+  "description": "Official table 27.2 published 29 August 2023: registered voters and turnout, supplemental to the gazette.",
+  "method": "http",
+  "retrievedAt": "2026-11-03T15:31:36.321383+00:00",
+  "bytes": 123365,
+  "sha256": "d72d79f8e8f30ae85281e0b7a9a24245ba4a7fa0e50ca0165990d99b8e0b6a12"
+ },
+ {
+  "id": "k17-national-reviewed",
+  "file": "k17/national.reviewed.json",
+  "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset17-results.pdf",
+  "publisher": "Project transcription of official CEC / Reshumot scans",
+  "official": false,
+  "description": "Partial reviewed national and agreement transcription. Not a released dataset; preserves unresolved source discrepancies.",
+  "method": "manual-capture",
+  "retrievedAt": "2026-11-03T15:31:36.321449+00:00",
+  "bytes": 7360,
+  "sha256": "e827d486c89a17a4a6e644af7b60122d1493054832d26edf75de001d4bb741d5"
+ },
+ {
+  "id": "k16-reconciliation-reviewed",
+  "file": "k16/reconciliation.reviewed.json",
+  "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=498b48e9-5af6-474d-b7a4-5ac1e21d3a08",
+  "publisher": "Project derivation of official CEC polling-station data",
+  "official": false,
+  "description": "Reviewed polling sums and SHA-256 of derived research locality rows; missing fields remain null, not application data.",
+  "method": "manual-capture",
+  "retrievedAt": "2026-11-03T15:33:00.037Z",
+  "bytes": 1380,
+  "sha256": "ce39e2e4d9c0aff5aab01351ddd1a1612e1dae388eb2c6ed412f963b08f9f433"
+ },
+ {
+  "id": "k17-reconciliation-reviewed",
+  "file": "k17/reconciliation.reviewed.json",
+  "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=70f8bc93-8d98-4c20-ad7c-768af713f1c5",
+  "publisher": "Project derivation of official CEC polling-station data",
+  "official": false,
+  "description": "Reviewed polling sums and SHA-256 of derived research locality rows; missing fields remain null, not application data.",
+  "method": "manual-capture",
+  "retrievedAt": "2026-11-03T15:33:00.088Z",
+  "bytes": 1535,
+  "sha256": "6c06dfb518f650693f15308e2a624383698bfff856f00eaa6d33db56d9f3cfd5"
  }
 ]

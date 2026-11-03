@@ -79,3 +79,27 @@ No additional allocation-method difference has been established in this implemen
 election's era, using its historical base scenario when provided. Tests cover that rule
 plumbing for each election id. They do **not** establish seat reproduction for Knessets
 16–24: those datasets remain unreleased pending the checks in DATA.md.
+
+### Knessets 16–17: checked clauses and archive-date limitation
+
+For **2003**, use `ISRAEL_1992` (1.5%). The CEC's
+[2003 allocation explanation](https://www.gov.il/apps/elections/elections-knesset-16/heb/about/seats_system.html)
+explicitly states 1.5% and describes the general quota, pair competition and internal
+re-division. Caution: the [law page in the 2003 archive](https://www.gov.il/apps/elections/elections-knesset-16/heb/laws/elections_law.html)
+currently includes Amendment 51 and **2%**; it was updated after that election. Its URL
+is not evidence of point-in-time wording. No additional modeled rule difference was found,
+but a complete pre-2003 amendment-chain comparison remains unverified.
+
+For **2006**, use `ISRAEL_2004` (2%). The CEC's
+[consolidated law, updated 1 January 2006](https://www.gov.il/apps/elections/elections-knesset-17/heb/law/ElectionLaw.html),
+section 81(a), states 2%. Sections 81(b), 81(d)(4) and 82(a–b) retain the floor quota,
+half-seats cap, both-partners-qualify condition, remainder-stage combination and full
+internal re-division modeled today. The indexed statutory text was inspected; direct HTML
+retrieval returned 403. No additional parameter change is supported by this evidence.
+Decision [0051](decisions/0051-k16-k17-historical-allocation-evidence.md) records the limits.
+
+The new k16/k17 tests exercise actual historical national vote fixtures and reproduce all
+gazetted seats, with thresholds **47,226 / 62,742** and quotas **25,138 / 24,619**.
+They are explicitly research fixtures: both elections remain unavailable because gazette
+figures conflict with polling data, full candidate rosters are unverified and required
+locality fields are missing. Successful allocation does not clear those release gates.

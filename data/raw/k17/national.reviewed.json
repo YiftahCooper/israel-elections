@@ -1,0 +1,272 @@
+{
+  "id": "k17",
+  "reviewedOn": "2026-11-03",
+  "scope": "Partial evidence only; not an application dataset. Numbers visually transcribed from the retained scans. Names use normalized punctuation. No complete candidate roster has been verified.",
+  "resultsSourceId": "k17-results-gazette",
+  "resultsPages": [
+    2464,
+    2465
+  ],
+  "gazetteTotals": {
+    "registered": null,
+    "votesCast": null,
+    "valid": 3137064,
+    "invalid": 49684
+  },
+  "supplementalTotals": {
+    "registered": 5014622,
+    "votesCast": 3186739,
+    "sourceId": "k17-cbs-national-summary",
+    "note": "Official CBS table 27.2 (29 August 2023), source CEC. The gazette does not state registered voters or total voters."
+  },
+  "lists": [
+    {
+      "letters": "אמת",
+      "nameHe": "העבודה - מימד בראשות עמיר פרץ",
+      "gazetteVotes": 472366,
+      "officialSeats": 19
+    },
+    {
+      "letters": "ג",
+      "nameHe": "יהדות התורה והשבת אגודת ישראל - דגל התורה",
+      "gazetteVotes": 147091,
+      "officialSeats": 6
+    },
+    {
+      "letters": "ד",
+      "nameHe": "אלתג׳מוע אלווטני אל דמוקרטי - בל״ד",
+      "gazetteVotes": 72066,
+      "officialSeats": 3
+    },
+    {
+      "letters": "ה",
+      "nameHe": "ברית עולם",
+      "gazetteVotes": 2011,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ו",
+      "nameHe": "חד״ש - החזית הדמוקרטית לשלום ולשוויון (המפלגה הקומוניסטית הישראלית וחוגי ציבור יהודים וערבים)",
+      "gazetteVotes": 86092,
+      "officialSeats": 3
+    },
+    {
+      "letters": "ז",
+      "nameHe": "לחם",
+      "gazetteVotes": 1381,
+      "officialSeats": 0
+    },
+    {
+      "letters": "זה",
+      "nameHe": "עתיד אחד - עתיד טוב לישראל",
+      "gazetteVotes": 14005,
+      "officialSeats": 0
+    },
+    {
+      "letters": "זך",
+      "nameHe": "גיל - גימלאי ישראל לכנסת",
+      "gazetteVotes": 185759,
+      "officialSeats": 7
+    },
+    {
+      "letters": "חץ",
+      "nameHe": "חץ - תנועה חילונית ציונית בראשות אברהם פורז",
+      "gazetteVotes": 10113,
+      "officialSeats": 0
+    },
+    {
+      "letters": "טב",
+      "nameHe": "איחוד לאומי - מפד״ל רשימה יהודית לאומית מאוחדת",
+      "gazetteVotes": 224083,
+      "officialSeats": 9
+    },
+    {
+      "letters": "יש",
+      "nameHe": "שינוי - המפלגה האזרחית של ישראל",
+      "gazetteVotes": 4675,
+      "officialSeats": 0
+    },
+    {
+      "letters": "כ",
+      "nameHe": "חזית יהודית לאומית בראשות ברוך מרזל",
+      "gazetteVotes": 24824,
+      "officialSeats": 0
+    },
+    {
+      "letters": "כן",
+      "nameHe": "קדימה - עם אהוד אולמרט לראשות הממשלה",
+      "gazetteVotes": 690901,
+      "officialSeats": 29
+    },
+    {
+      "letters": "כץ",
+      "nameHe": "צומת",
+      "gazetteVotes": 1342,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ל",
+      "nameHe": "ישראל ביתנו בראשות אביגדור ליברמן",
+      "gazetteVotes": 281880,
+      "officialSeats": 11
+    },
+    {
+      "letters": "מחל",
+      "nameHe": "הליכוד עם בנימין נתניהו לראשות הממשלה",
+      "gazetteVotes": 281996,
+      "officialSeats": 12
+    },
+    {
+      "letters": "מרצ",
+      "nameHe": "מרצ - ישראל החברתית דמוקרטית",
+      "gazetteVotes": 118302,
+      "officialSeats": 5
+    },
+    {
+      "letters": "נץ",
+      "nameHe": "חרות",
+      "gazetteVotes": 2387,
+      "officialSeats": 0
+    },
+    {
+      "letters": "עם",
+      "nameHe": "הרשימה הערבית המאוחדת והתנועה הערבית להתחדשות",
+      "gazetteVotes": 94786,
+      "officialSeats": 4
+    },
+    {
+      "letters": "פ",
+      "nameHe": "תפנית בראשות עוזי דיין",
+      "gazetteVotes": 18753,
+      "officialSeats": 0
+    },
+    {
+      "letters": "פז",
+      "nameHe": "לב",
+      "gazetteVotes": 1765,
+      "officialSeats": 0
+    },
+    {
+      "letters": "פכ",
+      "nameHe": "עוז לעניים",
+      "gazetteVotes": 1214,
+      "officialSeats": 0
+    },
+    {
+      "letters": "פץ",
+      "nameHe": "מפלגה למלחמה בבנקים",
+      "gazetteVotes": 2163,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ף",
+      "nameHe": "לידר",
+      "gazetteVotes": 580,
+      "officialSeats": 0
+    },
+    {
+      "letters": "צה",
+      "nameHe": "הציונות החדשה",
+      "gazetteVotes": 1278,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ק",
+      "nameHe": "דע״ם - מפלגת פועלים",
+      "gazetteVotes": 3692,
+      "officialSeats": 0
+    },
+    {
+      "letters": "קז",
+      "nameHe": "צדק לכל - רע״ש",
+      "gazetteVotes": 3819,
+      "officialSeats": 0
+    },
+    {
+      "letters": "קנ",
+      "nameHe": "עלה ירוק",
+      "gazetteVotes": 40353,
+      "officialSeats": 0
+    },
+    {
+      "letters": "קפ",
+      "nameHe": "המפלגה הלאומית הערבית בראשות מוחמד כנעאן",
+      "gazetteVotes": 738,
+      "officialSeats": 0
+    },
+    {
+      "letters": "רק",
+      "nameHe": "הירוקים - לאיכות הסביבה והחיים בישראל",
+      "gazetteVotes": 47595,
+      "officialSeats": 0
+    },
+    {
+      "letters": "שס",
+      "nameHe": "ש״ס - התאחדות הספרדים העולמית שומרי תורה",
+      "gazetteVotes": 299054,
+      "officialSeats": 12
+    }
+  ],
+  "pollingColumnsNotInGazette": {},
+  "columnAliases": {},
+  "agreements": {
+    "sourceId": "k17-surplus-gazette",
+    "issue": 5510,
+    "page": 2386,
+    "noticeDate": "2006-03-23",
+    "publicationDate": "2006-03-26",
+    "complete": true,
+    "pairs": [
+      [
+        "אמת",
+        "מרצ"
+      ],
+      [
+        "שס",
+        "ג"
+      ],
+      [
+        "ו",
+        "ד"
+      ],
+      [
+        "ל",
+        "מחל"
+      ]
+    ]
+  },
+  "candidateChecks": {
+    "sourceId": "k17-candidates-gazette",
+    "completeRostersVerified": false,
+    "lists": [
+      {
+        "letters": "כן",
+        "publishedCount": 120,
+        "first": {
+          "rank": 1,
+          "nameHe": "אולמרט אהוד"
+        },
+        "pages": [
+          2192,
+          2193
+        ],
+        "scope": "Only the first candidate and terminal rank were checked, not the full roster."
+      }
+    ]
+  },
+  "discrepancies": [
+    {
+      "field": "invalid",
+      "gazette": 49684,
+      "polling": 49675,
+      "status": "unresolved-gazette-discrepancy",
+      "note": "Datastore has no invalid column: 3186739 cast - 3137064 valid = 49675. Gazette invalid implies 3186748 cast. No official correction located."
+    }
+  ],
+  "releaseBlockers": [
+    "National figures do not match the gazette exactly; no formal correction was verified.",
+    "Full approved candidate rosters and contiguous ranks have not been transcribed and verified.",
+    "The locality schema requires committee numbers absent from the polling source.",
+    "The locality schema requires locality codes and registered-voter counts absent from the polling source."
+  ]
+}
