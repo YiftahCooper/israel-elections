@@ -108,7 +108,7 @@ export function ListPanel({ s, r, ds, base, baseR }: { s: Scenario; r: Allocatio
           {baseList && l.votes !== baseList.votes && <button className="btn small" onClick={() => editTo(baseList.votes)} title={L('The difference is balanced as chosen above.', 'ההפרש מאוזן כפי שנבחר למעלה.')}>{L(`Reset votes to ${fmtInt(baseList.votes)}`, `איפוס הקולות ל-${fmtInt(baseList.votes)}`)}</button>}
           {baseList && listChanged && <button className="btn small" onClick={() => {
             const a = deltaAction(s, l, clampTarget(s, l, baseList.votes, src) - l.votes, src, histShares);
-            dispatchMany([...(a ? [a] : []), { type: 'resetList', listId: l.id }]);
+            dispatchMany([...(a ? [a] : []), { type: 'resetList', listId: l.id, keepVotes: true }]);
           }}>{L('Reset everything about this list', 'איפוס כל פרטי הרשימה')}</button>}
         </div>
 

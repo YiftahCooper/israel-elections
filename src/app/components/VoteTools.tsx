@@ -108,6 +108,7 @@ export function VoteTools({ s, r, l }: { s: Scenario; r: AllocationResult; l: Si
         <div className="callout small" style={{ marginTop: 8 }} aria-live="polite">
           {shown.res.reason === 'already' && L('Already true — no change needed.', 'כבר מתקיים — אין צורך בשינוי.')}
           {shown.res.reason === 'infeasible' && L('Not possible with this source (no votes available).', 'לא אפשרי ממקור זה (אין קולות זמינים).')}
+          {shown.res.reason === 'inconclusive' && L('Inconclusive: sampled counts did not achieve the goal; an untested interval may still do so.', 'לא חד־משמעי: הספירות שנדגמו לא השיגו את היעד; ייתכן שטווח שלא נבדק כן ישיג אותו.')}
           {shown.res.reason === 'limit' && L(`Not reachable: even ${fmtInt(shown.res.limit)} votes from this source are not enough.`, `לא ניתן להשגה: אפילו ${fmtInt(shown.res.limit)} קולות ממקור זה אינם מספיקים.`)}
           {shown.res.found && shown.res.votes !== null && (
             <>

@@ -177,6 +177,16 @@ export function allocate(input: AllocationInput): AllocationResult {
   const agreements: AgreementStatus[] = [];
   const unitOf = new Map<string, string>();
   const unitMembers = new Map<string, string[]>();
+  // Keep list and agreement units in separate namespaces. Preserve ordinary public IDs (including
+  // recorded lottery keys), but escape an agreement ID when it collides with any list/unit ID.
+  const reservedIds = new Set([...listIds, ...input.agreements.map((a) => a.id)]);
+  const agreementUnitId = (id: string) => {
+    if (!listIds.has(id)) return id;
+    let key = JSON.stringify(['agreement', id]);
+    while (reservedIds.has(key)) key = JSON.stringify(['agreement', key]);
+    reservedIds.add(key);
+    return key;
+  };
   for (const a of input.agreements) {
     const members = [...new Set(a.members)];
     const status: AgreementStatus = { id: a.id, members, active: false, failedMembers: [] };
@@ -193,8 +203,9 @@ export function allocate(input: AllocationInput): AllocationResult {
     members.forEach((m) => seenMember.add(m));
     if (status.active) {
       const inUnit = members.filter((m) => qualified.has(m));
-      for (const m of inUnit) unitOf.set(m, a.id);
-      unitMembers.set(a.id, inUnit);
+      const unitId = agreementUnitId(a.id);
+      for (const m of inUnit) unitOf.set(m, unitId);
+      unitMembers.set(unitId, inUnit);
     }
     agreements.push(status);
   }

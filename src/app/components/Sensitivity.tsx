@@ -126,6 +126,8 @@ function BlocFlip({ s, r }: { s: Scenario; r: AllocationResult }) {
   const lang = useLang();
   const [bloc, setBloc] = useState(s.blocs[0]?.id ?? '');
   const [res, setRes] = useState<{ from: string; to: string; votes: bigint; d: string } | null | 'none'>(null);
+  /** some pairs' searches could not rule out an untested interval, so "none" and "smallest" are not proven */
+  const [unsure, setUnsure] = useState(false);
   useEffect(() => setRes(null), [s]);
   const majority = Math.floor(s.rules.seats / 2) + 1;
   const members = s.lists.filter((l) => l.bloc === bloc).map((l) => l.id);
@@ -136,13 +138,16 @@ function BlocFlip({ s, r }: { s: Scenario; r: AllocationResult }) {
     const cands = s.lists.filter((l) => !l.withdrawn && BigInt(l.votes) * 200n >= r.totalValid);
     const goal = has ? goals.groupSeatsBelow(members, majority) : goals.groupSeatsAtLeast(members, majority);
     let best: { from: string; to: string; votes: bigint } | null = null;
+    let inconclusive = false;
     for (const to of cands) for (const from of cands) {
       if (from.id === to.id) continue;
       const fromIn = members.includes(from.id), toIn = members.includes(to.id);
       if (has ? !(fromIn && !toIn) : !(!fromIn && toIn)) continue;
       const m = minimalChange(input, to.id, { kind: 'transfer', listId: from.id }, goal);
       if (m.found && m.votes !== null && (!best || m.votes < best.votes)) best = { from: from.id, to: to.id, votes: m.votes };
+      if (m.reason === 'inconclusive' || (m.found && !m.exact)) inconclusive = true;
     }
+    setUnsure(inconclusive);
     if (!best) return setRes('none');
     setRes({ ...best, d: '' });
   };
@@ -157,7 +162,10 @@ function BlocFlip({ s, r }: { s: Scenario; r: AllocationResult }) {
         <button className="btn primary small" onClick={run}>{L('Search', 'חיפוש')}</button>
       </div>
       <p className="small muted">{L('Searches every transfer between a list inside and a list outside the bloc (lists with ≥ 0.5% of votes), using the bloc assignment shown.', 'בודק כל מעבר בין רשימה בגוש לרשימה מחוצה לו (רשימות עם ≥ 0.5%), לפי השיוך לגושים המוצג.')}</p>
-      {res === 'none' && <p className="small">{L('No single transfer between two lists achieves it.', 'אין מעבר יחיד בין שתי רשימות שמשיג זאת.')}</p>}
+      {res === 'none' && <p className="small">{unsure
+        ? L('No transfer found among the vote counts tested; some searches could not test every count, so one may still exist.', 'לא נמצא מעבר בין מספרי הקולות שנבדקו; חלק מהחיפושים לא בדקו כל מספר, ולכן ייתכן שקיים.')
+        : L('No single transfer between two lists achieves it.', 'אין מעבר יחיד בין שתי רשימות שמשיג זאת.')}</p>}
+      {res && res !== 'none' && unsure && <p className="small muted">{L('Smallest found: some searches could not test every count, so a smaller transfer may exist.', 'הקטן ביותר שנמצא: חלק מהחיפושים לא בדקו כל מספר, ולכן ייתכן מעבר קטן יותר.')}</p>}
       {res && res !== 'none' && (
         <div className="callout small">
           <b>{fmtInt(res.votes)}</b> {L('votes moving from', 'קולות שעוברים מ')} <b>{name(res.from)}</b> {L('to', 'ל')} <b>{name(res.to)}</b> {has ? L('end the majority.', 'מבטלים את הרוב.') : L('give the bloc a majority.', 'נותנים לגוש רוב.')}

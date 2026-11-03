@@ -61,7 +61,7 @@ export interface SearchResult {
   nonMonotonic: boolean;
   /** true when every smaller count was evaluated, so the answer is proven minimal */
   exact: boolean;
-  reason?: 'already' | 'infeasible' | 'limit';
+  reason?: 'already' | 'infeasible' | 'limit' | 'inconclusive';
   limit: bigint;
 }
 
@@ -107,7 +107,19 @@ export function minimalChange(input: AllocationInput, target: string, source: Vo
   if (limit < 1n) return { found: false, votes: null, before, after: null, lastFailing: null, nonMonotonic: false, exact: true, reason: 'infeasible', limit };
   let hi = 1n;
   while (hi < limit && !ok(hi)) hi = hi * 2n > limit ? limit : hi * 2n;
-  if (!ok(hi)) return { found: false, votes: null, before, after: null, lastFailing: hi, nonMonotonic: false, exact: false, reason: 'limit', limit };
+  if (!ok(hi)) {
+    const isMonotone = (goal as Goal & { monotone?: boolean }).monotone === true;
+    // Exponential probes can jump over an entire successful interval. An affordable range must
+    // be checked in full before concluding that no feasible count achieves a non-monotone goal.
+    if (!isMonotone && limit <= BigInt(exhaustiveLimit)) {
+      for (let k = 1n; k <= limit; k++) {
+        const after = test(k);
+        if (after && goal(after, before)) return { found: true, votes: k, before, after, lastFailing: k - 1n, nonMonotonic: true, exact: true, limit };
+      }
+      return { found: false, votes: null, before, after: null, lastFailing: limit, nonMonotonic: false, exact: true, reason: 'limit', limit };
+    }
+    return { found: false, votes: null, before, after: null, lastFailing: hi, nonMonotonic: false, exact: isMonotone, reason: isMonotone ? 'limit' : 'inconclusive', limit };
+  }
   let lo = hi / 2n; // ok(lo) is false (or lo = 0)
   while (hi - lo > 1n) { const mid = (lo + hi) / 2n; if (ok(mid)) hi = mid; else lo = mid; }
   // Binary search assumes the outcome is monotonic in the vote count, which threshold crossings,

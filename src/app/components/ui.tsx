@@ -67,12 +67,15 @@ export function Tile({ k, v, d, term, children }: { k: string; v: ReactNode; d?:
 export function NumberInput({ value, onCommit, label, width }: { value: number; onCommit: (n: number) => void; label: string; width?: number }) {
   const [text, setText] = useState(value.toLocaleString('en-US'));
   const L = useL();
-  useEffect(() => setText(value.toLocaleString('en-US')), [value]);
+  const [commits, setCommits] = useState(0);
+  // Resync after the parent has processed the commit, even when it rejects the edit and
+  // leaves value unchanged. Resetting to the old prop inside commit can race a later blur.
+  useEffect(() => setText(value.toLocaleString('en-US')), [value, commits]);
   const commit = () => {
     const t = text.replace(/[,\s_]/g, '');
     const n = Number(t);
-    if (t !== '' && /^\d+$/.test(t) && Number.isSafeInteger(n)) { if (n !== value) onCommit(n); setText(n.toLocaleString('en-US')); }
-    else setText(value.toLocaleString('en-US'));
+    if (t !== '' && /^\d+$/.test(t) && Number.isSafeInteger(n) && n !== value) onCommit(n);
+    setCommits((c) => c + 1);
   };
   return (
     <input type="text" inputMode="numeric" className="num-in" aria-label={label} title={L('Whole number ≥ 0; press Enter to apply', 'מספר שלם ≥ 0; Enter להחלה')}
@@ -86,12 +89,13 @@ export function DecimalInput({ value, onCommit, label, digits = 2, width = 84 }:
   const shown = Number.isFinite(value) ? value.toFixed(digits) : '';
   const [text, setText] = useState(shown);
   const [editing, setEditing] = useState(false);
-  useEffect(() => { if (!editing) setText(shown); }, [shown, editing]);
+  const [commits, setCommits] = useState(0);
+  useEffect(() => { if (!editing) setText(shown); }, [shown, editing, commits]);
   const commit = () => {
     setEditing(false);
     const n = Number(text.replace(/[%\s,]/g, ''));
     if (text.trim() !== '' && Number.isFinite(n) && text !== shown) onCommit(n);
-    else setText(shown);
+    setCommits((c) => c + 1);
   };
   return (
     <input type="text" inputMode="decimal" className="num-in" aria-label={label} style={{ width }} value={text}
@@ -129,9 +133,10 @@ export function VoteSlider({ l, hist, thr, onCommit }: { s?: unknown; l: { id: s
 /** Text field that applies on Enter or blur (one undo step per edit, not per keystroke). */
 export function TextField({ value, onCommit, label, placeholder }: { value: string; onCommit: (v: string) => void; label?: string; placeholder?: string }) {
   const [text, setText] = useState(value);
-  useEffect(() => setText(value), [value]);
+  const [commits, setCommits] = useState(0);
+  useEffect(() => setText(value), [value, commits]);
   // after committing, show the value actually in force (a rejected edit reverts)
-  const commit = () => { if (text !== value) onCommit(text); setText(value); };
+  const commit = () => { if (text !== value) onCommit(text); setCommits((c) => c + 1); };
   return <input type="text" aria-label={label} placeholder={placeholder} value={text} onChange={(e) => setText(e.target.value)} onBlur={commit}
     onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); if (e.key === 'Escape') setText(value); }} />;
 }

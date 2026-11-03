@@ -89,7 +89,7 @@ export type Action =
   | { type: 'setBlocs'; blocs: BlocDef[] }
   | { type: 'setLottery'; key: string; winner: string | null }
   /** restores a list from the historical dataset (`base` is only a fallback for logs made before v2) */
-  | { type: 'resetList'; listId: string; base?: SimList | null }
+  | { type: 'resetList'; listId: string; keepVotes?: boolean; base?: SimList | null }
   | { type: 'resetVotes'; listId: string }
   | { type: 'resetCandidates'; listId: string }
   | { type: 'rename'; name: string }
@@ -158,44 +158,123 @@ export function toEngineInput(s: Scenario): AllocationInput {
 export const validVotes = (s: Scenario) => s.lists.reduce((t, l) => t + l.votes, 0);
 export const votesCast = (s: Scenario) => validVotes(s) + s.invalid;
 
-/** Full structural validation of an imported scenario; returns a list of problems (empty = valid). */
+// Structural guards also cover logged actions without replaying them: old actions may legitimately
+// refer to lists which have since been removed, or resolve historical values from a newer dataset.
+type Check = (x: unknown) => boolean;
+const record = (x: unknown): x is Record<string, unknown> => x !== null && typeof x === 'object' && !Array.isArray(x);
+const string: Check = (x) => typeof x === 'string';
+const boolean: Check = (x) => typeof x === 'boolean';
+const whole: Check = (x) => typeof x === 'number' && Number.isSafeInteger(x) && x >= 0;
+const finite: Check = (x) => typeof x === 'number' && Number.isFinite(x);
+const optional = (check: Check): Check => (x) => x === undefined || check(x);
+const nullable = (check: Check): Check => (x) => x === null || check(x);
+const array = (check: Check): Check => (x) => Array.isArray(x) && x.every(check);
+const shape = (fields: Record<string, Check>): Check => (x) => record(x) && Object.entries(fields).every(([k, check]) => check(x[k]));
+const oneOf = (...values: unknown[]): Check => (x) => values.includes(x);
+const uniqueStrings: Check = (x) => array(string)(x) && new Set(x as string[]).size === (x as string[]).length;
+const candidate = shape({ id: string, nameHe: string, partyHe: optional(string), originListId: optional(string) });
+const candidates: Check = (x) => array(candidate)(x) && new Set((x as SimCandidate[]).map((c) => c.id)).size === (x as SimCandidate[]).length;
+const bloc = shape({ id: string, nameHe: string, nameEn: string, color: string });
+const agreement = shape({ id: string, members: uniqueStrings, enabled: boolean });
+const list = shape({ id: string, originIds: uniqueStrings, letters: string, nameHe: string, shortHe: string,
+  shortEn: nullable(string), color: string, bloc: nullable(string), votes: whole, withdrawn: boolean,
+  heldVotes: optional(whole), candidates, sponsorsHe: string });
+const ruleFields: Record<keyof SimRules, Check> = {
+  seats: (x) => whole(x) && Number(x) >= 1 && Number(x) <= 1000,
+  thresholdPct: (x) => {
+    if (typeof x !== 'string' || !/^\d+(\.\d+)?$/.test(x)) return false;
+    try { const t = percentToRational(x); return t.num <= t.den; } catch { return false; }
+  },
+  quotaRounding: oneOf('floor', 'exact'), remainderMethod: oneOf('bader-ofer', 'largest-remainder', 'sainte-lague'),
+  majorityCap: boolean, maxAgreementSize: (x) => whole(x) && Number(x) >= 2, agreementRequiresAllQualify: boolean,
+};
+const rules = shape(ruleFields);
+const partial = (fields: Record<string, Check>): Check => (x) => record(x) && Object.entries(x).every(([k, v]) => Object.hasOwn(fields, k) && fields[k](v));
+const stringMap = (value: Check): Check => (x) => record(x) && Object.values(x).every(value);
+const actionFields: Record<Action['type'], Check> = {
+  setVotes: shape({ listId: string, votes: whole }),
+  transfer: shape({ from: string, to: string, votes: whole }),
+  addVoters: shape({ allocations: array(shape({ listId: string, votes: whole })), invalid: whole, label: optional(string) }),
+  redistribute: shape({ from: uniqueStrings, to: array(shape({ listId: string, share: finite })), votes: whole }),
+  scaleAll: shape({ factorPct: finite }),
+  merge: shape({ ids: uniqueStrings, newId: string, nameHe: string, letters: string, color: string, retentionPct: finite, candidateOrder: oneOf('concat', 'interleave'), nonRetained: oneOf('abstain', 'invalid') }),
+  split: shape({ id: string, parts: array(shape({ newId: string, nameHe: string, letters: string, color: string, votes: whole, candidateIds: uniqueStrings })) }),
+  addList: shape({ newId: string, nameHe: string, letters: string, color: string, votes: whole }),
+  removeList: shape({ listId: string }), setWithdrawn: shape({ listId: string, withdrawn: boolean }),
+  setListMeta: shape({ listId: string, patch: partial({ nameHe: string, shortHe: string, shortEn: nullable(string), letters: string, color: string, bloc: nullable(string) }) }),
+  setAgreement: shape({ agreement }), removeAgreement: shape({ id: string }),
+  candidates: shape({ listId: string, candidates, note: string }),
+  setRules: shape({ patch: partial(ruleFields) }), setMode: shape({ mode: oneOf('historical', 'experimental') }),
+  setTotals: shape({ registered: optional(whole), invalid: optional(whole) }), setBlocs: shape({ blocs: array(bloc) }),
+  setLottery: shape({ key: string, winner: nullable(string) }),
+  resetList: shape({ listId: string, keepVotes: optional(boolean), base: optional(nullable(list)) }),
+  resetVotes: shape({ listId: string }), resetCandidates: shape({ listId: string }), rename: shape({ name: string }),
+  setTurnout: shape({ pct: finite }),
+  restore: (x) => record(x) && (
+    x.what === 'lottery' ||
+    x.what === 'agreements' && optional(array(agreement))(x.agreements) ||
+    x.what === 'totals' && optional(whole)(x.registered) && optional(whole)(x.invalid) ||
+    x.what === 'blocs' && optional(array(bloc))(x.blocs) && optional(stringMap(nullable(string)))(x.listBlocs)),
+};
+const action: Check = (x) => record(x) && typeof x.type === 'string' && Object.hasOwn(actionFields, x.type) && actionFields[x.type as Action['type']](x);
+
+/** Full structural validation of an imported scenario; returns problems rather than throwing. */
 export function validateScenario(x: unknown): string[] {
+  if (!record(x)) return ['not an object'];
+  const s = x;
   const e: string[] = [];
-  const s = x as Partial<Scenario>;
-  const whole = (n: unknown) => typeof n === 'number' && Number.isSafeInteger(n) && n >= 0;
-  if (!s || typeof s !== 'object') return ['not an object'];
   if (s.schema !== SCENARIO_SCHEMA) e.push('not a scenario file exported by this application');
-  if (!ELECTION_IDS.includes(s.electionId as ElectionId)) e.push(`unknown election "${String(s.electionId)}"`);
+  if (s.version !== SCENARIO_VERSION) e.push('unsupported scenario version');
+  if (![s.id, s.name, s.baseBuiltAt].every(string)) e.push('missing scenario identity or build timestamp');
+  const electionKnown = ELECTION_IDS.includes(s.electionId as ElectionId);
+  if (!electionKnown) e.push(`unknown election "${String(s.electionId)}"`);
   if (s.mode !== 'historical' && s.mode !== 'experimental') e.push('invalid mode');
-  const r = s.rules as SimRules | undefined;
-  if (!r) e.push('missing rules');
-  else {
-    if (!Number.isInteger(r.seats) || r.seats < 1 || r.seats > 1000) e.push('seats must be 1–1000');
-    try { const t = percentToRational(String(r.thresholdPct)); if (t.num > t.den) e.push('threshold above 100%'); } catch { e.push(`invalid threshold "${String(r.thresholdPct)}"`); }
-    if (r.quotaRounding !== 'floor' && r.quotaRounding !== 'exact') e.push('invalid quota rounding');
-    if (!['bader-ofer', 'largest-remainder', 'sainte-lague'].includes(r.remainderMethod)) e.push('invalid remainder method');
-    if (!Number.isInteger(r.maxAgreementSize) || r.maxAgreementSize < 2) e.push('invalid agreement size');
-    if (typeof r.majorityCap !== 'boolean' || typeof r.agreementRequiresAllQualify !== 'boolean') e.push('invalid rule flags');
+  if (!rules(s.rules)) e.push('invalid rules (seats, threshold, rounding, method, agreement size or flags)');
+  if (s.mode === 'historical' && electionKnown) {
+    const expected = historicalRules(electionRuleSetId(s.electionId as ElectionId));
+    if (!record(s.rules) || Object.entries(expected).some(([k, v]) => (s.rules as Record<string, unknown>)[k] !== v)) e.push('historical rules must match the election statutory preset');
   }
-  if (!whole(s.registered) || !whole(s.invalid)) e.push('registered voters and invalid ballots must be whole numbers ≥ 0');
+  if (!whole(s.registered) || !whole(s.invalid)) e.push('registered voters and invalid ballots must be safe whole numbers ≥ 0');
+  const blocIds = new Set<string>();
+  if (!Array.isArray(s.blocs)) e.push('missing blocs');
+  else for (const b of s.blocs) {
+    if (!record(b) || !bloc(b)) { e.push('invalid bloc'); continue; }
+    if (blocIds.has(b.id as string)) e.push(`duplicate bloc id ${b.id}`);
+    blocIds.add(b.id as string);
+  }
+  const ids = new Set<string>();
   if (!Array.isArray(s.lists) || s.lists.length === 0) e.push('no lists');
   else {
-    const ids = new Set<string>();
     for (const l of s.lists) {
-      if (!l || typeof l.id !== 'string') { e.push('a list without an id'); continue; }
+      if (!record(l) || typeof l.id !== 'string') { e.push('a list without an id'); continue; }
       if (ids.has(l.id)) e.push(`duplicate list id ${l.id}`);
       ids.add(l.id);
       if (!whole(l.votes)) e.push(`invalid vote count for ${l.id}`);
-      if (typeof l.nameHe !== 'string' || typeof l.shortHe !== 'string' || typeof l.letters !== 'string' || typeof l.color !== 'string') e.push(`missing names or colour for ${l.id}`);
-      if (!Array.isArray(l.candidates) || l.candidates.some((c) => !c || typeof c.id !== 'string' || typeof c.nameHe !== 'string')) e.push(`invalid candidates for ${l.id}`);
-      if (!Array.isArray(l.originIds)) e.push(`missing origins for ${l.id}`);
-      if (typeof l.withdrawn !== 'boolean') e.push(`missing withdrawn flag for ${l.id}`);
+      if (!candidates(l.candidates)) e.push(`invalid candidates for ${l.id}`);
+      if (!list(l)) e.push(`invalid list fields for ${l.id}`);
+      if (l.bloc !== null && (typeof l.bloc !== 'string' || !blocIds.has(l.bloc))) e.push(`unknown bloc for ${l.id}`);
     }
-    if (!Array.isArray(s.agreements)) e.push('missing agreements');
-    else for (const a of s.agreements) if (!Array.isArray(a.members) || a.members.some((m) => !ids.has(m))) e.push(`agreement ${String(a.id)} refers to an unknown list`);
+    if (s.lists.every((l) => record(l) && whole(l.votes)) && whole(s.invalid)) {
+      const total = s.lists.reduce((sum: bigint, l: SimList) => sum + BigInt(l.votes), BigInt(s.invalid as number));
+      if (total > BigInt(Number.MAX_SAFE_INTEGER)) e.push('vote totals exceed safe integers');
+    }
   }
-  if (!Array.isArray(s.blocs)) e.push('missing blocs');
-  if (!s.lotteryWinners || typeof s.lotteryWinners !== 'object') e.push('missing lottery outcomes');
-  if (!Array.isArray(s.log)) e.push('missing change log');
+  const agreementIds = new Set<string>(), members = new Set<string>();
+  if (!Array.isArray(s.agreements)) e.push('missing agreements');
+  else for (const a of s.agreements) {
+    if (!record(a) || !agreement(a)) { e.push('invalid agreement'); continue; }
+    const ag = a as unknown as SimAgreement;
+    if (ids.has(ag.id)) e.push(`agreement id ${ag.id} collides with a list id`);
+    if (agreementIds.has(ag.id)) e.push(`duplicate agreement id ${ag.id}`);
+    agreementIds.add(ag.id);
+    if (ag.members.some((m) => !ids.has(m))) e.push(`agreement ${ag.id} refers to an unknown list`);
+    if (ag.members.length < 2 || ag.enabled && ag.members.length > (record(s.rules) ? Number(s.rules.maxAgreementSize) : 2)) e.push(`invalid agreement size for ${ag.id}`);
+    if (ag.enabled) for (const m of ag.members) {
+      if (members.has(m)) e.push(`duplicate active agreement membership for ${m}`);
+      members.add(m);
+    }
+  }
+  if (!stringMap(string)(s.lotteryWinners)) e.push('invalid lottery outcomes');
+  if (!array(shape({ at: string, action }))(s.log)) e.push('invalid change log');
   return e;
 }
