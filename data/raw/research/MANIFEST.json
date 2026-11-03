@@ -1,0 +1,2404 @@
+{
+  "schemaVersion": 1,
+  "researchScope": "Israel Knesset elections 1–15 (1949–1999)",
+  "generatedAt": "2026-11-03T15:37:59.020632+00:00",
+  "note": "Files are source evidence, not verified app datasets. SHA-256 hashes identify exact downloaded bytes. All retained downloads are <=5,000,000 bytes. Large sources were stopped before download; only URLs and declared sizes are retained. Mirrors and shared evidence families are disclosed in the report.",
+  "files": [
+    {
+      "id": "N01",
+      "file": "k01-results.pdf",
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset1-results.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.743527+00:00",
+      "sha256": "b8a1e3f8e74346c19d9ed18532e0b53e08b07da678df3c464b4cdc9c6a4ece5b",
+      "bytes": 238721,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "Title and sample result/seat pages; not a full checked transcription",
+      "limitations": "Scans require visual checking; retrieval is not exact seat reproduction."
+    },
+    {
+      "id": "N02",
+      "file": "k02-results.pdf",
+      "url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/records-results2/he/archive_knesset2_records-results2.pdf",
+      "retrievedAt": "2026-11-03T15:32:04.182651+00:00",
+      "sha256": "ba90a26a4e7a1d350e5afcdfba20f8fd574b088c60f39dc89722c9653a1d1988",
+      "bytes": 3788300,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "Title and sample result/seat pages; not a full checked transcription",
+      "limitations": "Scans require visual checking; retrieval is not exact seat reproduction."
+    },
+    {
+      "id": "N03",
+      "file": "k03-results.pdf",
+      "url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/records-results3/he/archive_knesset3_records-results3.pdf",
+      "retrievedAt": "2026-11-03T15:32:04.218633+00:00",
+      "sha256": "c62ac4d1b6c9b843f38c137fa4bacaac1999e70eb399d09c09975374d4f1875f",
+      "bytes": 3631315,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "Title and sample result/seat pages; not a full checked transcription",
+      "limitations": "Scans require visual checking; retrieval is not exact seat reproduction."
+    },
+    {
+      "id": "N04",
+      "file": "k04-results.pdf",
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset4-results.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.736809+00:00",
+      "sha256": "1a148be5180a0a2b59ef8c3ab46c159e6dfab7a415127b40d0b67608307d9c19",
+      "bytes": 151251,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "Title and sample result/seat pages; not a full checked transcription",
+      "limitations": "Scans require visual checking; retrieval is not exact seat reproduction."
+    },
+    {
+      "id": "N05",
+      "file": "k05-results.pdf",
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset5-results.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.736940+00:00",
+      "sha256": "2c9f3b81bfb3aa5c7d10079eb422c162f49cc4392fefc8fc74213c2319a78579",
+      "bytes": 162937,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "Title and sample result/seat pages; not a full checked transcription",
+      "limitations": "Scans require visual checking; retrieval is not exact seat reproduction."
+    },
+    {
+      "id": "N06",
+      "file": "k06-results.pdf",
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset6-results.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.526540+00:00",
+      "sha256": "44d56ab6bb2c00be7f2c202f079ad78bf369c02224455b8404d2dcf0fd9bc6e2",
+      "bytes": 171244,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "Title and sample result/seat pages; not a full checked transcription",
+      "limitations": "Scans require visual checking; retrieval is not exact seat reproduction."
+    },
+    {
+      "id": "N07",
+      "file": "k07-results.pdf",
+      "url": "https://olaw.org.il/yalkut/yalkut-1573.pdf",
+      "retrievedAt": "2026-11-03T15:30:45.756114+00:00",
+      "sha256": "3d4fff867b15373c179617492e2d500bd1e75855ef7b1abdf305751123ec82f2",
+      "bytes": 157445,
+      "publisher": "Central Elections Committee / Reshumot (olaw.org.il mirror)",
+      "sourceType": "official publication via mirror",
+      "inspection": "Title and sample result/seat pages; not a full checked transcription",
+      "limitations": "Scans require visual checking; retrieval is not exact seat reproduction."
+    },
+    {
+      "id": "N08",
+      "file": "k08-results.pdf",
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset8-results.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.815712+00:00",
+      "sha256": "8c6aa3727a4fad52cc401038c8b9ed83ba739882b85e967eb3b092f047ef5ad8",
+      "bytes": 147529,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "Title and sample result/seat pages; not a full checked transcription",
+      "limitations": "Scans require visual checking; retrieval is not exact seat reproduction."
+    },
+    {
+      "id": "N09",
+      "file": "k09-results.pdf",
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset9-results.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.896384+00:00",
+      "sha256": "91280ceeefd634e75ac360dad1eb49fb5b7a8a570b9ce8913adc945e26fa5dd6",
+      "bytes": 171588,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "Title and sample result/seat pages; not a full checked transcription",
+      "limitations": "Scans require visual checking; retrieval is not exact seat reproduction."
+    },
+    {
+      "id": "N10",
+      "file": "k10-results.pdf",
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset10-results.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.886378+00:00",
+      "sha256": "71045f34ff411c634fba1a5ecab1c121820c9eb1d1fa6e4e4dac80653c7150ad",
+      "bytes": 152326,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "Title and sample result/seat pages; not a full checked transcription",
+      "limitations": "Scans require visual checking; retrieval is not exact seat reproduction."
+    },
+    {
+      "id": "N11",
+      "file": "k11-results.pdf",
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset11-results.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.677018+00:00",
+      "sha256": "1ce31396beb02189439842e8871a590ac029f74583cb4e18d0ef8ae1f3791119",
+      "bytes": 170958,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "Title and sample result/seat pages; not a full checked transcription",
+      "limitations": "Scans require visual checking; retrieval is not exact seat reproduction."
+    },
+    {
+      "id": "N12",
+      "file": "k12-results.pdf",
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset12-results.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.851132+00:00",
+      "sha256": "a6e6b1102c35c2e2cde077d5c7f2085ad04da3453e92a4e34e91684adea8f806",
+      "bytes": 1674624,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "Title and sample result/seat pages; not a full checked transcription",
+      "limitations": "Scans require visual checking; retrieval is not exact seat reproduction."
+    },
+    {
+      "id": "N13",
+      "file": "k13-results.pdf",
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset13-results.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.751915+00:00",
+      "sha256": "34f6b7dd77c72fde5885e9b1208c37760129d93091f084590aac8ed6b5696b4a",
+      "bytes": 173940,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "Title and sample result/seat pages; not a full checked transcription",
+      "limitations": "Scans require visual checking; retrieval is not exact seat reproduction."
+    },
+    {
+      "id": "N14",
+      "file": "k14-results.pdf",
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.792397+00:00",
+      "sha256": "e803fd2a85fd908367ddff5cd1a92d4d893c0cbaadf8e66447c9713b7bf80c1a",
+      "bytes": 365900,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "Title and sample result/seat pages; not a full checked transcription",
+      "limitations": "Scans require visual checking; retrieval is not exact seat reproduction."
+    },
+    {
+      "id": "N15",
+      "file": "k15-results.pdf",
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-results.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.833266+00:00",
+      "sha256": "8dd75faf9c4446113f70a5931a6f4d8bb71451859b299fedece2981687045839",
+      "bytes": 175416,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "Title and sample result/seat pages; not a full checked transcription",
+      "limitations": "Scans require visual checking; retrieval is not exact seat reproduction."
+    },
+    {
+      "id": "C01",
+      "file": "k01-candidates.pdf",
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset1-cand.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.803847+00:00",
+      "sha256": "a74abe1d50ae1ee3417648ebea049af0120c4ab2b6d3270a2d0a4a5ebbd1893e",
+      "bytes": 1110763,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "PDF identity/availability; selected covers and roster pages inspected",
+      "limitations": "No complete candidate extraction or correction-notice reconciliation performed."
+    },
+    {
+      "id": "C02",
+      "file": "k02-candidates.pdf",
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset2-cand.pdf",
+      "retrievedAt": "2026-11-03T15:32:59.753716+00:00",
+      "sha256": "4dca7c4eded942b957081079584c0afa0e358e562ce1d50e27e25cd619f4e995",
+      "bytes": 807540,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "PDF identity/availability; selected covers and roster pages inspected",
+      "limitations": "No complete candidate extraction or correction-notice reconciliation performed."
+    },
+    {
+      "id": "C03",
+      "file": "k03-candidates.pdf",
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset3-cand.pdf",
+      "retrievedAt": "2026-11-03T15:32:59.821097+00:00",
+      "sha256": "25a334b5df28fef5c5fea0662e03cab50da94281b365fab18f464b6d37a9df19",
+      "bytes": 818680,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "PDF identity/availability; selected covers and roster pages inspected",
+      "limitations": "No complete candidate extraction or correction-notice reconciliation performed."
+    },
+    {
+      "id": "C04",
+      "file": "k04-candidates.pdf",
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset4-cand.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.813722+00:00",
+      "sha256": "ccb60ea8af3dbde35ff49fa899b517146c24064c521bf4fc1af3a2986d572c16",
+      "bytes": 996060,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "PDF identity/availability; selected covers and roster pages inspected",
+      "limitations": "No complete candidate extraction or correction-notice reconciliation performed."
+    },
+    {
+      "id": "C05",
+      "file": "k05-candidates.pdf",
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset5-cand.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.773315+00:00",
+      "sha256": "99837fef2b04831907b96d820afd5754092352b3787024e17a083a89e9daf060",
+      "bytes": 954690,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "PDF identity/availability; selected covers and roster pages inspected",
+      "limitations": "No complete candidate extraction or correction-notice reconciliation performed."
+    },
+    {
+      "id": "C06",
+      "file": "k06-candidates.pdf",
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset6-cand.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.505565+00:00",
+      "sha256": "c9268c72680610757e5021d1a24de5ad25fdb665dacd9a2f9a867a0e6418cf2c",
+      "bytes": 1030152,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "PDF identity/availability; selected covers and roster pages inspected",
+      "limitations": "No complete candidate extraction or correction-notice reconciliation performed."
+    },
+    {
+      "id": "C07",
+      "file": "k07-candidates.pdf",
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset7-cand.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.521316+00:00",
+      "sha256": "122ac35dd77bd4a46af84ce353aa4454660176e989c09c309a0ba8030d380959",
+      "bytes": 857417,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "PDF identity/availability; selected covers and roster pages inspected",
+      "limitations": "No complete candidate extraction or correction-notice reconciliation performed."
+    },
+    {
+      "id": "C08",
+      "file": "k08-candidates.pdf",
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset8-cand.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.919640+00:00",
+      "sha256": "e5a3fc474e67411c5ec2cdd2edf62d53ae013d5c61a34e29d63b6f34f8f9f07d",
+      "bytes": 437259,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "PDF identity/availability; selected covers and roster pages inspected",
+      "limitations": "No complete candidate extraction or correction-notice reconciliation performed."
+    },
+    {
+      "id": "C09",
+      "file": "k09-candidates.pdf",
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset9-cand.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.877538+00:00",
+      "sha256": "bae3e6e7b001bbc6fe7d2b15645ea2c25c319bf86443808a5f7727ff640800b5",
+      "bytes": 574072,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "PDF identity/availability; selected covers and roster pages inspected Cover/printed page 1319: all six surplus-agreement entries read; roster follows at page 1320. Printed page 1330 checked: Samuel Sharon is the sole candidate on his list.",
+      "limitations": "No complete candidate extraction or correction-notice reconciliation performed. Agreement notice is in this same gazette."
+    },
+    {
+      "id": "C10",
+      "file": "k10-candidates.pdf",
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset10-cand.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.961622+00:00",
+      "sha256": "8d67fd3c41dd37845d0a050a3749e82bc96393a6d0c31c6b602e8373a3e2fcf0",
+      "bytes": 922974,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "PDF identity/availability; selected covers and roster pages inspected",
+      "limitations": "No complete candidate extraction or correction-notice reconciliation performed."
+    },
+    {
+      "id": "C11",
+      "file": "k11-candidates.pdf",
+      "url": "https://olaw.org.il/yalkut/yalkut-3073.pdf",
+      "retrievedAt": "2026-11-03T15:36:06.842486+00:00",
+      "sha256": "3b2626bfd77f5c42b8ac74a38013e6663e89ea5755298e8d7a84e807b042e8a4",
+      "bytes": 602615,
+      "publisher": "Central Elections Committee / Reshumot (olaw.org.il mirror)",
+      "sourceType": "official publication via mirror",
+      "inspection": "PDF identity/availability; selected covers and roster pages inspected Cover and printed page 2839: all four surplus-agreement entries read; roster begins at page 2826.",
+      "limitations": "No complete candidate extraction or correction-notice reconciliation performed. Agreement notice is in this same gazette."
+    },
+    {
+      "id": "C12",
+      "file": "k12-candidates.pdf",
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset12-cand.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.789848+00:00",
+      "sha256": "8d45736c0d0a77db85a6470c53520b175abee6bab707a45c9c2eb0471ba4317d",
+      "bytes": 1157056,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "PDF identity/availability; selected covers and roster pages inspected",
+      "limitations": "No complete candidate extraction or correction-notice reconciliation performed."
+    },
+    {
+      "id": "C13",
+      "file": "k13-candidates.pdf",
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset13-cand.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.751566+00:00",
+      "sha256": "727acb19589ca12516dd1c8cc96e3bf4811ff8d5a512acce7f1fa753c1165943",
+      "bytes": 451146,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "PDF identity/availability; selected covers and roster pages inspected",
+      "limitations": "No complete candidate extraction or correction-notice reconciliation performed."
+    },
+    {
+      "id": "C14",
+      "file": "k14-candidates.pdf",
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-cand.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.831043+00:00",
+      "sha256": "a48a1e90a94ae606ae48fc652dbd8300721201fb29f583e7d45f6f6d256be74a",
+      "bytes": 1222755,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "PDF identity/availability; selected covers and roster pages inspected",
+      "limitations": "No complete candidate extraction or correction-notice reconciliation performed."
+    },
+    {
+      "id": "C15",
+      "file": "k15-candidates.pdf",
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-cand.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.909532+00:00",
+      "sha256": "05ca16363cfab1bd1cb609449b8e5f4479c6e2a8c1c9434cc237f7f331822991",
+      "bytes": 775934,
+      "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+      "sourceType": "official publication",
+      "inspection": "PDF identity/availability; selected covers and roster pages inspected",
+      "limitations": "No complete candidate extraction or correction-notice reconciliation performed."
+    },
+    {
+      "id": "I01",
+      "file": "idi-1949.html",
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1949/",
+      "retrievedAt": "2026-11-03T15:28:28.651317+00:00",
+      "sha256": "a806aeaa6c783b8663e9ec0be1a5818018966795125304166c11b36a8716d822",
+      "bytes": 74241,
+      "publisher": "Israel Democracy Institute",
+      "sourceType": "nonpartisan research institute (secondary)",
+      "inspection": "Full national results table inspected and list-vote/seat sums calculated",
+      "limitations": "See report for arithmetic discrepancies; candidate links were inventoried, not all downloaded."
+    },
+    {
+      "id": "I02",
+      "file": "idi-1951.html",
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1951/",
+      "retrievedAt": "2026-11-03T15:29:28.499934+00:00",
+      "sha256": "7e3bf56c13b11e9546bd2adf83826373b2e2db48e5f0c7c2df28437132a8151f",
+      "bytes": 69976,
+      "publisher": "Israel Democracy Institute",
+      "sourceType": "nonpartisan research institute (secondary)",
+      "inspection": "Full national results table inspected and list-vote/seat sums calculated",
+      "limitations": "See report for arithmetic discrepancies; candidate links were inventoried, not all downloaded."
+    },
+    {
+      "id": "I03",
+      "file": "idi-1955.html",
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1955/",
+      "retrievedAt": "2026-11-03T15:29:28.549493+00:00",
+      "sha256": "37b1bf25305b3c066a1dff27a70dbeba3dbdd95cc6c2f3bb138e96b461f4e9da",
+      "bytes": 71299,
+      "publisher": "Israel Democracy Institute",
+      "sourceType": "nonpartisan research institute (secondary)",
+      "inspection": "Full national results table inspected and list-vote/seat sums calculated",
+      "limitations": "See report for arithmetic discrepancies; candidate links were inventoried, not all downloaded."
+    },
+    {
+      "id": "I04",
+      "file": "idi-1959.html",
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1959/",
+      "retrievedAt": "2026-11-03T15:29:28.077956+00:00",
+      "sha256": "22221befc3e4dd3216bc4048c4451adb5035f3c9e6f9a74074ce81cd6f205932",
+      "bytes": 78407,
+      "publisher": "Israel Democracy Institute",
+      "sourceType": "nonpartisan research institute (secondary)",
+      "inspection": "Full national results table inspected and list-vote/seat sums calculated",
+      "limitations": "See report for arithmetic discrepancies; candidate links were inventoried, not all downloaded."
+    },
+    {
+      "id": "I05",
+      "file": "idi-1961.html",
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1961/",
+      "retrievedAt": "2026-11-03T15:29:28.577555+00:00",
+      "sha256": "144714032ca7e769052d25efc0a0f02f7ed588a73785e931d10b1ced29175f75",
+      "bytes": 67344,
+      "publisher": "Israel Democracy Institute",
+      "sourceType": "nonpartisan research institute (secondary)",
+      "inspection": "Full national results table inspected and list-vote/seat sums calculated",
+      "limitations": "See report for arithmetic discrepancies; candidate links were inventoried, not all downloaded."
+    },
+    {
+      "id": "I06",
+      "file": "idi-1965.html",
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1965/",
+      "retrievedAt": "2026-11-03T15:29:28.628217+00:00",
+      "sha256": "1c0ec6d9c4cc951ceed66fb2104e75b3dec15664ce38175639bda3e53ff90393",
+      "bytes": 70413,
+      "publisher": "Israel Democracy Institute",
+      "sourceType": "nonpartisan research institute (secondary)",
+      "inspection": "Full national results table inspected and list-vote/seat sums calculated",
+      "limitations": "See report for arithmetic discrepancies; candidate links were inventoried, not all downloaded."
+    },
+    {
+      "id": "I07",
+      "file": "idi-1969.html",
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1969/",
+      "retrievedAt": "2026-11-03T15:29:28.090555+00:00",
+      "sha256": "522c6ed2e897ff49dbb8bc917198a421ebe4c8ffbe65086464ca50cd5d49ce98",
+      "bytes": 68702,
+      "publisher": "Israel Democracy Institute",
+      "sourceType": "nonpartisan research institute (secondary)",
+      "inspection": "Full national results table inspected and list-vote/seat sums calculated",
+      "limitations": "See report for arithmetic discrepancies; candidate links were inventoried, not all downloaded."
+    },
+    {
+      "id": "I08",
+      "file": "idi-1973.html",
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1973/",
+      "retrievedAt": "2026-11-03T15:29:33.395086+00:00",
+      "sha256": "4e51d5654e0ba24f97ae2dcc4e8a1e5aa4844f566ac84b52594b7d4234c75150",
+      "bytes": 75434,
+      "publisher": "Israel Democracy Institute",
+      "sourceType": "nonpartisan research institute (secondary)",
+      "inspection": "Full national results table inspected and list-vote/seat sums calculated",
+      "limitations": "See report for arithmetic discrepancies; candidate links were inventoried, not all downloaded."
+    },
+    {
+      "id": "I09",
+      "file": "idi-1977.html",
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1977/",
+      "retrievedAt": "2026-11-03T15:29:34.514722+00:00",
+      "sha256": "087e0e0c89f2bc1494a7eba3e794717dbe5f7230351cdf41bface682e656f59c",
+      "bytes": 78795,
+      "publisher": "Israel Democracy Institute",
+      "sourceType": "nonpartisan research institute (secondary)",
+      "inspection": "Full national results table inspected and list-vote/seat sums calculated",
+      "limitations": "See report for arithmetic discrepancies; candidate links were inventoried, not all downloaded."
+    },
+    {
+      "id": "I10",
+      "file": "idi-1981.html",
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1981/",
+      "retrievedAt": "2026-11-03T15:29:34.734939+00:00",
+      "sha256": "2380fd2375aed6c78bcc22ca23eec882380a5e2233cbe81709778793d15c8050",
+      "bytes": 89051,
+      "publisher": "Israel Democracy Institute",
+      "sourceType": "nonpartisan research institute (secondary)",
+      "inspection": "Full national results table inspected and list-vote/seat sums calculated",
+      "limitations": "See report for arithmetic discrepancies; candidate links were inventoried, not all downloaded."
+    },
+    {
+      "id": "I11",
+      "file": "idi-1984.html",
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1984/",
+      "retrievedAt": "2026-11-03T15:29:35.113415+00:00",
+      "sha256": "817f5cb03e4b28b259d8bbd0b22fc9b669e17b9e08e905c42ee0d97a57d3d295",
+      "bytes": 82680,
+      "publisher": "Israel Democracy Institute",
+      "sourceType": "nonpartisan research institute (secondary)",
+      "inspection": "Full national results table inspected and list-vote/seat sums calculated",
+      "limitations": "See report for arithmetic discrepancies; candidate links were inventoried, not all downloaded."
+    },
+    {
+      "id": "I12",
+      "file": "idi-1988.html",
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1988/",
+      "retrievedAt": "2026-11-03T15:29:35.125262+00:00",
+      "sha256": "ddd44a465fdf5bc36373051896e3fe27734f89bfda873c6ce258cddfd354604e",
+      "bytes": 85298,
+      "publisher": "Israel Democracy Institute",
+      "sourceType": "nonpartisan research institute (secondary)",
+      "inspection": "Full national results table inspected and list-vote/seat sums calculated",
+      "limitations": "See report for arithmetic discrepancies; candidate links were inventoried, not all downloaded."
+    },
+    {
+      "id": "I13",
+      "file": "idi-1992.html",
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1992/",
+      "retrievedAt": "2026-11-03T15:29:35.033593+00:00",
+      "sha256": "4a8e1bb80cadcbbe5619d973fe283bca3b36e8b19ab7acf66d216a38c9aa3781",
+      "bytes": 81416,
+      "publisher": "Israel Democracy Institute",
+      "sourceType": "nonpartisan research institute (secondary)",
+      "inspection": "Full national results table inspected and list-vote/seat sums calculated",
+      "limitations": "See report for arithmetic discrepancies; candidate links were inventoried, not all downloaded."
+    },
+    {
+      "id": "I14",
+      "file": "idi-1996.html",
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1996/",
+      "retrievedAt": "2026-11-03T15:29:39.052669+00:00",
+      "sha256": "74e2552a02ee5010cc9ad753615de0eb1b9d476b225e7a5fef397709168b4e4c",
+      "bytes": 75580,
+      "publisher": "Israel Democracy Institute",
+      "sourceType": "nonpartisan research institute (secondary)",
+      "inspection": "Full national results table inspected and list-vote/seat sums calculated",
+      "limitations": "See report for arithmetic discrepancies; candidate links were inventoried, not all downloaded."
+    },
+    {
+      "id": "I15",
+      "file": "idi-1999.html",
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1999/",
+      "retrievedAt": "2026-11-03T15:29:40.232473+00:00",
+      "sha256": "c94bfdcadebc08af507917e9b3ec49608b07ceaf9ea4ccaf76beb9c275519c19",
+      "bytes": 93004,
+      "publisher": "Israel Democracy Institute",
+      "sourceType": "nonpartisan research institute (secondary)",
+      "inspection": "Full national results table inspected and list-vote/seat sums calculated",
+      "limitations": "See report for arithmetic discrepancies; candidate links were inventoried, not all downloaded."
+    },
+    {
+      "id": "T",
+      "file": "cbs-national-totals-2024.pdf",
+      "url": "https://www.cbs.gov.il/he/publications/doclib/2024/hnatonelectionstheknessetandgovernment.27/st27_02.pdf",
+      "retrievedAt": "2026-11-03T15:27:22.052262+00:00",
+      "sha256": "18359d3efbb89d375a7e87a3433d07eff712dd6da958303d1ef16e49ac29ac8b",
+      "bytes": 123088,
+      "publisher": "Israel Central Bureau of Statistics",
+      "sourceType": "official",
+      "inspection": "All 15 in-scope rows checked",
+      "limitations": "Invalid count is derived as cast minus valid, not from rounded percentages."
+    },
+    {
+      "id": "D1",
+      "file": "ckan-votes-knesset.json",
+      "url": "https://data.gov.il/api/3/action/package_show?id=votes-knesset",
+      "retrievedAt": "2026-11-03T15:27:22.475350+00:00",
+      "sha256": "ae348223d79335929c79c1dfd86e4d71f1d2714510c056af467dc82ac4d5d8bd",
+      "bytes": 29495,
+      "publisher": "Israel Government Data Portal / Central Elections Committee",
+      "sourceType": "official",
+      "inspection": "All 17 resource records inspected",
+      "limitations": "Earliest resource is Knesset 16."
+    },
+    {
+      "id": "D2",
+      "file": "ckan-election-search.json",
+      "url": "https://data.gov.il/api/3/action/package_search?q=%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA&rows=100",
+      "retrievedAt": "2026-11-03T15:27:22.539369+00:00",
+      "sha256": "9a25c198fd90ecbba8f8a0c2af94dcd08347002dafb4ce860393f76be6610e86",
+      "bytes": 59033,
+      "publisher": "Israel Government Data Portal",
+      "sourceType": "official",
+      "inspection": "All 6 returned packages inspected",
+      "limitations": "Keyword query is a catalogue search, not proof of all holdings."
+    },
+    {
+      "id": "A",
+      "file": "atmor-stoll-1949-2009.xls",
+      "url": "https://hstoll.faculty.polsci.ucsb.edu/research/atmorstoll2009_Israeli_Election_Results.xls",
+      "retrievedAt": "2026-11-03T15:29:36.196232+00:00",
+      "sha256": "3fc953301b5bb7252df5459683816f9eddee8fa78a3626f34771f94c36973d0e",
+      "bytes": 68608,
+      "publisher": "Nir Atmor and Heather Stoll / University of California, Santa Barbara",
+      "sourceType": "academic secondary dataset",
+      "inspection": "All 15 in-scope election blocks and citations; sums calculated",
+      "limitations": "1988 rows differ from printed total by 6; 1996 by 550; 1965 date is wrong."
+    },
+    {
+      "id": "O",
+      "file": "odata-elections-catalog.json",
+      "url": "https://www.odata.org.il/api/3/action/package_show?id=elections",
+      "retrievedAt": "2026-11-03T15:28:24.377579+00:00",
+      "sha256": "f0ef57cd6a07524cfdf06eb5983ea2f2ffab1cce07510ec9cfc8834a3683adfe",
+      "bytes": 12285,
+      "publisher": "Public Knowledge Workshop / odata.org.il",
+      "sourceType": "nonpartisan mirror catalogue",
+      "inspection": "All resources inspected",
+      "limitations": "Catalogue is not a signed CEC certification."
+    },
+    {
+      "id": "O14",
+      "file": "odata-k14-polling.xls",
+      "url": "https://www.odata.org.il/dataset/c0ec706c-5970-4c6d-942f-aaf60187dcbb/resource/c166aa81-3541-4636-97f1-9ff134f33d14/download/-14-1996-.xls",
+      "retrievedAt": "2026-11-03T15:29:36.853937+00:00",
+      "sha256": "02b95e34f7c2fa39c320a4d2b2998aa6d15a580a400caa98e813cf4de59fbac7",
+      "bytes": 1809920,
+      "publisher": "Public Knowledge Workshop / odata.org.il (mirror of election table)",
+      "sourceType": "nonpartisan mirror",
+      "inspection": "Headers, station rows, summary rows and totals inspected",
+      "limitations": "Does not include outside envelopes in ordinary station rows; subtotal rows must not be double counted."
+    },
+    {
+      "id": "O15",
+      "file": "odata-k15-polling.xls",
+      "url": "https://www.odata.org.il/dataset/c0ec706c-5970-4c6d-942f-aaf60187dcbb/resource/5729daf9-adfd-4ec9-b4d3-0f2047189ddb/download/-15-1999-.xls",
+      "retrievedAt": "2026-11-03T15:29:37.258552+00:00",
+      "sha256": "df4ffc6c042035d4034b0bb49e190f78f43e963caccebbd09557a50a8e330cc6",
+      "bytes": 2786816,
+      "publisher": "Public Knowledge Workshop / odata.org.il (mirror of election table)",
+      "sourceType": "nonpartisan mirror",
+      "inspection": "Headers, station rows, external-envelope section and totals inspected",
+      "limitations": "Mixed summary and detail rows; not a clean ready-to-import table."
+    },
+    {
+      "id": "H",
+      "file": "huji-election-catalog.html",
+      "url": "https://isdc.huji.ac.il/book/%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA",
+      "retrievedAt": "2026-11-03T15:28:26.039300+00:00",
+      "sha256": "7ef70851b823a5dfc84a913d87e6abd726d000578c31369cc1fa48481b61fbb3",
+      "bytes": 68509,
+      "publisher": "Hebrew University of Jerusalem, Israel Social Sciences Data Center",
+      "sourceType": "academic catalogue",
+      "inspection": "Election results entries 1977–1999 and survey entries inspected",
+      "limitations": "Linked Nesstar/geobase study retrieval failed; no raw data inspected."
+    },
+    {
+      "id": "R1",
+      "file": "knesset-threshold-review-2019.pdf",
+      "url": "https://fs.knesset.gov.il/globaldocs/MMM/8d6433f2-66cc-e811-80e7-00155d0aeea3/2_8d6433f2-66cc-e811-80e7-00155d0aeea3_11_10898.pdf",
+      "retrievedAt": "2026-11-03T15:32:59.651196+00:00",
+      "sha256": "b5f0e88fff938c01c25d84eef8e2633b9da68e68ad3907bdd940c5ab9595721e",
+      "bytes": 2544717,
+      "publisher": "Knesset Research and Information Center",
+      "sourceType": "official",
+      "inspection": "Historical threshold section, printed page 11, read",
+      "limitations": "1949 natural threshold is not a statutory percentage threshold."
+    },
+    {
+      "id": "R2",
+      "file": "law-bader-ofer-1973.pdf",
+      "url": "https://fs.knesset.gov.il/7/law/7_lsr_211799.pdf",
+      "retrievedAt": "2026-11-03T15:31:36.151612+00:00",
+      "sha256": "4fa5d8c759a039f64f7adcdf736b91b1bb15450d0059c32329abf15908662302",
+      "bytes": 54296,
+      "publisher": "State of Israel / Knesset (Reshumot)",
+      "sourceType": "official legislation",
+      "inspection": "Entire one-page amendment read",
+      "limitations": "Amendment No. 4, not No. 5 as some secondary accounts say; includes former half-seat cap."
+    },
+    {
+      "id": "R3",
+      "file": "law-threshold-1991.pdf",
+      "url": "https://fs.knesset.gov.il/12/law/12_lsr_210711.PDF",
+      "retrievedAt": "2026-11-03T15:29:35.659600+00:00",
+      "sha256": "017dbe1288d04325f2cf46958c691dbfe3c7dbdb8b8dd43808e5d4053f2c4fae",
+      "bytes": 87073,
+      "publisher": "State of Israel / Knesset (Reshumot)",
+      "sourceType": "official legislation",
+      "inspection": "First page visually checked; threshold amendment at printed page 2",
+      "limitations": "PDF also contains unrelated municipal-election legislation."
+    },
+    {
+      "id": "R4",
+      "file": "idi-allocation-methods-2009.html",
+      "url": "https://www.idi.org.il/articles/3498",
+      "retrievedAt": "2026-11-03T15:30:46.854183+00:00",
+      "sha256": "b77bda74bb04d5b20d2f9ac5a07099a605852bae94e8809a37a14d89e68dc72a",
+      "bytes": 78980,
+      "publisher": "Israel Democracy Institute",
+      "sourceType": "nonpartisan research institute (secondary)",
+      "inspection": "Historical-method discussion read",
+      "limitations": "Calls Bader–Ofer amendment No. 5; original gazette says No. 4."
+    },
+    {
+      "id": "G14",
+      "file": "yp4411-agreements-1996.pdf",
+      "url": "https://olaw.org.il/yalkut/yalkut-4411.pdf",
+      "retrievedAt": "2026-11-03T15:32:59.650817+00:00",
+      "sha256": "46df695d5a71111d7375444c8f4440b62c31cf88e511a5bb93f30160ffab2f11",
+      "bytes": 176289,
+      "publisher": "State of Israel / Central Elections Committee (olaw.org.il mirror)",
+      "sourceType": "official publication via mirror",
+      "inspection": "Cover and printed page 3398 read; all six agreement entries inspected",
+      "limitations": "Primary statutory notice hosted by a third-party mirror; pairs not inferred from seats."
+    },
+    {
+      "id": "P",
+      "file": "parlgov-israel-elections.html",
+      "url": "https://parlgov.fly.dev/data/elections/isr/",
+      "retrievedAt": "2026-11-03T15:29:35.733553+00:00",
+      "sha256": "064879010c195c7d795a19f7c6ebae52dc0ebbdbbb93012677d473761c62475c",
+      "bytes": 73578,
+      "publisher": "ParlGov (Döring, Manow and collaborators)",
+      "sourceType": "academic secondary dataset",
+      "inspection": "Entire election-date index inspected",
+      "limitations": "1965 date shown as 1 November; official date is 2 November."
+    },
+    {
+      "id": "P1",
+      "file": "parlgov-1949.html",
+      "url": "https://parlgov.fly.dev/data/elections/isr/1949-01-25/",
+      "retrievedAt": "2026-11-03T15:36:06.093221+00:00",
+      "sha256": "d50dc5846806a8732dd6eff6227e9bde925f78f2806b011deba45e8ea33ac382",
+      "bytes": 19884,
+      "publisher": "ParlGov (Döring, Manow and collaborators)",
+      "sourceType": "academic secondary dataset",
+      "inspection": "Entire 1949 table inspected",
+      "limitations": "Contains 13 result rows vs 21 competing lists; not a complete national source."
+    },
+    {
+      "id": "IC1",
+      "file": "idi-k01-mapai-candidates.pdf",
+      "url": "https://www.idi.org.il/media/6637/%D7%9B%D7%A0%D7%A1%D7%AA-1-%D7%9E%D7%A4%D7%90%D7%99.pdf",
+      "retrievedAt": "2026-11-03T15:33:00.158609+00:00",
+      "sha256": "9e572dacd3000abee7d3dc37afad1d69e4b589b8d912d577eb88f14497721c0c",
+      "bytes": 583700,
+      "publisher": "Israel Democracy Institute (host of historical roster)",
+      "sourceType": "secondary-hosted candidate document",
+      "inspection": "First roster page read: reproduced 1949 Official Gazette 43, page 316; ranked Mapai candidates.",
+      "limitations": "Other per-list links not individually checked."
+    },
+    {
+      "id": "ORD",
+      "file": "1948-ordinance-unofficial-transcription.html",
+      "url": "https://knesset-tracker.co.il/knesset/statute/2001319",
+      "retrievedAt": "2026-11-03T15:30:46.419505+00:00",
+      "sha256": "aae320840342bf14faca99a14f9ee286ac7417061058b15c83f53164e6fbd87f",
+      "bytes": 166167,
+      "publisher": "Knesset Tracker (unofficial transcription from Open Law / Wikisource)",
+      "sourceType": "unofficial legal transcription",
+      "inspection": "Sections 30–31 read; historical rules/connected lists; explicitly unofficial",
+      "limitations": "Original ordinance and its operative amendments not assembled."
+    },
+    {
+      "id": "CBS-CAT",
+      "file": "cbs-publication-catalog-scan.pdf",
+      "url": "https://www.cbs.gov.il/he/publications/DocLib/2022/service/Xerox%20Scan_28112022070137.pdf",
+      "retrievedAt": "2026-11-03T15:29:36.010128+00:00",
+      "sha256": "d5dfb7a2e9e20698314643dc0aabb3cbc2bd9463ac955f58b9244d86a02b6ef6",
+      "bytes": 995482,
+      "publisher": "Israel Central Bureau of Statistics",
+      "sourceType": "official",
+      "inspection": "PDF identity checked; indexed bibliographic entry 1054/1055 located",
+      "limitations": "Full scan not read."
+    },
+    {
+      "id": "X15A",
+      "file": "yp4751-candidate-changes-1999.pdf",
+      "url": "https://olaw.org.il/yalkut/yalkut-4751.pdf",
+      "retrievedAt": "2026-11-03T15:32:59.509115+00:00",
+      "sha256": "94b7df52b2ed4eaaba4fbc50b60009778e2ad134442a37ca6a2d407870956caf",
+      "bytes": 1475197,
+      "publisher": "State of Israel / CEC (olaw.org.il mirror)",
+      "sourceType": "official publication via mirror",
+      "inspection": "Cover and printed page 3184 read",
+      "limitations": "Contains roster correction and withdrawals; other pages not fully inspected."
+    },
+    {
+      "id": "X15B",
+      "file": "yp4753-candidate-changes-1999.pdf",
+      "url": "https://olaw.org.il/yalkut/yalkut-4753.pdf",
+      "retrievedAt": "2026-11-03T15:34:03.456133+00:00",
+      "sha256": "7dec356563c0b108397b9a500541d2e1a4f7bcc84804cbe6da0299929dd2171c",
+      "bytes": 605120,
+      "publisher": "State of Israel / CEC (olaw.org.il mirror)",
+      "sourceType": "official publication via mirror",
+      "inspection": "Cover read: candidate withdrawals at p. 3240",
+      "limitations": "Notice body not transcribed."
+    },
+    {
+      "id": "X15C",
+      "file": "yp4754-candidate-changes-1999.pdf",
+      "url": "https://olaw.org.il/yalkut/yalkut-4754.pdf",
+      "retrievedAt": "2026-11-03T15:34:56.533035+00:00",
+      "sha256": "ff922eeb33c59ef8524a34f943bdbcd25d387c95e230df488051b07720fd71c9",
+      "bytes": 1491677,
+      "publisher": "State of Israel / CEC (olaw.org.il mirror)",
+      "sourceType": "official publication via mirror",
+      "inspection": "Cover and printed page 3269 read: candidate name corrections and withdrawal",
+      "limitations": "Other pages not fully inspected."
+    },
+    {
+      "id": "X12",
+      "file": "yp3589-candidate-changes-1988.pdf",
+      "url": "https://olaw.org.il/yalkut/yalkut-3589.pdf",
+      "retrievedAt": "2026-11-03T15:33:00.060506+00:00",
+      "sha256": "4830acd48a0c50578b00c60250080195492b4049d3d49a6d7b94352feda52aac",
+      "bytes": 1657559,
+      "publisher": "State of Israel / CEC (olaw.org.il mirror)",
+      "sourceType": "official publication via mirror",
+      "inspection": "Cover and printed page 181 read: Likud/NRP candidate replacements",
+      "limitations": "Other pages not fully inspected."
+    }
+  ],
+  "largeSources": [
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%203%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A4%D7%99.pdf",
+      "bytes": 15371932,
+      "retrievedAt": "2026-11-03T15:34:03.627060+00:00",
+      "httpStatus": 200,
+      "retained": false,
+      "publisher": "Central Elections Committee / gov.il"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%205%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A4%D7%99.pdf",
+      "bytes": 11672154,
+      "retrievedAt": "2026-11-03T15:34:03.692906+00:00",
+      "httpStatus": 200,
+      "retained": false,
+      "publisher": "Central Elections Committee / gov.il"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%206%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A4%D7%99.pdf",
+      "bytes": 64654874,
+      "retrievedAt": "2026-11-03T15:34:03.752789+00:00",
+      "httpStatus": 200,
+      "retained": false,
+      "publisher": "Central Elections Committee / gov.il"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%209%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A4%D7%99.pdf",
+      "bytes": 12380157,
+      "retrievedAt": "2026-11-03T15:34:03.812122+00:00",
+      "httpStatus": 200,
+      "retained": false,
+      "publisher": "Central Elections Committee / gov.il"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%2010%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A4%D7%99.pdf",
+      "bytes": 15482126,
+      "retrievedAt": "2026-11-03T15:34:03.854071+00:00",
+      "httpStatus": 200,
+      "retained": false,
+      "publisher": "Central Elections Committee / gov.il"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%2011%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A4%D7%99.pdf",
+      "bytes": 18182742,
+      "retrievedAt": "2026-11-03T15:34:03.873143+00:00",
+      "httpStatus": 200,
+      "retained": false,
+      "publisher": "Central Elections Committee / gov.il"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%2012%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A4%D7%99.pdf",
+      "bytes": 20287261,
+      "retrievedAt": "2026-11-03T15:34:03.916160+00:00",
+      "httpStatus": 200,
+      "retained": false,
+      "publisher": "Central Elections Committee / gov.il"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%2013%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A4%D7%99.pdf",
+      "bytes": 18233084,
+      "retrievedAt": "2026-11-03T15:34:03.930048+00:00",
+      "httpStatus": 200,
+      "retained": false,
+      "publisher": "Central Elections Committee / gov.il"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%202%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A41.pdf",
+      "bytes": 5886764,
+      "retrievedAt": "2026-11-03T15:32:58.984032+00:00",
+      "httpStatus": 200,
+      "retained": false,
+      "publisher": "Central Elections Committee / gov.il"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%204%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A41.pdf",
+      "bytes": 8465223,
+      "retrievedAt": "2026-11-03T15:32:59.105985+00:00",
+      "httpStatus": 200,
+      "retained": false,
+      "publisher": "Central Elections Committee / gov.il"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%207%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A41.pdf",
+      "bytes": 11838267,
+      "retrievedAt": "2026-11-03T15:32:59.286423+00:00",
+      "httpStatus": 200,
+      "retained": false,
+      "publisher": "Central Elections Committee / gov.il"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%208%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A41.pdf",
+      "bytes": 16954260,
+      "retrievedAt": "2026-11-03T15:32:59.353078+00:00",
+      "httpStatus": 200,
+      "retained": false,
+      "publisher": "Central Elections Committee / gov.il"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/memorandum-knesset1/he/archive_knesset1_memorandum-apdx1.pdf",
+      "bytes": 27567306,
+      "retrievedAt": "2026-11-03T15:32:59.722886+00:00",
+      "httpStatus": 200,
+      "retained": false,
+      "publisher": "Central Elections Committee / gov.il"
+    }
+  ],
+  "probes": [
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset1-cand.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.356478+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset1-results.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.355566+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset2-cand.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.355258+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset2-results.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.356014+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset3-cand.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.361201+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset3-results.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.356743+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset4-cand.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.416913+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset4-results.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.417082+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset5-cand.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.416546+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset5-results.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.415426+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset6-cand.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.505565+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1030152,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset6-results.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.526540+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 171244,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset7-cand.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.521316+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 857417,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset7-results.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.487273+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset8-cand.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.481839+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset8-results.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.479613+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset9-cand.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.550350+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset9-results.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.539126+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset10-cand.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.571458+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset10-results.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.604025+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset11-cand.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.619974+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset11-results.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.677018+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 170958,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset12-cand.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.789848+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1157056,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset12-results.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.851132+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1674624,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset13-cand.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.751566+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 451146,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset13-results.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.751915+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 173940,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-cand.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.831043+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1222755,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.792397+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 365900,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-cand.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.909532+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 775934,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-results.pdf",
+      "retrievedAt": "2026-11-03T15:27:21.833266+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 175416,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/he/pages/election-committee-history?chapterindex=7",
+      "retrievedAt": "2026-11-03T15:27:21.846100+00:00",
+      "httpStatus": 403,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 5185,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://data.gov.il/api/3/action/package_show?id=votes-knesset",
+      "retrievedAt": "2026-11-03T15:27:22.475350+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 29495,
+      "contentType": "application/json;charset=utf-8"
+    },
+    {
+      "url": "https://data.gov.il/api/3/action/package_search?q=%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA&rows=100",
+      "retrievedAt": "2026-11-03T15:27:22.539369+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 59033,
+      "contentType": "application/json;charset=utf-8"
+    },
+    {
+      "url": "https://www.cbs.gov.il/he/publications/doclib/2024/hnatonelectionstheknessetandgovernment.27/st27_02.pdf",
+      "retrievedAt": "2026-11-03T15:27:22.052262+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 123088,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%2014%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A4%D7%99.xls",
+      "retrievedAt": "2026-11-03T15:36:05.710570+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%2014%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A4%D7%99.xlsx",
+      "retrievedAt": "2026-11-03T15:36:05.707948+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%2015%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A4%D7%99.xls",
+      "retrievedAt": "2026-11-03T15:36:05.721501+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%2015%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A4%D7%99.xlsx",
+      "retrievedAt": "2026-11-03T15:36:05.711468+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-3073.pdf",
+      "retrievedAt": "2026-11-03T15:36:06.842486+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 602615,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.ines.tau.ac.il/",
+      "retrievedAt": "2026-11-03T15:36:06.278908+00:00",
+      "httpStatus": 0,
+      "method": "GET",
+      "curlExit": 60,
+      "downloadedBytes": 0,
+      "contentType": "",
+      "note": "curl: (60) SSL: no alternative certificate subject name matches target hostname 'www.ines.tau.ac.il'"
+    },
+    {
+      "url": "https://parlgov.fly.dev/data/elections/isr/1949-01-25/",
+      "retrievedAt": "2026-11-03T15:36:06.093221+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 19884,
+      "contentType": "text/html; charset=utf-8",
+      "declaredBytes": 19884
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-4016.pdf",
+      "retrievedAt": "2026-11-03T15:34:56.558951+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 3292281,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-4754.pdf",
+      "retrievedAt": "2026-11-03T15:34:56.533035+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1491677,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-3586.pdf",
+      "retrievedAt": "2026-11-03T15:34:56.765471+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 2182095,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://fs.knesset.gov.il/12/law/12_lsr_210710.pdf",
+      "retrievedAt": "2026-11-03T15:34:55.652651+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 41396,
+      "contentType": "application/pdf",
+      "declaredBytes": 41396
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-4752.pdf",
+      "retrievedAt": "2026-11-03T15:34:03.874020+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1461722,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-4753.pdf",
+      "retrievedAt": "2026-11-03T15:34:03.456133+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 605120,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-4020.pdf",
+      "retrievedAt": "2026-11-03T15:34:03.777827+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1840385,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-4017.pdf",
+      "retrievedAt": "2026-11-03T15:34:03.366430+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 451146,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-3587.pdf",
+      "retrievedAt": "2026-11-03T15:34:03.554407+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 897110,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-3588.pdf",
+      "retrievedAt": "2026-11-03T15:34:04.490508+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1157056,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-3080.pdf",
+      "retrievedAt": "2026-11-03T15:34:04.453723+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 417757,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%203%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A4%D7%99.pdf",
+      "retrievedAt": "2026-11-03T15:34:03.627060+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 63,
+      "downloadedBytes": 0,
+      "contentType": "application/pdf",
+      "declaredBytes": 15371932,
+      "note": "curl: (63) Maximum file size exceeded"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%205%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A4%D7%99.pdf",
+      "retrievedAt": "2026-11-03T15:34:03.692906+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 63,
+      "downloadedBytes": 0,
+      "contentType": "application/pdf",
+      "declaredBytes": 11672154,
+      "note": "curl: (63) Maximum file size exceeded"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%206%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A4%D7%99.pdf",
+      "retrievedAt": "2026-11-03T15:34:03.752789+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 63,
+      "downloadedBytes": 0,
+      "contentType": "application/pdf",
+      "declaredBytes": 64654874,
+      "note": "curl: (63) Maximum file size exceeded"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%209%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A4%D7%99.pdf",
+      "retrievedAt": "2026-11-03T15:34:03.812122+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 63,
+      "downloadedBytes": 0,
+      "contentType": "application/pdf",
+      "declaredBytes": 12380157,
+      "note": "curl: (63) Maximum file size exceeded"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%2010%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A4%D7%99.pdf",
+      "retrievedAt": "2026-11-03T15:34:03.854071+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 63,
+      "downloadedBytes": 0,
+      "contentType": "application/pdf",
+      "declaredBytes": 15482126,
+      "note": "curl: (63) Maximum file size exceeded"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%2011%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A4%D7%99.pdf",
+      "retrievedAt": "2026-11-03T15:34:03.873143+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 63,
+      "downloadedBytes": 0,
+      "contentType": "application/pdf",
+      "declaredBytes": 18182742,
+      "note": "curl: (63) Maximum file size exceeded"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%2012%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A4%D7%99.pdf",
+      "retrievedAt": "2026-11-03T15:34:03.916160+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 63,
+      "downloadedBytes": 0,
+      "contentType": "application/pdf",
+      "declaredBytes": 20287261,
+      "note": "curl: (63) Maximum file size exceeded"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%2013%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A4%D7%99.pdf",
+      "retrievedAt": "2026-11-03T15:34:03.930048+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 63,
+      "downloadedBytes": 0,
+      "contentType": "application/pdf",
+      "declaredBytes": 18233084,
+      "note": "curl: (63) Maximum file size exceeded"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/records-results7/he/archive_knesset7_records-results7.pdf",
+      "retrievedAt": "2026-11-03T15:34:03.929611+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset11-cands.pdf",
+      "retrievedAt": "2026-11-03T15:34:03.971855+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/1951_Israeli_legislative_election",
+      "retrievedAt": "2026-11-03T15:28:24.311666+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 141632,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/1973_Israeli_legislative_election",
+      "retrievedAt": "2026-11-03T15:28:24.380305+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 204028,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://main.knesset.gov.il/About/History/pages/knessethistory.aspx?kns=1",
+      "retrievedAt": "2026-11-03T15:28:26.170846+00:00",
+      "httpStatus": 247,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 445,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1949/",
+      "retrievedAt": "2026-11-03T15:28:28.651317+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 74241,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.odata.org.il/api/3/action/package_show?id=elections",
+      "retrievedAt": "2026-11-03T15:28:24.377579+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 12285,
+      "contentType": "application/json;charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/he/pages/election-about-info?chapterindex=4",
+      "retrievedAt": "2026-11-03T15:28:24.374490+00:00",
+      "httpStatus": 403,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 5185,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://isdc.huji.ac.il/book/%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA",
+      "retrievedAt": "2026-11-03T15:28:26.039300+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 68509,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset1-cand.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.803847+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1110763,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset1-results.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.743527+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 238721,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset4-cand.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.813722+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 996060,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset4-results.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.736809+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 151251,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset5-cand.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.773315+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 954690,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset5-results.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.736940+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 162937,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset7-results.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.851128+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset8-cand.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.919640+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 437259,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset8-results.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.815712+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 147529,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset9-cand.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.877538+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 574072,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset9-results.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.896384+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 171588,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset10-cand.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.961622+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 922974,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset10-results.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.886378+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 152326,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset11-cand.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.932007+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/records-results2/he/archive_knesset2_records-results2.pdf",
+      "retrievedAt": "2026-11-03T15:32:04.182651+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 3788300,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/records-results3/he/archive_knesset3_records-results3.pdf",
+      "retrievedAt": "2026-11-03T15:32:04.218633+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 3631315,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/memorandum-knesset1/he/archive_knesset1_memorandum-apdx1.pdf",
+      "retrievedAt": "2026-11-03T15:32:03.963181+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 63,
+      "downloadedBytes": 0,
+      "contentType": "application/pdf",
+      "note": "curl: (63) Maximum file size exceeded"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-181.pdf",
+      "retrievedAt": "2026-11-03T15:30:45.530284+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 150,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-432.pdf",
+      "retrievedAt": "2026-11-03T15:30:45.517846+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 150,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-717.pdf",
+      "retrievedAt": "2026-11-03T15:30:45.486563+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 150,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-869.pdf",
+      "retrievedAt": "2026-11-03T15:30:45.517779+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 150,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-1573.pdf",
+      "retrievedAt": "2026-11-03T15:30:45.756114+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 157445,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-1979.pdf",
+      "retrievedAt": "2026-11-03T15:30:45.876069+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 147529,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-2326.pdf",
+      "retrievedAt": "2026-11-03T15:30:46.288117+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 171588,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-2727.pdf",
+      "retrievedAt": "2026-11-03T15:30:46.346467+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 152326,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-4747.pdf",
+      "retrievedAt": "2026-11-03T15:30:46.734344+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1501588,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-4749.pdf",
+      "retrievedAt": "2026-11-03T15:30:46.637924+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 983182,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%202%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A41.pdf",
+      "retrievedAt": "2026-11-03T15:30:45.843754+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 63,
+      "downloadedBytes": 0,
+      "contentType": "application/pdf",
+      "note": "curl: (63) Maximum file size exceeded"
+    },
+    {
+      "url": "https://knesset-tracker.co.il/knesset/statute/2001319",
+      "retrievedAt": "2026-11-03T15:30:46.419505+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 166167,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://knesset-tracker.co.il/knesset/statute/2000191",
+      "retrievedAt": "2026-11-03T15:30:46.657546+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1526913,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.idi.org.il/articles/3498",
+      "retrievedAt": "2026-11-03T15:30:46.854183+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 78980,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.nevo.co.il/law_html/law01/190_001.htm",
+      "retrievedAt": "2026-11-03T15:30:46.527886+00:00",
+      "httpStatus": 403,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 2023,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/apps/elections/elections-knesset-15/heb/results/index.html",
+      "retrievedAt": "2026-11-03T15:30:46.457607+00:00",
+      "httpStatus": 403,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 5185,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-4750.pdf",
+      "retrievedAt": "2026-11-03T15:32:58.925134+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 2041522,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-4751.pdf",
+      "retrievedAt": "2026-11-03T15:32:59.509115+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1475197,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-4018.pdf",
+      "retrievedAt": "2026-11-03T15:32:58.895796+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1910274,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-4019.pdf",
+      "retrievedAt": "2026-11-03T15:32:58.869975+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1841137,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-4410.pdf",
+      "retrievedAt": "2026-11-03T15:32:58.756224+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 667818,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-4411.pdf",
+      "retrievedAt": "2026-11-03T15:32:59.650817+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 176289,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-3589.pdf",
+      "retrievedAt": "2026-11-03T15:33:00.060506+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1657559,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://fs.knesset.gov.il/globaldocs/MMM/8d6433f2-66cc-e811-80e7-00155d0aeea3/2_8d6433f2-66cc-e811-80e7-00155d0aeea3_11_10898.pdf",
+      "retrievedAt": "2026-11-03T15:32:59.651196+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 2544717,
+      "contentType": "application/pdf",
+      "declaredBytes": 2544717
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%202%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A41.pdf",
+      "retrievedAt": "2026-11-03T15:32:58.984032+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 63,
+      "downloadedBytes": 0,
+      "contentType": "application/pdf",
+      "declaredBytes": 5886764,
+      "note": "curl: (63) Maximum file size exceeded"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%203%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A41.pdf",
+      "retrievedAt": "2026-11-03T15:32:59.043924+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%204%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A41.pdf",
+      "retrievedAt": "2026-11-03T15:32:59.105985+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 63,
+      "downloadedBytes": 0,
+      "contentType": "application/pdf",
+      "declaredBytes": 8465223,
+      "note": "curl: (63) Maximum file size exceeded"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%205%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A41.pdf",
+      "retrievedAt": "2026-11-03T15:32:59.161562+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%206%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A41.pdf",
+      "retrievedAt": "2026-11-03T15:32:59.228409+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%207%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A41.pdf",
+      "retrievedAt": "2026-11-03T15:32:59.286423+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 63,
+      "downloadedBytes": 0,
+      "contentType": "application/pdf",
+      "declaredBytes": 11838267,
+      "note": "curl: (63) Maximum file size exceeded"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%208%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A41.pdf",
+      "retrievedAt": "2026-11-03T15:32:59.353078+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 63,
+      "downloadedBytes": 0,
+      "contentType": "application/pdf",
+      "declaredBytes": 16954260,
+      "note": "curl: (63) Maximum file size exceeded"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%209%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A41.pdf",
+      "retrievedAt": "2026-11-03T15:32:59.412120+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%2010%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A41.pdf",
+      "retrievedAt": "2026-11-03T15:32:59.470543+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%2011%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A41.pdf",
+      "retrievedAt": "2026-11-03T15:32:59.547907+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%2012%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A41.pdf",
+      "retrievedAt": "2026-11-03T15:32:59.568170+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%2013%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A41.pdf",
+      "retrievedAt": "2026-11-03T15:32:59.611411+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%2014%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A41.pdf",
+      "retrievedAt": "2026-11-03T15:32:59.650282+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%2015%20%D7%9C%D7%A4%D7%99%20%D7%A7%D7%9C%D7%A41.pdf",
+      "retrievedAt": "2026-11-03T15:32:59.694618+00:00",
+      "httpStatus": 404,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1349,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.idi.org.il/media/6637/%D7%9B%D7%A0%D7%A1%D7%AA-1-%D7%9E%D7%A4%D7%90%D7%99.pdf",
+      "retrievedAt": "2026-11-03T15:33:00.158609+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 583700,
+      "contentType": "application/pdf",
+      "declaredBytes": 583700
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/memorandum-knesset1/he/archive_knesset1_memorandum-apdx1.pdf",
+      "retrievedAt": "2026-11-03T15:32:59.722886+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 63,
+      "downloadedBytes": 0,
+      "contentType": "application/pdf",
+      "declaredBytes": 27567306,
+      "note": "curl: (63) Maximum file size exceeded"
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset2-cand.pdf",
+      "retrievedAt": "2026-11-03T15:32:59.753716+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 807540,
+      "contentType": "application/pdf",
+      "declaredBytes": 807540
+    },
+    {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset3-cand.pdf",
+      "retrievedAt": "2026-11-03T15:32:59.821097+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 818680,
+      "contentType": "application/pdf",
+      "declaredBytes": 818680
+    },
+    {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1951/",
+      "retrievedAt": "2026-11-03T15:29:28.499934+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 69976,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1955/",
+      "retrievedAt": "2026-11-03T15:29:28.549493+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 71299,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1959/",
+      "retrievedAt": "2026-11-03T15:29:28.077956+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 78407,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1961/",
+      "retrievedAt": "2026-11-03T15:29:28.577555+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 67344,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1965/",
+      "retrievedAt": "2026-11-03T15:29:28.628217+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 70413,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1969/",
+      "retrievedAt": "2026-11-03T15:29:28.090555+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 68702,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1973/",
+      "retrievedAt": "2026-11-03T15:29:33.395086+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 75434,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1977/",
+      "retrievedAt": "2026-11-03T15:29:34.514722+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 78795,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1981/",
+      "retrievedAt": "2026-11-03T15:29:34.734939+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 89051,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1984/",
+      "retrievedAt": "2026-11-03T15:29:35.113415+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 82680,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1988/",
+      "retrievedAt": "2026-11-03T15:29:35.125262+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 85298,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1992/",
+      "retrievedAt": "2026-11-03T15:29:35.033593+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 81416,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1996/",
+      "retrievedAt": "2026-11-03T15:29:39.052669+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 75580,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1999/",
+      "retrievedAt": "2026-11-03T15:29:40.232473+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 93004,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://hstoll.faculty.polsci.ucsb.edu/research/atmorstoll2009_Israeli_Election_Results.xls",
+      "retrievedAt": "2026-11-03T15:29:36.196232+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 68608,
+      "contentType": "application/vnd.ms-excel"
+    },
+    {
+      "url": "https://electiondataarchive.org/",
+      "retrievedAt": "2026-11-03T15:29:35.433858+00:00",
+      "httpStatus": 403,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 5381,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://parlgov.fly.dev/data/elections/isr/",
+      "retrievedAt": "2026-11-03T15:29:35.733553+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 73578,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://fs.knesset.gov.il/12/law/12_lsr_210711.PDF",
+      "retrievedAt": "2026-11-03T15:29:35.659600+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 87073,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://bechirot.fyi/sources",
+      "retrievedAt": "2026-11-03T15:29:36.225266+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 44226,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.cbs.gov.il/he/publications/DocLib/2022/service/Xerox%20Scan_28112022070137.pdf",
+      "retrievedAt": "2026-11-03T15:29:36.010128+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 995482,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://www.odata.org.il/dataset/c0ec706c-5970-4c6d-942f-aaf60187dcbb/resource/c166aa81-3541-4636-97f1-9ff134f33d14/download/-14-1996-.xls",
+      "retrievedAt": "2026-11-03T15:29:36.853937+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 1809920,
+      "contentType": "application/vnd.ms-excel"
+    },
+    {
+      "url": "https://www.odata.org.il/dataset/c0ec706c-5970-4c6d-942f-aaf60187dcbb/resource/5729daf9-adfd-4ec9-b4d3-0f2047189ddb/download/-15-1999-.xls",
+      "retrievedAt": "2026-11-03T15:29:37.258552+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 2786816,
+      "contentType": "application/vnd.ms-excel"
+    },
+    {
+      "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA%20%D7%9C%D7%90%D7%A1%D7%A4%D7%94%20%D7%94%D7%9E%D7%9B%D7%95%D7%A0%D7%A0%D7%AA",
+      "retrievedAt": "2026-11-03T15:31:35.642871+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 216463,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA%20%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA%20%D7%94%D7%A9%D7%A0%D7%99%D7%99%D7%94",
+      "retrievedAt": "2026-11-03T15:31:35.606651+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 199307,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA%20%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA%20%D7%94%D7%A9%D7%9C%D7%99%D7%A9%D7%99%D7%AA",
+      "retrievedAt": "2026-11-03T15:31:35.601249+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 178650,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA%20%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA%20%D7%94%D7%A8%D7%91%D7%99%D7%A2%D7%99%D7%AA",
+      "retrievedAt": "2026-11-03T15:31:35.607041+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 178712,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA%20%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA%20%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%99%D7%AA",
+      "retrievedAt": "2026-11-03T15:31:35.791234+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 167033,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA%20%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA%20%D7%94%D7%A9%D7%91%D7%99%D7%A2%D7%99%D7%AA",
+      "retrievedAt": "2026-11-03T15:31:35.806774+00:00",
+      "httpStatus": 429,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 2174,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA%20%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA%20%D7%94%D7%A9%D7%9E%D7%99%D7%A0%D7%99%D7%AA",
+      "retrievedAt": "2026-11-03T15:31:35.823159+00:00",
+      "httpStatus": 429,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 2174,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA%20%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA%20%D7%94%D7%AA%D7%A9%D7%99%D7%A2%D7%99%D7%AA",
+      "retrievedAt": "2026-11-03T15:31:35.809648+00:00",
+      "httpStatus": 429,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 2174,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA%20%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA%20%D7%94%D7%A2%D7%A9%D7%99%D7%A8%D7%99%D7%AA",
+      "retrievedAt": "2026-11-03T15:31:35.846692+00:00",
+      "httpStatus": 429,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 2174,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://fs.knesset.gov.il/0/law/0_lsr_312717.pdf",
+      "retrievedAt": "2026-11-03T15:31:36.138306+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 85141,
+      "contentType": "application/pdf"
+    },
+    {
+      "url": "https://fs.knesset.gov.il/7/law/7_lsr_211799.pdf",
+      "retrievedAt": "2026-11-03T15:31:36.151612+00:00",
+      "httpStatus": 200,
+      "method": "GET",
+      "curlExit": 0,
+      "downloadedBytes": 54296,
+      "contentType": "application/pdf"
+    }
+  ]
+}

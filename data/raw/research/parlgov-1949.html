@@ -1,0 +1,952 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS/JS -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.deb991cdf0ea.css" />
+    <link rel="stylesheet" href="/static/css/bootstrap-icons.92ecf0b0936a.css" />
+    <script src="/static/js/bootstrap.bundle.min.c3d406f6f981.js"></script>
+
+    <title>ParlGov ·
+  Isr // 1949 election
+</title>
+
+    <link
+      rel="icon"
+      href="/static/images/parlgov-favicon.35a057fcaff3.png"
+      type="image/png"
+    />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light mb-4">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+          <img src="/static/images/parlgov-logo.5896ba651fb3.svg" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link link-dark" href="/data/">
+                <i class="bi bi-table" style="font-size: 0.8rem"></i>
+                · Data
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-dark" href="/docs/">
+                <i
+                  class="bi bi-layout-text-sidebar-reverse"
+                  style="font-size: 0.85rem"
+                >
+                </i>
+                · Docs
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-dark" href="/api/v1/">
+                <i class="bi bi-code-square" style="font-size: 0.8rem">
+                </i>
+                · API
+              </a>
+            </li>
+          </ul>
+          <ul class="navbar-nav">
+            
+            <li class="nav-item">
+              
+            </li>
+            <li class="nav-item">
+              
+                <a
+                  class="nav-link link-dark"
+                  href="/login-parlgov"
+                  aria-label="Login"
+                >
+                  <i class="bi bi-box-arrow-in-right"></i>
+                </a>
+              
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container">
+      <div class="alert alert-dark" role="alert">
+        <em>Minimal</em> version of ParlGov site — see
+        <a href="https://parlgov.org/" class="alert-link">parlgov.org</a>
+      </div>
+      
+
+  <hr />
+
+<ul class="nav">
+  <li>
+    
+    <select id="country-select" class="form-select" onchange="location = this.value;">
+      <option  value="/data/elections/aus/" >Australia</option>
+      <option  value="/data/elections/aut/" >Austria</option>
+      <option  value="/data/elections/bel/" >Belgium</option>
+      <option  value="/data/elections/bgr/" >Bulgaria</option>
+      <option  value="/data/elections/can/" >Canada</option>
+      <option  value="/data/elections/hrv/" >Croatia</option>
+      <option  value="/data/elections/cyp/" >Cyprus</option>
+      <option  value="/data/elections/cze/" >Czech Republic</option>
+      <option  value="/data/elections/dnk/" >Denmark</option>
+      <option  value="/data/elections/est/" >Estonia</option>
+      <option  value="/data/elections/fin/" >Finland</option>
+      <option  value="/data/elections/fra/" >France</option>
+      <option  value="/data/elections/deu/" >Germany</option>
+      <option  value="/data/elections/grc/" >Greece</option>
+      <option  value="/data/elections/hun/" >Hungary</option>
+      <option  value="/data/elections/isl/" >Iceland</option>
+      <option  value="/data/elections/irl/" >Ireland</option>
+      <option  selected >Israel</option>
+      <option  value="/data/elections/ita/" >Italy</option>
+      <option  value="/data/elections/jpn/" >Japan</option>
+      <option  value="/data/elections/lva/" >Latvia</option>
+      <option  value="/data/elections/ltu/" >Lithuania</option>
+      <option  value="/data/elections/lux/" >Luxembourg</option>
+      <option  value="/data/elections/mlt/" >Malta</option>
+      <option  value="/data/elections/nld/" >Netherlands</option>
+      <option  value="/data/elections/nzl/" >New Zealand</option>
+      <option  value="/data/elections/nor/" >Norway</option>
+      <option  value="/data/elections/pol/" >Poland</option>
+      <option  value="/data/elections/prt/" >Portugal</option>
+      <option  value="/data/elections/rou/" >Romania</option>
+      <option  value="/data/elections/svk/" >Slovakia</option>
+      <option  value="/data/elections/svn/" >Slovenia</option>
+      <option  value="/data/elections/esp/" >Spain</option>
+      <option  value="/data/elections/swe/" >Sweden</option>
+      <option  value="/data/elections/che/" >Switzerland</option>
+      <option  value="/data/elections/tur/" >Turkey</option>
+      <option  value="/data/elections/gbr/" >United Kingdom</option>
+    </select>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/data/parties/isr/">
+      <i class="bi bi-people"></i> · Parties
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/data/elections/isr/">
+      <i class="bi bi-box-seam"></i> · Elections
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/data/cabinets/isr/">
+      <i class="bi bi-briefcase"></i> · Cabinets
+    </a>
+  </li>
+  <li>
+    <a class="nav-link" href="/docs/#isr">
+      <i
+        class="bi bi-layout-text-sidebar-reverse"
+        style="font-size: 0.85rem"
+      >
+      </i>
+    </a>
+  </li>
+</ul>
+
+<hr />
+
+
+  <h1>
+    🇮🇱 ·
+    
+      Election
+    
+    1949
+  </h1>
+  <table class="table table-striped caption-top">
+    <caption>
+      <a href="/data/elections/irl/2019-05-24-ep/">
+  <i class="bi bi-arrow-left-square"></i></a>
+<a href="/data/elections/isr/1951-07-30/">
+  <i class="bi bi-arrow-right-square"></i></a>
+
+      —
+      
+        <i class="bi bi-pin-map"></i> National
+      
+      // Israel · ID 704
+      
+      
+
+    </caption>
+    <thead>
+      <tr>
+        <th scope="col" class="d-none d-md-table-cell">ID</th>
+        <th scope="col">Party</th>
+        <th
+          scope="col"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="Alliance"
+        >
+          #
+        </th>
+        <th scope="col" class="d-none d-md-table-cell">Name</th>
+        <th scope="col" style="text-align: right">Seat share</th>
+        <th
+          scope="col"
+          style="text-align: right"
+          class="d-none d-md-table-cell"
+        >
+          Seats
+        </th>
+        <th scope="col" style="text-align: right">Vote share</th>
+        <th
+          scope="col"
+          style="text-align: right"
+          class="d-none d-md-table-cell"
+        >
+          Votes
+        </th>
+        <th scope="col" style="text-align: center">
+          
+          
+
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        
+
+<tr>
+  <td class="d-none d-md-table-cell">
+    <small>5907</small>
+  </td>
+  <td>
+    <a href="/data/parties/isr/244/">Ma|Av</a>
+  </td>
+  <td>
+    
+    
+  </td>
+  <td class="d-none d-md-table-cell">
+    <small>Alignment | Labor</small>
+  </td>
+  <td style="text-align: right">
+    38.3
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    46
+  </td>
+  <td style="text-align: right">
+    35.7
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    155,274
+  </td>
+  <td style="text-align: center">
+    
+    
+
+  </td>
+</tr>
+
+        
+      
+        
+
+<tr>
+  <td class="d-none d-md-table-cell">
+    <small>5908</small>
+  </td>
+  <td>
+    <a href="/data/parties/isr/1168/">Mapam</a>
+  </td>
+  <td>
+    
+    
+  </td>
+  <td class="d-none d-md-table-cell">
+    <small>United Workers Party</small>
+  </td>
+  <td style="text-align: right">
+    15.8
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    19
+  </td>
+  <td style="text-align: right">
+    14.7
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    64,018
+  </td>
+  <td style="text-align: center">
+    
+    
+
+  </td>
+</tr>
+
+        
+      
+        
+
+<tr>
+  <td class="d-none d-md-table-cell">
+    <small>5909</small>
+  </td>
+  <td>
+    <a href="/data/parties/isr/1821/">HDM</a>
+  </td>
+  <td>
+    
+    
+      HDM
+    
+  </td>
+  <td class="d-none d-md-table-cell">
+    <small>United Religious Front</small>
+  </td>
+  <td style="text-align: right">
+    13.3
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    16
+  </td>
+  <td style="text-align: right">
+    12.2
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    52,982
+  </td>
+  <td style="text-align: center">
+    
+    
+
+  </td>
+</tr>
+
+        
+          
+
+<tr>
+  <td class="d-none d-md-table-cell">
+    <small>6135</small>
+  </td>
+  <td>
+    <a href="/data/parties/isr/1828/">HaMi</a>
+  </td>
+  <td>
+    HDM
+    
+  </td>
+  <td class="d-none d-md-table-cell">
+    <small>Mizrachi Workers</small>
+  </td>
+  <td style="text-align: right">
+    
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    
+  </td>
+  <td style="text-align: right">
+    
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    
+  </td>
+  <td style="text-align: center">
+    
+    
+
+  </td>
+</tr>
+
+        
+          
+
+<tr>
+  <td class="d-none d-md-table-cell">
+    <small>6136</small>
+  </td>
+  <td>
+    <a href="/data/parties/isr/1833/">Mizrahi</a>
+  </td>
+  <td>
+    HDM
+    
+  </td>
+  <td class="d-none d-md-table-cell">
+    <small>Spiritual Centre</small>
+  </td>
+  <td style="text-align: right">
+    
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    
+  </td>
+  <td style="text-align: right">
+    
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    
+  </td>
+  <td style="text-align: center">
+    
+    
+
+  </td>
+</tr>
+
+        
+          
+
+<tr>
+  <td class="d-none d-md-table-cell">
+    <small>6137</small>
+  </td>
+  <td>
+    <a href="/data/parties/isr/265/">AY</a>
+  </td>
+  <td>
+    HDM
+    
+  </td>
+  <td class="d-none d-md-table-cell">
+    <small>Union of Israel</small>
+  </td>
+  <td style="text-align: right">
+    
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    
+  </td>
+  <td style="text-align: right">
+    
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    
+  </td>
+  <td style="text-align: center">
+    
+    
+
+  </td>
+</tr>
+
+        
+          
+
+<tr>
+  <td class="d-none d-md-table-cell">
+    <small>6138</small>
+  </td>
+  <td>
+    <a href="/data/parties/isr/1832/">PAY</a>
+  </td>
+  <td>
+    HDM
+    
+  </td>
+  <td class="d-none d-md-table-cell">
+    <small>Agudat Israel Workers</small>
+  </td>
+  <td style="text-align: right">
+    
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    
+  </td>
+  <td style="text-align: right">
+    
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    
+  </td>
+  <td style="text-align: center">
+    
+    
+
+  </td>
+</tr>
+
+        
+      
+        
+
+<tr>
+  <td class="d-none d-md-table-cell">
+    <small>5910</small>
+  </td>
+  <td>
+    <a href="/data/parties/isr/1204/">Herut</a>
+  </td>
+  <td>
+    
+    
+  </td>
+  <td class="d-none d-md-table-cell">
+    <small>Freedom Party</small>
+  </td>
+  <td style="text-align: right">
+    11.7
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    14
+  </td>
+  <td style="text-align: right">
+    11.5
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    49,782
+  </td>
+  <td style="text-align: center">
+    
+    
+
+  </td>
+</tr>
+
+        
+      
+        
+
+<tr>
+  <td class="d-none d-md-table-cell">
+    <small>5911</small>
+  </td>
+  <td>
+    <a href="/data/parties/isr/1472/">ZK</a>
+  </td>
+  <td>
+    
+    
+  </td>
+  <td class="d-none d-md-table-cell">
+    <small>General Zionists</small>
+  </td>
+  <td style="text-align: right">
+    5.8
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    7
+  </td>
+  <td style="text-align: right">
+    5.2
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    22,661
+  </td>
+  <td style="text-align: center">
+    
+    
+
+  </td>
+</tr>
+
+        
+      
+        
+
+<tr>
+  <td class="d-none d-md-table-cell">
+    <small>5912</small>
+  </td>
+  <td>
+    <a href="/data/parties/isr/1822/">MP</a>
+  </td>
+  <td>
+    
+    
+  </td>
+  <td class="d-none d-md-table-cell">
+    <small>Progressive Party</small>
+  </td>
+  <td style="text-align: right">
+    4.2
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    5
+  </td>
+  <td style="text-align: right">
+    4.1
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    17,786
+  </td>
+  <td style="text-align: center">
+    
+    
+
+  </td>
+</tr>
+
+        
+      
+        
+
+<tr>
+  <td class="d-none d-md-table-cell">
+    <small>5913</small>
+  </td>
+  <td>
+    <a href="/data/parties/isr/1831/">SVM</a>
+  </td>
+  <td>
+    
+    
+  </td>
+  <td class="d-none d-md-table-cell">
+    <small>Sephardim and Oriental Communities</small>
+  </td>
+  <td style="text-align: right">
+    3.3
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    4
+  </td>
+  <td style="text-align: right">
+    3.5
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    15,287
+  </td>
+  <td style="text-align: center">
+    
+    
+
+  </td>
+</tr>
+
+        
+      
+        
+
+<tr>
+  <td class="d-none d-md-table-cell">
+    <small>5914</small>
+  </td>
+  <td>
+    <a href="/data/parties/isr/387/">MiKo|Mo|Sh</a>
+  </td>
+  <td>
+    
+    
+  </td>
+  <td class="d-none d-md-table-cell">
+    <small>Communist Party | Moked | Sheli</small>
+  </td>
+  <td style="text-align: right">
+    3.3
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    4
+  </td>
+  <td style="text-align: right">
+    3.5
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    15,148
+  </td>
+  <td style="text-align: center">
+    
+    
+
+  </td>
+</tr>
+
+        
+      
+        
+
+<tr>
+  <td class="d-none d-md-table-cell">
+    <small>5915</small>
+  </td>
+  <td>
+    <a href="/data/parties/isr/1824/">RDN</a>
+  </td>
+  <td>
+    
+    
+  </td>
+  <td class="d-none d-md-table-cell">
+    <small>Democratic List of Nazareth</small>
+  </td>
+  <td style="text-align: right">
+    1.7
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    2
+  </td>
+  <td style="text-align: right">
+    1.7
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    7,387
+  </td>
+  <td style="text-align: center">
+    
+    
+
+  </td>
+</tr>
+
+        
+      
+        
+
+<tr>
+  <td class="d-none d-md-table-cell">
+    <small>5916</small>
+  </td>
+  <td>
+    <a href="/data/parties/isr/2309/">ReLo</a>
+  </td>
+  <td>
+    
+    
+  </td>
+  <td class="d-none d-md-table-cell">
+    <small>Fighters List</small>
+  </td>
+  <td style="text-align: right">
+    0.8
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    1
+  </td>
+  <td style="text-align: right">
+    1.2
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    5,363
+  </td>
+  <td style="text-align: center">
+    
+    
+
+  </td>
+</tr>
+
+        
+      
+        
+
+<tr>
+  <td class="d-none d-md-table-cell">
+    <small>7789</small>
+  </td>
+  <td>
+    <a href="/data/parties/isr/2310/">Vitzo</a>
+  </td>
+  <td>
+    
+    
+  </td>
+  <td class="d-none d-md-table-cell">
+    <small>Women&#x27;s International Zionist Organizat…</small>
+  </td>
+  <td style="text-align: right">
+    0.8
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    1
+  </td>
+  <td style="text-align: right">
+    1.2
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    5,173
+  </td>
+  <td style="text-align: center">
+    
+    
+
+  </td>
+</tr>
+
+        
+      
+        
+
+<tr>
+  <td class="d-none d-md-table-cell">
+    <small>5918</small>
+  </td>
+  <td>
+    <a href="/data/parties/isr/1827/">HHT</a>
+  </td>
+  <td>
+    
+    
+  </td>
+  <td class="d-none d-md-table-cell">
+    <small>Yemenite Association</small>
+  </td>
+  <td style="text-align: right">
+    0.8
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    1
+  </td>
+  <td style="text-align: right">
+    1
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    4,399
+  </td>
+  <td style="text-align: center">
+    
+    
+
+  </td>
+</tr>
+
+        
+      
+        
+
+<tr>
+  <td class="d-none d-md-table-cell">
+    <small>7781</small>
+  </td>
+  <td>
+    <a href="/data/parties/isr/2308/">no-seat</a>
+  </td>
+  <td>
+    
+    
+  </td>
+  <td class="d-none d-md-table-cell">
+    <small>no seat</small>
+  </td>
+  <td style="text-align: right">
+    0
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    0
+  </td>
+  <td style="text-align: right">
+    0.7
+  </td>
+  <td style="text-align: right" class="d-none d-md-table-cell">
+    3,214
+  </td>
+  <td style="text-align: center">
+    
+    
+
+  </td>
+</tr>
+
+        
+      
+    </tbody>
+  </table>
+
+  <div class="row">
+    <div class="col-sm">
+      <h5><i class="bi bi-info-circle"></i> · Information</h5>
+      <dl class="row">
+        <dt class="col-sm-3">Date</dt>
+        <dd class="col-sm-9">25. January 1949</dd>
+        <dt class="col-sm-3">Early · <i class="bi bi-lightning"></i></dt>
+        <dd class="col-sm-9">
+           no 
+        </dd>
+        <dt class="col-sm-3">Total seats</dt>
+        <dd class="col-sm-9">120</dd>
+        <dt class="col-sm-3">Wikipedia</dt>
+        <dd class="col-sm-9">
+          
+            <a href="http://en.wikipedia.org/wiki/Israeli_legislative_election,_1949">
+              Israeli legislative election, 1949
+            </a>
+          
+        </dd>
+        
+      </dl>
+    </div>
+    <div class="col-sm">
+      <h5><i class="bi bi-box2"></i> · Votes</h5>
+      <dl class="row">
+        <dt class="col-sm-3">Electorate</dt>
+        <dd class="col-sm-9">
+          506,567
+        </dd>
+        <dt class="col-sm-3">Total votes</dt>
+        <dd class="col-sm-9">
+          440,095
+        </dd>
+        <dt class="col-sm-3">Valid votes</dt>
+        <dd class="col-sm-9">
+          434,684
+        </dd>
+      </dl>
+    </div>
+  </div>
+
+  
+    <!-- cabinets-section-test -->
+    <div class="row">
+      <div class="col-sm-8">
+        <h5><i class="bi bi-briefcase"></i> · Cabinets</h5>
+        <ul class="list-inline">
+          
+            <li class="list-inline-item">
+              <a href="/data/cabinets/isr/1949-01-25/">
+                1949-01-25</a>
+              – Ben-Gurion I
+            </li>
+          
+            <li class="list-inline-item">
+              <a href="/data/cabinets/isr/1949-03-10/">
+                1949-03-10</a>
+              – Ben-Gurion II
+            </li>
+          
+            <li class="list-inline-item">
+              <a href="/data/cabinets/isr/1950-11-01/">
+                1950-11-01</a>
+              – Ben-Gurion III
+            </li>
+          
+            <li class="list-inline-item">
+              <a href="/data/cabinets/isr/1951-02-14/">
+                1951-02-14</a>
+              – Ben-Gurion IV
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  
+
+  <script type="text/javascript">
+  var tooltipTriggerList = [].slice.call(
+    document.querySelectorAll('[data-bs-toggle="tooltip"]'),
+  );
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+  });
+</script>
+
+
+
+    </main>
+  </body>
+</html>

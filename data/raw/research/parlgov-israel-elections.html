@@ -1,0 +1,2910 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS/JS -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.deb991cdf0ea.css" />
+    <link rel="stylesheet" href="/static/css/bootstrap-icons.92ecf0b0936a.css" />
+    <script src="/static/js/bootstrap.bundle.min.c3d406f6f981.js"></script>
+
+    <title>ParlGov ·
+  Isr // elections
+</title>
+
+    <link
+      rel="icon"
+      href="/static/images/parlgov-favicon.35a057fcaff3.png"
+      type="image/png"
+    />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light mb-4">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+          <img src="/static/images/parlgov-logo.5896ba651fb3.svg" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link link-dark" href="/data/">
+                <i class="bi bi-table" style="font-size: 0.8rem"></i>
+                · Data
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-dark" href="/docs/">
+                <i
+                  class="bi bi-layout-text-sidebar-reverse"
+                  style="font-size: 0.85rem"
+                >
+                </i>
+                · Docs
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-dark" href="/api/v1/">
+                <i class="bi bi-code-square" style="font-size: 0.8rem">
+                </i>
+                · API
+              </a>
+            </li>
+          </ul>
+          <ul class="navbar-nav">
+            
+            <li class="nav-item">
+              
+            </li>
+            <li class="nav-item">
+              
+                <a
+                  class="nav-link link-dark"
+                  href="/login-parlgov"
+                  aria-label="Login"
+                >
+                  <i class="bi bi-box-arrow-in-right"></i>
+                </a>
+              
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container">
+      <div class="alert alert-dark" role="alert">
+        <em>Minimal</em> version of ParlGov site — see
+        <a href="https://parlgov.org/" class="alert-link">parlgov.org</a>
+      </div>
+      
+  <hr />
+
+<ul class="nav">
+  <li>
+    
+    <select id="country-select" class="form-select" onchange="location = this.value;">
+      <option  value="/data/elections/aus/" >Australia</option>
+      <option  value="/data/elections/aut/" >Austria</option>
+      <option  value="/data/elections/bel/" >Belgium</option>
+      <option  value="/data/elections/bgr/" >Bulgaria</option>
+      <option  value="/data/elections/can/" >Canada</option>
+      <option  value="/data/elections/hrv/" >Croatia</option>
+      <option  value="/data/elections/cyp/" >Cyprus</option>
+      <option  value="/data/elections/cze/" >Czech Republic</option>
+      <option  value="/data/elections/dnk/" >Denmark</option>
+      <option  value="/data/elections/est/" >Estonia</option>
+      <option  value="/data/elections/fin/" >Finland</option>
+      <option  value="/data/elections/fra/" >France</option>
+      <option  value="/data/elections/deu/" >Germany</option>
+      <option  value="/data/elections/grc/" >Greece</option>
+      <option  value="/data/elections/hun/" >Hungary</option>
+      <option  value="/data/elections/isl/" >Iceland</option>
+      <option  value="/data/elections/irl/" >Ireland</option>
+      <option  selected >Israel</option>
+      <option  value="/data/elections/ita/" >Italy</option>
+      <option  value="/data/elections/jpn/" >Japan</option>
+      <option  value="/data/elections/lva/" >Latvia</option>
+      <option  value="/data/elections/ltu/" >Lithuania</option>
+      <option  value="/data/elections/lux/" >Luxembourg</option>
+      <option  value="/data/elections/mlt/" >Malta</option>
+      <option  value="/data/elections/nld/" >Netherlands</option>
+      <option  value="/data/elections/nzl/" >New Zealand</option>
+      <option  value="/data/elections/nor/" >Norway</option>
+      <option  value="/data/elections/pol/" >Poland</option>
+      <option  value="/data/elections/prt/" >Portugal</option>
+      <option  value="/data/elections/rou/" >Romania</option>
+      <option  value="/data/elections/svk/" >Slovakia</option>
+      <option  value="/data/elections/svn/" >Slovenia</option>
+      <option  value="/data/elections/esp/" >Spain</option>
+      <option  value="/data/elections/swe/" >Sweden</option>
+      <option  value="/data/elections/che/" >Switzerland</option>
+      <option  value="/data/elections/tur/" >Turkey</option>
+      <option  value="/data/elections/gbr/" >United Kingdom</option>
+    </select>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/data/parties/isr/">
+      <i class="bi bi-people"></i> · Parties
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/data/elections/isr/">
+      <i class="bi bi-box-seam"></i> · Elections
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/data/cabinets/isr/">
+      <i class="bi bi-briefcase"></i> · Cabinets
+    </a>
+  </li>
+  <li>
+    <a class="nav-link" href="/docs/#isr">
+      <i
+        class="bi bi-layout-text-sidebar-reverse"
+        style="font-size: 0.85rem"
+      >
+      </i>
+    </a>
+  </li>
+</ul>
+
+<hr />
+
+
+  <h1>🇮🇱 · Elections</h1>
+
+  <table class="table table-striped caption-top">
+    <caption>List of elections in Israel</caption>
+
+    <thead>
+      <tr>
+        <th scope="col" class="d-none d-md-table-cell">ID</th>
+        <th scope="col">Date</th>
+        <th scope="col">
+          <span
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            title="Early"
+          >
+            #
+          </span>
+        </th>
+        <th scope="col">
+          <span
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            title="National / European"
+          >
+            #
+          </span>
+        </th>
+        <th scope="col" class="d-none d-md-table-cell">Seats</th>
+        <th scope="col" class="d-none d-md-table-cell">
+          <i class="bi bi-people"></i> · Parties
+        </th>
+        <th scope="col" style="text-align: center">
+          
+          
+
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      
+        <tr>
+          <td class="d-none d-md-table-cell">
+            <small>1117</small>
+          </td>
+          <td>
+            <a href="/data/elections/isr/2022-11-01/">
+              2022-11-01
+            </a>
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-lightning"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="Early election"
+              >
+              </i>
+            
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-pin-map"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="National election"
+              >
+              </i>
+            
+          </td>
+          <td class="d-none d-md-table-cell">120</td>
+          <td class="d-none d-md-table-cell">
+            
+              
+                <a href="/data/parties/isr/678/">
+                  <small>L</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/2321/">
+                  <small>YA</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1357/">
+                  <small>HaLe-T|RZP</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/2725/">
+                  <small>KL</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/788/">
+                  <small>Shas</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1303/">
+                  <small>YaToMe</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1816/">
+                  <small>YB</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1846/">
+                  <small>Raam</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/732/">
+                  <small>R|H</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/244/">
+                  <small>Ma|Av</small></a>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </td>
+          <td style="text-align: center">
+            
+            
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="d-none d-md-table-cell">
+            <small>1100</small>
+          </td>
+          <td>
+            <a href="/data/elections/isr/2021-03-23/">
+              2021-03-23
+            </a>
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-lightning"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="Early election"
+              >
+              </i>
+            
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-pin-map"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="National election"
+              >
+              </i>
+            
+          </td>
+          <td class="d-none d-md-table-cell">120</td>
+          <td class="d-none d-md-table-cell">
+            
+              
+                <a href="/data/parties/isr/678/">
+                  <small>L</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/2321/">
+                  <small>YA</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/788/">
+                  <small>Shas</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/2725/">
+                  <small>KL</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/2726/">
+                  <small>Y</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/244/">
+                  <small>Ma|Av</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1303/">
+                  <small>YaToMe</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1816/">
+                  <small>YB</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1357/">
+                  <small>HaLe-T|RZP</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/732/">
+                  <small>R|H</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/2835/">
+                  <small>NH</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1419/">
+                  <small>Meretz</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1846/">
+                  <small>Raam</small></a>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </td>
+          <td style="text-align: center">
+            
+            
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="d-none d-md-table-cell">
+            <small>1090</small>
+          </td>
+          <td>
+            <a href="/data/elections/isr/2020-03-02/">
+              2020-03-02
+            </a>
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-lightning"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="Early election"
+              >
+              </i>
+            
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-pin-map"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="National election"
+              >
+              </i>
+            
+          </td>
+          <td class="d-none d-md-table-cell">120</td>
+          <td class="d-none d-md-table-cell">
+            
+              
+                <a href="/data/parties/isr/678/">
+                  <small>L</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/2725/">
+                  <small>KL</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/732/">
+                  <small>R|H</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/788/">
+                  <small>Shas</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1303/">
+                  <small>YaToMe</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/244/">
+                  <small>Ma|Av</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1816/">
+                  <small>YB</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/2726/">
+                  <small>Y</small></a>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </td>
+          <td style="text-align: center">
+            
+            
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="d-none d-md-table-cell">
+            <small>1079</small>
+          </td>
+          <td>
+            <a href="/data/elections/isr/2019-09-17/">
+              2019-09-17
+            </a>
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-lightning"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="Early election"
+              >
+              </i>
+            
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-pin-map"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="National election"
+              >
+              </i>
+            
+          </td>
+          <td class="d-none d-md-table-cell">120</td>
+          <td class="d-none d-md-table-cell">
+            
+              
+                <a href="/data/parties/isr/2725/">
+                  <small>KL</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/678/">
+                  <small>L</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/732/">
+                  <small>R|H</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/788/">
+                  <small>Shas</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1816/">
+                  <small>YB</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1303/">
+                  <small>YaToMe</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/2726/">
+                  <small>Y</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/244/">
+                  <small>Ma|Av</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1419/">
+                  <small>Meretz</small></a>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </td>
+          <td style="text-align: center">
+            
+            
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="d-none d-md-table-cell">
+            <small>1047</small>
+          </td>
+          <td>
+            <a href="/data/elections/isr/2019-04-09/">
+              2019-04-09
+            </a>
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-lightning"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="Early election"
+              >
+              </i>
+            
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-pin-map"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="National election"
+              >
+              </i>
+            
+          </td>
+          <td class="d-none d-md-table-cell">120</td>
+          <td class="d-none d-md-table-cell">
+            
+              
+                <a href="/data/parties/isr/678/">
+                  <small>L</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/2725/">
+                  <small>KL</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/788/">
+                  <small>Shas</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1303/">
+                  <small>YaToMe</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/732/">
+                  <small>R|H</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/244/">
+                  <small>Ma|Av</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1816/">
+                  <small>YB</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/2726/">
+                  <small>Y</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1419/">
+                  <small>Meretz</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/2410/">
+                  <small>Kulanu</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1846/">
+                  <small>Raam</small></a>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </td>
+          <td style="text-align: center">
+            
+            
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="d-none d-md-table-cell">
+            <small>852</small>
+          </td>
+          <td>
+            <a href="/data/elections/isr/2015-03-17/">
+              2015-03-17
+            </a>
+          </td>
+          <td>
+            
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-pin-map"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="National election"
+              >
+              </i>
+            
+          </td>
+          <td class="d-none d-md-table-cell">120</td>
+          <td class="d-none d-md-table-cell">
+            
+              
+                <a href="/data/parties/isr/678/">
+                  <small>L</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/244/">
+                  <small>Ma|Av</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1846/">
+                  <small>Raam</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/2321/">
+                  <small>YA</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/2410/">
+                  <small>Kulanu</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/214/">
+                  <small>MDL|HH</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/788/">
+                  <small>Shas</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1816/">
+                  <small>YB</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1303/">
+                  <small>YaToMe</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1419/">
+                  <small>Meretz</small></a>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </td>
+          <td style="text-align: center">
+            
+            
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="d-none d-md-table-cell">
+            <small>815</small>
+          </td>
+          <td>
+            <a href="/data/elections/isr/2013-01-22/">
+              2013-01-22
+            </a>
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-lightning"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="Early election"
+              >
+              </i>
+            
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-pin-map"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="National election"
+              >
+              </i>
+            
+          </td>
+          <td class="d-none d-md-table-cell">120</td>
+          <td class="d-none d-md-table-cell">
+            
+              
+                <a href="/data/parties/isr/678/">
+                  <small>L</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/2321/">
+                  <small>YA</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/244/">
+                  <small>Ma|Av</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/214/">
+                  <small>MDL|HH</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/788/">
+                  <small>Shas</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1303/">
+                  <small>YaToMe</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/2320/">
+                  <small>Hat</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1419/">
+                  <small>Meretz</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1846/">
+                  <small>Raam</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/732/">
+                  <small>R|H</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/805/">
+                  <small>Balad</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1870/">
+                  <small>Kadima</small></a>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </td>
+          <td style="text-align: center">
+            
+            
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="d-none d-md-table-cell">
+            <small>721</small>
+          </td>
+          <td>
+            <a href="/data/elections/isr/2009-02-10/">
+              2009-02-10
+            </a>
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-lightning"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="Early election"
+              >
+              </i>
+            
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-pin-map"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="National election"
+              >
+              </i>
+            
+          </td>
+          <td class="d-none d-md-table-cell">120</td>
+          <td class="d-none d-md-table-cell">
+            
+              
+                <a href="/data/parties/isr/1870/">
+                  <small>Kadima</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/678/">
+                  <small>L</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1816/">
+                  <small>YB</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/244/">
+                  <small>Ma|Av</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/788/">
+                  <small>Shas</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1303/">
+                  <small>YaToMe</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1846/">
+                  <small>Raam</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1357/">
+                  <small>HaLe-T|RZP</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/732/">
+                  <small>R|H</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1419/">
+                  <small>Meretz</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/214/">
+                  <small>MDL|HH</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/805/">
+                  <small>Balad</small></a>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </td>
+          <td style="text-align: center">
+            
+            
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="d-none d-md-table-cell">
+            <small>720</small>
+          </td>
+          <td>
+            <a href="/data/elections/isr/2006-03-28/">
+              2006-03-28
+            </a>
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-lightning"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="Early election"
+              >
+              </i>
+            
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-pin-map"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="National election"
+              >
+              </i>
+            
+          </td>
+          <td class="d-none d-md-table-cell">120</td>
+          <td class="d-none d-md-table-cell">
+            
+              
+                <a href="/data/parties/isr/1870/">
+                  <small>Kadima</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/244/">
+                  <small>Ma|Av</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/788/">
+                  <small>Shas</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/678/">
+                  <small>L</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1816/">
+                  <small>YB</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1357/">
+                  <small>HaLe-T|RZP</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1873/">
+                  <small>Gil</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1303/">
+                  <small>YaToMe</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1419/">
+                  <small>Meretz</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1846/">
+                  <small>Raam</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/732/">
+                  <small>R|H</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/805/">
+                  <small>Balad</small></a>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </td>
+          <td style="text-align: center">
+            
+            
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="d-none d-md-table-cell">
+            <small>719</small>
+          </td>
+          <td>
+            <a href="/data/elections/isr/2003-01-28/">
+              2003-01-28
+            </a>
+          </td>
+          <td>
+            
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-pin-map"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="National election"
+              >
+              </i>
+            
+          </td>
+          <td class="d-none d-md-table-cell">120</td>
+          <td class="d-none d-md-table-cell">
+            
+              
+                <a href="/data/parties/isr/678/">
+                  <small>L</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/244/">
+                  <small>Ma|Av</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1850/">
+                  <small>Shinui</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/788/">
+                  <small>Shas</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1357/">
+                  <small>HaLe-T|RZP</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1419/">
+                  <small>Meretz</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/214/">
+                  <small>MDL|HH</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1303/">
+                  <small>YaToMe</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/732/">
+                  <small>R|H</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/615/">
+                  <small>AE</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/805/">
+                  <small>Balad</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/277/">
+                  <small>YBA</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1846/">
+                  <small>Raam</small></a>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </td>
+          <td style="text-align: center">
+            
+            
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="d-none d-md-table-cell">
+            <small>718</small>
+          </td>
+          <td>
+            <a href="/data/elections/isr/1999-05-17/">
+              1999-05-17
+            </a>
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-lightning"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="Early election"
+              >
+              </i>
+            
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-pin-map"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="National election"
+              >
+              </i>
+            
+          </td>
+          <td class="d-none d-md-table-cell">120</td>
+          <td class="d-none d-md-table-cell">
+            
+              
+                <a href="/data/parties/isr/244/">
+                  <small>Ma|Av</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/678/">
+                  <small>L</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/788/">
+                  <small>Shas</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1419/">
+                  <small>Meretz</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/277/">
+                  <small>YBA</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1850/">
+                  <small>Shinui</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1863/">
+                  <small>MiHa</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/214/">
+                  <small>MDL|HH</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1303/">
+                  <small>YaToMe</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1846/">
+                  <small>Raam</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1816/">
+                  <small>YB</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1357/">
+                  <small>HaLe-T|RZP</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/732/">
+                  <small>R|H</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/805/">
+                  <small>Balad</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/615/">
+                  <small>AE</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/2361/">
+                  <small>He-TnLe</small></a>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </td>
+          <td style="text-align: center">
+            
+            
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="d-none d-md-table-cell">
+            <small>717</small>
+          </td>
+          <td>
+            <a href="/data/elections/isr/1996-05-29/">
+              1996-05-29
+            </a>
+          </td>
+          <td>
+            
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-pin-map"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="National election"
+              >
+              </i>
+            
+          </td>
+          <td class="d-none d-md-table-cell">120</td>
+          <td class="d-none d-md-table-cell">
+            
+              
+                <a href="/data/parties/isr/244/">
+                  <small>Ma|Av</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/678/">
+                  <small>L</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/788/">
+                  <small>Shas</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/214/">
+                  <small>MDL|HH</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1419/">
+                  <small>Meretz</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/277/">
+                  <small>YBA</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/732/">
+                  <small>R|H</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1862/">
+                  <small>G-96</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1303/">
+                  <small>YaToMe</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/279/">
+                  <small>DS</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1846/">
+                  <small>Raam</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/976/">
+                  <small>Tzomet</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/980/">
+                  <small>M</small></a>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </td>
+          <td style="text-align: center">
+            
+            
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="d-none d-md-table-cell">
+            <small>716</small>
+          </td>
+          <td>
+            <a href="/data/elections/isr/1992-06-23/">
+              1992-06-23
+            </a>
+          </td>
+          <td>
+            
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-pin-map"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="National election"
+              >
+              </i>
+            
+          </td>
+          <td class="d-none d-md-table-cell">120</td>
+          <td class="d-none d-md-table-cell">
+            
+              
+                <a href="/data/parties/isr/244/">
+                  <small>Ma|Av</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/678/">
+                  <small>L</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1419/">
+                  <small>Meretz</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/976/">
+                  <small>Tzomet</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/214/">
+                  <small>MDL|HH</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/788/">
+                  <small>Shas</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1303/">
+                  <small>YaToMe</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/732/">
+                  <small>R|H</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/980/">
+                  <small>M</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1150/">
+                  <small>Mada</small></a>
+              
+            
+              
+            
+              
+            
+              
+            
+          </td>
+          <td style="text-align: center">
+            
+            
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="d-none d-md-table-cell">
+            <small>715</small>
+          </td>
+          <td>
+            <a href="/data/elections/isr/1988-11-01/">
+              1988-11-01
+            </a>
+          </td>
+          <td>
+            
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-pin-map"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="National election"
+              >
+              </i>
+            
+          </td>
+          <td class="d-none d-md-table-cell">120</td>
+          <td class="d-none d-md-table-cell">
+            
+              
+                <a href="/data/parties/isr/678/">
+                  <small>L</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/244/">
+                  <small>Ma|Av</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/788/">
+                  <small>Shas</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/265/">
+                  <small>AY</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/305/">
+                  <small>Ratz</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/214/">
+                  <small>MDL|HH</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/732/">
+                  <small>R|H</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1660/">
+                  <small>Tehiya</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1168/">
+                  <small>Mapam</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/976/">
+                  <small>Tzomet</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/980/">
+                  <small>M</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1850/">
+                  <small>Shinui</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/249/">
+                  <small>DeTo</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/390/">
+                  <small>ReMiSh</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1150/">
+                  <small>Mada</small></a>
+              
+            
+              
+            
+          </td>
+          <td style="text-align: center">
+            
+            
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="d-none d-md-table-cell">
+            <small>714</small>
+          </td>
+          <td>
+            <a href="/data/elections/isr/1984-07-23/">
+              1984-07-23
+            </a>
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-lightning"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="Early election"
+              >
+              </i>
+            
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-pin-map"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="National election"
+              >
+              </i>
+            
+          </td>
+          <td class="d-none d-md-table-cell">120</td>
+          <td class="d-none d-md-table-cell">
+            
+              
+                <a href="/data/parties/isr/244/">
+                  <small>Ma|Av</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/678/">
+                  <small>L</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1660/">
+                  <small>Tehiya</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/214/">
+                  <small>MDL|HH</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/732/">
+                  <small>R|H</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/788/">
+                  <small>Shas</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1850/">
+                  <small>Shinui</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/305/">
+                  <small>Ratz</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1269/">
+                  <small>Ya-84</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/390/">
+                  <small>ReMiSh</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/265/">
+                  <small>AY</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/31/">
+                  <small>Mo</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/588/">
+                  <small>Tami</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1969/">
+                  <small>Kach</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/61/">
+                  <small>O</small></a>
+              
+            
+              
+            
+          </td>
+          <td style="text-align: center">
+            
+            
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="d-none d-md-table-cell">
+            <small>713</small>
+          </td>
+          <td>
+            <a href="/data/elections/isr/1981-06-30/">
+              1981-06-30
+            </a>
+          </td>
+          <td>
+            
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-pin-map"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="National election"
+              >
+              </i>
+            
+          </td>
+          <td class="d-none d-md-table-cell">120</td>
+          <td class="d-none d-md-table-cell">
+            
+              
+                <a href="/data/parties/isr/678/">
+                  <small>L</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/244/">
+                  <small>Ma|Av</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/214/">
+                  <small>MDL|HH</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/265/">
+                  <small>AY</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/732/">
+                  <small>R|H</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1660/">
+                  <small>Tehiya</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/588/">
+                  <small>Tami</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/61/">
+                  <small>O</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1850/">
+                  <small>Shinui</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/305/">
+                  <small>Ratz</small></a>
+              
+            
+              
+            
+          </td>
+          <td style="text-align: center">
+            
+            
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="d-none d-md-table-cell">
+            <small>712</small>
+          </td>
+          <td>
+            <a href="/data/elections/isr/1977-05-17/">
+              1977-05-17
+            </a>
+          </td>
+          <td>
+            
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-pin-map"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="National election"
+              >
+              </i>
+            
+          </td>
+          <td class="d-none d-md-table-cell">120</td>
+          <td class="d-none d-md-table-cell">
+            
+              
+                <a href="/data/parties/isr/678/">
+                  <small>L</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/244/">
+                  <small>Ma|Av</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1471/">
+                  <small>TDL</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/214/">
+                  <small>MDL|HH</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/732/">
+                  <small>R|H</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/265/">
+                  <small>AY</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/106/">
+                  <small>Sh</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/387/">
+                  <small>MiKo|Mo|Sh</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1845/">
+                  <small>FS</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/2311/">
+                  <small>RAM-77</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1832/">
+                  <small>PAY</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/305/">
+                  <small>Ratz</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/188/">
+                  <small>LA</small></a>
+              
+            
+              
+            
+          </td>
+          <td style="text-align: center">
+            
+            
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="d-none d-md-table-cell">
+            <small>711</small>
+          </td>
+          <td>
+            <a href="/data/elections/isr/1973-12-31/">
+              1973-12-31
+            </a>
+          </td>
+          <td>
+            
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-pin-map"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="National election"
+              >
+              </i>
+            
+          </td>
+          <td class="d-none d-md-table-cell">120</td>
+          <td class="d-none d-md-table-cell">
+            
+              
+                <a href="/data/parties/isr/244/">
+                  <small>Ma|Av</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/678/">
+                  <small>L</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/214/">
+                  <small>MDL|HH</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1837/">
+                  <small>HDT</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/188/">
+                  <small>LA</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/732/">
+                  <small>R|H</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/305/">
+                  <small>Ratz</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1838/">
+                  <small>KP</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1889/">
+                  <small>MeHo</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/387/">
+                  <small>MiKo|Mo|Sh</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/2357/">
+                  <small>RALEV</small></a>
+              
+            
+              
+            
+              
+            
+              
+            
+          </td>
+          <td style="text-align: center">
+            
+            
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="d-none d-md-table-cell">
+            <small>710</small>
+          </td>
+          <td>
+            <a href="/data/elections/isr/1969-10-28/">
+              1969-10-28
+            </a>
+          </td>
+          <td>
+            
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-pin-map"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="National election"
+              >
+              </i>
+            
+          </td>
+          <td class="d-none d-md-table-cell">120</td>
+          <td class="d-none d-md-table-cell">
+            
+              
+                <a href="/data/parties/isr/244/">
+                  <small>Ma|Av</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/678/">
+                  <small>L</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/214/">
+                  <small>MDL|HH</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/265/">
+                  <small>AY</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/188/">
+                  <small>LA</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1841/">
+                  <small>RM</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/732/">
+                  <small>R|H</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1838/">
+                  <small>KP</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1832/">
+                  <small>PAY</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1839/">
+                  <small>SV</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/938/">
+                  <small>OZ-KH</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1889/">
+                  <small>MeHo</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/387/">
+                  <small>MiKo|Mo|Sh</small></a>
+              
+            
+              
+            
+          </td>
+          <td style="text-align: center">
+            
+            
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="d-none d-md-table-cell">
+            <small>709</small>
+          </td>
+          <td>
+            <a href="/data/elections/isr/1965-11-01/">
+              1965-11-01
+            </a>
+          </td>
+          <td>
+            
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-pin-map"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="National election"
+              >
+              </i>
+            
+          </td>
+          <td class="d-none d-md-table-cell">120</td>
+          <td class="d-none d-md-table-cell">
+            
+              
+                <a href="/data/parties/isr/244/">
+                  <small>Ma|Av</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/678/">
+                  <small>L</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/214/">
+                  <small>MDL|HH</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/767/">
+                  <small>Rafi</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1168/">
+                  <small>Mapam</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/188/">
+                  <small>LA</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/265/">
+                  <small>AY</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/732/">
+                  <small>R|H</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1838/">
+                  <small>KP</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1832/">
+                  <small>PAY</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1839/">
+                  <small>SV</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/938/">
+                  <small>OZ-KH</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/387/">
+                  <small>MiKo|Mo|Sh</small></a>
+              
+            
+              
+            
+              
+            
+          </td>
+          <td style="text-align: center">
+            
+            
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="d-none d-md-table-cell">
+            <small>708</small>
+          </td>
+          <td>
+            <a href="/data/elections/isr/1961-08-15/">
+              1961-08-15
+            </a>
+          </td>
+          <td>
+            
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-pin-map"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="National election"
+              >
+              </i>
+            
+          </td>
+          <td class="d-none d-md-table-cell">120</td>
+          <td class="d-none d-md-table-cell">
+            
+              
+                <a href="/data/parties/isr/244/">
+                  <small>Ma|Av</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1204/">
+                  <small>Herut</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/765/">
+                  <small>MiHal</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/214/">
+                  <small>MDL|HH</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1343/">
+                  <small>AhAv</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1168/">
+                  <small>Mapam</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/387/">
+                  <small>MiKo|Mo|Sh</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/265/">
+                  <small>AY</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1832/">
+                  <small>PAY</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1839/">
+                  <small>SV</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1838/">
+                  <small>KP</small></a>
+              
+            
+              
+            
+          </td>
+          <td style="text-align: center">
+            
+            
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="d-none d-md-table-cell">
+            <small>707</small>
+          </td>
+          <td>
+            <a href="/data/elections/isr/1959-11-03/">
+              1959-11-03
+            </a>
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-lightning"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="Early election"
+              >
+              </i>
+            
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-pin-map"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="National election"
+              >
+              </i>
+            
+          </td>
+          <td class="d-none d-md-table-cell">120</td>
+          <td class="d-none d-md-table-cell">
+            
+              
+                <a href="/data/parties/isr/244/">
+                  <small>Ma|Av</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1204/">
+                  <small>Herut</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/214/">
+                  <small>MDL|HH</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1168/">
+                  <small>Mapam</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1472/">
+                  <small>ZK</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1343/">
+                  <small>AhAv</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1837/">
+                  <small>HDT</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1822/">
+                  <small>MP</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/387/">
+                  <small>MiKo|Mo|Sh</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1838/">
+                  <small>KP</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1839/">
+                  <small>SV</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1835/">
+                  <small>HU</small></a>
+              
+            
+              
+            
+              
+            
+              
+            
+          </td>
+          <td style="text-align: center">
+            
+            
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="d-none d-md-table-cell">
+            <small>706</small>
+          </td>
+          <td>
+            <a href="/data/elections/isr/1955-07-26/">
+              1955-07-26
+            </a>
+          </td>
+          <td>
+            
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-pin-map"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="National election"
+              >
+              </i>
+            
+          </td>
+          <td class="d-none d-md-table-cell">120</td>
+          <td class="d-none d-md-table-cell">
+            
+              
+                <a href="/data/parties/isr/244/">
+                  <small>Ma|Av</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1204/">
+                  <small>Herut</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1472/">
+                  <small>ZK</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/214/">
+                  <small>MDL|HH</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1343/">
+                  <small>AhAv</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1168/">
+                  <small>Mapam</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1837/">
+                  <small>HDT</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/387/">
+                  <small>MiKo|Mo|Sh</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1822/">
+                  <small>MP</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1829/">
+                  <small>RDAY</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1834/">
+                  <small>KiVe</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1835/">
+                  <small>HU</small></a>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </td>
+          <td style="text-align: center">
+            
+            
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="d-none d-md-table-cell">
+            <small>705</small>
+          </td>
+          <td>
+            <a href="/data/elections/isr/1951-07-30/">
+              1951-07-30
+            </a>
+          </td>
+          <td>
+            
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-pin-map"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="National election"
+              >
+              </i>
+            
+          </td>
+          <td class="d-none d-md-table-cell">120</td>
+          <td class="d-none d-md-table-cell">
+            
+              
+                <a href="/data/parties/isr/244/">
+                  <small>Ma|Av</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1472/">
+                  <small>ZK</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1168/">
+                  <small>Mapam</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1828/">
+                  <small>HaMi</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1204/">
+                  <small>Herut</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/387/">
+                  <small>MiKo|Mo|Sh</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1822/">
+                  <small>MP</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1829/">
+                  <small>RDAY</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/265/">
+                  <small>AY</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1831/">
+                  <small>SVM</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1832/">
+                  <small>PAY</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1833/">
+                  <small>Mizrahi</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1834/">
+                  <small>KiVe</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1827/">
+                  <small>HHT</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1835/">
+                  <small>HU</small></a>
+              
+            
+              
+            
+          </td>
+          <td style="text-align: center">
+            
+            
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="d-none d-md-table-cell">
+            <small>704</small>
+          </td>
+          <td>
+            <a href="/data/elections/isr/1949-01-25/">
+              1949-01-25
+            </a>
+          </td>
+          <td>
+            
+          </td>
+          <td>
+            
+              <i
+                class="bi bi-pin-map"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="National election"
+              >
+              </i>
+            
+          </td>
+          <td class="d-none d-md-table-cell">120</td>
+          <td class="d-none d-md-table-cell">
+            
+              
+                <a href="/data/parties/isr/244/">
+                  <small>Ma|Av</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1168/">
+                  <small>Mapam</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1821/">
+                  <small>HDM</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1204/">
+                  <small>Herut</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1472/">
+                  <small>ZK</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1822/">
+                  <small>MP</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1831/">
+                  <small>SVM</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/387/">
+                  <small>MiKo|Mo|Sh</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1824/">
+                  <small>RDN</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/2309/">
+                  <small>ReLo</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/2310/">
+                  <small>Vitzo</small></a>
+              
+            
+              
+                <a href="/data/parties/isr/1827/">
+                  <small>HHT</small></a>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </td>
+          <td style="text-align: center">
+            
+            
+
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+  <script type="text/javascript">
+  var tooltipTriggerList = [].slice.call(
+    document.querySelectorAll('[data-bs-toggle="tooltip"]'),
+  );
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+  });
+</script>
+
+
+    </main>
+  </body>
+</html>
