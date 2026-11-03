@@ -94,5 +94,114 @@
     }
   ],
   "reviewedAt": "2026-11-03T16:37:23.593148+00:00",
-  "limitations": "Bounded discovery; not proof of nonexistence. Scratch downloads/renders are reproducible working copies; relevant unique observations retained here."
+  "limitations": "Bounded discovery; not proof of nonexistence. Scratch downloads/renders are reproducible working copies; relevant unique observations retained here.",
+  "followUp": {
+    "reviewedAt": "2026-11-03T16:58:39.222721+00:00",
+    "result": "Ratz elected-member cross-check recovered from the official Knesset OData API; no gazette correction is claimed. The legal basis of the candidate cap remains unlocated.",
+    "officialUrl": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%209%20and%20PersonID%20eq%202143%20and%20(PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$expand=KNS_Person&$format=json",
+    "member": {
+      "personId": 2143,
+      "nameHe": "אלוני שולמית",
+      "openingDate": "1977-06-13",
+      "membershipRecordId": 997,
+      "factionMembershipRecordId": 27111,
+      "factionId": 405,
+      "factionName": "ר\"ץ",
+      "registeredRank": 1,
+      "candidateGazettePage": 1330
+    },
+    "scanCorrections": [
+      {
+        "letters": "אמת",
+        "rank": 13,
+        "previous": "ילין אהרן",
+        "corrected": "ידלין אהרן",
+        "candidatePage": 1320,
+        "electedPages": [
+          1495
+        ],
+        "basis": "Re-read both retained official scans after OData flagged the name difference; no name generated from OData."
+      },
+      {
+        "letters": "אמת",
+        "rank": 31,
+        "previous": "אמוראי עדיאל (עדיאל)",
+        "corrected": "אמוראי עדי(אל)",
+        "candidatePage": 1320,
+        "electedPages": [
+          1495
+        ],
+        "basis": "Re-read both retained official scans after OData flagged the name difference; no name generated from OData."
+      },
+      {
+        "letters": "יש",
+        "rank": 5,
+        "previous": "זרע מאיר",
+        "corrected": "זורע מאיר",
+        "candidatePage": 1325,
+        "electedPages": [
+          1496
+        ],
+        "basis": "Re-read both retained official scans after OData flagged the name difference; no name generated from OData."
+      },
+      {
+        "letters": "יש",
+        "rank": 13,
+        "previous": "ששי וידאן",
+        "corrected": "עטשי זידאן",
+        "candidatePage": 1325,
+        "electedPages": [
+          1496
+        ],
+        "basis": "Re-read both retained official scans after OData flagged the name difference; no name generated from OData."
+      },
+      {
+        "letters": "מחל",
+        "rank": 16,
+        "previous": "ידלין הלל",
+        "corrected": "זיידל הלל",
+        "candidatePage": 1328,
+        "electedPages": [
+          1496
+        ],
+        "basis": "Re-read both retained official scans after OData flagged the name difference; no name generated from OData."
+      },
+      {
+        "letters": "מחל",
+        "rank": 29,
+        "previous": "ריבוביץ (רום) יוסף",
+        "corrected": "רבינוביץ (רום) יוסף",
+        "candidatePage": 1328,
+        "electedPages": [
+          1496
+        ],
+        "basis": "Re-read both retained official scans after OData flagged the name difference; no name generated from OData."
+      },
+      {
+        "letters": "מחל",
+        "rank": 30,
+        "previous": "בריאן גוסטב",
+        "corrected": "בדיאן גוסטב",
+        "candidatePage": 1328,
+        "electedPages": [
+          1496
+        ],
+        "basis": "Re-read both retained official scans after OData flagged the name difference; no name generated from OData."
+      }
+    ],
+    "openingSession": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_KnessetDates?$filter=KnessetNum%20eq%209&$format=json",
+      "record": {
+        "KnessetDateID": 136,
+        "KnessetNum": 9,
+        "Name": "התשיעית",
+        "Assembly": 2,
+        "Plenum": 1,
+        "PlenumStart": "1977-06-13T00:00:00",
+        "PlenumFinish": "1977-08-03T00:00:00",
+        "IsCurrent": false,
+        "LastUpdatedDate": "2016-02-24T11:53:23.03"
+      }
+    }
+  }
 }

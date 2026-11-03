@@ -1,7 +1,7 @@
 {
   "id": "k9",
   "reviewedOn": "2026-11-03",
-  "scope": "National votes and seats visually transcribed from the official scanned results gazette. Partial research evidence; not a released application dataset.",
+  "scope": "Released national results; all winning ranks checked. Ratz uses official opening-date Knesset OData; candidate capacity procedure remains an explicitly accepted inference.",
   "resultsSourceId": "k9-results-gazette",
   "resultsIssue": 2326,
   "resultsPages": [
@@ -185,7 +185,7 @@
     ]
   },
   "candidateChecks": {
-    "completeWinningRostersVerified": false,
+    "completeWinningRostersVerified": true,
     "lists": [
       {
         "letters": "פש",
@@ -341,14 +341,12 @@
         "pages": [
           1330
         ],
-        "scope": "Ranks1–1 transcribed; elected names cross-checked: 0. See candidates.reviewed.json."
+        "scope": "Ranks1–1 transcribed; elected names cross-checked: 1. See candidates.reviewed.json. Official Knesset opening-date OData replaces the omitted gazette paragraph."
       }
     ],
     "sourceId": "k9-candidates-gazette"
   },
-  "releaseBlockers": [
-    "Ratz elected-member paragraph is absent from YP 2326; required name cross-check remains unverified."
-  ],
+  "releaseBlockers": [],
   "sourceIds": [
     "k9-results-gazette",
     "k9-candidates-gazette",
@@ -356,7 +354,9 @@
     "k8-k12-law-1969",
     "k8-k12-law-1973",
     "k9-candidates-reviewed",
-    "k9-search-reviewed"
+    "k9-search-reviewed",
+    "k9-ratz-odata",
+    "k9-odata-positions"
   ],
   "allocationCheck": {
     "exact": true,

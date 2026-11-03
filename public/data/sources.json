@@ -1119,11 +1119,11 @@
   "url": "project:data/raw/k9/national.reviewed.json",
   "publisher": "Project reviewed derivative (not an official publication)",
   "official": false,
-  "description": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
+  "description": "Released national evidence: six official agreements, exact inferred-cap reproduction, all 120 elected names checked; Ratz supplemented by official opening-date Knesset OData.",
   "method": "reviewed-transcription",
-  "retrievedAt": "2026-11-03T16:14:46.283817+00:00",
-  "bytes": 9837,
-  "sha256": "5903100faf034129cbb5c3f2f559514c2ba05d1f9343f699c55ef3af7b87d198"
+  "retrievedAt": "2026-11-03T16:58:39.222721+00:00",
+  "bytes": 9870,
+  "sha256": "95914480707f5d188d9eb697e770ec9cf46bba8ca2f1a2477c9c8dfd6e19fb33"
  },
  {
   "id": "k9-candidates-reviewed",
@@ -1131,11 +1131,11 @@
   "url": "project:data/raw/k9/candidates.reviewed.json",
   "publisher": "Project reviewed derivative (not an official publication)",
   "official": false,
-  "description": "Official winning-list leading ranks and name-by-name elected comparisons; page references, spelling variants and incomplete checks explicitly retained.",
+  "description": "Official winning-list leading ranks, all 120 elected-name comparisons (119 results gazette plus Ratz official opening-date Knesset OData), page references and explicit spelling variants.",
   "method": "reviewed-transcription",
-  "retrievedAt": "2026-11-03T16:34:27.797392+00:00",
-  "bytes": 26290,
-  "sha256": "89a5f685a9201ddc0eed46b0dc5f97c7068fa407c057eb0d0e2d8e3e15024365"
+  "retrievedAt": "2026-11-03T17:01:30.664880+00:00",
+  "bytes": 26874,
+  "sha256": "7c15340183c11f976e1dad44d6279453bd0e775a2ed030a99a752d9163df1a4f"
  },
  {
   "id": "k10-results-gazette",
@@ -2445,9 +2445,9 @@
   "official": false,
   "description": "1973 complete surplus-agreement notice — bounded search scope, retrieval hashes and evidence gaps.",
   "method": "manual-review",
-  "retrievedAt": "2026-11-03T16:37:23.593148+00:00",
-  "bytes": 6568,
-  "sha256": "f50567ba2d737fbfcec9080d9c4a75a049eda9a84757b2cb4f8af1510fb54fc0"
+  "retrievedAt": "2026-11-03T17:01:30.664880+00:00",
+  "bytes": 14390,
+  "sha256": "c284e5b351d460d120db7303c4b187e8aa94ab7ec7539dee67f686ab5d581041"
  },
  {
   "id": "k9-search-reviewed",
@@ -2457,8 +2457,44 @@
   "official": false,
   "description": "Legal basis of the 1977 unfillable seat and missing Ratz elected-member paragraph — bounded search scope, retrieval hashes and evidence gaps.",
   "method": "manual-review",
-  "retrievedAt": "2026-11-03T16:37:23.593148+00:00",
-  "bytes": 4424,
-  "sha256": "7e8876b305d906a45638466dc83be2a4634c315134cc274de7a734e02d94733c"
+  "retrievedAt": "2026-11-03T16:58:39.222721+00:00",
+  "bytes": 8333,
+  "sha256": "fbcd855efe1223cb48b576a2c99ddab2a8e7405e2f6bd2634a5bc6d13bc86ee1"
+ },
+ {
+  "id": "k9-ratz-odata",
+  "file": "k9/ratz-odata.json",
+  "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%209%20and%20PersonID%20eq%202143%20and%20(PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$expand=KNS_Person&$format=json",
+  "publisher": "Knesset, official ParliamentInfo OData API",
+  "official": true,
+  "description": "Official Knesset opening-date confirmation: Shulamit Aloni (PersonID2143), MK record997 and Ratz faction record27111 from 13 June 1977. Supplements the omitted Ratz paragraph in YP2326; matches registered rank1 in YP2319 p1330.",
+  "method": "http",
+  "retrievedAt": "2026-11-03T16:58:39.222721+00:00",
+  "bytes": 1342,
+  "sha256": "2778cda9792ea5f9869f419c3fb7095fefd3527f4af59084e594fc6386831a9c"
+ },
+ {
+  "id": "k9-odata-positions",
+  "file": "k9/odata-positions.json",
+  "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Position?$format=json",
+  "publisher": "Knesset, official ParliamentInfo OData API",
+  "official": true,
+  "description": "Official OData position definitions: 61 female MK, 43 male MK, 54 faction member; used to interpret the Ratz confirmation.",
+  "method": "http",
+  "retrievedAt": "2026-11-03T16:58:39.222721+00:00",
+  "bytes": 5655,
+  "sha256": "64feefdb712896eece447f8e34930854262732a0a2710bf2494a5249de36b42a"
+ },
+ {
+  "id": "k9-opening-membership-cross-check-reviewed",
+  "file": "k9/opening-membership-cross-check.reviewed.json",
+  "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/",
+  "publisher": "Project reviewed extraction from official Knesset OData",
+  "official": false,
+  "description": "Opening-date membership cross-check for all released k10–k15 elections. Includes selected official records, every paginated request/hash and all unmatched names; no fuzzy match or unreviewed correction promoted.",
+  "method": "reviewed-api-comparison",
+  "retrievedAt": "2026-11-03T17:01:30.664880+00:00",
+  "bytes": 519760,
+  "sha256": "7f5afe0fb0d92c36214e7fb4b470fe47d222c6ba11d4f78199a1722245afa79c"
  }
 ]
