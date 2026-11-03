@@ -1,6 +1,6 @@
-# DRAFT (unnumbered) — K8: official 1973 connections found; letter corrections; seats reproduced
+# K8: official 1973 connections found; letter corrections; seats reproduced
 
-Status: **proposed**, for the parent to number, integrate and accept. Supersedes, if
+Status: **accepted** for the agreements and corrections (the parent re-read both scan pages, printed pp. 10–11, on 4 November 2026: all six pairs and every vote figure match); integration into the build is pending. Supersedes, if
 accepted, the agreement hold in 0074 and the k8 part of 0076. The roster hold (0072)
 is unaffected.
 

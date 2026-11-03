@@ -54,6 +54,7 @@ is labelled. Suggested alternatives are not evidence of a past design discussion
 | [0074](0074-k8-agreements-search-and-hold.md) | K8 remains held: no verified agreement notice |
 | [0075](0075-k8-k12-release-evidence.md) | K8–K12 release evidence and roster/seat tables |
 | [0076](0076-k9-ratz-release-and-k8-search.md) | K9 release: official Ratz opening membership; K8 agreement search remains held |
+| [0077](0077-k8-official-connections-cec-appendix.md) | K8: official 1973 connections found in the CEC calculation record; seats reproduce |
 | [0080](0080-k13-k15-national-votes-and-release-gates.md) | K13–K15: gazetted national inputs, exact seats, incomplete release gates |
 | [0081](0081-k13-k15-agreements-and-roster-progress.md) | K13–K15: agreement notices and bounded candidate transcription |
 | [0082](0082-k13-k15-rule-era-evidence.md) | K13–K15: 1.5% Bader–Ofer preset and point-in-time limits |
