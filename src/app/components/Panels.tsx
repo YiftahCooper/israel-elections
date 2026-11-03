@@ -25,6 +25,7 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
     quotaSeatOffset: ['Quota divisor (seats + 1 in 1949)', 'מחלק המודד (מושבים + 1 ב-1949)'], remainderRequiresInitialSeat: ['Remainder seats only for lists with a whole quota', 'עודפים רק לרשימות עם מודד שלם'],
     agreementRequiresInitialSeat: ['Agreement needs a whole quota for each partner', 'הסכם מחייב מודד שלם לכל שותפה'], quotientRounding: ['Quotient rounding', 'עיגול המודדים'],
     largestRemainderRepeat: ['Several largest-remainder seats per list', 'כמה מנדטי שארית לרשימה'], tiePolicy: ['Tie procedure', 'הכרעה בשוויון'],
+    seatsCappedAtCandidates: ['No more seats than candidates (1977, inferred)', 'לא יותר מנדטים ממועמדים (1977, מוסק)'],
   };
   const set = (patch: Partial<Scenario['rules']>) => dispatch({ type: 'setRules', patch });
   const [blocDraft, setBlocDraft] = useState('');

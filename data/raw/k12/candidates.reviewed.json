@@ -1,0 +1,1182 @@
+{
+  "id": "k12",
+  "sourceId": "k12-candidates-gazette",
+  "issue": 3588,
+  "lists": [
+    {
+      "letters": "אמת",
+      "complete": false,
+      "publishedCount": 118,
+      "pages": [
+        146
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "פרס שמעון",
+          "page": 146
+        },
+        {
+          "rank": 2,
+          "nameHe": "רבין יצחק",
+          "page": 146
+        },
+        {
+          "rank": 3,
+          "nameHe": "נבון יצחק",
+          "page": 146
+        },
+        {
+          "rank": 4,
+          "nameHe": "קיסר ישראל",
+          "page": 146
+        },
+        {
+          "rank": 5,
+          "nameHe": "ויצמן עזר",
+          "page": 146
+        },
+        {
+          "rank": 6,
+          "nameHe": "הלל שלמה",
+          "page": 146
+        },
+        {
+          "rank": 7,
+          "nameHe": "ברעם עוזי",
+          "page": 146
+        },
+        {
+          "rank": 8,
+          "nameHe": "שחל משה",
+          "page": 146
+        },
+        {
+          "rank": 9,
+          "nameHe": "נמיר אורה",
+          "page": 146
+        },
+        {
+          "rank": 10,
+          "nameHe": "ארבלי אלמוזלינו שושנה",
+          "page": 146
+        },
+        {
+          "rank": 11,
+          "nameHe": "יעקבי גד",
+          "page": 146
+        },
+        {
+          "rank": 12,
+          "nameHe": "צור יעקב",
+          "page": 146
+        },
+        {
+          "rank": 13,
+          "nameHe": "גור מרדכי",
+          "page": 146
+        },
+        {
+          "rank": 14,
+          "nameHe": "רמון חיים",
+          "page": 146
+        },
+        {
+          "rank": 15,
+          "nameHe": "כץ עוז אברהם",
+          "page": 146
+        },
+        {
+          "rank": 16,
+          "nameHe": "ליבאי דוד",
+          "page": 146
+        },
+        {
+          "rank": 17,
+          "nameHe": "בר-לב חיים",
+          "page": 146
+        },
+        {
+          "rank": 18,
+          "nameHe": "פרץ עמיר",
+          "page": 146
+        },
+        {
+          "rank": 19,
+          "nameHe": "אדרי רפאל",
+          "page": 146
+        },
+        {
+          "rank": 20,
+          "nameHe": "אליאב אריה (לובה)",
+          "page": 146
+        },
+        {
+          "rank": 21,
+          "nameHe": "בורג אברהם",
+          "page": 146
+        },
+        {
+          "rank": 22,
+          "nameHe": "שוחט אברהם",
+          "page": 146
+        },
+        {
+          "rank": 23,
+          "nameHe": "שטרית שמעון",
+          "page": 146
+        },
+        {
+          "rank": 24,
+          "nameHe": "חריש מיכאל",
+          "page": 146
+        },
+        {
+          "rank": 25,
+          "nameHe": "בן אליעזר בנימין",
+          "page": 146
+        },
+        {
+          "rank": 26,
+          "nameHe": "דיין אלי",
+          "page": 146
+        },
+        {
+          "rank": 27,
+          "nameHe": "ארד נאוה",
+          "page": 146
+        },
+        {
+          "rank": 28,
+          "nameHe": "ביילין יוסף",
+          "page": 146
+        },
+        {
+          "rank": 29,
+          "nameHe": "גל גדליהו",
+          "page": 146
+        },
+        {
+          "rank": 30,
+          "nameHe": "וייס שבח",
+          "page": 146
+        },
+        {
+          "rank": 31,
+          "nameHe": "בן מנחם אליהו",
+          "page": 146
+        },
+        {
+          "rank": 32,
+          "nameHe": "בר זהר מיכאל",
+          "page": 146
+        },
+        {
+          "rank": 33,
+          "nameHe": "זיסמן עמנואל",
+          "page": 146
+        },
+        {
+          "rank": 34,
+          "nameHe": "גור אפרים",
+          "page": 146
+        },
+        {
+          "rank": 35,
+          "nameHe": "מסאלחה נואף",
+          "page": 146
+        },
+        {
+          "rank": 36,
+          "nameHe": "מירום חגי",
+          "page": 146
+        },
+        {
+          "rank": 37,
+          "nameHe": "כהן רענן",
+          "page": 146
+        },
+        {
+          "rank": 38,
+          "nameHe": "גולדמן מיכה",
+          "page": 146
+        },
+        {
+          "rank": 39,
+          "nameHe": "סולודר עדנה",
+          "page": 146
+        }
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k12-results-gazette",
+        "pages": [
+          242,
+          243
+        ],
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39
+        ],
+        "namesHe": [
+          "פרס שמעון",
+          "רבין יצחק",
+          "נבון יצחק",
+          "קיסר ישראל",
+          "ויצמן עזר",
+          "הלל שלמה",
+          "ברעם עוזי",
+          "שחל משה",
+          "נמיר אורה",
+          "ארבלי אלמוזלינו שושנה",
+          "יעקבי גד",
+          "צור יעקב",
+          "גור מרדכי",
+          "רמון חיים",
+          "כץ עוז אברהם",
+          "ליבאי דוד",
+          "בר-לב חיים",
+          "פרץ עמיר",
+          "אדרי רפאל",
+          "אליאב אריה (לובה)",
+          "בורג אברהם",
+          "שוחט אברהם",
+          "שטרית שמעון",
+          "חריש מיכאל",
+          "בן אליעזר בנימין",
+          "דיין אלי",
+          "ארד נאוה",
+          "ביילין יוסף",
+          "גל גדליהו",
+          "וייס שבח",
+          "בן מנחם אליהו",
+          "בר זהר מיכאל",
+          "זיסמן עמנואל",
+          "גור אפרים",
+          "מסאלחה נואף",
+          "מירום חגי",
+          "כהן רענן",
+          "גולדמן מיכה",
+          "סולודר עדנה"
+        ],
+        "note": "Visually compared name by name; namesHe uses surname/given order also when results print given/surname order. Punctuation normalized; explicit variants retain other differences.",
+        "spellingVariants": []
+      }
+    },
+    {
+      "letters": "ב",
+      "complete": false,
+      "publishedCount": 115,
+      "pages": [
+        147
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "שאקי אבנר חי",
+          "page": 147
+        },
+        {
+          "rank": 2,
+          "nameHe": "המר זבולון",
+          "page": 147
+        },
+        {
+          "rank": 3,
+          "nameHe": "פורת חנן",
+          "page": 147
+        },
+        {
+          "rank": 4,
+          "nameHe": "ביבי יגאל",
+          "page": 147
+        },
+        {
+          "rank": 5,
+          "nameHe": "לוי יצחק",
+          "page": 147
+        }
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k12-results-gazette",
+        "pages": [
+          243
+        ],
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "namesHe": [
+          "שאקי אבנר חי",
+          "המר זבולון",
+          "פורת חנן",
+          "ביבי יגאל",
+          "לוי יצחק"
+        ],
+        "note": "Visually compared name by name; namesHe uses surname/given order also when results print given/surname order. Punctuation normalized; explicit variants retain other differences.",
+        "spellingVariants": []
+      }
+    },
+    {
+      "letters": "ג",
+      "complete": false,
+      "publishedCount": 99,
+      "pages": [
+        148,
+        149
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "פלדמן משה זאב",
+          "page": 148
+        },
+        {
+          "rank": 2,
+          "nameHe": "פרוש מנחם",
+          "page": 148
+        },
+        {
+          "rank": 3,
+          "nameHe": "ורדיגר אברהם",
+          "page": 149
+        },
+        {
+          "rank": 4,
+          "nameHe": "הלפרט שמואל",
+          "page": 149
+        },
+        {
+          "rank": 5,
+          "nameHe": "מזרחי אליעזר",
+          "page": 149
+        }
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k12-results-gazette",
+        "pages": [
+          243
+        ],
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "namesHe": [
+          "פלדמן משה זאב",
+          "פרוש מנחם",
+          "ורדיגר אברהם",
+          "הלפרט שמואל",
+          "מזרחי אליעזר"
+        ],
+        "note": "Visually compared name by name; namesHe uses surname/given order also when results print given/surname order. Punctuation normalized; explicit variants retain other differences.",
+        "spellingVariants": []
+      }
+    },
+    {
+      "letters": "הן",
+      "complete": false,
+      "publishedCount": 116,
+      "pages": [
+        150
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "רובינשטיין אמנון",
+          "page": 150
+        },
+        {
+          "rank": 2,
+          "nameHe": "פורזומנסקי אברהם",
+          "page": 150
+        }
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k12-results-gazette",
+        "pages": [
+          243
+        ],
+        "ranks": [
+          1,
+          2
+        ],
+        "namesHe": [
+          "רובינשטיין אמנון",
+          "פורזומנסקי אברהם"
+        ],
+        "note": "Visually compared name by name; namesHe uses surname/given order also when results print given/surname order. Punctuation normalized; explicit variants retain other differences.",
+        "spellingVariants": []
+      }
+    },
+    {
+      "letters": "ו",
+      "complete": false,
+      "publishedCount": 119,
+      "pages": [
+        151
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "וילנר מאיר",
+          "page": 151
+        },
+        {
+          "rank": 2,
+          "nameHe": "טובי תופיק",
+          "page": 151
+        },
+        {
+          "rank": 3,
+          "nameHe": "ביטון שלום-צ׳רלי",
+          "page": 151
+        },
+        {
+          "rank": 4,
+          "nameHe": "זיאד תופיק",
+          "page": 151
+        }
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k12-results-gazette",
+        "pages": [
+          243
+        ],
+        "ranks": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "namesHe": [
+          "וילנר מאיר",
+          "טובי תופיק",
+          "ביטון שלום-צ׳רלי",
+          "זיאד תופיק"
+        ],
+        "note": "Visually compared name by name; namesHe uses surname/given order also when results print given/surname order. Punctuation normalized; explicit variants retain other differences.",
+        "spellingVariants": []
+      }
+    },
+    {
+      "letters": "ט",
+      "complete": false,
+      "publishedCount": 59,
+      "pages": [
+        154
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "זאבי רחבעם",
+          "page": 154
+        },
+        {
+          "rank": 2,
+          "nameHe": "שפרינצק יאיר",
+          "page": 154
+        }
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k12-results-gazette",
+        "pages": [
+          243
+        ],
+        "ranks": [
+          1,
+          2
+        ],
+        "namesHe": [
+          "זאבי רחבעם",
+          "שפרינצק יאיר"
+        ],
+        "note": "Visually compared name by name; namesHe uses surname/given order also when results print given/surname order. Punctuation normalized; explicit variants retain other differences.",
+        "spellingVariants": []
+      }
+    },
+    {
+      "letters": "מחל",
+      "complete": false,
+      "publishedCount": 119,
+      "pages": [
+        155
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "שמיר יצחק",
+          "page": 155
+        },
+        {
+          "rank": 2,
+          "nameHe": "לוי דוד",
+          "page": 155
+        },
+        {
+          "rank": 3,
+          "nameHe": "מודעי יצחק",
+          "page": 155
+        },
+        {
+          "rank": 4,
+          "nameHe": "שרון אריאל",
+          "page": 155
+        },
+        {
+          "rank": 5,
+          "nameHe": "ארנס משה",
+          "page": 155
+        },
+        {
+          "rank": 6,
+          "nameHe": "הורביץ יגאל",
+          "page": 155
+        },
+        {
+          "rank": 7,
+          "nameHe": "נסים משה",
+          "page": 155
+        },
+        {
+          "rank": 8,
+          "nameHe": "קצב משה",
+          "page": 155
+        },
+        {
+          "rank": 9,
+          "nameHe": "נתניהו בנימין",
+          "page": 155
+        },
+        {
+          "rank": 10,
+          "nameHe": "שריר אברהם",
+          "page": 155
+        },
+        {
+          "rank": 11,
+          "nameHe": "מגן דוד",
+          "page": 155
+        },
+        {
+          "rank": 12,
+          "nameHe": "אבוחצירא אהרון",
+          "page": 155
+        },
+        {
+          "rank": 13,
+          "nameHe": "בגין זאב בנימין",
+          "page": 155
+        },
+        {
+          "rank": 14,
+          "nameHe": "תיכון דן",
+          "page": 155
+        },
+        {
+          "rank": 15,
+          "nameHe": "מרידור דן",
+          "page": 155
+        },
+        {
+          "rank": 16,
+          "nameHe": "בן אלישר אליהו",
+          "page": 155
+        },
+        {
+          "rank": 17,
+          "nameHe": "פת גדעון",
+          "page": 155
+        },
+        {
+          "rank": 18,
+          "nameHe": "שמאי יעקב",
+          "page": 155
+        },
+        {
+          "rank": 19,
+          "nameHe": "מילוא רון",
+          "page": 155
+        },
+        {
+          "rank": 20,
+          "nameHe": "גולדשטיין פנחס",
+          "page": 155
+        },
+        {
+          "rank": 21,
+          "nameHe": "קורפו חיים",
+          "page": 155
+        },
+        {
+          "rank": 22,
+          "nameHe": "אולמרט אהוד",
+          "page": 155
+        },
+        {
+          "rank": 23,
+          "nameHe": "לין אוריאל",
+          "page": 155
+        },
+        {
+          "rank": 24,
+          "nameHe": "עלי עובדיה",
+          "page": 155
+        },
+        {
+          "rank": 25,
+          "nameHe": "רייסר מיכאל",
+          "page": 155
+        },
+        {
+          "rank": 26,
+          "nameHe": "וינשטיין אריאל",
+          "page": 155
+        },
+        {
+          "rank": 27,
+          "nameHe": "ריבלין ראובן",
+          "page": 155
+        },
+        {
+          "rank": 28,
+          "nameHe": "כהן יגאל",
+          "page": 155
+        },
+        {
+          "rank": 29,
+          "nameHe": "פרח יהודה",
+          "page": 155
+        },
+        {
+          "rank": 30,
+          "nameHe": "איתן מיכאל",
+          "page": 155
+        },
+        {
+          "rank": 31,
+          "nameHe": "מצא יהושע",
+          "page": 155
+        },
+        {
+          "rank": 32,
+          "nameHe": "גדות גדעון",
+          "page": 155
+        },
+        {
+          "rank": 33,
+          "nameHe": "שילנסקי דב",
+          "page": 155
+        },
+        {
+          "rank": 34,
+          "nameHe": "גרופר פסח",
+          "page": 155
+        },
+        {
+          "rank": 35,
+          "nameHe": "לנדאו עוזי",
+          "page": 155
+        },
+        {
+          "rank": 36,
+          "nameHe": "הנגבי צחי",
+          "page": 155
+        },
+        {
+          "rank": 37,
+          "nameHe": "עמור שאול",
+          "page": 155
+        },
+        {
+          "rank": 38,
+          "nameHe": "דורון שרה",
+          "page": 155
+        },
+        {
+          "rank": 39,
+          "nameHe": "שובל זלמן",
+          "page": 155
+        },
+        {
+          "rank": 40,
+          "nameHe": "שגיא יהושע",
+          "page": 155
+        }
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k12-results-gazette",
+        "pages": [
+          243,
+          244
+        ],
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40
+        ],
+        "namesHe": [
+          "שמיר יצחק",
+          "לוי דוד",
+          "מודעי יצחק",
+          "שרון אריאל",
+          "ארנס משה",
+          "הורביץ יגאל",
+          "נסים משה",
+          "קצב משה",
+          "נתניהו בנימין",
+          "שריר אברהם",
+          "מגן דוד",
+          "אבוחצירא אהרון",
+          "בגין זאב בנימין",
+          "תיכון דן",
+          "מרידור דן",
+          "בן אלישר אליהו",
+          "פת גדעון",
+          "שמאי יעקב",
+          "מילוא רון",
+          "גולדשטיין פנחס",
+          "קורפו חיים",
+          "אולמרט אהוד",
+          "לין אוריאל",
+          "עלי עובדיה",
+          "רייסר מיכאל",
+          "וינשטיין אריאל",
+          "ריבלין ראובן",
+          "כהן יגאל",
+          "פרח יהודה",
+          "איתן מיכאל",
+          "מצא יהושע",
+          "גדות גדעון",
+          "שילנסקי דב",
+          "גרופר פסח",
+          "לנדאו עוזי",
+          "הנגבי צחי",
+          "עמור שאול",
+          "דורון שרה",
+          "שובל זלמן",
+          "שגיא יהושע"
+        ],
+        "note": "Visually compared name by name; namesHe uses surname/given order also when results print given/surname order. Punctuation normalized; explicit variants retain other differences.",
+        "spellingVariants": []
+      }
+    },
+    {
+      "letters": "מפם",
+      "complete": false,
+      "publishedCount": 118,
+      "pages": [
+        157
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "צבן יאיר",
+          "page": 157
+        },
+        {
+          "rank": 2,
+          "nameHe": "אורון חיים",
+          "page": 157
+        },
+        {
+          "rank": 3,
+          "nameHe": "פארס חסין",
+          "page": 157
+        }
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k12-results-gazette",
+        "pages": [
+          244
+        ],
+        "ranks": [
+          1,
+          2,
+          3
+        ],
+        "namesHe": [
+          "צבן יאיר",
+          "אורון חיים",
+          "פארס חסין"
+        ],
+        "note": "Visually compared name by name; namesHe uses surname/given order also when results print given/surname order. Punctuation normalized; explicit variants retain other differences.",
+        "spellingVariants": []
+      }
+    },
+    {
+      "letters": "ע",
+      "complete": false,
+      "publishedCount": 118,
+      "pages": [
+        158
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "דראושה עבד-אלוהאב",
+          "page": 158
+        }
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k12-results-gazette",
+        "pages": [
+          244
+        ],
+        "ranks": [
+          1
+        ],
+        "namesHe": [
+          "דראושה עבד-אלוהאב"
+        ],
+        "note": "Visually compared name by name; namesHe uses surname/given order also when results print given/surname order. Punctuation normalized; explicit variants retain other differences.",
+        "spellingVariants": []
+      }
+    },
+    {
+      "letters": "עץ",
+      "complete": false,
+      "publishedCount": 74,
+      "pages": [
+        160
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "רביץ אברהם",
+          "page": 160
+        },
+        {
+          "rank": 2,
+          "nameHe": "גפני משה רפאל",
+          "page": 160
+        }
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k12-results-gazette",
+        "pages": [
+          244
+        ],
+        "ranks": [
+          1,
+          2
+        ],
+        "namesHe": [
+          "רביץ אברהם",
+          "גפני משה רפאל"
+        ],
+        "note": "Visually compared name by name; namesHe uses surname/given order also when results print given/surname order. Punctuation normalized; explicit variants retain other differences.",
+        "spellingVariants": []
+      }
+    },
+    {
+      "letters": "פ",
+      "complete": false,
+      "publishedCount": 120,
+      "pages": [
+        161
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "מיעארי מוחמד",
+          "page": 161
+        }
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k12-results-gazette",
+        "pages": [
+          244
+        ],
+        "ranks": [
+          1
+        ],
+        "namesHe": [
+          "מיעארי מוחמד"
+        ],
+        "note": "Visually compared name by name; namesHe uses surname/given order also when results print given/surname order. Punctuation normalized; explicit variants retain other differences.",
+        "spellingVariants": []
+      }
+    },
+    {
+      "letters": "ץ",
+      "complete": false,
+      "publishedCount": 118,
+      "pages": [
+        162
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "איתן רפאל",
+          "page": 162
+        },
+        {
+          "rank": 2,
+          "nameHe": "צידון יואש",
+          "page": 162
+        }
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k12-results-gazette",
+        "pages": [
+          244
+        ],
+        "ranks": [
+          1,
+          2
+        ],
+        "namesHe": [
+          "איתן רפאל",
+          "צידון יואש"
+        ],
+        "note": "Visually compared name by name; namesHe uses surname/given order also when results print given/surname order. Punctuation normalized; explicit variants retain other differences.",
+        "spellingVariants": []
+      }
+    },
+    {
+      "letters": "רצ",
+      "complete": false,
+      "publishedCount": 118,
+      "pages": [
+        165
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "אלוני שולמית",
+          "page": 165
+        },
+        {
+          "rank": 2,
+          "nameHe": "שריד יוסף יוסי",
+          "page": 165
+        },
+        {
+          "rank": 3,
+          "nameHe": "כהן רן",
+          "page": 165
+        },
+        {
+          "rank": 4,
+          "nameHe": "צוקר דוד",
+          "page": 165
+        },
+        {
+          "rank": 5,
+          "nameHe": "וירשובסקי מרדכי",
+          "page": 165
+        }
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k12-results-gazette",
+        "pages": [
+          244
+        ],
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "namesHe": [
+          "אלוני שולמית",
+          "שריד יוסף יוסי",
+          "כהן רן",
+          "צוקר דוד",
+          "וירשובסקי מרדכי"
+        ],
+        "note": "Visually compared name by name; namesHe uses surname/given order also when results print given/surname order. Punctuation normalized; explicit variants retain other differences.",
+        "spellingVariants": []
+      }
+    },
+    {
+      "letters": "שס",
+      "complete": false,
+      "publishedCount": 94,
+      "pages": [
+        166,
+        167
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "פרץ יצחק חיים",
+          "page": 166
+        },
+        {
+          "rank": 2,
+          "nameHe": "פנחסי רפאל",
+          "page": 166
+        },
+        {
+          "rank": 3,
+          "nameHe": "עזרן יוסף",
+          "page": 166
+        },
+        {
+          "rank": 4,
+          "nameHe": "גמליאל אריה",
+          "page": 166
+        },
+        {
+          "rank": 5,
+          "nameHe": "לוי יאיר",
+          "page": 166
+        },
+        {
+          "rank": 6,
+          "nameHe": "דיין שלמה",
+          "page": 167
+        }
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k12-results-gazette",
+        "pages": [
+          244
+        ],
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "namesHe": [
+          "פרץ יצחק חיים",
+          "פנחסי רפאל",
+          "עזרן יוסף",
+          "גמליאל אריה",
+          "לוי יאיר",
+          "דיין שלמה"
+        ],
+        "note": "Visually compared name by name; namesHe uses surname/given order also when results print given/surname order. Punctuation normalized; explicit variants retain other differences.",
+        "spellingVariants": []
+      }
+    },
+    {
+      "letters": "ת",
+      "complete": false,
+      "publishedCount": 119,
+      "pages": [
+        168
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "נאמן יובל",
+          "page": 168
+        },
+        {
+          "rank": 2,
+          "nameHe": "כהן גאולה",
+          "page": 168
+        },
+        {
+          "rank": 3,
+          "nameHe": "ולדמן אליעזר",
+          "page": 168
+        }
+      ],
+      "electedCrossCheck": {
+        "sourceId": "k12-results-gazette",
+        "pages": [
+          244
+        ],
+        "ranks": [
+          1,
+          2,
+          3
+        ],
+        "namesHe": [
+          "נאמן יובל",
+          "כהן גאולה",
+          "ולדמן אליעזר"
+        ],
+        "note": "Visually compared name by name; namesHe uses surname/given order also when results print given/surname order. Punctuation normalized; explicit variants retain other differences.",
+        "spellingVariants": []
+      }
+    }
+  ],
+  "scope": "Winning lists: contiguous leading ranks covering every elected member; later ranks optional. Nonwinning lists not transcribed."
+}

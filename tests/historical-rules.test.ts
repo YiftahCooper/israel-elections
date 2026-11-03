@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ISRAEL_1949, ISRAEL_1951, ISRAEL_1973, ISRAEL_1992, ISRAEL_2004, ISRAEL_2014 } from '../src/engine/rules.ts';
+import { ISRAEL_1949, ISRAEL_1951, ISRAEL_1973, ISRAEL_1977, ISRAEL_1992, ISRAEL_2004, ISRAEL_2014 } from '../src/engine/rules.ts';
 import { electionRuleSetId, historicalRules, scenarioFromDataset, toEngineInput, validateScenario } from '../src/model/scenario.ts';
 import { applyAction } from '../src/model/actions.ts';
 import type { ElectionId } from '../src/data/schema.ts';
@@ -8,7 +8,7 @@ import { loadDataset } from './helpers.ts';
 describe('historical statutory threshold eras', () => {
   for (let n = 1; n <= 26; n++) {
     const id = `k${n}` as ElectionId;
-    const preset = n === 1 ? ISRAEL_1949 : n <= 7 ? ISRAEL_1951 : n <= 12 ? ISRAEL_1973 : n <= 16 ? ISRAEL_1992 : n <= 19 ? ISRAEL_2004 : ISRAEL_2014;
+    const preset = n === 1 ? ISRAEL_1949 : n <= 7 ? ISRAEL_1951 : n === 9 ? ISRAEL_1977 : n <= 12 ? ISRAEL_1973 : n <= 16 ? ISRAEL_1992 : n <= 19 ? ISRAEL_2004 : ISRAEL_2014;
     it(`${id}: dataset rules and historical reset use its own era`, () => {
       // Synthetic dataset tests rule plumbing only; it is NOT historical seat evidence.
       const ds = { ...loadDataset('k25'), id, ruleSetId: preset.id };

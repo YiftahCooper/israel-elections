@@ -197,15 +197,157 @@
         "pages": [
           1330
         ],
-        "scope": "Complete one-person roster; elected name agrees with YP2326 p.1496."
+        "scope": "Ranks1–1 transcribed; elected names cross-checked: 1. See candidates.reviewed.json."
+      },
+      {
+        "letters": "אמת",
+        "publishedCount": 120,
+        "first": {
+          "rank": 1,
+          "nameHe": "פרס שמעון"
+        },
+        "pages": [
+          1320
+        ],
+        "scope": "Ranks1–32 transcribed; elected names cross-checked: 32. See candidates.reviewed.json."
+      },
+      {
+        "letters": "ב",
+        "publishedCount": 97,
+        "first": {
+          "rank": 1,
+          "nameHe": "בורג יוסף"
+        },
+        "pages": [
+          1321
+        ],
+        "scope": "Ranks1–12 transcribed; elected names cross-checked: 12. See candidates.reviewed.json."
+      },
+      {
+        "letters": "ג",
+        "publishedCount": 104,
+        "first": {
+          "rank": 1,
+          "nameHe": "אברמוביץ יהודה מאיר"
+        },
+        "pages": [
+          1321
+        ],
+        "scope": "Ranks1–4 transcribed; elected names cross-checked: 4. See candidates.reviewed.json."
+      },
+      {
+        "letters": "ד",
+        "publishedCount": 86,
+        "first": {
+          "rank": 1,
+          "nameHe": "כהנא קלמן"
+        },
+        "pages": [
+          1322
+        ],
+        "scope": "Ranks1–1 transcribed; elected names cross-checked: 1. See candidates.reviewed.json."
+      },
+      {
+        "letters": "ו",
+        "publishedCount": 119,
+        "first": {
+          "rank": 1,
+          "nameHe": "וילנר מאיר"
+        },
+        "pages": [
+          1323
+        ],
+        "scope": "Ranks1–5 transcribed; elected names cross-checked: 5. See candidates.reviewed.json."
+      },
+      {
+        "letters": "ים",
+        "publishedCount": 120,
+        "first": {
+          "rank": 1,
+          "nameHe": "סייף אלדין מוחמד סעיד מחמוד זועבי"
+        },
+        "pages": [
+          1324
+        ],
+        "scope": "Ranks1–1 transcribed; elected names cross-checked: 1. See candidates.reviewed.json."
+      },
+      {
+        "letters": "יש",
+        "publishedCount": 119,
+        "first": {
+          "rank": 1,
+          "nameHe": "ידין יגאל"
+        },
+        "pages": [
+          1325
+        ],
+        "scope": "Ranks1–15 transcribed; elected names cross-checked: 15. See candidates.reviewed.json."
+      },
+      {
+        "letters": "כנ",
+        "publishedCount": 35,
+        "first": {
+          "rank": 1,
+          "nameHe": "שרון אריאל"
+        },
+        "pages": [
+          1327
+        ],
+        "scope": "Ranks1–2 transcribed; elected names cross-checked: 2. See candidates.reviewed.json."
+      },
+      {
+        "letters": "לע",
+        "publishedCount": 120,
+        "first": {
+          "rank": 1,
+          "nameHe": "האוזנר גדעון"
+        },
+        "pages": [
+          1327
+        ],
+        "scope": "Ranks1–1 transcribed; elected names cross-checked: 1. See candidates.reviewed.json."
+      },
+      {
+        "letters": "מחל",
+        "publishedCount": 120,
+        "first": {
+          "rank": 1,
+          "nameHe": "בגין מנחם"
+        },
+        "pages": [
+          1328
+        ],
+        "scope": "Ranks1–43 transcribed; elected names cross-checked: 43. See candidates.reviewed.json."
+      },
+      {
+        "letters": "ש",
+        "publishedCount": 118,
+        "first": {
+          "rank": 1,
+          "nameHe": "אליאב אריה"
+        },
+        "pages": [
+          1331
+        ],
+        "scope": "Ranks1–2 transcribed; elected names cross-checked: 2. See candidates.reviewed.json."
+      },
+      {
+        "letters": "רצ",
+        "publishedCount": 61,
+        "first": {
+          "rank": 1,
+          "nameHe": "אלוני שולמית"
+        },
+        "pages": [
+          1330
+        ],
+        "scope": "Ranks1–1 transcribed; elected names cross-checked: 0. See candidates.reviewed.json."
       }
     ],
     "sourceId": "k9-candidates-gazette"
   },
   "releaseBlockers": [
-    "Complete winning-list candidate rosters and elected-rank cross-checks remain unverified.",
-    "Flatto-Sharon list has one candidate; statutory authority/procedure for its unfillable second seat remains unverified. Engine differs for Flatto-Sharon and Sheli.",
-    "Full point-in-time amendment-chain verification through this election is incomplete; see decision 0070."
+    "Ratz elected-member paragraph is absent from YP 2326; required name cross-check remains unverified."
   ],
   "sourceIds": [
     "k9-results-gazette",
@@ -213,22 +355,12 @@
     "k8-k12-cbs-national-totals",
     "k8-k12-law-1969",
     "k8-k12-law-1973",
-    "k9-candidates-reviewed"
+    "k9-candidates-reviewed",
+    "k9-search-reviewed"
   ],
   "allocationCheck": {
-    "exact": false,
-    "differences": [
-      {
-        "letters": "פש",
-        "computed": 2,
-        "official": 1
-      },
-      {
-        "letters": "ש",
-        "computed": 1,
-        "official": 2
-      }
-    ],
-    "note": "Complete six-pair agreement notice used. Uncapped allocation gives Flatto-Sharon two and Sheli one; gazette publishes one and two. Exact unfillable-seat rule/CEC ruling remains unverified; no speculative reallocation implemented."
+    "exact": true,
+    "differences": [],
+    "note": "Candidate-cap hypothesis reproduces every seat. Procedure inferred from official results; contemporaneous statutory text/CEC decision not located. Uncapped: פש 2, ש 1; capped/official: פש 1, ש 2."
   }
 }

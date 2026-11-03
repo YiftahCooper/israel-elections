@@ -1,8 +1,3 @@
-import { verifyHistoricalProgress, type VerifyOptions } from './k8-k12-common.ts';
+import { verifyHistoricalProgress, buildHistorical, type VerifyOptions } from './k8-k12-common.ts';
 export const verifyK11 = (options: VerifyOptions = {}) => verifyHistoricalProgress('k11', options);
-
-/** Evidence preflight only. No public dataset is registered while release gates fail. */
-export function buildK11(options: VerifyOptions = {}): [] {
-  verifyK11(options);
-  return [];
-}
+export const buildK11 = (options: VerifyOptions = {}) => buildHistorical('k11', options);

@@ -15,6 +15,8 @@ export interface RuleSet {
   remainderMethod: RemainderMethod;
   /** section 81(d)(4): a list with ≤ half the votes stops receiving remainder seats at half the seats */
   majorityCap: boolean;
+  /** Optional candidate-cap hypothesis: unfillable seats continue through the remainder stage. Off by default. */
+  seatsCappedAtCandidates?: boolean;
   /** maximum lists in one surplus agreement; the law (section 67(a)) allows exactly 2 */
   maxAgreementSize: number;
   /** section 82(a): agreement only takes effect when every partner passed the threshold */
@@ -38,6 +40,8 @@ export interface ListInput {
   votes: bigint;
   /** lists that withdrew still appear (with 0 votes); they never take part */
   withdrawn?: boolean;
+  /** Known full roster size; undefined means unknown, so no capacity bound is asserted. */
+  candidateCount?: number;
 }
 
 export interface AgreementInput { id: string; members: string[] }
