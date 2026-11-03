@@ -4,7 +4,6 @@ Explore Israeli Knesset election results and see how changing votes changes the 
 This bilingual Hebrew/English app is for curious voters, students and anyone who wants to
 understand seat allocation, with detailed tools for researchers and developers.
 
-<!-- Screenshot to be added by the owner. -->
 ![The elections explorer and seat simulator](docs/screenshot.png)
 
 ## What you can do
@@ -121,4 +120,6 @@ registered lists and do not track later changes in Knesset membership.
 
 ## Licence
 
-Licence: to be decided by the owner.
+The code and documentation are released under the [MIT Licence](LICENSE).
+The official source documents kept in `data/raw/` (CEC, Reshumot, data.gov.il and others) are
+not covered by it and remain under their publishers' terms; see [Data coverage and provenance](docs/DATA.md).

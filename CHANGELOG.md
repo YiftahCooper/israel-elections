@@ -20,6 +20,7 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 - Clear messages where data is missing: unavailable or partial candidate rosters, and
   elections without locality results.
 - A documentation map, contributor guidance and retrospective decision records.
+- MIT licence for the code and documentation (official source documents excluded).
 
 ### Changed
 
