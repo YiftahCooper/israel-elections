@@ -15,6 +15,8 @@ For browser tests, first run `npm run build`, install Chromium with
 `npx playwright install chromium`, then run `npm run test:e2e`.
 Playwright serves the build on port 4174 using `playwright.config.ts` and puts results
 in `.backup-scratch/test-results/`. CI installs Chromium with `--with-deps` on Linux.
+Outside CI an existing server on 4174 is reused, which may serve another checkout's build; set
+`PW_PORT` (for example `PW_PORT=4190 npm run test:e2e`) to start a fresh server on that port.
 
 [CI](../.github/workflows/ci.yml) runs dependency installation, TypeScript checking,
 a dataset rebuild, unit tests, the production build and Chromium end-to-end tests.
