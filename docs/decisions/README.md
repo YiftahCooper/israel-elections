@@ -35,3 +35,4 @@ is labelled. Suggested alternatives are not evidence of a past design discussion
 | [0051: K16–K17 allocation rules](0051-k16-k17-historical-allocation-evidence.md) | Check the 2003 and 2006 rules without trusting the archive folder's date. |
 
 Records 0020–0059 are grouped by election era; numbers in between are left free for that era.
+| [0087: Constituent parties, blocs and colours](0087-constituent-parties-blocs-and-colours.md) | Parties inside joint lists travel with their candidates; per-seat bloc membership; sourced per-election bloc schemes and colours. |
