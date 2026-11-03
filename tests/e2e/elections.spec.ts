@@ -11,7 +11,7 @@ test('the picker offers the built elections and marks the others as not yet avai
   const picker = page.getByRole('combobox', { name: 'Election' });
   await expect(picker.getByRole('option', { name: '2026 · 26th Knesset' })).toBeEnabled();
   await expect(picker.getByRole('option', { name: '2022 · 25th Knesset' })).toBeEnabled();
-  await expect(picker.getByRole('option', { name: 'Apr 2019 · 21st Knesset — not yet available' })).toBeDisabled();
+  await expect(picker.getByRole('option', { name: 'Apr 2019 · 21st Knesset' })).toBeEnabled();
   await expect(picker.getByRole('option', { name: '2003 · 16th Knesset — not yet available' })).toBeDisabled();
 });
 

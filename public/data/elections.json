@@ -53,10 +53,12 @@
     "date": "2015-03-17",
     "nameHe": "הבחירות לכנסת ה-20",
     "nameEn": "Election to the 20th Knesset",
-    "available": false,
+    "available": true,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "Official sources downloaded; dataset not built or verified."
+      "stage": "official-final",
+      "asOf": "2015-03-25",
+      "noteHe": "תוצאות רשמיות סופיות. המועמדים לפי סדר הרישום בילקוט הפרסומים; הודעות התפטרות ידועות בהערות. לא מוצגת השתייכות לגושים.",
+      "noteEn": "Official final results. Candidates follow the gazetted registration order; known resignation notices are labelled. No default blocs assigned."
     }
   },
   {
@@ -65,10 +67,12 @@
     "date": "2019-04-09",
     "nameHe": "הבחירות לכנסת ה-21",
     "nameEn": "Election to the 21st Knesset",
-    "available": false,
+    "available": true,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "Official sources downloaded; dataset not built or verified."
+      "stage": "official-final",
+      "asOf": "2026-11-03",
+      "noteHe": "תוצאות רשמיות סופיות. המועמדים לפי סדר הרישום בילקוט הפרסומים; הודעות התפטרות ידועות בהערות. לא מוצגת השתייכות לגושים.",
+      "noteEn": "Official final results. Candidates follow the gazetted registration order; known resignation notices are labelled. No default blocs assigned."
     }
   },
   {

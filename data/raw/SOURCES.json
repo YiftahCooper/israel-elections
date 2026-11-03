@@ -222,7 +222,8 @@
     "retrievedAt": "2026-11-03T15:06:15.871Z",
     "bytes": 115669,
     "sha256": "d8784521ece3d7f81a3a35f54c5821ef3f52a2ab1b785972cbdd8e8a63bd43fb",
-    "lastModified": "Tue, 15 Sep 2026 10:19:39 GMT"
+    "lastModified": "Tue, 15 Sep 2026 10:19:39 GMT",
+    "note": "YP 7000 pp3938–3952: complete registered rosters. Rank 10 for יץ is encoded as 01 in the PDF text. Resignation notices in YP7001 are labelled in list notes (decision 0030)."
   },
   {
     "id": "k21-candidates-gazette",
@@ -235,7 +236,8 @@
     "retrievedAt": "2026-11-03T15:06:16.058Z",
     "bytes": 2400212,
     "sha256": "ed3c03f79ee9976f9d5e776e2eeba8fd2b1eb4c3fd9f4c1374ac9fd41a288db2",
-    "lastModified": "Tue, 15 Sep 2026 10:19:40 GMT"
+    "lastModified": "Tue, 15 Sep 2026 10:19:40 GMT",
+    "note": "YP 8168 pp9022–9046: complete registered rosters. Identical printed duplicates at אמת #100 and שס #70 are coalesced; end ranks are audited per list (decision 0030)."
   },
   {
     "id": "k21-national-html",
@@ -414,7 +416,7 @@
     "official": true,
     "description": "תוצאות האמת של הבחירות לכנסת ה-20 לפי קלפיות",
     "method": "datagov-datastore-api",
-    "retrievedAt": "2026-11-03T15:06:25.661Z",
+    "retrievedAt": "2026-11-03T15:25:46.503Z",
     "bytes": 4805645,
     "sha256": "8670b4c65b723d9da00090eb07f8eb35cd2329737713710bd9dde40b283cd541",
     "lastModified": null
@@ -440,7 +442,7 @@
     "official": true,
     "description": "תוצאות האמת של הבחירות לכנסת ה-21 לפי קלפיות",
     "method": "datagov-datastore-api",
-    "retrievedAt": "2026-11-03T15:06:27.326Z",
+    "retrievedAt": "2026-11-03T15:25:48.680Z",
     "bytes": 5846331,
     "sha256": "93298bef525db230f5dda511b689ac8913cf8f08747227e2c01ec20cecf45036",
     "lastModified": null
@@ -533,7 +535,8 @@
     "method": "http",
     "retrievedAt": "2026-11-03T15:11:41.323Z",
     "bytes": 622285,
-    "sha256": "04135694ed193e7250b27e9cde09a5045ac83915df01227d94d35b973a5e6949"
+    "sha256": "04135694ed193e7250b27e9cde09a5045ac83915df01227d94d35b973a5e6949",
+    "note": "Primary statutory notice, YP7001 p3954, retrieved from the olaw.org.il mirror. Complete numbered notice (1)–(4), reading the right column then the top of the left. Also contains candidate resignation notices."
   },
   {
     "id": "k21-surplus-gazette",
@@ -545,7 +548,8 @@
     "method": "http",
     "retrievedAt": "2026-11-03T15:11:43.575Z",
     "bytes": 876791,
-    "sha256": "ad242e01902ab56fb46be6db7003f523a31e8d7576d3ce5e19776ec74847131c"
+    "sha256": "ad242e01902ab56fb46be6db7003f523a31e8d7576d3ce5e19776ec74847131c",
+    "note": "Primary statutory notice, YP8178 p9310, retrieved from the olaw.org.il mirror. Complete numbered notice (1)–(6), including ףץ–ףז."
   },
   {
     "id": "k23-surplus-gazette",
@@ -622,7 +626,8 @@
     "retrievedAt": "2026-11-03T15:14:04.794Z",
     "bytes": 118151,
     "sha256": "19ba7a5dfce76f60a41fd1e5509ea16c4495271777dca65ed1247b3f181c5d49",
-    "lastModified": "Tue, 15 Sep 2026 10:19:40 GMT"
+    "lastModified": "Tue, 15 Sep 2026 10:19:40 GMT",
+    "note": "YP 7010 pp4370–4373: votes, invalid ballots, seats and elected members. Registered voters are not published in this notice; the official locality and polling-station tables both aggregate to 5,881,696 (decision 0030)."
   },
   {
     "id": "k16-surplus-gazette",

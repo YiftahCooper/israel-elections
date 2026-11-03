@@ -1,0 +1,6 @@
+{
+  "description": "SHA-256 of canonical derived locality rows (sorted by canonical code, votes in national result order); validated against the official polling-station source during release. See decision 0030.",
+  "localitySha256": "b45d944af5a48dc9407ae351f0fd99205472ff28285aceae7aa0746413f42fcb",
+  "ballotSha256": "93298bef525db230f5dda511b689ac8913cf8f08747227e2c01ec20cecf45036",
+  "ballotRows": 10765
+}
