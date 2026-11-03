@@ -2,6 +2,9 @@
 
 Research date: 4 November 2026 (Israel time; files retrieved 3 November 2026 22:01 UTC).
 
+The winning rosters and the elected-name cross-check (the remaining 0072 blocker) are
+logged separately in [k8-1973-rosters.md](k8-1973-rosters.md).
+
 ## Verdict
 
 **Found and verified from an official source.** The Central Elections Committee for the

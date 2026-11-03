@@ -1,0 +1,1149 @@
+{
+ "id": "k8",
+ "sourceId": "k8-candidates-gazette",
+ "issue": 1954,
+ "reviewedOn": "2026-11-04",
+ "method": "Visual letter-by-letter transcription of the official candidate notice YP 1954 (21 October 1973), rendered with pdf.js at 5–16x zoom. Names in printed surname/given order. No secondary or modern names used.",
+ "scope": "Winning lists: contiguous leading ranks 1..seats (every elected rank); Ratz complete (8 of 8). Later ranks of other winning lists not transcribed (complete: false = truncated). The eleven zero-seat lists are not transcribed (unavailable in this dataset, not absent from the gazette).",
+ "notSeated": "None. In every winning list the results notice seats exactly candidate ranks 1..seats; no registered candidate was skipped.",
+ "letterCorrections": "Uses the corrected ballot letter לע (not ל), per docs/decisions/0077 and data/raw/k8/agreements.proposed.json.",
+ "lists": [
+  {
+   "letters": "אמת",
+   "complete": false,
+   "publishedCount": 120,
+   "pages": [
+    88
+   ],
+   "candidates": [
+    {
+     "rank": 1,
+     "nameHe": "מאיר גולדה",
+     "page": 88
+    },
+    {
+     "rank": 2,
+     "nameHe": "אלון יגאל",
+     "page": 88
+    },
+    {
+     "rank": 3,
+     "nameHe": "אבן אבא",
+     "page": 88
+    },
+    {
+     "rank": 4,
+     "nameHe": "דיין משה",
+     "page": 88
+    },
+    {
+     "rank": 5,
+     "nameHe": "תלמי מאיר",
+     "page": 88
+    },
+    {
+     "rank": 6,
+     "nameHe": "ספיר פנחס",
+     "page": 88
+    },
+    {
+     "rank": 7,
+     "nameHe": "ישעיהו שרעבי ישראל",
+     "page": 88
+    },
+    {
+     "rank": 8,
+     "nameHe": "הלל שלמה",
+     "page": 88
+    },
+    {
+     "rank": 9,
+     "nameHe": "גלילי ישראל",
+     "page": 88
+    },
+    {
+     "rank": 10,
+     "nameHe": "זכין דב",
+     "page": 88
+    },
+    {
+     "rank": 11,
+     "nameHe": "אלמוגי יוסף אהרון",
+     "page": 88
+    },
+    {
+     "rank": 12,
+     "nameHe": "פרס שמעון",
+     "page": 88
+    },
+    {
+     "rank": 13,
+     "nameHe": "ידלין אהרון",
+     "page": 88
+    },
+    {
+     "rank": 14,
+     "nameHe": "ברעם משה",
+     "page": 88
+    },
+    {
+     "rank": 15,
+     "nameHe": "קרגמן ישראל",
+     "page": 88
+    },
+    {
+     "rank": 16,
+     "nameHe": "צדוק חיים יוסף",
+     "page": 88
+    },
+    {
+     "rank": 17,
+     "nameHe": "נבון יצחק",
+     "page": 88
+    },
+    {
+     "rank": 18,
+     "nameHe": "בן-אהרון יצחק",
+     "page": 88
+    },
+    {
+     "rank": 19,
+     "nameHe": "גרוסמן אורקין חייקה",
+     "page": 88
+    },
+    {
+     "rank": 20,
+     "nameHe": "רבין יצחק",
+     "page": 88
+    },
+    {
+     "rank": 21,
+     "nameHe": "אליאב אריה",
+     "page": 88
+    },
+    {
+     "rank": 22,
+     "nameHe": "עופר אברהם",
+     "page": 88
+    },
+    {
+     "rank": 23,
+     "nameHe": "אנקוריון ארי",
+     "page": 88
+    },
+    {
+     "rank": 24,
+     "nameHe": "גז מטילדה",
+     "page": 88
+    },
+    {
+     "rank": 25,
+     "nameHe": "כרמל משה",
+     "page": 88
+    },
+    {
+     "rank": 26,
+     "nameHe": "אפרת אהרון",
+     "page": 88
+    },
+    {
+     "rank": 27,
+     "nameHe": "יריב אהרון",
+     "page": 88
+    },
+    {
+     "rank": 28,
+     "nameHe": "ורטמן משה",
+     "page": 88
+    },
+    {
+     "rank": 29,
+     "nameHe": "זילברברג אברהם",
+     "page": 88
+    },
+    {
+     "rank": 30,
+     "nameHe": "גרשוני צבי",
+     "page": 88
+    },
+    {
+     "rank": 31,
+     "nameHe": "יעקבי גד",
+     "page": 88
+    },
+    {
+     "rank": 32,
+     "nameHe": "ארבלי-אלמוזלינו שושנה",
+     "page": 88
+    },
+    {
+     "rank": 33,
+     "nameHe": "זועבי עבדול עזיז",
+     "page": 88
+    },
+    {
+     "rank": 34,
+     "nameHe": "קצב נוזהת",
+     "page": 88
+    },
+    {
+     "rank": 35,
+     "nameHe": "לוין שלום",
+     "page": 88
+    },
+    {
+     "rank": 36,
+     "nameHe": "שריד יוסף",
+     "page": 88
+    },
+    {
+     "rank": 37,
+     "nameHe": "הרליץ אסתר",
+     "page": 88
+    },
+    {
+     "rank": 38,
+     "nameHe": "אמוראי עדיאל",
+     "page": 88
+    },
+    {
+     "rank": 39,
+     "nameHe": "בן-פורת מרדכי",
+     "page": 88
+    },
+    {
+     "rank": 40,
+     "nameHe": "(יודין) דרניצקי יהודה",
+     "page": 88
+    },
+    {
+     "rank": 41,
+     "nameHe": "הכהן מנחם",
+     "page": 88
+    },
+    {
+     "rank": 42,
+     "nameHe": "פיינרמן עוזי",
+     "page": 88
+    },
+    {
+     "rank": 43,
+     "nameHe": "שחל משה",
+     "page": 88
+    },
+    {
+     "rank": 44,
+     "nameHe": "חלפון בן-ציון",
+     "page": 88
+    },
+    {
+     "rank": 45,
+     "nameHe": "קורן דוד",
+     "page": 88
+    },
+    {
+     "rank": 46,
+     "nameHe": "רונן אליעזר",
+     "page": 88
+    },
+    {
+     "rank": 47,
+     "nameHe": "גיבלבר אברהם",
+     "page": 88
+    },
+    {
+     "rank": 48,
+     "nameHe": "חריש מיכאל",
+     "page": 88
+    },
+    {
+     "rank": 49,
+     "nameHe": "מויאל אליהו",
+     "page": 88
+    },
+    {
+     "rank": 50,
+     "nameHe": "נמיר אורה",
+     "page": 88
+    },
+    {
+     "rank": 51,
+     "nameHe": "יפה אביעד",
+     "page": 88
+    }
+   ],
+   "electedCrossCheck": {
+    "sourceId": "k8-results-gazette",
+    "pages": [
+     609
+    ],
+    "ranks": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23,
+     24,
+     25,
+     26,
+     27,
+     28,
+     29,
+     30,
+     31,
+     32,
+     33,
+     34,
+     35,
+     36,
+     37,
+     38,
+     39,
+     40,
+     41,
+     42,
+     43,
+     44,
+     45,
+     46,
+     47,
+     48,
+     49,
+     50,
+     51
+    ],
+    "namesHe": [
+     "מאיר גולדה",
+     "אלון יגאל",
+     "אבן אבא",
+     "דיין משה",
+     "תלמי מאיר",
+     "ספיר פנחס",
+     "ישעיהו-שרעבי ישראל",
+     "הלל שלמה",
+     "גלילי ישראל",
+     "זכין דב",
+     "אלמוגי יוסף אהרון",
+     "פרס שמעון",
+     "ידלין אהרון",
+     "ברעם משה",
+     "קרגמן ישראל",
+     "צדוק חיים יוסף",
+     "נבון יצחק",
+     "בן-אהרון יצחק",
+     "גרוסמן-אורקין חייקה",
+     "רבין יצחק",
+     "אליאב אריה",
+     "עופר אברהם",
+     "אנקוריון ארי",
+     "גז מטילדה",
+     "כרמל משה",
+     "אפרת אהרון",
+     "יריב אהרון",
+     "ורטמן משה",
+     "זילברברג אברהם",
+     "גרשוני צבי",
+     "יעקבי גד",
+     "ארבלי-אלמוזלינו שושנה",
+     "זועבי עבדול עזיז",
+     "קצב נוזהת",
+     "לוין שלום",
+     "שריד יוסף",
+     "הרליץ אסתר",
+     "אמוראי עדיאל",
+     "בן-פורת מרדכי",
+     "יודין (דרניצקי) יהודה",
+     "הכהן מנחם",
+     "פיינרמן עוזי",
+     "שחל משה",
+     "חלפון בן-ציון",
+     "קורן דוד",
+     "רונן אליעזר",
+     "גיבלבר אברהם",
+     "חריש מיכאל",
+     "מויאל אליהו",
+     "נמיר אורה",
+     "יפה אביעד"
+    ],
+    "note": "Results section 4 read independently and compared name by name; namesHe are the results readings as printed (surname first, as in the candidate notice). Every textual difference, including punctuation, is listed in spellingVariants. Third check: the CEC appendix (Form 30) section יד, printed pp. 23, 24, 25, lists the same people in the same order.",
+    "spellingVariants": [
+     {
+      "rank": 7,
+      "candidateNameHe": "ישעיהו שרעבי ישראל",
+      "electedNameHe": "ישעיהו-שרעבי ישראל",
+      "note": "Results join the double surname with a maqaf; the candidate notice prints a space. Same person."
+     },
+     {
+      "rank": 19,
+      "candidateNameHe": "גרוסמן אורקין חייקה",
+      "electedNameHe": "גרוסמן-אורקין חייקה",
+      "note": "Results join the double surname with a maqaf; the candidate notice prints a space (a print speck above the gap between ו and ר, read as no letter). Same person."
+     },
+     {
+      "rank": 40,
+      "candidateNameHe": "(יודין) דרניצקי יהודה",
+      "electedNameHe": "יודין (דרניצקי) יהודה",
+      "note": "The candidate notice brackets the earlier surname (יודין) before דרניצקי; the results print יודין first and bracket (דרניצקי). Same person, bracket placement only."
+     }
+    ]
+   }
+  },
+  {
+   "letters": "ב",
+   "complete": false,
+   "publishedCount": 113,
+   "pages": [
+    89
+   ],
+   "candidates": [
+    {
+     "rank": 1,
+     "nameHe": "בורג יוסף שלמה",
+     "page": 89
+    },
+    {
+     "rank": 2,
+     "nameHe": "ורהפטיג זרח",
+     "page": 89
+    },
+    {
+     "rank": 3,
+     "nameHe": "רפאל יצחק",
+     "page": 89
+    },
+    {
+     "rank": 4,
+     "nameHe": "חזני מיכאל יעקב",
+     "page": 89
+    },
+    {
+     "rank": 5,
+     "nameHe": "המר זבולון",
+     "page": 89
+    },
+    {
+     "rank": 6,
+     "nameHe": "אבטבי אליעזר",
+     "page": 89
+    },
+    {
+     "rank": 7,
+     "nameHe": "אבו חצירא אהרון",
+     "page": 89
+    },
+    {
+     "rank": 8,
+     "nameHe": "בן-מאיר יהודה יעקב",
+     "page": 89
+    },
+    {
+     "rank": 9,
+     "nameHe": "מלמד אברהם",
+     "page": 89
+    },
+    {
+     "rank": 10,
+     "nameHe": "שיינמאן פנחס",
+     "page": 89
+    }
+   ],
+   "electedCrossCheck": {
+    "sourceId": "k8-results-gazette",
+    "pages": [
+     609
+    ],
+    "ranks": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10
+    ],
+    "namesHe": [
+     "בורג שלמה יוסף",
+     "ורהפטיג זרח",
+     "רפאל יצחק",
+     "חזני מיכאל יעקב",
+     "המר זבולון",
+     "אבטבי אליעזר",
+     "אבו-חצירא אהרון",
+     "בן-מאיר יהודה יעקב",
+     "מלמד אברהם",
+     "שיינמאן פנחס"
+    ],
+    "note": "Results section 4 read independently and compared name by name; namesHe are the results readings as printed (surname first, as in the candidate notice). Every textual difference, including punctuation, is listed in spellingVariants. Third check: the CEC appendix (Form 30) section יד, printed pp. 25, 26, lists the same people in the same order.",
+    "spellingVariants": [
+     {
+      "rank": 1,
+      "candidateNameHe": "בורג יוסף שלמה",
+      "electedNameHe": "בורג שלמה יוסף",
+      "note": "Given names printed in reverse order (candidate: יוסף שלמה; results: שלמה יוסף). Same person."
+     },
+     {
+      "rank": 7,
+      "candidateNameHe": "אבו חצירא אהרון",
+      "electedNameHe": "אבו-חצירא אהרון",
+      "note": "Results join the surname with a maqaf; the candidate notice prints a space. Same person."
+     }
+    ]
+   }
+  },
+  {
+   "letters": "גד",
+   "complete": false,
+   "publishedCount": 91,
+   "pages": [
+    90
+   ],
+   "candidates": [
+    {
+     "rank": 1,
+     "nameHe": "לורינץ שלמה",
+     "page": 90
+    },
+    {
+     "rank": 2,
+     "nameHe": "כהנא קלמן",
+     "page": 90
+    },
+    {
+     "rank": 3,
+     "nameHe": "אברמוביץ יהודה מאיר",
+     "page": 90
+    },
+    {
+     "rank": 4,
+     "nameHe": "פרוש מנחם",
+     "page": 90
+    },
+    {
+     "rank": 5,
+     "nameHe": "ורדיגר אברהם",
+     "page": 90
+    }
+   ],
+   "electedCrossCheck": {
+    "sourceId": "k8-results-gazette",
+    "pages": [
+     609
+    ],
+    "ranks": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "namesHe": [
+     "לורינץ שלמה",
+     "כהנא קלמן",
+     "אברמוביץ יהודה מאיר",
+     "פרוש מנחם",
+     "ורדיגר אברהם"
+    ],
+    "note": "Results section 4 read independently and compared name by name; namesHe are the results readings as printed (surname first, as in the candidate notice). Every textual difference, including punctuation, is listed in spellingVariants. Third check: the CEC appendix (Form 30) section יד, printed pp. 26, lists the same people in the same order.",
+    "spellingVariants": []
+   }
+  },
+  {
+   "letters": "ו",
+   "complete": false,
+   "publishedCount": 120,
+   "pages": [
+    97
+   ],
+   "candidates": [
+    {
+     "rank": 1,
+     "nameHe": "וילנר מאיר",
+     "page": 97
+    },
+    {
+     "rank": 2,
+     "nameHe": "טובי תופיק",
+     "page": 97
+    },
+    {
+     "rank": 3,
+     "nameHe": "לבנבראון אברהם",
+     "page": 97
+    },
+    {
+     "rank": 4,
+     "nameHe": "זיאד תופיק",
+     "page": 97
+    }
+   ],
+   "electedCrossCheck": {
+    "sourceId": "k8-results-gazette",
+    "pages": [
+     609
+    ],
+    "ranks": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "namesHe": [
+     "וילנר מאיר",
+     "טובי תופיק",
+     "לבנבראון אברהם",
+     "זיאד תופיק"
+    ],
+    "note": "Results section 4 read independently and compared name by name; namesHe are the results readings as printed (surname first, as in the candidate notice). Every textual difference, including punctuation, is listed in spellingVariants. Third check: the CEC appendix (Form 30) section יד, printed pp. 26, lists the same people in the same order.",
+    "spellingVariants": []
+   }
+  },
+  {
+   "letters": "חל טעם",
+   "complete": false,
+   "publishedCount": 120,
+   "pages": [
+    91
+   ],
+   "candidates": [
+    {
+     "rank": 1,
+     "nameHe": "בגין מנחם",
+     "page": 91
+    },
+    {
+     "rank": 2,
+     "nameHe": "ד״ר רימלט אלימלך שמעון",
+     "page": 91
+    },
+    {
+     "rank": 3,
+     "nameHe": "ד״ר בדר יוחנן",
+     "page": 91
+    },
+    {
+     "rank": 4,
+     "nameHe": "אהרליך שמחה",
+     "page": 91
+    },
+    {
+     "rank": 5,
+     "nameHe": "ד״ר הלוי בנימין",
+     "page": 91
+    },
+    {
+     "rank": 6,
+     "nameHe": "שרון אריאל",
+     "page": 91
+    },
+    {
+     "rank": 7,
+     "nameHe": "הורביץ יגאל",
+     "page": 91
+    },
+    {
+     "rank": 8,
+     "nameHe": "תמיר (כצנלסון) שמואל משה",
+     "page": 91
+    },
+    {
+     "rank": 9,
+     "nameHe": "יפה אברהם",
+     "page": 91
+    },
+    {
+     "rank": 10,
+     "nameHe": "לנדאו חיים",
+     "page": 91
+    },
+    {
+     "rank": 11,
+     "nameHe": "תמיר יוסף",
+     "page": 91
+    },
+    {
+     "rank": 12,
+     "nameHe": "קרמרמן יוסף",
+     "page": 91
+    },
+    {
+     "rank": 13,
+     "nameHe": "אברמוב שנאור זלמן",
+     "page": 91
+    },
+    {
+     "rank": 14,
+     "nameHe": "ידיד מנחם",
+     "page": 91
+    },
+    {
+     "rank": 15,
+     "nameHe": "שובל זלמן",
+     "page": 91
+    },
+    {
+     "rank": 16,
+     "nameHe": "שוסטק אליעזר",
+     "page": 91
+    },
+    {
+     "rank": 17,
+     "nameHe": "פת גדעון",
+     "page": 91
+    },
+    {
+     "rank": 18,
+     "nameHe": "ארידור יורם",
+     "page": 91
+    },
+    {
+     "rank": 19,
+     "nameHe": "נסים משה בנימין",
+     "page": 91
+    },
+    {
+     "rank": 20,
+     "nameHe": "קורפו חיים",
+     "page": 91
+    },
+    {
+     "rank": 21,
+     "nameHe": "מודעי יצחק",
+     "page": 91
+    },
+    {
+     "rank": 22,
+     "nameHe": "קשת בן ציון",
+     "page": 91
+    },
+    {
+     "rank": 23,
+     "nameHe": "פלומין יחזקאל שמחה",
+     "page": 91
+    },
+    {
+     "rank": 24,
+     "nameHe": "לוי דוד",
+     "page": 91
+    },
+    {
+     "rank": 25,
+     "nameHe": "גרופר פסח",
+     "page": 91
+    },
+    {
+     "rank": 26,
+     "nameHe": "לבני איתן",
+     "page": 91
+    },
+    {
+     "rank": 27,
+     "nameHe": "שמיר יצחק",
+     "page": 91
+    },
+    {
+     "rank": 28,
+     "nameHe": "לין אמנון",
+     "page": 91
+    },
+    {
+     "rank": 29,
+     "nameHe": "נוף (נפרסטק) עקיבא",
+     "page": 91
+    },
+    {
+     "rank": 30,
+     "nameHe": "כהן מאיר",
+     "page": 91
+    },
+    {
+     "rank": 31,
+     "nameHe": "כץ אברהם",
+     "page": 91
+    },
+    {
+     "rank": 32,
+     "nameHe": "ארנס משה",
+     "page": 91
+    },
+    {
+     "rank": 33,
+     "nameHe": "דרובלס מתתיהו",
+     "page": 91
+    },
+    {
+     "rank": 34,
+     "nameHe": "בארי ידידיה",
+     "page": 91
+    },
+    {
+     "rank": 35,
+     "nameHe": "כהן גאולה",
+     "page": 91
+    },
+    {
+     "rank": 36,
+     "nameHe": "אולמרט אהוד",
+     "page": 91
+    },
+    {
+     "rank": 37,
+     "nameHe": "פרץ יצחק",
+     "page": 91
+    },
+    {
+     "rank": 38,
+     "nameHe": "שחטרמן אברהם",
+     "page": 91
+    },
+    {
+     "rank": 39,
+     "nameHe": "דיציאן ליאון",
+     "page": 91
+    }
+   ],
+   "electedCrossCheck": {
+    "sourceId": "k8-results-gazette",
+    "pages": [
+     609
+    ],
+    "ranks": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23,
+     24,
+     25,
+     26,
+     27,
+     28,
+     29,
+     30,
+     31,
+     32,
+     33,
+     34,
+     35,
+     36,
+     37,
+     38,
+     39
+    ],
+    "namesHe": [
+     "בגין מנחם",
+     "ד״ר רימלט אלימלך שמעון",
+     "ד״ר בדר יוחנן",
+     "אהרליך שמחה",
+     "ד״ר הלוי בנימין",
+     "שרון אריאל",
+     "הורביץ יגאל",
+     "תמיר (כצנלסון) שמואל משה",
+     "יפה אברהם",
+     "לנדאו חיים",
+     "תמיר יוסף",
+     "קרמרמן יוסף",
+     "אברמוב שניאור זלמן",
+     "ידיד מנחם",
+     "שובל זלמן",
+     "שוסטק אליעזר",
+     "פת גדעון",
+     "ארידור יורם",
+     "נסים משה בנימין",
+     "קורפו חיים",
+     "מודעי יצחק",
+     "קשת בן ציון",
+     "פלומין יחזקאל שמחה",
+     "לוי דוד",
+     "גרופר פסח",
+     "לבני איתן",
+     "שמיר יצחק",
+     "לין אמנון",
+     "נוף (נפרסטק) עקיבא",
+     "כהן מאיר",
+     "כץ אברהם",
+     "ארנס משה",
+     "דרובלס מתתיהו",
+     "בארי ידידיה",
+     "כהן גאולה",
+     "אולמרט אהוד",
+     "פרץ יצחק",
+     "שכטרמן אברהם",
+     "דיציאן ליאון"
+    ],
+    "note": "Results section 4 read independently and compared name by name; namesHe are the results readings as printed (surname first, as in the candidate notice). Every textual difference, including punctuation, is listed in spellingVariants. Third check: the CEC appendix (Form 30) section יד, printed pp. 26, 27, 28, lists the same people in the same order.",
+    "spellingVariants": [
+     {
+      "rank": 13,
+      "candidateNameHe": "אברמוב שנאור זלמן",
+      "electedNameHe": "אברמוב שניאור זלמן",
+      "note": "Spelling of the given name: candidate notice שנאור, results שניאור (extra yod). Same person; the CEC appendix p.27 also writes שנאור."
+     },
+     {
+      "rank": 38,
+      "candidateNameHe": "שחטרמן אברהם",
+      "electedNameHe": "שכטרמן אברהם",
+      "note": "Spelling of the surname: candidate notice שחטרמן, results שכטרמן. Same person; the CEC appendix p.28 also writes שחטרמן."
+     }
+    ]
+   }
+  },
+  {
+   "letters": "לע",
+   "complete": false,
+   "publishedCount": 120,
+   "pages": [
+    92
+   ],
+   "candidates": [
+    {
+     "rank": 1,
+     "nameHe": "קול משה",
+     "page": 92
+    },
+    {
+     "rank": 2,
+     "nameHe": "האוזנר גדעון",
+     "page": 92
+    },
+    {
+     "rank": 3,
+     "nameHe": "שערי יהודה",
+     "page": 92
+    },
+    {
+     "rank": 4,
+     "nameHe": "זיידל הלל",
+     "page": 92
+    }
+   ],
+   "electedCrossCheck": {
+    "sourceId": "k8-results-gazette",
+    "pages": [
+     609
+    ],
+    "ranks": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "namesHe": [
+     "קול משה",
+     "האוזנר גדעון",
+     "שערי יהודה",
+     "זיידל הלל"
+    ],
+    "note": "Results section 4 read independently and compared name by name; namesHe are the results readings as printed (surname first, as in the candidate notice). Every textual difference, including punctuation, is listed in spellingVariants. Third check: the CEC appendix (Form 30) section יד, printed pp. 28, lists the same people in the same order.",
+    "spellingVariants": []
+   }
+  },
+  {
+   "letters": "עא",
+   "complete": false,
+   "publishedCount": 50,
+   "pages": [
+    94
+   ],
+   "candidates": [
+    {
+     "rank": 1,
+     "nameHe": "אבו רביעה חמאד",
+     "page": 94
+    }
+   ],
+   "electedCrossCheck": {
+    "sourceId": "k8-results-gazette",
+    "pages": [
+     610
+    ],
+    "ranks": [
+     1
+    ],
+    "namesHe": [
+     "אבו-רביעה חמאד"
+    ],
+    "note": "Results section 4 read independently and compared name by name; namesHe are the results readings as printed (surname first, as in the candidate notice). Every textual difference, including punctuation, is listed in spellingVariants. Third check: the CEC appendix (Form 30) section יד, printed pp. 28, lists the same people in the same order.",
+    "spellingVariants": [
+     {
+      "rank": 1,
+      "candidateNameHe": "אבו רביעה חמאד",
+      "electedNameHe": "אבו-רביעה חמאד",
+      "note": "Results join the surname with a maqaf; the candidate notice prints a space. Same person."
+     }
+    ]
+   }
+  },
+  {
+   "letters": "קנ",
+   "complete": false,
+   "publishedCount": 120,
+   "pages": [
+    95
+   ],
+   "candidates": [
+    {
+     "rank": 1,
+     "nameHe": "פעיל מאיר",
+     "page": 95
+    }
+   ],
+   "electedCrossCheck": {
+    "sourceId": "k8-results-gazette",
+    "pages": [
+     610
+    ],
+    "ranks": [
+     1
+    ],
+    "namesHe": [
+     "פעיל מאיר"
+    ],
+    "note": "Results section 4 read independently and compared name by name; namesHe are the results readings as printed (surname first, as in the candidate notice). Every textual difference, including punctuation, is listed in spellingVariants. Third check: the CEC appendix (Form 30) section יד, printed pp. 28, lists the same people in the same order.",
+    "spellingVariants": []
+   }
+  },
+  {
+   "letters": "רא",
+   "complete": false,
+   "publishedCount": 44,
+   "pages": [
+    96
+   ],
+   "candidates": [
+    {
+     "rank": 1,
+     "nameHe": "אלזועבי סיף אלדין",
+     "page": 96
+    },
+    {
+     "rank": 2,
+     "nameHe": "מועדי ג׳בר",
+     "page": 96
+    }
+   ],
+   "electedCrossCheck": {
+    "sourceId": "k8-results-gazette",
+    "pages": [
+     610
+    ],
+    "ranks": [
+     1,
+     2
+    ],
+    "namesHe": [
+     "אלזועבי סיף אלדין",
+     "מועדי ג׳בר"
+    ],
+    "note": "Results section 4 read independently and compared name by name; namesHe are the results readings as printed (surname first, as in the candidate notice). Every textual difference, including punctuation, is listed in spellingVariants. Third check: the CEC appendix (Form 30) section יד, printed pp. 28, lists the same people in the same order.",
+    "spellingVariants": []
+   }
+  },
+  {
+   "letters": "רצ",
+   "complete": true,
+   "publishedCount": 8,
+   "pages": [
+    96
+   ],
+   "candidates": [
+    {
+     "rank": 1,
+     "nameHe": "אלוני שולמית",
+     "page": 96
+    },
+    {
+     "rank": 2,
+     "nameHe": "מואב בועז",
+     "page": 96
+    },
+    {
+     "rank": 3,
+     "nameHe": "פרידמן מרשה",
+     "page": 96
+    },
+    {
+     "rank": 4,
+     "nameHe": "רון רם",
+     "page": 96
+    },
+    {
+     "rank": 5,
+     "nameHe": "שושני אורי",
+     "page": 96
+    },
+    {
+     "rank": 6,
+     "nameHe": "כצנלסון יצחק",
+     "page": 96
+    },
+    {
+     "rank": 7,
+     "nameHe": "גורן דינה",
+     "page": 96
+    },
+    {
+     "rank": 8,
+     "nameHe": "היל (גבע) משה",
+     "page": 96
+    }
+   ],
+   "electedCrossCheck": {
+    "sourceId": "k8-results-gazette",
+    "pages": [
+     610
+    ],
+    "ranks": [
+     1,
+     2,
+     3
+    ],
+    "namesHe": [
+     "אלוני שולמית",
+     "מואב בועז",
+     "פרידמן מרשה"
+    ],
+    "note": "Results section 4 read independently and compared name by name; namesHe are the results readings as printed (surname first, as in the candidate notice). Every textual difference, including punctuation, is listed in spellingVariants. Third check: the CEC appendix (Form 30) section יד, printed pp. 28, lists the same people in the same order.",
+    "spellingVariants": []
+   }
+  }
+ ]
+}

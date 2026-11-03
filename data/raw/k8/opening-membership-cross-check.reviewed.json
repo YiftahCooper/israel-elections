@@ -1,0 +1,1110 @@
+{
+ "id": "k8",
+ "kind": "Project extraction from the official Knesset ParliamentInfo OData service; cross-check only, not a source of names.",
+ "reviewedOn": "2026-11-04",
+ "openingDate": "1974-01-21",
+ "openingDateSource": "KNS_KnessetDates KnessetDateID 50 (KnessetNum 8, Assembly 1, Plenum 1, PlenumStart 1974-01-21)",
+ "filter": "PositionID 43/61 (male/female MK) and 54 (faction member); StartDate <= opening and (FinishDate > opening or null).",
+ "requests": [
+  {
+   "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%208%20and%20%28PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054%29&$expand=KNS_Person&$format=json",
+   "bytes": 60074,
+   "sha256": "ac05191a4adda189c1bfa814c6456231b89e49cea2e1ae7bb32d609db2ad1108",
+   "rows": 100
+  },
+  {
+   "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%208%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$expand=KNS_Person&$skiptoken=2818&$format=json",
+   "bytes": 64567,
+   "sha256": "8a7abd43a3995f3d0c3f440ae17881488f6f82322dea09fd943588d75adf476f",
+   "rows": 100
+  },
+  {
+   "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%208%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$expand=KNS_Person&$skiptoken=26981&$format=json",
+   "bytes": 65401,
+   "sha256": "03fe2065cfbdcf89bd343bad87bd1b8b897428b463a61bb03655df2f29cbff77",
+   "rows": 100
+  },
+  {
+   "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%208%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$expand=KNS_Person&$skiptoken=27081&$format=json",
+   "bytes": 10240,
+   "sha256": "07325942942d2171da3ec1d622ae2fdd70a630c1dfafd98ecbedbb06b4641798",
+   "rows": 16
+  }
+ ],
+ "rowsFetched": 316,
+ "openingMembers": 120,
+ "openingFactionMembers": 120,
+ "exactNormalizedMatches": 102,
+ "comparisonNormalization": "Whitespace, hyphens/maqaf, geresh/gershayim, quotes, brackets and the title ד״ר removed; match against either the results reading or the candidate reading. Not fuzzy.",
+ "unmatchedElected": [
+  {
+   "letters": "אמת",
+   "rank": 13,
+   "electedNameHe": "ידלין אהרון"
+  },
+  {
+   "letters": "אמת",
+   "rank": 18,
+   "electedNameHe": "בן-אהרון יצחק"
+  },
+  {
+   "letters": "אמת",
+   "rank": 19,
+   "electedNameHe": "גרוסמן-אורקין חייקה"
+  },
+  {
+   "letters": "אמת",
+   "rank": 21,
+   "electedNameHe": "אליאב אריה"
+  },
+  {
+   "letters": "אמת",
+   "rank": 27,
+   "electedNameHe": "יריב אהרון"
+  },
+  {
+   "letters": "אמת",
+   "rank": 36,
+   "electedNameHe": "שריד יוסף"
+  },
+  {
+   "letters": "אמת",
+   "rank": 40,
+   "electedNameHe": "יודין (דרניצקי) יהודה"
+  },
+  {
+   "letters": "ב",
+   "rank": 1,
+   "electedNameHe": "בורג שלמה יוסף"
+  },
+  {
+   "letters": "ב",
+   "rank": 4,
+   "electedNameHe": "חזני מיכאל יעקב"
+  },
+  {
+   "letters": "ב",
+   "rank": 7,
+   "electedNameHe": "אבו-חצירא אהרון"
+  },
+  {
+   "letters": "ב",
+   "rank": 8,
+   "electedNameHe": "בן-מאיר יהודה יעקב"
+  },
+  {
+   "letters": "ב",
+   "rank": 10,
+   "electedNameHe": "שיינמאן פנחס"
+  },
+  {
+   "letters": "חל טעם",
+   "rank": 4,
+   "electedNameHe": "אהרליך שמחה"
+  },
+  {
+   "letters": "חל טעם",
+   "rank": 8,
+   "electedNameHe": "תמיר (כצנלסון) שמואל משה"
+  },
+  {
+   "letters": "חל טעם",
+   "rank": 19,
+   "electedNameHe": "נסים משה בנימין"
+  },
+  {
+   "letters": "חל טעם",
+   "rank": 23,
+   "electedNameHe": "פלומין יחזקאל שמחה"
+  },
+  {
+   "letters": "חל טעם",
+   "rank": 29,
+   "electedNameHe": "נוף (נפרסטק) עקיבא"
+  },
+  {
+   "letters": "חל טעם",
+   "rank": 30,
+   "electedNameHe": "כהן מאיר"
+  }
+ ],
+ "unmatchedApi": [
+  {
+   "personId": 512,
+   "lastName": "שריד",
+   "firstName": "יוסי",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2119,
+   "lastName": "אבוחצירא",
+   "firstName": "אהרן",
+   "faction": "מפלגה דתית לאומית"
+  },
+  {
+   "personId": 2146,
+   "lastName": "אליאב",
+   "firstName": "אריה לובה",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2169,
+   "lastName": "ארליך",
+   "firstName": "שמחה",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2187,
+   "lastName": "בורג",
+   "firstName": "יוסף",
+   "faction": "מפלגה דתית לאומית"
+  },
+  {
+   "personId": 2194,
+   "lastName": "בן-אהרן",
+   "firstName": "יצחק",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2202,
+   "lastName": "בן-מאיר",
+   "firstName": "יהודה",
+   "faction": "מפלגה דתית לאומית"
+  },
+  {
+   "personId": 2261,
+   "lastName": "גרוסמן",
+   "firstName": "חייקה",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2290,
+   "lastName": "דרניצקי",
+   "firstName": "יהודה (יודין)",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2349,
+   "lastName": "חזני",
+   "firstName": "מיכאל",
+   "faction": "מפלגה דתית לאומית"
+  },
+  {
+   "personId": 2370,
+   "lastName": "ידלין",
+   "firstName": "אהרן",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2388,
+   "lastName": "יריב",
+   "firstName": "אהרן",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2398,
+   "lastName": "כהן-אבידב",
+   "firstName": "מאיר",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2477,
+   "lastName": "נוף",
+   "firstName": "עקיבא",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2489,
+   "lastName": "נסים",
+   "firstName": "משה",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2543,
+   "lastName": "פלומין",
+   "firstName": "יחזקאל",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2643,
+   "lastName": "שינמן",
+   "firstName": "פנחס",
+   "faction": "מפלגה דתית לאומית"
+  },
+  {
+   "personId": 2676,
+   "lastName": "תמיר",
+   "firstName": "שמואל",
+   "faction": "הליכוד"
+  }
+ ],
+ "interpretedPairs": [
+  {
+   "letters": "אמת",
+   "rank": 13,
+   "electedNameHe": "ידלין אהרון",
+   "personId": 2370,
+   "apiName": "ידלין אהרן",
+   "apiFaction": "מערך"
+  },
+  {
+   "letters": "אמת",
+   "rank": 18,
+   "electedNameHe": "בן-אהרון יצחק",
+   "personId": 2194,
+   "apiName": "בן-אהרן יצחק",
+   "apiFaction": "מערך"
+  },
+  {
+   "letters": "אמת",
+   "rank": 19,
+   "electedNameHe": "גרוסמן-אורקין חייקה",
+   "personId": 2261,
+   "apiName": "גרוסמן חייקה",
+   "apiFaction": "מערך"
+  },
+  {
+   "letters": "אמת",
+   "rank": 21,
+   "electedNameHe": "אליאב אריה",
+   "personId": 2146,
+   "apiName": "אליאב אריה לובה",
+   "apiFaction": "מערך"
+  },
+  {
+   "letters": "אמת",
+   "rank": 27,
+   "electedNameHe": "יריב אהרון",
+   "personId": 2388,
+   "apiName": "יריב אהרן",
+   "apiFaction": "מערך"
+  },
+  {
+   "letters": "אמת",
+   "rank": 36,
+   "electedNameHe": "שריד יוסף",
+   "personId": 512,
+   "apiName": "שריד יוסי",
+   "apiFaction": "מערך"
+  },
+  {
+   "letters": "אמת",
+   "rank": 40,
+   "electedNameHe": "יודין (דרניצקי) יהודה",
+   "personId": 2290,
+   "apiName": "דרניצקי יהודה (יודין)",
+   "apiFaction": "מערך"
+  },
+  {
+   "letters": "ב",
+   "rank": 1,
+   "electedNameHe": "בורג שלמה יוסף",
+   "personId": 2187,
+   "apiName": "בורג יוסף",
+   "apiFaction": "מפלגה דתית לאומית"
+  },
+  {
+   "letters": "ב",
+   "rank": 4,
+   "electedNameHe": "חזני מיכאל יעקב",
+   "personId": 2349,
+   "apiName": "חזני מיכאל",
+   "apiFaction": "מפלגה דתית לאומית"
+  },
+  {
+   "letters": "ב",
+   "rank": 7,
+   "electedNameHe": "אבו-חצירא אהרון",
+   "personId": 2119,
+   "apiName": "אבוחצירא אהרן",
+   "apiFaction": "מפלגה דתית לאומית"
+  },
+  {
+   "letters": "ב",
+   "rank": 8,
+   "electedNameHe": "בן-מאיר יהודה יעקב",
+   "personId": 2202,
+   "apiName": "בן-מאיר יהודה",
+   "apiFaction": "מפלגה דתית לאומית"
+  },
+  {
+   "letters": "ב",
+   "rank": 10,
+   "electedNameHe": "שיינמאן פנחס",
+   "personId": 2643,
+   "apiName": "שינמן פנחס",
+   "apiFaction": "מפלגה דתית לאומית"
+  },
+  {
+   "letters": "חל טעם",
+   "rank": 4,
+   "electedNameHe": "אהרליך שמחה",
+   "personId": 2169,
+   "apiName": "ארליך שמחה",
+   "apiFaction": "הליכוד"
+  },
+  {
+   "letters": "חל טעם",
+   "rank": 8,
+   "electedNameHe": "תמיר (כצנלסון) שמואל משה",
+   "personId": 2676,
+   "apiName": "תמיר שמואל",
+   "apiFaction": "הליכוד"
+  },
+  {
+   "letters": "חל טעם",
+   "rank": 19,
+   "electedNameHe": "נסים משה בנימין",
+   "personId": 2489,
+   "apiName": "נסים משה",
+   "apiFaction": "הליכוד"
+  },
+  {
+   "letters": "חל טעם",
+   "rank": 23,
+   "electedNameHe": "פלומין יחזקאל שמחה",
+   "personId": 2543,
+   "apiName": "פלומין יחזקאל",
+   "apiFaction": "הליכוד"
+  },
+  {
+   "letters": "חל טעם",
+   "rank": 29,
+   "electedNameHe": "נוף (נפרסטק) עקיבא",
+   "personId": 2477,
+   "apiName": "נוף עקיבא",
+   "apiFaction": "הליכוד"
+  },
+  {
+   "letters": "חל טעם",
+   "rank": 30,
+   "electedNameHe": "כהן מאיר",
+   "personId": 2398,
+   "apiName": "כהן-אבידב מאיר",
+   "apiFaction": "הליכוד"
+  }
+ ],
+ "interpretation": "Every unmatched elected name pairs one-to-one with an unmatched API opening member of the corresponding faction (e.g. שריד יוסף / שריד יוסי, נוף (נפרסטק) עקיבא / נוף עקיבא, כהן מאיר / כהן-אבידב מאיר). No opening member is a different person from the gazetted elected names; no replacement before the opening session is indicated. These pairings are reading-based interpretation, not identity proof; the API does not alter any gazetted name.",
+ "members": [
+  {
+   "personId": 456,
+   "lastName": "פרס",
+   "firstName": "שמעון",
+   "faction": "מערך"
+  },
+  {
+   "personId": 463,
+   "lastName": "ארנס",
+   "firstName": "משה",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 482,
+   "lastName": "שרון",
+   "firstName": "אריאל",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 512,
+   "lastName": "שריד",
+   "firstName": "יוסי",
+   "faction": "מערך"
+  },
+  {
+   "personId": 536,
+   "lastName": "לוי",
+   "firstName": "דוד",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 1064,
+   "lastName": "אולמרט",
+   "firstName": "אהוד",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2117,
+   "lastName": "אבו-רביעה",
+   "firstName": "חמאד",
+   "faction": "רשימה ערבית לבדואים וכפריים"
+  },
+  {
+   "personId": 2119,
+   "lastName": "אבוחצירא",
+   "firstName": "אהרן",
+   "faction": "מפלגה דתית לאומית"
+  },
+  {
+   "personId": 2120,
+   "lastName": "אבטבי",
+   "firstName": "אליעזר",
+   "faction": "מפלגה דתית לאומית"
+  },
+  {
+   "personId": 2122,
+   "lastName": "אבן",
+   "firstName": "אבא",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2126,
+   "lastName": "אברמוב",
+   "firstName": "שניאור זלמן",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2127,
+   "lastName": "אברמוביץ",
+   "firstName": "יהודה-מאיר",
+   "faction": "חזית דתית תורתית"
+  },
+  {
+   "personId": 2142,
+   "lastName": "אלון",
+   "firstName": "יגאל",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2143,
+   "lastName": "אלוני",
+   "firstName": "שולמית",
+   "faction": "ר\"ץ"
+  },
+  {
+   "personId": 2144,
+   "lastName": "אלזועבי",
+   "firstName": "סיף-אלדין",
+   "faction": "קידמה ופיתוח"
+  },
+  {
+   "personId": 2146,
+   "lastName": "אליאב",
+   "firstName": "אריה לובה",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2150,
+   "lastName": "אלמוגי",
+   "firstName": "יוסף-אהרון",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2152,
+   "lastName": "אמוראי",
+   "firstName": "עדיאל",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2155,
+   "lastName": "אנקוריון",
+   "firstName": "ארי",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2160,
+   "lastName": "אפרת",
+   "firstName": "אהרון",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2162,
+   "lastName": "ארבלי-אלמוזלינו",
+   "firstName": "שושנה",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2168,
+   "lastName": "ארידור",
+   "firstName": "יורם",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2169,
+   "lastName": "ארליך",
+   "firstName": "שמחה",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2176,
+   "lastName": "בארי",
+   "firstName": "ידידיה",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2179,
+   "lastName": "בגין",
+   "firstName": "מנחם",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2181,
+   "lastName": "בדר",
+   "firstName": "יוחנן",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2187,
+   "lastName": "בורג",
+   "firstName": "יוסף",
+   "faction": "מפלגה דתית לאומית"
+  },
+  {
+   "personId": 2194,
+   "lastName": "בן-אהרן",
+   "firstName": "יצחק",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2202,
+   "lastName": "בן-מאיר",
+   "firstName": "יהודה",
+   "faction": "מפלגה דתית לאומית"
+  },
+  {
+   "personId": 2206,
+   "lastName": "בן-פורת",
+   "firstName": "מרדכי",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2224,
+   "lastName": "ברעם",
+   "firstName": "משה",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2250,
+   "lastName": "גז",
+   "firstName": "מטילדה",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2251,
+   "lastName": "גיבלבר",
+   "firstName": "אברהם",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2257,
+   "lastName": "גלילי",
+   "firstName": "ישראל",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2261,
+   "lastName": "גרוסמן",
+   "firstName": "חייקה",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2262,
+   "lastName": "גרופר",
+   "firstName": "פסח",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2268,
+   "lastName": "גרשוני",
+   "firstName": "צבי",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2277,
+   "lastName": "דיין",
+   "firstName": "משה",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2283,
+   "lastName": "דיציאן",
+   "firstName": "ליאון",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2287,
+   "lastName": "דרובלס",
+   "firstName": "מתתיהו",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2290,
+   "lastName": "דרניצקי",
+   "firstName": "יהודה (יודין)",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2292,
+   "lastName": "האוזנר",
+   "firstName": "גדעון",
+   "faction": "ליברלים עצמאיים"
+  },
+  {
+   "personId": 2294,
+   "lastName": "הורביץ",
+   "firstName": "יגאל",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2296,
+   "lastName": "הכהן",
+   "firstName": "מנחם",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2298,
+   "lastName": "הלוי",
+   "firstName": "בנימין",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2299,
+   "lastName": "הלל",
+   "firstName": "שלמה",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2300,
+   "lastName": "המר",
+   "firstName": "זבולון",
+   "faction": "מפלגה דתית לאומית"
+  },
+  {
+   "personId": 2309,
+   "lastName": "הרליץ",
+   "firstName": "אסתר",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2319,
+   "lastName": "וילנר",
+   "firstName": "מאיר",
+   "faction": "הרשימה הקומוניסטית החדשה"
+  },
+  {
+   "personId": 2324,
+   "lastName": "ורדיגר",
+   "firstName": "אברהם",
+   "faction": "חזית דתית תורתית"
+  },
+  {
+   "personId": 2325,
+   "lastName": "ורהפטיג",
+   "firstName": "זרח",
+   "faction": "מפלגה דתית לאומית"
+  },
+  {
+   "personId": 2327,
+   "lastName": "ורטמן",
+   "firstName": "משה",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2332,
+   "lastName": "זועבי",
+   "firstName": "עבדול-עזיז",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2334,
+   "lastName": "זיאד",
+   "firstName": "תופיק",
+   "faction": "הרשימה הקומוניסטית החדשה"
+  },
+  {
+   "personId": 2337,
+   "lastName": "זיידל",
+   "firstName": "הלל",
+   "faction": "ליברלים עצמאיים"
+  },
+  {
+   "personId": 2338,
+   "lastName": "זילברברג",
+   "firstName": "אברהם",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2342,
+   "lastName": "זכין",
+   "firstName": "דב",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2349,
+   "lastName": "חזני",
+   "firstName": "מיכאל",
+   "faction": "מפלגה דתית לאומית"
+  },
+  {
+   "personId": 2351,
+   "lastName": "חלפון",
+   "firstName": "בן-ציון",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2357,
+   "lastName": "חריש",
+   "firstName": "מיכאל",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2363,
+   "lastName": "טובי",
+   "firstName": "תופיק",
+   "faction": "הרשימה הקומוניסטית החדשה"
+  },
+  {
+   "personId": 2368,
+   "lastName": "ידיד",
+   "firstName": "מנחם",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2370,
+   "lastName": "ידלין",
+   "firstName": "אהרן",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2380,
+   "lastName": "יעקבי",
+   "firstName": "גד",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2382,
+   "lastName": "יפה",
+   "firstName": "אביעד",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2383,
+   "lastName": "יפה",
+   "firstName": "אברהם",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2388,
+   "lastName": "יריב",
+   "firstName": "אהרן",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2389,
+   "lastName": "ישעיהו-שרעבי",
+   "firstName": "ישראל",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2392,
+   "lastName": "כהן",
+   "firstName": "גאולה",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2398,
+   "lastName": "כהן-אבידב",
+   "firstName": "מאיר",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2404,
+   "lastName": "כהנא",
+   "firstName": "קלמן",
+   "faction": "חזית דתית תורתית"
+  },
+  {
+   "personId": 2409,
+   "lastName": "כץ",
+   "firstName": "אברהם",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2415,
+   "lastName": "כרמל",
+   "firstName": "משה",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2418,
+   "lastName": "לבנבראון",
+   "firstName": "אברהם",
+   "faction": "הרשימה הקומוניסטית החדשה"
+  },
+  {
+   "personId": 2419,
+   "lastName": "לבני",
+   "firstName": "איתן",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2429,
+   "lastName": "לוין",
+   "firstName": "שלום",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2431,
+   "lastName": "לורינץ",
+   "firstName": "שלמה",
+   "faction": "חזית דתית תורתית"
+  },
+  {
+   "personId": 2437,
+   "lastName": "לין",
+   "firstName": "אמנון",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2442,
+   "lastName": "לנדאו",
+   "firstName": "חיים",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2448,
+   "lastName": "מאיר",
+   "firstName": "גולדה",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2450,
+   "lastName": "מואב",
+   "firstName": "בועז",
+   "faction": "ר\"ץ"
+  },
+  {
+   "personId": 2451,
+   "lastName": "מודעי",
+   "firstName": "יצחק",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2453,
+   "lastName": "מויאל",
+   "firstName": "אליהו",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2454,
+   "lastName": "מועדי",
+   "firstName": "ג'בר",
+   "faction": "קידמה ופיתוח"
+  },
+  {
+   "personId": 2466,
+   "lastName": "מלמד",
+   "firstName": "אברהם",
+   "faction": "מפלגה דתית לאומית"
+  },
+  {
+   "personId": 2476,
+   "lastName": "נבון",
+   "firstName": "יצחק",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2477,
+   "lastName": "נוף",
+   "firstName": "עקיבא",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2487,
+   "lastName": "נמיר",
+   "firstName": "אורה",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2489,
+   "lastName": "נסים",
+   "firstName": "משה",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2513,
+   "lastName": "ספיר",
+   "firstName": "פנחס",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2520,
+   "lastName": "עופר",
+   "firstName": "אברהם",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2535,
+   "lastName": "פיינרמן",
+   "firstName": "עוזי",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2543,
+   "lastName": "פלומין",
+   "firstName": "יחזקאל",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2547,
+   "lastName": "פעיל",
+   "firstName": "מאיר",
+   "faction": "מוקד"
+  },
+  {
+   "personId": 2549,
+   "lastName": "פרוש",
+   "firstName": "מנחם",
+   "faction": "חזית דתית תורתית"
+  },
+  {
+   "personId": 2552,
+   "lastName": "פרידמן",
+   "firstName": "מרשה",
+   "faction": "ר\"ץ"
+  },
+  {
+   "personId": 2558,
+   "lastName": "פרץ",
+   "firstName": "יצחק",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2560,
+   "lastName": "פת",
+   "firstName": "גדעון",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2565,
+   "lastName": "צדוק",
+   "firstName": "חיים יוסף",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2575,
+   "lastName": "קול",
+   "firstName": "משה",
+   "faction": "ליברלים עצמאיים"
+  },
+  {
+   "personId": 2579,
+   "lastName": "קורן",
+   "firstName": "דוד",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2581,
+   "lastName": "קורפו",
+   "firstName": "חיים",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2591,
+   "lastName": "קצב",
+   "firstName": "נוזהת",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2592,
+   "lastName": "קרגמן",
+   "firstName": "ישראל",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2593,
+   "lastName": "קרמרמן",
+   "firstName": "יוסף",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2595,
+   "lastName": "רבין",
+   "firstName": "יצחק",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2604,
+   "lastName": "רונן",
+   "firstName": "אליעזר",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2609,
+   "lastName": "רימלט",
+   "firstName": "אלימלך-שמעון",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2615,
+   "lastName": "רפאל",
+   "firstName": "יצחק",
+   "faction": "מפלגה דתית לאומית"
+  },
+  {
+   "personId": 2625,
+   "lastName": "שובל",
+   "firstName": "זלמן",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2627,
+   "lastName": "שוסטק",
+   "firstName": "אליעזר",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2633,
+   "lastName": "שחל",
+   "firstName": "משה",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2643,
+   "lastName": "שינמן",
+   "firstName": "פנחס",
+   "faction": "מפלגה דתית לאומית"
+  },
+  {
+   "personId": 2645,
+   "lastName": "שכטרמן",
+   "firstName": "אברהם",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2652,
+   "lastName": "שמיר",
+   "firstName": "יצחק",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2655,
+   "lastName": "שערי",
+   "firstName": "יהודה",
+   "faction": "ליברלים עצמאיים"
+  },
+  {
+   "personId": 2674,
+   "lastName": "תלמי",
+   "firstName": "מאיר",
+   "faction": "מערך"
+  },
+  {
+   "personId": 2675,
+   "lastName": "תמיר",
+   "firstName": "יוסף",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 2676,
+   "lastName": "תמיר",
+   "firstName": "שמואל",
+   "faction": "הליכוד"
+  },
+  {
+   "personId": 5955,
+   "lastName": "קשת",
+   "firstName": "בן-ציון",
+   "faction": "הליכוד"
+  }
+ ]
+}
