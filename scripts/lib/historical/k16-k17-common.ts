@@ -1,4 +1,4 @@
-// Retained, hash-checked inputs for the two scanned elections; decisions 0052–0053.
+// Retained, hash-checked inputs for the two scanned elections; decisions 0052–0054.
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -209,9 +209,34 @@ interface ReviewedCandidate { rank: number; nameHe: string; page: number }
 export interface ReviewedRoster {
   letters: string; publishedCount: number; pages: number[];
   candidatesUnavailable: boolean; candidates: ReviewedCandidate[];
+  candidatesTruncated?: boolean; truncatedReasonEn?: string; truncatedReasonHe?: string;
   unavailableReasonEn?: string; unavailableReasonHe?: string; unresolvedRanks?: number[];
-  electedCrossCheck?: { sourceId: string; ranks: number[]; namesHe: string[]; result: string; note: string };
+  electedCrossCheck?: {
+    sourceId: string; section: number; pages: number[]; ranks: number[]; namesHe: string[];
+    resultsNamesHe: string[];
+    nameVariants: { rank: number; candidateNameHe: string; resultsNameHe: string; explanation: string }[];
+    result: string; note: string;
+  };
   reserveSecondReading?: { ranks: number[]; candidates: ReviewedCandidate[]; result: string };
+}
+/** Exact comparison with a separate reading of section 4; no fuzzy name matching. */
+export function verifyElectedRoster(r: ReviewedRoster, seats: number, resultsSourceId: string) {
+  assert(!r.candidatesUnavailable && r.candidates.length >= seats, `${r.letters}: elected ranks missing`);
+  const check = r.electedCrossCheck;
+  assert(check && check.sourceId === resultsSourceId && check.section === 4
+    && check.pages.length > 0 && check.pages.every(p => Number.isSafeInteger(p) && p > 0)
+    && check.namesHe.length === seats && check.resultsNamesHe.length === seats
+    && check.ranks.length === seats && check.ranks.every((n, i) => n === i + 1), `${r.letters}: missing official elected cross-check`);
+  assert(check.namesHe.every((name, i) => name === r.candidates[i].nameHe), `${r.letters}: elected names changed`);
+  const variants = check.nameVariants;
+  assert(new Set(variants.map(v => v.rank)).size === variants.length
+    && variants.every(v => Number.isSafeInteger(v.rank) && v.rank >= 1 && v.rank <= seats
+      && v.candidateNameHe === check.namesHe[v.rank - 1] && v.resultsNameHe === check.resultsNamesHe[v.rank - 1]
+      && v.candidateNameHe !== v.resultsNameHe && v.explanation.trim().length > 0), `${r.letters}: invalid official name variant`);
+  check.resultsNamesHe.forEach((name, i) => {
+    assert(/[א-ת]/.test(name) && name.trim() === name, `${r.letters}: empty elected results name`);
+    assert(name === check.namesHe[i] || variants.some(v => v.rank === i + 1), `${r.letters}: unexplained elected-name mismatch at ${i + 1}`);
+  });
 }
 export function verifyReleaseInputs({ review, reconciliation }: Audit) {
   const id = review.id;
@@ -232,21 +257,23 @@ export function verifyReleaseInputs({ review, reconciliation }: Audit) {
     assert(r.pages.length > 0 && r.pages.every(p => Number.isSafeInteger(p) && p > 0), `${id}/${l.letters}: missing page references`);
     const validName = (c: ReviewedCandidate, rank: number) => c.rank === rank && /[א-ת]/.test(c.nameHe) && c.nameHe.trim() === c.nameHe && r.pages.includes(c.page);
     if (r.candidatesUnavailable) {
+      assert(!r.candidatesTruncated && l.officialSeats === 0, `${id}/${l.letters}: winning/unavailable or conflicting roster flags`);
       assert(r.candidates.length === 0 && r.unavailableReasonHe && r.unavailableReasonEn && r.unresolvedRanks?.length, `${id}/${l.letters}: unjustified unavailable roster`);
       assert(r.unresolvedRanks.every(n => Number.isSafeInteger(n) && n >= 1 && n <= r.publishedCount), `${id}/${l.letters}: invalid unresolved rank`);
     } else {
-      assert(r.candidates.length === r.publishedCount && r.candidates.every((c, i) => validName(c, i + 1)), `${id}/${l.letters}: incomplete/noncontiguous roster`);
+      assert(r.candidates.length > 0 && r.candidates.length <= r.publishedCount
+        && r.candidates.every((c, i) => validName(c, i + 1)), `${id}/${l.letters}: invalid/noncontiguous roster`);
+      assert(!!r.candidatesTruncated === (r.candidates.length < r.publishedCount), `${id}/${l.letters}: truncation flag differs from coverage`);
+      if (r.candidatesTruncated) assert(l.officialSeats > 0 && r.truncatedReasonEn && r.truncatedReasonHe
+        && r.unresolvedRanks?.every(rank => rank > r.candidates.length), `${id}/${l.letters}: unjustified truncated roster`);
     }
     if (l.officialSeats > 0) {
-      const check = r.electedCrossCheck; const reserve = r.reserveSecondReading;
-      assert(check && manifest.some(s => s.id === check.sourceId) && check.namesHe.length === l.officialSeats
-        && check.ranks.length === l.officialSeats && check.ranks.every((n, i) => n === i + 1), `${id}/${l.letters}: missing elected cross-check`);
+      verifyElectedRoster(r, l.officialSeats, review.resultsSourceId);
+      const reserve = r.reserveSecondReading;
       assert(reserve && reserve.ranks.length === 5 && reserve.candidates.length === 5
         && reserve.candidates.every((c, i) => reserve.ranks[i] === l.officialSeats + i + 1 && validName(c, reserve.ranks[i])), `${id}/${l.letters}: missing five-rank second reading`);
-      if (!r.candidatesUnavailable) {
-        assert(check.namesHe.every((name, i) => name === r.candidates[i].nameHe), `${id}/${l.letters}: elected names changed`);
-        assert(reserve.candidates.every(c => JSON.stringify(c) === JSON.stringify(r.candidates[c.rank - 1])), `${id}/${l.letters}: reserve names changed`);
-      }
+      assert(reserve.candidates.every(c => c.rank > r.candidates.length
+        || JSON.stringify(c) === JSON.stringify(r.candidates[c.rank - 1])), `${id}/${l.letters}: reserve names changed`);
     }
   }
   assert(localities.id === id && JSON.stringify(localities.listLetters) === JSON.stringify(reconciliation.listLetters), `${id}: locality columns differ`);
@@ -269,18 +296,21 @@ export function releaseDataset(audit: Audit): { ds: ElectionDataset; loc: Locali
   const { review } = audit; const n = Number(review.id.slice(1));
   const retained = verifyReleaseInputs(audit); const ds = researchDataset(audit);
   const missing = retained.rosters.filter(r => r.candidatesUnavailable).length;
+  const truncated = retained.rosters.filter(r => r.candidatesTruncated).length;
   ds.nameHe = `הבחירות לכנסת ה-${n}`; ds.nameEn = `${n}th Knesset election (${n === 16 ? 2003 : 2006})`;
-  ds.status.noteEn = `Registered voters: official CBS table 27.2; valid and invalid votes: results gazette; cast = valid + invalid. ${n === 16 ? 'Mafdal and Lider use polling sums; printed gazette figures exceed its own valid total by 410.' : 'Polling-station cast votes are 9 below the gazette-derived national cast total; no authoritative explanation is known.'} Localities are summed polling rows. ${missing} complete candidate rosters could not be verified; those lists have candidatesUnavailable and empty candidates. Membership cross-checks use labelled secondary sources because Knesset membership pages were inaccessible.`;
-  ds.status.noteHe = `בעלי זכות בחירה: לוח למ״ס 27.2; קולות כשרים ופסולים: ילקוט הפרסומים; מצביעים = כשרים + פסולים. ${n === 16 ? 'קולות המפד״ל ולידר לפי סיכומי הקלפיות; הנתונים המודפסים עולים ב-410 על סך הכשרים שבילקוט עצמו.' : 'מספר המצביעים בסיכומי הקלפיות נמוך ב-9 מהסכום הארצי הנגזר מהילקוט; לא ידוע הסבר מוסמך.'} נתוני היישובים סוכמו מקלפיות. ${missing} רשימות מועמדים מלאות לא אומתו ומסומנות כחסרות; הצלבת חברי הכנסת נעשתה במקורות משניים מסומנים משום שדפי הכנסת לא היו נגישים.`;
+  ds.status.noteEn = `Registered voters: official CBS table 27.2; valid and invalid votes: results gazette; cast = valid + invalid. ${n === 16 ? 'Mafdal and Lider use polling sums; printed gazette figures exceed its own valid total by 410.' : 'Polling-station cast votes are 9 below the gazette-derived national cast total; no authoritative explanation is known.'} Localities are summed polling rows. Every winning list includes all elected ranks, checked name by name against section 4 of the official results notice; literal name variants are documented. ${truncated} winning rosters are truncated to verified elected prefixes; ${missing} non-winning rosters remain unavailable. Later ranks on truncated lists are unverified.`;
+  ds.status.noteHe = `בעלי זכות בחירה: לוח למ״ס 27.2; קולות כשרים ופסולים: ילקוט הפרסומים; מצביעים = כשרים + פסולים. ${n === 16 ? 'קולות המפד״ל ולידר לפי סיכומי הקלפיות; הנתונים המודפסים עולים ב-410 על סך הכשרים שבילקוט עצמו.' : 'מספר המצביעים בסיכומי הקלפיות נמוך ב-9 מהסכום הארצי הנגזר מהילקוט; לא ידוע הסבר מוסמך.'} נתוני היישובים סוכמו מקלפיות. בכל רשימה שזכתה במנדטים נכללים כל המקומות שנבחרו, בהצלבה שמית עם סעיף 4 בהודעת התוצאות הרשמית; הבדלי הכתיב מתועדים. ${truncated} רשימות זוכות כוללות רק תחילית מאומתת ומסומנות כקטועות; ${missing} רשימות שלא זכו במנדטים עדיין חסרות. יתר המקומות ברשימות הקטועות טרם אומתו.`;
   ds.lists = ds.lists.map(l => {
     const r = retained.rosters.find(r => r.letters === l.letters)!;
     const notesHe: string[] = [];
     if (r.candidatesUnavailable) notesHe.push(r.unavailableReasonHe!);
+    if (r.candidatesTruncated) notesHe.push(r.truncatedReasonHe!);
     if (n === 16 && l.letters === 'ב') notesHe.push('בילקוט הפרסומים 5155, עמ׳ 1406, מודפס 132,730; נתון זה אינו מתיישב עם סך הקולות הכשרים שבילקוט עצמו (3,148,364). כאן נעשה שימוש בסיכום הקלפיות הרשמי: 132,370.');
     if (n === 16 && l.letters === 'ף') notesHe.push('בילקוט הפרסומים 5155, עמ׳ 1406, מודפס 883; נתון זה אינו מתיישב עם סך הקולות הכשרים שבילקוט עצמו (3,148,364). כאן נעשה שימוש בסיכום הקלפיות הרשמי: 833.');
     if (n === 16 && l.letters === 'כן') notesHe.push('זו הרשימה הרשומה. נתן שרנסקי (מקום 1) ויתר לאחר הבחירות; בהשבעה כיהנו יולי-יואל אדלשטיין (2) ומרינה סולודקין (3). המקור המשני להודעת הוויתור: ynet, 29.1.2003.');
     return { ...l, candidates: r.candidates.map(c => ({ id: `${l.id}#${c.rank}`, rank: c.rank, nameHe: c.nameHe })),
-      ...(r.candidatesUnavailable ? { candidatesUnavailable: true } : {}), candidatesSource: review.candidateChecks.sourceId, notesHe };
+      ...(r.candidatesUnavailable ? { candidatesUnavailable: true } : {}),
+      ...(r.candidatesTruncated ? { candidatesTruncated: true } : {}), candidatesSource: review.candidateChecks.sourceId, notesHe };
   });
   ds.sourceIds = [review.resultsSourceId, review.candidateChecks.sourceId, review.agreements.sourceId, review.supplementalTotals.sourceId,
     `${review.id}-ballots-datagov`, `${review.id}-national-reviewed`, `${review.id}-reconciliation-reviewed`, ...retained.sourceIds, `${review.id}-membership-secondary`, ...(n === 16 ? ['k16-sharansky-withdrawal', 'k16-knesset-vote-crosscheck'] : [])];

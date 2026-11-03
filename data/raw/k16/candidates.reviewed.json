@@ -2,7 +2,7 @@
   "id": "k16",
   "sourceId": "k16-candidates-gazette",
   "reviewedOn": "2026-11-03",
-  "method": "Manual visual reading of pdfjs PNG renderings; wasmUrl=node_modules/pdfjs-dist/wasm/. Ranks are printed ranks, page is the gazette page number. Uncertain complete rosters omitted under the owner-approved per-list fallback; no guessed names published. Punctuation in confirmed names follows the scan.",
+  "method": "Manual visual reading of pdfjs PNG renderings; wasmUrl=node_modules/pdfjs-dist/wasm/. Ranks are printed ranks, page is the gazette page number. Uncertain complete rosters omitted under the owner-approved per-list fallback; no guessed names published. Punctuation in confirmed names follows the scan. Elected-rank review: candidate and section 4 results scans rendered at scale 4 with pdfjs-dist 6.5.438 and local wasmUrl; visually compared name by name. Every winning list retains at least ranks 1..seats. Later unresolved ranks do not suppress a verified prefix. Results spellings and explicit variants are retained separately in electedCrossCheck; no secondary transcription supplies the new published names.",
   "lists": [
     {
       "letters": "אמת",
@@ -10,10 +10,104 @@
       "pages": [
         1192
       ],
-      "candidatesUnavailable": true,
-      "candidates": [],
-      "unavailableReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 34, 62, 88, 116. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
-      "unavailableReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 34, 62, 88, 116. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "מצנע עמרם",
+          "page": 1192
+        },
+        {
+          "rank": 2,
+          "nameHe": "בן אליעזר בנימין",
+          "page": 1192
+        },
+        {
+          "rank": 3,
+          "nameHe": "פרס שמעון",
+          "page": 1192
+        },
+        {
+          "rank": 4,
+          "nameHe": "וילנאי מתן",
+          "page": 1192
+        },
+        {
+          "rank": 5,
+          "nameHe": "בורג אברהם",
+          "page": 1192
+        },
+        {
+          "rank": 6,
+          "nameHe": "איציק דליה",
+          "page": 1192
+        },
+        {
+          "rank": 7,
+          "nameHe": "פינס-פז אופיר",
+          "page": 1192
+        },
+        {
+          "rank": 8,
+          "nameHe": "סנה אפרים",
+          "page": 1192
+        },
+        {
+          "rank": 9,
+          "nameHe": "תמיר יעל יולי",
+          "page": 1192
+        },
+        {
+          "rank": 10,
+          "nameHe": "מלכיאור מיכאל",
+          "page": 1192
+        },
+        {
+          "rank": 11,
+          "nameHe": "הרצוג יצחק",
+          "page": 1192
+        },
+        {
+          "rank": 12,
+          "nameHe": "רמון חיים",
+          "page": 1192
+        },
+        {
+          "rank": 13,
+          "nameHe": "יתום דני",
+          "page": 1192
+        },
+        {
+          "rank": 14,
+          "nameHe": "כבל איתן",
+          "page": 1192
+        },
+        {
+          "rank": 15,
+          "nameHe": "שוחט אברהם",
+          "page": 1192
+        },
+        {
+          "rank": 16,
+          "nameHe": "אביטל קולט",
+          "page": 1192
+        },
+        {
+          "rank": 17,
+          "nameHe": "שמחון שלום",
+          "page": 1192
+        },
+        {
+          "rank": 18,
+          "nameHe": "נוקד אורית",
+          "page": 1192
+        },
+        {
+          "rank": 19,
+          "nameHe": "בן מנחם אלי",
+          "page": 1192
+        }
+      ],
       "unresolvedRanks": [
         34,
         62,
@@ -21,6 +115,123 @@
         116
       ],
       "electedCrossCheck": {
+        "sourceId": "k16-results-gazette",
+        "section": 4,
+        "pages": [
+          1407
+        ],
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "namesHe": [
+          "מצנע עמרם",
+          "בן אליעזר בנימין",
+          "פרס שמעון",
+          "וילנאי מתן",
+          "בורג אברהם",
+          "איציק דליה",
+          "פינס-פז אופיר",
+          "סנה אפרים",
+          "תמיר יעל יולי",
+          "מלכיאור מיכאל",
+          "הרצוג יצחק",
+          "רמון חיים",
+          "יתום דני",
+          "כבל איתן",
+          "שוחט אברהם",
+          "אביטל קולט",
+          "שמחון שלום",
+          "נוקד אורית",
+          "בן מנחם אלי"
+        ],
+        "resultsNamesHe": [
+          "מצנע עמרם",
+          "בן אליעזר בנימין",
+          "פרס שמעון",
+          "וילנאי מתן",
+          "בורג אברהם",
+          "איציק דליה",
+          "פינס-פז אופיר",
+          "סנה אפרים",
+          "תמיר יולי יעל",
+          "מלכיאור מיכאל",
+          "הרצוג יצחק",
+          "רמון חיים",
+          "יתום דני",
+          "כבל איתן",
+          "שוחט אברהם",
+          "אביטל קולט",
+          "שמחון שלום",
+          "נוקד אורית",
+          "בן מנחם אלי"
+        ],
+        "nameVariants": [
+          {
+            "rank": 9,
+            "candidateNameHe": "תמיר יעל יולי",
+            "resultsNameHe": "תמיר יולי יעל",
+            "explanation": "Both official notices print the same list position with this name variant; retain the candidate-notice spelling. This is a comparison of the two notices, not a claim of a formal correction."
+          }
+        ],
+        "result": "matches-results-notice-with-documented-name-variants",
+        "note": "Independent visual reading of every elected name in section 4. NamesHe follows the registered candidate notice; resultsNamesHe preserves the results notice. Only the listed literal spelling/punctuation variants are accepted."
+      },
+      "reserveSecondReading": {
+        "ranks": [
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "candidates": [
+          {
+            "rank": 20,
+            "nameHe": "מג׳אדלה גאלב",
+            "page": 1192
+          },
+          {
+            "rank": 21,
+            "nameHe": "טריף סלאח",
+            "page": 1192
+          },
+          {
+            "rank": 22,
+            "nameHe": "לנדבר סופה",
+            "page": 1192
+          },
+          {
+            "rank": 23,
+            "nameHe": "שירי ויצמן",
+            "page": 1192
+          },
+          {
+            "rank": 24,
+            "nameHe": "יחזקאל אבי",
+            "page": 1192
+          }
+        ],
+        "result": "verified-against-enlarged-scan"
+      },
+      "previousMembershipCrossCheck": {
         "sourceId": "k16-membership-secondary",
         "ranks": [
           1,
@@ -67,43 +278,11 @@
         "result": "matches-original-membership",
         "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
       },
-      "reserveSecondReading": {
-        "ranks": [
-          20,
-          21,
-          22,
-          23,
-          24
-        ],
-        "candidates": [
-          {
-            "rank": 20,
-            "nameHe": "מג׳אדלה גאלב",
-            "page": 1192
-          },
-          {
-            "rank": 21,
-            "nameHe": "טריף סלאח",
-            "page": 1192
-          },
-          {
-            "rank": 22,
-            "nameHe": "לנדבר סופה",
-            "page": 1192
-          },
-          {
-            "rank": 23,
-            "nameHe": "שירי ויצמן",
-            "page": 1192
-          },
-          {
-            "rank": 24,
-            "nameHe": "יחזקאל אבי",
-            "page": 1192
-          }
-        ],
-        "result": "verified-against-enlarged-scan"
-      }
+      "candidatesTruncated": true,
+      "remainingReviewReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 34, 62, 88, 116. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
+      "remainingReviewReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 34, 62, 88, 116. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "truncatedReasonEn": "Only ranks 1–19 of 120 registered candidates are transcribed; every elected rank was checked against section 4 of the official results notice. Later ranks remain unverified.",
+      "truncatedReasonHe": "תומללו רק מקומות 1–19 מתוך 120 מועמדים רשומים; כל המקומות שנבחרו הוצלבו עם סעיף 4 בהודעת התוצאות הרשמית. יתר המקומות טרם אומתו."
     },
     {
       "letters": "ב",
@@ -112,10 +291,39 @@
         1192,
         1193
       ],
-      "candidatesUnavailable": true,
-      "candidates": [],
-      "unavailableReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 34, 43, 86, 112. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
-      "unavailableReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 34, 43, 86, 112. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "איתם אפרים",
+          "page": 1192
+        },
+        {
+          "rank": 2,
+          "nameHe": "אורלב זבולון",
+          "page": 1192
+        },
+        {
+          "rank": 3,
+          "nameHe": "יהלום שאול",
+          "page": 1192
+        },
+        {
+          "rank": 4,
+          "nameHe": "לוי יצחק",
+          "page": 1192
+        },
+        {
+          "rank": 5,
+          "nameHe": "פינקלשטיין גילה",
+          "page": 1192
+        },
+        {
+          "rank": 6,
+          "nameHe": "סלומינסקי ניסן",
+          "page": 1192
+        }
+      ],
       "unresolvedRanks": [
         34,
         43,
@@ -123,7 +331,11 @@
         112
       ],
       "electedCrossCheck": {
-        "sourceId": "k16-membership-secondary",
+        "sourceId": "k16-results-gazette",
+        "section": 4,
+        "pages": [
+          1407
+        ],
         "ranks": [
           1,
           2,
@@ -140,8 +352,17 @@
           "פינקלשטיין גילה",
           "סלומינסקי ניסן"
         ],
-        "result": "matches-original-membership",
-        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+        "resultsNamesHe": [
+          "איתם אפרים",
+          "אורלב זבולון",
+          "יהלום שאול",
+          "לוי יצחק",
+          "פינקלשטיין גילה",
+          "סלומינסקי ניסן"
+        ],
+        "nameVariants": [],
+        "result": "matches-results-notice",
+        "note": "Independent visual reading of every elected name in section 4. NamesHe follows the registered candidate notice; resultsNamesHe preserves the results notice. Only the listed literal spelling/punctuation variants are accepted."
       },
       "reserveSecondReading": {
         "ranks": [
@@ -179,7 +400,33 @@
           }
         ],
         "result": "verified-against-enlarged-scan"
-      }
+      },
+      "previousMembershipCrossCheck": {
+        "sourceId": "k16-membership-secondary",
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "namesHe": [
+          "איתם אפרים",
+          "אורלב זבולון",
+          "יהלום שאול",
+          "לוי יצחק",
+          "פינקלשטיין גילה",
+          "סלומינסקי ניסן"
+        ],
+        "result": "matches-original-membership",
+        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+      },
+      "candidatesTruncated": true,
+      "remainingReviewReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 34, 43, 86, 112. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
+      "remainingReviewReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 34, 43, 86, 112. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "truncatedReasonEn": "Only ranks 1–6 of 120 registered candidates are transcribed; every elected rank was checked against section 4 of the official results notice. Later ranks remain unverified.",
+      "truncatedReasonHe": "תומללו רק מקומות 1–6 מתוך 120 מועמדים רשומים; כל המקומות שנבחרו הוצלבו עם סעיף 4 בהודעת התוצאות הרשמית. יתר המקומות טרם אומתו."
     },
     {
       "letters": "ג",
@@ -188,17 +435,45 @@
         1193,
         1194
       ],
-      "candidatesUnavailable": true,
-      "candidates": [],
-      "unavailableReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 26, 97, 114. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
-      "unavailableReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 26, 97, 114. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "ליצמן יעקב",
+          "page": 1193
+        },
+        {
+          "rank": 2,
+          "nameHe": "רביץ אברהם",
+          "page": 1193
+        },
+        {
+          "rank": 3,
+          "nameHe": "פרוש מאיר",
+          "page": 1193
+        },
+        {
+          "rank": 4,
+          "nameHe": "גפני משה רפאל",
+          "page": 1193
+        },
+        {
+          "rank": 5,
+          "nameHe": "אייכלר ישראל",
+          "page": 1193
+        }
+      ],
       "unresolvedRanks": [
         26,
         97,
         114
       ],
       "electedCrossCheck": {
-        "sourceId": "k16-membership-secondary",
+        "sourceId": "k16-results-gazette",
+        "section": 4,
+        "pages": [
+          1407
+        ],
         "ranks": [
           1,
           2,
@@ -213,8 +488,16 @@
           "גפני משה רפאל",
           "אייכלר ישראל"
         ],
-        "result": "matches-original-membership",
-        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+        "resultsNamesHe": [
+          "ליצמן יעקב",
+          "רביץ אברהם",
+          "פרוש מאיר",
+          "גפני משה רפאל",
+          "אייכלר ישראל"
+        ],
+        "nameVariants": [],
+        "result": "matches-results-notice",
+        "note": "Independent visual reading of every elected name in section 4. NamesHe follows the registered candidate notice; resultsNamesHe preserves the results notice. Only the listed literal spelling/punctuation variants are accepted."
       },
       "reserveSecondReading": {
         "ranks": [
@@ -252,7 +535,31 @@
           }
         ],
         "result": "verified-against-enlarged-scan"
-      }
+      },
+      "previousMembershipCrossCheck": {
+        "sourceId": "k16-membership-secondary",
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "namesHe": [
+          "ליצמן יעקב",
+          "רביץ אברהם",
+          "פרוש מאיר",
+          "גפני משה רפאל",
+          "אייכלר ישראל"
+        ],
+        "result": "matches-original-membership",
+        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+      },
+      "candidatesTruncated": true,
+      "remainingReviewReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 26, 97, 114. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
+      "remainingReviewReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 26, 97, 114. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "truncatedReasonEn": "Only ranks 1–5 of 120 registered candidates are transcribed; every elected rank was checked against section 4 of the official results notice. Later ranks remain unverified.",
+      "truncatedReasonHe": "תומללו רק מקומות 1–5 מתוך 120 מועמדים רשומים; כל המקומות שנבחרו הוצלבו עם סעיף 4 בהודעת התוצאות הרשמית. יתר המקומות טרם אומתו."
     },
     {
       "letters": "ד",
@@ -261,16 +568,34 @@
         1194,
         1195
       ],
-      "candidatesUnavailable": true,
-      "candidates": [],
-      "unavailableReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 66, 92. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
-      "unavailableReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 66, 92. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "בשארה עזמי",
+          "page": 1194
+        },
+        {
+          "rank": 2,
+          "nameHe": "זחאלקה גימאל",
+          "page": 1194
+        },
+        {
+          "rank": 3,
+          "nameHe": "טאהא ואסל",
+          "page": 1194
+        }
+      ],
       "unresolvedRanks": [
         66,
         92
       ],
       "electedCrossCheck": {
-        "sourceId": "k16-membership-secondary",
+        "sourceId": "k16-results-gazette",
+        "section": 4,
+        "pages": [
+          1407
+        ],
         "ranks": [
           1,
           2,
@@ -281,8 +606,14 @@
           "זחאלקה גימאל",
           "טאהא ואסל"
         ],
-        "result": "matches-original-membership",
-        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+        "resultsNamesHe": [
+          "בשארה עזמי",
+          "זחאלקה גימאל",
+          "טאהא ואסל"
+        ],
+        "nameVariants": [],
+        "result": "matches-results-notice",
+        "note": "Independent visual reading of every elected name in section 4. NamesHe follows the registered candidate notice; resultsNamesHe preserves the results notice. Only the listed literal spelling/punctuation variants are accepted."
       },
       "reserveSecondReading": {
         "ranks": [
@@ -320,7 +651,27 @@
           }
         ],
         "result": "verified-against-enlarged-scan"
-      }
+      },
+      "previousMembershipCrossCheck": {
+        "sourceId": "k16-membership-secondary",
+        "ranks": [
+          1,
+          2,
+          3
+        ],
+        "namesHe": [
+          "בשארה עזמי",
+          "זחאלקה גימאל",
+          "טאהא ואסל"
+        ],
+        "result": "matches-original-membership",
+        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+      },
+      "candidatesTruncated": true,
+      "remainingReviewReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 66, 92. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
+      "remainingReviewReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 66, 92. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "truncatedReasonEn": "Only ranks 1–3 of 118 registered candidates are transcribed; every elected rank was checked against section 4 of the official results notice. Later ranks remain unverified.",
+      "truncatedReasonHe": "תומללו רק מקומות 1–3 מתוך 118 מועמדים רשומים; כל המקומות שנבחרו הוצלבו עם סעיף 4 בהודעת התוצאות הרשמית. יתר המקומות טרם אומתו."
     },
     {
       "letters": "ו",
@@ -328,17 +679,35 @@
       "pages": [
         1195
       ],
-      "candidatesUnavailable": true,
-      "candidates": [],
-      "unavailableReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 33, 46, 81. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
-      "unavailableReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 33, 46, 81. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "ברכה מוחמד",
+          "page": 1195
+        },
+        {
+          "rank": 2,
+          "nameHe": "מחול עסאם",
+          "page": 1195
+        },
+        {
+          "rank": 3,
+          "nameHe": "טיבי אחמד",
+          "page": 1195
+        }
+      ],
       "unresolvedRanks": [
         33,
         46,
         81
       ],
       "electedCrossCheck": {
-        "sourceId": "k16-membership-secondary",
+        "sourceId": "k16-results-gazette",
+        "section": 4,
+        "pages": [
+          1407
+        ],
         "ranks": [
           1,
           2,
@@ -349,8 +718,14 @@
           "מחול עסאם",
           "טיבי אחמד"
         ],
-        "result": "matches-original-membership",
-        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+        "resultsNamesHe": [
+          "ברכה מוחמד",
+          "מחול עסאם",
+          "טיבי אחמד"
+        ],
+        "nameVariants": [],
+        "result": "matches-results-notice",
+        "note": "Independent visual reading of every elected name in section 4. NamesHe follows the registered candidate notice; resultsNamesHe preserves the results notice. Only the listed literal spelling/punctuation variants are accepted."
       },
       "reserveSecondReading": {
         "ranks": [
@@ -388,7 +763,27 @@
           }
         ],
         "result": "verified-against-enlarged-scan"
-      }
+      },
+      "previousMembershipCrossCheck": {
+        "sourceId": "k16-membership-secondary",
+        "ranks": [
+          1,
+          2,
+          3
+        ],
+        "namesHe": [
+          "ברכה מוחמד",
+          "מחול עסאם",
+          "טיבי אחמד"
+        ],
+        "result": "matches-original-membership",
+        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+      },
+      "candidatesTruncated": true,
+      "remainingReviewReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 33, 46, 81. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
+      "remainingReviewReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 33, 46, 81. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "truncatedReasonEn": "Only ranks 1–3 of 118 registered candidates are transcribed; every elected rank was checked against section 4 of the official results notice. Later ranks remain unverified.",
+      "truncatedReasonHe": "תומללו רק מקומות 1–3 מתוך 118 מועמדים רשומים; כל המקומות שנבחרו הוצלבו עם סעיף 4 בהודעת התוצאות הרשמית. יתר המקומות טרם אומתו."
     },
     {
       "letters": "ז",
@@ -597,15 +992,187 @@
         1196,
         1197
       ],
-      "candidatesUnavailable": true,
-      "candidates": [],
-      "unavailableReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 64, 100. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
-      "unavailableReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 64, 100. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "לפיד יוסף טומי",
+          "page": 1196
+        },
+        {
+          "rank": 2,
+          "nameHe": "פורז פוזמנטיר אברהם",
+          "page": 1196
+        },
+        {
+          "rank": 3,
+          "nameHe": "נאות יהודית",
+          "page": 1196
+        },
+        {
+          "rank": 4,
+          "nameHe": "פריצקי יוסף יצחק",
+          "page": 1196
+        },
+        {
+          "rank": 5,
+          "nameHe": "זנדברג אליעזר",
+          "page": 1196
+        },
+        {
+          "rank": 6,
+          "nameHe": "בריילובסקי ויקטור",
+          "page": 1196
+        },
+        {
+          "rank": 7,
+          "nameHe": "שלגי אילן",
+          "page": 1196
+        },
+        {
+          "rank": 8,
+          "nameHe": "פולישוק בלוך מל",
+          "page": 1196
+        },
+        {
+          "rank": 9,
+          "nameHe": "חן רשף ארי",
+          "page": 1196
+        },
+        {
+          "rank": 10,
+          "nameHe": "בריזון אהרן רוני",
+          "page": 1196
+        },
+        {
+          "rank": 11,
+          "nameHe": "רצאבי אהוד",
+          "page": 1196
+        },
+        {
+          "rank": 12,
+          "nameHe": "לבני אסתר ניבה",
+          "page": 1196
+        },
+        {
+          "rank": 13,
+          "nameHe": "ליבוביץ אילן",
+          "page": 1196
+        },
+        {
+          "rank": 14,
+          "nameHe": "דורון תמי נחמיה",
+          "page": 1196
+        },
+        {
+          "rank": 15,
+          "nameHe": "יאסינוב יגאל",
+          "page": 1196
+        }
+      ],
       "unresolvedRanks": [
         64,
         100
       ],
       "electedCrossCheck": {
+        "sourceId": "k16-results-gazette",
+        "section": 4,
+        "pages": [
+          1407
+        ],
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "namesHe": [
+          "לפיד יוסף טומי",
+          "פורז פוזמנטיר אברהם",
+          "נאות יהודית",
+          "פריצקי יוסף יצחק",
+          "זנדברג אליעזר",
+          "בריילובסקי ויקטור",
+          "שלגי אילן",
+          "פולישוק בלוך מל",
+          "חן רשף ארי",
+          "בריזון אהרן רוני",
+          "רצאבי אהוד",
+          "לבני אסתר ניבה",
+          "ליבוביץ אילן",
+          "דורון תמי נחמיה",
+          "יאסינוב יגאל"
+        ],
+        "resultsNamesHe": [
+          "לפיד יוסף טומי",
+          "פורז פוזמנטיר אברהם",
+          "נאות יהודית",
+          "פריצקי יוסף יצחק",
+          "זנדברג אליעזר",
+          "בריילובסקי ויקטור",
+          "שלגי אילן",
+          "פולישוק בלוך מל",
+          "חן רשף ארי",
+          "בריזון אהרן רוני",
+          "רצאבי אהוד",
+          "לבני אסתר ניבה",
+          "ליבוביץ אילן",
+          "דורון תמי נחמיה",
+          "יאסינוב יגאל"
+        ],
+        "nameVariants": [],
+        "result": "matches-results-notice",
+        "note": "Independent visual reading of every elected name in section 4. NamesHe follows the registered candidate notice; resultsNamesHe preserves the results notice. Only the listed literal spelling/punctuation variants are accepted."
+      },
+      "reserveSecondReading": {
+        "ranks": [
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "candidates": [
+          {
+            "rank": 16,
+            "nameHe": "גולן אראלה",
+            "page": 1196
+          },
+          {
+            "rank": 17,
+            "nameHe": "ברדה אהרונה",
+            "page": 1196
+          },
+          {
+            "rank": 18,
+            "nameHe": "בנימיני אדיר",
+            "page": 1196
+          },
+          {
+            "rank": 19,
+            "nameHe": "אלנר יצחק",
+            "page": 1196
+          },
+          {
+            "rank": 20,
+            "nameHe": "חמדאן מוניר",
+            "page": 1196
+          }
+        ],
+        "result": "verified-against-enlarged-scan"
+      },
+      "previousMembershipCrossCheck": {
         "sourceId": "k16-membership-secondary",
         "ranks": [
           1,
@@ -644,43 +1211,11 @@
         "result": "matches-original-membership",
         "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
       },
-      "reserveSecondReading": {
-        "ranks": [
-          16,
-          17,
-          18,
-          19,
-          20
-        ],
-        "candidates": [
-          {
-            "rank": 16,
-            "nameHe": "גולן אראלה",
-            "page": 1196
-          },
-          {
-            "rank": 17,
-            "nameHe": "ברדה אהרונה",
-            "page": 1196
-          },
-          {
-            "rank": 18,
-            "nameHe": "בנימיני אדיר",
-            "page": 1196
-          },
-          {
-            "rank": 19,
-            "nameHe": "אלנר יצחק",
-            "page": 1196
-          },
-          {
-            "rank": 20,
-            "nameHe": "חמדאן מוניר",
-            "page": 1196
-          }
-        ],
-        "result": "verified-against-enlarged-scan"
-      }
+      "candidatesTruncated": true,
+      "remainingReviewReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 64, 100. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
+      "remainingReviewReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 64, 100. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "truncatedReasonEn": "Only ranks 1–15 of 120 registered candidates are transcribed; every elected rank was checked against section 4 of the official results notice. Later ranks remain unverified.",
+      "truncatedReasonHe": "תומללו רק מקומות 1–15 מתוך 120 מועמדים רשומים; כל המקומות שנבחרו הוצלבו עם סעיף 4 בהודעת התוצאות הרשמית. יתר המקומות טרם אומתו."
     },
     {
       "letters": "כן",
@@ -812,7 +1347,11 @@
         }
       ],
       "electedCrossCheck": {
-        "sourceId": "k16-membership-secondary",
+        "sourceId": "k16-results-gazette",
+        "section": 4,
+        "pages": [
+          1407
+        ],
         "ranks": [
           1,
           2
@@ -821,8 +1360,13 @@
           "שרנסקי נתן",
           "אדלשטיין יולי-יואל"
         ],
-        "result": "documented-pre-inauguration-replacement",
-        "note": "Rank 1 Sharansky withdrew after the election (Ynet, 29 January 2003); rank 3 Solodkin served at inauguration alongside rank 2 Edelstein. The registered roster is preserved, not reordered."
+        "resultsNamesHe": [
+          "שרנסקי נתן",
+          "אדלשטיין יולי-יואל"
+        ],
+        "nameVariants": [],
+        "result": "matches-results-notice",
+        "note": "Independent visual reading of every elected name in section 4. NamesHe follows the registered candidate notice; resultsNamesHe preserves the results notice. Only the listed literal spelling/punctuation variants are accepted. The results notice elects Sharansky #1 and Edelstein #2, exactly as registered. Sharansky’s later withdrawal and Solodkin’s inauguration membership are a separate historical exception (0053); not a results-notice mismatch."
       },
       "reserveSecondReading": {
         "ranks": [
@@ -860,6 +1404,19 @@
           }
         ],
         "result": "verified-against-enlarged-scan"
+      },
+      "previousMembershipCrossCheck": {
+        "sourceId": "k16-membership-secondary",
+        "ranks": [
+          1,
+          2
+        ],
+        "namesHe": [
+          "שרנסקי נתן",
+          "אדלשטיין יולי-יואל"
+        ],
+        "result": "documented-pre-inauguration-replacement",
+        "note": "Rank 1 Sharansky withdrew after the election (Ynet, 29 January 2003); rank 3 Solodkin served at inauguration alongside rank 2 Edelstein. The registered roster is preserved, not reordered."
       }
     },
     {
@@ -1047,7 +1604,11 @@
         }
       ],
       "electedCrossCheck": {
-        "sourceId": "k16-membership-secondary",
+        "sourceId": "k16-results-gazette",
+        "section": 4,
+        "pages": [
+          1407
+        ],
         "ranks": [
           1,
           2,
@@ -1066,8 +1627,25 @@
           "אריאל אורי יהודה",
           "אלדד אריה"
         ],
-        "result": "matches-original-membership",
-        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+        "resultsNamesHe": [
+          "ליברמן אביגדור",
+          "אלון בנימין",
+          "שטרן יורי",
+          "הנדל צבי",
+          "נודלמן מיכאל",
+          "אריאל אורי-יהודה",
+          "אלדד אריה"
+        ],
+        "nameVariants": [
+          {
+            "rank": 6,
+            "candidateNameHe": "אריאל אורי יהודה",
+            "resultsNameHe": "אריאל אורי-יהודה",
+            "explanation": "Both official notices print the same list position with this name variant; retain the candidate-notice spelling. This is a comparison of the two notices, not a claim of a formal correction."
+          }
+        ],
+        "result": "matches-results-notice-with-documented-name-variants",
+        "note": "Independent visual reading of every elected name in section 4. NamesHe follows the registered candidate notice; resultsNamesHe preserves the results notice. Only the listed literal spelling/punctuation variants are accepted."
       },
       "reserveSecondReading": {
         "ranks": [
@@ -1105,6 +1683,29 @@
           }
         ],
         "result": "verified-against-enlarged-scan"
+      },
+      "previousMembershipCrossCheck": {
+        "sourceId": "k16-membership-secondary",
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "namesHe": [
+          "ליברמן אביגדור",
+          "אלון בנימין",
+          "שטרן יורי",
+          "הנדל צבי",
+          "נודלמן מיכאל",
+          "אריאל אורי יהודה",
+          "אלדד אריה"
+        ],
+        "result": "matches-original-membership",
+        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
       }
     },
     {
@@ -1688,6 +2289,192 @@
         }
       ],
       "electedCrossCheck": {
+        "sourceId": "k16-results-gazette",
+        "section": 4,
+        "pages": [
+          1407
+        ],
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38
+        ],
+        "namesHe": [
+          "שרון אריאל",
+          "נתניהו בנימין",
+          "הנגבי צחי",
+          "שלום סילבן",
+          "נוה דני",
+          "לבנת לימור",
+          "כץ ישראל",
+          "עזרא גדעון",
+          "בלומנטל נעמי",
+          "לנדאו עוזי",
+          "גמליאל גילה",
+          "שטייניץ יובל",
+          "לבני ציפי",
+          "איתן מיכאל מיקי",
+          "שטרית מאיר",
+          "לוי דוד",
+          "אברהם רוחמה",
+          "סער גדעון",
+          "בנלולו דניאל",
+          "רצון מיכאל",
+          "והבה מגלי",
+          "אדרי יעקב",
+          "יתום אהוד יצחק",
+          "אפללו אלי-אלברט",
+          "כחלון משה",
+          "שרון עמרי",
+          "גורלובסקי מיכאל",
+          "ארדן גלעד",
+          "בר-און רוני",
+          "גבריאלי ענבל",
+          "חזן יחיאל",
+          "אולמרט אהוד",
+          "בוים זאב דוד",
+          "הירשזון אברהם",
+          "נס לאה",
+          "ריבלין ראובן",
+          "כץ חיים",
+          "קרא איוב"
+        ],
+        "resultsNamesHe": [
+          "שרון אריאל",
+          "נתניהו בנימין",
+          "הנגבי צחי",
+          "שלום סילבן",
+          "נוה דני",
+          "לבנת לימור",
+          "כץ ישראל",
+          "עזרא גדעון",
+          "בלומנטל נעמי",
+          "לנדאו עוזי",
+          "גמליאל גילה",
+          "שטייניץ יובל",
+          "לבני ציפי",
+          "איתן מיקי (מיכאל)",
+          "שטרית מאיר",
+          "לוי דוד",
+          "אברהם רוחמה",
+          "סער גדעון",
+          "בנלולו דניאל",
+          "רצון מיכאל",
+          "והבה מגלי",
+          "אדרי יעקב",
+          "יתום אהוד-יצחק",
+          "אפללו אלי-אלברט",
+          "כחלון משה",
+          "שרון עמרי",
+          "גורלובסקי מיכאל",
+          "ארדן גלעד",
+          "בר-און רוני",
+          "גבריאלי ענבל",
+          "חזן יחיאל",
+          "אולמרט אהוד",
+          "בוים זאב-דוד",
+          "הירשזון אברהם",
+          "נס לאה",
+          "ריבלין ראובן",
+          "כץ חיים",
+          "קרא איוב"
+        ],
+        "nameVariants": [
+          {
+            "rank": 14,
+            "candidateNameHe": "איתן מיכאל מיקי",
+            "resultsNameHe": "איתן מיקי (מיכאל)",
+            "explanation": "Both official notices print the same list position with this name variant; retain the candidate-notice spelling. This is a comparison of the two notices, not a claim of a formal correction."
+          },
+          {
+            "rank": 23,
+            "candidateNameHe": "יתום אהוד יצחק",
+            "resultsNameHe": "יתום אהוד-יצחק",
+            "explanation": "Both official notices print the same list position with this name variant; retain the candidate-notice spelling. This is a comparison of the two notices, not a claim of a formal correction."
+          },
+          {
+            "rank": 33,
+            "candidateNameHe": "בוים זאב דוד",
+            "resultsNameHe": "בוים זאב-דוד",
+            "explanation": "Both official notices print the same list position with this name variant; retain the candidate-notice spelling. This is a comparison of the two notices, not a claim of a formal correction."
+          }
+        ],
+        "result": "matches-results-notice-with-documented-name-variants",
+        "note": "Independent visual reading of every elected name in section 4. NamesHe follows the registered candidate notice; resultsNamesHe preserves the results notice. Only the listed literal spelling/punctuation variants are accepted."
+      },
+      "reserveSecondReading": {
+        "ranks": [
+          39,
+          40,
+          41,
+          42,
+          43
+        ],
+        "candidates": [
+          {
+            "rank": 39,
+            "nameHe": "רוזנבלום פנינה",
+            "page": 1198
+          },
+          {
+            "rank": 40,
+            "nameHe": "סולמי איתן",
+            "page": 1198
+          },
+          {
+            "rank": 41,
+            "nameHe": "קהלני אביגדור",
+            "page": 1198
+          },
+          {
+            "rank": 42,
+            "nameHe": "פיניאן ציון",
+            "page": 1198
+          },
+          {
+            "rank": 43,
+            "nameHe": "מנע דוד",
+            "page": 1198
+          }
+        ],
+        "result": "verified-against-enlarged-scan"
+      },
+      "previousMembershipCrossCheck": {
         "sourceId": "k16-membership-secondary",
         "ranks": [
           1,
@@ -1771,43 +2558,6 @@
         ],
         "result": "matches-original-membership",
         "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
-      },
-      "reserveSecondReading": {
-        "ranks": [
-          39,
-          40,
-          41,
-          42,
-          43
-        ],
-        "candidates": [
-          {
-            "rank": 39,
-            "nameHe": "רוזנבלום פנינה",
-            "page": 1198
-          },
-          {
-            "rank": 40,
-            "nameHe": "סולמי איתן",
-            "page": 1198
-          },
-          {
-            "rank": 41,
-            "nameHe": "קהלני אביגדור",
-            "page": 1198
-          },
-          {
-            "rank": 42,
-            "nameHe": "פיניאן ציון",
-            "page": 1198
-          },
-          {
-            "rank": 43,
-            "nameHe": "מנע דוד",
-            "page": 1198
-          }
-        ],
-        "result": "verified-against-enlarged-scan"
       }
     },
     {
@@ -1817,16 +2567,49 @@
         1198,
         1199
       ],
-      "candidatesUnavailable": true,
-      "candidates": [],
-      "unavailableReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 71, 95. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
-      "unavailableReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 71, 95. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "שריד יוסף",
+          "page": 1198
+        },
+        {
+          "rank": 2,
+          "nameHe": "אורון חיים",
+          "page": 1198
+        },
+        {
+          "rank": 3,
+          "nameHe": "כהן רן",
+          "page": 1198
+        },
+        {
+          "rank": 4,
+          "nameHe": "גלאון זהבה",
+          "page": 1198
+        },
+        {
+          "rank": 5,
+          "nameHe": "ברונפמן רומן",
+          "page": 1198
+        },
+        {
+          "rank": 6,
+          "nameHe": "וילן אבשלום",
+          "page": 1198
+        }
+      ],
       "unresolvedRanks": [
         71,
         95
       ],
       "electedCrossCheck": {
-        "sourceId": "k16-membership-secondary",
+        "sourceId": "k16-results-gazette",
+        "section": 4,
+        "pages": [
+          1407
+        ],
         "ranks": [
           1,
           2,
@@ -1843,8 +2626,17 @@
           "ברונפמן רומן",
           "וילן אבשלום"
         ],
-        "result": "matches-original-membership",
-        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+        "resultsNamesHe": [
+          "שריד יוסף",
+          "אורון חיים",
+          "כהן רן",
+          "גלאון זהבה",
+          "ברונפמן רומן",
+          "וילן אבשלום"
+        ],
+        "nameVariants": [],
+        "result": "matches-results-notice",
+        "note": "Independent visual reading of every elected name in section 4. NamesHe follows the registered candidate notice; resultsNamesHe preserves the results notice. Only the listed literal spelling/punctuation variants are accepted."
       },
       "reserveSecondReading": {
         "ranks": [
@@ -1882,7 +2674,33 @@
           }
         ],
         "result": "verified-against-enlarged-scan"
-      }
+      },
+      "previousMembershipCrossCheck": {
+        "sourceId": "k16-membership-secondary",
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "namesHe": [
+          "שריד יוסף",
+          "אורון חיים",
+          "כהן רן",
+          "גלאון זהבה",
+          "ברונפמן רומן",
+          "וילן אבשלום"
+        ],
+        "result": "matches-original-membership",
+        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+      },
+      "candidatesTruncated": true,
+      "remainingReviewReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 71, 95. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
+      "remainingReviewReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 71, 95. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "truncatedReasonEn": "Only ranks 1–6 of 120 registered candidates are transcribed; every elected rank was checked against section 4 of the official results notice. Later ranks remain unverified.",
+      "truncatedReasonHe": "תומללו רק מקומות 1–6 מתוך 120 מועמדים רשומים; כל המקומות שנבחרו הוצלבו עם סעיף 4 בהודעת התוצאות הרשמית. יתר המקומות טרם אומתו."
     },
     {
       "letters": "ם",
@@ -1890,17 +2708,35 @@
       "pages": [
         1199
       ],
-      "candidatesUnavailable": true,
-      "candidates": [],
-      "unavailableReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 27, 69, 118. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
-      "unavailableReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 27, 69, 118. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "פרץ ארמונד עמיר",
+          "page": 1199
+        },
+        {
+          "rank": 2,
+          "nameHe": "כהן אילנה",
+          "page": 1199
+        },
+        {
+          "rank": 3,
+          "nameHe": "טל דוד",
+          "page": 1199
+        }
+      ],
       "unresolvedRanks": [
         27,
         69,
         118
       ],
       "electedCrossCheck": {
-        "sourceId": "k16-membership-secondary",
+        "sourceId": "k16-results-gazette",
+        "section": 4,
+        "pages": [
+          1408
+        ],
         "ranks": [
           1,
           2,
@@ -1911,8 +2747,21 @@
           "כהן אילנה",
           "טל דוד"
         ],
-        "result": "matches-original-membership",
-        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+        "resultsNamesHe": [
+          "פרץ ארמונד-עמיר",
+          "כהן אילנה",
+          "טל דוד"
+        ],
+        "nameVariants": [
+          {
+            "rank": 1,
+            "candidateNameHe": "פרץ ארמונד עמיר",
+            "resultsNameHe": "פרץ ארמונד-עמיר",
+            "explanation": "Both official notices print the same list position with this name variant; retain the candidate-notice spelling. This is a comparison of the two notices, not a claim of a formal correction."
+          }
+        ],
+        "result": "matches-results-notice-with-documented-name-variants",
+        "note": "Independent visual reading of every elected name in section 4. NamesHe follows the registered candidate notice; resultsNamesHe preserves the results notice. Only the listed literal spelling/punctuation variants are accepted."
       },
       "reserveSecondReading": {
         "ranks": [
@@ -1950,7 +2799,27 @@
           }
         ],
         "result": "verified-against-enlarged-scan"
-      }
+      },
+      "previousMembershipCrossCheck": {
+        "sourceId": "k16-membership-secondary",
+        "ranks": [
+          1,
+          2,
+          3
+        ],
+        "namesHe": [
+          "פרץ ארמונד עמיר",
+          "כהן אילנה",
+          "טל דוד"
+        ],
+        "result": "matches-original-membership",
+        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+      },
+      "candidatesTruncated": true,
+      "remainingReviewReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 27, 69, 118. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
+      "remainingReviewReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 27, 69, 118. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "truncatedReasonEn": "Only ranks 1–3 of 119 registered candidates are transcribed; every elected rank was checked against section 4 of the official results notice. Later ranks remain unverified.",
+      "truncatedReasonHe": "תומללו רק מקומות 1–3 מתוך 119 מועמדים רשומים; כל המקומות שנבחרו הוצלבו עם סעיף 4 בהודעת התוצאות הרשמית. יתר המקומות טרם אומתו."
     },
     {
       "letters": "נ",
@@ -2069,17 +2938,30 @@
         1200,
         1201
       ],
-      "candidatesUnavailable": true,
-      "candidates": [],
-      "unavailableReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 6, 32, 93. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
-      "unavailableReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 6, 32, 93. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "דהאמשה עבד אל מאלכ",
+          "page": 1200
+        },
+        {
+          "rank": 2,
+          "nameHe": "אלסאנע טלב",
+          "page": 1200
+        }
+      ],
       "unresolvedRanks": [
         6,
         32,
         93
       ],
       "electedCrossCheck": {
-        "sourceId": "k16-membership-secondary",
+        "sourceId": "k16-results-gazette",
+        "section": 4,
+        "pages": [
+          1408
+        ],
         "ranks": [
           1,
           2
@@ -2088,8 +2970,13 @@
           "דהאמשה עבד אל מאלכ",
           "אלסאנע טלב"
         ],
-        "result": "matches-original-membership",
-        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+        "resultsNamesHe": [
+          "דהאמשה עבד אל מאלכ",
+          "אלסאנע טלב"
+        ],
+        "nameVariants": [],
+        "result": "matches-results-notice",
+        "note": "Independent visual reading of every elected name in section 4. NamesHe follows the registered candidate notice; resultsNamesHe preserves the results notice. Only the listed literal spelling/punctuation variants are accepted."
       },
       "reserveSecondReading": {
         "ranks": [
@@ -2127,7 +3014,25 @@
           }
         ],
         "result": "verified-against-enlarged-scan"
-      }
+      },
+      "previousMembershipCrossCheck": {
+        "sourceId": "k16-membership-secondary",
+        "ranks": [
+          1,
+          2
+        ],
+        "namesHe": [
+          "דהאמשה עבד אל מאלכ",
+          "אלסאנע טלב"
+        ],
+        "result": "matches-original-membership",
+        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+      },
+      "candidatesTruncated": true,
+      "remainingReviewReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 6, 32, 93. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
+      "remainingReviewReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 6, 32, 93. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "truncatedReasonEn": "Only ranks 1–2 of 119 registered candidates are transcribed; every elected rank was checked against section 4 of the official results notice. Later ranks remain unverified.",
+      "truncatedReasonHe": "תומללו רק מקומות 1–2 מתוך 119 מועמדים רשומים; כל המקומות שנבחרו הוצלבו עם סעיף 4 בהודעת התוצאות הרשמית. יתר המקומות טרם אומתו."
     },
     {
       "letters": "פה",
@@ -2595,17 +3500,75 @@
       "pages": [
         1203
       ],
-      "candidatesUnavailable": true,
-      "candidates": [],
-      "unavailableReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 29, 53, 61. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
-      "unavailableReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 29, 53, 61. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "candidatesUnavailable": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "ישי אליהו",
+          "page": 1203
+        },
+        {
+          "rank": 2,
+          "nameHe": "בניזרי שלמה",
+          "page": 1203
+        },
+        {
+          "rank": 3,
+          "nameHe": "דהן ניסים",
+          "page": 1203
+        },
+        {
+          "rank": 4,
+          "nameHe": "כהן אמנון",
+          "page": 1203
+        },
+        {
+          "rank": 5,
+          "nameHe": "כהן יצחק",
+          "page": 1203
+        },
+        {
+          "rank": 6,
+          "nameHe": "אזולאי דוד",
+          "page": 1203
+        },
+        {
+          "rank": 7,
+          "nameHe": "נהרי משולם",
+          "page": 1203
+        },
+        {
+          "rank": 8,
+          "nameHe": "וקנין יצחק",
+          "page": 1203
+        },
+        {
+          "rank": 9,
+          "nameHe": "פרץ יאיר",
+          "page": 1203
+        },
+        {
+          "rank": 10,
+          "nameHe": "זאב ניסים",
+          "page": 1203
+        },
+        {
+          "rank": 11,
+          "nameHe": "מרגי יעקב",
+          "page": 1203
+        }
+      ],
       "unresolvedRanks": [
         29,
         53,
         61
       ],
       "electedCrossCheck": {
-        "sourceId": "k16-membership-secondary",
+        "sourceId": "k16-results-gazette",
+        "section": 4,
+        "pages": [
+          1408
+        ],
         "ranks": [
           1,
           2,
@@ -2632,8 +3595,22 @@
           "זאב ניסים",
           "מרגי יעקב"
         ],
-        "result": "matches-original-membership",
-        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+        "resultsNamesHe": [
+          "ישי אליהו",
+          "בניזרי שלמה",
+          "דהן ניסים",
+          "כהן אמנון",
+          "כהן יצחק",
+          "אזולאי דוד",
+          "נהרי משולם",
+          "וקנין יצחק",
+          "פרץ יאיר",
+          "זאב ניסים",
+          "מרגי יעקב"
+        ],
+        "nameVariants": [],
+        "result": "matches-results-notice",
+        "note": "Independent visual reading of every elected name in section 4. NamesHe follows the registered candidate notice; resultsNamesHe preserves the results notice. Only the listed literal spelling/punctuation variants are accepted."
       },
       "reserveSecondReading": {
         "ranks": [
@@ -2671,7 +3648,43 @@
           }
         ],
         "result": "verified-against-enlarged-scan"
-      }
+      },
+      "previousMembershipCrossCheck": {
+        "sourceId": "k16-membership-secondary",
+        "ranks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "namesHe": [
+          "ישי אליהו",
+          "בניזרי שלמה",
+          "דהן ניסים",
+          "כהן אמנון",
+          "כהן יצחק",
+          "אזולאי דוד",
+          "נהרי משולם",
+          "וקנין יצחק",
+          "פרץ יאיר",
+          "זאב ניסים",
+          "מרגי יעקב"
+        ],
+        "result": "matches-original-membership",
+        "note": "Cross-check identities against original members, reversing the secondary table’s later replacements. Gazette spellings retained."
+      },
+      "candidatesTruncated": true,
+      "remainingReviewReasonEn": "Exact spelling could not be verified reliably after a full transcription attempt and enlarged second reading at printed rank(s) 29, 53, 61. The official scan exists; this is a transcription limitation, not evidence that no list was registered.",
+      "remainingReviewReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 29, 53, 61. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
+      "truncatedReasonEn": "Only ranks 1–11 of 111 registered candidates are transcribed; every elected rank was checked against section 4 of the official results notice. Later ranks remain unverified.",
+      "truncatedReasonHe": "תומללו רק מקומות 1–11 מתוך 111 מועמדים רשומים; כל המקומות שנבחרו הוצלבו עם סעיף 4 בהודעת התוצאות הרשמית. יתר המקומות טרם אומתו."
     }
   ]
 }
