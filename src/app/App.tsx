@@ -1,0 +1,125 @@
+import { useEffect, useState } from 'react';
+import { allocationOf, baselineOf, scenarioIssues } from './derive.ts';
+import { LangContext, useL } from './i18n.ts';
+import { openElection, readSharedFromHash, redo, setState, undo, useStore } from './store.ts';
+import { Charts } from './components/Charts.tsx';
+import { Compare } from './components/Compare.tsx';
+import { Hemicycle } from './components/Hemicycle.tsx';
+import { BlocBar, KeyStats } from './components/KeyStats.tsx';
+import { ListPanel } from './components/ListPanel.tsx';
+import { History, Localities, Rules, Sources } from './components/Panels.tsx';
+import { PartyCards } from './components/PartyCards.tsx';
+import { Sensitivity } from './components/Sensitivity.tsx';
+import { Structure } from './components/Structure.tsx';
+import { TopBar } from './components/TopBar.tsx';
+import { Turnout } from './components/Turnout.tsx';
+import { Walkthrough } from './components/Walkthrough.tsx';
+
+type Tab = 'walk' | 'compare' | 'charts' | 'structure' | 'turnout' | 'sens' | 'rules' | 'loc' | 'sources' | 'history';
+
+export function App() {
+  const lang = useStore((st) => st.lang);
+  const theme = useStore((st) => st.theme);
+  useEffect(() => {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
+    document.documentElement.dataset.theme = theme;
+    document.title = lang === 'he' ? 'סייר הבחירות לכנסת' : 'Israeli Elections Explorer';
+  }, [lang, theme]);
+  useEffect(() => {
+    readSharedFromHash().then((sh) => {
+      if (sh) { openElection(sh.electionId, sh); history.replaceState(null, '', location.pathname); }
+      else openElection('k26');
+    });
+    const onKey = (e: KeyboardEvent) => {
+      const t = e.target as HTMLElement;
+      if (t && /INPUT|TEXTAREA|SELECT/.test(t.tagName)) return;
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); if (e.shiftKey) redo(); else undo(); }
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'y') { e.preventDefault(); redo(); }
+      if (e.key === 'Escape') setState({ selectedListId: null });
+    };
+    addEventListener('keydown', onKey);
+    return () => removeEventListener('keydown', onKey);
+  }, []);
+  return <LangContext.Provider value={lang}><Shell /></LangContext.Provider>;
+}
+
+function Shell() {
+  const L = useL();
+  const s = useStore((st) => st.scenario);
+  const ds = useStore((st) => (st.scenario ? st.datasets[st.scenario.electionId] : undefined));
+  const toast = useStore((st) => st.toast);
+  const loadError = useStore((st) => st.loadError);
+  const notice = useStore((st) => st.notice);
+  const lang = useStore((st) => st.lang);
+  const level = useStore((st) => st.level);
+  const [tab, setTab] = useState<Tab>('walk');
+
+  if (loadError) return <div className="banner err">{L('Could not load election data: ', 'טעינת הנתונים נכשלה: ')}{loadError}</div>;
+  if (!s || !ds) return <div className="app"><TopBar s={null} r={null} ds={undefined} baseR={null} /><p style={{ padding: 20 }} className="muted">{L('Loading election data…', 'טוען נתוני בחירות…')}</p></div>;
+
+  const r = allocationOf(s);
+  const base = baselineOf(ds);
+  const baseR = allocationOf(base);
+  const issues = scenarioIssues(s, r);
+  const tabs: { id: Tab; label: string; adv?: boolean }[] = [
+    { id: 'walk', label: L('How the seats were allocated', 'איך חולקו המנדטים') },
+    { id: 'compare', label: L('Compare', 'השוואה') },
+    { id: 'charts', label: L('Charts', 'תרשימים') },
+    { id: 'structure', label: L('Mergers, splits & agreements', 'איחודים, פיצולים והסכמים') },
+    { id: 'turnout', label: L('Turnout model', 'מודל הצבעה') },
+    { id: 'sens', label: L('Sensitivity', 'רגישות') },
+    { id: 'rules', label: L('Rules & settings', 'כללים והגדרות') },
+    { id: 'loc', label: L('Localities', 'יישובים') },
+    { id: 'sources', label: L('Sources & definitions', 'מקורות ומונחים') },
+    { id: 'history', label: L(`Change history (${s.log.length})`, `היסטוריית שינויים (${s.log.length})`) },
+  ];
+  void level;
+
+  return (
+    <div className="app">
+      <TopBar s={s} r={r} ds={ds} baseR={baseR} />
+      <div>
+        {ds.status.stage !== 'official-final' && <div className="banner warn" role="status">⚠ {lang === 'he' ? ds.status.noteHe : ds.status.noteEn}</div>}
+        {s.mode === 'experimental' && <div className="banner info" role="status">{L('Experimental rules: this is an alternative electoral system, not a legally possible Israeli result.', 'כללים ניסיוניים: זוהי שיטת בחירות חלופית ולא תוצאה אפשרית לפי החוק בישראל.')}</div>}
+        {notice && <div className="banner info" role="status">{notice} <button className="btn small ghost" onClick={() => setState({ notice: null })}>✕</button></div>}
+        {issues.map((x, i) => <div key={i} className={`banner ${x.level === 'error' ? 'err' : 'warn'}`} role="alert">{lang === 'he' ? x.he : x.en}</div>)}
+        {r.warnings.filter((w) => w.code !== 'internal-loss').map((w, i) => <div key={`w${i}`} className="banner warn" role="alert">{w.message}</div>)}
+      </div>
+      <main>
+        <div className="main">
+          <PartyCards s={s} r={r} base={base} baseR={baseR} />
+          <div className="col">
+            <section className="panel">
+              <div className="body"><Hemicycle s={s} r={r} /></div>
+            </section>
+            <section className="panel"><div className="body"><BlocBar s={s} r={r} /></div></section>
+            <KeyStats s={s} r={r} ds={ds} baseR={baseR} />
+          </div>
+          <div className="col"><ListPanel s={s} r={r} ds={ds} base={base} baseR={baseR} /></div>
+        </div>
+        <div className="bottom">
+          <section className="panel">
+            <div className="tabs" role="tablist" aria-label={L('Analysis', 'ניתוח')}>
+              {tabs.map((t) => <button key={t.id} role="tab" aria-selected={tab === t.id} onClick={() => setTab(t.id)}>{t.label}</button>)}
+            </div>
+            <div className="body" role="tabpanel">
+              {tab === 'walk' && <Walkthrough s={s} r={r} />}
+              {tab === 'compare' && <Compare s={s} r={r} base={base} ds={ds} />}
+              {tab === 'charts' && <Charts s={s} r={r} />}
+              {tab === 'structure' && <Structure s={s} r={r} />}
+              {tab === 'turnout' && <Turnout s={s} />}
+              {tab === 'sens' && <Sensitivity s={s} r={r} />}
+              {tab === 'rules' && <Rules s={s} />}
+              {tab === 'loc' && <Localities s={s} />}
+              {tab === 'sources' && <Sources ds={ds} />}
+              {tab === 'history' && <History s={s} r={r} ds={ds} />}
+            </div>
+          </section>
+          <p className="small muted" style={{ marginTop: 10 }}>{L('Seat allocation is computed by deterministic code from official Central Elections Committee data. Not affiliated with the CEC or any party.', 'חלוקת המנדטים מחושבת בקוד דטרמיניסטי מנתוני ועדת הבחירות המרכזית. אין קשר לוועדת הבחירות או לאף מפלגה.')}</p>
+        </div>
+      </main>
+      {toast && <div className={`toast ${toast.kind}`} role={toast.kind === 'error' ? 'alert' : 'status'}>{toast.text}</div>}
+    </div>
+  );
+}

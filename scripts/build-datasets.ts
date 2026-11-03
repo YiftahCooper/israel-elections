@@ -300,8 +300,13 @@ async function buildK26() {
   return { ds, loc: localityDataset('k26', locRows, lists) };
 }
 
+// Seat-diagram order: app-defined order (validated colour adjacency), then by votes.
+const seatOrder = (lists: ListRecord[]) => [...lists].sort((a, b) => (META[a.id]?.order ?? 999) - (META[b.id]?.order ?? 999) || b.votes - a.votes);
+
 for (const build of [buildK25, buildK26]) {
-  const { ds, loc } = await build();
+  const built = await build();
+  const ds = { ...built.ds, lists: seatOrder(built.ds.lists) };
+  const loc = built.loc;
   writeFileSync(join(OUT, `${ds.id}.json`), JSON.stringify(ds));
   writeFileSync(join(OUT, `${ds.id}-localities.json`), JSON.stringify(loc));
   const cands = ds.lists.reduce((s, l) => s + l.candidates.length, 0);

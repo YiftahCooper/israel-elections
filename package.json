@@ -5,14 +5,17 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "typecheck": "tsc -b --noEmit",
-    "data:build": "node scripts/build-datasets.ts"
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "data:build": "node scripts/build-datasets.ts",
+    "test:e2e": "playwright test",
+    "data:fetch": "node scripts/fetch-sources.ts"
   },
   "devDependencies": {
+    "@playwright/test": "^1.64.1",
     "@types/node": "^26.6.6",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
@@ -25,5 +28,8 @@
   "dependencies": {
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
+  },
+  "engines": {
+    "node": ">=22.18"
   }
 }

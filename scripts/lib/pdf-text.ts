@@ -25,7 +25,7 @@ export async function pdfLines(path: string, opts: { rtl?: boolean; tolerance?: 
   const rtl = opts.rtl ?? true;
   const tol = opts.tolerance ?? 2;
   const data = new Uint8Array(readFileSync(path));
-  const doc = await getDocument({ data, useSystemFonts: false, isEvalSupported: false, verbosity: 0 }).promise;
+  const doc = await getDocument({ data, useSystemFonts: false, verbosity: 0 } as Parameters<typeof getDocument>[0]).promise;
   const pages: PdfLine[][] = [];
   for (let p = 1; p <= doc.numPages; p++) {
     const page = await doc.getPage(p);
