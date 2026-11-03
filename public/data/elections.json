@@ -164,8 +164,8 @@
     "available": false,
     "status": {
       "stage": "pending-data-verification",
-      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
-      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+      "noteEn": "National gazette votes reconcile and every official seat is reproduced. Full winning-list candidate rosters remain incomplete; no locality dataset. The 1992 agreement notice was not recovered; agreement completeness is unknown.",
+      "noteHe": "הקולות ברשומות תואמים לסכומים וכל המנדטים הרשמיים שוחזרו. תעתיק המועמדים בכל הרשימות הזוכות טרם הושלם; אין נתוני יישובים. הודעת ההתקשרויות משנת 1992 לא אותרה; שלמות ההסכמים אינה ידועה."
     }
   },
   {
@@ -177,8 +177,8 @@
     "available": false,
     "status": {
       "stage": "pending-data-verification",
-      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
-      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+      "noteEn": "National gazette votes reconcile and every official seat is reproduced. Full winning-list candidate rosters remain incomplete; no locality dataset. Complete 6-pair agreement notice verified.",
+      "noteHe": "הקולות ברשומות תואמים לסכומים וכל המנדטים הרשמיים שוחזרו. תעתיק המועמדים בכל הרשימות הזוכות טרם הושלם; אין נתוני יישובים. אומתה הודעת ההתקשרויות המלאה (6 זוגות)."
     }
   },
   {
@@ -190,8 +190,8 @@
     "available": false,
     "status": {
       "stage": "pending-data-verification",
-      "noteEn": "Official sources identified (docs/research/early-elections-sources.md); dataset not yet built and verified.",
-      "noteHe": "נמצאו מקורות רשמיים; מאגר הנתונים טרם נבנה ואומת."
+      "noteEn": "National gazette votes reconcile and every official seat is reproduced. Full winning-list candidate rosters remain incomplete; no locality dataset. Complete 9-pair agreement notice verified.",
+      "noteHe": "הקולות ברשומות תואמים לסכומים וכל המנדטים הרשמיים שוחזרו. תעתיק המועמדים בכל הרשימות הזוכות טרם הושלם; אין נתוני יישובים. אומתה הודעת ההתקשרויות המלאה (9 זוגות)."
     }
   },
   {

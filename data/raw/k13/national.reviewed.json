@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "id": "k13",
+  "reviewedOn": "2026-11-03",
+  "resultsSourceId": "k13-results-gazette",
+  "resultsPages": [
+    3776,
+    3777
+  ],
+  "gazetteTotals": {
+    "valid": 2616841,
+    "invalid": 21102
+  },
+  "supplementalTotals": {
+    "sourceId": "k13-k15-cbs-national-totals",
+    "registered": 3409015,
+    "votesCast": 2637943
+  },
+  "lists": [
+    {
+      "letters": "אמת",
+      "nameHe": "העבודה בראשות רבין",
+      "votes": 906810,
+      "officialSeats": 44
+    },
+    {
+      "letters": "ב",
+      "nameHe": "מפד״ל חזית דתית לאומית - המזרחי הפועל המזרחי",
+      "votes": 129663,
+      "officialSeats": 6
+    },
+    {
+      "letters": "ג",
+      "nameHe": "יהדות התורה המאוחדת - אגודת ישראל - דגל התורה - הרב יצחק פרץ",
+      "votes": 86167,
+      "officialSeats": 4
+    },
+    {
+      "letters": "ד",
+      "nameHe": "התנועה הלאומית הדמוקרטית ועליה",
+      "votes": 11697,
+      "officialSeats": 0
+    },
+    {
+      "letters": "דף",
+      "nameHe": "פיקנטי בראשות משה בדש",
+      "votes": 3750,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ו",
+      "nameHe": "חזית דמוקרטית לשלום ולשוויון - המפלגה הקומוניסטית הישראלית וחוגי ציבור יהודים וערבים",
+      "votes": 62546,
+      "officialSeats": 3
+    },
+    {
+      "letters": "זה",
+      "nameHe": "ציפר",
+      "votes": 523,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ט",
+      "nameHe": "מולדת",
+      "votes": 62269,
+      "officialSeats": 3
+    },
+    {
+      "letters": "יד",
+      "nameHe": "התקוה - תנועה חברתית לרווחה בראשות צ׳רלי ביטון",
+      "votes": 2053,
+      "officialSeats": 0
+    },
+    {
+      "letters": "יז",
+      "nameHe": "התורה הארץ בראשות הרב משה לוינגר",
+      "votes": 3708,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ים",
+      "nameHe": "מפלגת חוק הטבע",
+      "votes": 1734,
+      "officialSeats": 0
+    },
+    {
+      "letters": "כי",
+      "nameHe": "תל״י התנועה להתחדשות ישראל",
+      "votes": 1336,
+      "officialSeats": 0
+    },
+    {
+      "letters": "מחל",
+      "nameHe": "הליכוד",
+      "votes": 651229,
+      "officialSeats": 32
+    },
+    {
+      "letters": "מרצ",
+      "nameHe": "מרצ - ישראל הדמוקרטית - רצ מפם שינוי",
+      "votes": 250667,
+      "officialSeats": 12
+    },
+    {
+      "letters": "נ",
+      "nameHe": "על גלגלים",
+      "votes": 3355,
+      "officialSeats": 0
+    },
+    {
+      "letters": "נז",
+      "nameHe": "תנועת נפגעי משכנתאות חסרי דיור ועולים משוחררים",
+      "votes": 5962,
+      "officialSeats": 0
+    },
+    {
+      "letters": "נס",
+      "nameHe": "מפלגת נשים",
+      "votes": 2886,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ע",
+      "nameHe": "המפלגה הדמוקרטית הערבית",
+      "votes": 40788,
+      "officialSeats": 2
+    },
+    {
+      "letters": "פ",
+      "nameHe": "הרשימה המתקדמת לשלום",
+      "votes": 24181,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ץ",
+      "nameHe": "צומת - התנועה להתחדשות ציונית ובלתי מפלגתיים",
+      "votes": 166366,
+      "officialSeats": 8
+    },
+    {
+      "letters": "ק",
+      "nameHe": "גימלאים עולים קשישים בישראל",
+      "votes": 8327,
+      "officialSeats": 0
+    },
+    {
+      "letters": "קל",
+      "nameHe": "גאולת ישראל בראשות הרב אליעזר מזרחי",
+      "votes": 12851,
+      "officialSeats": 0
+    },
+    {
+      "letters": "קנ",
+      "nameHe": "המפלגה הליברלית החדשה בראשות יצחק מודעי",
+      "votes": 16669,
+      "officialSeats": 0
+    },
+    {
+      "letters": "שס",
+      "nameHe": "ש״ס - התאחדות הספרדים שומרי תורה",
+      "votes": 129347,
+      "officialSeats": 6
+    },
+    {
+      "letters": "ת",
+      "nameHe": "תחיה",
+      "votes": 31957,
+      "officialSeats": 0
+    }
+  ],
+  "agreements": {
+    "sourceId": null,
+    "complete": false,
+    "pages": [],
+    "pairs": [],
+    "note": "No notice recovered in the bounded search. Empty sourced inputs reproduce the published seats, but do not prove absence or completeness of agreements."
+  },
+  "discrepancies": [],
+  "releaseBlockers": [
+    "Complete candidate rosters for every seat-winning list have not been transcribed and checked."
+  ],
+  "hasLocalities": false,
+  "localityNote": "No reconciled locality dataset is released. Secondary polling spreadsheets are not treated as reconciled national evidence.",
+  "sourceNotes": [
+    "IDI table is 1,000 votes short in aggregate; no secondary vote table is imported."
+  ]
+}

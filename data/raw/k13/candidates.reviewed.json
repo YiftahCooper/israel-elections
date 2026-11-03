@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "id": "k13",
+  "sourceId": "k13-candidates-gazette",
+  "reviewedOn": "2026-11-03",
+  "allWinningRostersVerified": false,
+  "note": "Partial reviewed evidence only. Complete roster transcription remains a release blocker. No draft/unverified names are promoted.",
+  "lists": [
+    {
+      "letters": "אמת",
+      "complete": false,
+      "publishedCount": 120,
+      "gazettePages": [
+        3620,
+        3621
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "רבין יצחק",
+          "page": 3620
+        },
+        {
+          "rank": 2,
+          "nameHe": "פרס שמעון",
+          "page": 3620
+        },
+        {
+          "rank": 3,
+          "nameHe": "בורג אברהם",
+          "page": 3620
+        },
+        {
+          "rank": 4,
+          "nameHe": "בן אליעזר בנימין",
+          "page": 3620
+        },
+        {
+          "rank": 5,
+          "nameHe": "נמיר אורה",
+          "page": 3620
+        },
+        {
+          "rank": 6,
+          "nameHe": "רמון חיים",
+          "page": 3620
+        },
+        {
+          "rank": 7,
+          "nameHe": "חריש מיכאל",
+          "page": 3620
+        },
+        {
+          "rank": 8,
+          "nameHe": "קיסר ישראל",
+          "page": 3620
+        },
+        {
+          "rank": 9,
+          "nameHe": "ליבאי דוד",
+          "page": 3620
+        },
+        {
+          "rank": 10,
+          "nameHe": "זווילי נסים",
+          "page": 3620
+        }
+      ],
+      "electedCrossCheck": {
+        "resultsPages": [
+          3776,
+          3777
+        ],
+        "checkedThroughRank": 10,
+        "note": "First ten registered names checked against the first ten elected members in results section 4; surname/given-name order retained."
+      }
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "id": "k14",
+  "sourceId": "k14-candidates-gazette",
+  "reviewedOn": "2026-11-03",
+  "allWinningRostersVerified": false,
+  "note": "Partial reviewed evidence only. Complete roster transcription remains a release blocker. No draft/unverified names are promoted.",
+  "lists": [
+    {
+      "letters": "אמת",
+      "complete": false,
+      "publishedCount": 117,
+      "gazettePages": [
+        3286,
+        3287
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "פרס שמעון",
+          "page": 3286
+        },
+        {
+          "rank": 2,
+          "nameHe": "ברעם עוזי",
+          "page": 3286
+        },
+        {
+          "rank": 3,
+          "nameHe": "ברק אהוד",
+          "page": 3286
+        },
+        {
+          "rank": 4,
+          "nameHe": "בן-אליעזר בנימין",
+          "page": 3286
+        },
+        {
+          "rank": 5,
+          "nameHe": "רמון חיים",
+          "page": 3286
+        },
+        {
+          "rank": 6,
+          "nameHe": "שוחט אברהם בייגה",
+          "page": 3286
+        },
+        {
+          "rank": 7,
+          "nameHe": "זווילי נסים",
+          "page": 3286
+        },
+        {
+          "rank": 8,
+          "nameHe": "סנה אפרים",
+          "page": 3286
+        },
+        {
+          "rank": 9,
+          "nameHe": "איציק דליה",
+          "page": 3286
+        },
+        {
+          "rank": 10,
+          "nameHe": "אור אורי",
+          "page": 3286
+        }
+      ],
+      "electedCrossCheck": {
+        "resultsPages": [
+          3482,
+          3483
+        ],
+        "checkedThroughRank": 10,
+        "note": "First ten registered names checked against the first ten elected members in results section 4; surname/given-name order retained."
+      }
+    },
+    {
+      "letters": "הד",
+      "complete": true,
+      "publishedCount": 12,
+      "gazettePages": [
+        3288
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "קהלני אביגדור",
+          "page": 3288
+        },
+        {
+          "rank": 2,
+          "nameHe": "הראל יהודה",
+          "page": 3288
+        },
+        {
+          "rank": 3,
+          "nameHe": "זיסמן עמנואל",
+          "page": 3288
+        },
+        {
+          "rank": 4,
+          "nameHe": "לובוצקי אלכסנדר",
+          "page": 3288
+        },
+        {
+          "rank": 5,
+          "nameHe": "קרן עוזי",
+          "page": 3288
+        },
+        {
+          "rank": 6,
+          "nameHe": "מלכה אליהו",
+          "page": 3288
+        },
+        {
+          "rank": 7,
+          "nameHe": "פרלוב אמירה",
+          "page": 3288
+        },
+        {
+          "rank": 8,
+          "nameHe": "פארס כאמל",
+          "page": 3288
+        },
+        {
+          "rank": 9,
+          "nameHe": "לוי רענן",
+          "page": 3288
+        },
+        {
+          "rank": 10,
+          "nameHe": "שמשי אלישיב",
+          "page": 3288
+        },
+        {
+          "rank": 11,
+          "nameHe": "שעשוע-חסון רנה",
+          "page": 3288
+        },
+        {
+          "rank": 12,
+          "nameHe": "קרלבסקי אברהם",
+          "page": 3288
+        }
+      ],
+      "electedCrossCheck": {
+        "resultsPages": [
+          3483
+        ],
+        "checkedThroughRank": 4,
+        "note": "All four elected names checked against results section 4. Original registered order retained."
+      }
+    }
+  ]
+}

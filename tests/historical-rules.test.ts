@@ -6,9 +6,9 @@ import type { ElectionId } from '../src/data/schema.ts';
 import { loadDataset } from './helpers.ts';
 
 describe('historical statutory threshold eras', () => {
-  for (let n = 16; n <= 26; n++) {
+  for (let n = 13; n <= 26; n++) {
     const id = `k${n}` as ElectionId;
-    const preset = n === 16 ? ISRAEL_1992 : n <= 19 ? ISRAEL_2004 : ISRAEL_2014;
+    const preset = n <= 16 ? ISRAEL_1992 : n <= 19 ? ISRAEL_2004 : ISRAEL_2014;
     it(`${id}: dataset rules and historical reset use its own era`, () => {
       // Synthetic dataset tests rule plumbing only; it is NOT historical seat evidence.
       const ds = { ...loadDataset('k25'), id, ruleSetId: preset.id };

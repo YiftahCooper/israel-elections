@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 1,
+  "id": "k15",
+  "reviewedOn": "2026-11-03",
+  "resultsSourceId": "k15-results-gazette",
+  "resultsPages": [
+    3376,
+    3377,
+    3378
+  ],
+  "gazetteTotals": {
+    "valid": 3309416,
+    "invalid": 64332
+  },
+  "supplementalTotals": {
+    "sourceId": "k13-k15-cbs-national-totals",
+    "registered": 4285428,
+    "votesCast": 3373748
+  },
+  "lists": [
+    {
+      "letters": "אמת",
+      "nameHe": "ישראל אחת בראשות אהוד ברק - העבודה גשר מימד",
+      "votes": 670484,
+      "officialSeats": 26
+    },
+    {
+      "letters": "ב",
+      "nameHe": "המפד״ל - המפלגה הדתית לאומית המזרחי - הפועל המזרחי",
+      "votes": 140307,
+      "officialSeats": 5
+    },
+    {
+      "letters": "ג",
+      "nameHe": "יהדות התורה המאוחדת והשבת אגודת ישראל - דגל התורה",
+      "votes": 125741,
+      "officialSeats": 5
+    },
+    {
+      "letters": "ד",
+      "nameHe": "אלתג׳מע אלוטני אלדימוקרטי (בל״ד)",
+      "votes": 66103,
+      "officialSeats": 2
+    },
+    {
+      "letters": "הד",
+      "nameHe": "הדרך השלישית עם הגולן בראשות אביגדור קהלני",
+      "votes": 26290,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ו",
+      "nameHe": "חזית דמוקרטית לשלום ולשוויון - חד״ש (המפלגה הקומוניסטית הישראלית וחוגי ציבור יהודים וערבים)",
+      "votes": 87022,
+      "officialSeats": 3
+    },
+    {
+      "letters": "ז",
+      "nameHe": "מפלגת זכויות הגבר במשפחה - רע״ש",
+      "votes": 1257,
+      "officialSeats": 0
+    },
+    {
+      "letters": "זך",
+      "nameHe": "מורשת אבות בראשות הרב בא-גד",
+      "votes": 1164,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ט",
+      "nameHe": "האיחוד הלאומי - מולדת חרות תקומה",
+      "votes": 100181,
+      "officialSeats": 4
+    },
+    {
+      "letters": "ים",
+      "nameHe": "לב - עולים למען ישראל",
+      "votes": 6311,
+      "officialSeats": 0
+    },
+    {
+      "letters": "יש",
+      "nameHe": "שינוי - התנועה החילונית בראשות לפיד ופורז",
+      "votes": 167748,
+      "officialSeats": 6
+    },
+    {
+      "letters": "כן",
+      "nameHe": "ישראל בעליה בראשות נתן שרנסקי",
+      "votes": 171705,
+      "officialSeats": 6
+    },
+    {
+      "letters": "ל",
+      "nameHe": "ישראל ביתנו בראשות אביגדור ליברמן",
+      "votes": 86153,
+      "officialSeats": 4
+    },
+    {
+      "letters": "ם",
+      "nameHe": "עם אחד בראשות עמיר פרץ - סיעת העובדים והגימלאים בישראל",
+      "votes": 64143,
+      "officialSeats": 2
+    },
+    {
+      "letters": "מחל",
+      "nameHe": "הליכוד בראשות בנימין נתניהו",
+      "votes": 468103,
+      "officialSeats": 19
+    },
+    {
+      "letters": "מרצ",
+      "nameHe": "מרצ ישראל הדמוקרטית",
+      "votes": 253525,
+      "officialSeats": 10
+    },
+    {
+      "letters": "נ",
+      "nameHe": "מפלגת המרכז הפרוגרסיבית (מיוסדת ע״י יוצאי רומניה)",
+      "votes": 2797,
+      "officialSeats": 0
+    },
+    {
+      "letters": "נץ",
+      "nameHe": "מפלגת הנגב",
+      "votes": 4324,
+      "officialSeats": 0
+    },
+    {
+      "letters": "עם",
+      "nameHe": "הרשימה הערבית המאוחדת",
+      "votes": 114810,
+      "officialSeats": 5
+    },
+    {
+      "letters": "פ",
+      "nameHe": "פנינה רוזנבלום",
+      "votes": 44953,
+      "officialSeats": 0
+    },
+    {
+      "letters": "פה",
+      "nameHe": "מפלגת המרכז בראשות יצחק מרדכי",
+      "votes": 165622,
+      "officialSeats": 6
+    },
+    {
+      "letters": "פז",
+      "nameHe": "כח לגימלאים בראשות גדעון בן ישראל",
+      "votes": 37525,
+      "officialSeats": 0
+    },
+    {
+      "letters": "ץ",
+      "nameHe": "צומת - התנועה לציונות מתחדשת",
+      "votes": 4128,
+      "officialSeats": 0
+    },
+    {
+      "letters": "קז",
+      "nameHe": "מפלגת הקזינו - עזרא טיסונה מוסד ההימורים הישראלי",
+      "votes": 6540,
+      "officialSeats": 0
+    },
+    {
+      "letters": "קם",
+      "nameHe": "אירגון הפעולה הדמוקרטי דע״ם",
+      "votes": 2151,
+      "officialSeats": 0
+    },
+    {
+      "letters": "קנ",
+      "nameHe": "עלה ירוק",
+      "votes": 34029,
+      "officialSeats": 0
+    },
+    {
+      "letters": "קף",
+      "nameHe": "ערבי חדש",
+      "votes": 2042,
+      "officialSeats": 0
+    },
+    {
+      "letters": "קץ",
+      "nameHe": "תקווה",
+      "votes": 7366,
+      "officialSeats": 0
+    },
+    {
+      "letters": "רם",
+      "nameHe": "מפלגת חוק הטבע",
+      "votes": 2924,
+      "officialSeats": 0
+    },
+    {
+      "letters": "רק",
+      "nameHe": "הירוקים",
+      "votes": 13292,
+      "officialSeats": 0
+    },
+    {
+      "letters": "שס",
+      "nameHe": "ש״ס התאחדות הספרדים העולמית שומרי תורה",
+      "votes": 430676,
+      "officialSeats": 17
+    }
+  ],
+  "agreements": {
+    "sourceId": "k15-agreements-gazette",
+    "complete": true,
+    "pages": [
+      3305
+    ],
+    "pairs": [
+      [
+        "אמת",
+        "מרצ"
+      ],
+      [
+        "ט",
+        "כן"
+      ],
+      [
+        "יש",
+        "רק"
+      ],
+      [
+        "ם",
+        "ל"
+      ],
+      [
+        "מחל",
+        "ב"
+      ],
+      [
+        "עם",
+        "ו"
+      ],
+      [
+        "פ",
+        "פז"
+      ],
+      [
+        "פה",
+        "הד"
+      ],
+      [
+        "שס",
+        "ג"
+      ]
+    ]
+  },
+  "discrepancies": [],
+  "releaseBlockers": [
+    "Complete candidate rosters for every seat-winning list have not been transcribed and checked."
+  ],
+  "hasLocalities": false,
+  "localityNote": "No reconciled locality dataset is released. Secondary polling spreadsheets are not treated as reconciled national evidence.",
+  "sourceNotes": [
+    "PM-ballot valid 3,193,494 is excluded; Knesset valid is 3,309,416.",
+    "YP 4757 p.3378 records Shas leader Aryeh Deri resigning on 19 May 1999, after the election. Gazette candidate snapshots are not later membership."
+  ]
+}
