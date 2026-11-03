@@ -397,7 +397,7 @@
             },
             {
               "rank": 29,
-              "nameHe": "רייזר-ששון צבי",
+              "nameHe": "דינשטיין צבי",
               "knessetPersonId": 2282,
               "knessetBioMentionsParty": false,
               "evidence": [
@@ -410,7 +410,7 @@
                 }
               ],
               "confidence": "medium",
-              "note": "Dataset name \"רייזר-ששון צבי\" does not match the gazette: the IDI scan of YP 1563 prints \"דינשטיין צבי\" at rank 29, and Zvi Dinstein (PersonID 2282) is the only opening Alignment member missing from the roster. Assignment applies to the person at rank 29; the dataset name should be corrected."
+              "note": "Roster corrected on 2026-11-04 from the misreading \"רייזר-ששון צבי\" to \"דינשטיין צבי\" as printed (YP 1563 p. 207; YP 1573 p. 434); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
             },
             {
               "rank": 30,
@@ -438,11 +438,12 @@
             },
             {
               "rank": 32,
-              "nameHe": "פיינברג-סרני עדה",
+              "nameHe": "פינברג-סירני עדה",
               "knessetPersonId": 2534,
               "knessetBioMentionsParty": false,
               "evidence": [],
-              "confidence": "medium"
+              "confidence": "medium",
+              "note": "Roster corrected on 2026-11-04 from the misreading \"פיינברג-סרני עדה\" to \"פינברג-סירני עדה\" as printed (YP 1573 p. 434; YP 1563 p. 207); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
             },
             {
               "rank": 34,
@@ -1984,6 +1985,19 @@
         }
       ],
       "confidence": "medium"
+    }
+  ],
+  "datasetRosterConflicts": [],
+  "resolvedRosterConflicts": [
+    {
+      "letters": "אמת",
+      "rank": 29,
+      "previousDatasetName": "רייזר-ששון צבי",
+      "datasetName": "דינשטיין צבי",
+      "resolution": "transcription error corrected",
+      "evidence": "YP 1563 p. 207; YP 1573 p. 434",
+      "resolvedOn": "2026-11-04",
+      "record": "docs/decisions/DRAFT-roster-corrections-and-odata-audit.md"
     }
   ]
 }

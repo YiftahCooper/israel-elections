@@ -531,7 +531,7 @@
       "candidates": [
         {
           "rank": 1,
-          "nameHe": "סייף אלדין מוחמד סעיד מחמוד זועבי",
+          "nameHe": "סייף אלאדין מוחמד סעיד חוסיין זועבי",
           "page": 1324
         }
       ],
@@ -544,7 +544,7 @@
           1
         ],
         "namesHe": [
-          "סייף אלדין מוחמד סעיד מחמוד זועבי"
+          "סייף אלאדין מוחמד סעיד חוסיין זועבי"
         ],
         "note": "Visually compared name by name; namesHe uses surname/given order also when results print given/surname order. Punctuation normalized; explicit variants retain other differences.",
         "spellingVariants": []
@@ -1127,6 +1127,16 @@
         "note": "Official Knesset OData: PersonID2143; membership record997 (PositionID61) and Ratz faction record27111 (PositionID54, FactionID405), both start1977-06-13, first session. Registered rank1 is Aloni Shulamit in YP2319 p1330. YP2326 omits the paragraph; no gazette-page cross-check is claimed."
       },
       "note": "YP2326 omits the elected-member paragraph; rank1 is instead checked against official Knesset opening-date membership and Ratz affiliation, retained as k9-ratz-odata."
+    }
+  ],
+  "corrections": [
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "ים",
+      "rank": 1,
+      "from": "סייף אלדין מוחמד סעיד מחמוד זועבי",
+      "to": "סייף אלאדין מוחמד סעיד חוסיין זועבי",
+      "evidence": "Re-read at high zoom: candidate notice p. 1324 (k9-candidates-gazette PDF page 6) prints \"סייף אלאדין מוחמד סעיד / חוסיין זועבי\" over two lines; the results notice p. 1495 (PDF page 3) prints the same, the first letter of חוסיין heavily inked (ח, possibly read as ת)."
     }
   ]
 }

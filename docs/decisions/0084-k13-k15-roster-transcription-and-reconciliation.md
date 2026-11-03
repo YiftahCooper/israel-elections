@@ -151,3 +151,10 @@ the candidate notice, not an assertion that all later withdrawal history is chec
 | מפלגת חוק הטבע (רם) | 0 | — | Unavailable |
 | הירוקים (רק) | 0 | — | Unavailable |
 | ש״ס התאחדות הספרדים העולמית שומרי תורה (שס) | 17 | 1–18 | Truncated |
+
+## Addendum, 4 November 2026: the 1992 "given-name variant" was a misreading
+
+On re-reading, YP 4017 p. 3620 prints **אור אורי** at Labor rank 14, as YP 4021 p. 3776 does. The rank-specific
+exception was removed and the roster corrected. Also corrected: 1996 Likud–Gesher–Tzomet #15 דיין חיים and #30 לנקרי
+יהודה, and 1999 UAL #2 סאנע טלב, among others. The "independent" 1996 elected readings had repeated the
+roster's misreadings. See the [draft record](DRAFT-roster-corrections-and-odata-audit.md).

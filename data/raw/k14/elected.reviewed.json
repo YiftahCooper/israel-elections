@@ -18,7 +18,7 @@
         "בן-אליעזר בנימין",
         "רמון חיים",
         "שוחט אברהם בייגה",
-        "זווילי נסים",
+        "זוילי נסים",
         "סנה אפרים",
         "איציק דליה",
         "אור אורי",
@@ -30,7 +30,7 @@
         "כץ יוסי",
         "מסאלחה נואף",
         "בן-מנחם אלי",
-        "גולדשמיט אלי",
+        "גולדשמידט אלי",
         "ליבאי דוד",
         "כהן רענן",
         "פרץ עמיר",
@@ -226,7 +226,7 @@
         "הנגבי צחי",
         "לנדאו עוזי",
         "לוי מקסים",
-        "ריבלין חיים",
+        "דיין חיים",
         "לבנת לימור",
         "איתן מיכאל",
         "שלום סילבן",
@@ -241,8 +241,8 @@
         "הירשזון אברהם",
         "ראם דוד",
         "בוים זאב",
-        "ליבני יהודה",
-        "בדש פנחס",
+        "לנקרי יהודה",
+        "בדש פיני פנחס",
         "עמור שאול"
       ],
       "candidateRanks": [
@@ -292,7 +292,7 @@
         "כהן רן",
         "צוקר דוד",
         "מאור ענת",
-        "פורז פורמנטיר אברהם",
+        "פורז פוזמנטיר אברהם",
         "חזן נעמי",
         "חאג׳ יחיא וליד"
       ],
@@ -316,7 +316,7 @@
       "names": [
         "דהאמשה עבד אלמלכ",
         "דראושה עבד אלוהאב",
-        "אלצאנע טלב",
+        "אלסאנע טלב",
         "כטיב טופיק"
       ],
       "candidateRanks": [
@@ -355,6 +355,64 @@
         9,
         10
       ]
+    }
+  ],
+  "corrections": [
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "אמת",
+      "rank": 7,
+      "from": "זווילי נסים",
+      "to": "זוילי נסים",
+      "evidence": "Re-read at high zoom; both notices print \"זוילי נסים\": YP 4408 p. 3286 (candidate PDF page 2); results YP 4414 p. 3482 (results PDF page 2)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "אמת",
+      "rank": 20,
+      "from": "גולדשמיט אלי",
+      "to": "גולדשמידט אלי",
+      "evidence": "Re-read at high zoom; both notices print \"גולדשמידט אלי\": YP 4408 p. 3286 (candidate PDF page 2); results YP 4414 p. 3482 (results PDF page 2)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "מחל",
+      "rank": 15,
+      "from": "ריבלין חיים",
+      "to": "דיין חיים",
+      "evidence": "Re-read at high zoom; both notices print \"דיין חיים\": YP 4408 p. 3290 (candidate PDF page 6); results YP 4414 p. 3483 (results PDF page 3). \"ריבלין ראובן\" is printed at rank 33 (not elected); no \"ריבלין חיים\" is printed. The earlier candidate and results readings shared this misreading."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "מחל",
+      "rank": 30,
+      "from": "ליבני יהודה",
+      "to": "לנקרי יהודה",
+      "evidence": "Re-read at high zoom; both notices print \"לנקרי יהודה\": YP 4408 p. 3290 (candidate PDF page 6); results YP 4414 p. 3483 (results PDF page 3). The earlier candidate and results readings shared this misreading."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "מחל",
+      "rank": 31,
+      "from": "בדש פנחס",
+      "to": "בדש פיני פנחס",
+      "evidence": "Re-read at high zoom; both notices print \"בדש פיני פנחס\": YP 4408 p. 3290 (candidate PDF page 6); results YP 4414 p. 3483 (results PDF page 3)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "מרצ",
+      "rank": 7,
+      "from": "פורז פורמנטיר אברהם",
+      "to": "פורז פוזמנטיר אברהם",
+      "evidence": "Re-read at high zoom; both notices print \"פורז פוזמנטיר אברהם\": YP 4408 p. 3290 (candidate PDF page 6); results YP 4414 p. 3483 (results PDF page 3)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "ע",
+      "rank": 3,
+      "from": "אלצאנע טלב",
+      "to": "אלסאנע טלב",
+      "evidence": "Re-read at high zoom; both notices print \"אלסאנע טלב\": YP 4408 p. 3292 (candidate PDF page 8); results YP 4414 p. 3483 (results PDF page 3)."
     }
   ]
 }

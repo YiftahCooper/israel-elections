@@ -1122,8 +1122,8 @@
     "description": "Released national evidence: six official agreements, exact inferred-cap reproduction, all 120 elected names checked; Ratz supplemented by official opening-date Knesset OData.",
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-03T16:58:39.222721+00:00",
-    "bytes": 9870,
-    "sha256": "95914480707f5d188d9eb697e770ec9cf46bba8ca2f1a2477c9c8dfd6e19fb33"
+    "bytes": 9874,
+    "sha256": "86d77cfb51327acdaaf12548414c8edf1a81992b845b3986368a5655f42fd323"
   },
   {
     "id": "k9-candidates-reviewed",
@@ -1134,8 +1134,8 @@
     "description": "Official winning-list leading ranks, all 120 elected-name comparisons (119 results gazette plus Ratz official opening-date Knesset OData), page references and explicit spelling variants.",
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-03T17:01:30.664880+00:00",
-    "bytes": 26874,
-    "sha256": "7c15340183c11f976e1dad44d6279453bd0e775a2ed030a99a752d9163df1a4f"
+    "bytes": 27482,
+    "sha256": "bad96a6f64a27b4913edc3a0a88aca98f4518080c6d3a7650465d83121ad9c9e"
   },
   {
     "id": "k10-results-gazette",
@@ -1218,8 +1218,8 @@
     "description": "Official winning-list leading ranks and name-by-name elected comparisons; page references, spelling variants and incomplete checks explicitly retained.",
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-03T16:34:27.797495+00:00",
-    "bytes": 36533,
-    "sha256": "00627177df4fd5021bf2351243ed59d8dd4ee82e76b598864b4f1d108a5bf051"
+    "bytes": 38758,
+    "sha256": "2a881fef88dd088e7b91adc93a750c61527323716de4f9ebd0352c94d969a1e7"
   },
   {
     "id": "k12-results-gazette",
@@ -1378,6 +1378,294 @@
     "bytes": 45880,
     "sha256": "0ff469efe572fba7a4b1207f8d8c2756cfb5bbaf9bec246a677275557c60410d",
     "note": "Replaces an English Wikipedia list used as the fallback cross-check on 3 November 2026; the owner does not accept English Wikipedia as a source."
+  },
+  {
+    "id": "k1-membership-odata",
+    "file": "k1/knesset-odata-members.json",
+    "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%201%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+    "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+    "official": true,
+    "description": "Membership identity cross-check of Knesset 1: MK positions (PositionID 43/61), faction memberships (PositionID 54) and person names. The members whose StartDate is the opening day (1949-02-14) were compared with every elected member the app shows; every difference and correction is in docs/research/elected-names-odata-audit.md. Candidate spellings remain from the gazette; this file supplies no names.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 78956,
+    "sha256": "f080885c12333274158320e600d12b8224376c31572f3a5aa3a836c504f7eff6"
+  },
+  {
+    "id": "k2-membership-odata",
+    "file": "k2/knesset-odata-members.json",
+    "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%202%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+    "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+    "official": true,
+    "description": "Membership identity cross-check of Knesset 2: MK positions (PositionID 43/61), faction memberships (PositionID 54) and person names. The members whose StartDate is the opening day (1951-08-20) were compared with every elected member the app shows; every difference and correction is in docs/research/elected-names-odata-audit.md. Candidate spellings remain from the gazette; this file supplies no names.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 83549,
+    "sha256": "7dac97b89bc01c0dfb64eb95eaa3e71af28f8dcd61758cd2cb013cf27b531b59"
+  },
+  {
+    "id": "k3-membership-odata",
+    "file": "k3/knesset-odata-members.json",
+    "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%203%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+    "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+    "official": true,
+    "description": "Membership identity cross-check of Knesset 3: MK positions (PositionID 43/61), faction memberships (PositionID 54) and person names. The members whose StartDate is the opening day (1955-08-15) were compared with every elected member the app shows; every difference and correction is in docs/research/elected-names-odata-audit.md. Candidate spellings remain from the gazette; this file supplies no names.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 89503,
+    "sha256": "ba1be59d8f95fba0cb008a607b4e2702dfc0dcca355921549f572744b1598f06"
+  },
+  {
+    "id": "k4-membership-odata",
+    "file": "k4/knesset-odata-members.json",
+    "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%204%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+    "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+    "official": true,
+    "description": "Membership identity cross-check of Knesset 4: MK positions (PositionID 43/61), faction memberships (PositionID 54) and person names. The members whose StartDate is the opening day (1959-11-30) were compared with every elected member the app shows; every difference and correction is in docs/research/elected-names-odata-audit.md. Candidate spellings remain from the gazette; this file supplies no names.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 81175,
+    "sha256": "18407948f15fbb458fe5afc6696aaf0baa1c393f6b57d47c26e9d68fdc663469"
+  },
+  {
+    "id": "k5-membership-odata",
+    "file": "k5/knesset-odata-members.json",
+    "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%205%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+    "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+    "official": true,
+    "description": "Membership identity cross-check of Knesset 5: MK positions (PositionID 43/61), faction memberships (PositionID 54) and person names. The members whose StartDate is the opening day (1961-09-04) were compared with every elected member the app shows; every difference and correction is in docs/research/elected-names-odata-audit.md. Candidate spellings remain from the gazette; this file supplies no names.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 92511,
+    "sha256": "9038e03cdbededede8264d7925586029489f19e7d92dd0058ddd5d22ee1b4493"
+  },
+  {
+    "id": "k6-membership-odata",
+    "file": "k6/knesset-odata-members.json",
+    "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%206%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+    "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+    "official": true,
+    "description": "Membership identity cross-check of Knesset 6: MK positions (PositionID 43/61), faction memberships (PositionID 54) and person names. The members whose StartDate is the opening day (1965-11-22) were compared with every elected member the app shows; every difference and correction is in docs/research/elected-names-odata-audit.md. Candidate spellings remain from the gazette; this file supplies no names.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 111059,
+    "sha256": "9745a093890655be3dac7c9b356ae9e7bbb73088c51f0a5d86bb44592127e5ec"
+  },
+  {
+    "id": "k7-membership-odata",
+    "file": "k7/knesset-odata-members.json",
+    "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%207%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+    "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+    "official": true,
+    "description": "Membership identity cross-check of Knesset 7: MK positions (PositionID 43/61), faction memberships (PositionID 54) and person names. The members whose StartDate is the opening day (1969-11-17) were compared with every elected member the app shows; every difference and correction is in docs/research/elected-names-odata-audit.md. Candidate spellings remain from the gazette; this file supplies no names.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 80539,
+    "sha256": "439686dee7522428153c89912e89676e2514e6da2b3688de9cc0e89375d0cef3"
+  },
+  {
+    "id": "k8-membership-odata",
+    "file": "k8/knesset-odata-members.json",
+    "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%208%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+    "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+    "official": true,
+    "description": "Membership identity cross-check of Knesset 8: MK positions (PositionID 43/61), faction memberships (PositionID 54) and person names. The members whose StartDate is the opening day (1974-01-21) were compared with every elected member the app shows; every difference and correction is in docs/research/elected-names-odata-audit.md. Candidate spellings remain from the gazette; this file supplies no names.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 90787,
+    "sha256": "cdd108054cd13c83977f048746fe32b5bab7eb5db4508024efc0cf8cc19ec193"
+  },
+  {
+    "id": "k9-membership-odata",
+    "file": "k9/knesset-odata-members.json",
+    "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%209%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+    "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+    "official": true,
+    "description": "Membership identity cross-check of Knesset 9: MK positions (PositionID 43/61), faction memberships (PositionID 54) and person names. The members whose StartDate is the opening day (1977-06-13) were compared with every elected member the app shows; every difference and correction is in docs/research/elected-names-odata-audit.md. Candidate spellings remain from the gazette; this file supplies no names.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 93346,
+    "sha256": "b8e23544189a20dd5ef0db578eef62b1f0d7d00734a9ef2ae2b94cdd89807e5f"
+  },
+  {
+    "id": "k10-membership-odata",
+    "file": "k10/knesset-odata-members.json",
+    "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2010%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+    "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+    "official": true,
+    "description": "Membership identity cross-check of Knesset 10: MK positions (PositionID 43/61), faction memberships (PositionID 54) and person names. The members whose StartDate is the opening day (1981-07-20) were compared with every elected member the app shows; every difference and correction is in docs/research/elected-names-odata-audit.md. Candidate spellings remain from the gazette; this file supplies no names.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 77490,
+    "sha256": "4d1330c1e7b11a732881bd57ca909dca9d8ecfee0d94f20c4fca08da3901afcb"
+  },
+  {
+    "id": "k11-membership-odata",
+    "file": "k11/knesset-odata-members.json",
+    "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2011%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+    "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+    "official": true,
+    "description": "Membership identity cross-check of Knesset 11: MK positions (PositionID 43/61), faction memberships (PositionID 54) and person names. The members whose StartDate is the opening day (1984-08-13) were compared with every elected member the app shows; every difference and correction is in docs/research/elected-names-odata-audit.md. Candidate spellings remain from the gazette; this file supplies no names.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 79476,
+    "sha256": "e0474cc8daa0f8e27a8876f1d9978b75ef6fd61c7f29bb4e99b0bac7a655d7ed"
+  },
+  {
+    "id": "k12-membership-odata",
+    "file": "k12/knesset-odata-members.json",
+    "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2012%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+    "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+    "official": true,
+    "description": "Membership identity cross-check of Knesset 12: MK positions (PositionID 43/61), faction memberships (PositionID 54) and person names. The members whose StartDate is the opening day (1988-11-21) were compared with every elected member the app shows; every difference and correction is in docs/research/elected-names-odata-audit.md. Candidate spellings remain from the gazette; this file supplies no names.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 92281,
+    "sha256": "aafd8222d5e1f1b7c73dcc12b07e6a444f64b01a54eedea85c79f081375784ea"
+  },
+  {
+    "id": "k13-membership-odata",
+    "file": "k13/knesset-odata-members.json",
+    "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2013%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+    "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+    "official": true,
+    "description": "Membership identity cross-check of Knesset 13: MK positions (PositionID 43/61), faction memberships (PositionID 54) and person names. The members whose StartDate is the opening day (1992-07-13) were compared with every elected member the app shows; every difference and correction is in docs/research/elected-names-odata-audit.md. Candidate spellings remain from the gazette; this file supplies no names.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 83031,
+    "sha256": "708c1552b35829cf2f20f67347da7adba9db00af23aca605791ce807546ba572"
+  },
+  {
+    "id": "k14-membership-odata",
+    "file": "k14/knesset-odata-members.json",
+    "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2014%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+    "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+    "official": true,
+    "description": "Membership identity cross-check of Knesset 14: MK positions (PositionID 43/61), faction memberships (PositionID 54) and person names. The members whose StartDate is the opening day (1996-06-17) were compared with every elected member the app shows; every difference and correction is in docs/research/elected-names-odata-audit.md. Candidate spellings remain from the gazette; this file supplies no names.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 96972,
+    "sha256": "365d368483b14e6709c822798cf562e2319f1498642b515a236ccde2a77a507a"
+  },
+  {
+    "id": "k15-membership-odata",
+    "file": "k15/knesset-odata-members.json",
+    "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2015%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+    "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+    "official": true,
+    "description": "Membership identity cross-check of Knesset 15: MK positions (PositionID 43/61), faction memberships (PositionID 54) and person names. The members whose StartDate is the opening day (1999-06-07) were compared with every elected member the app shows; every difference and correction is in docs/research/elected-names-odata-audit.md. Candidate spellings remain from the gazette; this file supplies no names.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 94614,
+    "sha256": "c5305e72d2a77ac324092a702297b1c766488af47acb0d91cdb0eeb4c7937f8a"
+  },
+  {
+    "id": "k18-membership-odata",
+    "file": "k18/knesset-odata-members.json",
+    "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2018%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+    "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+    "official": true,
+    "description": "Membership identity cross-check of Knesset 18: MK positions (PositionID 43/61), faction memberships (PositionID 54) and person names. The members whose StartDate is the opening day (2009-02-24) were compared with every elected member the app shows; every difference and correction is in docs/research/elected-names-odata-audit.md. Candidate spellings remain from the gazette; this file supplies no names.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 90843,
+    "sha256": "77643783ac6c95c0c52a2ec46fde52fc6db727cf403996a87fe8bc811e5774ca"
+  },
+  {
+    "id": "k19-membership-odata",
+    "file": "k19/knesset-odata-members.json",
+    "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2019%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+    "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+    "official": true,
+    "description": "Membership identity cross-check of Knesset 19: MK positions (PositionID 43/61), faction memberships (PositionID 54) and person names. The members whose StartDate is the opening day (2013-02-05) were compared with every elected member the app shows; every difference and correction is in docs/research/elected-names-odata-audit.md. Candidate spellings remain from the gazette; this file supplies no names.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 90180,
+    "sha256": "e9c626f5d2bd7bb311978ecaa7d5c09d352ef1649db436809bb5fd5133444d8f"
+  },
+  {
+    "id": "k20-membership-odata",
+    "file": "k20/knesset-odata-members.json",
+    "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2020%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+    "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+    "official": true,
+    "description": "Membership identity cross-check of Knesset 20: MK positions (PositionID 43/61), faction memberships (PositionID 54) and person names. The members whose StartDate is the opening day (2015-03-31) were compared with every elected member the app shows; every difference and correction is in docs/research/elected-names-odata-audit.md. Candidate spellings remain from the gazette; this file supplies no names.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 99949,
+    "sha256": "e832e5a1bd83fe5b4e3e3e33562e1118482ce3e83ace2cd619e60fe38dac2f53"
+  },
+  {
+    "id": "k21-membership-odata",
+    "file": "k21/knesset-odata-members.json",
+    "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2021%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+    "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+    "official": true,
+    "description": "Membership identity cross-check of Knesset 21: MK positions (PositionID 43/61), faction memberships (PositionID 54) and person names. The members whose StartDate is the opening day (2019-04-30) were compared with every elected member the app shows; every difference and correction is in docs/research/elected-names-odata-audit.md. Candidate spellings remain from the gazette; this file supplies no names.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 79663,
+    "sha256": "2b992b02b9f926e6a19d399b58b49b5eb8f8b626c2a986c83dcabe221ea85b3e"
+  },
+  {
+    "id": "k22-membership-odata",
+    "file": "k22/knesset-odata-members.json",
+    "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2022%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+    "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+    "official": true,
+    "description": "Membership identity cross-check of Knesset 22: MK positions (PositionID 43/61), faction memberships (PositionID 54) and person names. The members whose StartDate is the opening day (2019-10-03) were compared with every elected member the app shows; every difference and correction is in docs/research/elected-names-odata-audit.md. Candidate spellings remain from the gazette; this file supplies no names.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 82735,
+    "sha256": "ec1d4e4e607f0374cd77625ca6c512a1ed59b358e713475df60b9af26f0e3087"
+  },
+  {
+    "id": "k23-membership-odata",
+    "file": "k23/knesset-odata-members.json",
+    "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2023%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+    "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+    "official": true,
+    "description": "Membership identity cross-check of Knesset 23: MK positions (PositionID 43/61), faction memberships (PositionID 54) and person names. The members whose StartDate is the opening day (2020-03-16) were compared with every elected member the app shows; every difference and correction is in docs/research/elected-names-odata-audit.md. Candidate spellings remain from the gazette; this file supplies no names.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 113069,
+    "sha256": "aa7a1293fb48d9c3903a10e2858b3304b0859bf3b03a96ac6e51964f15a472f9"
+  },
+  {
+    "id": "k24-membership-odata",
+    "file": "k24/knesset-odata-members.json",
+    "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2024%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+    "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+    "official": true,
+    "description": "Membership identity cross-check of Knesset 24: MK positions (PositionID 43/61), faction memberships (PositionID 54) and person names. The members whose StartDate is the opening day (2021-04-06) were compared with every elected member the app shows; every difference and correction is in docs/research/elected-names-odata-audit.md. Candidate spellings remain from the gazette; this file supplies no names.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 103223,
+    "sha256": "3daf1b8615fa3f7b48d37f9b805284787c70b52e323c2af1baaa6ae0526947f9"
+  },
+  {
+    "id": "k25-membership-odata",
+    "file": "k25/knesset-odata-members.json",
+    "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2025%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+    "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+    "official": true,
+    "description": "Membership identity cross-check of Knesset 25: MK positions (PositionID 43/61), faction memberships (PositionID 54) and person names. The members whose StartDate is the opening day (2022-11-15) were compared with every elected member the app shows; every difference and correction is in docs/research/elected-names-odata-audit.md. Candidate spellings remain from the gazette; this file supplies no names.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 102568,
+    "sha256": "e7b7258c44c337d5e8e4e25610fc6d8a78a25ad35faa9a52c762b57e07346144"
+  },
+  {
+    "id": "k26-membership-odata",
+    "file": "k26/knesset-odata-members.json",
+    "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2026%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+    "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+    "official": true,
+    "description": "Provisional identity cross-check of Knesset 26: at retrieval OData had no MK positions (PositionID 43/61), only 120 faction memberships (PositionID 54) starting on the scheduled opening day, 2026-11-10. Those persons were compared with the app's elected members; see docs/research/elected-names-odata-audit.md. Not proof of the sworn-in membership.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 46638,
+    "sha256": "7e7d48ac808eb4b37df18353c5743630c47a42a1918efbfcfdbc350bcfc0fa46"
   },
   {
     "id": "k16-sharansky-withdrawal",
@@ -2332,8 +2620,8 @@
     "description": "Reviewed rosters transcription; source and printed page references retained in JSON.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
-    "bytes": 19742,
-    "sha256": "1eaf056e6254fe7e963cf55890ef7008c57802570629346970d6a430178a09d7"
+    "bytes": 19847,
+    "sha256": "5f6a4b6ba79e7ac448999c2ab9ee80f57dc2419eb3d9bdc1b6af509e5532f7cf"
   },
   {
     "id": "k13-elected-reviewed",
@@ -2344,8 +2632,8 @@
     "description": "Reviewed elected transcription; source and printed page references retained in JSON.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
-    "bytes": 6884,
-    "sha256": "d0a8d07a242e06f0e66c0f207a70f40e3595d8b581c0bfcac7be6305da6413f6"
+    "bytes": 7347,
+    "sha256": "4cece71a5a4626d0d36649bad3646221903c9a701c689200a7548c567724cd24"
   },
   {
     "id": "k14-national-reviewed",
@@ -2368,8 +2656,8 @@
     "description": "Reviewed rosters transcription; source and printed page references retained in JSON.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
-    "bytes": 20488,
-    "sha256": "a8dedd2d6e73cb20773fe8ffa57bf88e7bbeaf0473bc29350a1ac633ab479d8e"
+    "bytes": 23180,
+    "sha256": "06ea04f9a4e76622130c119ab11db6a8c0eb4114da74aa4b387120074aee658e"
   },
   {
     "id": "k14-elected-reviewed",
@@ -2380,8 +2668,8 @@
     "description": "Reviewed elected transcription; source and printed page references retained in JSON.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
-    "bytes": 7036,
-    "sha256": "c59eaa5a168af95098611e3dd84a80ff9b9beab1969ef4c3d15fe10bab4d1f92"
+    "bytes": 9728,
+    "sha256": "8ad89011de7877fa4afca77827db79782b3902ad19a50cca65b3d0d972c3d679"
   },
   {
     "id": "k15-national-reviewed",
@@ -2404,8 +2692,8 @@
     "description": "Reviewed rosters transcription; source and printed page references retained in JSON.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
-    "bytes": 22025,
-    "sha256": "2c3e38b3ce0d66fd78fa26f98819a65277501315f53110cb9ba443ff8a7f58da"
+    "bytes": 22377,
+    "sha256": "ed832424d917cd498dfeeaa3252bcc22a88762acff9200a2ca0725179298b482"
   },
   {
     "id": "k15-elected-reviewed",
@@ -2416,8 +2704,8 @@
     "description": "Reviewed elected transcription; source and printed page references retained in JSON.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
-    "bytes": 7703,
-    "sha256": "92ac5f41695d71c2878d0be5889573902c240bbca92c3980c7620068fa049d8c"
+    "bytes": 8055,
+    "sha256": "7efe298f8577952161853ca3689d63fdbd92ee1ffac011a5275d8b331decdb33"
   },
   {
     "id": "k10-candidates-reviewed",
@@ -2428,8 +2716,8 @@
     "method": "manual-review",
     "description": "Official winning-list leading ranks and name-by-name elected comparisons; page references, spelling variants and incomplete checks explicitly retained.",
     "retrievedAt": "2026-11-03T16:34:27.797461+00:00",
-    "bytes": 26136,
-    "sha256": "f23e27697c7ef51609168b2fed0d9d70b459e375281d03d8dd19d0ab77db1b6e"
+    "bytes": 30436,
+    "sha256": "fe5cfaf28d2a09ce8d76ca41d4a290139922aa939534b7d7b6e834f3d2b619b3"
   },
   {
     "id": "k12-candidates-reviewed",
@@ -2440,8 +2728,8 @@
     "method": "manual-review",
     "description": "Official winning-list leading ranks and name-by-name elected comparisons; page references, spelling variants and incomplete checks explicitly retained.",
     "retrievedAt": "2026-11-03T16:34:27.797524+00:00",
-    "bytes": 27469,
-    "sha256": "69be604d9d890fbed09dffff0e7ba37c37c344c198a7785600ba66baa63dd740"
+    "bytes": 29588,
+    "sha256": "1d91248bcc31070d99cc91cf776527b89b719c8f581ab5f147af925771dc4aac"
   },
   {
     "id": "k8-search-reviewed",
@@ -2590,8 +2878,8 @@
     "description": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
     "method": "visual-primary-review",
     "retrievedAt": "2026-11-03",
-    "bytes": 23700,
-    "sha256": "d1893a8148f6bf02d454735b19b6b68cbfa1de896a8f95d691c0f5229d5674b1",
+    "bytes": 24592,
+    "sha256": "e8be759bebce7fcb8a5dc953fd5f8010dae74362ece48b584415e114bfef29ce",
     "lastModified": null
   },
   {
@@ -2603,8 +2891,8 @@
     "description": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
     "method": "visual-primary-review",
     "retrievedAt": "2026-11-03",
-    "bytes": 23473,
-    "sha256": "fd72b813fd5a88994f333bc7a325817cab9d5a2b4c1e03b039162aae537060a4",
+    "bytes": 26997,
+    "sha256": "43170d91d25c791fc722a27ee7e604c35fa6b8bb682c85a4186fb8ec5cf85080",
     "lastModified": null
   },
   {
@@ -2616,8 +2904,8 @@
     "description": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
     "method": "visual-primary-review",
     "retrievedAt": "2026-11-03",
-    "bytes": 21869,
-    "sha256": "cc9014f5e6ddfbbc6e6ffe0183e1ef848a58669e3162e20e607a423fb9671683",
+    "bytes": 22973,
+    "sha256": "1a9f39ed423325300f6d841805dc5dffd75ffc132c5b423253f9a81fa2059931",
     "lastModified": null
   },
   {
@@ -2629,8 +2917,8 @@
     "description": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
     "method": "visual-primary-review",
     "retrievedAt": "2026-11-03",
-    "bytes": 21854,
-    "sha256": "dcc5a520e4bacc84162ea24d2532479e57a4a9bf40f864d8fda76a3f7581ad3e",
+    "bytes": 22705,
+    "sha256": "d9c8a6ee5380862377a1caf07ea5ec6914387bdc4f4ad7d14887c08a242b47dd",
     "lastModified": null
   },
   {
@@ -2642,8 +2930,8 @@
     "description": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
     "method": "visual-primary-review",
     "retrievedAt": "2026-11-03",
-    "bytes": 21552,
-    "sha256": "77eb42428138a09986eb8b27e5e1f6cccc918e200b1f7deefac692de93031f92",
+    "bytes": 21941,
+    "sha256": "3c2b64243be4c89c5d506c07bf7d9ac73ec959e3e2d00d4cc95c737f289cfb1e",
     "lastModified": null
   },
   {
@@ -2655,8 +2943,8 @@
     "description": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
     "method": "visual-primary-review",
     "retrievedAt": "2026-11-03",
-    "bytes": 22516,
-    "sha256": "7437065d2a6c00eba06939377148aba88b1af3e03a1d3b0e526d02c2c7412eee",
+    "bytes": 23221,
+    "sha256": "1d862922b9dc292c2d98a8850ad611ddfa71c29ae2809dd2a9c35a235da289fb",
     "lastModified": null
   },
   {

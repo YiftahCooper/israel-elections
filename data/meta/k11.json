@@ -106,8 +106,8 @@
           "rankNotes": [
             {
               "rank": 19,
-              "datasetName": "יגר יצחק",
-              "note": "roster reading \"יגר יצחק\" = Yitzhak Zeiger (OData PersonID 2335, Likud faction from 1984-08-13)"
+              "datasetName": "זיגר יצחק",
+              "note": "Roster corrected on 2026-11-04 from the misreading \"יגר יצחק\" to \"זיגר יצחק\" as printed (YP 3073 p. 2832; YP 3081 p. 3008); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
             }
           ]
         }
@@ -196,7 +196,7 @@
             {
               "rank": 16,
               "datasetName": "שפירא אליהו",
-              "note": "ROSTER CONFLICT: dataset reads \"שפירא אליהו\"; the MK seated at this rank was Eliyahu Speiser (OData PersonID 2659, Alignment faction from 1984-08-13)"
+              "note": "Checked, unchanged: the candidate notice itself prints \"שפירא אליהו\" (YP 3073 p. 2826); the results notice prints \"שפייזר אליהו\" (YP 3081 p. 3007). The person is Eliyahu Speiser; the dataset keeps the candidate-notice reading with a recorded spelling variant."
             },
             {
               "rank": 28,
@@ -205,8 +205,8 @@
             },
             {
               "rank": 37,
-              "datasetName": "רן נחמן",
-              "note": "ROSTER CONFLICT: dataset reads \"רן נחמן\"; the MK seated at this rank was Nahman Raz (OData PersonID 2606, Alignment faction from 1984-08-13)"
+              "datasetName": "רז נחמן",
+              "note": "Roster corrected on 2026-11-04 from the misreading \"רן נחמן\" to \"רז נחמן\" as printed (YP 3073 p. 2826; YP 3081 p. 3007); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
             }
           ]
         },
@@ -255,8 +255,8 @@
             },
             {
               "rank": 40,
-              "datasetName": "גרוסמן אריקה חיה",
-              "note": "roster spelling \"גרוסמן אריקה חיה\" = Haika Grossman"
+              "datasetName": "גרוסמן ארקין חיה",
+              "note": "Roster corrected on 2026-11-04 from the misreading \"גרוסמן אריקה חיה\" to \"גרוסמן ארקין חיה\" as printed (YP 3073 p. 2826; YP 3081 p. 3007); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
             },
             {
               "rank": 46,
@@ -968,18 +968,47 @@
       "confidence": "medium"
     }
   ],
-  "datasetRosterConflicts": [
+  "datasetRosterConflicts": [],
+  "resolvedRosterConflicts": [
     {
       "letters": "אמת",
       "rank": 16,
+      "previousDatasetName": "שפירא אליהו",
       "datasetName": "שפירא אליהו",
-      "note": "dataset reads \"שפירא אליהו\"; the MK seated at this rank was Eliyahu Speiser (OData PersonID 2659, Alignment faction from 1984-08-13)"
+      "resolution": "not a transcription error: gazette misprint, candidate-notice reading kept",
+      "evidence": "Checked, unchanged: the candidate notice itself prints \"שפירא אליהו\" (YP 3073 p. 2826); the results notice prints \"שפייזר אליהו\" (YP 3081 p. 3007). The person is Eliyahu Speiser; the dataset keeps the candidate-notice reading with a recorded spelling variant.",
+      "resolvedOn": "2026-11-04",
+      "record": "docs/decisions/DRAFT-roster-corrections-and-odata-audit.md"
     },
     {
       "letters": "אמת",
       "rank": 37,
-      "datasetName": "רן נחמן",
-      "note": "dataset reads \"רן נחמן\"; the MK seated at this rank was Nahman Raz (OData PersonID 2606, Alignment faction from 1984-08-13)"
+      "previousDatasetName": "רן נחמן",
+      "datasetName": "רז נחמן",
+      "resolution": "transcription error corrected",
+      "evidence": "YP 3073 p. 2826; YP 3081 p. 3007",
+      "resolvedOn": "2026-11-04",
+      "record": "docs/decisions/DRAFT-roster-corrections-and-odata-audit.md"
+    },
+    {
+      "letters": "הן",
+      "rank": 3,
+      "previousDatasetName": "ששי וידאן",
+      "datasetName": "עטשי זיידאן",
+      "resolution": "transcription error corrected",
+      "evidence": "YP 3073 p. 2828; YP 3081 p. 3007",
+      "resolvedOn": "2026-11-04",
+      "record": "docs/decisions/DRAFT-roster-corrections-and-odata-audit.md"
+    },
+    {
+      "letters": "מחל",
+      "rank": 19,
+      "previousDatasetName": "יגר יצחק",
+      "datasetName": "זיגר יצחק",
+      "resolution": "transcription error corrected",
+      "evidence": "YP 3073 p. 2832; YP 3081 p. 3008",
+      "resolvedOn": "2026-11-04",
+      "record": "docs/decisions/DRAFT-roster-corrections-and-odata-audit.md"
     }
   ]
 }

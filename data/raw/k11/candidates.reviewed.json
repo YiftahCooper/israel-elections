@@ -100,10 +100,10 @@
           "בן מאיר דב",
           "רמון חיים",
           "שלום אפרים",
-          "רן נחמן",
+          "רז נחמן",
           "סולודר עדנה",
           "ארצי יצחק",
-          "גרוסמן אריקה חיה",
+          "גרוסמן ארקין חיה",
           "הראל אהרן",
           "דראושה עבד אלוהאב",
           "דיניץ שמחה",
@@ -307,7 +307,7 @@
         },
         {
           "rank": 37,
-          "nameHe": "רן נחמן",
+          "nameHe": "רז נחמן",
           "page": 2826
         },
         {
@@ -322,7 +322,7 @@
         },
         {
           "rank": 40,
-          "nameHe": "גרוסמן אריקה חיה",
+          "nameHe": "גרוסמן ארקין חיה",
           "page": 2826
         },
         {
@@ -833,7 +833,7 @@
         },
         {
           "rank": 3,
-          "nameHe": "ששי וידאן",
+          "nameHe": "עטשי זיידאן",
           "page": 2828
         }
       ],
@@ -850,7 +850,7 @@
         "namesHe": [
           "רובינשטיין אמנון",
           "וירשובסקי מרדכי",
-          "ששי וידאן"
+          "עטשי זיידאן"
         ],
         "note": "Visually compared name by name; namesHe uses surname/given order also when results print given/surname order. Punctuation normalized; explicit variants retain other differences.",
         "spellingVariants": []
@@ -1108,7 +1108,7 @@
         },
         {
           "rank": 19,
-          "nameHe": "יגר יצחק",
+          "nameHe": "זיגר יצחק",
           "page": 2832
         },
         {
@@ -1128,7 +1128,7 @@
         },
         {
           "rank": 23,
-          "nameHe": "וינשטיין אריאל",
+          "nameHe": "ויינשטיין אריאל",
           "page": 2832
         },
         {
@@ -1289,11 +1289,11 @@
           "פת גדעון",
           "שטרית מאיר",
           "שילנסקי דב",
-          "יגר יצחק",
+          "זיגר יצחק",
           "דקל מיכאל",
           "רייסר מיכאל",
           "גדות גדעון",
-          "וינשטיין אריאל",
+          "ויינשטיין אריאל",
           "אולמרט אהוד",
           "קורפו חיים",
           "דורון שרה",
@@ -1567,6 +1567,56 @@
         "note": "Visually compared name by name; namesHe uses surname/given order also when results print given/surname order. Punctuation normalized; explicit variants retain other differences.",
         "spellingVariants": []
       }
+    }
+  ],
+  "corrections": [
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "אמת",
+      "rank": 37,
+      "from": "רן נחמן",
+      "to": "רז נחמן",
+      "evidence": "Re-read at high zoom; both notices print \"רז נחמן\": YP 3073 p. 2826 (candidate PDF page 2); results YP 3081 p. 3007 (results PDF page 3)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "אמת",
+      "rank": 40,
+      "from": "גרוסמן אריקה חיה",
+      "to": "גרוסמן ארקין חיה",
+      "evidence": "Re-read at high zoom; both notices print \"גרוסמן ארקין חיה\": YP 3073 p. 2826 (candidate PDF page 2); results YP 3081 p. 3007 (results PDF page 3)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "מחל",
+      "rank": 19,
+      "from": "יגר יצחק",
+      "to": "זיגר יצחק",
+      "evidence": "Re-read at high zoom; both notices print \"זיגר יצחק\": YP 3073 p. 2832 (candidate PDF page 8); results YP 3081 p. 3008 (results PDF page 4)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "מחל",
+      "rank": 23,
+      "from": "וינשטיין אריאל",
+      "to": "ויינשטיין אריאל",
+      "evidence": "Re-read at high zoom; both notices print \"ויינשטיין אריאל\": YP 3073 p. 2832 (candidate PDF page 8); results YP 3081 p. 3008 (results PDF page 4)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "הן",
+      "rank": 3,
+      "from": "ששי וידאן",
+      "to": "עטשי זיידאן",
+      "evidence": "Re-read at high zoom; both notices print \"עטשי זיידאן\": YP 3073 p. 2828 (candidate PDF page 4); results YP 3081 p. 3007 (results PDF page 3)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "אמת",
+      "rank": 16,
+      "from": "שפירא אליהו",
+      "to": "שפירא אליהו",
+      "evidence": "Checked, unchanged: the candidate notice itself prints \"שפירא אליהו\" (YP 3073 p. 2826, read at 12x); the results notice prints \"שפייזר אליהו\" (YP 3081 p. 3007), the MK Eliyahu Speiser. The candidate-notice reading is kept, with the existing spelling variant."
     }
   ]
 }

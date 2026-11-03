@@ -1,0 +1,3986 @@
+{
+ "source": "Knesset OData ParliamentInfo.svc",
+ "retrievedAt": "2026-11-04",
+ "queries": [
+  "KNS_PersonToPosition?$filter=KnessetNum eq 8 and (PositionID eq 43 or PositionID eq 61)",
+  "KNS_PersonToPosition?$filter=KnessetNum eq 8 and PositionID eq 54",
+  "KNS_Person?$filter=PersonID eq … (every MK PersonID above, in batches of 25)"
+ ],
+ "note": "PositionID 43/61 = Knesset member. Members whose StartDate is the earliest StartDate (1974-01-21) are taken as the opening membership. PositionID 54 rows (factionMemberships) give each member's faction (FactionName) and its dates.",
+ "positions": [
+  {
+   "PersonToPositionID": 2035,
+   "PersonID": 456,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1901,
+   "PersonID": 463,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1935,
+   "PersonID": 482,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1974-12-23T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1823,
+   "PersonID": 512,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1853,
+   "PersonID": 536,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2261,
+   "PersonID": 1064,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2283,
+   "PersonID": 2117,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2285,
+   "PersonID": 2119,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2289,
+   "PersonID": 2120,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2296,
+   "PersonID": 2122,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2311,
+   "PersonID": 2126,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2313,
+   "PersonID": 2127,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2359,
+   "PersonID": 2142,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2361,
+   "PersonID": 2143,
+   "PositionID": 61,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2371,
+   "PersonID": 2144,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2379,
+   "PersonID": 2146,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2391,
+   "PersonID": 2150,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2394,
+   "PersonID": 2152,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2404,
+   "PersonID": 2155,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2412,
+   "PersonID": 2160,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2420,
+   "PersonID": 2162,
+   "PositionID": 61,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2442,
+   "PersonID": 2168,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2446,
+   "PersonID": 2169,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2467,
+   "PersonID": 2176,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2480,
+   "PersonID": 2179,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2489,
+   "PersonID": 2181,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2505,
+   "PersonID": 2187,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2529,
+   "PersonID": 2194,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 18931,
+   "PersonID": 2202,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2569,
+   "PersonID": 2206,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2625,
+   "PersonID": 2224,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2680,
+   "PersonID": 2250,
+   "PositionID": 61,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2681,
+   "PersonID": 2251,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2696,
+   "PersonID": 2257,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2706,
+   "PersonID": 2261,
+   "PositionID": 61,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 705,
+   "PersonID": 2262,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2722,
+   "PersonID": 2268,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1976-09-01T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2742,
+   "PersonID": 2277,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2753,
+   "PersonID": 2283,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2762,
+   "PersonID": 2287,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2766,
+   "PersonID": 2290,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2771,
+   "PersonID": 2292,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1974-03-10T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2774,
+   "PersonID": 2294,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2784,
+   "PersonID": 2296,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2790,
+   "PersonID": 2298,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-01-19T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2794,
+   "PersonID": 2299,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2799,
+   "PersonID": 2300,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2818,
+   "PersonID": 2309,
+   "PositionID": 61,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2855,
+   "PersonID": 2319,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2869,
+   "PersonID": 2324,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2880,
+   "PersonID": 2325,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2883,
+   "PersonID": 2327,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2895,
+   "PersonID": 2332,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1974-02-14T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2897,
+   "PersonID": 2334,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2905,
+   "PersonID": 2337,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2907,
+   "PersonID": 2338,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2914,
+   "PersonID": 2342,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2941,
+   "PersonID": 2349,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1975-07-02T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2944,
+   "PersonID": 2351,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2956,
+   "PersonID": 2357,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2978,
+   "PersonID": 2363,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2988,
+   "PersonID": 2368,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2993,
+   "PersonID": 2370,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3010,
+   "PersonID": 2380,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3022,
+   "PersonID": 2382,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-05-19T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3023,
+   "PersonID": 2383,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3027,
+   "PersonID": 2388,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-05-16T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3035,
+   "PersonID": 2389,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3042,
+   "PersonID": 2392,
+   "PositionID": 61,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3058,
+   "PersonID": 2398,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3082,
+   "PersonID": 2404,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3093,
+   "PersonID": 2409,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3108,
+   "PersonID": 2415,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3116,
+   "PersonID": 2418,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3117,
+   "PersonID": 2419,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3142,
+   "PersonID": 2429,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3150,
+   "PersonID": 2431,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3165,
+   "PersonID": 2437,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3183,
+   "PersonID": 2442,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1373,
+   "PersonID": 2448,
+   "PositionID": 61,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1974-06-10T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1375,
+   "PersonID": 2450,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1376,
+   "PersonID": 2451,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1380,
+   "PersonID": 2453,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1386,
+   "PersonID": 2454,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1412,
+   "PersonID": 2466,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1434,
+   "PersonID": 2476,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1437,
+   "PersonID": 2477,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-01-22T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1462,
+   "PersonID": 2487,
+   "PositionID": 61,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1474,
+   "PersonID": 2489,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1536,
+   "PersonID": 2513,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1975-08-12T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1555,
+   "PersonID": 2520,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-01-03T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1581,
+   "PersonID": 2535,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1975-04-08T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1591,
+   "PersonID": 2543,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1600,
+   "PersonID": 2547,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1606,
+   "PersonID": 2549,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1975-11-23T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1615,
+   "PersonID": 2552,
+   "PositionID": 61,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1627,
+   "PersonID": 2558,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1634,
+   "PersonID": 2560,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1657,
+   "PersonID": 2565,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1684,
+   "PersonID": 2575,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1974-03-10T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1694,
+   "PersonID": 2579,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1699,
+   "PersonID": 2581,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1725,
+   "PersonID": 2591,
+   "PositionID": 61,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1731,
+   "PersonID": 2592,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1734,
+   "PersonID": 2593,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1736,
+   "PersonID": 2595,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1759,
+   "PersonID": 2604,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 398,
+   "PersonID": 2609,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 414,
+   "PersonID": 2615,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 430,
+   "PersonID": 2625,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 439,
+   "PersonID": 2627,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 459,
+   "PersonID": 2633,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 483,
+   "PersonID": 2643,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 486,
+   "PersonID": 2645,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 499,
+   "PersonID": 2652,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 508,
+   "PersonID": 2655,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 555,
+   "PersonID": 2674,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 558,
+   "PersonID": 2675,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 561,
+   "PersonID": 2676,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-01-21T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 829,
+   "PersonID": 5955,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 504,
+   "PersonID": 2654,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-02-14T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2383,
+   "PersonID": 2148,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-03-10T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2665,
+   "PersonID": 2245,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-03-10T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2397,
+   "PersonID": 2153,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-06-10T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3047,
+   "PersonID": 2394,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1974-12-23T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2772,
+   "PersonID": 2293,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1975-04-08T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1617,
+   "PersonID": 2553,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1975-07-02T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1623,
+   "PersonID": 2556,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1975-08-12T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2704,
+   "PersonID": 2260,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1975-11-23T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3007,
+   "PersonID": 2378,
+   "PositionID": 61,
+   "KnessetNum": 8,
+   "StartDate": "1976-09-01T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1363,
+   "PersonID": 2446,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1977-01-03T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1687,
+   "PersonID": 2577,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1977-01-19T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3168,
+   "PersonID": 2438,
+   "PositionID": 61,
+   "KnessetNum": 8,
+   "StartDate": "1977-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1479,
+   "PersonID": 2490,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1977-01-22T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2351,
+   "PersonID": 2140,
+   "PositionID": 43,
+   "KnessetNum": 8,
+   "StartDate": "1977-05-16T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  }
+ ],
+ "persons": [
+  {
+   "PersonID": 456,
+   "LastName": "פרס",
+   "FirstName": "שמעון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 463,
+   "LastName": "ארנס",
+   "FirstName": "משה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 482,
+   "LastName": "שרון",
+   "FirstName": "אריאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 512,
+   "LastName": "שריד",
+   "FirstName": "יוסי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 536,
+   "LastName": "לוי",
+   "FirstName": "דוד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1064,
+   "LastName": "אולמרט",
+   "FirstName": "אהוד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2117,
+   "LastName": "אבו-רביעה",
+   "FirstName": "חמאד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2119,
+   "LastName": "אבוחצירא",
+   "FirstName": "אהרן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2120,
+   "LastName": "אבטבי",
+   "FirstName": "אליעזר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2122,
+   "LastName": "אבן",
+   "FirstName": "אבא",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2126,
+   "LastName": "אברמוב",
+   "FirstName": "שניאור זלמן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2127,
+   "LastName": "אברמוביץ",
+   "FirstName": "יהודה-מאיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2140,
+   "LastName": "אלדרוטי",
+   "FirstName": "צבי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2142,
+   "LastName": "אלון",
+   "FirstName": "יגאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2143,
+   "LastName": "אלוני",
+   "FirstName": "שולמית",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 2144,
+   "LastName": "אלזועבי",
+   "FirstName": "סיף-אלדין",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2146,
+   "LastName": "אליאב",
+   "FirstName": "אריה לובה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2148,
+   "LastName": "אליעד",
+   "FirstName": "נסים",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2150,
+   "LastName": "אלמוגי",
+   "FirstName": "יוסף-אהרון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2152,
+   "LastName": "אמוראי",
+   "FirstName": "עדיאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2153,
+   "LastName": "אמיר",
+   "FirstName": "יעקב-ז'אק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2155,
+   "LastName": "אנקוריון",
+   "FirstName": "ארי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2160,
+   "LastName": "אפרת",
+   "FirstName": "אהרון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2162,
+   "LastName": "ארבלי-אלמוזלינו",
+   "FirstName": "שושנה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 2168,
+   "LastName": "ארידור",
+   "FirstName": "יורם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2169,
+   "LastName": "ארליך",
+   "FirstName": "שמחה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2176,
+   "LastName": "בארי",
+   "FirstName": "ידידיה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2179,
+   "LastName": "בגין",
+   "FirstName": "מנחם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2181,
+   "LastName": "בדר",
+   "FirstName": "יוחנן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2187,
+   "LastName": "בורג",
+   "FirstName": "יוסף",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2194,
+   "LastName": "בן-אהרן",
+   "FirstName": "יצחק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2202,
+   "LastName": "בן-מאיר",
+   "FirstName": "יהודה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2206,
+   "LastName": "בן-פורת",
+   "FirstName": "מרדכי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2224,
+   "LastName": "ברעם",
+   "FirstName": "משה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2245,
+   "LastName": "גולן",
+   "FirstName": "יצחק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2250,
+   "LastName": "גז",
+   "FirstName": "מטילדה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 2251,
+   "LastName": "גיבלבר",
+   "FirstName": "אברהם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2257,
+   "LastName": "גלילי",
+   "FirstName": "ישראל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2260,
+   "LastName": "גרוס",
+   "FirstName": "שלמה-יעקב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2261,
+   "LastName": "גרוסמן",
+   "FirstName": "חייקה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 2262,
+   "LastName": "גרופר",
+   "FirstName": "פסח",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2268,
+   "LastName": "גרשוני",
+   "FirstName": "צבי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2277,
+   "LastName": "דיין",
+   "FirstName": "משה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2283,
+   "LastName": "דיציאן",
+   "FirstName": "ליאון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2287,
+   "LastName": "דרובלס",
+   "FirstName": "מתתיהו",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2290,
+   "LastName": "דרניצקי",
+   "FirstName": "יהודה (יודין)",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2292,
+   "LastName": "האוזנר",
+   "FirstName": "גדעון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2293,
+   "LastName": "הדר",
+   "FirstName": "עמוס",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2294,
+   "LastName": "הורביץ",
+   "FirstName": "יגאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2296,
+   "LastName": "הכהן",
+   "FirstName": "מנחם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2298,
+   "LastName": "הלוי",
+   "FirstName": "בנימין",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2299,
+   "LastName": "הלל",
+   "FirstName": "שלמה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2300,
+   "LastName": "המר",
+   "FirstName": "זבולון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2309,
+   "LastName": "הרליץ",
+   "FirstName": "אסתר",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 2319,
+   "LastName": "וילנר",
+   "FirstName": "מאיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2324,
+   "LastName": "ורדיגר",
+   "FirstName": "אברהם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2325,
+   "LastName": "ורהפטיג",
+   "FirstName": "זרח",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2327,
+   "LastName": "ורטמן",
+   "FirstName": "משה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2332,
+   "LastName": "זועבי",
+   "FirstName": "עבדול-עזיז",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2334,
+   "LastName": "זיאד",
+   "FirstName": "תופיק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2337,
+   "LastName": "זיידל",
+   "FirstName": "הלל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2338,
+   "LastName": "זילברברג",
+   "FirstName": "אברהם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2342,
+   "LastName": "זכין",
+   "FirstName": "דב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2349,
+   "LastName": "חזני",
+   "FirstName": "מיכאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2351,
+   "LastName": "חלפון",
+   "FirstName": "בן-ציון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2357,
+   "LastName": "חריש",
+   "FirstName": "מיכאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2363,
+   "LastName": "טובי",
+   "FirstName": "תופיק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2368,
+   "LastName": "ידיד",
+   "FirstName": "מנחם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2370,
+   "LastName": "ידלין",
+   "FirstName": "אהרן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2378,
+   "LastName": "יוספטל",
+   "FirstName": "סנטה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 2380,
+   "LastName": "יעקבי",
+   "FirstName": "גד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2382,
+   "LastName": "יפה",
+   "FirstName": "אביעד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2383,
+   "LastName": "יפה",
+   "FirstName": "אברהם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2388,
+   "LastName": "יריב",
+   "FirstName": "אהרן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2389,
+   "LastName": "ישעיהו-שרעבי",
+   "FirstName": "ישראל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2392,
+   "LastName": "כהן",
+   "FirstName": "גאולה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 2394,
+   "LastName": "כהן",
+   "FirstName": "יגאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2398,
+   "LastName": "כהן-אבידב",
+   "FirstName": "מאיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2404,
+   "LastName": "כהנא",
+   "FirstName": "קלמן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2409,
+   "LastName": "כץ",
+   "FirstName": "אברהם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2415,
+   "LastName": "כרמל",
+   "FirstName": "משה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2418,
+   "LastName": "לבנבראון",
+   "FirstName": "אברהם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2419,
+   "LastName": "לבני",
+   "FirstName": "איתן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2429,
+   "LastName": "לוין",
+   "FirstName": "שלום",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2431,
+   "LastName": "לורינץ",
+   "FirstName": "שלמה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2437,
+   "LastName": "לין",
+   "FirstName": "אמנון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2438,
+   "LastName": "לינקר",
+   "FirstName": "ציטה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 2442,
+   "LastName": "לנדאו",
+   "FirstName": "חיים",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2446,
+   "LastName": "לקט",
+   "FirstName": "יחיאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2448,
+   "LastName": "מאיר",
+   "FirstName": "גולדה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 2450,
+   "LastName": "מואב",
+   "FirstName": "בועז",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2451,
+   "LastName": "מודעי",
+   "FirstName": "יצחק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2453,
+   "LastName": "מויאל",
+   "FirstName": "אליהו",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2454,
+   "LastName": "מועדי",
+   "FirstName": "ג'בר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2466,
+   "LastName": "מלמד",
+   "FirstName": "אברהם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2476,
+   "LastName": "נבון",
+   "FirstName": "יצחק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2477,
+   "LastName": "נוף",
+   "FirstName": "עקיבא",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2487,
+   "LastName": "נמיר",
+   "FirstName": "אורה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 2489,
+   "LastName": "נסים",
+   "FirstName": "משה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2490,
+   "LastName": "נסראלדין",
+   "FirstName": "אמל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2513,
+   "LastName": "ספיר",
+   "FirstName": "פנחס",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2520,
+   "LastName": "עופר",
+   "FirstName": "אברהם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2535,
+   "LastName": "פיינרמן",
+   "FirstName": "עוזי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2543,
+   "LastName": "פלומין",
+   "FirstName": "יחזקאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2547,
+   "LastName": "פעיל",
+   "FirstName": "מאיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2549,
+   "LastName": "פרוש",
+   "FirstName": "מנחם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2552,
+   "LastName": "פרידמן",
+   "FirstName": "מרשה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 2553,
+   "LastName": "פרידמן",
+   "FirstName": "שמחה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2556,
+   "LastName": "פרנק",
+   "FirstName": "יעקב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2558,
+   "LastName": "פרץ",
+   "FirstName": "יצחק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2560,
+   "LastName": "פת",
+   "FirstName": "גדעון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2565,
+   "LastName": "צדוק",
+   "FirstName": "חיים יוסף",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2575,
+   "LastName": "קול",
+   "FirstName": "משה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2577,
+   "LastName": "קופמן",
+   "FirstName": "חיים",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2579,
+   "LastName": "קורן",
+   "FirstName": "דוד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2581,
+   "LastName": "קורפו",
+   "FirstName": "חיים",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2591,
+   "LastName": "קצב",
+   "FirstName": "נוזהת",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 2592,
+   "LastName": "קרגמן",
+   "FirstName": "ישראל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2593,
+   "LastName": "קרמרמן",
+   "FirstName": "יוסף",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2595,
+   "LastName": "רבין",
+   "FirstName": "יצחק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2604,
+   "LastName": "רונן",
+   "FirstName": "אליעזר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2609,
+   "LastName": "רימלט",
+   "FirstName": "אלימלך-שמעון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2615,
+   "LastName": "רפאל",
+   "FirstName": "יצחק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2625,
+   "LastName": "שובל",
+   "FirstName": "זלמן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2627,
+   "LastName": "שוסטק",
+   "FirstName": "אליעזר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2633,
+   "LastName": "שחל",
+   "FirstName": "משה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2643,
+   "LastName": "שינמן",
+   "FirstName": "פנחס",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2645,
+   "LastName": "שכטרמן",
+   "FirstName": "אברהם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2652,
+   "LastName": "שמיר",
+   "FirstName": "יצחק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2654,
+   "LastName": "שמעוני",
+   "FirstName": "חביב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2655,
+   "LastName": "שערי",
+   "FirstName": "יהודה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2674,
+   "LastName": "תלמי",
+   "FirstName": "מאיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2675,
+   "LastName": "תמיר",
+   "FirstName": "יוסף",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2676,
+   "LastName": "תמיר",
+   "FirstName": "שמואל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 5955,
+   "LastName": "קשת",
+   "FirstName": "בן-ציון",
+   "GenderDesc": "זכר"
+  }
+ ],
+ "factionMemberships": [
+  {
+   "PersonToPositionID": 27064,
+   "PersonID": 456,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26954,
+   "PersonID": 463,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27090,
+   "PersonID": 482,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1974-12-23T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27091,
+   "PersonID": 512,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27027,
+   "PersonID": 536,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 26927,
+   "PersonID": 1064,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 26918,
+   "PersonID": 2117,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1974-02-26T00:00:00",
+   "FactionID": 367,
+   "FactionName": "רשימה ערבית לבדואים וכפריים"
+  },
+  {
+   "PersonToPositionID": 26917,
+   "PersonID": 2119,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 357,
+   "FactionName": "מפלגה דתית לאומית"
+  },
+  {
+   "PersonToPositionID": 26922,
+   "PersonID": 2120,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 357,
+   "FactionName": "מפלגה דתית לאומית"
+  },
+  {
+   "PersonToPositionID": 26923,
+   "PersonID": 2122,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26924,
+   "PersonID": 2126,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 26925,
+   "PersonID": 2127,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-03-15T00:00:00",
+   "FactionID": 379,
+   "FactionName": "חזית דתית תורתית"
+  },
+  {
+   "PersonToPositionID": 26934,
+   "PersonID": 2142,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26935,
+   "PersonID": 2143,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1975-06-03T00:00:00",
+   "FactionID": 359,
+   "FactionName": "ר\"ץ"
+  },
+  {
+   "PersonToPositionID": 26928,
+   "PersonID": 2144,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1974-02-26T00:00:00",
+   "FactionID": 365,
+   "FactionName": "קידמה ופיתוח"
+  },
+  {
+   "PersonToPositionID": 26938,
+   "PersonID": 2146,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1975-04-29T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26944,
+   "PersonID": 2150,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26945,
+   "PersonID": 2152,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26947,
+   "PersonID": 2155,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26948,
+   "PersonID": 2160,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-04-10T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26951,
+   "PersonID": 2162,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26952,
+   "PersonID": 2168,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 26953,
+   "PersonID": 2169,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 26955,
+   "PersonID": 2176,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 26956,
+   "PersonID": 2179,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 26957,
+   "PersonID": 2181,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 26958,
+   "PersonID": 2187,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 357,
+   "FactionName": "מפלגה דתית לאומית"
+  },
+  {
+   "PersonToPositionID": 26959,
+   "PersonID": 2194,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26960,
+   "PersonID": 2202,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 357,
+   "FactionName": "מפלגה דתית לאומית"
+  },
+  {
+   "PersonToPositionID": 26961,
+   "PersonID": 2206,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-03-15T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26963,
+   "PersonID": 2224,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26965,
+   "PersonID": 2250,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26966,
+   "PersonID": 2251,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26967,
+   "PersonID": 2257,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26970,
+   "PersonID": 2261,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-04-10T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26973,
+   "PersonID": 2262,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 26974,
+   "PersonID": 2268,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1976-09-01T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26975,
+   "PersonID": 2277,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26976,
+   "PersonID": 2283,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 26977,
+   "PersonID": 2287,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 26978,
+   "PersonID": 2290,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-04-10T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26981,
+   "PersonID": 2292,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1974-03-10T00:00:00",
+   "FactionID": 387,
+   "FactionName": "ליברלים עצמאיים"
+  },
+  {
+   "PersonToPositionID": 26983,
+   "PersonID": 2294,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 26984,
+   "PersonID": 2296,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26985,
+   "PersonID": 2298,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1975-03-18T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 26987,
+   "PersonID": 2299,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26988,
+   "PersonID": 2300,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 357,
+   "FactionName": "מפלגה דתית לאומית"
+  },
+  {
+   "PersonToPositionID": 26989,
+   "PersonID": 2309,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26990,
+   "PersonID": 2319,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-03-15T00:00:00",
+   "FactionID": 389,
+   "FactionName": "הרשימה הקומוניסטית החדשה"
+  },
+  {
+   "PersonToPositionID": 26992,
+   "PersonID": 2324,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-03-15T00:00:00",
+   "FactionID": 379,
+   "FactionName": "חזית דתית תורתית"
+  },
+  {
+   "PersonToPositionID": 26994,
+   "PersonID": 2325,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 357,
+   "FactionName": "מפלגה דתית לאומית"
+  },
+  {
+   "PersonToPositionID": 26995,
+   "PersonID": 2327,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26932,
+   "PersonID": 2332,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1974-02-14T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26996,
+   "PersonID": 2334,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-03-15T00:00:00",
+   "FactionID": 389,
+   "FactionName": "הרשימה הקומוניסטית החדשה"
+  },
+  {
+   "PersonToPositionID": 26998,
+   "PersonID": 2337,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-02-15T00:00:00",
+   "FactionID": 387,
+   "FactionName": "ליברלים עצמאיים"
+  },
+  {
+   "PersonToPositionID": 27000,
+   "PersonID": 2338,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27001,
+   "PersonID": 2342,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-04-10T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27004,
+   "PersonID": 2349,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1975-07-02T00:00:00",
+   "FactionID": 357,
+   "FactionName": "מפלגה דתית לאומית"
+  },
+  {
+   "PersonToPositionID": 27005,
+   "PersonID": 2351,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27006,
+   "PersonID": 2357,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27007,
+   "PersonID": 2363,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-03-15T00:00:00",
+   "FactionID": 389,
+   "FactionName": "הרשימה הקומוניסטית החדשה"
+  },
+  {
+   "PersonToPositionID": 27009,
+   "PersonID": 2368,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27010,
+   "PersonID": 2370,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27012,
+   "PersonID": 2380,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27013,
+   "PersonID": 2382,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-05-19T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27014,
+   "PersonID": 2383,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27015,
+   "PersonID": 2388,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-05-16T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27016,
+   "PersonID": 2389,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27017,
+   "PersonID": 2392,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27021,
+   "PersonID": 2398,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27019,
+   "PersonID": 2404,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-03-15T00:00:00",
+   "FactionID": 379,
+   "FactionName": "חזית דתית תורתית"
+  },
+  {
+   "PersonToPositionID": 27022,
+   "PersonID": 2409,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27023,
+   "PersonID": 2415,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27024,
+   "PersonID": 2418,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-03-15T00:00:00",
+   "FactionID": 389,
+   "FactionName": "הרשימה הקומוניסטית החדשה"
+  },
+  {
+   "PersonToPositionID": 27026,
+   "PersonID": 2419,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27028,
+   "PersonID": 2429,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27029,
+   "PersonID": 2431,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-03-15T00:00:00",
+   "FactionID": 379,
+   "FactionName": "חזית דתית תורתית"
+  },
+  {
+   "PersonToPositionID": 27031,
+   "PersonID": 2437,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27033,
+   "PersonID": 2442,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27035,
+   "PersonID": 2448,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1974-06-10T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27036,
+   "PersonID": 2450,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1975-06-03T00:00:00",
+   "FactionID": 359,
+   "FactionName": "ר\"ץ"
+  },
+  {
+   "PersonToPositionID": 27039,
+   "PersonID": 2451,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27040,
+   "PersonID": 2453,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27041,
+   "PersonID": 2454,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1974-02-26T00:00:00",
+   "FactionID": 365,
+   "FactionName": "קידמה ופיתוח"
+  },
+  {
+   "PersonToPositionID": 27045,
+   "PersonID": 2466,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 357,
+   "FactionName": "מפלגה דתית לאומית"
+  },
+  {
+   "PersonToPositionID": 27046,
+   "PersonID": 2476,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27047,
+   "PersonID": 2477,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1976-10-26T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27049,
+   "PersonID": 2487,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27050,
+   "PersonID": 2489,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27052,
+   "PersonID": 2513,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1975-08-12T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27053,
+   "PersonID": 2520,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-01-03T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27054,
+   "PersonID": 2535,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1975-04-08T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27055,
+   "PersonID": 2543,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27056,
+   "PersonID": 2547,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 385,
+   "FactionName": "מוקד"
+  },
+  {
+   "PersonToPositionID": 27057,
+   "PersonID": 2549,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1975-11-23T00:00:00",
+   "FactionID": 379,
+   "FactionName": "חזית דתית תורתית"
+  },
+  {
+   "PersonToPositionID": 27058,
+   "PersonID": 2552,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1975-06-03T00:00:00",
+   "FactionID": 359,
+   "FactionName": "ר\"ץ"
+  },
+  {
+   "PersonToPositionID": 27065,
+   "PersonID": 2558,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27066,
+   "PersonID": 2560,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27067,
+   "PersonID": 2565,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27068,
+   "PersonID": 2575,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1974-03-10T00:00:00",
+   "FactionID": 387,
+   "FactionName": "ליברלים עצמאיים"
+  },
+  {
+   "PersonToPositionID": 27070,
+   "PersonID": 2579,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27071,
+   "PersonID": 2581,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27072,
+   "PersonID": 2591,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27073,
+   "PersonID": 2592,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27074,
+   "PersonID": 2593,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27076,
+   "PersonID": 2595,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27077,
+   "PersonID": 2604,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-04-10T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27080,
+   "PersonID": 2609,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27081,
+   "PersonID": 2615,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 357,
+   "FactionName": "מפלגה דתית לאומית"
+  },
+  {
+   "PersonToPositionID": 27082,
+   "PersonID": 2625,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27083,
+   "PersonID": 2627,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27084,
+   "PersonID": 2633,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27085,
+   "PersonID": 2643,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 357,
+   "FactionName": "מפלגה דתית לאומית"
+  },
+  {
+   "PersonToPositionID": 27086,
+   "PersonID": 2645,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27087,
+   "PersonID": 2652,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27089,
+   "PersonID": 2655,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 387,
+   "FactionName": "ליברלים עצמאיים"
+  },
+  {
+   "PersonToPositionID": 27092,
+   "PersonID": 2674,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-04-10T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27097,
+   "PersonID": 2675,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27095,
+   "PersonID": 2676,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1976-10-26T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27075,
+   "PersonID": 5955,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27088,
+   "PersonID": 2654,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-02-14T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26919,
+   "PersonID": 2117,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-02-26T00:00:00",
+   "FinishDate": "1977-01-04T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26929,
+   "PersonID": 2144,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-02-26T00:00:00",
+   "FinishDate": "1976-06-08T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27042,
+   "PersonID": 2454,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-02-26T00:00:00",
+   "FinishDate": "1976-06-08T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26943,
+   "PersonID": 2148,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-03-10T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 387,
+   "FactionName": "ליברלים עצמאיים"
+  },
+  {
+   "PersonToPositionID": 26964,
+   "PersonID": 2245,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-03-10T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 387,
+   "FactionName": "ליברלים עצמאיים"
+  },
+  {
+   "PersonToPositionID": 26946,
+   "PersonID": 2153,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-06-10T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27018,
+   "PersonID": 2394,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1974-12-23T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 26986,
+   "PersonID": 2298,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1975-03-18T00:00:00",
+   "FinishDate": "1977-01-19T00:00:00",
+   "FactionID": 996,
+   "FactionName": "חה\"כ בנימין הלוי"
+  },
+  {
+   "PersonToPositionID": 26982,
+   "PersonID": 2293,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1975-04-08T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26939,
+   "PersonID": 2146,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1975-04-29T00:00:00",
+   "FinishDate": "1975-06-03T00:00:00",
+   "FactionID": 995,
+   "FactionName": "חה\"כ אריה לובה אליאב"
+  },
+  {
+   "PersonToPositionID": 26936,
+   "PersonID": 2143,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1975-06-03T00:00:00",
+   "FinishDate": "1976-01-27T00:00:00",
+   "FactionID": 998,
+   "FactionName": "יעד - תנועה לזכויות האזרח"
+  },
+  {
+   "PersonToPositionID": 26940,
+   "PersonID": 2146,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1975-06-03T00:00:00",
+   "FinishDate": "1976-01-27T00:00:00",
+   "FactionID": 998,
+   "FactionName": "יעד - תנועה לזכויות האזרח"
+  },
+  {
+   "PersonToPositionID": 27037,
+   "PersonID": 2450,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1975-06-03T00:00:00",
+   "FinishDate": "1976-01-27T00:00:00",
+   "FactionID": 998,
+   "FactionName": "יעד - תנועה לזכויות האזרח"
+  },
+  {
+   "PersonToPositionID": 27059,
+   "PersonID": 2552,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1975-06-03T00:00:00",
+   "FinishDate": "1976-01-27T00:00:00",
+   "FactionID": 998,
+   "FactionName": "יעד - תנועה לזכויות האזרח"
+  },
+  {
+   "PersonToPositionID": 27062,
+   "PersonID": 2553,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1975-07-02T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 357,
+   "FactionName": "מפלגה דתית לאומית"
+  },
+  {
+   "PersonToPositionID": 27063,
+   "PersonID": 2556,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1975-08-12T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26968,
+   "PersonID": 2260,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1975-11-23T00:00:00",
+   "FinishDate": "1977-03-15T00:00:00",
+   "FactionID": 379,
+   "FactionName": "חזית דתית תורתית"
+  },
+  {
+   "PersonToPositionID": 26937,
+   "PersonID": 2143,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1976-01-27T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 1004,
+   "FactionName": "ר\"ץ"
+  },
+  {
+   "PersonToPositionID": 26941,
+   "PersonID": 2146,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1976-01-27T00:00:00",
+   "FinishDate": "1976-02-03T00:00:00",
+   "FactionID": 1001,
+   "FactionName": "סיעה סוציאל-דמוקרטית"
+  },
+  {
+   "PersonToPositionID": 27038,
+   "PersonID": 2450,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1976-01-27T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 1004,
+   "FactionName": "ר\"ץ"
+  },
+  {
+   "PersonToPositionID": 27060,
+   "PersonID": 2552,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1976-01-27T00:00:00",
+   "FinishDate": "1976-02-03T00:00:00",
+   "FactionID": 1001,
+   "FactionName": "סיעה סוציאל-דמוקרטית"
+  },
+  {
+   "PersonToPositionID": 26942,
+   "PersonID": 2146,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1976-02-03T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 1002,
+   "FactionName": "סיעה סוציאליסטית עצמאית"
+  },
+  {
+   "PersonToPositionID": 27061,
+   "PersonID": 2552,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1976-02-03T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 1002,
+   "FactionName": "סיעה סוציאליסטית עצמאית"
+  },
+  {
+   "PersonToPositionID": 26930,
+   "PersonID": 2144,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1976-06-08T00:00:00",
+   "FinishDate": "1977-03-08T00:00:00",
+   "FactionID": 1003,
+   "FactionName": "קידמה ופיתוח"
+  },
+  {
+   "PersonToPositionID": 27043,
+   "PersonID": 2454,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1976-06-08T00:00:00",
+   "FinishDate": "1977-03-08T00:00:00",
+   "FactionID": 1003,
+   "FactionName": "קידמה ופיתוח"
+  },
+  {
+   "PersonToPositionID": 27011,
+   "PersonID": 2378,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1976-09-01T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27048,
+   "PersonID": 2477,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1976-10-26T00:00:00",
+   "FinishDate": "1977-01-22T00:00:00",
+   "FactionID": 1000,
+   "FactionName": "מרכז חופשי"
+  },
+  {
+   "PersonToPositionID": 27096,
+   "PersonID": 2676,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1976-10-26T00:00:00",
+   "FinishDate": "1977-01-21T00:00:00",
+   "FactionID": 1000,
+   "FactionName": "מרכז חופשי"
+  },
+  {
+   "PersonToPositionID": 27034,
+   "PersonID": 2446,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-01-03T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26920,
+   "PersonID": 2117,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-01-04T00:00:00",
+   "FinishDate": "1977-03-08T00:00:00",
+   "FactionID": 1005,
+   "FactionName": "הסיעה לבדואים וכפריים"
+  },
+  {
+   "PersonToPositionID": 27069,
+   "PersonID": 2577,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-01-19T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27032,
+   "PersonID": 2438,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-01-21T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27051,
+   "PersonID": 2490,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-01-22T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 26999,
+   "PersonID": 2337,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-02-15T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 355,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 26921,
+   "PersonID": 2117,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-03-08T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 369,
+   "FactionName": "הרשימה הערבית המאוחדת"
+  },
+  {
+   "PersonToPositionID": 26931,
+   "PersonID": 2144,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-03-08T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 369,
+   "FactionName": "הרשימה הערבית המאוחדת"
+  },
+  {
+   "PersonToPositionID": 27044,
+   "PersonID": 2454,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-03-08T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 369,
+   "FactionName": "הרשימה הערבית המאוחדת"
+  },
+  {
+   "PersonToPositionID": 26926,
+   "PersonID": 2127,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-03-15T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 361,
+   "FactionName": "יהדות התורה ­ אגודת ישראל ודתיים בלתי מפלגתיים"
+  },
+  {
+   "PersonToPositionID": 26962,
+   "PersonID": 2206,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-03-15T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 997,
+   "FactionName": "חה\"כ מרדכי בן-פורת"
+  },
+  {
+   "PersonToPositionID": 26969,
+   "PersonID": 2260,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-03-15T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 361,
+   "FactionName": "יהדות התורה ­ אגודת ישראל ודתיים בלתי מפלגתיים"
+  },
+  {
+   "PersonToPositionID": 26991,
+   "PersonID": 2319,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-03-15T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 391,
+   "FactionName": "חזית דמוקרטית לשלום ולשוויון"
+  },
+  {
+   "PersonToPositionID": 26993,
+   "PersonID": 2324,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-03-15T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 371,
+   "FactionName": "המחנה התורתי ­ פועלי אגודת ישראל ודתיים בלתי מפלגתיים"
+  },
+  {
+   "PersonToPositionID": 26997,
+   "PersonID": 2334,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-03-15T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 391,
+   "FactionName": "חזית דמוקרטית לשלום ולשוויון"
+  },
+  {
+   "PersonToPositionID": 27008,
+   "PersonID": 2363,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-03-15T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 391,
+   "FactionName": "חזית דמוקרטית לשלום ולשוויון"
+  },
+  {
+   "PersonToPositionID": 27020,
+   "PersonID": 2404,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-03-15T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 371,
+   "FactionName": "המחנה התורתי ­ פועלי אגודת ישראל ודתיים בלתי מפלגתיים"
+  },
+  {
+   "PersonToPositionID": 27025,
+   "PersonID": 2418,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-03-15T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 391,
+   "FactionName": "חזית דמוקרטית לשלום ולשוויון"
+  },
+  {
+   "PersonToPositionID": 27030,
+   "PersonID": 2431,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-03-15T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 361,
+   "FactionName": "יהדות התורה ­ אגודת ישראל ודתיים בלתי מפלגתיים"
+  },
+  {
+   "PersonToPositionID": 26949,
+   "PersonID": 2160,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-04-10T00:00:00",
+   "FinishDate": "1977-04-12T00:00:00",
+   "FactionID": 999,
+   "FactionName": "מפלגת פועלים מאוחדת"
+  },
+  {
+   "PersonToPositionID": 26971,
+   "PersonID": 2261,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-04-10T00:00:00",
+   "FinishDate": "1977-04-12T00:00:00",
+   "FactionID": 999,
+   "FactionName": "מפלגת פועלים מאוחדת"
+  },
+  {
+   "PersonToPositionID": 26979,
+   "PersonID": 2290,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-04-10T00:00:00",
+   "FinishDate": "1977-04-12T00:00:00",
+   "FactionID": 999,
+   "FactionName": "מפלגת פועלים מאוחדת"
+  },
+  {
+   "PersonToPositionID": 27002,
+   "PersonID": 2342,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-04-10T00:00:00",
+   "FinishDate": "1977-04-12T00:00:00",
+   "FactionID": 999,
+   "FactionName": "מפלגת פועלים מאוחדת"
+  },
+  {
+   "PersonToPositionID": 27078,
+   "PersonID": 2604,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-04-10T00:00:00",
+   "FinishDate": "1977-04-12T00:00:00",
+   "FactionID": 999,
+   "FactionName": "מפלגת פועלים מאוחדת"
+  },
+  {
+   "PersonToPositionID": 27093,
+   "PersonID": 2674,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-04-10T00:00:00",
+   "FinishDate": "1977-04-12T00:00:00",
+   "FactionID": 999,
+   "FactionName": "מפלגת פועלים מאוחדת"
+  },
+  {
+   "PersonToPositionID": 26950,
+   "PersonID": 2160,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-04-12T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26972,
+   "PersonID": 2261,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-04-12T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26980,
+   "PersonID": 2290,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-04-12T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27003,
+   "PersonID": 2342,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-04-12T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27079,
+   "PersonID": 2604,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-04-12T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 27094,
+   "PersonID": 2674,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-04-12T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  },
+  {
+   "PersonToPositionID": 26933,
+   "PersonID": 2140,
+   "PositionID": 54,
+   "KnessetNum": 8,
+   "StartDate": "1977-05-16T00:00:00",
+   "FinishDate": "1977-06-13T00:00:00",
+   "FactionID": 375,
+   "FactionName": "מערך"
+  }
+ ]
+}

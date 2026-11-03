@@ -194,6 +194,9 @@ replacement between the candidate and results notices was found.
 
 The membership identity cross-check now uses the Knesset's official OData service
 (`k16-membership-odata`, `k17-membership-odata`; retained snapshots in `data/raw/k16|k17/knesset-odata-members.json`).
+The same check now covers every election (`kNN-membership-odata`, 4 November 2026). It led to 53 scan-verified
+roster corrections in 1949–1999, including 1988 Likud #25 (Reiser) not seated and #32 (Goldberg) restored.
+Every remaining difference is explained in [the audit](research/elected-names-odata-audit.md).
 All 120 elected members of each Knesset match the opening membership apart from spelling and short-name
 forms, except the Sharansky/Solodkin case below, which the OData opening membership confirms.
 The earlier secondary membership comparisons remain under `previousMembershipCrossCheck`

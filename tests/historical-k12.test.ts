@@ -57,11 +57,21 @@ describe('k12 — released national dataset', () => {
       const r = a.rosters.find(r => r.letters === l.letters)!;
       expect(l.candidates.length).toBeGreaterThanOrEqual(seats);
       expect(l.candidates.map((c: {rank: number}) => c.rank)).toEqual(Array.from({length: l.candidates.length}, (_, i) => i + 1));
-      expect(r.electedCrossCheck?.ranks).toEqual(Array.from({length: seats}, (_, i) => i + 1));
+      // registered ranks 1..seats, except Likud: the results notice does not seat rank 25 (Reiser)
+      const expected = l.letters === 'מחל' ? [...Array.from({length: 24}, (_, i) => i + 1), ...Array.from({length: 16}, (_, i) => i + 26)] : Array.from({length: seats}, (_, i) => i + 1);
+      expect(r.electedCrossCheck?.ranks).toEqual(expected);
+      expect(l.candidates.filter((c: {notSeated?: boolean}) => c.notSeated).map((c: {rank: number}) => c.rank)).toEqual(l.letters === 'מחל' ? [25] : []);
       expect(r.electedCrossCheck?.namesHe).toHaveLength(seats);
       expect(Boolean(l.candidatesTruncated)).toBe(!r.complete);
       expect(l.candidatesUnavailable).toBeUndefined();
     }
     expect(a.rosters.reduce((sum, r) => sum + (r.electedCrossCheck?.namesHe?.length ?? 0), 0)).toBe(120);
+  });
+  it('restores Likud rank 32 (Goldberg) and does not seat rank 25 (Reiser), as printed', () => {
+    const ds = JSON.parse(readFileSync('public/data/k12.json', 'utf8'));
+    const likud = ds.lists.find((l: {letters: string}) => l.letters === 'מחל');
+    expect(likud.candidates.slice(23, 34).map((c: {nameHe: string}) => c.nameHe)).toEqual(['עלי עובדיה', 'רייסר מיכאל', 'ויינשטיין אריאל', 'ריבלין ראובן', 'כהן יגאל', 'פרח יהודה', 'איתן מיכאל', 'מצא יהושע', 'גולדברג יוסף', 'גדות גדעון', 'שילנסקי דב']);
+    expect(likud.candidates.at(-1)).toMatchObject({ rank: 41, nameHe: 'שגיא יהושע' });
+    expect(likud.candidates[24].notSeated).toBe(true);
   });
 });

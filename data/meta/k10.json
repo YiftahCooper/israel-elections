@@ -54,8 +54,8 @@
           "rankNotes": [
             {
               "rank": 20,
-              "datasetName": "ציפורי מרדכי",
-              "note": "roster spelling \"ציפורי מרדכי\" = Mordechai Tzipori"
+              "datasetName": "צפורי מרדכי",
+              "note": "Roster corrected on 2026-11-04 from the misreading \"ציפורי מרדכי\" to \"צפורי מרדכי\" as printed (YP 2721 p. 2058; YP 2727 p. 2192); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
             }
           ]
         },
@@ -131,23 +131,23 @@
           "rankNotes": [
             {
               "rank": 31,
-              "datasetName": "דרורי שרה",
-              "note": "ROSTER CONFLICT: dataset reads \"דרורי שרה\"; the MK seated at this rank was Sarah Doron"
+              "datasetName": "דורון שרה",
+              "note": "Roster corrected on 2026-11-04 from the misreading \"דרורי שרה\" to \"דורון שרה\" as printed (YP 2721 p. 2059; YP 2727 p. 2192); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
             },
             {
               "rank": 32,
-              "datasetName": "וירג׳מן דרור",
-              "note": "ROSTER CONFLICT: dataset reads \"וירג׳מן דרור\"; the MK seated at this rank was Dror Zeigerman"
+              "datasetName": "זייגרמן דרור",
+              "note": "Roster corrected on 2026-11-04 from the misreading \"וירג׳מן דרור\" to \"זייגרמן דרור\" as printed (YP 2721 p. 2059; YP 2727 p. 2192); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
             },
             {
               "rank": 38,
-              "datasetName": "רבי צבי",
-              "note": "ROSTER CONFLICT: dataset reads \"רבי צבי\"; the MK seated at this rank was Zvi Renner"
+              "datasetName": "רנר צבי",
+              "note": "Roster corrected on 2026-11-04 from the misreading \"רבי צבי\" to \"רנר צבי\" as printed (YP 2721 p. 2059; YP 2727 p. 2192); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
             },
             {
               "rank": 46,
-              "datasetName": "יגורי יצחק",
-              "note": "ROSTER CONFLICT: dataset reads \"יגורי יצחק\"; the MK seated at this rank was Yitzhak Zeiger"
+              "datasetName": "זיגר יצחק",
+              "note": "Roster corrected on 2026-11-04 from the misreading \"יגורי יצחק\" to \"זיגר יצחק\" as printed (YP 2721 p. 2059; YP 2727 p. 2192); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
             }
           ]
         },
@@ -280,23 +280,23 @@
           "rankNotes": [
             {
               "rank": 17,
-              "datasetName": "חריש משה",
-              "note": "ROSTER CONFLICT: dataset reads \"חריש משה\"; the MK seated at this rank was Moshe Harif"
+              "datasetName": "חריף משה",
+              "note": "Roster corrected on 2026-11-04 from the misreading \"חריש משה\" to \"חריף משה\" as printed (YP 2721 p. 2048; YP 2727 p. 2191); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
             },
             {
               "rank": 28,
-              "datasetName": "הראל אהרון",
-              "note": "roster spelling \"הראל אהרון\" = Aharon Harel"
+              "datasetName": "הראל אהרן",
+              "note": "Roster corrected on 2026-11-04 from the misreading \"הראל אהרון\" to \"הראל אהרן\" as printed (YP 2721 p. 2048); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
             },
             {
               "rank": 30,
-              "datasetName": "בן-אהרן אברהם",
-              "note": "ROSTER CONFLICT: dataset reads \"בן-אהרן אברהם\"; the MK seated at this rank was Avraham Katz-Oz"
+              "datasetName": "כץ-עוז אברהם",
+              "note": "Roster corrected on 2026-11-04 from the misreading \"בן-אהרן אברהם\" to \"כץ-עוז אברהם\" as printed (YP 2721 p. 2048; YP 2727 p. 2191); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
             },
             {
               "rank": 32,
-              "datasetName": "חרש מיכאל",
-              "note": "roster spelling \"חרש מיכאל\" = Micha Harish"
+              "datasetName": "חריש מיכאל",
+              "note": "Roster corrected on 2026-11-04 from the misreading \"חרש מיכאל\" to \"חריש מיכאל\" as printed (YP 2721 p. 2048); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
             },
             {
               "rank": 43,
@@ -305,8 +305,8 @@
             },
             {
               "rank": 45,
-              "datasetName": "נעים עבד",
-              "note": "ROSTER CONFLICT: dataset reads \"נעים עבד\"; the MK seated at this rank was Ra'anan Na'im"
+              "datasetName": "נעים רענן",
+              "note": "Roster corrected on 2026-11-04 from the misreading \"נעים עבד\" to \"נעים רענן\" as printed (YP 2721 p. 2048; YP 2727 p. 2191); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
             }
           ]
         },
@@ -364,13 +364,13 @@
           "rankNotes": [
             {
               "rank": 33,
-              "datasetName": "ורד תמר",
-              "note": "ROSTER CONFLICT: dataset reads \"ורד תמר\"; the MK seated at this rank was Mohammed Wattad"
+              "datasetName": "ותד מחמד",
+              "note": "Roster corrected on 2026-11-04 from the misreading \"ורד תמר\" to \"ותד מחמד\" as printed (YP 2721 p. 2048; YP 2727 p. 2191); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
             },
             {
               "rank": 40,
-              "datasetName": "רון אמיר",
-              "note": "ROSTER CONFLICT: dataset reads \"רון אמיר\"; the MK seated at this rank was Imri Ron"
+              "datasetName": "רון אמרי",
+              "note": "Roster corrected on 2026-11-04 from the misreading \"רון אמיר\" to \"רון אמרי\" as printed (YP 2721 p. 2048; YP 2727 p. 2191); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
             }
           ]
         }
@@ -767,60 +767,97 @@
       "confidence": "medium"
     }
   ],
-  "datasetRosterConflicts": [
+  "datasetRosterConflicts": [],
+  "resolvedRosterConflicts": [
     {
       "letters": "מחל",
       "rank": 31,
-      "datasetName": "דרורי שרה",
-      "note": "dataset reads \"דרורי שרה\"; the MK seated at this rank was Sarah Doron"
+      "previousDatasetName": "דרורי שרה",
+      "datasetName": "דורון שרה",
+      "resolution": "transcription error corrected",
+      "evidence": "YP 2721 p. 2059; YP 2727 p. 2192",
+      "resolvedOn": "2026-11-04",
+      "record": "docs/decisions/DRAFT-roster-corrections-and-odata-audit.md"
     },
     {
       "letters": "מחל",
       "rank": 32,
-      "datasetName": "וירג׳מן דרור",
-      "note": "dataset reads \"וירג׳מן דרור\"; the MK seated at this rank was Dror Zeigerman"
+      "previousDatasetName": "וירג׳מן דרור",
+      "datasetName": "זייגרמן דרור",
+      "resolution": "transcription error corrected",
+      "evidence": "YP 2721 p. 2059; YP 2727 p. 2192",
+      "resolvedOn": "2026-11-04",
+      "record": "docs/decisions/DRAFT-roster-corrections-and-odata-audit.md"
     },
     {
       "letters": "מחל",
       "rank": 38,
-      "datasetName": "רבי צבי",
-      "note": "dataset reads \"רבי צבי\"; the MK seated at this rank was Zvi Renner"
+      "previousDatasetName": "רבי צבי",
+      "datasetName": "רנר צבי",
+      "resolution": "transcription error corrected",
+      "evidence": "YP 2721 p. 2059; YP 2727 p. 2192",
+      "resolvedOn": "2026-11-04",
+      "record": "docs/decisions/DRAFT-roster-corrections-and-odata-audit.md"
     },
     {
       "letters": "מחל",
       "rank": 46,
-      "datasetName": "יגורי יצחק",
-      "note": "dataset reads \"יגורי יצחק\"; the MK seated at this rank was Yitzhak Zeiger"
+      "previousDatasetName": "יגורי יצחק",
+      "datasetName": "זיגר יצחק",
+      "resolution": "transcription error corrected",
+      "evidence": "YP 2721 p. 2059; YP 2727 p. 2192",
+      "resolvedOn": "2026-11-04",
+      "record": "docs/decisions/DRAFT-roster-corrections-and-odata-audit.md"
     },
     {
       "letters": "אמת",
       "rank": 17,
-      "datasetName": "חריש משה",
-      "note": "dataset reads \"חריש משה\"; the MK seated at this rank was Moshe Harif"
+      "previousDatasetName": "חריש משה",
+      "datasetName": "חריף משה",
+      "resolution": "transcription error corrected",
+      "evidence": "YP 2721 p. 2048; YP 2727 p. 2191",
+      "resolvedOn": "2026-11-04",
+      "record": "docs/decisions/DRAFT-roster-corrections-and-odata-audit.md"
     },
     {
       "letters": "אמת",
       "rank": 30,
-      "datasetName": "בן-אהרן אברהם",
-      "note": "dataset reads \"בן-אהרן אברהם\"; the MK seated at this rank was Avraham Katz-Oz"
+      "previousDatasetName": "בן-אהרן אברהם",
+      "datasetName": "כץ-עוז אברהם",
+      "resolution": "transcription error corrected",
+      "evidence": "YP 2721 p. 2048; YP 2727 p. 2191",
+      "resolvedOn": "2026-11-04",
+      "record": "docs/decisions/DRAFT-roster-corrections-and-odata-audit.md"
     },
     {
       "letters": "אמת",
       "rank": 45,
-      "datasetName": "נעים עבד",
-      "note": "dataset reads \"נעים עבד\"; the MK seated at this rank was Ra'anan Na'im"
+      "previousDatasetName": "נעים עבד",
+      "datasetName": "נעים רענן",
+      "resolution": "transcription error corrected",
+      "evidence": "YP 2721 p. 2048; YP 2727 p. 2191",
+      "resolvedOn": "2026-11-04",
+      "record": "docs/decisions/DRAFT-roster-corrections-and-odata-audit.md"
     },
     {
       "letters": "אמת",
       "rank": 33,
-      "datasetName": "ורד תמר",
-      "note": "dataset reads \"ורד תמר\"; the MK seated at this rank was Mohammed Wattad"
+      "previousDatasetName": "ורד תמר",
+      "datasetName": "ותד מחמד",
+      "resolution": "transcription error corrected",
+      "evidence": "YP 2721 p. 2048; YP 2727 p. 2191",
+      "resolvedOn": "2026-11-04",
+      "record": "docs/decisions/DRAFT-roster-corrections-and-odata-audit.md"
     },
     {
       "letters": "אמת",
       "rank": 40,
-      "datasetName": "רון אמיר",
-      "note": "dataset reads \"רון אמיר\"; the MK seated at this rank was Imri Ron"
+      "previousDatasetName": "רון אמיר",
+      "datasetName": "רון אמרי",
+      "resolution": "transcription error corrected",
+      "evidence": "YP 2721 p. 2048; YP 2727 p. 2191",
+      "resolvedOn": "2026-11-04",
+      "record": "docs/decisions/DRAFT-roster-corrections-and-odata-audit.md"
     }
   ]
 }

@@ -25,6 +25,13 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 - A documentation map, contributor guidance and retrospective decision records.
 - MIT licence for the code and documentation (official source documents excluded).
 
+### Fixed
+
+- Elected members' names in 1949–1999 re-read from the official scans and checked against the Knesset's
+  official opening-day membership for every election: 53 roster corrections (for example 1981 Sarah Doron,
+  Dror Zeigerman, Moshe Harif, Mohammed Wattad; 1996 Haim Dayan, Yehuda Lancry). In 1988 the Likud seats now
+  follow the results notice: Yosef Goldberg is restored at #32, and Michael Reiser (#25), whom the notice does not list, is not seated.
+
 ### Changed
 
 - Reworked the project overview for readers who are new to the app; moved detailed

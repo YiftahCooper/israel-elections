@@ -90,7 +90,8 @@ with these **extensions**, all optional for consumers:
 | Field | Where | Meaning |
 |---|---|---|
 | `generatedNote` | top level | Pointer to this README. |
-| `datasetRosterConflicts[]` | top level | `{letters, rank, datasetName, note}`: elected ranks whose dataset name does not match the MK who actually took the seat. **These are data errors to review in `public/data/`;** the rank is still assigned to the correct party. |
+| `datasetRosterConflicts[]` | top level | `{letters, rank, datasetName, note}`: elected ranks whose dataset name does not match the MK who actually took the seat. **These are data errors to review in `public/data/`;** the rank is still assigned to the correct party. Empty once resolved. |
+| `resolvedRosterConflicts[]` | top level | `{letters, rank, previousDatasetName, datasetName, resolution, evidence, resolvedOn, record}`: conflicts resolved by re-reading the official scans (4 November 2026, [draft record](../../docs/decisions/DRAFT-roster-corrections-and-odata-audit.md)). `datasetName` is the current roster reading. |
 | `seats`, `rosterRanks`, `candidatesTruncated` | `lists[]` | Copied from the dataset for convenience (official seats, number of roster ranks, truncation flag). |
 | `notes`, `sources`, `conflicts` | `lists[]` | List-level explanation, sources for the alliance as a whole, and source disagreements. |
 | `rankNotes[]` | `lists[].parties[]` | `{rank, datasetName, note}` for every rank assigned by explicit identification rather than an exact name match (spelling variants, misread names). |

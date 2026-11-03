@@ -127,7 +127,7 @@
         },
         {
           "rank": 29,
-          "nameHe": "רייזר-ששון צבי"
+          "nameHe": "דינשטיין צבי"
         },
         {
           "rank": 30,
@@ -139,7 +139,7 @@
         },
         {
           "rank": 32,
-          "nameHe": "פיינברג-סרני עדה"
+          "nameHe": "פינברג-סירני עדה"
         },
         {
           "rank": 33,
@@ -267,10 +267,10 @@
         "זכין דב",
         "ידלין אהרן",
         "אליאב אריה",
-        "רייזר-ששון צבי",
+        "דינשטיין צבי",
         "כהן מנחם",
         "נבון יצחק",
-        "פיינברג-סרני עדה",
+        "פינברג-סירני עדה",
         "רוזן שלמה",
         "ורטמן משה",
         "זילברברג אברהם",
@@ -949,5 +949,23 @@
       ]
     }
   ],
-  "electedNamesConvention": "Reviewed elected identities, in the candidate-gazette spelling, not a diplomatic transcription of results typography. electedCandidateRanks maps the results order back to registered candidate ranks. Honorifics, commas, spacing and hyphens are not identity differences."
+  "electedNamesConvention": "Reviewed elected identities, in the candidate-gazette spelling, not a diplomatic transcription of results typography. electedCandidateRanks maps the results order back to registered candidate ranks. Honorifics, commas, spacing and hyphens are not identity differences.",
+  "corrections": [
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "אמת",
+      "rank": 29,
+      "from": "רייזר-ששון צבי",
+      "to": "דינשטיין צבי",
+      "evidence": "YP 1563 p. 207 (candidate PDF page 2) and YP 1573 p. 434 (results PDF page 2) both print \"דינשטיין צבי\"; the earlier reading belonged to no candidate at this rank."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "אמת",
+      "rank": 32,
+      "from": "פיינברג-סרני עדה",
+      "to": "פינברג-סירני עדה",
+      "evidence": "Spelling as printed in YP 1573 p. 434 (clear) and YP 1563 p. 207: one yod in פינברג, yod in סירני."
+    }
+  ]
 }

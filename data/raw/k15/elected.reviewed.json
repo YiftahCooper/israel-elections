@@ -316,7 +316,7 @@
       ],
       "names": [
         "דהאמשה עבד אלמאלכ",
-        "צאנע טלב",
+        "סאנע טלב",
         "מחאמיד האשם",
         "חטיב תאופיק",
         "כנעאן מוחמד"
@@ -394,6 +394,16 @@
         17,
         18
       ]
+    }
+  ],
+  "corrections": [
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "עם",
+      "rank": 2,
+      "from": "צאנע טלב",
+      "to": "סאנע טלב",
+      "evidence": "Both notices print \"סאנע טלב\" with a clear ס: candidate notice p. 3044 (k15-candidates-gazette PDF page 10); results notice p. 3378 (PDF page 4)."
     }
   ]
 }

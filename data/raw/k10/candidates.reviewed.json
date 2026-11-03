@@ -93,7 +93,7 @@
         },
         {
           "rank": 17,
-          "nameHe": "חריש משה",
+          "nameHe": "חריף משה",
           "page": 2048
         },
         {
@@ -143,12 +143,12 @@
         },
         {
           "rank": 27,
-          "nameHe": "אמיר ז׳אק יעקב",
+          "nameHe": "אמיר ז׳אק-יעקב",
           "page": 2048
         },
         {
           "rank": 28,
-          "nameHe": "הראל אהרון",
+          "nameHe": "הראל אהרן",
           "page": 2048
         },
         {
@@ -158,7 +158,7 @@
         },
         {
           "rank": 30,
-          "nameHe": "בן-אהרן אברהם",
+          "nameHe": "כץ-עוז אברהם",
           "page": 2048
         },
         {
@@ -168,12 +168,12 @@
         },
         {
           "rank": 32,
-          "nameHe": "חרש מיכאל",
+          "nameHe": "חריש מיכאל",
           "page": 2048
         },
         {
           "rank": 33,
-          "nameHe": "ורד תמר",
+          "nameHe": "ותד מחמד",
           "page": 2048
         },
         {
@@ -208,7 +208,7 @@
         },
         {
           "rank": 40,
-          "nameHe": "רון אמיר",
+          "nameHe": "רון אמרי",
           "page": 2048
         },
         {
@@ -233,7 +233,7 @@
         },
         {
           "rank": 45,
-          "nameHe": "נעים עבד",
+          "nameHe": "נעים רענן",
           "page": 2048
         },
         {
@@ -318,7 +318,7 @@
           "שפייזר אליהו",
           "ברעם עוזי",
           "נחמקין אריה",
-          "חריש משה",
+          "חריף משה",
           "רוזוליו דניאל",
           "צבן יאיר זלמן",
           "הלל שלמה",
@@ -331,22 +331,22 @@
           "אמיר יעקב ז׳אק",
           "הראל אהרון",
           "זכאי יחזקאל",
-          "בן-אהרן אברהם",
+          "כץ-עוז אברהם",
           "צור יעקב",
           "חריש מיכאל",
-          "ורד תמר",
+          "ותד מחמד",
           "בן מאיר דב",
           "וייס שבח",
           "גיל יעקב",
           "בלומנטל נפתלי",
-          "אשל תמר",
+          "אשל תמיר",
           "חשאי יהודה",
-          "רון אמיר",
+          "רון אמרי",
           "בר-זהר מיכאל",
           "סבג אורי",
           "סויסה רפאל",
           "נחמיאס אהרן רפאל",
-          "נעים עבד",
+          "נעים רענן",
           "פדר נפתלי",
           "חלאילה חמד"
         ],
@@ -354,20 +354,26 @@
         "spellingVariants": [
           {
             "rank": 27,
-            "candidateNameHe": "אמיר ז׳אק יעקב",
+            "candidateNameHe": "אמיר ז׳אק-יעקב",
             "electedNameHe": "אמיר יעקב ז׳אק",
             "note": "Same rank and person in the two statutory notices; spelling, spacing, name order or alias differs."
           },
           {
-            "rank": 32,
-            "candidateNameHe": "חרש מיכאל",
-            "electedNameHe": "חריש מיכאל",
+            "rank": 28,
+            "candidateNameHe": "הראל אהרן",
+            "electedNameHe": "הראל אהרון",
             "note": "Same rank and person in the two statutory notices; spelling, spacing, name order or alias differs."
           },
           {
             "rank": 34,
             "candidateNameHe": "בן-מאיר דב",
             "electedNameHe": "בן מאיר דב",
+            "note": "Same rank and person in the two statutory notices; spelling, spacing, name order or alias differs."
+          },
+          {
+            "rank": 38,
+            "candidateNameHe": "אשל תמר",
+            "electedNameHe": "אשל תמיר",
             "note": "Same rank and person in the two statutory notices; spelling, spacing, name order or alias differs."
           }
         ]
@@ -715,7 +721,7 @@
         },
         {
           "rank": 20,
-          "nameHe": "ציפורי מרדכי",
+          "nameHe": "צפורי מרדכי",
           "page": 2058
         },
         {
@@ -770,12 +776,12 @@
         },
         {
           "rank": 31,
-          "nameHe": "דרורי שרה",
+          "nameHe": "דורון שרה",
           "page": 2059
         },
         {
           "rank": 32,
-          "nameHe": "וירג׳מן דרור",
+          "nameHe": "זייגרמן דרור",
           "page": 2059
         },
         {
@@ -805,7 +811,7 @@
         },
         {
           "rank": 38,
-          "nameHe": "רבי צבי",
+          "nameHe": "רנר צבי",
           "page": 2059
         },
         {
@@ -845,7 +851,7 @@
         },
         {
           "rank": 46,
-          "nameHe": "יגורי יצחק",
+          "nameHe": "זיגר יצחק",
           "page": 2059
         },
         {
@@ -934,7 +940,7 @@
           "שריר אברהם",
           "כהן יגאל",
           "קורפו חיים",
-          "ציפורי מרדכי",
+          "צפורי מרדכי",
           "שיפמן דוד",
           "בן-אלישר אליהו",
           "גולדשטיין פנחס",
@@ -945,14 +951,14 @@
           "תיכון דן",
           "קופמן חיים",
           "מגן דוד",
-          "דרורי שרה",
-          "וירגמן דרור",
+          "דורון שרה",
+          "זייגרמן דרור",
           "נסראלדין אמל",
           "רום יוסף",
           "גלזר-תעסה מרים",
           "קולס אליעזר",
           "לין אמנון",
-          "רבי צבי",
+          "רנר צבי",
           "כהן-אורגד יגאל",
           "כהן מאיר",
           "שטרית מאיר",
@@ -960,19 +966,12 @@
           "לבני איתן",
           "שליטא בני",
           "רייסר מיכאל",
-          "יגורי יצחק",
+          "זיגר יצחק",
           "פרץ יצחק",
           "נוף עקיבא"
         ],
         "note": "Visually compared name by name; namesHe uses surname/given order also when results print given/surname order. Punctuation normalized; explicit variants retain other differences.",
-        "spellingVariants": [
-          {
-            "rank": 32,
-            "candidateNameHe": "וירג׳מן דרור",
-            "electedNameHe": "וירגמן דרור",
-            "note": "Same rank and person in the two statutory notices; spelling, spacing, name order or alias differs."
-          }
-        ]
+        "spellingVariants": []
       }
     },
     {
@@ -1098,5 +1097,123 @@
       }
     }
   ],
-  "scope": "Winning lists: contiguous leading ranks covering every elected member; later ranks optional. Nonwinning lists not transcribed."
+  "scope": "Winning lists: contiguous leading ranks covering every elected member; later ranks optional. Nonwinning lists not transcribed.",
+  "corrections": [
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "אמת",
+      "rank": 17,
+      "from": "חריש משה",
+      "to": "חריף משה",
+      "evidence": "Re-read at high zoom: YP 2721 p. 2048 (candidate PDF page 2); results YP 2727 p. 2191 (results PDF page 3)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "אמת",
+      "rank": 27,
+      "from": "אמיר ז׳אק יעקב",
+      "to": "אמיר ז׳אק-יעקב",
+      "evidence": "Re-read at high zoom: YP 2721 p. 2048 (candidate PDF page 2); results YP 2727 p. 2191 (results PDF page 3)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "אמת",
+      "rank": 28,
+      "from": "הראל אהרון",
+      "to": "הראל אהרן",
+      "evidence": "Re-read at high zoom: YP 2721 p. 2048 (candidate PDF page 2); results YP 2727 p. 2191 (results PDF page 3)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "אמת",
+      "rank": 30,
+      "from": "בן-אהרן אברהם",
+      "to": "כץ-עוז אברהם",
+      "evidence": "Re-read at high zoom: YP 2721 p. 2048 (candidate PDF page 2); results YP 2727 p. 2191 (results PDF page 3)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "אמת",
+      "rank": 32,
+      "from": "חרש מיכאל",
+      "to": "חריש מיכאל",
+      "evidence": "Re-read at high zoom: YP 2721 p. 2048 (candidate PDF page 2); results YP 2727 p. 2191 (results PDF page 3)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "אמת",
+      "rank": 33,
+      "from": "ורד תמר",
+      "to": "ותד מחמד",
+      "evidence": "Re-read at high zoom: YP 2721 p. 2048 (candidate PDF page 2); results YP 2727 p. 2191 (results PDF page 3)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "אמת",
+      "rank": 38,
+      "from": "אשל תמר",
+      "to": "אשל תמר",
+      "electedFrom": "אשל תמר",
+      "electedTo": "אשל תמיר",
+      "evidence": "Re-read at high zoom: YP 2721 p. 2048 (candidate PDF page 2); results YP 2727 p. 2191 (results PDF page 3)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "אמת",
+      "rank": 40,
+      "from": "רון אמיר",
+      "to": "רון אמרי",
+      "evidence": "Re-read at high zoom: YP 2721 p. 2048 (candidate PDF page 2); results YP 2727 p. 2191 (results PDF page 3)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "אמת",
+      "rank": 45,
+      "from": "נעים עבד",
+      "to": "נעים רענן",
+      "evidence": "Re-read at high zoom: YP 2721 p. 2048 (candidate PDF page 2); results YP 2727 p. 2191 (results PDF page 3)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "מחל",
+      "rank": 20,
+      "from": "ציפורי מרדכי",
+      "to": "צפורי מרדכי",
+      "evidence": "Re-read at high zoom: YP 2721 pp. 2058–2059 (candidate PDF pages 12–13); results YP 2727 p. 2192 (results PDF page 4)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "מחל",
+      "rank": 31,
+      "from": "דרורי שרה",
+      "to": "דורון שרה",
+      "evidence": "Re-read at high zoom: YP 2721 pp. 2058–2059 (candidate PDF pages 12–13); results YP 2727 p. 2192 (results PDF page 4)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "מחל",
+      "rank": 32,
+      "from": "וירג׳מן דרור",
+      "to": "זייגרמן דרור",
+      "electedFrom": "וירגמן דרור",
+      "electedTo": "זייגרמן דרור",
+      "evidence": "Re-read at high zoom: YP 2721 pp. 2058–2059 (candidate PDF pages 12–13); results YP 2727 p. 2192 (results PDF page 4)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "מחל",
+      "rank": 38,
+      "from": "רבי צבי",
+      "to": "רנר צבי",
+      "evidence": "Re-read at high zoom: YP 2721 pp. 2058–2059 (candidate PDF pages 12–13); results YP 2727 p. 2192 (results PDF page 4)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "מחל",
+      "rank": 46,
+      "from": "יגורי יצחק",
+      "to": "זיגר יצחק",
+      "evidence": "Re-read at high zoom: YP 2721 pp. 2058–2059 (candidate PDF pages 12–13); results YP 2727 p. 2192 (results PDF page 4)."
+    }
+  ]
 }

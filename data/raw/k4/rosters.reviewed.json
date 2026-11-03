@@ -851,16 +851,16 @@
       "candidates": [
         {
           "rank": 1,
-          "nameHe": "אי-ד׳אהר אחמד"
+          "nameHe": "א-ז׳אהר אחמד"
         },
         {
           "rank": 2,
-          "nameHe": "נחילה אליאס"
+          "nameHe": "נח׳לה אליאס"
         }
       ],
       "electedNames": [
-        "אי-ד׳אהר אחמד",
-        "נחילה אליאס"
+        "א-ז׳אהר אחמד",
+        "נח׳לה אליאס"
       ],
       "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted.",
       "electedCandidateRanks": [
@@ -931,5 +931,23 @@
       ]
     }
   ],
-  "electedNamesConvention": "Reviewed elected identities, in the candidate-gazette spelling, not a diplomatic transcription of results typography. electedCandidateRanks maps the results order back to registered candidate ranks. Honorifics, commas, spacing and hyphens are not identity differences."
+  "electedNamesConvention": "Reviewed elected identities, in the candidate-gazette spelling, not a diplomatic transcription of results typography. electedCandidateRanks maps the results order back to registered candidate ranks. Honorifics, commas, spacing and hyphens are not identity differences.",
+  "corrections": [
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "רא",
+      "rank": 1,
+      "from": "אי-ד׳אהר אחמד",
+      "to": "א-ז׳אהר אחמד",
+      "evidence": "Re-read at high zoom; both notices print \"א-ז׳אהר אחמד\" (maqaf, zayin with geresh): k4-candidates-gazette PDF page 24 (printed p. 68); k4-results-gazette PDF page 3 (printed p. 265). The Knesset records him as א'-דאהר אחמד (PersonID 2116)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "רא",
+      "rank": 2,
+      "from": "נחילה אליאס",
+      "to": "נח׳לה אליאס",
+      "evidence": "Re-read at high zoom; printed \"נח׳לה אליאס\": k4-candidates-gazette PDF page 24 (printed p. 68). Candidate-notice reading; the results notice appears to print \"נח׳לת אליאס\"."
+    }
+  ]
 }

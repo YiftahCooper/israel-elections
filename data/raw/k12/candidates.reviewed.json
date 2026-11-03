@@ -429,7 +429,7 @@
         },
         {
           "rank": 2,
-          "nameHe": "פורזומנסקי אברהם",
+          "nameHe": "פורז-פוזמנטיר אברהם",
           "page": 150
         }
       ],
@@ -444,7 +444,7 @@
         ],
         "namesHe": [
           "רובינשטיין אמנון",
-          "פורזומנסקי אברהם"
+          "פורז-פוזמנטיר אברהם"
         ],
         "note": "Visually compared name by name; namesHe uses surname/given order also when results print given/surname order. Punctuation normalized; explicit variants retain other differences.",
         "spellingVariants": []
@@ -671,7 +671,7 @@
         },
         {
           "rank": 26,
-          "nameHe": "וינשטיין אריאל",
+          "nameHe": "ויינשטיין אריאל",
           "page": 155
         },
         {
@@ -701,46 +701,51 @@
         },
         {
           "rank": 32,
-          "nameHe": "גדות גדעון",
+          "nameHe": "גולדברג יוסף",
           "page": 155
         },
         {
           "rank": 33,
-          "nameHe": "שילנסקי דב",
+          "nameHe": "גדות גדעון",
           "page": 155
         },
         {
           "rank": 34,
-          "nameHe": "גרופר פסח",
+          "nameHe": "שילנסקי דב",
           "page": 155
         },
         {
           "rank": 35,
-          "nameHe": "לנדאו עוזי",
+          "nameHe": "גרופר פסח",
           "page": 155
         },
         {
           "rank": 36,
-          "nameHe": "הנגבי צחי",
+          "nameHe": "לנדאו עוזי",
           "page": 155
         },
         {
           "rank": 37,
-          "nameHe": "עמור שאול",
+          "nameHe": "הנגבי צחי",
           "page": 155
         },
         {
           "rank": 38,
-          "nameHe": "דורון שרה",
+          "nameHe": "עמור שאול",
           "page": 155
         },
         {
           "rank": 39,
-          "nameHe": "שובל זלמן",
+          "nameHe": "דורון שרה",
           "page": 155
         },
         {
           "rank": 40,
+          "nameHe": "שובל זלמן",
+          "page": 155
+        },
+        {
+          "rank": 41,
           "nameHe": "שגיא יהושע",
           "page": 155
         }
@@ -776,7 +781,6 @@
           22,
           23,
           24,
-          25,
           26,
           27,
           28,
@@ -791,7 +795,8 @@
           37,
           38,
           39,
-          40
+          40,
+          41
         ],
         "namesHe": [
           "שמיר יצחק",
@@ -818,13 +823,13 @@
           "אולמרט אהוד",
           "לין אוריאל",
           "עלי עובדיה",
-          "רייסר מיכאל",
-          "וינשטיין אריאל",
+          "ויינשטיין אריאל",
           "ריבלין ראובן",
           "כהן יגאל",
           "פרח יהודה",
           "איתן מיכאל",
           "מצא יהושע",
+          "גולדברג יוסף",
           "גדות גדעון",
           "שילנסקי דב",
           "גרופר פסח",
@@ -835,8 +840,14 @@
           "שובל זלמן",
           "שגיא יהושע"
         ],
-        "note": "Visually compared name by name; namesHe uses surname/given order also when results print given/surname order. Punctuation normalized; explicit variants retain other differences.",
-        "spellingVariants": []
+        "note": "Re-read on 2026-11-04 from both scans; namesHe in surname/given order (the results notice prints given name first). Registered rank 25 is not seated (notSeated).",
+        "spellingVariants": [],
+        "notSeated": [
+          {
+            "rank": 25,
+            "note": "Registered rank 25, רייסר מיכאל (YP 3588 p. 155), is not printed among the 40 Likud members elected in section 4 of the results notice (YP 3591 pp. 243–244): elected positions 1–24 are registered ranks 1–24 and positions 25–40 are ranks 26–41 (position 31 is גולדברג יוסף, registered rank 32). The notice gives no reason; none is inferred."
+          }
+        ]
       }
     },
     {
@@ -1178,5 +1189,39 @@
       }
     }
   ],
-  "scope": "Winning lists: contiguous leading ranks covering every elected member; later ranks optional. Nonwinning lists not transcribed."
+  "scope": "Winning lists: contiguous leading ranks covering every elected member; later ranks optional. Nonwinning lists not transcribed.",
+  "corrections": [
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "מחל",
+      "rank": 32,
+      "from": null,
+      "to": "גולדברג יוסף",
+      "evidence": "The earlier transcription omitted printed rank 32, shifting ranks 32–40 by one. Candidate notice p. 155 (k12-candidates-gazette PDF page 11) prints 31 מצא יהושע, 32 גולדברג יוסף, 33 גדות גדעון … 40 שובל זלמן, 41 שגיא יהושע; the dataset ranks 32–40 are now 33–41."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "מחל",
+      "rank": 25,
+      "from": "elected",
+      "to": "notSeated",
+      "evidence": "Results notice YP 3591 pp. 243–244 (PDF pages 3–4) lists 40 Likud members without רייסר מיכאל; position 31 is \"יוסף גולדברג\". The earlier elected cross-check listed Reiser and omitted Goldberg."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "מחל",
+      "rank": 26,
+      "from": "וינשטיין אריאל",
+      "to": "ויינשטיין אריאל",
+      "evidence": "Spelling as printed in both notices (p. 155; p. 243)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "הן",
+      "rank": 2,
+      "from": "פורזומנסקי אברהם",
+      "to": "פורז-פוזמנטיר אברהם",
+      "evidence": "Candidate notice p. 150 (PDF page 6) prints \"פורז-פוזמנטיר אברהם\"; the results notice p. 243 prints \"אברהם פורז-פוזמנטיר\" (heavy ink)."
+    }
+  ]
 }
