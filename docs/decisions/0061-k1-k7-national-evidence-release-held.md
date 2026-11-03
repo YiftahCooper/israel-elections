@@ -58,3 +58,12 @@ and unavailable state; they do **not** assert successful historical reproduction
 The other four compare every engine seat with the independently transcribed table,
 with no-connections limitations explicit for k2/k3/k5. No generated source table
 or successful-test log substitutes for the original gazettes.
+
+## Correction addendum — 1965 connection (3 November 2026)
+
+Fresh visual inspection of the retained YP 1225 p.189 reads **את–רא**,
+Alignment–Progress and Development, not את–יא. The printed name and letters both
+contradict the earlier transcription. Correcting that input reproduces every k6
+seat without changing the engine; all elected names are now checked and k6 is
+released nationally. [0069a](0069a-k6-corrected-connection-national-release.md)
+supersedes the 1965-specific mismatch/hold above. Other stated legal limits remain.

@@ -9,20 +9,22 @@ import { scenarioFromDataset, toEngineInput, validateScenario } from '../src/mod
 const connections: Record<number,string[][]> = {
   1:[['ב','ל'],['ט','יג'],['יא','יד'],['מ','ת'],['ס','צ']],
   2:[['צ','סצ']],3:[['א','יד'],['פ','ש'],['צ','צח'],['סא','ל'],['נ','ע']],
-  4:[['א','רא'],['יא','ע']],5:[['ב','ד'],['מ','תו'],['יא','רא']],7:[['יא','רא']],
+  4:[['א','רא'],['יא','ע']],5:[['ב','ד'],['מ','תו'],['יא','רא']],
+  6:[['את','רא'],['כא','כס']],7:[['יא','רא']],
 };
-const quotas:Record<number,number>={1:3592,2:5692,3:6938,4:7800,5:8332,7:11274};
+const quotas:Record<number,number>={1:3592,2:5692,3:6938,4:7800,5:8332,6:9881,7:11274};
 const coverage:Record<number,Record<string,number>>={
   1:{א:50,ב:16,ח:17,יד:2,טו:1,ל:1,מ:19,נ:1,ס:4,פ:6,צ:7,ק:4},
   2:{א:45,ב:2,ג:3,ד:2,ה:8,ח:8,יד:3,ל:1,מ:15,נ:1,סצ:2,ע:1,פ:4,צ:20,ק:5},
   3:{א:40,ב:11,גד:6,ח:15,יד:2,מ:9,נ:2,ע:1,פ:5,צ:13,ק:6,תו:10},
   4:{א:47,ב:12,גד:6,ח:17,יא:2,מ:9,ע:1,פ:6,צ:8,ק:3,רא:2,תו:7},
   5:{א:42,ב:12,ג:4,ד:2,ח:17,יא:2,ל:19,מ:9,ק:5,רא:2,תו:8},
+  6:{את:45,ב:11,ג:4,ד:2,ו:3,חל:26,יא:2,כא:10,לע:5,מ:8,ק:1,רא:2,ש:1},
   7:{אמת:56,ב:12,ג:4,ד:2,ו:3,חל:26,ט:2,יא:2,לע:4,עמ:4,ק:1,רא:2,ש:2},
 };
 const index=JSON.parse(readFileSync('public/data/elections.json','utf8')) as {id:string;available:boolean;status:{noteHe:string;noteEn:string}}[];
 
-describe.each([1,2,3,4,5,7])('k%i built national release',n=>{
+describe.each([1,2,3,4,5,6,7])('k%i built national release',n=>{
   const ds:ElectionDataset=JSON.parse(readFileSync(`public/data/k${n}.json`,'utf8'));
   const reviewed=earlyReview(n),roster=earlyRosterReview(n);
   const input=toEngineInput(scenarioFromDataset(ds)),result=allocate(input);

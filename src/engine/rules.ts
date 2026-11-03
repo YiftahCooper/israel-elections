@@ -25,7 +25,7 @@ export const ISRAEL_1949: RuleSet = { ...ISRAEL_2014, id: 'il-1949-highest-avera
   majorityCap: false, quotaSeatOffset: 1, remainderRequiresInitialSeat: true,
   agreementRequiresInitialSeat: true, quotientRounding: 'floor' };
 /** Literal 1951 s.38 / 1955 s.43 / 1959 s.37 / original 1969 s.81.
- * Historical agreement application remains unresolved for k6 (decision 0061); not release evidence. */
+ * K2–K7 reproduce with primary connections; K6's transcription correction is recorded in 0069a. */
 export const ISRAEL_1951: RuleSet = { ...ISRAEL_2014, id: 'il-1951-largest-remainder-1', threshold: rat(1,100),
   remainderMethod: 'largest-remainder', majorityCap: false, largestRemainderRepeat: false, tiePolicy: 'unspecified' };
 /** K9 candidate-cap procedure inferred from the published result; see decision 0073. */

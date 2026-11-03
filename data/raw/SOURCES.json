@@ -1723,11 +1723,11 @@
     "url": "local:reviewed/k6/national",
     "publisher": "Project transcription of official Reshumot and CBS",
     "official": false,
-    "description": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
+    "description": "Visually reviewed national votes and published seats; YP 1225 first partner corrected to רא after fresh primary-scan inspection (0069a). Winning-prefix and elected-name release requirements met; no inferred agreements.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T18:20:00Z",
-    "bytes": 4124,
-    "sha256": "714d9efaa00592ffd9f94e2925a2d54807f0f27f205400480c49c6a81bb54753"
+    "bytes": 4416,
+    "sha256": "b9cfabe346ec1a7a51c1d5e27996af8bab25b1e2da28f2e4eb3c98c371b7b0eb"
   },
   {
     "id": "k7-results-gazette",
@@ -1783,7 +1783,7 @@
     "url": "https://olaw.org.il/yalkut/yalkut-1225.pdf",
     "publisher": "Reshumot / Yalkut HaPirsumim 1225, via olaw.org.il mirror",
     "official": true,
-    "description": "Primary statutory connected-list notice; mirror disclosed. Read through signature, all pairs retained.",
+    "description": "Primary statutory connected-list notice; mirror disclosed. Fresh visual review confirms את–רא (Alignment–Progress and Development), NOT את–יא, and כא–כס; all pairs retained. See decision 0069a.",
     "method": "http",
     "retrievedAt": "2026-11-03T18:20:00Z",
     "bytes": 88102,
@@ -2652,5 +2652,17 @@
     "bytes": 22516,
     "sha256": "7437065d2a6c00eba06939377148aba88b1af3e03a1d3b0e526d02c2c7412eee",
     "lastModified": null
+  },
+  {
+    "id": "k6-rosters-reviewed",
+    "file": "k6/rosters.reviewed.json",
+    "url": "local:reviewed/k6/rosters",
+    "publisher": "Project transcription of official Reshumot",
+    "official": false,
+    "description": "Winning-list registered prefixes from YP 1222, cross-checked against all 120 elected names in YP 1230; page references and truncation explicit.",
+    "method": "manual-transcription",
+    "retrievedAt": "2026-11-03T17:32:47.908295+00:00",
+    "bytes": 22567,
+    "sha256": "f6d4ed7fb9b5a156738698cbcd151c4325d8541c78b43cae1f13f3414af5be01"
   }
 ]

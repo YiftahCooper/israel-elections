@@ -179,14 +179,14 @@ with the unchanged app warning switch, the warning uses `lottery-required` plus
 of asserting that the law mandates a lottery. No express candidate shortage
 redistribution provision was found; that behavior is unverified.
 
-**Historical application of the agreement clauses remains unresolved for 1965.**
-The complete notice YP 1225 yields Alignment 44 and HaOlam HaZeh 2 under this literal
-implementation, against published 45 and 1. Neither changing votes nor inventing a
-second connection is justified. The preset is tested as an implementation of the
-inspected text; it is **not proof of a fully verified historical allocation rule**
-until contemporary CEC application evidence resolves that discrepancy. Decision
-[0061](decisions/0061-k1-k7-national-evidence-release-held.md) preserves the exact
-comparison. Follow-up evidence now supplies complete notices for the released
+**The former 1965 discrepancy was a connection-transcription error.** Fresh visual
+inspection of [YP 1225 p.189](https://olaw.org.il/yalkut/yalkut-1225.pdf), PDF p.1,
+reads **את–רא (Alignment–Progress and Development)**, not את–יא. With the corrected
+primary input, the unchanged preset reproduces all seats: Alignment 45,
+HaOlam HaZeh 1. The pair receives 47 seats and re-divides 45+2 at internal quota
+9,932. No new quota, remainder rule or RuleSet field is required. Decision
+[0069a](decisions/0069a-k6-corrected-connection-national-release.md) supersedes the
+1965-specific uncertainty in decisions 0060–0062 and 0068. Follow-up evidence now supplies complete notices for the released
 1951–1969 datasets: **YP 177 p.1177** (צ–סצ), **YP 427 p.1053** (א–יד, פ–ש,
 צ–צח, סא–ל, נ–ע), **YP 709 p.125** (א–רא, יא–ע), **YP 865 p.1843** (ב–ד,
 מ–תו, יא–רא), and **YP 1565 p.246** (יא–רא). Signed primary notices were read
@@ -196,11 +196,9 @@ Decisions 0064–0067 and 0069 release k2/k3/k4/k5/k7 with reviewed contiguous w
 prefixes and official elected-name cross-checks. Later ranks and localities remain
 outside the release. The 1961 Liberal elected-rank exclusions are preserved.
 
-Decision [0068](decisions/0068-k6-allocation-gap-remains-held.md) continues the 1965
-hold. Its pair's pooled remainder exceeds a quota; converting that into an extra
-whole seat is a plausible numerical hypothesis, but no contemporary CEC
-interpretation authorizing it was recovered. It is not implemented because it fits.
-The literal preset and all its warnings remain unchanged.
+K6 is also released with reviewed winning prefixes and all 120 elected names
+cross-checked against YP 1230. The rejected pooled-quota/second-remainder-seat
+hypotheses in 0068 were never established law and remain unimplemented.
 
 ## 1973–1988: 1% Bader–Ofer, with the explicit K9 inference
 

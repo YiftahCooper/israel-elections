@@ -51,3 +51,12 @@ match alone must not be described as verified historical inputs.
 
 The missing 1951–1961 notices require another archive route. This is a bounded
 retrieval record, not proof that the notices or other agreements do not exist.
+
+## Correction addendum — 1965 connection (3 November 2026)
+
+Fresh visual inspection of the retained YP 1225 p.189 reads **את–רא**,
+Alignment–Progress and Development, not את–יא. The printed name and letters both
+contradict the earlier transcription. Correcting that input reproduces every k6
+seat without changing the engine; all elected names are now checked and k6 is
+released nationally. [0069a](0069a-k6-corrected-connection-national-release.md)
+supersedes the 1965-specific mismatch/hold above. Other stated legal limits remain.

@@ -28,11 +28,11 @@ data.gov.il and Reshumot sources. Raw files and a manifest record source URLs, r
 times and SHA-256 hashes. Two 2026 candidate rosters use a labelled secondary source.
 Colours, short names and default blocs are assigned by the app.
 
-**Available:** every election from 1949 to 2026 except 1965 and 1973 (24 elections). Every member
+**Available:** every election from 1949 to 2026 except 1973 (25 elections). Every member
 elected is listed; for 1949–2006 some lists' later candidates (and a few rosters of lists that won no seats) are
 not yet transcribed from the scanned gazettes, and the app says so. Official sources for
-1965 and 1973 have been gathered, but those two elections are still being verified; until then
-the picker lists them as not yet available.
+1973 have been gathered, but that election is still being verified; until then
+the picker lists it as not yet available.
 See [Data coverage and provenance](docs/DATA.md) for sources, qualifications and gaps.
 
 ## Accuracy and limits
