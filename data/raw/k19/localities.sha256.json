@@ -1,0 +1,6 @@
+{
+  "sha256": "e25cd1540951e9baf6de650038e9862338e2838e1a740090777f9b14deded675",
+  "rows": 1185,
+  "derivation": "Independent locality rows plus code 875 external envelopes derived from 228 polling rows, sorted by official code.",
+  "pollingSourceSha256": "2234ec729a7db119e17f627b3d2c9eb088ad2e8b8ff0e2cd5edf3dd525866cb0"
+}

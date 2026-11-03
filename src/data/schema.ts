@@ -123,4 +123,5 @@ export interface LocalityDataset {
   noteHe?: string;
 }
 
-export const isEnvelopeRow = (r: LocalityRow) => r.envelopes === true || r.code === 9999;
+/** Double-envelope rows: flagged, or code 9999 (2015 on), or named "מעטפות…" (2009 uses code 0, 2013 code 875). */
+export const isEnvelopeRow = (r: LocalityRow) => r.envelopes === true || r.code === 9999 || r.nameHe.startsWith('מעטפות');

@@ -1,9 +1,9 @@
 # Election data: coverage and remaining verification
 
-The app offers **seven verified election datasets: k20–k26** (2015–2026). For each, the engine
+The app offers **nine verified election datasets: k18–k26** (2009–2026). For each, the engine
 reproduces every list's officially published seats, checked by `tests/historical-kNN.test.ts`
 and `tests/engine.test.ts` (2026: the reported final count, pending gazettement).
-Official sources for **k16–k19** (2003–2013) are retained, but those elections have not yet
+Official sources for **k16–k17** (2003–2006) are retained, but those elections have not yet
 passed every release gate; `public/data/elections.json` marks them unavailable.
 
 ## Sources by election
@@ -12,8 +12,8 @@ passed every release gate; `public/data/elections.json` marks them unavailable.
 |---|---|---|---|---|
 | k16 | 2003-01-28 | Polling stations; CEC candidates/results; complete agreement notice YP 5151; official CBS totals; reviewed national transcription and locality digest | No secondary rosters; project derivatives labelled | Two gazette vote discrepancies (410 total); full rosters; locality committee metadata; release blocked |
 | k17 | 2006-03-28 | Polling stations; CEC candidates/results; complete agreement notice YP 5510; official CBS totals; reviewed national transcription and locality digest | No secondary rosters; project derivatives labelled | Nine-invalid-vote discrepancy; full rosters; locality code/electorate/committee fields; release blocked |
-| k18 | 2009-02-10 | data.gov.il polling stations; CEC candidates and results gazettes | None | Verified candidate extraction, agreements and complete validation |
-| k19 | 2013-01-22 | data.gov.il localities and polling stations; CEC candidates and results gazettes | None | Gazette corrections, verified candidate extraction, agreements and validation |
+| k18 | 2009-02-10 | Polling stations; CEC candidate/results gazettes; allocation memorandum; YP 5912 agreement notice (mirror) | None | Released; derived localities and sourced invalid-count exception disclosed (0040) |
+| k19 | 2013-01-22 | Localities/polling; CEC candidate/results gazettes; final-results numeric capture; decisions book; YP 6530 agreements (mirror) | None | Released on the CEC final figures; gazette total/list differences disclosed, seats identical either way (0041, 0042) |
 | k20 | 2015-03-17 | data.gov.il localities and polling stations; CEC candidate gazette YP 7000, results YP 7010; agreement notice YP 7001 (mirror) | None | Released: every list’s seats reproduced; all 1,196 locality rows reconcile with 10,414 polling rows; 1,284 registered candidates; complete four-pair notice |
 | k21 | 2019-04-09 | data.gov.il localities and polling stations; CEC national HTML; candidate gazette YP 8168; agreement notice YP 8178 (mirror) | None | Released: every list’s seats reproduced; all 1,214 locality rows reconcile with 10,765 polling rows; 1,580 registered candidates; complete six-pair notice |
 | k22 | 2019-09-17 | CEC national HTML; data.gov.il localities and fully reconciled polling stations; candidate gazette YP 8420; complete agreement notice YP 8430 (mirror) | None | Released: all seats reproduced; electorate disagreement disclosed below; rosters are gazette snapshots |
@@ -92,10 +92,13 @@ and review the resulting data changes; normal builds never rewrite this evidence
   `scripts/lib/parse-historical-gazette.ts` is an **unfinished parser prototype**. It fails
   on several retained PDFs and must not be wired into production builds yet. Contiguous
   ranks alone do not prove that the last candidates or name fragments were captured.
-* Knesset 19's retained original results gazette says **3,792,472** valid votes, while the
-  data.gov.il polling rows total **3,792,742**. The 270-vote difference needs an official
-  correction or other explanation before asserting exact national reconciliation.
-  The datastore also spells Meretz's column `מרץ`, versus ballot letters `מרצ` in Reshumot.
+* Knesset 19's gazette prints **3,792,472**, but its own list counts sum to
+  **3,792,742**. Final CEC web results and polling rows agree on the latter. Three
+  list totals also differ: Likud +109, Kadima −107, Hayisraelim −2 (net zero).
+  No official explanation or affected-station attribution was found. Decision 0041 records
+  the evidence and search limits; decision 0042 releases k19 on the CEC final figures because
+  both versions give exactly the same seats (tested in `tests/historical-k19.test.ts`). Meretz's
+  datastore column `מרץ` is explicitly mapped to official `מרצ` and tested.
 * The Knesset 24 results page succeeded on retry; a fallback national total is unnecessary.
 
 ## Knessets 16–17: verified progress, not released datasets
@@ -167,8 +170,8 @@ paged official CKAN API. It discovers resource IDs from the retained package cat
 dependencies are required. This is reproducible working material, not the only copy of
 unique data. Scratch's git exclusion is verified; no claim is made about backup software.
 
-`node scripts/build-datasets.ts` builds every available election (k20–k26) with strict checks.
-For k16–k17 it validates the retained evidence but emits no dataset; k18–k19 are not yet built.
+`node scripts/build-datasets.ts` builds every available election (k18–k26) with strict checks.
+For k16–k17 it validates the retained evidence but emits no dataset.
 
 ## K20 and K21 release verification
 
@@ -200,3 +203,85 @@ public locality rows. Recover polling files with the existing `fetch-sources.ts`
 for full verification. No polling JSON is committed. Evidence is never rewritten by a build;
 if source data changes, review it and repeat full reconciliation before replacing its digest.
 The canonical representation and regeneration parameters are recorded once in decision 0030.
+
+## K18 implementation and validation
+
+K18 now builds 33 participating lists with 1,613 candidates from the official gazette,
+eight complete surplus agreements from mirrored YP 5912 p. 2254, and 1,157 geographic
+rows derived from polling stations (1,156 localities and the code 0 double-envelope
+summary). The data's status explicitly labels the derivation; there is no independent
+locality source. Every gazetted seat is reproduced through the scenario model, with
+threshold 67,470 and quota 27,246. Every roster's final rank and contiguous sequence
+are checked; Kadima #1 is לבני ציפי צפורה, alongside the other main-list leaders.
+The original approved roster snapshot is retained; later resignations are not applied.
+The approved פח roster has no final votes and is not included among participating lists.
+
+Decision 0040 documents the national exception: YP 5917 prints 49,684 invalid votes,
+but the CEC allocation memorandum and polling table agree on 43,097. National totals
+are 5,278,985 registered, 3,416,587 cast, 3,373,490 valid. The envelope summary's
+186,919 registered field is retained geographically but excluded from the national
+registered sum, avoiding double counting voters already registered in their home
+localities. `ballotBoxes` counts 9,264 source rows, including that single aggregate
+row; it is not a claim about the physical number of envelope boxes. Regional committee
+is absent and represented by 0, labelled in status. Sponsoring-party fields are
+empty/null because those affiliations are not stated separately in this gazette.
+No blocs are assigned; display names and colours are editorial metadata.
+
+## K19 implementation and remaining release gate
+
+K19 builds 32 participating lists, 1,595 candidates and all seven pairs from mirrored
+YP 6530 p. 2156. The CEC's final national publication independently supports every
+list's datastore votes, 5,656,705 registered, 3,833,646 cast, 40,904 invalid and
+3,792,742 valid. A numeric capture is retained with its manual-transcription method
+explicit in SOURCES.json; its publisher is official, not secondary. Every gazetted
+seat is reproduced, threshold 75,855 and quota 29,366. Candidate counts and main-list
+leaders are tested, including largest-list #1 נתניהו בנימין. The parser excludes twenty
+occluded repeated Labor template objects; one corrupt PDF-text rank (`551`) is
+explicitly decoded as the visibly printed `117` (Balad, PDF p. 7). It fails on
+unattached name fragments, conflicting duplicates, missing names or rank gaps. Names
+follow the original candidate gazette; later resignations are not applied. Approved
+zero-vote rosters זה and פך are absent from the final participating-list table.
+
+All 1,184 independent locality rows agree exactly with their polling sums. Code 875
+(external envelopes) is absent from that file: its row is derived from 228 polling
+records and retained as `data/raw/k19/envelopes.derived.json`, with source hash.
+Together the 1,185 rows reconcile with all 10,109 polling records and national totals.
+The external group contributes 212,949 valid, 2,840 invalid, 215,789 cast and zero
+registered. Regional committee is unavailable (0); sponsors are empty/null and no
+blocs are inferred. Dataset status labels the derived envelope row through this
+source decision and the outstanding discrepancy; all rosters use official evidence.
+
+Decision 0041 distinguishes the 270 grand-total inconsistency from the net-zero
+three-list differences. No earlier station snapshot or official explanation was
+located. The CEC decisions book names several disqualified/investigated stations,
+but does not connect them to these differences; attributing the deltas to them would
+be speculation. Thus **k19 remains `available: false`**, despite passing numerical,
+roster and agreement checks. Its status and affected lists' notes disclose the gap.
+No UI code or schema change was made.
+
+### K18/K19 reproducibility without committed polling JSON
+
+`node scripts/build-datasets.ts` validates the committed locality datasets against
+`data/raw/kNN/localities.sha256.json` and each fingerprint's polling-source hash.
+It checks every national/list/row total, roster counts/ranks, full agreement notice
+and exact engine seats. With scratch present it additionally checks every locality
+against the full polling table; without scratch it logs that this reconciliation is
+skipped. CI still checks the reviewed locality SHA-256 and national results. K19
+also checks its independent locality input and retained envelope aggregate. A hash
+is an integrity check of the reviewed derivation, not independent source evidence.
+
+To deliberately regenerate these aggregates after fetching scratch, run
+`node scripts/lib/historical/k18-k19-common.ts --regenerate-localities`, review the
+dataset and fingerprint diffs, then run the normal builder and tests. This explicit
+command regenerates k18 from polling and k19 from polling only after independent
+locality reconciliation. Ordinary builds never replace the accepted fingerprints.
+The retained source IDs, hashes, locked dependencies and this command supply the
+reproduction record; polling JSON remains ignored scratch. Tests are in
+`tests/historical-k18.test.ts` and `tests/historical-k19.test.ts`.
+
+K18/K19 integration note for the parent: the existing UI assumes that every
+external-envelope row uses code 9999 (`Turnout.tsx` and `Panels.tsx`, plus the glossary).
+These historical sources use code 0 (k18) and 875 (k19). The source codes are preserved;
+the UI needs an election-aware envelope predicate and accurate derived-source labels
+before its locality presets can exclude these rows correctly. No `src/app/` file was
+changed in this branch, as required by the shared-file boundary.

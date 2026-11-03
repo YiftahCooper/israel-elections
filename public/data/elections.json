@@ -29,10 +29,11 @@
     "date": "2009-02-10",
     "nameHe": "הבחירות לכנסת ה-18",
     "nameEn": "Election to the 18th Knesset",
-    "available": false,
+    "available": true,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "Official sources downloaded; dataset not built or verified."
+      "stage": "official-final",
+      "noteEn": "Verified seats, gazette rosters and eight agreement pairs. Localities derived from polling stations. Invalid-ballot total follows the CEC allocation memorandum; see decision 0040.",
+      "noteHe": "המנדטים, רשימות המועמדים ושמונה הסכמי עודפים אומתו. היישובים נגזרו מסיכום הקלפיות; הפסולים לפי זכרון הדברים הרשמי. ראו החלטה 0040."
     }
   },
   {
@@ -41,10 +42,11 @@
     "date": "2013-01-22",
     "nameHe": "הבחירות לכנסת ה-19",
     "nameEn": "Election to the 19th Knesset",
-    "available": false,
+    "available": true,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "Official sources downloaded; dataset not built or verified."
+      "stage": "official-final",
+      "noteEn": "Official final CEC results; every seat reproduced. The gazette prints a valid total 270 lower than its own list counts and three slightly different list totals; seats are identical either way. See decisions 0041–0042.",
+      "noteHe": "תוצאות סופיות רשמיות; כל המנדטים שוחזרו. ברשומות סך הכשרים נמוך ב-270 מסכום הרשימות ושלוש רשימות שונות במעט; המנדטים זהים בשתי הגרסאות. ראו החלטות 0041–0042."
     }
   },
   {

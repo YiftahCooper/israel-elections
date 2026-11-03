@@ -1,0 +1,6 @@
+{
+  "sha256": "1b16d056e89ea65458122b122b448cb1c20c6bb5fd1fb925c35f88539e70b1dd",
+  "rows": 1157,
+  "derivation": "Polling stations grouped by official locality code; code 0 is double envelopes.",
+  "pollingSourceSha256": "50c6aee30ba047f19d44c45430e2b5c6b19c9ff560b382dff2c4fb18374f7d05"
+}

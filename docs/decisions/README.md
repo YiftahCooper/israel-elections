@@ -28,6 +28,9 @@ is labelled. Suggested alternatives are not evidence of a past design discussion
 | [0020: K22 national electorate](0020-k22-national-electorate.md) | Keep the CEC national electorate (6,394,030) and disclose the 2,812-voter gap to the locality files. |
 | [0021: K22–K24 gazettes and reconciliation](0021-k22-k24-gazettes-and-reconciliation.md) | Gazetted rosters, complete official agreement notices and portable locality digests for 2019b–2021. |
 | [0030: K20–K21 release evidence](0030-k20-k21-release-evidence.md) | Official rosters, agreements and reproducible verification for 2015 and April 2019. |
+| [0040: K18 sources and derived localities](0040-k18-verified-sources-and-derived-localities.md) | 2009: official sources; localities derived from polling stations; invalid votes follow the CEC memorandum (the gazette repeats 2006's 49,684). |
+| [0041: K19 national discrepancies](0041-k19-national-discrepancies-release-held.md) | 2013: evidence on the gazette/CEC final differences (release hold superseded by 0042). |
+| [0042: K19 release with disclosed differences](0042-k19-release-with-disclosed-gazette-differences.md) | Release 2013 on the CEC final figures: both versions give exactly the same seats. |
 | [0050: K16–K17 progress without release](0050-k16-k17-verified-progress-without-release.md) | Keep 2003 and 2006 unavailable until rosters and documented discrepancies are resolved. |
 | [0051: K16–K17 allocation rules](0051-k16-k17-historical-allocation-evidence.md) | Check the 2003 and 2006 rules without trusting the archive folder's date. |
 

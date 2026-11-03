@@ -8,8 +8,8 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 
 ### Added
 
-- Five more elections: 2015, April 2019, September 2019, 2020 and 2021 (Knessets 20–24),
-  built from official sources; every list's official seats are reproduced exactly.
+- Seven more elections: 2009, 2013, 2015, April 2019, September 2019, 2020 and 2021
+  (Knessets 18–24), built from official sources; every list's official seats are reproduced exactly.
 - Party colours follow the same party across elections.
 - A documentation map, contributor guidance and retrospective decision records.
 

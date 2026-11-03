@@ -28,9 +28,9 @@ data.gov.il and Reshumot sources. Raw files and a manifest record source URLs, r
 times and SHA-256 hashes. Two 2026 candidate rosters use a labelled secondary source.
 Colours, short names and default blocs are assigned by the app.
 
-**Available:** 2015, April 2019, September 2019, 2020, 2021, 2022 and 2026 (Knessets 20–26).
-Official sources for 2003–2013 (Knessets 16–19) have been added, but those elections are
-**not yet available**: their datasets have not yet passed every verification check.
+**Available:** 2009, 2013, 2015, April 2019, September 2019, 2020, 2021, 2022 and 2026
+(Knessets 18–26). Official sources for 2003 and 2006 (Knessets 16–17) have been added, but those
+elections are **not yet available**: their candidate rosters are still being transcribed from scans.
 See [Data coverage and provenance](docs/DATA.md) for sources, qualifications and gaps.
 
 ## Accuracy and limits
@@ -83,7 +83,7 @@ npm test
 
 Fetching recovers missing sources; `node scripts/fetch-sources.ts --refresh` downloads
 fresh copies. The builder produces every available election's dataset and stops on
-failed consistency checks; for 2003–2013 it checks the evidence gathered so far but emits no dataset.
+failed consistency checks; for 2003 and 2006 it checks the evidence gathered so far but emits no dataset.
 Read [Data coverage](docs/DATA.md) before changing sources or publishing rebuilt files.
 
 ## Project structure
