@@ -22,6 +22,11 @@ Outside CI an existing server on 4174 is reused, which may serve another checkou
 a dataset rebuild, unit tests, the production build and Chromium end-to-end tests.
 It has no separate lint command. Do not substitute a successful Vite build for type checking.
 
+[Pages](../.github/workflows/pages.yml) publishes `dist/` to GitHub Pages on every push to `main`.
+It is skipped while the repository is private (free plans serve Pages from public repositories only).
+After making the repository public, choose Settings → Pages → Source → GitHub Actions once.
+The build uses relative asset paths (`base: './'`), so it works under `/<repository>/`.
+
 ## Calculation and scenario model
 
 `src/engine/allocate.ts` handles qualification, quota seats, remainder seats and the
