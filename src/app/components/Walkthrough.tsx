@@ -4,7 +4,7 @@ import type { Scenario } from '../../model/scenario.ts';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtFrac, fmtInt, fmtPct, fmtRat } from '../format.ts';
-import { dispatch, setState, useStore } from '../store.ts';
+import { dispatch, setState, useStore, useDigits } from '../store.ts';
 import { Info } from './ui.tsx';
 
 type Step = { kind: 'threshold' } | { kind: 'quota' } | { kind: 'initial' } | { kind: 'remainder'; st: RemainderStep } | { kind: 'internal'; unitId: string } | { kind: 'final' };
@@ -12,7 +12,7 @@ type Step = { kind: 'threshold' } | { kind: 'quota' } | { kind: 'initial' } | { 
 export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
   const L = useL();
   const lang = useLang();
-  const digits = useStore((st) => st.digits);
+  const digits = useDigits();
   const advanced = useStore((st) => st.level === 'expert');
   const steps: Step[] = useMemo(() => [
     { kind: 'threshold' }, { kind: 'quota' }, { kind: 'initial' },

@@ -7,7 +7,7 @@ import { toEngineInput, votesCast, type Scenario, type SimList } from '../../mod
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtFrac, fmtInt, fmtPct, fmtRat, signed } from '../format.ts';
-import { dispatch, dispatchMany, setState, toast, useLevel, useStore, useVoteSource } from '../store.ts';
+import { dispatch, dispatchMany, setState, toast, useLevel, useStore, useVoteSource, useDigits } from '../store.ts';
 import { clampTarget, deltaAction, votesForShare } from '../voteEdit.ts';
 import { Candidates } from './Candidates.tsx';
 import { DecimalInput, Delta, Info, NumberInput, Slip, TextField, VoteSlider } from './ui.tsx';
@@ -17,7 +17,7 @@ export function ListPanel({ s, r, ds, base, baseR }: { s: Scenario; r: Allocatio
   const L = useL();
   const lang = useLang();
   const id = useStore((st) => st.selectedListId);
-  const digits = useStore((st) => st.digits);
+  const digits = useDigits();
   const { simple, standard, expert: advanced } = useLevel();
   const src = useVoteSource();
   const l = s.lists.find((x) => x.id === id);
@@ -129,6 +129,14 @@ export function ListPanel({ s, r, ds, base, baseR }: { s: Scenario; r: Allocatio
         {standard && <div style={{ marginTop: 10 }}><VoteTools s={s} r={r} l={l} /></div>}
         </fieldset>
 
+        {simple && agr && (
+          <p className="small ink2" style={{ marginTop: 10 }}>
+            ⇄ {L('Surplus-vote agreement with ', 'הסכם עודפים עם ')}<b>{listLabel(s.lists.find((x) => x.id === agr.members.find((m) => m !== l.id))!, lang)}</b>
+            {' · '}{agrStatus?.active ? L('active', 'בתוקף') : !agr.enabled ? L('switched off', 'כבוי') : L('no effect', 'ללא השפעה')}
+            {agreementEffect && agreementEffect.length > 0 && <> {' · '}{L('effect: ', 'השפעה: ')}{agreementEffect.map((e) => `${listLabel(s.lists.find((x) => x.id === e.id)!, lang)} ${signed(e.d)}`).join(' · ')}</>}
+          </p>
+        )}
+
         {standard && <>
         <hr />
         <div className="section-title row">{L('Surplus-vote agreement', 'הסכם עודפים')} <Info term="surplus" /></div>
@@ -155,6 +163,12 @@ export function ListPanel({ s, r, ds, base, baseR }: { s: Scenario; r: Allocatio
         )}
 
         <div className="row" style={{ marginTop: 8 }}>
+          <label className="row small" style={{ gap: 6 }}>{L('Bloc', 'גוש')}
+            <select value={l.bloc ?? ''} onChange={(e) => dispatch({ type: 'setListMeta', listId: l.id, patch: { bloc: e.target.value || null } })}>
+              <option value="">{L('None', 'ללא')}</option>
+              {s.blocs.map((b) => <option key={b.id} value={b.id}>{lang === 'he' ? b.nameHe : b.nameEn}</option>)}
+            </select>
+          </label>
           <button className="btn small" onClick={() => dispatch({ type: 'setWithdrawn', listId: l.id, withdrawn: !l.withdrawn })}>{l.withdrawn ? L('Reinstate list', 'החזרת הרשימה') : L('Withdraw list', 'פרישת הרשימה')}</button>
           {!baseList && <button className="btn small danger" onClick={() => { dispatch({ type: 'removeList', listId: l.id }); setState({ selectedListId: null }); }}>{L('Delete list', 'מחיקת הרשימה')}</button>}
         </div>
@@ -163,18 +177,12 @@ export function ListPanel({ s, r, ds, base, baseR }: { s: Scenario; r: Allocatio
         {advanced && (
           <>
             <hr />
-            <div className="section-title">{L('Identity (display only — does not change results)', 'זהות (תצוגה בלבד — אינה משנה תוצאות)')}</div>
+            <div className="section-title">{L('Identity (display only — does not change seats)', 'זהות (תצוגה בלבד — אינה משנה מנדטים)')}</div>
             <div className="grid2">
               <label className="field">{L('Short name (Hebrew)', 'שם מקוצר')}<TextField value={l.shortHe} onCommit={(v) => dispatch({ type: 'setListMeta', listId: l.id, patch: { shortHe: v } })} /></label>
               <label className="field">{L('Short name (English)', 'שם באנגלית')}<TextField value={l.shortEn ?? ''} onCommit={(v) => dispatch({ type: 'setListMeta', listId: l.id, patch: { shortEn: v || null } })} /></label>
               <label className="field">{L('Ballot letters', 'אותיות הרשימה')}<TextField value={l.letters} onCommit={(v) => dispatch({ type: 'setListMeta', listId: l.id, patch: { letters: v } })} /></label>
               <label className="field">{L('Colour', 'צבע')}<input type="color" value={l.color} onChange={(e) => dispatch({ type: 'setListMeta', listId: l.id, patch: { color: e.target.value } })} /></label>
-              <label className="field">{L('Bloc', 'גוש')}
-                <select value={l.bloc ?? ''} onChange={(e) => dispatch({ type: 'setListMeta', listId: l.id, patch: { bloc: e.target.value || null } })}>
-                  <option value="">{L('None', 'ללא')}</option>
-                  {s.blocs.map((b) => <option key={b.id} value={b.id}>{lang === 'he' ? b.nameHe : b.nameEn}</option>)}
-                </select>
-              </label>
               <label className="field">{L('Full name', 'שם מלא')}<TextField value={l.nameHe} onCommit={(v) => dispatch({ type: 'setListMeta', listId: l.id, patch: { nameHe: v } })} /></label>
             </div>
           </>

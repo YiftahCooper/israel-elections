@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { allocationOf, baselineOf, scenarioIssues, warningText } from './derive.ts';
+import { allocationOf, baselineOf, ruleChanges, scenarioIssues, warningText } from './derive.ts';
 import { LangContext, useL } from './i18n.ts';
 import { dispatch, loadElectionIndex, openElection, readSharedFromHash, redo, setState, undo, useStore } from './store.ts';
 import { Charts } from './components/Charts.tsx';
@@ -31,8 +31,9 @@ export function App() {
   }, [lang, theme]);
   useEffect(() => {
     loadElectionIndex();
-    readSharedFromHash().then((sh) => {
-      if (sh) { openElection(sh.electionId, sh); history.replaceState(null, '', location.pathname); }
+    readSharedFromHash().then(async (sh) => {
+      // the link is cleared only once it has opened, so a failed load can be retried by reloading
+      if (sh) { if (await openElection(sh.electionId, sh)) history.replaceState(null, '', location.pathname); }
       else openElection('k26');
     });
     const onKey = (e: KeyboardEvent) => {
@@ -60,8 +61,14 @@ function Shell() {
   const [tabPick, setTab] = useState<Tab | null>(null);
   const hintDismissed = useStore((st) => st.hintDismissed);
 
-  if (loadError) return <div className="banner err">{L('Could not load election data: ', 'טעינת הנתונים נכשלה: ')}{loadError}</div>;
-  if (!s || !ds) return <div className="app"><TopBar s={null} r={null} ds={undefined} baseR={null} /><p style={{ padding: 20 }} className="muted">{L('Loading election data…', 'טוען נתוני בחירות…')}</p></div>;
+  const loadBanner = loadError && (
+    <div className="banner err" role="alert">
+      {L(`Could not load the ${loadError.id} election data (${loadError.message}).`, `טעינת נתוני הבחירות ${loadError.id} נכשלה (${loadError.message}).`)}{' '}
+      <button className="btn small" onClick={() => openElection(loadError.id)}>{L('Try again', 'ניסיון נוסף')}</button>
+      {s && <button className="btn small ghost" onClick={() => setState({ loadError: null })} aria-label={L('Dismiss', 'סגירה')}>✕</button>}
+    </div>
+  );
+  if (!s || !ds) return <div className="app"><TopBar s={null} r={null} ds={undefined} baseR={null} />{loadBanner || <p style={{ padding: 20 }} className="muted">{L('Loading election data…', 'טוען נתוני בחירות…')}</p>}</div>;
 
   const r = allocationOf(s);
   const base = baselineOf(ds);
@@ -96,7 +103,8 @@ function Shell() {
       <div>
         {ds.status.stage !== 'official-final' && <div className="banner warn" role="status">⚠ {lang === 'he' ? ds.status.noteHe : ds.status.noteEn}</div>}
         {level === 'simple' && !hintDismissed && <div className="banner info" role="status">{L('Click a party to change its votes and watch the seats move. More tools: Standard and Expert (top right).', 'לחצו על מפלגה כדי לשנות את קולותיה ולראות איך המנדטים זזים. כלים נוספים: מצב רגיל ומומחה (למעלה).')} <button className="btn small ghost" onClick={() => setState({ hintDismissed: true })} aria-label={L('Dismiss', 'סגירה')}>✕</button></div>}
-        {s.mode === 'experimental' && <div className="banner info" role="status">{L('Experimental rules: this is an alternative electoral system, not a legally possible Israeli result.', 'כללים ניסיוניים: זוהי שיטת בחירות חלופית ולא תוצאה אפשרית לפי החוק בישראל.')} <button className="btn small" onClick={() => dispatch({ type: 'setMode', mode: 'historical' })}>{L('Back to the real rules', 'חזרה לכללים האמיתיים')}</button></div>}
+        {loadBanner}
+        {s.mode === 'experimental' && <div className="banner info" role="status">{L('Experimental rules: this is an alternative electoral system, not a legally possible Israeli result.', 'כללים ניסיוניים: זוהי שיטת בחירות חלופית ולא תוצאה אפשרית לפי החוק בישראל.')}{(() => { const c = ruleChanges(s, lang); return c.length ? <> {L('Changed: ', 'שינויים: ')}<b>{c.join(' · ')}</b>.</> : null; })()} <button className="btn small" onClick={() => dispatch({ type: 'setMode', mode: 'historical' })}>{L('Back to the real rules', 'חזרה לכללים האמיתיים')}</button></div>}
         {notice && <div className="banner info" role="status">{notice} <button className="btn small ghost" onClick={() => setState({ notice: null })}>✕</button></div>}
         {issues.map((x, i) => <div key={i} className={`banner ${x.level === 'error' ? 'err' : 'warn'}`} role="alert">{lang === 'he' ? x.he : x.en}</div>)}
         {r.warnings.filter((w) => w.code !== 'internal-loss').map((w, i) => <div key={`w${i}`} className="banner warn" role="alert">{warningText(w, s, lang)}</div>)}

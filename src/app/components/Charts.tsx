@@ -4,7 +4,7 @@ import type { Scenario } from '../../model/scenario.ts';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct, isolate } from '../format.ts';
-import { setState, useStore } from '../store.ts';
+import { setState, useDigits } from '../store.ts';
 import { apportion } from '../../model/actions.ts';
 import { Seg } from './ui.tsx';
 
@@ -41,7 +41,7 @@ function rowsFor(s: Scenario, r: AllocationResult) {
 function VotesVsSeats({ s, r }: { s: Scenario; r: AllocationResult }) {
   const L = useL();
   const lang = useLang();
-  const digits = useStore((st) => st.digits);
+  const digits = useDigits();
   const [tip, setTip] = useState<Tip>(null);
   const rows = rowsFor(s, r);
   const total = Number(r.totalValid), seats = s.rules.seats;
@@ -121,7 +121,7 @@ function ThresholdDistance({ s, r }: { s: Scenario; r: AllocationResult }) {
 function ShareTable({ s, r }: { s: Scenario; r: AllocationResult }) {
   const L = useL();
   const lang = useLang();
-  const digits = useStore((st) => st.digits);
+  const digits = useDigits();
   const total = r.totalValid;
   return (
     <div className="tablewrap">

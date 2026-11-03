@@ -6,7 +6,7 @@ import type { Scenario } from '../../model/scenario.ts';
 import { allocationOf, electedOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct, fmtRat, fmtSigned, isolate, signed } from '../format.ts';
-import { replay, setState, useStore } from '../store.ts';
+import { replay, setState, useStore, useDigits } from '../store.ts';
 import { Hemicycle } from './Hemicycle.tsx';
 
 export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; base: Scenario; ds: ElectionDataset }) {
@@ -15,7 +15,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
   const compareWithRaw = useStore((st) => st.compareWith);
   const saved = useStore((st) => st.saved);
   const compareWith = saved.some((x) => x.id === compareWithRaw && x.electionId === s.electionId && x.id !== s.id) ? compareWithRaw : 'historical';
-  const digits = useStore((st) => st.digits);
+  const digits = useDigits();
   const advanced = useStore((st) => st.level === 'expert');
   const other = useMemo(() => {
     if (compareWith === 'historical') return base;

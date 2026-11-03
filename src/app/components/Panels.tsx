@@ -6,7 +6,7 @@ import { electionRuleSetId, toRuleSet, type Action, type Scenario } from '../../
 import { listLabel } from '../derive.ts';
 import { GLOSSARY, useL, useLang, type Lang } from '../i18n.ts';
 import { fmtInt, fmtPct } from '../format.ts';
-import { dispatch, getState, redo, replay, setState, undo, useStore } from '../store.ts';
+import { dispatch, getState, redo, replay, setState, undo, useStore, useDigits } from '../store.ts';
 import { useLocalities } from './Turnout.tsx';
 import { NumberInput, TextField } from './ui.tsx';
 
@@ -15,7 +15,7 @@ import { NumberInput, TextField } from './ui.tsx';
 export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
   const L = useL();
   const lang = useLang();
-  const digits = useStore((st) => st.digits);
+  const digits = useDigits();
   const exp = s.mode === 'experimental';
   const dep = ruleDepartures(toRuleSet(s.rules, null), RULESETS[electionRuleSetId(s.electionId)]);
   const depName: Record<string, [string, string]> = {
@@ -104,7 +104,7 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
 export function Localities({ s }: { s: Scenario }) {
   const L = useL();
   const lang = useLang();
-  const digits = useStore((st) => st.digits);
+  const digits = useDigits();
   const { data, error } = useLocalities(s.electionId);
   const [q, setQ] = useState('');
   const [sort, setSort] = useState<'registered' | 'turnout' | 'name'>('registered');

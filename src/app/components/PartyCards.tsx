@@ -4,17 +4,19 @@ import type { Scenario } from '../../model/scenario.ts';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct } from '../format.ts';
-import { setState, useLevel, useStore } from '../store.ts';
+import { setState, useLevel, useStore, useDigits } from '../store.ts';
 import { Seg, Slip } from './ui.tsx';
 
 export function PartyCards({ s, r, base, baseR }: { s: Scenario; r: AllocationResult; base: Scenario; baseR: AllocationResult }) {
   const L = useL();
   const lang = useLang();
   const selected = useStore((st) => st.selectedListId);
-  const digits = useStore((st) => st.digits);
+  const digits = useDigits();
   const { standard } = useLevel();
   const [filter, setFilter] = useState<'main' | 'all'>('main');
-  const [q, setQ] = useState('');
+  const [query, setQ] = useState('');
+  // the search box is a Standard control: a query typed there must not keep filtering in Simple
+  const q = standard ? query : '';
   const total = r.totalValid;
 
   const rows = useMemo(() => {
@@ -39,7 +41,7 @@ export function PartyCards({ s, r, base, baseR }: { s: Scenario; r: AllocationRe
         <Seg label={L('Filter', 'סינון')} value={filter} onChange={setFilter} options={[{ v: 'main', label: L('Main', 'עיקריות') }, { v: 'all', label: L(`All ${s.lists.length}`, `כל ה-${s.lists.length}`) }]} />
       </header>
       {standard && <div style={{ padding: '8px 8px 0' }}>
-        <input type="search" placeholder={L('Search lists…', 'חיפוש רשימה…')} value={q} onChange={(e) => setQ(e.target.value)} style={{ width: '100%' }} aria-label={L('Search lists', 'חיפוש רשימה')} />
+        <input type="search" placeholder={L('Search lists…', 'חיפוש רשימה…')} value={query} onChange={(e) => setQ(e.target.value)} style={{ width: '100%' }} aria-label={L('Search lists', 'חיפוש רשימה')} />
       </div>}
       <div className="cards">
         {rows.map(({ l, lr }) => {
@@ -61,7 +63,7 @@ export function PartyCards({ s, r, base, baseR }: { s: Scenario; r: AllocationRe
                   <span className="tabnum">{fmtPct(l.votes, total, digits)}</span>
                   {l.withdrawn ? <span className="chip no">{L('Withdrew', 'פרשה')}</span>
                     : lr.qualified ? null : <span className="chip no">{L('Below threshold', 'מתחת לאחוז החסימה')}</span>}
-                  {partner && standard && <span className={`chip ${agr!.active ? 'ok' : ''}`} title={agr!.active ? L('Surplus-vote agreement (active)', 'הסכם עודפים (בתוקף)') : L('Surplus-vote agreement with no effect', 'הסכם עודפים ללא השפעה')}>⇄ {listLabel(partner, lang)}{agr!.active ? '' : ' ✕'}</span>}
+                  {partner && <span className={`chip ${agr!.active ? 'ok' : ''}`} title={agr!.active ? L('Surplus-vote agreement (active)', 'הסכם עודפים (בתוקף)') : L('Surplus-vote agreement with no effect', 'הסכם עודפים ללא השפעה')}>⇄ {listLabel(partner, lang)}{agr!.active ? '' : ' ✕'}</span>}
                 </div>
               </div>
               <div className="seats">{lr.seats}<small dir="ltr">{d === 0 ? <span className="muted">±0</span> : <span className={d > 0 ? 'up' : 'down'}>{d > 0 ? `+${d}` : `−${-d}`}</span>}</small></div>

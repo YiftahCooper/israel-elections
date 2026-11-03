@@ -36,7 +36,8 @@ export interface State {
   colorBy: 'list' | 'bloc' | 'party';
   saved: SavedScenario[];
   toast: { kind: 'error' | 'info'; text: string } | null;
-  loadError: string | null;
+  /** the last election that failed to load, and why (the previous election stays open) */
+  loadError: { id: ElectionId; message: string } | null;
   notice: string | null;
   /** how every vote edit on a list is balanced (shared by all vote controls) */
   voteSource: SourceChoice;
@@ -163,11 +164,12 @@ export function replay(ds: ElectionDataset, name: string, log: Action[]): { scen
 }
 
 let openSeq = 0;
-export async function openElection(id: ElectionId, from?: { name: string; log: Action[]; baseBuiltAt?: string }) {
+/** Opens an election (optionally replaying a saved log). Resolves false if it could not be loaded. */
+export async function openElection(id: ElectionId, from?: { name: string; log: Action[]; baseBuiltAt?: string }): Promise<boolean> {
   const seq = ++openSeq;
   try {
     const ds = await loadDataset(id);
-    if (seq !== openSeq) return; // a later request superseded this one
+    if (seq !== openSeq) return false; // a later request superseded this one
     // keep the work of the election we are leaving, so switching back restores it (with undo)
     const leaving = state.scenario ? { [state.scenario.electionId]: { scenario: state.scenario, past: state.past, future: state.future } } : {};
     const sessions = { ...state.sessions, ...leaving };
@@ -186,8 +188,10 @@ export async function openElection(id: ElectionId, from?: { name: string; log: A
     }
     delete sessions[id];
     setState({ electionId: id, scenario, past, future, sessions, selectedListId: null, compareWith: 'historical', loadError: null, notice });
+    return true;
   } catch (e) {
-    if (seq === openSeq) setState({ loadError: String(e) });
+    if (seq === openSeq) setState({ loadError: { id, message: e instanceof Error ? e.message : String(e) } });
+    return false;
   }
 }
 
@@ -267,6 +271,10 @@ export function useVoteSource(): SourceChoice {
   const src = useStore((st) => st.voteSource);
   const simple = useStore((st) => st.level === 'simple');
   return simple ? PROPORTIONAL : src;
+}
+/** Percentage precision in force: the precision setting is an Expert control, so other levels use 2. */
+export function useDigits(): number {
+  return useStore((st) => (st.level === 'expert' ? st.digits : 2));
 }
 /** Which interface level is on: `standard` is true for Standard and Expert. */
 export function useLevel() {

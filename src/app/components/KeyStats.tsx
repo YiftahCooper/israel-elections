@@ -3,13 +3,13 @@ import type { AllocationResult } from '../../engine/types.ts';
 import { votesCast, type Scenario } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtFrac, fmtInt, fmtPct, fmtRat } from '../format.ts';
-import { useLevel, useStore } from '../store.ts';
+import { useLevel, useDigits } from '../store.ts';
 import { DecimalInput, Delta, Tile } from './ui.tsx';
 import { dispatch } from '../store.ts';
 
 export function KeyStats({ s, r, ds, baseR }: { s: Scenario; r: AllocationResult; ds: ElectionDataset; baseR: AllocationResult }) {
   const L = useL();
-  const digits = useStore((st) => st.digits);
+  const digits = useDigits();
   const cast = votesCast(s);
   const thrPct = s.rules.thresholdPct;
   const { simple, expert } = useLevel();
@@ -19,8 +19,9 @@ export function KeyStats({ s, r, ds, baseR }: { s: Scenario; r: AllocationResult
       </Tile>);
   if (simple) return (
     <p className="small ink2 simple-stats">
-      {L(`A list needs at least ${fmtInt(r.thresholdVotes)} votes (${thrPct}%) to win seats; each seat takes about ${fmtRat(r.quota, 0)} votes.`,
-        `רשימה צריכה לפחות ${fmtInt(r.thresholdVotes)} קולות (${thrPct}%) כדי להיכנס לכנסת; כל מנדט שווה כ-${fmtRat(r.quota, 0)} קולות.`)}
+      {L(`A list needs at least ${fmtInt(r.thresholdVotes)} votes (${thrPct}%) to win seats`, `רשימה צריכה לפחות ${fmtInt(r.thresholdVotes)} קולות (${thrPct}%) כדי להיכנס לכנסת`)}
+      {/* methods without a quota stage (Sainte-Laguë) have no general quota: say nothing rather than "0 votes" */}
+      {r.quota.num > 0n ? L(`; each seat takes about ${fmtRat(r.quota, 0)} votes.`, `; כל מנדט שווה כ-${fmtRat(r.quota, 0)} קולות.`) : '.'}
     </p>
   );
   if (!expert) return (

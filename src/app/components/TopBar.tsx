@@ -24,7 +24,11 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
   const L = useL();
   const lang = useLang();
   const electionId = useStore((st) => st.electionId);
-  const elections = useStore((st) => st.elections);
+  const index = useStore((st) => st.elections);
+  // the open election always has a correctly labelled option, even if the index lacks it
+  const elections = ds && !index.some((e) => e.id === ds.id)
+    ? [...index, { id: ds.id, knesset: ds.knesset, date: ds.electionDate, nameHe: ds.nameHe, nameEn: ds.nameEn, available: true, status: { stage: ds.status.stage } }].sort((a, b) => b.date.localeCompare(a.date))
+    : index;
   const theme = useStore((st) => st.theme);
   const level = useStore((st) => st.level);
   const layout = useStore((st) => st.layout);

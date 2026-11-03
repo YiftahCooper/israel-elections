@@ -1,5 +1,6 @@
 // The three interface levels: Simple (minimal), Standard (common, consequential edits) and Expert
 // (every tool). A level changes what is shown, never what is computed.
+import { readFileSync } from 'node:fs';
 import { expect, test, type Page } from '@playwright/test';
 
 const SETTINGS = 'israel-elections:v1';
@@ -87,4 +88,68 @@ test('Simple balances vote edits proportionally even if another source was chose
   await expect(listCard(page, 'Likud')).toContainText('1,300,000');
   // proportional balancing takes votes from every other list; "new voters" would leave Yashar! unchanged
   await expect(yashar.getByText(/^[\d,]+$/)).not.toHaveText(before);
+});
+
+// ---- review findings: nothing that changes the result may vanish when switching to a lower level
+
+test('Simple still shows a list’s surplus agreement and its state', async ({ page }) => {
+  await start(page);
+  await levelButton(page, 'Standard').click();
+  await listCard(page, 'Likud').click();
+  await details(page).getByRole('button', { name: 'Switch off' }).click();
+  await levelButton(page, 'Simple').click();
+  await expect(details(page).getByText(/Surplus-vote agreement with Religious Zionism–Zehut · switched off/)).toBeVisible();
+});
+
+test('rules changed by an experimental preset are named at every level, and no zero seat price is shown', async ({ page }) => {
+  await start(page);
+  await page.getByText('Pure proportional representation').locator('..').getByRole('button', { name: 'Try it' }).click();
+  await expect(page.getByRole('status').filter({ hasText: 'Experimental rules' })).toContainText('remainder seats by Sainte-Laguë (law: Bader–Ofer)');
+  await expect(page.getByText(/A list needs at least 0 votes \(0%\) to win seats\.$/)).toBeVisible();
+});
+
+test('a search typed in Standard does not keep filtering the lists in Simple', async ({ page }) => {
+  await start(page);
+  await levelButton(page, 'Standard').click();
+  await page.getByRole('searchbox', { name: 'Search lists' }).fill('Likud');
+  await expect(listCard(page, 'Yashar!')).toHaveCount(0);
+  await levelButton(page, 'Simple').click();
+  await expect(listCard(page, 'Yashar!')).toBeVisible();
+});
+
+test('the bloc of a list can be changed in Standard', async ({ page }) => {
+  await start(page);
+  await levelButton(page, 'Standard').click();
+  await listCard(page, 'Likud').click();
+  await details(page).getByRole('combobox', { name: 'Bloc' }).selectOption({ label: 'None' });
+  await expect(page.getByText(/Netanyahu bloc\s*26/)).toBeVisible();
+});
+
+test('percentage precision chosen in Expert does not apply below Expert', async ({ page }) => {
+  await start(page);
+  await levelButton(page, 'Expert').click();
+  await page.getByRole('tab', { name: 'Rules & settings' }).click();
+  await page.getByRole('combobox', { name: 'Decimal places for percentages' }).selectOption('8');
+  await expect(listCard(page, 'Likud')).toContainText('20.51498437%');
+  await levelButton(page, 'Simple').click();
+  await expect(listCard(page, 'Likud')).toContainText('20.51%');
+});
+
+test('a failed election load keeps the open election and offers a retry', async ({ page }) => {
+  await page.route('**/data/k25.json', (route) => route.fulfill({ status: 404, body: 'missing' }));
+  await start(page);
+  await page.getByRole('combobox', { name: 'Election' }).selectOption('k25');
+  await expect(page.getByRole('alert').filter({ hasText: 'Could not load the k25 election data' })).toBeVisible();
+  await expect(page.getByRole('alert').getByRole('button', { name: 'Try again' })).toBeVisible();
+  await expect(listCard(page, 'Likud')).toContainText('27');
+});
+
+test('the picker labels the open election correctly even if the index omits it', async ({ page }) => {
+  const rows = JSON.parse(readFileSync('public/data/elections.json', 'utf8')) as { id: string }[];
+  await page.route('**/data/elections.json', (route) => route.fulfill({ json: rows.filter((r) => r.id !== 'k26') }));
+  await start(page);
+  // wait until the (routed) index has replaced the built-in fallback, which does list 2026
+  await expect(page.getByRole('combobox', { name: 'Election' }).locator('option[value="k16"]')).toHaveCount(1);
+  await expect(page.getByRole('combobox', { name: 'Election' })).toHaveValue('k26');
+  await expect(page.getByRole('combobox', { name: 'Election' }).locator('option:checked')).toHaveText('2026 · 26th Knesset');
 });

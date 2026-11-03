@@ -2,7 +2,7 @@
 import type { ElectionDataset } from '../data/schema.ts';
 import { allocate } from '../engine/allocate.ts';
 import type { AllocationResult, EngineWarning } from '../engine/types.ts';
-import { scenarioFromDataset, toEngineInput, validVotes, votesCast, type Scenario, type SimList } from '../model/scenario.ts';
+import { electionRuleSetId, historicalRules, scenarioFromDataset, toEngineInput, validVotes, votesCast, type Scenario, type SimList, type SimRules } from '../model/scenario.ts';
 import type { Lang } from './i18n.ts';
 
 const allocCache = new WeakMap<Scenario, AllocationResult>();
@@ -17,6 +17,26 @@ export function baselineOf(ds: ElectionDataset): Scenario {
   let s = baseCache.get(ds);
   if (!s) { s = scenarioFromDataset(ds, 'historical'); baseCache.set(ds, s); }
   return s;
+}
+
+const METHOD: Record<SimRules['remainderMethod'], [string, string]> = {
+  'bader-ofer': ['Bader–Ofer', 'בדר–עופר'], 'largest-remainder': ['largest remainder', 'השארית הגדולה'], 'sainte-lague': ['Sainte-Laguë', 'סנט-לגה'],
+};
+/** Every way the scenario's rules differ from the law of its election, in plain words (empty = none). */
+export function ruleChanges(s: Scenario, lang: Lang): string[] {
+  const law = historicalRules(electionRuleSetId(s.electionId));
+  const r = s.rules;
+  const he = lang === 'he';
+  const out: string[] = [];
+  const onOff = (v: boolean) => (he ? (v ? 'פעילה' : 'כבויה') : v ? 'on' : 'off');
+  if (r.seats !== law.seats) out.push(he ? `${r.seats} מושבים (בחוק: ${law.seats})` : `${r.seats} seats (law: ${law.seats})`);
+  if (Number(r.thresholdPct) !== Number(law.thresholdPct)) out.push(he ? `אחוז חסימה ${r.thresholdPct}% (בחוק: ${law.thresholdPct}%)` : `threshold ${r.thresholdPct}% (law: ${law.thresholdPct}%)`);
+  if (r.remainderMethod !== law.remainderMethod) out.push(he ? `חלוקת עודפים: ${METHOD[r.remainderMethod][1]} (בחוק: ${METHOD[law.remainderMethod][1]})` : `remainder seats by ${METHOD[r.remainderMethod][0]} (law: ${METHOD[law.remainderMethod][0]})`);
+  if (r.quotaRounding !== law.quotaRounding) out.push(he ? 'מודד ללא עיגול' : 'quota not rounded down');
+  if (r.majorityCap !== law.majorityCap) out.push(he ? `מגבלת מחצית המנדטים ${onOff(r.majorityCap)}` : `half-seats cap ${onOff(r.majorityCap)}`);
+  if (r.maxAgreementSize !== law.maxAgreementSize) out.push(he ? `הסכמי עודפים של עד ${r.maxAgreementSize} רשימות` : `surplus agreements of up to ${r.maxAgreementSize} lists`);
+  if (r.agreementRequiresAllQualify !== law.agreementRequiresAllQualify) out.push(he ? 'הסכם תקף גם אם שותפה לא עברה את החסימה' : 'agreements count even if a partner fails the threshold');
+  return out;
 }
 
 export const listLabel = (l: Pick<SimList, 'shortHe' | 'shortEn'>, lang: Lang) => (lang === 'en' && l.shortEn ? l.shortEn : l.shortHe);
