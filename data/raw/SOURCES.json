@@ -2664,5 +2664,29 @@
     "retrievedAt": "2026-11-03T17:32:47.908295+00:00",
     "bytes": 22567,
     "sha256": "f6d4ed7fb9b5a156738698cbcd151c4325d8541c78b43cae1f13f3414af5be01"
+  },
+  {
+    "id": "k8-cec-memorandum-appendix",
+    "file": "k8/cec-memorandum-appendix-1973.extract.pdf",
+    "url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/memorandum-knesset8/he/archive_knesset8_memorandum-apdx.pdf",
+    "publisher": "Central Elections Committee for the 8th Knesset (gov.il host; Imagestore scan)",
+    "official": true,
+    "description": "Official CEC Form 30 (regulation 125), 'נספח לזכרון דברים על תוצאות הבחירות לכנסת השמינית (פרטי חישוב של חלוקת המנדטים)'. Section ז, printed pp.10–11: six connections ב+גד, חל טעם+ער, סנ+ענ, קנ+ז, רא+עא, לע+רצ; section יב pp.16–18 pair re-division; section יג p.22 final seats. Retained file is an unaltered-page EXTRACT of source PDF pages 1,2,6,7,12,13,14,18 (printed cover, 3, 10, 11, 16, 17, 18, 22). Full original: 24 PDF pages, 28,395,623 bytes, sha256 38fd80b493f0c8fb9591bab873c5ac0f46404de0d842c10123d6d8ca3f62b3b6 (exceeds the 10 MB retention limit).",
+    "method": "http+page-extract",
+    "retrievedAt": "2026-11-03T22:01:39+00:00",
+    "bytes": 9580705,
+    "sha256": "d87b9f3d66a6e5f0a9f50a86f6b85c18686a325ddc4a56735f03ca215e013b98"
+  },
+  {
+    "id": "k8-hewiki-agreements",
+    "file": "k8/hewiki-k8-rev43470653.json",
+    "url": "https://he.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=ids|timestamp|user|comment|content&rvslots=main&format=json&titles=%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%9E%D7%99%D7%A0%D7%99%D7%AA",
+    "publisher": "Hebrew Wikipedia (secondary; lead only)",
+    "official": false,
+    "description": "Raw API response, article 'הבחירות לכנסת השמינית', revision 43470653 (2026-06-22T09:28:08Z). Section 'הסכמי עודפים' names the six pairs and cites the CEC appendix (k8-cec-memorandum-appendix). Used only to locate the official source.",
+    "method": "http",
+    "retrievedAt": "2026-11-03T22:01:30+00:00",
+    "bytes": 85589,
+    "sha256": "8565669c222eea0ed4cb004c34b25f52deca342404319859503ab47dee613641"
   }
 ]
