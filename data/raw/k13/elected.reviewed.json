@@ -346,5 +346,15 @@
         6
       ]
     }
+  ],
+  "corrections": [
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "אמת",
+      "rank": 14,
+      "from": "אור אריה",
+      "to": "אור אורי",
+      "evidence": "Candidate notice YP 4017 p. 3620 (k13-candidates-gazette PDF page 2) prints \"אור אורי\" (a stray dot over the א), as does the results notice YP 4021 p. 3776. The \"given-name variant\" accepted in decision 0084 was a misreading; the exception is removed."
+    }
   ]
 }

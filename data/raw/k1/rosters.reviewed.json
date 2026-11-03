@@ -355,7 +355,7 @@
         },
         {
           "rank": 7,
-          "nameHe": "לונשטיין מאיר דוד"
+          "nameHe": "לוינשטין מאיר דוד"
         },
         {
           "rank": 8,
@@ -387,7 +387,7 @@
         },
         {
           "rank": 15,
-          "nameHe": "צנובר אברהם חיים"
+          "nameHe": "צוובנר אברהם חיים"
         },
         {
           "rank": 16,
@@ -401,7 +401,7 @@
         "אונא משה",
         "מינץ בנימין",
         "פנקס דוד-צבי",
-        "לונשטיין מאיר דוד",
+        "לוינשטין מאיר דוד",
         "ורהפטיג ד״ר זרח",
         "גנחובסקי אליהו משה",
         "כהנא הרב ד״ר קלמן",
@@ -409,7 +409,7 @@
         "בורג ד״ר יוסף",
         "גרינברג אהרן יעקב",
         "גולדרט אברהם",
-        "צנובר אברהם חיים",
+        "צוובנר אברהם חיים",
         "קלמר משה"
       ],
       "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted.",
@@ -978,5 +978,23 @@
       ]
     }
   ],
-  "electedNamesConvention": "Reviewed elected identities, in the candidate-gazette spelling, not a diplomatic transcription of results typography. electedCandidateRanks maps the results order back to registered candidate ranks. Honorifics, commas, spacing and hyphens are not identity differences."
+  "electedNamesConvention": "Reviewed elected identities, in the candidate-gazette spelling, not a diplomatic transcription of results typography. electedCandidateRanks maps the results order back to registered candidate ranks. Honorifics, commas, spacing and hyphens are not identity differences.",
+  "corrections": [
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "ב",
+      "rank": 7,
+      "from": "לונשטיין מאיר דוד",
+      "to": "לוינשטין מאיר דוד",
+      "evidence": "Re-read at high zoom; both notices print \"לוינשטין מאיר דוד\": k1-candidates-gazette PDF page 3 (printed p. 317); k1-results-gazette PDF page 3 (printed p. 401)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "ב",
+      "rank": 15,
+      "from": "צנובר אברהם חיים",
+      "to": "צוובנר אברהם חיים",
+      "evidence": "Re-read at high zoom; both notices print \"צוובנר אברהם חיים\": k1-candidates-gazette PDF page 3 (printed p. 317); k1-results-gazette PDF page 3 (printed p. 401). The MK is recorded by the Knesset as שאג אברהם חיים (PersonID 2619), his later surname."
+    }
+  ]
 }

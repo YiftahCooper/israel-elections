@@ -1,0 +1,3740 @@
+{
+ "source": "Knesset OData ParliamentInfo.svc",
+ "retrievedAt": "2026-11-04",
+ "queries": [
+  "KNS_PersonToPosition?$filter=KnessetNum eq 18 and (PositionID eq 43 or PositionID eq 61)",
+  "KNS_PersonToPosition?$filter=KnessetNum eq 18 and PositionID eq 54",
+  "KNS_Person?$filter=PersonID eq … (every MK PersonID above, in batches of 25)"
+ ],
+ "note": "PositionID 43/61 = Knesset member. Members whose StartDate is the earliest StartDate (2009-02-24) are taken as the opening membership. PositionID 54 rows (factionMemberships) give each member's faction (FactionName) and its dates.",
+ "positions": [
+  {
+   "PersonToPositionID": 3262,
+   "PersonID": 427,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 747,
+   "PersonID": 433,
+   "PositionID": 61,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 851,
+   "PersonID": 435,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 850,
+   "PersonID": 445,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 932,
+   "PersonID": 448,
+   "PositionID": 61,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 846,
+   "PersonID": 455,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2010-01-10T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 761,
+   "PersonID": 458,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2009-07-02T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 854,
+   "PersonID": 461,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3241,
+   "PersonID": 462,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 750,
+   "PersonID": 464,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2011-03-18T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 748,
+   "PersonID": 467,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2010-11-09T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3236,
+   "PersonID": 468,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 741,
+   "PersonID": 469,
+   "PositionID": 61,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2012-05-03T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3238,
+   "PersonID": 470,
+   "PositionID": 61,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3263,
+   "PersonID": 471,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 756,
+   "PersonID": 474,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2012-05-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3247,
+   "PersonID": 475,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3229,
+   "PersonID": 476,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3234,
+   "PersonID": 477,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 751,
+   "PersonID": 478,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3232,
+   "PersonID": 479,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 782,
+   "PersonID": 483,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 783,
+   "PersonID": 488,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 784,
+   "PersonID": 490,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1254,
+   "PersonID": 494,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 779,
+   "PersonID": 495,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 780,
+   "PersonID": 498,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 736,
+   "PersonID": 503,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3224,
+   "PersonID": 521,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3258,
+   "PersonID": 526,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3257,
+   "PersonID": 528,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3237,
+   "PersonID": 532,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 754,
+   "PersonID": 533,
+   "PositionID": 61,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3253,
+   "PersonID": 540,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3242,
+   "PersonID": 546,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 775,
+   "PersonID": 549,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3239,
+   "PersonID": 556,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 733,
+   "PersonID": 557,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2012-12-09T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 774,
+   "PersonID": 560,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3259,
+   "PersonID": 563,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2011-02-06T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 778,
+   "PersonID": 580,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3220,
+   "PersonID": 713,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 855,
+   "PersonID": 865,
+   "PositionID": 61,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 743,
+   "PersonID": 949,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3226,
+   "PersonID": 965,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3252,
+   "PersonID": 1025,
+   "PositionID": 61,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 752,
+   "PersonID": 1026,
+   "PositionID": 61,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3227,
+   "PersonID": 1027,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 765,
+   "PersonID": 1030,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 757,
+   "PersonID": 1031,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 758,
+   "PersonID": 1033,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2012-01-25T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3231,
+   "PersonID": 1034,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3228,
+   "PersonID": 1037,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 749,
+   "PersonID": 1038,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3235,
+   "PersonID": 1041,
+   "PositionID": 61,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 852,
+   "PersonID": 1043,
+   "PositionID": 61,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2010-04-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 845,
+   "PersonID": 1044,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3221,
+   "PersonID": 1055,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 781,
+   "PersonID": 1056,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3218,
+   "PersonID": 1061,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 943,
+   "PersonID": 1065,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2011-03-25T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 849,
+   "PersonID": 1067,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2012-02-14T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3230,
+   "PersonID": 2178,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 844,
+   "PersonID": 2226,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3254,
+   "PersonID": 4295,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 773,
+   "PersonID": 4297,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 755,
+   "PersonID": 4355,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 769,
+   "PersonID": 4376,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 753,
+   "PersonID": 4395,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2012-08-16T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3244,
+   "PersonID": 4397,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 760,
+   "PersonID": 4400,
+   "PositionID": 61,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 771,
+   "PersonID": 4401,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 848,
+   "PersonID": 4405,
+   "PositionID": 61,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 847,
+   "PersonID": 4407,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 941,
+   "PersonID": 4408,
+   "PositionID": 61,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 942,
+   "PersonID": 4409,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3264,
+   "PersonID": 4411,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 938,
+   "PersonID": 4412,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 931,
+   "PersonID": 4413,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3255,
+   "PersonID": 4416,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 777,
+   "PersonID": 4417,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 785,
+   "PersonID": 4418,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 786,
+   "PersonID": 4419,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 768,
+   "PersonID": 4635,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 935,
+   "PersonID": 6076,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3217,
+   "PersonID": 6235,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 767,
+   "PersonID": 7736,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 763,
+   "PersonID": 9315,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3260,
+   "PersonID": 11835,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 766,
+   "PersonID": 12935,
+   "PositionID": 61,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3256,
+   "PersonID": 12936,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3250,
+   "PersonID": 12937,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 939,
+   "PersonID": 12938,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 934,
+   "PersonID": 12939,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 759,
+   "PersonID": 12941,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3222,
+   "PersonID": 12942,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 770,
+   "PersonID": 12943,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3248,
+   "PersonID": 12944,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 776,
+   "PersonID": 12945,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3223,
+   "PersonID": 12946,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 944,
+   "PersonID": 12947,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3243,
+   "PersonID": 12948,
+   "PositionID": 61,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3219,
+   "PersonID": 12949,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 937,
+   "PersonID": 12950,
+   "PositionID": 61,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3245,
+   "PersonID": 12951,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 933,
+   "PersonID": 12952,
+   "PositionID": 61,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 940,
+   "PersonID": 12953,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 936,
+   "PersonID": 12954,
+   "PositionID": 61,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3261,
+   "PersonID": 12955,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3225,
+   "PersonID": 12956,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3240,
+   "PersonID": 12957,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2012-09-16T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3246,
+   "PersonID": 12958,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3251,
+   "PersonID": 12959,
+   "PositionID": 61,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3249,
+   "PersonID": 12960,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 762,
+   "PersonID": 12961,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 764,
+   "PersonID": 12962,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3233,
+   "PersonID": 12963,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 732,
+   "PersonID": 12964,
+   "PositionID": 61,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 772,
+   "PersonID": 12965,
+   "PositionID": 61,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 853,
+   "PersonID": 12966,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 874,
+   "PersonID": 13830,
+   "PositionID": 61,
+   "KnessetNum": 18,
+   "StartDate": "2009-07-02T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 945,
+   "PersonID": 14470,
+   "PositionID": 61,
+   "KnessetNum": 18,
+   "StartDate": "2010-01-10T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 946,
+   "PersonID": 2014,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2010-04-13T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1149,
+   "PersonID": 17630,
+   "PositionID": 61,
+   "KnessetNum": 18,
+   "StartDate": "2010-11-09T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1291,
+   "PersonID": 1057,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2011-02-06T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 880,
+   "PersonID": 18990,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2011-03-18T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1357,
+   "PersonID": 504,
+   "PositionID": 61,
+   "KnessetNum": 18,
+   "StartDate": "2011-03-25T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 883,
+   "PersonID": 21431,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2012-01-25T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 884,
+   "PersonID": 10555,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2012-02-14T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 885,
+   "PersonID": 22091,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2012-05-03T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 888,
+   "PersonID": 22151,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2012-05-17T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1113,
+   "PersonID": 22811,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2012-08-16T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1282,
+   "PersonID": 22911,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2012-09-16T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3265,
+   "PersonID": 4403,
+   "PositionID": 43,
+   "KnessetNum": 18,
+   "StartDate": "2012-12-09T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  }
+ ],
+ "persons": [
+  {
+   "PersonID": 427,
+   "LastName": "ליברמן",
+   "FirstName": "אביגדור",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 433,
+   "LastName": "איציק",
+   "FirstName": "דליה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 435,
+   "LastName": "בן-אליעזר",
+   "FirstName": "בנימין",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 445,
+   "LastName": "כבל",
+   "FirstName": "איתן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 448,
+   "LastName": "לנדבר",
+   "FirstName": "סופה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 455,
+   "LastName": "פינס-פז",
+   "FirstName": "אופיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 458,
+   "LastName": "רמון",
+   "FirstName": "חיים",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 461,
+   "LastName": "שמחון",
+   "FirstName": "שלום",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 462,
+   "LastName": "איתן",
+   "FirstName": "מיכאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 464,
+   "LastName": "בוים",
+   "FirstName": "זאב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 467,
+   "LastName": "הנגבי",
+   "FirstName": "צחי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 468,
+   "LastName": "כץ",
+   "FirstName": "ישראל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 469,
+   "LastName": "לבני",
+   "FirstName": "ציפי",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 470,
+   "LastName": "לבנת",
+   "FirstName": "לימור",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 471,
+   "LastName": "לנדאו",
+   "FirstName": "עוזי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 474,
+   "LastName": "עזרא",
+   "FirstName": "גדעון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 475,
+   "LastName": "קרא",
+   "FirstName": "איוב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 476,
+   "LastName": "ריבלין",
+   "FirstName": "ראובן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 477,
+   "LastName": "שטייניץ",
+   "FirstName": "יובל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 478,
+   "LastName": "שטרית",
+   "FirstName": "מאיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 479,
+   "LastName": "שלום",
+   "FirstName": "סילבן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 483,
+   "LastName": "אזולאי",
+   "FirstName": "דוד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 488,
+   "LastName": "וקנין",
+   "FirstName": "יצחק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 490,
+   "LastName": "זאב",
+   "FirstName": "נסים",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 494,
+   "LastName": "ישי",
+   "FirstName": "אליהו",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 495,
+   "LastName": "כהן",
+   "FirstName": "אמנון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 498,
+   "LastName": "נהרי",
+   "FirstName": "משולם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 503,
+   "LastName": "גילאון",
+   "FirstName": "אילן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 504,
+   "LastName": "גלאון",
+   "FirstName": "זהבה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 521,
+   "LastName": "אורלב",
+   "FirstName": "זבולון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 526,
+   "LastName": "גפני",
+   "FirstName": "משה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 528,
+   "LastName": "ליצמן",
+   "FirstName": "יעקב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 532,
+   "LastName": "אדלשטיין",
+   "FirstName": "יולי יואל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 533,
+   "LastName": "סולודקין",
+   "FirstName": "מרינה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 540,
+   "LastName": "ברכה",
+   "FirstName": "מוחמד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 546,
+   "LastName": "מרידור",
+   "FirstName": "דן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 549,
+   "LastName": "אלסאנע",
+   "FirstName": "טלב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 556,
+   "LastName": "כץ",
+   "FirstName": "חיים",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 557,
+   "LastName": "פרץ",
+   "FirstName": "עמיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 560,
+   "LastName": "טיבי",
+   "FirstName": "אחמד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 563,
+   "LastName": "פרוש",
+   "FirstName": "מאיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 580,
+   "LastName": "כהן",
+   "FirstName": "יצחק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 713,
+   "LastName": "אריאל",
+   "FirstName": "אורי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 865,
+   "LastName": "נוקד",
+   "FirstName": "אורית",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 949,
+   "LastName": "מופז",
+   "FirstName": "שאול",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 965,
+   "LastName": "נתניהו",
+   "FirstName": "בנימין",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1025,
+   "LastName": "גמליאל",
+   "FirstName": "גילה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 1026,
+   "LastName": "אברהם-בלילא",
+   "FirstName": "רוחמה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 1027,
+   "LastName": "סער",
+   "FirstName": "גדעון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1030,
+   "LastName": "והבה",
+   "FirstName": "מגלי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1031,
+   "LastName": "אדרי",
+   "FirstName": "יעקב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1033,
+   "LastName": "אפללו",
+   "FirstName": "אלי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1034,
+   "LastName": "כחלון",
+   "FirstName": "משה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1037,
+   "LastName": "ארדן",
+   "FirstName": "גלעד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1038,
+   "LastName": "בר-און",
+   "FirstName": "רוני",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1041,
+   "LastName": "נס",
+   "FirstName": "לאה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 1043,
+   "LastName": "תמיר",
+   "FirstName": "יולי",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 1044,
+   "LastName": "הרצוג",
+   "FirstName": "יצחק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1055,
+   "LastName": "אלדד",
+   "FirstName": "אריה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1056,
+   "LastName": "מרגי",
+   "FirstName": "יעקב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1057,
+   "LastName": "אייכלר",
+   "FirstName": "ישראל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1061,
+   "LastName": "זחאלקה",
+   "FirstName": "ג'מאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1065,
+   "LastName": "אורון",
+   "FirstName": "חיים",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1067,
+   "LastName": "וילנאי",
+   "FirstName": "מתן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2014,
+   "LastName": "מג'אדלה",
+   "FirstName": "ראלב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2178,
+   "LastName": "בגין",
+   "FirstName": "זאב בנימין",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2226,
+   "LastName": "ברק",
+   "FirstName": "אהוד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 4295,
+   "LastName": "סוייד",
+   "FirstName": "חנא",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 4297,
+   "LastName": "צרצור",
+   "FirstName": "אברהים",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 4355,
+   "LastName": "חסון",
+   "FirstName": "יואל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 4376,
+   "LastName": "חסון",
+   "FirstName": "ישראל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 4395,
+   "LastName": "דיכטר",
+   "FirstName": "אבי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 4397,
+   "LastName": "אלקין",
+   "FirstName": "זאב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 4400,
+   "LastName": "תירוש",
+   "FirstName": "רונית",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 4401,
+   "LastName": "שנלר",
+   "FirstName": "עתניאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 4403,
+   "LastName": "מרציאנו",
+   "FirstName": "יורם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 4405,
+   "LastName": "יחימוביץ'",
+   "FirstName": "שלי",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 4407,
+   "LastName": "ברוורמן",
+   "FirstName": "אבישי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 4408,
+   "LastName": "שמטוב",
+   "FirstName": "ליה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 4409,
+   "LastName": "מילר",
+   "FirstName": "אלכס",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 4411,
+   "LastName": "מיסז'ניקוב",
+   "FirstName": "סטס",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 4412,
+   "LastName": "אילטוב",
+   "FirstName": "רוברט",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 4413,
+   "LastName": "אהרונוביץ'",
+   "FirstName": "יצחק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 4416,
+   "LastName": "חנין",
+   "FirstName": "דב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 4417,
+   "LastName": "אטיאס",
+   "FirstName": "אריאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 4418,
+   "LastName": "אמסלם",
+   "FirstName": "חיים",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 4419,
+   "LastName": "מיכאלי",
+   "FirstName": "אברהם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 4635,
+   "LastName": "חרמש",
+   "FirstName": "שי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 6076,
+   "LastName": "רותם",
+   "FirstName": "דוד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 6235,
+   "LastName": "נפאע",
+   "FirstName": "סעיד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 7736,
+   "LastName": "פלסנר",
+   "FirstName": "יוחנן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 9315,
+   "LastName": "מולה",
+   "FirstName": "שלמה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 10555,
+   "LastName": "שנאן",
+   "FirstName": "שכיב מוראד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 11835,
+   "LastName": "מקלב",
+   "FirstName": "אורי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12935,
+   "LastName": "אדטו",
+   "FirstName": "רחל",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 12936,
+   "LastName": "אגבאריה",
+   "FirstName": "עפו",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12937,
+   "LastName": "אקוניס",
+   "FirstName": "אופיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12938,
+   "LastName": "עמאר",
+   "FirstName": "חמד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12939,
+   "LastName": "אילון",
+   "FirstName": "דניאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12941,
+   "LastName": "בילסקי",
+   "FirstName": "זאב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12942,
+   "LastName": "בן-ארי",
+   "FirstName": "מיכאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12943,
+   "LastName": "ביבי",
+   "FirstName": "אריה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12944,
+   "LastName": "דנון",
+   "FirstName": "דני",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12945,
+   "LastName": "גנאים",
+   "FirstName": "מסעוד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12946,
+   "LastName": "הרשקוביץ",
+   "FirstName": "דניאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12947,
+   "LastName": "הורוביץ",
+   "FirstName": "ניצן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12948,
+   "LastName": "חוטובלי",
+   "FirstName": "ציפי",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 12949,
+   "LastName": "כץ",
+   "FirstName": "יעקב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12950,
+   "LastName": "קירשנבאום",
+   "FirstName": "פניה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 12951,
+   "LastName": "לוין",
+   "FirstName": "יריב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12952,
+   "LastName": "לוי אבקסיס",
+   "FirstName": "אורלי",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 12953,
+   "LastName": "מטלון",
+   "FirstName": "משה (מוץ)",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12954,
+   "LastName": "מיכאלי",
+   "FirstName": "אנסטסיה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 12955,
+   "LastName": "מוזס",
+   "FirstName": "מנחם אליעזר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12956,
+   "LastName": "אורבך",
+   "FirstName": "אורי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12957,
+   "LastName": "פלד",
+   "FirstName": "יוסי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12958,
+   "LastName": "פיניאן",
+   "FirstName": "ציון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12959,
+   "LastName": "רגב",
+   "FirstName": "מירי מרים",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 12960,
+   "LastName": "שאמה-הכהן",
+   "FirstName": "כרמל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12961,
+   "LastName": "שי",
+   "FirstName": "נחמן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12962,
+   "LastName": "טיבייב",
+   "FirstName": "רוברט",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12963,
+   "LastName": "יעלון",
+   "FirstName": "משה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12964,
+   "LastName": "זועבי",
+   "FirstName": "חנין",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 12965,
+   "LastName": "זוארץ",
+   "FirstName": "אורית",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 12966,
+   "LastName": "בן-סימון",
+   "FirstName": "דניאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 13830,
+   "LastName": "שמאלוב-ברקוביץ",
+   "FirstName": "יוליה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 14470,
+   "LastName": "וילף",
+   "FirstName": "עינת",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 17630,
+   "LastName": "אבסדזה",
+   "FirstName": "נינו",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 18990,
+   "LastName": "אביטל",
+   "FirstName": "דורון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 21431,
+   "LastName": "דואן",
+   "FirstName": "אברהם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 22091,
+   "LastName": "צלנר",
+   "FirstName": "יובל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 22151,
+   "LastName": "חסון",
+   "FirstName": "אכרם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 22811,
+   "LastName": "דבאח",
+   "FirstName": "אחמד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 22911,
+   "LastName": "אדמסו",
+   "FirstName": "אללי",
+   "GenderDesc": "זכר"
+  }
+ ],
+ "factionMemberships": [
+  {
+   "PersonToPositionID": 28809,
+   "PersonID": 427,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 747,
+   "FactionName": "ישראל ביתנו בראשות אביגדור ליברמן"
+  },
+  {
+   "PersonToPositionID": 28728,
+   "PersonID": 433,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28745,
+   "PersonID": 435,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2011-01-17T00:00:00",
+   "FactionID": 1047,
+   "FactionName": "העבודה בראשות אהוד ברק"
+  },
+  {
+   "PersonToPositionID": 28798,
+   "PersonID": 445,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2011-01-17T00:00:00",
+   "FactionID": 1047,
+   "FactionName": "העבודה בראשות אהוד ברק"
+  },
+  {
+   "PersonToPositionID": 28812,
+   "PersonID": 448,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 747,
+   "FactionName": "ישראל ביתנו בראשות אביגדור ליברמן"
+  },
+  {
+   "PersonToPositionID": 28840,
+   "PersonID": 455,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2010-01-10T00:00:00",
+   "FactionID": 1047,
+   "FactionName": "העבודה בראשות אהוד ברק"
+  },
+  {
+   "PersonToPositionID": 28853,
+   "PersonID": 458,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2009-07-02T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28861,
+   "PersonID": 461,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2011-01-17T00:00:00",
+   "FactionID": 1047,
+   "FactionName": "העבודה בראשות אהוד ברק"
+  },
+  {
+   "PersonToPositionID": 28729,
+   "PersonID": 462,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28742,
+   "PersonID": 464,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2011-03-18T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28767,
+   "PersonID": 467,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2010-11-09T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28804,
+   "PersonID": 468,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28805,
+   "PersonID": 469,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2012-05-03T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28806,
+   "PersonID": 470,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28811,
+   "PersonID": 471,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 747,
+   "FactionName": "ישראל ביתנו בראשות אביגדור ליברמן"
+  },
+  {
+   "PersonToPositionID": 28837,
+   "PersonID": 474,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2012-05-17T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28849,
+   "PersonID": 475,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28852,
+   "PersonID": 476,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28855,
+   "PersonID": 477,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28856,
+   "PersonID": 478,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2012-12-03T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28859,
+   "PersonID": 479,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28723,
+   "PersonID": 483,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 753,
+   "FactionName": "התאחדות הספרדים העולמית שומרי תורה"
+  },
+  {
+   "PersonToPositionID": 28777,
+   "PersonID": 488,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 753,
+   "FactionName": "התאחדות הספרדים העולמית שומרי תורה"
+  },
+  {
+   "PersonToPositionID": 28778,
+   "PersonID": 490,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 753,
+   "FactionName": "התאחדות הספרדים העולמית שומרי תורה"
+  },
+  {
+   "PersonToPositionID": 28796,
+   "PersonID": 494,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 753,
+   "FactionName": "התאחדות הספרדים העולמית שומרי תורה"
+  },
+  {
+   "PersonToPositionID": 28800,
+   "PersonID": 495,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 753,
+   "FactionName": "התאחדות הספרדים העולמית שומרי תורה"
+  },
+  {
+   "PersonToPositionID": 28828,
+   "PersonID": 498,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 753,
+   "FactionName": "התאחדות הספרדים העולמית שומרי תורה"
+  },
+  {
+   "PersonToPositionID": 28757,
+   "PersonID": 503,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 749,
+   "FactionName": "התנועה החדשה מרצ"
+  },
+  {
+   "PersonToPositionID": 28722,
+   "PersonID": 521,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 743,
+   "FactionName": "הבית היהודי - מפד\"ל החדשה"
+  },
+  {
+   "PersonToPositionID": 28761,
+   "PersonID": 526,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 746,
+   "FactionName": "יהדות התורה והשבת אגודת ישראל - דגל התורה"
+  },
+  {
+   "PersonToPositionID": 28810,
+   "PersonID": 528,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 746,
+   "FactionName": "יהדות התורה והשבת אגודת ישראל - דגל התורה"
+  },
+  {
+   "PersonToPositionID": 28716,
+   "PersonID": 532,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28835,
+   "PersonID": 533,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28754,
+   "PersonID": 540,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 745,
+   "FactionName": "חזית דמוקרטית לשלום ושוויון"
+  },
+  {
+   "PersonToPositionID": 28826,
+   "PersonID": 546,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28732,
+   "PersonID": 549,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2012-12-03T00:00:00",
+   "FactionID": 752,
+   "FactionName": "הרשימה הערבית המאוחדת - התנועה הערבית להתחדשות"
+  },
+  {
+   "PersonToPositionID": 28803,
+   "PersonID": 556,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28844,
+   "PersonID": 557,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2011-01-17T00:00:00",
+   "FactionID": 1047,
+   "FactionName": "העבודה בראשות אהוד ברק"
+  },
+  {
+   "PersonToPositionID": 28790,
+   "PersonID": 560,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 752,
+   "FactionName": "הרשימה הערבית המאוחדת - התנועה הערבית להתחדשות"
+  },
+  {
+   "PersonToPositionID": 28843,
+   "PersonID": 563,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2011-02-06T00:00:00",
+   "FactionID": 746,
+   "FactionName": "יהדות התורה והשבת אגודת ישראל - דגל התורה"
+  },
+  {
+   "PersonToPositionID": 28801,
+   "PersonID": 580,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 753,
+   "FactionName": "התאחדות הספרדים העולמית שומרי תורה"
+  },
+  {
+   "PersonToPositionID": 28740,
+   "PersonID": 713,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 742,
+   "FactionName": "איחוד לאומי"
+  },
+  {
+   "PersonToPositionID": 28829,
+   "PersonID": 865,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2011-01-17T00:00:00",
+   "FactionID": 1047,
+   "FactionName": "העבודה בראשות אהוד ברק"
+  },
+  {
+   "PersonToPositionID": 28818,
+   "PersonID": 949,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28833,
+   "PersonID": 965,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28759,
+   "PersonID": 1025,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28712,
+   "PersonID": 1026,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28836,
+   "PersonID": 1027,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28771,
+   "PersonID": 1030,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2012-12-03T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28718,
+   "PersonID": 1031,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28737,
+   "PersonID": 1033,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2012-01-25T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28802,
+   "PersonID": 1034,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28739,
+   "PersonID": 1037,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28751,
+   "PersonID": 1038,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28831,
+   "PersonID": 1041,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28867,
+   "PersonID": 1043,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2010-04-13T00:00:00",
+   "FactionID": 1047,
+   "FactionName": "העבודה בראשות אהוד ברק"
+  },
+  {
+   "PersonToPositionID": 28768,
+   "PersonID": 1044,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2011-01-17T00:00:00",
+   "FactionID": 1047,
+   "FactionName": "העבודה בראשות אהוד ברק"
+  },
+  {
+   "PersonToPositionID": 28730,
+   "PersonID": 1055,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2012-11-19T00:00:00",
+   "FactionID": 742,
+   "FactionName": "איחוד לאומי"
+  },
+  {
+   "PersonToPositionID": 28825,
+   "PersonID": 1056,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 753,
+   "FactionName": "התאחדות הספרדים העולמית שומרי תורה"
+  },
+  {
+   "PersonToPositionID": 28782,
+   "PersonID": 1061,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 744,
+   "FactionName": "אלתג'מוע אלווטני אלדמוקרטי - בל\"ד"
+  },
+  {
+   "PersonToPositionID": 28721,
+   "PersonID": 1065,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2011-03-25T00:00:00",
+   "FactionID": 749,
+   "FactionName": "התנועה החדשה מרצ"
+  },
+  {
+   "PersonToPositionID": 28773,
+   "PersonID": 1067,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2011-01-17T00:00:00",
+   "FactionID": 1047,
+   "FactionName": "העבודה בראשות אהוד ברק"
+  },
+  {
+   "PersonToPositionID": 28741,
+   "PersonID": 2178,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28755,
+   "PersonID": 2226,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2011-01-17T00:00:00",
+   "FactionID": 1047,
+   "FactionName": "העבודה בראשות אהוד ברק"
+  },
+  {
+   "PersonToPositionID": 28834,
+   "PersonID": 4295,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 745,
+   "FactionName": "חזית דמוקרטית לשלום ושוויון"
+  },
+  {
+   "PersonToPositionID": 28847,
+   "PersonID": 4297,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 752,
+   "FactionName": "הרשימה הערבית המאוחדת - התנועה הערבית להתחדשות"
+  },
+  {
+   "PersonToPositionID": 28786,
+   "PersonID": 4355,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2012-12-03T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28788,
+   "PersonID": 4376,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28764,
+   "PersonID": 4395,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2012-08-16T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28734,
+   "PersonID": 4397,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28866,
+   "PersonID": 4400,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28865,
+   "PersonID": 4401,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28793,
+   "PersonID": 4405,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2011-01-17T00:00:00",
+   "FactionID": 1047,
+   "FactionName": "העבודה בראשות אהוד ברק"
+  },
+  {
+   "PersonToPositionID": 28752,
+   "PersonID": 4407,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2011-01-17T00:00:00",
+   "FactionID": 1047,
+   "FactionName": "העבודה בראשות אהוד ברק"
+  },
+  {
+   "PersonToPositionID": 28863,
+   "PersonID": 4408,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 747,
+   "FactionName": "ישראל ביתנו בראשות אביגדור ליברמן"
+  },
+  {
+   "PersonToPositionID": 28822,
+   "PersonID": 4409,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 747,
+   "FactionName": "ישראל ביתנו בראשות אביגדור ליברמן"
+  },
+  {
+   "PersonToPositionID": 28823,
+   "PersonID": 4411,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 747,
+   "FactionName": "ישראל ביתנו בראשות אביגדור ליברמן"
+  },
+  {
+   "PersonToPositionID": 28727,
+   "PersonID": 4412,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 747,
+   "FactionName": "ישראל ביתנו בראשות אביגדור ליברמן"
+  },
+  {
+   "PersonToPositionID": 28719,
+   "PersonID": 4413,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 747,
+   "FactionName": "ישראל ביתנו בראשות אביגדור ליברמן"
+  },
+  {
+   "PersonToPositionID": 28784,
+   "PersonID": 4416,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 745,
+   "FactionName": "חזית דמוקרטית לשלום ושוויון"
+  },
+  {
+   "PersonToPositionID": 28724,
+   "PersonID": 4417,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 753,
+   "FactionName": "התאחדות הספרדים העולמית שומרי תורה"
+  },
+  {
+   "PersonToPositionID": 28735,
+   "PersonID": 4418,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2012-12-03T00:00:00",
+   "FactionID": 753,
+   "FactionName": "התאחדות הספרדים העולמית שומרי תורה"
+  },
+  {
+   "PersonToPositionID": 28820,
+   "PersonID": 4419,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 753,
+   "FactionName": "התאחדות הספרדים העולמית שומרי תורה"
+  },
+  {
+   "PersonToPositionID": 28789,
+   "PersonID": 4635,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28851,
+   "PersonID": 6076,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 747,
+   "FactionName": "ישראל ביתנו בראשות אביגדור ליברמן"
+  },
+  {
+   "PersonToPositionID": 28832,
+   "PersonID": 6235,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 744,
+   "FactionName": "אלתג'מוע אלווטני אלדמוקרטי - בל\"ד"
+  },
+  {
+   "PersonToPositionID": 28842,
+   "PersonID": 7736,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28816,
+   "PersonID": 9315,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2012-12-03T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28824,
+   "PersonID": 11835,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 746,
+   "FactionName": "יהדות התורה והשבת אגודת ישראל - דגל התורה"
+  },
+  {
+   "PersonToPositionID": 28714,
+   "PersonID": 12935,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2012-12-03T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28713,
+   "PersonID": 12936,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 745,
+   "FactionName": "חזית דמוקרטית לשלום ושוויון"
+  },
+  {
+   "PersonToPositionID": 28738,
+   "PersonID": 12937,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28838,
+   "PersonID": 12938,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 747,
+   "FactionName": "ישראל ביתנו בראשות אביגדור ליברמן"
+  },
+  {
+   "PersonToPositionID": 28726,
+   "PersonID": 12939,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 747,
+   "FactionName": "ישראל ביתנו בראשות אביגדור ליברמן"
+  },
+  {
+   "PersonToPositionID": 28744,
+   "PersonID": 12941,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28747,
+   "PersonID": 12942,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2012-11-19T00:00:00",
+   "FactionID": 742,
+   "FactionName": "איחוד לאומי"
+  },
+  {
+   "PersonToPositionID": 28743,
+   "PersonID": 12943,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28765,
+   "PersonID": 12944,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28760,
+   "PersonID": 12945,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 752,
+   "FactionName": "הרשימה הערבית המאוחדת - התנועה הערבית להתחדשות"
+  },
+  {
+   "PersonToPositionID": 28770,
+   "PersonID": 12946,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 743,
+   "FactionName": "הבית היהודי - מפד\"ל החדשה"
+  },
+  {
+   "PersonToPositionID": 28766,
+   "PersonID": 12947,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 749,
+   "FactionName": "התנועה החדשה מרצ"
+  },
+  {
+   "PersonToPositionID": 28783,
+   "PersonID": 12948,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28797,
+   "PersonID": 12949,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 742,
+   "FactionName": "איחוד לאומי"
+  },
+  {
+   "PersonToPositionID": 28848,
+   "PersonID": 12950,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 747,
+   "FactionName": "ישראל ביתנו בראשות אביגדור ליברמן"
+  },
+  {
+   "PersonToPositionID": 28808,
+   "PersonID": 12951,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28807,
+   "PersonID": 12952,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 747,
+   "FactionName": "ישראל ביתנו בראשות אביגדור ליברמן"
+  },
+  {
+   "PersonToPositionID": 28819,
+   "PersonID": 12953,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 747,
+   "FactionName": "ישראל ביתנו בראשות אביגדור ליברמן"
+  },
+  {
+   "PersonToPositionID": 28821,
+   "PersonID": 12954,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 747,
+   "FactionName": "ישראל ביתנו בראשות אביגדור ליברמן"
+  },
+  {
+   "PersonToPositionID": 28815,
+   "PersonID": 12955,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 746,
+   "FactionName": "יהדות התורה והשבת אגודת ישראל - דגל התורה"
+  },
+  {
+   "PersonToPositionID": 28720,
+   "PersonID": 12956,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 743,
+   "FactionName": "הבית היהודי - מפד\"ל החדשה"
+  },
+  {
+   "PersonToPositionID": 28841,
+   "PersonID": 12957,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2012-09-16T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28839,
+   "PersonID": 12958,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28850,
+   "PersonID": 12959,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28854,
+   "PersonID": 12960,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28858,
+   "PersonID": 12961,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28791,
+   "PersonID": 12962,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2012-12-03T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28795,
+   "PersonID": 12963,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28781,
+   "PersonID": 12964,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 744,
+   "FactionName": "אלתג'מוע אלווטני אלדמוקרטי - בל\"ד"
+  },
+  {
+   "PersonToPositionID": 28779,
+   "PersonID": 12965,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2012-12-03T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28749,
+   "PersonID": 12966,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-02-24T00:00:00",
+   "FinishDate": "2011-01-17T00:00:00",
+   "FactionID": 1047,
+   "FactionName": "העבודה בראשות אהוד ברק"
+  },
+  {
+   "PersonToPositionID": 28860,
+   "PersonID": 13830,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2009-07-02T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28775,
+   "PersonID": 14470,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2010-01-10T00:00:00",
+   "FinishDate": "2011-01-17T00:00:00",
+   "FactionID": 1047,
+   "FactionName": "העבודה בראשות אהוד ברק"
+  },
+  {
+   "PersonToPositionID": 28813,
+   "PersonID": 2014,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2010-04-13T00:00:00",
+   "FinishDate": "2011-01-17T00:00:00",
+   "FactionID": 1047,
+   "FactionName": "העבודה בראשות אהוד ברק"
+  },
+  {
+   "PersonToPositionID": 28711,
+   "PersonID": 17630,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2010-11-09T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28746,
+   "PersonID": 435,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2011-01-17T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 750,
+   "FactionName": "העבודה"
+  },
+  {
+   "PersonToPositionID": 28799,
+   "PersonID": 445,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2011-01-17T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 750,
+   "FactionName": "העבודה"
+  },
+  {
+   "PersonToPositionID": 28862,
+   "PersonID": 461,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2011-01-17T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 762,
+   "FactionName": "העצמאות"
+  },
+  {
+   "PersonToPositionID": 28845,
+   "PersonID": 557,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2011-01-17T00:00:00",
+   "FinishDate": "2012-12-09T00:00:00",
+   "FactionID": 750,
+   "FactionName": "העבודה"
+  },
+  {
+   "PersonToPositionID": 28830,
+   "PersonID": 865,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2011-01-17T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 762,
+   "FactionName": "העצמאות"
+  },
+  {
+   "PersonToPositionID": 28769,
+   "PersonID": 1044,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2011-01-17T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 750,
+   "FactionName": "העבודה"
+  },
+  {
+   "PersonToPositionID": 28774,
+   "PersonID": 1067,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2011-01-17T00:00:00",
+   "FinishDate": "2012-02-14T00:00:00",
+   "FactionID": 762,
+   "FactionName": "העצמאות"
+  },
+  {
+   "PersonToPositionID": 28814,
+   "PersonID": 2014,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2011-01-17T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 750,
+   "FactionName": "העבודה"
+  },
+  {
+   "PersonToPositionID": 28756,
+   "PersonID": 2226,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2011-01-17T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 762,
+   "FactionName": "העצמאות"
+  },
+  {
+   "PersonToPositionID": 28794,
+   "PersonID": 4405,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2011-01-17T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 750,
+   "FactionName": "העבודה"
+  },
+  {
+   "PersonToPositionID": 28753,
+   "PersonID": 4407,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2011-01-17T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 750,
+   "FactionName": "העבודה"
+  },
+  {
+   "PersonToPositionID": 28750,
+   "PersonID": 12966,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2011-01-17T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 750,
+   "FactionName": "העבודה"
+  },
+  {
+   "PersonToPositionID": 28776,
+   "PersonID": 14470,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2011-01-17T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 762,
+   "FactionName": "העצמאות"
+  },
+  {
+   "PersonToPositionID": 28725,
+   "PersonID": 1057,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2011-02-06T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 746,
+   "FactionName": "יהדות התורה והשבת אגודת ישראל - דגל התורה"
+  },
+  {
+   "PersonToPositionID": 28710,
+   "PersonID": 18990,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2011-03-18T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28758,
+   "PersonID": 504,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2011-03-25T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 749,
+   "FactionName": "התנועה החדשה מרצ"
+  },
+  {
+   "PersonToPositionID": 28763,
+   "PersonID": 21431,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2012-01-25T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28864,
+   "PersonID": 10555,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2012-02-14T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 762,
+   "FactionName": "העצמאות"
+  },
+  {
+   "PersonToPositionID": 28846,
+   "PersonID": 22091,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2012-05-03T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28785,
+   "PersonID": 22151,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2012-05-17T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28762,
+   "PersonID": 22811,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2012-08-16T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 751,
+   "FactionName": "קדימה - עם ציפי לבני לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28717,
+   "PersonID": 22911,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2012-09-16T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 748,
+   "FactionName": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה"
+  },
+  {
+   "PersonToPositionID": 28731,
+   "PersonID": 1055,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2012-11-19T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 1051,
+   "FactionName": "עוצמה לישראל"
+  },
+  {
+   "PersonToPositionID": 28748,
+   "PersonID": 12942,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2012-11-19T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 1051,
+   "FactionName": "עוצמה לישראל"
+  },
+  {
+   "PersonToPositionID": 28857,
+   "PersonID": 478,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2012-12-03T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 1048,
+   "FactionName": "התנועה בראשות ציפי לבני"
+  },
+  {
+   "PersonToPositionID": 28733,
+   "PersonID": 549,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2012-12-03T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 1050,
+   "FactionName": "מד\"ע - מפלגה דמוקרטית ערבית"
+  },
+  {
+   "PersonToPositionID": 28772,
+   "PersonID": 1030,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2012-12-03T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 1048,
+   "FactionName": "התנועה בראשות ציפי לבני"
+  },
+  {
+   "PersonToPositionID": 28787,
+   "PersonID": 4355,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2012-12-03T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 1048,
+   "FactionName": "התנועה בראשות ציפי לבני"
+  },
+  {
+   "PersonToPositionID": 28736,
+   "PersonID": 4418,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2012-12-03T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 1049,
+   "FactionName": "חה\"כ חיים אמסלם"
+  },
+  {
+   "PersonToPositionID": 28817,
+   "PersonID": 9315,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2012-12-03T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 1048,
+   "FactionName": "התנועה בראשות ציפי לבני"
+  },
+  {
+   "PersonToPositionID": 28715,
+   "PersonID": 12935,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2012-12-03T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 1048,
+   "FactionName": "התנועה בראשות ציפי לבני"
+  },
+  {
+   "PersonToPositionID": 28792,
+   "PersonID": 12962,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2012-12-03T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 1048,
+   "FactionName": "התנועה בראשות ציפי לבני"
+  },
+  {
+   "PersonToPositionID": 28780,
+   "PersonID": 12965,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2012-12-03T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 1048,
+   "FactionName": "התנועה בראשות ציפי לבני"
+  },
+  {
+   "PersonToPositionID": 28827,
+   "PersonID": 4403,
+   "PositionID": 54,
+   "KnessetNum": 18,
+   "StartDate": "2012-12-09T00:00:00",
+   "FinishDate": "2013-02-05T00:00:00",
+   "FactionID": 750,
+   "FactionName": "העבודה"
+  }
+ ]
+}

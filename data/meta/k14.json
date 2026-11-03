@@ -87,8 +87,8 @@
           "rankNotes": [
             {
               "rank": 30,
-              "datasetName": "ליבני יהודה",
-              "note": "ROSTER CONFLICT: dataset reads \"ליבני יהודה\" (candidate and results readings); no such MK exists. Yehuda Lancry (Gesher, OData PersonID 2444) sat in this faction from 1996-06-17 and is otherwise absent from the roster; identity inferred from the matching given name"
+              "datasetName": "לנקרי יהודה",
+              "note": "Roster corrected on 2026-11-04 from the misreading \"ליבני יהודה\" to \"לנקרי יהודה\" as printed (YP 4408 p. 3290; YP 4414 p. 3483); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
             }
           ]
         },
@@ -130,13 +130,13 @@
           "rankNotes": [
             {
               "rank": 15,
-              "datasetName": "ריבלין חיים",
-              "note": "ROSTER CONFLICT: dataset reads \"ריבלין חיים\" (candidate and results readings); no such MK exists. Haim Dayan (Tzomet, OData PersonID 2276) sat in this faction from 1996-06-17 and is otherwise absent from the roster; identity inferred from the matching given name"
+              "datasetName": "דיין חיים",
+              "note": "Roster corrected on 2026-11-04 from the misreading \"ריבלין חיים\" to \"דיין חיים\" as printed (YP 4408 p. 3290; YP 4414 p. 3483); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
             },
             {
               "rank": 31,
-              "datasetName": "בדש פנחס",
-              "note": "roster form \"בדש פנחס\" = Pini Badash"
+              "datasetName": "בדש פיני פנחס",
+              "note": "Roster corrected on 2026-11-04 from the misreading \"בדש פנחס\" to \"בדש פיני פנחס\" as printed (YP 4408 p. 3290; YP 4414 p. 3483); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
             }
           ]
         }
@@ -419,8 +419,8 @@
           "rankNotes": [
             {
               "rank": 3,
-              "datasetName": "אלצאנע טלב",
-              "note": "roster form \"אלצאנע טלב\" = Taleb el-Sana"
+              "datasetName": "אלסאנע טלב",
+              "note": "Roster corrected on 2026-11-04 from the misreading \"אלצאנע טלב\" to \"אלסאנע טלב\" as printed (YP 4408 p. 3292; YP 4414 p. 3483); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
             }
           ]
         },
@@ -917,18 +917,27 @@
       "confidence": "medium"
     }
   ],
-  "datasetRosterConflicts": [
+  "datasetRosterConflicts": [],
+  "resolvedRosterConflicts": [
     {
       "letters": "מחל",
       "rank": 30,
-      "datasetName": "ליבני יהודה",
-      "note": "dataset reads \"ליבני יהודה\" (candidate and results readings); no such MK exists. Yehuda Lancry (Gesher, OData PersonID 2444) sat in this faction from 1996-06-17 and is otherwise absent from the roster; identity inferred from the matching given name"
+      "previousDatasetName": "ליבני יהודה",
+      "datasetName": "לנקרי יהודה",
+      "resolution": "transcription error corrected",
+      "evidence": "YP 4408 p. 3290; YP 4414 p. 3483",
+      "resolvedOn": "2026-11-04",
+      "record": "docs/decisions/DRAFT-roster-corrections-and-odata-audit.md"
     },
     {
       "letters": "מחל",
       "rank": 15,
-      "datasetName": "ריבלין חיים",
-      "note": "dataset reads \"ריבלין חיים\" (candidate and results readings); no such MK exists. Haim Dayan (Tzomet, OData PersonID 2276) sat in this faction from 1996-06-17 and is otherwise absent from the roster; identity inferred from the matching given name"
+      "previousDatasetName": "ריבלין חיים",
+      "datasetName": "דיין חיים",
+      "resolution": "transcription error corrected",
+      "evidence": "YP 4408 p. 3290; YP 4414 p. 3483",
+      "resolvedOn": "2026-11-04",
+      "record": "docs/decisions/DRAFT-roster-corrections-and-odata-audit.md"
     }
   ]
 }

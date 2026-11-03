@@ -5,7 +5,7 @@ import { join } from 'node:path';
 import type { ElectionDataset } from '../../../src/data/schema.ts';
 import { ISRAEL_1973, ISRAEL_1977 } from '../../../src/engine/rules.ts';
 import { agreementRecords, listRecord, officialSeatsOf } from '../build/records.ts';
-import { candidateId, rosterFlags } from '../build/roster.ts';
+import { candidateId, notSeatedNoteHe, notSeatedRanks, rosterFlags } from '../build/roster.ts';
 import { indexEntry, manifest, OUT, RAW, rawJson, verifySources } from '../build/sources.ts';
 import { allocateDataset, checkAgreementPairs, checker, checkNationalTable, type Check } from '../build/validate.ts';
 
@@ -16,7 +16,7 @@ export interface ReviewedRoster {
   publishedCount: number;
   pages: number[];
   candidates: { rank: number; nameHe: string; page: number }[];
-  electedCrossCheck?: { sourceId: string; pages: number[]; ranks: number[]; namesHe?: string[]; spellingVariants?: { rank: number; candidateNameHe: string; electedNameHe: string; note: string }[]; note?: string };
+  electedCrossCheck?: { sourceId: string; pages: number[]; ranks: number[]; namesHe?: string[]; notSeated?: { rank: number; note: string }[]; spellingVariants?: { rank: number; candidateNameHe: string; electedNameHe: string; note: string }[]; note?: string };
 }
 export interface Review {
   id: HistoricalId;
@@ -63,11 +63,13 @@ export function researchDataset({ review: r, rosters }: Audit): ElectionDataset 
     totals: { registered: r.supplementalTotals.registered, votesCast: r.supplementalTotals.votesCast, valid: r.gazetteTotals.valid, invalid: r.gazetteTotals.invalid, ballotBoxes: 0, localities: 0 },
     lists: r.lists.map((l, i) => {
       const roster = rosters.find(c => c.letters === l.letters);
+      // registered candidates ranked above the last elected member whom the results notice omits
+      const notSeated = notSeatedRanks(roster?.electedCrossCheck?.ranks ?? [], (roster?.candidates ?? []).map(c => c.rank));
       return listRecord(n, i, { letters: l.letters, nameHe: l.nameHe, votes: l.gazetteVotes,
-        candidates: (roster?.candidates ?? []).map(c => ({ id: candidateId(`${n}-${l.letters}`, c.rank), rank: c.rank, nameHe: c.nameHe })),
+        candidates: (roster?.candidates ?? []).map(c => ({ id: candidateId(`${n}-${l.letters}`, c.rank), rank: c.rank, nameHe: c.nameHe, ...(notSeated.has(c.rank) ? { notSeated: true as const } : {}) })),
         ...rosterFlags(!roster ? 'unavailable' : roster.complete ? 'complete' : 'truncated', 'when-set'),
         candidatesSource: `${r.id}-candidates-gazette`,
-        notesHe: roster ? [] : ['RESEARCH ONLY: official roster exists but has not been transcribed.'] }, LIST_KEYS);
+        notesHe: roster ? roster.candidates.filter(c => notSeated.has(c.rank)).map(notSeatedNoteHe) : ['RESEARCH ONLY: official roster exists but has not been transcribed.'] }, LIST_KEYS);
     }),
     agreements: agreementRecords(n, r.agreements.pairs, r.agreements.sourceId),
     blocs: [], officialSeats: officialSeatsOf(n, r.lists.map(l => ({ letters: l.letters, seats: l.officialSeats }))),
@@ -99,11 +101,16 @@ export function verifyHistoricalProgress(id: HistoricalId, opts: VerifyOptions =
     if (e) {
       const seats = r.lists.find(l => l.letters === c.letters)!.officialSeats;
       const cited = (e.sourceId === r.resultsSourceId && e.pages.length > 0) || !!ext.acceptsElectedSource?.(c, e);
-      check(cited && e.ranks.length === seats && e.ranks.every((rank, i) => rank === i + 1), `${id}: invalid elected-rank cross-check`);
+      // elected registered ranks, strictly increasing; a gap is a registered candidate the notice
+      // did not seat, and must carry a reason (e.g. k12 Likud #25)
+      check(cited && e.ranks.length === seats && e.ranks.every((rank, i) => Number.isInteger(rank) && rank >= 1 && (i === 0 || rank > e.ranks[i - 1])) && e.ranks[e.ranks.length - 1] <= c.candidates.length, `${id}: invalid elected-rank cross-check`);
+      const gaps = c.candidates.filter(v => v.rank < e.ranks[e.ranks.length - 1] && !e.ranks.includes(v.rank)).map(v => v.rank);
+      check(JSON.stringify(gaps) === JSON.stringify((e.notSeated ?? []).map(x => x.rank)) && (e.notSeated ?? []).every(x => x.note), `${id}: unexplained elected-rank gap ${c.letters} ${gaps.join(',')}`);
       check(e.namesHe?.length === seats, `${id}: missing elected-name transcription`);
       for (const [i, name] of e.namesHe.entries()) {
-        const candidate = c.candidates[i]?.nameHe;
-        check(candidate && (candidate === name || e.spellingVariants?.some(v => v.rank === i + 1 && v.candidateNameHe === candidate && v.electedNameHe === name && v.note)), `${id}: unchecked elected-name difference ${c.letters} #${i + 1}`);
+        const rank = e.ranks[i];
+        const candidate = c.candidates[rank - 1]?.nameHe;
+        check(candidate && (candidate === name || e.spellingVariants?.some(v => v.rank === rank && v.candidateNameHe === candidate && v.electedNameHe === name && v.note)), `${id}: unchecked elected-name difference ${c.letters} #${rank}`);
       }
     }
   }
@@ -139,7 +146,8 @@ export function releasedDataset(audit: Audit): ElectionDataset {
   const entry = indexEntry(ds.id)!;
   ds.nameHe = entry.nameHe; ds.nameEn = entry.nameEn;
   ds.status = { ...entry.status, asOf: audit.review.reviewedOn } as ElectionDataset['status'];
-  ds.lists.forEach(l => { l.notesHe = []; });
+  // research markers are dropped; not-seated explanations are kept
+  ds.lists.forEach(l => { l.notesHe = l.notesHe.filter(n => !n.startsWith('RESEARCH ONLY')); });
   // rawSha256 follows manifest order (not sourceIds order) in these datasets
   ds.buildInfo = { builtAt: new Date().toISOString(), rawSha256: Object.fromEntries(manifest().filter(s => ds.sourceIds.includes(s.id)).map(s => [s.id, s.sha256!])) };
   return ds;

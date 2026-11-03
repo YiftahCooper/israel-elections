@@ -747,11 +747,11 @@
         },
         {
           "rank": 9,
-          "nameHe": "ביזרנו שמעון"
+          "nameHe": "בז׳רנו שמעון"
         },
         {
           "rank": 10,
-          "nameHe": "סוייב זלמן"
+          "nameHe": "סוזייב זלמן"
         },
         {
           "rank": 11,
@@ -763,7 +763,7 @@
         },
         {
           "rank": 13,
-          "nameHe": "פלדשטיין שלמה"
+          "nameHe": "פרלשטיין שלמה"
         }
       ],
       "electedNames": [
@@ -775,11 +775,11 @@
         "אריאב חיים",
         "ד״ר רימלט אלימלך",
         "בבה שמחה",
-        "ביזרנו שמעון",
-        "סוייב זלמן",
+        "בז׳רנו שמעון",
+        "סוזייב זלמן",
         "ד״ר הראל בן-ציון",
         "איכילוב עזרא",
-        "פלדשטיין שלמה"
+        "פרלשטיין שלמה"
       ],
       "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted.",
       "electedCandidateRanks": [
@@ -932,5 +932,31 @@
       ]
     }
   ],
-  "electedNamesConvention": "Reviewed elected identities, in the candidate-gazette spelling, not a diplomatic transcription of results typography. electedCandidateRanks maps the results order back to registered candidate ranks. Honorifics, commas, spacing and hyphens are not identity differences."
+  "electedNamesConvention": "Reviewed elected identities, in the candidate-gazette spelling, not a diplomatic transcription of results typography. electedCandidateRanks maps the results order back to registered candidate ranks. Honorifics, commas, spacing and hyphens are not identity differences.",
+  "corrections": [
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "צ",
+      "rank": 9,
+      "from": "ביזרנו שמעון",
+      "to": "בז׳רנו שמעון",
+      "evidence": "Re-read at high zoom; both notices print \"בז׳רנו שמעון\": k3-candidates-gazette PDF page 16 (printed p. 1020); k3-results-gazette PDF page 3 (printed p. 1139)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "צ",
+      "rank": 10,
+      "from": "סוייב זלמן",
+      "to": "סוזייב זלמן",
+      "evidence": "Re-read at high zoom; both notices print \"סוזייב זלמן\": k3-candidates-gazette PDF page 16 (printed p. 1020); k3-results-gazette PDF page 3 (printed p. 1139)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "צ",
+      "rank": 13,
+      "from": "פלדשטיין שלמה",
+      "to": "פרלשטיין שלמה",
+      "evidence": "Re-read at high zoom; both notices print \"פרלשטיין שלמה\": k3-candidates-gazette PDF page 16 (printed p. 1020); k3-results-gazette PDF page 3 (printed p. 1139)."
+    }
+  ]
 }

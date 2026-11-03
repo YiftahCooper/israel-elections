@@ -80,7 +80,7 @@
         },
         {
           "rank": 14,
-          "nameHe": "אור אריה",
+          "nameHe": "אור אורי",
           "page": 3620
         },
         {
@@ -241,15 +241,7 @@
         ],
         "checkedThroughRank": 44,
         "note": "All elected names independently transcribed from results section 4. Explicit candidateRanks maps elected positions to registered ranks; no roster rank is silently shifted.",
-        "differences": [
-          {
-            "electedRank": 14,
-            "candidateRank": 14,
-            "candidateNameHe": "אור אריה",
-            "electedNameHe": "אור אורי",
-            "reason": "Same rank between the same surrounding names in both notices; given-name variant אריה / אורי. Keep the candidate gazette spelling."
-          }
-        ]
+        "differences": []
       }
     },
     {
@@ -807,5 +799,15 @@
       "sourceId": "k13-candidates-yp4017-idi-6809"
     }
   ],
-  "allWinningElectedPrefixesVerified": true
+  "allWinningElectedPrefixesVerified": true,
+  "corrections": [
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "אמת",
+      "rank": 14,
+      "from": "אור אריה",
+      "to": "אור אורי",
+      "evidence": "Candidate notice YP 4017 p. 3620 (k13-candidates-gazette PDF page 2) prints \"אור אורי\" (a stray dot over the א), as does the results notice YP 4021 p. 3776. The \"given-name variant\" accepted in decision 0084 was a misreading; the exception is removed."
+    }
+  ]
 }

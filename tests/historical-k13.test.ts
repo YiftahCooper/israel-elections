@@ -10,13 +10,13 @@ describe('k13 — 1992 released gazetted results and elected-prefix rosters', ()
     threshold: 39253n, quota: 20715n, pairs: [],
     rosterSizes: { אמת: 44, ב: 6, ג: 4, ו: 3, ט: 3, מחל: 33, מרצ: 12, ע: 2, ץ: 8, שס: 6 },
   });
-  it('emits a public job and explicitly reconciles Arens and the Or given-name variant', () => {
+  it('emits a public job, reconciles Arens and reads Labor #14 as אור אורי in both notices', () => {
     expect(buildK13({ log: false })).toHaveLength(1);
     const a = verifyK13({ log: false });
     expect(a.elected.lists.find(l => l.letters === 'מחל')!.candidateRanks).toEqual([1, ...Array.from({ length: 31 }, (_, i) => i + 3)]);
     expect(a.rosters.lists.find(l => l.letters === 'מחל')!.candidates[1].nameHe).toBe('ארנס משה');
-    expect(a.rosters.lists.find(l => l.letters === 'אמת')!.electedCrossCheck.differences).toEqual([
-      expect.objectContaining({ electedRank: 14, candidateNameHe: 'אור אריה', electedNameHe: 'אור אורי' }),
-    ]);
+    // the earlier "given-name variant" אור אריה was a misreading (corrected 4 November 2026)
+    expect(a.rosters.lists.find(l => l.letters === 'אמת')!.electedCrossCheck.differences).toEqual([]);
+    expect(a.rosters.lists.find(l => l.letters === 'אמת')!.candidates[13].nameHe).toBe('אור אורי');
   });
 });

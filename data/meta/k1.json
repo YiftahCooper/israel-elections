@@ -269,7 +269,7 @@
             },
             {
               "rank": 15,
-              "nameHe": "צנובר אברהם חיים",
+              "nameHe": "צוובנר אברהם חיים",
               "knessetPersonId": 2619,
               "knessetBioMentionsParty": true,
               "evidence": [
@@ -281,7 +281,8 @@
                   "accessed": "2026-11-04"
                 }
               ],
-              "confidence": "high"
+              "confidence": "high",
+              "note": "Roster corrected on 2026-11-04 from the misreading \"צנובר אברהם חיים\" to \"צוובנר אברהם חיים\" as printed (k1 candidate gazette p. 317; results p. 401); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
             }
           ]
         },
@@ -436,7 +437,7 @@
             },
             {
               "rank": 7,
-              "nameHe": "לונשטיין מאיר דוד",
+              "nameHe": "לוינשטין מאיר דוד",
               "knessetPersonId": 2422,
               "knessetBioMentionsParty": true,
               "evidence": [
@@ -448,7 +449,8 @@
                   "accessed": "2026-11-04"
                 }
               ],
-              "confidence": "high"
+              "confidence": "high",
+              "note": "Roster corrected on 2026-11-04 from the misreading \"לונשטיין מאיר דוד\" to \"לוינשטין מאיר דוד\" as printed (k1 candidate gazette p. 317; results p. 401); see docs/decisions/DRAFT-roster-corrections-and-odata-audit.md."
             }
           ]
         },

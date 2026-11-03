@@ -1,0 +1,4164 @@
+{
+ "source": "Knesset OData ParliamentInfo.svc",
+ "retrievedAt": "2026-11-04",
+ "queries": [
+  "KNS_PersonToPosition?$filter=KnessetNum eq 14 and (PositionID eq 43 or PositionID eq 61)",
+  "KNS_PersonToPosition?$filter=KnessetNum eq 14 and PositionID eq 54",
+  "KNS_Person?$filter=PersonID eq … (every MK PersonID above, in batches of 25)"
+ ],
+ "note": "PositionID 43/61 = Knesset member. Members whose StartDate is the earliest StartDate (1996-06-17) are taken as the opening membership. PositionID 54 rows (factionMemberships) give each member's faction (FactionName) and its dates.",
+ "positions": [
+  {
+   "PersonToPositionID": 1990,
+   "PersonID": 405,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1991,
+   "PersonID": 412,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1994,
+   "PersonID": 417,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1995,
+   "PersonID": 430,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1996,
+   "PersonID": 432,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1998,
+   "PersonID": 433,
+   "PositionID": 61,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2005,
+   "PersonID": 435,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2008,
+   "PersonID": 437,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2566,
+   "PersonID": 439,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2010,
+   "PersonID": 441,
+   "PositionID": 61,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2013,
+   "PersonID": 442,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2015,
+   "PersonID": 444,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2019,
+   "PersonID": 446,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2021,
+   "PersonID": 447,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2022,
+   "PersonID": 448,
+   "PositionID": 61,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2025,
+   "PersonID": 453,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2027,
+   "PersonID": 454,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2028,
+   "PersonID": 455,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2040,
+   "PersonID": 456,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2045,
+   "PersonID": 458,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1895,
+   "PersonID": 459,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1896,
+   "PersonID": 461,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1900,
+   "PersonID": 462,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1905,
+   "PersonID": 464,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1907,
+   "PersonID": 465,
+   "PositionID": 61,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1910,
+   "PersonID": 466,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1913,
+   "PersonID": 467,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1917,
+   "PersonID": 470,
+   "PositionID": 61,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1921,
+   "PersonID": 471,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1925,
+   "PersonID": 472,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1926,
+   "PersonID": 474,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1932,
+   "PersonID": 478,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1934,
+   "PersonID": 479,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1940,
+   "PersonID": 482,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1941,
+   "PersonID": 483,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1943,
+   "PersonID": 484,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1946,
+   "PersonID": 486,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1947,
+   "PersonID": 487,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1948,
+   "PersonID": 488,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1949,
+   "PersonID": 493,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1950,
+   "PersonID": 494,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1811,
+   "PersonID": 506,
+   "PositionID": 61,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1815,
+   "PersonID": 507,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1817,
+   "PersonID": 509,
+   "PositionID": 61,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1822,
+   "PersonID": 510,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1828,
+   "PersonID": 512,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1831,
+   "PersonID": 519,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1834,
+   "PersonID": 522,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1838,
+   "PersonID": 524,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1841,
+   "PersonID": 526,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1998-10-23T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1845,
+   "PersonID": 527,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1848,
+   "PersonID": 531,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1849,
+   "PersonID": 532,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1850,
+   "PersonID": 533,
+   "PositionID": 61,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1851,
+   "PersonID": 535,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1858,
+   "PersonID": 536,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1859,
+   "PersonID": 537,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1862,
+   "PersonID": 541,
+   "PositionID": 61,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1867,
+   "PersonID": 544,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1875,
+   "PersonID": 546,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1877,
+   "PersonID": 549,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1878,
+   "PersonID": 550,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1881,
+   "PersonID": 551,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1882,
+   "PersonID": 552,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1883,
+   "PersonID": 554,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1886,
+   "PersonID": 557,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1887,
+   "PersonID": 558,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1890,
+   "PersonID": 559,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1891,
+   "PersonID": 563,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1892,
+   "PersonID": 565,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2236,
+   "PersonID": 567,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2237,
+   "PersonID": 580,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2241,
+   "PersonID": 765,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2244,
+   "PersonID": 860,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2249,
+   "PersonID": 861,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2255,
+   "PersonID": 862,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2258,
+   "PersonID": 965,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2266,
+   "PersonID": 1064,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1998-11-18T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2269,
+   "PersonID": 1065,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2318,
+   "PersonID": 2128,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2330,
+   "PersonID": 2132,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2350,
+   "PersonID": 2138,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2353,
+   "PersonID": 2141,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2472,
+   "PersonID": 2178,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2492,
+   "PersonID": 2183,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1998-11-30T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2520,
+   "PersonID": 2192,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2541,
+   "PersonID": 2196,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1996-09-01T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2574,
+   "PersonID": 2208,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2627,
+   "PersonID": 2226,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2650,
+   "PersonID": 2238,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2737,
+   "PersonID": 2276,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2760,
+   "PersonID": 2286,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2768,
+   "PersonID": 2291,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2804,
+   "PersonID": 2300,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1998-01-20T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2816,
+   "PersonID": 2307,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2834,
+   "PersonID": 2315,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2843,
+   "PersonID": 2317,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2892,
+   "PersonID": 2331,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2910,
+   "PersonID": 2339,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2994,
+   "PersonID": 2371,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3119,
+   "PersonID": 2420,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3155,
+   "PersonID": 2432,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1996-10-15T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3185,
+   "PersonID": 2444,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1374,
+   "PersonID": 2449,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1410,
+   "PersonID": 2465,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1415,
+   "PersonID": 2468,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1507,
+   "PersonID": 2505,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1524,
+   "PersonID": 2511,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1567,
+   "PersonID": 2526,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1576,
+   "PersonID": 2532,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1586,
+   "PersonID": 2538,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1596,
+   "PersonID": 2545,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1643,
+   "PersonID": 2562,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1661,
+   "PersonID": 2566,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1678,
+   "PersonID": 2574,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1735,
+   "PersonID": 2594,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 424,
+   "PersonID": 2620,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 464,
+   "PersonID": 2633,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1998-03-20T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 467,
+   "PersonID": 2635,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1997-05-12T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 550,
+   "PersonID": 2672,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1928,
+   "PersonID": 476,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-09-01T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2016,
+   "PersonID": 445,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1996-10-15T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2272,
+   "PersonID": 1068,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1997-05-12T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2635,
+   "PersonID": 2232,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1998-01-20T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 2925,
+   "PersonID": 2345,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1998-03-20T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 3161,
+   "PersonID": 2435,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1998-10-23T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 1914,
+   "PersonID": 468,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1998-11-18T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 497,
+   "PersonID": 2650,
+   "PositionID": 43,
+   "KnessetNum": 14,
+   "StartDate": "1998-11-30T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  }
+ ],
+ "persons": [
+  {
+   "PersonID": 405,
+   "LastName": "אלון",
+   "FirstName": "בנימין",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 412,
+   "LastName": "הנדל",
+   "FirstName": "צבי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 417,
+   "LastName": "זאבי",
+   "FirstName": "רחבעם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 430,
+   "LastName": "שטרן",
+   "FirstName": "יורי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 432,
+   "LastName": "אושעיה",
+   "FirstName": "אפי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 433,
+   "LastName": "איציק",
+   "FirstName": "דליה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 435,
+   "LastName": "בן-אליעזר",
+   "FirstName": "בנימין",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 437,
+   "LastName": "בן-מנחם",
+   "FirstName": "אלי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 439,
+   "LastName": "בן-עמי",
+   "FirstName": "שלמה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 441,
+   "LastName": "דיין",
+   "FirstName": "יעל",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 442,
+   "LastName": "טריף",
+   "FirstName": "סאלח",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 444,
+   "LastName": "יחזקאל",
+   "FirstName": "אברהם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 445,
+   "LastName": "כבל",
+   "FirstName": "איתן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 446,
+   "LastName": "כהן",
+   "FirstName": "רענן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 447,
+   "LastName": "כץ",
+   "FirstName": "יוסי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 448,
+   "LastName": "לנדבר",
+   "FirstName": "סופה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 453,
+   "LastName": "מסאלחה",
+   "FirstName": "נואף",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 454,
+   "LastName": "סנה",
+   "FirstName": "אפרים",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 455,
+   "LastName": "פינס-פז",
+   "FirstName": "אופיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 456,
+   "LastName": "פרס",
+   "FirstName": "שמעון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 458,
+   "LastName": "רמון",
+   "FirstName": "חיים",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 459,
+   "LastName": "שוחט",
+   "FirstName": "אברהם-בייגה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 461,
+   "LastName": "שמחון",
+   "FirstName": "שלום",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 462,
+   "LastName": "איתן",
+   "FirstName": "מיכאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 464,
+   "LastName": "בוים",
+   "FirstName": "זאב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 465,
+   "LastName": "בלומנטל",
+   "FirstName": "נעמי",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 466,
+   "LastName": "הירשזון",
+   "FirstName": "אברהם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 467,
+   "LastName": "הנגבי",
+   "FirstName": "צחי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 468,
+   "LastName": "כץ",
+   "FirstName": "ישראל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 470,
+   "LastName": "לבנת",
+   "FirstName": "לימור",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 471,
+   "LastName": "לנדאו",
+   "FirstName": "עוזי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 472,
+   "LastName": "מצא",
+   "FirstName": "יהושע",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 474,
+   "LastName": "עזרא",
+   "FirstName": "גדעון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 476,
+   "LastName": "ריבלין",
+   "FirstName": "ראובן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 478,
+   "LastName": "שטרית",
+   "FirstName": "מאיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 479,
+   "LastName": "שלום",
+   "FirstName": "סילבן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 482,
+   "LastName": "שרון",
+   "FirstName": "אריאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 483,
+   "LastName": "אזולאי",
+   "FirstName": "דוד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 484,
+   "LastName": "בניזרי",
+   "FirstName": "שלמה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 486,
+   "LastName": "גמליאל",
+   "FirstName": "אריה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 487,
+   "LastName": "דהן",
+   "FirstName": "נסים",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 488,
+   "LastName": "וקנין",
+   "FirstName": "יצחק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 493,
+   "LastName": "טל",
+   "FirstName": "דוד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 494,
+   "LastName": "ישי",
+   "FirstName": "אליהו",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 506,
+   "LastName": "חזן",
+   "FirstName": "נעמי",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 507,
+   "LastName": "כהן",
+   "FirstName": "רן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 509,
+   "LastName": "מאור",
+   "FirstName": "ענת",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 510,
+   "LastName": "רובינשטיין",
+   "FirstName": "אמנון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 512,
+   "LastName": "שריד",
+   "FirstName": "יוסי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 519,
+   "LastName": "פורז",
+   "FirstName": "אברהם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 522,
+   "LastName": "ביבי",
+   "FirstName": "יגאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 524,
+   "LastName": "יהלום",
+   "FirstName": "שאול",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 526,
+   "LastName": "גפני",
+   "FirstName": "משה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 527,
+   "LastName": "הלפרט",
+   "FirstName": "שמואל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 531,
+   "LastName": "רביץ",
+   "FirstName": "אברהם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 532,
+   "LastName": "אדלשטיין",
+   "FirstName": "יולי יואל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 533,
+   "LastName": "סולודקין",
+   "FirstName": "מרינה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 535,
+   "LastName": "שרנסקי",
+   "FirstName": "נתן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 536,
+   "LastName": "לוי",
+   "FirstName": "דוד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 537,
+   "LastName": "לוי",
+   "FirstName": "מקסים",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 541,
+   "LastName": "גוז'נסקי",
+   "FirstName": "תמר",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 544,
+   "LastName": "מגן",
+   "FirstName": "דוד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 546,
+   "LastName": "מרידור",
+   "FirstName": "דן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 549,
+   "LastName": "אלסאנע",
+   "FirstName": "טלב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 550,
+   "LastName": "דהאמשה",
+   "FirstName": "עבד-אלמאלכ",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 551,
+   "LastName": "מחאמיד",
+   "FirstName": "האשם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 552,
+   "LastName": "ברונפמן",
+   "FirstName": "רומן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 554,
+   "LastName": "חטיב",
+   "FirstName": "תאופיק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 557,
+   "LastName": "פרץ",
+   "FirstName": "עמיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 558,
+   "LastName": "בשארה",
+   "FirstName": "עזמי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 559,
+   "LastName": "קליינר",
+   "FirstName": "מיכאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 563,
+   "LastName": "פרוש",
+   "FirstName": "מאיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 565,
+   "LastName": "נודלמן",
+   "FirstName": "מיכאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 567,
+   "LastName": "זנדברג",
+   "FirstName": "אליעזר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 580,
+   "LastName": "כהן",
+   "FirstName": "יצחק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 765,
+   "LastName": "לוי",
+   "FirstName": "יצחק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 860,
+   "LastName": "גולדשמידט",
+   "FirstName": "אלי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 861,
+   "LastName": "ברעם",
+   "FirstName": "עוזי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 862,
+   "LastName": "קצב",
+   "FirstName": "משה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 965,
+   "LastName": "נתניהו",
+   "FirstName": "בנימין",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1064,
+   "LastName": "אולמרט",
+   "FirstName": "אהוד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1065,
+   "LastName": "אורון",
+   "FirstName": "חיים",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1068,
+   "LastName": "סלומינסקי",
+   "FirstName": "ניסן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2128,
+   "LastName": "אדרי",
+   "FirstName": "רפאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2132,
+   "LastName": "אור",
+   "FirstName": "אורי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2138,
+   "LastName": "איתן",
+   "FirstName": "רפאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2141,
+   "LastName": "אלול",
+   "FirstName": "רפאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2178,
+   "LastName": "בגין",
+   "FirstName": "זאב בנימין",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2183,
+   "LastName": "בדש",
+   "FirstName": "פיני",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2192,
+   "LastName": "ביילין",
+   "FirstName": "יוסי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2196,
+   "LastName": "בן-אלישר",
+   "FirstName": "אליהו",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2208,
+   "LastName": "בן-צור",
+   "FirstName": "שמריהו",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2226,
+   "LastName": "ברק",
+   "FirstName": "אהוד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2232,
+   "LastName": "גבאי",
+   "FirstName": "אליהו",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2238,
+   "LastName": "גולדמן",
+   "FirstName": "מיכה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2276,
+   "LastName": "דיין",
+   "FirstName": "חיים",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2286,
+   "LastName": "דראושה",
+   "FirstName": "עבד-אלוהב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2291,
+   "LastName": "דרעי",
+   "FirstName": "אריה מכלוף",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2300,
+   "LastName": "המר",
+   "FirstName": "זבולון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2307,
+   "LastName": "הראל",
+   "FirstName": "יהודה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2315,
+   "LastName": "ויינברג",
+   "FirstName": "צבי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2317,
+   "LastName": "וייס",
+   "FirstName": "שבח",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2331,
+   "LastName": "זוילי",
+   "FirstName": "נסים",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2339,
+   "LastName": "זיסמן",
+   "FirstName": "עמנואל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2345,
+   "LastName": "חג' יחיא",
+   "FirstName": "רפיק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2371,
+   "LastName": "יהב",
+   "FirstName": "יונה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2420,
+   "LastName": "לובוצקי",
+   "FirstName": "אלכסנדר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2432,
+   "LastName": "ליבאי",
+   "FirstName": "דוד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2435,
+   "LastName": "לייזרזון",
+   "FirstName": "אברהם יוסף",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2444,
+   "LastName": "לנקרי",
+   "FirstName": "יהודה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2449,
+   "LastName": "מאסלה",
+   "FirstName": "אדיסו",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2465,
+   "LastName": "מירום",
+   "FirstName": "חגי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2468,
+   "LastName": "מרדכי",
+   "FirstName": "יצחק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2505,
+   "LastName": "סלים",
+   "FirstName": "סאלח",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2511,
+   "LastName": "סעד",
+   "FirstName": "אחמד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2526,
+   "LastName": "עמור",
+   "FirstName": "שאול",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2532,
+   "LastName": "פורת",
+   "FirstName": "חנן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2538,
+   "LastName": "פלד",
+   "FirstName": "משה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2545,
+   "LastName": "פנחסי",
+   "FirstName": "רפאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2562,
+   "LastName": "צאדק חאג'-יחיא",
+   "FirstName": "וליד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2566,
+   "LastName": "צוקר",
+   "FirstName": "דוד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2574,
+   "LastName": "קהלני",
+   "FirstName": "אביגדור",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2594,
+   "LastName": "ראם",
+   "FirstName": "דוד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2620,
+   "LastName": "שאקי",
+   "FirstName": "אבנר-חי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2633,
+   "LastName": "שחל",
+   "FirstName": "משה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2635,
+   "LastName": "שטרן",
+   "FirstName": "אברהם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2650,
+   "LastName": "שמואלי",
+   "FirstName": "דורון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2672,
+   "LastName": "תיכון",
+   "FirstName": "דן",
+   "GenderDesc": "זכר"
+  }
+ ],
+ "factionMemberships": [
+  {
+   "PersonToPositionID": 29991,
+   "PersonID": 405,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 627,
+   "FactionName": "מולדת"
+  },
+  {
+   "PersonToPositionID": 27939,
+   "PersonID": 412,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-03-04T00:00:00",
+   "FactionID": 615,
+   "FactionName": "מפלגה דתית לאומית"
+  },
+  {
+   "PersonToPositionID": 27946,
+   "PersonID": 417,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 627,
+   "FactionName": "מולדת"
+  },
+  {
+   "PersonToPositionID": 28068,
+   "PersonID": 430,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 639,
+   "FactionName": "ישראל בעלייה"
+  },
+  {
+   "PersonToPositionID": 29992,
+   "PersonID": 432,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 29993,
+   "PersonID": 433,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 29994,
+   "PersonID": 435,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 29995,
+   "PersonID": 437,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 29996,
+   "PersonID": 439,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 27927,
+   "PersonID": 441,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 27961,
+   "PersonID": 442,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 27964,
+   "PersonID": 444,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 27969,
+   "PersonID": 446,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 27970,
+   "PersonID": 447,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 27989,
+   "PersonID": 448,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 28001,
+   "PersonID": 453,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 28018,
+   "PersonID": 454,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 28032,
+   "PersonID": 455,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 28041,
+   "PersonID": 456,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 28060,
+   "PersonID": 458,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 28062,
+   "PersonID": 459,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 28076,
+   "PersonID": 461,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 29997,
+   "PersonID": 462,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 30000,
+   "PersonID": 464,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 30003,
+   "PersonID": 465,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 27930,
+   "PersonID": 466,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 27936,
+   "PersonID": 467,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 27974,
+   "PersonID": 470,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 27986,
+   "PersonID": 471,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 28002,
+   "PersonID": 472,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 28021,
+   "PersonID": 474,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 28064,
+   "PersonID": 478,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 28070,
+   "PersonID": 479,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 28077,
+   "PersonID": 482,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 30006,
+   "PersonID": 483,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 619,
+   "FactionName": "התאחדות הספרדים שומרי תורה - תנועת ש\"ס"
+  },
+  {
+   "PersonToPositionID": 30007,
+   "PersonID": 484,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 619,
+   "FactionName": "התאחדות הספרדים שומרי תורה - תנועת ש\"ס"
+  },
+  {
+   "PersonToPositionID": 27920,
+   "PersonID": 486,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 619,
+   "FactionName": "התאחדות הספרדים שומרי תורה - תנועת ש\"ס"
+  },
+  {
+   "PersonToPositionID": 27923,
+   "PersonID": 487,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 619,
+   "FactionName": "התאחדות הספרדים שומרי תורה - תנועת ש\"ס"
+  },
+  {
+   "PersonToPositionID": 27945,
+   "PersonID": 488,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 619,
+   "FactionName": "התאחדות הספרדים שומרי תורה - תנועת ש\"ס"
+  },
+  {
+   "PersonToPositionID": 27960,
+   "PersonID": 493,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 619,
+   "FactionName": "התאחדות הספרדים שומרי תורה - תנועת ש\"ס"
+  },
+  {
+   "PersonToPositionID": 27965,
+   "PersonID": 494,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 619,
+   "FactionName": "התאחדות הספרדים שומרי תורה - תנועת ש\"ס"
+  },
+  {
+   "PersonToPositionID": 27958,
+   "PersonID": 506,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 629,
+   "FactionName": "מרצ"
+  },
+  {
+   "PersonToPositionID": 27968,
+   "PersonID": 507,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 629,
+   "FactionName": "מרצ"
+  },
+  {
+   "PersonToPositionID": 27992,
+   "PersonID": 509,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 629,
+   "FactionName": "מרצ"
+  },
+  {
+   "PersonToPositionID": 28056,
+   "PersonID": 510,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 629,
+   "FactionName": "מרצ"
+  },
+  {
+   "PersonToPositionID": 28080,
+   "PersonID": 512,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 629,
+   "FactionName": "מרצ"
+  },
+  {
+   "PersonToPositionID": 28027,
+   "PersonID": 519,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-01-17T00:00:00",
+   "FactionID": 629,
+   "FactionName": "מרצ"
+  },
+  {
+   "PersonToPositionID": 30008,
+   "PersonID": 522,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 615,
+   "FactionName": "מפלגה דתית לאומית"
+  },
+  {
+   "PersonToPositionID": 27963,
+   "PersonID": 524,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 615,
+   "FactionName": "מפלגה דתית לאומית"
+  },
+  {
+   "PersonToPositionID": 27921,
+   "PersonID": 526,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1998-10-23T00:00:00",
+   "FactionID": 631,
+   "FactionName": "יהדות התורה"
+  },
+  {
+   "PersonToPositionID": 27933,
+   "PersonID": 527,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 631,
+   "FactionName": "יהדות התורה"
+  },
+  {
+   "PersonToPositionID": 28054,
+   "PersonID": 531,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 631,
+   "FactionName": "יהדות התורה"
+  },
+  {
+   "PersonToPositionID": 30009,
+   "PersonID": 532,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 639,
+   "FactionName": "ישראל בעלייה"
+  },
+  {
+   "PersonToPositionID": 28014,
+   "PersonID": 533,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 639,
+   "FactionName": "ישראל בעלייה"
+  },
+  {
+   "PersonToPositionID": 28081,
+   "PersonID": 535,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 639,
+   "FactionName": "ישראל בעלייה"
+  },
+  {
+   "PersonToPositionID": 27978,
+   "PersonID": 536,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 27981,
+   "PersonID": 537,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 30131,
+   "PersonID": 541,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-03-08T00:00:00",
+   "FactionID": 621,
+   "FactionName": "חד\"ש - בל\"ד"
+  },
+  {
+   "PersonToPositionID": 27995,
+   "PersonID": 544,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 28007,
+   "PersonID": 546,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 30010,
+   "PersonID": 549,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 641,
+   "FactionName": "מד\"ע - רע\"ם"
+  },
+  {
+   "PersonToPositionID": 27922,
+   "PersonID": 550,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 641,
+   "FactionName": "מד\"ע - רע\"ם"
+  },
+  {
+   "PersonToPositionID": 27997,
+   "PersonID": 551,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-03-08T00:00:00",
+   "FactionID": 621,
+   "FactionName": "חד\"ש - בל\"ד"
+  },
+  {
+   "PersonToPositionID": 30011,
+   "PersonID": 552,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 639,
+   "FactionName": "ישראל בעלייה"
+  },
+  {
+   "PersonToPositionID": 27959,
+   "PersonID": 554,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 641,
+   "FactionName": "מד\"ע - רע\"ם"
+  },
+  {
+   "PersonToPositionID": 28042,
+   "PersonID": 557,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-03-25T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 30012,
+   "PersonID": 558,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-03-08T00:00:00",
+   "FactionID": 621,
+   "FactionName": "חד\"ש - בל\"ד"
+  },
+  {
+   "PersonToPositionID": 28047,
+   "PersonID": 559,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 28039,
+   "PersonID": 563,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 631,
+   "FactionName": "יהדות התורה"
+  },
+  {
+   "PersonToPositionID": 28009,
+   "PersonID": 565,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 639,
+   "FactionName": "ישראל בעלייה"
+  },
+  {
+   "PersonToPositionID": 27951,
+   "PersonID": 567,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 27967,
+   "PersonID": 580,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 619,
+   "FactionName": "התאחדות הספרדים שומרי תורה - תנועת ש\"ס"
+  },
+  {
+   "PersonToPositionID": 27980,
+   "PersonID": 765,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 615,
+   "FactionName": "מפלגה דתית לאומית"
+  },
+  {
+   "PersonToPositionID": 27919,
+   "PersonID": 860,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 30014,
+   "PersonID": 861,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 28049,
+   "PersonID": 862,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 28011,
+   "PersonID": 965,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 30015,
+   "PersonID": 1064,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1998-11-18T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 30016,
+   "PersonID": 1065,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 629,
+   "FactionName": "מרצ"
+  },
+  {
+   "PersonToPositionID": 30017,
+   "PersonID": 2128,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 30018,
+   "PersonID": 2132,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 30019,
+   "PersonID": 2138,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 30022,
+   "PersonID": 2141,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 30023,
+   "PersonID": 2178,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 30025,
+   "PersonID": 2183,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1998-11-30T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 30026,
+   "PersonID": 2192,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 30027,
+   "PersonID": 2196,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1996-09-01T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 30028,
+   "PersonID": 2208,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 615,
+   "FactionName": "מפלגה דתית לאומית"
+  },
+  {
+   "PersonToPositionID": 30029,
+   "PersonID": 2226,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 27918,
+   "PersonID": 2238,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 27924,
+   "PersonID": 2276,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 27928,
+   "PersonID": 2286,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 641,
+   "FactionName": "מד\"ע - רע\"ם"
+  },
+  {
+   "PersonToPositionID": 27929,
+   "PersonID": 2291,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 619,
+   "FactionName": "התאחדות הספרדים שומרי תורה - תנועת ש\"ס"
+  },
+  {
+   "PersonToPositionID": 27935,
+   "PersonID": 2300,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1998-01-20T00:00:00",
+   "FactionID": 615,
+   "FactionName": "מפלגה דתית לאומית"
+  },
+  {
+   "PersonToPositionID": 27942,
+   "PersonID": 2307,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 633,
+   "FactionName": "הדרך השלישית"
+  },
+  {
+   "PersonToPositionID": 27943,
+   "PersonID": 2315,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 639,
+   "FactionName": "ישראל בעלייה"
+  },
+  {
+   "PersonToPositionID": 27944,
+   "PersonID": 2317,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 27947,
+   "PersonID": 2331,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 27949,
+   "PersonID": 2339,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-03-29T00:00:00",
+   "FactionID": 633,
+   "FactionName": "הדרך השלישית"
+  },
+  {
+   "PersonToPositionID": 27962,
+   "PersonID": 2371,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 27977,
+   "PersonID": 2420,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 633,
+   "FactionName": "הדרך השלישית"
+  },
+  {
+   "PersonToPositionID": 27983,
+   "PersonID": 2432,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1996-10-15T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 27990,
+   "PersonID": 2444,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 27993,
+   "PersonID": 2449,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-03-25T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 27999,
+   "PersonID": 2465,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 28005,
+   "PersonID": 2468,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 28016,
+   "PersonID": 2505,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-03-08T00:00:00",
+   "FactionID": 621,
+   "FactionName": "חד\"ש - בל\"ד"
+  },
+  {
+   "PersonToPositionID": 28019,
+   "PersonID": 2511,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-03-08T00:00:00",
+   "FactionID": 621,
+   "FactionName": "חד\"ש - בל\"ד"
+  },
+  {
+   "PersonToPositionID": 28024,
+   "PersonID": 2526,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 28029,
+   "PersonID": 2532,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-03-04T00:00:00",
+   "FactionID": 615,
+   "FactionName": "מפלגה דתית לאומית"
+  },
+  {
+   "PersonToPositionID": 28033,
+   "PersonID": 2538,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 28038,
+   "PersonID": 2545,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 619,
+   "FactionName": "התאחדות הספרדים שומרי תורה - תנועת ש\"ס"
+  },
+  {
+   "PersonToPositionID": 27957,
+   "PersonID": 2562,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 629,
+   "FactionName": "מרצ"
+  },
+  {
+   "PersonToPositionID": 28044,
+   "PersonID": 2566,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-03-17T00:00:00",
+   "FactionID": 629,
+   "FactionName": "מרצ"
+  },
+  {
+   "PersonToPositionID": 28046,
+   "PersonID": 2574,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 633,
+   "FactionName": "הדרך השלישית"
+  },
+  {
+   "PersonToPositionID": 28052,
+   "PersonID": 2594,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 28061,
+   "PersonID": 2620,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 615,
+   "FactionName": "מפלגה דתית לאומית"
+  },
+  {
+   "PersonToPositionID": 28063,
+   "PersonID": 2633,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1998-03-20T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 28067,
+   "PersonID": 2635,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1997-05-12T00:00:00",
+   "FactionID": 615,
+   "FactionName": "מפלגה דתית לאומית"
+  },
+  {
+   "PersonToPositionID": 28082,
+   "PersonID": 2672,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-06-17T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 28057,
+   "PersonID": 476,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-09-01T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 27966,
+   "PersonID": 445,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1996-10-15T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 28015,
+   "PersonID": 1068,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1997-05-12T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 615,
+   "FactionName": "מפלגה דתית לאומית"
+  },
+  {
+   "PersonToPositionID": 30042,
+   "PersonID": 2232,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1998-01-20T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 615,
+   "FactionName": "מפלגה דתית לאומית"
+  },
+  {
+   "PersonToPositionID": 27955,
+   "PersonID": 2345,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1998-03-20T00:00:00",
+   "FinishDate": "1999-03-25T00:00:00",
+   "FactionID": 611,
+   "FactionName": "מפלגת העבודה הישראלית"
+  },
+  {
+   "PersonToPositionID": 27984,
+   "PersonID": 2435,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1998-10-23T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 631,
+   "FactionName": "יהדות התורה"
+  },
+  {
+   "PersonToPositionID": 27971,
+   "PersonID": 468,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1998-11-18T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 28073,
+   "PersonID": 2650,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1998-11-30T00:00:00",
+   "FinishDate": "1999-02-23T00:00:00",
+   "FactionID": 637,
+   "FactionName": "ליכוד - גשר - צומת"
+  },
+  {
+   "PersonToPositionID": 29883,
+   "PersonID": 519,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-01-17T00:00:00",
+   "FinishDate": "1999-03-29T00:00:00",
+   "FactionID": 617,
+   "FactionName": "שינוי - מפלגת מרכז"
+  },
+  {
+   "PersonToPositionID": 28069,
+   "PersonID": 430,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 651,
+   "FactionName": "עלי\"ה - עמנו למען ישראל המתחדשת"
+  },
+  {
+   "PersonToPositionID": 29998,
+   "PersonID": 462,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-03-04T00:00:00",
+   "FactionID": 645,
+   "FactionName": "ליכוד - צומת"
+  },
+  {
+   "PersonToPositionID": 30001,
+   "PersonID": 464,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-03-04T00:00:00",
+   "FactionID": 645,
+   "FactionName": "ליכוד - צומת"
+  },
+  {
+   "PersonToPositionID": 30004,
+   "PersonID": 465,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-03-04T00:00:00",
+   "FactionID": 645,
+   "FactionName": "ליכוד - צומת"
+  },
+  {
+   "PersonToPositionID": 27931,
+   "PersonID": 466,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-03-04T00:00:00",
+   "FactionID": 645,
+   "FactionName": "ליכוד - צומת"
+  },
+  {
+   "PersonToPositionID": 27937,
+   "PersonID": 467,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-03-04T00:00:00",
+   "FactionID": 645,
+   "FactionName": "ליכוד - צומת"
+  },
+  {
+   "PersonToPositionID": 27972,
+   "PersonID": 468,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-03-04T00:00:00",
+   "FactionID": 645,
+   "FactionName": "ליכוד - צומת"
+  },
+  {
+   "PersonToPositionID": 27975,
+   "PersonID": 470,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-03-04T00:00:00",
+   "FactionID": 645,
+   "FactionName": "ליכוד - צומת"
+  },
+  {
+   "PersonToPositionID": 27987,
+   "PersonID": 471,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-03-04T00:00:00",
+   "FactionID": 645,
+   "FactionName": "ליכוד - צומת"
+  },
+  {
+   "PersonToPositionID": 28003,
+   "PersonID": 472,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-03-04T00:00:00",
+   "FactionID": 645,
+   "FactionName": "ליכוד - צומת"
+  },
+  {
+   "PersonToPositionID": 28022,
+   "PersonID": 474,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-03-04T00:00:00",
+   "FactionID": 645,
+   "FactionName": "ליכוד - צומת"
+  },
+  {
+   "PersonToPositionID": 28058,
+   "PersonID": 476,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-03-04T00:00:00",
+   "FactionID": 645,
+   "FactionName": "ליכוד - צומת"
+  },
+  {
+   "PersonToPositionID": 28065,
+   "PersonID": 478,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-03-04T00:00:00",
+   "FactionID": 645,
+   "FactionName": "ליכוד - צומת"
+  },
+  {
+   "PersonToPositionID": 28071,
+   "PersonID": 479,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-03-04T00:00:00",
+   "FactionID": 645,
+   "FactionName": "ליכוד - צומת"
+  },
+  {
+   "PersonToPositionID": 28078,
+   "PersonID": 482,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-03-04T00:00:00",
+   "FactionID": 645,
+   "FactionName": "ליכוד - צומת"
+  },
+  {
+   "PersonToPositionID": 27934,
+   "PersonID": 527,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 1034,
+   "FactionName": "אגודת ישראל"
+  },
+  {
+   "PersonToPositionID": 28055,
+   "PersonID": 531,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 625,
+   "FactionName": "דגל התורה"
+  },
+  {
+   "PersonToPositionID": 27979,
+   "PersonID": 536,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 635,
+   "FactionName": "גשר"
+  },
+  {
+   "PersonToPositionID": 27982,
+   "PersonID": 537,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 635,
+   "FactionName": "גשר"
+  },
+  {
+   "PersonToPositionID": 27996,
+   "PersonID": 544,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 649,
+   "FactionName": "ישראל במרכז"
+  },
+  {
+   "PersonToPositionID": 28008,
+   "PersonID": 546,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 649,
+   "FactionName": "ישראל במרכז"
+  },
+  {
+   "PersonToPositionID": 28048,
+   "PersonID": 559,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 647,
+   "FactionName": "חרות - התנועה הלאומית"
+  },
+  {
+   "PersonToPositionID": 28040,
+   "PersonID": 563,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 1034,
+   "FactionName": "אגודת ישראל"
+  },
+  {
+   "PersonToPositionID": 28010,
+   "PersonID": 565,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 651,
+   "FactionName": "עלי\"ה - עמנו למען ישראל המתחדשת"
+  },
+  {
+   "PersonToPositionID": 27952,
+   "PersonID": 567,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-03-22T00:00:00",
+   "FactionID": 649,
+   "FactionName": "ישראל במרכז"
+  },
+  {
+   "PersonToPositionID": 28050,
+   "PersonID": 862,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-03-04T00:00:00",
+   "FactionID": 645,
+   "FactionName": "ליכוד - צומת"
+  },
+  {
+   "PersonToPositionID": 28012,
+   "PersonID": 965,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-03-04T00:00:00",
+   "FactionID": 645,
+   "FactionName": "ליכוד - צומת"
+  },
+  {
+   "PersonToPositionID": 30020,
+   "PersonID": 2138,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-03-04T00:00:00",
+   "FactionID": 645,
+   "FactionName": "ליכוד - צומת"
+  },
+  {
+   "PersonToPositionID": 30024,
+   "PersonID": 2178,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 647,
+   "FactionName": "חרות - התנועה הלאומית"
+  },
+  {
+   "PersonToPositionID": 27925,
+   "PersonID": 2276,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-03-04T00:00:00",
+   "FactionID": 645,
+   "FactionName": "ליכוד - צומת"
+  },
+  {
+   "PersonToPositionID": 27948,
+   "PersonID": 2331,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 649,
+   "FactionName": "ישראל במרכז"
+  },
+  {
+   "PersonToPositionID": 27985,
+   "PersonID": 2435,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 1034,
+   "FactionName": "אגודת ישראל"
+  },
+  {
+   "PersonToPositionID": 27991,
+   "PersonID": 2444,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 635,
+   "FactionName": "גשר"
+  },
+  {
+   "PersonToPositionID": 28000,
+   "PersonID": 2465,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 649,
+   "FactionName": "ישראל במרכז"
+  },
+  {
+   "PersonToPositionID": 28006,
+   "PersonID": 2468,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 649,
+   "FactionName": "ישראל במרכז"
+  },
+  {
+   "PersonToPositionID": 28025,
+   "PersonID": 2526,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-03-04T00:00:00",
+   "FactionID": 645,
+   "FactionName": "ליכוד - צומת"
+  },
+  {
+   "PersonToPositionID": 28034,
+   "PersonID": 2538,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-03-04T00:00:00",
+   "FactionID": 645,
+   "FactionName": "ליכוד - צומת"
+  },
+  {
+   "PersonToPositionID": 28053,
+   "PersonID": 2594,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 647,
+   "FactionName": "חרות - התנועה הלאומית"
+  },
+  {
+   "PersonToPositionID": 28074,
+   "PersonID": 2650,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-03-04T00:00:00",
+   "FactionID": 645,
+   "FactionName": "ליכוד - צומת"
+  },
+  {
+   "PersonToPositionID": 28083,
+   "PersonID": 2672,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-02-23T00:00:00",
+   "FinishDate": "1999-03-04T00:00:00",
+   "FactionID": 645,
+   "FactionName": "ליכוד - צומת"
+  },
+  {
+   "PersonToPositionID": 27940,
+   "PersonID": 412,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-04T00:00:00",
+   "FinishDate": "1999-03-17T00:00:00",
+   "FactionID": 655,
+   "FactionName": "אמונים"
+  },
+  {
+   "PersonToPositionID": 29999,
+   "PersonID": 462,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-04T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 613,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 30002,
+   "PersonID": 464,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-04T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 613,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 30005,
+   "PersonID": 465,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-04T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 613,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27932,
+   "PersonID": 466,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-04T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 613,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27938,
+   "PersonID": 467,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-04T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 613,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27973,
+   "PersonID": 468,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-04T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 613,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27976,
+   "PersonID": 470,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-04T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 613,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27988,
+   "PersonID": 471,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-04T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 613,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 28004,
+   "PersonID": 472,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-04T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 613,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 28023,
+   "PersonID": 474,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-04T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 613,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 28059,
+   "PersonID": 476,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-04T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 613,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 28066,
+   "PersonID": 478,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-04T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 613,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 28072,
+   "PersonID": 479,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-04T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 613,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 28079,
+   "PersonID": 482,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-04T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 613,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 28051,
+   "PersonID": 862,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-04T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 613,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 28013,
+   "PersonID": 965,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-04T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 613,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 30021,
+   "PersonID": 2138,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-04T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 623,
+   "FactionName": "צומת"
+  },
+  {
+   "PersonToPositionID": 27926,
+   "PersonID": 2276,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-04T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 623,
+   "FactionName": "צומת"
+  },
+  {
+   "PersonToPositionID": 28026,
+   "PersonID": 2526,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-04T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 613,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 28030,
+   "PersonID": 2532,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-04T00:00:00",
+   "FinishDate": "1999-03-17T00:00:00",
+   "FactionID": 655,
+   "FactionName": "אמונים"
+  },
+  {
+   "PersonToPositionID": 28035,
+   "PersonID": 2538,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-04T00:00:00",
+   "FinishDate": "1999-03-04T00:00:00",
+   "FactionID": 623,
+   "FactionName": "צומת"
+  },
+  {
+   "PersonToPositionID": 28036,
+   "PersonID": 2538,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-04T00:00:00",
+   "FinishDate": "1999-03-04T00:00:00",
+   "FactionID": 653,
+   "FactionName": "מכורה"
+  },
+  {
+   "PersonToPositionID": 28037,
+   "PersonID": 2538,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-04T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 627,
+   "FactionName": "מולדת"
+  },
+  {
+   "PersonToPositionID": 28075,
+   "PersonID": 2650,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-04T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 613,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 28084,
+   "PersonID": 2672,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-04T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 613,
+   "FactionName": "הליכוד"
+  },
+  {
+   "PersonToPositionID": 27917,
+   "PersonID": 541,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-08T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 643,
+   "FactionName": "חזית דמוקרטית לשלום ושוויון"
+  },
+  {
+   "PersonToPositionID": 27998,
+   "PersonID": 551,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-08T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 657,
+   "FactionName": "ברית לאומית דמוקרטית"
+  },
+  {
+   "PersonToPositionID": 30013,
+   "PersonID": 558,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-08T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 657,
+   "FactionName": "ברית לאומית דמוקרטית"
+  },
+  {
+   "PersonToPositionID": 28017,
+   "PersonID": 2505,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-08T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 643,
+   "FactionName": "חזית דמוקרטית לשלום ושוויון"
+  },
+  {
+   "PersonToPositionID": 28020,
+   "PersonID": 2511,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-08T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 643,
+   "FactionName": "חזית דמוקרטית לשלום ושוויון"
+  },
+  {
+   "PersonToPositionID": 27941,
+   "PersonID": 412,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 661,
+   "FactionName": "תקומה"
+  },
+  {
+   "PersonToPositionID": 28031,
+   "PersonID": 2532,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 661,
+   "FactionName": "תקומה"
+  },
+  {
+   "PersonToPositionID": 28045,
+   "PersonID": 2566,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-17T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 1035,
+   "FactionName": "חה\"כ דוד צוקר"
+  },
+  {
+   "PersonToPositionID": 27953,
+   "PersonID": 567,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-22T00:00:00",
+   "FinishDate": "1999-03-29T00:00:00",
+   "FactionID": 663,
+   "FactionName": "הצעירים"
+  },
+  {
+   "PersonToPositionID": 28043,
+   "PersonID": 557,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-25T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 665,
+   "FactionName": "עם אחד"
+  },
+  {
+   "PersonToPositionID": 27956,
+   "PersonID": 2345,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-25T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 665,
+   "FactionName": "עם אחד"
+  },
+  {
+   "PersonToPositionID": 27994,
+   "PersonID": 2449,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-25T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 665,
+   "FactionName": "עם אחד"
+  },
+  {
+   "PersonToPositionID": 28028,
+   "PersonID": 519,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-29T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 667,
+   "FactionName": "שינוי"
+  },
+  {
+   "PersonToPositionID": 27954,
+   "PersonID": 567,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-29T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 667,
+   "FactionName": "שינוי"
+  },
+  {
+   "PersonToPositionID": 27950,
+   "PersonID": 2339,
+   "PositionID": 54,
+   "KnessetNum": 14,
+   "StartDate": "1999-03-29T00:00:00",
+   "FinishDate": "1999-06-07T00:00:00",
+   "FactionID": 1036,
+   "FactionName": "חה\"כ עמנואל זיסמן"
+  }
+ ]
+}

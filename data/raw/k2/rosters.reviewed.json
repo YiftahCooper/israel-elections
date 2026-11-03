@@ -98,7 +98,7 @@
         },
         {
           "rank": 22,
-          "nameHe": "שרף זאב"
+          "nameHe": "שפר זאב"
         },
         {
           "rank": 23,
@@ -158,11 +158,11 @@
         },
         {
           "rank": 37,
-          "nameHe": "טברסקי דינה"
+          "nameHe": "טברסקי ז׳ניה"
         },
         {
           "rank": 38,
-          "nameHe": "אוזניה (אונשטט) ברוך"
+          "nameHe": "אזניה (איזנשטט) ברוך"
         },
         {
           "rank": 39,
@@ -215,7 +215,7 @@
         "אידלסון בבה",
         "אפרתי יוסף",
         "אורי יעקב",
-        "שרף זאב",
+        "שפר זאב",
         "דיין שמואל",
         "גוברין עקיבא",
         "לבנה אליעזר",
@@ -230,8 +230,8 @@
         "הן יחזקאל",
         "ברגר הרצל",
         "כסה יונה",
-        "טברסקי דינה",
-        "אוזניה (אונשטט) ברוך",
+        "טברסקי ז׳ניה",
+        "אזניה (איזנשטט) ברוך",
         "אסף עמי",
         "הרב פלדמן ראובן",
         "בר רב האי דוד",
@@ -618,7 +618,7 @@
         },
         {
           "rank": 10,
-          "nameHe": "בסתוני רוסתום"
+          "nameHe": "בסטוני רוסתום"
         },
         {
           "rank": 11,
@@ -651,7 +651,7 @@
         "ליבשיץ דוד",
         "בנטוב מרדכי",
         "ארם משה",
-        "בסתוני רוסתום",
+        "בסטוני רוסתום",
         "פרי אליעזר",
         "למדן חנה",
         "ברמן אדולף",
@@ -741,11 +741,11 @@
       "candidates": [
         {
           "rank": 1,
-          "nameHe": "המדאן פארס"
+          "nameHe": "חמדאן פארס"
         }
       ],
       "electedNames": [
-        "המדאן פארס"
+        "חמדאן פארס"
       ],
       "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted.",
       "electedCandidateRanks": [
@@ -833,7 +833,7 @@
         },
         {
           "rank": 8,
-          "nameHe": "ביזרנו שמעון"
+          "nameHe": "בז׳רנו שמעון"
         },
         {
           "rank": 9,
@@ -857,7 +857,7 @@
         },
         {
           "rank": 14,
-          "nameHe": "סוייב זלמן"
+          "nameHe": "סוזייב זלמן"
         },
         {
           "rank": 15,
@@ -865,7 +865,7 @@
         },
         {
           "rank": 16,
-          "nameHe": "ד״ר סוסמן אברהם"
+          "nameHe": "ד״ר סטופ אברהם"
         },
         {
           "rank": 17,
@@ -877,11 +877,11 @@
         },
         {
           "rank": 19,
-          "nameHe": "יסמן שלום"
+          "nameHe": "זיסמן שלום"
         },
         {
           "rank": 20,
-          "nameHe": "פלדשטיין שלמה"
+          "nameHe": "פרלשטין שלמה"
         }
       ],
       "electedNames": [
@@ -892,19 +892,19 @@
         "קליבנוב יעקב",
         "סרלין יוסף",
         "בוגר ד״ר חיים",
-        "ביזרנו שמעון",
+        "בז׳רנו שמעון",
         "ד״ר רימלט אלימלך",
         "הראל ד״ר (הורוביץ) בן-ציון",
         "אריאב חיים",
         "איכילוב עזרא",
         "בבה שמחה",
-        "סוייב זלמן",
+        "סוזייב זלמן",
         "כצנלסון בת-שבע",
-        "ד״ר סוסמן אברהם",
+        "ד״ר סטופ אברהם",
         "חת נחום",
         "פלש ג׳ורג׳",
-        "יסמן שלום",
-        "פלדשטיין שלמה"
+        "זיסמן שלום",
+        "פרלשטין שלמה"
       ],
       "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted.",
       "electedCandidateRanks": [
@@ -981,5 +981,87 @@
       ]
     }
   ],
-  "electedNamesConvention": "Reviewed elected identities, in the candidate-gazette spelling, not a diplomatic transcription of results typography. electedCandidateRanks maps the results order back to registered candidate ranks. Honorifics, commas, spacing and hyphens are not identity differences."
+  "electedNamesConvention": "Reviewed elected identities, in the candidate-gazette spelling, not a diplomatic transcription of results typography. electedCandidateRanks maps the results order back to registered candidate ranks. Honorifics, commas, spacing and hyphens are not identity differences.",
+  "corrections": [
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "א",
+      "rank": 22,
+      "from": "שרף זאב",
+      "to": "שפר זאב",
+      "evidence": "Re-read at high zoom; both notices print \"שפר זאב\": k2-candidates-gazette PDF page 1 (printed p. 1141); k2-results-gazette PDF page 1 (printed p. 1241)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "א",
+      "rank": 37,
+      "from": "טברסקי דינה",
+      "to": "טברסקי ז׳ניה",
+      "evidence": "Re-read at high zoom; both notices print \"טברסקי ז׳ניה\": k2-candidates-gazette PDF page 1 (printed p. 1141); k2-results-gazette PDF page 1 (printed p. 1241)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "א",
+      "rank": 38,
+      "from": "אוזניה (אונשטט) ברוך",
+      "to": "אזניה (איזנשטט) ברוך",
+      "evidence": "Re-read at high zoom; both notices print \"אזניה (איזנשטט) ברוך\": k2-candidates-gazette PDF page 1 (printed p. 1141); k2-results-gazette PDF page 1 (printed p. 1241)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "צ",
+      "rank": 8,
+      "from": "ביזרנו שמעון",
+      "to": "בז׳רנו שמעון",
+      "evidence": "Re-read at high zoom; both notices print \"בז׳רנו שמעון\": k2-candidates-gazette PDF page 12 (printed p. 1152); k2-results-gazette PDF page 2."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "צ",
+      "rank": 14,
+      "from": "סוייב זלמן",
+      "to": "סוזייב זלמן",
+      "evidence": "Re-read at high zoom; both notices print \"סוזייב זלמן\": k2-candidates-gazette PDF page 12 (printed p. 1152); k2-results-gazette PDF page 2."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "צ",
+      "rank": 16,
+      "from": "ד״ר סוסמן אברהם",
+      "to": "ד״ר סטופ אברהם",
+      "evidence": "Re-read at high zoom; both notices print \"ד״ר סטופ אברהם\": k2-candidates-gazette PDF page 12 (printed p. 1152); k2-results-gazette PDF page 2."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "צ",
+      "rank": 19,
+      "from": "יסמן שלום",
+      "to": "זיסמן שלום",
+      "evidence": "Re-read at high zoom; both notices print \"זיסמן שלום\": k2-candidates-gazette PDF page 12 (printed p. 1152); k2-results-gazette PDF page 2."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "צ",
+      "rank": 20,
+      "from": "פלדשטיין שלמה",
+      "to": "פרלשטין שלמה",
+      "evidence": "Re-read at high zoom; both notices print \"פרלשטין שלמה\": k2-candidates-gazette PDF page 12 (printed p. 1152); k2-results-gazette PDF page 2. One yod, as printed in both notices."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "מ",
+      "rank": 10,
+      "from": "בסתוני רוסתום",
+      "to": "בסטוני רוסתום",
+      "evidence": "Re-read at high zoom; both notices print \"בסטוני רוסתום\": k2-candidates-gazette PDF page 9 (printed p. 1149); k2-results-gazette PDF page 2."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "ע",
+      "rank": 1,
+      "from": "המדאן פארס",
+      "to": "חמדאן פארס",
+      "evidence": "Re-read at high zoom; both notices print \"חמדאן פארס\": k2-candidates-gazette PDF page 10 (printed p. 1150); k2-results-gazette PDF page 2."
+    }
+  ]
 }

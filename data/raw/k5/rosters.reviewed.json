@@ -660,7 +660,7 @@
         },
         {
           "rank": 18,
-          "nameHe": "פלדשטיין שלמה"
+          "nameHe": "פרלשטיין שלמה"
         },
         {
           "rank": 19,
@@ -683,7 +683,7 @@
         "שערי יהודה",
         "אברמוב ש. זלמן",
         "עוזיאל ברוך",
-        "פלדשטיין שלמה",
+        "פרלשטיין שלמה",
         "כהן בנו"
       ],
       "crossCheck": "Verified name by name against results YP 869 p.1939. Its parenthesis explicitly excludes Ezra Ichilov and Dr Shimon Kanovitch, registered ranks 9 and 11. This record makes no biographical claim about the reason for exclusion.",
@@ -927,5 +927,15 @@
       ]
     }
   ],
-  "electedNamesConvention": "Reviewed elected identities, in the candidate-gazette spelling, not a diplomatic transcription of results typography. electedCandidateRanks maps the results order back to registered candidate ranks. Honorifics, commas, spacing and hyphens are not identity differences."
+  "electedNamesConvention": "Reviewed elected identities, in the candidate-gazette spelling, not a diplomatic transcription of results typography. electedCandidateRanks maps the results order back to registered candidate ranks. Honorifics, commas, spacing and hyphens are not identity differences.",
+  "corrections": [
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "ל",
+      "rank": 18,
+      "from": "פלדשטיין שלמה",
+      "to": "פרלשטיין שלמה",
+      "evidence": "Re-read at high zoom; both notices print \"פרלשטיין שלמה\": k5-candidates-gazette PDF page 14 (printed p. 1808); k5-results-gazette PDF page 3 (printed p. 1939)."
+    }
+  ]
 }

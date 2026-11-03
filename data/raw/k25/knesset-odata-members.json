@@ -1,0 +1,4538 @@
+{
+ "source": "Knesset OData ParliamentInfo.svc",
+ "retrievedAt": "2026-11-04",
+ "queries": [
+  "KNS_PersonToPosition?$filter=KnessetNum eq 25 and (PositionID eq 43 or PositionID eq 61)",
+  "KNS_PersonToPosition?$filter=KnessetNum eq 25 and PositionID eq 54",
+  "KNS_Person?$filter=PersonID eq … (every MK PersonID above, in batches of 25)"
+ ],
+ "note": "PositionID 43/61 = Knesset member. Members whose StartDate is the earliest StartDate (2022-11-15) are taken as the opening membership. PositionID 54 rows (factionMemberships) give each member's faction (FactionName) and its dates.",
+ "positions": [
+  {
+   "PersonToPositionID": 30460,
+   "PersonID": 427,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30370,
+   "PersonID": 468,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30392,
+   "PersonID": 526,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30356,
+   "PersonID": 532,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30369,
+   "PersonID": 556,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-01-06T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30451,
+   "PersonID": 560,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30395,
+   "PersonID": 563,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-01-25T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30372,
+   "PersonID": 965,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30363,
+   "PersonID": 1025,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30419,
+   "PersonID": 1027,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2025-07-10T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30355,
+   "PersonID": 1056,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-02-02T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30390,
+   "PersonID": 1057,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2026-01-21T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30352,
+   "PersonID": 2291,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30364,
+   "PersonID": 4395,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30418,
+   "PersonID": 4397,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30394,
+   "PersonID": 11835,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-01-25T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30359,
+   "PersonID": 12937,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-02-10T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30463,
+   "PersonID": 12938,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30432,
+   "PersonID": 12944,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2024-06-30T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30371,
+   "PersonID": 12951,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30375,
+   "PersonID": 12959,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-02-15T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30379,
+   "PersonID": 23551,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30360,
+   "PersonID": 23558,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30461,
+   "PersonID": 23560,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30358,
+   "PersonID": 23564,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-03-31T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30387,
+   "PersonID": 23565,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30415,
+   "PersonID": 23591,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2026-09-09T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30409,
+   "PersonID": 23594,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30404,
+   "PersonID": 23597,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30414,
+   "PersonID": 23601,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-02-01T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30396,
+   "PersonID": 23631,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30408,
+   "PersonID": 23632,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30421,
+   "PersonID": 23635,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30402,
+   "PersonID": 23639,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2026-06-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30391,
+   "PersonID": 23641,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30351,
+   "PersonID": 28513,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-01-03T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30380,
+   "PersonID": 30055,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-02-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30373,
+   "PersonID": 30057,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-03-26T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30366,
+   "PersonID": 30058,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-01-06T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30450,
+   "PersonID": 30066,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30452,
+   "PersonID": 30067,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30362,
+   "PersonID": 30077,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2025-01-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30422,
+   "PersonID": 30082,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2024-07-05T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30367,
+   "PersonID": 30083,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-02-15T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30398,
+   "PersonID": 30102,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30386,
+   "PersonID": 30106,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30426,
+   "PersonID": 30118,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30464,
+   "PersonID": 30121,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30357,
+   "PersonID": 30300,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30354,
+   "PersonID": 30470,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30459,
+   "PersonID": 30480,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2025-07-20T10:02:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30454,
+   "PersonID": 30558,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2025-06-20T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30347,
+   "PersonID": 30601,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30417,
+   "PersonID": 30657,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30348,
+   "PersonID": 30660,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2026-05-19T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30382,
+   "PersonID": 30662,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2025-07-08T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30393,
+   "PersonID": 30671,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2025-07-02T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30400,
+   "PersonID": 30681,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-08-01T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30424,
+   "PersonID": 30682,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30423,
+   "PersonID": 30683,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30425,
+   "PersonID": 30685,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30405,
+   "PersonID": 30686,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30399,
+   "PersonID": 30691,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30427,
+   "PersonID": 30694,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30411,
+   "PersonID": 30695,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2026-08-11T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30361,
+   "PersonID": 30700,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30368,
+   "PersonID": 30701,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30374,
+   "PersonID": 30704,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30457,
+   "PersonID": 30705,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30428,
+   "PersonID": 30708,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30385,
+   "PersonID": 30713,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30447,
+   "PersonID": 30717,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30436,
+   "PersonID": 30718,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-01-07T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30453,
+   "PersonID": 30719,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30407,
+   "PersonID": 30720,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30413,
+   "PersonID": 30721,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2025-08-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30462,
+   "PersonID": 30722,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30346,
+   "PersonID": 30749,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30384,
+   "PersonID": 30752,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30383,
+   "PersonID": 30758,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30349,
+   "PersonID": 30765,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30353,
+   "PersonID": 30770,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30434,
+   "PersonID": 30772,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30397,
+   "PersonID": 30776,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30403,
+   "PersonID": 30777,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30406,
+   "PersonID": 30780,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2026-07-28T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30410,
+   "PersonID": 30782,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30412,
+   "PersonID": 30783,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30439,
+   "PersonID": 30786,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-01-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30350,
+   "PersonID": 30804,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-02-02T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30388,
+   "PersonID": 30807,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30389,
+   "PersonID": 30808,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30365,
+   "PersonID": 30809,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-03-12T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30377,
+   "PersonID": 30810,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30376,
+   "PersonID": 30811,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30381,
+   "PersonID": 30812,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30378,
+   "PersonID": 30814,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30401,
+   "PersonID": 30820,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30442,
+   "PersonID": 30830,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30431,
+   "PersonID": 30831,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30438,
+   "PersonID": 30832,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30443,
+   "PersonID": 30833,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2025-04-06T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30429,
+   "PersonID": 30835,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30420,
+   "PersonID": 30836,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2025-07-04T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30455,
+   "PersonID": 30837,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30448,
+   "PersonID": 30840,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30435,
+   "PersonID": 30842,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30449,
+   "PersonID": 30843,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30416,
+   "PersonID": 30846,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-01-06T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30441,
+   "PersonID": 30847,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30445,
+   "PersonID": 30849,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30456,
+   "PersonID": 30851,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30444,
+   "PersonID": 30852,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30437,
+   "PersonID": 30853,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30458,
+   "PersonID": 30854,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30440,
+   "PersonID": 30857,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-01-01T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30446,
+   "PersonID": 30859,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30430,
+   "PersonID": 30860,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30433,
+   "PersonID": 30861,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30465,
+   "PersonID": 30863,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30715,
+   "PersonID": 30867,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2023-01-01T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30729,
+   "PersonID": 30868,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2023-01-03T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30806,
+   "PersonID": 30672,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2023-01-06T00:00:00",
+   "FinishDate": "2025-07-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30810,
+   "PersonID": 30710,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2023-01-06T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30808,
+   "PersonID": 30839,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2023-01-06T00:00:00",
+   "FinishDate": "2026-08-13T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30812,
+   "PersonID": 30702,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2023-01-07T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 30967,
+   "PersonID": 30711,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2023-01-17T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 31017,
+   "PersonID": 30768,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2023-01-25T00:00:00",
+   "FinishDate": "2025-06-15T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 31015,
+   "PersonID": 30870,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2023-01-25T00:00:00",
+   "FinishDate": "2025-07-17T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 31053,
+   "PersonID": 30871,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2023-02-01T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 31095,
+   "PersonID": 30872,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2023-02-02T00:00:00",
+   "FinishDate": "2025-07-20T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 31097,
+   "PersonID": 30873,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2023-02-02T00:00:00",
+   "FinishDate": "2025-07-20T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 31213,
+   "PersonID": 30874,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2023-02-07T00:00:00",
+   "FinishDate": "2025-01-21T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 31240,
+   "PersonID": 30875,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2023-02-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 31325,
+   "PersonID": 30706,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2023-02-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 31323,
+   "PersonID": 30876,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2023-02-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 31409,
+   "PersonID": 30877,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2023-03-12T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 31453,
+   "PersonID": 30879,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2023-03-26T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 31459,
+   "PersonID": 30880,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2023-03-31T00:00:00",
+   "FinishDate": "2023-10-14T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 31677,
+   "PersonID": 30881,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2023-08-01T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 31723,
+   "PersonID": 30809,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2023-10-14T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 31897,
+   "PersonID": 30880,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2024-06-30T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 31909,
+   "PersonID": 30799,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2024-07-05T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 32074,
+   "PersonID": 30893,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2025-01-05T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 32085,
+   "PersonID": 30857,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2025-01-21T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 32185,
+   "PersonID": 30874,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2025-04-06T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 32254,
+   "PersonID": 30846,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2025-06-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 32260,
+   "PersonID": 30894,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2025-06-20T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 32266,
+   "PersonID": 30768,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-02T00:00:00",
+   "FinishDate": "2025-07-16T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 32271,
+   "PersonID": 30693,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-04T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 32277,
+   "PersonID": 30775,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-08T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 32284,
+   "PersonID": 22151,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 32292,
+   "PersonID": 11835,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-16T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 32294,
+   "PersonID": 563,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-17T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 32296,
+   "PersonID": 30671,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-17T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 32307,
+   "PersonID": 1056,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-20T10:01:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 32306,
+   "PersonID": 30804,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-20T10:03:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 32308,
+   "PersonID": 30873,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-20T10:04:00",
+   "FinishDate": "2025-07-20T00:00:00",
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 32311,
+   "PersonID": 28513,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-20T10:05:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 32394,
+   "PersonID": 30895,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2025-08-13T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 33679,
+   "PersonID": 30672,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2026-01-21T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 33788,
+   "PersonID": 30873,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2026-05-19T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 33812,
+   "PersonID": 30916,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2026-06-07T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 33882,
+   "PersonID": 30917,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2026-07-28T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 33889,
+   "PersonID": 30921,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2026-08-11T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 33891,
+   "PersonID": 30922,
+   "PositionID": 43,
+   "KnessetNum": 25,
+   "StartDate": "2026-08-13T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  },
+  {
+   "PersonToPositionID": 33893,
+   "PersonID": 30923,
+   "PositionID": 61,
+   "KnessetNum": 25,
+   "StartDate": "2026-09-09T00:00:00",
+   "FinishDate": null,
+   "FactionID": null,
+   "FactionName": null
+  }
+ ],
+ "persons": [
+  {
+   "PersonID": 427,
+   "LastName": "ליברמן",
+   "FirstName": "אביגדור",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 468,
+   "LastName": "כץ",
+   "FirstName": "ישראל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 526,
+   "LastName": "גפני",
+   "FirstName": "משה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 532,
+   "LastName": "אדלשטיין",
+   "FirstName": "יולי יואל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 556,
+   "LastName": "כץ",
+   "FirstName": "חיים",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 560,
+   "LastName": "טיבי",
+   "FirstName": "אחמד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 563,
+   "LastName": "פרוש",
+   "FirstName": "מאיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 965,
+   "LastName": "נתניהו",
+   "FirstName": "בנימין",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1025,
+   "LastName": "גמליאל",
+   "FirstName": "גילה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 1027,
+   "LastName": "סער",
+   "FirstName": "גדעון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1056,
+   "LastName": "מרגי",
+   "FirstName": "יעקב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 1057,
+   "LastName": "אייכלר",
+   "FirstName": "ישראל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 2291,
+   "LastName": "דרעי",
+   "FirstName": "אריה מכלוף",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 4395,
+   "LastName": "דיכטר",
+   "FirstName": "אבי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 4397,
+   "LastName": "אלקין",
+   "FirstName": "זאב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 11835,
+   "LastName": "מקלב",
+   "FirstName": "אורי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12937,
+   "LastName": "אקוניס",
+   "FirstName": "אופיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12938,
+   "LastName": "עמאר",
+   "FirstName": "חמד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12944,
+   "LastName": "דנון",
+   "FirstName": "דני",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12951,
+   "LastName": "לוין",
+   "FirstName": "יריב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 12959,
+   "LastName": "רגב",
+   "FirstName": "מירי מרים",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 22151,
+   "LastName": "חסון",
+   "FirstName": "אכרם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 23551,
+   "LastName": "סטרוק",
+   "FirstName": "אורית מלכה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 23558,
+   "LastName": "ביטן",
+   "FirstName": "דוד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 23560,
+   "LastName": "מלינובסקי",
+   "FirstName": "יוליה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 23564,
+   "LastName": "אמסלם",
+   "FirstName": "דוד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 23565,
+   "LastName": "מיכאלי",
+   "FirstName": "מרב",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 23591,
+   "LastName": "שטרן",
+   "FirstName": "אלעזר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 23594,
+   "LastName": "לפיד",
+   "FirstName": "יאיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 23597,
+   "LastName": "כהן",
+   "FirstName": "מאיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 23601,
+   "LastName": "רזבוזוב",
+   "FirstName": "יואל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 23631,
+   "LastName": "אלהרר",
+   "FirstName": "קארין",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 23632,
+   "LastName": "לוי",
+   "FirstName": "מיקי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 23635,
+   "LastName": "תמנו",
+   "FirstName": "פנינה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 23639,
+   "LastName": "טופורובסקי",
+   "FirstName": "בועז",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 23641,
+   "LastName": "אשר",
+   "FirstName": "יעקב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 28513,
+   "LastName": "בן צור",
+   "FirstName": "יואב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30055,
+   "LastName": "סמוטריץ'",
+   "FirstName": "בצלאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30057,
+   "LastName": "קיש",
+   "FirstName": "יואב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30058,
+   "LastName": "זוהר",
+   "FirstName": "מכלוף מיקי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30066,
+   "LastName": "עודה",
+   "FirstName": "איימן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30067,
+   "LastName": "תומא סלימאן",
+   "FirstName": "עאידה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30077,
+   "LastName": "גלנט",
+   "FirstName": "יואב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30082,
+   "LastName": "שאשא ביטון",
+   "FirstName": "יפעת",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30083,
+   "LastName": "כהן",
+   "FirstName": "אלי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30102,
+   "LastName": "בן ארי",
+   "FirstName": "מירב",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30106,
+   "LastName": "לזימי",
+   "FirstName": "נעמה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30118,
+   "LastName": "השכל",
+   "FirstName": "שרן מרים",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30121,
+   "LastName": "פורר",
+   "FirstName": "עודד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30300,
+   "LastName": "אוחנה",
+   "FirstName": "אמיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30470,
+   "LastName": "מלכיאלי",
+   "FirstName": "מיכאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30480,
+   "LastName": "בצלאל",
+   "FirstName": "אברהם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30558,
+   "LastName": "עטאונה",
+   "FirstName": "יוסף",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30601,
+   "LastName": "אזולאי",
+   "FirstName": "ינון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30657,
+   "LastName": "גנץ",
+   "FirstName": "בנימין",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30660,
+   "LastName": "ארבל",
+   "FirstName": "משה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30662,
+   "LastName": "כהנא",
+   "FirstName": "מתן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30671,
+   "LastName": "טסלר",
+   "FirstName": "יעקב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30672,
+   "LastName": "פינדרוס",
+   "FirstName": "יצחק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30681,
+   "LastName": "ברביבאי",
+   "FirstName": "אורנה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30682,
+   "LastName": "ביטון",
+   "FirstName": "מיכאל מרדכי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30683,
+   "LastName": "טרופר",
+   "FirstName": "חילי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30685,
+   "LastName": "פרקש הכהן",
+   "FirstName": "אורית",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30686,
+   "LastName": "כהן",
+   "FirstName": "מירב",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30691,
+   "LastName": "בן ברק",
+   "FirstName": "רם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30693,
+   "LastName": "גינזבורג",
+   "FirstName": "איתן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30694,
+   "LastName": "שוסטר",
+   "FirstName": "אלון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30695,
+   "LastName": "סגלוביץ'",
+   "FirstName": "יואב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30700,
+   "LastName": "ברקת",
+   "FirstName": "ניר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30701,
+   "LastName": "כץ",
+   "FirstName": "אופיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30702,
+   "LastName": "עטייה",
+   "FirstName": "חוה אתי",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30704,
+   "LastName": "קרעי",
+   "FirstName": "שלמה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30705,
+   "LastName": "שיר סגמן",
+   "FirstName": "מיכל",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30706,
+   "LastName": "שטרית",
+   "FirstName": "קטי קטרין",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30708,
+   "LastName": "גולן",
+   "FirstName": "מאי",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30710,
+   "LastName": "קלנר",
+   "FirstName": "אריאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30711,
+   "LastName": "הלוי",
+   "FirstName": "עמית",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30713,
+   "LastName": "עבאס",
+   "FirstName": "מנסור",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30717,
+   "LastName": "סופר",
+   "FirstName": "אופיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30718,
+   "LastName": "סילמן",
+   "FirstName": "עידית",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30719,
+   "LastName": "כסיף",
+   "FirstName": "עופר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30720,
+   "LastName": "להב הרצנו",
+   "FirstName": "יוראי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30721,
+   "LastName": "רול",
+   "FirstName": "עידן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30722,
+   "LastName": "סובה",
+   "FirstName": "יבגני",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30749,
+   "LastName": "אבוטבול",
+   "FirstName": "משה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30752,
+   "LastName": "טאהא",
+   "FirstName": "ווליד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30758,
+   "LastName": "ח'טיב יאסין",
+   "FirstName": "אימאן",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30765,
+   "LastName": "בוסו",
+   "FirstName": "אוריאל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30768,
+   "LastName": "ברוכי",
+   "FirstName": "אליהו",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30770,
+   "LastName": "טייב",
+   "FirstName": "יוסף",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30772,
+   "LastName": "ואטורי",
+   "FirstName": "ניסים",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30775,
+   "LastName": "רון בן משה",
+   "FirstName": "יעל",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30776,
+   "LastName": "בליאק",
+   "FirstName": "ולדימיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30777,
+   "LastName": "טור פז",
+   "FirstName": "משה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30780,
+   "LastName": "כץ",
+   "FirstName": "רון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30782,
+   "LastName": "מזרסקי",
+   "FirstName": "טטיאנה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30783,
+   "LastName": "פרידמן",
+   "FirstName": "יסמין",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30786,
+   "LastName": "שיקלי",
+   "FirstName": "עמיחי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30799,
+   "LastName": "בוסקילה",
+   "FirstName": "מישל",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30804,
+   "LastName": "ביטון",
+   "FirstName": "חיים",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30807,
+   "LastName": "קריב",
+   "FirstName": "גלעד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30808,
+   "LastName": "רייטן מרום",
+   "FirstName": "אפרת",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30809,
+   "LastName": "דיסטל אטבריאן",
+   "FirstName": "גלית",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30810,
+   "LastName": "וולדיגר",
+   "FirstName": "מיכל מרים",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30811,
+   "LastName": "בן גביר",
+   "FirstName": "איתמר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30812,
+   "LastName": "רוטמן",
+   "FirstName": "שמחה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30814,
+   "LastName": "מעוז",
+   "FirstName": "אבי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30820,
+   "LastName": "דוידסון",
+   "FirstName": "סימון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30830,
+   "LastName": "טל",
+   "FirstName": "אוהד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30831,
+   "LastName": "דלל",
+   "FirstName": "אלי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30832,
+   "LastName": "רביבו",
+   "FirstName": "אליהו",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30833,
+   "LastName": "כהן",
+   "FirstName": "אלמוג",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30835,
+   "LastName": "ביסמוט",
+   "FirstName": "בועז",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30836,
+   "LastName": "איזנקוט",
+   "FirstName": "גדי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30837,
+   "LastName": "ביטון",
+   "FirstName": "דבי",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30839,
+   "LastName": "אילוז",
+   "FirstName": "דן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30840,
+   "LastName": "אלהואשלה",
+   "FirstName": "ואליד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30842,
+   "LastName": "מלביצקי",
+   "FirstName": "חנוך דב",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30843,
+   "LastName": "חוג'יראת",
+   "FirstName": "יאסר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30846,
+   "LastName": "גולדקנופ",
+   "FirstName": "יצחק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30847,
+   "LastName": "וסרלאוף",
+   "FirstName": "יצחק שמעון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30849,
+   "LastName": "סון הר מלך",
+   "FirstName": "לימור",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30851,
+   "LastName": "צרפתי הרכבי",
+   "FirstName": "מטי",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30852,
+   "LastName": "סולומון",
+   "FirstName": "משה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30853,
+   "LastName": "סעדה",
+   "FirstName": "משה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30854,
+   "LastName": "שירי",
+   "FirstName": "נאור",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30857,
+   "LastName": "אליהו",
+   "FirstName": "עמיחי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30859,
+   "LastName": "פוגל",
+   "FirstName": "צביקה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30860,
+   "LastName": "גוטליב",
+   "FirstName": "טלי",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30861,
+   "LastName": "דנינו",
+   "FirstName": "שלום",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30863,
+   "LastName": "ניר",
+   "FirstName": "שרון",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30867,
+   "LastName": "קרויזר",
+   "FirstName": "יצחק",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30868,
+   "LastName": "מישרקי",
+   "FirstName": "יונתן",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30870,
+   "LastName": "רוט",
+   "FirstName": "משה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30871,
+   "LastName": "מירון",
+   "FirstName": "שלי טל",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30872,
+   "LastName": "מושיאשוילי",
+   "FirstName": "סימון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30873,
+   "LastName": "מלול",
+   "FirstName": "ארז",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30874,
+   "LastName": "סוכות",
+   "FirstName": "צבי ידידיה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30875,
+   "LastName": "מלקו",
+   "FirstName": "צגה",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30876,
+   "LastName": "שקלים",
+   "FirstName": "אושר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30877,
+   "LastName": "פסל",
+   "FirstName": "משה",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30879,
+   "LastName": "גואטה",
+   "FirstName": "ששון ששי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30880,
+   "LastName": "בוארון",
+   "FirstName": "אביחי אברהם",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30881,
+   "LastName": "לוי",
+   "FirstName": "ירון",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30893,
+   "LastName": "עבד",
+   "FirstName": "עפיף",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30894,
+   "LastName": "בן סעיד",
+   "FirstName": "סמיר",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30895,
+   "LastName": "עזוז",
+   "FirstName": "עדי",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30916,
+   "LastName": "חיים",
+   "FirstName": "עוז",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30917,
+   "LastName": "אבו אל היג'א",
+   "FirstName": "מוחמד",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30921,
+   "LastName": "סלבני כבביה",
+   "FirstName": "מיכל",
+   "GenderDesc": "נקבה"
+  },
+  {
+   "PersonID": 30922,
+   "LastName": "קטש",
+   "FirstName": "שבתאי",
+   "GenderDesc": "זכר"
+  },
+  {
+   "PersonID": 30923,
+   "LastName": "מלכאי",
+   "FirstName": "רוני",
+   "GenderDesc": "נקבה"
+  }
+ ],
+ "factionMemberships": [
+  {
+   "PersonToPositionID": 30298,
+   "PersonID": 427,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1104,
+   "FactionName": "ישראל ביתנו"
+  },
+  {
+   "PersonToPositionID": 30202,
+   "PersonID": 468,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30228,
+   "PersonID": 526,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1101,
+   "FactionName": "יהדות התורה"
+  },
+  {
+   "PersonToPositionID": 30188,
+   "PersonID": 532,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30201,
+   "PersonID": 556,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-01-06T00:00:00",
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30289,
+   "PersonID": 560,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1103,
+   "FactionName": "חד\"ש-תע\"ל"
+  },
+  {
+   "PersonToPositionID": 30231,
+   "PersonID": 563,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-01-25T00:00:00",
+   "FactionID": 1101,
+   "FactionName": "יהדות התורה"
+  },
+  {
+   "PersonToPositionID": 30204,
+   "PersonID": 965,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30195,
+   "PersonID": 1025,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30256,
+   "PersonID": 1027,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2024-03-13T00:00:00",
+   "FactionID": 1098,
+   "FactionName": "המחנה הממלכתי"
+  },
+  {
+   "PersonToPositionID": 30186,
+   "PersonID": 1056,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-02-02T00:00:00",
+   "FactionID": 1095,
+   "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
+  },
+  {
+   "PersonToPositionID": 30226,
+   "PersonID": 1057,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2026-01-20T00:00:00",
+   "FactionID": 1101,
+   "FactionName": "יהדות התורה"
+  },
+  {
+   "PersonToPositionID": 30183,
+   "PersonID": 2291,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1095,
+   "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
+  },
+  {
+   "PersonToPositionID": 30196,
+   "PersonID": 4395,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30255,
+   "PersonID": 4397,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2024-03-13T00:00:00",
+   "FactionID": 1098,
+   "FactionName": "המחנה הממלכתי"
+  },
+  {
+   "PersonToPositionID": 30230,
+   "PersonID": 11835,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-01-25T00:00:00",
+   "FactionID": 1101,
+   "FactionName": "יהדות התורה"
+  },
+  {
+   "PersonToPositionID": 30191,
+   "PersonID": 12937,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-02-10T00:00:00",
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30301,
+   "PersonID": 12938,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1104,
+   "FactionName": "ישראל ביתנו"
+  },
+  {
+   "PersonToPositionID": 30270,
+   "PersonID": 12944,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2024-06-30T00:00:00",
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30203,
+   "PersonID": 12951,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30208,
+   "PersonID": 12959,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-02-15T00:00:00",
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30213,
+   "PersonID": 23551,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2022-11-20T00:00:00",
+   "FactionID": 1097,
+   "FactionName": "הציונות הדתית"
+  },
+  {
+   "PersonToPositionID": 30192,
+   "PersonID": 23558,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30299,
+   "PersonID": 23560,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1104,
+   "FactionName": "ישראל ביתנו"
+  },
+  {
+   "PersonToPositionID": 30190,
+   "PersonID": 23564,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-03-31T00:00:00",
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30223,
+   "PersonID": 23565,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1100,
+   "FactionName": "העבודה"
+  },
+  {
+   "PersonToPositionID": 30251,
+   "PersonID": 23591,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2026-09-09T00:00:00",
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 30245,
+   "PersonID": 23594,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 30240,
+   "PersonID": 23597,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 30250,
+   "PersonID": 23601,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-02-01T00:00:00",
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 30232,
+   "PersonID": 23631,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 30244,
+   "PersonID": 23632,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 30258,
+   "PersonID": 23635,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2025-07-08T00:00:00",
+   "FactionID": 1098,
+   "FactionName": "המחנה הממלכתי"
+  },
+  {
+   "PersonToPositionID": 30238,
+   "PersonID": 23639,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2026-06-07T00:00:00",
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 30227,
+   "PersonID": 23641,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1101,
+   "FactionName": "יהדות התורה"
+  },
+  {
+   "PersonToPositionID": 30182,
+   "PersonID": 28513,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-01-03T00:00:00",
+   "FactionID": 1095,
+   "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
+  },
+  {
+   "PersonToPositionID": 30214,
+   "PersonID": 30055,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2022-11-20T00:00:00",
+   "FactionID": 1097,
+   "FactionName": "הציונות הדתית"
+  },
+  {
+   "PersonToPositionID": 30206,
+   "PersonID": 30057,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-03-26T00:00:00",
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30198,
+   "PersonID": 30058,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-01-06T00:00:00",
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30288,
+   "PersonID": 30066,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1103,
+   "FactionName": "חד\"ש-תע\"ל"
+  },
+  {
+   "PersonToPositionID": 30290,
+   "PersonID": 30067,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1103,
+   "FactionName": "חד\"ש-תע\"ל"
+  },
+  {
+   "PersonToPositionID": 30194,
+   "PersonID": 30077,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2025-01-05T00:00:00",
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30259,
+   "PersonID": 30082,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2024-03-13T00:00:00",
+   "FactionID": 1098,
+   "FactionName": "המחנה הממלכתי"
+  },
+  {
+   "PersonToPositionID": 30199,
+   "PersonID": 30083,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-02-15T00:00:00",
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30234,
+   "PersonID": 30102,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 30222,
+   "PersonID": 30106,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1100,
+   "FactionName": "העבודה"
+  },
+  {
+   "PersonToPositionID": 30264,
+   "PersonID": 30118,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2024-03-13T00:00:00",
+   "FactionID": 1098,
+   "FactionName": "המחנה הממלכתי"
+  },
+  {
+   "PersonToPositionID": 30302,
+   "PersonID": 30121,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1104,
+   "FactionName": "ישראל ביתנו"
+  },
+  {
+   "PersonToPositionID": 30189,
+   "PersonID": 30300,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30185,
+   "PersonID": 30470,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1095,
+   "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
+  },
+  {
+   "PersonToPositionID": 30297,
+   "PersonID": 30480,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2025-07-20T00:00:00",
+   "FactionID": 1095,
+   "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
+  },
+  {
+   "PersonToPositionID": 30292,
+   "PersonID": 30558,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2025-06-20T00:00:00",
+   "FactionID": 1103,
+   "FactionName": "חד\"ש-תע\"ל"
+  },
+  {
+   "PersonToPositionID": 30178,
+   "PersonID": 30601,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1095,
+   "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
+  },
+  {
+   "PersonToPositionID": 30254,
+   "PersonID": 30657,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2025-07-08T00:00:00",
+   "FactionID": 1098,
+   "FactionName": "המחנה הממלכתי"
+  },
+  {
+   "PersonToPositionID": 30179,
+   "PersonID": 30660,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2026-05-19T00:00:00",
+   "FactionID": 1095,
+   "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
+  },
+  {
+   "PersonToPositionID": 30217,
+   "PersonID": 30662,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2025-07-08T00:00:00",
+   "FactionID": 1098,
+   "FactionName": "המחנה הממלכתי"
+  },
+  {
+   "PersonToPositionID": 30229,
+   "PersonID": 30671,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2025-07-02T00:00:00",
+   "FactionID": 1101,
+   "FactionName": "יהדות התורה"
+  },
+  {
+   "PersonToPositionID": 30236,
+   "PersonID": 30681,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-08-01T00:00:00",
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 30261,
+   "PersonID": 30682,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2025-07-08T00:00:00",
+   "FactionID": 1098,
+   "FactionName": "המחנה הממלכתי"
+  },
+  {
+   "PersonToPositionID": 30260,
+   "PersonID": 30683,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2025-07-08T00:00:00",
+   "FactionID": 1098,
+   "FactionName": "המחנה הממלכתי"
+  },
+  {
+   "PersonToPositionID": 30263,
+   "PersonID": 30685,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2025-07-08T00:00:00",
+   "FactionID": 1098,
+   "FactionName": "המחנה הממלכתי"
+  },
+  {
+   "PersonToPositionID": 30241,
+   "PersonID": 30686,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 30235,
+   "PersonID": 30691,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 30265,
+   "PersonID": 30694,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2025-07-08T00:00:00",
+   "FactionID": 1098,
+   "FactionName": "המחנה הממלכתי"
+  },
+  {
+   "PersonToPositionID": 30247,
+   "PersonID": 30695,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2026-08-11T00:00:00",
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 30193,
+   "PersonID": 30700,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30200,
+   "PersonID": 30701,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30207,
+   "PersonID": 30704,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30295,
+   "PersonID": 30705,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 30266,
+   "PersonID": 30708,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30220,
+   "PersonID": 30713,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1099,
+   "FactionName": "רע\"ם"
+  },
+  {
+   "PersonToPositionID": 30285,
+   "PersonID": 30717,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2022-11-20T00:00:00",
+   "FactionID": 1097,
+   "FactionName": "הציונות הדתית"
+  },
+  {
+   "PersonToPositionID": 30274,
+   "PersonID": 30718,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-01-07T00:00:00",
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30291,
+   "PersonID": 30719,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1103,
+   "FactionName": "חד\"ש-תע\"ל"
+  },
+  {
+   "PersonToPositionID": 30243,
+   "PersonID": 30720,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 30249,
+   "PersonID": 30721,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2025-01-14T00:00:00",
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 30300,
+   "PersonID": 30722,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1104,
+   "FactionName": "ישראל ביתנו"
+  },
+  {
+   "PersonToPositionID": 30177,
+   "PersonID": 30749,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1095,
+   "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
+  },
+  {
+   "PersonToPositionID": 30219,
+   "PersonID": 30752,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1099,
+   "FactionName": "רע\"ם"
+  },
+  {
+   "PersonToPositionID": 30218,
+   "PersonID": 30758,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1099,
+   "FactionName": "רע\"ם"
+  },
+  {
+   "PersonToPositionID": 30180,
+   "PersonID": 30765,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1095,
+   "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
+  },
+  {
+   "PersonToPositionID": 30184,
+   "PersonID": 30770,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1095,
+   "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
+  },
+  {
+   "PersonToPositionID": 30272,
+   "PersonID": 30772,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30233,
+   "PersonID": 30776,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 30239,
+   "PersonID": 30777,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 30242,
+   "PersonID": 30780,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2026-07-28T00:00:00",
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 30246,
+   "PersonID": 30782,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 30248,
+   "PersonID": 30783,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 30277,
+   "PersonID": 30786,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-01-17T00:00:00",
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30181,
+   "PersonID": 30804,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-02-02T00:00:00",
+   "FactionID": 1095,
+   "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
+  },
+  {
+   "PersonToPositionID": 30224,
+   "PersonID": 30807,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1100,
+   "FactionName": "העבודה"
+  },
+  {
+   "PersonToPositionID": 30225,
+   "PersonID": 30808,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1100,
+   "FactionName": "העבודה"
+  },
+  {
+   "PersonToPositionID": 30197,
+   "PersonID": 30809,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-03-12T00:00:00",
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30211,
+   "PersonID": 30810,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2022-11-20T00:00:00",
+   "FactionID": 1097,
+   "FactionName": "הציונות הדתית"
+  },
+  {
+   "PersonToPositionID": 30210,
+   "PersonID": 30811,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2022-11-20T00:00:00",
+   "FactionID": 1097,
+   "FactionName": "הציונות הדתית"
+  },
+  {
+   "PersonToPositionID": 30215,
+   "PersonID": 30812,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2022-11-20T00:00:00",
+   "FactionID": 1097,
+   "FactionName": "הציונות הדתית"
+  },
+  {
+   "PersonToPositionID": 30212,
+   "PersonID": 30814,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2022-11-20T00:00:00",
+   "FactionID": 1097,
+   "FactionName": "הציונות הדתית"
+  },
+  {
+   "PersonToPositionID": 30237,
+   "PersonID": 30820,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 30280,
+   "PersonID": 30830,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2022-11-20T00:00:00",
+   "FactionID": 1097,
+   "FactionName": "הציונות הדתית"
+  },
+  {
+   "PersonToPositionID": 30269,
+   "PersonID": 30831,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30276,
+   "PersonID": 30832,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30281,
+   "PersonID": 30833,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2022-11-20T00:00:00",
+   "FactionID": 1097,
+   "FactionName": "הציונות הדתית"
+  },
+  {
+   "PersonToPositionID": 30267,
+   "PersonID": 30835,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30257,
+   "PersonID": 30836,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2025-07-04T00:00:00",
+   "FactionID": 1098,
+   "FactionName": "המחנה הממלכתי"
+  },
+  {
+   "PersonToPositionID": 30293,
+   "PersonID": 30837,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 30286,
+   "PersonID": 30840,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1099,
+   "FactionName": "רע\"ם"
+  },
+  {
+   "PersonToPositionID": 30273,
+   "PersonID": 30842,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30287,
+   "PersonID": 30843,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1099,
+   "FactionName": "רע\"ם"
+  },
+  {
+   "PersonToPositionID": 30253,
+   "PersonID": 30846,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2023-01-06T00:00:00",
+   "FactionID": 1101,
+   "FactionName": "יהדות התורה"
+  },
+  {
+   "PersonToPositionID": 30279,
+   "PersonID": 30847,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2022-11-20T00:00:00",
+   "FactionID": 1097,
+   "FactionName": "הציונות הדתית"
+  },
+  {
+   "PersonToPositionID": 30283,
+   "PersonID": 30849,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2022-11-20T00:00:00",
+   "FactionID": 1097,
+   "FactionName": "הציונות הדתית"
+  },
+  {
+   "PersonToPositionID": 30294,
+   "PersonID": 30851,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 30282,
+   "PersonID": 30852,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2022-11-20T00:00:00",
+   "FactionID": 1097,
+   "FactionName": "הציונות הדתית"
+  },
+  {
+   "PersonToPositionID": 30275,
+   "PersonID": 30853,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30296,
+   "PersonID": 30854,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 30278,
+   "PersonID": 30857,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2022-11-20T00:00:00",
+   "FactionID": 1097,
+   "FactionName": "הציונות הדתית"
+  },
+  {
+   "PersonToPositionID": 30284,
+   "PersonID": 30859,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": "2022-11-20T00:00:00",
+   "FactionID": 1097,
+   "FactionName": "הציונות הדתית"
+  },
+  {
+   "PersonToPositionID": 30268,
+   "PersonID": 30860,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30271,
+   "PersonID": 30861,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30304,
+   "PersonID": 30863,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1104,
+   "FactionName": "ישראל ביתנו"
+  },
+  {
+   "PersonToPositionID": 30534,
+   "PersonID": 23551,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-20T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1105,
+   "FactionName": "הציונות הדתית בראשות בצלאל סמוטריץ'"
+  },
+  {
+   "PersonToPositionID": 30532,
+   "PersonID": 30055,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-20T00:00:00",
+   "FinishDate": "2023-02-07T00:00:00",
+   "FactionID": 1105,
+   "FactionName": "הציונות הדתית בראשות בצלאל סמוטריץ'"
+  },
+  {
+   "PersonToPositionID": 30533,
+   "PersonID": 30717,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-20T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1105,
+   "FactionName": "הציונות הדתית בראשות בצלאל סמוטריץ'"
+  },
+  {
+   "PersonToPositionID": 30536,
+   "PersonID": 30810,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-20T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1105,
+   "FactionName": "הציונות הדתית בראשות בצלאל סמוטריץ'"
+  },
+  {
+   "PersonToPositionID": 30525,
+   "PersonID": 30811,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-20T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1106,
+   "FactionName": "עוצמה יהודית בראשות איתמר בן גביר"
+  },
+  {
+   "PersonToPositionID": 30535,
+   "PersonID": 30812,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-20T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1105,
+   "FactionName": "הציונות הדתית בראשות בצלאל סמוטריץ'"
+  },
+  {
+   "PersonToPositionID": 30531,
+   "PersonID": 30814,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-20T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1107,
+   "FactionName": "נעם - בראשות אבי מעוז"
+  },
+  {
+   "PersonToPositionID": 30537,
+   "PersonID": 30830,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-20T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1105,
+   "FactionName": "הציונות הדתית בראשות בצלאל סמוטריץ'"
+  },
+  {
+   "PersonToPositionID": 30527,
+   "PersonID": 30833,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-20T00:00:00",
+   "FinishDate": "2025-04-06T00:00:00",
+   "FactionID": 1106,
+   "FactionName": "עוצמה יהודית בראשות איתמר בן גביר"
+  },
+  {
+   "PersonToPositionID": 30526,
+   "PersonID": 30847,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-20T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1106,
+   "FactionName": "עוצמה יהודית בראשות איתמר בן גביר"
+  },
+  {
+   "PersonToPositionID": 30530,
+   "PersonID": 30849,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-20T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1106,
+   "FactionName": "עוצמה יהודית בראשות איתמר בן גביר"
+  },
+  {
+   "PersonToPositionID": 30538,
+   "PersonID": 30852,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-20T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1105,
+   "FactionName": "הציונות הדתית בראשות בצלאל סמוטריץ'"
+  },
+  {
+   "PersonToPositionID": 30528,
+   "PersonID": 30857,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-20T00:00:00",
+   "FinishDate": "2023-01-01T00:00:00",
+   "FactionID": 1106,
+   "FactionName": "עוצמה יהודית בראשות איתמר בן גביר"
+  },
+  {
+   "PersonToPositionID": 30529,
+   "PersonID": 30859,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2022-11-20T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1106,
+   "FactionName": "עוצמה יהודית בראשות איתמר בן גביר"
+  },
+  {
+   "PersonToPositionID": 30716,
+   "PersonID": 30867,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2023-01-01T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1106,
+   "FactionName": "עוצמה יהודית בראשות איתמר בן גביר"
+  },
+  {
+   "PersonToPositionID": 30730,
+   "PersonID": 30868,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2023-01-02T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1095,
+   "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
+  },
+  {
+   "PersonToPositionID": 30807,
+   "PersonID": 30672,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2023-01-06T00:00:00",
+   "FinishDate": "2025-07-17T00:00:00",
+   "FactionID": 1101,
+   "FactionName": "יהדות התורה"
+  },
+  {
+   "PersonToPositionID": 30811,
+   "PersonID": 30710,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2023-01-06T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30809,
+   "PersonID": 30839,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2023-01-06T00:00:00",
+   "FinishDate": "2026-08-13T00:00:00",
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30813,
+   "PersonID": 30702,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2023-01-07T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 30968,
+   "PersonID": 30711,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2023-01-17T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 31018,
+   "PersonID": 30768,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2023-01-25T00:00:00",
+   "FinishDate": "2025-06-15T00:00:00",
+   "FactionID": 1101,
+   "FactionName": "יהדות התורה"
+  },
+  {
+   "PersonToPositionID": 31016,
+   "PersonID": 30870,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2023-01-25T00:00:00",
+   "FinishDate": "2025-07-17T00:00:00",
+   "FactionID": 1101,
+   "FactionName": "יהדות התורה"
+  },
+  {
+   "PersonToPositionID": 31056,
+   "PersonID": 30871,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2023-02-01T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 31096,
+   "PersonID": 30872,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2023-02-02T00:00:00",
+   "FinishDate": "2025-07-20T00:00:00",
+   "FactionID": 1095,
+   "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
+  },
+  {
+   "PersonToPositionID": 31098,
+   "PersonID": 30873,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2023-02-02T00:00:00",
+   "FinishDate": "2025-07-20T00:00:00",
+   "FactionID": 1095,
+   "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
+  },
+  {
+   "PersonToPositionID": 31216,
+   "PersonID": 30874,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2023-02-07T00:00:00",
+   "FinishDate": "2025-01-21T00:00:00",
+   "FactionID": 1105,
+   "FactionName": "הציונות הדתית בראשות בצלאל סמוטריץ'"
+  },
+  {
+   "PersonToPositionID": 31241,
+   "PersonID": 30875,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2023-02-09T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 31326,
+   "PersonID": 30706,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2023-02-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 31324,
+   "PersonID": 30876,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2023-02-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 31411,
+   "PersonID": 30877,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2023-03-12T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 31454,
+   "PersonID": 30879,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2023-03-26T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 31460,
+   "PersonID": 30880,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2023-03-31T00:00:00",
+   "FinishDate": "2023-10-15T00:00:00",
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 31678,
+   "PersonID": 30881,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2023-08-01T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 31724,
+   "PersonID": 30809,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2023-10-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 31847,
+   "PersonID": 1027,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2024-03-13T00:00:00",
+   "FinishDate": "2025-07-10T00:00:00",
+   "FactionID": 1108,
+   "FactionName": "הימין הממלכתי "
+  },
+  {
+   "PersonToPositionID": 31845,
+   "PersonID": 4397,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2024-03-13T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1108,
+   "FactionName": "הימין הממלכתי "
+  },
+  {
+   "PersonToPositionID": 31848,
+   "PersonID": 30082,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2024-03-13T00:00:00",
+   "FinishDate": "2024-07-05T00:00:00",
+   "FactionID": 1108,
+   "FactionName": "הימין הממלכתי "
+  },
+  {
+   "PersonToPositionID": 31846,
+   "PersonID": 30118,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2024-03-13T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1108,
+   "FactionName": "הימין הממלכתי "
+  },
+  {
+   "PersonToPositionID": 31898,
+   "PersonID": 30880,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2024-06-30T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 31912,
+   "PersonID": 30799,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2024-07-05T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1108,
+   "FactionName": "הימין הממלכתי "
+  },
+  {
+   "PersonToPositionID": 32075,
+   "PersonID": 30893,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2025-01-05T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 32078,
+   "PersonID": 30721,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2025-01-14T00:00:00",
+   "FinishDate": "2025-08-13T00:00:00",
+   "FactionID": 1109,
+   "FactionName": "חה\"כ עידן רול"
+  },
+  {
+   "PersonToPositionID": 32086,
+   "PersonID": 30857,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2025-01-21T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1106,
+   "FactionName": "עוצמה יהודית בראשות איתמר בן גביר"
+  },
+  {
+   "PersonToPositionID": 32186,
+   "PersonID": 30874,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2025-04-06T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1105,
+   "FactionName": "הציונות הדתית בראשות בצלאל סמוטריץ'"
+  },
+  {
+   "PersonToPositionID": 32255,
+   "PersonID": 30846,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2025-06-15T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1101,
+   "FactionName": "יהדות התורה"
+  },
+  {
+   "PersonToPositionID": 32261,
+   "PersonID": 30894,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2025-06-20T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1103,
+   "FactionName": "חד\"ש-תע\"ל"
+  },
+  {
+   "PersonToPositionID": 32267,
+   "PersonID": 30768,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-01T00:00:00",
+   "FinishDate": "2025-07-16T00:00:00",
+   "FactionID": 1101,
+   "FactionName": "יהדות התורה"
+  },
+  {
+   "PersonToPositionID": 32272,
+   "PersonID": 30693,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-04T00:00:00",
+   "FinishDate": "2025-07-08T00:00:00",
+   "FactionID": 1098,
+   "FactionName": "המחנה הממלכתי"
+  },
+  {
+   "PersonToPositionID": 33769,
+   "PersonID": 23635,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-08T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1110,
+   "FactionName": "כחול לבן - המחנה הממלכתי"
+  },
+  {
+   "PersonToPositionID": 33764,
+   "PersonID": 30657,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-08T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1110,
+   "FactionName": "כחול לבן - המחנה הממלכתי"
+  },
+  {
+   "PersonToPositionID": 33762,
+   "PersonID": 30682,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-08T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1110,
+   "FactionName": "כחול לבן - המחנה הממלכתי"
+  },
+  {
+   "PersonToPositionID": 33765,
+   "PersonID": 30683,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-08T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1110,
+   "FactionName": "כחול לבן - המחנה הממלכתי"
+  },
+  {
+   "PersonToPositionID": 33766,
+   "PersonID": 30685,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-08T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1110,
+   "FactionName": "כחול לבן - המחנה הממלכתי"
+  },
+  {
+   "PersonToPositionID": 33763,
+   "PersonID": 30693,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-08T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1110,
+   "FactionName": "כחול לבן - המחנה הממלכתי"
+  },
+  {
+   "PersonToPositionID": 33768,
+   "PersonID": 30694,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-08T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1110,
+   "FactionName": "כחול לבן - המחנה הממלכתי"
+  },
+  {
+   "PersonToPositionID": 32278,
+   "PersonID": 30775,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-08T00:00:00",
+   "FinishDate": "2025-07-08T00:00:00",
+   "FactionID": 1098,
+   "FactionName": "המחנה הממלכתי"
+  },
+  {
+   "PersonToPositionID": 33767,
+   "PersonID": 30775,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-08T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1110,
+   "FactionName": "כחול לבן - המחנה הממלכתי"
+  },
+  {
+   "PersonToPositionID": 32285,
+   "PersonID": 22151,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-10T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1108,
+   "FactionName": "הימין הממלכתי "
+  },
+  {
+   "PersonToPositionID": 32293,
+   "PersonID": 11835,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-16T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1101,
+   "FactionName": "יהדות התורה"
+  },
+  {
+   "PersonToPositionID": 32295,
+   "PersonID": 563,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-17T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1101,
+   "FactionName": "יהדות התורה"
+  },
+  {
+   "PersonToPositionID": 32297,
+   "PersonID": 30671,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-17T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1101,
+   "FactionName": "יהדות התורה"
+  },
+  {
+   "PersonToPositionID": 32310,
+   "PersonID": 1056,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-20T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1095,
+   "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
+  },
+  {
+   "PersonToPositionID": 32312,
+   "PersonID": 28513,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-20T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1095,
+   "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
+  },
+  {
+   "PersonToPositionID": 32313,
+   "PersonID": 30804,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-20T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1095,
+   "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
+  },
+  {
+   "PersonToPositionID": 32309,
+   "PersonID": 30873,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2025-07-20T00:00:00",
+   "FinishDate": "2025-07-20T00:00:00",
+   "FactionID": 1095,
+   "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
+  },
+  {
+   "PersonToPositionID": 32395,
+   "PersonID": 30895,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2025-08-13T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 33680,
+   "PersonID": 30672,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2026-01-21T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1101,
+   "FactionName": "יהדות התורה"
+  },
+  {
+   "PersonToPositionID": 33789,
+   "PersonID": 30873,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2026-05-19T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1095,
+   "FactionName": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל"
+  },
+  {
+   "PersonToPositionID": 33813,
+   "PersonID": 30916,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2026-06-07T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 33883,
+   "PersonID": 30917,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2026-07-28T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 33890,
+   "PersonID": 30921,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2026-08-11T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  },
+  {
+   "PersonToPositionID": 33892,
+   "PersonID": 30922,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2026-08-13T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1096,
+   "FactionName": "הליכוד "
+  },
+  {
+   "PersonToPositionID": 33894,
+   "PersonID": 30923,
+   "PositionID": 54,
+   "KnessetNum": 25,
+   "StartDate": "2026-09-09T00:00:00",
+   "FinishDate": null,
+   "FactionID": 1102,
+   "FactionName": "יש עתיד"
+  }
+ ]
+}
