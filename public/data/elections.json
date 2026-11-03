@@ -77,10 +77,12 @@
     "date": "2019-09-17",
     "nameHe": "הבחירות לכנסת ה-22",
     "nameEn": "Election to the 22nd Knesset",
-    "available": false,
+    "available": true,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "Official sources downloaded; dataset not built or verified."
+      "stage": "official-final",
+      "asOf": "2026-11-03",
+      "noteEn": "Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. No default blocs assigned. National electorate 6,394,030; locality/polling electorate 6,391,218 (difference 2,812). National total takes precedence; cause unverified. See ADR 0020.",
+      "noteHe": "תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות. ללא שיוך לגושים. מספר בעלי זכות הבחירה הארצי הוא 6,394,030, לעומת 6,391,218 בקובצי היישובים והקלפיות. הפער 2,812; סיבתו לא אומתה. ראו החלטה 0020."
     }
   },
   {
@@ -89,10 +91,12 @@
     "date": "2020-03-02",
     "nameHe": "הבחירות לכנסת ה-23",
     "nameEn": "Election to the 23rd Knesset",
-    "available": false,
+    "available": true,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "Official sources downloaded; dataset not built or verified."
+      "stage": "official-final",
+      "asOf": "2026-11-03",
+      "noteEn": "Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. No default blocs assigned.",
+      "noteHe": "תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות. ללא שיוך לגושים."
     }
   },
   {
@@ -101,10 +105,12 @@
     "date": "2021-03-23",
     "nameHe": "הבחירות לכנסת ה-24",
     "nameEn": "Election to the 24th Knesset",
-    "available": false,
+    "available": true,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "Official sources downloaded; dataset not built or verified."
+      "stage": "official-final",
+      "asOf": "2026-11-03",
+      "noteEn": "Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. No default blocs assigned.",
+      "noteHe": "תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות. ללא שיוך לגושים."
     }
   },
   {

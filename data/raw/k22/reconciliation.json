@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "election": "k22",
+  "localitySourceSha256": "3c76fdb8fc83033fc601e79a28123cd3763fa2a38fc4e4fecbd870383081dab6",
+  "pollingSourceSha256": "ff48e9451b7b1d6bd7fe6d86842f910398b0821aca2ceaeda6b9c874d8912f93",
+  "pollingStations": 10901,
+  "derivedLocalityVotesSha256": "c34e89c167796a3f4810a681638f358ee428d1414a3d8859abf634f5c54bbc08",
+  "localityDatasetSha256": "d8214ee83ce94eb396ae1031d04623344892568091112a2c16286d11016026e6"
+}

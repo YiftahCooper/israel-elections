@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "election": "k23",
+  "localitySourceSha256": "f766a5cc582c1aa98cf54d49becf48ac742f554f5b43b2963e7623b5fb074921",
+  "pollingSourceSha256": "149c5b303dcee93f86b514dec3b02fd19b0724443e7dcb41d1536389b4c2bbe7",
+  "pollingStations": 11179,
+  "derivedLocalityVotesSha256": "48398e2d5a8b5cf757c2f7662c5083dd39ff1b38f9c6c668da3b1d5fc4944bfd",
+  "localityDatasetSha256": "7792c4221295d88710b0a0e584edb4a7ae5dfe8bebb3eea15bf8fcc8731cdf4f"
+}

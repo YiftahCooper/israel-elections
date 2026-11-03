@@ -623,5 +623,31 @@
   "bytes": 118151,
   "sha256": "19ba7a5dfce76f60a41fd1e5509ea16c4495271777dca65ed1247b3f181c5d49",
   "lastModified": "Tue, 15 Sep 2026 10:19:40 GMT"
+ },
+ {
+  "id": "k22-surplus-gazette",
+  "file": "k22/surplus.pdf",
+  "url": "https://olaw.org.il/yalkut/yalkut-8430.pdf",
+  "publisher": "Reshumot — Yalkut HaPirsumim 8430 (official statutory notice, mirrored by olaw.org.il)",
+  "official": true,
+  "description": "Complete notice of registered surplus-vote agreements for Knesset 22; original statutory publication hosted on a non-government mirror. Also contains candidate resignation notices where present.",
+  "method": "http",
+  "retrievedAt": "2026-11-03T15:34:52.062928Z",
+  "bytes": 180330,
+  "sha256": "e799d4dcc8ea2df69263c32cd3c776696a5a0d72fb418567d102f551ef41ff16",
+  "lastModified": null
+ },
+ {
+  "id": "k24-surplus-gazette",
+  "file": "k24/surplus.pdf",
+  "url": "https://olaw.org.il/yalkut/yalkut-9478.pdf",
+  "publisher": "Reshumot — Yalkut HaPirsumim 9478 (official statutory notice, mirrored by olaw.org.il)",
+  "official": true,
+  "description": "Complete notice of registered surplus-vote agreements for Knesset 24; original statutory publication hosted on a non-government mirror. Also contains candidate resignation notices where present.",
+  "method": "http",
+  "retrievedAt": "2026-11-03T15:34:52.063210Z",
+  "bytes": 211786,
+  "sha256": "5f0c3da2c59b8697e95f2f977774ef425259274376743cef0803199ca729bcfa",
+  "lastModified": null
  }
 ]
