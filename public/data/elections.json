@@ -96,11 +96,11 @@
     "date": "1973-12-31",
     "nameHe": "הבחירות לכנסת ה-8",
     "nameEn": "Election to the 8th Knesset",
-    "available": false,
+    "available": true,
     "status": {
-      "stage": "pending-data-verification",
-      "noteEn": "Unavailable: agreement notice not located; four seat mismatches without agreements. Winning rosters and elected-name checks remain incomplete. The full amendment chain is an unverified limitation, not a release gate; no localities.",
-      "noteHe": "לא זמין: הודעת ההתקשרויות לא אותרה; ללא הסכמים יש ארבע אי־התאמות במנדטים. תמלול הרשימות הזוכות והצלבת שמות הנבחרים טרם הושלמו. שרשרת התיקונים שלא אומתה היא מגבלה מתועדת ולא תנאי לשחרור; אין נתוני יישובים."
+      "stage": "official-final",
+      "noteEn": "National results; every published seat reproduced with the six official list connections from the Central Elections Committee’s calculation record (Form 30 appendix; three had no effect). All 120 elected names transcribed from the official candidate notice (YP 1954) and cross-checked against the results notice (YP 1979) and the committee record. Later ranks truncated (Ratz complete); nonwinning rosters untranscribed. Three ballot letters and four list names corrected from the notices. Full amendment chain unverified; no localities.",
+      "noteHe": "תוצאות ארציות; כל המנדטים שפורסמו משוחזרים עם שש ההתקשרויות הרשמיות מרשומת החישוב של ועדת הבחירות המרכזית (נספח טופס 30; לשלוש מהן לא הייתה השפעה). שמות כל 120 הנבחרים תומללו מהודעת המועמדים הרשמית (י״פ 1954) והוצלבו עם הודעת התוצאות (י״פ 1979) ועם רשומת הוועדה. דרגות מאוחרות חלקיות (רצ מלאה); רשימות לא זוכות לא תומללו. שלוש אותיות רשימה וארבעה שמות רשימות תוקנו לפי ההודעות. שרשרת התיקונים המלאה לא אומתה; אין נתוני יישובים."
     }
   },
   {

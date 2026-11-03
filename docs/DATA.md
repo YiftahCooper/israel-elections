@@ -1,10 +1,9 @@
 # Election data: coverage and remaining verification
 
-The app offers **twenty-five verified election datasets: every election from 1949 to 2026 except
-1973 (k8)**. For each, the engine reproduces every list's officially published seats, checked by
+The app offers **twenty-six verified election datasets: every election from 1949 to 2026**. For each, the engine reproduces every list's officially published seats, checked by
 `tests/historical-kNN.test.ts` and `tests/engine.test.ts` (2026: the reported final count, pending gazettement).
 Rosters list everyone elected; many lists' later candidates (and some rosters of lists without seats) are not
-transcribed, and the data says so. k8 is held (see its section); `public/data/elections.json` marks it unavailable.
+transcribed, and the data says so.
 
 ## Source policy
 
@@ -25,7 +24,7 @@ official document or as a labelled secondary source.
 | k5 | 1961-08-15 | Results and candidate gazettes; CBS totals; YP 865 three-pair notice; reviewed national table; reviewed roster prefixes | None | Released national dataset; winning prefixes and elected cross-checks verified; later ranks, losing rosters and localities omitted (0067) |
 | k6 | 1965-11-02 | Results and candidate gazettes; CBS totals; YP 1225 two-pair notice; corrected reviewed connections; reviewed roster prefixes | None | Released national dataset; all seats and 120 elected names verified; later ranks, losing rosters and localities omitted (0069a) |
 | k7 | 1969-10-28 | Results and candidate gazettes; CBS totals; YP 1565 one-pair notice; reviewed national table; reviewed roster prefixes | None | Released national dataset; winning prefixes and elected cross-checks verified; later ranks, losing rosters and localities omitted (0069) |
-| k8 | unfinished | unfinished | held: agreements and rosters |
+| k8 | 1973-12-31 | Results YP 1979 and candidate YP 1954 gazettes; CBS totals; CEC Form 30 appendix (connections, pair splits, elected list); reviewed national table and roster prefixes | Hebrew Wikipedia only as a lead to the CEC appendix | Released national dataset; winning prefixes (Ratz complete) and elected cross-checks verified; later ranks, losing rosters and localities omitted (0077) |
 | k9 | 120 across all 13 winners | 120/120 (119 gazette + 1 official Knesset OData) | released |
 | k10 | 120 across all 10 winners | 120/120 | released |
 | k11 | 196 across all 15 winners, including complete Alignment 120 | 120/120 | released |
@@ -233,8 +232,7 @@ paged official CKAN API. It discovers resource IDs from the retained package cat
 dependencies are required. This is reproducible working material, not the only copy of
 unique data. Scratch's git exclusion is verified; no claim is made about backup software.
 
-`node scripts/build-datasets.ts` builds every available election (all but k8) with strict checks.
-For k8 (1973) it validates the evidence gathered so far but emits no dataset until released.
+`node scripts/build-datasets.ts` builds every available election with strict checks.
 
 ## K20 and K21 release verification
 
@@ -449,7 +447,7 @@ rejects a premature availability flip. Zero station/locality counts mean unavail
 
 | Election | Lists | Valid | Invalid | Cast (CBS) | Registered (CBS) | Agreement coverage | Allocation evidence |
 |---|---:|---:|---:|---:|---:|---|---|
-| k8 | unfinished | unfinished | held: agreements and rosters |
+| k8 | 125 across all 10 winners, including complete Ratz 8 | 120/120 (plus the CEC appendix, third reading) | released (0077) |
 | k9 | 120 across all 13 winners | 120/120 (119 gazette + 1 official Knesset OData) | released |
 | k10 | 120 across all 10 winners | 120/120 | released |
 | k11 | 196 across all 15 winners, including complete Alignment 120 | 120/120 | released |
@@ -464,7 +462,7 @@ disclosed olaw mirror; 1984 and 1988 notices are inside their candidate issues.
 
 | Election | Winning-list ranks retained | Elected-name comparison | Release |
 |---|---:|---:|---|
-| k8 | unfinished | unfinished | held: agreements and rosters |
+| k8 | 125 across all 10 winners, including complete Ratz 8 | 120/120 (plus the CEC appendix, third reading) | released (0077) |
 | k9 | 120 across all 13 winners | 120/120 (119 gazette + 1 official Knesset OData) | released |
 | k10 | 120 across all 10 winners | 120/120 | released |
 | k11 | 196 across all 15 winners, including complete Alignment 120 | 120/120 | released |

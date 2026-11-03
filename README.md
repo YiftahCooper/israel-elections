@@ -27,11 +27,9 @@ data.gov.il and Reshumot sources. Raw files and a manifest record source URLs, r
 times and SHA-256 hashes. Two 2026 candidate rosters use a labelled secondary source.
 Colours, short names and default blocs are assigned by the app.
 
-**Available:** every election from 1949 to 2026 except 1973 (25 elections). Every member
+**Available:** all 26 elections from 1949 to 2026. Every member
 elected is listed; for 1949–2006 some lists' later candidates (and a few rosters of lists that won no seats) are
-not yet transcribed from the scanned gazettes, and the app says so. Official sources for
-1973 have been gathered, but that election is still being verified; until then
-the picker lists it as not yet available.
+not yet transcribed from the scanned gazettes, and the app says so.
 See [Data coverage and provenance](docs/DATA.md) for sources, qualifications and gaps.
 
 ## Accuracy and limits
@@ -84,7 +82,7 @@ npm test
 
 Fetching recovers missing sources; `node scripts/fetch-sources.ts --refresh` downloads
 fresh copies. The builder produces every available election's dataset and stops on
-failed consistency checks; for 1973 it checks the evidence gathered so far but emits no dataset until released.
+failed consistency checks.
 Read [Data coverage](docs/DATA.md) before changing sources or publishing rebuilt files.
 
 ## Project structure

@@ -1085,9 +1085,9 @@
   "official": false,
   "description": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
   "method": "reviewed-transcription",
-  "retrievedAt": "2026-11-03T16:14:46.283817+00:00",
-  "bytes": 5646,
-  "sha256": "db762ff2bab6607ad0c2ea382cc64d0cf5feef8cd75e607c08e83fc5114194f0"
+  "retrievedAt": "2026-11-04",
+  "bytes": 5673,
+  "sha256": "04719f6ac790900500690171919098fd3206d0cf4ebc2b6dc975139de6262cc0"
  },
  {
   "id": "k9-results-gazette",
@@ -2694,5 +2694,53 @@
   "retrievedAt": "2026-11-03T22:01:30+00:00",
   "bytes": 85589,
   "sha256": "8565669c222eea0ed4cb004c34b25f52deca342404319859503ab47dee613641"
+ },
+ {
+  "id": "k8-candidates-reviewed",
+  "file": "k8/candidates.reviewed.json",
+  "url": "project:data/raw/k8/rosters.reviewed.json",
+  "publisher": "Project reviewed derivative (not an official publication)",
+  "official": false,
+  "description": "Official winning-list leading ranks from YP1954 (printed pp.88–97) for all 10 seat-winning lists (Ratz complete 8/8), with name-by-name elected cross-check against YP1979 section 4 (pp.609–610), printed page references and 8 explicit spelling variants. No notSeated cases. Uses corrected letters (לע).",
+  "method": "reviewed-transcription",
+  "retrievedAt": "2026-11-04T00:00:00+00:00",
+  "bytes": 25275,
+  "sha256": "b2eb361b04249f3ef39d79baa8f67cca618f37af5a95b7f9f080dcdbccd20031"
+ },
+ {
+  "id": "k8-elected-reviewed",
+  "file": "k8/elected.reviewed.json",
+  "url": "project:data/raw/k8/elected.reviewed.json",
+  "publisher": "Project reviewed derivative (not an official publication)",
+  "official": false,
+  "description": "Independent reading of the 120 elected names in YP1979 section 4, printed pp.609–610, in printed order and spelling; candidateRanks all 1..seats; CEC appendix pp.23–28 third check.",
+  "method": "reviewed-transcription",
+  "retrievedAt": "2026-11-04T00:00:00+00:00",
+  "bytes": 6794,
+  "sha256": "5c6b38564ada96e46d8acf367146131c8d2780f5cade2c82f1c8a82f6ad2b5f5"
+ },
+ {
+  "id": "k8-cec-elected-appendix",
+  "file": "k8/cec-memorandum-appendix-1973-elected.extract.pdf",
+  "url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/memorandum-knesset8/he/archive_knesset8_memorandum-apdx.pdf",
+  "publisher": "Central Elections Committee for the 8th Knesset (gov.il host; Imagestore scan)",
+  "official": true,
+  "description": "Official CEC Form 30 appendix, section יד 'שמות הנבחרים', printed pp.23–28: handwritten list of the 120 elected members in list order, citing YP1954 p.88. Unaltered-page EXTRACT of source PDF pages 19–24 (pixel-identical at 72 dpi). Full original: 24 PDF pages, 28,395,623 bytes, sha256 38fd80b493f0c8fb9591bab873c5ac0f46404de0d842c10123d6d8ca3f62b3b6 (re-downloaded 2026-11-04, HTTP 200). Companion to k8-cec-memorandum-appendix (other pages).",
+  "method": "http+page-extract",
+  "retrievedAt": "2026-11-04T00:00:00+00:00",
+  "bytes": 7215843,
+  "sha256": "77c288ec2e92ef5cfc63cc9b31716779e03ea83c48f0027811c8cd78c8d580c7"
+ },
+ {
+  "id": "k8-opening-membership-cross-check-reviewed",
+  "file": "k8/opening-membership-cross-check.reviewed.json",
+  "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/",
+  "publisher": "Project reviewed extraction from official Knesset OData",
+  "official": false,
+  "description": "K8 opening-date (1974-01-21) membership cross-check: 120 MKs/120 faction members, every paginated request URL/hash, 102 exact normalized matches and 18 reading-based same-faction pairings; cross-check only, no names substituted.",
+  "method": "reviewed-api-comparison",
+  "retrievedAt": "2026-11-04T00:00:00+00:00",
+  "bytes": 24749,
+  "sha256": "02ead4c2e28d2460594bd73599c7ac6565782e63ad9843e87e8116d11f36c5cf"
  }
 ]

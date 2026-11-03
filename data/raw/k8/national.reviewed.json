@@ -1,6 +1,6 @@
 {
   "id": "k8",
-  "reviewedOn": "2026-11-03",
+  "reviewedOn": "2026-11-04",
   "scope": "National votes and seats visually transcribed from the official scanned results gazette. Partial research evidence; not a released application dataset.",
   "resultsSourceId": "k8-results-gazette",
   "resultsIssue": 1979,
@@ -63,12 +63,12 @@
     },
     {
       "letters": "כך",
-      "nameHe": "רשימה הלכה (מיסודו של הליגה להגנה יהודית בארה״ב)",
+      "nameHe": "רשימת הליגה (מיסודה של הליגה להגנה יהודית בא״י)",
       "gazetteVotes": 12811,
       "officialSeats": 0
     },
     {
-      "letters": "ל",
+      "letters": "לע",
       "nameHe": "המפלגה הליברלית העצמאית",
       "gazetteVotes": 56560,
       "officialSeats": 4
@@ -80,20 +80,20 @@
       "officialSeats": 0
     },
     {
-      "letters": "סז",
+      "letters": "סנ",
       "nameHe": "תנועה עממית",
       "gazetteVotes": 1101,
       "officialSeats": 0
     },
     {
       "letters": "עא",
-      "nameHe": "רשימה ערבית לבדווים וכפריים",
+      "nameHe": "רשימה ערבית לבדוים וכפרים",
       "gazetteVotes": 16408,
       "officialSeats": 1
     },
     {
       "letters": "ענ",
-      "nameHe": "תנועת לאחדות",
+      "nameHe": "תנועה לאחוה",
       "gazetteVotes": 4433,
       "officialSeats": 0
     },
@@ -117,13 +117,13 @@
     },
     {
       "letters": "רא",
-      "nameHe": "קדמה ופיתוח",
+      "nameHe": "קידמה ופיתוח",
       "gazetteVotes": 22604,
       "officialSeats": 2
     },
     {
-      "letters": "רם",
-      "nameHe": "רשימת מגינים בישראל",
+      "letters": "רה",
+      "nameHe": "רשימת תימנים בישראל",
       "gazetteVotes": 3195,
       "officialSeats": 0
     },
@@ -147,13 +147,39 @@
     }
   ],
   "agreements": {
-    "sourceId": "k8-candidates-gazette",
-    "page": null,
-    "complete": false,
-    "pairs": []
+    "sourceId": "k8-cec-memorandum-appendix",
+    "page": 10,
+    "complete": true,
+    "pairs": [
+      [
+        "ב",
+        "גד"
+      ],
+      [
+        "חל טעם",
+        "ער"
+      ],
+      [
+        "סנ",
+        "ענ"
+      ],
+      [
+        "קנ",
+        "ז"
+      ],
+      [
+        "רא",
+        "עא"
+      ],
+      [
+        "לע",
+        "רצ"
+      ]
+    ],
+    "note": "CEC Form 30 appendix, section ז, printed pp. 10–11 (decision 0077). Three pairs have no effect because a partner failed the threshold."
   },
   "candidateChecks": {
-    "completeWinningRostersVerified": false,
+    "completeWinningRostersVerified": true,
     "lists": [
       {
         "letters": "אמת",
@@ -170,42 +196,22 @@
     ],
     "sourceId": "k8-candidates-gazette"
   },
-  "releaseBlockers": [
-    "Complete agreement notice not found; four list seat mismatches remain.",
-    "Winning candidate rosters and elected-name cross-checks unfinished."
-  ],
+  "releaseBlockers": [],
   "sourceIds": [
     "k8-results-gazette",
     "k8-candidates-gazette",
     "k8-k12-cbs-national-totals",
     "k8-k12-law-1969",
     "k8-k12-law-1973",
-    "k8-search-reviewed"
+    "k8-search-reviewed",
+    "k8-cec-memorandum-appendix",
+    "k8-candidates-reviewed",
+    "k8-cec-elected-appendix",
+    "k8-opening-membership-cross-check-reviewed"
   ],
   "allocationCheck": {
-    "exact": false,
-    "differences": [
-      {
-        "letters": "אמת",
-        "computed": 52,
-        "official": 51
-      },
-      {
-        "letters": "ב",
-        "computed": 11,
-        "official": 10
-      },
-      {
-        "letters": "רא",
-        "computed": 1,
-        "official": 2
-      },
-      {
-        "letters": "רצ",
-        "computed": 2,
-        "official": 3
-      }
-    ],
-    "note": "Diagnostic with NO agreement inputs; actual agreement set unknown, so this is not a reconstruction of the historical allocation."
+    "exact": true,
+    "differences": [],
+    "note": "With the six official connections, every gazetted seat is reproduced (decision 0077)."
   }
 }

@@ -1085,9 +1085,9 @@
     "official": false,
     "description": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
     "method": "reviewed-transcription",
-    "retrievedAt": "2026-11-03T16:14:46.283817+00:00",
-    "bytes": 5646,
-    "sha256": "db762ff2bab6607ad0c2ea382cc64d0cf5feef8cd75e607c08e83fc5114194f0"
+    "retrievedAt": "2026-11-04",
+    "bytes": 5673,
+    "sha256": "04719f6ac790900500690171919098fd3206d0cf4ebc2b6dc975139de6262cc0"
   },
   {
     "id": "k9-results-gazette",
@@ -2696,8 +2696,8 @@
     "sha256": "8565669c222eea0ed4cb004c34b25f52deca342404319859503ab47dee613641"
   },
   {
-    "id": "k8-rosters-reviewed",
-    "file": "k8/rosters.reviewed.json",
+    "id": "k8-candidates-reviewed",
+    "file": "k8/candidates.reviewed.json",
     "url": "project:data/raw/k8/rosters.reviewed.json",
     "publisher": "Project reviewed derivative (not an official publication)",
     "official": false,
