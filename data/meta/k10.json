@@ -1,0 +1,826 @@
+{
+  "electionId": "k10",
+  "generatedNote": "Research metadata (joint-list composition, blocs, colours). See data/meta/README.md and docs/research/meta-1981-2006.md.",
+  "lists": [
+    {
+      "letters": "מחל",
+      "nameHe": "הליכוד",
+      "seats": 48,
+      "rosterRanks": 48,
+      "candidatesTruncated": true,
+      "notes": "Likud alliance of Herut, the Liberal Party and La'am (Hebrew Wikipedia; results table of government 19 article).",
+      "parties": [
+        {
+          "id": "herut",
+          "nameHe": "תנועת החרות",
+          "nameEn": "Herut",
+          "candidateRanks": [
+            1,
+            3,
+            5,
+            7,
+            10,
+            12,
+            14,
+            16,
+            19,
+            20,
+            22,
+            24,
+            25,
+            27,
+            29,
+            30,
+            33,
+            34,
+            35,
+            39,
+            40,
+            41,
+            43,
+            45,
+            48
+          ],
+          "sources": [
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "תנועת החרות: מנחם בגין, דוד לוי, יעקב מרידור, יצחק שמיר, יורם ארידור, אריאל שרון, משה ארנס, דב שילנסקי, חיים קורפו, מרדכי צפורי, אליהו בן-אלישר, רוני מילוא, משה קצב, מיכאל דקל, חיים קופמן, דוד מגן, אמל נסראלדין, יוסף רום, מרים גלזר-תעסה, יגאל כהן-אורגד, מאיר כהן-אבידב, מאיר שטרית, איתן לבני, מיכאל רייסר, עקיבא נוף",
+              "accessed": "2026-11-04"
+            }
+          ],
+          "confidence": "medium",
+          "rankNotes": [
+            {
+              "rank": 20,
+              "datasetName": "ציפורי מרדכי",
+              "note": "roster spelling \"ציפורי מרדכי\" = Mordechai Tzipori"
+            }
+          ]
+        },
+        {
+          "id": "liberal-party",
+          "nameHe": "המפלגה הליברלית",
+          "nameEn": "Liberal Party",
+          "candidateRanks": [
+            2,
+            4,
+            6,
+            9,
+            11,
+            13,
+            15,
+            17,
+            21,
+            23,
+            28,
+            31,
+            32,
+            36,
+            38,
+            42,
+            44,
+            46
+          ],
+          "sources": [
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "המפלגה הליברלית: שמחה ארליך, משה נסים, יצחק מודעי, גדעון פת, יצחק ברמן, פסח גרופר, מנחם סבידור, אברהם שריר, דוד שיפמן, פנחס גולדשטיין, דן תיכון, שרה דורון, דרור זייגרמן, אליעזר קולס, צבי רנר, יהודה פרח, בני שליטא, יצחק זיגר",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9E%D7%A4%D7%9C%D7%92%D7%94_%D7%94%D7%9C%D7%99%D7%91%D7%A8%D7%9C%D7%99%D7%AA_%D7%94%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%D7%AA",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "18 מנדטים (מתוך 48 לרשימה כולה):",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%99%D7%A8%D7%99%D7%AA",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "דן תיכון, חיים קופמן, דוד מגן, שרה דורון, דרור זייגרמן, אמל נסראלדין",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%99%D7%A8%D7%99%D7%AA",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "אליעזר קולס, אמנון לין, צבי רנר, יגאל כהן-אורגד",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%99%D7%A8%D7%99%D7%AA",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "בני שליטא, מיכאל רייסר, יצחק זיגר, יצחק פרץ, עקיבא נוף",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=KnessetNum%20eq%2010",
+              "publisher": "Knesset OData (ParliamentInfo)",
+              "kind": "official",
+              "quote": "KNS_PersonToPosition, KnessetNum 10, PositionID 54: PersonID 2273 דורון שרה, 2336 זייגרמן דרור, 2614 רנר צבי, 2335 זיגר יצחק — each FactionName \"הליכוד\" from 1981-07-20 (seated at the opening, so elected ranks; the dataset roster contains none of these names)",
+              "accessed": "2026-11-04"
+            }
+          ],
+          "confidence": "high",
+          "rankNotes": [
+            {
+              "rank": 31,
+              "datasetName": "דרורי שרה",
+              "note": "ROSTER CONFLICT: dataset reads \"דרורי שרה\"; the MK seated at this rank was Sarah Doron"
+            },
+            {
+              "rank": 32,
+              "datasetName": "וירג׳מן דרור",
+              "note": "ROSTER CONFLICT: dataset reads \"וירג׳מן דרור\"; the MK seated at this rank was Dror Zeigerman"
+            },
+            {
+              "rank": 38,
+              "datasetName": "רבי צבי",
+              "note": "ROSTER CONFLICT: dataset reads \"רבי צבי\"; the MK seated at this rank was Zvi Renner"
+            },
+            {
+              "rank": 46,
+              "datasetName": "יגורי יצחק",
+              "note": "ROSTER CONFLICT: dataset reads \"יגורי יצחק\"; the MK seated at this rank was Yitzhak Zeiger"
+            }
+          ]
+        },
+        {
+          "id": "laam",
+          "nameHe": "לע\"ם",
+          "nameEn": "La'am",
+          "candidateRanks": [
+            8,
+            18,
+            26,
+            37,
+            47
+          ],
+          "sources": [
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "לע\"ם: אליעזר שוסטק, יגאל כהן, אהוד אולמרט, אמנון לין, יצחק פרץ",
+              "accessed": "2026-11-04"
+            }
+          ],
+          "confidence": "medium"
+        }
+      ],
+      "unassignedRanks": [],
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%AA%D7%A9%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "רשימה משותפת למפלגות חרות, המפלגה הליברלית ולע\"ם",
+          "accessed": "2026-11-04"
+        }
+      ]
+    },
+    {
+      "letters": "אמת",
+      "nameHe": "המערך – מפלגת העבודה הישראלית, מפלגת הפועלים המאוחדת ובלתי מפלגתיים",
+      "seats": 47,
+      "rosterRanks": 47,
+      "candidatesTruncated": true,
+      "notes": "Alignment of Labor and Mapam (list name). Shulamit Aloni (Ratz) joined the faction only in Nov 1981; Amnon Lin and Yitzhak Peretz joined from the Likud in Oct 1982 — none were on this roster.",
+      "parties": [
+        {
+          "id": "labor",
+          "nameHe": "מפלגת העבודה הישראלית",
+          "nameEn": "Israeli Labor Party",
+          "candidateRanks": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8,
+            9,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            41,
+            42,
+            43,
+            44,
+            45,
+            47
+          ],
+          "sources": [
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9E%D7%A2%D7%A8%D7%9A",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "העבודה: שמעון פרס, שושנה ארבלי-אלמוזלינו, אבא אבן, יצחק רבין, חיים בר-לב, רפאל אדרי, משה שחל, ירוחם משל, נאוה ארד, מרדכי גור, גד יעקבי, אליהו שפייזר, עוזי ברעם, אריה נחמקין, משה חריף, דניאל רוזוליו, שלמה הלל, אורה נמיר, חיים הרצוג, מנחם הכהן, עדיאל אמוראי, יוסי שריד, יעקב ז'אק אמיר, אהרן הראל, יחזקאל זכאי, אברהם כ\"ץ-עוז, יעקב צור, מיכה חריש, דב בן-מאיר, שבח וייס, יעקב גיל, נפתלי בלומנטל, תמר אשל, יהודה חשאי, מיכאל בר-זוהר, אורי סבג, רפאל סוויסה, אהרן-רפאל נחמיאס, רענן נעים, חמד חלאילה, עדנה סולודר, נחמן רז, חיים רמון, אמנון לין, יצחק פרץ",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%99%D7%A8%D7%99%D7%AA",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "אריה נחמקין, משה חריף, דניאל רוזוליו",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%99%D7%A8%D7%99%D7%AA",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "יחזקאל זכאי, אברהם כ\"ץ-עוז, יעקב צור, מיכה חריש, מוחמד ותד, דב בן-מאיר",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%99%D7%A8%D7%99%D7%AA",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "רפאל סוויסה, אהרן-רפאל נחמיאס, רענן נעים, נפתלי פדר",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=KnessetNum%20eq%2010",
+              "publisher": "Knesset OData (ParliamentInfo)",
+              "kind": "official",
+              "quote": "KNS_PersonToPosition, KnessetNum 10, PositionID 54: PersonID 2356 חריף משה, 2413 כץ-עוז אברהם, 2491 נעים רענן — each FactionName \"מערך\" from 1981-07-20",
+              "accessed": "2026-11-04"
+            }
+          ],
+          "confidence": "high",
+          "rankNotes": [
+            {
+              "rank": 17,
+              "datasetName": "חריש משה",
+              "note": "ROSTER CONFLICT: dataset reads \"חריש משה\"; the MK seated at this rank was Moshe Harif"
+            },
+            {
+              "rank": 28,
+              "datasetName": "הראל אהרון",
+              "note": "roster spelling \"הראל אהרון\" = Aharon Harel"
+            },
+            {
+              "rank": 30,
+              "datasetName": "בן-אהרן אברהם",
+              "note": "ROSTER CONFLICT: dataset reads \"בן-אהרן אברהם\"; the MK seated at this rank was Avraham Katz-Oz"
+            },
+            {
+              "rank": 32,
+              "datasetName": "חרש מיכאל",
+              "note": "roster spelling \"חרש מיכאל\" = Micha Harish"
+            },
+            {
+              "rank": 43,
+              "datasetName": "סויסה רפאל",
+              "note": "roster spelling \"סויסה רפאל\" = Rafael Suissa"
+            },
+            {
+              "rank": 45,
+              "datasetName": "נעים עבד",
+              "note": "ROSTER CONFLICT: dataset reads \"נעים עבד\"; the MK seated at this rank was Ra'anan Na'im"
+            }
+          ]
+        },
+        {
+          "id": "mapam",
+          "nameHe": "מפ\"ם – מפלגת הפועלים המאוחדת",
+          "nameEn": "Mapam",
+          "candidateRanks": [
+            5,
+            10,
+            19,
+            26,
+            33,
+            40,
+            46
+          ],
+          "sources": [
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9E%D7%A2%D7%A8%D7%9A",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "מפ\"ם: ויקטור שם-טוב, דב זכין, יאיר צבן, אלעזר גרנות, מוחמד ותד, אמרי רון, נפתלי פדר",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A4%22%D7%9D",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "7 מנדטים (מתוך 47 לרשימה כולה):",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%99%D7%A8%D7%99%D7%AA",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "מיכה חריש, מוחמד ותד, דב בן-מאיר",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%99%D7%A8%D7%99%D7%AA",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "יהודה חשאי, אמרי רון, מיכאל בר-זוהר",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=KnessetNum%20eq%2010",
+              "publisher": "Knesset OData (ParliamentInfo)",
+              "kind": "official",
+              "quote": "KNS_PersonToPosition, KnessetNum 10, PositionID 54: PersonID 2328 ותד מחמד, 2603 רון אמרי — each FactionName \"מערך\" from 1981-07-20",
+              "accessed": "2026-11-04"
+            }
+          ],
+          "confidence": "high",
+          "rankNotes": [
+            {
+              "rank": 33,
+              "datasetName": "ורד תמר",
+              "note": "ROSTER CONFLICT: dataset reads \"ורד תמר\"; the MK seated at this rank was Mohammed Wattad"
+            },
+            {
+              "rank": 40,
+              "datasetName": "רון אמיר",
+              "note": "ROSTER CONFLICT: dataset reads \"רון אמיר\"; the MK seated at this rank was Imri Ron"
+            }
+          ]
+        }
+      ],
+      "unassignedRanks": []
+    },
+    {
+      "letters": "ו",
+      "nameHe": "חזית דמוקרטית לשלום ולשוויון, המפלגה הקומוניסטית הישראלית (רק״ח), פנתרים שחורים וחוגי ציבור יהודים וערבים",
+      "seats": 4,
+      "rosterRanks": 4,
+      "candidatesTruncated": true,
+      "notes": "Front named on the ballot as Rakah + Black Panthers + public circles; Charlie Biton held the Black Panthers place. Affiliation of the other elected members comes from their own biographies (party membership), not from a published seat split.",
+      "parties": [
+        {
+          "id": "israeli-communist-party",
+          "nameHe": "המפלגה הקומוניסטית הישראלית (רק\"ח)",
+          "nameEn": "Israeli Communist Party (Rakah)",
+          "candidateRanks": [
+            1,
+            2,
+            4
+          ],
+          "sources": [
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%90%D7%99%D7%A8_%D7%95%D7%99%D7%9C%D7%A0%D7%A8",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "| סיעה = מק\"י, רק\"ח, חד\"ש",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%AA%D7%95%D7%A4%D7%99%D7%A7_%D7%98%D7%95%D7%91%D7%99",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "| סיעה = מק\"י, רק\"ח, חד\"ש",
+              "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%AA%D7%90%D7%95%D7%A4%D7%99%D7%A7_%D7%96%D7%99%D7%90%D7%93",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "היה חבר הכנסת מטעם הרשימה הקומוניסטית החדשה (רק\"ח) והחזית הדמוקרטית לשלום ולשוויון (חד\"ש)",
+              "accessed": "2026-11-04"
+            }
+          ],
+          "confidence": "medium"
+        },
+        {
+          "id": "black-panthers",
+          "nameHe": "הפנתרים השחורים",
+          "nameEn": "Black Panthers",
+          "candidateRanks": [
+            3
+          ],
+          "sources": [
+            {
+              "url": "https://he.wikipedia.org/wiki/%D7%A6'%D7%A8%D7%9C%D7%99_%D7%91%D7%99%D7%98%D7%95%D7%9F",
+              "publisher": "Hebrew Wikipedia",
+              "kind": "secondary",
+              "quote": "ממייסדי הפנתרים השחורים, וחבר הכנסת מטעם חד\"ש",
+              "accessed": "2026-11-04"
+            }
+          ],
+          "confidence": "medium"
+        }
+      ],
+      "unassignedRanks": []
+    }
+  ],
+  "blocSchemes": [
+    {
+      "id": "first-government",
+      "nameHe": "הממשלה הראשונה של הכנסת ה-10 (ממשלה 19) והאופוזיציה",
+      "nameEn": "First government of the 10th Knesset (government 19) and opposition",
+      "kind": "government",
+      "date": "1981-08-05",
+      "blocs": [
+        {
+          "id": "coalition",
+          "nameHe": "קואליציה",
+          "nameEn": "Coalition",
+          "color": "#2E7D32",
+          "seats": 61,
+          "members": [
+            {
+              "letters": "מחל"
+            },
+            {
+              "letters": "ג",
+              "note": "in the coalition without cabinet ministers"
+            },
+            {
+              "letters": "ב"
+            },
+            {
+              "letters": "ני"
+            }
+          ]
+        },
+        {
+          "id": "opposition",
+          "nameHe": "אופוזיציה",
+          "nameEn": "Opposition",
+          "color": "#9E9E9E",
+          "seats": 59,
+          "members": [
+            {
+              "letters": "אמת"
+            },
+            {
+              "letters": "רצ"
+            },
+            {
+              "letters": "ו"
+            },
+            {
+              "letters": "הן"
+            },
+            {
+              "letters": "ת"
+            },
+            {
+              "letters": "כן"
+            }
+          ]
+        }
+      ],
+      "notes": "Membership by list at the swearing-in of the first government after the election, from the coalition table of the Hebrew Wikipedia government article (faction, seats, start/end dates), cross-checked against Knesset OData ministerial records for that GovernmentNum. Bloc colours are neutral display suggestions, not party colours.",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%AA%D7%A9%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "בגין הצליח להקים קואליציה מבוססת על רוב דחוק של 61 ח\"כים, והממשלה יצאה לדרכה ב-5 באוגוסט 1981",
+          "accessed": "2026-11-04"
+        },
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%AA%D7%A9%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "סיעות הקואליציה==",
+          "accessed": "2026-11-04"
+        },
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=GovernmentNum%20eq%2019",
+          "publisher": "Knesset OData (ParliamentInfo)",
+          "kind": "official",
+          "quote": "KNS_PersonToPosition, GovernmentNum 19: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 1981-08-05: צפורי-הנדין מרדכי, מרידור יעקב, ארליך שמחה, בגין מנחם, ברמן יצחק, מודעי יצחק, נסים משה, קורפו חיים, בורג יוסף, לוי דוד, שרון אריאל, פת גדעון, ארידור יורם, המר זבולון, שריר אברהם, אבוחצירא אהרן, שוסטק אליעזר, שמיר יצחק",
+          "accessed": "2026-11-04"
+        }
+      ]
+    }
+  ],
+  "colours": [
+    {
+      "letters": "מחל",
+      "color": "#1F5AA5",
+      "basis": "Colour used for this list/party in Hebrew Wikipedia Knesset and party articles (a convention of that encyclopedia, not an official party colour).",
+      "colourId": "likud",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%99%D7%A8%D7%99%D7%AA",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#1F5AA5|גבול=1px solid #A9A9A9}}[[הליכוד]] (48)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "אמת",
+      "color": "#EE161F",
+      "basis": "Hebrew Wikipedia colours the Alignment with the same red it uses for Labor (10th–12th Knesset articles).",
+      "colourId": "alignment",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%99%D7%A8%D7%99%D7%AA",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#EE161F|גבול=1px solid #A9A9A9}}[[המערך]] (48)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "ג",
+      "color": "#122D70",
+      "basis": "Colour used for this list/party in Hebrew Wikipedia Knesset and party articles (a convention of that encyclopedia, not an official party colour).",
+      "colourId": "agudat-yisrael",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%99%D7%A8%D7%99%D7%AA",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#122D70|גבול=1px solid #A9A9A9}}[[אגודת ישראל]] (4)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "רצ",
+      "color": "#C80004",
+      "basis": "Colour used for this list/party in Hebrew Wikipedia Knesset and party articles (a convention of that encyclopedia, not an official party colour).",
+      "colourId": "ratz",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%99%D7%A8%D7%99%D7%AA",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "| style=\"background:#C80004\" |",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "ב",
+      "color": "#623963",
+      "basis": "Colour used for this list/party in Hebrew Wikipedia Knesset and party articles (a convention of that encyclopedia, not an official party colour).",
+      "colourId": "nrp",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%99%D7%A8%D7%99%D7%AA",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#623963|גבול=1px solid #A9A9A9}}[[מפד\"ל]] (6)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "ו",
+      "color": "#C81F28",
+      "basis": "Colour used for this list/party in Hebrew Wikipedia Knesset and party articles (a convention of that encyclopedia, not an official party colour).",
+      "colourId": "hadash",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%99%D7%A8%D7%99%D7%AA",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#C81F28|גבול=1px solid #A9A9A9}}[[החזית הדמוקרטית לשלום ולשוויון|חד\"ש]] (4)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "הן",
+      "color": "#2D4277",
+      "basis": "Hebrew Wikipedia uses #2D4277 for Shinui in the 10th–12th Knesset articles.",
+      "colourId": "shinui-1980s",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%99%D7%A8%D7%99%D7%AA",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#2D4277|גבול=1px solid #A9A9A9}}[[מפלגת שינוי|שינוי]] (2)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "ת",
+      "color": "#007FFF",
+      "basis": "Colour used for this list/party in Hebrew Wikipedia Knesset and party articles (a convention of that encyclopedia, not an official party colour).",
+      "colourId": "tehiya",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%99%D7%A8%D7%99%D7%AA",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#007FFF|גבול=1px solid #A9A9A9}}[[התחיה]] (3)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "letters": "ני",
+      "color": "#39354E",
+      "basis": "Hebrew Wikipedia 10th–11th Knesset infoboxes only.",
+      "colourId": "tami",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%99%D7%A8%D7%99%D7%AA",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#39354E|גבול=1px solid #A9A9A9}}[[תמ\"י]] (3)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "low"
+    },
+    {
+      "letters": "כן",
+      "color": "#083D7B",
+      "basis": "Hebrew Wikipedia only; same navy it uses for Moledet and Ometz.",
+      "colourId": "telem",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%99%D7%A8%D7%99%D7%AA",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#083D7B|גבול=1px solid #A9A9A9}}[[תנועה להתחדשות ממלכתית|תל\"ם]] (2)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "low"
+    },
+    {
+      "party": "herut",
+      "color": "#0078BA",
+      "basis": "Hebrew Wikipedia Likud and Herut articles (legend colour for the Herut component).",
+      "colourId": "herut",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93_revid_44161115",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "|'''{{מקרא2|#0078BA|תנועת החרות:}}''' [[מנחם בגין]], [[יוחנן בדר]], [[בנימין הלוי|''<s>בנימין הלוי</s>'']], [[חיים לנדאו]], [[יוסף קרמרמן]], [[מנחם ידיד]], [[יורם ארידור]], [[חיים קורפו]], [[בן-ציון ק",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "low"
+    },
+    {
+      "party": "liberal-party",
+      "color": "#FECA0A",
+      "basis": "Hebrew Wikipedia Likud article (legend colour for the Liberal component).",
+      "colourId": "liberal-party",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93_revid_44161115",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "|'''{{מקרא2|#0078BA|תנועת החרות:}}''' [[מנחם בגין]], [[יוחנן בדר]], [[בנימין הלוי|''<s>בנימין הלוי</s>'']], [[חיים לנדאו]], [[יוסף קרמרמן]], [[מנחם ידיד]], [[יורם ארידור]], [[חיים קורפו]], [[בן-ציון ק",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "low"
+    },
+    {
+      "party": "laam",
+      "color": "#3B916A",
+      "basis": "Hebrew Wikipedia Likud article only.",
+      "colourId": "laam",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93_revid_44161115",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "|'''{{מקרא2|#0078BA|תנועת החרות:}}''' [[מנחם בגין]], [[עזר ויצמן]], [[יצחק שמיר]], [[משה ארנס]], [[דוד לוי]], [[יורם ארידור]], [[גאולה כהן]], [[חיים קורפו]], [[יגאל כהן-אורגד]], [[איתן לבני]], [[מרדכי",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "low"
+    },
+    {
+      "party": "labor",
+      "color": "#EE161F",
+      "basis": "Colour used for this list/party in Hebrew Wikipedia Knesset and party articles (a convention of that encyclopedia, not an official party colour).",
+      "colourId": "labor",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%99%D7%A8%D7%99%D7%AA",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#EE161F|גבול=1px solid #A9A9A9}}[[המערך]] (48)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "party": "mapam",
+      "color": "#AB0E1A",
+      "basis": "Colour used for this list/party in Hebrew Wikipedia Knesset and party articles (a convention of that encyclopedia, not an official party colour).",
+      "colourId": "mapam",
+      "sources": [
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%90%D7%97%D7%AA_%D7%A2%D7%A9%D7%A8%D7%94",
+          "publisher": "Hebrew Wikipedia",
+          "kind": "secondary",
+          "quote": "*{{מקרא2|#AB0E1A|גבול=1px solid #A9A9A9}}[[מפ\"ם]] (6)",
+          "accessed": "2026-11-04"
+        }
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "datasetRosterConflicts": [
+    {
+      "letters": "מחל",
+      "rank": 31,
+      "datasetName": "דרורי שרה",
+      "note": "dataset reads \"דרורי שרה\"; the MK seated at this rank was Sarah Doron"
+    },
+    {
+      "letters": "מחל",
+      "rank": 32,
+      "datasetName": "וירג׳מן דרור",
+      "note": "dataset reads \"וירג׳מן דרור\"; the MK seated at this rank was Dror Zeigerman"
+    },
+    {
+      "letters": "מחל",
+      "rank": 38,
+      "datasetName": "רבי צבי",
+      "note": "dataset reads \"רבי צבי\"; the MK seated at this rank was Zvi Renner"
+    },
+    {
+      "letters": "מחל",
+      "rank": 46,
+      "datasetName": "יגורי יצחק",
+      "note": "dataset reads \"יגורי יצחק\"; the MK seated at this rank was Yitzhak Zeiger"
+    },
+    {
+      "letters": "אמת",
+      "rank": 17,
+      "datasetName": "חריש משה",
+      "note": "dataset reads \"חריש משה\"; the MK seated at this rank was Moshe Harif"
+    },
+    {
+      "letters": "אמת",
+      "rank": 30,
+      "datasetName": "בן-אהרן אברהם",
+      "note": "dataset reads \"בן-אהרן אברהם\"; the MK seated at this rank was Avraham Katz-Oz"
+    },
+    {
+      "letters": "אמת",
+      "rank": 45,
+      "datasetName": "נעים עבד",
+      "note": "dataset reads \"נעים עבד\"; the MK seated at this rank was Ra'anan Na'im"
+    },
+    {
+      "letters": "אמת",
+      "rank": 33,
+      "datasetName": "ורד תמר",
+      "note": "dataset reads \"ורד תמר\"; the MK seated at this rank was Mohammed Wattad"
+    },
+    {
+      "letters": "אמת",
+      "rank": 40,
+      "datasetName": "רון אמיר",
+      "note": "dataset reads \"רון אמיר\"; the MK seated at this rank was Imri Ron"
+    }
+  ]
+}
