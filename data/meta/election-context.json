@@ -178,6 +178,1169 @@
         "evidence": "official",
         "sourceId": "k26-ballots-csv"
       }
+    },
+    {
+      "id": "eligibility-final-k6-0",
+      "electionId": "k6",
+      "effectiveDate": "1965-11-02",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "Election-day eligibility: Socialist List. The list was excluded; the Supreme Court rejected the appeal. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+      "textHe": "מעמד ביום הבחירות: רשימת הסוציאליסטים. הרשימה נפסלה ובית המשפט העליון דחה את הערעור. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
+      "source": {
+        "url": "https://www.idi.org.il/articles/65951",
+        "publisher": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "publisherHe": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "evidence": "secondary",
+        "sourceId": "context-idi-disqualifications"
+      }
+    },
+    {
+      "id": "eligibility-final-k11-1",
+      "electionId": "k11",
+      "effectiveDate": "1984-07-23",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "Election-day eligibility: Kach. The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+      "textHe": "מעמד ביום הבחירות: כך. בית המשפט העליון ביטל את פסילת ועדת הבחירות וההשתתפות הותרה. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
+      "source": {
+        "url": "https://www.idi.org.il/articles/65951",
+        "publisher": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "publisherHe": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "evidence": "secondary",
+        "sourceId": "context-idi-disqualifications"
+      },
+      "listId": "11-כך"
+    },
+    {
+      "id": "eligibility-final-k11-2",
+      "electionId": "k11",
+      "effectiveDate": "1984-07-23",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "Election-day eligibility: Progressive List for Peace. The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+      "textHe": "מעמד ביום הבחירות: הרשימה המתקדמת לשלום. בית המשפט העליון ביטל את פסילת ועדת הבחירות וההשתתפות הותרה. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
+      "source": {
+        "url": "https://www.idi.org.il/articles/65951",
+        "publisher": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "publisherHe": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "evidence": "secondary",
+        "sourceId": "context-idi-disqualifications"
+      },
+      "listId": "11-פ"
+    },
+    {
+      "id": "eligibility-final-k12-3",
+      "electionId": "k12",
+      "effectiveDate": "1988-11-01",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "Election-day eligibility: Kach. The list was excluded; the Supreme Court rejected the appeal. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+      "textHe": "מעמד ביום הבחירות: כך. הרשימה נפסלה ובית המשפט העליון דחה את הערעור. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
+      "source": {
+        "url": "https://www.idi.org.il/articles/65951",
+        "publisher": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "publisherHe": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "evidence": "secondary",
+        "sourceId": "context-idi-disqualifications"
+      }
+    },
+    {
+      "id": "eligibility-final-k13-4",
+      "electionId": "k13",
+      "effectiveDate": "1992-06-23",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "Election-day eligibility: Kach and Kahane Chai. The list was excluded; the Supreme Court rejected the appeal. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+      "textHe": "מעמד ביום הבחירות: כך וכהנא חי. הרשימה נפסלה ובית המשפט העליון דחה את הערעור. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
+      "source": {
+        "url": "https://www.idi.org.il/articles/65951",
+        "publisher": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "publisherHe": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "evidence": "secondary",
+        "sourceId": "context-idi-disqualifications"
+      }
+    },
+    {
+      "id": "eligibility-final-k16-5",
+      "electionId": "k16",
+      "effectiveDate": "2003-01-28",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "Election-day eligibility: Balad. The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+      "textHe": "מעמד ביום הבחירות: בל״ד. בית המשפט העליון ביטל את פסילת ועדת הבחירות וההשתתפות הותרה. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
+      "source": {
+        "url": "https://www.idi.org.il/articles/65951",
+        "publisher": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "publisherHe": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "evidence": "secondary",
+        "sourceId": "context-idi-disqualifications"
+      },
+      "listId": "16-ד"
+    },
+    {
+      "id": "eligibility-final-k16-6",
+      "electionId": "k16",
+      "effectiveDate": "2003-01-28",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "Election-day eligibility: Azmi Bishara (candidate). The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+      "textHe": "מעמד ביום הבחירות: עזמי בשארה (מועמד). בית המשפט העליון ביטל את פסילת ועדת הבחירות וההשתתפות הותרה. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
+      "source": {
+        "url": "https://www.idi.org.il/articles/65951",
+        "publisher": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "publisherHe": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "evidence": "secondary",
+        "sourceId": "context-idi-disqualifications"
+      },
+      "listId": "16-ד"
+    },
+    {
+      "id": "eligibility-final-k16-7",
+      "electionId": "k16",
+      "effectiveDate": "2003-01-28",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "Election-day eligibility: Ahmad Tibi (candidate). The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+      "textHe": "מעמד ביום הבחירות: אחמד טיבי (מועמד). בית המשפט העליון ביטל את פסילת ועדת הבחירות וההשתתפות הותרה. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
+      "source": {
+        "url": "https://www.idi.org.il/articles/65951",
+        "publisher": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "publisherHe": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "evidence": "secondary",
+        "sourceId": "context-idi-disqualifications"
+      },
+      "listId": "16-ו"
+    },
+    {
+      "id": "eligibility-final-k18-8",
+      "electionId": "k18",
+      "effectiveDate": "2009-02-10",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "Election-day eligibility: Balad. The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+      "textHe": "מעמד ביום הבחירות: בל״ד. בית המשפט העליון ביטל את פסילת ועדת הבחירות וההשתתפות הותרה. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
+      "source": {
+        "url": "https://www.idi.org.il/articles/65951",
+        "publisher": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "publisherHe": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "evidence": "secondary",
+        "sourceId": "context-idi-disqualifications"
+      },
+      "listId": "18-ד"
+    },
+    {
+      "id": "eligibility-final-k18-9",
+      "electionId": "k18",
+      "effectiveDate": "2009-02-10",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "Election-day eligibility: Ra’am–Ta’al. The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+      "textHe": "מעמד ביום הבחירות: רע״מ–תע״ל. בית המשפט העליון ביטל את פסילת ועדת הבחירות וההשתתפות הותרה. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
+      "source": {
+        "url": "https://www.idi.org.il/articles/65951",
+        "publisher": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "publisherHe": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "evidence": "secondary",
+        "sourceId": "context-idi-disqualifications"
+      },
+      "listId": "18-עם"
+    },
+    {
+      "id": "eligibility-final-k19-10",
+      "electionId": "k19",
+      "effectiveDate": "2013-01-22",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "Election-day eligibility: Haneen Zoabi (candidate). The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+      "textHe": "מעמד ביום הבחירות: חנין זועבי (מועמדת). בית המשפט העליון ביטל את פסילת ועדת הבחירות וההשתתפות הותרה. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
+      "source": {
+        "url": "https://www.idi.org.il/articles/65951",
+        "publisher": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "publisherHe": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "evidence": "secondary",
+        "sourceId": "context-idi-disqualifications"
+      },
+      "listId": "19-ד"
+    },
+    {
+      "id": "eligibility-final-k20-11",
+      "electionId": "k20",
+      "effectiveDate": "2015-03-17",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "Election-day eligibility: Haneen Zoabi (candidate). The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+      "textHe": "מעמד ביום הבחירות: חנין זועבי (מועמדת). בית המשפט העליון ביטל את פסילת ועדת הבחירות וההשתתפות הותרה. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
+      "source": {
+        "url": "https://www.idi.org.il/articles/65951",
+        "publisher": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "publisherHe": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "evidence": "secondary",
+        "sourceId": "context-idi-disqualifications"
+      },
+      "listId": "20-ודעם"
+    },
+    {
+      "id": "eligibility-final-k20-12",
+      "electionId": "k20",
+      "effectiveDate": "2015-03-17",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "Election-day eligibility: Baruch Marzel (candidate). The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+      "textHe": "מעמד ביום הבחירות: ברוך מרזל (מועמד). בית המשפט העליון ביטל את פסילת ועדת הבחירות וההשתתפות הותרה. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
+      "source": {
+        "url": "https://www.idi.org.il/articles/65951",
+        "publisher": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "publisherHe": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "evidence": "secondary",
+        "sourceId": "context-idi-disqualifications"
+      },
+      "listId": "20-קץ"
+    },
+    {
+      "id": "eligibility-final-k21-13",
+      "electionId": "k21",
+      "effectiveDate": "2019-04-09",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "Election-day eligibility: Ra’am–Balad. The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+      "textHe": "מעמד ביום הבחירות: רע״מ–בל״ד. בית המשפט העליון ביטל את פסילת ועדת הבחירות וההשתתפות הותרה. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
+      "source": {
+        "url": "https://www.idi.org.il/articles/65951",
+        "publisher": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "publisherHe": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "evidence": "secondary",
+        "sourceId": "context-idi-disqualifications"
+      },
+      "listId": "21-דעם"
+    },
+    {
+      "id": "eligibility-final-k21-14",
+      "electionId": "k21",
+      "effectiveDate": "2019-04-09",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "Election-day eligibility: Ofer Cassif (candidate). The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+      "textHe": "מעמד ביום הבחירות: עופר כסיף (מועמד). בית המשפט העליון ביטל את פסילת ועדת הבחירות וההשתתפות הותרה. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
+      "source": {
+        "url": "https://www.idi.org.il/articles/65951",
+        "publisher": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "publisherHe": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "evidence": "secondary",
+        "sourceId": "context-idi-disqualifications"
+      },
+      "listId": "21-ום"
+    },
+    {
+      "id": "eligibility-final-k23-15",
+      "electionId": "k23",
+      "effectiveDate": "2020-03-02",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "Election-day eligibility: Heba Yazbak (candidate). The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+      "textHe": "מעמד ביום הבחירות: היבא יזבק (מועמדת). בית המשפט העליון ביטל את פסילת ועדת הבחירות וההשתתפות הותרה. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
+      "source": {
+        "url": "https://www.idi.org.il/articles/65951",
+        "publisher": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "publisherHe": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "evidence": "secondary",
+        "sourceId": "context-idi-disqualifications"
+      },
+      "listId": "23-ודעם"
+    },
+    {
+      "id": "eligibility-final-k23-16",
+      "electionId": "k23",
+      "effectiveDate": "2020-03-02",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "Election-day eligibility: Mishpat Tzedek. The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+      "textHe": "מעמד ביום הבחירות: משפט צדק. בית המשפט העליון ביטל את פסילת ועדת הבחירות וההשתתפות הותרה. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
+      "source": {
+        "url": "https://www.idi.org.il/articles/65951",
+        "publisher": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "publisherHe": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "evidence": "secondary",
+        "sourceId": "context-idi-disqualifications"
+      },
+      "listId": "23-קץ"
+    },
+    {
+      "id": "eligibility-final-k24-17",
+      "electionId": "k24",
+      "effectiveDate": "2021-03-23",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "Election-day eligibility: Ibtisam Mara’ana (candidate). The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+      "textHe": "מעמד ביום הבחירות: אבתיסאם מראענה (מועמדת). בית המשפט העליון ביטל את פסילת ועדת הבחירות וההשתתפות הותרה. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
+      "source": {
+        "url": "https://www.idi.org.il/articles/65951",
+        "publisher": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "publisherHe": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "evidence": "secondary",
+        "sourceId": "context-idi-disqualifications"
+      },
+      "listId": "24-אמת"
+    },
+    {
+      "id": "eligibility-final-k25-18",
+      "electionId": "k25",
+      "effectiveDate": "2022-11-01",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "Election-day eligibility: Balad. The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+      "textHe": "מעמד ביום הבחירות: בל״ד. בית המשפט העליון ביטל את פסילת ועדת הבחירות וההשתתפות הותרה. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
+      "source": {
+        "url": "https://www.idi.org.il/articles/65951",
+        "publisher": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "publisherHe": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "evidence": "secondary",
+        "sourceId": "context-idi-disqualifications"
+      },
+      "listId": "25-ד"
+    },
+    {
+      "id": "candidate-exclusion-final-k21",
+      "electionId": "k21",
+      "effectiveDate": "2019-04-09",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "Election-day eligibility: Michael Ben-Ari disqualified by the Supreme Court after the CEC had approved the candidacy. This excluded individual candidates, not their entire list. IDI secondary account; date denotes election-day status.",
+      "textHe": "מעמד ביום הבחירות: מיכאל בן ארי נפסלו בבית המשפט העליון לאחר שהוועדה אישרה את מועמדותם. זו פסילת מועמדים יחידים ולא הרשימה כולה. לפי המכון הישראלי לדמוקרטיה, מקור משני; התאריך מציין את המעמד ביום הבחירות.",
+      "source": {
+        "url": "https://www.idi.org.il/articles/65951",
+        "publisher": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "publisherHe": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "evidence": "secondary",
+        "sourceId": "context-idi-disqualifications"
+      },
+      "listId": "21-טב"
+    },
+    {
+      "id": "candidate-exclusion-final-k22",
+      "electionId": "k22",
+      "effectiveDate": "2019-09-17",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "Election-day eligibility: Baruch Marzel and Bentzi Gopstein disqualified by the Supreme Court after the CEC had approved the candidacy. This excluded individual candidates, not their entire list. IDI secondary account; date denotes election-day status.",
+      "textHe": "מעמד ביום הבחירות: ברוך מרזל ובנצי גופשטיין נפסלו בבית המשפט העליון לאחר שהוועדה אישרה את מועמדותם. זו פסילת מועמדים יחידים ולא הרשימה כולה. לפי המכון הישראלי לדמוקרטיה, מקור משני; התאריך מציין את המעמד ביום הבחירות.",
+      "source": {
+        "url": "https://www.idi.org.il/articles/65951",
+        "publisher": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "publisherHe": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+        "evidence": "secondary",
+        "sourceId": "context-idi-disqualifications"
+      },
+      "listId": "22-כף"
+    },
+    {
+      "id": "list-excluded-k26-ודעם",
+      "electionId": "k26",
+      "effectiveDate": "2026-09-24",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "CEC excluded this list under Basic Law: The Knesset §7A; an appeal followed.",
+      "textHe": "ועדת הבחירות פסלה את הרשימה לפי סעיף 7א לחוק־יסוד: הכנסת; לאחר מכן הוגש ערעור.",
+      "source": {
+        "url": "https://www.gov.il/he/pages/hareshima-hameshutefet_list35",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-26 (gov.il)",
+        "publisherHe": "ועדת הבחירות המרכזית לכנסת ה-26 (gov.il)",
+        "evidence": "official",
+        "sourceId": "k26-list-pages"
+      },
+      "listId": "26-ודם"
+    },
+    {
+      "id": "list-restored-k26-ודעם",
+      "electionId": "k26",
+      "effectiveDate": "2026-10-02",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "The Supreme Court allowed the appeal and reversed the list exclusion; the list could compete.",
+      "textHe": "בית המשפט העליון קיבל את הערעור וביטל את פסילת הרשימה; הרשימה הורשתה להתמודד.",
+      "source": {
+        "url": "https://www.gov.il/he/pages/hareshima-hameshutefet_list35",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-26 (gov.il)",
+        "publisherHe": "ועדת הבחירות המרכזית לכנסת ה-26 (gov.il)",
+        "evidence": "official",
+        "sourceId": "k26-list-pages"
+      },
+      "listId": "26-ודם"
+    },
+    {
+      "id": "candidate-excluded-k26",
+      "electionId": "k26",
+      "effectiveDate": "2026-09-24",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "The CEC excluded Sami Abu Shehadeh (#3) and Ofer Cassif (#6), subject to Supreme Court approval. This was a candidate decision, separate from the list exclusion.",
+      "textHe": "ועדת הבחירות פסלה את סמי אבו שחאדה (3) ואת עופר כסיף (6), בכפוף לאישור בית המשפט העליון. זו החלטה לגבי מועמדים, בנפרד מפסילת הרשימה.",
+      "source": {
+        "url": "https://www.gov.il/he/pages/hareshima-hameshutefet_list35",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-26 (gov.il)",
+        "publisherHe": "ועדת הבחירות המרכזית לכנסת ה-26 (gov.il)",
+        "evidence": "official",
+        "sourceId": "k26-list-pages"
+      },
+      "listId": "26-ודם"
+    },
+    {
+      "id": "candidate-cassif-restored-k26",
+      "electionId": "k26",
+      "effectiveDate": "2026-10-02",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "The Supreme Court did not approve Ofer Cassif’s exclusion; he could compete. Sami Abu Shehadeh resigned that day, so the Court did not need to decide his case.",
+      "textHe": "בית המשפט העליון לא אישר את פסילת עופר כסיף והוא הורשה להתמודד. סמי אבו שחאדה התפטר באותו יום ולכן לא נדרשה הכרעה בעניינו.",
+      "source": {
+        "url": "https://www.gov.il/he/pages/hareshima-hameshutefet_list35",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-26 (gov.il)",
+        "publisherHe": "ועדת הבחירות המרכזית לכנסת ה-26 (gov.il)",
+        "evidence": "official",
+        "sourceId": "k26-list-pages"
+      },
+      "listId": "26-ודם"
+    },
+    {
+      "id": "list-excluded-k26-עם",
+      "electionId": "k26",
+      "effectiveDate": "2026-09-24",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "CEC excluded this list under Basic Law: The Knesset §7A; an appeal followed.",
+      "textHe": "ועדת הבחירות פסלה את הרשימה לפי סעיף 7א לחוק־יסוד: הכנסת; לאחר מכן הוגש ערעור.",
+      "source": {
+        "url": "https://www.gov.il/he/pages/hashutafut-lekulam_iist",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-26 (gov.il)",
+        "publisherHe": "ועדת הבחירות המרכזית לכנסת ה-26 (gov.il)",
+        "evidence": "official",
+        "sourceId": "k26-list-pages"
+      },
+      "listId": "26-ד"
+    },
+    {
+      "id": "list-restored-k26-עם",
+      "electionId": "k26",
+      "effectiveDate": "2026-10-02",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "The Supreme Court allowed the appeal and reversed the list exclusion; the list could compete.",
+      "textHe": "בית המשפט העליון קיבל את הערעור וביטל את פסילת הרשימה; הרשימה הורשתה להתמודד.",
+      "source": {
+        "url": "https://www.gov.il/he/pages/hashutafut-lekulam_iist",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-26 (gov.il)",
+        "publisherHe": "ועדת הבחירות המרכזית לכנסת ה-26 (gov.il)",
+        "evidence": "official",
+        "sourceId": "k26-list-pages"
+      },
+      "listId": "26-ד"
+    },
+    {
+      "id": "withdrawn-list-k23-זץ",
+      "electionId": "k23",
+      "effectiveDate": "2020-03-02",
+      "contestType": "knesset",
+      "type": "withdrawal",
+      "textEn": "Election-day status: Tzomet did not participate after all its candidates resigned, as stated in the candidate gazette. This is a withdrawal, not a valid list falling below the threshold; the individual resignation dates are not established here.",
+      "textHe": "מעמד ביום הבחירות: צומת לא השתתפה לאחר שכל מועמדיה התפטרו, לפי הודעת המועמדים ברשומות. זו פרישה ולא רשימה כשרה שלא עברה את אחוז החסימה; מועדי ההתפטרות הפרטניים לא אומתו כאן.",
+      "source": {
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+        "publisher": "Central Elections Committee / Reshumot",
+        "publisherHe": "Central Elections Committee / Reshumot",
+        "evidence": "official",
+        "sourceId": "k23-candidates-gazette"
+      },
+      "listId": "23-זץ"
+    },
+    {
+      "id": "withdrawal-conflict-k26-זץ",
+      "electionId": "k26",
+      "effectiveDate": "2026-10-25",
+      "contestType": "knesset",
+      "type": "withdrawal",
+      "textEn": "The retained CEC page says all Brit Olam candidates resigned on 25 October 2026 and the list was not contesting. The dataset currently keeps Brit Olam (זץ) as not withdrawn and attaches that withdrawal wording to Ahi (צבי). This identity/status conflict remains unresolved; no vote or withdrawal flag is changed by this context note.",
+      "textHe": "בעמוד הוועדה השמור נאמר שכל מועמדי ברית עולם התפטרו ב־25 באוקטובר 2026 ושהרשימה אינה מתמודדת. הנתונים מסמנים כעת את ברית עולם (זץ) כלא־פורשת ומצמידים את נוסח הפרישה לאחי (צבי). הסתירה בזהות ובמעמד טרם הובררה; הערת ההקשר אינה משנה קולות או סימון פרישה.",
+      "source": {
+        "url": "https://www.gov.il/he/pages/brit-olam_list22",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-26 (gov.il)",
+        "publisherHe": "ועדת הבחירות המרכזית לכנסת ה-26 (gov.il)",
+        "evidence": "unresolved",
+        "sourceId": "k26-list-pages"
+      },
+      "listId": "26-זץ"
+    },
+    {
+      "id": "opening-members-k3",
+      "electionId": "k3",
+      "effectiveDate": "1955-08-15",
+      "contestType": "knesset",
+      "type": "membership-snapshot",
+      "textEn": "Opening-day snapshot: Moshe Kol (#2) is declared elected in the results notice; Idov Cohen (#6) served at opening. Registered rank, declaration and opening membership are different snapshots; list seats do not change. The records do not establish the exact replacement date.",
+      "textHe": "תמונת מצב ביום הפתיחה: משה קול (2) מופיע כנבחר בהודעת התוצאות; אידוב כהן (6) כיהן בפתיחה. הדירוג הרשום, הכרזת הבחירה והכהונה בפתיחה הם מצבים נפרדים; מספר המנדטים של הרשימה אינו משתנה. הרשומות אינן קובעות את מועד ההחלפה המדויק.",
+      "source": {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%203%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+        "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+        "publisherHe": "Knesset (official OData API, ParliamentInfo.svc)",
+        "evidence": "official",
+        "sourceId": "k3-membership-odata"
+      },
+      "listId": "3-פ",
+      "relatedSources": [
+        {
+          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset3-cand.pdf",
+          "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+          "publisherHe": "Central Elections Committee / Reshumot (gov.il host)",
+          "evidence": "official",
+          "sourceId": "k3-candidates-gazette"
+        },
+        {
+          "url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/records-results3/he/archive_knesset3_records-results3.pdf",
+          "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+          "publisherHe": "Central Elections Committee / Reshumot (gov.il host)",
+          "evidence": "official",
+          "sourceId": "k3-results-gazette"
+        }
+      ]
+    },
+    {
+      "id": "opening-members-k16",
+      "electionId": "k16",
+      "effectiveDate": "2003-02-17",
+      "contestType": "knesset",
+      "type": "membership-snapshot",
+      "textEn": "Opening-day snapshot: Natan Sharansky (#1) is declared elected in the results notice; Marina Solodkin (#3) served at opening. Registered rank, declaration and opening membership are different snapshots; list seats do not change. The records do not establish the exact replacement date.",
+      "textHe": "תמונת מצב ביום הפתיחה: נתן שרנסקי (1) מופיע כנבחר בהודעת התוצאות; מרינה סולודקין (3) כיהנה בפתיחה. הדירוג הרשום, הכרזת הבחירה והכהונה בפתיחה הם מצבים נפרדים; מספר המנדטים של הרשימה אינו משתנה. הרשומות אינן קובעות את מועד ההחלפה המדויק.",
+      "source": {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2016%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+        "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+        "publisherHe": "Knesset (official OData API, ParliamentInfo.svc)",
+        "evidence": "official",
+        "sourceId": "k16-membership-odata"
+      },
+      "listId": "16-כן",
+      "relatedSources": [
+        {
+          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset16-cand.pdf",
+          "publisher": "Central Elections Committee / Reshumot",
+          "publisherHe": "Central Elections Committee / Reshumot",
+          "evidence": "official",
+          "sourceId": "k16-candidates-gazette"
+        },
+        {
+          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset16-results.pdf",
+          "publisher": "Central Elections Committee / Reshumot",
+          "publisherHe": "Central Elections Committee / Reshumot",
+          "evidence": "official",
+          "sourceId": "k16-results-gazette"
+        }
+      ]
+    },
+    {
+      "id": "opening-members-k20",
+      "electionId": "k20",
+      "effectiveDate": "2015-03-31",
+      "contestType": "knesset",
+      "type": "membership-snapshot",
+      "textEn": "Opening-day snapshot: Ilan Shohat (#4) is declared elected in the results notice; Robert Ilatov (#7) served at opening. Registered rank, declaration and opening membership are different snapshots; list seats do not change. The records do not establish the exact replacement date.",
+      "textHe": "תמונת מצב ביום הפתיחה: אילן שוחט (4) מופיע כנבחר בהודעת התוצאות; רוברט אילטוב (7) כיהן בפתיחה. הדירוג הרשום, הכרזת הבחירה והכהונה בפתיחה הם מצבים נפרדים; מספר המנדטים של הרשימה אינו משתנה. הרשומות אינן קובעות את מועד ההחלפה המדויק.",
+      "source": {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2020%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+        "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+        "publisherHe": "Knesset (official OData API, ParliamentInfo.svc)",
+        "evidence": "official",
+        "sourceId": "k20-membership-odata"
+      },
+      "listId": "20-ל",
+      "relatedSources": [
+        {
+          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset20-cand.pdf",
+          "publisher": "Central Elections Committee / Reshumot",
+          "publisherHe": "Central Elections Committee / Reshumot",
+          "evidence": "official",
+          "sourceId": "k20-candidates-gazette"
+        },
+        {
+          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset20-results.pdf",
+          "publisher": "Central Elections Committee / Reshumot",
+          "publisherHe": "Central Elections Committee / Reshumot",
+          "evidence": "official",
+          "sourceId": "k20-results-gazette"
+        }
+      ]
+    },
+    {
+      "id": "opening-members-k23",
+      "electionId": "k23",
+      "effectiveDate": "2020-03-16",
+      "contestType": "knesset",
+      "type": "membership-snapshot",
+      "textEn": "Opening-day snapshot: Yael German was registered at #13; Idan Roll (#34) served at opening. No retained CEC notice names the elected members for this election. Registered rank, declaration and opening membership are different snapshots; list seats do not change. The records do not establish the exact replacement date.",
+      "textHe": "תמונת מצב ביום הפתיחה: יעל גרמן נרשמה במקום 13; עידן רול (34) כיהן בפתיחה. אין במקורות השמורים הודעת ועדה עם שמות הנבחרים בבחירות אלה. הדירוג הרשום, הכרזת הבחירה והכהונה בפתיחה הם מצבים נפרדים; מספר המנדטים של הרשימה אינו משתנה. הרשומות אינן קובעות את מועד ההחלפה המדויק.",
+      "source": {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2023%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+        "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+        "publisherHe": "Knesset (official OData API, ParliamentInfo.svc)",
+        "evidence": "official",
+        "sourceId": "k23-membership-odata"
+      },
+      "listId": "23-פה",
+      "relatedSources": [
+        {
+          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+          "publisher": "Central Elections Committee / Reshumot",
+          "publisherHe": "Central Elections Committee / Reshumot",
+          "evidence": "official",
+          "sourceId": "k23-candidates-gazette"
+        }
+      ]
+    },
+    {
+      "id": "opening-members-k24",
+      "electionId": "k24",
+      "effectiveDate": "2021-04-06",
+      "contestType": "knesset",
+      "type": "membership-snapshot",
+      "textEn": "Opening-day snapshot: Alon Davidi was registered at #3; Idit Silman (#8) served at opening. No retained CEC notice names the elected members for this election. Registered rank, declaration and opening membership are different snapshots; list seats do not change. The records do not establish the exact replacement date.",
+      "textHe": "תמונת מצב ביום הפתיחה: אלון דוידי נרשם במקום 3; עידית סילמן (8) כיהנה בפתיחה. אין במקורות השמורים הודעת ועדה עם שמות הנבחרים בבחירות אלה. הדירוג הרשום, הכרזת הבחירה והכהונה בפתיחה הם מצבים נפרדים; מספר המנדטים של הרשימה אינו משתנה. הרשומות אינן קובעות את מועד ההחלפה המדויק.",
+      "source": {
+        "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2024%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+        "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+        "publisherHe": "Knesset (official OData API, ParliamentInfo.svc)",
+        "evidence": "official",
+        "sourceId": "k24-membership-odata"
+      },
+      "listId": "24-ב",
+      "relatedSources": [
+        {
+          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-9476.pdf",
+          "publisher": "Central Elections Committee / Reshumot",
+          "publisherHe": "Central Elections Committee / Reshumot",
+          "evidence": "official",
+          "sourceId": "k24-candidates-gazette"
+        }
+      ]
+    },
+    {
+      "id": "registered-not-declared-k12-מחל",
+      "electionId": "k12",
+      "effectiveDate": "1988-11-21",
+      "contestType": "knesset",
+      "type": "membership-snapshot",
+      "textEn": "By opening day: Michael Reiser (#25) appears in the registered list but is omitted from the gazetted elected names. Original ranks are preserved; the dataset skips this rank, following the results notice. No resignation date or cause is inferred from the omission.",
+      "textHe": "עד יום הפתיחה: מיכאל רייסר (25) מופיע ברשימה הרשומה אך אינו מופיע בשמות הנבחרים ברשומות. הדירוג המקורי נשמר ובנתונים מדלגים על מקום זה בהתאם להודעת התוצאות. אין מסיקים מההשמטה מועד התפטרות או סיבה.",
+      "source": {
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset12-results.pdf",
+        "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+        "publisherHe": "Central Elections Committee / Reshumot (gov.il host)",
+        "evidence": "official",
+        "sourceId": "k12-results-gazette"
+      },
+      "listId": "12-מחל",
+      "relatedSources": [
+        {
+          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset12-cand.pdf",
+          "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+          "publisherHe": "Central Elections Committee / Reshumot (gov.il host)",
+          "evidence": "official",
+          "sourceId": "k12-candidates-gazette"
+        },
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2012%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+          "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+          "publisherHe": "Knesset (official OData API, ParliamentInfo.svc)",
+          "evidence": "official",
+          "sourceId": "k12-membership-odata"
+        }
+      ]
+    },
+    {
+      "id": "registered-not-declared-k13-מחל",
+      "electionId": "k13",
+      "effectiveDate": "1992-07-13",
+      "contestType": "knesset",
+      "type": "membership-snapshot",
+      "textEn": "By opening day: Moshe Arens (#2) appears in the registered list but is omitted from the gazetted elected names. Original ranks are preserved; the dataset skips this rank, following the results notice. No resignation date or cause is inferred from the omission.",
+      "textHe": "עד יום הפתיחה: משה ארנס (2) מופיע ברשימה הרשומה אך אינו מופיע בשמות הנבחרים ברשומות. הדירוג המקורי נשמר ובנתונים מדלגים על מקום זה בהתאם להודעת התוצאות. אין מסיקים מההשמטה מועד התפטרות או סיבה.",
+      "source": {
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset13-results.pdf",
+        "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+        "publisherHe": "Central Elections Committee / Reshumot (gov.il host)",
+        "evidence": "official",
+        "sourceId": "k13-results-gazette"
+      },
+      "listId": "13-מחל",
+      "relatedSources": [
+        {
+          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset13-cand.pdf",
+          "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+          "publisherHe": "Central Elections Committee / Reshumot (gov.il host)",
+          "evidence": "official",
+          "sourceId": "k13-candidates-gazette"
+        },
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2013%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+          "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+          "publisherHe": "Knesset (official OData API, ParliamentInfo.svc)",
+          "evidence": "official",
+          "sourceId": "k13-membership-odata"
+        }
+      ]
+    },
+    {
+      "id": "registered-not-declared-k14-אמת",
+      "electionId": "k14",
+      "effectiveDate": "1996-06-17",
+      "contestType": "knesset",
+      "type": "membership-snapshot",
+      "textEn": "By opening day: Ora Namir (#18) appears in the registered list but is omitted from the gazetted elected names. Original ranks are preserved; the dataset skips this rank, following the results notice. No resignation date or cause is inferred from the omission.",
+      "textHe": "עד יום הפתיחה: אורה נמיר (18) מופיע ברשימה הרשומה אך אינו מופיע בשמות הנבחרים ברשומות. הדירוג המקורי נשמר ובנתונים מדלגים על מקום זה בהתאם להודעת התוצאות. אין מסיקים מההשמטה מועד התפטרות או סיבה.",
+      "source": {
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
+        "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+        "publisherHe": "Central Elections Committee / Reshumot (gov.il host)",
+        "evidence": "official",
+        "sourceId": "k14-results-gazette"
+      },
+      "listId": "14-אמת",
+      "relatedSources": [
+        {
+          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-cand.pdf",
+          "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+          "publisherHe": "Central Elections Committee / Reshumot (gov.il host)",
+          "evidence": "official",
+          "sourceId": "k14-candidates-gazette"
+        },
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2014%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+          "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+          "publisherHe": "Knesset (official OData API, ParliamentInfo.svc)",
+          "evidence": "official",
+          "sourceId": "k14-membership-odata"
+        }
+      ]
+    },
+    {
+      "id": "registered-not-declared-k15-שס",
+      "electionId": "k15",
+      "effectiveDate": "1999-06-07",
+      "contestType": "knesset",
+      "type": "membership-snapshot",
+      "textEn": "By opening day: Aryeh Deri (#1) appears in the registered list but is omitted from the gazetted elected names. Original ranks are preserved; the dataset skips this rank, following the results notice. The gazette records Deri’s resignation on 19 May 1999.",
+      "textHe": "עד יום הפתיחה: אריה דרעי (1) מופיע ברשימה הרשומה אך אינו מופיע בשמות הנבחרים ברשומות. הדירוג המקורי נשמר ובנתונים מדלגים על מקום זה בהתאם להודעת התוצאות. ברשומות מתועדת התפטרות דרעי ב־19 במאי 1999.",
+      "source": {
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-results.pdf",
+        "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+        "publisherHe": "Central Elections Committee / Reshumot (gov.il host)",
+        "evidence": "official",
+        "sourceId": "k15-results-gazette"
+      },
+      "listId": "15-שס",
+      "relatedSources": [
+        {
+          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-cand.pdf",
+          "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+          "publisherHe": "Central Elections Committee / Reshumot (gov.il host)",
+          "evidence": "official",
+          "sourceId": "k15-candidates-gazette"
+        },
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2015%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+          "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+          "publisherHe": "Knesset (official OData API, ParliamentInfo.svc)",
+          "evidence": "official",
+          "sourceId": "k15-membership-odata"
+        }
+      ]
+    },
+    {
+      "id": "registered-not-declared-k15-ט",
+      "electionId": "k15",
+      "effectiveDate": "1999-06-07",
+      "contestType": "knesset",
+      "type": "membership-snapshot",
+      "textEn": "By opening day: Benny Begin (#1) appears in the registered list but is omitted from the gazetted elected names. Original ranks are preserved; the dataset skips this rank, following the results notice. No resignation date or cause is inferred from the omission.",
+      "textHe": "עד יום הפתיחה: בני בגין (1) מופיע ברשימה הרשומה אך אינו מופיע בשמות הנבחרים ברשומות. הדירוג המקורי נשמר ובנתונים מדלגים על מקום זה בהתאם להודעת התוצאות. אין מסיקים מההשמטה מועד התפטרות או סיבה.",
+      "source": {
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-results.pdf",
+        "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+        "publisherHe": "Central Elections Committee / Reshumot (gov.il host)",
+        "evidence": "official",
+        "sourceId": "k15-results-gazette"
+      },
+      "listId": "15-ט",
+      "relatedSources": [
+        {
+          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-cand.pdf",
+          "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+          "publisherHe": "Central Elections Committee / Reshumot (gov.il host)",
+          "evidence": "official",
+          "sourceId": "k15-candidates-gazette"
+        },
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2015%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
+          "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
+          "publisherHe": "Knesset (official OData API, ParliamentInfo.svc)",
+          "evidence": "official",
+          "sourceId": "k15-membership-odata"
+        }
+      ]
+    },
+    {
+      "id": "result-source-comparison-k11",
+      "electionId": "k11",
+      "effectiveDate": "2026-11-04",
+      "contestType": "knesset",
+      "type": "correction",
+      "textEn": "Source comparison reviewed 4 November 2026 (not a historical correction date): The candidate notice misprints Eliyahu Speiser (#16) as שפירא אליהו; the results notice prints שפייזר אליהו. Both readings are preserved; this is not a verified separate erratum.",
+      "textHe": "השוואת מקורות שנבדקה ב־4 בנובמבר 2026 (לא מועד תיקון היסטורי): בהודעת המועמדים נדפס שמו של אליהו שפייזר (16) כ״שפירא אליהו״; בהודעת התוצאות נדפס ״שפייזר אליהו״. שתי הגרסאות נשמרות; לא אומתה הודעת תיקון נפרדת.",
+      "source": {
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset11-results.pdf",
+        "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+        "publisherHe": "Central Elections Committee / Reshumot (gov.il host)",
+        "evidence": "official",
+        "sourceId": "k11-results-gazette"
+      },
+      "listId": "11-אמת",
+      "relatedSources": [
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-3073.pdf",
+          "publisher": "Central Elections Committee / Reshumot (olaw.org.il mirror)",
+          "publisherHe": "Central Elections Committee / Reshumot (olaw.org.il mirror)",
+          "evidence": "official",
+          "sourceId": "k11-candidates-gazette"
+        }
+      ]
+    },
+    {
+      "id": "result-source-comparison-k14",
+      "electionId": "k14",
+      "effectiveDate": "2026-11-04",
+      "contestType": "knesset",
+      "type": "correction",
+      "textEn": "Source comparison reviewed 4 November 2026 (not a historical correction date): The dataset follows the final gazetted Knesset figures. The report records a conflicting MFA table; no formal result-correction notice has been verified. The separate PM ballot must not be substituted for Knesset totals.",
+      "textHe": "השוואת מקורות שנבדקה ב־4 בנובמבר 2026 (לא מועד תיקון היסטורי): הנתונים מבוססים על תוצאות הכנסת הסופיות ברשומות. הדוח מתעד טבלה שונה של משרד החוץ; לא אומתה הודעת תיקון רשמית. אין להחליף את סיכומי הכנסת בסיכומי הפתק הנפרד לראש הממשלה.",
+      "source": {
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
+        "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+        "publisherHe": "Central Elections Committee / Reshumot (gov.il host)",
+        "evidence": "unresolved",
+        "sourceId": "k14-results-gazette"
+      }
+    },
+    {
+      "id": "result-source-comparison-k16",
+      "electionId": "k16",
+      "effectiveDate": "2026-11-04",
+      "contestType": "knesset",
+      "type": "correction",
+      "textEn": "Source comparison reviewed 4 November 2026 (not a historical correction date): Printed list counts exceed the gazette’s own valid total by 410. The dataset uses reconciled polling sums for Mafdal and Lider. No formal gazette erratum is verified; this is a disclosed source-precedence choice.",
+      "textHe": "השוואת מקורות שנבדקה ב־4 בנובמבר 2026 (לא מועד תיקון היסטורי): סכום הקולות המודפסים לרשימות גדול ב־410 מסך הכשרים המודפס באותה הודעה. הנתונים משתמשים בסכומי הקלפיות המתואמים למפד״ל וללידר. לא אומת תיקון רשמי לרשומות; זו בחירה מוצהרת בין מקורות.",
+      "source": {
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset16-results.pdf",
+        "publisher": "Central Elections Committee / Reshumot",
+        "publisherHe": "Central Elections Committee / Reshumot",
+        "evidence": "unresolved",
+        "sourceId": "k16-results-gazette"
+      },
+      "relatedSources": [
+        {
+          "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=498b48e9-5af6-474d-b7a4-5ac1e21d3a08",
+          "publisher": "Project derivation of official CEC polling-station data",
+          "publisherHe": "Project derivation of official CEC polling-station data",
+          "evidence": "official",
+          "sourceId": "k16-reconciliation-reviewed"
+        }
+      ],
+      "listId": "16-ב"
+    },
+    {
+      "id": "result-source-comparison-k17",
+      "electionId": "k17",
+      "effectiveDate": "2026-11-04",
+      "contestType": "knesset",
+      "type": "correction",
+      "textEn": "Source comparison reviewed 4 November 2026 (not a historical correction date): The polling-station cast sum is nine below the national gazette valid-plus-invalid total. An authoritative explanation or formal correction remains unresolved; do not describe this as a court-ordered recount.",
+      "textHe": "השוואת מקורות שנבדקה ב־4 בנובמבר 2026 (לא מועד תיקון היסטורי): סכום המצביעים בקלפיות קטן בתשעה מסכום הכשרים והפסולים בפרסום הארצי ברשומות. הסבר מוסמך או תיקון רשמי טרם אותר; אין לתאר זאת כספירה חוזרת בצו בית משפט.",
+      "source": {
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset17-results.pdf",
+        "publisher": "Central Elections Committee / Reshumot",
+        "publisherHe": "Central Elections Committee / Reshumot",
+        "evidence": "unresolved",
+        "sourceId": "k17-results-gazette"
+      },
+      "relatedSources": [
+        {
+          "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=70f8bc93-8d98-4c20-ad7c-768af713f1c5",
+          "publisher": "Project derivation of official CEC polling-station data",
+          "publisherHe": "Project derivation of official CEC polling-station data",
+          "evidence": "official",
+          "sourceId": "k17-reconciliation-reviewed"
+        }
+      ]
+    },
+    {
+      "id": "result-source-comparison-k18",
+      "electionId": "k18",
+      "effectiveDate": "2026-11-04",
+      "contestType": "knesset",
+      "type": "correction",
+      "textEn": "Source comparison reviewed 4 November 2026 (not a historical correction date): The gazette prints 49,684 invalid votes; the CEC memorandum and polling data give 43,097. Valid list votes agree. The dataset uses the latter invalid total; no formal erratum has been located.",
+      "textHe": "השוואת מקורות שנבדקה ב־4 בנובמבר 2026 (לא מועד תיקון היסטורי): ברשומות מודפסים 49,684 קולות פסולים; בתזכיר ועדת הבחירות ובנתוני הקלפיות מופיעים 43,097. הקולות הכשרים לרשימות תואמים. הנתונים משתמשים בסכום הפסולים האחרון; לא אותרה הודעת תיקון רשמית.",
+      "source": {
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset18-results.pdf",
+        "publisher": "Central Elections Committee / Reshumot",
+        "publisherHe": "Central Elections Committee / Reshumot",
+        "evidence": "unresolved",
+        "sourceId": "k18-results-gazette"
+      },
+      "relatedSources": [
+        {
+          "url": "https://www.gov.il/apps/elections/elections-knesset-18/heb/about/Electoral_result.pdf",
+          "publisher": "Central Elections Committee",
+          "publisherHe": "Central Elections Committee",
+          "evidence": "official",
+          "sourceId": "k18-allocation-memorandum"
+        }
+      ]
+    },
+    {
+      "id": "result-source-comparison-k19",
+      "electionId": "k19",
+      "effectiveDate": "2026-11-04",
+      "contestType": "knesset",
+      "type": "correction",
+      "textEn": "Source comparison reviewed 4 November 2026 (not a historical correction date): The gazette prints 3,792,472 valid votes, but its list counts sum to 3,792,742, matching the final CEC total. Final versus gazetted list totals differ by +109 Likud–Yisrael Beiteinu, −107 Kadima and −2 Hayisraelim; seats are unchanged. The cause and formal correction history remain unresolved.",
+      "textHe": "השוואת מקורות שנבדקה ב־4 בנובמבר 2026 (לא מועד תיקון היסטורי): ברשומות מודפסים 3,792,472 קולות כשרים אך סכום הרשימות הוא 3,792,742, כסך הסופי של הוועדה. ההפרשים בין התוצאה הסופית לרשומות הם 109+ לליכוד ביתנו, 107− לקדימה ו־2− לישראלים; המנדטים זהים. הסיבה והליך התיקון הרשמי טרם הובררו.",
+      "source": {
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset19-results.pdf",
+        "publisher": "Central Elections Committee / Reshumot",
+        "publisherHe": "Central Elections Committee / Reshumot",
+        "evidence": "unresolved",
+        "sourceId": "k19-results-gazette"
+      },
+      "relatedSources": [
+        {
+          "url": "https://www.gov.il/apps/elections/eng/list/Results_eng.html",
+          "publisher": "Central Elections Committee",
+          "publisherHe": "Central Elections Committee",
+          "evidence": "official",
+          "sourceId": "k19-final-results-capture"
+        }
+      ],
+      "listId": "19-מחל"
+    },
+    {
+      "id": "double-envelope-procedure-k21",
+      "electionId": "k21",
+      "effectiveDate": "2019-03-24",
+      "contestType": "knesset",
+      "type": "counting-context",
+      "textEn": "The Knesset’s 24 March 2019 review describes centrally verified and counted double envelopes: soldiers are only one eligible group. Hospital patients, prisoners and other eligible voters also use them. Counting may continue for up to three days after election day; military voting may begin earlier. These are not a separate Knesset contest or differently weighted votes.",
+      "textHe": "סקירת הכנסת מ־24 במרס 2019 מתארת אימות וספירה מרכזיים של מעטפות כפולות: חיילים הם רק אחת מקבוצות הזכאים. גם מאושפזים, אסירים וזכאים נוספים מצביעים כך. הספירה עשויה להימשך עד שלושה ימים לאחר הבחירות; ההצבעה בצבא עשויה להתחיל מוקדם יותר. אלה אינם בחירות נפרדות לכנסת או קולות בעלי משקל אחר.",
+      "source": {
+        "url": "https://fs.knesset.gov.il/globaldocs/MMM/2e5ce5ea-ec1e-e911-80e1-00155d0a98a9/2_2e5ce5ea-ec1e-e911-80e1-00155d0a98a9_11_10970.pdf",
+        "publisher": "Knesset Research and Information Center / מרכז המחקר והמידע של הכנסת",
+        "publisherHe": "Knesset Research and Information Center / מרכז המחקר והמידע של הכנסת",
+        "evidence": "official",
+        "sourceId": "context-double-envelopes-2019"
+      }
+    },
+    {
+      "id": "double-envelope-example-k19-עם",
+      "electionId": "k19",
+      "effectiveDate": "2019-03-24",
+      "contestType": "knesset",
+      "type": "counting-context",
+      "textEn": "Retrospective account published 24 March 2019: the Knesset research paper says adding double-envelope votes in the 2013 election shifted one provisional seat from Ra’am–Ta’al to Jewish Home. The final dataset already includes these votes. The paper does not give the exact count-change date; this is not evidence of a court correction.",
+      "textHe": "תיאור בדיעבד שפורסם ב־24 במרס 2019: לפי מסמך המחקר של הכנסת, צירוף המעטפות הכפולות בבחירות 2013 העביר מנדט זמני אחד מרע״מ–תע״ל לבית היהודי. התוצאות הסופיות כבר כוללות קולות אלה. המסמך אינו מציין את מועד השינוי המדויק; זו אינה ראיה לתיקון בצו בית משפט.",
+      "source": {
+        "url": "https://fs.knesset.gov.il/globaldocs/MMM/2e5ce5ea-ec1e-e911-80e1-00155d0a98a9/2_2e5ce5ea-ec1e-e911-80e1-00155d0a98a9_11_10970.pdf",
+        "publisher": "Knesset Research and Information Center / מרכז המחקר והמידע של הכנסת",
+        "publisherHe": "Knesset Research and Information Center / מרכז המחקר והמידע של הכנסת",
+        "evidence": "official",
+        "sourceId": "context-double-envelopes-2019"
+      },
+      "listId": "19-עם"
+    },
+    {
+      "id": "double-envelope-example-k19-טב",
+      "electionId": "k19",
+      "effectiveDate": "2019-03-24",
+      "contestType": "knesset",
+      "type": "counting-context",
+      "textEn": "Retrospective account published 24 March 2019: the Knesset research paper says adding double-envelope votes in the 2013 election shifted one provisional seat from Ra’am–Ta’al to Jewish Home. The final dataset already includes these votes. The paper does not give the exact count-change date; this is not evidence of a court correction.",
+      "textHe": "תיאור בדיעבד שפורסם ב־24 במרס 2019: לפי מסמך המחקר של הכנסת, צירוף המעטפות הכפולות בבחירות 2013 העביר מנדט זמני אחד מרע״מ–תע״ל לבית היהודי. התוצאות הסופיות כבר כוללות קולות אלה. המסמך אינו מציין את מועד השינוי המדויק; זו אינה ראיה לתיקון בצו בית משפט.",
+      "source": {
+        "url": "https://fs.knesset.gov.il/globaldocs/MMM/2e5ce5ea-ec1e-e911-80e1-00155d0a98a9/2_2e5ce5ea-ec1e-e911-80e1-00155d0a98a9_11_10970.pdf",
+        "publisher": "Knesset Research and Information Center / מרכז המחקר והמידע של הכנסת",
+        "publisherHe": "Knesset Research and Information Center / מרכז המחקר והמידע של הכנסת",
+        "evidence": "official",
+        "sourceId": "context-double-envelopes-2019"
+      },
+      "listId": "19-טב"
+    },
+    {
+      "id": "result-source-comparison-k16-ף",
+      "electionId": "k16",
+      "effectiveDate": "2026-11-04",
+      "contestType": "knesset",
+      "type": "correction",
+      "textEn": "Source comparison reviewed 4 November 2026 (not a historical correction date): Printed list counts exceed the gazette’s own valid total by 410. The dataset uses reconciled polling sums for Mafdal and Lider. No formal gazette erratum is verified; this is a disclosed source-precedence choice.",
+      "textHe": "השוואת מקורות שנבדקה ב־4 בנובמבר 2026 (לא מועד תיקון היסטורי): סכום הקולות המודפסים לרשימות גדול ב־410 מסך הכשרים המודפס באותה הודעה. הנתונים משתמשים בסכומי הקלפיות המתואמים למפד״ל וללידר. לא אומת תיקון רשמי לרשומות; זו בחירה מוצהרת בין מקורות.",
+      "source": {
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset16-results.pdf",
+        "publisher": "Central Elections Committee / Reshumot",
+        "publisherHe": "Central Elections Committee / Reshumot",
+        "evidence": "unresolved",
+        "sourceId": "k16-results-gazette"
+      },
+      "relatedSources": [
+        {
+          "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=498b48e9-5af6-474d-b7a4-5ac1e21d3a08",
+          "publisher": "Project derivation of official CEC polling-station data",
+          "publisherHe": "Project derivation of official CEC polling-station data",
+          "evidence": "official",
+          "sourceId": "k16-reconciliation-reviewed"
+        }
+      ],
+      "listId": "16-ף"
+    },
+    {
+      "id": "result-source-comparison-k19-כן",
+      "electionId": "k19",
+      "effectiveDate": "2026-11-04",
+      "contestType": "knesset",
+      "type": "correction",
+      "textEn": "Source comparison reviewed 4 November 2026 (not a historical correction date): The gazette prints 3,792,472 valid votes, but its list counts sum to 3,792,742, matching the final CEC total. Final versus gazetted list totals differ by +109 Likud–Yisrael Beiteinu, −107 Kadima and −2 Hayisraelim; seats are unchanged. The cause and formal correction history remain unresolved.",
+      "textHe": "השוואת מקורות שנבדקה ב־4 בנובמבר 2026 (לא מועד תיקון היסטורי): ברשומות מודפסים 3,792,472 קולות כשרים אך סכום הרשימות הוא 3,792,742, כסך הסופי של הוועדה. ההפרשים בין התוצאה הסופית לרשומות הם 109+ לליכוד ביתנו, 107− לקדימה ו־2− לישראלים; המנדטים זהים. הסיבה והליך התיקון הרשמי טרם הובררו.",
+      "source": {
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset19-results.pdf",
+        "publisher": "Central Elections Committee / Reshumot",
+        "publisherHe": "Central Elections Committee / Reshumot",
+        "evidence": "unresolved",
+        "sourceId": "k19-results-gazette"
+      },
+      "relatedSources": [
+        {
+          "url": "https://www.gov.il/apps/elections/eng/list/Results_eng.html",
+          "publisher": "Central Elections Committee",
+          "publisherHe": "Central Elections Committee",
+          "evidence": "official",
+          "sourceId": "k19-final-results-capture"
+        }
+      ],
+      "listId": "19-כן"
+    },
+    {
+      "id": "result-source-comparison-k19-הי",
+      "electionId": "k19",
+      "effectiveDate": "2026-11-04",
+      "contestType": "knesset",
+      "type": "correction",
+      "textEn": "Source comparison reviewed 4 November 2026 (not a historical correction date): The gazette prints 3,792,472 valid votes, but its list counts sum to 3,792,742, matching the final CEC total. Final versus gazetted list totals differ by +109 Likud–Yisrael Beiteinu, −107 Kadima and −2 Hayisraelim; seats are unchanged. The cause and formal correction history remain unresolved.",
+      "textHe": "השוואת מקורות שנבדקה ב־4 בנובמבר 2026 (לא מועד תיקון היסטורי): ברשומות מודפסים 3,792,472 קולות כשרים אך סכום הרשימות הוא 3,792,742, כסך הסופי של הוועדה. ההפרשים בין התוצאה הסופית לרשומות הם 109+ לליכוד ביתנו, 107− לקדימה ו־2− לישראלים; המנדטים זהים. הסיבה והליך התיקון הרשמי טרם הובררו.",
+      "source": {
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset19-results.pdf",
+        "publisher": "Central Elections Committee / Reshumot",
+        "publisherHe": "Central Elections Committee / Reshumot",
+        "evidence": "unresolved",
+        "sourceId": "k19-results-gazette"
+      },
+      "relatedSources": [
+        {
+          "url": "https://www.gov.il/apps/elections/eng/list/Results_eng.html",
+          "publisher": "Central Elections Committee",
+          "publisherHe": "Central Elections Committee",
+          "evidence": "official",
+          "sourceId": "k19-final-results-capture"
+        }
+      ],
+      "listId": "19-הי"
+    },
+    {
+      "id": "candidate-eligibility-k26-די",
+      "electionId": "k26",
+      "listId": "26-די",
+      "effectiveDate": "2026-09-27",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "The CEC page records that Yonatan Bahat (#15) was not included in the list approved on 27 September 2026 following candidate eligibility checks under Elections Law §§62B/63 (as specified on that page). This is separate from ideological exclusion under Basic Law §7A and does not exclude the entire list.",
+      "textHe": "בעמוד הוועדה מתועד כי יונתן בהט (15) לא נכללו ברשימה שאושרה ב־27 בספטמבר 2026 לאחר בדיקת כשירות לפי סעיפים 62ב/63 לחוק הבחירות (כמפורט בעמוד). זו אינה פסילה אידאולוגית לפי סעיף 7א לחוק־היסוד ואינה פסילה של הרשימה כולה.",
+      "source": {
+        "url": "https://www.gov.il/he/pages/hamiluimnikim-vehakalkalit_list16",
+        "publisher": "Central Elections Committee",
+        "publisherHe": "ועדת הבחירות המרכזית",
+        "evidence": "official",
+        "sourceId": "k26-list-pages"
+      }
+    },
+    {
+      "id": "candidate-eligibility-k26-ד",
+      "electionId": "k26",
+      "listId": "26-ד",
+      "effectiveDate": "2026-09-27",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "The CEC page records that Ahmad Hassan (#34) was not included in the list approved on 27 September 2026 following candidate eligibility checks under Elections Law §§62B/63 (as specified on that page). This is separate from ideological exclusion under Basic Law §7A and does not exclude the entire list.",
+      "textHe": "בעמוד הוועדה מתועד כי אחמד חסן (34) לא נכללו ברשימה שאושרה ב־27 בספטמבר 2026 לאחר בדיקת כשירות לפי סעיפים 62ב/63 לחוק הבחירות (כמפורט בעמוד). זו אינה פסילה אידאולוגית לפי סעיף 7א לחוק־היסוד ואינה פסילה של הרשימה כולה.",
+      "source": {
+        "url": "https://www.gov.il/he/pages/hashutafut-lekulam_iist",
+        "publisher": "Central Elections Committee",
+        "publisherHe": "ועדת הבחירות המרכזית",
+        "evidence": "official",
+        "sourceId": "k26-list-pages"
+      }
+    },
+    {
+      "id": "candidate-eligibility-k26-קך",
+      "electionId": "k26",
+      "listId": "26-קך",
+      "effectiveDate": "2026-09-27",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "The CEC page records that Ori Michaelov (#21) and Golan Ashton (#24) was not included in the list approved on 27 September 2026 following candidate eligibility checks under Elections Law §§62B/63 (as specified on that page). This is separate from ideological exclusion under Basic Law §7A and does not exclude the entire list.",
+      "textHe": "בעמוד הוועדה מתועד כי אורי מיכאלוב (21) ואשטון גולן (24) לא נכללו ברשימה שאושרה ב־27 בספטמבר 2026 לאחר בדיקת כשירות לפי סעיפים 62ב/63 לחוק הבחירות (כמפורט בעמוד). זו אינה פסילה אידאולוגית לפי סעיף 7א לחוק־היסוד ואינה פסילה של הרשימה כולה.",
+      "source": {
+        "url": "https://www.gov.il/he/pages/seder-chadash_list15",
+        "publisher": "Central Elections Committee",
+        "publisherHe": "ועדת הבחירות המרכזית",
+        "evidence": "official",
+        "sourceId": "k26-list-pages"
+      }
+    },
+    {
+      "id": "candidate-eligibility-k26-צף",
+      "electionId": "k26",
+      "listId": "26-צף",
+      "effectiveDate": "2026-09-27",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "The CEC page records that Yehuda Aryeh Fovitz (#22) was not included in the list approved on 27 September 2026 following candidate eligibility checks under Elections Law §§62B/63 (as specified on that page). This is separate from ideological exclusion under Basic Law §7A and does not exclude the entire list.",
+      "textHe": "בעמוד הוועדה מתועד כי יהודה אריה פוויץ (22) לא נכללו ברשימה שאושרה ב־27 בספטמבר 2026 לאחר בדיקת כשירות לפי סעיפים 62ב/63 לחוק הבחירות (כמפורט בעמוד). זו אינה פסילה אידאולוגית לפי סעיף 7א לחוק־היסוד ואינה פסילה של הרשימה כולה.",
+      "source": {
+        "url": "https://www.gov.il/he/pages/pirates_list_5",
+        "publisher": "Central Elections Committee",
+        "publisherHe": "ועדת הבחירות המרכזית",
+        "evidence": "official",
+        "sourceId": "k26-list-pages"
+      }
+    },
+    {
+      "id": "candidate-eligibility-k26-קץ",
+      "electionId": "k26",
+      "listId": "26-קץ",
+      "effectiveDate": "2026-09-27",
+      "contestType": "knesset",
+      "type": "disqualification",
+      "textEn": "The CEC page records that Michael Eisenstein (#9) was not included in the list approved on 27 September 2026 following candidate eligibility checks under Elections Law §§62B/63 (as specified on that page). This is separate from ideological exclusion under Basic Law §7A and does not exclude the entire list.",
+      "textHe": "בעמוד הוועדה מתועד כי מיכאל אייזנשטיין (9) לא נכללו ברשימה שאושרה ב־27 בספטמבר 2026 לאחר בדיקת כשירות לפי סעיפים 62ב/63 לחוק הבחירות (כמפורט בעמוד). זו אינה פסילה אידאולוגית לפי סעיף 7א לחוק־היסוד ואינה פסילה של הרשימה כולה.",
+      "source": {
+        "url": "https://www.gov.il/he/pages/mishpat-tzedek_list12",
+        "publisher": "Central Elections Committee",
+        "publisherHe": "ועדת הבחירות המרכזית",
+        "evidence": "official",
+        "sourceId": "k26-list-pages"
+      }
     }
   ],
   "pmContests": [

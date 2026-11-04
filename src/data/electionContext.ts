@@ -5,7 +5,7 @@ export type Evidence = 'official' | 'secondary' | 'unresolved';
 export interface ContextSource { url: string; publisher: string; publisherHe: string; evidence: Evidence; sourceId?: string; verification?: 'report-only' }
 export interface ContextEvent {
   id: string; electionId: ElectionId; effectiveDate: string; contestType: 'knesset';
-  type: 'institutional-identity' | 'postponement' | 'early-repeat-election' | 'government-formation' | 'pm-ballot' | 'disqualification' | 'withdrawal' | 'correction' | 'publication-status' | 'candidate-capacity';
+  type: 'institutional-identity' | 'postponement' | 'early-repeat-election' | 'government-formation' | 'pm-ballot' | 'disqualification' | 'withdrawal' | 'correction' | 'publication-status' | 'candidate-capacity' | 'membership-snapshot' | 'counting-context';
   textEn: string; textHe: string; source: ContextSource; listId?: string; relatedSources?: ContextSource[];
 }
 export interface SourcedCount { value: number; source: ContextSource }
@@ -42,7 +42,7 @@ export function validateElectionContext(input: unknown): asserts input is Electi
   if (!Array.isArray(root.events) || !Array.isArray(root.pmContests)) fail('missing arrays');
   for (const v of root.events) {
     const e = common(v); text(e.textEn); text(e.textHe);
-    if (e.contestType !== 'knesset' || !['institutional-identity','postponement','early-repeat-election','government-formation','pm-ballot','disqualification','withdrawal','correction','publication-status','candidate-capacity'].includes(e.type)) fail('invalid event type');
+    if (e.contestType !== 'knesset' || !['institutional-identity','postponement','early-repeat-election','government-formation','pm-ballot','disqualification','withdrawal','correction','publication-status','candidate-capacity','membership-snapshot','counting-context'].includes(e.type)) fail('invalid event type');
     if (e.listId && !e.listId.startsWith(`${e.electionId.slice(1)}-`)) fail('wrong list election');
     if (e.relatedSources !== undefined) { if (!Array.isArray(e.relatedSources)) fail('invalid sources'); e.relatedSources.forEach(source); }
   }

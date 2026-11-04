@@ -318,3 +318,60 @@ The deliberate challenge pass checked three tempting but false shortcuts: agreem
 7. **Defer a full membership/government timeline unless selected as product scope.** Norwegian replacements, dated faction changes and actual rotations can enrich candidate/coalition exploration, but they do not warrant rewriting election seat totals. Campaign finance and detailed polling logistics can remain sourced context links.
 
 No app code change, new dataset, push, merge or deployment is part of this report.
+
+## Step 3 status — 4 November 2026
+
+Added read-only, bilingual participation and snapshot events in `election-context.json`:
+IDI-labelled **secondary** final eligibility outcomes for k6, k11–k13, k16, k18–k25;
+separate list and individual decisions (including the Court's 2019 individual exclusions);
+dated official CEC k26 list exclusions/reversals and individual eligibility checks;
+k23 Tzomet's whole-list withdrawal; and registered/declared/opening-member distinctions
+for k3, k12–k16, k20 and k23–k24. Original candidate notes, ranks, votes, seats and
+withdrawal flags are preserved. Excluded lists absent from the datasets have election-level
+events; no fictitious list ids were created.
+
+Source-comparison notes cover k11, k14 and k16–k19, preserving **unresolved** formal
+correction history rather than asserting an erratum or recount. k11 is a candidate-name
+misprint resolved by the results notice, not a newly discovered correction notice.
+A retained official Knesset research paper supplies k21's double-envelope explanation
+and its retrospective k19 provisional-seat example, attached to both affected lists.
+Soldiers are one eligible group, not a synonym for all double envelopes. The final
+national totals already include those votes; no seat-engine or locality logic changed.
+
+Evidence/date limits: IDI's historical outcome tables were inspected, but original
+judgments and their exact dates were not established case by case. Those events explicitly
+use **election-day final-status** dates, not invented ruling dates. Membership snapshots
+use the opening date, not an inferred resignation date; Deri's 19 May 1999 date is supplied
+by the retained gazette. Source comparisons use the review date, explicitly not a historical
+correction date. The 2013 envelope example uses the paper's publication date (24 March 2019),
+not an unverified counting timestamp. The primary envelope PDF is in `data/raw/context/`
+with SHA-256 in `SOURCES.json`; IDI's copyrighted article is represented by a URL/body-hash
+retrieval record, with no verified archive URL (`archiveUrl: null`). Existing gazettes,
+reviewed transcriptions and OData captures retain their original manifest hashes.
+Direct downloads used the requested User-Agent. No 429 was received and no access
+barrier was bypassed. The downloaded legal-history chapter was not needed for an event
+and remains scratch rather than another retained copy.
+
+**Still unresolved:** the k18 פח, k19 זה/פך and k21 Yachad withdrawal reasons/dates;
+a complete withdrawal register (including k22); primary historical appeal dates/orders;
+formal correction/erratum authority for k14/k16–k19 and the nine-vote k17 discrepancy;
+exact pre-opening replacement dates beyond the sourced notices; and a historical
+category-by-category envelope timeline. No general rule is extrapolated from the 2019 paper.
+
+A concrete k26 source conflict was found while checking list ids: the retained CEC capture
+names **Brit Olam** (dataset `26-זץ`) in the 25 October all-candidates resignation notice,
+while the dataset's corresponding wording is attached to **Ahi** (`26-צבי`) and Brit Olam
+is not marked withdrawn. This is an **unresolved** event attached to Brit Olam, not a
+silent repair of either list's status. Blue and White's precise withdrawal notice/date also
+remains unverified here. Likewise, the captured k26 reversal concerns **the Joint List**
+(`26-ודם`) and **Hashutafut Lekulam** (`26-ד`), not Ra'am (`26-עם`): the earlier C1 wording
+conflated those identities. Events follow the actual captured page titles and dataset ids.
+Resolving these conflicts needs the original notices and an independently checked mapping;
+this data-only context pass does not change the final-input datasets to fit the report.
+
+Verification: context validator passed; `npm run -s data:build` reported all 38 outputs
+unchanged on the final rebuild (the initial rebuild updated only `sources.json`);
+TypeScript and Vite passed; Vitest passed 542 tests in 65 files; Playwright on port 5312
+passed 106 tests. The initial browser attempt was blocked by sandbox localhost `EPERM`;
+the same suite passed with localhost permission. Election JSON and the differential
+corpus hashes are unchanged. No UI component, seat engine or scenario code was edited.
