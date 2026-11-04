@@ -1,0 +1,82 @@
+{
+  "sourceId": "cec-13-final",
+  "locator": "page 1, embedded table",
+  "titleDate": "2022-10-28",
+  "fieldworkAsPrinted": "20/10/2022 9:00–14:00",
+  "marginOfErrorPctAsPrinted": 3.4,
+  "sampleSize": 801,
+  "rawShareBasis": "unweighted concatenation of Jewish and non-Jewish samples; expressly NOT population weighted",
+  "rawSharesPct": [
+    {
+      "reportedNameHe": "הליכוד בראשות בנימין נתניהו",
+      "pct": 16.9
+    },
+    {
+      "reportedNameHe": "יש עתיד בראשות יאיר לפיד",
+      "pct": 16.2
+    },
+    {
+      "reportedNameHe": "המחנה הממלכתי בראשות בני גנץ",
+      "pct": 6.6
+    },
+    {
+      "reportedNameHe": "הציונות הדתית ועוצמה יהודית בראשות בצלאל סמוטריץ",
+      "pct": 9.4
+    },
+    {
+      "reportedNameHe": "שס בראשות אריה דרעי",
+      "pct": 5.5
+    },
+    {
+      "reportedNameHe": "יהדות התורה בראשות משה גפני",
+      "pct": 4.9
+    },
+    {
+      "reportedNameHe": "העבודה בראשות מרב מיכאלי",
+      "pct": 4.4
+    },
+    {
+      "reportedNameHe": "מרצ בראשות זהבה גלאון",
+      "pct": 3.3
+    },
+    {
+      "reportedNameHe": "הבית היהודי בראשות איילת שקד",
+      "pct": 1.8
+    },
+    {
+      "reportedNameHe": "ישראל ביתנו בראשות אביגדור ליברמן",
+      "pct": 3.7
+    },
+    {
+      "reportedNameHe": "חדש-תעל בראשות איימן עודה ואחמד טיבי",
+      "pct": 4.4
+    },
+    {
+      "reportedNameHe": "רעם בראשות מנסור עבאס",
+      "pct": 5.3
+    },
+    {
+      "reportedNameHe": "בלד בראשות סמי אבו שחאדה",
+      "pct": 3.8
+    },
+    {
+      "reportedNameHe": "הכלכלית בראשות ירון זליכה",
+      "pct": 0.3
+    },
+    {
+      "reportedNameHe": "צעירים בוערים בראשות הדר מוכתר",
+      "pct": 0.1
+    },
+    {
+      "reportedNameHe": "בראשות סטלה וינשטיין 30/40",
+      "pct": 0.8
+    },
+    {
+      "reportedNameHe": "חופש כלכלי בראשות אביר קארה",
+      "pct": 0.3
+    }
+  ],
+  "combinedDontKnowOrWillNotVotePct": 12.3,
+  "undecidedOnlyPct": null,
+  "doNotUseAsScenarioVotes": true
+}

@@ -1,0 +1,327 @@
+{
+  "complete": false,
+  "discoveryIndex": {
+    "url": "https://themadad.com/allpolls25/",
+    "sha256": "7f391e7601a5cad52bf8b5c15649dad3f7de05bd2d643bd4e8d054151bdd522d",
+    "role": "candidate dates/outlets only; no retained figures"
+  },
+  "candidates": [
+    {
+      "id": "k25-maariv-2022-10-28",
+      "discoveryDate": "2022-10-28",
+      "discoveryOutlet": "מעריב",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": "k25-maariv-2022-10-28"
+    },
+    {
+      "id": "k25-13-2022-10-28",
+      "discoveryDate": "2022-10-28",
+      "discoveryOutlet": "חדשות 13",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": "k25-13-2022-10-28"
+    },
+    {
+      "id": "k25-12-2022-10-28",
+      "discoveryDate": "2022-10-28",
+      "discoveryOutlet": "חדשות 12",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": null,
+      "sourceUrl": "https://www.mako.co.il/news-israel-elections/election_2022/Article-afc48a535be1481026.htm",
+      "gapReason": "timeout/HTTP 503 or HTTP 200 access-denial body",
+      "archiveStatus": "archive.org availability returned 429 on first request; stopped without retry (no Retry-After)"
+    },
+    {
+      "id": "k25-israelhayom-2022-10-27",
+      "discoveryDate": "2022-10-27",
+      "discoveryOutlet": "ישראל היום",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": null,
+      "sourceUrl": "https://www.israelhayom.co.il/news/politics/article/13226572",
+      "gapReason": "HTTP 403",
+      "archiveStatus": "archive.org availability returned 429 on first request; stopped without retry (no Retry-After)"
+    },
+    {
+      "id": "k25-kan-2022-10-27",
+      "discoveryDate": "2022-10-27",
+      "discoveryOutlet": "כאן חדשות",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": null,
+      "sourceUrl": "https://www.kan.org.il/Item/?itemId=136898",
+      "gapReason": "HTTP 403",
+      "archiveStatus": "archive.org availability returned 429 on first request; stopped without retry (no Retry-After)"
+    },
+    {
+      "id": "k25-14-2022-10-27",
+      "discoveryDate": "2022-10-27",
+      "discoveryOutlet": "ערוץ 14",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": "k25-14-2022-10-27"
+    },
+    {
+      "id": "k25-13-2022-10-25",
+      "discoveryDate": "2022-10-25",
+      "discoveryOutlet": "חדשות 13",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": "k25-13-2022-10-25"
+    },
+    {
+      "id": "k25-kan-2022-10-24",
+      "discoveryDate": "2022-10-24",
+      "discoveryOutlet": "רשת ב",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": null,
+      "sourceUrl": "https://www.kan.org.il/item/?itemid=136638",
+      "gapReason": "HTTP 403",
+      "archiveStatus": "archive.org availability returned 429 on first request; stopped without retry (no Retry-After)"
+    },
+    {
+      "id": "k25-maariv-2022-10-24",
+      "discoveryDate": "2022-10-24",
+      "discoveryOutlet": "מעריב",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": "k25-maariv-2022-10-24"
+    },
+    {
+      "id": "k25-14-2022-10-24",
+      "discoveryDate": "2022-10-24",
+      "discoveryOutlet": "ערוץ 14",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": "k25-14-2022-10-24"
+    },
+    {
+      "id": "k25-12-2022-10-24",
+      "discoveryDate": "2022-10-24",
+      "discoveryOutlet": "חדשות 12",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": null,
+      "sourceUrl": "https://www.mako.co.il/news-israel-elections/2022_q4/Article-989f30b39aa0481027.htm",
+      "gapReason": "timeout/HTTP 503 or HTTP 200 access-denial body",
+      "archiveStatus": "archive.org availability returned 429 on first request; stopped without retry (no Retry-After)"
+    },
+    {
+      "id": "k25-maariv-2022-10-21",
+      "discoveryDate": "2022-10-21",
+      "discoveryOutlet": "מעריב",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": "k25-maariv-2022-10-21"
+    },
+    {
+      "id": "k25-12-2022-10-20",
+      "discoveryDate": "2022-10-20",
+      "discoveryOutlet": "שידורי קשת",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": null,
+      "sourceUrl": "https://www.mako.co.il/news-israel-elections/election_2022/Article-0285379d2d3f381027.htm",
+      "gapReason": "timeout/HTTP 503 or HTTP 200 access-denial body",
+      "archiveStatus": "archive.org availability returned 429 on first request; stopped without retry (no Retry-After)"
+    },
+    {
+      "id": "k25-14-2022-10-20",
+      "discoveryDate": "2022-10-20",
+      "discoveryOutlet": "ערוץ 14",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": "k25-14-2022-10-20"
+    },
+    {
+      "id": "k25-13-2022-10-20",
+      "discoveryDate": "2022-10-20",
+      "discoveryOutlet": "חדשות 13",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": "k25-13-2022-10-20"
+    },
+    {
+      "id": "k25-kan-2022-10-18",
+      "discoveryDate": "2022-10-18",
+      "discoveryOutlet": "כאן חדשות",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": null,
+      "sourceUrl": "https://www.kan.org.il/Item/?itemId=136341",
+      "gapReason": "HTTP 403",
+      "archiveStatus": "archive.org availability returned 429 on first request; stopped without retry (no Retry-After)"
+    },
+    {
+      "id": "k25-12-2022-10-18",
+      "discoveryDate": "2022-10-18",
+      "discoveryOutlet": "חדשות 12",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": null,
+      "sourceUrl": "https://www.mako.co.il/news-israel-elections/election_2022/Article-caf7ecdd6cbe381027.htm",
+      "gapReason": "timeout/HTTP 503 or HTTP 200 access-denial body",
+      "archiveStatus": "archive.org availability returned 429 on first request; stopped without retry (no Retry-After)"
+    },
+    {
+      "id": "k25-maariv-2022-10-14",
+      "discoveryDate": "2022-10-14",
+      "discoveryOutlet": "מעריב",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": "k25-maariv-2022-10-14"
+    },
+    {
+      "id": "k25-13-2022-10-13",
+      "discoveryDate": "2022-10-13",
+      "discoveryOutlet": "חדשות 13",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": "k25-13-2022-10-13"
+    },
+    {
+      "id": "k25-14-2022-10-13",
+      "discoveryDate": "2022-10-13",
+      "discoveryOutlet": "ערוץ 14",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": "k25-14-2022-10-13"
+    },
+    {
+      "id": "k25-kan-2022-10-11",
+      "discoveryDate": "2022-10-11",
+      "discoveryOutlet": "כאן חדשות",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": null,
+      "sourceUrl": null,
+      "gapReason": "primary article not yet located",
+      "archiveStatus": "archive.org availability returned 429 on first request; stopped without retry (no Retry-After)"
+    },
+    {
+      "id": "k25-12-2022-10-11",
+      "discoveryDate": "2022-10-11",
+      "discoveryOutlet": "חדשות 12",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": null,
+      "sourceUrl": "https://www.mako.co.il/news-israel-elections/election_2022/Article-d3f89620728c381026.htm",
+      "gapReason": "timeout/HTTP 503 or HTTP 200 access-denial body",
+      "archiveStatus": "archive.org availability returned 429 on first request; stopped without retry (no Retry-After)"
+    },
+    {
+      "id": "k25-maariv-2022-10-07",
+      "discoveryDate": "2022-10-07",
+      "discoveryOutlet": "מעריב",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": "k25-maariv-2022-10-07"
+    },
+    {
+      "id": "k25-israelhayom-2022-10-06",
+      "discoveryDate": "2022-10-06",
+      "discoveryOutlet": "ישראל היום",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": null,
+      "sourceUrl": "https://www.israelhayom.co.il/13137422",
+      "gapReason": "HTTP 403",
+      "archiveStatus": "archive.org availability returned 429 on first request; stopped without retry (no Retry-After)"
+    },
+    {
+      "id": "k25-14-2022-10-06",
+      "discoveryDate": "2022-10-06",
+      "discoveryOutlet": "ערוץ 14",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": "k25-14-2022-10-06"
+    },
+    {
+      "id": "k25-13-2022-10-02",
+      "discoveryDate": "2022-10-02",
+      "discoveryOutlet": "חדשות 13",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": "k25-13-2022-10-02"
+    },
+    {
+      "id": "k25-kan-2022-10-01",
+      "discoveryDate": "2022-10-01",
+      "discoveryOutlet": "כאן חדשות",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": null,
+      "sourceUrl": "https://www.kan.org.il/Item/?itemId=135533",
+      "gapReason": "HTTP 403",
+      "archiveStatus": "archive.org availability returned 429 on first request; stopped without retry (no Retry-After)"
+    },
+    {
+      "id": "k25-maariv-2022-09-30",
+      "discoveryDate": "2022-09-30",
+      "discoveryOutlet": "מעריב",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": "k25-maariv-2022-09-30"
+    },
+    {
+      "id": "k25-14-2022-09-29",
+      "discoveryDate": "2022-09-29",
+      "discoveryOutlet": "ערוץ 14",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": "k25-14-2022-09-29"
+    },
+    {
+      "id": "k25-12-2022-09-28",
+      "discoveryDate": "2022-09-28",
+      "discoveryOutlet": "חדשות 12",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": null,
+      "sourceUrl": "https://www.mako.co.il/news-israel-elections/election_2022/Article-4262db62dc48381027.htm",
+      "gapReason": "timeout/HTTP 503 or HTTP 200 access-denial body",
+      "archiveStatus": "archive.org availability returned 429 on first request; stopped without retry (no Retry-After)"
+    },
+    {
+      "id": "k25-maariv-2022-09-23",
+      "discoveryDate": "2022-09-23",
+      "discoveryOutlet": "מעריב",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": null,
+      "sourceUrl": null,
+      "gapReason": "primary article not yet located",
+      "archiveStatus": "archive.org availability returned 429 on first request; stopped without retry (no Retry-After)"
+    },
+    {
+      "id": "k25-13-2022-09-22",
+      "discoveryDate": "2022-09-22",
+      "discoveryOutlet": "חדשות 13",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": "k25-13-2022-09-22"
+    },
+    {
+      "id": "k25-12-2022-09-22",
+      "discoveryDate": "2022-09-22",
+      "discoveryOutlet": "חדשות 12",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": null,
+      "sourceUrl": null,
+      "gapReason": "primary article not yet located",
+      "archiveStatus": "archive.org availability returned 429 on first request; stopped without retry (no Retry-After)"
+    },
+    {
+      "id": "k25-14-2022-09-22",
+      "discoveryDate": "2022-09-22",
+      "discoveryOutlet": "ערוץ 14",
+      "discoverySource": "https://themadad.com/allpolls25/",
+      "discoveryStatus": "secondary-index-only; publication date must be checked against outlet",
+      "retainedRecordId": "k25-14-2022-09-22"
+    }
+  ]
+}
