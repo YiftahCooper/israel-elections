@@ -3,6 +3,8 @@
   "id": "arab-arab-jewish",
   "revision": "draft-2026-11-04",
   "status": "research-draft-not-production",
+  "labelEn": "Arab & Arab–Jewish",
+  "labelHe": "ערבים וערבים־יהודים",
   "nameHe": "ערביות וערביות־יהודיות",
   "nameEn": "Arab and Arab–Jewish lists",
   "defaultMixedPolicy": "separate-segment",

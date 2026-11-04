@@ -1,5 +1,12 @@
 # Changelog
 
+## 4 November 2026 — concise family grouping labels
+
+- Add bilingual short labels to all nine family presets while retaining full titles in their information sheets.
+- Omit empty Mixed blocs and repeated family names/majority claims from family session summaries.
+- Label and tint each member row consistently, retaining seat order for separated members.
+
+
 ## 4 November 2026 — visual family profiles
 
 - Replace family/compare dropdowns with stable-colour selection chips and hero charts with exact tooltips, pending points and shared scales.

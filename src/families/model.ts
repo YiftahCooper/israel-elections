@@ -1,3 +1,4 @@
+import {familyLabel} from './labels.ts';
 import type { ElectionDataset, ElectionId } from '../data/schema.ts';
 import type { Action, Scenario } from '../model/scenario.ts';
 import type { SourceChoice } from '../app/voteEdit.ts';
@@ -5,6 +6,7 @@ export type MixedPolicy = 'separate-segment' | 'include-whole-list' | 'exclude';
 export interface Member { listId: string; partyIds: string[]; scope: string; treatment: string; classificationEvidence: { status: string; sourceIds: string[]; claim: string }; [key: string]: unknown }
 export interface Family {
   schemaVersion: 1; id: string; revision: string; status: string; nameHe: string; nameEn: string;
+  labelEn?: string; labelHe?: string;
   definition: string; definitionHe?: string; defaultMixedPolicy: MixedPolicy;
   sources: Record<string, { url?: string; publisher?: string; [key: string]: unknown }>;
   elections: { electionId: ElectionId; members: Member[]; reviewCandidates: { listId: string; nameHe?: string; reason: string; sourceIds: string[] }[]; [key: string]: unknown }[];
@@ -15,6 +17,7 @@ const obj = (x: unknown): x is Record<string, any> => !!x && typeof x === 'objec
 const strings = (x: unknown): x is string[] => Array.isArray(x) && x.every(y => typeof y === 'string') && new Set(x).size === x.length;
 export function validFamily(x: unknown): x is Family {
   if (!obj(x) || x.schemaVersion !== 1 || !['id','revision','status','nameHe','nameEn','definition'].every(k => typeof x[k] === 'string' && x[k].length > 0) || !['separate-segment','include-whole-list','exclude'].includes(x.defaultMixedPolicy) || !obj(x.sources) || !Array.isArray(x.elections)) return false;
+  for (const k of ['labelHe','labelEn']) if (x[k]!==undefined && (typeof x[k]!=='string'||!x[k].trim())) return false;
   for (const s of Object.values(x.sources)) { if (!obj(s)) return false; if (s.url) { try { const u = new URL(s.url); if (u.protocol !== 'https:' || /(^|\.)en\.(m\.)?wikipedia\.org$/i.test(u.hostname)) return false; } catch { return false; } } }
   if (new Set(x.elections.map((e: any) => e.electionId)).size !== x.elections.length) return false;
   for (const e of x.elections) {
@@ -78,7 +81,7 @@ export function scaleAction(f: Family, s: Scenario, mode: 'multiplier'|'share', 
   return { type:'familyOperation', definition:structuredClone(f), operation:'scale', allocations, source, target:Number(target), registeredDelta:source.kind==='new'?Number(delta):0 };
 }
 export function groupingAction(f: Family,s: Scenario,lang: 'he'|'en' = 'he'): Action {
-  return {type:'familyOperation',definition:structuredClone(f),operation:'group', name:lang==='he'?f.nameHe:f.nameEn, placements:Object.fromEntries(resolve(f,s).map(l=>[l.id,l.family]))};
+  return {type:'familyOperation',definition:structuredClone(f),operation:'group', name:familyLabel(f,lang), placements:Object.fromEntries(resolve(f,s).map(l=>[l.id,l.family]))};
 }
 export interface Catalogue { version:1; users:Family[]; hidden:string[] }
 export const emptyCatalogue = ():Catalogue=>({version:1,users:[],hidden:[]});

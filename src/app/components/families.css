@@ -63,8 +63,8 @@
 .family-link-preview ul {max-block-size:200px;overflow:auto;}
 .family-manage-row {display:flex;align-items:center;justify-content:space-between;gap:8px;}
 .family-treatment {padding:8px 12px;font-size:12px;background:var(--surface-2);}
-.lb li[data-family=selected],.lb li[data-family=mixed] {border-inline-start:3px solid var(--rule-2);margin-inline-start:4px;}
-.family-run-label {display:block;padding:5px 10px;font-size:11px;color:var(--ink-2);font-weight:600;border-block-start:1px solid var(--rule);}
+.lb li[data-family=selected],.lb li[data-family=mixed] {border-inline-start:2px solid var(--rule-2);}
+.family-row-label {display:block;font-size:11px;color:var(--ink-2);font-weight:600;line-height:1.2;}
 .lb-row[data-family=selected] {background:var(--open);}
 .lb-row[data-family=mixed] {background:repeating-linear-gradient(135deg,transparent,transparent 5px,var(--rule) 5px,var(--rule) 6px);}
 @media(min-width:1200px){.family-plots{grid-template-columns:repeat(2,minmax(0,1fr));}}

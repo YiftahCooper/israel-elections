@@ -1,3 +1,4 @@
+import {isFamilyGrouping} from '../families/labels.ts';
 import { applyAction } from '../model/actions.ts';
 import { compareAllocations } from '../engine/analysis.ts';
 // Memoised derivations: every displayed figure comes from allocate(scenario).
@@ -238,6 +239,7 @@ export function groupingBaseline(s: Scenario, base: Scenario): Scenario | null {
   catch { return null; }
 }
 export function groupingLabel(s: Scenario, lang: Lang): string {
+  if(isFamilyGrouping(s)) {const b=s.blocs.find(b=>b.id==='selected')!;return lang==='he'?b.nameHe:b.nameEn;}
   const g = s.blocSchemes?.find(g => g.id === s.blocSchemeId);
   return g ? `${lang === 'he' ? g.nameHe : g.nameEn} · ${g.date ?? (lang === 'he' ? 'חלוקה מוכרת בבחירות אלה' : 'recognised grouping of this election')}` : s.customGroupingName ?? (lang === 'he' ? 'החלוקה שלכם' : 'Your grouping');
 }

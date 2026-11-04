@@ -1,3 +1,4 @@
+import {familyLabel} from '../families/labels.ts';
 import { resolve, distribute } from '../families/model.ts';
 import { RULESETS } from "../engine/rules.ts";
 import { PARTS, partSnapshot } from './parts.ts';
@@ -102,8 +103,8 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       const definition = structuredClone(action.definition);
       if (action.operation === 'group') {
         need(resolve(definition,s).every(l => action.placements[l.id] === l.family), 'family', 'Grouping does not cover every list.');
-        s = {...s, familyDefinition:definition, blocSchemeId:null, customGroupingName:action.name??definition.nameHe, partyBlocs:{}, candidateBlocs:{},
-          blocs:[{id:'selected',nameHe:definition.nameHe,nameEn:definition.nameEn,color:'#526779'},{id:'mixed',nameHe:'רשימות מעורבות',nameEn:'Mixed lists',color:'#8b8194'},{id:'other',nameHe:'כל השאר',nameEn:'Everyone else',color:'#7d8791'}],
+        s = {...s, familyDefinition:definition, blocSchemeId:null, customGroupingName:!action.name||action.name===definition.nameHe?familyLabel(definition,'he'):action.name===definition.nameEn?familyLabel(definition,'en'):action.name, partyBlocs:{}, candidateBlocs:{},
+          blocs:[{id:'selected',nameHe:familyLabel(definition,'he'),nameEn:familyLabel(definition,'en'),color:'#526779'},...(Object.values(action.placements).includes('mixed')?[{id:'mixed',nameHe:'רשימות מעורבות',nameEn:'Mixed lists',color:'#8b8194'}]:[]),{id:'other',nameHe:'כל השאר',nameEn:'Everyone else',color:'#7d8791'}],
           lists:s.lists.map(l=>({...l,bloc:action.placements[l.id]}))};
       } else {
         const ids = action.allocations.map(a=>a.listId);

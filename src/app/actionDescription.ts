@@ -1,3 +1,4 @@
+import {familyLabel} from '../families/labels.ts';
 import { RULESETS } from '../engine/rules.ts';
 import { ruleEraLabel, changeText } from './changeValue.tsx';
 import { PARTS } from '../model/parts.ts';
@@ -9,7 +10,7 @@ export function describe(a: Action, s: Scenario, lang: Lang): string {
   const n = (id: string) => { const l = s.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : (lang === 'he' ? 'רשימה שהוסרה' : 'Removed list'); };
   const he = lang === 'he';
   switch (a.type) {
-    case 'familyOperation': return (a.operation === 'group' ? (he ? 'קיבוץ לפי משפחה: ' : 'Family grouping: ') : (he ? 'שינוי קולות המשפחה: ' : 'Scaled family votes: ')) + a.definition[he ? 'nameHe' : 'nameEn'];
+    case 'familyOperation': return (a.operation === 'group' ? (he ? 'קיבוץ לפי משפחה: ' : 'Family grouping: ') : (he ? 'שינוי קולות המשפחה: ' : 'Scaled family votes: ')) + familyLabel(a.definition,lang);
     case 'setIdentityColor': return he ? 'צבע התרחיש השתנה' : 'Scenario colour changed';
     case 'setCoalition': return he ? 'בחירת הקואליציה השתנתה' : 'Coalition selection changed';
     case 'startPart': return `${PARTS[a.part][lang]}: ${a.name ?? (a.source === 'official' ? (he ? 'התוצאה הרשמית' : 'official result') : a.source === 'blank' ? (he ? 'ריק' : 'blank') : (a.source === 'preset' ? (a.part === 'rules' ? (a.presetId && RULESETS[a.presetId] ? ruleEraLabel(RULESETS[a.presetId], lang) : (he ? 'כללים ממקור מתועד' : 'Sourced rules')) : s.blocSchemes?.find(g => g.id === a.presetId)?.[he ? 'nameHe' : 'nameEn'] ?? (he ? 'חלוקה ממקור מתועד' : 'Sourced grouping')) : (he ? 'תרחיש שמור' : 'saved scenario')))}`;

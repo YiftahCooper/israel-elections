@@ -27,8 +27,8 @@ test('fork, save, hide, restore and cross-election membership persists',async({p
 });
 test('1988 grouping shows Overview bracket; 2022 +10% previews seats and undoes',async({page})=>{
  await start(page);await choose(page.getByRole('button',{name:'Election',exact:true}),'k12');
- await page.getByRole('button',{name:'Apply family as grouping',exact:true}).click();await expect(page.locator('.bloc-panel')).toContainText('Haredi');await expect(page.locator('.family-run-label').first()).toContainText('Haredi');
- await page.screenshot({path:'.backup-scratch/families/overview-grouping-en-light-desktop.png',fullPage:true});
+ await page.getByRole('button',{name:'Apply family as grouping',exact:true}).click();await expect(page.locator('.bloc-panel')).toContainText('Haredi');await expect(page.locator('.bp-card')).toHaveCount(2);await expect(page.locator('.session .moves').last()).toHaveText('Haredi 13Everyone else 107');await expect(page.locator('.session')).not.toContainText('majority');await expect(page.getByRole('button',{name:'Degel HaTorah',exact:true}).locator('.family-row-label')).toHaveText('Haredi');await expect(page.getByRole('button',{name:'Degel HaTorah',exact:true})).toHaveAccessibleDescription(/Haredi/);await expect(page.locator('.family-row-label').first()).toContainText('Haredi');
+ await page.screenshot({path:'.backup-scratch/families/overview-grouping-en-light-desktop.png',fullPage:true});await page.getByRole('button',{name:'Degel HaTorah',exact:true}).scrollIntoViewIfNeeded();await page.screenshot({path:'.backup-scratch/families/overview-degel-1988-en-light-desktop.png'});
  await choose(page.getByRole('button',{name:'Election',exact:true}),'k25');await page.getByRole('tab',{name:'Party families',exact:true}).click();await expect(page.locator('.family-consequence')).toContainText('740,474');
  await expect(page.locator('.family-consequence .result-preview')).toHaveCount(2);await page.getByRole('button',{name:'Apply vote scaling',exact:true}).click();await expect(page.locator('.family-consequence')).toContainText('814,521');
  await page.getByRole('group',{name:'Scale mode',exact:true}).getByRole('button',{name:'Target share (%)',exact:true}).click();await expect(page.getByRole('textbox',{name:'Scale value',exact:true})).toHaveValue('15.54');await page.getByRole('group',{name:'Scale mode',exact:true}).getByRole('button',{name:'Increase votes (%)',exact:true}).click();
@@ -56,6 +56,6 @@ for(const lang of ['he','en'])for(const theme of ['light','dark'])for(const phon
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
 });
 test('opening a historical chart retains a family lens without editing the election',async({page})=>{
- await start(page);await page.locator('.family-plots [role=link]').first().click();await expect(page.locator('.family-treatment')).toContainText('Family view');await expect(page.locator('.family-run-label').first()).toContainText('Mixed lists');await expect(page.locator('.family-treatment')).toContainText('Haredi');await expect(page.getByRole('button',{name:/^Undo:/})).toHaveCount(0);
- await page.screenshot({path:'.backup-scratch/families/overview-family-view-1949.png'});await page.getByRole('button',{name:'Clear family view',exact:true}).click();await expect(page.locator('.family-run-label')).toHaveCount(0);
+ await start(page);await page.locator('.family-plots [role=link]').first().click();await expect(page.locator('.family-row-label').first()).toContainText('Mixed lists');await expect(page.locator('.family-treatment')).toContainText('Haredi');await expect(page.getByRole('button',{name:/^Undo:/})).toHaveCount(0);
+ await page.screenshot({path:'.backup-scratch/families/overview-family-view-1949.png'});await page.getByRole('button',{name:'Clear family view',exact:true}).click();await expect(page.locator('.family-row-label')).toHaveCount(0);
 });

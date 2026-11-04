@@ -3,6 +3,8 @@
   "id": "national-religious",
   "revision": "draft-2026-11-04",
   "status": "research-draft-not-production",
+  "labelEn": "Religious Zionist",
+  "labelHe": "ציונות דתית",
   "nameHe": "המסורת הדתית הלאומית",
   "nameEn": "National religious institutional tradition",
   "defaultMixedPolicy": "separate-segment",
