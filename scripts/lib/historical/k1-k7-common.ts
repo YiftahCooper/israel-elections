@@ -127,7 +127,9 @@ export function earlyReleasedDataset(n:number,audit:EarlyAudit=verifyEarlyProgre
     const reviewed=roster.lists.find(x=>x.letters===l.letters);
     // the verifier proved excludedCandidateRanks are exactly the registered candidates not elected
     const excluded=notSeatedRanks(reviewed?.electedCandidateRanks??[],(reviewed?.candidates??[]).map(c=>c.rank));
-    return inKeyOrder({...l,
+    // the pre-roster record marks capacity unknown; a reviewed roster replaces that flag
+    const {candidatesUnavailable:_pending,...base}=l;
+    return inKeyOrder({...base,
       notesHe:(reviewed?.candidates??[]).filter(c=>excluded.has(c.rank)).map(notSeatedNoteHe),
       candidates:reviewed?.candidates.map(c=>({...c,id:candidateId(l.id,c.rank),...(excluded.has(c.rank)?{notSeated:true}:{})}))??[],
       ...rosterFlags(!reviewed?'unavailable':reviewed.truncated?'truncated':'complete','explicit'),

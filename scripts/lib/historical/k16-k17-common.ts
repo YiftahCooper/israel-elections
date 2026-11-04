@@ -287,7 +287,8 @@ export function releaseDataset(audit: Audit): { ds: ElectionDataset; loc: Locali
     if (n === 16 && l.letters === 'ב') notesHe.push('בילקוט הפרסומים 5155, עמ׳ 1406, מודפס 132,730; נתון זה אינו מתיישב עם סך הקולות הכשרים שבילקוט עצמו (3,148,364). כאן נעשה שימוש בסיכום הקלפיות הרשמי: 132,370.');
     if (n === 16 && l.letters === 'ף') notesHe.push('בילקוט הפרסומים 5155, עמ׳ 1406, מודפס 883; נתון זה אינו מתיישב עם סך הקולות הכשרים שבילקוט עצמו (3,148,364). כאן נעשה שימוש בסיכום הקלפיות הרשמי: 833.');
     if (n === 16 && l.letters === 'כן') notesHe.push('זו הרשימה הרשומה. נתן שרנסקי (מקום 1) ויתר לאחר הבחירות; בהשבעה כיהנו יולי-יואל אדלשטיין (2) ומרינה סולודקין (3). המקור המשני להודעת הוויתור: ynet, 29.1.2003.');
-    return inKeyOrder({ ...l, candidates: r.candidates.map(c => ({ id: candidateId(l.id, c.rank), rank: c.rank, nameHe: c.nameHe })),
+    const { candidatesUnavailable: _pending, ...base } = l; // the pre-roster record marks capacity unknown; the roster replaces that flag
+    return inKeyOrder({ ...base, candidates: r.candidates.map(c => ({ id: candidateId(l.id, c.rank), rank: c.rank, nameHe: c.nameHe })),
       ...rosterFlags(r.candidatesUnavailable ? 'unavailable' : r.candidatesTruncated ? 'truncated' : 'complete', 'when-set'),
       candidatesSource: review.candidateChecks.sourceId, notesHe }, LIST_KEYS) as unknown as ElectionDataset['lists'][number];
   });
