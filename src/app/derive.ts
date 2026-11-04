@@ -1,3 +1,4 @@
+import { compareAllocations } from '../engine/analysis.ts';
 // Memoised derivations: every displayed figure comes from allocate(scenario).
 import type { ElectionDataset } from '../data/schema.ts';
 import { allocate } from '../engine/allocate.ts';
@@ -176,4 +177,24 @@ export function seatHolders(s: Scenario, r: AllocationResult): SeatHolder[] {
     if (rest > 0) out.push({ ...whole, key: `${l.id}:rest`, seats: rest });
   }
   return out;
+}
+
+/** The same origin-connected groups used by Compare; a split has one baseline, never one per child. */
+export const comparisonGroups = (s: Scenario, r: AllocationResult, base: Scenario, baseR: AllocationResult) => compareAllocations(baseR, base.lists, r, s.lists);
+export function officialSeatsFor(id: string, s: Scenario, r: AllocationResult, base: Scenario, baseR: AllocationResult): number | null {
+  const g = comparisonGroups(s, r, base, baseR).find(g => g.bIds.includes(id));
+  return g && g.bIds.length === 1 ? g.seatsA : null;
+}
+/** Selectable coalition units aggregate contiguous chamber pieces, keeping off-list-bloc seats apart. */
+export function coalitionPieces(s: Scenario, r: AllocationResult) {
+  const out = new Map<string, BlocPiece & { id: string }>();
+  for (const p of blocPieces(s, r)) {
+    const l = s.lists.find(l => l.id === p.listId)!;
+    const partyId = p.bloc === l.bloc ? null : p.partyId;
+    const id = JSON.stringify([p.listId, partyId, p.bloc]);
+    const prev = out.get(id);
+    if (prev) prev.n += p.n;
+    else out.set(id, { ...p, partyId, color: partyId ? p.color : l.color, id });
+  }
+  return [...out.values()].sort((a,b) => b.n-a.n);
 }

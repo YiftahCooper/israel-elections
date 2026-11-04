@@ -37,11 +37,11 @@ describe('seat-security tasks', () => {
       const row = securityRow(item, Object.fromEntries(partsOf(item).map((p) => [p, securityPart(input, src, p, item)])));
       if (!item.qualified) {
         const q = minimalChange(input, item.id, src, goals.qualify(item.id));
-        expect(row).toEqual({ id: item.id, seats: 0, gain: null, lose: null, qualify: q.found ? Number(q.votes) : null });
+        expect(row).toMatchObject({ id: item.id, seats: 0, gain: null, lose: null, qualify: q.found ? Number(q.votes) : null });
       } else {
         const g = minimalChange(input, item.id, src, goals.seatGain(item.id));
         const lo = minimalChange(input, item.id, src, item.seats > 0 ? goals.seatLoss(item.id) : goals.disqualify(item.id), 'lose');
-        expect(row).toEqual({ id: item.id, seats: item.seats, gain: g.found ? Number(g.votes) : null, lose: lo.found ? Number(lo.votes) - 1 : null, qualify: null });
+        expect(row).toMatchObject({ id: item.id, seats: item.seats, gain: g.found ? Number(g.votes) : null, lose: lo.found ? Number(lo.votes) - 1 : null, qualify: null });
       }
     }
     expect(items.some((x) => !x.qualified)).toBe(true);

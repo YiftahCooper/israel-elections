@@ -5,7 +5,7 @@ import { X } from 'lucide-react';
 import type { ElectionDataset } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
-import { listLabel } from '../derive.ts';
+import { listLabel, officialSeatsFor } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { setState } from '../store.ts';
 import { ListDetail } from './ListDetail.tsx';
@@ -22,10 +22,8 @@ export function ListSidePanel({ s, r, ds, base, baseR, listId }: { s: Scenario; 
   // a newly opened list starts at the top of the panel
   useEffect(() => { ref.current?.scrollTo({ top: 0 }); }, [listId]);
   if (!l || !lr) return null;
-  const was = base.lists.some((b) => b.id === l.id)
-    ? baseR.lists.find((x) => x.id === l.id)?.seats ?? 0
-    : l.originIds.reduce((t, o) => t + (baseR.lists.find((x) => x.id === o)?.seats ?? 0), 0);
-  const d = lr.seats - was;
+  const was = officialSeatsFor(l.id, s, r, base, baseR);
+  const d = was === null ? 0 : lr.seats - was;
   return (
     <aside className="panel side-panel" ref={ref} aria-label={listLabel(l, lang)}>
       <header className="sp-head">

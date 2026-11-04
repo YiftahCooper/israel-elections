@@ -6,7 +6,7 @@ import type { ElectionDataset } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import { applyAction } from '../../model/actions.ts';
 import type { Scenario } from '../../model/scenario.ts';
-import { blocPieces, listLabel } from '../derive.ts';
+import { blocPieces, comparisonGroups, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 
 const History = lazy(() => import('./Panels.tsx').then((m) => ({ default: m.History })));
@@ -15,22 +15,10 @@ const MAX_MOVES = 5;
 /** Seats each list holds now against the official result; a list made by a merge or split is compared with
  *  the official seats of the lists it came from, and lists that no longer exist count as losing theirs. */
 export function seatMoves(s: Scenario, r: AllocationResult, base: Scenario, baseR: AllocationResult) {
-  const baseSeats = (id: string) => baseR.lists.find((x) => x.id === id)?.seats ?? 0;
-  const moves: { id: string; label: (lang: 'he' | 'en') => string; d: number }[] = [];
-  const covered = new Set<string>();
-  for (const l of s.lists) {
-    const now = r.lists.find((x) => x.id === l.id)?.seats ?? 0;
-    const origin = base.lists.some((b) => b.id === l.id) ? [l.id] : l.originIds.filter((o) => !covered.has(o));
-    origin.forEach((o) => covered.add(o));
-    const was = origin.reduce((t, o) => t + baseSeats(o), 0);
-    if (now !== was) moves.push({ id: l.id, label: (lang) => listLabel(l, lang), d: now - was });
-  }
-  for (const b of base.lists) {
-    if (covered.has(b.id) || s.lists.some((l) => l.originIds.includes(b.id))) continue;
-    const was = baseSeats(b.id);
-    if (was) moves.push({ id: b.id, label: (lang) => listLabel(b, lang), d: -was });
-  }
-  return moves.sort((a, b) => Math.abs(b.d) - Math.abs(a.d) || b.d - a.d);
+  return comparisonGroups(s, r, base, baseR).filter(g => g.seatsA !== g.seatsB).map(g => ({
+    id: g.key, d: g.seatsB - g.seatsA,
+    label: (lang: 'he' | 'en') => (g.bIds.length ? g.bIds.map(id => s.lists.find(l => l.id === id)!) : g.aIds.map(id => base.lists.find(l => l.id === id)!)).map(l => listLabel(l, lang)).join(' + '),
+  })).sort((a,b) => Math.abs(b.d)-Math.abs(a.d) || b.d-a.d);
 }
 
 function blocTotals(s: Scenario, r: AllocationResult) {

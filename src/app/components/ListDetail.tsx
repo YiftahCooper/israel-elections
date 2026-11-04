@@ -89,7 +89,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
   const baseList = base.lists.find((b) => b.id === l.id) ?? null;
   const listChanged = !!baseList && JSON.stringify(baseList) !== JSON.stringify(l);
   const histVotes = baseList ? baseList.votes : l.originIds.reduce((t, o) => t + (base.lists.find((x) => x.id === o)?.votes ?? 0), 0);
-  const histSeats = baseList ? baseR.lists.find((x) => x.id === l.id)!.seats : l.originIds.reduce((t, o) => t + (baseR.lists.find((x) => x.id === o)?.seats ?? 0), 0);
+  const histSeats = baseList ? baseR.lists.find((x) => x.id === l.id)!.seats : -1;
   const histShares = Object.fromEntries(base.lists.map((b) => [b.id, b.votes]));
   const pctValid = r.totalValid > 0n ? (l.votes / Number(r.totalValid)) * 100 : 0;
   const thr = Number(r.thresholdVotes);
@@ -224,7 +224,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
               {nextQ && <><span>{unit?.isAgreement ? L('Pair’s next-seat quotient', 'מודד הצמד למנדט הבא') : L('Next-seat quotient', 'מודד רשימה למנדט הבא')} <Info term="listquota" /></span><span title={fmtFrac(nextQ)}>{fmtRat(nextQ, 1)}</span></>}
               {lastWin && <><span>{L('Lowest winning quotient', 'המודד הזוכה הנמוך ביותר')}</span><span>{fmtRat(lastWin, 1)}</span></>}
             </>}
-            <span>{L('Historical seats', 'מנדטים בפועל')}</span><span>{histSeats}</span>
+            <span>{L('Historical seats', 'מנדטים בפועל')}</span><span>{histSeats < 0 ? L('Compared together on Overview', 'השוואה משותפת בתמונת המצב') : histSeats}</span>
           </div>
         </section>
       )}
