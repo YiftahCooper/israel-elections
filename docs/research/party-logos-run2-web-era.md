@@ -6,7 +6,7 @@ Acceptance follows decision 0089 and the logo README: official origin plus dated
 
 ## Method and reproducibility
 
-Each initial gap receives three separately recorded Jina search_web queries: Hebrew official/campaign discovery; Commons discovery; official-social discovery. Each query's returned URLs are retained below, including false positives, with no claim they were all opened. Promising Commons descriptions were opened through the MediaWiki API (revisions and imageinfo/extmetadata); the compact catalogue below records the inspected metadata and rejection limitations. Search snippets are discovery only. English Wikipedia was never opened or cited as evidence; incidental links in Commons were not followed. The deliberately broad Commons queries have geographic false positives; they are not counted as corroboration.
+Each initial gap receives three separately recorded Jina search_web query attempts: Hebrew official/campaign discovery; Commons discovery; official-social discovery. The entire additional social pass failed with `This key is out of quota`; these failures are explicitly labelled and are not empty search results. Two Hebrew queries also failed (see per-identity error). Each query's returned URLs are retained below, including false positives, with no claim they were all opened. Promising Commons descriptions were opened through the MediaWiki API (revisions and imageinfo/extmetadata); the compact catalogue below records the inspected metadata and rejection limitations. Search snippets are discovery only. English Wikipedia was never opened or cited as evidence; incidental links in Commons were not followed. The deliberately broad Commons queries have geographic false positives; they are not counted as corroboration.
 
 Plain HTTP used `israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections)` with no email. **No archive.org request was made in this run**, avoiding contention with the other helpers; retained dated archive HTML/assets/CDX from the checkout were inspected where reused. No CAPTCHA or bot challenge was solved or bypassed, no rotating/residential proxy was used. Apify was not used: **$0 spend**. No archive.today capture was acquired. This is an identity-complete search pass, not an exhaustive search of every possible archive or social post.
 
@@ -27,90 +27,192 @@ Each row is one campaign identity. `L` = whole list, `P` = constituent. S1/S2/S3
 
 ### k26 · 2026-10-27
 
-Baseline whole lists: **8/11**; constituents: **8/19**. Every one of the 14 initial gaps below was queried in all three routes.
+Baseline whole lists: **8/11**; constituents: **8/19**. Every one of the 14 initial gaps below was attempted in all three routes; S3 quota failures do not count as completed source searches.
 
 **L `ג` — יהדות התורה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
 
 - S1: `"יהדות התורה" "2026" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/policy/parties-and-elections/parties/yahadut-hatorah>; <https://he.wikipedia.org/wiki/%D7%99%D7%94%D7%93%D7%95%D7%AA_%D7%94%D7%AA%D7%95%D7%A8%D7%94>; <https://www.kan.org.il/content/kan-news/politic/1112697>.
 - S2: `site:commons.wikimedia.org "United Torah Judaism" logo 2026` → no returned URLs.
-- S3: `site:facebook.com "יהדות התורה" 2026 בחירות` → no returned URLs.
+- S3: `site:facebook.com "יהדות התורה" 2026 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "יהדות התורה" 2026 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
 
 **L `ט` — הציונות הדתית–זהות.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
 
 - S1: `"הציונות הדתית–זהות" "2026" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.kan.org.il/content/kan-news/politic/1113524>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%A9>; <https://polimeter.co.il/parties/religious-zionism>.
 - S2: `site:commons.wikimedia.org "Religious Zionism–Zehut" logo 2026` → no returned URLs.
-- S3: `site:facebook.com "הציונות הדתית–זהות" 2026 בחירות` → no returned URLs.
+- S3: `site:facebook.com "הציונות הדתית–זהות" 2026 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "הציונות הדתית–זהות" 2026 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
 
 **L `עם` — רע״ם.** Added fair-use whole-list logo from the dated official Ra’am brochure.
 
 - S1: `"רע״ם" "2026" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/elections-2026>; <https://www.kan.org.il/content/kan-news/politic/live-1101961>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%A9>.
 - S2: `site:commons.wikimedia.org "Ra'am" logo 2026` → <https://commons.wikimedia.org/wiki/File:Israeli_Knesset_Blocs_2026.svg>; <https://commons.wikimedia.org/wiki/File:Israeli_Knesset_Composition_2026.svg>; <https://commons.wikimedia.org/wiki/File:Opinion_polls_Israel_2026.svg>.
-- S3: `site:facebook.com "רעם" 2026 בחירות` → no returned URLs.
+- S3: `site:facebook.com "רעם" 2026 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "רעם" 2026 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
 
 **P `agudat-yisrael` — אגודת ישראל.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
 
 - S1: `"אגודת ישראל" "2026" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.gov.il/he/pages/candidates-lists-26>; <https://www.idi.org.il/policy/parties-and-elections>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%A9>.
 - S2: `site:commons.wikimedia.org "Agudat Yisrael" logo 2026` → <https://commons.wikimedia.org/wiki/Category:SVG_logos_of_political_parties_in_Israel>; <https://commons.wikimedia.org/wiki/Category:Haredi_Judaism>.
-- S3: `site:facebook.com "אגודת ישראל" 2026 בחירות` → no returned URLs.
+- S3: `site:facebook.com "אגודת ישראל" 2026 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "אגודת ישראל" 2026 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
 
 **P `atid-ehad` — עתיד אחד – עתיד טוב לישראל.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
 
 - S1: `"עתיד אחד – עתיד טוב לישראל" "2026" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%A9>; <https://www.nli.org.il/he/sheets/NNL_Ephemera997001190900405171/NLI>; <https://www.hamichlol.org.il/%D7%94%D7%A6%D7%99%D7%95%D7%A0%D7%95%D7%AA_%D7%94%D7%93%D7%AA%D7%99%D7%AA_(%D7%A1%D7%99%D7%A2%D7%94)>.
 - S2: `site:commons.wikimedia.org "Atid Ehad" logo 2026` → no returned URLs.
-- S3: `site:facebook.com "עתיד אחד" 2026 בחירות` → no returned URLs.
+- S3: `site:facebook.com "עתיד אחד" 2026 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "עתיד אחד" 2026 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
 
 **P `balad` — בל"ד.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
 
 - S1: `"בל"ד" "2026" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/elections-2026>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%A9>; <https://www.kan.org.il/content/kan-news/politic/1103572>.
 - S2: `site:commons.wikimedia.org "Balad" logo 2026` → <https://commons.wikimedia.org/wiki/File:Wust_El-Balad-Logo.jpg>; <https://commons.wikimedia.org/wiki/Category:SVG_logos_of_political_parties_in_Israel>; <https://commons.wikimedia.org/wiki/File:Opinion_polls_Israel_2026.svg>.
-- S3: `site:facebook.com "בלד" 2026 בחירות` → no returned URLs.
+- S3: `site:facebook.com "בלד" 2026 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "בלד" 2026 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
 
 **P `degel-hatorah` — דגל התורה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
 
 - S1: `"דגל התורה" "2026" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%93%D7%92%D7%9C_%D7%94%D7%AA%D7%95%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections/parties/degel-hatora>; <https://www.kan.org.il/content/kan-news/newstv/p-963853/s1/1096871>.
 - S2: `site:commons.wikimedia.org "Degel HaTorah" logo 2026` → no returned URLs.
-- S3: `site:facebook.com "דגל התורה" 2026 בחירות` → no returned URLs.
+- S3: `site:facebook.com "דגל התורה" 2026 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "דגל התורה" 2026 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
 
 **P `eretz-yisrael-shelanu` — ארץ ישראל שלנו.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
 
 - S1: `"ארץ ישראל שלנו" "2026" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%A9>; <https://www.gov.il/he/pages/yehudit-meuhedet_list14>; <https://www.idi.org.il/policy/parties-and-elections/elections/2019-2>.
 - S2: `site:commons.wikimedia.org "Eretz Yisrael Shelanu" logo 2026` → no returned URLs.
-- S3: `site:facebook.com "ארץ ישראל שלנו" 2026 בחירות` → no returned URLs.
+- S3: `site:facebook.com "ארץ ישראל שלנו" 2026 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "ארץ ישראל שלנו" 2026 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
 
 **P `hadash` — חד"ש (המפלגה הקומוניסטית הישראלית).** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
 
 - S1: `"חד"ש (המפלגה הקומוניסטית הישראלית)" "2026" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://t.me/s/king_of_theneighborhood?before=29968>.
 - S2: `site:commons.wikimedia.org "Hadash (Israeli Communist Party)" logo 2026` → no returned URLs.
-- S3: `site:facebook.com "חדש" 2026 בחירות` → no returned URLs.
+- S3: `site:facebook.com "חדש" 2026 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "חדש" 2026 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
 
 **P `homat-torat-yisrael` — חומת תורת ישראל.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
 
 - S1: `"חומת תורת ישראל" "2026" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%A9>; <https://www.gov.il/he/departments/israeli_corporations_authority>; <https://he.wikipedia.org/wiki/%D7%99%D7%94%D7%93%D7%95%D7%AA_%D7%94%D7%AA%D7%95%D7%A8%D7%94>.
 - S2: `site:commons.wikimedia.org "Homat Torat Yisrael" logo 2026` → no returned URLs.
-- S3: `site:facebook.com "חומת תורת ישראל" 2026 בחירות` → no returned URLs.
+- S3: `site:facebook.com "חומת תורת ישראל" 2026 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "חומת תורת ישראל" 2026 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
 
 **P `meretz` — מרצ.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
 
 - S1: `"מרצ" "2026" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.gov.il/he/pages/hademokratim_list17>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%A9>; <https://www.idi.org.il/policy/parties-and-elections>.
 - S2: `site:commons.wikimedia.org "Meretz" logo 2026` → <https://commons.wikimedia.org/wiki/Category:Logos_of_political_parties_in_Israel>; <https://commons.wikimedia.org/wiki/Category:SVG_logos_of_political_parties_in_Israel>; <https://commons.wikimedia.org/wiki/File:Israeli_Knesset_Blocs_2021.svg>.
-- S3: `site:facebook.com "מרצ" 2026 בחירות` → no returned URLs.
+- S3: `site:facebook.com "מרצ" 2026 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "מרצ" 2026 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
 
 **P `taal` — תע"ל.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
 
 - S1: `"תע"ל" "2026" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%A9>; <https://main.knesset.gov.il/News/PressReleases/Documents/141026.pdf>; <https://www.idi.org.il/articles/66556>.
 - S2: `site:commons.wikimedia.org "Ta'al" logo 2026` → <https://commons.wikimedia.org/wiki/File:Logo_Hadash_Ta%27al.png>; <https://commons.wikimedia.org/wiki/Category:Logos_of_political_parties_in_Israel>; <https://commons.wikimedia.org/wiki/Category:Joint_List>.
-- S3: `site:facebook.com "תעל" 2026 בחירות` → no returned URLs.
+- S3: `site:facebook.com "תעל" 2026 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "תעל" 2026 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
 
 **P `together-bennett` — ביחד בראשות בנט.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
 
 - S1: `"ביחד בראשות בנט" "2026" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%91%D7%99%D7%97%D7%93_(%D7%A8%D7%A9%D7%99%D7%9E%D7%94)>; <https://www.idi.org.il/elections-2026>; <https://www.hamichlol.org.il/%D7%91%D7%99%D7%97%D7%93_(%D7%A8%D7%A9%D7%99%D7%9E%D7%94)>.
 - S2: `site:commons.wikimedia.org "Together (Bennett)" logo 2026` → no returned URLs.
-- S3: `site:facebook.com "ביחד בראשות בנט" 2026 בחירות` → no returned URLs.
+- S3: `site:facebook.com "ביחד בראשות בנט" 2026 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "ביחד בראשות בנט" 2026 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
 
 **P `yesodot-yisrael` — יסודות ישראל.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
 
 - S1: `"יסודות ישראל" "2026" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%A9>; <https://www.gov.il/he/pages/yashar_list_2>; <https://www.haaretz.co.il/news/elections/2026-07-12/ty-article/0000019f-5763-d6c0-a9df-dfff952f0000>.
 - S2: `site:commons.wikimedia.org "Yesodot Yisrael" logo 2026` → no returned URLs.
-- S3: `site:facebook.com "יסודות ישראל" 2026 בחירות` → no returned URLs.
+- S3: `site:facebook.com "יסודות ישראל" 2026 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "יסודות ישראל" 2026 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+Batch verification: `npx vitest run` **57 files / 484 tests passed**; `npx tsc -p tsconfig.json --noEmit`, `npx vite build`, and `python3 scripts/validate-party-logos.py` passed. Dataset build passed; all 26 election datasets equal prior batch after recursively removing `logo` and `builtAt`.
+
+### k25 · 2022-11-01
+
+Baseline whole lists: **4/10**; constituents: **1/11**. Every one of the 16 initial gaps below was attempted in all three routes; S3 quota failures do not count as completed source searches.
+
+**L `ג` — יהדות התורה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"יהדות התורה" "2022" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%99%D7%94%D7%93%D7%95%D7%AA_%D7%94%D7%AA%D7%95%D7%A8%D7%94>; <https://votes25.bechirot.gov.il/>; <https://www.idi.org.il/policy/parties-and-elections/parties/yahadut-hatorah>.
+- S2: `site:commons.wikimedia.org "United Torah Judaism" logo 2022` → no returned URLs.
+- S3: `site:facebook.com "יהדות התורה" 2022 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "יהדות התורה" 2022 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `ום` — חד״ש–תע״ל.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"חד״ש–תע״ל" "2022" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%97%D7%93%22%D7%A9-%D7%AA%D7%A2%22%D7%9C>; <https://votes25.bechirot.gov.il/>; <https://www.kan.org.il/tags/generaltags/%D7%97%D7%93%D7%A9-%D7%AA%D7%A2%D7%9C>.
+- S2: `site:commons.wikimedia.org "Hadash–Ta'al" logo 2022` → <https://commons.wikimedia.org/wiki/Category:Hadash%E2%80%93Ta%27al>; <https://commons.wikimedia.org/wiki/File:Logo_Hadash_Ta%27al.png>; <https://commons.wikimedia.org/wiki/Category:Logos_of_political_parties_in_Israel>.
+- S3: `site:facebook.com "חדש–תעל" 2022 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "חדש–תעל" 2022 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `ט` — הציונות הדתית.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"הציונות הדתית" "2022" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://votes25.bechirot.gov.il/>; <https://he.wikipedia.org/wiki/%D7%94%D7%A6%D7%99%D7%95%D7%A0%D7%95%D7%AA_%D7%94%D7%93%D7%AA%D7%99%D7%AA_(%D7%A1%D7%99%D7%A2%D7%94)>; <https://www.progdemocracy.com/mitpakdim-zionutdatit>.
+- S2: `site:commons.wikimedia.org "Religious Zionism" logo 2022` → <https://commons.wikimedia.org/wiki/File:Parti_sioniste_religieux_logo_2022.png>; <https://commons.wikimedia.org/wiki/Category:Religious_Zionist_Party>; <https://commons.wikimedia.org/wiki/File:RZ_logo_2023.svg>.
+- S3: `site:facebook.com "הציונות הדתית" 2022 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "הציונות הדתית" 2022 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `ל` — ישראל ביתנו.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"ישראל ביתנו" "2022" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://votes25.bechirot.gov.il/>; <https://www.kan.org.il/content/kan-news/politic/live-1113088>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%97%D7%9E%D7%A9>.
+- S2: `site:commons.wikimedia.org "Yisrael Beiteinu" logo 2022` → <https://commons.wikimedia.org/wiki/File:Israel-beytenu-logo.png>; <https://commons.wikimedia.org/wiki/File:Israeli_Knesset_Blocs_2022.svg>; <https://commons.wikimedia.org/wiki/Category:Yisrael_Beiteinu>.
+- S3: `site:facebook.com "ישראל ביתנו" 2022 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "ישראל ביתנו" 2022 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `עם` — רע״ם.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"רע״ם" "2022" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%97%D7%9E%D7%A9>; <https://www.kan.org.il/content/kan-news/politic/live-1113088>; <https://www.idi.org.il/elections-2026>.
+- S2: `site:commons.wikimedia.org "Ra'am" logo 2022` → <https://commons.wikimedia.org/wiki/File:Raam_logo_2021.svg>; <https://commons.wikimedia.org/wiki/File:Israeli_Knesset_Blocs_2022.svg>; <https://commons.wikimedia.org/wiki/Category:United_Arab_List>.
+- S3: `site:facebook.com "רעם" 2022 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "רעם" 2022 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `שס` — ש״ס.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"ש״ס" "2022" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%97%D7%9E%D7%A9>; <https://www.kan.org.il/content/kan-news/politic/live-1113088>; <https://www.inss.org.il/he/publication/israel-elections-2022>.
+- S2: `site:commons.wikimedia.org "Shas" logo 2022` → <https://commons.wikimedia.org/wiki/File:Shas_logo.png>; <https://commons.wikimedia.org/wiki/Category:Shas>; <https://commons.wikimedia.org/wiki/File:Shas_electoral_support_in_the_elections_to_the_25th_Knesset.jpg>.
+- S3: `site:facebook.com "שס" 2022 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "שס" 2022 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `agudat-yisrael` — אגודת ישראל.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"אגודת ישראל" "2022" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://votes25.bechirot.gov.il/>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%97%D7%9E%D7%A9>; <https://www.idi.org.il/policy/parties-and-elections>.
+- S2: `site:commons.wikimedia.org "Agudat Yisrael" logo 2022` → <https://commons.wikimedia.org/wiki/Category:SVG_logos_of_political_parties_in_Israel>; <https://commons.wikimedia.org/wiki/File:Poalei_Agudat_Yisrael.svg>.
+- S3: `site:facebook.com "אגודת ישראל" 2022 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "אגודת ישראל" 2022 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `atid-ehad` — עתיד אחד – עתיד טוב לישראל.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"עתיד אחד – עתיד טוב לישראל" "2022" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%97%D7%9E%D7%A9>; <https://www.gov.il/BlobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisionsfullbook2022.pdf>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%A9>.
+- S2: `site:commons.wikimedia.org "Atid Ehad" logo 2022` → no returned URLs.
+- S3: `site:facebook.com "עתיד אחד" 2022 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "עתיד אחד" 2022 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `degel-hatorah` — דגל התורה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"דגל התורה" "2022" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://votes25.bechirot.gov.il/>; <https://he.wikipedia.org/wiki/%D7%93%D7%92%D7%9C_%D7%94%D7%AA%D7%95%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections>.
+- S2: `site:commons.wikimedia.org "Degel HaTorah" logo 2022` → no returned URLs.
+- S3: `site:facebook.com "דגל התורה" 2022 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "דגל התורה" 2022 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `eretz-yisrael-shelanu` — ארץ ישראל שלנו.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"ארץ ישראל שלנו" "2022" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%97%D7%9E%D7%A9>; <https://www.idi.org.il/media/27873/the-elections-in-israel-2022.pdf>; <https://www.gov.il/BlobFolder/guide/candidates-lists-26/he/pr_4-6_26_reply_Redacted.pdf>.
+- S2: `site:commons.wikimedia.org "Eretz Yisrael Shelanu" logo 2022` → no returned URLs.
+- S3: `site:facebook.com "ארץ ישראל שלנו" 2022 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "ארץ ישראל שלנו" 2022 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `hadash` — חד"ש (המפלגה הקומוניסטית הישראלית).** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"חד"ש (המפלגה הקומוניסטית הישראלית)" "2022" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://t.me/s/king_of_theneighborhood?before=29968>.
+- S2: `site:commons.wikimedia.org "Hadash (Israeli Communist Party)" logo 2022` → no returned URLs.
+- S3: `site:facebook.com "חדש" 2022 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "חדש" 2022 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `israel-resilience` — חוסן ישראל.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"חוסן ישראל" "2022" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%9B%D7%97%D7%95%D7%9C_%D7%9C%D7%91%D7%9F_%D7%97%D7%95%D7%A1%D7%9F_%D7%9C%D7%99%D7%A9%D7%A8%D7%90%D7%9C>; <https://www.idi.org.il/policy/parties-and-elections>; <https://www.gov.il/BlobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisionsfullbook2022.pdf>.
+- S2: `site:commons.wikimedia.org "Blue and White (Israel Resilience)" logo 2022` → no returned URLs.
+- S3: `site:facebook.com "חוסן ישראל" 2022 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "חוסן ישראל" 2022 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `new-hope` — תקווה חדשה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"תקווה חדשה" "2022" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/policy/parties-and-elections>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%97%D7%9E%D7%A9>; <https://www.kan.org.il/content/kan-news/opinions/254538>.
+- S2: `site:commons.wikimedia.org "New Hope" logo 2022` → <https://commons.wikimedia.org/wiki/Category:Road_signs_for_New_Hope,_Pennsylvania>; <https://commons.wikimedia.org/wiki/File:New_Hope_Creek.jpg>; <https://commons.wikimedia.org/wiki/Category:Road_signs_for_the_New_Hope-Lambertville_Toll_Bridge_in_Pennsylvania>.
+- S3: `site:facebook.com "תקווה חדשה" 2022 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "תקווה חדשה" 2022 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `noam` — נעם (לזוז).** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"נעם (לזוז)" "2022" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%97%D7%9E%D7%A9>; <https://www.idi.org.il/media/27873/the-elections-in-israel-2022.pdf>; <https://huggingface.co/dicta-il/neodictabert-bilingual/resolve/main/vocab.txt?download=true>.
+- S2: `site:commons.wikimedia.org "Noam (registered as Lazuz)" logo 2022` → no returned URLs.
+- S3: `site:facebook.com "נעם" 2022 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "נעם" 2022 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `otzma-yehudit` — עוצמה יהודית (חזית יהודית לאומית).** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"עוצמה יהודית (חזית יהודית לאומית)" "2022" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/articles/46501>; <https://www.gov.il/BlobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisionsfullbook2022.pdf>; <https://www.mako.co.il/finances-news/Article-70e2bd529a88f91026.htm>.
+- S2: `site:commons.wikimedia.org "Otzma Yehudit (Jewish National Front)" logo 2022` → no returned URLs.
+- S3: `site:facebook.com "עוצמה יהודית" 2022 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "עוצמה יהודית" 2022 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `taal` — תע"ל.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"תע"ל" "2022" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://votes25.bechirot.gov.il/>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%97%D7%9E%D7%A9>; <https://www.idi.org.il/policy/parties-and-elections>.
+- S2: `site:commons.wikimedia.org "Ta'al" logo 2022` → <https://commons.wikimedia.org/wiki/File:Ta%27al_party_logo.png>; <https://commons.wikimedia.org/wiki/Category:Hadash%E2%80%93Ta%27al>; <https://commons.wikimedia.org/wiki/File:Logo_Hadash_Ta%27al.png>.
+- S3: `site:facebook.com "תעל" 2022 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "תעל" 2022 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
 
 Batch verification: `npx vitest run` **57 files / 484 tests passed**; `npx tsc -p tsconfig.json --noEmit`, `npx vite build`, and `python3 scripts/validate-party-logos.py` passed. Dataset build passed; all 26 election datasets equal prior batch after recursively removing `logo` and `builtAt`.
