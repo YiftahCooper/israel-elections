@@ -19,6 +19,7 @@ link only through an official identifier or an unambiguous rule documented below
 """
 import collections
 import json
+import os
 import re
 import subprocess
 import sys
@@ -161,6 +162,41 @@ for r in load('wikidata-israeli-parties.json'):
     if r['labelHe']:
         wd_parties[r['qid']].add(r['labelHe'])
 decisions = {d['candidateId']: d for d in load('identity-decisions.reviewed.json')['decisions']}
+
+# Hebrew Wikipedia sentences that mention a Knesset election, per article (fetched with --fetch-hewiki;
+# used only to confirm candidacies that no official identifier ties to the person).
+EVIDENCE_FILE = RAW / 'hewiki-evidence.json'
+evidence_store = json.loads(EVIDENCE_FILE.read_text('utf8')) if EVIDENCE_FILE.exists() else {}
+ORD = ['', 'הראשונה', 'השנייה', 'השלישית', 'הרביעית', 'החמישית', 'השישית', 'השביעית', 'השמינית', 'התשיעית', 'העשירית',
+       'האחת עשרה', 'השתים עשרה', 'השלוש עשרה', 'הארבע עשרה', 'החמש עשרה', 'השש עשרה', 'השבע עשרה', 'השמונה עשרה',
+       'התשע עשרה', 'העשרים', 'העשרים ואחת', 'העשרים ושתיים', 'העשרים ושלוש', 'העשרים וארבע', 'העשרים וחמש', 'העשרים ושש']
+CANDIDACY_WORDS = ('רשימ', 'מקום', 'התמודד', 'מועמד', 'הוצב', 'נבחר', 'שוריין', 'ברשימת')
+needed_titles = set()
+
+
+def election_sentences(title, k):
+    """Sentences of the article that place the person in this election (Knesset number, or year and 'בחירות')."""
+    n, year = knesset_num(k), datasets[k]['electionDate'][:4]
+    pats = [f'כנסת ה-{n}', f'כנסת ה־{n}', f'כנסת ה{n}', f'כנסת {ORD[n]}']
+    out = []
+    for sent in evidence_store.get(title, {}).get('sentences', []):
+        hit = any(p in sent for p in pats)
+        if n == 20:   # "הכנסת העשרים" is also the prefix of 21–26
+            hit = any(p in sent for p in pats[:3]) or re.search(r'כנסת העשרים(?! ו)', sent)
+        if not hit and year in sent and 'בחירות' in sent:
+            hit = True
+        if hit and any(w in sent for w in CANDIDACY_WORDS):
+            out.append(sent)
+    return out
+
+
+def needs_evidence(title, k):
+    """True when the article does not (or not yet) confirm the candidacy; records the title for --fetch-hewiki."""
+    if title not in evidence_store:
+        needed_titles.add(title)
+        return True
+    return not election_sentences(title, k)
+
 party_sources = load('party-sources.reviewed.json')
 
 
@@ -326,14 +362,29 @@ for k in ELECTIONS:
             for m in near:
                 for f in faction_ids(m, pid):
                     if lst['letters'] in faction_letters.get((m, f), set()):
-                        evidence.append(f'Knesset {m} faction of list {lst["letters"]}')
+                        evidence.append((abs(m - n), f'Knesset {m} faction of list {lst["letters"]}'))
                 shared = party_tokens(faction_names(m, pid)) & ltok
                 if shared:
-                    evidence.append(f'Knesset {m} faction "{sorted(faction_names(m, pid))[0]}" shares "{sorted(shared)[0]}"')
-            if evidence:
-                result[k][cid] = {'knessetPersonId': pid, 'confidence': 'medium',
-                                  'basis': 'not elected; identical name, the only person with it who served as MK; ' + evidence[0]}
-                taken.add(pid)
+                    evidence.append((abs(m - n), f'Knesset {m} faction "{sorted(faction_names(m, pid))[0]}" shares "{sorted(shared)[0]}"'))
+            if not evidence:
+                continue
+            evidence.sort()
+            dist, why = evidence[0]
+            if dist > 1:
+                # two or three Knessets away: the surname must be unique among MKs, or the Hebrew
+                # Wikipedia article must place the person in this election
+                sur = norm(clean(persons[pid]['LastName'])[0]) if clean(persons[pid]['LastName']) else ''
+                unique_surname = sum(1 for q in served if q in persons and clean(persons[q]['LastName'])
+                                     and norm(clean(persons[q]['LastName'])[0]) == sur) == 1
+                w = wd_by_site.get(site.get(pid))
+                title = urllib.parse.unquote(w['hewiki'].rsplit('/wiki/', 1)[1]).replace('_', ' ') if w and w.get('hewiki') else None
+                if not unique_surname and not (title and not needs_evidence(title, k)):
+                    residual.append(f'SKIPPED far match {cid} {c["nameHe"]} -> {pid} ({why})')
+                    continue
+                why += '; surname unique among MKs' if unique_surname else '; Hebrew Wikipedia places the person in this election'
+            result[k][cid] = {'knessetPersonId': pid, 'confidence': 'medium',
+                              'basis': 'not elected; identical name, the only person with it who served as MK; ' + why}
+            taken.add(pid)
 
 # ---------------------------------------------------------------- Hebrew Wikipedia
 def hewiki_entry(url, qid):
@@ -373,6 +424,9 @@ def wd_match(name, k, lst):
     year = int(datasets[k]['electionDate'][:4])
     if not shared or born is None or not (year - 95 <= born <= year - 21):
         return None
+    title = urllib.parse.unquote(p['hewiki'].rsplit('/wiki/', 1)[1]).replace('_', ' ')
+    if needs_evidence(title, k):
+        return None
     return qids[0], p, born, sorted(shared)[0]
 
 
@@ -393,7 +447,8 @@ for k in ELECTIONS:
             if not m:
                 continue
             qid, p, born, shared = m
-            basis = f'Wikidata {qid}: identical Hebrew label, party "{sorted(p["parties"])[0]}" (shares "{shared}"), born {born}'
+            basis = (f'Wikidata {qid}: identical Hebrew label, party "{sorted(p["parties"])[0]}" (shares "{shared}"), born {born}; '
+                     'the article places the person in this election')
             if e:   # an MK without a Wikidata Knesset ID (P9770)
                 e['hewiki'] = hewiki_entry(p['hewiki'], qid)
                 e['confidence'] = 'medium'
@@ -401,6 +456,35 @@ for k in ELECTIONS:
             else:
                 result[k][c['id']] = {'knessetPersonId': None, 'confidence': 'medium', 'basis': 'not an MK; ' + basis,
                                       'hewiki': hewiki_entry(p['hewiki'], qid)}
+
+# ---------------------------------------------------------------- --fetch-hewiki
+if '--fetch-hewiki' in sys.argv and needed_titles:
+    import time
+    import urllib.request
+    UA = 'IsraelElectionsResearch/1.0 (https://github.com/YiftahCooper/israel-elections; candidate biography research)'
+    todo = sorted(needed_titles)
+    print(f'fetching {len(todo)} Hebrew Wikipedia articles', file=sys.stderr)
+    for i, title in enumerate(todo):
+        q = urllib.parse.urlencode({'action': 'query', 'format': 'json', 'formatversion': '2', 'prop': 'extracts|revisions',
+                                    'explaintext': '1', 'rvprop': 'ids', 'redirects': '1', 'titles': title})
+        for attempt in range(6):
+            try:
+                req = urllib.request.Request('https://he.wikipedia.org/w/api.php?' + q, headers={'User-Agent': UA})
+                page = json.loads(urllib.request.urlopen(req, timeout=60).read())['query']['pages'][0]
+                break
+            except Exception as ex:
+                print('retry', title, ex, file=sys.stderr)
+                time.sleep(20 * (attempt + 1))
+        else:
+            continue
+        text = page.get('extract', '') or ''
+        sents = [x.strip() for x in re.split(r'(?<=[.!?])\s+|\n+', text) if ('כנסת' in x or 'בחירות' in x) and len(x) < 700]
+        evidence_store[title] = {'revid': (page.get('revisions') or [{}])[0].get('revid'), 'fetched': '2026-11-04', 'sentences': sents}
+        if i % 25 == 0:
+            EVIDENCE_FILE.write_text(json.dumps(evidence_store, ensure_ascii=False, indent=0, sort_keys=True) + '\n', 'utf8')
+        time.sleep(3)
+    EVIDENCE_FILE.write_text(json.dumps(evidence_store, ensure_ascii=False, indent=0, sort_keys=True) + '\n', 'utf8')
+    os.execv(sys.executable, [sys.executable, '-I', __file__] + [a for a in sys.argv[1:] if a != '--fetch-hewiki'])
 
 # ---------------------------------------------------------------- Knesset page
 for k in ELECTIONS:

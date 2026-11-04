@@ -63,9 +63,11 @@ Knesset link; they appear only if another link exists.
   who entered the same Knesset in the list's faction (a replacement).
 - **medium** — the identity rests on an exact name plus party lineage, without an official
   identifier tying the candidacy to the person: a non-elected candidate whose name is identical to
-  exactly one person who ever served as an MK, within three Knessets, in the same party lineage; a
-  non-MK candidate whose name is identical to exactly one Wikidata person recorded as a member of
-  the list's party and adult at the election; or a reviewed decision with an unexplained
+  exactly one person who ever served as an MK, in the same party lineage, in the adjacent Knesset (or
+  two or three Knessets away when the surname is unique among MKs or the person's Hebrew Wikipedia
+  article places them in this election); a non-MK candidate whose name is identical to exactly one
+  Wikidata person recorded as a member of the list's party, adult at the election, whose Hebrew
+  Wikipedia article places them in this election; or a reviewed decision with an unexplained
   given-name difference. An entry is medium if any of its links rests on such a rule.
 
 `basis` states the rule that produced the entry, in English, for audit.

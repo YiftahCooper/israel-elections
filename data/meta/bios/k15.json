@@ -24,7 +24,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/104",
     "siteId": 104,
-    "verified": "pattern"
+    "verified": "archive 2004-04-19"
    },
    "hewiki": {
     "title": "שמעון פרס",
@@ -424,7 +424,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/90",
     "siteId": 90,
-    "verified": "pattern"
+    "verified": "archive 2004-06-04"
    },
    "hewiki": {
     "title": "בנימין נתניהו",
@@ -536,7 +536,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/125",
     "siteId": 125,
-    "verified": "pattern"
+    "verified": "archive 2004-04-19"
    },
    "hewiki": {
     "title": "אריאל שרון",
@@ -728,7 +728,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/41",
     "siteId": 41,
-    "verified": "pattern"
+    "verified": "archive 2004-04-26"
    },
    "hewiki": {
     "title": "אריה דרעי",
@@ -737,7 +737,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 13 faction of list שס"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 14 faction \"התאחדות הספרדים שומרי תורה - תנועת ש\"ס\" shares \"הספרדימ\""
   },
   "15-שס#2": {
    "knessetPersonId": 486,
@@ -1592,7 +1592,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/35",
     "siteId": 35,
-    "verified": "pattern"
+    "verified": "archive 2004-04-19"
    },
    "hewiki": {
     "title": "משה גפני",
@@ -1832,7 +1832,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/214",
     "siteId": 214,
-    "verified": "pattern"
+    "verified": "archive 2004-04-29"
    },
    "hewiki": {
     "title": "אביגדור ליברמן",
@@ -1912,7 +1912,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/208",
     "siteId": 208,
-    "verified": "pattern"
+    "verified": "archive 2004-04-07"
    },
    "hewiki": {
     "title": "אחמד טיבי",

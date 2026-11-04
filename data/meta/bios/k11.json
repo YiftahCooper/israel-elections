@@ -72,7 +72,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/125",
     "siteId": 125,
-    "verified": "pattern"
+    "verified": "archive 2004-04-19"
    },
    "hewiki": {
     "title": "אריאל שרון",
@@ -664,7 +664,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/104",
     "siteId": 104,
-    "verified": "pattern"
+    "verified": "archive 2004-04-19"
    },
    "hewiki": {
     "title": "שמעון פרס",
@@ -696,7 +696,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/168",
     "siteId": 168,
-    "verified": "pattern"
+    "verified": "archive 2004-04-19"
    },
    "hewiki": {
     "title": "יצחק רבין",
@@ -1409,7 +1409,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 10 faction of list אמת"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 10 faction \"מערך\" shares \"מערכ\""
   },
   "11-אמת#49": {
    "knessetPersonId": 2496,
@@ -1441,7 +1441,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 8 faction of list אמת"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 8 faction \"מערך\" shares \"מערכ\"; surname unique among MKs"
   },
   "11-אמת#51": {
    "knessetPersonId": 2214,
@@ -1457,7 +1457,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 10 faction of list אמת"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 10 faction \"מערך\" shares \"מערכ\""
   },
   "11-אמת#52": {
    "knessetPersonId": 2358,
@@ -1473,7 +1473,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 9 faction of list אמת"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 10 faction \"מערך\" shares \"מערכ\""
   },
   "11-אמת#55": {
    "knessetPersonId": 2238,
@@ -1489,7 +1489,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 12 faction of list אמת"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 12 faction \"מערך\" shares \"העבודה\""
   },
   "11-אמת#56": {
    "knessetPersonId": 2634,
@@ -1505,7 +1505,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 12 faction of list אמת"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 12 faction \"מערך\" shares \"העבודה\""
   },
   "11-אמת#59": {
    "knessetPersonId": 2346,
@@ -1521,19 +1521,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 13 faction of list אמת"
-  },
-  "11-אמת#63": {
-   "knessetPersonId": null,
-   "knesset": null,
-   "hewiki": {
-    "title": "מנחם אריאב",
-    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A0%D7%97%D7%9D_%D7%90%D7%A8%D7%99%D7%90%D7%91",
-    "via": "wikidata Q1920212"
-   },
-   "party": null,
-   "confidence": "medium",
-   "basis": "not an MK; Wikidata Q1920212: identical Hebrew label, party \"מפלגת העבודה הישראלית\" (shares \"העבודה\"), born 1929"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 13 faction \"מפלגת העבודה הישראלית\" shares \"העבודה\"; surname unique among MKs"
   },
   "11-אמת#66": {
    "knessetPersonId": 2491,
@@ -1549,23 +1537,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 10 faction of list אמת"
-  },
-  "11-אמת#70": {
-   "knessetPersonId": 2525,
-   "knesset": {
-    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/555",
-    "siteId": 555,
-    "verified": "pattern"
-   },
-   "hewiki": {
-    "title": "משה עמאר",
-    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A9%D7%94_%D7%A2%D7%9E%D7%90%D7%A8",
-    "via": "wikidata Q2901400"
-   },
-   "party": null,
-   "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 9 faction of list אמת"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 10 faction \"מערך\" shares \"מערכ\""
   },
   "11-אמת#78": {
    "knessetPersonId": 2339,
@@ -1581,7 +1553,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 12 faction of list אמת"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 12 faction \"מערך\" shares \"העבודה\""
   },
   "11-אמת#85": {
    "knessetPersonId": 2148,
@@ -1597,7 +1569,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 8 faction \"ליברלים עצמאיים\" shares \"ליברלימ\""
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 8 faction \"ליברלים עצמאיים\" shares \"ליברלימ\"; surname unique among MKs"
   },
   "11-אמת#94": {
    "knessetPersonId": 2246,
@@ -1613,23 +1585,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 12 faction of list אמת"
-  },
-  "11-אמת#99": {
-   "knessetPersonId": 2224,
-   "knesset": {
-    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/319",
-    "siteId": 319,
-    "verified": "pattern"
-   },
-   "hewiki": {
-    "title": "משה ברעם",
-    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A9%D7%94_%D7%91%D7%A8%D7%A2%D7%9D",
-    "via": "wikidata Q2908256"
-   },
-   "party": null,
-   "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 8 faction of list אמת"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 12 faction \"אחדות למען השלום והעלייה\" shares \"מערכ\""
   },
   "11-אמת#100": {
    "knessetPersonId": 2415,
@@ -1645,7 +1601,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 8 faction of list אמת"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 8 faction \"מערך\" shares \"מערכ\"; surname unique among MKs"
   },
   "11-אמת#102": {
    "knessetPersonId": 2370,
@@ -1661,19 +1617,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 8 faction of list אמת"
-  },
-  "11-אמת#104": {
-   "knessetPersonId": null,
-   "knesset": null,
-   "hewiki": {
-    "title": "פנחס אילון",
-    "url": "https://he.wikipedia.org/wiki/%D7%A4%D7%A0%D7%97%D7%A1_%D7%90%D7%99%D7%9C%D7%95%D7%9F",
-    "via": "wikidata Q12410623"
-   },
-   "party": null,
-   "confidence": "medium",
-   "basis": "not an MK; Wikidata Q12410623: identical Hebrew label, party \"מפלגת העבודה הישראלית\" (shares \"העבודה\"), born 1909"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 9 faction \"מערך\" shares \"מערכ\"; surname unique among MKs"
   },
   "11-אמת#105": {
    "knessetPersonId": 2250,
@@ -1689,19 +1633,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 8 faction of list אמת"
-  },
-  "11-אמת#108": {
-   "knessetPersonId": null,
-   "knesset": null,
-   "hewiki": {
-    "title": "אשר בן נתן",
-    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%A9%D7%A8_%D7%91%D7%9F_%D7%A0%D7%AA%D7%9F",
-    "via": "wikidata Q216548"
-   },
-   "party": null,
-   "confidence": "medium",
-   "basis": "not an MK; Wikidata Q216548: identical Hebrew label, party \"המערך\" (shares \"המערכ\"), born 1921"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 8 faction \"מערך\" shares \"מערכ\"; surname unique among MKs"
   },
   "11-אמת#113": {
    "knessetPersonId": 2193,
@@ -1717,19 +1649,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 10 faction of list אמת"
-  },
-  "11-אמת#116": {
-   "knessetPersonId": null,
-   "knesset": null,
-   "hewiki": {
-    "title": "טדי קולק",
-    "url": "https://he.wikipedia.org/wiki/%D7%98%D7%93%D7%99_%D7%A7%D7%95%D7%9C%D7%A7",
-    "via": "wikidata Q302203"
-   },
-   "party": null,
-   "confidence": "medium",
-   "basis": "not an MK; Wikidata Q302203: identical Hebrew label, party \"מפלגת העבודה הישראלית\" (shares \"העבודה\"), born 1911"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 10 faction \"מערך\" shares \"מערכ\""
   },
   "11-אמת#117": {
    "knessetPersonId": 2257,
@@ -1745,19 +1665,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 8 faction of list אמת"
-  },
-  "11-אמת#120": {
-   "knessetPersonId": null,
-   "knesset": null,
-   "hewiki": {
-    "title": "אפרים קציר",
-    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%A4%D7%A8%D7%99%D7%9D_%D7%A7%D7%A6%D7%99%D7%A8",
-    "via": "wikidata Q110330"
-   },
-   "party": null,
-   "confidence": "medium",
-   "basis": "not an MK; Wikidata Q110330: identical Hebrew label, party \"מפלגת העבודה הישראלית\" (shares \"העבודה\"), born 1916"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 8 faction \"מערך\" shares \"מערכ\"; surname unique among MKs"
   },
   "11-ג#1": {
    "knessetPersonId": 2660,
@@ -1796,7 +1704,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/132",
     "siteId": 132,
-    "verified": "pattern"
+    "verified": "archive 2004-04-19"
    },
    "hewiki": {
     "title": "שולמית אלוני",

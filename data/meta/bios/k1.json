@@ -8,7 +8,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/684",
     "siteId": 684,
-    "verified": "pattern"
+    "verified": "archive 2004-04-26"
    },
    "hewiki": {
     "title": "דוד בן-גוריון",
@@ -88,7 +88,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/685",
     "siteId": 685,
-    "verified": "pattern"
+    "verified": "archive 2004-04-26"
    },
    "hewiki": {
     "title": "גולדה מאיר",
@@ -161,7 +161,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 4 faction of list א"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 4 faction \"מפלגת פועלי ארץ-ישראל\" shares \"ארצ\"; Hebrew Wikipedia places the person in this election"
   },
   "1-א#11": {
    "knessetPersonId": 2197,
@@ -1320,7 +1320,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/692",
     "siteId": 692,
-    "verified": "pattern"
+    "verified": "archive 2004-04-19"
    },
    "hewiki": {
     "title": "מנחם בגין",

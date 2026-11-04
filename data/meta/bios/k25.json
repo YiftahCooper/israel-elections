@@ -8,7 +8,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/90",
     "siteId": 90,
-    "verified": "pattern"
+    "verified": "archive 2004-06-04"
    },
    "hewiki": {
     "title": "בנימין נתניהו",
@@ -305,7 +305,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "elected; Knesset 25 member, name identical (3); Hebrew Wikipedia via Wikidata Q115004221: identical Hebrew label, party \"הליכוד\" (shares \"הליכוד\"), born 1973"
+   "basis": "elected; Knesset 25 member, name identical (3); Hebrew Wikipedia via Wikidata Q115004221: identical Hebrew label, party \"הליכוד\" (shares \"הליכוד\"), born 1973; the article places the person in this election"
   },
   "25-מחל#20": {
    "knessetPersonId": 30809,
@@ -429,7 +429,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "elected; Knesset 25 member, name matches (2.5); Hebrew Wikipedia via Wikidata Q12404410: identical Hebrew label, party \"הליכוד\" (shares \"הליכוד\"), born 1964"
+   "basis": "elected; Knesset 25 member, name matches (2.5); Hebrew Wikipedia via Wikidata Q12404410: identical Hebrew label, party \"הליכוד\" (shares \"הליכוד\"), born 1964; the article places the person in this election"
   },
   "25-מחל#28": {
    "knessetPersonId": 30853,
@@ -461,7 +461,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "elected; Knesset 25 member, name matches (2.5); Hebrew Wikipedia via Wikidata Q115051872: identical Hebrew label, party \"הליכוד\" (shares \"הליכוד\"), born 1955"
+   "basis": "elected; Knesset 25 member, name matches (2.5); Hebrew Wikipedia via Wikidata Q115051872: identical Hebrew label, party \"הליכוד\" (shares \"הליכוד\"), born 1955; the article places the person in this election"
   },
   "25-מחל#30": {
    "knessetPersonId": 1025,
@@ -525,7 +525,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected at the election; entered Knesset 25 in the list's faction (name score 2.5); Hebrew Wikipedia via Wikidata Q116065776: identical Hebrew label, party \"הליכוד\" (shares \"הליכוד\"), born 1986"
+   "basis": "not elected at the election; entered Knesset 25 in the list's faction (name score 2.5); Hebrew Wikipedia via Wikidata Q116065776: identical Hebrew label, party \"הליכוד\" (shares \"הליכוד\"), born 1986; the article places the person in this election"
   },
   "25-מחל#34": {
    "knessetPersonId": 30710,
@@ -589,7 +589,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected at the election; entered Knesset 25 in the list's faction (name score 2.5); Hebrew Wikipedia via Wikidata Q19668451: identical Hebrew label, party \"הליכוד\" (shares \"הליכוד\"), born 1968"
+   "basis": "not elected at the election; entered Knesset 25 in the list's faction (name score 2.5); Hebrew Wikipedia via Wikidata Q19668451: identical Hebrew label, party \"הליכוד\" (shares \"הליכוד\"), born 1968; the article places the person in this election"
   },
   "25-מחל#38": {
    "knessetPersonId": 30876,
@@ -605,7 +605,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected at the election; entered Knesset 25 in the list's faction (name score 3); Hebrew Wikipedia via Wikidata Q116771555: identical Hebrew label, party \"הליכוד\" (shares \"הליכוד\"), born 1974"
+   "basis": "not elected at the election; entered Knesset 25 in the list's faction (name score 3); Hebrew Wikipedia via Wikidata Q116771555: identical Hebrew label, party \"הליכוד\" (shares \"הליכוד\"), born 1974; the article places the person in this election"
   },
   "25-מחל#39": {
    "knessetPersonId": 30706,
@@ -637,7 +637,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected at the election; entered Knesset 25 in the list's faction (name score 3); Hebrew Wikipedia via Wikidata Q117035716: identical Hebrew label, party \"הליכוד\" (shares \"הליכוד\"), born 1989"
+   "basis": "not elected at the election; entered Knesset 25 in the list's faction (name score 3); Hebrew Wikipedia via Wikidata Q117035716: identical Hebrew label, party \"הליכוד\" (shares \"הליכוד\"), born 1989; the article places the person in this election"
   },
   "25-מחל#41": {
    "knessetPersonId": 30879,
@@ -713,19 +713,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 22 faction of list מחל"
-  },
-  "25-מחל#47": {
-   "knessetPersonId": 30941,
-   "knesset": null,
-   "hewiki": {
-    "title": "ארז תדמור (איש תקשורת)",
-    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%A8%D7%96_%D7%AA%D7%93%D7%9E%D7%95%D7%A8_(%D7%90%D7%99%D7%A9_%D7%AA%D7%A7%D7%A9%D7%95%D7%A8%D7%AA)",
-    "via": "wikidata Q30005051"
-   },
-   "party": null,
-   "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 26 faction of list מחל; Hebrew Wikipedia via Wikidata Q30005051: identical Hebrew label, party \"הליכוד\" (shares \"הליכוד\"), born 1980"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction \"הליכוד בהנהגת בנימין נתניהו לראשות הממשלה\" shares \"בנימינ\""
   },
   "25-מחל#48": {
    "knessetPersonId": 30703,
@@ -741,7 +729,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 22 faction of list מחל"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction \"הליכוד בהנהגת בנימין נתניהו לראשות הממשלה\" shares \"בנימינ\""
   },
   "25-מחל#50": {
    "knessetPersonId": 12952,
@@ -757,7 +745,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction of list מחל"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction \"הליכוד בהנהגת בנימין נתניהו לראשות הממשלה\" shares \"בנימינ\""
   },
   "25-מחל#51": {
    "knessetPersonId": 30709,
@@ -773,7 +761,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 23 faction of list מחל"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 23 faction \"הליכוד\" shares \"הליכוד\"; Hebrew Wikipedia places the person in this election"
   },
   "25-מחל#56": {
    "knessetPersonId": null,
@@ -785,7 +773,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not an MK; Wikidata Q6734784: identical Hebrew label, party \"הליכוד\" (shares \"הליכוד\"), born 1969"
+   "basis": "not an MK; Wikidata Q6734784: identical Hebrew label, party \"הליכוד\" (shares \"הליכוד\"), born 1969; the article places the person in this election"
   },
   "25-מחל#59": {
    "knessetPersonId": 30646,
@@ -801,7 +789,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 23 faction of list מחל"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 23 faction \"הליכוד\" shares \"הליכוד\"; surname unique among MKs"
   },
   "25-מחל#64": {
    "knessetPersonId": 475,
@@ -817,7 +805,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 23 faction of list מחל"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 23 faction \"הליכוד\" shares \"הליכוד\"; surname unique among MKs"
   },
   "25-מחל#65": {
    "knessetPersonId": 30707,
@@ -833,7 +821,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 23 faction of list מחל"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction \"הליכוד בהנהגת בנימין נתניהו לראשות הממשלה\" shares \"בנימינ\""
   },
   "25-מחל#71": {
    "knessetPersonId": 30081,
@@ -849,7 +837,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 23 faction of list מחל"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction \"הליכוד בהנהגת בנימין נתניהו לראשות הממשלה\" shares \"בנימינ\""
   },
   "25-מחל#76": {
    "knessetPersonId": null,
@@ -861,7 +849,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not an MK; Wikidata Q67327757: identical Hebrew label, party \"הליכוד\" (shares \"הליכוד\"), born 1973"
+   "basis": "not an MK; Wikidata Q67327757: identical Hebrew label, party \"הליכוד\" (shares \"הליכוד\"), born 1973; the article places the person in this election"
   },
   "25-ט#1": {
    "knessetPersonId": 30055,
@@ -969,7 +957,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "elected; Knesset 25 member, name identical (3); Hebrew Wikipedia via Wikidata Q113389177: identical Hebrew label, party \"עוצמה יהודית\" (shares \"עוצמה\"), born 1988"
+   "basis": "elected; Knesset 25 member, name identical (3); Hebrew Wikipedia via Wikidata Q113389177: identical Hebrew label, party \"עוצמה יהודית\" (shares \"עוצמה\"), born 1988; the article places the person in this election"
   },
   "25-ט#8": {
    "knessetPersonId": 30810,
@@ -1017,7 +1005,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "elected; Knesset 25 member, name identical (3); Hebrew Wikipedia via Wikidata Q16131836: identical Hebrew label, party \"עוצמה יהודית\" (shares \"עוצמה\"), born 1956"
+   "basis": "elected; Knesset 25 member, name identical (3); Hebrew Wikipedia via Wikidata Q16131836: identical Hebrew label, party \"עוצמה יהודית\" (shares \"עוצמה\"), born 1956; the article places the person in this election"
   },
   "25-ט#11": {
    "knessetPersonId": 30814,
@@ -1065,7 +1053,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "elected; Knesset 25 member, name identical (3); Hebrew Wikipedia via Wikidata Q115092610: identical Hebrew label, party \"עוצמה יהודית\" (shares \"עוצמה\"), born 1979"
+   "basis": "elected; Knesset 25 member, name identical (3); Hebrew Wikipedia via Wikidata Q115092610: identical Hebrew label, party \"עוצמה יהודית\" (shares \"עוצמה\"), born 1979; the article places the person in this election"
   },
   "25-ט#14": {
    "knessetPersonId": 30852,
@@ -1104,7 +1092,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/41",
     "siteId": 41,
-    "verified": "pattern"
+    "verified": "archive 2004-04-26"
    },
    "hewiki": {
     "title": "אריה דרעי",
@@ -1328,7 +1316,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/35",
     "siteId": 35,
-    "verified": "pattern"
+    "verified": "archive 2004-04-19"
    },
    "hewiki": {
     "title": "משה גפני",
@@ -1449,7 +1437,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected at the election; entered Knesset 25 in the list's faction (name score 3); Hebrew Wikipedia via Wikidata Q116447577: identical Hebrew label, party \"יהדות התורה\" (shares \"התורה\"), born 1964"
+   "basis": "not elected at the election; entered Knesset 25 in the list's faction (name score 3); Hebrew Wikipedia via Wikidata Q116447577: identical Hebrew label, party \"יהדות התורה\" (shares \"התורה\"), born 1964; the article places the person in this election"
   },
   "25-ג#10": {
    "knessetPersonId": 30768,
@@ -1467,108 +1455,12 @@
    "confidence": "high",
    "basis": "not elected at the election; entered Knesset 25 in the list's faction (name score 3)"
   },
-  "25-ג#14": {
-   "knessetPersonId": null,
-   "knesset": null,
-   "hewiki": {
-    "title": "יצחק רייך",
-    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A6%D7%97%D7%A7_%D7%A8%D7%99%D7%99%D7%9A",
-    "via": "wikidata Q6588883"
-   },
-   "party": null,
-   "confidence": "medium",
-   "basis": "not an MK; Wikidata Q6588883: identical Hebrew label, party \"אגודת ישראל\" (shares \"אגודת\"), born 1957"
-  },
-  "25-ג#15": {
-   "knessetPersonId": null,
-   "knesset": null,
-   "hewiki": {
-    "title": "יוסי דייטש",
-    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%95%D7%A1%D7%99_%D7%93%D7%99%D7%99%D7%98%D7%A9",
-    "via": "wikidata Q57978929"
-   },
-   "party": null,
-   "confidence": "medium",
-   "basis": "not an MK; Wikidata Q57978929: identical Hebrew label, party \"אגודת ישראל\" (shares \"אגודת\"), born 1968"
-  },
-  "25-ג#16": {
-   "knessetPersonId": null,
-   "knesset": null,
-   "hewiki": {
-    "title": "אברהם רובינשטיין",
-    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%91%D7%A8%D7%94%D7%9D_%D7%A8%D7%95%D7%91%D7%99%D7%A0%D7%A9%D7%98%D7%99%D7%99%D7%9F",
-    "via": "wikidata Q6701454"
-   },
-   "party": null,
-   "confidence": "medium",
-   "basis": "not an MK; Wikidata Q6701454: identical Hebrew label, party \"דגל התורה\" (shares \"דגל\"), born 1958"
-  },
-  "25-ג#18": {
-   "knessetPersonId": null,
-   "knesset": null,
-   "hewiki": {
-    "title": "יעקב אשר גוטרמן",
-    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A2%D7%A7%D7%91_%D7%90%D7%A9%D7%A8_%D7%92%D7%95%D7%98%D7%A8%D7%9E%D7%9F",
-    "via": "wikidata Q6569754"
-   },
-   "party": null,
-   "confidence": "medium",
-   "basis": "not an MK; Wikidata Q6569754: identical Hebrew label, party \"דגל התורה\" (shares \"דגל\"), born 1963"
-  },
-  "25-ג#20": {
-   "knessetPersonId": null,
-   "knesset": null,
-   "hewiki": {
-    "title": "יצחק רביץ",
-    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A6%D7%97%D7%A7_%D7%A8%D7%91%D7%99%D7%A5",
-    "via": "wikidata Q59072252"
-   },
-   "party": null,
-   "confidence": "medium",
-   "basis": "not an MK; Wikidata Q59072252: identical Hebrew label, party \"דגל התורה\" (shares \"דגל\"), born 1973"
-  },
-  "25-ג#109": {
-   "knessetPersonId": null,
-   "knesset": null,
-   "hewiki": {
-    "title": "אליהו גפני",
-    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%9C%D7%99%D7%94%D7%95_%D7%92%D7%A4%D7%A0%D7%99",
-    "via": "wikidata Q69044025"
-   },
-   "party": null,
-   "confidence": "medium",
-   "basis": "not an MK; Wikidata Q69044025: identical Hebrew label, party \"אגודת ישראל\" (shares \"אגודת\"), born 1980"
-  },
-  "25-ג#119": {
-   "knessetPersonId": null,
-   "knesset": null,
-   "hewiki": {
-    "title": "חנוך זייברט",
-    "url": "https://he.wikipedia.org/wiki/%D7%97%D7%A0%D7%95%D7%9A_%D7%96%D7%99%D7%99%D7%91%D7%A8%D7%98",
-    "via": "wikidata Q15177117"
-   },
-   "party": null,
-   "confidence": "medium",
-   "basis": "not an MK; Wikidata Q15177117: identical Hebrew label, party \"אגודת ישראל\" (shares \"אגודת\"), born 1960"
-  },
-  "25-ג#120": {
-   "knessetPersonId": null,
-   "knesset": null,
-   "hewiki": {
-    "title": "אליעזר סורוצקין",
-    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%9C%D7%99%D7%A2%D7%96%D7%A8_%D7%A1%D7%95%D7%A8%D7%95%D7%A6%D7%A7%D7%99%D7%9F",
-    "via": "wikidata Q27009229"
-   },
-   "party": null,
-   "confidence": "medium",
-   "basis": "not an MK; Wikidata Q27009229: identical Hebrew label, party \"דגל התורה\" (shares \"דגל\"), born 1958"
-  },
   "25-פה#1": {
    "knessetPersonId": 23594,
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/878",
     "siteId": 878,
-    "verified": "pattern"
+    "verified": "archive 2013-02-06"
    },
    "hewiki": {
     "title": "יאיר לפיד",
@@ -1897,7 +1789,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "elected; Knesset 25 member, name matches (2.5); Hebrew Wikipedia via Wikidata Q115096842: identical Hebrew label, party \"יש עתיד\" (shares \"עתיד\"), born 1965"
+   "basis": "elected; Knesset 25 member, name matches (2.5); Hebrew Wikipedia via Wikidata Q115096842: identical Hebrew label, party \"יש עתיד\" (shares \"עתיד\"), born 1965; the article places the person in this election"
   },
   "25-פה#22": {
    "knessetPersonId": 30777,
@@ -1945,7 +1837,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "elected; Knesset 25 member, name identical (3); Hebrew Wikipedia via Wikidata Q115051871: identical Hebrew label, party \"יש עתיד\" (shares \"עתיד\"), born 1985"
+   "basis": "elected; Knesset 25 member, name identical (3); Hebrew Wikipedia via Wikidata Q115051871: identical Hebrew label, party \"יש עתיד\" (shares \"עתיד\"), born 1985; the article places the person in this election"
   },
   "25-פה#25": {
    "knessetPersonId": 30871,
@@ -1961,7 +1853,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected at the election; entered Knesset 25 in the list's faction (name score 2.5); Hebrew Wikipedia via Wikidata Q116603688: identical Hebrew label, party \"יש עתיד\" (shares \"עתיד\"), born 1979"
+   "basis": "not elected at the election; entered Knesset 25 in the list's faction (name score 2.5); Hebrew Wikipedia via Wikidata Q116603688: identical Hebrew label, party \"יש עתיד\" (shares \"עתיד\"), born 1979; the article places the person in this election"
   },
   "25-פה#26": {
    "knessetPersonId": 30881,
@@ -1993,7 +1885,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected at the election; entered Knesset 25 in the list's faction (name score 2.5); Hebrew Wikipedia via Wikidata Q135686494: identical Hebrew label, party \"יש עתיד\" (shares \"עתיד\"), born 1986"
+   "basis": "not elected at the election; entered Knesset 25 in the list's faction (name score 2.5); Hebrew Wikipedia via Wikidata Q135686494: identical Hebrew label, party \"יש עתיד\" (shares \"עתיד\"), born 1986; the article places the person in this election"
   },
   "25-פה#28": {
    "knessetPersonId": 30916,
@@ -2009,7 +1901,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected at the election; entered Knesset 25 in the list's faction (name score 3); Hebrew Wikipedia via Wikidata Q140142401: identical Hebrew label, party \"יש עתיד\" (shares \"עתיד\"), born 1978"
+   "basis": "not elected at the election; entered Knesset 25 in the list's faction (name score 3); Hebrew Wikipedia via Wikidata Q140142401: identical Hebrew label, party \"יש עתיד\" (shares \"עתיד\"), born 1978; the article places the person in this election"
   },
   "25-פה#29": {
    "knessetPersonId": 30917,
@@ -2025,7 +1917,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected at the election; entered Knesset 25 in the list's faction (name score 3); Hebrew Wikipedia via Wikidata Q140774391: identical Hebrew label, party \"יש עתיד\" (shares \"עתיד\"), born 1988"
+   "basis": "not elected at the election; entered Knesset 25 in the list's faction (name score 3); Hebrew Wikipedia via Wikidata Q140774391: identical Hebrew label, party \"יש עתיד\" (shares \"עתיד\"), born 1988; the article places the person in this election"
   },
   "25-פה#30": {
    "knessetPersonId": 30921,
@@ -2041,7 +1933,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected at the election; entered Knesset 25 in the list's faction (name score 3); Hebrew Wikipedia via Wikidata Q140983928: identical Hebrew label, party \"יש עתיד\" (shares \"עתיד\"), born 1983"
+   "basis": "not elected at the election; entered Knesset 25 in the list's faction (name score 3); Hebrew Wikipedia via Wikidata Q140983928: identical Hebrew label, party \"יש עתיד\" (shares \"עתיד\"), born 1983; the article places the person in this election"
   },
   "25-אמת#1": {
    "knessetPersonId": 23565,
@@ -2121,7 +2013,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction of list אמת"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction \"העבודה\" shares \"העבודה\""
   },
   "25-אמת#6": {
    "knessetPersonId": 30806,
@@ -2137,7 +2029,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction of list אמת"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction \"העבודה\" shares \"העבודה\""
   },
   "25-אמת#8": {
    "knessetPersonId": 30813,
@@ -2153,7 +2045,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction of list אמת"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction \"העבודה\" shares \"העבודה\""
   },
   "25-אמת#10": {
    "knessetPersonId": null,
@@ -2165,7 +2057,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not an MK; Wikidata Q20071561: identical Hebrew label, party \"מפלגת העבודה הישראלית\" (shares \"העבודה\"), born 1974"
+   "basis": "not an MK; Wikidata Q20071561: identical Hebrew label, party \"מפלגת העבודה הישראלית\" (shares \"העבודה\"), born 1974; the article places the person in this election"
   },
   "25-אמת#13": {
    "knessetPersonId": null,
@@ -2177,7 +2069,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not an MK; Wikidata Q17522695: identical Hebrew label, party \"מפלגת העבודה הישראלית\" (shares \"העבודה\"), born 1971"
+   "basis": "not an MK; Wikidata Q17522695: identical Hebrew label, party \"מפלגת העבודה הישראלית\" (shares \"העבודה\"), born 1971; the article places the person in this election"
   },
   "25-אמת#20": {
    "knessetPersonId": null,
@@ -2189,19 +2081,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not an MK; Wikidata Q107534263: identical Hebrew label, party \"מפלגת העבודה הישראלית\" (shares \"העבודה\"), born 1971"
-  },
-  "25-אמת#24": {
-   "knessetPersonId": null,
-   "knesset": null,
-   "hewiki": {
-    "title": "חן אריאלי",
-    "url": "https://he.wikipedia.org/wiki/%D7%97%D7%9F_%D7%90%D7%A8%D7%99%D7%90%D7%9C%D7%99",
-    "via": "wikidata Q64830859"
-   },
-   "party": null,
-   "confidence": "medium",
-   "basis": "not an MK; Wikidata Q64830859: identical Hebrew label, party \"מפלגת העבודה הישראלית\" (shares \"העבודה\"), born 1976"
+   "basis": "not an MK; Wikidata Q107534263: identical Hebrew label, party \"מפלגת העבודה הישראלית\" (shares \"העבודה\"), born 1971; the article places the person in this election"
   },
   "25-אמת#28": {
    "knessetPersonId": null,
@@ -2213,43 +2093,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not an MK; Wikidata Q30107646: identical Hebrew label, party \"מפלגת העבודה הישראלית\" (shares \"העבודה\"), born 1945"
-  },
-  "25-אמת#99": {
-   "knessetPersonId": null,
-   "knesset": null,
-   "hewiki": {
-    "title": "רן קוניק",
-    "url": "https://he.wikipedia.org/wiki/%D7%A8%D7%9F_%D7%A7%D7%95%D7%A0%D7%99%D7%A7",
-    "via": "wikidata Q16129236"
-   },
-   "party": null,
-   "confidence": "medium",
-   "basis": "not an MK; Wikidata Q16129236: identical Hebrew label, party \"מפלגת העבודה הישראלית\" (shares \"העבודה\"), born 1968"
-  },
-  "25-אמת#100": {
-   "knessetPersonId": null,
-   "knesset": null,
-   "hewiki": {
-    "title": "ישראל גל",
-    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%92%D7%9C",
-    "via": "wikidata Q20022768"
-   },
-   "party": null,
-   "confidence": "medium",
-   "basis": "not an MK; Wikidata Q20022768: identical Hebrew label, party \"מפלגת העבודה הישראלית\" (shares \"העבודה\"), born 1964"
-  },
-  "25-אמת#103": {
-   "knessetPersonId": null,
-   "knesset": null,
-   "hewiki": {
-    "title": "עידו גרינבלום",
-    "url": "https://he.wikipedia.org/wiki/%D7%A2%D7%99%D7%93%D7%95_%D7%92%D7%A8%D7%99%D7%A0%D7%91%D7%9C%D7%95%D7%9D",
-    "via": "wikidata Q60193443"
-   },
-   "party": null,
-   "confidence": "medium",
-   "basis": "not an MK; Wikidata Q60193443: identical Hebrew label, party \"מפלגת העבודה הישראלית\" (shares \"העבודה\"), born 1986"
+   "basis": "not an MK; Wikidata Q30107646: identical Hebrew label, party \"מפלגת העבודה הישראלית\" (shares \"העבודה\"), born 1945; the article places the person in this election"
   },
   "25-כן#1": {
    "knessetPersonId": 30657,
@@ -2457,7 +2301,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction \"תקווה חדשה\" shares \"אחדות\"; Hebrew Wikipedia via Wikidata Q105628745: identical Hebrew label, party \"תקווה חדשה\" (shares \"תקווה\"), born 1966"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction \"תקווה חדשה\" shares \"אחדות\"; Hebrew Wikipedia via Wikidata Q105628745: identical Hebrew label, party \"תקווה חדשה\" (shares \"תקווה\"), born 1966; the article places the person in this election"
   },
   "25-כן#14": {
    "knessetPersonId": 30693,
@@ -2576,7 +2420,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/214",
     "siteId": 214,
-    "verified": "pattern"
+    "verified": "archive 2004-04-29"
    },
    "hewiki": {
     "title": "אביגדור ליברמן",
@@ -2633,7 +2477,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "elected; Knesset 25 member, name identical (3); Hebrew Wikipedia via Wikidata Q21789584: identical Hebrew label, party \"ישראל ביתנו\" (shares \"ביתנו\"), born 1970"
+   "basis": "elected; Knesset 25 member, name identical (3); Hebrew Wikipedia via Wikidata Q21789584: identical Hebrew label, party \"ישראל ביתנו\" (shares \"ביתנו\"), born 1970; the article places the person in this election"
   },
   "25-ל#5": {
    "knessetPersonId": 23560,
@@ -2681,7 +2525,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction of list ל"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction \"ישראל ביתנו\" shares \"ביתנו\""
   },
   "25-ל#10": {
    "knessetPersonId": 30745,
@@ -2697,7 +2541,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction of list ל"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction \"ישראל ביתנו\" shares \"ביתנו\""
   },
   "25-ל#11": {
    "knessetPersonId": 30815,
@@ -2713,7 +2557,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction of list ל"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction \"ישראל ביתנו\" shares \"ביתנו\""
   },
   "25-עם#1": {
    "knessetPersonId": 30713,
@@ -2824,7 +2668,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/208",
     "siteId": 208,
-    "verified": "pattern"
+    "verified": "archive 2004-04-07"
    },
    "hewiki": {
     "title": "אחמד טיבי",
@@ -2897,7 +2741,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected at the election; entered Knesset 25 in the list's faction (name score 3); Hebrew Wikipedia via Wikidata Q134973008: identical Hebrew label, party \"תנועה ערבית להתחדשות\" (shares \"להתחדשות\"), born 1979"
+   "basis": "not elected at the election; entered Knesset 25 in the list's faction (name score 3); Hebrew Wikipedia via Wikidata Q134973008: identical Hebrew label, party \"תנועה ערבית להתחדשות\" (shares \"להתחדשות\"), born 1979; the article places the person in this election"
   },
   "25-מרצ#2": {
    "knessetPersonId": 511,
@@ -2913,7 +2757,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction of list מרצ"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction \"מרצ\" shares \"מרצ\""
   },
   "25-מרצ#3": {
    "knessetPersonId": 23653,
@@ -2929,7 +2773,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction of list מרצ"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction \"מרצ\" shares \"מרצ\""
   },
   "25-מרצ#4": {
    "knessetPersonId": 30821,
@@ -2945,7 +2789,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction of list מרצ"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction \"מרצ\" shares \"מרצ\""
   },
   "25-מרצ#5": {
    "knessetPersonId": 30743,
@@ -2961,7 +2805,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 22 faction of list מרצ"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction \"מרצ\" shares \"מרצ\""
   },
   "25-מרצ#7": {
    "knessetPersonId": 12947,
@@ -2977,7 +2821,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 22 faction of list מרצ"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction \"מרצ\" shares \"מרצ\""
   },
   "25-מרצ#13": {
    "knessetPersonId": null,
@@ -2989,19 +2833,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not an MK; Wikidata Q6963872: identical Hebrew label, party \"מפלגת העבודה הישראלית\" (shares \"מרצ\"), born 1976"
-  },
-  "25-מרצ#16": {
-   "knessetPersonId": null,
-   "knesset": null,
-   "hewiki": {
-    "title": "תומר רזניק",
-    "url": "https://he.wikipedia.org/wiki/%D7%AA%D7%95%D7%9E%D7%A8_%D7%A8%D7%96%D7%A0%D7%99%D7%A7",
-    "via": "wikidata Q109767843"
-   },
-   "party": null,
-   "confidence": "medium",
-   "basis": "not an MK; Wikidata Q109767843: identical Hebrew label, party \"מרצ\" (shares \"מרצ\"), born 1990"
+   "basis": "not an MK; Wikidata Q6963872: identical Hebrew label, party \"מפלגת העבודה הישראלית\" (shares \"מרצ\"), born 1976; the article places the person in this election"
   },
   "25-מרצ#18": {
    "knessetPersonId": null,
@@ -3013,7 +2845,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not an MK; Wikidata Q28154624: identical Hebrew label, party \"מרצ\" (shares \"מרצ\"), born 1979"
+   "basis": "not an MK; Wikidata Q28154624: identical Hebrew label, party \"מרצ\" (shares \"מרצ\"), born 1979; the article places the person in this election"
   },
   "25-מרצ#19": {
    "knessetPersonId": null,
@@ -3025,19 +2857,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not an MK; Wikidata Q109767899: identical Hebrew label, party \"מרצ\" (shares \"מרצ\"), born 1962"
-  },
-  "25-מרצ#25": {
-   "knessetPersonId": null,
-   "knesset": null,
-   "hewiki": {
-    "title": "יפעת סולל",
-    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A4%D7%A2%D7%AA_%D7%A1%D7%95%D7%9C%D7%9C",
-    "via": "wikidata Q7036668"
-   },
-   "party": null,
-   "confidence": "medium",
-   "basis": "not an MK; Wikidata Q7036668: identical Hebrew label, party \"מרצ\" (shares \"מרצ\"), born 1972"
+   "basis": "not an MK; Wikidata Q109767899: identical Hebrew label, party \"מרצ\" (shares \"מרצ\"), born 1962; the article places the person in this election"
   },
   "25-מרצ#33": {
    "knessetPersonId": null,
@@ -3049,19 +2869,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not an MK; Wikidata Q56809537: identical Hebrew label, party \"מרצ\" (shares \"מרצ\"), born 1980"
-  },
-  "25-מרצ#76": {
-   "knessetPersonId": null,
-   "knesset": null,
-   "hewiki": {
-    "title": "מיכל עדן",
-    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%99%D7%9B%D7%9C_%D7%A2%D7%93%D7%9F",
-    "via": "wikidata Q6966990"
-   },
-   "party": null,
-   "confidence": "medium",
-   "basis": "not an MK; Wikidata Q6966990: identical Hebrew label, party \"מרצ\" (shares \"מרצ\"), born 1969"
+   "basis": "not an MK; Wikidata Q56809537: identical Hebrew label, party \"מרצ\" (shares \"מרצ\"), born 1980; the article places the person in this election"
   },
   "25-מרצ#91": {
    "knessetPersonId": null,
@@ -3073,7 +2881,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not an MK; Wikidata Q6930070: identical Hebrew label, party \"מרצ\" (shares \"מרצ\"), born 1957"
+   "basis": "not an MK; Wikidata Q6930070: identical Hebrew label, party \"מרצ\" (shares \"מרצ\"), born 1957; the article places the person in this election"
   },
   "25-מרצ#102": {
    "knessetPersonId": null,
@@ -3085,19 +2893,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not an MK; Wikidata Q6897261: identical Hebrew label, party \"מרצ\" (shares \"מרצ\"), born 1946"
-  },
-  "25-מרצ#103": {
-   "knessetPersonId": null,
-   "knesset": null,
-   "hewiki": {
-    "title": "רפאל ולדן",
-    "url": "https://he.wikipedia.org/wiki/%D7%A8%D7%A4%D7%90%D7%9C_%D7%95%D7%9C%D7%93%D7%9F",
-    "via": "wikidata Q6699186"
-   },
-   "party": null,
-   "confidence": "medium",
-   "basis": "not an MK; Wikidata Q6699186: identical Hebrew label, party \"מרצ\" (shares \"מרצ\"), born 1942"
+   "basis": "not an MK; Wikidata Q6897261: identical Hebrew label, party \"מרצ\" (shares \"מרצ\"), born 1946; the article places the person in this election"
   },
   "25-מרצ#116": {
    "knessetPersonId": 23652,
@@ -3113,14 +2909,14 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction of list מרצ"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction \"מרצ\" shares \"מרצ\""
   },
   "25-מרצ#117": {
    "knessetPersonId": 23651,
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/871",
     "siteId": 871,
-    "verified": "pattern"
+    "verified": "archive 2013-05-11"
    },
    "hewiki": {
     "title": "תמר זנדברג",
@@ -3129,7 +2925,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 22 faction of list מרצ"
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction \"מרצ\" shares \"מרצ\""
   },
   "25-ב#1": {
    "knessetPersonId": 23512,
@@ -3145,7 +2941,7 @@
    },
    "party": null,
    "confidence": "medium",
-   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 22 faction \"הימין החדש\" shares \"איילת\""
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 24 faction of list ב"
   },
   "25-ב#5": {
    "knessetPersonId": 30791,
