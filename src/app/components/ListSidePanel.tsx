@@ -1,3 +1,4 @@
+import { ScenarioSwitcher } from './ScenarioSwitcher.tsx';
 import { referenceLabel } from '../derive.ts';
 import { ElectionAbout } from './ElectionContext.tsx';
 import { allocationOf } from '../derive.ts';
@@ -40,6 +41,7 @@ export function ListSidePanel({ s, r, ds, base, baseR, listId }: { s: Scenario; 
   const blocs = assignedBlocs.length ? assignedBlocs : s.blocs;
   return (
     <aside className="panel side-panel" ref={ref} aria-label={listLabel(l, lang)}>
+      <div className="sheet-scenario-switcher"><ScenarioSwitcher s={s} ds={ds} /></div>
       <header className="sp-head">
         <Slip letters={l.letters} color={l.color} logo={l.logo} size="lg" />
         <div style={{ minWidth: 0, flex: 1 }}>

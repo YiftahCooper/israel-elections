@@ -1,3 +1,5 @@
+import { ChoicePicker } from './ChoicePicker.tsx';
+import { ResultPreview } from './ResultPreview.tsx';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import * as Leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -98,7 +100,7 @@ export function LocalityMap({ s, data, historicalLists, locations, locationError
     {(data.noteEn || data.noteHe) && <p className="small callout">{lang === 'he' ? data.noteHe ?? data.noteEn : data.noteEn ?? data.noteHe}</p>}
     {split && mode === 'bloc' && <p className="callout small">{L('A list spans several blocs: its locality votes are apportioned by its current elected members’ blocs.', 'רשימה משויכת לכמה גושים: קולותיה ביישוב מחולקים לפי שיוך חבריה הנבחרים כיום.')}</p>}
     <div className="row">
-      <label>{L('Colour by ', 'צביעה לפי ')}<select value={mode} onChange={e=>setMode(e.target.value as typeof mode)}><option value="bloc">{L('Winning bloc','הגוש המוביל')}</option><option value="list">{L('Winning list','הרשימה המובילה')}</option></select></label>
+      <ChoicePicker label={L('Colour by', 'צביעה לפי')} value={mode} options={[{ value: 'bloc', label: L('Winning bloc', 'הגוש המוביל'), preview: <ResultPreview s={s} /> }, { value: 'list', label: L('Winning list', 'הרשימה המובילה'), preview: <ResultPreview s={s} blocs={false} /> }]} onChange={v => setMode(v as typeof mode)} />
       <label>{L('Find a locality ', 'חיפוש יישוב ')}<input type="search" value={q} onChange={e=>setQ(e.target.value)} placeholder={L('Hebrew, English or code','עברית, אנגלית או סמל')} /></label>
     </div>
     {q && <div className="locality-map-matches" aria-label={L('Matching localities','יישובים תואמים')}>

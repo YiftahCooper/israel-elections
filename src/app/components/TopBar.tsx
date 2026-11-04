@@ -1,9 +1,11 @@
+import { ChoicePicker } from './ChoicePicker.tsx';
+import { ScenarioSwitcher } from './ScenarioSwitcher.tsx';
 import { ElectionAbout } from './ElectionContext.tsx';
-import { changeText, ChangeValue } from '../changeValue.tsx';
+import { changeText } from '../changeValue.tsx';
 import { electionContext } from '../../data/electionContext.ts';
 import { exportAnnotations } from '../scenarioExport.ts';
 import { baselineOf, editPathLabel, referenceChanges } from '../derive.ts';
-import { savedColor, scenarioColor } from '../scenarioIdentity.ts';
+import { savedColor } from '../scenarioIdentity.ts';
 import { describe } from '../actionDescription.ts';
 import { useEffect, useRef, useState } from 'react';
 import type { ElectionDataset, ElectionId, ElectionIndexEntry } from '../../data/schema.ts';
@@ -37,7 +39,6 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
   const elections = ds && !index.some((e) => e.id === ds.id)
     ? [...index, { id: ds.id, knesset: ds.knesset, date: ds.electionDate, nameHe: ds.nameHe, nameEn: ds.nameEn, available: true, status: { stage: ds.status.stage } }].sort((a, b) => b.date.localeCompare(a.date))
     : index;
-  const reference = useStore(st => st.reference);
   const theme = useStore((st) => st.theme);
   const custom = useStore(st => st.customFeatures);
   const level = useStore((st) => st.level);
@@ -62,8 +63,6 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
     document.addEventListener('keydown', onKey); document.addEventListener('pointerdown', onDown);
     return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', onDown); };
   }, [menu]);
-  const [changesOpen, setChangesOpen] = useState(false);
-  const changes = s && ds ? referenceChanges(s, baselineOf(ds)) : [];
   const [shareUrl, setShareUrl] = useState('');
 
   const exportCsv = () => {
@@ -78,18 +77,12 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
   return (
     <header className="band">
       <span className="brand">{L('Israeli Elections Explorer', 'סייר הבחירות לכנסת')}</span>
-      <select aria-label={L('Election', 'בחירות')} value={pmContestId ?? electionId} onChange={async (e) => { const pm = electionContext.pmContests.find(c => c.id === e.target.value && c.contestType === 'prime-minister-only'); if (await openElection(pm?.electionId ?? e.target.value as ElectionId)) onContestChange?.(pm?.id ?? null); }} className="election">
-        {elections.map((e) => <option key={e.id} value={e.id} disabled={!e.available}>{electionLabel(e, elections, lang)}{e.available ? '' : L(' — not yet available', ' — עדיין לא זמין')}</option>)}
-        {electionContext.pmContests.filter(c => c.contestType === 'prime-minister-only').map(c => <option key={c.id} value={c.id}>{c.effectiveDate.slice(0, 4)} · {L('Prime Minister only', 'ראש הממשלה בלבד')}</option>)}
-      </select>
+      <ChoicePicker confirmLabel={L('Open', 'פתיחה')} className="election" label={L('Election', 'בחירות')} value={pmContestId ?? electionId} options={[
+        ...elections.map(e => ({ value: e.id, label: electionLabel(e, elections, lang), detail: e.date + (e.date.startsWith('2019') ? (e.knesset === 21 ? ' · 2019a' : ' · 2019b') : '') + (e.available ? '' : L(' — not yet available', ' — עדיין לא זמין')), group: Number(e.date.slice(0, 4)) >= 2015 ? L('2015–present · 3.25%', '2015–היום · 3.25%') : Number(e.date.slice(0, 4)) >= 2003 ? '2003–2013 · 2%' : Number(e.date.slice(0, 4)) >= 1992 ? '1992–1999 · 1.5%' : '1949–1988 · 1%', disabled: !e.available })),
+        ...electionContext.pmContests.filter(c => c.contestType === 'prime-minister-only').map(c => ({ value: c.id, label: c.effectiveDate.slice(0, 4) + ' · ' + L('Prime Minister only', 'ראש הממשלה בלבד'), detail: c.effectiveDate, group: L('Direct election · separate contest', 'בחירה ישירה · הליך נפרד') }))
+      ].sort((a, b) => b.detail.slice(0, 10).localeCompare(a.detail.slice(0, 10)))} onChange={async value => { const pm = electionContext.pmContests.find(c => c.id === value && c.contestType === 'prime-minister-only'); if (await openElection(pm?.electionId ?? value as ElectionId)) onContestChange?.(pm?.id ?? null); }} />
       {ds && !pmContestId && <ElectionAbout electionId={ds.id} />}
-      {/* official results need no chip: the neutral chrome says so, and publication status lives in "About this election" */}
-      {s && ds && (reference || changes.length > 0 || s.identityColor) && <div className="scenario-status">
-        <button className="chip election-status" aria-expanded={changesOpen} onClick={() => setChangesOpen(v => !v)}>
-          <span className="swatch" style={{ background: scenarioColor(s) }} /><span className="scenario-chip-name">{s.name || L('Untitled scenario', 'תרחיש ללא שם')}</span>
-        </button>
-        {changesOpen && <div className="menu-pop scenario-changes"><ScenarioName key={`${s.id}-${s.name}`} name={s.name} placeholder={L('Untitled scenario', 'תרחיש ללא שם')} label={L('Scenario name', 'שם התרחיש')} /><b>{L('Changes from the official result', 'שינויים מהתוצאה הרשמית')}</b><ul>{changes.map(p => <li key={p.join('/')}><bdi>{editPathLabel(s, p, lang, baselineOf(ds!))}</bdi>: <bdi><ChangeValue s={s} path={p} lang={lang} /></bdi></li>)}</ul></div>}
-      </div>}
+      {s && ds && <ScenarioSwitcher s={s} ds={ds} />}
 
       <Seg<'simple' | 'standard' | 'expert' | 'custom'> label={L('Detail level', 'רמת פירוט')} value={custom ? 'custom' : level} onChange={(v) => { if (v === 'custom') return; setState({ level: v, customFeatures: null, ...(v === 'simple' ? { voteSource: { kind: 'proportional' as const } } : {}) }); }} options={[{ v: 'simple', label: L('Simple', 'פשוט') }, { v: 'standard', label: L('Standard', 'רגיל') }, { v: 'expert', label: L('Expert', 'מומחה') }]} /><button className="btn small band-custom" aria-pressed={custom !== null} title={custom ? L('Custom · based on ', 'מותאם · על בסיס ') + L({simple:'Simple',standard:'Standard',expert:'Expert'}[level], {simple:'פשוט',standard:'רגיל',expert:'מומחה'}[level]) : L('Custom','מותאם')} onClick={() => setState({ tool: 'custom' })}>{custom ? L('Custom', 'מותאם') + ' · ' + L('based on ', 'על בסיס ') + L({simple:'Simple',standard:'Standard',expert:'Expert'}[level], {simple:'פשוט',standard:'רגיל',expert:'מומחה'}[level]) : L('Custom', 'מותאם')}</button>
       <span className="spacer" />

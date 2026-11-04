@@ -1,3 +1,4 @@
+import { TurnoutSteps } from './TurnoutSteps.tsx';
 import { StartFrom } from './StartFrom.tsx';
 import { PartEdits } from './PartEdits.tsx';
 import { describe } from '../actionDescription.ts';
@@ -72,15 +73,22 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
             <label className="row small"><input type="checkbox" checked={s.rules.majorityCap} onChange={(e) => set({ majorityCap: e.target.checked })} />{L('Half-seats cap', 'מגבלת מחצית')}</label>
             <label className="row small"><input type="checkbox" checked={s.rules.agreementRequiresAllQualify} onChange={(e) => set({ agreementRequiresAllQualify: e.target.checked })} />{L('Agreement needs all partners above threshold', 'הסכם דורש שכל השותפות יעברו')}</label>
           </div>
+          <div className="quick-actions" role="group" aria-label={L('Thresholds by era', 'אחוזי חסימה לפי תקופה')}>
+            {['1', '1.5', '2', '3.25'].map(pct => <button key={pct} className="btn small" onClick={() => set({ thresholdPct: pct })}>{pct}%</button>)}
+          </div>
         </fieldset>
         <hr />
         <div className="row" style={{ justifyContent: 'space-between' }}>
           <h3>{L('Electorate', 'ציבור הבוחרים')}</h3>
           {(s.registered !== base.registered || s.invalid !== base.invalid) && <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'totals' })}>{L('Restore historical', 'שחזור הנתונים ההיסטוריים')}</button>}
         </div>
+        <TurnoutSteps s={s} />
         <div className="grid2">
           <label className="field">{L('Registered voters', 'בעלי זכות בחירה')}<NumberInput value={s.registered} onCommit={(n) => dispatch({ type: 'setTotals', registered: n })} label={L('Registered voters', 'בעלי זכות בחירה')} /></label>
           <label className="field">{L('Invalid ballots', 'קולות פסולים')}<NumberInput value={s.invalid} onCommit={(n) => dispatch({ type: 'setTotals', invalid: n })} label={L('Invalid ballots', 'קולות פסולים')} /></label>
+        </div>
+        <div className="quick-actions">
+          {(['registered', 'invalid'] as const).flatMap(key => [-1000, 1000, -10000, 10000].map(d => <button key={`${key}-${d}`} className="btn small" disabled={s[key] + d < 0} onClick={() => dispatch({ type: 'setTotals', [key]: s[key] + d })}>{key === 'registered' ? L('Registered', 'בעלי זכות') : L('Invalid', 'פסולים')} {d > 0 ? '+' : '−'}{fmtInt(Math.abs(d))}</button>))}
         </div>
       </div>
       <div>

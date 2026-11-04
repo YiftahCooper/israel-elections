@@ -1,15 +1,16 @@
+import { choose } from './choices.ts';
 import { expect, test, type Page } from '@playwright/test';
 async function start(page: Page, lang = 'en', theme = 'light', level = 'standard') {
   await page.addInitScript(v => localStorage.setItem('israel-elections:v1', JSON.stringify(v)), {lang, theme, level, hintDismissed:true});
   await page.goto('/');
   await expect(page.getByRole('region', {name:lang === 'he' ? 'הרשימות' : 'Lists',exact:true})).toBeVisible();
-  await page.getByRole('combobox', {name:lang === 'he' ? 'בחירות' : 'Election', exact:true}).selectOption('k25');
+  await choose(page.getByRole('button', {name:lang === 'he' ? 'בחירות' : 'Election', exact:true}), 'k25');
   await expect(page.getByRole('region', { name: lang === 'he' ? 'הרשימות' : 'Lists', exact: true }).getByRole('button', { name: lang === 'he' ? 'הליכוד' : 'Likud', exact: true }).locator('.lb-seats b')).toHaveText('32');
 }
 test('grouping-only switches show no invented seat gains in Compare and name history actions', async ({page}) => {
   await start(page);
   for (const scheme of ['pre-election-blocs','first-government']) {
-    await page.getByRole('combobox', {name:'Grouping',exact:true}).selectOption(scheme);
+    await choose(page.getByRole('button', {name:'Grouping',exact:true}), scheme);
     await expect(page.getByRole('button', {name:/^Undo: Bloc grouping:/})).toBeEnabled();
     await expect(page.getByRole('button', {name:/^History ·/})).toBeVisible();
     await page.getByRole('tab', {name:'Compare',exact:true}).click();
