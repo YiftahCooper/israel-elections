@@ -299,6 +299,27 @@ const markerDiffs=(s:Scenario,reference:Scenario)=>{
  return s.blocSchemeId===null&&paths.some(p=>p[0]!=='blocSchemeId'&&inputPart(p)==='blocs')
   ?paths.filter(p=>p[0]!=='blocSchemeId'):paths;
 };
+/** The lists a user's vote edits chose, as opposed to lists that only absorbed the balance (the "other lists
+ *  proportionally" donors). Only the chosen lists carry a vote marker; the others still show their changed numbers.
+ *  null means every list was chosen (a whole-election edit such as turnout or scaling all votes). */
+function chosenVoteLists(s:Scenario,reference:Scenario):Set<string>|null{
+ const prefix=reference.log.length<=s.log.length&&reference.log.every((e,i)=>s.log[i]===e||s.log[i]?.at===e.at&&JSON.stringify(s.log[i]?.action)===JSON.stringify(e.action));
+ const chosen=new Set<string>();
+ for(const {action:a} of s.log.slice(prefix?reference.log.length:0)){
+  if(a.type==='setVotes')chosen.add(a.listId);
+  else if(a.type==='transfer'){chosen.add(a.from);chosen.add(a.to);}
+  else if(a.type==='redistribute'){const to=a.to.map(x=>x.listId);
+   // the edited side is the one the user named: the smaller side (one list or one bloc against everyone else)
+   for(const id of a.from.length<to.length?a.from:to.length<a.from.length?to:[...a.from,...to])chosen.add(id);}
+  else if(a.type==='familyOperation'&&a.operation==='scale'){
+   // members come first in the allocations; they are the prefix whose new votes sum to the family target
+   let sum=0,k=0;for(;k<a.allocations.length;k++){sum+=a.allocations[k].votes;if(sum===a.target)break;}
+   for(const x of a.allocations.slice(0,k<a.allocations.length?k+1:a.allocations.length))chosen.add(x.listId);}
+  else if(a.type==='addVoters')for(const x of a.allocations)chosen.add(x.listId);
+  else if(a.type==='scaleAll'||a.type==='setTurnout')return null;
+ }
+ return chosen;
+}
 const markerCache=new WeakMap<Scenario,WeakMap<Scenario,EditPath[]>>();
 export function referenceChanges(s:Scenario,reference:Scenario):EditPath[]{
  let cache=markerCache.get(s);if(!cache){cache=new WeakMap();markerCache.set(s,cache);}const hit=cache.get(reference);if(hit)return hit;
@@ -310,7 +331,10 @@ export function referenceChanges(s:Scenario,reference:Scenario):EditPath[]{
   if(markerDiffs(scope.checkpoint,reference).some(p=>owner(p)===scope))paths.push(partPath);
   paths.push(...markerDiffs(s,scope.checkpoint).filter(p=>owner(p)===scope));
  }
- const unique=[...new Map(paths.map(p=>[p.join('/'),p])).values()];cache.set(reference,unique);return unique;
+ const chosen=chosenVoteLists(s,reference);
+ // a list whose votes changed only as the balance of someone else's edit is not itself an edit
+ const marked=chosen?paths.filter(p=>!(p[0]==='lists'&&p[2]==='votes'&&p.length===3&&!chosen.has(p[1]))):paths;
+ const unique=[...new Map(marked.map(p=>[p.join('/'),p])).values()];cache.set(reference,unique);return unique;
 }
 /** Part headers can address the logical part, while fields only address their own net edits. */
 export function markerPath(s:Scenario,reference:Scenario,path:EditPath):EditPath|null {

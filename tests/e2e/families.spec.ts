@@ -60,13 +60,15 @@ test('opening a historical chart retains a family lens without editing the elect
  await page.screenshot({path:'.backup-scratch/families/overview-family-view-1949.png'});await page.getByRole('button',{name:'Clear family view',exact:true}).click();await expect(page.locator('.family-row-label')).toHaveCount(0);
 });
 test('mixed-only elections are not plotted as zero; mixed policy is a persistent view that never forks',async({page})=>{
- await start(page);await page.getByRole('button',{name:'Haredi',exact:true}).click();await page.getByRole('button',{name:'Likud lineage',exact:true}).click();
+ // 2013: Likud ran jointly with Yisrael Beiteinu (20 of 31 seats), a real partnership, so Likud lineage is mixed-only there
+ await start(page);await choose(page.getByRole('button',{name:'Election',exact:true}),'k19');await page.getByRole('tab',{name:'Party families',exact:true}).click();
+ await page.getByRole('button',{name:'Haredi',exact:true}).click();await page.getByRole('button',{name:'Likud lineage',exact:true}).click();
  await expect(page.locator('.family-legend')).toHaveCount(1);await expect(page.locator('.family-legend')).toContainText('Mixed lists (up to)');
- const share=page.locator('.family-plots section').first();await share.locator('[role=link]').last().focus();
+ const share=page.locator('.family-plots section').first();await share.locator('[role=link]').nth(18).focus();
  await expect(page.getByRole('tooltip')).toContainText('Only in mixed lists');await expect(page.getByRole('tooltip')).not.toContainText('0 votes');
  await expect(page.locator('.family-scale')).toContainText('only mixed lists in this election');
  await page.getByRole('group',{name:'Mixed-list policy',exact:true}).getByRole('button',{name:'Exclude',exact:true}).click();
- await share.locator('[role=link]').last().focus();await expect(page.getByRole('tooltip')).toContainText('Only in mixed lists (excluded)');
+ await share.locator('[role=link]').nth(18).focus();await expect(page.getByRole('tooltip')).toContainText('Only in mixed lists (excluded)');
  await expect(page.locator('.family-chip')).toHaveCount(9);await expect(page.locator('.family-profile')).toContainText('Sourced draft interpretation');
  await page.reload();await page.getByRole('tab',{name:'Party families',exact:true}).click();await page.getByRole('button',{name:'Haredi',exact:true}).click();await page.getByRole('button',{name:'Likud lineage',exact:true}).click();
  await expect(page.getByRole('group',{name:'Mixed-list policy',exact:true}).getByRole('button',{name:'Exclude',exact:true})).toHaveAttribute('aria-pressed','true');
