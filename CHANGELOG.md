@@ -1,5 +1,13 @@
 # Changelog
 
+## 4 November 2026 — party families audit
+
+- Stop plotting elections where a family ran only in mixed lists as zero; stack the mixed range on the whole-list value and state the hatching once in a legend.
+- Say "not counted" (only mixed or contested lists) instead of "did not contest"; show excluded mixed votes in tooltips and exact figures.
+- Make the mixed-list policy a remembered view that never forks a preset; name personal copies distinctly and let Manage delete them.
+- Give the nine families mutually distinct colours; use round axis values and decade ticks; place tooltips beside the point.
+- Scale families down as well as up; preview the family's seats before/after with the delta and majority line; keep signs and arrows in Hebrew reading order.
+
 ## 4 November 2026 — mark replacements once
 
 - Mark whole-part starting points, grouping changes and rules presets once at the part; later individual edits use the replacement as their checkpoint.
