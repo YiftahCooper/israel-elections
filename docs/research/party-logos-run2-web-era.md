@@ -972,3 +972,141 @@ Baseline whole lists: **3/12**; constituents: **0/9**. Every one of the 18 initi
 - S3: `site:facebook.com "ישראל ביתנו" 2013 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "ישראל ביתנו" 2013 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
 
 Batch verification: `npx vitest run` **57 files / 484 tests passed** (single worker and CLI testTimeout=30000 from k23 onward after existing rebuild tests exceeded 5000ms); `npx tsc -p tsconfig.json --noEmit`, `npx vite build`, and `python3 scripts/validate-party-logos.py` passed. Dataset build passed; all 26 election datasets equal prior batch after recursively removing `logo` and `builtAt`.
+
+### k18 · 2009-02-10
+
+Baseline whole lists: **2/12**; constituents: **0/12**. Every one of the 22 initial gaps below was attempted in all three routes; S3 quota failures do not count as completed source searches.
+
+**L `אמת` — העבודה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"העבודה" "2009" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA_%D7%94%D7%A2%D7%91%D7%95%D7%93%D7%94_%D7%94%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%D7%AA>; <https://www.idi.org.il/policy/parties-and-elections/elections/2009>; <https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf>.
+- S2: `site:commons.wikimedia.org "Labor" logo 2009` → <https://commons.wikimedia.org/wiki/File:Bureau_of_Labor_Statistics_logo.svg>; <https://commons.wikimedia.org/wiki/File:National_Labor_Relations_Board_logo_-_BW.jpg>; <https://commons.wikimedia.org/wiki/File:Logo_Labor_fuer_Impulstechnik.JPG>.
+- S3: `site:facebook.com "העבודה" 2009 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "העבודה" 2009 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `ב` — הבית היהודי.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"הבית היהודי" "2009" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/policy/parties-and-elections/elections/2009>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%AA%D7%A9%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf>.
+- S2: `site:commons.wikimedia.org "Jewish Home" logo 2009` → <https://commons.wikimedia.org/wiki/File:Jewish_Home_New_Mafdal.png>; <https://commons.wikimedia.org/wiki/Category:The_Jewish_Home_elections_posters>; <https://commons.wikimedia.org/wiki/File:Israeli_Knesset_Blocs_2009.svg>.
+- S3: `site:facebook.com "הבית היהודי" 2009 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "הבית היהודי" 2009 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `ג` — יהדות התורה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"יהדות התורה" "2009" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%99%D7%94%D7%93%D7%95%D7%AA_%D7%94%D7%AA%D7%95%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections/parties/yahadut-hatorah>; <https://www.inss.org.il/he/publication/israel-elections-2022>.
+- S2: `site:commons.wikimedia.org "United Torah Judaism" logo 2009` → no returned URLs.
+- S3: `site:facebook.com "יהדות התורה" 2009 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "יהדות התורה" 2009 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `ד` — בל״ד.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"בל״ד" "2009" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/policy/parties-and-elections/parties/balad>; <https://he.wikipedia.org/wiki/%D7%91%D7%A8%D7%99%D7%AA_%D7%9C%D7%90%D7%95%D7%9E%D7%99%D7%AA_%D7%93%D7%9E%D7%95%D7%A7%D7%A8%D7%98%D7%99%D7%AA>; <https://www.gov.il/BlobFolder/guide/election-committee-history/ar/history_election-dates_knesset18-results.pdf>.
+- S2: `site:commons.wikimedia.org "Balad" logo 2009` → <https://commons.wikimedia.org/wiki/File:Balad-logo.jpg>; <https://commons.wikimedia.org/wiki/Category:A-Tajammu_(Balad)>; <https://commons.wikimedia.org/wiki/File:Living_pods_Joint_Base_Balad_2009.JPG>.
+- S3: `site:facebook.com "בלד" 2009 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "בלד" 2009 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `ו` — חד״ש.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"חד״ש" "2009" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/policy/parties-and-elections>; <https://he.wikipedia.org/wiki/%D7%94%D7%97%D7%96%D7%99%D7%AA_%D7%94%D7%93%D7%9E%D7%95%D7%A7%D7%A8%D7%98%D7%99%D7%AA_%D7%9C%D7%A9%D7%9C%D7%95%D7%9D_%D7%95%D7%9C%D7%A9%D7%95%D7%95%D7%99%D7%95%D7%9F>; <https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf>.
+- S2: `site:commons.wikimedia.org "Hadash" logo 2009` → <https://commons.wikimedia.org/wiki/File:Hadash.svg>; <https://commons.wikimedia.org/wiki/Category:Political_parties_in_Israel>; <https://commons.wikimedia.org/wiki/Category:Political_parties_in_Israel?uselang=vi>.
+- S3: `site:facebook.com "חדש" 2009 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "חדש" 2009 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `ט` — האיחוד הלאומי.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"האיחוד הלאומי" "2009" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/policy/parties-and-elections/parties/haihud-haleumi>; <https://he.wikipedia.org/wiki/%D7%94%D7%90%D7%99%D7%97%D7%95%D7%93_%D7%94%D7%9C%D7%90%D7%95%D7%9E%D7%99>; <https://www.hamichlol.org.il/%D7%94%D7%90%D7%99%D7%97%D7%95%D7%93_%D7%94%D7%9C%D7%90%D7%95%D7%9E%D7%99>.
+- S2: `site:commons.wikimedia.org "National Union" logo 2009` → <https://commons.wikimedia.org/wiki/Category:Logos_of_trade_unions>; <https://commons.wikimedia.org/wiki/File:Logo_Uni%C3%B3n_Nacional.png>; <https://commons.wikimedia.org/wiki/File:Ballot2009_NU.jpg>.
+- S3: `site:facebook.com "האיחוד הלאומי" 2009 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "האיחוד הלאומי" 2009 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `כן` — קדימה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"קדימה" "2009" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/policy/parties-and-elections/elections/2009>; <https://he.wikipedia.org/wiki/%D7%A7%D7%93%D7%99%D7%9E%D7%94_(%D7%9E%D7%A4%D7%9C%D7%92%D7%94)>; <https://elections.kaplanopensource.co.il/locality/53>.
+- S2: `site:commons.wikimedia.org "Kadima" logo 2009` → <https://commons.wikimedia.org/wiki/File:Logo_Kadima.svg>; <https://commons.wikimedia.org/wiki/Category:Kadima>; <https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_2218_Election_2009_night_-_Kadima_Party_%D7%A2%D7%A8%D7%91_%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_2009_-_%D7%9E%D7%98%D7%94_%D7%A7%D7%93%D7%99%D7%9E%D7%94.jpg>.
+- S3: `site:facebook.com "קדימה" 2009 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "קדימה" 2009 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `ל` — ישראל ביתנו.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"ישראל ביתנו" "2009" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%91%D7%99%D7%AA%D7%A0%D7%95>; <https://www.idi.org.il/policy/parties-and-elections/parties/yisrael-beytenu>; <https://www.gov.il/BlobFolder/guide/election-committee-history/ar/history_election-dates_knesset18-results.pdf>.
+- S2: `site:commons.wikimedia.org "Yisrael Beiteinu" logo 2009` → <https://commons.wikimedia.org/wiki/File:Israel-beytenu-logo.svg>; <https://commons.wikimedia.org/wiki/File:Ballot2009_YB.jpg>; <https://commons.wikimedia.org/wiki/Category:Yisrael_Beiteinu>.
+- S3: `site:facebook.com "ישראל ביתנו" 2009 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "ישראל ביתנו" 2009 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `עם` — רע״ם–תע״ל.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"רע״ם–תע״ל" "2009" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%A8%D7%A9%D7%99%D7%9E%D7%94_%D7%94%D7%A2%D7%A8%D7%91%D7%99%D7%AA_%D7%94%D7%9E%D7%90%D7%95%D7%97%D7%93%D7%AA>; <https://www.idi.org.il/parliaments/3077/3431>; <https://www.inss.org.il/he/publication/%D7%90%D7%97%D7%95%D7%96-%D7%94%D7%97%D7%A1%D7%99%D7%9E%D7%94-%D7%95%D7%94%D7%A9%D7%9C%D7%9B%D7%95%D7%AA%D7%99%D7%95-%D7%A2%D7%9C-%D7%94%D7%99%D7%99%D7%A6%D7%95%D7%92-%D7%94%D7%A4%D7%95%D7%9C%D7%99>.
+- S2: `site:commons.wikimedia.org "Ra'am–Ta'al" logo 2009` → <https://commons.wikimedia.org/wiki/File:Israeli_Knesset_Blocs_2009.svg>; <https://commons.wikimedia.org/wiki/File:2009_Knesset.svg>.
+- S3: `site:facebook.com "רעם–תעל" 2009 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "רעם–תעל" 2009 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `שס` — ש״ס.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"ש״ס" "2009" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/policy/parties-and-elections/elections/2009>; <https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA_%D7%A9%22%D7%A1>; <https://elections.kaplanopensource.co.il/locality/8500>.
+- S2: `site:commons.wikimedia.org "Shas" logo 2009` → <https://commons.wikimedia.org/wiki/File:Shas_logo.png>; <https://commons.wikimedia.org/wiki/File:Ballot2009_shas.jpg>; <https://commons.wikimedia.org/wiki/Category:Shas>.
+- S3: `site:facebook.com "שס" 2009 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "שס" 2009 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `agudat-yisrael` — אגודת ישראל.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"אגודת ישראל" "2009" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/policy/parties-and-elections>; <https://www.gov.il/BlobFolder/guide/election-committee-history/ar/history_election-dates_knesset18-results.pdf>; <https://he.wikipedia.org/wiki/%D7%90%D7%92%D7%95%D7%93%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C>.
+- S2: `site:commons.wikimedia.org "Agudat Yisrael" logo 2009` → <https://commons.wikimedia.org/wiki/Category:Political_parties_in_Israel>; <https://commons.wikimedia.org/wiki/Category:Political_parties_in_Lithuania>; <https://commons.wikimedia.org/wiki/Category:Political_parties_in_Israel?uselang=bs>.
+- S3: `site:facebook.com "אגודת ישראל" 2009 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "אגודת ישראל" 2009 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `ahi` — אח"י – ארץ חברה יהדות.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"אח"י – ארץ חברה יהדות" "2009" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA_%D7%90%D7%97%22%D7%99>; <https://www.hamichlol.org.il/%D7%94%D7%90%D7%99%D7%97%D7%95%D7%93_%D7%94%D7%9C%D7%90%D7%95%D7%9E%D7%99>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%99%D7%AA_%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99>.
+- S2: `site:commons.wikimedia.org "Ahi" logo 2009` → <https://commons.wikimedia.org/wiki/File:Ahi.jpg>; <https://commons.wikimedia.org/wiki/Category:S2-AHI_(aircraft)>; <https://commons.wikimedia.org/wiki/Category:9N-AHI_(aircraft)>.
+- S3: `site:facebook.com "אחי" 2009 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "אחי" 2009 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `degel-hatorah` — דגל התורה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"דגל התורה" "2009" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%93%D7%92%D7%9C_%D7%94%D7%AA%D7%95%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections/parties/yahadut-hatorah>; <https://www.kan.org.il/content/kan-news/politic/1040501>.
+- S2: `site:commons.wikimedia.org "Degel HaTorah" logo 2009` → <https://commons.wikimedia.org/wiki/Category:Political_parties_in_Israel>; <https://commons.wikimedia.org/wiki/Category:Political_parties_in_Israel?uselang=bs>; <https://commons.wikimedia.org/wiki/Category:Political_parties_in_Israel?uselang=vi>.
+- S3: `site:facebook.com "דגל התורה" 2009 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "דגל התורה" 2009 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `eretz-yisrael-shelanu` — ארץ ישראל שלנו.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"ארץ ישראל שלנו" "2009" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.gov.il/BlobFolder/guide/election-committee-history/ar/history_election-dates_knesset18-results.pdf>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%AA%D7%A9%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections/elections/2019-2>.
+- S2: `site:commons.wikimedia.org "Eretz Yisrael Shelanu" logo 2009` → no returned URLs.
+- S3: `site:facebook.com "ארץ ישראל שלנו" 2009 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "ארץ ישראל שלנו" 2009 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `hatikva` — התקווה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"התקווה" "2009" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.gov.il/BlobFolder/guide/election-committee-history/ar/history_election-dates_knesset18-results.pdf>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%AA%D7%A9%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections/elections/2021-1>.
+- S2: `site:commons.wikimedia.org "Hatikva" logo 2009` → <https://commons.wikimedia.org/wiki/File:Hatikva.svg>; <https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_721_legumes_in_Hatikva_Market_%D7%A7%D7%98%D7%A0%D7%99%D7%95%D7%AA_%D7%91%D7%A9%D7%95%D7%A7_%D7%94%D7%AA%D7%A7%D7%95%D7%95%D7%94.JPG>; <https://commons.wikimedia.org/wiki/Category:Bernie_Fink>.
+- S3: `site:facebook.com "התקווה" 2009 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "התקווה" 2009 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `likud` — הליכוד.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"הליכוד" "2009" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/policy/parties-and-elections/parties/likud>; <https://he.wikipedia.org/wiki/%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93>; <https://www.likud.org.il/%D7%A2%D7%9C-%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93/%D7%94%D7%94%D7%99%D7%A1%D7%98%D7%95%D7%A8%D7%99%D7%94-%D7%A9%D7%9C-%D7%94%D7%AA%D7%A0%D7%95%D7%A2%D7%94>.
+- S2: `site:commons.wikimedia.org "Likud" logo 2009` → <https://commons.wikimedia.org/wiki/File:Likud_Logo.svg>; <https://commons.wikimedia.org/wiki/File:Logo_Likud.png>; <https://commons.wikimedia.org/wiki/File:Israeli_Knesset_Blocs_2009.svg>.
+- S3: `site:facebook.com "הליכוד" 2009 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "הליכוד" 2009 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `meretz` — מרצ.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"מרצ" "2009" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%9E%D7%A8%D7%A6>; <https://www.idi.org.il/policy/parties-and-elections>; <https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf>.
+- S2: `site:commons.wikimedia.org "Meretz" logo 2009` → <https://commons.wikimedia.org/wiki/File:Meretz_Logo.svg>; <https://commons.wikimedia.org/wiki/File:Newmovemeretz.gif>; <https://commons.wikimedia.org/wiki/Category:Meretz>.
+- S3: `site:facebook.com "מרצ" 2009 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "מרצ" 2009 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `moledet` — מולדת.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"מולדת" "2009" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/policy/parties-and-elections>; <https://www.gov.il/BlobFolder/guide/election-committee-history/ar/history_election-dates_knesset18-results.pdf>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%AA%D7%A9%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94>.
+- S2: `site:commons.wikimedia.org "Moledet" logo 2009` → <https://commons.wikimedia.org/wiki/Category:Moledet_party>; <https://commons.wikimedia.org/wiki/File:Moledet_Kids_1950.jpg>; <https://commons.wikimedia.org/wiki/File:Yanai_Grove_sign.jpg>.
+- S3: `site:facebook.com "מולדת" 2009 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "מולדת" 2009 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `new-movement` — התנועה החדשה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"התנועה החדשה" "2009" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.gov.il/BlobFolder/guide/election-committee-history/ar/history_election-dates_knesset18-results.pdf>; <https://www.idi.org.il/articles/9369>; <https://he.wikipedia.org/wiki/%D7%9E%D7%A8%D7%A6>.
+- S2: `site:commons.wikimedia.org "HaTnua HaHadasha (New Movement)" logo 2009` → no returned URLs.
+- S3: `site:facebook.com "התנועה החדשה" 2009 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "התנועה החדשה" 2009 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `raam` — רע"ם – רשימת האיחוד הערבי.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"רע"ם – רשימת האיחוד הערבי" "2009" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%A8%D7%A9%D7%99%D7%9E%D7%94_%D7%94%D7%A2%D7%A8%D7%91%D7%99%D7%AA_%D7%94%D7%9E%D7%90%D7%95%D7%97%D7%93%D7%AA>; <https://www.gov.il/BlobFolder/guide/candidates-lists-26/he/pr5_26_annex.pdf>; <https://www.inss.org.il/he/publication/%D7%90%D7%97%D7%95%D7%96-%D7%94%D7%97%D7%A1%D7%99%D7%9E%D7%94-%D7%95%D7%94%D7%A9%D7%9C%D7%9B%D7%95%D7%AA%D7%99%D7%95-%D7%A2%D7%9C-%D7%94%D7%99%D7%99%D7%A6%D7%95%D7%92-%D7%94%D7%A4%D7%95%D7%9C%D7%99>.
+- S2: `site:commons.wikimedia.org "Ra'am (United Arab List)" logo 2009` → no returned URLs.
+- S3: `site:facebook.com "רעם" 2009 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "רעם" 2009 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `taal` — תע"ל.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"תע"ל" "2009" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/policy/parties-and-elections>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%AA%D7%A9%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.gov.il/apps/elections/heb/law/Decisions2009.pdf>.
+- S2: `site:commons.wikimedia.org "Ta'al" logo 2009` → <https://commons.wikimedia.org/wiki/File:Israeli_Knesset_Blocs_2009.svg>; <https://commons.wikimedia.org/wiki/File:IDF_Ranks_Ta%27al.svg>; <https://commons.wikimedia.org/wiki/File:Israel_Knesset_2009.svg>.
+- S3: `site:facebook.com "תעל" 2009 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "תעל" 2009 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `tkuma` — האיחוד הלאומי – תקומה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"האיחוד הלאומי – תקומה" "2009" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%90%D7%99%D7%97%D7%95%D7%93_%D7%94%D7%9C%D7%90%D7%95%D7%9E%D7%99%E2%80%93%D7%AA%D7%A7%D7%95%D7%9E%D7%94>; <https://www.gov.il/BlobFolder/guide/election-committee-history/ar/history_election-dates_knesset18-results.pdf>; <https://www.makorrishon.co.il/nrg/online/1/ART1/823/330.html>.
+- S2: `site:commons.wikimedia.org "Tkuma (National Union–Tkuma)" logo 2009` → no returned URLs.
+- S3: `site:facebook.com "האיחוד הלאומי" 2009 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "האיחוד הלאומי" 2009 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+Batch verification: `npx vitest run` **57 files / 484 tests passed** (single worker and CLI testTimeout=30000 from k23 onward after existing rebuild tests exceeded 5000ms); `npx tsc -p tsconfig.json --noEmit`, `npx vite build`, and `python3 scripts/validate-party-logos.py` passed. Dataset build passed; all 26 election datasets equal prior batch after recursively removing `logo` and `builtAt`.
