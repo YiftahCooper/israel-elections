@@ -2835,6 +2835,28 @@
       "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b4/United_Torah_Judaism_Logo_2019.svg",
       "evidenceFamily": "commons-file-202178251",
       "selected": true
+    },
+    {
+      "id": "commons-61888894",
+      "title": "File:Joint list logo.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Joint_list_logo.png",
+      "revisionUrl": "https://commons.wikimedia.org/w/index.php?oldid=1248862067",
+      "publisher": "Wikimedia Commons contributors",
+      "sourceType": "community metadata; not independent of the credited source",
+      "accessed": "2026-11-04",
+      "accessMethod": "MediaWiki API imageinfo/extmetadata and revisions; plain HTTP with project User-Agent",
+      "inspectionDepth": "Description, date, origin credit, licence and actual downloaded artwork inspected; upstream historical original not independently inspected",
+      "date": "2015-01-22",
+      "description": "Commons description explicitly dates this Joint List design to 22 January 2015 and credits source and author to the Joint List. It is the whole-list Arabic wordmark with the four constituent labels beneath, not an individual party emblem. Medium confidence: community metadata and party-origin credit; no independently inspected archived campaign original. This is File:Joint list logo.png (page 61888894), not the differently capitalized undated File:Joint List logo.png (page 39065398) whose Facebook origin requires login.",
+      "credit": "القائمة المشتركة",
+      "licence": "CC0",
+      "licenceTemplates": [
+        "cc-zero"
+      ],
+      "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/3/36/Joint_list_logo.png",
+      "evidenceFamily": "commons-file-61888894",
+      "selected": true
     }
   ]
 }

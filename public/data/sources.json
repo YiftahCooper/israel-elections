@@ -4238,5 +4238,17 @@
   "retrievedAt": "2026-11-04",
   "bytes": 4160,
   "sha256": "a0ccba99ba9057474c6d4020860ccccc0701c2766fa70641e744a00cfa1cf80b"
+ },
+ {
+  "id": "logo-k20-joint-list-2015.png-original",
+  "file": "logos/k20/joint-list-2015-original.png",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/3/36/Joint_list_logo.png",
+  "publisher": "Wikimedia Commons; credited party origin",
+  "official": false,
+  "description": "Commons description explicitly dates this Joint List design to 22 January 2015 and credits source and author to the Joint List. It is the whole-list Arabic wordmark with the four constituent labels beneath, not an individual party emblem. Medium confidence: community metadata and party-origin credit; no independently inspected archived campaign original. This is File:Joint list logo.png (page 61888894), not the differently capitalized undated File:Joint List logo.png (page 39065398) whose Facebook origin requires login.",
+  "method": "http",
+  "retrievedAt": "2026-11-04",
+  "bytes": 168457,
+  "sha256": "d614fec71dd46dc6a753a3aa24ee44284711be5bc9be2397e501af7f6a752206"
  }
 ]

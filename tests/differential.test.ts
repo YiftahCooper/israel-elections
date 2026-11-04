@@ -46,7 +46,7 @@ const EXPECTED: Record<Family, string> = {
   // Labor and Yisrael Beiteinu k24 logos; only logo and builtAt change in all 26 datasets.
   // Yisrael Beiteinu k21–k23 logos; all other dataset fields verified equal to HEAD.
   // Run 2 campaign logo additions only; all 26 datasets equal prior batch excluding logo/builtAt.
-  model: '60ff70a3e31e88a75685d800d9a54c26d803d572f03a3dd1038f9ff2f8fb48cb',
+  model: 'eae75102ee39662de26b8501f126e9b759d461ba42f2886cb44131050a5e517a',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

@@ -738,3 +738,123 @@ Baseline whole lists: **3/11**; constituents: **0/14**. Every one of the 22 init
 - S3: `site:facebook.com "יש עתיד" 2019 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "יש עתיד" 2019 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
 
 Batch verification: `npx vitest run` **57 files / 484 tests passed** (single worker and CLI testTimeout=30000 from k23 onward after existing rebuild tests exceeded 5000ms); `npx tsc -p tsconfig.json --noEmit`, `npx vite build`, and `python3 scripts/validate-party-logos.py` passed. Dataset build passed; all 26 election datasets equal prior batch after recursively removing `logo` and `builtAt`.
+
+### k20 · 2015-03-17
+
+Baseline whole lists: **2/10**; constituents: **0/11**. Every one of the 19 initial gaps below was attempted in all three routes; S3 quota failures do not count as completed source searches.
+
+**L `אמת` — המחנה הציוני.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"המחנה הציוני" "2015" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/policy/parties-and-elections/parties/zionist-union>; <https://www.inss.org.il/he/publication/%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA-2015>; <https://www.kan.org.il/content/kan-news/politic/235369>.
+- S2: `site:commons.wikimedia.org "Zionist Union" logo 2015` → <https://commons.wikimedia.org/wiki/File:Zionist_Union.svg>; <https://commons.wikimedia.org/wiki/File:Israel_Knesset_2015.svg>; <https://commons.wikimedia.org/wiki/File:2015_Israeli_Knesset_Composition.svg>.
+- S3: `site:facebook.com "המחנה הציוני" 2015 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "המחנה הציוני" 2015 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `ג` — יהדות התורה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"יהדות התורה" "2015" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%99%D7%94%D7%93%D7%95%D7%AA_%D7%94%D7%AA%D7%95%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections/parties/yahadut-hatorah>; <https://www.inss.org.il/he/publication/%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA-2015>.
+- S2: `site:commons.wikimedia.org "United Torah Judaism" logo 2015` → <https://commons.wikimedia.org/wiki/File:2015_Israeli_Knesset_Composition.svg>; <https://commons.wikimedia.org/wiki/Category:Agudat_Yisrael>.
+- S3: `site:facebook.com "יהדות התורה" 2015 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "יהדות התורה" 2015 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `ודעם` — הרשימה המשותפת.** Added free-licence whole-list mark; Commons credits Joint List and dates it 2015-01-22.
+
+- S1: `"הרשימה המשותפת" "2015" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%A8%D7%A9%D7%99%D7%9E%D7%94_%D7%94%D7%9E%D7%A9%D7%95%D7%AA%D7%A4%D7%AA>; <https://www.idi.org.il/policy/parties-and-elections/parties/joint-arab-list>; <https://www.kan.org.il/content/kan-news/politic/352332>.
+- S2: `site:commons.wikimedia.org "Joint List" logo 2015` → <https://commons.wikimedia.org/wiki/File:Joint_list_logo.png>; <https://commons.wikimedia.org/wiki/File:2015_Israeli_Knesset_Composition.svg>; <https://commons.wikimedia.org/wiki/File:Joint_list.jpg>.
+- S3: `site:facebook.com "הרשימה המשותפת" 2015 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "הרשימה המשותפת" 2015 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `טב` — הבית היהודי.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"הבית היהודי" "2015" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/policy/parties-and-elections>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%AA%D7%A9%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions_jubran_knesset20.pdf>.
+- S2: `site:commons.wikimedia.org "Jewish Home" logo 2015` → <https://commons.wikimedia.org/wiki/Category:The_Jewish_Home>; <https://commons.wikimedia.org/wiki/File:Relief_on_exterior_wall_of_the_former_Rosa_Coplon_Jewish_Home_and_Infirmary,_Buffalo,_New_York,_April_2015.jpg>; <https://commons.wikimedia.org/wiki/File:Lost_but_found_-_or,_The_Jewish_home_(1868)_(14781917142).jpg>.
+- S3: `site:facebook.com "הבית היהודי" 2015 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "הבית היהודי" 2015 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `ל` — ישראל ביתנו.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"ישראל ביתנו" "2015" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/policy/parties-and-elections/parties/yisrael-beytenu>; <https://he.wikipedia.org/wiki/%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%91%D7%99%D7%AA%D7%A0%D7%95>; <https://www.inss.org.il/he/publication/%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA-2015>.
+- S2: `site:commons.wikimedia.org "Yisrael Beiteinu" logo 2015` → <https://commons.wikimedia.org/wiki/File:Israel-beytenu-logo.svg>; <https://commons.wikimedia.org/wiki/Category:Yisrael_Beiteinu>; <https://commons.wikimedia.org/wiki/Category:Yisrael_Beiteinu?uselang=ms>.
+- S3: `site:facebook.com "ישראל ביתנו" 2015 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "ישראל ביתנו" 2015 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `מרצ` — מרצ.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"מרצ" "2015" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%9E%D7%A8%D7%A6>; <https://www.idi.org.il/policy/parties-and-elections>; <https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions_jubran_knesset20.pdf>.
+- S2: `site:commons.wikimedia.org "Meretz" logo 2015` → <https://commons.wikimedia.org/wiki/File:Meretz_Logo.svg>; <https://commons.wikimedia.org/wiki/File:Meretz_Youth_logo_2014.png>; <https://commons.wikimedia.org/wiki/Category:Meretz>.
+- S3: `site:facebook.com "מרצ" 2015 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "מרצ" 2015 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `פה` — יש עתיד.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"יש עתיד" "2015" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%99%D7%A9_%D7%A2%D7%AA%D7%99%D7%93>; <https://www.idi.org.il/policy/parties-and-elections/parties/yesh-atid>; <https://www.inss.org.il/he/publication/%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA-2015>.
+- S2: `site:commons.wikimedia.org "Yesh Atid" logo 2015` → <https://commons.wikimedia.org/wiki/File:Yesh_Atid_logo.png>; <https://commons.wikimedia.org/wiki/File:YeshAtidLogo.svg>; <https://commons.wikimedia.org/wiki/File:2015_Israeli_Knesset_Composition.svg>.
+- S3: `site:facebook.com "יש עתיד" 2015 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "יש עתיד" 2015 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `שס` — ש״ס.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"ש״ס" "2015" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/policy/parties-and-elections>; <https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA_%D7%A9%22%D7%A1>; <https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf>.
+- S2: `site:commons.wikimedia.org "Shas" logo 2015` → <https://commons.wikimedia.org/wiki/File:Shas_logo.png>; <https://commons.wikimedia.org/wiki/File:Israel_Elections_2015_Shas.jpg>; <https://commons.wikimedia.org/wiki/Category:Shas>.
+- S3: `site:facebook.com "שס" 2015 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "שס" 2015 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `agudat-yisrael` — אגודת ישראל.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"אגודת ישראל" "2015" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/policy/parties-and-elections>; <https://he.wikipedia.org/wiki/%D7%90%D7%92%D7%95%D7%93%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C>; <https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions_jubran_knesset20.pdf>.
+- S2: `site:commons.wikimedia.org "Agudat Yisrael" logo 2015` → <https://commons.wikimedia.org/wiki/Category:Agudat_Yisrael>.
+- S3: `site:facebook.com "אגודת ישראל" 2015 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "אגודת ישראל" 2015 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `balad` — בל"ד.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"בל"ד" "2015" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%91%D7%A8%D7%99%D7%AA_%D7%9C%D7%90%D7%95%D7%9E%D7%99%D7%AA_%D7%93%D7%9E%D7%95%D7%A7%D7%A8%D7%98%D7%99%D7%AA>; <https://www.idi.org.il/policy/parties-and-elections/parties/raam-balad>; <https://www.kan.org.il/content/kan-news/politic/1082584>.
+- S2: `site:commons.wikimedia.org "Balad" logo 2015` → <https://commons.wikimedia.org/wiki/File:Joint_List_logo.png>; <https://commons.wikimedia.org/wiki/File:Director_Abdulrahman_Thaher_2015.jpg>; <https://commons.wikimedia.org/wiki/File:Balad_Air_Base_Pond_DVIDS22791.jpg>.
+- S3: `site:facebook.com "בלד" 2015 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "בלד" 2015 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `degel-hatorah` — דגל התורה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"דגל התורה" "2015" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%93%D7%92%D7%9C_%D7%94%D7%AA%D7%95%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections/parties/yahadut-hatorah>; <https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions_jubran_knesset20.pdf>.
+- S2: `site:commons.wikimedia.org "Degel HaTorah" logo 2015` → no returned URLs.
+- S3: `site:facebook.com "דגל התורה" 2015 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "דגל התורה" 2015 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `green-movement` — התנועה הירוקה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"התנועה הירוקה" "2015" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%9E%D7%A4%D7%9C%D7%92%D7%94_%D7%94%D7%99%D7%A8%D7%95%D7%A7%D7%94_(%D7%99%D7%A9%D7%A8%D7%90%D7%9C)>; <https://www.idi.org.il/articles/30964>; <https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions_jubran_knesset20.pdf>.
+- S2: `site:commons.wikimedia.org "Green Movement" logo 2015` → <https://commons.wikimedia.org/wiki/File:Katr%C3%ADn_Jakobsd%C3%B3ttir_(cropped).jpg>; <https://commons.wikimedia.org/wiki/Category:Political_party_elections>; <https://commons.wikimedia.org/wiki/User_talk:HuangQQ>.
+- S3: `site:facebook.com "התנועה הירוקה" 2015 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "התנועה הירוקה" 2015 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `hadash` — חד"ש (המפלגה הקומוניסטית הישראלית).** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"חד"ש (המפלגה הקומוניסטית הישראלית)" "2015" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%97%D7%96%D7%99%D7%AA_%D7%94%D7%93%D7%9E%D7%95%D7%A7%D7%A8%D7%98%D7%99%D7%AA_%D7%9C%D7%A9%D7%9C%D7%95%D7%9D_%D7%95%D7%9C%D7%A9%D7%95%D7%95%D7%99%D7%95%D7%9F>; <https://maki.org.il/>; <https://www.idi.org.il/policy/parties-and-elections/parties/hadash>.
+- S2: `site:commons.wikimedia.org "Hadash (Israeli Communist Party)" logo 2015` → no returned URLs.
+- S3: `site:facebook.com "חדש" 2015 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "חדש" 2015 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `hatnua` — התנועה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"התנועה" "2015" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.inss.org.il/he/publication/%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA-2015>; <https://www.idi.org.il/policy/parties-and-elections>; <https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf>.
+- S2: `site:commons.wikimedia.org "Hatnua" logo 2015` → <https://commons.wikimedia.org/wiki/File:Hatnuah_logo.svg>.
+- S3: `site:facebook.com "התנועה" 2015 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "התנועה" 2015 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `jewish-home` — הבית היהודי.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"הבית היהודי" "2015" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/policy/parties-and-elections>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%AA%D7%A9%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions_jubran_knesset20.pdf>.
+- S2: `site:commons.wikimedia.org "The Jewish Home" logo 2015` → <https://commons.wikimedia.org/wiki/Category:The_Jewish_Home>; <https://commons.wikimedia.org/wiki/File:Israel_Knesset_2015.svg>; <https://commons.wikimedia.org/wiki/File:Lost_but_found_-_or,_The_Jewish_home_(1868)_(14781917142).jpg>.
+- S3: `site:facebook.com "הבית היהודי" 2015 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "הבית היהודי" 2015 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `labor` — העבודה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"העבודה" "2015" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA_%D7%94%D7%A2%D7%91%D7%95%D7%93%D7%94_%D7%94%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%D7%AA>; <https://www.inss.org.il/he/publication/%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA-2015>; <https://www.idi.org.il/articles/4349>.
+- S2: `site:commons.wikimedia.org "Labor" logo 2015` → <https://commons.wikimedia.org/wiki/File:Seal_of_the_United_States_Department_of_Labor.svg>; <https://commons.wikimedia.org/wiki/File:Australian_Labor_Party_Logo_2015.svg>; <https://commons.wikimedia.org/wiki/United_States_Department_of_Labor>.
+- S3: `site:facebook.com "העבודה" 2015 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "העבודה" 2015 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `raam` — רע"ם – רשימת האיחוד הערבי.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"רע"ם – רשימת האיחוד הערבי" "2015" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.gov.il/BlobFolder/guide/candidates-lists-26/he/pr5_26_annex.pdf>; <https://he.wikipedia.org/wiki/%D7%94%D7%A8%D7%A9%D7%99%D7%9E%D7%94_%D7%94%D7%A2%D7%A8%D7%91%D7%99%D7%AA_%D7%94%D7%9E%D7%90%D7%95%D7%97%D7%93%D7%AA>; <https://www.regthink.org/joint-list-comeback-call>.
+- S2: `site:commons.wikimedia.org "Ra'am (United Arab List)" logo 2015` → no returned URLs.
+- S3: `site:facebook.com "רעם" 2015 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "רעם" 2015 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `taal` — תע"ל.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"תע"ל" "2015" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/policy/parties-and-elections>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%AA%D7%A9%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.gov.il/BlobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisionsfullbook2022.pdf>.
+- S2: `site:commons.wikimedia.org "Ta'al" logo 2015` → <https://commons.wikimedia.org/wiki/File:Joint_List_logo.png>; <https://commons.wikimedia.org/wiki/Category:Joint_List>; <https://commons.wikimedia.org/wiki/Category:Joint_List?uselang=eo>.
+- S3: `site:facebook.com "תעל" 2015 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "תעל" 2015 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `tkuma` — האיחוד הלאומי – תקומה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"האיחוד הלאומי – תקומה" "2015" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%90%D7%99%D7%97%D7%95%D7%93_%D7%94%D7%9C%D7%90%D7%95%D7%9E%D7%99%E2%80%93%D7%AA%D7%A7%D7%95%D7%9E%D7%94>; <https://library.mevaker.gov.il/sites/DigitalLibrary/Pages/Reports/1409-1.aspx>; <https://www.idi.org.il/articles/32955>.
+- S2: `site:commons.wikimedia.org "Tkuma (National Union–Tkuma)" logo 2015` → no returned URLs.
+- S3: `site:facebook.com "האיחוד הלאומי" 2015 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "האיחוד הלאומי" 2015 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+Batch verification: `npx vitest run` **57 files / 484 tests passed** (single worker and CLI testTimeout=30000 from k23 onward after existing rebuild tests exceeded 5000ms); `npx tsc -p tsconfig.json --noEmit`, `npx vite build`, and `python3 scripts/validate-party-logos.py` passed. Dataset build passed; all 26 election datasets equal prior batch after recursively removing `logo` and `builtAt`.
