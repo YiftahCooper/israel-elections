@@ -1,0 +1,492 @@
+{
+ "reviewedAt": "2026-11-04",
+ "scope": "Every elected member (electedOf) whose dataset name the name rules of scripts/research/build-bios.py cannot match to exactly one member of that Knesset in the list's factions. Each decision names the Knesset OData PersonID or leaves the candidate out.",
+ "decisions": [
+  {
+   "candidateId": "1-א#2",
+   "personId": 2114,
+   "confidence": "high",
+   "reason": "שרתוק = שרת (Sharett), earlier surname; matched without help in the 0088 audit (k1 aliases)."
+  },
+  {
+   "candidateId": "1-א#6",
+   "personId": 2448,
+   "confidence": "high",
+   "reason": "מאירסון = מאיר (Golda Meir). Earlier surname as printed in the notice; the Knesset records the later Hebrew surname. Documented in docs/research/elected-names-odata-audit.md (legitimate differences)."
+  },
+  {
+   "candidateId": "1-א#8",
+   "personId": 2631,
+   "confidence": "high",
+   "reason": "רובשוב = שזר (Zalman Shazar). Earlier surname as printed in the notice; the Knesset records the later Hebrew surname. Documented in docs/research/elected-names-odata-audit.md (legitimate differences)."
+  },
+  {
+   "candidateId": "1-א#15",
+   "personId": 2461,
+   "confidence": "high",
+   "reason": "פישמן = מימון (Ada Maimon); the 1951 results notice prints \"מימון (פישמן) עדה\". Earlier surname as printed in the notice; the Knesset records the later Hebrew surname. Documented in docs/research/elected-names-odata-audit.md (legitimate differences)."
+  },
+  {
+   "candidateId": "1-א#22",
+   "personId": 2416,
+   "confidence": "high",
+   "reason": "לוביאניקר = לבון (Pinhas Lavon); k1 alias in the 0088 audit."
+  },
+  {
+   "candidateId": "1-א#23",
+   "personId": 2171,
+   "confidence": "high",
+   "reason": "אהרונוביץ = ארן (Zalman Aran); the 1951 results notice prints \"ארן (אהרונוביץ) זלמן\". Earlier surname as printed in the notice; the Knesset records the later Hebrew surname. Documented in docs/research/elected-names-odata-audit.md (legitimate differences)."
+  },
+  {
+   "candidateId": "1-א#24",
+   "personId": 2280,
+   "confidence": "high",
+   "reason": "דינבורג = דינור (Ben-Zion Dinur). Earlier surname as printed in the notice; the Knesset records the later Hebrew surname. Documented in docs/research/elected-names-odata-audit.md (legitimate differences)."
+  },
+  {
+   "candidateId": "1-א#31",
+   "personId": 2666,
+   "confidence": "high",
+   "reason": "שריבמן = שרי (Reuven Shari); the 1951 results notice prints \"שרי (שריבמן) ראובן\". Earlier surname as printed in the notice; the Knesset records the later Hebrew surname. Documented in docs/research/elected-names-odata-audit.md (legitimate differences)."
+  },
+  {
+   "candidateId": "1-א#32",
+   "personId": 2407,
+   "confidence": "high",
+   "reason": "קוסוי = כסה (Yona Kesse). Earlier surname as printed in the notice; the Knesset records the later Hebrew surname. Documented in docs/research/elected-names-odata-audit.md (legitimate differences)."
+  },
+  {
+   "candidateId": "1-א#38",
+   "personId": 2235,
+   "confidence": "high",
+   "reason": "גלובמן = גוברין (Akiva Govrin). Earlier surname as printed in the notice; the Knesset records the later Hebrew surname. Documented in docs/research/elected-names-odata-audit.md (legitimate differences)."
+  },
+  {
+   "candidateId": "1-א#42",
+   "personId": 2433,
+   "confidence": "high",
+   "reason": "ליבנשטין = ליבנה (Eliezer Livne). Earlier surname as printed in the notice; the Knesset records the later Hebrew surname. Documented in docs/research/elected-names-odata-audit.md (legitimate differences)."
+  },
+  {
+   "candidateId": "1-א#44",
+   "personId": 2248,
+   "confidence": "high",
+   "reason": "גורפינקל = גורי (Israel Guri). Earlier surname as printed in the notice; the Knesset records the later Hebrew surname. Documented in docs/research/elected-names-odata-audit.md (legitimate differences)."
+  },
+  {
+   "candidateId": "1-א#46",
+   "personId": 2163,
+   "confidence": "high",
+   "reason": "גרבובסקי = ארגוב (Meir Argov); the 1951 results notice prints \"ארגוב (גרבובסקי) מאיר\". Earlier surname as printed in the notice; the Knesset records the later Hebrew surname. Documented in docs/research/elected-names-odata-audit.md (legitimate differences)."
+  },
+  {
+   "candidateId": "1-מ#8",
+   "personId": 2610,
+   "confidence": "high",
+   "reason": "ריפטין = ריפתין (Yaakov Riftin): ט as printed in both 1949 notices (audit)."
+  },
+  {
+   "candidateId": "1-מ#14",
+   "personId": 2598,
+   "confidence": "high",
+   "reason": "רובין הנס = רובין חנן (Hanan Rubin); k1 alias in the 0088 audit."
+  },
+  {
+   "candidateId": "1-מ#15",
+   "personId": 2215,
+   "confidence": "high",
+   "reason": "אידלסון = בר-יהודה (Israel Bar-Yehuda); printed \"בר-יהודה אידלסון ישראל\" in 1951 (audit)."
+  },
+  {
+   "candidateId": "1-ב#1",
+   "personId": 2460,
+   "confidence": "high",
+   "reason": "פישמן הרב יהודה לייב = מימון (Rabbi Yehuda Leib Maimon). Earlier surname as printed in the notice; the Knesset records the later Hebrew surname. Documented in docs/research/elected-names-odata-audit.md (legitimate differences)."
+  },
+  {
+   "candidateId": "1-ב#15",
+   "personId": 2619,
+   "confidence": "high",
+   "reason": "צוובנר = שאג (Avraham Haim Shag). Earlier surname as printed in the notice; the Knesset records the later Hebrew surname. Documented in docs/research/elected-names-odata-audit.md (legitimate differences)."
+  },
+  {
+   "candidateId": "1-פ#1",
+   "personId": 2600,
+   "confidence": "high",
+   "reason": "רוזנבליט פליכס = רוזן פנחס (Pinchas Rosen); k1 alias in the 0088 audit."
+  },
+  {
+   "candidateId": "1-פ#2",
+   "personId": 2266,
+   "confidence": "high",
+   "reason": "גרנובסקי = גרנות (Avraham Granot). Earlier surname as printed in the notice; the Knesset records the later Hebrew surname. Documented in docs/research/elected-names-odata-audit.md (legitimate differences)."
+  },
+  {
+   "candidateId": "1-פ#6",
+   "personId": 2531,
+   "confidence": "high",
+   "reason": "פרדר הרברט = פורדר ישעיהו (Yeshayahu Foerder); k1 alias in the 0088 audit."
+  },
+  {
+   "candidateId": "2-א#5",
+   "personId": 2448,
+   "confidence": "high",
+   "reason": "מאירסון = מאיר (Golda Meir). Earlier surname as printed in the notice; the Knesset records the later Hebrew surname. Documented in docs/research/elected-names-odata-audit.md (legitimate differences)."
+  },
+  {
+   "candidateId": "2-א#31",
+   "personId": 2248,
+   "confidence": "high",
+   "reason": "גורפינקל = גורי (Israel Guri). Earlier surname as printed in the notice; the Knesset records the later Hebrew surname. Documented in docs/research/elected-names-odata-audit.md (legitimate differences)."
+  },
+  {
+   "candidateId": "2-מ#13",
+   "personId": 2221,
+   "confidence": "high",
+   "reason": "ברמן אדולף = ברמן אברהם: the same man, \"אברהם (אדולף) ברמן\" (Hebrew Wikipedia, secondary); the only Mapam member of the second Knesset named Berman."
+  },
+  {
+   "candidateId": "2-נ#1",
+   "personId": 2354,
+   "confidence": "high",
+   "reason": "חניפס צאלח חסן = חניפס סאלח, the only member of the Progress and Work faction in the second Knesset; צ/ס spelling variant."
+  },
+  {
+   "candidateId": "3-א#4",
+   "personId": 2448,
+   "confidence": "high",
+   "reason": "מאירסון = מאיר (Golda Meir). Earlier surname as printed in the notice; the Knesset records the later Hebrew surname. Documented in docs/research/elected-names-odata-audit.md (legitimate differences)."
+  },
+  {
+   "candidateId": "3-א#24",
+   "personId": null,
+   "confidence": null,
+   "reason": "Left out. The dataset prints יוספטל גיורה (Giora Yoseftal, PersonID 2377, an MK only in Knessets 4–5), but the Knesset opening membership of the third Knesset has יוספטל סנטה (Senta Yoseftal, PersonID 2378) for Mapai. Which person the candidate notice names at rank 24 needs a re-read of the scan; no link until then."
+  },
+  {
+   "candidateId": "3-ב#5",
+   "personId": 2203,
+   "confidence": "high",
+   "reason": "רוזנברג = בן-מאיר (Shlomo-Israel Ben-Meir). Earlier surname as printed in the notice; the Knesset records the later Hebrew surname. Documented in docs/research/elected-names-odata-audit.md (legitimate differences)."
+  },
+  {
+   "candidateId": "3-גד#5",
+   "personId": 2199,
+   "confidence": "high",
+   "reason": "ינקלביץ = בן-יעקב (Zalman Ben-Yaakov). Earlier surname as printed in the notice; the Knesset records the later Hebrew surname. Documented in docs/research/elected-names-odata-audit.md (legitimate differences)."
+  },
+  {
+   "candidateId": "3-נ#1",
+   "personId": 2354,
+   "confidence": "high",
+   "reason": "חניפס צאלח = חניפס סאלח; צ/ס spelling variant."
+  },
+  {
+   "candidateId": "3-פ#2",
+   "personId": 2575,
+   "confidence": "high",
+   "reason": "קול משה (Moshe Kol, Progressive Party leader) is named elected in the results notice but was replaced by Idov Cohen before the opening (decision 0088 item 4). The link is to Kol himself, the only MK of that name (Knessets 0, 2, 4–8, Progressive and Independent Liberals)."
+  },
+  {
+   "candidateId": "3-ע#1",
+   "personId": 2352,
+   "confidence": "high",
+   "reason": "אבו-מוך פארס חמדאן = חמדאן פארס, the only member of the Agriculture and Development faction in the third Knesset; both name tokens present."
+  },
+  {
+   "candidateId": "4-א#47",
+   "personId": 2362,
+   "confidence": "medium",
+   "reason": "The dataset reads טברסקי דינה; the only Tversky in the Knesset is טברסקי ז׳ניה (Zenia Tversky), a Mapai member of the fourth Knesset from the opening. The same misreading (דינה for ז׳ניה) was corrected for 1951 in decision 0088; the 1959 name has not been re-read."
+  },
+  {
+   "candidateId": "4-ב#5",
+   "personId": 2203,
+   "confidence": "high",
+   "reason": "רוזנברג = בן-מאיר (Shlomo-Israel Ben-Meir). Earlier surname as printed in the notice; the Knesset records the later Hebrew surname. Documented in docs/research/elected-names-odata-audit.md (legitimate differences)."
+  },
+  {
+   "candidateId": "4-מ#9",
+   "personId": 2353,
+   "confidence": "high",
+   "reason": "כמיס = חמיס (Yosef Hamis); כ as printed in both 1959 notices (audit)."
+  },
+  {
+   "candidateId": "4-רא#1",
+   "personId": 2116,
+   "confidence": "high",
+   "reason": "א-ז׳אהר = א'-דאהר (Ahmed A-Dahar); as printed in both notices (audit)."
+  },
+  {
+   "candidateId": "6-רא#2",
+   "personId": 2480,
+   "confidence": "high",
+   "reason": "נכלה = נחלה (Elias Nakhleh); כ as printed in both 1965 notices (audit)."
+  },
+  {
+   "candidateId": "7-חל#23",
+   "personId": 5955,
+   "confidence": "high",
+   "reason": "קצנלבוגן = קשת (Ben-Zion Keshet). Earlier surname as printed in the notice; the Knesset records the later Hebrew surname. Documented in docs/research/elected-names-odata-audit.md (legitimate differences)."
+  },
+  {
+   "candidateId": "8-חל טעם#4",
+   "personId": 2169,
+   "confidence": "high",
+   "reason": "אהרליך = ארליך (Simha Erlich), spelling variant; the only Erlich of the Likud faction in the eighth Knesset."
+  },
+  {
+   "candidateId": "8-חל טעם#38",
+   "personId": 2645,
+   "confidence": "high",
+   "reason": "שחטרמן = שכטרמן (Avraham Schechterman); the results notice prints שכטרמן (audit)."
+  },
+  {
+   "candidateId": "9-מחל#21",
+   "personId": null,
+   "confidence": null,
+   "reason": "Left out. Ranks 21 and 24 of the 1977 Likud list are both printed כהן יגאל; the ninth Knesset has יגאל כהן (2394) and יגאל כהן-אורגד (2399), both Likud from the opening. Which rank is which is not established."
+  },
+  {
+   "candidateId": "9-מחל#24",
+   "personId": null,
+   "confidence": null,
+   "reason": "Left out; see 9-מחל#21."
+  },
+  {
+   "candidateId": "9-מחל#35",
+   "personId": 2285,
+   "confidence": "high",
+   "reason": "דייקסל = דקל (Michael Dekel). Earlier surname as printed in the notice; the Knesset records the later Hebrew surname. Documented in docs/research/elected-names-odata-audit.md (legitimate differences)."
+  },
+  {
+   "candidateId": "9-ים#1",
+   "personId": 2144,
+   "confidence": "high",
+   "reason": "The full printed name form of סיף-אלדין אלזועבי (Seif el-Din el-Zoubi) (audit)."
+  },
+  {
+   "candidateId": "9-פש#1",
+   "personId": 2537,
+   "confidence": "high",
+   "reason": "שרון סמואל = פלאטו-שרון שמואל (Shmuel Flatto-Sharon), printed as such (audit)."
+  },
+  {
+   "candidateId": "11-אמת#16",
+   "personId": 2659,
+   "confidence": "high",
+   "reason": "Gazette misprint שפירא for שפייזר (Eliyahu Speiser); decision 0088 item 2."
+  },
+  {
+   "candidateId": "11-אמת#40",
+   "personId": 2261,
+   "confidence": "high",
+   "reason": "גרוסמן ארקין חיה = גרוסמן חייקה (Haika Grossman); corrected in decision 0088."
+  },
+  {
+   "candidateId": "13-ץ#3",
+   "personId": 2183,
+   "confidence": "high",
+   "reason": "בדש פנחס = בדש פיני (Pini Badash); short form."
+  },
+  {
+   "candidateId": "13-ץ#8",
+   "personId": 2239,
+   "confidence": "high",
+   "reason": "אלכסנדר גולדפרב = גולדפרב אלכס (Alex Goldfarb); the dataset has the given name first."
+  },
+  {
+   "candidateId": "14-ע#4",
+   "personId": 554,
+   "confidence": "high",
+   "reason": "כטיב טופיק = חטיב תאופיק (Tawfik Khatib); printed form (audit)."
+  },
+  {
+   "candidateId": "15-עם#2",
+   "personId": 549,
+   "confidence": "high",
+   "reason": "סאנע טלב = אלסאנע טלב (Taleb el-Sana); printed form (audit)."
+  },
+  {
+   "candidateId": "16-יש#14",
+   "personId": 1053,
+   "confidence": "medium",
+   "reason": "The dataset reads דורון תמי נחמיה; the Shinui member of the sixteenth Knesset is דורון חמי (Nehemia \"Hemi\" Doron), the only unmatched Shinui member at the opening. ת for ח is probably a reading slip; not re-read."
+  },
+  {
+   "candidateId": "16-ב#1",
+   "personId": 763,
+   "confidence": "high",
+   "reason": "איתם אפרים = איתם אפי (Effi Eitam); short form."
+  },
+  {
+   "candidateId": "16-כן#1",
+   "personId": 535,
+   "confidence": "high",
+   "reason": "Natan Sharansky withdrew after the election and Marina Solodkin took the seat (decision 0053). The link is to Sharansky himself (PersonID 535)."
+  },
+  {
+   "candidateId": "17-אמת#19",
+   "personId": 2014,
+   "confidence": "high",
+   "reason": "מגדלה גאלב = מג'אדלה ראלב (Raleb Majadele), the only unmatched Labor member at the opening of the seventeenth Knesset; transliteration variants of both names."
+  },
+  {
+   "candidateId": "17-שס#11",
+   "personId": 4418,
+   "confidence": "medium",
+   "reason": "The CEC list prints אמסלם אמיל at Shas #11 (two independent readings); the Shas member of the seventeenth Knesset from the opening is אמסלם חיים (Haim Amsalem), the only unmatched Shas member. The given-name difference is not explained by an official source."
+  },
+  {
+   "candidateId": "17-טב#4",
+   "personId": 763,
+   "confidence": "high",
+   "reason": "איתם אפרים = איתם אפי (Effi Eitam); short form."
+  },
+  {
+   "candidateId": "17-עם#3",
+   "personId": 549,
+   "confidence": "high",
+   "reason": "סאנע טלב = אלסאנע טלב (Taleb el-Sana); printed form (audit)."
+  },
+  {
+   "candidateId": "18-ל#9",
+   "personId": 12954,
+   "confidence": "high",
+   "reason": "סאמואלסון מיכלבסקי אנסטסיה = מיכאלי אנסטסיה (Anastasia Michaeli), the only unmatched Yisrael Beiteinu member at the opening; the given name matches."
+  },
+  {
+   "candidateId": "18-עם#3",
+   "personId": 549,
+   "confidence": "high",
+   "reason": "סאנע טלב = אלסאנע טלב (Taleb el-Sana); printed form (audit)."
+  },
+  {
+   "candidateId": "19-טב#7",
+   "personId": 23532,
+   "confidence": "high",
+   "reason": "קלפה = כלפה (Zvulun Kalfa); printed form in both notices (audit)."
+  },
+  {
+   "candidateId": "19-טב#11",
+   "personId": 23552,
+   "confidence": "high",
+   "reason": "שטבון יונתן = שטבון יוני (Yoni Chetboun); short form."
+  },
+  {
+   "candidateId": "19-שס#9",
+   "personId": 488,
+   "confidence": "high",
+   "reason": "ועקנין = וקנין (Yitzhak Vaknin); spelling variant."
+  },
+  {
+   "candidateId": "20-אמת#21",
+   "personId": 30064,
+   "confidence": "high",
+   "reason": "סבטלוב = סבטלובה (Ksenia Svetlova); printed form (audit)."
+  },
+  {
+   "candidateId": "20-ודעם#12",
+   "personId": 30070,
+   "confidence": "high",
+   "reason": "סעדיה אוסאמה = סעדי אוסאמה (Osama Saadi); printed form."
+  },
+  {
+   "candidateId": "20-ל#4",
+   "personId": null,
+   "confidence": null,
+   "reason": "Left out. אילן שוחט (Ilan Shohat) is named elected in the results notice but was replaced by Robert Ilatov before the opening (decision 0088 item 4); he never served, so he has no Knesset record."
+  },
+  {
+   "candidateId": "21-פה#12",
+   "personId": 30683,
+   "confidence": "high",
+   "reason": "טרופר יחיאל משה = טרופר חילי (Hili Tropper); \"Hili\" is the short form of Yehiel."
+  },
+  {
+   "candidateId": "21-פה#25",
+   "personId": 30690,
+   "confidence": "high",
+   "reason": "מריח רדיר = כמאל מריח ע'דיר (Gadeer Kamal-Mreeh); printed form."
+  },
+  {
+   "candidateId": "21-ום#4",
+   "personId": 30070,
+   "confidence": "high",
+   "reason": "סעדיה אוסאמה = סעדי אוסאמה (Osama Saadi)."
+  },
+  {
+   "candidateId": "22-פה#12",
+   "personId": 30683,
+   "confidence": "high",
+   "reason": "טרופר יחיאל משה = טרופר חילי (Hili Tropper)."
+  },
+  {
+   "candidateId": "22-ודעם#9",
+   "personId": 30070,
+   "confidence": "high",
+   "reason": "סעדיה אוסאמה = סעדי אוסאמה (Osama Saadi)."
+  },
+  {
+   "candidateId": "23-פה#12",
+   "personId": 30683,
+   "confidence": "high",
+   "reason": "טרופר יחיאל משה = טרופר חילי (Hili Tropper)."
+  },
+  {
+   "candidateId": "23-פה#13",
+   "personId": 23596,
+   "confidence": "high",
+   "reason": "Yael German (#13) was replaced by Idan Roll before the opening (decision 0088 item 4). The link is to German herself (PersonID 23596, Knessets 19–22)."
+  },
+  {
+   "candidateId": "23-ודעם#9",
+   "personId": 30070,
+   "confidence": "high",
+   "reason": "סעדיה אוסאמה = סעדי אוסאמה (Osama Saadi)."
+  },
+  {
+   "candidateId": "24-כן#3",
+   "personId": 30683,
+   "confidence": "high",
+   "reason": "טרופר יחיאל משה = טרופר חילי (Hili Tropper)."
+  },
+  {
+   "candidateId": "24-ב#3",
+   "personId": null,
+   "confidence": null,
+   "reason": "Left out. Alon Davidi (#3) was replaced by Idit Silman before the opening (decision 0088 item 4); he has no Knesset record."
+  },
+  {
+   "candidateId": "24-ודעם#5",
+   "personId": 30070,
+   "confidence": "high",
+   "reason": "סעדיה אוסאמה = סעדי אוסאמה (Osama Saadi)."
+  },
+  {
+   "candidateId": "25-כן#6",
+   "personId": 30683,
+   "confidence": "high",
+   "reason": "טרופר יחיאל משה = טרופר חילי (Hili Tropper)."
+  },
+  {
+   "candidateId": "26-דרך#6",
+   "personId": 30683,
+   "confidence": "high",
+   "reason": "טרופר יחיאל משה = טרופר חילי (Hili Tropper)."
+  },
+  {
+   "candidateId": "26-אמת#6",
+   "personId": 30818,
+   "confidence": "high",
+   "reason": "לסקי שוץ גבריאלה = לסקי גבי (Gaby Lasky); short form."
+  },
+  {
+   "candidateId": "26-רק#10",
+   "personId": 30928,
+   "confidence": "high",
+   "reason": "שלו יונתן = שלו יהונתן; spelling variant (provisional 26th Knesset faction row)."
+  }
+ ]
+}
