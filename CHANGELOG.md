@@ -13,10 +13,16 @@ below groups all existing commits from 3 November 2026. `package.json` currently
   allocation law; every
   list's official seats are reproduced exactly (1977 uses an explicitly labelled, inferred rule for
   a list with fewer candidates than seats).
-- Party colours follow the same party across elections.
+- Per-election bloc groupings (first government and recognised blocs), editable as “Your grouping”;
+  constituent parties of joint lists can sit in different blocs without changing votes or seats.
+- “Run as separate lists” with editable vote-share assumptions; each part faces the threshold
+  separately and the joint list's surplus agreement is dropped.
+- Experimental D’Hondt, modified Sainte-Laguë and largest remainder with a Droop quota in Expert.
+- Sourced candidate notes for the 1984 Speiser misprint and five replacements before the first sitting.
 - 1973 (8th Knesset): its list connections were found in the Central Elections Committee's own seat-calculation record
   (decision 0077); every seat reproduces, all 120 elected members are cross-checked, and three ballot letters and four list
   names were corrected from the notices. All 26 elections are now available.
+- Party logos as used at each election (43 freely licensed files, credited in Sources); other lists keep their ballot letters.
 - Candidate biography links: each candidate's Knesset member page, the party's own page (archived from the campaign
   where possible) and Hebrew Wikipedia, labelled as a secondary source; name-only matches are marked "probable".
 - English-language Wikipedia is never used or linked; the 2003/2006 membership cross-check now uses the Knesset's official data.
@@ -42,6 +48,11 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 
 ### Changed
 
+- The build merges party, bloc and colour research from `data/meta/`; associated colours need
+  medium/high confidence and readable lightness, with a neighbour check for list colours and
+  fallback to the app palette. Build and release tests share `finalizeDataset`.
+- Differential digest tests lock engine/model outputs; `PW_PORT` isolates browser-test servers.
+  Impeccable design critiques are archived in `.impeccable/`.
 - Reworked the project overview for readers who are new to the app; moved detailed
   development guidance into its own document.
 - Rebuilding the data no longer rewrites unchanged files: a dataset keeps its build timestamp

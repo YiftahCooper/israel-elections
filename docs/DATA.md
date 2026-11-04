@@ -13,6 +13,42 @@ OData service), the Central Bureau of Statistics and gov.il. Secondary sources a
 considers it unreliable on Israel-related information. Hebrew Wikipedia may serve only as a lead to an
 official document or as a labelled secondary source.
 
+## Party, bloc, colour and candidate metadata
+
+All 26 elections have research inputs in `data/meta/kNN.json`. These record constituent
+parties of joint lists, sourced candidate affiliations, per-election bloc schemes and
+associated colours, with sources, confidence and caveats. Hebrew Wikipedia is labelled
+secondary; English Wikipedia is never used or linked. See the [metadata format and research
+logs](../data/meta/README.md) and [decision 0087](decisions/0087-constituent-parties-blocs-and-colours.md).
+The election tables below describe results and roster sources; metadata has its own evidence.
+
+The build merges these inputs through `scripts/lib/build/meta.ts`: ballot letters become
+list ids, recorded candidate ranks gain party ids, and bloc membership resolves to lists,
+parties or individual candidates. The default is the first government formed after the
+election, otherwise pre-election blocs, otherwise another recorded scheme. Regrouping seats
+does not change votes or seat allocation. Sources and research caveats remain in `data/meta/`;
+the generated dataset carries the fields the app needs, rather than the full evidence record.
+
+An associated list or constituent-party colour needs **medium or high confidence** and
+CIE **L* 25–82** for readability in both themes. List colours also undergo a **ΔE76 ≥20**
+check between neighbouring seat-winning lists in seat order. A colliding associated colour
+falls back to the cross-election app colour, normally for the smaller list first; the build
+does not shift its lightness. Constituent-party colours receive the confidence and lightness
+checks, but not this neighbour check; a party without one uses its list's colour. These are
+display colours, not a claim that every colour is an official party specification.
+
+`data/meta/candidate-notes.json` holds six sourced bilingual notes: the 1984 Eliyahu Speiser
+misprint and five replacements before a Knesset's first sitting (Kol, Sharansky, Shohat,
+German and Davidi). `scripts/lib/build/notes.ts` adds the notes and Speiser's corrected
+`displayNameHe`, preserving the candidate notice's `nameHe`. Notes appear in the roster and
+chamber tooltip; they never substitute a replacement member or change seats. A missing
+candidate id fails the build. See [decision 0088](decisions/0088-roster-corrections-and-odata-audit.md)
+and the [official membership audit](research/elected-names-odata-audit.md).
+
+Party logos (`data/meta/logos/kNN.json`, attached by `scripts/lib/build/logos.ts`) are shown only when a
+freely licensed copy of the logo used at that election is held in `public/logos/`, with its licence, attribution
+and source; the Sources tab lists the credits. Lists without one keep their ballot letters.
+
 Candidate biography links (`data/meta/bios/kNN.json`, attached by `scripts/lib/build/bios.ts`) follow the
 same order: the Knesset's member page (official), the party's own page (partisan, archived from the campaign
 where possible) and Hebrew Wikipedia (shown as a secondary source). Matches made by name rather than an
@@ -34,7 +70,7 @@ link, and imported scenarios may carry only `https:` links. Method and coverage:
 | k9 | 120 across all 13 winners | 120/120 (119 gazette + 1 official Knesset OData) | released |
 | k10 | 120 across all 10 winners | 120/120 | released |
 | k11 | 196 across all 15 winners, including complete Alignment 120 | 120/120 | released |
-| k12 | 120 across all 15 winners | 120/120 | released |
+| k12 | 121 across all 15 winners | 120/120 | released |
 | k13 | 1992-06-23 | Results YP 4021; candidates YP 4017; CBS totals; reviewed national table | No secondary inputs used | Released: every elected name cross-checked in 121 registered candidates; all winning rosters truncated; zero-seat rosters unavailable; agreement notice not recovered (possibly missing ineffective pairs); every seat reproduced; no localities (0083–0086) |
 | k14 | 1996-05-29 | Results YP 4414; candidates YP 4408; complete six-pair YP 4411 notice (mirror); CBS totals | No secondary inputs used | Released: every elected name cross-checked in 129 registered candidates; Third Way full (12), other winners truncated; zero-seat rosters unavailable; six agreement pairs; every seat reproduced; no localities; secondary 550-vote error excluded (0083–0086) |
 | k15 | 1999-05-17 | Results YP 4757; candidates YP 4748; recovered complete nine-pair YP 4755 notice (mirror); CBS totals | No secondary inputs used | Released: every elected name cross-checked in 122 registered candidates; all winning rosters truncated; zero-seat rosters unavailable; nine agreement pairs; every seat reproduced; no localities (0083–0086) |
@@ -70,7 +106,8 @@ and 1,406 in K24. No schema extension or secondary/unavailable candidate flag is
 The rosters are the approved-list gazette snapshots, before subsequent resignation
 notices, rather than a reconstruction of amended election-day or later membership.
 This limitation is stated in dataset status; known relevant notices appear in list notes.
-No default blocs are assigned (decision 0021).
+The original release left blocs empty (decision 0021); the metadata merge now supplies
+sourced schemes and a default grouping (0087).
 
 The complete statutory notices are YP 8430 p. 14634 (K22, five pairs), YP 8708
 pp. 4468–4469 (K23, three pairs), and YP 9478 p. 4284 (K24, six pairs), retained
@@ -250,7 +287,8 @@ per-election tests check independently transcribed official seats for every list
 threshold/quota, every roster's audited final rank, major-list leaders, and the complete
 numbered agreement notices. K20 uses the gazetted original final result (YP7010); k21
 uses the CEC final national HTML. No secondary or unavailable rosters are used. Both
-datasets leave optional blocs empty. Candidate order is the official registration order,
+datasets now gain sourced bloc schemes through the metadata merge (0087). Candidate order
+is the official registration order,
 with known k20 resignation notices explicitly labelled; later membership and the complete
 history of withdrawals/resignations are outside scope. Regional committees are absent
 from these sources and use sentinel 0. See decision [0030](decisions/0030-k20-k21-release-evidence.md).
@@ -295,7 +333,8 @@ localities. `ballotBoxes` counts 9,264 source rows, including that single aggreg
 row; it is not a claim about the physical number of envelope boxes. Regional committee
 is absent and represented by 0, labelled in status. Sponsoring-party fields are
 empty/null because those affiliations are not stated separately in this gazette.
-No blocs are assigned; display names and colours are editorial metadata.
+Sourced bloc schemes and eligible associated colours now come from `data/meta/` (0087);
+display names and fallback colours are editorial metadata.
 
 ## K19 implementation and remaining release gate
 
@@ -460,12 +499,13 @@ rejects a premature availability flip. Zero station/locality counts mean unavail
 | k9 | 120 across all 13 winners | 120/120 (119 gazette + 1 official Knesset OData) | released |
 | k10 | 120 across all 10 winners | 120/120 | released |
 | k11 | 196 across all 15 winners, including complete Alignment 120 | 120/120 | released |
-| k12 | 120 across all 15 winners | 120/120 | released |
+| k12 | 121 across all 15 winners | 120/120 | released |
 
 Every gazette list sum equals its printed valid total; valid plus invalid equals CBS
 turnout. No vote was adjusted to reconcile a secondary table. The known IDI 1984 +90
-and 1988 −365 (academic +6) row-sum errors are not imported. No default blocs are
-assigned. Complete published agreement notices include ineffective pairs; they are
+and 1988 −365 (academic +6) row-sum errors are not imported. Sourced default blocs are
+now merged from `data/meta/` (0087). Complete published agreement notices include
+ineffective pairs; they are
 not reconstructed from seats. The 1981 agreement PDF is an official gazette on the
 disclosed olaw mirror; 1984 and 1988 notices are inside their candidate issues.
 
@@ -475,11 +515,14 @@ disclosed olaw mirror; 1984 and 1988 notices are inside their candidate issues.
 | k9 | 120 across all 13 winners | 120/120 (119 gazette + 1 official Knesset OData) | released |
 | k10 | 120 across all 10 winners | 120/120 | released |
 | k11 | 196 across all 15 winners, including complete Alignment 120 | 120/120 | released |
-| k12 | 120 across all 15 winners | 120/120 | released |
+| k12 | 121 across all 15 winners | 120/120 | released |
 
 The owner's roster standard requires contiguous leading ranks covering everyone
 elected, transcribed from the candidate gazette and compared name by name against
-the results notice, with the official OData supplement for k9 Ratz documented below.
+the results notice. Decision [0088](decisions/0088-roster-corrections-and-odata-audit.md)
+allows documented gaps in elected ranks: 1988 Likud #25 is not seated and #32 is restored.
+The comparisons use those elected ranks, with the official OData supplement for k9 Ratz
+documented below.
 Later ranks are optional (`candidatesTruncated: true`); nonwinning
 lists have empty arrays and `candidatesUnavailable: true` when not transcribed.
 This describes dataset coverage, not absence of the official archives. Reviewed JSON
@@ -567,10 +610,10 @@ They include Arens (1992), Namir (1996), Begin and Deri (1999), although the ele
 notice omits those names; the explicit cross-check maps include every successor.
 Only Deri's exact departure date (19 May 1999, after the election) is established
 by the retained results notice. Other separate withdrawal notices/dates remain
-unverified, and no pre-election renumbering is inferred. The sole substantive spelling
-variant is Labor's registered `אור אריה` versus elected `אור אורי` in 1992; the
-registered spelling is preserved with an exact rank-specific resolution. See 0084
-for every list's coverage table, page provenance and reconciliation details.
+unverified, and no pre-election renumbering is inferred. The 1992 Labor reading
+`אור אריה` was later found to be a transcription error: both notices print `אור אורי`.
+Decision [0088](decisions/0088-roster-corrections-and-odata-audit.md) corrects it and removes
+the earlier spelling exception. See 0084 for every list's coverage table, page provenance and reconciliation details.
 
 1996's complete six-pair notice is YP 4411 p. 3398; 1999's complete nine-pair notice
 is YP 4755 p. 3305. Both are statutory publications on the disclosed olaw mirror,
