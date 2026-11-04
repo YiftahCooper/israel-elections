@@ -12,6 +12,9 @@ export function PartEdits({ s, prefix, single = false }: { s: Scenario; prefix: 
   const L = useL();
   const lang = useStore(st => st.lang);
   const { reference } = useActiveReference();
+  const committed = useStore(st => st.scenario);
+  const preview = useStore(st => st.preview);
+  if (s === preview && committed) s = committed;
   const ds = useStore(st => st.datasets[s.electionId]);
   if (!ds) return null;
   const base = reference ?? baselineOf(ds);

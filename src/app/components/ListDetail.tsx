@@ -21,7 +21,7 @@ import type { AnalysisTask } from '../analysisTasks.ts';
 import { listLabel, referenceLabel, warningText } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtFrac, fmtInt, fmtPct, fmtRat, fmtSigned, signed } from '../format.ts';
-import { dispatch, dispatchMany, getState, previewAction, setState, toast, useFeature, useLevel, useVoteSource, useDigits, withSource } from '../store.ts';
+import { dispatch, dispatchMany, getState, useStore, previewAction, setState, toast, useFeature, useLevel, useVoteSource, useDigits, withSource } from '../store.ts';
 import { clampTarget, deltaAction, toVoteSource, type SourceChoice, votesForShare, voteSourceLabel } from '../voteEdit.ts';
 import { Candidates } from './Candidates.tsx';
 import { JointParties } from './JointParties.tsx';
@@ -39,18 +39,38 @@ function LiveSlider({ l, hist, thr, onCommit }: { l: SimList; hist: number; thr:
   const max = Math.max(scale, l.votes);
   const committed = getState().scenario?.lists.find((x) => x.id === l.id) ?? l;
   const value = drag ?? committed.votes;
+  const pending = useRef<number | null>(null);
+  const frame = useRef<number | null>(null);
+  useEffect(() => () => {
+    if (frame.current !== null) cancelAnimationFrame(frame.current);
+    if (pending.current !== null) previewAction(null);
+  }, []);
   const preview = (v: number) => {
     setDrag(v);
-    const s = getState().scenario; if (!s) return;
-    const t = clampTarget(s, committed, v, src);
-    previewAction(deltaAction(s, committed, t - committed.votes, src));
+    pending.current = v;
+    if (frame.current !== null) return;
+    frame.current = requestAnimationFrame(() => {
+      frame.current = null;
+      const v = pending.current; if (v === null) return;
+      const s = getState().scenario; if (!s) return;
+      const t = clampTarget(s, committed, v, src);
+      previewAction(deltaAction(s, committed, t - committed.votes, src));
+    });
   };
-  const commit = () => { if (drag === null) return; const v = drag; setDrag(null); previewAction(null); if (v !== committed.votes) onCommit(v); };
+  const commit = () => {
+    const v = pending.current; if (v === null) return;
+    pending.current = null;
+    if (frame.current !== null) cancelAnimationFrame(frame.current);
+    frame.current = null; setDrag(null);
+    if (v !== committed.votes) onCommit(v);
+    previewAction(null);
+  };
   const step = Math.max(1, Math.round(max / 2000));
   return (
     <div>
       <input type="range" min={0} max={max} step={step} value={value} aria-label={L('Votes slider', 'מחוון קולות')} aria-valuetext={value.toLocaleString('en-US')}
-        onChange={(e) => preview(Number(e.target.value))} onPointerUp={commit} onKeyUp={commit} onBlur={commit} onTouchEnd={commit} />
+        onPointerDown={e => e.currentTarget.setPointerCapture(e.pointerId)}
+        onChange={(e) => preview(Number(e.target.value))} onPointerUp={commit} onPointerCancel={commit} onKeyUp={commit} onBlur={commit} onTouchEnd={commit} />
       <div dir="ltr" className="row tiny muted" style={{ justifyContent: 'space-between' }}>
         <span>0</span>
         <span>{drag !== null ? <b className="ink2">{drag.toLocaleString('en-US')}</b> : L('Drag to adjust', 'גררו לשינוי')}</span>
@@ -96,7 +116,13 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
     else if (previous.current.qualified !== lr.qualified) setCrossing(lr.qualified);
     previous.current = { id: l.id, qualified: lr.qualified, withdrawn: l.withdrawn };
   }, [l.id, lr.qualified, l.withdrawn]);
-  const margins = useMargins(s, l, lr.seats, lr.qualified);
+  // Exact goal searches belong to committed inputs, never to every pointer frame.
+  const committed = useStore(st => st.scenario) ?? s;
+  const committedList = committed.lists.find(x => x.id === l.id) ?? l;
+  const committedResult = useMemo(() => allocate(toEngineInput(committed)), [committed]);
+  const committedLR = committedResult.lists.find(x => x.id === l.id) ?? lr;
+  const searched = useMargins(committed, committedList, committedLR.seats, committedLR.qualified);
+  const margins = committed === s ? searched : null;
 
   const boundarySearch = lr.qualified ? margins?.disqualify : margins?.qualify;
   const boundary = boundarySearch?.found && boundarySearch.votes !== null && boundarySearch.exact
@@ -112,7 +138,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
   }, [s, r, agr]);
 
   const baseList = base.lists.find((b) => b.id === l.id) ?? null;
-  const listChanged = !!baseList && JSON.stringify(baseList) !== JSON.stringify(l);
+  const listChanged = useMemo(() => !!baseList && JSON.stringify(baseList) !== JSON.stringify(l), [baseList, l]);
   const histVotes = baseList ? baseList.votes : l.originIds.reduce((t, o) => t + (base.lists.find((x) => x.id === o)?.votes ?? 0), 0);
   const histSeats = baseList ? baseR.lists.find((x) => x.id === l.id)!.seats : -1;
   const histShares = Object.fromEntries(base.lists.map((b) => [b.id, b.votes]));
@@ -226,7 +252,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
             {lr.qualified && quick(L('Reach next seat', 'הגעה למנדט הבא'), gainTarget, true, (from) => seatsFrom(lr.seats + 1, from))}
             {lr.seats > 0 && quick(L(`Fewest votes to keep ${lr.seats} seats`, `הכי מעט קולות לשמירת ${lr.seats} מנדטים`), margins?.lose?.exact && margins.lose.found && margins.lose.votes !== null ? l.votes - Number(margins.lose.votes) + 1 : null, true, (from) => goalFrom('lose', from))}
             {Number(s.rules.thresholdPct) > 0 && quick(lr.qualified ? L('Just below threshold', 'מעט מתחת לחסימה') : L('Cross the threshold', 'מעבר אחוז החסימה'), boundary === null ? null : boundary - (lr.qualified ? 1 : 0), true, (from) => goalFrom(lr.qualified ? 'disqualify' : 'qualify', from))}
-            {baseList && baseList.votes !== l.votes && quick(L('Restore votes', 'שחזור הקולות'), baseList.votes)}
+            {baseList && <div style={{ visibility: baseList.votes === l.votes ? 'hidden' : undefined }}>{quick(L('Restore votes', 'שחזור הקולות'), baseList.votes)}</div>}
           </div>
           <p className="tiny seat-search-status" role="status">{(() => {
             if (!gain) return L('Searching…', 'מחפש…');

@@ -5,7 +5,7 @@ import { EditMarker } from './EditMarker.tsx';
 // the user's own. Seats count per seat: a constituent party of a joint list can sit in another bloc
 // than its list. Moving parties between blocs never changes votes or seats. A bloc opens its editor
 // beside the chamber (BlocPanel), where it is renamed, recoloured and its members moved.
-import { useMemo } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { Pencil } from 'lucide-react';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
@@ -18,12 +18,20 @@ import { Info } from './ui.tsx';
 export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
   const L = useL();
   const lang = useLang();
+  const previewing = useStore(st => st.preview) === s;
   const selected = useStore((st) => st.selectedListId);
   const panel = useStore((st) => st.blocPanel);
   const pieces = useMemo(() => blocPieces(s, r), [s, r]);
   const { base, labelReference } = useGraphicReference(s);
   const grouped = groupingBaseline(s, base);
   const before = grouped ? blocPieces(grouped, allocationOf(grouped)) : [];
+  const previous = useRef({ election: s.electionId, scheme: s.blocSchemeId, seats: new Map<string | null, number>() });
+  const counts = useMemo(() => {
+    const out = new Map<string | null, number>();
+    for (const p of pieces) out.set(p.bloc, (out.get(p.bloc) ?? 0) + p.n);
+    return out;
+  }, [pieces]);
+  useEffect(() => { if (previewing) return; previous.current = { election: s.electionId, scheme: s.blocSchemeId, seats: counts }; }, [s.electionId, s.blocSchemeId, counts, previewing]);
   const total = s.rules.seats;
   const majority = Math.floor(total / 2) + 1;
   if (r.seatsAllocated === 0) return <p className="small muted" style={{ margin: 0 }}>{L('No seats are allocated in this scenario.', 'בתרחיש זה לא חולקו מושבים.')}</p>;
@@ -68,14 +76,14 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
             <span className="pieces" aria-hidden>
               {g.pieces.map((p, i) => <i key={i} className={selected && selected !== p.listId ? 'dim' : ''} style={{ flexGrow: p.n, background: s.lists.find(l=>l.id===p.listId)?.color ?? p.color }} />)}
             </span>
-            <span className="label"><span className="clip">{g.label}</span> <b>{g.n}</b>{g.id !== null && <span className="consequence">{consequence(g.n)}</span>}{g.n >= majority && <span className="sr-only">{L(' (majority)', ' (רוב)')}</span>}</span>
+            <span className="label"><span className="clip">{g.label}</span> <b key={g.n >= majority ? 'majority' : 'minority'} className={g.id !== null && previous.current.election === s.electionId && previous.current.scheme === s.blocSchemeId && previous.current.seats.has(g.id) && ((previous.current.seats.get(g.id)! >= majority) !== (g.n >= majority)) ? 'tick' : ''}>{g.n}</b>{g.id !== null && <span className="consequence">{consequence(g.n)}</span>}{g.n >= majority && <span className="sr-only">{L(' (majority)', ' (רוב)')}</span>}</span>
           </button>
         ))}
         <span className="milestone" aria-hidden style={{ left: `${(majority / total) * 100}%` }}><span>{majority}</span></span>
       </div>
       {/* on narrow screens the bands are too short for their names: they are listed in full beneath */}
       <div className="strip-legend" aria-hidden>
-        {groups.map((g) => <span key={g.key}><span className="swatch" style={{ background: g.color }} />{g.label} <b>{g.n}</b>{g.id !== null && <span className="consequence">{consequence(g.n)}</span>}</span>)}
+        {groups.map((g) => <span key={g.key}><span className="swatch" style={{ background: g.color }} />{g.label} <b key={g.n >= majority ? 'majority' : 'minority'} className={g.id !== null && previous.current.election === s.electionId && previous.current.scheme === s.blocSchemeId && previous.current.seats.has(g.id) && ((previous.current.seats.get(g.id)! >= majority) !== (g.n >= majority)) ? 'tick' : ''}>{g.n}</b>{g.id !== null && <span className="consequence">{consequence(g.n)}</span>}</span>)}
       </div>
     </section>
   );

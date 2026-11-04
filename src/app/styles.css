@@ -282,7 +282,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 [data-theme="dark"] .chamber { --wedge-mix: 24%; }
 .chamber .wedge.solid { fill-opacity: 1; stroke-width: 1.5; stroke-linejoin: round; }
 .chart { direction: ltr; }
-.seat { transition: fill .35s ease, opacity .2s; cursor: pointer; }
+.seat { transition: fill .18s ease, opacity .15s; cursor: pointer; }
 .seat.dim { opacity: .22; }
 [data-theme="dark"] .seat.dim { opacity: .38; }
 /* the centre readout scales with the drawing; on a phone it would shrink to ~6px, so it is drawn larger there */
@@ -430,6 +430,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .lb { list-style: none; margin: 0; padding: 4px 0; }
 .lb-row { all: unset; box-sizing: border-box; width: 100%; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 7px 12px; cursor: pointer; border-radius: 5px; }
 .lb-row:hover { background: var(--surface-2); }
+.lb-row:active, .corridor:active { filter: brightness(.94); }
 .lb-row:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
 .lb-row[aria-pressed="true"] { background: var(--open); box-shadow: inset 0 0 0 1px var(--shell); }
 [data-theme="dark"] .lb-row[aria-pressed="true"] { box-shadow: inset 0 0 0 1px var(--focus); }
@@ -445,12 +446,16 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .lb-bar > .was { position: absolute; inset-block: -2px; inset-inline-start: 0; border: 1.5px dashed var(--ink-2); border-radius: 4px; pointer-events: none; }
 .lb-row.out .lb-bar > i { opacity: .55; }
 .lb-bar > .thr-tick { position: absolute; inset-block: -3px; inset-inline-end: 0; width: 2px; background: var(--thr); }
-.lb-seats { display: grid; justify-items: end; min-width: 34px; }
+.lb-seats { display: grid; grid-template-rows: 20px 14px; align-content: center; justify-items: end; min-width: 34px; min-block-size: 34px; }
 .lb-seats b { font-size: 18px; font-weight: 700; line-height: 1.1; }
 .lb-seats small { font-size: 12px; font-weight: 600; }
 .lb-row.out .lb-seats b { color: var(--muted); font-weight: 500; font-size: 15px; }
 .lb-thr { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; margin: 4px 0; padding: 4px 12px; font-size: 12.5px; font-weight: 600; color: var(--thr); background: repeating-linear-gradient(-45deg, var(--thr-a) 0 6px, var(--thr-b) 6px 12px); border-block: 1px solid color-mix(in srgb, var(--thr) 40%, transparent); }
 .lb-thr button { all: unset; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; font-weight: 500; }
+/* Pointer previews follow the hand immediately; completed edits ease once. */
+.board-preview .seat, .board-preview .wedge, .board-preview .lb-bar > i,
+.board-preview .corridor, .board-preview .corridor .pieces i { transition: none; }
+.board-preview .tick { animation: none; }
 @media (prefers-reduced-motion: reduce) { .lb-bar > i { transition: none; } }
 @media (min-width: 1101px) { .lbars { position: sticky; top: 100px; max-height: calc(100vh - 112px); overflow-y: auto; overscroll-behavior: contain; } }
 
@@ -823,7 +828,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .source-ask::backdrop { background: rgb(0 0 0 / .25); }
 .source-ask .row { gap: 6px; align-items: center; }
 .source-ask select { max-inline-size: 11rem; }
-.vote-goals > button { text-align: start; justify-content: space-between; inline-size: 100%; min-block-size: 32px; }
+.vote-goals > button, .vote-goals > div > button { text-align: start; justify-content: space-between; inline-size: 100%; min-block-size: 32px; }
 .more-trigger { justify-self: start; }
 .vote-more { display: grid; gap: 10px; padding: 10px 0; border-block-start: 1px solid var(--rule); }
 .bloc-vote-stepper { margin-block: 8px; }

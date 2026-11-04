@@ -318,13 +318,13 @@ Party identity as a paper ballot: 58 x 32px (76 x 46px large), near-white paper,
 Key numbers as a dense auto-fill grid of 132px-minimum tiles: 12.5px secondary key, 700 15px value, 12.5px muted note. Each opens in place across the full row: navy border, open-tint head, its detail below a hairline.
 
 ### Chamber
-A 120-seat hemicycle (or blocks), always on the 120-seat scale. Seats fill with party colour (0.35s); when a list is selected the rest dim to .22 (.38 dark). A floating tooltip uses the Pop shadow.
+A 120-seat hemicycle (or blocks), always on the 120-seat scale. Seats fill with party colour (0.18s); when a list is selected the rest dim to .22 (.38 dark). A floating tooltip uses the Pop shadow.
 
 ### Session Summary and Banners
 "What changed" is a single 13.5px line on surface with a hairline beneath: 700 label, then net moves in ink. Banners are full-width 13.5px strips: warn (amber ground, brown ink), error (pale red), info (quiet surface, dismissible).
 
 ### Motion
-State moves, it does not perform: switch 0.15s; corridors and colour pieces 0.3s ease; seat fill 0.35s; chart bars 0.4s; the majority bar 0.45s; a changed seat count flashes focus blue once over 1.2s. All of it stops under reduced motion.
+State moves, it does not perform: switch 0.15s; corridors and colour pieces 0.3s ease; seat fill 0.18s; chart bars 0.4s; the majority bar 0.45s; a changed seat count flashes focus blue once over 1.2s. All of it stops under reduced motion. During a slider drag, graphics follow the pointer without easing or repeated flashes; searches, edit markers and history use committed inputs. Releasing commits one undoable edit. Seat deltas and the Restore votes slot reserve their space so controls stay under the pointer. Crossing either side of a majority briefly highlights the existing bloc count in focus blue.
 
 ## Do's and Don'ts
 
