@@ -1019,3 +1019,203 @@ No additional constituent evidence was promoted from the new whole-list headers.
 `python3 scripts/validate-party-logos.py` passed: **26 overlays, 111 source records, 62 assets, 66 hosted entries**, zero download-unavailable and six unresolved entries. Separately recomputed each of the six original SHA-1 values from retained bytes, found the exact matching CDX timestamp/URL/digest row, and checked each CDX timestamp is on or before polling day. `npx tsc --noEmit -p .` passed. `npx vitest run` passed: **57 files, 483 tests**. `node scripts/build-datasets.ts` passed; its repeat wrote **zero** files. Existing full station reconciliation is skipped when station scratch is absent; retained evidence/locality checks still run.
 
 The model digest alone was re-recorded to `0c04cd08ac86f05d9512fc9cce2600566ec6d799048b692f524466e643898ec1` with a one-line justification. All 26 election datasets compare equal to baseline after recursively removing `logo` and `builtAt`; only k20–k25 election datasets changed. Allocation, analysis, validation and rules digests are unchanged. No application source or election results were changed. Commit is local only; no push or merge.
+
+## All-winners acquisition run — 4 November 2026
+
+Scope: k1–k25 official seat winners and k26 winners derived by the app's historical
+allocation of the retained CEC **3 November 2026 final count**, source
+`k26-localities-csv` (`data/raw/k26/expc.csv`), with official surplus agreements.
+K26 has no gazetted officialSeats; computed seats are not labelled gazetted results.
+`scripts/research/logo-coverage.py` now counts actual built `list.logo` fields for
+all 26 elections, rather than overlay eligibility, and derives k26 winners from
+the app allocation instead of bloc membership. The measured starting point is
+**48/308**, not the task brief's 49/335. K1–k25 account for 297 winners and 40 logos;
+k26 adds eleven winners and eight logos. No results were changed.
+
+### Batch 1: k25 Labor
+
+Accepted **one fair-use identification** whole-list logo; no new free-licence or
+constituent mark. Inspected [official October 28 homepage capture](https://web.archive.org/web/20221028055705/https://havoda.org.il/):
+three theme-site-logo images reference `wp-content/uploads/2022/05/logo.svg`.
+The [October 27 original](https://web.archive.org/web/20221027193950id_/https://havoda.org.il/wp-content/uploads/2022/05/logo.svg)
+computes to CDX digest `2P6YFOCMF2MEAUC3AYPSYKGXGEQ5HE73`. Rendered locally:
+navy העבודה with red wheat emblem. Original SVG preserved byte-for-byte.
+The dated official header and matching campaign-period bytes support **high**
+confidence for k25 only; official page, asset and CDX are one evidence family.
+Raw HTML, asset and CDX are retained under `data/raw/logos/k25/`; all have SHA-256
+manifest entries, and overlay/source card share `rawEvidence` and `digestProof`.
+This replaces Labor's prior secondary-only unresolved proposal.
+
+The builder consumes durable public logo inputs; it does not generate artwork.
+The accepted SVG was copied unchanged from retained raw bytes into `public/logos/`,
+following the existing batch convention. `node scripts/build-datasets.ts`
+regenerated public data and source manifests; no public dataset was hand-edited.
+
+Only k25 logo and builtAt differ across the 26 election datasets, verified by a
+recursive comparison to HEAD omitting those keys. The expected model digest changed
+as a result; the other four differential families passed unchanged. Locked dependencies
+installed with npm ci; source/artwork preserved, temporary downloads and local renders
+under `.backup-scratch/logo-all/`. Local Chromium needed sandbox escalation to launch
+(`sandbox_host_linux.cc:41`, Operation not permitted); no external page was automated.
+
+### Batch 2: k24 Labor and Yisrael Beiteinu
+
+Accepted **two additional fair-use identification whole-list logos** with high
+confidence and separate campaign-period CDX byte proofs:
+
+| Identity | Inspected official page UTC | Exact original UTC | Computed base32 SHA-1 |
+|---|---|---|---|
+| k24 אמת Labor | 20210317095134 | 20210201193153 | `5ET572XWZDN7XG2ZQ5SOV3VAP2VYG2D3` |
+| k24 ל Yisrael Beiteinu | 20210317203513 | 20210317203517 | `NVZH2RFPWK4PUJSIOSJVTXJQ5D5SPS7I` |
+
+The page, asset and CDX URLs are recorded verbatim in the corresponding overlay,
+source card and raw manifest. Labor's header is navy lettering with a red wheat
+symbol; Yisrael Beiteinu's is a blue roof-like line above ישראל ביתנו and its
+Avigdor Lieberman subline. Both original PNGs are retained, with proportional
+256-pixel PNG derivatives. Regenerate using Chromium headless shell **1248**
+(locked Playwright), load the retained PNG locally, canvas drawImage at rounded
+proportional dimensions bounded by 256 and toDataURL('image/png'). No recolouring
+or cropping. Labor's HTML arrived gzip encoded and was decoded before retention;
+its manifest hashes the retained decoded HTML. Same official-site evidence family
+per party/year; CDX establishes byte identity, not independent historical testimony.
+
+Supplementary k21 Labor evidence was also acquired: official page 20190327095556
+and original 20190326074701, with the same independently recorded campaign digest
+`5ET572XWZDN7XG2ZQ5SOV3VAP2VYG2D3`. **K21 was already covered** by the free-licence
+Commons asset. Its existing asset, credit and rights are preserved. The extra
+primary evidence is retained as an unselected source card, not a new displayed
+logo and not an additional coverage claim. During preparation a temporary replacement
+left the existing public asset unreferenced; the validator caught this, and the
+existing overlay was restored before committing. No free-licence entry was converted
+to fair use.
+
+Batch 1 verification: 57 Vitest files / 484 tests passed, TypeScript passed,
+production Vite build passed. Batch 2 verification uses the same commands and
+records only the intended logo/builtAt model-digest change; every dataset's other
+fields compare equal to the previous commit. The supplemental k21 manifest does
+not change results or credit. No constituents were added in either batch.
+
+### Batch 3: Yisrael Beiteinu k21–k23
+
+Accepted **three fair-use identification whole-list logos** (no free-licence or
+constituent additions). All three official campaign pages reference `logo2.png`,
+which differs from k24's `logo_260.png`. The older original includes substantial
+transparent space and a white backdrop shape; neither was cropped or redrawn.
+
+| Election | Inspected page UTC | Campaign-period CDX UTC | Actual original replay UTC |
+|---|---|---|---|
+| k21 | 20190326154413 | 20190329052747 | 20200215055455 |
+| k22 | 20190914092026 | 20190604135636 | 20200215055455 |
+| k23 | 20200212042350 | 20200119220419 | 20200215055455 |
+
+All independently dated CDX asset records match computed base32 SHA-1
+`QE4JF5VNYWOJQARKBMMNV73PY2IT5KU5`. The **June 4** capture is within the renewed
+campaign after the May 30 dissolution; it is earlier than the preferred final
+weeks. The separately inspected September 14 header supplies near-election use.
+For k21/k22 the actual downloaded original is a **later** replay; byte identity to
+their own pre-election digest, rather than design similarity, supports assignment.
+The 2020 replay is before k23 polling day. High confidence under the existing
+later-replay rule. Each overlay has its own source card, retained HTML/original/CDX
+and SHA-256 records. URLs and actual replay versus index timestamps are explicit.
+Original PNG bytes are identical in the three raw folders; display PNGs use the
+same proportional Chromium/canvas recipe as batch 2. Evidence families remain
+the official party site per campaign year, not independent historical witnesses.
+
+### New searches, failures and unresolved candidates
+
+This run used Jina search/read for discovery and Commons/NLI inspection; plain
+HTTP used the required project User-Agent, without an email. Archive requests
+were serial, at least 3.5 seconds apart within each acquisition batch. No 429,
+Retry-After, proxy, CAPTCHA solving or challenge bypass occurred. No Apify runs
+or paid retrievals were used (**$0 Apify spend**). The initial sandbox DNS failure
+for `web.archive.org` was resolved by authorized network execution. Search snippets
+are discovery only, never campaign proof. Incidental excluded-site links on Commons
+were not followed or relied on.
+
+| Scope / search record | Inspected evidence / route | Outcome |
+|---|---|---|
+| k25 Shas: Jina query `שס אתר רשמי בחירות 2022 לוגו`; official homepage CDX August–November | [October 16 official capture](https://web.archive.org/web/20221016093023id_/https://shas.org.il/) references `https://shas.org.il/wp-content/uploads/2021/05/לוגו.png` | Exact asset August–November CDX returned no rows. Broadening to January–November returned only **20220119024745**, digest `JXKJV7TMPGJUHQPNELGDZN3L6EAAHTWQ`. Retried without collapse: same sole row. The January PNG downloaded, but no campaign-period byte proof. Not promoted. |
+| Shas earlier elections and k26 | `https://web.archive.org/cdx/search/cdx?url=shas.org.il/&from=20150101&to=20210323&output=json&fl=timestamp,original,statuscode,digest&filter=statuscode:200&collapse=timestamp:6` and September–October 27, 2026 homepage query | Empty results for these URL/date scopes, not evidence that captures or logos do not exist. K26 Shas was already covered. |
+| Labor 2022 discovery | Requested `https://web.archive.org/web/20221031234343id_/https://havoda.org.il/` | Redirected to **20221102080814**, after polling day; rejected as campaign-date evidence. Used actual indexed October 28 capture instead. |
+| Labor 2021 broad asset discovery | `https://web.archive.org/cdx/search/cdx?url=havoda.org.il/*logo*&from=20210201&to=20210323&output=json&fl=timestamp,original,statuscode,digest,length&filter=statuscode:200&collapse=urlkey` | 35-second timeout. Exact www header URL query succeeded; accepted batch above. |
+| Yisrael Beiteinu 2021 original | `https://web.archive.org/web/20210317203517id_/https://beytenu.org.il/wp-content/themes/nisarg/images/logo_260.png` | 35-second timeout, then backed-off retry succeeded; no outstanding download failure. |
+| Yisrael Beiteinu 2019–2020 discovery | CDX for `beytenu.org.il/wp-content/themes/nisarg/images/logo_260.png`, March 2019–March 2, 2020 | Zero rows. Inspected actual page headers: older `logo2.png` path. Separate exact-asset campaign queries succeeded as above. |
+| k26 UTJ: Jina query `יהדות התורה 2026 אתר רשמי לוגו` | CEC candidate-list page and IDI/secondary discovery results | No official campaign artwork inspected; no assignment. Existing combined-list and separate-constituent gaps persist. |
+| k25 Labor/UTJ/Shas/Ra'am/Hadash Commons discovery | Queries `site:commons.wikimedia.org Shas logo 2022`, `site:commons.wikimedia.org "Labor" "2022" logo`, `site:commons.wikimedia.org "Hadash" "2022" logo`, `site:commons.wikimedia.org "Raam" logo election` | Commons HaAvoda Logo.svg is January 2019 recreation, not 2022 campaign proof. Raam logo 2021.svg records June 2022 conversion with conflicting PD/fair-use/structured licence cues: not extended to 2022. Logo Hadash Ta'al.png dates to October 2023, credit mentions fair use despite CC BY-SA: no 2022/2026 assignment. Shas file discovery provides no campaign date. |
+| k1 Fighters List: Jina queries `site:commons.wikimedia.org "FightersList" "1949"`, `site:nli.org.il "700129128"` | [Commons FightersList.png](https://commons.wikimedia.org/wiki/File:FightersList.png), credited NLI legacy viewer `https://web.nli.org.il/sites/NLI/English/digitallibrary/Pages/Viewer.aspx?presentorid=NNL_Ephemera&DocID=NNL_Ephemera700129128` | Commons caption says 1949 but file creation is 2020; NLI original returned **410 Gone**. Exact catalogue-ID search returned no results. Dated original not inspected; left absent. |
+| k11 Morasha: inspect Commons Morasha.png; query `site:nli.org.il "700127850"` | [Commons Morasha.png](https://commons.wikimedia.org/wiki/File:Morasha.png); legacy NLI `https://web.nli.org.il/sites/nli/english/digitallibrary/pages/viewer.aspx?presentorid=NNL_Ephemera&DocID=NNL_Ephemera700127850` | Commons period caption 1984–1988 is not a dated campaign original. NLI **410 Gone**; exact catalogue-ID search empty. No assignment. |
+| Early-election NLI discovery: `site:nli.org.il "בחירות" "מפא" "1951" כרזה` | [NLI 1951 election page](https://www.nli.org.il/he/discover/israel/elections/1951) | Jina returned **Just a moment…**, empty body. Stopped at challenge, no bypass. |
+| Early Mapai: `site:commons.wikimedia.org "Mapai" "1949" logo`, `site:nli.org.il "בחירות 1949" "מפאי" "כרזה"` | Discovery surfaced Mapai Logo 1950.svg and a July 1949 newspaper result | Neither proves January 1949 campaign use; no original inspected or asset assigned. |
+| Early General Zionists: queries `site:commons.wikimedia.org "General Zionists" "1951" logo` and `site:commons.wikimedia.org "General Zionists" "logo"` | [General Zionists-1.png](https://commons.wikimedia.org/wiki/File:General_Zionists-1.png) description inspected | Says campaign material, but dates recreation to January 2021 without a campaign year. No assignment to k1–k4. |
+| Early Progressive Party: queries `site:commons.wikimedia.org "Progressive" "Israel" "1955" logo`, `site:commons.wikimedia.org "Progressivit"` | [Progressivit.png](https://commons.wikimedia.org/wiki/File:Progressivit.png) description inspected | No qualifying election date established. Not assigned to k1–k4. |
+| Hazit Datit.png | Commons description inspected | Describes Jewish National Front; not evidence for early United Religious Front. Rejected identity substitution. |
+
+Other previously enumerated missing identities retain their earlier per-election
+search scope and reasons above. **They were not all newly searched in this run.**
+This is a six-logo acquisition and evidence handoff, not an exhaustive completion
+of all historical source families. No absence-of-logo conclusion follows from
+an unsearched identity, empty index query, inaccessible original or missing licence.
+
+### Measured coverage before → after, all elections
+
+| Election | Winners | Before | After | Remaining missing winner letters |
+|---|---:|---:|---:|---|
+| k1 | 12 | 1 | 1 | א, ב, ח, טו, יד, ל, מ, ס, פ, צ, ק |
+| k2 | 15 | 0 | 0 | א, ב, ג, ד, ה, ח, יד, ל, מ, נ, סצ, ע, פ, צ, ק |
+| k3 | 12 | 0 | 0 | א, ב, גד, ח, יד, מ, נ, ע, פ, צ, ק, תו |
+| k4 | 12 | 0 | 0 | א, ב, גד, ח, יא, מ, ע, פ, צ, ק, רא, תו |
+| k5 | 11 | 0 | 0 | א, ב, ג, ד, ח, יא, ל, מ, ק, רא, תו |
+| k6 | 13 | 1 | 1 | את, ב, ג, ד, ו, חל, יא, לע, מ, ק, רא, ש |
+| k7 | 13 | 0 | 0 | אמת, ב, ג, ד, ו, חל, ט, יא, לע, עמ, ק, רא, ש |
+| k8 | 10 | 0 | 0 | אמת, ב, גד, ו, חל טעם, לע, עא, קנ, רא, רצ |
+| k9 | 13 | 4 | 4 | ב, ג, ד, ו, ים, לע, מחל, רצ, ש |
+| k10 | 10 | 1 | 1 | אמת, ב, ג, הן, ו, מחל, ני, רצ, ת |
+| k11 | 15 | 2 | 2 | אמת, ב, ג, הן, ו, יש, כך, מחל, ני, עי, פ, רצ, שס |
+| k12 | 15 | 1 | 1 | אמת, ב, ג, הן, ו, ט, מחל, ע, עץ, פ, ץ, רצ, שס, ת |
+| k13 | 10 | 1 | 1 | אמת, ב, ג, ו, ט, מחל, ע, ץ, שס |
+| k14 | 11 | 2 | 2 | אמת, ב, ג, ו, ט, כן, מרצ, ע, שס |
+| k15 | 15 | 2 | 2 | אמת, ב, ג, ד, ו, יש, כן, ל, ם, מחל, מרצ, עם, שס |
+| k16 | 13 | 2 | 2 | ב, ג, ד, ו, יש, כן, ל, מחל, מרצ, עם, שס |
+| k17 | 12 | 1 | 1 | אמת, ג, ד, ו, זך, כן, ל, מחל, מרצ, עם, שס |
+| k18 | 12 | 2 | 2 | אמת, ב, ג, ד, ו, ט, כן, ל, עם, שס |
+| k19 | 12 | 3 | 3 | אמת, ג, ד, ו, טב, מחל, עם, פה, שס |
+| k20 | 10 | 2 | 2 | אמת, ג, ודעם, טב, ל, מרצ, פה, שס |
+| k21 | 11 | 2 | 3 | ג, דעם, ום, טב, כ, מרצ, פה, שס |
+| k22 | 9 | 3 | 4 | אמת, ג, מרצ, פה, שס |
+| k23 | 8 | 2 | 3 | ג, ודעם, טב, פה, שס |
+| k24 | 13 | 5 | 7 | ב, ג, ודעם, ט, מרצ, שס |
+| k25 | 10 | 3 | 4 | ג, ום, ט, ל, עם, שס |
+| k26 | 11 | 8 | 8 | ג, ט, עם |
+
+**Total: 48/308 → 54/308. Six new logos, all fair-use identification; zero new free-licence logos.**
+
+### Remaining gaps grouped by evidence needed
+
+- **Dated original inaccessible:** k1 טו Fighters List and k11 עי Morasha (410 NLI upstream); General Zionists k1–k4 צ and Progressive Party k1–k4 פ lack a verified campaign year on the inspected Commons descriptions. Early NLI discovery also hit a challenge. Their exact new searches appear above.
+- **Campaign-period asset bytes unresolved:** k25 שס Shas (October page, January-only asset digest); k25 ל Yisrael Beiteinu retains the earlier post-election-byte gap. No backwards propagation from k24.
+- **Combined-list identity / official origin unresolved:** k26 ג UTJ, ט Religious Zionism–Zehut and עם Ra’am; prior constituent-only evidence does not fill the joint-list gaps. Hadash–Ta’al k25 ום has an unsuitable later Commons candidate with conflicting rights credit. Prior modern joint-list exclusions remain in force.
+- **Earlier research gaps, not newly resolved or exhaustively re-searched:** all other letters in the table. The preceding per-election sections list their names, prior source cards and bounded search scope. These include undated emblems, current-only marks, secondary-only reproductions, inaccessible captures and identities for which no qualifying source was acquired. Treat these as open research, not verified nonexistence.
+
+Re-run `python3 scripts/research/logo-coverage.py` to recover the complete identity inventory. Constituents and nonwinners remain unchanged. The complete 254 missing-list inventory is the table above; reasons are scoped research outcomes, not definitive historical classifications.
+
+### Final verification and handoff
+
+All three batches ran `npx vitest run`, `npx tsc -p tsconfig.json --noEmit`,
+and `npx vite build` successfully before their commits. Final Vitest: **57 files,
+484 tests passed**. Logo validator: **26 overlays, 118 source cards, 68 assets,
+72 hosted entries** (includes constituents and nonwinners), five unresolved
+source-only proposals, zero download-unavailable. The model digest alone is now
+`f0db2028cfd9bc17d6473b9870e42a2ce7f416ff213e4c75360c4aded1a1981e`;
+allocation, analysis, validation and rules digests remain unchanged. Each model
+update followed a recursive comparison showing all 26 datasets equal to the
+previous commit after omitting logo and builtAt. Independent final checks recomputed
+all six originals' SHA-1 base32 values, found exact URL/timestamp/digest CDX rows,
+checked their dates against polling day, and checked the actual HTML references.
+The repeat dataset build wrote **zero** files (38 unchanged). Existing station
+reconciliation limits in the builder still apply where station scratch is absent.
+No runtime/frontend source, vote, seat, candidate or rules data changed.
+
+The final `PW_PORT=5321 npx playwright test` passed: **43 tests in 21.8 seconds**. Everything is local on branch `t3/ec578b65`; no push,
+merge, deployment or live-site change. **254 whole-list identities remain without
+logos**; the complete coverage goal is not achieved. The table and reason/search
+records above are the continuation handoff, with unsearched scope explicitly marked.

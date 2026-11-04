@@ -42,7 +42,10 @@ const EXPECTED: Record<Family, string> = {
   // Decision 0093: only links and builtAt differ in the 26 datasets; current model on HEAD
   // datasets reproduces bf90d94a..., and the other four digests are unchanged.
   // Likud k20–k25 logos only: all 26 datasets equal to HEAD after omitting logo and builtAt.
-  model: '0c04cd08ac86f05d9512fc9cce2600566ec6d799048b692f524466e643898ec1',
+  // Labor k25 header logo only; all 26 datasets equal HEAD after omitting logo and builtAt.
+  // Labor and Yisrael Beiteinu k24 logos; only logo and builtAt change in all 26 datasets.
+  // Yisrael Beiteinu k21–k23 logos; all other dataset fields verified equal to HEAD.
+  model: 'f0db2028cfd9bc17d6473b9870e42a2ce7f416ff213e4c75360c4aded1a1981e',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

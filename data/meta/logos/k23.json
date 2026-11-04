@@ -73,6 +73,42 @@
         "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.likud.org.il%2Fimages%2Flayout_images%2Flogo.svg&from=20191201&to=20200302&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
         "rawIndex": "logo-k23-likud-index"
       }
+    },
+    {
+      "letters": "ל",
+      "file": "logos/beiteinu-2020-k23.png",
+      "sourceUrl": "https://beytenu.org.il/",
+      "assetSourceUrl": "https://beytenu.org.il/wp-content/themes/nisarg/images/logo2.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "ישראל ביתנו — official party header mark",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "beiteinu-archive-20200212042350",
+      "inUseDate": "2020-02-12",
+      "archiveUrl": "https://web.archive.org/web/20200212042350/https://beytenu.org.il/",
+      "archiveTimestamp": "20200212042350",
+      "inUseEvidence": "Inspected official homepage capture 20200212042350 references https://beytenu.org.il/wp-content/themes/nisarg/images/logo2.png as its header logo. Exact archived original bytes from 20200215055455 match campaign-period CDX SHA-1 base32 QE4JF5VNYWOJQARKBMMNV73PY2IT5KU5. Artwork visually inspected; original colours and proportions preserved. Separate dated evidence for this election; not assigned by analogy.",
+      "retrievedAt": "2026-11-04",
+      "sha256": "2807cdabe19394b91a2b096b3c37bbacc52fbf3bb14109125a79e0086d4ef30e",
+      "originalSha256": "d3a2bed059622678462143fe5d509208bf6e20a472f41138c5caa226a8ea01bc",
+      "bytes": 14947,
+      "rawEvidence": {
+        "page": "logo-k23-beiteinu-page",
+        "asset": "logo-k23-beiteinu-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20200215055455id_/https://beytenu.org.il/wp-content/themes/nisarg/images/logo2.png",
+      "assetArchiveTimestamp": "20200215055455",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "QE4JF5VNYWOJQARKBMMNV73PY2IT5KU5",
+        "computedDigest": "QE4JF5VNYWOJQARKBMMNV73PY2IT5KU5",
+        "assetCaptureTimestamp": "20200215055455",
+        "cdxCaptureTimestamp": "20200119220419",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=beytenu.org.il%2Fwp-content%2Fthemes%2Fnisarg%2Fimages%2Flogo2.png&from=20200101&to=20200302&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k23-beiteinu-index"
+      }
     }
   ]
 }
