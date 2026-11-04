@@ -23,12 +23,8 @@ interface Meta { electionId: string; lists: MetaList[]; blocSchemes?: MetaScheme
 const HEX = /^#[0-9a-fA-F]{6}$/;
 const KINDS = new Set(['government', 'parliamentary', 'pre-election']);
 
-// CIE Lab ΔE76, copied from scripts/check-colours.ts so the build and the CI check agree exactly
-const lab = (hex: string) => { const c = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255).map((v) => (v > 0.04045 ? ((v + 0.055) / 1.055) ** 2.4 : v / 12.92));
-  const [x, y, z] = [[0.4124, 0.3576, 0.1805], [0.2126, 0.7152, 0.0722], [0.0193, 0.1192, 0.9505]].map((r, i) => (r[0] * c[0] + r[1] * c[1] + r[2] * c[2]) / [0.95047, 1, 1.08883][i]);
-  const f = (v: number) => (v > 0.008856 ? Math.cbrt(v) : 7.787 * v + 16 / 116); return [116 * f(y) - 16, 500 * (f(x) - f(y)), 200 * (f(y) - f(z))]; };
-const deltaE = (a: string, b: string) => { const [p, q] = [lab(a), lab(b)]; return Math.hypot(p[0] - q[0], p[1] - q[1], p[2] - q[2]); };
-export const MIN_DELTA_E = 20;
+import { hexToLab, separateBlocColours, separateColours } from '../../../src/data/colour.ts';
+
 
 export function applyMeta(ds: ElectionDataset): ElectionDataset {
   const file = join(META, `${ds.id}.json`);
@@ -66,13 +62,13 @@ export function applyMeta(ds: ElectionDataset): ElectionDataset {
   // ---- colours
   // an associated colour is used only when rated medium or high and readable as a seat fill in both
   // themes (CIE L* between 25 and 82: not near-black like a black logo, not near-white)
-  const readable = (hex: string) => { const L = lab(hex)[0]; return L >= 25 && L <= 82; };
+  const readable = (hex: string) => { const L = hexToLab(hex)[0]; return L >= 25 && L <= 82; };
   const strong = (c: MetaColour) => HEX.test(c.color) && (c.confidence === 'high' || c.confidence === 'medium') && readable(c.color);
   for (const c of meta.colours ?? []) {
     if (!HEX.test(c.color)) fail(`bad colour ${c.color}`);
     if (c.party && strong(c)) for (const lid of partyLists.get(c.party) ?? []) { const p = partiesByList.get(lid)?.find((x) => x.id === c.party); if (p) p.color = c.color.toLowerCase(); }
   }
-  // list colours: take the associated colour, then undo any that collide with a seat-order neighbour
+  // list colours: the associated colour where the research has one, else the app's cross-election colour
   const associated = new Map<string, string>();
   for (const c of meta.colours ?? []) if (c.letters && strong(c)) associated.set(listId(c.letters), c.color.toLowerCase());
   let lists = ds.lists.map((l) => {
@@ -84,24 +80,6 @@ export function applyMeta(ds: ElectionDataset): ElectionDataset {
       candidates: l.candidates.map((c) => (partyOfCandidate.has(c.id) ? { ...c, partyId: partyOfCandidate.get(c.id)! } : c)),
     };
   });
-  // the same seat-winning set as scripts/check-colours.ts (2026 has no official seat table yet)
-  const thr = Number(ds.ruleSetId.split('-').pop()) / 100;
-  const wins = (l: { id: string; votes: number }) => (ds.officialSeats ? (ds.officialSeats[l.id] ?? 0) > 0 : l.votes >= thr * ds.totals.valid);
-  for (let pass = 0; pass < 10; pass++) {
-    const winners = lists.filter(wins); // already in seat order
-    let changed = false;
-    for (let i = 1; i < winners.length; i++) {
-      const a = winners[i - 1], b = winners[i];
-      if (deltaE(a.color, b.color) >= MIN_DELTA_E) continue;
-      // keep the associated colour of the larger list; the smaller falls back to the app colour
-      const victim = [b, a].find((x) => associated.has(x.id) && x.color !== ds.lists.find((o) => o.id === x.id)!.color);
-      if (!victim) continue;
-      lists = lists.map((l) => (l.id === victim.id ? { ...l, color: ds.lists.find((o) => o.id === l.id)!.color } : l));
-      associated.delete(victim.id);
-      changed = true;
-    }
-    if (!changed) break;
-  }
 
   // ---- bloc schemes
   const schemes: BlocScheme[] = (meta.blocSchemes ?? []).map((s) => {
@@ -130,5 +108,32 @@ export function applyMeta(ds: ElectionDataset): ElectionDataset {
   // default (decision 0087): the first government formed after this election, else its pre-election blocs,
   // else any other sourced grouping (e.g. an outgoing government, or recommendations to the President)
   const pick = schemes.find((s) => s.id === 'first-government') ?? schemes.find((s) => s.kind === 'pre-election') ?? schemes.find((s) => s.kind === 'government') ?? schemes[0];
+  lists = distinctColours(ds, lists, schemes.find((s) => s.id === pick?.id));
+  // bloc regions: each bloc's pale tint stands apart from the others' and from the neutral No bloc region
+  for (const s of schemes) separateBlocColours(s.blocs.map((b) => b.color)).forEach((c, i) => { s.blocs[i].color = c; });
   return { ...ds, lists, ...(schemes.length ? { blocSchemes: schemes, defaultBlocScheme: pick!.id } : {}) };
+}
+
+/** Every pair of lists that can share the chamber is told apart by colour (decision 0087, revised 2026-11-04): the
+ *  seat-winning lists of the official result (2026 has no official seat table yet: lists above the threshold), with a
+ *  stricter difference for lists drawn side by side — in the default grouping's chamber order (blocs left to right,
+ *  unassigned lists between their halves) and in the list column (most seats first). Larger lists keep their colour;
+ *  a smaller one that clashes moves by the least perceptible amount (src/data/colour.ts). */
+function distinctColours<T extends { id: string; votes: number; color: string; parties?: { id: string }[]; candidates: { id: string }[] }>(ds: ElectionDataset, lists: T[], scheme: BlocScheme | undefined): T[] {
+  const thr = Number(ds.ruleSetId.split('-').pop()) / 100;
+  const seats = (l: { id: string; votes: number }) => (ds.officialSeats ? ds.officialSeats[l.id] ?? 0 : l.votes >= thr * ds.totals.valid ? 1 : 0);
+  const winners = lists.filter((l) => seats(l) > 0);
+  const neighbours = new Set<string>();
+  const link = (order: string[]) => order.forEach((id, i) => { if (i && order[i - 1] !== id) neighbours.add(`${order[i - 1]} ${id}`); });
+  link(winners.map((l) => l.id)); // the dataset's own order (scripts/check-colours.ts)
+  link([...winners].sort((a, b) => seats(b) - seats(a) || b.votes - a.votes).map((l) => l.id));
+  if (scheme) {
+    const blocsOf = (l: T) => scheme.blocs.filter((b) => b.lists.includes(l.id) || (l.parties ?? []).some((p) => b.parties.includes(p.id)) || l.candidates.some((c) => b.candidates.includes(c.id))).map((b) => b.id);
+    const order: (string | null)[] = scheme.blocs.map((b) => b.id);
+    order.splice(Math.floor(order.length / 2), 0, null);
+    link(order.flatMap((bloc) => winners.filter((l) => (bloc === null ? !blocsOf(l).length : blocsOf(l).includes(bloc))).map((l) => l.id)));
+  }
+  const appColour = new Map(ds.lists.map((l) => [l.id, l.color]));
+  const { colors } = separateColours([...winners].sort((a, b) => b.votes - a.votes).map((l) => ({ id: l.id, color: l.color, alternatives: appColour.get(l.id) === l.color ? [] : [appColour.get(l.id)!] })), neighbours);
+  return lists.map((l) => (colors.has(l.id) ? { ...l, color: colors.get(l.id)! } : l));
 }

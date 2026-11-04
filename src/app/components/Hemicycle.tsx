@@ -11,8 +11,11 @@ import { listLabel, methodOf, seatBlocsOf, seatedOrder, shownName, referenceLabe
 import { useL, useLang } from '../i18n.ts';
 import { arcLayout, annularRegions } from '../layout.ts';
 import { download, isolate, signed } from '../format.ts';
+import { electionLabel } from '../electionLabel.ts';
 import { setState, useStore } from '../store.ts';
 import { Seg } from './ui.tsx';
+import { ChoicePicker } from './ChoicePicker.tsx';
+import { ResultPreview } from './ResultPreview.tsx';
 
 export interface SeatInfo { listId: string; idx: number; color: string; remainder: boolean; bloc: string | null; holder: string }
 
@@ -63,6 +66,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   const layout = useStore((st) => (expert ? st.layout : 'hemicycle'));
   const colorBy = useStore((st) => (expert ? st.colorBy : 'list'));
   const selected = useStore((st) => st.selectedListId);
+  const elections = useStore((st) => st.elections);
   const svgRef = useRef<SVGSVGElement>(null);
   // on a phone the arc fills the width without labels; the legend below names the lists instead
 
@@ -114,36 +118,49 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       if (node instanceof SVGElement && node.classList.contains('wedge')) node.removeAttribute('style');
     });
     const vb = el.viewBox.baseVal;
-    const rows = s.lists.map(l => ({l,n:r.lists.find(x=>x.id===l.id)?.seats ?? 0})).filter(x=>x.n>0);
+    const NS = 'http://www.w3.org/2000/svg', ink = css.getPropertyValue('--ink'), rtlText = lang === 'he';
+    const svgText = (x: number, y: number, size: number, content: string) => {
+      const t = document.createElementNS(NS, 'text');
+      t.setAttribute('x', String(x)); t.setAttribute('y', String(y)); t.setAttribute('font-size', String(size)); t.setAttribute('fill', ink);
+      // Hebrew lines run right to left from the column's right edge; numbers stay a left-to-right isolate inside them
+      t.setAttribute('direction', rtlText ? 'rtl' : 'ltr'); t.setAttribute('text-anchor', 'start');
+      t.textContent = content; return t;
+    };
+    // a column's start edge: the left edge in English, the right edge in Hebrew, with the first column on the reading side
+    const colStart = (col: number) => (rtlText ? vb.x + vb.width - 16 - col * vb.width / 2 : vb.x + 16 + col * vb.width / 2);
     const mini = svgRef.current?.parentElement?.querySelector('.baseline-mini svg') as SVGSVGElement | null;
     const extra = mini ? 270 : 0;
     if (mini) {
       const inset = mini.cloneNode(true) as SVGSVGElement;
       [inset, ...inset.querySelectorAll('*')].forEach((node,i) => {
         const style = getComputedStyle([mini,...mini.querySelectorAll('*')][i]);
-        for (const prop of ['fill','stroke','stroke-width','stroke-dasharray','opacity']) node.setAttribute(prop,style.getPropertyValue(prop));
+        for (const prop of ['fill','stroke','stroke-width','stroke-dasharray','opacity','fill-opacity','stroke-opacity']) node.setAttribute(prop,style.getPropertyValue(prop));
       });
-      inset.setAttribute('x',String(vb.x+16)); inset.setAttribute('y',String(vb.y+vb.height+25));
+      inset.setAttribute('x',String(rtlText ? vb.x + vb.width - 416 : vb.x+16)); inset.setAttribute('y',String(vb.y+vb.height+25));
       inset.setAttribute('width','400'); inset.setAttribute('height','230');
-      const label = document.createElementNS('http://www.w3.org/2000/svg','text');
-      label.setAttribute('x',String(vb.x+16)); label.setAttribute('y',String(vb.y+vb.height+16)); label.setAttribute('font-size','14');label.setAttribute('fill',css.getPropertyValue('--ink'));
-      label.textContent = referenceLabel(labelReference,lang).name;
-      clone.appendChild(label);clone.appendChild(inset);
+      clone.appendChild(svgText(colStart(0), vb.y+vb.height+16, 14, referenceLabel(labelReference,lang).name));
+      clone.appendChild(inset);
     }
-    clone.setAttribute('viewBox', `${vb.x} ${vb.y} ${vb.width} ${vb.height+extra+Math.ceil(rows.length/2)*28+16}`);
-    rows.forEach(({l,n},i) => {
-      const text = document.createElementNS('http://www.w3.org/2000/svg','text');
-      text.setAttribute('x',String(vb.x+16+(i%2)*vb.width/2));
-      text.setAttribute('y',String(vb.y+vb.height+extra+20+Math.floor(i/2)*28));
-      text.setAttribute('fill',css.getPropertyValue('--ink'));
-      text.setAttribute('font-size','16');
-      text.setAttribute('direction','ltr');
+    // the legend in chamber order, each list with its seat colour(s), and old → new only where the seats changed
+    const groupsNow = comparisonGroups(s,r,base,br);
+    const rowsY = vb.y+vb.height+extra+20;
+    legendRows.forEach(({l,n,colors},i) => {
+      const x = colStart(i % 2), y = rowsY + Math.floor(i/2)*28, dir = rtlText ? -1 : 1;
+      colors.forEach((c, k) => {
+        const dot = document.createElementNS(NS, 'circle');
+        dot.setAttribute('cx', String(x + dir * (7 + k * 16))); dot.setAttribute('cy', String(y - 5)); dot.setAttribute('r', '7'); dot.setAttribute('fill', c);
+        clone.appendChild(dot);
+      });
       const label = listLabel(l,lang);
-      const g = comparisonGroups(s,r,base,br).find(g=>g.bIds.includes(l.id));
-      const delta = g?.bIds.length === 1 ? ` · ${g.seatsA} → ${g.seatsB} (${signed(g.seatsB-g.seatsA)})` : '';
-      text.textContent = isolate(`${label.length>24 ? label.slice(0,23)+'…' : label} ${n}${delta}`);
-      clone.appendChild(text);
+      const g = groupsNow.find(g=>g.bIds.includes(l.id));
+      const numbers = g?.bIds.length === 1 && g.seatsA !== g.seatsB ? `${g.seatsA} → ${g.seatsB} (${signed(g.seatsB-g.seatsA)})` : String(n);
+      clone.appendChild(svgText(x + dir * (8 + colors.length * 16), y, 16, `${label.length>28 ? label.slice(0,27)+'…' : label} \u2066${numbers}\u2069`));
     });
+    // what the picture is: the election, and the scenario or the official result
+    const entry = elections.find(e => e.id === s.electionId);
+    const captionY = rowsY + Math.ceil(legendRows.length/2)*28 + 8;
+    clone.appendChild(svgText(colStart(0), captionY, 13, `${entry ? electionLabel(entry, elections, lang) : ''}${entry ? ' · ' : ''}${s.log.length ? s.name || L('Scenario', 'תרחיש') : L('Official result', 'התוצאה הרשמית')}`));
+    clone.setAttribute('viewBox', `${vb.x} ${vb.y} ${vb.width} ${captionY - vb.y + 14}`);
     const xml = new XMLSerializer().serializeToString(clone);
     if (kind === 'svg') return download('knesset.svg', xml, 'image/svg+xml');
     const img = new Image();
@@ -186,8 +203,8 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
               onClick={() => setState({ selectedListId: selected === st.listId ? null : st.listId })} />
           );
         })}
-        <text x={cx} y={cy - 40} textAnchor="middle" fontSize={44} fontWeight={700} fill="var(--ink)">{r.seatsAllocated}</text>
-        <text x={cx} y={cy - 6} textAnchor="middle" fontSize={16} fill="var(--ink-2)">{isolate(L(`seats · majority ${Math.floor(total / 2) + 1}`, `מנדטים · רוב ${Math.floor(total / 2) + 1}`))}</text>
+        <text className="centre-total" x={cx} y={cy - 40} textAnchor="middle" fontSize={44} fontWeight={700} fill="var(--ink)">{r.seatsAllocated}</text>
+        <text className="centre-sub" x={cx} y={cy - 6} textAnchor="middle" fontSize={16} fill="var(--ink-2)">{isolate(L(`seats · majority ${Math.floor(total / 2) + 1}`, `מנדטים · רוב ${Math.floor(total / 2) + 1}`))}</text>
       </svg>
     );
   } else {
@@ -205,16 +222,21 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
     </svg>;
   }
 
+  // lists in the order their seats are drawn (blocs left to right, No bloc between their halves), each with the colours
+  // its seats actually carry in the chosen colour mode
+  const legendRows = [...new Set(seats.map(st => st.listId))].map(id => ({ l: listOf(id), n: r.lists.find(x => x.id === id)?.seats ?? 0, colors: [...new Set(seats.filter(st => st.listId === id).map(st => st.color))] }));
+  const head = !compactProp && (expertControl || standardControl || expert);
   return (
-    <div className="chamber">{expertControl}{standardControl}
+    <div className="chamber">
+      {head && <div className="chamber-tools">
+        {expert && <>
+          <Seg label={L('Chamber layout', 'פריסה')} value={layout} onChange={(v) => setState({ layout: v })} options={[{ v: 'hemicycle', label: L('Arc', 'קשת') }, { v: 'blocks', label: L('Blocks', 'גושים') }]} />
+          <ChoicePicker label={L('Colour seats by', 'צביעת מושבים לפי')} value={colorBy} options={(['list', 'bloc', 'party'] as const).map(value => ({ value, label: value === 'list' ? L('List', 'רשימה') : value === 'bloc' ? L('Bloc', 'גוש') : L('Party', 'מפלגה'), preview: <ResultPreview s={s} blocs={value === 'bloc'} party={value === 'party'} /> }))} onChange={value => setState({ colorBy: value as typeof colorBy })} />
+        </>}
+        {expertControl}{standardControl}
+      </div>}
       {/* on the board the bloc bar directly below already carries this line; Compare's chambers stand alone */}
       {compactProp && <BlocMajorities s={s} r={r} />}
-      {expert && !compactProp && (
-        <div className="row chamber-tools" style={{ justifyContent: 'flex-end', gap: 6, marginBottom: 4 }}>
-          <Seg label={L('Chamber layout', 'פריסה')} value={layout} onChange={(v) => setState({ layout: v })} options={[{ v: 'hemicycle', label: L('Arc', 'קשת') }, { v: 'blocks', label: L('Blocks', 'גושים') }]} />
-
-        </div>
-      )}
       {body}
       {hasChanges && <div className="baseline-mini">
         <span className="small muted">{referenceLabel(labelReference,lang).name}</span>
@@ -229,7 +251,8 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
           <text x={500} y={440} textAnchor="middle" fontSize={44} fill="var(--ink)">{br.seatsAllocated}</text>
         </svg>
       </div>}
-      <p className="small muted graphic-key">{hasChanges ? L(`Outlined: seats gained since ${referenceLabel(labelReference,lang).name}. Small chamber: ${referenceLabel(labelReference,lang).name}.`, `מתאר: מנדטים שנוספו מאז ${referenceLabel(labelReference,lang).name}. הכנסת הקטנה: ${referenceLabel(labelReference,lang).name}.`) : L(`Reference: ${referenceLabel(labelReference,lang).name}`, `בסיס: ${referenceLabel(labelReference,lang).name}`)} <span tabIndex={0} className="comparison-info" aria-label={L('About these outlines','על המתארים')} title={L('Outlines compare list seat counts. Dashed outlines in the reference chamber show losses. They do not identify a seat or voter moving between lists. Dashed bars show the reference; neutral ink shows the difference.', 'המתארים משווים את מספר המנדטים של הרשימות. קווים מקווקווים בכנסת הקטנה מציינים אובדן. אין משמעות של מנדט או בוחר שעבר בין רשימות. מתארי העמודות המקווקווים מציינים את הבסיס; דיו ניטרלי מציין שינוי.')}>(i)</span></p>
+      {/* the key is needed only when there is something to compare; the reference is named once, under the small chamber */}
+      {hasChanges && <p className="small muted graphic-key">{L(`Outlined: seats gained since ${referenceLabel(labelReference,lang).name}. Dashed, in the small chamber: seats lost.`, `מתאר: מנדטים שנוספו מאז ${referenceLabel(labelReference,lang).name}. מקווקו, בכנסת הקטנה: מנדטים שאבדו.`)} <span tabIndex={0} className="comparison-info" aria-label={L('About these outlines','על המתארים')} title={L('Outlines compare list seat counts. Dashed outlines in the reference chamber show losses. They do not identify a seat or voter moving between lists. Dashed bars show the reference; neutral ink shows the difference.', 'המתארים משווים את מספר המנדטים של הרשימות. קווים מקווקווים בכנסת הקטנה מציינים אובדן. אין משמעות של מנדט או בוחר שעבר בין רשימות. מתארי העמודות המקווקווים מציינים את הבסיס; דיו ניטרלי מציין שינוי.')}>(i)</span></p>}
       <GraphicChanges s={s} r={r} reference={reference} compact />
       {hover && hv && (
         <div className="tip" style={{ left: Math.max(0, hover.x - 100), top: Math.max(0, hover.y - 96) }}>
@@ -244,9 +267,9 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       {!compactProp && (
         <div className="legend" role="group" aria-label={L('Lists in the Knesset', 'הרשימות בכנסת')} style={{ marginTop: 6 }}>
           {seats.some(st=>st.bloc===null) && <span className="row no-bloc-legend"><span className="swatch" style={{background:'color-mix(in srgb, var(--muted) 30%, var(--surface))',border:'1px dotted var(--muted)'}} />{L('No bloc','ללא גוש')}</span>}
-          {s.lists.map((l) => ({ l, n: r.lists.find((x) => x.id === l.id)?.seats ?? 0 })).filter((x) => x.n > 0).map(({ l, n }) => (
+          {legendRows.map(({ l, n, colors }) => (
             <button key={l.id} aria-pressed={selected === l.id} onClick={() => setState({ selectedListId: selected === l.id ? null : l.id })}>
-              <span className="swatch" style={{ background: l.color }} />{listLabel(l, lang)} <b className="tabnum">{n}</b>
+              <span className="swatch" style={{ background: colors.length > 1 ? `linear-gradient(90deg, ${colors.map((c, i) => `${c} ${i / colors.length * 100}% ${(i + 1) / colors.length * 100}%`).join(', ')})` : colors[0] }} />{listLabel(l, lang)} <b className="tabnum">{n}</b>
             </button>
           ))}
         </div>

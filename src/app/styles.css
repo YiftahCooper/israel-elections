@@ -234,8 +234,15 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .corridor .pieces i.dim { opacity: .25; }
 .corridor .label { font-size: 13px; display: flex; gap: 6px; align-items: baseline; overflow: hidden; white-space: nowrap; }
 .corridor .label b { font-weight: 700; }
-.corridor .label .clip { overflow: hidden; text-overflow: ellipsis; }
-.milestone { position: absolute; top: 0; bottom: -4px; width: 0; border-inline-start: 2px dashed var(--ink); pointer-events: none; }
+.corridor .label .clip { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.corridor .label > b { flex-shrink: 0; }
+/* the shortfall is shown whole or not at all: a narrow corridor keeps the bloc's name and seats (the title and the bloc
+   editor still give the shortfall) */
+.corridor { container-type: inline-size; }
+@container (max-width: 300px) { .corridor .label .consequence { display: none; } }
+.corridor .label .consequence, .strip-legend .consequence { color: var(--ink-2); font-size: 12px; white-space: nowrap; }
+/* the line crosses the tag and the member pieces only, never a bloc's name beneath them */
+.milestone { position: absolute; top: 0; height: 38px; width: 0; border-inline-start: 2px dashed var(--ink); pointer-events: none; }
 .milestone span { position: absolute; top: -2px; inset-inline-start: -15px; background: var(--shell); color: var(--shell-ink); font-size: 11px; font-weight: 700; padding: 0 5px; border-radius: 3px; line-height: 15px; }
 @media (prefers-reduced-motion: reduce) { .corridor, .corridor .pieces i { transition: none; } }
 
@@ -256,16 +263,18 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .chamber { position: relative; }
 .chamber svg { display: block; width: 100%; height: auto; direction: ltr; }
 .chamber .wedge { transition: d .3s; fill-opacity: .26; stroke: none; }
-[data-theme="dark"] .chamber .wedge { fill-opacity: .34; }
+[data-theme="dark"] .chamber .wedge { fill-opacity: .24; }
 .chamber { --wedge-mix: 26%; }
-[data-theme="dark"] .chamber { --wedge-mix: 34%; }
+[data-theme="dark"] .chamber { --wedge-mix: 24%; }
 .chamber .wedge.solid { fill-opacity: 1; stroke-width: 1.5; stroke-linejoin: round; }
 .chart { direction: ltr; }
 .seat { transition: fill .35s ease, opacity .2s; cursor: pointer; }
 .seat.dim { opacity: .22; }
 [data-theme="dark"] .seat.dim { opacity: .38; }
+/* the centre readout scales with the drawing; on a phone it would shrink to ~6px, so it is drawn larger there */
+@media (max-width: 760px) { .chamber .centre-total { font-size: 64px; } .chamber .centre-sub { font-size: 28px; } }
 .chamber .tip { position: absolute; pointer-events: none; z-index: 30; background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); box-shadow: var(--shadow-pop); padding: 8px 10px; font-size: 13px; min-width: 180px; }
-.chamber-tools { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+.chamber-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 6px; margin-block-end: 4px; }
 .legend { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 13px; }
 .legend button { display: inline-flex; gap: 6px; align-items: center; border: 0; background: none; padding: 3px 0; cursor: pointer; }
 .majority-bar { position: relative; height: 26px; border-radius: 5px; overflow: hidden; display: flex; gap: 2px; background: var(--surface); }
@@ -274,6 +283,9 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 
 /* ---------- figures: each opens in place, spanning the row it sits in */
 .figures { display: grid; grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); grid-auto-flow: row dense; gap: 8px; }
+/* collapsed figure groups: their toggles share one row after the cards, at the inline end */
+.figures-more { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+.figures-more .feature-disclosure { margin: 0; }
 .fig { border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface); text-align: start; padding: 0; min-width: 0; }
 .fig > button { all: unset; box-sizing: border-box; display: block; width: 100%; padding: 8px 10px; cursor: pointer; border-radius: var(--radius); }
 .fig > button:hover { background: var(--surface-2); }
@@ -615,7 +627,11 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .band .band-custom[aria-pressed="true"] { background: var(--shell-ink); color: var(--shell); border-color: var(--shell-ink); }
 .band .band-custom:hover:not([aria-pressed="true"]) { background: var(--shell-2); color: var(--shell-ink); }
 .feature-disclosure { min-inline-size: 0; max-inline-size: 100%; }
-.feature-disclosure > button { white-space: normal; text-align: start; max-inline-size: 100%; block-size: auto; }
+.feature-toggles { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.disclosure-toggle { display: inline-flex; align-items: center; gap: 4px; min-block-size: 26px; padding: 2px 10px 2px 8px; border: 1px dashed var(--rule-2); border-radius: 999px; background: transparent; color: var(--ink-2); font: inherit; font-size: 12.5px; font-weight: 500; text-align: start; white-space: normal; max-inline-size: 100%; cursor: pointer; }
+.disclosure-toggle:hover { color: var(--ink); border-color: var(--ink-2); background: var(--surface-2); }
+.disclosure-toggle[aria-expanded="true"] { border-style: solid; color: var(--ink); }
+.disclosure-toggle:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 @media (min-width: 1200px) {
   .band { flex-wrap: nowrap; column-gap: 8px; }
   .band .spacer { min-inline-size: 0; }

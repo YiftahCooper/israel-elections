@@ -18,8 +18,10 @@ import { groupingLabel, blocPieces, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { dispatch, setState } from '../store.ts';
 
-/** colours that read both as a seat and as a pale region behind the seats */
-const PALETTE = ['#2f5fa7', '#1f9d73', '#c0392b', '#d98c1f', '#7b4fb0', '#1b8a9a', '#8a6d3b', '#c2477d', '#5d7a2e', '#5a6470'];
+/** colours that read both as a seat and as a pale region behind the seats; none is a grey, which is reserved for No bloc
+ *  (tests/party-colours.test.ts) */
+export const BLOC_PALETTE = ['#1f5aa5', '#1f9d73', '#c0392b', '#d98c1f', '#7b4fb0', '#1b8a9a', '#9a5b1e', '#c2477d', '#5d7a2e', '#e0b400'];
+const PALETTE = BLOC_PALETTE;
 const NONE = '__none';
 
 /** a movable chip; `home` is the card it sits on */
@@ -137,7 +139,7 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
       <div className="sp-body">
         <FamilyGroupingLink />
         <StartFrom s={s} part="blocs" />
-        <p className="tiny muted">{voteSourceLabel(src, s, lang)}</p>
+        <p className="tiny muted">{L(`Vote changes here are balanced by: ${voteSourceLabel(src, s, lang)}`, `שינויי קולות כאן מתקזזים מול: ${voteSourceLabel(src, s, lang)}`)}</p>
         <p className="small">{groupingLabel(s, lang)} <EditMarker s={s} path={['customGroupingName']} /></p>
         {picked && (
           <p className="bp-picked small" role="status">

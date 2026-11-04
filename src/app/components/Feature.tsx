@@ -1,4 +1,5 @@
 import { Seg } from './ui.tsx';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 import { useEffect, useState, type ReactNode } from 'react';
 import { FEATURES, FEATURE_PREVIEWS, PRESETS, type FeatureId, type Visibility } from '../features.ts';
 import { keepFeature, setState, useFeature, useStore } from '../store.ts';
@@ -12,8 +13,8 @@ export function Feature({ id, children }: { id: FeatureId; children: ReactNode }
   const f = FEATURES.find(f => f[0] === id)!;
   if (visibility === 'show') return <>{children}</>;
   return <div className="feature-disclosure">
-    <button className="btn small ghost" aria-expanded={open} onClick={() => setOpen(!open)}>{L('More options', 'אפשרויות נוספות')}: {L(f[2], f[3])}</button>
-    {open && <><button className="btn small" onClick={() => keepFeature(id)}>{L('Keep this visible', 'להשאיר גלוי')}</button>{children}</>}
+    <DisclosureToggles id={id} open={open} onToggle={() => setOpen(!open)} label={L(f[2], f[3])} />
+    {open && children}
   </div>;
 }
 export function CustomPage() {
@@ -42,8 +43,19 @@ export function useDisclosure(id: FeatureId) {
   const f = FEATURES.find(f => f[0] === id)!;
   const shown = visibility === 'show' || open;
   const control = visibility === 'show' ? null : <div className="feature-disclosure">
-    <button className="btn small ghost" aria-expanded={open} onClick={() => setOpen(!open)}>{L('More options', 'אפשרויות נוספות')}: {L(f[2],f[3])}</button>
-    {open && <button className="btn small" onClick={() => keepFeature(id)}>{L('Keep this visible', 'להשאיר גלוי')}</button>}
+    <DisclosureToggles id={id} open={open} onToggle={() => setOpen(!open)} label={L(f[2], f[3])} />
   </div>;
   return { shown, control };
+}
+
+/** The one look of a collapsed feature, everywhere: a quiet dashed chip naming what it opens, with a chevron; once open,
+ *  "Keep this visible" beside it. The full "More options: …" wording stays in its accessible name. */
+function DisclosureToggles({ id, open, onToggle, label }: { id: FeatureId; open: boolean; onToggle: () => void; label: string }) {
+  const L = useL();
+  return <div className="feature-toggles">
+    <button type="button" className="disclosure-toggle" aria-expanded={open} aria-label={`${L('More options', 'אפשרויות נוספות')}: ${label}`} onClick={onToggle}>
+      {open ? <ChevronUp className="icon sm" aria-hidden /> : <ChevronDown className="icon sm" aria-hidden />}<span>{label}</span>
+    </button>
+    {open && <button type="button" className="btn small ghost" onClick={() => keepFeature(id)}>{L('Keep this visible', 'להשאיר גלוי')}</button>}
+  </div>;
 }

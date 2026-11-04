@@ -2,7 +2,34 @@ import {expect,test} from 'vitest';
 import {seatOrder} from '../src/app/components/Hemicycle.tsx';
 import {blocDisplayOrder} from '../src/app/blocOrder.ts';
 import {activeReferenceOf} from '../src/app/useActiveReference.ts';
-import {arcLayout,annularRegions} from '../src/app/layout.ts';
+import {arcLayout,annularRegions,type SeatPos} from '../src/app/layout.ts';
+
+const inside=(pt:[number,number],poly:[number,number][])=>{let c=false;for(let i=0,j=poly.length-1;i<poly.length;j=i++){const [xi,yi]=poly[i],[xj,yj]=poly[j];if((yi>pt[1])!==(yj>pt[1])&&pt[0]<((xj-xi)*(pt[1]-yi))/(yj-yi)+xi)c=!c;}return c;};
+/** Every seat's whole disc (24 perimeter samples) lies inside its own region and outside every other region. */
+function regionContainmentErrors(seats:SeatPos[],bands:number[],rad:number){
+  const regions=annularRegions(seats,bands,rad), errors:string[]=[];
+  seats.forEach((p,i)=>{
+    for(let k=0;k<24;k++){
+      const a=(k*Math.PI)/12, pt:[number,number]=[500+(p.x+Math.cos(a)*rad)*400,470+(p.y+Math.sin(a)*rad)*400];
+      // only neighbouring regions can reach a seat; checking them keeps this fast
+      for(const region of regions.filter(r=>Math.abs(r.band-bands[i])<=1)){
+        const own=region.band===bands[i];
+        if(inside(pt,region.polygon)!==own){errors.push(`seat ${i} ${own?'outside its region':'inside region '+region.band}`);return;}
+      }
+    }
+  });
+  return errors;
+}
+
+test('regions enclose exactly their seats for every split of every chamber size',()=>{
+  for(const n of [1,2,7,61,100,120,151]){
+    const arc=arcLayout(n);
+    // two regions at every split point, plus many tiny regions and one region per seat for small chambers
+    for(let cut=0;cut<=n;cut+=Math.max(1,Math.floor(n/15))) expect(regionContainmentErrors(arc.seats,arc.seats.map((_,i)=>i<cut?0:1),arc.r)).toEqual([]);
+    expect(regionContainmentErrors(arc.seats,arc.seats.map((_,i)=>Math.floor(i/3)),arc.r)).toEqual([]);
+    expect(regionContainmentErrors(arc.seats,arc.seats.map((_,i)=>[0,1,2,3,4][Math.min(4,Math.floor(i*5/n))]),arc.r)).toEqual([]);
+  }
+},30000);
 import {changedSeatKeys} from '../src/app/graphics.ts';
 import {allocationOf} from '../src/app/derive.ts';
 import {graphicsCases,graphicScenario} from './graphics-cases.ts';
@@ -22,11 +49,7 @@ for(const c of [...Array.from({length:26},(_,i)=>({name:`k${i+1}`,n:i+1,actions:
     expect(bands).toEqual([...bands].sort((a,b)=>a-b));
     const arc=arcLayout(120), regions=annularRegions(arc.seats,bands,arc.r);
     expect(regions.every(region=>!/[a-z]/.test(region.fill))).toBe(true); // no disk subpaths
-    ordered.forEach((_,i)=>{
-      const p=arc.seats[i], radius=Math.hypot(p.x,p.y);
-      const region=regions.find(region=>region.band===bands[i])!;
-      expect(region.rows.some(row=>row && radius>=row.inner && radius<=row.outer && p.a>=row.from && p.a<=row.to)).toBe(true);
-    });
+    expect(regionContainmentErrors(arc.seats,bands,arc.r)).toEqual([]);
     const changes=changedSeatKeys(s,r,base,allocationOf(base));
     expect(changes.gained.size).toBe(changes.lost.size);
     if(c.name==='owner') {

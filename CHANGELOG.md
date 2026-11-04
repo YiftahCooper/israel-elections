@@ -1,5 +1,12 @@
 # Changelog
 
+## 4 November 2026 — overview graphics and colour audit
+
+- Separate party colours in every election (CIEDE2000; all pairs ≥15, neighbours ≥20; both themes), keeping well-known parties' colours, and separate bloc tints from each other and from No bloc.
+- Draw chamber regions with smooth boundaries that enclose exactly their seats; fix seat order along the baseline.
+- One consistent collapsed-feature toggle; chamber colour and layout choices sit together under Chamber options.
+- Blocs bar: show the reference only when it differs, state each bloc's majority once, keep the 61 marker off labels; export legend, Hebrew and dark mode corrected.
+
 ## 4 November 2026 — mark replacements once
 
 - Mark whole-part starting points, grouping changes and rules presets once at the part; later individual edits use the replacement as their checkpoint.
