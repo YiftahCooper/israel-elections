@@ -14,6 +14,7 @@
   },
   "author": "Israeli Elections Explorer research compilation",
   "publisher": "Israeli Elections Explorer",
+  "definitionHe": "מטרייה ארגונית רחבה: מסורות חרדיות ודתיות לאומיות נבחרות וכן רע״ם. כוללת ארגון דתי מוסלמי, ולא כל רשימה ערבית או יהודית. אינה מודדת שמירת מצוות אישית. רשימות משותפות נספרות פעם אחת.",
   "definition": "Broad organisational umbrella: selected Haredi and national religious traditions, plus Raam. Includes Muslim religious organisation, not every Arab or Jewish list. Does not measure personal observance. Shared lists count once.",
   "criteria": {
     "include": "Explicit non-pending matrix selections with cited historical context.",

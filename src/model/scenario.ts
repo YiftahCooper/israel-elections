@@ -1,3 +1,5 @@
+import { validFamily, type Family } from '../families/model.ts';
+import type { SourceChoice } from '../app/voteEdit.ts';
 // Editable simulation state. A Scenario is a full, self-contained copy of an election's inputs;
 // the historical dataset it was created from is never modified. Every displayed figure is derived
 // from a Scenario through the engine — no totals are stored separately.
@@ -99,6 +101,7 @@ export interface Scenario {
   blocSchemes?: BlocScheme[];
   blocSchemeId?: string | null;
   customGroupingName?: string;
+  familyDefinition?: Family;
   /** bloc of a constituent party, overriding its list's bloc for the seats its members hold */
   partyBlocs?: Record<string, string | null>;
   /** bloc of an individual candidate, overriding party and list */
@@ -112,6 +115,8 @@ export interface Scenario {
 
 // Actions are plain data so they can be logged, replayed, shared and undone.
 export type Action =
+  | { type: 'familyOperation'; definition: Family; operation: 'group'; name?: string; placements: Record<string, string> }
+  | { type: 'familyOperation'; definition: Family; operation: 'scale'; allocations: {listId:string; before:number; votes:number}[]; source: SourceChoice; target:number; registeredDelta:number }
   | { type: 'setIdentityColor'; color: string }
   | { type: 'setCoalition'; coalition: { in: string[]; out: string[] } }
   | { type: 'startPart'; part: Part; source: 'official' | 'saved' | 'blank' | 'preset'; snapshot?: PartSnapshot; name?: string; presetId?: string; listId?: string }
@@ -328,8 +333,9 @@ const strings = array(string);
 const blocScheme = shape({ id: string, kind: oneOf('government', 'parliamentary', 'pre-election'), nameHe: string, nameEn: string, date: optional(string),
   blocs: array(shape({ id: string, nameHe: string, nameEn: string, color: string, lists: strings, parties: strings, candidates: strings })) });
 const coalition = shape({ in: uniqueStrings, out: uniqueStrings });
-const partSnapshotCheck = shape({ validVotes: optional(whole), lists: optional(array(list)), registered: optional(whole), invalid: optional(whole), factionSplits: optional(uniqueStrings), blocs: optional(array(bloc)), blocSchemeId: optional(nullable(string)), customGroupingName: optional(string), partyBlocs: optional(stringMap(nullable(string))), candidateBlocs: optional(stringMap(nullable(string))), listBlocs: optional(stringMap(nullable(string))), agreements: optional(array(agreement)), rules: optional(rules), mode: optional(oneOf('historical', 'experimental')), coalition: optional(coalition) });
+const partSnapshotCheck = shape({ familyDefinition: optional(validFamily), validVotes: optional(whole), lists: optional(array(list)), registered: optional(whole), invalid: optional(whole), factionSplits: optional(uniqueStrings), blocs: optional(array(bloc)), blocSchemeId: optional(nullable(string)), customGroupingName: optional(string), partyBlocs: optional(stringMap(nullable(string))), candidateBlocs: optional(stringMap(nullable(string))), listBlocs: optional(stringMap(nullable(string))), agreements: optional(array(agreement)), rules: optional(rules), mode: optional(oneOf('historical', 'experimental')), coalition: optional(coalition) });
 const actionFields: Record<Action['type'], Check> = {
+  familyOperation: (x) => record(x) && validFamily(x.definition) && (x.operation === 'group' ? optional(string)(x.name) && record(x.placements) && Object.values(x.placements).every(v => ['selected','mixed','other'].includes(String(v))) : x.operation === 'scale' && array(shape({listId:string,before:whole,votes:whole}))(x.allocations) && signedWhole(x.registeredDelta) && whole(x.target) && shape({kind:oneOf('new','proportional','transfer'),listId:optional(string)})(x.source)),
   setIdentityColor: shape({ color: oneOf('#65508a', '#486b78', '#77633d', '#80556a', '#526c55') }),
   setCoalition: shape({ coalition }),
   startPart: shape({ part: oneOf('votes', 'identity', 'structure', 'agreements', 'blocs', 'coalitions', 'candidates', 'rules', 'totals'), source: oneOf('official', 'saved', 'blank', 'preset'), snapshot: optional(partSnapshotCheck), name: optional(string), presetId: optional(string), listId: optional(string) }),
@@ -373,6 +379,7 @@ export function validateScenario(x: unknown): string[] {
   if (![s.id, s.name, s.baseBuiltAt].every(string)) e.push('missing scenario identity or build timestamp');
   if (!optional(oneOf('#65508a', '#486b78', '#77633d', '#80556a', '#526c55'))(s.identityColor)) e.push('invalid scenario colour');
   if (!optional(coalition)(s.coalition)) e.push('invalid coalition choices');
+  if (!optional(validFamily)(s.familyDefinition)) e.push('invalid family definition');
   if (!optional(string)(s.customGroupingName)) e.push('invalid grouping name');
   if (!optional(string)(s.description)) e.push('invalid description');
   const electionKnown = ELECTION_IDS.includes(s.electionId as ElectionId);

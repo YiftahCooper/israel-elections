@@ -1,3 +1,4 @@
+import { FamilyGroupingLink } from './FamilyTreatment.tsx';
 import { StartFrom } from './StartFrom.tsx';
 // Blocs, edited where they are drawn: a panel beside the chamber with one tinted card per bloc. A bloc's name is
 // edited in place, its colour from a swatch, and its members are chips moved by dragging, or by choosing a chip
@@ -127,6 +128,7 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
         <button className="btn ghost icon-only" aria-label={L('Close', 'סגירה')} onClick={() => setState({ blocPanel: null })}><X className="icon" aria-hidden /></button>
       </header>
       <div className="sp-body">
+        <FamilyGroupingLink />
         <StartFrom s={s} part="blocs" />
         <p className="small">{groupingLabel(s, lang)} <EditMarker s={s} path={['customGroupingName']} /></p>
         {picked && (

@@ -1,5 +1,13 @@
 # Changelog
 
+## 4 November 2026 — party families
+
+- Add nine sourced draft family interpretations with date-based share/count charts, exact totals and mixed-list policies.
+- Add personal preset forks, hide/restore, browser-only storage, import/export and previewed registry relationship suggestions.
+- Add atomic undoable family grouping and proportional vote scaling with frozen definitions and exact integer conservation.
+- Keep one Haredi metadata source and validate all nine built-ins; add family model and bilingual/theme/viewport browser coverage.
+
+
 ## 4 November 2026 — election context and PM results
 
 - Add sourced, dated election circumstances in an expandable bilingual context layer,

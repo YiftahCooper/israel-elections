@@ -11,10 +11,10 @@ export const PARTS = {
   totals: { en: 'Turnout and totals', he: 'הצבעה וסיכומים', blank: false },
 } as const;
 export type Part = keyof typeof PARTS;
-export type PartSnapshot = Partial<Pick<Scenario, 'blocs' | 'blocSchemeId' | 'customGroupingName' | 'partyBlocs' | 'candidateBlocs' | 'agreements' | 'rules' | 'mode' | 'coalition' | 'lists' | 'registered' | 'invalid' | 'factionSplits'>> & { validVotes?: number; listBlocs?: Record<string, string | null> };
+export type PartSnapshot = Partial<Pick<Scenario, 'familyDefinition' | 'blocs' | 'blocSchemeId' | 'customGroupingName' | 'partyBlocs' | 'candidateBlocs' | 'agreements' | 'rules' | 'mode' | 'coalition' | 'lists' | 'registered' | 'invalid' | 'factionSplits'>> & { validVotes?: number; listBlocs?: Record<string, string | null> };
 export function partSnapshot(s: Scenario, part: Part): PartSnapshot {
   switch (part) {
-    case 'blocs': return { blocs: s.blocs, blocSchemeId: s.blocSchemeId, customGroupingName: s.customGroupingName, partyBlocs: s.partyBlocs ?? {}, candidateBlocs: s.candidateBlocs ?? {}, listBlocs: Object.fromEntries(s.lists.map(l => [l.id, l.bloc])) };
+    case 'blocs': return { familyDefinition:s.familyDefinition, blocs: s.blocs, blocSchemeId: s.blocSchemeId, customGroupingName: s.customGroupingName, partyBlocs: s.partyBlocs ?? {}, candidateBlocs: s.candidateBlocs ?? {}, listBlocs: Object.fromEntries(s.lists.map(l => [l.id, l.bloc])) };
     case 'agreements': return { agreements: s.agreements };
     case 'rules': return { rules: s.rules, mode: s.mode };
     case 'coalitions': return { coalition: s.coalition ?? { in: [], out: [] } };

@@ -3620,5 +3620,6 @@
     "k26 inherits final-count-pending-publication status from the local dataset; no fresh independent certification of the 2026 count.",
     "Existing constituent ids are preserved even where roster completeness is uncertain. Proposed singleton ids do not yet exist in public datasets.",
     "proposedPartyIds means ids requiring a list appearance mapping, including existing canonical ids missing from this singleton list; it does not mean every id is new to the project."
-  ]
+  ],
+  "definitionHe": "שושלות ארגוניות חרדיות: אגודת ישראל, פועלי אגודת ישראל, דגל התורה, ש״ס ורשימות קשורות מתועדות. נספרים פתקים לרשימות נבחרות, לא דתם של המצביעים. בריתות מעורבות מוצגות בנפרד."
 }

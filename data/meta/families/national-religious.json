@@ -14,6 +14,7 @@
   },
   "author": "Israeli Elections Explorer research compilation",
   "publisher": "Israeli Elections Explorer",
+  "definitionHe": "המסורת המוסדית הדתית הלאומית. פרשנות מערכתית לפי סעיף 2 בהצעת המחקר; תיתכן חפיפה למשפחות אחרות. אין הסקה על זהות המצביעים.",
   "definition": "National religious institutional tradition. Editorial interpretation under proposal §2; overlap with other presets is allowed. No inference about voters.",
   "criteria": {
     "include": "Explicit non-pending matrix selections with cited historical context.",

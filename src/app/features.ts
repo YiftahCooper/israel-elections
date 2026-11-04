@@ -2,6 +2,7 @@ export type Preset = 'simple' | 'standard' | 'expert';
 export type Visibility = 'show' | 'collapsed' | 'hidden';
 export const TOOL_FEATURES = [
   ['board', 'Explore', 'Overview', 'תמונת מצב', 'simple'],
+  ['families', 'Explore', 'Party families', 'משפחות מפלגות', 'simple'],
   ['scenarios', 'Explore', 'Scenarios', 'תרחישים', 'simple'],
   ['whatif', 'Explore', 'What if…', 'מה אם…', 'simple'],
   ['coal', 'Explore', 'Coalitions', 'קואליציות', 'simple'],
@@ -17,6 +18,9 @@ export const TOOL_FEATURES = [
   ['sources', 'Explore', 'Sources', 'מקורות', 'simple'],
 ] as const;
 export const FEATURES = [...TOOL_FEATURES,
+  ['familyEdit', 'Edit', 'Family definitions and presets', 'הגדרות משפחות ותבניות', 'standard'],
+  ['familyScale', 'Edit', 'Scale family votes', 'שינוי קולות למשפחה', 'standard'],
+  ['familyGrouping', 'Edit', 'Apply family grouping', 'קיבוץ לפי משפחה', 'standard'],
   ['splitIdentity', 'Edit', 'Split list identity', 'זהות הרשימה בפיצול', 'standard'],
   ['voteStart', 'Edit', 'Vote starting point', 'נקודת מוצא לקולות', 'standard'],
   ['chamberOptions', 'Explore', 'Chamber options', 'אפשרויות המליאה', 'expert'],
@@ -40,6 +44,10 @@ export const TRUTH_LABELS = ['editMarkers', 'scenarioChip', 'searchQualifiers', 
 
 /** Short previews for the visibility cards, in the same order as their bilingual labels. */
 export const FEATURE_PREVIEWS: Record<FeatureId, readonly [string, string]> = {
+  families: ['Votes across elections, with sourced membership', 'קולות לאורך הבחירות עם חברות מנומקת'],
+  familyEdit: ['Select lists, link partners and save a personal preset', 'בחירת רשימות, קישור שותפים ושמירת תבנית אישית'],
+  familyScale: ['Proportional vote changes in one election', 'שינוי יחסי בקולות בבחירות אחת'],
+  familyGrouping: ['Family, mixed lists and everyone else', 'משפחה, רשימות מעורבות וכל השאר'],
   board: ['Seats, lists and blocs', 'מנדטים, רשימות וגושים'],
   scenarios: ['Save and reuse your experiments', 'שמירה ושימוש חוזר בתרחישים'],
   whatif: ['Try a change and see who gains', 'שינוי קולות ובדיקת הנהנים'],

@@ -476,3 +476,8 @@ Custom has no selected Overview tab. About is a compact disclosure beside the el
 picker; its expanded history stays there, and pending gazette status appears once when closed.
 Chamber labels use measured font widths, physical SVG anchors and bounded side rails;
 phones retain the full list legend. Changes retain neutral tokens and logical spacing.
+
+
+## Party families
+
+The [family profile design](docs/design/party-families.md) uses separate dated vote-share and absolute-count charts, shared scales and cursor, an exact table and a separate hatched mixed-list segment. Family interpretations retain a quiet sourced-draft label. Personal edits fork definitions; scenario grouping and scaling freeze them in atomic undoable actions. Pale list regions use neutral ink and patterns, and phones stack the charts.

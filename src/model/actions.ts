@@ -1,3 +1,4 @@
+import { resolve, distribute } from '../families/model.ts';
 import { RULESETS } from "../engine/rules.ts";
 import { PARTS, partSnapshot } from './parts.ts';
 // Pure scenario transitions. Each returns a new Scenario and never mutates its input.
@@ -96,6 +97,36 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
   let s: Scenario = s0;
   const baseList = (id: string) => ctx.base?.lists.find((l) => l.id === id) ?? null;
   switch (action.type) {
+    case 'familyOperation': {
+      need(validAction(action), 'family', 'Invalid family operation.');
+      const definition = structuredClone(action.definition);
+      if (action.operation === 'group') {
+        need(resolve(definition,s).every(l => action.placements[l.id] === l.family), 'family', 'Grouping does not cover every list.');
+        s = {...s, familyDefinition:definition, blocSchemeId:null, customGroupingName:action.name??definition.nameHe, partyBlocs:{}, candidateBlocs:{},
+          blocs:[{id:'selected',nameHe:definition.nameHe,nameEn:definition.nameEn,color:'#526779'},{id:'mixed',nameHe:'רשימות מעורבות',nameEn:'Mixed lists',color:'#8b8194'},{id:'other',nameHe:'כל השאר',nameEn:'Everyone else',color:'#7d8791'}],
+          lists:s.lists.map(l=>({...l,bloc:action.placements[l.id]}))};
+      } else {
+        const ids = action.allocations.map(a=>a.listId);
+        need(new Set(ids).size===ids.length, 'family','Duplicate allocations.');
+        for(const a of action.allocations) { const l=listById(s,a.listId); need(!l.withdrawn && l.votes===a.before,'family','Family vote preview is stale.'); }
+        const resolved=resolve(definition,s), members=resolved.filter(l=>l.family==='selected'&&!l.withdrawn);
+        const donors=resolved.filter(l=>l.family!=='selected'&&!l.withdrawn&&(action.source.kind!=='transfer'||l.id===action.source.listId));
+        const expectedMembers=distribute(BigInt(action.target),members.map(l=>BigInt(l.votes)));
+        const memberBefore=sumVotes(members.map(l=>l.votes)), delta=action.target-memberBefore;
+        need(members.length>0 && ids.length===members.length+(action.source.kind==='new'?0:donors.length),'family','Incomplete family allocations.');
+        members.forEach((l,i)=>need(action.allocations.find(a=>a.listId===l.id)?.votes===expectedMembers[i],'family','Family allocation is not proportional.'));
+        if(action.source.kind!=='new') {
+          const donorTarget=sumVotes(donors.map(l=>l.votes))-delta;
+          need(donorTarget>=0,'family','Insufficient donor votes.');
+          const shares=distribute(BigInt(donorTarget),donors.map(l=>BigInt(l.votes)));
+          donors.forEach((l,i)=>need(action.allocations.find(a=>a.listId===l.id)?.votes===shares[i],'family','Donor allocation is not proportional.'));
+        }
+        const before=sumVotes(action.allocations.map(a=>a.before)), after=sumVotes(action.allocations.map(a=>a.votes));
+        need(after-before===action.registeredDelta && (action.source.kind==='new' || action.registeredDelta===0),'family','Votes must balance.');
+        s={...s,familyDefinition:definition,registered:s.registered+action.registeredDelta,lists:s.lists.map(l=>({...l,votes:action.allocations.find(a=>a.listId===l.id)?.votes??l.votes}))};
+      }
+      break;
+    }
     case 'setIdentityColor':
       need(/^#[0-9a-f]{6}$/i.test(action.color) && ['#65508a', '#486b78', '#77633d', '#80556a', '#526c55'].includes(action.color), 'colour', 'Choose a scenario palette colour.');
       s = { ...s, identityColor: action.color }; break;
@@ -130,7 +161,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       need(snapshot, 'part', 'This part editor is not available yet.');
       if (action.part === 'blocs') {
         need(snapshot!.blocs, 'part', 'Grouping inputs are required.');
-        s = { ...s, blocs: snapshot!.blocs!, blocSchemeId: snapshot!.blocSchemeId ?? null, customGroupingName: snapshot!.customGroupingName, partyBlocs: snapshot!.partyBlocs ?? {}, candidateBlocs: snapshot!.candidateBlocs ?? {}, lists: s.lists.map(l => ({ ...l, bloc: snapshot!.listBlocs?.[l.id] ?? null })) };
+        s = { ...s, familyDefinition:snapshot!.familyDefinition, blocs: snapshot!.blocs!, blocSchemeId: snapshot!.blocSchemeId ?? null, customGroupingName: snapshot!.customGroupingName, partyBlocs: snapshot!.partyBlocs ?? {}, candidateBlocs: snapshot!.candidateBlocs ?? {}, lists: s.lists.map(l => ({ ...l, bloc: snapshot!.listBlocs?.[l.id] ?? null })) };
       } else if (action.part === 'agreements') {
         const ids = new Set(s.lists.map(l => l.id));
         need(snapshot!.agreements?.every(a => a.members.every(id => ids.has(id))), 'lists', 'Agreement lists do not exist in this scenario.');

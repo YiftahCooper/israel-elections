@@ -35,6 +35,7 @@ const Figures = memo(FiguresView);
 // other tab panel is a separate chunk, fetched once the page is idle (or when its tab is pointed at),
 // so the first render does not wait for code most visits never open.
 const loaders = {
+  families: () => import('./components/Families.tsx'),
   seats: () => import('./components/SeatSecurity.tsx'),
   panels: () => import('./components/Panels.tsx'),
   compare: () => import('./components/Compare.tsx'),
@@ -57,6 +58,7 @@ function lazyPanel<M extends Record<K, (props: any) => ReactNode>, K extends key
   };
   return Object.assign(Panel, { preload });
 }
+const Families = lazyPanel(loaders.families, 'Families');
 const Coalitions = lazyPanel(loaders.seats, 'Coalitions');
 const SeatSecurity = lazyPanel(loaders.seats, 'SeatSecurity');
 const Compare = lazyPanel(loaders.compare, 'Compare');
@@ -68,7 +70,7 @@ const Rules = lazyPanel(loaders.panels, 'Rules');
 const Localities = lazyPanel(loaders.panels, 'Localities');
 const Sources = lazyPanel(loaders.panels, 'Sources');
 const TAB_PANEL: Partial<Record<Tab, { preload: () => Promise<void> }>> = {
-  coal: Coalitions, security: SeatSecurity, compare: Compare, charts: Charts, structure: Structure,
+  families: Families, coal: Coalitions, security: SeatSecurity, compare: Compare, charts: Charts, structure: Structure,
   turnout: Turnout, sens: Sensitivity, rules: Rules, loc: Localities, sources: Sources,
 };
 /** Starts fetching a tab's code ahead of its first use (a no-op once loaded). */
@@ -157,6 +159,7 @@ function Shell() {
   const baseR = allocationOf(base);
   const issues = scenarioIssues(s, r);
   const label: Record<Tab, string> = {
+    families: L('Party families', 'משפחות מפלגות'),
     board: L('Overview', 'תמונת מצב'),
     scenarios: L('Scenarios', 'תרחישים'),
     whatif: L('What if…', 'מה אילו…'),
@@ -238,6 +241,7 @@ function Shell() {
             <header><h2>{label[tool]}</h2></header>
             <div className="body" role="tabpanel" id="analysis-panel" aria-labelledby={`tab-${tool}`}>
               {<Feature id={tool}><ErrorBoundary label={label[tool]} resetKey={`${tool}|${committed.id}|${committed.log.length}`}><Suspense fallback={<p className="muted" role="status">{L('Loading…', 'טוען…')}</p>}>
+                {tool === 'families' && <Families s={committed} />}
                 {tool === 'scenarios' && <Scenarios s={committed} ds={ds} />}
                 {tool === 'whatif' && <WhatIf ds={ds} />}
                 {tool === 'coal' && <Coalitions s={committed} r={cr} />}

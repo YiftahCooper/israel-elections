@@ -1,3 +1,5 @@
+import { FamilyListTreatment } from './FamilyTreatment.tsx';
+import { resolve } from '../../families/model.ts';
 import { referenceLabel } from '../derive.ts';
 import { allocationOf } from '../derive.ts';
 import { PartEdits } from './PartEdits.tsx';
@@ -42,6 +44,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   // one scale for every bar: the largest list now or in the official result
   const scale = Math.max(1, ...rows.map((x) => Math.max(x.lr.seats, x.was ?? 0)));
 
+  const familyRows = s.familyDefinition ? resolve(s.familyDefinition, s) : [];
   const row = ({ l, lr, was }: (typeof rows)[number]) => {
     const open = selected === l.id;
     const d = was === null ? 0 : lr.seats - was;
@@ -50,7 +53,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
     const out = lr.seats === 0;
     return (
       <li key={l.id}>
-        <button type="button" ref={open ? selRef : undefined} className={`lb-row ${out ? 'out' : ''} ${selected && !open ? 'dim' : ''}`} aria-pressed={open}
+        <button type="button" data-family={familyRows.find(x => x.id === l.id)?.family} ref={open ? selRef : undefined} className={`lb-row ${out ? 'out' : ''} ${selected && !open ? 'dim' : ''}`} aria-pressed={open}
           aria-label={listLabel(l, lang)} aria-describedby={`lbd-${l.id}`}
           onClick={() => setState({ selectedListId: open ? null : l.id })}
           title={l.logo ? l.nameHe : `${l.nameHe} — ${L('ballot letters (no logo is sourced for this election yet)', 'אותיות הפתק (טרם נמצא סמל ממקור לבחירות אלה)')}`}>
@@ -96,6 +99,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
 
   return (
     <section className="panel lbars" aria-label={L('Lists', 'הרשימות')}>
+      <FamilyListTreatment s={s} />
       <header><h2>{L('Lists', 'הרשימות')}</h2><span className="spacer" /><span className="small muted">{L('seats', 'מנדטים')}</span></header>
       {groups.map(g => <p key={g.key} className="lb-group-comparison small ink2">{L(`Ran separately: together ${g.seatsB}, ${baseLabel.at} ${g.seatsA} as `, `רצו בנפרד: יחד ${g.seatsB}, ${baseLabel.at} ${g.seatsA} בתור `)}{g.aIds.map(id => listLabel(base.lists.find(l => l.id === id)!, lang)).join(' + ')}</p>)}
       <ol className="lb">
