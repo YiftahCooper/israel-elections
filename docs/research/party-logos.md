@@ -1057,3 +1057,40 @@ as a result; the other four differential families passed unchanged. Locked depen
 installed with npm ci; source/artwork preserved, temporary downloads and local renders
 under `.backup-scratch/logo-all/`. Local Chromium needed sandbox escalation to launch
 (`sandbox_host_linux.cc:41`, Operation not permitted); no external page was automated.
+
+### Batch 2: k24 Labor and Yisrael Beiteinu
+
+Accepted **two additional fair-use identification whole-list logos** with high
+confidence and separate campaign-period CDX byte proofs:
+
+| Identity | Inspected official page UTC | Exact original UTC | Computed base32 SHA-1 |
+|---|---|---|---|
+| k24 אמת Labor | 20210317095134 | 20210201193153 | `5ET572XWZDN7XG2ZQ5SOV3VAP2VYG2D3` |
+| k24 ל Yisrael Beiteinu | 20210317203513 | 20210317203517 | `NVZH2RFPWK4PUJSIOSJVTXJQ5D5SPS7I` |
+
+The page, asset and CDX URLs are recorded verbatim in the corresponding overlay,
+source card and raw manifest. Labor's header is navy lettering with a red wheat
+symbol; Yisrael Beiteinu's is a blue roof-like line above ישראל ביתנו and its
+Avigdor Lieberman subline. Both original PNGs are retained, with proportional
+256-pixel PNG derivatives. Regenerate using Chromium headless shell **1248**
+(locked Playwright), load the retained PNG locally, canvas drawImage at rounded
+proportional dimensions bounded by 256 and toDataURL('image/png'). No recolouring
+or cropping. Labor's HTML arrived gzip encoded and was decoded before retention;
+its manifest hashes the retained decoded HTML. Same official-site evidence family
+per party/year; CDX establishes byte identity, not independent historical testimony.
+
+Supplementary k21 Labor evidence was also acquired: official page 20190327095556
+and original 20190326074701, with the same independently recorded campaign digest
+`5ET572XWZDN7XG2ZQ5SOV3VAP2VYG2D3`. **K21 was already covered** by the free-licence
+Commons asset. Its existing asset, credit and rights are preserved. The extra
+primary evidence is retained as an unselected source card, not a new displayed
+logo and not an additional coverage claim. During preparation a temporary replacement
+left the existing public asset unreferenced; the validator caught this, and the
+existing overlay was restored before committing. No free-licence entry was converted
+to fair use.
+
+Batch 1 verification: 57 Vitest files / 484 tests passed, TypeScript passed,
+production Vite build passed. Batch 2 verification uses the same commands and
+records only the intended logo/builtAt model-digest change; every dataset's other
+fields compare equal to the previous commit. The supplemental k21 manifest does
+not change results or credit. No constituents were added in either batch.

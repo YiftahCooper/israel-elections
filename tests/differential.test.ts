@@ -43,7 +43,8 @@ const EXPECTED: Record<Family, string> = {
   // datasets reproduces bf90d94a..., and the other four digests are unchanged.
   // Likud k20–k25 logos only: all 26 datasets equal to HEAD after omitting logo and builtAt.
   // Labor k25 header logo only; all 26 datasets equal HEAD after omitting logo and builtAt.
-  model: '4d23e7afd86fa7bacc53a4d584c39e53d6f7bf30ce9a35387e5841a90302e23f',
+  // Labor and Yisrael Beiteinu k24 logos; only logo and builtAt change in all 26 datasets.
+  model: 'd511932120fca112f41cfee620fc138d48c7b188d76074558c20fe487b1b4589',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };
