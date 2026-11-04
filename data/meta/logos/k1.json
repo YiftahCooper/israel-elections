@@ -17,6 +17,23 @@
       "originalSha256": "e899220d0d7a5bacb0270fca9533996a58ffc182b7f2688254df7764347e5c57",
       "rights": "free-licence",
       "bytes": 4533
+    },
+    {
+      "letters": "טו",
+      "file": "logos/fighters-list-1949.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:FightersList.png",
+      "licence": "Public domain",
+      "attribution": "National Library of Israel; Commons File:FightersList.png (Rh0809). PD-textlogo on the file description. Resized with Pillow 12.2.0.",
+      "hosted": true,
+      "inUseEvidence": "Commons caption identifies the Fighters List Party Logo (1949); description explicitly identifies the first Israeli election and credits NLI item NNL_Ephemera700129128. The 2020 date is the digital reproduction, not campaign use. Upstream NLI scan remains inaccessible; campaign assignment is community evidence, medium confidence, not independent inspection of the dated original.",
+      "confidence": "medium",
+      "evidenceId": "run2-commons-fighters-1949",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cd/FightersList.png",
+      "status": "verified",
+      "originalSha256": "3ee6a0d57ef06ad5e3ba8cd74e5ff310a58c6f9f818d704ac4d6de5c0ed22d31",
+      "sha256": "d28ae5b58656adef1996dacf93c731474238bf8a4ed488afc47084d03b3f8755",
+      "rights": "free-licence",
+      "bytes": 19686
     }
   ]
 }

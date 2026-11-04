@@ -45,7 +45,8 @@ const EXPECTED: Record<Family, string> = {
   // Labor k25 header logo only; all 26 datasets equal HEAD after omitting logo and builtAt.
   // Labor and Yisrael Beiteinu k24 logos; only logo and builtAt change in all 26 datasets.
   // Yisrael Beiteinu k21–k23 logos; all other dataset fields verified equal to HEAD.
-  model: 'f0db2028cfd9bc17d6473b9870e42a2ce7f416ff213e4c75360c4aded1a1981e',
+  // Fighters List k1 logo only: all 26 datasets equal HEAD after omitting logo and builtAt.
+  model: 'df84cef4764706b585fff6bf12e176e53749b6d2a3aeaa11ae4a8c5d946edd31',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

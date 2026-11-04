@@ -4178,5 +4178,29 @@
     "retrievedAt": "2026-11-04",
     "bytes": 194,
     "sha256": "d0db9841a975c5b88139146e5043ec2387f987b1c0fdadd964b66baeb5068499"
+  },
+  {
+    "id": "run2-fighters-original",
+    "file": "logos/k1/fighters-list-original.png",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/FightersList.png",
+    "publisher": "Wikimedia Commons contributors; original credited to National Library of Israel",
+    "official": false,
+    "description": "Retained downloaded Commons original; caption dates design to 1949; upstream NLI inaccessible.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 16009,
+    "sha256": "3ee6a0d57ef06ad5e3ba8cd74e5ff310a58c6f9f818d704ac4d6de5c0ed22d31"
+  },
+  {
+    "id": "run2-fighters-description",
+    "file": "logos/k1/fighters-commons.html",
+    "url": "https://commons.wikimedia.org/w/index.php?title=File:FightersList.png&oldid=1290629743",
+    "publisher": "Wikimedia Commons contributors; original credited to National Library of Israel",
+    "official": false,
+    "description": "Pinned Commons file description; provenance and file-specific licence.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 89256,
+    "sha256": "a9b2da54d6113ff6d66178ca8b826654c145909b33190b8d0298ddeac0b2c271"
   }
 ]
