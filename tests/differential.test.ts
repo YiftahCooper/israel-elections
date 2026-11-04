@@ -55,7 +55,9 @@ const EXPECTED: Record<Family, string> = {
   // Likud 1984 print logo (run 3); all 26 datasets equal HEAD after omitting logo and builtAt.
   // Quota/retrieval retry pass: no qualifying additions; all 26 datasets exactly equal HEAD.
   // Keep the model digest unchanged, including logo fields and build timestamps.
-  model: '8c728ca684b7eda2173733bda319bde50fcb37c9b52d8e0434940f707b205a26',
+  // Party- and bloc-colour separation (decision 0087 revised 2026-11-04): only list colours, bloc-scheme colours and
+  // builtAt differ from HEAD in the 26 datasets (141 list colours, 48 bloc colours); every other field verified equal.
+  model: 'ceee1199377005b2cb452c1d472964d16f02f8e0102fbc66053a08e476beef4f',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

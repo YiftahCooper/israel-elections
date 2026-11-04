@@ -1,7 +1,6 @@
 import { blocDisplayOrder } from '../blocOrder.ts';
 import { useGraphicReference } from '../useGraphicReference.ts';
 import { EditMarker } from './EditMarker.tsx';
-import { BlocMajorities } from './Majority.tsx';
 // Blocs (decision 0087): the election's sourced groupings (the first government, recognised blocs) and
 // the user's own. Seats count per seat: a constituent party of a joint list can sit in another bloc
 // than its list. Moving parties between blocs never changes votes or seats. A bloc opens its editor
@@ -10,7 +9,7 @@ import { useMemo } from 'react';
 import { Pencil } from 'lucide-react';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
-import { blocPieces, groupingBaseline, allocationOf, referenceLabel } from '../derive.ts';
+import { blocPieces, groupingBaseline, allocationOf, referenceLabel, groupingLabel, majorityText } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { setState, useStore } from '../store.ts';
 import { Info } from './ui.tsx';
@@ -36,6 +35,13 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
     .map((g) => ({ ...g, pieces: pieces.filter((p) => p.bloc === g.id) }))
     .map((g) => ({ ...g, n: g.pieces.reduce((t, p) => t + p.n, 0) }))
     .filter((g) => g.n > 0);
+  // the reference outline is drawn only when some bloc's seats differ from it: an outline equal to the bar is noise
+  const referenceBlocs = grouped ? [...s.blocs.map(b => ({ id: b.id as string | null, label: name(b) })), { id: null, label: L('No bloc', 'ללא גוש') }]
+    .sort((a, b) => blocDisplayOrder(s).indexOf(a.id) - blocDisplayOrder(s).indexOf(b.id))
+    .map(b => ({ ...b, n: before.filter(p => p.bloc === b.id).reduce((t, p) => t + p.n, 0) })) : [];
+  const changed = referenceBlocs.some(b => b.n !== (groups.find(g => g.id === b.id)?.n ?? 0));
+  // the majority consequence is said once, on the bloc itself (with a sourced grouping's name and date above the bar)
+  const consequence = (n: number) => majorityText(n, total, lang).split(' · ')[1];
   const schemes = s.blocSchemes ?? [];
   const scheme = schemes.find((x) => x.id === s.blocSchemeId);
   const custom = s.blocSchemeId === null;
@@ -51,29 +57,26 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
         <button className="btn small" aria-expanded={!!panel} onClick={() => (panel ? setState({ blocPanel: null }) : openPanel(groups[0]?.key ?? NONE))}>
           <Pencil className="icon sm" aria-hidden />{s.blocs.length ? L('Edit blocs', 'עריכת גושים') : L('Group seats into blocs', 'חלוקת המושבים לגושים')}</button>
       </div>
-      <BlocMajorities s={s} r={r} />
-      {grouped && <p className="small muted" style={{margin:'4px 0'}}>{L('Dashed outline: ', 'מתאר מקווקו: ')}{referenceLabel(labelReference,lang).name}</p>}
-      {grouped && <div className="bloc-reference" aria-label={referenceLabel(labelReference, lang).name}>
-        {[...s.blocs.map(b => ({id:b.id as string|null,label:name(b)})),{id:null,label:L('No bloc','ללא גוש')}].sort((a,b)=>blocDisplayOrder(s).indexOf(a.id)-blocDisplayOrder(s).indexOf(b.id)).map(b => {
-          const n = before.filter(p => p.bloc === b.id).reduce((t,p) => t+p.n,0);
-          return n > 0 && <span key={b.id ?? NONE} style={{width:`${n/total*100}%`}} title={`${b.label} ${n}`} />;
-        })}
+      <div className="majority-context small"><span className="muted">{groupingLabel(s, lang)}</span></div>
+      {changed && <p className="small muted" style={{margin:'4px 0'}}>{L('Dashed outline: ', 'מתאר מקווקו: ')}{referenceLabel(labelReference,lang).name}</p>}
+      {changed && <div className="bloc-reference" aria-label={referenceLabel(labelReference, lang).name}>
+        {referenceBlocs.map(b => b.n > 0 && <span key={b.id ?? NONE} style={{width:`${b.n/total*100}%`}} title={`${b.label} ${b.n}`} />)}
       </div>}
       <div className="strip" role="group" aria-label={groups.map((g) => `${g.label} ${g.n}`).join(', ')}>
         {groups.map((g) => (
           <button key={g.key} type="button" className={`corridor ${g.id === null ? "no-bloc" : ""}`} style={{ flexGrow: g.n, flexBasis: 0, ['--bc' as string]: g.color }}
-            aria-pressed={panel === g.key} title={L(`${g.label}: ${g.n}. Edit this bloc`, `${g.label}: ${g.n}. עריכת הגוש`)} onClick={() => openPanel(g.key)}>
+            aria-pressed={panel === g.key} title={L(`${g.label}: ${g.n}${g.id !== null ? ` (${consequence(g.n)})` : ''}. Edit this bloc`, `${g.label}: ${g.n}${g.id !== null ? ` (${consequence(g.n)})` : ''}. עריכת הגוש`)} onClick={() => openPanel(g.key)}>
             <span className="pieces" aria-hidden>
               {g.pieces.map((p, i) => <i key={i} className={selected && selected !== p.listId ? 'dim' : ''} style={{ flexGrow: p.n, background: s.lists.find(l=>l.id===p.listId)?.color ?? p.color }} />)}
             </span>
-            <span className="label"><span className="clip">{g.label}</span> <b>{g.n}</b>{g.n >= majority && <span className="sr-only">{L(' (majority)', ' (רוב)')}</span>}</span>
+            <span className="label"><span className="clip">{g.label}</span> <b>{g.n}</b>{g.id !== null && <span className="consequence">{consequence(g.n)}</span>}{g.n >= majority && <span className="sr-only">{L(' (majority)', ' (רוב)')}</span>}</span>
           </button>
         ))}
         <span className="milestone" aria-hidden style={{ left: `${(majority / total) * 100}%` }}><span>{majority}</span></span>
       </div>
       {/* on narrow screens the bands are too short for their names: they are listed in full beneath */}
       <div className="strip-legend" aria-hidden>
-        {groups.map((g) => <span key={g.key}><span className="swatch" style={{ background: g.color }} />{g.label} <b>{g.n}</b></span>)}
+        {groups.map((g) => <span key={g.key}><span className="swatch" style={{ background: g.color }} />{g.label} <b>{g.n}</b>{g.id !== null && <span className="consequence">{consequence(g.n)}</span>}</span>)}
       </div>
     </section>
   );

@@ -113,9 +113,17 @@ Today the app treats each list as indivisible:
 - Each list or party takes the colour it was officially or commonly associated with in that
   election, from sourced research in `data/meta/`. The canonical cross-election colour is the
   fallback.
-- **Distinguishability:** the existing check (CIE ΔE above 20 between seat-order neighbours)
-  still applies. When two associated colours collide, the colour of the less-associated party
-  is shifted in lightness only, and the dataset notes "adjusted for contrast".
+- **Distinguishability** (revised 2026-11-04): measured in CIEDE2000 (`src/data/colour.ts`).
+  Every pair of seat-winning lists is at least 15 apart, and lists that sit next to each other
+  (dataset order, chamber order of the default grouping, list column) at least 20. Seat colours
+  keep lightness L* 25–80 so they read on both themes. Colours are settled in order of votes, so
+  the better-known party keeps its associated colour; a lesser one moves by the smallest change
+  in lightness, chroma or hue (hue at most 24°) that clears every pair, and the app's canonical
+  colour is used only when no small move works. The earlier lightness-only rule could not
+  separate same-hue pairs without washing them out.
+- **Bloc tints:** a grouping's pale region tints (as drawn on either theme) are at least
+  CIEDE2000 8 apart from each other and from the No-bloc tint; grey bloc colours that would read
+  as No bloc are moved off grey. Checked for every scheme in `tests/party-colours.test.ts`.
 - **Editing:** users can edit colours (Expert identity editing, and bloc colours in Standard).
 
 ### 7. What each level shows

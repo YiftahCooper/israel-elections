@@ -54,7 +54,7 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
   const signed = (n: number) => <bdi dir="ltr">{n >= 0 ? '+' : '−'}{fmtInt(Math.abs(n))}</bdi>;
 
   return (
-    <div className="figures">{standardControl}{expertControl}
+    <div className="figures">
       {noThreshold
         ? <Fig id="threshold" open={open} onToggle={toggle} k={L('Threshold', 'אחוז החסימה')} v={L('None', 'אין')} d={L('no percentage threshold in this election', 'לא היה אחוז חסימה בבחירות אלה')} />
         : <Fig id="threshold" open={open} onToggle={toggle} k={L('Threshold', 'אחוז החסימה')} term="threshold" v={fmtInt(r.thresholdVotes)} d={`${thrPct}% ${L('of valid votes', 'מהכשרים')}`}>
@@ -78,7 +78,7 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
           : <p className="small muted" style={{ margin: 0 }}>{L('Every list that ran won a seat.', 'כל הרשימות זכו במנדט.')}</p>}
       </Fig>
 
-      <Fig id="turnout" open={open} onToggle={toggle} k={L('Turnout', 'שיעור ההצבעה')} term="turnout" v={fmtPct(cast, s.registered, 2)} d={`${referenceLabel(null, lang).name} ${fmtPct(ds.totals.votesCast, ds.totals.registered, 2)}`}>
+      <Fig id="turnout" open={open} onToggle={toggle} k={L('Turnout', 'שיעור ההצבעה')} term="turnout" v={fmtPct(cast, s.registered, 2)} d={fmtPct(cast, s.registered, 2) === fmtPct(ds.totals.votesCast, ds.totals.registered, 2) ? `${fmtInt(cast)} ${L('ballots cast', 'מצביעים')}` : `${referenceLabel(null, lang).name} ${fmtPct(ds.totals.votesCast, ds.totals.registered, 2)}`}>
         <div className="row">
           <label className="row small">{L('Set turnout to', 'קביעת שיעור ההצבעה ל-')}
             <DecimalInput value={s.registered ? (cast / s.registered) * 100 : 0} digits={2} width={86} label={L('Turnout %', 'שיעור הצבעה %')} onCommit={(p) => dispatch({ type: 'setTurnout', pct: p })} />%</label>
@@ -103,6 +103,7 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
           <button className="btn small" onClick={() => setState({ tool: 'walk' })}>{L('Step through the allocation', 'מעבר צעד אחר צעד על החלוקה')}</button>
         </Fig>
       )}
+      {(standardControl || expertControl) && <div className="figures-more">{standardControl}{expertControl}</div>}
     </div>
   );
 }

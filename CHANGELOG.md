@@ -30,6 +30,12 @@
 - Sensitivity: a sweep keeps the range it was run for; long searches can be cancelled; reversed or empty threshold ranges are refused.
 - A merged list keeps its first list's colour; seat transitions ("27 → 25") read correctly in Hebrew; source descriptions are no longer scrambled on the Hebrew Sources page.
 - State shown as state: the bloc filling a coalition, the loaded smallest coalition and the threshold preset in force are highlighted; repeated "unchanged"/"off"/"active" labels removed; What if… answers drawn as coloured chips and wording fits elections with turnout above 80% or a 2% law.
+## 4 November 2026 — overview graphics and colour audit
+
+- Separate party colours in every election (CIEDE2000; all pairs ≥15, neighbours ≥20; both themes), keeping well-known parties' colours, and separate bloc tints from each other and from No bloc.
+- Draw chamber regions with smooth boundaries that enclose exactly their seats; fix seat order along the baseline.
+- One consistent collapsed-feature toggle; chamber colour and layout choices sit together under Chamber options.
+- Blocs bar: show the reference only when it differs, state each bloc's majority once, keep the 61 marker off labels; export legend, Hebrew and dark mode corrected.
 
 ## 4 November 2026 — mark replacements once
 

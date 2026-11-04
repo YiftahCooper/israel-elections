@@ -488,8 +488,9 @@ and bloc-member strips. Expert's explicitly named constituent-party/bloc modes
 are categorical overrides; they never encode change. Pale regions identify bloc
 membership. Blocs retain their declared physical left-to-right order with No bloc
 between its two halves, consistently in the chamber, BlocBar and Compare. The
-61 marker counts from the physical left in either language. Regions are exact
-unions of per-row annular sectors, filled without any border strokes or cut-out seams. Pale tints distinguish
+61 marker counts from the physical left in either language. Regions are bounded
+by smooth taut curves threaded between neighbouring blocs' seats (never per-row steps), each enclosing exactly its own
+seats, filled without any border strokes or cut-out seams. Pale tints distinguish
 adjacent regions while seat positions remain fixed.
 A neutral tinted “No bloc” region with a dotted legend key is retained even in a blank
 grouping. Blocks use a fixed 20 × 6 tray; arc and blocks retain the full chamber

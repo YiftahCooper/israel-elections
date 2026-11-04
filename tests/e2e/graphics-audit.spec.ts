@@ -66,7 +66,7 @@ for(const lang of ['he','en']) for(const theme of ['light','dark']) for(const ph
       await check();
       if(!c.name.startsWith('k')) await page.locator('.chamber').first().screenshot({path:`.backup-scratch/graphics-audit/blocks-${c.name}-${lang}-${theme}-${phone?'phone':'desktop'}.png`});
       for (const mode of ['bloc','party','list']) {
-        await choose(page.locator('.board-choices').getByRole('button',{name:lang==='he'?'צביעת מושבים לפי':'Colour seats by',exact:true}),mode);
+        await choose(page.locator('.chamber-tools').getByRole('button',{name:lang==='he'?'צביעת מושבים לפי':'Colour seats by',exact:true}),mode);
         await check();
       }
     }
@@ -108,7 +108,9 @@ test('summary, graphics and Compare default follow the same reference setting',a
     await page.getByRole('combobox',{name:'Mark differences from'}).selectOption(setting);
     await page.getByRole('tab',{name:'Overview',exact:true}).click();
     await expect(page.locator('.session > b')).toHaveText(`Since ${name==='Official result'?'official result':name}`);
-    await expect(page.locator('.chamber .graphic-key')).toContainText(name);
+    // the key names the reference once when seats differ; with nothing to mark the session line already says so
+    if(changed) await expect(page.locator('.chamber .graphic-key')).toContainText(name);
+    else await expect(page.locator('.chamber .graphic-key')).toHaveCount(0);
     await expect(page.locator('.session')).toContainText(changed?'Meretz':'No seats changed');
     await expect(page.locator('.baseline-mini [data-reference-seat]')).toHaveCount(changed?120:0);
     if(changed) {
