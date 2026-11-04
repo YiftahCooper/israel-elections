@@ -13,7 +13,7 @@ import { ListSidePanel } from './components/ListSidePanel.tsx';
 import { BlocPanel } from './components/BlocPanel.tsx';
 import { ChangeSummary } from './components/ChangeSummary.tsx';
 import { Scenarios } from './components/Scenarios.tsx';
-import { TopBar as TopBarView } from './components/TopBar.tsx';
+import { TopBar as TopBarView, electionLabel } from './components/TopBar.tsx';
 import { Walkthrough } from './components/Walkthrough.tsx';
 import { ErrorBoundary } from './components/ErrorBoundary.tsx';
 import { WhatIf } from './components/WhatIf.tsx';
@@ -120,6 +120,7 @@ function Shell() {
   const ds = useStore((st) => (st.scenario ? st.datasets[st.scenario.electionId] : undefined));
   const toast = useStore((st) => st.toast);
   const loadError = useStore((st) => st.loadError);
+  const elections = useStore((st) => st.elections);
   const notice = useStore((st) => st.notice);
   const lang = useStore((st) => st.lang);
   const level = useStore((st) => st.level);
@@ -143,7 +144,7 @@ function Shell() {
 
   const loadBanner = loadError && (
     <div className="banner err" role="alert">
-      {L(`Could not load the ${loadError.id} election data (${loadError.message}).`, `טעינת נתוני הבחירות ${loadError.id} נכשלה (${loadError.message}).`)}{' '}
+      {((e) => L(`Could not load the ${e} election data (${loadError.message}).`, `טעינת נתוני הבחירות ${e} נכשלה (${loadError.message}).`))(((x) => x ? electionLabel(x, elections, lang) : loadError.id)(elections.find((x) => x.id === loadError.id)))}{' '}
       <button className="btn small" onClick={() => openElection(loadError.id)}>{L('Try again', 'ניסיון נוסף')}</button>
       {committed && <button className="btn small ghost icon-only" onClick={() => setState({ loadError: null })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button>}
     </div>
