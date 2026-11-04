@@ -156,3 +156,34 @@ close. With k24's data delayed, it returned while the committed picker still sai
 k26. The helper now waits for the committed `data-value` before a test opens a list.
 A regression exercises delayed data and immediate list opening; the deliberate
 failed-load test drives the refusal directly instead of awaiting success.
+
+
+## Small end-bloc follow-up after main 3fe06a1
+
+Merged main first (fast-forward), including the families work. Read the families
+branch’s 1988 capture: Haredi’s 13 seats were correctly allocated, but stroking
+radial row edges made the region’s near-horizontal end steps look like stray
+lines through and between seats.
+
+Removed region outline rendering and outline-path generation altogether, in both
+the current and reference chambers. Regions are fill-only annular row sectors.
+Visual review rejected narrow cut-out aisles: their row steps echoed the unwanted
+lines. Adjacent regions now meet as uninterrupted pale fills, without strokes or
+cut-out seams. Seats never move and remain inside their own region.
+The seat gain/loss outlines remain distinct from region fills.
+
+Added `small-first-bloc-1988` using the real Haredi family grouping and
+`small-last-bloc-1988` with the declared bloc order reversed. Both assert that the
+end group has exactly 13 seats. They participate in the full Hebrew/English ×
+light/dark × desktop/phone matrix and both chamber layouts. Browser assertions
+reject any stroked region or separate outline path, while retaining the 120-seat,
+containment, label bounds and overflow checks. New captures use those case names
+under `.backup-scratch/graphics-audit/` (32 added arc/block captures).
+
+
+Final verification for this follow-up: TypeScript and production build; 636 unit
+checks and 158 browser checks, including all prior elections/stress cases and the
+two new end-bloc fixtures. The matrix now writes 192 captures (160 prior plus 32
+new), with 120 current seats, fill-only regions, containment and label/viewport
+invariants retained. The new first/last cases were visually inspected in both
+languages, themes, sizes and layouts.

@@ -21,6 +21,9 @@ for(const lang of ['he','en']) for(const theme of ['light','dark']) for(const ph
           const svg=el.querySelector('svg[role="img"]') as SVGSVGElement;
           const regions=[...svg.querySelectorAll<SVGGeometryElement>('[data-bloc-region]')];
           const errors:string[]=[];
+          // a hairline in the region's own colour only closes antialiasing seams; any other stroke is a stray outline
+          if([...el.querySelectorAll('.wedge')].some(region=>{const st=getComputedStyle(region);return st.stroke!=='none'&&st.stroke!==st.fill;})) errors.push('stroked region');
+          if([...svg.querySelectorAll('path')].some(path=>getComputedStyle(path).fill==='none' && getComputedStyle(path).stroke!=='none')) errors.push('stray outline');
           for(const seat of svg.querySelectorAll<SVGGeometryElement>('[data-seat]')) {
             const box=seat.getBBox();
             const vb=svg.viewBox.baseVal;

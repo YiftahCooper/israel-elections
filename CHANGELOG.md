@@ -5,6 +5,12 @@
 - Add bilingual short labels to all nine family presets while retaining full titles in their information sheets.
 - Omit empty Mixed blocs and repeated family names/majority claims from family session summaries.
 - Label and tint each member row consistently, retaining seat order for separated members.
+## 4 November 2026 — fill-only chamber regions
+
+- Remove region border strokes from current and reference chambers. Keep pale
+  regions uninterrupted, without changing seat positions or counts.
+- Add 1988 Haredi grouping stress cases with a 13-seat first and last bloc, covering
+  both themes, languages and viewport sizes and rejecting region-outline strokes.
 
 
 ## 4 November 2026 — visual family profiles

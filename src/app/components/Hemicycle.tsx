@@ -110,6 +110,8 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       const style = getComputedStyle(originalNodes[i]);
       for (const prop of ['fill','stroke','stroke-width','stroke-dasharray','fill-opacity','stroke-opacity'])
         node.setAttribute(prop, style.getPropertyValue(prop));
+      // regions carry their colour in an inline color-mix(var(...)) style; the resolved fill was just copied above
+      if (node instanceof SVGElement && node.classList.contains('wedge')) node.removeAttribute('style');
     });
     const vb = el.viewBox.baseVal;
     const rows = s.lists.map(l => ({l,n:r.lists.find(x=>x.id===l.id)?.seats ?? 0})).filter(x=>x.n>0);
@@ -169,8 +171,10 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
     body = (
       <svg ref={svgRef} viewBox={`40 30 920 ${H - 30}`} role="img" aria-label={`${title ?? L('Knesset seat diagram', 'תרשים מושבי הכנסת')}: ${summary}`}>
         {wedges.map(w => <g key={w.band}>
-          <path data-bloc-region={bands[w.band].bloc} className="wedge" d={w.fill} fill={bands[w.band].color} stroke="none" />
-          <path d={w.outline} fill="none" stroke={bands[w.band].color} strokeOpacity={0.65} strokeWidth={1.5} strokeDasharray={bands[w.band].bloc === '__none' ? '4 3' : undefined} />
+          {/* opaque mix rather than fill-opacity: adjacent regions then meet without translucent seams, and a hairline
+              stroke in the same colour closes the antialiasing gap between them */}
+          <path data-bloc-region={bands[w.band].bloc} className="wedge solid" d={w.fill}
+            style={{ fill: `color-mix(in srgb, ${bands[w.band].color} var(--wedge-mix), var(--surface))`, stroke: `color-mix(in srgb, ${bands[w.band].color} var(--wedge-mix), var(--surface))` }} />
         </g>)}
         {seats.map((st, i) => {
           const p = pos[rtl ? pos.length - 1 - i : i]; if (!p) return null;
@@ -192,7 +196,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       {seats.map((st, i) => {
         const x = 24 + (rtl ? 19-i%20 : i%20)*48, y = 16+Math.floor(i/20)*48;
         const bc = s.blocs.find(b => b.id === st.bloc)?.color ?? 'var(--muted)';
-        return <g key={i}><rect data-bloc-region={st.bloc ?? '__none'} x={x-5} y={y-5} width={46} height={46} rx={8} fill={bc} className="wedge" />
+        return <g key={i}><rect data-bloc-region={st.bloc ?? '__none'} x={x-5} y={y-5} width={46} height={46} rx={8} fill={bc} stroke="none" className="wedge" />
           <rect data-seat="" className="seat" x={x} y={y} width={36} height={36} rx={4} fill={st.color} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? 'var(--ink)' : 'var(--surface)'} strokeWidth={3}
             onMouseEnter={e => onSeat(st,e)} onMouseLeave={() => setHover(null)} onClick={() => setState({selectedListId: st.listId})} />
         </g>;
@@ -217,7 +221,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
         <svg viewBox="40 30 920 530" role="img" aria-label={referenceLabel(labelReference,lang).name}>
           {annularRegions(pos, baselineSeats.map(st=>blocDisplayOrder(base).indexOf(st.bloc)),rad).map(w=>{
             const id=blocDisplayOrder(base)[w.band], color=base.blocs.find(b=>b.id===id)?.color ?? 'var(--muted)';
-            return <g key={w.band}><path className="wedge" d={w.fill} fill={color} stroke="none" /><path d={w.outline} fill="none" stroke={color} strokeWidth={1.5} strokeOpacity={0.65} /></g>;
+            return <g key={w.band}><path className="wedge" d={w.fill} fill={color} stroke="none" /></g>;
           })}
           {baselineSeats.map((st,i)=> <circle key={i} data-reference-seat="" data-lost={changes.lost.has(`${st.listId}:${st.idx}`) ? '' : undefined}
             cx={500+pos[i].x*400} cy={470+pos[i].y*400} r={rad*400} fill={st.color}
