@@ -183,8 +183,10 @@ function Merge({ s, r }: { s: Scenario; r: AllocationResult }) {
   const total = sel.reduce((t, l) => t + l.votes, 0);
   const kept = Number((BigInt(total) * BigInt(Math.round(retention * 100))) / 10000n);
   const defaultHe = sel.map((l) => l.shortHe).join('–'), defaultEn = sel.map((l) => l.shortEn ?? l.shortHe).join('–');
-  const color = chosenColor ?? sel[0]?.color ?? '#7a6fd0';
-  const actions: Action[] | null = ids.length >= 2 ? [{ type: 'merge', ids, newId: pendingId, nameHe: nameHe || defaultHe, letters: letters || sel[0]?.letters || '', color: sel[0]?.color ?? color, retentionPct: retention, candidateOrder: order, nonRetained: 'abstain' },
+  // the merged list looks like its largest member (a merged Likud stays Likud-blue with Likud's letters)
+  const biggest = sel.reduce<typeof sel[number] | undefined>((b, l) => (!b || l.votes > b.votes ? l : b), undefined);
+  const color = chosenColor ?? biggest?.color ?? '#7a6fd0';
+  const actions: Action[] | null = ids.length >= 2 ? [{ type: 'merge', ids, newId: pendingId, nameHe: nameHe || defaultHe, letters: letters || biggest?.letters || '', color: biggest?.color ?? color, retentionPct: retention, candidateOrder: order, nonRetained: 'abstain' },
     { type: 'setListMeta', listId: pendingId, patch: { shortEn: nameHe || defaultEn, ...(standard && chosenColor ? { color: chosenColor } : {}) } }] : null;
   const go = () => {
     if (!actions) return;
