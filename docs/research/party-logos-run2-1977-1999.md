@@ -533,3 +533,446 @@ Inspected [catalogue](https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%
 
 Batch k9 verification: dataset builder passed; all 26 datasets compared equal to prior commit after removing only `logo` and `builtAt`. `npx vitest run`: 57 files / 484 tests passed; `npx tsc -p tsconfig.json --noEmit`, `npx vite build`, and logo validator passed. Only the model digest was re-recorded after the comparison; other four digest families passed unchanged. 
 
+## k10 · 1981
+
+### מחל — הליכוד
+
+**Accepted:** dated official print crop; details below.
+
+- General discovery: `query: ליכוד 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93), [lead 2](https://www.nli.org.il/he/discover/israel/elections), [lead 3](https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf).
+- NLI targeted discovery: `query: site:nli.org.il "ליכוד" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/newspapers/dav/1981/06/19/01/article/94), [lead 2](https://www.nli.org.il/he/newspapers/dav/1981/05/31/01?&), [lead 3](https://www.nli.org.il/en/archives/NNL_ARCHIVE_AL990039878190205171/NLI).
+
+Inspected [catalogue](https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%9E%D7%AA%D7%A7%D7%93%D7%9D/%D7%A4%D7%A8%D7%99%D7%98?itemId=34179) and [scan](https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%9B%D7%A8%D7%96%D7%95%D7%AA/9.05.2013/2423_3966.jpg); printed event date **1981-06-17**. Crop `[244, 405, 313, 436]` from `[314, 448]`; final `logos/likud-print-1981.png`, 5664 bytes. Original SHA-256 `c2a9287390c8a35cf1950973db1c5f5c4829ac5b71c27ef2efe62bd48b8e845a`; final SHA-256 `87a6ff9d0396bc647457dbb098c499511988373214ecc5dbbcea7627d1873f1a`. Catalogue HTML and scan are retained at `data/raw/logos/k10/`. Fair-use identification, no free licence asserted.
+
+## k10 · 1981
+
+### מחל — הליכוד
+
+**Accepted:** dated official print crop; details below.
+
+- General discovery: `query: ליכוד 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93), [lead 2](https://www.nli.org.il/he/discover/israel/elections), [lead 3](https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf).
+- NLI targeted discovery: `query: site:nli.org.il "ליכוד" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/newspapers/dav/1981/06/19/01/article/94), [lead 2](https://www.nli.org.il/he/newspapers/dav/1981/05/31/01?&), [lead 3](https://www.nli.org.il/en/archives/NNL_ARCHIVE_AL990039878190205171/NLI).
+
+Inspected [catalogue](https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%9E%D7%AA%D7%A7%D7%93%D7%9D/%D7%A4%D7%A8%D7%99%D7%98?itemId=34179) and [scan](https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%9B%D7%A8%D7%96%D7%95%D7%AA/9.05.2013/2423_3966.jpg); printed event date **1981-06-17**. Crop `[244, 405, 313, 436]` from `[314, 448]`; final `logos/likud-print-1981.png`, 5664 bytes. Original SHA-256 `c2a9287390c8a35cf1950973db1c5f5c4829ac5b71c27ef2efe62bd48b8e845a`; final SHA-256 `87a6ff9d0396bc647457dbb098c499511988373214ecc5dbbcea7627d1873f1a`. Catalogue HTML and scan are retained at `data/raw/logos/k10/`. Fair-use identification, no free licence asserted.
+
+### אמת — המערך – מפלגת העבודה הישראלית, מפלגת הפועלים המאוחדת ובלתי מפלגתיים
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: המערך 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Empty result set for this exact query.
+- NLI targeted discovery: `query: site:nli.org.il "המערך" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/discover/israel/elections), [lead 2](https://www.nli.org.il/he/newspapers/mar/1981/01/27/01/page/21?&), [lead 3](https://www.nli.org.il/he/newspapers/dav/1981/06/19/01/article/94).
+
+## k10 · 1981
+
+### מחל — הליכוד
+
+**Accepted:** dated official print crop; details below.
+
+- General discovery: `query: ליכוד 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93), [lead 2](https://www.nli.org.il/he/discover/israel/elections), [lead 3](https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf).
+- NLI targeted discovery: `query: site:nli.org.il "ליכוד" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/newspapers/dav/1981/06/19/01/article/94), [lead 2](https://www.nli.org.il/he/newspapers/dav/1981/05/31/01?&), [lead 3](https://www.nli.org.il/en/archives/NNL_ARCHIVE_AL990039878190205171/NLI).
+
+Inspected [catalogue](https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%9E%D7%AA%D7%A7%D7%93%D7%9D/%D7%A4%D7%A8%D7%99%D7%98?itemId=34179) and [scan](https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%9B%D7%A8%D7%96%D7%95%D7%AA/9.05.2013/2423_3966.jpg); printed event date **1981-06-17**. Crop `[244, 405, 313, 436]` from `[314, 448]`; final `logos/likud-print-1981.png`, 5664 bytes. Original SHA-256 `c2a9287390c8a35cf1950973db1c5f5c4829ac5b71c27ef2efe62bd48b8e845a`; final SHA-256 `87a6ff9d0396bc647457dbb098c499511988373214ecc5dbbcea7627d1873f1a`. Catalogue HTML and scan are retained at `data/raw/logos/k10/`. Fair-use identification, no free licence asserted.
+
+### אמת — המערך – מפלגת העבודה הישראלית, מפלגת הפועלים המאוחדת ובלתי מפלגתיים
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: המערך 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Empty result set for this exact query.
+- NLI targeted discovery: `query: site:nli.org.il "המערך" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/discover/israel/elections), [lead 2](https://www.nli.org.il/he/newspapers/mar/1981/01/27/01/page/21?&), [lead 3](https://www.nli.org.il/he/newspapers/dav/1981/06/19/01/article/94).
+
+### ג — יהדות התורה – אגודת ישראל
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: אגודת ישראל 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/discover/israel/elections), [lead 2](https://www.maariv.co.il/news/elections-2026/article-1380141), [lead 3](https://www.idi.org.il/policy/parties-and-elections/elections/1951).
+- NLI targeted discovery: `query: site:nli.org.il "אגודת ישראל" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL990034751580205171/NLI), [lead 2](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156926305171/NLI), [lead 3](https://www.nli.org.il/he/newspapers/dav/1981/02/25/01/article/127).
+
+## k10 · 1981
+
+### מחל — הליכוד
+
+**Accepted:** dated official print crop; details below.
+
+- General discovery: `query: ליכוד 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93), [lead 2](https://www.nli.org.il/he/discover/israel/elections), [lead 3](https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf).
+- NLI targeted discovery: `query: site:nli.org.il "ליכוד" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/newspapers/dav/1981/06/19/01/article/94), [lead 2](https://www.nli.org.il/he/newspapers/dav/1981/05/31/01?&), [lead 3](https://www.nli.org.il/en/archives/NNL_ARCHIVE_AL990039878190205171/NLI).
+
+Inspected [catalogue](https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%9E%D7%AA%D7%A7%D7%93%D7%9D/%D7%A4%D7%A8%D7%99%D7%98?itemId=34179) and [scan](https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%9B%D7%A8%D7%96%D7%95%D7%AA/9.05.2013/2423_3966.jpg); printed event date **1981-06-17**. Crop `[244, 405, 313, 436]` from `[314, 448]`; final `logos/likud-print-1981.png`, 5664 bytes. Original SHA-256 `c2a9287390c8a35cf1950973db1c5f5c4829ac5b71c27ef2efe62bd48b8e845a`; final SHA-256 `87a6ff9d0396bc647457dbb098c499511988373214ecc5dbbcea7627d1873f1a`. Catalogue HTML and scan are retained at `data/raw/logos/k10/`. Fair-use identification, no free licence asserted.
+
+### אמת — המערך – מפלגת העבודה הישראלית, מפלגת הפועלים המאוחדת ובלתי מפלגתיים
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: המערך 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Empty result set for this exact query.
+- NLI targeted discovery: `query: site:nli.org.il "המערך" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/discover/israel/elections), [lead 2](https://www.nli.org.il/he/newspapers/mar/1981/01/27/01/page/21?&), [lead 3](https://www.nli.org.il/he/newspapers/dav/1981/06/19/01/article/94).
+
+### ג — יהדות התורה – אגודת ישראל
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: אגודת ישראל 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/discover/israel/elections), [lead 2](https://www.maariv.co.il/news/elections-2026/article-1380141), [lead 3](https://www.idi.org.il/policy/parties-and-elections/elections/1951).
+- NLI targeted discovery: `query: site:nli.org.il "אגודת ישראל" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL990034751580205171/NLI), [lead 2](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156926305171/NLI), [lead 3](https://www.nli.org.il/he/newspapers/dav/1981/02/25/01/article/127).
+
+### רצ — התנועה לזכויות האזרח ולשלום
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: רצ 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://www.instagram.com/reel/DcrDZb2jjlQ), [lead 2](https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA), [lead 3](https://www.instagram.com/reel/DcjI7grCKuP).
+- NLI targeted discovery: `query: site:nli.org.il "רצ" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/journals/NNL-Journals990018748160205171/NLI).
+
+## k10 · 1981
+
+### מחל — הליכוד
+
+**Accepted:** dated official print crop; details below.
+
+- General discovery: `query: ליכוד 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93), [lead 2](https://www.nli.org.il/he/discover/israel/elections), [lead 3](https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf).
+- NLI targeted discovery: `query: site:nli.org.il "ליכוד" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/newspapers/dav/1981/06/19/01/article/94), [lead 2](https://www.nli.org.il/he/newspapers/dav/1981/05/31/01?&), [lead 3](https://www.nli.org.il/en/archives/NNL_ARCHIVE_AL990039878190205171/NLI).
+
+Inspected [catalogue](https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%9E%D7%AA%D7%A7%D7%93%D7%9D/%D7%A4%D7%A8%D7%99%D7%98?itemId=34179) and [scan](https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%9B%D7%A8%D7%96%D7%95%D7%AA/9.05.2013/2423_3966.jpg); printed event date **1981-06-17**. Crop `[244, 405, 313, 436]` from `[314, 448]`; final `logos/likud-print-1981.png`, 5664 bytes. Original SHA-256 `c2a9287390c8a35cf1950973db1c5f5c4829ac5b71c27ef2efe62bd48b8e845a`; final SHA-256 `87a6ff9d0396bc647457dbb098c499511988373214ecc5dbbcea7627d1873f1a`. Catalogue HTML and scan are retained at `data/raw/logos/k10/`. Fair-use identification, no free licence asserted.
+
+### אמת — המערך – מפלגת העבודה הישראלית, מפלגת הפועלים המאוחדת ובלתי מפלגתיים
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: המערך 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Empty result set for this exact query.
+- NLI targeted discovery: `query: site:nli.org.il "המערך" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/discover/israel/elections), [lead 2](https://www.nli.org.il/he/newspapers/mar/1981/01/27/01/page/21?&), [lead 3](https://www.nli.org.il/he/newspapers/dav/1981/06/19/01/article/94).
+
+### ג — יהדות התורה – אגודת ישראל
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: אגודת ישראל 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/discover/israel/elections), [lead 2](https://www.maariv.co.il/news/elections-2026/article-1380141), [lead 3](https://www.idi.org.il/policy/parties-and-elections/elections/1951).
+- NLI targeted discovery: `query: site:nli.org.il "אגודת ישראל" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL990034751580205171/NLI), [lead 2](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156926305171/NLI), [lead 3](https://www.nli.org.il/he/newspapers/dav/1981/02/25/01/article/127).
+
+### רצ — התנועה לזכויות האזרח ולשלום
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: רצ 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://www.instagram.com/reel/DcrDZb2jjlQ), [lead 2](https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA), [lead 3](https://www.instagram.com/reel/DcjI7grCKuP).
+- NLI targeted discovery: `query: site:nli.org.il "רצ" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/journals/NNL-Journals990018748160205171/NLI).
+
+### ב — חזית דתית לאומית, המזרחי – הפועל המזרחי ובלתי מפלגתיים
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: מפדל 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%93%22%D7%9C), [lead 2](https://www.instagram.com/reel/Decb20IhxK5), [lead 3](https://www.gov.il/BlobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisionsfullbook2022.pdf).
+- NLI targeted discovery: `query: site:nli.org.il "מפדל" "1981" תעמולה`
+  Empty result set for this exact query.
+
+## k10 · 1981
+
+### מחל — הליכוד
+
+**Accepted:** dated official print crop; details below.
+
+- General discovery: `query: ליכוד 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93), [lead 2](https://www.nli.org.il/he/discover/israel/elections), [lead 3](https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf).
+- NLI targeted discovery: `query: site:nli.org.il "ליכוד" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/newspapers/dav/1981/06/19/01/article/94), [lead 2](https://www.nli.org.il/he/newspapers/dav/1981/05/31/01?&), [lead 3](https://www.nli.org.il/en/archives/NNL_ARCHIVE_AL990039878190205171/NLI).
+
+Inspected [catalogue](https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%9E%D7%AA%D7%A7%D7%93%D7%9D/%D7%A4%D7%A8%D7%99%D7%98?itemId=34179) and [scan](https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%9B%D7%A8%D7%96%D7%95%D7%AA/9.05.2013/2423_3966.jpg); printed event date **1981-06-17**. Crop `[244, 405, 313, 436]` from `[314, 448]`; final `logos/likud-print-1981.png`, 5664 bytes. Original SHA-256 `c2a9287390c8a35cf1950973db1c5f5c4829ac5b71c27ef2efe62bd48b8e845a`; final SHA-256 `87a6ff9d0396bc647457dbb098c499511988373214ecc5dbbcea7627d1873f1a`. Catalogue HTML and scan are retained at `data/raw/logos/k10/`. Fair-use identification, no free licence asserted.
+
+### אמת — המערך – מפלגת העבודה הישראלית, מפלגת הפועלים המאוחדת ובלתי מפלגתיים
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: המערך 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Empty result set for this exact query.
+- NLI targeted discovery: `query: site:nli.org.il "המערך" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/discover/israel/elections), [lead 2](https://www.nli.org.il/he/newspapers/mar/1981/01/27/01/page/21?&), [lead 3](https://www.nli.org.il/he/newspapers/dav/1981/06/19/01/article/94).
+
+### ג — יהדות התורה – אגודת ישראל
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: אגודת ישראל 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/discover/israel/elections), [lead 2](https://www.maariv.co.il/news/elections-2026/article-1380141), [lead 3](https://www.idi.org.il/policy/parties-and-elections/elections/1951).
+- NLI targeted discovery: `query: site:nli.org.il "אגודת ישראל" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL990034751580205171/NLI), [lead 2](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156926305171/NLI), [lead 3](https://www.nli.org.il/he/newspapers/dav/1981/02/25/01/article/127).
+
+### רצ — התנועה לזכויות האזרח ולשלום
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: רצ 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://www.instagram.com/reel/DcrDZb2jjlQ), [lead 2](https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA), [lead 3](https://www.instagram.com/reel/DcjI7grCKuP).
+- NLI targeted discovery: `query: site:nli.org.il "רצ" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/journals/NNL-Journals990018748160205171/NLI).
+
+### ב — חזית דתית לאומית, המזרחי – הפועל המזרחי ובלתי מפלגתיים
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: מפדל 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%93%22%D7%9C), [lead 2](https://www.instagram.com/reel/Decb20IhxK5), [lead 3](https://www.gov.il/BlobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisionsfullbook2022.pdf).
+- NLI targeted discovery: `query: site:nli.org.il "מפדל" "1981" תעמולה`
+  Empty result set for this exact query.
+
+### ו — חזית דמוקרטית לשלום ולשוויון, המפלגה הקומוניסטית הישראלית (רק״ח), פנתרים שחורים וחוגי ציבור יהודים וערבים
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: חדש 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://www.instagram.com/reel/DcrDZb2jjlQ), [lead 2](https://www.instagram.com/reel/DcjI7grCKuP), [lead 3](https://www.nli.org.il/he/discover/israel/elections).
+- NLI targeted discovery: `query: site:nli.org.il "חזית דמוקרטית לשלום" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/newspapers/dav/1984/06/08/01/page/2?&).
+
+## k10 · 1981
+
+### מחל — הליכוד
+
+**Accepted:** dated official print crop; details below.
+
+- General discovery: `query: ליכוד 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93), [lead 2](https://www.nli.org.il/he/discover/israel/elections), [lead 3](https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf).
+- NLI targeted discovery: `query: site:nli.org.il "ליכוד" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/newspapers/dav/1981/06/19/01/article/94), [lead 2](https://www.nli.org.il/he/newspapers/dav/1981/05/31/01?&), [lead 3](https://www.nli.org.il/en/archives/NNL_ARCHIVE_AL990039878190205171/NLI).
+
+Inspected [catalogue](https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%9E%D7%AA%D7%A7%D7%93%D7%9D/%D7%A4%D7%A8%D7%99%D7%98?itemId=34179) and [scan](https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%9B%D7%A8%D7%96%D7%95%D7%AA/9.05.2013/2423_3966.jpg); printed event date **1981-06-17**. Crop `[244, 405, 313, 436]` from `[314, 448]`; final `logos/likud-print-1981.png`, 5664 bytes. Original SHA-256 `c2a9287390c8a35cf1950973db1c5f5c4829ac5b71c27ef2efe62bd48b8e845a`; final SHA-256 `87a6ff9d0396bc647457dbb098c499511988373214ecc5dbbcea7627d1873f1a`. Catalogue HTML and scan are retained at `data/raw/logos/k10/`. Fair-use identification, no free licence asserted.
+
+### אמת — המערך – מפלגת העבודה הישראלית, מפלגת הפועלים המאוחדת ובלתי מפלגתיים
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: המערך 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Empty result set for this exact query.
+- NLI targeted discovery: `query: site:nli.org.il "המערך" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/discover/israel/elections), [lead 2](https://www.nli.org.il/he/newspapers/mar/1981/01/27/01/page/21?&), [lead 3](https://www.nli.org.il/he/newspapers/dav/1981/06/19/01/article/94).
+
+### ג — יהדות התורה – אגודת ישראל
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: אגודת ישראל 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/discover/israel/elections), [lead 2](https://www.maariv.co.il/news/elections-2026/article-1380141), [lead 3](https://www.idi.org.il/policy/parties-and-elections/elections/1951).
+- NLI targeted discovery: `query: site:nli.org.il "אגודת ישראל" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL990034751580205171/NLI), [lead 2](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156926305171/NLI), [lead 3](https://www.nli.org.il/he/newspapers/dav/1981/02/25/01/article/127).
+
+### רצ — התנועה לזכויות האזרח ולשלום
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: רצ 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://www.instagram.com/reel/DcrDZb2jjlQ), [lead 2](https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA), [lead 3](https://www.instagram.com/reel/DcjI7grCKuP).
+- NLI targeted discovery: `query: site:nli.org.il "רצ" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/journals/NNL-Journals990018748160205171/NLI).
+
+### ב — חזית דתית לאומית, המזרחי – הפועל המזרחי ובלתי מפלגתיים
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: מפדל 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%93%22%D7%9C), [lead 2](https://www.instagram.com/reel/Decb20IhxK5), [lead 3](https://www.gov.il/BlobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisionsfullbook2022.pdf).
+- NLI targeted discovery: `query: site:nli.org.il "מפדל" "1981" תעמולה`
+  Empty result set for this exact query.
+
+### ו — חזית דמוקרטית לשלום ולשוויון, המפלגה הקומוניסטית הישראלית (רק״ח), פנתרים שחורים וחוגי ציבור יהודים וערבים
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: חדש 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://www.instagram.com/reel/DcrDZb2jjlQ), [lead 2](https://www.instagram.com/reel/DcjI7grCKuP), [lead 3](https://www.nli.org.il/he/discover/israel/elections).
+- NLI targeted discovery: `query: site:nli.org.il "חזית דמוקרטית לשלום" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/newspapers/dav/1984/06/08/01/page/2?&).
+
+### הן — שינוי – מפלגת המרכז
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: שינוי 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA_%D7%A9%D7%99%D7%A0%D7%95%D7%99), [lead 2](https://www.nli.org.il/he/discover/israel/elections), [lead 3](https://www.instagram.com/reel/DcrDZb2jjlQ).
+- NLI targeted discovery: `query: site:nli.org.il "שינוי" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156936905171/NLI), [lead 2](https://www.nli.org.il/he/discover/israel/elections), [lead 3](https://www.nli.org.il/he/newspapers/mar/1981/01/19/01).
+
+## k10 · 1981
+
+### מחל — הליכוד
+
+**Accepted:** dated official print crop; details below.
+
+- General discovery: `query: ליכוד 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93), [lead 2](https://www.nli.org.il/he/discover/israel/elections), [lead 3](https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf).
+- NLI targeted discovery: `query: site:nli.org.il "ליכוד" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/newspapers/dav/1981/06/19/01/article/94), [lead 2](https://www.nli.org.il/he/newspapers/dav/1981/05/31/01?&), [lead 3](https://www.nli.org.il/en/archives/NNL_ARCHIVE_AL990039878190205171/NLI).
+
+Inspected [catalogue](https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%9E%D7%AA%D7%A7%D7%93%D7%9D/%D7%A4%D7%A8%D7%99%D7%98?itemId=34179) and [scan](https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%9B%D7%A8%D7%96%D7%95%D7%AA/9.05.2013/2423_3966.jpg); printed event date **1981-06-17**. Crop `[244, 405, 313, 436]` from `[314, 448]`; final `logos/likud-print-1981.png`, 5664 bytes. Original SHA-256 `c2a9287390c8a35cf1950973db1c5f5c4829ac5b71c27ef2efe62bd48b8e845a`; final SHA-256 `87a6ff9d0396bc647457dbb098c499511988373214ecc5dbbcea7627d1873f1a`. Catalogue HTML and scan are retained at `data/raw/logos/k10/`. Fair-use identification, no free licence asserted.
+
+### אמת — המערך – מפלגת העבודה הישראלית, מפלגת הפועלים המאוחדת ובלתי מפלגתיים
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: המערך 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Empty result set for this exact query.
+- NLI targeted discovery: `query: site:nli.org.il "המערך" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/discover/israel/elections), [lead 2](https://www.nli.org.il/he/newspapers/mar/1981/01/27/01/page/21?&), [lead 3](https://www.nli.org.il/he/newspapers/dav/1981/06/19/01/article/94).
+
+### ג — יהדות התורה – אגודת ישראל
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: אגודת ישראל 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/discover/israel/elections), [lead 2](https://www.maariv.co.il/news/elections-2026/article-1380141), [lead 3](https://www.idi.org.il/policy/parties-and-elections/elections/1951).
+- NLI targeted discovery: `query: site:nli.org.il "אגודת ישראל" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL990034751580205171/NLI), [lead 2](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156926305171/NLI), [lead 3](https://www.nli.org.il/he/newspapers/dav/1981/02/25/01/article/127).
+
+### רצ — התנועה לזכויות האזרח ולשלום
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: רצ 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://www.instagram.com/reel/DcrDZb2jjlQ), [lead 2](https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA), [lead 3](https://www.instagram.com/reel/DcjI7grCKuP).
+- NLI targeted discovery: `query: site:nli.org.il "רצ" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/journals/NNL-Journals990018748160205171/NLI).
+
+### ב — חזית דתית לאומית, המזרחי – הפועל המזרחי ובלתי מפלגתיים
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: מפדל 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%93%22%D7%9C), [lead 2](https://www.instagram.com/reel/Decb20IhxK5), [lead 3](https://www.gov.il/BlobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisionsfullbook2022.pdf).
+- NLI targeted discovery: `query: site:nli.org.il "מפדל" "1981" תעמולה`
+  Empty result set for this exact query.
+
+### ו — חזית דמוקרטית לשלום ולשוויון, המפלגה הקומוניסטית הישראלית (רק״ח), פנתרים שחורים וחוגי ציבור יהודים וערבים
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: חדש 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://www.instagram.com/reel/DcrDZb2jjlQ), [lead 2](https://www.instagram.com/reel/DcjI7grCKuP), [lead 3](https://www.nli.org.il/he/discover/israel/elections).
+- NLI targeted discovery: `query: site:nli.org.il "חזית דמוקרטית לשלום" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/newspapers/dav/1984/06/08/01/page/2?&).
+
+### הן — שינוי – מפלגת המרכז
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: שינוי 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA_%D7%A9%D7%99%D7%A0%D7%95%D7%99), [lead 2](https://www.nli.org.il/he/discover/israel/elections), [lead 3](https://www.instagram.com/reel/DcrDZb2jjlQ).
+- NLI targeted discovery: `query: site:nli.org.il "שינוי" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156936905171/NLI), [lead 2](https://www.nli.org.il/he/discover/israel/elections), [lead 3](https://www.nli.org.il/he/newspapers/mar/1981/01/19/01).
+
+### ת — התחיה
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: התחיה 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%94%D7%AA%D7%97%D7%99%D7%94), [lead 2](https://www.maariv.co.il/news/elections-2026/article-1380141), [lead 3](https://www.walla.co.il/news/israel/2610533).
+- NLI targeted discovery: `query: site:nli.org.il "התחיה" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/en/archives/NNL_ARCHIVE_AL990039481790205171/NLI), [lead 2](https://www.nli.org.il/he/newspapers/dav/1984/06/29/01/page/18?&).
+
+## k10 · 1981
+
+### מחל — הליכוד
+
+**Accepted:** dated official print crop; details below.
+
+- General discovery: `query: ליכוד 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93), [lead 2](https://www.nli.org.il/he/discover/israel/elections), [lead 3](https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf).
+- NLI targeted discovery: `query: site:nli.org.il "ליכוד" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/newspapers/dav/1981/06/19/01/article/94), [lead 2](https://www.nli.org.il/he/newspapers/dav/1981/05/31/01?&), [lead 3](https://www.nli.org.il/en/archives/NNL_ARCHIVE_AL990039878190205171/NLI).
+
+Inspected [catalogue](https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%9E%D7%AA%D7%A7%D7%93%D7%9D/%D7%A4%D7%A8%D7%99%D7%98?itemId=34179) and [scan](https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%9B%D7%A8%D7%96%D7%95%D7%AA/9.05.2013/2423_3966.jpg); printed event date **1981-06-17**. Crop `[244, 405, 313, 436]` from `[314, 448]`; final `logos/likud-print-1981.png`, 5664 bytes. Original SHA-256 `c2a9287390c8a35cf1950973db1c5f5c4829ac5b71c27ef2efe62bd48b8e845a`; final SHA-256 `87a6ff9d0396bc647457dbb098c499511988373214ecc5dbbcea7627d1873f1a`. Catalogue HTML and scan are retained at `data/raw/logos/k10/`. Fair-use identification, no free licence asserted.
+
+### אמת — המערך – מפלגת העבודה הישראלית, מפלגת הפועלים המאוחדת ובלתי מפלגתיים
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: המערך 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Empty result set for this exact query.
+- NLI targeted discovery: `query: site:nli.org.il "המערך" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/discover/israel/elections), [lead 2](https://www.nli.org.il/he/newspapers/mar/1981/01/27/01/page/21?&), [lead 3](https://www.nli.org.il/he/newspapers/dav/1981/06/19/01/article/94).
+
+### ג — יהדות התורה – אגודת ישראל
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: אגודת ישראל 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/discover/israel/elections), [lead 2](https://www.maariv.co.il/news/elections-2026/article-1380141), [lead 3](https://www.idi.org.il/policy/parties-and-elections/elections/1951).
+- NLI targeted discovery: `query: site:nli.org.il "אגודת ישראל" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL990034751580205171/NLI), [lead 2](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156926305171/NLI), [lead 3](https://www.nli.org.il/he/newspapers/dav/1981/02/25/01/article/127).
+
+### רצ — התנועה לזכויות האזרח ולשלום
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: רצ 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://www.instagram.com/reel/DcrDZb2jjlQ), [lead 2](https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA), [lead 3](https://www.instagram.com/reel/DcjI7grCKuP).
+- NLI targeted discovery: `query: site:nli.org.il "רצ" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/journals/NNL-Journals990018748160205171/NLI).
+
+### ב — חזית דתית לאומית, המזרחי – הפועל המזרחי ובלתי מפלגתיים
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: מפדל 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%93%22%D7%9C), [lead 2](https://www.instagram.com/reel/Decb20IhxK5), [lead 3](https://www.gov.il/BlobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisionsfullbook2022.pdf).
+- NLI targeted discovery: `query: site:nli.org.il "מפדל" "1981" תעמולה`
+  Empty result set for this exact query.
+
+### ו — חזית דמוקרטית לשלום ולשוויון, המפלגה הקומוניסטית הישראלית (רק״ח), פנתרים שחורים וחוגי ציבור יהודים וערבים
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: חדש 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://www.instagram.com/reel/DcrDZb2jjlQ), [lead 2](https://www.instagram.com/reel/DcjI7grCKuP), [lead 3](https://www.nli.org.il/he/discover/israel/elections).
+- NLI targeted discovery: `query: site:nli.org.il "חזית דמוקרטית לשלום" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/newspapers/dav/1984/06/08/01/page/2?&).
+
+### הן — שינוי – מפלגת המרכז
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: שינוי 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA_%D7%A9%D7%99%D7%A0%D7%95%D7%99), [lead 2](https://www.nli.org.il/he/discover/israel/elections), [lead 3](https://www.instagram.com/reel/DcrDZb2jjlQ).
+- NLI targeted discovery: `query: site:nli.org.il "שינוי" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156936905171/NLI), [lead 2](https://www.nli.org.il/he/discover/israel/elections), [lead 3](https://www.nli.org.il/he/newspapers/mar/1981/01/19/01).
+
+### ת — התחיה
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: התחיה 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%94%D7%AA%D7%97%D7%99%D7%94), [lead 2](https://www.maariv.co.il/news/elections-2026/article-1380141), [lead 3](https://www.walla.co.il/news/israel/2610533).
+- NLI targeted discovery: `query: site:nli.org.il "התחיה" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/en/archives/NNL_ARCHIVE_AL990039481790205171/NLI), [lead 2](https://www.nli.org.il/he/newspapers/dav/1984/06/29/01/page/18?&).
+
+### ני — תמ״י – תנועת מסורת ישראל
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: תמי 1981 כרזה בחירות סמל -site:en.wikipedia.org`
+  Returned locators (snippet inspection only): [lead 1](https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf), [lead 2](https://www.idi.org.il/media/27873/the-elections-in-israel-2022.pdf), [lead 3](https://www.kan.org.il/?remove_item=eddb904a6db773755d2857aacadb1cb0&_wpnonce=5bf7137882&page=487).
+- NLI targeted discovery: `query: site:nli.org.il "תמי" "1981" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/books/NNL_ALEPH990032480450205171/NLI), [lead 2](https://www.nli.org.il/ar/newspapers/mar/1981/01/23/01/page/76?&), [lead 3](https://www.nli.org.il/en/archives/NNL_ARCHIVE_AL990039878190205171/NLI).
+
+Batch k10 verification: dataset builder passed; all 26 datasets compared equal to prior commit after removing only `logo` and `builtAt`. `npx vitest run`: 57 files / 484 tests passed; `npx tsc -p tsconfig.json --noEmit`, `npx vite build`, and logo validator passed. Only the model digest was re-recorded after the comparison; other four digest families passed unchanged. 
+
