@@ -436,10 +436,10 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
    choosing a chip and then a bloc */
 .bp-picked { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 0 0 8px; padding: 6px 8px 6px 10px; border-radius: var(--radius); background: var(--open); border: 1px solid var(--rule-2); }
 .bp-cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
-.bp-card { --bt: color-mix(in srgb, var(--bc) 13%, var(--surface)); border: 1px solid color-mix(in srgb, var(--bc) 40%, var(--rule)); border-inline-start: 4px solid var(--bc); border-radius: var(--radius); background: var(--bt); padding: 8px 10px 10px; display: grid; gap: 6px; transition: box-shadow .15s, border-color .15s; scroll-margin: 12px; }
+.bp-card { --bt: color-mix(in srgb, var(--bc) 13%, var(--surface)); border: 1px solid color-mix(in srgb, var(--bc) 55%, var(--rule)); border-radius: var(--radius); background: var(--bt); padding: 8px 10px 10px; display: grid; gap: 6px; transition: box-shadow .15s, border-color .15s; scroll-margin: 12px; }
 [data-theme="dark"] .bp-card { --bt: color-mix(in srgb, var(--bc) 20%, var(--surface)); }
 .bp-card.focus { box-shadow: 0 0 0 2px color-mix(in srgb, var(--bc) 55%, transparent); }
-.bp-card.can-drop { border-style: dashed; border-inline-start-style: solid; }
+.bp-card.can-drop { border-style: dashed; }
 .bp-card.over { box-shadow: 0 0 0 3px var(--bc); }
 .bp-head { display: flex; align-items: center; gap: 8px; min-width: 0; }
 .bp-swatch { flex: none; width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--surface); box-shadow: 0 0 0 1px var(--rule-2); cursor: pointer; padding: 0; }
