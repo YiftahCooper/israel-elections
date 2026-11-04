@@ -255,8 +255,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 /* ---------- chamber */
 .chamber { position: relative; }
 .chamber svg { display: block; width: 100%; height: auto; direction: ltr; }
-.chamber .wedge { transition: d .3s; fill-opacity: .26; stroke-opacity: .5; stroke-width: 1.5; stroke-linejoin: round; }
-[data-theme="dark"] .chamber .wedge { fill-opacity: .34; stroke-opacity: .6; }
+.chamber .wedge { transition: d .3s; fill-opacity: .26; stroke: none; }
+[data-theme="dark"] .chamber .wedge { fill-opacity: .34; }
 .chart { direction: ltr; }
 .seat { transition: fill .35s ease, opacity .2s; cursor: pointer; }
 .seat.dim { opacity: .22; }

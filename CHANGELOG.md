@@ -1,5 +1,13 @@
 # Changelog
 
+## 4 November 2026 — fill-only chamber regions
+
+- Remove region border strokes from current and reference chambers. Keep pale
+  regions uninterrupted, without changing seat positions or counts.
+- Add 1988 Haredi grouping stress cases with a 13-seat first and last bloc, covering
+  both themes, languages and viewport sizes and rejecting region-outline strokes.
+
+
 ## 4 November 2026 — visual family profiles
 
 - Replace family/compare dropdowns with stable-colour selection chips and hero charts with exact tooltips, pending points and shared scales.

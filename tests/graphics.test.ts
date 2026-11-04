@@ -33,6 +33,10 @@ for(const c of [...Array.from({length:26},(_,i)=>({name:`k${i+1}`,n:i+1,actions:
       expect(r.lists.find(l=>l.id===s.lists.find(l=>l.shortEn==='Meretz')!.id)!.seats).toBe(4);
       expect(r.lists.find(l=>l.id===s.lists.find(l=>l.shortEn==='Balad')!.id)!.seats).toBe(5);
     }
+    if(c.name.startsWith('small-')) {
+      const bloc=c.name.includes('first')?ordered[0].bloc:ordered.at(-1)!.bloc;
+      expect(ordered.filter(seat=>seat.bloc===bloc)).toHaveLength(13);
+    }
     if(c.name==='one-seat') expect(r.lists.some(l=>l.seats===1)).toBe(true);
     if(c.name==='dominant') expect(r.lists.some(l=>l.seats>60)).toBe(true);
   });

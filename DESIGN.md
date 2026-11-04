@@ -485,8 +485,9 @@ are categorical overrides; they never encode change. Pale regions identify bloc
 membership. Blocs retain their declared physical left-to-right order with No bloc
 between its two halves, consistently in the chamber, BlocBar and Compare. The
 61 marker counts from the physical left in either language. Regions are exact
-unions of per-row annular sectors, bounded by circular arcs and radial edges.
-A neutral tinted, dotted “No bloc” region is retained even in a blank
+unions of per-row annular sectors, filled without any border strokes or cut-out seams. Pale tints distinguish
+adjacent regions while seat positions remain fixed.
+A neutral tinted “No bloc” region with a dotted legend key is retained even in a blank
 grouping. Blocks use a fixed 20 × 6 tray; arc and blocks retain the full chamber
 capacity independent of the number of lists. Experimental totals stay explicit.
 List names wrap in a separate legend beneath the tray, in both languages and at
@@ -572,3 +573,8 @@ hidden duplicate selectors or rely on CSS to conceal them.
 ### Family profiles: visual pass
 
 Family chips are selection and comparison. Full-width 300px charts (240px on phones) lead; the exact table is disclosed. Mixed policy is a three-way segment and 2026 points are hollow with pending-publication tooltips. Edit membership is an independent-election sheet; scaling previews before/after seat strips. Overview adds labelled brackets to family list runs without changing seat ordering. See [the built design](docs/design/party-families.md) for runtime/evidence loading and the explicit exact-figures preference.
+
+
+Small blocs at either end of the arc use the same fill-only region rule as all
+other blocs. Radial row steps are never stroked, in the main or reference chamber;
+pale fills provide grouping without stray lines crossing seat rows.

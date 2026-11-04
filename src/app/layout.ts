@@ -77,7 +77,7 @@ export function placeLabels(items: { id: string; n: number; a: number; text: str
 }
 
 export interface AnnularBandRow { inner: number; outer: number; from: number; to: number }
-/** Exact union of annular row sectors. Each boundary uses arcs and radial edges only. */
+/** Fill-only annular row sectors. Regions meet without outlined steps or cut-out seams; seats never move. */
 export function annularRegions(seats: SeatPos[], bands: number[], seatRadius: number, cx = 500, cy = 470, scale = 400) {
   const radii = [...new Set(seats.map(p => Number(Math.hypot(p.x,p.y).toFixed(8))))].sort((a,b)=>a-b);
   const rowOf = (p:SeatPos) => radii.findIndex(r=>Math.abs(r-Math.hypot(p.x,p.y))<1e-6);
@@ -85,24 +85,21 @@ export function annularRegions(seats: SeatPos[], bands: number[], seatRadius: nu
   const edges = [radii[0]-seatRadius-0.015, ...radii.slice(1).map((r,i)=>(r+radii[i])/2), radii.at(-1)!+seatRadius+0.015];
   const point = (a:number,r:number) => `${cx+Math.cos(a)*r*scale} ${cy-Math.sin(a)*r*scale}`;
   const arc = (a:number,b:number,r:number) => `A ${r*scale} ${r*scale} 0 ${Math.abs(b-a)>Math.PI?1:0} ${b<a?1:0} ${point(b,r)}`;
-  const difference = (from:number,to:number,other?:AnnularBandRow) => !other ? [[from,to]] :
-    [[from,Math.min(to,other.from)],[Math.max(from,other.to),to]].filter(([a,b])=>b-a>1e-7);
   return [...new Set(bands)].map(band=>{
     const rows: (AnnularBandRow|undefined)[] = radii.map((_,i)=>{
       const angles=seats.filter((p,k)=>rowOf(p)===i&&bands[k]===band).map(p=>p.a);
       if(!angles.length)return undefined;
       const pitch=rowSeats[i].length>1 ? Math.PI/(rowSeats[i].length-1) : Math.PI;
-      return {inner:edges[i],outer:edges[i+1],from:Math.min(...angles)-pitch/2,to:Math.max(...angles)+pitch/2};
+      const first=Math.min(...angles), last=Math.max(...angles);
+      return {inner:edges[i],outer:edges[i+1],from:first-pitch/2,to:last+pitch/2};
     });
-    let fill='',outline='';
-    rows.forEach((row,i)=>{
+    let fill='';
+    rows.forEach(row=>{
       if(!row)return;
       const {inner,outer,from,to}=row;
       fill+=` M ${point(from,inner)} ${arc(from,to,inner)} L ${point(to,outer)} ${arc(to,from,outer)} Z`;
-      outline+=` M ${point(from,inner)} L ${point(from,outer)} M ${point(to,inner)} L ${point(to,outer)}`;
-      for(const [a,b] of difference(from,to,rows[i-1]))outline+=` M ${point(a,inner)} ${arc(a,b,inner)}`;
-      for(const [a,b] of difference(from,to,rows[i+1]))outline+=` M ${point(a,outer)} ${arc(a,b,outer)}`;
+
     });
-    return {band,rows,fill,outline};
+    return {band,rows,fill};
   });
 }
