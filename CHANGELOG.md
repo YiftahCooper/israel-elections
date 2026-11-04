@@ -16,6 +16,18 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 
 ## [Unreleased]
 
+### Changed
+
+- Warn in both languages when candidate-cap counterfactuals depend on the inferred 1977
+  procedure, and when known candidate shortages have no modelled procedure. Preserve the
+  original 1977 result without a warning and unknown rosters without invented capacities.
+- Qualify unresolved early ties only when they change seats; disclose internal quota
+  fallbacks. Keep warnings beside affected lists and in the banner.
+- Replace Custom dropdowns with grouped visibility segments and previews, fix its tab
+  selection, bound chamber labels, and move About beside the election picker.
+- Cover all elections' rendered chamber bounds and capture both languages/themes/viewports.
+
+
 ### Fixed
 
 - Name saved comparison references consistently in English and Hebrew across list bars,

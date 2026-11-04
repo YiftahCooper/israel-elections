@@ -1,3 +1,4 @@
+import { ElectionAbout } from './ElectionContext.tsx';
 import { changeText, ChangeValue } from '../changeValue.tsx';
 import { electionContext } from '../../data/electionContext.ts';
 import { exportAnnotations } from '../scenarioExport.ts';
@@ -81,6 +82,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
         {elections.map((e) => <option key={e.id} value={e.id} disabled={!e.available}>{electionLabel(e, elections, lang)}{e.available ? '' : L(' — not yet available', ' — עדיין לא זמין')}</option>)}
         {electionContext.pmContests.filter(c => c.contestType === 'prime-minister-only').map(c => <option key={c.id} value={c.id}>{c.effectiveDate.slice(0, 4)} · {L('Prime Minister only', 'ראש הממשלה בלבד')}</option>)}
       </select>
+      {ds && !pmContestId && <ElectionAbout electionId={ds.id} />}
       {/* official results need no chip: the neutral chrome says so, and publication status lives in "About this election" */}
       {s && ds && (reference || changes.length > 0 || s.identityColor) && <div className="scenario-status">
         <button className="chip election-status" aria-expanded={changesOpen} onClick={() => setChangesOpen(v => !v)}>

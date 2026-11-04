@@ -178,7 +178,7 @@ export function researchDataset({ review, reconciliation }: Audit): ElectionData
     status: { stage: 'official-final', asOf: review.reviewedOn, noteHe: 'נתוני בדיקה בלבד; הרשימות המלאות לא אומתו.', noteEn: 'Research fixture only; complete candidate rosters unverified.' },
     ruleSetId: n === 16 ? 'il-1992-bader-ofer-1.5' : 'il-2004-bader-ofer-2',
     totals: { registered: review.supplementalTotals.registered, votesCast: review.gazetteTotals.valid + review.gazetteTotals.invalid, invalid: review.gazetteTotals.invalid, valid: review.gazetteTotals.valid, ballotBoxes: reconciliation.pollingRows, localities: reconciliation.localityRowsIncludingEnvelopes - 1 },
-    lists: review.lists.map((l, i) => listRecord(n, i, { letters: l.letters, nameHe: l.nameHe, votes: votes[l.letters],
+    lists: review.lists.map((l, i) => listRecord(n, i, { letters: l.letters, nameHe: l.nameHe, votes: votes[l.letters], candidatesUnavailable: true,
       notesHe: ['RESEARCH ONLY: candidate roster not transcribed or verified.'] })),
     agreements: agreementRecords(n, review.agreements.pairs, review.agreements.sourceId),
     blocs: [], officialSeats: officialSeatsOf(n, review.lists.map(l => ({ letters: l.letters, seats: l.officialSeats }))),

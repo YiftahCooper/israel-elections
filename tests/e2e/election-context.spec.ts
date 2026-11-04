@@ -30,7 +30,7 @@ test('2001 is PM-only and returns to the unaltered k15 chamber', async ({ page }
 });
 test('k1 explains the Constituent Assembly in expandable context', async ({ page }) => {
   await page.getByRole('combobox', { name: 'Election', exact: true }).selectOption('k1');
-  await page.getByText('About this election', { exact: true }).click();
+  await page.getByText('About', { exact: true }).click();
   await expect(page.getByText(/This election chose the Constituent Assembly/)).toBeVisible();
 });
 
@@ -43,7 +43,7 @@ for (const lang of ['he', 'en']) for (const theme of ['light', 'dark']) for (con
     for (const id of ['k14', 'k15', 'pm2001', 'k1']) {
       await picker.selectOption(id);
       await expect(picker).toHaveValue(id);
-      if (id === 'k1') await page.getByText(lang === 'he' ? 'על הבחירות האלה' : 'About this election', { exact: true }).click();
+      if (id === 'k1') await page.getByText(lang === 'he' ? 'על הבחירות' : 'About', { exact: true }).click();
       else await expect(page.getByRole('region', { name: lang === 'he' ? 'תוצאות הבחירות לראש הממשלה' : 'Prime Minister result' })).toBeVisible();
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
       if (process.env.CAPTURE_SCREENSHOTS) await page.screenshot({ path: `.backup-scratch/era-implementation/screenshots/${id}-${lang}-${theme}-${size}.png`, fullPage: true });

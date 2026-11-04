@@ -222,7 +222,7 @@ it('optionally caps initial and remainder seats at candidate capacity, retaining
   const r = allocate(input);
   expect(r.lists.map(l => l.seats)).toEqual([1, 6, 3]);
   expect(r.seatsAllocated).toBe(10);
-  expect(r.warnings).toEqual([]);
+  expect(r.warnings.map(w => w.code)).toEqual(['inferred-candidate-cap']);
   expect(allocate({ ...input, rules: { ...input.rules, seatsCappedAtCandidates: false } }).lists.map(l => l.seats)).toEqual([6, 3, 1]);
   expect(() => allocate({ ...input, lists: [{ id: 'a', votes: 1n, candidateCount: -1 }] })).toThrow(/candidateCount/);
 });
@@ -237,7 +237,7 @@ it('caps agreement members internally and reports exhausted total capacity', () 
   const exhausted = allocate({ ...input, lists: input.lists.map(l => ({ ...l, candidateCount: 1 })) });
   expect(exhausted.lists.map(l => l.seats)).toEqual([1, 1, 1]);
   expect(exhausted.seatsAllocated).toBe(3);
-  expect(exhausted.warnings.map(w => w.code)).toEqual(['seats-unallocatable']);
+  expect(exhausted.warnings.map(w => w.code)).toEqual(['seats-unallocatable', 'inferred-candidate-cap']);
   const unknown = allocate({ ...input, lists: input.lists.map(l => ({ ...l, candidateCount: undefined })) });
   expect(unknown.lists.map(l => l.seats)).toEqual(allocate({ ...input, rules: { ...input.rules, seatsCappedAtCandidates: false } }).lists.map(l => l.seats));
 });

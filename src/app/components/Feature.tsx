@@ -1,5 +1,6 @@
+import { Seg } from './ui.tsx';
 import { useEffect, useState, type ReactNode } from 'react';
-import { FEATURES, PRESETS, type FeatureId, type Visibility } from '../features.ts';
+import { FEATURES, FEATURE_PREVIEWS, PRESETS, type FeatureId, type Visibility } from '../features.ts';
 import { keepFeature, setState, useFeature, useStore } from '../store.ts';
 import { useL } from '../i18n.ts';
 export function Feature({ id, children }: { id: FeatureId; children: ReactNode }) {
@@ -22,10 +23,11 @@ export function CustomPage() {
     <header><h2>{L('Custom level', 'רמה מותאמת')}</h2></header><div className="body">
     <div className="row">{(['simple', 'standard', 'expert'] as const).map(p => <button key={p} className="btn" onClick={() => setState({ level: p, customFeatures: null })}>{L('Reset to ', 'איפוס ל־')}{L({simple:'Simple',standard:'Standard',expert:'Expert'}[p], {simple:'פשוט',standard:'רגיל',expert:'מומחה'}[p])}</button>)}</div>
     {(['Explore', 'Edit', 'Analyse'] as const).map(group => <section key={group}><h3>{L(group, { Explore: 'חקירה', Edit: 'עריכה', Analyse: 'ניתוח' }[group])}</h3>
-      {FEATURES.filter(f => f[1] === group).map(([id,,en,he]) => <label key={id} className="custom-feature"><span>{L(en,he)}</span>
-        <select aria-label={L(en,he)} value={custom?.[id] ?? PRESETS[level][id]} onChange={e => keepFeature(id, e.target.value as Visibility)}>
-          <option value="show">{L('Show', 'גלוי')}</option><option value="collapsed">{L('Collapsed', 'מכווץ')}</option><option value="hidden">{L('Hidden', 'מוסתר')}</option>
-        </select></label>)}</section>)}
+      <div className="custom-grid">{FEATURES.filter(f => f[1] === group).map(([id,,en,he]) => <div key={id} className="custom-feature">
+        <div><strong>{L(en,he)}</strong><p className="small muted">{L(...FEATURE_PREVIEWS[id])}</p></div>
+        <Seg<Visibility> label={L(en,he)} value={custom?.[id] ?? PRESETS[level][id]} onChange={v => keepFeature(id, v)}
+          options={[{v:'show',label:L('Show','גלוי')},{v:'collapsed',label:L('Collapsed','מכווץ')},{v:'hidden',label:L('Hidden','מוסתר')}]} />
+      </div>)}</div></section>)}
     <p className="small muted">{L('Edit markers, scenario identity, exact/sampled qualifiers and publication/data warnings always remain visible.', 'סימוני עריכה, זהות התרחיש, סייגי דיוק ודגימה ואזהרות פרסום ונתונים תמיד גלויים.')}</p>
     </div></section>;
 }

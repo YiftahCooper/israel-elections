@@ -21,7 +21,8 @@ test('Simple opens agreement editing in place and keeps it across reload', async
 test('Custom hides a tool and resetting Standard restores it', async ({page}) => {
   await start(page,'standard');
   await page.getByRole('button',{name:'Custom',exact:true}).click();
-  await page.getByRole('combobox',{name:'Charts',exact:true}).selectOption('hidden');
+  await expect(page.getByRole('tab', {selected:true})).toHaveCount(0);
+  await page.getByRole('group',{name:'Charts',exact:true}).getByRole('button',{name:'Hidden',exact:true}).click();
   await expect(page.getByRole('tab',{name:'Charts',exact:true})).toHaveCount(0);
   await page.getByRole('button',{name:'Reset to Standard',exact:true}).click();
   await expect(page.getByRole('tab',{name:'Charts',exact:true})).toBeVisible();
@@ -32,6 +33,8 @@ test('blank candidates can be undone and chip changes are human wording', async 
   const count = await candidates.count();
   await page.getByRole('combobox',{name:'Start from: Candidates',exact:true}).selectOption('blank');
   await expect(candidates).toHaveCount(0);
+  await expect(page.locator('.banner.warn').filter({hasText:'unfilled seats'})).toContainText('32 seats and 0 candidates');
+  await expect(page.locator('.ld').filter({hasText:'unfilled seats'})).toBeVisible();
   await page.locator('.election-status').click();
   const changes = page.locator('.scenario-changes ul');
   await expect(changes).toContainText('Candidates');

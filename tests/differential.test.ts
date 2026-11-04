@@ -1,3 +1,5 @@
+// Allocation/analysis re-recorded for consequence-only uncertainty warnings. The complete
+// corpus matches HEAD after recursively omitting warnings; seat decisions are unchanged.
 // Output lock for the engine and model. Each digest covers the full serialised output of a seeded
 // corpus (tests/differential.cases.ts): every dataset under its own and every other rule set,
 // thousands of random elections across all rule semantics with forced lottery outcomes,
@@ -30,8 +32,8 @@ import { electionRuleSetId, historicalRules, scenarioFromDataset, toEngineInput,
 import { FAMILIES, families, type Family, type Modules } from './differential.cases.ts';
 
 const EXPECTED: Record<Family, string> = {
-  allocation: 'aba4d7b5256328d6a1db6591b83369cb066c5c6f0ecb2cc369209b9ee2a7eacf',
-  analysis: 'f04635df61b1ca12d56e177f0b249a60ed8056c24b2a003f4a7791f161390ee2',
+  allocation: '8260bc462e6a076ed2e88154b09bed3aa22e301134e199a2c828c3cb489b3ef1',
+  analysis: 'af4237effa97d1baa18f3e9282e8605f20a993a18a3845daf1b371c93e35bd6c',
   // Model digest re-recorded for the 1973 party ranks, then for candidate biography links (Candidate.bio): with
   // the build timestamps held fixed and bio not carried, the new code gives the previous digest. Then for three
   // corrected names (0088 addendum: 1955 #24, 1959 #47, 2003 Shinui #14); src unchanged, other digests unchanged.

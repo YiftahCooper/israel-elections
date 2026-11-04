@@ -116,16 +116,21 @@ export function warningText(w: EngineWarning, s: Scenario, lang: Lang): string {
   const nm = (id: string) => { const l = s.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : id; };
   const d = (w.data ?? {}) as Record<string, unknown>;
   switch (w.code) {
+    case 'inferred-candidate-cap': {
+      const names = (d.cappedIds as string[]).map(nm).join(he ? ' ו' : ' and ');
+      return he ? `מספר המועמדים הגביל את המנדטים של ${names} ושינה את החלוקה. השיטה משחזרת את הטבלה הרשמית של 1977, אך הכלל המשפטי לא אותר; התוצאה הזו היא מסקנה משוערת.` : `Candidate counts limited the seats of ${names} and changed the allocation. This method matches the official 1977 table, but the legal rule was not found; this outcome is an inference.`;
+    }
+    case 'unfilled-seats': return he ? `${nm(String(d.list))}: ${d.seats} מנדטים ו־${d.candidates} מועמדים. ההליך של תקופה זו למושבים שלא ניתן לאייש אינו ממודל.` : `${nm(String(d.list))}: ${d.seats} seats and ${d.candidates} candidates. This era’s procedure for unfilled seats is not modelled.`;
     case 'lottery-required': {
       const ids = (d.ids as string[] | undefined) ?? [];
       const names = ids.map((u) => { const a = s.agreements.find((x) => x.id === u); return a ? a.members.map(nm).join('+') : nm(u); }).join(he ? ' ו' : ' and ');
       if (!tieAffectsSeats(s, w)) return he ? `שוויון מדויק בין ${names} קובע רק את סדר חלוקת המושבים: כל תוצאה אפשרית נותנת אותם מנדטים בדיוק.` : `An exact tie between ${names} only decides the order in which seats are awarded: every possible outcome gives exactly the same seats.`;
-      if (d.tiePolicy === 'unspecified') return he ? `שוויון מדויק בין ${names}: החוק של אותה תקופה אינו קובע כיצד להכריע, ולכן מוצגת תוצאה זמנית. ניתן לבחור תוצאה בלשונית "איך חולקו המנדטים".` : `Exact tie between ${names}: the law of the time does not say how to decide it, so a provisional outcome is shown. You can choose one in the “How the seats were allocated” tab.`;
+      if (d.tiePolicy === 'unspecified') return he ? `שוויון מדויק בין ${names}: במקורות שנבדקו לא אותר הליך הכרעה לתקופה זו; מוצגת תוצאה משוערת שניתן לשנות. ניתן לבחור תוצאה בלשונית "איך חולקו המנדטים".` : `Exact tie between ${names}: the inspected sources do not establish this era’s tie procedure; a provisional scenario outcome is shown. You can choose one in the “How the seats were allocated” tab.`;
       return he ? `שוויון מדויק בין ${names}: החוק מחייב הגרלה של ועדת הבחירות. בחרו את תוצאת ההגרלה בלשונית "איך חולקו המנדטים".` : `Exact tie between ${names}: the law requires a CEC lottery. Choose the outcome in the “How the seats were allocated” tab.`;
     }
     case 'no-qualifying-lists': return he ? 'אף רשימה לא עברה את אחוז החסימה, ולכן אי אפשר לחלק מושבים.' : 'No list passed the threshold, so no seats can be allocated.';
     case 'zero-quota': return he ? 'יש פחות קולות משתתפים ממושבים, ולכן המודד השלם הוא 0; נעשה שימוש במודד המדויק (לא מעוגל).' : 'There are fewer qualifying votes than seats, so the whole-number quota is 0; the exact (unrounded) quota is used.';
-    case 'quota-over-allocation': return he ? 'עם מספרי קולות קטנים כל כך, עיגול המודד כלפי מטה נותן יותר מושבים מהקיים. החוק אינו מתייחס למצב זה; נעשה שימוש במודד המדויק.' : 'With vote totals this small, rounding the quota down gives more seats than exist. The law does not cover this; the exact quota is used.';
+    case 'quota-over-allocation': return he ? 'חישוב המודד נותן יותר מושבים מהקיים. ההליך המשפטי למצב זה לא הוברר; המודד המדויק משמש כחלופה בהדמיה.' : 'The quota calculation gives more seats than are available. The legal procedure for this case is unresolved; the exact quota is a simulation fallback.';
     case 'seats-unallocatable': return he ? 'לא ניתן היה לחלק את כל המושבים: אף רשימה אינה זכאית למושב נוסף לפי הכללים הנבחרים.' : 'Not every seat could be allocated: no list is eligible for a further seat under the chosen rules.';
     case 'internal-loss': return he ? `${nm(String(d.list))} מקבלת פחות מושבים ממה שהמודד השלם שלה לבדה היה נותן, כי סעיף 82(ב) מחלק מחדש את מושבי הצמד מתחילה.` : `${nm(String(d.list))} ends with fewer seats than its own whole quota, because section 82(b) re-divides the pair's seats from scratch.`;
     case 'agreement-rule-departure': return he ? 'הסכם של יותר משתי רשימות אינו מותר לפי סעיף 67(א); הוא מחושב כאן ככלל ניסיוני.' : 'An agreement of more than two lists is not allowed by section 67(a); it is computed here as an experimental rule.';
