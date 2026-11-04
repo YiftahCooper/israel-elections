@@ -18,6 +18,7 @@
 // blocs and start from the default scheme (allocation, analysis and rules digests unchanged). Model
 // re-recorded again for the 1973 party ranks and when lists gained their election logos.
 //
+// Model digest re-recorded for the k25 Yesh Atid logo: dataset is identical after removing logo and builtAt.
 // A changed digest means some output changed. Find the first differing case with
 // tests/differential-compare.ts; update a digest only for a reviewed, intended output change.
 import { describe, expect, it } from 'vitest';
@@ -38,7 +39,7 @@ const EXPECTED: Record<Family, string> = {
   // Removing those fields/logo and restoring HEAD timestamps reproduces the previous model digest.
   // Live 2026 campaign continuation: new list/constituent logo refs and k26 builtAt only.
   // Restoring HEAD's k26 dataset reproduces all five previous digests; non-logo fields compare equal.
-  model: '1799c8b1bdc065d754b4483a944cfc0e3fc26c8ff24b494e7c9270a0fb379260',
+  model: 'bf90d94a7fab09a9ba7e62eded247acec1346fb5b23aebdfde2267ab79e9c175',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

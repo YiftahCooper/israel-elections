@@ -74,17 +74,22 @@
       "bytes": 54232
     },
     {
-      "file": null,
-      "sourceUrl": "https://www.srugim.co.il/525439-%D7%94%D7%9C%D7%95%D7%92%D7%95-%D7%94%D7%97%D7%93%D7%A9-%D7%A9%D7%9C-%D7%99%D7%A9-%D7%A2%D7%AA%D7%99%D7%93-%D7%99%D7%90%D7%99%D7%A8-%D7%9C%D7%A4%D7%99%D7%93-%D7%95%D7%96%D7%A8%D7%99%D7%97%D7%94",
-      "licence": "Copyright retained by rights holder; fair-use identification proposed",
-      "attribution": "www.srugim.co.il; underlying logo designer/rights holder not verified",
-      "hosted": false,
-      "inUseEvidence": "Secondary report dated 10 January 2021 explicitly announces the new K24 campaign logo. Image not downloaded.",
-      "confidence": "medium",
-      "status": "unresolved",
-      "evidenceId": "srugim-2021-yesh-atid",
       "letters": "פה",
-      "rights": "fair-use-identification"
+      "file": null,
+      "sourceUrl": "https://www.yeshatid.org.il/",
+      "assetSourceUrl": "https://www.yeshatid.org.il/sites/atid/UserContent/images/logo/yeshatid%202021%20logo%20RGB.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "יש עתיד בראשות יאיר לפיד — official party header",
+      "rights": "fair-use-identification",
+      "hosted": false,
+      "status": "download-unavailable",
+      "confidence": "medium",
+      "evidenceId": "yeshatid-archive-20210301",
+      "inUseDate": "2021-03-01",
+      "archiveUrl": "https://web.archive.org/web/20210301193501/https://www.yeshatid.org.il/",
+      "archiveTimestamp": "20210301193501",
+      "inUseEvidence": "Inspected official homepage capture dated 2021-03-01 explicitly references /sites/atid/UserContent/images/logo/yeshatid%202021%20logo%20RGB.png with alt יש עתיד בראשות יאיר לפיד. Separate party identity; the 2019 capture does not supply a Blue and White whole-list lockup. Exact archived image retrieval returned HTTP 429; no rendering or historical byte match is claimed.",
+      "retrieval": "Generic Mozilla/5.0 User-Agent; archive replay retried after backoff. Remains unhosted until image can be retrieved and visually inspected."
     }
   ]
 }

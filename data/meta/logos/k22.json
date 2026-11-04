@@ -54,6 +54,24 @@
       "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas.",
       "rights": "free-licence",
       "bytes": 17244
+    },
+    {
+      "party": "yesh-atid",
+      "file": null,
+      "sourceUrl": "https://www.yeshatid.org.il/",
+      "assetSourceUrl": "https://www.yeshatid.org.il/content/images/logo_header.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "יש עתיד בראשות יאיר לפיד — official party header",
+      "rights": "fair-use-identification",
+      "hosted": false,
+      "status": "download-unavailable",
+      "confidence": "medium",
+      "evidenceId": "yeshatid-archive-20190904",
+      "inUseDate": "2019-09-04",
+      "archiveUrl": "https://web.archive.org/web/20190904082028/https://www.yeshatid.org.il/",
+      "archiveTimestamp": "20190904082028",
+      "inUseEvidence": "Inspected official homepage capture dated 2019-09-04 explicitly references /content/images/logo_header.png with alt יש עתיד בראשות יאיר לפיד. Separate party identity; the 2019 capture does not supply a Blue and White whole-list lockup. Exact archived image retrieval returned HTTP 429; no rendering or historical byte match is claimed.",
+      "retrieval": "Generic Mozilla/5.0 User-Agent; archive replay retried after backoff. Remains unhosted until image can be retrieved and visually inspected."
     }
   ]
 }
