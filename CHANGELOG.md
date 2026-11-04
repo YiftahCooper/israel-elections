@@ -1,5 +1,17 @@
 # Changelog
 
+## 4 November 2026 — graphics review and controls integration
+
+- Use one active reference for summaries, edit markers, list details, Compare
+  defaults, graphics and exports; preserve the scenario-switching checkpoint.
+- Move No bloc between declared blocs and keep the majority scale counted from
+  the physical left in Hebrew and English. Draw clean annular region unions.
+- Show a small coloured reference chamber with outlined losses; simplify captions
+  and use compact changed-list readouts, collapsed on desktop above five changes.
+- Merge the controls branch from main, remove duplicate native grouping/colour
+  selectors and their CSS hiding rule, and drive BoardChoices in browser tests.
+
+
 ## 4 November 2026 — graphics consistency
 
 - Keep chamber geometry fixed, move names to wrapping legends, and enclose

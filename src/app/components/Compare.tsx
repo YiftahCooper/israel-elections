@@ -1,3 +1,5 @@
+import { blocDisplayOrder } from '../blocOrder.ts';
+import { useActiveReference } from '../useActiveReference.ts';
 import { referenceLabel } from '../derive.ts';
 import { scenarioColor } from '../scenarioIdentity.ts';
 import { useMemo } from 'react';
@@ -13,7 +15,7 @@ import { Hemicycle } from './Hemicycle.tsx';
 export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; base: Scenario; ds: ElectionDataset }) {
   const L = useL();
   const lang = useLang();
-  const reference = useStore(st => st.reference);
+  const { reference } = useActiveReference();
   const compareWithRaw = useStore((st) => st.compareWith);
   const saved = useStore((st) => st.saved);
   const compareWith = compareWithRaw === 'official' ? 'official' : saved.some((x) => x.id === compareWithRaw && x.electionId === s.electionId && x.id !== s.id) ? compareWithRaw : 'historical';
@@ -58,9 +60,13 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
       <div className="cmp-blocrow">
         <span className="small ink2">{title}</span>
         <div className="coal-bar big" aria-label={`${title}: ${sc.blocs.map((b) => `${lang === 'he' ? b.nameHe : b.nameEn} ${sums[b.id] ?? 0}`).join(', ')}, ${L('No bloc','ללא גוש')} ${rest}`}>
-          {sc.blocs.map((b) => (sums[b.id] ?? 0) > 0 && <i key={b.id} style={{ flexBasis: `${((sums[b.id] ?? 0) / total) * 100}%`, background: `color-mix(in srgb, ${b.color} 24%, var(--surface))`, border: `1px solid ${b.color}` }} title={`${lang === 'he' ? b.nameHe : b.nameEn} ${sums[b.id]}`}><span className="cmp-n">{sums[b.id]}</span></i>)}
-          {rest > 0 && <i style={{ flexBasis: `${(rest / total) * 100}%`, background: 'color-mix(in srgb, var(--muted) 24%, var(--surface))', border: '1px dotted var(--muted)' }} title={`${L('No bloc', 'ללא גוש')} ${rest}`}><span className="cmp-n">{rest}</span></i>}
-          <span className="maj" style={{ insetInlineStart: `${(majority / total) * 100}%` }} />
+          {blocDisplayOrder(sc).map(id=>{
+            const bloc=sc.blocs.find(b=>b.id===id), n=id===null?rest:sums[id]??0;
+            if(!n)return null;
+            const color=bloc?.color ?? 'var(--muted)';
+            return <i key={id??'__none'} data-bloc={id??'__none'} style={{flexBasis:`${n/total*100}%`,background:`color-mix(in srgb, ${color} 24%, var(--surface))`,border:`1px ${id===null?'dotted':'solid'} ${color}`}} title={`${bloc ? (lang==='he'?bloc.nameHe:bloc.nameEn) : L('No bloc','ללא גוש')} ${n}`}><span className="cmp-n">{n}</span></i>;
+          })}
+          <span className="maj" style={{ left: `${(majority / total) * 100}%` }} />
         </div>
       </div>
     );
@@ -90,7 +96,13 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
           <h3>{L('Blocs', 'גושים')}</h3>
           {groupedA && <BlocBarRow sums={ba} title={nameA} sc={groupedA} />}
           <BlocBarRow sums={bb} title={nameB} sc={s} />
-          <div className="legend small" style={{ marginTop: 6 }}>{s.blocs.map((b) => <span key={b.id} className="row" style={{ gap: 5 }}><span className="swatch" style={{ background: `color-mix(in srgb, ${b.color} 24%, var(--surface))`, border: `1px solid ${b.color}` }} />{lang === 'he' ? b.nameHe : b.nameEn} <b>{groupedA ? `${ba[b.id] ?? 0} → ` : ''}{bb[b.id] ?? 0}</b></span>)}</div>
+          <div className="legend small" style={{marginTop:6}}>{blocDisplayOrder(s).map(id=>{
+            const bloc=s.blocs.find(b=>b.id===id), color=bloc?.color??'var(--muted)';
+            const before=id===null ? total-Object.values(ba).reduce((n,v)=>n+v,0) : ba[id]??0;
+            const now=id===null ? total-Object.values(bb).reduce((n,v)=>n+v,0) : bb[id]??0;
+            if(!now&&!before)return null;
+            return <span key={id??'__none'} className="row" style={{gap:5}}><span className="swatch" style={{background:`color-mix(in srgb, ${color} 24%, var(--surface))`,border:`1px ${id===null?'dotted':'solid'} ${color}`}} />{bloc?(lang==='he'?bloc.nameHe:bloc.nameEn):L('No bloc','ללא גוש')} <b>{groupedA?`${before} → `:''}{now}</b></span>;
+          })}</div>
         </section>
       )}
 

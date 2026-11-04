@@ -1,3 +1,4 @@
+import { useActiveReference } from '../useActiveReference.ts';
 import { useId, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { changeText, ChangeValue } from '../changeValue.tsx';
@@ -7,7 +8,7 @@ import { useStore } from '../store.ts';
 import { useL, useLang } from '../i18n.ts';
 export function EditMarker({ s, path }: { s: Scenario; path: EditPath }) {
   const L = useL(), lang = useLang(), id = useId();
-  const reference = useStore(st => st.markOfficial ? null : st.reference);
+  const { reference } = useActiveReference();
   const ds = useStore(st => st.datasets[s.electionId]);
   const base = reference ?? (ds ? baselineOf(ds) : null);
   const anchor = useRef<HTMLSpanElement>(null), tooltip = useRef<HTMLSpanElement>(null);

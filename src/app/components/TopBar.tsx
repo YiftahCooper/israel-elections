@@ -1,5 +1,6 @@
 import { ChoicePicker } from './ChoicePicker.tsx';
 import { ScenarioSwitcher } from './ScenarioSwitcher.tsx';
+import { useActiveReference } from '../useActiveReference.ts';
 import { ElectionAbout } from './ElectionContext.tsx';
 import { changeText } from '../changeValue.tsx';
 import { electionContext } from '../../data/electionContext.ts';
@@ -39,6 +40,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
   const elections = ds && !index.some((e) => e.id === ds.id)
     ? [...index, { id: ds.id, knesset: ds.knesset, date: ds.electionDate, nameHe: ds.nameHe, nameEn: ds.nameEn, available: true, status: { stage: ds.status.stage } }].sort((a, b) => b.date.localeCompare(a.date))
     : index;
+  const { reference } = useActiveReference();
   const theme = useStore((st) => st.theme);
   const custom = useStore(st => st.customFeatures);
   const level = useStore((st) => st.level);
@@ -67,7 +69,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
 
   const exportCsv = () => {
     if (!s || !r || !baseR) return;
-    const markerBase = (!getState().markOfficial && getState().reference) || (ds ? baselineOf(ds) : s);
+    const markerBase = reference || (ds ? baselineOf(ds) : s);
     const marked = referenceChanges(s, markerBase);
     const head = ['edited', 'letters', 'list', 'votes', 'pct_valid', 'qualified', 'whole_quota_seats', 'seats', 'historical_seats'];
     const rows = s.lists.map((l) => { const lr = r.lists.find((x) => x.id === l.id)!; return [marked.filter(p => p[0] === 'lists' && p[1] === l.id).map(p => editPathLabel(s, p, lang, markerBase) + ' · ' + L('Edited: was ', 'נערך: קודם ') + (changeText(markerBase, p, lang))).join('; '), l.letters, l.nameHe, l.votes, ((l.votes / Number(r.totalValid)) * 100).toFixed(6), lr.qualified, lr.initialSeats, lr.seats, baseR.lists.find((x) => x.id === l.id)?.seats ?? '']; });

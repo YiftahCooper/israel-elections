@@ -1,3 +1,4 @@
+import { useActiveReference } from '../useActiveReference.ts';
 import { describe } from '../actionDescription.ts';
 import { voteSourceLabel } from '../voteEdit.ts';
 import { baselineOf, referenceChanges, editPathLabel, ruleChanges } from '../derive.ts';
@@ -14,12 +15,12 @@ import { ResultPreview } from './ResultPreview.tsx';
 export function ScenarioSwitcher({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
   const lang = useLang();
   const L = useL(), saved = useStore(st => st.saved);
-  const reference = useStore(st => st.reference);
+  const { reference, loadedReference: checkpointReference, label: activeLabel } = useActiveReference();
   const drafts = useStore(st => st.scenarioDrafts);
   const official = useMemo(() => scenarioFromDataset(ds), [ds]);
   const entries = useMemo(() => saved.filter(x => x.electionId === s.electionId).map(x => { const result = replay(ds, x.name, x.log); return { ...x, failed: result.failed, scenario: { ...result.scenario, ...(x.description ? { description: x.description } : {}), id: x.id } }; }), [saved, ds, s.electionId]);
-  const officialNow = !reference && s.log.length === 0;
-  const dirty = !officialNow && (!reference || JSON.stringify(s.log) !== JSON.stringify(reference.log));
+  const officialNow = !checkpointReference && s.log.length === 0;
+  const dirty = !officialNow && (!checkpointReference || JSON.stringify(s.log) !== JSON.stringify(checkpointReference.log));
   const current = officialNow ? 'official' : dirty ? `draft:${s.id}:${s.log.at(-1)?.at ?? s.log.length}` : s.id;
   const preview = (x: Scenario, neutral = false) => <><span className="swatch" style={{ background: neutral ? 'var(--muted)' : scenarioColor(x) }} /><ResultPreview s={x} /></>;
   const details = (x: Scenario, date: string, status: string) => {
@@ -36,7 +37,7 @@ export function ScenarioSwitcher({ s, ds }: { s: Scenario; ds: ElectionDataset }
     requestAnimationFrame(() => document.querySelector<HTMLButtonElement>('.band .scenario-switcher .choice-trigger')?.focus());
     const st = getState();
     if (dirty) {
-      setState({ scenarioDrafts: { ...st.scenarioDrafts, [current]: { scenario: st.scenario ?? s, reference: st.reference, past: st.past, future: st.future } } });
+      setState({ scenarioDrafts: { ...st.scenarioDrafts, [current]: { scenario: st.scenario ?? s, reference: checkpointReference, past: st.past, future: st.future } } });
       toast('info', L('Unsaved changes kept in the scenario switcher for this session.', 'השינויים שלא נשמרו נשארים במחליף התרחישים למפגש זה.'));
     }
     const draft = drafts[key];
@@ -47,5 +48,5 @@ export function ScenarioSwitcher({ s, ds }: { s: Scenario; ds: ElectionDataset }
       const warnings = [entry?.failed ? L(`${entry.failed} changes could not be replayed on the current data.`, `${entry.failed} שינויים לא הוחלו מחדש על הנתונים הנוכחיים.`) : '', entry && entry.baseBuiltAt !== ds.buildInfo.builtAt ? L('Historical data has been rebuilt; saved actions were replayed.', 'הנתונים ההיסטוריים נבנו מחדש; הפעולות השמורות הוחלו מחדש.') : ''].filter(Boolean);
       if (target) setState({ scenario: target, reference: key === 'official' ? null : target, past: [], future: [], selectedListId: null, blocPanel: null, notice: warnings.join(' ') || null });
     }
-  }}><details className="scenario-changes"><summary>{L('Changes from the official result', 'שינויים מהתוצאה הרשמית')}</summary><ul>{referenceChanges(s, baselineOf(ds)).map(p => <li key={p.join('/')}><bdi>{editPathLabel(s, p, lang, baselineOf(ds))}</bdi>: <ChangeValue s={s} path={p} lang={lang} /></li>)}</ul></details></ChoicePicker>;
+  }}><details className="scenario-changes"><summary>{activeLabel.since}</summary><ul>{referenceChanges(s, reference ?? baselineOf(ds)).map(p => <li key={p.join('/')}><bdi>{editPathLabel(s, p, lang, reference ?? baselineOf(ds))}</bdi>: <ChangeValue s={s} path={p} lang={lang} /></li>)}</ul></details></ChoicePicker>;
 }

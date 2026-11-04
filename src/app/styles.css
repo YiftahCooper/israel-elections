@@ -658,7 +658,6 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .graphic-changes { margin-block: 8px 14px; min-width: 0; }
 .graphic-change-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(60px, 1fr) auto; align-items: center; gap: 10px; margin-block: 8px; font-size: 12px; }
 .graphic-change-row > span:first-child { overflow-wrap: anywhere; }
-.no-bloc-key { display: inline-block; border: 1px dotted var(--muted); background: color-mix(in srgb, var(--muted) 24%, var(--surface)); padding: 2px 5px; border-radius: 4px; }
 /* A full 120-seat scale: gaps and fixed horizontal padding must not distort tiny blocs. */
 .strip { gap: 0; }
 .corridor { padding-inline: 0; flex-shrink: 0; }
@@ -701,8 +700,6 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
   .choice-trigger { min-block-size: 40px; }
   .band .election { max-inline-size: 100%; }
 }
-/* BoardChoices owns these primary controls while the graphics components remain independent. */
-.board .blocs-head > select, .board .chamber-panel select[aria-label="Colour seats by"], .board .chamber-panel select[aria-label="צביעת מושבים לפי"] { display: none; }
 @media (max-width: 600px) {
   .band .election-about { position: static; }
   .band .election-about ul { inset-inline: 10px; inline-size: auto; inset-block-start: 100%; }
@@ -723,3 +720,22 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
   .side-panel .phone-result-strip { inset-block-start: 45px; }
   .app:has(.side-panel) .band .scenario-switcher { visibility: hidden; }
 }
+/* Composition and the majority marker share physical left-to-right geometry in either language. */
+.strip, .bloc-reference, .cmp-blocrow .coal-bar { direction: ltr; }
+[dir="rtl"] .corridor .label { direction: rtl; }
+.baseline-mini { width: 30%; min-width: 160px; max-width: 310px; margin-inline: auto; text-align: center; }
+.baseline-mini svg { display: block; width: 100%; }
+.compact-changes .change-items { display: flex; flex-wrap: wrap; gap: 5px 16px; }
+.compact-changes .graphic-change-row { display: inline-flex; gap: 6px; margin: 0; }
+.compact-changes summary { cursor: pointer; font-size: 12px; }
+.phone-changes { display: none; }
+.comparison-info { cursor: help; }
+.no-bloc-legend { font-size: 12px; }
+@media (max-width: 600px) {
+  .desktop-changes { display: none; }
+  .phone-changes { display: block; }
+  .compact-changes .change-items { display: grid; gap: 5px; }
+  .compact-changes .graphic-change-row { display: flex; justify-content: space-between; }
+}
+/* Styled children must stay hidden when the native disclosure is closed. */
+.compact-changes .desktop-changes:not([open]) > .change-items { display: none; }

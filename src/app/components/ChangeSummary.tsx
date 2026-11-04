@@ -1,5 +1,5 @@
+import { useActiveReference } from '../useActiveReference.ts';
 import { referenceLabel } from '../derive.ts';
-import { useStore } from '../store.ts';
 import { allocationOf } from '../derive.ts';
 // "What changed": the session's net effect against the official result, kept to one line however many edits
 // were made (seats that moved, the blocs, the majority), with the full undoable history one click away.
@@ -30,7 +30,7 @@ function blocTotals(s: Scenario, r: AllocationResult) {
 }
 
 export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: AllocationResult; base: Scenario; baseR: AllocationResult; ds: ElectionDataset }) {
-  const reference = useStore(st => st.reference);
+  const { reference } = useActiveReference();
   if (reference) { base = reference; baseR = allocationOf(reference); }
   const L = useL();
   const lang = useLang();

@@ -1,3 +1,4 @@
+import { useActiveReference } from '../useActiveReference.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { baselineOf, referenceChanges } from '../derive.ts';
 import { useL } from '../i18n.ts';
@@ -8,7 +9,7 @@ import { EditMarker } from './EditMarker.tsx';
 export function PartEdits({ s, prefix }: { s: Scenario; prefix: string[] }) {
   const L = useL();
   const lang = useStore(st => st.lang);
-  const reference = useStore(st => st.markOfficial ? null : st.reference);
+  const { reference } = useActiveReference();
   const ds = useStore(st => st.datasets[s.electionId]);
   if (!ds) return null;
   const base = reference ?? baselineOf(ds);

@@ -1,4 +1,5 @@
 import { ScenarioSwitcher } from './ScenarioSwitcher.tsx';
+import { useActiveReference } from '../useActiveReference.ts';
 import { referenceLabel } from '../derive.ts';
 import { ElectionAbout } from './ElectionContext.tsx';
 import { allocationOf } from '../derive.ts';
@@ -12,14 +13,14 @@ import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { blocPieces, comparisonGroups, groupingLabel, listLabel, officialSeatsFor } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { setState, useStore } from '../store.ts';
+import { setState } from '../store.ts';
 import { ListDetail } from './ListDetail.tsx';
 import { Mark } from './ListBars.tsx';
 import { PartyLinks } from './PartyLinks.tsx';
 import { Slip } from './ui.tsx';
 
 export function ListSidePanel({ s, r, ds, base, baseR, listId }: { s: Scenario; r: AllocationResult; ds: ElectionDataset; base: Scenario; baseR: AllocationResult; listId: string }) {
-  const reference = useStore(st => st.markOfficial ? null : st.reference);
+  const { reference } = useActiveReference();
   if (reference) { base = reference; baseR = allocationOf(reference); }
   const L = useL();
   const lang = useLang();

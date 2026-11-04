@@ -1,3 +1,4 @@
+import { blocDisplayOrder } from '../blocOrder.ts';
 import { GraphicChanges } from './GraphicChanges.tsx';
 import { changedSeatKeys } from '../graphics.ts';
 import { useGraphicReference } from '../useGraphicReference.ts';
@@ -8,7 +9,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario, SimList } from '../../model/scenario.ts';
 import { listLabel, methodOf, seatBlocsOf, seatedOrder, shownName, referenceLabel, comparisonGroups } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { arcLayout, bandCuts } from '../layout.ts';
+import { arcLayout, annularRegions } from '../layout.ts';
 import { download, isolate, signed } from '../format.ts';
 import { setState, useStore } from '../store.ts';
 import { Seg } from './ui.tsx';
@@ -38,7 +39,8 @@ export function seatOrder(s: Scenario, r: AllocationResult, colorBy: 'list' | 'b
     }
   }
   if (!s.blocs.length) return out;
-  const rank = (b: string | null) => { const i = s.blocs.findIndex((x) => x.id === b); return i < 0 ? s.blocs.length : i; };
+  const order = blocDisplayOrder(s);
+  const rank = (b: string | null) => order.indexOf(b);
   return out.sort((a, b) => rank(a.bloc) - rank(b.bloc) || a.k - b.k);
 }
 
@@ -68,9 +70,10 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   const seats = useMemo(() => seatOrder(s, r, colorBy), [s, r, colorBy]);
   const { base, result: br, labelReference } = useGraphicReference(s, reference);
   const changes = useMemo(() => changedSeatKeys(s, r, base, br), [s, r, base, br]);
+  const hasChanges = changes.gained.size > 0 || changes.lost.size > 0;
   const baselineSeats = useMemo(() => seatOrder(base, br, colorBy), [base, br, colorBy]);
   const total = s.rules.seats;
-  const rtl = lang === 'he';
+  const rtl = false; // Geometry is physically left-to-right in both languages, like the 61 marker.
   const { seats: pos, r: rad } = useMemo(() => arcLayout(total), [total]);
   const W = 1000, H = layout === 'hemicycle' ? 560 : 0;
   const listOf = (id: string) => s.lists.find((l) => l.id === id) as SimList;
@@ -111,7 +114,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
     const vb = el.viewBox.baseVal;
     const rows = s.lists.map(l => ({l,n:r.lists.find(x=>x.id===l.id)?.seats ?? 0})).filter(x=>x.n>0);
     const mini = svgRef.current?.parentElement?.querySelector('.baseline-mini svg') as SVGSVGElement | null;
-    const extra = mini ? 170 : 0;
+    const extra = mini ? 270 : 0;
     if (mini) {
       const inset = mini.cloneNode(true) as SVGSVGElement;
       [inset, ...inset.querySelectorAll('*')].forEach((node,i) => {
@@ -119,10 +122,10 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
         for (const prop of ['fill','stroke','stroke-width','stroke-dasharray','opacity']) node.setAttribute(prop,style.getPropertyValue(prop));
       });
       inset.setAttribute('x',String(vb.x+16)); inset.setAttribute('y',String(vb.y+vb.height+25));
-      inset.setAttribute('width','400'); inset.setAttribute('height','125');
+      inset.setAttribute('width','400'); inset.setAttribute('height','230');
       const label = document.createElementNS('http://www.w3.org/2000/svg','text');
       label.setAttribute('x',String(vb.x+16)); label.setAttribute('y',String(vb.y+vb.height+16)); label.setAttribute('font-size','14');label.setAttribute('fill',css.getPropertyValue('--ink'));
-      label.textContent = L('Baseline outline — schematic losses, no occupied seats', 'מתאר הבסיס — אובדן סכמטי, ללא מושבים תפוסים');
+      label.textContent = referenceLabel(labelReference,lang).name;
       clone.appendChild(label);clone.appendChild(inset);
     }
     clone.setAttribute('viewBox', `${vb.x} ${vb.y} ${vb.width} ${vb.height+extra+Math.ceil(rows.length/2)*28+16}`);
@@ -162,36 +165,13 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   let body: React.ReactNode;
   if (layout === 'hemicycle') {
     const cx = W / 2, cy = 470, R = 400;
-    // pale regions behind each bloc's seats; their edges step row by row, midway between neighbouring blocs' seats
-    const pt = (a: number, rr: number) => `${(cx + Math.cos(a) * rr).toFixed(1)} ${(cy - Math.sin(a) * rr).toFixed(1)}`;
-    const placed = seats.map((_, i) => pos[rtl ? pos.length - 1 - i : i]).filter(Boolean);
-    const geometry = bandCuts(placed, bandOf, bands.length, !rtl);
-    const radii = geometry.radii;
-    // Extend the ends below the seat centres: the boundary encloses the whole endpoint disks.
-    const cuts = geometry.cuts.map(row => row.map(a => a === 0 ? -0.14 : a === Math.PI ? Math.PI + 0.14 : a));
-    const edges = [R * (0.38 - rad) - 10, ...radii.slice(1).map((x, i) => (R * (radii[i] + x)) / 2), R * (1 + rad) + 10];
-    const start = rtl ? -0.14 : Math.PI + 0.14, end = rtl ? Math.PI + 0.14 : -0.14;
-    const arc = (a0: number, a1: number, rr: number) => `A ${rr.toFixed(1)} ${rr.toFixed(1)} 0 0 ${a1 < a0 ? 1 : 0} ${pt(a1, rr)}`;
-    const wedges = bands.map((b, k) => {
-      const left = k === 0 ? radii.map(() => start) : cuts[k - 1];
-      const right = k === bands.length - 1 ? radii.map(() => end) : cuts[k];
-      let d = `M ${pt(left[0], edges[0])}`;
-      radii.forEach((_, i) => { d += ` L ${pt(left[i], edges[i + 1])}`; if (i < radii.length - 1 && left[i + 1] !== left[i]) d += ` ${arc(left[i], left[i + 1], edges[i + 1])}`; });
-      d += ` ${arc(left[radii.length - 1], right[radii.length - 1], edges[radii.length])}`;
-      for (let i = radii.length - 1; i >= 0; i--) { d += ` L ${pt(right[i], edges[i])}`; if (i > 0 && right[i - 1] !== right[i]) d += ` ${arc(right[i], right[i - 1], edges[i])}`; }
-      d += ` ${arc(right[0], left[0], edges[0])} Z`;
-      const outline = d;
-      seats.forEach((_, i) => {
-        if (bandOf[i] !== k) return;
-        const p = placed[i], x = cx + p.x * R, y = cy + p.y * R, rr = rad * R + 5;
-        d += ` M ${x-rr} ${y} a ${rr} ${rr} 0 1 ${rtl ? 0 : 1} ${rr*2} 0 a ${rr} ${rr} 0 1 ${rtl ? 0 : 1} ${-rr*2} 0 Z`;
-      });
-      return { key: `${b.bloc}-${k}`, color: b.color, d, outline };
-    });
+    const wedges = annularRegions(pos, bandOf, rad, cx, cy, R);
     body = (
       <svg ref={svgRef} viewBox={`40 30 920 ${H - 30}`} role="img" aria-label={`${title ?? L('Knesset seat diagram', 'תרשים מושבי הכנסת')}: ${summary}`}>
-        {wedges.map((w) => <path key={w.key} data-bloc-region={bands[wedges.indexOf(w)].bloc} strokeDasharray={bands[wedges.indexOf(w)].bloc === "__none" ? "4 3" : undefined} className="wedge" fillRule="nonzero" d={w.d} fill={w.color} stroke="none" />)}
-        {wedges.map((w,k) => <path key={`edge-${k}`} d={w.outline} fill="none" stroke={w.color} strokeOpacity={0.65} strokeWidth={1.5} strokeDasharray={bands[k].bloc === '__none' ? '4 3' : undefined} />)}
+        {wedges.map(w => <g key={w.band}>
+          <path data-bloc-region={bands[w.band].bloc} className="wedge" d={w.fill} fill={bands[w.band].color} stroke="none" />
+          <path d={w.outline} fill="none" stroke={bands[w.band].color} strokeOpacity={0.65} strokeWidth={1.5} strokeDasharray={bands[w.band].bloc === '__none' ? '4 3' : undefined} />
+        </g>)}
         {seats.map((st, i) => {
           const p = pos[rtl ? pos.length - 1 - i : i]; if (!p) return null;
           const dim = selected && selected !== st.listId;
@@ -228,25 +208,25 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       {expert && !compactProp && (
         <div className="row chamber-tools" style={{ justifyContent: 'flex-end', gap: 6, marginBottom: 4 }}>
           <Seg label={L('Chamber layout', 'פריסה')} value={layout} onChange={(v) => setState({ layout: v })} options={[{ v: 'hemicycle', label: L('Arc', 'קשת') }, { v: 'blocks', label: L('Blocks', 'גושים') }]} />
-          <select aria-label={L('Colour seats by', 'צביעת מושבים לפי')} value={colorBy} onChange={(e) => setState({ colorBy: e.target.value as 'list' | 'bloc' | 'party' })}>
-            <option value="list">{L('Colour: list', 'צבע: רשימה')}</option>
-            <option value="bloc">{L('Colour: bloc', 'צבע: גוש')}</option>
-            <option value="party">{L('Colour: constituent party', 'צבע: מפלגה מרכיבה')}</option>
-          </select>
+
         </div>
       )}
       {body}
-      {changes.lost.size > 0 && <div className="baseline-mini">
-        <p className="small muted">{L('Baseline outline · schematic count comparison · dashed slots: lost ordinals', 'מתאר הבסיס · השוואת כמויות סכמטית · מקווקו: מקומות שאבדו')} · {referenceLabel(labelReference,lang).name}</p>
-        <svg viewBox="0 0 400 125" role="img" aria-label={L('120 empty baseline slots; dashed outlines mark losses, not occupied seats or transfers', '120 מקומות בסיס ריקים; קווים מקווקווים מציינים אובדן, לא מושבים תפוסים או העברות')}>
-          {baselineSeats.map((st,i)=> <rect key={i} data-baseline-slot="" data-lost={changes.lost.has(`${st.listId}:${st.idx}`) ? '' : undefined}
-            x={(rtl ? 19-i%20 : i%20)*20+2} y={Math.floor(i/20)*20+2} width={16} height={16} rx={3}
-            fill="none" stroke="var(--ink)" strokeWidth={changes.lost.has(`${st.listId}:${st.idx}`)?2:1} strokeDasharray={changes.lost.has(`${st.listId}:${st.idx}`)?'3 2':undefined} opacity={changes.lost.has(`${st.listId}:${st.idx}`)?1:0.18} />)}
+      {hasChanges && <div className="baseline-mini">
+        <span className="small muted">{referenceLabel(labelReference,lang).name}</span>
+        <svg viewBox="40 30 920 530" role="img" aria-label={referenceLabel(labelReference,lang).name}>
+          {annularRegions(pos, baselineSeats.map(st=>blocDisplayOrder(base).indexOf(st.bloc)),rad).map(w=>{
+            const id=blocDisplayOrder(base)[w.band], color=base.blocs.find(b=>b.id===id)?.color ?? 'var(--muted)';
+            return <g key={w.band}><path className="wedge" d={w.fill} fill={color} stroke="none" /><path d={w.outline} fill="none" stroke={color} strokeWidth={1.5} strokeOpacity={0.65} /></g>;
+          })}
+          {baselineSeats.map((st,i)=> <circle key={i} data-reference-seat="" data-lost={changes.lost.has(`${st.listId}:${st.idx}`) ? '' : undefined}
+            cx={500+pos[i].x*400} cy={470+pos[i].y*400} r={rad*400} fill={st.color}
+            stroke={changes.lost.has(`${st.listId}:${st.idx}`)?'var(--ink)':'var(--surface)'} strokeWidth={changes.lost.has(`${st.listId}:${st.idx}`)?5:2} strokeDasharray={changes.lost.has(`${st.listId}:${st.idx}`)?'4 3':undefined} />)}
+          <text x={500} y={440} textAnchor="middle" fontSize={44} fill="var(--ink)">{br.seatsAllocated}</text>
         </svg>
       </div>}
-      <GraphicChanges s={s} r={r} reference={reference} />
-      {seats.some(st=>st.bloc===null) && <span className="no-bloc-key small">{L('Dotted neutral region: No bloc', 'אזור ניטרלי מנוקד: ללא גוש')}</span>}
-      <p className="small muted graphic-key">{L('Schematic count comparison: neutral outlines mark gained list ordinals. No individual seat transfers are implied.', 'השוואת כמויות סכמטית: מתאר ניטרלי מציין מקומות שנוספו לרשימה. אין משמעות של העברת מנדט מסוים.')} {referenceLabel(labelReference, lang).since}</p>
+      <p className="small muted graphic-key">{hasChanges ? L(`Outlined: seats gained since ${referenceLabel(labelReference,lang).name}. Small chamber: ${referenceLabel(labelReference,lang).name}.`, `מתאר: מנדטים שנוספו מאז ${referenceLabel(labelReference,lang).name}. הכנסת הקטנה: ${referenceLabel(labelReference,lang).name}.`) : L(`Reference: ${referenceLabel(labelReference,lang).name}`, `בסיס: ${referenceLabel(labelReference,lang).name}`)} <span tabIndex={0} className="comparison-info" aria-label={L('About these outlines','על המתארים')} title={L('Outlines compare list seat counts. Dashed outlines in the reference chamber show losses. They do not identify a seat or voter moving between lists. Dashed bars show the reference; neutral ink shows the difference.', 'המתארים משווים את מספר המנדטים של הרשימות. קווים מקווקווים בכנסת הקטנה מציינים אובדן. אין משמעות של מנדט או בוחר שעבר בין רשימות. מתארי העמודות המקווקווים מציינים את הבסיס; דיו ניטרלי מציין שינוי.')}>(i)</span></p>
+      <GraphicChanges s={s} r={r} reference={reference} compact />
       {hover && hv && (
         <div className="tip" style={{ left: Math.max(0, hover.x - 100), top: Math.max(0, hover.y - 96) }}>
           <div className="row"><span className="swatch" style={{ background: hover.seat.color }} /><b>{listLabel(hv, lang)}</b> <span className="muted">({hv.letters})</span></div>
@@ -259,6 +239,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       )}
       {!compactProp && (
         <div className="legend" role="group" aria-label={L('Lists in the Knesset', 'הרשימות בכנסת')} style={{ marginTop: 6 }}>
+          {seats.some(st=>st.bloc===null) && <span className="row no-bloc-legend"><span className="swatch" style={{background:'color-mix(in srgb, var(--muted) 30%, var(--surface))',border:'1px dotted var(--muted)'}} />{L('No bloc','ללא גוש')}</span>}
           {s.lists.map((l) => ({ l, n: r.lists.find((x) => x.id === l.id)?.seats ?? 0 })).filter((x) => x.n > 0).map(({ l, n }) => (
             <button key={l.id} aria-pressed={selected === l.id} onClick={() => setState({ selectedListId: selected === l.id ? null : l.id })}>
               <span className="swatch" style={{ background: l.color }} />{listLabel(l, lang)} <b className="tabnum">{n}</b>

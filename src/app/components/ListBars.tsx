@@ -1,3 +1,4 @@
+import { useActiveReference } from '../useActiveReference.ts';
 import { referenceLabel } from '../derive.ts';
 import { allocationOf } from '../derive.ts';
 import { PartEdits } from './PartEdits.tsx';
@@ -17,7 +18,7 @@ import { Slip } from './ui.tsx';
 export const Mark = ({ up }: { up: boolean }) => <svg className="mark" viewBox="0 0 10 10" width={8} height={8} aria-hidden><path d={up ? 'M5 1 9.5 9H.5z' : 'M5 9 .5 1h9z'} fill="currentColor" /></svg>;
 
 export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResult; base: Scenario; baseR: AllocationResult }) {
-  const reference = useStore(st => st.markOfficial ? null : st.reference);
+  const { reference } = useActiveReference();
   if (reference) { base = reference; baseR = allocationOf(reference); }
   const L = useL();
   const lang = useLang();

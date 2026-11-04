@@ -1,4 +1,3 @@
-import { choose } from './choices.ts';
 // The three interface levels: Simple (minimal), Standard (common, consequential edits) and Expert
 // (every tool). A level changes what is shown, never what is computed.
 import { readFileSync } from 'node:fs';
@@ -143,7 +142,10 @@ test('percentage precision chosen in Expert does not apply below Expert', async 
 test('a failed election load keeps the open election and offers a retry', async ({ page }) => {
   await page.route('**/data/k25.json', (route) => route.fulfill({ status: 404, body: 'missing' }));
   await start(page);
-  await choose(page.getByRole('button', { name: 'Election' }), 'k25');
+  // This test expects refusal, so do not use choose()'s successful-load barrier.
+  await page.getByRole('button', { name: 'Election' }).click();
+  await page.getByRole('dialog').locator('[data-choice-value="k25"]').click();
+  await page.getByRole('dialog').getByRole('button', { name: 'Open', exact: true }).click();
   await expect(page.getByRole('alert').filter({ hasText: /Could not load the 2022 · 25th Knesset election data/ })).toBeVisible();
   await expect(page.getByRole('alert').getByRole('button', { name: 'Try again' })).toBeVisible();
   await expect(listRow(page, 'Likud').first()).toContainText('27');
