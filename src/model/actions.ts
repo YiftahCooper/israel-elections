@@ -429,6 +429,9 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       s = replaceList(s, action.listId, (l) => ({ ...l, candidates: b!.candidates }));
       break;
     }
+    case 'setDescription':
+      s = { ...s, description: action.description || undefined };
+      break;
     case 'rename':
       s = { ...s, name: action.name };
       break;

@@ -145,6 +145,7 @@ export type Action =
   | { type: 'resetVotes'; listId: string }
   | { type: 'resetCandidates'; listId: string }
   | { type: 'rename'; name: string }
+  | { type: 'setDescription'; description: string }
   /** sets votes cast to pct% of registered voters; every list and the invalid count scale in proportion */
   | { type: 'setTurnout'; pct: number }
   /** restores one part of the scenario to the given (historical) value */
@@ -352,7 +353,7 @@ const actionFields: Record<Action['type'], Check> = {
   setFactionSplit: shape({ listId: string, split: boolean }),
   setLottery: shape({ key: string, winner: nullable(string) }),
   resetList: shape({ listId: string, keepVotes: optional(boolean), base: optional(nullable(list)) }),
-  resetVotes: shape({ listId: string }), resetCandidates: shape({ listId: string }), rename: shape({ name: string }),
+  resetVotes: shape({ listId: string }), resetCandidates: shape({ listId: string }), rename: shape({ name: string }), setDescription: shape({ description: string }),
   setTurnout: shape({ pct: finite }),
   restore: (x) => record(x) && (
     x.what === 'lottery' ||

@@ -1,3 +1,4 @@
+import { referenceLabel } from '../derive.ts';
 import { scenarioColor } from '../scenarioIdentity.ts';
 import { useMemo } from 'react';
 import type { ElectionDataset } from '../../data/schema.ts';
@@ -42,9 +43,10 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
 
   const blocSums = (sc: Scenario, rr: AllocationResult) => Object.fromEntries(sc.blocs.map((b) => [b.id, blocPieces(sc, rr).filter((p) => p.bloc === b.id).reduce((t, p) => t + p.n, 0)]));
   const groupedA = groupingBaseline(s, a);
-  const ba = groupedA ? blocSums(groupedA, ar) : {}, bb = blocSums(s, r);
+  const ba = groupedA ? blocSums(groupedA, allocationOf(groupedA)) : {}, bb = blocSums(s, r);
 
-  const nameA = compareWith === 'official' ? L('Official result', 'התוצאה הרשמית') : compareWith === 'historical' ? reference?.name || L('Official result', 'התוצאה הרשמית') : a.name;
+  const baseLabel = referenceLabel(a === base ? null : a, lang);
+  const nameA = baseLabel.name;
   const nameB = s.name || L('Your scenario', 'התרחיש שלכם');
   const colorOfGroup = (g: (typeof groups)[number]) => (s.lists.find((l) => l.id === g.bIds[0]) ?? a.lists.find((l) => l.id === g.aIds[0]))?.color ?? '#888';
   const labelOf = (g: (typeof groups)[number]) => gName(g.bIds.length ? g.bIds : g.aIds, g.bIds.length ? s : a);
@@ -71,7 +73,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
         <label className="row small">{L('Compare', 'השוואה בין')} <b>{nameB}</b> {L('with', 'לבין')} <span className="swatch" style={{ background: compareWith === 'official' || (!reference && compareWith === 'historical') ? 'var(--axis)' : scenarioColor(a) }} />
           <select value={compareWith} onChange={(e) => setState({ compareWith: e.target.value })}>
             {reference && <option value="official">{L('the official result', 'התוצאה הרשמית')}</option>}
-            <option value="historical">{reference?.name || L('the official result', 'התוצאה הרשמית')}</option>
+            <option value="historical">{referenceLabel(reference, lang).name}</option>
             {saved.filter((x) => x.electionId === s.electionId && x.id !== s.id).map((x) => <option key={x.id} value={x.id} style={{ color: scenarioColor(replay(ds, x.name, x.log).scenario) }}>{x.name}</option>)}
           </select>
         </label>
@@ -152,7 +154,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
                 const dv = g.votesB - g.votesA, ds_ = g.seatsB - g.seatsA;
                 return (
                   <tr key={g.key}>
-                    <td>{g.bIds.length ? g.bIds.map((id) => <button key={id} className="table-action" onClick={() => setState({ selectedListId: id })}>{gName([id], s)}</button>) : gName(g.aIds, a)}{g.aIds.join() !== g.bIds.join() && <small className="muted"> · {L("officially", "בפועל")} {gName(g.aIds, a)}</small>}</td>
+                    <td>{g.bIds.length ? g.bIds.map((id) => <button key={id} className="table-action" onClick={() => setState({ selectedListId: id })}>{gName([id], s)}</button>) : gName(g.aIds, a)}{g.aIds.join() !== g.bIds.join() && <small className="muted"> · {baseLabel.at} {gName(g.aIds, a)}</small>}</td>
                     <td className="n">{fmtInt(g.votesA)}</td><td className="n">{fmtInt(g.votesB)}</td>
                     <td className="n">{dv === 0n ? '—' : fmtSigned(dv)}</td>
                     <td className="n">{ar.totalValid > 0n && r.totalValid > 0n ? fmtRat({ num: 100n * (g.votesB * ar.totalValid - g.votesA * r.totalValid), den: ar.totalValid * r.totalValid }, 2) : '—'}</td>

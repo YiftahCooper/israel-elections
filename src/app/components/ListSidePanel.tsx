@@ -1,3 +1,4 @@
+import { referenceLabel } from '../derive.ts';
 import { ElectionAbout } from './ElectionContext.tsx';
 import { allocationOf } from '../derive.ts';
 import { Majority } from './Majority.tsx';
@@ -21,6 +22,7 @@ export function ListSidePanel({ s, r, ds, base, baseR, listId }: { s: Scenario; 
   if (reference) { base = reference; baseR = allocationOf(reference); }
   const L = useL();
   const lang = useLang();
+  const baseLabel = referenceLabel(reference, lang);
   const ref = useRef<HTMLElement>(null);
   const l = s.lists.find((x) => x.id === listId);
   const lr = l ? r.lists.find((x) => x.id === l.id) : undefined;
@@ -52,7 +54,7 @@ export function ListSidePanel({ s, r, ds, base, baseR, listId }: { s: Scenario; 
         <button className="btn ghost icon-only" aria-label={L('Close', 'סגירה')} onClick={() => setState({ selectedListId: null })}><X className="icon" aria-hidden /></button>
       </header>
       <div className="phone-result-strip" role="status">
-        <span><b>{lr.seats}</b> {L('seats', 'מנדטים')} · <bdi>{was === null ? '—' : d > 0 ? `+${d}` : String(d)}</bdi> {reference ? L(`since ${reference.name}`, `מאז ${reference.name}`) : L('since official result', 'מאז התוצאה הרשמית')} · {L(`${changed} lists changed seats`, `${changed} רשימות שינו מנדטים`)}</span>
+        <span><b>{lr.seats}</b> {L('seats', 'מנדטים')} · <bdi>{was === null ? '—' : d > 0 ? `+${d}` : String(d)}</bdi> {baseLabel.since} · {L(`${changed} lists changed seats`, `${changed} רשימות שינו מנדטים`)}</span>
         <span className="tiny muted">{groupingLabel(s, lang)}</span>
         {blocs.map(b => <span key={b.id}>{lang === 'he' ? b.nameHe : b.nameEn}: <Majority n={pieces.filter(p => p.bloc === b.id).reduce((n,p) => n+p.n,0)} total={s.rules.seats} /></span>)}
         {!assignedBlocs.length && <span>{L('No bloc assigned', 'ללא שיוך לגוש')}</span>}

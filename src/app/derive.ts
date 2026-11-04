@@ -55,6 +55,20 @@ export function ruleChanges(s: Scenario, lang: Lang): string[] {
 
 export const listLabel = (l: Pick<SimList, 'shortHe' | 'shortEn'>, lang: Lang) => (lang === 'en' && l.shortEn ? l.shortEn : l.shortHe);
 
+/** Pass null only for the real election result; saved bases are always named. */
+export function referenceLabel(reference: Pick<Scenario, 'name'> | null, lang: Lang) {
+  const he = lang === 'he';
+  const name = reference ? reference.name || (he ? 'תרחיש שמור' : 'Saved scenario') : he ? 'התוצאה הרשמית' : 'Official result';
+  return {
+    name,
+    since: reference ? (he ? `מאז ${name}` : `Since ${name}`) : he ? 'מאז התוצאה הרשמית' : 'Since official result',
+    at: reference ? (he ? `בתרחיש ${name}` : `in ${name}`) : he ? 'בפועל' : 'officially',
+    more: he ? ` יותר מאשר ב${name}` : ` more than ${reference ? name : 'the official result'}`,
+    fewer: he ? ` פחות מאשר ב${name}` : ` fewer than ${reference ? name : 'the official result'}`,
+    seats: reference ? (he ? `מנדטים בתרחיש ${name}` : `Seats in ${name}`) : he ? 'מנדטים בפועל' : 'Historical seats',
+  };
+}
+
 export interface ScenarioIssue { level: 'error' | 'warning'; en: string; he: string }
 
 /** Internal-consistency checks the user must see (never silently corrected). */
@@ -208,9 +222,13 @@ export function coalitionPieces(s: Scenario, r: AllocationResult) {
   return [...out.values()].sort((a,b) => b.n-a.n);
 }
 
-/** Compare allocations under the same sourced grouping; custom assignments have no official baseline. */
+/** Custom bases are comparable when their grouping and assignments match; sourced schemes can be reapplied. */
 export function groupingBaseline(s: Scenario, base: Scenario): Scenario | null {
-  if (!s.blocSchemeId) return null;
+  if (!s.blocSchemeId || !base.blocSchemeId) {
+    const grouping = (x: Scenario) => [x.blocSchemeId, x.blocs.map(b => b.id).sort(),
+      Object.fromEntries(x.lists.map(l => [l.id, l.bloc])), x.partyBlocs ?? {}, x.candidateBlocs ?? {}];
+    return canonical(grouping(s)) === canonical(grouping(base)) ? base : null;
+  }
   try { return s.blocSchemeId === base.blocSchemeId ? base : applyAction(base, { type: 'applyBlocScheme', schemeId: s.blocSchemeId }); }
   catch { return null; }
 }
@@ -254,12 +272,13 @@ export function referenceChanges(s: Scenario, reference: Scenario): EditPath[] {
       for (const k of new Set([...Object.keys(a), ...Object.keys(b)])) walk((a as any)[k], (b as any)[k], [...path, k]);
     } else if (differsFromReference(s, reference, path)) paths.push(path);
   };
-  for (const key of ['lists', 'rules', 'registered', 'invalid', 'agreements', 'blocs', 'blocSchemeId', 'customGroupingName', 'partyBlocs', 'candidateBlocs', 'factionSplits', 'lotteryWinners', 'mode', 'coalition'] as const) walk(referenceValue(s, [key]), referenceValue(reference, [key]), [key]);
+  for (const key of ['description', 'lists', 'rules', 'registered', 'invalid', 'agreements', 'blocs', 'blocSchemeId', 'customGroupingName', 'partyBlocs', 'candidateBlocs', 'factionSplits', 'lotteryWinners', 'mode', 'coalition'] as const) walk(referenceValue(s, [key]), referenceValue(reference, [key]), [key]);
   return paths;
 }
 
 export function editPathLabel(s: Scenario, path: EditPath, lang: Lang, fallback?: Scenario): string {
   const names: Record<string, [string, string]> = {
+    description: ['Description', 'תיאור'],
     lists: ['Lists', 'רשימות'], votes: ['Votes', 'קולות'], nameHe: ['Full name', 'שם מלא'], shortHe: ['Short Hebrew name', 'שם קצר בעברית'], shortEn: ['English name', 'שם באנגלית'], letters: ['Ballot letters', 'אותיות הרשימה'], color: ['Colour', 'צבע'], bloc: ['Bloc membership', 'שיוך לגוש'], blocs: ['Blocs', 'גושים'], nameEn: ['English name', 'שם באנגלית'], candidates: ['Candidates', 'מועמדים'], agreements: ['Agreements', 'הסכמי עודפים'], rules: ['Rules', 'כללים'], registered: ['Registered voters', 'בעלי זכות בחירה'], invalid: ['Invalid ballots', 'קולות פסולים'], withdrawn: ['Withdrawal', 'פרישה'], customGroupingName: ['Grouping name', 'שם החלוקה'], blocSchemeId: ['Grouping', 'חלוקה'], partyBlocs: ['Party membership', 'שיוך מפלגות'], candidateBlocs: ['Member membership', 'שיוך חברים'], factionSplits: ['Faction splits', 'פיצולי סיעות'], coalition: ['Coalition choices', 'בחירת קואליציה'], mode: ['Rule mode', 'מצב כללים'], seats: ['Seats', 'מנדטים'], quotaRounding: ['Quota rounding', 'עיגול המודד'], remainderMethod: ['Remainder method', 'שיטת חלוקת העודפים'], majorityCap: ['Half-seats cap', 'מגבלת מחצית המושבים'], maxAgreementSize: ['Agreement size', 'גודל הסכם'], agreementRequiresAllQualify: ['Agreement threshold condition', 'תנאי החסימה בהסכם'], quotaSeatOffset: ['Quota divisor offset', 'תוספת למחלק המודד'], remainderRequiresInitialSeat: ['Remainder needs a quota seat', 'עודפים מחייבים מנדט במודד'], agreementRequiresInitialSeat: ['Agreement needs a quota seat', 'הסכם מחייב מנדט במודד'], quotientRounding: ['Quotient rounding', 'עיגול המודדים'], largestRemainderRepeat: ['Repeated remainder seats', 'מנדטי שארית חוזרים'], tiePolicy: ['Tie procedure', 'הכרעה בשוויון'], seatsCappedAtCandidates: ['Candidate seat cap', 'מגבלת מושבים לפי מועמדים'], thresholdPct: ['Threshold', 'אחוז החסימה'], lotteryWinners: ['Lottery', 'הגרלה'], sponsorsHe: ['Sponsors', 'מגישים'], members: ['Members', 'חברות'], enabled: ['Enabled', 'בתוקף'], originIds: ['Origins', 'מקור'], heldVotes: ['Held votes', 'קולות מוחזקים'], parties: ['Parties', 'מפלגות'], in: ['In', 'בפנים'], out: ['Out', 'בחוץ'],
   };
   const listName = (id: string) => {

@@ -16,6 +16,20 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 
 ## [Unreleased]
 
+### Fixed
+
+- Name saved comparison references consistently in English and Hebrew across list bars,
+  accessible deltas, list details, phone results, session summaries and Compare; retain
+  real-result labels for dataset-derived figures. Remove the duplicate summary identity.
+- Compare matching saved custom bloc groupings, including before/after bars and session
+  deltas; keep incompatible groupings without an invented counterpart.
+- Commit scenario descriptions and names on blur or Enter as one undoable action.
+  Description changes have a bilingual history label and shared edit marker, and replay
+  through saves, shares and exports.
+- Add B1/B2/B5 browser regressions, helper/grouping/action unit coverage and saved-reference
+  screenshots in both languages, themes and desktop/phone sizes.
+
+
 ### Changed
 
 - Show bilingual human change values and colour swatches instead of serialized inputs.

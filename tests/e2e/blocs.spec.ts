@@ -6,7 +6,7 @@ const start = async (page: Page, level: string) => {
     JSON.stringify({ lang: 'en', hintDismissed: true, level }));
   await page.goto('/');
   await page.getByRole('combobox', { name: 'Election' }).selectOption('k25');
-  await expect(page.getByRole('combobox', { name: 'Grouping' })).toBeVisible();
+  await expect(page.getByRole('combobox', { name: 'Grouping' }).locator('option:checked')).toHaveText(/37th government/);
 };
 const blocs = (page: Page) => page.getByRole('region', { name: 'Seats by bloc' });
 /** a bloc's band in the strip; its seat count is the bold figure in its label */

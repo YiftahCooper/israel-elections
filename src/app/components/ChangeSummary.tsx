@@ -1,3 +1,4 @@
+import { referenceLabel } from '../derive.ts';
 import { useStore } from '../store.ts';
 import { allocationOf } from '../derive.ts';
 // "What changed": the session's net effect against the official result, kept to one line however many edits
@@ -33,6 +34,7 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
   if (reference) { base = reference; baseR = allocationOf(reference); }
   const L = useL();
   const lang = useLang();
+  const baseLabel = referenceLabel(reference, lang);
   const [open, setOpen] = useState(false);
   const moves = useMemo(() => seatMoves(s, r, base, baseR), [s, r, base, baseR]);
   // blocs are compared under the same sourced grouping; an edited grouping has no official counterpart
@@ -41,7 +43,7 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
     const now = blocTotals(s, r);
     let was: Map<string | null, number> | null = null;
     const b = groupingBaseline(s, base);
-    if (b) was = blocTotals(b, baseR);
+    if (b) was = blocTotals(b, allocationOf(b));
     return s.blocs.map((b) => ({ b, n: now.get(b.id) ?? 0, d: was ? (now.get(b.id) ?? 0) - (was.get(b.id) ?? 0) : null }));
   }, [s, r, base, baseR]);
   if (!s.log.length) return null;
@@ -54,8 +56,7 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
 
   return (
     <div className="session" role="status" aria-live="polite">
-      {s.name && <span className="scn-name" title={s.description ?? s.name}>{s.name}</span>}
-      <b>{reference ? L(`Since ${reference.name}`, `מאז ${reference.name}`) : L('Since official result', 'מאז התוצאה הרשמית')}</b>
+      <b>{baseLabel.since}</b>
       {moves.length === 0
         ? <span className="muted">{L('No seats changed', 'המנדטים לא השתנו')}</span>
         : <span className="moves">

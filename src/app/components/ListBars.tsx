@@ -1,3 +1,4 @@
+import { referenceLabel } from '../derive.ts';
 import { allocationOf } from '../derive.ts';
 import { PartEdits } from './PartEdits.tsx';
 // The lists as a visual column: each list is a row with its logo, name and a seat bar (its official seats shown
@@ -20,6 +21,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   if (reference) { base = reference; baseR = allocationOf(reference); }
   const L = useL();
   const lang = useLang();
+  const baseLabel = referenceLabel(reference, lang);
   const digits = useDigits();
   const { standard } = useLevel();
   const selected = useStore((st) => st.selectedListId);
@@ -67,10 +69,10 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
               {partner && <> · ⇄ {listLabel(partner, lang)}</>}
             </span>
           </span>
-          <span className="sr-only" id={`lbd-${l.id}`}>{L(`${lr.seats} seats`, `${lr.seats} מנדטים`)}, {fmtPct(l.votes, total, digits)}</span>
+          <span className="sr-only" id={`lbd-${l.id}`}>{L(`${lr.seats} seats`, `${lr.seats} מנדטים`)}, {fmtPct(l.votes, total, digits)}{d !== 0 && <>, {Math.abs(d)}{d > 0 ? baseLabel.more : baseLabel.fewer}</>}</span>
           <span className="lb-seats">
             <b key={`s${lr.seats}`} className={s.log.length ? 'tick' : ''}>{lr.seats}</b>
-            {d !== 0 && <small dir="ltr"><Mark up={d > 0} />{Math.abs(d)}<span className="sr-only">{d > 0 ? L(' more than the official result', ' יותר מהתוצאה הרשמית') : L(' fewer than the official result', ' פחות מהתוצאה הרשמית')}</span></small>}
+            {d !== 0 && <small dir="ltr"><Mark up={d > 0} />{Math.abs(d)}</small>}
           </span>
         </button>
         {splitIds.has(l.id) && (l.parties?.length ?? 0) > 1 && (
@@ -95,7 +97,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   return (
     <section className="panel lbars" aria-label={L('Lists', 'הרשימות')}>
       <header><h2>{L('Lists', 'הרשימות')}</h2><span className="spacer" /><span className="small muted">{L('seats', 'מנדטים')}</span></header>
-      {groups.map(g => <p key={g.key} className="lb-group-comparison small ink2">{L(`Ran separately: together ${g.seatsB}, officially ${g.seatsA} as `, `רצו בנפרד: יחד ${g.seatsB}, בפועל ${g.seatsA} בתור `)}{g.aIds.map(id => listLabel(base.lists.find(l => l.id === id)!, lang)).join(' + ')}</p>)}
+      {groups.map(g => <p key={g.key} className="lb-group-comparison small ink2">{L(`Ran separately: together ${g.seatsB}, ${baseLabel.at} ${g.seatsA} as `, `רצו בנפרד: יחד ${g.seatsB}, ${baseLabel.at} ${g.seatsA} בתור `)}{g.aIds.map(id => listLabel(base.lists.find(l => l.id === id)!, lang)).join(' + ')}</p>)}
       <ol className="lb">
         {inKnesset.map(row)}
         {outside.length > 0 && (
