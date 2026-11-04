@@ -13,7 +13,7 @@ export function FamilyEditor({f,initialElection,onEdit,onSave}: {f:Family;initia
  const [election,setElection]=useState(initialElection),[ds,setDataset]=useState<ElectionDataset|null>(null),[search,setSearch]=useState(''),[error,setError]=useState('');
  const [from,setFrom]=useState(''),[to,setTo]=useState(''),[type,setType]=useState<'lineage'|'electoral-partner'>('electoral-partner'),[preview,setPreview]=useState(false),[suggested,setSuggested]=useState('');
  useEffect(()=>{let live=true;setDataset(null);loadDataset(election).then(d=>{if(live)setDataset(d);}).catch(()=>setError(L('Could not load election.','לא ניתן לטעון את הבחירות.')));return()=>{live=false;};},[election]);
- const row=f.elections.find(e=>e.electionId===election), selected=membership(f,election),at=historyElections.findIndex(d=>d.id===election);
+ const row=f.elections.find(e=>e.electionId===election), m=membership(f,election),selected={selected:m.selected,mixed:new Set([...m.mixed,...m.excluded])},at=historyElections.findIndex(d=>d.id===election);
  const listName=(id:string)=>{const l=ds?.lists.find(l=>l.id===id);if(l)return lang==='he'?l.shortHe:l.shortEn??l.shortHe;return partyLabel(appearances.find(a=>a.listId===id)?.partyId??'',lang);};
  const toggle=(id:string,on:boolean,mixed=false)=>onEdit(x=>({...x,defaultMixedPolicy:on&&mixed?'include-whole-list':x.defaultMixedPolicy,disabled:on?x.disabled?.filter(v=>v!==id):[...new Set([...x.disabled??[],id])],included:on?[...new Set([...x.included??[],id])]:x.included?.filter(v=>v!==id)}));
  const edge=suggestions.find(e=>e.id===suggested);

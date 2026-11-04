@@ -26,7 +26,9 @@ overlap: compare shows separate small multiples and never adds family totals.
 The profile opens with swatched family chips; selecting multiple chips is comparison.
 Hidden definitions stay in Manage, alongside import/export and the exact-figures
 preference. Colours are stable by family identity and remain chromatic, separate from
-neutral change marks. Personal definitions get stable colours from their own ids.
+neutral change marks and from the grouping neutrals; every pair of the nine is at least
+OKLab ΔE 12.5 apart (tested). A personal copy keeps its source preset's colour and is
+named "(mine)"/"(copy)" so two chips never look identical.
 The most recently selected family supplies the policy, edit and scenario actions.
 
 The separate share/count charts lead the page. At 1200px and above they sit side by
@@ -46,7 +48,13 @@ Both the chart and table remain keyboard-operable. There is no animation.
 
 One short definition line and a quiet sourced-draft label replace repeated headings.
 The info button opens the full definition, sources and limitations on demand. Mixed
-policy uses Separate / Include whole lists / Exclude segments next to the charts,
+policy uses Separate / Include whole lists / Exclude segments next to the charts. It is a
+per-family view remembered in this browser, not a membership edit, so it never forks.
+Under Separate the line shows whole lists only and a hatched bar stacked on it shows how
+far mixed lists could add (one legend states this once); an election where the family
+ran only inside mixed lists breaks the line instead of plotting zero. Lists left out by
+Exclude, by the user or as contested read "not counted", never "did not contest". Axis
+ticks are round values and decades (every 20 years on phones);
 with grouping and Edit membership beside them. Editing still forks a built-in.
 
 Edit membership is a modal side sheet (full width on phones). An independent
@@ -58,7 +66,9 @@ relationship suggestions and manual partner links remain preview-first. Primary
 choices throughout the profile/sheet use chips, segments or ChoicePicker, not selects.
 
 Scaling has shared quick-action styling, a ± stepper, +1/+5/+10% shortcuts and a
-target-share input mode. Before/after 120-seat strips preview the allocation, with
+target-share input mode. Negative percentages lower a family (to −100% at most). Before/after
+strips show the family's seats in its colour against the majority line, with the seat
+delta, and
 exact target votes and conservation/participation consequences before application.
 
 Opening a chart point or table date also sets an ephemeral historical family lens.

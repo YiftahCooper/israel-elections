@@ -16,7 +16,7 @@ test('1988 family grouping has one part marker, unchanged seats and distinct cha
  await expect(page.locator('.bp-chip .edit-marker')).toHaveCount(0);
  await expect(page.locator('.session')).toContainText('No seats changed');
  const colors=await page.locator('.bp-card').evaluateAll(es=>es.map(e=>(e as HTMLElement).style.getPropertyValue('--bc')));
- expect(colors).toContain('#167f94');expect(new Set(colors).size).toBe(2);
+ expect(colors).toContain('#e0569b');expect(new Set(colors).size).toBe(2);
  await page.evaluate(()=>window.scrollTo(0,0));
  await page.screenshot({path:'.backup-scratch/part-markers/1988-family-grouping.png',fullPage:true});
 });

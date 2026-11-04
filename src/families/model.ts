@@ -41,14 +41,18 @@ export function membership(f: Family, election: ElectionId) {
   for (const id of f.included ?? []) if (id.startsWith(election.slice(1)+'-')) selected.add(id);
   for (const id of mixed) { if (f.defaultMixedPolicy === 'include-whole-list') selected.add(id); else selected.delete(id); }
   for (const id of selected) mixed.delete(id);
+  const excluded = new Set<string>(f.defaultMixedPolicy === 'exclude' ? mixed : []);
   if (f.defaultMixedPolicy === 'exclude') mixed.clear();
-  return { selected, mixed, known: !!row };
+  return { selected, mixed, excluded, known: !!row };
 }
 export function aggregate(f: Family, ds: Pick<ElectionDataset,'id'> & { lists:{id:string;votes:number}[]; totals:{valid:number} }) {
   const m = membership(f, ds.id); const knownIds = new Set(ds.lists.map(l => l.id));
   const unresolved = !m.known || !!f.elections.find(e=>e.electionId===ds.id)?.members.some(m=>m.treatment==='unresolved'&&!f.included?.includes(m.listId)&&!f.disabled?.includes(m.listId)) || [...m.selected,...m.mixed].some(id => id.startsWith(ds.id.slice(1)+'-') && !knownIds.has(id));
   const sum = (ids: Set<string>) => ds.lists.reduce((v,l) => v + (ids.has(l.id) ? BigInt(l.votes) : 0n),0n);
-  return { votes: unresolved ? null : sum(m.selected), mixed: unresolved ? null : sum(m.mixed), valid: BigInt(ds.totals.valid), status: unresolved ? 'unknown' : !m.selected.size && !m.mixed.size ? 'did-not-contest' : 'observed' };
+  // Nothing counted is "did not contest" only when the definition names no list at all for this election;
+  // lists left out by the mixed policy, by the user or as contested are "not counted", never absence.
+  const row = f.elections.find(e=>e.electionId===ds.id), named = !!row && (row.members.length > 0 || row.reviewCandidates.length > 0);
+  return { votes: unresolved ? null : sum(m.selected), mixed: unresolved ? null : sum(m.mixed), excluded: unresolved ? null : sum(m.excluded), valid: BigInt(ds.totals.valid), status: unresolved ? 'unknown' : !m.selected.size && !m.mixed.size ? (named ? 'not-counted' : 'did-not-contest') : 'observed' };
 }
 export function resolve(f: Family, s: Scenario) {
   const { selected, mixed } = membership(f,s.electionId);
@@ -65,14 +69,15 @@ export function distribute(total: bigint, weights: bigint[]): number[] {
   for (const {i} of order) { if (rest-- <= 0n) break; base[i]++; }
   return base.map(n=> { if (n<0n || n>BigInt(Number.MAX_SAFE_INTEGER)) throw new Error('Unsafe votes'); return Number(n); });
 }
-export function decimal(x: string) { if (!/^\d+(\.\d{1,6})?$/.test(x)) throw new Error('Invalid decimal'); const [a,b='']=x.split('.'); return { n:BigInt(a+b), d:10n**BigInt(b.length) }; }
+export function decimal(x: string) { if (!/^-?\d+(\.\d{1,6})?$/.test(x)) throw new Error('Invalid decimal'); const [a,b='']=x.split('.'); return { n:BigInt(a+b), d:10n**BigInt(b.length) }; }
 export function scaleAction(f: Family, s: Scenario, mode: 'multiplier'|'share', value: string, source: SourceChoice): Extract<Action, {type:'familyOperation';operation:'scale'}> {
   const lists=resolve(f,s), members=lists.filter(l=>l.family==='selected'&&!l.withdrawn);
   const current=members.reduce((a,l)=>a+BigInt(l.votes),0n), valid=s.lists.reduce((a,l)=>a+BigInt(l.votes),0n);
   if (!current) throw new Error('zero-family');
   const {n,d}=decimal(value); let target: bigint;
-  if (mode==='multiplier') target=(current*(100n*d+n)+50n*d)/(100n*d);
-  else { if (n>100n*d) throw new Error('target'); target=source.kind==='new' ? (n===100n*d ? -1n : (n*(valid-current)+(100n*d-n)-1n)/(100n*d-n)) : (valid*n+50n*d)/(100n*d); }
+  // A negative percentage lowers the family (−100% removes all its votes); a target share is never negative.
+  if (mode==='multiplier') { if (n < -100n*d) throw new Error('target'); target=(current*(100n*d+n)+50n*d)/(100n*d); }
+  else { if (n<0n || n>100n*d) throw new Error('target'); target=source.kind==='new' ? (n===100n*d ? -1n : (n*(valid-current)+(100n*d-n)-1n)/(100n*d-n)) : (valid*n+50n*d)/(100n*d); }
   const donors=lists.filter(l=>l.family!=='selected'&&!l.withdrawn&&(source.kind!=='transfer'||l.id===source.listId));
   const donorTotal=donors.reduce((a,l)=>a+BigInt(l.votes),0n), delta=target-current;
   if (target<0n || source.kind!=='new' && (donorTotal<delta || donorTotal===0n && delta!==0n)) throw new Error('donors');
