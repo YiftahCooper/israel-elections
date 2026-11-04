@@ -18,7 +18,7 @@ test('reset everything keeps votes supplied by the selected donor', async ({ pag
   await details.getByLabel('Votes', { exact: true }).press('Enter');
   const total = await validVotes(page).getAttribute('data-valid-votes');
   await source.selectOption('t:26-נף');
-  await details.getByRole('button', { name: 'Restore this list as it was' }).click();
+  await details.getByRole('button', { name: 'Restore list' }).click();
   await expect(details.getByLabel('Votes', { exact: true })).toHaveValue('524');
   await expect(validVotes(page)).toHaveAttribute('data-valid-votes', total!);
 });

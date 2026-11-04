@@ -1,3 +1,4 @@
+import { Info } from './components/ui.tsx';
 import { BoardChoices } from './components/BoardChoices.tsx';
 import { useActiveReference } from './useActiveReference.ts';
 import { CustomPage, Feature } from './components/Feature.tsx';
@@ -198,9 +199,9 @@ function Shell() {
                 ])}
               </div></nav>
       <div>
-        {level === 'simple' && !hintDismissed && <div className="banner note" role="status"><span className="banner-text">{L('Click any list, seat, bloc or figure to see and change what is behind it. Every tool is named in the strip under the header.', 'לחצו על כל רשימה, מושב, גוש או נתון כדי לראות ולשנות את מה שמאחוריו. כל הכלים מופיעים בשורה שמתחת לכותרת.')}</span> <button className="btn small ghost icon-only" onClick={() => setState({ hintDismissed: true })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}
+        {level === 'simple' && !hintDismissed && <div className="banner note" role="status"><span className="banner-text">{L('Pick a list. Try a change.', 'בחרו רשימה. נסו לשנות.')} <Info title={L('Explore the board', 'מגלים את תמונת המצב')}>{L('Click any list, seat, bloc or figure to see and change what is behind it. Every tool is named in the strip under the header.', 'לחצו על כל רשימה, מושב, גוש או נתון כדי לראות ולשנות את מה שמאחוריו. כל הכלים מופיעים בשורה שמתחת לכותרת.')}</Info></span> <button className="btn small ghost icon-only" onClick={() => setState({ hintDismissed: true })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}
         {loadBanner}
-        {s.mode === 'experimental' && <div className="banner note" role="status">{L('Experimental rules: this is an alternative electoral system, not a legally possible Israeli result.', 'כללים ניסיוניים: זוהי שיטת בחירות חלופית ולא תוצאה אפשרית לפי החוק בישראל.')}{(() => { const c = ruleChanges(s, lang); return c.length ? <> {L('Changed: ', 'שינויים: ')}<b>{c.join(' · ')}</b>.</> : null; })()} <button className="btn small" onClick={() => dispatch({ type: 'setMode', mode: 'historical' })}>{L('Back to the real rules', 'חזרה לכללים האמיתיים')}</button></div>}
+        {s.mode === 'experimental' && <div className="banner note" role="status">{L('Alternative electoral system', 'שיטת בחירות חלופית')} <Info title={L('Experimental rules', 'כללים ניסיוניים')}>{L('Experimental rules: this is an alternative electoral system, not a legally possible Israeli result.', 'כללים ניסיוניים: זוהי שיטת בחירות חלופית ולא תוצאה אפשרית לפי החוק בישראל.')}</Info>{(() => { const c = ruleChanges(s, lang); return c.length ? <> {L('Changed: ', 'שינויים: ')}<b>{c.join(' · ')}</b>.</> : null; })()} <button className="btn small" onClick={() => dispatch({ type: 'setMode', mode: 'historical' })}>{L('Back to the real rules', 'חזרה לכללים האמיתיים')}</button></div>}
         {notice && <div className="banner note" role="status"><span className="banner-text">{notice}</span> <button className="btn small ghost icon-only" onClick={() => setState({ notice: null })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}
         {issues.map((x, i) => <div key={i} className={`banner ${x.level === 'error' ? 'err' : 'warn'}`} role="alert">{lang === 'he' ? x.he : x.en}</div>)}
         {r.warnings.filter((w) => w.code !== 'internal-loss').map((w, i) => tieAffectsSeats(s, w)
@@ -248,7 +249,7 @@ function Shell() {
           </section>
         )}
         {drawerOpen && <div className="drawer"><ErrorBoundary label={L('List details', 'פרטי רשימה')} resetKey={selected}><ListSidePanel s={committed} r={cr} ds={ds} base={base} baseR={baseR} listId={selected} /></ErrorBoundary></div>}
-        <p className="small muted" style={{ margin: 0 }}>{L('Seat allocation is computed by deterministic code from official Central Elections Committee data. Not affiliated with the CEC or any party.', 'חלוקת המנדטים מחושבת בקוד דטרמיניסטי מנתוני ועדת הבחירות המרכזית. אין קשר לוועדת הבחירות או לאף מפלגה.')}</p>
+        <p className="small muted" style={{ margin: 0 }}>{L('Independent election simulator', 'סימולטור בחירות עצמאי')} <Info title={L('Calculation and independence', 'חישוב ואי־תלות')}>{L('Seat allocation is computed by deterministic code from official Central Elections Committee data. Not affiliated with the CEC or any party.', 'חלוקת המנדטים מחושבת בקוד דטרמיניסטי מנתוני ועדת הבחירות המרכזית. אין קשר לוועדת הבחירות או לאף מפלגה.')}</Info></p>
       </main></>}
       <SourceDialog />
       {toast && <div className={`toast toast-${toast.kind}`} role={toast.kind === 'error' ? 'alert' : 'status'}>{toast.text}</div>}

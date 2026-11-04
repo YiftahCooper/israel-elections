@@ -2,6 +2,8 @@
 
 ## 5 November 2026 — preferences at the action
 
+- Shorten board guidance and keep joint-list assumptions, provenance and graphic explanations in (i). Clear stale share links after edits and keep the phone save/share menu inside the viewport.
+
 - Choose vote source, then “For this list” or “Always”; saved-scenario opens ask which comparison to mark. Both use one preference dialog and resettable settings in Rules → Editing.
 - Keep numeric ± rows and sliders left to right in Hebrew as in English; preserve RTL labels and page layout.
 

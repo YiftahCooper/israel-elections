@@ -29,7 +29,7 @@ test('a duplicate gets its own colour and its own history; a draft already shows
   await expect(chip(page)).not.toContainText('unsaved');
   expect(await appColor(page)).toBe(draftColour);
   await page.getByRole('button', { name: 'Save & share' }).click();
-  await page.getByRole('button', { name: 'Duplicate as a new scenario' }).click();
+  await page.getByRole('button', { name: 'Duplicate scenario' }).click();
   await expect(chip(page)).toContainText('(copy)');
   expect(await appColor(page)).not.toBe(draftColour);
   // undo can never turn the copy back into the original (a later save would overwrite it)

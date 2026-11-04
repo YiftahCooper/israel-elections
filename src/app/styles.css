@@ -108,6 +108,9 @@ input, textarea { caret-color: var(--focus); }
 .band .spacer { flex: 1; }
 .band .menu-pop { position: absolute; z-index: 60; inset-inline-end: 0; top: calc(100% + 6px); width: 300px; max-width: calc(100vw - 20px); padding: 8px; background: var(--surface); color: var(--ink); border: 1px solid var(--rule); border-radius: var(--radius); box-shadow: var(--shadow-pop); display: grid; gap: 4px; }
 .band .menu-pop .btn { justify-content: flex-start; width: 100%; }
+@media (max-width: 760px) {
+  .band .menu-pop { position: fixed; inset-inline: 10px; top: calc(var(--band-h) + 6px); width: auto; max-width: none; max-block-size: calc(100dvh - var(--band-h) - 16px); overflow-y: auto; }
+}
 
 /* ---------- banners and the session summary */
 .banner { padding: 8px 16px; font-size: 13.5px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; border-block-end: 1px solid var(--rule); }

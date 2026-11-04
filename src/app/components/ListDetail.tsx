@@ -53,7 +53,7 @@ function LiveSlider({ l, hist, thr, onCommit }: { l: SimList; hist: number; thr:
         onChange={(e) => preview(Number(e.target.value))} onPointerUp={commit} onKeyUp={commit} onBlur={commit} onTouchEnd={commit} />
       <div dir="ltr" className="row tiny muted" style={{ justifyContent: 'space-between' }}>
         <span>0</span>
-        <span>{drag !== null ? <b className="ink2">{drag.toLocaleString('en-US')}</b> : L('drag to see the seats move', 'גררו כדי לראות את המנדטים זזים')}</span>
+        <span>{drag !== null ? <b className="ink2">{drag.toLocaleString('en-US')}</b> : L('Drag to adjust', 'גררו לשינוי')}</span>
         <span>{max.toLocaleString('en-US')}</span>
       </div>
     </div>
@@ -248,7 +248,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
         </fieldset>
       </section>
 
-      {crossing !== null && Number(s.rules.thresholdPct) > 0 && <p className="small crossing">{crossing ? L('Passed the threshold, so qualifying votes and every allocation were recalculated.', 'עברה את אחוז החסימה, ולכן הקולות המשתתפים וכל החלוקה חושבו מחדש.') : L('Fell below the threshold, so qualifying votes and every allocation were recalculated.', 'ירדה מתחת לאחוז החסימה, ולכן הקולות המשתתפים וכל החלוקה חושבו מחדש.')} <button className="table-action" onClick={() => setState({ tool: 'walk', selectedListId: null })}>{L('Walkthrough: threshold', 'שלבי החלוקה: אחוז החסימה')}</button></p>}
+      {crossing !== null && Number(s.rules.thresholdPct) > 0 && <p className="small crossing">{crossing ? L('Passed the threshold', 'עברה את אחוז החסימה') : L('Below the threshold', 'מתחת לאחוז החסימה')} <Info title={L('Allocation recalculated', 'החלוקה חושבה מחדש')}>{L('Qualifying votes and every allocation were recalculated.', 'הקולות המשתתפים וכל החלוקה חושבו מחדש.')}</Info> <button className="table-action" onClick={() => setState({ tool: 'walk', selectedListId: null })}>{L('Walkthrough: threshold', 'שלבי החלוקה: אחוז החסימה')}</button></p>}
 
       {simple && agr && <p className="small">{L('With ', 'עם ')}{nameOf(partnerId)} · {agrStatus?.active ? L('in force', 'בתוקף') : !agr.enabled ? L('switched off', 'כבוי') : L('no effect', 'ללא השפעה')}</p>}
       <Feature id="agreements">
@@ -286,7 +286,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
             {baseList && listChanged && <button className="btn small" onClick={() => {
               const a = deltaAction(s, l, clampTarget(s, l, baseList.votes, src) - l.votes, src, histShares);
               dispatchMany([...(a ? [a] : []), { type: 'resetList', listId: l.id, keepVotes: true }]);
-            }}>{L('Restore this list as it was', 'שחזור הרשימה כפי שהייתה')}</button>}
+            }}>{L('Restore list', 'שחזור הרשימה')}</button>}
           </div>
           {l.sponsorsHe && <p className="tiny muted" lang="he" style={{ margin: '6px 0 0' }}>{L('Submitted by: ', 'הוגשה מטעם: ')}{l.sponsorsHe.replace(/; /g, ' · ')}</p>}
         </section></Feature>
@@ -331,7 +331,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
 
       <section className="wide">
         <h3>{simple ? L(`Who gets in (${lr.seats})`, `מי נכנס לכנסת (${lr.seats})`) : L('Candidates', 'מועמדים')}<EditMarker s={s} path={['lists', l.id, 'candidates']} /></h3>
-        {ds.lists.find((x) => x.id === l.id)?.candidatesSecondary && <p className="small" style={{ color: 'var(--warn-ink)' }}>{L('Candidate list from a secondary source (the official page could not be retrieved).', 'רשימת המועמדים ממקור משני (העמוד הרשמי לא נטען).')}</p>}
+        {ds.lists.find((x) => x.id === l.id)?.candidatesSecondary && <p className="small" style={{ color: 'var(--warn-ink)' }}>{L('Secondary source', 'מקור משני')} <Info title={L('Candidate source', 'מקור המועמדים')}>{L('Candidate list from a secondary source (the official page could not be retrieved).', 'רשימת המועמדים ממקור משני (העמוד הרשמי לא נטען).')}</Info></p>}
         <Candidates l={l} seats={lr.seats} baseSeats={baseList ? histSeats : -1} baseCandidates={baseList?.candidates} />
       </section>
     </div>

@@ -65,9 +65,9 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
         <input type="checkbox" checked={isSplit} onChange={(e) => dispatch({ type: 'setFactionSplit', listId: l.id, split: e.target.checked })} />
         {L('Faction split after the election', 'הסיעה התפצלה אחרי הבחירות')}
       </label>
-      <p className="tiny muted" style={{ margin: '0 0 6px' }}>{isSplit
+      <Info title={L('About faction splits', 'על פיצול סיעות')}>{isSplit
         ? L('Each party now counts as its own faction in the chamber and the blocs, with the members elected for it. Votes and seats are unchanged.', 'כל מפלגה נספרת עתה כסיעה נפרדת במליאה ובגושים, עם הנבחרים מטעמה. הקולות והמנדטים ללא שינוי.')
-        : L('As happened after some elections (New Hope left National Unity in 2024): the members keep their seats and sit as separate factions.', 'כפי שקרה אחרי בחירות אחדות (תקווה חדשה פרשה מהמחנה הממלכתי ב-2024): הנבחרים שומרים על מושביהם ויושבים כסיעות נפרדות.')}</p>
+        : L('As happened after some elections (New Hope left National Unity in 2024): the members keep their seats and sit as separate factions.', 'כפי שקרה אחרי בחירות אחדות (תקווה חדשה פרשה מהמחנה הממלכתי ב-2024): הנבחרים שומרים על מושביהם ויושבים כסיעות נפרדות.')}</Info>
       <div className="party-rows">
         {parties.map((p) => (
           <div key={p.id} className="party-row">
@@ -85,13 +85,13 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
           </div>
         ))}
       </div>
-      {unknownElected > 0 && <p className="tiny muted">{L(`${unknownElected} elected member(s) have no recorded party; their seats stay with the list.`, `ל-${unknownElected} נבחרים לא תועדה מפלגה; מושביהם נשארים עם הרשימה.`)}</p>}
+      {unknownElected > 0 && <p className="tiny muted">{L(`${unknownElected} unassigned seats`, `${unknownElected} מנדטים ללא שיוך`)} <Info title={L('Unknown party', 'מפלגה לא ידועה')}>{L(`${unknownElected} elected member(s) have no recorded party; their seats stay with the list.`, `ל-${unknownElected} נבחרים לא תועדה מפלגה; מושביהם נשארים עם הרשימה.`)}</Info></p>}
       {standard && (
         <div style={{ marginTop: 6 }}>
           <button className="btn small" aria-expanded={open} onClick={() => setOpen((o) => !o)}>{L('What if they had run separately?', 'מה אילו היו רצות בנפרד?')}</button>
           {open && <div className="joint-split">
-          <p className="small ink2">{L('What if these parties had run on their own? Nobody knows how the joint list’s votes would have divided, so the shares below are an assumption: by default, each party’s share of the list’s elected members. Each part must then pass the threshold on its own, and the joint list’s surplus-vote agreement is dropped. Undo restores the joint list.',
-            'מה אילו המפלגות היו רצות לבד? איש אינו יודע כיצד היו מתחלקים הקולות, ולכן החלוקה שלהלן היא הנחה: כברירת מחדל, חלקה של כל מפלגה בנבחרי הרשימה. כל חלק יצטרך לעבור את אחוז החסימה בעצמו, והסכם העודפים של הרשימה יבוטל. ביטול מחזיר את הרשימה המשותפת.')}</p>
+          <p className="small ink2">{L('Assumed vote shares', 'חלוקת קולות משוערת')} <Info title={L('Split assumptions', 'הנחות הפיצול')}>{L('What if these parties had run on their own? Nobody knows how the joint list’s votes would have divided, so the shares below are an assumption: by default, each party’s share of the list’s elected members. Each part must then pass the threshold on its own, and the joint list’s surplus-vote agreement is dropped. Undo restores the joint list.',
+            'מה אילו המפלגות היו רצות לבד? איש אינו יודע כיצד היו מתחלקים הקולות, ולכן החלוקה שלהלן היא הנחה: כברירת מחדל, חלקה של כל מפלגה בנבחרי הרשימה. כל חלק יצטרך לעבור את אחוז החסימה בעצמו, והסכם העודפים של הרשימה יבוטל. ביטול מחזיר את הרשימה המשותפת.')}</Info></p>
           <div className="kv small">
             {parties.map((p, i) => (
               <Fragment key={p.id}>
@@ -105,7 +105,7 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
             ))}
           </div>
           {Math.abs(sum - 100) > 0.05 && <p className="small" style={{ color: 'var(--warn-ink)' }}>{L(`The shares add up to ${sum}%; the votes are divided in these proportions.`, `החלקים מסתכמים ב-${sum}%; הקולות יחולקו ביחס הזה.`)}</p>}
-          {unassigned > 0 && <p className="tiny muted">{L(`${unassigned} candidate(s) without a recorded party go with ${name(parties.find((p) => p.id === lead)!)} (the party of the list’s leader).`, `${unassigned} מועמדים שמפלגתם לא תועדה יצורפו ל${name(parties.find((p) => p.id === lead)!)} (מפלגת העומד בראש הרשימה).`)}</p>}
+          {unassigned > 0 && <p className="tiny muted">{L(`${unassigned} candidates assigned to lead party`, `${unassigned} מועמדים צורפו למפלגת הראש`)} <Info title={L('Candidate assignment', 'שיוך מועמדים')}>{L(`${unassigned} candidate(s) without a recorded party go with ${name(parties.find((p) => p.id === lead)!)} (the party of the list’s leader).`, `${unassigned} מועמדים שמפלגתם לא תועדה יצורפו ל${name(parties.find((p) => p.id === lead)!)} (מפלגת העומד בראש הרשימה).`)}</Info></p>}
           <div className="row" style={{ gap: 6 }}>
             <button className="btn small primary" onClick={run}>{L(`Run as ${parties.length} separate lists`, `ריצה ב-${parties.length} רשימות נפרדות`)}</button>
             {shares && <button className="btn small ghost" onClick={() => setShares(null)}>{L('Reset shares', 'איפוס החלוקה')}</button>}

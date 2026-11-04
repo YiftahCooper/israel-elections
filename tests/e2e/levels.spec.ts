@@ -21,7 +21,7 @@ const details = (page: Page) => page.getByRole('region', { name: 'List details' 
 test('a first visit opens in Simple with only the essential controls', async ({ page }) => {
   await start(page);
   await expect(levelButton(page, 'Simple')).toHaveAttribute('aria-pressed', 'true');
-  await expect(page.getByRole('status').filter({ hasText: 'Click any list, seat, bloc or figure' })).toBeVisible();
+  await expect(page.getByRole('status').filter({ hasText: 'Pick a list. Try a change.' })).toBeVisible();
   // every tool is listed; this level's own come first
   await expect(analysisTabs(page)).toHaveCount(TOOL_COUNT);
   await expect(analysisTabs(page).first()).toHaveText('Overview');
@@ -77,7 +77,7 @@ test('the chosen level and a dismissed hint survive a reload', async ({ page }) 
   await page.reload();
   await expect(levelButton(page, 'Standard')).toHaveAttribute('aria-pressed', 'true');
   await levelButton(page, 'Simple').click();
-  await expect(page.getByRole('status').filter({ hasText: 'Click any list, seat, bloc or figure' })).toHaveCount(0);
+  await expect(page.getByRole('status').filter({ hasText: 'Pick a list. Try a change.' })).toHaveCount(0);
 });
 
 test('Simple balances vote edits proportionally even if another source was chosen in Standard', async ({ page }) => {
@@ -114,8 +114,10 @@ test('rules changed by an experimental preset are named at every level, and no z
   await page.getByRole('tab', { name: 'What if…' }).click();
   await page.getByRole('button', { name: /^More questions/ }).click(); // Simple starts with the first few
   await page.getByRole('listitem').filter({ hasText: 'Pure proportional representation' }).getByRole('button', { name: 'Open as a scenario' }).click();
-  await expect(page.getByRole('status').filter({ hasText: 'Experimental rules:' })).toContainText('remainder seats by Sainte-Laguë (law: Bader–Ofer)');
-  await expect(page.getByText('no percentage threshold in this election')).toBeVisible();
+  await expect(page.getByRole('status').filter({ hasText: 'Alternative electoral system' })).toContainText('remainder seats by Sainte-Laguë (law: Bader–Ofer)');
+  await expect(page.locator('.fig.static').filter({ hasText: 'Threshold' })).toContainText('None');
+  await page.getByRole('button', { name: 'Experimental rules', exact: true }).click();
+  await expect(page.getByRole('tooltip')).toContainText('not a legally possible Israeli result');
   // a method without a quota stage has no general quota: no "votes per seat" figure at all
   await expect(page.getByRole('button', { name: /^Votes per seat/ })).toHaveCount(0);
 });
