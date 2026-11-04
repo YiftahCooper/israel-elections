@@ -59,7 +59,10 @@ Party logos (`data/meta/logos/kNN.json`, attached by `scripts/lib/build/logos.ts
 verified copy of the logo used at that election is held in `public/logos/`, with `rights` set to
 `free-licence` or `fair-use-identification`, its licence/rights notice, attribution and source.
 New fair-use entries require an official origin and campaign-use date; archives record their URL and timestamp.
-Final bytes and SHA-256 are checked, and original SHA-256 is retained. Constituent entries keyed by party id
+Final bytes and SHA-256 are checked, and original SHA-256 is retained. Newly retained campaign evidence lives under `data/raw/logos/kNN/`, registered in
+`data/raw/SOURCES.json` with `archiveUsed` and separate `captureTimestamp` metadata. Logo entries
+and their source cards use optional `rawEvidence.page` / `rawEvidence.asset` manifest IDs; the logo
+validator verifies the retained files offline. Page/use and asset capture timestamps remain distinct. Constituent entries keyed by party id
 attach to `list.parties[].logo`; joint lists retain their own emblems. A party objection means removal
 ([decision 0089](decisions/0089-party-logos-fair-use.md)); the Sources tab lists the credits. Lists without one keep their ballot letters.
 

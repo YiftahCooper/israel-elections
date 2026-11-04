@@ -31,9 +31,9 @@ Seat-winning denominators come from public/data/kNN.json officialSeats; k26 has 
 | k19 · 2013-01-22 | 12 | 3 | 0 | 1 | 0 |
 | k20 · 2015-03-17 | 10 | 1 | 0 | 0 | 0 |
 | k21 · 2019-04-09 | 11 | 1 | 0 | 0 | 0 |
-| k22 · 2019-09-17 | 9 | 2 | 0 | 0 | 1 |
+| k22 · 2019-09-17 | 9 | 2 | 0 | 0 | 2 |
 | k23 · 2020-03-02 | 8 | 1 | 0 | 0 | 1 |
-| k24 · 2021-03-23 | 13 | 3 | 1 | 0 | 1 |
+| k24 · 2021-03-23 | 13 | 4 | 0 | 0 | 1 |
 | k25 · 2022-11-01 | 10 | 2 | 0 | 4 | 1 |
 | k26 · 2026-10-27 | 11 | 8 | 0 | 1 | 10 |
 
@@ -266,9 +266,9 @@ Evidence references: [commons-130826979](https://commons.wikimedia.org/wiki/File
 
 ### k24 · 2021-03-23
 
-Hosted winners: כן — Blue and White; ת — New Hope; עם — Ra'am.
+Hosted winners: כן — Blue and White; ת — New Hope; עם — Ra'am; פה — Yesh Atid.
 
-Not locally covered winners: מחל — Likud; פה — Yesh Atid; שס — Shas; ב — Yamina; אמת — Labor; ג — United Torah Judaism; ל — Yisrael Beiteinu; ט — Religious Zionism; ודעם — Joint List; מרצ — Meretz.
+Not locally covered winners: מחל — Likud; שס — Shas; ב — Yamina; אמת — Labor; ג — United Torah Judaism; ל — Yisrael Beiteinu; ט — Religious Zionism; ודעם — Joint List; מרצ — Meretz.
 
 Evidence references: [commons-100640724](https://commons.wikimedia.org/wiki/File:New_Hope_party_logo.png), [commons-119107430](https://commons.wikimedia.org/wiki/File:Raam_logo_2021.svg), [commons-130826913](https://commons.wikimedia.org/wiki/File:Blue_and_White_logo_2021.svg), [commons-130829740](https://commons.wikimedia.org/wiki/File:Otzma_Yehudit_2021_logo.svg), [srugim-2021-yesh-atid](https://www.srugim.co.il/525439-%D7%94%D7%9C%D7%95%D7%92%D7%95-%D7%94%D7%97%D7%93%D7%A9-%D7%A9%D7%9C-%D7%99%D7%A9-%D7%A2%D7%AA%D7%99%D7%93-%D7%99%D7%90%D7%99%D7%A8-%D7%9C%D7%A4%D7%99%D7%93-%D7%95%D7%96%D7%A8%D7%99%D7%97%D7%94).
 
@@ -863,3 +863,88 @@ All remaining identities are individually enumerated under **Reproducible covera
 Conclusion map: k25 פה **passes** the official-origin plus election-specific reference criterion (medium, one official-site family; historical byte identity remains unverified). K24 פה and k22 Yesh Atid **remain unresolved for hosting** despite stronger date evidence. K26’s three whole-list priorities and all other missing identities **remain unresolved**; current variants, secondary illustrations and capture indexes do not satisfy the criterion. Exact campaign assets or inspectable dated originals would change these outcomes.
 
 Verification: Node 24.18.0; local Chromium headless shell 1248 used only to inspect downloaded artwork. `node scripts/build-datasets.ts` passed; its second run wrote zero files and all **39** public-data file SHA-256 values were identical. The build skips full polling-station reconciliation where scratch sources are absent, while retained source/locality checks pass. `npm run build -- --outDir .backup-scratch/logo-pass3/dist` passed. `python3 -I scripts/validate-party-logos.py` passed: 26 overlays, 105 source records, 54 assets, 58 hosted entries, two download-unavailable and seven unresolved entries. `npx tsc -p tsconfig.json --noEmit` passed. `npm test`: **54 files, 457 tests passed**. Only the model differential digest changed, to `bf90d94a7fab09a9ba7e62eded247acec1346fb5b23aebdfde2267ab79e9c175`; public/data/k25.json is exactly equal to baseline after recursively omitting `logo` and `builtAt`, and no other dataset changed. The other four differential digests remain unchanged. No push.
+
+## Alternative-archive and retained-evidence pass — 4 November 2026
+
+Baseline: **dd224be** on main. This bounded pass adds **two** hosted identities: k24 Yesh Atid whole list and k22 Yesh Atid constituent. It also retains and strengthens k25 Yesh Atid's existing provenance. The broader acquisition programme remains incomplete. No src/app changes and no push.
+
+### Accepted sources and claim map
+
+- **yeshatid-archive-20190904 — passes, medium confidence:** retained [4 September official campaign page](https://web.archive.org/web/20190904082028id_/https://www.yeshatid.org.il/) explicitly references `/content/images/logo_header.png`, alt “יש עתיד בראשות יאיר לפיד”. The availability API found an [exact election-day asset capture, 17 September 00:23:12 UTC](https://web.archive.org/web/20190917002312id_/https://www.yeshatid.org.il/content/images/logo_header.png). Visually inspected blue/cyan “לפיד יש עתיד 2019” lockup; original PNG is 5,272 bytes and within 256px, retained unchanged. This establishes the separate party's mark; it does **not** establish a Blue and White joint-list lockup. Page and image captures are different dates in the same campaign, one official-site evidence family.
+- **yeshatid-archive-20210301 — passes, medium confidence:** retained [1 March official campaign page](https://web.archive.org/web/20210301193501/https://www.yeshatid.org.il/) references the exact `yeshatid%202021%20logo%20RGB.png` path. [3 March 09:46:52 UTC asset capture](https://web.archive.org/web/20210303094652id_/https://www.yeshatid.org.il/sites/atid/UserContent/images/logo/yeshatid%202021%20logo%20RGB.png) retrieved after backoff. Visually inspected blue lettering and orange sunrise in “2021”, consistent with the earlier January rebrand counterevidence. Original 593×271 PNG retained (13,509 bytes); final 256×117 PNG is 20,863 bytes. No recolouring; Pillow 13.0.0 LANCZOS thumbnail and optimized PNG. No cross-election reuse.
+- **yeshatid-archive-20221101 — existing coverage, stronger provenance:** retained [election-day raw homepage](https://web.archive.org/web/20221101013442id_/https://yeshatid.org.il/) and [2 November archived SVG](https://web.archive.org/web/20221102082854id_/https://yeshatid.org.il/wp-content/uploads/2022/05/logo_svg.svg). The latter's bytes equal the current official-origin download and the existing public SVG: SHA-256 `3a969c0c32b70d9cba0b5797f1759314e8282ee333cd154ecc6efcba8b55fc39`, 7,087 bytes. This corrects the earlier report prose's `3e9e…` hash typo; metadata already held the correct `3a969…` hash. The image capture is **one day after** polling; the election-day page establishes the reference. Historical election-day byte identity remains unproven. White artwork retains `displayBackground: dark`. The response identifies an Archive-It collection 20131 WARC, served through Wayback; this is not a successful direct Archive-It retrieval or independent corroboration.
+
+Retained page and asset pairs live in `data/raw/logos/k22/`, `k24/`, `k25/`. Each file has a `data/raw/SOURCES.json` entry with exact retrieval URL, `archiveUsed`, `captureTimestamp`, retrieval date, bytes and SHA-256. `rawEvidence.page` / `rawEvidence.asset` on the logo entry and matching source card resolve to those manifest IDs; `assetArchiveTimestamp` distinguishes image capture from page/use date. HTTP gzip was decoded for the k25 HTML; standard Wayback replay HTML for k24 retains its toolbar and rewritten references. All other accepted bodies are unchanged. These are source documents, not HTML intended for execution by the application.
+
+`python3 -I scripts/validate-party-logos.py` now checks these optional references offline: election-local paths, source-card agreement, retained bytes/hashes, page timestamp, asset timestamp and original asset hash. Existing older entries without retained evidence are not represented as having it. A corruption probe against the new retained k22 PNG was rejected, and restoring the original passed. Dataset construction remains offline and uses the existing hosted-asset integrity checks.
+
+### Routes actually tested and rejected evidence
+
+| Route | Observed result and consequence |
+|---|---|
+| Memento aggregation, `timetravel.mementoweb.org/api/json/20221001/https://beytenu.org.il/` | DNS resolution failed. No TimeMap inspected and no other-archive coverage inferred. |
+| Common Crawl collection list and `CC-MAIN-2022-40-index` for Israel Beiteinu, HTTPS and HTTP | Connections closed without a response; web fetch also failed. No CDX record acquired, therefore no WARC byte-range fetch was possible. This does not establish absence of captures. |
+| NLI public archive page and `web-archive.nli.org.il/National_Library/cdx` for Israel Beiteinu | HTTP 403; public page body was a Cloudflare challenge. Stopped without interacting with the challenge. NLI campaign capture contents remain uninspected. |
+| Arquivo.pt versionHistory, date-filtered | K26 Religious Zionism, Ra'am and Hadash returned zero rows in August–27 October. K25 Israel Beiteinu, Yesh Atid (non-www), Labor (havoda www/non-www), New Hope, Otzma (both discovery spelling and official www.ozmayeudit.com) and Ra'am returned zero rows in August–1 November. Zero results apply to these queries, not every URL/path in the archive. |
+| Arquivo.pt Likud | Two August 2022 index rows: HTTP→HTTPS redirect and captured HTTP 403. Rejected; no qualifying campaign page. Non-www query resolves to the same records. |
+| Arquivo.pt Hadash 2022 | One HTTP redirect, no inspected campaign logo. |
+| Arquivo.pt Israel Beiteinu replay | Requesting October 2022 resolved to **15 February 2023**, as verified by Memento-Datetime; page references `logo_260.png`, but post-election capture cannot date the 2022 rendering. Exact image replay failed. Not promoted. |
+| Arquivo.pt Yesh Atid www | September 2021 homepage inspected, references the 2021 PNG; exact image replay returned 404. It is after k24 and cannot itself support campaign use; not substituted for the retained March page. |
+| Arquivo.pt other failures | Shas www/non-www, k24 New Hope and exact 2019 Yesh Atid asset index queries reported network unreachable. Not empty-result claims. |
+| Archive-It aggregate TimeMap endpoint | HTTP 200 body was **Session Verification**, not a TimeMap. Stopped; no challenge solving or bypass. |
+| Wayback availability API → exact raw captures | Served all three accepted assets/pages above except the k24 page, which succeeded via standard replay. Nearest-date image replays often returned 429; selecting the actual asset timestamp eventually succeeded for k22 and k25, and k24 after a backed-off retry. |
+| Wayback remaining captures | Exact Hadash/Religious Zionism k26 and Likud/Israel Beiteinu k25 homepages returned 429. Requests were serial with ≥5-second gaps; failed resources revisited after ≥60 seconds where retried. No Retry-After was exposed. These failures do not imply absent captures. |
+| Official origins / search discovery | Yesh Atid 2022 origin SVG matches archived bytes. 2019 origin image is 404; 2021 origin previously 404. Religious Zionism current HTML remains separate party branding. Ra'am `almwahda.com` disconnected. Zehut's official `/petek` page depicts a ballot and explicitly names the joint list, not a qualifying joint campaign logo; rejected. |
+
+No proxies, email-bearing User-Agent, CAPTCHA interaction or bot-challenge bypass. Archive.today, LoC and UK archive capture interfaces were not exercised in this pass; no availability claim is made for them. Search results only guided discovery; no English Wikipedia result was opened, relied on or cited. Diagnostic bodies, rejected captures, tools and build output remain disposable in `.backup-scratch/logo-archives/`; accepted sources are durable.
+
+### Coverage, baseline → this pass
+
+Counts below use `scripts/research/logo-coverage.py`'s winner and constituent definitions, extended over all 26 elections for this comparison. Nonwinning whole-list coverage is unchanged. K25 Jewish Home and all three of its constituents remain unresolved; no nonwinning identities were promoted.
+
+| Election | Winning lists | Winning-list constituents |
+|---|---:|---:|
+| k26 | 8/11 → 8/11 | 8/19 → 8/19 |
+| k25 | 2/10 → 2/10 | 1/11 → 1/11 |
+| k24 | 3/13 → 4/13 | 1/12 → 1/12 |
+| k23 | 1/8 → 1/8 | 1/18 → 1/18 |
+| k22 | 2/9 → 2/9 | 1/19 → 2/19 |
+| k21 | 1/11 → 1/11 | 0/14 → 0/14 |
+| k20 | 1/10 → 1/10 | 0/11 → 0/11 |
+| k19 | 3/12 → 3/12 | 0/9 → 0/9 |
+| k18 | 2/12 → 2/12 | 0/12 → 0/12 |
+| k17 | 1/12 → 1/12 | 0/11 → 0/11 |
+| k16 | 2/13 → 2/13 | 0/14 → 0/14 |
+| k15 | 2/15 → 2/15 | 0/12 → 0/12 |
+| k14 | 2/11 → 2/11 | 0/12 → 0/12 |
+| k13 | 1/10 → 1/10 | 0/6 → 0/6 |
+| k12 | 1/15 → 1/15 | 0/6 → 0/6 |
+| k11 | 2/15 → 2/15 | 0/11 → 0/11 |
+| k10 | 1/10 → 1/10 | 0/7 → 0/7 |
+| k9 | 4/13 → 4/13 | 0/11 → 0/11 |
+| k8 | 0/10 → 0/10 | 0/11 → 0/11 |
+| k7 | 0/13 → 0/13 | 0/4 → 0/4 |
+| k6 | 1/13 → 1/13 | 0/4 → 0/4 |
+| k5 | 0/11 → 0/11 | 0/0 → 0/0 |
+| k4 | 0/12 → 0/12 | 0/2 → 0/2 |
+| k3 | 0/12 → 0/12 | 0/4 → 0/4 |
+| k2 | 0/15 → 0/15 | 0/0 → 0/0 |
+| k1 | 1/12 → 1/12 | 0/7 → 0/7 |
+
+### Remaining gaps and limits
+
+The complete earlier identity inventory remains authoritative **except** k24 whole list פה and k22 constituent yesh-atid, now hosted. In particular:
+
+- **K26 priorities:** ג remains without inspected official campaign-origin artwork; the dated secondary audit reports no official site, and newspaper/social leads remain unverified. ט remains without a verified combined Religious Zionism–Zehut lockup; Zehut's ballot illustration and separate party header do not satisfy that criterion. עם remains without inspected ownership/date/asset evidence; its candidate origin disconnected. Alternative-archive failures above do not resolve any of these.
+- **K26 constituents:** agudat-yisrael, degel-hatorah and homat-torat-yisrael still lack separate inspected campaign marks; hadash still lacks a retrievable inspected dated capture; taal/balad retain failed origin leads; meretz retains timeout/date uncertainty; yesodot-yisrael retains official-asset discovery failure; atid-ehad, eretz-yisrael-shelanu and together-bennett retain missing separate campaign evidence. No constituent was inferred from a joint list.
+- **K25 winners:** אמת, ג, ום, ט, ל, מחל, עם, שס remain missing. Israel Beiteinu's available alternative page is too late; Likud's Arquivo capture is a 403; other returned indexes, current logos and secondary launch illustrations do not establish final official-origin campaign artwork. Constituents agudat-yisrael, atid-ehad, degel-hatorah, eretz-yisrael-shelanu, hadash, israel-resilience, new-hope, noam, otzma-yehudit, taal remain unverified. Jewish Home's nonwinning list and new-right, jewish-home, religious-national-israeli constituents retain missing exact 2022 official campaign evidence.
+- **K24 and k22:** remove only the two newly hosted identities from the previous gap inventory. Other lists/constituents keep their previously stated date, origin and retrieval gaps; this pass did not inspect new qualifying originals for them.
+- **K23, k21 and k20 back through k1:** no additional acquisition completed. Every previously enumerated gap remains unresolved for its prior reason; unchanged coverage is not a new finding that no logo exists. Nonwinning identities were not searched exhaustively.
+
+### Reproduction and verification
+
+No network is needed to use the accepted evidence. Manifest IDs under each entry's `rawEvidence` locate the retained HTML/originals; final files are in `public/logos/`. To regenerate the k24 PNG, use Python 3.13.16 with Pillow 13.0.0, open `data/raw/logos/k24/yeshatid-original.png`, call `thumbnail((256, 256), Image.Resampling.LANCZOS)`, then `save(..., optimize=True)` as PNG. K22 PNG and k25 SVG are unchanged archived bytes. Retain the locked npm dependencies. Reproduction helpers/dependencies and caches are disposable scratch; their exclusion by backup systems outside this repository is unverified.
+
+Verification used Node 24.18.0. Dataset build passed, then a second run was byte-stable across all **39** public-data JSON files. Polling-station reconciliation is skipped where scratch station sources are absent, as explicitly reported by the existing builder; retained source and derived-locality integrity checks pass. Production Vite build passed with output under scratch; TypeScript passed. Logo validator passed: **26 overlays, 105 source records, 56 assets, 60 hosted entries**, no download-unavailable entries and seven unresolved entries. Full `npm test`: **54 files, 457 tests passed**.
+
+Only the differential **model** digest was re-recorded, to `3249213d9d3e5c87bc8e5ee3b95ac644b35866d9dde1964248972c6ef2e0035f`. All 26 election datasets compare equal to baseline after recursively removing `logo` and `builtAt`; only k22/k24 datasets changed. Temporarily restoring those two baseline datasets reproduced **all five** previous digests. Allocation, analysis, validation and rules digests remain unchanged. The public source manifest additionally gains the six retained-evidence records. No allocation or candidate data changed.

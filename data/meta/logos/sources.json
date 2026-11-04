@@ -2287,14 +2287,20 @@
       "accessMethod": "Direct HTTPS; generic Mozilla/5.0 User-Agent; CDX-selected capture and official-origin asset",
       "inspectionDepth": "Archived HTML header reference and downloaded SVG visually inspected",
       "date": "2022-11-01",
-      "description": "Election-day capture references wp-content/uploads/2022/05/logo_svg.svg as the desktop header. Exact origin file retrieved, 7087 bytes; white lettering requires a dark backdrop. Archive confirms the path, not historical byte identity.",
+      "description": "Election-day capture references wp-content/uploads/2022/05/logo_svg.svg as the desktop header. Exact origin file retrieved, 7087 bytes; white lettering requires a dark backdrop. Archive confirms the path, not historical byte identity. Continuation: retained raw HTML and the November 2 archived SVG, byte-identical to origin/public SVG; archive asset capture is one day after polling. Not an election-day byte capture.",
       "archiveUrl": "https://web.archive.org/web/20221101013442/https://yeshatid.org.il/",
       "archiveTimestamp": "20221101013442",
       "downloadUrl": "https://yeshatid.org.il/wp-content/uploads/2022/05/logo_svg.svg",
       "licence": "Copyright retained by rights holder",
       "licenceTemplates": [],
       "evidenceFamily": "yeshatid-official-site-2022",
-      "selected": true
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k25-yeshatid-page",
+        "asset": "logo-k25-yeshatid-archived-original"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20221102082854id_/https://yeshatid.org.il/wp-content/uploads/2022/05/logo_svg.svg",
+      "assetArchiveTimestamp": "20221102082854"
     },
     {
       "id": "yeshatid-archive-20210301",
@@ -2303,17 +2309,23 @@
       "publisher": "יש עתיד",
       "sourceType": "official party campaign website",
       "accessed": "2026-11-04",
-      "accessMethod": "CDX-selected Wayback replay, generic Mozilla/5.0 User-Agent",
-      "inspectionDepth": "Archived HTML header reference inspected; referenced image not retrieved",
+      "accessMethod": "Wayback standard page replay and availability-selected exact raw asset replay after backoff",
+      "inspectionDepth": "Retained March 1 homepage HTML reference and March 3 archived PNG visually inspected",
       "date": "2021-03-01",
-      "description": "Header references /sites/atid/UserContent/images/logo/yeshatid%202021%20logo%20RGB.png; exact dated image rendering remains uninspected. No constituent/list substitution.",
+      "description": "Retained official March 1 campaign homepage references the exact 2021 PNG, alt יש עתיד בראשות יאיר לפיד. Downloaded March 3 asset capture and visually inspected blue Yesh Atid/Lapid lettering with 2021 orange sunrise design. Page and asset captures are separate dates in the same campaign, one official-site evidence family.",
       "archiveUrl": "https://web.archive.org/web/20210301193501/https://www.yeshatid.org.il/",
       "archiveTimestamp": "20210301193501",
       "downloadUrl": "https://www.yeshatid.org.il/sites/atid/UserContent/images/logo/yeshatid%202021%20logo%20RGB.png",
       "licence": "Copyright retained by rights holder",
       "licenceTemplates": [],
       "evidenceFamily": "yeshatid-official-site-2021",
-      "selected": false
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k24-yeshatid-page",
+        "asset": "logo-k24-yeshatid-original"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20210303094652id_/https://www.yeshatid.org.il/sites/atid/UserContent/images/logo/yeshatid%202021%20logo%20RGB.png",
+      "assetArchiveTimestamp": "20210303094652"
     },
     {
       "id": "yeshatid-archive-20190904",
@@ -2322,17 +2334,23 @@
       "publisher": "יש עתיד",
       "sourceType": "official party campaign website",
       "accessed": "2026-11-04",
-      "accessMethod": "CDX-selected Wayback replay, generic Mozilla/5.0 User-Agent",
-      "inspectionDepth": "Archived HTML header reference inspected; referenced image not retrieved",
+      "accessMethod": "Availability API plus exact Wayback raw id_ replay; generic Mozilla/5.0 User-Agent",
+      "inspectionDepth": "Retained campaign HTML reference and election-day archived PNG visually inspected",
       "date": "2019-09-04",
-      "description": "Header references /content/images/logo_header.png; exact dated image rendering remains uninspected. No constituent/list substitution.",
+      "description": "Retained September 4 official campaign HTML references /content/images/logo_header.png with alt יש עתיד בראשות יאיר לפיד. Retrieved and visually inspected that exact path from its September 17 election-day capture: blue/cyan Yesh Atid 2019 lockup. Separate party identity, not a Blue and White whole-list logo. Page and asset captures are different dates in the same campaign; one official-site evidence family.",
       "archiveUrl": "https://web.archive.org/web/20190904082028/https://www.yeshatid.org.il/",
       "archiveTimestamp": "20190904082028",
       "downloadUrl": "https://www.yeshatid.org.il/content/images/logo_header.png",
       "licence": "Copyright retained by rights holder",
       "licenceTemplates": [],
       "evidenceFamily": "yeshatid-official-site-2019",
-      "selected": false
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k22-yeshatid-page",
+        "asset": "logo-k22-yeshatid-original"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20190917002312id_/https://www.yeshatid.org.il/content/images/logo_header.png",
+      "assetArchiveTimestamp": "20190917002312"
     }
   ]
 }

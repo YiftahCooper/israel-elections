@@ -75,21 +75,31 @@
     },
     {
       "letters": "פה",
-      "file": null,
+      "file": "logos/yesh-atid-2021.png",
       "sourceUrl": "https://www.yeshatid.org.il/",
       "assetSourceUrl": "https://www.yeshatid.org.il/sites/atid/UserContent/images/logo/yeshatid%202021%20logo%20RGB.png",
       "licence": "Copyright retained by rights holder; fair-use identification",
       "attribution": "יש עתיד בראשות יאיר לפיד — official party header",
       "rights": "fair-use-identification",
-      "hosted": false,
-      "status": "download-unavailable",
+      "hosted": true,
+      "status": "verified",
       "confidence": "medium",
       "evidenceId": "yeshatid-archive-20210301",
       "inUseDate": "2021-03-01",
       "archiveUrl": "https://web.archive.org/web/20210301193501/https://www.yeshatid.org.il/",
       "archiveTimestamp": "20210301193501",
-      "inUseEvidence": "Inspected official homepage capture dated 2021-03-01 explicitly references /sites/atid/UserContent/images/logo/yeshatid%202021%20logo%20RGB.png with alt יש עתיד בראשות יאיר לפיד. Separate party identity; the 2019 capture does not supply a Blue and White whole-list lockup. Exact archived image retrieval returned HTTP 429; no rendering or historical byte match is claimed.",
-      "retrieval": "Generic Mozilla/5.0 User-Agent; archive replay retried after backoff. Remains unhosted until image can be retrieved and visually inspected."
+      "inUseEvidence": "Retained official March 1 campaign homepage references the exact 2021 PNG, alt יש עתיד בראשות יאיר לפיד. Downloaded March 3 asset capture and visually inspected blue Yesh Atid/Lapid lettering with 2021 orange sunrise design. Page and asset captures are separate dates in the same campaign, one official-site evidence family.",
+      "retrieval": "Availability API selected exact asset capture. Generic Mozilla/5.0 User-Agent; raw replay succeeded after backoff. Original preserved; Pillow 13.0.0 LANCZOS thumbnail to 256 pixels, optimized PNG; no recolouring.",
+      "rawEvidence": {
+        "page": "logo-k24-yeshatid-page",
+        "asset": "logo-k24-yeshatid-original"
+      },
+      "sha256": "24612d5b37f82323c4de5f16e6153b5461bc6f3a8dc05f493a7d18f9ed2946a9",
+      "originalSha256": "6dd2582997a94a59e57524e8eb13d7b2e23b2ed071fd315a785a0034c84f2777",
+      "bytes": 20863,
+      "retrievedAt": "2026-11-04",
+      "assetArchiveUrl": "https://web.archive.org/web/20210303094652id_/https://www.yeshatid.org.il/sites/atid/UserContent/images/logo/yeshatid%202021%20logo%20RGB.png",
+      "assetArchiveTimestamp": "20210303094652"
     }
   ]
 }
