@@ -2,10 +2,8 @@
 
 <!-- impeccable:product-schema 1 -->
 
-> Written on 4 November 2026 from the owner's stated requirements across the build sessions, while the
-> owner was unavailable (he asked the agent to run Impeccable on his behalf). Every line restates a
-> requirement he gave in conversation or a fact in the repository; nothing here was confirmed in an
-> Impeccable interview. Facts marked *(inferred)* are the agent's reading and await his review.
+> Written on 4 November 2026 from the owner's stated requirements across the build sessions and reviewed by
+> the owner the same day ("it seems about right").
 
 ## Platform
 
@@ -57,7 +55,7 @@ official sources, in Hebrew and English, at three levels of depth.
 
 - Name: "Israeli Elections Explorer" / "סייר הבחירות לכנסת".
 - Neutral and non-partisan: not affiliated with the Central Elections Committee or any party; party colours and
-  logos represent parties as they presented themselves *(inferred: no party is visually favoured)*.
+  logos represent parties as they presented themselves; no party is visually favoured.
 
 ## Evidence on Hand
 
@@ -71,7 +69,7 @@ official sources, in Hebrew and English, at three levels of depth.
 2. Simple stays simple: complexity is available at Standard and Expert, never forced on the default view.
 3. Hebrew first, English equal: both languages are complete, with correct right-to-left behaviour.
 4. Every edit is reversible and explains its consequence before or as it happens.
-5. Neutrality: blocs, colours and wording never favour a party or camp *(inferred)*.
+5. Neutrality: blocs, colours and wording never favour a party or camp.
 
 ## Interaction Principles
 
