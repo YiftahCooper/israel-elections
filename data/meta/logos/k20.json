@@ -7,7 +7,7 @@
       "licence": "Public domain (PD-textlogo)",
       "attribution": "רונאלדיניו המלך; File:Kulanu Kahlon logo.svg; Public domain (PD-textlogo).",
       "hosted": true,
-      "inUseEvidence": "Commons records the original upload on 8 January 2015 from the party website, during the campaign before the March 2015 election. Asset download returned HTTP 429 (Retry-After: 600); no local image is provided.",
+      "inUseEvidence": "Commons records the original upload on 8 January 2015 from the party website, during the campaign before the March 2015 election.",
       "confidence": "medium",
       "letters": "כ",
       "evidenceId": "commons-39073240",
@@ -15,7 +15,9 @@
       "status": "verified",
       "sha256": "182a4b7b2f5c2cb523093c59720822abbe42eab55deb12689521fcc287a66fd6",
       "originalSha256": "182a4b7b2f5c2cb523093c59720822abbe42eab55deb12689521fcc287a66fd6",
-      "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas."
+      "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas.",
+      "rights": "free-licence",
+      "bytes": 13677
     }
   ]
 }

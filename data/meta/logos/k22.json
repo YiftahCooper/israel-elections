@@ -7,7 +7,7 @@
       "licence": "Public domain (PD-textlogo)",
       "attribution": "Joint List; File:Joint List logo 2019.svg; Public domain (PD-textlogo).",
       "hosted": true,
-      "inUseEvidence": "Commons dates this party-supplied variant to August 2019, immediately before the September 2019 election. Asset download returned HTTP 429 (Retry-After: 600); no local image is provided.",
+      "inUseEvidence": "Commons dates this party-supplied variant to August 2019, immediately before the September 2019 election.",
       "confidence": "medium",
       "letters": "ודעם",
       "evidenceId": "commons-94577687",
@@ -15,7 +15,9 @@
       "status": "verified",
       "sha256": "0116bca00110a162fe728bbc86fbc3f52594653232fc15921f02df877a006f63",
       "originalSha256": "0116bca00110a162fe728bbc86fbc3f52594653232fc15921f02df877a006f63",
-      "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas."
+      "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas.",
+      "rights": "free-licence",
+      "bytes": 18411
     },
     {
       "file": "logos/yamina-2019.svg",
@@ -23,7 +25,7 @@
       "licence": "Public domain (PD-textlogo)",
       "attribution": "Author not recorded by Commons; File:Yamina logo.svg; Public domain (PD-textlogo).",
       "hosted": true,
-      "inUseEvidence": "Commons cites the 21 August 2019 newspaper, page 9, as the source of this design before the September 2019 election. Asset download returned HTTP 429 (Retry-After: 600); no local image is provided.",
+      "inUseEvidence": "Commons cites the 21 August 2019 newspaper, page 9, as the source of this design before the September 2019 election.",
       "confidence": "medium",
       "letters": "טב",
       "evidenceId": "commons-130829705",
@@ -31,7 +33,9 @@
       "status": "verified",
       "sha256": "fc9f056830b32262edff5512e05e714b0653bdd53c20b3e7b638f86fa72a3cd6",
       "originalSha256": "fc9f056830b32262edff5512e05e714b0653bdd53c20b3e7b638f86fa72a3cd6",
-      "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas."
+      "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas.",
+      "rights": "free-licence",
+      "bytes": 7003
     },
     {
       "file": "logos/balad-2019.svg",
@@ -39,7 +43,7 @@
       "licence": "Public domain (PD-textlogo)",
       "attribution": "Balad (political party); File:Balad.svg; Public domain (PD-textlogo).",
       "hosted": true,
-      "inUseEvidence": "Commons dates this vector to 4 August 2019 and cites the party’s 2019 website logo. Constituent emblem only; not the Joint List emblem. Asset download returned HTTP 429 (Retry-After: 600); no local image is provided.",
+      "inUseEvidence": "Commons dates this vector to 4 August 2019 and cites the party’s 2019 website logo. Constituent emblem only; not the Joint List emblem.",
       "confidence": "medium",
       "party": "balad",
       "evidenceId": "commons-107297670",
@@ -47,7 +51,9 @@
       "status": "verified",
       "sha256": "e8d31c599e217e9a5ad864bebbb5f8ac19c67ebfa70598fcd323950ba9229115",
       "originalSha256": "e8d31c599e217e9a5ad864bebbb5f8ac19c67ebfa70598fcd323950ba9229115",
-      "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas."
+      "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas.",
+      "rights": "free-licence",
+      "bytes": 17244
     }
   ]
 }

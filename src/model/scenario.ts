@@ -265,7 +265,7 @@ const candidate = shape({ id: string, nameHe: string, partyHe: optional(string),
   displayNameHe: optional(string), notes: optional(array(shape({ en: string, he: string }))), partyId: optional(string),
   bio: optional(shape({ knesset: optional(httpsUrl), hewiki: optional(shape({ title: string, url: httpsUrl })),
     party: optional(shape({ url: httpsUrl, publisher: optional(string), archivedAt: optional(string) })), probable: optional(boolean) })) });
-const logo = shape({ file: string, licence: string, attribution: string, sourceUrl: string, background: optional(string) });
+const logo = shape({ rights: optional(oneOf('free-licence', 'fair-use-identification')), file: string, licence: string, attribution: string, sourceUrl: string, background: optional(string) });
 const party = shape({ id: string, nameHe: string, nameEn: string, color: optional(string), logo: optional(logo) });
 const candidates: Check = (x) => array(candidate)(x) && new Set((x as SimCandidate[]).map((c) => c.id)).size === (x as SimCandidate[]).length;
 const bloc = shape({ id: string, nameHe: string, nameEn: string, color: string });

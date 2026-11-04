@@ -14,7 +14,9 @@
       "evidenceId": "commons-99877993",
       "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Labor-Meimad.png",
       "status": "verified",
-      "originalSha256": "f974058eded3a5495feda83c2a31b0ec9cbb7c52b06fdb84e7b49b25870496d3"
+      "originalSha256": "f974058eded3a5495feda83c2a31b0ec9cbb7c52b06fdb84e7b49b25870496d3",
+      "rights": "free-licence",
+      "bytes": 11097
     },
     {
       "file": "logos/am-ehad-2003.png",
@@ -29,7 +31,9 @@
       "evidenceId": "commons-115472839",
       "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/30/AmEchad.png",
       "status": "verified",
-      "originalSha256": "7f3bd339fae19311176c6212c5761a5f55ea29f73074d8050e57a9fa1242bcf3"
+      "originalSha256": "7f3bd339fae19311176c6212c5761a5f55ea29f73074d8050e57a9fa1242bcf3",
+      "rights": "free-licence",
+      "bytes": 11015
     }
   ]
 }

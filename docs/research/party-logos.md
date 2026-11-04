@@ -1,10 +1,10 @@
 # Party logos by election — research and source archive
 
-Research objective: supply election-specific list and constituent emblems for the explorer without substituting later designs or redistributing unverified rights. As of 4 November 2026. This is a bounded research pass, not a complete logo catalogue. The source policy in README.md and docs/DATA.md applies.
+Research objective: supply election-specific list and constituent emblems for the explorer without substituting later designs, under the owner’s free-licence or fair-use identification policy (decision 0089). As of 4 November 2026. This is a bounded research pass, not a complete logo catalogue. The source policy in README.md and docs/DATA.md applies.
 
 ## Reading coverage
 
-“Hosted” counts whole seat-winning lists with a local, eligible logo. “Dated external” counts whole-list candidates with date evidence but a failed download; these are not display-ready. “Rights only” counts source-only candidates requiring rights clearance, and does not count as coverage. Constituent emblems never count as whole-list coverage. Missing means no qualifying emblem was verified here, not that the party had no emblem.
+“Hosted” counts whole seat-winning lists with a local, eligible logo. “Dated external” counts whole-list candidates with date evidence but a failed download; these are not display-ready. “Rights only” was the earlier name for source-only candidates; these now require official-origin and campaign-date verification, and do not count as coverage. Constituent emblems never count as whole-list coverage. Missing means no qualifying emblem was verified here, not that the party had no emblem.
 
 Seat-winning denominators come from public/data/kNN.json officialSeats; k26 has null officialSeats, so the existing data/meta/k26.json seat transcriptions supply that denominator (reported results, pending official gazettement). The research does not alter or independently verify those results.
 
@@ -26,43 +26,41 @@ Seat-winning denominators come from public/data/kNN.json officialSeats; k26 has 
 | k14 · 1996-05-29 | 11 | 2 | 0 | 0 | 0 |
 | k15 · 1999-05-17 | 15 | 2 | 0 | 0 | 0 |
 | k16 · 2003-01-28 | 13 | 2 | 0 | 0 | 0 |
-| k17 · 2006-03-28 | 12 | 0 | 1 | 0 | 0 |
-| k18 · 2009-02-10 | 12 | 1 | 1 | 0 | 0 |
-| k19 · 2013-01-22 | 12 | 0 | 3 | 1 | 0 |
-| k20 · 2015-03-17 | 10 | 0 | 1 | 0 | 0 |
-| k21 · 2019-04-09 | 11 | 0 | 1 | 0 | 0 |
-| k22 · 2019-09-17 | 9 | 0 | 2 | 0 | 0 |
-| k23 · 2020-03-02 | 8 | 0 | 1 | 0 | 0 |
-| k24 · 2021-03-23 | 13 | 0 | 3 | 1 | 0 |
-| k25 · 2022-11-01 | 10 | 0 | 1 | 5 | 0 |
-| k26 · 2026-10-27 | 8 | 2 | 0 | 4 | 0 |
+| k17 · 2006-03-28 | 12 | 1 | 0 | 0 | 0 |
+| k18 · 2009-02-10 | 12 | 2 | 0 | 0 | 0 |
+| k19 · 2013-01-22 | 12 | 3 | 0 | 1 | 0 |
+| k20 · 2015-03-17 | 10 | 1 | 0 | 0 | 0 |
+| k21 · 2019-04-09 | 11 | 1 | 0 | 0 | 0 |
+| k22 · 2019-09-17 | 9 | 2 | 0 | 0 | 1 |
+| k23 · 2020-03-02 | 8 | 1 | 0 | 0 | 1 |
+| k24 · 2021-03-23 | 13 | 3 | 0 | 1 | 1 |
+| k25 · 2022-11-01 | 10 | 1 | 0 | 5 | 1 |
+| k26 · 2026-10-27 | 8 | 3 | 0 | 3 | 2 |
 
 ## Licence and retrieval outcome
 
-21 hosted entries; 22 dated freely licensed entries without a local download; 14 source-only unresolved entries.
+44 hosted entries (43 free-licence, one fair-use identification); no outstanding dated downloads; 13 source-only unresolved entries. The 22 downloads described in the earlier report were **already present at the start of this pass**, completed by the parent on 4 November. This pass verified their hashes/bytes, removed stale download-failure text, and did not download them again. It adds one asset: Together’s archived campaign lockup.
 
-| Hosted licence | Assets/entries |
-|---|---:|
-| CC BY-SA 3.0 | 3 |
-| CC BY-SA 4.0 | 5 |
-| Public domain (PD-textlogo) | 13 |
+The earlier Wikimedia HTTP 429 / Retry-After: 600 incidents remain retrieval history, not current missing assets. No new Wikimedia requests were needed. Final assets remain below 60,000 bytes; raster assets are PNG at most 256 pixels. Original and final hashes are retained; final byte counts are now explicit.
 
-No source-only image with unverified or conflicting rights was downloaded. Commons supplied licence declarations; these are not legal opinions or proof of third-party ownership. Hosted raster derivatives are PNG, maximum 256 pixels, and every asset is below 60,000 bytes. Original and final hashes are recorded.
+New primary evidence: [Together’s official homepage](https://be-yahad.org.il/), [inspected capture, 1 October 2026](https://web.archive.org/web/20261001011247/https://be-yahad.org.il/), and [the exact header SVG referenced by that capture](https://be-yahad.org.il/wp-content/uploads/2026/09/LOGO_RAK-02.svg). Visually inspected: blue main lockup, orange underline, Bennett subline. It differs from the current header’s July-path SVG and the rejected April/July candidates. The archive establishes the image reference; the asset was retrieved from the official origin, so confidence remains medium.
 
-Wikimedia returned HTTP 429 after the first ten downloads, with Retry-After: 600. A second batch was attempted after the required delay at one request per second; some files succeeded, then HTTP 429 with another 600-second delay recurred. Further retrieval was stopped. Metadata and licence evidence were retrieved separately through Commons’ public API. Any final download-unavailable entries identify retrieval failure, not a copyright prohibition. Two 2026 logos were retrieved directly from the official party origins cited by Commons; their assetSourceUrl records the actual download. No proxy, challenge bypass, or runtime hotlink is provided.
+[Yashar’s official site](https://yasharwitheisenkot.com/) supplies a January-path WebP logo, but its October capture timed out, then returned HTTP 429. Archive retrieval stopped; an index timestamp alone was not accepted as proof of image contents. No new asset is assigned. Likud, Otzma Yehudit and New Hope official homepages were accessible; their current headers alone do not prove campaign-period use. New Hope’s current logo has a 2024 path, which is not evidence for its 2022 constituent emblem. These candidates remain unhosted.
+
+New entries use `rights: "free-licence" | "fair-use-identification"`; `licence` remains the licence or copyright/identification notice, never an invented grant. All entries require `sourceUrl`, `evidenceId`, attribution and `inUseEvidence`. Hosted files require `bytes`, `sha256`, `originalSha256` and `assetSourceUrl`; new fair-use entries also require `inUseDate` and an official-origin source card. `archiveUrl`/`archiveTimestamp` record an inspected capture when available. Source-only proposals are not display eligible. `letters` identifies a whole list; `party` identifies a constituent id; these are mutually exclusive. A party objection means removal. Free-licence entries keep their licence data.
 
 ## Uncertainty and rejected candidates
 
 - The Democrats 2026 official SVG contains white lettering and requires a dark background (displayBackground: dark). It has not been recoloured.
 - All accepted assignments have medium confidence. Commons community descriptions, period statements and campaign dates are evidence, but cited NLI originals and campaign videos were generally not independently inspected. A strict independently verified-primary-only policy would reject these until those underlying items are checked.
 - A file’s recreation/upload date is distinguished from its stated historical period. The Yesh Atid SVG’s 2012–2014 creation interval does not prove use on election day in 2013; it is omitted. A January 2021 news report confirms a different campaign design, retained source-only.
-- Together’s April/July 2026 variants were superseded before polling day according to the election-day design review. Neither is assigned to k26. A source-only reference documents the final branding.
+- Together’s April/July 2026 variants were superseded before polling day according to the election-day design review. Neither is assigned to k26. The newly hosted September-path lockup is referenced by the inspected 1 October official-site capture.
 - Likud’s continuing flag-like letter is not evidence that every campaign lockup, subheading or glyph spacing was identical. Its 2009 design is kept separate from later campaigns. The combined Likud–Yisrael Beiteinu candidate has both date and licence ambiguity and remains unresolved.
 - Balad’s vector cites both 2006 and 2019 sources, without proving identical rendering; it is assigned only to the dated 2019 constituent, not 2006.
 - NatUnionMafdal.png has a mistyped “200d” year. The web fetch failed, but a direct public retrieval of its cited Ynet report succeeded: campaign-launch headline and publication metadata date it to 21 February 2006. The assignment is medium confidence. National Religious Party, Hadash, UTJ and Shas candidates lacking an exact election-use match are likewise not propagated through earlier elections.
 - One Nation’s SVG filename says 2002–2005, while its description says 1999–2002 and its cited archive is 2001. It is omitted rather than resolving the conflict by guesswork. The 2003 Am Ehad raster has explicit election evidence.
 - The Kadima 2005 GIF is not assigned automatically to 2006, nor the 2021 Blue and White variant to 2019. General website logos, ballot-paper photographs and regional variants are not sufficient for national election branding.
-- CC BY-SA claims paired with a fair-use upstream credit are not treated as permission. Source-only news/design references have no verified free image licence; no logo files from those pages are retained.
+- A CC BY-SA claim paired with a conflicting upstream credit is not treated as a free licence. Fair-use policy now permits official-origin identification assets, but secondary news/design illustrations are still only discovery leads; none were downloaded.
 - Nonwinning lists are outside the primary coverage target. Three useful explicitly dated extras are included: Shinui 2006, New Right April 2019 and Amcha Yisrael 2026.
 - Source counts below are inspected records, not independent corroborating sources. Commons mirrors, traced derivatives and the underlying artefact belong to the same evidence lineage. Search-result snippets were only discovery leads.
 
@@ -70,9 +68,9 @@ Wikimedia returned HTTP 429 after the first ten downloads, with Retry-After: 600
 
 | Conclusion | Status and evidence | What would change it |
 |---|---|---|
-| Local files are licensed, small and linked to valid election identities | Mechanically verified by scripts/validate-party-logos.py; licence claims in sources.json | A conflicting rights notice or changed file hash |
+| Local files have a recorded rights basis, are small and linked to valid election identities | Mechanically verified by scripts/validate-party-logos.py; rights basis and source claims in sources.json | A conflicting rights notice or changed file hash |
 | Historical assignments have a recorded date/period basis | Medium; each inUseEvidence maps to evidenceId and inspected source revision | A dated original showing a different design |
-| Modern coverage is incomplete | Explicit gaps in the table and per-election lists | Newly verified dated/licensed variants or successful outstanding downloads |
+| Modern coverage is incomplete | Explicit gaps in the table and per-election lists | Newly verified dated variants or successful outstanding downloads |
 | Joint-list and constituent identities remain distinct | Separate letters/party keys checked against repository metadata | A source establishing a whole-list logo |
 | Some superficially plausible variants are wrong for election day | Together and Yesh Atid counterevidence in the secondary source cards | Contrary dated party documentation |
 
@@ -212,87 +210,87 @@ Evidence references: [commons-115472839](https://commons.wikimedia.org/wiki/File
 
 ### k17 · 2006-03-28
 
-Hosted winners: None.
+Hosted winners: טב — National Union–NRP.
 
-Not locally covered winners: כן — Kadima; אמת — Labor–Meimad; שס — Shas; מחל — Likud; ל — Yisrael Beiteinu; טב — National Union–NRP; זך — Gil (Pensioners); ג — United Torah Judaism; מרצ — Meretz; עם — Ra’am–Ta’al; ו — Hadash; ד — Balad.
+Not locally covered winners: כן — Kadima; אמת — Labor–Meimad; שס — Shas; מחל — Likud; ל — Yisrael Beiteinu; זך — Gil (Pensioners); ג — United Torah Judaism; מרצ — Meretz; עם — Ra’am–Ta’al; ו — Hadash; ד — Balad.
 
 Evidence references: [commons-101247293](https://commons.wikimedia.org/wiki/File:Shinui_2006.png), [commons-83570887](https://commons.wikimedia.org/wiki/File:NatUnionMafdal.png).
 
 ### k18 · 2009-02-10
 
-Hosted winners: מרצ — Meretz.
+Hosted winners: מחל — Likud; מרצ — Meretz.
 
-Not locally covered winners: כן — Kadima; מחל — Likud; ל — Yisrael Beiteinu; אמת — Labor; שס — Shas; ג — United Torah Judaism; עם — Ra'am–Ta'al; ט — National Union; ו — Hadash; ב — Jewish Home; ד — Balad.
+Not locally covered winners: כן — Kadima; ל — Yisrael Beiteinu; אמת — Labor; שס — Shas; ג — United Torah Judaism; עם — Ra'am–Ta'al; ט — National Union; ו — Hadash; ב — Jewish Home; ד — Balad.
 
 Evidence references: [commons-52999529](https://commons.wikimedia.org/wiki/File:Newmovemeretz.gif), [commons-5635696](https://commons.wikimedia.org/wiki/File:Likud_Logo.svg).
 
 ### k19 · 2013-01-22
 
-Hosted winners: None.
+Hosted winners: צפ — Hatnuah; מרצ — Meretz; כן — Kadima.
 
-Not locally covered winners: מחל — Likud–Yisrael Beiteinu; פה — Yesh Atid; אמת — Labor; טב — Jewish Home; שס — Shas; ג — United Torah Judaism; צפ — Hatnuah; מרצ — Meretz; עם — Ra'am–Ta'al–Mada; ו — Hadash; ד — Balad; כן — Kadima.
+Not locally covered winners: מחל — Likud–Yisrael Beiteinu; פה — Yesh Atid; אמת — Labor; טב — Jewish Home; שס — Shas; ג — United Torah Judaism; עם — Ra'am–Ta'al–Mada; ו — Hadash; ד — Balad.
 
 Evidence references: [commons-138448720](https://commons.wikimedia.org/wiki/File:Logo_Likud_Yisrael_Beitenu.png), [commons-36039828](https://commons.wikimedia.org/wiki/File:Logo_Kadima.svg), [commons-39065631](https://commons.wikimedia.org/wiki/File:Hatnuah_logo.svg), [commons-98922399](https://commons.wikimedia.org/wiki/File:Meretz_Logo.svg).
 
 ### k20 · 2015-03-17
 
-Hosted winners: None.
+Hosted winners: כ — Kulanu.
 
-Not locally covered winners: מחל — Likud; אמת — Zionist Union; ודעם — Joint List; פה — Yesh Atid; כ — Kulanu; טב — Jewish Home; שס — Shas; ל — Yisrael Beiteinu; ג — United Torah Judaism; מרצ — Meretz.
+Not locally covered winners: מחל — Likud; אמת — Zionist Union; ודעם — Joint List; פה — Yesh Atid; טב — Jewish Home; שס — Shas; ל — Yisrael Beiteinu; ג — United Torah Judaism; מרצ — Meretz.
 
 Evidence references: [commons-39073240](https://commons.wikimedia.org/wiki/File:Kulanu_Kahlon_logo.svg).
 
 ### k21 · 2019-04-09
 
-Hosted winners: None.
+Hosted winners: אמת — Labor.
 
-Not locally covered winners: מחל — Likud; פה — Blue and White; שס — Shas; ג — United Torah Judaism; ום — Hadash–Ta’al; אמת — Labor; ל — Yisrael Beiteinu; טב — Union of Right-Wing Parties; מרצ — Meretz; כ — Kulanu; דעם — Ra’am–Balad.
+Not locally covered winners: מחל — Likud; פה — Blue and White; שס — Shas; ג — United Torah Judaism; ום — Hadash–Ta’al; ל — Yisrael Beiteinu; טב — Union of Right-Wing Parties; מרצ — Meretz; כ — Kulanu; דעם — Ra’am–Balad.
 
 Evidence references: [commons-76218696](https://commons.wikimedia.org/wiki/File:Israeli_Labor_Party_2019.png), [commons-77001018](https://commons.wikimedia.org/wiki/File:Logo_of_HaYamin_HeHadash.svg).
 
 ### k22 · 2019-09-17
 
-Hosted winners: None.
+Hosted winners: ודעם — Joint List; טב — Yamina.
 
-Not locally covered winners: פה — Blue and White; מחל — Likud; ודעם — Joint List; שס — Shas; ל — Yisrael Beiteinu; ג — United Torah Judaism; טב — Yamina; אמת — Labor–Gesher; מרצ — Democratic Union.
+Not locally covered winners: פה — Blue and White; מחל — Likud; שס — Shas; ל — Yisrael Beiteinu; ג — United Torah Judaism; אמת — Labor–Gesher; מרצ — Democratic Union.
 
 Evidence references: [commons-107297670](https://commons.wikimedia.org/wiki/File:Balad.svg), [commons-130829705](https://commons.wikimedia.org/wiki/File:Yamina_logo.svg), [commons-94577687](https://commons.wikimedia.org/wiki/File:Joint_List_logo_2019.svg).
 
 ### k23 · 2020-03-02
 
-Hosted winners: None.
+Hosted winners: אמת — Labor–Gesher–Meretz.
 
-Not locally covered winners: מחל — Likud; פה — Blue and White; ודעם — Joint List; שס — Shas; ג — United Torah Judaism; אמת — Labor–Gesher–Meretz; ל — Yisrael Beiteinu; טב — Yamina.
+Not locally covered winners: מחל — Likud; פה — Blue and White; ודעם — Joint List; שס — Shas; ג — United Torah Judaism; ל — Yisrael Beiteinu; טב — Yamina.
 
 Evidence references: [commons-130826979](https://commons.wikimedia.org/wiki/File:Logo_of_the_Labor-Gesher-Meretz.svg), [commons-146621440](https://commons.wikimedia.org/wiki/File:Agudat_Yisrael_logo_2020.svg).
 
 ### k24 · 2021-03-23
 
-Hosted winners: None.
+Hosted winners: כן — Blue and White; ת — New Hope; עם — Ra'am.
 
-Not locally covered winners: מחל — Likud; פה — Yesh Atid; שס — Shas; כן — Blue and White; ב — Yamina; אמת — Labor; ג — United Torah Judaism; ל — Yisrael Beiteinu; ט — Religious Zionism; ודעם — Joint List; ת — New Hope; מרצ — Meretz; עם — Ra'am.
+Not locally covered winners: מחל — Likud; פה — Yesh Atid; שס — Shas; ב — Yamina; אמת — Labor; ג — United Torah Judaism; ל — Yisrael Beiteinu; ט — Religious Zionism; ודעם — Joint List; מרצ — Meretz.
 
 Evidence references: [commons-100640724](https://commons.wikimedia.org/wiki/File:New_Hope_party_logo.png), [commons-119107430](https://commons.wikimedia.org/wiki/File:Raam_logo_2021.svg), [commons-130826913](https://commons.wikimedia.org/wiki/File:Blue_and_White_logo_2021.svg), [commons-130829740](https://commons.wikimedia.org/wiki/File:Otzma_Yehudit_2021_logo.svg), [srugim-2021-yesh-atid](https://www.srugim.co.il/525439-%D7%94%D7%9C%D7%95%D7%92%D7%95-%D7%94%D7%97%D7%93%D7%A9-%D7%A9%D7%9C-%D7%99%D7%A9-%D7%A2%D7%AA%D7%99%D7%93-%D7%99%D7%90%D7%99%D7%A8-%D7%9C%D7%A4%D7%99%D7%93-%D7%95%D7%96%D7%A8%D7%99%D7%97%D7%94).
 
 ### k25 · 2022-11-01
 
-Hosted winners: None.
+Hosted winners: כן — National Unity.
 
-Not locally covered winners: מחל — Likud; ט — Religious Zionism; שס — Shas; ג — United Torah Judaism; פה — Yesh Atid; אמת — Labor; כן — National Unity; ל — Yisrael Beiteinu; עם — Ra'am; ום — Hadash–Ta'al.
+Not locally covered winners: מחל — Likud; ט — Religious Zionism; שס — Shas; ג — United Torah Judaism; פה — Yesh Atid; אמת — Labor; ל — Yisrael Beiteinu; עם — Ra'am; ום — Hadash–Ta'al.
 
 Evidence references: [commons-130829829](https://commons.wikimedia.org/wiki/File:National_Unity_Party_(Israel)_August_2022.svg), [commons-132175789](https://commons.wikimedia.org/wiki/File:Parti_sioniste_religieux_logo_2022.png), [ynet-2022-typography](https://www.ynet.co.il/news/article/syrrbq9jj).
 
 ### k26 · 2026-10-27
 
-Hosted winners: אמת — The Democrats; ודם — Joint List.
+Hosted winners: אמת — The Democrats; רק — Together (Bennett); ודם — Joint List.
 
-Not locally covered winners: מחל — Likud; ב — Otzma Yehudit; ג — United Torah Judaism; ט — Religious Zionism–Zehut; דרך — Yashar!; רק — Together (Bennett).
+Not locally covered winners: מחל — Likud; ב — Otzma Yehudit; ג — United Torah Judaism; ט — Religious Zionism–Zehut; דרך — Yashar!.
 
 Evidence references: [alef-2026-design](https://alefalefalef.co.il/elections-design-26/), [commons-198464782](https://commons.wikimedia.org/wiki/File:Amcha_Yisrael.svg), [commons-200023341](https://commons.wikimedia.org/wiki/File:Religious_Zionist_Party_logo_2026.png), [commons-200834372](https://commons.wikimedia.org/wiki/File:The_Democrats_(Israel)_logo_2026.svg), [commons-200835377](https://commons.wikimedia.org/wiki/File:Logo_of_The_Reservists.svg), [commons-201669548](https://commons.wikimedia.org/wiki/File:Logo_of_the_Joint_List_(Israel)_2026_(vector).svg).
 
 ## Sources — retained archive
 
-92 inspected source records are retained in [sources.json](../../data/meta/logos/sources.json). Stable Commons IDs use the file-page ID, with the exact reviewed revision URL in the JSON. The API exposed file records, not page-reading depth metrics; exhaustive archive search and total search-engine coverage were not measured. No English-language Wikipedia page was opened, cited or used.
+93 inspected source records are retained in [sources.json](../../data/meta/logos/sources.json). Stable Commons IDs use the file-page ID, with the exact reviewed revision URL in the JSON. The API exposed file records, not page-reading depth metrics; exhaustive archive search and total search-engine coverage were not measured. No English-language Wikipedia page was opened, cited or used.
 
 ### Sources supporting accepted or source-only entries
 
@@ -632,3 +630,71 @@ These descriptions/credits/licences were inspected. They contributed discovery l
 - [File:Yahadut HaTorah logo.png](https://commons.wikimedia.org/wiki/File:Yahadut_HaTorah_logo.png) — commons-98839088; no additional verified election assignment.
 - [File:Yashar2025.png](https://commons.wikimedia.org/wiki/File:Yashar2025.png) — commons-175141989; no additional verified election assignment.
 - [File:YeshAtidLogo.svg](https://commons.wikimedia.org/wiki/File:YeshAtidLogo.svg) — commons-35947960; no additional verified election assignment.
+
+## This pass: coverage and remaining gaps
+
+The table above is current. The before/after table below compares this worktree’s starting committed assets, not the stale 21-entry report. All missing winners are enumerated in the per-election sections above. Unless a specific exclusion above applies, the reason is **no inspected official-origin campaign-dated emblem established in this bounded pass**; it does not establish that an emblem never existed. Earlier medium-confidence Commons assignments are retained, not promoted to independently verified primary evidence. Nonwinning lists beyond the three existing dated extras were not researched in this pass.
+
+| Election | Hosted winners before | Hosted winners after |
+|---|---:|---:|
+| k26 | 2/8 | 3/8 |
+| k25 | 1/10 | 1/10 |
+| k24 | 3/13 | 3/13 |
+| k23 | 1/8 | 1/8 |
+| k22 | 2/9 | 2/9 |
+| k21 | 1/11 | 1/11 |
+| k20 | 1/10 | 1/10 |
+| k19 | 3/12 | 3/12 |
+| k18 | 2/12 | 2/12 |
+| k17 | 1/12 | 1/12 |
+| k16 | 2/13 | 2/13 |
+| k15 | 2/15 | 2/15 |
+| k14 | 2/11 | 2/11 |
+| k13 | 1/10 | 1/10 |
+| k12 | 1/15 | 1/15 |
+| k11 | 2/15 | 2/15 |
+| k10 | 1/10 | 1/10 |
+| k9 | 4/13 | 4/13 |
+| k8 | 0/10 | 0/10 |
+| k7 | 0/13 | 0/13 |
+| k6 | 1/13 | 1/13 |
+| k5 | 0/11 | 0/11 |
+| k4 | 0/12 | 0/12 |
+| k3 | 0/12 | 0/12 |
+| k2 | 0/15 | 0/15 |
+| k1 | 1/12 | 1/12 |
+
+### Constituent gaps in seat-winning joint lists
+
+Each id below lacks a separately hosted emblem for that election. Reason: no inspected primary campaign-period source for that constituent’s own design; joint-list and later party logos cannot substitute. Existing constituent emblems remain covered separately in the main table. Whole-list winners took priority, so no additional constituent was accepted this pass.
+
+- **k26:** מחל (Likud): likud, new-hope; ב (Otzma Yehudit): otzma-yehudit, eretz-yisrael-shelanu; ג (United Torah Judaism): degel-hatorah, agudat-yisrael, homat-torat-yisrael; ט (Religious Zionism–Zehut): zehut, atid-ehad; דרך (Yashar!): yashar, yesodot-yisrael; אמת (The Democrats): democrats, meretz; רק (Together (Bennett)): together-bennett, yesh-atid; ודם (Joint List): hadash, taal, balad.
+- **k25:** ט (Religious Zionism): otzma-yehudit, noam, atid-ehad, eretz-yisrael-shelanu; ג (United Torah Judaism): agudat-yisrael, degel-hatorah; כן (National Unity): israel-resilience, new-hope; ום (Hadash–Ta'al): hadash, taal.
+- **k24:** מחל (Likud): likud, atid-ehad; ג (United Torah Judaism): degel-hatorah, agudat-yisrael; ט (Religious Zionism): tkuma, noam; ודעם (Joint List): hadash, taal, balad; ת (New Hope): new-hope, derech-eretz.
+- **k23:** מחל (Likud): likud, kulanu; פה (Blue and White): israel-resilience, yesh-atid, telem; ודעם (Joint List): hadash, balad, taal, raam; ג (United Torah Judaism): degel-hatorah; אמת (Labor–Gesher–Meretz): labor, gesher, meretz; טב (Yamina): new-right, jewish-home, tkuma, ahi.
+- **k22:** פה (Blue and White): israel-resilience, yesh-atid, telem; מחל (Likud): likud, kulanu; ודעם (Joint List): hadash, taal, raam; ג (United Torah Judaism): agudat-yisrael, degel-hatorah; טב (Yamina): new-right, jewish-home, tkuma; אמת (Labor–Gesher): labor, gesher; מרצ (Democratic Union): meretz, green-movement, independence.
+- **k21:** מחל (Likud): likud, ahi; פה (Blue and White): israel-resilience, yesh-atid, telem; ג (United Torah Judaism): agudat-yisrael, degel-hatorah; ום (Hadash–Ta’al): hadash, taal; טב (Union of Right-Wing Parties): jewish-home, tkuma, otzma-yehudit; דעם (Ra’am–Balad): raam, balad.
+- **k20:** אמת (Zionist Union): labor, hatnua, green-movement; ודעם (Joint List): hadash, raam, balad, taal; טב (Jewish Home): jewish-home, tkuma; ג (United Torah Judaism): agudat-yisrael, degel-hatorah.
+- **k19:** מחל (Likud–Yisrael Beiteinu): likud, yisrael-beiteinu; טב (Jewish Home): jewish-home, tkuma; ג (United Torah Judaism): agudat-yisrael, degel-hatorah; עם (Ra'am–Ta'al–Mada): raam, taal, mada.
+- **k18:** מחל (Likud): ahi, likud; ג (United Torah Judaism): agudat-yisrael, degel-hatorah; עם (Ra'am–Ta'al): raam, taal; ט (National Union): tkuma, hatikva, eretz-yisrael-shelanu, moledet; מרצ (Meretz): new-movement, meretz.
+- **k17:** אמת (Labor–Meimad): labor, meimad; טב (National Union–NRP): moledet, tkuma, ahi, nrp; ג (United Torah Judaism): agudat-yisrael, degel-hatorah; עם (Ra’am–Ta’al): ram, taal, arab-democratic-party.
+- **k16:** אמת (Labor–Meimad): labor, meimad; ל (National Union): yisrael-beiteinu, tkuma, moledet; מרצ (Meretz): meretz, democratic-choice, shahar; ג (United Torah Judaism): agudat-yisrael, degel-hatorah; ו (Hadash–Ta’al): hadash, taal; עם (United Arab List): ram, arab-democratic-party.
+- **k15:** אמת (Labor–Meimad): labor, gesher, meimad; ג (UTJ): agudat-yisrael, degel-hatorah; עם (United Arab List): ram, arab-democratic-party; ט (National Union): herut-national-movement, moledet, tkuma; ד (Balad): balad, taal.
+- **k14:** מחל (Likud–Gesher–Tzomet): likud, gesher, tzomet; מרצ (Meretz): ratz, mapam, shinui; ו (Hadash–Balad): hadash, balad; ג (UTJ): agudat-yisrael, degel-hatorah; ע (United Arab List): arab-democratic-party, ram.
+- **k13:** מרצ (Meretz): ratz, mapam, shinui; ג (UTJ): agudat-yisrael, moria, degel-hatorah.
+- **k12:** ג (Agudat Yisrael): agudat-yisrael, poalei-agudat-yisrael; ו (Hadash): israeli-communist-party, black-panthers; הן (Shinui): shinui, independent-liberals.
+- **k11:** מחל (Likud): herut, liberal-party; אמת (Alignment): labor, mapam, independent-liberals; ו (Hadash): israeli-communist-party, black-panthers; ת (Tehiya–Tzomet): tehiya, tzomet; עי (Morasha): matzad, poalei-agudat-yisrael.
+- **k10:** מחל (Likud): herut, liberal-party, laam; אמת (Alignment): labor, mapam; ו (Hadash): israeli-communist-party, black-panthers.
+- **k9:** מחל (Likud): herut, liberal-party, laam, ahdut-seidel-1977; אמת (Alignment): israeli-labor-party, mapam; ו (Hadash): rakah, black-panthers; ש (Sheli): independent-socialists, moked, meri, black-panthers.
+- **k8:** חל טעם (Likud): herut, liberal-party, state-list, free-centre, greater-israel-movement; אמת (Alignment): israeli-labor-party, mapam; גד (Religious Torah Front): agudat-yisrael, poalei-agudat-yisrael; קנ (Moked): blue-red-movement, maki.
+- **k7:** אמת (Alignment): israeli-labor-party, mapam; חל (Gahal): herut, liberal-party.
+- **k6:** את (Alignment): mapai, ahdut-haavoda; חל (Gahal): herut, liberal-party.
+- **k4:** גד (Religious Torah Front): agudat-yisrael, poalei-agudat-yisrael.
+- **k3:** ב (National Religious Party): hapoel-hamizrachi, mizrachi; גד (Religious Torah Front): agudat-yisrael, poalei-agudat-yisrael.
+- **k1:** ב (United Religious Front): hapoel-hamizrachi, mizrachi, poalei-agudat-yisrael, agudat-yisrael, non-party-religious-union; נ (WIZO): wizo, womens-equal-rights-association.
+
+### Verification and regeneration
+
+Verified with Node 24.18.0, tsx 4.23.15, TypeScript 7.0.2 and Vitest 5.1.0: `npx tsx scripts/build-datasets.ts`, then the same build again (zero files written; all 39 public/data file hashes identical), `python3 -I scripts/validate-party-logos.py` (44 assets), `npx tsc -p tsconfig.json --noEmit`, and `npm test` (52 files, 440 tests). The model differential digest was re-recorded for the new rights metadata, Together logo and build timestamps; temporarily removing those intended changes reproduced the previous digest. Other differential digests are unchanged. Working downloads, copied dependencies and diagnostic logs are disposable under `.backup-scratch/`; final assets and their source/hash records above are retained.
+
+Integration note for the parent: dataset constituent objects carry their own `logo` and retain it through model party metadata. The existing split action creates new lists without assigning a list-level `logo`; selecting the sole constituent’s logo for a split list remains a presentation/model integration task outside this research pass.

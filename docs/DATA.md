@@ -46,8 +46,12 @@ candidate id fails the build. See [decision 0088](decisions/0088-roster-correcti
 and the [official membership audit](research/elected-names-odata-audit.md).
 
 Party logos (`data/meta/logos/kNN.json`, attached by `scripts/lib/build/logos.ts`) are shown only when a
-freely licensed copy of the logo used at that election is held in `public/logos/`, with its licence, attribution
-and source; the Sources tab lists the credits. Lists without one keep their ballot letters.
+verified copy of the logo used at that election is held in `public/logos/`, with `rights` set to
+`free-licence` or `fair-use-identification`, its licence/rights notice, attribution and source.
+New fair-use entries require an official origin and campaign-use date; archives record their URL and timestamp.
+Final bytes and SHA-256 are checked, and original SHA-256 is retained. Constituent entries keyed by party id
+attach to `list.parties[].logo`; joint lists retain their own emblems. A party objection means removal
+([decision 0089](decisions/0089-party-logos-fair-use.md)); the Sources tab lists the credits. Lists without one keep their ballot letters.
 
 Candidate biography links (`data/meta/bios/kNN.json`, attached by `scripts/lib/build/bios.ts`) follow the
 same order: the Knesset's member page (official), the party's own page (partisan, archived from the campaign

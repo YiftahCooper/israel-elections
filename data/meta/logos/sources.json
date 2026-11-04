@@ -2100,6 +2100,29 @@
       "licenceUrl": "",
       "evidenceFamily": "alef-2026-design",
       "selected": true
+    },
+    {
+      "id": "together-official-2026",
+      "title": "ביחד — official campaign homepage, archived 1 October 2026",
+      "sourceUrl": "https://be-yahad.org.il/",
+      "revisionUrl": "https://web.archive.org/web/20261001011247/https://be-yahad.org.il/",
+      "publisher": "ביחד בראשות נפתלי בנט",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-04",
+      "accessMethod": "Direct official origin and inspected Wayback HTML capture; generic User-Agent",
+      "inspectionDepth": "Archived HTML header image path inspected; official SVG downloaded and visually inspected",
+      "date": "2026-10-01",
+      "description": "Inspected official campaign homepage capture of 1 October 2026: header img src /wp-content/uploads/2026/09/LOGO_RAK-02.svg. Downloaded that exact referenced asset from the official origin, not the different current July-path header. Main lockup reads רק ביחד נתקן / בראשות בנט with blue lettering and orange underline; distinct from superseded April/July variants. Medium confidence: archive establishes the reference, not an independently retained archived asset hash.",
+      "credit": "ביחד בראשות נפתלי בנט — official campaign lockup",
+      "artist": "Together campaign; individual designer not established",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "licenceUrl": "",
+      "downloadUrl": "https://be-yahad.org.il/wp-content/uploads/2026/09/LOGO_RAK-02.svg",
+      "evidenceFamily": "together-official-campaign-2026",
+      "selected": true,
+      "archiveUrl": "https://web.archive.org/web/20261001011247/https://be-yahad.org.il/",
+      "archiveTimestamp": "20261001011247"
     }
   ]
 }

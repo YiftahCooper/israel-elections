@@ -27,6 +27,7 @@ for n in range(1, 27):
         assert item[kind] in (letters if kind == 'letters' else parties), item
         assert item['confidence'] in ('high', 'medium')
         assert item['inUseEvidence'] and item['attribution'] and item['licence']
+        assert item['rights'] in ('free-licence', 'fair-use-identification')
         source = SOURCES[item['evidenceId']]
         assert item['sourceUrl'] == source['sourceUrl']
         assert isinstance(item['hosted'], bool)
@@ -36,12 +37,22 @@ for n in range(1, 27):
             counts[item['status']] += 1
             continue
         assert item['status'] == 'verified'
-        assert source['licence'] in ('Public domain', 'CC0', 'CC BY-SA 3.0', 'CC BY-SA 4.0')
+        assert item['assetSourceUrl'].startswith('https://')
+        if item['rights'] == 'fair-use-identification':
+            assert source['sourceType'] in ('official party campaign website', 'official party social publication', 'official CEC publication')
+            assert item['inUseDate']
+            if item.get('archiveUrl') or item.get('archiveTimestamp'):
+                assert item['archiveUrl'] and item['archiveTimestamp']
+                assert item['archiveTimestamp'][:8] == item['inUseDate'].replace('-', '')
+            assert item['inUseDate'] <= data['electionDate']
+        else:
+            assert source['licence'] in ('Public domain', 'CC0', 'CC BY-SA 3.0', 'CC BY-SA 4.0')
         relative = Path(item['file'])
         assert relative.parts[0] == 'logos' and len(relative.parts) == 2
         assert data['electionDate'][:4] in relative.stem
         asset = ROOT / 'public' / relative
         content = asset.read_bytes()
+        assert len(content) == item['bytes'], asset
         assert len(content) < 60_000, asset
         assert hashlib.sha256(content).hexdigest() == item['sha256'], asset
         assert len(item['originalSha256']) == 64

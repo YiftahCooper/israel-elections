@@ -71,7 +71,7 @@ export interface ListRecord {
   candidatesUnavailable?: boolean;
   /** constituent parties, for a list that was an alliance of separate parties (decision 0087) */
   parties?: PartyDef[];
-  /** the list's logo at this election, when a freely licensed copy is held (data/meta/logos) */
+  /** the list's logo at this election, when a verified copy is held (data/meta/logos) */
   logo?: LogoRef;
   /** true when candidates holds only the first ranks of the registered roster (at least everyone elected); later ranks were not transcribed */
   candidatesTruncated?: boolean;
@@ -102,8 +102,9 @@ export interface CandidateBio {
   probable?: boolean;
 }
 
-/** A party logo as used at that election: a locally hosted, freely licensed file with its credit. */
-export interface LogoRef { file: string; licence: string; attribution: string; sourceUrl: string; background?: string }
+/** A party logo as used at that election: a locally hosted file with its rights basis and credit. */
+export type LogoRights = 'free-licence' | 'fair-use-identification';
+export interface LogoRef { rights: LogoRights; file: string; licence: string; attribution: string; sourceUrl: string; background?: string }
 
 /** A constituent party of a joint list (decision 0087). */
 export interface PartyDef { id: string; nameHe: string; nameEn: string; color?: string; logo?: LogoRef }
