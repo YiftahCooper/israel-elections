@@ -1,7 +1,7 @@
 import { Info } from './components/ui.tsx';
 import { BoardChoices } from './components/BoardChoices.tsx';
 import { useActiveReference } from './useActiveReference.ts';
-import { CustomPage, Feature } from './components/Feature.tsx';
+import { CustomPage } from './components/Feature.tsx';
 import { TOOL_FEATURES, RANK, LEVEL_LABELS, featureLabel, type Preset } from './features.ts';
 import { electionContext } from '../data/electionContext.ts';
 import { PMResult } from './components/ElectionContext.tsx';
@@ -229,7 +229,8 @@ function Shell() {
           <section className="panel tool-page" id="tool-panel" aria-label={label(tool)}>
             <header><h2>{label(tool)}</h2></header>
             <div className="body" role="tabpanel" id="analysis-panel" aria-labelledby={`tab-${tool}`}>
-              {<Feature id={tool}><ErrorBoundary label={label(tool)} resetKey={`${tool}|${committed.id}|${committed.log.length}`}><Suspense fallback={<p className="muted" role="status">{L('Loading…', 'טוען…')}</p>}>
+              {/* opening a tool's tab is the choice to see it: no second disclosure inside the page */}
+              {<ErrorBoundary label={label(tool)} resetKey={`${tool}|${committed.id}|${committed.log.length}`}><Suspense fallback={<p className="muted" role="status">{L('Loading…', 'טוען…')}</p>}>
                 {tool === 'families' && <Families s={committed} />}
                 {tool === 'scenarios' && <Scenarios s={committed} ds={ds} />}
                 {tool === 'whatif' && <WhatIf ds={ds} />}
@@ -244,7 +245,7 @@ function Shell() {
                 {tool === 'rules' && <Rules s={committed} base={base} />}
                 {tool === 'loc' && <Localities s={committed} />}
                 {tool === 'sources' && <Sources ds={ds} />}
-              </Suspense></ErrorBoundary></Feature>}
+              </Suspense></ErrorBoundary>}
             </div>
           </section>
         )}

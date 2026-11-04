@@ -163,3 +163,11 @@ test('the picker labels the open election correctly even if the index omits it',
   await expect(page.getByRole('button', { name: 'Election', exact: true })).toHaveAttribute('data-value', 'k26');
   await expect(page.getByRole('button', { name: 'Election', exact: true })).toContainText('2026 · 26th Knesset');
 });
+
+test('a tool opened from its tab shows at once at every level, with no second disclosure', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', level: 'standard', hintDismissed: true })));
+  await page.goto('/');
+  // an Expert tool at Standard: its tab says so, and opening it shows the tool itself
+  await page.getByRole('tab', { name: /^Rules/ }).click();
+  await expect(page.getByRole('heading', { name: 'Electoral rules', exact: true })).toBeVisible();
+});
