@@ -1248,3 +1248,159 @@ Baseline whole lists: **1/12**; constituents: **0/11**. Every one of the 22 init
 - S3: `site:facebook.com "תקומה" 2006 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "תקומה" 2006 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
 
 Batch verification: `npx vitest run` **57 files / 484 tests passed** (single worker and CLI testTimeout=30000 from k23 onward after existing rebuild tests exceeded 5000ms); `npx tsc -p tsconfig.json --noEmit`, `npx vite build`, and `python3 scripts/validate-party-logos.py` passed. Dataset build passed; all 26 election datasets equal prior batch after recursively removing `logo` and `builtAt`.
+
+### k16 · 2003-01-28
+
+Baseline whole lists: **2/13**; constituents: **0/14**. Every one of the 25 initial gaps below was attempted in all three routes; S3 quota failures do not count as completed source searches.
+
+**L `ב` — מפד״ל.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"מפד״ל" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/policy/parties-and-elections>; <https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%93%22%D7%9C>; <https://www.gov.il/BlobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisionsfullbook2022.pdf>.
+- S2: `site:commons.wikimedia.org "National Religious Party" logo 2003` → <https://commons.wikimedia.org/wiki/File:National_Religious_Party_logo.svg>.
+- S3: `site:facebook.com "מפדל" 2003 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "מפדל" 2003 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `ג` — יהדות התורה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"יהדות התורה" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%99%D7%94%D7%93%D7%95%D7%AA_%D7%94%D7%AA%D7%95%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections/parties/yahadut-hatorah>; <https://www.inss.org.il/he/publication/israel-elections-2022>.
+- S2: `site:commons.wikimedia.org "United Torah Judaism" logo 2003` → no returned URLs.
+- S3: `site:facebook.com "יהדות התורה" 2003 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "יהדות התורה" 2003 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `ד` — בל״ד.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"בל״ד" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/policy/parties-and-elections/parties/balad>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%A9_%D7%A2%D7%A9%D7%A8%D7%94>; <https://supremedecisions.court.gov.il/Home/Download?path=HebrewVerdicts/22/680/066/v06&fileName=22066680.V06&type=4>.
+- S2: `site:commons.wikimedia.org "Balad" logo 2003` → <https://commons.wikimedia.org/wiki/File:Balad-logo.jpg>; <https://commons.wikimedia.org/wiki/File:2003_Knesset.svg>; <https://commons.wikimedia.org/wiki/File:Israel_Kn%C3%A9set_2003.svg>.
+- S3: `site:facebook.com "בלד" 2003 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "בלד" 2003 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `ו` — חד״ש–תע״ל.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"חד״ש–תע״ל" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%97%D7%93%22%D7%A9-%D7%AA%D7%A2%22%D7%9C>; <https://www.idi.org.il/policy/parties-and-elections/parties/hadash>; <https://www.hamichlol.org.il/%D7%97%D7%93%22%D7%A9-%D7%AA%D7%A2%22%D7%9C>.
+- S2: `site:commons.wikimedia.org "Hadash–Ta’al" logo 2003` → <https://commons.wikimedia.org/wiki/File:2003_Knesset.svg>; <https://commons.wikimedia.org/wiki/File:Israel_Kn%C3%A9set_2003.svg>; <https://commons.wikimedia.org/wiki/Category:Ahmad_Tibi>.
+- S3: `site:facebook.com "חדש–תעל" 2003 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "חדש–תעל" 2003 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `יש` — שינוי.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"שינוי" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA_%D7%A9%D7%99%D7%A0%D7%95%D7%99>; <https://www.idi.org.il/policy/parties-and-elections/parties/shinui>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%A9_%D7%A2%D7%A9%D7%A8%D7%94>.
+- S2: `site:commons.wikimedia.org "Shinui" logo 2003` → <https://commons.wikimedia.org/wiki/File:Logo_Shinui_Israel.png>; <https://commons.wikimedia.org/wiki/File:Israel_Knesset_2003.svg>; <https://commons.wikimedia.org/wiki/File:2003_Knesset.svg>.
+- S3: `site:facebook.com "שינוי" 2003 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "שינוי" 2003 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `כן` — ישראל בעלייה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"ישראל בעלייה" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/policy/parties-and-elections>; <https://www.idi.org.il/policy/parties-and-elections/elections/2003>; <https://maor.haifa.ac.il/%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA-%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA-%D7%94%D7%A1%D7%9B%D7%9E%D7%99-%D7%A2%D7%95%D7%93%D7%A4%D7%99%D7%9D-%D7%A8%D7%9E%D7%94-%D7%A8%D7%92%D7%99%D7%9C%D7%94>.
+- S2: `site:commons.wikimedia.org "Yisrael BaAliyah" logo 2003` → <https://commons.wikimedia.org/wiki/File:2003_Knesset.svg>; <https://commons.wikimedia.org/wiki/File:Israel_Knesset_2003.svg>.
+- S3: `site:facebook.com "ישראל בעלייה" 2003 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "ישראל בעלייה" 2003 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `ל` — האיחוד הלאומי.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"האיחוד הלאומי" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/policy/parties-and-elections/parties/haihud-haleumi>; <https://he.wikipedia.org/wiki/%D7%94%D7%90%D7%99%D7%97%D7%95%D7%93_%D7%94%D7%9C%D7%90%D7%95%D7%9E%D7%99>; <https://www.hamichlol.org.il/%D7%94%D7%90%D7%99%D7%97%D7%95%D7%93_%D7%94%D7%9C%D7%90%D7%95%D7%9E%D7%99>.
+- S2: `site:commons.wikimedia.org "National Union" logo 2003` → <https://commons.wikimedia.org/wiki/File:Logo_Uni%C3%B3n_Nacional.png>; <https://commons.wikimedia.org/wiki/File:2003_Knesset.svg>; <https://commons.wikimedia.org/wiki/File:Israel_Knesset_2003.svg>.
+- S3: `site:facebook.com "האיחוד הלאומי" 2003 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "האיחוד הלאומי" 2003 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `מחל` — הליכוד.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"הליכוד" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%A9_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections>; <https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf>.
+- S2: `site:commons.wikimedia.org "Likud" logo 2003` → <https://commons.wikimedia.org/wiki/File:Likud_Logo.svg>; <https://commons.wikimedia.org/wiki/File:Logo_Likud.png>; <https://commons.wikimedia.org/wiki/File:Israel_Knesset_2003.svg>.
+- S3: `site:facebook.com "הליכוד" 2003 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "הליכוד" 2003 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `מרצ` — מרצ.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"מרצ" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%A9_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections/parties/meretz>; <https://he.wikipedia.org/wiki/%D7%9E%D7%A8%D7%A6>.
+- S2: `site:commons.wikimedia.org "Meretz" logo 2003` → <https://commons.wikimedia.org/wiki/File:Meretz_Logo.svg>; <https://commons.wikimedia.org/wiki/File:Meretz_Logo_Israel.png>.
+- S3: `site:facebook.com "מרצ" 2003 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "מרצ" 2003 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `עם` — רע״ם.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"רע״ם" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%A9_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf>; <https://www.idi.org.il/articles/66556>.
+- S2: `site:commons.wikimedia.org "United Arab List" logo 2003` → <https://commons.wikimedia.org/wiki/File:Raam_logo_2021.svg>.
+- S3: `site:facebook.com "רעם" 2003 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "רעם" 2003 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `שס` — ש״ס.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"ש״ס" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%A9_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections/elections/2003>; <https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf>.
+- S2: `site:commons.wikimedia.org "Shas" logo 2003` → <https://commons.wikimedia.org/wiki/File:Shas_logo.png>; <https://commons.wikimedia.org/wiki/File:Israel_Knesset_2003.svg>; <https://commons.wikimedia.org/wiki/File:Israel_Kn%C3%A9set_2003.svg>.
+- S3: `site:facebook.com "שס" 2003 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "שס" 2003 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `agudat-yisrael` — אגודת ישראל.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"אגודת ישראל" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%A9_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections>; <https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf>.
+- S2: `site:commons.wikimedia.org "Agudat Yisrael" logo 2003` → <https://commons.wikimedia.org/wiki/User_talk:Jozef_Gabcik>.
+- S3: `site:facebook.com "אגודת ישראל" 2003 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "אגודת ישראל" 2003 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `arab-democratic-party` — המפלגה הדמוקרטית הערבית (מד"ע).** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"המפלגה הדמוקרטית הערבית (מד"ע)" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.walla.co.il/news/israel/2588685>; <https://www.makorrishon.co.il/nrg/online/1/ART1/568/609.html>; <https://www.kas.de/documents/263458/263507/KAP+Publication.pdf>.
+- S2: `site:commons.wikimedia.org "Arab Democratic Party" logo 2003` → no returned URLs.
+- S3: `site:facebook.com "המפלגה הדמוקרטית הערבית" 2003 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "המפלגה הדמוקרטית הערבית" 2003 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `degel-hatorah` — דגל התורה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"דגל התורה" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%93%D7%92%D7%9C_%D7%94%D7%AA%D7%95%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections/parties/yahadut-hatorah>; <https://he.wikipedia.org/wiki/%D7%99%D7%94%D7%93%D7%95%D7%AA_%D7%94%D7%AA%D7%95%D7%A8%D7%94>.
+- S2: `site:commons.wikimedia.org "Degel HaTorah" logo 2003` → no returned URLs.
+- S3: `site:facebook.com "דגל התורה" 2003 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "דגל התורה" 2003 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `democratic-choice` — הבחירה הדמוקרטית.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"הבחירה הדמוקרטית" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%9E%D7%A8%D7%A6>; <https://www.idi.org.il/policy/parties-and-elections/parties/meretz>; <https://www.idi.org.il/articles/32955>.
+- S2: `site:commons.wikimedia.org "Democratic Choice" logo 2003` → no returned URLs.
+- S3: `site:facebook.com "הבחירה הדמוקרטית" 2003 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "הבחירה הדמוקרטית" 2003 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `hadash` — חד"ש.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"חד"ש" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%A9_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections>; <https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf>.
+- S2: `site:commons.wikimedia.org "Hadash" logo 2003` → <https://commons.wikimedia.org/wiki/File:Hadash.svg>; <https://commons.wikimedia.org/wiki/File:Israel_Knesset_2003.svg>; <https://commons.wikimedia.org/wiki/User_talk:Jozef_Gabcik>.
+- S3: `site:facebook.com "חדש" 2003 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "חדש" 2003 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `labor` — מפלגת העבודה הישראלית.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"מפלגת העבודה הישראלית" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA_%D7%94%D7%A2%D7%91%D7%95%D7%93%D7%94_%D7%94%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%D7%AA>; <https://www.idi.org.il/policy/parties-and-elections/parties/haavoda>; <https://www.gov.il/BlobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisionsfullbook2022.pdf>.
+- S2: `site:commons.wikimedia.org "Israeli Labor Party" logo 2003` → <https://commons.wikimedia.org/wiki/File:Labor-Meimad.png>; <https://commons.wikimedia.org/wiki/File:Logo_haAwoda.svg>; <https://commons.wikimedia.org/wiki/File:HaAvoda_Logo.svg>.
+- S3: `site:facebook.com "מפלגת העבודה הישראלית" 2003 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "מפלגת העבודה הישראלית" 2003 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `meimad` — מימד.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"מימד" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%A9_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections>; <https://elections.kaplanopensource.co.il/locality/1263>.
+- S2: `site:commons.wikimedia.org "Meimad" logo 2003` → <https://commons.wikimedia.org/wiki/File:Labor-Meimad.png>.
+- S3: `site:facebook.com "מימד" 2003 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "מימד" 2003 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `meretz` — מרצ.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"מרצ" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%A9_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections>; <https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf>.
+- S2: `site:commons.wikimedia.org "Meretz" logo 2003` → <https://commons.wikimedia.org/wiki/File:Meretz_Logo.svg>; <https://commons.wikimedia.org/wiki/File:Meretz_Logo_Israel.png>.
+- S3: `site:facebook.com "מרצ" 2003 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "מרצ" 2003 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `moledet` — מולדת.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"מולדת" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → **Tool failure:** Error: Search failed for query ""מולדת" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org": 500 Internal Server Error - timeout of 5000ms exceeded.
+- S2: `site:commons.wikimedia.org "Moledet" logo 2003` → <https://commons.wikimedia.org/wiki/Category:INS_Sufa_(Saar_4.5)>.
+- S3: `site:facebook.com "מולדת" 2003 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "מולדת" 2003 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `ram` — רע"ם – הרשימה הערבית המאוחדת (התנועה האסלאמית, הפלג הדרומי).** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"רע"ם – הרשימה הערבית המאוחדת (התנועה האסלאמית, הפלג הדרומי)" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%A8%D7%A9%D7%99%D7%9E%D7%94_%D7%94%D7%A2%D7%A8%D7%91%D7%99%D7%AA_%D7%94%D7%9E%D7%90%D7%95%D7%97%D7%93%D7%AA>; <https://www.gov.il/BlobFolder/guide/candidates-lists-26/he/pr5_26_annex.pdf>; <https://www.inss.org.il/he/publication/%D7%94%D7%A9%D7%AA%D7%9C%D7%91%D7%95%D7%AA-%D7%A8%D7%A2%D7%9D-%D7%91%D7%A7%D7%95%D7%90%D7%9C%D7%99%D7%A6%D7%99%D7%94-%D7%A9%D7%95%D7%A8%D7%A9%D7%99%D7%9D-%D7%94%D7%99%D7%A1%D7%98%D7%95>.
+- S2: `site:commons.wikimedia.org "Ra'am – United Arab List (Islamic Movement, southern branch)" logo 2003` → no returned URLs.
+- S3: `site:facebook.com "רעם" 2003 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "רעם" 2003 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `shahar` — שח"ר.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"שח"ר" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%A9_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.idi.org.il/articles/30964>; <https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%A9_%D7%A2%D7%A9%D7%A8%D7%94>.
+- S2: `site:commons.wikimedia.org "Shahar" logo 2003` → <https://commons.wikimedia.org/wiki/File:Ho_Chi_Minh_City_Television_logo_(2003-present).png>; <https://commons.wikimedia.org/wiki/File:Ayelet_Shahar_memorial.JPG>; <https://commons.wikimedia.org/wiki/File:Ayelet_Shahar_garden.JPG>.
+- S3: `site:facebook.com "שחר" 2003 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "שחר" 2003 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `taal` — תע"ל – התנועה הערבית להתחדשות.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"תע"ל – התנועה הערבית להתחדשות" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://oknesset.org/members/208.html>; <https://www.walla.co.il/news/israel/2588685>; <https://www.walla.co.il/news/israel/1386282>.
+- S2: `site:commons.wikimedia.org "Ta'al" logo 2003` → <https://commons.wikimedia.org/wiki/File:Israel_Knesset_2003.svg>; <https://commons.wikimedia.org/wiki/File:2003_Knesset.svg>; <https://commons.wikimedia.org/wiki/File:Israel_Kn%C3%A9set_2003.svg>.
+- S3: `site:facebook.com "תעל" 2003 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "תעל" 2003 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `tkuma` — תקומה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"תקומה" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%90%D7%99%D7%97%D7%95%D7%93_%D7%94%D7%9C%D7%90%D7%95%D7%9E%D7%99%E2%80%93%D7%AA%D7%A7%D7%95%D7%9E%D7%94>; <https://www.idi.org.il/media/30714/local-elections-in-israel-2003-2024.pdf>; <https://www.gov.il/BlobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisionsfullbook2022.pdf>.
+- S2: `site:commons.wikimedia.org "Tkuma" logo 2003` → no returned URLs.
+- S3: `site:facebook.com "תקומה" 2003 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "תקומה" 2003 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `yisrael-beiteinu` — ישראל ביתנו.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"ישראל ביתנו" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%91%D7%99%D7%AA%D7%A0%D7%95>; <https://www.idi.org.il/policy/parties-and-elections/parties/yisrael-beytenu>; <https://www.inss.org.il/he/publication/israel-elections-2022>.
+- S2: `site:commons.wikimedia.org "Yisrael Beiteinu" logo 2003` → no returned URLs.
+- S3: `site:facebook.com "ישראל ביתנו" 2003 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "ישראל ביתנו" 2003 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+Batch verification: `npx vitest run` **57 files / 484 tests passed** (single worker and CLI testTimeout=30000 from k23 onward after existing rebuild tests exceeded 5000ms); `npx tsc -p tsconfig.json --noEmit`, `npx vite build`, and `python3 scripts/validate-party-logos.py` passed. Dataset build passed; all 26 election datasets equal prior batch after recursively removing `logo` and `builtAt`.
