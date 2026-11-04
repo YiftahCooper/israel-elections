@@ -70,7 +70,7 @@ export function applyMeta(ds: ElectionDataset): ElectionDataset {
   const strong = (c: MetaColour) => HEX.test(c.color) && (c.confidence === 'high' || c.confidence === 'medium') && readable(c.color);
   for (const c of meta.colours ?? []) {
     if (!HEX.test(c.color)) fail(`bad colour ${c.color}`);
-    if (c.party) for (const lid of partyLists.get(c.party) ?? []) { const p = partiesByList.get(lid)?.find((x) => x.id === c.party); if (p) p.color = c.color.toLowerCase(); }
+    if (c.party && strong(c)) for (const lid of partyLists.get(c.party) ?? []) { const p = partiesByList.get(lid)?.find((x) => x.id === c.party); if (p) p.color = c.color.toLowerCase(); }
   }
   // list colours: take the associated colour, then undo any that collide with a seat-order neighbour
   const associated = new Map<string, string>();
@@ -127,6 +127,8 @@ export function applyMeta(ds: ElectionDataset): ElectionDataset {
       }),
     };
   });
-  const pick = schemes.find((s) => s.kind === 'government') ?? schemes.find((s) => s.kind === 'pre-election') ?? schemes[0];
+  // default (decision 0087): the first government formed after this election, else its pre-election blocs,
+  // else any other sourced grouping (e.g. an outgoing government, or recommendations to the President)
+  const pick = schemes.find((s) => s.id === 'first-government') ?? schemes.find((s) => s.kind === 'pre-election') ?? schemes.find((s) => s.kind === 'government') ?? schemes[0];
   return { ...ds, lists, ...(schemes.length ? { blocSchemes: schemes, defaultBlocScheme: pick!.id } : {}) };
 }

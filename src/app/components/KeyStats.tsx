@@ -1,7 +1,7 @@
 import type { ElectionDataset } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import { votesCast, type Scenario } from '../../model/scenario.ts';
-import { useL, useLang } from '../i18n.ts';
+import { useL } from '../i18n.ts';
 import { methodOf } from '../derive.ts';
 import { fmtFrac, fmtInt, fmtPct, fmtRat } from '../format.ts';
 import { useLevel, useDigits } from '../store.ts';
@@ -57,35 +57,6 @@ export function KeyStats({ s, r, ds, baseR }: { s: Scenario; r: AllocationResult
       <Tile k={L('Seats: quota / remainder', 'מנדטים: מודד / עודפים')} term={method.term} v={`${r.initialSeatsTotal} + ${r.remainderSeatsTotal}`} d={L(`${r.remainderSeatsTotal} seats allocated by ${method.en}`, `${r.remainderSeatsTotal} מנדטים חולקו ב${method.he}`)} />
       {turnoutTile}
       <Tile k={L('Invalid ballots', 'קולות פסולים')} term="invalid-votes" v={fmtInt(s.invalid)} d={fmtPct(s.invalid, cast, digits) + L(' of cast', ' מהמצביעים')} />
-    </div>
-  );
-}
-
-export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
-  const L = useL();
-  const { expert } = useLevel();
-  const lang = useLang();
-  const total = s.rules.seats;
-  const majority = Math.floor(total / 2) + 1;
-  const sums = s.blocs.map((b) => ({ b, n: s.lists.filter((l) => l.bloc === b.id).reduce((t, l) => t + (r.lists.find((x) => x.id === l.id)?.seats ?? 0), 0) }));
-  const other = r.seatsAllocated - sums.reduce((t, x) => t + x.n, 0);
-  if (!s.blocs.length) return null;
-  if (r.seatsAllocated === 0) return <p className="small muted" style={{ margin: 0 }}>{L('No seats are allocated in this scenario.', 'בתרחיש זה לא חולקו מושבים.')}</p>;
-  return (
-    <div>
-      <div className="row small" style={{ justifyContent: 'space-between', marginBottom: 4 }}>
-        <span className="ink2">{expert ? L('Seats by bloc (editable grouping, not an official classification)', 'מנדטים לפי גוש (חלוקה ניתנת לעריכה, לא סיווג רשמי)') : L('Seats by bloc (an informal grouping, not an official classification)', 'מנדטים לפי גוש (חלוקה לא רשמית)')} <Info term="bloc" /></span>
-        <span className="muted">{L(`majority ${majority}`, `רוב ${majority}`)}</span>
-      </div>
-      <div className="majority-bar" role="img" aria-label={sums.map((x) => `${lang === 'he' ? x.b.nameHe : x.b.nameEn} ${x.n}`).join(', ')}>
-        {sums.map((x) => <div key={x.b.id} style={{ flexBasis: `${(x.n / total) * 100}%`, background: x.b.color }} title={`${lang === 'he' ? x.b.nameHe : x.b.nameEn}: ${x.n}`} />)}
-        {other > 0 && <div style={{ flexBasis: `${(other / total) * 100}%`, background: 'var(--axis)' }} title={`${L('Unassigned', 'ללא גוש')}: ${other}`} />}
-        <span className="majority-line" style={{ insetInlineStart: `calc(${(majority / total) * 100}% - 1px)` }} aria-hidden />
-      </div>
-      <div className="legend" style={{ marginTop: 6 }}>
-        {sums.map((x) => <span key={x.b.id} className="row" style={{ gap: 5 }}><span className="swatch" style={{ background: x.b.color }} />{lang === 'he' ? x.b.nameHe : x.b.nameEn} <b className="tabnum">{x.n}</b>{x.n >= majority && <span className="chip ok">{L('majority', 'רוב')}</span>}</span>)}
-        {other > 0 && <span className="row" style={{ gap: 5 }}><span className="swatch" style={{ background: 'var(--axis)' }} />{L('Unassigned', 'ללא גוש')} <b className="tabnum">{other}</b></span>}
-      </div>
     </div>
   );
 }

@@ -1,36 +1,37 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario, SimList } from '../../model/scenario.ts';
-import { listLabel, methodOf, seatedOrder, shownName } from '../derive.ts';
+import { listLabel, methodOf, seatBlocsOf, seatedOrder, shownName } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { arcLayout, placeLabels } from '../layout.ts';
 import { download, isolate } from '../format.ts';
 import { setState, useLevel, useStore } from '../store.ts';
 
-export interface SeatInfo { listId: string; idx: number; color: string; remainder: boolean }
+export interface SeatInfo { listId: string; idx: number; color: string; remainder: boolean; bloc: string | null }
 
+/** Seats in chamber order. With a bloc grouping, seats are grouped by bloc (decision 0087): each seat counts
+ *  for its member's party bloc when it differs from the list's. Within a bloc, lists keep their order. */
 export function seatOrder(s: Scenario, r: AllocationResult, colorBy: 'list' | 'bloc' | 'party'): SeatInfo[] {
-  const out: SeatInfo[] = [];
-  const order = colorBy === 'bloc'
-    ? [...s.lists].sort((a, b) => (s.blocs.findIndex((x) => x.id === a.bloc) + 99 * Number(!a.bloc)) - (s.blocs.findIndex((x) => x.id === b.bloc) + 99 * Number(!b.bloc)))
-    : s.lists;
-  for (const l of order) {
+  const out: (SeatInfo & { k: number })[] = [];
+  let k = 0;
+  for (const l of s.lists) {
     const lr = r.lists.find((x) => x.id === l.id);
-    if (!lr) continue;
-    // seats go to the seated order: candidates the official notice did not seat are skipped
+    if (!lr || !lr.seats) continue;
     const seated = seatedOrder(l);
+    const blocs = seatBlocsOf(s, l, lr.seats);
     const parties = [...new Set(seated.map((c) => c.partyHe ?? ''))];
     for (let i = 0; i < lr.seats; i++) {
-      let color = l.color;
-      if (colorBy === 'bloc') color = s.blocs.find((b) => b.id === l.bloc)?.color ?? '#8e8e93';
-      if (colorBy === 'party' && parties.length > 1) {
-        const pi = parties.indexOf(seated[i]?.partyHe ?? '');
-        color = shade(l.color, pi);
-      }
-      out.push({ listId: l.id, idx: i, color, remainder: i >= lr.initialSeats });
+      const c = seated[i];
+      // a constituent party's own colour (decision 0087) where the research gives one
+      let color = (c?.partyId && l.parties?.find((p) => p.id === c.partyId)?.color) || l.color;
+      if (colorBy === 'bloc') color = s.blocs.find((b) => b.id === blocs[i])?.color ?? '#8e8e93';
+      if (colorBy === 'party' && parties.length > 1) color = shade(l.color, parties.indexOf(c?.partyHe ?? ''));
+      out.push({ listId: l.id, idx: i, color, remainder: i >= lr.initialSeats, bloc: blocs[i], k: k++ });
     }
   }
-  return out;
+  if (!s.blocs.length) return out;
+  const rank = (b: string | null) => { const i = s.blocs.findIndex((x) => x.id === b); return i < 0 ? s.blocs.length : i; };
+  return out.sort((a, b) => rank(a.bloc) - rank(b.bloc) || a.k - b.k);
 }
 
 function shade(hex: string, i: number): string {
@@ -84,6 +85,19 @@ export function Hemicycle({ s, r, compact: compactProp = false, title }: { s: Sc
     return [...g.entries()].map(([id, e]) => ({ id, n: e.n, a: Math.atan2(e.sy, e.sx) }));
   }, [seats, pos]);
 
+  // one band per bloc along the outside of the arc, spanning that bloc's seats (seats are ordered by angle)
+  const bands = useMemo(() => {
+    if (!s.blocs.length || layout !== 'hemicycle') return [];
+    const out: { bloc: string; color: string; a0: number; a1: number }[] = [];
+    seats.forEach((st, i) => {
+      const p = pos[rtl ? pos.length - 1 - i : i]; if (!p || !st.bloc) return;
+      const last = out[out.length - 1];
+      if (last && last.bloc === st.bloc) { last.a0 = Math.min(last.a0, p.a); last.a1 = Math.max(last.a1, p.a); }
+      else out.push({ bloc: st.bloc, color: s.blocs.find((b) => b.id === st.bloc)?.color ?? 'var(--axis)', a0: p.a, a1: p.a });
+    });
+    return out;
+  }, [seats, pos, rtl, s.blocs, layout]);
+
   const onSeat = (st: SeatInfo, evt: React.MouseEvent | React.FocusEvent) => {
     const box = (evt.currentTarget as SVGElement).ownerSVGElement!.parentElement!.getBoundingClientRect();
     const t = (evt.currentTarget as SVGElement).getBoundingClientRect();
@@ -132,10 +146,15 @@ export function Hemicycle({ s, r, compact: compactProp = false, title }: { s: Sc
               onClick={() => setState({ selectedListId: selected === st.listId ? null : st.listId })} />
           );
         })}
+        {bands.map((b, i) => {
+          const Rb = R * (1 + rad) + 12, pad = 0.012;
+          const p0 = [cx + Math.cos(b.a1 + pad) * Rb, cy - Math.sin(b.a1 + pad) * Rb], p1 = [cx + Math.cos(b.a0 - pad) * Rb, cy - Math.sin(b.a0 - pad) * Rb];
+          return <path key={`band${i}`} className="bloc-band" d={`M ${p0[0]} ${p0[1]} A ${Rb} ${Rb} 0 0 1 ${p1[0]} ${p1[1]}`} stroke={b.color} strokeWidth={8} fill="none" strokeLinecap="round" />;
+        })}
         {!compact && placeLabels(groups.map((g) => {
           const a = rtl ? Math.PI - g.a : g.a;
           return { id: g.id, n: g.n, a, text: `${listLabel(listOf(g.id), lang)} ${g.n}` };
-        }), cx, cy, R).map((p) => (
+        }), cx, cy, bands.length ? R + 26 : R).map((p) => (
           <text key={p.id} x={p.x} y={p.y} textAnchor={p.anchor} dominantBaseline="middle" fontSize={p.n < 4 ? 20 : 23} fill="var(--ink)" fontWeight={600}>{isolate(p.text)}</text>
         ))}
         <text x={cx} y={cy - 40} textAnchor="middle" fontSize={44} fontWeight={700} fill="var(--ink)">{r.seatsAllocated}</text>

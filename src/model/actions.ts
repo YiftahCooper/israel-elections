@@ -1,6 +1,7 @@
 // Pure scenario transitions. Each returns a new Scenario and never mutates its input.
 // Vote counts stay non-negative integers; every integer split uses exact largest-remainder rounding.
-import { electionRuleSetId, historicalRules, type Action, type ActionContext, type Scenario, type SimCandidate, type SimList } from './scenario.ts';
+import { blocSchemeState, electionRuleSetId, historicalRules, type Action, type ActionContext, type Scenario, type SimCandidate, type SimList } from './scenario.ts';
+import type { PartyDef } from '../data/schema.ts';
 
 export class ActionError extends Error {
   readonly code: string;
@@ -73,6 +74,14 @@ function checkAgreements(s: Scenario) {
 
 /** Removes agreements that reference lists which no longer exist. */
 const pruneAgreements = (s: Scenario): Scenario => ({ ...s, agreements: s.agreements.filter((a) => a.members.every((m) => s.lists.some((l) => l.id === m))) });
+
+/** The constituent parties a list keeps after a merge or split: those its candidates still represent. */
+function partiesOf(parties: PartyDef[], candidates: SimCandidate[]): Pick<SimList, 'parties'> {
+  const used = new Set(candidates.map((c) => c.partyId).filter(Boolean));
+  const seen = new Set<string>();
+  const kept = parties.filter((p) => used.has(p.id) && !seen.has(p.id) && (seen.add(p.id), true));
+  return kept.length ? { parties: kept.map((p) => ({ ...p })) } : {};
+}
 
 function interleave<T>(arrays: T[][]): T[] {
   const out: T[] = [];
@@ -147,7 +156,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
         id: action.newId, originIds: [...new Set(parts.flatMap((p) => p.originIds))], letters: action.letters, nameHe: action.nameHe,
         shortHe: action.nameHe, shortEn: null, color: action.color, bloc: blocs.size === 1 ? parts[0].bloc : null,
         votes: kept, withdrawn: false, candidates, sponsorsHe: parts.map((p) => p.sponsorsHe).filter(Boolean).join('; '),
-        ...rosterFlags(parts),
+        ...rosterFlags(parts), ...partiesOf(parts.flatMap((p) => p.parties ?? []), candidates),
       };
       const firstIdx = s.lists.findIndex((l) => action.ids.includes(l.id));
       const rest = s.lists.filter((l) => !action.ids.includes(l.id));
@@ -177,7 +186,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
         id: p.newId, originIds: orig.originIds, letters: p.letters, nameHe: p.nameHe, shortHe: p.nameHe, shortEn: null, color: p.color,
         bloc: orig.bloc, votes: p.votes, withdrawn: false, sponsorsHe: orig.sponsorsHe,
         candidates: p.candidateIds.map((cid) => byId.get(cid)!),
-        ...rosterFlags([orig]),
+        ...rosterFlags([orig]), ...partiesOf(orig.parties ?? [], p.candidateIds.map((cid) => byId.get(cid)!)),
       }));
       const idx = s.lists.findIndex((l) => l.id === action.id);
       const lists = [...s.lists]; lists.splice(idx, 1, ...newLists);
@@ -209,6 +218,8 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
     case 'setListMeta':
       listById(s, action.listId);
       s = replaceList(s, action.listId, (l) => ({ ...l, ...action.patch }));
+      // moving a list to another bloc makes the grouping the user's own
+      if ('bloc' in action.patch && s.blocSchemes) s = { ...s, blocSchemeId: null };
       break;
     case 'setAgreement': {
       const { members } = action.agreement;
@@ -254,9 +265,31 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       if (action.invalid !== undefined) need(isWhole(action.invalid), 'votes', 'Invalid ballots must be a whole number ≥ 0.');
       s = { ...s, registered: action.registered ?? s.registered, invalid: action.invalid ?? s.invalid };
       break;
-    case 'setBlocs':
-      s = { ...s, blocs: action.blocs, lists: s.lists.map((l) => (l.bloc && !action.blocs.some((b) => b.id === l.bloc) ? { ...l, bloc: null } : l)) };
+    case 'setBlocs': {
+      const keep = (b: string | null) => (b && action.blocs.some((x) => x.id === b) ? b : null);
+      const prune = (m?: Record<string, string | null>) => (m ? Object.fromEntries(Object.entries(m).map(([k, v]) => [k, keep(v)])) : m);
+      s = { ...s, blocs: action.blocs, blocSchemeId: s.blocSchemes ? null : s.blocSchemeId, partyBlocs: prune(s.partyBlocs), candidateBlocs: prune(s.candidateBlocs),
+        lists: s.lists.map((l) => (l.bloc && !keep(l.bloc) ? { ...l, bloc: null } : l)) };
       break;
+    }
+    case 'applyBlocScheme': {
+      const scheme = s.blocSchemes?.find((x) => x.id === action.schemeId);
+      need(scheme, 'unknown-scheme', 'This election has no such bloc scheme.');
+      const st = blocSchemeState(scheme!, s.lists);
+      // lists created by merges/splits take the bloc their origin lists share in the scheme
+      const originBloc = (l: SimList) => { const b = new Set(l.originIds.map((o) => st.listBloc[o] ?? null)); return b.size === 1 ? [...b][0] : null; };
+      s = { ...s, blocSchemeId: scheme!.id, blocs: st.blocs, partyBlocs: st.partyBlocs, candidateBlocs: st.candidateBlocs,
+        lists: s.lists.map((l) => ({ ...l, bloc: l.id in st.listBloc ? st.listBloc[l.id] : originBloc(l) })) };
+      break;
+    }
+    case 'setPartyBloc': {
+      need(s.lists.some((l) => l.parties?.some((p) => p.id === action.partyId)), 'unknown-party', 'No list has this party.');
+      need(action.bloc === null || s.blocs.some((b) => b.id === action.bloc), 'unknown-bloc', 'No such bloc.');
+      const partyBlocs = { ...s.partyBlocs };
+      if (action.inherit) delete partyBlocs[action.partyId]; else partyBlocs[action.partyId] = action.bloc;
+      s = { ...s, blocSchemeId: s.blocSchemes ? null : s.blocSchemeId, partyBlocs };
+      break;
+    }
     case 'setLottery': {
       const lw = { ...s.lotteryWinners };
       if (action.winner) lw[action.key] = action.winner; else delete lw[action.key];
@@ -269,7 +302,9 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       if (!action.keepVotes && cur?.withdrawn && cur.heldVotes) s = { ...s, invalid: Math.max(0, s.invalid - cur.heldVotes) };
       const base = ctx.base ? baseList(action.listId) : action.base ?? null;
       const restored = base && action.keepVotes && cur ? { ...base, votes: cur.votes, withdrawn: cur.withdrawn, ...(cur.heldVotes !== undefined ? { heldVotes: cur.heldVotes } : {}) } : base;
-      if (restored) s = s.lists.some((l) => l.id === action.listId) ? replaceList(s, action.listId, () => restored) : { ...s, lists: [...s.lists, restored] };
+      // the historical bloc only if the current grouping still has it (another grouping may be in use)
+      const fixBloc = (l: SimList): SimList => (l.bloc === null || s.blocs.some((b) => b.id === l.bloc) ? l : { ...l, bloc: cur?.bloc ?? null });
+      if (restored) s = s.lists.some((l) => l.id === action.listId) ? replaceList(s, action.listId, () => fixBloc(restored)) : { ...s, lists: [...s.lists, fixBloc(restored)] };
       else s = pruneAgreements({ ...s, lists: s.lists.filter((l) => l.id !== action.listId) });
       break;
     }
@@ -317,7 +352,8 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
         const blocs = B?.blocs ?? action.blocs;
         const listBlocs = B ? Object.fromEntries(B.lists.map((l) => [l.id, l.bloc])) : action.listBlocs;
         need(blocs && listBlocs, 'no-base', 'Historical blocs are unavailable.');
-        s = { ...s, blocs: blocs!, lists: s.lists.map((l) => (l.id in listBlocs! ? { ...l, bloc: listBlocs![l.id] } : l)) };
+        s = { ...s, blocs: blocs!, lists: s.lists.map((l) => (l.id in listBlocs! ? { ...l, bloc: listBlocs![l.id] } : l)),
+          ...(B ? { blocSchemeId: B.blocSchemeId, partyBlocs: B.partyBlocs, candidateBlocs: B.candidateBlocs } : {}) };
       } else s = { ...s, lotteryWinners: {} };
       break;
     }

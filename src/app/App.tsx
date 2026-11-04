@@ -3,7 +3,8 @@ import { allocationOf, baselineOf, ruleChanges, scenarioIssues, tieAffectsSeats,
 import { LangContext, useL } from './i18n.ts';
 import { dispatch, loadElectionIndex, openElection, readSharedFromHash, redo, setState, undo, useStore } from './store.ts';
 import { Hemicycle as HemicycleView } from './components/Hemicycle.tsx';
-import { BlocBar as BlocBarView, KeyStats as KeyStatsView } from './components/KeyStats.tsx';
+import { KeyStats as KeyStatsView } from './components/KeyStats.tsx';
+import { BlocBar as BlocBarView } from './components/Blocs.tsx';
 import { ListPanel as ListPanelView } from './components/ListPanel.tsx';
 import { PartyCards as PartyCardsView } from './components/PartyCards.tsx';
 import { TopBar as TopBarView } from './components/TopBar.tsx';
@@ -173,7 +174,7 @@ function Shell() {
             <section className="panel">
               <div className="body"><ErrorBoundary label={L('Chamber', 'המליאה')} resetKey={s}><Hemicycle s={s} r={r} /></ErrorBoundary></div>
             </section>
-            {s.blocs.length > 0 && <section className="panel"><div className="body"><BlocBar s={s} r={r} /></div></section>}
+            {(s.blocs.length > 0 || !!s.blocSchemes?.length) && <section className="panel"><div className="body"><BlocBar s={s} r={r} /></div></section>}
             <KeyStats s={s} r={r} ds={ds} baseR={baseR} />
           </div>
           <div className="col" id="detail-col"><ErrorBoundary label={L('List details', 'פרטי רשימה')} resetKey={s}><ListPanel s={s} r={r} ds={ds} base={base} baseR={baseR} /></ErrorBoundary></div>

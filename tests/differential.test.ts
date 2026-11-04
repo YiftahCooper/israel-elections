@@ -14,6 +14,8 @@
 // the same check. Re-recorded once more when candidates gained curated notes (6 candidates): with the two new
 // fields switched off, the code gives the earlier digest. And again when the build merged data/meta
 // (party colours, constituent parties, bloc schemes): the old code gives the same digest on the same data.
+// Model and validation were re-recorded for decision 0087 step 2: scenarios now carry bloc schemes and party
+// blocs and start from the default scheme (allocation, analysis and rules digests unchanged).
 //
 // A changed digest means some output changed. Find the first differing case with
 // tests/differential-compare.ts; update a digest only for a reviewed, intended output change.
@@ -28,8 +30,8 @@ import { FAMILIES, families, type Family, type Modules } from './differential.ca
 const EXPECTED: Record<Family, string> = {
   allocation: 'aba4d7b5256328d6a1db6591b83369cb066c5c6f0ecb2cc369209b9ee2a7eacf',
   analysis: 'f04635df61b1ca12d56e177f0b249a60ed8056c24b2a003f4a7791f161390ee2',
-  model: '71107fe00f618d43ae19372e6916c28b0dbacd497ff59447a51712b85ada209b',
-  validation: '20096790e5f352f39e4bf3074fd757e6fdef00abe16b202c6707329811ee3675',
+  model: '33e9866b6336ea0bc2ded2fd86510d6103df748de940549f172299662cbb1d2b',
+  validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };
 

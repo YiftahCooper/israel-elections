@@ -115,3 +115,38 @@ export function warningText(w: EngineWarning, s: Scenario, lang: Lang): string {
     case 'agreement-rule-departure': return he ? 'הסכם של יותר משתי רשימות אינו מותר לפי סעיף 67(א); הוא מחושב כאן ככלל ניסיוני.' : 'An agreement of more than two lists is not allowed by section 67(a); it is computed here as an experimental rule.';
   }
 }
+
+/** The bloc each seat of a list counts for (decision 0087): the seated candidate's own bloc if set,
+ *  else their constituent party's, else the list's. A list without names counts entirely for its list. */
+export function seatBlocsOf(s: Scenario, l: SimList, seats: number): (string | null)[] {
+  const elected = electedOf(l, seats);
+  return Array.from({ length: seats }, (_, i) => {
+    const c = elected[i];
+    if (c && s.candidateBlocs && c.id in s.candidateBlocs) return s.candidateBlocs[c.id];
+    if (c?.partyId && s.partyBlocs && c.partyId in s.partyBlocs) return s.partyBlocs[c.partyId];
+    return l.bloc;
+  });
+}
+
+/** One coloured piece of the chamber: consecutive seats of one list (and party) in one bloc. */
+export interface BlocPiece { bloc: string | null; listId: string; partyId: string | null; color: string; n: number }
+
+/** Seats grouped by bloc (in the scenario's bloc order, unassigned last), then by list order, then party. */
+export function blocPieces(s: Scenario, r: AllocationResult): BlocPiece[] {
+  const pieces: BlocPiece[] = [];
+  for (const l of s.lists) {
+    const seats = r.lists.find((x) => x.id === l.id)?.seats ?? 0;
+    if (!seats) continue;
+    const blocs = seatBlocsOf(s, l, seats);
+    const elected = electedOf(l, seats);
+    blocs.forEach((b, i) => {
+      const partyId = elected[i]?.partyId ?? null;
+      const party = partyId ? l.parties?.find((p) => p.id === partyId) : undefined;
+      const last = pieces[pieces.length - 1];
+      if (last && last.listId === l.id && last.bloc === b && last.partyId === partyId) last.n++;
+      else pieces.push({ bloc: b, listId: l.id, partyId, color: party?.color ?? l.color, n: 1 });
+    });
+  }
+  const rank = (b: string | null) => { const i = s.blocs.findIndex((x) => x.id === b); return i < 0 ? s.blocs.length : i; };
+  return pieces.map((p, i) => ({ p, i })).sort((a, b) => rank(a.p.bloc) - rank(b.p.bloc) || a.i - b.i).map(({ p }) => p);
+}

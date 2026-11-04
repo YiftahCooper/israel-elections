@@ -173,6 +173,15 @@ input[type="color"] { width: 34px; height: 28px; padding: 0 2px; border: 1px sol
 .majority-bar { position: relative; height: 26px; border-radius: 6px; overflow: hidden; display: flex; gap: 2px; background: var(--surface); }
 .majority-bar > div { height: 100%; transition: flex-basis .45s ease; }
 .majority-line { position: absolute; inset-block: -4px; width: 2px; background: var(--ink); }
+/* bloc bar: each bloc is a group with its bloc colour on top and its parties' colours beneath */
+.blocbar { position: relative; display: flex; gap: 3px; height: 30px; }
+.blocbar-group { display: flex; flex-direction: column; gap: 2px; min-width: 2px; transition: flex-basis .45s ease; }
+.blocbar-bloc { height: 7px; border-radius: 3px; }
+.blocbar-pieces { flex: 1; display: flex; gap: 1px; border-radius: 4px; overflow: hidden; }
+.blocbar-pieces > div { min-width: 1px; }
+.bloc-editor { margin-top: 8px; border-top: 1px solid var(--line); padding-top: 8px; }
+.bloc-editor tr.sub td { font-size: 12.5px; }
+@media (prefers-reduced-motion: reduce) { .blocbar-group { transition: none; } }
 
 /* ---------- stats tiles */
 .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }

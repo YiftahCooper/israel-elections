@@ -1,7 +1,7 @@
 // Editable simulation state. A Scenario is a full, self-contained copy of an election's inputs;
 // the historical dataset it was created from is never modified. Every displayed figure is derived
 // from a Scenario through the engine — no totals are stored separately.
-import { ELECTION_IDS, type BlocDef, type ElectionDataset, type ElectionId } from '../data/schema.ts';
+import { ELECTION_IDS, type BlocDef, type BlocScheme, type ElectionDataset, type ElectionId, type PartyDef } from '../data/schema.ts';
 import { percentToRational, toPercentString } from '../engine/rational.ts';
 import type { AllocationInput, RemainderMethod, RuleSet } from '../engine/types.ts';
 import { ISRAEL_1949, ISRAEL_1951, ISRAEL_1973, ISRAEL_1977, ISRAEL_1992, ISRAEL_2004, ISRAEL_2014, OPTIONAL_RULES, RULE_DEFAULTS, RULESETS } from '../engine/rules.ts';
@@ -21,6 +21,8 @@ export interface SimCandidate {
   displayNameHe?: string;
   /** curated bilingual notes (Candidate.notes) */
   notes?: { en: string; he: string }[];
+  /** constituent party on a joint list (Candidate.partyId; decision 0087) */
+  partyId?: string;
 }
 
 export interface SimList {
@@ -42,6 +44,8 @@ export interface SimList {
   rosterUnavailable?: boolean;
   /** only the first ranks of the official roster are known (at least everyone elected) */
   rosterTruncated?: boolean;
+  /** constituent parties of a joint list (ListRecord.parties; decision 0087) */
+  parties?: PartyDef[];
 }
 
 export interface SimAgreement { id: string; members: string[]; enabled: boolean }
@@ -81,6 +85,13 @@ export interface Scenario {
   lists: SimList[];
   agreements: SimAgreement[];
   blocs: BlocDef[];
+  /** sourced bloc schemes of the election (decision 0087); the active one, or null once edited */
+  blocSchemes?: BlocScheme[];
+  blocSchemeId?: string | null;
+  /** bloc of a constituent party, overriding its list's bloc for the seats its members hold */
+  partyBlocs?: Record<string, string | null>;
+  /** bloc of an individual candidate, overriding party and list */
+  candidateBlocs?: Record<string, string | null>;
   lotteryWinners: Record<string, string>;
   log: ChangeEntry[];
 }
@@ -105,6 +116,9 @@ export type Action =
   | { type: 'setMode'; mode: Scenario['mode'] }
   | { type: 'setTotals'; registered?: number; invalid?: number }
   | { type: 'setBlocs'; blocs: BlocDef[] }
+  | { type: 'applyBlocScheme'; schemeId: string }
+  /** inherit: drop the party's own bloc so its seats follow its list again */
+  | { type: 'setPartyBloc'; partyId: string; bloc: string | null; inherit?: boolean }
   | { type: 'setLottery'; key: string; winner: string | null }
   /** restores a list from the historical dataset (`base` is only a fallback for logs made before v2) */
   | { type: 'resetList'; listId: string; keepVotes?: boolean; base?: SimList | null }
@@ -163,7 +177,33 @@ export function toRuleSet(r: SimRules, historicalId: string | null): RuleSet {
   };
 }
 
+/** The bloc state a sourced scheme gives: bloc definitions, each list's bloc, and party/candidate overrides. */
+export function blocSchemeState(scheme: BlocScheme, lists: { id: string }[]) {
+  const listBloc = new Map<string, string>();
+  const partyBlocs: Record<string, string | null> = {};
+  const candidateBlocs: Record<string, string | null> = {};
+  for (const b of scheme.blocs) {
+    for (const l of b.lists) listBloc.set(l, b.id);
+    for (const p of b.parties) partyBlocs[p] = b.id;
+    for (const c of b.candidates) candidateBlocs[c] = b.id;
+  }
+  return {
+    blocs: scheme.blocs.map(({ id, nameHe, nameEn, color }) => ({ id, nameHe, nameEn, color })),
+    listBloc: Object.fromEntries(lists.map((l) => [l.id, listBloc.get(l.id) ?? null])) as Record<string, string | null>,
+    partyBlocs, candidateBlocs,
+  };
+}
+
 export function scenarioFromDataset(ds: ElectionDataset, name = ''): Scenario {
+  const s = scenarioBase(ds, name);
+  const scheme = ds.blocSchemes?.find((x) => x.id === ds.defaultBlocScheme);
+  if (!scheme) return s;
+  const st = blocSchemeState(scheme, s.lists);
+  return { ...s, blocSchemes: ds.blocSchemes!.map((x) => structuredClone(x)), blocSchemeId: scheme.id, blocs: st.blocs,
+    partyBlocs: st.partyBlocs, candidateBlocs: st.candidateBlocs, lists: s.lists.map((l) => ({ ...l, bloc: st.listBloc[l.id] })) };
+}
+
+function scenarioBase(ds: ElectionDataset, name: string): Scenario {
   return {
     schema: SCENARIO_SCHEMA, version: SCENARIO_VERSION, id: `${ds.id}-${Date.now().toString(36)}`, name, electionId: ds.id,
     baseBuiltAt: ds.buildInfo.builtAt, mode: 'historical', rules: historicalRules(ds.ruleSetId),
@@ -172,9 +212,11 @@ export function scenarioFromDataset(ds: ElectionDataset, name = ''): Scenario {
       id: l.id, originIds: [l.id], letters: l.letters, nameHe: l.nameHe, shortHe: l.shortHe, shortEn: l.shortEn,
       color: l.color, bloc: l.bloc, votes: l.votes, withdrawn: l.withdrawn, sponsorsHe: l.sponsorsHe,
       candidates: l.candidates.map((c) => ({ id: c.id, nameHe: c.nameHe, partyHe: c.partyHe, originListId: l.id, ...(c.notSeated ? { notSeated: true } : {}),
-        ...(c.displayNameHe ? { displayNameHe: c.displayNameHe } : {}), ...(c.notes?.length ? { notes: c.notes } : {}) })),
+        ...(c.displayNameHe ? { displayNameHe: c.displayNameHe } : {}), ...(c.notes?.length ? { notes: c.notes } : {}),
+        ...(c.partyId ? { partyId: c.partyId } : {}) })),
       ...(l.candidatesUnavailable ? { rosterUnavailable: true } : {}),
       ...(l.candidatesTruncated ? { rosterTruncated: true } : {}),
+      ...(l.parties?.length ? { parties: l.parties.map((p) => ({ ...p })) } : {}),
     })),
     agreements: ds.agreements.map((a) => ({ id: a.id, members: [...a.members], enabled: true })),
     blocs: ds.blocs.map((b) => ({ ...b })),
@@ -213,13 +255,14 @@ const shape = (fields: Record<string, Check>): Check => {
 const oneOf = (...values: unknown[]): Check => (x) => values.includes(x);
 const uniqueStrings: Check = (x) => array(string)(x) && new Set(x as string[]).size === (x as string[]).length;
 const candidate = shape({ id: string, nameHe: string, partyHe: optional(string), originListId: optional(string),
-  displayNameHe: optional(string), notes: optional(array(shape({ en: string, he: string }))) });
+  displayNameHe: optional(string), notes: optional(array(shape({ en: string, he: string }))), partyId: optional(string) });
+const party = shape({ id: string, nameHe: string, nameEn: string, color: optional(string) });
 const candidates: Check = (x) => array(candidate)(x) && new Set((x as SimCandidate[]).map((c) => c.id)).size === (x as SimCandidate[]).length;
 const bloc = shape({ id: string, nameHe: string, nameEn: string, color: string });
 const agreement = shape({ id: string, members: uniqueStrings, enabled: boolean });
 const listFields = shape({ id: string, originIds: uniqueStrings, letters: string, nameHe: string, shortHe: string,
   shortEn: nullable(string), color: string, bloc: nullable(string), votes: whole, withdrawn: boolean,
-  heldVotes: optional(whole), sponsorsHe: string });
+  heldVotes: optional(whole), sponsorsHe: string, parties: optional(array(party)) });
 const list: Check = (x) => listFields(x) && candidates((x as Record<string, unknown>).candidates);
 const ruleFields: Record<keyof SimRules, Check> = {
   seats: (x) => whole(x) && Number(x) >= 1 && Number(x) <= 1000,
@@ -238,6 +281,9 @@ const ruleFields: Record<keyof SimRules, Check> = {
 const rules = shape(ruleFields);
 const partial = (fields: Record<string, Check>): Check => (x) => record(x) && Object.entries(x).every(([k, v]) => Object.hasOwn(fields, k) && fields[k](v));
 const stringMap = (value: Check): Check => (x) => record(x) && Object.values(x).every(value);
+const strings = array(string);
+const blocScheme = shape({ id: string, kind: oneOf('government', 'parliamentary', 'pre-election'), nameHe: string, nameEn: string, date: optional(string),
+  blocs: array(shape({ id: string, nameHe: string, nameEn: string, color: string, lists: strings, parties: strings, candidates: strings })) });
 const actionFields: Record<Action['type'], Check> = {
   setVotes: shape({ listId: string, votes: whole }),
   transfer: shape({ from: string, to: string, votes: whole }),
@@ -252,7 +298,8 @@ const actionFields: Record<Action['type'], Check> = {
   setAgreement: shape({ agreement }), removeAgreement: shape({ id: string }),
   candidates: shape({ listId: string, candidates, note: string }),
   setRules: shape({ patch: partial(ruleFields) }), setMode: shape({ mode: oneOf('historical', 'experimental') }),
-  setTotals: shape({ registered: optional(whole), invalid: optional(whole) }), setBlocs: shape({ blocs: array(bloc) }),
+  setTotals: shape({ registered: optional(whole), invalid: optional(whole) }), setBlocs: shape({ blocs: array(bloc) }), applyBlocScheme: shape({ schemeId: string }),
+  setPartyBloc: shape({ partyId: string, bloc: nullable(string), inherit: optional(boolean) }),
   setLottery: shape({ key: string, winner: nullable(string) }),
   resetList: shape({ listId: string, keepVotes: optional(boolean), base: optional(nullable(list)) }),
   resetVotes: shape({ listId: string }), resetCandidates: shape({ listId: string }), rename: shape({ name: string }),
@@ -283,6 +330,8 @@ export function validateScenario(x: unknown): string[] {
   }
   if (!whole(s.registered) || !whole(s.invalid)) e.push('registered voters and invalid ballots must be safe whole numbers ≥ 0');
   const blocIds = new Set<string>();
+  if (!optional(array(blocScheme))(s.blocSchemes) || !optional(nullable(string))(s.blocSchemeId)
+    || !optional(stringMap(nullable(string)))(s.partyBlocs) || !optional(stringMap(nullable(string)))(s.candidateBlocs)) e.push('invalid bloc schemes');
   if (!Array.isArray(s.blocs)) e.push('missing blocs');
   else for (const b of s.blocs) {
     if (!record(b) || !bloc(b)) { e.push('invalid bloc'); continue; }

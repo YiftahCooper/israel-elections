@@ -28,7 +28,6 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
     seatsCappedAtCandidates: ['No more seats than candidates (1977, inferred)', 'לא יותר מנדטים ממועמדים (1977, מוסק)'],
   };
   const set = (patch: Partial<Scenario['rules']>) => dispatch({ type: 'setRules', patch });
-  const [blocDraft, setBlocDraft] = useState('');
   return (
     <div className="grid2" style={{ alignItems: 'start', gap: 18 }}>
       <div>
@@ -79,23 +78,8 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
         </div>
       </div>
       <div>
-        <div className="row" style={{ justifyContent: 'space-between' }}>
-          <h4>{L('Blocs (your grouping)', 'גושים (החלוקה שלכם)')}</h4>
-          {(JSON.stringify(s.blocs) !== JSON.stringify(base.blocs) || s.lists.some((l) => base.lists.find((b) => b.id === l.id && b.bloc !== l.bloc))) && <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'blocs' })}>{L('Restore default blocs', 'שחזור הגושים')}</button>}
-        </div>
-        <p className="small ink2">{L('Blocs are an editable convenience, not an official classification. Assign lists to blocs in each list’s panel (Expert).', 'הגושים הם חלוקה נוחה הניתנת לעריכה ולא סיווג רשמי. שייכו רשימות לגושים בחלונית הרשימה (מומחה).')}</p>
-        {s.blocs.map((b, i) => (
-          <div key={b.id} className="row" style={{ marginBottom: 4 }}>
-            <input type="color" value={b.color} onChange={(e) => dispatch({ type: 'setBlocs', blocs: s.blocs.map((x, k) => (k === i ? { ...x, color: e.target.value } : x)) })} aria-label={L('Bloc colour', 'צבע הגוש')} />
-            <input type="text" value={lang === 'he' ? b.nameHe : b.nameEn} onChange={(e) => dispatch({ type: 'setBlocs', blocs: s.blocs.map((x, k) => (k === i ? (lang === 'he' ? { ...x, nameHe: e.target.value } : { ...x, nameEn: e.target.value }) : x)) })} aria-label={L('Bloc name', 'שם הגוש')} />
-            <span className="small muted">{s.lists.filter((l) => l.bloc === b.id).map((l) => listLabel(l, lang)).join(', ')}</span>
-            <button className="btn small ghost danger" onClick={() => dispatch({ type: 'setBlocs', blocs: s.blocs.filter((_, k) => k !== i) })} aria-label={L('Remove bloc', 'הסרת גוש')}>✕</button>
-          </div>
-        ))}
-        <div className="row">
-          <input type="text" value={blocDraft} onChange={(e) => setBlocDraft(e.target.value)} placeholder={L('New bloc name', 'שם גוש חדש')} />
-          <button className="btn small" disabled={!blocDraft} onClick={() => { dispatch({ type: 'setBlocs', blocs: [...s.blocs, { id: `b-${Date.now().toString(36)}`, nameHe: blocDraft, nameEn: blocDraft, color: '#8a6fb0' }] }); setBlocDraft(''); }}>{L('Add bloc', 'הוספת גוש')}</button>
-        </div>
+        <h4>{L('Blocs', 'גושים')}</h4>
+        <p className="small ink2">{L('Choose a grouping, move lists and constituent parties between blocs, and rename or recolour blocs with “Edit blocs” under the bloc bar.', 'בחירת חלוקה, העברת רשימות ומפלגות בין גושים ושינוי שמות וצבעים — ב„עריכת גושים” מתחת לפס הגושים.')}</p>
         <hr />
         <h4>{L('Display', 'תצוגה')}</h4>
         <label className="field" style={{ maxWidth: 220 }}>{L('Decimal places for percentages', 'ספרות אחרי הנקודה באחוזים')}
@@ -250,6 +234,9 @@ export function describe(a: Action, s: Scenario, lang: Lang): string {
     case 'setMode': return a.mode === 'historical' ? (he ? 'מצב תקף היסטורית' : 'Historically valid mode') : (he ? 'מצב ניסיוני' : 'Experimental mode');
     case 'setTotals': return he ? 'עדכון בעלי זכות / פסולים' : 'Electorate / invalid ballots changed';
     case 'setBlocs': return he ? 'עריכת גושים' : 'Edited blocs';
+    case 'applyBlocScheme': { const sc = s.blocSchemes?.find((x) => x.id === a.schemeId); return he ? `חלוקה לגושים: ${sc?.nameHe ?? a.schemeId}` : `Bloc grouping: ${sc?.nameEn ?? a.schemeId}`; }
+    case 'setPartyBloc': { const p = s.lists.flatMap((l) => l.parties ?? []).find((x) => x.id === a.partyId); const b = s.blocs.find((x) => x.id === a.bloc);
+      return he ? `${p?.nameHe ?? a.partyId} ← ${b?.nameHe ?? 'ללא גוש'}` : `${p?.nameEn ?? a.partyId} → ${b?.nameEn ?? 'no bloc'}`; }
     case 'setLottery': return he ? 'נבחרה תוצאת הגרלה' : 'Chose a lottery outcome';
     case 'resetList': return he ? `${n(a.listId)}: אופסה` : `${n(a.listId)}: reset`;
     case 'rename': return he ? `שם התרחיש: ${a.name}` : `Renamed to ${a.name}`;
