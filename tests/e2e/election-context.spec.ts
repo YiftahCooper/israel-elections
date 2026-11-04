@@ -24,7 +24,7 @@ test('2001 is PM-only and returns to the unaltered k15 chamber', async ({ page }
   await expect(page.getByRole('button', { name: 'Save & share', exact: true })).toHaveCount(0);
   await expect(pm).toContainText('1,698,077');
   await expect(page.getByRole('region', { name: 'The Knesset', exact: true })).toHaveCount(0);
-  await pm.getByRole('button', { name: 'View k15 · Knesset' }).click();
+  await pm.getByRole('button', { name: 'The 15th Knesset' }).click();
   await expect(picker).toHaveValue('k15');
   await expect(page.getByRole('region', { name: 'The Knesset', exact: true })).toBeVisible();
 });

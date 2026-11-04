@@ -13,6 +13,7 @@
       "source": {
         "url": "https://main.knesset.gov.il/About/Lexicon/pages/asefa.aspx",
         "publisher": "Knesset",
+        "publisherHe": "הכנסת",
         "evidence": "official"
       }
     },
@@ -27,6 +28,7 @@
       "source": {
         "url": "https://main.knesset.gov.il/About/Occasion/pages/yomkippurwar.aspx",
         "publisher": "Knesset",
+        "publisherHe": "הכנסת",
         "evidence": "official"
       }
     },
@@ -40,7 +42,8 @@
       "textHe": "לרשימת פלאטו־שרון היה מועמד יחיד, 35,049 קולות ומנדט אחד בתוצאות שפורסמו. הגבלת הקיבולת באפליקציה משחזרת את התוצאה; הסמכות ההיסטורית המדויקת לחלוקה מחדש טרם הובררה.",
       "source": {
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset9-results.pdf",
-        "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+        "publisher": "Central Elections Committee / Official Gazette",
+        "publisherHe": "ועדת הבחירות המרכזית / רשומות",
         "evidence": "official",
         "sourceId": "k9-results-gazette"
       },
@@ -48,7 +51,8 @@
       "relatedSources": [
         {
           "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset9-cand.pdf",
-          "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+          "publisher": "Central Elections Committee / Official Gazette",
+          "publisherHe": "ועדת הבחירות המרכזית / רשומות",
           "evidence": "official",
           "sourceId": "k9-candidates-gazette"
         }
@@ -65,6 +69,7 @@
       "source": {
         "url": "https://www.gov.il/he/pages/election-committee-history",
         "publisher": "Central Elections Committee",
+        "publisherHe": "ועדת הבחירות המרכזית",
         "evidence": "official"
       }
     },
@@ -79,6 +84,7 @@
       "source": {
         "url": "https://www.gov.il/he/pages/election-committee-history",
         "publisher": "Central Elections Committee",
+        "publisherHe": "ועדת הבחירות המרכזית",
         "evidence": "official"
       }
     },
@@ -93,6 +99,7 @@
       "source": {
         "url": "https://www.gov.il/he/pages/election-committee-history",
         "publisher": "Central Elections Committee",
+        "publisherHe": "ועדת הבחירות המרכזית",
         "evidence": "official"
       }
     },
@@ -107,6 +114,7 @@
       "source": {
         "url": "https://www.gov.il/he/pages/election-committee-history",
         "publisher": "Central Elections Committee",
+        "publisherHe": "ועדת הבחירות המרכזית",
         "evidence": "official"
       }
     },
@@ -121,6 +129,7 @@
       "source": {
         "url": "https://www.gov.il/he/pages/election-committee-history",
         "publisher": "Central Elections Committee",
+        "publisherHe": "ועדת הבחירות המרכזית",
         "evidence": "official"
       }
     },
@@ -135,6 +144,7 @@
       "source": {
         "url": "https://www.idi.org.il/media/18514/the-elections-in-israel-2019-2021.pdf",
         "publisher": "Israel Democracy Institute",
+        "publisherHe": "המכון הישראלי לדמוקרטיה",
         "evidence": "secondary"
       }
     },
@@ -149,6 +159,7 @@
       "source": {
         "url": "https://www.idi.org.il/media/18514/the-elections-in-israel-2019-2021.pdf",
         "publisher": "Israel Democracy Institute",
+        "publisherHe": "המכון הישראלי לדמוקרטיה",
         "evidence": "secondary"
       }
     },
@@ -162,7 +173,8 @@
       "textHe": "ספירה סופית שפרסמה ועדת הבחירות המרכזית (קבצי התוצאות מיום 3.11.2026). התוצאות הסופיות יפורסמו ברשומות עד 4.11.2026 ועד אז עשויות להשתנות.",
       "source": {
         "url": "https://media26.bechirot.gov.il/files/expb.csv",
-        "publisher": "ועדת הבחירות המרכזית לכנסת ה-26",
+        "publisher": "Central Elections Committee for the 26th Knesset",
+        "publisherHe": "ועדת הבחירות המרכזית לכנסת ה-26",
         "evidence": "official",
         "sourceId": "k26-ballots-csv"
       }
@@ -184,7 +196,8 @@
             "value": 1501023,
             "source": {
               "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
-              "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+              "publisher": "Central Elections Committee / Official Gazette",
+              "publisherHe": "ועדת הבחירות המרכזית / רשומות",
               "evidence": "official",
               "sourceId": "k14-results-gazette"
             }
@@ -199,7 +212,8 @@
             "value": 1471566,
             "source": {
               "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
-              "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+              "publisher": "Central Elections Committee / Official Gazette",
+              "publisherHe": "ועדת הבחירות המרכזית / רשומות",
               "evidence": "official",
               "sourceId": "k14-results-gazette"
             }
@@ -211,7 +225,8 @@
           "value": 2972589,
           "source": {
             "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
-            "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+            "publisher": "Central Elections Committee / Official Gazette",
+            "publisherHe": "ועדת הבחירות המרכזית / רשומות",
             "evidence": "official",
             "sourceId": "k14-results-gazette"
           }
@@ -221,6 +236,7 @@
           "source": {
             "url": "https://www.gov.il/en/pages/israeli-election-results-may-1996",
             "publisher": "Ministry of Foreign Affairs",
+            "publisherHe": "משרד החוץ",
             "evidence": "official",
             "verification": "report-only",
             "sourceId": "pm-reviewed-transcription"
@@ -231,6 +247,7 @@
           "source": {
             "url": "https://www.gov.il/en/pages/israeli-election-results-may-1996",
             "publisher": "Ministry of Foreign Affairs",
+            "publisherHe": "משרד החוץ",
             "evidence": "official",
             "verification": "report-only",
             "sourceId": "pm-reviewed-transcription"
@@ -239,7 +256,8 @@
       },
       "source": {
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
-        "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+        "publisher": "Central Elections Committee / Official Gazette",
+        "publisherHe": "ועדת הבחירות המרכזית / רשומות",
         "evidence": "official",
         "sourceId": "k14-results-gazette"
       }
@@ -259,7 +277,8 @@
             "value": 1791020,
             "source": {
               "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-results.pdf",
-              "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+              "publisher": "Central Elections Committee / Official Gazette",
+              "publisherHe": "ועדת הבחירות המרכזית / רשומות",
               "evidence": "official",
               "sourceId": "k15-results-gazette"
             }
@@ -274,7 +293,8 @@
             "value": 1402474,
             "source": {
               "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-results.pdf",
-              "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+              "publisher": "Central Elections Committee / Official Gazette",
+              "publisherHe": "ועדת הבחירות המרכזית / רשומות",
               "evidence": "official",
               "sourceId": "k15-results-gazette"
             }
@@ -288,6 +308,7 @@
           "source": {
             "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1999/",
             "publisher": "Israel Democracy Institute",
+            "publisherHe": "המכון הישראלי לדמוקרטיה",
             "evidence": "secondary"
           }
         },
@@ -299,6 +320,7 @@
           "source": {
             "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1999/",
             "publisher": "Israel Democracy Institute",
+            "publisherHe": "המכון הישראלי לדמוקרטיה",
             "evidence": "secondary"
           }
         },
@@ -310,6 +332,7 @@
           "source": {
             "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1999/",
             "publisher": "Israel Democracy Institute",
+            "publisherHe": "המכון הישראלי לדמוקרטיה",
             "evidence": "secondary"
           }
         }
@@ -319,7 +342,8 @@
           "value": 3193494,
           "source": {
             "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-results.pdf",
-            "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+            "publisher": "Central Elections Committee / Official Gazette",
+            "publisherHe": "ועדת הבחירות המרכזית / רשומות",
             "evidence": "official",
             "sourceId": "k15-results-gazette"
           }
@@ -329,6 +353,7 @@
           "source": {
             "url": "https://www.idi.org.il/media/5026/%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9E%D7%91%D7%95%D7%90.pdf",
             "publisher": "Israel Democracy Institute",
+            "publisherHe": "המכון הישראלי לדמוקרטיה",
             "evidence": "secondary",
             "sourceId": "pm1999-idi-totals"
           }
@@ -338,6 +363,7 @@
           "source": {
             "url": "https://www.idi.org.il/media/5026/%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9E%D7%91%D7%95%D7%90.pdf",
             "publisher": "Israel Democracy Institute",
+            "publisherHe": "המכון הישראלי לדמוקרטיה",
             "evidence": "secondary",
             "sourceId": "pm1999-idi-totals"
           }
@@ -345,7 +371,8 @@
       },
       "source": {
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-results.pdf",
-        "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+        "publisher": "Central Elections Committee / Official Gazette",
+        "publisherHe": "ועדת הבחירות המרכזית / רשומות",
         "evidence": "official",
         "sourceId": "k15-results-gazette"
       }
@@ -365,7 +392,8 @@
             "value": 1698077,
             "source": {
               "url": "https://olaw.org.il/yalkut/yalkut-4960.pdf",
-              "publisher": "CEC / Reshumot, YP 4960 p.1628 (official content on public mirror)",
+              "publisher": "Official Gazette, Yalkut HaPirsumim 4960, p. 1628 (public copy)",
+              "publisherHe": "רשומות, ילקוט הפרסומים 4960, עמ׳ 1628 (עותק ציבורי)",
               "evidence": "official",
               "sourceId": "pm2001-gazette"
             }
@@ -380,7 +408,8 @@
             "value": 1023944,
             "source": {
               "url": "https://olaw.org.il/yalkut/yalkut-4960.pdf",
-              "publisher": "CEC / Reshumot, YP 4960 p.1628 (official content on public mirror)",
+              "publisher": "Official Gazette, Yalkut HaPirsumim 4960, p. 1628 (public copy)",
+              "publisherHe": "רשומות, ילקוט הפרסומים 4960, עמ׳ 1628 (עותק ציבורי)",
               "evidence": "official",
               "sourceId": "pm2001-gazette"
             }
@@ -392,7 +421,8 @@
           "value": 2722021,
           "source": {
             "url": "https://olaw.org.il/yalkut/yalkut-4960.pdf",
-            "publisher": "CEC / Reshumot, YP 4960 p.1628 (official content on public mirror)",
+            "publisher": "Official Gazette, Yalkut HaPirsumim 4960, p. 1628 (public copy)",
+            "publisherHe": "רשומות, ילקוט הפרסומים 4960, עמ׳ 1628 (עותק ציבורי)",
             "evidence": "official",
             "sourceId": "pm2001-gazette"
           }
@@ -401,7 +431,8 @@
           "value": 83917,
           "source": {
             "url": "https://olaw.org.il/yalkut/yalkut-4960.pdf",
-            "publisher": "CEC / Reshumot, YP 4960 p.1628 (official content on public mirror)",
+            "publisher": "Official Gazette, Yalkut HaPirsumim 4960, p. 1628 (public copy)",
+            "publisherHe": "רשומות, ילקוט הפרסומים 4960, עמ׳ 1628 (עותק ציבורי)",
             "evidence": "official",
             "sourceId": "pm2001-gazette"
           }
@@ -410,7 +441,8 @@
           "value": 2805938,
           "source": {
             "url": "https://olaw.org.il/yalkut/yalkut-4960.pdf",
-            "publisher": "CEC / Reshumot, YP 4960 p.1628 (official content on public mirror)",
+            "publisher": "Official Gazette, Yalkut HaPirsumim 4960, p. 1628 (public copy)",
+            "publisherHe": "רשומות, ילקוט הפרסומים 4960, עמ׳ 1628 (עותק ציבורי)",
             "evidence": "official",
             "sourceId": "pm2001-gazette"
           }
@@ -418,7 +450,8 @@
       },
       "source": {
         "url": "https://olaw.org.il/yalkut/yalkut-4960.pdf",
-        "publisher": "CEC / Reshumot, YP 4960 p.1628 (official content on public mirror)",
+        "publisher": "Official Gazette, Yalkut HaPirsumim 4960, p. 1628 (public copy)",
+        "publisherHe": "רשומות, ילקוט הפרסומים 4960, עמ׳ 1628 (עותק ציבורי)",
         "evidence": "official",
         "sourceId": "pm2001-gazette"
       },
@@ -432,6 +465,7 @@
     "source": {
       "url": "https://fs.knesset.gov.il/12/law/12_lsr_210707.PDF",
       "publisher": "Basic Law: The Government (1992), §62",
+      "publisherHe": "חוק־יסוד: הממשלה (1992), סעיף 62",
       "evidence": "official"
     }
   }

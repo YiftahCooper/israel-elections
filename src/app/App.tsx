@@ -235,12 +235,13 @@ function Shell() {
           <div className={`board ${selected || blocPanel ? 'with-panel' : ''}`}>
             <ErrorBoundary label={L('Lists', 'רשימות')} resetKey={s}><ListBars s={s} r={r} base={base} baseR={baseR} /></ErrorBoundary>
             <div className="center">
-              {electionContext.pmContests.filter(c => c.electionId === ds.id && c.contestType === 'parallel-pm').map(c => <PMResult key={c.id} contest={c} />)}
               <section className="panel chamber-panel" aria-label={L('The Knesset', 'הכנסת')}>
                 <div className="body"><ErrorBoundary label={L('Chamber', 'המליאה')} resetKey={s}><Hemicycle s={s} r={r} /></ErrorBoundary></div>
               </section>
               <ErrorBoundary label={L('Blocs', 'גושים')} resetKey={s}><BlocBar s={s} r={r} /></ErrorBoundary>
               <ErrorBoundary label={L('Figures', 'נתונים')} resetKey={s}><Figures s={s} r={r} ds={ds} /></ErrorBoundary>
+              {/* separate PM ballot: below the Knesset result so the chamber stays in the same place for every election */}
+              {electionContext.pmContests.filter(c => c.electionId === ds.id && c.contestType === 'parallel-pm').map(c => <PMResult key={c.id} contest={c} />)}
             </div>
             {selected && <ErrorBoundary label={L('List details', 'פרטי רשימה')} resetKey={selected}><ListSidePanel s={s} r={r} ds={ds} base={base} baseR={baseR} listId={selected} /></ErrorBoundary>}
             {!selected && blocPanel && <ErrorBoundary label={L('Blocs', 'גושים')} resetKey={s}><BlocPanel s={s} r={r} focus={blocPanel} /></ErrorBoundary>}

@@ -2,10 +2,12 @@ import { electionContext, type ContextSource, type PMContest } from '../../data/
 import type { ElectionId } from '../../data/schema.ts';
 import { useL, useLang } from '../i18n.ts';
 
+const ordinal = (n: number) => n + (n % 100 >= 11 && n % 100 <= 13 ? 'th' : ['th', 'st', 'nd', 'rd'][n % 10] ?? 'th');
+
 export function EvidenceLink({ source }: { source: ContextSource }) {
-  const L = useL();
+  const L = useL(); const lang = useLang();
   const label = source.evidence === 'official' ? L('Official', 'רשמי') : source.evidence === 'secondary' ? L('Secondary', 'מקור משני') : L('Unresolved', 'טרם הוברר');
-  return <a href={source.url} target="_blank" rel="noreferrer" className="context-source">{source.publisher} · {label}{source.verification === 'report-only' && <> · {L('Unverified in this build; report transcription', 'לא אומת בבנייה זו; תעתיק מהדוח')}</>}</a>;
+  return <a href={source.url} target="_blank" rel="noreferrer" className="context-source">{lang === 'he' ? source.publisherHe : source.publisher} · {label}{source.verification === 'report-only' && <> · {L('Unverified in this build; report transcription', 'לא אומת בבנייה זו; תעתיק מהדוח')}</>}</a>;
 }
 
 /** Immutable history, deliberately independent of the scenario/action log. */
@@ -30,7 +32,7 @@ export function PMResult({ contest, onKnesset }: { contest: PMContest; onKnesset
   return <section className="panel pm-result" aria-label={L('Prime Minister result', 'תוצאות הבחירות לראש הממשלה')}>
     <header><h2>{L('Prime Minister', 'ראש הממשלה')} · {contest.effectiveDate}</h2></header>
     <div className="body">
-      {contest.contestType === 'prime-minister-only' && <p>{L(`No Knesset was elected in this election. Knesset ${contest.electionId.slice(1)} continued serving, with its seats unchanged.`, `בבחירות אלה לא נבחרה כנסת. הכנסת ה־${contest.electionId.slice(1)} המשיכה לכהן, ללא שינוי במנדטים.`)} <button className="btn small" onClick={onKnesset}>{L(`View ${contest.electionId} · Knesset`, `לכנסת ה־${contest.electionId.slice(1)}`)}</button></p>}
+      {contest.contestType === 'prime-minister-only' && <p>{L(`No Knesset was elected in this election. Knesset ${contest.electionId.slice(1)} continued serving, with its seats unchanged.`, `בבחירות אלה לא נבחרה כנסת. הכנסת ה־${contest.electionId.slice(1)} המשיכה לכהן, ללא שינוי במנדטים.`)} <button className="btn small" onClick={onKnesset}>{L(`The ${ordinal(Number(contest.electionId.slice(1)))} Knesset`, `לכנסת ה־${contest.electionId.slice(1)}`)}</button></p>}
       <p className="small muted">{L('Historical result · separate PM ballot · read only', 'תוצאה היסטורית · פתק נפרד לראש הממשלה · לקריאה בלבד')}</p>
       <div className="pm-bars">
         <div className="pm-majority-label">{L('50% of valid PM votes', '50% מהקולות הכשרים לראש הממשלה')}</div>

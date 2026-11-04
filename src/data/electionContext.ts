@@ -2,7 +2,7 @@ import raw from '../../data/meta/election-context.json' with { type: 'json' };
 import { ELECTION_IDS, type ElectionId } from './schema.ts';
 
 export type Evidence = 'official' | 'secondary' | 'unresolved';
-export interface ContextSource { url: string; publisher: string; evidence: Evidence; sourceId?: string; verification?: 'report-only' }
+export interface ContextSource { url: string; publisher: string; publisherHe: string; evidence: Evidence; sourceId?: string; verification?: 'report-only' }
 export interface ContextEvent {
   id: string; electionId: ElectionId; effectiveDate: string; contestType: 'knesset';
   type: 'institutional-identity' | 'postponement' | 'early-repeat-election' | 'government-formation' | 'pm-ballot' | 'disqualification' | 'withdrawal' | 'correction' | 'publication-status' | 'candidate-capacity';
@@ -27,7 +27,7 @@ export function validateElectionContext(input: unknown): asserts input is Electi
   const text = (v: unknown) => typeof v === 'string' && v.trim() ? v : fail('missing text');
   const date = (v: unknown) => { const s = text(v); if (!/^\d{4}-\d{2}-\d{2}$/.test(s) || new Date(s).toISOString().slice(0, 10) !== s) fail('invalid date'); };
   const source = (v: unknown) => {
-    const s = obj(v); text(s.publisher);
+    const s = obj(v); text(s.publisher); text(s.publisherHe);
     if (!['official', 'secondary', 'unresolved'].includes(s.evidence)) fail('invalid evidence');
     const u = new URL(text(s.url));
     if (!['https:', 'http:'].includes(u.protocol) || /(^|\.)en\.wikipedia\.org$/.test(u.hostname)) fail('forbidden source');
