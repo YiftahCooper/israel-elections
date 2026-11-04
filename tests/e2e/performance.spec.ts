@@ -7,7 +7,7 @@ const SETTINGS = 'israel-elections:v1';
 const start = async (page: Page, settings: Record<string, unknown> = {}) => {
   await page.addInitScript(([key, value]) => { if (!sessionStorage.getItem('seeded')) { localStorage.setItem(key, value); sessionStorage.setItem('seeded', '1'); } }, [SETTINGS, JSON.stringify({ lang: 'en', ...settings })]);
   await page.goto('/');
-  await expect(page.getByRole('region', { name: 'Lists' }).getByRole('button').filter({ has: page.getByText('Likud', { exact: true }) })).toBeVisible();
+  await expect(page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: 'Likud', exact: true })).toBeVisible();
 };
 const panel = (page: Page) => page.getByRole('tabpanel');
 const chunk = (name: string) => new RegExp(`/assets/${name}-[\\w-]+\\.js$`);
@@ -23,7 +23,7 @@ test('Simple fetches only the code of its own tabs, after the page is shown', as
   for (const name of ['Compare', 'Charts', 'Structure', 'Sensitivity']) expect(scripts.filter((u) => chunk(name).test(u))).toEqual([]);
   await page.getByRole('tab', { name: 'Coalitions' }).click();
   await expect(panel(page).getByText(/Minimal winning coalitions \(\d+\)/)).toBeVisible();
-  await page.getByRole('tab', { name: 'Sources & definitions' }).click();
+  await page.getByRole('tab', { name: 'Sources', exact: true }).click();
   await expect(panel(page).getByText('Electoral threshold').first()).toBeVisible();
   expect(errors).toEqual([]);
 });
@@ -46,8 +46,8 @@ test('seat security is computed in background workers and fills the whole table'
   page.on('worker', (w) => workers.push(w.url()));
   await start(page, { level: 'expert' });
   await page.getByRole('combobox', { name: 'Election' }).selectOption('k25');
-  await expect(page.locator('.card .name', { hasText: 'Yesh Atid' })).toBeVisible();
-  await page.getByRole('tab', { name: 'How safe is each seat' }).click();
+  await expect(page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: 'Yesh Atid', exact: true })).toBeVisible();
+  await page.getByRole('tab', { name: 'Seat safety' }).click();
   await expect.poll(() => workers.length).toBeGreaterThan(0);
   await expect(panel(page).getByText('Closest calls:')).toBeVisible({ timeout: 60_000 });
   await expect(panel(page).getByText(/Calculating exactly/)).toHaveCount(0);

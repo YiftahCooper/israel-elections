@@ -2,12 +2,13 @@
 // the user's own. Seats count per seat: a constituent party of a joint list can sit in another bloc
 // than its list. Moving parties between blocs never changes votes or seats.
 import { useMemo, useState } from 'react';
+import { X } from 'lucide-react';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { blocPieces, electedOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { dispatch, useLevel } from '../store.ts';
-import { Info, Seg } from './ui.tsx';
+import { dispatch, setState, useLevel, useStore } from '../store.ts';
+import { Info } from './ui.tsx';
 
 const MONTHS_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const MONTHS_HE = ['ינו׳', 'פבר׳', 'מרץ', 'אפר׳', 'מאי', 'יוני', 'יולי', 'אוג׳', 'ספט׳', 'אוק׳', 'נוב׳', 'דצמ׳'];
@@ -16,6 +17,8 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
   const L = useL();
   const lang = useLang();
   const { standard } = useLevel();
+  const selected = useStore((st) => st.selectedListId);
+  const [open, setOpen] = useState<string | null>(null);
   const [editing, setEditing] = useState(false);
   const pieces = useMemo(() => blocPieces(s, r), [s, r]);
   const total = s.rules.seats;
@@ -24,69 +27,80 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
   if (r.seatsAllocated === 0) return <p className="small muted" style={{ margin: 0 }}>{L('No seats are allocated in this scenario.', 'בתרחיש זה לא חולקו מושבים.')}</p>;
 
   const name = (b: { nameHe: string; nameEn: string }) => (lang === 'he' ? b.nameHe : b.nameEn);
-  const groups = [...s.blocs.map((b) => ({ id: b.id as string | null, label: name(b), color: b.color })), { id: null, label: L('No bloc', 'ללא גוש'), color: 'var(--axis)' }]
+  const NONE = '\0none';
+  const groups = [...s.blocs.map((b) => ({ key: `bloc:${b.id}`, id: b.id as string | null, label: name(b), color: b.color })), { key: NONE, id: null, label: L('No bloc', 'ללא גוש'), color: '#8a9099' }]
     .map((g) => ({ ...g, pieces: pieces.filter((p) => p.bloc === g.id) }))
     .map((g) => ({ ...g, n: g.pieces.reduce((t, p) => t + p.n, 0) }))
-    .filter((g) => g.id !== null || g.n > 0);
+    .filter((g) => g.n > 0);
   const schemes = s.blocSchemes ?? [];
   const scheme = schemes.find((x) => x.id === s.blocSchemeId);
   const when = (d?: string) => (d ? ` (${(lang === 'he' ? MONTHS_HE : MONTHS_EN)[Number(d.slice(5, 7)) - 1]} ${d.slice(0, 4)})` : '');
   const schemeLabel = (x: (typeof schemes)[number]) => `${name(x)}${x.kind === 'government' ? when(x.date) : ''}`;
-  const options = schemes.map((x) => ({ v: x.id, label: schemeLabel(x) }));
   const custom = s.blocSchemeId === null;
-  const pick = (v: string) => { if (v !== '__custom') dispatch({ type: 'applyBlocScheme', schemeId: v }); };
-  const kindNote = scheme?.kind === 'government' ? L('who formed the first government after this election: a matter of record', 'מי הרכיבו את הממשלה הראשונה אחרי הבחירות: עובדה מתועדת')
+  const pick = (v: string) => { if (v !== '__custom') { setOpen(null); dispatch({ type: 'applyBlocScheme', schemeId: v }); } };
+  const kindNote = scheme?.kind === 'government' ? L('who formed the first government after this election, as recorded', 'מי הרכיבו את הממשלה הראשונה אחרי הבחירות, כפי שתועד')
     : scheme ? L('a recognised grouping of this election, from cited sources', 'חלוקה מוכרת של בחירות אלה, ממקורות מצוטטים')
-    : L('your own grouping; choose a sourced one to restore it', 'החלוקה שלכם; בחרו חלוקה מתועדת כדי לשחזר');
+    : custom ? L('your own grouping', 'החלוקה שלכם') : '';
   const listName = (id: string) => { const l = s.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : id; };
   const partyName = (listId: string, partyId: string | null) => {
     const p = partyId ? s.lists.find((l) => l.id === listId)?.parties?.find((x) => x.id === partyId) : undefined;
     return p ? name(p) : null;
   };
+  const opened = groups.find((g) => g.key === open);
+  // members of the opened bloc: one line per list (or constituent party) with its seats in this bloc
+  const members = opened ? Object.values(opened.pieces.reduce<Record<string, { label: string; color: string; n: number; listId: string }>>((m, p) => {
+    const k = `${p.listId}|${p.partyId ?? ''}`;
+    m[k] ??= { label: partyName(p.listId, p.partyId) ?? listName(p.listId), color: p.color, n: 0, listId: p.listId };
+    m[k].n += p.n; return m;
+  }, {})).sort((a, b) => b.n - a.n) : [];
 
   return (
-    <div>
-      <div className="row small" style={{ justifyContent: 'space-between', marginBottom: 6, gap: 8 }}>
-        <span className="ink2">{L('Seats by bloc', 'מנדטים לפי גוש')} <Info term="bloc" /></span>
-        <span className="muted">{L(`majority ${majority}`, `רוב ${majority}`)}</span>
+    <section className="panel blocs" aria-label={L('Seats by bloc', 'מנדטים לפי גוש')}>
+      <div className="blocs-head">
+        <h2 style={{ margin: 0 }}>{L('Blocs', 'גושים')} <Info term="bloc" /></h2>
+        {(schemes.length > 1 || custom) && (
+          <select aria-label={L('Grouping', 'חלוקה לגושים')} value={s.blocSchemeId ?? '__custom'} onChange={(e) => pick(e.target.value)}>
+            {custom && <option value="__custom">{L('Your grouping', 'החלוקה שלכם')}</option>}
+            {schemes.map((x) => <option key={x.id} value={x.id}>{schemeLabel(x)}</option>)}
+          </select>
+        )}
+        {schemes.length === 1 && scheme && <b className="small">{schemeLabel(scheme)}</b>}
+        <span className="note">{kindNote}</span>
       </div>
-      {/* sourced groupings as buttons (a select when there are many); an edited grouping is shown beside them */}
-      {(options.length > 1 || custom) && <div className="row" style={{ gap: 6, flexWrap: 'wrap' }}>
-        {options.length <= 3
-          ? <Seg label={L('Grouping', 'חלוקה לגושים')} value={s.blocSchemeId ?? '__custom'} onChange={pick} options={options} />
-          : <select aria-label={L('Grouping', 'חלוקה לגושים')} value={s.blocSchemeId ?? '__custom'} onChange={(e) => pick(e.target.value)}>
-              {custom && <option value="__custom">{L('Your grouping', 'החלוקה שלכם')}</option>}
-              {options.map((o) => <option key={o.v} value={o.v}>{o.label}</option>)}
-            </select>}
-        {custom && <span className="chip exp">{L('Your grouping', 'החלוקה שלכם')}</span>}
-      </div>}
-      {options.length === 1 && scheme && <div className="small"><b>{schemeLabel(scheme)}</b></div>}
-      <p className="tiny muted" style={{ margin: '4px 0 6px' }}>{kindNote}</p>
-      <div className="blocbar" role="img" aria-label={groups.map((g) => `${g.label} ${g.n}`).join(', ')}>
-        {groups.map((g) => g.n > 0 && (
-          <div key={g.id === null ? '\0no-bloc' : `bloc:${g.id}`} className="blocbar-group" style={{ flexBasis: `${(g.n / total) * 100}%` }} title={`${g.label}: ${g.n}`}>
-            <div className="blocbar-bloc" style={{ background: g.color }} />
-            <div className="blocbar-pieces">
-              {g.pieces.map((p, i) => <div key={i} style={{ flexGrow: p.n, background: p.color }} title={`${partyName(p.listId, p.partyId) ?? listName(p.listId)}: ${p.n}`} />)}
-            </div>
-          </div>
-        ))}
-        <span className="majority-line" style={{ insetInlineStart: `calc(${(majority / total) * 100}% - 1px)` }} aria-hidden />
-      </div>
-      <div className="legend" style={{ marginTop: 6 }}>
+      <div className="strip" role="group" aria-label={groups.map((g) => `${g.label} ${g.n}`).join(', ')}>
         {groups.map((g) => (
-          <span key={g.id === null ? '\0no-bloc' : `bloc:${g.id}`} className="row" style={{ gap: 5 }}>
-            <span className="swatch" style={{ background: g.color }} />{g.label} <b className="tabnum">{g.n}</b>{g.n >= majority && <span className="chip ok">{L('majority', 'רוב')}</span>}
-          </span>
+          <button key={g.key} type="button" className="corridor" style={{ flexGrow: g.n, flexBasis: 0, ['--bc' as string]: g.color }}
+            aria-expanded={open === g.key} title={`${g.label}: ${g.n}`} onClick={() => setOpen(open === g.key ? null : g.key)}>
+            <span className="pieces" aria-hidden>
+              {g.pieces.map((p, i) => <i key={i} className={selected && selected !== p.listId ? 'dim' : ''} style={{ flexGrow: p.n, background: p.color }} />)}
+            </span>
+            <span className="label"><span className="clip">{g.label}</span> <b>{g.n}</b>{g.n >= majority && <span className="sr-only">{L(' (majority)', ' (רוב)')}</span>}</span>
+          </button>
         ))}
+        <span className="milestone" aria-hidden style={{ insetInlineStart: `${((majority - 0.5) / total) * 100}%` }}><span>{majority}</span></span>
       </div>
-      {standard && (
-        <div style={{ marginTop: 8 }}>
-          <button className="btn small" aria-expanded={editing} onClick={() => setEditing((e) => !e)}>{editing ? L('Done', 'סיום') : L('Edit blocs', 'עריכת גושים')}</button>
-          {editing && <BlocEditor s={s} r={r} />}
+      {/* on narrow screens the bands are too short for their names: they are listed in full beneath */}
+      <div className="strip-legend" aria-hidden>
+        {groups.map((g) => <span key={g.key}><span className="swatch" style={{ background: g.color }} />{g.label} <b>{g.n}</b></span>)}
+      </div>
+      {opened && (
+        <div className="bloc-detail">
+          <div className="row" style={{ justifyContent: 'space-between' }}>
+            <b>{opened.label} · {opened.n} {L('seats', 'מנדטים')}</b>
+            <span className="small ink2">{opened.n >= majority ? L(`a majority (${majority} needed)`, `רוב (נדרשים ${majority})`) : L(`${majority - opened.n} short of a majority`, `חסרים ${majority - opened.n} לרוב`)}</span>
+          </div>
+          <div className="legend" style={{ marginTop: 6 }}>
+            {members.map((m, i) => (
+              <button key={i} onClick={() => setState({ selectedListId: m.listId })}><span className="swatch" style={{ background: m.color }} />{m.label} <b>{m.n}</b></button>
+            ))}
+          </div>
+          {standard && <div style={{ marginTop: 8 }}>
+            <button className="btn small" aria-expanded={editing} onClick={() => setEditing((e) => !e)}>{editing ? L('Done', 'סיום') : L('Move lists and parties between blocs', 'העברת רשימות ומפלגות בין גושים')}</button>
+            {editing && <BlocEditor s={s} r={r} />}
+          </div>}
         </div>
       )}
-    </div>
+    </section>
   );
 }
 
@@ -112,8 +126,8 @@ export function BlocEditor({ s, r }: { s: Scenario; r: AllocationResult }) {
             onChange={(e) => dispatch({ type: 'setBlocs', blocs: s.blocs.map((x, k) => (k === i ? { ...x, color: e.target.value } : x)) })} />
           <input type="text" defaultValue={name(b)} aria-label={L('Bloc name', 'שם הגוש')} key={`${b.id}-${lang}-${name(b)}`}
             onBlur={(e) => { const v = e.target.value.trim(); if (v && v !== name(b)) dispatch({ type: 'setBlocs', blocs: s.blocs.map((x, k) => (k === i ? (lang === 'he' ? { ...x, nameHe: v } : { ...x, nameEn: v }) : x)) }); }} />
-          <button className="btn small ghost danger" aria-label={L(`Remove bloc ${b.nameEn}`, `הסרת הגוש ${b.nameHe}`)}
-            onClick={() => dispatch({ type: 'setBlocs', blocs: s.blocs.filter((_, k) => k !== i) })}>✕</button>
+          <button className="btn small ghost danger icon-only" aria-label={L(`Remove bloc ${b.nameEn}`, `הסרת הגוש ${b.nameHe}`)}
+            onClick={() => dispatch({ type: 'setBlocs', blocs: s.blocs.filter((_, k) => k !== i) })}><X className="icon sm" aria-hidden /></button>
         </div>
       ))}
       <div className="row">

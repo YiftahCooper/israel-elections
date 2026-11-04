@@ -5,6 +5,7 @@ import type { Scenario } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
 import { csvEscape, download } from '../format.ts';
 import { duplicateCurrent, getState, importScenarioJson, openElection, redo, resetAll, saveCurrent, setState, shareLink, toast, undo, useStore } from '../store.ts';
+import { ChevronDown, Copy, Download, Link2, Moon, Redo2, RotateCcw, Save, Share2, Sun, Table2, Trash2, Undo2, Upload } from 'lucide-react';
 import { Seg } from './ui.tsx';
 
 const MONTHS_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -57,48 +58,47 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
   };
 
   return (
-    <div className="topbar">
-      <div className="brand">{L('Israeli Elections Explorer', 'סייר הבחירות לכנסת')}<small>{L('Exact seat simulator under each election’s law', 'סימולטור מנדטים מדויק לפי החוק של כל בחירות')}</small></div>
-      <select aria-label={L('Election', 'בחירות')} value={electionId} onChange={(e) => openElection(e.target.value as ElectionId)} className="election-picker" style={{ fontWeight: 600 }}>
+    <header className="band">
+      <span className="brand">{L('Israeli Elections Explorer', 'סייר הבחירות לכנסת')}</span>
+      <select aria-label={L('Election', 'בחירות')} value={electionId} onChange={(e) => openElection(e.target.value as ElectionId)} className="election">
         {elections.map((e) => <option key={e.id} value={e.id} disabled={!e.available}>{electionLabel(e, elections, lang)}{e.available ? '' : L(' — not yet available', ' — עדיין לא זמין')}</option>)}
       </select>
-      {/* navigation first: if the bar wraps, the file actions move, never the level or language switch */}
       <Seg label={L('Detail level', 'רמת פירוט')} value={level} onChange={(v) => setState({ level: v })} options={[{ v: 'simple', label: L('Simple', 'פשוט') }, { v: 'standard', label: L('Standard', 'רגיל') }, { v: 'expert', label: L('Expert', 'מומחה') }]} />
-      <Seg label={L('Language', 'שפה')} value={lang} onChange={(v) => setState({ lang: v })} options={[{ v: 'he', label: 'עב' }, { v: 'en', label: 'EN' }]} />
-      <button className="btn small" aria-label={L('Toggle dark theme', 'מצב כהה')} onClick={() => setState({ theme: theme === 'dark' ? 'light' : 'dark' })}>{theme === 'dark' ? '☀' : '☾'}</button>
-      <span className="spacer" />
       {s && level !== 'simple' && (
-        <input type="text" value={s.name} placeholder={L('Untitled scenario', 'תרחיש ללא שם')} aria-label={L('Scenario name', 'שם התרחיש')} style={{ width: 170 }}
+        <input type="text" className="scenario-name" value={s.name} placeholder={L('Untitled scenario', 'תרחיש ללא שם')} aria-label={L('Scenario name', 'שם התרחיש')}
           onChange={(e) => setState({ scenario: { ...s, name: e.target.value } })} />
       )}
-      {s && level !== 'simple' && (s.mode === 'experimental' ? <span className="chip exp" title={L('Electoral rules may differ from Israeli law', 'הכללים עשויים להיות שונים מהחוק')}>{L('Experimental rules', 'כללים ניסיוניים')}</span> : null)}
-      <button className="btn small" onClick={undo} disabled={!canUndo} title="Ctrl+Z">↶ {L('Undo', 'ביטול')}</button>
-      {level !== 'simple' && <button className="btn small" onClick={redo} disabled={!canRedo} title="Ctrl+Y">↷ {L('Redo', 'חזרה')}</button>}
-      <button className="btn small" onClick={() => { if (!s?.log.length || confirm(L('Reset the whole election to the historical result? (Undo can restore it.)', 'לאפס את כל הבחירות לתוצאה ההיסטורית? (ניתן לבטל)'))) resetAll(); }} disabled={!s?.log.length}>{level === 'simple' ? L('Start over', 'התחלה מחדש') : L('Reset all', 'איפוס')}</button>
-      {level !== 'simple' && <>
-      <button className="btn small" onClick={() => { if (saveCurrent(s?.name || undefined)) toast('info', L('Saved in this browser.', 'נשמר בדפדפן זה.')); }} disabled={!s}>{L('Save', 'שמירה')}</button>
+      {s && s.mode === 'experimental' && <span className="chip exp" style={{ background: 'var(--surface)' }}>{L('Experimental rules', 'כללים ניסיוניים')}</span>}
+      <span className="spacer" />
+      <button className="tool" onClick={undo} disabled={!canUndo} title={L('Undo (Ctrl+Z)', 'ביטול (Ctrl+Z)')} aria-label={L('Undo', 'ביטול')}><Undo2 className="icon" aria-hidden /></button>
+      <button className="tool" onClick={redo} disabled={!canRedo} title={L('Redo (Ctrl+Y)', 'חזרה (Ctrl+Y)')} aria-label={L('Redo', 'חזרה')}><Redo2 className="icon" aria-hidden /></button>
+      <button className="tool" onClick={() => { if (!s?.log.length || confirm(L('Reset the whole election to the historical result? (Undo can restore it.)', 'לאפס את כל הבחירות לתוצאה ההיסטורית? (ניתן לבטל)'))) resetAll(); }} disabled={!s?.log.length}>
+        <RotateCcw className="icon" aria-hidden /><span className="label">{L('Start over', 'התחלה מחדש')}</span></button>
       <div style={{ position: 'relative' }} ref={menuRef}>
-        <button className="btn small" ref={menuButton} aria-expanded={menu} aria-controls="scenarios-menu" onClick={() => setMenu((m) => !m)}>{L('Scenarios', 'תרחישים')} ▾</button>
+        <button className="tool" ref={menuButton} aria-expanded={menu} aria-controls="scenarios-menu" onClick={() => setMenu((m) => !m)}>
+          <Share2 className="icon" aria-hidden /><span className="label">{L('Save & share', 'שמירה ושיתוף')}</span><ChevronDown className="icon sm" aria-hidden /></button>
         {menu && (
-          <div className="panel" id="scenarios-menu" style={{ position: 'absolute', zIndex: 50, insetInlineStart: 0, top: 34, width: 300, maxWidth: 'calc(100vw - 20px)', padding: 8 }}>
-            <button className="btn small" style={{ width: '100%', marginBottom: 6 }} onClick={() => { duplicateCurrent(); setMenu(false); }}>{L('Duplicate (branch) current', 'שכפול (הסתעפות) הנוכחי')}</button>
-            <button className="btn small" style={{ width: '100%', marginBottom: 6 }} onClick={async () => {
+          <div className="menu-pop" id="scenarios-menu">
+            <button className="btn small" onClick={() => { if (saveCurrent(s?.name || undefined)) toast('info', L('Saved in this browser.', 'נשמר בדפדפן זה.')); setMenu(false); }} disabled={!s}><Save className="icon sm" aria-hidden />{L('Save in this browser', 'שמירה בדפדפן')}</button>
+            <button className="btn small" onClick={async () => {
               const url = await shareLink(); setShareUrl(url);
               try { await navigator.clipboard.writeText(url); toast('info', L(`Share link copied (${url.length} characters).`, `קישור השיתוף הועתק (${url.length} תווים).`)); }
               catch { toast('info', L('Copy the link from the field below.', 'העתיקו את הקישור מהשדה שלמטה.')); }
-            }}>{L('Create share link', 'יצירת קישור שיתוף')}</button>
-            {shareUrl && <input type="text" readOnly value={shareUrl} aria-label={L('Share link', 'קישור שיתוף')} onFocus={(e) => e.target.select()} style={{ width: '100%', marginBottom: 6 }} />}
-            <button className="btn small" style={{ width: '100%', marginBottom: 6 }} onClick={() => { if (s && ds) download(`${s.electionId}-${fileName(s.name)}.json`, JSON.stringify({ ...s, datasetBuiltAt: ds.buildInfo.builtAt }, null, 1), 'application/json'); setMenu(false); }}>{L('Export scenario (JSON)', 'ייצוא תרחיש (JSON)')}</button>
-            <button className="btn small" style={{ width: '100%', marginBottom: 6 }} onClick={() => fileRef.current?.click()}>{L('Import scenario (JSON)', 'ייבוא תרחיש (JSON)')}</button>
-            <button className="btn small" style={{ width: '100%', marginBottom: 6 }} onClick={() => { exportCsv(); setMenu(false); }}>{L('Export results table (CSV)', 'ייצוא טבלת תוצאות (CSV)')}</button>
-            <div className="section-title">{L('Saved in this browser', 'שמורים בדפדפן')}</div>
-            {saved.length === 0 && <p className="small muted">{L('Nothing saved yet.', 'אין עדיין.')}</p>}
+            }}><Link2 className="icon sm" aria-hidden />{L('Copy a share link', 'העתקת קישור שיתוף')}</button>
+            {shareUrl && <input type="text" readOnly value={shareUrl} aria-label={L('Share link', 'קישור שיתוף')} onFocus={(e) => e.target.select()} style={{ width: '100%' }} />}
+            <button className="btn small" onClick={() => { duplicateCurrent(); setMenu(false); }}><Copy className="icon sm" aria-hidden />{L('Duplicate as a new scenario', 'שכפול לתרחיש חדש')}</button>
+            <button className="btn small" onClick={() => { if (s && ds) download(`${s.electionId}-${fileName(s.name)}.json`, JSON.stringify({ ...s, datasetBuiltAt: ds.buildInfo.builtAt }, null, 1), 'application/json'); setMenu(false); }}><Download className="icon sm" aria-hidden />{L('Export scenario (JSON)', 'ייצוא תרחיש (JSON)')}</button>
+            <button className="btn small" onClick={() => fileRef.current?.click()}><Upload className="icon sm" aria-hidden />{L('Import scenario (JSON)', 'ייבוא תרחיש (JSON)')}</button>
+            <button className="btn small" onClick={() => { exportCsv(); setMenu(false); }}><Table2 className="icon sm" aria-hidden />{L('Export results table (CSV)', 'ייצוא טבלת תוצאות (CSV)')}</button>
+            <div className="section-title" style={{ margin: '8px 0 2px' }}>{L('Saved in this browser', 'שמורים בדפדפן')}</div>
+            {saved.length === 0 && <p className="small muted" style={{ margin: 0 }}>{L('Nothing saved yet.', 'אין עדיין.')}</p>}
             {saved.map((x) => (
-              <div key={x.id} className="row small" style={{ justifyContent: 'space-between' }}>
-                <button className="btn small ghost" onClick={() => { openElection(x.electionId, { name: x.name, log: x.log, baseBuiltAt: x.baseBuiltAt }).then(() => setState((st) => ({ scenario: st.scenario ? { ...st.scenario, id: x.id } : null }))); setMenu(false); }}>{x.name} <span className="muted">({elections.find((e) => e.id === x.electionId)?.date.slice(0, 4) ?? x.electionId})</span></button>
-                <span>
+              <div key={x.id} className="row small" style={{ justifyContent: 'space-between', flexWrap: 'nowrap' }}>
+                <button className="btn small ghost" style={{ justifyContent: 'flex-start', minWidth: 0 }} onClick={() => { openElection(x.electionId, { name: x.name, log: x.log, baseBuiltAt: x.baseBuiltAt }).then(() => setState((st) => ({ scenario: st.scenario ? { ...st.scenario, id: x.id } : null }))); setMenu(false); }}>
+                  <span className="clip" style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{x.name}</span> <span className="muted">({elections.find((e) => e.id === x.electionId)?.date.slice(0, 4) ?? x.electionId})</span></button>
+                <span className="row" style={{ flexWrap: 'nowrap', gap: 2 }}>
                   <button className="btn small ghost" onClick={() => { setState({ compareWith: x.id }); setMenu(false); }} disabled={x.electionId !== electionId || x.id === s?.id}>{L('compare', 'השוואה')}</button>
-                  <button className="btn small ghost danger" aria-label={L('Delete', 'מחיקה')} onClick={() => setState((st) => ({ saved: st.saved.filter((y) => y.id !== x.id) }))}>✕</button>
+                  <button className="btn small ghost danger icon-only" aria-label={L('Delete', 'מחיקה')} onClick={() => setState((st) => ({ saved: st.saved.filter((y) => y.id !== x.id) }))}><Trash2 className="icon sm" aria-hidden /></button>
                 </span>
               </div>
             ))}
@@ -112,14 +112,15 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
             const st = getState(); setState({ scenario: sc, past: st.scenario && st.scenario.electionId === sc.electionId ? [...st.past, st.scenario] : st.past, future: [] });
             toast('info', L('Scenario imported.', 'התרחיש יובא.'));
           } catch (err) {
-            // importScenarioJson throws messages written for people; show them without the "Error:" prefix
             const msg = err instanceof Error ? err.message : String(err);
             toast('error', L(msg, `לא ניתן לייבא את התרחיש (${msg})`));
           }
           e.target.value = ''; setMenu(false);
         }} />
       </div>
-      </>}
-</div>
+      <Seg label={L('Language', 'שפה')} value={lang} onChange={(v) => setState({ lang: v })} options={[{ v: 'he', label: 'עב' }, { v: 'en', label: 'EN' }]} />
+      <button className="tool" aria-label={theme === 'dark' ? L('Light theme', 'מצב בהיר') : L('Dark theme', 'מצב כהה')} onClick={() => setState({ theme: theme === 'dark' ? 'light' : 'dark' })}>
+        {theme === 'dark' ? <Sun className="icon" aria-hidden /> : <Moon className="icon" aria-hidden />}</button>
+    </header>
   );
 }

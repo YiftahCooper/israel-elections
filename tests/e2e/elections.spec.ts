@@ -24,6 +24,6 @@ test('the picker offers the built elections and marks the others as not yet avai
 
 test('choosing another election loads its result', async ({ page }) => {
   await page.getByRole('combobox', { name: 'Election' }).selectOption('k25');
-  const likud = page.getByRole('region', { name: 'Lists' }).getByRole('button').filter({ has: page.getByText('Likud', { exact: true }) });
+  const likud = page.getByRole('region', { name: 'Lists' }).getByRole('row').filter({ has: page.getByRole('button', { name: 'Likud', exact: true }) });
   await expect(likud).toContainText('32');
 });

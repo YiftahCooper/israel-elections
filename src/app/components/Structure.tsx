@@ -1,3 +1,4 @@
+import { X } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { allocate } from '../../engine/allocate.ts';
 import type { AllocationResult } from '../../engine/types.ts';
@@ -45,7 +46,14 @@ function Agreements({ s, r, base }: { s: Scenario; r: AllocationResult; base: Sc
           return (
             <li key={ag.id} className="cand" style={{ gridTemplateColumns: 'minmax(0,1fr) auto' }}>
               <span>
-                <b>{ag.members.map(name).join(' ⇄ ')}</b>{' '}
+                {ag.members.length === 2 ? <>
+                  <b>{name(ag.members[0])}</b>{' ⇄ '}
+                  <select value={ag.members[1]} aria-label={L(`Partner of ${name(ag.members[0])}`, `השותפה של ${name(ag.members[0])}`)} style={{ maxWidth: 200 }}
+                    onChange={(e) => dispatch({ type: 'setAgreement', agreement: { ...ag, members: [ag.members[0], e.target.value] } })}>
+                    {s.lists.filter((x) => x.id === ag.members[1] || (x.id !== ag.members[0] && !x.withdrawn && (exp || !s.agreements.some((o) => o.id !== ag.id && o.enabled && o.members.includes(x.id)))))
+                      .sort((x, y) => y.votes - x.votes).map((x) => <option key={x.id} value={x.id}>{listLabel(x, lang)}</option>)}
+                  </select>
+                </> : <b>{ag.members.map(name).join(' ⇄ ')}</b>}{' '}
                 {!ag.enabled ? <span className="chip">{L('off', 'כבוי')}</span> : st?.active ? <span className="chip ok">{L('active', 'בתוקף')}</span> : <span className="chip no">{st?.reason === 'member-failed-threshold' ? L(`no effect: ${st.failedMembers.map(name).join(', ')} below threshold`, `ללא השפעה: ${st.failedMembers.map(name).join(', ')} מתחת לחסימה`)
                   : st?.reason === 'member-no-initial-seat' ? L(`no effect: ${st.failedMembers.map(name).join(', ')} won no whole-quota seat`, `ללא השפעה: ${st.failedMembers.map(name).join(', ')} לא זכתה במנדט במודד שלם`)
                   : st?.reason === 'member-withdrawn' ? L('no effect: a partner withdrew', 'ללא השפעה: שותפה פרשה')
@@ -56,8 +64,9 @@ function Agreements({ s, r, base }: { s: Scenario; r: AllocationResult; base: Sc
                 <div className="small muted">{eff.length === 0 ? L(ag.enabled ? 'Switching it off changes no seats.' : 'Switching it on changes no seats.', ag.enabled ? 'כיבויו אינו משנה מנדטים.' : 'הפעלתו אינה משנה מנדטים.') : `${ag.enabled ? L('Effect of the agreement: ', 'השפעת ההסכם: ') : L('Switching it on would give: ', 'הפעלתו הייתה נותנת: ')}${eff.map((e) => `${name(e.id)} ${signed(ag.enabled ? e.d : -e.d)}`).join(' · ')}`}</div>
               </span>
               <span className="tools">
-                <button className="btn small" onClick={() => dispatch({ type: 'setAgreement', agreement: { ...ag, enabled: !ag.enabled } })}>{ag.enabled ? L('Off', 'כיבוי') : L('On', 'הפעלה')}</button>
-                <button className="btn small danger" onClick={() => dispatch({ type: 'removeAgreement', id: ag.id })} aria-label={L('Remove agreement', 'הסרת הסכם')}>✕</button>
+                <label className="switch small"><input type="checkbox" checked={ag.enabled} onChange={(e) => dispatch({ type: 'setAgreement', agreement: { ...ag, enabled: e.target.checked } })}
+                  aria-label={L(`Agreement between ${ag.members.map(name).join(' and ')} in force`, `ההסכם בין ${ag.members.map(name).join(' ל')} בתוקף`)} />{ag.enabled ? L('In force', 'בתוקף') : L('Off', 'כבוי')}</label>
+                <button className="btn small ghost danger icon-only" onClick={() => dispatch({ type: 'removeAgreement', id: ag.id })} aria-label={L(`Remove the agreement between ${ag.members.map(name).join(' and ')}`, `הסרת ההסכם בין ${ag.members.map(name).join(' ל')}`)}><X className="icon sm" aria-hidden /></button>
               </span>
             </li>
           );

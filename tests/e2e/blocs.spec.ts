@@ -6,45 +6,63 @@ const start = async (page: Page, level: string) => {
     JSON.stringify({ lang: 'en', hintDismissed: true, level }));
   await page.goto('/');
   await page.getByRole('combobox', { name: 'Election' }).selectOption('k25');
-  await expect(page.getByRole('group', { name: 'Grouping' })).toBeVisible();
+  await expect(page.getByRole('combobox', { name: 'Grouping' })).toBeVisible();
 };
-const legendCount = (page: Page, bloc: string) => page.locator('.legend').filter({ hasText: bloc }).locator('span.row', { hasText: bloc }).locator('b');
+const blocs = (page: Page) => page.getByRole('region', { name: 'Seats by bloc' });
+/** a bloc's band in the strip; its seat count is the bold figure in its label */
+const band = (page: Page, bloc: string) => blocs(page).getByRole('button', { name: new RegExp(`^${bloc}`) });
+const blocCount = (page: Page, bloc: string) => band(page, bloc).locator('.label b');
+const listRow = (page: Page, name: string) => page.getByRole('region', { name: 'Lists' }).getByRole('row').filter({ has: page.getByRole('button', { name, exact: true }) });
 
 test('an election opens on its first government, and other sourced groupings can be chosen', async ({ page }) => {
   await start(page, 'simple');
-  const grouping = page.getByRole('group', { name: 'Grouping' });
-  await expect(grouping.getByRole('button', { name: /37th government/ })).toHaveAttribute('aria-pressed', 'true');
-  await expect(legendCount(page, 'Coalition')).toHaveText('64');
-  await grouping.getByRole('button', { name: 'Pre-election blocs' }).click();
-  await expect(grouping.getByRole('button', { name: 'Pre-election blocs' })).toHaveAttribute('aria-pressed', 'true');
-  await expect(page.getByRole('button', { name: 'Edit blocs' })).toHaveCount(0); // editing is a Standard tool
+  const grouping = page.getByRole('combobox', { name: 'Grouping' });
+  await expect(grouping.locator('option:checked')).toHaveText(/37th government/);
+  await expect(blocCount(page, 'Coalition')).toHaveText('64');
+  await grouping.selectOption({ label: 'Pre-election blocs' });
+  await expect(grouping.locator('option:checked')).toHaveText('Pre-election blocs');
+  // a band opens in place; moving parties between blocs is a Standard tool
+  await band(page, 'Netanyahu bloc').click();
+  await expect(blocs(page).getByText(/short of a majority|a majority/)).toBeVisible();
+  await expect(blocs(page).getByRole('button', { name: 'Move lists and parties between blocs' })).toHaveCount(0);
 });
 
 test('moving one party of a joint list to another bloc moves only its members’ seats', async ({ page }) => {
   await start(page, 'standard');
-  const before = Number(await legendCount(page, 'Coalition').innerText());
-  await page.getByRole('button', { name: 'Edit blocs' }).click();
-  await page.getByRole('combobox', { name: 'Bloc of New Hope' }).selectOption({ label: 'Coalition' });
-  const after = Number(await legendCount(page, 'Coalition').innerText());
+  const before = Number(await blocCount(page, 'Coalition').innerText());
+  await band(page, 'Coalition').click();
+  await blocs(page).getByRole('button', { name: 'Move lists and parties between blocs' }).click();
+  await page.getByRole('combobox', { name: 'Bloc of New Hope' }).first().selectOption({ label: 'Coalition' });
+  const after = Number(await blocCount(page, 'Coalition').innerText());
   expect(after).toBeGreaterThan(before);
   expect(after - before).toBeLessThan(12); // only New Hope's members, not all of National Unity
-  await expect(page.getByText('Your grouping', { exact: true })).toBeVisible();
-  await expect(page.getByRole('group', { name: 'Grouping' }).getByRole('button', { pressed: true })).toHaveCount(0);
-  await page.getByRole('group', { name: 'Grouping' }).getByRole('button', { name: /37th government/ }).click();
-  await expect(legendCount(page, 'Coalition')).toHaveText(String(before));
+  const grouping = page.getByRole('combobox', { name: 'Grouping' });
+  await expect(grouping.locator('option:checked')).toHaveText('Your grouping');
+  await grouping.selectOption({ label: '37th government (Netanyahu VI) (Dec 2022)' });
+  await expect(blocCount(page, 'Coalition')).toHaveText(String(before));
+});
+
+test('a joint list’s faction can split after the election, keeping votes and seats', async ({ page }) => {
+  await start(page, 'standard');
+  await page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: 'National Unity', exact: true }).click();
+  const details = page.getByRole('region', { name: 'List details' });
+  await details.getByRole('checkbox', { name: 'Faction split after the election' }).check();
+  // each party now has its own row of seats under the list, and its own place in the chamber
+  await expect(page.getByRole('region', { name: 'Lists' }).getByRole('row').filter({ hasText: 'New Hope' }).first()).toBeVisible();
+  await expect(listRow(page, 'National Unity')).toContainText('12');
+  await expect(page.getByRole('status').filter({ hasText: 'What changed' })).toContainText('No seat moved');
 });
 
 test('a joint list can run as separate lists, with the vote shares stated as an assumption', async ({ page }) => {
   await start(page, 'standard');
-  await page.getByRole('region', { name: 'Lists' }).getByRole('button').filter({ has: page.getByText('United Torah Judaism', { exact: true }) }).click();
+  await page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: 'United Torah Judaism', exact: true }).click();
   const details = page.getByRole('region', { name: 'List details' });
   await expect(details.getByText('Parties on this joint list')).toBeVisible();
-  await details.getByRole('button', { name: 'Run as separate lists…' }).click();
+  await details.getByRole('button', { name: 'What if they had run separately?' }).click();
   await expect(details.getByText(/the shares below are an assumption/)).toBeVisible();
   await details.getByRole('button', { name: 'Run as 2 separate lists' }).click();
-  const lists = page.getByRole('region', { name: 'Lists' });
-  await expect(lists.getByRole('button').filter({ has: page.getByText('Agudat Yisrael', { exact: true }) })).toBeVisible();
-  await expect(lists.getByRole('button').filter({ has: page.getByText('Degel HaTorah', { exact: true }) })).toContainText('Below threshold');
-  await page.getByRole('button', { name: /Undo/ }).click();
-  await expect(lists.getByRole('button').filter({ has: page.getByText('United Torah Judaism', { exact: true }) })).toBeVisible();
+  await expect(listRow(page, 'Agudat Yisrael')).toBeVisible();
+  await expect(listRow(page, 'Degel HaTorah').getByRole('cell').nth(4)).toHaveText('0'); // below the threshold on its own
+  await page.getByRole('button', { name: 'Undo', exact: true }).click();
+  await expect(listRow(page, 'United Torah Judaism')).toBeVisible();
 });

@@ -11,7 +11,9 @@ const start = async (page: Page, settings: Record<string, unknown> = {}) => {
 
 test('an info button stays open when clicked, and Escape closes it', async ({ page }) => {
   await start(page, { level: 'expert' });
-  const info = page.getByRole('button', { name: /^Valid votes/ }).first();
+  // a figure opens in place; its definition is behind the info mark inside
+  await page.locator('.fig').filter({ has: page.locator('.k', { hasText: /^Valid votes/ }) }).locator('> button').click();
+  const info = page.getByRole('button', { name: /^Valid votes \(/ });
   await info.click();
   await expect(info).toHaveAttribute('aria-expanded', 'true');
   await expect(page.getByRole('tooltip')).toContainText('counted for some list');
@@ -24,7 +26,8 @@ test.describe('on a touch phone', () => {
   test.use({ viewport: { width: 375, height: 812 }, hasTouch: true, isMobile: true });
   test('an info button opens on tap', async ({ page }) => {
     await start(page, { level: 'expert' });
-    await page.getByRole('button', { name: /^Valid votes/ }).first().tap();
+    await page.locator('.fig').filter({ has: page.locator('.k', { hasText: /^Valid votes/ }) }).locator('> button').tap();
+    await page.getByRole('button', { name: /^Valid votes \(/ }).tap();
     await expect(page.getByRole('tooltip')).toBeVisible();
   });
   for (const level of ['simple', 'standard', 'expert']) for (const lang of ['en', 'he']) {
@@ -39,7 +42,7 @@ test.describe('on a touch phone', () => {
     await start(page, { level: 'expert' });
     for (const id of ['k3', 'k8', 'k25']) {
       await page.getByRole('combobox', { name: 'Election' }).selectOption(id);
-      const tabs = page.getByRole('tablist', { name: 'Analysis' }).getByRole('tab');
+      const tabs = page.getByRole('tablist', { name: 'Tools' }).getByRole('tab');
       for (let i = 0; i < await tabs.count(); i++) {
         await tabs.nth(i).click();
         const { sw, cw } = await page.evaluate(() => ({ sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth }));
@@ -55,7 +58,7 @@ test.describe('on a touch phone', () => {
 
 test('analysis tabs follow the arrow-key pattern', async ({ page }) => {
   await start(page, { level: 'standard' });
-  const tabs = page.getByRole('tablist', { name: 'Analysis' }).getByRole('tab');
+  const tabs = page.getByRole('tablist', { name: 'Tools' }).getByRole('tab');
   await tabs.first().focus();
   await page.keyboard.press('ArrowRight');
   await expect(tabs.nth(1)).toBeFocused();
@@ -66,21 +69,21 @@ test('analysis tabs follow the arrow-key pattern', async ({ page }) => {
   await expect(tabs.first()).toHaveAttribute('tabindex', '-1');
 });
 
-test('the Scenarios menu closes on Escape and returns focus to its button', async ({ page }) => {
+test('the Save & share menu closes on Escape and returns focus to its button', async ({ page }) => {
   await start(page, { level: 'standard' });
-  const button = page.getByRole('button', { name: /Scenarios/ });
+  const button = page.getByRole('button', { name: /Save & share/ });
   await button.click();
-  await expect(page.getByRole('button', { name: /Create share link/ })).toBeVisible();
+  await expect(page.getByRole('button', { name: /Copy a share link/ })).toBeVisible();
   await page.keyboard.press('Escape');
-  await expect(page.getByRole('button', { name: /Create share link/ })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: /Copy a share link/ })).toHaveCount(0);
   await expect(button).toBeFocused();
 });
 
 test('a candidate links to the Knesset page, the party page and Hebrew Wikipedia marked secondary', async ({ page }) => {
   await start(page);
   await page.getByRole('combobox', { name: 'Election' }).selectOption('k25');
-  await page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: /Likud/ }).first().click();
-  await page.getByRole('region', { name: 'List details' }).getByText(/^Who gets in/).click(); // Simple keeps the roster folded
+  await page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: 'Likud', exact: true }).click();
+  await expect(page.getByRole('region', { name: 'List details' }).getByText(/^Who gets in/)).toBeVisible();
   const about = page.getByRole('group', { name: 'About נתניהו בנימין' });
   await expect(about.getByRole('link', { name: 'Knesset' })).toHaveAttribute('href', /^https:\/\/main\.knesset\.gov\.il\/mk\//);
   await expect(about.getByRole('link', { name: 'Wikipedia (he)' })).toHaveAttribute('href', /^https:\/\/he\.wikipedia\.org\//);

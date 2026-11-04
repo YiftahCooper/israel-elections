@@ -22,9 +22,13 @@ export interface State {
   elections: ElectionIndexEntry[];
   electionId: ElectionId;
   scenario: Scenario | null;
+  /** a live, unlogged preview of the scenario while a control is being dragged (committed on release) */
+  preview: Scenario | null;
   past: Scenario[];
   future: Scenario[];
   selectedListId: string | null;
+  /** the open tool beside the chamber (null: the level's first tool) */
+  tool: string | null;
   compareWith: string; // 'historical' or a saved scenario id
   lang: Lang;
   theme: 'light' | 'dark';
@@ -65,7 +69,7 @@ export async function loadElectionIndex() {
 const persisted = (() => { try { return JSON.parse(globalThis.localStorage?.getItem(LS) ?? '{}'); } catch { return {}; } })();
 
 let state: State = {
-  datasets: {}, elections: FALLBACK_INDEX, electionId: 'k26', scenario: null, past: [], future: [], selectedListId: null, compareWith: 'historical',
+  datasets: {}, elections: FALLBACK_INDEX, electionId: 'k26', scenario: null, preview: null, past: [], future: [], selectedListId: null, tool: null, compareWith: 'historical',
   lang: persisted.lang ?? 'he', theme: persisted.theme ?? (globalThis.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
   level: migrateLevel(persisted.level), hintDismissed: persisted.hintDismissed === true, digits: persisted.digits ?? 2, layout: 'hemicycle', colorBy: 'list',
   saved: persisted.saved ?? [], toast: null, loadError: null, notice: null, voteSource: { kind: 'proportional' }, sessions: {},
@@ -80,7 +84,10 @@ const persist = (): boolean => {
 
 export const getState = () => state;
 export function setState(patch: Partial<State> | ((s: State) => Partial<State>)) {
-  state = { ...state, ...(typeof patch === 'function' ? patch(state) : patch) };
+  const p = typeof patch === 'function' ? patch(state) : patch;
+  // any committed change to the scenario ends a live preview
+  state = { ...state, ...p, ...('scenario' in p && !('preview' in p) ? { preview: null } : {}) };
+  if ('preview' in p && Object.keys(p).length === 1) { emit(); return; } // previews are never persisted
   persist();
   emit();
 }
@@ -131,6 +138,14 @@ export function dispatchMany(actions: Action[]): boolean {
     toast('error', e instanceof ActionError ? e.message : String(e));
     return false;
   }
+}
+
+/** Shows the result of an action live without logging it (a slider being dragged); null clears it. */
+export function previewAction(action: Action | null) {
+  const s = state.scenario;
+  if (!s || !action) { if (state.preview) setState({ preview: null }); return; }
+  try { setState({ preview: applyAction(s, action, undefined, baseContext(state.datasets[s.electionId])) }); }
+  catch { /* an impossible intermediate value is simply not previewed */ }
 }
 
 export function undo() {

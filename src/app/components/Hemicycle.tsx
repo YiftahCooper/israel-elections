@@ -8,12 +8,13 @@ import { download, isolate } from '../format.ts';
 import { setState, useLevel, useStore } from '../store.ts';
 import { Seg } from './ui.tsx';
 
-export interface SeatInfo { listId: string; idx: number; color: string; remainder: boolean; bloc: string | null }
+export interface SeatInfo { listId: string; idx: number; color: string; remainder: boolean; bloc: string | null; holder: string }
 
 /** Seats in chamber order. With a bloc grouping, seats are grouped by bloc (decision 0087): each seat counts
  *  for its member's party bloc when it differs from the list's. Within a bloc, lists keep their order. */
 export function seatOrder(s: Scenario, r: AllocationResult, colorBy: 'list' | 'bloc' | 'party'): SeatInfo[] {
   const out: (SeatInfo & { k: number })[] = [];
+  const split = new Set(s.factionSplits ?? []);
   let k = 0;
   for (const l of s.lists) {
     const lr = r.lists.find((x) => x.id === l.id);
@@ -27,7 +28,8 @@ export function seatOrder(s: Scenario, r: AllocationResult, colorBy: 'list' | 'b
       let color = (c?.partyId && l.parties?.find((p) => p.id === c.partyId)?.color) || l.color;
       if (colorBy === 'bloc') color = s.blocs.find((b) => b.id === blocs[i])?.color ?? '#8e8e93';
       if (colorBy === 'party' && parties.length > 1) color = shade(l.color, parties.indexOf(c?.partyHe ?? ''));
-      out.push({ listId: l.id, idx: i, color, remainder: i >= lr.initialSeats, bloc: blocs[i], k: k++ });
+      const holder = split.has(l.id) && c?.partyId && l.parties?.some((p) => p.id === c.partyId) ? `${l.id}:${c.partyId}` : l.id;
+      out.push({ listId: l.id, idx: i, color, remainder: i >= lr.initialSeats, bloc: blocs[i], holder, k: k++ });
     }
   }
   if (!s.blocs.length) return out;
@@ -74,14 +76,20 @@ export function Hemicycle({ s, r, compact: compactProp = false, title }: { s: Sc
   const { seats: pos, r: rad } = useMemo(() => arcLayout(total), [total]);
   const W = 1000, H = layout === 'hemicycle' ? 560 : 0;
   const listOf = (id: string) => s.lists.find((l) => l.id === id) as SimList;
+  /** a label for a seat holder: the list, or one party of a split faction */
+  const holderLabel = (key: string) => {
+    const [lid, pid] = key.split(':');
+    const l = listOf(lid); const p = pid ? l?.parties?.find((x) => x.id === pid) : undefined;
+    return p ? (lang === 'he' ? p.nameHe : p.nameEn) : listLabel(l, lang);
+  };
 
   // group labels at the mean angle of each list's wedge
   const groups = useMemo(() => {
     const g = new Map<string, { n: number; sx: number; sy: number }>();
     seats.forEach((st, i) => {
       const p = pos[i]; if (!p) return;
-      const e = g.get(st.listId) ?? { n: 0, sx: 0, sy: 0 };
-      e.n++; e.sx += Math.cos(p.a); e.sy += Math.sin(p.a); g.set(st.listId, e);
+      const e = g.get(st.holder) ?? { n: 0, sx: 0, sy: 0 };
+      e.n++; e.sx += Math.cos(p.a); e.sy += Math.sin(p.a); g.set(st.holder, e);
     });
     return [...g.entries()].map(([id, e]) => ({ id, n: e.n, a: Math.atan2(e.sy, e.sx) }));
   }, [seats, pos]);
@@ -91,10 +99,12 @@ export function Hemicycle({ s, r, compact: compactProp = false, title }: { s: Sc
     if (!s.blocs.length || layout !== 'hemicycle') return [];
     const out: { bloc: string; color: string; a0: number; a1: number }[] = [];
     seats.forEach((st, i) => {
-      const p = pos[rtl ? pos.length - 1 - i : i]; if (!p || !st.bloc) return;
+      const p = pos[rtl ? pos.length - 1 - i : i]; if (!p) return;
+      // seats in no bloc keep an untinted region of their own, so neighbouring wedges never claim them
+      const bloc = st.bloc ?? '\0none';
       const last = out[out.length - 1];
-      if (last && last.bloc === st.bloc) { last.a0 = Math.min(last.a0, p.a); last.a1 = Math.max(last.a1, p.a); }
-      else out.push({ bloc: st.bloc, color: s.blocs.find((b) => b.id === st.bloc)?.color ?? 'var(--axis)', a0: p.a, a1: p.a });
+      if (last && last.bloc === bloc) { last.a0 = Math.min(last.a0, p.a); last.a1 = Math.max(last.a1, p.a); }
+      else out.push({ bloc, color: st.bloc ? s.blocs.find((b) => b.id === st.bloc)?.color ?? 'transparent' : 'transparent', a0: p.a, a1: p.a });
     });
     return out;
   }, [seats, pos, rtl, s.blocs, layout]);
@@ -135,8 +145,18 @@ export function Hemicycle({ s, r, compact: compactProp = false, title }: { s: Sc
   let body: React.ReactNode;
   if (layout === 'hemicycle') {
     const cx = W / 2, cy = 470, R = 400;
+    // pale wedges behind each bloc's seats; boundaries fall midway between neighbouring blocs' seats
+    const ordered = [...bands].sort((p, q) => q.a1 - p.a1);
+    const Ri = R * (0.38 - rad) - 10, Ro = R * (1 + rad) + 10;
+    const pt = (a: number, rr: number) => `${(cx + Math.cos(a) * rr).toFixed(1)} ${(cy - Math.sin(a) * rr).toFixed(1)}`;
+    const wedges = ordered.map((b, k) => {
+      const A = k === 0 ? Math.PI : (ordered[k - 1].a0 + b.a1) / 2;
+      const B = k === ordered.length - 1 ? 0 : (b.a0 + ordered[k + 1].a1) / 2;
+      return { key: `${b.bloc}-${k}`, color: b.color, d: `M ${pt(A, Ro)} A ${Ro} ${Ro} 0 0 1 ${pt(B, Ro)} L ${pt(B, Ri)} A ${Ri} ${Ri} 0 0 0 ${pt(A, Ri)} Z` };
+    });
     body = (
       <svg ref={svgRef} viewBox={compact ? `40 40 920 450` : `-270 0 1540 ${H}`} role="img" aria-label={`${title ?? L('Knesset seat diagram', 'תרשים מושבי הכנסת')}: ${summary}`}>
+        {wedges.map((w) => <path key={w.key} className="wedge" d={w.d} fill={w.color} fillOpacity={0.15} />)}
         {seats.map((st, i) => {
           const p = pos[rtl ? pos.length - 1 - i : i]; if (!p) return null;
           const dim = selected && selected !== st.listId;
@@ -147,15 +167,10 @@ export function Hemicycle({ s, r, compact: compactProp = false, title }: { s: Sc
               onClick={() => setState({ selectedListId: selected === st.listId ? null : st.listId })} />
           );
         })}
-        {bands.map((b, i) => {
-          const Rb = R * (1 + rad) + 12, pad = 0.012;
-          const p0 = [cx + Math.cos(b.a1 + pad) * Rb, cy - Math.sin(b.a1 + pad) * Rb], p1 = [cx + Math.cos(b.a0 - pad) * Rb, cy - Math.sin(b.a0 - pad) * Rb];
-          return <path key={`band${i}`} className="bloc-band" d={`M ${p0[0]} ${p0[1]} A ${Rb} ${Rb} 0 0 1 ${p1[0]} ${p1[1]}`} stroke={b.color} strokeWidth={8} fill="none" strokeLinecap="round" />;
-        })}
         {!compact && placeLabels(groups.map((g) => {
           const a = rtl ? Math.PI - g.a : g.a;
-          return { id: g.id, n: g.n, a, text: `${listLabel(listOf(g.id), lang)} ${g.n}` };
-        }), cx, cy, bands.length ? R + 26 : R, 1.25, [-270, 0, 1270, H]).map((p) => (
+          return { id: g.id, n: g.n, a, text: `${holderLabel(g.id)} ${g.n}` };
+        }), cx, cy, R + 14, 1.25, [-270, 0, 1270, H]).map((p) => (
           <text key={p.id} x={p.x} y={p.y} textAnchor={p.anchor} dominantBaseline="middle" fontSize={p.n < 4 ? 25 : 29} fill="var(--ink)" fontWeight={600}>{isolate(p.text)}</text>
         ))}
         <text x={cx} y={cy - 40} textAnchor="middle" fontSize={44} fontWeight={700} fill="var(--ink)">{r.seatsAllocated}</text>
@@ -207,12 +222,12 @@ export function Hemicycle({ s, r, compact: compactProp = false, title }: { s: Sc
           <div className="row"><span className="swatch" style={{ background: hover.seat.color }} /><b>{listLabel(hv, lang)}</b> <span className="muted">({hv.letters})</span></div>
           {cand ? <div><b>{shownName(cand)}</b> · {L('rank', 'מקום')} {hover.seat.idx + 1}{cand.notes?.map((n, k) => <div key={k} className="muted small">{lang === 'he' ? n.he : n.en}</div>)}</div>
             : hv.rosterUnavailable || hv.rosterTruncated ? <div className="muted">{L(`Seat ${hover.seat.idx + 1} of the list; candidate names are not available for this election`, `מושב ${hover.seat.idx + 1} של הרשימה; שמות המועמדים אינם זמינים לבחירות אלה`)}</div>
-            : <div className="down">{L('Vacant — the list has too few candidates', 'מושב ריק — אין די מועמדים ברשימה')}</div>}
+            : <div className="bad">{L('Vacant — the list has too few candidates', 'מושב ריק — אין די מועמדים ברשימה')}</div>}
           {cand?.partyHe && <div className="muted small">{L('Party: ', 'מפלגה: ')}{cand.partyHe}</div>}
           <div className="muted small">{hover.seat.remainder ? remainderHow : L('Seat won by whole quota', 'מנדט שהושג במודד שלם')}</div>
         </div>
       )}
-      {(!compactProp && (standard || narrow)) && (
+      {(!compactProp && narrow) && (
         <div className="legend" role="group" aria-label={L('Lists in the Knesset', 'הרשימות בכנסת')} style={{ marginTop: 6 }}>
           {s.lists.map((l) => ({ l, n: r.lists.find((x) => x.id === l.id)?.seats ?? 0 })).filter((x) => x.n > 0).map(({ l, n }) => (
             <button key={l.id} aria-pressed={selected === l.id} onClick={() => setState({ selectedListId: selected === l.id ? null : l.id })}>

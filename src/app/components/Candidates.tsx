@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ArrowDown, ArrowUp, Pencil, Plus, X } from 'lucide-react';
 import type { CandidateBio } from '../../data/schema.ts';
 import type { SimCandidate, SimList } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
@@ -28,7 +29,8 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
   const nextIn = seated[seats] ?? null;
   // Simple shows those elected and the next in line (skipped candidates in between stay visible)
   const cut = nextIn ? c.indexOf(nextIn) + 1 : lastIn ? c.indexOf(lastIn) + 1 : 0;
-  const limit = showAll ? c.length : Math.min(c.length, simple ? Math.max(cut, seats + 1) : Math.max(cut + 5, seats + 6, 12));
+  // Simple shows the first ten (the rest of those elected and the full roster are one click away)
+  const limit = showAll ? c.length : Math.min(c.length, simple ? Math.min(Math.max(cut, seats + 1), 10) : Math.max(cut + 5, seats + 6, 12));
 
   return (
     <div>
@@ -40,7 +42,7 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
         <span>{L('Next in line', 'הבא בתור')}</span><span>{nextIn ? <><bdi>{shownName(nextIn)}</bdi> <span className="muted">(#{c.indexOf(nextIn) + 1})</span></> : l.rosterTruncated ? L('not available', 'לא זמין') : L('none', 'אין')}</span>
       </div>}
       {baseCandidates && JSON.stringify(baseCandidates) !== JSON.stringify(c) && <button className="btn small" style={{ marginBottom: 6 }} onClick={() => dispatch({ type: 'resetCandidates', listId: l.id })}>{L('Restore the registered candidate list', 'שחזור רשימת המועמדים הרשומה')}</button>}
-      {seats > seated.length && !l.rosterUnavailable && !l.rosterTruncated && <p className="down small">{L(`The list has only ${seated.length} candidates for ${seats} seats.`, `ברשימה רק ${seated.length} מועמדים ל-${seats} מנדטים.`)}</p>}
+      {seats > seated.length && !l.rosterUnavailable && !l.rosterTruncated && <p className="bad small">{L(`The list has only ${seated.length} candidates for ${seats} seats.`, `ברשימה רק ${seated.length} מועמדים ל-${seats} מנדטים.`)}</p>}
       {c.length === 0 && !l.rosterUnavailable && <p className="muted small">{L('No candidates registered.', 'אין מועמדים רשומים.')}</p>}
       {c.some((x) => x.bio) && <p className="tiny muted bio-key">{L('Links: Knesset pages (official), party pages (partisan, archived from the campaign where possible), Hebrew Wikipedia (secondary). English Wikipedia is not linked: it is not reliable on Israel.',
         'קישורים: דפי הכנסת (רשמי), דפי המפלגות (מפלגתי, מארכיון תקופת הבחירות כשאפשר), ויקיפדיה העברית (משני). ויקיפדיה האנגלית אינה מקושרת: אינה אמינה בענייני ישראל.')}</p>}
@@ -72,11 +74,11 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
               </span>
               {advanced ? (
                 <span className="tools">
-                  <button className="btn small ghost" aria-label={L('Move up', 'הזזה למעלה')} onClick={() => move(i, i - 1)} disabled={i === 0}>↑</button>
-                  <button className="btn small ghost" aria-label={L('Move down', 'הזזה למטה')} onClick={() => move(i, i + 1)} disabled={i === c.length - 1}>↓</button>
-                  <button className="btn small ghost" aria-label={L('Rename', 'שינוי שם')} onClick={() => { setEditing(x.id); setDraft(x.nameHe); }}>✎</button>
-                  <button className="btn small ghost" aria-label={L('Insert candidate below', 'הוספת מועמד מתחת')} onClick={() => { const next = [...c]; next.splice(i + 1, 0, { id: `new-${Date.now().toString(36)}`, nameHe: L('New candidate', 'מועמד חדש') }); commit(next, 'insert'); }}>＋</button>
-                  <button className="btn small ghost danger" aria-label={L('Remove', 'הסרה')} onClick={() => commit(c.filter((y) => y.id !== x.id), `remove ${x.nameHe}`)}>✕</button>
+                  <button className="btn small ghost icon-only" aria-label={L('Move up', 'הזזה למעלה')} onClick={() => move(i, i - 1)} disabled={i === 0}><ArrowUp className="icon sm" aria-hidden /></button>
+                  <button className="btn small ghost icon-only" aria-label={L('Move down', 'הזזה למטה')} onClick={() => move(i, i + 1)} disabled={i === c.length - 1}><ArrowDown className="icon sm" aria-hidden /></button>
+                  <button className="btn small ghost icon-only" aria-label={L('Rename', 'שינוי שם')} onClick={() => { setEditing(x.id); setDraft(x.nameHe); }}><Pencil className="icon sm" aria-hidden /></button>
+                  <button className="btn small ghost icon-only" aria-label={L('Insert candidate below', 'הוספת מועמד מתחת')} onClick={() => { const next = [...c]; next.splice(i + 1, 0, { id: `new-${Date.now().toString(36)}`, nameHe: L('New candidate', 'מועמד חדש') }); commit(next, 'insert'); }}><Plus className="icon sm" aria-hidden /></button>
+                  <button className="btn small ghost danger icon-only" aria-label={L('Remove', 'הסרה')} onClick={() => commit(c.filter((y) => y.id !== x.id), `remove ${x.nameHe}`)}><X className="icon sm" aria-hidden /></button>
                 </span>
               ) : <span className="tiny muted">{x.notSeated ? L('not seated', 'לא כיהן') : elected ? L('elected', 'נבחר') : x === nextIn ? L('next in line', 'הבא בתור') : ''}</span>}
             </li>

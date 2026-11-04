@@ -8,7 +8,7 @@ import { electedOf } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt } from '../format.ts';
 import { dispatch, dispatchMany, setState, useLevel } from '../store.ts';
-import { Info } from './ui.tsx';
+import { Info, Slip } from './ui.tsx';
 
 const newId = (k: number) => `sim-${Date.now().toString(36)}${k}${Math.floor(Math.random() * 1e4).toString(36)}`;
 
@@ -52,32 +52,38 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
     if (dispatchMany(actions)) setState({ selectedListId: parts[0].newId });
   };
 
+  const isSplit = (s.factionSplits ?? []).includes(l.id);
   return (
-    <div style={{ marginTop: 10 }}>
-      <div className="section-title row">{L('Parties on this joint list', 'המפלגות ברשימה המשותפת')} <Info term="constituent-party" /></div>
-      <ul className="joint-parties">
+    <section>
+      <h3>{L('Parties on this joint list', 'המפלגות ברשימה המשותפת')} <Info term="constituent-party" /></h3>
+      <label className="switch small" style={{ marginBottom: 6 }}>
+        <input type="checkbox" checked={isSplit} onChange={(e) => dispatch({ type: 'setFactionSplit', listId: l.id, split: e.target.checked })} />
+        {L('Faction split after the election', 'הסיעה התפצלה אחרי הבחירות')}
+      </label>
+      <p className="tiny muted" style={{ margin: '0 0 6px' }}>{isSplit
+        ? L('Each party now counts as its own faction in the chamber and the blocs, with the members elected for it. Votes and seats are unchanged.', 'כל מפלגה נספרת עתה כסיעה נפרדת במליאה ובגושים, עם הנבחרים מטעמה. הקולות והמנדטים ללא שינוי.')
+        : L('As happened after some elections (New Hope left National Unity in 2024): the members keep their seats and sit as separate factions.', 'כפי שקרה אחרי בחירות אחדות (תקווה חדשה פרשה מהמחנה הממלכתי ב-2024): הנבחרים שומרים על מושביהם ויושבים כסיעות נפרדות.')}</p>
+      <div className="party-rows">
         {parties.map((p) => (
-          <li key={p.id} className="row" style={{ gap: 6 }}>
-            <span className="swatch" style={{ background: p.color ?? l.color }} />
+          <div key={p.id} className="party-row">
+            {p.logo ? <Slip letters={l.letters} color={p.color ?? l.color} logo={p.logo} /> : <span className="swatch" style={{ background: p.color ?? l.color }} />}
             <span>{name(p)}</span>
-            <b className="tabnum">{held(p.id)}</b>
-            <span className="muted tiny">{L('seats', 'מנדטים')}</span>
-            {s.blocs.length > 0 && <span className="muted tiny">· {blocName(s.partyBlocs && p.id in s.partyBlocs ? s.partyBlocs[p.id] : l.bloc)}</span>}
-            {standard && s.blocs.length > 0 && (
-              <select className="small" aria-label={L(`Bloc of ${p.nameEn}`, `הגוש של ${p.nameHe}`)} value={s.partyBlocs && p.id in s.partyBlocs ? s.partyBlocs[p.id] ?? '__none' : '__list'}
+            <b>{held(p.id)}</b>
+            {standard && s.blocs.length > 0 ? (
+              <select aria-label={L(`Bloc of ${p.nameEn}`, `הגוש של ${p.nameHe}`)} value={s.partyBlocs && p.id in s.partyBlocs ? s.partyBlocs[p.id] ?? '__none' : '__list'}
                 onChange={(e) => { const v = e.target.value; dispatch(v === '__list' ? { type: 'setPartyBloc', partyId: p.id, bloc: null, inherit: true } : { type: 'setPartyBloc', partyId: p.id, bloc: v === '__none' ? null : v }); }}>
-                <option value="__list">{L(`Same as the list (${blocName(l.bloc)})`, `כמו הרשימה (${blocName(l.bloc)})`)}</option>
+                <option value="__list" title={blocName(l.bloc)}>{L('As the list', 'כמו הרשימה')}</option>
                 {s.blocs.map((b) => <option key={b.id} value={b.id}>{name(b)}</option>)}
                 <option value="__none">{L('No bloc', 'ללא גוש')}</option>
               </select>
-            )}
-          </li>
+            ) : s.blocs.length > 0 ? <span className="tiny muted">{blocName(s.partyBlocs && p.id in s.partyBlocs ? s.partyBlocs[p.id] : l.bloc)}</span> : <span />}
+          </div>
         ))}
-      </ul>
+      </div>
       {unknownElected > 0 && <p className="tiny muted">{L(`${unknownElected} elected member(s) have no recorded party; their seats stay with the list.`, `ל-${unknownElected} נבחרים לא תועדה מפלגה; מושביהם נשארים עם הרשימה.`)}</p>}
       {standard && (
         <div style={{ marginTop: 6 }}>
-          <button className="btn small" aria-expanded={open} onClick={() => setOpen((o) => !o)}>{L('Run as separate lists…', 'ריצה ברשימות נפרדות…')}</button>
+          <button className="btn small" aria-expanded={open} onClick={() => setOpen((o) => !o)}>{L('What if they had run separately?', 'מה אילו היו רצות בנפרד?')}</button>
           {open && <div className="joint-split">
           <p className="small ink2">{L('What if these parties had run on their own? Nobody knows how the joint list’s votes would have divided, so the shares below are an assumption: by default, each party’s share of the list’s elected members. Each part must then pass the threshold on its own, and the joint list’s surplus-vote agreement is dropped. Undo restores the joint list.',
             'מה אילו המפלגות היו רצות לבד? איש אינו יודע כיצד היו מתחלקים הקולות, ולכן החלוקה שלהלן היא הנחה: כברירת מחדל, חלקה של כל מפלגה בנבחרי הרשימה. כל חלק יצטרך לעבור את אחוז החסימה בעצמו, והסכם העודפים של הרשימה יבוטל. ביטול מחזיר את הרשימה המשותפת.')}</p>
@@ -102,6 +108,6 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
           </div>}
         </div>
       )}
-    </div>
+    </section>
   );
 }

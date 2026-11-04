@@ -117,18 +117,19 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
   const shown = useful.slice(0, limit);
   return (
     <div>
-      <p className="ink2 small" style={{ marginTop: 0 }}>{L('Each card starts from the real result and changes one thing. The seat changes shown are calculated exactly; “Try it” loads the scenario so you can explore further (Undo returns you to where you were).', 'כל כרטיס מתחיל מהתוצאה האמיתית ומשנה דבר אחד. שינויי המנדטים מחושבים במדויק; "נסו" טוען את התרחיש להמשך חקירה (ביטול מחזיר אתכם).')}</p>
-      <div className="whatif">
+      <p className="ink2 small" style={{ marginTop: 0 }}>{L('Each question starts from the real result and changes one thing; the seat changes are exact. “Try it” loads it so you can explore further (Undo returns you).', 'כל שאלה מתחילה מהתוצאה האמיתית ומשנה דבר אחד; שינויי המנדטים מדויקים. "נסו" טוען אותה להמשך חקירה (ביטול מחזיר אתכם).')}</p>
+      <ol className="wi-rows">
         {shown.map(({ p, actions, lines, votes }) => (
-          <article key={p.id} className="wi-card">
-            <h3>{lang === 'he' ? p.titleHe : p.titleEn}</h3>
-            <p className="small ink2">{lang === 'he' ? p.bodyHe : p.bodyEn}</p>
-            {votes && <p className="small"><b>{votes}</b></p>}
-            <p className="small" style={{ minHeight: 36 }}>{!actions ? L('Not applicable to this election.', 'לא רלוונטי לבחירות אלה.') : lines.length ? lines.join(' · ') : L('No seat changes.', 'אין שינוי במנדטים.')}</p>
-            <button className="btn small primary" disabled={!actions} onClick={() => actions && tryIt(lang === 'he' ? p.titleHe : p.titleEn, actions)}>{L('Try it', 'נסו')}</button>
-          </article>
+          <li key={p.id} className="wi-row">
+            <div className="wi-q">
+              <b>{lang === 'he' ? p.titleHe : p.titleEn}</b>
+              <span className="small ink2">{lang === 'he' ? p.bodyHe : p.bodyEn}{votes && <> · <b>{votes}</b></>}</span>
+            </div>
+            <div className="wi-a small">{!actions ? L('Not applicable to this election.', 'לא רלוונטי לבחירות אלה.') : lines.length ? lines.join(' · ') : <span className="muted">{L('No seat changes', 'אין שינוי במנדטים')}</span>}</div>
+            <button className="btn small" disabled={!actions} onClick={() => actions && tryIt(lang === 'he' ? p.titleHe : p.titleEn, actions)}>{L('Try it', 'נסו')}</button>
+          </li>
         ))}
-      </div>
+      </ol>
       {useful.length > limit && <button className="btn small" style={{ marginTop: 10 }} onClick={() => setAll(true)}>{L(`More questions (${useful.length - limit})`, `שאלות נוספות (${useful.length - limit})`)}</button>}
     </div>
   );

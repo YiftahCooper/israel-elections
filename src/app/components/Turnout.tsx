@@ -138,8 +138,8 @@ export function Turnout({ s }: { s: Scenario }) {
             </table>
           </div>
           <p className="small">{L(`Additional voters: ${fmtInt(added)} · invalid: ${fmtInt(invalid)} · valid: ${fmtInt(valid)}`, `מצביעים נוספים: ${fmtInt(added)} · פסולים: ${fmtInt(invalid)} · כשרים: ${fmtInt(valid)}`)}{prefMode === 'custom' && wsum > 0 && Math.abs(wsum - 100) > 0.01 ? L(` (shares sum to ${wsum}%; they are normalised)`, ` (סך החלקים ${wsum}%; מנורמל)`) : ''}</p>
-          {!inputsOk && <p className="small down">{L('Enter turnout and invalid rates as numbers between 0 and 100.', 'הזינו שיעורי הצבעה ופסולים כמספרים בין 0 ל-100.')}</p>}
-          {inputsOk && hypN < curN && <p className="small down">{L('Only turnout increases are modelled here; use the vote tools to remove votes.', 'כאן ממודלת רק עלייה בהצבעה; להסרת קולות השתמשו בכלי הקולות.')}</p>}
+          {!inputsOk && <p className="small bad">{L('Enter turnout and invalid rates as numbers between 0 and 100.', 'הזינו שיעורי הצבעה ופסולים כמספרים בין 0 ל-100.')}</p>}
+          {inputsOk && hypN < curN && <p className="small bad">{L('Only turnout increases are modelled here; use the vote tools to remove votes.', 'כאן ממודלת רק עלייה בהצבעה; להסרת קולות השתמשו בכלי הקולות.')}</p>}
           <button className="btn primary" disabled={valid <= 0 || wsum <= 0} onClick={() => dispatch({ type: 'addVoters', allocations: s.lists.map((l, i) => ({ listId: l.id, votes: alloc[i] ?? 0 })).filter((x) => x.votes > 0), invalid, label: label || 'turnout' })}>
             {L('Add these voters', 'הוספת המצביעים')}
           </button>

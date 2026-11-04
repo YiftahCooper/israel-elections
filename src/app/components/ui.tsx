@@ -69,21 +69,6 @@ export function Seg<T extends string>({ value, options, onChange, label }: { val
   );
 }
 
-export function Delta({ v, suffix = '' }: { v: number; suffix?: string }) {
-  if (v === 0) return <span className="muted" dir="ltr" style={{ unicodeBidi: 'isolate' }}>±0{suffix}</span>;
-  return <span className={v > 0 ? 'up' : 'down'} dir="ltr" style={{ unicodeBidi: 'isolate' }}>{v > 0 ? '▲ +' : '▼ −'}{Math.abs(v).toLocaleString('en-US')}{suffix}</span>;
-}
-
-export function Tile({ k, v, d, term, children }: { k: string; v: ReactNode; d?: ReactNode; term?: string; children?: ReactNode }) {
-  return (
-    <div className="tile">
-      <div className="k">{k}{(term || children) && <Info term={term} title={term ? undefined : k}>{children}</Info>}</div>
-      <div className="v">{v}</div>
-      {d && <div className="d">{d}</div>}
-    </div>
-  );
-}
-
 export function NumberInput({ value, onCommit, label, width }: { value: number; onCommit: (n: number) => void; label: string; width?: number }) {
   const [text, setText] = useState(value.toLocaleString('en-US'));
   const L = useL();
@@ -121,32 +106,6 @@ export function DecimalInput({ value, onCommit, label, digits = 2, width = 84 }:
     <input type="text" inputMode="decimal" className="num-in" aria-label={label} style={{ width }} value={text}
       onFocus={(e) => { setEditing(true); e.target.select(); }} onChange={(e) => setText(e.target.value)} onBlur={commit}
       onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); if (e.key === 'Escape') { setText(shown); setEditing(false); } }} />
-  );
-}
-
-const niceCeil = (n: number) => { const p = 10 ** Math.max(0, Math.floor(Math.log10(Math.max(1, n))) - 1); return Math.ceil(n / p) * p; };
-
-/** Vote slider with a fixed scale (twice the historical votes or the threshold, whichever is larger),
- *  so the thumb tracks the pointer. Dragging previews the value; the change is applied once, on release. */
-export function VoteSlider({ l, hist, thr, onCommit }: { s?: unknown; l: { id: string; votes: number }; hist: number; thr: number; onCommit: (v: number) => void }) {
-  const L = useL();
-  const [drag, setDrag] = useState<number | null>(null);
-  const [scale] = useState(() => niceCeil(Math.max(hist * 2, thr * 2, 20_000)));
-  const max = Math.max(scale, l.votes);
-  const value = drag ?? l.votes;
-  const commit = () => { if (drag !== null) { const v = drag; setDrag(null); if (v !== l.votes) onCommit(v); } };
-  const step = Math.max(1, Math.round(max / 2000));
-  return (
-    <div style={{ marginTop: 6 }}>
-      <input type="range" min={0} max={max} step={step} value={value} aria-label={L('Votes slider', 'מחוון קולות')}
-        aria-valuetext={`${value.toLocaleString('en-US')}`}
-        onChange={(e) => setDrag(Number(e.target.value))} onPointerUp={commit} onKeyUp={commit} onBlur={commit} onTouchEnd={commit} />
-      <div className="row tiny muted" style={{ justifyContent: 'space-between' }}>
-        <span>0</span>
-        {drag !== null ? <b className="ink2">→ {drag.toLocaleString('en-US')}</b> : <span>{L('drag, then release to apply', 'גררו ושחררו כדי להחיל')}</span>}
-        <span>{max.toLocaleString('en-US')}</span>
-      </div>
-    </div>
   );
 }
 

@@ -6,6 +6,25 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 
 ## [Unreleased]
 
+### Changed
+
+- **Redesigned interface ("Market Board", design brief in `.impeccable/surfaces/`).** The official result is the
+  opening price and your edits are the session:
+  - a navy band (election, level, scenario, undo/redo, save & share, language, theme) and a tools strip under it
+    naming every tool at every level (tools above the current level say so and offer that level in place);
+  - "What changed": one line of net effects (seats moved against the official result, bloc totals, majority),
+    with the undoable history one click away;
+  - blocs as pale tinted bands (and chamber wedges) behind their members, with a 61-seat milestone; a band opens
+    its members in place, and moving parties between blocs is one button further;
+  - the lists as a ruled table (logo, votes, share, seats, change, session trend, surplus partner); a list opens
+    inside its own row: votes by number, share or a live slider (the whole board moves while dragging), the exact
+    votes to the next seat and to losing one (computed on opening), the surplus partner as a selector with an
+    on/off switch, its parties with their logos and blocs, a "Faction split after the election" switch beside
+    the "What if they had run separately?" counterfactual, standing, identity and candidates;
+  - key figures that open in place ("Votes that won no seat" lists every such list with votes and share);
+  - neutral ink for gains and losses; a self-hosted typeface (IBM Plex Sans Hebrew) and drawn icons (Lucide).
+  The previous interface is kept on the `legacy-layout` branch and the `layout-v1` tag.
+
 ### Added
 
 - Official campaign logos may use fair-use identification (decision 0089), with explicit rights basis,
