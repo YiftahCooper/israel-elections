@@ -314,3 +314,56 @@ Estimates below are **inferred engineering effort for one developer**, excluding
 | 7. Release review | Bilingual reading and source review, keyboard/non-colour chart review against accessibility target, regression checks on ordinary simulations; separate observed history from hypothetical scaling in every surface. | 2–3 days |
 
 Total indicative range: **21–36 developer days**, with historical source review the largest uncertainty. Start with the Haredi interpretation and one-election grouping as the pilot; do not label the remaining matrix “verified presets” until its disputed assignments and per-election source review are complete. The first review should settle the preset definition and the mixed-list convention, not request that the owner ratify technical unknowns.
+
+## 7. Stages 1–2 implementation status (4 November 2026)
+
+**Delivered as research drafts, not fully verified production presets.** The stable
+registry maps every list in k1–k26 without changing historical datasets. It contains
+577 records and 968 appearance rows, including reviewed legacy-id aliases and all
+pilot singleton proposals. 354 election-specific singleton vehicle records retain
+unresolved continuity rather than guessing identity from a name/letter/colour.
+Dated bilingual names attest observed usage; missing English names remain null.
+
+The lineage file contains 116 sourced edges: eight organisational events and 108
+election-scoped partnerships. It covers the proposal's initial alliance examples,
+including Gahal, the 1973 Likud alliance, UTJ and Meretz. A source challenge found
+that IDI's July 2024 Democrats article describes intended unification with deferred
+legal completion. That succession remains pending; the 2026 local Meretz sponsor
+is preserved. Other unestablished organisational histories have explicit pending
+records; partnership coverage is not a complete genealogy.
+
+| Preset | Election coverage | Member-list decisions | Mixed segments | Pending/contested review rows |
+|---|---:|---:|---:|---:|
+| arab-arab-jewish | 26/26 | 81 | 0 | 8 |
+| centre | 26/26 | 43 | 4 | 11 |
+| haredi | 26/26 | 60 | 3 | 14 |
+| herut-likud | 26/26 | 26 | 8 | 0 |
+| labour-zionist-left | 26/26 | 62 | 10 | 0 |
+| national-religious | 26/26 | 39 | 19 | 8 |
+| radical-right | 26/26 | 31 | 9 | 7 |
+| religious-parties | 26/26 | 109 | 27 | 21 |
+| russian-speaking-immigrant | 26/26 | 15 | 2 | 0 |
+
+All assignments have source references, local JSON pointers, dataset hashes and
+computed exact rational shares. The new presets inherit the §2 matrix's historical
+review, with inferred classifications and fresh IDI context checks; they must not
+be represented as an independently verified classification of every minor list.
+The broad religious preset explicitly includes Raam as an Islamist organisation,
+while preserving the identities of all Arab-list partners. Meretz's Shinui,
+Alignment's Independent Liberals and other cross-family partners stay mixed where
+they fall outside the selected definition, even if the original matrix lacked M.
+
+Remaining work: legal-shell/continuity review of unresolved minor vehicles;
+individually dated split/rename/leader-move histories beyond the eight curated
+organisational events; the communist-party/front crosswalk and the two Gesher eras;
+contemporary classification of the proposed 2026 centre brands; the matrix's `?`
+extensions; Haredi pilot Am Shalem, Na Nach and ambiguous self-descriptions.
+Pending cases are excluded from totals, not guessed. No CC0 crosswalk was imported.
+The validator is wired into Vitest with deliberate corrupted-data rejection tests.
+See the [schema decisions](../../data/meta/families/README.md) for consumer details.
+
+Verification: `npx vitest run --maxWorkers=2` passes **557 tests** (550 existing +
+7 metadata checks), and `npm run -s typecheck` passes. `npm run -s data:build`
+completed successfully; SHA-256 comparison of every `public/data/*.json` file
+before and after found **no changes**. No differential model hash was changed.
+The standalone `node scripts/validate-families.ts` also validates all nine presets.

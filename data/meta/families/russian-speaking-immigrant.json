@@ -1,0 +1,2525 @@
+{
+  "schemaVersion": 1,
+  "id": "russian-speaking-immigrant",
+  "revision": "draft-2026-11-04",
+  "status": "research-draft-not-production",
+  "nameHe": "מפלגות העולים דוברי הרוסית",
+  "nameEn": "Russian-speaking immigrant electoral vehicles",
+  "defaultMixedPolicy": "separate-segment",
+  "shareDenominator": "dataset.totals.valid",
+  "rounding": "Exact integer votes and rational percent (100 * numerator / denominator); displayPct rounded to 6 decimals only.",
+  "rights": {
+    "compilation": "MIT: original editorial assignments and calculations",
+    "externalContent": "Citations and short original paraphrases only; no external classification table imported. Official input votes retain source rights in README.md."
+  },
+  "author": "Israeli Elections Explorer research compilation",
+  "publisher": "Israeli Elections Explorer",
+  "definition": "Russian-speaking immigrant electoral vehicles. Editorial interpretation under proposal §2; overlap with other presets is allowed. No inference about voters.",
+  "criteria": {
+    "include": "Explicit non-pending matrix selections with cited historical context.",
+    "exclude": "Question-mark entries remain outside totals; unreviewed lists are unselected, not classified as opposing.",
+    "scope": "National Knesset ballots k1–k26; lists below threshold included.",
+    "mixed": "At least one selected constituent and a nonselected or unresolved partner; no constituent vote allocation."
+  },
+  "alternativeInterpretations": [
+    "Narrow organisational trunk versus broader ideological extension; pending cases require evidence before inclusion.",
+    "Count mixed whole lists only under an explicit alternative convention."
+  ],
+  "sources": {
+    "aguda": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/agudat-israel/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Party profile: Haredi identity and electoral history.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "6dce84aee9500b5f9fc264457d7474511c26ca1feaab7d7e32f311db9e3c40e5"
+      }
+    },
+    "pai": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/poalei-agudat-yisrael/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Haredi workers party, independent runs and Religious Torah Front alliances.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "6ddb77216e35e3df1d67aa677fea051756e1b43532310f3d66b0efd3e8c286d3"
+      }
+    },
+    "degel": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/degel-hatora/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Haredi party founded in 1988 following split with Aguda.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "854da668b9b220dfe41948199832127c59232db628d089459355c38123ae6bd7"
+      }
+    },
+    "shas": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/shas/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "National party from 1984; Sephardi Haredi organisation, broader electorate.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "136f01f64368f99abd53809199bf6b22c81869f8557854717ac94ce9d693de77"
+      }
+    },
+    "utj": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/united-torah-judaism/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Alliance of Aguda and Degel from 1992.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "0726c07cb397ed54ef45201cec0532445ad1d490142a5d116764c342034e6380"
+      }
+    },
+    "joint": {
+      "url": "https://www.idi.org.il/articles/32955",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Election-specific joint-list constituent table, 1949–2021.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "e5ec5df81751ddf75b36b24d709c5379d2a093029eb444357b540edf427a6cb3"
+      }
+    },
+    "morasha": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/morasha/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "1984 alliance of Matzad and Poalei Agudat Yisrael.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "b6ee790d542aff15aef7867f4ae118b87b7526c9a811a3860598164645c83c3f"
+      }
+    },
+    "yachad": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/yachad/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Yachad itself bridges Sephardi Haredi and Hardal national religious groups.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "c17b6094f30ff496afc23fc3b8614bb889b03c846dec4a97c059c0d48e86e948"
+      }
+    },
+    "shas-study": {
+      "url": "https://www.idi.org.il/media/10320/a-flock-with-no-shepherd-shas-leadership-the-day-after-rabbi-ovadia-yosef.pdf",
+      "publisher": "Ettinger and Leon / IDI, 2018",
+      "kind": "academic",
+      "accessed": "2026-11-04",
+      "support": "PDF pp.35–36 (printed pp.109–110): Azran 1996, Ahavat Israel 2003, Am Shalem and Koach Lehashpia 2013."
+    },
+    "geula": {
+      "url": "https://www.jta.org/archive/the-israeli-elections-from-communists-to-cab-drivers-array-of-choices-awaits-voters",
+      "publisher": "JTA, 1992",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Geulat Yisrael is an ultra-Orthodox list led by Eliezer Mizrachi; opened with required User-Agent."
+    },
+    "kn-splits": {
+      "url": "https://main.knesset.gov.il/en/mk/apps/faction/general/split-merge",
+      "publisher": "Knesset",
+      "kind": "official",
+      "accessed": "2026-11-04",
+      "support": "Geulat Yisrael split from Aguda. Parliamentary events do not allocate election votes."
+    },
+    "yishai": {
+      "url": "https://library.mevaker.gov.il/sites/DigitalLibrary/Pages/Reports/2359-1.aspx",
+      "publisher": "State Comptroller",
+      "kind": "official",
+      "accessed": "2026-11-04",
+      "support": "1988 Yishai led by Shimon Ben Shlomo; lineage interpretation requires separate evidence."
+    },
+    "haredi-society": {
+      "url": "https://en.idi.org.il/articles/52891",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Aguda, Degel and Shas identified as parties of main Haredi communities.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "127091a1745989fe918709a61dd4c48a9286614ec8a1a312186240efb0dff0f3"
+      }
+    },
+    "power2009": {
+      "url": "https://www.walla.co.il/news/israel/1416821",
+      "publisher": "Walla, 2009-01-13",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "2009 Koach Lehashpia campaigns on disability rights; do not infer 2013 identity from name."
+    },
+    "cec26": {
+      "url": "https://www.gov.il/he/pages/candidates-lists-26",
+      "publisher": "CEC; retained extraction in data/raw/k26/govil-list-pages.exa.json",
+      "kind": "official",
+      "accessed": "2026-11-04",
+      "support": "2026 registered names and sponsoring parties. Self-description is evidence of claim, not external validation."
+    },
+    "local-dataset": {
+      "kind": "repository-dataset",
+      "locator": "public/data/k{n}.json; data/raw/SOURCES.json",
+      "support": "Registered names, votes and sponsor fields only; not external ideological validation."
+    },
+    "yishai-lineage": {
+      "url": "https://www.idi.org.il/media/17403/political-parties-in-israel-draft.pdf?isExternal=true",
+      "publisher": "Kenig and Rahat / IDI, draft of Parties in Israel 1992–2021",
+      "kind": "academic",
+      "accessed": "2026-11-04",
+      "support": "PDF p.230 (printed 231), Shas chapter: Shimon Ben Shlomo left Shas and ran Yishai in 1988, presenting it as representing Yemenite Jews. This proves ancestry, not a universal Haredi label."
+    },
+    "noam-hardal": {
+      "url": "https://en.idi.org.il/articles/31683",
+      "publisher": "Yair Sheleg / IDI, 2020-10-15",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Author identifies Noam as the party put forward by the Hardal current; editorial commentary rather than official taxonomy.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "92def3a3e6613e52fd5747d3d27b6589ff00adc3067e6cac4aa876bb79ac0e6d"
+      }
+    },
+    "proposal": {
+      "kind": "secondary",
+      "publisher": "Israeli Elections Explorer research compilation",
+      "locator": "docs/research/party-families.md#2-expected-presets-and-election-by-election-membership-proposal",
+      "accessed": "2026-11-04",
+      "support": "Original election matrix and explicit boundary assessments; inherited research evidence, not independent corroboration."
+    },
+    "mergers": {
+      "url": "https://en.idi.org.il/articles/54874",
+      "publisher": "Assaf Shapira / IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Historical mergers; 2024 Democrats intention and deferred legal unification. Sections Not technically an electoral bloc and How will the merger be carried out.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "e041ee09cd515b86bc7228fae2d810ec25c5ebcc2c843ed29e4a2ccc98331cf4"
+      }
+    },
+    "arab": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/hadash/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Historical party profile/context for arab; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "c9c93f508c7c2b25bdfd3d0461dc6284fb3aa8078288ef018910598ae2fc4961"
+      }
+    },
+    "national": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/national-religious-party/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Historical party profile/context for national; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "f0ff9a075a945a573620c23cc4c9da4016f923297f1d860b08369f417226d19b"
+      }
+    },
+    "labour": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/labor-party/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Historical party profile/context for labour; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "9e4b4be509566e8fde1dbfd033bc50b3112b0131bbcd111690d84ca7fb28b65e"
+      }
+    },
+    "revisionist": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/likud/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Historical party profile/context for revisionist; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "a61db730add74d3b7761b37a6f6fd790b6187b394ed5b945330de4cb7bfe35d8"
+      }
+    },
+    "centre": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/shinui/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Historical party profile/context for centre; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "f9592deb91a044baa28f75fccc1f56cc3e2ffa74bd35354f2f161192b1f21216"
+      }
+    },
+    "immigrant": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/yisrael-beytenu/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Historical party profile/context for immigrant; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "f7eee648108c9cda6078365361fb5917fadbd0a1ce565ca30d6ae7012b1181ad"
+      }
+    },
+    "radical": {
+      "url": "https://www.idi.org.il/articles/33649",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Historical party profile/context for radical; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "8eab19d2bd2c69d097c84f844dd6c54d20d5dcf73fe0e44dbf7bdcba573d58ec"
+      }
+    },
+    "k1": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k1.json",
+      "sha256": "b14a976b23503fd665236fbd488c44f61edf04823ccff56badc25e91b5c52a90",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k2": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k2.json",
+      "sha256": "a35aeb0bc7749263767031127a6201bd9665832bf6bc8ab3976023c89318589b",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k3": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k3.json",
+      "sha256": "1b582dc9a81abda168eff2f3be0b02fcb9d88ebcab4a5569714b02ce15dc9c41",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k4": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k4.json",
+      "sha256": "39e8521d2a6c50c808b9fd1bf7298e93101e0e938e79554e581240034d8216a5",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k5": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k5.json",
+      "sha256": "2fc051bfe72bb7e31a5f9225da63a8a8a58f47bcafd79571f951595c11906706",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k6": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k6.json",
+      "sha256": "750331fe44623aa8110be28421634c622d7ff6a2ff9aeab8086dc4d514c9fee0",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k7": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k7.json",
+      "sha256": "721fd2414c967a189c18f246f49f28cf43917b335c46c500bcf617f1e8033ab7",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k8": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k8.json",
+      "sha256": "203d3d4b5e6d55c8b3a09035e478ce821965c562aa0001548fa3b8691a6fe35e",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k9": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k9.json",
+      "sha256": "3435309ed5ef70b846f4979660a8e907bf3c579ef6a8fed01ff849180cf79dda",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k10": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k10.json",
+      "sha256": "87d0bc1a4ed989f706f4052855d5e8cb8c30c4d562d31f4cf285ce712dcaae8b",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k11": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k11.json",
+      "sha256": "2b54ce215796bedbf46eb10fa56543969db30ed67ca2df4962ad80f7f58a5423",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k12": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k12.json",
+      "sha256": "ff601254033ae24bb99b084fac5253ee7f9be0a08634956c169a047773c901a8",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k13": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k13.json",
+      "sha256": "92643f881b9e43ed4e3e55ddae9558c649c4193f9bfaa9ac91e54a70d70ae9fe",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k14": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k14.json",
+      "sha256": "3938db2f3d61463bf1d99deaa3473657be1fab46f2354adaf8a20adebb58959a",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k15": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k15.json",
+      "sha256": "87e7add2a362ad72c7ce6bab9fff8f41a0b00c07ffc32089a6cc04216d2fe9fe",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k16": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k16.json",
+      "sha256": "d2a7f1e7c85c1d37a04e7fc7fdaa00c31586004e3db1251a3deed3fa3ad200d5",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k17": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k17.json",
+      "sha256": "f63ef83e3e208aec18fb69da1590832ee68fc931fcc6083137afeab421220e91",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k18": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k18.json",
+      "sha256": "1960389cb042036aaa4a8743c4f869cecebb261eed345a42e2636a1658068645",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k19": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k19.json",
+      "sha256": "e8d534c2aec90e417abc2ee77b04716a85cfc130652a200d23f407cc3ec2866c",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k20": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k20.json",
+      "sha256": "833d0c0fed196204102bea653ca679b791d376ad2cf545bf031317c4533bceac",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k21": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k21.json",
+      "sha256": "e5d1dd8eac1e3bab0be09972cb0155674eedff6c5762240c89f792f9fe1f6d73",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k22": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k22.json",
+      "sha256": "06f12173958383755fc85fe4d156e61957f1c27f10f14ed78071269c416dc4e9",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k23": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k23.json",
+      "sha256": "a7dacef1f60c2e29c2851a53e1ec02b20aab54b9bb6a777a1f2f9e9e01f2f7cf",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k24": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k24.json",
+      "sha256": "fe584720b45481441be0f7a52bb2b10a95d768e53fc6fde256c4e95b68a2c48f",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k25": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k25.json",
+      "sha256": "a8b8b667a8e4b6fd9dd104b4dad5cd839b415640efa431cc62c35e6264efc180",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k26": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k26.json",
+      "sha256": "80231de6d9b3a12214496b8ff240a3adbfff1967d5a801b2b905503d38b4d57e",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    }
+  },
+  "elections": [
+    {
+      "electionId": "k1",
+      "electionDate": "1949-01-25",
+      "datasetPath": "public/data/k1.json",
+      "datasetSha256": "b14a976b23503fd665236fbd488c44f61edf04823ccff56badc25e91b5c52a90",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2026-11-03",
+        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. הדרגות הרשומות כוללות מועמדים שהתפטרו; מיפוי דרגות הנבחרים נשמר ברשומת הבדיקה. ראו החלטה 0063. יש שוויון במודדים השלמים במושבים 118–119; שתי תוצאות ההגרלה נותנות אותה הקצאה סופית, אך הסדר ההיסטורי אינו ידוע.",
+        "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. Registered ranks include withdrawals; the elected-rank mappings are retained in the reviewed roster record. See decision 0063. Integer quotients tie at seats 118–119; both lottery choices give the same final seats, but the historical order is unknown."
+      },
+      "validVotes": 434684,
+      "voteSourceIds": [
+        "k1-results-gazette",
+        "k1-candidates-gazette",
+        "k1-k7-cbs-national-totals",
+        "k1-national-reviewed",
+        "k1-allocation-appendix",
+        "k1-rosters-reviewed",
+        "k1-k7-law-1948",
+        "k1-k7-law-1948-312737"
+      ],
+      "members": [],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 434684
+          },
+          "displayPct": 0.0
+        },
+        "includedUnmixed": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 434684
+          },
+          "displayPct": 0.0
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 434684
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 434684
+          },
+          "displayPct": 0.0
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
+      }
+    },
+    {
+      "electionId": "k2",
+      "electionDate": "1951-07-30",
+      "datasetPath": "public/data/k2.json",
+      "datasetSha256": "a35aeb0bc7749263767031127a6201bd9665832bf6bc8ab3976023c89318589b",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2026-11-03",
+        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. ראו החלטה 0064.",
+        "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. See decision 0064."
+      },
+      "validVotes": 687492,
+      "voteSourceIds": [
+        "k2-results-gazette",
+        "k2-candidates-gazette",
+        "k1-k7-cbs-national-totals",
+        "k2-national-reviewed",
+        "k2-agreements-gazette",
+        "k2-rosters-reviewed",
+        "k1-k7-law-1951"
+      ],
+      "members": [],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 687492
+          },
+          "displayPct": 0.0
+        },
+        "includedUnmixed": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 687492
+          },
+          "displayPct": 0.0
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 687492
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 687492
+          },
+          "displayPct": 0.0
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
+      }
+    },
+    {
+      "electionId": "k3",
+      "electionDate": "1955-07-26",
+      "datasetPath": "public/data/k3.json",
+      "datasetSha256": "1b582dc9a81abda168eff2f3be0b02fcb9d88ebcab4a5569714b02ce15dc9c41",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2026-11-03",
+        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. ראו החלטה 0065.",
+        "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. See decision 0065."
+      },
+      "validVotes": 853219,
+      "voteSourceIds": [
+        "k3-results-gazette",
+        "k3-candidates-gazette",
+        "k1-k7-cbs-national-totals",
+        "k3-national-reviewed",
+        "k3-agreements-gazette",
+        "k3-rosters-reviewed",
+        "k3-candidates-mirror",
+        "k1-k7-law-1955"
+      ],
+      "members": [],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 853219
+          },
+          "displayPct": 0.0
+        },
+        "includedUnmixed": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 853219
+          },
+          "displayPct": 0.0
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 853219
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 853219
+          },
+          "displayPct": 0.0
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
+      }
+    },
+    {
+      "electionId": "k4",
+      "electionDate": "1959-11-03",
+      "datasetPath": "public/data/k4.json",
+      "datasetSha256": "39e8521d2a6c50c808b9fd1bf7298e93101e0e938e79554e581240034d8216a5",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2026-11-03",
+        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. ראו החלטה 0066.",
+        "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. See decision 0066."
+      },
+      "validVotes": 969337,
+      "voteSourceIds": [
+        "k4-results-gazette",
+        "k4-candidates-gazette",
+        "k1-k7-cbs-national-totals",
+        "k4-national-reviewed",
+        "k4-agreements-gazette",
+        "k4-rosters-reviewed",
+        "k1-k7-law-1959"
+      ],
+      "members": [],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 969337
+          },
+          "displayPct": 0.0
+        },
+        "includedUnmixed": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 969337
+          },
+          "displayPct": 0.0
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 969337
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 969337
+          },
+          "displayPct": 0.0
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
+      }
+    },
+    {
+      "electionId": "k5",
+      "electionDate": "1961-08-15",
+      "datasetPath": "public/data/k5.json",
+      "datasetSha256": "2fc051bfe72bb7e31a5f9225da63a8a8a58f47bcafd79571f951595c11906706",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2026-11-03",
+        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. התוצאות הרשמיות מוציאות את מועמדי הליברלים בדרגות 9 ו־11; הנבחרים כוללים מחליפים עד דרגה 19. ראו החלטה 0067.",
+        "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. The official results exclude Liberal registered ranks 9 and 11; elected ranks include replacements through rank 19. See decision 0067."
+      },
+      "validVotes": 1006964,
+      "voteSourceIds": [
+        "k5-results-gazette",
+        "k5-candidates-gazette",
+        "k1-k7-cbs-national-totals",
+        "k5-national-reviewed",
+        "k5-agreements-gazette",
+        "k5-rosters-reviewed",
+        "k1-k7-law-1959"
+      ],
+      "members": [],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1006964
+          },
+          "displayPct": 0.0
+        },
+        "includedUnmixed": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1006964
+          },
+          "displayPct": 0.0
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1006964
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1006964
+          },
+          "displayPct": 0.0
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
+      }
+    },
+    {
+      "electionId": "k6",
+      "electionDate": "1965-11-02",
+      "datasetPath": "public/data/k6.json",
+      "datasetSha256": "750331fe44623aa8110be28421634c622d7ff6a2ff9aeab8086dc4d514c9fee0",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2026-11-03",
+        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. ילקוט הפרסומים 1225 מחבר את המערך (את) לקדמה ופתוח (רא); התמלול הקודם יא היה שגוי. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. ראו החלטה 0069a.",
+        "noteEn": "Official national votes, agreements and all 120 seats verified. YP 1225 connects Alignment (את) to Progress and Development (רא); the earlier יא transcription was incorrect. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. See decision 0069a."
+      },
+      "validVotes": 1206728,
+      "voteSourceIds": [
+        "k6-results-gazette",
+        "k6-candidates-gazette",
+        "k1-k7-cbs-national-totals",
+        "k6-national-reviewed",
+        "k6-agreements-gazette",
+        "k6-rosters-reviewed",
+        "k1-k7-law-1959"
+      ],
+      "members": [],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1206728
+          },
+          "displayPct": 0.0
+        },
+        "includedUnmixed": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1206728
+          },
+          "displayPct": 0.0
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1206728
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1206728
+          },
+          "displayPct": 0.0
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
+      }
+    },
+    {
+      "electionId": "k7",
+      "electionDate": "1969-10-28",
+      "datasetPath": "public/data/k7.json",
+      "datasetSha256": "721fd2414c967a189c18f246f49f28cf43917b335c46c500bcf617f1e8033ab7",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2026-11-03",
+        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. ראו החלטה 0069.",
+        "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. See decision 0069."
+      },
+      "validVotes": 1367743,
+      "voteSourceIds": [
+        "k7-results-gazette",
+        "k7-candidates-gazette",
+        "k1-k7-cbs-national-totals",
+        "k7-national-reviewed",
+        "k7-agreements-gazette",
+        "k7-rosters-reviewed",
+        "k1-k7-law-1969"
+      ],
+      "members": [],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1367743
+          },
+          "displayPct": 0.0
+        },
+        "includedUnmixed": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1367743
+          },
+          "displayPct": 0.0
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1367743
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1367743
+          },
+          "displayPct": 0.0
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
+      }
+    },
+    {
+      "electionId": "k8",
+      "electionDate": "1973-12-31",
+      "datasetPath": "public/data/k8.json",
+      "datasetSha256": "203d3d4b5e6d55c8b3a09035e478ce821965c562aa0001548fa3b8691a6fe35e",
+      "datasetStatus": {
+        "stage": "official-final",
+        "noteEn": "National results; every published seat reproduced with the six official list connections from the Central Elections Committee’s calculation record (Form 30 appendix; three had no effect). All 120 elected names transcribed from the official candidate notice (YP 1954) and cross-checked against the results notice (YP 1979) and the committee record. Later ranks truncated (Ratz complete); nonwinning rosters untranscribed. Three ballot letters and four list names corrected from the notices. Full amendment chain unverified; no localities.",
+        "noteHe": "תוצאות ארציות; כל המנדטים שפורסמו משוחזרים עם שש ההתקשרויות הרשמיות מרשומת החישוב של ועדת הבחירות המרכזית (נספח טופס 30; לשלוש מהן לא הייתה השפעה). שמות כל 120 הנבחרים תומללו מהודעת המועמדים הרשמית (י״פ 1954) והוצלבו עם הודעת התוצאות (י״פ 1979) ועם רשומת הוועדה. דרגות מאוחרות חלקיות (רצ מלאה); רשימות לא זוכות לא תומללו. שלוש אותיות רשימה וארבעה שמות רשימות תוקנו לפי ההודעות. שרשרת התיקונים המלאה לא אומתה; אין נתוני יישובים.",
+        "asOf": "2026-11-04"
+      },
+      "validVotes": 1566855,
+      "voteSourceIds": [
+        "k8-results-gazette",
+        "k8-candidates-gazette",
+        "k8-k12-cbs-national-totals",
+        "k8-k12-law-1969",
+        "k8-k12-law-1973",
+        "k8-search-reviewed",
+        "k8-cec-memorandum-appendix",
+        "k8-candidates-reviewed",
+        "k8-cec-elected-appendix",
+        "k8-opening-membership-cross-check-reviewed",
+        "k8-national-reviewed"
+      ],
+      "members": [],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1566855
+          },
+          "displayPct": 0.0
+        },
+        "includedUnmixed": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1566855
+          },
+          "displayPct": 0.0
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1566855
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1566855
+          },
+          "displayPct": 0.0
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
+      }
+    },
+    {
+      "electionId": "k9",
+      "electionDate": "1977-05-17",
+      "datasetPath": "public/data/k9.json",
+      "datasetSha256": "3435309ed5ef70b846f4979660a8e907bf3c579ef6a8fed01ff849180cf79dda",
+      "datasetStatus": {
+        "stage": "official-final",
+        "noteEn": "National results; all seats reproduce with six official agreements and the k9-only candidate cap (Flatto-Sharon 1, Sheli 2). The procedure is inferred from the officially published result because the statutory text was not located. All 120 winning ranks are cross-checked: 119 names in YP 2326; Ratz’s rank 1 Shulamit Aloni confirmed by official Knesset OData membership and faction records from the first session, 13 June 1977 (the notice omits her paragraph). Later ranks truncated; nonwinning rosters untranscribed. Full amendment chain and unknown full-roster counterfactual capacities unverified; no localities.",
+        "noteHe": "תוצאות ארציות; כל המנדטים משוחזרים עם ששת ההסכמים הרשמיים והגבלת מספר המועמדים המופעלת רק לשנת 1977 (פלאטו שרון 1, שלי 2). ההליך מוסק מהתוצאה הרשמית שפורסמה משום שנוסח החוק המסדיר אותו לא אותר. כל 120 הדרגות הזוכות הוצלבו: 119 שמות בי״פ 2326; שולמית אלוני, דרגה 1 ברצ, אומתה ברישומי החברות בכנסת ובסיעה בממשק OData הרשמי של הכנסת מיום הישיבה הראשונה, 13 ביוני 1977 (פסקתה חסרה בהודעה). דרגות מאוחרות חלקיות ורשימות לא זוכות לא תומללו. שרשרת התיקונים ומגבלות רשימות שמספר מועמדיהן המלא אינו ידוע בתרחישים חלופיים לא אומתו; אין נתוני יישובים.",
+        "asOf": "2026-11-03"
+      },
+      "validVotes": 1747820,
+      "voteSourceIds": [
+        "k9-results-gazette",
+        "k9-candidates-gazette",
+        "k8-k12-cbs-national-totals",
+        "k8-k12-law-1969",
+        "k8-k12-law-1973",
+        "k9-candidates-reviewed",
+        "k9-search-reviewed",
+        "k9-ratz-odata",
+        "k9-odata-positions",
+        "k9-national-reviewed"
+      ],
+      "members": [],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1747820
+          },
+          "displayPct": 0.0
+        },
+        "includedUnmixed": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1747820
+          },
+          "displayPct": 0.0
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1747820
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1747820
+          },
+          "displayPct": 0.0
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
+      }
+    },
+    {
+      "electionId": "k10",
+      "electionDate": "1981-06-30",
+      "datasetPath": "public/data/k10.json",
+      "datasetSha256": "87d0bc1a4ed989f706f4052855d5e8cb8c30c4d562d31f4cf285ce712dcaae8b",
+      "datasetStatus": {
+        "stage": "official-final",
+        "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 120 transcribed ranks across all 10 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
+        "noteHe": "תוצאות ארציות בלבד; כל המנדטים הרשמיים שוחזרו. 120 מועמדים תומללו מפרסום הרשימות הרשמי בכל 10 הרשימות הזוכות; שמות כל 120 הנבחרים הוצלבו עם הודעת התוצאות. דרגות מאוחרות לא תומללו; רשימות חלקיות ורשימות לא זוכות שלא תומללו מסומנות במפורש. אין נתוני יישובים. שרשרת התיקונים המלאה למועד הבחירות ושינויים מאוחרים ברשימות טרם אומתו; אלה מגבלות מתועדות.",
+        "asOf": "2026-11-03"
+      },
+      "validVotes": 1937366,
+      "voteSourceIds": [
+        "k10-results-gazette",
+        "k10-candidates-gazette",
+        "k8-k12-cbs-national-totals",
+        "k8-k12-law-1969",
+        "k8-k12-law-1973",
+        "k10-agreements-gazette",
+        "k10-candidates-reviewed",
+        "k10-national-reviewed"
+      ],
+      "members": [],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1937366
+          },
+          "displayPct": 0.0
+        },
+        "includedUnmixed": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1937366
+          },
+          "displayPct": 0.0
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1937366
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1937366
+          },
+          "displayPct": 0.0
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
+      }
+    },
+    {
+      "electionId": "k11",
+      "electionDate": "1984-07-23",
+      "datasetPath": "public/data/k11.json",
+      "datasetSha256": "2b54ce215796bedbf46eb10fa56543969db30ed67ca2df4962ad80f7f58a5423",
+      "datasetStatus": {
+        "stage": "official-final",
+        "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 196 transcribed ranks across all 15 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted except the complete 120-name K11 Alignment roster; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
+        "noteHe": "תוצאות ארציות בלבד; כל המנדטים הרשמיים שוחזרו. 196 מועמדים תומללו מפרסום הרשימות הרשמי בכל 15 הרשימות הזוכות; שמות כל 120 הנבחרים הוצלבו עם הודעת התוצאות. דרגות מאוחרות לא תומללו למעט רשימת המערך המלאה בכנסת ה־11; רשימות חלקיות ורשימות לא זוכות שלא תומללו מסומנות במפורש. אין נתוני יישובים. שרשרת התיקונים המלאה למועד הבחירות ושינויים מאוחרים ברשימות טרם אומתו; אלה מגבלות מתועדות.",
+        "asOf": "2026-11-03"
+      },
+      "validVotes": 2073321,
+      "voteSourceIds": [
+        "k11-results-gazette",
+        "k11-candidates-gazette",
+        "k8-k12-cbs-national-totals",
+        "k8-k12-law-1969",
+        "k8-k12-law-1973",
+        "k11-candidates-reviewed",
+        "k11-national-reviewed"
+      ],
+      "members": [],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 2073321
+          },
+          "displayPct": 0.0
+        },
+        "includedUnmixed": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 2073321
+          },
+          "displayPct": 0.0
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 2073321
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 2073321
+          },
+          "displayPct": 0.0
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
+      }
+    },
+    {
+      "electionId": "k12",
+      "electionDate": "1988-11-01",
+      "datasetPath": "public/data/k12.json",
+      "datasetSha256": "ff601254033ae24bb99b084fac5253ee7f9be0a08634956c169a047773c901a8",
+      "datasetStatus": {
+        "stage": "official-final",
+        "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 120 transcribed ranks across all 15 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
+        "noteHe": "תוצאות ארציות בלבד; כל המנדטים הרשמיים שוחזרו. 120 מועמדים תומללו מפרסום הרשימות הרשמי בכל 15 הרשימות הזוכות; שמות כל 120 הנבחרים הוצלבו עם הודעת התוצאות. דרגות מאוחרות לא תומללו; רשימות חלקיות ורשימות לא זוכות שלא תומללו מסומנות במפורש. אין נתוני יישובים. שרשרת התיקונים המלאה למועד הבחירות ושינויים מאוחרים ברשימות טרם אומתו; אלה מגבלות מתועדות.",
+        "asOf": "2026-11-03"
+      },
+      "validVotes": 2283123,
+      "voteSourceIds": [
+        "k12-results-gazette",
+        "k12-candidates-gazette",
+        "k8-k12-cbs-national-totals",
+        "k8-k12-law-1969",
+        "k8-k12-law-1973",
+        "k12-candidates-reviewed",
+        "k12-national-reviewed"
+      ],
+      "members": [],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 2283123
+          },
+          "displayPct": 0.0
+        },
+        "includedUnmixed": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 2283123
+          },
+          "displayPct": 0.0
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 2283123
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 2283123
+          },
+          "displayPct": 0.0
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
+      }
+    },
+    {
+      "electionId": "k13",
+      "electionDate": "1992-06-23",
+      "datasetPath": "public/data/k13.json",
+      "datasetSha256": "92643f881b9e43ed4e3e55ddae9558c649c4193f9bfaa9ac91e54a70d70ae9fe",
+      "datasetStatus": {
+        "stage": "official-final",
+        "noteEn": "Rosters: everyone elected is included and cross-checked; no full rosters; later ranks of winning lists not transcribed. Zero-seat rosters unavailable. Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. The 1992 agreement notice was not found; agreements that did not affect seats may be missing. Empty agreements reproduce every published seat.",
+        "noteHe": "מועמדים: כל הנבחרים נכללו ונבדקו מול הודעת התוצאות; אין רשימות מלאות; מקומות מאוחרים בשאר הרשימות הזוכות לא תועתקו. רשימות ללא מנדטים אינן מתועתקות. סדר המועמדים הרשום נשמר וההשמטות בהודעת הנבחרים תועדו. אין נתוני יישובים. הודעת ההתקשרויות משנת 1992 לא אותרה; ייתכן שחסרים הסכמים שלא השפיעו על חלוקת המנדטים. כל המנדטים שוחזרו ללא הסכמים.",
+        "asOf": "2026-11-03"
+      },
+      "validVotes": 2616841,
+      "voteSourceIds": [
+        "k13-results-gazette",
+        "k13-k15-cbs-national-totals",
+        "k13-candidates-gazette",
+        "k13-national-reviewed",
+        "k13-rosters-reviewed",
+        "k13-elected-reviewed",
+        "k13-candidates-yp4017-idi-6654",
+        "k13-candidates-yp4017-idi-6558",
+        "k13-candidates-yp4017-idi-6891",
+        "k13-candidates-yp4017-idi-6695",
+        "k13-candidates-yp4017-idi-6608",
+        "k13-candidates-yp4017-idi-6731",
+        "k13-candidates-yp4017-idi-6809",
+        "k13-k15-bader-ofer-amendment",
+        "k13-k15-threshold-amendment"
+      ],
+      "members": [],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 2616841
+          },
+          "displayPct": 0.0
+        },
+        "includedUnmixed": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 2616841
+          },
+          "displayPct": 0.0
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 2616841
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 2616841
+          },
+          "displayPct": 0.0
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
+      }
+    },
+    {
+      "electionId": "k14",
+      "electionDate": "1996-05-29",
+      "datasetPath": "public/data/k14.json",
+      "datasetSha256": "3938db2f3d61463bf1d99deaa3473657be1fab46f2354adaf8a20adebb58959a",
+      "datasetStatus": {
+        "stage": "official-final",
+        "noteEn": "Rosters: everyone elected is included and cross-checked; full roster for Third Way; later ranks of other winning lists not transcribed. Zero-seat rosters unavailable. Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. Complete 6-pair agreement notice verified; every published seat reproduced.",
+        "noteHe": "מועמדים: כל הנבחרים נכללו ונבדקו מול הודעת התוצאות; הרשימה המלאה של הדרך השלישית תועתקה; מקומות מאוחרים בשאר הרשימות הזוכות לא תועתקו. רשימות ללא מנדטים אינן מתועתקות. סדר המועמדים הרשום נשמר וההשמטות בהודעת הנבחרים תועדו. אין נתוני יישובים. הודעת ההתקשרויות המלאה (6 זוגות) אומתה וכל המנדטים שוחזרו.",
+        "asOf": "2026-11-03"
+      },
+      "validVotes": 3052130,
+      "voteSourceIds": [
+        "k14-results-gazette",
+        "k13-k15-cbs-national-totals",
+        "k14-candidates-gazette",
+        "k14-national-reviewed",
+        "k14-rosters-reviewed",
+        "k14-elected-reviewed",
+        "k13-k15-bader-ofer-amendment",
+        "k13-k15-threshold-amendment",
+        "k14-agreements-gazette"
+      ],
+      "members": [
+        {
+          "listId": "14-כן",
+          "letters": "כן",
+          "nameHe": "ישראל בעליה בראשותו של נתן שרנסקי",
+          "votes": 174994,
+          "partyIds": [
+            "yisrael-baaliyah"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "yisrael-baaliyah"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k14.json#/lists/5"
+          },
+          "classificationEvidence": {
+            "status": "inferred",
+            "sourceIds": [
+              "proposal",
+              "k14",
+              "immigrant",
+              "mergers"
+            ],
+            "claim": "Original editorial selection under Russian-speaking immigrant electoral vehicles; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 174994,
+          "percent": {
+            "numerator": 17499400,
+            "denominator": 3052130
+          },
+          "displayPct": 5.733504
+        },
+        "includedUnmixed": {
+          "votes": 174994,
+          "percent": {
+            "numerator": 17499400,
+            "denominator": 3052130
+          },
+          "displayPct": 5.733504
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 3052130
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 174994,
+          "percent": {
+            "numerator": 17499400,
+            "denominator": 3052130
+          },
+          "displayPct": 5.733504
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
+      }
+    },
+    {
+      "electionId": "k15",
+      "electionDate": "1999-05-17",
+      "datasetPath": "public/data/k15.json",
+      "datasetSha256": "87e7add2a362ad72c7ce6bab9fff8f41a0b00c07ffc32089a6cc04216d2fe9fe",
+      "datasetStatus": {
+        "stage": "official-final",
+        "noteEn": "Rosters: everyone elected is included and cross-checked; no full rosters; later ranks of winning lists not transcribed. Zero-seat rosters unavailable. Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. Complete 9-pair agreement notice verified; every published seat reproduced.",
+        "noteHe": "מועמדים: כל הנבחרים נכללו ונבדקו מול הודעת התוצאות; אין רשימות מלאות; מקומות מאוחרים בשאר הרשימות הזוכות לא תועתקו. רשימות ללא מנדטים אינן מתועתקות. סדר המועמדים הרשום נשמר וההשמטות בהודעת הנבחרים תועדו. אין נתוני יישובים. הודעת ההתקשרויות המלאה (9 זוגות) אומתה וכל המנדטים שוחזרו.",
+        "asOf": "2026-11-03"
+      },
+      "validVotes": 3309416,
+      "voteSourceIds": [
+        "k15-results-gazette",
+        "k13-k15-cbs-national-totals",
+        "k15-candidates-gazette",
+        "k15-national-reviewed",
+        "k15-rosters-reviewed",
+        "k15-elected-reviewed",
+        "k13-k15-bader-ofer-amendment",
+        "k13-k15-threshold-amendment",
+        "k15-agreements-gazette"
+      ],
+      "members": [
+        {
+          "listId": "15-כן",
+          "letters": "כן",
+          "nameHe": "ישראל בעליה בראשות נתן שרנסקי",
+          "votes": 171705,
+          "partyIds": [
+            "yisrael-baaliyah"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "yisrael-baaliyah"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k15.json#/lists/4"
+          },
+          "classificationEvidence": {
+            "status": "inferred",
+            "sourceIds": [
+              "proposal",
+              "k15",
+              "immigrant",
+              "mergers"
+            ],
+            "claim": "Original editorial selection under Russian-speaking immigrant electoral vehicles; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "15-ל",
+          "letters": "ל",
+          "nameHe": "ישראל ביתנו בראשות אביגדור ליברמן",
+          "votes": 86153,
+          "partyIds": [
+            "yisrael-beiteinu"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "yisrael-beiteinu"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k15.json#/lists/12"
+          },
+          "classificationEvidence": {
+            "status": "inferred",
+            "sourceIds": [
+              "proposal",
+              "k15",
+              "immigrant",
+              "mergers"
+            ],
+            "claim": "Original editorial selection under Russian-speaking immigrant electoral vehicles; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 257858,
+          "percent": {
+            "numerator": 25785800,
+            "denominator": 3309416
+          },
+          "displayPct": 7.791647
+        },
+        "includedUnmixed": {
+          "votes": 257858,
+          "percent": {
+            "numerator": 25785800,
+            "denominator": 3309416
+          },
+          "displayPct": 7.791647
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 3309416
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 257858,
+          "percent": {
+            "numerator": 25785800,
+            "denominator": 3309416
+          },
+          "displayPct": 7.791647
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
+      }
+    },
+    {
+      "electionId": "k16",
+      "electionDate": "2003-01-28",
+      "datasetPath": "public/data/k16.json",
+      "datasetSha256": "d2a7f1e7c85c1d37a04e7fc7fdaa00c31586004e3db1251a3deed3fa3ad200d5",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2026-11-03",
+        "noteHe": "בעלי זכות בחירה: לוח למ״ס 27.2; קולות כשרים ופסולים: ילקוט הפרסומים; מצביעים = כשרים + פסולים. קולות המפד״ל ולידר לפי סיכומי הקלפיות; הנתונים המודפסים עולים ב-410 על סך הכשרים שבילקוט עצמו. נתוני היישובים סוכמו מקלפיות. בכל רשימה שזכתה במנדטים נכללים כל המקומות שנבחרו, בהצלבה שמית עם סעיף 4 בהודעת התוצאות הרשמית; הבדלי הכתיב מתועדים. 10 רשימות זוכות כוללות רק תחילית מאומתת ומסומנות כקטועות; 4 רשימות שלא זכו במנדטים עדיין חסרות. יתר המקומות ברשימות הקטועות טרם אומתו.",
+        "noteEn": "Registered voters: official CBS table 27.2; valid and invalid votes: results gazette; cast = valid + invalid. Mafdal and Lider use polling sums; printed gazette figures exceed its own valid total by 410. Localities are summed polling rows. Every winning list includes all elected ranks, checked name by name against section 4 of the official results notice; literal name variants are documented. 10 winning rosters are truncated to verified elected prefixes; 4 non-winning rosters remain unavailable. Later ranks on truncated lists are unverified."
+      },
+      "validVotes": 3148364,
+      "voteSourceIds": [
+        "k16-results-gazette",
+        "k16-candidates-gazette",
+        "k16-surplus-gazette",
+        "k16-cbs-national-summary",
+        "k16-ballots-datagov",
+        "k16-national-reviewed",
+        "k16-reconciliation-reviewed",
+        "k16-candidates-reviewed",
+        "k16-localities-reviewed",
+        "k16-membership-odata",
+        "k16-sharansky-withdrawal",
+        "k16-knesset-vote-crosscheck"
+      ],
+      "members": [
+        {
+          "listId": "16-כן",
+          "letters": "כן",
+          "nameHe": "ישראל בעליה בראשות נתן שרנסקי",
+          "votes": 67719,
+          "partyIds": [
+            "yisrael-baaliyah"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "yisrael-baaliyah"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k16.json#/lists/11"
+          },
+          "classificationEvidence": {
+            "status": "inferred",
+            "sourceIds": [
+              "proposal",
+              "k16",
+              "immigrant",
+              "mergers"
+            ],
+            "claim": "Original editorial selection under Russian-speaking immigrant electoral vehicles; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "16-ל",
+          "letters": "ל",
+          "nameHe": "האיחוד הלאומי - ישראל ביתנו - מולדת - תקומה",
+          "votes": 173973,
+          "partyIds": [
+            "yisrael-beiteinu"
+          ],
+          "datasetPartyIds": [
+            "yisrael-beiteinu",
+            "tkuma",
+            "moledet"
+          ],
+          "proposedPartyIds": [],
+          "scope": "mixed",
+          "treatment": "separate-segment",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k16.json#/lists/4"
+          },
+          "classificationEvidence": {
+            "status": "inferred",
+            "sourceIds": [
+              "proposal",
+              "k16",
+              "immigrant",
+              "mergers"
+            ],
+            "claim": "Original editorial selection under Russian-speaking immigrant electoral vehicles; proposal §2 records election-specific qualifiers. Some partners fall outside this definition; all list votes stay in mixed segment."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 67719,
+          "percent": {
+            "numerator": 6771900,
+            "denominator": 3148364
+          },
+          "displayPct": 2.150927
+        },
+        "includedUnmixed": {
+          "votes": 67719,
+          "percent": {
+            "numerator": 6771900,
+            "denominator": 3148364
+          },
+          "displayPct": 2.150927
+        },
+        "mixedWholeLists": {
+          "votes": 173973,
+          "percent": {
+            "numerator": 17397300,
+            "denominator": 3148364
+          },
+          "displayPct": 5.525822
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 241692,
+          "percent": {
+            "numerator": 24169200,
+            "denominator": 3148364
+          },
+          "displayPct": 7.676749
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
+      }
+    },
+    {
+      "electionId": "k17",
+      "electionDate": "2006-03-28",
+      "datasetPath": "public/data/k17.json",
+      "datasetSha256": "f63ef83e3e208aec18fb69da1590832ee68fc931fcc6083137afeab421220e91",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2026-11-03",
+        "noteHe": "בעלי זכות בחירה: לוח למ״ס 27.2; קולות כשרים ופסולים: ילקוט הפרסומים; מצביעים = כשרים + פסולים. מספר המצביעים בסיכומי הקלפיות נמוך ב-9 מהסכום הארצי הנגזר מהילקוט; לא ידוע הסבר מוסמך. נתוני היישובים סוכמו מקלפיות. בכל רשימה שזכתה במנדטים נכללים כל המקומות שנבחרו, בהצלבה שמית עם סעיף 4 בהודעת התוצאות הרשמית; הבדלי הכתיב מתועדים. 7 רשימות זוכות כוללות רק תחילית מאומתת ומסומנות כקטועות; 6 רשימות שלא זכו במנדטים עדיין חסרות. יתר המקומות ברשימות הקטועות טרם אומתו.",
+        "noteEn": "Registered voters: official CBS table 27.2; valid and invalid votes: results gazette; cast = valid + invalid. Polling-station cast votes are 9 below the gazette-derived national cast total; no authoritative explanation is known. Localities are summed polling rows. Every winning list includes all elected ranks, checked name by name against section 4 of the official results notice; literal name variants are documented. 7 winning rosters are truncated to verified elected prefixes; 6 non-winning rosters remain unavailable. Later ranks on truncated lists are unverified."
+      },
+      "validVotes": 3137064,
+      "voteSourceIds": [
+        "k17-results-gazette",
+        "k17-candidates-gazette",
+        "k17-surplus-gazette",
+        "k17-cbs-national-summary",
+        "k17-ballots-datagov",
+        "k17-national-reviewed",
+        "k17-reconciliation-reviewed",
+        "k17-candidates-reviewed",
+        "k17-localities-reviewed",
+        "k17-candidates-archive-crosscheck",
+        "k17-membership-odata"
+      ],
+      "members": [
+        {
+          "listId": "17-ל",
+          "letters": "ל",
+          "nameHe": "ישראל ביתנו בראשות אביגדור ליברמן",
+          "votes": 281880,
+          "partyIds": [
+            "yisrael-beiteinu"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "yisrael-beiteinu"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k17.json#/lists/4"
+          },
+          "classificationEvidence": {
+            "status": "inferred",
+            "sourceIds": [
+              "proposal",
+              "k17",
+              "immigrant",
+              "mergers"
+            ],
+            "claim": "Original editorial selection under Russian-speaking immigrant electoral vehicles; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 281880,
+          "percent": {
+            "numerator": 28188000,
+            "denominator": 3137064
+          },
+          "displayPct": 8.985472
+        },
+        "includedUnmixed": {
+          "votes": 281880,
+          "percent": {
+            "numerator": 28188000,
+            "denominator": 3137064
+          },
+          "displayPct": 8.985472
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 3137064
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 281880,
+          "percent": {
+            "numerator": 28188000,
+            "denominator": 3137064
+          },
+          "displayPct": 8.985472
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
+      }
+    },
+    {
+      "electionId": "k18",
+      "electionDate": "2009-02-10",
+      "datasetPath": "public/data/k18.json",
+      "datasetSha256": "1960389cb042036aaa4a8743c4f869cecebb261eed345a42e2636a1658068645",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2009-02-17",
+        "noteHe": "תוצאות רשמיות. פסולים ובעלי זכות בחירה לפי זכרון הדברים של ועדת הבחירות, השונה ממספר הפסולים ברשומות. נתוני היישובים נגזרו מסיכום הקלפיות; ועדה אזורית אינה ידועה (0). המועמדים לפי הפרסום המקורי; שינויים מאוחרים אינם מוחלים. ראו החלטה 0040.",
+        "noteEn": "Official results. Invalid ballots and electorate follow the CEC allocation memorandum, differing from the gazette invalid count. Localities are derived from polling stations, not independently sourced; committee is unknown (0). Candidate rosters are the original gazette snapshot; subsequent changes are not applied. See decision 0040."
+      },
+      "validVotes": 3373490,
+      "voteSourceIds": [
+        "k18-results-gazette",
+        "k18-candidates-gazette",
+        "k18-surplus-gazette",
+        "k18-ballots-datagov",
+        "k18-allocation-memorandum"
+      ],
+      "members": [
+        {
+          "listId": "18-ל",
+          "letters": "ל",
+          "nameHe": "ישראל ביתנו בראשות אביגדור ליברמן",
+          "votes": 394577,
+          "partyIds": [
+            "yisrael-beiteinu"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "yisrael-beiteinu"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k18.json#/lists/2"
+          },
+          "classificationEvidence": {
+            "status": "inferred",
+            "sourceIds": [
+              "proposal",
+              "k18",
+              "immigrant",
+              "mergers"
+            ],
+            "claim": "Original editorial selection under Russian-speaking immigrant electoral vehicles; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 394577,
+          "percent": {
+            "numerator": 39457700,
+            "denominator": 3373490
+          },
+          "displayPct": 11.696403
+        },
+        "includedUnmixed": {
+          "votes": 394577,
+          "percent": {
+            "numerator": 39457700,
+            "denominator": 3373490
+          },
+          "displayPct": 11.696403
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 3373490
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 394577,
+          "percent": {
+            "numerator": 39457700,
+            "denominator": 3373490
+          },
+          "displayPct": 11.696403
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
+      }
+    },
+    {
+      "electionId": "k19",
+      "electionDate": "2013-01-22",
+      "datasetPath": "public/data/k19.json",
+      "datasetSha256": "e8d534c2aec90e417abc2ee77b04716a85cfc130652a200d23f407cc3ec2866c",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2013-01-30",
+        "noteHe": "תוצאות סופיות רשמיות של ועדת הבחירות (אתר התוצאות והמאגר הממשלתי), המתואמות עם כל הקלפיות. בהודעה ברשומות (י\"פ 6540) מודפס סך כשרים 3,792,472, אך סכום הרשימות שבה הוא 3,792,742 — כמו בתוצאות הסופיות; ושלוש רשימות שונות במעט (הליכוד ביתנו 109+, קדימה 107−, הישראלים 2−). אותם מנדטים בדיוק בשתי הגרסאות. מעטפות חיצוניות (875) נגזרו מהקלפיות. המועמדים לפי הפרסום המקורי; שינויים מאוחרים אינם מוחלים. ראו החלטות 0041–0042.",
+        "noteEn": "Official final CEC results (results site and government datastore), reconciled with every polling station. The gazette notice (YP 6540) prints 3,792,472 valid votes, but its own list counts sum to 3,792,742, as in the final results; three list totals also differ slightly (Likud–Yisrael Beiteinu +109, Kadima −107, Hayisraelim −2). Both versions give exactly the same seats. External envelopes (code 875) are derived from polling rows. Candidate rosters are the original gazette snapshot; later changes are not applied. See decisions 0041–0042."
+      },
+      "validVotes": 3792742,
+      "voteSourceIds": [
+        "k19-results-gazette",
+        "k19-candidates-gazette",
+        "k19-surplus-gazette",
+        "k19-ballots-datagov",
+        "k19-localities-datagov",
+        "k19-final-results-capture"
+      ],
+      "members": [
+        {
+          "listId": "19-מחל",
+          "letters": "מחל",
+          "nameHe": "הליכוד - ישראל ביתנו בהנהגת בנימין נתניהו לראשות הממשלה",
+          "votes": 885163,
+          "partyIds": [
+            "yisrael-beiteinu"
+          ],
+          "datasetPartyIds": [
+            "likud",
+            "yisrael-beiteinu"
+          ],
+          "proposedPartyIds": [],
+          "scope": "mixed",
+          "treatment": "separate-segment",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k19.json#/lists/0"
+          },
+          "classificationEvidence": {
+            "status": "inferred",
+            "sourceIds": [
+              "proposal",
+              "k19",
+              "immigrant",
+              "mergers"
+            ],
+            "claim": "Original editorial selection under Russian-speaking immigrant electoral vehicles; proposal §2 records election-specific qualifiers. Some partners fall outside this definition; all list votes stay in mixed segment."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 3792742
+          },
+          "displayPct": 0.0
+        },
+        "includedUnmixed": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 3792742
+          },
+          "displayPct": 0.0
+        },
+        "mixedWholeLists": {
+          "votes": 885163,
+          "percent": {
+            "numerator": 88516300,
+            "denominator": 3792742
+          },
+          "displayPct": 23.338339
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 885163,
+          "percent": {
+            "numerator": 88516300,
+            "denominator": 3792742
+          },
+          "displayPct": 23.338339
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
+      }
+    },
+    {
+      "electionId": "k20",
+      "electionDate": "2015-03-17",
+      "datasetPath": "public/data/k20.json",
+      "datasetSha256": "833d0c0fed196204102bea653ca679b791d376ad2cf545bf031317c4533bceac",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2015-03-25",
+        "noteHe": "תוצאות רשמיות סופיות. המועמדים לפי סדר הרישום בילקוט הפרסומים; הודעות התפטרות ידועות בהערות. לא מוצגת השתייכות לגושים.",
+        "noteEn": "Official final results. Candidates follow the gazetted registration order; known resignation notices are labelled. No default blocs assigned."
+      },
+      "validVotes": 4210884,
+      "voteSourceIds": [
+        "k20-results-gazette",
+        "k20-localities-datagov",
+        "k20-ballots-datagov",
+        "k20-candidates-gazette",
+        "k20-surplus-gazette",
+        "law-elections"
+      ],
+      "members": [
+        {
+          "listId": "20-ל",
+          "letters": "ל",
+          "nameHe": "ישראל ביתנו בראשות אביגדור ליברמן",
+          "votes": 214906,
+          "partyIds": [
+            "yisrael-beiteinu"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "yisrael-beiteinu"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k20.json#/lists/7"
+          },
+          "classificationEvidence": {
+            "status": "inferred",
+            "sourceIds": [
+              "proposal",
+              "k20",
+              "immigrant",
+              "mergers"
+            ],
+            "claim": "Original editorial selection under Russian-speaking immigrant electoral vehicles; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 214906,
+          "percent": {
+            "numerator": 21490600,
+            "denominator": 4210884
+          },
+          "displayPct": 5.103584
+        },
+        "includedUnmixed": {
+          "votes": 214906,
+          "percent": {
+            "numerator": 21490600,
+            "denominator": 4210884
+          },
+          "displayPct": 5.103584
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 4210884
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 214906,
+          "percent": {
+            "numerator": 21490600,
+            "denominator": 4210884
+          },
+          "displayPct": 5.103584
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
+      }
+    },
+    {
+      "electionId": "k21",
+      "electionDate": "2019-04-09",
+      "datasetPath": "public/data/k21.json",
+      "datasetSha256": "e5d1dd8eac1e3bab0be09972cb0155674eedff6c5762240c89f792f9fe1f6d73",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2026-11-03",
+        "noteHe": "תוצאות רשמיות סופיות. המועמדים לפי סדר הרישום בילקוט הפרסומים; הודעות התפטרות ידועות בהערות. לא מוצגת השתייכות לגושים.",
+        "noteEn": "Official final results. Candidates follow the gazetted registration order; known resignation notices are labelled. No default blocs assigned."
+      },
+      "validVotes": 4309270,
+      "voteSourceIds": [
+        "k21-national-html",
+        "k21-localities-datagov",
+        "k21-ballots-datagov",
+        "k21-candidates-gazette",
+        "k21-surplus-gazette",
+        "law-elections"
+      ],
+      "members": [
+        {
+          "listId": "21-ל",
+          "letters": "ל",
+          "nameHe": "ישראל ביתנו בראשות אביגדור ליברמן",
+          "votes": 173004,
+          "partyIds": [
+            "yisrael-beiteinu"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "yisrael-beiteinu"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k21.json#/lists/6"
+          },
+          "classificationEvidence": {
+            "status": "inferred",
+            "sourceIds": [
+              "proposal",
+              "k21",
+              "immigrant",
+              "mergers"
+            ],
+            "claim": "Original editorial selection under Russian-speaking immigrant electoral vehicles; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 173004,
+          "percent": {
+            "numerator": 17300400,
+            "denominator": 4309270
+          },
+          "displayPct": 4.014694
+        },
+        "includedUnmixed": {
+          "votes": 173004,
+          "percent": {
+            "numerator": 17300400,
+            "denominator": 4309270
+          },
+          "displayPct": 4.014694
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 4309270
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 173004,
+          "percent": {
+            "numerator": 17300400,
+            "denominator": 4309270
+          },
+          "displayPct": 4.014694
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
+      }
+    },
+    {
+      "electionId": "k22",
+      "electionDate": "2019-09-17",
+      "datasetPath": "public/data/k22.json",
+      "datasetSha256": "06f12173958383755fc85fe4d156e61957f1c27f10f14ed78071269c416dc4e9",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2026-11-03",
+        "noteEn": "Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. No default blocs assigned. National electorate 6,394,030; locality/polling electorate 6,391,218 (difference 2,812). National total takes precedence; cause unverified. See ADR 0020.",
+        "noteHe": "תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות. ללא שיוך לגושים. מספר בעלי זכות הבחירה הארצי הוא 6,394,030, לעומת 6,391,218 בקובצי היישובים והקלפיות. הפער 2,812; סיבתו לא אומתה. ראו החלטה 0020."
+      },
+      "validVotes": 4436806,
+      "voteSourceIds": [
+        "k22-national-html",
+        "k22-localities-datagov",
+        "k22-ballots-datagov",
+        "k22-candidates-gazette",
+        "k22-surplus-gazette",
+        "law-elections"
+      ],
+      "members": [
+        {
+          "listId": "22-ל",
+          "letters": "ל",
+          "nameHe": "ישראל ביתנו בראשות אביגדור ליברמן",
+          "votes": 310154,
+          "partyIds": [
+            "yisrael-beiteinu"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "yisrael-beiteinu"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k22.json#/lists/4"
+          },
+          "classificationEvidence": {
+            "status": "inferred",
+            "sourceIds": [
+              "proposal",
+              "k22",
+              "immigrant",
+              "mergers"
+            ],
+            "claim": "Original editorial selection under Russian-speaking immigrant electoral vehicles; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 310154,
+          "percent": {
+            "numerator": 31015400,
+            "denominator": 4436806
+          },
+          "displayPct": 6.990479
+        },
+        "includedUnmixed": {
+          "votes": 310154,
+          "percent": {
+            "numerator": 31015400,
+            "denominator": 4436806
+          },
+          "displayPct": 6.990479
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 4436806
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 310154,
+          "percent": {
+            "numerator": 31015400,
+            "denominator": 4436806
+          },
+          "displayPct": 6.990479
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
+      }
+    },
+    {
+      "electionId": "k23",
+      "electionDate": "2020-03-02",
+      "datasetPath": "public/data/k23.json",
+      "datasetSha256": "a7dacef1f60c2e29c2851a53e1ec02b20aab54b9bb6a777a1f2f9e9e01f2f7cf",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2026-11-03",
+        "noteEn": "Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. No default blocs assigned.",
+        "noteHe": "תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות. ללא שיוך לגושים."
+      },
+      "validVotes": 4590062,
+      "voteSourceIds": [
+        "k23-national-html",
+        "k23-localities-datagov",
+        "k23-ballots-datagov",
+        "k23-candidates-gazette",
+        "k23-surplus-gazette",
+        "law-elections"
+      ],
+      "members": [
+        {
+          "listId": "23-ל",
+          "letters": "ל",
+          "nameHe": "ישראל ביתנו בראשות אביגדור ליברמן",
+          "votes": 263365,
+          "partyIds": [
+            "yisrael-beiteinu"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "yisrael-beiteinu"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k23.json#/lists/6"
+          },
+          "classificationEvidence": {
+            "status": "inferred",
+            "sourceIds": [
+              "proposal",
+              "k23",
+              "immigrant",
+              "mergers"
+            ],
+            "claim": "Original editorial selection under Russian-speaking immigrant electoral vehicles; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 263365,
+          "percent": {
+            "numerator": 26336500,
+            "denominator": 4590062
+          },
+          "displayPct": 5.737722
+        },
+        "includedUnmixed": {
+          "votes": 263365,
+          "percent": {
+            "numerator": 26336500,
+            "denominator": 4590062
+          },
+          "displayPct": 5.737722
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 4590062
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 263365,
+          "percent": {
+            "numerator": 26336500,
+            "denominator": 4590062
+          },
+          "displayPct": 5.737722
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
+      }
+    },
+    {
+      "electionId": "k24",
+      "electionDate": "2021-03-23",
+      "datasetPath": "public/data/k24.json",
+      "datasetSha256": "fe584720b45481441be0f7a52bb2b10a95d768e53fc6fde256c4e95b68a2c48f",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2026-11-03",
+        "noteEn": "Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. No default blocs assigned.",
+        "noteHe": "תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות. ללא שיוך לגושים."
+      },
+      "validVotes": 4410052,
+      "voteSourceIds": [
+        "k24-national-html",
+        "k24-localities-datagov",
+        "k24-ballots-datagov",
+        "k24-candidates-gazette",
+        "k24-surplus-gazette",
+        "law-elections"
+      ],
+      "members": [
+        {
+          "listId": "24-ל",
+          "letters": "ל",
+          "nameHe": "ישראל ביתנו בראשות אביגדור ליברמן",
+          "votes": 248370,
+          "partyIds": [
+            "yisrael-beiteinu"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "yisrael-beiteinu"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k24.json#/lists/7"
+          },
+          "classificationEvidence": {
+            "status": "inferred",
+            "sourceIds": [
+              "proposal",
+              "k24",
+              "immigrant",
+              "mergers"
+            ],
+            "claim": "Original editorial selection under Russian-speaking immigrant electoral vehicles; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 248370,
+          "percent": {
+            "numerator": 24837000,
+            "denominator": 4410052
+          },
+          "displayPct": 5.631906
+        },
+        "includedUnmixed": {
+          "votes": 248370,
+          "percent": {
+            "numerator": 24837000,
+            "denominator": 4410052
+          },
+          "displayPct": 5.631906
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 4410052
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 248370,
+          "percent": {
+            "numerator": 24837000,
+            "denominator": 4410052
+          },
+          "displayPct": 5.631906
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
+      }
+    },
+    {
+      "electionId": "k25",
+      "electionDate": "2022-11-01",
+      "datasetPath": "public/data/k25.json",
+      "datasetSha256": "a8b8b667a8e4b6fd9dd104b4dad5cd839b415640efa431cc62c35e6264efc180",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2022-11-10",
+        "noteHe": "תוצאות סופיות רשמיות של ועדת הבחירות המרכזית.",
+        "noteEn": "Official final results of the Central Elections Committee."
+      },
+      "validVotes": 4764742,
+      "voteSourceIds": [
+        "k25-national-html",
+        "k25-localities-datagov",
+        "k25-ballots-datagov",
+        "k25-candidates-gazette",
+        "k25-surplus-press",
+        "law-elections"
+      ],
+      "members": [
+        {
+          "listId": "25-ל",
+          "letters": "ל",
+          "nameHe": "ישראל ביתנו בראשות אביגדור ליברמן",
+          "votes": 213687,
+          "partyIds": [
+            "yisrael-beiteinu"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "yisrael-beiteinu"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k25.json#/lists/7"
+          },
+          "classificationEvidence": {
+            "status": "inferred",
+            "sourceIds": [
+              "proposal",
+              "k25",
+              "immigrant",
+              "mergers"
+            ],
+            "claim": "Original editorial selection under Russian-speaking immigrant electoral vehicles; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 213687,
+          "percent": {
+            "numerator": 21368700,
+            "denominator": 4764742
+          },
+          "displayPct": 4.484755
+        },
+        "includedUnmixed": {
+          "votes": 213687,
+          "percent": {
+            "numerator": 21368700,
+            "denominator": 4764742
+          },
+          "displayPct": 4.484755
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 4764742
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 213687,
+          "percent": {
+            "numerator": 21368700,
+            "denominator": 4764742
+          },
+          "displayPct": 4.484755
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
+      }
+    },
+    {
+      "electionId": "k26",
+      "electionDate": "2026-10-27",
+      "datasetPath": "public/data/k26.json",
+      "datasetSha256": "80231de6d9b3a12214496b8ff240a3adbfff1967d5a801b2b905503d38b4d57e",
+      "datasetStatus": {
+        "stage": "final-count-pending-publication",
+        "asOf": "2026-11-03",
+        "noteHe": "ספירה סופית שפרסמה ועדת הבחירות המרכזית (קבצי התוצאות מיום 3.11.2026). התוצאות הסופיות יפורסמו ברשומות עד 4.11.2026 ועד אז עשויות להשתנות.",
+        "noteEn": "Final count published by the Central Elections Committee (result files of 3 Nov 2026). Final results are due to be gazetted in Reshumot by 4 Nov 2026 and may change until then."
+      },
+      "validVotes": 5691396,
+      "voteSourceIds": [
+        "k26-localities-csv",
+        "k26-ballots-csv",
+        "k26-list-pages",
+        "k26-secondary-fyi",
+        "k26-surplus-gazette",
+        "k26-national-snapshot",
+        "law-elections"
+      ],
+      "members": [
+        {
+          "listId": "26-ל",
+          "letters": "ל",
+          "nameHe": "ישראל ביתנו בראשות אביגדור ליברמן",
+          "votes": 337450,
+          "partyIds": [
+            "yisrael-beiteinu"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "yisrael-beiteinu"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k26.json#/lists/8"
+          },
+          "classificationEvidence": {
+            "status": "inferred",
+            "sourceIds": [
+              "proposal",
+              "k26",
+              "immigrant",
+              "mergers"
+            ],
+            "claim": "Original editorial selection under Russian-speaking immigrant electoral vehicles; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 337450,
+          "percent": {
+            "numerator": 33745000,
+            "denominator": 5691396
+          },
+          "displayPct": 5.929125
+        },
+        "includedUnmixed": {
+          "votes": 337450,
+          "percent": {
+            "numerator": 33745000,
+            "denominator": 5691396
+          },
+          "displayPct": 5.929125
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 5691396
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 337450,
+          "percent": {
+            "numerator": 33745000,
+            "denominator": 5691396
+          },
+          "displayPct": 5.929125
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
+      }
+    }
+  ],
+  "limitations": [
+    "Draft inherits the source-scoped matrix review. Classification is inferred, never an official taxonomy.",
+    "Remaining minor-list identities and ideological boundaries require review; see reviewCandidates and registry conflicts."
+  ]
+}
