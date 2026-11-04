@@ -216,7 +216,7 @@ export function groupingBaseline(s: Scenario, base: Scenario): Scenario | null {
 }
 export function groupingLabel(s: Scenario, lang: Lang): string {
   const g = s.blocSchemes?.find(g => g.id === s.blocSchemeId);
-  return g ? `${lang === 'he' ? g.nameHe : g.nameEn} · ${g.date ?? (lang === 'he' ? 'חלוקה מוכרת בבחירות אלה' : 'recognised grouping of this election')}` : lang === 'he' ? 'החלוקה שלכם' : 'Your grouping';
+  return g ? `${lang === 'he' ? g.nameHe : g.nameEn} · ${g.date ?? (lang === 'he' ? 'חלוקה מוכרת בבחירות אלה' : 'recognised grouping of this election')}` : s.customGroupingName ?? (lang === 'he' ? 'החלוקה שלכם' : 'Your grouping');
 }
 export function majorityText(n: number, total: number, lang: Lang): string {
   const m = Math.floor(total / 2) + 1;
@@ -231,4 +231,36 @@ export function nonSeatChanges(s: Scenario, base: Scenario, lang: Lang): string[
   if (JSON.stringify(s.agreements) !== JSON.stringify(base.agreements)) changes.push(he ? 'הסכמי העודפים השתנו' : 'agreements changed');
   if (s.blocSchemeId !== base.blocSchemeId || JSON.stringify([s.blocs,s.partyBlocs,s.candidateBlocs,s.lists.map(l=>l.bloc)]) !== JSON.stringify([base.blocs,base.partyBlocs,base.candidateBlocs,base.lists.map(l=>l.bloc)])) changes.push(he ? 'החלוקה לגושים השתנתה' : 'grouping changed');
   return changes;
+}
+
+export type EditPath = readonly string[];
+/** Stable ID paths for collections: reordering lists cannot mark an unrelated list. */
+export function referenceValue(s: Scenario, path: EditPath): unknown {
+  return path.reduce<unknown>((v, k) => Array.isArray(v) ? v.find(x => x?.id === k) : v && typeof v === 'object' ? ((v as Record<string, unknown>)[k] ?? (k === 'coalition' ? { in: [], out: [] } : k === 'partyBlocs' || k === 'candidateBlocs' ? {} : undefined)) : undefined, s);
+}
+const canonical = (v: unknown): string => JSON.stringify(v, (_k, x) => x && typeof x === 'object' && !Array.isArray(x) ? Object.fromEntries(Object.keys(x).sort().map(k => [k, x[k]])) : x) ?? 'null';
+export function differsFromReference(s: Scenario, reference: Scenario, path: EditPath): boolean {
+  return canonical(referenceValue(s, path)) !== canonical(referenceValue(reference, path));
+}
+/** Only editable inputs, never timestamps, IDs of scenarios, provenance or log entries. */
+export function referenceChanges(s: Scenario, reference: Scenario): EditPath[] {
+  const paths: string[][] = [];
+  const walk = (a: unknown, b: unknown, path: string[]) => {
+    if (canonical(a) === canonical(b)) return;
+    if (path.at(-1) === 'candidates' && Array.isArray(a) && Array.isArray(b) && a.map(x => x.id).join() !== b.map(x => x.id).join()) { paths.push(path); return; }
+    if (Array.isArray(a) && Array.isArray(b) && [...a, ...b].every(x => x && typeof x === 'object' && 'id' in x)) {
+      for (const id of new Set([...a, ...b].map(x => x.id))) walk(a.find(x => x.id === id), b.find(x => x.id === id), [...path, id]);
+    } else if (a && b && !Array.isArray(a) && !Array.isArray(b) && typeof a === 'object' && typeof b === 'object') {
+      for (const k of new Set([...Object.keys(a), ...Object.keys(b)])) walk((a as any)[k], (b as any)[k], [...path, k]);
+    } else if (differsFromReference(s, reference, path)) paths.push(path);
+  };
+  for (const key of ['lists', 'rules', 'registered', 'invalid', 'agreements', 'blocs', 'blocSchemeId', 'customGroupingName', 'partyBlocs', 'candidateBlocs', 'factionSplits', 'lotteryWinners', 'mode', 'coalition'] as const) walk(referenceValue(s, [key]), referenceValue(reference, [key]), [key]);
+  return paths;
+}
+
+export function editPathLabel(s: Scenario, path: EditPath, lang: Lang): string {
+  const names: Record<string, [string, string]> = {
+    lists: ['Lists', 'רשימות'], votes: ['Votes', 'קולות'], nameHe: ['Full name', 'שם מלא'], shortHe: ['Short Hebrew name', 'שם קצר בעברית'], shortEn: ['English name', 'שם באנגלית'], letters: ['Ballot letters', 'אותיות הרשימה'], color: ['Colour', 'צבע'], bloc: ['Bloc membership', 'שיוך לגוש'], blocs: ['Blocs', 'גושים'], nameEn: ['English name', 'שם באנגלית'], candidates: ['Candidates', 'מועמדים'], agreements: ['Agreements', 'הסכמי עודפים'], rules: ['Rules', 'כללים'], registered: ['Registered voters', 'בעלי זכות בחירה'], invalid: ['Invalid ballots', 'קולות פסולים'], withdrawn: ['Withdrawal', 'פרישה'], customGroupingName: ['Grouping name', 'שם החלוקה'], blocSchemeId: ['Grouping', 'חלוקה'], partyBlocs: ['Party membership', 'שיוך מפלגות'], candidateBlocs: ['Member membership', 'שיוך חברים'], factionSplits: ['Faction splits', 'פיצולי סיעות'], coalition: ['Coalition choices', 'בחירת קואליציה'], mode: ['Rule mode', 'מצב כללים'], seats: ['Seats', 'מנדטים'], quotaRounding: ['Quota rounding', 'עיגול המודד'], remainderMethod: ['Remainder method', 'שיטת חלוקת העודפים'], majorityCap: ['Half-seats cap', 'מגבלת מחצית המושבים'], maxAgreementSize: ['Agreement size', 'גודל הסכם'], agreementRequiresAllQualify: ['Agreement threshold condition', 'תנאי החסימה בהסכם'], quotaSeatOffset: ['Quota divisor offset', 'תוספת למחלק המודד'], remainderRequiresInitialSeat: ['Remainder needs a quota seat', 'עודפים מחייבים מנדט במודד'], agreementRequiresInitialSeat: ['Agreement needs a quota seat', 'הסכם מחייב מנדט במודד'], quotientRounding: ['Quotient rounding', 'עיגול המודדים'], largestRemainderRepeat: ['Repeated remainder seats', 'מנדטי שארית חוזרים'], tiePolicy: ['Tie procedure', 'הכרעה בשוויון'], seatsCappedAtCandidates: ['Candidate seat cap', 'מגבלת מושבים לפי מועמדים'], thresholdPct: ['Threshold', 'אחוז החסימה'], lotteryWinners: ['Lottery', 'הגרלה'], sponsorsHe: ['Sponsors', 'מגישים'], members: ['Members', 'חברות'], enabled: ['Enabled', 'בתוקף'], originIds: ['Origins', 'מקור'], heldVotes: ['Held votes', 'קולות מוחזקים'], parties: ['Parties', 'מפלגות'], in: ['In', 'בפנים'], out: ['Out', 'בחוץ'],
+  };
+  return path.map(k => names[k]?.[lang === 'he' ? 1 : 0] ?? s.lists.find(l => l.id === k)?.[lang === 'he' ? 'shortHe' : 'shortEn'] ?? s.blocs.find(b => b.id === k)?.[lang === 'he' ? 'nameHe' : 'nameEn'] ?? k).join(' · ');
 }

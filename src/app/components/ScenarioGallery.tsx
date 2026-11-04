@@ -1,3 +1,4 @@
+import { scenarioColor } from '../scenarioIdentity.ts';
 import { useEffect, useMemo, useState } from 'react';
 import { Info } from 'lucide-react';
 import { useL, useLang } from '../i18n.ts';
@@ -48,7 +49,7 @@ export function ScenarioGallery() {
       const link = await shareLink();
       const election = elections.find(e => e.id === scenario.electionId);
       if (!election || !validShareLink(link, site)) throw new Error();
-      tab.location.href = publishUrl({ name: scenario.name || L('Untitled scenario', 'תרחיש ללא שם'), description: description.slice(0, 3000), electionId: scenario.electionId, year: election.date.slice(0, 4), tags: tags.split(',').map(t => t.trim()).filter(Boolean), shareLink: link });
+      tab.location.href = publishUrl({ identityColor: scenarioColor(scenario), name: scenario.name || L('Untitled scenario', 'תרחיש ללא שם'), description: description.slice(0, 3000), electionId: scenario.electionId, year: election.date.slice(0, 4), tags: tags.split(',').map(t => t.trim()).filter(Boolean), shareLink: link });
     } catch { tab.close(); setError('publish'); }
     finally { setPublishing(false); }
   }
@@ -77,7 +78,7 @@ export function ScenarioGallery() {
     {error && <p className="banner warn" role="alert">{error === 'rate-limit' ? L('GitHub rate limit reached. Try again later; cached results remain visible.', 'הגעתם למגבלת הבקשות של GitHub. נסו מאוחר יותר; תוצאות שמורות נשארות מוצגות.') : error === 'popup' ? L('Allow pop-ups to open GitHub, then try again.', 'אפשרו חלונות קופצים כדי לפתוח את GitHub ונסו שוב.') : error === 'publish' ? L('Could not prepare the share link. Try again.', 'לא ניתן להכין קישור שיתוף. נסו שוב.') : L('Could not load GitHub. Check your connection and retry in 10 minutes. Cached results remain visible.', 'לא ניתן לטעון מ-GitHub. בדקו את החיבור ונסו שוב בעוד 10 דקות. תוצאות שמורות נשארות מוצגות.')}</p>}
     {!busy && !error && entries.length === 0 && <p className="small muted">{L('No community scenarios yet. Make a change, name it above, and be the first to publish one.', 'עדיין אין תרחישים מהקהילה. שנו משהו, תנו לו שם למעלה, והיו הראשונים לפרסם.')}</p>}
     <ul className="scn-cards">{visible.map(e => <li key={e.issue} className="scn-card">
-      <div className="scn-title"><b dir="auto">{e.name}</b><span className="small muted">{e.year} · <bdi>{e.author}</bdi> · <time dateTime={e.date}>{new Date(e.date).toLocaleDateString(lang === 'he' ? 'he-IL' : 'en-GB')}</time> · <span aria-label={L(`${e.likes} likes`, `${e.likes} לייקים`)}>♥ {e.likes}</span></span></div>
+      <div className="scn-title"><span className="swatch" style={{ background: scenarioColor(e) }} /><b dir="auto">{e.name}</b><span className="small muted">{e.year} · <bdi>{e.author}</bdi> · <time dateTime={e.date}>{new Date(e.date).toLocaleDateString(lang === 'he' ? 'he-IL' : 'en-GB')}</time> · <span aria-label={L(`${e.likes} likes`, `${e.likes} לייקים`)}>♥ {e.likes}</span></span></div>
       {e.tags.length > 0 && <div className="sg-tags">{e.tags.map(t => <button type="button" key={t} className="chip" aria-pressed={tag === t} onClick={() => setTag(tag === t ? '' : t)} dir="auto">{t}</button>)}</div>}
       <details><summary aria-label={L(`Description: ${e.name}`, `תיאור: ${e.name}`)}><Info className="icon sm" aria-hidden /> {L('Description', 'תיאור')}</summary><p className="scenario-gallery-description" dir="auto">{e.description}</p></details>
       <div className="row" style={{ gap: 4 }}><a className="btn small" href={validShareLink(e.shareLink, site) ? e.shareLink : undefined} onClick={event => {

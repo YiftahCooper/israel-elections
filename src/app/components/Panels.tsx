@@ -1,3 +1,5 @@
+import { StartFrom } from './StartFrom.tsx';
+import { PartEdits } from './PartEdits.tsx';
 import { describe } from '../actionDescription.ts';
 import { LocalityMap, useLocalityLocations } from './LocalityMap.tsx';
 import { matchesLocality } from '../locality-map-model.ts';
@@ -33,6 +35,7 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
   const set = (patch: Partial<Scenario['rules']>) => dispatch({ type: 'setRules', patch });
   return (
     <div className="grid2 stack-sm" style={{ alignItems: 'start', gap: 18 }}>
+      <div><StartFrom s={s} part="rules" /><PartEdits s={s} prefix={['rules']} /></div>
       <div>
         <h3>{L('Electoral rules', 'כללי הבחירות')}</h3>
         <div className="row" style={{ marginBottom: 8 }}>

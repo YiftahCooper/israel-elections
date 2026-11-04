@@ -1,3 +1,5 @@
+import { StartFrom } from './StartFrom.tsx';
+import { PartEdits } from './PartEdits.tsx';
 import { X } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { allocate } from '../../engine/allocate.ts';
@@ -105,7 +107,7 @@ function Agreements({ s, r, base }: { s: Scenario; r: AllocationResult; base: Sc
   return (
     <div>
       <div className="row" style={{ justifyContent: 'space-between' }}>
-        <h3>{L('Surplus-vote agreements', 'הסכמי עודפים')} <Info term="surplus" /></h3>
+        <StartFrom s={s} part="agreements" /><PartEdits s={s} prefix={['agreements']} /><h3>{L('Surplus-vote agreements', 'הסכמי עודפים')} <Info term="surplus" /></h3>
         {JSON.stringify(s.agreements) !== JSON.stringify(base.agreements) && <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'agreements' })}>{L('Restore historical agreements', 'שחזור ההסכמים ההיסטוריים')}</button>}
       </div>
       {s.agreements.length === 0 && <p className="muted small">{L('None.', 'אין.')}</p>}

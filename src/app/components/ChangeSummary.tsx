@@ -1,3 +1,5 @@
+import { useStore } from '../store.ts';
+import { allocationOf } from '../derive.ts';
 // "What changed": the session's net effect against the official result, kept to one line however many edits
 // were made (seats that moved, the blocs, the majority), with the full undoable history one click away.
 import { lazy, Suspense, useMemo, useState } from 'react';
@@ -27,6 +29,8 @@ function blocTotals(s: Scenario, r: AllocationResult) {
 }
 
 export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: AllocationResult; base: Scenario; baseR: AllocationResult; ds: ElectionDataset }) {
+  const reference = useStore(st => st.reference);
+  if (reference) { base = reference; baseR = allocationOf(reference); }
   const L = useL();
   const lang = useLang();
   const [open, setOpen] = useState(false);
@@ -51,7 +55,7 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
   return (
     <div className="session" role="status" aria-live="polite">
       {s.name && <span className="scn-name" title={s.description ?? s.name}>{s.name}</span>}
-      <b>{L('Since official result', 'מאז התוצאה הרשמית')}</b>
+      <b>{reference ? L(`Since ${reference.name}`, `מאז ${reference.name}`) : L('Since official result', 'מאז התוצאה הרשמית')}</b>
       {moves.length === 0
         ? <span className="muted">{L('No seats changed', 'המנדטים לא השתנו')}</span>
         : <span className="moves">

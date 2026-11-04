@@ -4,6 +4,7 @@ async function start(page: Page, lang = 'en', theme = 'light', level = 'standard
   await page.goto('/');
   await expect(page.getByRole('region', {name:lang === 'he' ? 'הרשימות' : 'Lists',exact:true})).toBeVisible();
   await page.getByRole('combobox', {name:lang === 'he' ? 'בחירות' : 'Election', exact:true}).selectOption('k25');
+  await expect(page.getByRole('region', { name: lang === 'he' ? 'הרשימות' : 'Lists', exact: true }).getByRole('button', { name: lang === 'he' ? 'הליכוד' : 'Likud', exact: true }).locator('.lb-seats b')).toHaveText('32');
 }
 test('grouping-only switches show no invented seat gains in Compare and name history actions', async ({page}) => {
   await start(page);

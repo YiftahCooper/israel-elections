@@ -77,8 +77,8 @@ test('2022: merge, add voters, drop agreement, push Balad over, find Ra’am’s
   await expect(page.getByText(/Leaving the Knesset \(\d+\)/)).toBeVisible();
 
   // 10. Save and share; the share link replays to the same result
-  await page.getByPlaceholder('Untitled scenario').fill('Spec success path');
   await page.getByRole('button', { name: /Save & share/ }).click();
+  await page.getByPlaceholder('Untitled scenario').fill('Spec success path');
   await page.getByRole('button', { name: 'Save in this browser' }).click();
   await page.getByRole('button', { name: /Save & share/ }).click();
   await page.getByRole('button', { name: 'Copy a share link' }).click();

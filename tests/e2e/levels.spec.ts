@@ -43,7 +43,9 @@ test('Standard adds scenario management and consequential list edits, but not id
   await page.getByRole('button', { name: /Save & share/ }).click();
   await expect(page.getByRole('button', { name: 'Save in this browser' })).toBeVisible();
   await page.keyboard.press('Escape');
+  await page.getByRole('button', { name: /Save & share/ }).click();
   await expect(page.getByRole('textbox', { name: 'Scenario name' })).toBeVisible();
+  await page.keyboard.press('Escape');
 
   await listCard(page, 'Likud').click();
   await expect(details(page).getByRole('combobox', { name: /balance the difference/ })).toBeVisible();
@@ -141,7 +143,7 @@ test('a failed election load keeps the open election and offers a retry', async 
   await page.route('**/data/k25.json', (route) => route.fulfill({ status: 404, body: 'missing' }));
   await start(page);
   await page.getByRole('combobox', { name: 'Election' }).selectOption('k25');
-  await expect(page.getByRole('alert').filter({ hasText: 'Could not load the k25 election data' })).toBeVisible();
+  await expect(page.getByRole('alert').filter({ hasText: /Could not load the 2022 · 25th Knesset election data/ })).toBeVisible();
   await expect(page.getByRole('alert').getByRole('button', { name: 'Try again' })).toBeVisible();
   await expect(listRow(page, 'Likud').first()).toContainText('27');
 });

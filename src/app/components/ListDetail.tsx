@@ -1,3 +1,6 @@
+import { StartFrom } from './StartFrom.tsx';
+import { EditMarker } from './EditMarker.tsx';
+import { PartEdits } from './PartEdits.tsx';
 // A list opened in place, inside its own row of the lists table: its votes (number, share, a live slider),
 // how far the next seat and the loss of one are (computed on opening), its surplus-vote agreement, its parties,
 // its standing, identity and candidates. Controls appear only where they apply to this list.
@@ -135,7 +138,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
   return (
     <div className="ld" role="region" aria-label={L('List details', 'פרטי רשימה')}>
       <section>
-        <h3>{L('Votes', 'קולות')}</h3>
+        <h3>{L('Votes', 'קולות')} <EditMarker s={s} path={['lists', l.id, 'votes']} /></h3>
         {!lr.qualified && Number(s.rules.thresholdPct) > 0 && <p className="small ink2">{L('Below the threshold', 'מתחת לאחוז החסימה')}</p>}
         {l.withdrawn && <p className="small callout" style={{ marginTop: 0 }}>{L(`This list has withdrawn: its ${fmtInt(l.heldVotes ?? 0)} ballots count as invalid.`, `הרשימה פרשה: ${fmtInt(l.heldVotes ?? 0)} הפתקים שלה נחשבים פסולים.`)}</p>}
         <fieldset disabled={l.withdrawn} style={{ border: 0, padding: 0, margin: 0, minWidth: 0, display: 'grid', gap: 8 }}>
@@ -181,7 +184,8 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
 
       {standard && (
         <section>
-          <h3>{L('Surplus-vote agreement', 'הסכם עודפים')} <Info term="surplus" /></h3>
+          <StartFrom s={s} part="agreements" />
+          <h3><EditMarker s={s} path={['agreements']} />{L('Surplus-vote agreement', 'הסכם עודפים')} <Info term="surplus" /></h3>
           <div className="row">
             <select aria-label={L('Agreement partner', 'שותפה להסכם')} value={partnerId} onChange={(e) => setPartner(e.target.value)} style={{ maxWidth: 220 }}>
               <option value="">{L('No agreement', 'אין הסכם')}</option>
@@ -199,7 +203,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
 
       {simple && agr && (
         <section>
-          <h3>{L('Surplus-vote agreement', 'הסכם עודפים')} <Info term="surplus" /></h3>
+          <h3><EditMarker s={s} path={['agreements']} />{L('Surplus-vote agreement', 'הסכם עודפים')} <Info term="surplus" /></h3>
           <p className="small" style={{ margin: 0 }}>{L('With ', 'עם ')}<b>{nameOf(partnerId)}</b>{' · '}
             {agrStatus?.active ? L('in force', 'בתוקף') : !agr.enabled ? L('switched off', 'כבוי') : L('no effect', 'ללא השפעה')}
             {agreementEffect && agreementEffect.length > 0 && <>{' · '}{L('effect: ', 'השפעה: ')}{agreementEffect.map((e) => `${nameOf(e.id)} ${signed(e.d)}`).join(' · ')}</>}</p>
@@ -207,7 +211,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
         </section>
       )}
 
-      <JointParties s={s} r={r} l={l} />
+      <PartEdits s={s} prefix={['lists', l.id]} /><JointParties s={s} r={r} l={l} />
 
       {standard && (
         <section>
@@ -254,9 +258,9 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
           <div className="grid2">
             <label className="field">{L('Short name (Hebrew)', 'שם מקוצר')}<TextField value={l.shortHe} onCommit={(v) => dispatch({ type: 'setListMeta', listId: l.id, patch: { shortHe: v } })} /></label>
             <label className="field">{L('Short name (English)', 'שם באנגלית')}<TextField value={l.shortEn ?? ''} onCommit={(v) => dispatch({ type: 'setListMeta', listId: l.id, patch: { shortEn: v || null } })} /></label>
-            <label className="field">{L('Ballot letters', 'אותיות הרשימה')}<TextField value={l.letters} onCommit={(v) => dispatch({ type: 'setListMeta', listId: l.id, patch: { letters: v } })} /></label>
-            <label className="field">{L('Colour', 'צבע')}<input type="color" value={l.color} onChange={(e) => dispatch({ type: 'setListMeta', listId: l.id, patch: { color: e.target.value } })} /></label>
-            <label className="field" style={{ gridColumn: '1 / -1' }}>{L('Full name', 'שם מלא')}<TextField value={l.nameHe} onCommit={(v) => dispatch({ type: 'setListMeta', listId: l.id, patch: { nameHe: v } })} /></label>
+            <label className="field">{L('Ballot letters', 'אותיות הרשימה')}<EditMarker s={s} path={['lists', l.id, 'letters']} /><TextField value={l.letters} onCommit={(v) => dispatch({ type: 'setListMeta', listId: l.id, patch: { letters: v } })} /></label>
+            <label className="field">{L('Colour', 'צבע')}<EditMarker s={s} path={['lists', l.id, 'color']} /><input type="color" value={l.color} onChange={(e) => dispatch({ type: 'setListMeta', listId: l.id, patch: { color: e.target.value } })} /></label>
+            <label className="field" style={{ gridColumn: '1 / -1' }}>{L('Full name', 'שם מלא')}<EditMarker s={s} path={['lists', l.id, 'nameHe']} /><TextField value={l.nameHe} onCommit={(v) => dispatch({ type: 'setListMeta', listId: l.id, patch: { nameHe: v } })} /></label>
           </div>
         </section>
       )}
@@ -269,7 +273,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
       )}
 
       <section className="wide">
-        <h3>{simple ? L(`Who gets in (${lr.seats})`, `מי נכנס לכנסת (${lr.seats})`) : L('Candidates', 'מועמדים')}</h3>
+        <h3>{simple ? L(`Who gets in (${lr.seats})`, `מי נכנס לכנסת (${lr.seats})`) : L('Candidates', 'מועמדים')}<EditMarker s={s} path={['lists', l.id, 'candidates']} /></h3>
         {ds.lists.find((x) => x.id === l.id)?.candidatesSecondary && <p className="small" style={{ color: 'var(--warn-ink)' }}>{L('Candidate list from a secondary source (the official page could not be retrieved).', 'רשימת המועמדים ממקור משני (העמוד הרשמי לא נטען).')}</p>}
         <Candidates l={l} seats={lr.seats} baseSeats={baseList ? histSeats : -1} baseCandidates={baseList?.candidates} />
       </section>

@@ -1,13 +1,15 @@
+import { StartFrom } from './StartFrom.tsx';
 // Blocs, edited where they are drawn: a panel beside the chamber with one tinted card per bloc. A bloc's name is
 // edited in place, its colour from a swatch, and its members are chips moved by dragging, or by choosing a chip
 // and then the bloc to move it to (the same on touch and keyboard). A constituent party of a joint list can sit in
 // another bloc than its list. Regrouping never changes votes or seats; a sourced grouping is never altered, edits
 // become "Your grouping" and the sourced one stays in the menu.
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { EditMarker } from './EditMarker.tsx';
 import { Plus, Trash2, X } from 'lucide-react';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
-import { blocPieces, listLabel } from '../derive.ts';
+import { groupingLabel, blocPieces, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { dispatch, setState } from '../store.ts';
 
@@ -42,11 +44,15 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
     const pieces = blocPieces(s, r);
     for (const l of s.lists) {
       const mine = pieces.filter((p) => p.listId === l.id);
-      if (!mine.length) continue;
+      if (!mine.length) {
+        add(l.bloc, { kind: 'list', key: `l:${l.id}`, home: l.bloc ?? NONE, listId: l.id, n: 0, parties: (l.parties ?? []).map(p => ({ partyId: p.id, n: 0 })) });
+        continue;
+      }
       const home = mine.filter((p) => p.bloc === l.bloc);
       if (home.length) {
         const parties = new Map<string, number>();
         for (const p of home) if (p.partyId && (l.parties?.length ?? 0) > 1) parties.set(p.partyId, (parties.get(p.partyId) ?? 0) + p.n);
+        for (const p of l.parties ?? []) if (!parties.has(p.id)) parties.set(p.id, 0);
         add(l.bloc, { kind: 'list', key: `l:${l.id}`, home: l.bloc ?? NONE, listId: l.id, n: home.reduce((t, p) => t + p.n, 0), parties: [...parties].map(([partyId, n]) => ({ partyId, n })) });
       }
       const away = new Map<string, { bloc: string | null; partyId: string | null; n: number }>();
@@ -121,14 +127,8 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
         <button className="btn ghost icon-only" aria-label={L('Close', 'סגירה')} onClick={() => setState({ blocPanel: null })}><X className="icon" aria-hidden /></button>
       </header>
       <div className="sp-body">
-        {schemes.length > 0 && (
-          <label className="field" style={{ marginBottom: 10 }}>{L('Start from', 'נקודת מוצא')}
-            <select value={s.blocSchemeId ?? '__custom'} onChange={(e) => { if (e.target.value !== '__custom') dispatch({ type: 'applyBlocScheme', schemeId: e.target.value }); }}>
-              {s.blocSchemeId === null && <option value="__custom">{L('Your grouping (edited)', 'החלוקה שלכם (נערכה)')}</option>}
-              {schemes.map((x) => <option key={x.id} value={x.id}>{name(x)}</option>)}
-            </select>
-          </label>
-        )}
+        <StartFrom s={s} part="blocs" />
+        <p className="small">{groupingLabel(s, lang)} <EditMarker s={s} path={['customGroupingName']} /></p>
         {picked && (
           <p className="bp-picked small" role="status">
             {L(`Moving ${chipLabel(picked)}: choose a bloc.`, `מעבירים את ${chipLabel(picked)}: בחרו גוש.`)}
@@ -151,6 +151,7 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
                 <div className="bp-head">
                   {b ? <>
                     <button className="bp-swatch" style={{ background: color }} aria-label={L(`Colour of ${name(b)}`, `הצבע של ${name(b)}`)} aria-expanded={paletteFor === k} onClick={() => setPaletteFor(paletteFor === k ? null : k)} />
+                    <EditMarker s={s} path={['blocs', k, 'color']} /><EditMarker s={s} path={['blocs', k, lang === 'he' ? 'nameHe' : 'nameEn']} />
                     <BlocName key={`${k}-${lang}-${name(b)}`} value={name(b)} autoFocus={fresh === k} label={L('Bloc name', 'שם הגוש')} onCommit={(v) => { setFresh(null); if (v && v !== name(b)) rename(k, v); }} />
                   </> : <><span className="bp-swatch none" aria-hidden /><b className="bp-name-static">{L('No bloc', 'ללא גוש')}</b></>}
                   <span className="bp-seats"><b>{n}</b><small>{n >= majority ? L('majority', 'רוב') : L(`${majority - n} short`, `חסרים ${majority - n}`)}</small></span>
@@ -175,7 +176,7 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
                             title={u.kind === 'member' ? L('Placed member by member by the sourced grouping; moves with the list', 'שובצו חבר אחר חבר לפי החלוקה המתועדת; זזים עם הרשימה') : undefined}
                             onClick={() => setPicked(chosen ? null : u)} {...(u.kind === 'member' ? {} : dragProps(u))}>
                             <span className="swatch" style={{ background: p?.color ?? l.color }} />
-                            <span className="bp-chip-name">{chipLabel(u)}</span>
+                            <span className="bp-chip-name">{chipLabel(u)}<EditMarker s={s} path={u.kind === 'party' ? ['partyBlocs', u.partyId] : ['lists', u.listId, 'bloc']} /></span>
                             <b className="tabnum">{u.n}</b>
                           </button>
                           {u.kind === 'list' && u.parties.length > 1 && (

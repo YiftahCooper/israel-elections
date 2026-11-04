@@ -18,6 +18,17 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 
 ### Changed
 
+- Saved/loaded scenarios become the edit reference, with a browser setting to mark against
+  the official result instead. Shared neutral glyphs explain previous inputs; Compare and
+  session summaries name the reference. Candidate ordering is included in the diff.
+- Scenarios gain undoable palette colours, chrome-only identity tint, saved/gallery swatches
+  and one expandable name chip. Exports add no scenario footer.
+- A shared “Start from…” selector resets or reuses blocs, agreements, rules and coalitions.
+  Blank blocs create two empty named blocs with every list and party unassigned. Old unnamed
+  grouping logs remain replayable. Coalition choices are now undoable scenario inputs.
+- The remaining five starting-point editors and Custom level are deferred under the owner's
+  bounded first-pass scope; existing level defaults are preserved.
+
 - Wave 1 continuity: phone edit consequences remain visible; majority readouts share wording,
   and coalition membership uses In / Out / Any choices. Baseline, grouping and result status
   labels travel with results; Compare uses percentage points and aligns sourced bloc groupings.

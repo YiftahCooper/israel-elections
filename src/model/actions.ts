@@ -1,6 +1,8 @@
+import { RULESETS } from "../engine/rules.ts";
+import { PARTS, partSnapshot } from './parts.ts';
 // Pure scenario transitions. Each returns a new Scenario and never mutates its input.
 // Vote counts stay non-negative integers; every integer split uses exact largest-remainder rounding.
-import { blocSchemeState, electionRuleSetId, historicalRules, type Action, type ActionContext, type Scenario, type SimCandidate, type SimList } from './scenario.ts';
+import { validAction, blocSchemeState, electionRuleSetId, historicalRules, type Action, type ActionContext, type Scenario, type SimCandidate, type SimList } from './scenario.ts';
 import type { PartyDef } from '../data/schema.ts';
 
 export class ActionError extends Error {
@@ -94,6 +96,55 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
   let s: Scenario = s0;
   const baseList = (id: string) => ctx.base?.lists.find((l) => l.id === id) ?? null;
   switch (action.type) {
+    case 'setIdentityColor':
+      need(/^#[0-9a-f]{6}$/i.test(action.color) && ['#65508a', '#486b78', '#77633d', '#80556a', '#526c55'].includes(action.color), 'colour', 'Choose a scenario palette colour.');
+      s = { ...s, identityColor: action.color }; break;
+    case 'setCoalition':
+      s = { ...s, coalition: { in: [...new Set(action.coalition.in)], out: [...new Set(action.coalition.out)].filter(id => !action.coalition.in.includes(id)) } }; break;
+    case 'startPart': {
+      need(validAction(action), 'part', 'Invalid starting point.');
+      let snapshot = action.snapshot;
+      if (action.source === 'official') {
+        need(ctx.base, 'base', 'Official data is required.');
+        snapshot = partSnapshot(ctx.base!, action.part);
+      }
+      if (action.source === 'blank') {
+        need(PARTS[action.part]?.blank, 'part', 'This part cannot be blank.');
+        if (action.part === 'agreements') snapshot = { agreements: [] };
+        else if (action.part === 'coalitions') snapshot = { coalition: { in: [], out: [] } };
+        else if (action.part === 'blocs') {
+          need(action.name?.trim(), 'name', 'Name the grouping.');
+          snapshot = { blocs: [0, 1].map(i => ({ id: `blank-${i}`, nameHe: `גוש ${i+1}`, nameEn: `Bloc ${i+1}`, color: '#5a6470' })), customGroupingName: action.name, blocSchemeId: null, partyBlocs: {}, candidateBlocs: {}, listBlocs: Object.fromEntries(s.lists.map(l => [l.id, null])) };
+        }
+      }
+      if (action.source === 'preset') {
+        if (action.part === 'blocs') {
+          need(action.presetId, 'preset', 'Choose a grouping.');
+          snapshot = partSnapshot(applyAction(s, { type: 'applyBlocScheme', schemeId: action.presetId! }, now, ctx), 'blocs');
+        } else if (action.part === 'rules') {
+          need(action.presetId && RULESETS[action.presetId], 'preset', 'Unknown rule set.');
+          snapshot = { rules: historicalRules(action.presetId!), mode: action.presetId === electionRuleSetId(s.electionId) ? 'historical' : 'experimental' };
+        }
+      }
+      need(snapshot, 'part', 'This part editor is not available yet.');
+      if (action.part === 'blocs') {
+        need(snapshot!.blocs, 'part', 'Grouping inputs are required.');
+        s = { ...s, blocs: snapshot!.blocs!, blocSchemeId: snapshot!.blocSchemeId ?? null, customGroupingName: snapshot!.customGroupingName, partyBlocs: snapshot!.partyBlocs ?? {}, candidateBlocs: snapshot!.candidateBlocs ?? {}, lists: s.lists.map(l => ({ ...l, bloc: snapshot!.listBlocs?.[l.id] ?? null })) };
+      } else if (action.part === 'agreements') {
+        const ids = new Set(s.lists.map(l => l.id));
+        need(snapshot!.agreements?.every(a => a.members.every(id => ids.has(id))), 'lists', 'Agreement lists do not exist in this scenario.');
+        s = { ...s, agreements: snapshot!.agreements! };
+      } else if (action.part === 'rules') {
+        need(snapshot!.rules && snapshot!.mode, 'part', 'Rule inputs are required.');
+        s = { ...s, rules: snapshot!.rules!, mode: snapshot!.mode! };
+      }
+      else if (action.part === 'coalitions') {
+        need(snapshot!.coalition, 'part', 'Coalition inputs are required.');
+        s = { ...s, coalition: snapshot!.coalition };
+      }
+      else need(false, 'part', 'This part editor is not available yet.');
+      break;
+    }
     case 'setVotes':
       need(isWhole(action.votes), 'votes', 'Votes must be a whole number ≥ 0.');
       notWithdrawn(s, action.listId);
@@ -281,8 +332,9 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
     case 'setBlocs': {
       const keep = (b: string | null) => (b && action.blocs.some((x) => x.id === b) ? b : null);
       const prune = (m?: Record<string, string | null>) => (m ? Object.fromEntries(Object.entries(m).map(([k, v]) => [k, keep(v)])) : m);
-      s = { ...s, blocs: action.blocs, blocSchemeId: s.blocSchemes ? null : s.blocSchemeId, partyBlocs: prune(s.partyBlocs), candidateBlocs: prune(s.candidateBlocs),
+      s = { ...s, customGroupingName: action.name ?? s.customGroupingName, blocs: action.blocs, blocSchemeId: s.blocSchemes ? null : s.blocSchemeId, partyBlocs: prune(s.partyBlocs), candidateBlocs: prune(s.candidateBlocs),
         lists: s.lists.map((l) => (l.bloc && !keep(l.bloc) ? { ...l, bloc: null } : l)) };
+      if (action.unassignAll) s = { ...s, blocSchemeId: null, partyBlocs: {}, candidateBlocs: {}, lists: s.lists.map(l => ({ ...l, bloc: null })) };
       break;
     }
     case 'applyBlocScheme': {
@@ -291,7 +343,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       const st = blocSchemeState(scheme!, s.lists);
       // lists created by merges/splits take the bloc their origin lists share in the scheme
       const originBloc = (l: SimList) => { const b = new Set(l.originIds.map((o) => st.listBloc[o] ?? null)); return b.size === 1 ? [...b][0] : null; };
-      s = { ...s, blocSchemeId: scheme!.id, blocs: st.blocs, partyBlocs: st.partyBlocs, candidateBlocs: st.candidateBlocs,
+      s = { ...s, customGroupingName: undefined, blocSchemeId: scheme!.id, blocs: st.blocs, partyBlocs: st.partyBlocs, candidateBlocs: st.candidateBlocs,
         lists: s.lists.map((l) => ({ ...l, bloc: l.id in st.listBloc ? st.listBloc[l.id] : originBloc(l) })) };
       break;
     }
@@ -373,7 +425,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
         const listBlocs = B ? Object.fromEntries(B.lists.map((l) => [l.id, l.bloc])) : action.listBlocs;
         need(blocs && listBlocs, 'no-base', 'Historical blocs are unavailable.');
         s = { ...s, blocs: blocs!, lists: s.lists.map((l) => (l.id in listBlocs! ? { ...l, bloc: listBlocs![l.id] } : l)),
-          ...(B ? { blocSchemeId: B.blocSchemeId, partyBlocs: B.partyBlocs, candidateBlocs: B.candidateBlocs } : {}) };
+          ...(B ? { customGroupingName: B.customGroupingName, blocSchemeId: B.blocSchemeId, partyBlocs: B.partyBlocs, candidateBlocs: B.candidateBlocs } : {}) };
       } else s = { ...s, lotteryWinners: {} };
       break;
     }

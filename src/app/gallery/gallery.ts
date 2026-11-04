@@ -1,4 +1,4 @@
-export interface GalleryScenario { name: string; description: string; electionId: string; year: string; tags: string[]; shareLink: string }
+export interface GalleryScenario { identityColor?: string; name: string; description: string; electionId: string; year: string; tags: string[]; shareLink: string }
 export interface GalleryEntry extends GalleryScenario { issue: number; author: string; date: string; likes: number }
 const REPO = 'https://github.com/YiftahCooper/israel-elections';
 const API = 'https://api.github.com/repos/YiftahCooper/israel-elections/issues?labels=scenario&state=open&per_page=100';
@@ -17,7 +17,7 @@ export function parseBody(body: string, site: string): GalleryScenario | null {
     if (!match) return null;
     const p = JSON.parse(match[1]);
     if (!p || !['name', 'description', 'electionId', 'year', 'shareLink'].every(k => typeof p[k] === 'string') || !p.name.trim() || !/^k([1-9]|1\d|2[0-6])$/.test(p.electionId) || !/^\d{4}$/.test(p.year) || !Array.isArray(p.tags) || !p.tags.every((t: unknown) => typeof t === 'string') || !validShareLink(p.shareLink, site)) return null;
-    return { name: p.name, description: p.description, electionId: p.electionId, year: p.year, tags: p.tags, shareLink: p.shareLink };
+    return { ...(typeof p.identityColor === 'string' ? { identityColor: p.identityColor } : {}), name: p.name, description: p.description, electionId: p.electionId, year: p.year, tags: p.tags, shareLink: p.shareLink };
   } catch { return null; }
 }
 export function publishUrl(scenario: GalleryScenario) {

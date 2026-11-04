@@ -1,3 +1,4 @@
+import { EditMarker } from './EditMarker.tsx';
 // The election's key figures. Every figure is its own control: it opens in place, across its row, to show
 // what it summarises (the lists near the threshold, the lists whose votes won no seat, the turnout editor…).
 import { useState, type ReactNode } from 'react';
@@ -87,7 +88,7 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
       {standard && <Fig id="valid" open={open} onToggle={toggle} k={L('Valid votes', 'קולות כשרים')} term="valid" v={fmtInt(r.totalValid)} d={`${fmtPct(Number(r.totalValid), cast, 2)} ${L('of ballots cast', 'מהמצביעים')}`}>
         <div className="kv small"><span>{L('Ballots cast', 'מצביעים')}</span><span>{fmtInt(cast)}</span><span>{L('Invalid ballots', 'קולות פסולים')}</span><span>{fmtInt(s.invalid)}</span><span><b>{L('Valid votes', 'קולות כשרים')}</b></span><span><b>{fmtInt(r.totalValid)}</b></span></div>
       </Fig>}
-      {standard && <Fig id="invalid" open={open} onToggle={toggle} k={L('Invalid ballots', 'קולות פסולים')} term="invalid-votes" v={fmtInt(s.invalid)} d={`${fmtPct(s.invalid, cast, digits)} ${L('of ballots cast', 'מהמצביעים')}`}>
+      {standard && <Fig id="invalid" open={open} onToggle={toggle} k={L('Invalid ballots', 'קולות פסולים')} term="invalid-votes" v={<>{fmtInt(s.invalid)}<EditMarker s={s} path={['invalid']} /></>} d={`${fmtPct(s.invalid, cast, digits)} ${L('of ballots cast', 'מהמצביעים')}`}>
         <p className="small" style={{ margin: 0 }}>{L(`Ballots the polling committees disqualified. They count towards turnout but not towards the threshold or the seats. Historical: ${fmtInt(ds.totals.invalid)}.`, `פתקים שוועדות הקלפי פסלו. הם נספרים בשיעור ההצבעה אך לא באחוז החסימה ובמנדטים. בפועל: ${fmtInt(ds.totals.invalid)}.`)}</p>
       </Fig>}
       {expert && <Fig id="qualifying" open={open} onToggle={toggle} k={L('Qualifying votes', 'קולות משתתפים')} term="qualifying" v={fmtInt(r.qualifyingVotes)} d={`${fmtPct(Number(r.qualifyingVotes), Number(r.totalValid), digits)} ${L('of valid', 'מהכשרים')}`}>

@@ -1,4 +1,7 @@
 import { electionContext } from '../../data/electionContext.ts';
+import { exportAnnotations } from '../scenarioExport.ts';
+import { baselineOf, editPathLabel, referenceChanges, referenceValue } from '../derive.ts';
+import { savedColor, scenarioColor } from '../scenarioIdentity.ts';
 import { describe } from '../actionDescription.ts';
 import { useEffect, useRef, useState } from 'react';
 import type { ElectionDataset, ElectionId, ElectionIndexEntry } from '../../data/schema.ts';
@@ -6,7 +9,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
 import { csvEscape, download } from '../format.ts';
-import { duplicateCurrent, getState, importScenarioJson, openElection, redo, resetAll, saveCurrent, setState, shareLink, toast, undo, useStore } from '../store.ts';
+import { dispatch, duplicateCurrent, getState, importScenarioJson, openElection, redo, resetAll, saveCurrent, setState, shareLink, toast, undo, useStore } from '../store.ts';
 import { ChevronDown, Copy, Download, FolderOpen, Link2, Moon, Redo2, RotateCcw, Save, Share2, Sun, Table2, Trash2, Undo2, Upload } from 'lucide-react';
 import { Seg } from './ui.tsx';
 
@@ -32,6 +35,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
   const elections = ds && !index.some((e) => e.id === ds.id)
     ? [...index, { id: ds.id, knesset: ds.knesset, date: ds.electionDate, nameHe: ds.nameHe, nameEn: ds.nameEn, available: true, status: { stage: ds.status.stage } }].sort((a, b) => b.date.localeCompare(a.date))
     : index;
+  const reference = useStore(st => st.reference);
   const theme = useStore((st) => st.theme);
   const level = useStore((st) => st.level);
   const canUndo = useStore((st) => st.past.length > 0);
@@ -55,12 +59,16 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
     document.addEventListener('keydown', onKey); document.addEventListener('pointerdown', onDown);
     return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', onDown); };
   }, [menu]);
+  const [changesOpen, setChangesOpen] = useState(false);
+  const changes = s && ds ? referenceChanges(s, baselineOf(ds)) : [];
   const [shareUrl, setShareUrl] = useState('');
 
   const exportCsv = () => {
     if (!s || !r || !baseR) return;
-    const head = ['letters', 'list', 'votes', 'pct_valid', 'qualified', 'whole_quota_seats', 'seats', 'historical_seats'];
-    const rows = s.lists.map((l) => { const lr = r.lists.find((x) => x.id === l.id)!; return [l.letters, l.nameHe, l.votes, ((l.votes / Number(r.totalValid)) * 100).toFixed(6), lr.qualified, lr.initialSeats, lr.seats, baseR.lists.find((x) => x.id === l.id)?.seats ?? '']; });
+    const markerBase = (!getState().markOfficial && getState().reference) || (ds ? baselineOf(ds) : s);
+    const marked = referenceChanges(s, markerBase);
+    const head = ['edited', 'letters', 'list', 'votes', 'pct_valid', 'qualified', 'whole_quota_seats', 'seats', 'historical_seats'];
+    const rows = s.lists.map((l) => { const lr = r.lists.find((x) => x.id === l.id)!; return [marked.filter(p => p[0] === 'lists' && p[1] === l.id).map(p => editPathLabel(s, p, lang) + ' · ' + L('Edited: was ', 'נערך: קודם ') + (JSON.stringify(referenceValue(markerBase, p)) ?? '—')).join('; '), l.letters, l.nameHe, l.votes, ((l.votes / Number(r.totalValid)) * 100).toFixed(6), lr.qualified, lr.initialSeats, lr.seats, baseR.lists.find((x) => x.id === l.id)?.seats ?? '']; });
     download(`${s.electionId}-${fileName(s.name)}.csv`, '﻿' + [head, ...rows].map((row) => row.map(csvEscape).join(',')).join('\n'), 'text/csv');
   };
 
@@ -71,12 +79,15 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
         {elections.map((e) => <option key={e.id} value={e.id} disabled={!e.available}>{electionLabel(e, elections, lang)}{e.available ? '' : L(' — not yet available', ' — עדיין לא זמין')}</option>)}
         {electionContext.pmContests.filter(c => c.contestType === 'prime-minister-only').map(c => <option key={c.id} value={c.id}>{c.effectiveDate.slice(0, 4)} · {L('Prime Minister only', 'ראש הממשלה בלבד')}</option>)}
       </select>
-      {s && ds && <span className="chip election-status">{s.mode === 'experimental' ? L('Experimental rule', 'כלל ניסיוני') : s.log.length ? L('Hypothetical', 'היפותטי') : ds.status.stage === 'official-final' ? L('Official', 'רשמי') : L('Pending gazette', 'ממתין לפרסום ברשומות')}</span>}
+      {/* official results need no chip: the neutral chrome says so, and publication status lives in "About this election" */}
+      {s && ds && (reference || changes.length > 0 || s.identityColor) && <div className="scenario-status">
+        <button className="chip election-status" aria-expanded={changesOpen} onClick={() => setChangesOpen(v => !v)}>
+          <span className="swatch" style={{ background: scenarioColor(s) }} />{s.name || L('Untitled scenario', 'תרחיש ללא שם')}
+        </button>
+        {changesOpen && <div className="menu-pop scenario-changes"><ScenarioName key={`${s.id}-${s.name}`} name={s.name} placeholder={L('Untitled scenario', 'תרחיש ללא שם')} label={L('Scenario name', 'שם התרחיש')} /><b>{L('Changes from the official result', 'שינויים מהתוצאה הרשמית')}</b><ul>{changes.map(p => <li key={p.join('/')}><bdi>{editPathLabel(s, p, lang)}</bdi>: <bdi>{JSON.stringify(referenceValue(s, p)) ?? '—'}</bdi></li>)}</ul></div>}
+      </div>}
+
       <Seg label={L('Detail level', 'רמת פירוט')} value={level} onChange={(v) => setState({ level: v })} options={[{ v: 'simple', label: L('Simple', 'פשוט') }, { v: 'standard', label: L('Standard', 'רגיל') }, { v: 'expert', label: L('Expert', 'מומחה') }]} />
-      {s && level !== 'simple' && (
-        <input type="text" className="scenario-name" value={s.name} placeholder={L('Untitled scenario', 'תרחיש ללא שם')} aria-label={L('Scenario name', 'שם התרחיש')}
-          onChange={(e) => setState({ scenario: { ...s, name: e.target.value } })} />
-      )}
       <span className="spacer" />
       {!pmContestId && <>
       <button className="tool" onClick={undo} disabled={!canUndo} title={undoName + ' (Ctrl+Z)'} aria-label={undoName}><Undo2 className="icon" aria-hidden /></button>
@@ -88,7 +99,8 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
           <Share2 className="icon" aria-hidden /><span className="label">{L('Save & share', 'שמירה ושיתוף')}</span><ChevronDown className="icon sm" aria-hidden /></button>
         {menu && (
           <div className="menu-pop" id="scenarios-menu">
-            <button className="btn small" onClick={() => { if (saveCurrent(s?.name || undefined)) toast('info', L('Saved in this browser.', 'נשמר בדפדפן זה.')); setMenu(false); }} disabled={!s}><Save className="icon sm" aria-hidden />{L('Save in this browser', 'שמירה בדפדפן')}</button>
+            {s && <ScenarioName key={`${s.id}-${s.name}`} name={s.name} placeholder={L('Untitled scenario', 'תרחיש ללא שם')} label={L('Scenario name', 'שם התרחיש')} />}
+            <button className="btn small" onClick={() => { if (saveCurrent(getState().scenario?.name || undefined)) toast('info', L('Saved in this browser.', 'נשמר בדפדפן זה.')); setMenu(false); }} disabled={!s}><Save className="icon sm" aria-hidden />{L('Save in this browser', 'שמירה בדפדפן')}</button>
             <button className="btn small" onClick={async () => {
               const url = await shareLink(); setShareUrl(url);
               try { await navigator.clipboard.writeText(url); toast('info', L(`Share link copied (${url.length} characters).`, `קישור השיתוף הועתק (${url.length} תווים).`)); }
@@ -96,7 +108,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
             }}><Link2 className="icon sm" aria-hidden />{L('Copy a share link', 'העתקת קישור שיתוף')}</button>
             {shareUrl && <input type="text" readOnly value={shareUrl} aria-label={L('Share link', 'קישור שיתוף')} onFocus={(e) => e.target.select()} style={{ width: '100%' }} />}
             <button className="btn small" onClick={() => { duplicateCurrent(); setMenu(false); }}><Copy className="icon sm" aria-hidden />{L('Duplicate as a new scenario', 'שכפול לתרחיש חדש')}</button>
-            <button className="btn small" onClick={() => { if (s && ds) download(`${s.electionId}-${fileName(s.name)}.json`, JSON.stringify({ ...s, datasetBuiltAt: ds.buildInfo.builtAt }, null, 1), 'application/json'); setMenu(false); }}><Download className="icon sm" aria-hidden />{L('Export scenario (JSON)', 'ייצוא תרחיש (JSON)')}</button>
+            <button className="btn small" onClick={() => { if (s && ds) download(`${s.electionId}-${fileName(s.name)}.json`, JSON.stringify({ ...s, ...exportAnnotations(s, lang), datasetBuiltAt: ds.buildInfo.builtAt }, null, 1), 'application/json'); setMenu(false); }}><Download className="icon sm" aria-hidden />{L('Export scenario (JSON)', 'ייצוא תרחיש (JSON)')}</button>
             <button className="btn small" onClick={() => fileRef.current?.click()}><Upload className="icon sm" aria-hidden />{L('Import scenario (JSON)', 'ייבוא תרחיש (JSON)')}</button>
             <button className="btn small" onClick={() => { exportCsv(); setMenu(false); }}><Table2 className="icon sm" aria-hidden />{L('Export results table (CSV)', 'ייצוא טבלת תוצאות (CSV)')}</button>
             <button className="btn small" onClick={() => { setState({ tool: 'scenarios' }); setMenu(false); }}><FolderOpen className="icon sm" aria-hidden />{L('All scenarios: names, descriptions, results', 'כל התרחישים: שמות, תיאורים ותוצאות')}</button>
@@ -105,7 +117,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
             {saved.map((x) => (
               <div key={x.id} className="row small" style={{ justifyContent: 'space-between', flexWrap: 'nowrap' }}>
                 <button className="btn small ghost" style={{ justifyContent: 'flex-start', minWidth: 0 }} onClick={() => { openElection(x.electionId, { name: x.name, log: x.log, baseBuiltAt: x.baseBuiltAt }).then(() => setState((st) => ({ scenario: st.scenario ? { ...st.scenario, id: x.id } : null }))); setMenu(false); }}>
-                  <span className="clip" style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{x.name}</span> <span className="muted">({elections.find((e) => e.id === x.electionId)?.date.slice(0, 4) ?? x.electionId})</span></button>
+                  <span className="swatch" style={{ background: savedColor(x.log) }} /><span className="clip" style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{x.name}</span> <span className="muted">({elections.find((e) => e.id === x.electionId)?.date.slice(0, 4) ?? x.electionId})</span></button>
                 <span className="row" style={{ flexWrap: 'nowrap', gap: 2 }}>
                   <button className="btn small ghost" onClick={() => { setState({ compareWith: x.id }); setMenu(false); }} disabled={x.electionId !== electionId || x.id === s?.id}>{L('compare', 'השוואה')}</button>
                   <button className="btn small ghost danger icon-only" aria-label={L('Delete', 'מחיקה')} onClick={() => setState((st) => ({ saved: st.saved.filter((y) => y.id !== x.id) }))}><Trash2 className="icon sm" aria-hidden /></button>
@@ -119,7 +131,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
           try {
             const sc = importScenarioJson(await f.text());
             await openElection(sc.electionId);
-            const st = getState(); setState({ scenario: sc, past: st.scenario && st.scenario.electionId === sc.electionId ? [...st.past, st.scenario] : st.past, future: [] });
+            const st = getState(); setState({ scenario: sc, reference: sc, past: st.scenario && st.scenario.electionId === sc.electionId ? [...st.past, st.scenario] : st.past, future: [] });
             toast('info', L('Scenario imported.', 'התרחיש יובא.'));
           } catch (err) {
             const msg = err instanceof Error ? err.message : String(err);
@@ -134,4 +146,13 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
         {theme === 'dark' ? <Sun className="icon" aria-hidden /> : <Moon className="icon" aria-hidden />}</button>
     </header>
   );
+}
+
+/** One rename per commit (Enter or leaving the field), not one undo step per keystroke; Escape restores. */
+function ScenarioName({ name, placeholder, label }: { name: string; placeholder: string; label: string }) {
+  const [v, setV] = useState(name);
+  const commit = () => { const t = v.trim(); if (t !== name) dispatch({ type: 'rename', name: t }); };
+  return <input type="text" className="scenario-name-field" value={v} placeholder={placeholder} aria-label={label}
+    onChange={(e) => setV(e.target.value)} onBlur={commit}
+    onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); commit(); } else if (e.key === 'Escape') { e.stopPropagation(); setV(name); } }} />;
 }

@@ -104,8 +104,7 @@ input, textarea { caret-color: var(--focus); }
 .band .tool { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 34px; padding: 4px 9px; border: 0; border-radius: 5px; background: transparent; color: var(--shell-ink); cursor: pointer; font-size: 13.5px; white-space: nowrap; }
 .band .tool:hover:not(:disabled) { background: var(--shell-2); }
 .band .tool:disabled { opacity: .45; cursor: not-allowed; }
-.band input.scenario-name { background: transparent; color: var(--shell-ink); border: 1px solid color-mix(in srgb, var(--shell-ink) 35%, transparent); border-radius: 5px; width: 10.5rem; min-height: 32px; }
-.band input.scenario-name::placeholder { color: var(--shell-ink-2); }
+.menu-pop .scenario-name-field { display: block; width: 100%; margin-block-end: 8px; min-height: 32px; }
 .band .spacer { flex: 1; }
 .band .menu-pop { position: absolute; z-index: 60; inset-inline-end: 0; top: calc(100% + 6px); width: 300px; max-width: calc(100vw - 20px); padding: 8px; background: var(--surface); color: var(--ink); border: 1px solid var(--rule); border-radius: var(--radius); box-shadow: var(--shadow-pop); display: grid; gap: 4px; }
 .band .menu-pop .btn { justify-content: flex-start; width: 100%; }
@@ -568,7 +567,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .coal-choice { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px; border: 1px solid var(--rule); border-radius: 5px; padding: 6px; }
 .election-status { color: var(--ink); }
 @media (max-width: 1100px) {
-  .side-panel .phone-result-strip { display: grid; gap: 2px; position: sticky; inset-block-start: 0; z-index: 2; background: var(--surface); border-block-end: 1px solid var(--rule-strong); padding: 8px 12px; font-size: 12.5px; flex-shrink: 0; }
+  .side-panel .phone-result-strip { display: grid; gap: 2px; position: sticky; inset-block-start: 0; z-index: 2; background: var(--surface); border-block-end: 1px solid var(--rule-2); padding: 8px 12px; font-size: 12.5px; flex-shrink: 0; }
 }
 
 /* Read-only, sourced election context and independent PM ballots. */
@@ -590,3 +589,17 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .pm-evidence { margin-block: 12px; }
 .pm-evidence dl > div { margin-block: 8px; }
 .pm-evidence dd { margin-inline-start: 16px; }
+/* Scenario identity belongs to chrome; party and bloc geometry retain their data colours. */
+.app .band { background: var(--scenario-color, var(--shell)); }
+.app .board { border: 2px solid var(--scenario-color, transparent); border-radius: 6px; }
+.scenario-status { position: relative; }
+.scenario-status .chip { display: flex; gap: 6px; align-items: center; max-width: 240px; white-space: normal; text-align: start; }
+.scenario-changes { max-height: 60vh; overflow: auto; width: min(420px, 90vw); color: var(--ink); overflow-wrap: anywhere; }
+.edit-marker { position: relative; display: inline-block; border: 1px solid var(--ink); border-radius: 3px; padding-inline: 2px; margin-inline-start: 3px; color: var(--ink); font-size: 12px; line-height: 1.2; vertical-align: middle; }
+.edit-tooltip { display: none; position: absolute; z-index: 40; inset-block-start: 100%; inset-inline-start: 0; padding: 6px; background: var(--surface); color: var(--ink); border: 1px solid var(--rule-2); width: max-content; max-width: min(320px, 80vw); white-space: normal; overflow-wrap: anywhere; }
+.edit-marker:hover .edit-tooltip, .edit-marker:focus .edit-tooltip { display: block; }
+.part-edits { display: inline-flex; flex-wrap: wrap; gap: 2px; }
+.start-from { margin-block: 8px; flex-wrap: wrap; }
+.start-from select { max-width: 100%; min-width: 0; }
+.start-from label { flex-wrap: wrap; min-width: 0; }
+@media print { .edit-tooltip { display: inline; position: static; border: 0; } }
