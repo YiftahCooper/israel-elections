@@ -14,12 +14,9 @@ test('one election timeline, official seat previews and an in-place Open', async
   await expect(dialog.locator('.election-row .result-preview').first()).toBeVisible();
   const row = dialog.locator('[data-choice-value="k21"]');
   await expect(row).toContainText('April 2019');
+  // one click opens the election: every row already carries its seat preview
   await row.click();
-  await expect(page.locator('.election .choice-trigger')).toHaveAttribute('data-value', 'k26');
-  await expect(dialog.locator('.election-expanded')).toHaveCount(1);
-  await expect(dialog.locator('.election-expanded .result-preview')).toBeVisible();
-  await page.screenshot({ path: '.backup-scratch/controls/election-expanded-en-light-desktop.png' });
-  await dialog.getByRole('button', { name: 'Open', exact: true }).press('Enter');
+  await expect(dialog).not.toBeVisible();
   await expect(page.locator('.election .choice-trigger')).toHaveAttribute('data-value', 'k21');
   await page.getByRole('button', { name: 'Election', exact: true }).click();
   await dialog.getByRole('searchbox').fill('2001');

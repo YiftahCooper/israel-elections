@@ -129,7 +129,6 @@ test('a failed election load keeps the open election and a plain message', async
   await page.route(/data\/k12\.json/, r => r.fulfill({ status: 500, body: 'x' }));
   await page.locator('.band .election .choice-trigger').click();
   await page.locator('dialog[open] [data-choice-value="k12"]').click();
-  await page.locator('dialog[open] .election-expanded .btn.primary').click();
   const banner = page.locator('.banner.err');
   await expect(banner).toContainText('בדקו את החיבור');
   await expect(banner.locator('bdi[dir=ltr]')).toContainText('HTTP 500');

@@ -28,12 +28,13 @@ export function ScenarioSwitcher({ s, ds }: { s: Scenario; ds: ElectionDataset }
     const action = [...x.log].reverse().map(e => e.action).find(a => ['setVotes', 'redistribute', 'transfer', 'addVoters', 'scaleAll', 'setTurnout'].includes(a.type));
     const source = !action ? L('Official votes', 'קולות רשמיים') : action.type === 'setVotes' || action.type === 'addVoters' ? voteSourceLabel({ kind: 'new' }, x, lang) : action.type === 'redistribute' ? L('Lists balanced proportionally', 'איזון יחסי בין הרשימות') : describe(action, x, lang);
     const rules = referenceChanges(x, markerBase).filter(p => p[0] === 'rules'||p[0]==='parts'&&p[1]==='rules').map(p => `${editPathLabel(x, p, lang, markerBase)}: ${changeText(x, p, lang)}`);
-    const count = referenceChanges(x, markerBase).length;
+    // count the user's edits, not the fields they touched: one balanced vote edit is one edit, not dozens of lists
+    const count = x.log.length;
     const changedVotes = x.lists.some(l => l.votes !== markerBase.lists.find(y => y.id === l.id)?.votes);
     const referenceAction = [...markerBase.log].reverse().map(e => e.action).find(a => ['setVotes', 'redistribute', 'transfer', 'addVoters', 'scaleAll', 'setTurnout'].includes(a.type));
     const sourceKey = (a: typeof action) => !a || a.type === 'redistribute' ? 'proportional' : a.type === 'setVotes' || a.type === 'addVoters' ? 'new' : a.type === 'transfer' ? `transfer:${a.from}:${a.to}` : a.type;
     const exceptional = action && changedVotes && sourceKey(action) !== sourceKey(referenceAction);
-    return [date.slice(0, 10), count ? `${count} ${L(count === 1 ? 'change' : 'changes', count === 1 ? 'שינוי' : 'שינויים')}` : '', status.includes('could not') || status.includes('לא הוחלו') ? status : '', exceptional ? source : '', ...rules].filter(Boolean).join(' · ');
+    return [date.slice(0, 10), count ? `${count} ${L(count === 1 ? 'edit' : 'edits', count === 1 ? 'עריכה' : 'עריכות')}` : '', status.includes('could not') || status.includes('לא הוחלו') ? status : '', exceptional ? source : '', ...rules].filter(Boolean).join(' · ');
   };
   const options: Choice[] = [{ value: 'official', label: L('Official result', 'התוצאה הרשמית'), detail: details(official, ds.electionDate, L('Official', 'רשמי')), preview: preview(official, true) }, ...entries.map(x => ({ value: x.id, label: x.name, detail: details(x.scenario, x.savedAt, x.failed ? L(`Saved · ${x.failed} changes could not be replayed`, `שמור · ${x.failed} שינויים לא הוחלו מחדש`) : L('Saved', 'שמור')), preview: preview(x.scenario) })),
     ...Object.entries(drafts).filter(([, x]) => x.scenario?.electionId === s.electionId).map(([key, x]) => ({ value: key, label: `${x.scenario!.name || L('Untitled scenario', 'תרחיש ללא שם')} · ${L('unsaved', 'לא נשמר')}`, detail: details(x.scenario!, x.scenario!.log.at(-1)?.at ?? ds.electionDate, L('Session draft · undo kept', 'טיוטת מפגש · הביטול נשמר')), preview: preview(x.scenario!) }))];

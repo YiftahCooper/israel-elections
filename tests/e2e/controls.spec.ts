@@ -93,7 +93,8 @@ for (const phone of [false, true]) test(`election picker keyboard ${phone ? 'pho
   const search = page.getByRole('searchbox'); await expect(search).toBeFocused(); await search.fill('September 2019');
   await search.press('ArrowDown');
   await expect(picker).toHaveAttribute('data-value', 'k25');
-  await page.getByRole('dialog').getByRole('button', { name: 'Open', exact: true }).press('Enter');
+  // Enter on the focused row opens it (one step, like a click)
+  await page.keyboard.press('Enter');
   await expect(picker).toHaveAttribute('data-value', 'k22'); await expect(picker).toBeFocused();
   await picker.press('Enter'); await page.keyboard.press('Escape'); await expect(picker).toBeFocused();
 });
