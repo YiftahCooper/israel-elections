@@ -1404,3 +1404,105 @@ Baseline whole lists: **2/13**; constituents: **0/14**. Every one of the 25 init
 - S3: `site:facebook.com "ישראל ביתנו" 2003 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "ישראל ביתנו" 2003 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
 
 Batch verification: `npx vitest run` **57 files / 484 tests passed** (single worker and CLI testTimeout=30000 from k23 onward after existing rebuild tests exceeded 5000ms); `npx tsc -p tsconfig.json --noEmit`, `npx vite build`, and `python3 scripts/validate-party-logos.py` passed. Dataset build passed; all 26 election datasets equal prior batch after recursively removing `logo` and `builtAt`.
+
+## Inspected Commons file-description catalogue
+
+These are the 42 relevant or potentially confusable file descriptions opened through 105 successful MediaWiki API HTTP responses (remaining responses include duplicate-normalized titles, related photographs and geographic/subject false positives already visible in search results). File revisions pin the inspected metadata. This is one community-provenance route, not independent corroboration of every upstream original. No upstream English-Wikipedia link was followed. Dates below are the descriptions’ claimed dates, not independently established dates of campaign use. Only the three newly accepted Commons files pass the date/origin/identity test in their assigned campaign; existing accepted entries retain their original scopes.
+
+| File revision | Description date | Description | Credited origin / limitation |
+|---|---|---|---|
+| [File:AHI logo.svg](https://commons.wikimedia.org/w/index.php?oldid=1252547693) | 2019-01-26 | Logotipo del partido insularista Agrupación Herreña Independiente. |  |
+| [File:Balad-logo.jpg](https://commons.wikimedia.org/w/index.php?oldid=1029522218) | 2010-05-12 | Logo der israelischen Partei Balad (בל"ד) | Hebräischsprachige Wikipedia, abgerufen am 12.05.2010 |
+| [File:HaAvoda Logo.svg](https://commons.wikimedia.org/w/index.php?oldid=1100872772) | 2019-01-28 | Symbol of HaAvoda party. | to fix color of the oat symbol |
+| [File:Hadash.JPG](https://commons.wikimedia.org/w/index.php?oldid=1290625903) | 28 March 2006 (original upload date) | Beschrijving: Eigen werk. Logo van Hadash, Israëlische linkse partij. Programma's: OpenOfficeDraw en Paint. Datum: 28 maart 2006 | Transferred from nl.wikipedia to Commons. |
+| [File:Hadash.svg](https://commons.wikimedia.org/w/index.php?oldid=1268622441) | 2016-10-25 | Logo of Hadash, an Israeli communist party | File:Hadash.JPG |
+| [File:Hatnuah logo.svg](https://commons.wikimedia.org/w/index.php?oldid=1294332881) | 27 November 2012 (original upload date) | Logo of Israeli political party Hatnuah. | יצירה עצמית על סמך תמונה רשמית. original svg file of the logo can be found here |
+| [File:Israel-beytenu-logo.png](https://commons.wikimedia.org/w/index.php?oldid=511820587) | 2010-05-12 | Emblem der israelischen Partei Jisra'el Beitenu (ישראל ביתנו) | Yezreel.com, abgerufen am 12.05.2010 |
+| [File:Israel-beytenu-logo.svg](https://commons.wikimedia.org/w/index.php?oldid=1100872880) | 2019-09-19 | Yisrael Beiteinu logo | Own work based on: Israel-beytenu-logo.png |
+| [File:Joint List logo 2019.svg](https://commons.wikimedia.org/w/index.php?oldid=1151347244) | 2019-08 | The logo of Joint List – joint list of Hadash, Ta'al and Balad for Knesset elections | Joint List |
+| [File:Joint List logo.png](https://commons.wikimedia.org/w/index.php?oldid=846081384) | not supplied | The logo of Joint List – joint list of Hadash, Ta'al and Balad for Knesset elections | https://www.facebook.com/JointListHebrew/photos/a.1565388027047502.1073741825.1557652337821071/1565390087047296 |
+| [File:Joint list logo.png](https://commons.wikimedia.org/w/index.php?oldid=1248862067) | 2015-01-22 | شعار القائمة المشتركة | القائمة المشتركة |
+| [File:Knights of Labor Logo.gif](https://commons.wikimedia.org/w/index.php?oldid=722757499) | 2008-06-29 | Knights of Labor Pentagram (Logo) | http://www.takver.com/history/lh_gifs/kol_seal.gif |
+| [File:Likud Logo.svg](https://commons.wikimedia.org/w/index.php?oldid=1273901003) | 2009-01-03 | Logo of the Likud Party | This file was derived from:  Likud Logo.png |
+| [File:Logo Hadash Ta'al.png](https://commons.wikimedia.org/w/index.php?oldid=960946580) | 2023-10-03 | Logo Hadash Ta'al | Wikipedia |
+| [File:Logo Kadima.svg](https://commons.wikimedia.org/w/index.php?oldid=1100873147) | 12 באוקטובר 2009 | Logo of Kadima | Transferred from he.wikipedia to Commons., קובץ:Logo of the Kadima Party.svg |
+| [File:Logo Likud Yisrael Beitenu.png](https://commons.wikimedia.org/w/index.php?oldid=828754499) | 2023-10-03 | Logo Likud Yisrael Beitenu | Wikipedia |
+| [File:Logo Likud.png](https://commons.wikimedia.org/w/index.php?oldid=985291615) | 2020-07-31 | Logo Likud | By עיצוב מקורי: גדעון שגיא, עיצוב נוסף: ראובן אדלר מתוך אתר הארץ - This is a vectorized version of Image:Likud Logo.png, Public Domain, https://commons.wikimedia.org/w/index.php?curid=5635696 |
+| [File:Logo Shinui Israel.png](https://commons.wikimedia.org/w/index.php?oldid=985291584) | 2021-01-13 | Logo Shinui Israel | Credit includes an English-Wikipedia transfer/derivative; upstream excluded and not followed. |
+| [File:Logo Unión Nacional.png](https://commons.wikimedia.org/w/index.php?oldid=1165431201) | 2023-10-03 | Logo Unión Nacional | Wikipedia |
+| [File:Logo Yamina, 2021.svg](https://commons.wikimedia.org/w/index.php?oldid=751410583) | 2022-06-12 | Logo Yamina, 2021 | Credit includes an English-Wikipedia transfer/derivative; upstream excluded and not followed. |
+| [File:Logo haAwoda.svg](https://commons.wikimedia.org/w/index.php?oldid=1100872706) | Unknown date | Logo of the Israeli Labor Party | Own work |
+| [File:Logo of the Joint List (Israel) 2026 (vector).svg](https://commons.wikimedia.org/w/index.php?oldid=1286679488) | 2026-10 | Logo of The Joint List for the 2026 Israeli Elections (vector drawing). | Official website of The Joint List, https://jointlist.org.il/en/ (https://jointlist.org.il/assets/img/logo-mark.svg) |
+| [File:Logo of the Labor-Gesher-Meretz.png](https://commons.wikimedia.org/w/index.php?oldid=1093940607) | 2020 | Logo of the Labor-Gesher-Meretz | https://web.archive.org/web/20200301195849im_/https://lp1.emet2020.co.il/images/label.png |
+| [File:Logo of the Labor-Gesher-Meretz.svg](https://commons.wikimedia.org/w/index.php?oldid=960949995) | not supplied | Logo of the w:Labor-Gesher-Meretz in the w:2020 Israeli legislative election | https://web.archive.org/web/20200301195849im_/https://lp1.emet2020.co.il/images/label.png |
+| [File:Meretz Logo Israel.png](https://commons.wikimedia.org/w/index.php?oldid=1142572769) | 2020-09-11 | Meretz Logo | Credit includes an English-Wikipedia transfer/derivative; upstream excluded and not followed. |
+| [File:Meretz Logo.png](https://commons.wikimedia.org/w/index.php?oldid=1043551986) | 2020-09-11 | Meretz Logo | Credit includes an English-Wikipedia transfer/derivative; upstream excluded and not followed. |
+| [File:Meretz Logo.svg](https://commons.wikimedia.org/w/index.php?oldid=1043517167) | 2012-12 | Logo of Meretz. | http://www.meretz.org.il/ |
+| [File:Meretz Youth logo 2014.png](https://commons.wikimedia.org/w/index.php?oldid=1117677325) | 2014-03-15 | לוגו נוער מרצ החל משנת 2014 | Own work |
+| [File:National Religious Party logo.svg](https://commons.wikimedia.org/w/index.php?oldid=1165688769) | 2022-05-10 | This is the SVG version of the National Religious Party logo. | Own work, traced from the raster logo as seen on Wikimedia Commons. |
+| [File:New Hope party logo.png](https://commons.wikimedia.org/w/index.php?oldid=586096068) | 2021-03-01 | New Hope party logo | Own work |
+| [File:Newmovemeretz.gif](https://commons.wikimedia.org/w/index.php?oldid=711898877) | not supplied | Logo von Meretz-Jachad | http://he.wikipedia.org/wiki/%D7%A7%D7%95%D7%91%D7%A5:Newmovemeretz.gif |
+| [File:Parti sioniste religieux logo 2022.png](https://commons.wikimedia.org/w/index.php?oldid=891525724) | 2022-07-16 | Logo du Parti sioniste religieux (Israël) | https://zionutdatit.org.il/wp-content/uploads/2021/12/%D7%9E%D7%A9%D7%A4%D7%98.pdf |
+| [File:RZ logo 2023.svg](https://commons.wikimedia.org/w/index.php?oldid=1100872918) | not supplied | Mafdal–Religious Zionism logo | Credit includes an English-Wikipedia transfer/derivative; upstream excluded and not followed. |
+| [File:Raam logo 2021.svg](https://commons.wikimedia.org/w/index.php?oldid=1276695516) | 2022-06-09 | Raam logo 2021 | By http://pdf.panet.co.il/index.php?edition=2021-02-12, converted to SVG from PDF file using Inkscape |
+| [File:Shas logo.png](https://commons.wikimedia.org/w/index.php?oldid=985292543) | 2020-08-22 | Shas logo | Credit includes an English-Wikipedia transfer/derivative; upstream excluded and not followed. |
+| [File:Ta'al party logo.png](https://commons.wikimedia.org/w/index.php?oldid=960946123) | not supplied | This is a logo for Ta'al. | http://www.a-m-c.org/logo-amc.png |
+| [File:Telem (1981) Logo.png](https://commons.wikimedia.org/w/index.php?oldid=1184479653) | 2019-07-08 | Logo of the Telem Party of Moshe Dayan (1981) | https://web.nli.org.il |
+| [File:The-Jewish-Home-logo.svg](https://commons.wikimedia.org/w/index.php?oldid=1100872352) | not supplied | Logo of w:The Jewish Home | The Jewish Home |
+| [File:United Torah Judaism Logo 2019.svg](https://commons.wikimedia.org/w/index.php?oldid=1291165533) | 2019-04-05 | Logo of United Torah Judaism | Extracted with Inkscape from PDF file of Hamevaser newspaper from April 5, 2019 page 14 |
+| [File:Yamina logo.svg](https://commons.wikimedia.org/w/index.php?oldid=1100872124) | not supplied | The logo of the Israeli Yemina party | https://t.me/newspaperil/6144, may find online version of 21/08/2019 paper Page 9 here. |
+| [File:Yesh Atid logo.png](https://commons.wikimedia.org/w/index.php?oldid=379980661) | not supplied | Yesh Atid logo. | Unknown sourceUnknown source |
+| [File:YeshAtidLogo.svg](https://commons.wikimedia.org/w/index.php?oldid=1100852908) | between 2012 and 2014date QS:P,+2012-00-00T00:00:00Z/8,P1319,+2012-00-00T00:00:00Z/9,P1326,+2014-00-00T00:00:00Z/9 | Yesh Atid logo. | Transferred from he.wikipedia to Commons. |
+
+Important dispositions:
+
+- **UTJ 2019, TELEM, Joint list logo (page 61888894)**: accepted at medium confidence as recorded in overlays/source cards; public-domain/CC0 status kept. Community metadata, not an independently inspected newspaper or archived party-site original. UTJ's new Commons original is only 4,160 bytes, unlike the previously rejected oversized Hebrew-file candidate.
+- **Likud k21–k24 constituents**: the corresponding retained official party-site headers, raw originals and per-campaign CDX records were inspected. Recomputed original SHA-256 and SHA-1 base32, found the exact matching CDX timestamp/digest row, and verified the CDX manifest hash and pre-election date. Same-election party mark, separately keyed from list. Four official-site evidence families by campaign; no source multiplication from duplicating the identity key.
+- **Likud 2009 constituent**: not added in this run. The existing whole-list free-licence assignment is preserved, but its Commons source credits a raster derivative and Haaretz rather than an independently inspected official origin. No new constituent assignment was inferred from that older acceptance.
+- **Joint List page 39065398**: undated; its linked Facebook photo returns a login page. Not the accepted dated Arabic file; names/capitalization distinguish the two.
+- **Shas logo, Logo Hadash Ta’al, Logo Likud Yisrael Beitenu, Logo Unión Nacional**: derivative/transfer/recreation dates or excluded upstream credits do not verify the requested campaign. No extension to earlier campaigns. Existing source-only proposals remain unresolved.
+- **YeshAtidLogo.svg, Yesh Atid logo.png, Ta’al party logo, The-Jewish-Home-logo, Newmovemeretz, Logo haAwoda**: interval/undated descriptions, unknown origins or unclear variants. No separate dated campaign assignment established.
+- **Israel-beytenu-logo.svg**: description dated September 19, 2019, after September 17 polling; no back-propagation. The 2010 PNG does not date 2003/2006/2009 campaigns.
+- **Meretz 2012 design, HaAvoda January 2019 design, Balad August 2019 vector, Kadima October 2009 SVG, New Hope March 2021 emblem, Religious Zionism July 2022 emblem**: retain their existing accepted campaign/identity scope. None automatically proves another campaign or a whole joint-list lockup. A file date before a renewed campaign is not sufficient by itself.
+- **Hadash.JPG/Hadash.svg**: self-drawn/transfer lineage and upload/recreation dates do not establish official-origin campaign rendering; no assignment. **Meretz Youth 2014** is a youth-organisation identity, **Hatikva.svg** is anthem artwork, **Ahi.jpg** is an unrelated photograph, and other foreign-party/country/military-rank/seat-diagram results are identity mismatches. They do not supply missing emblems.
+- The 2019 street-poster photos are discovery/corroboration candidates, not silently substituted clean party assets; independently matching their visible design to official bytes for another campaign was not established.
+
+## Before → after coverage
+
+Lists count only seat-winning whole lists; constituents are distinct party ids of seat-winning lists. All 219 initial gaps have query records above; successful Hebrew/Commons searches, two Hebrew timeouts and failed social queries are distinguished.
+
+| Election | Winners | Whole lists before → after | Constituents before → after |
+|---|---:|---:|---:|
+| k16 | 13 | 2 → 2 | 0/14 → 0/14 |
+| k17 | 12 | 1 → 1 | 0/11 → 0/11 |
+| k18 | 12 | 2 → 2 | 0/12 → 0/12 |
+| k19 | 12 | 3 → 3 | 0/9 → 0/9 |
+| k20 | 10 | 2 → 3 | 0/11 → 0/11 |
+| k21 | 11 | 3 → 4 | 0/14 → 1/14 |
+| k22 | 9 | 4 → 4 | 2/19 → 3/19 |
+| k23 | 8 | 3 → 3 | 1/18 → 3/18 |
+| k24 | 13 | 7 → 7 | 1/12 → 2/12 |
+| k25 | 10 | 4 → 4 | 1/11 → 1/11 |
+| k26 | 11 | 8 → 9 | 8/19 → 8/19 |
+
+**Eight new hosted identities:** three whole-list gaps and five constituent gaps. **Three free-licence assignments/assets** (UTJ k21 PD-textlogo; Telem k23 PD-logo; Joint List k20 CC0). **Five fair-use assignments** (Ra’am k26 plus Likud constituents k21–k24), with one new fair-use artwork file and four reused same-election files. Four new artwork files in total; no existing free-licence entry was converted to fair use.
+
+## Remaining gaps by reason
+
+- **Joint-list lockup not independently established (3 whole lists):** k26 ט Religious Zionism–Zehut; k25 ט Religious Zionism–Otzma/Noam; k19 מחל Likud–Yisrael Beiteinu. A constituent logo or a later derivative cannot supply the combined identity.
+- **Previously reported page/asset/date mismatch still unresolved (2 whole lists):** k25 ל Yisrael Beiteinu and שס Shas. The earlier report's October header references/January-only asset proof do not establish the exact campaign-period asset bytes. No new archive replay was attempted in this run; these are earlier limitations, not new failed downloads.
+- **No qualifying dated official-origin design verified in this pass (74 whole lists and 132 constituents):** every other remaining identity enumerated in the per-election ledger. This includes wrong campaign dates, undated derivatives, source ambiguity, geographic false positives and separately unverified constituent marks. This category is a research result, not proof that the design never existed.
+- **Research-service limitation affecting further discovery:** all 219 additional Jina social queries failed with `This key is out of quota`; they must not be treated as 219 successful social searches. Two Hebrew queries failed with `500 Internal Server Error - timeout of 5000ms exceeded`: k23 jewish-home and k16 moledet. Their separate Commons queries did complete. The fallback web search for UTJ, Homat Torat Yisrael and Religious Zionism–Zehut 2026 Facebook publications returned no results. No Apify spend or challenge bypass was used.
+
+**Remaining: 79 whole-list logos and 132 constituent emblems. Full logo coverage is not achieved.** The per-identity query ledger is complete for the requested missing population, but this was not an exhaustive traversal of all official social histories, Wayback captures or CEC publications. Newly inspectable official campaign originals could change every open outcome. No “no distinct logo existed” conclusion was made.
+
+## Verification and conclusion map
+
+Each election batch k26 → k16 ran the dataset builder, Vitest, TypeScript, Vite and logo validator before its local commit. k26/k25/k24 passed default `npx vitest run`. In k23 the existing demographic rebuild exceeded the 5000ms default on two runs; it passed in isolation, and a four-worker full run passed, but a further four-worker run timed out in both demographic and k24 rebuild tests. Remaining batches used `npx vitest run --maxWorkers=1 --testTimeout=30000`, keeping every test and assertion unchanged. This is an execution-setting limitation, not evidence of a logo-related assertion failure. Each successful full run: **57 files, 484 tests**. TypeScript and production Vite builds passed. Missing polling-station scratch reconciliation remains the existing builder limitation; retained source hashes/locality/national checks ran.
+
+- **Eligibility/asset integrity:** passes mechanically under `scripts/validate-party-logos.py`; all accepted entries have valid identities, rights, source, final bytes/hash, original hash and SVG safety or PNG dimensions. Free-license historical assignment confidence is medium, as documented above. Evidence that contradicts an origin, date or licence would require removal/review.
+- **No unrelated model/result change:** all 26 election datasets compare equal to baseline and to the preceding batch after recursively omitting `logo` and `builtAt`. Only the model output reference was updated; allocation, analysis, validation and rules reference hashes are unchanged.
+- **Campaign evidence:** Ra’am has an inspected dated official publication and retained campaign cover; the four Likud constituent assignments reuse inspected same-campaign primary byte proofs; the three Commons assignments rely on explicit community dates and official-origin credits. These are different proof levels and are not called independent corroboration.
+- **Completeness:** passes only the identity-attempt ledger criterion (219 initial gaps recorded); fails the all-logos coverage goal (79 whole lists and 132 constituents remain). Tool quota failures and bounded routes limit any stronger conclusion.
+
+Final checks: logo validator **26 overlays, 121 source records, 72 assets, 80 hosted entries**, zero download-unavailable and five existing unresolved proposals. `PW_PORT=5361 npx playwright test`: **43 passed (21.5 seconds)**. Repeat dataset build: **0 files written, 38 unchanged**. Final coverage script rerun and compared against retained before inventory. All new original and final asset hashes, and retained raw-manifest hashes, independently recomputed. Branch `t3/2f41f9ae`; commits local only, no push or merge.
