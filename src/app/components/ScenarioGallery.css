@@ -1,0 +1,14 @@
+.scenario-gallery { color: var(--ink); background: var(--surface); padding: 1rem; border: 1px solid var(--rule); overflow-wrap: anywhere; }
+.scenario-gallery fieldset { border: 1px solid var(--rule); display: grid; gap: .75rem; min-width: 0; }
+.scenario-gallery label { display: grid; gap: .25rem; min-width: 0; }
+.scenario-gallery input, .scenario-gallery select, .scenario-gallery textarea { width: 100%; box-sizing: border-box; color: var(--ink); background: var(--surface); border: 1px solid var(--rule-2); padding: .5rem; font: inherit; min-height: 44px; }
+.scenario-gallery textarea { min-height: 6rem; resize: vertical; }
+.scenario-gallery button, .scenario-gallery summary, .scenario-gallery-actions a, .scenario-gallery fieldset a { min-height: 44px; padding: .5rem; cursor: pointer; }
+.scenario-gallery a { color: var(--ink); text-decoration: underline; }
+.scenario-gallery :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+.scenario-gallery-filters { display: flex; flex-wrap: wrap; gap: .75rem; margin-block: 1rem; }
+.scenario-gallery-filters label { flex: 1 1 10rem; }
+.scenario-gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); list-style: none; padding: 0; gap: 1rem; }
+.scenario-gallery-grid > li { border: 1px solid var(--rule); padding: 1rem; min-width: 0; }
+.scenario-gallery-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+.scenario-gallery-description { white-space: pre-wrap; }
