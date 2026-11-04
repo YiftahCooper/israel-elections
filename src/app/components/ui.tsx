@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
 import { GLOSSARY, useL, useLang, type GlossaryTerm } from '../i18n.ts';
 import type { LogoRef } from '../../data/schema.ts';
+import { parseIntInput } from '../format.ts';
 
 /** Accessible info popover: opens on hover, focus or click; Escape closes. */
 export function Info({ title, children, term }: { title?: string; children?: ReactNode; term?: string }) {
@@ -58,7 +59,7 @@ export function Slip({ letters, color, size, logo }: { letters: string; color: s
       <span className="slip-letters" lang="he" dir="rtl" aria-hidden>{letters}</span>
     </span>
   );
-  return <span className={`slip ${size ?? ''}`} style={{ ['--c' as string]: color }} aria-label={label} lang="he" dir="rtl">{letters || '—'}</span>;
+  return <span className={`slip ${size ?? ''} ${letters.length > 4 ? 'long' : ''}`} style={{ ['--c' as string]: color }} aria-label={label} lang="he" dir="rtl">{letters || '—'}</span>;
 }
 
 export function Seg<T extends string>({ value, options, onChange, label }: { value: T; options: { v: T; label: string }[]; onChange: (v: T) => void; label: string }) {
@@ -73,18 +74,22 @@ export function NumberInput({ value, onCommit, label, width }: { value: number; 
   const [text, setText] = useState(value.toLocaleString('en-US'));
   const L = useL();
   const [commits, setCommits] = useState(0);
+  // a rejected entry (a negative, a fraction of a vote, words) is said, not silently swallowed
+  const [invalid, setInvalid] = useState(false);
   // Resync after the parent has processed the commit, even when it rejects the edit and
   // leaves value unchanged. Resetting to the old prop inside commit can race a later blur.
   useEffect(() => setText(value.toLocaleString('en-US')), [value, commits]);
   const commit = () => {
-    const t = text.replace(/[,\s_]/g, '');
-    const n = Number(t);
-    if (t !== '' && /^\d+$/.test(t) && Number.isSafeInteger(n) && n !== value) onCommit(n);
+    const n = parseIntInput(text);
+    // re-committing the unchanged value (a blur after Enter) keeps the notice; only a new entry decides it
+    if (text !== value.toLocaleString('en-US')) setInvalid(text.trim() !== '' && n === null);
+    if (n !== null && n !== value) onCommit(n);
     setCommits((c) => c + 1);
   };
   return (
-    <input type="text" inputMode="numeric" className="num-in" aria-label={label} title={L('Whole number ≥ 0; press Enter to apply', 'מספר שלם ≥ 0; Enter להחלה')}
-      style={width ? { width } : undefined} value={text} onChange={(e) => setText(e.target.value)} onBlur={commit}
+    <input type="text" inputMode="numeric" className="num-in" aria-label={label} aria-invalid={invalid || undefined}
+      title={invalid ? L('Not applied: enter a whole number ≥ 0 (e.g. 125000 or 125k)', 'לא הוחל: יש להזין מספר שלם ≥ 0 (למשל 125000 או 125k)') : L('Whole number ≥ 0; press Enter to apply', 'מספר שלם ≥ 0; Enter להחלה')}
+      style={width ? { width } : undefined} value={text} onChange={(e) => { setInvalid(false); setText(e.target.value); }} onBlur={commit}
       onKeyDown={(e) => { if (e.key === 'Enter') commit(); if (e.key === 'Escape' && text !== value.toLocaleString('en-US')) { e.preventDefault(); e.stopPropagation(); setText(value.toLocaleString('en-US')); } }} />
   );
 }

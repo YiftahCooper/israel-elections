@@ -128,8 +128,11 @@ input, textarea { caret-color: var(--focus); }
 .tool-page > .body { padding: 14px 16px 18px; }
 @media (max-width: 1100px) {
   .board, .board.with-panel { grid-template-columns: minmax(0, 1fr); }
+  /* one column: the result, then the lists (the main way in to editing), then blocs and figures */
+  .board .center { display: contents; }
+  .board .center > * { order: 3; min-width: 0; }
+  .board .center > .board-choices, .board .center > .chamber-panel { order: 1; }
   .board .lbars { order: 2; }
-  .board .center { order: 1; }
 }
 @media (max-width: 760px) {
   .band { padding: 6px 10px; gap: 6px 8px; }
@@ -182,6 +185,7 @@ input[type="text"], input[type="number"], input[type="search"], select, textarea
 select { padding-inline-end: 6px; }
 input:hover:not(:disabled), select:hover:not(:disabled) { border-color: var(--axis); }
 input.num-in { width: 120px; text-align: end; }
+input.num-in[aria-invalid="true"] { border-color: var(--bad); box-shadow: 0 0 0 1px var(--bad); }
 input[type="range"] { width: 100%; accent-color: var(--shell); }
 input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px solid var(--rule-2); border-radius: 5px; background: var(--surface); }
 .field { display: grid; gap: 3px; font-size: 13px; color: var(--ink-2); }
@@ -213,10 +217,13 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .info .pop .glossary-link { display: block; margin-top: 6px; font-size: 12.5px; }
 
 /* ---------- ballot slip / logo tile */
-.slip { flex: none; display: inline-grid; place-items: center; width: 58px; height: 32px; padding: 0 3px; background: var(--slip); color: #111; border: 1.5px solid var(--c, #888); border-radius: 4px; font-weight: 700; font-size: 12.5px; line-height: 1; letter-spacing: .01em; }
-.slip.lg { width: 76px; height: 46px; font-size: 18px; border-width: 2px; }
-.slip.logo { padding: 2px 3px; background: #fff; }
-.slip.logo img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+.slip { flex: none; display: inline-grid; place-items: center; width: 58px; height: 32px; padding: 0 3px; background: var(--slip); color: #111; border: 1.5px solid var(--c, #888); border-radius: 4px; font-weight: 700; font-size: 15px; line-height: 1; letter-spacing: .01em; }
+.slip.long { font-size: 12px; }
+.slip.lg { width: 76px; height: 46px; font-size: 20px; border-width: 2px; }
+.slip.lg.long { font-size: 15px; }
+/* the single cell is sized by the slip, never by the image: a tall (portrait) logo scales down inside it */
+.slip.logo { padding: 2px 3px; background: #fff; grid-template: minmax(0, 1fr) / minmax(0, 1fr); }
+.slip.logo img { max-width: 100%; max-height: 100%; min-width: 0; min-height: 0; object-fit: contain; display: block; }
 .slip.logo .slip-letters { display: none; }
 .slip.logo.on-dark { background: #1d2430; }
 
@@ -408,7 +415,10 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .lb-row.dim { opacity: .72; }
 .lb-main { display: grid; gap: 3px; min-width: 0; }
 .lb-name { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.lb-sub { font-size: 12px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lb-sub { font-size: 12px; color: var(--muted); display: flex; flex-wrap: wrap; column-gap: .7em; min-width: 0; }
+/* each part keeps whole: a long partner name moves to its own line instead of being cut */
+.lb-sub > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-inline-size: 100%; }
+.lbars > header .lb-key { margin-inline-start: 8px; white-space: nowrap; }
 .lb-bar { position: relative; height: 8px; border-radius: 4px; background: var(--grid); overflow: visible; }
 .lb-bar > i { position: absolute; inset-block: 0; inset-inline-start: 0; border-radius: 4px; transition: width .3s ease; }
 .lb-bar > .was { position: absolute; inset-block: -2px; inset-inline-start: 0; border: 1.5px dashed var(--ink-2); border-radius: 4px; pointer-events: none; }
@@ -432,6 +442,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .side-panel .ld { columns: 1; }
 @media (min-width: 1101px) { .board .side-panel { position: sticky; top: 100px; max-height: calc(100vh - 112px); overflow-y: auto; overscroll-behavior: contain; } }
 @media (max-width: 1100px) { .board .side-panel { position: fixed; inset: 0; z-index: 70; overflow-y: auto; border-radius: 0; border: 0; } }
+/* a full-screen sheet on a tablet keeps the controls at a readable width rather than stretching them across it */
+@media (min-width: 761px) and (max-width: 1100px) { .board .side-panel > .sp-head, .board .side-panel > .sp-body, .board .side-panel > .phone-result-strip { inline-size: 100%; max-inline-size: 720px; margin-inline: auto; box-sizing: border-box; } }
 .drawer { position: fixed; inset-block: 0; inset-inline-end: 0; width: min(440px, 100vw); z-index: 70; box-shadow: var(--shadow-pop); }
 .drawer .side-panel { height: 100%; overflow-y: auto; border-radius: 0; }
 

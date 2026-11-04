@@ -1,5 +1,14 @@
 # Changelog
 
+## 4 November 2026 — list controls audit
+
+- Every vote goal shows the signed change it makes; "Restore votes" sits beside the goals once a list is edited.
+- The vote field steps with ↑/↓ (PageUp/PageDown ×10), reads Arabic-Indic digits and 10k/1.2m, and marks an entry it cannot apply; the default step is 10k (1k in small early elections).
+- Withdrawn lists show no stale search, threshold goals or threshold-crossing note; the withdrawal is marked at its switch and each list row carries one marker.
+- Surplus partners are explained once in the lists header and never cut off; seatless lists of 1949 sit under "Lists that won no seat".
+- Undo labels name the list moved; the Hebrew transfer line reads right to left; tall logos stay inside their slip; ballot letters are larger.
+- On phones the lists follow the chamber directly; on tablets the list sheet keeps a readable width.
+
 ## 4 November 2026 — mark replacements once
 
 - Mark whole-part starting points, grouping changes and rules presets once at the part; later individual edits use the replacement as their checkpoint.

@@ -10,11 +10,17 @@ export const fmtRat = (r: Rational, digits = 2) => toDecimal(r, digits).replace(
 export const fmtFrac = (r: Rational) => `${fmtInt(r.num)} / ${fmtInt(r.den)}`;
 export const ratOf = (a: bigint | number, b: bigint | number) => rat(BigInt(a), BigInt(b));
 
-/** Parses user number input: digits with optional thousands separators. */
+/** Parses a typed or pasted whole number ≥ 0. Accepts thousands separators (comma, space, apostrophe,
+ *  underscore), Arabic-Indic and Persian digits, and a k/m shorthand ("10k", "1.2m"). Anything else,
+ *  including negatives and fractions of a vote, is rejected (null) so the field can say so. */
 export const parseIntInput = (s: string): number | null => {
-  const t = s.replace(/[,\s_]/g, '');
-  if (!/^\d+$/.test(t)) return null;
-  const n = Number(t);
+  let t = s.replace(/[٠-٩]/g, (d) => String(d.charCodeAt(0) - 0x0660)).replace(/[۰-۹]/g, (d) => String(d.charCodeAt(0) - 0x06f0))
+    .replace(/[,\s_'’٬   ]/g, '').toLowerCase();
+  const mult = /^\d+(\.\d+)?[km]$/.test(t) ? (t.endsWith('k') ? 1_000 : 1_000_000) : 1;
+  if (mult > 1) t = t.slice(0, -1);
+  // a shorthand may carry only as many decimals as it has zeros (1.25k = 1,250; 1.2345k is not a whole vote)
+  if (mult === 1 ? !/^\d+$/.test(t) : !new RegExp(`^\\d+(\\.\\d{1,${mult === 1_000 ? 3 : 6}})?$`).test(t)) return null;
+  const n = mult === 1 ? Number(t) : Math.round(Number(t) * mult);
   return Number.isSafeInteger(n) ? n : null;
 };
 

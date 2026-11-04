@@ -11,7 +11,7 @@ import { PartEdits } from './PartEdits.tsx';
 import { useEffect, useRef, useState } from 'react';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario, SimList } from '../../model/scenario.ts';
-import { comparisonGroups, officialSeatsFor, electedOf, listLabel } from '../derive.ts';
+import { comparisonGroups, officialSeatsFor, electedOf, listLabel, referenceChanges } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct } from '../format.ts';
 import { setState, useDigits, useLevel, useStore } from '../store.ts';
@@ -38,9 +38,21 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   const groups = comparisonGroups(s, r, base, baseR).filter(g => g.bIds.length > 1);
   const baseSeats = (l: SimList) => officialSeatsFor(l.id, s, r, base, baseR);
   const rows = s.lists.map((l) => ({ l, lr: r.lists.find((x) => x.id === l.id)!, was: baseSeats(l) }));
-  const inKnesset = rows.filter((x) => x.lr.seats > 0 || x.lr.qualified).sort((a, b) => b.lr.seats - a.lr.seats || b.l.votes - a.l.votes);
-  const outside = rows.filter((x) => !(x.lr.seats > 0 || x.lr.qualified)).sort((a, b) => b.l.votes - a.l.votes);
-  const visibleOut = showAll ? outside : outside.filter(({ l }) => l.votes >= total * 0.005 || l.id === selected || !base.lists.some((b) => b.id === l.id));
+  // a list is in the Knesset when it holds a seat; one that passed no threshold (1949 had none) but won no seat
+  // sits with the other seatless lists rather than among the members
+  const inKnesset = rows.filter((x) => x.lr.seats > 0).sort((a, b) => b.lr.seats - a.lr.seats || b.l.votes - a.l.votes);
+  const outside = rows.filter((x) => x.lr.seats === 0).sort((a, b) => b.l.votes - a.l.votes);
+  // A list never folds away behind "Show all" because of an edit: one shown in the reference stays shown when its
+  // votes fall (a withdrawal drops them to 0), and one edited beyond its votes (withdrawn, renamed) is shown too.
+  // Small vote changes spread proportionally over every list do not unfold the long tail.
+  const editedBeyondVotes = new Set(referenceChanges(s, base).filter((p) => p[0] === 'lists' && p[2] !== 'votes').map((p) => p[1]));
+  const baseTotal = base.lists.reduce((t, b) => t + b.votes, 0);
+  const visibleOut = showAll ? outside : outside.filter(({ l }) => {
+    const b = base.lists.find((x) => x.id === l.id);
+    return l.votes >= total * 0.005 || (b && b.votes >= baseTotal * 0.005) || !b || l.id === selected || editedBeyondVotes.has(l.id);
+  });
+  const belowThreshold = thr > 0 && outside.every((x) => !x.lr.qualified);
+  const anyAgreement = standard && s.agreements.some((a) => a.enabled);
   const hidden = outside.length - visibleOut.length;
   const splitIds = new Set(s.factionSplits ?? []);
   // one scale for every bar: the largest list now or in the official result
@@ -64,7 +76,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
           title={l.logo ? l.nameHe : `${l.nameHe} — ${L('ballot letters (no logo is sourced for this election yet)', 'אותיות הפתק (טרם נמצא סמל ממקור לבחירות אלה)')}`}>
           <Slip letters={l.letters} color={l.color} logo={l.logo} />
           <span className="lb-main">
-            <span className="lb-name">{listLabel(l, lang)}<PartEdits s={s} prefix={['lists', l.id]} /></span>
+            <span className="lb-name">{listLabel(l, lang)}<PartEdits single s={s} prefix={['lists', l.id]} /></span>
             {familyDefinition && family && family!=='other' && <small className="family-row-label">{familyLabel(familyDefinition,lang)}{family==='mixed'?` · ${L('Mixed lists','רשימות מעורבות')}`:''}</small>}
             <span className="lb-bar" aria-hidden>
               {out
@@ -76,13 +88,13 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
               <span className="delta-segment" style={{insetInlineStart:0,width:`${(was ?? 0)/scale*100}%`}} />
             </span>}
             <span className="lb-sub">
-              {standard && <>{fmtInt(l.votes)} · </>}{fmtPct(l.votes, total, digits)}
-              {out && thr > 0 && <> · {L(`${fmtPct(l.votes, thr, 0)} of the threshold`, `${fmtPct(l.votes, thr, 0)} מאחוז החסימה`)}</>}
-              {l.withdrawn && <> · {L('withdrew', 'פרשה')}</>}
-              {partner && <> · ⇄ {listLabel(partner, lang)}</>}
+              <span>{standard && <>{fmtInt(l.votes)} · </>}{fmtPct(l.votes, total, digits)}
+              {out && thr > 0 && !l.withdrawn && <> · {L(`${fmtPct(l.votes, thr, 0)} of the threshold`, `${fmtPct(l.votes, thr, 0)} מאחוז החסימה`)}</>}
+              {l.withdrawn && <> · {L('withdrew', 'פרשה')}</>}</span>
+              {partner && <span className="lb-agr"><span aria-hidden>⇄ </span>{listLabel(partner, lang)}</span>}
             </span>
           </span>
-          <span className="sr-only" id={`lbd-${l.id}`}>{L(`${lr.seats} seats`, `${lr.seats} מנדטים`)}, {fmtPct(l.votes, total, digits)}{familyDefinition && family && family!=='other' && <> · {familyLabel(familyDefinition,lang)}{family==='mixed'?` · ${L('Mixed lists','רשימות מעורבות')}`:''}</>}{d !== 0 && <>, {Math.abs(d)}{d > 0 ? baseLabel.more : baseLabel.fewer}</>}</span>
+          <span className="sr-only" id={`lbd-${l.id}`}>{L(`${lr.seats} seats`, `${lr.seats} מנדטים`)}, {fmtPct(l.votes, total, digits)}{familyDefinition && family && family!=='other' && <> · {familyLabel(familyDefinition,lang)}{family==='mixed'?` · ${L('Mixed lists','רשימות מעורבות')}`:''}</>}{d !== 0 && <>, {Math.abs(d)}{d > 0 ? baseLabel.more : baseLabel.fewer}</>}{l.withdrawn && <>, {L('withdrew', 'פרשה')}</>}{partner && <>, {L(`surplus-vote agreement with ${listLabel(partner, lang)}`, `הסכם עודפים עם ${listLabel(partner, lang)}`)}</>}</span>
           <span className="lb-seats">
             <b key={`s${lr.seats}`} className={d!==0 ? 'tick' : ''}>{lr.seats}</b>
             {d !== 0 && <small dir="ltr"><Mark up={d > 0} />{Math.abs(d)}</small>}
@@ -110,13 +122,16 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   return (
     <section className="panel lbars" aria-label={L('Lists', 'הרשימות')}>
       <FamilyListTreatment s={s} />
-      <header><h2>{L('Lists', 'הרשימות')}<PartEdits s={s} prefix={['parts','lists']} /></h2><span className="spacer" /><span className="small muted">{L('seats', 'מנדטים')}</span></header>
+      <header><h2>{L('Lists', 'הרשימות')}<PartEdits s={s} prefix={['parts','lists']} /></h2>
+        {/* the partner mark is explained once, not on every row */}
+        {anyAgreement && <span className="tiny muted lb-key" aria-hidden>⇄ {L('surplus-vote partner', 'שותפה להסכם עודפים')}</span>}
+        <span className="spacer" /><span className="small muted">{L('seats', 'מנדטים')}</span></header>
       {groups.map(g => <p key={g.key} className="lb-group-comparison small ink2">{L(`Ran separately: together ${g.seatsB}, ${baseLabel.at} ${g.seatsA} as `, `רצו בנפרד: יחד ${g.seatsB}, ${baseLabel.at} ${g.seatsA} בתור `)}{g.aIds.map(id => listLabel(base.lists.find(l => l.id === id)!, lang)).join(' + ')}</p>)}
       <ol className="lb">
         {inKnesset.map(row)}
         {outside.length > 0 && (
           <li className="lb-thr">
-            <span>{thr > 0 ? L(`Below the threshold · ${fmtInt(r.thresholdVotes)} votes (${s.rules.thresholdPct}%)`, `מתחת לאחוז החסימה · ${fmtInt(r.thresholdVotes)} קולות (${s.rules.thresholdPct}%)`) : L('Lists that won no seat', 'רשימות שלא זכו במנדט')}</span>
+            <span>{belowThreshold ? L(`Below the threshold · ${fmtInt(r.thresholdVotes)} votes (${s.rules.thresholdPct}%)`, `מתחת לאחוז החסימה · ${fmtInt(r.thresholdVotes)} קולות (${s.rules.thresholdPct}%)`) : L('Lists that won no seat', 'רשימות שלא זכו במנדט')}</span>
             {(hidden > 0 || showAll) && <button type="button" onClick={() => setShowAll((x) => !x)}>{showAll ? L('Show fewer', 'הצגת פחות') : L(`Show all ${outside.length}`, `הצגת כל ${outside.length}`)}</button>}
           </li>
         )}

@@ -32,7 +32,7 @@ test('B1 saved separate-run reference is named everywhere; B6 identity is not re
   const votes = page.getByRole('region', { name: 'List details' }).getByLabel('Votes', { exact: true });
   await votes.fill('1300000'); await votes.press('Enter');
   await expect(page.getByRole('button', { name: 'Likud', exact: true })).toHaveAccessibleDescription(/more than Review A/);
-  await expect(page.locator('.phone-result-strip')).toContainText('Since Review A');
+  await expect(page.locator('.phone-result-strip')).toContainText('since Review A');
   await page.getByRole('button', { name: 'Expert', exact: true }).click();
   await expect(page.getByRole('region', { name: 'List details' })).toContainText('Seats in Review A');
 });
