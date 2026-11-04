@@ -1145,3 +1145,106 @@ original-artwork candidate, not an accepted logo. The six B identities שס, ב,
 מרצ, כן, ו, ע retain run-2 reasons and were not individually re-searched.
 
 Coverage: **2 → 2 / 11**; zero additions, zero absence findings.
+### Run 3 · k15
+
+| Identity | Lead(s) checked | Decision and observed evidence |
+|---|---|---|
+| k15/אמת | [NNL_ARCHIVE_AL997012156936905171](https://www.nli.org.il/en/archives/NNL_ARCHIVE_AL997012156936905171/NLI); [NNL_ARCHIVE_AL997012156936905171](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156936905171/NLI) | Gap: each linked URL returned HTTP 403 / browser challenge; no catalogue or scan inspected. |
+| k15/שס | [NNL_ARCHIVE_AL997013034850705171](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997013034850705171/NLI) | Gap: each linked URL returned HTTP 403 / browser challenge; no catalogue or scan inspected. |
+| k15/מרצ | [NNL_ARCHIVE_AL997012156951705171](https://www.nli.org.il/ar/archives/NNL_ARCHIVE_AL997012156951705171/NLI); [NNL_ARCHIVE_AL997013034862105171](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997013034862105171/NLI); [NNL_ARCHIVE_AL997012156961105171](https://www.nli.org.il/en/archives/NNL_ARCHIVE_AL997012156961105171/NLI) | Gap: each linked URL returned HTTP 403 / browser challenge; no catalogue or scan inspected. |
+| k15/יש | [NNL_ARCHIVE_AL997012156949805171](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156949805171/NLI); [NNL_ARCHIVE_AL997012156936905171](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156936905171/NLI); [NNL_ARCHIVE_AL997012156952105171](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156952105171/NLI) | Gap: each linked URL returned HTTP 403 / browser challenge; no catalogue or scan inspected. |
+| k15/ג | [NNL_ARCHIVE_AL997012156926305171](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156926305171/NLI); [NNL_ARCHIVE_AL997013034870405171](https://www.nli.org.il/en/archives/NNL_ARCHIVE_AL997013034870405171/NLI) | Gap: each linked URL returned HTTP 403 / browser challenge; no catalogue or scan inspected. |
+| k15/ל | [NNL_ARCHIVE_AL997012156949805171](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156949805171/NLI); [NNL_ARCHIVE_AL997012156937105171](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156937105171/NLI); [NNL_ARCHIVE_AL997013034866205171](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997013034866205171/NLI) | Gap: each linked URL returned HTTP 403 / browser challenge; no catalogue or scan inspected. |
+| k15/ם | [NNL_ARCHIVE_AL997012156949805171](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156949805171/NLI) | Gap: each linked URL returned HTTP 403 / browser challenge; no catalogue or scan inspected. |
+
+Category B priority: **מחל (19 seats)**. Downloaded the [IDI-linked Likud PDF](https://www.idi.org.il/media/6001/likud-15.pdf)
+(200, 205,582 bytes, 31 pages). Page 1 actually says **כנסת ה-14**, rather than
+15, and is typeset platform text. Rejected as a 1999 dated-original logo source;
+no inferred reuse from that mismatched catalogue link. A supplementary Jabotinsky
+fifteenth-Knesset leaflet search produced no selected original.
+
+Additional A check: the [Israel One platform PDF](https://www.idi.org.il/media/16890/%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%90%D7%97%D7%AA-1999.pdf)
+(200, 76,088 bytes, 2 PDF pages) prints a **12/08/02** local-file footer and
+`Page 1 of 3` on its first page. This is a later website printout; first-page
+inspection does not establish retained 1999 campaign bytes or a complete 1999
+sign-off. Not accepted. Other B identities כן, ב, עם, ו, ד retain their prior
+reasons and were not individually re-searched.
+
+Coverage: **2 → 2 / 15**; zero additions, zero absence findings.
+
+### Run 3 · final coverage, remaining reasons and verification
+
+| Election | Winners | Run 3 before | Run 3 after | Added |
+|---|---:|---:|---:|---:|
+| k9 / 1977 | 13 | 5 | 5 | 0 |
+| k10 / 1981 | 10 | 2 | 2 | 0 |
+| k11 / 1984 | 15 | 2 | 3 | 1 |
+| k12 / 1988 | 15 | 2 | 2 | 0 |
+| k13 / 1992 | 10 | 1 | 1 | 0 |
+| k14 / 1996 | 11 | 2 | 2 | 0 |
+| k15 / 1999 | 15 | 2 | 2 | 0 |
+| **Total** | **89** | **16** | **17** | **1** |
+
+**All 24 category-A lead checks received a decision:** gap, with individual URLs
+and observed HTTP failure recorded above (30 distinct URL requests). None yielded
+a logo or evidence of absence. Supplementary source work targeted **nine of the
+49 category-B identities**, led by Alignment's 47/44/39 seats, Labor's 44 and
+Likud's 41/32/19, plus NRP's 12 and Tzomet's 8. One, k11/מחל, is now filled.
+Additional platform checks addressed two category-A identities, k14/אמת and
+k15/אמת. This is a bounded continuation, not a claim of exhaustive new research
+on all 49 category-B identities.
+
+**No emblem in use: zero established findings.** A wordmark-free sample of a
+booklet, an unavailable scan, or a letters-only item would not establish absence
+across the campaign. No fallback letters were converted into a fabricated logo.
+
+**72 winning-list gaps remain**, with mutually exclusive primary reasons:
+
+- **24 — supplied archival route blocked by HTTP 403 challenge**: all A identities
+  in the per-election tables above. k14/אמת additionally has an inspected platform
+  cover with a wordmark, but precise publication/campaign-use date proof remains
+  unresolved. k15/אמת's supplemental PDF is a later printout, not 1999 byte proof.
+- **8 — supplemental priority check still lacked a qualifying crop/evidence**:
+  k9/ב (DOC artwork not recovered for visual inspection);
+  k10/אמת, k11/אמת, k12/אמת, k13/מחל (catalogue/platform links only, original
+  sign-off uninspected); k13/אמת (sampled scanned pages gave no crop; rest not
+  fully visually reviewed); k13/ץ (wordmark seen, printed campaign date not
+  established); k15/מחל (download identifies the wrong Knesset campaign).
+- **40 — original run-2 B gap, no fresh individual research in this pass**:
+  k9: ג, רצ, ו, לע, ים, ש, ד;
+  k10: רצ, ב, ו;
+  k11: ב, ו, הן, יש, כך;
+  k12: ג, רצ, ב, ו, הן, ת, ט, עץ, ץ;
+  k13: שס, ב, ג, ו, ע;
+  k14: שס, ב, מרצ, כן, ו, ע;
+  k15: כן, ב, עם, ו, ד.
+
+Each election batch passed `npx vitest run` (**59 files / 487 tests**),
+`npx tsc -p tsconfig.json --noEmit`, `npm run -s data:build`, and
+`python3 scripts/validate-party-logos.py` before its local commit. The first k11
+test correctly detected changed logo metadata in the model digest. After all 26
+election datasets compared equal to baseline `eb4067b` when recursively omitting
+only `logo` and `builtAt`, only the model digest was re-recorded. Allocation,
+analysis, validation and rules digests were unchanged. No election results,
+frontend implementation or rules changed.
+
+One k14 attempt timed out at the historical k18/k19 reconstruction test's 5-second
+limit while Playwright was running concurrently. The unchanged full suite passed
+when rerun alone; no timeout or test code was altered. This suggests contention,
+not a demonstrated regression; the exact timing cause was not independently
+measured. Final `npx vite build` passed. `PW_PORT=5364 npx playwright test`:
+**52 passed in 26.4 seconds** after allowing its local server/browser execution;
+the first sandbox attempt could not start config.webServer (exit 1).
+
+Final crop audit reproduced the committed 1984 PNG **byte for byte** from PDF
+xref 140 with the recipe above, and verified embedded raster dimensions. All 26
+datasets again matched the baseline outside `logo`/`builtAt`. Last data build:
+**0 files written, 38 unchanged**. Final validator: **26 overlays, 122 source
+records, 72 assets, 76 hosted entries**, five unresolved entries, zero
+download-unavailable entries (all-year counts include nonwinners/constituents).
+
+Local branch: `t3/60b94c24`. Seven election commits, no push or merge. Git had no
+configured author identity; commits use the existing repository agent convention
+`Codex <codex@openai.com>` through command-local options, without changing global
+or repository configuration. Accepted originals, crop and provenance are retained;
+routine failed-response HTML and diagnostic logs are reproducible scratch.
