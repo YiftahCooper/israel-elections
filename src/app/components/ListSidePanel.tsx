@@ -13,7 +13,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { blocPieces, comparisonGroups, groupingLabel, listLabel, officialSeatsFor } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { setState } from '../store.ts';
+import { setState, useStore } from '../store.ts';
 import { signed } from '../format.ts';
 import { ListDetail } from './ListDetail.tsx';
 import { Mark } from './ListBars.tsx';
@@ -29,6 +29,9 @@ export function ListSidePanel({ s, r, ds, base, baseR, listId }: { s: Scenario; 
   const ref = useRef<HTMLElement>(null);
   const l = s.lists.find((x) => x.id === listId);
   const lr = l ? r.lists.find((x) => x.id === l.id) : undefined;
+  const previewing = useStore(st => st.preview) === s;
+  const previousSeats = useRef({ id: listId, seats: lr?.seats });
+  useEffect(() => { if (!previewing) previousSeats.current = { id: listId, seats: lr?.seats }; }, [listId, lr?.seats, previewing]);
   // a newly opened list starts at the top of the panel
   useEffect(() => { ref.current?.scrollTo({ top: 0 }); }, [listId]);
   if (!l || !lr) return null;
@@ -52,7 +55,7 @@ export function ListSidePanel({ s, r, ds, base, baseR, listId }: { s: Scenario; 
           <PartyLinks links={l.links} name={listLabel(l, lang)} />
         </div>
         <div className="sp-seats">
-          <b>{lr.seats}</b><span className="small ink2">{L('seats', 'מנדטים')}</span>
+          <b key={lr.seats} className={previousSeats.current.id === listId && previousSeats.current.seats !== lr.seats ? 'tick' : ''}>{lr.seats}</b><span className="small ink2">{L('seats', 'מנדטים')}</span>
           {d !== 0 && <small dir="ltr"><Mark up={d > 0} />{Math.abs(d)}</small>}
         </div>
         <button className="btn ghost icon-only" aria-label={L('Close', 'סגירה')} onClick={() => setState({ selectedListId: null })}><X className="icon" aria-hidden /></button>

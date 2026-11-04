@@ -178,7 +178,7 @@ function Shell() {
   const drawerOpen = tool !== 'board' && !!selected && drawerFor === selected;
 
   return (
-    <div className="app" style={{ ['--scenario-color' as string]: reference || referenceChanges(s, base).length || s.identityColor ? liveScenarioColor(s, saved) : undefined }}>
+    <div className={`app ${preview ? 'board-preview' : ''}`} style={{ ['--scenario-color' as string]: reference || referenceChanges(committed, base).length || committed.identityColor ? liveScenarioColor(committed, saved) : undefined }}>
       <TopBar s={pmOnly ? null : committed} r={cr} ds={ds} baseR={baseR} pmContestId={pmContestId} onContestChange={setPMContestId} />
       {pmOnly ? <main className="work"><PMResult contest={pmOnly} onKnesset={() => setPMContestId(null)} /></main> : <>
       <nav className="toolbar" aria-label={L('Tools', 'כלים')}><div className="tabs" role="tablist" aria-label={L('Tools', 'כלים')}>
@@ -208,7 +208,7 @@ function Shell() {
           ? <div key={`w${i}`} className="banner warn" role="alert">{warningText(w, s, lang)}</div>
           : <div key={`w${i}`} className="banner note" role="status">{warningText(w, s, lang)}</div>)}
       </div>
-      <ChangeSummary s={s} r={r} base={base} baseR={baseR} ds={ds} />
+      <ChangeSummary s={committed} r={cr} base={base} baseR={baseR} ds={ds} />
       <main className="work">
         {customPage ? <CustomPage /> : tool === 'board' ? (
           <div className={`board ${selected || blocPanel ? 'with-panel' : ''}`}>

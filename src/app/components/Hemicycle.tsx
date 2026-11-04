@@ -7,7 +7,7 @@ import { BlocMajorities } from './Majority.tsx';
 import { useMemo, useRef, useState } from 'react';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario, SimList } from '../../model/scenario.ts';
-import { listLabel, methodOf, seatBlocsOf, seatedOrder, shownName, referenceLabel, comparisonGroups } from '../derive.ts';
+import { allocationOf, listLabel, methodOf, seatBlocsOf, seatedOrder, shownName, referenceLabel, comparisonGroups } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { arcLayout, annularRegions } from '../layout.ts';
 import { download, isolate, signed } from '../format.ts';
@@ -65,6 +65,10 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   // layout and colouring are Expert settings: below Expert the chamber always uses the defaults
   const layout = useStore((st) => (expert ? st.layout : 'hemicycle'));
   const colorBy = useStore((st) => (expert ? st.colorBy : 'list'));
+  const previewing = useStore(st => st.preview) === s;
+  const committed = useStore(st => st.scenario);
+  const evidenceScenario = previewing && committed ? committed : s;
+  const evidenceResult = previewing && committed ? allocationOf(committed) : r;
   const selected = useStore((st) => st.selectedListId);
   const elections = useStore((st) => st.elections);
   const svgRef = useRef<SVGSVGElement>(null);
@@ -74,7 +78,10 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   const seats = useMemo(() => seatOrder(s, r, colorBy), [s, r, colorBy]);
   const { base, result: br, labelReference } = useGraphicReference(s, reference);
   const changes = useMemo(() => changedSeatKeys(s, r, base, br), [s, r, base, br]);
-  const hasChanges = changes.gained.size > 0 || changes.lost.size > 0;
+  // Supplemental evidence follows completed edits, keeping the first drag from
+  // mounting a second chamber and moving the legend under the pointer.
+  const evidenceChanges = useMemo(() => changedSeatKeys(evidenceScenario, evidenceResult, base, br), [evidenceScenario, evidenceResult, base, br]);
+  const hasChanges = evidenceChanges.gained.size > 0 || evidenceChanges.lost.size > 0;
   const baselineSeats = useMemo(() => seatOrder(base, br, colorBy), [base, br, colorBy]);
   const total = s.rules.seats;
   const rtl = false; // Geometry is physically left-to-right in both languages, like the 61 marker.
@@ -253,7 +260,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       </div>}
       {/* the key is needed only when there is something to compare; the reference is named once, under the small chamber */}
       {hasChanges && <p className="small muted graphic-key">{L('Seat changes', 'שינויי מנדטים')} · {referenceLabel(labelReference,lang).name} <Info title={L('About these outlines','על המתארים')}>{L(`Outlined: seats gained since ${referenceLabel(labelReference,lang).name}. Dashed, in the small chamber: seats lost. Outlines compare list seat counts, not individual seats or voters moving between lists. Dashed bars show the reference; neutral ink shows the difference.`, `מתאר: מנדטים שנוספו מאז ${referenceLabel(labelReference,lang).name}. מקווקו, בכנסת הקטנה: מנדטים שאבדו. המתארים משווים את מספר המנדטים של הרשימות; אין משמעות של מנדט או בוחר שעבר בין רשימות. מתארי העמודות המקווקווים מציינים את הבסיס; דיו ניטרלי מציין שינוי.`)}</Info></p>}
-      <GraphicChanges s={s} r={r} reference={reference} compact />
+      <GraphicChanges s={evidenceScenario} r={evidenceResult} reference={reference} compact />
       {hover && hv && (
         <div className="tip" style={{ left: Math.max(0, hover.x - 100), top: Math.max(0, hover.y - 96) }}>
           <div className="row"><span className="swatch" style={{ background: hover.seat.color }} /><b>{listLabel(hv, lang)}</b> <span className="muted">({hv.letters})</span></div>

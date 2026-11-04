@@ -10,6 +10,9 @@ import { useL, useLang } from '../i18n.ts';
 export function EditMarker({ s, path, summary = false }: { s: Scenario; path: EditPath; summary?: boolean }) {
   const L = useL(), lang = useLang(), id = useId();
   const { reference } = useActiveReference();
+  const committed = useStore(st => st.scenario);
+  const preview = useStore(st => st.preview);
+  if (s === preview && committed) s = committed;
   const ds = useStore(st => st.datasets[s.electionId]);
   const base = reference ?? (ds ? baselineOf(ds) : null);
   const resolved=base?markerPath(s,base,path):null;

@@ -28,11 +28,16 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   const baseLabel = referenceLabel(reference, lang);
   const digits = useDigits();
   const { standard } = useLevel();
+  const committed = useStore(st => st.scenario);
+  const previewing = useStore(st => st.preview) === s;
+  const markerScenario = previewing && committed ? committed : s;
   const selected = useStore((st) => st.selectedListId);
   const [showAll, setShowAll] = useState(false);
   const selRef = useRef<HTMLButtonElement>(null);
   useEffect(() => { if (selected) selRef.current?.scrollIntoView({ block: 'nearest' }); }, [selected]);
 
+  const previousSeats = useRef({ election: s.electionId, seats: new Map(r.lists.map(x => [x.id, x.seats])) });
+  useEffect(() => { if (previewing) return; previousSeats.current = { election: s.electionId, seats: new Map(r.lists.map(x => [x.id, x.seats])) }; }, [s.electionId, r, previewing]);
   const total = Number(r.totalValid);
   const thr = Number(r.thresholdVotes);
   const groups = comparisonGroups(s, r, base, baseR).filter(g => g.bIds.length > 1);
@@ -45,7 +50,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   // A list never folds away behind "Show all" because of an edit: one shown in the reference stays shown when its
   // votes fall (a withdrawal drops them to 0), and one edited beyond its votes (withdrawn, renamed) is shown too.
   // Small vote changes spread proportionally over every list do not unfold the long tail.
-  const editedBeyondVotes = new Set(referenceChanges(s, base).filter((p) => p[0] === 'lists' && p[2] !== 'votes').map((p) => p[1]));
+  const editedBeyondVotes = new Set(referenceChanges(markerScenario, base).filter((p) => p[0] === 'lists' && p[2] !== 'votes').map((p) => p[1]));
   const baseTotal = base.lists.reduce((t, b) => t + b.votes, 0);
   const visibleOut = showAll ? outside : outside.filter(({ l }) => {
     const b = base.lists.find((x) => x.id === l.id);
@@ -96,7 +101,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
           </span>
           <span className="sr-only" id={`lbd-${l.id}`}>{L(`${lr.seats} seats`, `${lr.seats} מנדטים`)}, {fmtPct(l.votes, total, digits)}{familyDefinition && family && family!=='other' && <> · {familyLabel(familyDefinition,lang)}{family==='mixed'?` · ${L('Mixed lists','רשימות מעורבות')}`:''}</>}{d !== 0 && <>, {Math.abs(d)}{d > 0 ? baseLabel.more : baseLabel.fewer}</>}{l.withdrawn && <>, {L('withdrew', 'פרשה')}</>}{partner && <>, {L(`surplus-vote agreement with ${listLabel(partner, lang)}`, `הסכם עודפים עם ${listLabel(partner, lang)}`)}</>}</span>
           <span className="lb-seats">
-            <b key={`s${lr.seats}`} className={d!==0 ? 'tick' : ''}>{lr.seats}</b>
+            <b key={`s${lr.seats}`} className={previousSeats.current.election === s.electionId && previousSeats.current.seats.has(l.id) && previousSeats.current.seats.get(l.id) !== lr.seats ? 'tick' : ''}>{lr.seats}</b>
             {d !== 0 && <small dir="ltr"><Mark up={d > 0} />{Math.abs(d)}</small>}
           </span>
         </button>
