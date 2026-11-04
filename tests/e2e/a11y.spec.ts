@@ -89,3 +89,12 @@ test('a candidate links to the Knesset page, the party page and Hebrew Wikipedia
   await expect(about.getByRole('link', { name: 'Wikipedia (he)' })).toHaveAttribute('href', /^https:\/\/he\.wikipedia\.org\//);
   await expect(page.locator('a[href*="en.wikipedia.org"]')).toHaveCount(0);
 });
+
+test('a list links to its own voice and to a neutral source, never English Wikipedia', async ({ page }) => {
+  await start(page);
+  await page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: 'Likud', exact: true }).click();
+  const about = page.getByRole('group', { name: 'About Likud' }).first();
+  await expect(about.getByRole('link').first()).toHaveAttribute('href', /^https:\/\//);
+  await expect(about.getByText('Neutral:')).toBeVisible();
+  await expect(page.locator('a[href*="en.wikipedia.org"]')).toHaveCount(0);
+});

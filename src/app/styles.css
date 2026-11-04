@@ -499,3 +499,10 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .lb-parties .slip { width: 44px; height: 24px; }
 .lb-parties b { text-align: end; }
 .lb-pname { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* links about a list or party: its own voice, then neutral sources */
+.party-links { display: flex; flex-wrap: wrap; gap: 2px 14px; margin-top: 3px; }
+.pl-group { display: inline-flex; flex-wrap: wrap; gap: 0 8px; align-items: baseline; }
+.party-links a { color: var(--ink-2); text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); padding: 2px 0; }
+.party-links a:hover { color: var(--ink); text-decoration-color: currentColor; }
+.party-row .party-links { display: flex; }

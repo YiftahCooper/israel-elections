@@ -10,6 +10,7 @@ import { useL, useLang } from '../i18n.ts';
 import { setState } from '../store.ts';
 import { ListDetail } from './ListDetail.tsx';
 import { Mark } from './ListBars.tsx';
+import { PartyLinks } from './PartyLinks.tsx';
 import { Slip } from './ui.tsx';
 
 export function ListSidePanel({ s, r, ds, base, baseR, listId }: { s: Scenario; r: AllocationResult; ds: ElectionDataset; base: Scenario; baseR: AllocationResult; listId: string }) {
@@ -32,6 +33,7 @@ export function ListSidePanel({ s, r, ds, base, baseR, listId }: { s: Scenario; 
         <div style={{ minWidth: 0, flex: 1 }}>
           <h2 style={{ margin: 0 }}>{listLabel(l, lang)}</h2>
           <div className="small ink2" lang="he">{l.nameHe}</div>
+          <PartyLinks links={l.links} name={listLabel(l, lang)} />
         </div>
         <div className="sp-seats">
           <b>{lr.seats}</b><span className="small ink2">{L('seats', 'מנדטים')}</span>

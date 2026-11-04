@@ -8,6 +8,7 @@ import { electedOf } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt } from '../format.ts';
 import { dispatch, dispatchMany, setState, useLevel } from '../store.ts';
+import { PartyLinks } from './PartyLinks.tsx';
 import { Info, Slip } from './ui.tsx';
 
 const newId = (k: number) => `sim-${Date.now().toString(36)}${k}${Math.floor(Math.random() * 1e4).toString(36)}`;
@@ -67,7 +68,7 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
         {parties.map((p) => (
           <div key={p.id} className="party-row">
             {p.logo ? <Slip letters={l.letters} color={p.color ?? l.color} logo={p.logo} /> : <span className="swatch" style={{ background: p.color ?? l.color }} />}
-            <span>{name(p)}</span>
+            <span style={{ minWidth: 0 }}>{name(p)}<PartyLinks links={p.links} name={name(p)} /></span>
             <b>{held(p.id)}</b>
             {standard && s.blocs.length > 0 ? (
               <select aria-label={L(`Bloc of ${p.nameEn}`, `הגוש של ${p.nameHe}`)} value={s.partyBlocs && p.id in s.partyBlocs ? s.partyBlocs[p.id] ?? '__none' : '__list'}
