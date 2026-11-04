@@ -2,8 +2,8 @@ import {familyLabel} from './labels.ts';
 import type { ElectionDataset, ElectionId } from '../data/schema.ts';
 import type { Action, Scenario } from '../model/scenario.ts';
 import type { SourceChoice } from '../app/voteEdit.ts';
-export type MixedPolicy = 'separate-segment' | 'include-whole-list' | 'exclude';
-export interface Member { listId: string; partyIds: string[]; scope: string; treatment: string; classificationEvidence: { status: string; sourceIds: string[]; claim: string }; [key: string]: unknown }
+export type MixedPolicy = 'separate-segment' | 'include-whole-list' | 'include-headed-list' | 'exclude';
+export interface Member { listId: string; partyIds: string[]; scope: string; headsList?: boolean; treatment: string; classificationEvidence: { status: string; sourceIds: string[]; claim: string }; [key: string]: unknown }
 export interface Family {
   schemaVersion: 1; id: string; revision: string; status: string; nameHe: string; nameEn: string;
   labelEn?: string; labelHe?: string;
@@ -16,7 +16,7 @@ export interface Family {
 const obj = (x: unknown): x is Record<string, any> => !!x && typeof x === 'object' && !Array.isArray(x);
 const strings = (x: unknown): x is string[] => Array.isArray(x) && x.every(y => typeof y === 'string') && new Set(x).size === x.length;
 export function validFamily(x: unknown): x is Family {
-  if (!obj(x) || x.schemaVersion !== 1 || !['id','revision','status','nameHe','nameEn','definition'].every(k => typeof x[k] === 'string' && x[k].length > 0) || !['separate-segment','include-whole-list','exclude'].includes(x.defaultMixedPolicy) || !obj(x.sources) || !Array.isArray(x.elections)) return false;
+  if (!obj(x) || x.schemaVersion !== 1 || !['id','revision','status','nameHe','nameEn','definition'].every(k => typeof x[k] === 'string' && x[k].length > 0) || !['separate-segment','include-whole-list','include-headed-list','exclude'].includes(x.defaultMixedPolicy) || !obj(x.sources) || !Array.isArray(x.elections)) return false;
   for (const k of ['labelHe','labelEn']) if (x[k]!==undefined && (typeof x[k]!=='string'||!x[k].trim())) return false;
   for (const s of Object.values(x.sources)) { if (!obj(s)) return false; if (s.url) { try { const u = new URL(s.url); if (u.protocol !== 'https:' || /(^|\.)en\.(m\.)?wikipedia\.org$/i.test(u.hostname)) return false; } catch { return false; } } }
   if (new Set(x.elections.map((e: any) => e.electionId)).size !== x.elections.length) return false;
@@ -39,7 +39,7 @@ export function membership(f: Family, election: ElectionId) {
     else if (m.treatment === 'include') selected.add(m.listId);
   }
   for (const id of f.included ?? []) if (id.startsWith(election.slice(1)+'-')) selected.add(id);
-  for (const id of mixed) { if (f.defaultMixedPolicy === 'include-whole-list') selected.add(id); else selected.delete(id); }
+  for (const id of mixed) { if (f.included?.includes(id) || f.defaultMixedPolicy === 'include-whole-list' || f.defaultMixedPolicy === 'include-headed-list' && row?.members.find(m=>m.listId===id)?.headsList) selected.add(id); else selected.delete(id); }
   for (const id of selected) mixed.delete(id);
   const excluded = new Set<string>(f.defaultMixedPolicy === 'exclude' ? mixed : []);
   if (f.defaultMixedPolicy === 'exclude') mixed.clear();

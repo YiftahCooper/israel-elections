@@ -6,6 +6,7 @@ import { appearances, parties, suggestions, linkedAppearances, partyLabel } from
 import { loadDataset } from '../store.ts';
 import { useL, useLang } from '../i18n.ts';
 import { ChoicePicker } from './ChoicePicker.tsx';
+import {JointFacts} from './JointFacts.tsx';
 import { Seg } from './ui.tsx';
 import { historyElections } from '../../families/runtime.ts';
 export function FamilyEditor({f,initialElection,onEdit,onSave}: {f:Family;initialElection:ElectionId;onEdit:(change:(f:Family)=>Family)=>void;onSave:()=>void}) {
@@ -15,7 +16,7 @@ export function FamilyEditor({f,initialElection,onEdit,onSave}: {f:Family;initia
  useEffect(()=>{let live=true;setDataset(null);loadDataset(election).then(d=>{if(live)setDataset(d);}).catch(()=>setError(L('Could not load election.','לא ניתן לטעון את הבחירות.')));return()=>{live=false;};},[election]);
  const row=f.elections.find(e=>e.electionId===election), m=membership(f,election),selected={selected:m.selected,mixed:new Set([...m.mixed,...m.excluded])},at=historyElections.findIndex(d=>d.id===election);
  const listName=(id:string)=>{const l=ds?.lists.find(l=>l.id===id);if(l)return lang==='he'?l.shortHe:l.shortEn??l.shortHe;return partyLabel(appearances.find(a=>a.listId===id)?.partyId??'',lang);};
- const toggle=(id:string,on:boolean,mixed=false)=>onEdit(x=>({...x,defaultMixedPolicy:on&&mixed?'include-whole-list':x.defaultMixedPolicy,disabled:on?x.disabled?.filter(v=>v!==id):[...new Set([...x.disabled??[],id])],included:on?[...new Set([...x.included??[],id])]:x.included?.filter(v=>v!==id)}));
+ const toggle=(id:string,on:boolean)=>onEdit(x=>({...x,disabled:on?x.disabled?.filter(v=>v!==id):[...new Set([...x.disabled??[],id])],included:on?[...new Set([...x.included??[],id])]:x.included?.filter(v=>v!==id)}));
  const edge=suggestions.find(e=>e.id===suggested);
  const ids=edge?[...edge.from,...edge.to]:[from,to];
  const scope=edge?('electionId' in edge?edge.electionId:undefined):type==='electoral-partner'?election:undefined;
@@ -32,7 +33,12 @@ export function FamilyEditor({f,initialElection,onEdit,onSave}: {f:Family;initia
   <label>{L('Search lists and aliases','חיפוש רשימות וכינויים')}<input type="search" value={search} onChange={e=>setSearch(e.target.value)}/></label>
   {error&&<p role="alert">{error}</p>}
   <div className="family-selected">{ds?.lists.filter(l=>selected.selected.has(l.id)).map(l=><button key={l.id} className="btn small" onClick={()=>toggle(l.id,false)}>{listName(l.id)} ×</button>)}</div>
-  {!ds?<p role="status">{L('Loading lists…','טעינת רשימות…')}</p>:<div className="family-picker">{ds.lists.filter(l=>[l.nameHe,l.shortHe,l.shortEn,...appearances.filter(a=>a.listId===l.id).flatMap(a=>{const p=parties.find(p=>p.id===a.partyId);return p?[p.nameHe,p.nameEn,...p.names.flatMap(n=>[n.nameHe,n.nameEn])]:[];})].join(' ').toLocaleLowerCase().includes(search.toLocaleLowerCase())).map(l=><label key={l.id}><input type="checkbox" checked={selected.selected.has(l.id)} ref={el=>{if(el)el.indeterminate=selected.mixed.has(l.id);}} onChange={e=>toggle(l.id,e.target.checked,selected.mixed.has(l.id))}/><span>{listName(l.id)}{l.parties?.length?<small>{l.parties.map(p=>lang==='he'?p.nameHe:p.nameEn).join(' · ')}</small>:null}</span>{selected.mixed.has(l.id)&&<small>{L('Mixed','מעורבת')}</small>}</label>)}</div>}
+  {!ds?<p role="status">{L('Loading lists…','טעינת רשימות…')}</p>:<div className="family-picker">{ds.lists.filter(l=>[l.nameHe,l.shortHe,l.shortEn,...appearances.filter(a=>a.listId===l.id).flatMap(a=>{const p=parties.find(p=>p.id===a.partyId);return p?[p.nameHe,p.nameEn,...p.names.flatMap(n=>[n.nameHe,n.nameEn])]:[];})].join(' ').toLocaleLowerCase().includes(search.toLocaleLowerCase())).map(l=><label key={l.id}><input type="checkbox" checked={selected.selected.has(l.id)} ref={el=>{if(el)el.indeterminate=selected.mixed.has(l.id);}} onChange={e=>toggle(l.id,e.target.checked)}/><span>{listName(l.id)}{l.parties?.length?<small>{l.parties.map(p=>lang==='he'?p.nameHe:p.nameEn).join(' · ')}</small>:null}</span>{selected.mixed.has(l.id)&&<small>{L('Mixed','מעורבת')}</small>}</label>)}</div>}
+  {!!row?.members.some(m=>m.scope==='mixed')&&<details><summary>{L('Mixed-list overrides','חריגות לרשימות מעורבות')}</summary>{row.members.filter(m=>m.scope==='mixed').map(m=><div key={m.listId}>
+   <label>{listName(m.listId)} <select aria-label={L(`Counting override for ${listName(m.listId)}`,`חריגת ספירה עבור ${listName(m.listId)}`)} value={f.disabled?.includes(m.listId)?'exclude':f.included?.includes(m.listId)?'include':'default'} onChange={e=>{const v=e.target.value;onEdit(x=>({...x,disabled:[...(x.disabled??[]).filter(id=>id!==m.listId),...(v==='exclude'?[m.listId]:[])],included:[...(x.included??[]).filter(id=>id!==m.listId),...(v==='include'?[m.listId]:[])]}));}}>
+    <option value="default">{L('Use policy','לפי המדיניות')}</option><option value="include">{L('Include whole list','הכללת הרשימה')}</option><option value="exclude">{L('Exclude','ללא הרשימה')}</option>
+   </select></label><JointFacts listId={m.listId}/>
+  </div>)}</details>}
   {!!row?.members.some(m=>m.scope==='extension')&&<details><summary>{L('Optional extensions','הרחבות לבחירה')}</summary>{row.members.filter(m=>m.scope==='extension').map(m=><label key={m.listId}><input type="checkbox" checked={!f.disabled?.includes(m.listId)} onChange={e=>toggle(m.listId,e.target.checked)}/>{listName(m.listId)}</label>)}</details>}
   {!!row?.reviewCandidates.length&&<details><summary>{L('Excluded or contested','לא נכללות או שנויות במחלוקת')}</summary>{row.reviewCandidates.map(m=><label key={m.listId}><input type="checkbox" checked={f.included?.includes(m.listId)??false} onChange={e=>toggle(m.listId,e.target.checked)}/>{listName(m.listId)}</label>)}</details>}
   <details><summary>{L('Link historic partners','קישור שותפים היסטוריים')}</summary>

@@ -1,11 +1,12 @@
 import { emptyCatalogue, parseFamily, validFamily, type Catalogue, type Family } from './model.ts';
-export { builtins } from './runtime.ts';
+import {builtins} from './runtime.ts';
+export {builtins};
 const evidence = import.meta.glob('../../data/meta/families/*.json', { import:'default' });
 export async function fullDefinition(f:Family):Promise<Family> {
  if(f.status==='personal') return f;
  const loader=evidence[`../../data/meta/families/${f.id}.json`];
  if(!loader) throw new Error('Missing family evidence');
- const full=await loader(); if(!validFamily(full)) throw new Error('Invalid family evidence'); return full;
+ const full=await loader(); if(!validFamily(full)) throw new Error('Invalid family evidence'); return {...full,elections:full.elections.map(e=>({...e,members:e.members.map(m=>({...m,headsList:builtins.find(x=>x.id===f.id)?.elections.find(x=>x.electionId===e.electionId)?.members.find(x=>x.listId===m.listId)?.headsList}))}))};
 }
 const KEY='israel-elections:families:v1';
 export function readCatalogue(): Catalogue { try { const x=JSON.parse(localStorage.getItem(KEY)??'null'); if(x?.version===1 && Array.isArray(x.users) && x.users.every(validFamily) && Array.isArray(x.hidden) && x.hidden.every((h:unknown)=>typeof h==='string')) return x; } catch { /* unavailable */ } return emptyCatalogue(); }

@@ -179,3 +179,20 @@ implies adjacency. The list-column header is one short label plus the mixed poli
 Applying a family grouping uses the same stable family colour as its chart/chip for the
 family bloc, muted grey for everyone else, and a distinct muted sand for mixed lists.
 The grouping replacement has one part marker; member lists are not individually marked.
+
+## Joint-list facts and explicit counting
+
+Mixed whole-list ballots stay **Separate** by default; seat shares never stand in
+for unobserved constituent votes. The policy selector additionally offers **If
+family heads list** (registered rank 1), alongside whole-list inclusion and
+exclusion. There is no hidden two-thirds rule. This remains a remembered view,
+not a fork; Edit membership offers per-list Use policy / Include / Exclude
+on a personal copy. Applying a grouping freezes the viewed policy as before.
+
+Only joint lists show official head-party, constituent elected-seat and opening
+faction facts in list details and the family profile's selected election. The
+facts describe the original dataset, including its provisional status, rather
+than scenario seats. Official submission text, sources, per-party faction counts
+and uncertainty are available in the same (i). Unknown identity or opening-day
+membership is never inferred from a later faction. The deterministic derivation
+and refresh instructions are in the families metadata README.

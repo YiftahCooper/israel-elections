@@ -65,7 +65,7 @@ test('catalogue import checks real appearances and canonical party identities',a
 
 test('compact generated runtime is below 200 KB and matches all nine independent totals',async()=>{
  const {compileFamilyRuntime}=await import('../scripts/family-runtime.ts');const packed=compileFamilyRuntime();expect(Buffer.byteLength(JSON.stringify(packed))).toBeLessThan(200000);
- const {builtins}=await import('../src/families/runtime.ts');for(const f of builtins)for(const e of f.elections){const d=ds(Number(e.electionId.slice(1))),full=JSON.parse(readFileSync(`data/meta/families/${f.id}.json`,'utf8'));const row=full.elections.find((r:{electionId:string})=>r.electionId===e.electionId);// a joint list the family leads (first place and ≥ ⅔ of its seats) moves whole from mixed to counted
+ const {builtins}=await import('../src/families/runtime.ts');for(const f of builtins)for(const e of f.elections){const d=ds(Number(e.electionId.slice(1))),full=JSON.parse(readFileSync(`data/meta/families/${f.id}.json`,'utf8'));const row=full.elections.find((r:{electionId:string})=>r.electionId===e.electionId);// Published mixed lists remain separate by default.
  const ledVotes=e.members.filter(m=>m.scope==='led').reduce((n,m)=>n+BigInt(d.lists.find(l=>l.id===m.listId)!.votes),0n);
  expect(aggregate(f,d).votes).toBe(BigInt(row.computed.includedUnmixed.votes)+ledVotes);expect(aggregate(f,d).mixed).toBe(BigInt(row.computed.mixedWholeLists.votes)-ledVotes);}
 });
@@ -85,12 +85,12 @@ test('family grouping only creates a mixed bloc when whole mixed appearances rem
  for(const policy of ['exclude','include-whole-list'] as const){const s=scenarioFromDataset(ds(1)),x={...f,defaultMixedPolicy:policy};expect(applyAction(s,groupingAction(x,s)).blocs.map(b=>b.id)).not.toContain('mixed');}
 });
 
-test('a joint list led by the family counts whole for it; a genuine partnership stays mixed',async()=>{
+test('heading a joint list is an explicit policy with per-list overrides',async()=>{
  const {builtins}=await import('../src/families/runtime.ts');const likud=builtins.find(x=>x.id==='herut-likud')!;
- const scope=(e:string,id:string)=>likud.elections.find(x=>x.electionId===e)!.members.find(m=>m.listId===id)!.scope;
- // 2026: Likud holds first place and 26 of 27 seats; New Hope (rank 9) is a partner, not a co-owner
- expect(scope('k26','26-מחל')).toBe('led');
- // 2013 Likud–Yisrael Beiteinu: 20 of 31 seats is below two thirds
- expect(scope('k19','19-מחל')).toBe('mixed');
- const m=membership(likud,'k26');expect(m.selected.has('26-מחל')).toBe(true);expect(m.mixed.has('26-מחל')).toBe(false);
+ expect(likud.defaultMixedPolicy).toBe('separate-segment');
+ expect(membership(likud,'k26').mixed.has('26-מחל')).toBe(true);
+ expect(membership({...likud,defaultMixedPolicy:'include-headed-list'},'k19').selected.has('19-מחל')).toBe(true);
+ expect(membership({...likud,included:['26-מחל']},'k26').selected.has('26-מחל')).toBe(true);
+ expect(membership({...likud,defaultMixedPolicy:'include-whole-list',disabled:['26-מחל']},'k26').selected.has('26-מחל')).toBe(false);
+ expect(parseFamily(JSON.stringify({...likud,defaultMixedPolicy:'include-headed-list'})).defaultMixedPolicy).toBe('include-headed-list');
 });
