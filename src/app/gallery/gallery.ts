@@ -37,7 +37,7 @@ export class GalleryClient {
   private attempted = 0;
   private failure?: Error;
   private pending?: Promise<Snapshot>;
-  constructor(private site: string, private fetcher: typeof fetch = fetch, private storage?: StorageLike) {
+  constructor(private site: string, private fetcher: typeof fetch = (input, init) => fetch(input, init), private storage?: StorageLike) {
     try {
       const cached = JSON.parse(storage?.getItem(KEY) ?? 'null');
       if (cached && Number.isFinite(cached.timestamp) && cached.timestamp <= Date.now() && Array.isArray(cached.entries) && cached.entries.every((e: GalleryEntry) => parseBody(buildBody(e), site) && Number.isInteger(e.issue) && e.issue > 0 && typeof e.author === 'string' && typeof e.date === 'string' && Number.isFinite(e.likes))) this.snapshot = cached;

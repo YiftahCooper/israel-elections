@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { Info } from 'lucide-react';
 import { useL, useLang } from '../i18n.ts';
 import { shareLink, useStore } from '../store.ts';
 import { GalleryClient, filterEntries, issueUrl, publishUrl, validShareLink, type GalleryEntry } from '../gallery/gallery.ts';
@@ -9,7 +10,8 @@ export function ScenarioGallery() {
   const L = useL(), lang = useLang();
   const scenario = useStore(s => s.scenario);
   const elections = useStore(s => s.elections);
-  const [description, setDescription] = useState(''), [tags, setTags] = useState('');
+  const [tags, setTags] = useState('');
+  const description = scenario?.description ?? '';
   const [query, setQuery] = useState(''), [year, setYear] = useState(''), [tag, setTag] = useState(''), [sort, setSort] = useState('likes');
   const [entries, setEntries] = useState<GalleryEntry[]>([]), [timestamp, setTimestamp] = useState(0);
   const [busy, setBusy] = useState(false), [error, setError] = useState('');
@@ -18,7 +20,8 @@ export function ScenarioGallery() {
   const client = useMemo(() => {
     let storage: Storage | undefined;
     try { storage = localStorage; } catch { /* private browser */ }
-    return new GalleryClient(site, fetch, storage);
+    // fetch must be called unbound from its owner (window), never as a method of another object
+    return new GalleryClient(site, (input, init) => fetch(input, init), storage);
   }, [site]);
   useEffect(() => {
     let active = true;
@@ -45,40 +48,43 @@ export function ScenarioGallery() {
       const link = await shareLink();
       const election = elections.find(e => e.id === scenario.electionId);
       if (!election || !validShareLink(link, site)) throw new Error();
-      tab.location.href = publishUrl({ name: scenario.name || L('Untitled scenario', 'תרחיש ללא שם'), description, electionId: scenario.electionId, year: election.date.slice(0, 4), tags: tags.split(',').map(t => t.trim()).filter(Boolean), shareLink: link });
+      tab.location.href = publishUrl({ name: scenario.name || L('Untitled scenario', 'תרחיש ללא שם'), description: description.slice(0, 3000), electionId: scenario.electionId, year: election.date.slice(0, 4), tags: tags.split(',').map(t => t.trim()).filter(Boolean), shareLink: link });
     } catch { tab.close(); setError('publish'); }
     finally { setPublishing(false); }
   }
   const visible = filterEntries(entries, query, year, tag, sort);
-  return <section className="scenario-gallery" dir={lang === 'he' ? 'rtl' : 'ltr'} aria-label={L('Community scenario gallery', 'גלריית תרחישים קהילתית')}>
-    <h2>{L('Community scenarios', 'תרחישים מהקהילה')}</h2>
-    <p>{L('Publishing is public and requires a GitHub account. The scenario, description and tags will be visible to everyone under your GitHub username. Do not include private information.', 'הפרסום ציבורי ודורש חשבון GitHub. התרחיש, התיאור והתגיות יהיו גלויים לכולם תחת שם המשתמש שלכם ב-GitHub. אין לכלול מידע פרטי.')}</p>
-    <fieldset>
-      <legend>{L('Share the active scenario', 'פרסום התרחיש הפעיל')}</legend>
-      <p>{scenario?.name || L('Open a scenario first', 'פתחו תרחיש תחילה')}</p>
-      <label>{L('Description', 'תיאור')}<textarea maxLength={3000} value={description} onChange={e => setDescription(e.target.value)} /></label>
-      <label>{L('Tags (comma separated)', 'תגיות (מופרדות בפסיקים)')}<input maxLength={300} value={tags} onChange={e => setTags(e.target.value)} /></label>
-      <button type="button" disabled={!scenario || publishing} onClick={prepare}>{L('Publish to the gallery ↗', 'פרסום בגלריה ↗')}</button>
-    </fieldset>
-    <div className="scenario-gallery-filters">
-      <label>{L('Search', 'חיפוש')}<input type="search" value={query} onChange={e => setQuery(e.target.value)} /></label>
-      <label>{L('Election year', 'שנת בחירות')}<select value={year} onChange={e => setYear(e.target.value)}><option value="">{L('All years', 'כל השנים')}</option>{[...new Set(entries.map(e => e.year))].sort().reverse().map(y => <option key={y}>{y}</option>)}</select></label>
-      <label>{L('Tag', 'תגית')}<select value={tag} onChange={e => setTag(e.target.value)}><option value="">{L('All tags', 'כל התגיות')}</option>{[...new Set(entries.flatMap(e => e.tags))].sort().map(t => <option key={t}>{t}</option>)}</select></label>
-      <label>{L('Sort', 'מיון')}<select value={sort} onChange={e => setSort(e.target.value)}><option value="likes">{L('Most liked', 'הכי אהובים')}</option><option value="newest">{L('Newest', 'החדשים ביותר')}</option></select></label>
+  const canPublish = !!scenario?.log.length && !publishing;
+  return <section className="scenario-gallery" aria-label={L('Community scenario gallery', 'גלריית תרחישים קהילתית')}>
+    <h3>{L('Community scenarios', 'תרחישים מהקהילה')}</h3>
+    <div className="sg-publish">
+      <div className="sg-what">
+        <span className="small ink2">{L('Publish this scenario', 'פרסום התרחיש הזה')}</span>
+        <b dir="auto">{scenario?.name || L('Untitled scenario', 'תרחיש ללא שם')}</b>
+        <span className="tiny muted">{scenario?.log.length ? L('Name and description come from “This scenario” above.', 'השם והתיאור נלקחים מ"התרחיש הנוכחי" למעלה.') : L('Make a change first: an unedited election is just the official result.', 'בצעו שינוי תחילה: בחירות ללא שינוי הן רק התוצאה הרשמית.')}</span>
+      </div>
+      <label className="field">{L('Tags (comma separated)', 'תגיות (מופרדות בפסיקים)')}<input type="text" maxLength={300} value={tags} onChange={e => setTags(e.target.value)} placeholder={L('e.g. turnout, Arab parties', 'למשל: שיעור הצבעה, מפלגות ערביות')} /></label>
+      <button type="button" className="btn primary" disabled={!canPublish} onClick={prepare}>{L('Publish on GitHub ↗', 'פרסום ב-GitHub ↗')}</button>
+      <p className="tiny muted sg-note">{L('Publishing is public and needs a GitHub account: the scenario, its description and tags appear under your GitHub username. Do not include private information.', 'הפרסום ציבורי ודורש חשבון GitHub: התרחיש, התיאור והתגיות יופיעו תחת שם המשתמש שלכם. אין לכלול מידע פרטי.')}</p>
     </div>
-    <button type="button" disabled={busy} onClick={refresh}>{L('Refresh', 'רענון')}</button>
-    <p role="status">{busy ? L('Loading…', 'טוען…') : L(`${visible.length} scenarios`, `${visible.length} תרחישים`)}{timestamp > 0 && ` · ${L('Updated', 'עודכן')}: ${new Date(timestamp).toLocaleString(lang)}`}</p>
-    <p>{L('Refreshes at most every 10 minutes (including manual refresh). Up to 1,000 open issues are checked, newest first. GitHub allows 60 anonymous requests per hour per IP.', 'הרענון מתבצע לכל היותר פעם ב-10 דקות (גם ברענון ידני). נבדקות עד 1,000 סוגיות פתוחות, מהחדשות לישנות. GitHub מאפשר 60 בקשות אנונימיות בשעה לכל כתובת IP.')}</p>
-    {error && <p role="alert">{error === 'rate-limit' ? L('GitHub rate limit reached. Try again later; cached results remain visible.', 'הגעתם למגבלת הבקשות של GitHub. נסו מאוחר יותר; תוצאות שמורות נשארות מוצגות.') : error === 'popup' ? L('Allow pop-ups to open GitHub, then try again.', 'אפשרו חלונות קופצים כדי לפתוח את GitHub ונסו שוב.') : error === 'publish' ? L('Could not prepare the share link. Try again.', 'לא ניתן להכין קישור שיתוף. נסו שוב.') : L('Could not load GitHub. Check your connection and retry in 10 minutes. Cached results remain visible.', 'לא ניתן לטעון מ-GitHub. בדקו את החיבור ונסו שוב בעוד 10 דקות. תוצאות שמורות נשארות מוצגות.')}</p>}
-    <ul className="scenario-gallery-grid">{visible.map(e => <li key={e.issue}>
-      <h3 dir="auto">{e.name}</h3><p>{e.electionId} · {e.year} · <bdi>{e.author}</bdi> · <time dateTime={e.date}>{new Date(e.date).toLocaleDateString(lang)}</time> · 👍 {e.likes}</p>
-      <p dir="auto">{e.tags.join(' · ')}</p>
-      <details><summary aria-label={L(`Description: ${e.name}`, `תיאור: ${e.name}`)}>ⓘ {L('Description', 'תיאור')}</summary><p className="scenario-gallery-description" dir="auto">{e.description}</p></details>
-      <div className="scenario-gallery-actions"><a href={validShareLink(e.shareLink, site) ? e.shareLink : undefined} onClick={event => {
+    <div className="sg-filters">
+      <label className="field sg-search">{L('Search', 'חיפוש')}<input type="search" value={query} onChange={e => setQuery(e.target.value)} placeholder={L('Name, description or tag', 'שם, תיאור או תגית')} /></label>
+      <label className="field">{L('Election year', 'שנת בחירות')}<select value={year} onChange={e => setYear(e.target.value)}><option value="">{L('All years', 'כל השנים')}</option>{[...new Set(entries.map(e => e.year))].sort().reverse().map(y => <option key={y}>{y}</option>)}</select></label>
+      <label className="field">{L('Tag', 'תגית')}<select value={tag} onChange={e => setTag(e.target.value)}><option value="">{L('All tags', 'כל התגיות')}</option>{[...new Set(entries.flatMap(e => e.tags))].sort().map(t => <option key={t}>{t}</option>)}</select></label>
+      <label className="field">{L('Sort', 'מיון')}<select value={sort} onChange={e => setSort(e.target.value)}><option value="likes">{L('Most liked', 'הכי אהובים')}</option><option value="newest">{L('Newest', 'החדשים ביותר')}</option></select></label>
+      <button type="button" className="btn ghost" disabled={busy} onClick={refresh} title={L('Refreshes at most every 10 minutes; GitHub allows 60 anonymous requests an hour.', 'מתרענן לכל היותר פעם ב-10 דקות; GitHub מאפשר 60 בקשות אנונימיות בשעה.')}>{busy ? L('Loading…', 'טוען…') : L('Refresh', 'רענון')}</button>
+    </div>
+    <p className="tiny muted" role="status">{busy ? L('Loading…', 'טוען…') : L(`${visible.length} of ${entries.length} scenarios`, `${visible.length} מתוך ${entries.length} תרחישים`)}{timestamp > 0 && ` · ${L('updated', 'עודכן')} ${new Date(timestamp).toLocaleString(lang === 'he' ? 'he-IL' : 'en-GB', { dateStyle: 'short', timeStyle: 'short' })}`}</p>
+    {error && <p className="banner warn" role="alert">{error === 'rate-limit' ? L('GitHub rate limit reached. Try again later; cached results remain visible.', 'הגעתם למגבלת הבקשות של GitHub. נסו מאוחר יותר; תוצאות שמורות נשארות מוצגות.') : error === 'popup' ? L('Allow pop-ups to open GitHub, then try again.', 'אפשרו חלונות קופצים כדי לפתוח את GitHub ונסו שוב.') : error === 'publish' ? L('Could not prepare the share link. Try again.', 'לא ניתן להכין קישור שיתוף. נסו שוב.') : L('Could not load GitHub. Check your connection and retry in 10 minutes. Cached results remain visible.', 'לא ניתן לטעון מ-GitHub. בדקו את החיבור ונסו שוב בעוד 10 דקות. תוצאות שמורות נשארות מוצגות.')}</p>}
+    {!busy && !error && entries.length === 0 && <p className="small muted">{L('No community scenarios yet. Make a change, name it above, and be the first to publish one.', 'עדיין אין תרחישים מהקהילה. שנו משהו, תנו לו שם למעלה, והיו הראשונים לפרסם.')}</p>}
+    <ul className="scn-cards">{visible.map(e => <li key={e.issue} className="scn-card">
+      <div className="scn-title"><b dir="auto">{e.name}</b><span className="small muted">{e.year} · <bdi>{e.author}</bdi> · <time dateTime={e.date}>{new Date(e.date).toLocaleDateString(lang === 'he' ? 'he-IL' : 'en-GB')}</time> · <span aria-label={L(`${e.likes} likes`, `${e.likes} לייקים`)}>♥ {e.likes}</span></span></div>
+      {e.tags.length > 0 && <div className="sg-tags">{e.tags.map(t => <button type="button" key={t} className="chip" aria-pressed={tag === t} onClick={() => setTag(tag === t ? '' : t)} dir="auto">{t}</button>)}</div>}
+      <details><summary aria-label={L(`Description: ${e.name}`, `תיאור: ${e.name}`)}><Info className="icon sm" aria-hidden /> {L('Description', 'תיאור')}</summary><p className="scenario-gallery-description" dir="auto">{e.description}</p></details>
+      <div className="row" style={{ gap: 4 }}><a className="btn small" href={validShareLink(e.shareLink, site) ? e.shareLink : undefined} onClick={event => {
         event.preventDefault();
         // A full navigation also invokes the app's existing startup share importer when only the hash changes.
         if (validShareLink(e.shareLink, site)) { location.assign(e.shareLink); location.reload(); }
-      }}>{L('Open', 'פתיחה')}</a><a href={issueUrl(e.issue)} target="_blank" rel="noopener noreferrer">{L('Like on GitHub ↗', 'לייק ב-GitHub ↗')}</a></div>
+      }}>{L('Open', 'פתיחה')}</a><a className="btn small ghost" href={issueUrl(e.issue)} target="_blank" rel="noopener noreferrer">{L('Like on GitHub ↗', 'לייק ב-GitHub ↗')}</a></div>
     </li>)}</ul>
   </section>;
 }

@@ -27,6 +27,15 @@ describe('gallery template', () => {
   });
 });
 describe('API', () => {
+  it('calls the global fetch unbound by default (browsers reject fetch called as a method)', async () => {
+    const strict = vi.fn(function (this: unknown) {
+      if (this !== undefined && this !== globalThis) throw new TypeError('Illegal invocation');
+      return Promise.resolve(new Response('[]', { status: 200 }));
+    });
+    vi.stubGlobal('fetch', strict);
+    try { await expect(new GalleryClient(site).load()).resolves.toMatchObject({ entries: [] }); }
+    finally { vi.unstubAllGlobals(); }
+  });
   const issue = { number: 1, body: buildBody(scenario), user: { login: 'alice' }, created_at: '2026-01-01', reactions: { '+1': 3 } };
   it('paginates and caches, including manual refresh within ten minutes', async () => {
     const fetcher = vi.fn().mockResolvedValueOnce(new Response(JSON.stringify(Array(100).fill(issue)))).mockResolvedValueOnce(new Response('[]'));

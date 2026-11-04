@@ -6,6 +6,15 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 
 ## [Unreleased]
 
+### Fixed
+
+- **Community gallery, locality map (4 Nov 2026).** The scenario gallery never reached GitHub: it called the
+  browser's `fetch` as a method of its own object, which browsers reject ("Illegal invocation"); a unit test now
+  guards it. The gallery sits on the Scenarios page in the app's own cards and controls, publishes the current
+  scenario's name and description instead of asking for them again, and waits until the scenario has a change. The
+  locality map opens fitted to Israel in a tall column on desktop; its drawing layer no longer covers the address
+  search after the window narrows (the map frame is always positioned, so Leaflet's layers stay clipped).
+
 ### Changed
 
 - **Visual board, owner feedback (4 Nov 2026).** The chamber leads the Overview; lists are a column of seat bars (the

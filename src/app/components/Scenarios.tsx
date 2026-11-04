@@ -10,6 +10,7 @@ import { allocationOf } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { download } from '../format.ts';
 import { duplicateCurrent, getState, importScenarioJson, openElection, replay, resetAll, saveCurrent, setState, shareLink, toast, useStore, type SavedScenario } from '../store.ts';
+import { ScenarioGallery } from './ScenarioGallery.tsx';
 import { electionLabel } from './TopBar.tsx';
 
 const fileName = (n: string) => (n || 'scenario').replace(/[^\p{L}\p{N}]+/gu, '_').replace(/^_+|_+$/g, '').slice(0, 60) || 'scenario';
@@ -104,6 +105,10 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
             );
           })}
         </ul>
+      </section>
+
+      <section style={{ marginTop: 22 }}>
+        <ScenarioGallery />
       </section>
     </div>
   );

@@ -42,6 +42,7 @@ export function LocalityMap({ s, data, locations, locationError }: { s: Scenario
   }), [data, locations]);
   const matches = useMemo(() => data.rows.filter(r => matchesLocality(q, { ...locations[String(r.code)], nameHe:r.nameHe, code:r.code })), [data, locations, q]);
   const winners = useMemo(() => placed.map(p => localityWinner(s, data.listIds, p.row.votes, mode)), [placed,s,data.listIds,mode]);
+  const fittedFor = useRef<unknown>(null);
   useEffect(() => {
     if (!container.current) return;
     const m = Leaflet.map(container.current, { preferCanvas:true, scrollWheelZoom:false }).setView([31.7,35],7);
@@ -57,8 +58,13 @@ export function LocalityMap({ s, data, locations, locationError }: { s: Scenario
       const title = document.createElement('span'); title.dir = 'auto'; title.textContent = lang === 'en' ? p.nameEn || p.row.nameHe : p.row.nameHe;
       Leaflet.circleMarker([p.lat,p.lon], {radius:5, color:'#182638',weight:1.5,fillColor:winners[i].color,fillOpacity:0.9}).bindTooltip(title).on('click',()=>setSelected(p.row)).addTo(group);
     });
+    // open fitted to this election's localities (once per election, so a user's own zoom is kept while editing)
+    if (placed.length && fittedFor.current !== data) {
+      m.fitBounds(Leaflet.latLngBounds(placed.map((p) => [p.lat, p.lon] as [number, number])), { padding: [12, 12] });
+      fittedFor.current = data;
+    }
     return () => { group.remove(); };
-  }, [placed,winners,lang]);
+  }, [placed,winners,lang,data]);
   const choose = (row: LocalityRow) => {
     setSelected(row);
     const p = locations[String(row.code)]; if (p && !isEnvelopeRow(row)) map.current?.setView([p.lat,p.lon],12);
