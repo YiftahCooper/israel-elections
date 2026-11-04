@@ -103,6 +103,7 @@ test('Simple still shows a list’s surplus agreement and its state', async ({ p
 
 test('rules changed by an experimental preset are named at every level, and no zero seat price is shown', async ({ page }) => {
   await start(page);
+  await page.getByRole('button', { name: /^More questions/ }).click(); // Simple starts with the first few cards
   await page.getByText('Pure proportional representation').locator('..').getByRole('button', { name: 'Try it' }).click();
   await expect(page.getByRole('status').filter({ hasText: 'Experimental rules' })).toContainText('remainder seats by Sainte-Laguë (law: Bader–Ofer)');
   await expect(page.getByText(/^No percentage threshold applies\.$/)).toBeVisible();

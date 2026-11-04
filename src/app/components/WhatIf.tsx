@@ -1,7 +1,7 @@
 // One-click counterfactuals. Each preset is a list of ordinary scenario actions replayed on the
 // historical result, so it is reproducible, undoable and shareable like any manual edit. The headline
 // seat changes are computed live from the engine, never written by hand.
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import type { ElectionDataset } from '../../data/schema.ts';
 import { allocate } from '../../engine/allocate.ts';
 import { goals, minimalChange } from '../../engine/analysis.ts';
@@ -10,7 +10,7 @@ import { scenarioFromDataset, toEngineInput, type Action, type Scenario } from '
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, signed } from '../format.ts';
-import { getState, setState } from '../store.ts';
+import { getState, setState, useLevel } from '../store.ts';
 
 interface Preset { id: string; titleEn: string; titleHe: string; bodyEn: string; bodyHe: string; actions: (s: Scenario) => Action[] | null }
 
@@ -63,6 +63,8 @@ const resultCache = new WeakMap<ElectionDataset, Map<string, Result[]>>();
 
 export function WhatIf({ ds }: { ds: ElectionDataset }) {
   const L = useL();
+  const { simple } = useLevel();
+  const [all, setAll] = useState(false);
   const lang = useLang();
   const presets = useMemo(() => [...(ds.id === 'k25' ? K25 : ds.id === 'k26' ? K26 : []), ...COMMON], [ds.id]);
   const results = useMemo(() => {
@@ -108,11 +110,16 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // cards that do not apply to this election are left out, and those that move seats come first;
+  // Simple starts with a few, so the default view stays light
+  const useful = results.filter((x) => x.actions).sort((a, b) => Number(b.lines.length > 0) - Number(a.lines.length > 0));
+  const limit = simple && !all ? 4 : useful.length;
+  const shown = useful.slice(0, limit);
   return (
     <div>
       <p className="ink2 small" style={{ marginTop: 0 }}>{L('Each card starts from the real result and changes one thing. The seat changes shown are calculated exactly; “Try it” loads the scenario so you can explore further (Undo returns you to where you were).', 'כל כרטיס מתחיל מהתוצאה האמיתית ומשנה דבר אחד. שינויי המנדטים מחושבים במדויק; "נסו" טוען את התרחיש להמשך חקירה (ביטול מחזיר אתכם).')}</p>
       <div className="whatif">
-        {results.map(({ p, actions, lines, votes }) => (
+        {shown.map(({ p, actions, lines, votes }) => (
           <article key={p.id} className="wi-card">
             <h3>{lang === 'he' ? p.titleHe : p.titleEn}</h3>
             <p className="small ink2">{lang === 'he' ? p.bodyHe : p.bodyEn}</p>
@@ -122,6 +129,7 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
           </article>
         ))}
       </div>
+      {useful.length > limit && <button className="btn small" style={{ marginTop: 10 }} onClick={() => setAll(true)}>{L(`More questions (${useful.length - limit})`, `שאלות נוספות (${useful.length - limit})`)}</button>}
     </div>
   );
 }
