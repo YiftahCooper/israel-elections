@@ -3891,5 +3891,46 @@
   "retrievedAt": "2026-11-04",
   "bytes": 183,
   "sha256": "753ac4f7bc4140245a7f2de8e64eddbf1a3dfb0c7dc1cf9125c67360ccdd617d"
+ },
+ {
+  "id": "logo-k25-labor-page",
+  "file": "logos/k25/labor-20221028055705.html",
+  "url": "https://web.archive.org/web/20221028055705id_/https://havoda.org.il/",
+  "publisher": "מפלגת העבודה",
+  "official": true,
+  "description": "Official campaign logo evidence: labor k25 page.",
+  "method": "http",
+  "archiveUsed": "Wayback raw id_",
+  "retrievedAt": "2026-11-04",
+  "bytes": 247975,
+  "sha256": "ad05a934b9045f896150221a2d49a6b2edc95a1fc322134fe2bf86d0c88e4ba3",
+  "captureTimestamp": "20221028055705"
+ },
+ {
+  "id": "logo-k25-labor-asset",
+  "file": "logos/k25/labor-20221027193950.svg",
+  "url": "https://web.archive.org/web/20221027193950id_/https://havoda.org.il/wp-content/uploads/2022/05/logo.svg",
+  "publisher": "מפלגת העבודה",
+  "official": true,
+  "description": "Official campaign logo evidence: labor k25 asset.",
+  "method": "http",
+  "archiveUsed": "Wayback raw id_",
+  "retrievedAt": "2026-11-04",
+  "bytes": 2565,
+  "sha256": "ad267edced5603deaa6ef858ade10782f1c774ff53d3e2ffaec233b0e4e6502a",
+  "captureTimestamp": "20221027193950"
+ },
+ {
+  "id": "logo-k25-labor-index",
+  "file": "logos/k25/labor-logo-cdx.json",
+  "url": "https://web.archive.org/cdx/search/cdx?url=havoda.org.il/wp-content/uploads/2022/05/logo.svg&from=20220801&to=20221101&output=json&fl=timestamp,original,statuscode,digest,length&filter=statuscode:200&collapse=digest",
+  "publisher": "מפלגת העבודה",
+  "official": true,
+  "description": "Official campaign logo evidence: labor k25 index.",
+  "method": "http",
+  "archiveUsed": "Wayback CDX index",
+  "retrievedAt": "2026-11-04",
+  "bytes": 186,
+  "sha256": "c05809275c6a1378039e5249fc56a4eed3b45d052f4ab1fb71d74e0070cf290e"
  }
 ]

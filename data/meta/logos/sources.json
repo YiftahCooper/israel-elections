@@ -2555,6 +2555,40 @@
         "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.likud.org.il%2Fimages%2Flayout_images%2Flogo.svg&from=20191201&to=20200302&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
         "rawIndex": "logo-k23-likud-index"
       }
+    },
+    {
+      "id": "labor-archive-20221028055705",
+      "title": "מפלגת העבודה official campaign homepage — 2022-10-28",
+      "sourceUrl": "https://havoda.org.il/",
+      "publisher": "מפלגת העבודה",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-04",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3.5 seconds apart",
+      "inspectionDepth": "Archived header HTML, rendered artwork, and matching exact-asset CDX digest inspected",
+      "date": "2022-10-28",
+      "description": "Inspected official homepage capture 20221028055705 references https://havoda.org.il/wp-content/uploads/2022/05/logo.svg as its header logo. Exact archived original bytes from 20221027193950 match campaign-period CDX SHA-1 base32 2P6YFOCMF2MEAUC3AYPSYKGXGEQ5HE73. Artwork visually inspected; original colours and proportions preserved. Separate dated evidence for this election; not assigned by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20221028055705/https://havoda.org.il/",
+      "archiveTimestamp": "20221028055705",
+      "downloadUrl": "https://havoda.org.il/wp-content/uploads/2022/05/logo.svg",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "labor-official-site-2022",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k25-labor-page",
+        "asset": "logo-k25-labor-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20221027193950id_/https://havoda.org.il/wp-content/uploads/2022/05/logo.svg",
+      "assetArchiveTimestamp": "20221027193950",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "2P6YFOCMF2MEAUC3AYPSYKGXGEQ5HE73",
+        "computedDigest": "2P6YFOCMF2MEAUC3AYPSYKGXGEQ5HE73",
+        "assetCaptureTimestamp": "20221027193950",
+        "cdxCaptureTimestamp": "20221027193950",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=havoda.org.il/wp-content/uploads/2022/05/logo.svg&from=20220801&to=20221101&output=json&fl=timestamp,original,statuscode,digest,length&filter=statuscode:200&collapse=digest",
+        "rawIndex": "logo-k25-labor-index"
+      }
     }
   ]
 }

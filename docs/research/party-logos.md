@@ -1019,3 +1019,41 @@ No additional constituent evidence was promoted from the new whole-list headers.
 `python3 scripts/validate-party-logos.py` passed: **26 overlays, 111 source records, 62 assets, 66 hosted entries**, zero download-unavailable and six unresolved entries. Separately recomputed each of the six original SHA-1 values from retained bytes, found the exact matching CDX timestamp/URL/digest row, and checked each CDX timestamp is on or before polling day. `npx tsc --noEmit -p .` passed. `npx vitest run` passed: **57 files, 483 tests**. `node scripts/build-datasets.ts` passed; its repeat wrote **zero** files. Existing full station reconciliation is skipped when station scratch is absent; retained evidence/locality checks still run.
 
 The model digest alone was re-recorded to `0c04cd08ac86f05d9512fc9cce2600566ec6d799048b692f524466e643898ec1` with a one-line justification. All 26 election datasets compare equal to baseline after recursively removing `logo` and `builtAt`; only k20–k25 election datasets changed. Allocation, analysis, validation and rules digests are unchanged. No application source or election results were changed. Commit is local only; no push or merge.
+
+## All-winners acquisition run — 4 November 2026
+
+Scope: k1–k25 official seat winners and k26 winners derived by the app's historical
+allocation of the retained CEC **3 November 2026 final count**, source
+`k26-localities-csv` (`data/raw/k26/expc.csv`), with official surplus agreements.
+K26 has no gazetted officialSeats; computed seats are not labelled gazetted results.
+`scripts/research/logo-coverage.py` now counts actual built `list.logo` fields for
+all 26 elections, rather than overlay eligibility, and derives k26 winners from
+the app allocation instead of bloc membership. The measured starting point is
+**48/308**, not the task brief's 49/335. K1–k25 account for 297 winners and 40 logos;
+k26 adds eleven winners and eight logos. No results were changed.
+
+### Batch 1: k25 Labor
+
+Accepted **one fair-use identification** whole-list logo; no new free-licence or
+constituent mark. Inspected [official October 28 homepage capture](https://web.archive.org/web/20221028055705/https://havoda.org.il/):
+three theme-site-logo images reference `wp-content/uploads/2022/05/logo.svg`.
+The [October 27 original](https://web.archive.org/web/20221027193950id_/https://havoda.org.il/wp-content/uploads/2022/05/logo.svg)
+computes to CDX digest `2P6YFOCMF2MEAUC3AYPSYKGXGEQ5HE73`. Rendered locally:
+navy העבודה with red wheat emblem. Original SVG preserved byte-for-byte.
+The dated official header and matching campaign-period bytes support **high**
+confidence for k25 only; official page, asset and CDX are one evidence family.
+Raw HTML, asset and CDX are retained under `data/raw/logos/k25/`; all have SHA-256
+manifest entries, and overlay/source card share `rawEvidence` and `digestProof`.
+This replaces Labor's prior secondary-only unresolved proposal.
+
+The builder consumes durable public logo inputs; it does not generate artwork.
+The accepted SVG was copied unchanged from retained raw bytes into `public/logos/`,
+following the existing batch convention. `node scripts/build-datasets.ts`
+regenerated public data and source manifests; no public dataset was hand-edited.
+
+Only k25 logo and builtAt differ across the 26 election datasets, verified by a
+recursive comparison to HEAD omitting those keys. The expected model digest changed
+as a result; the other four differential families passed unchanged. Locked dependencies
+installed with npm ci; source/artwork preserved, temporary downloads and local renders
+under `.backup-scratch/logo-all/`. Local Chromium needed sandbox escalation to launch
+(`sandbox_host_linux.cc:41`, Operation not permitted); no external page was automated.

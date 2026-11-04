@@ -69,19 +69,6 @@
       "licence": "Copyright retained by rights holder; fair-use identification proposed",
       "attribution": "www.ynet.co.il; underlying logo designer/rights holder not verified",
       "hosted": false,
-      "inUseEvidence": "Secondary 2022 campaign review illustrates Labor branding; official-origin file and campaign-date evidence still required.",
-      "confidence": "medium",
-      "status": "unresolved",
-      "evidenceId": "ynet-2022-typography",
-      "letters": "אמת",
-      "rights": "fair-use-identification"
-    },
-    {
-      "file": null,
-      "sourceUrl": "https://www.ynet.co.il/news/article/syrrbq9jj",
-      "licence": "Copyright retained by rights holder; fair-use identification proposed",
-      "attribution": "www.ynet.co.il; underlying logo designer/rights holder not verified",
-      "hosted": false,
       "inUseEvidence": "Secondary 2022 campaign review illustrates Meretz branding; official-origin file and campaign-date evidence still required.",
       "confidence": "medium",
       "status": "unresolved",
@@ -153,6 +140,42 @@
         "cdxCaptureTimestamp": "20220811033925",
         "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.likud.org.il/images/layout_images/logo.svg&from=20220801&to=20221101&output=json&fl=timestamp,original,statuscode,digest,length&filter=statuscode:200&collapse=digest",
         "rawIndex": "logo-k25-likud-index"
+      }
+    },
+    {
+      "letters": "אמת",
+      "file": "logos/labor-2022-k25.svg",
+      "sourceUrl": "https://havoda.org.il/",
+      "assetSourceUrl": "https://havoda.org.il/wp-content/uploads/2022/05/logo.svg",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "מפלגת העבודה — official party header mark",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "labor-archive-20221028055705",
+      "inUseDate": "2022-10-28",
+      "archiveUrl": "https://web.archive.org/web/20221028055705/https://havoda.org.il/",
+      "archiveTimestamp": "20221028055705",
+      "inUseEvidence": "Inspected official homepage capture 20221028055705 references https://havoda.org.il/wp-content/uploads/2022/05/logo.svg as its header logo. Exact archived original bytes from 20221027193950 match campaign-period CDX SHA-1 base32 2P6YFOCMF2MEAUC3AYPSYKGXGEQ5HE73. Artwork visually inspected; original colours and proportions preserved. Separate dated evidence for this election; not assigned by analogy.",
+      "retrievedAt": "2026-11-04",
+      "sha256": "ad267edced5603deaa6ef858ade10782f1c774ff53d3e2ffaec233b0e4e6502a",
+      "originalSha256": "ad267edced5603deaa6ef858ade10782f1c774ff53d3e2ffaec233b0e4e6502a",
+      "bytes": 2565,
+      "rawEvidence": {
+        "page": "logo-k25-labor-page",
+        "asset": "logo-k25-labor-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20221027193950id_/https://havoda.org.il/wp-content/uploads/2022/05/logo.svg",
+      "assetArchiveTimestamp": "20221027193950",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "2P6YFOCMF2MEAUC3AYPSYKGXGEQ5HE73",
+        "computedDigest": "2P6YFOCMF2MEAUC3AYPSYKGXGEQ5HE73",
+        "assetCaptureTimestamp": "20221027193950",
+        "cdxCaptureTimestamp": "20221027193950",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=havoda.org.il/wp-content/uploads/2022/05/logo.svg&from=20220801&to=20221101&output=json&fl=timestamp,original,statuscode,digest,length&filter=statuscode:200&collapse=digest",
+        "rawIndex": "logo-k25-labor-index"
       }
     }
   ]
