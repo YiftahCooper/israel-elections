@@ -66,7 +66,8 @@ export function PartyCards({ s, r, base, baseR }: { s: Scenario; r: AllocationRe
                   {partner && <span className={`chip ${agr!.active ? 'ok' : ''}`} title={agr!.active ? L('Surplus-vote agreement (active)', 'הסכם עודפים (בתוקף)') : L('Surplus-vote agreement with no effect', 'הסכם עודפים ללא השפעה')}><span className="clip">{`⇄ ${listLabel(partner, lang)}`}</span>{agr!.active ? '' : <><span aria-hidden> ✕</span><span className="sr-only">{L(' (no effect)', ' (ללא השפעה)')}</span></>}</span>}
                 </div>
               </div>
-              <div className="seats">{lr.seats}<small dir="ltr">{d === 0 ? <span className="muted">±0</span> : <span className={d > 0 ? 'up' : 'down'}>{d > 0 ? `+${d}` : `−${-d}`}</span>}</small></div>
+              <div className="seats">{lr.seats}{/* the change from the historical result, shown only when there is one */}
+                {d !== 0 && <small dir="ltr"><span className={d > 0 ? 'up' : 'down'}>{d > 0 ? `+${d}` : `−${-d}`}</span></small>}</div>
             </button>
           );
         })}

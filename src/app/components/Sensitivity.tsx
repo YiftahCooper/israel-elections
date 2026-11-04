@@ -52,7 +52,7 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
   const maxSeats = segs ? Math.max(1, ...segs.map((x) => x.seats[id] ?? 0)) : 1;
   return (
     <div>
-      <h4>{L('Vote sweep: every point where seats change', 'סריקת קולות: כל נקודה שבה המנדטים משתנים')}</h4>
+      <h3>{L('Vote sweep: every point where seats change', 'סריקת קולות: כל נקודה שבה המנדטים משתנים')}</h3>
       <p className="small ink2">{L('All other lists keep their votes; the valid total changes with the swept list. Boundaries are exact whole vote counts.', 'שאר הרשימות שומרות על קולותיהן; סך הכשרים משתנה עם הרשימה הנסרקת. הגבולות הם מספרי קולות מדויקים.')}</p>
       <div className="row">
         <select value={id} onChange={(e) => pick(e.target.value)} aria-label={L('List', 'רשימה')}>{main.slice(0, 30).map((x) => <option key={x.id} value={x.id}>{listLabel(x, lang)}</option>)}</select>
@@ -106,7 +106,7 @@ function ThresholdSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
   const current = Object.fromEntries(r.lists.filter((x) => x.seats).map((x) => [x.id, x.seats]));
   return (
     <div>
-      <h4>{L('Threshold sensitivity', 'רגישות לאחוז החסימה')}</h4>
+      <h3>{L('Threshold sensitivity', 'רגישות לאחוז החסימה')}</h3>
       <p className="small ink2">{L('Seat results for every threshold in the range, with the exact percentages at which the result changes (other rules unchanged; an experimental question).', 'התוצאה לכל אחוז חסימה בטווח, עם האחוזים המדויקים שבהם היא משתנה (שאר הכללים ללא שינוי; שאלה ניסיונית).')}</p>
       <div className="row">
         <input type="text" value={lo} onChange={(e) => setLo(e.target.value)} style={{ width: 60 }} aria-label={L('From %', 'מ-%')} />% –
@@ -186,7 +186,7 @@ function BlocFlip({ s, r }: { s: Scenario; r: AllocationResult }) {
   if (!s.blocs.length) return null;
   return (
     <div>
-      <h4>{L('Smallest transfer that changes a bloc’s majority', 'המעבר הקטן ביותר שמשנה רוב של גוש')}</h4>
+      <h3>{L('Smallest transfer that changes a bloc’s majority', 'המעבר הקטן ביותר שמשנה רוב של גוש')}</h3>
       <div className="row">
         <select value={bloc} onChange={(e) => { setBloc(e.target.value); setRes(null); }} aria-label={L('Bloc', 'גוש')}>{s.blocs.map((b) => <option key={b.id} value={b.id}>{lang === 'he' ? b.nameHe : b.nameEn}</option>)}</select>
         <span className="small">{seats} / {majority} {has ? L('(has a majority)', '(יש רוב)') : L('(no majority)', '(אין רוב)')}</span>

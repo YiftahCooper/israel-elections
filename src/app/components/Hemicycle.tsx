@@ -6,6 +6,7 @@ import { useL, useLang } from '../i18n.ts';
 import { arcLayout, placeLabels } from '../layout.ts';
 import { download, isolate } from '../format.ts';
 import { setState, useLevel, useStore } from '../store.ts';
+import { Seg } from './ui.tsx';
 
 export interface SeatInfo { listId: string; idx: number; color: string; remainder: boolean; bloc: string | null }
 
@@ -154,8 +155,8 @@ export function Hemicycle({ s, r, compact: compactProp = false, title }: { s: Sc
         {!compact && placeLabels(groups.map((g) => {
           const a = rtl ? Math.PI - g.a : g.a;
           return { id: g.id, n: g.n, a, text: `${listLabel(listOf(g.id), lang)} ${g.n}` };
-        }), cx, cy, bands.length ? R + 26 : R).map((p) => (
-          <text key={p.id} x={p.x} y={p.y} textAnchor={p.anchor} dominantBaseline="middle" fontSize={p.n < 4 ? 20 : 23} fill="var(--ink)" fontWeight={600}>{isolate(p.text)}</text>
+        }), cx, cy, bands.length ? R + 26 : R, 1.25, [-270, 0, 1270, H]).map((p) => (
+          <text key={p.id} x={p.x} y={p.y} textAnchor={p.anchor} dominantBaseline="middle" fontSize={p.n < 4 ? 25 : 29} fill="var(--ink)" fontWeight={600}>{isolate(p.text)}</text>
         ))}
         <text x={cx} y={cy - 40} textAnchor="middle" fontSize={44} fontWeight={700} fill="var(--ink)">{r.seatsAllocated}</text>
         <text x={cx} y={cy - 6} textAnchor="middle" fontSize={16} fill="var(--ink-2)">{isolate(L(`seats · majority ${Math.floor(total / 2) + 1}`, `מנדטים · רוב ${Math.floor(total / 2) + 1}`))}</text>
@@ -190,6 +191,16 @@ export function Hemicycle({ s, r, compact: compactProp = false, title }: { s: Sc
 
   return (
     <div className="chamber">
+      {expert && !compactProp && (
+        <div className="row chamber-tools" style={{ justifyContent: 'flex-end', gap: 6, marginBottom: 4 }}>
+          <Seg label={L('Chamber layout', 'פריסה')} value={layout} onChange={(v) => setState({ layout: v })} options={[{ v: 'hemicycle', label: L('Arc', 'קשת') }, { v: 'blocks', label: L('Blocks', 'גושים') }]} />
+          <select aria-label={L('Colour seats by', 'צביעת מושבים לפי')} value={colorBy} onChange={(e) => setState({ colorBy: e.target.value as 'list' | 'bloc' | 'party' })}>
+            <option value="list">{L('Colour: list', 'צבע: רשימה')}</option>
+            <option value="bloc">{L('Colour: bloc', 'צבע: גוש')}</option>
+            <option value="party">{L('Colour: constituent party', 'צבע: מפלגה מרכיבה')}</option>
+          </select>
+        </div>
+      )}
       {body}
       {hover && hv && (
         <div className="tip" style={{ left: Math.max(0, hover.x - 100), top: Math.max(0, hover.y - 96) }}>

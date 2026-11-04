@@ -95,7 +95,7 @@ export function Turnout({ s }: { s: Scenario }) {
       </div>
       <div className="grid2" style={{ alignItems: 'start', gap: 18 }}>
         <div>
-          <h4>{L('1. Define the group', '1. הגדרת הקבוצה')}</h4>
+          <h3>{L('1. Define the group', '1. הגדרת הקבוצה')}</h3>
           {hasLocalities && <details open={!!data}>
             <summary className="small">{L('Start from official locality results (optional)', 'התחלה מהתוצאות הרשמיות לפי יישובים (רשות)')}</summary>
             <div className="small" style={{ margin: '6px 0' }}>{L('Localities where these lists together received at least', 'יישובים שבהם הרשימות האלה יחד קיבלו לפחות')}{' '}
@@ -118,7 +118,7 @@ export function Turnout({ s }: { s: Scenario }) {
           </div>
         </div>
         <div>
-          <h4>{L('2. How do the additional voters vote?', '2. איך מצביעים המצביעים הנוספים?')}</h4>
+          <h3>{L('2. How do the additional voters vote?', '2. איך מצביעים המצביעים הנוספים?')}</h3>
           <div className="row small" style={{ marginBottom: 6 }}>
             <label className="row"><input type="radio" checked={prefMode === 'group'} disabled={!groupPref} onChange={() => setPrefMode('group')} />{L('Like the group’s current voters', 'כמו המצביעים הנוכחיים בקבוצה')}</label>
             <label className="row"><input type="radio" checked={prefMode === 'custom'} onChange={() => setPrefMode('custom')} />{L('Custom distribution (%)', 'התפלגות מותאמת (%)')}</label>

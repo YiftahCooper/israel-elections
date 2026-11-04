@@ -67,9 +67,11 @@ const TAB_PANEL: Partial<Record<Tab, { preload: () => Promise<void> }>> = {
 const prefetchTab = (t: Tab) => { void TAB_PANEL[t]?.preload().catch(() => {}); };
 
 type Tab = 'whatif' | 'coal' | 'security' | 'walk' | 'compare' | 'charts' | 'structure' | 'turnout' | 'sens' | 'rules' | 'loc' | 'sources' | 'history';
-const SIMPLE_TABS: Tab[] = ['whatif', 'coal', 'walk', 'sources'];
-const STANDARD_TABS: Tab[] = ['whatif', 'compare', 'structure', 'coal', 'security', 'charts', 'walk', 'sources', 'history'];
-const EXPERT_TABS: Tab[] = ['walk', 'compare', 'charts', 'security', 'coal', 'whatif', 'structure', 'turnout', 'sens', 'rules', 'loc', 'sources', 'history'];
+// One order for every level; each level shows a subset of it, so tabs never change places between levels.
+const ALL_TABS: Tab[] = ['whatif', 'coal', 'walk', 'structure', 'compare', 'security', 'charts', 'sens', 'turnout', 'loc', 'rules', 'sources', 'history'];
+const SIMPLE_TABS: Tab[] = ALL_TABS.filter((t) => ['whatif', 'coal', 'walk', 'sources'].includes(t));
+const STANDARD_TABS: Tab[] = ALL_TABS.filter((t) => !['sens', 'turnout', 'loc', 'rules'].includes(t));
+const EXPERT_TABS: Tab[] = ALL_TABS;
 
 export function App() {
   const lang = useStore((st) => st.lang);

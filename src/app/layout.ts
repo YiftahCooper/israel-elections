@@ -27,19 +27,21 @@ export function arcLayout(n: number): { seats: SeatPos[]; r: number } {
 }
 
 /** Places one label per list outside the arc, pushing overlapping labels outwards. */
-export function placeLabels(items: { id: string; n: number; a: number; text: string }[], cx: number, cy: number, R: number) {
+export function placeLabels(items: { id: string; n: number; a: number; text: string }[], cx: number, cy: number, R: number, scale = 1, bounds?: [number, number, number, number]) {
   const placed: { id: string; n: number; text: string; x: number; y: number; anchor: 'start' | 'end' | 'middle'; box: [number, number, number, number] }[] = [];
   const sorted = [...items].sort((p, q) => Math.abs(Math.cos(p.a)) - Math.abs(Math.cos(q.a)));
   for (const it of sorted) {
-    const w = it.text.length * 11.5 + 8, h = 26;
+    const w = it.text.length * 11.5 * scale + 8, h = 26 * scale;
     let placedOne = null as (typeof placed)[number] | null;
     for (let k = 0; k < 14 && !placedOne; k++) {
-      const rr = R + 30 + k * 26;
+      const rr = R + 30 + k * 26 * scale;
       const x = cx + Math.cos(it.a) * rr, y = cy - Math.sin(it.a) * rr;
       const anchor: 'start' | 'end' | 'middle' = Math.cos(it.a) > 0.25 ? 'start' : Math.cos(it.a) < -0.25 ? 'end' : 'middle';
       const x0 = anchor === 'start' ? x : anchor === 'end' ? x - w : x - w / 2;
       const box: [number, number, number, number] = [x0, y - h / 2, x0 + w, y + h / 2];
-      if (!placed.some((p) => box[0] < p.box[2] && box[2] > p.box[0] && box[1] < p.box[3] && box[3] > p.box[1])) placedOne = { ...it, x, y, anchor, box };
+      // a label that would leave the drawing is dropped (the legend and tooltips still name the list)
+      const inside = !bounds || (box[0] >= bounds[0] && box[2] <= bounds[2] && box[1] >= bounds[1] && box[3] <= bounds[3]);
+      if (inside && !placed.some((p) => box[0] < p.box[2] && box[2] > p.box[0] && box[1] < p.box[3] && box[3] > p.box[1])) placedOne = { ...it, x, y, anchor, box };
     }
     if (placedOne) placed.push(placedOne);
   }

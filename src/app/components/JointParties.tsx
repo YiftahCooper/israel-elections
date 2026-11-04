@@ -66,7 +66,7 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
             {standard && s.blocs.length > 0 && (
               <select className="small" aria-label={L(`Bloc of ${p.nameEn}`, `הגוש של ${p.nameHe}`)} value={s.partyBlocs && p.id in s.partyBlocs ? s.partyBlocs[p.id] ?? '__none' : '__list'}
                 onChange={(e) => { const v = e.target.value; dispatch(v === '__list' ? { type: 'setPartyBloc', partyId: p.id, bloc: null, inherit: true } : { type: 'setPartyBloc', partyId: p.id, bloc: v === '__none' ? null : v }); }}>
-                <option value="__list">{L('With its list', 'עם הרשימה')}</option>
+                <option value="__list">{L(`Same as the list (${blocName(l.bloc)})`, `כמו הרשימה (${blocName(l.bloc)})`)}</option>
                 {s.blocs.map((b) => <option key={b.id} value={b.id}>{name(b)}</option>)}
                 <option value="__none">{L('No bloc', 'ללא גוש')}</option>
               </select>
@@ -76,8 +76,9 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
       </ul>
       {unknownElected > 0 && <p className="tiny muted">{L(`${unknownElected} elected member(s) have no recorded party; their seats stay with the list.`, `ל-${unknownElected} נבחרים לא תועדה מפלגה; מושביהם נשארים עם הרשימה.`)}</p>}
       {standard && (
-        <details open={open} onToggle={(e) => setOpen((e.target as HTMLDetailsElement).open)} style={{ marginTop: 6 }}>
-          <summary className="small" style={{ cursor: 'pointer' }}>{L('Run as separate lists…', 'ריצה ברשימות נפרדות…')}</summary>
+        <div style={{ marginTop: 6 }}>
+          <button className="btn small" aria-expanded={open} onClick={() => setOpen((o) => !o)}>{L('Run as separate lists…', 'ריצה ברשימות נפרדות…')}</button>
+          {open && <div className="joint-split">
           <p className="small ink2">{L('What if these parties had run on their own? Nobody knows how the joint list’s votes would have divided, so the shares below are an assumption: by default, each party’s share of the list’s elected members. Each part must then pass the threshold on its own, and the joint list’s surplus-vote agreement is dropped. Undo restores the joint list.',
             'מה אילו המפלגות היו רצות לבד? איש אינו יודע כיצד היו מתחלקים הקולות, ולכן החלוקה שלהלן היא הנחה: כברירת מחדל, חלקה של כל מפלגה בנבחרי הרשימה. כל חלק יצטרך לעבור את אחוז החסימה בעצמו, והסכם העודפים של הרשימה יבוטל. ביטול מחזיר את הרשימה המשותפת.')}</p>
           <div className="kv small">
@@ -98,7 +99,8 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
             <button className="btn small primary" onClick={run}>{L(`Run as ${parties.length} separate lists`, `ריצה ב-${parties.length} רשימות נפרדות`)}</button>
             {shares && <button className="btn small ghost" onClick={() => setShares(null)}>{L('Reset shares', 'איפוס החלוקה')}</button>}
           </div>
-        </details>
+          </div>}
+        </div>
       )}
     </div>
   );

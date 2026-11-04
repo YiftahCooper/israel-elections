@@ -105,7 +105,7 @@ export function BlocEditor({ s, r }: { s: Scenario; r: AllocationResult }) {
   return (
     <div className="bloc-editor">
       <p className="small ink2">{L('Changes here regroup seats only; votes and seats do not change. A sourced grouping is never altered: your edits become “Your grouping”.', 'השינויים כאן מקבצים מושבים בלבד; הקולות והמנדטים אינם משתנים. חלוקה מתועדת לעולם אינה משתנה: העריכות שלכם הופכות ל„החלוקה שלכם”.')}</p>
-      <h4>{L('Blocs', 'גושים')}</h4>
+      <h3>{L('Blocs', 'גושים')}</h3>
       {s.blocs.map((b, i) => (
         <div key={b.id} className="row" style={{ marginBottom: 4 }}>
           <input type="color" value={b.color} aria-label={L(`Colour of ${b.nameEn}`, `צבע ${b.nameHe}`)}
@@ -120,8 +120,8 @@ export function BlocEditor({ s, r }: { s: Scenario; r: AllocationResult }) {
         <input type="text" value={draft} onChange={(e) => setDraft(e.target.value)} placeholder={L('New bloc name', 'שם גוש חדש')} aria-label={L('New bloc name', 'שם גוש חדש')} />
         <button className="btn small" disabled={!draft.trim()} onClick={() => { dispatch({ type: 'setBlocs', blocs: [...s.blocs, { id: `b-${Date.now().toString(36)}`, nameHe: draft.trim(), nameEn: draft.trim(), color: '#8a6fb0' }] }); setDraft(''); }}>{L('Add bloc', 'הוספת גוש')}</button>
       </div>
-      <h4 style={{ marginTop: 10 }}>{L('Who sits where', 'מי יושב היכן')}</h4>
-      <div className="tablewrap" tabIndex={0} role="region" aria-label={L('Bloc of each list and party', 'הגוש של כל רשימה ומפלגה')} style={{ maxHeight: 320 }}>
+      <h3 style={{ marginTop: 10 }}>{L('Who sits where', 'מי יושב היכן')}</h3>
+      <div className="tablewrap" style={{ maxHeight: 'none' }}>
         <table className="data">
           <tbody>
             {seated.map(({ l, n }) => {
@@ -141,7 +141,7 @@ export function BlocEditor({ s, r }: { s: Scenario; r: AllocationResult }) {
                       <td style={{ paddingInlineStart: 22 }}><span className="swatch" style={{ background: p.color ?? l.color }} /> {name(p)} <span className="muted tabnum">{held}</span></td>
                       <td><select aria-label={L(`Bloc of ${p.nameEn}`, `הגוש של ${p.nameHe}`)} value={own ? s.partyBlocs![p.id] ?? '__none' : '__list'}
                         onChange={(e) => { const v = e.target.value; dispatch(v === '__list' ? { type: 'setPartyBloc', partyId: p.id, bloc: null, inherit: true } : { type: 'setPartyBloc', partyId: p.id, bloc: v === '__none' ? null : v }); }}>
-                        {blocOptions({ v: '__list', label: L('With its list', 'עם הרשימה') })}
+                        {blocOptions({ v: '__list', label: L(`Same as the list (${l.bloc ? name(s.blocs.find((b) => b.id === l.bloc) ?? { nameHe: '', nameEn: '' }) : 'no bloc'})`, `כמו הרשימה (${l.bloc ? name(s.blocs.find((b) => b.id === l.bloc) ?? { nameHe: '', nameEn: '' }) : 'ללא גוש'})`) })}
                       </select></td>
                     </tr>
                   );

@@ -31,7 +31,7 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
   return (
     <div className="grid2" style={{ alignItems: 'start', gap: 18 }}>
       <div>
-        <h4>{L('Electoral rules', 'כללי הבחירות')}</h4>
+        <h3>{L('Electoral rules', 'כללי הבחירות')}</h3>
         <div className="row" style={{ marginBottom: 8 }}>
           <span className="seg" role="group" aria-label={L('Simulation mode', 'מצב סימולציה')}>
             <button aria-pressed={!exp} onClick={() => dispatch({ type: 'setMode', mode: 'historical' })}>{L('Historically valid', 'תקף היסטורית')}</button>
@@ -69,7 +69,7 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
         </fieldset>
         <hr />
         <div className="row" style={{ justifyContent: 'space-between' }}>
-          <h4>{L('Electorate', 'ציבור הבוחרים')}</h4>
+          <h3>{L('Electorate', 'ציבור הבוחרים')}</h3>
           {(s.registered !== base.registered || s.invalid !== base.invalid) && <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'totals' })}>{L('Restore historical', 'שחזור הנתונים ההיסטוריים')}</button>}
         </div>
         <div className="grid2">
@@ -78,10 +78,10 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
         </div>
       </div>
       <div>
-        <h4>{L('Blocs', 'גושים')}</h4>
+        <h3>{L('Blocs', 'גושים')}</h3>
         <p className="small ink2">{L('Choose a grouping, move lists and constituent parties between blocs, and rename or recolour blocs with “Edit blocs” under the bloc bar.', 'בחירת חלוקה, העברת רשימות ומפלגות בין גושים ושינוי שמות וצבעים — ב„עריכת גושים” מתחת לפס הגושים.')}</p>
         <hr />
-        <h4>{L('Display', 'תצוגה')}</h4>
+        <h3>{L('Display', 'תצוגה')}</h3>
         <label className="field" style={{ maxWidth: 220 }}>{L('Decimal places for percentages', 'ספרות אחרי הנקודה באחוזים')}
           <select value={digits} onChange={(e) => setState({ digits: Number(e.target.value) })}>{[0, 1, 2, 3, 4, 6, 8].map((d) => <option key={d} value={d}>{d}</option>)}</select>
         </label>
@@ -168,7 +168,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
   return (
     <div className="grid2" style={{ alignItems: 'start', gap: 18 }}>
       <div>
-        <h4>{L('Data status', 'מצב הנתונים')}</h4>
+        <h3>{L('Data status', 'מצב הנתונים')}</h3>
         <p className={ds.status.stage === 'official-final' ? 'small' : 'small'} style={ds.status.stage === 'official-final' ? undefined : { color: 'var(--warn-ink)' }}>{lang === 'he' ? ds.status.noteHe : ds.status.noteEn}</p>
         <div className="kv small" style={{ maxWidth: 440 }}>
           <span>{L('Registered voters', 'בעלי זכות בחירה')}</span><span>{fmtInt(ds.totals.registered)}</span>
@@ -181,7 +181,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
           <span>{L('Lists / candidates', 'רשימות / מועמדים')}</span><span>{ds.lists.length} / {fmtInt(ds.lists.reduce((t, l) => t + l.candidates.length, 0))}</span>
           <span>{L('Dataset built', 'נבנה')}</span><span>{ds.buildInfo.builtAt.slice(0, 10)}</span>
         </div>
-        <h4 style={{ marginTop: 14 }}>{L('Sources', 'מקורות')}</h4>
+        <h3 style={{ marginTop: 14 }}>{L('Sources', 'מקורות')}</h3>
         <p className="small ink2">{L('Official sources come first; secondary sources are labelled. English-language Wikipedia is never used or linked: it is unreliable on Israel-related information.', 'מקורות רשמיים קודמים לכול; מקורות משניים מסומנים. ויקיפדיה באנגלית אינה משמשת כמקור ואין אליה קישורים: היא אינה אמינה במידע הנוגע לישראל.')}</p>
         <ul className="small" style={{ paddingInlineStart: 18 }}>
           {used.map((x) => (
@@ -196,9 +196,9 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
         <p className="small muted">{L('List colours, short and English names, and blocs are assigned by this application for legibility; they are not official.', 'צבעי הרשימות, השמות המקוצרים והאנגליים והגושים נקבעו ביישום זה לנוחות; אינם רשמיים.')}</p>
       </div>
       <div>
-        <h4>{L('Glossary', 'מונחים')}</h4>
+        <h3>{L('Glossary', 'מונחים')}</h3>
         <dl className="small">{GLOSSARY.map((g) => <div key={g.id} id={`term-${g.id}`} style={{ marginBottom: 10 }}><dt><b>{lang === 'he' ? g.nameHe : g.nameEn}</b>{lang === 'he' ? '' : <span className="muted"> · {g.nameHe}</span>}</dt><dd style={{ margin: 0 }}>{lang === 'he' ? g.defHe : g.defEn}<br /><GlossaryLink g={g} lang={lang} /></dd></div>)}</dl>
-        <h4>{L('Method and limits', 'שיטה ומגבלות')}</h4>
+        <h3>{L('Method and limits', 'שיטה ומגבלות')}</h3>
         <ul className="small" style={{ paddingInlineStart: 18 }}>
           <li>{L('Seats are computed by deterministic code implementing sections 81–82 of the Knesset Elections Law with exact integer arithmetic. Automated tests check that it reproduces the officially published seats of every list in every election offered here (2026: the reported final count).', 'המנדטים מחושבים בקוד דטרמיניסטי המממש את סעיפים 81–82 לחוק הבחירות בחשבון שלמים מדויק. בדיקות אוטומטיות מוודאות שהוא משחזר את המנדטים שפורסמו רשמית לכל רשימה בכל מערכת בחירות המוצגת כאן (2026: הספירה הסופית שדווחה).')}</li>
           <li>{L('Exact ties are decided by lottery under the law; the app flags them and lets you choose the lottery outcome.', 'שוויון מדויק מוכרע בהגרלה לפי החוק; היישום מסמן זאת ומאפשר לבחור את תוצאת ההגרלה.')}</li>

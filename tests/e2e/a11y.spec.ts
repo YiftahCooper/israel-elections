@@ -2,10 +2,11 @@
 import { expect, test, type Page } from '@playwright/test';
 
 const start = async (page: Page, settings: Record<string, unknown> = {}) => {
+  const lang = (settings.lang as string | undefined) ?? 'en';
   await page.addInitScript((v) => { if (!sessionStorage.getItem('seeded')) { localStorage.setItem('israel-elections:v1', v); sessionStorage.setItem('seeded', '1'); } },
     JSON.stringify({ lang: 'en', hintDismissed: true, ...settings }));
   await page.goto('/');
-  await expect(page.getByRole('region', { name: 'Lists' })).toBeVisible();
+  await expect(page.getByRole('region', { name: lang === 'he' ? 'רשימות' : 'Lists' })).toBeVisible();
 };
 
 test('an info button stays open when clicked, and Escape closes it', async ({ page }) => {
@@ -26,6 +27,13 @@ test.describe('on a touch phone', () => {
     await page.getByRole('button', { name: /^Valid votes/ }).first().tap();
     await expect(page.getByRole('tooltip')).toBeVisible();
   });
+  for (const level of ['simple', 'standard', 'expert']) for (const lang of ['en', 'he']) {
+    test(`the page never scrolls sideways (${level}, ${lang})`, async ({ page }) => {
+      await start(page, { level, lang });
+      const { sw, cw } = await page.evaluate(() => ({ sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth }));
+      expect(sw).toBeLessThanOrEqual(cw);
+    });
+  }
   test('the chamber legend names the lists instead of tiny arc labels', async ({ page }) => {
     await start(page);
     await expect(page.getByRole('group', { name: 'Lists in the Knesset' }).getByRole('button', { name: /Likud/ })).toBeVisible();

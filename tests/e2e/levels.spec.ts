@@ -81,13 +81,13 @@ test('Simple balances vote edits proportionally even if another source was chose
   await levelButton(page, 'Simple').click();
   await expect(details(page).getByText('The other parties’ votes shrink or grow in proportion')).toBeVisible();
   const yashar = listCard(page, 'Yashar!');
-  const before = await yashar.getByText(/^[\d,]+$/).innerText();
+  const before = await yashar.getByText(/^\d{1,3}(,\d{3})+$/).innerText();
   const votes = details(page).getByLabel('Votes', { exact: true });
   await votes.fill('1300000');
   await votes.press('Enter');
   await expect(listCard(page, 'Likud')).toContainText('1,300,000');
   // proportional balancing takes votes from every other list; "new voters" would leave Yashar! unchanged
-  await expect(yashar.getByText(/^[\d,]+$/)).not.toHaveText(before);
+  await expect(yashar.getByText(/^\d{1,3}(,\d{3})+$/)).not.toHaveText(before);
 });
 
 // ---- review findings: nothing that changes the result may vanish when switching to a lower level

@@ -1,0 +1,79 @@
+# Product
+
+<!-- impeccable:product-schema 1 -->
+
+> Written on 4 November 2026 from the owner's stated requirements across the build sessions, while the
+> owner was unavailable (he asked the agent to run Impeccable on his behalf). Every line restates a
+> requirement he gave in conversation or a fact in the repository; nothing here was confirmed in an
+> Impeccable interview. Facts marked *(inferred)* are the agent's reading and await his review.
+
+## Platform
+
+web
+
+## Users
+
+- **Curious voters** (the default audience, served by the Simple level): Hebrew speakers first, also English
+  readers, who want to see how changing votes changes the 120 Knesset seats, who formed governments, and how
+  blocs added up, without prior knowledge of the electoral law.
+- **Students, journalists and engaged citizens** (Standard): compare elections, model mergers, splits,
+  surplus-vote agreements, blocs and joint lists, and share scenarios.
+- **Researchers and developers** (Expert): inspect every rule, method and data source, and experiment with
+  alternative electoral systems.
+
+## Product Purpose
+
+An exact, source-faithful explorer and seat simulator for every Knesset election from 1949 to 2026. Its
+value is trust: every published seat is reproduced by the law of that election, every number is computed
+exactly, and every datum states its official source or is clearly labelled as secondary or unavailable.
+Success means a voter can answer "what if" questions correctly and a specialist can check how.
+
+## Positioning
+
+The only tool that reproduces every official Knesset result since 1949 under each era's own law (Bader–Ofer,
+the 1951–1969 largest remainder, the 1949 rules, the 1977 candidate cap) with exact arithmetic and retained
+official sources, in Hebrew and English, at three levels of depth.
+
+## Operating Context
+
+- Used in a desktop or phone browser; installed nowhere (a static site, intended for GitHub Pages).
+- Hebrew is the default language with right-to-left layout; English is a full alternative. Light and dark themes.
+- Three interface levels over one engine: Simple (truly visually minimal), Standard (common, consequential
+  edits), Expert (edit as freely as reasonable).
+
+## Capabilities and Constraints
+
+- 26 elections, national results; localities for the modern elections; rosters with every elected member.
+- Scenario editing with undo/redo, save, share links, import/export; analyses (what if, coalitions, seat
+  security, sensitivity, charts, walkthrough, comparisons).
+- Blocs per election (first government, recognised blocs, the user's own) and constituent parties of joint
+  lists, which may sit in different blocs and can be run as separate lists.
+- Correctness is non-negotiable: never invent candidates, agreements, votes, affiliations or colours; label
+  secondary sources; say clearly what is unavailable.
+- Source policy: official sources first; English-language Wikipedia is never used or linked (the owner considers
+  it unreliable on Israel); Hebrew Wikipedia only as a labelled secondary source.
+
+## Brand Commitments
+
+- Name: "Israeli Elections Explorer" / "סייר הבחירות לכנסת".
+- Neutral and non-partisan: not affiliated with the Central Elections Committee or any party; party colours and
+  logos represent parties as they presented themselves *(inferred: no party is visually favoured)*.
+
+## Evidence on Hand
+
+- Official data and retained sources under `data/raw/` (results notices, candidate lists, CEC records,
+  Knesset OData); research files in `data/meta/`; decision records in `docs/decisions/`.
+- No testimonials, users, press or usage figures exist; none may be invented.
+
+## Product Principles
+
+1. Truth over polish: a number or a name is shown only when it is sourced; uncertainty is said in plain words.
+2. Simple stays simple: complexity is available at Standard and Expert, never forced on the default view.
+3. Hebrew first, English equal: both languages are complete, with correct right-to-left behaviour.
+4. Every edit is reversible and explains its consequence before or as it happens.
+5. Neutrality: blocs, colours and wording never favour a party or camp *(inferred)*.
+
+## Accessibility & Inclusion
+
+WCAG 2.2 AA as the target: keyboard-complete flows, touch-reachable controls on phones, sufficient contrast in
+both themes, non-colour equivalents for charts and the chamber, reduced-motion support.

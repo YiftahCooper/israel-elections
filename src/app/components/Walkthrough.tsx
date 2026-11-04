@@ -53,7 +53,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
 
       {step.kind === 'threshold' && (
         <div>
-          <h4>1. {L('Which lists pass the threshold?', 'אילו רשימות עוברות את אחוז החסימה?')} <Info term="threshold" /></h4>
+          <h3>1. {L('Which lists pass the threshold?', 'אילו רשימות עוברות את אחוז החסימה?')} <Info term="threshold" /></h3>
           <p><span className="formula">{s.rules.thresholdPct}% × {fmtInt(r.totalValid)} = {fmtRat(r.thresholdExact, 3)} → {fmtInt(r.thresholdVotes)}</span></p>
           <p className="small ink2">{L('Votes for every list count in the total, including lists that fail.', 'הקולות לכל הרשימות נכללים בסך, גם של רשימות שלא עברו.')}</p>
           <ListTable s={s} r={r} rows={[...r.lists].filter((l) => l.votes > 0n).sort((a, b) => Number(b.votes - a.votes)).slice(0, 18)} cols={(l) => [fmtInt(l.votes), fmtPct(l.votes, r.totalValid, digits), l.qualified ? L('passes', 'עוברת') : L('fails', 'לא עוברת')]} heads={[L('Votes', 'קולות'), L('Share', 'שיעור'), L('Result', 'תוצאה')]} />
@@ -62,14 +62,14 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
       )}
       {step.kind === 'quota' && (
         <div>
-          <h4>2. {L('General quota', 'המודד הכללי')} <Info term="quota" /></h4>
+          <h3>2. {L('General quota', 'המודד הכללי')} <Info term="quota" /></h3>
           <p><span className="formula">⌊ {fmtInt(r.qualifyingVotes)} ÷ {s.rules.seats} ⌋ = {r.quota.den === 1n ? fmtInt(r.quota.num) : fmtFrac(r.quota)}</span></p>
           <p className="small ink2">{L('Only qualifying votes are divided, so a party’s share of qualifying votes is larger than its share of all valid votes.', 'רק הקולות המשתתפים מחולקים, ולכן שיעור הרשימה מהם גדול משיעורה מכלל הכשרים.')}</p>
         </div>
       )}
       {step.kind === 'initial' && (
         <div>
-          <h4>3. {L('Seats by whole quota', 'מנדטים לפי מודד שלם')} <Info term="whole-quota-seats" /></h4>
+          <h3>3. {L('Seats by whole quota', 'מנדטים לפי מודד שלם')} <Info term="whole-quota-seats" /></h3>
           {r.quota.num === 0n
             ? <p className="small ink2">{L('This method has no whole-quota stage: every seat is allocated one at a time in the next steps.', 'בשיטה זו אין שלב של מודד שלם: כל המושבים מחולקים אחד־אחד בצעדים הבאים.')}</p>
             : <ListTable s={s} r={r} rows={r.lists.filter((l) => l.qualified).sort((a, b) => Number(b.votes - a.votes))} cols={(l) => [fmtInt(l.votes), `${fmtRat({ num: l.votes * r.quota.den, den: r.quota.num }, 3)}`, String(l.initialSeats)]} heads={[L('Votes', 'קולות'), L('Votes ÷ quota', 'קולות ÷ מודד'), L('Seats', 'מנדטים')]} />}
@@ -78,7 +78,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
       )}
       {step.kind === 'remainder' && (
         <div>
-          <h4>{L(`Seat ${r.initialSeatsTotal + step.st.step}: ${methodOf(s.rules).stepEn}`, `מושב ${r.initialSeatsTotal + step.st.step}: ${methodOf(s.rules).stepHe}`)} <Info term={methodOf(s.rules).term} /></h4>
+          <h3>{L(`Seat ${r.initialSeatsTotal + step.st.step}: ${methodOf(s.rules).stepEn}`, `מושב ${r.initialSeatsTotal + step.st.step}: ${methodOf(s.rules).stepHe}`)} <Info term={methodOf(s.rules).term} /></h3>
           <p>{L('Awarded to', 'הוענק ל')} <b>{name(step.st.winnerUnitId)}</b>{r.units.find((u) => u.id === step.st.winnerUnitId)?.isAgreement ? L(' (a surplus-agreement pair; which partner gets it is decided in the pair split step)', ' (צמד בהסכם עודפים; איזו מהשותפות תקבל אותו נקבע בשלב החלוקה בצמד)') : ''}.</p>
           {step.st.tie && (
             <div className="callout small">
@@ -109,7 +109,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
         const d = r.internalDivisions.find((x) => x.unitId === step.unitId)!;
         return (
           <div>
-            <h4>{L('Dividing the pair’s seats', 'חלוקת המנדטים בתוך הצמד')} — {name(d.unitId)} <Info term="surplus" /></h4>
+            <h3>{L('Dividing the pair’s seats', 'חלוקת המנדטים בתוך הצמד')} — {name(d.unitId)} <Info term="surplus" /></h3>
             <p><span className="formula">{L('pair quota', 'מודד הצמד')} = ⌊ {fmtInt(d.totalVotes)} ÷ {d.seats} ⌋ = {fmtRat(d.quota, 0)}</span></p>
             <p className="small ink2">{L('Section 82(b): the pair’s seats are divided again from scratch by the method of section 81, as if the two lists were the whole Knesset.', 'סעיף 82(ב): מנדטי הצמד מחולקים מחדש מתחילה בשיטת סעיף 81, כאילו שתי הרשימות הן כל הכנסת.')}</p>
             <table className="tbl" style={{ maxWidth: 560 }}>
@@ -133,7 +133,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
       })()}
       {step.kind === 'final' && (
         <div>
-          <h4>{L('Final composition', 'ההרכב הסופי')}</h4>
+          <h3>{L('Final composition', 'ההרכב הסופי')}</h3>
           <ListTable s={s} r={r} rows={r.lists.filter((l) => l.seats > 0).sort((a, b) => b.seats - a.seats)} cols={(l) => [String(l.initialSeats), String(l.seats - l.initialSeats), String(l.seats)]} heads={[L('By quota', 'במודד'), L('Remainder', 'עודפים'), L('Total', 'סה"כ')]} />
         </div>
       )}

@@ -53,7 +53,7 @@ function VotesVsSeats({ s, r }: { s: Scenario; r: AllocationResult }) {
   const all = [...rows.map(({ l, lr }) => ({ id: l.id, name: listLabel(l, lang), color: l.color, v: l.votes, seats: lr.seats })), { id: '__unrep', name: L('Unrepresented votes', 'קולות שלא השתתפו'), color: 'var(--axis)', v: Number(r.unrepresentedVotes), seats: 0 }];
   return (
     <figure style={{ margin: 0, position: 'relative' }}>
-      <figcaption><h4>{L('Share of votes vs share of seats', 'שיעור הקולות לעומת שיעור המנדטים')}</h4></figcaption>
+      <figcaption><h3>{L('Share of votes vs share of seats', 'שיעור הקולות לעומת שיעור המנדטים')}</h3></figcaption>
       <div className="legend small" style={{ marginBottom: 4 }}>
         <span className="row" style={{ gap: 5 }}><span className="swatch" style={{ background: 'var(--ink-2)', opacity: 0.35 }} />{L('Votes (% of valid)', 'קולות (% מהכשרים)')}</span>
         <span className="row" style={{ gap: 5 }}><span className="swatch" style={{ background: 'var(--ink-2)' }} />{L('Seats (% of Knesset)', 'מנדטים (% מהכנסת)')}</span>
@@ -94,7 +94,7 @@ function ThresholdDistance({ s, r }: { s: Scenario; r: AllocationResult }) {
   const half = (W - labelW - 2 * numW) / 2, mid = labelW + numW + half;
   return (
     <figure style={{ margin: 0, position: 'relative' }}>
-      <figcaption><h4>{L('Distance from the threshold (closest lists)', 'מרחק מאחוז החסימה (הרשימות הקרובות)')}</h4></figcaption>
+      <figcaption><h3>{L('Distance from the threshold (closest lists)', 'מרחק מאחוז החסימה (הרשימות הקרובות)')}</h3></figcaption>
       <p className="small muted" style={{ margin: '0 0 4px' }}>{L(`Threshold: ${fmtInt(thr)} votes. Bars right of the line pass.`, `אחוז החסימה: ${fmtInt(thr)} קולות. מימין לקו — עוברת.`)}</p>
       <svg className="chart" viewBox={`0 0 ${W} ${H}`} width="100%" role="img" aria-label={L('Votes above or below the threshold', 'קולות מעל או מתחת לאחוז החסימה')}>
         {rows.map(({ l, d }, i) => {

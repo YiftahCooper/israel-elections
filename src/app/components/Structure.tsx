@@ -34,7 +34,7 @@ function Agreements({ s, r, base }: { s: Scenario; r: AllocationResult; base: Sc
   return (
     <div>
       <div className="row" style={{ justifyContent: 'space-between' }}>
-        <h4>{L('Surplus-vote agreements', 'הסכמי עודפים')} <Info term="surplus" /></h4>
+        <h3>{L('Surplus-vote agreements', 'הסכמי עודפים')} <Info term="surplus" /></h3>
         {JSON.stringify(s.agreements) !== JSON.stringify(base.agreements) && <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'agreements' })}>{L('Restore historical agreements', 'שחזור ההסכמים ההיסטוריים')}</button>}
       </div>
       {s.agreements.length === 0 && <p className="muted small">{L('None.', 'אין.')}</p>}
@@ -108,7 +108,7 @@ function Merge({ s }: { s: Scenario }) {
   };
   return (
     <div>
-      <h4>{L('Merge lists into one', 'איחוד רשימות')}</h4>
+      <h3>{L('Merge lists into one', 'איחוד רשימות')}</h3>
       <p className="small ink2">{L('The merged list is one list for the threshold and for seat allocation. Its agreements with others are dropped; add new ones afterwards.', 'הרשימה המאוחדת היא רשימה אחת לאחוז החסימה ולחלוקה. הסכמי העודפים של המתאחדות מבוטלים; ניתן להוסיף חדשים.')}</p>
       <div className="tablewrap" tabIndex={0} role="region" aria-label={L('Scrollable table', 'טבלה נגללת')} style={{ maxHeight: 180 }}>
         {[...s.lists].sort((a, b) => b.votes - a.votes).slice(0, 30).map((l) => (
@@ -168,7 +168,7 @@ function Split({ s }: { s: Scenario }) {
   };
   return (
     <div>
-      <h4>{L('Split a list in two', 'פיצול רשימה')}</h4>
+      <h3>{L('Split a list in two', 'פיצול רשימה')}</h3>
       <div className="row">
         <select value={id} onChange={(e) => setId(e.target.value)} aria-label={L('List to split', 'רשימה לפיצול')}>
           <option value="">{L('Choose a list…', 'בחרו רשימה…')}</option>
@@ -206,7 +206,7 @@ function AddList({ s }: { s: Scenario }) {
   void s;
   return (
     <div>
-      <h4>{L('Add a new list', 'הוספת רשימה חדשה')}</h4>
+      <h3>{L('Add a new list', 'הוספת רשימה חדשה')}</h3>
       <div className="grid2">
         <label className="field">{L('New list name', 'שם הרשימה החדשה')}<input type="text" value={nameHe} onChange={(e) => setName(e.target.value)} /></label>
         <label className="field">{L('New list letters', 'אותיות הרשימה החדשה')}<input type="text" value={letters} onChange={(e) => setLetters(e.target.value)} /></label>

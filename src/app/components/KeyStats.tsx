@@ -38,7 +38,7 @@ export function KeyStats({ s, r, ds, baseR }: { s: Scenario; r: AllocationResult
       {noThreshold
         ? <Tile k={L('Threshold', 'אחוז החסימה')} term="threshold" v={L('None', 'אין')} d={L('no percentage threshold in this election', 'לא היה אחוז חסימה בבחירות אלה')} />
         : <Tile k={L('Votes needed to pass the threshold', 'קולות למעבר אחוז החסימה')} term="threshold" v={fmtInt(r.thresholdVotes)} d={`${thrPct}% ${L('of valid votes', 'מהקולות הכשרים')}`} />}
-      <Tile k={L('Wasted votes', 'קולות שהלכו לאיבוד')} term="unrepresented" v={fmtPct(seatless, r.totalValid, 1)} d={`${fmtInt(seatless)} ${L('votes for lists that won no seat', 'קולות לרשימות שלא זכו במושב')}`} />
+      <Tile k={L('Votes that won no seat', 'קולות שלא זכו במושב')} term="unrepresented" v={fmtPct(seatless, r.totalValid, 1)} d={`${fmtInt(seatless)} ${L('votes for lists without a seat', 'קולות לרשימות ללא מושב')}`} />
       <Tile k={L('Votes per seat', 'קולות למנדט')} term="quota" v={fmtRat(r.quota, 0)} d={L('the general quota', 'המודד הכללי')} />
     </div>
   );

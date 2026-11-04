@@ -114,7 +114,7 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
       <div className="whatif">
         {results.map(({ p, actions, lines, votes }) => (
           <article key={p.id} className="wi-card">
-            <h4>{lang === 'he' ? p.titleHe : p.titleEn}</h4>
+            <h3>{lang === 'he' ? p.titleHe : p.titleEn}</h3>
             <p className="small ink2">{lang === 'he' ? p.bodyHe : p.bodyEn}</p>
             {votes && <p className="small"><b>{votes}</b></p>}
             <p className="small" style={{ minHeight: 36 }}>{!actions ? L('Not applicable to this election.', 'לא רלוונטי לבחירות אלה.') : lines.length ? lines.join(' · ') : L('No seat changes.', 'אין שינוי במנדטים.')}</p>

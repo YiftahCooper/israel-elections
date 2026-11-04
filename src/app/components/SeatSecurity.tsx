@@ -136,7 +136,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
         <span className="majority-line" style={{ insetInlineStart: `calc(${(majority / s.rules.seats) * 100}% - 1px)` }} aria-hidden />
       </div>
       <p><b className="tabnum" style={{ fontSize: 20 }}>{pickedSeats}</b> / {s.rules.seats} {pickedSeats >= majority ? <span className="chip ok">{L('majority', 'רוב')}</span> : <span className="muted">{L(`${majority - pickedSeats} short of ${majority}`, `חסרים ${majority - pickedSeats} ל-${majority}`)}</span>}</p>
-      <h4>{L(`Minimal winning coalitions${picked.length ? ' containing your selection' : ''} (${minimal.length.toLocaleString('en-US')}${truncated ? '+' : ''})`, `קואליציות מנצחות מינימליות${picked.length ? ' הכוללות את הבחירה' : ''} (${minimal.length.toLocaleString('en-US')}${truncated ? '+' : ''})`)}</h4>
+      <h3>{L(`Minimal winning coalitions${picked.length ? ' containing your selection' : ''} (${minimal.length.toLocaleString('en-US')}${truncated ? '+' : ''})`, `קואליציות מנצחות מינימליות${picked.length ? ' הכוללות את הבחירה' : ''} (${minimal.length.toLocaleString('en-US')}${truncated ? '+' : ''})`)}</h3>
       <p className="small muted" style={{ marginTop: 0 }}>{L('Minimal: removing any one member would lose the majority.', 'מינימלית: הוצאת כל אחת מהחברות תבטל את הרוב.')}</p>
       {truncated && <p className="small">{L('There are more than 100,000: include or rule out lists to narrow the search.', 'יש יותר מ-100,000: הכלילו או פסלו רשימות כדי לצמצם את החיפוש.')}</p>}
       <ul className="small" style={{ columns: 2, paddingInlineStart: 18 }}>

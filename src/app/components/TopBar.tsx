@@ -31,8 +31,6 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
     : index;
   const theme = useStore((st) => st.theme);
   const level = useStore((st) => st.level);
-  const layout = useStore((st) => st.layout);
-  const colorBy = useStore((st) => st.colorBy);
   const canUndo = useStore((st) => st.past.length > 0);
   const canRedo = useStore((st) => st.future.length > 0);
   const saved = useStore((st) => st.saved);
@@ -64,11 +62,16 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
       <select aria-label={L('Election', 'בחירות')} value={electionId} onChange={(e) => openElection(e.target.value as ElectionId)} style={{ fontWeight: 600 }}>
         {elections.map((e) => <option key={e.id} value={e.id} disabled={!e.available}>{electionLabel(e, elections, lang)}{e.available ? '' : L(' — not yet available', ' — עדיין לא זמין')}</option>)}
       </select>
+      {/* navigation first: if the bar wraps, the file actions move, never the level or language switch */}
+      <Seg label={L('Detail level', 'רמת פירוט')} value={level} onChange={(v) => setState({ level: v })} options={[{ v: 'simple', label: L('Simple', 'פשוט') }, { v: 'standard', label: L('Standard', 'רגיל') }, { v: 'expert', label: L('Expert', 'מומחה') }]} />
+      <Seg label={L('Language', 'שפה')} value={lang} onChange={(v) => setState({ lang: v })} options={[{ v: 'he', label: 'עב' }, { v: 'en', label: 'EN' }]} />
+      <button className="btn small" aria-label={L('Toggle dark theme', 'מצב כהה')} onClick={() => setState({ theme: theme === 'dark' ? 'light' : 'dark' })}>{theme === 'dark' ? '☀' : '☾'}</button>
+      <span className="spacer" />
       {s && level !== 'simple' && (
         <input type="text" value={s.name} placeholder={L('Untitled scenario', 'תרחיש ללא שם')} aria-label={L('Scenario name', 'שם התרחיש')} style={{ width: 170 }}
           onChange={(e) => setState({ scenario: { ...s, name: e.target.value } })} />
       )}
-      {s && level !== 'simple' && (s.mode === 'experimental' ? <span className="chip exp" title={L('Electoral rules may differ from Israeli law', 'הכללים עשויים להיות שונים מהחוק')}>{L('Experimental rules', 'כללים ניסיוניים')}</span> : <span className="chip ok">{L('Historical rules', 'כללים היסטוריים')}</span>)}
+      {s && level !== 'simple' && (s.mode === 'experimental' ? <span className="chip exp" title={L('Electoral rules may differ from Israeli law', 'הכללים עשויים להיות שונים מהחוק')}>{L('Experimental rules', 'כללים ניסיוניים')}</span> : null)}
       <button className="btn small" onClick={undo} disabled={!canUndo} title="Ctrl+Z">↶ {L('Undo', 'ביטול')}</button>
       {level !== 'simple' && <button className="btn small" onClick={redo} disabled={!canRedo} title="Ctrl+Y">↷ {L('Redo', 'חזרה')}</button>}
       <button className="btn small" onClick={() => { if (!s?.log.length || confirm(L('Reset the whole election to the historical result? (Undo can restore it.)', 'לאפס את כל הבחירות לתוצאה ההיסטורית? (ניתן לבטל)'))) resetAll(); }} disabled={!s?.log.length}>{level === 'simple' ? L('Start over', 'התחלה מחדש') : L('Reset all', 'איפוס')}</button>
@@ -117,16 +120,6 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
         }} />
       </div>
       </>}
-      <span className="spacer" />
-      {level === 'expert' && <><Seg label={L('Chamber layout', 'פריסה')} value={layout} onChange={(v) => setState({ layout: v })} options={[{ v: 'hemicycle', label: L('Arc', 'קשת') }, { v: 'blocks', label: L('Blocks', 'גושים') }]} />
-      <select aria-label={L('Colour seats by', 'צביעת מושבים לפי')} value={colorBy} onChange={(e) => setState({ colorBy: e.target.value as 'list' | 'bloc' | 'party' })}>
-        <option value="list">{L('Colour: list', 'צבע: רשימה')}</option>
-        <option value="bloc">{L('Colour: bloc', 'צבע: גוש')}</option>
-        <option value="party">{L('Colour: constituent party', 'צבע: מפלגה מרכיבה')}</option>
-      </select></>}
-      <Seg label={L('Detail level', 'רמת פירוט')} value={level} onChange={(v) => setState({ level: v })} options={[{ v: 'simple', label: L('Simple', 'פשוט') }, { v: 'standard', label: L('Standard', 'רגיל') }, { v: 'expert', label: L('Expert', 'מומחה') }]} />
-      <Seg label={L('Language', 'שפה')} value={lang} onChange={(v) => setState({ lang: v })} options={[{ v: 'he', label: 'עב' }, { v: 'en', label: 'EN' }]} />
-      <button className="btn small" aria-label={L('Toggle dark theme', 'מצב כהה')} onClick={() => setState({ theme: theme === 'dark' ? 'light' : 'dark' })}>{theme === 'dark' ? '☀' : '☾'}</button>
-    </div>
+</div>
   );
 }

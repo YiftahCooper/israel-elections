@@ -87,8 +87,8 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
           nameA={compareWith === 'historical' ? L('Historical', 'בפועל') : a.name} nameB={s.name || L('Scenario', 'התרחיש')}
           colorOf={(key) => { const g = groups.find((x) => x.key === key)!; return (s.lists.find((l) => l.id === g.bIds[0]) ?? a.lists.find((l) => l.id === g.aIds[0]))?.color ?? '#888'; }} />
         <div>
-          <h4>{compareWith === 'historical' ? L('Historical', 'בפועל') : a.name}</h4><Hemicycle s={a} r={ar} compact title={L('Before', 'לפני')} />
-          <h4>{s.name || L('Current scenario', 'התרחיש הנוכחי')}</h4><Hemicycle s={s} r={r} compact title={L('After', 'אחרי')} />
+          <h3>{compareWith === 'historical' ? L('Historical', 'בפועל') : a.name}</h3><Hemicycle s={a} r={ar} compact title={L('Before', 'לפני')} />
+          <h3>{s.name || L('Current scenario', 'התרחיש הנוכחי')}</h3><Hemicycle s={s} r={r} compact title={L('After', 'אחרי')} />
         </div>
       </div>
 
@@ -129,11 +129,11 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
 
       <div className="grid2" style={{ marginTop: 12 }}>
         <div>
-          <h4 className="up">{L(`Entering the Knesset (${entering.length})`, `נכנסים לכנסת (${entering.length})`)}</h4>
+          <h3 className="up">{L(`Entering the Knesset (${entering.length})`, `נכנסים לכנסת (${entering.length})`)}</h3>
           {entering.length === 0 ? <p className="muted small">—</p> : <ul className="small">{entering.map(({ c, l }) => <li key={c.id} lang="he">{c.nameHe} <span className="muted">· {listLabel(l, lang)} #{l.candidates.indexOf(c) + 1}</span></li>)}</ul>}
         </div>
         <div>
-          <h4 className="down">{L(`Leaving the Knesset (${leaving.length})`, `יוצאים מהכנסת (${leaving.length})`)}</h4>
+          <h3 className="down">{L(`Leaving the Knesset (${leaving.length})`, `יוצאים מהכנסת (${leaving.length})`)}</h3>
           {leaving.length === 0 ? <p className="muted small">—</p> : <ul className="small">{leaving.map(({ c, l }) => <li key={c.id} lang="he">{c.nameHe} <span className="muted">· {listLabel(l, lang)} #{l.candidates.indexOf(c) + 1}</span></li>)}</ul>}
         </div>
       </div>
