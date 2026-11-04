@@ -177,6 +177,63 @@ Constituents (separate from joint-list lockups):
 
 None recorded on the winning lists.
 
+### k3
+
+**א — Mapai: gap.
+- `site:nli.org.il מפא"י 1955 בחירות` → U197, U28
+- `מפא״י 1955 כרזה -site:en.wikipedia.org` → no URLs; error: 500 Internal Server Error - timeout of 5000ms exceeded
+
+**ח — Herut: gap.
+- `חרות 1955 כרזה -site:en.wikipedia.org` → U35, U36, U37, U25
+- `site:nli.org.il חרות 1955 בחירות` → U28, U36
+
+**צ — General Zionists: gap.
+- `site:nli.org.il הציונים הכלליים 1955 בחירות` → U198, U28
+- `הציונים הכלליים 1955 כרזה -site:en.wikipedia.org` → no URLs; error: 500 Internal Server Error - timeout of 5000ms exceeded
+
+**ב — National Religious Party: gap.
+- `מפד״ל 1955 כרזה -site:en.wikipedia.org` → U38, U39, U40, U41
+- `site:nli.org.il מפד"ל 1955 בחירות` → U199, U200
+
+**תו — Ahdut HaAvoda: gap.
+- `אחדות העבודה 1955 כרזה -site:en.wikipedia.org` → U42, U43, U44, U45
+- `site:nli.org.il אחדות העבודה 1955 בחירות` → U28, U201
+
+**מ — Mapam: gap.
+- `מפ״ם 1955 כרזה -site:en.wikipedia.org` → U5, U46, U25, U47
+- `site:nli.org.il מפ"ם 1955 בחירות` → U28, U16
+
+**גד — Religious Torah Front: gap.
+- `חזית דתית תורתית 1955 כרזה -site:en.wikipedia.org` → U48, U49, U28, U50
+- `site:nli.org.il חזית דתית תורתית 1955 בחירות` → U28, U202
+
+**יד — Democratic List for Israeli Arabs: gap.
+- `דמוקרטית לערביי ישראל 1955 כרזה -site:en.wikipedia.org` → U28, U51, U52, U7
+- `site:nli.org.il דמוקרטית לערביי ישראל 1955 בחירות` → U28, U203
+
+**ק — Maki: gap.
+- `מק״י 1955 כרזה -site:en.wikipedia.org` → U53, U17, U54, U55
+- `site:nli.org.il מק"י 1955 בחירות` → U204, U205
+
+**נ — Progress and Work: gap.
+- `קידמה ועבודה 1955 כרזה -site:en.wikipedia.org` → U7, U56, U57, U58
+- `site:nli.org.il קידמה ועבודה 1955 בחירות` → U16, U206
+
+**פ — Progressive Party: gap.
+- `הפרוגרסיבים 1955 כרזה -site:en.wikipedia.org` → U51, U59, U60, U7
+- `site:nli.org.il הפרוגרסיבים 1955 בחירות` → U207, U208
+
+**ע — Agriculture and Development: gap.
+- `חקלאות ופיתוח 1955 כרזה -site:en.wikipedia.org` → U61, U62, U63, U64
+- `site:nli.org.il חקלאות ופיתוח 1955 בחירות` → U28, U16
+
+Constituents (separate from joint-list lockups):
+
+- `hapoel-hamizrachi` — **gap**. `הפועל המזרחי 1955 כרזה סמל -site:en.wikipedia.org` → U25, U289.
+- `mizrachi` — **gap**. `המזרחי 1955 כרזה סמל -site:en.wikipedia.org` → U28, U290.
+- `agudat-yisrael` — **gap**. `אגודת ישראל 1955 כרזה סמל -site:en.wikipedia.org` → U28, U291.
+- `poalei-agudat-yisrael` — **gap**. `פועלי אגודת ישראל 1955 כרזה סמל -site:en.wikipedia.org` → U28, U292.
+
 ## Returned search URL index
 
 This index records search leads, including irrelevant and wrong-year returns. Inclusion is not endorsement or evidence of official origin. Repeated archive URLs belong to one evidence family, not independent corroboration.
