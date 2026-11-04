@@ -14,7 +14,9 @@
       "evidenceId": "commons-115234816",
       "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2a/WIZO1949.png",
       "status": "verified",
-      "originalSha256": "e899220d0d7a5bacb0270fca9533996a58ffc182b7f2688254df7764347e5c57"
+      "originalSha256": "e899220d0d7a5bacb0270fca9533996a58ffc182b7f2688254df7764347e5c57",
+      "rights": "free-licence",
+      "bytes": 4533
     }
   ]
 }

@@ -14,7 +14,9 @@
       "evidenceId": "commons-103475376",
       "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Mapam_Logo_1988.svg",
       "status": "verified",
-      "originalSha256": "5d0baf86a089c714079d0388b4fbee4382c7a6dc8b2a575712371e60949ca56a"
+      "originalSha256": "5d0baf86a089c714079d0388b4fbee4382c7a6dc8b2a575712371e60949ca56a",
+      "rights": "free-licence",
+      "bytes": 2047
     }
   ]
 }

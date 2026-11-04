@@ -7,7 +7,7 @@
       "licence": "Public domain (pd-textlogo)",
       "attribution": "Author not recorded by Commons; File:Logo of the Labor-Gesher-Meretz.svg; Public domain (pd-textlogo).",
       "hosted": true,
-      "inUseEvidence": "Commons explicitly identifies the 2020 election design and cites the party image captured by Wayback on 1 March 2020, one day before the election. Asset download returned HTTP 429 (Retry-After: 600); no local image is provided.",
+      "inUseEvidence": "Commons explicitly identifies the 2020 election design and cites the party image captured by Wayback on 1 March 2020, one day before the election.",
       "confidence": "medium",
       "letters": "אמת",
       "evidenceId": "commons-130826979",
@@ -15,7 +15,9 @@
       "status": "verified",
       "sha256": "aaf1ae4d952811b3c05a80b892466d010e558563a02f41b3df86c7390dcce079",
       "originalSha256": "aaf1ae4d952811b3c05a80b892466d010e558563a02f41b3df86c7390dcce079",
-      "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas."
+      "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas.",
+      "rights": "free-licence",
+      "bytes": 10933
     },
     {
       "file": "logos/agudat-yisrael-2020.svg",
@@ -23,7 +25,7 @@
       "licence": "Public domain (PD-textlogo)",
       "attribution": "אסף (Sokuya); File:Agudat Yisrael logo 2020.svg; Public domain (PD-textlogo).",
       "hosted": true,
-      "inUseEvidence": "Commons dates the party-supplied PDF design to 31 January 2020, before the March 2020 election. Conversion notes possible minor colour differences. Constituent emblem only. Asset download returned HTTP 429 (Retry-After: 600); no local image is provided.",
+      "inUseEvidence": "Commons dates the party-supplied PDF design to 31 January 2020, before the March 2020 election. Conversion notes possible minor colour differences. Constituent emblem only.",
       "confidence": "medium",
       "party": "agudat-yisrael",
       "evidenceId": "commons-146621440",
@@ -31,7 +33,9 @@
       "status": "verified",
       "sha256": "7a1b3fa2fa86b360231562b338d925dde3b3a8b34206809942b2d1db5a8d14be",
       "originalSha256": "7a1b3fa2fa86b360231562b338d925dde3b3a8b34206809942b2d1db5a8d14be",
-      "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas."
+      "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas.",
+      "rights": "free-licence",
+      "bytes": 7119
     }
   ]
 }

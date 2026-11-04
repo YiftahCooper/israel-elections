@@ -14,7 +14,9 @@
       "evidenceId": "commons-146621895",
       "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ec/HaIhud_HaLeumi_99_logo.jpg",
       "status": "verified",
-      "originalSha256": "9e48ee829ab80a1cb64e6cfd49190c4489dd79653c8d85ce0496a7015f22b9e0"
+      "originalSha256": "9e48ee829ab80a1cb64e6cfd49190c4489dd79653c8d85ce0496a7015f22b9e0",
+      "rights": "free-licence",
+      "bytes": 20086
     },
     {
       "file": "logos/centre-party-1999.png",
@@ -29,7 +31,9 @@
       "evidenceId": "commons-82622689",
       "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Merkazi-Logo.png",
       "status": "verified",
-      "originalSha256": "884897c2886a19cc9f0d2dc55b16e13c924bd62b7667e9985ec5c58a7bc52b31"
+      "originalSha256": "884897c2886a19cc9f0d2dc55b16e13c924bd62b7667e9985ec5c58a7bc52b31",
+      "rights": "free-licence",
+      "bytes": 16981
     }
   ]
 }

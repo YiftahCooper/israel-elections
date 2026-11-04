@@ -14,7 +14,9 @@
       "evidenceId": "commons-100332153",
       "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7e/LikudGesherTzomet.png",
       "status": "verified",
-      "originalSha256": "5e0cb08d075f09cd97571d0461b79a5a7832f5bf0c327a22e2d6374283b6d58b"
+      "originalSha256": "5e0cb08d075f09cd97571d0461b79a5a7832f5bf0c327a22e2d6374283b6d58b",
+      "rights": "free-licence",
+      "bytes": 11612
     },
     {
       "file": "logos/third-way-1996.png",
@@ -29,7 +31,9 @@
       "evidenceId": "commons-86137067",
       "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Third_Way.png",
       "status": "verified",
-      "originalSha256": "a5adaf8bc021c37e8f95f225f9b7f0b429e0eee494321f8db9769220ad2f397a"
+      "originalSha256": "a5adaf8bc021c37e8f95f225f9b7f0b429e0eee494321f8db9769220ad2f397a",
+      "rights": "free-licence",
+      "bytes": 11548
     }
   ]
 }

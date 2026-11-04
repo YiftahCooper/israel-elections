@@ -1,6 +1,6 @@
-// Party logos (data/meta/logos): only verified, locally hosted, freely licensed files are shown, each
-// with the credit its licence requires.
+// Verified local election logos keep their rights basis, credit and source.
 import { existsSync, readFileSync } from 'node:fs';
+import { applyLogos } from '../scripts/lib/build/logos.ts';
 import { describe, expect, it } from 'vitest';
 import type { ElectionDataset, LogoRef } from '../src/data/schema.ts';
 
@@ -21,7 +21,8 @@ describe('party logos', () => {
       expect(existsSync(`public/${logo.file}`), `${id} ${who}`).toBe(true);
       expect(logo.licence.trim(), `${id} ${who}`).not.toBe('');
       expect(logo.attribution.trim(), `${id} ${who}`).not.toBe('');
-      expect(logo.sourceUrl, `${id} ${who}`).toMatch(/^https:\/\/commons\.wikimedia\.org\//);
+      expect(logo.sourceUrl, `${id} ${who}`).toMatch(/^https:\/\//);
+      expect(['free-licence', 'fair-use-identification']).toContain(logo.rights);
       expect(logo.sourceUrl).not.toMatch(/en\.wikipedia/);
     }
   });
@@ -30,5 +31,39 @@ describe('party logos', () => {
       const svg = readFileSync(`public/${logo.file}`, 'utf8');
       expect(svg).not.toMatch(/<script|<foreignObject|\son[a-z]+=|href="(?!#)/i);
     }
+  });
+});
+
+function dataset(n: number): ElectionDataset {
+  return JSON.parse(readFileSync(new URL(`../public/data/k${n}.json`, import.meta.url), 'utf8'));
+}
+
+describe('election-specific logo overlays', () => {
+  it('attaches a fair-use whole-list emblem with its rights notice', () => {
+    const ds = applyLogos(dataset(26));
+    const logo = ds.lists.find((l) => l.letters === 'רק')!.logo!;
+    expect(logo.rights).toBe('fair-use-identification');
+    expect(logo.sourceUrl).toBe('https://be-yahad.org.il/');
+    expect(logo.licence).toContain('Copyright retained');
+  });
+  it('keeps constituent emblems separate from joint-list emblems', () => {
+    const ds = dataset(25);
+    for (const list of ds.lists) {
+      delete list.logo;
+      for (const party of list.parties ?? []) delete party.logo;
+    }
+    const result = applyLogos(ds);
+    const joint = result.lists.find((l) => l.letters === 'ט')!;
+    expect(joint.logo).toBeUndefined();
+    expect(joint.parties!.find((p) => p.id === 'tkuma')!.logo!.file).toBe('logos/religious-zionism-2022.png');
+    expect(result.lists.find((l) => l.letters === 'כן')!.logo!.rights).toBe('free-licence');
+  });
+  it('rejects an unknown list and an unknown constituent', () => {
+    const ds = dataset(26);
+    ds.lists = ds.lists.filter((l) => l.letters !== 'רק');
+    expect(() => applyLogos(ds)).toThrow('no list רק');
+    const noParties = dataset(25);
+    for (const list of noParties.lists) list.parties = [];
+    expect(() => applyLogos(noParties)).toThrow('no party tkuma');
   });
 });

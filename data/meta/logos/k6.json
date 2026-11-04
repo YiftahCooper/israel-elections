@@ -14,7 +14,9 @@
       "evidenceId": "commons-72754288",
       "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Rafi.svg",
       "status": "verified",
-      "originalSha256": "59a1d799714d2464bb75e9904bee222bc404cdd8280f69c357e3678252cfebd7"
+      "originalSha256": "59a1d799714d2464bb75e9904bee222bc404cdd8280f69c357e3678252cfebd7",
+      "rights": "free-licence",
+      "bytes": 2433
     }
   ]
 }

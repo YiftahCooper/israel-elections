@@ -15,7 +15,9 @@
       "assetSourceUrl": "https://democrats.org.il/wp-content/uploads/2026/08/logo-desktop.svg",
       "displayBackground": "dark",
       "status": "verified",
-      "originalSha256": "789546a8debc42512e35fc6f70da87ff1251f1c23d0154924ee165626ed0b0c2"
+      "originalSha256": "789546a8debc42512e35fc6f70da87ff1251f1c23d0154924ee165626ed0b0c2",
+      "rights": "free-licence",
+      "bytes": 9927
     },
     {
       "file": "logos/joint-list-2026.svg",
@@ -30,7 +32,9 @@
       "evidenceId": "commons-201669548",
       "assetSourceUrl": "https://jointlist.org.il/assets/img/logo-mark.svg",
       "status": "verified",
-      "originalSha256": "de76877e7bbb21506f2a122a52f11e94934b5b0502d2c732345005e926cfac75"
+      "originalSha256": "de76877e7bbb21506f2a122a52f11e94934b5b0502d2c732345005e926cfac75",
+      "rights": "free-licence",
+      "bytes": 34668
     },
     {
       "file": "logos/religious-zionism-2026.png",
@@ -38,7 +42,7 @@
       "licence": "Public domain (PD-shape, PD-textlogo)",
       "attribution": "Religious Zionist Party; File:Religious Zionist Party logo 2026.png; Public domain (PD-shape, PD-textlogo). Resized to at most 256 px; converted to PNG where necessary.",
       "hosted": true,
-      "inUseEvidence": "Commons identifies the party design since 2026, dated 22 September 2026 and sourced from the party login site. Constituent emblem only, not the Religious Zionism–Zehut list emblem. Asset download returned HTTP 429 (Retry-After: 600); no local image is provided.",
+      "inUseEvidence": "Commons identifies the party design since 2026, dated 22 September 2026 and sourced from the party login site. Constituent emblem only, not the Religious Zionism–Zehut list emblem.",
       "confidence": "medium",
       "party": "tkuma",
       "evidenceId": "commons-200023341",
@@ -46,7 +50,9 @@
       "status": "verified",
       "sha256": "1837d0cf44e4428b9aa14cf0adc4a2fd3452e2e99677604f7c228aef42f21f72",
       "originalSha256": "e8b8ac4411845087a59ea9724d6adf3ae43cd227154a7bd68a57c664d14203f4",
-      "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas."
+      "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas.",
+      "rights": "free-licence",
+      "bytes": 8903
     },
     {
       "file": "logos/reservists-2026.png",
@@ -54,7 +60,7 @@
       "licence": "Public domain (PD-textlogo)",
       "attribution": "The Reservists party; File:Logo of The Reservists.svg; Public domain (PD-textlogo).",
       "hosted": true,
-      "inUseEvidence": "Commons dates the official party-website logo to February 2026. Constituent emblem only; not the combined Reservists–New Economic list emblem. Asset download returned HTTP 429 (Retry-After: 600); no local image is provided.",
+      "inUseEvidence": "Commons dates the official party-website logo to February 2026. Constituent emblem only; not the combined Reservists–New Economic list emblem.",
       "confidence": "medium",
       "party": "reservists",
       "evidenceId": "commons-200835377",
@@ -62,7 +68,9 @@
       "status": "verified",
       "sha256": "cff8e68868d7724888534c62f8997c2f8c68fb85b79ed5c30a7aafd16721a83b",
       "originalSha256": "6f5b472d5eb83b9e8e4152491cb3a423774dd8d299c4cdd4006ae28146dcc118",
-      "retrieval": "Downloaded 2026-11-04 by the parent agent. The Commons SVG only wraps an embedded PNG (truncated in the file), so Wikimedia's own 250 px rendering of that file is used."
+      "retrieval": "Downloaded 2026-11-04 by the parent agent. The Commons SVG only wraps an embedded PNG (truncated in the file), so Wikimedia's own 250 px rendering of that file is used.",
+      "rights": "free-licence",
+      "bytes": 5180
     },
     {
       "file": "logos/amcha-yisrael-2026.svg",
@@ -70,7 +78,7 @@
       "licence": "Public domain (PD-textlogo)",
       "attribution": "עַמְךָ יִשְׂרָאֵל; File:Amcha Yisrael.svg; Public domain (PD-textlogo).",
       "hosted": true,
-      "inUseEvidence": "Commons dates this official party-website design to August 2026, before the October election. This list won no seats. Asset download returned HTTP 429 (Retry-After: 600); no local image is provided.",
+      "inUseEvidence": "Commons dates this official party-website design to August 2026, before the October election. This list won no seats.",
       "confidence": "medium",
       "letters": "ך",
       "evidenceId": "commons-198464782",
@@ -78,79 +86,95 @@
       "status": "verified",
       "sha256": "9765b3b9a24c117175e24ae47bb4dd1e5ffa333071a3a47b6a10ae92aa6bb77c",
       "originalSha256": "9765b3b9a24c117175e24ae47bb4dd1e5ffa333071a3a47b6a10ae92aa6bb77c",
-      "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas."
+      "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas.",
+      "rights": "free-licence",
+      "bytes": 9000
+    },
+    {
+      "file": "logos/together-2026.svg",
+      "sourceUrl": "https://be-yahad.org.il/",
+      "licence": "Copyright retained by Together; fair-use identification",
+      "attribution": "ביחד בראשות נפתלי בנט — official campaign lockup",
+      "hosted": true,
+      "inUseEvidence": "Inspected official campaign homepage capture of 1 October 2026: header img src /wp-content/uploads/2026/09/LOGO_RAK-02.svg. Downloaded that exact referenced asset from the official origin, not the different current July-path header. Main lockup reads רק ביחד נתקן / בראשות בנט with blue lettering and orange underline; distinct from superseded April/July variants. Medium confidence: archive establishes the reference, not an independently retained archived asset hash.",
+      "confidence": "medium",
+      "status": "verified",
+      "evidenceId": "together-official-2026",
+      "letters": "רק",
+      "rights": "fair-use-identification",
+      "inUseDate": "2026-10-01",
+      "archiveUrl": "https://web.archive.org/web/20261001011247/https://be-yahad.org.il/",
+      "archiveTimestamp": "20261001011247",
+      "assetSourceUrl": "https://be-yahad.org.il/wp-content/uploads/2026/09/LOGO_RAK-02.svg",
+      "sha256": "909ecb1f089b0c085b99db940d1f55dd370a0b61cb49f2cc6ae334874e6a93d1",
+      "originalSha256": "909ecb1f089b0c085b99db940d1f55dd370a0b61cb49f2cc6ae334874e6a93d1",
+      "bytes": 4096,
+      "retrieval": "Downloaded 2026-11-04 from the official origin with a generic User-Agent. SVG unmodified."
     },
     {
       "file": null,
       "sourceUrl": "https://alefalefalef.co.il/elections-design-26/",
-      "licence": "No free image licence verified; rights clearance required",
+      "licence": "Copyright retained by rights holder; fair-use identification proposed",
       "attribution": "alefalefalef.co.il; underlying logo designer/rights holder not verified",
       "hosted": false,
-      "inUseEvidence": "Election-day secondary review (27 October 2026) describes Together branding; no image licence verified.",
+      "inUseEvidence": "Election-day secondary review (27 October 2026) describes Yashar branding; official-origin file and campaign-date evidence still required.",
       "confidence": "medium",
       "status": "unresolved",
       "evidenceId": "alef-2026-design",
-      "letters": "רק"
+      "letters": "דרך",
+      "rights": "fair-use-identification"
     },
     {
       "file": null,
       "sourceUrl": "https://alefalefalef.co.il/elections-design-26/",
-      "licence": "No free image licence verified; rights clearance required",
+      "licence": "Copyright retained by rights holder; fair-use identification proposed",
       "attribution": "alefalefalef.co.il; underlying logo designer/rights holder not verified",
       "hosted": false,
-      "inUseEvidence": "Election-day secondary review (27 October 2026) describes Yashar branding; no image licence verified.",
+      "inUseEvidence": "Election-day secondary review (27 October 2026) describes Otzma Yehudit branding; official-origin file and campaign-date evidence still required.",
       "confidence": "medium",
       "status": "unresolved",
       "evidenceId": "alef-2026-design",
-      "letters": "דרך"
+      "letters": "ב",
+      "rights": "fair-use-identification"
     },
     {
       "file": null,
       "sourceUrl": "https://alefalefalef.co.il/elections-design-26/",
-      "licence": "No free image licence verified; rights clearance required",
+      "licence": "Copyright retained by rights holder; fair-use identification proposed",
       "attribution": "alefalefalef.co.il; underlying logo designer/rights holder not verified",
       "hosted": false,
-      "inUseEvidence": "Election-day secondary review (27 October 2026) describes Otzma Yehudit branding; no image licence verified.",
+      "inUseEvidence": "Election-day secondary review (27 October 2026) describes Likud branding; official-origin file and campaign-date evidence still required.",
       "confidence": "medium",
       "status": "unresolved",
       "evidenceId": "alef-2026-design",
-      "letters": "ב"
+      "letters": "מחל",
+      "rights": "fair-use-identification"
     },
     {
       "file": null,
       "sourceUrl": "https://alefalefalef.co.il/elections-design-26/",
-      "licence": "No free image licence verified; rights clearance required",
+      "licence": "Copyright retained by rights holder; fair-use identification proposed",
       "attribution": "alefalefalef.co.il; underlying logo designer/rights holder not verified",
       "hosted": false,
-      "inUseEvidence": "Election-day secondary review (27 October 2026) describes Likud branding; no image licence verified.",
+      "inUseEvidence": "Election-day secondary review (27 October 2026) describes Reservists–New Economic branding; official-origin file and campaign-date evidence still required.",
       "confidence": "medium",
       "status": "unresolved",
       "evidenceId": "alef-2026-design",
-      "letters": "מחל"
+      "letters": "די",
+      "rights": "fair-use-identification"
     },
     {
       "file": null,
       "sourceUrl": "https://alefalefalef.co.il/elections-design-26/",
-      "licence": "No free image licence verified; rights clearance required",
+      "licence": "Copyright retained by rights holder; fair-use identification proposed",
       "attribution": "alefalefalef.co.il; underlying logo designer/rights holder not verified",
       "hosted": false,
-      "inUseEvidence": "Election-day secondary review (27 October 2026) describes Reservists–New Economic branding; no image licence verified.",
+      "inUseEvidence": "Election-day secondary review (27 October 2026) describes Zehut branding; official-origin file and campaign-date evidence still required.",
       "confidence": "medium",
       "status": "unresolved",
       "evidenceId": "alef-2026-design",
-      "letters": "די"
-    },
-    {
-      "file": null,
-      "sourceUrl": "https://alefalefalef.co.il/elections-design-26/",
-      "licence": "No free image licence verified; rights clearance required",
-      "attribution": "alefalefalef.co.il; underlying logo designer/rights holder not verified",
-      "hosted": false,
-      "inUseEvidence": "Election-day secondary review (27 October 2026) describes Zehut branding; no image licence verified.",
-      "confidence": "medium",
-      "status": "unresolved",
-      "evidenceId": "alef-2026-design",
-      "party": "zehut"
+      "party": "zehut",
+      "rights": "fair-use-identification"
     }
   ]
 }

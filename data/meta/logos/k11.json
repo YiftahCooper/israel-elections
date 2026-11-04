@@ -14,7 +14,9 @@
       "evidenceId": "commons-83311131",
       "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fb/TehiyaTzomet.png",
       "status": "verified",
-      "originalSha256": "a13a5727ed32dfe72f0cbb32966fe0c61cfe532ca089dd85d0af5b37c7531d4c"
+      "originalSha256": "a13a5727ed32dfe72f0cbb32966fe0c61cfe532ca089dd85d0af5b37c7531d4c",
+      "rights": "free-licence",
+      "bytes": 20833
     },
     {
       "file": "logos/yahad-1984.png",
@@ -29,7 +31,9 @@
       "evidenceId": "commons-82398313",
       "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/75/Yahad-84.png",
       "status": "verified",
-      "originalSha256": "22d3290bd812d41923d8d25c9c2dfcea2b91275388ac946c5a7ac541ba32c3ab"
+      "originalSha256": "22d3290bd812d41923d8d25c9c2dfcea2b91275388ac946c5a7ac541ba32c3ab",
+      "rights": "free-licence",
+      "bytes": 26664
     }
   ]
 }

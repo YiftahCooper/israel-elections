@@ -197,7 +197,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
       </div>
       <div>
         {(() => {
-          // logos are shown under their own licences; CC BY-SA requires this credit with the images
+          // Logos keep their licence or fair-use notice and attribution with the images.
           const logos = ds.lists.flatMap((l) => [...(l.logo ? [{ name: lang === 'he' ? l.shortHe : l.shortEn ?? l.shortHe, logo: l.logo }] : []),
             ...(l.parties ?? []).filter((p) => p.logo).map((p) => ({ name: lang === 'he' ? p.nameHe : p.nameEn, logo: p.logo! }))]);
           return logos.length ? <>

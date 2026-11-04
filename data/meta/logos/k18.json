@@ -7,7 +7,7 @@
       "licence": "Public domain (PD-textlogo)",
       "attribution": "עיצוב מקורי: גדעון שגיא, עיצוב נוסף: ראובן אדלר מתוך אתר הארץ; File:Likud Logo.svg; Public domain (PD-textlogo).",
       "hosted": true,
-      "inUseEvidence": "Commons gives the design date as 3 January 2009, during the campaign before the 10 February election. Assigned to 2009 only; later reuse is not inferred. Asset download returned HTTP 429 (Retry-After: 600); no local image is provided.",
+      "inUseEvidence": "Commons gives the design date as 3 January 2009, during the campaign before the 10 February election. Assigned to 2009 only; later reuse is not inferred.",
       "confidence": "medium",
       "letters": "מחל",
       "evidenceId": "commons-5635696",
@@ -15,7 +15,9 @@
       "status": "verified",
       "sha256": "b45b011da2355b199cd878a8f690338d2634d8c283499e5d2d1a5e79dffb5db6",
       "originalSha256": "b45b011da2355b199cd878a8f690338d2634d8c283499e5d2d1a5e79dffb5db6",
-      "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas."
+      "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas.",
+      "rights": "free-licence",
+      "bytes": 6613
     },
     {
       "file": "logos/meretz-2009.png",
@@ -30,7 +32,9 @@
       "evidenceId": "commons-52999529",
       "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/5/51/Newmovemeretz.gif",
       "status": "verified",
-      "originalSha256": "5626f1bb98d1749392e21c39335053c7cc22e4032385d40aa88d8465f977485b"
+      "originalSha256": "5626f1bb98d1749392e21c39335053c7cc22e4032385d40aa88d8465f977485b",
+      "rights": "free-licence",
+      "bytes": 13116
     }
   ]
 }

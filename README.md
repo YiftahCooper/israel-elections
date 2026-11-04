@@ -24,7 +24,7 @@ Info icons open a 47-term bilingual glossary with learn-more links to the law, C
 Israel Democracy Institute; terms appear at the relevant interface level. Candidate notes
 explain misprints and members replaced before a Knesset’s first sitting, without changing
 who the simulation seats.
-Lists show the party logo used at that election where a freely licensed copy is held, and
+Lists show the party logo used at that election where a verified local copy is held under a free licence or fair use for identification (decision 0089), and
 candidates link to their Knesset member page, their party's page and Hebrew Wikipedia (secondary).
 
 ## Data and provenance

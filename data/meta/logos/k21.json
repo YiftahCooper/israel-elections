@@ -7,7 +7,7 @@
       "licence": "Public domain (PD-shape, PD-texlogo)",
       "attribution": "Israeli Labor Party; File:Israeli Labor Party 2019.png; Public domain (PD-shape, PD-texlogo). Resized to at most 256 px; converted to PNG where necessary.",
       "hosted": true,
-      "inUseEvidence": "Commons dates the design to 30 January 2019 and identifies it as the party’s design since 2019. Assigned only to April 2019; continuity into later campaigns not assumed. Asset download returned HTTP 429 (Retry-After: 600); no local image is provided.",
+      "inUseEvidence": "Commons dates the design to 30 January 2019 and identifies it as the party’s design since 2019. Assigned only to April 2019; continuity into later campaigns not assumed.",
       "confidence": "medium",
       "letters": "אמת",
       "evidenceId": "commons-76218696",
@@ -15,7 +15,9 @@
       "status": "verified",
       "sha256": "690d66cf115c9091a460199c00f425492bf29ff796aa6b9b885c53da09da72f3",
       "originalSha256": "9d05f6007ecad82414daeb56f0716abd6ece0b263fb2d4ea7b6559fb93e8a446",
-      "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas."
+      "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas.",
+      "rights": "free-licence",
+      "bytes": 5910
     },
     {
       "file": "logos/new-right-2019.svg",
@@ -23,7 +25,7 @@
       "licence": "Public domain (PD-textlogo)",
       "attribution": "HaYamin HeHadash; File:Logo of HaYamin HeHadash.svg; Public domain (PD-textlogo).",
       "hosted": true,
-      "inUseEvidence": "Commons dates this New Right design to 23 February 2019, during the campaign before the April 2019 election. This list won no seats. Asset download returned HTTP 429 (Retry-After: 600); no local image is provided.",
+      "inUseEvidence": "Commons dates this New Right design to 23 February 2019, during the campaign before the April 2019 election. This list won no seats.",
       "confidence": "medium",
       "letters": "נ",
       "evidenceId": "commons-77001018",
@@ -31,7 +33,9 @@
       "status": "verified",
       "sha256": "acf7968c6739ca238289d22b385b991f60b46ee205f29d16b0bff287d074a491",
       "originalSha256": "acf7968c6739ca238289d22b385b991f60b46ee205f29d16b0bff287d074a491",
-      "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas."
+      "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas.",
+      "rights": "free-licence",
+      "bytes": 11564
     }
   ]
 }
