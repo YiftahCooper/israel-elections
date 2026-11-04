@@ -319,7 +319,8 @@ export function prepareAllocation(input: AllocationInput): PreparedAllocation {
         if (status.failedMembers.length > 0 && rules.agreementRequiresAllQualify) status.reason = 'member-failed-threshold';
         else status.active = a.members.length - status.failedMembers.length >= 2;
         if (!status.active && !status.reason) status.reason = 'member-failed-threshold';
-        if (status.active && rules.agreementRequiresInitialSeat) {
+        // a pure divisor method has no quota stage, so no list holds an initial seat: the 1949 initial-seat conditions cannot apply
+        if (status.active && rules.agreementRequiresInitialSeat && !highestAverage) {
           const noSeat = a.members.filter((_, j) => initial[a.index[j]] === 0);
           if (noSeat.length) { status.active = false; status.reason = 'member-no-initial-seat'; status.failedMembers = noSeat; }
         }
@@ -345,7 +346,7 @@ export function prepareAllocation(input: AllocationInput): PreparedAllocation {
     }
 
     const base: BaseOptions = { method: rules.remainderMethod, majorityCap: rules.majorityCap,
-      remainderRequiresInitialSeat: rules.remainderRequiresInitialSeat, quotientRounding: rules.quotientRounding,
+      remainderRequiresInitialSeat: rules.remainderRequiresInitialSeat && !highestAverage, quotientRounding: rules.quotientRounding,
       largestRemainderRepeat: rules.largestRemainderRepeat, tiePolicy: rules.tiePolicy, lotteryWinners, warnings, decisions };
     const remaining = Math.max(0, rules.seats - initialTotal);
     const remainderSteps = qualifiedCount > 0
