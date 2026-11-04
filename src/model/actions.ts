@@ -1,3 +1,5 @@
+import {familyColor} from '../families/colors.ts';
+import {recordEditScope} from './editScopes.ts';
 import {familyLabel} from '../families/labels.ts';
 import { resolve, distribute } from '../families/model.ts';
 import { SCENARIO_PALETTE } from './scenarioColors.ts';
@@ -105,7 +107,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       if (action.operation === 'group') {
         need(resolve(definition,s).every(l => action.placements[l.id] === l.family), 'family', 'Grouping does not cover every list.');
         s = {...s, familyDefinition:definition, blocSchemeId:null, customGroupingName:!action.name||action.name===definition.nameHe?familyLabel(definition,'he'):action.name===definition.nameEn?familyLabel(definition,'en'):action.name, partyBlocs:{}, candidateBlocs:{},
-          blocs:[{id:'selected',nameHe:familyLabel(definition,'he'),nameEn:familyLabel(definition,'en'),color:'#526779'},...(Object.values(action.placements).includes('mixed')?[{id:'mixed',nameHe:'רשימות מעורבות',nameEn:'Mixed lists',color:'#8b8194'}]:[]),{id:'other',nameHe:'כל השאר',nameEn:'Everyone else',color:'#7d8791'}],
+          blocs:[{id:'selected',nameHe:familyLabel(definition,'he'),nameEn:familyLabel(definition,'en'),color:familyColor(definition)},...(Object.values(action.placements).includes('mixed')?[{id:'mixed',nameHe:'רשימות מעורבות',nameEn:'Mixed lists',color:'#b8a78a'}]:[]),{id:'other',nameHe:'כל השאר',nameEn:'Everyone else',color:'#7d8791'}],
           lists:s.lists.map(l=>({...l,bloc:action.placements[l.id]}))};
       } else {
         const ids = action.allocations.map(a=>a.listId);
@@ -503,5 +505,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
   // All transitions, including resets/restores, must keep both counts and derived totals exact.
   need(isWhole(s.registered) && isWhole(s.invalid), 'votes', 'Totals must be safe integers ≥ 0.');
   addVotes(sumVotes(s.lists.map((l) => l.votes)), s.invalid);
-  return { ...s, log: [...s0.log, { at: now, action }] };
+  const next = { ...s, log: [...s0.log, { at: now, action }] };
+  recordEditScope(s0,next,action);
+  return next;
 }

@@ -84,7 +84,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
           </span>
           <span className="sr-only" id={`lbd-${l.id}`}>{L(`${lr.seats} seats`, `${lr.seats} מנדטים`)}, {fmtPct(l.votes, total, digits)}{familyDefinition && family && family!=='other' && <> · {familyLabel(familyDefinition,lang)}{family==='mixed'?` · ${L('Mixed lists','רשימות מעורבות')}`:''}</>}{d !== 0 && <>, {Math.abs(d)}{d > 0 ? baseLabel.more : baseLabel.fewer}</>}</span>
           <span className="lb-seats">
-            <b key={`s${lr.seats}`} className={s.log.length ? 'tick' : ''}>{lr.seats}</b>
+            <b key={`s${lr.seats}`} className={d!==0 ? 'tick' : ''}>{lr.seats}</b>
             {d !== 0 && <small dir="ltr"><Mark up={d > 0} />{Math.abs(d)}</small>}
           </span>
         </button>
@@ -110,7 +110,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   return (
     <section className="panel lbars" aria-label={L('Lists', 'הרשימות')}>
       <FamilyListTreatment s={s} />
-      <header><h2>{L('Lists', 'הרשימות')}</h2><span className="spacer" /><span className="small muted">{L('seats', 'מנדטים')}</span></header>
+      <header><h2>{L('Lists', 'הרשימות')}<PartEdits s={s} prefix={['parts','lists']} /></h2><span className="spacer" /><span className="small muted">{L('seats', 'מנדטים')}</span></header>
       {groups.map(g => <p key={g.key} className="lb-group-comparison small ink2">{L(`Ran separately: together ${g.seatsB}, ${baseLabel.at} ${g.seatsA} as `, `רצו בנפרד: יחד ${g.seatsB}, ${baseLabel.at} ${g.seatsA} בתור `)}{g.aIds.map(id => listLabel(base.lists.find(l => l.id === id)!, lang)).join(' + ')}</p>)}
       <ol className="lb">
         {inKnesset.map(row)}

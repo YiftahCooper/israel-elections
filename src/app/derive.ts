@@ -1,3 +1,5 @@
+import {inputDiffs,inputPart,replacementScopes,scopeCovers} from '../model/editScopes.ts';
+import {PARTS,type Part} from '../model/parts.ts';
 import {isFamilyGrouping} from '../families/labels.ts';
 import { applyAction } from '../model/actions.ts';
 import { compareAllocations } from '../engine/analysis.ts';
@@ -258,32 +260,70 @@ export function nonSeatChanges(s: Scenario, base: Scenario, lang: Lang): string[
   return changes;
 }
 
+function partMarkerValue(s:Scenario,part:Part,listId?:string):unknown {
+ const lists=listId?s.lists.filter(l=>l.id===listId):s.lists;
+ switch(part){
+  case 'blocs':return s.customGroupingName??s.blocSchemes?.find(g=>g.id===s.blocSchemeId)??s.blocs;
+  case 'rules':return s.rules;
+  case 'totals':return {registered:s.registered,invalid:s.invalid};
+  case 'agreements':return s.agreements;
+  case 'coalitions':return s.coalition??{in:[],out:[]};
+  case 'votes':return lists.map(l=>({nameHe:l.shortHe,shortEn:l.shortEn,votes:l.votes}));
+  case 'identity':return lists.map(l=>({nameHe:l.nameHe,shortEn:l.shortEn,letters:l.letters}));
+  case 'candidates':return lists.map(l=>({nameHe:l.shortHe,shortEn:l.shortEn,candidates:l.candidates}));
+  case 'structure':return lists.map(l=>({nameHe:l.shortHe,shortEn:l.shortEn,withdrawn:l.withdrawn}));
+ }
+}
 export type EditPath = readonly string[];
 /** Stable ID paths for collections: reordering lists cannot mark an unrelated list. */
 export function referenceValue(s: Scenario, path: EditPath): unknown {
+  if(path[0]==='parts')return partMarkerValue(s,path[1] as Part,path[2]);
   return path.reduce<unknown>((v, k) => Array.isArray(v) ? v.find(x => x?.id === k) : v && typeof v === 'object' ? ((v as Record<string, unknown>)[k] ?? (k === 'coalition' ? { in: [], out: [] } : k === 'partyBlocs' || k === 'candidateBlocs' ? {} : undefined)) : undefined, s);
 }
 const canonical = (v: unknown): string => JSON.stringify(v, (_k, x) => x && typeof x === 'object' && !Array.isArray(x) ? Object.fromEntries(Object.keys(x).sort().map(k => [k, x[k]])) : x) ?? 'null';
 export function differsFromReference(s: Scenario, reference: Scenario, path: EditPath): boolean {
   return canonical(referenceValue(s, path)) !== canonical(referenceValue(reference, path));
 }
-/** Only editable inputs, never timestamps, IDs of scenarios, provenance or log entries. */
-export function referenceChanges(s: Scenario, reference: Scenario): EditPath[] {
-  const paths: string[][] = [];
-  const walk = (a: unknown, b: unknown, path: string[]) => {
-    if (canonical(a) === canonical(b)) return;
-    if (path.at(-1) === 'candidates' && Array.isArray(a) && Array.isArray(b) && a.map(x => x.id).join() !== b.map(x => x.id).join()) { paths.push(path); return; }
-    if (Array.isArray(a) && Array.isArray(b) && [...a, ...b].every(x => x && typeof x === 'object' && 'id' in x)) {
-      for (const id of new Set([...a, ...b].map(x => x.id))) walk(a.find(x => x.id === id), b.find(x => x.id === id), [...path, id]);
-    } else if (a && b && !Array.isArray(a) && !Array.isArray(b) && typeof a === 'object' && typeof b === 'object') {
-      for (const k of new Set([...Object.keys(a), ...Object.keys(b)])) walk((a as any)[k], (b as any)[k], [...path, k]);
-    } else if (differsFromReference(s, reference, path)) paths.push(path);
-  };
-  for (const key of ['description', 'lists', 'rules', 'registered', 'invalid', 'agreements', 'blocs', 'blocSchemeId', 'customGroupingName', 'partyBlocs', 'candidateBlocs', 'factionSplits', 'lotteryWinners', 'mode', 'coalition'] as const) walk(referenceValue(s, [key]), referenceValue(reference, [key]), [key]);
-  return paths;
+/** Marker paths preserve replacement intent. Numerical comparisons still use scenario inputs. */
+const activeScopes=(s:Scenario,reference:Scenario)=>{
+ let common=0;while(common<Math.min(s.log.length,reference.log.length)&&canonical(s.log[common].action)===canonical(reference.log[common].action))common++;
+ return replacementScopes(s).filter(x=>x.at>=common);
+};
+/** Detachment from a sourced scheme is bookkeeping accompanying a manual bloc edit,
+ * rather than a second edit to a second item. Keep standalone source changes visible. */
+const markerDiffs=(s:Scenario,reference:Scenario)=>{
+ const paths=inputDiffs(s,reference);
+ return s.blocSchemeId===null&&paths.some(p=>p[0]!=='blocSchemeId'&&inputPart(p)==='blocs')
+  ?paths.filter(p=>p[0]!=='blocSchemeId'):paths;
+};
+const markerCache=new WeakMap<Scenario,WeakMap<Scenario,EditPath[]>>();
+export function referenceChanges(s:Scenario,reference:Scenario):EditPath[]{
+ let cache=markerCache.get(s);if(!cache){cache=new WeakMap();markerCache.set(s,cache);}const hit=cache.get(reference);if(hit)return hit;
+ const scopes=activeScopes(s,reference);
+ const owner=(p:EditPath)=>scopes.findLast(x=>scopeCovers(x,p));
+ const raw=markerDiffs(s,reference),paths:EditPath[]=raw.filter(p=>!owner(p));
+ for(const scope of scopes){
+  const partPath=['parts',scope.part,...(scope.listId?[scope.listId]:[])];
+  if(markerDiffs(scope.checkpoint,reference).some(p=>owner(p)===scope))paths.push(partPath);
+  paths.push(...markerDiffs(s,scope.checkpoint).filter(p=>owner(p)===scope));
+ }
+ const unique=[...new Map(paths.map(p=>[p.join('/'),p])).values()];cache.set(reference,unique);return unique;
+}
+/** Part headers can address the logical part, while fields only address their own net edits. */
+export function markerPath(s:Scenario,reference:Scenario,path:EditPath):EditPath|null {
+ const changes=referenceChanges(s,reference);
+ const exact=changes.find(p=>canonical(p)===canonical(path));if(exact)return exact;
+ const root=path.length===1||path[0]==='customGroupingName';
+ if(root){const part=inputPart(path);return changes.find(p=>p[0]==='parts'&&p[1]===part)??null;}
+ return null;
+}
+export function markerReference(s:Scenario,reference:Scenario,path:EditPath):Scenario {
+ if(path[0]==='parts')return reference;
+ return activeScopes(s,reference).findLast(x=>scopeCovers(x,path))?.checkpoint??reference;
 }
 
 export function editPathLabel(s: Scenario, path: EditPath, lang: Lang, fallback?: Scenario): string {
+  if(path[0]==='parts')return PARTS[path[1] as Part]?.[lang]??'';
   const names: Record<string, [string, string]> = {
     description: ['Description', 'תיאור'],
     lists: ['Lists', 'רשימות'], votes: ['Votes', 'קולות'], nameHe: ['Full name', 'שם מלא'], shortHe: ['Short Hebrew name', 'שם קצר בעברית'], shortEn: ['English name', 'שם באנגלית'], letters: ['Ballot letters', 'אותיות הרשימה'], color: ['Colour', 'צבע'], bloc: ['Bloc membership', 'שיוך לגוש'], blocs: ['Blocs', 'גושים'], nameEn: ['English name', 'שם באנגלית'], candidates: ['Candidates', 'מועמדים'], agreements: ['Agreements', 'הסכמי עודפים'], rules: ['Rules', 'כללים'], registered: ['Registered voters', 'בעלי זכות בחירה'], invalid: ['Invalid ballots', 'קולות פסולים'], withdrawn: ['Withdrawal', 'פרישה'], customGroupingName: ['Grouping name', 'שם החלוקה'], blocSchemeId: ['Grouping', 'חלוקה'], partyBlocs: ['Party membership', 'שיוך מפלגות'], candidateBlocs: ['Member membership', 'שיוך חברים'], factionSplits: ['Faction splits', 'פיצולי סיעות'], coalition: ['Coalition choices', 'בחירת קואליציה'], mode: ['Rule mode', 'מצב כללים'], seats: ['Seats', 'מנדטים'], quotaRounding: ['Quota rounding', 'עיגול המודד'], remainderMethod: ['Remainder method', 'שיטת חלוקת העודפים'], majorityCap: ['Half-seats cap', 'מגבלת מחצית המושבים'], maxAgreementSize: ['Agreement size', 'גודל הסכם'], agreementRequiresAllQualify: ['Agreement threshold condition', 'תנאי החסימה בהסכם'], quotaSeatOffset: ['Quota divisor offset', 'תוספת למחלק המודד'], remainderRequiresInitialSeat: ['Remainder needs a quota seat', 'עודפים מחייבים מנדט במודד'], agreementRequiresInitialSeat: ['Agreement needs a quota seat', 'הסכם מחייב מנדט במודד'], quotientRounding: ['Quotient rounding', 'עיגול המודדים'], largestRemainderRepeat: ['Repeated remainder seats', 'מנדטי שארית חוזרים'], tiePolicy: ['Tie procedure', 'הכרעה בשוויון'], seatsCappedAtCandidates: ['Candidate seat cap', 'מגבלת מושבים לפי מועמדים'], thresholdPct: ['Threshold', 'אחוז החסימה'], lotteryWinners: ['Lottery', 'הגרלה'], sponsorsHe: ['Sponsors', 'מגישים'], members: ['Members', 'חברות'], enabled: ['Enabled', 'בתוקף'], originIds: ['Origins', 'מקור'], heldVotes: ['Held votes', 'קולות מוחזקים'], parties: ['Parties', 'מפלגות'], in: ['In', 'בפנים'], out: ['Out', 'בחוץ'],

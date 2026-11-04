@@ -23,3 +23,6 @@ export function partSnapshot(s: Scenario, part: Part): PartSnapshot {
     case 'totals': return { registered: s.registered, invalid: s.invalid, validVotes: s.lists.reduce((sum,l) => sum + l.votes, 0) };
   }
 }
+
+/** Shared surfaces for a replacement marker when its Start from control is not mounted. */
+export const PART_MARKER_SURFACES: Record<Part,string> = {votes:'lists',identity:'lists',structure:'lists',candidates:'lists',blocs:'blocs',agreements:'agreements',rules:'rules',totals:'totals',coalitions:'coalitions'};

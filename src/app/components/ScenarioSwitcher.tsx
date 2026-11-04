@@ -28,7 +28,7 @@ export function ScenarioSwitcher({ s, ds }: { s: Scenario; ds: ElectionDataset }
   const details = (x: Scenario, date: string, status: string) => {
     const action = [...x.log].reverse().map(e => e.action).find(a => ['setVotes', 'redistribute', 'transfer', 'addVoters', 'scaleAll', 'setTurnout'].includes(a.type));
     const source = !action ? L('Official votes', 'קולות רשמיים') : action.type === 'setVotes' || action.type === 'addVoters' ? voteSourceLabel({ kind: 'new' }, x, lang) : action.type === 'redistribute' ? L('Lists balanced proportionally', 'איזון יחסי בין הרשימות') : describe(action, x, lang);
-    const rules = referenceChanges(x, markerBase).filter(p => p[0] === 'rules').map(p => `${editPathLabel(x, p, lang, markerBase)}: ${changeText(x, p, lang)}`);
+    const rules = referenceChanges(x, markerBase).filter(p => p[0] === 'rules'||p[0]==='parts'&&p[1]==='rules').map(p => `${editPathLabel(x, p, lang, markerBase)}: ${changeText(x, p, lang)}`);
     const count = referenceChanges(x, markerBase).length;
     const changedVotes = x.lists.some(l => l.votes !== markerBase.lists.find(y => y.id === l.id)?.votes);
     const referenceAction = [...markerBase.log].reverse().map(e => e.action).find(a => ['setVotes', 'redistribute', 'transfer', 'addVoters', 'scaleAll', 'setTurnout'].includes(a.type));

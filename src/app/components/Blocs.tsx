@@ -46,12 +46,12 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
   return (
     <section className="panel blocs" aria-label={L('Seats by bloc', 'מנדטים לפי גוש')}>
       <div className="blocs-head">
-        <h2 style={{ margin: 0 }}>{L('Blocs', 'גושים')} <Info term="bloc" /></h2>
+        <h2 style={{ margin: 0 }}>{L('Blocs', 'גושים')} <Info term="bloc" /> <EditMarker s={s} path={['customGroupingName']} /></h2>
         <span className="note">{kindNote}</span>
         <button className="btn small" aria-expanded={!!panel} onClick={() => (panel ? setState({ blocPanel: null }) : openPanel(groups[0]?.key ?? NONE))}>
           <Pencil className="icon sm" aria-hidden />{s.blocs.length ? L('Edit blocs', 'עריכת גושים') : L('Group seats into blocs', 'חלוקת המושבים לגושים')}</button>
       </div>
-      <EditMarker s={s} path={['customGroupingName']} /><BlocMajorities s={s} r={r} />
+      <BlocMajorities s={s} r={r} />
       {grouped && <p className="small muted" style={{margin:'4px 0'}}>{L('Dashed outline: ', 'מתאר מקווקו: ')}{referenceLabel(labelReference,lang).name}</p>}
       {grouped && <div className="bloc-reference" aria-label={referenceLabel(labelReference, lang).name}>
         {[...s.blocs.map(b => ({id:b.id as string|null,label:name(b)})),{id:null,label:L('No bloc','ללא גוש')}].sort((a,b)=>blocDisplayOrder(s).indexOf(a.id)-blocDisplayOrder(s).indexOf(b.id)).map(b => {

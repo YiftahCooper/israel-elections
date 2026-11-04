@@ -1,5 +1,12 @@
 # Changelog
 
+## 4 November 2026 — mark replacements once
+
+- Mark whole-part starting points, grouping changes and rules presets once at the part; later individual edits use the replacement as their checkpoint.
+- Deduplicate shared marker outlets and keep exports/reference summaries consistent.
+- Highlight seat counts only when they differ from the active reference.
+- Carry the family chart colour into its bloc, with muted grey for everyone else and distinct sand for mixed lists.
+
 ## 4 November 2026 — concise family grouping labels
 
 - Add bilingual short labels to all nine family presets while retaining full titles in their information sheets.

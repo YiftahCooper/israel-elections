@@ -1,3 +1,4 @@
+import {EditMarker} from './EditMarker.tsx';
 import { applyAction } from '../../model/actions.ts';
 import { ChoicePicker } from './ChoicePicker.tsx';
 import { ResultPreview } from './ResultPreview.tsx';
@@ -17,6 +18,7 @@ export function StartFrom({ s, part, listId }: { s: Scenario; part: Part; listId
     dispatch({ type: 'startPart', part, listId, source: 'blank', name });
   };
   return <div className="row start-from">
+    <EditMarker s={s} path={['parts',part,...(listId?[listId]:[])]} />
     <ChoicePicker label={`${L('Start from', 'התחלה מתוך')}: ${PARTS[part][lang]}`} placeholder={L('Start from…', 'התחלה מתוך…')} value="" onChange={v => {
       if (v === 'blank') blank();
       else if (v === 'official') dispatch({ type: 'startPart', part, listId, source: 'official' });
