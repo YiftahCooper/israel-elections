@@ -1,0 +1,20 @@
+{
+  "electionId": "k1",
+  "logos": [
+    {
+      "file": "logos/wizo-1949.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:WIZO1949.png",
+      "licence": "CC BY-SA 3.0",
+      "attribution": "הספרייה הלאומית; File:WIZO1949.png; CC BY-SA 3.0. Resized to at most 256 px; converted to PNG where necessary.",
+      "hosted": true,
+      "inUseEvidence": "Commons identifies this as the WIZO political-party emblem for 1949 and cites NLI item EDU_XML_ENG700155266. The 2022 date is the reproduction date.",
+      "confidence": "medium",
+      "letters": "נ",
+      "sha256": "547973676b1b2b7a05dc6eb14193fcea3bd68d3055596bf78912ec7b785455da",
+      "evidenceId": "commons-115234816",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2a/WIZO1949.png",
+      "status": "verified",
+      "originalSha256": "e899220d0d7a5bacb0270fca9533996a58ffc182b7f2688254df7764347e5c57"
+    }
+  ]
+}

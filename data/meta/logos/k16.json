@@ -1,0 +1,35 @@
+{
+  "electionId": "k16",
+  "logos": [
+    {
+      "file": "logos/labor-meimad-2003.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Labor-Meimad.png",
+      "licence": "Public domain (PD-textlogo)",
+      "attribution": "Own work based on the logo used in the party ad; File:Labor-Meimad.png; Public domain (PD-textlogo). Resized to at most 256 px; converted to PNG where necessary.",
+      "hosted": true,
+      "inUseEvidence": "Commons explicitly identifies an advertisement for Labor–Meimad in the 2003 election and links its campaign video DnQMbJW8oPw.",
+      "confidence": "medium",
+      "letters": "אמת",
+      "sha256": "a6d28d3a6f4ac200722154fa9eabb608660d5cac6585331a4981fe835a1b6d46",
+      "evidenceId": "commons-99877993",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Labor-Meimad.png",
+      "status": "verified",
+      "originalSha256": "f974058eded3a5495feda83c2a31b0ec9cbb7c52b06fdb84e7b49b25870496d3"
+    },
+    {
+      "file": "logos/am-ehad-2003.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:AmEchad.png",
+      "licence": "CC BY-SA 3.0",
+      "attribution": "הספרייה הלאומית; File:AmEchad.png; CC BY-SA 3.0. Resized to at most 256 px; converted to PNG where necessary.",
+      "hosted": true,
+      "inUseEvidence": "Commons explicitly identifies Amir Peretz’s One Nation logo in 2003, citing NLI item 700128369.",
+      "confidence": "medium",
+      "letters": "ם",
+      "sha256": "86aaa1150e35dc9e8e3447ae86781c8a7ee1b306b8cd399bce69dfaee636ac03",
+      "evidenceId": "commons-115472839",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/30/AmEchad.png",
+      "status": "verified",
+      "originalSha256": "7f3bd339fae19311176c6212c5761a5f55ea29f73074d8050e57a9fa1242bcf3"
+    }
+  ]
+}

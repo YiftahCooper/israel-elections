@@ -1,0 +1,47 @@
+{
+  "electionId": "k22",
+  "logos": [
+    {
+      "file": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Joint_List_logo_2019.svg",
+      "licence": "Public domain (PD-textlogo)",
+      "attribution": "Joint List; File:Joint List logo 2019.svg; Public domain (PD-textlogo).",
+      "hosted": false,
+      "inUseEvidence": "Commons dates this party-supplied variant to August 2019, immediately before the September 2019 election. Asset download returned HTTP 429 (Retry-After: 600); no local image is provided.",
+      "confidence": "medium",
+      "letters": "ודעם",
+      "evidenceId": "commons-94577687",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Joint_List_logo_2019.svg",
+      "status": "download-unavailable",
+      "suggestedFile": "logos/joint-list-2019.svg"
+    },
+    {
+      "file": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Yamina_logo.svg",
+      "licence": "Public domain (PD-textlogo)",
+      "attribution": "Author not recorded by Commons; File:Yamina logo.svg; Public domain (PD-textlogo).",
+      "hosted": false,
+      "inUseEvidence": "Commons cites the 21 August 2019 newspaper, page 9, as the source of this design before the September 2019 election. Asset download returned HTTP 429 (Retry-After: 600); no local image is provided.",
+      "confidence": "medium",
+      "letters": "טב",
+      "evidenceId": "commons-130829705",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Yamina_logo.svg",
+      "status": "download-unavailable",
+      "suggestedFile": "logos/yamina-2019.svg"
+    },
+    {
+      "file": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Balad.svg",
+      "licence": "Public domain (PD-textlogo)",
+      "attribution": "Balad (political party); File:Balad.svg; Public domain (PD-textlogo).",
+      "hosted": false,
+      "inUseEvidence": "Commons dates this vector to 4 August 2019 and cites the party’s 2019 website logo. Constituent emblem only; not the Joint List emblem. Asset download returned HTTP 429 (Retry-After: 600); no local image is provided.",
+      "confidence": "medium",
+      "party": "balad",
+      "evidenceId": "commons-107297670",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/1/19/Balad.svg",
+      "status": "download-unavailable",
+      "suggestedFile": "logos/balad-2019.svg"
+    }
+  ]
+}

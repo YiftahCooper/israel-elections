@@ -1,0 +1,20 @@
+{
+  "electionId": "k10",
+  "logos": [
+    {
+      "file": "logos/telem-1981.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Telem_(1981)_Logo.png",
+      "licence": "Public domain (PD-textlogo)",
+      "attribution": "הספרייה הלאומית; File:Telem (1981) Logo.png; Public domain (PD-textlogo). Resized to at most 256 px; converted to PNG where necessary.",
+      "hosted": true,
+      "inUseEvidence": "Commons identifies Moshe Dayan’s Telem logo as 1981 and credits the National Library. The 2019 date is the reproduction date.",
+      "confidence": "medium",
+      "letters": "כן",
+      "sha256": "6920557a3795e584787068a40f0b4be511d97a88d3deeb6874d8c1de3de5ed8c",
+      "evidenceId": "commons-80273434",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Telem_%281981%29_Logo.png",
+      "status": "verified",
+      "originalSha256": "0cbc3d2c7ff0ac39e5ea4e3ba0ffcb6446f07be79d16d63e10990600b5137316"
+    }
+  ]
+}

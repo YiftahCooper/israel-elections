@@ -1,0 +1,20 @@
+{
+  "electionId": "k6",
+  "logos": [
+    {
+      "file": "logos/rafi-1965.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rafi.svg",
+      "licence": "CC BY-SA 4.0",
+      "attribution": "RaphaelQS; File:Rafi.svg; CC BY-SA 4.0.",
+      "hosted": true,
+      "inUseEvidence": "Commons identifies the emblem as belonging to Rafi in 1965–1968; community vector reconstruction, without an inspected contemporary artefact.",
+      "confidence": "medium",
+      "letters": "כא",
+      "sha256": "59a1d799714d2464bb75e9904bee222bc404cdd8280f69c357e3678252cfebd7",
+      "evidenceId": "commons-72754288",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Rafi.svg",
+      "status": "verified",
+      "originalSha256": "59a1d799714d2464bb75e9904bee222bc404cdd8280f69c357e3678252cfebd7"
+    }
+  ]
+}

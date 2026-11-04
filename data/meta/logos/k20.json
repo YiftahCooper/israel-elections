@@ -1,0 +1,19 @@
+{
+  "electionId": "k20",
+  "logos": [
+    {
+      "file": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kulanu_Kahlon_logo.svg",
+      "licence": "Public domain (PD-textlogo)",
+      "attribution": "רונאלדיניו המלך; File:Kulanu Kahlon logo.svg; Public domain (PD-textlogo).",
+      "hosted": false,
+      "inUseEvidence": "Commons records the original upload on 8 January 2015 from the party website, during the campaign before the March 2015 election. Asset download returned HTTP 429 (Retry-After: 600); no local image is provided.",
+      "confidence": "medium",
+      "letters": "כ",
+      "evidenceId": "commons-39073240",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Kulanu_Kahlon_logo.svg",
+      "status": "download-unavailable",
+      "suggestedFile": "logos/kulanu-2015.svg"
+    }
+  ]
+}
