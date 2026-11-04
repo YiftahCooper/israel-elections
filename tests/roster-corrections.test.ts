@@ -50,6 +50,10 @@ const FIXES: Fix[] = [
   { id: 'k12', letters: 'הן', rank: 2, name: 'פורז-פוזמנטיר אברהם', was: 'פורזומנסקי אברהם', personId: 519, surname: 'פורז' },
   { id: 'k13', letters: 'אמת', rank: 14, name: 'אור אורי', was: 'אור אריה', personId: 2132, surname: 'אור' },
   { id: 'k15', letters: 'עם', rank: 2, name: 'סאנע טלב', was: 'צאנע טלב', personId: 549, surname: 'אלסאנע' },
+  // found by the biography identity review (docs/research/candidate-bios.md) and re-read in both notices
+  { id: 'k3', letters: 'א', rank: 24, name: 'יוספטל סנטה', was: 'יוספטל גיורה', personId: 2378, surname: 'יוספטל' },
+  { id: 'k4', letters: 'א', rank: 47, name: 'טברסקי ז׳ניה', was: 'טברסקי דינה', personId: 2362, surname: 'טברסקי' },
+  { id: 'k16', letters: 'יש', rank: 14, name: 'דורון חמי נחמיה', was: 'דורון תמי נחמיה', personId: 1053, surname: 'דורון' },
 ];
 
 const dataset = (id: string) => JSON.parse(readFileSync(`public/data/${id}.json`, 'utf8'));

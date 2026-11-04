@@ -199,7 +199,7 @@
         },
         {
           "rank": 47,
-          "nameHe": "טברסקי דינה"
+          "nameHe": "טברסקי ז׳ניה"
         }
       ],
       "electedNames": [
@@ -249,7 +249,7 @@
         "למדן חנה",
         "בן-ישראל גדעון",
         "זר מרדכי",
-        "טברסקי דינה"
+        "טברסקי ז׳ניה"
       ],
       "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted.",
       "electedCandidateRanks": [
@@ -948,6 +948,14 @@
       "from": "נחילה אליאס",
       "to": "נח׳לה אליאס",
       "evidence": "Re-read at high zoom; printed \"נח׳לה אליאס\": k4-candidates-gazette PDF page 24 (printed p. 68). Candidate-notice reading; the results notice appears to print \"נח׳לת אליאס\"."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "א",
+      "rank": 47,
+      "from": "טברסקי דינה",
+      "to": "טברסקי ז׳ניה",
+      "evidence": "Re-read at high zoom; both notices print \"טברסקי ז׳ניה\": k4-candidates-gazette PDF page 2 (printed p. 46); k4-results-gazette PDF page 2 (printed p. 264). The same misreading was corrected for 1951 (decision 0088)."
     }
   ]
 }

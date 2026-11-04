@@ -160,9 +160,9 @@
   },
   {
    "candidateId": "3-א#24",
-   "personId": null,
-   "confidence": null,
-   "reason": "Left out. The dataset prints יוספטל גיורה (Giora Yoseftal, PersonID 2377, an MK only in Knessets 4–5), but the Knesset opening membership of the third Knesset has יוספטל סנטה (Senta Yoseftal, PersonID 2378) for Mapai. Which person the candidate notice names at rank 24 needs a re-read of the scan; no link until then."
+   "personId": 2378,
+   "confidence": "high",
+   "reason": "Both official notices print יוספטל סנטה at Mapai #24 (re-read 4 November 2026; the dataset's earlier גיורה was a misreading, now corrected). Senta Yoseftal, PersonID 2378, sat in the third Knesset from the opening."
   },
   {
    "candidateId": "3-ב#5",
@@ -197,8 +197,8 @@
   {
    "candidateId": "4-א#47",
    "personId": 2362,
-   "confidence": "medium",
-   "reason": "The dataset reads טברסקי דינה; the only Tversky in the Knesset is טברסקי ז׳ניה (Zenia Tversky), a Mapai member of the fourth Knesset from the opening. The same misreading (דינה for ז׳ניה) was corrected for 1951 in decision 0088; the 1959 name has not been re-read."
+   "confidence": "high",
+   "reason": "Both official notices print טברסקי ז׳ניה at Mapai #47 (re-read 4 November 2026; the dataset's earlier דינה was a misreading, now corrected, as for 1951 in decision 0088). Zenia Tversky, PersonID 2362, sat in the fourth Knesset from the opening."
   },
   {
    "candidateId": "4-ב#5",
@@ -311,8 +311,8 @@
   {
    "candidateId": "16-יש#14",
    "personId": 1053,
-   "confidence": "medium",
-   "reason": "The dataset reads דורון תמי נחמיה; the Shinui member of the sixteenth Knesset is דורון חמי (Nehemia \"Hemi\" Doron), the only unmatched Shinui member at the opening. ת for ח is probably a reading slip; not re-read."
+   "confidence": "high",
+   "reason": "Both official notices print דורון חמי נחמיה at Shinui #14 (re-read 4 November 2026; the dataset's earlier תמי was a misreading, now corrected). Nehemia \"Hemi\" Doron, PersonID 1053, sat in the sixteenth Knesset from the opening."
   },
   {
    "candidateId": "16-ב#1",
@@ -336,7 +336,7 @@
    "candidateId": "17-שס#11",
    "personId": 4418,
    "confidence": "medium",
-   "reason": "The CEC list prints אמסלם אמיל at Shas #11 (two independent readings); the Shas member of the seventeenth Knesset from the opening is אמסלם חיים (Haim Amsalem), the only unmatched Shas member. The given-name difference is not explained by an official source."
+   "reason": "The candidate notice prints אמסלם אמיל at Shas #11 (re-read at high zoom on 4 November 2026: the print is clear, so the dataset keeps it); the Shas member of the seventeenth Knesset from the opening is אמסלם חיים (Haim Amsalem), the only unmatched Shas member. The given-name difference is not explained by an official source."
   },
   {
    "candidateId": "17-טב#4",

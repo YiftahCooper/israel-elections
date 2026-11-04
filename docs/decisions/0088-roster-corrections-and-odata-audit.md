@@ -113,6 +113,21 @@ printed transliterations, the replacements in item 4, and the 1984 misprint. The
 members and, where the surname is still the same, the OData PersonID of the opening-day member.
 `tests/historical-k12.test.ts` pins the 1988 Likud order and the not-seated #25.
 
+## Addendum, 4 November 2026: three names the surname-only audit missed
+
+The candidate biography review ([candidate-bios.md](../research/candidate-bios.md)) matches each elected member to a
+Knesset PersonID by full name. It flagged names that this audit had passed on a surname match alone. Each one was re-read
+at high zoom in both notices:
+
+- **1955** Mapai #24 **יוספטל סנטה**, not יוספטל גיורה (YP 425 p. 1005; YP 432 p. 1138). The occupation is in the feminine form
+  (חקלאית). Senta Yoseftal (PersonID 2378) sat in the third Knesset. Giora Yoseftal first sat in the fourth.
+- **1959** Mapai #47 **טברסקי ז׳ניה**, not טברסקי דינה (YP 704 p. 46; YP 717 p. 264): the same misreading corrected above for 1951.
+- **2003** Shinui #14 **דורון חמי נחמיה**, not דורון תמי נחמיה (YP 5148 p. 1196; YP 5155 p. 1407).
+
+The 2006 Shas #11 entry stays **אמסלם אמיל**, as the candidate notice clearly prints it. The Knesset records the member as
+Haim Amsalem; no official source explains the difference. Seats and allocations are unchanged. The reviewed rosters
+record each correction with its evidence, and `tests/roster-corrections.test.ts` pins all three.
+
 הוחלט לתקן שמות מועמדים שנבחרו לפי קריאה חוזרת של הסריקות הרשמיות. בכל מקרה הבדיקה נעשתה
 בהודעת המועמדים ובהודעת התוצאות, עם הפניה לעמוד. הושוו כל הנבחרים בכל 26 הבחירות להרכב
 הכנסת ביום פתיחתה לפי נתוני ה-OData הרשמיים של הכנסת, והקבצים נשמרו. ההבדלים שנותרו מוסברים:

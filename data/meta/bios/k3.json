@@ -371,6 +371,22 @@
    "confidence": "high",
    "basis": "elected; Knesset 3 member, name identical (3)"
   },
+  "3-א#24": {
+   "knessetPersonId": 2378,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/191",
+    "siteId": 191,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "סנטה יוספטל",
+    "url": "https://he.wikipedia.org/wiki/%D7%A1%D7%A0%D7%98%D7%94_%D7%99%D7%95%D7%A1%D7%A4%D7%98%D7%9C",
+    "via": "wikidata Q2904698"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; reviewed decision: Both official notices print יוספטל סנטה at Mapai #24 (re-read 4 November 2026; the dataset's earlier גיורה was a misreading, now corrected). Senta Yoseftal, PersonID 2378, sat in the third Knesset from the opening."
+  },
   "3-א#25": {
    "knessetPersonId": 2299,
    "knesset": {

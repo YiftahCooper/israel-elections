@@ -32,8 +32,9 @@ const EXPECTED: Record<Family, string> = {
   allocation: 'aba4d7b5256328d6a1db6591b83369cb066c5c6f0ecb2cc369209b9ee2a7eacf',
   analysis: 'f04635df61b1ca12d56e177f0b249a60ed8056c24b2a003f4a7791f161390ee2',
   // Model digest re-recorded for the 1973 party ranks, then for candidate biography links (Candidate.bio): with
-  // the build timestamps held fixed and bio not carried, the new code gives the previous digest.
-  model: 'bda94723d1984c216e71d0ddfc7019810ba88542bb4e0640488071af1fa9071f',
+  // the build timestamps held fixed and bio not carried, the new code gives the previous digest. Then for three
+  // corrected names (0088 addendum: 1955 #24, 1959 #47, 2003 Shinui #14); src unchanged, other digests unchanged.
+  model: 'f16c16b4a167177ee3417c8e48ec07e543c9af09bdeb57461e5534cb637971a9',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

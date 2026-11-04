@@ -1061,7 +1061,7 @@
         },
         {
           "rank": 14,
-          "nameHe": "דורון תמי נחמיה",
+          "nameHe": "דורון חמי נחמיה",
           "page": 1196
         },
         {
@@ -1111,7 +1111,7 @@
           "רצאבי אהוד",
           "לבני אסתר ניבה",
           "ליבוביץ אילן",
-          "דורון תמי נחמיה",
+          "דורון חמי נחמיה",
           "יאסינוב יגאל"
         ],
         "resultsNamesHe": [
@@ -1128,7 +1128,7 @@
           "רצאבי אהוד",
           "לבני אסתר ניבה",
           "ליבוביץ אילן",
-          "דורון תמי נחמיה",
+          "דורון חמי נחמיה",
           "יאסינוב יגאל"
         ],
         "nameVariants": [],
@@ -1205,7 +1205,7 @@
           "רצאבי אהוד",
           "לבני אסתר ניבה",
           "ליבוביץ אילן",
-          "דורון תמי נחמיה",
+          "דורון חמי נחמיה",
           "יאסינוב יגאל"
         ],
         "result": "matches-original-membership",
@@ -3685,6 +3685,17 @@
       "remainingReviewReasonHe": "לא ניתן היה לאמת בביטחון את האיות המדויק לאחר ניסיון תמלול מלא וקריאה שנייה מוגדלת בדירוגים 29, 53, 61. הסריקה הרשמית קיימת; זו מגבלת תמלול ולא היעדר רשימה רשומה.",
       "truncatedReasonEn": "Only ranks 1–11 of 111 registered candidates are transcribed; every elected rank was checked against section 4 of the official results notice. Later ranks remain unverified.",
       "truncatedReasonHe": "תומללו רק מקומות 1–11 מתוך 111 מועמדים רשומים; כל המקומות שנבחרו הוצלבו עם סעיף 4 בהודעת התוצאות הרשמית. יתר המקומות טרם אומתו."
+    }
+  ],
+  "transcriptionCorrections": [
+    {
+      "letters": "יש",
+      "rank": 14,
+      "before": "דורון תמי נחמיה",
+      "after": "דורון חמי נחמיה",
+      "candidatePage": 1196,
+      "resultsPage": 1407,
+      "note": "Re-read at high zoom on 4 November 2026: both official scans print חמי (Hemi Doron, Knesset PersonID 1053)."
     }
   ]
 }

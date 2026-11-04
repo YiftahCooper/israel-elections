@@ -752,8 +752,8 @@
     "via": "wikidata Q1530257"
    },
    "party": null,
-   "confidence": "medium",
-   "basis": "elected; reviewed decision: The dataset reads טברסקי דינה; the only Tversky in the Knesset is טברסקי ז׳ניה (Zenia Tversky), a Mapai member of the fourth Knesset from the opening. The same misreading (דינה for ז׳ניה) was corrected for 1951 in decision 0088; the 1959 name has not been re-read."
+   "confidence": "high",
+   "basis": "elected; reviewed decision: Both official notices print טברסקי ז׳ניה at Mapai #47 (re-read 4 November 2026; the dataset's earlier דינה was a misreading, now corrected, as for 1951 in decision 0088). Zenia Tversky, PersonID 2362, sat in the fourth Knesset from the opening."
   },
   "4-ח#1": {
    "knessetPersonId": 2179,

@@ -1288,8 +1288,8 @@
     "via": "wikidata Q2907341"
    },
    "party": null,
-   "confidence": "medium",
-   "basis": "elected; reviewed decision: The dataset reads דורון תמי נחמיה; the Shinui member of the sixteenth Knesset is דורון חמי (Nehemia \"Hemi\" Doron), the only unmatched Shinui member at the opening. ת for ח is probably a reading slip; not re-read."
+   "confidence": "high",
+   "basis": "elected; reviewed decision: Both official notices print דורון חמי נחמיה at Shinui #14 (re-read 4 November 2026; the dataset's earlier תמי was a misreading, now corrected). Nehemia \"Hemi\" Doron, PersonID 1053, sat in the sixteenth Knesset from the opening."
   },
   "16-יש#15": {
    "knessetPersonId": 1054,

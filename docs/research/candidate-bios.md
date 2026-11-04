@@ -19,8 +19,8 @@ doubtful cases are listed here.
 |---|---:|---:|---:|---:|---:|---:|---:|
 | k1 1949 | 128 | 122 | 120/120 | 2 | 122 (0) | 0 | 2 |
 | k2 1951 | 120 | 120 | 120/120 | 0 | 120 (0) | 0 | 0 |
-| k3 1955 | 120 | 119 | 119/120 | 0 | 119 (0) | 0 | 0 |
-| k4 1959 | 120 | 120 | 120/120 | 0 | 120 (0) | 0 | 1 |
+| k3 1955 | 120 | 120 | 120/120 | 0 | 120 (0) | 0 | 0 |
+| k4 1959 | 120 | 120 | 120/120 | 0 | 120 (0) | 0 | 0 |
 | k5 1961 | 122 | 120 | 120/120 | 0 | 120 (0) | 0 | 0 |
 | k6 1965 | 120 | 120 | 120/120 | 0 | 120 (0) | 0 | 0 |
 | k7 1969 | 120 | 120 | 120/120 | 0 | 120 (0) | 0 | 0 |
@@ -32,7 +32,7 @@ doubtful cases are listed here.
 | k13 1992 | 121 | 121 | 120/120 | 1 | 121 (0) | 0 | 1 |
 | k14 1996 | 129 | 121 | 120/120 | 1 | 121 (0) | 0 | 1 |
 | k15 1999 | 122 | 122 | 120/120 | 2 | 122 (0) | 0 | 2 |
-| k16 2003 | 368 | 135 | 120/120 | 13 | 135 (2) | 0 | 12 |
+| k16 2003 | 368 | 135 | 120/120 | 13 | 135 (2) | 0 | 11 |
 | k17 2006 | 719 | 137 | 120/120 | 12 | 137 (5) | 0 | 11 |
 | k18 2009 | 1,613 | 192 | 120/120 | 47 | 192 (25) | 0 | 61 |
 | k19 2013 | 1,595 | 204 | 120/120 | 50 | 199 (29) | 47 | 74 |
@@ -43,10 +43,10 @@ doubtful cases are listed here.
 | k24 2021 | 1,406 | 176 | 119/120 | 50 | 171 (7) | 0 | 30 |
 | k25 2022 | 1,420 | 191 | 120/120 | 59 | 182 (12) | 0 | 64 |
 | k26 2026 | 1,352 | 163 | 73/120 | 45 | 121 (9) | 76 | 66 |
-| **all** | 15,543 | 3,773 | 3,068/3,120 | 512 | 3,703 (148) | 164 | 566 |
+| **all** | 15,543 | 3,774 | 3,069/3,120 | 512 | 3,704 (148) | 164 | 564 |
 <!-- coverage:end -->
 
-Elected members: 3,115 of 3,120 are tied to a Knesset PersonID and 3,068 have a Knesset page link. The gap is the 47 new members of the 26th Knesset (PersonID known, no website id yet) and the five members left out below. "Other MKs" are non-elected candidates who served as MKs (replacements, or MKs of other Knessets). "Medium" counts entries with at least one medium-confidence link.
+Elected members: 3,116 of 3,120 are tied to a Knesset PersonID and 3,069 have a Knesset page link. The gap is the 47 new members of the 26th Knesset (PersonID known, no website id yet) and the four members left out below. "Other MKs" are non-elected candidates who served as MKs (replacements, or MKs of other Knessets). "Medium" counts entries with at least one medium-confidence link.
 
 Party sources (`data/raw/bios/party-sources.reviewed.json`):
 
@@ -108,7 +108,7 @@ The elected members are the candidates the app shows as elected (`electedOf`, vi
    members), and the match is repeated within those factions. A unique best match is accepted.
 3. Every remaining elected member, and every duplicate, needs a reviewed decision in
    `data/raw/bios/identity-decisions.reviewed.json`; without one the member is not linked and the
-   build reports it. There are 81 decisions: 73 high, 3 medium and 5 left out. Most rest on the 0088
+   build reports it. There are 81 decisions: 76 high, 1 medium and 4 left out. Most rest on the 0088
    audit (earlier surnames printed in 1949–1977, printed transliterations, replacements before the
    opening). Each states its evidence.
 
@@ -157,21 +157,21 @@ campaign period (about five months before the election day at most).
 
 | Candidate | Why |
 |---|---|
-| `3-א#24` | The dataset prints יוספטל גיורה (Giora Yoseftal, PersonID 2377, an MK only in Knessets 4–5), but the Knesset opening membership of the third Knesset has יוספטל סנטה (Senta Yoseftal, PersonID 2378) for Mapai. Which person the candidate notice names at rank 24 needs a re-read of the scan; no link until then. |
 | `9-מחל#21` | Ranks 21 and 24 of the 1977 Likud list are both printed כהן יגאל; the ninth Knesset has יגאל כהן (2394) and יגאל כהן-אורגד (2399), both Likud from the opening. Which rank is which is not established. |
 | `9-מחל#24` | see 9-מחל#21. |
 | `20-ל#4` | אילן שוחט (Ilan Shohat) is named elected in the results notice but was replaced by Robert Ilatov before the opening (decision 0088 item 4); he never served, so he has no Knesset record. |
 | `24-ב#3` | Alon Davidi (#3) was replaced by Idit Silman before the opening (decision 0088 item 4); he has no Knesset record. |
 | 47 new members of the 26th Knesset | PersonID known (provisional faction rows), no `SiteId` in `KNS_MkSiteCode` yet; no Knesset link until the site codes are published. The entries keep `knessetPersonId` when another link exists. |
 
-### Elected members linked at medium confidence (possible transcription issues for the parent to check)
+### Elected members linked at medium confidence
 
 | Candidate | Dataset name | Knesset record | Note |
 |---|---|---|---|
-| `4-א#47` | טברסקי דינה | טברסקי ז׳ניה (2362) | The 1951 reading דינה was corrected to ז׳ניה in decision 0088; 1959 not re-read. |
-| `16-יש#14` | דורון תמי נחמיה | דורון חמי (1053) | ת for ח is probably a reading slip; not re-read. |
-| `17-שס#11` | אמסלם אמיל | אמסלם חיים (4418) | The CEC list prints אמיל (two readings); unexplained given-name difference. |
-| `3-א#24` (left out) | יוספטל גיורה | יוספטל סנטה (2378) at the opening | **Probable dataset issue**: the 0088 audit counted this as the same person (surname match). |
+| `17-שס#11` | אמסלם אמיל | אמסלם חיים (4418) | Re-read at high zoom on 4 November 2026: the candidate notice clearly prints אמיל, so the dataset keeps it. The given-name difference is not explained by an official source. |
+
+Three names this review flagged were transcription errors, confirmed in both official notices on 4 November 2026
+and corrected in the rosters (decision 0088, addendum): 1955 Mapai #24 יוספטל סנטה (not גיורה), 1959 Mapai #47
+טברסקי ז׳ניה (not דינה) and 2003 Shinui #14 דורון חמי נחמיה (not תמי). All three are now linked at high confidence.
 
 ### Candidates not linked by the conservative rules (37)
 

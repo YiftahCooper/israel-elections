@@ -107,7 +107,7 @@
         },
         {
           "rank": 24,
-          "nameHe": "יוספטל גיורה"
+          "nameHe": "יוספטל סנטה"
         },
         {
           "rank": 25,
@@ -198,7 +198,7 @@
         "אפרתי יוסף",
         "גורי ישראל",
         "הכהן דוד",
-        "יוספטל גיורה",
+        "יוספטל סנטה",
         "הלל שלמה",
         "צברי רחל",
         "ברגר הרצל",
@@ -957,6 +957,14 @@
       "from": "פלדשטיין שלמה",
       "to": "פרלשטיין שלמה",
       "evidence": "Re-read at high zoom; both notices print \"פרלשטיין שלמה\": k3-candidates-gazette PDF page 16 (printed p. 1020); k3-results-gazette PDF page 3 (printed p. 1139)."
+    },
+    {
+      "reviewedOn": "2026-11-04",
+      "letters": "א",
+      "rank": 24,
+      "from": "יוספטל גיורה",
+      "to": "יוספטל סנטה",
+      "evidence": "Re-read at high zoom; both notices print \"יוספטל סנטה\" (occupation חקלאית, feminine): k3-candidates-gazette PDF page 1 (printed p. 1005); k3-results-gazette PDF page 2 (printed p. 1138). Senta Yoseftal (Knesset PersonID 2378) sat in the third Knesset; Giora Yoseftal first sat in the fourth."
     }
   ]
 }

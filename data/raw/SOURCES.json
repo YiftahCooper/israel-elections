@@ -1314,8 +1314,8 @@
     "description": "Reviewed manual candidate-scan transcription with complete or elected-prefix coverage, page references, independent section 4 results-notice names and explicit printed-name variants; non-winning unavailable rosters and prior membership/reserve checks retained",
     "method": "manual-capture",
     "retrievedAt": "2026-11-03",
-    "bytes": 101344,
-    "sha256": "cb071e44c44f61d97217fa577fb00923c5557f71a320b7fa08d5d6212246ea18"
+    "bytes": 101714,
+    "sha256": "92411133ab746a6a01a048b37caec77e251b0ceb6588c3e8176e89d6d6cce428"
   },
   {
     "id": "k16-localities-reviewed",
@@ -2904,8 +2904,8 @@
     "description": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
     "method": "visual-primary-review",
     "retrievedAt": "2026-11-03",
-    "bytes": 22973,
-    "sha256": "1a9f39ed423325300f6d841805dc5dffd75ffc132c5b423253f9a81fa2059931",
+    "bytes": 23465,
+    "sha256": "d505687fba01577641a9ad7671d73bfe417da6273378df7446117aec313aef6d",
     "lastModified": null
   },
   {
@@ -2917,8 +2917,8 @@
     "description": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
     "method": "visual-primary-review",
     "retrievedAt": "2026-11-03",
-    "bytes": 22705,
-    "sha256": "d9c8a6ee5380862377a1caf07ea5ec6914387bdc4f4ad7d14887c08a242b47dd",
+    "bytes": 23123,
+    "sha256": "c44a4598f023be405e83ab78006dc2057bcaf62b687fc0a6647fc29399365329",
     "lastModified": null
   },
   {

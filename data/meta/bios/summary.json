@@ -25,12 +25,12 @@
  },
  "k3": {
   "candidates": 120,
-  "withLink": 119,
+  "withLink": 120,
   "elected": 120,
-  "electedKnesset": 119,
-  "electedPersonId": 119,
+  "electedKnesset": 120,
+  "electedPersonId": 120,
   "otherKnesset": 0,
-  "hewiki": 119,
+  "hewiki": 120,
   "hewikiNonMk": 0,
   "party": 0,
   "medium": 0
@@ -45,7 +45,7 @@
   "hewiki": 120,
   "hewikiNonMk": 0,
   "party": 0,
-  "medium": 1
+  "medium": 0
  },
  "k5": {
   "candidates": 122,
@@ -189,7 +189,7 @@
   "hewiki": 135,
   "hewikiNonMk": 2,
   "party": 0,
-  "medium": 12
+  "medium": 11
  },
  "k17": {
   "candidates": 719,
