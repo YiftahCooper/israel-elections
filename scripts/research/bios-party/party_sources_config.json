@@ -1,0 +1,123 @@
+[
+ {
+  "id": "likud-2026-list",
+  "election": "k26",
+  "letters": "מחל",
+  "publisher": "הליכוד",
+  "method": "rankcards",
+  "json": "data/raw/bios/likud-2026-members.json",
+  "url": "https://www.likud.org.il/#leadership",
+  "kind": "party-site",
+  "retrieved": "2026-11-04",
+  "note": "The party's 2026 list section (30 cards); each card opens the candidate's biography (data: /assets/list/members.json)."
+ },
+ {
+  "id": "beytenu-2026-members",
+  "election": "k26",
+  "letters": "ל",
+  "publisher": "ישראל ביתנו",
+  "method": "slug",
+  "live": true,
+  "retrieved": "2026-11-04",
+  "until": "20261231",
+  "regex": "beytenu\\.org\\.il/kneset-member/(?P<slug>[^/]+)/$",
+  "cdx": [
+   "live/beytenu-members.cdx"
+  ],
+  "kind": "party-site"
+ },
+ {
+  "id": "yeshatid-2026-members",
+  "election": "k26",
+  "letters": "רק",
+  "publisher": "יש עתיד",
+  "method": "page",
+  "urls": "urls_ya26.jsonl",
+  "retrieved": "2026-11-04",
+  "kind": "party-site",
+  "note": "Yesh Atid's page of its MK; Yesh Atid ran within the Beyachad (ביחד) list in 2026."
+ },
+ {
+  "id": "hadash-2026-list",
+  "election": "k26",
+  "letters": "ודם",
+  "publisher": "חד\"ש",
+  "method": "listpage",
+  "url": "https://hadash.org.il/list",
+  "retrieved": "2026-11-04",
+  "kind": "party-site",
+  "note": "Hadash's list page with a short biography of each of its candidates on the Joint List."
+ },
+ {
+  "id": "rz-2026-team",
+  "election": "k26",
+  "letters": "ט",
+  "publisher": "הציונות הדתית",
+  "method": "listpage",
+  "url": "https://zionutdatit.org.il/moamadim/",
+  "retrieved": "2026-11-04",
+  "kind": "party-site",
+  "note": "The party's team page: a profile (questionnaire) of each candidate rather than a formal biography."
+ },
+ {
+  "id": "likud-2013-faction",
+  "election": "k19",
+  "letters": "מחל",
+  "publisher": "הליכוד",
+  "method": "slug",
+  "until": "20130122",
+  "regex": "likud\\.org\\.il(:80)?/חברי-סיעת-הליכוד/(?P<slug>[^/?]+)$",
+  "cdx": [
+   "cdx/likud.org.il_20120801_20130122.txt"
+  ],
+  "note": "The Likud's page of its outgoing MK (faction member) before the 2013 election; Likud ran with Yisrael Beiteinu."
+ },
+ {
+  "id": "likud-2015-faction",
+  "election": "k20",
+  "letters": "מחל",
+  "publisher": "הליכוד",
+  "method": "slug",
+  "until": "20150317",
+  "regex": "likud\\.org\\.il(:80)?/חברי-סיעת-הליכוד/(?P<slug>[^/?]+)$",
+  "cdx": [
+   "cdx/likud.org.il_20141101_20150317.txt"
+  ],
+  "note": "The Likud's page of its outgoing MK (faction member) before the 2015 election."
+ },
+ {
+  "id": "likud-2019a-faction",
+  "election": "k21",
+  "letters": "מחל",
+  "publisher": "הליכוד",
+  "method": "slug",
+  "until": "20190409",
+  "regex": "likud\\.org\\.il(:80)?/חברי-סיעת-הליכוד/(?P<slug>[^/?]+)$",
+  "cdx": [
+   "cdx/likud.org.il_20181201_20190409.txt"
+  ],
+  "note": "The Likud's page of its outgoing MK (faction member) before the April 2019 election."
+ },
+ {
+  "id": "yeshatid-2013-team",
+  "election": "k19",
+  "letters": "פה",
+  "publisher": "יש עתיד",
+  "method": "page",
+  "urls": "urls_ya13.jsonl",
+  "note": "Yesh Atid's 2013 team page of the candidate."
+ },
+ {
+  "id": "labor-2019a-team",
+  "election": "k21",
+  "letters": "אמת",
+  "publisher": "מפלגת העבודה",
+  "method": "slug",
+  "until": "20190409",
+  "regex": "havoda\\.org\\.il(:80)?/הנבחרת/(?P<slug>[^/?]+)/$",
+  "cdx": [
+   "cdx/havoda.org.il_20181201_20190409.txt"
+  ],
+  "note": "The Labor Party's page of its MK (\"הנבחרת\") before the April 2019 election."
+ }
+]

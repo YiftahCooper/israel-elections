@@ -1,0 +1,2231 @@
+{
+ "electionId": "k11",
+ "generatedBy": "scripts/research/build-bios.py",
+ "format": "data/meta/bios/README.md",
+ "candidates": {
+  "11-מחל#1": {
+   "knessetPersonId": 2652,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/175",
+    "siteId": 175,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "יצחק שמיר",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A6%D7%97%D7%A7_%D7%A9%D7%9E%D7%99%D7%A8",
+    "via": "wikidata Q184351"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#2": {
+   "knessetPersonId": 536,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/72",
+    "siteId": 72,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "דוד לוי",
+    "url": "https://he.wikipedia.org/wiki/%D7%93%D7%95%D7%93_%D7%9C%D7%95%D7%99",
+    "via": "wikidata Q1175220"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#3": {
+   "knessetPersonId": 2451,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/493",
+    "siteId": 493,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "יצחק מודעי",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A6%D7%97%D7%A7_%D7%9E%D7%95%D7%93%D7%A2%D7%99",
+    "via": "wikidata Q911074"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#4": {
+   "knessetPersonId": 463,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/278",
+    "siteId": 278,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "משה ארנס",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A9%D7%94_%D7%90%D7%A8%D7%A0%D7%A1",
+    "via": "wikidata Q548185"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#5": {
+   "knessetPersonId": 482,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/125",
+    "siteId": 125,
+    "verified": "archive 2004-04-19"
+   },
+   "hewiki": {
+    "title": "אריאל שרון",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%A8%D7%99%D7%90%D7%9C_%D7%A9%D7%A8%D7%95%D7%9F",
+    "via": "wikidata Q60206"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#6": {
+   "knessetPersonId": 2489,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/159",
+    "siteId": 159,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "משה נסים",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A9%D7%94_%D7%A0%D7%A1%D7%99%D7%9D",
+    "via": "wikidata Q941785"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#7": {
+   "knessetPersonId": 2399,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/451",
+    "siteId": 451,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "יגאל כהן-אורגד",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%92%D7%90%D7%9C_%D7%9B%D7%94%D7%9F-%D7%90%D7%95%D7%A8%D7%92%D7%93",
+    "via": "wikidata Q504126"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#8": {
+   "knessetPersonId": 2168,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/274",
+    "siteId": 274,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "יורם ארידור",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%95%D7%A8%D7%9D_%D7%90%D7%A8%D7%99%D7%93%D7%95%D7%A8",
+    "via": "wikidata Q434195"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#9": {
+   "knessetPersonId": 2667,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/670",
+    "siteId": 670,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אברהם שריר",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%91%D7%A8%D7%94%D7%9D_%D7%A9%D7%A8%D7%99%D7%A8",
+    "via": "wikidata Q434978"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#10": {
+   "knessetPersonId": 2627,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/638",
+    "siteId": 638,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אליעזר שוסטק",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%9C%D7%99%D7%A2%D7%96%D7%A8_%D7%A9%D7%95%D7%A1%D7%98%D7%A7",
+    "via": "wikidata Q2334832"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#11": {
+   "knessetPersonId": 2196,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/21",
+    "siteId": 21,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אליהו בן-אלישר",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%9C%D7%99%D7%94%D7%95_%D7%91%D7%9F-%D7%90%D7%9C%D7%99%D7%A9%D7%A8",
+    "via": "wikidata Q1328935"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#12": {
+   "knessetPersonId": 862,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/110",
+    "siteId": 110,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "משה קצב",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A9%D7%94_%D7%A7%D7%A6%D7%91",
+    "via": "wikidata Q181832"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#13": {
+   "knessetPersonId": 2262,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/348",
+    "siteId": 348,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "פסח גרופר",
+    "url": "https://he.wikipedia.org/wiki/%D7%A4%D7%A1%D7%97_%D7%92%D7%A8%D7%95%D7%A4%D7%A8",
+    "via": "wikidata Q2904677"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#14": {
+   "knessetPersonId": 544,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/82",
+    "siteId": 82,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "דוד מגן",
+    "url": "https://he.wikipedia.org/wiki/%D7%93%D7%95%D7%93_%D7%9E%D7%92%D7%9F",
+    "via": "wikidata Q2907544"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#15": {
+   "knessetPersonId": 545,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/155",
+    "siteId": 155,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "רוני מילוא",
+    "url": "https://he.wikipedia.org/wiki/%D7%A8%D7%95%D7%A0%D7%99_%D7%9E%D7%99%D7%9C%D7%95%D7%90",
+    "via": "wikidata Q945024"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name matches (2.5)"
+  },
+  "11-מחל#16": {
+   "knessetPersonId": 2560,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/164",
+    "siteId": 164,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "גדעון פת",
+    "url": "https://he.wikipedia.org/wiki/%D7%92%D7%93%D7%A2%D7%95%D7%9F_%D7%A4%D7%AA",
+    "via": "wikidata Q2906997"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#17": {
+   "knessetPersonId": 478,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/119",
+    "siteId": 119,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "מאיר שטרית",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%90%D7%99%D7%A8_%D7%A9%D7%98%D7%A8%D7%99%D7%AA",
+    "via": "wikidata Q939899"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#18": {
+   "knessetPersonId": 2642,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/173",
+    "siteId": 173,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "דב שילנסקי",
+    "url": "https://he.wikipedia.org/wiki/%D7%93%D7%91_%D7%A9%D7%99%D7%9C%D7%A0%D7%A1%D7%A7%D7%99",
+    "via": "wikidata Q573858"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#19": {
+   "knessetPersonId": 2335,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/406",
+    "siteId": 406,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "יצחק זיגר",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A6%D7%97%D7%A7_%D7%96%D7%99%D7%92%D7%A8",
+    "via": "wikidata Q2900629"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#20": {
+   "knessetPersonId": 2285,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/368",
+    "siteId": 368,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "מיכאל דקל",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%99%D7%9B%D7%90%D7%9C_%D7%93%D7%A7%D7%9C",
+    "via": "wikidata Q2904183"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#21": {
+   "knessetPersonId": 2608,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/623",
+    "siteId": 623,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "מיכאל רייסר",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%99%D7%9B%D7%90%D7%9C_%D7%A8%D7%99%D7%99%D7%A1%D7%A8",
+    "via": "wikidata Q2907100"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#22": {
+   "knessetPersonId": 2234,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/325",
+    "siteId": 325,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "גדעון גדות",
+    "url": "https://he.wikipedia.org/wiki/%D7%92%D7%93%D7%A2%D7%95%D7%9F_%D7%92%D7%93%D7%95%D7%AA",
+    "via": "wikidata Q2919836"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#23": {
+   "knessetPersonId": 2316,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/144",
+    "siteId": 144,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אריאל וינשטיין",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%A8%D7%99%D7%90%D7%9C_%D7%95%D7%99%D7%A0%D7%A9%D7%98%D7%99%D7%99%D7%9F",
+    "via": "wikidata Q2900496"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#24": {
+   "knessetPersonId": 1064,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/3",
+    "siteId": 3,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אהוד אולמרט",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%94%D7%95%D7%93_%D7%90%D7%95%D7%9C%D7%9E%D7%A8%D7%98",
+    "via": "wikidata Q93181"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#25": {
+   "knessetPersonId": 2581,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/598",
+    "siteId": 598,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "חיים קורפו",
+    "url": "https://he.wikipedia.org/wiki/%D7%97%D7%99%D7%99%D7%9D_%D7%A7%D7%95%D7%A8%D7%A4%D7%95",
+    "via": "wikidata Q2906138"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#26": {
+   "knessetPersonId": 2273,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/359",
+    "siteId": 359,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "שרה דורון",
+    "url": "https://he.wikipedia.org/wiki/%D7%A9%D7%A8%D7%94_%D7%93%D7%95%D7%A8%D7%95%D7%9F",
+    "via": "wikidata Q2778006"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#27": {
+   "knessetPersonId": 2256,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/341",
+    "siteId": 341,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "מרים גלזר-תעסה",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A8%D7%99%D7%9D_%D7%92%D7%9C%D7%96%D7%A8-%D7%AA%D7%A2%D7%A1%D7%94",
+    "via": "wikidata Q2908223"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#28": {
+   "knessetPersonId": 2490,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/526",
+    "siteId": 526,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אמל נסראלדין",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%9E%D7%9C_%D7%A0%D7%A1%D7%A8%D7%90%D7%9C%D7%93%D7%99%D7%9F",
+    "via": "wikidata Q2776502"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#29": {
+   "knessetPersonId": 2242,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/330",
+    "siteId": 330,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "פנחס גולדשטיין",
+    "url": "https://he.wikipedia.org/wiki/%D7%A4%D7%A0%D7%97%D7%A1_%D7%92%D7%95%D7%9C%D7%93%D7%A9%D7%98%D7%99%D7%99%D7%9F",
+    "via": "wikidata Q2903271"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#30": {
+   "knessetPersonId": 2398,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/450",
+    "siteId": 450,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "מאיר כהן-אבידב",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%90%D7%99%D7%A8_%D7%9B%D7%94%D7%9F-%D7%90%D7%91%D7%99%D7%93%D7%91",
+    "via": "wikidata Q2901616"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#31": {
+   "knessetPersonId": 2577,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/166",
+    "siteId": 166,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "חיים קופמן",
+    "url": "https://he.wikipedia.org/wiki/%D7%97%D7%99%D7%99%D7%9D_%D7%A7%D7%95%D7%A4%D7%9E%D7%9F",
+    "via": "wikidata Q2904671"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name matches (2)"
+  },
+  "11-מחל#32": {
+   "knessetPersonId": 472,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/86",
+    "siteId": 86,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "יהושע מצא",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%94%D7%95%D7%A9%D7%A2_%D7%9E%D7%A6%D7%90",
+    "via": "wikidata Q2904753"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#33": {
+   "knessetPersonId": 2672,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/128",
+    "siteId": 128,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "דן תיכון",
+    "url": "https://he.wikipedia.org/wiki/%D7%93%D7%9F_%D7%AA%D7%99%D7%9B%D7%95%D7%9F",
+    "via": "wikidata Q983154"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#34": {
+   "knessetPersonId": 2524,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/161",
+    "siteId": 161,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "עובדיה עלי",
+    "url": "https://he.wikipedia.org/wiki/%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%94_%D7%A2%D7%9C%D7%99",
+    "via": "wikidata Q2907047"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#35": {
+   "knessetPersonId": 546,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/88",
+    "siteId": 88,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "דן מרידור",
+    "url": "https://he.wikipedia.org/wiki/%D7%93%D7%9F_%D7%9E%D7%A8%D7%99%D7%93%D7%95%D7%A8",
+    "via": "wikidata Q1159122"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#36": {
+   "knessetPersonId": 2436,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/484",
+    "siteId": 484,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אוריאל לין",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%95%D7%A8%D7%99%D7%90%D7%9C_%D7%9C%D7%99%D7%9F",
+    "via": "wikidata Q2901987"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#37": {
+   "knessetPersonId": 471,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/77",
+    "siteId": 77,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "עוזי לנדאו",
+    "url": "https://he.wikipedia.org/wiki/%D7%A2%D7%95%D7%96%D7%99_%D7%9C%D7%A0%D7%93%D7%90%D7%95",
+    "via": "wikidata Q2660886"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#38": {
+   "knessetPersonId": 462,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/9",
+    "siteId": 9,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "מיכאל איתן",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%99%D7%9B%D7%90%D7%9C_%D7%90%D7%99%D7%AA%D7%9F",
+    "via": "wikidata Q1820307"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#39": {
+   "knessetPersonId": 2647,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/653",
+    "siteId": 653,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "בני שליטא",
+    "url": "https://he.wikipedia.org/wiki/%D7%91%D7%A0%D7%99_%D7%A9%D7%9C%D7%99%D7%98%D7%90",
+    "via": "wikidata Q2902244"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#40": {
+   "knessetPersonId": 2394,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/446",
+    "siteId": 446,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "יגאל כהן (פוליטיקאי)",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%92%D7%90%D7%9C_%D7%9B%D7%94%D7%9F_(%D7%A4%D7%95%D7%9C%D7%99%D7%98%D7%99%D7%A7%D7%90%D7%99)",
+    "via": "wikidata Q2902039"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-מחל#41": {
+   "knessetPersonId": 2576,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/594",
+    "siteId": 594,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אליעזר קולס",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%9C%D7%99%D7%A2%D7%96%D7%A8_%D7%A7%D7%95%D7%9C%D7%A1",
+    "via": "wikidata Q2901738"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#1": {
+   "knessetPersonId": 456,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/104",
+    "siteId": 104,
+    "verified": "archive 2004-04-19"
+   },
+   "hewiki": {
+    "title": "שמעון פרס",
+    "url": "https://he.wikipedia.org/wiki/%D7%A9%D7%9E%D7%A2%D7%95%D7%9F_%D7%A4%D7%A8%D7%A1",
+    "via": "wikidata Q57410"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#2": {
+   "knessetPersonId": 2476,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/687",
+    "siteId": 687,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "יצחק נבון",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A6%D7%97%D7%A7_%D7%A0%D7%91%D7%95%D7%9F",
+    "via": "wikidata Q311583"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#3": {
+   "knessetPersonId": 2595,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/168",
+    "siteId": 168,
+    "verified": "archive 2004-04-19"
+   },
+   "hewiki": {
+    "title": "יצחק רבין",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A6%D7%97%D7%A7_%D7%A8%D7%91%D7%99%D7%9F",
+    "via": "wikidata Q34060"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#4": {
+   "knessetPersonId": 2216,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/311",
+    "siteId": 311,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "חיים בר-לב",
+    "url": "https://he.wikipedia.org/wiki/%D7%97%D7%99%D7%99%D7%9D_%D7%91%D7%A8-%D7%9C%D7%91",
+    "via": "wikidata Q467150"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#5": {
+   "knessetPersonId": 2122,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/236",
+    "siteId": 236,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אבא אבן",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%91%D7%90_%D7%90%D7%91%D7%9F",
+    "via": "wikidata Q305776"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#6": {
+   "knessetPersonId": 2648,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/654",
+    "siteId": 654,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "ויקטור שם-טוב",
+    "url": "https://he.wikipedia.org/wiki/%D7%95%D7%99%D7%A7%D7%98%D7%95%D7%A8_%D7%A9%D7%9D-%D7%98%D7%95%D7%91",
+    "via": "wikidata Q2891007"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#7": {
+   "knessetPersonId": 2583,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/167",
+    "siteId": 167,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "ישראל קיסר",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%A7%D7%99%D7%A1%D7%A8",
+    "via": "wikidata Q2776909"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#8": {
+   "knessetPersonId": 2380,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/193",
+    "siteId": 193,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "גד יעקבי",
+    "url": "https://he.wikipedia.org/wiki/%D7%92%D7%93_%D7%99%D7%A2%D7%A7%D7%91%D7%99",
+    "via": "wikidata Q612860"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#9": {
+   "knessetPersonId": 2162,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/269",
+    "siteId": 269,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "שושנה ארבלי-אלמוזלינו",
+    "url": "https://he.wikipedia.org/wiki/%D7%A9%D7%95%D7%A9%D7%A0%D7%94_%D7%90%D7%A8%D7%91%D7%9C%D7%99-%D7%90%D7%9C%D7%9E%D7%95%D7%96%D7%9C%D7%99%D7%A0%D7%95",
+    "via": "wikidata Q2777751"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#10": {
+   "knessetPersonId": 2267,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/353",
+    "siteId": 353,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אלעזר גרנות",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%9C%D7%A2%D7%96%D7%A8_%D7%92%D7%A8%D7%A0%D7%95%D7%AA",
+    "via": "wikidata Q2902957"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#11": {
+   "knessetPersonId": 2247,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/140",
+    "siteId": 140,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "מרדכי גור",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A8%D7%93%D7%9B%D7%99_%D7%92%D7%95%D7%A8",
+    "via": "wikidata Q1335169"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#12": {
+   "knessetPersonId": 2633,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/118",
+    "siteId": 118,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "משה שחל",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A9%D7%94_%D7%A9%D7%97%D7%9C",
+    "via": "wikidata Q2906636"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#13": {
+   "knessetPersonId": 2128,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/2",
+    "siteId": 2,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "רפאל אדרי",
+    "url": "https://he.wikipedia.org/wiki/%D7%A8%D7%A4%D7%90%D7%9C_%D7%90%D7%93%D7%A8%D7%99",
+    "via": "wikidata Q2905752"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#14": {
+   "knessetPersonId": 2299,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/380",
+    "siteId": 380,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "שלמה הלל",
+    "url": "https://he.wikipedia.org/wiki/%D7%A9%D7%9C%D7%9E%D7%94_%D7%94%D7%9C%D7%9C",
+    "via": "wikidata Q1719051"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#15": {
+   "knessetPersonId": 2487,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/158",
+    "siteId": 158,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אורה נמיר",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%95%D7%A8%D7%94_%D7%A0%D7%9E%D7%99%D7%A8",
+    "via": "wikidata Q2908342"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#16": {
+   "knessetPersonId": 2659,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/661",
+    "siteId": 661,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אליהו שפייזר",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%9C%D7%99%D7%94%D7%95_%D7%A9%D7%A4%D7%99%D7%99%D7%96%D7%A8",
+    "via": "wikidata Q1328923"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; reviewed decision: Gazette misprint שפירא for שפייזר (Eliyahu Speiser); decision 0088 item 2."
+  },
+  "11-אמת#17": {
+   "knessetPersonId": 861,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/27",
+    "siteId": 27,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "עוזי ברעם",
+    "url": "https://he.wikipedia.org/wiki/%D7%A2%D7%95%D7%96%D7%99_%D7%91%D7%A8%D7%A2%D7%9D",
+    "via": "wikidata Q2909091"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#18": {
+   "knessetPersonId": 2483,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/522",
+    "siteId": 522,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אריה נחמקין",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%A8%D7%99%D7%94_%D7%A0%D7%97%D7%9E%D7%A7%D7%99%D7%9F",
+    "via": "wikidata Q2905257"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#19": {
+   "knessetPersonId": 2563,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/165",
+    "siteId": 165,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "יאיר צבן",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%90%D7%99%D7%A8_%D7%A6%D7%91%D7%9F",
+    "via": "wikidata Q2253290"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#20": {
+   "knessetPersonId": 2413,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/465",
+    "siteId": 465,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אברהם כ\"ץ-עוז",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%91%D7%A8%D7%94%D7%9D_%D7%9B%22%D7%A5-%D7%A2%D7%95%D7%96",
+    "via": "wikidata Q2908982"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#21": {
+   "knessetPersonId": 2568,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/587",
+    "siteId": 587,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "יעקב צור (שטיינברג)",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A2%D7%A7%D7%91_%D7%A6%D7%95%D7%A8_(%D7%A9%D7%98%D7%99%D7%99%D7%A0%D7%91%D7%A8%D7%92)",
+    "via": "wikidata Q2776738"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#22": {
+   "knessetPersonId": 2558,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/582",
+    "siteId": 582,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "יצחק פרץ (חבר הכנסת)",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A6%D7%97%D7%A7_%D7%A4%D7%A8%D7%A5_(%D7%97%D7%91%D7%A8_%D7%94%D7%9B%D7%A0%D7%A1%D7%AA)",
+    "via": "wikidata Q2906980"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#23": {
+   "knessetPersonId": 2296,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/377",
+    "siteId": 377,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "מנחם הכהן",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A0%D7%97%D7%9D_%D7%94%D7%9B%D7%94%D7%9F",
+    "via": "wikidata Q2778248"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#24": {
+   "knessetPersonId": 2164,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/134",
+    "siteId": 134,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "נאוה ארד",
+    "url": "https://he.wikipedia.org/wiki/%D7%A0%D7%90%D7%95%D7%94_%D7%90%D7%A8%D7%93",
+    "via": "wikidata Q2908930"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#25": {
+   "knessetPersonId": 512,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/126",
+    "siteId": 126,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "יוסי שריד",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%95%D7%A1%D7%99_%D7%A9%D7%A8%D7%99%D7%93",
+    "via": "wikidata Q143172"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name matches (2.5)"
+  },
+  "11-אמת#26": {
+   "knessetPersonId": 2515,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/547",
+    "siteId": 547,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אמירה סרטני",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%9E%D7%99%D7%A8%D7%94_%D7%A1%D7%A8%D7%98%D7%A0%D7%99",
+    "via": "wikidata Q2906764"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#27": {
+   "knessetPersonId": 2153,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/262",
+    "siteId": 262,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "יעקב ז'אק אמיר",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A2%D7%A7%D7%91_%D7%96%27%D7%90%D7%A7_%D7%90%D7%9E%D7%99%D7%A8",
+    "via": "wikidata Q2919932"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#28": {
+   "knessetPersonId": 2357,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/149",
+    "siteId": 149,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "מיכה חריש",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%99%D7%9B%D7%94_%D7%97%D7%A8%D7%99%D7%A9",
+    "via": "wikidata Q2778335"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#29": {
+   "knessetPersonId": 2317,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/49",
+    "siteId": 49,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "שבח וייס",
+    "url": "https://he.wikipedia.org/wiki/%D7%A9%D7%91%D7%97_%D7%95%D7%99%D7%99%D7%A1",
+    "via": "wikidata Q574033"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#30": {
+   "knessetPersonId": 2437,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/485",
+    "siteId": 485,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אמנון לין",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%9E%D7%A0%D7%95%D7%9F_%D7%9C%D7%99%D7%9F",
+    "via": "wikidata Q2909741"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#31": {
+   "knessetPersonId": 2152,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/261",
+    "siteId": 261,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "עדיאל אמוראי",
+    "url": "https://he.wikipedia.org/wiki/%D7%A2%D7%93%D7%99%D7%90%D7%9C_%D7%90%D7%9E%D7%95%D7%A8%D7%90%D7%99",
+    "via": "wikidata Q2904549"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#32": {
+   "knessetPersonId": 2432,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/75",
+    "siteId": 75,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "דוד ליבאי",
+    "url": "https://he.wikipedia.org/wiki/%D7%93%D7%95%D7%93_%D7%9C%D7%99%D7%91%D7%90%D7%99",
+    "via": "wikidata Q434987"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#33": {
+   "knessetPersonId": 2328,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/401",
+    "siteId": 401,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "מוחמד ותד",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%95%D7%97%D7%9E%D7%93_%D7%95%D7%AA%D7%93",
+    "via": "wikidata Q2901989"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#34": {
+   "knessetPersonId": 2201,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/299",
+    "siteId": 299,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "דב בן-מאיר",
+    "url": "https://he.wikipedia.org/wiki/%D7%93%D7%91_%D7%91%D7%9F-%D7%9E%D7%90%D7%99%D7%A8",
+    "via": "wikidata Q2902064"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#35": {
+   "knessetPersonId": 458,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/115",
+    "siteId": 115,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "חיים רמון",
+    "url": "https://he.wikipedia.org/wiki/%D7%97%D7%99%D7%99%D7%9D_%D7%A8%D7%9E%D7%95%D7%9F",
+    "via": "wikidata Q652581"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#36": {
+   "knessetPersonId": 2646,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/652",
+    "siteId": 652,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אפרים שלום",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%A4%D7%A8%D7%99%D7%9D_%D7%A9%D7%9C%D7%95%D7%9D",
+    "via": "wikidata Q2900119"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#37": {
+   "knessetPersonId": 2606,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/621",
+    "siteId": 621,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "נחמן רז",
+    "url": "https://he.wikipedia.org/wiki/%D7%A0%D7%97%D7%9E%D7%9F_%D7%A8%D7%96",
+    "via": "wikidata Q2901954"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#38": {
+   "knessetPersonId": 2502,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/537",
+    "siteId": 537,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "עדנה סולודר",
+    "url": "https://he.wikipedia.org/wiki/%D7%A2%D7%93%D7%A0%D7%94_%D7%A1%D7%95%D7%9C%D7%95%D7%93%D7%A8",
+    "via": "wikidata Q2904395"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#39": {
+   "knessetPersonId": 2172,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/279",
+    "siteId": 279,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "יצחק ארצי",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A6%D7%97%D7%A7_%D7%90%D7%A8%D7%A6%D7%99",
+    "via": "wikidata Q2778276"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#40": {
+   "knessetPersonId": 2261,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/347",
+    "siteId": 347,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "חייקה גרוסמן",
+    "url": "https://he.wikipedia.org/wiki/%D7%97%D7%99%D7%99%D7%A7%D7%94_%D7%92%D7%A8%D7%95%D7%A1%D7%9E%D7%9F",
+    "via": "wikidata Q2776910"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; reviewed decision: גרוסמן ארקין חיה = גרוסמן חייקה (Haika Grossman); corrected in decision 0088."
+  },
+  "11-אמת#41": {
+   "knessetPersonId": 2304,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/384",
+    "siteId": 384,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אהרן הראל (חבר הכנסת)",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%94%D7%A8%D7%9F_%D7%94%D7%A8%D7%90%D7%9C_(%D7%97%D7%91%D7%A8_%D7%94%D7%9B%D7%A0%D7%A1%D7%AA)",
+    "via": "wikidata Q2908970"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#42": {
+   "knessetPersonId": 2286,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/40",
+    "siteId": 40,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "עבד אל-והאב דראושה",
+    "url": "https://he.wikipedia.org/wiki/%D7%A2%D7%91%D7%93_%D7%90%D7%9C-%D7%95%D7%94%D7%90%D7%91_%D7%93%D7%A8%D7%90%D7%95%D7%A9%D7%94",
+    "via": "wikidata Q2906098"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name matches (2.5)"
+  },
+  "11-אמת#43": {
+   "knessetPersonId": 2281,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/364",
+    "siteId": 364,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "שמחה דיניץ",
+    "url": "https://he.wikipedia.org/wiki/%D7%A9%D7%9E%D7%97%D7%94_%D7%93%D7%99%D7%A0%D7%99%D7%A5",
+    "via": "wikidata Q953882"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-אמת#44": {
+   "knessetPersonId": 2481,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/521",
+    "siteId": 521,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אהרן-רפאל נחמיאס",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%94%D7%A8%D7%9F-%D7%A8%D7%A4%D7%90%D7%9C_%D7%A0%D7%97%D7%9E%D7%99%D7%90%D7%A1",
+    "via": "wikidata Q2900503"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name matches (2.5)"
+  },
+  "11-אמת#45": {
+   "knessetPersonId": 2253,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/338",
+    "siteId": 338,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "יעקב גיל (גילה)",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A2%D7%A7%D7%91_%D7%92%D7%99%D7%9C_(%D7%92%D7%99%D7%9C%D7%94)",
+    "via": "wikidata Q2904710"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "not elected at the election; entered Knesset 11 in the list's faction (name score 3)"
+  },
+  "11-אמת#47": {
+   "knessetPersonId": 459,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/117",
+    "siteId": 117,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אברהם בייגה שוחט",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%91%D7%A8%D7%94%D7%9D_%D7%91%D7%99%D7%99%D7%92%D7%94_%D7%A9%D7%95%D7%97%D7%98",
+    "via": "wikidata Q791348"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "not elected at the election; entered Knesset 11 in the list's faction (name score 2.5)"
+  },
+  "11-אמת#48": {
+   "knessetPersonId": 2501,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/536",
+    "siteId": 536,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "רפאל סוויסה",
+    "url": "https://he.wikipedia.org/wiki/%D7%A8%D7%A4%D7%90%D7%9C_%D7%A1%D7%95%D7%95%D7%99%D7%A1%D7%94",
+    "via": "wikidata Q2900704"
+   },
+   "party": null,
+   "confidence": "medium",
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 10 faction \"מערך\" shares \"מערכ\""
+  },
+  "11-אמת#49": {
+   "knessetPersonId": 2496,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/532",
+    "siteId": 532,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אורי סבג",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%95%D7%A8%D7%99_%D7%A1%D7%91%D7%92",
+    "via": "wikidata Q2900521"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "not elected at the election; entered Knesset 11 in the list's faction (name score 3)"
+  },
+  "11-אמת#50": {
+   "knessetPersonId": 2446,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/492",
+    "siteId": 492,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "יחיאל לקט",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%97%D7%99%D7%90%D7%9C_%D7%9C%D7%A7%D7%98",
+    "via": "wikidata Q2902098"
+   },
+   "party": null,
+   "confidence": "medium",
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 8 faction \"מערך\" shares \"מערכ\"; surname unique among MKs"
+  },
+  "11-אמת#51": {
+   "knessetPersonId": 2214,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/309",
+    "siteId": 309,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "מיכאל בר-זוהר",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%99%D7%9B%D7%90%D7%9C_%D7%91%D7%A8-%D7%96%D7%95%D7%94%D7%A8",
+    "via": "wikidata Q971962"
+   },
+   "party": null,
+   "confidence": "medium",
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 10 faction \"מערך\" shares \"מערכ\""
+  },
+  "11-אמת#52": {
+   "knessetPersonId": 2358,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/425",
+    "siteId": 425,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "יהודה חשאי",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%94%D7%95%D7%93%D7%94_%D7%97%D7%A9%D7%90%D7%99",
+    "via": "wikidata Q2900135"
+   },
+   "party": null,
+   "confidence": "medium",
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 10 faction \"מערך\" shares \"מערכ\""
+  },
+  "11-אמת#55": {
+   "knessetPersonId": 2238,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/32",
+    "siteId": 32,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "מיכה גולדמן",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%99%D7%9B%D7%94_%D7%92%D7%95%D7%9C%D7%93%D7%9E%D7%9F",
+    "via": "wikidata Q2904939"
+   },
+   "party": null,
+   "confidence": "medium",
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 12 faction \"מערך\" shares \"העבודה\""
+  },
+  "11-אמת#56": {
+   "knessetPersonId": 2634,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/172",
+    "siteId": 172,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "שמעון שטרית",
+    "url": "https://he.wikipedia.org/wiki/%D7%A9%D7%9E%D7%A2%D7%95%D7%9F_%D7%A9%D7%98%D7%A8%D7%99%D7%AA",
+    "via": "wikidata Q2909079"
+   },
+   "party": null,
+   "confidence": "medium",
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 12 faction \"מערך\" shares \"העבודה\""
+  },
+  "11-אמת#59": {
+   "knessetPersonId": 2346,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/148",
+    "siteId": 148,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "חנא חדד",
+    "url": "https://he.wikipedia.org/wiki/%D7%97%D7%A0%D7%90_%D7%97%D7%93%D7%93",
+    "via": "wikidata Q2901756"
+   },
+   "party": null,
+   "confidence": "medium",
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 13 faction \"מפלגת העבודה הישראלית\" shares \"העבודה\"; surname unique among MKs"
+  },
+  "11-אמת#66": {
+   "knessetPersonId": 2491,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/527",
+    "siteId": 527,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "רענן נעים",
+    "url": "https://he.wikipedia.org/wiki/%D7%A8%D7%A2%D7%A0%D7%9F_%D7%A0%D7%A2%D7%99%D7%9D",
+    "via": "wikidata Q2900581"
+   },
+   "party": null,
+   "confidence": "medium",
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 10 faction \"מערך\" shares \"מערכ\""
+  },
+  "11-אמת#78": {
+   "knessetPersonId": 2339,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/53",
+    "siteId": 53,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "עמנואל זיסמן",
+    "url": "https://he.wikipedia.org/wiki/%D7%A2%D7%9E%D7%A0%D7%95%D7%90%D7%9C_%D7%96%D7%99%D7%A1%D7%9E%D7%9F",
+    "via": "wikidata Q949226"
+   },
+   "party": null,
+   "confidence": "medium",
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 12 faction \"מערך\" shares \"העבודה\""
+  },
+  "11-אמת#85": {
+   "knessetPersonId": 2148,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/257",
+    "siteId": 257,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "נסים אליעד",
+    "url": "https://he.wikipedia.org/wiki/%D7%A0%D7%A1%D7%99%D7%9D_%D7%90%D7%9C%D7%99%D7%A2%D7%93",
+    "via": "wikidata Q2901689"
+   },
+   "party": null,
+   "confidence": "medium",
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 8 faction \"ליברלים עצמאיים\" shares \"ליברלימ\"; surname unique among MKs"
+  },
+  "11-אמת#94": {
+   "knessetPersonId": 2246,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/141",
+    "siteId": 141,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אפרים גור",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%A4%D7%A8%D7%99%D7%9D_%D7%92%D7%95%D7%A8",
+    "via": "wikidata Q2890624"
+   },
+   "party": null,
+   "confidence": "medium",
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 12 faction \"אחדות למען השלום והעלייה\" shares \"מערכ\""
+  },
+  "11-אמת#100": {
+   "knessetPersonId": 2415,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/467",
+    "siteId": 467,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "משה כרמל",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A9%D7%94_%D7%9B%D7%A8%D7%9E%D7%9C",
+    "via": "wikidata Q2660910"
+   },
+   "party": null,
+   "confidence": "medium",
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 8 faction \"מערך\" shares \"מערכ\"; surname unique among MKs"
+  },
+  "11-אמת#102": {
+   "knessetPersonId": 2370,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/181",
+    "siteId": 181,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אהרן ידלין",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%94%D7%A8%D7%9F_%D7%99%D7%93%D7%9C%D7%99%D7%9F",
+    "via": "wikidata Q266713"
+   },
+   "party": null,
+   "confidence": "medium",
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 9 faction \"מערך\" shares \"מערכ\"; surname unique among MKs"
+  },
+  "11-אמת#105": {
+   "knessetPersonId": 2250,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/336",
+    "siteId": 336,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "מטילדה גז",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%98%D7%99%D7%9C%D7%93%D7%94_%D7%92%D7%96",
+    "via": "wikidata Q2902105"
+   },
+   "party": null,
+   "confidence": "medium",
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 8 faction \"מערך\" shares \"מערכ\"; surname unique among MKs"
+  },
+  "11-אמת#113": {
+   "knessetPersonId": 2193,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/293",
+    "siteId": 293,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "נפתלי בלומנטל",
+    "url": "https://he.wikipedia.org/wiki/%D7%A0%D7%A4%D7%AA%D7%9C%D7%99_%D7%91%D7%9C%D7%95%D7%9E%D7%A0%D7%98%D7%9C",
+    "via": "wikidata Q2902124"
+   },
+   "party": null,
+   "confidence": "medium",
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 10 faction \"מערך\" shares \"מערכ\""
+  },
+  "11-אמת#117": {
+   "knessetPersonId": 2257,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/342",
+    "siteId": 342,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "ישראל גלילי",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%92%D7%9C%D7%99%D7%9C%D7%99",
+    "via": "wikidata Q1386714"
+   },
+   "party": null,
+   "confidence": "medium",
+   "basis": "not elected; identical name, the only person with it who served as MK; Knesset 8 faction \"מערך\" shares \"מערכ\"; surname unique among MKs"
+  },
+  "11-ג#1": {
+   "knessetPersonId": 2660,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/177",
+    "siteId": 177,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אברהם יוסף שפירא",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%91%D7%A8%D7%94%D7%9D_%D7%99%D7%95%D7%A1%D7%A3_%D7%A9%D7%A4%D7%99%D7%A8%D7%90",
+    "via": "wikidata Q2778243"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name matches (2.5)"
+  },
+  "11-ג#2": {
+   "knessetPersonId": 2549,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/686",
+    "siteId": 686,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "מנחם פרוש",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A0%D7%97%D7%9D_%D7%A4%D7%A8%D7%95%D7%A9",
+    "via": "wikidata Q605443"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-רצ#1": {
+   "knessetPersonId": 2143,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/132",
+    "siteId": 132,
+    "verified": "archive 2004-04-19"
+   },
+   "hewiki": {
+    "title": "שולמית אלוני",
+    "url": "https://he.wikipedia.org/wiki/%D7%A9%D7%95%D7%9C%D7%9E%D7%99%D7%AA_%D7%90%D7%9C%D7%95%D7%A0%D7%99",
+    "via": "wikidata Q267335"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-רצ#2": {
+   "knessetPersonId": 2213,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/308",
+    "siteId": 308,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "מרדכי בר-און",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A8%D7%93%D7%9B%D7%99_%D7%91%D7%A8-%D7%90%D7%95%D7%9F",
+    "via": "wikidata Q2902302"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-רצ#3": {
+   "knessetPersonId": 507,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/66",
+    "siteId": 66,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "רן כהן",
+    "url": "https://he.wikipedia.org/wiki/%D7%A8%D7%9F_%D7%9B%D7%94%D7%9F",
+    "via": "wikidata Q2890702"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-ב#1": {
+   "knessetPersonId": 2187,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/288",
+    "siteId": 288,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "יוסף בורג",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%95%D7%A1%D7%A3_%D7%91%D7%95%D7%A8%D7%92",
+    "via": "wikidata Q216021"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name matches (2.5)"
+  },
+  "11-ב#2": {
+   "knessetPersonId": 2300,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/44",
+    "siteId": 44,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "זבולון המר",
+    "url": "https://he.wikipedia.org/wiki/%D7%96%D7%91%D7%95%D7%9C%D7%95%D7%9F_%D7%94%D7%9E%D7%A8",
+    "via": "wikidata Q2910400"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-ב#3": {
+   "knessetPersonId": 2620,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/116",
+    "siteId": 116,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אבנר חי שאקי",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%91%D7%A0%D7%A8_%D7%97%D7%99_%D7%A9%D7%90%D7%A7%D7%99",
+    "via": "wikidata Q2909821"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-ב#4": {
+   "knessetPersonId": 2284,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/367",
+    "siteId": 367,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "דוד דנינו",
+    "url": "https://he.wikipedia.org/wiki/%D7%93%D7%95%D7%93_%D7%93%D7%A0%D7%99%D7%A0%D7%95",
+    "via": "wikidata Q2901999"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-ו#1": {
+   "knessetPersonId": 2319,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/395",
+    "siteId": 395,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "מאיר וילנר",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%90%D7%99%D7%A8_%D7%95%D7%99%D7%9C%D7%A0%D7%A8",
+    "via": "wikidata Q1376050"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-ו#2": {
+   "knessetPersonId": 2363,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/430",
+    "siteId": 430,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "תופיק טובי",
+    "url": "https://he.wikipedia.org/wiki/%D7%AA%D7%95%D7%A4%D7%99%D7%A7_%D7%98%D7%95%D7%91%D7%99",
+    "via": "wikidata Q969950"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-ו#3": {
+   "knessetPersonId": 2191,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/292",
+    "siteId": 292,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "צ'רלי ביטון",
+    "url": "https://he.wikipedia.org/wiki/%D7%A6%27%D7%A8%D7%9C%D7%99_%D7%91%D7%99%D7%98%D7%95%D7%9F",
+    "via": "wikidata Q2776774"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name matches (2.5)"
+  },
+  "11-ו#4": {
+   "knessetPersonId": 2334,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/147",
+    "siteId": 147,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "תאופיק זיאד",
+    "url": "https://he.wikipedia.org/wiki/%D7%AA%D7%90%D7%95%D7%A4%D7%99%D7%A7_%D7%96%D7%99%D7%90%D7%93",
+    "via": "wikidata Q968637"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-הן#1": {
+   "knessetPersonId": 510,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/113",
+    "siteId": 113,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אמנון רובינשטיין",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%9E%D7%A0%D7%95%D7%9F_%D7%A8%D7%95%D7%91%D7%99%D7%A0%D7%A9%D7%98%D7%99%D7%99%D7%9F",
+    "via": "wikidata Q2890919"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-הן#2": {
+   "knessetPersonId": 2321,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/396",
+    "siteId": 396,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "מרדכי וירשובסקי",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A8%D7%93%D7%9B%D7%99_%D7%95%D7%99%D7%A8%D7%A9%D7%95%D7%91%D7%A1%D7%A7%D7%99",
+    "via": "wikidata Q551409"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-הן#3": {
+   "knessetPersonId": 2523,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/554",
+    "siteId": 554,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "זיידאן עטשי",
+    "url": "https://he.wikipedia.org/wiki/%D7%96%D7%99%D7%99%D7%93%D7%90%D7%9F_%D7%A2%D7%98%D7%A9%D7%99",
+    "via": "wikidata Q2920413"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-שס#1": {
+   "knessetPersonId": 2559,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/163",
+    "siteId": 163,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "יצחק חיים פרץ",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A6%D7%97%D7%A7_%D7%97%D7%99%D7%99%D7%9D_%D7%A4%D7%A8%D7%A5",
+    "via": "wikidata Q2907019"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name matches (2.5)"
+  },
+  "11-שס#2": {
+   "knessetPersonId": 2545,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/102",
+    "siteId": 102,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "רפאל פנחסי",
+    "url": "https://he.wikipedia.org/wiki/%D7%A8%D7%A4%D7%90%D7%9C_%D7%A4%D7%A0%D7%97%D7%A1%D7%99",
+    "via": "wikidata Q2906605"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-שס#3": {
+   "knessetPersonId": 2376,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/189",
+    "siteId": 189,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "יעקב יוסף",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A2%D7%A7%D7%91_%D7%99%D7%95%D7%A1%D7%A3",
+    "via": "wikidata Q2777806"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-שס#4": {
+   "knessetPersonId": 2209,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/304",
+    "siteId": 304,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "שמעון בן-שלמה",
+    "url": "https://he.wikipedia.org/wiki/%D7%A9%D7%9E%D7%A2%D7%95%D7%9F_%D7%91%D7%9F-%D7%A9%D7%9C%D7%9E%D7%94",
+    "via": "wikidata Q2906710"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name matches (1)"
+  },
+  "11-ת#1": {
+   "knessetPersonId": 2475,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/515",
+    "siteId": 515,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "יובל נאמן",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%95%D7%91%D7%9C_%D7%A0%D7%90%D7%9E%D7%9F",
+    "via": "wikidata Q471965"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-ת#2": {
+   "knessetPersonId": 2138,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/10",
+    "siteId": 10,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "רפאל איתן",
+    "url": "https://he.wikipedia.org/wiki/%D7%A8%D7%A4%D7%90%D7%9C_%D7%90%D7%99%D7%AA%D7%9F",
+    "via": "wikidata Q365524"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-ת#3": {
+   "knessetPersonId": 2392,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/444",
+    "siteId": 444,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "גאולה כהן",
+    "url": "https://he.wikipedia.org/wiki/%D7%92%D7%90%D7%95%D7%9C%D7%94_%D7%9B%D7%94%D7%9F",
+    "via": "wikidata Q2889981"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-ת#4": {
+   "knessetPersonId": 2322,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/397",
+    "siteId": 397,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אליעזר ולדמן",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%9C%D7%99%D7%A2%D7%96%D7%A8_%D7%95%D7%9C%D7%93%D7%9E%D7%9F",
+    "via": "wikidata Q516228"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-ת#5": {
+   "knessetPersonId": 2656,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/659",
+    "siteId": 659,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "גרשון שפט",
+    "url": "https://he.wikipedia.org/wiki/%D7%92%D7%A8%D7%A9%D7%95%D7%9F_%D7%A9%D7%A4%D7%98",
+    "via": "wikidata Q2900571"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-עי#1": {
+   "knessetPersonId": 523,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/202",
+    "siteId": 202,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "חיים דרוקמן",
+    "url": "https://he.wikipedia.org/wiki/%D7%97%D7%99%D7%99%D7%9D_%D7%93%D7%A8%D7%95%D7%A7%D7%9E%D7%9F",
+    "via": "wikidata Q2915616"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-עי#2": {
+   "knessetPersonId": 2324,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/146",
+    "siteId": 146,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אברהם ורדיגר",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%91%D7%A8%D7%94%D7%9D_%D7%95%D7%A8%D7%93%D7%99%D7%92%D7%A8",
+    "via": "wikidata Q2910374"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-פ#1": {
+   "knessetPersonId": 2463,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/506",
+    "siteId": 506,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "מוחמד מיעארי",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%95%D7%97%D7%9E%D7%93_%D7%9E%D7%99%D7%A2%D7%90%D7%A8%D7%99",
+    "via": "wikidata Q2902417"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-פ#2": {
+   "knessetPersonId": 2539,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/565",
+    "siteId": 565,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "מתי פלד",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%AA%D7%99_%D7%A4%D7%9C%D7%93",
+    "via": "wikidata Q2778068"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-ט#1": {
+   "knessetPersonId": 2320,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/690",
+    "siteId": 690,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "עזר ויצמן",
+    "url": "https://he.wikipedia.org/wiki/%D7%A2%D7%96%D7%A8_%D7%95%D7%99%D7%A6%D7%9E%D7%9F",
+    "via": "wikidata Q128911"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-ט#2": {
+   "knessetPersonId": 435,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/20",
+    "siteId": 20,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "בנימין בן אליעזר",
+    "url": "https://he.wikipedia.org/wiki/%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F_%D7%91%D7%9F_%D7%90%D7%9C%D7%99%D7%A2%D7%96%D7%A8",
+    "via": "wikidata Q128888"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-ט#3": {
+   "knessetPersonId": 2528,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/557",
+    "siteId": 557,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "שלמה עמר",
+    "url": "https://he.wikipedia.org/wiki/%D7%A9%D7%9C%D7%9E%D7%94_%D7%A2%D7%9E%D7%A8",
+    "via": "wikidata Q5103919"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name matches (2.5)"
+  },
+  "11-יש#1": {
+   "knessetPersonId": 2294,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/375",
+    "siteId": 375,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "יגאל הורביץ",
+    "url": "https://he.wikipedia.org/wiki/%D7%99%D7%92%D7%90%D7%9C_%D7%94%D7%95%D7%A8%D7%91%D7%99%D7%A5",
+    "via": "wikidata Q434182"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  },
+  "11-ני#1": {
+   "knessetPersonId": 2119,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/178",
+    "siteId": 178,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "אהרן אבוחצירא",
+    "url": "https://he.wikipedia.org/wiki/%D7%90%D7%94%D7%A8%D7%9F_%D7%90%D7%91%D7%95%D7%97%D7%A6%D7%99%D7%A8%D7%90",
+    "via": "wikidata Q2910680"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name matches (2.5)"
+  },
+  "11-כך#1": {
+   "knessetPersonId": 2403,
+   "knesset": {
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/455",
+    "siteId": 455,
+    "verified": "pattern"
+   },
+   "hewiki": {
+    "title": "מאיר כהנא",
+    "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%90%D7%99%D7%A8_%D7%9B%D7%94%D7%A0%D7%90",
+    "via": "wikidata Q247538"
+   },
+   "party": null,
+   "confidence": "high",
+   "basis": "elected; Knesset 11 member, name identical (3)"
+  }
+ }
+}
