@@ -974,3 +974,48 @@ whole sign-off `[4, 366, 320, 436]` ("רק מחל הליכוד יכול / המח
 scaled proportionally to 256 × 57 px (Pillow, Lanczos). Final SHA-256
 `89bf228003203889658050b1c936a084f172eaaaed04e1b471d954c5b8d1b35d`, 26,744 bytes; original scan and its hash
 unchanged.
+
+
+## Run 3 — 4 November 2026
+
+Scope: re-check all 24 category-A identities above, then prioritise the largest
+seat-winning category-B gaps. Baseline is parent commit `eb4067b`, including its
+k12 correction; the existing 16 whole-list logos are preserved. Decisions remain
+keyed by election/ballot letters. No emblem-absence inference is made from a
+failed request, a text transcription, or a publication without an inspected mark.
+
+Retrieval: Jina read_url on the k10 Shinui lead returned **HTTP 402, account balance
+not enough**. Plain HTTP initially failed sandbox DNS (curl 6); network-enabled
+requests used the exact project User-Agent, with no email address. Thirty distinct
+supplied catalogue URLs were each GET-requested once, serially, at least three
+seconds apart. All returned **HTTP 403**, title **Checking your browser...**;
+none yielded a catalogue or scan. The table links below are the requested URLs,
+not claims of inspected catalogue contents. Shared URLs were fetched once and
+mapped to each affected identity. No challenge was solved or bypassed. No 429 or
+Retry-After occurred; no archive.org requests or Apify spending ($0).
+Supplemental discovery used web search after the Jina balance failure; search
+results are leads only. English Wikipedia was neither used nor cited. Failure
+HTML, downloads awaiting acceptance, contact sheets, tool installations and caches
+are disposable in `.backup-scratch/`; accepted originals and hashes are durable.
+
+Criterion: a dated party-produced campaign publication, complete identifying
+sign-off, legible at 64 px, original retained unchanged with SHA-256 and an exact
+crop recipe. Catalogue mirrors and search indexes are not independent evidence.
+For each A row below the decision is **gap — challenge prevented verification**:
+artwork, party origin, date and image quality remain unknown. This closes the
+lead check for this run, not the historical question. Evidence that would change
+it: lawfully accessible original bytes and campaign-specific date/identity proof.
+
+### Run 3 · k9
+
+No category-A identity for k9.
+
+Category B priority: **ב (12 seats)**. Downloaded the existing [NRP platform
+DOC](https://www.idi.org.il/media/6982/hamiflaga-hadatit-leumit-9.doc), HTTP 200,
+675,840 bytes. Its Word container metadata says created February 2009; this does
+not date the underlying artwork. No campaign original was visually recovered from
+the container; no logo promoted. This is an inspection/reproduction gap, not proof
+of a later design or a text-only original. The other seven k9 B gaps retain their
+run-2 reasons and were not individually re-searched in this supplemental pass.
+
+Coverage: **5 → 5 / 13**; zero additions, zero absence findings.
