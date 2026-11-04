@@ -1,3 +1,4 @@
+import { electionContext } from '../../data/electionContext.ts';
 import { describe } from '../actionDescription.ts';
 import { useEffect, useRef, useState } from 'react';
 import type { ElectionDataset, ElectionId, ElectionIndexEntry } from '../../data/schema.ts';
@@ -22,7 +23,7 @@ export function electionLabel(e: ElectionIndexEntry, all: ElectionIndexEntry[], 
 
 const fileName = (n: string) => (n || 'scenario').replace(/[^\p{L}\p{N}]+/gu, '_').replace(/^_+|_+$/g, '').slice(0, 60) || 'scenario';
 
-export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationResult | null; ds: ElectionDataset | undefined; baseR: AllocationResult | null }) {
+export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }: { s: Scenario | null; r: AllocationResult | null; ds: ElectionDataset | undefined; baseR: AllocationResult | null; pmContestId?: string | null; onContestChange?: (id: string | null) => void }) {
   const L = useL();
   const lang = useLang();
   const electionId = useStore((st) => st.electionId);
@@ -66,8 +67,9 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
   return (
     <header className="band">
       <span className="brand">{L('Israeli Elections Explorer', 'סייר הבחירות לכנסת')}</span>
-      <select aria-label={L('Election', 'בחירות')} value={electionId} onChange={(e) => openElection(e.target.value as ElectionId)} className="election">
+      <select aria-label={L('Election', 'בחירות')} value={pmContestId ?? electionId} onChange={async (e) => { const pm = electionContext.pmContests.find(c => c.id === e.target.value && c.contestType === 'prime-minister-only'); if (await openElection(pm?.electionId ?? e.target.value as ElectionId)) onContestChange?.(pm?.id ?? null); }} className="election">
         {elections.map((e) => <option key={e.id} value={e.id} disabled={!e.available}>{electionLabel(e, elections, lang)}{e.available ? '' : L(' — not yet available', ' — עדיין לא זמין')}</option>)}
+        {electionContext.pmContests.filter(c => c.contestType === 'prime-minister-only').map(c => <option key={c.id} value={c.id}>{c.effectiveDate.slice(0, 4)} · {L('Prime Minister only', 'ראש הממשלה בלבד')}</option>)}
       </select>
       {s && ds && <span className="chip election-status">{s.mode === 'experimental' ? L('Experimental rule', 'כלל ניסיוני') : s.log.length ? L('Hypothetical', 'היפותטי') : ds.status.stage === 'official-final' ? L('Official', 'רשמי') : L('Pending gazette', 'ממתין לפרסום ברשומות')}</span>}
       <Seg label={L('Detail level', 'רמת פירוט')} value={level} onChange={(v) => setState({ level: v })} options={[{ v: 'simple', label: L('Simple', 'פשוט') }, { v: 'standard', label: L('Standard', 'רגיל') }, { v: 'expert', label: L('Expert', 'מומחה') }]} />
@@ -76,6 +78,7 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
           onChange={(e) => setState({ scenario: { ...s, name: e.target.value } })} />
       )}
       <span className="spacer" />
+      {!pmContestId && <>
       <button className="tool" onClick={undo} disabled={!canUndo} title={undoName + ' (Ctrl+Z)'} aria-label={undoName}><Undo2 className="icon" aria-hidden /></button>
       <button className="tool" onClick={redo} disabled={!canRedo} title={redoName + ' (Ctrl+Y)'} aria-label={redoName}><Redo2 className="icon" aria-hidden /></button>
       <button className="tool" aria-label={L('Start over', 'התחלה מחדש')} title={L('Start over', 'התחלה מחדש')} onClick={() => { if (!s?.log.length || confirm(L('Reset the whole election to the historical result? (Undo can restore it.)', 'לאפס את כל הבחירות לתוצאה ההיסטורית? (ניתן לבטל)'))) resetAll(); }} disabled={!s?.log.length}>
@@ -125,6 +128,7 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
           e.target.value = ''; setMenu(false);
         }} />
       </div>
+      </>}
       <Seg label={L('Language', 'שפה')} value={lang} onChange={(v) => setState({ lang: v })} options={[{ v: 'he', label: 'עב' }, { v: 'en', label: 'EN' }]} />
       <button className="tool" title={theme === 'dark' ? L('Light theme', 'מצב בהיר') : L('Dark theme', 'מצב כהה')} aria-label={theme === 'dark' ? L('Light theme', 'מצב בהיר') : L('Dark theme', 'מצב כהה')} onClick={() => setState({ theme: theme === 'dark' ? 'light' : 'dark' })}>
         {theme === 'dark' ? <Sun className="icon" aria-hidden /> : <Moon className="icon" aria-hidden />}</button>

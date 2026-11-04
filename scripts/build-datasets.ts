@@ -1,3 +1,5 @@
+import { electionContext } from '../src/data/electionContext.ts';
+import { verifySources } from './lib/build/sources.ts';
 // Builds the app datasets in public/data/ from the raw official sources in data/raw/.
 //   node scripts/build-datasets.ts            (BUILD_JOBS=1 builds serially in one thread)
 // Every figure is derived from a raw file listed in data/raw/SOURCES.json; the script fails loudly
@@ -101,6 +103,8 @@ if (!isMainThread) {
     workers.forEach(start => start());
   }
 
+  const contextSourceIds = [...JSON.stringify(electionContext).matchAll(/"sourceId":"([^"]+)"/g)].map(m => m[1]);
+  verifySources(contextSourceIds, (ok, message) => { if (!ok) throw new Error(message); });
   const warnings: string[] = [];
   let written = 0; let unchanged = 0;
   const write = (file: string, value: object, serialize?: (v: object) => string) => {

@@ -570,3 +570,23 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 @media (max-width: 1100px) {
   .side-panel .phone-result-strip { display: grid; gap: 2px; position: sticky; inset-block-start: 0; z-index: 2; background: var(--surface); border-block-end: 1px solid var(--rule-strong); padding: 8px 12px; font-size: 12.5px; flex-shrink: 0; }
 }
+
+/* Read-only, sourced election context and independent PM ballots. */
+.election-about { margin: 8px 16px; padding: 8px 12px; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); }
+.election-about summary, .pm-result summary { cursor: pointer; font-weight: 600; }
+.election-about ul, .pm-result ul { padding-inline-start: 20px; }
+.election-about li + li { margin-block-start: 8px; }
+.context-source { font-size: 12.5px; overflow-wrap: anywhere; }
+.publication-pending { background: var(--warn-bg); color: var(--warn-ink); }
+.pm-result { min-inline-size: 0; }
+.pm-result h2 { margin: 0; font-size: 14px; }
+.pm-result .body { padding: 12px; }
+.pm-bars { margin-block: 12px; }
+.pm-majority-label { text-align: center; font-size: 12.5px; margin-block-end: 6px; }
+.pm-candidate + .pm-candidate { margin-block-start: 12px; }
+.pm-track { position: relative; height: 16px; background: var(--surface-2); border: 1px solid var(--rule-2); margin-block-start: 4px; }
+.pm-track span { display: block; height: 100%; background: var(--muted); }
+.pm-track i { position: absolute; inset-inline-start: 50%; inset-block: -3px; border-inline-start: 2px solid var(--ink); }
+.pm-evidence { margin-block: 12px; }
+.pm-evidence dl > div { margin-block: 8px; }
+.pm-evidence dd { margin-inline-start: 16px; }

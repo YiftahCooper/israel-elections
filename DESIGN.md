@@ -384,3 +384,17 @@ The vote-source assumption is visible at every level, read-only in Simple. Thres
 checkpoints use the source-aware exact search: just below, first qualifying vote, just
 above. Search qualifiers travel with margins; the crossing sentence opens the threshold
 step of the walkthrough. No percentage threshold controls appear for 1949.
+
+### Election context and independent PM ballots
+
+The header is followed by a compact native “About this election” disclosure, with dated,
+bilingual, source-labelled events. Publication status occupies this disclosure's summary
+and body, replacing the former duplicate warning. List-targeted events also appear inside
+the relevant list panel. Context is immutable and remains distinct from scenario history.
+
+The 1996/1999 PM panel sits in the chamber column at every level, including Simple.
+Two equally styled neutral bars use the existing muted/surface/rule tokens, logical inline
+coordinates and a visible 50%-of-valid-PM-votes marker. Names, votes and percentages are
+text; totals/provenance and withdrawn nominees expand in place. 2001 is a separate PM-only
+picker option, with no chamber or scenario tools and a direct return to k15. It never
+creates a Knesset id or changes k15's result. Aggregate results imply no individual vote flows.

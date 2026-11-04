@@ -1,0 +1,261 @@
+{
+  "reviewedAt": "2026-11-04",
+  "method": "Visual review of retained gazettes k14 PDF p.3, k15 PDF p.2, YP4960 PDF p.2 and IDI 1999 PDF p.7; all match the era-specific-rules report. MFA totals inherited from that report; fresh direct retrieval returned HTTP 403. No raw MFA page is claimed.",
+  "report": "docs/research/era-specific-rules.md",
+  "contests": [
+    {
+      "id": "pm1996",
+      "electionId": "k14",
+      "effectiveDate": "1996-05-29",
+      "contestType": "parallel-pm",
+      "candidates": [
+        {
+          "id": "netanyahu",
+          "nameEn": "Benjamin Netanyahu",
+          "nameHe": "בנימין נתניהו",
+          "status": "final",
+          "votes": {
+            "value": 1501023,
+            "source": {
+              "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
+              "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+              "evidence": "official",
+              "sourceId": "k14-results-gazette"
+            }
+          }
+        },
+        {
+          "id": "peres",
+          "nameEn": "Shimon Peres",
+          "nameHe": "שמעון פרס",
+          "status": "final",
+          "votes": {
+            "value": 1471566,
+            "source": {
+              "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
+              "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+              "evidence": "official",
+              "sourceId": "k14-results-gazette"
+            }
+          }
+        }
+      ],
+      "totals": {
+        "valid": {
+          "value": 2972589,
+          "source": {
+            "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
+            "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+            "evidence": "official",
+            "sourceId": "k14-results-gazette"
+          }
+        },
+        "invalid": {
+          "value": 148681,
+          "source": {
+            "url": "https://www.gov.il/en/pages/israeli-election-results-may-1996",
+            "publisher": "Ministry of Foreign Affairs",
+            "evidence": "official",
+            "verification": "report-only",
+            "sourceId": "pm-reviewed-transcription"
+          }
+        },
+        "cast": {
+          "value": 3121270,
+          "source": {
+            "url": "https://www.gov.il/en/pages/israeli-election-results-may-1996",
+            "publisher": "Ministry of Foreign Affairs",
+            "evidence": "official",
+            "verification": "report-only",
+            "sourceId": "pm-reviewed-transcription"
+          }
+        }
+      },
+      "source": {
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
+        "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+        "evidence": "official",
+        "sourceId": "k14-results-gazette"
+      }
+    },
+    {
+      "id": "pm1999",
+      "electionId": "k15",
+      "effectiveDate": "1999-05-17",
+      "contestType": "parallel-pm",
+      "candidates": [
+        {
+          "id": "barak",
+          "nameEn": "Ehud Barak",
+          "nameHe": "אהוד ברק",
+          "status": "final",
+          "votes": {
+            "value": 1791020,
+            "source": {
+              "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-results.pdf",
+              "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+              "evidence": "official",
+              "sourceId": "k15-results-gazette"
+            }
+          }
+        },
+        {
+          "id": "netanyahu",
+          "nameEn": "Benjamin Netanyahu",
+          "nameHe": "בנימין נתניהו",
+          "status": "final",
+          "votes": {
+            "value": 1402474,
+            "source": {
+              "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-results.pdf",
+              "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+              "evidence": "official",
+              "sourceId": "k15-results-gazette"
+            }
+          }
+        },
+        {
+          "id": "mordechai",
+          "nameEn": "Yitzhak Mordechai",
+          "nameHe": "יצחק מרדכי",
+          "status": "withdrawn",
+          "source": {
+            "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1999/",
+            "publisher": "Israel Democracy Institute",
+            "evidence": "secondary"
+          }
+        },
+        {
+          "id": "begin",
+          "nameEn": "Benny Begin",
+          "nameHe": "בני בגין",
+          "status": "withdrawn",
+          "source": {
+            "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1999/",
+            "publisher": "Israel Democracy Institute",
+            "evidence": "secondary"
+          }
+        },
+        {
+          "id": "bishara",
+          "nameEn": "Azmi Bishara",
+          "nameHe": "עזמי בשארה",
+          "status": "withdrawn",
+          "source": {
+            "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1999/",
+            "publisher": "Israel Democracy Institute",
+            "evidence": "secondary"
+          }
+        }
+      ],
+      "totals": {
+        "valid": {
+          "value": 3193494,
+          "source": {
+            "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-results.pdf",
+            "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+            "evidence": "official",
+            "sourceId": "k15-results-gazette"
+          }
+        },
+        "invalid": {
+          "value": 179458,
+          "source": {
+            "url": "https://www.idi.org.il/media/5026/%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9E%D7%91%D7%95%D7%90.pdf",
+            "publisher": "Israel Democracy Institute",
+            "evidence": "secondary",
+            "sourceId": "pm1999-idi-totals"
+          }
+        },
+        "cast": {
+          "value": 3372952,
+          "source": {
+            "url": "https://www.idi.org.il/media/5026/%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9E%D7%91%D7%95%D7%90.pdf",
+            "publisher": "Israel Democracy Institute",
+            "evidence": "secondary",
+            "sourceId": "pm1999-idi-totals"
+          }
+        }
+      },
+      "source": {
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-results.pdf",
+        "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+        "evidence": "official",
+        "sourceId": "k15-results-gazette"
+      }
+    },
+    {
+      "id": "pm2001",
+      "electionId": "k15",
+      "effectiveDate": "2001-02-06",
+      "contestType": "prime-minister-only",
+      "candidates": [
+        {
+          "id": "sharon",
+          "nameEn": "Ariel Sharon",
+          "nameHe": "אריאל שרון",
+          "status": "final",
+          "votes": {
+            "value": 1698077,
+            "source": {
+              "url": "https://olaw.org.il/yalkut/yalkut-4960.pdf",
+              "publisher": "CEC / Reshumot, YP 4960 p.1628 (official content on public mirror)",
+              "evidence": "official",
+              "sourceId": "pm2001-gazette"
+            }
+          }
+        },
+        {
+          "id": "barak",
+          "nameEn": "Ehud Barak",
+          "nameHe": "אהוד ברק",
+          "status": "final",
+          "votes": {
+            "value": 1023944,
+            "source": {
+              "url": "https://olaw.org.il/yalkut/yalkut-4960.pdf",
+              "publisher": "CEC / Reshumot, YP 4960 p.1628 (official content on public mirror)",
+              "evidence": "official",
+              "sourceId": "pm2001-gazette"
+            }
+          }
+        }
+      ],
+      "totals": {
+        "valid": {
+          "value": 2722021,
+          "source": {
+            "url": "https://olaw.org.il/yalkut/yalkut-4960.pdf",
+            "publisher": "CEC / Reshumot, YP 4960 p.1628 (official content on public mirror)",
+            "evidence": "official",
+            "sourceId": "pm2001-gazette"
+          }
+        },
+        "invalid": {
+          "value": 83917,
+          "source": {
+            "url": "https://olaw.org.il/yalkut/yalkut-4960.pdf",
+            "publisher": "CEC / Reshumot, YP 4960 p.1628 (official content on public mirror)",
+            "evidence": "official",
+            "sourceId": "pm2001-gazette"
+          }
+        },
+        "cast": {
+          "value": 2805938,
+          "source": {
+            "url": "https://olaw.org.il/yalkut/yalkut-4960.pdf",
+            "publisher": "CEC / Reshumot, YP 4960 p.1628 (official content on public mirror)",
+            "evidence": "official",
+            "sourceId": "pm2001-gazette"
+          }
+        }
+      },
+      "source": {
+        "url": "https://olaw.org.il/yalkut/yalkut-4960.pdf",
+        "publisher": "CEC / Reshumot, YP 4960 p.1628 (official content on public mirror)",
+        "evidence": "official",
+        "sourceId": "pm2001-gazette"
+      }
+    }
+  ]
+}

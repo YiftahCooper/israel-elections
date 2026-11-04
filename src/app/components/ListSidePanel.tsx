@@ -1,3 +1,4 @@
+import { ElectionAbout } from './ElectionContext.tsx';
 import { Majority } from './Majority.tsx';
 // The opened list, in a panel beside the board (a full-screen sheet on narrow screens). It appears only when a
 // list is chosen, and keeps its place while the rest of the board updates.
@@ -53,7 +54,7 @@ export function ListSidePanel({ s, r, ds, base, baseR, listId }: { s: Scenario; 
         {blocs.map(b => <span key={b.id}>{lang === 'he' ? b.nameHe : b.nameEn}: <Majority n={pieces.filter(p => p.bloc === b.id).reduce((n,p) => n+p.n,0)} total={s.rules.seats} /></span>)}
         {!assignedBlocs.length && <span>{L('No bloc assigned', 'ללא שיוך לגוש')}</span>}
       </div>
-      <div className="sp-body"><ListDetail s={s} r={r} ds={ds} base={base} baseR={baseR} l={l} /></div>
+      <div className="sp-body"><ElectionAbout electionId={ds.id} listId={listId} /><ListDetail s={s} r={r} ds={ds} base={base} baseR={baseR} l={l} /></div>
     </aside>
   );
 }

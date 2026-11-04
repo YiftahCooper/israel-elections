@@ -14,7 +14,7 @@ const ROOT = join(import.meta.dirname, '..');
 const RAW = join(ROOT, 'data', 'raw');
 const MANIFEST = join(RAW, 'SOURCES.json');
 const refresh = process.argv.includes('--refresh');
-const UA = 'israel-elections-explorer/0.1 (research; +https://github.com/YiftahCooper/israel-elections)';
+const UA = 'israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections)';
 
 export interface SourceRecord {
   id: string;
@@ -32,6 +32,8 @@ export interface SourceRecord {
 }
 
 const HTTP_SOURCES: Omit<SourceRecord, 'method'>[] = [
+  { id: 'pm2001-gazette', file: 'pm/yp4960.pdf', url: 'https://olaw.org.il/yalkut/yalkut-4960.pdf', publisher: 'CEC / Reshumot, YP 4960 p.1628 (public mirror)', official: true, description: '2001 PM-only official notice on a disclosed non-government mirror' },
+  { id: 'pm1999-idi-totals', file: 'pm/1999-idi.pdf', url: 'https://www.idi.org.il/media/5026/%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9E%D7%91%D7%95%D7%90.pdf', publisher: 'Israel Democracy Institute', official: false, description: 'Secondary PM invalid/cast totals, printed p.8 / PDF p.7' },
   {
     id: 'k26-ballots-csv', file: 'k26/expb.csv', url: 'https://media26.bechirot.gov.il/files/expb.csv',
     publisher: 'ועדת הבחירות המרכזית לכנסת ה-26', official: true,
