@@ -8,6 +8,8 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 
 ### Added
 
+- Published on GitHub Pages at https://yiftahcooper.github.io/israel-elections/, redeployed on every push to `main`;
+  a site icon (the browser no longer requests a missing favicon).
 - Twenty-four more elections: 1949, 1951, 1955, 1959, 1961, 1965, 1969, 1973, 1977, 1981, 1984, 1988, 1992, 1996, 1999, 2003, 2006, 2009, 2013, 2015,
   April 2019, September 2019, 2020 and 2021 (Knessets 1–24), built from official sources, under each era's
   allocation law; every

@@ -24,8 +24,9 @@ a dataset rebuild, unit tests, the production build and Chromium end-to-end test
 It has no separate lint command. Do not substitute a successful Vite build for type checking.
 
 [Pages](../.github/workflows/pages.yml) publishes `dist/` to GitHub Pages on every push to `main`.
-It is skipped while the repository is private (free plans serve Pages from public repositories only).
-After making the repository public, choose Settings → Pages → Source → GitHub Actions once.
+The site is at <https://yiftahcooper.github.io/israel-elections/>; Settings → Pages → Source is GitHub Actions.
+The job runs the type check and unit tests before deploying, and is skipped if the repository is ever made private again
+(free plans serve Pages from public repositories only).
 The build uses relative asset paths (`base: './'`), so it works under `/<repository>/`.
 
 ## Calculation and scenario model

@@ -4,6 +4,8 @@ Explore Israeli Knesset election results and see how changing votes changes the 
 This bilingual Hebrew/English app is for curious voters, students and anyone who wants to
 understand seat allocation, with detailed tools for researchers and developers.
 
+**Use it online:** <https://yiftahcooper.github.io/israel-elections/> (nothing to install).
+
 ![The elections explorer and seat simulator](docs/screenshot.png)
 
 ## What you can do
