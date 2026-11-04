@@ -341,6 +341,65 @@ Constituents (separate from joint-list lockups):
 
 None recorded on the winning lists.
 
+### k6
+
+**את — Alignment: gap.**
+- `המערך 1965 כרזה -site:en.wikipedia.org` → U113, U114, U4, U115
+- `site:nli.org.il המערך 1965 בחירות` → U241, U242
+
+**חל — Gahal: gap.**
+- `גח״ל 1965 כרזה -site:en.wikipedia.org` → U4, U116, U117, U118
+- `site:nli.org.il גח"ל 1965 בחירות` → U231, U243
+
+**ב — National Religious Party: gap.**
+- `מפד״ל 1965 כרזה -site:en.wikipedia.org` → U38, U4, U119, U40
+- `site:nli.org.il מפד"ל 1965 בחירות` → U241, U231
+
+**מ — Mapam: gap.**
+- `מפ״ם 1965 כרזה -site:en.wikipedia.org` → U5, U4, U120, U22
+- `site:nli.org.il מפ"ם 1965 בחירות` → U244, U245
+
+**לע — Independent Liberals: gap.**
+- `ליברלים עצמאיים 1965 כרזה -site:en.wikipedia.org` → U121, U4, U122, U123
+- `site:nli.org.il ליברלים עצמאיים 1965 בחירות` → U241, U246
+
+**ג — Agudat Yisrael: gap.**
+- `אגודת ישראל 1965 כרזה -site:en.wikipedia.org` → U124, U50, U125, U126
+- `פועלי אגודת ישראל 1965 כרזה -site:en.wikipedia.org` → U50, U130, U131, U115
+- `site:nli.org.il אגודת ישראל 1965 בחירות` → U247, U241
+- `site:nli.org.il פועלי אגודת ישראל 1965 בחירות` → U241, U242
+
+**ו — Rakah: gap.**
+- `רק״ח 1965 כרזה -site:en.wikipedia.org` → U17, U127, U4, U128
+- `site:nli.org.il רק"ח 1965 בחירות` → U248, U249
+
+**רא — Progress and Development: gap.**
+- `קידמה ופיתוח 1965 כרזה -site:en.wikipedia.org` → U122, U75, U7, U129
+- `site:nli.org.il קידמה ופיתוח 1965 בחירות` → U250, U16
+
+**ד — Poalei Agudat Yisrael: gap.**
+- `פועלי אגודת ישראל 1965 כרזה -site:en.wikipedia.org` → U50, U130, U131, U115
+- `site:nli.org.il פועלי אגודת ישראל 1965 בחירות` → U241, U242
+
+**יא — Cooperation and Brotherhood: gap.**
+- `שיתוף ואחווה 1965 כרזה -site:en.wikipedia.org` → U122, U132, U85, U133
+- `site:nli.org.il שיתוף ואחווה 1965 בחירות` → U238, U251
+
+**ש — HaOlam HaZeh: gap.**
+- `העולם הזה 1965 כרזה -site:en.wikipedia.org` → U134, U135, U117, U136
+- `site:nli.org.il העולם הזה 1965 בחירות` → U252, U253
+
+**ק — Maki: gap.**
+- `מק״י 1965 כרזה -site:en.wikipedia.org` → U17, U127, U137, U4
+- `site:nli.org.il מק"י 1965 בחירות` → U254, U255
+
+Constituents (separate from joint-list lockups):
+
+- `mapai` — **gap**. `מפא"י – מפלגת פועלי ארץ ישראל 1965 כרזה סמל -site:en.wikipedia.org` → U165, U4.
+- `ahdut-haavoda` — **gap**. `אחדות העבודה – פועלי ציון 1965 כרזה סמל -site:en.wikipedia.org` → U295, U165.
+- `herut` — **gap**. `תנועת החרות 1965 כרזה סמל -site:en.wikipedia.org` → U116, U296.
+- `liberal-party` — **gap**. `המפלגה הליברלית 1965 כרזה סמל -site:en.wikipedia.org` → U4, U297.
+
 ## Returned search URL index
 
 This index records search leads, including irrelevant and wrong-year returns. Inclusion is not endorsement or evidence of official origin. Repeated archive URLs belong to one evidence family, not independent corroboration.
