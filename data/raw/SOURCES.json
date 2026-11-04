@@ -4226,5 +4226,29 @@
     "retrievedAt": "2026-11-04",
     "bytes": 41966,
     "sha256": "c2a9287390c8a35cf1950973db1c5f5c4829ac5b71c27ef2efe62bd48b8e845a"
+  },
+  {
+    "id": "logo-k12-likud-print-page",
+    "file": "logos/k12/likud-jabotinsky-36187.html",
+    "url": "https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%9E%D7%AA%D7%A7%D7%93%D7%9D/%D7%A4%D7%A8%D7%99%D7%98?itemId=36187",
+    "publisher": "Jabotinsky Institute; original publisher: Likud",
+    "official": true,
+    "description": "Likud official campaign poster, 1988-10-18; page; archive catalogue item 36187.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 33893,
+    "sha256": "b058577255ce2ac10ab23fe16dc739b679214b2b216ca5180fa19df331d39772"
+  },
+  {
+    "id": "logo-k12-likud-print-asset",
+    "file": "logos/k12/likud-jabotinsky-36187.jpg",
+    "url": "https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%9B%D7%A8%D7%96%D7%95%D7%AA/21/3457_0203.jpg",
+    "publisher": "Jabotinsky Institute; original publisher: Likud",
+    "official": true,
+    "description": "Likud official campaign poster, 1988-10-18; asset; archive catalogue item 36187.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 57847,
+    "sha256": "e6ba475827dd43d552edb52b2f3535f35097bbcde6aa2f0eec3dc8673900b412"
   }
 ]

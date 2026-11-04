@@ -2855,6 +2855,37 @@
           448
         ]
       }
+    },
+    {
+      "id": "jabotinsky-likud-1988-36187",
+      "title": "Likud official campaign poster — 1988-10-18",
+      "sourceUrl": "https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%9E%D7%AA%D7%A7%D7%93%D7%9D/%D7%A4%D7%A8%D7%99%D7%98?itemId=36187",
+      "publisher": "Likud; held by Jabotinsky Institute",
+      "sourceType": "official party campaign publication",
+      "accessed": "2026-11-04",
+      "accessMethod": "Plain HTTP with project User-Agent; catalogue HTML and original JPEG retained",
+      "inspectionDepth": "Catalogue, complete scan and cropped emblem visually inspected",
+      "date": "1988-10-18",
+      "description": "Inspected archive catalogue identifies Likud as creator and dates the advertised campaign event to 1988-10-18; retained scan visibly prints that date. Logo is a crop from this dated official publication, outside the archive watermark. Separate campaign evidence; not extended to other elections.",
+      "licence": "Fair use for identification; copyright remains with the rights holder",
+      "downloadUrl": "https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%9B%D7%A8%D7%96%D7%95%D7%AA/21/3457_0203.jpg",
+      "evidenceFamily": "jabotinsky-poster-36187",
+      "selected": true,
+      "publicationEvidence": {
+        "page": "logo-k12-likud-print-page",
+        "asset": "logo-k12-likud-print-asset",
+        "publicationDate": "1988-10-18",
+        "cropBox": [
+          7,
+          370,
+          211,
+          422
+        ],
+        "originalDimensions": [
+          324,
+          448
+        ]
+      }
     }
   ]
 }

@@ -379,3 +379,135 @@ Inspected [catalogue](https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%
 - NLI targeted discovery: `query: site:nli.org.il "כך" "1984" תעמולה`
   Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/newspapers/hadashot/1984/07/17/01/article/30?&), [lead 2](https://www.nli.org.il/he/newspapers/hadashot/1984/06/15/01/article/133), [lead 3](https://www.nli.org.il/en/newspapers/hadashot/1984/10/05/01).
 
+## k12 · 1988
+
+### מחל — הליכוד
+
+**Accepted:** dated official print crop; details below.
+
+- General discovery: `query: '"ליכוד" "1988" (כרזה OR כרזות OR לוגו) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.facebook.com/100064467291406/videos/1988-%D7%A0%D7%AA%D7%A0%D7%99%D7%94%D7%95-%D7%95%D7%91%D7%99%D7%99%D7%9C%D7%99%D7%9F-%D7%A8%D7%90%D7%A9-%D7%91%D7%A8%D7%90%D7%A9/498585077233120), [lead 2](https://cartoon.org.il/articles/%D7%9E%D7%9F-%D7%94%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F-%D7%A7%D7%A8%D7%99%D7%A7%D7%98%D7%95%D7%A8%D7%95%D7%AA-%D7%A0%D7%91%D7%97%D7%A8%D7%95%D7%AA-%D7%9C%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA), [lead 3](https://www.idi.org.il/articles/9401), [lead 4](https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf).
+- NLI targeted discovery: `query: site:nli.org.il "ליכוד" "1988" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/newspapers/hadashot/1988/10/26/01/page/1?&), [lead 2](https://www.nli.org.il/he/newspapers/hadashot/1988/08/05/01/page/14), [lead 3](https://www.nli.org.il/he/newspapers/bamahane/1988/11/02/01/page/8).
+
+Inspected [catalogue](https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%9E%D7%AA%D7%A7%D7%93%D7%9D/%D7%A4%D7%A8%D7%99%D7%98?itemId=36187) and [scan](https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%9B%D7%A8%D7%96%D7%95%D7%AA/21/3457_0203.jpg); printed event date **1988-10-18**. Crop `[7, 370, 211, 422]` from `[324, 448]`; final `logos/likud-print-1988.png`, 20609 bytes. Original SHA-256 `e6ba475827dd43d552edb52b2f3535f35097bbcde6aa2f0eec3dc8673900b412`; final SHA-256 `a07ac95c83cd4da976ec0126674582a2191f747a299c897c60ded4518021876f`. Catalogue HTML and scan are retained at `data/raw/logos/k12/`. Fair-use identification, no free licence asserted.
+
+### אמת — המערך
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"המערך" "1988" (כרזה OR כרזות OR לוגו) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.idi.org.il/policy/parties-and-elections/elections/1988), [lead 2](https://www.kan.org.il/content/archive1/archive_treasury/news-politics/148802), [lead 3](https://main.knesset.gov.il/mk/elections/pages/knesset26elections.aspx), [lead 4](https://he.wikipedia.org/wiki/%D7%94%D7%9E%D7%A2%D7%A8%D7%9A).
+- NLI targeted discovery: `query: site:nli.org.il "המערך" "1988" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/discover/israel/elections), [lead 2](https://www.nli.org.il/ar/newspapers/hadashot/1988/08/01/01/page/14?&), [lead 3](https://www.nli.org.il/he/newspapers/hadashot/1988/10/20/01/article/82?&).
+
+### ג — יהדות התורה המאוחדת – אגודת ישראל
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"אגודת ישראל" "1988" (כרזה OR כרזות OR לוגו) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%90%D7%92%D7%95%D7%93%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C), [lead 2](https://www.idi.org.il/policy/parties-and-elections/parties/agudat-israel), [lead 3](https://www.hamichlol.org.il/%D7%90%D7%92%D7%95%D7%93%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C), [lead 4](https://commons.wikimedia.org/wiki/File:Agudat_Yisrael_logo_2020.svg).
+- NLI targeted discovery: `query: site:nli.org.il "אגודת ישראל" "1988" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/journals/NNL-Journals990020496580205171/NLI).
+
+### רצ — רצ – התנועה לזכויות האזרח ולשלום
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"רצ" "1988" (כרזה OR כרזות OR לוגו) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.instagram.com/reel/DecJrDQqSL0), [lead 2](https://www.gov.il/BlobFolder/legalinfo/logosequencecomputersltd/he/8437.pdf), [lead 3](https://www.idi.org.il/policy/parties-and-elections/elections/1988), [lead 4](https://library.mevaker.gov.il/sites/DigitalLibrary/Pages/Reports/2361-1.aspx).
+- NLI targeted discovery: `query: site:nli.org.il "רצ" "1988" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/newspapers/hadashot/1988/10/14/01/article/82?&), [lead 2](https://www.nli.org.il/he/newspapers/mar/1988/06/23/01), [lead 3](https://www.nli.org.il/he/newspapers/hadashot/1988/09/28/01).
+
+### ב — מפד״ל חזית דתית לאומית, המזרחי – הפועל המזרחי
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"מפדל" "1988" (כרזה OR כרזות OR לוגו) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.instagram.com/reel/DecJrDQqSL0), [lead 2](https://www.youtube.com/watch?v=XUUc9N6x-s8), [lead 3](https://www.instagram.com/reel/DeeU32dozjL), [lead 4](https://www.walla.co.il/tags/%D7%94%D7%9E%D7%A4%D7%93%22%D7%9C).
+- NLI targeted discovery: `query: site:nli.org.il "מפדל" "1988" תעמולה`
+  Empty result set for this exact query.
+
+### ו — חזית דמוקרטית לשלום ולשוויון – המפלגה הקומוניסטית הישראלית (רק״ח); פנתרים שחורים וחוגי ציבור יהודים וערבים
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"חדש" "1988" (כרזה OR כרזות OR לוגו) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.themoviedb.org/movie/10126-colors/images/posters?language=he), [lead 2](https://www.idi.org.il/policy/parties-and-elections/elections/1988), [lead 3](https://www.kan.org.il/content/dig/digital/p-976891/s1/1089900), [lead 4](https://open.spotify.com/track/3pVlcImBBhKpSkqNywUadB).
+- NLI targeted discovery: `query: site:nli.org.il "חזית דמוקרטית לשלום" "1988" תעמולה`
+  Empty result set for this exact query.
+
+### הן — תנועת המרכז – שינוי (שינוי־לע״מ־המרכז הליברלי)
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"שינוי" "1988" (כרזה OR כרזות OR לוגו) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.amazon.com/-/he/%D7%9E%D7%93%D7%94%D7%99%D7%9E%D7%94-%D7%A7%D7%99%D7%A9%D7%95%D7%98%D7%99-%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D-%D7%95%D7%A9%D7%9E%D7%95%D7%A0%D7%94-%D7%9C%D7%92%D7%91%D7%A8%D7%99%D7%9D/dp/B098PYQV48), [lead 2](https://www.walla.co.il/news/israel/2608242), [lead 3](https://jfc.org.il/news_journal/124269), [lead 4](https://journal.bezalel.ac.il/v1/he/article/4044).
+- NLI targeted discovery: `query: site:nli.org.il "שינוי" "1988" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/discover/israel/elections), [lead 2](https://www.nli.org.il/ar/newspapers/hadashot/1988/08/01/01/page/14?&), [lead 3](https://www.nli.org.il/he/newspapers/mar/1988/09/05/01).
+
+### שס — התאחדות הספרדים שומרי תורה – ש״ס
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"שס" "1988" (כרזה OR כרזות OR לוגו) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA_%D7%A9%22%D7%A1), [lead 2](https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf), [lead 3](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997011437305505171/NLI), [lead 4](https://www.youtube.com/watch?v=XUUc9N6x-s8).
+- NLI targeted discovery: `query: site:nli.org.il "שס" "1988" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/ar/newspapers/hadashot/1988/08/18/01?&).
+
+### ת — התחיה
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"התחיה" "1988" (כרזה OR כרזות OR לוגו) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://library.mevaker.gov.il/sites/DigitalLibrary/Pages/Reports/2361-1.aspx), [lead 2](https://he.wikipedia.org/wiki/%D7%94%D7%AA%D7%97%D7%99%D7%94), [lead 3](https://www.idi.org.il/policy/parties-and-elections/elections/1988), [lead 4](https://arts.tau.ac.il/theater/arc/Yerushalaim).
+- NLI targeted discovery: `query: site:nli.org.il "התחיה" "1988" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/newspapers/hadashot/1988/08/05/01/page/14), [lead 2](https://www.nli.org.il/he/newspapers/mar/1988/06/23/01), [lead 3](https://www.nli.org.il/he/newspapers/hadashot/1988/08/24/01?&).
+
+### פ — הרשימה המתקדמת לשלום
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"הרשימה המתקדמת לשלום" "1988" (כרזה OR כרזות OR לוגו) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.idi.org.il/policy/parties-and-elections/parties/hareshima-hamitkademet-leshalom), [lead 2](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL990032573700205171/NLI), [lead 3](https://library.mevaker.gov.il/sites/DigitalLibrary/Pages/Reports/2361-1.aspx), [lead 4](https://www.nevo.co.il/FilesFolderPermalink.aspx?b=files&r=%D7%9E%D7%95%D7%A1%D7%93%D7%95%D7%AA+%D7%9E%D7%9E%D7%A9%D7%9C%5C%D7%9E%D7%91%D7%A7%D7%A8+%D7%94%D7%9E%D7%93%D7%99%D7%A0%D7%94%5C%D7%93%D7%95%D7%97%D7%95%D7%AA+%D7%9E%D7%99%D7%9E%D7%95%D7%9F+%D7%9E%D7%A4%D7%9C%D7%92%D7%95%D7%AA).
+- NLI targeted discovery: `query: site:nli.org.il "הרשימה המתקדמת לשלום" "1988" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/newspapers/hadashot/1988/09/28/01).
+
+### ט — מולדת
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"מולדת" "1988" (כרזה OR כרזות OR לוגו) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.idi.org.il/policy/parties-and-elections/parties/moledet), [lead 2](https://open.spotify.com/track/0SgJ1gySQ1yYD5oRI6HRbB), [lead 3](https://he.wikipedia.org/wiki/%D7%9E%D7%95%D7%9C%D7%93%D7%AA_(%D7%9E%D7%A4%D7%9C%D7%92%D7%94)), [lead 4](https://il.bidspirit.com/ui/lotPage/third-time/source/catalog/auction/25774/lot/179722/canonical?lang=he).
+- NLI targeted discovery: `query: site:nli.org.il "מולדת" "1988" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/newspapers/mar/1988/02/05/01/article/141?&), [lead 2](https://www.nli.org.il/he/newspapers/hadashot/1988/08/24/01?&), [lead 3](https://www.nli.org.il/he/newspapers/hadashot/1989/05/19/01).
+
+### עץ — אגודת החרדים – דגל התורה
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"דגל התורה" "1988" (כרזה OR כרזות OR לוגו) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.idi.org.il/policy/parties-and-elections/parties/degel-hatora), [lead 2](https://he.wikipedia.org/wiki/%D7%93%D7%92%D7%9C_%D7%94%D7%AA%D7%95%D7%A8%D7%94), [lead 3](https://library.mevaker.gov.il/sites/DigitalLibrary/Pages/Publications/418.aspx), [lead 4](https://yi.hamichlol.org.il/%D7%A8%D7%95%D7%99:%D7%93%D7%92%D7%9C_%D7%94%D7%AA%D7%95%D7%A8%D7%94).
+- NLI targeted discovery: `query: site:nli.org.il "דגל התורה" "1988" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/ar/newspapers/kolhair/1988/10/28/01/article/48?&), [lead 2](https://www.nli.org.il/he/newspapers/hadashot/1988/10/25/01), [lead 3](https://www.nli.org.il/he/newspapers/hadashot/1988/08/24/01?&).
+
+### ע — המפלגה הדמוקרטית הערבית
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"המפלגה הדמוקרטית הערבית" "1988" (כרזה OR כרזות OR לוגו)   -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.idi.org.il/policy/parties-and-elections/parties/arab-democratic-party), [lead 2](https://www.nli.org.il/he/articles/RAMBI990006340250705171/NLI), [lead 3](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012849354405171/NLI), [lead 4](https://library.mevaker.gov.il/sites/DigitalLibrary/Pages/Reports/2353-1.aspx).
+- NLI targeted discovery: `query: site:nli.org.il "המפלגה הדמוקרטית הערבית" "1988" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/articles/RAMBI990006340230705171/NLI).
+
+### ץ — צומת – התנועה להתחדשות ציונית ובלתי מפלגתיים
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"צומת" "1988" (כרזה OR כרזות OR לוגו) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://open.spotify.com/track/0KGTDsLMPAEGlk9C0n4JU6), [lead 2](https://library.mevaker.gov.il/sites/DigitalLibrary/Pages/Reports/2353-1.aspx), [lead 3](https://www.idi.org.il/policy/parties-and-elections/parties/tzomet), [lead 4](https://hadashot.iaa.org.il/sheet_list.aspx?id=82).
+- NLI targeted discovery: `query: site:nli.org.il "צומת" "1988" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/newspapers/mar/1988/02/05/01/article/141?&), [lead 2](https://www.nli.org.il/he/discover/israel/elections), [lead 3](https://www.nli.org.il/he/newspapers/mar/1988/03/25/01/page/51).
+
+Batch k12 verification: dataset builder passed; all 26 datasets compared equal to prior commit after removing only `logo` and `builtAt`. `npx vitest run`: 57 files / 484 tests passed; `npx tsc -p tsconfig.json --noEmit`, `npx vite build`, and logo validator passed. Only the model digest was re-recorded after the comparison; other four digest families passed unchanged. 
+
