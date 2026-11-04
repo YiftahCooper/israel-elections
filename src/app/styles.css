@@ -114,6 +114,7 @@ input, textarea { caret-color: var(--focus); }
 .banner.warn { background: var(--warn-bg); color: var(--warn-ink); }
 .banner.err { background: var(--err-bg); }
 .banner.note { background: var(--surface-2); } /* not .info: that class styles the (i) popover and would shrink banner buttons to icon size */
+.banner > .banner-text { flex: 1 1 14rem; min-inline-size: 0; } /* a dismiss button stays beside the text */
 .session { background: var(--surface); border-block-end: 1px solid var(--rule); padding: 6px 16px; display: flex; align-items: center; flex-wrap: wrap; gap: 4px 14px; font-size: 13.5px; }
 .session > b { font-weight: 700; }
 .session .moves { display: inline-flex; flex-wrap: wrap; gap: 2px 12px; }
@@ -293,7 +294,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .tabs button:hover { color: var(--ink); }
 .tabs button[aria-selected="true"] { color: var(--ink); border-block-end-color: var(--shell); font-weight: 700; }
 [data-theme="dark"] .tabs button[aria-selected="true"] { border-block-end-color: var(--focus); }
-.tabs .more-label { align-self: center; font-size: 12px; color: var(--muted); padding: 0 8px 0 4px; border-inline-start: 1px solid var(--rule); margin-inline-start: 4px; }
+.tabs .more-label { flex: none; white-space: nowrap; align-self: center; font-size: 12px; color: var(--muted); padding: 0 8px 0 4px; border-inline-start: 1px solid var(--rule); margin-inline-start: 4px; }
 .tabs button.locked { color: var(--muted); font-weight: 400; }
 .tool-intro { color: var(--ink-2); margin: 0 0 10px; }
 
@@ -357,7 +358,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .chamber, .chamber svg { max-width: 100%; }
 
 /* ---------- tools strip, under the band: every tool by name, one line */
-.toolbar { position: sticky; top: 52px; z-index: 25; background: var(--surface); border-block-end: 1px solid var(--rule-2); padding-inline: 12px; overflow: hidden; contain: inline-size; }
+.toolbar { position: sticky; top: var(--band-h, 52px); z-index: 25; background: var(--surface); border-block-end: 1px solid var(--rule-2); padding-inline: 12px; overflow: hidden; contain: inline-size; }
 .toolbar .tabs { min-width: 0; }
 .toolbar .tabs { border: 0; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
 .toolbar .tabs::-webkit-scrollbar { display: none; }
@@ -378,7 +379,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 @media (max-width: 760px) {
   .strip-legend { display: flex; }
   .corridor .label { display: none; }
-  .band { position: static; }
+  .band { position: relative; } /* not sticky on phones; still the anchor of its popovers (About) */
   .toolbar { top: 0; }
   /* the strip scrolls sideways on phones; its far edge fades to show there is more */
   .toolbar .tabs { mask-image: linear-gradient(to left, transparent 0, #000 32px); }
@@ -634,6 +635,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 
 /* Visibility cards use the same neutral controls as the rest of the workbench. */
 .custom-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.custom-page h3 { margin: 18px 0 8px; font-size: 14px; }
+.custom-page .custom-reset { margin-block-end: 4px; }
 .custom-grid .custom-feature { max-inline-size: none; border: 1px solid var(--rule); border-radius: 6px; padding: 10px 12px; background: var(--surface-quiet); flex-wrap: wrap; }
 .custom-feature p { margin: 3px 0 0; }
 .band .election-about { position: relative; margin: 0; padding: 4px 8px; background: transparent; border-color: var(--shell-ink-quiet); color: inherit; font-size: 12px; flex-shrink: 0; }
@@ -744,6 +747,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .election-navigation .choice-trigger { flex: 1; min-inline-size: 0; }
 .band .election-arrow { padding-inline: 4px; min-inline-size: 24px; font-size: 21px; }
 [dir="rtl"] .election-arrow span { transform: scaleX(-1); }
+/* undo points back to the reading start: right in Hebrew (redo mirrors with it) */
+[dir="rtl"] .band .rtl-mirror { transform: scaleX(-1); }
 .election-dialog { inline-size: min(520px, calc(100vw - 24px)); padding-block-start: 0; }
 .timeline-search { display: flex; gap: 8px; position: sticky; inset-block-start: 0; z-index: 1; padding-block: 12px 6px; background: var(--surface); }
 .timeline-search input { min-inline-size: 0; flex: 1; }

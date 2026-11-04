@@ -534,7 +534,9 @@ view on opening, including phone. Small Previous/Next arrows live beside the top
 there are no duplicate nearby chips, preview summary or All elections button inside.
 
 The scenario switcher remains available in the header and phone inspectors. Unsaved branches
-share a session-only draft store and retain undo/redo; saving in browser is durable. Rows show
+share a session-only draft store and retain undo/redo; saving in browser is durable. Every path that
+replaces the current scenario (switcher, menu, Scenarios page, share link, import) keeps unsaved
+work as a draft first; a saved scenario opens with its own undo history. Rows show
 the date, changed-field count, identity swatch and mini bar. Default proportional balancing
 and unchanged law are omitted. Exceptional vote sources and changed rules are named. The
 current scenario's change disclosure is explicitly labelled as such.

@@ -1,16 +1,16 @@
 import { BoardChoices } from './components/BoardChoices.tsx';
 import { useActiveReference } from './useActiveReference.ts';
 import { CustomPage, Feature } from './components/Feature.tsx';
-import { TOOL_FEATURES, RANK, type Preset } from './features.ts';
+import { TOOL_FEATURES, RANK, LEVEL_LABELS, featureLabel, type Preset } from './features.ts';
 import { electionContext } from '../data/electionContext.ts';
 import { PMResult } from './components/ElectionContext.tsx';
 import { createElement, memo, Suspense, use, useEffect, useState, type ReactNode } from 'react';
-import { scenarioColor } from './scenarioIdentity.ts';
+import { liveScenarioColor } from './scenarioIdentity.ts';
 import { referenceChanges } from './derive.ts';
 import { X } from 'lucide-react';
 import { allocationOf, baselineOf, ruleChanges, scenarioIssues, tieAffectsSeats, warningText } from './derive.ts';
 import { LangContext, useL } from './i18n.ts';
-import { dispatch, loadElectionIndex, openElection, readSharedFromHash, redo, setState, undo, useStore, type Level } from './store.ts';
+import { dispatch, getState, loadElectionIndex, openElection, openSharedFromHash, redo, setState, undo, useStore } from './store.ts';
 import { Hemicycle as HemicycleView } from './components/Hemicycle.tsx';
 import { Figures as FiguresView } from './components/Figures.tsx';
 import { BlocBar as BlocBarView } from './components/Blocs.tsx';
@@ -92,11 +92,10 @@ export function App() {
   }, [lang, theme]);
   useEffect(() => {
     loadElectionIndex();
-    readSharedFromHash().then(async (sh) => {
-      // the link is cleared only once it has opened, so a failed load can be retried by reloading
-      if (sh) { if (await openElection(sh.electionId, sh)) history.replaceState(null, '', location.pathname); }
-      else openElection('k26');
-    });
+    openSharedFromHash().then((opened) => { if (!opened && !getState().scenario) openElection('k26'); });
+    // a share link pasted into the address bar of an open tab only changes the hash
+    const onHash = () => { void openSharedFromHash(); };
+    addEventListener('hashchange', onHash);
     const onKey = (e: KeyboardEvent) => {
       const t = e.target as HTMLElement;
       if (e.defaultPrevented) return;
@@ -106,7 +105,7 @@ export function App() {
       if (e.key === 'Escape') setState((st) => (st.selectedListId ? { selectedListId: null } : { blocPanel: null }));
     };
     addEventListener('keydown', onKey);
-    return () => removeEventListener('keydown', onKey);
+    return () => { removeEventListener('keydown', onKey); removeEventListener('hashchange', onHash); };
   }, []);
   return <LangContext.Provider value={lang}><Shell /></LangContext.Provider>;
 }
@@ -134,6 +133,7 @@ function Shell() {
   useEffect(() => { setDrawerFor(null); }, [toolNow]);
   useEffect(() => { if (toolNow && toolNow !== 'board') setDrawerFor(selectedListId); }, [selectedListId]); // eslint-disable-line react-hooks/exhaustive-deps
   const hintDismissed = useStore((st) => st.hintDismissed);
+  const saved = useStore((st) => st.saved);
   const ready = !!(committed && ds);
   // once the election is on screen, fetch the code of this level's tools while the page is idle; the others
   // load when pointed at or focused, so a Simple visit does not download tools it may never open
@@ -146,7 +146,8 @@ function Shell() {
 
   const loadBanner = loadError && (
     <div className="banner err" role="alert">
-      {((e) => L(`Could not load the ${e} election data (${loadError.message}).`, `טעינת נתוני הבחירות ${e} נכשלה (${loadError.message}).`))(((x) => x ? electionLabel(x, elections, lang) : loadError.id)(elections.find((x) => x.id === loadError.id)))}{' '}
+      <span className="banner-text">{((e) => L(`Could not load the ${e} election data. Check the connection and try again.`, `טעינת נתוני הבחירות ${e} נכשלה. בדקו את החיבור ונסו שוב.`))(((x) => x ? electionLabel(x, elections, lang) : loadError.id)(elections.find((x) => x.id === loadError.id)))}{' '}
+        <bdi dir="ltr" className="tiny muted">{loadError.message}</bdi></span>
       <button className="btn small" onClick={() => openElection(loadError.id)}>{L('Try again', 'ניסיון נוסף')}</button>
       {committed && <button className="btn small ghost icon-only" onClick={() => setState({ loadError: null })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button>}
     </div>
@@ -160,28 +161,11 @@ function Shell() {
   const base = baselineOf(ds);
   const baseR = allocationOf(base);
   const issues = scenarioIssues(s, r);
-  const label: Record<Tab, string> = {
-    families: L('Party families', 'משפחות מפלגות'),
-    board: L('Overview', 'תמונת מצב'),
-    scenarios: L('Scenarios', 'תרחישים'),
-    whatif: L('What if…', 'מה אילו…'),
-    coal: L('Coalitions', 'קואליציות'),
-    walk: L('How seats were allocated', 'חלוקת המנדטים'),
-    structure: L('Merge & split', 'איחוד ופיצול'),
-    compare: L('Compare', 'השוואה'),
-    security: L('Seat safety', 'ביטחון המנדטים'),
-    charts: L('Charts', 'תרשימים'),
-    turnout: L('Turnout', 'שיעור הצבעה'),
-    sens: L('Sensitivity', 'רגישות'),
-    loc: L('Localities', 'יישובים'),
-    rules: L('Rules', 'כללים'),
-    sources: L('Sources', 'מקורות'),
-  };
-  const levelName: Record<Level, string> = { simple: L('Simple', 'פשוט'), standard: L('Standard', 'רגיל'), expert: L('Expert', 'מומחה') };
+  const label = (id: Tab) => L(...featureLabel(id));
   const customPage = toolNow === 'custom';
   const tool: Tab = toolPick && TOOLS.some((t) => t.id === toolPick) ? toolPick : 'board';
   // tools of this level first, then the others under a quiet label (never hidden)
-  const availableTools = TOOLS.filter(t => customFeatures?.[t.id] !== 'hidden');
+  const availableTools = TOOLS.filter(t => t.id === 'board' || customFeatures?.[t.id] !== 'hidden');
   const ordered = [...availableTools.filter((t) => RANK[t.level] <= RANK[level]), ...availableTools.filter((t) => RANK[t.level] > RANK[level])];
   const firstLocked = ordered.findIndex((t) => RANK[t.level] > RANK[level]);
   // a tool is a page of its own; the board keeps its state (selection, open figures) when you come back
@@ -191,7 +175,7 @@ function Shell() {
   const drawerOpen = tool !== 'board' && !!selected && drawerFor === selected;
 
   return (
-    <div className="app" style={{ ['--scenario-color' as string]: reference || referenceChanges(s, base).length || s.identityColor ? scenarioColor(s) : undefined }}>
+    <div className="app" style={{ ['--scenario-color' as string]: reference || referenceChanges(s, base).length || s.identityColor ? liveScenarioColor(s, saved) : undefined }}>
       <TopBar s={pmOnly ? null : committed} r={cr} ds={ds} baseR={baseR} pmContestId={pmContestId} onContestChange={setPMContestId} />
       {pmOnly ? <main className="work"><PMResult contest={pmOnly} onKnesset={() => setPMContestId(null)} /></main> : <>
       <nav className="toolbar" aria-label={L('Tools', 'כלים')}><div className="tabs" role="tablist" aria-label={L('Tools', 'כלים')}>
@@ -208,14 +192,14 @@ function Shell() {
                     if (next < 0) return;
                     e.preventDefault(); setState({ tool: ordered[next].id });
                     (document.getElementById(`tab-${ordered[next].id}`) as HTMLElement | null)?.focus();
-                  }}>{label[t.id]}{RANK[t.level] > RANK[level] && <span className="sr-only"> ({levelName[t.level]})</span>}</button>,
+                  }}>{label(t.id)}{RANK[t.level] > RANK[level] && <span className="sr-only"> ({L(...LEVEL_LABELS[t.level])})</span>}</button>,
                 ])}
               </div></nav>
       <div>
-        {level === 'simple' && !hintDismissed && <div className="banner note" role="status">{L('Click any list, seat, bloc or figure to see and change what is behind it. Every tool is named in the strip under the header.', 'לחצו על כל רשימה, מושב, גוש או נתון כדי לראות ולשנות את מה שמאחוריו. כל הכלים מופיעים בשורה שמתחת לכותרת.')} <button className="btn small ghost icon-only" onClick={() => setState({ hintDismissed: true })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}
+        {level === 'simple' && !hintDismissed && <div className="banner note" role="status"><span className="banner-text">{L('Click any list, seat, bloc or figure to see and change what is behind it. Every tool is named in the strip under the header.', 'לחצו על כל רשימה, מושב, גוש או נתון כדי לראות ולשנות את מה שמאחוריו. כל הכלים מופיעים בשורה שמתחת לכותרת.')}</span> <button className="btn small ghost icon-only" onClick={() => setState({ hintDismissed: true })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}
         {loadBanner}
         {s.mode === 'experimental' && <div className="banner note" role="status">{L('Experimental rules: this is an alternative electoral system, not a legally possible Israeli result.', 'כללים ניסיוניים: זוהי שיטת בחירות חלופית ולא תוצאה אפשרית לפי החוק בישראל.')}{(() => { const c = ruleChanges(s, lang); return c.length ? <> {L('Changed: ', 'שינויים: ')}<b>{c.join(' · ')}</b>.</> : null; })()} <button className="btn small" onClick={() => dispatch({ type: 'setMode', mode: 'historical' })}>{L('Back to the real rules', 'חזרה לכללים האמיתיים')}</button></div>}
-        {notice && <div className="banner note" role="status">{notice} <button className="btn small ghost icon-only" onClick={() => setState({ notice: null })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}
+        {notice && <div className="banner note" role="status"><span className="banner-text">{notice}</span> <button className="btn small ghost icon-only" onClick={() => setState({ notice: null })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}
         {issues.map((x, i) => <div key={i} className={`banner ${x.level === 'error' ? 'err' : 'warn'}`} role="alert">{lang === 'he' ? x.he : x.en}</div>)}
         {r.warnings.filter((w) => w.code !== 'internal-loss').map((w, i) => tieAffectsSeats(s, w)
           ? <div key={`w${i}`} className="banner warn" role="alert">{warningText(w, s, lang)}</div>
@@ -224,7 +208,7 @@ function Shell() {
       <ChangeSummary s={s} r={r} base={base} baseR={baseR} ds={ds} />
       <main className="work">
         {customPage ? <CustomPage /> : tool === 'board' ? (
-          <Feature id="board"><div className={`board ${selected || blocPanel ? 'with-panel' : ''}`}>
+          <div className={`board ${selected || blocPanel ? 'with-panel' : ''}`}>
             <ErrorBoundary label={L('Lists', 'רשימות')} resetKey={s}><ListBars s={s} r={r} base={base} baseR={baseR} /></ErrorBoundary>
             <div className="center"><BoardChoices s={s} />
               <section className="panel chamber-panel" aria-label={L('The Knesset', 'הכנסת')}>
@@ -237,12 +221,12 @@ function Shell() {
             </div>
             {selected && <ErrorBoundary label={L('List details', 'פרטי רשימה')} resetKey={selected}><ListSidePanel s={s} r={r} ds={ds} base={base} baseR={baseR} listId={selected} /></ErrorBoundary>}
             {!selected && blocPanel && <ErrorBoundary label={L('Blocs', 'גושים')} resetKey={s}><BlocPanel s={s} r={r} focus={blocPanel} /></ErrorBoundary>}
-          </div></Feature>
+          </div>
         ) : (
-          <section className="panel tool-page" id="tool-panel" aria-label={label[tool]}>
-            <header><h2>{label[tool]}</h2></header>
+          <section className="panel tool-page" id="tool-panel" aria-label={label(tool)}>
+            <header><h2>{label(tool)}</h2></header>
             <div className="body" role="tabpanel" id="analysis-panel" aria-labelledby={`tab-${tool}`}>
-              {<Feature id={tool}><ErrorBoundary label={label[tool]} resetKey={`${tool}|${committed.id}|${committed.log.length}`}><Suspense fallback={<p className="muted" role="status">{L('Loading…', 'טוען…')}</p>}>
+              {<Feature id={tool}><ErrorBoundary label={label(tool)} resetKey={`${tool}|${committed.id}|${committed.log.length}`}><Suspense fallback={<p className="muted" role="status">{L('Loading…', 'טוען…')}</p>}>
                 {tool === 'families' && <Families s={committed} />}
                 {tool === 'scenarios' && <Scenarios s={committed} ds={ds} />}
                 {tool === 'whatif' && <WhatIf ds={ds} />}

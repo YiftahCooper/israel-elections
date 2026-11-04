@@ -15,6 +15,11 @@ export function nextScenarioColor(saved: SavedIdentity[], electionId: string): t
   const counts = SCENARIO_PALETTE.map(c => saved.filter(x => x.electionId === electionId && savedColor(x.log) === c).length);
   return SCENARIO_PALETTE[counts.indexOf(Math.min(...counts))];
 }
+/** The colour a scenario shows. An unsaved one without its own colour already shows the colour saving
+ *  will give it, so its identity does not change on save. */
+export function liveScenarioColor(s: Pick<Scenario, 'identityColor' | 'id' | 'electionId'>, saved: SavedIdentity[]): string {
+  return SCENARIO_PALETTE.includes(s.identityColor as typeof SCENARIO_PALETTE[number]) ? s.identityColor! : nextScenarioColor(saved.filter(x => x.id !== s.id), s.electionId);
+}
 /** Explicit colours win; missing identities are assigned oldest first, independent of storage order. */
 export function migrateSavedColors<T extends SavedIdentity>(saved: T[]): T[] {
   const assigned = saved.filter(x => x.log.some(a => a.type === 'setIdentityColor'));

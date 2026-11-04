@@ -1,4 +1,4 @@
-import { scenarioColor } from '../scenarioIdentity.ts';
+import { liveScenarioColor, scenarioColor } from '../scenarioIdentity.ts';
 import { useEffect, useMemo, useState } from 'react';
 import { Info } from 'lucide-react';
 import { useL, useLang } from '../i18n.ts';
@@ -11,6 +11,7 @@ export function ScenarioGallery() {
   const L = useL(), lang = useLang();
   const scenario = useStore(s => s.scenario);
   const elections = useStore(s => s.elections);
+  const saved = useStore(s => s.saved);
   const [tags, setTags] = useState('');
   const description = scenario?.description ?? '';
   const [query, setQuery] = useState(''), [year, setYear] = useState(''), [tag, setTag] = useState(''), [sort, setSort] = useState('likes');
@@ -49,7 +50,7 @@ export function ScenarioGallery() {
       const link = await shareLink();
       const election = elections.find(e => e.id === scenario.electionId);
       if (!election || !validShareLink(link, site)) throw new Error();
-      tab.location.href = publishUrl({ identityColor: scenarioColor(scenario), name: scenario.name || L('Untitled scenario', 'תרחיש ללא שם'), description: description.slice(0, 3000), electionId: scenario.electionId, year: election.date.slice(0, 4), tags: tags.split(',').map(t => t.trim()).filter(Boolean), shareLink: link });
+      tab.location.href = publishUrl({ identityColor: liveScenarioColor(scenario, saved), name: scenario.name || L('Untitled scenario', 'תרחיש ללא שם'), description: description.slice(0, 3000), electionId: scenario.electionId, year: election.date.slice(0, 4), tags: tags.split(',').map(t => t.trim()).filter(Boolean), shareLink: link });
     } catch { tab.close(); setError('publish'); }
     finally { setPublishing(false); }
   }
