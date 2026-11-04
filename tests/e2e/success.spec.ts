@@ -6,7 +6,8 @@ import { expect, test, type Page } from '@playwright/test';
 const lists = (page: Page) => page.getByRole('region', { name: 'Lists' });
 const listButton = (page: Page, name: string) => lists(page).getByRole('button', { name, exact: true });
 const seatsOf = async (page: Page, name: string) => Number(await listButton(page, name).locator('.lb-seats b').innerText());
-const validVotes = (page: Page) => page.locator('.fig').filter({ has: page.locator('.k', { hasText: /^Valid votes/ }) }).locator('.v');
+// the valid total is the Invalid ballots card's breakdown (no card of its own beside its complement)
+const validVotes = (page: Page) => page.locator('.figures');
 
 test('2022: merge, add voters, drop agreement, push Balad over, find Ra’am’s next seat, compare, share', async ({ page }) => {
   test.setTimeout(150_000); // ten steps, two of them exact searches
@@ -45,7 +46,7 @@ test('2022: merge, add voters, drop agreement, push Balad over, find Ra’am’s
   }
   await page.getByRole('button', { name: 'Add these voters' }).click();
   await page.getByRole('tab', { name: 'Overview' }).click();
-  await expect(validVotes(page)).toHaveText('4,964,742');
+  await expect(validVotes(page)).toHaveAttribute('data-valid-votes', '4,964,742');
 
   // 4. Remove the Likud–Religious Zionism agreement
   await page.getByRole('tab', { name: 'Merge & split', exact: true }).click();
@@ -84,10 +85,10 @@ test('2022: merge, add voters, drop agreement, push Balad over, find Ra’am’s
   expect(link).toContain('#s=');
   await page.keyboard.press('Escape');
   await page.getByRole('tab', { name: 'Overview' }).click();
-  const before = await validVotes(page).innerText();
+  const before = await validVotes(page).getAttribute('data-valid-votes');
   const p2 = await page.context().newPage();
   await p2.goto(link);
   await p2.getByRole('button', { name: 'EN', exact: true }).click();
-  await expect(validVotes(p2)).toHaveText(before);
+  await expect(validVotes(p2)).toHaveAttribute('data-valid-votes', before!);
   expect(errors).toEqual([]);
 });

@@ -13,11 +13,11 @@ const start = async (page: Page, settings: Record<string, unknown> = {}) => {
 test('an info button stays open when clicked, and Escape closes it', async ({ page }) => {
   await start(page, { level: 'expert' });
   // a figure opens in place; its definition is behind the info mark inside
-  await page.locator('.fig').filter({ has: page.locator('.k', { hasText: /^Valid votes/ }) }).locator('> button').click();
-  const info = page.getByRole('button', { name: /^Valid votes \(/ });
+  await page.locator('.fig').filter({ has: page.locator('.k', { hasText: /^Invalid ballots/ }) }).locator('> button').click();
+  const info = page.getByRole('button', { name: /^Invalid ballots \(/ });
   await info.click();
   await expect(info).toHaveAttribute('aria-expanded', 'true');
-  await expect(page.getByRole('tooltip')).toContainText('counted for some list');
+  await expect(page.getByRole('tooltip')).toContainText('counted for no list');
   await expect(page.getByRole('tooltip').getByRole('link', { name: /Learn more/ })).toHaveAttribute('href', /^https:\/\//);
   await page.keyboard.press('Escape');
   await expect(page.getByRole('tooltip')).toHaveCount(0);
@@ -27,8 +27,8 @@ test.describe('on a touch phone', () => {
   test.use({ viewport: { width: 375, height: 812 }, hasTouch: true, isMobile: true });
   test('an info button opens on tap', async ({ page }) => {
     await start(page, { level: 'expert' });
-    await page.locator('.fig').filter({ has: page.locator('.k', { hasText: /^Valid votes/ }) }).locator('> button').tap();
-    await page.getByRole('button', { name: /^Valid votes \(/ }).tap();
+    await page.locator('.fig').filter({ has: page.locator('.k', { hasText: /^Invalid ballots/ }) }).locator('> button').tap();
+    await page.getByRole('button', { name: /^Invalid ballots \(/ }).tap();
     await expect(page.getByRole('tooltip')).toBeVisible();
   });
   for (const level of ['simple', 'standard', 'expert']) for (const lang of ['en', 'he']) {

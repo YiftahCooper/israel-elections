@@ -173,7 +173,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     ],
   },
   {
-    id: 'invalid-votes', nameHe: 'קולות פסולים', nameEn: 'Invalid votes', level: 'simple', provenance: 'sourced',
+    id: 'invalid-votes', nameHe: 'קולות פסולים', nameEn: 'Invalid ballots', level: 'simple', provenance: 'sourced',
     defHe: 'פתקים שאינם נספרים לאף רשימה: למשל פתק לבן ריק, מעטפה עם פתקים של יותר מרשימה אחת, או סימן שעלול לזהות את המצביע. הם נכללים בשיעור ההצבעה אך אינם משפיעים על אחוז החסימה או על חלוקת המנדטים.',
     defEn: 'Ballots counted for no list, for example a blank slip, an envelope holding slips for more than one list, or a mark that could identify the voter. They count in turnout but have no effect on the threshold or on seats.',
     linkHe: H.invalid, linkEn: E.invalid,

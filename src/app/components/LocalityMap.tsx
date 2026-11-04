@@ -127,7 +127,7 @@ export function LocalityMap({ s, data, historicalLists, locations, locationError
     {selected && <section className="locality-map-results" aria-live="polite" aria-label={L('Selected locality results','תוצאות היישוב הנבחר')}>
       <h3 dir="auto">{lang==='en'?locations[String(selected.code)]?.nameEn || selected.nameHe:selected.nameHe}</h3>
       <p>{L('Leader: ','מוביל: ')}{winnerName}</p>
-      <p>{L('Registered: ', 'בעלי זכות בחירה: ')}{selected.registered === null ? '—' : fmtInt(selected.registered)} · {L('Invalid votes: ', 'קולות פסולים: ')}{fmtInt(selected.invalid)}</p>
+      <p>{L('Registered: ', 'בעלי זכות בחירה: ')}{selected.registered === null ? '—' : fmtInt(selected.registered)} · {L('Invalid ballots: ', 'קולות פסולים: ')}{fmtInt(selected.invalid)}</p>
       <p>{L('Valid votes: ','קולות כשרים: ')}{fmtInt(selected.valid)} · {L('Votes cast: ','מצביעים: ')}{fmtInt(selected.votesCast)} · {L('Turnout: ','הצבעה: ')}{selected.registered?fmtPct(selected.votesCast,selected.registered,1):L('Unavailable','לא זמין')}</p>
       <p className="small ink2">{L('Turnout excludes double-envelope votes. Coordinates are CBS locality reference points, not polling stations.', 'ההצבעה אינה כוללת מעטפות חיצוניות. המיקום הוא נקודת ייחוס של הלמ״ס ליישוב ולא מיקום קלפי.')}</p>
       {/* each list's share drawn as a bar in its colour, scaled to the leader */}

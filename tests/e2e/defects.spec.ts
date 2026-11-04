@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
-/** the "Valid votes" figure's value */
-const validVotes = (page: import('@playwright/test').Page) => page.locator('.fig').filter({ has: page.locator('.k', { hasText: /^Valid votes/ }) }).locator('.v');
+/** the valid total: the Invalid ballots card's breakdown (no card of its own beside its complement) */
+const validVotes = (page: import('@playwright/test').Page) => page.locator('.figures');
 
 const start = async (page: import('@playwright/test').Page) => {
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', level: 'expert' })));
@@ -16,11 +16,11 @@ test('reset everything keeps votes supplied by the selected donor', async ({ pag
   await source.selectOption('new');
   await details.getByLabel('Votes', { exact: true }).fill('0');
   await details.getByLabel('Votes', { exact: true }).press('Enter');
-  const total = await validVotes(page).innerText();
+  const total = await validVotes(page).getAttribute('data-valid-votes');
   await source.selectOption('t:26-נף');
   await details.getByRole('button', { name: 'Restore this list as it was' }).click();
   await expect(details.getByLabel('Votes', { exact: true })).toHaveValue('524');
-  await expect(validVotes(page)).toHaveText(total);
+  await expect(validVotes(page)).toHaveAttribute('data-valid-votes', total!);
 });
 
 test('clamped and refused numeric edits display the authoritative value', async ({ page }) => {
@@ -48,14 +48,14 @@ test('clamped and refused numeric edits display the authoritative value', async 
 test('the split form conserves the original votes', async ({ page }) => {
   await start(page);
   const total = validVotes(page);
-  const before = await total.innerText();
+  const before = await total.getAttribute('data-valid-votes');
   await page.getByRole('tab', { name: 'Merge & split', exact: true }).click();
   await page.getByRole('button', { name: 'Split a list' }).click();
   await page.getByRole('group', { name: 'List' }).getByRole('button', { name: 'Likud', exact: true }).click();
   await page.getByRole('button', { name: 'Split', exact: true }).click();
   // Likud 2026 is Likud + New Hope: it splits into its parties, and the vote total is conserved
   await expect(page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: /^New Hope/ })).toBeVisible();
-  await expect(total).toHaveText(before);
+  await expect(total).toHaveAttribute('data-valid-votes', before!);
 });
 
 test('a refused decimal edit also reverts after Escape while still focused', async ({ page }) => {
