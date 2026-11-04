@@ -1,3 +1,4 @@
+import { describe } from '../actionDescription.ts';
 import { useEffect, useRef, useState } from 'react';
 import type { ElectionDataset, ElectionId, ElectionIndexEntry } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
@@ -34,6 +35,11 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
   const level = useStore((st) => st.level);
   const canUndo = useStore((st) => st.past.length > 0);
   const canRedo = useStore((st) => st.future.length > 0);
+  const future = useStore(st => st.future);
+  const last = s?.log.at(-1);
+  const next = future.at(-1)?.log.at(-1);
+  const undoName = last && s ? L('Undo: ', 'ביטול: ') + describe(last.action, s, lang) : L('Undo', 'ביטול');
+  const redoName = next && s ? L('Redo: ', 'חזרה: ') + describe(next.action, future.at(-1)!, lang) : L('Redo', 'חזרה');
   const saved = useStore((st) => st.saved);
   const fileRef = useRef<HTMLInputElement>(null);
   const [menu, setMenu] = useState(false);
@@ -63,15 +69,15 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
       <select aria-label={L('Election', 'בחירות')} value={electionId} onChange={(e) => openElection(e.target.value as ElectionId)} className="election">
         {elections.map((e) => <option key={e.id} value={e.id} disabled={!e.available}>{electionLabel(e, elections, lang)}{e.available ? '' : L(' — not yet available', ' — עדיין לא זמין')}</option>)}
       </select>
+      {s && ds && <span className="chip election-status">{s.mode === 'experimental' ? L('Experimental rule', 'כלל ניסיוני') : s.log.length ? L('Hypothetical', 'היפותטי') : ds.status.stage === 'official-final' ? L('Official', 'רשמי') : L('Pending gazette', 'ממתין לפרסום ברשומות')}</span>}
       <Seg label={L('Detail level', 'רמת פירוט')} value={level} onChange={(v) => setState({ level: v })} options={[{ v: 'simple', label: L('Simple', 'פשוט') }, { v: 'standard', label: L('Standard', 'רגיל') }, { v: 'expert', label: L('Expert', 'מומחה') }]} />
       {s && level !== 'simple' && (
         <input type="text" className="scenario-name" value={s.name} placeholder={L('Untitled scenario', 'תרחיש ללא שם')} aria-label={L('Scenario name', 'שם התרחיש')}
           onChange={(e) => setState({ scenario: { ...s, name: e.target.value } })} />
       )}
-      {s && s.mode === 'experimental' && <span className="chip exp" style={{ background: 'var(--surface)' }}>{L('Experimental rules', 'כללים ניסיוניים')}</span>}
       <span className="spacer" />
-      <button className="tool" onClick={undo} disabled={!canUndo} title={L('Undo (Ctrl+Z)', 'ביטול (Ctrl+Z)')} aria-label={L('Undo', 'ביטול')}><Undo2 className="icon" aria-hidden /></button>
-      <button className="tool" onClick={redo} disabled={!canRedo} title={L('Redo (Ctrl+Y)', 'חזרה (Ctrl+Y)')} aria-label={L('Redo', 'חזרה')}><Redo2 className="icon" aria-hidden /></button>
+      <button className="tool" onClick={undo} disabled={!canUndo} title={undoName + ' (Ctrl+Z)'} aria-label={undoName}><Undo2 className="icon" aria-hidden /></button>
+      <button className="tool" onClick={redo} disabled={!canRedo} title={redoName + ' (Ctrl+Y)'} aria-label={redoName}><Redo2 className="icon" aria-hidden /></button>
       <button className="tool" aria-label={L('Start over', 'התחלה מחדש')} title={L('Start over', 'התחלה מחדש')} onClick={() => { if (!s?.log.length || confirm(L('Reset the whole election to the historical result? (Undo can restore it.)', 'לאפס את כל הבחירות לתוצאה ההיסטורית? (ניתן לבטל)'))) resetAll(); }} disabled={!s?.log.length}>
         <RotateCcw className="icon" aria-hidden /><span className="label">{L('Start over', 'התחלה מחדש')}</span></button>
       <div style={{ position: 'relative' }} ref={menuRef}>

@@ -1,12 +1,13 @@
+import { describe } from '../actionDescription.ts';
 import { LocalityMap, useLocalityLocations } from './LocalityMap.tsx';
 import { matchesLocality } from '../locality-map-model.ts';
 import { Fragment, useEffect, useMemo, useState } from 'react';
 import { isEnvelopeRow, type ElectionDataset } from '../../data/schema.ts';
 import { ruleDepartures, RULESETS } from '../../engine/rules.ts';
 import type { AllocationResult } from '../../engine/types.ts';
-import { electionRuleSetId, toRuleSet, type Action, type Scenario } from '../../model/scenario.ts';
+import { electionRuleSetId, toRuleSet, type Scenario } from '../../model/scenario.ts';
 import { baselineOf, listLabel, methodOf } from '../derive.ts';
-import { GLOSSARY, useL, useLang, type Lang } from '../i18n.ts';
+import { GLOSSARY, useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct } from '../format.ts';
 import { dispatch, getState, redo, replay, setState, undo, useStore, useDigits } from '../store.ts';
 import { useLocalities } from './Turnout.tsx';
@@ -235,48 +236,14 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
 
 // ------------------------------------------------------------------ history
 
-export function describe(a: Action, s: Scenario, lang: Lang): string {
-  const n = (id: string) => { const l = s.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : id; };
-  const he = lang === 'he';
-  switch (a.type) {
-    case 'setVotes': return he ? `${n(a.listId)}: ${fmtInt(a.votes)} קולות` : `${n(a.listId)}: set to ${fmtInt(a.votes)} votes`;
-    case 'transfer': return he ? `העברת ${fmtInt(a.votes)} קולות מ${n(a.from)} ל${n(a.to)}` : `Moved ${fmtInt(a.votes)} votes from ${n(a.from)} to ${n(a.to)}`;
-    case 'addVoters': return he ? `נוספו ${fmtInt(a.allocations.reduce((t, x) => t + x.votes, 0) + a.invalid)} מצביעים${a.label ? ` (${a.label})` : ''}` : `Added ${fmtInt(a.allocations.reduce((t, x) => t + x.votes, 0) + a.invalid)} voters${a.label ? ` (${a.label})` : ''}`;
-    case 'redistribute': return he ? `חלוקה מחדש של ${fmtInt(a.votes)} קולות` : `Redistributed ${fmtInt(a.votes)} votes`;
-    case 'scaleAll': return he ? `שינוי כל הקולות ל-${a.factorPct}%` : `Scaled all votes to ${a.factorPct}%`;
-    case 'merge': return he ? `איחוד: ${a.nameHe} (${a.ids.length} רשימות, שימור ${a.retentionPct}%)` : `Merged ${a.ids.length} lists into ${a.nameHe} (${a.retentionPct}% retained)`;
-    case 'split': return he ? `פיצול ל-${a.parts.map((p) => p.nameHe).join(' / ')}` : `Split into ${a.parts.map((p) => p.nameHe).join(' / ')}`;
-    case 'addList': return he ? `רשימה חדשה: ${a.nameHe}` : `New list: ${a.nameHe}`;
-    case 'removeList': return he ? `הוסרה רשימה` : `Removed a list`;
-    case 'setWithdrawn': return `${n(a.listId)}: ${a.withdrawn ? (he ? 'פרשה' : 'withdrawn') : (he ? 'הוחזרה' : 'reinstated')}`;
-    case 'setListMeta': return he ? `${n(a.listId)}: עריכת פרטים` : `${n(a.listId)}: edited details`;
-    case 'setAgreement': return `${a.agreement.members.map(n).join(' ⇄ ')}: ${a.agreement.enabled ? (he ? 'הסכם פעיל' : 'agreement on') : (he ? 'הסכם כבוי' : 'agreement off')}`;
-    case 'removeAgreement': return he ? 'הוסר הסכם עודפים' : 'Removed an agreement';
-    case 'candidates': return he ? `${n(a.listId)}: עריכת מועמדים (${a.note})` : `${n(a.listId)}: candidates (${a.note})`;
-    case 'setRules': return he ? `כללים: ${Object.entries(a.patch).map(([k, v]) => `${k}=${v}`).join(', ')}` : `Rules: ${Object.entries(a.patch).map(([k, v]) => `${k}=${v}`).join(', ')}`;
-    case 'setMode': return a.mode === 'historical' ? (he ? 'מצב תקף היסטורית' : 'Historically valid mode') : (he ? 'מצב ניסיוני' : 'Experimental mode');
-    case 'setTotals': return he ? 'עדכון בעלי זכות / פסולים' : 'Electorate / invalid ballots changed';
-    case 'setBlocs': return he ? 'עריכת גושים' : 'Edited blocs';
-    case 'applyBlocScheme': { const sc = s.blocSchemes?.find((x) => x.id === a.schemeId); return he ? `חלוקה לגושים: ${sc?.nameHe ?? a.schemeId}` : `Bloc grouping: ${sc?.nameEn ?? a.schemeId}`; }
-    case 'setFactionSplit': return a.split
-      ? (he ? `${n(a.listId)}: הסיעה התפצלה למפלגותיה` : `${n(a.listId)}: faction split into its parties`)
-      : (he ? `${n(a.listId)}: הסיעה אוחדה מחדש` : `${n(a.listId)}: faction rejoined`);
-    case 'setPartyBloc': { const p = s.lists.flatMap((l) => l.parties ?? []).find((x) => x.id === a.partyId); const b = s.blocs.find((x) => x.id === a.bloc);
-      return he ? `${p?.nameHe ?? a.partyId} ← ${b?.nameHe ?? 'ללא גוש'}` : `${p?.nameEn ?? a.partyId} → ${b?.nameEn ?? 'no bloc'}`; }
-    case 'setLottery': return he ? 'נבחרה תוצאת הגרלה' : 'Chose a lottery outcome';
-    case 'resetList': return he ? `${n(a.listId)}: אופסה` : `${n(a.listId)}: reset`;
-    case 'rename': return he ? `שם התרחיש: ${a.name}` : `Renamed to ${a.name}`;
-    case 'resetVotes': return he ? `${n(a.listId)}: הקולות אופסו` : `${n(a.listId)}: votes reset`;
-    case 'resetCandidates': return he ? `${n(a.listId)}: רשימת המועמדים שוחזרה` : `${n(a.listId)}: candidate list restored`;
-    case 'setTurnout': return he ? `שיעור ההצבעה נקבע ל-${a.pct}%` : `Turnout set to ${a.pct}%`;
-    case 'restore': return he ? ({ agreements: 'שוחזרו הסכמי העודפים', totals: 'שוחזרו בעלי זכות הבחירה והפסולים', blocs: 'שוחזרו הגושים', lottery: 'בוטלו תוצאות ההגרלה' } as const)[a.what] : ({ agreements: 'Restored the historical agreements', totals: 'Restored electorate and invalid ballots', blocs: 'Restored the default blocs', lottery: 'Cleared lottery outcomes' } as const)[a.what];
-  }
-}
-
 export function History({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: ElectionDataset }) {
   const L = useL();
   const lang = useLang();
-  const past = useStore((st) => st.past.length), future = useStore((st) => st.future.length);
+  const past = useStore((st) => st.past.length), future = useStore((st) => st.future);
+  const last = s.log.at(-1);
+  const next = future.at(-1)?.log.at(-1);
+  const undoName = last ? L('Undo: ', 'ביטול: ') + describe(last.action, s, lang) : L('Undo', 'ביטול');
+  const redoName = next ? L('Redo: ', 'חזרה: ') + describe(next.action, future.at(-1)!, lang) : L('Redo', 'חזרה');
   void r;
   const revertTo = (n: number) => {
     const { scenario } = replay(ds, s.name, s.log.slice(0, n).map((e) => e.action));
@@ -285,8 +252,8 @@ export function History({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
   return (
     <div>
       <div className="row" style={{ marginBottom: 8 }}>
-        <button className="btn small" onClick={undo} disabled={!past}>{L('Undo', 'ביטול')}</button>
-        <button className="btn small" onClick={redo} disabled={!future}>{L('Redo', 'חזרה')}</button>
+        <button className="btn small" onClick={undo} disabled={!past}>{undoName}</button>
+        <button className="btn small" onClick={redo} disabled={!future.length}>{redoName}</button>
         <span className="muted small">{L(`${s.log.length} changes from the historical result`, `${s.log.length} שינויים מהתוצאה ההיסטורית`)}</span>
       </div>
       {s.log.length === 0 ? <p className="muted">{L('No changes yet — this is the historical result.', 'אין שינויים — זו התוצאה ההיסטורית.')}</p> : (

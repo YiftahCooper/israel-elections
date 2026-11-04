@@ -56,3 +56,10 @@ export function clampTarget(s: Scenario, l: SimList, target: number, src: Source
   if (t > l.votes) return Math.min(t, l.votes + maxGain(s, l, src));
   return t;
 }
+
+export function voteSourceLabel(src: SourceChoice, s: Scenario, lang: 'he' | 'en'): string {
+  if (src.kind === 'new') return lang === 'he' ? 'מצביעים חדשים / נמנעים' : 'new voters / voters staying home';
+  if (src.kind === 'proportional') return lang === 'he' ? 'שאר הרשימות באופן יחסי' : 'other lists proportionally';
+  const l = s.lists.find(l => l.id === src.listId);
+  return l ? (lang === 'he' ? l.shortHe : l.shortEn ?? l.shortHe) : lang === 'he' ? 'רשימה אחרת' : 'another list';
+}

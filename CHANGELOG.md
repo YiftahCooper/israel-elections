@@ -6,6 +6,15 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 
 ## [Unreleased]
 
+### Changed
+
+- Wave 1 continuity: phone edit consequences remain visible; majority readouts share wording,
+  and coalition membership uses In / Out / Any choices. Baseline, grouping and result status
+  labels travel with results; Compare uses percentage points and aligns sourced bloc groupings.
+- List edits show their vote-source assumption at every level, source-aware threshold
+  checkpoints and search qualifications, plus an explanation linking crossings to the walkthrough.
+  History and undo/redo name actions from the existing log. Level gates remain unchanged.
+
 ### Fixed
 
 - **Acceptance repairs (4 Nov 2026).** Compare and coalition arithmetic respect member-level bloc moves;

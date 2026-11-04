@@ -1,9 +1,8 @@
 import { useMemo } from 'react';
 import type { ElectionDataset } from '../../data/schema.ts';
-import { compareAllocations } from '../../engine/analysis.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
-import { allocationOf, blocPieces, electedOf, listLabel } from '../derive.ts';
+import { allocationOf, comparisonGroups, groupingBaseline, groupingLabel, nonSeatChanges, blocPieces, electedOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct, fmtRat, fmtSigned, isolate, signed } from '../format.ts';
 import { replay, setState, useStore, useDigits } from '../store.ts';
@@ -23,7 +22,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
     return sv ? replay(ds, sv.name, sv.log).scenario : base;
   }, [compareWith, saved, base, ds, s.electionId]);
   const a = other, ar = allocationOf(other);
-  const groups = useMemo(() => compareAllocations(ar, a.lists, r, s.lists), [ar, a, r, s]);
+  const groups = useMemo(() => comparisonGroups(s, r, a, ar), [ar, a, r, s]);
 
   const gName = (ids: string[], sc: Scenario) => ids.map((id) => { const l = sc.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : id; }).join(' + ') || '—';
   const changed = groups.filter((g) => g.seatsA !== g.seatsB).sort((x, y) => (y.seatsB - y.seatsA) - (x.seatsB - x.seatsA));
@@ -39,7 +38,8 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
   const leaving = [...ea.entries()].filter(([id]) => !eb.has(id)).map(([, v]) => v);
 
   const blocSums = (sc: Scenario, rr: AllocationResult) => Object.fromEntries(sc.blocs.map((b) => [b.id, blocPieces(sc, rr).filter((p) => p.bloc === b.id).reduce((t, p) => t + p.n, 0)]));
-  const ba = blocSums(a, ar), bb = blocSums(s, r);
+  const groupedA = groupingBaseline(s, a);
+  const ba = groupedA ? blocSums(groupedA, ar) : {}, bb = blocSums(s, r);
 
   const nameA = compareWith === 'historical' ? L('Official result', 'התוצאה הרשמית') : a.name;
   const nameB = s.name || L('Your scenario', 'התרחיש שלכם');
@@ -63,6 +63,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
 
   return (
     <div className="cmp">
+      <p className="small">{L('Baseline: ', 'בסיס ההשוואה: ')}{nameA} · {groupingLabel(s, lang)}{!groupedA && L(' · custom grouping has no baseline counterpart', ' · לחלוקה אישית אין מקבילה בבסיס')}</p>
       <div className="row" style={{ marginBottom: 12 }}>
         <label className="row small">{L('Compare', 'השוואה בין')} <b>{nameB}</b> {L('with', 'לבין')}
           <select value={compareWith} onChange={(e) => setState({ compareWith: e.target.value })}>
@@ -70,20 +71,20 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
             {saved.filter((x) => x.electionId === s.electionId && x.id !== s.id).map((x) => <option key={x.id} value={x.id}>{x.name}</option>)}
           </select>
         </label>
-        {changed.length === 0 && <span className="small muted">{L('No seat has moved yet: make an edit on the Overview, or load a scenario.', 'אף מנדט עוד לא זז: ערכו שינוי בתמונת המצב, או טענו תרחיש.')}</span>}
+        {changed.length === 0 && <span className="small muted">{[L('No seats changed', 'המנדטים לא השתנו'), ...nonSeatChanges(s, a, lang)].join(' · ')}</span>}
       </div>
 
       <div className="cmp-chambers">
-        <figure><figcaption>{nameA}</figcaption><Hemicycle s={a} r={ar} compact title={nameA} /></figure>
+        <figure><figcaption>{nameA}</figcaption><Hemicycle s={groupedA ?? a} r={ar} compact title={nameA} /></figure>
         <figure><figcaption>{nameB}</figcaption><Hemicycle s={s} r={r} compact title={nameB} /></figure>
       </div>
 
       {s.blocs.length > 0 && (
         <section className="cmp-section">
           <h3>{L('Blocs', 'גושים')}</h3>
-          <BlocBarRow sums={ba} title={nameA} sc={a} />
+          {groupedA && <BlocBarRow sums={ba} title={nameA} sc={groupedA} />}
           <BlocBarRow sums={bb} title={nameB} sc={s} />
-          <div className="legend small" style={{ marginTop: 6 }}>{s.blocs.map((b) => <span key={b.id} className="row" style={{ gap: 5 }}><span className="swatch" style={{ background: b.color }} />{lang === 'he' ? b.nameHe : b.nameEn} <b>{ba[b.id] ?? 0} → {bb[b.id] ?? 0}</b></span>)}</div>
+          <div className="legend small" style={{ marginTop: 6 }}>{s.blocs.map((b) => <span key={b.id} className="row" style={{ gap: 5 }}><span className="swatch" style={{ background: b.color }} />{lang === 'he' ? b.nameHe : b.nameEn} <b>{groupedA ? `${ba[b.id] ?? 0} → ` : ''}{bb[b.id] ?? 0}</b></span>)}</div>
         </section>
       )}
 
@@ -139,7 +140,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
         <div className="tablewrap" tabIndex={0} role="region" aria-label={L('Scrollable table', 'טבלה נגללת')}>
           <table className="tbl">
             <thead><tr>
-              <th>{L('List(s)', 'רשימה/ות')}</th><th className="n">{L('Votes before', 'קולות לפני')}</th><th className="n">{L('Votes after', 'קולות אחרי')}</th><th className="n">Δ</th><th className="n">Δ%</th>
+              <th>{L('List(s)', 'רשימה/ות')}</th><th className="n">{L('Votes before', 'קולות לפני')}</th><th className="n">{L('Votes after', 'קולות אחרי')}</th><th className="n">Δ</th><th className="n">{L('Δ share (pp)', 'Δ שיעור (נקודות אחוז)')}</th>
               <th className="n">{L('Seats before', 'מנדטים לפני')}</th><th className="n">{L('after', 'אחרי')}</th><th className="n">Δ</th>
             </tr></thead>
             <tbody>
@@ -150,7 +151,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
                     <td>{g.bIds.length ? g.bIds.map((id) => <button key={id} className="table-action" onClick={() => setState({ selectedListId: id })}>{gName([id], s)}</button>) : gName(g.aIds, a)}{g.aIds.join() !== g.bIds.join() && <small className="muted"> · {L("officially", "בפועל")} {gName(g.aIds, a)}</small>}</td>
                     <td className="n">{fmtInt(g.votesA)}</td><td className="n">{fmtInt(g.votesB)}</td>
                     <td className="n">{dv === 0n ? '—' : fmtSigned(dv)}</td>
-                    <td className="n">{g.votesA > 0n && dv !== 0n ? `${dv > 0n ? '+' : ''}${fmtRat({ num: dv * 100n, den: g.votesA }, 2)}%` : ''}</td>
+                    <td className="n">{ar.totalValid > 0n && r.totalValid > 0n ? fmtRat({ num: 100n * (g.votesB * ar.totalValid - g.votesA * r.totalValid), den: ar.totalValid * r.totalValid }, 2) : '—'}</td>
                     <td className="n">{g.seatsA}</td><td className="n"><b>{g.seatsB}</b></td>
                     <td className="n">{ds_ === 0 ? '—' : ds_ > 0 ? `+${ds_}` : `−${-ds_}`}</td>
                   </tr>

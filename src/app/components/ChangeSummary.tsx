@@ -4,9 +4,8 @@ import { lazy, Suspense, useMemo, useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import type { ElectionDataset } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
-import { applyAction } from '../../model/actions.ts';
 import type { Scenario } from '../../model/scenario.ts';
-import { blocPieces, comparisonGroups, listLabel } from '../derive.ts';
+import { blocPieces, groupingBaseline, groupingLabel, nonSeatChanges, comparisonGroups, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 
 const History = lazy(() => import('./Panels.tsx').then((m) => ({ default: m.History })));
@@ -37,12 +36,8 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
     if (!s.blocs.length) return null;
     const now = blocTotals(s, r);
     let was: Map<string | null, number> | null = null;
-    if (s.blocSchemeId) {
-      try {
-        const b = s.blocSchemeId === base.blocSchemeId ? base : applyAction(base, { type: 'applyBlocScheme', schemeId: s.blocSchemeId });
-        was = blocTotals(b, baseR);
-      } catch { was = null; }
-    }
+    const b = groupingBaseline(s, base);
+    if (b) was = blocTotals(b, baseR);
     return s.blocs.map((b) => ({ b, n: now.get(b.id) ?? 0, d: was ? (now.get(b.id) ?? 0) - (was.get(b.id) ?? 0) : null }));
   }, [s, r, base, baseR]);
   if (!s.log.length) return null;
@@ -56,21 +51,23 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
   return (
     <div className="session" role="status" aria-live="polite">
       {s.name && <span className="scn-name" title={s.description ?? s.name}>{s.name}</span>}
-      <b>{L('What changed', 'מה השתנה')}</b>
+      <b>{L('Since official result', 'מאז התוצאה הרשמית')}</b>
       {moves.length === 0
-        ? <span className="muted">{L('No seat moved', 'אף מנדט לא זז')}</span>
+        ? <span className="muted">{L('No seats changed', 'המנדטים לא השתנו')}</span>
         : <span className="moves">
             {shown.map((m) => <span key={m.id}><bdi>{m.label(lang)}</bdi> <b dir="ltr">{sign(m.d)}</b></span>)}
             {moves.length > MAX_MOVES && <span className="muted">{L(`+${moves.length - MAX_MOVES} more`, `ועוד ${moves.length - MAX_MOVES}`)}</span>}
           </span>}
+      {nonSeatChanges(s, base, lang).length > 0 && <span>{nonSeatChanges(s, base, lang).join(' · ')}</span>}
       {blocs && <span className="moves" style={{ color: 'var(--ink-2)' }}>
+        <span>{groupingLabel(s, lang)}</span>
         {blocs.filter((x) => x.n > 0 || x.d).map(({ b, n, d }) => <span key={b.id}><bdi>{name(b)}</bdi> {n}{d ? <span dir="ltr"> ({sign(d)})</span> : null}</span>)}
         <span>{holder ? L(`${name(holder.b)} holds a majority`, `ל${name(holder.b)} יש רוב`) : L('no bloc has a majority', 'לאף גוש אין רוב')}</span>
       </span>}
       {s.mode === 'experimental' && <span className="chip exp">{L('Experimental rules', 'כללים ניסיוניים')}</span>}
       <span className="spacer" />
       <button className="btn small ghost" aria-expanded={open} onClick={() => setOpen((o) => !o)}>
-        {L(`${s.log.length} edit${s.log.length === 1 ? '' : 's'}`, `${s.log.length} שינויים`)}
+        {L(`History · ${s.log.length} edit${s.log.length === 1 ? '' : 's'}`, `היסטוריה · ${s.log.length} שינויים`)}
         {open ? <ChevronUp className="icon sm" aria-hidden /> : <ChevronDown className="icon sm" aria-hidden />}
       </button>
       {open && <div className="history"><Suspense fallback={<p className="muted small">{L('Loading…', 'טוען…')}</p>}><History s={s} r={r} ds={ds} /></Suspense></div>}

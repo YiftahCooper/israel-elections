@@ -1,3 +1,4 @@
+import { applyAction } from '../model/actions.ts';
 import { compareAllocations } from '../engine/analysis.ts';
 // Memoised derivations: every displayed figure comes from allocate(scenario).
 import type { ElectionDataset } from '../data/schema.ts';
@@ -205,4 +206,29 @@ export function coalitionPieces(s: Scenario, r: AllocationResult) {
     else out.set(id, { ...p, partyId, color: partyId ? p.color : l.color, id });
   }
   return [...out.values()].sort((a,b) => b.n-a.n);
+}
+
+/** Compare allocations under the same sourced grouping; custom assignments have no official baseline. */
+export function groupingBaseline(s: Scenario, base: Scenario): Scenario | null {
+  if (!s.blocSchemeId) return null;
+  try { return s.blocSchemeId === base.blocSchemeId ? base : applyAction(base, { type: 'applyBlocScheme', schemeId: s.blocSchemeId }); }
+  catch { return null; }
+}
+export function groupingLabel(s: Scenario, lang: Lang): string {
+  const g = s.blocSchemes?.find(g => g.id === s.blocSchemeId);
+  return g ? `${lang === 'he' ? g.nameHe : g.nameEn} · ${g.date ?? (lang === 'he' ? 'חלוקה מוכרת בבחירות אלה' : 'recognised grouping of this election')}` : lang === 'he' ? 'החלוקה שלכם' : 'Your grouping';
+}
+export function majorityText(n: number, total: number, lang: Lang): string {
+  const m = Math.floor(total / 2) + 1;
+  return lang === 'he' ? `${n} / ${total} · ${n < m ? `חסרים ${m-n} ל-${m}` : `${n-m} מעל ${m}`}`
+    : `${n} / ${total} · ${n < m ? `${m-n} short of ${m}` : `${n-m} above ${m}`}`;
+}
+
+export function nonSeatChanges(s: Scenario, base: Scenario, lang: Lang): string[] {
+  const he = lang === 'he';
+  const changes: string[] = [];
+  if (JSON.stringify(s.lists.map(l => [l.id,l.votes,l.withdrawn])) !== JSON.stringify(base.lists.map(l => [l.id,l.votes,l.withdrawn]))) changes.push(he ? 'הקולות השתנו' : 'votes changed');
+  if (JSON.stringify(s.agreements) !== JSON.stringify(base.agreements)) changes.push(he ? 'הסכמי העודפים השתנו' : 'agreements changed');
+  if (s.blocSchemeId !== base.blocSchemeId || JSON.stringify([s.blocs,s.partyBlocs,s.candidateBlocs,s.lists.map(l=>l.bloc)]) !== JSON.stringify([base.blocs,base.partyBlocs,base.candidateBlocs,base.lists.map(l=>l.bloc)])) changes.push(he ? 'החלוקה לגושים השתנתה' : 'grouping changed');
+  return changes;
 }

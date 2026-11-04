@@ -1,3 +1,4 @@
+import { Majority } from './Majority.tsx';
 // The opened list, in a panel beside the board (a full-screen sheet on narrow screens). It appears only when a
 // list is chosen, and keeps its place while the rest of the board updates.
 import { useEffect, useRef } from 'react';
@@ -5,7 +6,7 @@ import { X } from 'lucide-react';
 import type { ElectionDataset } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
-import { listLabel, officialSeatsFor } from '../derive.ts';
+import { blocPieces, comparisonGroups, groupingLabel, listLabel, officialSeatsFor } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { setState } from '../store.ts';
 import { ListDetail } from './ListDetail.tsx';
@@ -24,6 +25,13 @@ export function ListSidePanel({ s, r, ds, base, baseR, listId }: { s: Scenario; 
   if (!l || !lr) return null;
   const was = officialSeatsFor(l.id, s, r, base, baseR);
   const d = was === null ? 0 : lr.seats - was;
+  const changed = comparisonGroups(s, r, base, baseR).filter(g => g.seatsA !== g.seatsB).reduce((n,g) => n + Math.max(g.aIds.length, g.bIds.length), 0);
+  const pieces = blocPieces(s, r);
+  const blocIds = new Set(pieces.filter(p => p.listId === l.id).map(p => p.bloc));
+  // A list with no seats still belongs to its assigned bloc.
+  if (!blocIds.size) blocIds.add(l.bloc);
+  const assignedBlocs = s.blocs.filter(b => blocIds.has(b.id));
+  const blocs = assignedBlocs.length ? assignedBlocs : s.blocs;
   return (
     <aside className="panel side-panel" ref={ref} aria-label={listLabel(l, lang)}>
       <header className="sp-head">
@@ -39,6 +47,12 @@ export function ListSidePanel({ s, r, ds, base, baseR, listId }: { s: Scenario; 
         </div>
         <button className="btn ghost icon-only" aria-label={L('Close', 'סגירה')} onClick={() => setState({ selectedListId: null })}><X className="icon" aria-hidden /></button>
       </header>
+      <div className="phone-result-strip" role="status">
+        <span><b>{lr.seats}</b> {L('seats', 'מנדטים')} · <bdi>{was === null ? '—' : d > 0 ? `+${d}` : String(d)}</bdi> {L('since official result', 'מאז התוצאה הרשמית')} · {L(`${changed} lists changed seats`, `${changed} רשימות שינו מנדטים`)}</span>
+        <span className="tiny muted">{groupingLabel(s, lang)}</span>
+        {blocs.map(b => <span key={b.id}>{lang === 'he' ? b.nameHe : b.nameEn}: <Majority n={pieces.filter(p => p.bloc === b.id).reduce((n,p) => n+p.n,0)} total={s.rules.seats} /></span>)}
+        {!assignedBlocs.length && <span>{L('No bloc assigned', 'ללא שיוך לגוש')}</span>}
+      </div>
       <div className="sp-body"><ListDetail s={s} r={r} ds={ds} base={base} baseR={baseR} l={l} /></div>
     </aside>
   );
