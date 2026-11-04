@@ -1127,3 +1127,21 @@ for a Jabotinsky thirteenth-Knesset campaign leaflet file yielded no selected
 original. Other B identities שס, ב, ג, ו, ע were not individually re-searched.
 
 Coverage: **1 → 1 / 10**; zero additions, zero absence findings.
+### Run 3 · k14
+
+| Identity | Lead(s) checked | Decision and observed evidence |
+|---|---|---|
+| k14/אמת | [NNL_ARCHIVE_AL997013034403305171](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997013034403305171/NLI) | Gap: each linked URL returned HTTP 403 / browser challenge; no catalogue or scan inspected. |
+| k14/ג | [NNL_ARCHIVE_AL997013034400705171](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997013034400705171/NLI) | Gap: each linked URL returned HTTP 403 / browser challenge; no catalogue or scan inspected. |
+| k14/ט | [NNL_ARCHIVE_AL997012156953705171](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156953705171/NLI); [NNL_MUSIC_AL990036589260205171](https://www.nli.org.il/en/items/NNL_MUSIC_AL990036589260205171) | Gap: each linked URL returned HTTP 403 / browser challenge; no catalogue or scan inspected. |
+
+Additional high-seat check: **אמת (34 seats, category A)**. Downloaded the
+[Labor 14th-Knesset platform](https://www.idi.org.il/media/6674/%D7%A2%D7%91%D7%95%D7%93%D7%94-14.pdf)
+(200, 2,975,590 bytes, 56 pages); visually inspected pages 1, 2, 56. The cover has
+a red/blue העבודה wordmark and explicit 14th-Knesset identification. Precise
+publication/campaign-use date proof was not established; no date manufactured
+from the PDF filename or its later digital creation. This remains a useful
+original-artwork candidate, not an accepted logo. The six B identities שס, ב,
+מרצ, כן, ו, ע retain run-2 reasons and were not individually re-searched.
+
+Coverage: **2 → 2 / 11**; zero additions, zero absence findings.
