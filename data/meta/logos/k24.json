@@ -1,0 +1,73 @@
+{
+  "electionId": "k24",
+  "logos": [
+    {
+      "file": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Blue_and_White_logo_2021.svg",
+      "licence": "Public domain (PD-textlogo)",
+      "attribution": "Sokuya; File:Blue and White logo 2021.svg; Public domain (PD-textlogo).",
+      "hosted": false,
+      "inUseEvidence": "Commons explicitly identifies the 2021 election variant, dated 1 March 2021, and cites the party’s 2021 platform for colour matching. Vector recreation retrieved sources in 2025. Asset download returned HTTP 429 (Retry-After: 600); no local image is provided.",
+      "confidence": "medium",
+      "letters": "כן",
+      "evidenceId": "commons-130826913",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Blue_and_White_logo_2021.svg",
+      "status": "download-unavailable",
+      "suggestedFile": "logos/blue-and-white-2021.svg"
+    },
+    {
+      "file": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:New_Hope_party_logo.png",
+      "licence": "CC BY-SA 4.0",
+      "attribution": "Dmitry Pechenkov; File:New Hope party logo.png; CC BY-SA 4.0. Resized to at most 256 px; converted to PNG where necessary.",
+      "hosted": false,
+      "inUseEvidence": "Commons dates this community reconstruction to 1 March 2021, during the campaign before the 23 March election; official-source derivation is not supplied. Asset download returned HTTP 429 (Retry-After: 600); no local image is provided.",
+      "confidence": "medium",
+      "letters": "ת",
+      "evidenceId": "commons-100640724",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/72/New_Hope_party_logo.png",
+      "status": "download-unavailable",
+      "suggestedFile": "logos/new-hope-2021.png"
+    },
+    {
+      "file": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Raam_logo_2021.svg",
+      "licence": "Public domain (PD-textlogo)",
+      "attribution": "United Arab List; File:Raam logo 2021.svg; Public domain (PD-textlogo).",
+      "hosted": false,
+      "inUseEvidence": "Commons identifies the 2021 design and cites the 12 February 2021 Panet newspaper PDF. The 2022 date is the vector recreation date. Asset download returned HTTP 429 (Retry-After: 600); no local image is provided.",
+      "confidence": "medium",
+      "letters": "עם",
+      "evidenceId": "commons-119107430",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/30/Raam_logo_2021.svg",
+      "status": "download-unavailable",
+      "suggestedFile": "logos/raam-2021.svg"
+    },
+    {
+      "file": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Otzma_Yehudit_2021_logo.svg",
+      "licence": "Public domain (PD-textlogo)",
+      "attribution": "Author not recorded by Commons; File:Otzma Yehudit 2021 logo.svg; Public domain (PD-textlogo).",
+      "hosted": false,
+      "inUseEvidence": "Commons explicitly identifies the 2021 election logo, supplied by the party by email and converted from PDF. Constituent emblem only, not the joint Religious Zionism list emblem. Asset download returned HTTP 429 (Retry-After: 600); no local image is provided.",
+      "confidence": "medium",
+      "party": "otzma-yehudit",
+      "evidenceId": "commons-130829740",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Otzma_Yehudit_2021_logo.svg",
+      "status": "download-unavailable",
+      "suggestedFile": "logos/otzma-yehudit-2021.svg"
+    },
+    {
+      "file": null,
+      "sourceUrl": "https://www.srugim.co.il/525439-%D7%94%D7%9C%D7%95%D7%92%D7%95-%D7%94%D7%97%D7%93%D7%A9-%D7%A9%D7%9C-%D7%99%D7%A9-%D7%A2%D7%AA%D7%99%D7%93-%D7%99%D7%90%D7%99%D7%A8-%D7%9C%D7%A4%D7%99%D7%93-%D7%95%D7%96%D7%A8%D7%99%D7%97%D7%94",
+      "licence": "No free image licence verified; rights clearance required",
+      "attribution": "www.srugim.co.il; underlying logo designer/rights holder not verified",
+      "hosted": false,
+      "inUseEvidence": "Secondary report dated 10 January 2021 explicitly announces the new K24 campaign logo. Image not downloaded.",
+      "confidence": "medium",
+      "status": "unresolved",
+      "evidenceId": "srugim-2021-yesh-atid",
+      "letters": "פה"
+    }
+  ]
+}

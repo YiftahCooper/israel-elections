@@ -1,0 +1,20 @@
+{
+  "electionId": "k12",
+  "logos": [
+    {
+      "file": "logos/mapam-1988.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mapam_Logo_1988.svg",
+      "licence": "Public domain (PD-textlogo)",
+      "attribution": "Vectorized by Glide08; File:Mapam Logo 1988.svg; Public domain (PD-textlogo).",
+      "hosted": true,
+      "inUseEvidence": "Commons dates the design to 1988 and identifies a trace of the 1988 campaign broadcast at video U2cZEj8diU0, 14:56.",
+      "confidence": "medium",
+      "letters": "מפם",
+      "sha256": "5d0baf86a089c714079d0388b4fbee4382c7a6dc8b2a575712371e60949ca56a",
+      "evidenceId": "commons-103475376",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Mapam_Logo_1988.svg",
+      "status": "verified",
+      "originalSha256": "5d0baf86a089c714079d0388b4fbee4382c7a6dc8b2a575712371e60949ca56a"
+    }
+  ]
+}

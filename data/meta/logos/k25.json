@@ -1,0 +1,105 @@
+{
+  "electionId": "k25",
+  "logos": [
+    {
+      "file": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:National_Unity_Party_(Israel)_August_2022.svg",
+      "licence": "Public domain (PD-textlogo)",
+      "attribution": "Author not recorded by Commons; File:National Unity Party (Israel) August 2022.svg; Public domain (PD-textlogo).",
+      "hosted": false,
+      "inUseEvidence": "Commons explicitly identifies the 2022 election design, received from party officials; filename identifies August 2022. Not assigned to Blue and White in earlier elections. Asset download returned HTTP 429 (Retry-After: 600); no local image is provided.",
+      "confidence": "medium",
+      "letters": "כן",
+      "evidenceId": "commons-130829829",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/75/National_Unity_Party_%28Israel%29_August_2022.svg",
+      "status": "download-unavailable",
+      "suggestedFile": "logos/national-unity-2022.svg"
+    },
+    {
+      "file": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Parti_sioniste_religieux_logo_2022.png",
+      "licence": "Public domain (PD-simple)",
+      "attribution": "Religious Zionist Party; File:Parti sioniste religieux logo 2022.png; Public domain (PD-simple). Resized to at most 256 px; converted to PNG where necessary.",
+      "hosted": false,
+      "inUseEvidence": "Commons dates the party emblem to 16 July 2022 and cites a party PDF under its December 2021 URL. Constituent emblem only; not the combined list with Otzma Yehudit. Asset download returned HTTP 429 (Retry-After: 600); no local image is provided.",
+      "confidence": "medium",
+      "party": "tkuma",
+      "evidenceId": "commons-132175789",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/34/Parti_sioniste_religieux_logo_2022.png",
+      "status": "download-unavailable",
+      "suggestedFile": "logos/religious-zionism-2022.png"
+    },
+    {
+      "file": null,
+      "sourceUrl": "https://www.ynet.co.il/news/article/syrrbq9jj",
+      "licence": "No free image licence verified; rights clearance required",
+      "attribution": "www.ynet.co.il; underlying logo designer/rights holder not verified",
+      "hosted": false,
+      "inUseEvidence": "Secondary 2022 campaign review illustrates Likud branding; no image licence verified.",
+      "confidence": "medium",
+      "status": "unresolved",
+      "evidenceId": "ynet-2022-typography",
+      "letters": "מחל"
+    },
+    {
+      "file": null,
+      "sourceUrl": "https://www.ynet.co.il/news/article/syrrbq9jj",
+      "licence": "No free image licence verified; rights clearance required",
+      "attribution": "www.ynet.co.il; underlying logo designer/rights holder not verified",
+      "hosted": false,
+      "inUseEvidence": "Secondary 2022 campaign review illustrates Shas branding; no image licence verified.",
+      "confidence": "medium",
+      "status": "unresolved",
+      "evidenceId": "ynet-2022-typography",
+      "letters": "שס"
+    },
+    {
+      "file": null,
+      "sourceUrl": "https://www.ynet.co.il/news/article/syrrbq9jj",
+      "licence": "No free image licence verified; rights clearance required",
+      "attribution": "www.ynet.co.il; underlying logo designer/rights holder not verified",
+      "hosted": false,
+      "inUseEvidence": "Secondary 2022 campaign review illustrates UTJ branding; no image licence verified.",
+      "confidence": "medium",
+      "status": "unresolved",
+      "evidenceId": "ynet-2022-typography",
+      "letters": "ג"
+    },
+    {
+      "file": null,
+      "sourceUrl": "https://www.ynet.co.il/news/article/syrrbq9jj",
+      "licence": "No free image licence verified; rights clearance required",
+      "attribution": "www.ynet.co.il; underlying logo designer/rights holder not verified",
+      "hosted": false,
+      "inUseEvidence": "Secondary 2022 campaign review illustrates Yesh Atid branding; no image licence verified.",
+      "confidence": "medium",
+      "status": "unresolved",
+      "evidenceId": "ynet-2022-typography",
+      "letters": "פה"
+    },
+    {
+      "file": null,
+      "sourceUrl": "https://www.ynet.co.il/news/article/syrrbq9jj",
+      "licence": "No free image licence verified; rights clearance required",
+      "attribution": "www.ynet.co.il; underlying logo designer/rights holder not verified",
+      "hosted": false,
+      "inUseEvidence": "Secondary 2022 campaign review illustrates Labor branding; no image licence verified.",
+      "confidence": "medium",
+      "status": "unresolved",
+      "evidenceId": "ynet-2022-typography",
+      "letters": "אמת"
+    },
+    {
+      "file": null,
+      "sourceUrl": "https://www.ynet.co.il/news/article/syrrbq9jj",
+      "licence": "No free image licence verified; rights clearance required",
+      "attribution": "www.ynet.co.il; underlying logo designer/rights holder not verified",
+      "hosted": false,
+      "inUseEvidence": "Secondary 2022 campaign review illustrates Meretz branding; no image licence verified.",
+      "confidence": "medium",
+      "status": "unresolved",
+      "evidenceId": "ynet-2022-typography",
+      "letters": "מרצ"
+    }
+  ]
+}

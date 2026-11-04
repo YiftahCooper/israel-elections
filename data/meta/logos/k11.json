@@ -1,0 +1,35 @@
+{
+  "electionId": "k11",
+  "logos": [
+    {
+      "file": "logos/tehiya-tzomet-1984.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:TehiyaTzomet.png",
+      "licence": "Public domain (PD-textlogo)",
+      "attribution": "הספרייה הלאומית; File:TehiyaTzomet.png; Public domain (PD-textlogo). Resized to at most 256 px; converted to PNG where necessary.",
+      "hosted": true,
+      "inUseEvidence": "Commons explicitly identifies posters/flyers from the 1984 election and cites NLI campaign item 700117168.",
+      "confidence": "medium",
+      "letters": "ת",
+      "sha256": "b4b5b03eb9c3c78724addaae076d1c154aa196f1513525cbaa19f12c01905fac",
+      "evidenceId": "commons-83311131",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fb/TehiyaTzomet.png",
+      "status": "verified",
+      "originalSha256": "a13a5727ed32dfe72f0cbb32966fe0c61cfe532ca089dd85d0af5b37c7531d4c"
+    },
+    {
+      "file": "logos/yahad-1984.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Yahad-84.png",
+      "licence": "CC BY-SA 4.0",
+      "attribution": "הספרייה הלאומית; File:Yahad-84.png; CC BY-SA 4.0. Resized to at most 256 px; converted to PNG where necessary.",
+      "hosted": true,
+      "inUseEvidence": "Commons identifies Ezer Weizman’s Yahad design for the 1984 election and cites NLI item NNL03_EDUSP4616.",
+      "confidence": "medium",
+      "letters": "ט",
+      "sha256": "b3ec63ac2231e7c77eb894b9937475f15f9d29c99ff40c6b8c96da494e1abb89",
+      "evidenceId": "commons-82398313",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/75/Yahad-84.png",
+      "status": "verified",
+      "originalSha256": "22d3290bd812d41923d8d25c9c2dfcea2b91275388ac946c5a7ac541ba32c3ab"
+    }
+  ]
+}

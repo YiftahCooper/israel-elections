@@ -1,0 +1,59 @@
+{
+  "electionId": "k19",
+  "logos": [
+    {
+      "file": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hatnuah_logo.svg",
+      "licence": "Public domain (PD-textlogo)",
+      "attribution": "יוצר מקורי לא ידוע. יצירה עצמית על פי תמונה; File:Hatnuah logo.svg; Public domain (PD-textlogo).",
+      "hosted": false,
+      "inUseEvidence": "Commons records the original design upload on 27 November 2012, during the campaign before the January 2013 election, based on an official image. Asset download returned HTTP 429 (Retry-After: 600); no local image is provided.",
+      "confidence": "medium",
+      "letters": "צפ",
+      "evidenceId": "commons-39065631",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/8/83/Hatnuah_logo.svg",
+      "status": "download-unavailable",
+      "suggestedFile": "logos/hatnuah-2013.svg"
+    },
+    {
+      "file": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Meretz_Logo.svg",
+      "licence": "Public domain (PD-logo)",
+      "attribution": "Meretz; File:Meretz Logo.svg; Public domain (PD-logo).",
+      "hosted": false,
+      "inUseEvidence": "Commons dates the party-website design to December 2012, immediately before the January 2013 election. Later use is not inferred. Asset download returned HTTP 429 (Retry-After: 600); no local image is provided.",
+      "confidence": "medium",
+      "letters": "מרצ",
+      "evidenceId": "commons-98922399",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/67/Meretz_Logo.svg",
+      "status": "download-unavailable",
+      "suggestedFile": "logos/meretz-2013.svg"
+    },
+    {
+      "file": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Logo_Kadima.svg",
+      "licence": "Public domain (PD-textlogo)",
+      "attribution": "The original uploader was Oren neu dag at Hebrew Wikipedia..Later version(s) were uploaded by רונאלדיניו המלך at Hebrew Wikipedia; File:Logo Kadima.svg; Public domain (PD-textlogo).",
+      "hosted": false,
+      "inUseEvidence": "Commons original-upload log records the 25 October 2012 revision as traced accurately from a PDF on the party website, preceding the January 2013 election. Asset download returned HTTP 429 (Retry-After: 600); no local image is provided.",
+      "confidence": "medium",
+      "letters": "כן",
+      "evidenceId": "commons-36039828",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Logo_Kadima.svg",
+      "status": "download-unavailable",
+      "suggestedFile": "logos/kadima-2013.svg"
+    },
+    {
+      "letters": "מחל",
+      "file": null,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Logo_Likud_Yisrael_Beitenu.png",
+      "licence": "Unresolved: Commons claims CC BY-SA 4.0 but the credited source says fair use",
+      "attribution": "Author unknown; no permission asserted",
+      "hosted": false,
+      "inUseEvidence": "Commons identifies the combined-list logo but gives a 2023 reproduction date. The listed Hebrew-source credit says fair use whereas Commons claims CC BY-SA. Date and rights remain unresolved; withheld.",
+      "confidence": "medium",
+      "status": "unresolved",
+      "evidenceId": "commons-138448720"
+    }
+  ]
+}

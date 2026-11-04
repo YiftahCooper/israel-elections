@@ -1,0 +1,20 @@
+{
+  "electionId": "k13",
+  "logos": [
+    {
+      "file": "logos/meretz-1992.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Meretz_(1992).png",
+      "licence": "CC BY-SA 4.0",
+      "attribution": "הספרייה הלאומית; File:Meretz (1992).png; CC BY-SA 4.0. Resized to at most 256 px; converted to PNG where necessary.",
+      "hosted": true,
+      "inUseEvidence": "Commons explicitly identifies the original 1992 Ratz–Shinui–Mapam alliance logo, citing NLI IE11705800.",
+      "confidence": "medium",
+      "letters": "מרצ",
+      "sha256": "0c4771f5ce162fd7c95b15ea0f55d96ddbd9ff2a8ffe4b69fe1ad0c6cc0b617a",
+      "evidenceId": "commons-90743713",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/30/Meretz_%281992%29.png",
+      "status": "verified",
+      "originalSha256": "22a70bd064cc9205f25de28d34bdbbb0e939d3b4d97703d270951cb0416d7a8b"
+    }
+  ]
+}

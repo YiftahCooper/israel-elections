@@ -1,0 +1,65 @@
+{
+  "electionId": "k9",
+  "logos": [
+    {
+      "file": "logos/alignment-1977.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alignment_(Israel)_logo,_1977_variant.svg",
+      "licence": "Public domain (PD-textlogo)",
+      "attribution": "MisterElection2001; File:Alignment (Israel) logo, 1977 variant.svg; Public domain (PD-textlogo).",
+      "hosted": true,
+      "inUseEvidence": "Commons identifies the 1977 variant; vector traced from the historical raster. Corroborating Commons File:Alignment (1977).png explicitly identifies 1977 campaign material and cites NLI IE5020789.",
+      "confidence": "medium",
+      "letters": "אמת",
+      "sha256": "2df7a5009e5851c156e6842619b4db72787264f3fc989b807e13fc259519e981",
+      "evidenceId": "commons-119083039",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Alignment_%28Israel%29_logo%2C_1977_variant.svg",
+      "status": "verified",
+      "originalSha256": "2df7a5009e5851c156e6842619b4db72787264f3fc989b807e13fc259519e981"
+    },
+    {
+      "file": "logos/dash-1977.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dash1977.png",
+      "licence": "Public domain (PD-textlogo)",
+      "attribution": "AP Archives; File:Dash1977.png; Public domain (PD-textlogo). Resized to at most 256 px; converted to PNG where necessary.",
+      "hosted": true,
+      "inUseEvidence": "Commons explicitly identifies the logo as that of Dash in the 1977 election, citing AP Archives video material. Reproduction created in 2022.",
+      "confidence": "medium",
+      "letters": "יש",
+      "sha256": "dd0d9881d54ca3419a3c160edf1b6f15c11983b84ab0ea9c3b3803b5448f3be2",
+      "evidenceId": "commons-116591510",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Dash1977.png",
+      "status": "verified",
+      "originalSha256": "6fc2c9cb374d74aca734054cc740c37cbb283f5a075534b924231da86c560c06"
+    },
+    {
+      "file": "logos/shlomtzion-1977.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shlomtzion.png",
+      "licence": "Public domain (PD-textlogo)",
+      "attribution": "נוסטלגיה - nostal.co.il; File:Shlomtzion.png; Public domain (PD-textlogo). Resized to at most 256 px; converted to PNG where necessary.",
+      "hosted": true,
+      "inUseEvidence": "Commons identifies the design as used on party paraphernalia for the 1977 election, citing a Nostal collection item.",
+      "confidence": "medium",
+      "letters": "כנ",
+      "sha256": "1da9ef1fa8104b70b8a422df1ae0d65e851b5b248ed8e5dfb44e800a3e845a09",
+      "evidenceId": "commons-90546006",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Shlomtzion.png",
+      "status": "verified",
+      "originalSha256": "7becafa85a7a236ca245a9141687ca796935e02735468db7efeca9c925313272"
+    },
+    {
+      "file": "logos/flatto-sharon-1977.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flatto_Sharon_Logo.png",
+      "licence": "CC BY-SA 4.0",
+      "attribution": "הספרייה הלאומית; File:Flatto Sharon Logo.png; CC BY-SA 4.0. Resized to at most 256 px; converted to PNG where necessary.",
+      "hosted": true,
+      "inUseEvidence": "Commons explicitly describes use in the 1977 and 1981 elections and cites a 1977 NLI campaign image.",
+      "confidence": "medium",
+      "letters": "פש",
+      "sha256": "eb088ff31495759cbb708be24ee17e8f75b1967610b4a2dd00f2a6626feb0f93",
+      "evidenceId": "commons-98924546",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Flatto_Sharon_Logo.png",
+      "status": "verified",
+      "originalSha256": "dff2ac38ae440ba3082ef12ac937c8905e145a2f1df4fafcb4d6d6b1d8a64b1f"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "electionId": "k14",
+  "logos": [
+    {
+      "file": "logos/likud-gesher-tzomet-1996.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:LikudGesherTzomet.png",
+      "licence": "Public domain (PD-textlogo)",
+      "attribution": "own work based on logo on the document; File:LikudGesherTzomet.png; Public domain (PD-textlogo). Resized to at most 256 px; converted to PNG where necessary.",
+      "hosted": true,
+      "inUseEvidence": "Commons explicitly identifies campaign material from the 1996 election, citing NLI item 700074998.",
+      "confidence": "medium",
+      "letters": "מחל",
+      "sha256": "e358057ecdc733cee21761c2e92f7a0503ee8da9126328c2c96fc47403cbed7d",
+      "evidenceId": "commons-100332153",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7e/LikudGesherTzomet.png",
+      "status": "verified",
+      "originalSha256": "5e0cb08d075f09cd97571d0461b79a5a7832f5bf0c327a22e2d6374283b6d58b"
+    },
+    {
+      "file": "logos/third-way-1996.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Third_Way.png",
+      "licence": "Public domain (PD-textlogo)",
+      "attribution": "הספרייה הלאומית; File:Third Way.png; Public domain (PD-textlogo). Resized to at most 256 px; converted to PNG where necessary.",
+      "hosted": true,
+      "inUseEvidence": "Commons explicitly identifies flyers/ads from the 1996 election, citing NLI item 700129420.",
+      "confidence": "medium",
+      "letters": "הד",
+      "sha256": "47b5c54cfe7dfdf5c0d5c27684ea383640f8d2c1d7bebb6c32363b95e9a52f3e",
+      "evidenceId": "commons-86137067",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Third_Way.png",
+      "status": "verified",
+      "originalSha256": "a5adaf8bc021c37e8f95f225f9b7f0b429e0eee494321f8db9769220ad2f397a"
+    }
+  ]
+}
