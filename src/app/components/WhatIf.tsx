@@ -96,7 +96,7 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
       }
       const lines = [...groups.values()].filter((g) => g.before !== g.after).sort((a, b) => (b.after - b.before) - (a.after - a.before)).map((g) => `${g.label} ${signed(g.after - g.before)}`);
       const moved = actions.find((a) => a.type === 'transfer' || a.type === 'setVotes');
-      const nm = (id: string) => { const x = base.lists.find((l) => l.id === id); return x ? listLabel(x, lang) : id; };
+      const nm = (id: string) => { const x = base.lists.find((l) => l.id === id); return x ? listLabel(x, lang) : L('Removed list', 'רשימה שהוסרה'); };
       const votes = moved?.type === 'transfer' ? L(`${fmtInt(moved.votes)} voters switch from ${nm(moved.from)}`, `${fmtInt(moved.votes)} מצביעים עוברים מ${nm(moved.from)}`)
         : moved?.type === 'setVotes' ? L(`${fmtInt(moved.votes - base.lists.find((x) => x.id === moved.listId)!.votes)} additional voters`, `${fmtInt(moved.votes - base.lists.find((x) => x.id === moved.listId)!.votes)} מצביעים נוספים`) : '';
       const changes = [...groups.values()].filter((g) => g.before !== g.after).sort((a, b) => (b.after - b.before) - (a.after - a.before));

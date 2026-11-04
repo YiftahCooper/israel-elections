@@ -596,10 +596,33 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .scenario-status .chip { display: flex; gap: 6px; align-items: center; max-width: 240px; white-space: normal; text-align: start; }
 .scenario-changes { max-height: 60vh; overflow: auto; width: min(420px, 90vw); color: var(--ink); overflow-wrap: anywhere; }
 .edit-marker { position: relative; display: inline-block; border: 1px solid var(--ink); border-radius: 3px; padding-inline: 2px; margin-inline-start: 3px; color: var(--ink); font-size: 12px; line-height: 1.2; vertical-align: middle; }
-.edit-tooltip { display: none; position: absolute; z-index: 40; inset-block-start: 100%; inset-inline-start: 0; padding: 6px; background: var(--surface); color: var(--ink); border: 1px solid var(--rule-2); width: max-content; max-width: min(320px, 80vw); white-space: normal; overflow-wrap: anywhere; }
-.edit-marker:hover .edit-tooltip, .edit-marker:focus .edit-tooltip { display: block; }
+.edit-tooltip { position: fixed; z-index: 100; padding: 6px; background: var(--surface); color: var(--ink); border: 1px solid var(--rule-2); inline-size: max-content; max-inline-size: min(320px, calc(100vw - 16px)); max-block-size: calc(100vh - 16px); overflow: auto; white-space: normal; overflow-wrap: anywhere; font-size: 12px; line-height: 1.45; }
 .part-edits { display: inline-flex; flex-wrap: wrap; gap: 2px; }
 .start-from { margin-block: 8px; flex-wrap: wrap; }
 .start-from select { max-width: 100%; min-width: 0; }
 .start-from label { flex-wrap: wrap; min-width: 0; }
 @media print { .edit-tooltip { display: inline; position: static; border: 0; } }
+
+.change-swatch { display: inline-block; inline-size: 16px; block-size: 16px; border: 1px solid var(--rule-strong); border-radius: 3px; }
+.custom-feature { display: flex; align-items: center; justify-content: space-between; gap: 12px; max-inline-size: 620px; padding-block: 5px; border-block-end: 1px solid var(--rule); }
+.feature-disclosure { margin-block: 4px; }
+.band-custom { white-space: nowrap; }
+@media (min-width: 1200px) { .band-custom { max-inline-size: 160px; overflow: hidden; text-overflow: ellipsis; } }
+.band .band-custom { color: var(--shell-ink); background: transparent; border-color: color-mix(in srgb, var(--shell-ink) 55%, transparent); }
+.feature-disclosure { min-inline-size: 0; max-inline-size: 100%; }
+.feature-disclosure > button { white-space: normal; text-align: start; max-inline-size: 100%; block-size: auto; }
+@media (min-width: 1200px) {
+  .band { flex-wrap: nowrap; column-gap: 8px; }
+  .band .spacer { min-inline-size: 0; }
+  .band-custom { max-inline-size: 120px; flex-shrink: 0; }
+  .scenario-status { min-inline-size: 0; }
+  .scenario-status .chip { max-inline-size: 155px; white-space: nowrap; }
+  .scenario-chip-name { min-inline-size: 0; overflow: hidden; text-overflow: ellipsis; }
+  .scenario-status .swatch { flex-shrink: 0; }
+}
+@media (max-width: 600px) {
+  .band .tool { padding-inline: 6px; }
+  .band .spacer { display: none; }
+}
+
+.removed-agreements { list-style: none; padding-inline-start: 0; color: var(--ink-secondary); font-size: 12.5px; }

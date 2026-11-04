@@ -1,3 +1,4 @@
+import { useDisclosure } from './Feature.tsx';
 import { EditMarker } from './EditMarker.tsx';
 // The election's key figures. Every figure is its own control: it opens in place, across its row, to show
 // what it summarises (the lists near the threshold, the lists whose votes won no seat, the turnout editor…).
@@ -9,7 +10,7 @@ import { votesCast, type Scenario } from '../../model/scenario.ts';
 import { listLabel, methodOf } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtFrac, fmtInt, fmtPct, fmtRat } from '../format.ts';
-import { dispatch, setState, useDigits, useLevel } from '../store.ts';
+import { dispatch, setState, useDigits } from '../store.ts';
 import { DecimalInput, Info } from './ui.tsx';
 
 type FigId = 'threshold' | 'quota' | 'seatless' | 'turnout' | 'valid' | 'invalid' | 'qualifying' | 'stages';
@@ -32,9 +33,11 @@ function Fig({ id, open, onToggle, k, term, v, d, children }: { id: FigId; open:
 
 export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: ElectionDataset }) {
   const L = useL();
+  const { shown: expert, control: expertControl } = useDisclosure('expertFigures');
+  const { shown: standard, control: standardControl } = useDisclosure('voteFigures');
   const lang = useLang();
   const digits = useDigits();
-  const { standard, expert } = useLevel();
+
   const [open, setOpen] = useState<FigId | null>(null);
   const toggle = (id: FigId) => setOpen((o) => (o === id ? null : id));
   const cast = votesCast(s);
@@ -51,7 +54,7 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
   const signed = (n: number) => <bdi dir="ltr">{n >= 0 ? '+' : '−'}{fmtInt(Math.abs(n))}</bdi>;
 
   return (
-    <div className="figures">
+    <div className="figures">{standardControl}{expertControl}
       {noThreshold
         ? <Fig id="threshold" open={open} onToggle={toggle} k={L('Threshold', 'אחוז החסימה')} v={L('None', 'אין')} d={L('no percentage threshold in this election', 'לא היה אחוז חסימה בבחירות אלה')} />
         : <Fig id="threshold" open={open} onToggle={toggle} k={L('Threshold', 'אחוז החסימה')} term="threshold" v={fmtInt(r.thresholdVotes)} d={`${thrPct}% ${L('of valid votes', 'מהכשרים')}`}>

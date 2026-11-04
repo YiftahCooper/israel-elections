@@ -1,3 +1,4 @@
+import { useDisclosure } from './Feature.tsx';
 import { BlocMajorities } from './Majority.tsx';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { AllocationResult } from '../../engine/types.ts';
@@ -6,7 +7,7 @@ import { listLabel, methodOf, seatBlocsOf, seatedOrder, shownName } from '../der
 import { useL, useLang } from '../i18n.ts';
 import { arcLayout, bandCuts, placeLabels } from '../layout.ts';
 import { download, isolate } from '../format.ts';
-import { setState, useLevel, useStore } from '../store.ts';
+import { setState, useStore } from '../store.ts';
 import { Seg } from './ui.tsx';
 
 export interface SeatInfo { listId: string; idx: number; color: string; remainder: boolean; bloc: string | null; holder: string }
@@ -60,8 +61,10 @@ function useNarrow(query = '(max-width: 600px)') {
 
 export function Hemicycle({ s, r, compact: compactProp = false, title }: { s: Scenario; r: AllocationResult; compact?: boolean; title?: string }) {
   const L = useL();
+  const { shown: standard, control: standardControl } = useDisclosure('chamberLegend');
+  const { shown: expert, control: expertControl } = useDisclosure('chamberOptions');
   const lang = useLang();
-  const { standard, expert } = useLevel();
+
   // layout and colouring are Expert settings: below Expert the chamber always uses the defaults
   const layout = useStore((st) => (expert ? st.layout : 'hemicycle'));
   const colorBy = useStore((st) => (expert ? st.colorBy : 'list'));
@@ -213,7 +216,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title }: { s: Sc
   }
 
   return (
-    <div className="chamber">
+    <div className="chamber">{expertControl}{standardControl}
       {/* on the board the bloc bar directly below already carries this line; Compare's chambers stand alone */}
       {compactProp && <BlocMajorities s={s} r={r} />}
       {expert && !compactProp && (

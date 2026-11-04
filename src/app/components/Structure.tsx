@@ -1,3 +1,5 @@
+import { EditMarker } from './EditMarker.tsx';
+import { useDisclosure } from './Feature.tsx';
 import { StartFrom } from './StartFrom.tsx';
 import { PartEdits } from './PartEdits.tsx';
 import { X } from 'lucide-react';
@@ -9,7 +11,7 @@ import { toEngineInput, type Action, type Scenario } from '../../model/scenario.
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, signed } from '../format.ts';
-import { dispatch, dispatchMany, setState, useLevel } from '../store.ts';
+import { dispatch, dispatchMany, setState } from '../store.ts';
 import { Info, NumberInput, Seg } from './ui.tsx';
 
 const newId = () => `sim-${Date.now().toString(36)}${Math.floor(Math.random() * 1e4).toString(36)}`;
@@ -18,7 +20,7 @@ export function Structure({ s, r, base }: { s: Scenario; r: AllocationResult; ba
   const L = useL();
   const [task, setTask] = useState<'merge' | 'split' | 'add' | 'agreements'>('merge');
   return (
-    <div className="structure">
+    <div className="structure">{task !== 'agreements' && <StartFrom s={s} part="structure" />}
       <Seg label={L('Task', 'משימה')} value={task} onChange={setTask} options={[
         { v: 'merge', label: L('Merge lists', 'איחוד רשימות') }, { v: 'split', label: L('Split a list', 'פיצול רשימה') },
         { v: 'add', label: L('Add a list', 'הוספת רשימה') }, { v: 'agreements', label: L('Surplus agreements', 'הסכמי עודפים') }]} />
@@ -96,7 +98,7 @@ function Agreements({ s, r, base }: { s: Scenario; r: AllocationResult; base: Sc
   const L = useL();
   const lang = useLang();
   const [a, setA] = useState(''); const [b, setB] = useState('');
-  const name = (id: string) => { const l = s.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : id; };
+  const name = (id: string) => { const l = s.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : L('Removed list', 'רשימה שהוסרה'); };
   const effects = useMemo(() => Object.fromEntries(s.agreements.map((ag) => {
     const alt = allocate(toEngineInput({ ...s, agreements: s.agreements.map((x) => (x.id === ag.id ? { ...x, enabled: !x.enabled } : x)) }));
     const d = r.lists.map((x) => ({ id: x.id, d: x.seats - (alt.lists.find((y) => y.id === x.id)?.seats ?? 0) })).filter((x) => x.d !== 0);
@@ -107,9 +109,10 @@ function Agreements({ s, r, base }: { s: Scenario; r: AllocationResult; base: Sc
   return (
     <div>
       <div className="row" style={{ justifyContent: 'space-between' }}>
-        <StartFrom s={s} part="agreements" /><PartEdits s={s} prefix={['agreements']} /><h3>{L('Surplus-vote agreements', 'הסכמי עודפים')} <Info term="surplus" /></h3>
+        <StartFrom s={s} part="agreements" /><h3>{L('Surplus-vote agreements', 'הסכמי עודפים')} <Info term="surplus" /></h3>
         {JSON.stringify(s.agreements) !== JSON.stringify(base.agreements) && <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'agreements' })}>{L('Restore historical agreements', 'שחזור ההסכמים ההיסטוריים')}</button>}
       </div>
+      <PartEdits s={s} prefix={['agreements']} />
       {s.agreements.length === 0 && <p className="muted small">{L('None.', 'אין.')}</p>}
       <ul className="cands">
         {s.agreements.map((ag) => {
@@ -119,7 +122,7 @@ function Agreements({ s, r, base }: { s: Scenario; r: AllocationResult; base: Sc
             <li key={ag.id} className="cand" style={{ gridTemplateColumns: 'minmax(0,1fr) auto' }}>
               <span>
                 {ag.members.length === 2 ? <>
-                  <b>{name(ag.members[0])}</b>{' ⇄ '}
+                  <EditMarker s={s} path={['agreements', ag.id]} /><b>{name(ag.members[0])}</b>{' ⇄ '}
                   <select value={ag.members[1]} aria-label={L(`Partner of ${name(ag.members[0])}`, `השותפה של ${name(ag.members[0])}`)} style={{ maxWidth: 200 }}
                     onChange={(e) => dispatch({ type: 'setAgreement', agreement: { ...ag, members: [ag.members[0], e.target.value] } })}>
                     {s.lists.filter((x) => x.id === ag.members[1] || (x.id !== ag.members[0] && !x.withdrawn && (exp || !s.agreements.some((o) => o.id !== ag.id && o.enabled && o.members.includes(x.id)))))
@@ -167,7 +170,7 @@ function Agreements({ s, r, base }: { s: Scenario; r: AllocationResult; base: Sc
 function Merge({ s, r }: { s: Scenario; r: AllocationResult }) {
   const L = useL();
   const lang = useLang();
-  const { standard } = useLevel();
+  const { shown: standard, control } = useDisclosure('splitIdentity');
   const [ids, setIds] = useState<string[]>([]);
   const [nameHe, setName] = useState('');
   const [letters, setLetters] = useState('');
@@ -194,6 +197,7 @@ function Merge({ s, r }: { s: Scenario; r: AllocationResult }) {
           <label className="field">{L(`Voters who stay with the merged list: ${retention}%`, `מצביעים שנשארים עם הרשימה המאוחדת: ${retention}%`)}
             <input type="range" min={50} max={100} value={retention} onChange={(e) => setRetention(Number(e.target.value))} />
             <span className="tiny muted">{L(`${fmtInt(kept)} of ${fmtInt(total)} votes; the other ${fmtInt(total - kept)} stay home.`, `${fmtInt(kept)} מתוך ${fmtInt(total)} קולות; ${fmtInt(total - kept)} האחרים נמנעים.`)}</span></label>
+          {control}
           {standard && <>
             <label className="field">{L('Name', 'שם')}<input type="text" value={nameHe} placeholder={lang === 'he' ? defaultHe : defaultEn} onChange={(e) => setName(e.target.value)} /></label>
             <label className="field">{L('Ballot letters', 'אותיות')}<input type="text" value={letters} placeholder={sel[0]?.letters} onChange={(e) => setLetters(e.target.value)} /></label>
@@ -283,7 +287,7 @@ function Split({ s, r }: { s: Scenario; r: AllocationResult }) {
 
 function AddList({ s }: { s: Scenario }) {
   const L = useL();
-  const [nameHe, setName] = useState(''); const [letters, setLetters] = useState(''); const [votes, setVotes] = useState(100_000);
+  const [nameHe, setName] = useState(''); const [letters, setLetters] = useState(''); const [votes, setVotes] = useState(0);
   void s;
   return (
     <div>

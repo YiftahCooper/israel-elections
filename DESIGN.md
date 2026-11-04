@@ -423,6 +423,40 @@ and coalitions offer meaningful blank states. Saved parts come from same-electio
 agreements referencing missing lists are refused. Coalition choices now live in the scenario
 log, preserving undo, share and saved-part reuse rather than disappearing on navigation.
 
-Deferred under the owner's bounded-scope instruction: starting-point UI/actions for votes,
-list identity, structure, candidates and turnout/totals; the feature registry, in-place level
-disclosures and Custom preferences/page. The three existing levels retain their defaults.
+### Completed parts and Custom preferences
+
+All nine parts share `StartFrom` and the replayable `startPart` action. Votes have no blank
+choice. Candidates can start with an empty order for the selected list; new lists default
+to zero votes. Identity and candidate starting points are local to the selected list.
+Saved parts require the same election and matching target lists; mismatched withdrawals
+must be restored before copying votes. No invented presets are offered where no source exists.
+Structure restores the source's list topology and agreements; surviving list IDs retain
+independently edited names, votes and candidates, with withdrawal ballots reconciled.
+Turnout/totals copies electorate, invalid ballots and the valid total, apportioned across
+the current lists in their current proportions.
+
+Change values use one bilingual formatter across the scenario chip, glyph tooltips and
+export annotations: formatted numbers, names, named agreements and labelled rule values.
+Colour changes show a bordered swatch with a text alternative. Unknown/removed entities
+receive a translated description, never a machine identifier.
+
+`features.ts` defines the task groups, bilingual labels and preset visibility of tools
+and optional sections. The base preset remains a browser preference; Custom stores only
+visibility overrides beside it. Neither enters scenario logs or share links. The header
+opens the Custom page and identifies Custom's base. Choosing a preset clears overrides.
+Hidden tools leave the strip but remain discoverable on the Custom page; collapsed sections
+and hidden local sections open in place through “More options”. “Keep this visible” persists
+that section without expanding the rest of the interface. Presets preserve the initial
+Simple data density; disclosures make additional controls reachable without a level change.
+
+Truth labels are outside visibility configuration: edit glyphs, scenario chip, exact/sampled
+qualifiers, publication warnings and data qualifications. Candidate source qualifications
+remain beside the candidate display regardless of the editing controls. Registry completeness,
+in-place agreement editing, Custom persistence/reset, blank candidates with undo, and human
+change values have automated coverage.
+
+Agreement markers sit beside the partner names. Removed agreements have individually named
+rows rather than an orphaned cluster of glyphs. Marker labels resolve removed entities from
+the reference, and their portal tooltips clamp to the viewport in both text directions.
+Rule starting points name the era, method, threshold and inferred candidate cap where relevant;
+storage identifiers remain internal in selectors and history.

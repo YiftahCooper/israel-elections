@@ -114,7 +114,7 @@ export interface Scenario {
 export type Action =
   | { type: 'setIdentityColor'; color: string }
   | { type: 'setCoalition'; coalition: { in: string[]; out: string[] } }
-  | { type: 'startPart'; part: Part; source: 'official' | 'saved' | 'blank' | 'preset'; snapshot?: PartSnapshot; name?: string; presetId?: string }
+  | { type: 'startPart'; part: Part; source: 'official' | 'saved' | 'blank' | 'preset'; snapshot?: PartSnapshot; name?: string; presetId?: string; listId?: string }
   | { type: 'setVotes'; listId: string; votes: number }
   | { type: 'transfer'; from: string; to: string; votes: number }
   /** demographic:true allows signed deltas; resulting counts must remain nonnegative. */
@@ -327,11 +327,11 @@ const strings = array(string);
 const blocScheme = shape({ id: string, kind: oneOf('government', 'parliamentary', 'pre-election'), nameHe: string, nameEn: string, date: optional(string),
   blocs: array(shape({ id: string, nameHe: string, nameEn: string, color: string, lists: strings, parties: strings, candidates: strings })) });
 const coalition = shape({ in: uniqueStrings, out: uniqueStrings });
-const partSnapshotCheck = shape({ blocs: optional(array(bloc)), blocSchemeId: optional(nullable(string)), customGroupingName: optional(string), partyBlocs: optional(stringMap(nullable(string))), candidateBlocs: optional(stringMap(nullable(string))), listBlocs: optional(stringMap(nullable(string))), agreements: optional(array(agreement)), rules: optional(rules), mode: optional(oneOf('historical', 'experimental')), coalition: optional(coalition) });
+const partSnapshotCheck = shape({ validVotes: optional(whole), lists: optional(array(list)), registered: optional(whole), invalid: optional(whole), factionSplits: optional(uniqueStrings), blocs: optional(array(bloc)), blocSchemeId: optional(nullable(string)), customGroupingName: optional(string), partyBlocs: optional(stringMap(nullable(string))), candidateBlocs: optional(stringMap(nullable(string))), listBlocs: optional(stringMap(nullable(string))), agreements: optional(array(agreement)), rules: optional(rules), mode: optional(oneOf('historical', 'experimental')), coalition: optional(coalition) });
 const actionFields: Record<Action['type'], Check> = {
   setIdentityColor: shape({ color: oneOf('#65508a', '#486b78', '#77633d', '#80556a', '#526c55') }),
   setCoalition: shape({ coalition }),
-  startPart: shape({ part: oneOf('votes', 'identity', 'structure', 'agreements', 'blocs', 'coalitions', 'candidates', 'rules', 'totals'), source: oneOf('official', 'saved', 'blank', 'preset'), snapshot: optional(partSnapshotCheck), name: optional(string), presetId: optional(string) }),
+  startPart: shape({ part: oneOf('votes', 'identity', 'structure', 'agreements', 'blocs', 'coalitions', 'candidates', 'rules', 'totals'), source: oneOf('official', 'saved', 'blank', 'preset'), snapshot: optional(partSnapshotCheck), name: optional(string), presetId: optional(string), listId: optional(string) }),
   setVotes: shape({ listId: string, votes: whole }),
   transfer: shape({ from: string, to: string, votes: whole }),
   addVoters: (x) => record(x) && (x.demographic === true

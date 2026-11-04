@@ -258,9 +258,20 @@ export function referenceChanges(s: Scenario, reference: Scenario): EditPath[] {
   return paths;
 }
 
-export function editPathLabel(s: Scenario, path: EditPath, lang: Lang): string {
+export function editPathLabel(s: Scenario, path: EditPath, lang: Lang, fallback?: Scenario): string {
   const names: Record<string, [string, string]> = {
     lists: ['Lists', 'רשימות'], votes: ['Votes', 'קולות'], nameHe: ['Full name', 'שם מלא'], shortHe: ['Short Hebrew name', 'שם קצר בעברית'], shortEn: ['English name', 'שם באנגלית'], letters: ['Ballot letters', 'אותיות הרשימה'], color: ['Colour', 'צבע'], bloc: ['Bloc membership', 'שיוך לגוש'], blocs: ['Blocs', 'גושים'], nameEn: ['English name', 'שם באנגלית'], candidates: ['Candidates', 'מועמדים'], agreements: ['Agreements', 'הסכמי עודפים'], rules: ['Rules', 'כללים'], registered: ['Registered voters', 'בעלי זכות בחירה'], invalid: ['Invalid ballots', 'קולות פסולים'], withdrawn: ['Withdrawal', 'פרישה'], customGroupingName: ['Grouping name', 'שם החלוקה'], blocSchemeId: ['Grouping', 'חלוקה'], partyBlocs: ['Party membership', 'שיוך מפלגות'], candidateBlocs: ['Member membership', 'שיוך חברים'], factionSplits: ['Faction splits', 'פיצולי סיעות'], coalition: ['Coalition choices', 'בחירת קואליציה'], mode: ['Rule mode', 'מצב כללים'], seats: ['Seats', 'מנדטים'], quotaRounding: ['Quota rounding', 'עיגול המודד'], remainderMethod: ['Remainder method', 'שיטת חלוקת העודפים'], majorityCap: ['Half-seats cap', 'מגבלת מחצית המושבים'], maxAgreementSize: ['Agreement size', 'גודל הסכם'], agreementRequiresAllQualify: ['Agreement threshold condition', 'תנאי החסימה בהסכם'], quotaSeatOffset: ['Quota divisor offset', 'תוספת למחלק המודד'], remainderRequiresInitialSeat: ['Remainder needs a quota seat', 'עודפים מחייבים מנדט במודד'], agreementRequiresInitialSeat: ['Agreement needs a quota seat', 'הסכם מחייב מנדט במודד'], quotientRounding: ['Quotient rounding', 'עיגול המודדים'], largestRemainderRepeat: ['Repeated remainder seats', 'מנדטי שארית חוזרים'], tiePolicy: ['Tie procedure', 'הכרעה בשוויון'], seatsCappedAtCandidates: ['Candidate seat cap', 'מגבלת מושבים לפי מועמדים'], thresholdPct: ['Threshold', 'אחוז החסימה'], lotteryWinners: ['Lottery', 'הגרלה'], sponsorsHe: ['Sponsors', 'מגישים'], members: ['Members', 'חברות'], enabled: ['Enabled', 'בתוקף'], originIds: ['Origins', 'מקור'], heldVotes: ['Held votes', 'קולות מוחזקים'], parties: ['Parties', 'מפלגות'], in: ['In', 'בפנים'], out: ['Out', 'בחוץ'],
   };
-  return path.map(k => names[k]?.[lang === 'he' ? 1 : 0] ?? s.lists.find(l => l.id === k)?.[lang === 'he' ? 'shortHe' : 'shortEn'] ?? s.blocs.find(b => b.id === k)?.[lang === 'he' ? 'nameHe' : 'nameEn'] ?? k).join(' · ');
+  const listName = (id: string) => {
+    const l = s.lists.find(l => l.id === id) ?? fallback?.lists.find(l => l.id === id);
+    return l ? (lang === 'he' ? l.shortHe : l.shortEn ?? l.shortHe) : undefined;
+  };
+  return path.map(k => {
+    if (names[k]) return names[k][lang === 'he' ? 1 : 0];
+    const agreement = s.agreements.find(a => a.id === k) ?? fallback?.agreements.find(a => a.id === k);
+    if (agreement) return agreement.members.map(id => listName(id) ?? (lang === 'he' ? 'רשימה שהוסרה' : 'Removed list')).join(' + ');
+    const entity = [...s.blocs, ...(s.blocSchemes ?? []), ...s.lists.flatMap(l => [...l.candidates, ...(l.parties ?? [])]),
+      ...(fallback ? [...fallback.blocs, ...(fallback.blocSchemes ?? []), ...fallback.lists.flatMap(l => [...l.candidates, ...(l.parties ?? [])])] : [])].find(x => x.id === k);
+    return listName(k) ?? (entity ? (lang === 'he' ? entity.nameHe : ('nameEn' in entity ? entity.nameEn : null) ?? entity.nameHe) : (lang === 'he' ? 'פרט' : 'Detail'));
+  }).join(' · ');
 }

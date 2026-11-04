@@ -57,6 +57,7 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
     await start(page, lang, theme);
     await page.getByRole('tab', { name: lang === 'he' ? 'קואליציות' : 'Coalitions', exact: true }).click();
     await page.locator('.coal-choice').first().getByRole('button', { name: lang === 'he' ? 'בפנים' : 'In', exact: true }).click();
+    if (!phone) expect((await page.locator('.band').boundingBox())!.height).toBeLessThanOrEqual(60);
     await page.screenshot({ path: `.backup-scratch/scenario-reference/${lang}-${theme}-${phone ? 'phone' : 'desktop'}.png` });
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     await page.getByRole('tab', { name: lang === 'he' ? 'תמונת מצב' : 'Overview', exact: true }).click();
