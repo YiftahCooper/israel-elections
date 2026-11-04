@@ -1,3 +1,4 @@
+import { BoardChoices } from './components/BoardChoices.tsx';
 import { CustomPage, Feature } from './components/Feature.tsx';
 import { TOOL_FEATURES, RANK, type Preset } from './features.ts';
 import { electionContext } from '../data/electionContext.ts';
@@ -221,7 +222,7 @@ function Shell() {
         {customPage ? <CustomPage /> : tool === 'board' ? (
           <Feature id="board"><div className={`board ${selected || blocPanel ? 'with-panel' : ''}`}>
             <ErrorBoundary label={L('Lists', 'רשימות')} resetKey={s}><ListBars s={s} r={r} base={base} baseR={baseR} /></ErrorBoundary>
-            <div className="center">
+            <div className="center"><BoardChoices s={s} />
               <section className="panel chamber-panel" aria-label={L('The Knesset', 'הכנסת')}>
                 <div className="body"><ErrorBoundary label={L('Chamber', 'המליאה')} resetKey={s}><Hemicycle s={s} r={r} /></ErrorBoundary></div>
               </section>

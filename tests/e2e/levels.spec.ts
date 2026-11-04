@@ -1,3 +1,4 @@
+import { choose } from './choices.ts';
 // The three interface levels: Simple (minimal), Standard (common, consequential edits) and Expert
 // (every tool). A level changes what is shown, never what is computed.
 import { readFileSync } from 'node:fs';
@@ -142,7 +143,7 @@ test('percentage precision chosen in Expert does not apply below Expert', async 
 test('a failed election load keeps the open election and offers a retry', async ({ page }) => {
   await page.route('**/data/k25.json', (route) => route.fulfill({ status: 404, body: 'missing' }));
   await start(page);
-  await page.getByRole('combobox', { name: 'Election' }).selectOption('k25');
+  await choose(page.getByRole('button', { name: 'Election' }), 'k25');
   await expect(page.getByRole('alert').filter({ hasText: /Could not load the 2022 · 25th Knesset election data/ })).toBeVisible();
   await expect(page.getByRole('alert').getByRole('button', { name: 'Try again' })).toBeVisible();
   await expect(listRow(page, 'Likud').first()).toContainText('27');
@@ -153,7 +154,9 @@ test('the picker labels the open election correctly even if the index omits it',
   await page.route('**/data/elections.json', (route) => route.fulfill({ json: rows.filter((r) => r.id !== 'k26') }));
   await start(page);
   // wait until the (routed) index has replaced the built-in fallback, which does list 2026
-  await expect(page.getByRole('combobox', { name: 'Election' }).locator('option[value="k16"]')).toHaveCount(1);
-  await expect(page.getByRole('combobox', { name: 'Election' })).toHaveValue('k26');
-  await expect(page.getByRole('combobox', { name: 'Election' }).locator('option:checked')).toHaveText('2026 · 26th Knesset');
+  await page.getByRole('button', { name: 'Election', exact: true }).click();
+  await expect(page.getByRole('dialog').locator('[data-choice-value="k16"]')).toHaveCount(1);
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('button', { name: 'Election' })).toHaveAttribute('data-value', 'k26');
+  await expect(page.getByRole('button', { name: 'Election' })).toContainText('2026 · 26th Knesset');
 });

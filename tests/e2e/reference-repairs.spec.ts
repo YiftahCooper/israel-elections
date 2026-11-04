@@ -1,8 +1,9 @@
+import { choose } from './choices.ts';
 import { expect, test, type Page } from '@playwright/test';
 async function start(page: Page, lang = 'en', theme = 'light') {
   await page.addInitScript(v => localStorage.setItem('israel-elections:v1', JSON.stringify(v)), { lang, theme, level: 'standard', hintDismissed: true });
   await page.goto('/');
-  await page.getByRole('combobox', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }).selectOption('k25');
+  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k25');
   await expect(page.locator('.lb-row').first().locator('.lb-seats b')).toHaveText('32');
 }
 async function split(page: Page, he = false) {

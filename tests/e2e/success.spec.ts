@@ -1,3 +1,4 @@
+import { choose } from './choices.ts';
 // The "definition of success" sequence from the product specification (§16), run in a real browser
 // against the 2022 election. Each step asserts the engine-backed result, not just that a control exists.
 import { expect, test, type Page } from '@playwright/test';
@@ -14,7 +15,7 @@ test('2022: merge, add voters, drop agreement, push Balad over, find Ra’am’s
   await page.goto('/');
   await page.getByRole('button', { name: 'EN', exact: true }).click();
   await page.getByRole('button', { name: 'Expert', exact: true }).click();
-  await page.getByRole('combobox', { name: 'Election' }).selectOption('k25');
+  await choose(page.getByRole('button', { name: 'Election' }), 'k25');
   await expect(listButton(page, 'Yesh Atid')).toBeVisible();
   expect(await seatsOf(page, 'Likud')).toBe(32);
 

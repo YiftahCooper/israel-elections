@@ -16,6 +16,8 @@ const migrateLevel = (v: unknown): Level => (v === 'advanced' ? 'expert' : v ===
 
 export interface SavedScenario { id: string; name: string; description?: string; electionId: ElectionId; savedAt: string; baseBuiltAt: string; log: Action[] }
 
+export type ScenarioSession = { scenario: Scenario; past: Scenario[]; future: Scenario[]; reference: Scenario | null };
+
 export interface State {
   datasets: Partial<Record<ElectionId, ElectionDataset>>;
   /** every election the project knows about (public/data/elections.json), newest first */
@@ -51,7 +53,9 @@ export interface State {
   /** how every vote edit on a list is balanced (shared by all vote controls) */
   voteSource: SourceChoice;
   /** per-election work kept while switching elections (scenario + undo history) */
-  sessions: Partial<Record<ElectionId, { scenario: Scenario; past: Scenario[]; future: Scenario[]; reference: Scenario | null }>>;
+  sessions: Partial<Record<ElectionId, ScenarioSession>>;
+  /** Unsaved branches shared by the header and phone inspectors; deliberately session-only. */
+  scenarioDrafts: Record<string, ScenarioSession>;
 }
 
 const LS = 'israel-elections:v1';
@@ -77,7 +81,7 @@ let state: State = {
   datasets: {}, elections: FALLBACK_INDEX, electionId: 'k26', scenario: null, preview: null, reference: null, markOfficial: persisted.markOfficial === true, past: [], future: [], selectedListId: null, blocPanel: null, tool: null, compareWith: 'historical',
   lang: persisted.lang ?? 'he', theme: persisted.theme ?? (globalThis.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
   level: migrateLevel(persisted.level), customFeatures: persisted.customFeatures ?? null, hintDismissed: persisted.hintDismissed === true, digits: persisted.digits ?? 2, layout: 'hemicycle', colorBy: 'list',
-  saved: persisted.saved ?? [], toast: null, loadError: null, notice: null, voteSource: { kind: 'proportional' }, sessions: {},
+  saved: persisted.saved ?? [], toast: null, loadError: null, notice: null, voteSource: { kind: 'proportional' }, sessions: {}, scenarioDrafts: {},
 };
 const listeners = new Set<() => void>();
 const emit = () => { for (const l of listeners) l(); };

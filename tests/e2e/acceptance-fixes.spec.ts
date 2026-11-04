@@ -1,9 +1,10 @@
+import { choose } from './choices.ts';
 import { expect, test, type Page } from '@playwright/test';
 async function start(page: Page) {
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({lang:'en', level:'standard', hintDismissed:true})));
   await page.goto('/');
-  await page.getByRole('combobox', {name:'Election', exact:true}).selectOption('k25');
-  await expect(page.getByRole('combobox', {name:'Grouping'}).locator('option:checked')).toHaveText(/37th government/);
+  await choose(page.getByRole('button', {name:'Election', exact:true}), 'k25');
+  await expect(page.getByRole('button', { name: 'Grouping', exact: true })).toHaveText(/37th government/);
 }
 async function split(page: Page) {
   await page.getByRole('button', {name:'United Torah Judaism', exact:true}).click();
@@ -46,7 +47,7 @@ for (const lang of ['en','he']) test(`E5 E6 phone election and named tools ${lan
   if(lang==='he') await page.getByRole('button',{name:'עב',exact:true}).click();
   for(const level of (lang==='en'?['Simple','Standard','Expert']:['פשוט','רגיל','מומחה'])) {
     await page.getByRole('button',{name:level,exact:true}).click();
-    expect.soft((await page.locator('select.election').boundingBox())!.width).toBeGreaterThan(210);
+    expect.soft((await page.locator('.election .choice-trigger').boundingBox())!.width).toBeGreaterThan(210);
   }
   for (const name of (lang==='en'?['Save & share','Start over']:['שמירה ושיתוף','התחלה מחדש'])) {
     await expect.soft(page.getByRole('button',{name,exact:true})).toHaveAttribute('title',name);

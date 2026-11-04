@@ -1,9 +1,10 @@
+import { choose } from './choices.ts';
 import { test, expect, type Page } from '@playwright/test';
 async function start(page: Page, level = 'simple') {
   await page.addInitScript(level => { if (!localStorage.getItem('israel-elections:v1')) localStorage.setItem('israel-elections:v1', JSON.stringify({lang:'en',theme:'light',level,hintDismissed:true})); },level);
   await page.goto('/');
   await expect(page.getByRole('region',{name:'Lists',exact:true})).toBeVisible();
-  await page.getByRole('combobox',{name:'Election',exact:true}).selectOption('k25');
+  await choose(page.getByRole('button', {name:'Election',exact:true}), 'k25');
   await expect(page.locator('.lb-row').filter({has:page.locator('.lb-name',{hasText:'Likud'})}).locator('.lb-seats b')).toHaveText('32');
   await page.getByRole('region',{name:'Lists',exact:true}).getByRole('button',{name:'Likud',exact:true}).click();
 }
@@ -31,14 +32,16 @@ test('blank candidates can be undone and chip changes are human wording', async 
   await start(page,'expert');
   const candidates = page.locator('.side-panel .cands li');
   const count = await candidates.count();
-  await page.getByRole('combobox',{name:'Start from: Candidates',exact:true}).selectOption('blank');
+  await choose(page.getByRole('button', {name:'Start from: Candidates',exact:true}), 'blank');
   await expect(candidates).toHaveCount(0);
   await expect(page.locator('.banner.warn').filter({hasText:'unfilled seats'})).toContainText('32 seats and 0 candidates');
   await expect(page.locator('.ld').filter({hasText:'unfilled seats'})).toBeVisible();
-  await page.locator('.election-status').click();
-  const changes = page.locator('.scenario-changes ul');
+  await page.getByRole('button', { name: 'Switch scenario', exact: true }).click();
+  await page.getByRole('dialog').locator('.scenario-changes summary').click();
+  const changes = page.getByRole('dialog').locator('.scenario-changes ul');
   await expect(changes).toContainText('Candidates');
   expect(await changes.innerText()).not.toMatch(/[{}"]/);
+  await page.keyboard.press('Escape');
   await page.getByRole('button',{name:/^Undo:/}).click();
   await expect(candidates).toHaveCount(count);
 });
@@ -48,11 +51,11 @@ for (const lang of ['en','he']) for (const theme of ['light','dark']) for (const
     await page.setViewportSize(phone ? {width:390,height:844} : {width:1440,height:900});
     await page.addInitScript(v => localStorage.setItem('israel-elections:v1',JSON.stringify(v)), {lang,theme,level:'expert',hintDismissed:true});
     await page.goto('/');
-    await page.getByRole('combobox',{name:lang === 'he' ? 'בחירות' : 'Election',exact:true}).selectOption('k25');
+    await choose(page.getByRole('button', {name:lang === 'he' ? 'בחירות' : 'Election',exact:true}), 'k25');
     await expect(page.locator('.lb-row').filter({has:page.locator('.lb-name',{hasText:lang === 'he' ? 'ליכוד' : 'Likud'})}).locator('.lb-seats b')).toHaveText('32');
     await page.getByRole('tab',{name:lang === 'he' ? 'איחוד ופיצול' : 'Merge & split',exact:true}).click();
     await page.getByRole('button',{name:lang === 'he' ? 'הסכמי עודפים' : 'Surplus agreements',exact:true}).click();
-    await page.getByRole('combobox',{name:lang === 'he' ? 'התחלה מתוך: הסכמי עודפים' : 'Start from: Agreements',exact:true}).selectOption('blank');
+    await choose(page.getByRole('button', {name:lang === 'he' ? 'התחלה מתוך: הסכמי עודפים' : 'Start from: Agreements',exact:true}), 'blank');
     const removed = page.locator('.removed-agreements li');
     await expect(removed).toHaveCount(5);
     await expect(removed.first()).toContainText(' + ');
@@ -66,7 +69,8 @@ for (const lang of ['en','he']) for (const theme of ['light','dark']) for (const
     expect(box.x + box.width).toBeLessThanOrEqual(phone ? 390 : 1440);
     await page.screenshot({path:`.backup-scratch/custom-level/markers-${lang}-${theme}-${phone ? 'phone' : 'desktop'}.png`});
     await page.getByRole('tab',{name:lang === 'he' ? 'כללים' : 'Rules',exact:true}).click();
-    const options = page.getByRole('combobox',{name:lang === 'he' ? 'התחלה מתוך: כללים' : 'Start from: Rules',exact:true}).locator('option');
+    await page.getByRole('button', {name:lang === 'he' ? 'התחלה מתוך: כללים' : 'Start from: Rules',exact:true}).click();
+    const options = page.getByRole('dialog').locator('.choice-option');
     expect((await options.allTextContents()).join(' ')).not.toContain('il-');
     await expect(options.filter({hasText:'1977'})).toContainText(lang === 'he' ? 'מגבלת מועמדים' : 'Candidate cap');
   });
