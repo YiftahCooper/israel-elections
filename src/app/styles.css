@@ -394,7 +394,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .wi-q:disabled { cursor: default; }
 .wi-row.open { background: var(--open); }
 .wi-preview { grid-column: 1 / -1; padding: 6px 4px 4px; }
-.wi-a { color: var(--ink); }
+.wi-a { color: var(--ink); display: flex; flex-wrap: wrap; gap: 4px 12px; }
+.wi-chip { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
 @media (max-width: 600px) { .wi-row { grid-template-columns: minmax(0, 1fr) auto; } .wi-a { grid-column: 1; grid-row: 2; } .wi-row .btn { grid-row: 1 / span 2; grid-column: 2; } }
 
 /* ---------- lists as visual rows */
@@ -486,7 +487,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .chamber-panel > .body { padding: 10px 14px 6px; }
 
 /* ---------- coalitions: drawn against the 120 seats and the majority line */
-.coal-chips { margin-bottom: 12px; gap: 6px; }
+.coal-chips { margin-bottom: 12px; gap: 6px; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); }
 .coal-now { display: grid; gap: 8px; padding: 12px 14px; border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface-2); }
 .coal-total { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
 .coal-total b { font-size: 30px; font-weight: 700; line-height: 1; }
@@ -500,6 +501,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .coal-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(360px, 100%), 1fr)); gap: 2px 18px; }
 .coal-list button { all: unset; box-sizing: border-box; width: 100%; display: grid; grid-template-columns: 30px minmax(0, 1fr); grid-template-rows: auto auto; gap: 3px 10px; align-items: center; padding: 6px 8px; border-radius: 5px; cursor: pointer; }
 .coal-list button:hover { background: var(--surface-2); }
+.coal-list button[aria-pressed="true"] { background: var(--open); box-shadow: inset 0 0 0 1px var(--rule-2); }
 .coal-list button:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
 .coal-n { grid-row: 1 / 3; font-weight: 700; font-size: 16px; text-align: center; }
 .coal-names { font-size: 12.5px; color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -542,6 +544,9 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .st-preview { padding: 10px 12px; border: 1px solid var(--rule); border-radius: var(--radius); }
 .st-preview h4 { margin: 0 0 8px; }
 .st-task > .btn { justify-self: start; }
+.structure > .seg { display: inline-grid; grid-template-columns: repeat(4, auto); gap: 1px; background: var(--rule-2); }
+.structure > .seg button + button { border-inline-start: 0; }
+@media (max-width: 600px) { .structure > .seg { display: grid; grid-template-columns: 1fr 1fr; } }
 
 /* a split faction's parties under their list */
 .lb-parties { list-style: none; margin: -2px 0 4px; padding: 0 12px 0 0; padding-inline: 34px 12px; display: grid; gap: 4px; }

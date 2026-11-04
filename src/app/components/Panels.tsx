@@ -35,6 +35,7 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
     seatsCappedAtCandidates: ['No more seats than candidates (1977, inferred)', 'לא יותר מנדטים ממועמדים (1977, מוסק)'],
   };
   const set = (patch: Partial<Scenario['rules']>) => dispatch({ type: 'setRules', patch });
+  const law = RULESETS[electionRuleSetId(s.electionId)];
   return (
     <div className="grid2 stack-sm" style={{ alignItems: 'start', gap: 18 }}>
       {/* two columns only: "Start from" heads the rules column, so it never sits alone in a cell above an empty gap */}
@@ -51,7 +52,7 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
         </div>
         <p className="small ink2">{exp
           ? L('Experimental: you may change the electoral system itself. Results are labelled as an alternative system, not Israeli law.', 'ניסיוני: ניתן לשנות את שיטת הבחירות עצמה. התוצאות מסומנות כשיטה חלופית ולא כחוק הישראלי.')
-          : L(`Historically valid: the law of this election is enforced — ${s.rules.seats} seats, ${Number(s.rules.thresholdPct) > 0 ? `${s.rules.thresholdPct}% threshold` : 'no percentage threshold'}, ${s.rules.remainderMethod === 'largest-remainder' ? 'largest remainder' : s.rules.remainderRequiresInitialSeat ? 'highest averages' : 'Bader–Ofer'}, two-list agreements. Votes, lists, candidates and agreements can still change.`, `תקף היסטורית: החוק של בחירות אלה נאכף — ${s.rules.seats} מושבים, ${Number(s.rules.thresholdPct) > 0 ? `אחוז חסימה ${s.rules.thresholdPct}%` : 'ללא אחוז חסימה'}, ${s.rules.remainderMethod === 'largest-remainder' ? 'השארית הגדולה' : s.rules.remainderRequiresInitialSeat ? 'הממוצע הגבוה' : 'בדר–עופר'}, הסכמים של שתי רשימות. עדיין ניתן לשנות קולות, רשימות, מועמדים והסכמים.`)}</p>
+          : L(`Historically valid: the law of this election is enforced — ${s.rules.seats} seats, ${Number(s.rules.thresholdPct) > 0 ? `${s.rules.thresholdPct}% threshold` : 'no percentage threshold'}, ${methodOf(s.rules).en}, two-list agreements. Votes, lists, candidates and agreements can still change.`, `תקף היסטורית: החוק של בחירות אלה נאכף — ${s.rules.seats} מושבים, ${Number(s.rules.thresholdPct) > 0 ? `אחוז חסימה ${s.rules.thresholdPct}%` : 'ללא אחוז חסימה'}, ${methodOf(s.rules).he}, הסכמים של שתי רשימות. עדיין ניתן לשנות קולות, רשימות, מועמדים והסכמים.`)}</p>
         {Object.keys(s.lotteryWinners).length > 0 && <p className="small">{L('You have recorded lottery outcomes for tied seats.', 'רשמתם תוצאות הגרלה למושבים בשוויון.')} <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'lottery' })}>{L('Clear them', 'ניקוי')}</button></p>}
         {exp && dep.length > 0 && <div className="callout small" style={{ marginBottom: 8 }}><b>{L('Departs from Israeli law in: ', 'שונה מהחוק הישראלי ב: ')}</b>{dep.map((d) => (lang === 'he' ? depName[d][1] : depName[d][0])).join(', ')}</div>}
         <fieldset disabled={!exp} style={{ border: 0, padding: 0, margin: 0 }}>
@@ -59,7 +60,11 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
             <div className="field"><span>{L('Seats', 'מושבים')}</span><NumericStepper value={s.rules.seats} min={1} onCommit={(n) => set({ seats: n })} label={L('Seats', 'מושבים')} steps={[{ id: '1', label: '1', amount: 1 }]} /></div>
             <label className="field">{L('Threshold %', 'אחוז חסימה %')}<TextField value={s.rules.thresholdPct} label={L('Threshold %', 'אחוז חסימה %')} onCommit={(v) => set({ thresholdPct: v.trim().replace('%', '') })} /></label>
             <div className="field"><span><span id="remainder-method-label">{L('Remainder method', 'שיטת העודפים')}</span> <Info term={methodOf(s.rules).term} /></span>
-              <select aria-labelledby="remainder-method-label" value={s.rules.remainderMethod} onChange={(e) => set({ remainderMethod: e.target.value as Scenario['rules']['remainderMethod'] })}>
+              <select aria-labelledby="remainder-method-label" value={s.rules.remainderMethod} onChange={(e) => {
+                const m = e.target.value as Scenario['rules']['remainderMethod'];
+                // divisor methods have no whole-quota stage, so 1949's "only lists with a whole quota" rules would leave every seat unallocated
+                set({ remainderMethod: m, ...(['sainte-lague', 'dhondt', 'modified-sainte-lague'].includes(m) && (s.rules.remainderRequiresInitialSeat || s.rules.agreementRequiresInitialSeat) ? { remainderRequiresInitialSeat: false, agreementRequiresInitialSeat: false } : {}) });
+              }}>
                 <option value="bader-ofer">{L('Bader–Ofer (law since 1973)', 'בדר–עופר (החוק מאז 1973)')}</option>
                 <option value="largest-remainder">{L('Largest remainder (pre-1973 Israeli rule)', 'שארית גדולה (השיטה לפני 1973)')}</option>
                 <option value="sainte-lague">{L('Sainte-Laguë (all seats)', 'סנט-לגה (כל המושבים)')}</option>
@@ -73,12 +78,15 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
                 <option value="floor">{L('Whole number (law)', 'מספר שלם (החוק)')}</option><option value="exact">{L('Exact fraction', 'שבר מדויק')}</option>
               </select>
             </label>
-            <div className="field"><span>{L('Lists per agreement', 'רשימות בהסכם')}</span><NumericStepper value={s.rules.maxAgreementSize} min={1} onCommit={(n) => set({ maxAgreementSize: n })} label={L('Lists per agreement', 'רשימות בהסכם')} steps={[{ id: '1', label: '1', amount: 1 }]} /></div>
-            <label className="row small"><input type="checkbox" checked={s.rules.majorityCap} onChange={(e) => set({ majorityCap: e.target.checked })} />{L('Half-seats cap', 'מגבלת מחצית')}</label>
-            <label className="row small"><input type="checkbox" checked={s.rules.agreementRequiresAllQualify} onChange={(e) => set({ agreementRequiresAllQualify: e.target.checked })} />{L('Agreement needs all partners above threshold', 'הסכם דורש שכל השותפות יעברו')}</label>
+            <div className="field"><span>{L('Lists per agreement', 'רשימות בהסכם')}</span><NumericStepper value={s.rules.maxAgreementSize} min={2} onCommit={(n) => set({ maxAgreementSize: n })} label={L('Lists per agreement', 'רשימות בהסכם')} steps={[{ id: '1', label: '1', amount: 1 }]} /></div>
+            <label className="row small" style={{ flexWrap: 'nowrap', alignItems: 'start' }}><input type="checkbox" checked={s.rules.majorityCap} onChange={(e) => set({ majorityCap: e.target.checked })} />{L('Half-seats cap', 'מגבלת מחצית')}</label>
+            <label className="row small" style={{ flexWrap: 'nowrap', alignItems: 'start' }}><input type="checkbox" checked={s.rules.agreementRequiresAllQualify} onChange={(e) => set({ agreementRequiresAllQualify: e.target.checked })} />{L('Agreement needs all partners above threshold', 'הסכם דורש שכל השותפות יעברו')}</label>
+            {/* the 1949 rules, shown where they apply (that election, or once set) so they can be seen and changed */}
+            {(law.remainderRequiresInitialSeat || s.rules.remainderRequiresInitialSeat) && <label className="row small" style={{ flexWrap: 'nowrap', alignItems: 'start' }}><input type="checkbox" checked={!!s.rules.remainderRequiresInitialSeat} disabled={['sainte-lague', 'dhondt', 'modified-sainte-lague'].includes(s.rules.remainderMethod)} onChange={(e) => set({ remainderRequiresInitialSeat: e.target.checked, agreementRequiresInitialSeat: e.target.checked })} />{L(...depName.remainderRequiresInitialSeat)}</label>}
+            {(law.quotaSeatOffset || s.rules.quotaSeatOffset) ? <label className="row small" style={{ flexWrap: 'nowrap', alignItems: 'start' }}><input type="checkbox" checked={!!s.rules.quotaSeatOffset} onChange={(e) => set({ quotaSeatOffset: e.target.checked ? 1 : 0 })} />{L('Quota divides by the seats plus one', 'המודד מחולק במושבים ועוד אחד')}</label> : null}
           </div>
           <div className="quick-actions" role="group" aria-label={L('Thresholds by era', 'אחוזי חסימה לפי תקופה')}>
-            {['1', '1.5', '2', '3.25'].map(pct => <button key={pct} className="btn small" onClick={() => set({ thresholdPct: pct })}>{pct}%</button>)}
+            {['1', '1.5', '2', '3.25'].map(pct => { const on = Number(s.rules.thresholdPct) === Number(pct); return <button key={pct} className={`btn small ${on ? 'primary' : ''}`} aria-pressed={on} onClick={() => set({ thresholdPct: pct })}>{pct}%</button>; })}
           </div>
         </fieldset>
         <hr />
@@ -94,7 +102,8 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
       </div>
       <div>
         <h3>{L('Blocs', 'גושים')}</h3>
-        <p className="small ink2">{L('Choose a grouping, move lists and constituent parties between blocs, and rename or recolour blocs with “Edit blocs” under the bloc bar.', 'בחירת חלוקה, העברת רשימות ומפלגות בין גושים ושינוי שמות וצבעים — ב„עריכת גושים” מתחת לפס הגושים.')}</p>
+        <p className="small ink2">{L('Choose a grouping, move lists and constituent parties between blocs, and rename or recolour blocs in the bloc editor beside the chamber.', 'בחירת חלוקה, העברת רשימות ומפלגות בין גושים ושינוי שמות וצבעים — בעורך הגושים שליד המליאה.')}</p>
+        <button className="btn small" onClick={() => { setState({ tool: 'board', blocPanel: s.blocs[0]?.id ?? '__none', selectedListId: null }); window.scrollTo({ top: 0 }); }}>{L('Edit blocs', 'עריכת גושים')}</button>
         <hr />
         <h3>{L('Display', 'תצוגה')}</h3>
         <label className="field" style={{ maxWidth: 220 }}>{L('Decimal places for percentages', 'ספרות אחרי הנקודה באחוזים')}
@@ -210,10 +219,11 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
         <ul className="small credits" style={{ paddingInlineStart: 18 }}>
           {used.map((x) => (
             <li key={x.id} style={{ marginBottom: 8 }}>
-              <b>{x.publisher}</b> {x.official ? <span className="chip ok">{L('official', 'רשמי')}</span> : <span className="chip no">{L('secondary', 'משני')}</span>}<br />
-              {x.description}<br />
-              <a href={x.url.split(' ')[0]} target="_blank" rel="noreferrer" style={{ wordBreak: 'break-all' }}>{x.url}</a>
-              <div className="muted tiny">{L('Retrieved', 'נשלף')} {x.retrievedAt?.slice(0, 10)}{x.sha256 ? ` · SHA-256 ${x.sha256.slice(0, 16)}…` : ''}{x.note ? ` · ${x.note}` : ''}</div>
+              {/* source records are written in English: each runs in its own direction inside a Hebrew page */}
+              <b dir="auto">{x.publisher}</b> {x.official ? <span className="chip ok">{L('official', 'רשמי')}</span> : <span className="chip no">{L('secondary', 'משני')}</span>}<br />
+              <span dir="auto" style={{ display: 'block' }}>{x.description}</span>
+              <a href={x.url.split(' ')[0]} target="_blank" rel="noreferrer" dir="ltr" style={{ wordBreak: 'break-all', display: 'block' }}>{x.url}</a>
+              <div className="muted tiny">{L('Retrieved', 'נשלף')} <bdi dir="ltr">{x.retrievedAt?.slice(0, 10)}{x.sha256 ? ` · SHA-256 ${x.sha256.slice(0, 16)}…` : ''}</bdi>{x.note ? <> · <bdi dir="auto">{x.note}</bdi></> : ''}</div>
             </li>
           ))}
         </ul>
@@ -228,7 +238,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
             <h3>{L('Party logos', 'סמלי המפלגות')}</h3>
             <p className="small ink2">{L('Logos as used at this election, from Wikimedia Commons, each under its own licence (not the app’s MIT licence).', 'הסמלים כפי שהיו בשימוש בבחירות אלה, מוויקישיתוף, כל אחד ברישיון שלו (לא ברישיון MIT של היישום).')}</p>
             <ul className="small credits" style={{ paddingInlineStart: 18 }}>
-              {logos.map((x, i) => <li key={i}><b>{x.name}</b>: <a href={x.logo.sourceUrl} target="_blank" rel="noreferrer">{x.logo.attribution}</a> · {x.logo.licence}</li>)}
+              {logos.map((x, i) => <li key={i}><b>{x.name}</b>: <bdi dir="auto"><a href={x.logo.sourceUrl} target="_blank" rel="noreferrer">{x.logo.attribution}</a> · {x.logo.licence}</bdi></li>)}
             </ul>
           </> : null;
         })()}

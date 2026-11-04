@@ -19,3 +19,5 @@
 }
 @media (max-width: 999px) { .locality-map-canvas { height: 72vh; } }
 .locality-map-results { border-inline-start: 0; border: 1px solid var(--rule, #dde2e7); border-radius: 6px; padding: 10px 12px; }
+.locality-share { display: grid; grid-template-columns: minmax(70px, 1fr) 48px; align-items: center; gap: 6px; min-width: 140px; }
+.locality-share i { display: block; height: 10px; border-radius: 2px; min-width: 2px; }

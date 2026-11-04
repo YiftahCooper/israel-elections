@@ -6,13 +6,15 @@ import type { ElectionDataset } from '../../data/schema.ts';
 import { allocate } from '../../engine/allocate.ts';
 import { goals, minimalChange } from '../../engine/analysis.ts';
 import { applyAction } from '../../model/actions.ts';
-import { scenarioFromDataset, toEngineInput, type Action, type Scenario } from '../../model/scenario.ts';
+import { scenarioFromDataset, toEngineInput, votesCast, type Action, type Scenario } from '../../model/scenario.ts';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, signed } from '../format.ts';
 import { getState, setState, useLevel } from '../store.ts';
 
-interface Preset { id: string; titleEn: string; titleHe: string; bodyEn: string; bodyHe: string; actions: (s: Scenario) => Action[] | null }
+type Text = string | ((s: Scenario) => string);
+interface Preset { id: string; titleEn: string; titleHe: string; bodyEn: Text; bodyHe: Text; actions: (s: Scenario) => Action[] | null }
+const turnoutOf = (s: Scenario) => (s.registered ? (100 * votesCast(s)) / s.registered : 0);
 
 const has = (s: Scenario, ...ids: string[]) => ids.every((id) => s.lists.some((l) => l.id === id));
 const agreementWith = (s: Scenario, id: string) => s.agreements.find((a) => a.members.includes(id));
@@ -33,9 +35,15 @@ const merge = (s: Scenario, ids: string[], nameHe: string, letters: string, colo
 
 const COMMON: Preset[] = [
   { id: 'no-agreements', titleEn: 'No surplus agreements at all', titleHe: 'בלי הסכמי עודפים בכלל', bodyEn: 'Every list competes alone for the remainder seats.', bodyHe: 'כל רשימה מתחרה לבדה על המנדטים העודפים.', actions: (s) => s.agreements.map((a) => ({ type: 'removeAgreement', id: a.id })) },
-  { id: 'threshold-2', titleEn: 'A 2% threshold', titleHe: 'אחוז חסימה של 2%', bodyEn: 'The threshold before 2014. (Alternative rule: experimental.)', bodyHe: 'אחוז החסימה שלפני 2014. (כלל חלופי: ניסיוני.)', actions: () => [{ type: 'setMode', mode: 'experimental' }, { type: 'setRules', patch: { thresholdPct: '2' } }] },
-  { id: 'pure-pr', titleEn: 'Pure proportional representation', titleHe: 'ייצוג יחסי טהור', bodyEn: 'No threshold, Sainte-Laguë for all 120 seats, no agreements. (Experimental.)', bodyHe: 'ללא אחוז חסימה, סנט-לגה לכל 120 המושבים, ללא הסכמים. (ניסיוני.)', actions: (s) => [{ type: 'setMode', mode: 'experimental' }, { type: 'setRules', patch: { thresholdPct: '0', remainderMethod: 'sainte-lague' } }, ...s.agreements.map((a) => ({ type: 'removeAgreement', id: a.id }) as Action)] },
-  { id: 'turnout-80', titleEn: 'Turnout of 80%', titleHe: 'שיעור הצבעה של 80%', bodyEn: 'Every list grows in proportion: the threshold in votes rises with it.', bodyHe: 'כל הרשימות גדלות באופן יחסי; אחוז החסימה בקולות עולה בהתאם.', actions: () => [{ type: 'setTurnout', pct: 80 }] },
+  // offered only where 2% is not already the law (2006–2013)
+  { id: 'threshold-2', titleEn: 'A 2% threshold', titleHe: 'אחוז חסימה של 2%', bodyEn: 'The threshold of 2006–2013. (Experimental rules.)', bodyHe: 'אחוז החסימה של 2006–2013. (כללים ניסיוניים.)', actions: (s) => Number(s.rules.thresholdPct) === 2 ? null : [{ type: 'setMode', mode: 'experimental' }, { type: 'setRules', patch: { thresholdPct: '2' } }] },
+  { id: 'pure-pr', titleEn: 'Pure proportional representation', titleHe: 'ייצוג יחסי טהור', bodyEn: 'No threshold, Sainte-Laguë for all 120 seats, no agreements. (Experimental.)', bodyHe: 'ללא אחוז חסימה, סנט-לגה לכל 120 המושבים, ללא הסכמים. (ניסיוני.)', // 1949's "only lists with a whole quota" rule has no meaning without a quota stage and would leave every seat empty
+    actions: (s) => [{ type: 'setMode', mode: 'experimental' }, { type: 'setRules', patch: { thresholdPct: '0', remainderMethod: 'sainte-lague', ...(s.rules.remainderRequiresInitialSeat || s.rules.agreementRequiresInitialSeat ? { remainderRequiresInitialSeat: false, agreementRequiresInitialSeat: false } : {}) } }, ...s.agreements.map((a) => ({ type: 'removeAgreement', id: a.id }) as Action)] },
+  // the wording follows the direction: several early elections had turnout above 80%
+  { id: 'turnout-80', titleEn: 'Turnout of 80%', titleHe: 'שיעור הצבעה של 80%',
+    bodyEn: (s) => turnoutOf(s) < 80 ? 'Every list grows in proportion: the threshold in votes rises with it.' : 'Every list shrinks in proportion: the threshold in votes falls with it.',
+    bodyHe: (s) => turnoutOf(s) < 80 ? 'כל הרשימות גדלות באופן יחסי; אחוז החסימה בקולות עולה בהתאם.' : 'כל הרשימות קטנות באופן יחסי; אחוז החסימה בקולות יורד בהתאם.',
+    actions: (s) => Math.abs(turnoutOf(s) - 80) < 0.5 ? null : [{ type: 'setTurnout', pct: 80 }] },
 ];
 
 const K25: Preset[] = [
@@ -105,6 +113,7 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
   }
 
   const [open, setOpen] = useState<string | null>(null);
+  const base = useMemo(() => scenarioFromDataset(ds), [ds]);
   /** loads the question as a named scenario (its explanation as the description) and shows it on the Overview */
   const tryIt = (title: string, description: string, actions: Action[]) => {
     const st = getState();
@@ -121,10 +130,11 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
   const shown = useful.slice(0, limit);
   return (
     <div>
-      <p className="ink2 small" style={{ marginTop: 0 }}>{L('Each question starts from the real result and changes one thing; the seat changes are exact. “Try it” loads it so you can explore further (Undo returns you).', 'כל שאלה מתחילה מהתוצאה האמיתית ומשנה דבר אחד; שינויי המנדטים מדויקים. "נסו" טוען אותה להמשך חקירה (ביטול מחזיר אתכם).')}</p>
+      <p className="ink2 small" style={{ marginTop: 0 }}>{L('Each question starts from the real result and changes one thing; the seat changes are exact. “Open as a scenario” loads it so you can explore further (Undo returns you).', 'כל שאלה מתחילה מהתוצאה האמיתית ומשנה דבר אחד; שינויי המנדטים מדויקים. "פתיחה כתרחיש" טוענת אותה להמשך חקירה (ביטול מחזיר אתכם).')}</p>
       <ol className="wi-rows">
         {shown.map(({ p, actions, lines, votes, changes }) => {
-          const title = lang === 'he' ? p.titleHe : p.titleEn, body = lang === 'he' ? p.bodyHe : p.bodyEn;
+          const text = (t: Text) => (typeof t === 'function' ? t(base) : t);
+          const title = lang === 'he' ? p.titleHe : p.titleEn, body = text(lang === 'he' ? p.bodyHe : p.bodyEn);
           const max = Math.max(1, ...changes.map((c) => Math.abs(c.after - c.before)));
           const isOpen = open === p.id;
           return (
@@ -133,7 +143,10 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
                 <b>{title}</b>
                 <span className="small ink2">{body}{votes && <> · <b>{votes}</b></>}</span>
               </button>
-              <div className="wi-a small">{!actions ? L('Not applicable to this election.', 'לא רלוונטי לבחירות אלה.') : lines.length ? lines.join(' · ') : <span className="muted">{L('No seat changes', 'אין שינוי במנדטים')}</span>}</div>
+              {/* the answer at a glance: each list that moves, in its colour, with its seat change */}
+              <div className="wi-a small" aria-label={lines.join(', ')}>{!actions ? L('Not applicable to this election.', 'לא רלוונטי לבחירות אלה.') : changes.length ? changes.map((c) => (
+                <span key={c.label} className="wi-chip"><span className="swatch" style={{ background: c.color }} />{c.label} <b dir="ltr">{signed(c.after - c.before)}</b></span>
+              )) : <span className="muted">{L('No seat changes', 'אין שינוי במנדטים')}</span>}</div>
               <button className="btn small" disabled={!actions} onClick={() => actions && tryIt(title, body, actions)}>{L('Open as a scenario', 'פתיחה כתרחיש')}</button>
               {isOpen && actions && (
                 <div className="wi-preview">
@@ -141,10 +154,10 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
                     <ul className="cmp-diff">
                       {changes.map((c) => { const d = c.after - c.before; return (
                         <li key={c.label}>
-                          <span className="cmp-label">{c.label} <span className="muted">{c.before} → {c.after}</span></span>
-                          <span className="cmp-neg">{d < 0 && <i style={{ width: `${(-d / max) * 100}%`, background: c.color }} />}</span>
+                          <span className="cmp-label"><span className="swatch" style={{ background: c.color }} /> {c.label} <bdi className="muted" dir="ltr">{c.before} → {c.after}</bdi></span>
+                          <span className="cmp-neg">{d < 0 && <i style={{ width: `${(-d / max) * 100}%`, background: 'var(--ink)' }} />}</span>
                           <span className="cmp-axis" aria-hidden />
-                          <span className="cmp-pos">{d > 0 && <i style={{ width: `${(d / max) * 100}%`, background: c.color }} />}</span>
+                          <span className="cmp-pos">{d > 0 && <i style={{ width: `${(d / max) * 100}%`, background: 'var(--ink)' }} />}</span>
                           <b className="cmp-d" dir="ltr">{d > 0 ? `+${d}` : `−${-d}`}</b>
                         </li>
                       ); })}

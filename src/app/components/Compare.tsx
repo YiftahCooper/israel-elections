@@ -11,6 +11,7 @@ import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct, fmtRat, fmtSigned, isolate, signed } from '../format.ts';
 import { replay, setState, useStore, useDigits } from '../store.ts';
 import { Hemicycle } from './Hemicycle.tsx';
+import { clip, useChartWidth } from './Charts.tsx';
 
 export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; base: Scenario; ds: ElectionDataset }) {
   const L = useL();
@@ -101,7 +102,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
             const before=id===null ? total-Object.values(ba).reduce((n,v)=>n+v,0) : ba[id]??0;
             const now=id===null ? total-Object.values(bb).reduce((n,v)=>n+v,0) : bb[id]??0;
             if(!now&&!before)return null;
-            return <span key={id??'__none'} className="row" style={{gap:5}}><span className="swatch" style={{background:`color-mix(in srgb, ${color} 24%, var(--surface))`,border:`1px ${id===null?'dotted':'solid'} ${color}`}} />{bloc?(lang==='he'?bloc.nameHe:bloc.nameEn):L('No bloc','ללא גוש')} <b>{groupedA?`${before} → `:''}{now}</b></span>;
+            return <span key={id??'__none'} className="row" style={{gap:5}}><span className="swatch" style={{background:`color-mix(in srgb, ${color} 24%, var(--surface))`,border:`1px ${id===null?'dotted':'solid'} ${color}`}} />{bloc?(lang==='he'?bloc.nameHe:bloc.nameEn):L('No bloc','ללא גוש')} <b><bdi dir="ltr">{groupedA?`${before} → `:''}{now}</bdi></b></span>;
           })}</div>
         </section>
       )}
@@ -114,7 +115,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
               const d = g.seatsB - g.seatsA;
               return (
                 <li key={g.key}>
-                  <span className="cmp-label"><span className="swatch" style={{ background: colorOfGroup(g) }} /> {labelOf(g)} <span className="muted">{g.seatsA} → {g.seatsB}</span></span>
+                  <span className="cmp-label"><span className="swatch" style={{ background: colorOfGroup(g) }} /> {labelOf(g)} <bdi className="muted" dir="ltr">{g.seatsA} → {g.seatsB}</bdi></span>
                   <span className="cmp-neg">{d < 0 && <i style={{ width: `${(-d / maxChange) * 100}%`, background: 'var(--ink)' }} />}</span>
                   <span className="cmp-axis" aria-hidden />
                   <span className="cmp-pos">{d > 0 && <i style={{ width: `${(d / maxChange) * 100}%`, background: 'var(--ink)' }} />}</span>
@@ -137,11 +138,11 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
             [L('Votes per seat', 'קולות למנדט'), fmtRat(ar.quota, 0), fmtRat(r.quota, 0)],
             [L('Remainder seats', 'מנדטים מעודפים'), String(ar.remainderSeatsTotal), String(r.remainderSeatsTotal)],
             [L('Votes with no seat', 'קולות ללא מנדט'), fmtPct(ar.unrepresentedVotes, ar.totalValid, digits), fmtPct(r.unrepresentedVotes, r.totalValid, digits)],
-          ].map(([k, x, y]) => <div key={k} className="fig static"><span className="k"><span>{k}</span></span><span className="v">{y}</span><span className="d">{x === y ? L('unchanged', 'ללא שינוי') : `${L('was', 'היה')} ${x}`}</span></div>)}
+          ].map(([k, x, y]) => <div key={k} className="fig static"><span className="k"><span>{k}</span></span><span className="v">{y}</span><span className="d">{x === y ? '\u00a0' : `${L('was', 'היה')} ${x}`}</span></div>)}
         </div>
       </section>
 
-      <div className="grid2 stack-sm cmp-section">
+      {(entering.length > 0 || leaving.length > 0) && <div className="grid2 stack-sm cmp-section">
         <div>
           <h3>{L(`Entering the Knesset (${entering.length})`, `נכנסים לכנסת (${entering.length})`)}</h3>
           {entering.length === 0 ? <p className="muted small">—</p> : <ul className="small">{entering.map(({ c, l }) => <li key={c.id} lang="he">{c.nameHe} <span className="muted">· {listLabel(l, lang)} #{l.candidates.indexOf(c) + 1}</span></li>)}</ul>}
@@ -150,7 +151,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
           <h3>{L(`Leaving the Knesset (${leaving.length})`, `יוצאים מהכנסת (${leaving.length})`)}</h3>
           {leaving.length === 0 ? <p className="muted small">—</p> : <ul className="small">{leaving.map(({ c, l }) => <li key={c.id} lang="he">{c.nameHe} <span className="muted">· {listLabel(l, lang)} #{l.candidates.indexOf(c) + 1}</span></li>)}</ul>}
         </div>
-      </div>
+      </div>}
 
       <details className="cmp-section" open={advanced}>
         <summary className="small">{L('Every list: votes and seats before and after, and the slope chart', 'כל הרשימות: קולות ומנדטים לפני ואחרי, ותרשים השיפוע')}</summary>
@@ -184,11 +185,16 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
   );
 }
 
-/** Seats before → after as a slope chart; one line per list (merged lists line up with their parts). */
+/** Seats before → after as a slope chart; one line per list (merged lists line up with their parts).
+ *  Change is drawn in neutral ink; each list's colour is on its dots.
+ *  The baseline is on the reading side (right in Hebrew), as in the chamber pair above it. */
 export function Slope({ groups, nameA, nameB, colorOf }: { groups: { key: string; seatsA: number; seatsB: number; label: string }[]; nameA: string; nameB: string; colorOf: (key: string) => string }) {
+  const rtl = useLang() === 'he';
+  const [box, W] = useChartWidth(640);
   const rows = groups.filter((g) => g.seatsA || g.seatsB);
   const max = Math.max(1, ...rows.flatMap((g) => [g.seatsA, g.seatsB]));
-  const W = 560, H = Math.max(360, rows.length * 18 + 60), x1 = 170, x2 = W - 170, top = 30, bottom = H - 16;
+  const inner = Math.round(W * 0.3), H = Math.max(360, rows.length * 18 + 60), top = 30, bottom = H - 16;
+  const xA = rtl ? W - inner : inner, xB = rtl ? inner : W - inner, out = rtl ? 1 : -1; // `out`: from A's axis away from B
   const y = (v: number) => bottom - (v / max) * (bottom - top);
   // keep labels at least 15 units apart on each side
   const spread = (vals: { key: string; y: number }[]) => {
@@ -203,24 +209,26 @@ export function Slope({ groups, nameA, nameB, colorOf }: { groups: { key: string
   const ly = spread(rows.map((g) => ({ key: g.key, y: y(g.seatsA) })));
   const ry = spread(rows.map((g) => ({ key: g.key, y: y(g.seatsB) })));
   return (
-    <svg className="chart" viewBox={`0 0 ${W} ${H + 10}`} width="100%" style={{ maxWidth: 640 }} role="img" aria-label={`${nameA} → ${nameB}`}>
-      <text x={x1} y={16} textAnchor="middle" fontWeight={600}>{isolate(nameA)}</text>
-      <text x={x2} y={16} textAnchor="middle" fontWeight={600}>{isolate(nameB.length > 34 ? nameB.slice(0, 33) + '…' : nameB)}</text>
-      <line x1={x1} x2={x1} y1={top - 6} y2={bottom} stroke="var(--axis)" />
-      <line x1={x2} x2={x2} y1={top - 6} y2={bottom} stroke="var(--axis)" />
+    <div ref={box} style={{ maxWidth: 640, margin: '10px 0' }}>
+    <svg className="chart" viewBox={`0 0 ${W} ${H + 10}`} width="100%" role="img" aria-label={`${nameA} → ${nameB}`}>
+      <text x={xA} y={16} textAnchor="middle" fontWeight={600}>{isolate(clip(nameA, 2 * inner - 10))}</text>
+      <text x={xB} y={16} textAnchor="middle" fontWeight={600}>{isolate(clip(nameB, 2 * inner - 10))}</text>
+      <line x1={xA} x2={xA} y1={top - 6} y2={bottom} stroke="var(--axis)" />
+      <line x1={xB} x2={xB} y1={top - 6} y2={bottom} stroke="var(--axis)" />
       {rows.map((g) => {
         const c = colorOf(g.key);
         const changed = g.seatsA !== g.seatsB;
         return (
-          <g key={g.key} opacity={changed ? 1 : 0.45}>
-            <line x1={x1} y1={y(g.seatsA)} x2={x2} y2={y(g.seatsB)} stroke="var(--ink)" strokeWidth={changed ? 3 : 2} />
-            <circle cx={x1} cy={y(g.seatsA)} r={4} fill="var(--surface)" stroke={c} strokeDasharray="2 2" strokeWidth={2} />
-            <circle cx={x2} cy={y(g.seatsB)} r={4} fill={c} stroke="var(--surface)" strokeWidth={2} />
-            <text x={x1 - 8} y={ly.get(g.key)} textAnchor="end" dominantBaseline="middle" fill="var(--ink)"><title>{`${g.label} ${g.seatsA}`}</title>{isolate(`${g.label.length > 22 ? g.label.slice(0, 21) + '…' : g.label} ${g.seatsA}`)}</text>
-            <text x={x2 + 8} y={ry.get(g.key)} textAnchor="start" dominantBaseline="middle" fill="var(--ink)" fontWeight={changed ? 700 : 400}>{g.seatsB}{changed ? ` (${signed(g.seatsB - g.seatsA)})` : ''}</text>
+          <g key={g.key} opacity={changed ? 1 : 0.5}>
+            <line x1={xA} y1={y(g.seatsA)} x2={xB} y2={y(g.seatsB)} stroke={changed ? 'var(--ink)' : 'var(--axis)'} strokeWidth={changed ? 3 : 1.5} />
+            <circle cx={xA} cy={y(g.seatsA)} r={4} fill="var(--surface)" stroke={c} strokeDasharray="2 2" strokeWidth={2} />
+            <circle cx={xB} cy={y(g.seatsB)} r={4} fill={c} stroke="var(--surface)" strokeWidth={2} />
+            <text x={xA + out * 8} y={ly.get(g.key)} textAnchor={rtl ? 'start' : 'end'} dominantBaseline="middle" fill="var(--ink)"><title>{`${g.label} ${g.seatsA}`}</title>{isolate(`${clip(g.label, inner - 34)} ${g.seatsA}`)}</text>
+            <text x={xB - out * 8} y={ry.get(g.key)} textAnchor={rtl ? 'end' : 'start'} dominantBaseline="middle" fill="var(--ink)" fontWeight={changed ? 700 : 400}>{g.seatsB}{changed ? ` (${signed(g.seatsB - g.seatsA)})` : ''}</text>
           </g>
         );
       })}
     </svg>
+    </div>
   );
 }

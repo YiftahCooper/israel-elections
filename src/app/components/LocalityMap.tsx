@@ -58,7 +58,8 @@ export function LocalityMap({ s, data, historicalLists, locations, locationError
     const group = Leaflet.layerGroup().addTo(m);
     placed.forEach((p,i) => {
       const title = document.createElement('span'); title.dir = 'auto'; title.textContent = lang === 'en' ? p.nameEn || p.row.nameHe : p.row.nameHe;
-      Leaflet.circleMarker([p.lat,p.lon], {radius:5, color:'#182638',weight:1.5,fillColor:winners[i].color,fillOpacity:0.9}).bindTooltip(title).on('click',()=>setSelected(p.row)).addTo(group);
+      // a thin white outline separates neighbouring dots; a dark ring would darken every colour alike
+      Leaflet.circleMarker([p.lat,p.lon], {radius:5, color:'#ffffff',weight:1,fillColor:winners[i].color,fillOpacity:0.95}).bindTooltip(title).on('click',()=>setSelected(p.row)).addTo(group);
     });
     // open fitted to this election's localities (once per election, so a user's own zoom is kept while editing)
     if (placed.length && fittedFor.current !== data) {
@@ -129,9 +130,10 @@ export function LocalityMap({ s, data, historicalLists, locations, locationError
       <p>{L('Registered: ', 'בעלי זכות בחירה: ')}{selected.registered === null ? '—' : fmtInt(selected.registered)} · {L('Invalid votes: ', 'קולות פסולים: ')}{fmtInt(selected.invalid)}</p>
       <p>{L('Valid votes: ','קולות כשרים: ')}{fmtInt(selected.valid)} · {L('Votes cast: ','מצביעים: ')}{fmtInt(selected.votesCast)} · {L('Turnout: ','הצבעה: ')}{selected.registered?fmtPct(selected.votesCast,selected.registered,1):L('Unavailable','לא זמין')}</p>
       <p className="small ink2">{L('Turnout excludes double-envelope votes. Coordinates are CBS locality reference points, not polling stations.', 'ההצבעה אינה כוללת מעטפות חיצוניות. המיקום הוא נקודת ייחוס של הלמ״ס ליישוב ולא מיקום קלפי.')}</p>
-      <div className="tablewrap"><table className="tbl"><thead><tr><th>{L('List','רשימה')}</th><th>{L('Votes','קולות')}</th><th>{L('Share','שיעור')}</th></tr></thead><tbody>{selected.votes.map((v,k)=>({v,k})).filter(x=>x.v>0).sort((a,b)=>b.v-a.v).map(({v,k})=>{
-        const l=historicalLists[k];return <tr key={k}><td>{l?listLabel(l,lang):data.listIds[k]}</td><td>{fmtInt(v)}</td><td>{fmtPct(v,selected.valid,1)}</td></tr>;
-      })}</tbody></table></div>
+      {/* each list's share drawn as a bar in its colour, scaled to the leader */}
+      <div className="tablewrap"><table className="tbl"><thead><tr><th>{L('List','רשימה')}</th><th className="n">{L('Votes','קולות')}</th><th>{L('Share','שיעור')}</th></tr></thead><tbody>{(()=>{const rows=selected.votes.map((v,k)=>({v,k})).filter(x=>x.v>0).sort((a,b)=>b.v-a.v);const top=rows[0]?.v||1;return rows.map(({v,k})=>{
+        const l=historicalLists[k];return <tr key={k}><td><span className="row" style={{gap:6,flexWrap:'nowrap'}}><span className="swatch" style={{background:l?.color ?? 'var(--muted)'}} />{l?listLabel(l,lang):data.listIds[k]}</span></td><td className="n">{fmtInt(v)}</td><td><span className="locality-share"><span><i style={{width:`${v/top*100}%`,background:l?.color ?? 'var(--muted)'}} /></span><span className="tabnum">{fmtPct(v,selected.valid,1)}</span></span></td></tr>;
+      });})()}</tbody></table></div>
     </section>}
   </div>;
 }
