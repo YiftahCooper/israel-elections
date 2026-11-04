@@ -400,6 +400,69 @@ Constituents (separate from joint-list lockups):
 - `herut` — **gap**. `תנועת החרות 1965 כרזה סמל -site:en.wikipedia.org` → U116, U296.
 - `liberal-party` — **gap**. `המפלגה הליברלית 1965 כרזה סמל -site:en.wikipedia.org` → U4, U297.
 
+### k7
+
+**אמת — Alignment: gap.**
+- `המערך 1969 כרזה -site:en.wikipedia.org` → U138, U139, U140, U141
+- `site:nli.org.il המערך 1969 בחירות` → U249, U256
+
+**חל — Gahal: gap.**
+- `גח״ל 1969 כרזה -site:en.wikipedia.org` → U142, U143, U139, U144
+- `site:nli.org.il גח"ל 1969 בחירות` → U257, U258
+
+**ב — National Religious Party: gap.**
+- `מפד״ל 1969 כרזה -site:en.wikipedia.org` → U38, U40, U70, U145
+- `site:nli.org.il מפד"ל 1969 בחירות` → U259, U260
+
+**ג — Agudat Yisrael: gap.**
+- `אגודת ישראל 1969 כרזה -site:en.wikipedia.org` → U146, U50, U147, U148
+- `פועלי אגודת ישראל 1969 כרזה -site:en.wikipedia.org` → U50, U147, U158, U159
+- `site:nli.org.il אגודת ישראל 1969 בחירות` → U261, U262
+- `site:nli.org.il פועלי אגודת ישראל 1969 בחירות` → U258, U16
+
+**לע — Independent Liberals: gap.**
+- `ליברלים עצמאיים 1969 כרזה -site:en.wikipedia.org` → U122, U75, U9, U149
+- `site:nli.org.il ליברלים עצמאיים 1969 בחירות` → U263, U264
+
+**עמ — National List: gap.**
+- `רשימה ממלכתית 1969 כרזה -site:en.wikipedia.org` → U150, U151, U152, U153
+- `site:nli.org.il רשימה ממלכתית 1969 בחירות` → U265, U16
+
+**ו — Rakah: gap.**
+- `רק״ח 1969 כרזה -site:en.wikipedia.org` → U17, U127, U154, U155
+- `site:nli.org.il רק"ח 1969 בחירות` → U249, U259
+
+**רא — Progress and Development: gap.**
+- `קידמה ופיתוח 1969 כרזה -site:en.wikipedia.org` → U75, U156, U122, U157
+- `site:nli.org.il קידמה ופיתוח 1969 בחירות` → U260, U16
+
+**ד — Poalei Agudat Yisrael: gap.**
+- `פועלי אגודת ישראל 1969 כרזה -site:en.wikipedia.org` → U50, U147, U158, U159
+- `site:nli.org.il פועלי אגודת ישראל 1969 בחירות` → U258, U16
+
+**יא — Cooperation and Brotherhood: gap.**
+- `שיתוף ואחווה 1969 כרזה -site:en.wikipedia.org` → U122, U132, U160, U161
+- `site:nli.org.il שיתוף ואחווה 1969 בחירות` → U266, U267
+
+**ש — HaOlam HaZeh: gap.**
+- `העולם הזה 1969 כרזה -site:en.wikipedia.org` → U162, U144, U134, U163
+- `site:nli.org.il העולם הזה 1969 בחירות` → U268, U249
+
+**ק — Maki: gap.**
+- `מק״י 1969 כרזה -site:en.wikipedia.org` → U17, U164, U127, U155
+- `site:nli.org.il מק"י 1969 בחירות` → U269, U260
+
+**ט — Free Centre: gap.**
+- `המרכז החופשי 1969 כרזה -site:en.wikipedia.org` → U165, U75, U166, U3
+- `site:nli.org.il המרכז החופשי 1969 בחירות` → U270, U259
+
+Constituents (separate from joint-list lockups):
+
+- `israeli-labor-party` — **gap**. `מפלגת העבודה הישראלית 1969 כרזה סמל -site:en.wikipedia.org` → U165, U298.
+- `mapam` — **gap**. `מפ"ם – מפלגת הפועלים המאוחדת 1969 כרזה סמל -site:en.wikipedia.org` → U5, U4.
+- `herut` — **gap**. `תנועת החרות 1969 כרזה סמל -site:en.wikipedia.org` → U116, U296.
+- `liberal-party` — **gap**. `המפלגה הליברלית 1969 כרזה סמל -site:en.wikipedia.org` → U4, U299.
+
 ## Returned search URL index
 
 This index records search leads, including irrelevant and wrong-year returns. Inclusion is not endorsement or evidence of official origin. Repeated archive URLs belong to one evidence family, not independent corroboration.
