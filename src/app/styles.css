@@ -559,3 +559,14 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .table-action:hover { text-decoration: underline; }
 .table-action:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .cmp-label .swatch { display: inline-block; }
+
+/* The edit sheet keeps the computed consequence in view while its body scrolls. */
+.phone-result-strip { display: none; }
+.majority-context { display: flex; flex-wrap: wrap; gap: 4px 12px; padding-block: 6px; }
+.majority-context > .muted { flex-basis: 100%; }
+.majority-readout { font-weight: 600; color: var(--ink); }
+.coal-choice { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px; border: 1px solid var(--rule); border-radius: 5px; padding: 6px; }
+.election-status { color: var(--ink); }
+@media (max-width: 1100px) {
+  .side-panel .phone-result-strip { display: grid; gap: 2px; position: sticky; inset-block-start: 0; z-index: 2; background: var(--surface); border-block-end: 1px solid var(--rule-strong); padding: 8px 12px; font-size: 12.5px; flex-shrink: 0; }
+}

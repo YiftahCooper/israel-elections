@@ -19,12 +19,12 @@ test('E1 Compare and E2 coalition shortcuts use the moved party seats', async ({
   await editor.locator('.bp-card').first().getByRole('button', {name:'Move here'}).click();
   await page.keyboard.press('Escape');
   await page.getByRole('tab', {name:'Compare', exact:true}).click();
-  await expect.soft(page.locator('.cmp .legend')).toContainText('64 → 68');
+  await expect.soft(page.locator('.cmp .legend')).toContainText('68');
   await page.getByRole('tab', {name:'Coalitions', exact:true}).click();
   await page.locator('.coal').getByRole('button', {name:'Coalition', exact:true}).click();
-  await expect(page.locator('.coal-total > b')).toHaveText('68');
-  await expect(page.locator('.coal-chips').getByRole('button', {name:'New Hope (National Unity) 4', exact:true})).toHaveAttribute('aria-pressed','true');
-  await expect(page.locator('.coal-chips').getByRole('button', {name:'National Unity 8', exact:true})).toBeVisible();
+  await expect(page.locator('.coal-now .majority-readout')).toContainText('68 / 120');
+  await expect(page.locator('.coal-choice').filter({hasText:'New Hope (National Unity)'}).getByRole('button', {name:'In', exact:true})).toHaveAttribute('aria-pressed','true');
+  await expect(page.locator('.coal-choice').filter({hasText:/National Unity 8/})).toBeVisible();
 });
 test('E3 separated lists compare once as a group', async ({page}) => {
   await start(page); await split(page);

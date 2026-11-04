@@ -7,10 +7,10 @@ export interface SecurityItem { id: string; qualified: boolean; seats: number }
 export interface SecurityFigure { value: number | null; exact: boolean; reason?: SearchResult['reason']; limit: number; nonMonotonic: boolean }
 export interface SecurityRow { qualification: Partial<Record<SecurityPart, SecurityFigure>>; id: string; seats: number; gain: number | null; lose: number | null; qualify: number | null }
 /** 'qualify' for a list below the threshold; 'gain' and 'lose' for a qualified list */
-export type SecurityPart = ListGoal;
+export type SecurityPart = 'qualify' | 'gain' | 'lose';
 
 /** what a single-list search looks for: passing the threshold, one more seat, or the first loss */
-export type ListGoal = 'qualify' | 'gain' | 'lose';
+export type ListGoal = SecurityPart | 'disqualify';
 
 export type AnalysisTask =
   /** the smallest change of one list's votes that reaches the goal (the list-details boundary tools) */
@@ -44,6 +44,7 @@ export const partsOf = (item: SecurityItem): SecurityPart[] => (item.qualified ?
 
 /** One list's search; 'lose' looks for the first seat lost (or, with no seats, falling below the threshold). */
 export function listSearch(input: AllocationInput, src: VoteSource, goal: ListGoal, id: string, seats: number): SearchResult {
+  if (goal === 'disqualify') return minimalChange(input, id, src, goals.disqualify(id), 'lose');
   if (goal === 'qualify') return minimalChange(input, id, src, goals.qualify(id));
   if (goal === 'gain') return minimalChange(input, id, src, goals.seatGain(id));
   return minimalChange(input, id, src, seats > 0 ? goals.seatLoss(id) : goals.disqualify(id), 'lose');

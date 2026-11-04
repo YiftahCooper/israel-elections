@@ -1,3 +1,4 @@
+import { Majority } from './Majority.tsx';
 import { useEffect, useMemo, useState } from 'react';
 import type { AllocationResult } from '../../engine/types.ts';
 import { toEngineInput, type Scenario } from '../../model/scenario.ts';
@@ -129,10 +130,9 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
     () => minimalWinning(seated.filter((x) => !excluded.includes(x.l.id)).map((x) => ({ id: x.l.id, n: x.n })), majority, picked),
     [seated, majority, picked, excluded]);
   const nm = (id: string) => seated.find(x => x.l.id === id)!.label;
-  const toggle = (id: string) => {
-    if (picked.includes(id)) { setPicked(picked.filter((x) => x !== id)); setExcluded([...excluded, id]); }
-    else if (excluded.includes(id)) setExcluded(excluded.filter((x) => x !== id));
-    else setPicked([...picked, id]);
+  const choose = (id: string, state: string) => {
+    setPicked(xs => state === 'in' ? [...xs.filter(x => x !== id), id] : xs.filter(x => x !== id));
+    setExcluded(xs => state === 'out' ? [...xs.filter(x => x !== id), id] : xs.filter(x => x !== id));
   };
   const total = s.rules.seats;
   const sorted = [...minimal].sort((a, b) => a.n - b.n || a.ids.length - b.ids.length);
@@ -150,7 +150,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
   );
   return (
     <div className="coal">
-      <p className="small ink2" style={{ marginTop: 0 }}>{L('Build a coalition: click a list to include it, again to rule it out, a third time to clear. Arithmetic only — it says nothing about political feasibility.', 'בנו קואליציה: לחיצה מכלילה רשימה, שנייה פוסלת אותה, שלישית מנקה. חשבון בלבד — לא הערכה פוליטית.')} <Info term="minimal-winning-coalition" /> <Info term="majority-61" /></p>
+      <p className="small ink2" style={{ marginTop: 0 }}>{L('Build a coalition: choose In, Out or Any for each list. Arithmetic only — it says nothing about political feasibility.', 'בנו קואליציה: בחרו בפנים, בחוץ או כל אפשרות לכל רשימה. חשבון בלבד — לא הערכה פוליטית.')} <Info term="minimal-winning-coalition" /> <Info term="majority-61" /></p>
       {startFrom.length > 0 && (
         <div className="row" style={{ marginBottom: 8 }}>
           <span className="small ink2">{L('Start from', 'התחלה מ')}</span>
@@ -161,15 +161,14 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
       <div className="row coal-chips">
         {seated.map(({ l, n, label }) => {
           const st = picked.includes(l.id) ? 'in' : excluded.includes(l.id) ? 'out' : '';
-          return <button key={l.id} className={`chip coal ${st}`} aria-pressed={st === 'in'} onClick={() => toggle(l.id)} style={{ ['--c' as string]: l.color }}
-            aria-label={`${label} ${n}${st === 'out' ? L(' (ruled out)', ' (נפסלה)') : ''}`}>
-            <span className="swatch" style={{ background: l.color }} />{label} <b className="tabnum">{n}</b>
-          </button>;
+          return <div key={l.id} className="coal-choice">
+            <span><span className="swatch" style={{ background: l.color }} />{label} <b>{n}</b></span>
+            <Seg label={label} value={st || 'any'} onChange={v => choose(l.id, v)} options={[{ v: 'in', label: L('In', 'בפנים') }, { v: 'out', label: L('Out', 'בחוץ') }, { v: 'any', label: L('Any', 'כל אפשרות') }]} />
+          </div>;
         })}
       </div>
       <div className="coal-now">
-        <div className="coal-total"><b>{pickedSeats}</b><span>/ {total}</span>
-          {pickedSeats >= majority ? <span className="chip ok">{L('a majority', 'רוב')}</span> : <span className="ink2">{L(`${majority - pickedSeats} short of ${majority}`, `חסרים ${majority - pickedSeats} ל-${majority}`)}</span>}</div>
+        <Majority n={pickedSeats} total={total} />
         <SeatBar ids={seated.filter((x) => picked.includes(x.l.id)).map((x) => x.l.id)} big />
       </div>
       <h3 style={{ marginTop: 16 }}>{L(`Smallest winning coalitions${picked.length ? ' with your selection' : ''}`, `הקואליציות המנצחות הקטנות ביותר${picked.length ? ' עם הבחירה שלכם' : ''}`)}

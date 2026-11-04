@@ -13,7 +13,7 @@ import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtFrac, fmtInt, fmtPct, fmtRat, signed } from '../format.ts';
 import { dispatch, dispatchMany, getState, previewAction, setState, toast, useLevel, useVoteSource, useDigits } from '../store.ts';
-import { clampTarget, deltaAction, toVoteSource, votesForShare } from '../voteEdit.ts';
+import { clampTarget, deltaAction, toVoteSource, votesForShare, voteSourceLabel } from '../voteEdit.ts';
 import { Candidates } from './Candidates.tsx';
 import { JointParties } from './JointParties.tsx';
 import { DecimalInput, Info, NumberInput, TextField } from './ui.tsx';
@@ -54,13 +54,13 @@ function LiveSlider({ l, hist, thr, onCommit }: { l: SimList; hist: number; thr:
 /** Votes to the next seat and before losing one (or to pass the threshold), computed exactly in the background. */
 function useMargins(s: Scenario, l: SimList, seats: number, qualified: boolean) {
   const src = useVoteSource();
-  const [res, setRes] = useState<{ gain?: SearchResult; lose?: SearchResult; qualify?: SearchResult } | null>(null);
+  const [res, setRes] = useState<{ gain?: SearchResult; lose?: SearchResult; qualify?: SearchResult; disqualify?: SearchResult } | null>(null);
   const job = useRef<(() => void) | null>(null);
   useEffect(() => {
     setRes(null);
     if (l.withdrawn) return;
     const input = toEngineInput(s);
-    const goals = qualified ? (['gain', 'lose'] as const) : (['qualify'] as const);
+    const goals = qualified ? (['gain', 'lose', 'disqualify'] as const) : (['qualify'] as const);
     const tasks = goals.map((goal) => ({ kind: 'listSearch', input, src: toVoteSource(src), goal, id: l.id, seats } as const));
     const out: Record<string, SearchResult> = {};
     job.current = runTasks(tasks, (i, v) => { out[goals[i]] = v; if (Object.keys(out).length === goals.length) setRes({ ...out }); });
@@ -76,7 +76,20 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
   const { simple, standard, expert } = useLevel();
   const src = useVoteSource();
   const lr = r.lists.find((x) => x.id === l.id)!;
+  const previous = useRef({ id: l.id, qualified: lr.qualified });
+  const [crossing, setCrossing] = useState<boolean | null>(null);
+  useEffect(() => {
+    if (previous.current.id !== l.id) setCrossing(null);
+    else if (previous.current.qualified !== lr.qualified) setCrossing(lr.qualified);
+    previous.current = { id: l.id, qualified: lr.qualified };
+  }, [l.id, lr.qualified]);
   const margins = useMargins(s, l, lr.seats, lr.qualified);
+
+  const boundarySearch = lr.qualified ? margins?.disqualify : margins?.qualify;
+  const boundary = boundarySearch?.found && boundarySearch.votes !== null && boundarySearch.exact
+    ? l.votes + (lr.qualified ? 1 - Number(boundarySearch.votes) : Number(boundarySearch.votes)) : null;
+  const sourceName = voteSourceLabel(src, s, lang);
+  const qualifier = (m?: SearchResult) => m?.exact ? L('exact', 'מדויק') : L('sampled: upper bound, not a proven minimum', 'דגימה: חסם עליון, לא מינימום מוכח');
 
   const agr = s.agreements.find((a) => a.members.includes(l.id));
   const agrStatus = agr ? r.agreements.find((a) => a.id === agr.id) : undefined;
@@ -123,6 +136,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
     <div className="ld" role="region" aria-label={L('List details', 'פרטי רשימה')}>
       <section>
         <h3>{L('Votes', 'קולות')}</h3>
+        {!lr.qualified && Number(s.rules.thresholdPct) > 0 && <p className="small ink2">{L('Below the threshold', 'מתחת לאחוז החסימה')}</p>}
         {l.withdrawn && <p className="small callout" style={{ marginTop: 0 }}>{L(`This list has withdrawn: its ${fmtInt(l.heldVotes ?? 0)} ballots count as invalid.`, `הרשימה פרשה: ${fmtInt(l.heldVotes ?? 0)} הפתקים שלה נחשבים פסולים.`)}</p>}
         <fieldset disabled={l.withdrawn} style={{ border: 0, padding: 0, margin: 0, minWidth: 0, display: 'grid', gap: 8 }}>
           <div className="vote-edit">
@@ -137,6 +151,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
             {baseList && l.votes !== baseList.votes && <button className="btn small ghost" onClick={() => editTo(baseList.votes)}>{L(`Back to ${fmtInt(baseList.votes)}`, `חזרה ל-${fmtInt(baseList.votes)}`)}</button>}
           </div>
           <LiveSlider key={l.id} l={l} hist={histVotes} thr={thr} onCommit={editTo} />
+          <p className="small ink2" style={{ margin: 0 }}>{L('Votes come from: ', 'מקור הקולות: ')}{sourceName}</p>
           {standard ? <SourcePicker s={s} l={l} /> : <p className="small ink2" style={{ margin: 0 }}>{L('The other lists’ votes shrink or grow in proportion, so turnout stays the same.', 'הקולות של שאר הרשימות קטנים או גדלים באופן יחסי, כך שההצבעה נשארת זהה.')}</p>}
         </fieldset>
       </section>
@@ -144,7 +159,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
       {!l.withdrawn && (
         <section>
           <h3>{lr.qualified ? L('How close are the seats?', 'כמה קרובים המנדטים?') : L('How far is the threshold?', 'כמה רחוק אחוז החסימה?')}</h3>
-          {!margins ? <p className="small muted" role="status" style={{ margin: 0 }}>{L('Calculating exactly…', 'מחשב במדויק…')}</p> : (
+          {!margins ? <p className="small muted" role="status" style={{ margin: 0 }}>{L('Searching…', 'מחפש…')}</p> : (
             <div className="facts">
               {lr.qualified ? <>
                 <div>{L(`Seat ${lr.seats + 1} in`, `מנדט ${lr.seats + 1} בעוד`)}<b>{margins.gain?.found && margins.gain.votes !== null ? `+${fmtInt(margins.gain.votes)}` : reason(margins.gain)}</b>
@@ -153,10 +168,14 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
                   {margins.lose?.found && margins.lose.votes !== null && <button className="btn small ghost" style={{ paddingInline: 0 }} onClick={() => applyDelta(-Number(margins.lose!.votes))}>{L('Apply', 'החלה')}</button>}</div>
               </> : <div>{L('Passes the threshold with', 'עוברת את החסימה בתוספת')}<b>{margins.qualify?.found && margins.qualify.votes !== null ? `+${fmtInt(margins.qualify.votes)}` : reason(margins.qualify)}</b>
                 {margins.qualify?.found && margins.qualify.votes !== null && <button className="btn small ghost" style={{ paddingInline: 0 }} onClick={() => applyDelta(Number(margins.qualify!.votes))}>{L('Apply', 'החלה')}</button>}</div>}
-              <div>{L('Distance to the threshold', 'מרחק מאחוז החסימה')}<b><bdi dir="ltr">{l.votes >= thr ? '+' : '−'}{fmtInt(Math.abs(l.votes - thr))}</bdi></b></div>
+              {Number(s.rules.thresholdPct) > 0 && <div>{L('Distance to the threshold', 'מרחק מאחוז החסימה')}<b><bdi dir="ltr">{l.votes >= thr ? '+' : '−'}{fmtInt(Math.abs(l.votes - thr))}</bdi></b></div>}
             </div>
           )}
-          {!simple && <p className="tiny muted" style={{ margin: '6px 0 0' }}>{L('Exact counts for the balancing chosen under Votes; other sources give other answers.', 'מספרים מדויקים לפי האיזון שנבחר תחת "קולות"; מקורות אחרים נותנים תשובות אחרות.')}</p>}
+          {margins && <p className="tiny muted">{L('Source: ', 'מקור: ')}{sourceName} · {lr.qualified ? <>{L('Gain', 'תוספת')}: {qualifier(margins.gain)} · {L('Loss', 'אובדן')}: {qualifier(margins.lose)}</> : qualifier(margins.qualify)}</p>}
+          {Number(s.rules.thresholdPct) > 0 && boundary !== null && <div className="row threshold-checkpoints">
+            {[-1, 0, 1].map((offset) => <button key={offset} className="btn small" onClick={() => editTo(boundary + offset)}>{offset < 0 ? L('Just below', 'מעט מתחת') : offset === 0 ? L('At threshold', 'באחוז החסימה') : L('Just above', 'מעט מעל')}</button>)}
+          </div>}
+          {crossing !== null && Number(s.rules.thresholdPct) > 0 && <p className="small crossing">{crossing ? L('Passed the threshold, so qualifying votes and every allocation were recalculated.', 'עברה את אחוז החסימה, ולכן הקולות המשתתפים וכל החלוקה חושבו מחדש.') : L('Fell below the threshold, so qualifying votes and every allocation were recalculated.', 'ירדה מתחת לאחוז החסימה, ולכן הקולות המשתתפים וכל החלוקה חושבו מחדש.')} <button className="table-action" onClick={() => setState({ tool: 'walk', selectedListId: null })}>{L('Walkthrough: threshold', 'שלבי החלוקה: אחוז החסימה')}</button></p>}
         </section>
       )}
 

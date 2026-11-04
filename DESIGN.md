@@ -357,3 +357,30 @@ Coalition chips use member-assigned bloc pieces: a party seated outside its list
 its own named chip, with those seats removed from the list chip. This remains arithmetic only.
 Table names that open details are native buttons with the standard visible focus ring.
 Escape restores an uncommitted field first; otherwise it closes the open panel.
+
+
+### Continuity at the edit (Wave 1)
+The phone list sheet keeps a compact, sticky result strip above its scrolling content:
+selected seats and delta since the official result, number of lists with changed seats,
+and the selected list's assigned bloc totals. For an unassigned list, show the active
+grouping's bloc totals and explicitly say it has no assigned bloc. Reuse the live preview;
+never add another chamber. Inputs and the strip must fit together at 390×844.
+
+Majority text follows the same pattern beside the chamber, above the bloc strip, and
+above the coalition bar: “X / 120 · Y short of 61” or “Y above 61” (including zero above
+at 61). Experimental chamber sizes use their own total and majority. Name the sourced
+grouping and date, or its description when no date is recorded. Coalition members use
+explicit In / Out / Any segmented choices, with constraints and minimal winning results
+preserved.
+
+Session changes say “Since official result”; vote, agreement and grouping changes remain
+visible even without seat changes. Compare names its baseline and measures share changes
+in percentage points. Different sourced groupings are compared under the active scheme;
+custom groupings carry no invented official counterpart. Status beside the election says
+official, pending gazette, hypothetical, or experimental rule. History and undo/redo name
+edits from the existing action log.
+
+The vote-source assumption is visible at every level, read-only in Simple. Threshold
+checkpoints use the source-aware exact search: just below, first qualifying vote, just
+above. Search qualifiers travel with margins; the crossing sentence opens the threshold
+step of the walkthrough. No percentage threshold controls appear for 1949.

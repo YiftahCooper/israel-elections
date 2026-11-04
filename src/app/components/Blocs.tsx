@@ -1,3 +1,4 @@
+import { BlocMajorities } from './Majority.tsx';
 // Blocs (decision 0087): the election's sourced groupings (the first government, recognised blocs) and
 // the user's own. Seats count per seat: a constituent party of a joint list can sit in another bloc
 // than its list. Moving parties between blocs never changes votes or seats. A bloc opens its editor
@@ -55,6 +56,7 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
         <button className="btn small" aria-expanded={!!panel} onClick={() => (panel ? setState({ blocPanel: null }) : openPanel(groups[0]?.key ?? NONE))}>
           <Pencil className="icon sm" aria-hidden />{s.blocs.length ? L('Edit blocs', 'עריכת גושים') : L('Group seats into blocs', 'חלוקת המושבים לגושים')}</button>
       </div>
+      <BlocMajorities s={s} r={r} />
       <div className="strip" role="group" aria-label={groups.map((g) => `${g.label} ${g.n}`).join(', ')}>
         {groups.map((g) => (
           <button key={g.key} type="button" className="corridor" style={{ flexGrow: g.n, flexBasis: 0, ['--bc' as string]: g.color }}

@@ -40,8 +40,8 @@ test('a bloc is renamed and recoloured where it is shown, and Undo restores it',
   await editor(page).getByRole('button', { name: 'Colour of Government' }).click();
   await editor(page).getByRole('button', { name: '#c0392b' }).click();
   await expect(band(page, 'Government')).toHaveCSS('--bc', '#c0392b');
-  await page.getByRole('button', { name: 'Undo', exact: true }).click();
-  await page.getByRole('button', { name: 'Undo', exact: true }).click();
+  await page.getByRole('button', { name: /^Undo:/ }).click();
+  await page.getByRole('button', { name: /^Undo:/ }).click();
   await expect(band(page, 'Coalition')).toBeVisible();
 });
 
@@ -70,7 +70,7 @@ test('a joint list’s faction can split after the election, keeping votes and s
   // each party now has its own row of seats under the list, and its own place in the chamber
   await expect(page.getByRole('region', { name: 'Lists' }).getByRole('list', { name: /factions after the split/ }).getByText('New Hope')).toBeVisible();
   await expect(listRow(page, 'National Unity')).toContainText('12');
-  await expect(page.getByRole('status').filter({ hasText: 'What changed' })).toContainText('No seat moved');
+  await expect(page.getByRole('status').filter({ hasText: 'Since official result' })).toContainText('No seats changed');
 });
 
 test('a joint list can run as separate lists, with the vote shares stated as an assumption', async ({ page }) => {
@@ -83,6 +83,6 @@ test('a joint list can run as separate lists, with the vote shares stated as an 
   await details.getByRole('button', { name: 'Run as 2 separate lists' }).click();
   await expect(listRow(page, 'Agudat Yisrael')).toBeVisible();
   await expect(listRow(page, 'Degel HaTorah').locator('.lb-seats b')).toHaveText('0'); // below the threshold on its own
-  await page.getByRole('button', { name: 'Undo', exact: true }).click();
+  await page.getByRole('button', { name: /^Undo:/ }).click();
   await expect(listRow(page, 'United Torah Judaism')).toBeVisible();
 });

@@ -1,3 +1,4 @@
+import { BlocMajorities } from './Majority.tsx';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario, SimList } from '../../model/scenario.ts';
@@ -213,6 +214,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title }: { s: Sc
 
   return (
     <div className="chamber">
+      <BlocMajorities s={s} r={r} />
       {expert && !compactProp && (
         <div className="row chamber-tools" style={{ justifyContent: 'flex-end', gap: 6, marginBottom: 4 }}>
           <Seg label={L('Chamber layout', 'פריסה')} value={layout} onChange={(v) => setState({ layout: v })} options={[{ v: 'hemicycle', label: L('Arc', 'קשת') }, { v: 'blocks', label: L('Blocks', 'גושים') }]} />
