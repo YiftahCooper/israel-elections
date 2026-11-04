@@ -15,8 +15,9 @@ For browser tests, first run `npm run build`, install Chromium with
 `npx playwright install chromium`, then run `npm run test:e2e`.
 Playwright serves the build on port 4174 using `playwright.config.ts` and puts results
 in `.backup-scratch/test-results/`. CI installs Chromium with `--with-deps` on Linux.
-Outside CI an existing server on 4174 is reused, which may serve another checkout's build; set
-`PW_PORT` (for example `PW_PORT=4190 npm run test:e2e`) to start a fresh server on that port.
+Outside CI, without `PW_PORT`, an existing server on 4174 is reused, which may serve
+another checkout's build. Set `PW_PORT` (for example `PW_PORT=4190 npm run test:e2e`)
+to require a fresh server on that port; an occupied port fails.
 
 [CI](../.github/workflows/ci.yml) runs dependency installation, TypeScript checking,
 a dataset rebuild, unit tests, the production build and Chromium end-to-end tests.
@@ -107,6 +108,12 @@ aggregation and reconciliation, locality datasets), `roster.ts` (rank contiguity
 not-seated candidates), `records.ts` (list and agreement records, seat order), `cec-html.ts`
 (CEC national-results pages) and `output.ts` (the no-churn writer). Serialized key order still
 differs between eras; `records.ts` keeps each era's order so that rebuilt files stay identical.
+
+Before writing each dataset, `finalizeDataset` in `scripts/lib/build/finalize.ts` sorts
+lists into seat order, applies candidate notes (`notes.ts`) and merges party, bloc and colour
+metadata (`meta.ts`). Release tests use the same step when comparing a builder's output to
+the published dataset; testing the bare builder would omit these fields. See [metadata](DATA.md#party-bloc-colour-and-candidate-metadata).
+
 `scripts/lib/parse-historical-gazette.ts` is an unfinished prototype outside the build. Historical polling-station working copies
 are recovered into `.backup-scratch/raw/`; see [DATA.md](DATA.md) and decision
 [0004](decisions/0004-polling-station-storage.md) for storage and recovery details.
@@ -116,6 +123,10 @@ source inputs, accepted outputs and the provenance needed to reproduce them outs
 scratch. The lockfile pins npm dependencies; with unchanged inputs a rebuild leaves every
 generated file byte-for-byte identical. Do not create a second data ledger.
 
+Design review findings are archived in [`.impeccable/critique/`](../.impeccable/critique/),
+including the 4 November 2026 critique. [PRODUCT.md](../PRODUCT.md) records the intended
+audience and product principles, with inferences marked for owner review.
+
 ## Test scope and current limits
 
 Vitest covers official 2022 seats, reported 2026 final-count seats, exact threshold and
@@ -123,11 +134,28 @@ agreement cases, randomised D’Hondt comparisons, scenario actions, vote edits 
 The 2026 comparison is explicitly secondary; `officialSeats` remains null in that dataset.
 Per-election tests (`tests/historical-kNN.test.ts`) reproduce the official seats of 2009–2021.
 
+`tests/differential.test.ts` locks full serialised outputs with digests for allocation,
+analysis, model actions, validation and rules. Its seeded corpus includes every dataset
+under different rule sets, random elections, searches, action sequences and damaged imports.
+A changed digest means output changed; investigate before re-recording. The corpus reads
+`public/data/`, so source corrections and metadata changes can also change digests.
+Re-record only for a reviewed, intended output change; for a refactor, compare old and new
+code against the same data. The comparison helper named in the test documents:
+
+```sh
+mkdir -p .backup-scratch/old
+git archive <old-rev> src | tar -x -C .backup-scratch/old
+node tests/differential-compare.ts .backup-scratch/old/src src
+```
+
+The helper reports differing cases per family. With one root
+(`node tests/differential-compare.ts src`) it prints digests for a deliberate re-recording.
+
 Playwright covers the election picker, interface levels and a scenario involving a merger,
 added voters, an agreement change, boundary tools, comparison, saving and share-link replay.
 These tests do not certify all possible scenarios or constitute an accessibility audit.
 
-Not implemented: released 1949–1999 datasets, complete 2003/2006 rosters, English candidate transliterations,
+All 26 elections are available. Not implemented: complete 1949–2006 rosters, English candidate transliterations,
 candidate portraits/party logos, later membership replacements and polling-station-level
 simulation. Locality results can seed a hypothetical turnout model; that model is not
 an official forecast.

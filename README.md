@@ -9,23 +9,28 @@ understand seat allocation, with detailed tools for researchers and developers.
 ## What you can do
 
 Choose an election, select a list and change its votes to watch the seats move.
-The three interface levels use the same exact Bader–Ofer allocation engine:
+The three interface levels use the same exact engine, with the rules of the chosen election:
 
 | Level | Tools |
 |---|---|
-| **Simple** (default) | Chamber and party cards, vote editing balanced proportionally across other lists, elected candidates, “What if…”, coalitions, allocation walkthrough and sources. Undo and start over. |
-| **Standard** | Adds a choice of vote source, comparisons, mergers, splits and surplus agreements, seat security, charts and change history. Save, share, import and export scenarios; withdraw or remove lists. |
-| **Expert** | Adds candidate and list identity editing, turnout models, sensitivity analysis, experimental electoral rules, locality results and chamber display options. |
+| **Simple** (default) | Chamber, list cards, proportionally balanced vote edits, elected candidates with notes, and joint-list parties. Per-election blocs: first government or recognised groupings. “What if…”, coalitions, walkthrough, sources and undo. |
+| **Standard** | Adds vote-source choices, comparisons, mergers/splits, surplus agreements, seat security, charts and history. Edit blocs as “Your grouping”, move constituent parties to another bloc, or “Run as separate lists” with editable vote-share assumptions. Save, share, import/export and withdraw/remove lists. |
+| **Expert** | Adds candidate/identity editing, turnout, sensitivity, localities and chamber options. Experimental methods include D’Hondt, modified Sainte-Laguë and largest remainder with a Droop quota. Separate runs also show vote counts. |
 
 Hebrew is the default, with right-to-left layout. English and light/dark themes are available.
-The election picker marks unfinished datasets as “not yet available”.
+Info icons open a 47-term bilingual glossary with learn-more links to the law, CEC or
+Israel Democracy Institute; terms appear at the relevant interface level. Candidate notes
+explain misprints and members replaced before a Knesset’s first sitting, without changing
+who the simulation seats.
 
 ## Data and provenance
 
 Votes, candidates and surplus agreements come from Central Elections Committee (CEC),
 data.gov.il and Reshumot sources. Raw files and a manifest record source URLs, retrieval
 times and SHA-256 hashes. Two 2026 candidate rosters use a labelled secondary source.
-Colours, short names and default blocs are assigned by the app.
+Sourced party, bloc and colour research supplements the official results; colours fall back
+to the app palette where needed. Short names are app metadata. English Wikipedia is never
+used or linked; Hebrew Wikipedia is labelled secondary.
 
 **Available:** all 26 elections from 1949 to 2026. Every member
 elected is listed; for 1949–2006 some lists' later candidates (and a few rosters of lists that won no seats) are
@@ -95,6 +100,7 @@ Read [Data coverage](docs/DATA.md) before changing sources or publishing rebuilt
 | `src/data/` | Dataset types and versioning |
 | `scripts/` | Source fetching and dataset building |
 | `data/raw/` | Retained sources and provenance manifest |
+| `data/meta/` | Party, bloc and colour research and sourced candidate notes |
 | `public/data/` | Generated datasets loaded by the app |
 | `tests/` | Unit, property and browser tests |
 | `docs/` | Data, law, development and decision records |
