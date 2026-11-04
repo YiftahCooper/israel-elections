@@ -384,3 +384,32 @@ The vote-source assumption is visible at every level, read-only in Simple. Thres
 checkpoints use the source-aware exact search: just below, first qualifying vote, just
 above. Search qualifiers travel with margins; the crossing sentence opens the threshold
 step of the walkthrough. No percentage threshold controls appear for 1949.
+
+### Scenario references and identity (bounded first pass)
+
+The saved or loaded action-log replay is the marker reference; otherwise it is the official
+result. A browser preference can pin markers to the official result. All input glyphs use
+`differsFromReference` with stable entity-ID paths. Saving quiets markers while the scenario
+keeps its identity. “Since …” and Compare name the saved reference; Compare also offers the
+official result explicitly. Candidate order is an input, not just candidate membership.
+
+Scenario identity uses a reserved five-colour palette (violet, slate, ochre, mauve, sage).
+The official treatment is the untinted navy shell with neutral frames, outside that palette.
+Scenario colour affects only the band, board frame and comparison frames. The existing
+status position contains one quiet swatch-and-name chip, with changes expanded on demand;
+there is no collapsed count or repeated hypothetical label. Saved choices and the gallery
+show identity swatches. Edit glyphs use neutral ink and an outline; hover and keyboard focus
+explain the previous value in the active language. Export annotations describe edited inputs;
+exports add no scenario footer or extra scenario text (owner revision, 4 November 2026).
+
+`StartFrom` is the shared starting-point selector. This pass connects blocs, agreements,
+rules and coalitions to one `startPart` action, replayable and undoable as one step. Blocs
+can start as a named pair of empty neutral blocs with every list, party and member unassigned;
+the plus button invokes that same blank action. Rules offer sourced era presets; agreements
+and coalitions offer meaningful blank states. Saved parts come from same-election logs;
+agreements referencing missing lists are refused. Coalition choices now live in the scenario
+log, preserving undo, share and saved-part reuse rather than disappearing on navigation.
+
+Deferred under the owner's bounded-scope instruction: starting-point UI/actions for votes,
+list identity, structure, candidates and turnout/totals; the feature registry, in-place level
+disclosures and Custom preferences/page. The three existing levels retain their defaults.

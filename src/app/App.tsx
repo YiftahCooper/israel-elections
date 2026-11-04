@@ -1,4 +1,6 @@
 import { createElement, memo, Suspense, use, useEffect, useState, type ReactNode } from 'react';
+import { scenarioColor } from './scenarioIdentity.ts';
+import { referenceChanges } from './derive.ts';
 import { X } from 'lucide-react';
 import { allocationOf, baselineOf, ruleChanges, scenarioIssues, tieAffectsSeats, warningText } from './derive.ts';
 import { LangContext, useL } from './i18n.ts';
@@ -111,6 +113,7 @@ export function App() {
 
 function Shell() {
   const L = useL();
+  const reference = useStore(st => st.reference);
   const committed = useStore((st) => st.scenario);
   const preview = useStore((st) => st.preview);
   const ds = useStore((st) => (st.scenario ? st.datasets[st.scenario.electionId] : undefined));
@@ -194,7 +197,7 @@ function Shell() {
   const drawerOpen = tool !== 'board' && !!selected && drawerFor === selected;
 
   return (
-    <div className="app">
+    <div className="app" style={{ ['--scenario-color' as string]: reference || referenceChanges(s, base).length || s.identityColor ? scenarioColor(s) : undefined }}>
       <TopBar s={committed} r={cr} ds={ds} baseR={baseR} />
       <nav className="toolbar" aria-label={L('Tools', 'כלים')}><div className="tabs" role="tablist" aria-label={L('Tools', 'כלים')}>
                 {ordered.map((t, i) => [

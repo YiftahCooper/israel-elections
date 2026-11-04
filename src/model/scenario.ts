@@ -1,6 +1,7 @@
 // Editable simulation state. A Scenario is a full, self-contained copy of an election's inputs;
 // the historical dataset it was created from is never modified. Every displayed figure is derived
 // from a Scenario through the engine — no totals are stored separately.
+import type { Part, PartSnapshot } from './parts.ts';
 import { ELECTION_IDS, type BlocDef, type BlocScheme, type CandidateBio, type ElectionDataset, type ElectionId, type LogoRef, type PartyDef, type PartyLink } from '../data/schema.ts';
 import { percentToRational, toPercentString } from '../engine/rational.ts';
 import type { AllocationInput, RemainderMethod, RuleSet } from '../engine/types.ts';
@@ -82,6 +83,8 @@ export interface Scenario {
   name: string;
   /** what the scenario explores, in the author's words (optional) */
   description?: string;
+  identityColor?: string;
+  coalition?: { in: string[]; out: string[] };
   electionId: ElectionId;
   /** sha of the dataset build the scenario was created from (detects later data corrections) */
   baseBuiltAt: string;
@@ -95,6 +98,7 @@ export interface Scenario {
   /** sourced bloc schemes of the election (decision 0087); the active one, or null once edited */
   blocSchemes?: BlocScheme[];
   blocSchemeId?: string | null;
+  customGroupingName?: string;
   /** bloc of a constituent party, overriding its list's bloc for the seats its members hold */
   partyBlocs?: Record<string, string | null>;
   /** bloc of an individual candidate, overriding party and list */
@@ -108,6 +112,9 @@ export interface Scenario {
 
 // Actions are plain data so they can be logged, replayed, shared and undone.
 export type Action =
+  | { type: 'setIdentityColor'; color: string }
+  | { type: 'setCoalition'; coalition: { in: string[]; out: string[] } }
+  | { type: 'startPart'; part: Part; source: 'official' | 'saved' | 'blank' | 'preset'; snapshot?: PartSnapshot; name?: string; presetId?: string }
   | { type: 'setVotes'; listId: string; votes: number }
   | { type: 'transfer'; from: string; to: string; votes: number }
   /** demographic:true allows signed deltas; resulting counts must remain nonnegative. */
@@ -126,7 +133,7 @@ export type Action =
   | { type: 'setRules'; patch: Partial<SimRules> }
   | { type: 'setMode'; mode: Scenario['mode'] }
   | { type: 'setTotals'; registered?: number; invalid?: number }
-  | { type: 'setBlocs'; blocs: BlocDef[] }
+  | { type: 'setBlocs'; blocs: BlocDef[]; name?: string; unassignAll?: boolean }
   | { type: 'applyBlocScheme'; schemeId: string }
   /** inherit: drop the party's own bloc so its seats follow its list again */
   | { type: 'setPartyBloc'; partyId: string; bloc: string | null; inherit?: boolean }
@@ -319,7 +326,12 @@ const stringMap = (value: Check): Check => (x) => record(x) && Object.values(x).
 const strings = array(string);
 const blocScheme = shape({ id: string, kind: oneOf('government', 'parliamentary', 'pre-election'), nameHe: string, nameEn: string, date: optional(string),
   blocs: array(shape({ id: string, nameHe: string, nameEn: string, color: string, lists: strings, parties: strings, candidates: strings })) });
+const coalition = shape({ in: uniqueStrings, out: uniqueStrings });
+const partSnapshotCheck = shape({ blocs: optional(array(bloc)), blocSchemeId: optional(nullable(string)), customGroupingName: optional(string), partyBlocs: optional(stringMap(nullable(string))), candidateBlocs: optional(stringMap(nullable(string))), listBlocs: optional(stringMap(nullable(string))), agreements: optional(array(agreement)), rules: optional(rules), mode: optional(oneOf('historical', 'experimental')), coalition: optional(coalition) });
 const actionFields: Record<Action['type'], Check> = {
+  setIdentityColor: shape({ color: oneOf('#65508a', '#486b78', '#77633d', '#80556a', '#526c55') }),
+  setCoalition: shape({ coalition }),
+  startPart: shape({ part: oneOf('votes', 'identity', 'structure', 'agreements', 'blocs', 'coalitions', 'candidates', 'rules', 'totals'), source: oneOf('official', 'saved', 'blank', 'preset'), snapshot: optional(partSnapshotCheck), name: optional(string), presetId: optional(string) }),
   setVotes: shape({ listId: string, votes: whole }),
   transfer: shape({ from: string, to: string, votes: whole }),
   addVoters: (x) => record(x) && (x.demographic === true
@@ -335,7 +347,7 @@ const actionFields: Record<Action['type'], Check> = {
   setAgreement: shape({ agreement }), removeAgreement: shape({ id: string }),
   candidates: shape({ listId: string, candidates, note: string }),
   setRules: shape({ patch: partial(ruleFields) }), setMode: shape({ mode: oneOf('historical', 'experimental') }),
-  setTotals: shape({ registered: optional(whole), invalid: optional(whole) }), setBlocs: shape({ blocs: array(bloc) }), applyBlocScheme: shape({ schemeId: string }),
+  setTotals: shape({ registered: optional(whole), invalid: optional(whole) }), setBlocs: shape({ blocs: array(bloc), name: optional(string), unassignAll: optional(boolean) }), applyBlocScheme: shape({ schemeId: string }),
   setPartyBloc: shape({ partyId: string, bloc: nullable(string), inherit: optional(boolean) }),
   setFactionSplit: shape({ listId: string, split: boolean }),
   setLottery: shape({ key: string, winner: nullable(string) }),
@@ -348,7 +360,7 @@ const actionFields: Record<Action['type'], Check> = {
     x.what === 'totals' && optional(whole)(x.registered) && optional(whole)(x.invalid) ||
     x.what === 'blocs' && optional(array(bloc))(x.blocs) && optional(stringMap(nullable(string)))(x.listBlocs)),
 };
-const action: Check = (x) => record(x) && typeof x.type === 'string' && Object.hasOwn(actionFields, x.type) && actionFields[x.type as Action['type']](x);
+export const validAction: Check = (x) => record(x) && typeof x.type === 'string' && Object.hasOwn(actionFields, x.type) && actionFields[x.type as Action['type']](x);
 
 /** Full structural validation of an imported scenario; returns problems rather than throwing. */
 export function validateScenario(x: unknown): string[] {
@@ -358,6 +370,9 @@ export function validateScenario(x: unknown): string[] {
   if (s.schema !== SCENARIO_SCHEMA) e.push('not a scenario file exported by this application');
   if (s.version !== SCENARIO_VERSION) e.push('unsupported scenario version');
   if (![s.id, s.name, s.baseBuiltAt].every(string)) e.push('missing scenario identity or build timestamp');
+  if (!optional(oneOf('#65508a', '#486b78', '#77633d', '#80556a', '#526c55'))(s.identityColor)) e.push('invalid scenario colour');
+  if (!optional(coalition)(s.coalition)) e.push('invalid coalition choices');
+  if (!optional(string)(s.customGroupingName)) e.push('invalid grouping name');
   if (!optional(string)(s.description)) e.push('invalid description');
   const electionKnown = ELECTION_IDS.includes(s.electionId as ElectionId);
   if (!electionKnown) e.push(`unknown election "${String(s.electionId)}"`);
@@ -415,6 +430,6 @@ export function validateScenario(x: unknown): string[] {
     }
   }
   if (!stringMap(string)(s.lotteryWinners)) e.push('invalid lottery outcomes');
-  if (!array(shape({ at: string, action }))(s.log)) e.push('invalid change log');
+  if (!array(shape({ at: string, action: validAction }))(s.log)) e.push('invalid change log');
   return e;
 }

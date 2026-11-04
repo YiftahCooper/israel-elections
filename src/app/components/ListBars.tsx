@@ -1,3 +1,5 @@
+import { allocationOf } from '../derive.ts';
+import { PartEdits } from './PartEdits.tsx';
 // The lists as a visual column: each list is a row with its logo, name and a seat bar (its official seats shown
 // as a faint outline when they differ). Lists that won no seat show how far they are from the threshold instead.
 // Choosing a row opens the list in the side panel.
@@ -14,6 +16,8 @@ import { Slip } from './ui.tsx';
 export const Mark = ({ up }: { up: boolean }) => <svg className="mark" viewBox="0 0 10 10" width={8} height={8} aria-hidden><path d={up ? 'M5 1 9.5 9H.5z' : 'M5 9 .5 1h9z'} fill="currentColor" /></svg>;
 
 export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResult; base: Scenario; baseR: AllocationResult }) {
+  const reference = useStore(st => st.markOfficial ? null : st.reference);
+  if (reference) { base = reference; baseR = allocationOf(reference); }
   const L = useL();
   const lang = useLang();
   const digits = useDigits();
@@ -50,7 +54,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
           title={l.logo ? l.nameHe : `${l.nameHe} — ${L('ballot letters (no logo is sourced for this election yet)', 'אותיות הפתק (טרם נמצא סמל ממקור לבחירות אלה)')}`}>
           <Slip letters={l.letters} color={l.color} logo={l.logo} />
           <span className="lb-main">
-            <span className="lb-name">{listLabel(l, lang)}</span>
+            <span className="lb-name">{listLabel(l, lang)}<PartEdits s={s} prefix={['lists', l.id]} /></span>
             <span className="lb-bar" aria-hidden>
               {out
                 ? <><i className="thr-fill" style={{ width: `${Math.min(100, (l.votes / Math.max(1, thr)) * 100)}%`, background: l.color }} /><span className="thr-tick" /></>

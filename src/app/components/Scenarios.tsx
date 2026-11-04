@@ -1,6 +1,9 @@
+import { exportAnnotations } from '../scenarioExport.ts';
 // Scenarios as first-class things: the current one with its name and description, and every saved one as a
 // card with its result drawn, to open, compare, export, share or delete. Built-in "What if" questions open here
 // as named scenarios too.
+import { SCENARIO_PALETTE, scenarioColor } from '../scenarioIdentity.ts';
+import { dispatch } from '../store.ts';
 import { useMemo, useRef, useState } from 'react';
 import { Copy, Download, FolderOpen, GitCompare, Link2, RotateCcw, Save, Trash2, Upload } from 'lucide-react';
 import type { ElectionDataset } from '../../data/schema.ts';
@@ -46,15 +49,17 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
   const edit = (patch: Partial<Scenario>) => setState({ scenario: { ...s, ...patch } });
   const open = (x: SavedScenario) => openElection(x.electionId, { name: x.name, description: x.description, log: x.log, baseBuiltAt: x.baseBuiltAt })
     .then(() => setState((st) => ({ scenario: st.scenario ? { ...st.scenario, id: x.id } : null, tool: 'board' })));
-  const exportJson = (sc: Scenario) => download(`${sc.electionId}-${fileName(sc.name)}.json`, JSON.stringify({ ...sc, datasetBuiltAt: ds.buildInfo.builtAt }, null, 1), 'application/json');
+  const exportJson = (sc: Scenario) => download(`${sc.electionId}-${fileName(sc.name)}.json`, JSON.stringify({ ...sc, ...exportAnnotations(sc, lang), datasetBuiltAt: ds.buildInfo.builtAt }, null, 1), 'application/json');
 
   return (
     <div className="scn">
       <section className="scn-current">
         <h3>{L('This scenario', 'התרחיש הנוכחי')} <span className="muted" style={{ fontWeight: 400 }}>· {electionName(s.electionId)} · {L(`${s.log.length} edits`, `${s.log.length} שינויים`)}</span></h3>
+        <label className="field">{L('Scenario colour', 'צבע התרחיש')}<select aria-label={L('Scenario colour', 'צבע התרחיש')} value={scenarioColor(s)} onChange={e => dispatch({ type: 'setIdentityColor', color: e.target.value })}>{SCENARIO_PALETTE.map((c, i) => <option key={c} value={c}>{L(['Violet', 'Slate', 'Ochre', 'Mauve', 'Sage'][i], ['סגול', 'כחלחל', 'אוכרה', 'סגלגל', 'מרווה'][i])}</option>)}</select></label>
+        <label className="field">{L('Mark differences from', 'סימון הבדלים לעומת')}<select aria-label={L('Mark differences from', 'סימון הבדלים לעומת')} value={useStore(st => st.markOfficial) ? 'official' : 'reference'} onChange={e => setState({ markOfficial: e.target.value === 'official' })}><option value="reference">{L('The loaded scenario', 'התרחיש הטעון')}</option><option value="official">{L('Always the official result', 'תמיד התוצאה הרשמית')}</option></select></label>
         <div className="scn-form">
           <label className="field">{L('Name', 'שם')}
-            <input type="text" value={s.name} placeholder={L('e.g. “Arab turnout returns to 2015 levels”', 'למשל "שיעור ההצבעה בחברה הערבית חוזר לרמת 2015"')} onChange={(e) => edit({ name: e.target.value })} /></label>
+            <input type="text" value={s.name} placeholder={L('e.g. “Arab turnout returns to 2015 levels”', 'למשל "שיעור ההצבעה בחברה הערבית חוזר לרמת 2015"')} onChange={(e) => dispatch({ type: 'rename', name: e.target.value })} /></label>
           <label className="field">{L('Description', 'תיאור')}
             <textarea rows={2} value={s.description ?? ''} placeholder={L('What does this scenario explore, and why?', 'מה התרחיש בודק, ולמה?')} onChange={(e) => edit({ description: e.target.value || undefined })} /></label>
         </div>
@@ -76,7 +81,7 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
           try {
             const sc = importScenarioJson(await f.text());
             await openElection(sc.electionId);
-            const st = getState(); setState({ scenario: sc, past: st.scenario && st.scenario.electionId === sc.electionId ? [...st.past, st.scenario] : st.past, future: [] });
+            const st = getState(); setState({ scenario: sc, reference: sc, past: st.scenario && st.scenario.electionId === sc.electionId ? [...st.past, st.scenario] : st.past, future: [] });
             toast('info', L('Scenario imported.', 'התרחיש יובא.'));
           } catch (err) { toast('error', err instanceof Error ? err.message : String(err)); }
           e.target.value = '';
@@ -91,7 +96,7 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
             const res = results.get(x.id);
             return (
               <li key={x.id} className={`scn-card ${x.id === s.id ? 'current' : ''}`}>
-                <div className="scn-title"><b>{x.name}</b><span className="small muted">{electionName(x.electionId)} · {new Date(x.savedAt).toLocaleDateString(lang === 'he' ? 'he-IL' : 'en-GB')}</span></div>
+                <div className="scn-title"><span className="swatch" style={{ background: scenarioColor(res?.sc ?? {}) }} /><b>{x.name}</b><span className="small muted">{electionName(x.electionId)} · {new Date(x.savedAt).toLocaleDateString(lang === 'he' ? 'he-IL' : 'en-GB')}</span></div>
                 {x.description && <p className="small ink2" style={{ margin: 0 }}>{x.description}</p>}
                 {res ? <ResultBar s={res.sc} r={res.r} /> : <p className="tiny muted" style={{ margin: 0 }}>{L('Open it to see its result.', 'פתחו כדי לראות את התוצאה.')}</p>}
                 <div className="row" style={{ gap: 4 }}>

@@ -1,3 +1,6 @@
+import { dispatch } from '../store.ts';
+import { StartFrom } from './StartFrom.tsx';
+import { EditMarker } from './EditMarker.tsx';
 import { Majority } from './Majority.tsx';
 import { useEffect, useMemo, useState } from 'react';
 import type { AllocationResult } from '../../engine/types.ts';
@@ -115,14 +118,8 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
     return { l: { id: p.id, color: p.color, bloc: p.bloc }, n: p.n, label };
   });
   const majority = Math.floor(s.rules.seats / 2) + 1;
-  const [picked, setPicked] = useState<string[]>([]);
-  const [excluded, setExcluded] = useState<string[]>([]);
-  // a list that has lost its seats (after an edit) can no longer be part of a coalition
-  useEffect(() => {
-    const ids = new Set(seated.map((x) => x.l.id));
-    if (picked.some((p) => !ids.has(p))) setPicked(picked.filter((p) => ids.has(p)));
-    if (excluded.some((p) => !ids.has(p))) setExcluded(excluded.filter((p) => ids.has(p)));
-  }, [seated, picked, excluded]);
+  const picked = s.coalition?.in ?? [];
+  const excluded = s.coalition?.out ?? [];
   const pickedSeats = seated.filter((x) => picked.includes(x.l.id)).reduce((t, x) => t + x.n, 0);
   // pruned search (src/app/coalitions.ts): same coalitions and order as the former 2^N enumeration,
   // without its 18-list limit; it stops at 100,000 coalitions and says so
@@ -131,8 +128,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
     [seated, majority, picked, excluded]);
   const nm = (id: string) => seated.find(x => x.l.id === id)!.label;
   const choose = (id: string, state: string) => {
-    setPicked(xs => state === 'in' ? [...xs.filter(x => x !== id), id] : xs.filter(x => x !== id));
-    setExcluded(xs => state === 'out' ? [...xs.filter(x => x !== id), id] : xs.filter(x => x !== id));
+    dispatch({ type: 'setCoalition', coalition: { in: state === 'in' ? [...picked.filter(x => x !== id), id] : picked.filter(x => x !== id), out: state === 'out' ? [...excluded.filter(x => x !== id), id] : excluded.filter(x => x !== id) } });
   };
   const total = s.rules.seats;
   const sorted = [...minimal].sort((a, b) => a.n - b.n || a.ids.length - b.ids.length);
@@ -149,13 +145,13 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
     </div>
   );
   return (
-    <div className="coal">
+    <div className="coal"><div className="row"><StartFrom s={s} part="coalitions" /><EditMarker s={s} path={['coalition']} /></div>
       <p className="small ink2" style={{ marginTop: 0 }}>{L('Build a coalition: choose In, Out or Any for each list. Arithmetic only — it says nothing about political feasibility.', 'בנו קואליציה: בחרו בפנים, בחוץ או כל אפשרות לכל רשימה. חשבון בלבד — לא הערכה פוליטית.')} <Info term="minimal-winning-coalition" /> <Info term="majority-61" /></p>
       {startFrom.length > 0 && (
         <div className="row" style={{ marginBottom: 8 }}>
           <span className="small ink2">{L('Start from', 'התחלה מ')}</span>
-          {startFrom.map(({ b, ids }) => <button key={b.id} className="btn small" onClick={() => { setPicked(ids); setExcluded([]); }}><span className="swatch" style={{ background: b.color }} />{blocName(b)}</button>)}
-          {(picked.length > 0 || excluded.length > 0) && <button className="btn small ghost" onClick={() => { setPicked([]); setExcluded([]); }}>{L('Clear', 'ניקוי')}</button>}
+          {startFrom.map(({ b, ids }) => <button key={b.id} className="btn small" onClick={() => { dispatch({ type: 'setCoalition', coalition: { in: ids, out: [] } }); }}><span className="swatch" style={{ background: b.color }} />{blocName(b)}</button>)}
+          {(picked.length > 0 || excluded.length > 0) && <button className="btn small ghost" onClick={() => { dispatch({ type: 'setCoalition', coalition: { in: [], out: [] } }); }}>{L('Clear', 'ניקוי')}</button>}
         </div>
       )}
       <div className="row coal-chips">
@@ -178,7 +174,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
       <ul className="coal-list">
         {shown.map((c) => (
           <li key={c.ids.join()}>
-            <button type="button" onClick={() => { setPicked(c.ids); setExcluded([]); }}>
+            <button type="button" onClick={() => { dispatch({ type: 'setCoalition', coalition: { in: c.ids, out: [] } }); }}>
               <span className="coal-n">{c.n}</span>
               <SeatBar ids={c.ids} />
               <span className="coal-names">{c.ids.map(nm).join(' · ')}</span>

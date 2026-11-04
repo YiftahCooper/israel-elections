@@ -1,5 +1,4 @@
-// Application state. One authoritative Scenario per open election; everything visible is derived
-// from it. Undo/redo keeps whole snapshots (scenarios share unchanged lists structurally).
+// Application state. Undo/redo keeps immutable scenario snapshots; saved scenarios remain action logs.
 import { useSyncExternalStore } from 'react';
 import type { ElectionDataset, ElectionId, ElectionIndexEntry } from '../data/schema.ts';
 import { ActionError, applyAction } from '../model/actions.ts';
@@ -24,6 +23,8 @@ export interface State {
   scenario: Scenario | null;
   /** a live, unlogged preview of the scenario while a control is being dragged (committed on release) */
   preview: Scenario | null;
+  reference: Scenario | null;
+  markOfficial: boolean;
   past: Scenario[];
   future: Scenario[];
   selectedListId: string | null;
@@ -48,7 +49,7 @@ export interface State {
   /** how every vote edit on a list is balanced (shared by all vote controls) */
   voteSource: SourceChoice;
   /** per-election work kept while switching elections (scenario + undo history) */
-  sessions: Partial<Record<ElectionId, { scenario: Scenario; past: Scenario[]; future: Scenario[] }>>;
+  sessions: Partial<Record<ElectionId, { scenario: Scenario; past: Scenario[]; future: Scenario[]; reference: Scenario | null }>>;
 }
 
 const LS = 'israel-elections:v1';
@@ -71,7 +72,7 @@ export async function loadElectionIndex() {
 const persisted = (() => { try { return JSON.parse(globalThis.localStorage?.getItem(LS) ?? '{}'); } catch { return {}; } })();
 
 let state: State = {
-  datasets: {}, elections: FALLBACK_INDEX, electionId: 'k26', scenario: null, preview: null, past: [], future: [], selectedListId: null, blocPanel: null, tool: null, compareWith: 'historical',
+  datasets: {}, elections: FALLBACK_INDEX, electionId: 'k26', scenario: null, preview: null, reference: null, markOfficial: persisted.markOfficial === true, past: [], future: [], selectedListId: null, blocPanel: null, tool: null, compareWith: 'historical',
   lang: persisted.lang ?? 'he', theme: persisted.theme ?? (globalThis.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
   level: migrateLevel(persisted.level), hintDismissed: persisted.hintDismissed === true, digits: persisted.digits ?? 2, layout: 'hemicycle', colorBy: 'list',
   saved: persisted.saved ?? [], toast: null, loadError: null, notice: null, voteSource: { kind: 'proportional' }, sessions: {},
@@ -80,7 +81,7 @@ const listeners = new Set<() => void>();
 const emit = () => { for (const l of listeners) l(); };
 /** Writes settings and saved scenarios; returns false if the browser refused (full or disabled). */
 const persist = (): boolean => {
-  try { localStorage.setItem(LS, JSON.stringify({ lang: state.lang, theme: state.theme, level: state.level, hintDismissed: state.hintDismissed, digits: state.digits, saved: state.saved })); return true; }
+  try { localStorage.setItem(LS, JSON.stringify({ lang: state.lang, theme: state.theme, level: state.level, markOfficial: state.markOfficial, hintDismissed: state.hintDismissed, digits: state.digits, saved: state.saved })); return true; }
   catch { return false; }
 };
 
@@ -188,23 +189,25 @@ export async function openElection(id: ElectionId, from?: { name: string; descri
     const ds = await loadDataset(id);
     if (seq !== openSeq) return false; // a later request superseded this one
     // keep the work of the election we are leaving, so switching back restores it (with undo)
-    const leaving = state.scenario ? { [state.scenario.electionId]: { scenario: state.scenario, past: state.past, future: state.future } } : {};
+    const leaving = state.scenario ? { [state.scenario.electionId]: { scenario: state.scenario, past: state.past, future: state.future, reference: state.reference } } : {};
     const sessions = { ...state.sessions, ...leaving };
     let scenario = scenarioFromDataset(ds);
     let past: Scenario[] = []; let future: Scenario[] = [];
+    let reference: Scenario | null = null;
     let notice: string | null = null;
     if (from) {
       const r = replay(ds, from.name, from.log);
       scenario = from.description ? { ...r.scenario, description: from.description } : r.scenario;
+      reference = scenario;
       if (state.scenario?.electionId === id) past = [...state.past, state.scenario];
       const he = state.lang === 'he';
       if (r.failed) notice = he ? `${r.failed} שינויים לא ניתן היה להחיל מחדש על הנתונים הנוכחיים.` : `${r.failed} change(s) could not be re-applied to the current data.`;
       if (from.baseBuiltAt && from.baseBuiltAt !== ds.buildInfo.builtAt) notice = (notice ? notice + ' ' : '') + (he ? 'הנתונים ההיסטוריים נבנו מחדש מאז שהתרחיש נוצר; השינויים הוחלו מחדש על הנתונים הנוכחיים.' : 'The historical data has been rebuilt since this scenario was made; its changes were re-applied to the current data.');
     } else if (sessions[id]) {
-      ({ scenario, past, future } = sessions[id]!);
+      ({ scenario, past, future, reference } = sessions[id]!);
     }
     delete sessions[id];
-    setState({ electionId: id, scenario, past, future, sessions, selectedListId: null, blocPanel: null, compareWith: 'historical', loadError: null, notice });
+    setState({ electionId: id, scenario, reference, past, future, sessions, selectedListId: null, blocPanel: null, compareWith: 'historical', loadError: null, notice });
     return true;
   } catch (e) {
     if (seq === openSeq) setState({ loadError: { id, message: e instanceof Error ? e.message : String(e) } });
@@ -225,9 +228,10 @@ export function saveCurrent(name?: string): boolean {
   const he = state.lang === 'he';
   const entry: SavedScenario = { id: s.id, name: name || s.name || (he ? 'תרחיש' : 'Scenario'), ...(s.description ? { description: s.description } : {}), electionId: s.electionId, savedAt: new Date().toISOString(), baseBuiltAt: s.baseBuiltAt, log: s.log.map((e) => e.action) };
   const before = state.saved;
-  setState((st) => ({ saved: [entry, ...st.saved.filter((x) => x.id !== s.id)], scenario: { ...s, name: entry.name } }));
+  const oldReference = state.reference;
+  setState((st) => ({ reference: { ...s, name: entry.name }, saved: [entry, ...st.saved.filter((x) => x.id !== s.id)], scenario: { ...s, name: entry.name } }));
   if (!persist()) {
-    setState({ saved: before });
+    setState({ saved: before, reference: oldReference });
     toast('error', he ? 'הדפדפן סירב לשמור (האחסון מלא או חסום). ייצאו את התרחיש כקובץ JSON במקום.' : 'The browser refused to save (storage full or blocked). Export the scenario as a JSON file instead.');
     return false;
   }

@@ -1,8 +1,9 @@
+import { scenarioColor } from '../scenarioIdentity.ts';
 import { useMemo } from 'react';
 import type { ElectionDataset } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
-import { allocationOf, comparisonGroups, groupingBaseline, groupingLabel, nonSeatChanges, blocPieces, electedOf, listLabel } from '../derive.ts';
+import { referenceChanges, allocationOf, comparisonGroups, groupingBaseline, groupingLabel, nonSeatChanges, blocPieces, electedOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct, fmtRat, fmtSigned, isolate, signed } from '../format.ts';
 import { replay, setState, useStore, useDigits } from '../store.ts';
@@ -11,16 +12,18 @@ import { Hemicycle } from './Hemicycle.tsx';
 export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; base: Scenario; ds: ElectionDataset }) {
   const L = useL();
   const lang = useLang();
+  const reference = useStore(st => st.reference);
   const compareWithRaw = useStore((st) => st.compareWith);
   const saved = useStore((st) => st.saved);
-  const compareWith = saved.some((x) => x.id === compareWithRaw && x.electionId === s.electionId && x.id !== s.id) ? compareWithRaw : 'historical';
+  const compareWith = compareWithRaw === 'official' ? 'official' : saved.some((x) => x.id === compareWithRaw && x.electionId === s.electionId && x.id !== s.id) ? compareWithRaw : 'historical';
   const digits = useDigits();
   const advanced = useStore((st) => st.level === 'expert');
   const other = useMemo(() => {
-    if (compareWith === 'historical') return base;
+    if (compareWith === 'official') return base;
+    if (compareWith === 'historical') return reference ?? base;
     const sv = saved.find((x) => x.id === compareWith && x.electionId === s.electionId);
     return sv ? replay(ds, sv.name, sv.log).scenario : base;
-  }, [compareWith, saved, base, ds, s.electionId]);
+  }, [compareWith, saved, base, ds, s.electionId, reference]);
   const a = other, ar = allocationOf(other);
   const groups = useMemo(() => comparisonGroups(s, r, a, ar), [ar, a, r, s]);
 
@@ -41,7 +44,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
   const groupedA = groupingBaseline(s, a);
   const ba = groupedA ? blocSums(groupedA, ar) : {}, bb = blocSums(s, r);
 
-  const nameA = compareWith === 'historical' ? L('Official result', 'התוצאה הרשמית') : a.name;
+  const nameA = compareWith === 'official' ? L('Official result', 'התוצאה הרשמית') : compareWith === 'historical' ? reference?.name || L('Official result', 'התוצאה הרשמית') : a.name;
   const nameB = s.name || L('Your scenario', 'התרחיש שלכם');
   const colorOfGroup = (g: (typeof groups)[number]) => (s.lists.find((l) => l.id === g.bIds[0]) ?? a.lists.find((l) => l.id === g.aIds[0]))?.color ?? '#888';
   const labelOf = (g: (typeof groups)[number]) => gName(g.bIds.length ? g.bIds : g.aIds, g.bIds.length ? s : a);
@@ -65,18 +68,19 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
     <div className="cmp">
       <p className="small">{L('Baseline: ', 'בסיס ההשוואה: ')}{nameA} · {groupingLabel(s, lang)}{!groupedA && L(' · custom grouping has no baseline counterpart', ' · לחלוקה אישית אין מקבילה בבסיס')}</p>
       <div className="row" style={{ marginBottom: 12 }}>
-        <label className="row small">{L('Compare', 'השוואה בין')} <b>{nameB}</b> {L('with', 'לבין')}
+        <label className="row small">{L('Compare', 'השוואה בין')} <b>{nameB}</b> {L('with', 'לבין')} <span className="swatch" style={{ background: compareWith === 'official' || (!reference && compareWith === 'historical') ? 'var(--axis)' : scenarioColor(a) }} />
           <select value={compareWith} onChange={(e) => setState({ compareWith: e.target.value })}>
-            <option value="historical">{L('the official result', 'התוצאה הרשמית')}</option>
-            {saved.filter((x) => x.electionId === s.electionId && x.id !== s.id).map((x) => <option key={x.id} value={x.id}>{x.name}</option>)}
+            {reference && <option value="official">{L('the official result', 'התוצאה הרשמית')}</option>}
+            <option value="historical">{reference?.name || L('the official result', 'התוצאה הרשמית')}</option>
+            {saved.filter((x) => x.electionId === s.electionId && x.id !== s.id).map((x) => <option key={x.id} value={x.id} style={{ color: scenarioColor(replay(ds, x.name, x.log).scenario) }}>{x.name}</option>)}
           </select>
         </label>
         {changed.length === 0 && <span className="small muted">{[L('No seats changed', 'המנדטים לא השתנו'), ...nonSeatChanges(s, a, lang)].join(' · ')}</span>}
       </div>
 
       <div className="cmp-chambers">
-        <figure><figcaption>{nameA}</figcaption><Hemicycle s={groupedA ?? a} r={ar} compact title={nameA} /></figure>
-        <figure><figcaption>{nameB}</figcaption><Hemicycle s={s} r={r} compact title={nameB} /></figure>
+        <figure style={{ border: `2px solid ${compareWith !== 'official' && (reference || compareWith !== 'historical') ? scenarioColor(a) : 'var(--rule)'}` }}><figcaption>{nameA}</figcaption><Hemicycle s={groupedA ?? a} r={ar} compact title={nameA} /></figure>
+        <figure style={{ border: `2px solid ${reference || referenceChanges(s, base).length || s.identityColor ? scenarioColor(s) : 'var(--rule)'}` }}><figcaption>{nameB}</figcaption><Hemicycle s={s} r={r} compact title={nameB} /></figure>
       </div>
 
       {s.blocs.length > 0 && (

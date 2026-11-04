@@ -1,3 +1,6 @@
+import { exportAnnotations } from '../scenarioExport.ts';
+import { baselineOf, editPathLabel, referenceChanges, referenceValue } from '../derive.ts';
+import { savedColor, scenarioColor } from '../scenarioIdentity.ts';
 import { describe } from '../actionDescription.ts';
 import { useEffect, useRef, useState } from 'react';
 import type { ElectionDataset, ElectionId, ElectionIndexEntry } from '../../data/schema.ts';
@@ -5,7 +8,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
 import { csvEscape, download } from '../format.ts';
-import { duplicateCurrent, getState, importScenarioJson, openElection, redo, resetAll, saveCurrent, setState, shareLink, toast, undo, useStore } from '../store.ts';
+import { dispatch, duplicateCurrent, getState, importScenarioJson, openElection, redo, resetAll, saveCurrent, setState, shareLink, toast, undo, useStore } from '../store.ts';
 import { ChevronDown, Copy, Download, FolderOpen, Link2, Moon, Redo2, RotateCcw, Save, Share2, Sun, Table2, Trash2, Undo2, Upload } from 'lucide-react';
 import { Seg } from './ui.tsx';
 
@@ -31,6 +34,7 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
   const elections = ds && !index.some((e) => e.id === ds.id)
     ? [...index, { id: ds.id, knesset: ds.knesset, date: ds.electionDate, nameHe: ds.nameHe, nameEn: ds.nameEn, available: true, status: { stage: ds.status.stage } }].sort((a, b) => b.date.localeCompare(a.date))
     : index;
+  const reference = useStore(st => st.reference);
   const theme = useStore((st) => st.theme);
   const level = useStore((st) => st.level);
   const canUndo = useStore((st) => st.past.length > 0);
@@ -54,12 +58,16 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
     document.addEventListener('keydown', onKey); document.addEventListener('pointerdown', onDown);
     return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', onDown); };
   }, [menu]);
+  const [changesOpen, setChangesOpen] = useState(false);
+  const changes = s && ds ? referenceChanges(s, baselineOf(ds)) : [];
   const [shareUrl, setShareUrl] = useState('');
 
   const exportCsv = () => {
     if (!s || !r || !baseR) return;
-    const head = ['letters', 'list', 'votes', 'pct_valid', 'qualified', 'whole_quota_seats', 'seats', 'historical_seats'];
-    const rows = s.lists.map((l) => { const lr = r.lists.find((x) => x.id === l.id)!; return [l.letters, l.nameHe, l.votes, ((l.votes / Number(r.totalValid)) * 100).toFixed(6), lr.qualified, lr.initialSeats, lr.seats, baseR.lists.find((x) => x.id === l.id)?.seats ?? '']; });
+    const markerBase = (!getState().markOfficial && getState().reference) || (ds ? baselineOf(ds) : s);
+    const marked = referenceChanges(s, markerBase);
+    const head = ['edited', 'letters', 'list', 'votes', 'pct_valid', 'qualified', 'whole_quota_seats', 'seats', 'historical_seats'];
+    const rows = s.lists.map((l) => { const lr = r.lists.find((x) => x.id === l.id)!; return [marked.filter(p => p[0] === 'lists' && p[1] === l.id).map(p => editPathLabel(s, p, lang) + ' · ' + L('Edited: was ', 'נערך: קודם ') + (JSON.stringify(referenceValue(markerBase, p)) ?? '—')).join('; '), l.letters, l.nameHe, l.votes, ((l.votes / Number(r.totalValid)) * 100).toFixed(6), lr.qualified, lr.initialSeats, lr.seats, baseR.lists.find((x) => x.id === l.id)?.seats ?? '']; });
     download(`${s.electionId}-${fileName(s.name)}.csv`, '﻿' + [head, ...rows].map((row) => row.map(csvEscape).join(',')).join('\n'), 'text/csv');
   };
 
@@ -69,11 +77,17 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
       <select aria-label={L('Election', 'בחירות')} value={electionId} onChange={(e) => openElection(e.target.value as ElectionId)} className="election">
         {elections.map((e) => <option key={e.id} value={e.id} disabled={!e.available}>{electionLabel(e, elections, lang)}{e.available ? '' : L(' — not yet available', ' — עדיין לא זמין')}</option>)}
       </select>
-      {s && ds && <span className="chip election-status">{s.mode === 'experimental' ? L('Experimental rule', 'כלל ניסיוני') : s.log.length ? L('Hypothetical', 'היפותטי') : ds.status.stage === 'official-final' ? L('Official', 'רשמי') : L('Pending gazette', 'ממתין לפרסום ברשומות')}</span>}
+      {s && ds && <div className="scenario-status">
+        <button className="chip election-status" aria-expanded={changesOpen} onClick={() => setChangesOpen(v => !v)}>
+          {reference || changes.length > 0 || s.identityColor ? <><span className="swatch" style={{ background: scenarioColor(s) }} />{s.name || L('Untitled scenario', 'תרחיש ללא שם')}</> : ds.status.stage === 'official-final' ? L('Official', 'רשמי') : L('Pending gazette', 'ממתין לפרסום ברשומות')}
+        </button>
+        {changesOpen && <div className="menu-pop scenario-changes"><b>{L('Changes from the official result', 'שינויים מהתוצאה הרשמית')}</b><ul>{changes.map(p => <li key={p.join('/')}><bdi>{editPathLabel(s, p, lang)}</bdi>: <bdi>{JSON.stringify(referenceValue(s, p)) ?? '—'}</bdi></li>)}</ul></div>}
+      </div>}
+
       <Seg label={L('Detail level', 'רמת פירוט')} value={level} onChange={(v) => setState({ level: v })} options={[{ v: 'simple', label: L('Simple', 'פשוט') }, { v: 'standard', label: L('Standard', 'רגיל') }, { v: 'expert', label: L('Expert', 'מומחה') }]} />
       {s && level !== 'simple' && (
         <input type="text" className="scenario-name" value={s.name} placeholder={L('Untitled scenario', 'תרחיש ללא שם')} aria-label={L('Scenario name', 'שם התרחיש')}
-          onChange={(e) => setState({ scenario: { ...s, name: e.target.value } })} />
+          onChange={(e) => dispatch({ type: 'rename', name: e.target.value })} />
       )}
       <span className="spacer" />
       <button className="tool" onClick={undo} disabled={!canUndo} title={undoName + ' (Ctrl+Z)'} aria-label={undoName}><Undo2 className="icon" aria-hidden /></button>
@@ -93,7 +107,7 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
             }}><Link2 className="icon sm" aria-hidden />{L('Copy a share link', 'העתקת קישור שיתוף')}</button>
             {shareUrl && <input type="text" readOnly value={shareUrl} aria-label={L('Share link', 'קישור שיתוף')} onFocus={(e) => e.target.select()} style={{ width: '100%' }} />}
             <button className="btn small" onClick={() => { duplicateCurrent(); setMenu(false); }}><Copy className="icon sm" aria-hidden />{L('Duplicate as a new scenario', 'שכפול לתרחיש חדש')}</button>
-            <button className="btn small" onClick={() => { if (s && ds) download(`${s.electionId}-${fileName(s.name)}.json`, JSON.stringify({ ...s, datasetBuiltAt: ds.buildInfo.builtAt }, null, 1), 'application/json'); setMenu(false); }}><Download className="icon sm" aria-hidden />{L('Export scenario (JSON)', 'ייצוא תרחיש (JSON)')}</button>
+            <button className="btn small" onClick={() => { if (s && ds) download(`${s.electionId}-${fileName(s.name)}.json`, JSON.stringify({ ...s, ...exportAnnotations(s, lang), datasetBuiltAt: ds.buildInfo.builtAt }, null, 1), 'application/json'); setMenu(false); }}><Download className="icon sm" aria-hidden />{L('Export scenario (JSON)', 'ייצוא תרחיש (JSON)')}</button>
             <button className="btn small" onClick={() => fileRef.current?.click()}><Upload className="icon sm" aria-hidden />{L('Import scenario (JSON)', 'ייבוא תרחיש (JSON)')}</button>
             <button className="btn small" onClick={() => { exportCsv(); setMenu(false); }}><Table2 className="icon sm" aria-hidden />{L('Export results table (CSV)', 'ייצוא טבלת תוצאות (CSV)')}</button>
             <button className="btn small" onClick={() => { setState({ tool: 'scenarios' }); setMenu(false); }}><FolderOpen className="icon sm" aria-hidden />{L('All scenarios: names, descriptions, results', 'כל התרחישים: שמות, תיאורים ותוצאות')}</button>
@@ -102,7 +116,7 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
             {saved.map((x) => (
               <div key={x.id} className="row small" style={{ justifyContent: 'space-between', flexWrap: 'nowrap' }}>
                 <button className="btn small ghost" style={{ justifyContent: 'flex-start', minWidth: 0 }} onClick={() => { openElection(x.electionId, { name: x.name, log: x.log, baseBuiltAt: x.baseBuiltAt }).then(() => setState((st) => ({ scenario: st.scenario ? { ...st.scenario, id: x.id } : null }))); setMenu(false); }}>
-                  <span className="clip" style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{x.name}</span> <span className="muted">({elections.find((e) => e.id === x.electionId)?.date.slice(0, 4) ?? x.electionId})</span></button>
+                  <span className="swatch" style={{ background: savedColor(x.log) }} /><span className="clip" style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{x.name}</span> <span className="muted">({elections.find((e) => e.id === x.electionId)?.date.slice(0, 4) ?? x.electionId})</span></button>
                 <span className="row" style={{ flexWrap: 'nowrap', gap: 2 }}>
                   <button className="btn small ghost" onClick={() => { setState({ compareWith: x.id }); setMenu(false); }} disabled={x.electionId !== electionId || x.id === s?.id}>{L('compare', 'השוואה')}</button>
                   <button className="btn small ghost danger icon-only" aria-label={L('Delete', 'מחיקה')} onClick={() => setState((st) => ({ saved: st.saved.filter((y) => y.id !== x.id) }))}><Trash2 className="icon sm" aria-hidden /></button>
@@ -116,7 +130,7 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
           try {
             const sc = importScenarioJson(await f.text());
             await openElection(sc.electionId);
-            const st = getState(); setState({ scenario: sc, past: st.scenario && st.scenario.electionId === sc.electionId ? [...st.past, st.scenario] : st.past, future: [] });
+            const st = getState(); setState({ scenario: sc, reference: sc, past: st.scenario && st.scenario.electionId === sc.electionId ? [...st.past, st.scenario] : st.past, future: [] });
             toast('info', L('Scenario imported.', 'התרחיש יובא.'));
           } catch (err) {
             const msg = err instanceof Error ? err.message : String(err);

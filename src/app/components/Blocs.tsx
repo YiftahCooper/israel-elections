@@ -1,3 +1,4 @@
+import { EditMarker } from './EditMarker.tsx';
 import { BlocMajorities } from './Majority.tsx';
 // Blocs (decision 0087): the election's sourced groupings (the first government, recognised blocs) and
 // the user's own. Seats count per seat: a constituent party of a joint list can sit in another bloc
@@ -47,7 +48,7 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
         <h2 style={{ margin: 0 }}>{L('Blocs', 'גושים')} <Info term="bloc" /></h2>
         {(schemes.length > 1 || custom) && (
           <select aria-label={L('Grouping', 'חלוקה לגושים')} value={s.blocSchemeId ?? '__custom'} onChange={(e) => pick(e.target.value)}>
-            {custom && <option value="__custom">{L('Your grouping', 'החלוקה שלכם')}</option>}
+            {custom && <option value="__custom">{s.customGroupingName ?? L('Your grouping', 'החלוקה שלכם')}</option>}
             {schemes.map((x) => <option key={x.id} value={x.id}>{schemeLabel(x)}</option>)}
           </select>
         )}
@@ -56,7 +57,7 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
         <button className="btn small" aria-expanded={!!panel} onClick={() => (panel ? setState({ blocPanel: null }) : openPanel(groups[0]?.key ?? NONE))}>
           <Pencil className="icon sm" aria-hidden />{s.blocs.length ? L('Edit blocs', 'עריכת גושים') : L('Group seats into blocs', 'חלוקת המושבים לגושים')}</button>
       </div>
-      <BlocMajorities s={s} r={r} />
+      <EditMarker s={s} path={['customGroupingName']} /><BlocMajorities s={s} r={r} />
       <div className="strip" role="group" aria-label={groups.map((g) => `${g.label} ${g.n}`).join(', ')}>
         {groups.map((g) => (
           <button key={g.key} type="button" className="corridor" style={{ flexGrow: g.n, flexBasis: 0, ['--bc' as string]: g.color }}

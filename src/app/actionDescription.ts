@@ -1,3 +1,4 @@
+import { PARTS } from '../model/parts.ts';
 import type { Action, Scenario } from '../model/scenario.ts';
 import type { Lang } from './i18n.ts';
 import { listLabel } from './derive.ts';
@@ -6,6 +7,9 @@ export function describe(a: Action, s: Scenario, lang: Lang): string {
   const n = (id: string) => { const l = s.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : id; };
   const he = lang === 'he';
   switch (a.type) {
+    case 'setIdentityColor': return he ? 'צבע התרחיש השתנה' : 'Scenario colour changed';
+    case 'setCoalition': return he ? 'בחירת הקואליציה השתנתה' : 'Coalition selection changed';
+    case 'startPart': return `${PARTS[a.part][lang]}: ${a.name ?? (a.source === 'official' ? (he ? 'התוצאה הרשמית' : 'official result') : a.source === 'blank' ? (he ? 'ריק' : 'blank') : a.presetId ?? (he ? 'תרחיש שמור' : 'saved scenario'))}`;
     case 'setVotes': return he ? `${n(a.listId)}: ${fmtInt(a.votes)} קולות` : `${n(a.listId)}: set to ${fmtInt(a.votes)} votes`;
     case 'transfer': return he ? `העברת ${fmtInt(a.votes)} קולות מ${n(a.from)} ל${n(a.to)}` : `Moved ${fmtInt(a.votes)} votes from ${n(a.from)} to ${n(a.to)}`;
     case 'addVoters': return he ? `נוספו ${fmtInt(a.allocations.reduce((t, x) => t + x.votes, 0) + a.invalid)} מצביעים${a.label ? ` (${a.label})` : ''}` : `Added ${fmtInt(a.allocations.reduce((t, x) => t + x.votes, 0) + a.invalid)} voters${a.label ? ` (${a.label})` : ''}`;
