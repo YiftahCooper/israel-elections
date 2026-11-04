@@ -37,9 +37,12 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
   const set = (patch: Partial<Scenario['rules']>) => dispatch({ type: 'setRules', patch });
   return (
     <div className="grid2 stack-sm" style={{ alignItems: 'start', gap: 18 }}>
-      <div><StartFrom s={s} part="rules" /><PartEdits s={s} prefix={['rules']} /></div>
+      {/* two columns only: "Start from" heads the rules column, so it never sits alone in a cell above an empty gap */}
       <div>
-        <h3>{L('Electoral rules', 'כללי הבחירות')}</h3>
+        <div className="row" style={{ justifyContent: 'space-between', alignItems: 'baseline' }}>
+          <h3>{L('Electoral rules', 'כללי הבחירות')}</h3>
+          <span className="row"><PartEdits s={s} prefix={['rules']} /><StartFrom s={s} part="rules" /></span>
+        </div>
         <div className="row" style={{ marginBottom: 8 }}>
           <span className="seg" role="group" aria-label={L('Simulation mode', 'מצב סימולציה')}>
             <button aria-pressed={!exp} onClick={() => dispatch({ type: 'setMode', mode: 'historical' })}>{L('Historically valid', 'תקף היסטורית')}</button>

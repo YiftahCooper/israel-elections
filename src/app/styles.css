@@ -113,7 +113,7 @@ input, textarea { caret-color: var(--focus); }
 .banner { padding: 8px 16px; font-size: 13.5px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; border-block-end: 1px solid var(--rule); }
 .banner.warn { background: var(--warn-bg); color: var(--warn-ink); }
 .banner.err { background: var(--err-bg); }
-.banner.info { background: var(--surface-2); display: flex; } /* .info is also the popover class */
+.banner.note { background: var(--surface-2); } /* not .info: that class styles the (i) popover and would shrink banner buttons to icon size */
 .session { background: var(--surface); border-block-end: 1px solid var(--rule); padding: 6px 16px; display: flex; align-items: center; flex-wrap: wrap; gap: 4px 14px; font-size: 13.5px; }
 .session > b { font-weight: 700; }
 .session .moves { display: inline-flex; flex-wrap: wrap; gap: 2px 12px; }
