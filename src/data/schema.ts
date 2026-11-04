@@ -163,6 +163,9 @@ export interface LocalityRow {
 
 /** Locality-level results (public/data/<id>-localities.json), columns aligned to `listIds`. */
 export interface LocalityDataset {
+  groups?: LocalityGroup[];
+  demographicNoteEn?: string;
+  demographicNoteHe?: string;
   schemaVersion: number;
   id: ElectionId;
   listIds: string[];
@@ -174,3 +177,12 @@ export interface LocalityDataset {
 
 /** Double-envelope rows: flagged, or code 9999 (2015 on), or named "מעטפות…" (2009 uses code 0, 2013 code 875). */
 export const isEnvelopeRow = (r: LocalityRow) => r.envelopes === true || r.code === 9999 || r.nameHe.startsWith('מעטפות');
+
+/** Geographic reference classification, never an inference about individual voters. */
+export interface LocalityGroup {
+  id: string; nameHe: string; nameEn: string;
+  sourceIds: string[]; classificationYear: number;
+  definitionHe: string; definitionEn: string;
+  codes: number[];
+  coverage: { localities: number; registered: number | null; valid: number; nationalValidShare: number };
+}

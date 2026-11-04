@@ -8,6 +8,12 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 
 ### Added
 
+- Sourced geographic turnout groups for k16 and k18–k26, with bilingual definitions, classification
+  years and coverage: Arab localities, kibbutzim, moshavim, Israeli localities in Judea and Samaria,
+  Bedouin tribes, and dated Haredi, Druze and development-town reference cohorts. k17 explicitly
+  remains unavailable because codes/electorates are missing. Exact demographic turnout model with
+  signed replayable actions, overlap rejection and merged/split list mapping (decision 0090).
+
 - Published on GitHub Pages at https://yiftahcooper.github.io/israel-elections/, redeployed on every push to `main`;
   a site icon (the browser no longer requests a missing favicon).
 - Twenty-four more elections: 1949, 1951, 1955, 1959, 1961, 1965, 1969, 1973, 1977, 1981, 1984, 1988, 1992, 1996, 1999, 2003, 2006, 2009, 2013, 2015,

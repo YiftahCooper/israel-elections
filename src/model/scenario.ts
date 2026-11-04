@@ -104,7 +104,8 @@ export interface Scenario {
 export type Action =
   | { type: 'setVotes'; listId: string; votes: number }
   | { type: 'transfer'; from: string; to: string; votes: number }
-  | { type: 'addVoters'; allocations: { listId: string; votes: number }[]; invalid: number; label?: string }
+  /** demographic:true allows signed deltas; resulting counts must remain nonnegative. */
+  | { type: 'addVoters'; demographic?: boolean; allocations: { listId: string; votes: number }[]; invalid: number; label?: string }
   | { type: 'redistribute'; from: string[]; to: { listId: string; share: number }[]; votes: number }
   | { type: 'scaleAll'; factorPct: number }
   | { type: 'merge'; ids: string[]; newId: string; nameHe: string; letters: string; color: string; retentionPct: number; candidateOrder: 'concat' | 'interleave'; nonRetained: 'abstain' | 'invalid' }
@@ -248,6 +249,7 @@ type Check = (x: unknown) => boolean;
 const record = (x: unknown): x is Record<string, unknown> => x !== null && typeof x === 'object' && !Array.isArray(x);
 const string: Check = (x) => typeof x === 'string';
 const boolean: Check = (x) => typeof x === 'boolean';
+const signedWhole: Check = (x) => typeof x === 'number' && Number.isSafeInteger(x);
 const whole: Check = (x) => typeof x === 'number' && Number.isSafeInteger(x) && x >= 0;
 const finite: Check = (x) => typeof x === 'number' && Number.isFinite(x);
 const optional = (check: Check): Check => (x) => x === undefined || check(x);
@@ -297,7 +299,9 @@ const blocScheme = shape({ id: string, kind: oneOf('government', 'parliamentary'
 const actionFields: Record<Action['type'], Check> = {
   setVotes: shape({ listId: string, votes: whole }),
   transfer: shape({ from: string, to: string, votes: whole }),
-  addVoters: shape({ allocations: array(shape({ listId: string, votes: whole })), invalid: whole, label: optional(string) }),
+  addVoters: (x) => record(x) && (x.demographic === true
+    ? shape({ allocations: array(shape({ listId: string, votes: signedWhole })), invalid: signedWhole, label: string, demographic: boolean })(x)
+    : shape({ allocations: array(shape({ listId: string, votes: whole })), invalid: whole, label: optional(string), demographic: optional(boolean) })(x)),
   redistribute: shape({ from: uniqueStrings, to: array(shape({ listId: string, share: finite })), votes: whole }),
   scaleAll: shape({ factorPct: finite }),
   merge: shape({ ids: uniqueStrings, newId: string, nameHe: string, letters: string, color: string, retentionPct: finite, candidateOrder: oneOf('concat', 'interleave'), nonRetained: oneOf('abstain', 'invalid') }),

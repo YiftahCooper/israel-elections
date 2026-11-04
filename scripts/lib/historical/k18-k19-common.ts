@@ -202,7 +202,10 @@ export async function buildHistorical(o: BuildOptions): Promise<{ ds: ElectionDa
   const sourceIds = [`k${n}-results-gazette`, `k${n}-candidates-gazette`, `k${n}-surplus-gazette`, `k${n}-ballots-datagov`, ...(n === 18 ? ['k18-allocation-memorandum'] : ['k19-localities-datagov', 'k19-final-results-capture'])];
   // the polling-station copy lives in ignored scratch; its hash is checked when present
   const rawSha256 = verifySources(sourceIds, check, { allowMissingFile: true });
-  const loc = JSON.parse(readFileSync(join(ROOT, `public/data/k${n}-localities.json`), 'utf8')) as Omit<LocalityDataset, 'rows'> & { rows: LocRow[] };
+  // The retained fingerprint covers the original election evidence, before additive demographic metadata.
+  // Rebuild that exact object; new metadata is verified and reattached by the top-level builder.
+  const { groups: _groups, demographicNoteEn: _en, demographicNoteHe: _he, ...loc } =
+    JSON.parse(readFileSync(join(ROOT, `public/data/k${n}-localities.json`), 'utf8')) as Omit<LocalityDataset, 'rows'> & { rows: LocRow[] };
   check(loc.id === `k${n}` && JSON.stringify(loc.listIds) === JSON.stringify(lists.map(l => l.id)), `k${n}: locality schema/list order mismatch`);
   const fingerprint = rawJson(`k${n}/localities.sha256.json`);
   check(hash(JSON.stringify(loc)) === fingerprint.sha256, `k${n}: committed locality checksum differs`);

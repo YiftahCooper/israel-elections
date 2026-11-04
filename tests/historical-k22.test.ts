@@ -1,3 +1,4 @@
+import { attachDemographics } from '../scripts/lib/build/demographics.ts';
 import { readFileSync } from 'node:fs';
 import { finalizeDataset } from '../scripts/lib/build/finalize.ts';
 import { describe, expect, it } from 'vitest';
@@ -58,6 +59,6 @@ describe('k22: official final result and release gates', () => {
     const built = await buildK22();
     expect(finalizeDataset(built.ds)).toEqual(ds); // as the build writes it
     const loc = JSON.parse(readFileSync(new URL('../public/data/k22-localities.json', import.meta.url),'utf8'));
-    expect(built.loc).toEqual(loc);
+    expect(attachDemographics(built.ds, built.loc!)).toEqual(loc);
   });
 });

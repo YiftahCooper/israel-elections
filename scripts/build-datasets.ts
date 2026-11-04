@@ -6,6 +6,7 @@
 // Elections are independent, so they are built in parallel worker threads; logs and files are
 // still emitted in election order, and the first failure stops the build with a non-zero exit.
 // Files whose content is unchanged are not rewritten and keep their buildInfo.builtAt (see output.ts).
+import { attachDemographics } from './lib/build/demographics.ts';
 import { availableParallelism } from 'node:os';
 import { join } from 'node:path';
 import { format } from 'node:util';
@@ -114,7 +115,7 @@ if (!isMainThread) {
     }
     for (const { ds, loc, warnings: w } of r.outputs) {
       write(`${ds.id}.json`, ds);
-      if (loc) write(`${ds.id}-localities.json`, loc);
+      if (loc) write(`${ds.id}-localities.json`, attachDemographics(ds, loc));
       warnings.push(...w ?? []);
       const cands = ds.lists.reduce((s, l) => s + l.candidates.length, 0);
       console.log(`${ds.id}: ${ds.lists.length} lists, ${cands} candidates, ${ds.agreements.length} agreements, valid ${ds.totals.valid}, ${loc?.rows.length ?? 0} locality rows`);
