@@ -5,7 +5,7 @@ import { PARTS } from '../model/parts.ts';
 import type { Action, Scenario } from '../model/scenario.ts';
 import type { Lang } from './i18n.ts';
 import { listLabel, editPathLabel } from './derive.ts';
-import { fmtInt } from './format.ts';
+import { fmtInt, signed } from './format.ts';
 export function describe(a: Action, s: Scenario, lang: Lang): string {
   const n = (id: string) => { const l = s.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : (lang === 'he' ? 'רשימה שהוסרה' : 'Removed list'); };
   const he = lang === 'he';
@@ -17,7 +17,13 @@ export function describe(a: Action, s: Scenario, lang: Lang): string {
     case 'setVotes': return he ? `${n(a.listId)}: ${fmtInt(a.votes)} קולות` : `${n(a.listId)}: set to ${fmtInt(a.votes)} votes`;
     case 'transfer': return he ? `העברת ${fmtInt(a.votes)} קולות מ${n(a.from)} ל${n(a.to)}` : `Moved ${fmtInt(a.votes)} votes from ${n(a.from)} to ${n(a.to)}`;
     case 'addVoters': return he ? `נוספו ${fmtInt(a.allocations.reduce((t, x) => t + x.votes, 0) + a.invalid)} מצביעים${a.label ? ` (${a.label})` : ''}` : `Added ${fmtInt(a.allocations.reduce((t, x) => t + x.votes, 0) + a.invalid)} voters${a.label ? ` (${a.label})` : ''}`;
-    case 'redistribute': return he ? `חלוקה מחדש של ${fmtInt(a.votes)} קולות` : `Redistributed ${fmtInt(a.votes)} votes`;
+    // name the list the user moved: the one that gains (from all others) or loses (to all others)
+    case 'redistribute': {
+      if (a.to.length === 1 && a.from.length !== 1) return he ? `${n(a.to[0].listId)}: ${signed(a.votes)} קולות משאר הרשימות` : `${n(a.to[0].listId)}: ${signed(a.votes)} votes from the other lists`;
+      if (a.from.length === 1 && a.to.length !== 1) return he ? `${n(a.from[0])}: ${signed(-a.votes)} קולות לשאר הרשימות` : `${n(a.from[0])}: ${signed(-a.votes)} votes to the other lists`;
+      if (a.from.length === 1 && a.to.length === 1) return he ? `העברת ${fmtInt(a.votes)} קולות מ${n(a.from[0])} ל${n(a.to[0].listId)}` : `Moved ${fmtInt(a.votes)} votes from ${n(a.from[0])} to ${n(a.to[0].listId)}`;
+      return he ? `חלוקה מחדש של ${fmtInt(a.votes)} קולות` : `Redistributed ${fmtInt(a.votes)} votes`;
+    }
     case 'scaleAll': return he ? `שינוי כל הקולות ל-${a.factorPct}%` : `Scaled all votes to ${a.factorPct}%`;
     case 'merge': return he ? `איחוד: ${a.nameHe} (${a.ids.length} רשימות, שימור ${a.retentionPct}%)` : `Merged ${a.ids.length} lists into ${a.nameHe} (${a.retentionPct}% retained)`;
     case 'split': return he ? `פיצול ל-${a.parts.map((p) => p.nameHe).join(' / ')}` : `Split into ${a.parts.map((p) => p.nameHe).join(' / ')}`;

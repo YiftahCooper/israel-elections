@@ -68,6 +68,7 @@ test('fine vote/share nudges and a paired 1pp transfer are single undo steps', a
   await start(page); const votes = await detail(page);
   const before = await votes.inputValue();
   const value = (text: string) => Number(text.replaceAll(',', ''));
+  await page.getByRole('group', { name: 'Votes step size', exact: true }).getByRole('button', { name: '1', exact: true }).click();
   await page.getByRole('button', { name: 'Increase Votes', exact: true }).click();
   expect(value(await votes.inputValue())).toBe(value(before) + 1);
   await page.getByRole('button', { name: /^Undo:/ }).click(); await expect(votes).toHaveValue(before);

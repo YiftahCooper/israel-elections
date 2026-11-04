@@ -85,7 +85,7 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
                   <button className="btn small ghost icon-only" aria-label={L('Insert candidate below', 'הוספת מועמד מתחת')} onClick={() => { const next = [...c]; next.splice(i + 1, 0, { id: `new-${Date.now().toString(36)}`, nameHe: L('New candidate', 'מועמד חדש') }); commit(next, 'insert'); }}><Plus className="icon sm" aria-hidden /></button>
                   <button className="btn small ghost danger icon-only" aria-label={L('Remove', 'הסרה')} onClick={() => commit(c.filter((y) => y.id !== x.id), `remove ${x.nameHe}`)}><X className="icon sm" aria-hidden /></button>
                 </span>
-              ) : <span className="tiny muted">{x.notSeated ? L('not seated', 'לא כיהן') : elected ? L('elected', 'נבחר') : x === nextIn ? L('next in line', 'הבא בתור') : ''}</span>}
+              ) : <span className="tiny muted">{x.notSeated ? L('not seated', 'לא כיהן') : elected ? <span className="sr-only">{L('elected', 'נבחר')}</span> : x === nextIn ? L('next in line', 'הבא בתור') : ''}</span>}
             </li>
           );
         })}
