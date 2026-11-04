@@ -1,3 +1,4 @@
+import { Info } from './ui.tsx';
 // One-click counterfactuals. Each preset is a list of ordinary scenario actions replayed on the
 // historical result, so it is reproducible, undoable and shareable like any manual edit. The headline
 // seat changes are computed live from the engine, never written by hand.
@@ -120,7 +121,7 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
     let s: Scenario = { ...scenarioFromDataset(ds, title), description };
     for (const a of actions) s = applyAction(s, a);
     setState({ scenario: s, past: st.scenario ? [...st.past, st.scenario] : st.past, future: [], selectedListId: null, compareWith: 'historical', tool: 'board' });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
   };
 
   // cards that do not apply to this election are left out, and those that move seats come first;
@@ -130,7 +131,7 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
   const shown = useful.slice(0, limit);
   return (
     <div>
-      <p className="ink2 small" style={{ marginTop: 0 }}>{L('Each question starts from the real result and changes one thing; the seat changes are exact. “Open as a scenario” loads it so you can explore further (Undo returns you).', 'כל שאלה מתחילה מהתוצאה האמיתית ומשנה דבר אחד; שינויי המנדטים מדויקים. "פתיחה כתרחיש" טוענת אותה להמשך חקירה (ביטול מחזיר אתכם).')}</p>
+      <p className="ink2 small" style={{ marginTop: 0 }}>{L('Start from the real result', 'מתחילים מהתוצאה האמיתית')} <Info title={L('About these questions', 'על השאלות האלה')}>{L('Each question starts from the real result and changes one thing; the seat changes are exact. “Open as a scenario” loads it so you can explore further (Undo returns you).', 'כל שאלה מתחילה מהתוצאה האמיתית ומשנה דבר אחד; שינויי המנדטים מדויקים. "פתיחה כתרחיש" טוענת אותה להמשך חקירה (ביטול מחזיר אתכם).')}</Info></p>
       <ol className="wi-rows">
         {shown.map(({ p, actions, lines, votes, changes }) => {
           const text = (t: Text) => (typeof t === 'function' ? t(base) : t);
@@ -139,10 +140,10 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
           const isOpen = open === p.id;
           return (
             <li key={p.id} className={`wi-row ${isOpen ? 'open' : ''}`}>
-              <button type="button" className="wi-q" aria-expanded={isOpen} disabled={!actions} onClick={() => setOpen(isOpen ? null : p.id)}>
+              <div className="wi-question"><button type="button" className="wi-q" aria-expanded={isOpen} disabled={!actions} onClick={() => setOpen(isOpen ? null : p.id)}>
                 <b>{title}</b>
-                <span className="small ink2">{body}{votes && <> · <b>{votes}</b></>}</span>
-              </button>
+                <span className="small ink2">{['threshold-2', 'pure-pr'].includes(p.id) && <span>{L('Experimental', 'ניסיוני')}{votes && ' · '}</span>}{votes && <b>{votes}</b>}</span>
+              </button><Info title={L(`Assumptions: ${title}`, `הנחות: ${title}`)}>{body}</Info></div>
               {/* the answer at a glance: each list that moves, in its colour, with its seat change */}
               <div className="wi-a small" aria-label={lines.join(', ')}>{!actions ? L('Not applicable to this election.', 'לא רלוונטי לבחירות אלה.') : changes.length ? changes.map((c) => (
                 <span key={c.label} className="wi-chip"><span className="swatch" style={{ background: c.color }} />{c.label} <b dir="ltr">{signed(c.after - c.before)}</b></span>

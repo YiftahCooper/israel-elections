@@ -1,3 +1,4 @@
+import { Info as InfoPopover } from './ui.tsx';
 import { liveScenarioColor, scenarioColor } from '../scenarioIdentity.ts';
 import { useEffect, useMemo, useState } from 'react';
 import { Info } from 'lucide-react';
@@ -62,11 +63,11 @@ export function ScenarioGallery() {
       <div className="sg-what">
         <span className="small ink2">{L('Publish this scenario', 'פרסום התרחיש הזה')}</span>
         <b dir="auto">{scenario?.name || L('Untitled scenario', 'תרחיש ללא שם')}</b>
-        <span className="tiny muted">{scenario?.log.length ? L('Name and description come from “This scenario” above.', 'השם והתיאור נלקחים מ"התרחיש הנוכחי" למעלה.') : L('Make a change first: an unedited election is just the official result.', 'בצעו שינוי תחילה: בחירות ללא שינוי הן רק התוצאה הרשמית.')}</span>
+        <span className="tiny muted">{scenario?.log.length ? L('Uses the name and description above.', 'השם והתיאור מלמעלה.') : L('Edit the scenario first.', 'תחילה שנו את התרחיש.')}</span>
       </div>
       <label className="field">{L('Tags (comma separated)', 'תגיות (מופרדות בפסיקים)')}<input type="text" maxLength={300} value={tags} onChange={e => setTags(e.target.value)} placeholder={L('e.g. turnout, Arab parties', 'למשל: שיעור הצבעה, מפלגות ערביות')} /></label>
       <button type="button" className="btn primary" disabled={!canPublish} onClick={prepare}>{L('Publish on GitHub ↗', 'פרסום ב-GitHub ↗')}</button>
-      <p className="tiny muted sg-note">{L('Publishing is public and needs a GitHub account: the scenario, its description and tags appear under your GitHub username. Do not include private information.', 'הפרסום ציבורי ודורש חשבון GitHub: התרחיש, התיאור והתגיות יופיעו תחת שם המשתמש שלכם. אין לכלול מידע פרטי.')}</p>
+      <p className="tiny muted sg-note">{L('Public · GitHub account required', 'פרסום ציבורי · נדרש חשבון GitHub')} <InfoPopover title={L('Publishing privacy', 'פרטיות בפרסום')}>{L('Publishing is public and needs a GitHub account: the scenario, its description and tags appear under your GitHub username. Do not include private information.', 'הפרסום ציבורי ודורש חשבון GitHub: התרחיש, התיאור והתגיות יופיעו תחת שם המשתמש שלכם. אין לכלול מידע פרטי.')}</InfoPopover></p>
     </div>
     <div className="sg-filters">
       <label className="field sg-search">{L('Search', 'חיפוש')}<input type="search" value={query} onChange={e => setQuery(e.target.value)} placeholder={L('Name, description or tag', 'שם, תיאור או תגית')} /></label>
@@ -77,7 +78,7 @@ export function ScenarioGallery() {
     </div>
     <p className="tiny muted" role="status">{busy ? L('Loading…', 'טוען…') : L(`${visible.length} of ${entries.length} scenarios`, `${visible.length} מתוך ${entries.length} תרחישים`)}{timestamp > 0 && ` · ${L('updated', 'עודכן')} ${new Date(timestamp).toLocaleString(lang === 'he' ? 'he-IL' : 'en-GB', { dateStyle: 'short', timeStyle: 'short' })}`}</p>
     {error && <p className="banner warn" role="alert">{error === 'rate-limit' ? L('GitHub rate limit reached. Try again later; cached results remain visible.', 'הגעתם למגבלת הבקשות של GitHub. נסו מאוחר יותר; תוצאות שמורות נשארות מוצגות.') : error === 'popup' ? L('Allow pop-ups to open GitHub, then try again.', 'אפשרו חלונות קופצים כדי לפתוח את GitHub ונסו שוב.') : error === 'publish' ? L('Could not prepare the share link. Try again.', 'לא ניתן להכין קישור שיתוף. נסו שוב.') : L('Could not load GitHub. Check your connection and retry in 10 minutes. Cached results remain visible.', 'לא ניתן לטעון מ-GitHub. בדקו את החיבור ונסו שוב בעוד 10 דקות. תוצאות שמורות נשארות מוצגות.')}</p>}
-    {!busy && !error && entries.length === 0 && <p className="small muted">{L('No community scenarios yet. Make a change, name it above, and be the first to publish one.', 'עדיין אין תרחישים מהקהילה. שנו משהו, תנו לו שם למעלה, והיו הראשונים לפרסם.')}</p>}
+    {!busy && !error && entries.length === 0 && <p className="small muted">{L('No community scenarios yet.', 'עדיין אין תרחישים מהקהילה.')}</p>}
     <ul className="scn-cards">{visible.map(e => <li key={e.issue} className="scn-card">
       <div className="scn-title"><span className="swatch" style={{ background: scenarioColor(e) }} /><b dir="auto">{e.name}</b><span className="small muted">{e.year} · <bdi>{e.author}</bdi> · <time dateTime={e.date}>{new Date(e.date).toLocaleDateString(lang === 'he' ? 'he-IL' : 'en-GB')}</time> · <span aria-label={L(`${e.likes} likes`, `${e.likes} לייקים`)}>♥ {e.likes}</span></span></div>
       {e.tags.length > 0 && <div className="sg-tags">{e.tags.map(t => <button type="button" key={t} className="chip" aria-pressed={tag === t} onClick={() => setTag(tag === t ? '' : t)} dir="auto">{t}</button>)}</div>}

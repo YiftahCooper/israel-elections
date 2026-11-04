@@ -1,5 +1,10 @@
 # Changelog
 
+## 5 November 2026 — concise tool pages
+
+- Keep tool instructions brief in Hebrew and English; retain modelling assumptions, provenance and correctness caveats in named info controls. What-if questions keep their vote and seat consequences visible, with separate assumption controls and reduced-motion-aware navigation.
+- Sensitivity ranges and seats/majority fractions retain left-to-right numeric order in Hebrew.
+
 ## 5 November 2026 — preferences at the action
 
 - Shorten board guidance and keep joint-list assumptions, provenance and graphic explanations in (i). Clear stale share links after edits and keep the phone save/share menu inside the viewport.

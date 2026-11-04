@@ -46,6 +46,11 @@ test('save moves the reference, official setting restores markers, colour surviv
   await page.getByRole('combobox', { name: 'Mark differences from', exact: true }).selectOption('official');
   await page.getByRole('tab', { name: 'Overview', exact: true }).click();
   expect(await panel.locator('.edit-marker').count()).toBeGreaterThan(2);
+  // Workspace writes are debounced; reload only once this scenario is durable.
+  await expect.poll(() => page.evaluate(() => {
+    const current = JSON.parse(localStorage.getItem('israel-elections:workspace:v1') ?? 'null')?.current;
+    return { name: current?.name, color: current?.identityColor };
+  })).toEqual({ name: 'Unity', color: '#486b78' });
   // a reload restores the work in progress (owner decision 2026-11-04): still Unity, with its colour
   await page.reload();
   await expect(page.locator('.band .election-status')).toContainText('Unity');

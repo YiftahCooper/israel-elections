@@ -92,8 +92,8 @@ export function Turnout({ s }: { s: Scenario }) {
   return (
     <div><StartFrom s={s} part="totals" /><TurnoutSteps s={s} />
       <div className="callout small" style={{ marginBottom: 10 }}>
-        <b>{L('Hypothetical modelling.', 'מידול היפותטי.')}</b>{' '}
-        {L('Everything here is an assumption you supply, not a historical result. Locality-based groups use official results by locality: they describe places, not individual voters (a mostly-Arab locality is not proof of how each resident voted), and votes in double envelopes are not attributed to localities.', 'כל מה שכאן הוא הנחה שלכם ואינו תוצאה היסטורית. קבוצות לפי יישובים מבוססות על התוצאות הרשמיות ליישוב: הן מתארות מקומות, לא מצביעים יחידים (יישוב שרוב תושביו ערבים אינו מוכיח כיצד הצביע כל תושב), וקולות המעטפות החיצוניות אינם משויכים ליישובים.')} <Info term="envelopes" />
+        <b>{L('Hypothetical modelling', 'מודל היפותטי')}</b>{' '}<Info title={L('Hypothetical modelling', 'מודל היפותטי')}>
+        {L('Everything here is an assumption you supply, not a historical result. Locality-based groups use official results by locality: they describe places, not individual voters (a mostly-Arab locality is not proof of how each resident voted), and votes in double envelopes are not attributed to localities.', 'כל מה שכאן הוא הנחה שלכם ואינו תוצאה היסטורית. קבוצות לפי יישובים מבוססות על התוצאות הרשמיות ליישוב: הן מתארות מקומות, לא מצביעים יחידים (יישוב שרוב תושביו ערבים אינו מוכיח כיצד הצביע כל תושב), וקולות המעטפות החיצוניות אינם משויכים ליישובים.')}</Info>
       </div>
       <div className="grid2 stack-sm" style={{ alignItems: 'start', gap: 18 }}>
         <div>
@@ -145,7 +145,7 @@ export function Turnout({ s }: { s: Scenario }) {
           <button className="btn primary" disabled={valid <= 0 || wsum <= 0} onClick={() => dispatch({ type: 'addVoters', allocations: s.lists.map((l, i) => ({ listId: l.id, votes: alloc[i] ?? 0 })).filter((x) => x.votes > 0), invalid, label: label || 'turnout' })}>
             {L('Add these voters', 'הוספת המצביעים')}
           </button>
-          <p className="small muted">{L('The national result is fully recalculated, including the threshold in votes.', 'התוצאה הארצית מחושבת מחדש במלואה, כולל אחוז החסימה בקולות.')}</p>
+          <p className="small muted">{L('National recalculation', 'חישוב ארצי מחדש')} <Info title={L('Recalculation', 'חישוב מחדש')}>{L('The national result is fully recalculated, including the threshold in votes.', 'התוצאה הארצית מחושבת מחדש במלואה, כולל אחוז החסימה בקולות.')}</Info></p>
         </div>
       </div>
     </div>

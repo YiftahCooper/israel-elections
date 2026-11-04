@@ -1,3 +1,4 @@
+import { Info } from './ui.tsx';
 import { ChoicePicker } from './ChoicePicker.tsx';
 import { ResultPreview } from './ResultPreview.tsx';
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -97,7 +98,7 @@ export function LocalityMap({ s, data, historicalLists, locations, locationError
   const selectedWinner = selected ? localityWinner(s,data.listIds,selected.votes,mode) : null;
   const winnerName = selectedWinner?.tied ? L('Tie','שוויון') : selectedWinner?.key ? mode === 'bloc' ? (()=>{const b=s.blocs.find(x=>x.id===selectedWinner.key);return lang==='he'?b?.nameHe:b?.nameEn;})() : (()=>{const l=s.lists.find(x=>x.id===selectedWinner.key);return l?listLabel(l,lang):'';})() : L('Unassigned / no votes','ללא שיוך / ללא קולות');
   return <div className="locality-map-tool">
-    <p className="small ink2">{L('Historical local votes; colours follow your current scenario grouping. National vote edits are not distributed geographically. Split lists use national vote proportions; split blocs use elected-seat proportions, an estimate rather than measured party votes.', 'קולות היסטוריים ביישובים; הצבעים לפי חלוקת הגושים הנוכחית. שינויי קולות ארציים אינם מחולקים גאוגרפית. רשימות שפוצלו מחולקות לפי יחס הקולות הארצי; גושים בתוך רשימה לפי יחס המושבים הנבחרים — אומדן ולא קולות מפלגתיים שנמדדו.')}</p>
+    <p className="small ink2">{L('Historical votes · current grouping', 'קולות היסטוריים · חלוקה נוכחית')} <Info title={L('Map assumptions', 'הנחות המפה')}>{L('Historical local votes; colours follow your current scenario grouping. National vote edits are not distributed geographically. Split lists use national vote proportions; split blocs use elected-seat proportions, an estimate rather than measured party votes.', 'קולות היסטוריים ביישובים; הצבעים לפי חלוקת הגושים הנוכחית. שינויי קולות ארציים אינם מחולקים גאוגרפית. רשימות שפוצלו מחולקות לפי יחס הקולות הארצי; גושים בתוך רשימה לפי יחס המושבים הנבחרים — אומדן ולא קולות מפלגתיים שנמדדו.')}</Info></p>
     {(data.noteEn || data.noteHe) && <p className="small callout">{lang === 'he' ? data.noteHe ?? data.noteEn : data.noteEn ?? data.noteHe}</p>}
     {split && mode === 'bloc' && <p className="callout small">{L('A list spans several blocs: its locality votes are apportioned by its current elected members’ blocs.', 'רשימה משויכת לכמה גושים: קולותיה ביישוב מחולקים לפי שיוך חבריה הנבחרים כיום.')}</p>}
     <div className="row">
@@ -129,7 +130,7 @@ export function LocalityMap({ s, data, historicalLists, locations, locationError
       <p>{L('Leader: ','מוביל: ')}{winnerName}</p>
       <p>{L('Registered: ', 'בעלי זכות בחירה: ')}{selected.registered === null ? '—' : fmtInt(selected.registered)} · {L('Invalid ballots: ', 'קולות פסולים: ')}{fmtInt(selected.invalid)}</p>
       <p>{L('Valid votes: ','קולות כשרים: ')}{fmtInt(selected.valid)} · {L('Votes cast: ','מצביעים: ')}{fmtInt(selected.votesCast)} · {L('Turnout: ','הצבעה: ')}{selected.registered?fmtPct(selected.votesCast,selected.registered,1):L('Unavailable','לא זמין')}</p>
-      <p className="small ink2">{L('Turnout excludes double-envelope votes. Coordinates are CBS locality reference points, not polling stations.', 'ההצבעה אינה כוללת מעטפות חיצוניות. המיקום הוא נקודת ייחוס של הלמ״ס ליישוב ולא מיקום קלפי.')}</p>
+      <p className="small ink2">{L('Locality reference point', 'נקודת ייחוס ליישוב')} <Info title={L('Location and turnout', 'מיקום והצבעה')}>{L('Turnout excludes double-envelope votes. Coordinates are CBS locality reference points, not polling stations.', 'ההצבעה אינה כוללת מעטפות חיצוניות. המיקום הוא נקודת ייחוס של הלמ״ס ליישוב ולא מיקום קלפי.')}</Info></p>
       {/* each list's share drawn as a bar in its colour, scaled to the leader */}
       <div className="tablewrap"><table className="tbl"><thead><tr><th>{L('List','רשימה')}</th><th className="n">{L('Votes','קולות')}</th><th>{L('Share','שיעור')}</th></tr></thead><tbody>{(()=>{const rows=selected.votes.map((v,k)=>({v,k})).filter(x=>x.v>0).sort((a,b)=>b.v-a.v);const top=rows[0]?.v||1;return rows.map(({v,k})=>{
         const l=historicalLists[k];return <tr key={k}><td><span className="row" style={{gap:6,flexWrap:'nowrap'}}><span className="swatch" style={{background:l?.color ?? 'var(--muted)'}} />{l?listLabel(l,lang):data.listIds[k]}</span></td><td className="n">{fmtInt(v)}</td><td><span className="locality-share"><span><i style={{width:`${v/top*100}%`,background:l?.color ?? 'var(--muted)'}} /></span><span className="tabnum">{fmtPct(v,selected.valid,1)}</span></span></td></tr>;
