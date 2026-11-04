@@ -1,3 +1,4 @@
+import { PRESETS, type FeatureId, type Visibility } from './features.ts';
 // Application state. Undo/redo keeps immutable scenario snapshots; saved scenarios remain action logs.
 import { useSyncExternalStore } from 'react';
 import type { ElectionDataset, ElectionId, ElectionIndexEntry } from '../data/schema.ts';
@@ -36,6 +37,7 @@ export interface State {
   lang: Lang;
   theme: 'light' | 'dark';
   level: Level;
+  customFeatures: Partial<Record<FeatureId, Visibility>> | null;
   /** the one-line Simple-mode hint was dismissed (remembered across visits) */
   hintDismissed: boolean;
   digits: number;
@@ -74,14 +76,14 @@ const persisted = (() => { try { return JSON.parse(globalThis.localStorage?.getI
 let state: State = {
   datasets: {}, elections: FALLBACK_INDEX, electionId: 'k26', scenario: null, preview: null, reference: null, markOfficial: persisted.markOfficial === true, past: [], future: [], selectedListId: null, blocPanel: null, tool: null, compareWith: 'historical',
   lang: persisted.lang ?? 'he', theme: persisted.theme ?? (globalThis.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
-  level: migrateLevel(persisted.level), hintDismissed: persisted.hintDismissed === true, digits: persisted.digits ?? 2, layout: 'hemicycle', colorBy: 'list',
+  level: migrateLevel(persisted.level), customFeatures: persisted.customFeatures ?? null, hintDismissed: persisted.hintDismissed === true, digits: persisted.digits ?? 2, layout: 'hemicycle', colorBy: 'list',
   saved: persisted.saved ?? [], toast: null, loadError: null, notice: null, voteSource: { kind: 'proportional' }, sessions: {},
 };
 const listeners = new Set<() => void>();
 const emit = () => { for (const l of listeners) l(); };
 /** Writes settings and saved scenarios; returns false if the browser refused (full or disabled). */
 const persist = (): boolean => {
-  try { localStorage.setItem(LS, JSON.stringify({ lang: state.lang, theme: state.theme, level: state.level, markOfficial: state.markOfficial, hintDismissed: state.hintDismissed, digits: state.digits, saved: state.saved })); return true; }
+  try { localStorage.setItem(LS, JSON.stringify({ lang: state.lang, theme: state.theme, level: state.level, customFeatures: state.customFeatures, markOfficial: state.markOfficial, hintDismissed: state.hintDismissed, digits: state.digits, saved: state.saved })); return true; }
   catch { return false; }
 };
 
@@ -286,12 +288,9 @@ export function importScenarioJson(text: string): Scenario {
   return parsed as Scenario;
 }
 
-const PROPORTIONAL: SourceChoice = { kind: 'proportional' };
-/** The vote source actually in force: Simple mode always balances proportionally. */
+/** Selecting an in-place source picker applies the choice at every level. */
 export function useVoteSource(): SourceChoice {
-  const src = useStore((st) => st.voteSource);
-  const simple = useStore((st) => st.level === 'simple');
-  return simple ? PROPORTIONAL : src;
+  return useStore(st => st.voteSource);
 }
 /** Percentage precision in force: the precision setting is an Expert control, so other levels use 2. */
 export function useDigits(): number {
@@ -301,4 +300,14 @@ export function useDigits(): number {
 export function useLevel() {
   const level = useStore((st) => st.level);
   return { level, simple: level === 'simple', standard: level !== 'simple', expert: level === 'expert' };
+}
+
+export function featureVisibility(id: FeatureId): Visibility {
+  return state.customFeatures?.[id] ?? PRESETS[state.level][id];
+}
+export function keepFeature(id: FeatureId, visibility: Visibility = 'show') {
+  setState({ customFeatures: { ...state.customFeatures, [id]: visibility } });
+}
+export function useFeature(id: FeatureId) {
+  return useStore(st => st.customFeatures?.[id] ?? PRESETS[st.level][id]);
 }

@@ -1,15 +1,19 @@
+import { StartFrom } from './StartFrom.tsx';
+import { useDisclosure } from './Feature.tsx';
 import { useState } from 'react';
 import { ArrowDown, ArrowUp, Pencil, Plus, X } from 'lucide-react';
 import type { CandidateBio } from '../../data/schema.ts';
 import type { SimCandidate, SimList } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
 import { shownName } from '../derive.ts';
-import { dispatch, useLevel } from '../store.ts';
+import { dispatch, useLevel, useStore } from '../store.ts';
 
 export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList; seats: number; baseSeats: number; baseCandidates?: SimCandidate[] }) {
   const L = useL();
   const lang = useLang();
-  const { simple, expert: advanced } = useLevel();
+  const { simple } = useLevel();
+  const { shown: advanced, control } = useDisclosure('candidateEdit');
+  const s = useStore(st => st.scenario);
   const [showAll, setShowAll] = useState(false);
   const [drag, setDrag] = useState<number | null>(null);
   const [editing, setEditing] = useState<string | null>(null);
@@ -34,6 +38,7 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
 
   return (
     <div>
+      {control}{advanced && s && <StartFrom s={s} part="candidates" listId={l.id} />}
       {l.rosterUnavailable && <p className="small callout">{L('The official candidate list for this election is not available in the sources used here, so the names of those elected are not shown.', 'רשימת המועמדים הרשמית לבחירות אלה אינה זמינה במקורות שבשימוש כאן, ולכן שמות הנבחרים אינם מוצגים.')}</p>}
       {l.rosterTruncated && !l.rosterUnavailable && <p className="small callout">{L(`Only the first ${c.length} candidates of this list’s official roster are available here (everyone elected is included); later names were not transcribed.`, `כאן זמינים רק ${c.length} המועמדים הראשונים ברשימה הרשמית (כולל כל הנבחרים); השמות שאחריהם לא הוקלדו.`)}</p>}
       {!simple && !l.rosterUnavailable && <div className="kv small" style={{ marginBottom: 8 }}>

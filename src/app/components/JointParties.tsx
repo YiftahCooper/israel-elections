@@ -1,3 +1,4 @@
+import { useDisclosure } from './Feature.tsx';
 // A joint list's constituent parties (decision 0087): who holds its seats, which bloc each party sits in,
 // and "Run as separate lists", a counterfactual whose vote shares are an explicit, editable assumption.
 import { Fragment, useMemo, useState } from 'react';
@@ -15,8 +16,9 @@ const newId = (k: number) => `sim-${Date.now().toString(36)}${k}${Math.floor(Mat
 
 export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l: SimList }) {
   const L = useL();
+  const { shown: standard, control: standardControl } = useDisclosure('jointEditing');
   const lang = useLang();
-  const { standard, expert } = useLevel();
+  const { expert } = useLevel();
   const parties = l.parties ?? [];
   const seats = r.lists.find((x) => x.id === l.id)?.seats ?? 0;
   const elected = electedOf(l, seats);
@@ -55,7 +57,7 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
 
   const isSplit = (s.factionSplits ?? []).includes(l.id);
   return (
-    <section>
+    <section>{standardControl}
       <h3>{L('Parties on this joint list', 'המפלגות ברשימה המשותפת')} <Info term="constituent-party" /></h3>
       <label className="switch small" style={{ marginBottom: 6 }}>
         <input type="checkbox" checked={isSplit} onChange={(e) => dispatch({ type: 'setFactionSplit', listId: l.id, split: e.target.checked })} />

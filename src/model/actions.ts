@@ -110,7 +110,8 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       }
       if (action.source === 'blank') {
         need(PARTS[action.part]?.blank, 'part', 'This part cannot be blank.');
-        if (action.part === 'agreements') snapshot = { agreements: [] };
+        if (action.part === 'candidates') snapshot = { lists: s.lists.map(l => ({ ...l, candidates: [], rosterUnavailable: false, rosterTruncated: false })) };
+        else if (action.part === 'agreements') snapshot = { agreements: [] };
         else if (action.part === 'coalitions') snapshot = { coalition: { in: [], out: [] } };
         else if (action.part === 'blocs') {
           need(action.name?.trim(), 'name', 'Name the grouping.');
@@ -142,7 +143,40 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
         need(snapshot!.coalition, 'part', 'Coalition inputs are required.');
         s = { ...s, coalition: snapshot!.coalition };
       }
-      else need(false, 'part', 'This part editor is not available yet.');
+      else if (action.part === 'totals') {
+        need(snapshot!.registered !== undefined && snapshot!.invalid !== undefined, 'part', 'Totals are required.');
+        need(!snapshot!.validVotes || s.lists.some(l => !l.withdrawn && l.votes > 0), 'votes', 'A positive vote distribution is required to scale turnout.');
+        const votes = snapshot!.validVotes === undefined ? null : apportion(snapshot!.validVotes!, s.lists.map(l => l.withdrawn ? 0 : l.votes));
+        s = { ...s, registered: snapshot!.registered!, invalid: snapshot!.invalid!, lists: votes ? s.lists.map((l,i) => ({ ...l, votes: votes[i] })) : s.lists };
+      } else if (action.part === 'structure') {
+        need(snapshot!.lists, 'part', 'Lists are required.');
+        const heldBefore = s.lists.reduce((sum,l) => sum + (l.heldVotes ?? 0), 0);
+        const lists = snapshot!.lists!.map(from => {
+          const old = s.lists.find(l => l.id === from.id);
+          if (!old) return from;
+          const votes = old.votes + (old.heldVotes ?? 0);
+          return { ...old, originIds: from.originIds, withdrawn: from.withdrawn,
+            votes: from.withdrawn ? 0 : votes, heldVotes: from.withdrawn ? votes : undefined };
+        });
+        const heldAfter = lists.reduce((sum,l) => sum + (l.heldVotes ?? 0), 0);
+        s = { ...s, lists, invalid: Math.max(0, s.invalid - heldBefore + heldAfter), agreements: snapshot!.agreements ?? [], factionSplits: snapshot!.factionSplits ?? [] };
+      } else {
+        need(snapshot!.lists, 'part', 'List inputs are required.');
+        if (action.listId) need(s.lists.some(l => l.id === action.listId), 'lists', 'List does not exist.');
+        const heldBefore = s.lists.reduce((sum,l) => sum + (l.heldVotes ?? 0), 0);
+        s = { ...s, lists: s.lists.map(l => {
+          if (action.listId && action.listId !== l.id) return l;
+          const from = snapshot!.lists!.find(x => x.id === l.id);
+          need(from, 'lists', 'Starting-point lists do not match this scenario.');
+          if (action.part === 'votes') {
+            need(l.withdrawn === from!.withdrawn, 'lists', 'Restore matching withdrawals before copying votes.');
+            return { ...l, votes: from!.votes, heldVotes: from!.heldVotes };
+          }
+          if (action.part === 'candidates') return { ...l, candidates: from!.candidates, rosterUnavailable: from!.rosterUnavailable, rosterTruncated: from!.rosterTruncated };
+          return { ...l, nameHe: from!.nameHe, shortHe: from!.shortHe, shortEn: from!.shortEn, letters: from!.letters, color: from!.color };
+        }) };
+        if (action.part === 'votes') s = { ...s, invalid: Math.max(0, s.invalid - heldBefore + s.lists.reduce((sum,l) => sum + (l.heldVotes ?? 0), 0)) };
+      }
       break;
     }
     case 'setVotes':

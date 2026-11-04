@@ -1,3 +1,4 @@
+import { Feature } from './Feature.tsx';
 import { StartFrom } from './StartFrom.tsx';
 import { EditMarker } from './EditMarker.tsx';
 import { PartEdits } from './PartEdits.tsx';
@@ -76,7 +77,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
   const L = useL();
   const lang = useLang();
   const digits = useDigits();
-  const { simple, standard, expert } = useLevel();
+  const { simple } = useLevel();
   const src = useVoteSource();
   const lr = r.lists.find((x) => x.id === l.id)!;
   const previous = useRef({ id: l.id, qualified: lr.qualified });
@@ -109,7 +110,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
   const histShares = Object.fromEntries(base.lists.map((b) => [b.id, b.votes]));
   const pctValid = r.totalValid > 0n ? (l.votes / Number(r.totalValid)) * 100 : 0;
   const thr = Number(r.thresholdVotes);
-  const nameOf = (id: string) => { const x = s.lists.find((y) => y.id === id); return x ? listLabel(x, lang) : id; };
+  const nameOf = (id: string) => { const x = s.lists.find((y) => y.id === id); return x ? listLabel(x, lang) : L('Removed list', 'רשימה שהוסרה'); };
 
   /** every edit of this list's votes goes through the shared source setting */
   const editTo = (target: number) => {
@@ -138,6 +139,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
   return (
     <div className="ld" role="region" aria-label={L('List details', 'פרטי רשימה')}>
       <section>
+        <Feature id="voteStart"><StartFrom s={s} part="votes" /></Feature>
         <h3>{L('Votes', 'קולות')} <EditMarker s={s} path={['lists', l.id, 'votes']} /></h3>
         {!lr.qualified && Number(s.rules.thresholdPct) > 0 && <p className="small ink2">{L('Below the threshold', 'מתחת לאחוז החסימה')}</p>}
         {l.withdrawn && <p className="small callout" style={{ marginTop: 0 }}>{L(`This list has withdrawn: its ${fmtInt(l.heldVotes ?? 0)} ballots count as invalid.`, `הרשימה פרשה: ${fmtInt(l.heldVotes ?? 0)} הפתקים שלה נחשבים פסולים.`)}</p>}
@@ -155,7 +157,8 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
           </div>
           <LiveSlider key={l.id} l={l} hist={histVotes} thr={thr} onCommit={editTo} />
           <p className="small ink2" style={{ margin: 0 }}>{L('Votes come from: ', 'מקור הקולות: ')}{sourceName}</p>
-          {standard ? <SourcePicker s={s} l={l} /> : <p className="small ink2" style={{ margin: 0 }}>{L('The other lists’ votes shrink or grow in proportion, so turnout stays the same.', 'הקולות של שאר הרשימות קטנים או גדלים באופן יחסי, כך שההצבעה נשארת זהה.')}</p>}
+          {simple && src.kind === 'proportional' && <p className="small ink2" style={{ margin: 0 }}>{L('The other lists’ votes shrink or grow in proportion, so turnout stays the same.', 'הקולות של שאר הרשימות קטנים או גדלים באופן יחסי, כך שההצבעה נשארת זהה.')}</p>}
+          <Feature id="voteSource"><SourcePicker s={s} l={l} /></Feature>
         </fieldset>
       </section>
 
@@ -182,7 +185,8 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
         </section>
       )}
 
-      {standard && (
+      {simple && agr && <p className="small">{L('With ', 'עם ')}{nameOf(partnerId)} · {agrStatus?.active ? L('in force', 'בתוקף') : !agr.enabled ? L('switched off', 'כבוי') : L('no effect', 'ללא השפעה')}</p>}
+      <Feature id="agreements">
         <section>
           <StartFrom s={s} part="agreements" />
           <h3><EditMarker s={s} path={['agreements']} />{L('Surplus-vote agreement', 'הסכם עודפים')} <Info term="surplus" /></h3>
@@ -198,22 +202,12 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
               : !agrStatus?.active ? (agrStatus?.reason === 'member-withdrawn' ? L('No effect: a partner withdrew.', 'ללא השפעה: שותפה פרשה.') : agrStatus?.reason === 'duplicate-membership' ? L('No effect: a list is in two agreements.', 'ללא השפעה: רשימה בשני הסכמים.') : agrStatus?.reason === 'too-many-members' ? L('Not allowed under these rules.', 'לא מותר לפי הכללים.') : agrStatus?.reason === 'member-no-initial-seat' ? L('No effect: a partner won no whole-quota seat.', 'ללא השפעה: שותפה לא זכתה במנדט במודד שלם.') : L('No effect: a partner failed the threshold.', 'ללא השפעה: שותפה לא עברה את החסימה.'))
               : agreementEffect && agreementEffect.length ? <>{L('Effect: ', 'השפעה: ')}{agreementEffect.map((e) => `${nameOf(e.id)} ${signed(e.d)}`).join(' · ')}</> : L('Effect: none — the same seats are won without it.', 'השפעה: אין — אותם מנדטים גם בלעדיו.')}
           </p>}
-        </section>
-      )}
+        </section></Feature>
 
-      {simple && agr && (
-        <section>
-          <h3><EditMarker s={s} path={['agreements']} />{L('Surplus-vote agreement', 'הסכם עודפים')} <Info term="surplus" /></h3>
-          <p className="small" style={{ margin: 0 }}>{L('With ', 'עם ')}<b>{nameOf(partnerId)}</b>{' · '}
-            {agrStatus?.active ? L('in force', 'בתוקף') : !agr.enabled ? L('switched off', 'כבוי') : L('no effect', 'ללא השפעה')}
-            {agreementEffect && agreementEffect.length > 0 && <>{' · '}{L('effect: ', 'השפעה: ')}{agreementEffect.map((e) => `${nameOf(e.id)} ${signed(e.d)}`).join(' · ')}</>}</p>
-          <p className="tiny muted" style={{ margin: '4px 0 0' }}>{L('Change it in Standard.', 'שינוי במצב רגיל.')}</p>
-        </section>
-      )}
 
       <PartEdits s={s} prefix={['lists', l.id]} /><JointParties s={s} r={r} l={l} />
 
-      {standard && (
+      <Feature id="standing">
         <section>
           <h3>{L('Standing', 'מעמד')}</h3>
           <div className="row">
@@ -230,10 +224,9 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
             }}>{L('Restore this list as it was', 'שחזור הרשימה כפי שהייתה')}</button>}
           </div>
           {l.sponsorsHe && <p className="tiny muted" lang="he" style={{ margin: '6px 0 0' }}>{L('Submitted by: ', 'הוגשה מטעם: ')}{l.sponsorsHe.replace(/; /g, ' · ')}</p>}
-        </section>
-      )}
+        </section></Feature>
 
-      {expert && (
+      <Feature id="allocation">
         <section>
           <h3>{L('Allocation detail', 'פירוט החלוקה')}</h3>
           <div className="kv small">
@@ -249,11 +242,11 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
             </>}
             <span>{L('Historical seats', 'מנדטים בפועל')}</span><span>{histSeats < 0 ? L('Compared together on Overview', 'השוואה משותפת בתמונת המצב') : histSeats}</span>
           </div>
-        </section>
-      )}
+        </section></Feature>
 
-      {expert && (
+      <Feature id="identity">
         <section>
+          <StartFrom s={s} part="identity" listId={l.id} />
           <h3>{L('Name and colour (display only)', 'שם וצבע (תצוגה בלבד)')}</h3>
           <div className="grid2">
             <label className="field">{L('Short name (Hebrew)', 'שם מקוצר')}<TextField value={l.shortHe} onCommit={(v) => dispatch({ type: 'setListMeta', listId: l.id, patch: { shortHe: v } })} /></label>
@@ -262,15 +255,14 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
             <label className="field">{L('Colour', 'צבע')}<EditMarker s={s} path={['lists', l.id, 'color']} /><input type="color" value={l.color} onChange={(e) => dispatch({ type: 'setListMeta', listId: l.id, patch: { color: e.target.value } })} /></label>
             <label className="field" style={{ gridColumn: '1 / -1' }}>{L('Full name', 'שם מלא')}<EditMarker s={s} path={['lists', l.id, 'nameHe']} /><TextField value={l.nameHe} onCommit={(v) => dispatch({ type: 'setListMeta', listId: l.id, patch: { nameHe: v } })} /></label>
           </div>
-        </section>
-      )}
+        </section></Feature>
 
-      {standard && notes.length > 0 && (
+      {notes.length > 0 && (<Feature id="notes">
         <section>
           <h3>{L('Official notes (Central Elections Committee)', 'הערות רשמיות (ועדת הבחירות)')}</h3>
           {notes.map((n, i) => <p key={i} className="small" lang="he" dir="rtl" style={{ margin: '0 0 4px' }}>{n}</p>)}
         </section>
-      )}
+      </Feature>)}
 
       <section className="wide">
         <h3>{simple ? L(`Who gets in (${lr.seats})`, `מי נכנס לכנסת (${lr.seats})`) : L('Candidates', 'מועמדים')}<EditMarker s={s} path={['lists', l.id, 'candidates']} /></h3>

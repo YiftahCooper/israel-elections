@@ -18,6 +18,14 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 
 ### Changed
 
+- Show bilingual human change values and colour swatches instead of serialized inputs.
+  Name removed agreements beside their markers, keep tooltips inside phone viewports, and
+  label rule starting points by era, method, threshold and candidate cap (acceptance B3/B4).
+- Complete shared starting points for votes, identity, structure, candidates and totals;
+  blank candidate orders and zero-vote new lists are undoable.
+- Add a single feature registry, in-place optional controls and browser-persisted Custom
+  visibility settings with task groups and preset resets. Truth labels remain visible.
+
 - Saved/loaded scenarios become the edit reference, with a browser setting to mark against
   the official result instead. Shared neutral glyphs explain previous inputs; Compare and
   session summaries name the reference. Candidate ordering is included in the diff.

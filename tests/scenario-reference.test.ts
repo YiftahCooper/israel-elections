@@ -48,7 +48,7 @@ describe('shared part actions', () => {
     expect(applyAction(named, { type: 'setBlocs', blocs: [] }).customGroupingName).toBe('Unity');
     expect(validateScenario(named)).toEqual([]);
   });
-  for (const part of ['blocs', 'agreements', 'rules', 'coalitions'] as const) it(`reuses and resets ${part} through one action`, () => {
+  for (const part of Object.keys(PARTS) as (keyof typeof PARTS)[]) it(`reuses and resets ${part} through one action`, () => {
     const s = applyAction(base, { type: 'startPart', part, source: 'saved', snapshot: partSnapshot(base, part), name: 'Saved' });
     const reset = applyAction(s, { type: 'startPart', part, source: 'official' }, undefined, { base });
     expect(partSnapshot(reset, part)).toEqual(partSnapshot(base, part));
@@ -65,4 +65,36 @@ it('candidate ordering is a meaningful input; empty coalition equals the officia
   const s = { ...base, lists: base.lists.map(x => x.id === l.id ? { ...l, candidates: [...l.candidates].reverse() } : x) };
   expect(referenceChanges(s, base)).toEqual([['lists', l.id, 'candidates']]);
   expect(referenceChanges({ ...base, coalition: { in: [], out: [] } }, base)).toEqual([]);
+});
+
+it('blank candidates affects the selected list only and is one replayable action', () => {
+  const id = base.lists[0].id;
+  const s = applyAction(base, { type: 'startPart', part: 'candidates', source: 'blank', listId: id });
+  expect(s.lists[0].candidates).toEqual([]);
+  expect(s.lists[1]).toEqual(base.lists[1]);
+  expect(s.log).toHaveLength(1);
+  expect(validateScenario(s)).toEqual([]);
+});
+
+it('copying a part preserves independent edits and reconciles withdrawals', () => {
+  const id = base.lists[0].id;
+  const named = applyAction(base, { type: 'setListMeta', listId: id, patch: { nameHe: 'Custom name' } });
+  const changed = applyAction(named, { type: 'setVotes', listId: id, votes: base.lists[0].votes + 100 });
+  const votes = applyAction(changed, { type: 'startPart', part: 'votes', source: 'official' }, undefined, { base });
+  expect(votes.lists[0].nameHe).toBe('Custom name');
+  expect(votes.lists[0].votes).toBe(base.lists[0].votes);
+  const withdrawn = applyAction(changed, { type: 'setWithdrawn', listId: id, withdrawn: true });
+  const structure = applyAction(withdrawn, { type: 'startPart', part: 'structure', source: 'official' }, undefined, { base });
+  expect(structure.lists[0].votes).toBe(changed.lists[0].votes);
+  expect(structure.lists[0].nameHe).toBe('Custom name');
+  expect(structure.invalid).toBe(base.invalid);
+  expect(validateScenario(structure)).toEqual([]);
+});
+
+it('totals restore the source turnout without replacing current vote preferences', () => {
+  const s = applyAction(base, { type: 'setVotes', listId: base.lists[0].id, votes: base.lists[0].votes * 2 });
+  const reset = applyAction(s, { type: 'startPart', part: 'totals', source: 'official' }, undefined, { base });
+  expect(partSnapshot(reset,'totals')).toEqual(partSnapshot(base,'totals'));
+  expect(reset.lists[0].votes).toBeGreaterThan(base.lists[0].votes);
+  expect(reset.lists[0].candidates).toEqual(s.lists[0].candidates);
 });

@@ -33,7 +33,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
     const l = s.lists.find((x) => x.id === id);
     if (l) return listLabel(l, lang);
     const u = r.units.find((x) => x.id === id);
-    return u ? u.memberIds.map((m) => listLabel(s.lists.find((x) => x.id === m)!, lang)).join(' + ') : id;
+    return u ? u.memberIds.map((m) => listLabel(s.lists.find((x) => x.id === m)!, lang)).join(' + ') : L('Allocation unit', 'יחידת חלוקה');
   };
   const step = steps[Math.min(i, steps.length - 1)];
   const label = (st: Step, k: number) => st.kind === 'remainder' ? `${L('Seat', 'מנדט')} ${r.initialSeatsTotal + st.st.step}` : st.kind === 'internal' ? `${L('Split', 'חלוקה')}: ${r.units.find((u) => u.id === st.unitId)?.memberIds.map((m) => listLabel(s.lists.find((x) => x.id === m)!, lang)).join('+') ?? ''}` : st.kind === 'final' ? L('Result', 'תוצאה') : String(k + 1);

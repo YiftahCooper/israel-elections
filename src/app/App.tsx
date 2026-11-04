@@ -1,3 +1,5 @@
+import { CustomPage, Feature } from './components/Feature.tsx';
+import { TOOL_FEATURES, RANK, type Preset } from './features.ts';
 import { electionContext } from '../data/electionContext.ts';
 import { ElectionAbout, PMResult } from './components/ElectionContext.tsx';
 import { createElement, memo, Suspense, use, useEffect, useState, type ReactNode } from 'react';
@@ -72,16 +74,8 @@ const TAB_PANEL: Partial<Record<Tab, { preload: () => Promise<void> }>> = {
 /** Starts fetching a tab's code ahead of its first use (a no-op once loaded). */
 const prefetchTab = (t: Tab) => { void TAB_PANEL[t]?.preload().catch(() => {}); };
 
-type Tab = 'board' | 'scenarios' | 'whatif' | 'coal' | 'security' | 'walk' | 'compare' | 'charts' | 'structure' | 'turnout' | 'sens' | 'rules' | 'loc' | 'sources';
-// Every tool is listed at every level (levels hide depth, never a feature's existence); each names the level its
-// full controls need, and opening one above the current level offers that level in place.
-const TOOLS: { id: Tab; level: Level }[] = [
-  { id: 'board', level: 'simple' }, { id: 'scenarios', level: 'simple' }, { id: 'whatif', level: 'simple' }, { id: 'coal', level: 'simple' }, { id: 'walk', level: 'simple' },
-  { id: 'structure', level: 'standard' }, { id: 'compare', level: 'standard' }, { id: 'security', level: 'standard' }, { id: 'charts', level: 'standard' },
-  { id: 'turnout', level: 'expert' }, { id: 'sens', level: 'expert' }, { id: 'loc', level: 'expert' }, { id: 'rules', level: 'expert' },
-  { id: 'sources', level: 'simple' },
-];
-const RANK: Record<Level, number> = { simple: 0, standard: 1, expert: 2 };
+type Tab = typeof TOOL_FEATURES[number][0];
+const TOOLS = TOOL_FEATURES.map(([id,,,, level]) => ({ id, level: level as Preset }));
 
 export function App() {
   const lang = useStore((st) => st.lang);
@@ -127,6 +121,7 @@ function Shell() {
   const notice = useStore((st) => st.notice);
   const lang = useStore((st) => st.lang);
   const level = useStore((st) => st.level);
+  const customFeatures = useStore(st => st.customFeatures);
   const toolPick = useStore((st) => st.tool) as Tab | null;
   const selectedListId = useStore((st) => st.selectedListId);
   const blocPanel = useStore((st) => st.blocPanel);
@@ -178,22 +173,11 @@ function Shell() {
     sources: L('Sources', 'מקורות'),
   };
   const levelName: Record<Level, string> = { simple: L('Simple', 'פשוט'), standard: L('Standard', 'רגיל'), expert: L('Expert', 'מומחה') };
-  const blurb: Record<Tab, string> = {
-    board: '', scenarios: '', whatif: '', coal: '', walk: '', sources: '',
-    structure: L('Merge lists, split a joint list, add or remove lists and surplus-vote agreements.', 'איחוד רשימות, פיצול רשימה משותפת, הוספה והסרה של רשימות והסכמי עודפים.'),
-    compare: L('Compare this scenario with the official result, a saved scenario or another election.', 'השוואת התרחיש לתוצאה הרשמית, לתרחיש שמור או לבחירות אחרות.'),
-    security: L('For every list, how many votes stand between it and its next seat or the loss of one.', 'לכל רשימה, כמה קולות מפרידים בינה לבין המנדט הבא או אובדן מנדט.'),
-    charts: L('Votes against seats, wasted votes and the remainder stage, drawn.', 'קולות מול מנדטים, קולות שהתבזבזו ושלב העודפים, בתרשימים.'),
-    turnout: L('Model higher or lower turnout among a group of voters you define.', 'מידול הצבעה גבוהה או נמוכה יותר בקבוצת מצביעים שתגדירו.'),
-    sens: L('How the seats respond as one list’s votes sweep across a range.', 'איך המנדטים מגיבים כשקולות רשימה אחת נעים בטווח.'),
-    loc: L('Results by locality, searchable, with turnout.', 'תוצאות לפי יישוב, עם חיפוש ושיעור הצבעה.'),
-    rules: L('The law in force, and alternative systems to try (D’Hondt, Sainte-Laguë, largest remainder, other thresholds).', 'החוק בתוקף, ושיטות חלופיות לניסוי (ד’הונדט, סנט־לגה, השארית הגדולה, אחוזי חסימה אחרים).'),
-  };
+  const customPage = toolNow === 'custom';
   const tool: Tab = toolPick && TOOLS.some((t) => t.id === toolPick) ? toolPick : 'board';
-  const need = TOOLS.find((t) => t.id === tool)!.level;
-  const locked = RANK[need] > RANK[level];
   // tools of this level first, then the others under a quiet label (never hidden)
-  const ordered = [...TOOLS.filter((t) => RANK[t.level] <= RANK[level]), ...TOOLS.filter((t) => RANK[t.level] > RANK[level])];
+  const availableTools = TOOLS.filter(t => customFeatures?.[t.id] !== 'hidden');
+  const ordered = [...availableTools.filter((t) => RANK[t.level] <= RANK[level]), ...availableTools.filter((t) => RANK[t.level] > RANK[level])];
   const firstLocked = ordered.findIndex((t) => RANK[t.level] > RANK[level]);
   // a tool is a page of its own; the board keeps its state (selection, open figures) when you come back
   const openTool = (id: Tab) => { setState({ tool: id }); window.scrollTo({ top: 0 }); };
@@ -235,8 +219,8 @@ function Shell() {
       </div>
       <ChangeSummary s={s} r={r} base={base} baseR={baseR} ds={ds} />
       <main className="work">
-        {tool === 'board' ? (
-          <div className={`board ${selected || blocPanel ? 'with-panel' : ''}`}>
+        {customPage ? <CustomPage /> : tool === 'board' ? (
+          <Feature id="board"><div className={`board ${selected || blocPanel ? 'with-panel' : ''}`}>
             <ErrorBoundary label={L('Lists', 'רשימות')} resetKey={s}><ListBars s={s} r={r} base={base} baseR={baseR} /></ErrorBoundary>
             <div className="center">
               <section className="panel chamber-panel" aria-label={L('The Knesset', 'הכנסת')}>
@@ -249,17 +233,12 @@ function Shell() {
             </div>
             {selected && <ErrorBoundary label={L('List details', 'פרטי רשימה')} resetKey={selected}><ListSidePanel s={s} r={r} ds={ds} base={base} baseR={baseR} listId={selected} /></ErrorBoundary>}
             {!selected && blocPanel && <ErrorBoundary label={L('Blocs', 'גושים')} resetKey={s}><BlocPanel s={s} r={r} focus={blocPanel} /></ErrorBoundary>}
-          </div>
+          </div></Feature>
         ) : (
           <section className="panel tool-page" id="tool-panel" aria-label={label[tool]}>
             <header><h2>{label[tool]}</h2></header>
             <div className="body" role="tabpanel" id="analysis-panel" aria-labelledby={`tab-${tool}`}>
-              {locked ? (
-                <div>
-                  <p className="tool-intro">{blurb[tool]}</p>
-                  <button className="btn primary" onClick={() => setState({ level: need })}>{L(`Open it in ${levelName[need]}`, `פתיחה במצב ${levelName[need]}`)}</button>
-                </div>
-              ) : <ErrorBoundary label={label[tool]} resetKey={`${tool}|${committed.id}|${committed.log.length}`}><Suspense fallback={<p className="muted" role="status">{L('Loading…', 'טוען…')}</p>}>
+              {<Feature id={tool}><ErrorBoundary label={label[tool]} resetKey={`${tool}|${committed.id}|${committed.log.length}`}><Suspense fallback={<p className="muted" role="status">{L('Loading…', 'טוען…')}</p>}>
                 {tool === 'scenarios' && <Scenarios s={committed} ds={ds} />}
                 {tool === 'whatif' && <WhatIf ds={ds} />}
                 {tool === 'coal' && <Coalitions s={committed} r={cr} />}
@@ -273,7 +252,7 @@ function Shell() {
                 {tool === 'rules' && <Rules s={committed} base={base} />}
                 {tool === 'loc' && <Localities s={committed} />}
                 {tool === 'sources' && <Sources ds={ds} />}
-              </Suspense></ErrorBoundary>}
+              </Suspense></ErrorBoundary></Feature>}
             </div>
           </section>
         )}

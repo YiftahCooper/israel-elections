@@ -1,6 +1,7 @@
+import { changeText, ChangeValue } from '../changeValue.tsx';
 import { electionContext } from '../../data/electionContext.ts';
 import { exportAnnotations } from '../scenarioExport.ts';
-import { baselineOf, editPathLabel, referenceChanges, referenceValue } from '../derive.ts';
+import { baselineOf, editPathLabel, referenceChanges } from '../derive.ts';
 import { savedColor, scenarioColor } from '../scenarioIdentity.ts';
 import { describe } from '../actionDescription.ts';
 import { useEffect, useRef, useState } from 'react';
@@ -37,6 +38,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
     : index;
   const reference = useStore(st => st.reference);
   const theme = useStore((st) => st.theme);
+  const custom = useStore(st => st.customFeatures);
   const level = useStore((st) => st.level);
   const canUndo = useStore((st) => st.past.length > 0);
   const canRedo = useStore((st) => st.future.length > 0);
@@ -68,7 +70,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
     const markerBase = (!getState().markOfficial && getState().reference) || (ds ? baselineOf(ds) : s);
     const marked = referenceChanges(s, markerBase);
     const head = ['edited', 'letters', 'list', 'votes', 'pct_valid', 'qualified', 'whole_quota_seats', 'seats', 'historical_seats'];
-    const rows = s.lists.map((l) => { const lr = r.lists.find((x) => x.id === l.id)!; return [marked.filter(p => p[0] === 'lists' && p[1] === l.id).map(p => editPathLabel(s, p, lang) + ' · ' + L('Edited: was ', 'נערך: קודם ') + (JSON.stringify(referenceValue(markerBase, p)) ?? '—')).join('; '), l.letters, l.nameHe, l.votes, ((l.votes / Number(r.totalValid)) * 100).toFixed(6), lr.qualified, lr.initialSeats, lr.seats, baseR.lists.find((x) => x.id === l.id)?.seats ?? '']; });
+    const rows = s.lists.map((l) => { const lr = r.lists.find((x) => x.id === l.id)!; return [marked.filter(p => p[0] === 'lists' && p[1] === l.id).map(p => editPathLabel(s, p, lang, markerBase) + ' · ' + L('Edited: was ', 'נערך: קודם ') + (changeText(markerBase, p, lang))).join('; '), l.letters, l.nameHe, l.votes, ((l.votes / Number(r.totalValid)) * 100).toFixed(6), lr.qualified, lr.initialSeats, lr.seats, baseR.lists.find((x) => x.id === l.id)?.seats ?? '']; });
     download(`${s.electionId}-${fileName(s.name)}.csv`, '﻿' + [head, ...rows].map((row) => row.map(csvEscape).join(',')).join('\n'), 'text/csv');
   };
 
@@ -82,12 +84,12 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
       {/* official results need no chip: the neutral chrome says so, and publication status lives in "About this election" */}
       {s && ds && (reference || changes.length > 0 || s.identityColor) && <div className="scenario-status">
         <button className="chip election-status" aria-expanded={changesOpen} onClick={() => setChangesOpen(v => !v)}>
-          <span className="swatch" style={{ background: scenarioColor(s) }} />{s.name || L('Untitled scenario', 'תרחיש ללא שם')}
+          <span className="swatch" style={{ background: scenarioColor(s) }} /><span className="scenario-chip-name">{s.name || L('Untitled scenario', 'תרחיש ללא שם')}</span>
         </button>
-        {changesOpen && <div className="menu-pop scenario-changes"><ScenarioName key={`${s.id}-${s.name}`} name={s.name} placeholder={L('Untitled scenario', 'תרחיש ללא שם')} label={L('Scenario name', 'שם התרחיש')} /><b>{L('Changes from the official result', 'שינויים מהתוצאה הרשמית')}</b><ul>{changes.map(p => <li key={p.join('/')}><bdi>{editPathLabel(s, p, lang)}</bdi>: <bdi>{JSON.stringify(referenceValue(s, p)) ?? '—'}</bdi></li>)}</ul></div>}
+        {changesOpen && <div className="menu-pop scenario-changes"><ScenarioName key={`${s.id}-${s.name}`} name={s.name} placeholder={L('Untitled scenario', 'תרחיש ללא שם')} label={L('Scenario name', 'שם התרחיש')} /><b>{L('Changes from the official result', 'שינויים מהתוצאה הרשמית')}</b><ul>{changes.map(p => <li key={p.join('/')}><bdi>{editPathLabel(s, p, lang, baselineOf(ds!))}</bdi>: <bdi><ChangeValue s={s} path={p} lang={lang} /></bdi></li>)}</ul></div>}
       </div>}
 
-      <Seg label={L('Detail level', 'רמת פירוט')} value={level} onChange={(v) => setState({ level: v })} options={[{ v: 'simple', label: L('Simple', 'פשוט') }, { v: 'standard', label: L('Standard', 'רגיל') }, { v: 'expert', label: L('Expert', 'מומחה') }]} />
+      <Seg<'simple' | 'standard' | 'expert' | 'custom'> label={L('Detail level', 'רמת פירוט')} value={custom ? 'custom' : level} onChange={(v) => { if (v === 'custom') return; setState({ level: v, customFeatures: null, ...(v === 'simple' ? { voteSource: { kind: 'proportional' as const } } : {}) }); }} options={[{ v: 'simple', label: L('Simple', 'פשוט') }, { v: 'standard', label: L('Standard', 'רגיל') }, { v: 'expert', label: L('Expert', 'מומחה') }]} /><button className="btn small band-custom" aria-pressed={custom !== null} title={custom ? L('Custom · based on ', 'מותאם · על בסיס ') + L({simple:'Simple',standard:'Standard',expert:'Expert'}[level], {simple:'פשוט',standard:'רגיל',expert:'מומחה'}[level]) : L('Custom','מותאם')} onClick={() => setState({ tool: 'custom' })}>{custom ? L('Custom', 'מותאם') + ' · ' + L('based on ', 'על בסיס ') + L({simple:'Simple',standard:'Standard',expert:'Expert'}[level], {simple:'פשוט',standard:'רגיל',expert:'מומחה'}[level]) : L('Custom', 'מותאם')}</button>
       <span className="spacer" />
       {!pmContestId && <>
       <button className="tool" onClick={undo} disabled={!canUndo} title={undoName + ' (Ctrl+Z)'} aria-label={undoName}><Undo2 className="icon" aria-hidden /></button>
