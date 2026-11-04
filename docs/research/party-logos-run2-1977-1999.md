@@ -1106,3 +1106,24 @@ No k12 mark is borrowed from k9, k10 or k11. Other B identities ג, רצ, ב, ו
 The corrected whole-sign-off Likud asset remains unchanged.
 
 Coverage: **2 → 2 / 15**; zero additions, zero absence findings.
+### Run 3 · k13
+
+| Identity | Lead(s) checked | Decision and observed evidence |
+|---|---|---|
+| k13/ט | [NNL_ARCHIVE_AL997012156954105171](https://www.nli.org.il/en/archives/NNL_ARCHIVE_AL997012156954105171/NLI) | Gap: each linked URL returned HTTP 403 / browser challenge; no catalogue or scan inspected. |
+
+Category B priorities: **אמת (44 seats)**, **מחל (32 seats)**, **ץ (8 seats)**.
+Opened [IDI's 1992 election catalogue](https://www.idi.org.il/policy/parties-and-elections/elections/1992/)
+and downloaded the [Labor platform](https://www.idi.org.il/media/6676/%D7%A2%D7%91%D7%95%D7%93%D7%94-13.pdf)
+(HTTP 200, 5,009,085 bytes, 40 pages). Visually inspected pages 1, 2, 40: contents
+and platform text, no candidate crop there; the intervening pages were not fully
+visually reviewed. No claim that the booklet lacks all emblems. The [Tzomet
+platform](https://www.idi.org.il/media/6732/tzomet-1992.pdf) (200, 2,033,106 bytes,
+10 pages) has visible Tzomet wordmarks on the front/back; pages 1, 2, 10 were
+visually inspected, but a printed campaign date and complete provenance were not
+verified. No exact publication date invented to fill `inUseDate`. The Likud row
+links `likud-13.doc`; that link remains uninspected artwork. A supplementary search
+for a Jabotinsky thirteenth-Knesset campaign leaflet file yielded no selected
+original. Other B identities שס, ב, ג, ו, ע were not individually re-searched.
+
+Coverage: **1 → 1 / 10**; zero additions, zero absence findings.
