@@ -4178,5 +4178,29 @@
     "retrievedAt": "2026-11-04",
     "bytes": 194,
     "sha256": "d0db9841a975c5b88139146e5043ec2387f987b1c0fdadd964b66baeb5068499"
+  },
+  {
+    "id": "logo-k9-likud-print-page",
+    "file": "logos/k9/likud-jabotinsky-34361.html",
+    "url": "https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%9E%D7%AA%D7%A7%D7%93%D7%9D/%D7%A4%D7%A8%D7%99%D7%98?itemId=34361",
+    "publisher": "Jabotinsky Institute; original publisher: Likud",
+    "official": true,
+    "description": "Likud official campaign poster, 1977-04-28; page; archive catalogue item 34361.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 33918,
+    "sha256": "d7669aaf47f0d0f3242a1080d0a8682715efdf831f6971b253e9321570e3753c"
+  },
+  {
+    "id": "logo-k9-likud-print-asset",
+    "file": "logos/k9/likud-jabotinsky-34361.jpg",
+    "url": "https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%9B%D7%A8%D7%96%D7%95%D7%AA/12.06.2013/2468_4099.jpg",
+    "publisher": "Jabotinsky Institute; original publisher: Likud",
+    "official": true,
+    "description": "Likud official campaign poster, 1977-04-28; asset; archive catalogue item 34361.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 48841,
+    "sha256": "0c7bf872c05a3aeaaba08ed6f8903aeee16d4fdf5c43acef4f99b9ca8ba7dd75"
   }
 ]

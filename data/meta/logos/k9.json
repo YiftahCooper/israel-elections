@@ -68,6 +68,39 @@
       "originalSha256": "dff2ac38ae440ba3082ef12ac937c8905e145a2f1df4fafcb4d6d6b1d8a64b1f",
       "rights": "free-licence",
       "bytes": 18228
+    },
+    {
+      "letters": "מחל",
+      "file": "logos/likud-print-1977.png",
+      "sourceUrl": "https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%9E%D7%AA%D7%A7%D7%93%D7%9D/%D7%A4%D7%A8%D7%99%D7%98?itemId=34361",
+      "licence": "Fair use for identification; copyright remains with the rights holder",
+      "attribution": "Likud; dated official campaign poster (1977-04-28), Jabotinsky Institute item 34361. Cropped from a dated official publication; no redraw or recolouring.",
+      "hosted": true,
+      "inUseEvidence": "Inspected archive catalogue identifies Likud as creator and dates the advertised campaign event to 1977-04-28; retained scan visibly prints that date. Logo is a crop from this dated official publication, outside the archive watermark. Separate campaign evidence; not extended to other elections.",
+      "confidence": "medium",
+      "evidenceId": "jabotinsky-likud-1977-34361",
+      "assetSourceUrl": "https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%9B%D7%A8%D7%96%D7%95%D7%AA/12.06.2013/2468_4099.jpg",
+      "status": "verified",
+      "sha256": "a941a49f1f7082db7370dd6715c95afc47c8dd2edb449711ead09c651ded6cbb",
+      "originalSha256": "0c7bf872c05a3aeaaba08ed6f8903aeee16d4fdf5c43acef4f99b9ca8ba7dd75",
+      "rights": "fair-use-identification",
+      "bytes": 42274,
+      "inUseDate": "1977-04-28",
+      "publicationEvidence": {
+        "page": "logo-k9-likud-print-page",
+        "asset": "logo-k9-likud-print-asset",
+        "publicationDate": "1977-04-28",
+        "cropBox": [
+          229,
+          0,
+          440,
+          96
+        ],
+        "originalDimensions": [
+          448,
+          332
+        ]
+      }
     }
   ]
 }

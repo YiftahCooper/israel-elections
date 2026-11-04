@@ -2793,6 +2793,37 @@
         "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=beytenu.org.il%2Fwp-content%2Fthemes%2Fnisarg%2Fimages%2Flogo2.png&from=20200101&to=20200302&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
         "rawIndex": "logo-k23-beiteinu-index"
       }
+    },
+    {
+      "id": "jabotinsky-likud-1977-34361",
+      "title": "Likud official campaign poster — 1977-04-28",
+      "sourceUrl": "https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%9E%D7%AA%D7%A7%D7%93%D7%9D/%D7%A4%D7%A8%D7%99%D7%98?itemId=34361",
+      "publisher": "Likud; held by Jabotinsky Institute",
+      "sourceType": "official party campaign publication",
+      "accessed": "2026-11-04",
+      "accessMethod": "Plain HTTP with project User-Agent; catalogue HTML and original JPEG retained",
+      "inspectionDepth": "Catalogue, complete scan and cropped emblem visually inspected",
+      "date": "1977-04-28",
+      "description": "Inspected archive catalogue identifies Likud as creator and dates the advertised campaign event to 1977-04-28; retained scan visibly prints that date. Logo is a crop from this dated official publication, outside the archive watermark. Separate campaign evidence; not extended to other elections.",
+      "licence": "Fair use for identification; copyright remains with the rights holder",
+      "downloadUrl": "https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%9B%D7%A8%D7%96%D7%95%D7%AA/12.06.2013/2468_4099.jpg",
+      "evidenceFamily": "jabotinsky-poster-34361",
+      "selected": true,
+      "publicationEvidence": {
+        "page": "logo-k9-likud-print-page",
+        "asset": "logo-k9-likud-print-asset",
+        "publicationDate": "1977-04-28",
+        "cropBox": [
+          229,
+          0,
+          440,
+          96
+        ],
+        "originalDimensions": [
+          448,
+          332
+        ]
+      }
     }
   ]
 }
