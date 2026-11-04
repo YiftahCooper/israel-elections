@@ -33,8 +33,8 @@ Seat-winning denominators come from public/data/kNN.json officialSeats; k26 has 
 | k21 · 2019-04-09 | 11 | 1 | 0 | 0 | 0 |
 | k22 · 2019-09-17 | 9 | 2 | 0 | 0 | 1 |
 | k23 · 2020-03-02 | 8 | 1 | 0 | 0 | 1 |
-| k24 · 2021-03-23 | 13 | 3 | 0 | 1 | 1 |
-| k25 · 2022-11-01 | 10 | 1 | 0 | 5 | 1 |
+| k24 · 2021-03-23 | 13 | 3 | 1 | 0 | 1 |
+| k25 · 2022-11-01 | 10 | 2 | 0 | 4 | 1 |
 | k26 · 2026-10-27 | 11 | 8 | 0 | 1 | 10 |
 
 ## Earlier pass: licence and retrieval outcome (historical)
@@ -274,9 +274,9 @@ Evidence references: [commons-100640724](https://commons.wikimedia.org/wiki/File
 
 ### k25 · 2022-11-01
 
-Hosted winners: כן — National Unity.
+Hosted winners: כן — National Unity; פה — Yesh Atid.
 
-Not locally covered winners: מחל — Likud; ט — Religious Zionism; שס — Shas; ג — United Torah Judaism; פה — Yesh Atid; אמת — Labor; ל — Yisrael Beiteinu; עם — Ra'am; ום — Hadash–Ta'al.
+Not locally covered winners: מחל — Likud; ט — Religious Zionism; שס — Shas; ג — United Torah Judaism; אמת — Labor; ל — Yisrael Beiteinu; עם — Ra'am; ום — Hadash–Ta'al.
 
 Evidence references: [commons-130829829](https://commons.wikimedia.org/wiki/File:National_Unity_Party_(Israel)_August_2022.svg), [commons-132175789](https://commons.wikimedia.org/wiki/File:Parti_sioniste_religieux_logo_2022.png), [ynet-2022-typography](https://www.ynet.co.il/news/article/syrrbq9jj).
 
@@ -289,7 +289,7 @@ Not locally covered winners: ג — United Torah Judaism; ט — Religious Zioni
 
 ## Sources — retained archive
 
-93 inspected source records are retained in [sources.json](../../data/meta/logos/sources.json). Stable Commons IDs use the file-page ID, with the exact reviewed revision URL in the JSON. The API exposed file records, not page-reading depth metrics; exhaustive archive search and total search-engine coverage were not measured. No English-language Wikipedia page was opened, cited or used.
+105 inspected source records are retained in [sources.json](../../data/meta/logos/sources.json). Stable Commons IDs use the file-page ID, with the exact reviewed revision URL in the JSON. The API exposed file records, not page-reading depth metrics; exhaustive archive search and total search-engine coverage were not measured. No English-language Wikipedia page was opened, cited or used.
 
 ### Sources supporting accepted or source-only entries
 
@@ -820,3 +820,46 @@ Each row is a distinct outstanding asset: no verified official-origin campaign l
 ### Continuation verification
 
 Node 24.18.0; Pillow 13.0.0; local Chromium 1248 for the oversized Yesh Atid SVG. `npx tsx scripts/build-datasets.ts` passed (tsx invoked via npm exec with project-local scratch cache); the second final run wrote zero files, with all 39 public/data file hashes identical. `python3 -I scripts/validate-party-logos.py` validates 26 overlays, 102 source records, 53 unique assets and 57 hosted identity entries. `npx tsc -p tsconfig.json --noEmit` passed. Only the model differential digest changed, to `1799c8b1bdc065d754b4483a944cfc0e3fc26c8ff24b494e7c9270a0fb379260`: the entire dataset compares equal after removing logo fields and builtAt. Temporarily restoring the original k26 dataset reproduced all five previous differential digests. Allocation, analysis, validation and rules digests remain unchanged. Final `npm test`: **53 test files and 445 tests passed**. No push was performed.
+
+
+## Paced archive continuation — 4 November 2026
+
+This continuation is **partial**: one k25 list gap is closed. The requested k26 → k25 → k24 → k23 → k22 → k21 programme is not complete. Baseline is commit c2a5665, including both preceding logo passes. The previous complete gap inventory remains applicable except for k25 **פה**, now hosted. No gap is relabelled as “no distinct logo” without positive evidence.
+
+### Accepted evidence
+
+**yeshatid-archive-20221101** supports the claim that the official Yesh Atid homepage referenced its May 2022 desktop mark on election day. [Inspected capture, 1 November 2022 01:34:42 UTC](https://web.archive.org/web/20221101013442/https://yeshatid.org.il/) contains `img.dt-logo`, alt `יש עתיד`, pointing to [the exact official-origin SVG](https://yeshatid.org.il/wp-content/uploads/2022/05/logo_svg.svg). Retrieved and visually inspected the SVG: white lettering, so `displayBackground: dark`; unchanged SVG, 7,087 bytes, SHA-256 `3e9e0ef9855d144d6b2ece1221d508b823f30c89dfe82f2b06e261cccdf50965` for both original and final. Rights: fair-use identification, copyright retained by the party, under decision 0089. Medium confidence: the archive establishes the image reference; the bytes were retrieved from that official path in 2026, not from an inspected historical asset capture. This is one official-site evidence family, not two independent sources.
+
+### New discovery, counterevidence and retrieval limits
+
+- **UTJ, k26 first priority:** [Hebrew file page](https://he.wikipedia.org/wiki/קובץ:יהדות_התורה_לוגו_2019.svg) identifies an extraction from HaMevaser dated 5 April 2019 and links [Telegram newspaper post 3177](https://t.me/newspaperil/3177). The accessible Telegram response exposes no PDF; it does not verify the original advertisement or continued 2026 use. The 599 KB SVG also exceeds the asset limit. [Dated Degel campaign launch, 28 September 2026](https://www.jdn.co.il/news/2735182/) was read and its photograph inspected: campaign slogan on a lectern, not a clean verified UTJ lockup. No official-origin file acquired. The Commons UTJ raster has conflicting PD/fair-use credit history; it was not promoted.
+- **Religious Zionism–Zehut, k26 second priority:** [official Religious Zionism homepage](https://zionutdatit.org.il/) references an August 2026 final PNG. Downloaded and visually inspected: it says Religious Zionism, headed by Bezalel Smotrich; it does not name Zehut. Separate party branding still cannot establish a joint-list mark. The existing constituent remains covered; whole-list **ט** remains unresolved.
+- **Ra’am, k26 third priority:** `raam.org.il` failed DNS. Hebrew discovery identifies `almwahda.com`; direct retrieval disconnected, so neither ownership nor campaign rendering was established here. The already-hosted 2021 mark is not propagated to 2026 or 2022.
+- **Hadash constituent:** [official homepage](https://hadash.org.il/) embeds a bilingual red/lime mark as a percent-encoded SVG data URI, rather than a named image URL. Extracted without changing its geometry or colours and visually inspected; 9,594 bytes, SHA-256 `107a64b2ace98171a7f712a4714e5747756402dd10ae92280c7d0754841c0b8e`. Current HTML contains Framer release/optimization dates in October 2026; these self-reported build timestamps alone were not accepted as proof of the historical rendering. Its selected October capture returned 429. [News 13 election page](https://storycards.co/reshet/7jSpdaRKM), whose public `story.json` was inspected, labels an SVG “Hadash”; visual inspection shows a white **Joint List** lockup instead. Rejected as constituent evidence. No candidate copied into public assets.
+- **Other k26 constituents:** Degel’s HTTPS connection reset; HTTP returned a minimal page without a qualifying mark. Meretz, Agudat Yisrael, Homat Torat Yisrael, Ta’al, Balad, Yesodot Yisrael, Atid Ehad, Eretz Yisrael Shelanu and Together-Bennett retain the distinct unresolved reasons in the preceding inventory. No separate constituent is inferred from a joint lockup.
+- **k25 follow-through:** current Israel Beiteinu header has a July 2023 path, so it is not used for 2022. Current Likud, Religious Zionism and Israel Beiteinu pages were inspected, but a live header alone cannot date an exact older variant. Ynet’s typography review HTML supplies an exact publication date, **2 September 2022** (`datePublished`), resolving the earlier report’s “exact date not exposed” limitation; it remains secondary in-use/discovery evidence, not an official asset origin. Jewish Home and its three constituents remain unresolved; no 2012-era mark was silently reused.
+
+Wayback plan: query CDX once per site for campaign-period captures, then select a single relevant homepage per election before replay. Successful indexes cover Israel Beiteinu, Likud, Yesh Atid, Hadash, New Hope and Shas. CDX success is not capture inspection. Replay requests were spaced at least five seconds apart, and blocked captures were resumed later rather than abandoned at the first 429. Replays for Israel Beiteinu and Likud continued to return 429 or timeout; Yesh Atid’s exact 2022 capture eventually succeeded. No `Retry-After` header was exposed by the observed 429 responses. The later queue uses a shared archive lock, five-second minimum interval and 60/120/240-second exponential waits on consecutive 429s; no proxy or challenge workaround was used. Reproducible downloads, HTML, indexes, capture plan and diagnostics remain under ignored `.backup-scratch/logo-pass3/`. No claim is made that failed captures are absent from Wayback.
+
+### Further inspected captures, still unhosted
+
+**yeshatid-archive-20210301:** [official homepage, 1 March 2021 19:35:01 UTC](https://web.archive.org/web/20210301193501/https://www.yeshatid.org.il/) explicitly references `/sites/atid/UserContent/images/logo/yeshatid%202021%20logo%20RGB.png`, alt “יש עתיד בראשות יאיר לפיד”. The live path returns 404; exact archived image replay returned 429, including a backed-off retry. This replaces the k24 secondary-only proposal with an official dated reference, `download-unavailable`; it does not increase hosted coverage or prove the exact rendering. The January 2021 sunrise-design report remains relevant counterevidence against reusing the old mark.
+
+**yeshatid-archive-20190904:** [official homepage, 4 September 2019 08:20:28 UTC](https://web.archive.org/web/20190904082028/https://www.yeshatid.org.il/) references `/content/images/logo_header.png`, alt “יש עתיד בראשות יאיר לפיד”. It identifies the separate Yesh Atid party, not the Blue and White list. Registered under k22 `party: yesh-atid`; exact archived image retrieval returned 429 after the shared backoff, so it remains unhosted pending retrieval and inspection. No propagation to k21 or k23 is made. The selected February 2020 homepage replay returned 429, so it supplies no inspected k23 evidence.
+
+### Hosted coverage, baseline → this continuation
+
+| Election | Winning lists | Winning-list constituents |
+|---|---:|---:|
+| k26 | 8/11 → 8/11 | 8/19 → 8/19 |
+| k25 | 1/10 → 2/10 | 1/11 → 1/11 |
+| k24 | 3/13 → 3/13 | 1/12 → 1/12 |
+| k23 | 1/8 → 1/8 | 1/18 → 1/18 |
+| k22 | 2/9 → 2/9 | 1/19 → 1/19 |
+| k21 | 1/11 → 1/11 | 0/14 → 0/14 |
+
+All remaining identities are individually enumerated under **Reproducible coverage and every gap** above; remove only k25 פה from that historical inventory. K24 פה and k22 Yesh Atid now have inspected dated official header references but lack retrievable inspected assets. Other k24/k23/k22/k21 identities retain their existing reasons; this continuation did not complete their acquisition. K25 missing winners remain אמת, ג, ום, ט, ל, מחל, עם, שס; its ten missing winning-list constituents and Jewish Home’s three constituents remain unchanged. No nonexistence finding was made.
+
+Conclusion map: k25 פה **passes** the official-origin plus election-specific reference criterion (medium, one official-site family; historical byte identity remains unverified). K24 פה and k22 Yesh Atid **remain unresolved for hosting** despite stronger date evidence. K26’s three whole-list priorities and all other missing identities **remain unresolved**; current variants, secondary illustrations and capture indexes do not satisfy the criterion. Exact campaign assets or inspectable dated originals would change these outcomes.
+
+Verification: Node 24.18.0; local Chromium headless shell 1248 used only to inspect downloaded artwork. `node scripts/build-datasets.ts` passed; its second run wrote zero files and all **39** public-data file SHA-256 values were identical. The build skips full polling-station reconciliation where scratch sources are absent, while retained source/locality checks pass. `npm run build -- --outDir .backup-scratch/logo-pass3/dist` passed. `python3 -I scripts/validate-party-logos.py` passed: 26 overlays, 105 source records, 54 assets, 58 hosted entries, two download-unavailable and seven unresolved entries. `npx tsc -p tsconfig.json --noEmit` passed. `npm test`: **54 files, 457 tests passed**. Only the model differential digest changed, to `bf90d94a7fab09a9ba7e62eded247acec1346fb5b23aebdfde2267ab79e9c175`; public/data/k25.json is exactly equal to baseline after recursively omitting `logo` and `builtAt`, and no other dataset changed. The other four differential digests remain unchanged. No push.
