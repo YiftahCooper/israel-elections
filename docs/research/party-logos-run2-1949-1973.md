@@ -53,47 +53,47 @@ Queries below were submitted through Jina search_web (discovery: up to four resu
 
 ### k1
 
-**א — Mapai: gap.
+**א — Mapai: gap.**
 - `מפא״י 1949 כרזת בחירות סמל -site:en.wikipedia.org` → U1, U2, U3, U4
 - `site:nli.org.il מפא"י 1949 בחירות` → U181, U6
 
-**מ — Mapam: gap.
+**מ — Mapam: gap.**
 - `מפ״ם 1949 כרזת בחירות סמל -site:en.wikipedia.org` → U5, U6, U3, U7
 - `site:nli.org.il מפ"ם 1949 בחירות` → U6, U181
 
-**ב — United Religious Front: gap.
+**ב — United Religious Front: gap.**
 - `החזית הדתית 1949 כרזת בחירות סמל -site:en.wikipedia.org` → U6, U8, U9, U10
 - `site:nli.org.il החזית הדתית 1949 בחירות` → U6, U181
 
-**ח — Herut: gap.
+**ח — Herut: gap.**
 - `חרות 1949 כרזת בחירות סמל -site:en.wikipedia.org` → U11, U12, U6, U13
 - `site:nli.org.il חרות 1949 בחירות` → U6, U16
 
-**צ — General Zionists: gap.
+**צ — General Zionists: gap.**
 - `הציונים הכלליים 1949 כרזת בחירות סמל -site:en.wikipedia.org` → U2, U7, U14, U3
 - `site:nli.org.il הציונים הכלליים 1949 בחירות` → U16, U182
 
-**פ — Progressive Party: gap.
+**פ — Progressive Party: gap.**
 - `הפרוגרסיבים 1949 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U8, U5, U15
 - `site:nli.org.il הפרוגרסיבים 1949 בחירות` → U183, U184
 
-**ס — Sephardim and Oriental Communities: gap.
+**ס — Sephardim and Oriental Communities: gap.**
 - `ספרדים ועדות המזרח 1949 כרזת בחירות סמל -site:en.wikipedia.org` → U16, U7, U8, U2
 - `site:nli.org.il ספרדים ועדות המזרח 1949 בחירות` → U181, U16
 
-**ק — Maki: gap.
+**ק — Maki: gap.**
 - `מק״י 1949 כרזת בחירות סמל -site:en.wikipedia.org` → U17, U11, U2, U18
 - `site:nli.org.il מק"י 1949 בחירות` → U6, U2
 
-**יד — Democratic List of Nazareth: gap.
+**יד — Democratic List of Nazareth: gap.**
 - `דמוקרטית נצרת 1949 כרזת בחירות סמל -site:en.wikipedia.org` → U6, U8, U9, U19
 - `site:nli.org.il דמוקרטית נצרת 1949 בחירות` → U6, U181
 
-**טו — Fighters List: logo added — E1.
+**טו — Fighters List: logo added — E1.**
 - `הלוחמים 1949 כרזת בחירות סמל -site:en.wikipedia.org` → U20, U13, U6, U21
 - `site:nli.org.il הלוחמים 1949 בחירות` → U6, U185
 
-**ל — Yemenite Association: gap.
+**ל — Yemenite Association: gap.**
 - `התימנים 1949 כרזת בחירות סמל -site:en.wikipedia.org` → U2, U7, U22, U8
 - `site:nli.org.il התימנים 1949 בחירות` → U16, U2
 
@@ -109,67 +109,67 @@ Constituents (separate from joint-list lockups):
 
 ### k2
 
-**א — Mapai: gap.
+**א — Mapai: gap.**
 - `מפא״י 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U1, U7, U16, U22
 - `site:nli.org.il מפא"י 1951 בחירות` → U16, U186
 
-**צ — General Zionists: gap.
+**צ — General Zionists: gap.**
 - `הציונים הכלליים 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U16, U23, U14
 - `site:nli.org.il הציונים הכלליים 1951 בחירות` → U16, U187
 
-**מ — Mapam: gap.
+**מ — Mapam: gap.**
 - `מפ״ם 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U5, U16, U22
 - `site:nli.org.il מפ"ם 1951 בחירות` → U16, U188
 
-**ה — Hapoel HaMizrahi: gap.
+**ה — Hapoel HaMizrahi: gap.**
 - `הפועל המזרחי 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U16, U22, U24
 - `site:nli.org.il הפועל המזרחי 1951 בחירות` → U16, U189
 
-**ח — Herut: gap.
+**ח — Herut: gap.**
 - `חרות 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U16, U12, U25
 - `site:nli.org.il חרות 1951 בחירות` → U16, U190
 
-**ק — Maki: gap.
+**ק — Maki: gap.**
 - `מק״י 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U16, U17, U22
 - `site:nli.org.il מק"י 1951 בחירות` → U16, U2
 
-**פ — Progressive Party: gap.
+**פ — Progressive Party: gap.**
 - `הפרוגרסיבים 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U26, U5, U27
 - `site:nli.org.il הפרוגרסיבים 1951 בחירות` → U191, U192
 
-**יד — Democratic List for Israeli Arabs: gap.
+**יד — Democratic List for Israeli Arabs: gap.**
 - `דמוקרטית לערביי ישראל 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U9, U1, U28
 - `site:nli.org.il דמוקרטית לערביי ישראל 1951 בחירות` → U193, U28
 
-**ג — Agudat Yisrael: gap.
+**ג — Agudat Yisrael: gap.**
 - `אגודת ישראל 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U16, U3, U9
 - `פועלי אגודת ישראל 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U16, U3, U9
 - `site:nli.org.il אגודת ישראל 1951 בחירות` → U16, U2
 - `site:nli.org.il פועלי אגודת ישראל 1951 בחירות` → U16, U2
 
-**סצ — Sephardim and Oriental Communities: gap.
+**סצ — Sephardim and Oriental Communities: gap.**
 - `ספרדים ועדות המזרח 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U16, U22, U2
 - `site:nli.org.il ספרדים ועדות המזרח 1951 בחירות` → U16, U194
 
-**ב — Mizrahi: gap.
+**ב — Mizrahi: gap.**
 - `הפועל המזרחי 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U16, U22, U24
 - `המזרחי 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U16, U25, U22
 - `site:nli.org.il הפועל המזרחי 1951 בחירות` → U16, U189
 - `site:nli.org.il המזרחי 1951 בחירות` → U16, U195
 
-**ד — Poalei Agudat Yisrael: gap.
+**ד — Poalei Agudat Yisrael: gap.**
 - `פועלי אגודת ישראל 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U16, U3, U9
 - `site:nli.org.il פועלי אגודת ישראל 1951 בחירות` → U16, U2
 
-**נ — Progress and Work: gap.
+**נ — Progress and Work: gap.**
 - `קידמה ועבודה 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U9, U1, U29
 - `site:nli.org.il קידמה ועבודה 1951 בחירות` → U16, U196
 
-**ל — Yemenite Association: gap.
+**ל — Yemenite Association: gap.**
 - `התימנים 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U16, U22, U30
 - `site:nli.org.il התימנים 1951 בחירות` → U16, U2
 
-**ע — Agriculture and Development: gap.
+**ע — Agriculture and Development: gap.**
 - `חקלאות ופיתוח 1951 כרזה -site:en.wikipedia.org` → U31, U32, U33, U34
 - `site:nli.org.il חקלאות ופיתוח 1951 בחירות` → U16, U28
 
@@ -179,51 +179,51 @@ None recorded on the winning lists.
 
 ### k3
 
-**א — Mapai: gap.
+**א — Mapai: gap.**
 - `site:nli.org.il מפא"י 1955 בחירות` → U197, U28
 - `מפא״י 1955 כרזה -site:en.wikipedia.org` → no URLs; error: 500 Internal Server Error - timeout of 5000ms exceeded
 
-**ח — Herut: gap.
+**ח — Herut: gap.**
 - `חרות 1955 כרזה -site:en.wikipedia.org` → U35, U36, U37, U25
 - `site:nli.org.il חרות 1955 בחירות` → U28, U36
 
-**צ — General Zionists: gap.
+**צ — General Zionists: gap.**
 - `site:nli.org.il הציונים הכלליים 1955 בחירות` → U198, U28
 - `הציונים הכלליים 1955 כרזה -site:en.wikipedia.org` → no URLs; error: 500 Internal Server Error - timeout of 5000ms exceeded
 
-**ב — National Religious Party: gap.
+**ב — National Religious Party: gap.**
 - `מפד״ל 1955 כרזה -site:en.wikipedia.org` → U38, U39, U40, U41
 - `site:nli.org.il מפד"ל 1955 בחירות` → U199, U200
 
-**תו — Ahdut HaAvoda: gap.
+**תו — Ahdut HaAvoda: gap.**
 - `אחדות העבודה 1955 כרזה -site:en.wikipedia.org` → U42, U43, U44, U45
 - `site:nli.org.il אחדות העבודה 1955 בחירות` → U28, U201
 
-**מ — Mapam: gap.
+**מ — Mapam: gap.**
 - `מפ״ם 1955 כרזה -site:en.wikipedia.org` → U5, U46, U25, U47
 - `site:nli.org.il מפ"ם 1955 בחירות` → U28, U16
 
-**גד — Religious Torah Front: gap.
+**גד — Religious Torah Front: gap.**
 - `חזית דתית תורתית 1955 כרזה -site:en.wikipedia.org` → U48, U49, U28, U50
 - `site:nli.org.il חזית דתית תורתית 1955 בחירות` → U28, U202
 
-**יד — Democratic List for Israeli Arabs: gap.
+**יד — Democratic List for Israeli Arabs: gap.**
 - `דמוקרטית לערביי ישראל 1955 כרזה -site:en.wikipedia.org` → U28, U51, U52, U7
 - `site:nli.org.il דמוקרטית לערביי ישראל 1955 בחירות` → U28, U203
 
-**ק — Maki: gap.
+**ק — Maki: gap.**
 - `מק״י 1955 כרזה -site:en.wikipedia.org` → U53, U17, U54, U55
 - `site:nli.org.il מק"י 1955 בחירות` → U204, U205
 
-**נ — Progress and Work: gap.
+**נ — Progress and Work: gap.**
 - `קידמה ועבודה 1955 כרזה -site:en.wikipedia.org` → U7, U56, U57, U58
 - `site:nli.org.il קידמה ועבודה 1955 בחירות` → U16, U206
 
-**פ — Progressive Party: gap.
+**פ — Progressive Party: gap.**
 - `הפרוגרסיבים 1955 כרזה -site:en.wikipedia.org` → U51, U59, U60, U7
 - `site:nli.org.il הפרוגרסיבים 1955 בחירות` → U207, U208
 
-**ע — Agriculture and Development: gap.
+**ע — Agriculture and Development: gap.**
 - `חקלאות ופיתוח 1955 כרזה -site:en.wikipedia.org` → U61, U62, U63, U64
 - `site:nli.org.il חקלאות ופיתוח 1955 בחירות` → U28, U16
 
@@ -236,51 +236,51 @@ Constituents (separate from joint-list lockups):
 
 ### k4
 
-**א — Mapai: gap.
+**א — Mapai: gap.**
 - `מפא״י 1959 כרזה -site:en.wikipedia.org` → U22, U25, U65, U66
 - `site:nli.org.il מפא"י 1959 בחירות` → U209, U210
 
-**ח — Herut: gap.
+**ח — Herut: gap.**
 - `חרות 1959 כרזה -site:en.wikipedia.org` → U25, U67, U68, U69
 - `site:nli.org.il חרות 1959 בחירות` → U211, U212
 
-**ב — National Religious Party: gap.
+**ב — National Religious Party: gap.**
 - `מפד״ל 1959 כרזה -site:en.wikipedia.org` → U38, U40, U70, U4
 - `site:nli.org.il מפד"ל 1959 בחירות` → U200, U213
 
-**מ — Mapam: gap — E2 (exact date missing).
+**מ — Mapam: gap — E2 (exact date missing).**
 - `מפ״ם 1959 כרזה -site:en.wikipedia.org` → U5, U25, U65, U22
 - `site:nli.org.il מפ"ם 1959 בחירות` → U6, U209
 
-**צ — General Zionists: gap.
+**צ — General Zionists: gap.**
 - `הציונים הכלליים 1959 כרזה -site:en.wikipedia.org` → U25, U71, U22, U72
 - `site:nli.org.il הציונים הכלליים 1959 בחירות` → U214, U215
 
-**תו — Ahdut HaAvoda: gap.
+**תו — Ahdut HaAvoda: gap.**
 - `אחדות העבודה 1959 כרזה -site:en.wikipedia.org` → U42, U65, U73, U74
 - `site:nli.org.il אחדות העבודה 1959 בחירות` → U209, U216
 
-**גד — Religious Torah Front: gap.
+**גד — Religious Torah Front: gap.**
 - `חזית דתית תורתית 1959 כרזה -site:en.wikipedia.org` → U50, U75, U76, U77
 - `site:nli.org.il חזית דתית תורתית 1959 בחירות` → U217, U218
 
-**רא — Progress and Development: gap.
+**רא — Progress and Development: gap.**
 - `קידמה ופיתוח 1959 כרזה -site:en.wikipedia.org` → U75, U7, U78, U79
 - `site:nli.org.il קידמה ופיתוח 1959 בחירות` → U206, U219
 
-**פ — Progressive Party: gap.
+**פ — Progressive Party: gap.**
 - `הפרוגרסיבים 1959 כרזה -site:en.wikipedia.org` → U80, U51, U81, U7
 - `site:nli.org.il הפרוגרסיבים 1959 בחירות` → U220, U221
 
-**יא — Cooperation and Brotherhood: gap.
+**יא — Cooperation and Brotherhood: gap.**
 - `שיתוף ואחווה 1959 כרזה -site:en.wikipedia.org` → U82, U83, U84, U85
 - `site:nli.org.il שיתוף ואחווה 1959 בחירות` → U222
 
-**ק — Maki: gap.
+**ק — Maki: gap.**
 - `מק״י 1959 כרזה -site:en.wikipedia.org` → U86, U87, U88, U17
 - `site:nli.org.il מק"י 1959 בחירות` → U223, U65
 
-**ע — Agriculture and Development: gap.
+**ע — Agriculture and Development: gap.**
 - `חקלאות ופיתוח 1959 כרזה -site:en.wikipedia.org` → U89, U33, U90, U91
 - `site:nli.org.il חקלאות ופיתוח 1959 בחירות` → U206, U224
 
@@ -288,6 +288,58 @@ Constituents (separate from joint-list lockups):
 
 - `agudat-yisrael` — **gap**. `אגודת ישראל 1959 כרזה סמל -site:en.wikipedia.org` → U293, U294.
 - `poalei-agudat-yisrael` — **gap**. `פועלי אגודת ישראל 1959 כרזה סמל -site:en.wikipedia.org` → U293, U294.
+
+### k5
+
+**א — Mapai: gap.**
+- `מפא״י 1961 כרזה -site:en.wikipedia.org` → U25, U4, U22, U92
+- `site:nli.org.il מפא"י 1961 בחירות` → U225, U226
+
+**ח — Herut: gap.**
+- `חרות 1961 כרזה -site:en.wikipedia.org` → U35, U67, U93, U94
+- `site:nli.org.il חרות 1961 בחירות` → U227, U228
+
+**ל — Liberal Party: gap.**
+- `הליברלים 1961 כרזה -site:en.wikipedia.org` → U4, U80, U95, U96
+- `site:nli.org.il הליברלים 1961 בחירות` → U229, U183
+
+**ב — National Religious Party: gap.**
+- `מפד״ל 1961 כרזה -site:en.wikipedia.org` → U38, U4, U40, U97
+- `site:nli.org.il מפד"ל 1961 בחירות` → U230, U231
+
+**מ — Mapam: gap.**
+- `מפ״ם 1961 כרזה -site:en.wikipedia.org` → U5, U35, U82, U98
+- `site:nli.org.il מפ"ם 1961 בחירות` → U226, U232
+
+**תו — Ahdut HaAvoda: gap.**
+- `אחדות העבודה 1961 כרזה -site:en.wikipedia.org` → U42, U99, U92, U100
+- `site:nli.org.il אחדות העבודה 1961 בחירות` → U233, U234
+
+**ק — Maki: gap.**
+- `מק״י 1961 כרזה -site:en.wikipedia.org` → U101, U102, U103, U17
+- `site:nli.org.il מק"י 1961 בחירות` → U235, U102
+
+**ג — Agudat Yisrael: gap.**
+- `אגודת ישראל 1961 כרזה -site:en.wikipedia.org` → U50, U104, U105, U106
+- `פועלי אגודת ישראל 1961 כרזה -site:en.wikipedia.org` → U50, U104, U110, U105
+- `site:nli.org.il אגודת ישראל 1961 בחירות` → U236, U237
+- `site:nli.org.il פועלי אגודת ישראל 1961 בחירות` → U237, U239
+
+**יא — Cooperation and Brotherhood: gap.**
+- `שיתוף ואחווה 1961 כרזה -site:en.wikipedia.org` → U82, U107, U108, U109
+- `site:nli.org.il שיתוף ואחווה 1961 בחירות` → U237, U238
+
+**ד — Poalei Agudat Yisrael: gap.**
+- `פועלי אגודת ישראל 1961 כרזה -site:en.wikipedia.org` → U50, U104, U110, U105
+- `site:nli.org.il פועלי אגודת ישראל 1961 בחירות` → U237, U239
+
+**רא — Progress and Development: gap.**
+- `קידמה ופיתוח 1961 כרזה -site:en.wikipedia.org` → U75, U111, U7, U112
+- `site:nli.org.il קידמה ופיתוח 1961 בחירות` → U237, U240
+
+Constituents (separate from joint-list lockups):
+
+None recorded on the winning lists.
 
 ## Returned search URL index
 
@@ -597,6 +649,11 @@ This index records search leads, including irrelevant and wrong-year returns. In
 - **U303**: https://shamir-brothers.com/?id=10.0.0.html
 - **U304**: https://he.wikipedia.org/wiki/%D7%94%D7%94%D7%A1%D7%AA%D7%93%D7%A8%D7%95%D7%AA_%D7%94%D7%9B%D7%9C%D7%9C%D7%99%D7%AA_%D7%A9%D7%9C_%D7%94%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%9D_%D7%91%D7%90%D7%A8%D7%A5_%D7%99%D7%A9%D7%A8%D7%90%D7%9C
 - **U305**: https://shamir-brothers.com/?id=6.0.0.html
+- **U306**: https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997014214579805171/NLI
+- **U307**: https://www.nli.org.il/en/archives/NNL_ARCHIVE_AL997014214828905171/NLI
+- **U308**: https://he.wikipedia.org/wiki/%D7%9B%D7%A8%D7%96%D7%AA_%D7%99%D7%95%D7%9D_%D7%94%D7%A2%D7%A6%D7%9E%D7%90%D7%95%D7%AA
+- **U309**: https://www.instagram.com/reel/C9Po0T5IeYQ
+- **U310**: https://www.nli.org.il/he/books/NNL_ALEPH990018933960205171/NLI
 
 ## Remaining gaps and conclusion map
 
