@@ -110,13 +110,26 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       s = replaceList(s, action.to, (l) => ({ ...l, votes: addVotes(l.votes, action.votes) }));
       break;
     }
-    case 'addVoters':
-      need(isWhole(action.invalid), 'votes', 'Invalid ballots must be a whole number ≥ 0.');
-      for (const a of action.allocations) { need(isWhole(a.votes), 'votes', 'Votes must be whole numbers ≥ 0.'); listById(s, a.listId); }
-      notWithdrawn(s, ...action.allocations.filter((a) => a.votes > 0).map((a) => a.listId));
-      for (const a of action.allocations) s = replaceList(s, a.listId, (l) => ({ ...l, votes: addVotes(l.votes, a.votes) }));
-      s = { ...s, invalid: addVotes(s.invalid, action.invalid) };
+    case 'addVoters': {
+      if (!action.demographic) {
+        need(isWhole(action.invalid), 'votes', 'Invalid ballots must be a whole number ≥ 0.');
+        for (const a of action.allocations) { need(isWhole(a.votes), 'votes', 'Votes must be whole numbers ≥ 0.'); listById(s, a.listId); }
+        notWithdrawn(s, ...action.allocations.filter((a) => a.votes > 0).map((a) => a.listId));
+        for (const a of action.allocations) s = replaceList(s, a.listId, (l) => ({ ...l, votes: addVotes(l.votes, a.votes) }));
+        s = { ...s, invalid: addVotes(s.invalid, action.invalid) };
+        break;
+      }
+
+      const validDelta = Number.isSafeInteger;
+      need(validDelta(action.invalid), 'votes', 'Invalid ballot delta must be a safe integer.');
+      need(new Set(action.allocations.map(a => a.listId)).size === action.allocations.length, 'votes', 'Duplicate allocation.');
+      for (const a of action.allocations) { need(validDelta(a.votes), 'votes', 'Vote delta must be a safe integer.'); listById(s, a.listId); }
+      notWithdrawn(s, ...action.allocations.filter(a => a.votes !== 0).map(a => a.listId));
+      for (const a of action.allocations) s = replaceList(s, a.listId, l => ({ ...l, votes: safeCount(BigInt(l.votes) + BigInt(a.votes)) }));
+      s = { ...s, invalid: safeCount(BigInt(s.invalid) + BigInt(action.invalid)) };
+      if (action.demographic) need(addVotes(sumVotes(s.lists.map(l => l.votes)), s.invalid) <= s.registered, 'turnout', 'Votes cast exceed registered voters.');
       break;
+    }
     case 'redistribute': {
       need(isWhole(action.votes), 'votes', 'Votes must be a whole number ≥ 0.');
       need(new Set(action.from).size === action.from.length, 'redistribute', 'A list appears twice among the sources.');

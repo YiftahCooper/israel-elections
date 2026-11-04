@@ -3160,5 +3160,404 @@
   "retrievedAt": "2026-11-04",
   "bytes": 33395,
   "sha256": "a9accdf2924a132f62a03da973f357e70a3716187f14561c9c33c72f04b44f68"
+ },
+ {
+  "id": "cbs-2003-normalized",
+  "file": "demographics/cbs-2003-normalized.json",
+  "url": "https://www.cbs.gov.il/he/publications/doclib/2019/ishuvim/bycode2003.xls",
+  "publisher": "Project normalization of official CBS data",
+  "official": false,
+  "description": "Normalized locality fields; scripts/normalize-locality-classifications.py; source cbs-2003",
+  "method": "derived",
+  "retrievedAt": "2026-11-04T06:35:19.342116+00:00",
+  "bytes": 143604,
+  "sha256": "695c6bde22d2f7dae3f399ca4bf49d3c13aef02f1c88bf704c692d0ac225c82d",
+  "derivedFrom": [
+   "cbs-2003"
+  ]
+ },
+ {
+  "id": "cbs-2003",
+  "file": "demographics/cbs-2003.xls",
+  "url": "https://www.cbs.gov.il/he/publications/doclib/2019/ishuvim/bycode2003.xls",
+  "publisher": "הלשכה המרכזית לסטטיסטיקה",
+  "official": true,
+  "description": "cbs-2003",
+  "method": "http",
+  "retrievedAt": "2026-11-04T06:35:19.342724+00:00",
+  "bytes": 733184,
+  "sha256": "ed136ac86322357ee4e984b4dbf3921ba211beac3952503723f07e7e44f256a6"
+ },
+ {
+  "id": "cbs-2006-normalized",
+  "file": "demographics/cbs-2006-normalized.json",
+  "url": "https://www.cbs.gov.il/he/publications/doclib/2019/ishuvim/bycode2006.xls",
+  "publisher": "Project normalization of official CBS data",
+  "official": false,
+  "description": "Normalized locality fields; scripts/normalize-locality-classifications.py; source cbs-2006",
+  "method": "derived",
+  "retrievedAt": "2026-11-04T06:35:19.343147+00:00",
+  "bytes": 147196,
+  "sha256": "5f4d0f5f9c1cf266b76c0ac5904353d36f642f7515155efb3481c8413112edcf",
+  "derivedFrom": [
+   "cbs-2006"
+  ]
+ },
+ {
+  "id": "cbs-2006",
+  "file": "demographics/cbs-2006.xls",
+  "url": "https://www.cbs.gov.il/he/publications/doclib/2019/ishuvim/bycode2006.xls",
+  "publisher": "הלשכה המרכזית לסטטיסטיקה",
+  "official": true,
+  "description": "cbs-2006",
+  "method": "http",
+  "retrievedAt": "2026-11-04T06:35:19.343948+00:00",
+  "bytes": 678912,
+  "sha256": "df5cc9031e91b80f74dbdbb10b4b8951b9c0ad889caaf647c433f58c81eba10a"
+ },
+ {
+  "id": "cbs-2009-normalized",
+  "file": "demographics/cbs-2009-normalized.json",
+  "url": "https://www.cbs.gov.il/he/publications/doclib/2019/ishuvim/bycode2009.xls",
+  "publisher": "Project normalization of official CBS data",
+  "official": false,
+  "description": "Normalized locality fields; scripts/normalize-locality-classifications.py; source cbs-2009",
+  "method": "derived",
+  "retrievedAt": "2026-11-04T06:35:19.344399+00:00",
+  "bytes": 150668,
+  "sha256": "9ed954205cf949e5e8676145df27d9e3c697ff605f6fceba3190fd9aa4303d51",
+  "derivedFrom": [
+   "cbs-2009"
+  ]
+ },
+ {
+  "id": "cbs-2009",
+  "file": "demographics/cbs-2009.xls",
+  "url": "https://www.cbs.gov.il/he/publications/doclib/2019/ishuvim/bycode2009.xls",
+  "publisher": "הלשכה המרכזית לסטטיסטיקה",
+  "official": true,
+  "description": "cbs-2009",
+  "method": "http",
+  "retrievedAt": "2026-11-04T06:35:19.344620+00:00",
+  "bytes": 421376,
+  "sha256": "116dc7d02b35917d41812e0db3fffd2ec77ff7bfb32a4d5da3590abe610ae5ba"
+ },
+ {
+  "id": "cbs-2013-normalized",
+  "file": "demographics/cbs-2013-normalized.json",
+  "url": "https://www.cbs.gov.il/he/publications/doclib/2019/ishuvim/bycode2013.xls",
+  "publisher": "Project normalization of official CBS data",
+  "official": false,
+  "description": "Normalized locality fields; scripts/normalize-locality-classifications.py; source cbs-2013",
+  "method": "derived",
+  "retrievedAt": "2026-11-04T06:35:19.344888+00:00",
+  "bytes": 152393,
+  "sha256": "11d0ab676a76dced38a7b2b17c3963d8d2e8246f5f4573ede413bf0e5369a5fc",
+  "derivedFrom": [
+   "cbs-2013"
+  ]
+ },
+ {
+  "id": "cbs-2013",
+  "file": "demographics/cbs-2013.xls",
+  "url": "https://www.cbs.gov.il/he/publications/doclib/2019/ishuvim/bycode2013.xls",
+  "publisher": "הלשכה המרכזית לסטטיסטיקה",
+  "official": true,
+  "description": "cbs-2013",
+  "method": "http",
+  "retrievedAt": "2026-11-04T06:35:19.345166+00:00",
+  "bytes": 608768,
+  "sha256": "a203c4f7db2c9a3e77b5478c0334be57020f82b5997ecdec6d01eada5cb3c11e"
+ },
+ {
+  "id": "cbs-2015-normalized",
+  "file": "demographics/cbs-2015-normalized.json",
+  "url": "https://www.cbs.gov.il/he/publications/doclib/2019/ishuvim/bycode2015.xls",
+  "publisher": "Project normalization of official CBS data",
+  "official": false,
+  "description": "Normalized locality fields; scripts/normalize-locality-classifications.py; source cbs-2015",
+  "method": "derived",
+  "retrievedAt": "2026-11-04T06:35:19.345637+00:00",
+  "bytes": 152602,
+  "sha256": "bdd1de0d72e177be76c4587968bef48e0e18730cdd105cc395df004b5114a1e4",
+  "derivedFrom": [
+   "cbs-2015"
+  ]
+ },
+ {
+  "id": "cbs-2015",
+  "file": "demographics/cbs-2015.xls",
+  "url": "https://www.cbs.gov.il/he/publications/doclib/2019/ishuvim/bycode2015.xls",
+  "publisher": "הלשכה המרכזית לסטטיסטיקה",
+  "official": true,
+  "description": "cbs-2015",
+  "method": "http",
+  "retrievedAt": "2026-11-04T06:35:19.345876+00:00",
+  "bytes": 628224,
+  "sha256": "a22a6839d00593f9a3d3c409b5cb5da8d289711f6a6b1843d8d1a49ea6b83a19"
+ },
+ {
+  "id": "cbs-2017-normalized",
+  "file": "demographics/cbs-2017-normalized.json",
+  "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=acab04be-e6cc-4a64-b578-a25fddad8a37&limit=10000",
+  "publisher": "Project normalization of official CBS data",
+  "official": false,
+  "description": "Normalized locality fields; scripts/normalize-locality-classifications.py; source cbs-2017",
+  "method": "derived",
+  "retrievedAt": "2026-11-04T06:35:19.346174+00:00",
+  "bytes": 141529,
+  "sha256": "f3ee4ee39920a798232f8e2d92783b41d505b6a9c7ed3304e8732f69613d0e06",
+  "derivedFrom": [
+   "cbs-2017"
+  ]
+ },
+ {
+  "id": "cbs-2017",
+  "file": "demographics/cbs-2017.json",
+  "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=acab04be-e6cc-4a64-b578-a25fddad8a37&limit=10000",
+  "publisher": "הלשכה המרכזית לסטטיסטיקה",
+  "official": true,
+  "description": "cbs-2017",
+  "method": "http",
+  "retrievedAt": "2026-11-04T06:35:19.346677+00:00",
+  "bytes": 1179217,
+  "sha256": "d4b0c641fcee27df4e2750ece5afeae96a1d7853d7d9943c5d188c4d4e6bd70d"
+ },
+ {
+  "id": "cbs-2018-normalized",
+  "file": "demographics/cbs-2018-normalized.json",
+  "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=9d4fa9d4-b20b-4182-a14d-22785d610135&limit=10000",
+  "publisher": "Project normalization of official CBS data",
+  "official": false,
+  "description": "Normalized locality fields; scripts/normalize-locality-classifications.py; source cbs-2018",
+  "method": "derived",
+  "retrievedAt": "2026-11-04T06:35:19.347227+00:00",
+  "bytes": 141495,
+  "sha256": "0ef37fc22ff56fc94cb921a72dce12a0cbc091441a445d67f32ba3517308f788",
+  "derivedFrom": [
+   "cbs-2018"
+  ]
+ },
+ {
+  "id": "cbs-2018",
+  "file": "demographics/cbs-2018.json",
+  "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=9d4fa9d4-b20b-4182-a14d-22785d610135&limit=10000",
+  "publisher": "הלשכה המרכזית לסטטיסטיקה",
+  "official": true,
+  "description": "cbs-2018",
+  "method": "http",
+  "retrievedAt": "2026-11-04T06:35:19.348104+00:00",
+  "bytes": 992654,
+  "sha256": "2e911886c0721d2a424d2a4facc163f81790809a22faffd375f85d0aa7ccf5b6"
+ },
+ {
+  "id": "cbs-2019-normalized",
+  "file": "demographics/cbs-2019-normalized.json",
+  "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=990ae78e-2dae-4a15-a13b-0b5dcc56056c&limit=10000",
+  "publisher": "Project normalization of official CBS data",
+  "official": false,
+  "description": "Normalized locality fields; scripts/normalize-locality-classifications.py; source cbs-2019",
+  "method": "derived",
+  "retrievedAt": "2026-11-04T06:35:19.348593+00:00",
+  "bytes": 141622,
+  "sha256": "e7c217a8785227a1f3d02bbe1c2f955c4c99c6c529143bace1a88d59ad3f217d",
+  "derivedFrom": [
+   "cbs-2019"
+  ]
+ },
+ {
+  "id": "cbs-2019",
+  "file": "demographics/cbs-2019.json",
+  "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=990ae78e-2dae-4a15-a13b-0b5dcc56056c&limit=10000",
+  "publisher": "הלשכה המרכזית לסטטיסטיקה",
+  "official": true,
+  "description": "cbs-2019",
+  "method": "http",
+  "retrievedAt": "2026-11-04T06:35:19.348785+00:00",
+  "bytes": 1010278,
+  "sha256": "6de5c5b64e9e0a0f1e0f772e2962146a79a8668e4c557cb25c264a6d22c0118e"
+ },
+ {
+  "id": "cbs-2020-normalized",
+  "file": "demographics/cbs-2020-normalized.json",
+  "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=2d218594-73e3-40de-b36b-23b22f0a2627&limit=10000",
+  "publisher": "Project normalization of official CBS data",
+  "official": false,
+  "description": "Normalized locality fields; scripts/normalize-locality-classifications.py; source cbs-2020",
+  "method": "derived",
+  "retrievedAt": "2026-11-04T06:35:19.349438+00:00",
+  "bytes": 141561,
+  "sha256": "f8c5c3038d58f3d50c88fa875c54550354b4b462f15e4d8163fe5848edc8d4d1",
+  "derivedFrom": [
+   "cbs-2020"
+  ]
+ },
+ {
+  "id": "cbs-2020",
+  "file": "demographics/cbs-2020.json",
+  "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=2d218594-73e3-40de-b36b-23b22f0a2627&limit=10000",
+  "publisher": "הלשכה המרכזית לסטטיסטיקה",
+  "official": true,
+  "description": "cbs-2020",
+  "method": "http",
+  "retrievedAt": "2026-11-04T06:35:19.350290+00:00",
+  "bytes": 1009030,
+  "sha256": "0380bfa4b712eff41cff37c3a445b88e792210cef8db77a1392379cc350e01c5"
+ },
+ {
+  "id": "cbs-2021-normalized",
+  "file": "demographics/cbs-2021-normalized.json",
+  "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=95435941-d7e5-46c6-876a-761a74a5928d&limit=10000",
+  "publisher": "Project normalization of official CBS data",
+  "official": false,
+  "description": "Normalized locality fields; scripts/normalize-locality-classifications.py; source cbs-2021",
+  "method": "derived",
+  "retrievedAt": "2026-11-04T06:35:19.350810+00:00",
+  "bytes": 141647,
+  "sha256": "5f64b6d3913cf9abf6e7b9919204c1f591e1d41a19b9cfae9386cd68595c62e7",
+  "derivedFrom": [
+   "cbs-2021"
+  ]
+ },
+ {
+  "id": "cbs-2021",
+  "file": "demographics/cbs-2021.json",
+  "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=95435941-d7e5-46c6-876a-761a74a5928d&limit=10000",
+  "publisher": "הלשכה המרכזית לסטטיסטיקה",
+  "official": true,
+  "description": "cbs-2021",
+  "method": "http",
+  "retrievedAt": "2026-11-04T06:35:19.352286+00:00",
+  "bytes": 1236381,
+  "sha256": "43ce077c6c7c7abe890e9af7294ad31834bc524341fde9dbc442796cf14b73cb"
+ },
+ {
+  "id": "cbs-2022-normalized",
+  "file": "demographics/cbs-2022-normalized.json",
+  "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=199b15db-3bcb-470e-ba03-73364737e352&limit=10000",
+  "publisher": "Project normalization of official CBS data",
+  "official": false,
+  "description": "Normalized locality fields; scripts/normalize-locality-classifications.py; source cbs-2022",
+  "method": "derived",
+  "retrievedAt": "2026-11-04T06:35:19.353030+00:00",
+  "bytes": 141764,
+  "sha256": "a6b17db57a35d1f721d43cb8012eb3ca641249c51d9b5cbb895bdefd381e53fc",
+  "derivedFrom": [
+   "cbs-2022"
+  ]
+ },
+ {
+  "id": "cbs-2022",
+  "file": "demographics/cbs-2022.json",
+  "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=199b15db-3bcb-470e-ba03-73364737e352&limit=10000",
+  "publisher": "הלשכה המרכזית לסטטיסטיקה",
+  "official": true,
+  "description": "cbs-2022",
+  "method": "http",
+  "retrievedAt": "2026-11-04T06:35:19.353421+00:00",
+  "bytes": 1241948,
+  "sha256": "2ce956f537a4d9bc6ff434a86f4d6bb02ac1814e8d41e61764b9f1d93de2d141"
+ },
+ {
+  "id": "cbs-2023-normalized",
+  "file": "demographics/cbs-2023-normalized.json",
+  "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=d47a54ff-87f0-44b3-b33a-f284c0c38e5a&limit=10000",
+  "publisher": "Project normalization of official CBS data",
+  "official": false,
+  "description": "Normalized locality fields; scripts/normalize-locality-classifications.py; source cbs-2023",
+  "method": "derived",
+  "retrievedAt": "2026-11-04T06:35:19.354100+00:00",
+  "bytes": 141734,
+  "sha256": "87183fdf1a37ce265778dd61b4b6e221d414b2fcccc47201eb9ac076f0c7d0a2",
+  "derivedFrom": [
+   "cbs-2023"
+  ]
+ },
+ {
+  "id": "cbs-2023",
+  "file": "demographics/cbs-2023.json",
+  "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=d47a54ff-87f0-44b3-b33a-f284c0c38e5a&limit=10000",
+  "publisher": "הלשכה המרכזית לסטטיסטיקה",
+  "official": true,
+  "description": "cbs-2023",
+  "method": "http",
+  "retrievedAt": "2026-11-04T06:35:19.354627+00:00",
+  "bytes": 1489290,
+  "sha256": "6252b4507240a530f0f0281d8b6772174c9e91eaba80e8a35a441639b66e585a"
+ },
+ {
+  "id": "cbs-2024-normalized",
+  "file": "demographics/cbs-2024-normalized.json",
+  "url": "https://www.cbs.gov.il/he/publications/doclib/2019/ishuvim/bycode2024.xlsx",
+  "publisher": "Project normalization of official CBS data",
+  "official": false,
+  "description": "Normalized locality fields; scripts/normalize-locality-classifications.py; source cbs-2024",
+  "method": "derived",
+  "retrievedAt": "2026-11-04T06:35:19.355372+00:00",
+  "bytes": 142325,
+  "sha256": "29f91e3fc882edafd8448b07a62f18042f728145441a2c430965b97aecc3916a",
+  "derivedFrom": [
+   "cbs-2024"
+  ]
+ },
+ {
+  "id": "cbs-2024",
+  "file": "demographics/cbs-2024.xlsx",
+  "url": "https://www.cbs.gov.il/he/publications/doclib/2019/ishuvim/bycode2024.xlsx",
+  "publisher": "הלשכה המרכזית לסטטיסטיקה",
+  "official": true,
+  "description": "cbs-2024",
+  "method": "http",
+  "retrievedAt": "2026-11-04T06:35:19.355501+00:00",
+  "bytes": 370654,
+  "sha256": "a021c6a151863ded624d2f674f9bbcf90ba9f3660c8d55aebe6526ff7f5d2ad0"
+ },
+ {
+  "id": "cbs-development",
+  "file": "demographics/cbs-development.pdf",
+  "url": "https://www.cbs.gov.il/he/publications/DocLib/pw/pw25/pw25.pdf",
+  "publisher": "הלשכה המרכזית לסטטיסטיקה",
+  "official": true,
+  "description": "cbs-development",
+  "method": "http",
+  "retrievedAt": "2026-11-04T06:35:19.358575+00:00",
+  "bytes": 3843965,
+  "sha256": "db9c1df6b8bde3983f4e682c556889f1202ba81e3b933c7e2ee8b829d4eb2190"
+ },
+ {
+  "id": "cbs-druze-2022",
+  "file": "demographics/cbs-druze-2022.pdf",
+  "url": "https://www.cbs.gov.il/he/mediarelease/DocLib/2024/124/11_24_124b.pdf",
+  "publisher": "הלשכה המרכזית לסטטיסטיקה",
+  "official": true,
+  "description": "cbs-druze-2022",
+  "method": "http",
+  "retrievedAt": "2026-11-04T06:35:19.361268+00:00",
+  "bytes": 1233977,
+  "sha256": "065491365c8e9df556bfaab1dd7f6fac68fd99ee851b1393ec014652acb96495"
+ },
+ {
+  "id": "cbs-intro",
+  "file": "demographics/cbs-intro.pdf",
+  "url": "https://www.cbs.gov.il/he/publications/doclib/2019/ishuvim/intro.pdf",
+  "publisher": "הלשכה המרכזית לסטטיסטיקה",
+  "official": true,
+  "description": "cbs-intro",
+  "method": "http",
+  "retrievedAt": "2026-11-04T06:35:19.362293+00:00",
+  "bytes": 302077,
+  "sha256": "f45b920ff9e3110cf35b5f3c20e205e49b72492dbebba7eead290e763960c0c2"
+ },
+ {
+  "id": "idi-haredi",
+  "file": "demographics/idi-haredi.html",
+  "url": "https://www.idi.org.il/articles/52609",
+  "publisher": "המכון הישראלי לדמוקרטיה",
+  "official": false,
+  "description": "idi-haredi",
+  "method": "http",
+  "retrievedAt": "2026-11-04T06:35:19.362668+00:00",
+  "bytes": 101734,
+  "sha256": "a0751c9f222845b0329e14c5322ffe968df88deea67161a3dc37b7ae56f5338f"
  }
 ]

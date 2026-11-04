@@ -5,6 +5,16 @@ The app offers **twenty-six verified election datasets: every election from 1949
 Rosters list everyone elected; many lists' later candidates (and some rosters of lists without seats) are not
 transcribed, and the data says so.
 
+## Locality demographic groups
+
+k16 and k18–k26 locality datasets now include sourced geographic groups with bilingual definitions,
+classification years, CBS-code membership and coverage. k17 explicitly has no groups: its locality
+rows lack both CBS codes and registered electorates. Groups describe **places, not people**;
+mixed Jewish–Arab cities and double envelopes are excluded from ethnic/religious membership.
+See [definitions, retained sources, model contract and per-election coverage](research/locality-demographics.md)
+and [decision 0090](decisions/0090-demographic-turnout.md). The ordinary dataset build attaches the
+classifications deterministically and verifies source hashes; it requires no network access.
+
 ## Source policy
 
 Official sources come first: the law, the Central Elections Committee, Reshumot, the Knesset (including its

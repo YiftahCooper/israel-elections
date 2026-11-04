@@ -10,6 +10,11 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 
 - Official campaign logos may use fair-use identification (decision 0089), with explicit rights basis,
   campaign-date provenance, byte/hash validation and separate constituent-party emblems.
+- Sourced geographic turnout groups for k16 and k18–k26, with bilingual definitions, classification
+  years and coverage: Arab localities, kibbutzim, moshavim, Israeli localities in Judea and Samaria,
+  Bedouin tribes, and dated Haredi, Druze and development-town reference cohorts. k17 explicitly
+  remains unavailable because codes/electorates are missing. Exact demographic turnout model with
+  signed replayable actions, overlap rejection and merged/split list mapping (decision 0090).
 
 - Published on GitHub Pages at https://yiftahcooper.github.io/israel-elections/, redeployed on every push to `main`;
   a site icon (the browser no longer requests a missing favicon).
