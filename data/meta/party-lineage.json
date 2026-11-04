@@ -1,0 +1,3738 @@
+{
+  "schemaVersion": 1,
+  "revision": "draft-2026-11-04",
+  "direction": "from predecessor to successor; split-from points parent to departing organisation; electoral-partner points constituents to election-specific alliance vehicle",
+  "sources": {
+    "aguda": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/agudat-israel/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Party profile: Haredi identity and electoral history.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "6dce84aee9500b5f9fc264457d7474511c26ca1feaab7d7e32f311db9e3c40e5"
+      }
+    },
+    "pai": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/poalei-agudat-yisrael/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Haredi workers party, independent runs and Religious Torah Front alliances.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "6ddb77216e35e3df1d67aa677fea051756e1b43532310f3d66b0efd3e8c286d3"
+      }
+    },
+    "degel": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/degel-hatora/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Haredi party founded in 1988 following split with Aguda.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "854da668b9b220dfe41948199832127c59232db628d089459355c38123ae6bd7"
+      }
+    },
+    "shas": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/shas/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "National party from 1984; Sephardi Haredi organisation, broader electorate.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "136f01f64368f99abd53809199bf6b22c81869f8557854717ac94ce9d693de77"
+      }
+    },
+    "utj": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/united-torah-judaism/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Alliance of Aguda and Degel from 1992.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "0726c07cb397ed54ef45201cec0532445ad1d490142a5d116764c342034e6380"
+      }
+    },
+    "joint": {
+      "url": "https://www.idi.org.il/articles/32955",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Election-specific joint-list constituent table, 1949–2021.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "e5ec5df81751ddf75b36b24d709c5379d2a093029eb444357b540edf427a6cb3"
+      }
+    },
+    "morasha": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/morasha/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "1984 alliance of Matzad and Poalei Agudat Yisrael.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "b6ee790d542aff15aef7867f4ae118b87b7526c9a811a3860598164645c83c3f"
+      }
+    },
+    "yachad": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/yachad/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Yachad itself bridges Sephardi Haredi and Hardal national religious groups.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "c17b6094f30ff496afc23fc3b8614bb889b03c846dec4a97c059c0d48e86e948"
+      }
+    },
+    "shas-study": {
+      "url": "https://www.idi.org.il/media/10320/a-flock-with-no-shepherd-shas-leadership-the-day-after-rabbi-ovadia-yosef.pdf",
+      "publisher": "Ettinger and Leon / IDI, 2018",
+      "kind": "academic",
+      "accessed": "2026-11-04",
+      "support": "PDF pp.35–36 (printed pp.109–110): Azran 1996, Ahavat Israel 2003, Am Shalem and Koach Lehashpia 2013."
+    },
+    "geula": {
+      "url": "https://www.jta.org/archive/the-israeli-elections-from-communists-to-cab-drivers-array-of-choices-awaits-voters",
+      "publisher": "JTA, 1992",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Geulat Yisrael is an ultra-Orthodox list led by Eliezer Mizrachi; opened with required User-Agent."
+    },
+    "kn-splits": {
+      "url": "https://main.knesset.gov.il/en/mk/apps/faction/general/split-merge",
+      "publisher": "Knesset",
+      "kind": "official",
+      "accessed": "2026-11-04",
+      "support": "Geulat Yisrael split from Aguda. Parliamentary events do not allocate election votes."
+    },
+    "yishai": {
+      "url": "https://library.mevaker.gov.il/sites/DigitalLibrary/Pages/Reports/2359-1.aspx",
+      "publisher": "State Comptroller",
+      "kind": "official",
+      "accessed": "2026-11-04",
+      "support": "1988 Yishai led by Shimon Ben Shlomo; lineage interpretation requires separate evidence."
+    },
+    "haredi-society": {
+      "url": "https://en.idi.org.il/articles/52891",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Aguda, Degel and Shas identified as parties of main Haredi communities.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "127091a1745989fe918709a61dd4c48a9286614ec8a1a312186240efb0dff0f3"
+      }
+    },
+    "power2009": {
+      "url": "https://www.walla.co.il/news/israel/1416821",
+      "publisher": "Walla, 2009-01-13",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "2009 Koach Lehashpia campaigns on disability rights; do not infer 2013 identity from name."
+    },
+    "cec26": {
+      "url": "https://www.gov.il/he/pages/candidates-lists-26",
+      "publisher": "CEC; retained extraction in data/raw/k26/govil-list-pages.exa.json",
+      "kind": "official",
+      "accessed": "2026-11-04",
+      "support": "2026 registered names and sponsoring parties. Self-description is evidence of claim, not external validation."
+    },
+    "local-dataset": {
+      "kind": "repository-dataset",
+      "locator": "public/data/k{n}.json; data/raw/SOURCES.json",
+      "support": "Registered names, votes and sponsor fields only; not external ideological validation."
+    },
+    "yishai-lineage": {
+      "url": "https://www.idi.org.il/media/17403/political-parties-in-israel-draft.pdf?isExternal=true",
+      "publisher": "Kenig and Rahat / IDI, draft of Parties in Israel 1992–2021",
+      "kind": "academic",
+      "accessed": "2026-11-04",
+      "support": "PDF p.230 (printed 231), Shas chapter: Shimon Ben Shlomo left Shas and ran Yishai in 1988, presenting it as representing Yemenite Jews. This proves ancestry, not a universal Haredi label."
+    },
+    "noam-hardal": {
+      "url": "https://en.idi.org.il/articles/31683",
+      "publisher": "Yair Sheleg / IDI, 2020-10-15",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Author identifies Noam as the party put forward by the Hardal current; editorial commentary rather than official taxonomy.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "92def3a3e6613e52fd5747d3d27b6589ff00adc3067e6cac4aa876bb79ac0e6d"
+      }
+    },
+    "proposal": {
+      "kind": "secondary",
+      "publisher": "Israeli Elections Explorer research compilation",
+      "locator": "docs/research/party-families.md#2-expected-presets-and-election-by-election-membership-proposal",
+      "accessed": "2026-11-04",
+      "support": "Original election matrix and explicit boundary assessments; inherited research evidence, not independent corroboration."
+    },
+    "mergers": {
+      "url": "https://en.idi.org.il/articles/54874",
+      "publisher": "Assaf Shapira / IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Historical mergers; 2024 Democrats intention and deferred legal unification. Sections Not technically an electoral bloc and How will the merger be carried out.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "e041ee09cd515b86bc7228fae2d810ec25c5ebcc2c843ed29e4a2ccc98331cf4"
+      }
+    },
+    "arab": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/hadash/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Historical party profile/context for arab; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "c9c93f508c7c2b25bdfd3d0461dc6284fb3aa8078288ef018910598ae2fc4961"
+      }
+    },
+    "national": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/national-religious-party/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Historical party profile/context for national; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "f0ff9a075a945a573620c23cc4c9da4016f923297f1d860b08369f417226d19b"
+      }
+    },
+    "labour": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/labor-party/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Historical party profile/context for labour; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "9e4b4be509566e8fde1dbfd033bc50b3112b0131bbcd111690d84ca7fb28b65e"
+      }
+    },
+    "revisionist": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/likud/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Historical party profile/context for revisionist; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "a61db730add74d3b7761b37a6f6fd790b6187b394ed5b945330de4cb7bfe35d8"
+      }
+    },
+    "centre": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/shinui/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Historical party profile/context for centre; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "f9592deb91a044baa28f75fccc1f56cc3e2ffa74bd35354f2f161192b1f21216"
+      }
+    },
+    "immigrant": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/yisrael-beytenu/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Historical party profile/context for immigrant; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "f7eee648108c9cda6078365361fb5917fadbd0a1ce565ca30d6ae7012b1181ad"
+      }
+    },
+    "radical": {
+      "url": "https://www.idi.org.il/articles/33649",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Historical party profile/context for radical; exact election decisions are editorial, scoped in proposal §2, not an official taxonomy.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "8eab19d2bd2c69d097c84f844dd6c54d20d5dcf73fe0e44dbf7bdcba573d58ec"
+      }
+    },
+    "k1": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k1.json",
+      "sha256": "b14a976b23503fd665236fbd488c44f61edf04823ccff56badc25e91b5c52a90",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k2": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k2.json",
+      "sha256": "a35aeb0bc7749263767031127a6201bd9665832bf6bc8ab3976023c89318589b",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k3": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k3.json",
+      "sha256": "1b582dc9a81abda168eff2f3be0b02fcb9d88ebcab4a5569714b02ce15dc9c41",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k4": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k4.json",
+      "sha256": "39e8521d2a6c50c808b9fd1bf7298e93101e0e938e79554e581240034d8216a5",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k5": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k5.json",
+      "sha256": "2fc051bfe72bb7e31a5f9225da63a8a8a58f47bcafd79571f951595c11906706",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k6": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k6.json",
+      "sha256": "750331fe44623aa8110be28421634c622d7ff6a2ff9aeab8086dc4d514c9fee0",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k7": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k7.json",
+      "sha256": "721fd2414c967a189c18f246f49f28cf43917b335c46c500bcf617f1e8033ab7",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k8": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k8.json",
+      "sha256": "203d3d4b5e6d55c8b3a09035e478ce821965c562aa0001548fa3b8691a6fe35e",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k9": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k9.json",
+      "sha256": "3435309ed5ef70b846f4979660a8e907bf3c579ef6a8fed01ff849180cf79dda",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k10": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k10.json",
+      "sha256": "87d0bc1a4ed989f706f4052855d5e8cb8c30c4d562d31f4cf285ce712dcaae8b",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k11": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k11.json",
+      "sha256": "2b54ce215796bedbf46eb10fa56543969db30ed67ca2df4962ad80f7f58a5423",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k12": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k12.json",
+      "sha256": "ff601254033ae24bb99b084fac5253ee7f9be0a08634956c169a047773c901a8",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k13": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k13.json",
+      "sha256": "92643f881b9e43ed4e3e55ddae9558c649c4193f9bfaa9ac91e54a70d70ae9fe",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k14": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k14.json",
+      "sha256": "3938db2f3d61463bf1d99deaa3473657be1fab46f2354adaf8a20adebb58959a",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k15": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k15.json",
+      "sha256": "87e7add2a362ad72c7ce6bab9fff8f41a0b00c07ffc32089a6cc04216d2fe9fe",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k16": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k16.json",
+      "sha256": "d2a7f1e7c85c1d37a04e7fc7fdaa00c31586004e3db1251a3deed3fa3ad200d5",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k17": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k17.json",
+      "sha256": "f63ef83e3e208aec18fb69da1590832ee68fc931fcc6083137afeab421220e91",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k18": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k18.json",
+      "sha256": "1960389cb042036aaa4a8743c4f869cecebb261eed345a42e2636a1658068645",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k19": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k19.json",
+      "sha256": "e8d534c2aec90e417abc2ee77b04716a85cfc130652a200d23f407cc3ec2866c",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k20": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k20.json",
+      "sha256": "833d0c0fed196204102bea653ca679b791d376ad2cf545bf031317c4533bceac",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k21": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k21.json",
+      "sha256": "e5d1dd8eac1e3bab0be09972cb0155674eedff6c5762240c89f792f9fe1f6d73",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k22": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k22.json",
+      "sha256": "06f12173958383755fc85fe4d156e61957f1c27f10f14ed78071269c416dc4e9",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k23": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k23.json",
+      "sha256": "a7dacef1f60c2e29c2851a53e1ec02b20aab54b9bb6a777a1f2f9e9e01f2f7cf",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k24": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k24.json",
+      "sha256": "fe584720b45481441be0f7a52bb2b10a95d768e53fc6fde256c4e95b68a2c48f",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k25": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k25.json",
+      "sha256": "a8b8b667a8e4b6fd9dd104b4dad5cd839b415640efa431cc62c35e6264efc180",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k26": {
+      "kind": "repository-dataset",
+      "publisher": "CEC/Reshumot inputs; local compilation",
+      "locator": "public/data/k26.json",
+      "sha256": "80231de6d9b3a12214496b8ff240a3adbfff1967d5a801b2b905503d38b4d57e",
+      "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "religious-islamist": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/raam/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Raam founded by southern Islamic Movement; religious Muslim organisational criterion. Not a classification of all Arab lists."
+    },
+    "independent-liberals-profile": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/independent-liberals/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Profile opening history: members left Liberals in 1965 in opposition to the Gahal alliance; moderate civil-liberal positions.",
+      "retrieval": {
+        "status": 200,
+        "sha256": "4cd05f42cc6aed5f388953ff1b923891a114d54746423a1fedccabb8dcadc793"
+      }
+    }
+  },
+  "edges": [
+    {
+      "id": "labor-1968",
+      "from": [
+        "mapai",
+        "ahdut-haavoda",
+        "rafi"
+      ],
+      "to": [
+        "labor"
+      ],
+      "relation": "merged-into",
+      "date": "1968",
+      "datePrecision": "year",
+      "effectiveFor": "organisation",
+      "sources": [
+        "mergers"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      }
+    },
+    {
+      "id": "liberals-1961",
+      "from": [
+        "general-zionists",
+        "progressive-party"
+      ],
+      "to": [
+        "liberal-party"
+      ],
+      "relation": "merged-into",
+      "date": "1961",
+      "datePrecision": "year",
+      "effectiveFor": "organisation",
+      "sources": [
+        "proposal",
+        "mergers"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      }
+    },
+    {
+      "id": "independent-liberals-1965",
+      "from": [
+        "liberal-party"
+      ],
+      "to": [
+        "independent-liberals"
+      ],
+      "relation": "split-from",
+      "date": "1965",
+      "datePrecision": "year",
+      "effectiveFor": "organisation",
+      "sources": [
+        "independent-liberals-profile"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      }
+    },
+    {
+      "id": "likud-party-1988",
+      "from": [
+        "herut",
+        "liberal-party"
+      ],
+      "to": [
+        "likud"
+      ],
+      "relation": "merged-into",
+      "date": "1988",
+      "datePrecision": "year",
+      "effectiveFor": "organisation",
+      "sources": [
+        "mergers"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      }
+    },
+    {
+      "id": "degel-split-1988",
+      "from": [
+        "agudat-yisrael"
+      ],
+      "to": [
+        "degel-hatorah"
+      ],
+      "relation": "split-from",
+      "date": "1988",
+      "datePrecision": "year",
+      "effectiveFor": "organisation",
+      "sources": [
+        "degel"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      }
+    },
+    {
+      "id": "nrp-1956",
+      "from": [
+        "mizrachi",
+        "hapoel-hamizrachi"
+      ],
+      "to": [
+        "nrp"
+      ],
+      "relation": "merged-into",
+      "date": "1956",
+      "datePrecision": "year",
+      "effectiveFor": "organisation",
+      "sources": [
+        "national"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      }
+    },
+    {
+      "id": "meretz-legal-2003",
+      "from": [
+        "ratz",
+        "mapam"
+      ],
+      "to": [
+        "meretz"
+      ],
+      "relation": "merged-into",
+      "date": "2003",
+      "datePrecision": "year",
+      "effectiveFor": "organisation",
+      "sources": [
+        "mergers"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      }
+    },
+    {
+      "id": "baaliyah-likud-2003",
+      "from": [
+        "yisrael-baaliyah"
+      ],
+      "to": [
+        "likud"
+      ],
+      "relation": "merged-into",
+      "date": "2003",
+      "datePrecision": "year",
+      "effectiveFor": "organisation",
+      "sources": [
+        "mergers"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      }
+    },
+    {
+      "id": "partners-1-ב",
+      "from": [
+        "hapoel-hamizrachi",
+        "mizrachi",
+        "poalei-agudat-yisrael",
+        "agudat-yisrael",
+        "non-party-religious-union"
+      ],
+      "to": [
+        "vehicle-1-ב"
+      ],
+      "relation": "electoral-partner",
+      "date": "1949-01-25",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k1",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k1",
+      "listId": "1-ב"
+    },
+    {
+      "id": "partners-1-נ",
+      "from": [
+        "wizo",
+        "womens-equal-rights-association"
+      ],
+      "to": [
+        "vehicle-1-נ"
+      ],
+      "relation": "electoral-partner",
+      "date": "1949-01-25",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k1",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k1",
+      "listId": "1-נ"
+    },
+    {
+      "id": "partners-3-ב",
+      "from": [
+        "hapoel-hamizrachi",
+        "mizrachi"
+      ],
+      "to": [
+        "vehicle-3-ב"
+      ],
+      "relation": "electoral-partner",
+      "date": "1955-07-26",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k3",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k3",
+      "listId": "3-ב"
+    },
+    {
+      "id": "partners-3-גד",
+      "from": [
+        "agudat-yisrael",
+        "poalei-agudat-yisrael"
+      ],
+      "to": [
+        "vehicle-3-גד"
+      ],
+      "relation": "electoral-partner",
+      "date": "1955-07-26",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k3",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k3",
+      "listId": "3-גד"
+    },
+    {
+      "id": "partners-4-גד",
+      "from": [
+        "agudat-yisrael",
+        "poalei-agudat-yisrael"
+      ],
+      "to": [
+        "vehicle-4-גד"
+      ],
+      "relation": "electoral-partner",
+      "date": "1959-11-03",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k4",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k4",
+      "listId": "4-גד"
+    },
+    {
+      "id": "partners-6-את",
+      "from": [
+        "mapai",
+        "ahdut-haavoda"
+      ],
+      "to": [
+        "vehicle-6-את"
+      ],
+      "relation": "electoral-partner",
+      "date": "1965-11-02",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k6",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k6",
+      "listId": "6-את"
+    },
+    {
+      "id": "partners-6-חל",
+      "from": [
+        "herut",
+        "liberal-party"
+      ],
+      "to": [
+        "vehicle-6-חל"
+      ],
+      "relation": "electoral-partner",
+      "date": "1965-11-02",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k6",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k6",
+      "listId": "6-חל"
+    },
+    {
+      "id": "partners-7-אמת",
+      "from": [
+        "labor",
+        "mapam"
+      ],
+      "to": [
+        "vehicle-7-אמת"
+      ],
+      "relation": "electoral-partner",
+      "date": "1969-10-28",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k7",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k7",
+      "listId": "7-אמת"
+    },
+    {
+      "id": "partners-7-חל",
+      "from": [
+        "herut",
+        "liberal-party"
+      ],
+      "to": [
+        "vehicle-7-חל"
+      ],
+      "relation": "electoral-partner",
+      "date": "1969-10-28",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k7",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k7",
+      "listId": "7-חל"
+    },
+    {
+      "id": "partners-8-חל טעם",
+      "from": [
+        "herut",
+        "liberal-party",
+        "state-list",
+        "free-centre",
+        "greater-israel-movement"
+      ],
+      "to": [
+        "vehicle-8-חל טעם"
+      ],
+      "relation": "electoral-partner",
+      "date": "1973-12-31",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k8",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k8",
+      "listId": "8-חל טעם"
+    },
+    {
+      "id": "partners-8-אמת",
+      "from": [
+        "labor",
+        "mapam"
+      ],
+      "to": [
+        "vehicle-8-אמת"
+      ],
+      "relation": "electoral-partner",
+      "date": "1973-12-31",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k8",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k8",
+      "listId": "8-אמת"
+    },
+    {
+      "id": "partners-8-גד",
+      "from": [
+        "agudat-yisrael",
+        "poalei-agudat-yisrael"
+      ],
+      "to": [
+        "vehicle-8-גד"
+      ],
+      "relation": "electoral-partner",
+      "date": "1973-12-31",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k8",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k8",
+      "listId": "8-גד"
+    },
+    {
+      "id": "partners-8-קנ",
+      "from": [
+        "blue-red-movement",
+        "maki"
+      ],
+      "to": [
+        "vehicle-8-קנ"
+      ],
+      "relation": "electoral-partner",
+      "date": "1973-12-31",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k8",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k8",
+      "listId": "8-קנ"
+    },
+    {
+      "id": "partners-9-מחל",
+      "from": [
+        "herut",
+        "liberal-party",
+        "laam",
+        "ahdut-seidel-1977"
+      ],
+      "to": [
+        "vehicle-9-מחל"
+      ],
+      "relation": "electoral-partner",
+      "date": "1977-05-17",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k9",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k9",
+      "listId": "9-מחל"
+    },
+    {
+      "id": "partners-9-אמת",
+      "from": [
+        "labor",
+        "mapam"
+      ],
+      "to": [
+        "vehicle-9-אמת"
+      ],
+      "relation": "electoral-partner",
+      "date": "1977-05-17",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k9",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k9",
+      "listId": "9-אמת"
+    },
+    {
+      "id": "partners-9-ו",
+      "from": [
+        "rakah",
+        "black-panthers"
+      ],
+      "to": [
+        "vehicle-9-ו"
+      ],
+      "relation": "electoral-partner",
+      "date": "1977-05-17",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k9",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k9",
+      "listId": "9-ו"
+    },
+    {
+      "id": "partners-9-ש",
+      "from": [
+        "independent-socialists",
+        "moked",
+        "meri",
+        "black-panthers"
+      ],
+      "to": [
+        "vehicle-9-ש"
+      ],
+      "relation": "electoral-partner",
+      "date": "1977-05-17",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k9",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k9",
+      "listId": "9-ש"
+    },
+    {
+      "id": "partners-10-מחל",
+      "from": [
+        "herut",
+        "liberal-party",
+        "laam"
+      ],
+      "to": [
+        "vehicle-10-מחל"
+      ],
+      "relation": "electoral-partner",
+      "date": "1981-06-30",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k10",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k10",
+      "listId": "10-מחל"
+    },
+    {
+      "id": "partners-10-אמת",
+      "from": [
+        "labor",
+        "mapam"
+      ],
+      "to": [
+        "vehicle-10-אמת"
+      ],
+      "relation": "electoral-partner",
+      "date": "1981-06-30",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k10",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k10",
+      "listId": "10-אמת"
+    },
+    {
+      "id": "partners-10-ו",
+      "from": [
+        "israeli-communist-party",
+        "black-panthers"
+      ],
+      "to": [
+        "vehicle-10-ו"
+      ],
+      "relation": "electoral-partner",
+      "date": "1981-06-30",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k10",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k10",
+      "listId": "10-ו"
+    },
+    {
+      "id": "partners-11-מחל",
+      "from": [
+        "herut",
+        "liberal-party"
+      ],
+      "to": [
+        "vehicle-11-מחל"
+      ],
+      "relation": "electoral-partner",
+      "date": "1984-07-23",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k11",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k11",
+      "listId": "11-מחל"
+    },
+    {
+      "id": "partners-11-אמת",
+      "from": [
+        "labor",
+        "mapam",
+        "independent-liberals"
+      ],
+      "to": [
+        "vehicle-11-אמת"
+      ],
+      "relation": "electoral-partner",
+      "date": "1984-07-23",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k11",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k11",
+      "listId": "11-אמת"
+    },
+    {
+      "id": "partners-11-ו",
+      "from": [
+        "israeli-communist-party",
+        "black-panthers"
+      ],
+      "to": [
+        "vehicle-11-ו"
+      ],
+      "relation": "electoral-partner",
+      "date": "1984-07-23",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k11",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k11",
+      "listId": "11-ו"
+    },
+    {
+      "id": "partners-11-ת",
+      "from": [
+        "tehiya",
+        "tzomet"
+      ],
+      "to": [
+        "vehicle-11-ת"
+      ],
+      "relation": "electoral-partner",
+      "date": "1984-07-23",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k11",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k11",
+      "listId": "11-ת"
+    },
+    {
+      "id": "partners-11-עי",
+      "from": [
+        "matzad",
+        "poalei-agudat-yisrael"
+      ],
+      "to": [
+        "vehicle-11-עי"
+      ],
+      "relation": "electoral-partner",
+      "date": "1984-07-23",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k11",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k11",
+      "listId": "11-עי"
+    },
+    {
+      "id": "partners-12-ג",
+      "from": [
+        "agudat-yisrael",
+        "poalei-agudat-yisrael"
+      ],
+      "to": [
+        "vehicle-12-ג"
+      ],
+      "relation": "electoral-partner",
+      "date": "1988-11-01",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k12",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k12",
+      "listId": "12-ג"
+    },
+    {
+      "id": "partners-12-ו",
+      "from": [
+        "israeli-communist-party",
+        "black-panthers"
+      ],
+      "to": [
+        "vehicle-12-ו"
+      ],
+      "relation": "electoral-partner",
+      "date": "1988-11-01",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k12",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k12",
+      "listId": "12-ו"
+    },
+    {
+      "id": "partners-12-הן",
+      "from": [
+        "shinui",
+        "independent-liberals"
+      ],
+      "to": [
+        "vehicle-12-הן"
+      ],
+      "relation": "electoral-partner",
+      "date": "1988-11-01",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k12",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k12",
+      "listId": "12-הן"
+    },
+    {
+      "id": "partners-13-מרצ",
+      "from": [
+        "ratz",
+        "mapam",
+        "shinui"
+      ],
+      "to": [
+        "vehicle-13-מרצ"
+      ],
+      "relation": "electoral-partner",
+      "date": "1992-06-23",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k13",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k13",
+      "listId": "13-מרצ"
+    },
+    {
+      "id": "partners-13-ג",
+      "from": [
+        "agudat-yisrael",
+        "moria",
+        "degel-hatorah"
+      ],
+      "to": [
+        "vehicle-13-ג"
+      ],
+      "relation": "electoral-partner",
+      "date": "1992-06-23",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k13",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k13",
+      "listId": "13-ג"
+    },
+    {
+      "id": "partners-14-מחל",
+      "from": [
+        "likud",
+        "gesher",
+        "tzomet"
+      ],
+      "to": [
+        "vehicle-14-מחל"
+      ],
+      "relation": "electoral-partner",
+      "date": "1996-05-29",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k14",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k14",
+      "listId": "14-מחל"
+    },
+    {
+      "id": "partners-14-מרצ",
+      "from": [
+        "ratz",
+        "mapam",
+        "shinui"
+      ],
+      "to": [
+        "vehicle-14-מרצ"
+      ],
+      "relation": "electoral-partner",
+      "date": "1996-05-29",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k14",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k14",
+      "listId": "14-מרצ"
+    },
+    {
+      "id": "partners-14-ו",
+      "from": [
+        "hadash",
+        "balad"
+      ],
+      "to": [
+        "vehicle-14-ו"
+      ],
+      "relation": "electoral-partner",
+      "date": "1996-05-29",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k14",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k14",
+      "listId": "14-ו"
+    },
+    {
+      "id": "partners-14-ג",
+      "from": [
+        "agudat-yisrael",
+        "degel-hatorah"
+      ],
+      "to": [
+        "vehicle-14-ג"
+      ],
+      "relation": "electoral-partner",
+      "date": "1996-05-29",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k14",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k14",
+      "listId": "14-ג"
+    },
+    {
+      "id": "partners-14-ע",
+      "from": [
+        "arab-democratic-party",
+        "raam"
+      ],
+      "to": [
+        "vehicle-14-ע"
+      ],
+      "relation": "electoral-partner",
+      "date": "1996-05-29",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k14",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k14",
+      "listId": "14-ע"
+    },
+    {
+      "id": "partners-15-אמת",
+      "from": [
+        "labor",
+        "gesher",
+        "meimad"
+      ],
+      "to": [
+        "vehicle-15-אמת"
+      ],
+      "relation": "electoral-partner",
+      "date": "1999-05-17",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k15",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k15",
+      "listId": "15-אמת"
+    },
+    {
+      "id": "partners-15-ג",
+      "from": [
+        "agudat-yisrael",
+        "degel-hatorah"
+      ],
+      "to": [
+        "vehicle-15-ג"
+      ],
+      "relation": "electoral-partner",
+      "date": "1999-05-17",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k15",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k15",
+      "listId": "15-ג"
+    },
+    {
+      "id": "partners-15-עם",
+      "from": [
+        "raam",
+        "arab-democratic-party"
+      ],
+      "to": [
+        "vehicle-15-עם"
+      ],
+      "relation": "electoral-partner",
+      "date": "1999-05-17",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k15",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k15",
+      "listId": "15-עם"
+    },
+    {
+      "id": "partners-15-ט",
+      "from": [
+        "herut-national-movement",
+        "moledet",
+        "tkuma"
+      ],
+      "to": [
+        "vehicle-15-ט"
+      ],
+      "relation": "electoral-partner",
+      "date": "1999-05-17",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k15",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k15",
+      "listId": "15-ט"
+    },
+    {
+      "id": "partners-15-ד",
+      "from": [
+        "balad",
+        "taal"
+      ],
+      "to": [
+        "vehicle-15-ד"
+      ],
+      "relation": "electoral-partner",
+      "date": "1999-05-17",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k15",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k15",
+      "listId": "15-ד"
+    },
+    {
+      "id": "partners-16-אמת",
+      "from": [
+        "labor",
+        "meimad"
+      ],
+      "to": [
+        "vehicle-16-אמת"
+      ],
+      "relation": "electoral-partner",
+      "date": "2003-01-28",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k16",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k16",
+      "listId": "16-אמת"
+    },
+    {
+      "id": "partners-16-ל",
+      "from": [
+        "yisrael-beiteinu",
+        "tkuma",
+        "moledet"
+      ],
+      "to": [
+        "vehicle-16-ל"
+      ],
+      "relation": "electoral-partner",
+      "date": "2003-01-28",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k16",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k16",
+      "listId": "16-ל"
+    },
+    {
+      "id": "partners-16-מרצ",
+      "from": [
+        "meretz",
+        "democratic-choice",
+        "shahar"
+      ],
+      "to": [
+        "vehicle-16-מרצ"
+      ],
+      "relation": "electoral-partner",
+      "date": "2003-01-28",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k16",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k16",
+      "listId": "16-מרצ"
+    },
+    {
+      "id": "partners-16-ג",
+      "from": [
+        "agudat-yisrael",
+        "degel-hatorah"
+      ],
+      "to": [
+        "vehicle-16-ג"
+      ],
+      "relation": "electoral-partner",
+      "date": "2003-01-28",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k16",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k16",
+      "listId": "16-ג"
+    },
+    {
+      "id": "partners-16-ו",
+      "from": [
+        "hadash",
+        "taal"
+      ],
+      "to": [
+        "vehicle-16-ו"
+      ],
+      "relation": "electoral-partner",
+      "date": "2003-01-28",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k16",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k16",
+      "listId": "16-ו"
+    },
+    {
+      "id": "partners-16-עם",
+      "from": [
+        "raam",
+        "arab-democratic-party"
+      ],
+      "to": [
+        "vehicle-16-עם"
+      ],
+      "relation": "electoral-partner",
+      "date": "2003-01-28",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k16",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k16",
+      "listId": "16-עם"
+    },
+    {
+      "id": "partners-17-אמת",
+      "from": [
+        "labor",
+        "meimad"
+      ],
+      "to": [
+        "vehicle-17-אמת"
+      ],
+      "relation": "electoral-partner",
+      "date": "2006-03-28",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k17",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k17",
+      "listId": "17-אמת"
+    },
+    {
+      "id": "partners-17-טב",
+      "from": [
+        "moledet",
+        "tkuma",
+        "ahi",
+        "nrp"
+      ],
+      "to": [
+        "vehicle-17-טב"
+      ],
+      "relation": "electoral-partner",
+      "date": "2006-03-28",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k17",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k17",
+      "listId": "17-טב"
+    },
+    {
+      "id": "partners-17-ג",
+      "from": [
+        "agudat-yisrael",
+        "degel-hatorah"
+      ],
+      "to": [
+        "vehicle-17-ג"
+      ],
+      "relation": "electoral-partner",
+      "date": "2006-03-28",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k17",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k17",
+      "listId": "17-ג"
+    },
+    {
+      "id": "partners-17-עם",
+      "from": [
+        "raam",
+        "taal",
+        "arab-democratic-party"
+      ],
+      "to": [
+        "vehicle-17-עם"
+      ],
+      "relation": "electoral-partner",
+      "date": "2006-03-28",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k17",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k17",
+      "listId": "17-עם"
+    },
+    {
+      "id": "partners-18-מחל",
+      "from": [
+        "ahi",
+        "likud"
+      ],
+      "to": [
+        "vehicle-18-מחל"
+      ],
+      "relation": "electoral-partner",
+      "date": "2009-02-10",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k18",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k18",
+      "listId": "18-מחל"
+    },
+    {
+      "id": "partners-18-ג",
+      "from": [
+        "agudat-yisrael",
+        "degel-hatorah"
+      ],
+      "to": [
+        "vehicle-18-ג"
+      ],
+      "relation": "electoral-partner",
+      "date": "2009-02-10",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k18",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k18",
+      "listId": "18-ג"
+    },
+    {
+      "id": "partners-18-עם",
+      "from": [
+        "raam",
+        "taal"
+      ],
+      "to": [
+        "vehicle-18-עם"
+      ],
+      "relation": "electoral-partner",
+      "date": "2009-02-10",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k18",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k18",
+      "listId": "18-עם"
+    },
+    {
+      "id": "partners-18-ט",
+      "from": [
+        "tkuma",
+        "hatikva",
+        "eretz-yisrael-shelanu",
+        "moledet"
+      ],
+      "to": [
+        "vehicle-18-ט"
+      ],
+      "relation": "electoral-partner",
+      "date": "2009-02-10",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k18",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k18",
+      "listId": "18-ט"
+    },
+    {
+      "id": "partners-18-מרצ",
+      "from": [
+        "new-movement",
+        "meretz"
+      ],
+      "to": [
+        "vehicle-18-מרצ"
+      ],
+      "relation": "electoral-partner",
+      "date": "2009-02-10",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k18",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k18",
+      "listId": "18-מרצ"
+    },
+    {
+      "id": "partners-18-ה",
+      "from": [
+        "meimad",
+        "green-movement"
+      ],
+      "to": [
+        "vehicle-18-ה"
+      ],
+      "relation": "electoral-partner",
+      "date": "2009-02-10",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k18",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k18",
+      "listId": "18-ה"
+    },
+    {
+      "id": "partners-19-מחל",
+      "from": [
+        "likud",
+        "yisrael-beiteinu"
+      ],
+      "to": [
+        "vehicle-19-מחל"
+      ],
+      "relation": "electoral-partner",
+      "date": "2013-01-22",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k19",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k19",
+      "listId": "19-מחל"
+    },
+    {
+      "id": "partners-19-טב",
+      "from": [
+        "jewish-home",
+        "tkuma"
+      ],
+      "to": [
+        "vehicle-19-טב"
+      ],
+      "relation": "electoral-partner",
+      "date": "2013-01-22",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k19",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k19",
+      "listId": "19-טב"
+    },
+    {
+      "id": "partners-19-ג",
+      "from": [
+        "agudat-yisrael",
+        "degel-hatorah"
+      ],
+      "to": [
+        "vehicle-19-ג"
+      ],
+      "relation": "electoral-partner",
+      "date": "2013-01-22",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k19",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k19",
+      "listId": "19-ג"
+    },
+    {
+      "id": "partners-19-עם",
+      "from": [
+        "raam",
+        "taal",
+        "arab-democratic-party"
+      ],
+      "to": [
+        "vehicle-19-עם"
+      ],
+      "relation": "electoral-partner",
+      "date": "2013-01-22",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k19",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k19",
+      "listId": "19-עם"
+    },
+    {
+      "id": "partners-20-אמת",
+      "from": [
+        "labor",
+        "hatnua",
+        "green-movement"
+      ],
+      "to": [
+        "vehicle-20-אמת"
+      ],
+      "relation": "electoral-partner",
+      "date": "2015-03-17",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k20",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k20",
+      "listId": "20-אמת"
+    },
+    {
+      "id": "partners-20-ודעם",
+      "from": [
+        "hadash",
+        "raam",
+        "balad",
+        "taal"
+      ],
+      "to": [
+        "vehicle-20-ודעם"
+      ],
+      "relation": "electoral-partner",
+      "date": "2015-03-17",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k20",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k20",
+      "listId": "20-ודעם"
+    },
+    {
+      "id": "partners-20-טב",
+      "from": [
+        "jewish-home",
+        "tkuma"
+      ],
+      "to": [
+        "vehicle-20-טב"
+      ],
+      "relation": "electoral-partner",
+      "date": "2015-03-17",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k20",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k20",
+      "listId": "20-טב"
+    },
+    {
+      "id": "partners-20-ג",
+      "from": [
+        "agudat-yisrael",
+        "degel-hatorah"
+      ],
+      "to": [
+        "vehicle-20-ג"
+      ],
+      "relation": "electoral-partner",
+      "date": "2015-03-17",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k20",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k20",
+      "listId": "20-ג"
+    },
+    {
+      "id": "partners-20-קץ",
+      "from": [
+        "yachad",
+        "otzma-yehudit"
+      ],
+      "to": [
+        "vehicle-20-קץ"
+      ],
+      "relation": "electoral-partner",
+      "date": "2015-03-17",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k20",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k20",
+      "listId": "20-קץ"
+    },
+    {
+      "id": "partners-20-ע",
+      "from": [
+        "arab-democratic-party",
+        "national-arab-party"
+      ],
+      "to": [
+        "vehicle-20-ע"
+      ],
+      "relation": "electoral-partner",
+      "date": "2015-03-17",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k20",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k20",
+      "listId": "20-ע"
+    },
+    {
+      "id": "partners-21-מחל",
+      "from": [
+        "likud",
+        "ahi"
+      ],
+      "to": [
+        "vehicle-21-מחל"
+      ],
+      "relation": "electoral-partner",
+      "date": "2019-04-09",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k21",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k21",
+      "listId": "21-מחל"
+    },
+    {
+      "id": "partners-21-פה",
+      "from": [
+        "israel-resilience",
+        "yesh-atid",
+        "telem"
+      ],
+      "to": [
+        "vehicle-21-פה"
+      ],
+      "relation": "electoral-partner",
+      "date": "2019-04-09",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k21",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k21",
+      "listId": "21-פה"
+    },
+    {
+      "id": "partners-21-ג",
+      "from": [
+        "agudat-yisrael",
+        "degel-hatorah"
+      ],
+      "to": [
+        "vehicle-21-ג"
+      ],
+      "relation": "electoral-partner",
+      "date": "2019-04-09",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k21",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k21",
+      "listId": "21-ג"
+    },
+    {
+      "id": "partners-21-ום",
+      "from": [
+        "hadash",
+        "taal"
+      ],
+      "to": [
+        "vehicle-21-ום"
+      ],
+      "relation": "electoral-partner",
+      "date": "2019-04-09",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k21",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k21",
+      "listId": "21-ום"
+    },
+    {
+      "id": "partners-21-טב",
+      "from": [
+        "jewish-home",
+        "tkuma",
+        "otzma-yehudit"
+      ],
+      "to": [
+        "vehicle-21-טב"
+      ],
+      "relation": "electoral-partner",
+      "date": "2019-04-09",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k21",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k21",
+      "listId": "21-טב"
+    },
+    {
+      "id": "partners-21-דעם",
+      "from": [
+        "raam",
+        "balad"
+      ],
+      "to": [
+        "vehicle-21-דעם"
+      ],
+      "relation": "electoral-partner",
+      "date": "2019-04-09",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k21",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k21",
+      "listId": "21-דעם"
+    },
+    {
+      "id": "partners-21-ז",
+      "from": [
+        "zehut",
+        "achiezer"
+      ],
+      "to": [
+        "vehicle-21-ז"
+      ],
+      "relation": "electoral-partner",
+      "date": "2019-04-09",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k21",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k21",
+      "listId": "21-ז"
+    },
+    {
+      "id": "partners-21-קף",
+      "from": [
+        "kol-yisrael-ahim",
+        "peula-leyisrael"
+      ],
+      "to": [
+        "vehicle-21-קף"
+      ],
+      "relation": "electoral-partner",
+      "date": "2019-04-09",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k21",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k21",
+      "listId": "21-קף"
+    },
+    {
+      "id": "partners-22-פה",
+      "from": [
+        "israel-resilience",
+        "yesh-atid",
+        "telem"
+      ],
+      "to": [
+        "vehicle-22-פה"
+      ],
+      "relation": "electoral-partner",
+      "date": "2019-09-17",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k22",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k22",
+      "listId": "22-פה"
+    },
+    {
+      "id": "partners-22-מחל",
+      "from": [
+        "likud",
+        "kulanu"
+      ],
+      "to": [
+        "vehicle-22-מחל"
+      ],
+      "relation": "electoral-partner",
+      "date": "2019-09-17",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k22",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k22",
+      "listId": "22-מחל"
+    },
+    {
+      "id": "partners-22-ודעם",
+      "from": [
+        "hadash",
+        "balad",
+        "taal",
+        "raam"
+      ],
+      "to": [
+        "vehicle-22-ודעם"
+      ],
+      "relation": "electoral-partner",
+      "date": "2019-09-17",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k22",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k22",
+      "listId": "22-ודעם"
+    },
+    {
+      "id": "partners-22-ג",
+      "from": [
+        "agudat-yisrael",
+        "degel-hatorah"
+      ],
+      "to": [
+        "vehicle-22-ג"
+      ],
+      "relation": "electoral-partner",
+      "date": "2019-09-17",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k22",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k22",
+      "listId": "22-ג"
+    },
+    {
+      "id": "partners-22-טב",
+      "from": [
+        "new-right",
+        "jewish-home",
+        "tkuma"
+      ],
+      "to": [
+        "vehicle-22-טב"
+      ],
+      "relation": "electoral-partner",
+      "date": "2019-09-17",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k22",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k22",
+      "listId": "22-טב"
+    },
+    {
+      "id": "partners-22-אמת",
+      "from": [
+        "labor",
+        "gesher"
+      ],
+      "to": [
+        "vehicle-22-אמת"
+      ],
+      "relation": "electoral-partner",
+      "date": "2019-09-17",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k22",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k22",
+      "listId": "22-אמת"
+    },
+    {
+      "id": "partners-22-מרצ",
+      "from": [
+        "meretz",
+        "green-movement",
+        "independence"
+      ],
+      "to": [
+        "vehicle-22-מרצ"
+      ],
+      "relation": "electoral-partner",
+      "date": "2019-09-17",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k22",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k22",
+      "listId": "22-מרצ"
+    },
+    {
+      "id": "partners-23-מחל",
+      "from": [
+        "likud",
+        "kulanu"
+      ],
+      "to": [
+        "vehicle-23-מחל"
+      ],
+      "relation": "electoral-partner",
+      "date": "2020-03-02",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k23",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k23",
+      "listId": "23-מחל"
+    },
+    {
+      "id": "partners-23-פה",
+      "from": [
+        "israel-resilience",
+        "yesh-atid",
+        "telem"
+      ],
+      "to": [
+        "vehicle-23-פה"
+      ],
+      "relation": "electoral-partner",
+      "date": "2020-03-02",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k23",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k23",
+      "listId": "23-פה"
+    },
+    {
+      "id": "partners-23-ודעם",
+      "from": [
+        "hadash",
+        "balad",
+        "taal",
+        "raam"
+      ],
+      "to": [
+        "vehicle-23-ודעם"
+      ],
+      "relation": "electoral-partner",
+      "date": "2020-03-02",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k23",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k23",
+      "listId": "23-ודעם"
+    },
+    {
+      "id": "partners-23-ג",
+      "from": [
+        "agudat-yisrael",
+        "degel-hatorah"
+      ],
+      "to": [
+        "vehicle-23-ג"
+      ],
+      "relation": "electoral-partner",
+      "date": "2020-03-02",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k23",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k23",
+      "listId": "23-ג"
+    },
+    {
+      "id": "partners-23-אמת",
+      "from": [
+        "labor",
+        "gesher",
+        "meretz"
+      ],
+      "to": [
+        "vehicle-23-אמת"
+      ],
+      "relation": "electoral-partner",
+      "date": "2020-03-02",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k23",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k23",
+      "listId": "23-אמת"
+    },
+    {
+      "id": "partners-23-טב",
+      "from": [
+        "new-right",
+        "jewish-home",
+        "tkuma",
+        "ahi"
+      ],
+      "to": [
+        "vehicle-23-טב"
+      ],
+      "relation": "electoral-partner",
+      "date": "2020-03-02",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k23",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k23",
+      "listId": "23-טב"
+    },
+    {
+      "id": "partners-24-מחל",
+      "from": [
+        "likud",
+        "atid-ehad"
+      ],
+      "to": [
+        "vehicle-24-מחל"
+      ],
+      "relation": "electoral-partner",
+      "date": "2021-03-23",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k24",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k24",
+      "listId": "24-מחל"
+    },
+    {
+      "id": "partners-24-ג",
+      "from": [
+        "degel-hatorah",
+        "agudat-yisrael"
+      ],
+      "to": [
+        "vehicle-24-ג"
+      ],
+      "relation": "electoral-partner",
+      "date": "2021-03-23",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k24",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k24",
+      "listId": "24-ג"
+    },
+    {
+      "id": "partners-24-ט",
+      "from": [
+        "tkuma",
+        "otzma-yehudit",
+        "noam"
+      ],
+      "to": [
+        "vehicle-24-ט"
+      ],
+      "relation": "electoral-partner",
+      "date": "2021-03-23",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k24",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k24",
+      "listId": "24-ט"
+    },
+    {
+      "id": "partners-24-ודעם",
+      "from": [
+        "hadash",
+        "taal",
+        "balad"
+      ],
+      "to": [
+        "vehicle-24-ודעם"
+      ],
+      "relation": "electoral-partner",
+      "date": "2021-03-23",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k24",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k24",
+      "listId": "24-ודעם"
+    },
+    {
+      "id": "partners-24-ת",
+      "from": [
+        "new-hope",
+        "derech-eretz"
+      ],
+      "to": [
+        "vehicle-24-ת"
+      ],
+      "relation": "electoral-partner",
+      "date": "2021-03-23",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k24",
+        "joint"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k24",
+      "listId": "24-ת"
+    },
+    {
+      "id": "partners-25-ט",
+      "from": [
+        "tkuma",
+        "otzma-yehudit",
+        "noam",
+        "atid-ehad",
+        "eretz-yisrael-shelanu"
+      ],
+      "to": [
+        "vehicle-25-ט"
+      ],
+      "relation": "electoral-partner",
+      "date": "2022-11-01",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k25",
+        "k25"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k25",
+      "listId": "25-ט"
+    },
+    {
+      "id": "partners-25-ג",
+      "from": [
+        "agudat-yisrael",
+        "degel-hatorah"
+      ],
+      "to": [
+        "vehicle-25-ג"
+      ],
+      "relation": "electoral-partner",
+      "date": "2022-11-01",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k25",
+        "k25"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k25",
+      "listId": "25-ג"
+    },
+    {
+      "id": "partners-25-כן",
+      "from": [
+        "israel-resilience",
+        "new-hope"
+      ],
+      "to": [
+        "vehicle-25-כן"
+      ],
+      "relation": "electoral-partner",
+      "date": "2022-11-01",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k25",
+        "k25"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k25",
+      "listId": "25-כן"
+    },
+    {
+      "id": "partners-25-ום",
+      "from": [
+        "hadash",
+        "taal"
+      ],
+      "to": [
+        "vehicle-25-ום"
+      ],
+      "relation": "electoral-partner",
+      "date": "2022-11-01",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k25",
+        "k25"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k25",
+      "listId": "25-ום"
+    },
+    {
+      "id": "partners-25-ב",
+      "from": [
+        "new-right",
+        "jewish-home",
+        "religious-national-israeli"
+      ],
+      "to": [
+        "vehicle-25-ב"
+      ],
+      "relation": "electoral-partner",
+      "date": "2022-11-01",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k25",
+        "k25"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k25",
+      "listId": "25-ב"
+    },
+    {
+      "id": "partners-26-מחל",
+      "from": [
+        "likud",
+        "new-hope"
+      ],
+      "to": [
+        "vehicle-26-מחל"
+      ],
+      "relation": "electoral-partner",
+      "date": "2026-10-27",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k26",
+        "cec26"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k26",
+      "listId": "26-מחל"
+    },
+    {
+      "id": "partners-26-ב",
+      "from": [
+        "otzma-yehudit",
+        "eretz-yisrael-shelanu"
+      ],
+      "to": [
+        "vehicle-26-ב"
+      ],
+      "relation": "electoral-partner",
+      "date": "2026-10-27",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k26",
+        "cec26"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k26",
+      "listId": "26-ב"
+    },
+    {
+      "id": "partners-26-ג",
+      "from": [
+        "degel-hatorah",
+        "agudat-yisrael",
+        "homat-torat-yisrael"
+      ],
+      "to": [
+        "vehicle-26-ג"
+      ],
+      "relation": "electoral-partner",
+      "date": "2026-10-27",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k26",
+        "cec26"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k26",
+      "listId": "26-ג"
+    },
+    {
+      "id": "partners-26-ט",
+      "from": [
+        "tkuma",
+        "zehut",
+        "atid-ehad"
+      ],
+      "to": [
+        "vehicle-26-ט"
+      ],
+      "relation": "electoral-partner",
+      "date": "2026-10-27",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k26",
+        "cec26"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k26",
+      "listId": "26-ט"
+    },
+    {
+      "id": "partners-26-דרך",
+      "from": [
+        "yashar",
+        "yesodot-yisrael"
+      ],
+      "to": [
+        "vehicle-26-דרך"
+      ],
+      "relation": "electoral-partner",
+      "date": "2026-10-27",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k26",
+        "cec26"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k26",
+      "listId": "26-דרך"
+    },
+    {
+      "id": "partners-26-אמת",
+      "from": [
+        "democrats",
+        "meretz"
+      ],
+      "to": [
+        "vehicle-26-אמת"
+      ],
+      "relation": "electoral-partner",
+      "date": "2026-10-27",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k26",
+        "cec26"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k26",
+      "listId": "26-אמת"
+    },
+    {
+      "id": "partners-26-רק",
+      "from": [
+        "together-bennett",
+        "yesh-atid"
+      ],
+      "to": [
+        "vehicle-26-רק"
+      ],
+      "relation": "electoral-partner",
+      "date": "2026-10-27",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k26",
+        "cec26"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k26",
+      "listId": "26-רק"
+    },
+    {
+      "id": "partners-26-ודם",
+      "from": [
+        "hadash",
+        "taal",
+        "balad"
+      ],
+      "to": [
+        "vehicle-26-ודם"
+      ],
+      "relation": "electoral-partner",
+      "date": "2026-10-27",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k26",
+        "cec26"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k26",
+      "listId": "26-ודם"
+    },
+    {
+      "id": "partners-26-די",
+      "from": [
+        "reservists",
+        "new-economic"
+      ],
+      "to": [
+        "vehicle-26-די"
+      ],
+      "relation": "electoral-partner",
+      "date": "2026-10-27",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k26",
+        "cec26"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k26",
+      "listId": "26-די"
+    },
+    {
+      "id": "partners-26-ני",
+      "from": [
+        "noam",
+        "national-responsibility"
+      ],
+      "to": [
+        "vehicle-26-ני"
+      ],
+      "relation": "electoral-partner",
+      "date": "2026-10-27",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k26",
+        "cec26"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k26",
+      "listId": "26-ני"
+    },
+    {
+      "id": "partners-26-בי",
+      "from": [
+        "beit-yemini",
+        "tzomet"
+      ],
+      "to": [
+        "vehicle-26-בי"
+      ],
+      "relation": "electoral-partner",
+      "date": "2026-10-27",
+      "datePrecision": "day",
+      "effectiveFor": "election",
+      "sources": [
+        "k26",
+        "cec26"
+      ],
+      "evidence": {
+        "status": "documented",
+        "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
+      },
+      "electionId": "k26",
+      "listId": "26-בי"
+    }
+  ],
+  "pending": [
+    {
+      "id": "democrats-2024",
+      "from": [
+        "labor",
+        "meretz"
+      ],
+      "to": [
+        "democrats"
+      ],
+      "relation": "merged-into",
+      "date": "2024",
+      "datePrecision": "year",
+      "sources": [
+        "mergers",
+        "k26"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "July 2024 source establishes announcement, explicitly defers legal completion. 2026 local data still lists Meretz separately. Do not assert completed legal merger."
+      }
+    },
+    {
+      "id": "remaining-succession",
+      "sources": [
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Party-specific split/rename/leader moves beyond curated events require individually inspected dated register/profile evidence. Partnership coverage is not complete organisational genealogy."
+      }
+    },
+    {
+      "id": "history-pre-split-maki",
+      "partyIds": [
+        "pre-split-maki"
+      ],
+      "sources": [
+        "k1",
+        "k2",
+        "k3",
+        "k4",
+        "k5",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "history-democratic-list-nazareth",
+      "partyIds": [
+        "democratic-list-nazareth"
+      ],
+      "sources": [
+        "k1",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "history-haredim-list-1949",
+      "partyIds": [
+        "haredim-list-1949"
+      ],
+      "sources": [
+        "k1",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "history-democratic-list-israeli-arabs",
+      "partyIds": [
+        "democratic-list-israeli-arabs"
+      ],
+      "sources": [
+        "k2",
+        "k3",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "history-progress-and-work",
+      "partyIds": [
+        "progress-and-work"
+      ],
+      "sources": [
+        "k2",
+        "k3",
+        "k4",
+        "k5",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "history-agriculture-and-development",
+      "partyIds": [
+        "agriculture-and-development"
+      ],
+      "sources": [
+        "k2",
+        "k3",
+        "k4",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "history-progress-and-development",
+      "partyIds": [
+        "progress-and-development"
+      ],
+      "sources": [
+        "k4",
+        "k5",
+        "k6",
+        "k7",
+        "k8",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "history-cooperation-and-brotherhood",
+      "partyIds": [
+        "cooperation-and-brotherhood"
+      ],
+      "sources": [
+        "k4",
+        "k5",
+        "k6",
+        "k7",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "history-kach",
+      "partyIds": [
+        "kach"
+      ],
+      "sources": [
+        "k10",
+        "k11",
+        "k8",
+        "k9",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "history-dash",
+      "partyIds": [
+        "dash"
+      ],
+      "sources": [
+        "k9",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "history-sheli",
+      "partyIds": [
+        "sheli"
+      ],
+      "sources": [
+        "k10",
+        "k11",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "history-shas",
+      "partyIds": [
+        "shas"
+      ],
+      "sources": [
+        "k11",
+        "k12",
+        "k13",
+        "k14",
+        "k15",
+        "k16",
+        "k17",
+        "k18",
+        "k19",
+        "k20",
+        "k21",
+        "k22",
+        "k23",
+        "k24",
+        "k25",
+        "k26",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "history-progressive-list-peace",
+      "partyIds": [
+        "progressive-list-peace"
+      ],
+      "sources": [
+        "k11",
+        "k12",
+        "k13",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "history-yahad-1984",
+      "partyIds": [
+        "yahad-1984"
+      ],
+      "sources": [
+        "k11",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "history-yishai-1988",
+      "partyIds": [
+        "yishai-1988"
+      ],
+      "sources": [
+        "k12",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "history-geulat-yisrael",
+      "partyIds": [
+        "geulat-yisrael"
+      ],
+      "sources": [
+        "k13",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "history-third-way",
+      "partyIds": [
+        "third-way"
+      ],
+      "sources": [
+        "k14",
+        "k15",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "history-telem-emuna",
+      "partyIds": [
+        "telem-emuna"
+      ],
+      "sources": [
+        "k14",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "history-daam",
+      "partyIds": [
+        "daam"
+      ],
+      "sources": [
+        "k14",
+        "k15",
+        "k18",
+        "k19",
+        "k21",
+        "k22",
+        "k23",
+        "k24",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "history-centre-party",
+      "partyIds": [
+        "centre-party"
+      ],
+      "sources": [
+        "k15",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "history-am-ehad",
+      "partyIds": [
+        "am-ehad"
+      ],
+      "sources": [
+        "k15",
+        "k16",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "history-ahavat-yisrael",
+      "partyIds": [
+        "ahavat-yisrael"
+      ],
+      "sources": [
+        "k16",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "history-kadima",
+      "partyIds": [
+        "kadima"
+      ],
+      "sources": [
+        "k17",
+        "k18",
+        "k19",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "history-koach-lehashpia-2013",
+      "partyIds": [
+        "koach-lehashpia-2013"
+      ],
+      "sources": [
+        "k19",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "history-uvizchutan",
+      "partyIds": [
+        "uvizchutan"
+      ],
+      "sources": [
+        "k20",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "history-hatzibur-haharedi",
+      "partyIds": [
+        "hatzibur-haharedi"
+      ],
+      "sources": [
+        "k26",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    },
+    {
+      "id": "history-hakel-2026",
+      "partyIds": [
+        "hakel-2026"
+      ],
+      "sources": [
+        "k26",
+        "proposal"
+      ],
+      "evidence": {
+        "status": "unresolved",
+        "interpretation": "Identity observed in local ballot or constituent research; dated organisational ancestry not yet established by an inspected register/profile. No succession asserted."
+      }
+    }
+  ]
+}
