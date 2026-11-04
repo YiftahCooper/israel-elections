@@ -1684,12 +1684,11 @@
       "publisher": "Wikimedia Commons contributors",
       "sourceType": "community metadata; not independent of the credited source",
       "accessed": "2026-11-04",
-      "accessMethod": "MediaWiki API imageinfo/extmetadata and revisions",
-      "inspectionDepth": "description, date, credit and licence wikitext inspected; original artefact not independently inspected unless noted",
+      "accessMethod": "MediaWiki API imageinfo/extmetadata and revisions; plain HTTP with project User-Agent",
+      "inspectionDepth": "Description, date, origin credit, licence and actual downloaded artwork inspected; upstream historical original not independently inspected",
       "date": "2019-12-27",
-      "description": "Logo present on the website of Moshe Ya'alon's Telem Party.",
+      "description": "Commons description explicitly dates the logo present on the party’s official site https://www.telem-il.org/ to 27 December 2019, within the campaign before the 2 March 2020 election. This is the separate Telem constituent, not Blue and White. Medium confidence: community date and official-site credit; no archived primary capture independently inspected.",
       "credit": "https://www.telem-il.org/",
-      "artist": "",
       "licence": "Public domain",
       "licenceTemplates": [
         "PD-logo"
@@ -1697,7 +1696,7 @@
       "licenceUrl": "",
       "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/9/90/TELEM.png",
       "evidenceFamily": "commons-file-85322948",
-      "selected": false
+      "selected": true
     },
     {
       "id": "commons-130826728",

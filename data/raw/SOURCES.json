@@ -4214,5 +4214,17 @@
     "retrievedAt": "2026-11-04",
     "bytes": 480517,
     "sha256": "fa7ae1297c4779ef7ddcf988003642d67568bdc165063edacd9271b1e56c007a"
+  },
+  {
+    "id": "logo-k23-telem-2020.png-original",
+    "file": "logos/k23/telem-2020-original.png",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/90/TELEM.png",
+    "publisher": "Wikimedia Commons; credited party origin",
+    "official": false,
+    "description": "Commons description explicitly dates the logo present on the party’s official site https://www.telem-il.org/ to 27 December 2019, within the campaign before the 2 March 2020 election. This is the separate Telem constituent, not Blue and White. Medium confidence: community date and official-site credit; no archived primary capture independently inspected.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 17908,
+    "sha256": "8c13abe17a6534d75c4e98c801ede20e059d2b3fa46f7f307c28037ccbabf31c"
   }
 ]
