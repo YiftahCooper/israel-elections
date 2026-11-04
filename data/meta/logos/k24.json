@@ -209,6 +209,43 @@
         "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=beytenu.org.il/wp-content/themes/nisarg/images/logo_260.png&from=20210201&to=20210323&output=json&fl=timestamp,original,statuscode,digest,length&filter=statuscode:200&collapse=digest",
         "rawIndex": "logo-k24-beiteinu-index"
       }
+    },
+    {
+      "file": "logos/likud-2021-k24.svg",
+      "sourceUrl": "https://www.likud.org.il/",
+      "assetSourceUrl": "https://www.likud.org.il/images/layout_images/logo.svg",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "הליכוד — official party header mark",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "likud-archive-20210226150032",
+      "inUseDate": "2021-02-26",
+      "archiveUrl": "https://web.archive.org/web/20210226150032/https://www.likud.org.il/",
+      "archiveTimestamp": "20210226150032",
+      "inUseEvidence": "Inspected official homepage capture 20210226150032 references https://www.likud.org.il/images/layout_images/logo.svg as its header logo. Exact archived asset bytes at 20210214215016 match campaign-window CDX SHA-1 base32 UUMFLDUTGIRXWQP5HTS3JPYAI3PQAZWU. Original geometry and colours preserved; separate evidence for this election, no assignment by analogy. CDX pre-election capture: 20210214215016; actual retrieved asset capture: 20210214215016. Separately keyed constituent: the source identifies the Likud party’s own mark on its official site (or the dated 2009 party emblem), not a new logo for the other parties in its electoral list. Same-election evidence and exact asset retained; no cross-election inference.",
+      "retrievedAt": "2026-11-04",
+      "sha256": "bbe6ec4c4f7db2f644940a8e713e8264d3bf6fd892d77b3de2e4336e71b7273d",
+      "originalSha256": "bbe6ec4c4f7db2f644940a8e713e8264d3bf6fd892d77b3de2e4336e71b7273d",
+      "bytes": 10986,
+      "displayBackground": "dark",
+      "rawEvidence": {
+        "page": "logo-k24-likud-page",
+        "asset": "logo-k24-likud-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20210214215016id_/https://www.likud.org.il/images/layout_images/logo.svg",
+      "assetArchiveTimestamp": "20210214215016",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "UUMFLDUTGIRXWQP5HTS3JPYAI3PQAZWU",
+        "computedDigest": "UUMFLDUTGIRXWQP5HTS3JPYAI3PQAZWU",
+        "assetCaptureTimestamp": "20210214215016",
+        "cdxCaptureTimestamp": "20210214215016",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.likud.org.il%2Fimages%2Flayout_images%2Flogo.svg&from=20210201&to=20210323&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k24-likud-index"
+      },
+      "party": "likud"
     }
   ]
 }

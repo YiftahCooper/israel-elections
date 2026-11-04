@@ -216,3 +216,111 @@ Baseline whole lists: **4/10**; constituents: **1/11**. Every one of the 16 init
 - S3: `site:facebook.com "תעל" 2022 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "תעל" 2022 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
 
 Batch verification: `npx vitest run` **57 files / 484 tests passed**; `npx tsc -p tsconfig.json --noEmit`, `npx vite build`, and `python3 scripts/validate-party-logos.py` passed. Dataset build passed; all 26 election datasets equal prior batch after recursively removing `logo` and `builtAt`.
+
+### k24 · 2021-03-23
+
+Baseline whole lists: **7/13**; constituents: **1/12**. Every one of the 17 initial gaps below was attempted in all three routes; S3 quota failures do not count as completed source searches.
+
+**L `ב` — ימינה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"ימינה" "2021" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://votes24.bechirot.gov.il/>; <https://www.idi.org.il/policy/parties-and-elections/parties/yamina>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%90%D7%A8%D7%91%D7%A2>.
+- S2: `site:commons.wikimedia.org "Yamina" logo 2021` → <https://commons.wikimedia.org/wiki/File:Logo_Yamina,_2021.svg>; <https://commons.wikimedia.org/wiki/File:Yamina_21.png>; <https://commons.wikimedia.org/wiki/Category:Yamina>.
+- S3: `site:facebook.com "ימינה" 2021 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "ימינה" 2021 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `ג` — יהדות התורה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"יהדות התורה" "2021" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://votes24.bechirot.gov.il/>; <https://he.wikipedia.org/wiki/%D7%99%D7%94%D7%93%D7%95%D7%AA_%D7%94%D7%AA%D7%95%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections/parties/yahadut-hatorah>.
+- S2: `site:commons.wikimedia.org "United Torah Judaism" logo 2021` → no returned URLs.
+- S3: `site:facebook.com "יהדות התורה" 2021 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "יהדות התורה" 2021 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `ודעם` — הרשימה המשותפת.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"הרשימה המשותפת" "2021" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://votes24.bechirot.gov.il/>; <https://he.wikipedia.org/wiki/%D7%94%D7%A8%D7%A9%D7%99%D7%9E%D7%94_%D7%94%D7%9E%D7%A9%D7%95%D7%AA%D7%A4%D7%AA>; <https://www.idi.org.il/policy/parties-and-elections>.
+- S2: `site:commons.wikimedia.org "Joint List" logo 2021` → <https://commons.wikimedia.org/wiki/File:Joint_List_logo.png>; <https://commons.wikimedia.org/wiki/Category:Joint_List>; <https://commons.wikimedia.org/wiki/File:Logo_of_the_Joint_List_(Israel)_2026_(vector).svg>.
+- S3: `site:facebook.com "הרשימה המשותפת" 2021 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "הרשימה המשותפת" 2021 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `ט` — הציונות הדתית.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"הציונות הדתית" "2021" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://votes24.bechirot.gov.il/>; <https://www.idi.org.il/policy/parties-and-elections>; <https://www.inss.org.il/he/publication/israel-elections-2022>.
+- S2: `site:commons.wikimedia.org "Religious Zionism" logo 2021` → <https://commons.wikimedia.org/wiki/File:Parti_sioniste_religieux_logo_2022.png>; <https://commons.wikimedia.org/wiki/File:Reuven_Rivlin_with_the_Religious_Zionism_party_representatives_in_the_round_of_consultations_at_Beit_HaNassi,_April_2021_(GPOMN3_3563).jpg>; <https://commons.wikimedia.org/wiki/d:Q42388>.
+- S3: `site:facebook.com "הציונות הדתית" 2021 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "הציונות הדתית" 2021 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `מרצ` — מרצ.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"מרצ" "2021" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://votes24.bechirot.gov.il/>; <https://he.wikipedia.org/wiki/%D7%9E%D7%A8%D7%A6>; <https://www.idi.org.il/policy/parties-and-elections/parties/meretz>.
+- S2: `site:commons.wikimedia.org "Meretz" logo 2021` → <https://commons.wikimedia.org/wiki/File:Meretz_Logo.svg>; <https://commons.wikimedia.org/wiki/File:Logo_of_the_Labor-Gesher-Meretz.png>; <https://commons.wikimedia.org/wiki/Category:Logos_of_political_parties_in_Israel>.
+- S3: `site:facebook.com "מרצ" 2021 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "מרצ" 2021 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `שס` — ש״ס.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"ש״ס" "2021" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%90%D7%A8%D7%91%D7%A2>; <https://www.idi.org.il/policy/parties-and-elections>; <https://www.inss.org.il/he/publication/israel-elections-2022>.
+- S2: `site:commons.wikimedia.org "Shas" logo 2021` → <https://commons.wikimedia.org/wiki/File:Shas_logo.png>; <https://commons.wikimedia.org/wiki/File:Reuven_Rivlin_with_Shas_party_representatives_in_the_round_of_consultations_at_Beit_HaNassi,_April_2021_(GPOMN1_7553).jpg>; <https://commons.wikimedia.org/wiki/File:Israeli_Knesset_Blocs_2021.svg>.
+- S3: `site:facebook.com "שס" 2021 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "שס" 2021 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `agudat-yisrael` — אגודת ישראל.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"אגודת ישראל" "2021" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://votes24.bechirot.gov.il/>; <https://www.idi.org.il/policy/parties-and-elections>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%90%D7%A8%D7%91%D7%A2>.
+- S2: `site:commons.wikimedia.org "Agudat Yisrael" logo 2021` → <https://commons.wikimedia.org/wiki/Category:SVG_logos_of_political_parties_in_Israel>; <https://commons.wikimedia.org/wiki/User_talk:Jozef_Gabcik>.
+- S3: `site:facebook.com "אגודת ישראל" 2021 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "אגודת ישראל" 2021 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `atid-ehad` — עתיד אחד – עתיד טוב לישראל.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"עתיד אחד – עתיד טוב לישראל" "2021" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%97%D7%9E%D7%A9>; <https://www.gov.il/BlobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisionsfullbook2022.pdf>; <https://www.idi.org.il/articles/33649>.
+- S2: `site:commons.wikimedia.org "Atid Ehad" logo 2021` → no returned URLs.
+- S3: `site:facebook.com "עתיד אחד" 2021 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "עתיד אחד" 2021 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `balad` — בל"ד.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"בל"ד" "2021" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://votes24.bechirot.gov.il/>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%90%D7%A8%D7%91%D7%A2>; <https://www.idi.org.il/policy/parties-and-elections>.
+- S2: `site:commons.wikimedia.org "Balad" logo 2021` → <https://commons.wikimedia.org/wiki/File:Green_woodwork_in_old_Jeddah_(Al_Balad)_October_8_2021.jpg>; <https://commons.wikimedia.org/wiki/Category:SVG_logos_of_political_parties_in_Israel>; <https://commons.wikimedia.org/wiki/File:Old_Jeddah_(Al_Balad)_architecture_3_Feb_2022.jpg>.
+- S3: `site:facebook.com "בלד" 2021 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "בלד" 2021 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `degel-hatorah` — דגל התורה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"דגל התורה" "2021" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://votes24.bechirot.gov.il/>; <https://he.wikipedia.org/wiki/%D7%93%D7%92%D7%9C_%D7%94%D7%AA%D7%95%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections>.
+- S2: `site:commons.wikimedia.org "Degel HaTorah" logo 2021` → no returned URLs.
+- S3: `site:facebook.com "דגל התורה" 2021 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "דגל התורה" 2021 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `derech-eretz` — דרך ארץ.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"דרך ארץ" "2021" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/articles/39414>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%90%D7%A8%D7%91%D7%A2>; <https://he.wikipedia.org/wiki/%D7%93%D7%A8%D7%9A_%D7%90%D7%A8%D7%A5_(%D7%9E%D7%A4%D7%9C%D7%92%D7%94)>.
+- S2: `site:commons.wikimedia.org "Derech Eretz" logo 2021` → <https://commons.wikimedia.org/wiki/File:Svgfiles_2021-03-02-14-48-01-536744-14416230439496633742_(1).svg>; <https://commons.wikimedia.org/wiki/File:23rd_Knesset_Composition.svg>; <https://commons.wikimedia.org/wiki/wikidata:Q76985>.
+- S3: `site:facebook.com "דרך ארץ" 2021 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "דרך ארץ" 2021 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `hadash` — חד"ש (המפלגה הקומוניסטית הישראלית).** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"חד"ש (המפלגה הקומוניסטית הישראלית)" "2021" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://t.me/s/king_of_theneighborhood?before=29968>.
+- S2: `site:commons.wikimedia.org "Hadash (Israeli Communist Party)" logo 2021` → no returned URLs.
+- S3: `site:facebook.com "חדש" 2021 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "חדש" 2021 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `likud` — הליכוד.** Added fair-use Likud constituent from this election’s retained official header and CDX byte proof.
+
+- S1: `"הליכוד" "2021" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://votes24.bechirot.gov.il/>; <https://www.idi.org.il/policy/parties-and-elections>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%90%D7%A8%D7%91%D7%A2>.
+- S2: `site:commons.wikimedia.org "Likud" logo 2021` → <https://commons.wikimedia.org/wiki/File:Likud_Logo.svg>; <https://commons.wikimedia.org/wiki/File:Logo_Likud.png>; <https://commons.wikimedia.org/wiki/Category:Logos_of_political_parties_in_Israel>.
+- S3: `site:facebook.com "הליכוד" 2021 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "הליכוד" 2021 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `new-hope` — תקווה חדשה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"תקווה חדשה" "2021" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://votes24.bechirot.gov.il/>; <https://www.idi.org.il/policy/parties-and-elections>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%90%D7%A8%D7%91%D7%A2>.
+- S2: `site:commons.wikimedia.org "New Hope" logo 2021` → <https://commons.wikimedia.org/wiki/File:New_Hope_party_logo.png>; <https://commons.wikimedia.org/wiki/File:Birds_nest_NEW_LIFE_NEW_HOPE.jpg>; <https://commons.wikimedia.org/wiki/File:Miller_New_Hope_MB_Church.jpg>.
+- S3: `site:facebook.com "תקווה חדשה" 2021 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "תקווה חדשה" 2021 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `noam` — נעם (לזוז).** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"נעם (לזוז)" "2021" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/media/27873/the-elections-in-israel-2022.pdf>; <https://www.idi.org.il/media/18514/the-elections-in-israel-2019-2021.pdf>; <https://huggingface.co/dicta-il/neodictabert-bilingual/resolve/main/vocab.txt?download=true>.
+- S2: `site:commons.wikimedia.org "Noam (registered as Lazuz)" logo 2021` → no returned URLs.
+- S3: `site:facebook.com "נעם" 2021 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "נעם" 2021 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `taal` — תע"ל.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"תע"ל" "2021" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://votes24.bechirot.gov.il/>; <https://www.idi.org.il/policy/parties-and-elections>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%97%D7%9E%D7%A9>.
+- S2: `site:commons.wikimedia.org "Ta'al" logo 2021` → <https://commons.wikimedia.org/wiki/File:Joint_List_logo.png>; <https://commons.wikimedia.org/wiki/File:Joint_List_logo_2019.svg>; <https://commons.wikimedia.org/wiki/Category:Logos_of_political_parties_in_Israel>.
+- S3: `site:facebook.com "תעל" 2021 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "תעל" 2021 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `tkuma` — האיחוד הלאומי – תקומה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"האיחוד הלאומי – תקומה" "2021" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%90%D7%99%D7%97%D7%95%D7%93_%D7%94%D7%9C%D7%90%D7%95%D7%9E%D7%99%E2%80%93%D7%AA%D7%A7%D7%95%D7%9E%D7%94>; <https://www.idi.org.il/articles/32955>; <https://library.mevaker.gov.il/sites/DigitalLibrary/Pages/Reports/1409-1.aspx>.
+- S2: `site:commons.wikimedia.org "Religious Zionist Party (National Union–Tkuma)" logo 2021` → no returned URLs.
+- S3: `site:facebook.com "האיחוד הלאומי" 2021 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "האיחוד הלאומי" 2021 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+Batch verification: `npx vitest run` **57 files / 484 tests passed**; `npx tsc -p tsconfig.json --noEmit`, `npx vite build`, and `python3 scripts/validate-party-logos.py` passed. Dataset build passed; all 26 election datasets equal prior batch after recursively removing `logo` and `builtAt`.
