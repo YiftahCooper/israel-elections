@@ -189,7 +189,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
  *  Change is drawn in neutral ink; each list's colour is on its dots.
  *  The baseline is on the reading side (right in Hebrew), as in the chamber pair above it. */
 export function Slope({ groups, nameA, nameB, colorOf }: { groups: { key: string; seatsA: number; seatsB: number; label: string }[]; nameA: string; nameB: string; colorOf: (key: string) => string }) {
-  const rtl = useLang() === 'he';
+  const rtl = false; // before on the left, after on the right in both languages (owner, 2026-11-04)
   const [box, W] = useChartWidth(640);
   const rows = groups.filter((g) => g.seatsA || g.seatsB);
   const max = Math.max(1, ...rows.flatMap((g) => [g.seatsA, g.seatsB]));

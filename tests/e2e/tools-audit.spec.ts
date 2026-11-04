@@ -69,18 +69,21 @@ test('the threshold sweep refuses an empty or reversed range', async ({ page }) 
   }
 });
 
-test('Hebrew charts put labels and the baseline on the reading side', async ({ page }) => {
+// Owner rule (2026-11-04): Hebrew graphics read left to right like English; only text is right-to-left.
+test('Hebrew charts keep the English left-to-right geometry', async ({ page }) => {
   await start(page, 'he');
   await tool(page, 'charts');
   const fig = panel(page).locator('figure').filter({ hasText: 'מרחק מאחוז החסימה' });
   const box = (await fig.locator('svg').boundingBox())!;
   const label = (await fig.locator('svg text').first().boundingBox())!;
-  expect(label.x).toBeGreaterThan(box.x + box.width / 2);
+  expect(label.x).toBeLessThan(box.x + box.width / 2);
   await tool(page, 'compare');
   await panel(page).locator('details summary').click();
   const heads = panel(page).locator('details svg > text');
   const [a, b] = [(await heads.nth(0).boundingBox())!, (await heads.nth(1).boundingBox())!];
-  expect(a.x).toBeGreaterThan(b.x); // the official result (baseline) is on the right, as in the chamber pair
+  expect(a.x).toBeLessThan(b.x); // the official result (before) is on the left, as in the chamber pair
+  const figs = panel(page).locator('.cmp-chambers figure');
+  expect((await figs.nth(0).boundingBox())!.x).toBeLessThan((await figs.nth(1).boundingBox())!.x);
 });
 
 test('charts keep readable text on a phone', async ({ page }) => {

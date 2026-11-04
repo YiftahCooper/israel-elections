@@ -89,5 +89,5 @@ test('even axis ticks, scale down with a seat delta, distinct copies and delete'
 });
 test('Hebrew scaling keeps signs and arrows in reading order',async({page})=>{
  await start(page,'he');await expect(page.locator('.family-scale .quick-actions bdi').first()).toHaveText('−10%');
- await expect(page.locator('.family-seat-count em bdi')).toHaveText('+2');await expect(page.locator('.family-consequence p[role=status]')).toContainText('623,369 ← 685,706');
+ await expect(page.locator('.family-seat-count em bdi')).toHaveText('+2');await expect(page.locator('.family-consequence p[role=status]')).toContainText('623,369 → 685,706');
 });

@@ -252,7 +252,7 @@ A restrained cool-neutral board with one navy accent; the only saturated colour 
 
 **Levels.** Simple, Standard and Expert are one layout. Standard adds votes and the surplus partner to each list's line; change marks appear only after an edit. Every tool is listed at every level: those of the current level first, the rest after a quiet muted label, opening with an offer to switch level in place.
 
-**Direction.** All spacing, borders and positions use logical properties (inline-start/end, block-start/end), so the whole board mirrors between Hebrew and English. The chamber, charts and formulas are pinned left-to-right (formulas as isolated LTR runs) because geometry and arithmetic do not mirror.
+**Direction.** All spacing, borders and positions use logical properties (inline-start/end, block-start/end), so the whole board mirrors between Hebrew and English. The chamber, charts and formulas are pinned left-to-right (formulas as isolated LTR runs) because geometry and arithmetic do not mirror. Owner rule (2026-11-04): Hebrew graphics read in the same order as English. Numbers, maths, time and before→after run left to right; every data bar grows from the left (list rows, bloc and coalition bars, seat strips, previews, waffles, slope charts). Only text and page layout mirror.
 
 ## Elevation & Depth
 

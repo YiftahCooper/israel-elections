@@ -69,7 +69,7 @@ function VotesVsSeats({ s, r }: { s: Scenario; r: AllocationResult }) {
   const max = Math.max(...rows.map(({ l, lr }) => Math.max(l.votes / total, lr.seats / seats)), Number(r.unrepresentedVotes) / total, 0.05);
   const labelW = Math.min(150, Math.round(W * 0.3)), room = W < 480 ? 92 : 120, barH = 9, gap = 2, rowH = barH * 2 + gap + 12;
   const H = (rows.length + 1) * rowH + 30;
-  const rtl = lang === 'he';
+  const rtl = false; // graphics read left to right in Hebrew too: bars, axes and fill order are never mirrored (owner, 2026-11-04)
   const xs = (v: number) => (v / max) * (W - labelW - room);
   const all = [...rows.map(({ l, lr }) => ({ id: l.id, name: listLabel(l, lang), color: l.color, v: l.votes, seats: lr.seats })), { id: '__unrep', name: L('Unrepresented votes', 'קולות שלא השתתפו'), color: 'var(--muted)', v: Number(r.unrepresentedVotes), seats: 0 }];
   return (
@@ -115,7 +115,7 @@ function ThresholdDistance({ s, r }: { s: Scenario; r: AllocationResult }) {
   const max = Math.max(...rows.map((x) => Math.abs(x.d)), 1);
   // a label column on the reading side (right in Hebrew), then a symmetric bar area with room for numbers
   // on both sides; the vote axis itself is not mirrored, so "right of the line passes" holds in both languages
-  const rtl = lang === 'he';
+  const rtl = false; // graphics read left to right in Hebrew too: bars, axes and fill order are never mirrored (owner, 2026-11-04)
   const rowH = 24, H = rows.length * rowH + 30, labelW = Math.min(160, Math.round(W * 0.3)), numW = W < 480 ? 62 : 78;
   const half = (W - labelW - 2 * numW) / 2, mid = (rtl ? 0 : labelW) + numW + half;
   return (
@@ -188,7 +188,7 @@ export function Waffles({ s, r }: { s: Scenario; r: AllocationResult }) {
   const seatCells: { color: string; id: string }[] = [];
   qualified.forEach((x) => { for (let k = 0; k < x.lr.seats; k++) seatCells.push({ color: x.l.color, id: x.l.id }); });
   // squares fill in reading order: from the top right in Hebrew
-  const rtl = lang === 'he';
+  const rtl = false; // graphics read left to right in Hebrew too: bars, axes and fill order are never mirrored (owner, 2026-11-04)
   const grid = (items: { color: string; id: string | null }[], cols: number, title: string) => {
     const size = 14, gap = 3;
     const rows = Math.ceil(items.length / cols);

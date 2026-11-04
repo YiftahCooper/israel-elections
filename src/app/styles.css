@@ -761,7 +761,11 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
   .app:has(.side-panel) .band .scenario-switcher { visibility: hidden; }
 }
 /* Composition and the majority marker share physical left-to-right geometry in either language. */
-.strip, .bloc-reference, .cmp-blocrow .coal-bar { direction: ltr; }
+/* before on the left, after on the right in both languages; each figure keeps the page direction for its text */
+.cmp-chambers { direction: ltr; }
+[dir="rtl"] .cmp-chambers > figure { direction: rtl; }
+/* data graphics read left to right in Hebrew too (owner, 2026-11-04): bars grow from the left, before precedes after; only text is right-to-left */
+.strip, .bloc-reference, .coal-bar, .lb-bar, .family-seat-strip, .bp-meter, .majority-bar, .pm-track, .result-preview, .sec-bar, .st-preview, .wi-preview { direction: ltr; }
 [dir="rtl"] .corridor .label { direction: rtl; }
 .baseline-mini { width: 30%; min-width: 160px; max-width: 310px; margin-inline: auto; text-align: center; }
 .baseline-mini svg { display: block; width: 100%; }
