@@ -4250,5 +4250,29 @@
     "retrievedAt": "2026-11-04",
     "bytes": 57847,
     "sha256": "e6ba475827dd43d552edb52b2f3535f35097bbcde6aa2f0eec3dc8673900b412"
+  },
+  {
+    "id": "logo-k11-likud-print-page",
+    "file": "logos/k11/likud-jabotinsky-123512.html",
+    "url": "https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%A4%D7%A9%D7%95%D7%98/%D7%A4%D7%A8%D7%99%D7%98-%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/?itemId=123512",
+    "publisher": "Jabotinsky Institute; original publisher: Likud",
+    "official": true,
+    "description": "Likud eleventh-Knesset campaign leaflets, catalogue 123512; page. Poster on PDF page 35 advertises event on 1984-06-11; original raster dimensions 1334 x 1842.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 34118,
+    "sha256": "2fc209c9517143206c90e4ea6446a4bbab471c379c95ef1d802d943d897b0b68"
+  },
+  {
+    "id": "logo-k11-likud-print-asset",
+    "file": "logos/k11/likud-jabotinsky-123512.pdf",
+    "url": "https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%94%201/%D7%9C%D7%99%D7%9B%D7%95%D7%93%20%D7%941/%D7%941%20_%2011_14_9.pdf",
+    "publisher": "Jabotinsky Institute; original publisher: Likud",
+    "official": true,
+    "description": "Likud eleventh-Knesset campaign leaflets, catalogue 123512; asset. Poster on PDF page 35 advertises event on 1984-06-11; original raster dimensions 1334 x 1842.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 6629886,
+    "sha256": "d3a8f6af0741caffdbe26aacf70e57828652c8f0c1cd646bf8ecb5375eb6aca8"
   }
 ]

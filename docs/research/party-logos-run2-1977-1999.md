@@ -1038,3 +1038,55 @@ not verified party origin. No scan inspected; no promotion. Remaining B identiti
 רצ, ב, ו retain their prior reasons, without a fresh individual search.
 
 Coverage: **2 → 2 / 10**; zero additions, zero absence findings.
+### Run 3 · k11
+
+| Identity | Lead(s) checked | Decision and observed evidence |
+|---|---|---|
+| k11/ג | [NNL_ARCHIVE_AL997012948087105171](https://www.nli.org.il/en/archives/NNL_ARCHIVE_AL997012948087105171/NLI) | Gap: each linked URL returned HTTP 403 / browser challenge; no catalogue or scan inspected. |
+| k11/רצ | [nnl_archive_al990034513270205171](https://www.nli.org.il/he/sheets/nnl_archive_al990034513270205171/NLI) | Gap: each linked URL returned HTTP 403 / browser challenge; no catalogue or scan inspected. |
+| k11/שס | [NNL_ARCHIVE_AL997012156938605171](https://www.nli.org.il/en/archives/NNL_ARCHIVE_AL997012156938605171/NLI) | Gap: each linked URL returned HTTP 403 / browser challenge; no catalogue or scan inspected. |
+| k11/עי | [NNL_ARCHIVE_AL990034513450205171](https://www.nli.org.il/he/sheets/NNL_ARCHIVE_AL990034513450205171/NLI) | Gap: each linked URL returned HTTP 403 / browser challenge; no catalogue or scan inspected. |
+| k11/פ | [NNL_ARCHIVE_AL990034513320205171](https://www.nli.org.il/he/sheets/NNL_ARCHIVE_AL990034513320205171/NLI); [nnl_archive_al990039878500205171](https://www.nli.org.il/en/archives/nnl_archive_al990039878500205171/NLI) | Gap: each linked URL returned HTTP 403 / browser challenge; no catalogue or scan inspected. |
+| k11/ני | [nnl_archive_al990039878500205171](https://www.nli.org.il/en/archives/nnl_archive_al990039878500205171/NLI) | Gap: each linked URL returned HTTP 403 / browser challenge; no catalogue or scan inspected. |
+
+Category B priorities: **אמת (44 seats)** and **מחל (41 seats)**. The opened
+IDI Alignment catalogue links `maarach-11.doc` as the 1984 platform; the link alone
+supplies no inspected original sign-off. The Likud campaign collection yielded
+the accepted poster described below. Other B identities ב, ו, הן, יש, כך were not
+individually re-searched in this supplemental pass.
+
+Coverage: **2 → 3 / 15**; one addition, zero absence findings.
+
+Accepted k11/מחל: [catalogue 123512](https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%A4%D7%A9%D7%95%D7%98/%D7%A4%D7%A8%D7%99%D7%98-%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/?itemId=123512),
+[complete PDF scan](https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%94%201/%D7%9C%D7%99%D7%9B%D7%95%D7%93%20%D7%941/%D7%941%20_%2011_14_9.pdf).
+The catalogue describes Likud campaign propaganda for the eleventh Knesset,
+with an explicitly **approximate** range 1 June–24 July 1984. The selected poster
+itself prints **11.6.84** (11 June 1984), a Shamir rally at Binyanei HaUma.
+The recorded campaign-use date is this printed event date, as in the run-2
+examples; it is not an assertion that the poster was printed on the event day.
+
+Crop shows the whole **הליכוד** wordmark with its flag-shaped stroke. No ballot
+letters occur anywhere on this selected poster. The line beneath the logo is an
+invitation to activists/supporters, not part of the mark; it is excluded. Before
+acceptance, the whole poster page and crop were viewed side by side, with an
+actual 64-px-wide version: legible wordmark, complete identifying artwork, no
+slogan substitution or archive watermark removal. Source confidence **medium**:
+one official publication evidence family in an archive, not independently
+corroborated. The full PDF is preserved, including archive stamps and other pages.
+
+Retained `data/raw/logos/k11/likud-jabotinsky-123512.html` and
+`likud-jabotinsky-123512.pdf`; both bytes/hashes registered in `data/raw/SOURCES.json`.
+Original PDF SHA-256: `d3a8f6af0741caffdbe26aacf70e57828652c8f0c1cd646bf8ecb5375eb6aca8`.
+Final `public/logos/likud-print-1984.png`: **256 × 84**, **14,813 bytes**, SHA-256
+`c0d59d4b2db346530f2403a2acd4b6b9483c08f24a105b12aab226ad7dcc713d`.
+
+PDF extraction recipe (CPython **3.13.16**, PyMuPDF **2.1**, Pillow **12.2.0**):
+open the retained PDF with `pymupdf.open`; page **35** (zero-based 34) has one
+embedded scan, xref **140**; `pymupdf.Pixmap(doc, 140).save(...)` yields its native
+**1334 × 1842** pixels without rendering/resampling. `originalDimensions` refers
+to that original scanned page inside the retained PDF, not PDF point units.
+Then use the existing recipe: Pillow `.crop((210,1130,1145,1435)).convert('RGBA')`,
+`.thumbnail((256,256), Image.Resampling.LANCZOS)`, `.save(..., optimize=True)`.
+No new overlay fields or validator exceptions; `publicationEvidence.asset`
+identifies the unmodified PDF container, whose hash is `originalSha256`.
+The extracted full page is reproducible scratch, not a substituted original.

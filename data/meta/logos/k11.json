@@ -34,6 +34,39 @@
       "originalSha256": "22d3290bd812d41923d8d25c9c2dfcea2b91275388ac946c5a7ac541ba32c3ab",
       "rights": "free-licence",
       "bytes": 26664
+    },
+    {
+      "letters": "מחל",
+      "file": "logos/likud-print-1984.png",
+      "sourceUrl": "https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%A4%D7%A9%D7%95%D7%98/%D7%A4%D7%A8%D7%99%D7%98-%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/?itemId=123512",
+      "licence": "Fair use for identification; copyright remains with the rights holder",
+      "attribution": "Likud; official campaign rally poster (1984-06-11), Jabotinsky Institute item 123512, PDF page 35. Cropped from original scanned page; no redraw or recolouring.",
+      "hosted": true,
+      "inUseEvidence": "Inspected archive catalogue identifies Likud eleventh-Knesset campaign propaganda. Original poster on PDF page 35 visibly prints rally date 11.6.84 and signs off with the complete Likud wordmark. No ballot letters appear on this poster. The original 189-page scan is retained unchanged; crop uses its embedded 1334 x 1842 raster, xref 140. The catalogue date range is approximate; campaign-use date here comes from the printed event date, not that range.",
+      "confidence": "medium",
+      "evidenceId": "jabotinsky-likud-1984-123512",
+      "assetSourceUrl": "https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%94%201/%D7%9C%D7%99%D7%9B%D7%95%D7%93%20%D7%941/%D7%941%20_%2011_14_9.pdf",
+      "status": "verified",
+      "sha256": "c0d59d4b2db346530f2403a2acd4b6b9483c08f24a105b12aab226ad7dcc713d",
+      "originalSha256": "d3a8f6af0741caffdbe26aacf70e57828652c8f0c1cd646bf8ecb5375eb6aca8",
+      "rights": "fair-use-identification",
+      "bytes": 14813,
+      "inUseDate": "1984-06-11",
+      "publicationEvidence": {
+        "page": "logo-k11-likud-print-page",
+        "asset": "logo-k11-likud-print-asset",
+        "publicationDate": "1984-06-11",
+        "cropBox": [
+          210,
+          1130,
+          1145,
+          1435
+        ],
+        "originalDimensions": [
+          1334,
+          1842
+        ]
+      }
     }
   ]
 }

@@ -48,7 +48,8 @@ const EXPECTED: Record<Family, string> = {
   // k9 dated official print crop: all datasets equal HEAD omitting logo/builtAt.
   // k10 dated official print crop: all datasets equal HEAD omitting logo/builtAt.
   // k12 dated official print crop: all datasets equal HEAD omitting logo/builtAt.
-  model: 'b26e76ef52b8b9c5d49eac633cce1c6a18527cfd1329183aafa2d10fe0e8b4a7',
+  // k11 dated official print crop: all 26 datasets equal eb4067b omitting logo/builtAt.
+  model: 'e2ac0a6a9ae766320e6c28543ec0c1161b32c801e287d536a286f764c3491a55',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };
