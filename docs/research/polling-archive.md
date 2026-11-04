@@ -282,3 +282,13 @@ This report is the compact source archive for this objective; no parallel resear
 Search streams were source identity/era coverage, early archival counterexamples, statutory/rights texts, k25 acquisition, and inverse-method failure modes. Hebrew/English searches excluded English Wikipedia where filters were specified; incidental search results pointing there were discarded, never opened, cited or followed. Direct source/archival requests used the required User-Agent; search-provider internal transport headers are not exposed. No paywall, CAPTCHA or login was bypassed. Network DNS initially failed in the sandbox; authorized network execution enabled custom-UA fetching. No source-status failure was treated as a recovered article.
 
 The deliberate challenge pass found pre-1980s academic data, old statutory wording, shared outlet producers, partial HTTP-200 bodies, 119/121-seat prose, and unweighted raw shares; these changed the recommendation. Source independence is bounded above; news citations across every era, archive coverage and earliest dates remain explicitly unresolved. Search-engine total recall, citation prevalence in the whole Israeli news universe, audience expectations and microdata accuracy were **not measured**. Source retrieval counts are not page-depth metrics. No chart or trend forecast was generated, and no application tests/build are claimed for this research-only change.
+
+## Owner decisions (4 November 2026)
+
+1. **Polling is its own window.** It covers only elections with wide, reliable polling that a serious project can stand behind. Earlier elections stay unsupported unless a sound way to include them is found. The work is deferred until the core app works well.
+2. **Pollsters.** Support the established outlets, plus other reputable ones (for example i24). In settings, users can turn individual pollsters on or off. Any average or chart uses only the pollsters a user has enabled. The app never ranks or scores pollsters itself.
+3. **The publication ban is explained in the window's information (i) section.** It is not treated as a problem.
+4. **Evidence storage.**
+   - A **private** collection holds pollsters, findings, method details, relevant graphics and article copies.
+   - The public repository holds the transcribed figures and links to the articles used.
+   - The 22 k25 article copies stay on local branch `t3/5f8b5a14` until that private collection exists.
