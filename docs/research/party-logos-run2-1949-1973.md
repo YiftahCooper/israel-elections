@@ -107,6 +107,76 @@ Constituents (separate from joint-list lockups):
 - `wizo` — **gap**. `הסתדרות נשים ציוניות ויצ"ו 1949 כרזה סמל -site:en.wikipedia.org` → U285, U286.
 - `womens-equal-rights-association` — **gap**. `התאחדות נשים לשווי זכויות בישראל 1949 כרזה סמל -site:en.wikipedia.org` → U287, U288.
 
+### k2
+
+**א — Mapai: gap.
+- `מפא״י 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U1, U7, U16, U22
+- `site:nli.org.il מפא"י 1951 בחירות` → U16, U186
+
+**צ — General Zionists: gap.
+- `הציונים הכלליים 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U16, U23, U14
+- `site:nli.org.il הציונים הכלליים 1951 בחירות` → U16, U187
+
+**מ — Mapam: gap.
+- `מפ״ם 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U5, U16, U22
+- `site:nli.org.il מפ"ם 1951 בחירות` → U16, U188
+
+**ה — Hapoel HaMizrahi: gap.
+- `הפועל המזרחי 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U16, U22, U24
+- `site:nli.org.il הפועל המזרחי 1951 בחירות` → U16, U189
+
+**ח — Herut: gap.
+- `חרות 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U16, U12, U25
+- `site:nli.org.il חרות 1951 בחירות` → U16, U190
+
+**ק — Maki: gap.
+- `מק״י 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U16, U17, U22
+- `site:nli.org.il מק"י 1951 בחירות` → U16, U2
+
+**פ — Progressive Party: gap.
+- `הפרוגרסיבים 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U26, U5, U27
+- `site:nli.org.il הפרוגרסיבים 1951 בחירות` → U191, U192
+
+**יד — Democratic List for Israeli Arabs: gap.
+- `דמוקרטית לערביי ישראל 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U9, U1, U28
+- `site:nli.org.il דמוקרטית לערביי ישראל 1951 בחירות` → U193, U28
+
+**ג — Agudat Yisrael: gap.
+- `אגודת ישראל 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U16, U3, U9
+- `פועלי אגודת ישראל 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U16, U3, U9
+- `site:nli.org.il אגודת ישראל 1951 בחירות` → U16, U2
+- `site:nli.org.il פועלי אגודת ישראל 1951 בחירות` → U16, U2
+
+**סצ — Sephardim and Oriental Communities: gap.
+- `ספרדים ועדות המזרח 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U16, U22, U2
+- `site:nli.org.il ספרדים ועדות המזרח 1951 בחירות` → U16, U194
+
+**ב — Mizrahi: gap.
+- `הפועל המזרחי 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U16, U22, U24
+- `המזרחי 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U16, U25, U22
+- `site:nli.org.il הפועל המזרחי 1951 בחירות` → U16, U189
+- `site:nli.org.il המזרחי 1951 בחירות` → U16, U195
+
+**ד — Poalei Agudat Yisrael: gap.
+- `פועלי אגודת ישראל 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U16, U3, U9
+- `site:nli.org.il פועלי אגודת ישראל 1951 בחירות` → U16, U2
+
+**נ — Progress and Work: gap.
+- `קידמה ועבודה 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U9, U1, U29
+- `site:nli.org.il קידמה ועבודה 1951 בחירות` → U16, U196
+
+**ל — Yemenite Association: gap.
+- `התימנים 1951 כרזת בחירות סמל -site:en.wikipedia.org` → U7, U16, U22, U30
+- `site:nli.org.il התימנים 1951 בחירות` → U16, U2
+
+**ע — Agriculture and Development: gap.
+- `חקלאות ופיתוח 1951 כרזה -site:en.wikipedia.org` → U31, U32, U33, U34
+- `site:nli.org.il חקלאות ופיתוח 1951 בחירות` → U16, U28
+
+Constituents (separate from joint-list lockups):
+
+None recorded on the winning lists.
+
 ## Returned search URL index
 
 This index records search leads, including irrelevant and wrong-year returns. Inclusion is not endorsement or evidence of official origin. Repeated archive URLs belong to one evidence family, not independent corroboration.
