@@ -2691,6 +2691,108 @@
         "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.havoda.org.il/wp-content/uploads/2019/01/haavoda-new-logo.png&from=20190301&to=20190409&output=json&fl=timestamp,original,statuscode,digest,length&filter=statuscode:200&collapse=digest",
         "rawIndex": "logo-k21-labor-index"
       }
+    },
+    {
+      "id": "beiteinu-archive-20190326154413",
+      "title": "ישראל ביתנו official campaign homepage — 2019-03-26",
+      "sourceUrl": "https://beytenu.org.il/",
+      "publisher": "ישראל ביתנו",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-04",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3.5 seconds apart",
+      "inspectionDepth": "Archived header HTML, rendered artwork, and matching exact-asset CDX digest inspected",
+      "date": "2019-03-26",
+      "description": "Inspected official homepage capture 20190326154413 references https://beytenu.org.il/wp-content/themes/nisarg/images/logo2.png as its header logo. Exact archived original bytes from 20200215055455 match campaign-period CDX SHA-1 base32 QE4JF5VNYWOJQARKBMMNV73PY2IT5KU5. Artwork visually inspected; original colours and proportions preserved. Separate dated evidence for this election; not assigned by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20190326154413/https://beytenu.org.il/",
+      "archiveTimestamp": "20190326154413",
+      "downloadUrl": "https://beytenu.org.il/wp-content/themes/nisarg/images/logo2.png",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "beiteinu-official-site-2019",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k21-beiteinu-page",
+        "asset": "logo-k21-beiteinu-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20200215055455id_/https://beytenu.org.il/wp-content/themes/nisarg/images/logo2.png",
+      "assetArchiveTimestamp": "20200215055455",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "QE4JF5VNYWOJQARKBMMNV73PY2IT5KU5",
+        "computedDigest": "QE4JF5VNYWOJQARKBMMNV73PY2IT5KU5",
+        "assetCaptureTimestamp": "20200215055455",
+        "cdxCaptureTimestamp": "20190329052747",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=beytenu.org.il%2Fwp-content%2Fthemes%2Fnisarg%2Fimages%2Flogo2.png&from=20190301&to=20190409&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k21-beiteinu-index"
+      }
+    },
+    {
+      "id": "beiteinu-archive-20190914092026",
+      "title": "ישראל ביתנו official campaign homepage — 2019-09-14",
+      "sourceUrl": "https://beytenu.org.il/",
+      "publisher": "ישראל ביתנו",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-04",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3.5 seconds apart",
+      "inspectionDepth": "Archived header HTML, rendered artwork, and matching exact-asset CDX digest inspected",
+      "date": "2019-09-14",
+      "description": "Inspected official homepage capture 20190914092026 references https://beytenu.org.il/wp-content/themes/nisarg/images/logo2.png as its header logo. Exact archived original bytes from 20200215055455 match campaign-period CDX SHA-1 base32 QE4JF5VNYWOJQARKBMMNV73PY2IT5KU5. Artwork visually inspected; original colours and proportions preserved. Separate dated evidence for this election; not assigned by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20190914092026/https://beytenu.org.il/",
+      "archiveTimestamp": "20190914092026",
+      "downloadUrl": "https://beytenu.org.il/wp-content/themes/nisarg/images/logo2.png",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "beiteinu-official-site-2019",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k22-beiteinu-page",
+        "asset": "logo-k22-beiteinu-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20200215055455id_/https://beytenu.org.il/wp-content/themes/nisarg/images/logo2.png",
+      "assetArchiveTimestamp": "20200215055455",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "QE4JF5VNYWOJQARKBMMNV73PY2IT5KU5",
+        "computedDigest": "QE4JF5VNYWOJQARKBMMNV73PY2IT5KU5",
+        "assetCaptureTimestamp": "20200215055455",
+        "cdxCaptureTimestamp": "20190604135636",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=beytenu.org.il%2Fwp-content%2Fthemes%2Fnisarg%2Fimages%2Flogo2.png&from=20190530&to=20190917&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k22-beiteinu-index"
+      }
+    },
+    {
+      "id": "beiteinu-archive-20200212042350",
+      "title": "ישראל ביתנו official campaign homepage — 2020-02-12",
+      "sourceUrl": "https://beytenu.org.il/",
+      "publisher": "ישראל ביתנו",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-04",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3.5 seconds apart",
+      "inspectionDepth": "Archived header HTML, rendered artwork, and matching exact-asset CDX digest inspected",
+      "date": "2020-02-12",
+      "description": "Inspected official homepage capture 20200212042350 references https://beytenu.org.il/wp-content/themes/nisarg/images/logo2.png as its header logo. Exact archived original bytes from 20200215055455 match campaign-period CDX SHA-1 base32 QE4JF5VNYWOJQARKBMMNV73PY2IT5KU5. Artwork visually inspected; original colours and proportions preserved. Separate dated evidence for this election; not assigned by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20200212042350/https://beytenu.org.il/",
+      "archiveTimestamp": "20200212042350",
+      "downloadUrl": "https://beytenu.org.il/wp-content/themes/nisarg/images/logo2.png",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "beiteinu-official-site-2020",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k23-beiteinu-page",
+        "asset": "logo-k23-beiteinu-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20200215055455id_/https://beytenu.org.il/wp-content/themes/nisarg/images/logo2.png",
+      "assetArchiveTimestamp": "20200215055455",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "QE4JF5VNYWOJQARKBMMNV73PY2IT5KU5",
+        "computedDigest": "QE4JF5VNYWOJQARKBMMNV73PY2IT5KU5",
+        "assetCaptureTimestamp": "20200215055455",
+        "cdxCaptureTimestamp": "20200119220419",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=beytenu.org.il%2Fwp-content%2Fthemes%2Fnisarg%2Fimages%2Flogo2.png&from=20200101&to=20200302&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k23-beiteinu-index"
+      }
     }
   ]
 }
