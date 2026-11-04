@@ -33,11 +33,15 @@ One shared marker is used everywhere:
   - Compare and "Since …" summaries name it ("Since *Unity government*").
 - This lets people switch between saved scenarios and compare them cleanly.
 
-**Never mistakable for the real result.** Whenever the current state differs from the official result, a persistent scenario badge stays visible. This holds even when the item markers are quiet because a saved scenario is the reference.
+**Scenario colour, not repeated labels.** Revised 4 November 2026 after owner feedback: no repetitive "hypothetical" text.
 
-- The badge reads "Hypothetical · *name* · 7 changes from the official result".
-- It expands to list those changes.
-- It cannot be dismissed, and it travels into shares and exports.
+- **Identity colour.** Every scenario has an identity colour, chosen from a scenario palette and editable. The colour is visible wherever scenarios are chosen (the saved list, the gallery, Compare's pickers), so a scenario is recognisable before it is opened.
+- **Official result.** It always uses one reserved, untinted (neutral) treatment, and no scenario can choose it. An unsaved edited state gets the default scenario tint.
+- **Chrome only.** The colour tints the app chrome: the top-bar band, the board frame, and the frames of Compare's two sides. It never tints seats, lists or bloc regions, because those colours are data.
+- **One quiet text cue.** Colour alone fails for colour-blind readers and for cropped screenshots. So there is a single chip in the top bar: a swatch plus the scenario name. It expands on demand to list the changes from the official result.
+  - It appears once, not under every change, and carries no change count while collapsed.
+  - Exports carry the same one line in their footer.
+- **Per-item edit markers** stay as a small glyph only. Their text lives in the tooltip.
 
 **Setting.** "Mark differences from: the loaded scenario (default) / always the official result". The second option keeps every per-item marker against the real election.
 
