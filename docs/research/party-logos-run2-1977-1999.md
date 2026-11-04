@@ -1019,3 +1019,22 @@ of a later design or a text-only original. The other seven k9 B gaps retain thei
 run-2 reasons and were not individually re-searched in this supplemental pass.
 
 Coverage: **5 → 5 / 13**; zero additions, zero absence findings.
+### Run 3 · k10
+
+| Identity | Lead(s) checked | Decision and observed evidence |
+|---|---|---|
+| k10/ג | [NNL_ARCHIVE_AL990034751580205171](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL990034751580205171/NLI); [NNL_ARCHIVE_AL997012156926305171](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156926305171/NLI) | Gap: each linked URL returned HTTP 403 / browser challenge; no catalogue or scan inspected. |
+| k10/הן | [NNL_ARCHIVE_AL997012156936905171](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156936905171/NLI) | Gap: each linked URL returned HTTP 403 / browser challenge; no catalogue or scan inspected. |
+| k10/ת | [NNL_ARCHIVE_AL990039481790205171](https://www.nli.org.il/en/archives/NNL_ARCHIVE_AL990039481790205171/NLI) | Gap: each linked URL returned HTTP 403 / browser challenge; no catalogue or scan inspected. |
+| k10/ני | [NNL_ALEPH990032480450205171](https://www.nli.org.il/he/books/NNL_ALEPH990032480450205171/NLI); [NNL_ARCHIVE_AL990039878190205171](https://www.nli.org.il/en/archives/NNL_ARCHIVE_AL990039878190205171/NLI) | Gap: each linked URL returned HTTP 403 / browser challenge; no catalogue or scan inspected. |
+
+Category B priority: **אמת (47 seats)**. Opened the [IDI Alignment catalogue](https://www.idi.org.il/policy/parties-and-elections/parties/maarach/)
+by plain HTTP (200); its 1981 row links `maarach-10.doc` as the platform and
+`כנסת-10-מערך.pdf` as the candidate list. These links are discovery only: no
+original campaign artwork acquired from them. Also found the [1981 artists' support
+poster record](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997009950412005171/NLI)
+in search: indexed date 21 June 1981 and issuer a transport-coordination body,
+not verified party origin. No scan inspected; no promotion. Remaining B identities
+רצ, ב, ו retain their prior reasons, without a fresh individual search.
+
+Coverage: **2 → 2 / 10**; zero additions, zero absence findings.
