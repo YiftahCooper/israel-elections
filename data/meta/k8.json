@@ -12,7 +12,25 @@
           "id": "herut",
           "nameHe": "תנועת החרות",
           "nameEn": "Herut",
-          "candidateRanks": [],
+          "candidateRanks": [
+            1,
+            3,
+            5,
+            10,
+            12,
+            14,
+            18,
+            20,
+            22,
+            24,
+            26,
+            27,
+            30,
+            32,
+            33,
+            35,
+            38
+          ],
           "sources": [
             {
               "url": "https://he.wikipedia.org/wiki/הליכוד",
@@ -99,7 +117,21 @@
           "id": "liberal-party",
           "nameHe": "המפלגה הליברלית",
           "nameEn": "Liberal Party",
-          "candidateRanks": [],
+          "candidateRanks": [
+            2,
+            4,
+            6,
+            11,
+            13,
+            17,
+            19,
+            21,
+            23,
+            25,
+            31,
+            34,
+            39
+          ],
           "sources": [
             {
               "url": "https://he.wikipedia.org/wiki/הליכוד",
@@ -170,7 +202,12 @@
           "id": "state-list",
           "nameHe": "הרשימה הממלכתית",
           "nameEn": "State List",
-          "candidateRanks": [],
+          "candidateRanks": [
+            7,
+            15,
+            28,
+            37
+          ],
           "sources": [
             {
               "url": "https://he.wikipedia.org/wiki/הליכוד",
@@ -205,7 +242,12 @@
           "id": "free-centre",
           "nameHe": "המרכז החופשי",
           "nameEn": "Free Centre",
-          "candidateRanks": [],
+          "candidateRanks": [
+            8,
+            16,
+            29,
+            36
+          ],
           "sources": [
             {
               "url": "https://he.wikipedia.org/wiki/הליכוד",
@@ -248,7 +290,9 @@
           "id": "greater-israel-movement",
           "nameHe": "התנועה למען ארץ ישראל השלמה",
           "nameEn": "Movement for Greater Israel",
-          "candidateRanks": [],
+          "candidateRanks": [
+            9
+          ],
           "sources": [
             {
               "url": "https://he.wikipedia.org/wiki/הליכוד",
@@ -270,7 +314,8 @@
       ],
       "notes": [
         "39 opening members (OData faction 355, 1974-01-21) all assigned."
-      ]
+      ],
+      "unassignedRanks": []
     },
     {
       "letters": "אמת",
@@ -280,7 +325,52 @@
           "id": "israeli-labor-party",
           "nameHe": "מפלגת העבודה הישראלית",
           "nameEn": "Israeli Labor Party",
-          "candidateRanks": [],
+          "candidateRanks": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8,
+            9,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            41,
+            42,
+            43,
+            44,
+            45,
+            47,
+            48,
+            49,
+            50,
+            51
+          ],
           "sources": [
             {
               "url": "https://he.wikipedia.org/wiki/המערך",
@@ -475,7 +565,15 @@
           "id": "mapam",
           "nameHe": "מפ\"ם – מפלגת הפועלים המאוחדת",
           "nameEn": "Mapam",
-          "candidateRanks": [],
+          "candidateRanks": [
+            5,
+            10,
+            19,
+            26,
+            33,
+            40,
+            46
+          ],
           "sources": [
             {
               "url": "https://he.wikipedia.org/wiki/המערך",
@@ -528,7 +626,8 @@
       ],
       "notes": [
         "51 opening members (OData faction 375)."
-      ]
+      ],
+      "unassignedRanks": []
     },
     {
       "letters": "גד",
@@ -538,7 +637,11 @@
           "id": "agudat-yisrael",
           "nameHe": "אגודת ישראל",
           "nameEn": "Agudat Yisrael",
-          "candidateRanks": [],
+          "candidateRanks": [
+            1,
+            3,
+            4
+          ],
           "sources": [
             {
               "url": "https://he.wikipedia.org/wiki/חזית_דתית_תורתית",
@@ -576,7 +679,10 @@
           "id": "poalei-agudat-yisrael",
           "nameHe": "פועלי אגודת ישראל",
           "nameEn": "Poalei Agudat Yisrael",
-          "candidateRanks": [],
+          "candidateRanks": [
+            2,
+            5
+          ],
           "sources": [
             {
               "url": "https://he.wikipedia.org/wiki/חזית_דתית_תורתית",
@@ -606,7 +712,8 @@
             }
           ]
         }
-      ]
+      ],
+      "unassignedRanks": []
     },
     {
       "letters": "קנ",
@@ -616,7 +723,9 @@
           "id": "blue-red-movement",
           "nameHe": "תנועת תכלת-אדום",
           "nameEn": "Blue-Red Movement",
-          "candidateRanks": [],
+          "candidateRanks": [
+            1
+          ],
           "sources": [
             {
               "url": "https://he.wikipedia.org/wiki/מפלגת_מוקד",
@@ -658,7 +767,8 @@
           "confidence": "high",
           "note": "No elected member."
         }
-      ]
+      ],
+      "unassignedRanks": []
     }
   ],
   "blocSchemes": [
@@ -1117,8 +1227,8 @@
       "confidence": "medium"
     }
   ],
-  "datasetAvailable": false,
+  "datasetAvailable": true,
   "notes": [
-    "k8 has no released dataset roster, so candidateRanks are empty; members are given by Knesset PersonID (opening membership 1974-01-21). Join to ranks once the k8 roster is transcribed."
+    "All 96 named opening members of the four joint lists are matched to same-list candidate ranks in data/raw/k8/candidates.reviewed.json (YP 1954), cross-checked with public/data/k8.json and Knesset PersonIDs in data/raw/k8/knesset-odata-members.json. No unmatched members or unassigned elected ranks remain."
   ]
 }
