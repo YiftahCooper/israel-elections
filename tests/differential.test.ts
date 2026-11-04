@@ -36,7 +36,9 @@ const EXPECTED: Record<Family, string> = {
   // corrected names (0088 addendum: 1955 #24, 1959 #47, 2003 Shinui #14); src unchanged, other digests unchanged.
   // Decision 0089: rights basis on logo refs, Together 2026 logo and resulting build timestamps.
   // Removing those fields/logo and restoring HEAD timestamps reproduces the previous model digest.
-  model: '6a3cd298afcdd4df357a531eb335dd39e23acd61b3a2a0ed4ef2f7100b11b13b',
+  // Live 2026 campaign continuation: new list/constituent logo refs and k26 builtAt only.
+  // Restoring HEAD's k26 dataset reproduces all five previous digests; non-logo fields compare equal.
+  model: '1799c8b1bdc065d754b4483a944cfc0e3fc26c8ff24b494e7c9270a0fb379260',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

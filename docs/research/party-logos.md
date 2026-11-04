@@ -1,12 +1,12 @@
 # Party logos by election — research and source archive
 
-Research objective: supply election-specific list and constituent emblems for the explorer without substituting later designs, under the owner’s free-licence or fair-use identification policy (decision 0089). As of 4 November 2026. This is a bounded research pass, not a complete logo catalogue. The source policy in README.md and docs/DATA.md applies.
+Research objective: supply election-specific list and constituent emblems for the explorer without substituting later designs, under the owner’s free-licence or fair-use identification policy (decision 0089). As of 4 November 2026. The catalogue remains incomplete; the continuation below records the live-site research and exact remaining gaps. The source policy in README.md and docs/DATA.md applies.
 
 ## Reading coverage
 
 “Hosted” counts whole seat-winning lists with a local, eligible logo. “Dated external” counts whole-list candidates with date evidence but a failed download; these are not display-ready. “Rights only” was the earlier name for source-only candidates; these now require official-origin and campaign-date verification, and do not count as coverage. Constituent emblems never count as whole-list coverage. Missing means no qualifying emblem was verified here, not that the party had no emblem.
 
-Seat-winning denominators come from public/data/kNN.json officialSeats; k26 has null officialSeats, so the existing data/meta/k26.json seat transcriptions supply that denominator (reported results, pending official gazettement). The research does not alter or independently verify those results.
+Seat-winning denominators come from public/data/kNN.json officialSeats; k26 has null officialSeats. Its meta.lists covers joint lists only and therefore incorrectly yielded eight winners in the earlier pass. The eleven members of the pre-election bloc scheme in data/meta/k26.json supply the complete winner set (reported results, pending official gazettement). The research does not alter or independently verify those results.
 
 | Election | Winners | Hosted | Dated external | Rights only | Local constituent emblems |
 |---|---:|---:|---:|---:|---:|
@@ -35,9 +35,9 @@ Seat-winning denominators come from public/data/kNN.json officialSeats; k26 has 
 | k23 · 2020-03-02 | 8 | 1 | 0 | 0 | 1 |
 | k24 · 2021-03-23 | 13 | 3 | 0 | 1 | 1 |
 | k25 · 2022-11-01 | 10 | 1 | 0 | 5 | 1 |
-| k26 · 2026-10-27 | 8 | 3 | 0 | 3 | 2 |
+| k26 · 2026-10-27 | 11 | 8 | 0 | 1 | 10 |
 
-## Licence and retrieval outcome
+## Earlier pass: licence and retrieval outcome (historical)
 
 44 hosted entries (43 free-licence, one fair-use identification); no outstanding dated downloads; 13 source-only unresolved entries. The 22 downloads described in the earlier report were **already present at the start of this pass**, completed by the parent on 4 November. This pass verified their hashes/bytes, removed stale download-failure text, and did not download them again. It adds one asset: Together’s archived campaign lockup.
 
@@ -61,7 +61,7 @@ New entries use `rights: "free-licence" | "fair-use-identification"`; `licence` 
 - One Nation’s SVG filename says 2002–2005, while its description says 1999–2002 and its cited archive is 2001. It is omitted rather than resolving the conflict by guesswork. The 2003 Am Ehad raster has explicit election evidence.
 - The Kadima 2005 GIF is not assigned automatically to 2006, nor the 2021 Blue and White variant to 2019. General website logos, ballot-paper photographs and regional variants are not sufficient for national election branding.
 - A CC BY-SA claim paired with a conflicting upstream credit is not treated as a free licence. Fair-use policy now permits official-origin identification assets, but secondary news/design illustrations are still only discovery leads; none were downloaded.
-- Nonwinning lists are outside the primary coverage target. Three useful explicitly dated extras are included: Shinui 2006, New Right April 2019 and Amcha Yisrael 2026.
+- The earlier pass treated nonwinning lists as outside the primary coverage target; the continuation includes them as gaps. Three useful explicitly dated extras are included: Shinui 2006, New Right April 2019 and Amcha Yisrael 2026.
 - Source counts below are inspected records, not independent corroborating sources. Commons mirrors, traced derivatives and the underlying artefact belong to the same evidence lineage. Search-result snippets were only discovery leads.
 
 ## Conclusion map
@@ -282,11 +282,10 @@ Evidence references: [commons-130829829](https://commons.wikimedia.org/wiki/File
 
 ### k26 · 2026-10-27
 
-Hosted winners: אמת — The Democrats; רק — Together (Bennett); ודם — Joint List.
+Hosted winners: אמת — The Democrats; רק — Together (Bennett); ודם — Joint List; מחל — Likud; ב — Otzma Yehudit; דרך — Yashar!; ל — Yisrael Beiteinu; שס — Shas.
 
-Not locally covered winners: מחל — Likud; ב — Otzma Yehudit; ג — United Torah Judaism; ט — Religious Zionism–Zehut; דרך — Yashar!.
+Not locally covered winners: ג — United Torah Judaism; ט — Religious Zionism–Zehut; עם — Ra’am. Reasons and constituent gaps are detailed in the continuation below.
 
-Evidence references: [alef-2026-design](https://alefalefalef.co.il/elections-design-26/), [commons-198464782](https://commons.wikimedia.org/wiki/File:Amcha_Yisrael.svg), [commons-200023341](https://commons.wikimedia.org/wiki/File:Religious_Zionist_Party_logo_2026.png), [commons-200834372](https://commons.wikimedia.org/wiki/File:The_Democrats_(Israel)_logo_2026.svg), [commons-200835377](https://commons.wikimedia.org/wiki/File:Logo_of_The_Reservists.svg), [commons-201669548](https://commons.wikimedia.org/wiki/File:Logo_of_the_Joint_List_(Israel)_2026_(vector).svg).
 
 ## Sources — retained archive
 
@@ -631,13 +630,13 @@ These descriptions/credits/licences were inspected. They contributed discovery l
 - [File:Yashar2025.png](https://commons.wikimedia.org/wiki/File:Yashar2025.png) — commons-175141989; no additional verified election assignment.
 - [File:YeshAtidLogo.svg](https://commons.wikimedia.org/wiki/File:YeshAtidLogo.svg) — commons-35947960; no additional verified election assignment.
 
-## This pass: coverage and remaining gaps
+## Earlier pass: coverage and remaining gaps (historical)
 
-The table above is current. The before/after table below compares this worktree’s starting committed assets, not the stale 21-entry report. All missing winners are enumerated in the per-election sections above. Unless a specific exclusion above applies, the reason is **no inspected official-origin campaign-dated emblem established in this bounded pass**; it does not establish that an emblem never existed. Earlier medium-confidence Commons assignments are retained, not promoted to independently verified primary evidence. Nonwinning lists beyond the three existing dated extras were not researched in this pass.
+The following table is retained as earlier-pass history; the continuation below supersedes it. It compares this worktree’s starting committed assets, not the stale 21-entry report. All missing winners are enumerated in the per-election sections above. Unless a specific exclusion above applies, the reason is **no inspected official-origin campaign-dated emblem established in this bounded pass**; it does not establish that an emblem never existed. Earlier medium-confidence Commons assignments are retained, not promoted to independently verified primary evidence. Nonwinning lists beyond the three existing dated extras were not researched in this pass.
 
 | Election | Hosted winners before | Hosted winners after |
 |---|---:|---:|
-| k26 | 2/8 | 3/8 |
+| k26 | 2/11 | 3/11 |
 | k25 | 1/10 | 1/10 |
 | k24 | 3/13 | 3/13 |
 | k23 | 1/8 | 1/8 |
@@ -693,8 +692,131 @@ Each id below lacks a separately hosted emblem for that election. Reason: no ins
 - **k3:** ב (National Religious Party): hapoel-hamizrachi, mizrachi; גד (Religious Torah Front): agudat-yisrael, poalei-agudat-yisrael.
 - **k1:** ב (United Religious Front): hapoel-hamizrachi, mizrachi, poalei-agudat-yisrael, agudat-yisrael, non-party-religious-union; נ (WIZO): wizo, womens-equal-rights-association.
 
-### Verification and regeneration
+### Earlier pass: verification and regeneration (historical)
 
 Verified with Node 24.18.0, tsx 4.23.15, TypeScript 7.0.2 and Vitest 5.1.0: `npx tsx scripts/build-datasets.ts`, then the same build again (zero files written; all 39 public/data file hashes identical), `python3 -I scripts/validate-party-logos.py` (44 assets), `npx tsc -p tsconfig.json --noEmit`, and `npm test` (52 files, 440 tests). The model differential digest was re-recorded for the new rights metadata, Together logo and build timestamps; temporarily removing those intended changes reproduced the previous digest. Other differential digests are unchanged. Working downloads, copied dependencies and diagnostic logs are disposable under `.backup-scratch/`; final assets and their source/hash records above are retained.
 
 Integration note for the parent: dataset constituent objects carry their own `logo` and retain it through model party metadata. The existing split action creates new lists without assigning a list-level `logo`; selecting the sole constituent’s logo for a split list remains a presentation/model integration task outside this research pass.
+
+## Continuation on 4 November 2026: live official campaigns
+
+Outcome: **partial**, not completion of the requested k26/k25 catalogue. Nine new assets are retained (eight official website headers and one extracted Shas campaign lockup). All asset URLs, retrieval dates, original/final SHA-256, bytes, rights and evidence are in `data/meta/logos/k26.json` and `sources.json`. Existing free-licence entries remain licensed; new official-origin assets use fair-use-identification. The Democrats’ existing party-site mark also has a separately keyed constituent entry. A shared file is counted once as an asset and once per independently identified list/party entry.
+
+Scope: k26 winners, constituent headers, limited nonwinner discovery; then k25 archive retrieval and dated campaign-source discovery. k24–k21 received no new source acquisition in this continuation. No English Wikipedia page was opened or used; incidental search results were excluded. Hebrew searches preceded Arabic party-name searches. No proxies, challenge bypass or contact-bearing User-Agent were used.
+
+### Evidence and confidence
+
+- [Yashar](https://yasharwitheisenkot.com/), [Likud](https://www.likud.org.il/), [Otzma](https://www.ozma-yeudit.co.il/), and [Zehut](https://zehut.org.il/): live header references downloaded and visually inspected on 4 November; contextual corroboration is the [27 October design review](https://alefalefalef.co.il/elections-design-26/). That article covers non-sectoral parties, **not every 2026 list**. It also discusses Israel Beiteinu. Header variants with white letters retain dark-background metadata. These are medium-confidence just-after-campaign observations, not archived polling-day observations.
+- [Israel Beiteinu](https://beytenu.org.il/): live campaign homepage still links its ballot publication and candidate team. Its roof-and-white-letter header was visually inspected. The secondary design review provides campaign context. The 2023 upload path alone is not election evidence.
+- [New Hope](https://www.newhope.org.il/) and [Yesh Atid](https://yeshatid.org.il/): separate current party-site headers accepted under the requested live-site rule, with medium confidence. Their 2024/2026 upload directories are contextual only. No inspected archive proves their exact election-day bytes; these are weaker assignments than the dated Shas graphic. No 2022 assignment is inferred from them.
+- [Noam](https://www.noamlisrael.org.il/): separate live constituent mark for the nonwinning Noam–National Responsibility list, not a combined-list logo. The live header does not establish that a distinct combined mark was absent.
+- [Shas official post 5327](https://t.me/dovrutshas/5327), timestamp **2026-09-20T06:13:39+00:00**: full 800×800 graphic inspected. Existing white book emblem and slogan extracted at pixel box `(85,670,485,790)` and reduced to 256×77 PNG. Gold background retained. No redrawing, recolouring or synthetic transparency. The live gold-on-white avatar is a different variant and was rejected. [18 August launch reporting](https://www.inn.co.il/news/704260) corroborates the slogan; it is not the download origin.
+- [Religious Zionism](https://zionutdatit.org.il/): current party header downloaded for inspection but not retained as an additional asset; the existing freely licensed tkuma entry is preserved. Neither that party emblem nor Zehut’s separate mark proves a combined list lockup.
+- [Ra’am discovery candidate](https://www.almowhada.org/): inspected and **not accepted as an official origin**. Its footer says the information is based on public sources and should be confirmed before official publication. Linking an official Facebook page does not establish ownership of the site.
+- Hadash’s live site was inspected, but the two external SVGs found there were navigation arrows, not logos; neither was assigned. `taal.org.il` and `balad.org.il` failed DNS resolution. Meretz’s site timed out. Similar-name construction-company results for Yesodot Israel were excluded.
+
+For live entries, `retrievedAt` and source-card `date` mean the actual inspection date, 4 November. `inUseDate: 2026-10-27` is the election assignment based on the expressly authorized just-after-campaign observation, not an invented capture date. No archive timestamp is fabricated. Exact campaign-day rendering remains a limitation for these medium-confidence live entries.
+
+### Archive continuation and k25 gaps
+
+[Inspected official Israel Beiteinu homepage capture](https://web.archive.org/web/20221001082757/https://beytenu.org.il/): HTML directly referenced `https://beytenu.org.il/wp-content/themes/nisarg/images/logo_260.png`. The CDX index also listed 1 September and 1 November captures; those were discovery records, not inspected image evidence. The October HTML was inspected; its exact header image could not be acquired. Archived-asset requests returned HTTP 429; the live image URL redirects to HTML, not an image. No new logo was hosted.
+
+Wayback returned 429 without Retry-After for the Likud October 2022 capture. After a 60-second fallback backoff, the retry still returned 429. Subsequent serial Otzma and exact Israel Beiteinu asset attempts, separated by further backoff intervals and at least two seconds between requests, also returned 429. No request burst or alternative Wayback proxy was used. The [archive.today viewing fallback](https://archive.ph/https://www.likud.org.il/) timed out during TLS handshake; web-tool viewing was also unavailable. Archive requests were resumed after backoff; the first 429 did not end the research. National Unity, Yesh Atid and New Hope 2022 captures remain uninspected, not “no capture exists”.
+
+Dated-source discovery found [the July 2022 Blue and White–New Hope launch](https://www.ynet.co.il/news/article/bjghbpyiq), which predates the final National Unity identity, and [the Meretz 2022 rebrand report](https://www.ice.co.il/advertising-marketing/news/article/879457). Neither establishes a downloadable official-origin final asset. These leads do not increase coverage. Jewish Home’s whole list and its three constituents remain unverified; its existing 2012-era mark is not propagated by resemblance.
+
+### Reproducible coverage and every gap
+
+Run `python3 scripts/research/logo-coverage.py`. It counts only verified hosted entries and intersects constituent ids with seat-winning lists. In k26 the pre-election bloc scheme enumerates the eleven reported winners, including Shas, Ra’am and Israel Beiteinu omitted by the earlier meta.lists-only count. That election-specific fallback is explicitly scoped; pre-election bloc membership is not a general rule for deciding winners.
+
+| Election | Winner lists before → after | Winner constituents before → after |
+|---|---:|---:|
+| k26 | 3/11 → 8/11 | 1/19 → 8/19 |
+| k25 | 1/10 → 1/10 | 1/11 → 1/11 |
+| k24 | 3/13 → 3/13 | 1/12 → 1/12 |
+| k23 | 1/8 → 1/8 | 1/18 → 1/18 |
+| k22 | 2/9 → 2/9 | 1/19 → 1/19 |
+| k21 | 1/11 → 1/11 | 0/14 → 0/14 |
+
+Nonwinning k26 whole-list coverage remains Amcha Yisrael only (1/27 dataset lists without seats, including withdrawn entries); constituent extras are Reservists and Noam. No blanket claim is made that the other nonwinning lists lack distinct logos. All remain gaps for whole-list official-origin campaign evidence. The complete nonwinner identities can be reproduced by subtracting the winner set printed by the script from `public/data/k26.json` lists; the hosted Amcha list has letters ך.
+
+K26 missing whole lists: **ג** — no official campaign-origin file verified; no official website per the [dated website audit](https://finance.walla.co.il/item/3873692), social evidence unresolved. **ט** — verified separate party designs do not establish a joint lockup. **עם** — official ownership and campaign-period rendering not established for the discovered site.
+
+K26 missing constituents: **agudat-yisrael, degel-hatorah, homat-torat-yisrael** — no inspected separate official campaign mark; UTJ lockup cannot substitute. **hadash, taal, balad** — live Hadash yielded no extractable mark in this inspection; Ta’al/Balad DNS leads failed; joint-list mark cannot substitute. **meretz** — official site timed out, no current separate campaign design verified. **yesodot-yisrael** — targeted searches yielded party launch reports but no official asset; unrelated construction-brand logos excluded. **atid-ehad, eretz-yisrael-shelanu** — no campaign-period official emblem established. **together-bennett** — only joint lockup verified; no separate constituent mark established. These are unresolved, not evidence of nonexistence.
+
+- **k25 whole-list gaps:** אמת, ג, ום, ט, ל, מחל, עם, פה, שס. **Constituent gaps:** agudat-yisrael, atid-ehad, degel-hatorah, eretz-yisrael-shelanu, hadash, israel-resilience, new-hope, noam, otzma-yehudit, taal. Israel Beiteinu has an inspected header reference but rate-limited image retrieval. Other identities lack an inspected final official-origin campaign file; launch/report leads and current designs do not establish the 2022 variant. All are distinct unresolved identities, not assertions that a logo did not exist.
+- **k24 whole-list gaps:** אמת, ב, ג, ודעם, ט, ל, מחל, מרצ, פה, שס. **Constituent gaps:** agudat-yisrael, atid-ehad, balad, degel-hatorah, derech-eretz, hadash, likud, new-hope, noam, taal, tkuma. No new campaign-source acquisition in this continuation; previously unresolved dated official-origin evidence remains missing. All are distinct unresolved identities, not assertions that a logo did not exist.
+- **k23 whole-list gaps:** ג, ודעם, טב, ל, מחל, פה, שס. **Constituent gaps:** ahi, balad, degel-hatorah, gesher, hadash, israel-resilience, jewish-home, kulanu, labor, likud, meretz, new-right, raam, taal, telem, tkuma, yesh-atid. No new campaign-source acquisition in this continuation; previously unresolved dated official-origin evidence remains missing. All are distinct unresolved identities, not assertions that a logo did not exist.
+- **k22 whole-list gaps:** אמת, ג, ל, מחל, מרצ, פה, שס. **Constituent gaps:** agudat-yisrael, degel-hatorah, gesher, green-movement, hadash, independence, israel-resilience, jewish-home, kulanu, labor, likud, meretz, new-right, raam, taal, telem, tkuma, yesh-atid. No new campaign-source acquisition in this continuation; previously unresolved dated official-origin evidence remains missing. All are distinct unresolved identities, not assertions that a logo did not exist.
+- **k21 whole-list gaps:** ג, דעם, ום, טב, כ, ל, מחל, מרצ, פה, שס. **Constituent gaps:** agudat-yisrael, ahi, balad, degel-hatorah, hadash, israel-resilience, jewish-home, likud, otzma-yehudit, raam, taal, telem, tkuma, yesh-atid. No new campaign-source acquisition in this continuation; previously unresolved dated official-origin evidence remains missing. All are distinct unresolved identities, not assertions that a logo did not exist.
+
+Raster regeneration: retrieve the exact `assetSourceUrl`, verify `originalSha256`, preserve RGBA, thumbnail with Pillow 13.0.0 LANCZOS to 256 pixels maximum, save optimized PNG. Yesh Atid’s 163,082-byte official SVG exceeded the file limit and was rasterized with local Chromium 1248 canvas at 256 pixels; its original SVG hash remains recorded. Shas additionally uses the exact crop above. Reproducible copies, dependencies and inspection images are in ignored `.backup-scratch/`; accepted PNGs and provenance are durable. Scratch backup exclusion outside this repository was not independently verified.
+
+### Nonwinning identities still without a whole-list logo
+
+Each row is a distinct outstanding asset: no verified official-origin campaign logo was acquired. Constituents in parentheses are separately unresolved unless already hosted. “Not acquired” includes unsearched identities and is not proof of absence. Withdrawn entries remain identified because they occur in the dataset.
+
+**k26:**
+
+- די — Reservists & New Economic (separate party gaps: new-economic).
+- נר — None.
+- זך — None.
+- ני — Noam (separate party gaps: national-responsibility).
+- בי — None (separate party gaps: beit-yemini, tzomet).
+- ד — None.
+- צדק — None.
+- בד — None.
+- צף — None.
+- י — None.
+- קך — None.
+- פה — None.
+- קץ — None.
+- נקי — None.
+- בקר — None.
+- קה — None.
+- רץ — None.
+- ק — None.
+- נף — None.
+- ז — None.
+- נץ — None.
+- ה — None.
+- יק — None.
+- זץ — None.
+- כן — Blue and White [withdrawn].
+- צבי — None [withdrawn].
+**k25:**
+
+- מרצ — Meretz.
+- ד — Balad.
+- ב — The Jewish Home (separate party gaps: new-right, jewish-home, religious-national-israeli).
+- אצ — Economic Freedom.
+- קץ — None.
+- יז — New Economic Party.
+- צ — Young People on Fire.
+- ף — None.
+- ק — None.
+- ת — None.
+- ני — None.
+- קנ — None.
+- נק — None.
+- י — None.
+- קך — None.
+- נץ — None.
+- ץ — None.
+- רז — None.
+- ך — None.
+- ז — None.
+- קי — None.
+- יק — None.
+- נז — None.
+- נר — None.
+- זץ — None.
+- יץ — None.
+- נף — None.
+- ינ — None.
+- זך — None.
+- זנ — None.
+
+### Continuation verification
+
+Node 24.18.0; Pillow 13.0.0; local Chromium 1248 for the oversized Yesh Atid SVG. `npx tsx scripts/build-datasets.ts` passed (tsx invoked via npm exec with project-local scratch cache); the second final run wrote zero files, with all 39 public/data file hashes identical. `python3 -I scripts/validate-party-logos.py` validates 26 overlays, 102 source records, 53 unique assets and 57 hosted identity entries. `npx tsc -p tsconfig.json --noEmit` passed. Only the model differential digest changed, to `1799c8b1bdc065d754b4483a944cfc0e3fc26c8ff24b494e7c9270a0fb379260`: the entire dataset compares equal after removing logo fields and builtAt. Temporarily restoring the original k26 dataset reproduced all five previous differential digests. Allocation, analysis, validation and rules digests remain unchanged. Final `npm test`: **53 test files and 445 tests passed**. No push was performed.
