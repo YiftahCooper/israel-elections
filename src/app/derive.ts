@@ -48,7 +48,10 @@ export function ruleChanges(s: Scenario, lang: Lang): string[] {
   const onOff = (v: boolean) => (he ? (v ? 'פעילה' : 'כבויה') : v ? 'on' : 'off');
   if (r.seats !== law.seats) out.push(he ? `${r.seats} מושבים (בחוק: ${law.seats})` : `${r.seats} seats (law: ${law.seats})`);
   if (Number(r.thresholdPct) !== Number(law.thresholdPct)) out.push(he ? `אחוז חסימה ${r.thresholdPct}% (בחוק: ${law.thresholdPct}%)` : `threshold ${r.thresholdPct}% (law: ${law.thresholdPct}%)`);
-  if (r.remainderMethod !== law.remainderMethod) out.push(he ? `חלוקת עודפים: ${METHOD[r.remainderMethod][1]} (בחוק: ${METHOD[law.remainderMethod][1]})` : `remainder seats by ${METHOD[r.remainderMethod][0]} (law: ${METHOD[law.remainderMethod][0]})`);
+  // the law's method by the name the app gives it (1949: highest averages, not Bader–Ofer)
+  if (r.remainderMethod !== law.remainderMethod) out.push(he ? `חלוקת עודפים: ${METHOD[r.remainderMethod][1]} (בחוק: ${methodOf(law).he})` : `remainder seats by ${METHOD[r.remainderMethod][0]} (law: ${methodOf(law).en})`);
+  if (Boolean(r.remainderRequiresInitialSeat) !== Boolean(law.remainderRequiresInitialSeat)) out.push(he ? `עודפים ${r.remainderRequiresInitialSeat ? 'רק' : 'גם'} לרשימות ${r.remainderRequiresInitialSeat ? 'עם' : 'בלי'} מודד שלם` : `remainder seats ${r.remainderRequiresInitialSeat ? 'only for' : 'also for'} lists ${r.remainderRequiresInitialSeat ? 'with' : 'without'} a whole quota`);
+  if ((r.quotaSeatOffset ?? 0) !== (law.quotaSeatOffset ?? 0)) out.push(he ? (r.quotaSeatOffset ? 'המודד מחולק במושבים ועוד אחד' : 'המודד מחולק במספר המושבים') : (r.quotaSeatOffset ? 'quota divided by seats plus one' : 'quota divided by the seats'));
   if (r.quotaRounding !== law.quotaRounding) out.push(he ? 'מודד ללא עיגול' : 'quota not rounded down');
   if (r.majorityCap !== law.majorityCap) out.push(he ? `מגבלת מחצית המנדטים ${onOff(r.majorityCap)}` : `half-seats cap ${onOff(r.majorityCap)}`);
   if (r.maxAgreementSize !== law.maxAgreementSize) out.push(he ? `הסכמי עודפים של עד ${r.maxAgreementSize} רשימות` : `surplus agreements of up to ${r.maxAgreementSize} lists`);

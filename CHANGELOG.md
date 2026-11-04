@@ -22,6 +22,14 @@
 - Surplus partners are explained once in the lists header and never cut off; seatless lists of 1949 sit under "Lists that won no seat".
 - Undo labels name the list moved; the Hebrew transfer line reads right to left; tall logos stay inside their slip; ballot letters are larger.
 - On phones the lists follow the chamber directly; on tablets the list sheet keeps a readable width.
+## 4 November 2026 — tool pages audit
+
+- 1949 with a divisor method (Rules, What if… "Pure proportional representation") no longer leaves all 120 seats unallocated; the 1949-only rules are shown and editable in experimental mode, and the banner names the 1949 method correctly.
+- How seats were allocated: the quota formula follows the election's law (seats + 1 in 1949, Droop, unrounded, divisor methods without a quota stage); no "0% threshold" formula; named first steps; exact quotients for every method.
+- Charts, Compare and Sensitivity charts keep readable text on phones; Hebrew charts put labels, waffle order and the comparison baseline on the reading side; vote bars are outlined so they read in dark mode.
+- Sensitivity: a sweep keeps the range it was run for; long searches can be cancelled; reversed or empty threshold ranges are refused.
+- A merged list keeps its first list's colour; seat transitions ("27 → 25") read correctly in Hebrew; source descriptions are no longer scrambled on the Hebrew Sources page.
+- State shown as state: the bloc filling a coalition, the loaded smallest coalition and the threshold preset in force are highlighted; repeated "unchanged"/"off"/"active" labels removed; What if… answers drawn as coloured chips and wording fits elections with turnout above 80% or a 2% law.
 
 ## 4 November 2026 — mark replacements once
 

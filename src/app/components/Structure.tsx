@@ -62,10 +62,10 @@ function Preview({ s, r, actions, focus }: { s: Scenario; r: AllocationResult; a
         <ul className="cmp-diff">
           {res.rows.map((x) => { const d = x.now - x.was; return (
             <li key={x.id}>
-              <span className="cmp-label">{x.isNew ? <b>{x.label}</b> : x.label} <span className="muted">{x.was} → {x.now}</span></span>
-              <span className="cmp-neg">{d < 0 && <i style={{ width: `${(-d / max) * 100}%`, background: x.color }} />}</span>
+              <span className="cmp-label"><span className="swatch" style={{ background: x.color }} /> {x.isNew ? <b>{x.label}</b> : x.label} <bdi className="muted" dir="ltr">{x.was} → {x.now}</bdi></span>
+              <span className="cmp-neg">{d < 0 && <i style={{ width: `${(-d / max) * 100}%`, background: 'var(--ink)' }} />}</span>
               <span className="cmp-axis" aria-hidden />
-              <span className="cmp-pos">{d > 0 && <i style={{ width: `${(d / max) * 100}%`, background: x.color }} />}</span>
+              <span className="cmp-pos">{d > 0 && <i style={{ width: `${(d / max) * 100}%`, background: 'var(--ink)' }} />}</span>
               <b className="cmp-d" dir="ltr">{d === 0 ? '0' : d > 0 ? `+${d}` : `−${-d}`}</b>
             </li>
           ); })}
@@ -109,8 +109,8 @@ function Agreements({ s, r, base }: { s: Scenario; r: AllocationResult; base: Sc
   return (
     <div>
       <div className="row" style={{ justifyContent: 'space-between' }}>
-        <StartFrom s={s} part="agreements" /><h3>{L('Surplus-vote agreements', 'הסכמי עודפים')} <Info term="surplus" /></h3>
-        {JSON.stringify(s.agreements) !== JSON.stringify(base.agreements) && <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'agreements' })}>{L('Restore historical agreements', 'שחזור ההסכמים ההיסטוריים')}</button>}
+        <h3>{L('Surplus-vote agreements', 'הסכמי עודפים')} <Info term="surplus" /></h3>
+        <span className="row">{JSON.stringify(s.agreements) !== JSON.stringify(base.agreements) && <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'agreements' })}>{L('Restore historical agreements', 'שחזור ההסכמים ההיסטוריים')}</button>}<StartFrom s={s} part="agreements" /></span>
       </div>
       <PartEdits s={s} prefix={['agreements']} />
       {s.agreements.length === 0 && <p className="muted small">{L('None.', 'אין.')}</p>}
@@ -129,7 +129,7 @@ function Agreements({ s, r, base }: { s: Scenario; r: AllocationResult; base: Sc
                       .sort((x, y) => y.votes - x.votes).map((x) => <option key={x.id} value={x.id}>{listLabel(x, lang)}</option>)}
                   </select>
                 </> : <b>{ag.members.map(name).join(' ⇄ ')}</b>}{' '}
-                {!ag.enabled ? <span className="chip">{L('off', 'כבוי')}</span> : st?.active ? <span className="chip ok">{L('active', 'בתוקף')}</span> : <span className="chip no">{st?.reason === 'member-failed-threshold' ? L(`no effect: ${st.failedMembers.map(name).join(', ')} below threshold`, `ללא השפעה: ${st.failedMembers.map(name).join(', ')} מתחת לחסימה`)
+                {!ag.enabled || st?.active ? null : <span className="chip no">{st?.reason === 'member-failed-threshold' ? L(`no effect: ${st.failedMembers.map(name).join(', ')} below threshold`, `ללא השפעה: ${st.failedMembers.map(name).join(', ')} מתחת לחסימה`)
                   : st?.reason === 'member-no-initial-seat' ? L(`no effect: ${st.failedMembers.map(name).join(', ')} won no whole-quota seat`, `ללא השפעה: ${st.failedMembers.map(name).join(', ')} לא זכתה במנדט במודד שלם`)
                   : st?.reason === 'member-withdrawn' ? L('no effect: a partner withdrew', 'ללא השפעה: שותפה פרשה')
                   : st?.reason === 'duplicate-membership' ? L('no effect: a list is already in another agreement', 'ללא השפעה: רשימה כבר בהסכם אחר')
@@ -174,7 +174,8 @@ function Merge({ s, r }: { s: Scenario; r: AllocationResult }) {
   const [ids, setIds] = useState<string[]>([]);
   const [nameHe, setName] = useState('');
   const [letters, setLetters] = useState('');
-  const [color, setColor] = useState('#7a6fd0');
+  // the merged list keeps the first list's colour unless one is chosen (an app default would clash with real parties)
+  const [chosenColor, setColor] = useState<string | null>(null);
   const [retention, setRetention] = useState(100);
   const [order, setOrder] = useState<'interleave' | 'concat'>('interleave');
   const [pendingId] = useState(() => newId());
@@ -182,11 +183,12 @@ function Merge({ s, r }: { s: Scenario; r: AllocationResult }) {
   const total = sel.reduce((t, l) => t + l.votes, 0);
   const kept = Number((BigInt(total) * BigInt(Math.round(retention * 100))) / 10000n);
   const defaultHe = sel.map((l) => l.shortHe).join('–'), defaultEn = sel.map((l) => l.shortEn ?? l.shortHe).join('–');
+  const color = chosenColor ?? sel[0]?.color ?? '#7a6fd0';
   const actions: Action[] | null = ids.length >= 2 ? [{ type: 'merge', ids, newId: pendingId, nameHe: nameHe || defaultHe, letters: letters || sel[0]?.letters || '', color: sel[0]?.color ?? color, retentionPct: retention, candidateOrder: order, nonRetained: 'abstain' },
-    { type: 'setListMeta', listId: pendingId, patch: { shortEn: nameHe || defaultEn, ...(standard ? { color } : {}) } }] : null;
+    { type: 'setListMeta', listId: pendingId, patch: { shortEn: nameHe || defaultEn, ...(standard && chosenColor ? { color: chosenColor } : {}) } }] : null;
   const go = () => {
     if (!actions) return;
-    if (dispatchMany(actions)) { setIds([]); setName(''); setLetters(''); setState({ selectedListId: pendingId, tool: 'board' }); }
+    if (dispatchMany(actions)) { setIds([]); setName(''); setLetters(''); setColor(null); setState({ selectedListId: pendingId, tool: 'board' }); }
   };
   return (
     <div className="st-task">

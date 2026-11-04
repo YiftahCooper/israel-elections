@@ -92,7 +92,7 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
             <div key={x.id} className="sec-row" role="row">
               <span role="cell" className="row" style={{ gap: 6 }}><span className="swatch" style={{ background: l.color }} /><button className="table-action" onClick={() => setState({ selectedListId: x.id })}>{listLabel(l, lang)}</button></span>
               <span role="cell" className="sec-l">
-                {x.lose === null && x.qualification.lose && <span className="small">{figure(x, 'lose')}</span>}{x.lose !== null && <><span className="tabnum small">{figure(x, 'lose')}</span><span className="sec-bar" style={{ width: `${scale(x.lose)}%`, background: l.color, opacity: 0.55 }} /></>}
+                {x.lose === null && x.qualification.lose && <span className="small">{figure(x, 'lose')}</span>}{x.lose !== null && <><span className="tabnum small">{figure(x, 'lose')}</span><span className="sec-bar" style={{ width: `${scale(x.lose)}%`, background: `color-mix(in srgb, ${l.color} 30%, transparent)`, boxShadow: `inset 0 0 0 1px ${l.color}` }} /></>}
               </span>
               <span role="cell" className="tabnum" style={{ textAlign: 'center', fontWeight: 700 }}>{x.seats || '—'}</span>
               <span role="cell" className="sec-r">
@@ -149,8 +149,8 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
       <p className="small ink2" style={{ marginTop: 0 }}>{L('Build a coalition: choose In, Out or Any for each list. Arithmetic only — it says nothing about political feasibility.', 'בנו קואליציה: בחרו בפנים, בחוץ או כל אפשרות לכל רשימה. חשבון בלבד — לא הערכה פוליטית.')} <Info term="minimal-winning-coalition" /> <Info term="majority-61" /></p>
       {startFrom.length > 0 && (
         <div className="row" style={{ marginBottom: 8 }}>
-          <span className="small ink2">{L('Start from', 'התחלה מ')}</span>
-          {startFrom.map(({ b, ids }) => <button key={b.id} className="btn small" onClick={() => { dispatch({ type: 'setCoalition', coalition: { in: ids, out: [] } }); }}><span className="swatch" style={{ background: b.color }} />{blocName(b)}</button>)}
+          <span className="small ink2">{L('Fill with a bloc', 'מילוי לפי גוש')}</span>
+          {startFrom.map(({ b, ids }) => { const on = excluded.length === 0 && picked.length === ids.length && ids.every((id) => picked.includes(id)); return <button key={b.id} className={`btn small ${on ? 'primary' : ''}`} aria-pressed={on} onClick={() => { dispatch({ type: 'setCoalition', coalition: { in: ids, out: [] } }); }}><span className="swatch" style={{ background: b.color }} />{blocName(b)}</button>; })}
           {(picked.length > 0 || excluded.length > 0) && <button className="btn small ghost" onClick={() => { dispatch({ type: 'setCoalition', coalition: { in: [], out: [] } }); }}>{L('Clear', 'ניקוי')}</button>}
         </div>
       )}
@@ -174,7 +174,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
       <ul className="coal-list">
         {shown.map((c) => (
           <li key={c.ids.join()}>
-            <button type="button" onClick={() => { dispatch({ type: 'setCoalition', coalition: { in: c.ids, out: [] } }); }}>
+            <button type="button" aria-pressed={excluded.length === 0 && picked.length === c.ids.length && c.ids.every((id) => picked.includes(id))} onClick={() => { dispatch({ type: 'setCoalition', coalition: { in: c.ids, out: [] } }); }}>
               <span className="coal-n">{c.n}</span>
               <SeatBar ids={c.ids} />
               <span className="coal-names">{c.ids.map(nm).join(' · ')}</span>

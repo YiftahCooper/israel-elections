@@ -1,5 +1,5 @@
 import { GraphicChanges } from './GraphicChanges.tsx';
-import { useId, useState } from 'react';
+import { useId, useLayoutEffect, useState } from 'react';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { listLabel } from '../derive.ts';
@@ -10,6 +10,24 @@ import { apportion } from '../../model/actions.ts';
 import { Seg } from './ui.tsx';
 
 type Tip = { x: number; y: number; html: React.ReactNode } | null;
+
+/** The width an SVG chart is drawn at: its box's width, kept between `min` and `max`, so a chart scales
+ *  up on wide screens but its text never shrinks below its set size on a phone. */
+export function useChartWidth(max: number, min = 300) {
+  // a callback ref, so a chart that mounts later (after a run) is still measured
+  const [el, setEl] = useState<HTMLElement | null>(null);
+  const [w, setW] = useState(max);
+  useLayoutEffect(() => {
+    if (!el || typeof ResizeObserver === 'undefined') return;
+    const fit = () => { if (el.clientWidth) setW(Math.round(Math.max(min, Math.min(max, el.clientWidth)))); };
+    fit();
+    const o = new ResizeObserver(fit); o.observe(el);
+    return () => o.disconnect();
+  }, [el, max, min]);
+  return [setEl, w] as const;
+}
+/** A name cut to fit `px` of an 11.5px label. */
+export const clip = (t: string, px: number) => { const n = Math.max(6, Math.floor(px / 6.6)); return t.length > n ? t.slice(0, n - 1) + '…' : t; };
 
 export function Charts({ s, r }: { s: Scenario; r: AllocationResult }) {
   const L = useL();
@@ -45,19 +63,21 @@ function VotesVsSeats({ s, r }: { s: Scenario; r: AllocationResult }) {
   const lang = useLang();
   const digits = useDigits();
   const [tip, setTip] = useState<Tip>(null);
+  const [box, W] = useChartWidth(600);
   const rows = rowsFor(s, r);
   const total = Number(r.totalValid), seats = s.rules.seats;
   const max = Math.max(...rows.map(({ l, lr }) => Math.max(l.votes / total, lr.seats / seats)), Number(r.unrepresentedVotes) / total, 0.05);
-  const W = 600, labelW = 150, barH = 9, gap = 2, rowH = barH * 2 + gap + 12;
+  const labelW = Math.min(150, Math.round(W * 0.3)), room = W < 480 ? 92 : 120, barH = 9, gap = 2, rowH = barH * 2 + gap + 12;
   const H = (rows.length + 1) * rowH + 30;
   const rtl = lang === 'he';
-  const xs = (v: number) => (v / max) * (W - labelW - 120);
-  const all = [...rows.map(({ l, lr }) => ({ id: l.id, name: listLabel(l, lang), color: l.color, v: l.votes, seats: lr.seats })), { id: '__unrep', name: L('Unrepresented votes', 'קולות שלא השתתפו'), color: 'var(--axis)', v: Number(r.unrepresentedVotes), seats: 0 }];
+  const xs = (v: number) => (v / max) * (W - labelW - room);
+  const all = [...rows.map(({ l, lr }) => ({ id: l.id, name: listLabel(l, lang), color: l.color, v: l.votes, seats: lr.seats })), { id: '__unrep', name: L('Unrepresented votes', 'קולות שלא השתתפו'), color: 'var(--muted)', v: Number(r.unrepresentedVotes), seats: 0 }];
   return (
-    <figure style={{ margin: 0, position: 'relative' }}>
+    <figure ref={box} style={{ margin: 0, position: 'relative' }}>
       <figcaption><h3>{L('Share of votes vs share of seats', 'שיעור הקולות לעומת שיעור המנדטים')}</h3></figcaption>
       <div className="legend small" style={{ marginBottom: 4 }}>
-        <span className="row" style={{ gap: 5 }}><span className="swatch" style={{ background: 'var(--ink-2)', opacity: 0.35 }} />{L('Votes (% of valid)', 'קולות (% מהכשרים)')}</span>
+        {/* votes are drawn as an outlined pale bar and seats as a solid one, so both read in either theme */}
+        <span className="row" style={{ gap: 5 }}><span className="swatch" style={{ background: 'color-mix(in srgb, var(--ink-2) 28%, transparent)', boxShadow: 'inset 0 0 0 1px var(--ink-2)' }} />{L('Votes (% of valid)', 'קולות (% מהכשרים)')}</span>
         <span className="row" style={{ gap: 5 }}><span className="swatch" style={{ background: 'var(--ink-2)' }} />{L('Seats (% of Knesset)', 'מנדטים (% מהכנסת)')}</span>
       </div>
       <svg className="chart" viewBox={`0 0 ${W} ${H}`} width="100%" role="img" aria-label={L('Vote share versus seat share by list', 'שיעור קולות מול שיעור מנדטים לפי רשימה')}>
@@ -66,11 +86,11 @@ function VotesVsSeats({ s, r }: { s: Scenario; r: AllocationResult }) {
           const vw = xs(row.v / total), sw = xs(row.seats / seats);
           return (
             <g key={row.id} onMouseMove={(e) => setTip({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY, html: <><b>{row.name}</b><div>{L('Votes', 'קולות')}: {fmtInt(row.v)} ({fmtPct(row.v, total, digits)})</div>{row.id !== '__unrep' && <div>{L('Seats', 'מנדטים')}: {row.seats} ({fmtPct(row.seats, seats, digits)})</div>}</> })}
-              onMouseLeave={() => setTip(null)} onClick={() => row.id !== '__unrep' && setState({ selectedListId: row.id })} style={{ cursor: 'pointer' }}>
+              onMouseLeave={() => setTip(null)} onClick={() => row.id !== '__unrep' && setState({ selectedListId: row.id })} style={{ cursor: row.id !== '__unrep' ? 'pointer' : 'default' }}>
               <rect x={0} y={y - 2} width={W} height={rowH - 4} fill="transparent" />
-              <text x={rtl ? W - 4 : 4} y={y + barH + 3} textAnchor={rtl ? 'end' : 'start'} fill="var(--ink)">{isolate(row.name.length > 20 ? row.name.slice(0, 19) + '…' : row.name)}</text>
-              <rect className="bar" x={rtl ? W - labelW - vw : labelW} y={y} width={vw} height={barH} rx={2} fill={row.color} opacity={0.38} />
-              <rect className="bar" x={rtl ? W - labelW - sw : labelW} y={y + barH + gap} width={sw} height={barH} rx={2} fill={row.color} />
+              <text x={rtl ? W - 4 : 4} y={y + barH + 3} textAnchor={rtl ? 'end' : 'start'} fill="var(--ink)"><title>{row.name}</title>{isolate(clip(row.name, labelW - 8))}</text>
+              <rect className="bar" x={rtl ? W - labelW - vw : labelW} y={y + 0.5} width={vw} height={barH - 1} rx={2} fill={row.color} fillOpacity={0.28} stroke={row.color} strokeWidth={1} />
+              {row.id !== '__unrep' && <rect className="bar" x={rtl ? W - labelW - sw : labelW} y={y + barH + gap} width={sw} height={barH} rx={2} fill={row.color} />}
               <text x={rtl ? W - labelW - Math.max(vw, sw) - 4 : labelW + Math.max(vw, sw) + 4} y={y + barH + 3} textAnchor={rtl ? 'end' : 'start'} className="tabnum">
                 {fmtPct(row.v, total, 1)}{row.id !== '__unrep' ? ` / ${fmtPct(row.seats, seats, 1)}` : ''}
               </text>
@@ -88,15 +108,18 @@ function ThresholdDistance({ s, r }: { s: Scenario; r: AllocationResult }) {
   const L = useL();
   const lang = useLang();
   const [tip, setTip] = useState<Tip>(null);
+  const [box, W] = useChartWidth(600);
   const thr = Number(r.thresholdVotes);
   if (thr === 0) return <p className="small muted">{L('No percentage threshold in this election.', 'בבחירות אלה אין אחוז חסימה.')}</p>;
   const rows = s.lists.filter((l) => !l.withdrawn && l.votes > 0).map((l) => ({ l, d: l.votes - thr })).sort((a, b) => Math.abs(a.d) - Math.abs(b.d)).slice(0, 10).sort((a, b) => b.d - a.d);
   const max = Math.max(...rows.map((x) => Math.abs(x.d)), 1);
-  // fixed label column, then a symmetric bar area with room for numbers on both sides
-  const W = 600, rowH = 24, H = rows.length * rowH + 30, labelW = 160, numW = 78;
-  const half = (W - labelW - 2 * numW) / 2, mid = labelW + numW + half;
+  // a label column on the reading side (right in Hebrew), then a symmetric bar area with room for numbers
+  // on both sides; the vote axis itself is not mirrored, so "right of the line passes" holds in both languages
+  const rtl = lang === 'he';
+  const rowH = 24, H = rows.length * rowH + 30, labelW = Math.min(160, Math.round(W * 0.3)), numW = W < 480 ? 62 : 78;
+  const half = (W - labelW - 2 * numW) / 2, mid = (rtl ? 0 : labelW) + numW + half;
   return (
-    <figure style={{ margin: 0, position: 'relative' }}>
+    <figure ref={box} style={{ margin: 0, position: 'relative' }}>
       <figcaption><h3>{L('Distance from the threshold (closest lists)', 'מרחק מאחוז החסימה (הרשימות הקרובות)')}</h3></figcaption>
       <p className="small muted" style={{ margin: '0 0 4px' }}>{L(`Threshold: ${fmtInt(thr)} votes. Bars right of the line pass.`, `אחוז החסימה: ${fmtInt(thr)} קולות. מימין לקו — עוברת.`)}</p>
       <svg className="chart" viewBox={`0 0 ${W} ${H}`} width="100%" role="img" aria-label={L('Votes above or below the threshold', 'קולות מעל או מתחת לאחוז החסימה')}>
@@ -108,7 +131,7 @@ function ThresholdDistance({ s, r }: { s: Scenario; r: AllocationResult }) {
             <g key={l.id} onMouseMove={(e) => setTip({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY, html: <><b>{listLabel(l, lang)}</b><div>{fmtInt(l.votes)} {L('votes', 'קולות')}</div><div>{d >= 0 ? '+' : '−'}{fmtInt(Math.abs(d))} {L('vs threshold', 'מול החסימה')}</div></> })}
               onMouseLeave={() => setTip(null)} onClick={() => setState({ selectedListId: l.id })} style={{ cursor: 'pointer' }}>
               <rect x={0} y={y - 3} width={W} height={rowH - 2} fill="transparent" />
-              <text x={8} y={y + 11} fill="var(--ink)">{isolate(listLabel(l, lang).length > 22 ? listLabel(l, lang).slice(0, 21) + '…' : listLabel(l, lang))}</text>
+              <text x={rtl ? W - 8 : 8} y={y + 11} textAnchor={rtl ? 'end' : 'start'} fill="var(--ink)"><title>{listLabel(l, lang)}</title>{isolate(clip(listLabel(l, lang), labelW - 12))}</text>
               <rect className="bar" x={x} y={y + 2} width={Math.max(1, w)} height={12} rx={2} fill={l.color} />
               <text x={d >= 0 ? mid + w + 4 : mid - w - 4} y={y + 12} textAnchor={d >= 0 ? 'start' : 'end'} className="tabnum">{d >= 0 ? '+' : '−'}{fmtInt(Math.abs(d))}</text>
             </g>
@@ -164,6 +187,8 @@ export function Waffles({ s, r }: { s: Scenario; r: AllocationResult }) {
   for (let k = 0; k < counts[counts.length - 1]; k++) voteCells.push({ color: `url(#${hatch})`, id: null });
   const seatCells: { color: string; id: string }[] = [];
   qualified.forEach((x) => { for (let k = 0; k < x.lr.seats; k++) seatCells.push({ color: x.l.color, id: x.l.id }); });
+  // squares fill in reading order: from the top right in Hebrew
+  const rtl = lang === 'he';
   const grid = (items: { color: string; id: string | null }[], cols: number, title: string) => {
     const size = 14, gap = 3;
     const rows = Math.ceil(items.length / cols);
@@ -172,7 +197,7 @@ export function Waffles({ s, r }: { s: Scenario; r: AllocationResult }) {
         <figcaption className="small ink2" style={{ marginBottom: 4 }}>{title}</figcaption>
         <svg viewBox={`0 0 ${cols * (size + gap)} ${rows * (size + gap)}`} width="100%" style={{ maxWidth: cols * (size + gap) }} role="img" aria-label={title}>
           <defs><pattern id={hatch} width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="4" height="4" fill="var(--grid)" /><line x1="0" y1="0" x2="0" y2="4" stroke="var(--muted)" strokeWidth="1.6" /></pattern></defs>
-          {items.map((c, i) => <rect key={i} x={(i % cols) * (size + gap)} y={Math.floor(i / cols) * (size + gap)} width={size} height={size} rx={3} fill={c.color} style={{ cursor: c.id ? 'pointer' : 'default' }} onClick={() => c.id && setState({ selectedListId: c.id })}><title>{c.id ? listLabel(s.lists.find((l) => l.id === c.id)!, lang) : L('Votes for lists below the threshold', 'קולות לרשימות מתחת לחסימה')}</title></rect>)}
+          {items.map((c, i) => <rect key={i} x={(rtl ? cols - 1 - (i % cols) : i % cols) * (size + gap)} y={Math.floor(i / cols) * (size + gap)} width={size} height={size} rx={3} fill={c.color} style={{ cursor: c.id ? 'pointer' : 'default' }} onClick={() => c.id && setState({ selectedListId: c.id })}><title>{c.id ? listLabel(s.lists.find((l) => l.id === c.id)!, lang) : L('Votes for lists below the threshold', 'קולות לרשימות מתחת לחסימה')}</title></rect>)}
         </svg>
       </figure>
     );

@@ -15,12 +15,14 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
   const lang = useLang();
   const digits = useDigits();
   const advanced = useStore((st) => st.level === 'expert');
+  // divisor methods (Sainte-Laguë, D'Hondt…) have no quota stage: every seat is awarded one at a time
+  const divisor = ['sainte-lague', 'dhondt', 'modified-sainte-lague'].includes(s.rules.remainderMethod);
   const steps: Step[] = useMemo(() => [
-    { kind: 'threshold' }, { kind: 'quota' }, { kind: 'initial' },
+    { kind: 'threshold' }, ...(divisor ? [] : [{ kind: 'quota' as const }, { kind: 'initial' as const }]),
     ...r.remainderSteps.map((st) => ({ kind: 'remainder' as const, st })),
     ...r.internalDivisions.map((d) => ({ kind: 'internal' as const, unitId: d.unitId })),
     { kind: 'final' },
-  ], [r]);
+  ], [r, divisor]);
   const [i, setI] = useState(0);
   const [playing, setPlaying] = useState(false);
   useEffect(() => { if (i >= steps.length) setI(steps.length - 1); }, [steps.length, i]);
@@ -37,7 +39,24 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
     return u ? u.memberIds.map((m) => listLabel(s.lists.find((x) => x.id === m)!, lang)).join(' + ') : L('Allocation unit', 'יחידת חלוקה');
   };
   const step = steps[Math.min(i, steps.length - 1)];
-  const label = (st: Step, k: number) => st.kind === 'remainder' ? `${L('Seat', 'מנדט')} ${r.initialSeatsTotal + st.st.step}` : st.kind === 'internal' ? `${L('Split', 'חלוקה')}: ${r.units.find((u) => u.id === st.unitId)?.memberIds.map((m) => listLabel(s.lists.find((x) => x.id === m)!, lang)).join('+') ?? ''}` : st.kind === 'final' ? L('Result', 'תוצאה') : String(k + 1);
+  const label = (st: Step) => st.kind === 'remainder' ? `${L('Seat', 'מנדט')} ${r.initialSeatsTotal + st.st.step}` : st.kind === 'internal' ? `${L('Split', 'חלוקה')}: ${r.units.find((u) => u.id === st.unitId)?.memberIds.map((m) => listLabel(s.lists.find((x) => x.id === m)!, lang)).join('+') ?? ''}`
+    : st.kind === 'final' ? L('Result', 'תוצאה') : st.kind === 'threshold' ? L('Threshold', 'חסימה') : st.kind === 'quota' ? L('Quota', 'מודד') : L('Whole quotas', 'מודד שלם');
+  const n = (kind: Step['kind']) => steps.findIndex((x) => x.kind === kind) + 1;
+  // the quota as the engine computed it: seats + 1 in 1949, Droop, unrounded, or the exact fallback when rounding fails
+  const fallback = r.warnings.some((w) => (w.code === 'zero-quota' || w.code === 'quota-over-allocation') && !(w.data as { stage?: string } | undefined)?.stage);
+  const quotaSeats = s.rules.seats + (fallback ? 0 : s.rules.quotaSeatOffset ?? 0);
+  const quotaFormula = s.rules.remainderMethod === 'droop' && !fallback
+    ? `⌊ ${fmtInt(r.qualifyingVotes)} ÷ ${s.rules.seats + 1} ⌋ + 1`
+    : s.rules.quotaRounding === 'floor' && !fallback ? `⌊ ${fmtInt(r.qualifyingVotes)} ÷ ${quotaSeats} ⌋` : `${fmtInt(r.qualifyingVotes)} ÷ ${quotaSeats}`;
+  const exactQuotient = (q: RemainderStep['quotients'][number]) => {
+    if (!q.eligible) return '';
+    switch (s.rules.remainderMethod) {
+      case 'bader-ofer': case 'dhondt': return `${fmtInt(q.votes)}/${q.seats + 1}`;
+      case 'sainte-lague': return `${fmtInt(q.votes)}/${2 * q.seats + 1}`;
+      case 'modified-sainte-lague': return q.seats === 0 ? `${fmtInt(q.votes)}/1.4` : `${fmtInt(q.votes)}/${2 * q.seats + 1}`;
+      default: return `${fmtInt(q.votes)} − ${fmtRat(r.quota, 0)}×${q.seats}`;
+    }
+  };
 
   return (
     <div>
@@ -50,13 +69,15 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
         <span className="muted small">{L(`Step ${i + 1} of ${steps.length}`, `צעד ${i + 1} מתוך ${steps.length}`)}</span>
       </div>
       <div className="steps" role="tablist" aria-label={L('Allocation steps', 'שלבי החלוקה')} style={{ marginBottom: 12 }}>
-        {steps.map((st, k) => <button key={k} role="tab" aria-selected={k === i} className={`btn small ${k === i ? 'primary' : ''}`} onClick={() => { setPlaying(false); setI(k); }}>{label(st, k)}</button>)}
+        {steps.map((st, k) => <button key={k} role="tab" aria-selected={k === i} className={`btn small ${k === i ? 'primary' : ''}`} onClick={() => { setPlaying(false); setI(k); }}>{label(st)}</button>)}
       </div>
 
       {step.kind === 'threshold' && (
         <div>
-          <h3>1. {L('Which lists pass the threshold?', 'אילו רשימות עוברות את אחוז החסימה?')} <Info term="threshold" /></h3>
-          <p><span className="formula">{s.rules.thresholdPct}% × {fmtInt(r.totalValid)} = {fmtRat(r.thresholdExact, 3)} → {fmtInt(r.thresholdVotes)}</span></p>
+          <h3>{n('threshold')}. {L('Which lists pass the threshold?', 'אילו רשימות עוברות את אחוז החסימה?')} <Info term="threshold" /></h3>
+          {Number(s.rules.thresholdPct) > 0
+            ? <p><span className="formula">{s.rules.thresholdPct}% × {fmtInt(r.totalValid)} = {fmtRat(r.thresholdExact, 3)} → {fmtInt(r.thresholdVotes)}</span></p>
+            : <p>{L('No percentage threshold applies: every list takes part.', 'אין אחוז חסימה: כל הרשימות משתתפות.')}</p>}
           <p className="small ink2">{L('Votes for every list count in the total, including lists that fail.', 'הקולות לכל הרשימות נכללים בסך, גם של רשימות שלא עברו.')}</p>
           <ListTable s={s} r={r} rows={[...r.lists].filter((l) => l.votes > 0n).sort((a, b) => Number(b.votes - a.votes)).slice(0, 18)} cols={(l) => [fmtInt(l.votes), fmtPct(l.votes, r.totalValid, digits), l.qualified ? L('passes', 'עוברת') : L('fails', 'לא עוברת')]} heads={[L('Votes', 'קולות'), L('Share', 'שיעור'), L('Result', 'תוצאה')]} />
           <p className="small">{L(`Unrepresented votes: ${fmtInt(r.unrepresentedVotes)} (${fmtPct(r.unrepresentedVotes, r.totalValid, digits)})`, `קולות שלא השתתפו בחלוקה: ${fmtInt(r.unrepresentedVotes)} (${fmtPct(r.unrepresentedVotes, r.totalValid, digits)})`)}</p>
@@ -64,14 +85,15 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
       )}
       {step.kind === 'quota' && (
         <div>
-          <h3>2. {L('General quota', 'המודד הכללי')} <Info term="quota" /></h3>
-          <p><span className="formula">⌊ {fmtInt(r.qualifyingVotes)} ÷ {s.rules.seats} ⌋ = {r.quota.den === 1n ? fmtInt(r.quota.num) : fmtFrac(r.quota)}</span></p>
+          <h3>{n('quota')}. {L('General quota', 'המודד הכללי')} <Info term="quota" /></h3>
+          <p><span className="formula">{quotaFormula} = {r.quota.den === 1n ? fmtInt(r.quota.num) : fmtFrac(r.quota)}</span></p>
+          {quotaSeats !== s.rules.seats && s.rules.remainderMethod !== 'droop' && <p className="small ink2">{L(`Divided by the seats plus one (${quotaSeats}), as the 1949 rules required.`, `מחולק במספר המושבים ועוד אחד (${quotaSeats}), כפי שקבעו כללי 1949.`)}</p>}
           <p className="small ink2">{L('Only qualifying votes are divided, so a party’s share of qualifying votes is larger than its share of all valid votes.', 'רק הקולות המשתתפים מחולקים, ולכן שיעור הרשימה מהם גדול משיעורה מכלל הכשרים.')}</p>
         </div>
       )}
       {step.kind === 'initial' && (
         <div>
-          <h3>3. {L('Seats by whole quota', 'מנדטים לפי מודד שלם')} <Info term="whole-quota-seats" /></h3>
+          <h3>{n('initial')}. {L('Seats by whole quota', 'מנדטים לפי מודד שלם')} <Info term="whole-quota-seats" /></h3>
           {r.quota.num === 0n
             ? <p className="small ink2">{L('This method has no whole-quota stage: every seat is allocated one at a time in the next steps.', 'בשיטה זו אין שלב של מודד שלם: כל המושבים מחולקים אחד־אחד בצעדים הבאים.')}</p>
             : <ListTable s={s} r={r} rows={r.lists.filter((l) => l.qualified).sort((a, b) => Number(b.votes - a.votes))} cols={(l) => [fmtInt(l.votes), `${fmtRat({ num: l.votes * r.quota.den, den: r.quota.num }, 3)}`, String(l.initialSeats)]} heads={[L('Votes', 'קולות'), L('Votes ÷ quota', 'קולות ÷ מודד'), L('Seats', 'מנדטים')]} />}
@@ -80,7 +102,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
       )}
       {step.kind === 'remainder' && (
         <div>
-          <h3>{L(`Seat ${r.initialSeatsTotal + step.st.step}: ${methodOf(s.rules).stepEn}`, `מושב ${r.initialSeatsTotal + step.st.step}: ${methodOf(s.rules).stepHe}`)} <Info term={methodOf(s.rules).term} /></h3>
+          <h3>{L(`Seat ${r.initialSeatsTotal + step.st.step}: ${methodOf(s.rules).stepEn}`, `מנדט ${r.initialSeatsTotal + step.st.step}: ${methodOf(s.rules).stepHe}`)} <Info term={methodOf(s.rules).term} /></h3>
           <p>{L('Awarded to', 'הוענק ל')} <b>{name(step.st.winnerUnitId)}</b>{r.units.find((u) => u.id === step.st.winnerUnitId)?.isAgreement ? L(' (a surplus-agreement pair; which partner gets it is decided in the pair split step)', ' (צמד בהסכם עודפים; איזו מהשותפות תקבל אותו נקבע בשלב החלוקה בצמד)') : ''}.</p>
           {step.st.tie && (
             <div className="callout small">
@@ -99,7 +121,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
                   <tr key={q.unitId} className={q.unitId === step.st.winnerUnitId ? 'win' : ''}>
                     <td>{name(q.unitId)}{q.capped ? <span className="chip" title={L('Section 81(d)(4)', 'סעיף 81(ד)(4)')}> {L('capped at half', 'מוגבל למחצית')}</span> : ''}</td>
                     <td className="n">{fmtInt(q.votes)}</td><td className="n">{q.seats}</td>
-                    <td className="n">{q.eligible ? fmtRat(q.value, 3) : '—'}</td>{advanced && <td className="n mono" dir="ltr">{q.eligible && s.rules.remainderMethod === 'bader-ofer' ? `${fmtInt(q.votes)}/${q.seats + 1}` : q.eligible && s.rules.remainderMethod === 'sainte-lague' ? `${fmtInt(q.votes)}/${2 * q.seats + 1}` : ''}</td>}
+                    <td className="n">{q.eligible ? fmtRat(q.value, 3) : '—'}</td>{advanced && <td className="n mono" dir="ltr">{exactQuotient(q)}</td>}
                   </tr>
                 ))}
               </tbody>
@@ -153,7 +175,7 @@ function ListTable({ s, r, rows, cols, heads }: { s: Scenario; r: AllocationResu
         <thead><tr><th>{L('List', 'רשימה')}</th>{heads.map((h) => <th key={h} className="n">{h}</th>)}</tr></thead>
         <tbody>{rows.map((l) => { const sl = s.lists.find((x) => x.id === l.id)!; return (
           <tr key={l.id} >
-            <td><span className="row" style={{ gap: 6 }}><span className="swatch" style={{ background: sl.color }} /><button className="table-action" onClick={() => setState({ selectedListId: l.id })}>{listLabel(sl, lang)}</button> <span className="muted">{sl.letters}</span></span></td>
+            <td><span className="row" style={{ gap: 6, flexWrap: 'nowrap' }}><span className="swatch" style={{ background: sl.color }} /><button className="table-action" onClick={() => setState({ selectedListId: l.id })}>{listLabel(sl, lang)}</button> <span className="muted">{sl.letters}</span></span></td>
             {cols(l).map((c, k) => <td key={k} className="n">{c}</td>)}
           </tr>
         ); })}</tbody>
