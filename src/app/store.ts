@@ -192,12 +192,14 @@ export function replay(ds: ElectionDataset, name: string, log: Action[]): { scen
 }
 
 let openSeq = 0;
-/** Opens an election (optionally replaying a saved log). Resolves false if it could not be loaded. */
-export async function openElection(id: ElectionId, from?: { name: string; description?: string; log: Action[]; baseBuiltAt?: string }): Promise<boolean> {
+/** Opens an election (optionally replaying a saved or shared log). Resolves false if it could not be loaded.
+ *  Replacing unsaved work in the same election first keeps it as a session draft (see stashCurrent). */
+export async function openElection(id: ElectionId, from?: { id?: string; name: string; description?: string; log: Action[]; baseBuiltAt?: string }): Promise<boolean> {
   const seq = ++openSeq;
   try {
     const ds = await loadDataset(id);
     if (seq !== openSeq) return false; // a later request superseded this one
+    if (from && state.scenario?.electionId === id) stashCurrent();
     // keep the work of the election we are leaving, so switching back restores it (with undo)
     const leaving = state.scenario ? { [state.scenario.electionId]: { scenario: state.scenario, past: state.past, future: state.future, reference: state.reference } } : {};
     const sessions = { ...state.sessions, ...leaving };
@@ -207,9 +209,9 @@ export async function openElection(id: ElectionId, from?: { name: string; descri
     let notice: string | null = null;
     if (from) {
       const r = replay(ds, from.name, from.log);
-      scenario = from.description ? { ...r.scenario, description: from.description } : r.scenario;
+      // a scenario's undo history is its own: undo never steps back into another scenario's identity
+      scenario = { ...r.scenario, ...(from.description ? { description: from.description } : {}), ...(from.id ? { id: from.id } : {}) };
       reference = scenario;
-      if (state.scenario?.electionId === id) past = [...state.past, state.scenario];
       const he = state.lang === 'he';
       if (r.failed) notice = he ? `${r.failed} שינויים לא ניתן היה להחיל מחדש על הנתונים הנוכחיים.` : `${r.failed} change(s) could not be re-applied to the current data.`;
       if (from.baseBuiltAt && from.baseBuiltAt !== ds.buildInfo.builtAt) notice = (notice ? notice + ' ' : '') + (he ? 'הנתונים ההיסטוריים נבנו מחדש מאז שהתרחיש נוצר; השינויים הוחלו מחדש על הנתונים הנוכחיים.' : 'The historical data has been rebuilt since this scenario was made; its changes were re-applied to the current data.');
@@ -223,6 +225,78 @@ export async function openElection(id: ElectionId, from?: { name: string; descri
     if (seq === openSeq) setState({ loadError: { id, message: e instanceof Error ? e.message : String(e) } });
     return false;
   }
+}
+
+/** The scenario switcher's key for the current scenario: 'official', a saved scenario's id, or a key for
+ *  unsaved work (changed since it was loaded, or never saved, such as an opened share link). */
+export function scenarioKey(st: Pick<State, 'scenario' | 'reference'> = state): string | null {
+  const s = st.scenario;
+  if (!s) return null;
+  if (!st.reference && s.log.length === 0) return 'official';
+  const dirty = !st.reference || JSON.stringify(s.log) !== JSON.stringify(st.reference.log);
+  return dirty ? `draft:${s.id}:${s.log.at(-1)?.at ?? s.log.length}` : s.id;
+}
+const isUnsavedKey = (key: string | null, st: Pick<State, 'saved'> = state) => !!key && key !== 'official' && !st.saved.some((x) => x.id === key);
+
+/** Keeps unsaved work, with its undo history, in the session drafts before another scenario replaces it. */
+export function stashCurrent(): boolean {
+  const s = state.scenario, key = scenarioKey();
+  if (!s || !key || !isUnsavedKey(key)) return false;
+  setState({ scenarioDrafts: { ...state.scenarioDrafts, [key]: { scenario: s, reference: state.reference, past: state.past, future: state.future } } });
+  toast('info', state.lang === 'he' ? 'השינויים שלא נשמרו נשארים במחליף התרחישים למפגש זה.' : 'Unsaved changes kept in the scenario switcher for this session.');
+  return true;
+}
+
+/** Opens a saved scenario under its own identity (the reference its markers compare with). */
+export async function openSaved(x: SavedScenario): Promise<boolean> {
+  return openElection(x.electionId, { id: x.id, name: x.name, description: x.description, log: x.log, baseBuiltAt: x.baseBuiltAt });
+}
+
+/** Returns to the official result of the open election. */
+export function openOfficial() {
+  const ds = state.scenario && state.datasets[state.scenario.electionId];
+  if (!ds || scenarioKey() === 'official') return;
+  stashCurrent();
+  setState({ scenario: scenarioFromDataset(ds), reference: null, past: [], future: [], selectedListId: null, blocPanel: null, notice: null });
+}
+
+/** Resumes a session draft; it leaves the draft store while it is the current scenario. */
+export function restoreDraft(key: string) {
+  const draft = state.scenarioDrafts[key];
+  if (!draft || key === scenarioKey()) return;
+  stashCurrent();
+  const { [key]: _resumed, ...rest } = state.scenarioDrafts;
+  setState({ ...draft, scenarioDrafts: rest, selectedListId: null, blocPanel: null, notice: null });
+}
+
+/** Removes a saved scenario. If it is open, it stays open as unsaved work (nothing on screen is lost). */
+export function deleteSaved(id: string) {
+  setState((st) => ({ saved: st.saved.filter((x) => x.id !== id) }));
+}
+
+/** Opens an imported scenario file as a new, unsaved scenario with the file as its reference. */
+export async function openImported(sc: Scenario): Promise<boolean> {
+  if (!(await openElection(sc.electionId))) return false;
+  stashCurrent();
+  const fresh = { ...sc, id: `${sc.electionId}-${Date.now().toString(36)}` };
+  setState({ scenario: fresh, reference: fresh, past: [], future: [], selectedListId: null, blocPanel: null });
+  return true;
+}
+
+/** Opens a share link in the address bar (on start-up or when a link is pasted into an open tab). */
+export async function openSharedFromHash(): Promise<boolean> {
+  const sh = await readSharedFromHash();
+  if (!sh) {
+    if (!/^#s=/.test(location.hash)) return false;
+    history.replaceState(null, '', location.pathname + location.search);
+    toast('error', state.lang === 'he' ? 'קישור השיתוף פגום או חלקי; לא נפתח תרחיש.' : 'This share link is damaged or incomplete; no scenario was opened.');
+    return false;
+  }
+  // the link is cleared only once it has opened, so a failed load can be retried by reloading
+  // an unnamed shared scenario is named for where it came from, so it is recognisable among unsaved work
+  const name = sh.name || (state.lang === 'he' ? 'תרחיש משותף' : 'Shared scenario');
+  if (await openElection(sh.electionId, { ...sh, name })) history.replaceState(null, '', location.pathname + location.search);
+  return true;
 }
 
 export function resetAll() {
@@ -249,12 +323,17 @@ export function saveCurrent(name?: string): boolean {
   return true;
 }
 
+/** Saves a copy under a new identity: its own colour and its own (empty) undo history, so an undo can never
+ *  turn the copy back into the original and a later save overwrite it. */
 export function duplicateCurrent() {
   const s = state.scenario;
   if (!s) return;
   const he = state.lang === 'he';
-  const copy: Scenario = { ...s, id: `${s.electionId}-${Date.now().toString(36)}`, name: `${s.name || (he ? 'תרחיש' : 'Scenario')} (${he ? 'עותק' : 'copy'})` };
-  setState({ scenario: copy, past: [...state.past, s], future: [] });
+  let id = `${s.electionId}-${Date.now().toString(36)}`;
+  while (id === s.id || state.saved.some((x) => x.id === id)) id += 'x';
+  const named: Scenario = { ...s, id, name: `${s.name || (he ? 'תרחיש' : 'Scenario')} (${he ? 'עותק' : 'copy'})` };
+  const copy = applyAction(named, { type: 'setIdentityColor', color: nextScenarioColor(state.saved, s.electionId) });
+  setState({ scenario: copy, past: [], future: [] });
   saveCurrent(copy.name);
 }
 

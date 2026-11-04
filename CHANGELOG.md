@@ -1,5 +1,13 @@
 # Changelog
 
+## 4 November 2026 — scenario switching and app chrome (release-candidate audit)
+
+- One switching path everywhere (switcher, Save & share menu, Scenarios page, share links, imports): unsaved work, including an opened share link, is kept as a session draft; resuming a draft removes it from the list; a saved scenario opens with its own undo history.
+- A share link pasted into an open tab opens; a damaged link says so. Deleting the open saved scenario keeps it open as unsaved work (the switcher no longer shows a blank "Switch scenario"); the menu's delete now confirms.
+- A duplicate gets its own colour and history; an unsaved draft already shows the colour saving will give it.
+- One name per tool: the tab strip, Custom page and level names come from `features.ts`. The Overview cannot be collapsed or hidden.
+- The tools strip stays one line and sticks under a wrapped band (tablets); About opens on screen on phones, names each list's events and closes on Escape or an outside press; undo/redo mirror in Hebrew; banners keep their dismiss button beside the text; load errors are plain with the technical reason quiet.
+
 ## 4 November 2026 — mark replacements once
 
 - Mark whole-part starting points, grouping changes and rules presets once at the part; later individual edits use the replacement as their checkpoint.

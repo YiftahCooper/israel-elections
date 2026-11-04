@@ -1,6 +1,9 @@
 import { electionContext, type ContextSource, type PMContest } from '../../data/electionContext.ts';
 import type { ElectionId } from '../../data/schema.ts';
 import { useL, useLang } from '../i18n.ts';
+import { useStore } from '../store.ts';
+import { useEffect, useRef } from 'react';
+import { listLabel } from '../derive.ts';
 
 const ordinal = (n: number) => n + (n % 100 >= 11 && n % 100 <= 13 ? 'th' : ['th', 'st', 'nd', 'rd'][n % 10] ?? 'th');
 
@@ -14,12 +17,24 @@ export function EvidenceLink({ source }: { source: ContextSource }) {
 export function ElectionAbout({ electionId, listId }: { electionId: ElectionId; listId?: string }) {
   const L = useL(); const lang = useLang();
   const events = electionContext.events.filter(e => e.electionId === electionId && (!listId || e.listId === listId));
+  const lists = useStore(st => st.datasets[electionId]?.lists);
+  // the band's About is a popover: like the other menus it closes on Escape or a press outside it
+  const ref = useRef<HTMLDetailsElement>(null);
+  useEffect(() => {
+    if (listId) return;
+    const onKey = (e: KeyboardEvent) => { const d = ref.current; if (e.key === 'Escape' && d?.open) { d.open = false; d.querySelector('summary')?.focus(); } };
+    const onDown = (e: PointerEvent) => { const d = ref.current; if (d?.open && !d.contains(e.target as Node)) d.open = false; };
+    document.addEventListener('keydown', onKey); document.addEventListener('pointerdown', onDown);
+    return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', onDown); };
+  }, [listId]);
   if (!events.length) return null;
   const pending = events.find(e => e.type === 'publication-status');
-  return <details className={`election-about ${pending ? 'publication-pending' : ''}`}>
+  // in the election's own About, a list's event says which list ("this list" alone is ambiguous there)
+  const listName = (id?: string) => { const l = !listId && id ? lists?.find(x => x.id === id) : undefined; return l ? <b><bdi>{listLabel(l, lang)}</bdi>: </b> : null; };
+  return <details ref={ref} className={`election-about ${pending ? 'publication-pending' : ''}`}>
     <summary>{L('About', 'על הבחירות')}{pending && <> · {L('Pending gazette', 'ממתין לפרסום ברשומות')}</>}</summary>
     <ul>{events.map(e => <li key={e.id}>
-      <time dateTime={e.effectiveDate}>{e.effectiveDate}</time> · {e.source.evidence === 'unresolved' && <strong>{L('Unresolved: ', 'טרם הוברר: ')}</strong>}{lang === 'he' ? e.textHe : e.textEn}{' '}
+      <time dateTime={e.effectiveDate}>{e.effectiveDate}</time> · {listName(e.listId)}{e.source.evidence === 'unresolved' && <strong>{L('Unresolved: ', 'טרם הוברר: ')}</strong>}{lang === 'he' ? e.textHe : e.textEn}{' '}
       <EvidenceLink source={e.source} />{e.relatedSources?.map(s => <span key={s.url}> · <EvidenceLink source={s} /></span>)}
     </li>)}</ul>
   </details>;
