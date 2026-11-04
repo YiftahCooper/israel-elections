@@ -20,8 +20,10 @@ it('retains hash-verified evidence for every step 3 event and related source', (
     }
   }
 });
-it('keeps secondary history and the conflicting k26 withdrawal explicitly qualified', () => {
+it('keeps secondary history qualified and attaches the k26 withdrawal notice to the list whose page carries it', () => {
   expect(electionContext.events.filter(e => e.id.startsWith('eligibility-final-')).every(e => e.source.evidence === 'secondary')).toBe(true);
-  expect(electionContext.events.find(e => e.id === 'withdrawal-conflict-k26-זץ')).toMatchObject({ listId: '26-זץ', source: { evidence: 'unresolved' } });
+  // the notice is on Ahi's own CEC page and names Ahi's candidates; Brit Olam contested (252 votes)
+  expect(electionContext.events.find(e => e.id === 'withdrawal-k26-צבי')).toMatchObject({ listId: '26-צבי', source: { evidence: 'official', url: 'https://www.gov.il/he/pages/chozrim-leshorashim_list32' } });
+  expect(electionContext.events.some(e => e.listId === '26-זץ' && e.type === 'withdrawal')).toBe(false);
   expect(electionContext.events.filter(e => e.id.startsWith('list-') && e.electionId === 'k26').map(e => e.listId)).toEqual(['26-ודם','26-ודם','26-ד','26-ד']);
 });

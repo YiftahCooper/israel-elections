@@ -653,21 +653,21 @@
       "listId": "23-זץ"
     },
     {
-      "id": "withdrawal-conflict-k26-זץ",
+      "id": "withdrawal-k26-צבי",
       "electionId": "k26",
       "effectiveDate": "2026-10-25",
       "contestType": "knesset",
       "type": "withdrawal",
-      "textEn": "The retained CEC page says all Brit Olam candidates resigned on 25 October 2026 and the list was not contesting. The dataset currently keeps Brit Olam (זץ) as not withdrawn and attaches that withdrawal wording to Ahi (צבי). This identity/status conflict remains unresolved; no vote or withdrawal flag is changed by this context note.",
-      "textHe": "בעמוד הוועדה השמור נאמר שכל מועמדי ברית עולם התפטרו ב־25 באוקטובר 2026 ושהרשימה אינה מתמודדת. הנתונים מסמנים כעת את ברית עולם (זץ) כלא־פורשת ומצמידים את נוסח הפרישה לאחי (צבי). הסתירה בזהות ובמעמד טרם הובררה; הערת ההקשר אינה משנה קולות או סימון פרישה.",
+      "textEn": "All of Ahi's candidates resigned on 25 October 2026 before the Central Elections Committee's legal advisers, so the list did not contest the election.",
+      "textHe": "כל מועמדי רשימת אחי התפטרו ב־25 באוקטובר 2026 בפני הייעוץ המשפטי של ועדת הבחירות המרכזית, ולכן הרשימה לא התמודדה בבחירות.",
       "source": {
-        "url": "https://www.gov.il/he/pages/brit-olam_list22",
-        "publisher": "ועדת הבחירות המרכזית לכנסת ה-26 (gov.il)",
-        "publisherHe": "ועדת הבחירות המרכזית לכנסת ה-26 (gov.il)",
-        "evidence": "unresolved",
+        "url": "https://www.gov.il/he/pages/chozrim-leshorashim_list32",
+        "publisher": "Central Elections Committee for the 26th Knesset",
+        "publisherHe": "ועדת הבחירות המרכזית לכנסת ה-26",
+        "evidence": "official",
         "sourceId": "k26-list-pages"
       },
-      "listId": "26-זץ"
+      "listId": "26-צבי"
     },
     {
       "id": "opening-members-k3",

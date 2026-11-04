@@ -358,16 +358,7 @@ formal correction/erratum authority for k14/k16–k19 and the nine-vote k17 disc
 exact pre-opening replacement dates beyond the sourced notices; and a historical
 category-by-category envelope timeline. No general rule is extrapolated from the 2019 paper.
 
-A concrete k26 source conflict was found while checking list ids: the retained CEC capture
-names **Brit Olam** (dataset `26-זץ`) in the 25 October all-candidates resignation notice,
-while the dataset's corresponding wording is attached to **Ahi** (`26-צבי`) and Brit Olam
-is not marked withdrawn. This is an **unresolved** event attached to Brit Olam, not a
-silent repair of either list's status. Blue and White's precise withdrawal notice/date also
-remains unverified here. Likewise, the captured k26 reversal concerns **the Joint List**
-(`26-ודם`) and **Hashutafut Lekulam** (`26-ד`), not Ra'am (`26-עם`): the earlier C1 wording
-conflated those identities. Events follow the actual captured page titles and dataset ids.
-Resolving these conflicts needs the original notices and an independently checked mapping;
-this data-only context pass does not change the final-input datasets to fit the report.
+**Correction (4 November 2026, on review):** the apparent k26 Brit Olam / Ahi conflict was a misreading of page boundaries in the retained capture `data/raw/k26/govil-list-pages.exa.json`. The resignation notice belongs to Ahi's own CEC page (`chozrim-leshorashim_list32`), which immediately follows Brit Olam's candidate table in that file. The named resigning candidates are not on Brit Olam's roster, Brit Olam received 252 votes and Ahi 0. The dataset (Ahi withdrawn, Brit Olam contesting) is correct, and the event is now an official Ahi withdrawal. Blue and White's precise withdrawal notice/date remains unverified. The captured k26 reversal concerns **the Joint List** (`26-ודם`) and **Hashutafut Lekulam** (`26-ד`), not Ra'am (`26-עם`): the earlier C1 wording conflated those identities.
 
 Verification: context validator passed; `npm run -s data:build` reported all 38 outputs
 unchanged on the final rebuild (the initial rebuild updated only `sources.json`);
