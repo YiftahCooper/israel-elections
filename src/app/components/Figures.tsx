@@ -53,7 +53,7 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
     <div className="figures">
       {noThreshold
         ? <Fig id="threshold" open={open} onToggle={toggle} k={L('Threshold', 'אחוז החסימה')} v={L('None', 'אין')} d={L('no percentage threshold in this election', 'לא היה אחוז חסימה בבחירות אלה')} />
-        : <Fig id="threshold" open={open} onToggle={toggle} k={L('Votes to pass the threshold', 'קולות למעבר החסימה')} term="threshold" v={fmtInt(r.thresholdVotes)} d={`${thrPct}% ${L('of valid votes', 'מהכשרים')}`}>
+        : <Fig id="threshold" open={open} onToggle={toggle} k={L('Threshold', 'אחוז החסימה')} term="threshold" v={fmtInt(r.thresholdVotes)} d={`${thrPct}% ${L('of valid votes', 'מהכשרים')}`}>
             {expert && <div className="formula" style={{ marginBottom: 8 }}>⌈{thrPct}% × {fmtInt(r.totalValid)}⌉ = {fmtInt(r.thresholdVotes)}</div>}
             {near.length ? <table className="tbl"><thead><tr><th>{L('Lists near the threshold', 'רשימות סביב החסימה')}</th><th className="n">{L('Votes', 'קולות')}</th><th className="n">{L('Distance', 'מרחק')}</th></tr></thead>
               <tbody>{near.map(({ l }) => <tr key={l.id} style={{ cursor: 'pointer' }} onClick={() => select(l.id)}><td>{listLabel(l, lang)}</td><td className="n">{fmtInt(l.votes)}</td><td className="n">{signed(l.votes - thr)}</td></tr>)}</tbody></table>
@@ -67,7 +67,7 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
         </Fig>
       )}
 
-      <Fig id="seatless" open={open} onToggle={toggle} k={L('Votes that won no seat', 'קולות שלא זכו במנדט')} term="unrepresented" v={fmtPct(seatlessVotes, r.totalValid, 1)} d={`${fmtInt(seatlessVotes)} ${L('votes', 'קולות')}`}>
+      <Fig id="seatless" open={open} onToggle={toggle} k={L('Votes with no seat', 'קולות ללא מנדט')} term="unrepresented" v={fmtPct(seatlessVotes, r.totalValid, 1)} d={`${fmtInt(seatlessVotes)} ${L('votes', 'קולות')}`}>
         {seatless.length ? <div className="tablewrap" style={{ maxHeight: 300 }}><table className="tbl"><thead><tr><th>{L('List', 'רשימה')}</th><th className="n">{L('Votes', 'קולות')}</th><th className="n">{L('% of valid', '% מהכשרים')}</th></tr></thead>
           <tbody>{seatless.map(({ l }) => <tr key={l.id} style={{ cursor: 'pointer' }} onClick={() => select(l.id)}><td>{listLabel(l, lang)}</td><td className="n">{fmtInt(l.votes)}</td><td className="n">{fmtPct(l.votes, r.totalValid, digits)}</td></tr>)}
             <tr><td><b>{L('Total', 'סה״כ')}</b></td><td className="n"><b>{fmtInt(seatlessVotes)}</b></td><td className="n"><b>{fmtPct(seatlessVotes, r.totalValid, digits)}</b></td></tr></tbody></table></div>

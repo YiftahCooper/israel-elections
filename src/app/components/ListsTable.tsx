@@ -71,7 +71,7 @@ function AgreementCell({ s, l }: { s: Scenario; l: SimList }) {
     <button type="button" className={`partner ${agr && !agr.enabled ? 'off' : ''}`} onClick={(e) => { e.stopPropagation(); setEdit(true); }}
       aria-label={partner ? L(`Surplus-vote agreement with ${listLabel(partner, 'en')}${agr && !agr.enabled ? ' (off)' : ''}`, `הסכם עודפים עם ${partner.shortHe}${agr && !agr.enabled ? ' (כבוי)' : ''}`) : L(`Add a surplus-vote agreement for ${listLabel(l, 'en')}`, `הוספת הסכם עודפים ל${l.shortHe}`)}
       title={agr ? (agr.enabled ? L('Surplus-vote agreement — click to change', 'הסכם עודפים — לחצו לשינוי') : L('Agreement switched off — click to change', 'ההסכם כבוי — לחצו לשינוי')) : L('Add a surplus-vote agreement', 'הוספת הסכם עודפים')}>
-      {partner ? <><ArrowLeftRight className="icon sm" aria-hidden /><span>{listLabel(partner, lang)}</span></> : <span className="muted">—</span>}
+      {partner ? <><ArrowLeftRight className="icon sm" aria-hidden /><span title={partner.nameHe}>{listLabel(partner, lang)}</span></> : <span className="muted">—</span>}
     </button>
   );
 }

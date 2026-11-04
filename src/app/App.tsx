@@ -177,8 +177,8 @@ function Shell() {
   const firstLocked = ordered.findIndex((t) => RANK[t.level] > RANK[level]);
   const openTool = (id: Tab) => {
     setState({ tool: id });
-    // where the panel is not beside the board (one column), bring it into view
-    if (window.innerWidth <= 1100) requestAnimationFrame(() => document.getElementById('tool-panel')?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }));
+    // bring the panel into view: in the side column on desktop, further down the page on one column
+    requestAnimationFrame(() => document.getElementById('tool-panel')?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'nearest' }));
   };
 
   return (
