@@ -51,7 +51,7 @@ function LiveSlider({ l, hist, thr, onCommit }: { l: SimList; hist: number; thr:
     <div>
       <input type="range" min={0} max={max} step={step} value={value} aria-label={L('Votes slider', 'מחוון קולות')} aria-valuetext={value.toLocaleString('en-US')}
         onChange={(e) => preview(Number(e.target.value))} onPointerUp={commit} onKeyUp={commit} onBlur={commit} onTouchEnd={commit} />
-      <div className="row tiny muted" style={{ justifyContent: 'space-between' }}>
+      <div dir="ltr" className="row tiny muted" style={{ justifyContent: 'space-between' }}>
         <span>0</span>
         <span>{drag !== null ? <b className="ink2">{drag.toLocaleString('en-US')}</b> : L('drag to see the seats move', 'גררו כדי לראות את המנדטים זזים')}</span>
         <span>{max.toLocaleString('en-US')}</span>

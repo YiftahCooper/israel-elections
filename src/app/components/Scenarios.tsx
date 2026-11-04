@@ -13,7 +13,7 @@ import type { Scenario } from '../../model/scenario.ts';
 import { allocationOf } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { download } from '../format.ts';
-import { deleteSaved, duplicateCurrent, importScenarioJson, openImported, openSaved, replay, resetAll, saveCurrent, setState, shareLink, toast, useStore, type SavedScenario } from '../store.ts';
+import { deleteSaved, duplicateCurrent, importScenarioJson, openImported, openSaved, replay, resetAll, saveCurrent, setPreference, setState, shareLink, toast, useStore, type SavedScenario } from '../store.ts';
 import { ScenarioGallery } from './ScenarioGallery.tsx';
 import { electionLabel } from './TopBar.tsx';
 
@@ -73,7 +73,7 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
       <section className="scn-current">
         <h3>{L('This scenario', 'התרחיש הנוכחי')} <span className="muted" style={{ fontWeight: 400 }}>· {electionName(s.electionId)} · {L(`${s.log.length} edits`, `${s.log.length} שינויים`)}</span></h3>
         <label className="field">{L('Scenario colour', 'צבע התרחיש')}<select aria-label={L('Scenario colour', 'צבע התרחיש')} value={liveScenarioColor(s, saved)} onChange={e => dispatch({ type: 'setIdentityColor', color: e.target.value })}>{SCENARIO_PALETTE.map((c, i) => <option key={c} value={c}>{L(['Violet', 'Slate', 'Ochre', 'Mauve', 'Sage', 'Blue', 'Clay', 'Olive'][i], ['סגול', 'כחלחל', 'אוכרה', 'סגלגל', 'מרווה', 'כחול', 'חרס', 'זית'][i])}</option>)}</select></label>
-        <label className="field">{L('Mark differences from', 'סימון הבדלים לעומת')}<select aria-label={L('Mark differences from', 'סימון הבדלים לעומת')} value={useStore(st => st.markOfficial) ? 'official' : 'reference'} onChange={e => setState({ markOfficial: e.target.value === 'official' })}><option value="reference">{L('The loaded scenario', 'התרחיש הטעון')}</option><option value="official">{L('Always the official result', 'תמיד התוצאה הרשמית')}</option></select></label>
+        <label className="field">{L('Mark differences from', 'סימון הבדלים לעומת')}<select aria-label={L('Mark differences from', 'סימון הבדלים לעומת')} value={useStore(st => st.markOfficial) ? 'official' : 'reference'} onChange={e => setPreference('comparison', e.target.value)}><option value="reference">{L('The loaded scenario', 'התרחיש הטעון')}</option><option value="official">{L('Always the official result', 'תמיד התוצאה הרשמית')}</option></select></label>
         <div className="scn-form">
           <label className="field">{L('Name', 'שם')}
             <ScenarioText value={s.name} label={L('Name', 'שם')} placeholder={L('e.g. “Arab turnout returns to 2015 levels”', 'למשל "שיעור ההצבעה בחברה הערבית חוזר לרמת 2015"')} onCommit={(name) => dispatch({ type: 'rename', name })} /></label>

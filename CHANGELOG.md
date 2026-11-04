@@ -1,5 +1,10 @@
 # Changelog
 
+## 5 November 2026 — preferences at the action
+
+- Choose vote source, then “For this list” or “Always”; saved-scenario opens ask which comparison to mark. Both use one preference dialog and resettable settings in Rules → Editing.
+- Keep numeric ± rows and sliders left to right in Hebrew as in English; preserve RTL labels and page layout.
+
 ## 5 November 2026 — seat counts you can type; one question for where votes come from
 
 - Joint lists show their head party, elected component seats and opening factions, with sources and unknowns in (i). Mixed family ballots stay separate by default; an explicit head-party policy and per-list overrides replace the hidden two-thirds rule.

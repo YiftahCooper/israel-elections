@@ -190,7 +190,7 @@ select { padding-inline-end: 6px; }
 input:hover:not(:disabled), select:hover:not(:disabled) { border-color: var(--axis); }
 input.num-in { width: 120px; text-align: end; }
 input.num-in[aria-invalid="true"] { border-color: var(--bad); box-shadow: 0 0 0 1px var(--bad); }
-input[type="range"] { width: 100%; accent-color: var(--shell); }
+input[type="range"] { direction: ltr; width: 100%; accent-color: var(--shell); }
 input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px solid var(--rule-2); border-radius: 5px; background: var(--surface); }
 .field { display: grid; gap: 3px; font-size: 13px; color: var(--ink-2); }
 /* a switch: on/off state, never a verb button */
@@ -801,7 +801,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .pm-marker { color: var(--muted); font-size: 11px; border: 1px solid var(--rule); padding: 2px 6px; border-radius: 3px; }
 .preview-loading { inline-size: 100px; block-size: 10px; background: var(--surface-2); }
 .numeric-stepper { display: grid; gap: 5px; min-inline-size: 0; }
-.stepper-controls { display: flex; gap: 0; align-items: stretch; }
+.stepper-controls { direction: ltr; display: flex; gap: 0; align-items: stretch; }
 .stepper-value-row { display: flex; flex: 1; min-inline-size: 0; }
 .stepper-value-row input { direction: ltr; unicode-bidi: isolate; flex: 1; min-inline-size: 0; inline-size: 100%; text-align: center; border-radius: 0; }
 .stepper-controls .stepper-nudge { inline-size: 36px; flex-shrink: 0; border-radius: 0; font-size: 18px; }

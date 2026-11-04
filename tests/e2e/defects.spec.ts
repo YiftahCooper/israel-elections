@@ -12,7 +12,7 @@ const start = async (page: import('@playwright/test').Page) => {
 
 test('reset everything keeps votes supplied by the selected donor', async ({ page }) => {
   const details = await start(page);
-  const source = details.getByRole('combobox', { name: /balance the difference/ });
+  const source = details.getByRole('combobox', { name: /Balance votes with/ });
   await source.selectOption('new');
   await details.getByLabel('Votes', { exact: true }).fill('0');
   await details.getByLabel('Votes', { exact: true }).press('Enter');
@@ -25,7 +25,7 @@ test('reset everything keeps votes supplied by the selected donor', async ({ pag
 
 test('clamped and refused numeric edits display the authoritative value', async ({ page }) => {
   const details = await start(page);
-  const source = details.getByRole('combobox', { name: /balance the difference/ });
+  const source = details.getByRole('combobox', { name: /Balance votes with/ });
   await source.selectOption('t:26-נף');
   const votes = details.getByLabel('Votes', { exact: true });
   await votes.fill('9999999'); await votes.press('Enter');

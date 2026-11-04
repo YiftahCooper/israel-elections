@@ -115,7 +115,7 @@ for (const lang of ['he', 'en']) for (const theme of ['light', 'dark']) for (con
   const stepper = page.locator('.side-panel').getByRole('group', { name: lang === 'he' ? 'קולות בקרים' : 'Votes controls', exact: true });
   const minus = await stepper.locator('.stepper-nudge').first().boundingBox();
   const plus = await stepper.locator('.stepper-nudge').last().boundingBox();
-  expect(lang === 'he' ? minus!.x > plus!.x : minus!.x < plus!.x).toBe(true);
+  expect(minus!.x < plus!.x).toBe(true);
   await expect(stepper.getByRole('textbox')).toHaveCSS('direction', 'ltr');
   await page.screenshot({ path: `.backup-scratch/controls/vote-actions-${suffix}.png` });
 });
