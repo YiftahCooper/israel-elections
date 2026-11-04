@@ -463,6 +463,62 @@ Constituents (separate from joint-list lockups):
 - `herut` — **gap**. `תנועת החרות 1969 כרזה סמל -site:en.wikipedia.org` → U116, U296.
 - `liberal-party` — **gap**. `המפלגה הליברלית 1969 כרזה סמל -site:en.wikipedia.org` → U4, U299.
 
+### k8
+
+**חל טעם — Likud: gap.**
+- `הליכוד 1973 כרזה -site:en.wikipedia.org` → U167, U168, U166, U2
+- `site:nli.org.il הליכוד 1973 בחירות` → U169, U2
+
+**אמת — Alignment: gap.**
+- `המערך 1973 כרזה -site:en.wikipedia.org` → U167, U169, U166, U3
+- `site:nli.org.il המערך 1973 בחירות` → U169, U2
+
+**גד — Religious Torah Front: gap.**
+- `חזית דתית תורתית 1973 כרזה -site:en.wikipedia.org` → U170, U167, U75, U171
+- `site:nli.org.il חזית דתית תורתית 1973 בחירות` → U171, U271
+
+**רצ — Ratz: gap.**
+- `רצ 1973 כרזה -site:en.wikipedia.org` → U172, U167, U173, U174
+- `site:nli.org.il רצ 1973 בחירות` → U174, U272
+
+**ב — National Religious Party: gap.**
+- `מפד״ל 1973 כרזה -site:en.wikipedia.org` → U38, U40, U167, U175
+- `site:nli.org.il מפד"ל 1973 בחירות` → U273, U274
+
+**ו — Rakah: gap.**
+- `רק״ח 1973 כרזה -site:en.wikipedia.org` → U17, U170, U176, U127
+- `site:nli.org.il רק"ח 1973 בחירות` → U275, U276
+
+**לע — Independent Liberals: gap.**
+- `ליברלים עצמאיים 1973 כרזה -site:en.wikipedia.org` → U167, U75, U149, U9
+- `site:nli.org.il ליברלים עצמאיים 1973 בחירות` → U277, U278
+
+**עא — Arab List for Bedouin and Villagers: gap.**
+- `ערבית לבדווים וכפריים 1973 כרזה -site:en.wikipedia.org` → U177, U167, U178, U179
+- `site:nli.org.il ערבית לבדווים וכפריים 1973 בחירות` → empty
+
+**רא — Progress and Development: gap.**
+- `קידמה ופיתוח 1973 כרזה -site:en.wikipedia.org` → U170, U167, U75, U180
+- `site:nli.org.il קידמה ופיתוח 1973 בחירות` → U16, U260
+
+**קנ — Moked: gap.**
+- `מוקד 1973 כרזה -site:en.wikipedia.org` → U306, U307, U308, U309
+- `site:nli.org.il מוקד 1973 בחירות` → U2, U310
+
+Constituents (separate from joint-list lockups):
+
+- `herut` — **gap**. `תנועת החרות 1973 כרזה סמל -site:en.wikipedia.org` → U116, U296.
+- `liberal-party` — **gap**. `המפלגה הליברלית 1973 כרזה סמל -site:en.wikipedia.org` → U299, U4.
+- `state-list` — **gap**. `הרשימה הממלכתית 1973 כרזה סמל -site:en.wikipedia.org` → U165, U3.
+- `free-centre` — **gap**. `המרכז החופשי 1973 כרזה סמל -site:en.wikipedia.org` → U299, U169.
+- `greater-israel-movement` — **gap**. `התנועה למען ארץ ישראל השלמה 1973 כרזה סמל -site:en.wikipedia.org` → U300, U299.
+- `israeli-labor-party` — **gap**. `מפלגת העבודה הישראלית 1973 כרזה סמל -site:en.wikipedia.org` → U165, U298.
+- `mapam` — **gap**. `מפ"ם – מפלגת הפועלים המאוחדת 1973 כרזה סמל -site:en.wikipedia.org` → U5, U4.
+- `agudat-yisrael` — **gap**. `אגודת ישראל 1973 כרזה סמל -site:en.wikipedia.org` → U301, U302.
+- `poalei-agudat-yisrael` — **gap**. `פועלי אגודת ישראל 1973 כרזה סמל -site:en.wikipedia.org` → U301, U303.
+- `blue-red-movement` — **gap**. `תנועת תכלת-אדום 1973 כרזה סמל -site:en.wikipedia.org` → U304, U305.
+- `maki` — **gap**. `מק"י – המפלגה הקומוניסטית הישראלית 1973 כרזה סמל -site:en.wikipedia.org` → U17, U127.
+
 ## Returned search URL index
 
 This index records search leads, including irrelevant and wrong-year returns. Inclusion is not endorsement or evidence of official origin. Repeated archive URLs belong to one evidence family, not independent corroboration.
@@ -787,4 +843,34 @@ Conclusion map: E1 supports the medium-confidence k1 Fighters assignment under t
 
 ## Verification
 
-Election batches run the requested Vitest, TypeScript, Vite and logo-validator commands. Final results and retained byte hashes will be recorded after k8. No push or merge.
+All eight election batches ran `npx vitest run`, `npx tsc -p tsconfig.json --noEmit`, `npx vite build`, and `python3 scripts/validate-party-logos.py`. TypeScript, Vite and the validator passed for every batch. Vitest k1–k5 and k8 passed **57 files / 484 tests**; k6 and k7 each had a 5-second timeout in the PDF-heavy k18/k19 demographic rebuild test (483/484). A repeat while Playwright was running timed out in that test and the k19 candidate parser (482/484). Final complete rerun `npx vitest run --maxWorkers=2` passed **57 files / 484 tests** in 11.92 seconds, without code or test-timeout changes. Resource contention is a supported explanation, not a proven diagnosis; the initial failures are not erased.
+
+`PW_PORT=5363 npx playwright test`: **43 passed**, 32.2 seconds. Final validator: **26 overlays, 120 source records, 69 assets; 73 hosted entries; 6 unresolved entries**, across all elections including constituents and nonwinners. Repeat `npm run data:build`: **0 files written, 38 unchanged**. Recursive comparison against the starting commit confirmed all 26 election datasets identical after omitting logo references and build timestamps. Only the intended model digest changed; allocation, analysis, rules and validation digests remained unchanged. Final coverage script rerun confirms **2 → 3 / 98** hosted winning lists; **95 list gaps and 32 constituent-election gaps remain**. No campaign-wide “no emblem in use” finding. One new free-licence/PD-textlogo asset, zero new hosted fair-use assets, zero new hosted crops; one unresolved fair-use crop retained. Validator and builder policy are unchanged.
+
+Work is local on `t3/06c2ce78`, committed in per-election batches. No push or merge.
+
+## Supplementary discovery trace
+
+These additional Jina queries were used to locate the inspected sources/API routes, beyond the per-identity queries above. Results remained snippet-only unless E1–E4 or the retrieval-failure list says otherwise.
+
+| Queries | Result / disposition |
+|---|---|
+| `site:nli.org.il 1949 מפאי כרזה`; `site:nli.org.il 1951 בחירות כרזות`; `site:nli.org.il רשימת לוחמים 1949 סמל`; `JPress current newspaper IIIF API NLI` | NLI election gallery, Fighters teaching item and open-library documentation discovered; opened URLs challenged. Newspaper search hits were leads. |
+| `NLI IIIF presentation api manifest api.nli.org.il`; `site:nli.org.il/en/research-and-teach/open-library/presentation-api "https" "IIIF"`; `site:nli.org.il "api.nli" "iiif"`; `site:nli.org.il/en/research-and-teach/open-library/presentation-api "manifest" "https://"`; `site:iiif.nli.org.il "manifest"` | Current manifest/image patterns discovered in snippets. Documentation pages challenged; attempted old Fighters record ID returned internal-error XML. No working campaign image identifier recovered. |
+| `site:digital.library.ucla.edu "Mapai" "1951"`; `site:jabotinsky.org חרות כרזה 1949` | UCLA broad catalogue facets; Jabotinsky item 37884 opened and original 4129.jpg inspected. Other returned Jabotinsky item leads: 37891 and 35052, not opened. |
+| `site:nli.org.il "הלוחמים" "סמל" "כרזה"`; `site:nli.org.il "רשימת לוחמים" "1949" כרזה`; `site:nli.org.il "כרזה מטעם מפלגת הלוחמים"`; `site:nli.org.il "700129128"` | Fighters teaching page discovered but challenged; old item number query empty. Other results not accepted as origins. |
+| `site:commons.wikimedia.org "Fighters" "1949" logo`; `site:commons.wikimedia.org "Gahal" logo`; `site:commons.wikimedia.org "General Zionists" "Source"`; `site:commons.wikimedia.org "Progressive Party" "Logo" Israel` | Fighters pinned description opened, original acquired. Gahal lead https://commons.wikimedia.org/wiki/File:Gahal-Logo.png describes 1960s, not exact campaign; https://commons.wikimedia.org/wiki/File:Logo_Gahal_Israel.png is a secondary-origin lead. Progressive lead https://commons.wikimedia.org/wiki/File:Progressivit.png has a broad 1948–1961 description, insufficient for election-specific assignment; no new hosted variants inferred. General Zionists results did not supply a dated official design. |
+| `site:jabotinsky.org "גח״ל" "1965" כרזות`; `site:jabotinsky.org "גח״ל" "1969" כרזות` | Broad archive file spans 1965–1981 (item 19331) and 5 February 1969 lecture poster (item 33775); snippets only, neither supplies verified election lockup bytes. |
+
+Plain HTTP attempts for individual scans all returned 200 after the CZA HTTPS failure: `http://www.zionistarchives.org.il/DocLib14/KRA2767.jpg`, `/DocLib14/KRA778.jpg`, `/DocLib14/KRA3225.jpg`, `/DocLib14/KRA726.jpg` (same origin); Jabotinsky scan URL `https://www.jabotinsky.org/remote.axd?http%3a%2f%2fwww.infocenters.co.il%2fjabo%2fjabo_multimedia%2f%d7%9b%d7%a8%d7%96%d7%95%d7%aa%2f29.4.14%2f4129.jpg?mode=crop`; Fighters original `https://upload.wikimedia.org/wikipedia/commons/c/cd/FightersList.png`. Only the accepted Fighters original, unresolved Mapam original/crop and their provenance pages were retained as durable project inputs; reproducible rejected scan working copies remain scratch. No rejected scan is represented as a hosted emblem.
+
+### Retained image bytes
+
+| File | Bytes | SHA-256 | Outcome |
+|---|---:|---|---|
+| `data/raw/logos/k1/fighters-list-original.png` | 16009 | `3ee6a0d57ef06ad5e3ba8cd74e5ff310a58c6f9f818d704ac4d6de5c0ed22d31` | Downloaded original, Commons |
+| `public/logos/fighters-list-1949.png` | 19686 | `d28ae5b58656adef1996dacf93c731474238bf8a4ed488afc47084d03b3f8755` | Hosted, free-licence/PD-textlogo; no new crop |
+| `data/raw/logos/k4/mapam-kra3225-original.jpg` | 324257 | `43cb22ea1ca5aaac66667b041ddb9d4f3141d0bf89d0ee0c9213edad6d06ec8d` | Original party poster scan; unresolved exact campaign date |
+| `data/raw/logos/k4/mapam-roundel-candidate.png` | 38606 | `b9f6f2ec368938216a67c471c304dbd94051c17c2f217c7d2d5517164ca48347` | Unresolved crop; not displayed |
+
+Remaining gap accounting: **1** usable crop without a complete campaign date (Mapam k4); **4** inspected letter/card-only or date-ambiguous items without a distinct accepted emblem (Herut k1, Mapai k2, national religious joint list k3, Maki k4); **90** other list gaps lacking acquired qualifying campaign-specific origins/designs/bytes; **32** constituent-election gaps remain separately. These groups describe this run’s evidence, not historical absence.
