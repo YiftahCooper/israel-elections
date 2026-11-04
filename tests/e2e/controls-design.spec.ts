@@ -30,7 +30,9 @@ test('one vote stepper, three goals, overflow for rarer operations', async ({ pa
   await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
   await page.getByRole('region', { name: 'Lists', exact: true }).getByRole('button', { name: 'Likud', exact: true }).click();
   const panel = page.locator('.side-panel');
-  await expect(panel.locator('.numeric-stepper')).toHaveCount(1);
+  // one vote stepper (the seat count above it is its own, single-step control)
+  await expect(panel.locator('.numeric-stepper')).toHaveCount(2);
+  await expect(panel.getByRole('group', { name: 'Votes controls', exact: true })).toHaveCount(1);
   await expect(panel.locator('.vote-goals > button')).toHaveCount(3);
   await expect(panel.getByRole('button', { name: 'Transfer 1pp', exact: true })).not.toBeVisible();
   await panel.getByRole('button', { name: 'More', exact: true }).click();

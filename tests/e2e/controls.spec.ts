@@ -112,7 +112,7 @@ for (const lang of ['he', 'en']) for (const theme of ['light', 'dark']) for (con
   await page.keyboard.press('Escape');
   await page.getByRole('region', { name: lang === 'he' ? 'הרשימות' : 'Lists', exact: true }).getByRole('button', { name: lang === 'he' ? 'הליכוד' : 'Likud', exact: true }).click();
   await expect(page.getByRole('button', { name: lang === 'he' ? /^הגעה למנדט הבא/ : /^Reach next seat/ })).toBeEnabled({ timeout: 30000 });
-  const stepper = page.locator('.side-panel .numeric-stepper');
+  const stepper = page.locator('.side-panel').getByRole('group', { name: lang === 'he' ? 'קולות בקרים' : 'Votes controls', exact: true });
   const minus = await stepper.locator('.stepper-nudge').first().boundingBox();
   const plus = await stepper.locator('.stepper-nudge').last().boundingBox();
   expect(lang === 'he' ? minus!.x > plus!.x : minus!.x < plus!.x).toBe(true);

@@ -116,3 +116,60 @@ test('phone: the lists come straight after the chamber, before blocs and figures
   expect(chamber).toBeLessThan(lists);
   expect(lists).toBeLessThan(figures);
 });
+
+test('a list\'s seat count can be typed: the fewest votes that give it are moved, as one undoable edit', async ({ page }) => {
+  // a first visit: nothing remembered, so the first vote edit asks where the votes come from
+  await page.addInitScript(() => { if (!sessionStorage.getItem('fresh')) { localStorage.removeItem('israel-elections:vote-source'); sessionStorage.setItem('fresh', '1'); } });
+  await start(page); await open(page, 'Likud');
+  const panel = page.locator('.side-panel');
+  const seats = panel.getByRole('textbox', { name: 'Seats', exact: true });
+  const votes = panel.getByRole('textbox', { name: 'Votes', exact: true });
+  await expect(seats).toHaveValue('32');
+  await seats.fill('35'); await seats.press('Enter');
+  // the first seat edit asks where the votes come from; Remember stops asking
+  const ask = page.getByRole('dialog', { name: 'Votes from' });
+  await expect(ask).toContainText('Likud');
+  await ask.getByRole('checkbox', { name: 'Remember' }).check();
+  await ask.getByRole('button', { name: 'Other lists', exact: true }).click();
+  await expect(seats).toHaveValue('35', { timeout: 30000 });
+  await expect(votes).not.toHaveValue('1,115,336');
+  await expect(panel.locator('.sp-seats b')).toHaveText('35');
+  await page.locator('.band').getByRole('button', { name: /^Undo: /i }).click();
+  await expect(seats).toHaveValue('32');
+  // one seat down uses the search already shown beside the goals
+  await expect(panel.getByRole('button', { name: 'Decrease Seats', exact: true })).toBeEnabled({ timeout: 30000 });
+  await panel.getByRole('button', { name: 'Decrease Seats', exact: true }).click();
+  await expect(seats).toHaveValue('31');
+  // below the threshold, 1 seat cannot exist: the list lands on the nearest count and says so
+  await open(page, 'Meretz');
+  await seats.fill('1'); await seats.press('Enter');
+  await expect(page.getByText(/1 seats is not possible from this source; nearest: \d/)).toBeVisible({ timeout: 30000 });
+  await expect(seats).toHaveValue('4');
+  await panel.screenshot({ path: '.backup-scratch/seat-target.png' });
+  // the remembered answer is the setting in Rules → Display, and can go back to asking
+  await page.reload();
+  await page.getByRole('tab', { name: 'Rules', exact: true }).click();
+  const setting = page.getByRole('combobox', { name: 'Votes come from' });
+  await expect(setting).toHaveValue('proportional');
+  await setting.selectOption('ask');
+  await page.getByRole('tab', { name: 'Overview', exact: true }).click();
+  await open(page, 'Likud');
+  const now = Number(await seats.inputValue());
+  await seats.fill(String(now - 2)); await seats.press('Enter');
+  await expect(ask).toBeVisible();
+  await page.screenshot({ path: '.backup-scratch/seat-ask.png' });
+  // a cancelled question changes nothing
+  await page.keyboard.press('Escape');
+  await expect(ask).toBeHidden();
+  await expect(seats).toHaveValue(String(now));
+  // an answer without Remember holds for this list, and is asked again for another
+  await seats.fill(String(now - 2)); await seats.press('Enter');
+  await ask.getByRole('button', { name: 'New voters', exact: true }).click();
+  await expect(seats).toHaveValue(String(now - 2), { timeout: 30000 });
+  await panel.getByRole('button', { name: 'Increase Seats', exact: true }).click();
+  await expect(seats).toHaveValue(String(now - 1), { timeout: 30000 });
+  await expect(ask).toBeHidden();
+  await open(page, 'Labor');
+  await panel.getByRole('button', { name: 'Increase Votes', exact: true }).click();
+  await expect(ask).toBeVisible();
+});

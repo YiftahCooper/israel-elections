@@ -23,6 +23,7 @@ import { TopBar as TopBarView, electionLabel } from './components/TopBar.tsx';
 import { Walkthrough } from './components/Walkthrough.tsx';
 import { ErrorBoundary } from './components/ErrorBoundary.tsx';
 import { WhatIf } from './components/WhatIf.tsx';
+import { SourceDialog } from './components/SourcePicker.tsx';
 
 // The main area's props (scenario, its cached allocation, the dataset) only change with the
 // scenario, so a tab switch, toast or notice does not re-render the cards, chamber and details.
@@ -249,6 +250,7 @@ function Shell() {
         {drawerOpen && <div className="drawer"><ErrorBoundary label={L('List details', 'פרטי רשימה')} resetKey={selected}><ListSidePanel s={committed} r={cr} ds={ds} base={base} baseR={baseR} listId={selected} /></ErrorBoundary></div>}
         <p className="small muted" style={{ margin: 0 }}>{L('Seat allocation is computed by deterministic code from official Central Elections Committee data. Not affiliated with the CEC or any party.', 'חלוקת המנדטים מחושבת בקוד דטרמיניסטי מנתוני ועדת הבחירות המרכזית. אין קשר לוועדת הבחירות או לאף מפלגה.')}</p>
       </main></>}
+      <SourceDialog />
       {toast && <div className={`toast toast-${toast.kind}`} role={toast.kind === 'error' ? 'alert' : 'status'}>{toast.text}</div>}
     </div>
   );

@@ -101,6 +101,7 @@ export const goals = {
   qualify: (id: string): Goal => monotone((a) => qualifiedOf(a, id)),
   disqualify: (id: string): Goal => monotone((a) => !qualifiedOf(a, id)),
   seatsAtLeast: (id: string, n: number): Goal => seatsOnly((a) => seatsOf(a, id) >= n),
+  seatsAtMost: (id: string, n: number): Goal => seatsOnly((a) => seatsOf(a, id) <= n),
   groupSeatsAtLeast: (ids: string[], n: number): Goal => seatsOnly((a) => ids.reduce((s, id) => s + seatsOf(a, id), 0) >= n),
   groupSeatsBelow: (ids: string[], n: number): Goal => seatsOnly((a) => ids.reduce((s, id) => s + seatsOf(a, id), 0) < n),
 };

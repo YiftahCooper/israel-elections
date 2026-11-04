@@ -4,10 +4,12 @@ import { DecimalInput, NumberInput, Seg } from './ui.tsx';
 export interface NumericStep { id: string; label: string; amount: number; unit?: 'pp' }
 /** One mirrored control for precise entry and domain steps. Each press commits once.
  *  In the field, ↑/↓ step by the chosen size and PageUp/PageDown by ten times it (a spin button's keys). */
-export function NumericStepper({ label, value, onCommit, steps, targetForStep, onPreview, min = 0, max = Number.MAX_SAFE_INTEGER, digits, showLabel = false, defaultStep }: {
+export function NumericStepper({ label, value, onCommit, steps, targetForStep, onPreview, min = 0, max = Number.MAX_SAFE_INTEGER, digits, showLabel = false, defaultStep, onStepCommit }: {
   label: string; value: number; onCommit: (n: number) => void; steps: NumericStep[];
   targetForStep?: (step: NumericStep, direction: -1 | 1) => number | null;
   onPreview?: (target: number) => void; min?: number; max?: number; digits?: number; showLabel?: boolean; defaultStep?: string;
+  /** a button or key step, when the caller works the target out itself at commit time */
+  onStepCommit?: (step: NumericStep, direction: -1 | 1) => void;
 }) {
   const L = useL();
   const [selected, setSelected] = useState(defaultStep ?? steps[0]?.id);
@@ -23,14 +25,14 @@ export function NumericStepper({ label, value, onCommit, steps, targetForStep, o
     e.preventDefault();
     const direction = k > 0 ? 1 : -1, times = Math.abs(k);
     const t = clamp(targetFor({ ...step, amount: step.amount * times }, direction));
-    if (allowed(t)) onCommit(t!);
+    if (allowed(t)) { if (onStepCommit && t !== max && t !== min) onStepCommit({ ...step, amount: step.amount * times }, direction); else onCommit(t!); }
   };
   return <div className="numeric-stepper" role="group" aria-label={`${label} ${L('controls', 'בקרים')}`}>
     {showLabel && <span className="small ink2">{label}</span>}
     <div className="stepper-controls" onKeyDown={onKeyDown}>
       {([-1, 1] as const).map(direction => {
         const t = target(direction);
-        const button = <button key={direction} type="button" className="btn stepper-nudge" aria-label={`${direction < 0 ? L('Decrease', 'הפחתת') : L('Increase', 'הוספת')} ${label}`} title={`${direction < 0 ? '−' : '+'}${step.label}`} disabled={!allowed(t)} onFocus={() => { if (allowed(t)) onPreview?.(t!); }} onMouseEnter={() => { if (allowed(t)) onPreview?.(t!); }} onClick={() => { if (allowed(t)) onCommit(t!); }}><span aria-hidden>{direction < 0 ? '−' : '+'}</span></button>;
+        const button = <button key={direction} type="button" className="btn stepper-nudge" aria-label={`${direction < 0 ? L('Decrease', 'הפחתת') : L('Increase', 'הוספת')} ${label}`} title={`${direction < 0 ? '−' : '+'}${step.label}`} disabled={!allowed(t)} onFocus={() => { if (allowed(t)) onPreview?.(t!); }} onMouseEnter={() => { if (allowed(t)) onPreview?.(t!); }} onClick={() => { if (allowed(t)) { if (onStepCommit) onStepCommit(step, direction); else onCommit(t!); } }}><span aria-hidden>{direction < 0 ? '−' : '+'}</span></button>;
         return direction < 0 ? <span key={direction} className="stepper-value-row">{button}{digits === undefined ? <NumberInput value={value} label={label} onCommit={onCommit} /> : <DecimalInput value={value} label={label} onCommit={onCommit} digits={digits} />}</span> : button;
       })}
     </div>

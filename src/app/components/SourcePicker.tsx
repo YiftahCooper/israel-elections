@@ -1,9 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { Scenario, SimList } from '../../model/scenario.ts';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt } from '../format.ts';
-import { setState, useVoteSource } from '../store.ts';
+import { answerSource, setState, useStore, useVoteSource } from '../store.ts';
 import { Info } from './ui.tsx';
 
 /** The single setting that decides how every vote edit on a list is balanced. */
@@ -34,5 +34,43 @@ export function SourcePicker({ s, l }: { s: Scenario; l: SimList }) {
         </select>
       </label>
     </div>
+  );
+}
+
+/** The one question every vote edit asks while "Ask each time" is set (Rules → Display): where the
+ *  votes come from. The answer also becomes the source shown above, so every control agrees. */
+export function SourceDialog() {
+  const L = useL();
+  const lang = useLang();
+  const ask = useStore((st) => st.sourceAsk);
+  const s = useStore((st) => st.scenario);
+  const [remember, setRemember] = useState(false);
+  const dialog = useRef<HTMLDialogElement>(null);
+  useEffect(() => {
+    const d = dialog.current; if (!d) return;
+    if (ask && !d.open) { setRemember(false); d.showModal(); d.focus(); /* not a choice: the Enter that typed the edit must not also pick one */ }
+    if (!ask && d.open) d.close();
+  }, [ask]);
+  const cancel = () => setState({ sourceAsk: null });
+  const others = (s?.lists ?? []).filter((x) => !ask?.exclude.includes(x.id) && !x.withdrawn && x.votes > 0).sort((a, b) => b.votes - a.votes);
+  return (
+    <dialog ref={dialog} tabIndex={-1} className="source-ask" aria-label={L('Votes from', 'הקולות מגיעים מ')} onCancel={(e) => { e.preventDefault(); cancel(); }}
+      onKeyDown={(e) => { if (e.key === 'Escape') e.stopPropagation(); }}
+      onClick={(e) => { if (e.target === e.currentTarget) cancel(); }}>
+      <p className="small" style={{ margin: 0 }}><b>{ask?.title}</b> · {L('votes from', 'הקולות מ')}
+        <Info title={L('Votes from', 'מקור הקולות')}>{L('Other lists: taken from all, in proportion; turnout unchanged. New voters: turnout changes. One list: only that list gives or takes.', 'שאר הרשימות: מכולן, באופן יחסי; ההצבעה ללא שינוי. מצביעים חדשים: ההצבעה משתנה. רשימה אחת: רק היא נותנת או מקבלת.')}</Info></p>
+      <div className="row">
+        <button className="btn small" onClick={() => answerSource({ kind: 'proportional' }, remember)}>{L('Other lists', 'שאר הרשימות')}</button>
+        <button className="btn small" onClick={() => answerSource({ kind: 'new' }, remember)}>{L('New voters', 'מצביעים חדשים')}</button>
+        <select className="small" aria-label={L('One list', 'רשימה אחת')} value="" onChange={(e) => e.target.value && answerSource({ kind: 'transfer', listId: e.target.value }, remember)}>
+          <option value="">{L('One list…', 'רשימה אחת…')}</option>
+          {others.map((x) => <option key={x.id} value={x.id}>{listLabel(x, lang)}</option>)}
+        </select>
+      </div>
+      <div className="row" style={{ justifyContent: 'space-between' }}>
+        <label className="row small" title={L('Change later in Rules → Display', 'לשינוי: כללים ← תצוגה')}><input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} />{L('Remember', 'לזכור')}</label>
+        <button className="btn small ghost" onClick={cancel}>{L('Cancel', 'ביטול')}</button>
+      </div>
+    </dialog>
   );
 }

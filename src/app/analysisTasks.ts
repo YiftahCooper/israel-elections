@@ -15,6 +15,8 @@ export type ListGoal = SecurityPart | 'disqualify';
 export type AnalysisTask =
   /** the smallest change of one list's votes that reaches the goal (the list-details boundary tools) */
   | { kind: 'listSearch'; input: AllocationInput; src: VoteSource; goal: ListGoal; id: string; seats: number }
+  /** the smallest change of one list's votes that brings it to n seats (more: at least n; fewer: at most n) */
+  | { kind: 'seatTarget'; input: AllocationInput; src: VoteSource; id: string; seats: number; n: number }
   /** one seat-security figure for one list */
   | { kind: 'security'; input: AllocationInput; src: VoteSource; part: SecurityPart; item: SecurityItem }
   /** the smallest transfer from one list to another that takes a group of lists across n seats */
@@ -24,12 +26,13 @@ export type AnalysisTask =
 
 export interface TransferOutcome { found: boolean; votes: bigint | null; exact: boolean; reason?: SearchResult['reason'] }
 export type TaskResult<T extends AnalysisTask> =
-  T extends { kind: 'listSearch' } ? SearchResult : T extends { kind: 'security' } ? SecurityFigure : T extends { kind: 'groupTransfer' } ? TransferOutcome : SweepResult;
+  T extends { kind: 'listSearch' | 'seatTarget' } ? SearchResult : T extends { kind: 'security' } ? SecurityFigure : T extends { kind: 'groupTransfer' } ? TransferOutcome : SweepResult;
 
 export function runTask<T extends AnalysisTask>(task: T): TaskResult<T>;
 export function runTask(task: AnalysisTask): SearchResult | SecurityFigure | TransferOutcome | SweepResult {
   switch (task.kind) {
     case 'listSearch': return listSearch(task.input, task.src, task.goal, task.id, task.seats);
+    case 'seatTarget': return seatTarget(task.input, task.src, task.id, task.seats, task.n);
     case 'security': return securityPart(task.input, task.src, task.part, task.item);
     case 'groupTransfer': {
       const goal = task.below ? goals.groupSeatsBelow(task.ids, task.n) : goals.groupSeatsAtLeast(task.ids, task.n);
@@ -48,6 +51,12 @@ export function listSearch(input: AllocationInput, src: VoteSource, goal: ListGo
   if (goal === 'qualify') return minimalChange(input, id, src, goals.qualify(id));
   if (goal === 'gain') return minimalChange(input, id, src, goals.seatGain(id));
   return minimalChange(input, id, src, seats > 0 ? goals.seatLoss(id) : goals.disqualify(id), 'lose');
+}
+
+/** The fewest votes moved (towards the list when n is above its seats, away from it when below) that
+ *  bring it to n seats; when no count gives exactly n, the first count past it. */
+export function seatTarget(input: AllocationInput, src: VoteSource, id: string, seats: number, n: number): SearchResult {
+  return n > seats ? minimalChange(input, id, src, goals.seatsAtLeast(id, n)) : minimalChange(input, id, src, goals.seatsAtMost(id, n), 'lose');
 }
 
 /** The figure for one part: the minimum found (for 'lose', the votes that can go without loss), or null when none was found. */

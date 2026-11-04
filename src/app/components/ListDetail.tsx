@@ -17,11 +17,12 @@ import { rat } from '../../engine/rational.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import { toEngineInput, votesCast, type Scenario, type SimList } from '../../model/scenario.ts';
 import { runTasks } from '../analysisPool.ts';
+import type { AnalysisTask } from '../analysisTasks.ts';
 import { listLabel, referenceLabel, warningText } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtFrac, fmtInt, fmtPct, fmtRat, fmtSigned, signed } from '../format.ts';
-import { dispatch, dispatchMany, getState, previewAction, setState, toast, useFeature, useLevel, useVoteSource, useDigits } from '../store.ts';
-import { clampTarget, deltaAction, toVoteSource, votesForShare, voteSourceLabel } from '../voteEdit.ts';
+import { dispatch, dispatchMany, getState, previewAction, setState, toast, useFeature, useLevel, useVoteSource, useDigits, withSource } from '../store.ts';
+import { clampTarget, deltaAction, toVoteSource, type SourceChoice, votesForShare, voteSourceLabel } from '../voteEdit.ts';
 import { Candidates } from './Candidates.tsx';
 import { JointParties } from './JointParties.tsx';
 import { DecimalInput, Info, TextField } from './ui.tsx';
@@ -120,25 +121,62 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
   const nameOf = (id: string) => { const x = s.lists.find((y) => y.id === id); return x ? listLabel(x, lang) : L('Removed list', 'רשימה שהוסרה'); };
 
   /** every edit of this list's votes goes through the shared source setting */
-  const editTo = (target: number) => {
+  const editTo = (target: number, from: SourceChoice = src) => {
     const cur = getState().scenario; const cl = cur?.lists.find((x) => x.id === l.id); if (!cur || !cl) return;
-    const t = clampTarget(cur, cl, target, src);
+    const t = clampTarget(cur, cl, target, from);
     if (t !== Math.round(target)) toast('info', L(`Limited to ${fmtInt(t)}: the chosen source cannot supply more votes.`, `הוגבל ל-${fmtInt(t)}: במקור שנבחר אין יותר קולות.`));
-    const a = deltaAction(cur, cl, t - cl.votes, src, histShares);
+    const a = deltaAction(cur, cl, t - cl.votes, from, histShares);
     if (a) dispatch(a);
   };
   const [consequence, setConsequence] = useState('');
   useEffect(() => setConsequence(''), [s, src]);
+  // Every vote edit here asks where its votes come from (one shared dialog) unless that is remembered or was
+  // already answered for this list. Targets that depend on the source are worked out under the answer.
+  const commit = (run: (from: SourceChoice) => void) => withSource(`list:${l.id}`, listLabel(l, lang), [l.id], run);
+  const job = useRef<(() => void) | null>(null);
+  useEffect(() => () => job.current?.(), []);
+  /** a search under `from` (the one already on screen when the source is unchanged), then an edit from its result */
+  const searchThen = (from: SourceChoice, task: AnalysisTask, shown: SearchResult | undefined, then: (res: SearchResult) => void) => {
+    job.current?.(); job.current = null;
+    if (shown && JSON.stringify(from) === JSON.stringify(src)) return then(shown);
+    setConsequence(L('Searching…', 'מחפש…'));
+    const at = s;
+    job.current = runTasks([task], (_, res) => { job.current = null; if (getState().scenario === at) { setConsequence(''); then(res as SearchResult); } });
+  };
+  const notFound = (res: SearchResult) => toast('info', res.reason === 'inconclusive' || (res.found && !res.exact) ? L('Inconclusive within the search limit', 'לא הוכרע בטווח החיפוש') : L('Not reachable from this source', 'לא ניתן להגיע מהמקור הזה'));
+  /** a typed or stepped seat count: the fewest votes that give it, as one ordinary (marked, undoable) vote edit */
+  const seatsFrom = (n: number, from: SourceChoice) => {
+    const shown = lr.qualified && n === lr.seats + 1 ? margins?.gain : lr.qualified && lr.seats > 0 && n === lr.seats - 1 ? margins?.lose : undefined;
+    searchThen(from, { kind: 'seatTarget', input: toEngineInput(s), src: toVoteSource(from), id: l.id, seats: lr.seats, n }, shown, (res) => {
+      if (!res.found || res.votes === null) return notFound(res);
+      const got = res.after?.lists.find((x) => x.id === l.id)?.seats ?? n;
+      editTo(l.votes + (n > lr.seats ? 1 : -1) * Number(res.votes), from);
+      if (got !== n) toast('info', L(`${n} seats is not possible from this source; nearest: ${got}`, `${n} מנדטים אינם אפשריים מהמקור הזה; הקרוב ביותר: ${got}`));
+    });
+  };
+  /** a boundary goal: keep the seats with the fewest votes, or sit just either side of the threshold */
+  const goalFrom = (goal: 'lose' | 'qualify' | 'disqualify', from: SourceChoice) => {
+    const shown = margins?.[goal];
+    searchThen(from, { kind: 'listSearch', input: toEngineInput(s), src: toVoteSource(from), goal, id: l.id, seats: lr.seats }, shown, (res) => {
+      if (!res.found || res.votes === null || !res.exact) return notFound(res);
+      const k = Number(res.votes);
+      editTo(goal === 'qualify' ? l.votes + k : goal === 'disqualify' ? l.votes - k : l.votes - k + 1, from);
+    });
+  };
+  const seatVotes = (n: number) => {
+    const m = n === lr.seats + 1 ? (lr.qualified ? margins?.gain : margins?.qualify) : n === lr.seats - 1 && lr.qualified ? margins?.lose : undefined;
+    return m?.found && m.votes !== null ? l.votes + (n > lr.seats ? 1 : -1) * Number(m.votes) : null;
+  };
   const explainTarget = (target: number) => {
     const t = clampTarget(s, l, target, src), a = deltaAction(s, l, t - l.votes, src, histShares);
     if (!a) return setConsequence(L('Seats unchanged', 'המנדטים ללא שינוי'));
     try { const next = allocate(toEngineInput(applyAction(s, a))); setConsequence(next.lists.map(x => ({ id: x.id, d: x.seats - (r.lists.find(y => y.id === x.id)?.seats ?? 0) })).filter(x => x.d).map(x => `${nameOf(x.id)} ${signed(x.d)}`).join(' · ') || L('Seats unchanged', 'המנדטים ללא שינוי')); } catch { setConsequence(''); }
   };
   /** A one-press vote edit. Goals show the signed change they make, so every goal reads the same way. */
-  const quick = (label: string, target: number | null, showDelta = true) => {
+  const quick = (label: string, target: number | null, showDelta = true, go?: (from: SourceChoice) => void) => {
     const t = target === null ? null : clampTarget(s, l, target, src);
     const delta = showDelta && t !== null && t !== l.votes ? `(${fmtSigned(t - l.votes)})` : null;
-    return <button key={label} className="btn small" disabled={t === null || t === l.votes} aria-description={delta ? `${delta} · ${sourceName}` : sourceName} onMouseEnter={() => { if (t !== null) explainTarget(t); }} onFocus={() => { if (t !== null) explainTarget(t); }} onClick={() => { if (t !== null) editTo(t); }}><span dir={/^[×÷]/.test(label) ? 'ltr' : undefined}>{label}</span>{delta && <bdi dir="ltr" aria-hidden>{delta}</bdi>}</button>;
+    return <button key={label} className="btn small" disabled={t === null || t === l.votes} aria-description={delta ? `${delta} · ${sourceName}` : sourceName} onMouseEnter={() => { if (t !== null) explainTarget(t); }} onFocus={() => { if (t !== null) explainTarget(t); }} onClick={() => { if (t !== null) commit(go ?? ((from) => editTo(target!, from))); }}><span dir={/^[×÷]/.test(label) ? 'ltr' : undefined}>{label}</span>{delta && <bdi dir="ltr" aria-hidden>{delta}</bdi>}</button>;
   };
   const transferShown = useFeature('voteSource') === 'show';
   const total = Number(r.totalValid);
@@ -169,19 +207,25 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
         <p key={i} className="callout small">{warningText(w, s, lang)}</p>)}
       <section>
         <Feature id="voteStart"><StartFrom s={s} part="votes" /></Feature>
+        {!l.withdrawn && <div className="seat-target">
+          <NumericStepper label={L('Seats', 'מנדטים')} showLabel value={lr.seats} onCommit={(n) => commit((from) => seatsFrom(n, from))} max={s.rules.seats}
+              steps={[{ id: '1', label: '1', amount: 1 }]} onPreview={(n) => { const t = seatVotes(n); if (t !== null) explainTarget(t); }} />
+            <Info title={L('Seats', 'מנדטים')}>{L('Type a seat count: the fewest votes that give it are moved.', 'הקלידו מספר מנדטים: יועברו הכי מעט קולות שמביאים אותו.')}</Info>
+        </div>}
         <h3>{L('Votes', 'קולות')} <EditMarker s={s} path={['lists', l.id, 'votes']} /></h3>
         {!lr.qualified && !l.withdrawn && Number(s.rules.thresholdPct) > 0 && <p className="small ink2">{L('Below the threshold', 'מתחת לאחוז החסימה')}</p>}
         {l.withdrawn && <p className="small callout" style={{ marginTop: 0 }}>{L(`This list has withdrawn: its ${fmtInt(l.heldVotes ?? 0)} ballots count as invalid.`, `הרשימה פרשה: ${fmtInt(l.heldVotes ?? 0)} הפתקים שלה נחשבים פסולים.`)}</p>}
         <fieldset disabled={l.withdrawn} style={{ border: 0, padding: 0, margin: 0, minWidth: 0, display: 'grid', gap: 8 }}>
-          <NumericStepper label={L('Votes', 'קולות')} value={l.votes} onCommit={editTo} max={clampTarget(s, l, Number.MAX_SAFE_INTEGER, src)}
+          <NumericStepper label={L('Votes', 'קולות')} value={l.votes} onCommit={(v) => commit((from) => editTo(v, from))} max={clampTarget(s, l, Number.MAX_SAFE_INTEGER, src)}
+            onStepCommit={(step, direction) => commit((from) => editTo(step.unit === 'pp' ? votesForShare(s, l, pctValid + direction * step.amount, from) ?? l.votes : l.votes + direction * step.amount, from))}
             steps={[{ id: '1', label: '1', amount: 1 }, { id: '1k', label: '1k', amount: 1000 }, { id: '10k', label: '10k', amount: 10000 }, { id: '0.1pp', label: L('0.1pp', '0.1 נק׳'), amount: 0.1, unit: 'pp' }, { id: '1pp', label: L('1pp', '1 נק׳'), amount: 1, unit: 'pp' }]}
             defaultStep={defaultStep}
             targetForStep={(step, direction) => step.unit === 'pp' ? votesForShare(s, l, pctValid + direction * step.amount, src) : l.votes + direction * step.amount}
             onPreview={explainTarget} />
           {!l.withdrawn && <><div className="vote-goals">
-            {lr.qualified && quick(L('Reach next seat', 'הגעה למנדט הבא'), gainTarget)}
-            {lr.seats > 0 && quick(L(`Fewest votes to keep ${lr.seats} seats`, `הכי מעט קולות לשמירת ${lr.seats} מנדטים`), margins?.lose?.exact && margins.lose.found && margins.lose.votes !== null ? l.votes - Number(margins.lose.votes) + 1 : null)}
-            {Number(s.rules.thresholdPct) > 0 && quick(lr.qualified ? L('Just below threshold', 'מעט מתחת לחסימה') : L('Cross the threshold', 'מעבר אחוז החסימה'), boundary === null ? null : boundary - (lr.qualified ? 1 : 0))}
+            {lr.qualified && quick(L('Reach next seat', 'הגעה למנדט הבא'), gainTarget, true, (from) => seatsFrom(lr.seats + 1, from))}
+            {lr.seats > 0 && quick(L(`Fewest votes to keep ${lr.seats} seats`, `הכי מעט קולות לשמירת ${lr.seats} מנדטים`), margins?.lose?.exact && margins.lose.found && margins.lose.votes !== null ? l.votes - Number(margins.lose.votes) + 1 : null, true, (from) => goalFrom('lose', from))}
+            {Number(s.rules.thresholdPct) > 0 && quick(lr.qualified ? L('Just below threshold', 'מעט מתחת לחסימה') : L('Cross the threshold', 'מעבר אחוז החסימה'), boundary === null ? null : boundary - (lr.qualified ? 1 : 0), true, (from) => goalFrom(lr.qualified ? 'disqualify' : 'qualify', from))}
             {baseList && baseList.votes !== l.votes && quick(L('Restore votes', 'שחזור הקולות'), baseList.votes)}
           </div>
           <p className="tiny seat-search-status" role="status">{(() => {
@@ -191,13 +235,13 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
             return <><bdi dir="ltr">+{seats}</bdi> {seats === 1 ? L('seat', 'מנדט') : L('seats', 'מנדטים')} · {gain.exact ? L('proven minimum', 'מינימום מוכח') : L('sampled; minimum unproven', 'דגימה; המינימום לא הוכח')}</>;
           })()}</p>
           <p className="tiny quick-consequence" role="status">{consequence}</p></>}
-          <LiveSlider key={l.id} l={l} hist={histVotes} thr={thr} onCommit={editTo} />
+          <LiveSlider key={l.id} l={l} hist={histVotes} thr={thr} onCommit={(v) => commit((from) => editTo(v, from))} />
           {simple && <p className="tiny ink2" style={{ margin: 0 }}>{sourceName}</p>}
           <Feature id="voteSource"><SourcePicker s={s} l={l} /></Feature>
           <button className="btn small more-trigger" aria-expanded={moreOpen} onClick={() => setMoreOpen(v => !v)}>{L('More', 'עוד')} <span aria-hidden>▾</span></button>
           {moreOpen && <div className="vote-more">
             <div className="row">{quick('×2', l.votes * 2, false)}{quick('÷2', Math.round(l.votes / 2), false)}</div>
-            <label className="row small">{L('Share of valid votes (%)', 'שיעור מהקולות הכשרים (%)')}<DecimalInput value={pctValid} digits={Math.max(2, digits)} width={74} label={L('Share of valid votes (%)', 'שיעור מהקולות הכשרים (%)')} onCommit={p => { const t = votesForShare(s, l, p, src); if (t !== null) editTo(t); }} /></label>
+            <label className="row small">{L('Share of valid votes (%)', 'שיעור מהקולות הכשרים (%)')}<DecimalInput value={pctValid} digits={Math.max(2, digits)} width={74} label={L('Share of valid votes (%)', 'שיעור מהקולות הכשרים (%)')} onCommit={p => commit((from) => { const t = votesForShare(s, l, p, from); if (t !== null) editTo(t, from); })} /></label>
             {/* the vote-source disclosure above already offers this level's way in; no second one here */}
             {transferShown && <TransferStep s={s} l={l} />}
           </div>}

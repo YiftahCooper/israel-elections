@@ -810,6 +810,15 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .numeric-stepper .seg { display: flex; inline-size: 100%; }
 .numeric-stepper .seg button { flex: 1; padding: 2px 5px; min-block-size: 26px; font-size: 11px; }
 .vote-goals { display: grid; gap: 4px; }
+/* the seat count, typed or stepped: a compact row above the vote controls */
+.seat-target { display: flex; align-items: center; gap: 6px; }
+.seat-target .numeric-stepper { grid-auto-flow: column; grid-template-columns: auto 132px; align-items: center; gap: 8px; }
+.seat-target .numeric-stepper > span { font-weight: 600; color: var(--ink); }
+.source-ask[open] { display: grid; gap: 10px; padding: 14px 16px; border: 1px solid var(--rule-2); border-radius: 8px; background: var(--surface); color: var(--ink); max-inline-size: min(92vw, 26rem); }
+.source-ask:focus { outline: none; }
+.source-ask::backdrop { background: rgb(0 0 0 / .25); }
+.source-ask .row { gap: 6px; align-items: center; }
+.source-ask select { max-inline-size: 11rem; }
 .vote-goals > button { text-align: start; justify-content: space-between; inline-size: 100%; min-block-size: 32px; }
 .more-trigger { justify-self: start; }
 .vote-more { display: grid; gap: 10px; padding: 10px 0; border-block-start: 1px solid var(--rule); }
