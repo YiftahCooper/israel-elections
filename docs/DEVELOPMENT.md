@@ -48,8 +48,9 @@ rounding before integer votes reach the engine; the whole interface is not bigin
 monotonicity; non-monotone seat searches check smaller changes exhaustively within a budget,
 and use sampling beyond it. Inspect `exact`, `nonMonotonic`, `reason` and sweep `step` before
 claiming global minimality or complete breakpoint coverage. The sensitivity view labels
-sampled vote sweeps, but the current seat-security table drops the search exactness flag
-and still describes its figures as exact. Treat large seat-security minima with that limit.
+sampled vote sweeps. Seat security carries exactness, search bounds and reasons through worker
+results: sampled successes are upper bounds, and unsuccessful bounded searches are not proof
+of impossibility. Only proven figures enter the closest-calls summary.
 
 In the interface these searches (seat security, list boundaries, vote sweeps, bloc majorities)
 run on a small Web Worker pool (`src/app/analysisPool.ts`), or on the main thread when workers
