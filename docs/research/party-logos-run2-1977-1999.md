@@ -1,7 +1,7 @@
 # Party logos, run 2: 1977–1999
 
 As of 4 November 2026. Scope: the 76 missing **whole-list** logos among 89
-seat-winning lists in k9–k15. Existing 14 logos are preserved. Constituents are
+seat-winning lists in k9–k15. Existing 13 logos are preserved. Constituents are
 separate identities and are not substituted for joint-list lockups. This is an
 acquisition and search record under decision 0089, not a claim that all logos
 have been recovered. Each gap receives a fresh general search and a targeted
@@ -510,4 +510,89 @@ Inspected [catalogue](https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%
   Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/newspapers/mar/1988/02/05/01/article/141?&), [lead 2](https://www.nli.org.il/he/discover/israel/elections), [lead 3](https://www.nli.org.il/he/newspapers/mar/1988/03/25/01/page/51).
 
 Batch k12 verification: dataset builder passed; all 26 datasets compared equal to prior commit after removing only `logo` and `builtAt`. `npx vitest run`: 57 files / 484 tests passed; `npx tsc -p tsconfig.json --noEmit`, `npx vite build`, and logo validator passed. Only the model digest was re-recorded after the comparison; other four digest families passed unchanged. 
+
+## k13 · 1992
+
+### אמת — העבודה בראשות רבין
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"העבודה רבין" "1992" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://ashdod.muni.il/he-il/%D7%90%D7%AA%D7%A8-%D7%94%D7%A2%D7%99%D7%A8/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F-%D7%97%D7%93%D7%A9%D7%95%D7%AA/%D7%97%D7%93%D7%A9%D7%95%D7%AA/2013/10/%D7%A2%D7%A6%D7%A8%D7%AA-%D7%9C%D7%94%D7%A0%D7%A6%D7%97%D7%AA-%D7%99%D7%A6%D7%97%D7%A7-%D7%A8%D7%91%D7%99%D7%9F), [lead 2](https://www.walla.co.il/news/politics/3396238), [lead 3](https://www.ynet.co.il/articles/0,7340,L-425348,00.html), [lead 4](https://fs.knesset.gov.il/12/Plenum/12_ptm_531956.pdf).
+- NLI targeted discovery: `query: site:nli.org.il "העבודה רבין" "1992" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/newspapers/hadashot/1992/12/21/01/page/2), [lead 2](https://www.nli.org.il/he/newspapers/hadashot/1992/04/17/01/article/22?&), [lead 3](https://www.nli.org.il/en/newspapers/mar/1992/04/22/01/page/2?&).
+
+### מחל — הליכוד
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"ליכוד" "1992" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.facebook.com/KnessetTv/videos/%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%9E%D7%97%D7%9B%D7%94-%D7%9C%D7%A8%D7%91%D7%99%D7%9F-%EF%B8%8F%D7%A2%D7%9D-%D7%A4%D7%AA%D7%99%D7%97%D7%AA-%D7%A9%D7%99%D7%93%D7%95%D7%A8%D7%99-%D7%94%D7%AA%D7%A2%D7%9E%D7%95%D7%9C%D7%94-%D7%A9%D7%9C-%D7%9E%D7%A2%D7%A8%D7%9B%D7%AA-%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA-%D7%94%D7%A0%D7%95%D7%9B%D7%97%D7%99%D7%AA-%D7%90%D7%A0%D7%97%D7%A0%D7%95-%D7%97%D7%95%D7%96%D7%A8%D7%99%D7%9D-/1745645527560538), [lead 2](https://www.tiktok.com/@knessettv/video/7696491262928620820), [lead 3](https://www.instagram.com/reel/DcYwoWpN-JO), [lead 4](https://www.idi.org.il/media/20997/%D7%94%D7%9E%D7%A4%D7%9C%D7%92%D7%95%D7%AA-%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C-2021-1992.pdf).
+- NLI targeted discovery: `query: site:nli.org.il "ליכוד" "1992" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/ar/newspapers/hadashot/1992/04/30/01/article/6?&), [lead 2](https://www.nli.org.il/en/newspapers/mar/1992/02/16/01), [lead 3](https://www.nli.org.il/he/newspapers/hadashot/1992/05/25/01).
+
+### ץ — צומת - התנועה להתחדשות ציונית ובלתי מפלגתיים
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"צומת" "1992" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.idi.org.il/policy/parties-and-elections/elections/1992), [lead 2](https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA_%D7%A6%D7%95%D7%9E%D7%AA), [lead 3](https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf), [lead 4](https://elections.walla.co.il/item/2581811).
+- NLI targeted discovery: `query: site:nli.org.il "צומת" "1992" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/newspapers/hadashot/1992/06/26/01/page/8?&), [lead 2](https://www.nli.org.il/he/newspapers/mar/1992/01/31/01/article/301?&), [lead 3](https://www.nli.org.il/ar/newspapers/mar/1992/03/13/01/page/206).
+
+### שס — ש״ס - התאחדות הספרדים שומרי תורה
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"שס" "1992" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA_%D7%A9%22%D7%A1), [lead 2](https://www.idi.org.il/media/20997/%D7%94%D7%9E%D7%A4%D7%9C%D7%92%D7%95%D7%AA-%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C-2021-1992.pdf), [lead 3](https://fs.knesset.gov.il/12/Plenum/12_ptm_531910.pdf), [lead 4](https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf).
+- NLI targeted discovery: `query: site:nli.org.il "שס" "1992" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://blog.nli.org.il/politics), [lead 2](https://www.nli.org.il/he/newspapers/mar/1992/02/14/01/article/202.2?&).
+
+### ב — מפד״ל חזית דתית לאומית - המזרחי הפועל המזרחי
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"מפדל" "1992" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.instagram.com/reel/DeeXK3vKF0K), [lead 2](https://www.instagram.com/reel/Decb20IhxK5), [lead 3](https://www.instagram.com/reel/DecJrDQqSL0), [lead 4](https://library.mevaker.gov.il/sites/DigitalLibrary/Documents/primaries/2009-Keneset18-Makdimot-Dec18/2009-Makdimot-Knesset18-Report.pdf).
+- NLI targeted discovery: `query: site:nli.org.il "מפדל" "1992" תעמולה`
+  Empty result set for this exact query.
+
+### ג — יהדות התורה המאוחדת - אגודת ישראל - דגל התורה - הרב יצחק פרץ
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"יהדות התורה" "1992" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%99%D7%94%D7%93%D7%95%D7%AA_%D7%94%D7%AA%D7%95%D7%A8%D7%94), [lead 2](https://www.idi.org.il/policy/parties-and-elections/parties/yahadut-hatorah), [lead 3](https://www.c14.co.il/article/1764484), [lead 4](https://library.mevaker.gov.il/sites/DigitalLibrary/Pages/Reports/2314-1.aspx).
+- NLI targeted discovery: `query: site:nli.org.il "יהדות התורה" "1992" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/ar/newspapers/mar/1992/02/28/01/article/237?&), [lead 2](https://www.nli.org.il/en/newspapers?a=d&d=mar19920228-01.1.100&l=en).
+
+### ו — חזית דמוקרטית לשלום ולשוויון - המפלגה הקומוניסטית הישראלית וחוגי ציבור יהודים וערבים
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"חדש" "1992" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.idi.org.il/policy/parties-and-elections/elections/1992), [lead 2](https://www.nevo.co.il/law_html/law00/72887.htm), [lead 3](https://www.zman.co.il/718660), [lead 4](https://www.instagram.com/reel/Decb20IhxK5).
+- NLI targeted discovery: `query: site:nli.org.il "חזית דמוקרטית לשלום" "1992" תעמולה`
+  Empty result set for this exact query.
+
+### ט — מולדת
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"מולדת" "1992" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.facebook.com/KnessetTv/videos/%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%9E%D7%97%D7%9B%D7%94-%D7%9C%D7%A8%D7%91%D7%99%D7%9F-%EF%B8%8F%D7%A2%D7%9D-%D7%A4%D7%AA%D7%99%D7%97%D7%AA-%D7%A9%D7%99%D7%93%D7%95%D7%A8%D7%99-%D7%94%D7%AA%D7%A2%D7%9E%D7%95%D7%9C%D7%94-%D7%A9%D7%9C-%D7%9E%D7%A2%D7%A8%D7%9B%D7%AA-%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA-%D7%94%D7%A0%D7%95%D7%9B%D7%97%D7%99%D7%AA-%D7%90%D7%A0%D7%97%D7%A0%D7%95-%D7%97%D7%95%D7%96%D7%A8%D7%99%D7%9D-/1745645527560538), [lead 2](https://he.wikipedia.org/wiki/%D7%9E%D7%95%D7%9C%D7%93%D7%AA_(%D7%9E%D7%A4%D7%9C%D7%92%D7%94)), [lead 3](https://www.idi.org.il/policy/parties-and-elections/parties/moledet), [lead 4](https://elections.walla.co.il/item/2581811).
+- NLI targeted discovery: `query: site:nli.org.il "מולדת" "1992" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/en/archives/NNL_ARCHIVE_AL997012156954105171/NLI), [lead 2](https://www.nli.org.il/en/newspapers/hbkr/1947/01/12/01/page/1?&).
+
+### ע — המפלגה הדמוקרטית הערבית
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"המפלגה הדמוקרטית הערבית" "1992" (כרזה OR לוגו OR תעמולה)   -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.idi.org.il/policy/parties-and-elections/parties/arab-democratic-party), [lead 2](https://dayan.org/file-download/download/public/16324), [lead 3](https://fs.knesset.gov.il/12/Plenum/12_ptm_531910.pdf), [lead 4](https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%95%D7%AA_%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C).
+- NLI targeted discovery: `query: site:nli.org.il "המפלגה הדמוקרטית הערבית" "1992" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/newspapers/hadashot/1992/04/17/01/page/70?&), [lead 2](https://www.nli.org.il/he/newspapers/hadashot/1992/04/17/01/article/143?&).
+
+Batch k13 verification: dataset builder passed; all 26 datasets compared equal to prior commit after removing only `logo` and `builtAt`. `npx vitest run`: 57 files / 484 tests passed; `npx tsc -p tsconfig.json --noEmit`, `npx vite build`, and logo validator passed. No logo or digest changed in this batch. 
 
