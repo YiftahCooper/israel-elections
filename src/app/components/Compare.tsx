@@ -82,7 +82,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
         )}
       </div>
 
-      <div className="grid2" style={{ marginBottom: 12, alignItems: 'start' }}>
+      <div className="grid2 stack-sm" style={{ marginBottom: 12, alignItems: 'start' }}>
         <Slope groups={groups.map((g) => ({ key: g.key, seatsA: g.seatsA, seatsB: g.seatsB, label: gName(g.bIds.length ? g.bIds : g.aIds, g.bIds.length ? s : a) }))}
           nameA={compareWith === 'historical' ? L('Historical', 'בפועל') : a.name} nameB={s.name || L('Scenario', 'התרחיש')}
           colorOf={(key) => { const g = groups.find((x) => x.key === key)!; return (s.lists.find((l) => l.id === g.bIds[0]) ?? a.lists.find((l) => l.id === g.aIds[0]))?.color ?? '#888'; }} />

@@ -97,7 +97,9 @@ h2, h3, h4 { margin: 0 0 6px; line-height: 1.25; }
 h3, h4 { font-size: 13px; font-weight: 650; }
 .section-title { font-size: 12px; font-weight: 650; color: var(--ink-2); text-transform: none; margin: 14px 0 6px; }
 .row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 14px; }
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 14px; }
+@media (max-width: 600px) { .grid2.stack-sm { grid-template-columns: minmax(0, 1fr); } }
+.credits, .credits a { overflow-wrap: anywhere; }
 .kv { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3px 10px; align-items: baseline; }
 .kv > :nth-child(odd) { color: var(--ink-2); }
 .kv > :nth-child(even) { text-align: end; font-variant-numeric: tabular-nums; }
@@ -121,7 +123,8 @@ input.num-in { width: 120px; text-align: end; font-variant-numeric: tabular-nums
 input[type="range"] { width: 100%; accent-color: var(--ink); }
 input[type="color"] { width: 34px; height: 28px; padding: 0 2px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
 .field { display: grid; gap: 3px; font-size: 12.5px; color: var(--ink-2); }
-.chip { display: inline-flex; align-items: center; gap: 5px; padding: 1px 7px; border-radius: 999px; border: 1px solid var(--line); font-size: 12px; white-space: nowrap; background: var(--surface); }
+.chip { display: inline-flex; align-items: center; gap: 5px; padding: 1px 7px; border-radius: 999px; border: 1px solid var(--line); font-size: 12px; white-space: nowrap; background: var(--surface); max-width: 100%; }
+.chip.no, .chip.exp { white-space: normal; border-radius: 10px; }
 .chip.ok { border-color: color-mix(in srgb, var(--good) 45%, var(--line)); }
 .chip.no { border-color: color-mix(in srgb, var(--bad) 45%, var(--line)); }
 .chip.exp { border-color: var(--exp); color: var(--exp); }
@@ -231,7 +234,7 @@ input[type="color"] { width: 34px; height: 28px; padding: 0 2px; border: 1px sol
 
 /* ---------- walkthrough */
 .steps { display: flex; gap: 4px; flex-wrap: wrap; }
-.steps button { min-width: 28px; }
+.steps button { min-width: 28px; max-width: 100%; white-space: normal; text-align: start; }
 .formula { font-family: var(--mono); background: var(--surface-2); border-radius: 6px; padding: 6px 10px; display: inline-block; direction: ltr; unicode-bidi: isolate; }
 details > summary { cursor: pointer; }
 .callout { border: 1px solid var(--line); padding: 6px 10px; background: var(--surface-2); border-radius: 6px; }

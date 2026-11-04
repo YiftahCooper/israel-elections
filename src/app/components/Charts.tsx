@@ -22,7 +22,7 @@ export function Charts({ s, r }: { s: Scenario; r: AllocationResult }) {
         <>
         <Waffles s={s} r={r} />
         <hr />
-        <div className="grid2" style={{ alignItems: 'start' }}>
+        <div className="grid2 stack-sm" style={{ alignItems: 'start' }}>
           <VotesVsSeats s={s} r={r} />
           <ThresholdDistance s={s} r={r} />
         </div>
@@ -175,7 +175,7 @@ export function Waffles({ s, r }: { s: Scenario; r: AllocationResult }) {
   };
   return (
     <div>
-      <div className="grid2" style={{ alignItems: 'start' }}>
+      <div className="grid2 stack-sm" style={{ alignItems: 'start' }}>
         {grid(voteCells, 20, L('Votes: each square is 0.5% of valid votes', 'קולות: כל ריבוע = 0.5% מהקולות הכשרים'))}
         {grid(seatCells, 12, L('Seats: each square is one seat', 'מנדטים: כל ריבוע = מנדט אחד'))}
       </div>

@@ -93,7 +93,7 @@ export function Turnout({ s }: { s: Scenario }) {
         <b>{L('Hypothetical modelling.', 'מידול היפותטי.')}</b>{' '}
         {L('Everything here is an assumption you supply, not a historical result. Locality-based groups use official results by locality: they describe places, not individual voters (a mostly-Arab locality is not proof of how each resident voted), and votes in double envelopes are not attributed to localities.', 'כל מה שכאן הוא הנחה שלכם ואינו תוצאה היסטורית. קבוצות לפי יישובים מבוססות על התוצאות הרשמיות ליישוב: הן מתארות מקומות, לא מצביעים יחידים (יישוב שרוב תושביו ערבים אינו מוכיח כיצד הצביע כל תושב), וקולות המעטפות החיצוניות אינם משויכים ליישובים.')} <Info term="envelopes" />
       </div>
-      <div className="grid2" style={{ alignItems: 'start', gap: 18 }}>
+      <div className="grid2 stack-sm" style={{ alignItems: 'start', gap: 18 }}>
         <div>
           <h3>{L('1. Define the group', '1. הגדרת הקבוצה')}</h3>
           {hasLocalities && <details open={!!data}>

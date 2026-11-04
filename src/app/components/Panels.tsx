@@ -29,7 +29,7 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
   };
   const set = (patch: Partial<Scenario['rules']>) => dispatch({ type: 'setRules', patch });
   return (
-    <div className="grid2" style={{ alignItems: 'start', gap: 18 }}>
+    <div className="grid2 stack-sm" style={{ alignItems: 'start', gap: 18 }}>
       <div>
         <h3>{L('Electoral rules', 'כללי הבחירות')}</h3>
         <div className="row" style={{ marginBottom: 8 }}>
@@ -166,7 +166,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
   useEffect(() => { fetch('data/sources.json').then((r) => r.json()).then(setSrc).catch(() => setSrc([])); }, []);
   const used = src.filter((x) => ds.sourceIds.includes(x.id));
   return (
-    <div className="grid2" style={{ alignItems: 'start', gap: 18 }}>
+    <div className="grid2 stack-sm" style={{ alignItems: 'start', gap: 18 }}>
       <div>
         <h3>{L('Data status', 'מצב הנתונים')}</h3>
         <p className={ds.status.stage === 'official-final' ? 'small' : 'small'} style={ds.status.stage === 'official-final' ? undefined : { color: 'var(--warn-ink)' }}>{lang === 'he' ? ds.status.noteHe : ds.status.noteEn}</p>
@@ -183,7 +183,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
         </div>
         <h3 style={{ marginTop: 14 }}>{L('Sources', 'מקורות')}</h3>
         <p className="small ink2">{L('Official sources come first; secondary sources are labelled. English-language Wikipedia is never used or linked: it is unreliable on Israel-related information.', 'מקורות רשמיים קודמים לכול; מקורות משניים מסומנים. ויקיפדיה באנגלית אינה משמשת כמקור ואין אליה קישורים: היא אינה אמינה במידע הנוגע לישראל.')}</p>
-        <ul className="small" style={{ paddingInlineStart: 18 }}>
+        <ul className="small credits" style={{ paddingInlineStart: 18 }}>
           {used.map((x) => (
             <li key={x.id} style={{ marginBottom: 8 }}>
               <b>{x.publisher}</b> {x.official ? <span className="chip ok">{L('official', 'רשמי')}</span> : <span className="chip no">{L('secondary', 'משני')}</span>}<br />
@@ -193,7 +193,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
             </li>
           ))}
         </ul>
-        <p className="small muted">{L('List colours, short and English names, and blocs are assigned by this application for legibility; they are not official.', 'צבעי הרשימות, השמות המקוצרים והאנגליים והגושים נקבעו ביישום זה לנוחות; אינם רשמיים.')}</p>
+        <p className="small muted">{L('Short and English list names are assigned by this application. Colours are the colours associated with each party where a source supports it, otherwise an app colour; blocs follow the sources given for each grouping (see decision 0087). None of these is official election data.', 'השמות המקוצרים והאנגליים של הרשימות נקבעו ביישום זה. הצבעים הם הצבעים המזוהים עם כל מפלגה כשיש לכך מקור, ואחרת צבע של היישום; הגושים לפי המקורות של כל חלוקה (ראו החלטה 0087). אף אחד מאלה אינו נתון בחירות רשמי.')}</p>
       </div>
       <div>
         {(() => {
@@ -203,7 +203,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
           return logos.length ? <>
             <h3>{L('Party logos', 'סמלי המפלגות')}</h3>
             <p className="small ink2">{L('Logos as used at this election, from Wikimedia Commons, each under its own licence (not the app’s MIT licence).', 'הסמלים כפי שהיו בשימוש בבחירות אלה, מוויקישיתוף, כל אחד ברישיון שלו (לא ברישיון MIT של היישום).')}</p>
-            <ul className="small" style={{ paddingInlineStart: 18 }}>
+            <ul className="small credits" style={{ paddingInlineStart: 18 }}>
               {logos.map((x, i) => <li key={i}><b>{x.name}</b>: <a href={x.logo.sourceUrl} target="_blank" rel="noreferrer">{x.logo.attribution}</a> · {x.logo.licence}</li>)}
             </ul>
           </> : null;

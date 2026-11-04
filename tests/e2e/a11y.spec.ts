@@ -34,6 +34,19 @@ test.describe('on a touch phone', () => {
       expect(sw).toBeLessThanOrEqual(cw);
     });
   }
+  // 1973 (long connection names in the walkthrough), 1955 and 2022 (agreement chips, source credits)
+  test('no analysis tab scrolls sideways (1955, 1973, 2022; Expert)', async ({ page }) => {
+    await start(page, { level: 'expert' });
+    for (const id of ['k3', 'k8', 'k25']) {
+      await page.getByRole('combobox', { name: 'Election' }).selectOption(id);
+      const tabs = page.getByRole('tablist', { name: 'Analysis' }).getByRole('tab');
+      for (let i = 0; i < await tabs.count(); i++) {
+        await tabs.nth(i).click();
+        const { sw, cw } = await page.evaluate(() => ({ sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth }));
+        expect(sw, `${id} ${await tabs.nth(i).innerText()}`).toBeLessThanOrEqual(cw);
+      }
+    }
+  });
   test('the chamber legend names the lists instead of tiny arc labels', async ({ page }) => {
     await start(page);
     await expect(page.getByRole('group', { name: 'Lists in the Knesset' }).getByRole('button', { name: /Likud/ })).toBeVisible();

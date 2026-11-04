@@ -13,7 +13,7 @@ import { NumberInput } from './ui.tsx';
 
 export function Sensitivity({ s, r }: { s: Scenario; r: AllocationResult }) {
   return (
-    <div className="grid2" style={{ alignItems: 'start', gap: 18 }}>
+    <div className="grid2 stack-sm" style={{ alignItems: 'start', gap: 18 }}>
       <VoteSweep s={s} r={r} />
       <div><ThresholdSweep s={s} r={r} /><hr /><BlocFlip s={s} r={r} /></div>
     </div>

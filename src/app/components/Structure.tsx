@@ -12,7 +12,7 @@ const newId = () => `sim-${Date.now().toString(36)}${Math.floor(Math.random() * 
 
 export function Structure({ s, r, base }: { s: Scenario; r: AllocationResult; base: Scenario }) {
   return (
-    <div className="grid2" style={{ alignItems: 'start', gap: 18 }}>
+    <div className="grid2 stack-sm" style={{ alignItems: 'start', gap: 18 }}>
       <div><Agreements s={s} r={r} base={base} /><hr /><AddList s={s} /></div>
       <div><Merge s={s} /><hr /><Split s={s} /></div>
     </div>
