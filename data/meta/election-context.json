@@ -166,11 +166,11 @@
     {
       "id": "pending-gazette",
       "electionId": "k26",
-      "effectiveDate": "2026-11-03",
+      "effectiveDate": "2026-11-04",
       "contestType": "knesset",
       "type": "publication-status",
-      "textEn": "Final count published by the Central Elections Committee (result files of 3 Nov 2026). Final results are due to be gazetted in Reshumot by 4 Nov 2026 and may change until then.",
-      "textHe": "ספירה סופית שפרסמה ועדת הבחירות המרכזית (קבצי התוצאות מיום 3.11.2026). התוצאות הסופיות יפורסמו ברשומות עד 4.11.2026 ועד אז עשויות להשתנות.",
+      "textEn": "CEC count updated 4 Nov 2026. Gazette publication unverified as of 5 Nov.",
+      "textHe": "ספירת הוועדה עודכנה ב־4.11.2026. הפרסום ברשומות לא אומת נכון ל־5.11.",
       "source": {
         "url": "https://media26.bechirot.gov.il/files/expb.csv",
         "publisher": "Central Elections Committee for the 26th Knesset",

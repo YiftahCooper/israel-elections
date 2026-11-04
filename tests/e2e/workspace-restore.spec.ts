@@ -13,5 +13,5 @@ test('a reload restores unsaved edits and their undo', async ({ page }) => {
   await page.getByRole('region', { name: 'Lists', exact: true }).getByRole('button', { name: 'Likud', exact: true }).click();
   await expect(page.locator('.side-panel').getByRole('textbox', { name: 'Votes', exact: true })).toHaveValue('1,200,000');
   await page.getByRole('button', { name: /^Undo:/ }).click();
-  await expect(page.locator('.side-panel').getByRole('textbox', { name: 'Votes', exact: true })).toHaveValue('1,167,589');
+  await expect(page.locator('.side-panel').getByRole('textbox', { name: 'Votes', exact: true })).toHaveValue('1,167,591');
 });

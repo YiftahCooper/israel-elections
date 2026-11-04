@@ -5461,14 +5461,14 @@
       "electionId": "k26",
       "electionDate": "2026-10-27",
       "datasetPath": "public/data/k26.json",
-      "datasetSha256": "fe76d5cd03852c538a62eea70bad9aa4c49743ccf5fb6e2f26a9b6fb4e01e27e",
+      "datasetSha256": "409c564859021ddf53699d020c751872173de77c73413331b7aa60401dd8f78b",
       "datasetStatus": {
         "stage": "final-count-pending-publication",
-        "asOf": "2026-11-03",
-        "noteHe": "ספירה סופית שפרסמה ועדת הבחירות המרכזית (קבצי התוצאות מיום 3.11.2026). התוצאות הסופיות יפורסמו ברשומות עד 4.11.2026 ועד אז עשויות להשתנות.",
-        "noteEn": "Final count published by the Central Elections Committee (result files of 3 Nov 2026). Final results are due to be gazetted in Reshumot by 4 Nov 2026 and may change until then."
+        "asOf": "2026-11-04",
+        "noteHe": "ספירת הוועדה עודכנה ב־4.11.2026. הפרסום ברשומות לא אומת נכון ל־5.11.",
+        "noteEn": "CEC count updated 4 Nov 2026. Gazette publication unverified as of 5 Nov."
       },
-      "validVotes": 5691396,
+      "validVotes": 5691426,
       "voteSourceIds": [
         "k26-localities-csv",
         "k26-ballots-csv",
@@ -5483,7 +5483,7 @@
           "listId": "26-ג",
           "letters": "ג",
           "nameHe": "יהדות התורה והשבת אגודת ישראל – דגל התורה",
-          "votes": 312630,
+          "votes": 312632,
           "partyIds": [
             "degel-hatorah",
             "agudat-yisrael",
@@ -5547,7 +5547,7 @@
           "listId": "26-זך",
           "letters": "זך",
           "nameHe": "הציבור החרדי בראשות מוטי ליטנר",
-          "votes": 10599,
+          "votes": 10604,
           "partyIds": [
             "hatzibur-haharedi"
           ],
@@ -5577,7 +5577,7 @@
           "listId": "26-רץ",
           "letters": "רץ",
           "nameHe": "הקהל – מפלגה כלל חרדית שנציגיה נבחרים על ידי הציבור בראשות הרב שלמה אלבוים",
-          "votes": 607,
+          "votes": 580,
           "partyIds": [
             "hakel-2026"
           ],
@@ -5607,7 +5607,7 @@
           "listId": "26-ט",
           "letters": "ט",
           "nameHe": "הציונות הדתית בראשות בצלאל סמוטריץ' וזהות בראשות משה פייגלין",
-          "votes": 290548,
+          "votes": 290549,
           "partyIds": [
             "tkuma"
           ],
@@ -5670,7 +5670,7 @@
           "listId": "26-עם",
           "letters": "עם",
           "nameHe": "רע\"ם – הרשימה הערבית המאוחדת",
-          "votes": 337718,
+          "votes": 337720,
           "partyIds": [
             "raam"
           ],
@@ -5724,7 +5724,7 @@
         {
           "listId": "26-ך",
           "nameHe": "עמך ישראל בראשות עופר וינטר",
-          "votes": 95703,
+          "votes": 95764,
           "partyIds": [
             "vehicle-26-ך"
           ],
@@ -5742,7 +5742,7 @@
         {
           "listId": "26-רק",
           "nameHe": "ביחד בראשות נפתלי בנט",
-          "votes": 531991,
+          "votes": 532018,
           "partyIds": [
             "together-bennett",
             "yesh-atid"
@@ -5761,36 +5761,36 @@
       ],
       "computed": {
         "coreOnly": {
-          "votes": 949881,
+          "votes": 949885,
           "percent": {
-            "numerator": 94988100,
-            "denominator": 5691396
+            "numerator": 94988500,
+            "denominator": 5691426
           },
-          "displayPct": 16.689772
+          "displayPct": 16.689754
         },
         "includedUnmixed": {
-          "votes": 961087,
+          "votes": 961069,
           "percent": {
-            "numerator": 96108700,
-            "denominator": 5691396
+            "numerator": 96106900,
+            "denominator": 5691426
           },
-          "displayPct": 16.886665
+          "displayPct": 16.88626
         },
         "mixedWholeLists": {
-          "votes": 300476,
+          "votes": 300477,
           "percent": {
-            "numerator": 30047600,
-            "denominator": 5691396
+            "numerator": 30047700,
+            "denominator": 5691426
           },
-          "displayPct": 5.279478
+          "displayPct": 5.279468
         },
         "wholeListInclusionAlternative": {
-          "votes": 1261563,
+          "votes": 1261546,
           "percent": {
-            "numerator": 126156300,
-            "denominator": 5691396
+            "numerator": 126154600,
+            "denominator": 5691426
           },
-          "displayPct": 22.166143
+          "displayPct": 22.165728
         },
         "mixedHarediVotes": null,
         "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."

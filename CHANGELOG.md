@@ -2,6 +2,7 @@
 
 ## 5 November 2026 — seat counts you can type; one question for where votes come from
 
+- Refresh the 2026 CEC count from the 4 November official files; replace the expired Gazette deadline with an explicit publication-verification caveat.
 - A list's seat count is editable (typed or ±1): the engine finds the fewest votes that give it and applies them as one ordinary, marked and undoable vote edit. When no vote count gives exactly that number (e.g. 1 seat just past the threshold), the list lands on the nearest possible count and says so.
 - Every vote edit (seat count, votes, goals, share, slider, bloc votes) asks where the votes come from (other lists, new voters, or one list) in one shared dialog, and works its target out under that answer. "Remember" stops asking; the choice lives in Rules → Editing. An unremembered answer holds while the same list or bloc is edited.
 - Family scaling chooses its vote source in place.

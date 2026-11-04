@@ -5,12 +5,12 @@
     "url": "https://media26.bechirot.gov.il/files/expb.csv",
     "publisher": "ועדת הבחירות המרכזית לכנסת ה-26",
     "official": true,
-    "description": "26th Knesset results by polling station (קלפי), final count before publication in Reshumot",
+    "description": "26th Knesset complete CEC count by polling station (קלפי); updated 4 November 2026; Gazette publication not independently verified",
     "method": "http",
-    "retrievedAt": "2026-11-03T12:52:26.888Z",
-    "bytes": 1825803,
-    "sha256": "df13f5044d3213ca8e59ba56b0ebbb73690422d3dbe09190d51932ec6e5fd8d7",
-    "lastModified": "Tue, 03 Nov 2026 07:13:23 GMT"
+    "retrievedAt": "2026-11-05",
+    "bytes": 1837659,
+    "sha256": "70b27cc42be8f0e122923c704c291dadb14c6b33d72041d83e38d02f4a7a65f7",
+    "lastModified": "Wed, 04 Nov 2026 09:42:14 GMT"
   },
   {
     "id": "k26-localities-csv",
@@ -18,12 +18,12 @@
     "url": "https://media26.bechirot.gov.il/files/expc.csv",
     "publisher": "ועדת הבחירות המרכזית לכנסת ה-26",
     "official": true,
-    "description": "26th Knesset results by locality (יישוב)",
+    "description": "26th Knesset complete CEC count by locality (יישוב); updated 4 November 2026; Gazette publication not independently verified",
     "method": "http",
-    "retrievedAt": "2026-11-03T12:52:27.537Z",
-    "bytes": 153415,
-    "sha256": "04de9ffc6438f0e8de70d814357430e86df7266d066ece6befd82f4d181b396e",
-    "lastModified": "Tue, 03 Nov 2026 07:13:24 GMT"
+    "retrievedAt": "2026-11-05",
+    "bytes": 153414,
+    "sha256": "bf7db01f96e1afceb4f22039d16e5f616dc001e4901a9ef2194ba92645837e8a",
+    "lastModified": "Wed, 04 Nov 2026 09:42:15 GMT"
   },
   {
     "id": "k26-surplus-gazette",

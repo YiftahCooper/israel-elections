@@ -29,12 +29,12 @@ test('clamped and refused numeric edits display the authoritative value', async 
   await source.selectOption('t:26-נף');
   const votes = details.getByLabel('Votes', { exact: true });
   await votes.fill('9999999'); await votes.press('Enter');
-  await expect(votes).toHaveValue('1,168,113');
+  await expect(votes).toHaveValue('1,168,115');
   // The donor is now empty; a second clamp leaves the prop unchanged.
   await votes.fill('9999999'); await votes.press('Enter');
-  await expect(votes).toHaveValue('1,168,113');
+  await expect(votes).toHaveValue('1,168,115');
   await votes.press('Tab');
-  await expect(votes).toHaveValue('1,168,113');
+  await expect(votes).toHaveValue('1,168,115');
   await details.getByRole('button', { name: 'More', exact: true }).click();
   const percentage = details.getByLabel('Share of valid votes (%)');
   const old = await percentage.inputValue();
