@@ -180,9 +180,12 @@ export function Hemicycle({ s, r, compact: compactProp = false, title }: { s: Sc
         })}
         {!compact && placeLabels(groups.map((g) => {
           const a = rtl ? Math.PI - g.a : g.a;
-          return { id: g.id, n: g.n, a, text: `${holderLabel(g.id)} ${g.n}` };
+          const text = `${holderLabel(g.id)} ${g.n}`;
+          const ctx = document.createElement('canvas').getContext('2d')!;
+          ctx.font = `600 ${g.n < 4 ? 25 : 29}px "IBM Plex Sans Hebrew", "Segoe UI", system-ui, Arial, sans-serif`;
+          return { id: g.id, n: g.n, a, text, width: ctx.measureText(text).width };
         }), cx, cy, R + 14, 1.25, [-270, 0, 1270, H]).map((p) => (
-          <text key={p.id} x={p.x} y={p.y} textAnchor={p.anchor} dominantBaseline="middle" fontSize={p.n < 4 ? 25 : 29} fill="var(--ink)" fontWeight={600}>{isolate(p.text)}</text>
+          <text key={p.id} data-chamber-label="" direction="ltr" textLength={p.box[2] - p.box[0]} lengthAdjust="spacingAndGlyphs" x={p.x} y={p.y} textAnchor={p.anchor} dominantBaseline="middle" fontSize={p.n < 4 ? 25 : 29} fill="var(--ink)" fontWeight={600}>{isolate(p.text)}</text>
         ))}
         <text x={cx} y={cy - 40} textAnchor="middle" fontSize={44} fontWeight={700} fill="var(--ink)">{r.seatsAllocated}</text>
         <text x={cx} y={cy - 6} textAnchor="middle" fontSize={16} fill="var(--ink-2)">{isolate(L(`seats · majority ${Math.floor(total / 2) + 1}`, `מנדטים · רוב ${Math.floor(total / 2) + 1}`))}</text>

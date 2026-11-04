@@ -460,3 +460,19 @@ rows rather than an orphaned cluster of glyphs. Marker labels resolve removed en
 the reference, and their portal tooltips clamp to the viewport in both text directions.
 Rule starting points name the era, method, threshold and inferred candidate cap where relevant;
 storage identifiers remain internal in selectors and history.
+
+### Consequence warnings and compact controls
+
+Candidate-cap warnings compare final capped and uncapped allocations, exempting only the
+original 1977 inputs recognised against the retained votes, agreements and rules. Changed
+lists show the inference beside their details and in the warning banner. Known candidate
+shortages without a cap name seats and candidates without redistributing them; incomplete
+rosters remain unknown. Unresolved early ties warn only if another choice changes seats,
+including supplied scenario outcomes. Quota fallbacks remain explicitly qualified.
+
+Custom uses task-grouped, two-column visibility cards (one column on phones), short bilingual
+previews and Show / Collapsed / Hidden segments. Preset reset controls remain available.
+Custom has no selected Overview tab. About is a compact disclosure beside the election
+picker; its expanded history stays there, and pending gazette status appears once when closed.
+Chamber labels use measured font widths, physical SVG anchors and bounded side rails;
+phones retain the full list legend. Changes retain neutral tokens and logical spacing.

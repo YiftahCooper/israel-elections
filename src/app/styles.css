@@ -628,3 +628,20 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 }
 
 .removed-agreements { list-style: none; padding-inline-start: 0; color: var(--ink-secondary); font-size: 12.5px; }
+
+/* Visibility cards use the same neutral controls as the rest of the workbench. */
+.custom-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.custom-grid .custom-feature { max-inline-size: none; border: 1px solid var(--rule); border-radius: 6px; padding: 10px 12px; background: var(--surface-quiet); flex-wrap: wrap; }
+.custom-feature p { margin: 3px 0 0; }
+.band .election-about { position: relative; margin: 0; padding: 4px 8px; background: transparent; border-color: var(--shell-ink-quiet); color: inherit; font-size: 12px; flex-shrink: 0; }
+.band .election-about summary { white-space: nowrap; }
+.band .election-about ul { position: absolute; z-index: 60; inset-block-start: 100%; inset-inline-start: 0; inline-size: min(480px, 85vw); max-block-size: 65vh; overflow: auto; margin: 6px 0 0; padding: 16px 28px; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); color: var(--ink); box-shadow: 0 8px 24px #0003; white-space: normal; }
+@media (max-width: 700px) { .custom-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (min-width: 1200px) and (max-width: 1550px) {
+  .band { gap: 8px; }
+  .band .brand { font-size: 15px; margin-inline-end: 0; }
+  .band select.election { width: 12.5rem; font-size: 14px; }
+  .band .tool { gap: 4px; padding-inline: 6px; }
+  .band .scenario-status .chip { max-inline-size: 150px; white-space: nowrap; }
+  .band .scenario-chip-name { overflow: hidden; text-overflow: ellipsis; }
+}

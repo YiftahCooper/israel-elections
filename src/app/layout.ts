@@ -55,25 +55,23 @@ export function bandCuts(seats: SeatPos[], band: number[], nBands: number, desce
   return { radii, cuts };
 }
 
-/** Places one label per list outside the arc, pushing overlapping labels outwards. */
-export function placeLabels(items: { id: string; n: number; a: number; text: string }[], cx: number, cy: number, R: number, scale = 1, bounds?: [number, number, number, number]) {
+/** Two side rails keep every list visible, with measured widths and evenly separated
+ * baselines. SVG anchors use physical LTR coordinates independently of the page direction. */
+export function placeLabels(items: { id: string; n: number; a: number; text: string; width?: number }[], cx: number, cy: number, R: number, scale = 1, bounds?: [number, number, number, number]) {
+  const [left, top, right, bottom] = bounds ?? [cx - R - 400, 0, cx + R + 400, cy + 90];
   const placed: { id: string; n: number; text: string; x: number; y: number; anchor: 'start' | 'end' | 'middle'; box: [number, number, number, number] }[] = [];
-  const sorted = [...items].sort((p, q) => Math.abs(Math.cos(p.a)) - Math.abs(Math.cos(q.a)));
-  for (const it of sorted) {
-    const w = it.text.length * 11.5 * scale + 8, h = 26 * scale;
-    let placedOne = null as (typeof placed)[number] | null;
-    for (let k = 0; k < 14 && !placedOne; k++) {
-      const rr = R + 30 + k * 26 * scale;
-      const x = cx + Math.cos(it.a) * rr, y = cy - Math.sin(it.a) * rr;
-      const anchor: 'start' | 'end' | 'middle' = Math.cos(it.a) > 0.25 ? 'start' : Math.cos(it.a) < -0.25 ? 'end' : 'middle';
-      const x0 = anchor === 'start' ? x : anchor === 'end' ? x - w : x - w / 2;
-      const box: [number, number, number, number] = [x0, y - h / 2, x0 + w, y + h / 2];
-      // a label that would leave the drawing is dropped (the legend and tooltips still name the list)
-      const inside = !bounds || (box[0] >= bounds[0] && box[2] <= bounds[2] && box[1] >= bounds[1] && box[3] <= bounds[3]);
-      if (inside && !placed.some((p) => box[0] < p.box[2] && box[2] > p.box[0] && box[1] < p.box[3] && box[3] > p.box[1])) placedOne = { ...it, x, y, anchor, box };
-    }
-    if (placedOne) placed.push(placedOne);
+  for (const side of [-1, 1]) {
+    const rail = items.filter(it => (Math.cos(it.a) < 0 ? -1 : 1) === side).sort((a,b) => Math.sin(b.a) - Math.sin(a.a));
+    const h = 30 * scale;
+    rail.forEach((it, i) => {
+      const w = Math.min(it.width ?? it.text.length * 24 * scale, (right - left) / 2 - R * 0.7 - 24);
+      const y = top + 40 + i * Math.min(50, (bottom - top - 80) / Math.max(1, rail.length - 1));
+      // Labels towards the crown can use more horizontal space without touching seats.
+      const x = side < 0 ? left + 12 : right - 12;
+      const anchor = side < 0 ? 'start' : 'end';
+      const x0 = side < 0 ? x : x - w;
+      placed.push({ ...it, x, y, anchor, box: [x0, y-h/2, x0+w, y+h/2] });
+    });
   }
   return placed;
 }
-

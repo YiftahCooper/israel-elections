@@ -15,6 +15,7 @@
 // Structure (list ids, agreements, capacities, rules) is resolved once by `prepareAllocation`;
 // each evaluation then works on a vector of vote counts by list index. Counterfactual searches
 // reuse one preparation for every vote count they test.
+import { isOfficialCandidateCapCase } from './candidateCapReference.ts';
 import { floorDiv, rat, type Rational } from './rational.ts';
 import type {
   AgreementStatus, AllocationInput, AllocationResult, EngineWarning, InternalDivision, ListResult,
@@ -176,7 +177,10 @@ function divideWithinUnit(unitId: string, members: WorkUnit[], seats: number, ru
   const highestAverage = isHighestAverage(rules.remainderMethod);
   let quota = highestAverage ? rat(0n) : quotaOf(rules, totalVotes, seats);
   if (!highestAverage && (rules.quotaRounding === 'floor' || rules.remainderMethod === 'droop')) base.decisions?.push(quota.num);
-  if (!highestAverage && quota.num === 0n && seats > 0) quota = rat(totalVotes, BigInt(seats));
+  if (!highestAverage && quota.num === 0n && seats > 0) {
+    base.warnings?.push({ code: 'zero-quota', message: 'The pair quota is zero; exact quota is a simulation fallback.', data: { stage: `internal:${unitId}` } });
+    quota = rat(totalVotes, BigInt(seats));
+  }
   const assign = () => {
     let given = 0;
     for (const w of members) { w.seats = w.initial = Math.min(w.capacity ?? Infinity, highestAverage ? 0 : initialSeats(w.votes, quota)); given += w.seats; }
@@ -185,7 +189,7 @@ function divideWithinUnit(unitId: string, members: WorkUnit[], seats: number, ru
   };
   let given = assign();
   if (given > seats) {
-    if (rules.quotaSeatOffset) base.warnings?.push({ code: 'quota-over-allocation', message: `The historical pair quota gives ${given} seats for ${seats} places. The inspected statute does not resolve this; exact Hare is a simulation fallback.`, data: { stage: `internal:${unitId}`, initialTotal: given } });
+    base.warnings?.push({ code: 'quota-over-allocation', message: `The historical pair quota gives ${given} seats for ${seats} places. The inspected statute does not resolve this; exact Hare is a simulation fallback.`, data: { stage: `internal:${unitId}`, initialTotal: given } });
     quota = rat(totalVotes, BigInt(seats));
     given = assign();
   }
@@ -379,6 +383,37 @@ export function prepareAllocation(input: AllocationInput): PreparedAllocation {
         agreementId: agreementOf[i], agreementActive: u?.isAgreement ?? false,
       };
     });
+
+    // Earlier equal-remainder authority is unresolved. Warn only if choosing another
+    // tied unit changes the final seats, including when a scenario outcome was supplied.
+    if (trace) for (let i = allWarnings.length - 1; i >= 0; i--) {
+      const w = allWarnings[i];
+      if (w.code !== 'lottery-required' || w.data?.tiePolicy !== 'unspecified') continue;
+      const { key, ids } = w.data as { key: string; ids: string[] };
+      const affects = ids.some(id => {
+        const other = prepareAllocation({ ...input, lotteryWinners: { ...lotteryWinners, [key]: id } }).run(votes, false);
+        return other.lists.some((l, j) => l.seats !== listResults[j].seats);
+      });
+      if (!affects) allWarnings.splice(i, 1);
+    }
+
+    if (trace && rules.seatsCappedAtCandidates && !isOfficialCandidateCapCase(input, votes)) {
+      // Compare final allocations: reaching capacity alone does not establish an effect.
+      const uncapped = prepareAllocation({ ...input, rules: { ...rules, seatsCappedAtCandidates: false } }).run(votes, false);
+      const changed = listResults.filter((l, i) => l.seats !== uncapped.lists[i].seats);
+      if (changed.length) warnings!.push({
+        code: 'inferred-candidate-cap',
+        message: 'Candidate capacity changed the allocation. This method matches the official 1977 table, but its legal rule was not located; this outcome is an inference.',
+        data: { ids: changed.map(l => l.id), cappedIds: changed.filter(l => lists[indexOf.get(l.id)!].candidateCount !== undefined && l.seats < uncapped.lists[indexOf.get(l.id)!].seats).map(l => l.id) },
+      });
+    }
+    if (!rules.seatsCappedAtCandidates) for (const l of listResults) {
+      const candidates = lists[indexOf.get(l.id)!].candidateCount;
+      if (candidates !== undefined && l.seats > candidates) warnings?.push({
+        code: 'unfilled-seats', message: `${l.id} has ${l.seats} seats and ${candidates} candidates; this era's procedure for unfilled seats is not modelled.`,
+        data: { list: l.id, seats: l.seats, candidates },
+      });
+    }
 
     if (departure) warnings?.push({ code: 'agreement-rule-departure', message: 'An agreement with more than two lists is not permitted by section 67(a); it is computed here as an experimental rule.' });
 

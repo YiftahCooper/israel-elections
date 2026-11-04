@@ -38,7 +38,7 @@ const EARLY_LIST_KEYS = ['id', 'letters', 'nameHe', 'shortHe', 'shortEn', 'color
   'candidatesSecondary', 'sponsorsHe', 'partiesHe', 'notesHe', 'candidatesUnavailable', 'candidatesTruncated'];
 
 /** Research only: [] means the no-connections counterfactual when notice is missing.
- * Missing rosters are deliberately NOT labelled candidatesUnavailable: the scans exist.
+ * Untranscribed rosters have unknown capacity even though the source scans exist.
  * This fixture is never returned as a build job or written under public/data/. */
 export function earlyResearchDataset(n:number):ElectionDataset {
   const r=earlyReview(n); const e=indexEntry(r.id)!;
@@ -47,7 +47,7 @@ export function earlyResearchDataset(n:number):ElectionDataset {
     status:{stage:'official-final',asOf:r.reviewedOn,noteHe:'נתוני מחקר בלבד; רשימות המועמדים לא תומללו.',noteEn:'RESEARCH ONLY. No-connections diagnostic when notice missing; candidate rosters unverified.'},
     ruleSetId:n===1?ISRAEL_1949.id:ISRAEL_1951.id,
     totals:{...r.nationalTotals,ballotBoxes:0,localities:0},
-    lists:r.lists.map((l,i)=>listRecord(n,i,{letters:l.letters,nameHe:l.nameHe,votes:l.votes,candidatesSource:r.candidateSourceId,
+    lists:r.lists.map((l,i)=>listRecord(n,i,{letters:l.letters,nameHe:l.nameHe,votes:l.votes,candidatesSource:r.candidateSourceId,candidatesUnavailable:true,
       notesHe:['RESEARCH ONLY — full candidate roster unverified.']},EARLY_LIST_KEYS)),
     agreements:agreementRecords(n,r.agreements.pairs??[],r.agreements.sourceId!),
     blocs:[],hasLocalities:false,officialSeats:officialSeatsOf(n,r.lists.map(l=>({letters:l.letters,seats:l.officialSeats}))),officialSeatsSourceId:r.resultsSourceId,

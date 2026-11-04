@@ -17,7 +17,7 @@ export function ElectionAbout({ electionId, listId }: { electionId: ElectionId; 
   if (!events.length) return null;
   const pending = events.find(e => e.type === 'publication-status');
   return <details className={`election-about ${pending ? 'publication-pending' : ''}`}>
-    <summary>{L('About this election', 'על הבחירות האלה')}{pending && <> · {L('Pending gazette', 'ממתין לפרסום ברשומות')}</>}</summary>
+    <summary>{L('About', 'על הבחירות')}{pending && <> · {L('Pending gazette', 'ממתין לפרסום ברשומות')}</>}</summary>
     <ul>{events.map(e => <li key={e.id}>
       <time dateTime={e.effectiveDate}>{e.effectiveDate}</time> · {e.source.evidence === 'unresolved' && <strong>{L('Unresolved: ', 'טרם הוברר: ')}</strong>}{lang === 'he' ? e.textHe : e.textEn}{' '}
       <EvidenceLink source={e.source} />{e.relatedSources?.map(s => <span key={s.url}> · <EvidenceLink source={s} /></span>)}

@@ -1,7 +1,7 @@
 import { CustomPage, Feature } from './components/Feature.tsx';
 import { TOOL_FEATURES, RANK, type Preset } from './features.ts';
 import { electionContext } from '../data/electionContext.ts';
-import { ElectionAbout, PMResult } from './components/ElectionContext.tsx';
+import { PMResult } from './components/ElectionContext.tsx';
 import { createElement, memo, Suspense, use, useEffect, useState, type ReactNode } from 'react';
 import { scenarioColor } from './scenarioIdentity.ts';
 import { referenceChanges } from './derive.ts';
@@ -189,11 +189,10 @@ function Shell() {
     <div className="app" style={{ ['--scenario-color' as string]: reference || referenceChanges(s, base).length || s.identityColor ? scenarioColor(s) : undefined }}>
       <TopBar s={pmOnly ? null : committed} r={cr} ds={ds} baseR={baseR} pmContestId={pmContestId} onContestChange={setPMContestId} />
       {pmOnly ? <main className="work"><PMResult contest={pmOnly} onKnesset={() => setPMContestId(null)} /></main> : <>
-      <ElectionAbout electionId={ds.id} />
       <nav className="toolbar" aria-label={L('Tools', 'כלים')}><div className="tabs" role="tablist" aria-label={L('Tools', 'כלים')}>
                 {ordered.map((t, i) => [
                   i === firstLocked ? <span key="more" className="more-label" aria-hidden>{L('More in other levels', 'עוד ברמות אחרות')}</span> : null,
-                  <button key={t.id} id={`tab-${t.id}`} role="tab" aria-selected={tool === t.id} aria-controls="analysis-panel" tabIndex={tool === t.id ? 0 : -1}
+                  <button key={t.id} id={`tab-${t.id}`} role="tab" aria-selected={!customPage && tool === t.id} aria-controls="analysis-panel" tabIndex={tool === t.id ? 0 : -1}
                   className={RANK[t.level] > RANK[level] ? 'locked' : ''}
                   onClick={() => openTool(t.id)} onPointerEnter={() => prefetchTab(t.id)} onFocus={() => prefetchTab(t.id)}
                   onKeyDown={(e) => {

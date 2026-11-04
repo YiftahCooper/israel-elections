@@ -13,7 +13,7 @@ import { rat } from '../../engine/rational.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import { toEngineInput, votesCast, type Scenario, type SimList } from '../../model/scenario.ts';
 import { runTasks } from '../analysisPool.ts';
-import { listLabel, referenceLabel } from '../derive.ts';
+import { listLabel, referenceLabel, warningText } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtFrac, fmtInt, fmtPct, fmtRat, signed } from '../format.ts';
 import { dispatch, dispatchMany, getState, previewAction, setState, toast, useLevel, useVoteSource, useDigits, useStore } from '../store.ts';
@@ -140,6 +140,8 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
 
   return (
     <div className="ld" role="region" aria-label={L('List details', 'פרטי רשימה')}>
+      {r.warnings.filter(w => w.data?.list === l.id || (w.data?.ids as string[] | undefined)?.includes(l.id)).map((w, i) =>
+        <p key={i} className="callout small">{warningText(w, s, lang)}</p>)}
       <section>
         <Feature id="voteStart"><StartFrom s={s} part="votes" /></Feature>
         <h3>{L('Votes', 'קולות')} <EditMarker s={s} path={['lists', l.id, 'votes']} /></h3>
