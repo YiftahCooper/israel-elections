@@ -76,3 +76,14 @@ metrics from the corresponding `public/data/kN.json`; the validator independentl
 checks those values and never rewrites them.
 
 The validator can also run directly: `node scripts/validate-families.ts`.
+
+## Joint lists led by the family (runtime rule, 2026-11-04)
+
+The research files record every joint list with a partner outside the family as `scope: mixed`. That alone made a
+dominant list disappear from its family: Likud 2026 was submitted jointly with New Hope (official CEC list page:
+"הוגשה מטעם מפלגת הליכוד ... ומטעם מפלגת תקווה חדשה הימין הממלכתי"; New Hope holds ranks 9, 88 and 89), so
+"Likud lineage" showed 0 seats in 2026. The compiler (`scripts/family-runtime.ts`) now counts a mixed list whole for
+the family when the family's own parties hold the list's first place **and** at least two thirds of the seats the
+list won, read from the official candidate-party column. Lists are still never split. A genuine partnership stays
+mixed (Likud–Yisrael Beiteinu 2013: 20 of 31), as do seatless lists and lists without candidate-party data. The
+research files are unchanged; `tests/family-runtime.test.ts` checks the derived totals against them.
