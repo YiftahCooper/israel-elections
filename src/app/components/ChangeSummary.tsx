@@ -67,6 +67,7 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
 
   return (
     <div className="session" role="status" aria-live="polite">
+      {s.name && <span className="scn-name" title={s.description ?? s.name}>{s.name}</span>}
       <b>{L('What changed', 'מה השתנה')}</b>
       {moves.length === 0
         ? <span className="muted">{L('No seat moved', 'אף מנדט לא זז')}</span>

@@ -1,4 +1,4 @@
-import { createElement, memo, Suspense, use, useEffect, type ReactNode } from 'react';
+import { createElement, memo, Suspense, use, useEffect, useState, type ReactNode } from 'react';
 import { X } from 'lucide-react';
 import { allocationOf, baselineOf, ruleChanges, scenarioIssues, tieAffectsSeats, warningText } from './derive.ts';
 import { LangContext, useL } from './i18n.ts';
@@ -6,8 +6,10 @@ import { dispatch, loadElectionIndex, openElection, readSharedFromHash, redo, se
 import { Hemicycle as HemicycleView } from './components/Hemicycle.tsx';
 import { Figures as FiguresView } from './components/Figures.tsx';
 import { BlocBar as BlocBarView } from './components/Blocs.tsx';
-import { ListsTable as ListsTableView } from './components/ListsTable.tsx';
+import { ListBars as ListBarsView } from './components/ListBars.tsx';
+import { ListSidePanel } from './components/ListSidePanel.tsx';
 import { ChangeSummary } from './components/ChangeSummary.tsx';
+import { Scenarios } from './components/Scenarios.tsx';
 import { TopBar as TopBarView } from './components/TopBar.tsx';
 import { Walkthrough } from './components/Walkthrough.tsx';
 import { ErrorBoundary } from './components/ErrorBoundary.tsx';
@@ -17,7 +19,7 @@ import { WhatIf } from './components/WhatIf.tsx';
 // scenario, so a tab switch, toast or notice does not re-render the cards, chamber and details.
 // Each panel still re-renders on its own store subscriptions (selection, level, language…).
 const TopBar = memo(TopBarView);
-const ListsTable = memo(ListsTableView);
+const ListBars = memo(ListBarsView);
 const Hemicycle = memo(HemicycleView);
 const BlocBar = memo(BlocBarView);
 const Figures = memo(FiguresView);
@@ -65,11 +67,11 @@ const TAB_PANEL: Partial<Record<Tab, { preload: () => Promise<void> }>> = {
 /** Starts fetching a tab's code ahead of its first use (a no-op once loaded). */
 const prefetchTab = (t: Tab) => { void TAB_PANEL[t]?.preload().catch(() => {}); };
 
-type Tab = 'whatif' | 'coal' | 'security' | 'walk' | 'compare' | 'charts' | 'structure' | 'turnout' | 'sens' | 'rules' | 'loc' | 'sources';
+type Tab = 'board' | 'scenarios' | 'whatif' | 'coal' | 'security' | 'walk' | 'compare' | 'charts' | 'structure' | 'turnout' | 'sens' | 'rules' | 'loc' | 'sources';
 // Every tool is listed at every level (levels hide depth, never a feature's existence); each names the level its
 // full controls need, and opening one above the current level offers that level in place.
 const TOOLS: { id: Tab; level: Level }[] = [
-  { id: 'whatif', level: 'simple' }, { id: 'coal', level: 'simple' }, { id: 'walk', level: 'simple' },
+  { id: 'board', level: 'simple' }, { id: 'scenarios', level: 'simple' }, { id: 'whatif', level: 'simple' }, { id: 'coal', level: 'simple' }, { id: 'walk', level: 'simple' },
   { id: 'structure', level: 'standard' }, { id: 'compare', level: 'standard' }, { id: 'security', level: 'standard' }, { id: 'charts', level: 'standard' },
   { id: 'turnout', level: 'expert' }, { id: 'sens', level: 'expert' }, { id: 'loc', level: 'expert' }, { id: 'rules', level: 'expert' },
   { id: 'sources', level: 'simple' },
@@ -116,6 +118,11 @@ function Shell() {
   const lang = useStore((st) => st.lang);
   const level = useStore((st) => st.level);
   const toolPick = useStore((st) => st.tool) as Tab | null;
+  const selectedListId = useStore((st) => st.selectedListId);
+  const [drawerFor, setDrawerFor] = useState<string | null>(null);
+  const toolNow = useStore((st) => st.tool);
+  useEffect(() => { setDrawerFor(null); }, [toolNow]);
+  useEffect(() => { if (toolNow && toolNow !== 'board') setDrawerFor(selectedListId); }, [selectedListId]); // eslint-disable-line react-hooks/exhaustive-deps
   const hintDismissed = useStore((st) => st.hintDismissed);
   const ready = !!(committed && ds);
   // once the election is on screen, fetch the code of this level's tools while the page is idle; the others
@@ -144,6 +151,8 @@ function Shell() {
   const baseR = allocationOf(base);
   const issues = scenarioIssues(s, r);
   const label: Record<Tab, string> = {
+    board: L('Overview', 'תמונת מצב'),
+    scenarios: L('Scenarios', 'תרחישים'),
     whatif: L('What if…', 'מה אילו…'),
     coal: L('Coalitions', 'קואליציות'),
     walk: L('How seats were allocated', 'חלוקת המנדטים'),
@@ -159,7 +168,7 @@ function Shell() {
   };
   const levelName: Record<Level, string> = { simple: L('Simple', 'פשוט'), standard: L('Standard', 'רגיל'), expert: L('Expert', 'מומחה') };
   const blurb: Record<Tab, string> = {
-    whatif: '', coal: '', walk: '', sources: '',
+    board: '', scenarios: '', whatif: '', coal: '', walk: '', sources: '',
     structure: L('Merge lists, split a joint list, add or remove lists and surplus-vote agreements.', 'איחוד רשימות, פיצול רשימה משותפת, הוספה והסרה של רשימות והסכמי עודפים.'),
     compare: L('Compare this scenario with the official result, a saved scenario or another election.', 'השוואת התרחיש לתוצאה הרשמית, לתרחיש שמור או לבחירות אחרות.'),
     security: L('For every list, how many votes stand between it and its next seat or the loss of one.', 'לכל רשימה, כמה קולות מפרידים בינה לבין המנדט הבא או אובדן מנדט.'),
@@ -169,17 +178,17 @@ function Shell() {
     loc: L('Results by locality, searchable, with turnout.', 'תוצאות לפי יישוב, עם חיפוש ושיעור הצבעה.'),
     rules: L('The law in force, and alternative systems to try (D’Hondt, Sainte-Laguë, largest remainder, other thresholds).', 'החוק בתוקף, ושיטות חלופיות לניסוי (ד’הונדט, סנט־לגה, השארית הגדולה, אחוזי חסימה אחרים).'),
   };
-  const tool: Tab = toolPick && TOOLS.some((t) => t.id === toolPick) ? toolPick : 'whatif';
+  const tool: Tab = toolPick && TOOLS.some((t) => t.id === toolPick) ? toolPick : 'board';
   const need = TOOLS.find((t) => t.id === tool)!.level;
   const locked = RANK[need] > RANK[level];
   // tools of this level first, then the others under a quiet label (never hidden)
   const ordered = [...TOOLS.filter((t) => RANK[t.level] <= RANK[level]), ...TOOLS.filter((t) => RANK[t.level] > RANK[level])];
   const firstLocked = ordered.findIndex((t) => RANK[t.level] > RANK[level]);
-  const openTool = (id: Tab) => {
-    setState({ tool: id });
-    // bring the panel into view: in the side column on desktop, further down the page on one column
-    requestAnimationFrame(() => document.getElementById('tool-panel')?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'nearest' }));
-  };
+  // a tool is a page of its own; the board keeps its state (selection, open figures) when you come back
+  const openTool = (id: Tab) => { setState({ tool: id }); window.scrollTo({ top: 0 }); };
+  const selected = selectedListId && s.lists.some((l) => l.id === selectedListId) ? selectedListId : null;
+  // on a tool page the list drawer opens only for a list chosen there (a selection made on the board waits for it)
+  const drawerOpen = tool !== 'board' && !!selected && drawerFor === selected;
 
   return (
     <div className="app">
@@ -214,40 +223,46 @@ function Shell() {
       </div>
       <ChangeSummary s={s} r={r} base={base} baseR={baseR} ds={ds} />
       <main className="work">
-        {(s.blocs.length > 0 || !!s.blocSchemes?.length) && <ErrorBoundary label={L('Blocs', 'גושים')} resetKey={s}><BlocBar s={s} r={r} /></ErrorBoundary>}
-        <div className="board">
-          <ErrorBoundary label={L('Lists', 'רשימות')} resetKey={s}><ListsTable s={s} r={r} ds={ds} base={base} baseR={baseR} /></ErrorBoundary>
-          <div className="side">
-            <section className="panel" aria-label={L('The Knesset', 'הכנסת')}>
-              <div className="body"><ErrorBoundary label={L('Chamber', 'המליאה')} resetKey={s}><Hemicycle s={s} r={r} /></ErrorBoundary></div>
-            </section>
-            <ErrorBoundary label={L('Figures', 'נתונים')} resetKey={s}><Figures s={s} r={r} ds={ds} /></ErrorBoundary>
-            <section className="panel tools-panel" id="tool-panel" aria-label={label[tool]}>
-              <header><h2>{label[tool]}</h2></header>
-              <div className="body" role="tabpanel" id="analysis-panel" aria-labelledby={`tab-${tool}`}>
-                {locked ? (
-                  <div>
-                    <p className="tool-intro">{blurb[tool]}</p>
-                    <button className="btn primary" onClick={() => setState({ level: need })}>{L(`Open it in ${levelName[need]}`, `פתיחה במצב ${levelName[need]}`)}</button>
-                  </div>
-                ) : <ErrorBoundary label={label[tool]} resetKey={`${tool}|${committed.id}|${committed.log.length}`}><Suspense fallback={<p className="muted" role="status">{L('Loading…', 'טוען…')}</p>}>
-                  {tool === 'whatif' && <WhatIf ds={ds} />}
-                  {tool === 'coal' && <Coalitions s={committed} r={cr} />}
-                  {tool === 'security' && <SeatSecurity s={committed} r={cr} />}
-                  {tool === 'walk' && <Walkthrough s={committed} r={cr} />}
-                  {tool === 'compare' && <Compare s={committed} r={cr} base={base} ds={ds} />}
-                  {tool === 'charts' && <Charts s={committed} r={cr} />}
-                  {tool === 'structure' && <Structure s={committed} r={cr} base={base} />}
-                  {tool === 'turnout' && <Turnout key={committed.electionId} s={committed} />}
-                  {tool === 'sens' && <Sensitivity s={committed} r={cr} />}
-                  {tool === 'rules' && <Rules s={committed} base={base} />}
-                  {tool === 'loc' && <Localities s={committed} />}
-                  {tool === 'sources' && <Sources ds={ds} />}
-                </Suspense></ErrorBoundary>}
-              </div>
-            </section>
+        {tool === 'board' ? (
+          <div className={`board ${selected ? 'with-panel' : ''}`}>
+            <ErrorBoundary label={L('Lists', 'רשימות')} resetKey={s}><ListBars s={s} r={r} base={base} baseR={baseR} /></ErrorBoundary>
+            <div className="center">
+              <section className="panel chamber-panel" aria-label={L('The Knesset', 'הכנסת')}>
+                <div className="body"><ErrorBoundary label={L('Chamber', 'המליאה')} resetKey={s}><Hemicycle s={s} r={r} /></ErrorBoundary></div>
+              </section>
+              {(s.blocs.length > 0 || !!s.blocSchemes?.length) && <ErrorBoundary label={L('Blocs', 'גושים')} resetKey={s}><BlocBar s={s} r={r} /></ErrorBoundary>}
+              <ErrorBoundary label={L('Figures', 'נתונים')} resetKey={s}><Figures s={s} r={r} ds={ds} /></ErrorBoundary>
+            </div>
+            {selected && <ErrorBoundary label={L('List details', 'פרטי רשימה')} resetKey={selected}><ListSidePanel s={s} r={r} ds={ds} base={base} baseR={baseR} listId={selected} /></ErrorBoundary>}
           </div>
-        </div>
+        ) : (
+          <section className="panel tool-page" id="tool-panel" aria-label={label[tool]}>
+            <header><h2>{label[tool]}</h2></header>
+            <div className="body" role="tabpanel" id="analysis-panel" aria-labelledby={`tab-${tool}`}>
+              {locked ? (
+                <div>
+                  <p className="tool-intro">{blurb[tool]}</p>
+                  <button className="btn primary" onClick={() => setState({ level: need })}>{L(`Open it in ${levelName[need]}`, `פתיחה במצב ${levelName[need]}`)}</button>
+                </div>
+              ) : <ErrorBoundary label={label[tool]} resetKey={`${tool}|${committed.id}|${committed.log.length}`}><Suspense fallback={<p className="muted" role="status">{L('Loading…', 'טוען…')}</p>}>
+                {tool === 'scenarios' && <Scenarios s={committed} ds={ds} />}
+                {tool === 'whatif' && <WhatIf ds={ds} />}
+                {tool === 'coal' && <Coalitions s={committed} r={cr} />}
+                {tool === 'security' && <SeatSecurity s={committed} r={cr} />}
+                {tool === 'walk' && <Walkthrough s={committed} r={cr} />}
+                {tool === 'compare' && <Compare s={committed} r={cr} base={base} ds={ds} />}
+                {tool === 'charts' && <Charts s={committed} r={cr} />}
+                {tool === 'structure' && <Structure s={committed} r={cr} base={base} />}
+                {tool === 'turnout' && <Turnout key={committed.electionId} s={committed} />}
+                {tool === 'sens' && <Sensitivity s={committed} r={cr} />}
+                {tool === 'rules' && <Rules s={committed} base={base} />}
+                {tool === 'loc' && <Localities s={committed} />}
+                {tool === 'sources' && <Sources ds={ds} />}
+              </Suspense></ErrorBoundary>}
+            </div>
+          </section>
+        )}
+        {drawerOpen && <div className="drawer"><ErrorBoundary label={L('List details', 'פרטי רשימה')} resetKey={selected}><ListSidePanel s={committed} r={cr} ds={ds} base={base} baseR={baseR} listId={selected} /></ErrorBoundary></div>}
         <p className="small muted" style={{ margin: 0 }}>{L('Seat allocation is computed by deterministic code from official Central Elections Committee data. Not affiliated with the CEC or any party.', 'חלוקת המנדטים מחושבת בקוד דטרמיניסטי מנתוני ועדת הבחירות המרכזית. אין קשר לוועדת הבחירות או לאף מפלגה.')}</p>
       </main>
       {toast && <div className={`toast toast-${toast.kind}`} role={toast.kind === 'error' ? 'alert' : 'status'}>{toast.text}</div>}

@@ -1,0 +1,107 @@
+// The lists as a visual column: each list is a row with its logo, name and a seat bar (its official seats shown
+// as a faint outline when they differ). Lists that won no seat show how far they are from the threshold instead.
+// Choosing a row opens the list in the side panel.
+import { useEffect, useRef, useState } from 'react';
+import type { AllocationResult } from '../../engine/types.ts';
+import type { Scenario, SimList } from '../../model/scenario.ts';
+import { electedOf, listLabel } from '../derive.ts';
+import { useL, useLang } from '../i18n.ts';
+import { fmtInt, fmtPct } from '../format.ts';
+import { setState, useDigits, useLevel, useStore } from '../store.ts';
+import { Slip } from './ui.tsx';
+
+/** A drawn up/down mark in neutral ink (change is never coloured by camp). */
+export const Mark = ({ up }: { up: boolean }) => <svg className="mark" viewBox="0 0 10 10" width={8} height={8} aria-hidden><path d={up ? 'M5 1 9.5 9H.5z' : 'M5 9 .5 1h9z'} fill="currentColor" /></svg>;
+
+export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResult; base: Scenario; baseR: AllocationResult }) {
+  const L = useL();
+  const lang = useLang();
+  const digits = useDigits();
+  const { standard } = useLevel();
+  const selected = useStore((st) => st.selectedListId);
+  const [showAll, setShowAll] = useState(false);
+  const selRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => { if (selected) selRef.current?.scrollIntoView({ block: 'nearest' }); }, [selected]);
+
+  const total = Number(r.totalValid);
+  const thr = Number(r.thresholdVotes);
+  const baseSeats = (l: SimList) => base.lists.some((b) => b.id === l.id)
+    ? baseR.lists.find((x) => x.id === l.id)?.seats ?? 0
+    : l.originIds.reduce((t, o) => t + (baseR.lists.find((x) => x.id === o)?.seats ?? 0), 0);
+  const rows = s.lists.map((l) => ({ l, lr: r.lists.find((x) => x.id === l.id)!, was: baseSeats(l) }));
+  const inKnesset = rows.filter((x) => x.lr.seats > 0 || x.lr.qualified).sort((a, b) => b.lr.seats - a.lr.seats || b.l.votes - a.l.votes);
+  const outside = rows.filter((x) => !(x.lr.seats > 0 || x.lr.qualified)).sort((a, b) => b.l.votes - a.l.votes);
+  const visibleOut = showAll ? outside : outside.filter(({ l }) => l.votes >= total * 0.005 || l.id === selected || !base.lists.some((b) => b.id === l.id));
+  const hidden = outside.length - visibleOut.length;
+  const splitIds = new Set(s.factionSplits ?? []);
+  // one scale for every bar: the largest list now or in the official result
+  const scale = Math.max(1, ...rows.map((x) => Math.max(x.lr.seats, x.was)));
+
+  const row = ({ l, lr, was }: (typeof rows)[number]) => {
+    const open = selected === l.id;
+    const d = lr.seats - was;
+    const agr = standard ? s.agreements.find((a) => a.members.includes(l.id) && a.enabled) : undefined;
+    const partner = agr ? s.lists.find((x) => x.id === agr.members.find((m) => m !== l.id)) : undefined;
+    const out = lr.seats === 0;
+    return (
+      <li key={l.id}>
+        <button type="button" ref={open ? selRef : undefined} className={`lb-row ${out ? 'out' : ''} ${selected && !open ? 'dim' : ''}`} aria-pressed={open}
+          aria-label={listLabel(l, lang)} aria-describedby={`lbd-${l.id}`}
+          onClick={() => setState({ selectedListId: open ? null : l.id })}
+          title={l.logo ? l.nameHe : `${l.nameHe} — ${L('ballot letters (no logo is sourced for this election yet)', 'אותיות הפתק (טרם נמצא סמל ממקור לבחירות אלה)')}`}>
+          <Slip letters={l.letters} color={l.color} logo={l.logo} />
+          <span className="lb-main">
+            <span className="lb-name">{listLabel(l, lang)}</span>
+            <span className="lb-bar" aria-hidden>
+              {out
+                ? <><i className="thr-fill" style={{ width: `${Math.min(100, (l.votes / Math.max(1, thr)) * 100)}%`, background: l.color }} /><span className="thr-tick" /></>
+                : <><i style={{ width: `${(lr.seats / scale) * 100}%`, background: l.color }} />{d !== 0 && <span className="was" style={{ width: `${(was / scale) * 100}%` }} />}</>}
+            </span>
+            <span className="lb-sub">
+              {standard && <>{fmtInt(l.votes)} · </>}{fmtPct(l.votes, total, digits)}
+              {out && thr > 0 && <> · {L(`${fmtPct(l.votes, thr, 0)} of the threshold`, `${fmtPct(l.votes, thr, 0)} מאחוז החסימה`)}</>}
+              {l.withdrawn && <> · {L('withdrew', 'פרשה')}</>}
+              {partner && <> · ⇄ {listLabel(partner, lang)}</>}
+            </span>
+          </span>
+          <span className="sr-only" id={`lbd-${l.id}`}>{L(`${lr.seats} seats`, `${lr.seats} מנדטים`)}, {fmtPct(l.votes, total, digits)}</span>
+          <span className="lb-seats">
+            <b key={`s${lr.seats}`} className={s.log.length ? 'tick' : ''}>{lr.seats}</b>
+            {d !== 0 && <small dir="ltr"><Mark up={d > 0} />{Math.abs(d)}<span className="sr-only">{d > 0 ? L(' more than the official result', ' יותר מהתוצאה הרשמית') : L(' fewer than the official result', ' פחות מהתוצאה הרשמית')}</span></small>}
+          </span>
+        </button>
+        {splitIds.has(l.id) && (l.parties?.length ?? 0) > 1 && (
+          <ul className="lb-parties" aria-label={L(`${listLabel(l, lang)}: factions after the split`, `${listLabel(l, lang)}: הסיעות אחרי הפיצול`)}>
+            {l.parties!.map((p) => {
+              const n = electedOf(l, lr.seats).filter((c) => c.partyId === p.id).length;
+              return (
+                <li key={p.id}>
+                  {p.logo ? <Slip letters={l.letters} color={p.color ?? l.color} logo={p.logo} /> : <span className="swatch" style={{ background: p.color ?? l.color }} />}
+                  <span className="lb-pname">{lang === 'he' ? p.nameHe : p.nameEn}</span>
+                  <span className="lb-bar" aria-hidden><i style={{ width: `${(n / scale) * 100}%`, background: p.color ?? l.color }} /></span>
+                  <b>{n}</b>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </li>
+    );
+  };
+
+  return (
+    <section className="panel lbars" aria-label={L('Lists', 'הרשימות')}>
+      <header><h2>{L('Lists', 'הרשימות')}</h2><span className="spacer" /><span className="small muted">{L('seats', 'מנדטים')}</span></header>
+      <ol className="lb">
+        {inKnesset.map(row)}
+        {outside.length > 0 && (
+          <li className="lb-thr">
+            <span>{thr > 0 ? L(`Threshold · ${fmtInt(r.thresholdVotes)} votes (${s.rules.thresholdPct}%)`, `אחוז החסימה · ${fmtInt(r.thresholdVotes)} קולות (${s.rules.thresholdPct}%)`) : L('Lists that won no seat', 'רשימות שלא זכו במנדט')}</span>
+            {(hidden > 0 || showAll) && <button type="button" onClick={() => setShowAll((x) => !x)}>{showAll ? L('Show fewer', 'הצגת פחות') : L(`Show all ${outside.length}`, `הצגת כל ${outside.length}`)}</button>}
+          </li>
+        )}
+        {visibleOut.map(row)}
+      </ol>
+    </section>
+  );
+}

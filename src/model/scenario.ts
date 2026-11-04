@@ -79,6 +79,8 @@ export interface Scenario {
   version: number;
   id: string;
   name: string;
+  /** what the scenario explores, in the author's words (optional) */
+  description?: string;
   electionId: ElectionId;
   /** sha of the dataset build the scenario was created from (detects later data corrections) */
   baseBuiltAt: string;
@@ -340,6 +342,7 @@ export function validateScenario(x: unknown): string[] {
   if (s.schema !== SCENARIO_SCHEMA) e.push('not a scenario file exported by this application');
   if (s.version !== SCENARIO_VERSION) e.push('unsupported scenario version');
   if (![s.id, s.name, s.baseBuiltAt].every(string)) e.push('missing scenario identity or build timestamp');
+  if (!optional(string)(s.description)) e.push('invalid description');
   const electionKnown = ELECTION_IDS.includes(s.electionId as ElectionId);
   if (!electionKnown) e.push(`unknown election "${String(s.electionId)}"`);
   if (s.mode !== 'historical' && s.mode !== 'experimental') e.push('invalid mode');

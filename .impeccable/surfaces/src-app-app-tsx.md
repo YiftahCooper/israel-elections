@@ -35,3 +35,6 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 ## Unresolved
 - Demographic groups: people-based model pending its evidence verdict (solid vs speculative setting).
+
+## Revision (4 Nov 2026, owner feedback)
+The owner found the first build "less visual" and text-led, the tools cramped in the side column, and disliked lists opening inside the table. Revised: the chamber leads the board; lists are a column of seat bars; a list opens in a side panel (a drawer on tool pages, a sheet on phones); every tool is a full-width page led by its drawing (Compare: two chambers, bloc bars, seat-change bars; Coalitions: a 120-seat bar against 61 and each smallest coalition as a bar; Merge & split: one task at a time with a drawn preview); Scenarios became a page of named, described, saved scenarios. The market-board world (navy shell, neutral ink, tabular figures) is kept; the "everything as ruled rows" composition is retired.

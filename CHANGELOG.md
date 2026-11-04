@@ -8,6 +8,14 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 
 ### Changed
 
+- **Visual board, owner feedback (4 Nov 2026).** The chamber leads the Overview; lists are a column of seat bars (the
+  official seats as an outline, lists below the threshold showing how much of it they reached, split factions with
+  their parties); a list opens in a side panel (a drawer on tool pages, a full-screen sheet on phones). Every tool is a
+  full-width page that leads with its drawing: Compare shows the two chambers side by side, the blocs against 61 and
+  a seat-change bar per list; Coalitions is a builder with a 120-seat bar and each smallest winning coalition drawn;
+  Merge & split takes one task at a time with a drawn preview before applying. A new Scenarios page names, describes,
+  saves, shares, compares, exports and restores scenarios; What-if questions preview in place and open as named
+  scenarios. The election picker no longer flashes white-on-white while browsing it.
 - **Redesigned interface ("Market Board", design brief in `.impeccable/surfaces/`).** The official result is the
   opening price and your edits are the session:
   - a navy band (election, level, scenario, undo/redo, save & share, language, theme) and a tools strip under it

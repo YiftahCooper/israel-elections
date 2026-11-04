@@ -49,11 +49,12 @@ test('the split form conserves the original votes', async ({ page }) => {
   const total = validVotes(page);
   const before = await total.innerText();
   await page.getByRole('tab', { name: 'Merge & split', exact: true }).click();
-  await page.getByLabel('List to split').selectOption('26-מחל');
+  await page.getByRole('button', { name: 'Split a list' }).click();
+  await page.getByRole('group', { name: 'List' }).getByRole('button', { name: 'Likud', exact: true }).click();
   await page.getByRole('button', { name: 'Split', exact: true }).click();
+  // Likud 2026 is Likud + New Hope: it splits into its parties, and the vote total is conserved
+  await expect(page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: /^New Hope/ })).toBeVisible();
   await expect(total).toHaveText(before);
-  await expect(page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: 'Likud A', exact: true })).toBeVisible();
-  await expect(page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: 'Likud B', exact: true })).toBeVisible();
 });
 
 test('a refused decimal edit also reverts after Escape while still focused', async ({ page }) => {

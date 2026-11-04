@@ -12,7 +12,7 @@ const blocs = (page: Page) => page.getByRole('region', { name: 'Seats by bloc' }
 /** a bloc's band in the strip; its seat count is the bold figure in its label */
 const band = (page: Page, bloc: string) => blocs(page).getByRole('button', { name: new RegExp(`^${bloc}`) });
 const blocCount = (page: Page, bloc: string) => band(page, bloc).locator('.label b');
-const listRow = (page: Page, name: string) => page.getByRole('region', { name: 'Lists' }).getByRole('row').filter({ has: page.getByRole('button', { name, exact: true }) });
+const listRow = (page: Page, name: string) => page.getByRole('region', { name: 'Lists' }).getByRole('button', { name, exact: true });
 
 test('an election opens on its first government, and other sourced groupings can be chosen', async ({ page }) => {
   await start(page, 'simple');
@@ -48,7 +48,7 @@ test('a joint list’s faction can split after the election, keeping votes and s
   const details = page.getByRole('region', { name: 'List details' });
   await details.getByRole('checkbox', { name: 'Faction split after the election' }).check();
   // each party now has its own row of seats under the list, and its own place in the chamber
-  await expect(page.getByRole('region', { name: 'Lists' }).getByRole('row').filter({ hasText: 'New Hope' }).first()).toBeVisible();
+  await expect(page.getByRole('region', { name: 'Lists' }).getByRole('list', { name: /factions after the split/ }).getByText('New Hope')).toBeVisible();
   await expect(listRow(page, 'National Unity')).toContainText('12');
   await expect(page.getByRole('status').filter({ hasText: 'What changed' })).toContainText('No seat moved');
 });
@@ -62,7 +62,7 @@ test('a joint list can run as separate lists, with the vote shares stated as an 
   await expect(details.getByText(/the shares below are an assumption/)).toBeVisible();
   await details.getByRole('button', { name: 'Run as 2 separate lists' }).click();
   await expect(listRow(page, 'Agudat Yisrael')).toBeVisible();
-  await expect(listRow(page, 'Degel HaTorah').getByRole('cell').nth(4)).toHaveText('0'); // below the threshold on its own
+  await expect(listRow(page, 'Degel HaTorah').locator('.lb-seats b')).toHaveText('0'); // below the threshold on its own
   await page.getByRole('button', { name: 'Undo', exact: true }).click();
   await expect(listRow(page, 'United Torah Judaism')).toBeVisible();
 });

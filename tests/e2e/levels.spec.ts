@@ -12,9 +12,10 @@ const start = async (page: Page, settings: Record<string, unknown> = {}) => {
 const levelButton = (page: Page, name: string) => page.getByRole('group', { name: 'Detail level' }).getByRole('button', { name, exact: true });
 // a list's row button is named by the list (agreement buttons are named "Surplus-vote agreement with …")
 const listCard = (page: Page, name: string) => page.getByRole('region', { name: 'Lists' }).getByRole('button', { name, exact: true });
-const listRow = (page: Page, name: string) => page.getByRole('region', { name: 'Lists' }).getByRole('row').filter({ has: page.getByRole('button', { name, exact: true }) });
+// a list's row is the button itself (its numbers are its description)
+const listRow = (page: Page, name: string) => listCard(page, name);
 const analysisTabs = (page: Page) => page.getByRole('tablist', { name: 'Tools' }).getByRole('tab');
-const TOOL_COUNT = 12; // every tool is listed at every level
+const TOOL_COUNT = 14; // the Overview, Scenarios and every tool, listed at every level
 const details = (page: Page) => page.getByRole('region', { name: 'List details' });
 
 test('a first visit opens in Simple with only the essential controls', async ({ page }) => {
@@ -23,7 +24,7 @@ test('a first visit opens in Simple with only the essential controls', async ({ 
   await expect(page.getByRole('status').filter({ hasText: 'Click any list, seat, bloc or figure' })).toBeVisible();
   // every tool is listed; this level's own come first
   await expect(analysisTabs(page)).toHaveCount(TOOL_COUNT);
-  await expect(analysisTabs(page).first()).toHaveText('What if…');
+  await expect(analysisTabs(page).first()).toHaveText('Overview');
   await expect(page.getByRole('button', { name: 'Start over' })).toBeVisible();
   await expect(page.getByRole('textbox', { name: 'Scenario name' })).toHaveCount(0);
 
@@ -83,7 +84,7 @@ test('Simple balances vote edits proportionally even if another source was chose
   await listCard(page, 'Likud').click();
   await details(page).getByRole('combobox', { name: /balance the difference/ }).selectOption('new');
 
-  const before = await listRow(page, 'Yashar!').getByRole('cell').nth(2).innerText();
+  const before = await listRow(page, 'Yashar!').locator('.lb-sub').innerText();
   await levelButton(page, 'Simple').click();
   await expect(details(page).getByText('The other lists’ votes shrink or grow in proportion')).toBeVisible();
   const votes = details(page).getByLabel('Votes', { exact: true });
@@ -92,7 +93,7 @@ test('Simple balances vote edits proportionally even if another source was chose
   await levelButton(page, 'Standard').click();
   await expect(listRow(page, 'Likud').first()).toContainText('1,300,000');
   // proportional balancing takes votes from every other list; "new voters" would leave Yashar! unchanged
-  await expect(listRow(page, 'Yashar!').getByRole('cell').nth(2)).not.toHaveText(before);
+  await expect(listRow(page, 'Yashar!').locator('.lb-sub')).not.toHaveText(before);
 });
 
 // ---- review findings: nothing that changes the result may vanish when switching to a lower level
@@ -108,8 +109,9 @@ test('Simple still shows a list’s surplus agreement and its state', async ({ p
 
 test('rules changed by an experimental preset are named at every level, and no zero seat price is shown', async ({ page }) => {
   await start(page);
-  await page.getByRole('button', { name: /^More questions/ }).click(); // Simple starts with the first few cards
-  await page.getByRole('listitem').filter({ hasText: 'Pure proportional representation' }).getByRole('button', { name: 'Try it' }).click();
+  await page.getByRole('tab', { name: 'What if…' }).click();
+  await page.getByRole('button', { name: /^More questions/ }).click(); // Simple starts with the first few
+  await page.getByRole('listitem').filter({ hasText: 'Pure proportional representation' }).getByRole('button', { name: 'Open as a scenario' }).click();
   await expect(page.getByRole('status').filter({ hasText: 'Experimental rules:' })).toContainText('remainder seats by Sainte-Laguë (law: Bader–Ofer)');
   await expect(page.getByText('no percentage threshold in this election')).toBeVisible();
   // a method without a quota stage has no general quota: no "votes per seat" figure at all
@@ -129,6 +131,7 @@ test('percentage precision chosen in Expert does not apply below Expert', async 
   await levelButton(page, 'Expert').click();
   await page.getByRole('tab', { name: 'Rules', exact: true }).click();
   await page.getByRole('combobox', { name: 'Decimal places for percentages' }).selectOption('8');
+  await page.getByRole('tab', { name: 'Overview' }).click();
   await expect(listRow(page, 'Likud').first()).toContainText('20.51498437%');
   await levelButton(page, 'Simple').click();
   await expect(listRow(page, 'Likud').first()).toContainText('20.51%');

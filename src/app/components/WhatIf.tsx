@@ -56,7 +56,8 @@ const K26: Preset[] = [
   { id: 'amcha-in', titleEn: 'Amcha Yisrael passes', titleHe: 'עמך ישראל עוברת', bodyEn: 'Smallest number of additional voters for Ofer Winter’s list.', bodyHe: 'המספר הקטן ביותר של מצביעים נוספים לרשימת עופר וינטר.', actions: (s) => (has(s, '26-ך') ? toPass(s, '26-ך') : null) },
 ];
 
-type Result = { p: Preset; actions: Action[] | null; lines: string[]; votes: string };
+type Change = { label: string; before: number; after: number; color: string };
+type Result = { p: Preset; actions: Action[] | null; lines: string[]; votes: string; changes: Change[] };
 // The cards depend only on the dataset and the language (never on the edited scenario), so their
 // engine runs are kept per dataset: edits, tab switches and level changes reuse them.
 const resultCache = new WeakMap<ElectionDataset, Map<string, Result[]>>();
@@ -79,16 +80,16 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
     const r0 = allocate(toEngineInput(base));
     return presets.map((p) => {
       const actions = p.actions(base);
-      if (!actions || !actions.length) return { p, actions: null, lines: [] as string[], votes: '' };
+      if (!actions || !actions.length) return { p, actions: null, lines: [] as string[], votes: '', changes: [] as Change[] };
       let s = base;
-      try { for (const a of actions) s = applyAction(s, a); } catch { return { p, actions: null, lines: [], votes: '' }; }
+      try { for (const a of actions) s = applyAction(s, a); } catch { return { p, actions: null, lines: [], votes: '', changes: [] }; }
       const r = allocate(toEngineInput(s));
       // compare by origin so merged lists line up with their parts
-      const groups = new Map<string, { before: number; after: number; label: string }>();
+      const groups = new Map<string, { before: number; after: number; label: string; color: string }>();
       for (const l of s.lists) {
         const key = l.originIds.length ? [...l.originIds].sort().join('+') : l.id;
         const before = l.originIds.reduce((t, o) => t + (r0.lists.find((x) => x.id === o)?.seats ?? 0), 0);
-        const g = groups.get(key) ?? { before: 0, after: 0, label: listLabel(l, lang) };
+        const g = groups.get(key) ?? { before: 0, after: 0, label: listLabel(l, lang), color: l.color };
         g.after += r.lists.find((x) => x.id === l.id)?.seats ?? 0;
         if (!groups.has(key)) g.before = before;
         groups.set(key, g);
@@ -98,15 +99,18 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
       const nm = (id: string) => { const x = base.lists.find((l) => l.id === id); return x ? listLabel(x, lang) : id; };
       const votes = moved?.type === 'transfer' ? L(`${fmtInt(moved.votes)} voters switch from ${nm(moved.from)}`, `${fmtInt(moved.votes)} מצביעים עוברים מ${nm(moved.from)}`)
         : moved?.type === 'setVotes' ? L(`${fmtInt(moved.votes - base.lists.find((x) => x.id === moved.listId)!.votes)} additional voters`, `${fmtInt(moved.votes - base.lists.find((x) => x.id === moved.listId)!.votes)} מצביעים נוספים`) : '';
-      return { p, actions, lines, votes };
+      const changes = [...groups.values()].filter((g) => g.before !== g.after).sort((a, b) => (b.after - b.before) - (a.after - a.before));
+      return { p, actions, lines, votes, changes };
     });
   }
 
-  const tryIt = (title: string, actions: Action[]) => {
+  const [open, setOpen] = useState<string | null>(null);
+  /** loads the question as a named scenario (its explanation as the description) and shows it on the Overview */
+  const tryIt = (title: string, description: string, actions: Action[]) => {
     const st = getState();
-    let s = { ...scenarioFromDataset(ds, title) };
+    let s: Scenario = { ...scenarioFromDataset(ds, title), description };
     for (const a of actions) s = applyAction(s, a);
-    setState({ scenario: s, past: st.scenario ? [...st.past, st.scenario] : st.past, future: [], selectedListId: null, compareWith: 'historical' });
+    setState({ scenario: s, past: st.scenario ? [...st.past, st.scenario] : st.past, future: [], selectedListId: null, compareWith: 'historical', tool: 'board' });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -119,16 +123,38 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
     <div>
       <p className="ink2 small" style={{ marginTop: 0 }}>{L('Each question starts from the real result and changes one thing; the seat changes are exact. “Try it” loads it so you can explore further (Undo returns you).', 'כל שאלה מתחילה מהתוצאה האמיתית ומשנה דבר אחד; שינויי המנדטים מדויקים. "נסו" טוען אותה להמשך חקירה (ביטול מחזיר אתכם).')}</p>
       <ol className="wi-rows">
-        {shown.map(({ p, actions, lines, votes }) => (
-          <li key={p.id} className="wi-row">
-            <div className="wi-q">
-              <b>{lang === 'he' ? p.titleHe : p.titleEn}</b>
-              <span className="small ink2">{lang === 'he' ? p.bodyHe : p.bodyEn}{votes && <> · <b>{votes}</b></>}</span>
-            </div>
-            <div className="wi-a small">{!actions ? L('Not applicable to this election.', 'לא רלוונטי לבחירות אלה.') : lines.length ? lines.join(' · ') : <span className="muted">{L('No seat changes', 'אין שינוי במנדטים')}</span>}</div>
-            <button className="btn small" disabled={!actions} onClick={() => actions && tryIt(lang === 'he' ? p.titleHe : p.titleEn, actions)}>{L('Try it', 'נסו')}</button>
-          </li>
-        ))}
+        {shown.map(({ p, actions, lines, votes, changes }) => {
+          const title = lang === 'he' ? p.titleHe : p.titleEn, body = lang === 'he' ? p.bodyHe : p.bodyEn;
+          const max = Math.max(1, ...changes.map((c) => Math.abs(c.after - c.before)));
+          const isOpen = open === p.id;
+          return (
+            <li key={p.id} className={`wi-row ${isOpen ? 'open' : ''}`}>
+              <button type="button" className="wi-q" aria-expanded={isOpen} disabled={!actions} onClick={() => setOpen(isOpen ? null : p.id)}>
+                <b>{title}</b>
+                <span className="small ink2">{body}{votes && <> · <b>{votes}</b></>}</span>
+              </button>
+              <div className="wi-a small">{!actions ? L('Not applicable to this election.', 'לא רלוונטי לבחירות אלה.') : lines.length ? lines.join(' · ') : <span className="muted">{L('No seat changes', 'אין שינוי במנדטים')}</span>}</div>
+              <button className="btn small" disabled={!actions} onClick={() => actions && tryIt(title, body, actions)}>{L('Open as a scenario', 'פתיחה כתרחיש')}</button>
+              {isOpen && actions && (
+                <div className="wi-preview">
+                  {changes.length === 0 ? <p className="small muted" style={{ margin: 0 }}>{L('Every list keeps its seats.', 'כל הרשימות שומרות על מנדטיהן.')}</p> : (
+                    <ul className="cmp-diff">
+                      {changes.map((c) => { const d = c.after - c.before; return (
+                        <li key={c.label}>
+                          <span className="cmp-label">{c.label} <span className="muted">{c.before} → {c.after}</span></span>
+                          <span className="cmp-neg">{d < 0 && <i style={{ width: `${(-d / max) * 100}%`, background: c.color }} />}</span>
+                          <span className="cmp-axis" aria-hidden />
+                          <span className="cmp-pos">{d > 0 && <i style={{ width: `${(d / max) * 100}%`, background: c.color }} />}</span>
+                          <b className="cmp-d" dir="ltr">{d > 0 ? `+${d}` : `−${-d}`}</b>
+                        </li>
+                      ); })}
+                    </ul>
+                  )}
+                </div>
+              )}
+            </li>
+          );
+        })}
       </ol>
       {useful.length > limit && <button className="btn small" style={{ marginTop: 10 }} onClick={() => setAll(true)}>{L(`More questions (${useful.length - limit})`, `שאלות נוספות (${useful.length - limit})`)}</button>}
     </div>

@@ -28,14 +28,6 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
   const gName = (ids: string[], sc: Scenario) => ids.map((id) => { const l = sc.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : id; }).join(' + ') || '—';
   const changed = groups.filter((g) => g.seatsA !== g.seatsB).sort((x, y) => (y.seatsB - y.seatsA) - (x.seatsB - x.seatsA));
   const gainers = changed.filter((g) => g.seatsB > g.seatsA);
-  const losers = changed.filter((g) => g.seatsB < g.seatsA);
-  const blocOf = (g: (typeof groups)[number]) => {
-    const bl = new Set([...g.aIds.map((id) => a.lists.find((x) => x.id === id)?.bloc), ...g.bIds.map((id) => s.lists.find((x) => x.id === id)?.bloc)]);
-    const b = [...bl].find(Boolean);
-    return bl.size === 1 && b ? s.blocs.find((x) => x.id === b) ?? null : null;
-  };
-  const blocName = (b: ReturnType<typeof blocOf>) => (b ? (lang === 'he' ? b.nameHe : b.nameEn) : L('no bloc', 'ללא גוש'));
-
   // direct vs indirect
   const direct = groups.filter((g) => g.votesA !== g.votesB || g.aIds.join() !== g.bIds.join());
   const indirect = changed.filter((g) => !direct.includes(g));
@@ -49,95 +41,126 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
   const blocSums = (sc: Scenario, rr: AllocationResult) => Object.fromEntries(s.blocs.map((b) => [b.id, sc.lists.filter((l) => l.bloc === b.id).reduce((t, l) => t + (rr.lists.find((x) => x.id === l.id)?.seats ?? 0), 0)]));
   const ba = blocSums(a, ar), bb = blocSums(s, r);
 
+  const nameA = compareWith === 'historical' ? L('Official result', 'התוצאה הרשמית') : a.name;
+  const nameB = s.name || L('Your scenario', 'התרחיש שלכם');
+  const colorOfGroup = (g: (typeof groups)[number]) => (s.lists.find((l) => l.id === g.bIds[0]) ?? a.lists.find((l) => l.id === g.aIds[0]))?.color ?? '#888';
+  const labelOf = (g: (typeof groups)[number]) => gName(g.bIds.length ? g.bIds : g.aIds, g.bIds.length ? s : a);
+  const maxChange = Math.max(1, ...changed.map((g) => Math.abs(g.seatsB - g.seatsA)));
+  const total = s.rules.seats, majority = Math.floor(total / 2) + 1;
+  const BlocBarRow = ({ sums, title }: { sums: Record<string, number>; title: string }) => {
+    const rest = total - s.blocs.reduce((t, b) => t + (sums[b.id] ?? 0), 0);
+    return (
+      <div className="cmp-blocrow">
+        <span className="small ink2">{title}</span>
+        <div className="coal-bar big" aria-label={`${title}: ${s.blocs.map((b) => `${lang === 'he' ? b.nameHe : b.nameEn} ${sums[b.id] ?? 0}`).join(', ')}`}>
+          {s.blocs.map((b) => (sums[b.id] ?? 0) > 0 && <i key={b.id} style={{ flexBasis: `${((sums[b.id] ?? 0) / total) * 100}%`, background: b.color }} title={`${lang === 'he' ? b.nameHe : b.nameEn} ${sums[b.id]}`}><span className="cmp-n">{sums[b.id]}</span></i>)}
+          {rest > 0 && <i style={{ flexBasis: `${(rest / total) * 100}%`, background: 'var(--axis)' }} title={`${L('No bloc', 'ללא גוש')} ${rest}`}><span className="cmp-n">{rest}</span></i>}
+          <span className="maj" style={{ insetInlineStart: `${(majority / total) * 100}%` }} />
+        </div>
+      </div>
+    );
+  };
+
   return (
-    <div>
-      <div className="row" style={{ marginBottom: 10 }}>
-        <label className="field" style={{ minWidth: 260 }}>{L('Compare the current scenario with', 'השוואת התרחיש הנוכחי עם')}
+    <div className="cmp">
+      <div className="row" style={{ marginBottom: 12 }}>
+        <label className="row small">{L('Compare', 'השוואה בין')} <b>{nameB}</b> {L('with', 'לבין')}
           <select value={compareWith} onChange={(e) => setState({ compareWith: e.target.value })}>
-            <option value="historical">{L('Historical result', 'התוצאה בפועל')}</option>
+            <option value="historical">{L('the official result', 'התוצאה הרשמית')}</option>
             {saved.filter((x) => x.electionId === s.electionId && x.id !== s.id).map((x) => <option key={x.id} value={x.id}>{x.name}</option>)}
           </select>
         </label>
+        {changed.length === 0 && <span className="small muted">{L('No seat has moved yet: make an edit on the Overview, or load a scenario.', 'אף מנדט עוד לא זז: ערכו שינוי בתמונת המצב, או טענו תרחיש.')}</span>}
       </div>
 
-      <div className="callout" style={{ marginBottom: 12 }}>
-        {changed.length === 0 ? L('No seat changes.', 'אין שינויים במנדטים.') : (
-          <div>
-            {gainers.length === 1 ? (
-              <p style={{ margin: 0 }}>
-                <b>{gName(gainers[0].bIds, s)}</b> {gainers[0].seatsA === 0 ? L(`enters the Knesset with ${gainers[0].seatsB} seats`, `נכנסת לכנסת עם ${gainers[0].seatsB} מנדטים`) : L(`gains ${gainers[0].seatsB - gainers[0].seatsA} seat${gainers[0].seatsB - gainers[0].seatsA === 1 ? '' : 's'} (${gainers[0].seatsA} → ${gainers[0].seatsB})`, `מוסיפה ${gainers[0].seatsB - gainers[0].seatsA} מנדטים (${gainers[0].seatsA} → ${gainers[0].seatsB})`)}.{' '}
-                {L('The seats come from: ', 'המנדטים באים מ: ')}
-                {Object.entries(losers.reduce<Record<string, { n: number; names: string[] }>>((acc, g) => { const b = blocName(blocOf(g)); acc[b] ??= { n: 0, names: [] }; acc[b].n += g.seatsA - g.seatsB; acc[b].names.push(`${gName(g.aIds, a)} −${g.seatsA - g.seatsB}`); return acc; }, {}))
-                  .map(([b, v]) => `${b}: ${v.n} (${v.names.join(', ')})`).join('; ')}.
-              </p>
-            ) : (
-              <p style={{ margin: 0 }}>
-                {L('Gains: ', 'רווחים: ')}{gainers.map((g) => `${gName(g.bIds, s)} +${g.seatsB - g.seatsA}`).join(', ')}. {L('Losses: ', 'הפסדים: ')}{losers.map((g) => `${gName(g.aIds, a)} −${g.seatsA - g.seatsB}`).join(', ')}.
-                <span className="small muted"> {L('With several lists gaining, the method does not define which gained seat “came from” which list; only the net changes are exact.', 'כשכמה רשימות מרוויחות, השיטה אינה קובעת איזה מנדט "עבר" מאיזו רשימה; רק השינויים נטו מדויקים.')}</span>
-              </p>
-            )}
-            {s.blocs.length > 0 && <p className="small" style={{ margin: '6px 0 0' }}>{L('Blocs: ', 'גושים: ')}{s.blocs.map((b) => `${lang === 'he' ? b.nameHe : b.nameEn} ${ba[b.id]} → ${bb[b.id]}`).join(' · ')}</p>}
-            {indirect.length > 0 && <p className="small" style={{ margin: '6px 0 0' }}>{L('Indirect consequences (votes unchanged, seats changed by recalculation): ', 'השלכות עקיפות (הקולות לא השתנו, המנדטים השתנו בחישוב מחדש): ')}{indirect.map((g) => `${gName(g.bIds, s)} ${signed(g.seatsB - g.seatsA)}`).join(', ')}</p>}
-          </div>
-        )}
+      <div className="cmp-chambers">
+        <figure><figcaption>{nameA}</figcaption><Hemicycle s={a} r={ar} compact title={nameA} /></figure>
+        <figure><figcaption>{nameB}</figcaption><Hemicycle s={s} r={r} compact title={nameB} /></figure>
       </div>
 
-      <div className="grid2 stack-sm" style={{ marginBottom: 12, alignItems: 'start' }}>
-        <Slope groups={groups.map((g) => ({ key: g.key, seatsA: g.seatsA, seatsB: g.seatsB, label: gName(g.bIds.length ? g.bIds : g.aIds, g.bIds.length ? s : a) }))}
-          nameA={compareWith === 'historical' ? L('Historical', 'בפועל') : a.name} nameB={s.name || L('Scenario', 'התרחיש')}
-          colorOf={(key) => { const g = groups.find((x) => x.key === key)!; return (s.lists.find((l) => l.id === g.bIds[0]) ?? a.lists.find((l) => l.id === g.aIds[0]))?.color ?? '#888'; }} />
-        <div>
-          <h3>{compareWith === 'historical' ? L('Historical', 'בפועל') : a.name}</h3><Hemicycle s={a} r={ar} compact title={L('Before', 'לפני')} />
-          <h3>{s.name || L('Current scenario', 'התרחיש הנוכחי')}</h3><Hemicycle s={s} r={r} compact title={L('After', 'אחרי')} />
-        </div>
-      </div>
+      {s.blocs.length > 0 && (
+        <section className="cmp-section">
+          <h3>{L('Blocs', 'גושים')}</h3>
+          <BlocBarRow sums={ba} title={nameA} />
+          <BlocBarRow sums={bb} title={nameB} />
+          <div className="legend small" style={{ marginTop: 6 }}>{s.blocs.map((b) => <span key={b.id} className="row" style={{ gap: 5 }}><span className="swatch" style={{ background: b.color }} />{lang === 'he' ? b.nameHe : b.nameEn} <b>{ba[b.id]} → {bb[b.id]}</b></span>)}</div>
+        </section>
+      )}
 
-      <div className="kv small" style={{ maxWidth: 520, marginBottom: 12 }}>
-        <span>{L('Valid votes', 'קולות כשרים')}</span><span>{fmtInt(ar.totalValid)} → {fmtInt(r.totalValid)} ({fmtSigned(r.totalValid - ar.totalValid)})</span>
-        <span>{L('Threshold in votes', 'אחוז החסימה בקולות')}</span><span>{fmtInt(ar.thresholdVotes)} → {fmtInt(r.thresholdVotes)}</span>
-        <span>{L('General quota', 'המודד הכללי')}</span><span>{fmtRat(ar.quota, 0)} → {fmtRat(r.quota, 0)}</span>
-        <span>{L('Remainder seats', 'מנדטים מעודפים')}</span><span>{ar.remainderSeatsTotal} → {r.remainderSeatsTotal}</span>
-        <span>{L('Unrepresented votes', 'קולות שלא השתתפו')}</span><span>{fmtPct(ar.unrepresentedVotes, ar.totalValid, digits)} → {fmtPct(r.unrepresentedVotes, r.totalValid, digits)}</span>
-      </div>
-
-      <details open={advanced}>
-      <summary className="small">{L('Full table of votes and seats', 'טבלה מלאה של קולות ומנדטים')}</summary>
-      <div className="tablewrap" tabIndex={0} role="region" aria-label={L('Scrollable table', 'טבלה נגללת')}>
-        <table className="tbl">
-          <thead><tr>
-            <th>{L('List(s)', 'רשימה/ות')}</th><th className="n">{L('Votes before', 'קולות לפני')}</th><th className="n">{L('Votes after', 'קולות אחרי')}</th><th className="n">Δ</th><th className="n">Δ%</th>
-            <th className="n">{L('Seats before', 'מנדטים לפני')}</th><th className="n">{L('after', 'אחרי')}</th><th className="n">Δ</th>
-          </tr></thead>
-          <tbody>
-            {[...groups].sort((x, y) => y.seatsB - x.seatsB || Number(y.votesB - x.votesB)).filter((g) => g.seatsA || g.seatsB || g.votesA !== g.votesB || g.votesB * 100n >= r.totalValid).map((g) => {
-              const dv = g.votesB - g.votesA, ds_ = g.seatsB - g.seatsA;
+      {changed.length > 0 && (
+        <section className="cmp-section">
+          <h3>{L('Seats gained and lost', 'מנדטים שהתווספו ואבדו')}</h3>
+          <ul className="cmp-diff">
+            {changed.map((g) => {
+              const d = g.seatsB - g.seatsA;
               return (
-                <tr key={g.key} onClick={() => g.bIds[0] && setState({ selectedListId: g.bIds[0] })} style={{ cursor: 'pointer' }}>
-                  <td>{g.aIds.join() === g.bIds.join() ? gName(g.bIds, s) : `${gName(g.aIds, a)} → ${gName(g.bIds, s)}`}</td>
-                  <td className="n">{fmtInt(g.votesA)}</td><td className="n">{fmtInt(g.votesB)}</td>
-                  <td className={`n ${dv > 0n ? 'up' : dv < 0n ? 'down' : 'muted'}`}>{dv === 0n ? '—' : fmtSigned(dv)}</td>
-                  <td className="n">{g.votesA > 0n && dv !== 0n ? `${dv > 0n ? '+' : ''}${fmtRat({ num: dv * 100n, den: g.votesA }, 2)}%` : ''}</td>
-                  <td className="n">{g.seatsA}</td><td className="n"><b>{g.seatsB}</b></td>
-                  <td className={`n ${ds_ > 0 ? 'up' : ds_ < 0 ? 'down' : 'muted'}`}>{ds_ === 0 ? '—' : ds_ > 0 ? `+${ds_}` : `−${-ds_}`}</td>
-                </tr>
+                <li key={g.key}>
+                  <span className="cmp-label">{labelOf(g)} <span className="muted">{g.seatsA} → {g.seatsB}</span></span>
+                  <span className="cmp-neg">{d < 0 && <i style={{ width: `${(-d / maxChange) * 100}%`, background: colorOfGroup(g) }} />}</span>
+                  <span className="cmp-axis" aria-hidden />
+                  <span className="cmp-pos">{d > 0 && <i style={{ width: `${(d / maxChange) * 100}%`, background: colorOfGroup(g) }} />}</span>
+                  <b className="cmp-d" dir="ltr">{d > 0 ? `+${d}` : `−${-d}`}</b>
+                </li>
               );
             })}
-          </tbody>
-        </table>
-      </div>
-      </details>
+          </ul>
+          {indirect.length > 0 && <p className="small ink2" style={{ margin: '6px 0 0' }}>{L('Changed only through the recalculation (their votes did not change): ', 'השתנו רק בגלל החישוב מחדש (קולותיהן לא השתנו): ')}{indirect.map((g) => `${gName(g.bIds, s)} ${signed(g.seatsB - g.seatsA)}`).join(', ')}</p>}
+          {gainers.length > 1 && <p className="small muted" style={{ margin: '4px 0 0' }}>{L('With several lists gaining, the method does not say which seat “came from” which list; the net changes are exact.', 'כשכמה רשימות מרוויחות, השיטה אינה קובעת איזה מנדט "עבר" מאיזו רשימה; השינויים נטו מדויקים.')}</p>}
+        </section>
+      )}
 
-      <div className="grid2" style={{ marginTop: 12 }}>
+      <section className="cmp-section">
+        <h3>{L('Key numbers', 'מספרי מפתח')}</h3>
+        <div className="figures">
+          {[
+            [L('Valid votes', 'קולות כשרים'), fmtInt(ar.totalValid), fmtInt(r.totalValid)],
+            [L('Threshold (votes)', 'אחוז החסימה (קולות)'), fmtInt(ar.thresholdVotes), fmtInt(r.thresholdVotes)],
+            [L('Votes per seat', 'קולות למנדט'), fmtRat(ar.quota, 0), fmtRat(r.quota, 0)],
+            [L('Remainder seats', 'מנדטים מעודפים'), String(ar.remainderSeatsTotal), String(r.remainderSeatsTotal)],
+            [L('Votes with no seat', 'קולות ללא מנדט'), fmtPct(ar.unrepresentedVotes, ar.totalValid, digits), fmtPct(r.unrepresentedVotes, r.totalValid, digits)],
+          ].map(([k, x, y]) => <div key={k} className="fig static"><span className="k"><span>{k}</span></span><span className="v">{y}</span><span className="d">{x === y ? L('unchanged', 'ללא שינוי') : `${L('was', 'היה')} ${x}`}</span></div>)}
+        </div>
+      </section>
+
+      <div className="grid2 stack-sm cmp-section">
         <div>
-          <h3 className="up">{L(`Entering the Knesset (${entering.length})`, `נכנסים לכנסת (${entering.length})`)}</h3>
+          <h3>{L(`Entering the Knesset (${entering.length})`, `נכנסים לכנסת (${entering.length})`)}</h3>
           {entering.length === 0 ? <p className="muted small">—</p> : <ul className="small">{entering.map(({ c, l }) => <li key={c.id} lang="he">{c.nameHe} <span className="muted">· {listLabel(l, lang)} #{l.candidates.indexOf(c) + 1}</span></li>)}</ul>}
         </div>
         <div>
-          <h3 className="down">{L(`Leaving the Knesset (${leaving.length})`, `יוצאים מהכנסת (${leaving.length})`)}</h3>
+          <h3>{L(`Leaving the Knesset (${leaving.length})`, `יוצאים מהכנסת (${leaving.length})`)}</h3>
           {leaving.length === 0 ? <p className="muted small">—</p> : <ul className="small">{leaving.map(({ c, l }) => <li key={c.id} lang="he">{c.nameHe} <span className="muted">· {listLabel(l, lang)} #{l.candidates.indexOf(c) + 1}</span></li>)}</ul>}
         </div>
       </div>
-      <p className="small muted">{L('Elected candidates are the first names on each list as registered, i.e. those elected on election night. Later changes in membership (resignations, replacements, the Norwegian Law) are not modelled.', 'הנבחרים הם המועמדים הראשונים בכל רשימה כפי שנרשמה — כלומר מי שנבחרו בליל הבחירות. שינויים מאוחרים בהרכב (התפטרויות, מחליפים, החוק הנורבגי) אינם מוצגים.')}</p>
+
+      <details className="cmp-section" open={advanced}>
+        <summary className="small">{L('Every list: votes and seats before and after, and the slope chart', 'כל הרשימות: קולות ומנדטים לפני ואחרי, ותרשים השיפוע')}</summary>
+        <Slope groups={groups.map((g) => ({ key: g.key, seatsA: g.seatsA, seatsB: g.seatsB, label: labelOf(g) }))} nameA={nameA} nameB={nameB} colorOf={(key) => colorOfGroup(groups.find((x) => x.key === key)!)} />
+        <div className="tablewrap" tabIndex={0} role="region" aria-label={L('Scrollable table', 'טבלה נגללת')}>
+          <table className="tbl">
+            <thead><tr>
+              <th>{L('List(s)', 'רשימה/ות')}</th><th className="n">{L('Votes before', 'קולות לפני')}</th><th className="n">{L('Votes after', 'קולות אחרי')}</th><th className="n">Δ</th><th className="n">Δ%</th>
+              <th className="n">{L('Seats before', 'מנדטים לפני')}</th><th className="n">{L('after', 'אחרי')}</th><th className="n">Δ</th>
+            </tr></thead>
+            <tbody>
+              {[...groups].sort((x, y) => y.seatsB - x.seatsB || Number(y.votesB - x.votesB)).filter((g) => g.seatsA || g.seatsB || g.votesA !== g.votesB || g.votesB * 100n >= r.totalValid).map((g) => {
+                const dv = g.votesB - g.votesA, ds_ = g.seatsB - g.seatsA;
+                return (
+                  <tr key={g.key} onClick={() => g.bIds[0] && setState({ selectedListId: g.bIds[0] })} style={{ cursor: 'pointer' }}>
+                    <td>{g.aIds.join() === g.bIds.join() ? gName(g.bIds, s) : `${gName(g.aIds, a)} → ${gName(g.bIds, s)}`}</td>
+                    <td className="n">{fmtInt(g.votesA)}</td><td className="n">{fmtInt(g.votesB)}</td>
+                    <td className="n">{dv === 0n ? '—' : fmtSigned(dv)}</td>
+                    <td className="n">{g.votesA > 0n && dv !== 0n ? `${dv > 0n ? '+' : ''}${fmtRat({ num: dv * 100n, den: g.votesA }, 2)}%` : ''}</td>
+                    <td className="n">{g.seatsA}</td><td className="n"><b>{g.seatsB}</b></td>
+                    <td className="n">{ds_ === 0 ? '—' : ds_ > 0 ? `+${ds_}` : `−${-ds_}`}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </details>
+      <p className="small muted">{L('Elected candidates are the first names on each list as registered (election night). Later changes in membership are not modelled.', 'הנבחרים הם המועמדים הראשונים בכל רשימה כפי שנרשמה (ליל הבחירות). שינויים מאוחרים בהרכב אינם מוצגים.')}</p>
     </div>
   );
 }

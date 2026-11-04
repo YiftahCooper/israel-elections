@@ -14,7 +14,7 @@ const LEVELS: Level[] = ['simple', 'standard', 'expert'];
 /** settings saved by the two-level version ('explore' | 'advanced') map onto the three levels */
 const migrateLevel = (v: unknown): Level => (v === 'advanced' ? 'expert' : v === 'explore' ? 'simple' : LEVELS.includes(v as Level) ? (v as Level) : 'simple');
 
-export interface SavedScenario { id: string; name: string; electionId: ElectionId; savedAt: string; baseBuiltAt: string; log: Action[] }
+export interface SavedScenario { id: string; name: string; description?: string; electionId: ElectionId; savedAt: string; baseBuiltAt: string; log: Action[] }
 
 export interface State {
   datasets: Partial<Record<ElectionId, ElectionDataset>>;
@@ -180,7 +180,7 @@ export function replay(ds: ElectionDataset, name: string, log: Action[]): { scen
 
 let openSeq = 0;
 /** Opens an election (optionally replaying a saved log). Resolves false if it could not be loaded. */
-export async function openElection(id: ElectionId, from?: { name: string; log: Action[]; baseBuiltAt?: string }): Promise<boolean> {
+export async function openElection(id: ElectionId, from?: { name: string; description?: string; log: Action[]; baseBuiltAt?: string }): Promise<boolean> {
   const seq = ++openSeq;
   try {
     const ds = await loadDataset(id);
@@ -193,7 +193,7 @@ export async function openElection(id: ElectionId, from?: { name: string; log: A
     let notice: string | null = null;
     if (from) {
       const r = replay(ds, from.name, from.log);
-      scenario = r.scenario;
+      scenario = from.description ? { ...r.scenario, description: from.description } : r.scenario;
       if (state.scenario?.electionId === id) past = [...state.past, state.scenario];
       const he = state.lang === 'he';
       if (r.failed) notice = he ? `${r.failed} שינויים לא ניתן היה להחיל מחדש על הנתונים הנוכחיים.` : `${r.failed} change(s) could not be re-applied to the current data.`;
@@ -221,7 +221,7 @@ export function saveCurrent(name?: string): boolean {
   const s = state.scenario;
   if (!s) return false;
   const he = state.lang === 'he';
-  const entry: SavedScenario = { id: s.id, name: name || s.name || (he ? 'תרחיש' : 'Scenario'), electionId: s.electionId, savedAt: new Date().toISOString(), baseBuiltAt: s.baseBuiltAt, log: s.log.map((e) => e.action) };
+  const entry: SavedScenario = { id: s.id, name: name || s.name || (he ? 'תרחיש' : 'Scenario'), ...(s.description ? { description: s.description } : {}), electionId: s.electionId, savedAt: new Date().toISOString(), baseBuiltAt: s.baseBuiltAt, log: s.log.map((e) => e.action) };
   const before = state.saved;
   setState((st) => ({ saved: [entry, ...st.saved.filter((x) => x.id !== s.id)], scenario: { ...s, name: entry.name } }));
   if (!persist()) {
@@ -257,18 +257,18 @@ async function pipe(bytes: Uint8Array, stream: CompressionStream | Decompression
 
 export async function shareLink(): Promise<string> {
   const s = state.scenario!;
-  const payload = JSON.stringify({ e: s.electionId, n: s.name, b: s.baseBuiltAt, l: s.log.map((x) => x.action) });
+  const payload = JSON.stringify({ e: s.electionId, n: s.name, ...(s.description ? { d: s.description } : {}), b: s.baseBuiltAt, l: s.log.map((x) => x.action) });
   const z = await pipe(new TextEncoder().encode(payload), new CompressionStream('deflate-raw'));
   return `${location.origin}${location.pathname}#s=${b64url(z)}`;
 }
 
-export async function readSharedFromHash(): Promise<{ electionId: ElectionId; name: string; log: Action[]; baseBuiltAt: string } | null> {
+export async function readSharedFromHash(): Promise<{ electionId: ElectionId; name: string; description?: string; log: Action[]; baseBuiltAt: string } | null> {
   const m = location.hash.match(/#s=([A-Za-z0-9_-]+)/);
   if (!m) return null;
   try {
     const raw = await pipe(unb64url(m[1]), new DecompressionStream('deflate-raw'));
     const p = JSON.parse(new TextDecoder().decode(raw));
-    return { electionId: p.e, name: p.n ?? '', log: p.l ?? [], baseBuiltAt: p.b };
+    return { electionId: p.e, name: p.n ?? '', ...(typeof p.d === 'string' ? { description: p.d } : {}), log: p.l ?? [], baseBuiltAt: p.b };
   } catch { return null; }
 }
 

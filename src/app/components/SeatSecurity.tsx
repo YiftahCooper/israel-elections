@@ -120,29 +120,60 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
     else if (excluded.includes(id)) setExcluded(excluded.filter((x) => x !== id));
     else setPicked([...picked, id]);
   };
+  const total = s.rules.seats;
+  const sorted = [...minimal].sort((a, b) => a.n - b.n || a.ids.length - b.ids.length);
+  const shown = sorted.slice(0, 24);
+  const blocName = (b: { nameHe: string; nameEn: string }) => (lang === 'he' ? b.nameHe : b.nameEn);
+  const startFrom = s.blocs.map((b) => ({ b, ids: seated.filter((x) => x.l.bloc === b.id).map((x) => x.l.id) })).filter((x) => x.ids.length);
+  const colorOf = (id: string) => s.lists.find((l) => l.id === id)!.color;
+  const seatsOf = (id: string) => seated.find((x) => x.l.id === id)?.n ?? 0;
+  /** a 120-seat bar: the given lists in their colours from the start, the rest pale, and the majority line */
+  const SeatBar = ({ ids, big }: { ids: string[]; big?: boolean }) => (
+    <div className={`coal-bar ${big ? 'big' : ''}`} aria-hidden>
+      {ids.map((id) => <i key={id} style={{ flexBasis: `${(seatsOf(id) / total) * 100}%`, background: colorOf(id) }} title={`${nm(id)} ${seatsOf(id)}`} />)}
+      <span className="maj" style={{ insetInlineStart: `${(majority / total) * 100}%` }}>{big && <em>{majority}</em>}</span>
+    </div>
+  );
   return (
-    <div>
-      <p className="small ink2" style={{ marginTop: 0 }}>{L('Click a list once to include it, again to rule it out, a third time to clear. Coalitions are arithmetic only — they say nothing about political feasibility.', 'לחיצה אחת מכלילה רשימה, שנייה פוסלת אותה, שלישית מנקה. קואליציות כאן הן חשבון בלבד — לא הערכה פוליטית.')} <Info term="minimal-winning-coalition" /> <Info term="majority-61" /></p>
-      <div className="row" style={{ marginBottom: 10 }}>
+    <div className="coal">
+      <p className="small ink2" style={{ marginTop: 0 }}>{L('Build a coalition: click a list to include it, again to rule it out, a third time to clear. Arithmetic only — it says nothing about political feasibility.', 'בנו קואליציה: לחיצה מכלילה רשימה, שנייה פוסלת אותה, שלישית מנקה. חשבון בלבד — לא הערכה פוליטית.')} <Info term="minimal-winning-coalition" /> <Info term="majority-61" /></p>
+      {startFrom.length > 0 && (
+        <div className="row" style={{ marginBottom: 8 }}>
+          <span className="small ink2">{L('Start from', 'התחלה מ')}</span>
+          {startFrom.map(({ b, ids }) => <button key={b.id} className="btn small" onClick={() => { setPicked(ids); setExcluded([]); }}><span className="swatch" style={{ background: b.color }} />{blocName(b)}</button>)}
+          {(picked.length > 0 || excluded.length > 0) && <button className="btn small ghost" onClick={() => { setPicked([]); setExcluded([]); }}>{L('Clear', 'ניקוי')}</button>}
+        </div>
+      )}
+      <div className="row coal-chips">
         {seated.map(({ l, n }) => {
           const st = picked.includes(l.id) ? 'in' : excluded.includes(l.id) ? 'out' : '';
-          return <button key={l.id} className={`chip coal ${st}`} aria-pressed={st === 'in'} onClick={() => toggle(l.id)} style={{ ['--c' as string]: l.color }}>
-            <span className="swatch" style={{ background: l.color }} />{listLabel(l, lang)} <b className="tabnum">{n}</b>{st === 'out' ? ' ✕' : ''}
+          return <button key={l.id} className={`chip coal ${st}`} aria-pressed={st === 'in'} onClick={() => toggle(l.id)} style={{ ['--c' as string]: l.color }}
+            aria-label={`${listLabel(l, lang)} ${n}${st === 'out' ? L(' (ruled out)', ' (נפסלה)') : ''}`}>
+            <span className="swatch" style={{ background: l.color }} />{listLabel(l, lang)} <b className="tabnum">{n}</b>
           </button>;
         })}
       </div>
-      <div className="majority-bar" aria-label={L(`Selected: ${pickedSeats} seats`, `נבחרו: ${pickedSeats} מנדטים`)}>
-        {seated.filter((x) => picked.includes(x.l.id)).map(({ l, n }) => <div key={l.id} style={{ flexBasis: `${(n / s.rules.seats) * 100}%`, background: l.color }} title={`${listLabel(l, lang)} ${n}`} />)}
-        <span className="majority-line" style={{ insetInlineStart: `calc(${(majority / s.rules.seats) * 100}% - 1px)` }} aria-hidden />
+      <div className="coal-now">
+        <div className="coal-total"><b>{pickedSeats}</b><span>/ {total}</span>
+          {pickedSeats >= majority ? <span className="chip ok">{L('a majority', 'רוב')}</span> : <span className="ink2">{L(`${majority - pickedSeats} short of ${majority}`, `חסרים ${majority - pickedSeats} ל-${majority}`)}</span>}</div>
+        <SeatBar ids={seated.filter((x) => picked.includes(x.l.id)).map((x) => x.l.id)} big />
       </div>
-      <p><b className="tabnum" style={{ fontSize: 20 }}>{pickedSeats}</b> / {s.rules.seats} {pickedSeats >= majority ? <span className="chip ok">{L('majority', 'רוב')}</span> : <span className="muted">{L(`${majority - pickedSeats} short of ${majority}`, `חסרים ${majority - pickedSeats} ל-${majority}`)}</span>}</p>
-      <h3>{L(`Minimal winning coalitions${picked.length ? ' containing your selection' : ''} (${minimal.length.toLocaleString('en-US')}${truncated ? '+' : ''})`, `קואליציות מנצחות מינימליות${picked.length ? ' הכוללות את הבחירה' : ''} (${minimal.length.toLocaleString('en-US')}${truncated ? '+' : ''})`)}</h3>
-      <p className="small muted" style={{ marginTop: 0 }}>{L('Minimal: removing any one member would lose the majority.', 'מינימלית: הוצאת כל אחת מהחברות תבטל את הרוב.')}</p>
+      <h3 style={{ marginTop: 16 }}>{L(`Smallest winning coalitions${picked.length ? ' with your selection' : ''}`, `הקואליציות המנצחות הקטנות ביותר${picked.length ? ' עם הבחירה שלכם' : ''}`)}
+        <span className="muted" style={{ fontWeight: 400 }}> · {minimal.length.toLocaleString('en-US')}{truncated ? '+' : ''} {L('in all', 'בסך הכול')}</span></h3>
+      <p className="small muted" style={{ marginTop: 0 }}>{L('Each needs every member: remove one and the majority is lost. Click one to load it above.', 'כל אחת זקוקה לכל חברותיה: הוצאת אחת מבטלת את הרוב. לחצו על אחת כדי לטעון אותה למעלה.')}</p>
       {truncated && <p className="small">{L('There are more than 100,000: include or rule out lists to narrow the search.', 'יש יותר מ-100,000: הכלילו או פסלו רשימות כדי לצמצם את החיפוש.')}</p>}
-      <ul className="small" style={{ columns: 2, paddingInlineStart: 18 }}>
-        {minimal.slice(0, 40).map((c) => <li key={c.ids.join()} style={{ breakInside: 'avoid', marginBottom: 3 }}><b className="tabnum">{c.n}</b> · {c.ids.map(nm).join(' + ')}</li>)}
+      <ul className="coal-list">
+        {shown.map((c) => (
+          <li key={c.ids.join()}>
+            <button type="button" onClick={() => { setPicked(c.ids); setExcluded([]); }}>
+              <span className="coal-n">{c.n}</span>
+              <SeatBar ids={c.ids} />
+              <span className="coal-names">{c.ids.map(nm).join(' · ')}</span>
+            </button>
+          </li>
+        ))}
       </ul>
-      {minimal.length > 40 && <p className="small muted">{L(`…and ${minimal.length - 40} more. Include or rule out lists to narrow the list.`, `…ועוד ${minimal.length - 40}. הכלילו או פסלו רשימות כדי לצמצם.`)}</p>}
+      {minimal.length > shown.length && <p className="small muted">{L(`Showing the ${shown.length} smallest of ${minimal.length.toLocaleString('en-US')}. Include or rule out lists to see others.`, `מוצגות ${shown.length} הקטנות מתוך ${minimal.length.toLocaleString('en-US')}. הכלילו או פסלו רשימות כדי לראות אחרות.`)}</p>}
     </div>
   );
 }

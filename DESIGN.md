@@ -165,9 +165,9 @@ components:
 
 **Creative North Star: "The Market Board"**
 
-The screen reads like a stock-exchange board or a business-press market table. The official result is the opening price; every edit the user makes is the session, and the board reprices live. A navy shell band sits over a cool grey ground, and the working material is white ruled tables: every list is one row carrying its numbers, and it opens in place, directly beneath itself, for its controls. Nothing is a card grid, and no feature hides behind a menu.
+The screen reads like a stock-exchange board or a business-press market table. The official result is the opening price; every edit the user makes is the session, and the board reprices live. A navy shell band sits over a cool grey ground, and the picture leads: the chamber is the centre of the board, the lists are a column of seat bars, and an opened list sits in a side panel beside them. Each tool is a full-width page of its own, drawn rather than written, and the board keeps its state when you come back. Nothing is a card grid, and no feature hides behind a menu.
 
-Density is high and deliberate. One workhorse face with tabular figures carries everything at almost one size; rank comes from weight and from the reversed navy plate on the selected row, not from big type. Party colour belongs to the parties: it appears in their ballot slips, seats, wedges and the pale tinted corridors of their blocs, never in the interface chrome. Change is drawn in neutral ink with a small drawn triangle, never green or red, so no camp is ever coloured as winning or losing.
+Density is high and deliberate. One workhorse face with tabular figures carries everything at almost one size; rank comes from weight and from the navy marker on the selected list, not from big type. Party colour belongs to the parties: it appears in their ballot slips, seats, wedges and the pale tinted corridors of their blocs, never in the interface chrome. Change is drawn in neutral ink with a small drawn triangle, never green or red, so no camp is ever coloured as winning or losing.
 
 The same board serves three levels (Simple, Standard, Expert). Levels thin the board by removing columns and controls; they never move a feature behind a click or hide that it exists. Hebrew right-to-left is the default and English left-to-right is equal; both have light and dark themes.
 
@@ -175,7 +175,7 @@ The same board serves three levels (Simple, Standard, Expert). Levels thin the b
 - Navy shell band (52px) over a cool grey ground; white, hairline-ruled surfaces.
 - One face (IBM Plex Sans Hebrew, self-hosted 400/500/600/700) with tabular figures everywhere.
 - One data type size; rank carried by weight and the reversed navy plate.
-- Opened in place: rows, figures and bloc corridors expand beneath themselves.
+- Opened in place: figures and bloc corridors expand beneath themselves; a list opens in the side panel; tools are pages.
 - Party colour only as party identity; change in neutral ink.
 - The threshold is a hatched rule inside the table.
 - Flat surfaces; shadow only on floating layers.
@@ -186,15 +186,15 @@ The same board serves three levels (Simple, Standard, Expert). Levels thin the b
 A restrained cool-neutral board with one navy accent; the only saturated colour on screen belongs to the parties.
 
 ### Primary
-- **Exchange Navy** (shell-navy): the shell band, primary buttons, pressed segment buttons, the selected list's reversed row plate, the bottom rule of an opened row's detail, the border of an opened figure, the active tab underline, the majority milestone's label, a checked switch and range-slider accent.
+- **Exchange Navy** (shell-navy): the shell band, primary buttons, pressed segment buttons, the selected list's hairline outline, the border of an opened figure, the active tab underline, the majority milestone's label, a checked switch and range-slider accent.
 - **Raised Navy** (shell-navy-raised): hover state on the band's tools and on primary buttons; the selected row's plate in the dark theme.
-- **Band Ink** (shell-ink) and **Band Quiet Ink** (shell-ink-quiet): text on navy; the quiet ink carries secondary text on the band and inside the reversed row (sub-names, partner names, empty change).
+- **Band Ink** (shell-ink) and **Band Quiet Ink** (shell-ink-quiet): text on navy; the quiet ink carries secondary text on the band 
 
 ### Secondary
 - **Focus Blue** (focus-blue): focus outlines (2px, offset 2px), links, text caret, selection tint (26% mix), and the one-shot "tick" flash when a seat count changes (30% mix fading out over 1.2s). In the dark theme it also takes over the active-tab underline and the checked switch.
 
 ### Tertiary
-- **Threshold Rust** (threshold-rust) on a hatch of **threshold-hatch-a** and **threshold-hatch-b**: only the threshold rule inside the lists table.
+- **Threshold Rust** (threshold-rust) on a hatch of **threshold-hatch-a** and **threshold-hatch-b**: only the threshold rule in the lists column.
 - **Experimental Violet** (experimental-violet): outline and text of the "Experimental rules" chip; nothing else.
 
 ### Neutral
@@ -234,23 +234,23 @@ A restrained cool-neutral board with one navy accent; the only saturated colour 
 - **Label** (600, 12.5px): table column headers, the threshold rule, section titles inside detail (700, secondary ink), chips, figure keys (400). 12px for row sub-names; 11px only for the milestone tag, the info glyph and chart text (11.5px).
 
 ### Named Rules
-**The One Size Rule.** Data sits between 12.5px and 15px. Rank is carried by weight (400 / 600 / 700) and by the reversed navy plate, never by a larger size.
+**The One Size Rule.** Data sits between 12.5px and 15px. Rank is carried by weight (400 / 600 / 700) and by the navy selection outline; the chamber, the seat counts in the lists column and the opened list's seat total are the deliberate exceptions, because they are the picture.
 
 **The Tabular Rule.** Every number is tabular and end-aligned in its column; percentages and counts never jitter as they reprice.
 
 ## Layout
 
-**The board.** A sticky 52px band, then a sticky one-line tools strip under it naming every tool, then (once edited) a one-line "What changed" session summary, any banners, and the work area (padding 12px 16px 28px, 12px gaps). The work area holds the full-width bloc strip and then two columns: the lists table (`minmax(0, 1.3fr)`) and a side column (`minmax(360px, 1fr)`) with the chamber, the figures and the open tool's panel.
+**The board (the Overview tab).** A sticky 52px band, then a sticky one-line tools strip naming the Overview, Scenarios and every tool, then (once edited) a one-line "What changed" summary led by the scenario's name, any banners, and the work area (padding 12px 16px 28px, 12px gaps). The board is the lists column (`minmax(300px, 380px)`) and the centre (the chamber, the bloc strip, the figures); choosing a list adds a third column, the side panel (`minmax(360px, 430px)`). **Tool pages** (every other tab) are one full-width panel; choosing a list from a tool page opens the same panel as a drawer from the inline-end edge.
 
-**Desktop (1101px and up).** The side column is sticky (top 100px), scrolls on its own (max height 100vh minus 112px), and fades out over its last 28px to cue that it scrolls. The lists table's header row sticks under the band and strip (top 92px).
+**Desktop (1101px and up).** The lists column and the side panel are sticky (top 100px) and scroll on their own (max height 100vh minus 112px).
 
 **Below 1100px.** One column, same order.
 
-**Phones (760px and below).** The band becomes static and wraps (brand on its own line, tool labels hidden to icons, the election selector flexes); the tools strip sticks to the top as a single sideways-scrolling row whose trailing edge fades over 32px (the fade flips side in right-to-left). The table drops to logo, list, share, seats and change; bloc corridor labels give way to a legend of full bloc names beneath the strip. Gutters tighten to 8px. At 600px two-column field grids stack and what-if rows reflow to question over answer, action beside.
+**Phones (760px and below).** The band becomes static and wraps (brand on its own line, tool labels hidden to icons, the election selector flexes); the tools strip sticks to the top as a single sideways-scrolling row whose trailing edge fades over 32px (the fade flips side in right-to-left). The board stacks: chamber, blocs, figures, then the lists; the side panel becomes a full-screen sheet; bloc corridor labels give way to a legend of full bloc names beneath the strip. Gutters tighten to 8px. At 600px two-column field grids stack and what-if rows reflow to question over answer, action beside.
 
 **Rhythm.** A 2/4/6/8/12/16px scale. 8px between controls in a row, 12px between panels, 16px band and page gutters on desktop, 6–8px on phones. Table cells are 5px 8px; panel headers 8px 12px; panel bodies 10px 12px.
 
-**Levels.** Simple, Standard and Expert are one layout. Standard adds the Votes and Surplus-agreement columns; Expert adds the "This session" sparkline column once edited; the Change column appears only after an edit. Every tool is listed at every level: those of the current level first, the rest after a quiet muted label, opening with an offer to switch level in place.
+**Levels.** Simple, Standard and Expert are one layout. Standard adds votes and the surplus partner to each list's line; change marks appear only after an edit. Every tool is listed at every level: those of the current level first, the rest after a quiet muted label, opening with an offer to switch level in place.
 
 **Direction.** All spacing, borders and positions use logical properties (inline-start/end, block-start/end), so the whole board mirrors between Hebrew and English. The chamber, charts and formulas are pinned left-to-right (formulas as isolated LTR runs) because geometry and arithmetic do not mirror.
 
@@ -302,8 +302,8 @@ On/off state is always a switch, never a verb button: a 32 x 18px track (switch-
 ### Navigation (band and tools strip)
 The band holds brand, election, level, scenario name, undo/redo, start over, save and share (a floating menu), language and theme. Under it the tools strip names every tool on one line as tabs: 13.5px secondary ink at 500, hover to ink, the selected tab 700 ink with a 2.5px navy underline (focus blue in dark). Tools above the current level stay listed in muted 400 after a muted label separated by a hairline.
 
-### Lists Table (signature)
-The board itself. Every list that ran is a ruled row: ballot slip or logo, name (600) with a 12px muted sub-name, share, seats (700 15px, centred), change (ink 600 with a drawn triangle, muted dot when none), and level-dependent columns. Hover tints the row quiet. Clicking opens it in place: the row reverses onto the navy plate (secondary text in band quiet ink, the sparkline in band ink) and its detail opens in the row beneath on the open tint, closed by a 2px navy rule. Lists that won nothing sit below the threshold rule in secondary ink with muted seats.
+### Lists Column (signature)
+Every list is a row: ballot slip or logo, name (600), an 8px seat bar on one scale for all lists (the official seats as a dashed outline when they differ), a 12px muted line (votes at Standard, share, surplus partner), and the seats (700 18px) with a drawn change mark. Lists that won no seat sit below the hatched threshold rule; their bar shows the share of the threshold reached, with a rust tick at the threshold. A split faction lists its parties beneath its row. Choosing a row opens the list in the side panel; the row takes a navy hairline outline and the open tint.
 
 ### Threshold Rule (signature)
 A full-width row inside the table: rust 12.5px 600 text on a -45 degree 6px hatch of the two threshold tints, with rust hairlines above and below, and an underlined link to show the folded long tail.
@@ -330,7 +330,7 @@ State moves, it does not perform: switch 0.15s; corridors and colour pieces 0.3s
 
 ### Do:
 - **Do** draw change in ink at 600 weight with the drawn triangle mark (Neutral Ink Rule).
-- **Do** open things in place: a row's detail beneath it, a figure across its grid row, a bloc's detail beneath the strip.
+- **Do** open things where they are: a figure across its grid row, a bloc's detail beneath the strip; a list in the side panel; a tool as its own page.
 - **Do** keep data between 12.5px and 15px and rank it by weight and the navy plate.
 - **Do** set every number tabular and end-aligned.
 - **Do** show party colour only as identity (slip border, seat, wedge, piece, pale region) and bloc membership only as a pale tinted region behind members.
@@ -344,6 +344,6 @@ State moves, it does not perform: switch 0.15s; corridors and colour pieces 0.3s
 - **Don't** use party or bloc colour on buttons, tabs, banners or other chrome.
 - **Don't** add a second interface accent beside navy (focus blue is for focus, links and the change flash only).
 - **Don't** lift panels, tables, figures or corridors with shadows; shadow is for floating layers only.
-- **Don't** introduce a card-grid dashboard or a separate detail column; every list is a ruled row opened in place.
+- **Don't** let text replace the picture: every tool page leads with its drawing (chambers, bars against the 61 line, seat-change bars), and tables come after it.
 - **Don't** draw a bloc as an extra bar; it is a soft region behind its members.
 - **Don't** shrink a seat graphic off the 120-seat scale.

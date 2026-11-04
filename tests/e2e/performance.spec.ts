@@ -22,7 +22,7 @@ test('Simple fetches only the code of its own tabs, after the page is shown', as
   await expect.poll(() => scripts.some((u) => chunk('SeatSecurity').test(u)) && scripts.some((u) => chunk('Panels').test(u)), { timeout: 10_000 }).toBe(true);
   for (const name of ['Compare', 'Charts', 'Structure', 'Sensitivity']) expect(scripts.filter((u) => chunk(name).test(u))).toEqual([]);
   await page.getByRole('tab', { name: 'Coalitions' }).click();
-  await expect(panel(page).getByText(/Minimal winning coalitions \(\d+\)/)).toBeVisible();
+  await expect(panel(page).getByText(/Smallest winning coalitions/)).toBeVisible();
   await page.getByRole('tab', { name: 'Sources', exact: true }).click();
   await expect(panel(page).getByText('Electoral threshold').first()).toBeVisible();
   expect(errors).toEqual([]);
@@ -37,7 +37,7 @@ test('a tab whose code is still downloading shows a loading status, then its con
   await expect(panel(page).getByRole('status')).toHaveText('Loading…');
   await expect(page.getByRole('tab', { name: 'Compare' })).toHaveAttribute('aria-selected', 'true');
   release();
-  await expect(panel(page).getByText('Compare the current scenario with')).toBeVisible();
+  await expect(panel(page).getByText('the official result').first()).toBeAttached();
   await expect(panel(page).getByRole('status')).toHaveCount(0);
 });
 

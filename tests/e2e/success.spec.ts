@@ -4,11 +4,11 @@ import { expect, test, type Page } from '@playwright/test';
 
 const lists = (page: Page) => page.getByRole('region', { name: 'Lists' });
 const listButton = (page: Page, name: string) => lists(page).getByRole('button', { name, exact: true });
-const rowOf = (page: Page, name: string) => lists(page).getByRole('row').filter({ has: page.getByRole('button', { name, exact: true }) });
-const seatsOf = async (page: Page, name: string) => Number(await rowOf(page, name).locator('td.seats').innerText());
+const seatsOf = async (page: Page, name: string) => Number(await listButton(page, name).locator('.lb-seats b').innerText());
 const validVotes = (page: Page) => page.locator('.fig').filter({ has: page.locator('.k', { hasText: /^Valid votes/ }) }).locator('.v');
 
 test('2022: merge, add voters, drop agreement, push Balad over, find Ra’am’s next seat, compare, share', async ({ page }) => {
+  test.setTimeout(150_000); // ten steps, two of them exact searches
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto('/');
@@ -20,10 +20,12 @@ test('2022: merge, add voters, drop agreement, push Balad over, find Ra’am’s
 
   // 1–2. Merge Labor and Meretz into one list with a combined (alternating) candidate list
   await page.getByRole('tab', { name: 'Merge & split', exact: true }).click();
-  await page.getByRole('checkbox', { name: /^Labor/ }).check();
-  await page.getByRole('checkbox', { name: /^Meretz/ }).check();
-  await page.getByLabel('Merged list name').fill('Labor–Meretz');
-  await page.getByRole('button', { name: 'Merge', exact: true }).click();
+  const picker = page.getByRole('group', { name: 'Lists' });
+  await picker.getByRole('button', { name: /^Labor/ }).click();
+  await picker.getByRole('button', { name: /^Meretz/ }).click();
+  await page.getByLabel('Name', { exact: true }).fill('Labor–Meretz');
+  await expect(page.getByText('What would change')).toBeVisible(); // the merge is previewed before it is applied
+  await page.getByRole('button', { name: 'Merge 2 lists' }).click();
   await expect(listButton(page, 'Labor–Meretz')).toBeVisible();
   const merged = await seatsOf(page, 'Labor–Meretz');
   expect(merged).toBeGreaterThanOrEqual(8);
@@ -41,14 +43,17 @@ test('2022: merge, add voters, drop agreement, push Balad over, find Ra’am’s
     await rows.filter({ hasText: list }).getByLabel('Share %').fill(pct);
   }
   await page.getByRole('button', { name: 'Add these voters' }).click();
+  await page.getByRole('tab', { name: 'Overview' }).click();
   await expect(validVotes(page)).toHaveText('4,964,742');
 
   // 4. Remove the Likud–Religious Zionism agreement
   await page.getByRole('tab', { name: 'Merge & split', exact: true }).click();
+  await page.getByRole('button', { name: 'Surplus agreements' }).click();
   await page.getByRole('button', { name: /^Remove the agreement between (Likud and Religious Zionism|Religious Zionism and Likud)$/ }).click();
   await expect(page.getByRole('button', { name: /^Remove the agreement between (Likud and Religious Zionism|Religious Zionism and Likud)$/ })).toHaveCount(0);
 
   // 5. Balad up to the threshold: exact minimum, applied
+  await page.getByRole('tab', { name: 'Overview' }).click();
   await listButton(page, 'Balad').click();
   const details = page.getByRole('region', { name: 'List details' });
   // the exact minimum is computed on opening (if the added voters already carried Balad over, there is none)
@@ -67,6 +72,7 @@ test('2022: merge, add voters, drop agreement, push Balad over, find Ra’am’s
   // 7–9. The chamber still has exactly 120 seats; compare with history; candidates entering/leaving listed
   await expect(page.locator('.chamber circle.seat')).toHaveCount(120);
   await page.getByRole('tab', { name: 'Compare' }).click();
+  await expect(page.getByText('Seats gained and lost')).toBeVisible();
   await expect(page.getByText(/Entering the Knesset \(\d+\)/)).toBeVisible();
   await expect(page.getByText(/Leaving the Knesset \(\d+\)/)).toBeVisible();
 
@@ -78,6 +84,8 @@ test('2022: merge, add voters, drop agreement, push Balad over, find Ra’am’s
   await page.getByRole('button', { name: 'Copy a share link' }).click();
   const link = await page.getByLabel('Share link').inputValue();
   expect(link).toContain('#s=');
+  await page.keyboard.press('Escape');
+  await page.getByRole('tab', { name: 'Overview' }).click();
   const before = await validVotes(page).innerText();
   const p2 = await page.context().newPage();
   await p2.goto(link);

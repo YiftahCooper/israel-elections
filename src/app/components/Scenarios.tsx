@@ -1,0 +1,110 @@
+// Scenarios as first-class things: the current one with its name and description, and every saved one as a
+// card with its result drawn, to open, compare, export, share or delete. Built-in "What if" questions open here
+// as named scenarios too.
+import { useMemo, useRef, useState } from 'react';
+import { Copy, Download, FolderOpen, GitCompare, Link2, RotateCcw, Save, Trash2, Upload } from 'lucide-react';
+import type { ElectionDataset } from '../../data/schema.ts';
+import type { AllocationResult } from '../../engine/types.ts';
+import type { Scenario } from '../../model/scenario.ts';
+import { allocationOf } from '../derive.ts';
+import { useL, useLang } from '../i18n.ts';
+import { download } from '../format.ts';
+import { duplicateCurrent, getState, importScenarioJson, openElection, replay, resetAll, saveCurrent, setState, shareLink, toast, useStore, type SavedScenario } from '../store.ts';
+import { electionLabel } from './TopBar.tsx';
+
+const fileName = (n: string) => (n || 'scenario').replace(/[^\p{L}\p{N}]+/gu, '_').replace(/^_+|_+$/g, '').slice(0, 60) || 'scenario';
+
+/** The seats of a scenario as one bar, lists grouped by bloc in their colours. */
+export function ResultBar({ s, r }: { s: Scenario; r: AllocationResult }) {
+  const total = s.rules.seats, majority = Math.floor(total / 2) + 1;
+  const rank = (b: string | null) => { const i = s.blocs.findIndex((x) => x.id === b); return i < 0 ? s.blocs.length : i; };
+  const lists = s.lists.map((l) => ({ l, n: r.lists.find((x) => x.id === l.id)?.seats ?? 0 })).filter((x) => x.n > 0)
+    .sort((a, b) => rank(a.l.bloc) - rank(b.l.bloc) || b.n - a.n);
+  return (
+    <div className="coal-bar" aria-hidden>
+      {lists.map(({ l, n }) => <i key={l.id} style={{ flexBasis: `${(n / total) * 100}%`, background: l.color }} title={`${l.shortHe} ${n}`} />)}
+      <span className="maj" style={{ insetInlineStart: `${(majority / total) * 100}%` }} />
+    </div>
+  );
+}
+
+export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
+  const L = useL();
+  const lang = useLang();
+  const saved = useStore((st) => st.saved);
+  const elections = useStore((st) => st.elections);
+  const fileRef = useRef<HTMLInputElement>(null);
+  const [link, setLink] = useState('');
+  const isSaved = saved.some((x) => x.id === s.id);
+  // the result of every saved scenario of this election, replayed once
+  const results = useMemo(() => new Map(saved.filter((x) => x.electionId === s.electionId).map((x) => {
+    const sc = replay(ds, x.name, x.log).scenario;
+    return [x.id, { sc, r: allocationOf(sc) }] as const;
+  })), [saved, ds, s.electionId]);
+  const electionName = (id: string) => { const e = elections.find((x) => x.id === id); return e ? electionLabel(e, elections, lang) : id; };
+  const edit = (patch: Partial<Scenario>) => setState({ scenario: { ...s, ...patch } });
+  const open = (x: SavedScenario) => openElection(x.electionId, { name: x.name, description: x.description, log: x.log, baseBuiltAt: x.baseBuiltAt })
+    .then(() => setState((st) => ({ scenario: st.scenario ? { ...st.scenario, id: x.id } : null, tool: 'board' })));
+  const exportJson = (sc: Scenario) => download(`${sc.electionId}-${fileName(sc.name)}.json`, JSON.stringify({ ...sc, datasetBuiltAt: ds.buildInfo.builtAt }, null, 1), 'application/json');
+
+  return (
+    <div className="scn">
+      <section className="scn-current">
+        <h3>{L('This scenario', 'התרחיש הנוכחי')} <span className="muted" style={{ fontWeight: 400 }}>· {electionName(s.electionId)} · {L(`${s.log.length} edits`, `${s.log.length} שינויים`)}</span></h3>
+        <div className="scn-form">
+          <label className="field">{L('Name', 'שם')}
+            <input type="text" value={s.name} placeholder={L('e.g. “Arab turnout returns to 2015 levels”', 'למשל "שיעור ההצבעה בחברה הערבית חוזר לרמת 2015"')} onChange={(e) => edit({ name: e.target.value })} /></label>
+          <label className="field">{L('Description', 'תיאור')}
+            <textarea rows={2} value={s.description ?? ''} placeholder={L('What does this scenario explore, and why?', 'מה התרחיש בודק, ולמה?')} onChange={(e) => edit({ description: e.target.value || undefined })} /></label>
+        </div>
+        <ResultBar s={s} r={allocationOf(s)} />
+        <div className="row" style={{ marginTop: 10 }}>
+          <button className="btn primary" onClick={() => { if (saveCurrent(s.name || undefined)) toast('info', L('Saved in this browser.', 'נשמר בדפדפן זה.')); }}><Save className="icon sm" aria-hidden />{isSaved ? L('Save changes', 'שמירת השינויים') : L('Save', 'שמירה')}</button>
+          <button className="btn" onClick={async () => {
+            const url = await shareLink(); setLink(url);
+            try { await navigator.clipboard.writeText(url); toast('info', L('Share link copied.', 'קישור השיתוף הועתק.')); } catch { /* the field below shows it */ }
+          }}><Link2 className="icon sm" aria-hidden />{L('Copy a share link', 'העתקת קישור שיתוף')}</button>
+          <button className="btn" onClick={() => duplicateCurrent()}><Copy className="icon sm" aria-hidden />{L('Duplicate', 'שכפול')}</button>
+          <button className="btn" onClick={() => exportJson(s)}><Download className="icon sm" aria-hidden />{L('Export', 'ייצוא')}</button>
+          <button className="btn" onClick={() => fileRef.current?.click()}><Upload className="icon sm" aria-hidden />{L('Import', 'ייבוא')}</button>
+          <button className="btn ghost" disabled={!s.log.length} onClick={() => { if (confirm(L('Start over from the official result? (Undo can restore it.)', 'להתחיל מחדש מהתוצאה הרשמית? (ניתן לבטל)'))) resetAll(); }}><RotateCcw className="icon sm" aria-hidden />{L('Start over', 'התחלה מחדש')}</button>
+        </div>
+        {link && <input type="text" readOnly value={link} aria-label={L('Share link', 'קישור שיתוף')} onFocus={(e) => e.target.select()} style={{ width: '100%', marginTop: 8 }} />}
+        <input ref={fileRef} type="file" accept="application/json,.json" hidden onChange={async (e) => {
+          const f = e.target.files?.[0]; if (!f) return;
+          try {
+            const sc = importScenarioJson(await f.text());
+            await openElection(sc.electionId);
+            const st = getState(); setState({ scenario: sc, past: st.scenario && st.scenario.electionId === sc.electionId ? [...st.past, st.scenario] : st.past, future: [] });
+            toast('info', L('Scenario imported.', 'התרחיש יובא.'));
+          } catch (err) { toast('error', err instanceof Error ? err.message : String(err)); }
+          e.target.value = '';
+        }} />
+      </section>
+
+      <section style={{ marginTop: 18 }}>
+        <h3>{L(`Saved in this browser (${saved.length})`, `שמורים בדפדפן זה (${saved.length})`)}</h3>
+        {saved.length === 0 && <p className="small muted">{L('Nothing saved yet. Name the scenario above and save it to keep it here; share links and exported files work across devices.', 'עדיין לא נשמר דבר. תנו שם לתרחיש למעלה ושמרו אותו כדי שיופיע כאן; קישורי שיתוף וקבצים מיוצאים עובדים גם במכשירים אחרים.')}</p>}
+        <ul className="scn-cards">
+          {saved.map((x) => {
+            const res = results.get(x.id);
+            return (
+              <li key={x.id} className={`scn-card ${x.id === s.id ? 'current' : ''}`}>
+                <div className="scn-title"><b>{x.name}</b><span className="small muted">{electionName(x.electionId)} · {new Date(x.savedAt).toLocaleDateString(lang === 'he' ? 'he-IL' : 'en-GB')}</span></div>
+                {x.description && <p className="small ink2" style={{ margin: 0 }}>{x.description}</p>}
+                {res ? <ResultBar s={res.sc} r={res.r} /> : <p className="tiny muted" style={{ margin: 0 }}>{L('Open it to see its result.', 'פתחו כדי לראות את התוצאה.')}</p>}
+                <div className="row" style={{ gap: 4 }}>
+                  <button className="btn small" onClick={() => open(x)} disabled={x.id === s.id}><FolderOpen className="icon sm" aria-hidden />{x.id === s.id ? L('Open now', 'פתוח עכשיו') : L('Open', 'פתיחה')}</button>
+                  <button className="btn small" disabled={x.electionId !== s.electionId || x.id === s.id} onClick={() => setState({ compareWith: x.id, tool: 'compare' })}><GitCompare className="icon sm" aria-hidden />{L('Compare with this one', 'השוואה לנוכחי')}</button>
+                  {res && <button className="btn small ghost" onClick={() => exportJson(res.sc)}><Download className="icon sm" aria-hidden />{L('Export', 'ייצוא')}</button>}
+                  <span className="spacer" />
+                  <button className="btn small ghost danger icon-only" aria-label={L(`Delete ${x.name}`, `מחיקת ${x.name}`)} onClick={() => { if (confirm(L(`Delete “${x.name}” from this browser?`, `למחוק את "${x.name}" מהדפדפן?`))) setState((st) => ({ saved: st.saved.filter((y) => y.id !== x.id) })); }}><Trash2 className="icon sm" aria-hidden /></button>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    </div>
+  );
+}
