@@ -4226,5 +4226,17 @@
     "retrievedAt": "2026-11-04",
     "bytes": 17908,
     "sha256": "8c13abe17a6534d75c4e98c801ede20e059d2b3fa46f7f307c28037ccbabf31c"
+  },
+  {
+    "id": "logo-k21-utj-2019.svg-original",
+    "file": "logos/k21/utj-2019.svg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/United_Torah_Judaism_Logo_2019.svg",
+    "publisher": "Wikimedia Commons; credited party origin",
+    "official": false,
+    "description": "Commons dates the party-authored UTJ logo to 5 April 2019 and credits extraction from the Hamevaser newspaper of that date, page 14 (https://t.me/newspaperil/3177). This is the joint-list wordmark, not the separate Agudat Yisrael or Degel emblems. Medium confidence: community description/dated publication credit, underlying newspaper not independently inspected. The newly inspected Commons SVG is 4,160 bytes; prior oversized Hebrew-file-page rejection does not apply to these exact downloaded bytes.",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "bytes": 4160,
+    "sha256": "a0ccba99ba9057474c6d4020860ccccc0701c2766fa70641e744a00cfa1cf80b"
   }
 ]

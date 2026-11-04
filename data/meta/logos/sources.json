@@ -2813,6 +2813,28 @@
         "logo-k26-raam-official-social"
       ],
       "licence": "Copyright retained by Ra’am; fair-use identification"
+    },
+    {
+      "id": "commons-202178251",
+      "title": "File:United Torah Judaism Logo 2019.svg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:United_Torah_Judaism_Logo_2019.svg",
+      "revisionUrl": "https://commons.wikimedia.org/w/index.php?oldid=1291165533",
+      "publisher": "Wikimedia Commons contributors",
+      "sourceType": "community metadata; not independent of the credited source",
+      "accessed": "2026-11-04",
+      "accessMethod": "MediaWiki API imageinfo/extmetadata and revisions; plain HTTP with project User-Agent",
+      "inspectionDepth": "Description, date, origin credit, licence and actual downloaded artwork inspected; upstream historical original not independently inspected",
+      "date": "2019-04-05",
+      "description": "Commons dates the party-authored UTJ logo to 5 April 2019 and credits extraction from the Hamevaser newspaper of that date, page 14 (https://t.me/newspaperil/3177). This is the joint-list wordmark, not the separate Agudat Yisrael or Degel emblems. Medium confidence: community description/dated publication credit, underlying newspaper not independently inspected. The newly inspected Commons SVG is 4,160 bytes; prior oversized Hebrew-file-page rejection does not apply to these exact downloaded bytes.",
+      "credit": "Extracted with Inkscape from PDF file of Hamevaser newspaper from April 5, 2019 page 14",
+      "licence": "Public domain",
+      "licenceTemplates": [
+        "PD-textlogo"
+      ],
+      "licenceUrl": "",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b4/United_Torah_Judaism_Logo_2019.svg",
+      "evidenceFamily": "commons-file-202178251",
+      "selected": true
     }
   ]
 }
