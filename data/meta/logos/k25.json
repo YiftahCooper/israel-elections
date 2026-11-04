@@ -43,19 +43,6 @@
       "licence": "Copyright retained by rights holder; fair-use identification proposed",
       "attribution": "www.ynet.co.il; underlying logo designer/rights holder not verified",
       "hosted": false,
-      "inUseEvidence": "Secondary 2022 campaign review illustrates Likud branding; official-origin file and campaign-date evidence still required.",
-      "confidence": "medium",
-      "status": "unresolved",
-      "evidenceId": "ynet-2022-typography",
-      "letters": "מחל",
-      "rights": "fair-use-identification"
-    },
-    {
-      "file": null,
-      "sourceUrl": "https://www.ynet.co.il/news/article/syrrbq9jj",
-      "licence": "Copyright retained by rights holder; fair-use identification proposed",
-      "attribution": "www.ynet.co.il; underlying logo designer/rights holder not verified",
-      "hosted": false,
       "inUseEvidence": "Secondary 2022 campaign review illustrates Shas branding; official-origin file and campaign-date evidence still required.",
       "confidence": "medium",
       "status": "unresolved",
@@ -130,6 +117,43 @@
       },
       "assetArchiveUrl": "https://web.archive.org/web/20221102082854id_/https://yeshatid.org.il/wp-content/uploads/2022/05/logo_svg.svg",
       "assetArchiveTimestamp": "20221102082854"
+    },
+    {
+      "letters": "מחל",
+      "file": "logos/likud-2022-k25.svg",
+      "sourceUrl": "https://www.likud.org.il/",
+      "assetSourceUrl": "https://www.likud.org.il/images/layout_images/logo.svg",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "הליכוד — official party header mark",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "likud-archive-20221014225820",
+      "inUseDate": "2022-10-14",
+      "archiveUrl": "https://web.archive.org/web/20221014225820/https://www.likud.org.il/",
+      "archiveTimestamp": "20221014225820",
+      "inUseEvidence": "Inspected official homepage capture 20221014225820 references https://www.likud.org.il/images/layout_images/logo.svg as its header logo. Exact archived asset bytes at 20220811033925 match campaign-window CDX SHA-1 base32 UUMFLDUTGIRXWQP5HTS3JPYAI3PQAZWU. Original geometry and colours preserved; separate evidence for this election, no assignment by analogy. CDX pre-election capture: 20220811033925; actual retrieved asset capture: 20220811033925.",
+      "retrievedAt": "2026-11-04",
+      "sha256": "bbe6ec4c4f7db2f644940a8e713e8264d3bf6fd892d77b3de2e4336e71b7273d",
+      "originalSha256": "bbe6ec4c4f7db2f644940a8e713e8264d3bf6fd892d77b3de2e4336e71b7273d",
+      "bytes": 10986,
+      "displayBackground": "dark",
+      "rawEvidence": {
+        "page": "logo-k25-likud-page",
+        "asset": "logo-k25-likud-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20220811033925id_/https://www.likud.org.il/images/layout_images/logo.svg",
+      "assetArchiveTimestamp": "20220811033925",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "UUMFLDUTGIRXWQP5HTS3JPYAI3PQAZWU",
+        "computedDigest": "UUMFLDUTGIRXWQP5HTS3JPYAI3PQAZWU",
+        "assetCaptureTimestamp": "20220811033925",
+        "cdxCaptureTimestamp": "20220811033925",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.likud.org.il/images/layout_images/logo.svg&from=20220801&to=20221101&output=json&fl=timestamp,original,statuscode,digest,length&filter=statuscode:200&collapse=digest",
+        "rawIndex": "logo-k25-likud-index"
+      }
     }
   ]
 }

@@ -29,12 +29,12 @@ Seat-winning denominators come from public/data/kNN.json officialSeats; k26 has 
 | k17 · 2006-03-28 | 12 | 1 | 0 | 0 | 0 |
 | k18 · 2009-02-10 | 12 | 2 | 0 | 0 | 0 |
 | k19 · 2013-01-22 | 12 | 3 | 0 | 1 | 0 |
-| k20 · 2015-03-17 | 10 | 1 | 0 | 0 | 0 |
-| k21 · 2019-04-09 | 11 | 1 | 0 | 0 | 0 |
-| k22 · 2019-09-17 | 9 | 2 | 0 | 0 | 2 |
-| k23 · 2020-03-02 | 8 | 1 | 0 | 0 | 1 |
-| k24 · 2021-03-23 | 13 | 4 | 0 | 0 | 1 |
-| k25 · 2022-11-01 | 10 | 2 | 0 | 4 | 1 |
+| k20 · 2015-03-17 | 10 | 2 | 0 | 0 | 0 |
+| k21 · 2019-04-09 | 11 | 2 | 0 | 0 | 0 |
+| k22 · 2019-09-17 | 9 | 3 | 0 | 0 | 2 |
+| k23 · 2020-03-02 | 8 | 2 | 0 | 0 | 1 |
+| k24 · 2021-03-23 | 13 | 5 | 0 | 0 | 1 |
+| k25 · 2022-11-01 | 10 | 3 | 0 | 4 | 1 |
 | k26 · 2026-10-27 | 11 | 8 | 0 | 1 | 10 |
 
 ## Earlier pass: licence and retrieval outcome (historical)
@@ -52,7 +52,7 @@ New entries use `rights: "free-licence" | "fair-use-identification"`; `licence` 
 ## Uncertainty and rejected candidates
 
 - The Democrats 2026 official SVG contains white lettering and requires a dark background (displayBackground: dark). It has not been recoloured.
-- All accepted assignments have medium confidence. Commons community descriptions, period statements and campaign dates are evidence, but cited NLI originals and campaign videos were generally not independently inspected. A strict independently verified-primary-only policy would reject these until those underlying items are checked.
+- The earlier accepted assignments have medium confidence; the digest-proof continuation below adds high-confidence entries. Commons community descriptions, period statements and campaign dates are evidence, but cited NLI originals and campaign videos were generally not independently inspected. A strict independently verified-primary-only policy would reject these until those underlying items are checked.
 - A file’s recreation/upload date is distinguished from its stated historical period. The Yesh Atid SVG’s 2012–2014 creation interval does not prove use on election day in 2013; it is omitted. A January 2021 news report confirms a different campaign design, retained source-only.
 - Together’s April/July 2026 variants were superseded before polling day according to the election-day design review. Neither is assigned to k26. The newly hosted September-path lockup is referenced by the inspected 1 October official-site capture.
 - Likud’s continuing flag-like letter is not evidence that every campaign lockup, subheading or glyph spacing was identical. Its 2009 design is kept separate from later campaigns. The combined Likud–Yisrael Beiteinu candidate has both date and licence ambiguity and remains unresolved.
@@ -234,49 +234,49 @@ Evidence references: [commons-138448720](https://commons.wikimedia.org/wiki/File
 
 ### k20 · 2015-03-17
 
-Hosted winners: כ — Kulanu.
+Hosted winners: מחל — Likud; כ — Kulanu.
 
-Not locally covered winners: מחל — Likud; אמת — Zionist Union; ודעם — Joint List; פה — Yesh Atid; טב — Jewish Home; שס — Shas; ל — Yisrael Beiteinu; ג — United Torah Judaism; מרצ — Meretz.
+Not locally covered winners: אמת — Zionist Union; ודעם — Joint List; פה — Yesh Atid; טב — Jewish Home; שס — Shas; ל — Yisrael Beiteinu; ג — United Torah Judaism; מרצ — Meretz.
 
 Evidence references: [commons-39073240](https://commons.wikimedia.org/wiki/File:Kulanu_Kahlon_logo.svg).
 
 ### k21 · 2019-04-09
 
-Hosted winners: אמת — Labor.
+Hosted winners: מחל — Likud; אמת — Labor.
 
-Not locally covered winners: מחל — Likud; פה — Blue and White; שס — Shas; ג — United Torah Judaism; ום — Hadash–Ta’al; ל — Yisrael Beiteinu; טב — Union of Right-Wing Parties; מרצ — Meretz; כ — Kulanu; דעם — Ra’am–Balad.
+Not locally covered winners: פה — Blue and White; שס — Shas; ג — United Torah Judaism; ום — Hadash–Ta’al; ל — Yisrael Beiteinu; טב — Union of Right-Wing Parties; מרצ — Meretz; כ — Kulanu; דעם — Ra’am–Balad.
 
 Evidence references: [commons-76218696](https://commons.wikimedia.org/wiki/File:Israeli_Labor_Party_2019.png), [commons-77001018](https://commons.wikimedia.org/wiki/File:Logo_of_HaYamin_HeHadash.svg).
 
 ### k22 · 2019-09-17
 
-Hosted winners: ודעם — Joint List; טב — Yamina.
+Hosted winners: מחל — Likud; ודעם — Joint List; טב — Yamina.
 
-Not locally covered winners: פה — Blue and White; מחל — Likud; שס — Shas; ל — Yisrael Beiteinu; ג — United Torah Judaism; אמת — Labor–Gesher; מרצ — Democratic Union.
+Not locally covered winners: פה — Blue and White; שס — Shas; ל — Yisrael Beiteinu; ג — United Torah Judaism; אמת — Labor–Gesher; מרצ — Democratic Union.
 
 Evidence references: [commons-107297670](https://commons.wikimedia.org/wiki/File:Balad.svg), [commons-130829705](https://commons.wikimedia.org/wiki/File:Yamina_logo.svg), [commons-94577687](https://commons.wikimedia.org/wiki/File:Joint_List_logo_2019.svg).
 
 ### k23 · 2020-03-02
 
-Hosted winners: אמת — Labor–Gesher–Meretz.
+Hosted winners: מחל — Likud; אמת — Labor–Gesher–Meretz.
 
-Not locally covered winners: מחל — Likud; פה — Blue and White; ודעם — Joint List; שס — Shas; ג — United Torah Judaism; ל — Yisrael Beiteinu; טב — Yamina.
+Not locally covered winners: פה — Blue and White; ודעם — Joint List; שס — Shas; ג — United Torah Judaism; ל — Yisrael Beiteinu; טב — Yamina.
 
 Evidence references: [commons-130826979](https://commons.wikimedia.org/wiki/File:Logo_of_the_Labor-Gesher-Meretz.svg), [commons-146621440](https://commons.wikimedia.org/wiki/File:Agudat_Yisrael_logo_2020.svg).
 
 ### k24 · 2021-03-23
 
-Hosted winners: כן — Blue and White; ת — New Hope; עם — Ra'am; פה — Yesh Atid.
+Hosted winners: מחל — Likud; כן — Blue and White; ת — New Hope; עם — Ra'am; פה — Yesh Atid.
 
-Not locally covered winners: מחל — Likud; שס — Shas; ב — Yamina; אמת — Labor; ג — United Torah Judaism; ל — Yisrael Beiteinu; ט — Religious Zionism; ודעם — Joint List; מרצ — Meretz.
+Not locally covered winners: שס — Shas; ב — Yamina; אמת — Labor; ג — United Torah Judaism; ל — Yisrael Beiteinu; ט — Religious Zionism; ודעם — Joint List; מרצ — Meretz.
 
 Evidence references: [commons-100640724](https://commons.wikimedia.org/wiki/File:New_Hope_party_logo.png), [commons-119107430](https://commons.wikimedia.org/wiki/File:Raam_logo_2021.svg), [commons-130826913](https://commons.wikimedia.org/wiki/File:Blue_and_White_logo_2021.svg), [commons-130829740](https://commons.wikimedia.org/wiki/File:Otzma_Yehudit_2021_logo.svg), [srugim-2021-yesh-atid](https://www.srugim.co.il/525439-%D7%94%D7%9C%D7%95%D7%92%D7%95-%D7%94%D7%97%D7%93%D7%A9-%D7%A9%D7%9C-%D7%99%D7%A9-%D7%A2%D7%AA%D7%99%D7%93-%D7%99%D7%90%D7%99%D7%A8-%D7%9C%D7%A4%D7%99%D7%93-%D7%95%D7%96%D7%A8%D7%99%D7%97%D7%94).
 
 ### k25 · 2022-11-01
 
-Hosted winners: כן — National Unity; פה — Yesh Atid.
+Hosted winners: מחל — Likud; כן — National Unity; פה — Yesh Atid.
 
-Not locally covered winners: מחל — Likud; ט — Religious Zionism; שס — Shas; ג — United Torah Judaism; אמת — Labor; ל — Yisrael Beiteinu; עם — Ra'am; ום — Hadash–Ta'al.
+Not locally covered winners: ט — Religious Zionism; שס — Shas; ג — United Torah Judaism; אמת — Labor; ל — Yisrael Beiteinu; עם — Ra'am; ום — Hadash–Ta'al.
 
 Evidence references: [commons-130829829](https://commons.wikimedia.org/wiki/File:National_Unity_Party_(Israel)_August_2022.svg), [commons-132175789](https://commons.wikimedia.org/wiki/File:Parti_sioniste_religieux_logo_2022.png), [ynet-2022-typography](https://www.ynet.co.il/news/article/syrrbq9jj).
 
@@ -948,3 +948,74 @@ No network is needed to use the accepted evidence. Manifest IDs under each entry
 Verification used Node 24.18.0. Dataset build passed, then a second run was byte-stable across all **39** public-data JSON files. Polling-station reconciliation is skipped where scratch station sources are absent, as explicitly reported by the existing builder; retained source and derived-locality integrity checks pass. Production Vite build passed with output under scratch; TypeScript passed. Logo validator passed: **26 overlays, 105 source records, 56 assets, 60 hosted entries**, no download-unavailable entries and seven unresolved entries. Full `npm test`: **54 files, 457 tests passed**.
 
 Only the differential **model** digest was re-recorded, to `3249213d9d3e5c87bc8e5ee3b95ac644b35866d9dde1964248972c6ef2e0035f`. All 26 election datasets compare equal to baseline after recursively removing `logo` and `builtAt`; only k22/k24 datasets changed. Temporarily restoring those two baseline datasets reproduced **all five** previous digests. Allocation, analysis, validation and rules digests remain unchanged. The public source manifest additionally gains the six retained-evidence records. No allocation or candidate data changed.
+
+
+## CDX byte-proof continuation — 4 November 2026
+
+Outcome: **six additional hosted seat-winning list identities**, k20–k25 Likud (`מחל`), all high confidence. Baseline is `5ddbee1`; the previous retained-evidence procedure at `fb1442f` was followed. This is a bounded acquisition pass, not completion of the website-era catalogue. No constituent or nonwinning identity was added. K1–k13 were not searched. Official campaign logos are retained for identification under decision 0089; no licence grant is asserted.
+
+The acceptance test was fixed before acquisition: inspect the official campaign page's actual header reference, retain the original artwork, and match base32(SHA-1(original bytes)) to an independently queried pre-election CDX asset digest. No English Wikipedia, proxy, email-bearing User-Agent, CAPTCHA or challenge interaction was used. Direct requests used `israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections)`, serially with at least 3.2 seconds between requests. No 429 occurred in this pass; timeouts were recorded and other routes tried.
+
+### Accepted claim and evidence map
+
+Each row supports only the named election's list-header assignment. Party homepage and asset/CDX are one official-site evidence family, not independent corroboration. A header establishes the identification mark in use during that campaign, not that it was the only campaign lockup or used on all printed material.
+
+| Election / list | Inspected page UTC | Pre-election asset CDX UTC | Digest proof | Retrieved original capture UTC |
+|---|---|---|---|---|
+| k20 / מחל — Likud | [20150315041632](https://web.archive.org/web/20150315041632id_/https://likud.org.il/) | 20150316072010 | `4Q3IR5ER4UWQULDBATMHQFY36T3NG3RK` | 20150316072010 |
+| k21 / מחל — Likud | [20190409044547](https://web.archive.org/web/20190409044547id_/https://www.likud.org.il/) | 20190210085457 | `UUMFLDUTGIRXWQP5HTS3JPYAI3PQAZWU` | 20220811033925 |
+| k22 / מחל — Likud | [20190913072935](https://web.archive.org/web/20190913072935id_/https://www.likud.org.il/) | 20190913072941 | `UUMFLDUTGIRXWQP5HTS3JPYAI3PQAZWU` | 20220811033925 |
+| k23 / מחל — Likud | [20200103162620](https://web.archive.org/web/20200103162620id_/https://www.likud.org.il/) | 20200103170015 | `UUMFLDUTGIRXWQP5HTS3JPYAI3PQAZWU` | 20220811033925 |
+| k24 / מחל — Likud | [20210226150032](https://web.archive.org/web/20210226150032id_/https://www.likud.org.il/) | 20210214215016 | `UUMFLDUTGIRXWQP5HTS3JPYAI3PQAZWU` | 20210214215016 |
+| k25 / מחל — Likud | [20221014225820](https://web.archive.org/web/20221014225820id_/https://www.likud.org.il/) | 20220811033925 | `UUMFLDUTGIRXWQP5HTS3JPYAI3PQAZWU` | 20220811033925 |
+
+**Pass, high confidence:** each original's computed digest equals the row's CDX digest. K20 is a 670×150 PNG with Israeli flag and Likud wordmark/subline, reduced proportionally to 256×57 without cropping/recolouring. K21–k25 SVGs are byte-identical pale-blue Likud wordmark/subline artwork, preserved as-is with `displayBackground: dark`. The independent dated page references and per-election CDX records, rather than a visual analogy, establish the repeated design. K21's asset record is 10 February and page is election morning; k23's January page is earlier than the preferred final campaign weeks, but within the campaign for the March election.
+
+**Later-replay qualification:** k21, k22 and k23 retain the successfully retrieved **11 August 2022** SVG. Its bytes exactly match each election's separately retained **pre-election** CDX digest. This satisfies the explicitly permitted later-replay identity test; no pre-election replay success is claimed for those originals. K22's own image replay timed out. K24 retains its February 2021 image capture, and k25 its August 2022 capture. The true image replay timestamps and the CDX timestamps are distinct in `digestProof`, `assetArchiveTimestamp` and manifests. SHA-1 is used to reproduce CDX identity, with SHA-256 additionally retained for every committed file; this is archive integrity evidence, not an independent historical witness.
+
+Each election's HTML, original artwork and exact CDX response are durable under `data/raw/logos/kNN/`. `rawEvidence.page/asset` and `digestProof.rawIndex` resolve to `data/raw/SOURCES.json`; the generated public manifest carries the same records. CDX `length` is the archive-record length, not a claim about decoded asset byte count. Original SHA-256 and thumbnail SHA-256 are distinct for k20. Reproduction: keep SVG unchanged; for k20 use Chromium headless shell 1248, load the original PNG locally, canvas `drawImage` at proportional dimensions bounded by 256, and `toDataURL('image/png')`. Locked npm dependencies / Node 24.18.0 were used. Reproducible downloads, dependency copies, renders and logs are under `.backup-scratch/logo-digest/`; exclusion by backup systems outside this repository remains unverified.
+
+### Routes and unresolved evidence
+
+- **k15 Likud:** [28 April 1999 homepage](https://web.archive.org/web/19990428045736id_/http://www.likud.org.il:80/) inspected; it is a 457-byte frameset pointing to `navframe.html` and `mainframe.html`, with no image. Frames were not fetched in this bounded pass. No asset/date inference.
+- **k16 Likud:** [23 January 2003 homepage](https://web.archive.org/web/20030123024456id_/http://www.likud.org.il:80/) inspected; title explicitly says 2003 Elections, but only embeds `main_likudsite.swf`. No standalone logo verified; Flash was not executed/extracted.
+- **k17 Likud:** [4 March 2006 homepage](https://web.archive.org/web/20060304172907id_/http://www.likud.org.il:80/) inspected; header is Flash, with ancillary navigation/background images. No standalone header logo verified; no guessed image selected.
+- **k20:** exact non-www asset CDX request timed out. Querying the www alias yielded the exact non-www asset capture on 16 March; retrieved bytes match its digest. No domain analogy: CDX returned the original URL referenced by the retained page.
+- **k21:** March–election-day exact asset query returned no rows. Extending to January returned the February record above, whose digest matches the inspected original.
+- **k23:** February–election-day www homepage query returned no rows; January–election-day non-www query returned www originals. The 17 January replay timed out; 3 January replay succeeded and references the exact SVG. A zero-row query is scoped to that query, not a nonexistence finding.
+- **k25 Israel Beiteinu:** [1 October 2022 page](https://web.archive.org/web/20221001082757id_/https://beytenu.org.il/) now replayed and inspected, referencing `https://beytenu.org.il/wp-content/themes/nisarg/images/logo_260.png`. August–1 November exact-asset CDX returned no rows. Broadening to 2020–2022 found different digests on 28 August 2020 (`NVZH2RFPWK4PUJSIOSJVTXJQ5D5SPS7I`) and **23 November 2022** (`WAMHMSSC2DZG732OVTQ73BAWB5WZZRFL`). Neither proves the 2022 campaign rendering; no image was assigned or claimed absent.
+
+Exact failed replay URLs for the parent / Firecrawl (both timed out, not 429; an image replay is listed for completeness though Firecrawl cannot return its bytes):
+
+- HTML: https://web.archive.org/web/20200117093342id_/https://www.likud.org.il/
+- Image: https://web.archive.org/web/20190913072941id_/https://www.likud.org.il/images/layout_images/logo.svg
+
+The exact failed index query was `https://web.archive.org/cdx/search/cdx?url=likud.org.il%2Ftemplates%2Fjoomla-israel%2Fimages%2Flogo-likud-he-il.png&from=20150201&to=20150317&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest`. It is not a failed HTML capture. Other historical replay failures in earlier sections were not all retried and remain historical, not this pass's failures.
+
+### Current website-era gaps by election
+
+Missing winner letters below are mechanically recomputed; no other prior exclusions are reversed. Constituent and nonwinner gaps retain the exact identity inventories and reasons above. K26 remains missing ג, ט, עם; its narrower combined-list/official-origin constraints remain unresolved. K14 and k18–k19 received no new source acquisition; no new k26 source was inspected.
+
+| Election | Hosted winners | Still-missing winner letters | Missing winning-list constituents |
+|---|---:|---|---:|
+| k14 | 2/11 | אמת, ב, ג, ו, ט, כן, מרצ, ע, שס | 12/12 |
+| k15 | 2/15 | אמת, ב, ג, ד, ו, יש, כן, ל, ם, מחל, מרצ, עם, שס | 12/12 |
+| k16 | 2/13 | ב, ג, ד, ו, יש, כן, ל, מחל, מרצ, עם, שס | 14/14 |
+| k17 | 1/12 | אמת, ג, ד, ו, זך, כן, ל, מחל, מרצ, עם, שס | 11/11 |
+| k18 | 2/12 | אמת, ב, ג, ד, ו, ט, כן, ל, עם, שס | 12/12 |
+| k19 | 3/12 | אמת, ג, ד, ו, טב, מחל, עם, פה, שס | 9/9 |
+| k20 | 2/10 | אמת, ג, ודעם, טב, ל, מרצ, פה, שס | 11/11 |
+| k21 | 2/11 | ג, דעם, ום, טב, כ, ל, מרצ, פה, שס | 14/14 |
+| k22 | 3/9 | אמת, ג, ל, מרצ, פה, שס | 17/19 |
+| k23 | 2/8 | ג, ודעם, טב, ל, פה, שס | 17/18 |
+| k24 | 5/13 | אמת, ב, ג, ודעם, ט, ל, מרצ, שס | 11/12 |
+| k25 | 3/10 | אמת, ג, ום, ט, ל, עם, שס | 10/11 |
+| k26 | 8/11 | ג, ט, עם | 11/19 |
+
+No additional constituent evidence was promoted from the new whole-list headers. Notable nonwinners were not reached because seat-winning acquisition remained the priority; existing nonwinner coverage and unresolved Jewish Home 2022 candidates remain unchanged. The next evidence needed is the exact separately dated original for each missing identity; a live mark or general family resemblance does not resolve it.
+
+### Verification for this continuation
+
+`python3 scripts/validate-party-logos.py` passed: **26 overlays, 111 source records, 62 assets, 66 hosted entries**, zero download-unavailable and six unresolved entries. Separately recomputed each of the six original SHA-1 values from retained bytes, found the exact matching CDX timestamp/URL/digest row, and checked each CDX timestamp is on or before polling day. `npx tsc --noEmit -p .` passed. `npx vitest run` passed: **57 files, 483 tests**. `node scripts/build-datasets.ts` passed; its repeat wrote **zero** files. Existing full station reconciliation is skipped when station scratch is absent; retained evidence/locality checks still run.
+
+The model digest alone was re-recorded to `0c04cd08ac86f05d9512fc9cce2600566ec6d799048b692f524466e643898ec1` with a one-line justification. All 26 election datasets compare equal to baseline after recursively removing `logo` and `builtAt`; only k20–k25 election datasets changed. Allocation, analysis, validation and rules digests are unchanged. No application source or election results were changed. Commit is local only; no push or merge.

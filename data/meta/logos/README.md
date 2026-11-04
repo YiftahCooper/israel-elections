@@ -33,7 +33,10 @@ from ballot letters, recoloured, or assigned to a different election by analogy.
 
 ## Licence and date policy
 
-Only Commons public-domain or freely licensed files are committed. The specific
+Under owner decision 0089, official-origin campaign logos may also be hosted for
+fair-use identification with a recorded in-use date, source card and rights notice.
+This is not a licence grant. Free-licence entries retain their original terms.
+For those entries, the specific
 Commons licence/template is recorded; attribution for CC BY-SA assets must travel
 with the displayed image and link to its source and licence. Resized derivatives
 retain the original licence. Public-domain credits are retained for provenance,
@@ -45,7 +48,11 @@ that campaign. An upload/recreation date alone does not prove historical use.
 Campaign-period date-only evidence is medium confidence and is not extended into
 later elections. Explicit election identification on Commons is accepted as
 community evidence, not described as independent verification of an NLI original.
-No high-confidence assignments are claimed in this pass. Unresolved dates are
+High confidence requires inspected campaign HTML referencing the exact official
+asset and bytes matching a pre-election CDX SHA-1 digest. `digestProof` records the
+query, computed base32 digest and retained CDX manifest ID. A later asset replay
+is acceptable only when its bytes match that independently recorded pre-election
+digest; its actual replay timestamp remains explicit. Unresolved dates are
 omitted; an unresolved rights candidate can be retained with a null file.
 
 English-language Wikipedia was not consulted or linked as a source. Incidental

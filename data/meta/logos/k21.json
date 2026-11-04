@@ -36,6 +36,43 @@
       "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas.",
       "rights": "free-licence",
       "bytes": 11564
+    },
+    {
+      "letters": "מחל",
+      "file": "logos/likud-2019-k21.svg",
+      "sourceUrl": "https://www.likud.org.il/",
+      "assetSourceUrl": "https://www.likud.org.il/images/layout_images/logo.svg",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "הליכוד — official party header mark",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "likud-archive-20190409044547",
+      "inUseDate": "2019-04-09",
+      "archiveUrl": "https://web.archive.org/web/20190409044547/https://www.likud.org.il/",
+      "archiveTimestamp": "20190409044547",
+      "inUseEvidence": "Inspected official homepage capture 20190409044547 references https://www.likud.org.il/images/layout_images/logo.svg as its header logo. Exact archived asset bytes at 20220811033925 match campaign-window CDX SHA-1 base32 UUMFLDUTGIRXWQP5HTS3JPYAI3PQAZWU. Original geometry and colours preserved; separate evidence for this election, no assignment by analogy. CDX pre-election capture: 20190210085457; actual retrieved asset capture: 20220811033925.",
+      "retrievedAt": "2026-11-04",
+      "sha256": "bbe6ec4c4f7db2f644940a8e713e8264d3bf6fd892d77b3de2e4336e71b7273d",
+      "originalSha256": "bbe6ec4c4f7db2f644940a8e713e8264d3bf6fd892d77b3de2e4336e71b7273d",
+      "bytes": 10986,
+      "displayBackground": "dark",
+      "rawEvidence": {
+        "page": "logo-k21-likud-page",
+        "asset": "logo-k21-likud-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20220811033925id_/https://www.likud.org.il/images/layout_images/logo.svg",
+      "assetArchiveTimestamp": "20220811033925",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "UUMFLDUTGIRXWQP5HTS3JPYAI3PQAZWU",
+        "computedDigest": "UUMFLDUTGIRXWQP5HTS3JPYAI3PQAZWU",
+        "assetCaptureTimestamp": "20220811033925",
+        "cdxCaptureTimestamp": "20190210085457",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.likud.org.il%2Fimages%2Flayout_images%2Flogo.svg&from=20190101&to=20190409&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k21-likud-index"
+      }
     }
   ]
 }

@@ -41,7 +41,8 @@ const EXPECTED: Record<Family, string> = {
   // Restoring HEAD's k26 dataset reproduces all five previous digests; non-logo fields compare equal.
   // Decision 0093: only links and builtAt differ in the 26 datasets; current model on HEAD
   // datasets reproduces bf90d94a..., and the other four digests are unchanged.
-  model: 'bc73eb84e97522052232a46feda3ee48bafe8856235493bfc4c51bb5296ef193',
+  // Likud k20–k25 logos only: all 26 datasets equal to HEAD after omitting logo and builtAt.
+  model: '0c04cd08ac86f05d9512fc9cce2600566ec6d799048b692f524466e643898ec1',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };
