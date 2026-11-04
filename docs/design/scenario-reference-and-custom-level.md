@@ -2,9 +2,43 @@
 
 Owner requests, 4 November 2026. Design agreed in conversation; to be implemented after Wave 1 of `docs/research/prior-art-synthesis.md` merges, because it touches the same components (`ChangeSummary`, `Blocs`, `TopBar`, `store`).
 
-## 1. Start a new grouping from nothing
+## 1. Every editable area can start fresh, not only blocs
 
-Today a custom grouping is made by editing a sourced preset: deleting, adding and renaming its blocs. Instead, a **+** button beside the grouping dropdown in the bloc panel will:
+The owner's bloc example is one case of a general principle:
+
+> **Imagining something new must never require dismantling what is there.**
+
+Each editable area of a scenario is a *part*. Today the parts are:
+
+- votes
+- lists and their names, letters and colours
+- merges, splits and withdrawals
+- surplus agreements
+- blocs
+- coalitions
+- candidates and their order
+- rules
+- turnout and totals
+
+Each part gets the same **Start from…** control, next to where that part is edited. The control has up to four choices:
+
+- **Official result.** This is the reset.
+- **A sourced preset**, where the part has presets: bloc groupings, rule sets of other eras, historical agreements.
+- **That part of another saved scenario.** Parts combine, so one scenario can take its blocs from "Unity government" and its votes from "Meretz passes".
+- **Blank**, where blank means something:
+  - blocs: an empty, named grouping (the owner's example);
+  - agreements: no agreements;
+  - a coalition: nobody in it;
+  - candidates: an empty order to build;
+  - a new list: a list with no votes.
+
+  Blank is not offered where it is meaningless. "No votes" is not a scenario.
+
+Starting fresh is one undoable action. It is named where the part has names, and it is marked as edited. The control has one shared component and one action shape, so a part cannot be left out. A unit test checks that every part in the registry offers it.
+
+### The bloc case
+
+Here is how the principle applies to blocs. Today a custom grouping is made by editing a sourced preset: deleting, adding and renaming its blocs. Instead, a **+** button beside the grouping dropdown in the bloc panel will:
 
 1. Ask for a name ("Unity government", "ממשלת אחדות").
 2. Create a grouping with that name and two empty blocs (renamable; "+ New bloc" adds more). Every list and party starts in the **No bloc** pool, ready to be dragged or moved.
