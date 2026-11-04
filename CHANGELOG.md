@@ -27,6 +27,8 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 
 ### Added
 
+- Locality results map with live scenario bloc/list colours, bilingual partial search, Photon address lookup, and retained CBS reference coordinates; unmatched and envelope rows remain unplaced.
+
 - Official campaign logos may use fair-use identification (decision 0089), with explicit rights basis,
   campaign-date provenance, byte/hash validation and separate constituent-party emblems.
 - Sourced geographic turnout groups for k16 and k18–k26, with bilingual definitions, classification

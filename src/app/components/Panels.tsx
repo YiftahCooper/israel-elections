@@ -1,3 +1,5 @@
+import { LocalityMap, useLocalityLocations } from './LocalityMap.tsx';
+import { matchesLocality } from '../locality-map-model.ts';
 import { Fragment, useEffect, useMemo, useState } from 'react';
 import { isEnvelopeRow, type ElectionDataset } from '../../data/schema.ts';
 import { ruleDepartures, RULESETS } from '../../engine/rules.ts';
@@ -98,17 +100,19 @@ export function Localities({ s }: { s: Scenario }) {
   const digits = useDigits();
   const hasLocalities = useStore((st) => st.datasets[s.electionId]?.hasLocalities !== false);
   const { data, error } = useLocalities(s.electionId, hasLocalities);
+  const { locations, error: locationError } = useLocalityLocations(s.electionId, hasLocalities);
+  const [view, setView] = useState<'map' | 'table'>('map');
   const [q, setQ] = useState('');
   const [sort, setSort] = useState<'registered' | 'turnout' | 'name'>('registered');
   const [open, setOpen] = useState<string | null>(null);
   const histLists = useMemo(() => (data ? data.listIds.map((id) => s.lists.find((l) => l.id === id) ?? null) : []), [data, s]);
   if (!hasLocalities) return <p className="ink2">{L('Locality-level results are not available for this election in the sources used here; only national results are.', 'תוצאות לפי יישובים אינן זמינות לבחירות אלה במקורות שבשימוש כאן; זמינות רק תוצאות ארציות.')}</p>;
   if (error) return <p className="bad">{error}</p>;
-  if (!data) return <p className="muted">{L('Loading official locality results…', 'טוען תוצאות לפי יישובים…')}</p>;
+  if (!data || data.id !== s.electionId) return <p className="muted">{L('Loading official locality results…', 'טוען תוצאות לפי יישובים…')}</p>;
   // rows are keyed by position in the file: older elections have no locality codes
   const keyed = data.rows.map((r, i) => ({ r, key: String(i) }));
   const hasRegistered = data.rows.some((r) => r.registered !== null);
-  const rows = keyed.filter(({ r }) => !q || r.nameHe.includes(q) || String(r.code) === q)
+  const rows = keyed.filter(({ r }) => matchesLocality(q, { ...locations[String(r.code)], nameHe: r.nameHe, code: r.code }))
     .sort(({ r: a }, { r: b }) => sort === 'name' || (!hasRegistered && sort !== 'turnout') ? a.nameHe.localeCompare(b.nameHe, 'he')
       : sort === 'turnout' ? (b.registered ? b.votesCast / b.registered : -1) - (a.registered ? a.votesCast / a.registered : -1)
       : (b.registered ?? 0) - (a.registered ?? 0)).slice(0, 300);
@@ -116,6 +120,11 @@ export function Localities({ s }: { s: Scenario }) {
   const nameOf = (k: number) => histLists[k] ? listLabel(histLists[k]!, lang) : data.listIds[k];
   return (
     <div>
+      <span className="seg" role="group" aria-label={L('Locality view', 'תצוגת יישובים')}>
+        <button aria-pressed={view === 'map'} onClick={() => setView('map')}>{L('Map', 'מפה')}</button>
+        <button aria-pressed={view === 'table'} onClick={() => setView('table')}>{L('Table', 'טבלה')}</button>
+      </span>
+      {view === 'map' ? <LocalityMap key={s.electionId} s={s} data={data} locations={locations} locationError={locationError} /> : <>
       <p className="small ink2">{L(`Official CEC results for ${localityCount} localities plus double-envelope votes. These are the historical figures; your scenario changes are national and are not distributed to localities.`, `תוצאות רשמיות של ועדת הבחירות ל-${localityCount} יישובים ולמעטפות החיצוניות. אלה הנתונים ההיסטוריים; שינויי התרחיש הם ארציים ואינם מחולקים ליישובים.`)}</p>
       {(data.noteEn || data.noteHe) && <p className="small callout">{lang === 'he' ? data.noteHe ?? data.noteEn : data.noteEn ?? data.noteHe}</p>}
       <div className="row" style={{ marginBottom: 8 }}>
@@ -151,6 +160,7 @@ export function Localities({ s }: { s: Scenario }) {
       {rows.length === 0 && <p className="small">{L('No locality matches the search.', 'אין יישוב תואם לחיפוש.')}</p>}
       {rows.length === 300 && <p className="small muted">{L('Showing the first 300 localities in this order; search to find others.', 'מוצגים 300 היישובים הראשונים לפי המיון; חפשו כדי למצוא אחרים.')}</p>}
       <p className="small muted">{L('Locality turnout excludes double-envelope votes (soldiers, patients, diplomats…), so it understates true turnout.', 'ההצבעה ביישוב אינה כוללת מעטפות חיצוניות ולכן נמוכה מההצבעה האמיתית.')}</p>
+      </>}
     </div>
   );
 }
