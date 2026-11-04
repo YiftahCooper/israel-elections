@@ -3,7 +3,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario, SimList } from '../../model/scenario.ts';
 import { listLabel, methodOf, seatBlocsOf, seatedOrder, shownName } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { arcLayout, placeLabels } from '../layout.ts';
+import { arcLayout, bandCuts, placeLabels } from '../layout.ts';
 import { download, isolate } from '../format.ts';
 import { setState, useLevel, useStore } from '../store.ts';
 import { Seg } from './ui.tsx';
@@ -94,20 +94,19 @@ export function Hemicycle({ s, r, compact: compactProp = false, title }: { s: Sc
     return [...g.entries()].map(([id, e]) => ({ id, n: e.n, a: Math.atan2(e.sy, e.sx) }));
   }, [seats, pos]);
 
-  // one band per bloc along the outside of the arc, spanning that bloc's seats (seats are ordered by angle)
-  const bands = useMemo(() => {
-    if (!s.blocs.length || layout !== 'hemicycle') return [];
-    const out: { bloc: string; color: string; a0: number; a1: number }[] = [];
-    seats.forEach((st, i) => {
-      const p = pos[rtl ? pos.length - 1 - i : i]; if (!p) return;
-      // seats in no bloc keep an untinted region of their own, so neighbouring wedges never claim them
+  // one region per run of seats in the same bloc (seats are ordered by angle); bandOf[i] is seat i's region
+  const { bands, bandOf } = useMemo(() => {
+    const out: { bloc: string; color: string }[] = [];
+    const bandOf: number[] = [];
+    if (!s.blocs.length || layout !== 'hemicycle') return { bands: out, bandOf };
+    seats.forEach((st) => {
+      // seats in no bloc keep an untinted region of their own, so neighbouring regions never claim them
       const bloc = st.bloc ?? '\0none';
-      const last = out[out.length - 1];
-      if (last && last.bloc === bloc) { last.a0 = Math.min(last.a0, p.a); last.a1 = Math.max(last.a1, p.a); }
-      else out.push({ bloc, color: st.bloc ? s.blocs.find((b) => b.id === st.bloc)?.color ?? 'transparent' : 'transparent', a0: p.a, a1: p.a });
+      if (out[out.length - 1]?.bloc !== bloc) out.push({ bloc, color: st.bloc ? s.blocs.find((b) => b.id === st.bloc)?.color ?? 'transparent' : 'transparent' });
+      bandOf.push(out.length - 1);
     });
-    return out;
-  }, [seats, pos, rtl, s.blocs, layout]);
+    return { bands: out, bandOf };
+  }, [seats, s.blocs, layout]);
 
   const onSeat = (st: SeatInfo, evt: React.MouseEvent | React.FocusEvent) => {
     const box = (evt.currentTarget as SVGElement).ownerSVGElement!.parentElement!.getBoundingClientRect();
@@ -145,18 +144,26 @@ export function Hemicycle({ s, r, compact: compactProp = false, title }: { s: Sc
   let body: React.ReactNode;
   if (layout === 'hemicycle') {
     const cx = W / 2, cy = 470, R = 400;
-    // pale wedges behind each bloc's seats; boundaries fall midway between neighbouring blocs' seats
-    const ordered = [...bands].sort((p, q) => q.a1 - p.a1);
-    const Ri = R * (0.38 - rad) - 10, Ro = R * (1 + rad) + 10;
+    // pale regions behind each bloc's seats; their edges step row by row, midway between neighbouring blocs' seats
     const pt = (a: number, rr: number) => `${(cx + Math.cos(a) * rr).toFixed(1)} ${(cy - Math.sin(a) * rr).toFixed(1)}`;
-    const wedges = ordered.map((b, k) => {
-      const A = k === 0 ? Math.PI : (ordered[k - 1].a0 + b.a1) / 2;
-      const B = k === ordered.length - 1 ? 0 : (b.a0 + ordered[k + 1].a1) / 2;
-      return { key: `${b.bloc}-${k}`, color: b.color, d: `M ${pt(A, Ro)} A ${Ro} ${Ro} 0 0 1 ${pt(B, Ro)} L ${pt(B, Ri)} A ${Ri} ${Ri} 0 0 0 ${pt(A, Ri)} Z` };
+    const placed = seats.map((_, i) => pos[rtl ? pos.length - 1 - i : i]).filter(Boolean);
+    const { radii, cuts } = bandCuts(placed, bandOf, bands.length, !rtl);
+    const edges = [R * (0.38 - rad) - 10, ...radii.slice(1).map((x, i) => (R * (radii[i] + x)) / 2), R * (1 + rad) + 10];
+    const start = rtl ? 0 : Math.PI, end = rtl ? Math.PI : 0;
+    const arc = (a0: number, a1: number, rr: number) => `A ${rr.toFixed(1)} ${rr.toFixed(1)} 0 0 ${a1 < a0 ? 1 : 0} ${pt(a1, rr)}`;
+    const wedges = bands.map((b, k) => {
+      const left = k === 0 ? radii.map(() => start) : cuts[k - 1];
+      const right = k === bands.length - 1 ? radii.map(() => end) : cuts[k];
+      let d = `M ${pt(left[0], edges[0])}`;
+      radii.forEach((_, i) => { d += ` L ${pt(left[i], edges[i + 1])}`; if (i < radii.length - 1 && left[i + 1] !== left[i]) d += ` ${arc(left[i], left[i + 1], edges[i + 1])}`; });
+      d += ` ${arc(left[radii.length - 1], right[radii.length - 1], edges[radii.length])}`;
+      for (let i = radii.length - 1; i >= 0; i--) { d += ` L ${pt(right[i], edges[i])}`; if (i > 0 && right[i - 1] !== right[i]) d += ` ${arc(right[i], right[i - 1], edges[i])}`; }
+      d += ` ${arc(right[0], left[0], edges[0])} Z`;
+      return { key: `${b.bloc}-${k}`, color: b.color, d };
     });
     body = (
       <svg ref={svgRef} viewBox={compact ? `40 40 920 450` : `-270 0 1540 ${H}`} role="img" aria-label={`${title ?? L('Knesset seat diagram', 'תרשים מושבי הכנסת')}: ${summary}`}>
-        {wedges.map((w) => <path key={w.key} className="wedge" d={w.d} fill={w.color} fillOpacity={0.15} />)}
+        {wedges.map((w) => <path key={w.key} className="wedge" d={w.d} fill={w.color} stroke={w.color} />)}
         {seats.map((st, i) => {
           const p = pos[rtl ? pos.length - 1 - i : i]; if (!p) return null;
           const dim = selected && selected !== st.listId;

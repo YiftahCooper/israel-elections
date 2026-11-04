@@ -226,9 +226,9 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .blocs-head { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 12px; margin-bottom: 8px; }
 .blocs-head .note { color: var(--muted); font-size: 12.5px; }
 .strip { position: relative; display: flex; gap: 3px; padding-top: 14px; }
-.corridor { min-width: 0; border-radius: 5px; padding: 5px 6px; display: flex; flex-direction: column; gap: 5px; border: 1px solid transparent; background: color-mix(in srgb, var(--bc) 14%, transparent); cursor: pointer; text-align: start; transition: flex-grow .3s ease; }
-[data-theme="dark"] .corridor { background: color-mix(in srgb, var(--bc) 22%, transparent); }
-.corridor:hover { border-color: color-mix(in srgb, var(--bc) 45%, transparent); }
+.corridor { min-width: 0; border-radius: 5px; padding: 5px 6px; display: flex; flex-direction: column; gap: 5px; border: 1px solid color-mix(in srgb, var(--bc) 35%, transparent); background: color-mix(in srgb, var(--bc) 24%, transparent); cursor: pointer; text-align: start; transition: flex-grow .3s ease; }
+[data-theme="dark"] .corridor { background: color-mix(in srgb, var(--bc) 32%, transparent); border-color: color-mix(in srgb, var(--bc) 45%, transparent); }
+.corridor:hover { border-color: color-mix(in srgb, var(--bc) 70%, transparent); }
 .corridor[aria-expanded="true"] { border-color: var(--bc); }
 .corridor .pieces { display: flex; gap: 1px; height: 14px; border-radius: 3px; overflow: hidden; }
 .corridor .pieces i { display: block; min-width: 1px; transition: flex-grow .3s ease, opacity .2s; }
@@ -257,7 +257,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 /* ---------- chamber */
 .chamber { position: relative; }
 .chamber svg { display: block; width: 100%; height: auto; direction: ltr; }
-.chamber .wedge { transition: d .3s; }
+.chamber .wedge { transition: d .3s; fill-opacity: .26; stroke-opacity: .5; stroke-width: 1.5; stroke-linejoin: round; }
+[data-theme="dark"] .chamber .wedge { fill-opacity: .34; stroke-opacity: .6; }
 .chart { direction: ltr; }
 .seat { transition: fill .35s ease, opacity .2s; cursor: pointer; }
 .seat.dim { opacity: .22; }

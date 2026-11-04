@@ -8,6 +8,11 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 
 ### Fixed
 
+- **Bloc regions easier to see (4 Nov 2026).** The pale bloc tints behind the chamber and in the bloc strip are about
+  twice as strong, with a faint edge in the bloc's colour (stronger again in dark mode). The chamber's regions now
+  step row by row between neighbouring blocs' seats instead of one straight cut, so no seat sits in another bloc's
+  region where rows interleave (a unit test checks every seat).
+
 - **Community gallery, locality map (4 Nov 2026).** The scenario gallery never reached GitHub: it called the
   browser's `fetch` as a method of its own object, which browsers reject ("Illegal invocation"); a unit test now
   guards it. The gallery sits on the Scenarios page in the app's own cards and controls, publishes the current

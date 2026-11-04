@@ -5,6 +5,7 @@ import { rat } from '../src/engine/rational.ts';
 import { ActionError, apportion, applyAction } from '../src/model/actions.ts';
 import { scenarioFromDataset, toEngineInput, validVotes } from '../src/model/scenario.ts';
 import { loadDataset } from './helpers.ts';
+import { arcLayout, bandCuts } from '../src/app/layout.ts';
 
 const k25 = loadDataset('k25');
 const base = scenarioFromDataset(k25);
@@ -152,5 +153,34 @@ describe('chamber geometry', () => {
     const out = placeLabels([{ id: 'a', n: 21, a: deg(95.6), text: 'ישר! 21' }, { id: 'b', n: 6, a: deg(86), text: 'הציונות הדתית–זהות 6' }], 500, 470, 400);
     const [p, q] = out.map((x) => x.box);
     expect(p[0] < q[2] && p[2] > q[0] && p[1] < q[3] && p[3] > q[1]).toBe(false);
+  });
+});
+
+describe('bloc regions behind the chamber', () => {
+  // seat i belongs to region band[i]; on its row its angle must lie strictly between the region's two edges
+  const check = (n: number, sizes: number[], descending: boolean) => {
+    const { seats } = arcLayout(n);
+    const placed = descending ? seats : [...seats].reverse();
+    const band = sizes.flatMap((k, j) => Array(k).fill(j));
+    const { radii, cuts } = bandCuts(placed, band, sizes.length, descending);
+    const start = descending ? Math.PI : 0, end = descending ? 0 : Math.PI;
+    placed.forEach((p, i) => {
+      const row = radii.findIndex((r) => Math.abs(r - Math.hypot(p.x, p.y)) < 1e-6);
+      const j = band[i];
+      const left = j === 0 ? start : cuts[j - 1][row], right = j === sizes.length - 1 ? end : cuts[j][row];
+      const [lo, hi] = [Math.min(left, right), Math.max(left, right)];
+      expect(p.a > lo - 1e-9 && p.a < hi + 1e-9, `seat ${i} (region ${j}) at ${p.a} outside ${lo}..${hi}`).toBe(true);
+      // an edge shared with a neighbouring bloc never runs through a seat (the arc's own ends at 0 and π may)
+      const shared = (e: number) => Math.abs(e) > 1e-9 && Math.abs(e - Math.PI) > 1e-9;
+      if (j > 0 && shared(left)) expect(Math.abs(p.a - left)).toBeGreaterThan(1e-6);
+      if (j < sizes.length - 1 && shared(right)) expect(Math.abs(p.a - right)).toBeGreaterThan(1e-6);
+    });
+  };
+  it('keeps every seat inside its own bloc region, left to right and right to left', () => {
+    for (const sizes of [[53, 48, 19], [61, 59], [1, 118, 1], [27, 21, 12, 11, 8, 8, 7, 7, 7, 6, 6], [40, 0, 80].filter(Boolean)]) {
+      check(120, sizes, true);
+      check(120, sizes, false);
+    }
+    check(25, [10, 15], true);
   });
 });
