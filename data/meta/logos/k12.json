@@ -30,20 +30,20 @@
       "evidenceId": "jabotinsky-likud-1988-36187",
       "assetSourceUrl": "https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%9B%D7%A8%D7%96%D7%95%D7%AA/21/3457_0203.jpg",
       "status": "verified",
-      "sha256": "a07ac95c83cd4da976ec0126674582a2191f747a299c897c60ded4518021876f",
+      "sha256": "89bf228003203889658050b1c936a084f172eaaaed04e1b471d954c5b8d1b35d",
       "originalSha256": "e6ba475827dd43d552edb52b2f3535f35097bbcde6aa2f0eec3dc8673900b412",
       "rights": "fair-use-identification",
-      "bytes": 20609,
+      "bytes": 26744,
       "inUseDate": "1988-10-18",
       "publicationEvidence": {
         "page": "logo-k12-likud-print-page",
         "asset": "logo-k12-likud-print-asset",
         "publicationDate": "1988-10-18",
         "cropBox": [
-          7,
-          370,
-          211,
-          422
+          4,
+          366,
+          320,
+          436
         ],
         "originalDimensions": [
           324,

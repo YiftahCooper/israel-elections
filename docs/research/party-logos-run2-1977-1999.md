@@ -965,3 +965,12 @@ Work is local on branch `t3/8cfc717d`, committed in seven election batches.
 No push, merge, deployment or live-system change. The full-logo acquisition goal
 is **not achieved**: 73 identities need further evidence; this report records the
 attempt for every initial gap and does not relabel unresolved artwork as absent.
+
+### Review correction (parent, 4 November 2026)
+
+The k12 Likud crop `[7, 370, 211, 422]` kept only the slogan fragment "הליכוד יכול" and cut off the
+ballot-letter box "מחל", which is what identifies the list. Re-cropped from the same retained scan to the
+whole sign-off `[4, 366, 320, 436]` ("רק מחל הליכוד יכול / המחנה הלאומי", above the printer's line),
+scaled proportionally to 256 × 57 px (Pillow, Lanczos). Final SHA-256
+`89bf228003203889658050b1c936a084f172eaaaed04e1b471d954c5b8d1b35d`, 26,744 bytes; original scan and its hash
+unchanged.
