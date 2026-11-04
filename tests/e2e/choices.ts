@@ -1,7 +1,8 @@
 import { expect, type Locator } from '@playwright/test';
 export async function choose(picker: Locator, value: string | { label: string }) {
+  const dialogId = await picker.getAttribute('aria-controls');
   await picker.click();
-  const dialog = picker.page().getByRole('dialog').last();
+  const dialog = dialogId ? picker.page().locator(`[id="${dialogId}"]`) : picker.page().getByRole('dialog').last();
   const option = typeof value === 'string' ? dialog.locator(`[data-choice-value="${value}"]`) : dialog.locator('.choice-option').filter({ has: dialog.page().getByText(value.label, { exact: true }) });
   const selectedValue = await option.getAttribute('data-choice-value');
   await option.click();

@@ -41,7 +41,7 @@ export function membership(f: Family, election: ElectionId) {
   if (f.defaultMixedPolicy === 'exclude') mixed.clear();
   return { selected, mixed, known: !!row };
 }
-export function aggregate(f: Family, ds: ElectionDataset) {
+export function aggregate(f: Family, ds: Pick<ElectionDataset,'id'> & { lists:{id:string;votes:number}[]; totals:{valid:number} }) {
   const m = membership(f, ds.id); const knownIds = new Set(ds.lists.map(l => l.id));
   const unresolved = !m.known || !!f.elections.find(e=>e.electionId===ds.id)?.members.some(m=>m.treatment==='unresolved'&&!f.included?.includes(m.listId)&&!f.disabled?.includes(m.listId)) || [...m.selected,...m.mixed].some(id => id.startsWith(ds.id.slice(1)+'-') && !knownIds.has(id));
   const sum = (ids: Set<string>) => ds.lists.reduce((v,l) => v + (ids.has(l.id) ? BigInt(l.votes) : 0n),0n);

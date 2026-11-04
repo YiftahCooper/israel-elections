@@ -59,6 +59,12 @@ test('registry aliases resolve; pending and leader moves never become suggestion
  const r=await import('../src/families/registry.ts');expect(r.canonicalParty('ram')).toBe('raam');expect(r.canonicalParty('israeli-labor-party')).toBe('labor');expect(r.suggestions.every(e=>e.relation!=='leader-moved-to')).toBe(true);
 });
 test('catalogue import checks real appearances and canonical party identities',async()=>{
- const {importPreset}=await import('../src/families/catalogue.ts');expect(importPreset(JSON.stringify(f)).id).toBe('haredi');
- expect(()=>importPreset(JSON.stringify({...f,included:['25-invented']}))).toThrow();
+ const {importPreset}=await import('../src/families/catalogue.ts');expect((await importPreset(JSON.stringify(f))).id).toBe('haredi');
+ await expect(importPreset(JSON.stringify({...f,included:['25-invented']}))).rejects.toThrow();
 });
+
+test('compact generated runtime is below 200 KB and matches all nine independent totals',async()=>{
+ const {compileFamilyRuntime}=await import('../scripts/family-runtime.ts');const packed=compileFamilyRuntime();expect(Buffer.byteLength(JSON.stringify(packed))).toBeLessThan(200000);
+ const {builtins}=await import('../src/families/runtime.ts');for(const f of builtins)for(const e of f.elections){const d=ds(Number(e.electionId.slice(1))),full=JSON.parse(readFileSync(`data/meta/families/${f.id}.json`,'utf8'));const row=full.elections.find((r:{electionId:string})=>r.electionId===e.electionId);expect(aggregate(f,d).votes).toBe(BigInt(row.computed.includedUnmixed.votes));expect(aggregate(f,d).mixed).toBe(BigInt(row.computed.mixedWholeLists.votes));}
+});
+test('family colours are stable, chromatic and distinct for the nine presets',async()=>{const {builtins,familyColor}=await import('../src/families/runtime.ts');expect(new Set(builtins.map(familyColor)).size).toBe(9);expect(familyColor(fork(f))).not.toBe(familyColor(f));});

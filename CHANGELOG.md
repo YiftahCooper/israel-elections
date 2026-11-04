@@ -1,5 +1,13 @@
 # Changelog
 
+## 4 November 2026 — visual family profiles
+
+- Replace family/compare dropdowns with stable-colour selection chips and hero charts with exact tooltips, pending points and shared scales.
+- Move membership and historic-partner editing into a cross-election sheet; collapse exact figures and put import/export in Manage.
+- Preview scaling with before/after seat strips; retain an unedited family lens and labelled member brackets on Overview.
+- Compile a 41 KB runtime payload, lazy-load evidence/registry, and verify nested ChoicePicker dialogs and all responsive states.
+
+
 ## 4 November 2026 — party families
 
 - Add nine sourced draft family interpretations with date-based share/count charts, exact totals and mixed-list policies.
