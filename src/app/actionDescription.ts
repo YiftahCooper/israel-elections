@@ -36,6 +36,7 @@ export function describe(a: Action, s: Scenario, lang: Lang): string {
       return he ? `${p?.nameHe ?? a.partyId} ← ${b?.nameHe ?? 'ללא גוש'}` : `${p?.nameEn ?? a.partyId} → ${b?.nameEn ?? 'no bloc'}`; }
     case 'setLottery': return he ? 'נבחרה תוצאת הגרלה' : 'Chose a lottery outcome';
     case 'resetList': return he ? `${n(a.listId)}: אופסה` : `${n(a.listId)}: reset`;
+    case 'setDescription': return he ? 'תיאור התרחיש השתנה' : 'Scenario description changed';
     case 'rename': return he ? `שם התרחיש: ${a.name}` : `Renamed to ${a.name}`;
     case 'resetVotes': return he ? `${n(a.listId)}: הקולות אופסו` : `${n(a.listId)}: votes reset`;
     case 'resetCandidates': return he ? `${n(a.listId)}: רשימת המועמדים שוחזרה` : `${n(a.listId)}: candidate list restored`;

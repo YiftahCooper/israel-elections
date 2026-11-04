@@ -1,10 +1,11 @@
+import { EditMarker } from './EditMarker.tsx';
 import { exportAnnotations } from '../scenarioExport.ts';
 // Scenarios as first-class things: the current one with its name and description, and every saved one as a
 // card with its result drawn, to open, compare, export, share or delete. Built-in "What if" questions open here
 // as named scenarios too.
 import { SCENARIO_PALETTE, scenarioColor } from '../scenarioIdentity.ts';
 import { dispatch } from '../store.ts';
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Copy, Download, FolderOpen, GitCompare, Link2, RotateCcw, Save, Trash2, Upload } from 'lucide-react';
 import type { ElectionDataset } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
@@ -32,6 +33,24 @@ export function ResultBar({ s, r }: { s: Scenario; r: AllocationResult }) {
   );
 }
 
+/** Prose stays local until blur/Enter; each commit is one history step. */
+function ScenarioText({ value, multiline, label, placeholder, onCommit }: {
+  value: string; multiline?: boolean; label: string; placeholder: string; onCommit: (v: string) => void;
+}) {
+  const [draft, setDraft] = useState(value);
+  useEffect(() => setDraft(value), [value]);
+  const props = {
+    value: draft, 'aria-label': label, placeholder,
+    onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setDraft(e.target.value),
+    onBlur: () => { if (draft !== value) onCommit(draft); },
+    onKeyDown: (e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      if (e.key === 'Enter') { e.preventDefault(); e.currentTarget.blur(); }
+      if (e.key === 'Escape' && draft !== value) { e.stopPropagation(); setDraft(value); }
+    },
+  };
+  return multiline ? <textarea rows={2} {...props} /> : <input type="text" {...props} />;
+}
+
 export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
   const L = useL();
   const lang = useLang();
@@ -46,7 +65,6 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
     return [x.id, { sc, r: allocationOf(sc) }] as const;
   })), [saved, ds, s.electionId]);
   const electionName = (id: string) => { const e = elections.find((x) => x.id === id); return e ? electionLabel(e, elections, lang) : id; };
-  const edit = (patch: Partial<Scenario>) => setState({ scenario: { ...s, ...patch } });
   const open = (x: SavedScenario) => openElection(x.electionId, { name: x.name, description: x.description, log: x.log, baseBuiltAt: x.baseBuiltAt })
     .then(() => setState((st) => ({ scenario: st.scenario ? { ...st.scenario, id: x.id } : null, tool: 'board' })));
   const exportJson = (sc: Scenario) => download(`${sc.electionId}-${fileName(sc.name)}.json`, JSON.stringify({ ...sc, ...exportAnnotations(sc, lang), datasetBuiltAt: ds.buildInfo.builtAt }, null, 1), 'application/json');
@@ -59,9 +77,9 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
         <label className="field">{L('Mark differences from', 'סימון הבדלים לעומת')}<select aria-label={L('Mark differences from', 'סימון הבדלים לעומת')} value={useStore(st => st.markOfficial) ? 'official' : 'reference'} onChange={e => setState({ markOfficial: e.target.value === 'official' })}><option value="reference">{L('The loaded scenario', 'התרחיש הטעון')}</option><option value="official">{L('Always the official result', 'תמיד התוצאה הרשמית')}</option></select></label>
         <div className="scn-form">
           <label className="field">{L('Name', 'שם')}
-            <input type="text" value={s.name} placeholder={L('e.g. “Arab turnout returns to 2015 levels”', 'למשל "שיעור ההצבעה בחברה הערבית חוזר לרמת 2015"')} onChange={(e) => dispatch({ type: 'rename', name: e.target.value })} /></label>
-          <label className="field">{L('Description', 'תיאור')}
-            <textarea rows={2} value={s.description ?? ''} placeholder={L('What does this scenario explore, and why?', 'מה התרחיש בודק, ולמה?')} onChange={(e) => edit({ description: e.target.value || undefined })} /></label>
+            <ScenarioText value={s.name} label={L('Name', 'שם')} placeholder={L('e.g. “Arab turnout returns to 2015 levels”', 'למשל "שיעור ההצבעה בחברה הערבית חוזר לרמת 2015"')} onCommit={(name) => dispatch({ type: 'rename', name })} /></label>
+          <label className="field">{L('Description', 'תיאור')}<EditMarker s={s} path={['description']} />
+            <ScenarioText multiline value={s.description ?? ''} label={L('Description', 'תיאור')} placeholder={L('What does this scenario explore, and why?', 'מה התרחיש בודק, ולמה?')} onCommit={(description) => dispatch({ type: 'setDescription', description })} /></label>
         </div>
         <ResultBar s={s} r={allocationOf(s)} />
         <div className="row" style={{ marginTop: 10 }}>

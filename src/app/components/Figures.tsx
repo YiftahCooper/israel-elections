@@ -1,3 +1,4 @@
+import { referenceLabel } from '../derive.ts';
 import { EditMarker } from './EditMarker.tsx';
 // The election's key figures. Every figure is its own control: it opens in place, across its row, to show
 // what it summarises (the lists near the threshold, the lists whose votes won no seat, the turnout editor…).
@@ -75,7 +76,7 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
           : <p className="small muted" style={{ margin: 0 }}>{L('Every list that ran won a seat.', 'כל הרשימות זכו במנדט.')}</p>}
       </Fig>
 
-      <Fig id="turnout" open={open} onToggle={toggle} k={L('Turnout', 'שיעור ההצבעה')} term="turnout" v={fmtPct(cast, s.registered, 2)} d={`${L('historical', 'בפועל')} ${fmtPct(ds.totals.votesCast, ds.totals.registered, 2)}`}>
+      <Fig id="turnout" open={open} onToggle={toggle} k={L('Turnout', 'שיעור ההצבעה')} term="turnout" v={fmtPct(cast, s.registered, 2)} d={`${referenceLabel(null, lang).name} ${fmtPct(ds.totals.votesCast, ds.totals.registered, 2)}`}>
         <div className="row">
           <label className="row small">{L('Set turnout to', 'קביעת שיעור ההצבעה ל-')}
             <DecimalInput value={s.registered ? (cast / s.registered) * 100 : 0} digits={2} width={86} label={L('Turnout %', 'שיעור הצבעה %')} onCommit={(p) => dispatch({ type: 'setTurnout', pct: p })} />%</label>
@@ -89,7 +90,7 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
         <div className="kv small"><span>{L('Ballots cast', 'מצביעים')}</span><span>{fmtInt(cast)}</span><span>{L('Invalid ballots', 'קולות פסולים')}</span><span>{fmtInt(s.invalid)}</span><span><b>{L('Valid votes', 'קולות כשרים')}</b></span><span><b>{fmtInt(r.totalValid)}</b></span></div>
       </Fig>}
       {standard && <Fig id="invalid" open={open} onToggle={toggle} k={L('Invalid ballots', 'קולות פסולים')} term="invalid-votes" v={<>{fmtInt(s.invalid)}<EditMarker s={s} path={['invalid']} /></>} d={`${fmtPct(s.invalid, cast, digits)} ${L('of ballots cast', 'מהמצביעים')}`}>
-        <p className="small" style={{ margin: 0 }}>{L(`Ballots the polling committees disqualified. They count towards turnout but not towards the threshold or the seats. Historical: ${fmtInt(ds.totals.invalid)}.`, `פתקים שוועדות הקלפי פסלו. הם נספרים בשיעור ההצבעה אך לא באחוז החסימה ובמנדטים. בפועל: ${fmtInt(ds.totals.invalid)}.`)}</p>
+        <p className="small" style={{ margin: 0 }}>{L(`Ballots the polling committees disqualified. They count towards turnout but not towards the threshold or the seats. ${referenceLabel(null, lang).name}: ${fmtInt(ds.totals.invalid)}.`, `פתקים שוועדות הקלפי פסלו. הם נספרים בשיעור ההצבעה אך לא באחוז החסימה ובמנדטים. ${referenceLabel(null, lang).name}: ${fmtInt(ds.totals.invalid)}.`)}</p>
       </Fig>}
       {expert && <Fig id="qualifying" open={open} onToggle={toggle} k={L('Qualifying votes', 'קולות משתתפים')} term="qualifying" v={fmtInt(r.qualifyingVotes)} d={`${fmtPct(Number(r.qualifyingVotes), Number(r.totalValid), digits)} ${L('of valid', 'מהכשרים')}`}>
         <p className="small" style={{ margin: 0 }}>{L(`The votes of the ${r.lists.filter((x) => x.qualified).length} lists that passed the threshold; only these share the seats. ${fmtInt(r.unrepresentedVotes)} valid votes went to lists that did not.`, `הקולות של ${r.lists.filter((x) => x.qualified).length} הרשימות שעברו את החסימה; רק הן מתחלקות במנדטים. ${fmtInt(r.unrepresentedVotes)} קולות כשרים ניתנו לרשימות שלא עברו.`)}</p>

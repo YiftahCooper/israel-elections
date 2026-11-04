@@ -1,3 +1,4 @@
+import { referenceLabel } from '../derive.ts';
 import { StartFrom } from './StartFrom.tsx';
 import { EditMarker } from './EditMarker.tsx';
 import { PartEdits } from './PartEdits.tsx';
@@ -15,7 +16,7 @@ import { runTasks } from '../analysisPool.ts';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtFrac, fmtInt, fmtPct, fmtRat, signed } from '../format.ts';
-import { dispatch, dispatchMany, getState, previewAction, setState, toast, useLevel, useVoteSource, useDigits } from '../store.ts';
+import { dispatch, dispatchMany, getState, previewAction, setState, toast, useLevel, useVoteSource, useDigits, useStore } from '../store.ts';
 import { clampTarget, deltaAction, toVoteSource, votesForShare, voteSourceLabel } from '../voteEdit.ts';
 import { Candidates } from './Candidates.tsx';
 import { JointParties } from './JointParties.tsx';
@@ -75,6 +76,8 @@ function useMargins(s: Scenario, l: SimList, seats: number, qualified: boolean) 
 export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: AllocationResult; ds: ElectionDataset; base: Scenario; baseR: AllocationResult; l: SimList }) {
   const L = useL();
   const lang = useLang();
+  const reference = useStore(st => st.reference);
+  const baseLabel = referenceLabel(base === reference ? reference : null, lang);
   const digits = useDigits();
   const { simple, standard, expert } = useLevel();
   const src = useVoteSource();
@@ -247,7 +250,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
               {nextQ && <><span>{unit?.isAgreement ? L('Pair’s next-seat quotient', 'מודד הצמד למנדט הבא') : L('Next-seat quotient', 'מודד רשימה למנדט הבא')} <Info term="listquota" /></span><span title={fmtFrac(nextQ)}>{fmtRat(nextQ, 1)}</span></>}
               {lastWin && <><span>{L('Lowest winning quotient', 'המודד הזוכה הנמוך ביותר')}</span><span>{fmtRat(lastWin, 1)}</span></>}
             </>}
-            <span>{L('Historical seats', 'מנדטים בפועל')}</span><span>{histSeats < 0 ? L('Compared together on Overview', 'השוואה משותפת בתמונת המצב') : histSeats}</span>
+            <span>{baseLabel.seats}</span><span>{histSeats < 0 ? L('Compared together on Overview', 'השוואה משותפת בתמונת המצב') : histSeats}</span>
           </div>
         </section>
       )}
