@@ -1,0 +1,954 @@
+[
+  {
+    "url": "https://www.idi.org.il/media/6828/shinuy-12.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6828/shinuy-12.pdf",
+    "bytes": 1688893,
+    "sha256": "d26c05994dc2b69e649f98a043ce9bd67ee0b10acadb4a5b39600143f52553b5",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6857/gil_2006.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6857/gil_2006.doc",
+    "bytes": 33792,
+    "sha256": "7777a1902173cf4eb0e8dd1a864b477d369f1a7b1e2599ac68563450bcd717e5",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/6439/balad-15.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6439/balad-15.pdf",
+    "bytes": 88382,
+    "sha256": "ee03067f958ca343ed657accd61fcef0022af9d51eb238e35e451b6b714960d0",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/12386/מפלגת-העבודה-מצע.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/12386/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA-%D7%94%D7%A2%D7%91%D7%95%D7%93%D7%94-%D7%9E%D7%A6%D7%A2.pdf",
+    "bytes": 1753816,
+    "sha256": "404900397801382c306b479eb6d9849dca53d9406fa150f8e614238d0da89a78",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6824/shinui-16.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6824/shinui-16.pdf",
+    "bytes": 54885,
+    "sha256": "d65a38497c2ab73a8c079d1df8b32cb5accc2486f60455328303b996fbefa451",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6525/hadash-2009org.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6525/hadash-2009org.pdf",
+    "bytes": 108221,
+    "sha256": "d99cff9dc34faed80ad142fbfab72b051ca34593e19906661e0f28f6f3453a0d",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6475/haderech-hashlishit-14.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6475/haderech-hashlishit-14.pdf",
+    "bytes": 1063170,
+    "sha256": "93e7a3947e38d4aaefdc5da9f5edf30d6e7b78eaaa1550ae5b46ec7d91e1e95f",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6605/halikud-14.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6605/halikud-14.doc",
+    "bytes": 5000000,
+    "sha256": "94d5fedc054f3e43bd0563a285df7d55a08ed4af1f0f756ecddb6f5f5748edb0",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/6557/yahadut-hatora-14.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6557/yahadut-hatora-14.doc",
+    "bytes": 2657280,
+    "sha256": "74c7d386525b24ba80289c36f95830f36185382eadde34c3f82bbb4e7df41db7",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/6450/דעם.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6450/%D7%93%D7%A2%D7%9D.pdf",
+    "bytes": 92388,
+    "sha256": "d2f5a3d62ce3b6bc765b2f963db96df922f973c8f3b53e01de08dc79eafc0f7d",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/14753/מצע-מרצ-לכנסת-ה-13-1992.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/14753/%D7%9E%D7%A6%D7%A2-%D7%9E%D7%A8%D7%A6-%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA-%D7%94-13-1992.pdf",
+    "bytes": 1872638,
+    "sha256": "6b55e49083d967424b01d9fdee02fa82b0cdcc2c8706ff0335d6e728d939be98",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6091/ישראל-ביתנו-2015.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6091/%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%91%D7%99%D7%AA%D7%A0%D7%95-2015.pdf",
+    "bytes": 401193,
+    "sha256": "8196ba46daf6e594adaea1b3337a18cd68ccc226718a8c83ca1a59b693e12229",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/16891/ישראל-בעלייה-1999.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/16891/%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%91%D7%A2%D7%9C%D7%99%D7%99%D7%94-1999.pdf",
+    "bytes": 91295,
+    "sha256": "3167bb00ce3f86e125c8f1e7c35bc5a8b80ec2bb00d89ad8e23fcbf73411ece6",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6826/shinuy-15.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6826/shinuy-15.pdf",
+    "bytes": 82685,
+    "sha256": "940cfcf493ea8f68e3d28bb99e09c926f30da33a3286c081a2235ee0ff084172",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/16899/מפלגת-המרכז-2003.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/16899/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA-%D7%94%D7%9E%D7%A8%D7%9B%D7%96-2003.pdf",
+    "bytes": 153803,
+    "sha256": "5ef6a61a439192b8edb7cec8e044988a0147cb1df0c181aea97767a0d21e8855",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/7005/hamiflaga-hadatit-leumit-7.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/7005/hamiflaga-hadatit-leumit-7.doc",
+    "bytes": 777728,
+    "sha256": "0fccb963da802b3f5f61b00ca2df3b252f698f865b18addc69facf2096d4ce8e",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/6674/עבודה-14.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6674/%D7%A2%D7%91%D7%95%D7%93%D7%94-14.pdf",
+    "bytes": 2975590,
+    "sha256": "46dfd8d70b3e37cb8b5cccdda85b62a65b5c5d913458fe631b4650a341e64f91",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6639/mapam-12.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6639/mapam-12.pdf",
+    "bytes": 1004364,
+    "sha256": "314b3c0d9dad02a684ae29d5babeee9c265e197f3397421c54cc59a805594b6c",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/12283/דעם-מצע.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/12283/%D7%93%D7%A2%D7%9D-%D7%9E%D7%A6%D7%A2.pdf",
+    "bytes": 303830,
+    "sha256": "0648b547352314ec89428aecf58108c20ea4fdb079256df4c7585d0db68e65fb",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/16883/רעמ-1999.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/16883/%D7%A8%D7%A2%D7%9E-1999.pdf",
+    "bytes": 64002,
+    "sha256": "1f425fb08e93715b63a99e70a12706139bd3fc5a3c2f372a02470a776a575c51",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6663/hamafdal-5.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6663/hamafdal-5.pdf",
+    "bytes": 1531193,
+    "sha256": "010ddb0303631f674074df5b4556c80e621a6e41be817d4dfe4ead4378eed00c",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6655/mafdal-12.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6655/mafdal-12.doc",
+    "bytes": 1076736,
+    "sha256": "3dabcc34ca3a877f981783570ecb38ffc384030b01657e4380b001a897ba9076",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/12221/ישראל-ביתנו-מצע.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/12221/%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%91%D7%99%D7%AA%D7%A0%D7%95-%D7%9E%D7%A6%D7%A2.pdf",
+    "bytes": 615676,
+    "sha256": "35d8201fa6541a67747d0724ade3d1953ad02fd83b411c8b271a73f7dec22744",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6534/chadash-13.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6534/chadash-13.doc",
+    "bytes": 567296,
+    "sha256": "530e98a9ef34170cf98c38c4e712a03fde885cd15cf2eafff08c453b210b8e87",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/5894/yahaduthatora_12.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/5894/yahaduthatora_12.pdf",
+    "bytes": 114493,
+    "sha256": "af02986571b355eada69466fb0cf9a2d694ee7c5806750c18dec85cfc1a573a2",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6766/ratz-12.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6766/ratz-12.pdf",
+    "bytes": 2419907,
+    "sha256": "4780d592a02f34b9754ec48fc97cbd528284fdadb4d2e2ec690edd7c29c163f6",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/16889/יהדות-התורה-1999.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/16889/%D7%99%D7%94%D7%93%D7%95%D7%AA-%D7%94%D7%AA%D7%95%D7%A8%D7%94-1999.pdf",
+    "bytes": 120638,
+    "sha256": "07bb16101b6f650058d8446d4744fa9b857d6074673fb1d0ea4a74b69b7562ae",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/18472/מרצ.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/18472/%D7%9E%D7%A8%D7%A6.pdf",
+    "bytes": 370199,
+    "sha256": "dfaa448f73957eca30faa05fe00de4efbffacba2ec846a67921939517b2fb369",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6649/mapam-2.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6649/mapam-2.pdf",
+    "bytes": 154806,
+    "sha256": "52f8ba2680f8ff0df336e03ae3d805adce808d35f049fddc27a6591eb774f506",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6581/beitenu-17.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6581/beitenu-17.doc",
+    "bytes": 61440,
+    "sha256": "871bc09b961821b8827fc8783e90bdd9a3725789a8db3d2f7c9476bd963a2d79",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/5997/halikud-9.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/5997/halikud-9.doc",
+    "bytes": 2586112,
+    "sha256": "dd1c20b792c9dc43844a2d2d6d5a5a795607f9f47aeab3b5754239a5b6f51d3e",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/16895/מפדל-1999.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/16895/%D7%9E%D7%A4%D7%93%D7%9C-1999.pdf",
+    "bytes": 170270,
+    "sha256": "5912d9e92a64eb3f07e16964ed35d399214fc2d420c054b92e1c08f586e03f3b",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6478/hayerukim_19.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6478/hayerukim_19.pdf",
+    "bytes": 671451,
+    "sha256": "f260d9eba63cb6aa36f68a5fa112f91a9d38c938e786e48e1de4b797bd0bc8b1",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/18470/ישראל-ביתנו.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/18470/%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%91%D7%99%D7%AA%D7%A0%D7%95.pdf",
+    "bytes": 1192928,
+    "sha256": "fa46335a85ad8a1b39f88a8956a6fc80e8f27299adfa1d2396988074e0f6d14a",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6982/hamiflaga-hadatit-leumit-9.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6982/hamiflaga-hadatit-leumit-9.doc",
+    "bytes": 675840,
+    "sha256": "aa45de277149e12586363d7bef0ecb0f3cea572f32ed16e5294c936e536d145b",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/6513/hatchiya-1992.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6513/hatchiya-1992.pdf",
+    "bytes": 1178631,
+    "sha256": "28ad767906908a8e586ec01b4ab9ad044275d3d7fae7ced2ebb465ce29ff6d25",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6559/degel-hatora-13.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6559/degel-hatora-13.doc",
+    "bytes": 676864,
+    "sha256": "9247e6bd3c0de137d3eac58577d97b8d14654cfc05ab31487da3d9dea2a4ae9d",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/13926/ישראל-ביתנו.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/13926/%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%91%D7%99%D7%AA%D7%A0%D7%95.pdf",
+    "bytes": 164443,
+    "sha256": "09a811829ab552aca9e6ed4cdd945de038b0b3e0eff09740f0762921ac5f85f6",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6532/chadash-14.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6532/chadash-14.doc",
+    "bytes": 1410560,
+    "sha256": "028ee4afb364ed8cab24b02cc14b4bb66c896be30beda6d39e70189bf791a148",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/6670/עבודה-17.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6670/%D7%A2%D7%91%D7%95%D7%93%D7%94-17.pdf",
+    "bytes": 2051084,
+    "sha256": "8250d60a92f1036d23fd8b5b596c62258ec2f5d21ec75ad17fd721739e5e8c09",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/16879/עם-אחד-1999.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/16879/%D7%A2%D7%9D-%D7%90%D7%97%D7%93-1999.pdf",
+    "bytes": 107929,
+    "sha256": "883e77d399e7eea363ccbc86e84916b7c89923c33ab8076710eb0149d50f9c8c",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6892/likud-13.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6892/likud-13.doc",
+    "bytes": 4777984,
+    "sha256": "a6f29575918dcc7a5b8f9e23ee2951fb3bc888538b0cde596c5c5d959ec08695",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/6913/tzomet-1988.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6913/tzomet-1988.pdf",
+    "bytes": 433178,
+    "sha256": "12f96eaa8c59d27937fb6b9460c7843e9fce695847bb30b346a45480f99189de",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6441/cherut-liberalim-1969.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6441/cherut-liberalim-1969.pdf",
+    "bytes": 1369851,
+    "sha256": "800eea602540b7ec037a332b9811571af4692611872e2a3925fdd6d89821f298",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6473/haderech-hashlishit-15.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6473/haderech-hashlishit-15.pdf",
+    "bytes": 1020551,
+    "sha256": "0953ed229da4ffdfa6580357e1ec0b60170079b34da906cc075f25a773c3e551",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6772/ratz-9.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6772/ratz-9.pdf",
+    "bytes": 586911,
+    "sha256": "28ed855ffa2075db48aca4db97be2bf61c080f047d007809cae47009f593a9ff",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6686/מרצ.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6686/%D7%9E%D7%A8%D7%A6.pdf",
+    "bytes": 4645964,
+    "sha256": "85d5bc6727ae1eeed908c0c2646c2429297ef67e664dd3aa23d9d26b58dfba6b",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6685/מרצ-2015.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6685/%D7%9E%D7%A8%D7%A6-2015.pdf",
+    "bytes": 3589780,
+    "sha256": "0b81c3798ae89125e64059ede03a7605e026d0ad57d5b15c8768220a046b0c3e",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6687/2009מרצ.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6687/2009%D7%9E%D7%A8%D7%A6.pdf",
+    "bytes": 223897,
+    "sha256": "b1e802fc1d3b23d0b91820a042d3a78b9b2ac457cb84b88f39f75b7eff5d8a26",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6526/chadash-17.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6526/chadash-17.doc",
+    "bytes": 87552,
+    "sha256": "ae47c3bdc91df2b3f3f023501b1a43817af78d84d19ebbbd64992623839d4a0b",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/6540/chadash-10.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6540/chadash-10.doc",
+    "bytes": 1191424,
+    "sha256": "8cca65ef1b1d0bed70f54f208db14e93474e00e41009fca205fc99488d47f657",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/14331/מולדת-1992.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/14331/%D7%9E%D7%95%D7%9C%D7%93%D7%AA-1992.pdf",
+    "bytes": 915070,
+    "sha256": "172203aa9af5339fed9d1e6484668cde11ba87409ea926938fadb6394e17a7dd",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/16897/מפדל-2003.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/16897/%D7%9E%D7%A4%D7%93%D7%9C-2003.pdf",
+    "bytes": 230556,
+    "sha256": "9193b71fd32a60a7557b848b243804b988a5b1e7e34c248f01d75aef5e78ce93",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6831/shinuy-11.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6831/shinuy-11.pdf",
+    "bytes": 2419348,
+    "sha256": "d729fe854769d5978f5cdd28243dfd72b8d9b7aa718fa5818934440a98ed7b1e",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6585/israel-beitenu-15.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6585/israel-beitenu-15.pdf",
+    "bytes": 64582,
+    "sha256": "9a6000191e7331a1c0fe8a788225afea87cb649ec6c6276cff210bb39e12f9fa",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6676/עבודה-13.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6676/%D7%A2%D7%91%D7%95%D7%93%D7%94-13.pdf",
+    "bytes": 5000000,
+    "sha256": "3eefb67e674c49cc60800d426d3268c999664b0ab5f6d34f20f95d1aaba33090",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6536/chadash-12.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6536/chadash-12.doc",
+    "bytes": 1394688,
+    "sha256": "b12b6b34a5168ca46987112087a4819799cf7fe069338e79023a44e72f165d38",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/13144/ישראל-ביתנו.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/13144/%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%91%D7%99%D7%AA%D7%A0%D7%95.pdf",
+    "bytes": 143890,
+    "sha256": "458e93b54abfeb2bcd844708ad467205f63694526ec6582fb3b457fd55211520",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6698/likud-18.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6698/likud-18.pdf",
+    "bytes": 190884,
+    "sha256": "85780590a50b3ac0be356cc6b14f1e299fe40492a95a70bcb1d625592767d695",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6669/עבודה-18.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6669/%D7%A2%D7%91%D7%95%D7%93%D7%94-18.pdf",
+    "bytes": 200919,
+    "sha256": "3b3c33ac3d472cb44d3c6b4af64e8bfef77aec3423658aa84a87e82e64a9b720",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/5999/likud-16.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/5999/likud-16.doc",
+    "bytes": 217600,
+    "sha256": "e40ba73aaa7a18165e824e36ad13b3cc70a32bd09f5f9e58a902b64c3aa9ba68",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/6672/עבודה-16.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6672/%D7%A2%D7%91%D7%95%D7%93%D7%94-16.pdf",
+    "bytes": 3361048,
+    "sha256": "357ab5da0d160475fbe6cda8403a4705634dadf40ab056feb9bf3145cd0d9da1",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/13907/עוצמה-יהודית.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/13907/%D7%A2%D7%95%D7%A6%D7%9E%D7%94-%D7%99%D7%94%D7%95%D7%93%D7%99%D7%AA.pdf",
+    "bytes": 635491,
+    "sha256": "4e752d677c33ac7155a0b0049ae84807f31bb5397b341d91ad9f24627e899642",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6643/mapam-5.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6643/mapam-5.pdf",
+    "bytes": 258710,
+    "sha256": "7f833ee555051afee89218ac418c3db2a9524dff87297aa934c2315458a73528",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6579/ישראל-ביתנו.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6579/%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%91%D7%99%D7%AA%D7%A0%D7%95.pdf",
+    "bytes": 76088,
+    "sha256": "a508acf080e6520fa456c8ad5544c6194ebe05c47bb223f631876d6d884705ed",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6001/likud-15.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6001/likud-15.pdf",
+    "bytes": 205582,
+    "sha256": "02a31fc3a7be2483e60aa3996a8749747cb0263dcd5ce8aa25304ea585bce932",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6668/מפלגת-העבודה.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6668/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA-%D7%94%D7%A2%D7%91%D7%95%D7%93%D7%94.pdf",
+    "bytes": 729779,
+    "sha256": "a67f2cf34c971e748c41f4306816acd278b77464b5e131728931b9be90cc6329",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6443/גחל-1965.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6443/%D7%92%D7%97%D7%9C-1965.pdf",
+    "bytes": 1669161,
+    "sha256": "4bdcf6c5c9f5f05a94676c03c54a66419018b32ff44d08bbe9f9c310c0962d78",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6732/tzomet-1992.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6732/tzomet-1992.pdf",
+    "bytes": 2033106,
+    "sha256": "5e5daeb189103da6eb09f25cb802a8025e07618df5766be1c442308ba945f2f1",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/15981/ישראל-ביתנו.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/15981/%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%91%D7%99%D7%AA%D7%A0%D7%95.pdf",
+    "bytes": 2897330,
+    "sha256": "0028324a34e55cf9f2e888e965062e1827775e794cd74779c15156a116231b04",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6765/ratz-11.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6765/ratz-11.pdf",
+    "bytes": 599798,
+    "sha256": "cf165e2413d0c9c02ef598ed80934c1ff0170389ef09a1dc1bedd352cf0c31f9",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6528/hadash-16.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6528/hadash-16.doc",
+    "bytes": 75264,
+    "sha256": "682a6643ee9e3c68321477e54948af166ce95756d79a9a77f6b55b597232e188",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/12374/מרצ-מצע.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/12374/%D7%9E%D7%A8%D7%A6-%D7%9E%D7%A6%D7%A2.pdf",
+    "bytes": 1073842,
+    "sha256": "621337556076898f0664550bd1fce533d119252d08a598dca070abe7cfb4e80b",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/16905/עם-אחד-2003.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/16905/%D7%A2%D7%9D-%D7%90%D7%97%D7%93-2003.pdf",
+    "bytes": 159787,
+    "sha256": "b80aa1ce305006998b0972b04062bbec50cbfd3d8ba86e32df76d9ba1d8920b5",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6437/balad-16.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6437/balad-16.doc",
+    "bytes": 30208,
+    "sha256": "a6bc2edb22165ae3fc5fbbfc564d39af85512f449e58b7e196b751504559a9f2",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/6995/halikud-8.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6995/halikud-8.doc",
+    "bytes": 3449856,
+    "sha256": "024c98317a027aa8951132d7ff18c178916f384ed3fc75e584103e7753765751",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/16881/צומת-1999.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/16881/%D7%A6%D7%95%D7%9E%D7%AA-1999.pdf",
+    "bytes": 102040,
+    "sha256": "5fc3cfb77f5ca36fad7499b8effad0ed47a1a3d407ed04d435c60f7af6a5cf0b",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6339/עלה-ירוק.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6339/%D7%A2%D7%9C%D7%94-%D7%99%D7%A8%D7%95%D7%A7.pdf",
+    "bytes": 370707,
+    "sha256": "9a0a8cf8f32d1f0091ae42247cd863aedbebcb9674b68127526b6f9d853dc45b",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6692/meretz-15.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6692/meretz-15.doc",
+    "bytes": 5000000,
+    "sha256": "51f300a4172d97371cc9937bc72624b69f68cf9c5be40a69dae2d865741d9bfe",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/5991/likud-17.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/5991/likud-17.doc",
+    "bytes": 76800,
+    "sha256": "8149086951b55fcaa1463156b30a178086ee5de25b0407b64cf71574a8ffcd56",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/5901/yahadothatora_5.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/5901/yahadothatora_5.pdf",
+    "bytes": 79594,
+    "sha256": "4d20339532261762c7b217660fe8747529efca05322684b380f6de89928a6832",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/5995/likud-12.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/5995/likud-12.doc",
+    "bytes": 4985856,
+    "sha256": "0eeb379b5027006d3bfe72d85b36039e0b2bcda9282f9c948bfa2997d17fe166",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/6647/mapam-3.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6647/mapam-3.pdf",
+    "bytes": 233435,
+    "sha256": "0cddc9689e356867e4bce2c5f955e75742c41cbc1f551ee94588d1a96aa03171",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/16030/מפלגת-העבודה.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/16030/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA-%D7%94%D7%A2%D7%91%D7%95%D7%93%D7%94.pdf",
+    "bytes": 3971155,
+    "sha256": "61b6b40b181ca6fa02883087c9a748636d076d7413656c650421b544aa746323",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6516/hatchiya1984.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6516/hatchiya1984.pdf",
+    "bytes": 1220848,
+    "sha256": "12b60e268e194eae5fa54d58420bcf7bed5594e46ae8f1dfdc3f72803c4392e0",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6543/hazitdatittoranit_8.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6543/hazitdatittoranit_8.pdf",
+    "bytes": 151446,
+    "sha256": "36ad6167d77732a6ae63a23aa68dfac8ec33d665873de2ab59e32631c27a1c63",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/13110/עוצמה-יהודית.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/13110/%D7%A2%D7%95%D7%A6%D7%9E%D7%94-%D7%99%D7%94%D7%95%D7%93%D7%99%D7%AA.pdf",
+    "bytes": 753587,
+    "sha256": "86d8e07c4902d073a8d92008e20e205915bf81502d761b169ccd3346c72810df",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6431/achdut-haavoda-poaley-tzion-4.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6431/achdut-haavoda-poaley-tzion-4.doc",
+    "bytes": 4999680,
+    "sha256": "9d54ba048a1c0a181b6703a59566dd44d97d5f19e1b5b2fbb1bf62099aefba11",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/6519/hatchiya-1981.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6519/hatchiya-1981.pdf",
+    "bytes": 1940475,
+    "sha256": "380501de47fd70e69fa5f878ea7735f9e5c8fece5e968ff15fa0d6476b6e70f7",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6867/mafdal-13.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6867/mafdal-13.doc",
+    "bytes": 1051136,
+    "sha256": "1bccbbfc0c29ff60b2e4744d093ee6a0eecf71a35423b1d1a5eb9900185375cc",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/15837/דעם.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/15837/%D7%93%D7%A2%D7%9D.pdf",
+    "bytes": 201508,
+    "sha256": "00778335d5cfbb89c9837fdce04ad5c26553f58e1fa10502457fbe5d121705a1",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/18506/מפלגת-העבודה.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/18506/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA-%D7%94%D7%A2%D7%91%D7%95%D7%93%D7%94.pdf",
+    "bytes": 5000000,
+    "sha256": "fb0a18053ada03c5ee195a1daf08b1a4c3668145f58ddc8fcc63b971316247cd",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6514/hatchiya-1988.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6514/hatchiya-1988.pdf",
+    "bytes": 415335,
+    "sha256": "8899b895dee01bb0e0c2ebb6fe2971b83204b40fd457adbfe879be1fc8d0cd3b",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6538/chadash-11.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6538/chadash-11.doc",
+    "bytes": 536576,
+    "sha256": "5acd481827f02f2695437ac6fa6dc2280390c6d33c41f0f803f6fa5658a5396e",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/16898/מפלגת-המרכז-1999.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/16898/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA-%D7%94%D7%9E%D7%A8%D7%9B%D7%96-1999.pdf",
+    "bytes": 222146,
+    "sha256": "1a125defddafdb3d7490184cbd181453dd931ee30bb0d6ae53d5e3d8f4a55d00",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6524/חדש.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6524/%D7%97%D7%93%D7%A9.pdf",
+    "bytes": 433982,
+    "sha256": "cece6da135bbf5959f9e9211ae9b1f24fbbb3a722cccb5fa3054b39b47df336a",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6433/achdut-haavoda-poaley-tzion-3.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6433/achdut-haavoda-poaley-tzion-3.doc",
+    "bytes": 695296,
+    "sha256": "6951d5a0271680f667904e4028bd6ac6cc25590a821c7ab8dcd835758917fef4",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/6645/mapam-4.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6645/mapam-4.pdf",
+    "bytes": 263992,
+    "sha256": "e7754d5fdedf5290bb85d899647d444b2570b0e0928553e219a658b77dedb341",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6770/ratz-10.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6770/ratz-10.doc",
+    "bytes": 1530368,
+    "sha256": "c76504ba4a6c848a574f9c44c22e73bb927d58ce6da8da8f3a4b1671a5f996b5",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/16878/עלה-ירוק-1999.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/16878/%D7%A2%D7%9C%D7%94-%D7%99%D7%A8%D7%95%D7%A7-1999.pdf",
+    "bytes": 87945,
+    "sha256": "6ebee3bce0e21eed2ba196e116b1b8857554f6d7a80cda3e8a13f6c15047abbe",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6641/mapam-6.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6641/mapam-6.pdf",
+    "bytes": 347703,
+    "sha256": "5109775e79f2f41535be51b96da547e8fb3451e1264c30e8710bfcee759c9792",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/5896/agudat-israel-11.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/5896/agudat-israel-11.pdf",
+    "bytes": 296908,
+    "sha256": "c498f0a2fd3a62758523481245dce1170dbecf45be39f0f550890b8f2ff320c3",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6550/cherut-4.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6550/cherut-4.doc",
+    "bytes": 763392,
+    "sha256": "8a91fc5f2475f39cc014b914f0ac25bf2210dcccd4bda15a490ccab5bce06577",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/16890/ישראל-אחת-1999.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/16890/%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%90%D7%97%D7%AA-1999.pdf",
+    "bytes": 76088,
+    "sha256": "fad51bc01a63e317a38184d0fb0440a7e154bb582c3a74c44d7ad3de97486b60",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/16876/הירוקים-2003.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/16876/%D7%94%D7%99%D7%A8%D7%95%D7%A7%D7%99%D7%9D-2003.pdf",
+    "bytes": 282357,
+    "sha256": "a2fcef50a0f7779285946d2b468414f5dd7d775e6fe9fb5468889aec7a74be27",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/16875/הירוקים-1999.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/16875/%D7%94%D7%99%D7%A8%D7%95%D7%A7%D7%99%D7%9D-1999.pdf",
+    "bytes": 83024,
+    "sha256": "55fc8448593315f07a970ea9c0c64c9f7964d9acfee3c30d8bae794a91a14950",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/13125/צומת.jpg",
+    "resolvedUrl": "https://www.idi.org.il/media/13125/%D7%A6%D7%95%D7%9E%D7%AA.jpg",
+    "bytes": 1674645,
+    "sha256": "482b6e5220d24d9a05046436c893dff221bf6176e3146fa046d1b839de550aef",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/7017/cherut-5.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/7017/cherut-5.pdf",
+    "bytes": 1005422,
+    "sha256": "09a7b3ce31863927763889cd70f58d1012de78812a9fffa64da2cbdfde59cebd",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/16903/מרצ-2003.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/16903/%D7%9E%D7%A8%D7%A6-2003.pdf",
+    "bytes": 576570,
+    "sha256": "7c47481932b215f4c760fdb801c550ba42278d79cb1d196d7168f26c4a25234d",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6448/shinuy-9.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6448/shinuy-9.pdf",
+    "bytes": 3209480,
+    "sha256": "91eb54fe655584694af616b055812ed53483af7257d5d561b833bc0d7dd835a0",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6428/achdut-haavoda-poaley-tzion-5.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6428/achdut-haavoda-poaley-tzion-5.doc",
+    "bytes": 2891264,
+    "sha256": "c43d736545b52fd6436ff38210b1962ecc15ebe166f9861b52a66a2c6e709371",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/6689/meretz-17.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6689/meretz-17.doc",
+    "bytes": 229888,
+    "sha256": "1e844a155c5cf5b258a7cb8d0fc1f67cd32aab834a57d5874ec25506dd39aaed",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/6879/hamafdal-14.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6879/hamafdal-14.pdf",
+    "bytes": 3795398,
+    "sha256": "7f3be56740d715cbc9ce580c1ff2f6561c091ce89e2f0784f9888d6ecacc4011",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6530/hadash-15.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6530/hadash-15.doc",
+    "bytes": 1949184,
+    "sha256": "efc5ab1ac0d2f8c295f5a9c356053d6f57ec00cca52bb1a15bd15d4bde335832",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/13025/ישראל-בעלייה-עיקרי-מצע-התנועה.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/13025/%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%91%D7%A2%D7%9C%D7%99%D7%99%D7%94-%D7%A2%D7%99%D7%A7%D7%A8%D7%99-%D7%9E%D7%A6%D7%A2-%D7%94%D7%AA%D7%A0%D7%95%D7%A2%D7%94.pdf",
+    "bytes": 284742,
+    "sha256": "db3cb9a7f8f7a2f035bb52cce09c28a81e124547bff7d6d778b85c42e1fe5238",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6694/meretz-14a.doc",
+    "resolvedUrl": "https://www.idi.org.il/media/6694/meretz-14a.doc",
+    "bytes": 5000000,
+    "sha256": "12d888685478bc421b324593b8ac9dcba0f670781ffba37193f645e620daa943",
+    "retrieved": "2026-11-04",
+    "pdf": false
+  },
+  {
+    "url": "https://www.idi.org.il/media/6856/shas-17.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6856/shas-17.pdf",
+    "bytes": 69050,
+    "sha256": "169fe73428c4438b1348e119d7d47923b5aee4313d6a50d65216752c5102f2fe",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/5895/agudat-israel-9.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/5895/agudat-israel-9.pdf",
+    "bytes": 248565,
+    "sha256": "45e44b4482efae7fc894ea433e7067eb8435ca9e67396a70b16f8b833788f097",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  },
+  {
+    "url": "https://www.idi.org.il/media/6833/shinuy-10.pdf",
+    "resolvedUrl": "https://www.idi.org.il/media/6833/shinuy-10.pdf",
+    "bytes": 1661251,
+    "sha256": "cfbe2f9a102021f2f8ebde92dc02025f0fa6e4c93f2d1401a9adbff099a8bd7b",
+    "retrieved": "2026-11-04",
+    "pdf": true
+  }
+]

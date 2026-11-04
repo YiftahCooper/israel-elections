@@ -27,6 +27,8 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 
 ### Added
 
+- Election-specific partisan and neutral links for lists and constituent parties, with validated build/scenario metadata, verified source evidence and an explicit partial-coverage gap inventory (decision 0093).
+
 - Official campaign logos may use fair-use identification (decision 0089), with explicit rights basis,
   campaign-date provenance, byte/hash validation and separate constituent-party emblems.
 - Sourced geographic turnout groups for k16 and k18–k26, with bilingual definitions, classification

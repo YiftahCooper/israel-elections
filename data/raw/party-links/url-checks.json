@@ -1,0 +1,309 @@
+[
+  {
+    "url": "https://democrats.org.il/",
+    "resolvedUrl": "https://democrats.org.il/",
+    "status": 200,
+    "title": "הדמוקרטים בראשות יאיר גולן",
+    "sha256": "d5a1a572a07fb75d5f061e68e276f73568422f71521bfb78da1894da23123f25",
+    "retrieved": "2026-11-04",
+    "bytes": 560829
+  },
+  {
+    "url": "https://jointlist.org.il/",
+    "resolvedUrl": "https://jointlist.org.il/ar/",
+    "status": 200,
+    "title": "القائمة المشتركة — الجبهة · العربية للتغيير · التجمع",
+    "sha256": "374cb45d426b934c8366c6cb5a53015def64c462b0eb484f9b7e470bf329e271",
+    "retrieved": "2026-11-04",
+    "bytes": 28135
+  },
+  {
+    "url": "https://zionutdatit.org.il/",
+    "resolvedUrl": "https://zionutdatit.org.il/",
+    "status": 200,
+    "title": "עמוד הבית - מפלגת הציונות הדתית",
+    "sha256": "c6e4eddd52be99c9502be6d3584af8c353bfaa684544c193c5e941d1e9ecc0be",
+    "retrieved": "2026-11-04",
+    "bytes": 82314
+  },
+  {
+    "url": "https://be-yahad.org.il/",
+    "resolvedUrl": "https://be-yahad.org.il/",
+    "status": 200,
+    "title": "מפלגת ביחד בראשות נפתלי בנט",
+    "sha256": "8e7108a8e34ac4e1b487ab30757071b0f56993a3e5a1297db6ad93b2284f0b34",
+    "retrieved": "2026-11-04",
+    "bytes": 410671
+  },
+  {
+    "url": "https://yasharwitheisenkot.com/",
+    "resolvedUrl": "https://yasharwitheisenkot.com/",
+    "status": 200,
+    "title": "עמוד הבית - ישר! עם איזנקוט",
+    "sha256": "87639e063964fdca035466fce60e5b77a85af2a222b06ea09ab2e7cb97322ded",
+    "retrieved": "2026-11-04",
+    "bytes": 581971
+  },
+  {
+    "url": "https://www.likud.org.il/",
+    "resolvedUrl": "https://www.likud.org.il/",
+    "status": 200,
+    "title": "הליכוד — התנועה הלאומית הליברלית",
+    "sha256": "2ef14b52ad34a0bb0f7493b8bdf0e6f61e33283d26a3b46cc412e21aee93d6fb",
+    "retrieved": "2026-11-04",
+    "bytes": 73485
+  },
+  {
+    "url": "https://beytenu.org.il/",
+    "resolvedUrl": "https://beytenu.org.il/",
+    "status": 200,
+    "title": "מפלגת ישראל ביתנו",
+    "sha256": "9b4d6a1d0b96ad6ce6f67a56a8079b5da90499e93a40a310bd4cafdf19576e39",
+    "retrieved": "2026-11-04",
+    "bytes": 208771
+  },
+  {
+    "url": "https://www.ozma-yeudit.co.il/",
+    "resolvedUrl": "https://www.ozma-yeudit.co.il/",
+    "status": 200,
+    "title": "דף הבית - עוצמה יהודית",
+    "sha256": "af78c29881a4915862ea29a62c122c5ba66aa7dcb240ca9048e257ee0ca6dd51",
+    "retrieved": "2026-11-04",
+    "bytes": 234116
+  },
+  {
+    "url": "https://zehut.org.il/",
+    "resolvedUrl": "https://zehut.org.il/",
+    "status": 200,
+    "title": "זהות בראשות משה פייגלין | האתר הרשמי",
+    "sha256": "4b872867a95d53f7afe102187611d7f1ba3912b8386063e26066f39be6ceb428",
+    "retrieved": "2026-11-04",
+    "bytes": 471541
+  },
+  {
+    "url": "https://www.newhope.org.il/",
+    "resolvedUrl": "https://www.newhope.org.il/",
+    "status": 200,
+    "title": "תקווה חדשה הימין הממלכתי - סער הימין הממלכתי. תקווה חדשה.",
+    "sha256": "8c4119e1243be31bea27d8247fc4fd5ddabdba9935dbd712b48d95423ace17e1",
+    "retrieved": "2026-11-04",
+    "bytes": 111542
+  },
+  {
+    "url": "https://yeshatid.org.il/",
+    "resolvedUrl": "https://yeshatid.org.il/",
+    "status": 200,
+    "title": "יש עתיד | בראשות יאיר לפיד - יש עתיד",
+    "sha256": "5da104941aee35ed4778e3085b58dd566cc108bd58ef294eeba92c9a271085f8",
+    "retrieved": "2026-11-04",
+    "bytes": 5000000
+  },
+  {
+    "url": "https://www.noamlisrael.org.il/",
+    "resolvedUrl": "https://www.noamlisrael.org.il/",
+    "status": 200,
+    "title": "נעם לישראל &#8211; בראשות אבי מעוז &#8211; חופשי להיות יהודי.",
+    "sha256": "2a835ff507254e8281b229b2c4a481728388643218d0dc4f681972a564574fc3",
+    "retrieved": "2026-11-04",
+    "bytes": 43280
+  },
+  {
+    "url": "https://hadash.org.il/",
+    "resolvedUrl": "https://hadash.org.il/",
+    "status": 200,
+    "title": "חד״ש الجبهة",
+    "sha256": "0aadfe4eeaf2309ec1fd3c581a968c9077da5ff34abe6d8e391ffd20467a9d95",
+    "retrieved": "2026-11-04",
+    "bytes": 333349
+  },
+  {
+    "url": "https://shas.org.il/",
+    "error": "<urlopen error timed out>",
+    "retrieved": "2026-11-04"
+  },
+  {
+    "url": "https://www.gov.il/he/pages/candidates-lists-26",
+    "error": "HTTP Error 403: Forbidden",
+    "retrieved": "2026-11-04"
+  },
+  {
+    "url": "https://votes25.bechirot.gov.il/nationalresults",
+    "resolvedUrl": "https://votes25.bechirot.gov.il/nationalresults",
+    "status": 200,
+    "title": "ועדת הבחירות המרכזית לכנסת ה-25 | תוצאות ארציות",
+    "sha256": "2306a810c945d2b51462043f650bb67eb66a4b1a4a62f6c3a89dc94d88044e05",
+    "retrieved": "2026-11-04",
+    "bytes": 31127
+  },
+  {
+    "url": "https://votes21.bechirot.gov.il/nationalresults",
+    "resolvedUrl": "https://votes21.bechirot.gov.il/nationalresults",
+    "status": 200,
+    "title": "ועדת הבחירות המרכזית לכנסת ה-21 | תוצאות ארציות",
+    "sha256": "15141335fc826659e5fcdf4c0af7b8e89de5afde1aae72b68c871ca9e703f754",
+    "retrieved": "2026-11-04",
+    "bytes": 31313
+  },
+  {
+    "url": "https://votes22.bechirot.gov.il/nationalresults",
+    "resolvedUrl": "https://votes22.bechirot.gov.il/nationalresults",
+    "status": 200,
+    "title": "ועדת הבחירות המרכזית לכנסת ה-22 | תוצאות ארציות",
+    "sha256": "ef809c556d0d661b059568d01a1459279aaa4ff28dfa3f5b2e96e0b92d651211",
+    "retrieved": "2026-11-04",
+    "bytes": 26182
+  },
+  {
+    "url": "https://votes23.bechirot.gov.il/nationalresults",
+    "resolvedUrl": "https://votes23.bechirot.gov.il/nationalresults",
+    "status": 200,
+    "title": "ועדת הבחירות המרכזית לכנסת ה-23 | תוצאות ארציות",
+    "sha256": "ca42f185750295316e0cba38834048b365a9823c54d48f5c6de6477c33d293a6",
+    "retrieved": "2026-11-04",
+    "bytes": 25127
+  },
+  {
+    "url": "https://votes24.bechirot.gov.il/nationalresults",
+    "resolvedUrl": "https://votes24.bechirot.gov.il/nationalresults",
+    "status": 200,
+    "title": "ועדת הבחירות המרכזית לכנסת ה-24 | תוצאות ארציות",
+    "sha256": "e31ce3b85b448a76100636c8b3d6d186df69afc44c54455fdabf7060037c8db3",
+    "retrieved": "2026-11-04",
+    "bytes": 29856
+  },
+  {
+    "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset1-results.pdf",
+    "resolvedUrl": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset1-results.pdf",
+    "status": 200,
+    "title": "",
+    "sha256": "b8a1e3f8e74346c19d9ed18532e0b53e08b07da678df3c464b4cdc9c6a4ece5b",
+    "retrieved": "2026-11-04",
+    "bytes": 238721
+  },
+  {
+    "url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/records-results2/he/archive_knesset2_records-results2.pdf",
+    "resolvedUrl": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/records-results2/he/archive_knesset2_records-results2.pdf",
+    "status": 200,
+    "title": "",
+    "sha256": "ba90a26a4e7a1d350e5afcdfba20f8fd574b088c60f39dc89722c9653a1d1988",
+    "retrieved": "2026-11-04",
+    "bytes": 3788300
+  },
+  {
+    "url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/records-results3/he/archive_knesset3_records-results3.pdf",
+    "resolvedUrl": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/records-results3/he/archive_knesset3_records-results3.pdf",
+    "status": 200,
+    "title": "",
+    "sha256": "c62ac4d1b6c9b843f38c137fa4bacaac1999e70eb399d09c09975374d4f1875f",
+    "retrieved": "2026-11-04",
+    "bytes": 3631315
+  },
+  {
+    "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset4-results.pdf",
+    "resolvedUrl": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset4-results.pdf",
+    "status": 200,
+    "title": "",
+    "sha256": "1a148be5180a0a2b59ef8c3ab46c159e6dfab7a415127b40d0b67608307d9c19",
+    "retrieved": "2026-11-04",
+    "bytes": 151251
+  },
+  {
+    "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset5-results.pdf",
+    "resolvedUrl": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset5-results.pdf",
+    "status": 200,
+    "title": "",
+    "sha256": "2c9f3b81bfb3aa5c7d10079eb422c162f49cc4392fefc8fc74213c2319a78579",
+    "retrieved": "2026-11-04",
+    "bytes": 162937
+  },
+  {
+    "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset6-results.pdf",
+    "resolvedUrl": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset6-results.pdf",
+    "status": 200,
+    "title": "",
+    "sha256": "44d56ab6bb2c00be7f2c202f079ad78bf369c02224455b8404d2dcf0fd9bc6e2",
+    "retrieved": "2026-11-04",
+    "bytes": 171244
+  },
+  {
+    "url": "https://olaw.org.il/yalkut/yalkut-1573.pdf",
+    "resolvedUrl": "https://olaw.org.il/yalkut/yalkut-1573.pdf",
+    "status": 200,
+    "title": "",
+    "sha256": "3d4fff867b15373c179617492e2d500bd1e75855ef7b1abdf305751123ec82f2",
+    "retrieved": "2026-11-04",
+    "bytes": 157445
+  },
+  {
+    "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset8-results.pdf",
+    "resolvedUrl": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset8-results.pdf",
+    "status": 200,
+    "title": "",
+    "sha256": "8c6aa3727a4fad52cc401038c8b9ed83ba739882b85e967eb3b092f047ef5ad8",
+    "retrieved": "2026-11-04",
+    "bytes": 147529
+  },
+  {
+    "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset9-results.pdf",
+    "resolvedUrl": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset9-results.pdf",
+    "status": 200,
+    "title": "",
+    "sha256": "91280ceeefd634e75ac360dad1eb49fb5b7a8a570b9ce8913adc945e26fa5dd6",
+    "retrieved": "2026-11-04",
+    "bytes": 171588
+  },
+  {
+    "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset10-results.pdf",
+    "resolvedUrl": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset10-results.pdf",
+    "status": 200,
+    "title": "",
+    "sha256": "71045f34ff411c634fba1a5ecab1c121820c9eb1d1fa6e4e4dac80653c7150ad",
+    "retrieved": "2026-11-04",
+    "bytes": 152326
+  },
+  {
+    "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset11-results.pdf",
+    "resolvedUrl": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset11-results.pdf",
+    "status": 200,
+    "title": "",
+    "sha256": "1ce31396beb02189439842e8871a590ac029f74583cb4e18d0ef8ae1f3791119",
+    "retrieved": "2026-11-04",
+    "bytes": 170958
+  },
+  {
+    "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset12-results.pdf",
+    "resolvedUrl": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset12-results.pdf",
+    "status": 200,
+    "title": "",
+    "sha256": "a6e6b1102c35c2e2cde077d5c7f2085ad04da3453e92a4e34e91684adea8f806",
+    "retrieved": "2026-11-04",
+    "bytes": 1674624
+  },
+  {
+    "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset13-results.pdf",
+    "resolvedUrl": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset13-results.pdf",
+    "status": 200,
+    "title": "",
+    "sha256": "34f6b7dd77c72fde5885e9b1208c37760129d93091f084590aac8ed6b5696b4a",
+    "retrieved": "2026-11-04",
+    "bytes": 173940
+  },
+  {
+    "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
+    "resolvedUrl": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
+    "status": 200,
+    "title": "",
+    "sha256": "e803fd2a85fd908367ddff5cd1a92d4d893c0cbaadf8e66447c9713b7bf80c1a",
+    "retrieved": "2026-11-04",
+    "bytes": 365900
+  },
+  {
+    "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-results.pdf",
+    "resolvedUrl": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-results.pdf",
+    "status": 200,
+    "title": "",
+    "sha256": "8dd75faf9c4446113f70a5931a6f4d8bb71451859b299fedece2981687045839",
+    "retrieved": "2026-11-04",
+    "bytes": 175416
+  }
+]

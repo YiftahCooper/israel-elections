@@ -1,0 +1,736 @@
+{
+  "electionId": "k26",
+  "reviewedAt": "2026-11-04",
+  "lists": {
+    "26-מחל": [
+      {
+        "kind": "partisan",
+        "url": "https://www.likud.org.il/",
+        "titleHe": "הליכוד — אתר רשמי",
+        "titleEn": "Official site (retrieved 2026-11-04)",
+        "publisher": "הליכוד",
+        "sourceType": "party-site",
+        "confidence": "high"
+      },
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93",
+        "titleHe": "הליכוד",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "26-ב": [
+      {
+        "kind": "partisan",
+        "url": "https://www.ozma-yeudit.co.il/",
+        "titleHe": "עוצמה יהודית — אתר רשמי",
+        "titleEn": "Official site (retrieved 2026-11-04)",
+        "publisher": "עוצמה יהודית",
+        "sourceType": "party-site",
+        "confidence": "high"
+      },
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%A2%D7%95%D7%A6%D7%9E%D7%94_%D7%99%D7%94%D7%95%D7%93%D7%99%D7%AA",
+        "titleHe": "עוצמה יהודית",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "26-שס": [
+      {
+        "kind": "neutral",
+        "url": "https://www.idi.org.il/policy/parties-and-elections/parties/shas/",
+        "titleHe": "ש\"ס",
+        "publisher": "המכון הישראלי לדמוקרטיה",
+        "sourceType": "academic",
+        "confidence": "high"
+      }
+    ],
+    "26-ג": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%99%D7%94%D7%93%D7%95%D7%AA_%D7%94%D7%AA%D7%95%D7%A8%D7%94",
+        "titleHe": "יהדות התורה",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "26-ט": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%94%D7%A6%D7%99%D7%95%D7%A0%D7%95%D7%AA_%D7%94%D7%93%D7%AA%D7%99%D7%AA_(%D7%A1%D7%99%D7%A2%D7%94)",
+        "titleHe": "הציונות הדתית (סיעה)",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "26-דרך": [
+      {
+        "kind": "partisan",
+        "url": "https://yasharwitheisenkot.com/",
+        "titleHe": "ישר! — אתר רשמי",
+        "titleEn": "Official site (retrieved 2026-11-04)",
+        "publisher": "ישר!",
+        "sourceType": "party-site",
+        "confidence": "high"
+      },
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A9%D7%A8!",
+        "titleHe": "ישר!",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "26-אמת": [
+      {
+        "kind": "partisan",
+        "url": "https://democrats.org.il/",
+        "titleHe": "הדמוקרטים — אתר רשמי",
+        "titleEn": "Official site (retrieved 2026-11-04)",
+        "publisher": "הדמוקרטים",
+        "sourceType": "party-site",
+        "confidence": "high"
+      },
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%94%D7%93%D7%9E%D7%95%D7%A7%D7%A8%D7%98%D7%99%D7%9D",
+        "titleHe": "הדמוקרטים",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "26-רק": [
+      {
+        "kind": "partisan",
+        "url": "https://be-yahad.org.il/",
+        "titleHe": "ביחד — אתר רשמי",
+        "titleEn": "Official site (retrieved 2026-11-04)",
+        "publisher": "ביחד",
+        "sourceType": "party-site",
+        "confidence": "high"
+      }
+    ],
+    "26-ל": [
+      {
+        "kind": "partisan",
+        "url": "https://beytenu.org.il/",
+        "titleHe": "ישראל ביתנו — אתר רשמי",
+        "titleEn": "Official site (retrieved 2026-11-04)",
+        "publisher": "ישראל ביתנו",
+        "sourceType": "party-site",
+        "confidence": "high"
+      },
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%91%D7%99%D7%AA%D7%A0%D7%95",
+        "titleHe": "ישראל ביתנו",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "26-עם": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%94%D7%A8%D7%A9%D7%99%D7%9E%D7%94_%D7%94%D7%A2%D7%A8%D7%91%D7%99%D7%AA_%D7%94%D7%9E%D7%90%D7%95%D7%97%D7%93%D7%AA",
+        "titleHe": "הרשימה הערבית המאוחדת",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "26-ודם": [
+      {
+        "kind": "partisan",
+        "url": "https://jointlist.org.il/",
+        "titleHe": "הרשימה המשותפת — אתר רשמי",
+        "titleEn": "Official site (retrieved 2026-11-04)",
+        "publisher": "הרשימה המשותפת",
+        "sourceType": "party-site",
+        "confidence": "high"
+      },
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%94%D7%A8%D7%A9%D7%99%D7%9E%D7%94_%D7%94%D7%9E%D7%A9%D7%95%D7%AA%D7%A4%D7%AA",
+        "titleHe": "הרשימה המשותפת",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "26-די": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9E%D7%99%D7%9C%D7%95%D7%90%D7%99%D7%9E%D7%A0%D7%99%D7%A7%D7%99%D7%9D_%D7%95%D7%94%D7%9B%D7%9C%D7%9B%D7%9C%D7%99%D7%AA",
+        "titleHe": "המילואימניקים והכלכלית",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "26-ך": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%A2%D7%9E%D7%9A_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_(%D7%9E%D7%A4%D7%9C%D7%92%D7%94)",
+        "titleHe": "עמך ישראל (מפלגה)",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "26-נר": [],
+    "26-זך": [],
+    "26-ני": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%A0%D7%A2%D7%9D_%D7%9C%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+        "titleHe": "נעם לישראל",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "26-בי": [],
+    "26-ד": [],
+    "26-צדק": [],
+    "26-בד": [],
+    "26-צף": [
+      {
+        "kind": "partisan",
+        "url": "https://www.piratim.org/flag/",
+        "titleHe": "מפלגת הפיראטים — אתר רשמי",
+        "titleEn": "Official site (retrieved 2026-11-04)",
+        "publisher": "מפלגת הפיראטים",
+        "sourceType": "party-site",
+        "confidence": "high"
+      }
+    ],
+    "26-י": [],
+    "26-קך": [],
+    "26-פה": [],
+    "26-קץ": [],
+    "26-נקי": [],
+    "26-בקר": [
+      {
+        "kind": "partisan",
+        "url": "https://orothashachar.org.il/website-regulations/",
+        "titleHe": "אורות השחר — אתר רשמי",
+        "titleEn": "Official site (retrieved 2026-11-04)",
+        "publisher": "אורות השחר",
+        "sourceType": "party-site",
+        "confidence": "high"
+      }
+    ],
+    "26-קה": [],
+    "26-רץ": [],
+    "26-ק": [],
+    "26-נף": [],
+    "26-ז": [],
+    "26-נץ": [],
+    "26-ה": [],
+    "26-יק": [],
+    "26-זץ": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%91%D7%A8%D7%99%D7%AA_%D7%A2%D7%95%D7%9C%D7%9D",
+        "titleHe": "ברית עולם",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "26-כן": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%9B%D7%97%D7%95%D7%9C_%D7%9C%D7%91%D7%9F_(%D7%A8%D7%A9%D7%99%D7%9E%D7%94)",
+        "titleHe": "כחול לבן (רשימה)",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "26-צבי": []
+  },
+  "parties": {
+    "likud": [
+      {
+        "kind": "partisan",
+        "url": "https://www.likud.org.il/",
+        "titleHe": "הליכוד — אתר רשמי",
+        "titleEn": "Official site (retrieved 2026-11-04)",
+        "publisher": "הליכוד",
+        "sourceType": "party-site",
+        "confidence": "high"
+      },
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93",
+        "titleHe": "הליכוד",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "new-hope": [
+      {
+        "kind": "partisan",
+        "url": "https://www.newhope.org.il/",
+        "titleHe": "תקווה חדשה — אתר רשמי",
+        "titleEn": "Official site (retrieved 2026-11-04)",
+        "publisher": "תקווה חדשה",
+        "sourceType": "party-site",
+        "confidence": "high"
+      },
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%AA%D7%A7%D7%95%D7%95%D7%94_%D7%97%D7%93%D7%A9%D7%94",
+        "titleHe": "תקווה חדשה",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "otzma-yehudit": [
+      {
+        "kind": "partisan",
+        "url": "https://www.ozma-yeudit.co.il/",
+        "titleHe": "עוצמה יהודית — אתר רשמי",
+        "titleEn": "Official site (retrieved 2026-11-04)",
+        "publisher": "עוצמה יהודית",
+        "sourceType": "party-site",
+        "confidence": "high"
+      },
+      {
+        "kind": "neutral",
+        "url": "https://www.idi.org.il/policy/parties-and-elections/parties/otzma-yehudit/",
+        "titleHe": "עוצמה יהודית",
+        "publisher": "המכון הישראלי לדמוקרטיה",
+        "sourceType": "academic",
+        "confidence": "high"
+      }
+    ],
+    "eretz-yisrael-shelanu": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%90%D7%A8%D7%A5_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%A9%D7%9C%D7%A0%D7%95",
+        "titleHe": "ארץ ישראל שלנו",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "degel-hatorah": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%93%D7%92%D7%9C_%D7%94%D7%AA%D7%95%D7%A8%D7%94",
+        "titleHe": "דגל התורה",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "agudat-yisrael": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%90%D7%92%D7%95%D7%93%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+        "titleHe": "אגודת ישראל",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "homat-torat-yisrael": [],
+    "tkuma": [
+      {
+        "kind": "partisan",
+        "url": "https://zionutdatit.org.il/",
+        "titleHe": "הציונות הדתית — אתר רשמי",
+        "titleEn": "Official site (retrieved 2026-11-04)",
+        "publisher": "הציונות הדתית",
+        "sourceType": "party-site",
+        "confidence": "high"
+      },
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%94%D7%90%D7%99%D7%97%D7%95%D7%93_%D7%94%D7%9C%D7%90%D7%95%D7%9E%D7%99%E2%80%93%D7%AA%D7%A7%D7%95%D7%9E%D7%94",
+        "titleHe": "האיחוד הלאומי–תקומה",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "zehut": [
+      {
+        "kind": "partisan",
+        "url": "https://zehut.org.il/",
+        "titleHe": "זהות — אתר רשמי",
+        "titleEn": "Official site (retrieved 2026-11-04)",
+        "publisher": "זהות",
+        "sourceType": "party-site",
+        "confidence": "high"
+      },
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%96%D7%94%D7%95%D7%AA_(%D7%9E%D7%A4%D7%9C%D7%92%D7%94)",
+        "titleHe": "זהות (מפלגה)",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "atid-ehad": [],
+    "yashar": [
+      {
+        "kind": "partisan",
+        "url": "https://yasharwitheisenkot.com/",
+        "titleHe": "ישר! — אתר רשמי",
+        "titleEn": "Official site (retrieved 2026-11-04)",
+        "publisher": "ישר!",
+        "sourceType": "party-site",
+        "confidence": "high"
+      }
+    ],
+    "yesodot-yisrael": [],
+    "democrats": [
+      {
+        "kind": "partisan",
+        "url": "https://democrats.org.il/",
+        "titleHe": "הדמוקרטים — אתר רשמי",
+        "titleEn": "Official site (retrieved 2026-11-04)",
+        "publisher": "הדמוקרטים",
+        "sourceType": "party-site",
+        "confidence": "high"
+      },
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%94%D7%93%D7%9E%D7%95%D7%A7%D7%A8%D7%98%D7%99%D7%9D",
+        "titleHe": "הדמוקרטים",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "meretz": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A8%D7%A6",
+        "titleHe": "מרצ",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "together-bennett": [
+      {
+        "kind": "partisan",
+        "url": "https://be-yahad.org.il/",
+        "titleHe": "ביחד — אתר רשמי",
+        "titleEn": "Official site (retrieved 2026-11-04)",
+        "publisher": "ביחד",
+        "sourceType": "party-site",
+        "confidence": "high"
+      },
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%91%D7%99%D7%97%D7%93_(%D7%A8%D7%A9%D7%99%D7%9E%D7%94)",
+        "titleHe": "ביחד (רשימה)",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "yesh-atid": [
+      {
+        "kind": "partisan",
+        "url": "https://yeshatid.org.il/",
+        "titleHe": "יש עתיד — אתר רשמי",
+        "titleEn": "Official site (retrieved 2026-11-04)",
+        "publisher": "יש עתיד",
+        "sourceType": "party-site",
+        "confidence": "high"
+      },
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A9_%D7%A2%D7%AA%D7%99%D7%93",
+        "titleHe": "יש עתיד",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "hadash": [
+      {
+        "kind": "partisan",
+        "url": "https://hadash.org.il/",
+        "titleHe": "חד\"ש — אתר רשמי",
+        "titleEn": "Official site (retrieved 2026-11-04)",
+        "publisher": "חד\"ש",
+        "sourceType": "party-site",
+        "confidence": "high"
+      },
+      {
+        "kind": "neutral",
+        "url": "https://www.idi.org.il/policy/parties-and-elections/parties/hadash/",
+        "titleHe": "חד\"ש",
+        "publisher": "המכון הישראלי לדמוקרטיה",
+        "sourceType": "academic",
+        "confidence": "high"
+      }
+    ],
+    "taal": [],
+    "balad": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%91%D7%A8%D7%99%D7%AA_%D7%9C%D7%90%D7%95%D7%9E%D7%99%D7%AA_%D7%93%D7%9E%D7%95%D7%A7%D7%A8%D7%98%D7%99%D7%AA",
+        "titleHe": "ברית לאומית דמוקרטית",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "reservists": [],
+    "new-economic": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9E%D7%99%D7%9C%D7%95%D7%90%D7%99%D7%9E%D7%A0%D7%99%D7%A7%D7%99%D7%9D_%D7%95%D7%94%D7%9B%D7%9C%D7%9B%D7%9C%D7%99%D7%AA",
+        "titleHe": "המילואימניקים והכלכלית",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "noam": [
+      {
+        "kind": "partisan",
+        "url": "https://www.noamlisrael.org.il/",
+        "titleHe": "נעם — אתר רשמי",
+        "titleEn": "Official site (retrieved 2026-11-04)",
+        "publisher": "נעם",
+        "sourceType": "party-site",
+        "confidence": "high"
+      }
+    ],
+    "national-responsibility": [],
+    "beit-yemini": [],
+    "tzomet": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA_%D7%A6%D7%95%D7%9E%D7%AA",
+        "titleHe": "מפלגת צומת",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ]
+  },
+  "gaps": {
+    "26-שס": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "26-ג": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "26-ט": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "26-רק": {
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "26-עם": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "26-די": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "26-ך": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "26-נר": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "26-זך": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "26-ני": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "26-בי": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "26-ד": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "26-צדק": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "26-בד": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "26-צף": {
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "26-י": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "26-קך": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "26-פה": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "26-קץ": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "26-נקי": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "26-בקר": {
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "26-קה": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "26-רץ": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "26-ק": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "26-נף": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "26-ז": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "26-נץ": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "26-ה": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "26-יק": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "26-זץ": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "26-כן": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "26-צבי": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "eretz-yisrael-shelanu": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "degel-hatorah": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "agudat-yisrael": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "homat-torat-yisrael": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "atid-ehad": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "yashar": {
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "yesodot-yisrael": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "meretz": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "taal": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "balad": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "reservists": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "new-economic": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "noam": {
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "national-responsibility": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "beit-yemini": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; generic dictionary articles and joint-list sources were excluded. CEC k26 retrieval was blocked/timed out."
+    },
+    "tzomet": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    }
+  }
+}

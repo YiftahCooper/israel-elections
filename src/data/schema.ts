@@ -73,6 +73,8 @@ export interface ListRecord {
   parties?: PartyDef[];
   /** the list's logo at this election, when a verified copy is held (data/meta/logos) */
   logo?: LogoRef;
+  /** Election-specific partisan and non-partisan reading (decision 0093). */
+  links?: PartyLink[];
   /** true when candidates holds only the first ranks of the registered roster (at least everyone elected); later ranks were not transcribed */
   candidatesTruncated?: boolean;
   /** verbatim official notes: resignations, disqualifications, court rulings */
@@ -102,12 +104,24 @@ export interface CandidateBio {
   probable?: boolean;
 }
 
+/** A verified source about a list or constituent, scoped to this election. */
+export interface PartyLink {
+  kind: 'partisan' | 'neutral';
+  url: string;
+  titleHe?: string;
+  titleEn?: string;
+  publisher: string;
+  sourceType: 'party-site' | 'platform' | 'ephemera' | 'party-newspaper' | 'repo-scan' | 'knesset' | 'hewiki' | 'cec' | 'academic';
+  archivedAt?: string;
+  confidence: 'high' | 'medium';
+}
+
 /** A party logo as used at that election: a locally hosted file with its rights basis and credit. */
 export type LogoRights = 'free-licence' | 'fair-use-identification';
 export interface LogoRef { rights: LogoRights; file: string; licence: string; attribution: string; sourceUrl: string; background?: string }
 
 /** A constituent party of a joint list (decision 0087). */
-export interface PartyDef { id: string; nameHe: string; nameEn: string; color?: string; logo?: LogoRef }
+export interface PartyDef { id: string; nameHe: string; nameEn: string; color?: string; logo?: LogoRef; links?: PartyLink[] }
 
 export interface Totals {
   registered: number; // בעלי זכות בחירה

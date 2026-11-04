@@ -1,0 +1,52 @@
+[
+  {
+    "url": "https://cdn-votes26.bechirot.gov.il/",
+    "error": "<urlopen error timed out>",
+    "retrieved": "2026-11-04"
+  },
+  {
+    "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset16-results.pdf",
+    "resolvedUrl": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset16-results.pdf",
+    "status": 200,
+    "title": "",
+    "sha256": "7c94fce923d169a395b497fb14a83a9e23169fcb239ba33bd8df4d8bff025edb",
+    "retrieved": "2026-11-04",
+    "bytes": 179562
+  },
+  {
+    "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset17-results.pdf",
+    "resolvedUrl": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset17-results.pdf",
+    "status": 200,
+    "title": "",
+    "sha256": "29db16146ea44e8acf17df8b4a2654423b5b3bf6e260f812735dff0c9d31c363",
+    "retrieved": "2026-11-04",
+    "bytes": 162297
+  },
+  {
+    "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset18-results.pdf",
+    "resolvedUrl": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset18-results.pdf",
+    "status": 200,
+    "title": "",
+    "sha256": "b5cec83949dd34a892d44d02ebfa7256a25751621923774e9e9ad80805661d6e",
+    "retrieved": "2026-11-04",
+    "bytes": 169732
+  },
+  {
+    "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset19-results.pdf",
+    "resolvedUrl": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset19-results.pdf",
+    "status": 200,
+    "title": "",
+    "sha256": "ceff1522bdb9165cf126443b692183efcbf55a877d381bfd3301f81a44186f9e",
+    "retrieved": "2026-11-04",
+    "bytes": 114946
+  },
+  {
+    "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset20-results.pdf",
+    "resolvedUrl": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset20-results.pdf",
+    "status": 200,
+    "title": "",
+    "sha256": "19ba7a5dfce76f60a41fd1e5509ea16c4495271777dca65ed1247b3f181c5d49",
+    "retrieved": "2026-11-04",
+    "bytes": 118151
+  }
+]

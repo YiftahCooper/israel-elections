@@ -1,7 +1,7 @@
 // Editable simulation state. A Scenario is a full, self-contained copy of an election's inputs;
 // the historical dataset it was created from is never modified. Every displayed figure is derived
 // from a Scenario through the engine — no totals are stored separately.
-import { ELECTION_IDS, type BlocDef, type BlocScheme, type CandidateBio, type ElectionDataset, type ElectionId, type LogoRef, type PartyDef } from '../data/schema.ts';
+import { ELECTION_IDS, type BlocDef, type BlocScheme, type CandidateBio, type ElectionDataset, type ElectionId, type LogoRef, type PartyDef, type PartyLink } from '../data/schema.ts';
 import { percentToRational, toPercentString } from '../engine/rational.ts';
 import type { AllocationInput, RemainderMethod, RuleSet } from '../engine/types.ts';
 import { ISRAEL_1949, ISRAEL_1951, ISRAEL_1973, ISRAEL_1977, ISRAEL_1992, ISRAEL_2004, ISRAEL_2014, OPTIONAL_RULES, RULE_DEFAULTS, RULESETS } from '../engine/rules.ts';
@@ -50,6 +50,7 @@ export interface SimList {
   parties?: PartyDef[];
   /** the list's logo at this election (ListRecord.logo) */
   logo?: LogoRef;
+  links?: PartyLink[];
 }
 
 export interface SimAgreement { id: string; members: string[]; enabled: boolean }
@@ -226,7 +227,8 @@ function scenarioBase(ds: ElectionDataset, name: string): Scenario {
         ...(c.partyId ? { partyId: c.partyId } : {}), ...(c.bio ? { bio: c.bio } : {}) })),
       ...(l.candidatesUnavailable ? { rosterUnavailable: true } : {}),
       ...(l.candidatesTruncated ? { rosterTruncated: true } : {}),
-      ...(l.parties?.length ? { parties: l.parties.map((p) => ({ ...p })) } : {}),
+      ...(l.parties?.length ? { parties: structuredClone(l.parties) } : {}),
+      ...(l.links ? { links: structuredClone(l.links) } : {}),
       ...(l.logo ? { logo: { ...l.logo } } : {}),
     })),
     agreements: ds.agreements.map((a) => ({ id: a.id, members: [...a.members], enabled: true })),
@@ -273,13 +275,27 @@ const candidate = shape({ id: string, nameHe: string, partyHe: optional(string),
   bio: optional(shape({ knesset: optional(httpsUrl), hewiki: optional(shape({ title: string, url: httpsUrl })),
     party: optional(shape({ url: httpsUrl, publisher: optional(string), archivedAt: optional(string) })), probable: optional(boolean) })) });
 const logo = shape({ rights: optional(oneOf('free-licence', 'fair-use-identification')), file: string, licence: string, attribution: string, sourceUrl: string, background: optional(string) });
-const party = shape({ id: string, nameHe: string, nameEn: string, color: optional(string), logo: optional(logo) });
+const partyLinkUrl: Check = (x) => {
+  if (!httpsUrl(x)) return false;
+  try {
+    const url = new URL(x as string);
+    return url.protocol === 'https:' && !url.username && !url.password &&
+      !/(^|\.)en\.(m\.)?wikipedia\.org$/i.test(url.hostname) &&
+      !/en\.(m\.)?wikipedia\.org/i.test(decodeURIComponent(x as string));
+  } catch { return false; }
+};
+const partyLinks = array(shape({ kind: oneOf('partisan', 'neutral'), url: partyLinkUrl,
+  titleHe: optional(string), titleEn: optional(string), publisher: string,
+  sourceType: oneOf('party-site', 'platform', 'ephemera', 'party-newspaper', 'repo-scan', 'knesset', 'hewiki', 'cec', 'academic'),
+  archivedAt: optional((x) => typeof x === 'string' && /^\d{4}-\d{2}-\d{2}(T.*Z)?$/.test(x) && Number.isFinite(Date.parse(x))),
+  confidence: oneOf('high', 'medium') }));
+const party = shape({ id: string, nameHe: string, nameEn: string, color: optional(string), logo: optional(logo), links: optional(partyLinks) });
 const candidates: Check = (x) => array(candidate)(x) && new Set((x as SimCandidate[]).map((c) => c.id)).size === (x as SimCandidate[]).length;
 const bloc = shape({ id: string, nameHe: string, nameEn: string, color: string });
 const agreement = shape({ id: string, members: uniqueStrings, enabled: boolean });
 const listFields = shape({ id: string, originIds: uniqueStrings, letters: string, nameHe: string, shortHe: string,
   shortEn: nullable(string), color: string, bloc: nullable(string), votes: whole, withdrawn: boolean,
-  heldVotes: optional(whole), sponsorsHe: string, parties: optional(array(party)), logo: optional(logo) });
+  heldVotes: optional(whole), sponsorsHe: string, parties: optional(array(party)), logo: optional(logo), links: optional(partyLinks) });
 const list: Check = (x) => listFields(x) && candidates((x as Record<string, unknown>).candidates);
 const ruleFields: Record<keyof SimRules, Check> = {
   seats: (x) => whole(x) && Number(x) >= 1 && Number(x) <= 1000,
