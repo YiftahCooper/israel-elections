@@ -8,6 +8,7 @@ import { Figures as FiguresView } from './components/Figures.tsx';
 import { BlocBar as BlocBarView } from './components/Blocs.tsx';
 import { ListBars as ListBarsView } from './components/ListBars.tsx';
 import { ListSidePanel } from './components/ListSidePanel.tsx';
+import { BlocPanel } from './components/BlocPanel.tsx';
 import { ChangeSummary } from './components/ChangeSummary.tsx';
 import { Scenarios } from './components/Scenarios.tsx';
 import { TopBar as TopBarView } from './components/TopBar.tsx';
@@ -99,7 +100,7 @@ export function App() {
       if (t && /INPUT|TEXTAREA|SELECT/.test(t.tagName)) return;
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); if (e.shiftKey) redo(); else undo(); }
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'y') { e.preventDefault(); redo(); }
-      if (e.key === 'Escape') setState({ selectedListId: null });
+      if (e.key === 'Escape') setState((st) => (st.selectedListId ? { selectedListId: null } : { blocPanel: null }));
     };
     addEventListener('keydown', onKey);
     return () => removeEventListener('keydown', onKey);
@@ -119,6 +120,7 @@ function Shell() {
   const level = useStore((st) => st.level);
   const toolPick = useStore((st) => st.tool) as Tab | null;
   const selectedListId = useStore((st) => st.selectedListId);
+  const blocPanel = useStore((st) => st.blocPanel);
   const [drawerFor, setDrawerFor] = useState<string | null>(null);
   const toolNow = useStore((st) => st.tool);
   useEffect(() => { setDrawerFor(null); }, [toolNow]);
@@ -224,16 +226,17 @@ function Shell() {
       <ChangeSummary s={s} r={r} base={base} baseR={baseR} ds={ds} />
       <main className="work">
         {tool === 'board' ? (
-          <div className={`board ${selected ? 'with-panel' : ''}`}>
+          <div className={`board ${selected || blocPanel ? 'with-panel' : ''}`}>
             <ErrorBoundary label={L('Lists', 'רשימות')} resetKey={s}><ListBars s={s} r={r} base={base} baseR={baseR} /></ErrorBoundary>
             <div className="center">
               <section className="panel chamber-panel" aria-label={L('The Knesset', 'הכנסת')}>
                 <div className="body"><ErrorBoundary label={L('Chamber', 'המליאה')} resetKey={s}><Hemicycle s={s} r={r} /></ErrorBoundary></div>
               </section>
-              {(s.blocs.length > 0 || !!s.blocSchemes?.length) && <ErrorBoundary label={L('Blocs', 'גושים')} resetKey={s}><BlocBar s={s} r={r} /></ErrorBoundary>}
+              <ErrorBoundary label={L('Blocs', 'גושים')} resetKey={s}><BlocBar s={s} r={r} /></ErrorBoundary>
               <ErrorBoundary label={L('Figures', 'נתונים')} resetKey={s}><Figures s={s} r={r} ds={ds} /></ErrorBoundary>
             </div>
             {selected && <ErrorBoundary label={L('List details', 'פרטי רשימה')} resetKey={selected}><ListSidePanel s={s} r={r} ds={ds} base={base} baseR={baseR} listId={selected} /></ErrorBoundary>}
+            {!selected && blocPanel && <ErrorBoundary label={L('Blocs', 'גושים')} resetKey={s}><BlocPanel s={s} r={r} focus={blocPanel} /></ErrorBoundary>}
           </div>
         ) : (
           <section className="panel tool-page" id="tool-panel" aria-label={label[tool]}>

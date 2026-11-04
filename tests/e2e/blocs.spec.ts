@@ -12,6 +12,7 @@ const blocs = (page: Page) => page.getByRole('region', { name: 'Seats by bloc' }
 /** a bloc's band in the strip; its seat count is the bold figure in its label */
 const band = (page: Page, bloc: string) => blocs(page).getByRole('button', { name: new RegExp(`^${bloc}`) });
 const blocCount = (page: Page, bloc: string) => band(page, bloc).locator('.label b');
+const editor = (page: Page) => page.getByRole('complementary', { name: 'Edit blocs' });
 const listRow = (page: Page, name: string) => page.getByRole('region', { name: 'Lists' }).getByRole('button', { name, exact: true });
 
 test('an election opens on its first government, and other sourced groupings can be chosen', async ({ page }) => {
@@ -21,18 +22,37 @@ test('an election opens on its first government, and other sourced groupings can
   await expect(blocCount(page, 'Coalition')).toHaveText('64');
   await grouping.selectOption({ label: 'Pre-election blocs' });
   await expect(grouping.locator('option:checked')).toHaveText('Pre-election blocs');
-  // a band opens in place; moving parties between blocs is a Standard tool
+  // a band opens the bloc editor beside the chamber, at every level
   await band(page, 'Netanyahu bloc').click();
-  await expect(blocs(page).getByText(/short of a majority|a majority/)).toBeVisible();
-  await expect(blocs(page).getByRole('button', { name: 'Move lists and parties between blocs' })).toHaveCount(0);
+  await expect(editor(page).getByRole('textbox', { name: 'Bloc name' }).first()).toHaveValue('Netanyahu bloc');
+  await page.keyboard.press('Escape');
+  await expect(editor(page)).toHaveCount(0);
+});
+
+test('a bloc is renamed and recoloured where it is shown, and Undo restores it', async ({ page }) => {
+  await start(page, 'simple');
+  await blocs(page).getByRole('button', { name: 'Edit blocs' }).click();
+  const name = editor(page).getByRole('textbox', { name: 'Bloc name' }).first();
+  await name.fill('Government');
+  await name.press('Enter');
+  await expect(band(page, 'Government')).toBeVisible();
+  await expect(page.getByRole('combobox', { name: 'Grouping' }).locator('option:checked')).toHaveText('Your grouping');
+  await editor(page).getByRole('button', { name: 'Colour of Government' }).click();
+  await editor(page).getByRole('button', { name: '#c0392b' }).click();
+  await expect(band(page, 'Government')).toHaveCSS('--bc', '#c0392b');
+  await page.getByRole('button', { name: 'Undo', exact: true }).click();
+  await page.getByRole('button', { name: 'Undo', exact: true }).click();
+  await expect(band(page, 'Coalition')).toBeVisible();
 });
 
 test('moving one party of a joint list to another bloc moves only its members’ seats', async ({ page }) => {
   await start(page, 'standard');
   const before = Number(await blocCount(page, 'Coalition').innerText());
   await band(page, 'Coalition').click();
-  await blocs(page).getByRole('button', { name: 'Move lists and parties between blocs' }).click();
-  await page.getByRole('combobox', { name: 'Bloc of New Hope' }).first().selectOption({ label: 'Coalition' });
+  // choose the party, then the bloc it moves to
+  await editor(page).getByRole('button', { name: /^New Hope, 4 seats/ }).click();
+  await expect(editor(page).getByRole('status')).toContainText('Moving New Hope');
+  await editor(page).locator('.bp-card').first().getByRole('button', { name: 'Move here' }).click();
   const after = Number(await blocCount(page, 'Coalition').innerText());
   expect(after).toBeGreaterThan(before);
   expect(after - before).toBeLessThan(12); // only New Hope's members, not all of National Unity

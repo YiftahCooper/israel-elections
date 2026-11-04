@@ -8,6 +8,13 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 
 ### Fixed
 
+- **Editing blocs (4 Nov 2026).** Editing blocs was four steps deep (a band, its detail, a Standard-only button, a
+  table of menus) and renaming or recolouring was hard to find. Clicking a bloc, or "Edit blocs", now opens a bloc
+  editor beside the chamber at every level: each bloc is a card whose name is edited in place and whose colour comes
+  from a swatch; its seats are shown against the majority; its lists are chips that move by dragging, or by choosing
+  one and then "Move here" (on touch and keyboard too). A party of a joint list moves on its own. "New bloc" and
+  delete sit on the cards. Edits become "Your grouping" and the sourced groupings stay under "Start from".
+
 - **Bloc regions easier to see (4 Nov 2026).** The pale bloc tints behind the chamber and in the bloc strip are about
   twice as strong, with a faint edge in the bloc's colour (stronger again in dark mode). The chamber's regions now
   step row by row between neighbouring blocs' seats instead of one straight cut, so no seat sits in another bloc's

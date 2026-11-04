@@ -27,6 +27,8 @@ export interface State {
   past: Scenario[];
   future: Scenario[];
   selectedListId: string | null;
+  /** the bloc editor beside the chamber, opened on this bloc ('__none': the seats in no bloc), or closed */
+  blocPanel: string | null;
   /** the open tool beside the chamber (null: the level's first tool) */
   tool: string | null;
   compareWith: string; // 'historical' or a saved scenario id
@@ -69,7 +71,7 @@ export async function loadElectionIndex() {
 const persisted = (() => { try { return JSON.parse(globalThis.localStorage?.getItem(LS) ?? '{}'); } catch { return {}; } })();
 
 let state: State = {
-  datasets: {}, elections: FALLBACK_INDEX, electionId: 'k26', scenario: null, preview: null, past: [], future: [], selectedListId: null, tool: null, compareWith: 'historical',
+  datasets: {}, elections: FALLBACK_INDEX, electionId: 'k26', scenario: null, preview: null, past: [], future: [], selectedListId: null, blocPanel: null, tool: null, compareWith: 'historical',
   lang: persisted.lang ?? 'he', theme: persisted.theme ?? (globalThis.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
   level: migrateLevel(persisted.level), hintDismissed: persisted.hintDismissed === true, digits: persisted.digits ?? 2, layout: 'hemicycle', colorBy: 'list',
   saved: persisted.saved ?? [], toast: null, loadError: null, notice: null, voteSource: { kind: 'proportional' }, sessions: {},
@@ -202,7 +204,7 @@ export async function openElection(id: ElectionId, from?: { name: string; descri
       ({ scenario, past, future } = sessions[id]!);
     }
     delete sessions[id];
-    setState({ electionId: id, scenario, past, future, sessions, selectedListId: null, compareWith: 'historical', loadError: null, notice });
+    setState({ electionId: id, scenario, past, future, sessions, selectedListId: null, blocPanel: null, compareWith: 'historical', loadError: null, notice });
     return true;
   } catch (e) {
     if (seq === openSeq) setState({ loadError: { id, message: e instanceof Error ? e.message : String(e) } });

@@ -240,7 +240,7 @@ A restrained cool-neutral board with one navy accent; the only saturated colour 
 
 ## Layout
 
-**The board (the Overview tab).** A sticky 52px band, then a sticky one-line tools strip naming the Overview, Scenarios and every tool, then (once edited) a one-line "What changed" summary led by the scenario's name, any banners, and the work area (padding 12px 16px 28px, 12px gaps). The board is the lists column (`minmax(300px, 380px)`) and the centre (the chamber, the bloc strip, the figures); choosing a list adds a third column, the side panel (`minmax(360px, 430px)`). **Tool pages** (every other tab) are one full-width panel; choosing a list from a tool page opens the same panel as a drawer from the inline-end edge.
+**The board (the Overview tab).** A sticky 52px band, then a sticky one-line tools strip naming the Overview, Scenarios and every tool, then (once edited) a one-line "What changed" summary led by the scenario's name, any banners, and the work area (padding 12px 16px 28px, 12px gaps). The board is the lists column (`minmax(300px, 380px)`) and the centre (the chamber, the bloc strip, the figures); choosing a list, or a bloc, adds a third column, the side panel (`minmax(360px, 430px)`); a list's panel takes precedence over the bloc editor. **Tool pages** (every other tab) are one full-width panel; choosing a list from a tool page opens the same panel as a drawer from the inline-end edge.
 
 **Desktop (1101px and up).** The lists column and the side panel are sticky (top 100px) and scroll on their own (max height 100vh minus 112px).
 
@@ -309,7 +309,7 @@ Every list is a row: ballot slip or logo, name (600), an 8px seat bar on one sca
 A full-width row inside the table: rust 12.5px 600 text on a -45 degree 6px hatch of the two threshold tints, with rust hairlines above and below, and an underlined link to show the folded long tail.
 
 ### Bloc Strip (signature)
-Blocs are soft regions, not extra bars: each bloc is a 5px-radius corridor filled with a pale tint of its colour, holding a 14px strip of its members' colour pieces (1px gaps) and a 13px label (name, 700 seat count). Corridors grow with their seats (0.3s); hover gives a 45% coloured border, the opened one a full coloured border with its detail beneath. A 2px dashed ink milestone marks the majority (61) with a small navy tag.
+Blocs are soft regions, not extra bars: each bloc is a 5px-radius corridor filled with a pale tint of its colour, holding a 14px strip of its members' colour pieces (1px gaps) and a 13px label (name, 700 seat count). Corridors grow with their seats (0.3s); hover gives a 45% coloured border, the opened one a full coloured border. A corridor (or "Edit blocs") opens the bloc editor in the side panel: one card per bloc tinted 13% (20% dark) with a 4px inline-start bar in its colour, its name an input edited in place, a 26px colour swatch opening a ten-colour palette (plus a free colour), its seats against the majority with a thin meter, and its members as chips (joint lists as a list over its parties, each party movable alone). A chip moves by drag, or by choosing it (2px focus outline, a "Moving …" status) and then "Move here" on a card; the latter is the touch and keyboard path. Cards that can take the chosen chip get a dashed border. A 2px dashed ink milestone marks the majority (61) with a small navy tag.
 
 ### Ballot Slip
 Party identity as a paper ballot: 58 x 32px (76 x 46px large), near-white paper, a 1.5px border in the party colour, ballot letters 700 12.5px in near-black, or the party's own logo contained inside (on a dark plate when the logo is light).
@@ -330,7 +330,7 @@ State moves, it does not perform: switch 0.15s; corridors and colour pieces 0.3s
 
 ### Do:
 - **Do** draw change in ink at 600 weight with the drawn triangle mark (Neutral Ink Rule).
-- **Do** open things where they are: a figure across its grid row, a bloc's detail beneath the strip; a list in the side panel; a tool as its own page.
+- **Do** open things where they are: a figure across its grid row, a bloc in the side panel beside the chamber, which redraws as it is edited; a list in the side panel; a tool as its own page.
 - **Do** keep data between 12.5px and 15px and rank it by weight and the navy plate.
 - **Do** set every number tabular and end-aligned.
 - **Do** show party colour only as identity (slip border, seat, wedge, piece, pale region) and bloc membership only as a pale tinted region behind members.
