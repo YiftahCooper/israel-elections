@@ -1,3 +1,6 @@
+// 5 Nov 2026: re-recorded allocation/analysis/model for refreshed official k26 CSVs only.
+// Engine/model implementation unchanged; qualifying votes 5,384,948, threshold 184,972,
+// quota 44,874; all list seat counts unchanged. Validation/rules digests unchanged.
 // Allocation/analysis re-recorded for consequence-only uncertainty warnings. The complete
 // corpus matches HEAD after recursively omitting warnings; seat decisions are unchanged.
 // Output lock for the engine and model. Each digest covers the full serialised output of a seeded
@@ -36,8 +39,8 @@ const EXPECTED: Record<Family, string> = {
   // stage, so no initial seats) the 1949 initial-seat conditions no longer apply. Before, those cases allocated 0 seats
   // or deactivated every surplus agreement; 298 allocation and 19 analysis cases differ, all of that kind. The old
   // engine on the same tree reproduces 8260bc46… and af4237ef…; model, validation and rules digests are unchanged.
-  allocation: 'd0cf49360e51637b14af7c0c827ca6b0eb7101360c8f0747c46a8e02e4ed5d69',
-  analysis: '3b3fbcda087cfab16097cf7b1bb5484109837680b12436dce8d1009abd5e0c8b',
+  allocation: '5ef9e5f92adbc9c3a25da6553ed8f36a10a1bac990f27c53dd2fe4fc5619c6f6',
+  analysis: 'b682af4570daf5cd7967e77afda56c8a9bcb2b5de4850f4d8ebc1652228269e0',
   // Model digest re-recorded for the 1973 party ranks, then for candidate biography links (Candidate.bio): with
   // the build timestamps held fixed and bio not carried, the new code gives the previous digest. Then for three
   // corrected names (0088 addendum: 1955 #24, 1959 #47, 2003 Shinui #14); src unchanged, other digests unchanged.
@@ -61,7 +64,7 @@ const EXPECTED: Record<Family, string> = {
   // Keep the model digest unchanged, including logo fields and build timestamps.
   // Party- and bloc-colour separation (decision 0087 revised 2026-11-04): only list colours, bloc-scheme colours and
   // builtAt differ from HEAD in the 26 datasets (141 list colours, 48 bloc colours); every other field verified equal.
-  model: 'ceee1199377005b2cb452c1d472964d16f02f8e0102fbc66053a08e476beef4f',
+  model: '38cc7c001f8f64710940d57a024b221417603282e01f3ce1b16d213676dbf170',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

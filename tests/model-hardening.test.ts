@@ -16,7 +16,7 @@ describe('reset/restore resolve against the dataset, so replay follows corrected
     const cbase = scenarioFromDataset(corrected);
     const replayed = [...edited.log.map((e) => e.action), { type: 'resetList', listId: '26-מחל' } as Action]
       .reduce((x, a) => applyAction(x, a, undefined, { base: cbase }), cbase);
-    expect(replayed.lists.find((l) => l.id === '26-מחל')!.votes).toBe(1167589 + 1234);
+    expect(replayed.lists.find((l) => l.id === '26-מחל')!.votes).toBe(1167591 + 1234);
   });
   it('resetVotes and resetCandidates restore only that part', () => {
     const l = base.lists.find((x) => x.id === '26-מחל')!;
@@ -48,12 +48,12 @@ describe('withdrawing a list', () => {
   it('turns its votes into invalid ballots, and reinstating returns them', () => {
     const w = run(base, { type: 'setWithdrawn', listId: '26-ב', withdrawn: true });
     expect(w.lists.find((l) => l.id === '26-ב')!.votes).toBe(0);
-    expect(w.invalid).toBe(base.invalid + 326_788);
-    expect(validVotes(w)).toBe(validVotes(base) - 326_788);
+    expect(w.invalid).toBe(base.invalid + 326_793);
+    expect(validVotes(w)).toBe(validVotes(base) - 326_793);
     const r = allocate(toEngineInput(w));
     expect(r.seatsAllocated).toBe(120);
     const back = run(w, { type: 'setWithdrawn', listId: '26-ב', withdrawn: false });
-    expect(back.lists.find((l) => l.id === '26-ב')!.votes).toBe(326_788);
+    expect(back.lists.find((l) => l.id === '26-ב')!.votes).toBe(326_793);
     expect(back.invalid).toBe(base.invalid);
   });
 });
@@ -79,7 +79,7 @@ describe('withdrawn-list accounting (independent review #1)', () => {
     expect(() => run(w, { type: 'resetVotes', listId: '26-מחל' })).toThrow(ActionError);
     expect(() => run(w, { type: 'transfer', from: '26-ב', to: '26-מחל', votes: 5 })).toThrow(ActionError);
     const reset = run(w, { type: 'resetList', listId: '26-מחל' });
-    expect(reset.lists.find((l) => l.id === '26-מחל')!.votes).toBe(1_167_589);
+    expect(reset.lists.find((l) => l.id === '26-מחל')!.votes).toBe(1_167_591);
     expect([validVotes(reset), reset.invalid]).toEqual([validVotes(base), base.invalid]);
   });
 });

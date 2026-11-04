@@ -134,7 +134,7 @@ test('percentage precision chosen in Expert does not apply below Expert', async 
   await page.getByRole('tab', { name: 'Rules', exact: true }).click();
   await page.getByRole('combobox', { name: 'Decimal places for percentages' }).selectOption('8');
   await page.getByRole('tab', { name: 'Overview' }).click();
-  await expect(listRow(page, 'Likud').first()).toContainText('20.51498437%');
+  await expect(listRow(page, 'Likud').first()).toContainText('20.51491138%');
   await levelButton(page, 'Simple').click();
   await expect(listRow(page, 'Likud').first()).toContainText('20.51%');
 });

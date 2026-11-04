@@ -3406,14 +3406,14 @@
       "electionId": "k26",
       "electionDate": "2026-10-27",
       "datasetPath": "public/data/k26.json",
-      "datasetSha256": "fe76d5cd03852c538a62eea70bad9aa4c49743ccf5fb6e2f26a9b6fb4e01e27e",
+      "datasetSha256": "409c564859021ddf53699d020c751872173de77c73413331b7aa60401dd8f78b",
       "datasetStatus": {
         "stage": "final-count-pending-publication",
-        "asOf": "2026-11-03",
-        "noteHe": "ספירה סופית שפרסמה ועדת הבחירות המרכזית (קבצי התוצאות מיום 3.11.2026). התוצאות הסופיות יפורסמו ברשומות עד 4.11.2026 ועד אז עשויות להשתנות.",
-        "noteEn": "Final count published by the Central Elections Committee (result files of 3 Nov 2026). Final results are due to be gazetted in Reshumot by 4 Nov 2026 and may change until then."
+        "asOf": "2026-11-04",
+        "noteHe": "ספירת הוועדה עודכנה ב־4.11.2026. הפרסום ברשומות לא אומת נכון ל־5.11.",
+        "noteEn": "CEC count updated 4 Nov 2026. Gazette publication unverified as of 5 Nov."
       },
-      "validVotes": 5691396,
+      "validVotes": 5691426,
       "voteSourceIds": [
         "k26-localities-csv",
         "k26-ballots-csv",
@@ -3428,7 +3428,7 @@
           "listId": "26-ג",
           "letters": "ג",
           "nameHe": "יהדות התורה והשבת אגודת ישראל – דגל התורה",
-          "votes": 312630,
+          "votes": 312632,
           "partyIds": [
             "degel-hatorah",
             "agudat-yisrael",
@@ -3489,7 +3489,7 @@
           "listId": "26-זך",
           "letters": "זך",
           "nameHe": "הציבור החרדי בראשות מוטי ליטנר",
-          "votes": 10599,
+          "votes": 10604,
           "partyIds": [
             "hatzibur-haharedi"
           ],
@@ -3517,7 +3517,7 @@
           "listId": "26-רץ",
           "letters": "רץ",
           "nameHe": "הקהל – מפלגה כלל חרדית שנציגיה נבחרים על ידי הציבור בראשות הרב שלמה אלבוים",
-          "votes": 607,
+          "votes": 580,
           "partyIds": [
             "hakel-2026"
           ],
@@ -3580,36 +3580,36 @@
       ],
       "computed": {
         "coreOnly": {
-          "votes": 612163,
+          "votes": 612165,
           "percent": {
-            "numerator": 61216300,
-            "denominator": 5691396
+            "numerator": 61216500,
+            "denominator": 5691426
           },
-          "displayPct": 10.755938
+          "displayPct": 10.755916
         },
         "includedUnmixed": {
-          "votes": 623369,
+          "votes": 623349,
           "percent": {
-            "numerator": 62336900,
-            "denominator": 5691396
+            "numerator": 62334900,
+            "denominator": 5691426
           },
-          "displayPct": 10.952831
+          "displayPct": 10.952422
         },
         "mixedWholeLists": {
           "votes": 0,
           "percent": {
             "numerator": 0,
-            "denominator": 5691396
+            "denominator": 5691426
           },
           "displayPct": 0.0
         },
         "wholeListInclusionAlternative": {
-          "votes": 623369,
+          "votes": 623349,
           "percent": {
-            "numerator": 62336900,
-            "denominator": 5691396
+            "numerator": 62334900,
+            "denominator": 5691426
           },
-          "displayPct": 10.952831
+          "displayPct": 10.952422
         },
         "mixedHarediVotes": null,
         "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."

@@ -57,9 +57,9 @@ describe('26th Knesset (2026) — final count', () => {
   it('withdrawn lists never take part', () => {
     for (const id of ['26-כן', '26-צבי']) expect(res.lists.find((l) => l.id === id)).toMatchObject({ withdrawn: true, qualified: false, seats: 0 });
   });
-  it('threshold 184,971 votes; quota 44,873; 5 remainder seats', () => {
-    expect(res.thresholdVotes).toBe(184_971n);
-    expect(res.quota).toEqual(rat(44_873n));
+  it('threshold 184,972 votes; quota 44,874; 5 remainder seats', () => {
+    expect(res.thresholdVotes).toBe(184_972n);
+    expect(res.quota).toEqual(rat(44_874n));
     expect(res.remainderSeatsTotal).toBe(5);
   });
 });

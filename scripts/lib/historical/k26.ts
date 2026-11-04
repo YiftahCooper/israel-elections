@@ -178,9 +178,9 @@ export async function buildK26() {
     schemaVersion: DATASET_SCHEMA_VERSION, id: 'k26', knesset: 26, electionDate: '2026-10-27',
     nameHe: 'הבחירות לכנסת ה-26', nameEn: 'Election to the 26th Knesset',
     status: {
-      stage: 'final-count-pending-publication', asOf: '2026-11-03',
-      noteHe: 'ספירה סופית שפרסמה ועדת הבחירות המרכזית (קבצי התוצאות מיום 3.11.2026). התוצאות הסופיות יפורסמו ברשומות עד 4.11.2026 ועד אז עשויות להשתנות.',
-      noteEn: 'Final count published by the Central Elections Committee (result files of 3 Nov 2026). Final results are due to be gazetted in Reshumot by 4 Nov 2026 and may change until then.',
+      stage: 'final-count-pending-publication', asOf: '2026-11-04',
+      noteHe: 'ספירת הוועדה עודכנה ב־4.11.2026. הפרסום ברשומות לא אומת נכון ל־5.11.',
+      noteEn: 'CEC count updated 4 Nov 2026. Gazette publication unverified as of 5 Nov.',
     },
     ruleSetId: 'il-2014-bader-ofer-3.25',
     totals: { registered: locTot.registered, votesCast: locTot.votesCast, invalid: locTot.invalid, valid: locTot.valid, ballotBoxes: ballotRows.length, ...geographyTotals(locRows) },

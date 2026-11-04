@@ -80,7 +80,7 @@ test('even axis ticks, scale down with a seat delta, distinct copies and delete'
  await start(page);const svg=page.locator('.family-plots svg').first();
  expect(await svg.locator('.family-axis text').allTextContents()).toEqual(['0%','5%','10%','15%','20%','1950','1960','1970','1980','1990','2000','2010','2020']);
  await page.getByRole('button',{name:'−10%',exact:true}).click();await expect(page.getByRole('textbox',{name:'Scale value',exact:true})).toHaveValue('-10');
- await expect(page.locator('.family-seat-count em')).toHaveText(/^[−±]/);await expect(page.locator('.family-consequence')).toContainText('623,369 → 561,032');
+ await expect(page.locator('.family-seat-count em')).toHaveText(/^[−±]/);await expect(page.locator('.family-consequence')).toContainText('623,349 → 561,014');
  await page.getByRole('textbox',{name:'Scale value',exact:true}).fill('-101');await expect(page.locator('.family-unavailable')).toContainText('−100%');
  await edit(page);await editor(page).getByRole('button',{name:'Save as my preset',exact:true}).click();await editor(page).getByRole('button',{name:'Close',exact:true}).click();
  await expect(page.getByRole('button',{name:'Haredi (mine)',exact:true})).toBeVisible();await expect(page.getByRole('button',{name:'Haredi',exact:true})).toBeVisible();
@@ -89,7 +89,7 @@ test('even axis ticks, scale down with a seat delta, distinct copies and delete'
 });
 test('Hebrew scaling keeps signs and arrows in reading order',async({page})=>{
  await start(page,'he');await expect(page.locator('.family-scale .quick-actions bdi').first()).toHaveText('−10%');
- await expect(page.locator('.family-seat-count em bdi')).toHaveText('+2');await expect(page.locator('.family-consequence p[role=status]')).toContainText('623,369 → 685,706');
+ await expect(page.locator('.family-seat-count em bdi')).toHaveText('+2');await expect(page.locator('.family-consequence p[role=status]')).toContainText('623,349 → 685,684');
 });
 test('head-party counting is explicit, remembered and one-list overrides keep the view policy',async({page})=>{
  await start(page);await page.getByRole('button',{name:'Haredi',exact:true}).click();await page.getByRole('button',{name:'Likud lineage',exact:true}).click();

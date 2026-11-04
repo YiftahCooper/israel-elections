@@ -3426,14 +3426,14 @@
       "electionId": "k26",
       "electionDate": "2026-10-27",
       "datasetPath": "public/data/k26.json",
-      "datasetSha256": "fe76d5cd03852c538a62eea70bad9aa4c49743ccf5fb6e2f26a9b6fb4e01e27e",
+      "datasetSha256": "409c564859021ddf53699d020c751872173de77c73413331b7aa60401dd8f78b",
       "datasetStatus": {
         "stage": "final-count-pending-publication",
-        "asOf": "2026-11-03",
-        "noteHe": "ספירה סופית שפרסמה ועדת הבחירות המרכזית (קבצי התוצאות מיום 3.11.2026). התוצאות הסופיות יפורסמו ברשומות עד 4.11.2026 ועד אז עשויות להשתנות.",
-        "noteEn": "Final count published by the Central Elections Committee (result files of 3 Nov 2026). Final results are due to be gazetted in Reshumot by 4 Nov 2026 and may change until then."
+        "asOf": "2026-11-04",
+        "noteHe": "ספירת הוועדה עודכנה ב־4.11.2026. הפרסום ברשומות לא אומת נכון ל־5.11.",
+        "noteEn": "CEC count updated 4 Nov 2026. Gazette publication unverified as of 5 Nov."
       },
-      "validVotes": 5691396,
+      "validVotes": 5691426,
       "voteSourceIds": [
         "k26-localities-csv",
         "k26-ballots-csv",
@@ -3448,7 +3448,7 @@
         {
           "listId": "26-דרך",
           "nameHe": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל",
-          "votes": 913630,
+          "votes": 913629,
           "partyIds": [
             "yashar",
             "yesodot-yisrael"
@@ -3465,7 +3465,7 @@
         {
           "listId": "26-רק",
           "nameHe": "ביחד בראשות נפתלי בנט",
-          "votes": 531991,
+          "votes": 532018,
           "partyIds": [
             "together-bennett",
             "yesh-atid"
@@ -3482,7 +3482,7 @@
         {
           "listId": "26-די",
           "nameHe": "המילואימניקים והכלכלית בראשות יועז הנדל וירון זליכה",
-          "votes": 155089,
+          "votes": 155199,
           "partyIds": [
             "reservists",
             "new-economic"
@@ -3518,7 +3518,7 @@
           "votes": 0,
           "percent": {
             "numerator": 0,
-            "denominator": 5691396
+            "denominator": 5691426
           },
           "displayPct": 0.0
         },
@@ -3526,7 +3526,7 @@
           "votes": 0,
           "percent": {
             "numerator": 0,
-            "denominator": 5691396
+            "denominator": 5691426
           },
           "displayPct": 0.0
         },
@@ -3534,7 +3534,7 @@
           "votes": 0,
           "percent": {
             "numerator": 0,
-            "denominator": 5691396
+            "denominator": 5691426
           },
           "displayPct": 0.0
         },
@@ -3542,7 +3542,7 @@
           "votes": 0,
           "percent": {
             "numerator": 0,
-            "denominator": 5691396
+            "denominator": 5691426
           },
           "displayPct": 0.0
         },

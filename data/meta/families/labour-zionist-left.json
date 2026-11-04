@@ -3905,14 +3905,14 @@
       "electionId": "k26",
       "electionDate": "2026-10-27",
       "datasetPath": "public/data/k26.json",
-      "datasetSha256": "fe76d5cd03852c538a62eea70bad9aa4c49743ccf5fb6e2f26a9b6fb4e01e27e",
+      "datasetSha256": "409c564859021ddf53699d020c751872173de77c73413331b7aa60401dd8f78b",
       "datasetStatus": {
         "stage": "final-count-pending-publication",
-        "asOf": "2026-11-03",
-        "noteHe": "ספירה סופית שפרסמה ועדת הבחירות המרכזית (קבצי התוצאות מיום 3.11.2026). התוצאות הסופיות יפורסמו ברשומות עד 4.11.2026 ועד אז עשויות להשתנות.",
-        "noteEn": "Final count published by the Central Elections Committee (result files of 3 Nov 2026). Final results are due to be gazetted in Reshumot by 4 Nov 2026 and may change until then."
+        "asOf": "2026-11-04",
+        "noteHe": "ספירת הוועדה עודכנה ב־4.11.2026. הפרסום ברשומות לא אומת נכון ל־5.11.",
+        "noteEn": "CEC count updated 4 Nov 2026. Gazette publication unverified as of 5 Nov."
       },
-      "validVotes": 5691396,
+      "validVotes": 5691426,
       "voteSourceIds": [
         "k26-localities-csv",
         "k26-ballots-csv",
@@ -3927,7 +3927,7 @@
           "listId": "26-אמת",
           "letters": "אמת",
           "nameHe": "הדמוקרטים בראשות יאיר גולן",
-          "votes": 366285,
+          "votes": 366278,
           "partyIds": [
             "democrats",
             "meretz"
@@ -3959,36 +3959,36 @@
       "reviewCandidates": [],
       "computed": {
         "coreOnly": {
-          "votes": 366285,
+          "votes": 366278,
           "percent": {
-            "numerator": 36628500,
-            "denominator": 5691396
+            "numerator": 36627800,
+            "denominator": 5691426
           },
-          "displayPct": 6.435767
+          "displayPct": 6.43561
         },
         "includedUnmixed": {
-          "votes": 366285,
+          "votes": 366278,
           "percent": {
-            "numerator": 36628500,
-            "denominator": 5691396
+            "numerator": 36627800,
+            "denominator": 5691426
           },
-          "displayPct": 6.435767
+          "displayPct": 6.43561
         },
         "mixedWholeLists": {
           "votes": 0,
           "percent": {
             "numerator": 0,
-            "denominator": 5691396
+            "denominator": 5691426
           },
           "displayPct": 0.0
         },
         "wholeListInclusionAlternative": {
-          "votes": 366285,
+          "votes": 366278,
           "percent": {
-            "numerator": 36628500,
-            "denominator": 5691396
+            "numerator": 36627800,
+            "denominator": 5691426
           },
-          "displayPct": 6.435767
+          "displayPct": 6.43561
         },
         "mixedHarediVotes": null,
         "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."
