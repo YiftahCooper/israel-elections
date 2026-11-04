@@ -681,3 +681,287 @@ Batch k13 verification: dataset builder passed; all 26 datasets compared equal t
 
 Batch k14 verification: dataset builder passed; all 26 datasets compared equal to prior commit after removing only `logo` and `builtAt`. `npx vitest run`: 57 files / 484 tests passed; `npx tsc -p tsconfig.json --noEmit`, `npx vite build`, and logo validator passed. No logo or digest changed in this batch. 
 
+## k15 · 1999
+
+### אמת — ישראל אחת בראשות אהוד ברק - העבודה גשר מימד
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"ישראל אחת" "1999" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.idi.org.il/policy/parties-and-elections/elections/1999), [lead 2](https://www.maariv.co.il/news/elections-2026/article-1380141), [lead 3](https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA), [lead 4](https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf).
+- NLI targeted discovery: `query: site:nli.org.il "ישראל אחת" "1999" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/en/archives/NNL_ARCHIVE_AL997012156936905171/NLI), [lead 2](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156936905171/NLI).
+
+### מחל — הליכוד בראשות בנימין נתניהו
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"ליכוד" "1999" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.likud.org.il/%D7%A2%D7%9C-%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93/%D7%94%D7%94%D7%99%D7%A1%D7%98%D7%95%D7%A8%D7%99%D7%94-%D7%A9%D7%9C-%D7%94%D7%AA%D7%A0%D7%95%D7%A2%D7%94), [lead 2](https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf), [lead 3](https://www.facebook.com/KnessetTv/videos/%D7%A9%D7%9E%D7%A2%D7%AA%D7%99-%D7%90%D7%AA-%D7%94%D7%9E%D7%99%D7%9C%D7%94-%D7%9C%D7%99%D7%9B%D7%95%D7%93-%D7%95%D7%A7%D7%99%D7%91%D7%9C%D7%AA%D7%99-%D7%97%D7%A8%D7%A8%D7%94%D7%9E%D7%A0%D7%94%D7%9C-%D7%A7%D7%9E%D7%A4%D7%99%D7%99%D7%9F-%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93-%D7%91-1981-%D7%A6%D7%91%D7%99-%D7%A4%D7%A8%D7%99%D7%93%D7%9E%D7%9F-%D7%A9%D7%99%D7%A9%D7%A7%D7%95-%D7%91%D7%95%D7%95%D7%99/28113379411658246), [lead 4](https://www.idi.org.il/articles/3093).
+- NLI targeted discovery: `query: site:nli.org.il "ליכוד" "1999" תעמולה`
+  Empty result set for this exact query.
+
+### שס — ש״ס התאחדות הספרדים העולמית שומרי תורה
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"שס" "1999" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf), [lead 2](https://www.instagram.com/reel/DcYTNYNyg6t), [lead 3](https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA_%D7%A9%22%D7%A1), [lead 4](https://digital.library.ucla.edu/catalog.html?f%5Bhuman_readable_language_sim%5D%5B%5D=English&page=4&per_page=100&range%5Byear_isim%5D%5Bbegin%5D=1999&range%5Byear_isim%5D%5Bend%5D=1999&sort=title_alpha_numeric_ssort+asc&view=gallery).
+- NLI targeted discovery: `query: site:nli.org.il "שס" "1999" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997013034850705171/NLI).
+
+### מרצ — מרצ ישראל הדמוקרטית
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"מרצ" "1999" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.idi.org.il/policy/parties-and-elections/parties/meretz), [lead 2](https://he.wikipedia.org/wiki/%D7%9E%D7%A8%D7%A6), [lead 3](https://www.idi.org.il/policy/parties-and-elections/elections/1999), [lead 4](https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf).
+- NLI targeted discovery: `query: site:nli.org.il "מרצ" "1999" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/ar/archives/NNL_ARCHIVE_AL997012156951705171/NLI), [lead 2](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997013034862105171/NLI), [lead 3](https://www.nli.org.il/en/archives/NNL_ARCHIVE_AL997012156961105171/NLI).
+
+### כן — ישראל בעליה בראשות נתן שרנסקי
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"ישראל בעליה" "1999" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%91%D7%A2%D7%9C%D7%99%D7%94), [lead 2](https://www.hamichlol.org.il/%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%91%D7%A2%D7%9C%D7%99%D7%94), [lead 3](https://library.mevaker.gov.il/sites/DigitalLibrary/Pages/Reports/1751-2.aspx), [lead 4](https://www.ynet.co.il/articles/0,7340,L-5046288,00.html).
+- NLI targeted discovery: `query: site:nli.org.il "ישראל בעליה" "1999" תעמולה`
+  Empty result set for this exact query.
+
+### יש — שינוי - התנועה החילונית בראשות לפיד ופורז
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"שינוי" "1999" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA_%D7%A9%D7%99%D7%A0%D7%95%D7%99), [lead 2](https://www.idi.org.il/policy/parties-and-elections/parties/shinui), [lead 3](https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf), [lead 4](https://www.kan.org.il/content/archive1/archivemusic/p-671187/678812).
+- NLI targeted discovery: `query: site:nli.org.il "שינוי" "1999" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156949805171/NLI), [lead 2](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156936905171/NLI), [lead 3](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156952105171/NLI).
+
+### ב — המפד״ל - המפלגה הדתית לאומית המזרחי - הפועל המזרחי
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"מפדל" "1999" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://library.mevaker.gov.il/sites/DigitalLibrary/Documents/mekomiyot/mekomiyot_2008-1989/1999-RashuyotNov98/1999-RashuyotNov98-Full.pdf), [lead 2](https://dayan.org/he/file-download/download/public/16411), [lead 3](https://www.walla.co.il/tags/%D7%94%D7%9E%D7%A4%D7%93%22%D7%9C), [lead 4](https://hebrew.alibaba.com/product-detail/High-quality-Custom-Logo-Graphite-Pickleball-1601364092328.html).
+- NLI targeted discovery: `query: site:nli.org.il "מפדל" "1999" תעמולה`
+  Empty result set for this exact query.
+
+### ג — יהדות התורה המאוחדת והשבת אגודת ישראל - דגל התורה
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"יהדות התורה" "1999" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%99%D7%94%D7%93%D7%95%D7%AA_%D7%94%D7%AA%D7%95%D7%A8%D7%94), [lead 2](https://www.idi.org.il/policy/parties-and-elections/parties/yahadut-hatorah), [lead 3](https://digital.library.ucla.edu/catalog?f%5Bsubject_sim%5D%5B%5D=%D7%99%D7%94%D7%93%D7%95%D7%AA+%D7%94%D7%AA%D7%95%D7%A8%D7%94+%D7%94%D7%9E%D7%90%D7%95%D7%97%D7%93%D7%AA+-+%D7%90%D7%92%D7%95%D7%93%D7%AA+%D7%99%D7%A9%D7%A8%D7%90%D7%9C+%D7%93%D7%92%D7%9C+%D7%94%D7%AA%D7%95%D7%A8%D7%94&per_page=10&range%5Byear_isim%5D%5Bbegin%5D=1800&range%5Byear_isim%5D%5Bend%5D=1999), [lead 4](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156926305171/NLI).
+- NLI targeted discovery: `query: site:nli.org.il "יהדות התורה" "1999" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156926305171/NLI), [lead 2](https://www.nli.org.il/en/archives/NNL_ARCHIVE_AL997013034870405171/NLI), [lead 3](https://www.nli.org.il/he/images/NNL_ARCHIVE_AL997009325878305171/NLI).
+
+### עם — הרשימה הערבית המאוחדת
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"הרשימה הערבית המאוחדת" "1999" (כרזה OR לוגו OR תעמולה)   -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%94%D7%A8%D7%A9%D7%99%D7%9E%D7%94_%D7%94%D7%A2%D7%A8%D7%91%D7%99%D7%AA_%D7%94%D7%9E%D7%90%D7%95%D7%97%D7%93%D7%AA), [lead 2](https://www.gov.il/BlobFolder/guide/candidates-lists-26/he/pr5_26_annex.pdf), [lead 3](https://www.idi.org.il/policy/parties-and-elections/parties/raam), [lead 4](https://dayan.org/he/file-download/download/public/16411).
+- NLI targeted discovery: `query: site:nli.org.il "הרשימה הערבית המאוחדת" "1999" תעמולה`
+  Empty result set for this exact query.
+
+### ו — חזית דמוקרטית לשלום ולשוויון - חד״ש (המפלגה הקומוניסטית הישראלית וחוגי ציבור יהודים וערבים)
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"חדש" "1999" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.kan.org.il/content/kan/kan-11/p-13736/%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA-%D7%90%D7%9E%D7%AA-%D7%A4%D7%A8%D7%A7%D7%99%D7%9D-%D7%9E%D7%9C%D7%90%D7%99%D7%9D/110394), [lead 2](https://www.idi.org.il/policy/parties-and-elections/elections/1999), [lead 3](https://www.facebook.com/AmitSegalNews/videos/%D7%95%D7%94%D7%99%D7%95%D7%9D-%D7%91%D7%A4%D7%99%D7%A0%D7%94-%D7%A9%D7%97%D7%95%D7%96%D7%A8%D7%AA-%D7%90%D7%9C-%D7%94%D7%94%D7%99%D7%A1%D7%98%D7%95%D7%A8%D7%99%D7%94-%D7%A9%D7%9C-%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA-%D7%9E%D7%94-%D7%9E%D7%A9%D7%95%D7%AA%D7%A3-%D7%9C%D7%94%D7%A4%D7%A1%D7%93%D7%99%D7%9D-%D7%A9%D7%9C-%D7%A0%D7%AA%D7%A0%D7%99%D7%94%D7%95-%D7%95%D7%90%D7%99%D7%9A-%D7%94%D7%A6%D7%9C%D7%99%D7%97/4162291357403722), [lead 4](https://www.amazon.com/-/he/College-Flags-Banners-Kentucky-Wildcats/dp/B07NCB25R7).
+- NLI targeted discovery: `query: site:nli.org.il "חזית דמוקרטית לשלום" "1999" תעמולה`
+  Empty result set for this exact query.
+
+### ל — ישראל ביתנו בראשות אביגדור ליברמן
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"ישראל ביתנו" "1999" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%91%D7%99%D7%AA%D7%A0%D7%95), [lead 2](https://il.bidspirit.com/ui/lotPage/kedmatdena/source/catalog/auction/78308/lot/143180/%D7%90%D7%95%D7%A1%D7%A3-%D7%97%D7%95%D7%9E%D7%A8%D7%99-%D7%AA%D7%A2%D7%9E%D7%95%D7%9C%D7%94-%D7%A4%D7%95%D7%9C%D7%99%D7%98%D7%99%D7%99%D7%9D-%D7%9E%D7%A8%D7%90%D7%A9%D7%99%D7%AA%D7%94?lang=en), [lead 3](https://www.idi.org.il/policy/parties-and-elections/parties/yisrael-beytenu), [lead 4](https://www.facebook.com/The.Israel.Democracy.Institute/posts/%D7%99%D7%9E%D7%99%D7%9F-%D7%A9%D7%9E%D7%90%D7%9C-%D7%90%D7%95-%D7%A9%D7%91%D7%9B%D7%9C%D7%9C-%D7%9E%D7%A8%D7%9B%D7%96%D7%9B%D7%9E%D7%94-%D7%A2%D7%95%D7%91%D7%93%D7%95%D7%AA-%D7%A2%D7%9C-%D7%9E%D7%A4%D7%9C%D7%92%D7%AA-%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%91%D7%99%D7%AA%D7%A0%D7%951-%D7%94%D7%9E%D7%A4%D7%9C%D7%92%D7%94-%D7%94%D7%95%D7%A7%D7%9E%D7%94-%D7%91%D7%A9%D7%A0%D7%AA-1999-%D7%A2/3061554607190754).
+- NLI targeted discovery: `query: site:nli.org.il "ישראל ביתנו" "1999" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156949805171/NLI), [lead 2](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156937105171/NLI), [lead 3](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997013034866205171/NLI).
+
+### ד — אלתג׳מע אלוטני אלדימוקרטי (בל״ד)
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"בלד" "1999" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.nevo.co.il/FilesFolderPermalink.aspx?b=files&r=%D7%9E%D7%95%D7%A1%D7%93%D7%95%D7%AA+%D7%9E%D7%9E%D7%A9%D7%9C%5C%D7%9E%D7%91%D7%A7%D7%A8+%D7%94%D7%9E%D7%93%D7%99%D7%A0%D7%94%5C%D7%93%D7%95%D7%97%D7%95%D7%AA+%D7%9E%D7%99%D7%9E%D7%95%D7%9F+%D7%9E%D7%A4%D7%9C%D7%92%D7%95%D7%AA), [lead 2](https://library.mevaker.gov.il/sites/DigitalLibrary/Documents/mekomiyot/mekomiyot_2008-1989/1999-RashuyotNov98/1999-RashuyotNov98-Full.pdf), [lead 3](https://www.nli.org.il/he/items/NNL_MUSIC_AL997008900638405171/NLI), [lead 4](https://www.ynet.co.il/news/election2022/article/ryg84urno).
+- NLI targeted discovery: `query: site:nli.org.il "בלד" "1999" תעמולה`
+  Empty result set for this exact query.
+
+### ם — עם אחד בראשות עמיר פרץ - סיעת העובדים והגימלאים בישראל
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"עם אחד" "1999" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.idi.org.il/policy/parties-and-elections/parties/am-ehad), [lead 2](https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA_%D7%94%D7%A2%D7%91%D7%95%D7%93%D7%94_%D7%94%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%D7%AA), [lead 3](https://dayan.org/he/file-download/download/public/16411), [lead 4](https://www.ynet.co.il/entertainment/article/hj7nqux3ge).
+- NLI targeted discovery: `query: site:nli.org.il "עם אחד" "1999" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156949805171/NLI).
+
+Batch k15 verification: dataset builder passed; all 26 datasets compared equal to prior commit after removing only `logo` and `builtAt`. `npx vitest run`: 57 files / 484 tests passed; `npx tsc -p tsconfig.json --noEmit`, `npx vite build`, and logo validator passed. No logo or digest changed in this batch. 
+
+## Supplemental searches and inspected candidate exclusions
+
+The following are additional attempts, not replacements for the 152 identity-specific
+queries above. One general k9 Independent Liberals query timed out (500 / 5000 ms);
+its targeted query returned locators. Two overlarge initial calls failed validation
+and were reissued in legal batches. At the end, five additional Shas punctuation
+queries (`"ש״ס" "YEAR" "כרזה"`, YEAR = 1984, 1988, 1992, 1996, 1999) all failed
+with Jina “This key is out of quota”. They are **failed attempts**, not empty searches.
+No Apify search was used; the authorized Apify scope was specific-file download only.
+
+Inspected Commons pages (one community evidence family per file):
+
+- [Maarach1988.svg](https://commons.wikimedia.org/w/index.php?title=File:Maarach1988.svg&oldid=1201851903):
+  caption identifies 1988, but source is own work, dated 31 January 2026. No official
+  campaign original is cited. Not accepted under this run's official-origin requirement.
+- [Morasha.png](https://commons.wikimedia.org/w/index.php?title=File:Morasha.png&oldid=1004024699):
+  CC BY-SA 4.0, caption spans 1984–1988, credited legacy NLI 700127850. Current 1984
+  folder lead was found, but the dated original was not inspected. No promotion.
+- [Israel First.png](https://commons.wikimedia.org/wiki/File:Israel_First.png):
+  describes a June 2026 party mark, not Israel One's 1999 joint-list lockup. Rejected
+  identity substitution despite superficially similar English name.
+
+Supplemental exact discovery queries and returned locators (snippet-only):
+
+- `query: '"מפד״ל" "1977" כרזה'`: [lead 1](https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%93%22%D7%9C), [lead 2](https://jewish-faculty.biu.ac.il/files/jewish-faculty/shared/record_group_003_0.pdf), [lead 3](https://www.idi.org.il/policy/parties-and-elections/elections/1977).
+- `query: '"מפד״ל" "1981" כרזה'`: [lead 1](https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%93%22%D7%9C), [lead 2](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156938005171/NLI), [lead 3](https://jewish-faculty.biu.ac.il/files/jewish-faculty/shared/record_group_003_0.pdf).
+- `query: '"מפד״ל" "1984" כרזה'`: [lead 1](https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%93%22%D7%9C), [lead 2](https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%90%D7%97%D7%AA_%D7%A2%D7%A9%D7%A8%D7%94), [lead 3](https://jewish-faculty.biu.ac.il/files/jewish-faculty/shared/record_group_003_0.pdf).
+- `query: '"מפד״ל" "1988" כרזה'`: [lead 1](https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%93%22%D7%9C), [lead 2](https://www.youtube.com/watch?v=ryep4UfhxBs), [lead 3](https://jewish-faculty.biu.ac.il/files/jewish-faculty/shared/record_group_003_0.pdf).
+- `query: '"מפד״ל" "1992" כרזה'`: [lead 1](https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%93%22%D7%9C), [lead 2](https://jewish-faculty.biu.ac.il/files/jewish-faculty/shared/record_group_003_0.pdf), [lead 3](https://www.idi.org.il/media/20997/%D7%94%D7%9E%D7%A4%D7%9C%D7%92%D7%95%D7%AA-%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C-2021-1992.pdf).
+- `query: '"מפד״ל" "1996" כרזה'`: [lead 1](https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%93%22%D7%9C), [lead 2](https://www.facebook.com/AmitSegalNews/videos/%D7%95%D7%94%D7%99%D7%95%D7%9D-%D7%91%D7%A4%D7%99%D7%A0%D7%94-%D7%A9%D7%97%D7%95%D7%96%D7%A8%D7%AA-%D7%90%D7%9C-%D7%94%D7%94%D7%99%D7%A1%D7%98%D7%95%D7%A8%D7%99%D7%94-%D7%A9%D7%9C-%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA-%D7%9E%D7%94-%D7%9E%D7%A9%D7%95%D7%AA%D7%A3-%D7%9C%D7%94%D7%A4%D7%A1%D7%93%D7%99%D7%9D-%D7%A9%D7%9C-%D7%A0%D7%AA%D7%A0%D7%99%D7%94%D7%95-%D7%95%D7%90%D7%99%D7%9A-%D7%94%D7%A6%D7%9C%D7%99%D7%97/4162291357403722), [lead 3](https://digital.library.ucla.edu/catalog.html?f%5Bgenre_sim%5D%5B%5D=government+publication&page=5966&per_page=10&range%5Byear_isim%5D%5Bbegin%5D=1996&range%5Byear_isim%5D%5Bend%5D=1997&sort=date_dtsort+desc&view=list).
+- `query: '"מפד״ל" "1999" כרזה'`: [lead 1](https://he.wikipedia.org/wiki/%D7%94%D7%90%D7%99%D7%97%D7%95%D7%93_%D7%94%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%9E%D7%A4%D7%93%22%D7%9C), [lead 2](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156938005171/NLI), [lead 3](https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%93%22%D7%9C).
+- `query: '"מפלגת העבודה" "1992" "כרזה"'`: [lead 1](https://www.maariv.co.il/news/elections-2026/article-1380141), [lead 2](https://www.facebook.com/lavonins/posts/%D7%94%D7%99%D7%95%D7%9D-%D7%A2%D7%A4-%D7%94%D7%AA%D7%90%D7%A8%D7%99%D7%9A-%D7%94%D7%A2%D7%91%D7%A8%D7%99-%D7%9E%D7%A6%D7%95%D7%99%D7%99%D7%9F-28-%D7%A9%D7%A0%D7%94-%D7%9C%D7%94%D7%9E%D7%94%D7%A4%D7%9A-%D7%94%D7%A9%D7%A0%D7%99-%D7%91%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA-%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA-%D7%94-13-%D7%91%D7%99%D7%95%D7%A0%D7%99-1992-%D7%94%D7%95%D7%91/1202123136794807), [lead 3](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156953705171/NLI).
+- `query: '"חד״ש" "1977" "כרזה"'`: [lead 1](https://he.wikipedia.org/wiki/%D7%94%D7%9E%D7%A4%D7%9C%D7%92%D7%94_%D7%94%D7%A7%D7%95%D7%9E%D7%95%D7%A0%D7%99%D7%A1%D7%98%D7%99%D7%AA_%D7%94%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%D7%AA), [lead 2](https://www.hamichlol.org.il/%D7%94%D7%9E%D7%A4%D7%9C%D7%92%D7%94_%D7%94%D7%A7%D7%95%D7%9E%D7%95%D7%A0%D7%99%D7%A1%D7%98%D7%99%D7%AA_%D7%94%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%D7%AA), [lead 3](https://maki.org.il/he/wp-content/uploads/2019/01/G04_2019.pdf).
+- `query: '"חד״ש" "1996" "כרזה"'`: [lead 1](https://he.wikipedia.org/wiki/%D7%94%D7%9E%D7%A4%D7%9C%D7%92%D7%94_%D7%94%D7%A7%D7%95%D7%9E%D7%95%D7%A0%D7%99%D7%A1%D7%98%D7%99%D7%AA_%D7%94%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%D7%AA), [lead 2](https://digital.library.ucla.edu/catalog.html?f%5Bcombined_subject_ssim%5D%5B%5D=Candidates+and+lists&f%5Bgenre_sim%5D%5B%5D=monographic&f%5Bmember_of_collections_ssim%5D%5B%5D=Ephemera+Collection+-+The+National+Library+of+Israel&per_page=100&sort=date_dtsort+desc&view=list), [lead 3](https://designarchive.shenkar.ac.il/articles/84).
+
+Archive-route searches also attempted:
+
+- `site:jabotinsky.org "1977" "כרזות"`: selected catalogue 34361;
+  also found 34276, 34245, 34157 (not opened). `site:jabotinsky.org "1981" "גוף יוצר: הליכוד" כרזות`:
+  selected 34179; 34176 and 34175 remained uninspected leads.
+- `site:jabotinsky.org "1988" "גוף יוצר: הליכוד" כרזות`: selected 36187;
+  36232 and 36189 remained uninspected leads. Identical queries for 1984 and 1992
+  returned empty sets. Looser `site:jabotinsky.org "YEAR" "הליכוד" "כרזות"`,
+  YEAR = 1984, 1992, 1999: general institute/newsletter pages, one 1992 polling-place
+  photo lead (108005), and no 1999 results, respectively. None supplied a new logo.
+- `site:yadtabenkin.org.il "בחירות" "כרזות"` and
+  `site:religious-zionism.org.il "כרזות"`: empty sets. Alternate Hebrew-name
+  queries `"יד טבנקין" "כרזות" "בחירות"`, `"בית ברל" "ארכיון" "תעמולת בחירות"`,
+  `"ארכיון המדינה" "כרזות" "בחירות"`, `"ארכיון בן גוריון" "בחירות" "כרזות"`,
+  `"ארכיון הציונות הדתית" "בחירות"`: NLI/State Archives collection leads,
+  generic social/news results or finding aids, with no accepted scan.
+- `"ארכיון" "העבודה" "1992" "כרזה"`: Lavon Institute social pages and the
+  NLI mixed campaign folder; no original acquired.
+- `site:digital.library.ucla.edu "ליכוד" "1981"`,
+  `site:digital.library.ucla.edu "מורשה"`, and
+  `site:digital.library.ucla.edu "המערך" "1988"`: collection/search pages and the
+  Morasha item linked in the failure record. Original was not accessed past challenge.
+- `site:commons.wikimedia.org "Likud" "1981"`,
+  `site:commons.wikimedia.org "Morasha.png"`,
+  `site:commons.wikimedia.org "Maarach1988.svg"`,
+  `site:commons.wikimedia.org "Israel First.png"`: Commons metadata candidates;
+  three file descriptions inspected as above; dated press-conference photo is
+  a lead, not an inspected party-produced campaign publication.
+- `National Library Israel IIIF ephemera api manifest`, `site:iiif.io "nli" manifest`,
+  and `site:nli.org.il "IIIF" "https" "manifest"`: NLI developer routes found
+  (iiif.io query empty); access results recorded above.
+- Extra initial discovery `site:nli.org.il כרזות בחירות 1977 ליכוד` and
+  `site:nli.org.il "1984" "מורשה"`: general election collection and newspaper
+  articles, no inspected official emblem.
+
+For k15 Likud, exact CDX query
+`https://web.archive.org/cdx/search/cdx?url=www.likud.org.il/navframe.html&from=19990101&to=19990517&output=json&fl=timestamp,original,statuscode,digest&filter=statuscode:200`
+returned HTTP 200 and `[]`. This URL/date scope supplies no campaign-byte proof.
+No claim is made about all possible frame paths, domains or other party sites.
+
+## Final coverage and remaining reasons
+
+| Election | Winners | Before | After | Added |
+|---|---:|---:|---:|---:|
+| k9 | 13 | 4 | 5 | 1 |
+| k10 | 10 | 1 | 2 | 1 |
+| k11 | 15 | 2 | 2 | 0 |
+| k12 | 15 | 1 | 2 | 1 |
+| k13 | 10 | 1 | 1 | 0 |
+| k14 | 11 | 2 | 2 | 0 |
+| k15 | 15 | 2 | 2 | 0 |
+| **Total** | **89** | **13** | **16** | **3** |
+
+Added: **three fair-use identification crops**, zero free-licence assets, zero
+uncropped original logo assets, zero constituent entries. Original complete scans
+are retained alongside the catalogue HTML. Each campaign has separate evidence.
+
+All 76 initial gaps were attempted. **73 whole-list gaps remain**. Reasons below
+are acquisition outcomes, not a finding that artwork does not exist. Category A
+means a catalogue lead was returned, not that its full page/scan was read or that
+every item individually returned 403. Category B means the searches did not
+produce an inspected qualifying original; secondary/current/undated designs do
+not qualify. Both categories need original artwork, exact identity and campaign date.
+
+**A — archival catalogue lead; original scan/date/identity not verified** (24 identities):
+
+- k10: ג, הן, ת, ני.
+- k11: ג, רצ, שס, עי, פ, ני.
+- k12: שס, פ, ע.
+- k13: ט.
+- k14: אמת, ג, ט.
+- k15: אמת, שס, מרצ, יש, ג, ל, ם.
+
+**B — no inspected qualifying official campaign original from the searches** (49 identities):
+
+- k9: ג, רצ, ב, ו, לע, ים, ש, ד.
+- k10: אמת, רצ, ב, ו.
+- k11: מחל, אמת, ב, ו, הן, יש, כך.
+- k12: אמת, ג, רצ, ב, ו, הן, ת, ט, עץ, ץ.
+- k13: אמת, מחל, ץ, שס, ב, ג, ו, ע.
+- k14: שס, ב, מרצ, כן, ו, ע.
+- k15: מחל, כן, ב, עם, ו, ד.
+
+**No emblem in use:** zero established findings. Even the NRP poster labelled
+“ב” has a broad ca. 1999–2003 catalogue date and an uninspected scan; its title alone
+cannot establish letters-only use in 1999. Current Agudat Yisrael 2020 and the
+recreated Alignment 1988 file do not repair historical campaign evidence gaps.
+
+Conclusion map: each per-election identity subsection is a claim record keyed by
+`kNN/letters`. Accepted claims map to retained catalogue+scan publicationEvidence,
+with medium confidence and exact hashes. Open claims map to the recorded queries
+and snippet-only locators, with **unknown artwork status**, not confidence of
+absence. The 73 remaining gaps would change status on inspection and acquisition
+of an official dated original (and adequate image quality); aggregate search
+volume and generic symbols cannot change that decision. Constituents, nonwinners,
+and other election ranges were not newly researched. All-years coverage script
+was run first with python3 after `python` was unavailable, and again at the end.
+
+## Verification and local publication
+
+All seven election batches ran `npx vitest run` (57 files / 484 tests),
+`npx tsc -p tsconfig.json --noEmit`, `npx vite build`, the dataset builder,
+and `python3 scripts/validate-party-logos.py`, successfully before their local
+commits. For the three asset batches the first differential-model test detected
+the intended metadata change; only its model digest was re-recorded after all
+26 datasets compared equal to the previous commit when omitting `logo`/`builtAt`.
+The allocation, analysis, validation and rules digests remained unchanged.
+The k11 report revision compacted repeated text without changing research content.
+
+Final `PW_PORT=5362 npx playwright test`: **43 passed in 23.3 seconds**.
+The first sandbox run could not start config.webServer (exit 1); the same command
+passed with local server/browser execution permitted. No public page was automated.
+Final logo validator: **26 overlays, 121 source records, 71 assets, 75 hosted
+entries**, five unresolved entries, zero download-unavailable entries (all-year
+counts include constituents and nonwinners).
+
+Final independent audit reproduced each of the three final PNGs byte-for-byte
+from its retained JPEG using the recorded crop recipe; original dimensions and
+SHA-256 values match. All 26 election datasets equal initial commit `391483f`
+after recursively omitting `logo` and `builtAt`. The repeat dataset build wrote
+**zero files, 38 unchanged**. Coverage was re-run after the final build and remains
+16/89 in scope. No results, frontend code or rules changed. The evidence extension
+is confined to the logo validator and documented overlay fields.
+
+Work is local on branch `t3/8cfc717d`, committed in seven election batches.
+No push, merge, deployment or live-system change. The full-logo acquisition goal
+is **not achieved**: 73 identities need further evidence; this report records the
+attempt for every initial gap and does not relabel unresolved artwork as absent.
