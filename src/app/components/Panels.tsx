@@ -1,3 +1,4 @@
+import { PreferenceSettings } from './SourcePicker.tsx';
 import { NumericStepper } from './NumericStepper.tsx';
 import { TurnoutSteps } from './TurnoutSteps.tsx';
 import { StartFrom } from './StartFrom.tsx';
@@ -23,8 +24,6 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
   const L = useL();
   const lang = useLang();
   const digits = useDigits();
-  const askSource = useStore((st) => st.askSource);
-  const voteSource = useStore((st) => st.voteSource);
   const exp = s.mode === 'experimental';
   const dep = ruleDepartures(toRuleSet(s.rules, null), RULESETS[electionRuleSetId(s.electionId)]);
   const depName: Record<string, [string, string]> = {
@@ -112,13 +111,7 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
           <select value={digits} onChange={(e) => setState({ digits: Number(e.target.value) })}>{[0, 1, 2, 3, 4, 6, 8].map((d) => <option key={d} value={d}>{d}</option>)}</select>
         </label>
         <h3>{L('Editing', 'עריכה')}</h3>
-        <label className="field" style={{ maxWidth: 220 }}>{L('Votes come from', 'הקולות מגיעים מ')}
-          <select value={askSource ? 'ask' : voteSource.kind === 'transfer' ? 'proportional' : voteSource.kind} onChange={(e) => { const v = e.target.value; setState(v === 'ask' ? { askSource: true } : { askSource: false, voteSource: { kind: v as 'new' | 'proportional' } }); }}>
-            <option value="ask">{L('Ask each time', 'לשאול בכל פעם')}</option>
-            <option value="proportional">{L('Other lists', 'שאר הרשימות')}</option>
-            <option value="new">{L('New voters', 'מצביעים חדשים')}</option>
-          </select>
-        </label>
+        <PreferenceSettings />
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+import { validAnswers, sourceChoice, sourceValue, type PreferenceAnswers, type PreferenceAsk, type PreferenceId } from './preferences.ts';
 import type { Family } from '../families/model.ts';
 import { migrateSavedColors, nextScenarioColor } from './scenarioIdentity.ts';
 import { PRESETS, type FeatureId, type Visibility } from './features.ts';
@@ -56,11 +57,9 @@ export interface State {
   notice: string | null;
   /** how every vote edit on a list is balanced (shared by all vote controls) */
   voteSource: SourceChoice;
-  /** a vote edit asks where its votes come from, until the answer is remembered */
-  askSource: boolean;
-  /** the open question, and the edit target its last answer still covers (until another target is edited) */
-  sourceAsk: { key: string; title: string; exclude: string[]; run: (src: SourceChoice) => void } | null;
-  sourceFor: string | null;
+  preferences: PreferenceAnswers;
+  preferenceAsk: PreferenceAsk | null;
+  preferenceFor: { id: PreferenceId; key: string; value: string } | null;
   /** per-election work kept while switching elections (scenario + undo history) */
   sessions: Partial<Record<ElectionId, ScenarioSession>>;
   /** Unsaved branches shared by the header and phone inspectors; deliberately session-only. */
@@ -87,13 +86,15 @@ export async function loadElectionIndex() {
 /** where vote edits take their votes from: 'ask' (each time) or the remembered answer */
 const SOURCE = 'israel-elections:vote-source';
 const rememberedSource = (() => { try { return globalThis.localStorage?.getItem(SOURCE) ?? 'ask'; } catch { return 'ask'; } })();
+const PREFERENCES_KEY = 'israel-elections:preferences';
+const rememberedPreferences = (() => { try { const raw = globalThis.localStorage?.getItem(PREFERENCES_KEY); return raw ? validAnswers(JSON.parse(raw)) : (rememberedSource === 'new' || rememberedSource === 'proportional' ? { voteSource: rememberedSource } : {}); } catch { return {}; } })();
 const persisted = (() => { try { return JSON.parse(globalThis.localStorage?.getItem(LS) ?? '{}'); } catch { return {}; } })();
 
 let state: State = {
   datasets: {}, elections: FALLBACK_INDEX, electionId: 'k26', scenario: null, preview: null, reference: null, markOfficial: persisted.markOfficial === true, past: [], future: [], selectedListId: null, blocPanel: null, tool: null, compareWith: 'historical',
   lang: persisted.lang ?? 'he', theme: persisted.theme ?? (globalThis.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
   level: migrateLevel(persisted.level), customFeatures: persisted.customFeatures ?? null, hintDismissed: persisted.hintDismissed === true, digits: persisted.digits ?? 2, layout: 'hemicycle', colorBy: 'list',
-  saved: migrateSavedColors(persisted.saved ?? []), toast: null, loadError: null, notice: null, voteSource: { kind: rememberedSource === 'new' ? 'new' : 'proportional' }, askSource: rememberedSource !== 'new' && rememberedSource !== 'proportional', sourceAsk: null, sourceFor: null, sessions: {}, scenarioDrafts: {},
+  saved: migrateSavedColors(persisted.saved ?? []), toast: null, loadError: null, notice: null, voteSource: sourceChoice(rememberedPreferences.voteSource ?? 'proportional'), preferences: rememberedPreferences, preferenceAsk: null, preferenceFor: null, sessions: {}, scenarioDrafts: {},
 };
 const listeners = new Set<() => void>();
 const emit = () => { for (const l of listeners) l(); };
@@ -101,7 +102,7 @@ const emit = () => { for (const l of listeners) l(); };
 const persist = (): boolean => {
   try { localStorage.setItem(LS, JSON.stringify({ lang: state.lang, theme: state.theme, level: state.level, customFeatures: state.customFeatures, markOfficial: state.markOfficial, hintDismissed: state.hintDismissed, digits: state.digits, saved: state.saved}));
     // its own key, so the answer survives independently of the other settings
-    localStorage.setItem(SOURCE, state.askSource ? 'ask' : state.voteSource.kind === 'new' ? 'new' : 'proportional'); return true; }
+    localStorage.setItem(PREFERENCES_KEY, JSON.stringify(state.preferences)); return true; }
   catch { return false; }
 };
 
@@ -229,7 +230,7 @@ export async function openElection(id: ElectionId, from?: { id?: string; name: s
       ({ scenario, past, future, reference } = sessions[id]!);
     }
     delete sessions[id];
-    setState({ electionId: id, scenario, reference, past, future, sessions, selectedListId: null, blocPanel: null, compareWith: 'historical', loadError: null, notice });
+    setState({ electionId: id, scenario, reference, past, future, sessions, preferenceFor: null, selectedListId: null, blocPanel: null, compareWith: 'historical', loadError: null, notice });
     return true;
   } catch (e) {
     if (seq === openSeq) setState({ loadError: { id, message: e instanceof Error ? e.message : String(e) } });
@@ -259,7 +260,10 @@ export function stashCurrent(): boolean {
 
 /** Opens a saved scenario under its own identity (the reference its markers compare with). */
 export async function openSaved(x: SavedScenario): Promise<boolean> {
-  return openElection(x.electionId, { id: x.id, name: x.name, description: x.description, log: x.log, baseBuiltAt: x.baseBuiltAt });
+  return new Promise(resolve => askPreference({ id: 'comparison', key: x.id, title: x.name, cancel: () => resolve(false), run: value => {
+    setState({ markOfficial: value === 'official' });
+    void openElection(x.electionId, { id: x.id, name: x.name, description: x.description, log: x.log, baseBuiltAt: x.baseBuiltAt }).then(resolve);
+  } }));
 }
 
 /** Returns to the official result of the open election. */
@@ -386,19 +390,41 @@ export function importScenarioJson(text: string): Scenario {
   return parsed as Scenario;
 }
 
-/** Selecting an in-place source picker applies the choice at every level. */
-/** Runs a vote edit with the vote source: asks first (one shared dialog) unless the answer is remembered,
- *  or was already given for this same target (a list, a bloc) since the last edit elsewhere. */
-export function withSource(key: string, title: string, exclude: string[], run: (src: SourceChoice) => void) {
+/** Only explicit completed actions call this; never a drag preview or keystroke stream.
+ * A second action cannot replace an unanswered question. */
+export function askPreference(ask: PreferenceAsk) {
   const st = getState();
-  if (!st.askSource || st.sourceFor === key) return run(st.voteSource);
-  setState({ sourceAsk: { key, title, exclude, run } });
+  if (st.preferenceAsk) return;
+  const saved = st.preferences[ask.id];
+  const local = st.preferenceFor;
+  const answer = local?.id === ask.id && local.key === ask.key ? local.value : saved;
+  // A named donor cannot be reused when absent, withdrawn or part of the edited target.
+  const compatible = answer && (!answer.startsWith('t:') || st.scenario?.lists.some(l => l.id === answer.slice(2) && !l.withdrawn && !ask.exclude?.includes(l.id)));
+  if (compatible) return ask.run(answer);
+  setState({ preferenceAsk: ask });
 }
-export function answerSource(src: SourceChoice, remember: boolean) {
-  const ask = getState().sourceAsk; if (!ask) return;
-  // one named list is a one-off answer; only the general sources are remembered
-  setState({ sourceAsk: null, voteSource: src, sourceFor: ask.key, ...(remember && src.kind !== 'transfer' ? { askSource: false } : {}) });
-  ask.run(src);
+export function setPreference(id: PreferenceId, value?: string) {
+  const preferences = { ...state.preferences };
+  if (value) preferences[id] = value; else delete preferences[id];
+  setState({ preferences, preferenceFor: null, ...(id === 'voteSource' && value ? { voteSource: sourceChoice(value) } : {}), ...(id === 'comparison' && value ? { markOfficial: value === 'official' } : {}) });
+}
+export function answerPreference(value: string, always: boolean) {
+  const ask = state.preferenceAsk; if (!ask) return;
+  if (always) setPreference(ask.id, value);
+  setState({ preferenceAsk: null, preferenceFor: { id: ask.id, key: ask.key, value } });
+  ask.run(value);
+}
+export function withSource(key: string, title: string, exclude: string[], run: (src: SourceChoice) => void) {
+  askPreference({ id: 'voteSource', key, title, exclude, run: value => {
+    const src = sourceChoice(value);
+    setState({ voteSource: src });
+    run(src);
+  } });
+}
+/** Choosing the inline source is already an explicit answer for the current target. */
+export function chooseSource(key: string, src: SourceChoice) {
+  if (state.preferences.voteSource) setPreference('voteSource', sourceValue(src));
+  setState({ voteSource: src, preferenceFor: { id: 'voteSource', key, value: sourceValue(src) } });
 }
 
 export function useVoteSource(): SourceChoice {

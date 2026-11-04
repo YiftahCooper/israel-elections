@@ -42,7 +42,7 @@
 .family-scale {display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;align-items:start;padding:16px;background:var(--surface-2);border:1px solid var(--rule);border-radius:6px;}
 .family-scale h3 {font-size:14px;margin-block-end:5px;}
 .family-scale-inputs {display:grid;gap:10px;justify-items:start;}
-.family-quick-step {display:flex;gap:4px;align-items:center;}
+.family-quick-step {direction:ltr;display:flex;gap:4px;align-items:center;}
 .family-quick-step input {inline-size:70px;text-align:center;}
 .family-scale input,.family-editor input:not([type=checkbox]) {padding:6px 8px;border:1px solid var(--rule-2);border-radius:5px;background:var(--surface);color:var(--ink);max-inline-size:100%;}
 .family-consequence {display:grid;gap:8px;}
@@ -73,7 +73,7 @@
 .family-picker label>span {flex:1;min-inline-size:0;}
 .family-picker input {margin-block-start:3px;}
 .family-selected,.family-election-stepper,.family-link-pickers {display:flex;flex-wrap:wrap;gap:6px;}
-.family-election-stepper {align-items:center;}
+.family-election-stepper {direction:ltr;align-items:center;}
 .family-selected button {white-space:normal;}
 .family-editor details {padding:10px;border:1px solid var(--rule);border-radius:5px;}
 .family-editor details>* {margin-block:8px;max-inline-size:100%;}

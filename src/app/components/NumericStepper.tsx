@@ -2,7 +2,7 @@ import { useState, type KeyboardEvent } from 'react';
 import { useL } from '../i18n.ts';
 import { DecimalInput, NumberInput, Seg } from './ui.tsx';
 export interface NumericStep { id: string; label: string; amount: number; unit?: 'pp' }
-/** One mirrored control for precise entry and domain steps. Each press commits once.
+/** One left-to-right numeric control for precise entry and domain steps. Each press commits once.
  *  In the field, ↑/↓ step by the chosen size and PageUp/PageDown by ten times it (a spin button's keys). */
 export function NumericStepper({ label, value, onCommit, steps, targetForStep, onPreview, min = 0, max = Number.MAX_SAFE_INTEGER, digits, showLabel = false, defaultStep, onStepCommit }: {
   label: string; value: number; onCommit: (n: number) => void; steps: NumericStep[];

@@ -48,7 +48,7 @@ test('Standard adds scenario management and consequential list edits, but not id
   await page.keyboard.press('Escape');
 
   await listCard(page, 'Likud').click();
-  await expect(details(page).getByRole('combobox', { name: /balance the difference/ })).toBeVisible();
+  await expect(details(page).getByRole('combobox', { name: /Balance votes with/ })).toBeVisible();
   await expect(details(page).getByRole('checkbox', { name: 'Withdrawn from the race' })).toBeVisible();
   await expect(details(page).getByRole('combobox', { name: 'Agreement partner' })).toHaveValue(/.+/);
   await expect(details(page).getByLabel('Short name (English)')).toHaveCount(0);
@@ -84,7 +84,7 @@ test('Simple balances vote edits proportionally even if another source was chose
   await start(page);
   await levelButton(page, 'Standard').click();
   await listCard(page, 'Likud').click();
-  await details(page).getByRole('combobox', { name: /balance the difference/ }).selectOption('new');
+  await details(page).getByRole('combobox', { name: /Balance votes with/ }).selectOption('new');
 
   const before = await listRow(page, 'Yashar!').locator('.lb-sub').innerText();
   await levelButton(page, 'Simple').click();

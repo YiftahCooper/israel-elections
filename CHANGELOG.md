@@ -1,5 +1,10 @@
 # Changelog
 
+## 5 November 2026 — preferences at the action
+
+- Choose vote source, then “For this list” or “Always”; saved-scenario opens ask which comparison to mark. Both use one preference dialog and resettable settings in Rules → Editing.
+- Keep numeric ± rows and sliders left to right in Hebrew as in English; preserve RTL labels and page layout.
+
 ## 5 November 2026 — seat counts you can type; one question for where votes come from
 
 - A list's seat count is editable (typed or ±1): the engine finds the fewest votes that give it and applies them as one ordinary, marked and undoable vote edit. When no vote count gives exactly that number (e.g. 1 seat just past the threshold), the list lands on the nearest possible count and says so.
