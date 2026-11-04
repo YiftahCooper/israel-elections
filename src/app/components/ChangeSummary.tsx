@@ -1,3 +1,4 @@
+import {isFamilyGrouping} from '../../families/labels.ts';
 import { useActiveReference } from '../useActiveReference.ts';
 import { referenceLabel } from '../derive.ts';
 import { allocationOf } from '../derive.ts';
@@ -48,6 +49,7 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
   }, [s, r, base, baseR]);
   if (!s.log.length) return null;
 
+  const familyGrouping = isFamilyGrouping(s);
   const majority = Math.floor(s.rules.seats / 2) + 1;
   const holder = blocs?.find((x) => x.n >= majority);
   const name = (b: { nameHe: string; nameEn: string }) => (lang === 'he' ? b.nameHe : b.nameEn);
@@ -65,9 +67,9 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
           </span>}
       {nonSeatChanges(s, base, lang).length > 0 && <span>{nonSeatChanges(s, base, lang).join(' · ')}</span>}
       {blocs && <span className="moves" style={{ color: 'var(--ink-2)' }}>
-        <span>{groupingLabel(s, lang)}</span>
+        {!familyGrouping && <span>{groupingLabel(s, lang)}</span>}
         {blocs.filter((x) => x.n > 0 || x.d).map(({ b, n, d }) => <span key={b.id}><bdi>{name(b)}</bdi> {n}{d ? <span dir="ltr"> ({sign(d)})</span> : null}</span>)}
-        <span>{holder ? L(`${name(holder.b)} holds a majority`, `ל${name(holder.b)} יש רוב`) : L('no bloc has a majority', 'לאף גוש אין רוב')}</span>
+        {!familyGrouping && <span>{holder ? L(`${name(holder.b)} holds a majority`, `ל${name(holder.b)} יש רוב`) : L('no bloc has a majority', 'לאף גוש אין רוב')}</span>}
       </span>}
       {s.mode === 'experimental' && <span className="chip exp">{L('Experimental rules', 'כללים ניסיוניים')}</span>}
       <span className="spacer" />

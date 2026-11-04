@@ -3,6 +3,8 @@
   "id": "religious-parties",
   "revision": "draft-2026-11-04",
   "status": "research-draft-not-production",
+  "labelEn": "Religious",
+  "labelHe": "דתיים",
   "nameHe": "מפלגות דתיות — הגדרה מוסדית רחבה",
   "nameEn": "Religious parties — Haredi, national religious and Islamist organisations",
   "defaultMixedPolicy": "separate-segment",

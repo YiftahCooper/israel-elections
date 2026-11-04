@@ -10,7 +10,7 @@ export function compileFamilyRuntime(root = process.cwd()) {
   });
   const families = readdirSync(`${root}/data/meta/families`).filter(p => p.endsWith('.json')).map(path => {
     const f = read(`data/meta/families/${path}`) as Family;
-    return { id:f.id, revision:f.revision, status:f.status, nameHe:f.nameHe, nameEn:f.nameEn, definition:f.definition, definitionHe:f.definitionHe,
+    return { id:f.id, revision:f.revision, status:f.status, nameHe:f.nameHe, nameEn:f.nameEn, labelEn:f.labelEn, labelHe:f.labelHe, definition:f.definition, definitionHe:f.definitionHe,
       policy:f.defaultMixedPolicy, elections:f.elections.map(e => ({id:e.electionId,
         members:e.members.map(m=>[m.listId, m.scope === 'mixed' ? 2 : m.scope === 'extension' ? 1 : 0, m.treatment === 'include' ? 0 : m.treatment === 'separate-segment' ? 1 : m.treatment === 'exclude' ? 2 : 3] as const),
         reviews:e.reviewCandidates.map(m=>m.listId),

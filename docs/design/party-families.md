@@ -62,8 +62,7 @@ target-share input mode. Before/after 120-seat strips preview the allocation, wi
 exact target votes and conservation/participation consequences before application.
 
 Opening a chart point or table date also sets an ephemeral historical family lens.
-On Overview, FamilyTreatment is at the top of the list column, and consecutive
-member runs have a labelled bracket. Mixed runs have their own label and hatching.
+On Overview, FamilyTreatment is at the top of the list column, and every selected member row has a small family label and the same tint, including non-adjacent members. Mixed rows have a mixed label and hatching.
 This lens never edits the scenario; its close control clears it. Explicit Apply family
 as grouping remains a separate undoable scenario action, replacing the lens with
 the applied definition. Sorting lists by seats is preserved.
@@ -130,7 +129,7 @@ light/dark, 1440×900 and 390×844, saved under `.backup-scratch/families/` as
 `scripts/family-runtime.ts` compiles metadata during Vite build (and development) to
 `data/families-runtime.json` and the profile's virtual runtime module. It packs ids,
 bilingual names/definitions, membership/outcome flags, review ids, dates, publication
-flags, immutable whole-list votes and derived totals. The current JSON is 41,323 bytes
+flags, immutable whole-list votes and derived totals. The current JSON is 41,846 bytes
 raw. A unit test enforces the 200 KB ceiling and independently reconciles every
 family/election with the full metadata. No generated copy is checked into source.
 
@@ -146,3 +145,23 @@ id so closing a picker nested inside the editor is not mistaken for closing the 
 
 The family page and registry load in separate chunks. No changes to vote datasets,
 engine allocation rules or concurrent control/graphics implementations are needed.
+
+
+## Short-label repair
+
+Each built-in carries `labelEn` / `labelHe` for chips, profile headings, grouping names,
+bloc cards, legends and the session band. The complete `nameEn` / `nameHe` titles
+remain in the information sheet with the definitions. Labels are presentation metadata;
+classification, membership, votes and evidence revisions are unchanged. Legacy snapshots
+without labels resolve the nine known preset ids to these same short names; custom
+definitions fall back to their own names. Renaming a personal preset updates its label.
+
+Family grouping creates a Mixed bloc only when the resolved election has separate mixed
+list placements. Include-whole and exclude policies do not create an empty Mixed bloc.
+The session band gives each family/other bloc count once, without repeating the grouping
+title or asserting a political majority. A scale-only family snapshot does not change
+summary semantics for an ordinary sourced grouping.
+
+The Overview keeps seat order. Every visible selected or mixed member has an individual
+label and tint, including separated runs such as Degel in 1988; no multi-row bracket
+implies adjacency. The list-column header is one short label plus the mixed policy.

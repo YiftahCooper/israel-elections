@@ -1,3 +1,4 @@
+import {familyLabel} from '../../families/labels.ts';
 import { useEffect, useState } from 'react';
 import type { ElectionDataset, ElectionId } from '../../data/schema.ts';
 import { membership, type Family } from '../../families/model.ts';
@@ -22,7 +23,7 @@ export function FamilyEditor({f,initialElection,onEdit,onSave}: {f:Family;initia
  const apply=()=>{onEdit(x=>({...x,included:[...new Set([...x.included??[],...linked])],links:[...(x.links??[]),...(edge?edge.from.flatMap(from=>edge.to.map(to=>({from,to,type:edge.relation==='electoral-partner'?'electoral-partner' as const:'lineage' as const,sourceEdgeId:edge.id,...(scope?{electionId:scope}:{})}))):[{from,to,type,...(scope?{electionId:scope}:{})}])]}));setPreview(false);setSuggested('');};
  return <div className="family-editor">
   <div className="row"><button className="btn" onClick={onSave}>{L('Save as my preset','שמירה כתבנית שלי')}</button><span className="small muted">{L('Browser-only · edits make a personal copy','בדפדפן זה בלבד · עריכות יוצרות עותק אישי')}</span></div>
-  <label>{L('Preset name','שם התבנית')}<input key={`${f.id}-${lang}`} defaultValue={lang==='he'?f.nameHe:f.nameEn} onBlur={e=>{const v=e.target.value.trim();if(v&&v!==(lang==='he'?f.nameHe:f.nameEn))onEdit(x=>({...x,[lang==='he'?'nameHe':'nameEn']:v}));}}/></label>
+  <label>{L('Preset name','שם התבנית')}<input key={`${f.id}-${lang}`} defaultValue={familyLabel(f,lang)} onBlur={e=>{const v=e.target.value.trim();if(v&&v!==(familyLabel(f,lang)))onEdit(x=>({...x,[lang==='he'?'nameHe':'nameEn']:v,[lang==='he'?'labelHe':'labelEn']:v}));}}/></label>
   <div className="family-election-stepper" role="group" aria-label={L('Membership election','בחירות לעריכת חברות')}>
    <button className="btn" disabled={at===0} aria-label={L('Earlier membership election','בחירות קודמות לעריכת חברות')} onClick={()=>setElection(historyElections[at-1].id)}>‹</button>
    <ChoicePicker label={L('Membership election','בחירות לעריכת חברות')} value={election} options={historyElections.map(d=>({value:d.id,label:new Date(d.electionDate+'T12:00:00').toLocaleDateString(lang==='he'?'he-IL':'en-GB')}))} onChange={id=>setElection(id as ElectionId)}/>

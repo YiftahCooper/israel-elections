@@ -3,6 +3,8 @@
   "id": "herut-likud",
   "revision": "draft-2026-11-04",
   "status": "research-draft-not-production",
+  "labelEn": "Likud lineage",
+  "labelHe": "שושלת הליכוד",
   "nameHe": "ברית חרות–הליכוד",
   "nameEn": "Herut–Likud organisational alliance trunk",
   "defaultMixedPolicy": "separate-segment",

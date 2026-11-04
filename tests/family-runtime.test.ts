@@ -48,7 +48,7 @@ test('import rejects invalid structures, duplicates and unsafe sources',()=>{
   expect(()=>parseFamily('null')).toThrow();expect(()=>parseFamily('{')).toThrow();
 });
 test('grouping snapshots all lists and prior state stays immutable',()=>{
-  const s=scenarioFromDataset(ds(12));const next=applyAction(s,groupingAction(f,s));expect(next.blocSchemeId).toBe(null);expect(next.customGroupingName).toBe(f.nameHe);expect(next.lists.filter(l=>l.bloc==='selected')).toHaveLength(4);expect(next.log).toHaveLength(1);expect(s.familyDefinition).toBeUndefined();
+  const s=scenarioFromDataset(ds(12));const next=applyAction(s,groupingAction(f,s));expect(next.blocSchemeId).toBe(null);expect(next.customGroupingName).toBe('חרדים');expect(next.lists.filter(l=>l.bloc==='selected')).toHaveLength(4);expect(next.log).toHaveLength(1);expect(s.familyDefinition).toBeUndefined();
 });
 test('unknown, did not contest and observed zero are distinct',()=>{const d=ds(25);expect(aggregate({...f,elections:[]},d).status).toBe('unknown');expect(aggregate({...f,elections:[{electionId:'k25',members:[],reviewCandidates:[]}]},d).status).toBe('did-not-contest');const z=structuredClone(d);for(const l of z.lists)l.votes=0;expect(aggregate(f,z).votes).toBe(0n);expect(membership(f,'k25').selected.size).toBe(2);});
 
@@ -68,3 +68,17 @@ test('compact generated runtime is below 200 KB and matches all nine independent
  const {builtins}=await import('../src/families/runtime.ts');for(const f of builtins)for(const e of f.elections){const d=ds(Number(e.electionId.slice(1))),full=JSON.parse(readFileSync(`data/meta/families/${f.id}.json`,'utf8'));const row=full.elections.find((r:{electionId:string})=>r.electionId===e.electionId);expect(aggregate(f,d).votes).toBe(BigInt(row.computed.includedUnmixed.votes));expect(aggregate(f,d).mixed).toBe(BigInt(row.computed.mixedWholeLists.votes));}
 });
 test('family colours are stable, chromatic and distinct for the nine presets',async()=>{const {builtins,familyColor}=await import('../src/families/runtime.ts');expect(new Set(builtins.map(familyColor)).size).toBe(9);expect(familyColor(fork(f))).not.toBe(familyColor(f));});
+
+test('short labels survive runtime and full-definition export, with legacy snapshot fallback',async()=>{
+ const {builtins,shortFamilyName}=await import('../src/families/runtime.ts');const {familyLabel}=await import('../src/families/labels.ts');
+ expect(builtins.map(f=>f.labelEn)).toEqual(['Haredi','Arab & Arab–Jewish','Centre','Likud lineage','Labour & left','Religious Zionist','Radical right','Religious','Russian-speaking']);
+ for(const p of builtins){expect(shortFamilyName(p,'he')).toBe(p.labelHe);expect(parseFamily(readFileSync(`data/meta/families/${p.id}.json`,'utf8')).labelEn).toBe(p.labelEn);}
+ expect(familyLabel({...f,labelEn:undefined},'en')).toBe('Haredi');expect(()=>parseFamily(JSON.stringify({...f,labelEn:123}))).toThrow();
+});
+test('family grouping only creates a mixed bloc when whole mixed appearances remain separate',async()=>{
+ const {isFamilyGrouping}=await import('../src/families/labels.ts');
+ for(const n of [1,11,20]){const s=scenarioFromDataset(ds(n)),grouped=applyAction(s,groupingAction(f,s,'en'));expect(grouped.blocs.map(b=>b.id)).toContain('mixed');expect(isFamilyGrouping(grouped)).toBe(true);}
+ for(const n of [12,25]){const s=scenarioFromDataset(ds(n)),grouped=applyAction(s,groupingAction(f,s,'en'));expect(grouped.blocs.map(b=>b.id)).toEqual(['selected','other']);expect(grouped.customGroupingName).toBe('Haredi');}
+ const s=scenarioFromDataset(ds(25));expect(isFamilyGrouping(applyAction(s,scaleAction(f,s,'multiplier','10',{kind:'proportional'})))).toBe(false);
+ for(const policy of ['exclude','include-whole-list'] as const){const s=scenarioFromDataset(ds(1)),x={...f,defaultMixedPolicy:policy};expect(applyAction(s,groupingAction(x,s)).blocs.map(b=>b.id)).not.toContain('mixed');}
+});

@@ -1,3 +1,4 @@
+import {familyLabel} from '../../families/labels.ts';
 import { FamilyListTreatment } from './FamilyTreatment.tsx';
 import { resolve } from '../../families/model.ts';
 import { useActiveReference } from '../useActiveReference.ts';
@@ -50,9 +51,6 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   const familyRows = familyDefinition ? resolve(familyDefinition, s) : [];
   const row = ({ l, lr, was }: (typeof rows)[number]) => {
     const family = familyRows.find(x => x.id === l.id)?.family;
-    const displayed = [...inKnesset,...visibleOut], at = displayed.findIndex(x=>x.l.id===l.id);
-    const previousFamily = at > 0 ? familyRows.find(x=>x.id===displayed[at-1].l.id)?.family : undefined;
-    const familyStart = family && family !== 'other' && family !== previousFamily;
     const open = selected === l.id;
     const d = was === null ? 0 : lr.seats - was;
     const agr = standard ? s.agreements.find((a) => a.members.includes(l.id) && a.enabled) : undefined;
@@ -60,7 +58,6 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
     const out = !lr.qualified;
     return (
       <li key={l.id} data-family={family}>
-        {familyStart && familyDefinition && <span className="family-run-label">{lang==='he'?familyDefinition.nameHe:familyDefinition.nameEn}{family==='mixed'?` · ${L('Mixed lists','רשימות מעורבות')}`:''}</span>}
         <button type="button" data-family={familyRows.find(x => x.id === l.id)?.family} ref={open ? selRef : undefined} className={`lb-row ${out ? 'out' : ''} ${selected && !open ? 'dim' : ''}`} aria-pressed={open}
           aria-label={listLabel(l, lang)} aria-describedby={`lbd-${l.id}`}
           onClick={() => setState({ selectedListId: open ? null : l.id })}
@@ -68,6 +65,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
           <Slip letters={l.letters} color={l.color} logo={l.logo} />
           <span className="lb-main">
             <span className="lb-name">{listLabel(l, lang)}<PartEdits s={s} prefix={['lists', l.id]} /></span>
+            {familyDefinition && family && family!=='other' && <small className="family-row-label">{familyLabel(familyDefinition,lang)}{family==='mixed'?` · ${L('Mixed lists','רשימות מעורבות')}`:''}</small>}
             <span className="lb-bar" aria-hidden>
               {out
                 ? <><i className="thr-fill" style={{ width: `${Math.min(100, (l.votes / Math.max(1, thr)) * 100)}%`, background: l.color }} /><span className="thr-tick" /></>
@@ -84,7 +82,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
               {partner && <> · ⇄ {listLabel(partner, lang)}</>}
             </span>
           </span>
-          <span className="sr-only" id={`lbd-${l.id}`}>{L(`${lr.seats} seats`, `${lr.seats} מנדטים`)}, {fmtPct(l.votes, total, digits)}{d !== 0 && <>, {Math.abs(d)}{d > 0 ? baseLabel.more : baseLabel.fewer}</>}</span>
+          <span className="sr-only" id={`lbd-${l.id}`}>{L(`${lr.seats} seats`, `${lr.seats} מנדטים`)}, {fmtPct(l.votes, total, digits)}{familyDefinition && family && family!=='other' && <> · {familyLabel(familyDefinition,lang)}{family==='mixed'?` · ${L('Mixed lists','רשימות מעורבות')}`:''}</>}{d !== 0 && <>, {Math.abs(d)}{d > 0 ? baseLabel.more : baseLabel.fewer}</>}</span>
           <span className="lb-seats">
             <b key={`s${lr.seats}`} className={s.log.length ? 'tick' : ''}>{lr.seats}</b>
             {d !== 0 && <small dir="ltr"><Mark up={d > 0} />{Math.abs(d)}</small>}

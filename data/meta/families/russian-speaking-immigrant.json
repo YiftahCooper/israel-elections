@@ -3,6 +3,8 @@
   "id": "russian-speaking-immigrant",
   "revision": "draft-2026-11-04",
   "status": "research-draft-not-production",
+  "labelEn": "Russian-speaking",
+  "labelHe": "דוברי רוסית",
   "nameHe": "מפלגות העולים דוברי הרוסית",
   "nameEn": "Russian-speaking immigrant electoral vehicles",
   "defaultMixedPolicy": "separate-segment",
