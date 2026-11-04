@@ -1,0 +1,12 @@
+.locality-map-tool { min-width: 0; }
+.locality-map-canvas { height: min(65vh, 580px); min-height: 340px; width: 100%; margin-block: 12px; isolation: isolate; border: 1px solid #78838c; border-radius: 8px; }
+.locality-map-canvas .leaflet-tooltip { direction: inherit; unicode-bidi: plaintext; color: #182638; background: #fff; }
+.locality-map-matches, .locality-map-address, .locality-map-legend { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-block: 10px; }
+.locality-map-address label { flex: 1 1 230px; }
+.locality-map-address input { width: 100%; }
+.locality-map-address small { flex-basis: 100%; }
+.locality-map-legend span { display: inline-flex; gap: 5px; align-items: center; font-size: .8rem; }
+.locality-map-legend i { width: 12px; height: 12px; border: 1px solid #78838c; border-radius: 50%; }
+.locality-map-results { border-inline-start: 3px solid #78838c; padding-inline-start: 12px; margin-block: 14px; }
+.locality-map-tool button, .locality-map-tool select { min-height: 36px; }
+.locality-map-tool :focus-visible { outline: 3px solid #3d91df; outline-offset: 2px; }
