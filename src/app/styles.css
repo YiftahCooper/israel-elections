@@ -136,7 +136,7 @@ input, textarea { caret-color: var(--focus); }
   .band { padding: 6px 10px; gap: 6px 8px; }
   .band .brand { font-size: 15px; flex-basis: 100%; }
   .band .tool .label { display: none; }
-  .band select.election { width: auto; flex: 1; }
+  .band select.election { width: 100%; flex: 0 0 100%; min-width: 0; }
   .work { padding: 8px 8px 24px; gap: 8px; }
   .session, .banner { padding-inline: 10px; }
 }
@@ -333,13 +333,14 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 
 /* ---------- seat security */
 .security { display: grid; gap: 2px; }
-.sec-row { display: grid; grid-template-columns: minmax(110px, 170px) 1fr 52px 1fr; gap: 8px; align-items: center; padding: 4px 6px; border-radius: 4px; cursor: pointer; }
+.sec-row { display: grid; grid-template-columns: minmax(110px, 170px) 1fr 52px 1fr; gap: 8px; align-items: center; padding: 4px 6px; border-radius: 4px; }
 .sec-row:hover:not(.head) { background: var(--surface-2); }
 .sec-row.head { cursor: default; font-size: 12.5px; color: var(--muted); font-weight: 600; }
 .sec-l, .sec-r { display: flex; align-items: center; gap: 6px; min-width: 0; }
 .sec-l { justify-content: flex-end; }
 .sec-bar { display: inline-block; height: 12px; border-radius: 2px; min-width: 2px; }
-.sec-row > span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex-wrap: nowrap; }
+.sec-row > span:first-child { min-width: 0; flex-wrap: nowrap; }
+.sec-row .table-action { min-width: 0; white-space: normal; overflow-wrap: anywhere; }
 .sec-row .swatch { flex: none; }
 @media (max-width: 760px) { .sec-row { grid-template-columns: 90px 1fr 36px 1fr; } }
 
@@ -553,3 +554,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .party-links a { color: var(--ink-2); text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); padding: 2px 0; }
 .party-links a:hover { color: var(--ink); text-decoration-color: currentColor; }
 .party-row .party-links { display: flex; }
+
+.table-action { color: inherit; font: inherit; background: none; border: 0; padding: 3px 4px; text-align: start; cursor: pointer; }
+.table-action:hover { text-decoration: underline; }
+.table-action:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.cmp-label .swatch { display: inline-block; }

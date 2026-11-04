@@ -97,7 +97,8 @@ export function App() {
     });
     const onKey = (e: KeyboardEvent) => {
       const t = e.target as HTMLElement;
-      if (t && /INPUT|TEXTAREA|SELECT/.test(t.tagName)) return;
+      if (e.defaultPrevented) return;
+      if (t && /INPUT|TEXTAREA|SELECT/.test(t.tagName) && e.key !== 'Escape') return;
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); if (e.shiftKey) redo(); else undo(); }
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'y') { e.preventDefault(); redo(); }
       if (e.key === 'Escape') setState((st) => (st.selectedListId ? { selectedListId: null } : { blocPanel: null }));

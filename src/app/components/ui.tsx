@@ -85,7 +85,7 @@ export function NumberInput({ value, onCommit, label, width }: { value: number; 
   return (
     <input type="text" inputMode="numeric" className="num-in" aria-label={label} title={L('Whole number ≥ 0; press Enter to apply', 'מספר שלם ≥ 0; Enter להחלה')}
       style={width ? { width } : undefined} value={text} onChange={(e) => setText(e.target.value)} onBlur={commit}
-      onKeyDown={(e) => { if (e.key === 'Enter') commit(); if (e.key === 'Escape') setText(value.toLocaleString('en-US')); }} />
+      onKeyDown={(e) => { if (e.key === 'Enter') commit(); if (e.key === 'Escape' && text !== value.toLocaleString('en-US')) { e.preventDefault(); e.stopPropagation(); setText(value.toLocaleString('en-US')); } }} />
   );
 }
 
@@ -105,7 +105,7 @@ export function DecimalInput({ value, onCommit, label, digits = 2, width = 84 }:
   return (
     <input type="text" inputMode="decimal" className="num-in" aria-label={label} style={{ width }} value={text}
       onFocus={(e) => { setEditing(true); e.target.select(); }} onChange={(e) => setText(e.target.value)} onBlur={commit}
-      onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); if (e.key === 'Escape') { setText(shown); setEditing(false); } }} />
+      onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); if (e.key === 'Escape' && text !== shown) { e.preventDefault(); e.stopPropagation(); setText(shown); setEditing(false); } }} />
   );
 }
 
@@ -117,7 +117,7 @@ export function TextField({ value, onCommit, label, placeholder }: { value: stri
   // after committing, show the value actually in force (a rejected edit reverts)
   const commit = () => { if (text !== value) onCommit(text); setCommits((c) => c + 1); };
   return <input type="text" aria-label={label} placeholder={placeholder} value={text} onChange={(e) => setText(e.target.value)} onBlur={commit}
-    onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); if (e.key === 'Escape') setText(value); }} />;
+    onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); if (e.key === 'Escape' && text !== value) { e.preventDefault(); e.stopPropagation(); setText(value); } }} />;
 }
 
 /** "Learn more" link for a glossary term, in the interface language, with its publisher. Terms that

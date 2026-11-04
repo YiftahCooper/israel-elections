@@ -150,8 +150,8 @@ function ListTable({ s, r, rows, cols, heads }: { s: Scenario; r: AllocationResu
       <table className="tbl">
         <thead><tr><th>{L('List', 'רשימה')}</th>{heads.map((h) => <th key={h} className="n">{h}</th>)}</tr></thead>
         <tbody>{rows.map((l) => { const sl = s.lists.find((x) => x.id === l.id)!; return (
-          <tr key={l.id} onClick={() => setState({ selectedListId: l.id })} style={{ cursor: 'pointer' }}>
-            <td><span className="row" style={{ gap: 6 }}><span className="swatch" style={{ background: sl.color }} />{listLabel(sl, lang)} <span className="muted">{sl.letters}</span></span></td>
+          <tr key={l.id} >
+            <td><span className="row" style={{ gap: 6 }}><span className="swatch" style={{ background: sl.color }} /><button className="table-action" onClick={() => setState({ selectedListId: l.id })}>{listLabel(sl, lang)}</button> <span className="muted">{sl.letters}</span></span></td>
             {cols(l).map((c, k) => <td key={k} className="n">{c}</td>)}
           </tr>
         ); })}</tbody>
