@@ -211,6 +211,10 @@ input[type="color"] { width: 34px; height: 28px; padding: 0 2px; border: 1px sol
 /* ---------- candidate list */
 .cands { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
 .cand { display: grid; grid-template-columns: 30px minmax(0, 1fr) auto; gap: 8px; align-items: center; padding: 4px 8px; border-radius: 6px; border: 1px solid transparent; }
+.bio-links { display: inline-flex; flex-wrap: wrap; gap: 0 8px; margin-inline-start: 8px; vertical-align: baseline; }
+.bio-key { margin: 0 0 6px; }
+.bio-links a { color: var(--ink-2); text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); text-underline-offset: 2px; padding: 2px 0; }
+.bio-links a:hover { color: var(--ink); text-decoration-color: currentColor; }
 .cand .rk { font-variant-numeric: tabular-nums; color: var(--muted); text-align: end; font-size: 12.5px; }
 .cand.el { background: color-mix(in srgb, var(--c) 16%, transparent); border-color: color-mix(in srgb, var(--c) 40%, transparent); }
 .cand.el .rk { color: var(--ink); font-weight: 650; }

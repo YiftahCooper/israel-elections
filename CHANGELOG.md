@@ -17,6 +17,8 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 - 1973 (8th Knesset): its list connections were found in the Central Elections Committee's own seat-calculation record
   (decision 0077); every seat reproduces, all 120 elected members are cross-checked, and three ballot letters and four list
   names were corrected from the notices. All 26 elections are now available.
+- Candidate biography links: each candidate's Knesset member page, the party's own page (archived from the campaign
+  where possible) and Hebrew Wikipedia, labelled as a secondary source; name-only matches are marked "probable".
 - English-language Wikipedia is never used or linked; the 2003/2006 membership cross-check now uses the Knesset's official data.
 - A 47-term bilingual glossary: (i) icons explain terms in the interface language, with a "learn more" link to the law,
   the Central Elections Committee or the Israel Democracy Institute (every link checked; no Wikipedia).

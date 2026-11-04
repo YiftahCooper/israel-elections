@@ -46,6 +46,8 @@ export interface Candidate {
   notes?: { en: string; he: string }[];
   /** the constituent party (ListRecord.parties) the candidate represented on a joint list, when sourced */
   partyId?: string;
+  /** biography links (data/meta/bios): official Knesset page, Hebrew Wikipedia, the party's own page */
+  bio?: CandidateBio;
 }
 
 export interface ListRecord {
@@ -90,6 +92,14 @@ export interface BlocScheme {
   nameEn: string;
   date?: string;
   blocs: (BlocDef & { lists: string[]; parties: string[]; candidates: string[] })[];
+}
+
+/** Where to read about a candidate. `probable`: matched by name under the stated rules, not by an official id. */
+export interface CandidateBio {
+  knesset?: string;
+  hewiki?: { title: string; url: string };
+  party?: { url: string; publisher?: string; archivedAt?: string };
+  probable?: boolean;
 }
 
 /** A party logo as used at that election: a locally hosted, freely licensed file with its credit. */

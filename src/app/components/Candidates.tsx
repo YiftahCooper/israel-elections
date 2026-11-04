@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import type { CandidateBio } from '../../data/schema.ts';
 import type { SimCandidate, SimList } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
 import { shownName } from '../derive.ts';
@@ -41,6 +42,8 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
       {baseCandidates && JSON.stringify(baseCandidates) !== JSON.stringify(c) && <button className="btn small" style={{ marginBottom: 6 }} onClick={() => dispatch({ type: 'resetCandidates', listId: l.id })}>{L('Restore the registered candidate list', 'שחזור רשימת המועמדים הרשומה')}</button>}
       {seats > seated.length && !l.rosterUnavailable && !l.rosterTruncated && <p className="down small">{L(`The list has only ${seated.length} candidates for ${seats} seats.`, `ברשימה רק ${seated.length} מועמדים ל-${seats} מנדטים.`)}</p>}
       {c.length === 0 && !l.rosterUnavailable && <p className="muted small">{L('No candidates registered.', 'אין מועמדים רשומים.')}</p>}
+      {c.some((x) => x.bio) && <p className="tiny muted bio-key">{L('Links: Knesset pages (official), party pages (partisan, archived from the campaign where possible), Hebrew Wikipedia (secondary). English Wikipedia is not linked: it is not reliable on Israel.',
+        'קישורים: דפי הכנסת (רשמי), דפי המפלגות (מפלגתי, מארכיון תקופת הבחירות כשאפשר), ויקיפדיה העברית (משני). ויקיפדיה האנגלית אינה מקושרת: אינה אמינה בענייני ישראל.')}</p>}
       <ol className="cands" style={{ ['--c' as string]: l.color }} aria-label={L('Candidate list', 'רשימת המועמדים')}>
         {c.slice(0, limit).map((x, i) => {
           const pos = seatPos.get(x.id);
@@ -65,6 +68,7 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
                     : x.partyHe && l.sponsorsHe.includes(';') ? <span className="muted tiny"> · {x.partyHe}</span> : null; })()}
                 {x.originListId && x.originListId !== l.id && !l.originIds.includes(x.originListId) && <span className="muted tiny"> · {L('moved', 'הועבר')}</span>}
                 {changed && <span className={`tiny ${elected ? 'up' : 'down'}`}> · {elected ? L('enters', 'נכנס') : L('leaves', 'יוצא')}</span>}
+                {x.bio && <BioLinks bio={x.bio} name={shownName(x)} />}
               </span>
               {advanced ? (
                 <span className="tools">
@@ -83,5 +87,26 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
       {showAll && c.length > 12 && <button className="btn small ghost" style={{ marginTop: 6 }} onClick={() => setShowAll(false)}>{L('Show fewer', 'הצגת פחות')}</button>}
       {advanced && <button className="btn small" style={{ marginTop: 6, marginInlineStart: 6 }} onClick={() => commit([...c, { id: `new-${Date.now().toString(36)}`, nameHe: L('New candidate', 'מועמד חדש') }], 'append')}>{L('Add candidate at end', 'הוספת מועמד בסוף')}</button>}
     </div>
+  );
+}
+
+const safe = (u: string | undefined) => (u && /^https:\/\//.test(u) ? u : undefined);
+
+/** Where to read about a candidate: the Knesset's member page (official), the party's own page (partisan,
+ *  archived from the campaign where possible) and Hebrew Wikipedia (a secondary source). English Wikipedia
+ *  is never linked. A "probable" match was made by name under stated rules, not by an official id. */
+function BioLinks({ bio, name }: { bio: CandidateBio; name: string }) {
+  const L = useL();
+  const knesset = safe(bio.knesset), party = safe(bio.party?.url), wiki = safe(bio.hewiki?.url);
+  if (!knesset && !party && !wiki) return null;
+  const year = bio.party?.archivedAt?.slice(0, 4);
+  return (
+    <span className="bio-links tiny" role="group" aria-label={L(`About ${name}`, `על ${name}`)}>
+      {knesset && <a href={knesset} target="_blank" rel="noreferrer" title={L('Official member page, Knesset website', 'דף חבר הכנסת הרשמי, אתר הכנסת')}>{L('Knesset', 'הכנסת')}</a>}
+      {party && <a href={party} target="_blank" rel="noreferrer" title={L('The party’s own page (partisan)', 'הדף של המפלגה עצמה (מקור מפלגתי)') + (year ? L(`, archived ${year}`, `, ארכיון ${year}`) : '')}>
+        {L('Party', 'מפלגה')}{year ? ` ${year}` : ''}</a>}
+      {wiki && <a href={wiki} target="_blank" rel="noreferrer" hrefLang="he" title={L('Hebrew Wikipedia: a secondary source', 'ויקיפדיה העברית: מקור משני')}>{L('Wikipedia (he)', 'ויקיפדיה')}</a>}
+      {bio.probable && <span className="muted" title={L('Matched by name, not by an official identifier', 'הותאם לפי שם, לא לפי מזהה רשמי')}>{L('(probable match)', '(התאמה סבירה)')}</span>}
+    </span>
   );
 }

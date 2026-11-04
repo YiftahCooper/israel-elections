@@ -13,6 +13,12 @@ OData service), the Central Bureau of Statistics and gov.il. Secondary sources a
 considers it unreliable on Israel-related information. Hebrew Wikipedia may serve only as a lead to an
 official document or as a labelled secondary source.
 
+Candidate biography links (`data/meta/bios/kNN.json`, attached by `scripts/lib/build/bios.ts`) follow the
+same order: the Knesset's member page (official), the party's own page (partisan, archived from the campaign
+where possible) and Hebrew Wikipedia (shown as a secondary source). Matches made by name rather than an
+official identifier are shown as "probable". The build fails on an unknown candidate id or an English Wikipedia
+link, and imported scenarios may carry only `https:` links. Method and coverage: `docs/research/candidate-bios.md`.
+
 ## Sources by election
 
 | Id | Election date | Official source files retained | Secondary data used | Still missing from a released dataset |

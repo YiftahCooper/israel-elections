@@ -62,3 +62,14 @@ test('the Scenarios menu closes on Escape and returns focus to its button', asyn
   await expect(page.getByRole('button', { name: /Create share link/ })).toHaveCount(0);
   await expect(button).toBeFocused();
 });
+
+test('a candidate links to the Knesset page, the party page and Hebrew Wikipedia marked secondary', async ({ page }) => {
+  await start(page);
+  await page.getByRole('combobox', { name: 'Election' }).selectOption('k25');
+  await page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: /Likud/ }).first().click();
+  await page.getByRole('region', { name: 'List details' }).getByText(/^Who gets in/).click(); // Simple keeps the roster folded
+  const about = page.getByRole('group', { name: 'About נתניהו בנימין' });
+  await expect(about.getByRole('link', { name: 'Knesset' })).toHaveAttribute('href', /^https:\/\/main\.knesset\.gov\.il\/mk\//);
+  await expect(about.getByRole('link', { name: 'Wikipedia (he)' })).toHaveAttribute('href', /^https:\/\/he\.wikipedia\.org\//);
+  await expect(page.locator('a[href*="en.wikipedia.org"]')).toHaveCount(0);
+});

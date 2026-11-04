@@ -1,7 +1,7 @@
 // Editable simulation state. A Scenario is a full, self-contained copy of an election's inputs;
 // the historical dataset it was created from is never modified. Every displayed figure is derived
 // from a Scenario through the engine — no totals are stored separately.
-import { ELECTION_IDS, type BlocDef, type BlocScheme, type ElectionDataset, type ElectionId, type LogoRef, type PartyDef } from '../data/schema.ts';
+import { ELECTION_IDS, type BlocDef, type BlocScheme, type CandidateBio, type ElectionDataset, type ElectionId, type LogoRef, type PartyDef } from '../data/schema.ts';
 import { percentToRational, toPercentString } from '../engine/rational.ts';
 import type { AllocationInput, RemainderMethod, RuleSet } from '../engine/types.ts';
 import { ISRAEL_1949, ISRAEL_1951, ISRAEL_1973, ISRAEL_1977, ISRAEL_1992, ISRAEL_2004, ISRAEL_2014, OPTIONAL_RULES, RULE_DEFAULTS, RULESETS } from '../engine/rules.ts';
@@ -23,6 +23,8 @@ export interface SimCandidate {
   notes?: { en: string; he: string }[];
   /** constituent party on a joint list (Candidate.partyId; decision 0087) */
   partyId?: string;
+  /** biography links (Candidate.bio) */
+  bio?: CandidateBio;
 }
 
 export interface SimList {
@@ -215,7 +217,7 @@ function scenarioBase(ds: ElectionDataset, name: string): Scenario {
       color: l.color, bloc: l.bloc, votes: l.votes, withdrawn: l.withdrawn, sponsorsHe: l.sponsorsHe,
       candidates: l.candidates.map((c) => ({ id: c.id, nameHe: c.nameHe, partyHe: c.partyHe, originListId: l.id, ...(c.notSeated ? { notSeated: true } : {}),
         ...(c.displayNameHe ? { displayNameHe: c.displayNameHe } : {}), ...(c.notes?.length ? { notes: c.notes } : {}),
-        ...(c.partyId ? { partyId: c.partyId } : {}) })),
+        ...(c.partyId ? { partyId: c.partyId } : {}), ...(c.bio ? { bio: c.bio } : {}) })),
       ...(l.candidatesUnavailable ? { rosterUnavailable: true } : {}),
       ...(l.candidatesTruncated ? { rosterTruncated: true } : {}),
       ...(l.parties?.length ? { parties: l.parties.map((p) => ({ ...p })) } : {}),
@@ -255,10 +257,14 @@ const shape = (fields: Record<string, Check>): Check => {
   const entries = Object.entries(fields);
   return (x) => record(x) && entries.every(([k, check]) => check(x[k]));
 };
+/** links that a shared or imported scenario may carry (never javascript: or data: URLs) */
+const httpsUrl: Check = (x) => typeof x === 'string' && /^https:\/\/[^\s]+$/.test(x);
 const oneOf = (...values: unknown[]): Check => (x) => values.includes(x);
 const uniqueStrings: Check = (x) => array(string)(x) && new Set(x as string[]).size === (x as string[]).length;
 const candidate = shape({ id: string, nameHe: string, partyHe: optional(string), originListId: optional(string),
-  displayNameHe: optional(string), notes: optional(array(shape({ en: string, he: string }))), partyId: optional(string) });
+  displayNameHe: optional(string), notes: optional(array(shape({ en: string, he: string }))), partyId: optional(string),
+  bio: optional(shape({ knesset: optional(httpsUrl), hewiki: optional(shape({ title: string, url: httpsUrl })),
+    party: optional(shape({ url: httpsUrl, publisher: optional(string), archivedAt: optional(string) })), probable: optional(boolean) })) });
 const logo = shape({ file: string, licence: string, attribution: string, sourceUrl: string, background: optional(string) });
 const party = shape({ id: string, nameHe: string, nameEn: string, color: optional(string), logo: optional(logo) });
 const candidates: Check = (x) => array(candidate)(x) && new Set((x as SimCandidate[]).map((c) => c.id)).size === (x as SimCandidate[]).length;
