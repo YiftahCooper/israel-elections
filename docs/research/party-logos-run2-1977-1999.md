@@ -1090,3 +1090,19 @@ Then use the existing recipe: Pillow `.crop((210,1130,1145,1435)).convert('RGBA'
 No new overlay fields or validator exceptions; `publicationEvidence.asset`
 identifies the unmodified PDF container, whose hash is `originalSha256`.
 The extracted full page is reproducible scratch, not a substituted original.
+### Run 3 · k12
+
+| Identity | Lead(s) checked | Decision and observed evidence |
+|---|---|---|
+| k12/שס | [NNL_ARCHIVE_AL997011437305505171](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997011437305505171/NLI) | Gap: each linked URL returned HTTP 403 / browser challenge; no catalogue or scan inspected. |
+| k12/פ | [NNL_ARCHIVE_AL990032573700205171](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL990032573700205171/NLI) | Gap: each linked URL returned HTTP 403 / browser challenge; no catalogue or scan inspected. |
+| k12/ע | [NNL_ARCHIVE_AL997012849354405171](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012849354405171/NLI) | Gap: each linked URL returned HTTP 403 / browser challenge; no catalogue or scan inspected. |
+
+Category B priority: **אמת (39 seats)**. The opened IDI Alignment catalogue
+links `maarach-12.doc` as the 1988 platform; no original artwork inspected from
+that link. The recreated Commons design rejected in run 2 is still excluded.
+No k12 mark is borrowed from k9, k10 or k11. Other B identities ג, רצ, ב, ו, הן,
+ת, ט, עץ, ץ retain their prior reasons, without individual fresh searches.
+The corrected whole-sign-off Likud asset remains unchanged.
+
+Coverage: **2 → 2 / 15**; zero additions, zero absence findings.
