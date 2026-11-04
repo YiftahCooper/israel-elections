@@ -609,6 +609,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .band-custom { white-space: nowrap; }
 @media (min-width: 1200px) { .band-custom { max-inline-size: 160px; overflow: hidden; text-overflow: ellipsis; } }
 .band .band-custom { color: var(--shell-ink); background: transparent; border-color: color-mix(in srgb, var(--shell-ink) 55%, transparent); }
+.band .band-custom[aria-pressed="true"] { background: var(--shell-ink); color: var(--shell); border-color: var(--shell-ink); }
+.band .band-custom:hover:not([aria-pressed="true"]) { background: var(--shell-2); color: var(--shell-ink); }
 .feature-disclosure { min-inline-size: 0; max-inline-size: 100%; }
 .feature-disclosure > button { white-space: normal; text-align: start; max-inline-size: 100%; block-size: auto; }
 @media (min-width: 1200px) {
