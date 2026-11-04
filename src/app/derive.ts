@@ -180,7 +180,15 @@ export function seatHolders(s: Scenario, r: AllocationResult): SeatHolder[] {
 }
 
 /** The same origin-connected groups used by Compare; a split has one baseline, never one per child. */
-export const comparisonGroups = (s: Scenario, r: AllocationResult, base: Scenario, baseR: AllocationResult) => compareAllocations(baseR, base.lists, r, s.lists);
+const groupsCache = new WeakMap<AllocationResult, WeakMap<AllocationResult, ReturnType<typeof compareAllocations>>>();
+/** cached per (result, official result): results are themselves cached per scenario, so redraws reuse the grouping */
+export function comparisonGroups(s: Scenario, r: AllocationResult, base: Scenario, baseR: AllocationResult) {
+  let inner = groupsCache.get(r);
+  if (!inner) groupsCache.set(r, (inner = new WeakMap()));
+  let g = inner.get(baseR);
+  if (!g) inner.set(baseR, (g = compareAllocations(baseR, base.lists, r, s.lists)));
+  return g;
+}
 export function officialSeatsFor(id: string, s: Scenario, r: AllocationResult, base: Scenario, baseR: AllocationResult): number | null {
   const g = comparisonGroups(s, r, base, baseR).find(g => g.bIds.includes(id));
   return g && g.bIds.length === 1 ? g.seatsA : null;
