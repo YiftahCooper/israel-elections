@@ -256,3 +256,6 @@ details > summary { cursor: pointer; }
 
 #detail-col { scroll-margin-top: 112px; }
 @media (max-width: 760px) { #detail-col { scroll-margin-top: 8px; } }
+
+.joint-parties { list-style: none; padding: 0; margin: 4px 0; display: grid; gap: 4px; font-size: 13px; }
+.joint-parties select { font-size: 12px; padding: 1px 4px; }

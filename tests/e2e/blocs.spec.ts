@@ -33,3 +33,18 @@ test('moving one party of a joint list to another bloc moves only its members’
   await page.getByRole('group', { name: 'Grouping' }).getByRole('button', { name: /37th government/ }).click();
   await expect(legendCount(page, 'Coalition')).toHaveText(String(before));
 });
+
+test('a joint list can run as separate lists, with the vote shares stated as an assumption', async ({ page }) => {
+  await start(page, 'standard');
+  await page.getByRole('region', { name: 'Lists' }).getByRole('button').filter({ has: page.getByText('United Torah Judaism', { exact: true }) }).click();
+  const details = page.getByRole('region', { name: 'List details' });
+  await expect(details.getByText('Parties on this joint list')).toBeVisible();
+  await details.getByText('Run as separate lists…').click();
+  await expect(details.getByText(/the shares below are an assumption/)).toBeVisible();
+  await details.getByRole('button', { name: 'Run as 2 separate lists' }).click();
+  const lists = page.getByRole('region', { name: 'Lists' });
+  await expect(lists.getByRole('button').filter({ has: page.getByText('Agudat Yisrael', { exact: true }) })).toBeVisible();
+  await expect(lists.getByRole('button').filter({ has: page.getByText('Degel HaTorah', { exact: true }) })).toContainText('Below threshold');
+  await page.getByRole('button', { name: /Undo/ }).click();
+  await expect(lists.getByRole('button').filter({ has: page.getByText('United Torah Judaism', { exact: true }) })).toBeVisible();
+});

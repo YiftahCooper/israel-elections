@@ -60,7 +60,9 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
                   <span lang="he">{shownName(x)}</span>
                 )}
                 {x.notes?.map((n, k) => <span key={k} className="muted tiny cand-note"> · {lang === 'he' ? n.he : n.en}</span>)}
-                {x.partyHe && l.sponsorsHe.includes(';') && <span className="muted tiny"> · {x.partyHe}</span>}
+                {(() => { const p = x.partyId ? l.parties?.find((q) => q.id === x.partyId) : undefined;
+                  return p ? <span className="muted tiny"> · {lang === 'he' ? p.nameHe : p.nameEn}</span>
+                    : x.partyHe && l.sponsorsHe.includes(';') ? <span className="muted tiny"> · {x.partyHe}</span> : null; })()}
                 {x.originListId && x.originListId !== l.id && !l.originIds.includes(x.originListId) && <span className="muted tiny"> · {L('moved', 'הועבר')}</span>}
                 {changed && <span className={`tiny ${elected ? 'up' : 'down'}`}> · {elected ? L('enters', 'נכנס') : L('leaves', 'יוצא')}</span>}
               </span>

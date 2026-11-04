@@ -121,7 +121,7 @@ test('the bloc of a list can be changed in Standard', async ({ page }) => {
   await start(page);
   await levelButton(page, 'Standard').click();
   await listCard(page, 'Likud').click();
-  await details(page).getByRole('combobox', { name: 'Bloc' }).selectOption({ label: 'None' });
+  await details(page).getByRole('combobox', { name: 'Bloc', exact: true }).selectOption({ label: 'None' });
   await expect(page.getByText(/Netanyahu bloc\s*26/)).toBeVisible();
 });
 

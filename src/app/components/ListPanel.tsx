@@ -10,6 +10,7 @@ import { fmtFrac, fmtInt, fmtPct, fmtRat, signed } from '../format.ts';
 import { dispatch, dispatchMany, setState, toast, useLevel, useStore, useVoteSource, useDigits } from '../store.ts';
 import { clampTarget, deltaAction, votesForShare } from '../voteEdit.ts';
 import { Candidates } from './Candidates.tsx';
+import { JointParties } from './JointParties.tsx';
 import { DecimalInput, Delta, Info, NumberInput, Slip, TextField, VoteSlider } from './ui.tsx';
 import { SourcePicker, VoteTools } from './VoteTools.tsx';
 
@@ -173,6 +174,8 @@ export function ListPanel({ s, r, ds, base, baseR }: { s: Scenario; r: Allocatio
           {!baseList && <button className="btn small danger" onClick={() => { dispatch({ type: 'removeList', listId: l.id }); setState({ selectedListId: null }); }}>{L('Delete list', 'מחיקת הרשימה')}</button>}
         </div>
         </>}
+
+        <JointParties s={s} r={r} l={l as SimList} />
 
         {advanced && (
           <>
