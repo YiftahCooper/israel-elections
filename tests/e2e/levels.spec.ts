@@ -16,7 +16,7 @@ const listCard = (page: Page, name: string) => page.getByRole('region', { name: 
 // a list's row is the button itself (its numbers are its description)
 const listRow = (page: Page, name: string) => listCard(page, name);
 const analysisTabs = (page: Page) => page.getByRole('tablist', { name: 'Tools' }).getByRole('tab');
-const TOOL_COUNT = 14; // the Overview, Scenarios and every tool, listed at every level
+const TOOL_COUNT = 15; // the Overview, Scenarios and every tool, listed at every level
 const details = (page: Page) => page.getByRole('region', { name: 'List details' });
 
 test('a first visit opens in Simple with only the essential controls', async ({ page }) => {

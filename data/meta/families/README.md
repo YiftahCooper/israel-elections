@@ -25,7 +25,7 @@ editorial assessment even when the underlying party identity is documented.
   a rename. Both languages come from the existing metadata; `nameEn: null`
   records an unverified English name. `activePeriod` bounds observed appearances,
   **not** founding/dissolution. Sources apply at each dated name record.
-- Preset records follow `haredi.draft.json`: `members[]`, `reviewCandidates[]`,
+- Preset records follow `haredi.json`: `members[]`, `reviewCandidates[]`,
   `identityEvidence`, `classificationEvidence`, `computed`. An included list has
   `treatment: include`; a mixed list has `scope: mixed` and
   `treatment: separate-segment` (the pilot encoding of §4's `mixed` outcome).

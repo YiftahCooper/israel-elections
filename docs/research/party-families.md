@@ -2,7 +2,7 @@
 
 **Recommendation.** Build a versioned, sourced interpretation layer over the existing election datasets. Keep **organisational lineage**, **electoral partnership**, and **ideological family** separate. Offer several named presets rather than a universal partition of Israeli politics. Default to a separate, visibly labelled segment for mixed lists; never derive constituent votes from seats, candidates, polls or ancestry. Let users fork, hide and edit presets locally. A family should also compile into a one-election grouping and an explicit vote-edit operation.
 
-The accompanying [Haredi draft](../../data/meta/families/haredi.draft.json) covers every local dataset k1–k26, including below-threshold lists, source references, proposed missing party ids, qualifications and computed totals. Its selected-list totals are defensible under its stated definition; **they are not totals of votes cast by Haredi people**. It is a research draft, not production metadata. In particular, 1949 has no identifiable Aguda/Poalei Aguda vote total, and several minor-list boundary cases remain explicit review candidates.
+The accompanying [Haredi draft](../../data/meta/families/haredi.json) covers every local dataset k1–k26, including below-threshold lists, source references, proposed missing party ids, qualifications and computed totals. Its selected-list totals are defensible under its stated definition; **they are not totals of votes cast by Haredi people**. It is a research draft, not production metadata. In particular, 1949 has no identifiable Aguda/Poalei Aguda vote total, and several minor-list boundary cases remain explicit review candidates.
 
 Research date: **4 November 2026**. Scope: national Knesset ballots, 1949–2026; no prime-minister ballots, local elections or demographic estimates. Existing local files are observed inputs, not independently re-certified election returns. `k26` retains `final-count-pending-publication`. Labels below distinguish **observed** source statements or local values, **inferred** editorial decisions, and **unresolved** evidence gaps. A documented party identity does not make its placement in a preset an official fact.
 
@@ -227,7 +227,7 @@ Run the following from repository root with Python 3 (standard library only). It
 ```python
 import hashlib, json
 from pathlib import Path
-p = json.loads(Path('data/meta/families/haredi.draft.json').read_text())
+p = json.loads(Path('data/meta/families/haredi.json').read_text())
 assert [r['electionId'] for r in p['elections']] == [f'k{i}' for i in range(1, 27)]
 for r in p['elections']:
     raw = Path(r['datasetPath']).read_bytes()

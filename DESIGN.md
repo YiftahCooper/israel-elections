@@ -520,3 +520,7 @@ buttons remain inside Experimental mode, preserving the historical-rule guard.
 The controls incorporate P6–P9 of `docs/research/prior-art-families-and-controls.md`: named
 starting points, percentage-point units, baseline continuity, explicit preview/commit and
 source-aware searched outcomes. No external product code was copied.
+
+## Party families
+
+The [family profile design](docs/design/party-families.md) uses separate dated vote-share and absolute-count charts, shared scales and cursor, an exact table and a separate hatched mixed-list segment. Family interpretations retain a quiet sourced-draft label. Personal edits fork definitions; scenario grouping and scaling freeze them in atomic undoable actions. Pale list regions use neutral ink and patterns, and phones stack the charts.

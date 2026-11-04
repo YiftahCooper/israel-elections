@@ -1,0 +1,28 @@
+.families { display:grid; gap:16px; min-inline-size:0; }
+.families h3,.families p { margin-block:4px; }
+.families label { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+.families input:not([type=checkbox]):not([type=file]),.families select { max-inline-size:100%; min-inline-size:0; padding:6px; border:1px solid var(--rule); border-radius:5px; color:var(--ink); background:var(--surface); }
+.family-controls,.family-chips {display:flex;flex-wrap:wrap;gap:8px;}
+.family-plots {display:grid;grid-template-columns:1fr 1fr;gap:16px;min-inline-size:0;}
+.family-plots section {min-inline-size:0;}
+.family-plots figure {margin:8px 0;padding:8px;background:var(--surface-2);border:1px solid var(--rule);border-radius:6px;}
+.family-plots svg {width:100%;display:block;color:var(--ink-2);direction:ltr;}
+.family-plots text {fill:currentColor;font-size:12px;}
+.family-grid {stroke:var(--rule);}
+.family-table {overflow-x:auto;max-inline-size:100%;}
+.family-table table {border-collapse:collapse;width:100%;}
+.family-table td,.family-table th {padding:8px;text-align:start;border-block-end:1px solid var(--rule);font-variant-numeric:tabular-nums;}
+.families small {display:block;max-inline-size:48ch;}
+.family-picker {max-block-size:300px;overflow:auto;border:1px solid var(--rule);padding:8px;}
+.family-picker label,.family-manage label {padding:6px;}
+.families details {padding:8px;border:1px solid var(--rule);border-radius:6px;}
+.family-treatment {padding:8px;border-inline-start:3px solid var(--ink-2);}
+.lb-row[data-family=selected] {background:var(--open);outline:1px solid var(--rule-2);}
+.lb-row[data-family=mixed] {background:repeating-linear-gradient(135deg,transparent,transparent 5px,var(--rule) 5px,var(--rule) 6px);}
+@media(max-width:700px){.family-plots{grid-template-columns:1fr;}.family-controls>*{max-inline-size:100%;}.families label{align-items:flex-start;}}
+.families {grid-template-columns:minmax(0,1fr);}
+.families > *, .families section > *, .families details > * {min-inline-size:0;}
+.families .btn {white-space:normal;overflow-wrap:anywhere;height:auto;min-block-size:32px;}
+.families input[type=file] {max-inline-size:100%;}
+.family-plots g[role=link] {cursor:pointer;}
+.family-plots g[role=link]:focus-visible {outline:2px solid var(--focus);}
