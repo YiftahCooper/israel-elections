@@ -4310,5 +4310,77 @@
   "retrievedAt": "2026-11-04",
   "bytes": 38606,
   "sha256": "b9f6f2ec368938216a67c471c304dbd94051c17c2f217c7d2d5517164ca48347"
+ },
+ {
+  "id": "logo-k26-raam-brochure",
+  "file": "logos/k26/raam-brochure.html",
+  "url": "https://online.fliphtml5.com/gijql/tgzd/",
+  "publisher": "القائمة العربية الموحدة / منصور عباس",
+  "official": true,
+  "description": "Official campaign brochure cover or linked publication; Facebook post dated 2026-10-10, brochure explicitly identifies 2026 Knesset campaign.",
+  "method": "http",
+  "retrievedAt": "2026-11-04",
+  "bytes": 5735,
+  "sha256": "c8e485db66daa2c635b303e2dbf85989e5aa5de0131402e6759f613ea813fb8d"
+ },
+ {
+  "id": "logo-k26-raam-brochure-cover",
+  "file": "logos/k26/raam-brochure-cover.webp",
+  "url": "https://online.fliphtml5.com/gijql/tgzd/files/large/b2ea0b7332f1d08e10b58a3c8f54614f.webp?1791536864",
+  "publisher": "القائمة العربية الموحدة / منصور عباس",
+  "official": true,
+  "description": "Official campaign brochure cover or linked publication; Facebook post dated 2026-10-10, brochure explicitly identifies 2026 Knesset campaign.",
+  "method": "http",
+  "retrievedAt": "2026-11-04",
+  "bytes": 146628,
+  "sha256": "9e4acd611261f7a9a25528cdc81d73e1fedbb19e1df50f003c4708889115ac6e"
+ },
+ {
+  "id": "logo-k26-raam-official-social",
+  "file": "logos/k26/raam-official-social.html",
+  "url": "https://www.facebook.com/MansourAbbas.me/videos/1757107092038580",
+  "publisher": "القائمة العربية الموحدة / منصور عباس",
+  "official": true,
+  "description": "Official campaign brochure cover or linked publication; Facebook post dated 2026-10-10, brochure explicitly identifies 2026 Knesset campaign.",
+  "method": "http",
+  "retrievedAt": "2026-11-04",
+  "bytes": 480517,
+  "sha256": "fa7ae1297c4779ef7ddcf988003642d67568bdc165063edacd9271b1e56c007a"
+ },
+ {
+  "id": "logo-k23-telem-2020.png-original",
+  "file": "logos/k23/telem-2020-original.png",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/9/90/TELEM.png",
+  "publisher": "Wikimedia Commons; credited party origin",
+  "official": false,
+  "description": "Commons description explicitly dates the logo present on the party’s official site https://www.telem-il.org/ to 27 December 2019, within the campaign before the 2 March 2020 election. This is the separate Telem constituent, not Blue and White. Medium confidence: community date and official-site credit; no archived primary capture independently inspected.",
+  "method": "http",
+  "retrievedAt": "2026-11-04",
+  "bytes": 17908,
+  "sha256": "8c13abe17a6534d75c4e98c801ede20e059d2b3fa46f7f307c28037ccbabf31c"
+ },
+ {
+  "id": "logo-k21-utj-2019.svg-original",
+  "file": "logos/k21/utj-2019.svg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/United_Torah_Judaism_Logo_2019.svg",
+  "publisher": "Wikimedia Commons; credited party origin",
+  "official": false,
+  "description": "Commons dates the party-authored UTJ logo to 5 April 2019 and credits extraction from the Hamevaser newspaper of that date, page 14 (https://t.me/newspaperil/3177). This is the joint-list wordmark, not the separate Agudat Yisrael or Degel emblems. Medium confidence: community description/dated publication credit, underlying newspaper not independently inspected. The newly inspected Commons SVG is 4,160 bytes; prior oversized Hebrew-file-page rejection does not apply to these exact downloaded bytes.",
+  "method": "http",
+  "retrievedAt": "2026-11-04",
+  "bytes": 4160,
+  "sha256": "a0ccba99ba9057474c6d4020860ccccc0701c2766fa70641e744a00cfa1cf80b"
+ },
+ {
+  "id": "logo-k20-joint-list-2015.png-original",
+  "file": "logos/k20/joint-list-2015-original.png",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/3/36/Joint_list_logo.png",
+  "publisher": "Wikimedia Commons; credited party origin",
+  "official": false,
+  "description": "Commons description explicitly dates this Joint List design to 22 January 2015 and credits source and author to the Joint List. It is the whole-list Arabic wordmark with the four constituent labels beneath, not an individual party emblem. Medium confidence: community metadata and party-origin credit; no independently inspected archived campaign original. This is File:Joint list logo.png (page 61888894), not the differently capitalized undated File:Joint List logo.png (page 39065398) whose Facebook origin requires login.",
+  "method": "http",
+  "retrievedAt": "2026-11-04",
+  "bytes": 168457,
+  "sha256": "d614fec71dd46dc6a753a3aa24ee44284711be5bc9be2397e501af7f6a752206"
  }
 ]

@@ -56,6 +56,25 @@
         "rawIndex": "logo-k20-likud-index"
       },
       "retrieval": "Original PNG retained unchanged; Chromium headless shell 1248 canvas drawImage, proportional thumbnail to 256 px width, PNG toDataURL. No cropping or recolouring."
+    },
+    {
+      "letters": "ודעם",
+      "file": "logos/joint-list-2015.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Joint_list_logo.png",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/36/Joint_list_logo.png",
+      "licence": "CC0 (cc-zero)",
+      "attribution": "File:Joint list logo.png; CC0 (cc-zero). Credited official party origin; resized only where PNG.",
+      "rights": "free-licence",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "medium",
+      "evidenceId": "commons-61888894",
+      "inUseEvidence": "Commons description explicitly dates this Joint List design to 22 January 2015 and credits source and author to the Joint List. It is the whole-list Arabic wordmark with the four constituent labels beneath, not an individual party emblem. Medium confidence: community metadata and party-origin credit; no independently inspected archived campaign original. This is File:Joint list logo.png (page 61888894), not the differently capitalized undated File:Joint List logo.png (page 39065398) whose Facebook origin requires login.",
+      "sha256": "fe7b015c527a7453b4c04badac77a3f683638e9f44b740dc5db4d305a520c758",
+      "originalSha256": "d614fec71dd46dc6a753a3aa24ee44284711be5bc9be2397e501af7f6a752206",
+      "bytes": 20265,
+      "retrievedAt": "2026-11-04",
+      "retrieval": "Plain HTTP with project User-Agent. SVG unchanged; PNG RGBA thumbnail (256,256), Pillow 13.0.0 LANCZOS, optimize=True. Retained original: data/raw/logos/k20/joint-list-2015-original.png"
     }
   ]
 }

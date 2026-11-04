@@ -386,6 +386,26 @@
       "bytes": 26177,
       "retrievedAt": "2026-11-04",
       "retrieval": "Official Telegram CDN graphic, generic User-Agent. Original 800×800 JPEG; pixel crop (85,670,485,790), resized LANCZOS to 256×77 PNG with Pillow 13.0.0. Existing gold background retained."
+    },
+    {
+      "letters": "עם",
+      "file": "logos/raam-2026.png",
+      "sourceUrl": "https://www.facebook.com/MansourAbbas.me/videos/1757107092038580",
+      "assetSourceUrl": "https://online.fliphtml5.com/gijql/tgzd/files/large/b2ea0b7332f1d08e10b58a3c8f54614f.webp?1791536864",
+      "licence": "Copyright retained by Ra’am; fair-use identification",
+      "attribution": "القائمة العربية الموحدة — official 2026 campaign brochure wordmark",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "medium",
+      "evidenceId": "raam-official-social-20261010",
+      "inUseDate": "2026-10-10",
+      "inUseEvidence": "Official leader Mansour Abbas Facebook publication inspected: visible timestamp Saturday, October 10, 2026 at 1:09 PM; links https://online.fliphtml5.com/gijql/tgzd/. The linked Arabic brochure cover explicitly says Knesset elections 2026 and carries the white الموحدة wordmark with underlines on green. Cover downloaded from its publication CDN and visually inspected. Cropped existing wordmark only; no ballot-paper lettering used. Live publication inspected, not an archived capture. Search snippet suggested October 14; opened publication gives October 10, which controls. The current profile avatar is not the evidence.",
+      "sha256": "d8a3af948e1747c325ccac06b9a914edb671f30962643b6faf9ffd9dd3c74924",
+      "originalSha256": "9e4acd611261f7a9a25528cdc81d73e1fedbb19e1df50f003c4708889115ac6e",
+      "bytes": 19778,
+      "retrievedAt": "2026-11-04",
+      "retrieval": "Plain HTTP with project User-Agent. Original 1556×2200 WebP retained. Pillow 13.0.0: convert RGBA; crop (1040,195,1460,335); thumbnail (256,256) LANCZOS; optimized PNG. Original green backdrop retained."
     }
   ]
 }

@@ -49,7 +49,8 @@ const EXPECTED: Record<Family, string> = {
   // k10 dated official print crop: all datasets equal HEAD omitting logo/builtAt.
   // k12 dated official print crop: all datasets equal HEAD omitting logo/builtAt.
   // Fighters List k1 logo (run 2, 1949–1973); all 26 datasets equal HEAD after omitting logo and builtAt.
-  model: '03559e57b8a630c23456d6930813fc65048d443b26df2fd5e20c589f4f494332',
+  // Web-era run 2 logos (k20–k26); all 26 datasets equal HEAD after omitting logo and builtAt.
+  model: '9dfc2c78439a64509fbf6afc15e2fe67c9d8934b3f4612ec82994ca6a57d511c',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };
