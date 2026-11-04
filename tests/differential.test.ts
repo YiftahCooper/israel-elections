@@ -30,7 +30,8 @@ import { FAMILIES, families, type Family, type Modules } from './differential.ca
 const EXPECTED: Record<Family, string> = {
   allocation: 'aba4d7b5256328d6a1db6591b83369cb066c5c6f0ecb2cc369209b9ee2a7eacf',
   analysis: 'f04635df61b1ca12d56e177f0b249a60ed8056c24b2a003f4a7791f161390ee2',
-  model: '33e9866b6336ea0bc2ded2fd86510d6103df748de940549f172299662cbb1d2b',
+  // Model digest re-recorded for the 1973 party ranks.
+  model: '33240c001aedd631301413e7636c4c980041e29b59a5c3d3682a60bc4df9f5dc',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };
