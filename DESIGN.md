@@ -477,6 +477,42 @@ picker; its expanded history stays there, and pending gazette status appears onc
 Chamber labels use measured font widths, physical SVG anchors and bounded side rails;
 phones retain the full list legend. Changes retain neutral tokens and logical spacing.
 
+### Graphics contract and persistent comparisons (4 November 2026)
+
+The default colour identifies the list consistently in chamber seats, list bars
+and bloc-member strips. Expert's explicitly named constituent-party/bloc modes
+are categorical overrides; they never encode change. Pale regions identify bloc
+membership. Blocs retain their declared physical left-to-right order with No bloc
+between its two halves, consistently in the chamber, BlocBar and Compare. The
+61 marker counts from the physical left in either language. Regions are exact
+unions of per-row annular sectors, bounded by circular arcs and radial edges.
+A neutral tinted, dotted “No bloc” region is retained even in a blank
+grouping. Blocks use a fixed 20 × 6 tray; arc and blocks retain the full chamber
+capacity independent of the number of lists. Experimental totals stay explicit.
+List names wrap in a separate legend beneath the tray, in both languages and at
+both viewport sizes, instead of being squeezed into the seat drawing.
+
+The active saved/official reference uses dashed neutral outlines; current changes
+use solid neutral ink segments and optional outlines around gained seats. Losses appear
+in a separately labelled, coloured reference hemicycle at roughly 30% size.
+Dashed outlines identify lost seats there; the current chamber keeps its own 120 seats. A static per-list old → new and
+signed difference readout accompanies the drawing: a compact row, collapsed
+above five changed lists on desktop and fully visible on phones. These marks compare seat counts; they identify no individual seat or candidate
+and imply no transfer between lists. Comparisons aggregate connected origins through the
+existing derivations so merges and splits do not duplicate reference seats or
+invent per-child historical allocations. This follows principle 10 and the
+“Seat transplantation” / “Animation as evidence” cautions in the families-and-controls study. The
+bloc strip retains the reference boundaries on the same full-total scale; custom
+groupings without a compatible counterpart never invent a baseline. Comparison
+evidence persists after animation and under reduced motion.
+
+Hatching means below threshold, not simply zero seats. A threshold-progress bar
+and seat-change track have different denominators and remain separate. Majority
+markers remain labelled (61 of 120); the independent PM vote uses its labelled
+50% marker. Historical local votes receive no invented geographic scenario delta.
+The complete findings and verification scope are in
+`docs/acceptance/graphics-audit-2026-11-04.md`.
+
 ## Primary pickers and numeric quick actions
 
 Primary choices use the shared `ChoicePicker`: a searchable dialog with preview rows,
@@ -500,8 +536,7 @@ Escape cancels. Election navigation is a dated timeline grouped by statutory thr
 April/September 2019 entries and a separately labelled 2001 PM-only marker. Grouping,
 Start from and colour-by choices use previews. Saved groupings and other parts are reachable
 by the saved scenario's name. `BoardChoices` supplies grouping and chamber colouring outside
-the graphics components; scoped CSS hides their original native selectors so those files
-can evolve independently during the graphics audit.
+the graphics components; the original native selectors have been removed at source.
 
 List quick actions use the active vote source, with neutral seat consequences on focus or
 hover. “Reach next seat” applies a searched vote delta, never assigns seats, and reports the
@@ -524,3 +559,12 @@ source-aware searched outcomes. No external product code was copied.
 ## Party families
 
 The [family profile design](docs/design/party-families.md) uses separate dated vote-share and absolute-count charts, shared scales and cursor, an exact table and a separate hatched mixed-list segment. Family interpretations retain a quiet sourced-draft label. Personal edits fork definitions; scenario grouping and scaling freeze them in atomic undoable actions. Pale list regions use neutral ink and patterns, and phones stack the charts.
+
+The summary, graphics, edit markers, list details and Compare defaults share
+`useActiveReference`: official when pinned, otherwise the loaded/saved reference.
+Scenario switching separately retains its loaded checkpoint for unsaved-draft
+tracking; changing the comparison preference never changes that checkpoint.
+One short chamber caption explains outlines and names the reference. Additional
+explanation is in its (i) tooltip. No bloc uses the normal legend swatch.
+`BoardChoices` owns grouping and colour choices; graphics components do not keep
+hidden duplicate selectors or rely on CSS to conceal them.

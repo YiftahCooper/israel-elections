@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { GraphicChanges } from './GraphicChanges.tsx';
+import { useId, useState } from 'react';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { listLabel } from '../derive.ts';
@@ -15,6 +16,7 @@ export function Charts({ s, r }: { s: Scenario; r: AllocationResult }) {
   const [view, setView] = useState<'chart' | 'table'>('chart');
   return (
     <div>
+      <GraphicChanges s={s} r={r} />
       <div className="row" style={{ marginBottom: 8 }}>
         <Seg label={L('View', 'תצוגה')} value={view} onChange={setView} options={[{ v: 'chart', label: L('Charts', 'תרשימים') }, { v: 'table', label: L('Table', 'טבלה') }]} />
       </div>
@@ -87,6 +89,7 @@ function ThresholdDistance({ s, r }: { s: Scenario; r: AllocationResult }) {
   const lang = useLang();
   const [tip, setTip] = useState<Tip>(null);
   const thr = Number(r.thresholdVotes);
+  if (thr === 0) return <p className="small muted">{L('No percentage threshold in this election.', 'בבחירות אלה אין אחוז חסימה.')}</p>;
   const rows = s.lists.filter((l) => !l.withdrawn && l.votes > 0).map((l) => ({ l, d: l.votes - thr })).sort((a, b) => Math.abs(a.d) - Math.abs(b.d)).slice(0, 10).sort((a, b) => b.d - a.d);
   const max = Math.max(...rows.map((x) => Math.abs(x.d)), 1);
   // fixed label column, then a symmetric bar area with room for numbers on both sides
@@ -149,6 +152,7 @@ function ShareTable({ s, r }: { s: Scenario; r: AllocationResult }) {
 export function Waffles({ s, r }: { s: Scenario; r: AllocationResult }) {
   const L = useL();
   const lang = useLang();
+  const hatch = useId();
   const cells = 200;
   const lists = s.lists.map((l) => ({ l, lr: r.lists.find((x) => x.id === l.id)! }));
   const qualified = lists.filter((x) => x.lr.qualified);
@@ -157,7 +161,7 @@ export function Waffles({ s, r }: { s: Scenario; r: AllocationResult }) {
   const counts = apportion(cells, weights);
   const voteCells: { color: string; id: string | null }[] = [];
   qualified.forEach((x, i) => { for (let k = 0; k < counts[i]; k++) voteCells.push({ color: x.l.color, id: x.l.id }); });
-  for (let k = 0; k < counts[counts.length - 1]; k++) voteCells.push({ color: 'url(#hatch)', id: null });
+  for (let k = 0; k < counts[counts.length - 1]; k++) voteCells.push({ color: `url(#${hatch})`, id: null });
   const seatCells: { color: string; id: string }[] = [];
   qualified.forEach((x) => { for (let k = 0; k < x.lr.seats; k++) seatCells.push({ color: x.l.color, id: x.l.id }); });
   const grid = (items: { color: string; id: string | null }[], cols: number, title: string) => {
@@ -167,7 +171,7 @@ export function Waffles({ s, r }: { s: Scenario; r: AllocationResult }) {
       <figure style={{ margin: 0 }}>
         <figcaption className="small ink2" style={{ marginBottom: 4 }}>{title}</figcaption>
         <svg viewBox={`0 0 ${cols * (size + gap)} ${rows * (size + gap)}`} width="100%" style={{ maxWidth: cols * (size + gap) }} role="img" aria-label={title}>
-          <defs><pattern id="hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="4" height="4" fill="var(--grid)" /><line x1="0" y1="0" x2="0" y2="4" stroke="var(--muted)" strokeWidth="1.6" /></pattern></defs>
+          <defs><pattern id={hatch} width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="4" height="4" fill="var(--grid)" /><line x1="0" y1="0" x2="0" y2="4" stroke="var(--muted)" strokeWidth="1.6" /></pattern></defs>
           {items.map((c, i) => <rect key={i} x={(i % cols) * (size + gap)} y={Math.floor(i / cols) * (size + gap)} width={size} height={size} rx={3} fill={c.color} style={{ cursor: c.id ? 'pointer' : 'default' }} onClick={() => c.id && setState({ selectedListId: c.id })}><title>{c.id ? listLabel(s.lists.find((l) => l.id === c.id)!, lang) : L('Votes for lists below the threshold', 'קולות לרשימות מתחת לחסימה')}</title></rect>)}
         </svg>
       </figure>
@@ -181,7 +185,7 @@ export function Waffles({ s, r }: { s: Scenario; r: AllocationResult }) {
       </div>
       <div className="legend" style={{ marginTop: 8 }}>
         {qualified.sort((a, b) => b.l.votes - a.l.votes).map(({ l, lr }) => <span key={l.id} className="row" style={{ gap: 5 }}><span className="swatch" style={{ background: l.color }} />{listLabel(l, lang)} <span className="muted tabnum">{lr.seats}</span></span>)}
-        <span className="row" style={{ gap: 5 }}><svg width="10" height="10" aria-hidden><rect width="10" height="10" rx="2" fill="url(#hatch)" /></svg>{L(`Below threshold: ${fmtPct(wasted, r.totalValid, 1)} of votes, 0 seats`, `מתחת לחסימה: ${fmtPct(wasted, r.totalValid, 1)} מהקולות, 0 מנדטים`)}</span>
+        <span className="row" style={{ gap: 5 }}><svg width="10" height="10" aria-hidden><rect width="10" height="10" rx="2" fill={`url(#${hatch})`} /></svg>{L(`Below threshold: ${fmtPct(wasted, r.totalValid, 1)} of votes, 0 seats`, `מתחת לחסימה: ${fmtPct(wasted, r.totalValid, 1)} מהקולות, 0 מנדטים`)}</span>
       </div>
     </div>
   );

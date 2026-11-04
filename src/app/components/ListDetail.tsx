@@ -1,5 +1,6 @@
 import { TransferStep } from './TransferStep.tsx';
 import { applyAction } from '../../model/actions.ts';
+import { useActiveReference } from '../useActiveReference.ts';
 import { Feature } from './Feature.tsx';
 import { StartFrom } from './StartFrom.tsx';
 import { EditMarker } from './EditMarker.tsx';
@@ -18,7 +19,7 @@ import { runTasks } from '../analysisPool.ts';
 import { listLabel, referenceLabel, warningText } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtFrac, fmtInt, fmtPct, fmtRat, signed } from '../format.ts';
-import { dispatch, dispatchMany, getState, previewAction, setState, toast, useLevel, useVoteSource, useDigits, useStore } from '../store.ts';
+import { dispatch, dispatchMany, getState, previewAction, setState, toast, useLevel, useVoteSource, useDigits } from '../store.ts';
 import { clampTarget, deltaAction, toVoteSource, votesForShare, voteSourceLabel } from '../voteEdit.ts';
 import { Candidates } from './Candidates.tsx';
 import { JointParties } from './JointParties.tsx';
@@ -78,7 +79,7 @@ function useMargins(s: Scenario, l: SimList, seats: number, qualified: boolean) 
 export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: AllocationResult; ds: ElectionDataset; base: Scenario; baseR: AllocationResult; l: SimList }) {
   const L = useL();
   const lang = useLang();
-  const reference = useStore(st => st.reference);
+  const { reference } = useActiveReference();
   const baseLabel = referenceLabel(base === reference ? reference : null, lang);
   const digits = useDigits();
   const { simple } = useLevel();

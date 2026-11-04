@@ -1,4 +1,5 @@
 import { BoardChoices } from './components/BoardChoices.tsx';
+import { useActiveReference } from './useActiveReference.ts';
 import { CustomPage, Feature } from './components/Feature.tsx';
 import { TOOL_FEATURES, RANK, type Preset } from './features.ts';
 import { electionContext } from '../data/electionContext.ts';
@@ -114,7 +115,7 @@ function Shell() {
   const [pmContestId, setPMContestId] = useState<string | null>(null);
   const pmOnly = electionContext.pmContests.find(c => c.id === pmContestId && c.contestType === 'prime-minister-only');
   const L = useL();
-  const reference = useStore(st => st.reference);
+  const { reference } = useActiveReference();
   const committed = useStore((st) => st.scenario);
   const preview = useStore((st) => st.preview);
   const ds = useStore((st) => (st.scenario ? st.datasets[st.scenario.electionId] : undefined));

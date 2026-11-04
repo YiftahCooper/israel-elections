@@ -1,5 +1,6 @@
 import { FamilyListTreatment } from './FamilyTreatment.tsx';
 import { resolve } from '../../families/model.ts';
+import { useActiveReference } from '../useActiveReference.ts';
 import { referenceLabel } from '../derive.ts';
 import { allocationOf } from '../derive.ts';
 import { PartEdits } from './PartEdits.tsx';
@@ -19,7 +20,7 @@ import { Slip } from './ui.tsx';
 export const Mark = ({ up }: { up: boolean }) => <svg className="mark" viewBox="0 0 10 10" width={8} height={8} aria-hidden><path d={up ? 'M5 1 9.5 9H.5z' : 'M5 9 .5 1h9z'} fill="currentColor" /></svg>;
 
 export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResult; base: Scenario; baseR: AllocationResult }) {
-  const reference = useStore(st => st.markOfficial ? null : st.reference);
+  const { reference } = useActiveReference();
   if (reference) { base = reference; baseR = allocationOf(reference); }
   const L = useL();
   const lang = useLang();
@@ -50,7 +51,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
     const d = was === null ? 0 : lr.seats - was;
     const agr = standard ? s.agreements.find((a) => a.members.includes(l.id) && a.enabled) : undefined;
     const partner = agr ? s.lists.find((x) => x.id === agr.members.find((m) => m !== l.id)) : undefined;
-    const out = lr.seats === 0;
+    const out = !lr.qualified;
     return (
       <li key={l.id}>
         <button type="button" data-family={familyRows.find(x => x.id === l.id)?.family} ref={open ? selRef : undefined} className={`lb-row ${out ? 'out' : ''} ${selected && !open ? 'dim' : ''}`} aria-pressed={open}
@@ -63,8 +64,12 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
             <span className="lb-bar" aria-hidden>
               {out
                 ? <><i className="thr-fill" style={{ width: `${Math.min(100, (l.votes / Math.max(1, thr)) * 100)}%`, background: l.color }} /><span className="thr-tick" /></>
-                : <><i style={{ width: `${(lr.seats / scale) * 100}%`, background: l.color }} />{d !== 0 && <span className="was" style={{ width: `${((was ?? 0) / scale) * 100}%` }} />}</>}
+                : <><i style={{ width: `${(lr.seats / scale) * 100}%`, background: l.color }} />{d !== 0 && <span className="delta-segment" style={{ insetInlineStart: `${(Math.min(lr.seats, was ?? 0) / scale) * 100}%`, width: `${(Math.abs(d) / scale) * 100}%` }} />}{d !== 0 && <span className="was" style={{ width: `${((was ?? 0) / scale) * 100}%` }} />}</>}
             </span>
+            {out && (was ?? 0) > 0 && <span className="lb-bar" aria-hidden title={baseLabel.seats}>
+              <span className="was" style={{width:`${(was ?? 0)/scale*100}%`}} />
+              <span className="delta-segment" style={{insetInlineStart:0,width:`${(was ?? 0)/scale*100}%`}} />
+            </span>}
             <span className="lb-sub">
               {standard && <>{fmtInt(l.votes)} · </>}{fmtPct(l.votes, total, digits)}
               {out && thr > 0 && <> · {L(`${fmtPct(l.votes, thr, 0)} of the threshold`, `${fmtPct(l.votes, thr, 0)} מאחוז החסימה`)}</>}

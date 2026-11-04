@@ -1,3 +1,5 @@
+import { blocDisplayOrder } from '../blocOrder.ts';
+import { useActiveReference } from '../useActiveReference.ts';
 import { referenceLabel } from '../derive.ts';
 import { scenarioColor } from '../scenarioIdentity.ts';
 import { useMemo } from 'react';
@@ -13,7 +15,7 @@ import { Hemicycle } from './Hemicycle.tsx';
 export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; base: Scenario; ds: ElectionDataset }) {
   const L = useL();
   const lang = useLang();
-  const reference = useStore(st => st.reference);
+  const { reference } = useActiveReference();
   const compareWithRaw = useStore((st) => st.compareWith);
   const saved = useStore((st) => st.saved);
   const compareWith = compareWithRaw === 'official' ? 'official' : saved.some((x) => x.id === compareWithRaw && x.electionId === s.electionId && x.id !== s.id) ? compareWithRaw : 'historical';
@@ -57,10 +59,14 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
     return (
       <div className="cmp-blocrow">
         <span className="small ink2">{title}</span>
-        <div className="coal-bar big" aria-label={`${title}: ${sc.blocs.map((b) => `${lang === 'he' ? b.nameHe : b.nameEn} ${sums[b.id] ?? 0}`).join(', ')}`}>
-          {sc.blocs.map((b) => (sums[b.id] ?? 0) > 0 && <i key={b.id} style={{ flexBasis: `${((sums[b.id] ?? 0) / total) * 100}%`, background: b.color }} title={`${lang === 'he' ? b.nameHe : b.nameEn} ${sums[b.id]}`}><span className="cmp-n">{sums[b.id]}</span></i>)}
-          {rest > 0 && <i style={{ flexBasis: `${(rest / total) * 100}%`, background: 'var(--axis)' }} title={`${L('No bloc', 'ללא גוש')} ${rest}`}><span className="cmp-n">{rest}</span></i>}
-          <span className="maj" style={{ insetInlineStart: `${(majority / total) * 100}%` }} />
+        <div className="coal-bar big" aria-label={`${title}: ${sc.blocs.map((b) => `${lang === 'he' ? b.nameHe : b.nameEn} ${sums[b.id] ?? 0}`).join(', ')}, ${L('No bloc','ללא גוש')} ${rest}`}>
+          {blocDisplayOrder(sc).map(id=>{
+            const bloc=sc.blocs.find(b=>b.id===id), n=id===null?rest:sums[id]??0;
+            if(!n)return null;
+            const color=bloc?.color ?? 'var(--muted)';
+            return <i key={id??'__none'} data-bloc={id??'__none'} style={{flexBasis:`${n/total*100}%`,background:`color-mix(in srgb, ${color} 24%, var(--surface))`,border:`1px ${id===null?'dotted':'solid'} ${color}`}} title={`${bloc ? (lang==='he'?bloc.nameHe:bloc.nameEn) : L('No bloc','ללא גוש')} ${n}`}><span className="cmp-n">{n}</span></i>;
+          })}
+          <span className="maj" style={{ left: `${(majority / total) * 100}%` }} />
         </div>
       </div>
     );
@@ -81,8 +87,8 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
       </div>
 
       <div className="cmp-chambers">
-        <figure style={{ border: `2px solid ${compareWith !== 'official' && (reference || compareWith !== 'historical') ? scenarioColor(a) : 'var(--rule)'}` }}><figcaption>{nameA}</figcaption><Hemicycle s={groupedA ?? a} r={ar} compact title={nameA} /></figure>
-        <figure style={{ border: `2px solid ${reference || referenceChanges(s, base).length || s.identityColor ? scenarioColor(s) : 'var(--rule)'}` }}><figcaption>{nameB}</figcaption><Hemicycle s={s} r={r} compact title={nameB} /></figure>
+        <figure style={{ border: `2px solid ${compareWith !== 'official' && (reference || compareWith !== 'historical') ? scenarioColor(a) : 'var(--rule)'}` }}><figcaption>{nameA}</figcaption><Hemicycle reference={groupedA ?? a} s={groupedA ?? a} r={ar} compact title={nameA} /></figure>
+        <figure style={{ border: `2px solid ${reference || referenceChanges(s, base).length || s.identityColor ? scenarioColor(s) : 'var(--rule)'}` }}><figcaption>{nameB}</figcaption><Hemicycle reference={groupedA ?? a} s={s} r={r} compact title={nameB} /></figure>
       </div>
 
       {s.blocs.length > 0 && (
@@ -90,7 +96,13 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
           <h3>{L('Blocs', 'גושים')}</h3>
           {groupedA && <BlocBarRow sums={ba} title={nameA} sc={groupedA} />}
           <BlocBarRow sums={bb} title={nameB} sc={s} />
-          <div className="legend small" style={{ marginTop: 6 }}>{s.blocs.map((b) => <span key={b.id} className="row" style={{ gap: 5 }}><span className="swatch" style={{ background: b.color }} />{lang === 'he' ? b.nameHe : b.nameEn} <b>{groupedA ? `${ba[b.id] ?? 0} → ` : ''}{bb[b.id] ?? 0}</b></span>)}</div>
+          <div className="legend small" style={{marginTop:6}}>{blocDisplayOrder(s).map(id=>{
+            const bloc=s.blocs.find(b=>b.id===id), color=bloc?.color??'var(--muted)';
+            const before=id===null ? total-Object.values(ba).reduce((n,v)=>n+v,0) : ba[id]??0;
+            const now=id===null ? total-Object.values(bb).reduce((n,v)=>n+v,0) : bb[id]??0;
+            if(!now&&!before)return null;
+            return <span key={id??'__none'} className="row" style={{gap:5}}><span className="swatch" style={{background:`color-mix(in srgb, ${color} 24%, var(--surface))`,border:`1px ${id===null?'dotted':'solid'} ${color}`}} />{bloc?(lang==='he'?bloc.nameHe:bloc.nameEn):L('No bloc','ללא גוש')} <b>{groupedA?`${before} → `:''}{now}</b></span>;
+          })}</div>
         </section>
       )}
 
@@ -176,12 +188,16 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
 export function Slope({ groups, nameA, nameB, colorOf }: { groups: { key: string; seatsA: number; seatsB: number; label: string }[]; nameA: string; nameB: string; colorOf: (key: string) => string }) {
   const rows = groups.filter((g) => g.seatsA || g.seatsB);
   const max = Math.max(1, ...rows.flatMap((g) => [g.seatsA, g.seatsB]));
-  const W = 560, H = 360, x1 = 170, x2 = W - 170, top = 30, bottom = H - 16;
+  const W = 560, H = Math.max(360, rows.length * 18 + 60), x1 = 170, x2 = W - 170, top = 30, bottom = H - 16;
   const y = (v: number) => bottom - (v / max) * (bottom - top);
   // keep labels at least 15 units apart on each side
   const spread = (vals: { key: string; y: number }[]) => {
     const s = [...vals].sort((a, b) => a.y - b.y);
     for (let i = 1; i < s.length; i++) if (s[i].y - s[i - 1].y < 15) s[i].y = s[i - 1].y + 15;
+    if (s.length && s[s.length-1].y > bottom) {
+      s[s.length-1].y = bottom;
+      for (let i=s.length-2;i>=0;i--) s[i].y = Math.min(s[i].y,s[i+1].y-15);
+    }
     return new Map(s.map((v) => [v.key, v.y]));
   };
   const ly = spread(rows.map((g) => ({ key: g.key, y: y(g.seatsA) })));
@@ -198,7 +214,7 @@ export function Slope({ groups, nameA, nameB, colorOf }: { groups: { key: string
         return (
           <g key={g.key} opacity={changed ? 1 : 0.45}>
             <line x1={x1} y1={y(g.seatsA)} x2={x2} y2={y(g.seatsB)} stroke="var(--ink)" strokeWidth={changed ? 3 : 2} />
-            <circle cx={x1} cy={y(g.seatsA)} r={4} fill={c} stroke="var(--surface)" strokeWidth={2} />
+            <circle cx={x1} cy={y(g.seatsA)} r={4} fill="var(--surface)" stroke={c} strokeDasharray="2 2" strokeWidth={2} />
             <circle cx={x2} cy={y(g.seatsB)} r={4} fill={c} stroke="var(--surface)" strokeWidth={2} />
             <text x={x1 - 8} y={ly.get(g.key)} textAnchor="end" dominantBaseline="middle" fill="var(--ink)"><title>{`${g.label} ${g.seatsA}`}</title>{isolate(`${g.label.length > 22 ? g.label.slice(0, 21) + '…' : g.label} ${g.seatsA}`)}</text>
             <text x={x2 + 8} y={ry.get(g.key)} textAnchor="start" dominantBaseline="middle" fill="var(--ink)" fontWeight={changed ? 700 : 400}>{g.seatsB}{changed ? ` (${signed(g.seatsB - g.seatsA)})` : ''}</text>

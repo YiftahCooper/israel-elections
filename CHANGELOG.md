@@ -8,6 +8,29 @@
 - Keep one Haredi metadata source and validate all nine built-ins; add family model and bilingual/theme/viewport browser coverage.
 
 
+## 4 November 2026 — graphics review and controls integration
+
+- Use one active reference for summaries, edit markers, list details, Compare
+  defaults, graphics and exports; preserve the scenario-switching checkpoint.
+- Move No bloc between declared blocs and keep the majority scale counted from
+  the physical left in Hebrew and English. Draw clean annular region unions.
+- Show a small coloured reference chamber with outlined losses; simplify captions
+  and use compact changed-list readouts, collapsed on desktop above five changes.
+- Merge the controls branch from main, remove duplicate native grouping/colour
+  selectors and their CSS hiding rule, and drive BoardChoices in browser tests.
+
+
+## 4 November 2026 — graphics consistency
+
+- Keep chamber geometry fixed, move names to wrapping legends, and enclose
+  unassigned seats in explicit neutral No bloc regions in both themes.
+- Add persistent neutral gain ordinal outlines, a labelled empty baseline loss miniature, dashed bloc references
+  and list delta segments with old → new / signed readouts; share origin-aware change drawings across analysis tools.
+- Correct list colour mode, Compare region treatment, dense slope label bounds,
+  threshold qualification semantics and reduced-motion region transitions.
+- Add 26-election and stress-case geometry/label checks plus bilingual theme and
+  viewport screenshot coverage; record the audit and encoding contract.
+
 ## 4 November 2026 — election context and PM results
 
 - Add sourced, dated election circumstances in an expandable bilingual context layer,
