@@ -2816,6 +2816,36 @@
       "originalFile": "logos/k1/fighters-list-original.png",
       "originalSha256": "3ee6a0d57ef06ad5e3ba8cd74e5ff310a58c6f9f818d704ac4d6de5c0ed22d31",
       "limitations": "Structured data says CC BY-SA 4.0 while the visible file-specific licence is PD-textlogo. Recorded visible file licence; campaign dating remains community attribution."
+    },
+    {
+      "id": "run2-cza-mapam-1959",
+      "title": "Mapam election poster KRA/3225 (1959)",
+      "sourceUrl": "http://www.zionistarchives.org.il/Pages/ElectionPosters.aspx",
+      "publisher": "Mapam (original issuer); Central Zionist Archives (scan custodian)",
+      "sourceType": "official party campaign publication",
+      "accessed": "2026-11-04",
+      "accessMethod": "Jina read_url catalogue; plain HTTP scan and HTML with project User-Agent",
+      "inspectionDepth": "archive caption, full downloaded scan, printed issuer and crop inspected",
+      "date": "1959",
+      "datePrecision": "year",
+      "description": "Crop from a party-issued 1959 campaign poster, CZA KRA/3225. Archive caption identifies Mapam, 1959, designer Shmuel Katz; printed issuer line identifies Mapam (Haifa). The distinctive white מ in an orange-red circle is preserved without redrawing or recolouring. Year-level campaign date only; the 22 November 1959 accession stamp is NOT an in-use date.",
+      "licence": "Copyright retained; fair-use identification",
+      "downloadUrl": "http://www.zionistarchives.org.il/DocLib14/KRA3225.jpg",
+      "evidenceFamily": "cza-kra3225",
+      "selected": false,
+      "originalFile": "logos/k4/mapam-kra3225-original.jpg",
+      "originalSha256": "43cb22ea1ca5aaac66667b041ddb9d4f3141d0bf89d0ee0c9213edad6d06ec8d",
+      "cropBox": [
+        823,
+        614,
+        995,
+        764
+      ],
+      "cropCoordinates": "pixels from top-left, Pillow left/top/right/bottom (right and bottom exclusive); original 1024×764",
+      "limitations": "Campaign year supplied by archive; exact printing day unknown; original scan ends at the lower edge of the roundel. Existing fair-use builder requires YYYY-MM-DD; year-only evidence cannot pass. Candidate only, not authorized for display by this record.",
+      "status": "unresolved",
+      "candidateFile": "logos/k4/mapam-roundel-candidate.png",
+      "candidateSha256": "b9f6f2ec368938216a67c471c304dbd94051c17c2f217c7d2d5517164ca48347"
     }
   ]
 }

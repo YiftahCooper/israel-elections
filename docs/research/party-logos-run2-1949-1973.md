@@ -21,13 +21,13 @@ The goal of closing every gap is **not achieved**. Every missing list and consti
 
 **E1 — Fighters List, k1: logo added.** [Pinned Commons description](https://commons.wikimedia.org/w/index.php?title=File:FightersList.png&oldid=1290629743), file caption “1949”, description explicitly identifies the first Israeli election; credited NLI item NNL_Ephemera700129128. Original PNG downloaded and visually inspected, then resized. Free-licence/PD-textlogo, medium confidence under the existing Commons assignment policy. This does not claim independent verification of the inaccessible NLI artefact. Visible licence says PD-textlogo; structured data says CC BY-SA 4.0, a recorded metadata conflict. No original scan or crop is claimed for this asset.
 
-**E2 — Mapam, k4: logo added.** [Central Zionist Archives exhibition](http://www.zionistarchives.org.il/Pages/ElectionPosters.aspx), published 14 October 2026, identifies Mapam poster KRA/3225 as 1959 and credits Shmuel Katz. Full scan inspected; printed issuer is Mapam, Haifa. The isolated white מ roundel is a crop from this dated official campaign publication, under fair-use identification. Year-level date only (`inUseDate: "1959"`); the 22 November 1959 archive accession stamp is not treated as campaign date. Original 1024×764 JPEG; crop `[823, 614, 995, 764]`, right/bottom exclusive. The scan ends at the lower edge of the roundel. No redrawing, recolouring or extrapolation. Roundel remains legible at 64 px. Validator gains only the source-type value `official party campaign publication`, to admit the print-origin evidence explicitly authorized by this task and decision 0089; its other gates are unchanged.
+**E2 — Mapam, k4: gap; unresolved crop retained.** [Central Zionist Archives exhibition](http://www.zionistarchives.org.il/Pages/ElectionPosters.aspx), published 14 October 2026, identifies Mapam poster KRA/3225 as 1959 and credits Shmuel Katz. Full scan inspected; printed issuer is Mapam, Haifa. The isolated white מ roundel is a crop from this dated official campaign publication, a fair-use candidate only. The existing build rejected it with `Invalid campaign-use date: k4`, requiring a full ISO date; the year-only source cannot pass. No validator or builder rule is changed. Year-level date only (`inUseDate: "1959"`); the 22 November 1959 archive accession stamp is not treated as campaign date. Original 1024×764 JPEG; crop `[823, 614, 995, 764]`, right/bottom exclusive. The scan ends at the lower edge of the roundel. No redrawing, recolouring or extrapolation. Roundel remains legible at 64 px. Source type records `official party campaign publication` on the unresolved card; no hosted source-type gate was expanded.
 
 **E3 — inspected letter-only items, no campaign-wide absence claim.** [Jabotinsky Institute item 37884](https://www.jabotinsky.org/ארכיון/חיפוש-מתקדם/פריט?itemId=37884), כר-4129, creator Herut, meeting 23 January 1949: scan shows party name and ח, no separate emblem found. CZA KRA/2767, national religious joint list, 1955: illustrated ballot card, not independently verified as a reusable joint-list emblem. CZA KRA/778 (Maki, 1959) and KRA/726 (Mapai, caption 1951 but prose “1950s”): letters and campaign artwork, no separate emblem accepted. These observations support continued gaps, not “no emblem in use”.
 
 **E4 — Mapam 1955 lead.** [Yad Yaari exhibition](https://www.yad-yaari.org.il/at-the-service-of-an-idea), curator Yuval Danieli, September 2023, describes official party posters for the 1955 campaign, including Shraga Weil’s three hands. Page and image references inspected; no isolated emblem from its original scan was acquired. A poster illustration is not automatically an emblem. This page cannot date the 1959 roundel to 1955.
 
-All accepted originals and final assets have SHA-256 records in the election overlays, source cards and `data/raw/SOURCES.json`. Retained provenance HTML accompanies each. Reproduction: CPython 3.13.16, Pillow 12.2.0; `convert("RGBA")`, stated crop if applicable, `thumbnail((256,256), Image.Resampling.LANCZOS)`, `save(..., optimize=True)` as PNG. Pillow installed only in project scratch. Original scans/accepted assets remain durable under data/raw/logos and public/logos. Bytes and hashes appear below after all election batches.
+The accepted Fighters original/final and unresolved Mapam scan/crop have SHA-256 records in the election overlays, source cards and `data/raw/SOURCES.json`. Retained provenance HTML accompanies each. Reproduction: CPython 3.13.16, Pillow 12.2.0; `convert("RGBA")`, stated crop if applicable, `thumbnail((256,256), Image.Resampling.LANCZOS)`, `save(..., optimize=True)` as PNG. Pillow installed only in project scratch. Original scans/accepted assets remain durable under data/raw/logos and public/logos. Bytes and hashes appear below after all election batches.
 
 ## Retrieval failures and source routes
 
@@ -233,6 +233,61 @@ Constituents (separate from joint-list lockups):
 - `mizrachi` — **gap**. `המזרחי 1955 כרזה סמל -site:en.wikipedia.org` → U28, U290.
 - `agudat-yisrael` — **gap**. `אגודת ישראל 1955 כרזה סמל -site:en.wikipedia.org` → U28, U291.
 - `poalei-agudat-yisrael` — **gap**. `פועלי אגודת ישראל 1955 כרזה סמל -site:en.wikipedia.org` → U28, U292.
+
+### k4
+
+**א — Mapai: gap.
+- `מפא״י 1959 כרזה -site:en.wikipedia.org` → U22, U25, U65, U66
+- `site:nli.org.il מפא"י 1959 בחירות` → U209, U210
+
+**ח — Herut: gap.
+- `חרות 1959 כרזה -site:en.wikipedia.org` → U25, U67, U68, U69
+- `site:nli.org.il חרות 1959 בחירות` → U211, U212
+
+**ב — National Religious Party: gap.
+- `מפד״ל 1959 כרזה -site:en.wikipedia.org` → U38, U40, U70, U4
+- `site:nli.org.il מפד"ל 1959 בחירות` → U200, U213
+
+**מ — Mapam: gap — E2 (exact date missing).
+- `מפ״ם 1959 כרזה -site:en.wikipedia.org` → U5, U25, U65, U22
+- `site:nli.org.il מפ"ם 1959 בחירות` → U6, U209
+
+**צ — General Zionists: gap.
+- `הציונים הכלליים 1959 כרזה -site:en.wikipedia.org` → U25, U71, U22, U72
+- `site:nli.org.il הציונים הכלליים 1959 בחירות` → U214, U215
+
+**תו — Ahdut HaAvoda: gap.
+- `אחדות העבודה 1959 כרזה -site:en.wikipedia.org` → U42, U65, U73, U74
+- `site:nli.org.il אחדות העבודה 1959 בחירות` → U209, U216
+
+**גד — Religious Torah Front: gap.
+- `חזית דתית תורתית 1959 כרזה -site:en.wikipedia.org` → U50, U75, U76, U77
+- `site:nli.org.il חזית דתית תורתית 1959 בחירות` → U217, U218
+
+**רא — Progress and Development: gap.
+- `קידמה ופיתוח 1959 כרזה -site:en.wikipedia.org` → U75, U7, U78, U79
+- `site:nli.org.il קידמה ופיתוח 1959 בחירות` → U206, U219
+
+**פ — Progressive Party: gap.
+- `הפרוגרסיבים 1959 כרזה -site:en.wikipedia.org` → U80, U51, U81, U7
+- `site:nli.org.il הפרוגרסיבים 1959 בחירות` → U220, U221
+
+**יא — Cooperation and Brotherhood: gap.
+- `שיתוף ואחווה 1959 כרזה -site:en.wikipedia.org` → U82, U83, U84, U85
+- `site:nli.org.il שיתוף ואחווה 1959 בחירות` → U222
+
+**ק — Maki: gap.
+- `מק״י 1959 כרזה -site:en.wikipedia.org` → U86, U87, U88, U17
+- `site:nli.org.il מק"י 1959 בחירות` → U223, U65
+
+**ע — Agriculture and Development: gap.
+- `חקלאות ופיתוח 1959 כרזה -site:en.wikipedia.org` → U89, U33, U90, U91
+- `site:nli.org.il חקלאות ופיתוח 1959 בחירות` → U206, U224
+
+Constituents (separate from joint-list lockups):
+
+- `agudat-yisrael` — **gap**. `אגודת ישראל 1959 כרזה סמל -site:en.wikipedia.org` → U293, U294.
+- `poalei-agudat-yisrael` — **gap**. `פועלי אגודת ישראל 1959 כרזה סמל -site:en.wikipedia.org` → U293, U294.
 
 ## Returned search URL index
 
@@ -549,8 +604,8 @@ This index records search leads, including irrelevant and wrong-year returns. In
 - **Dated material inspected, no separate emblem accepted:** Herut k1; national religious joint list k3; Maki k4; Mapai k2 (also conflicting caption precision). Letter-only observations do not prove non-use.
 - **Original asset not acquired / campaign design not established:** every other identity still marked gap, including all satellite Arab lists and all 32 constituent identities. Search records above identify exact names and years; no borrowing from adjacent elections. Joint-list origin remains separate from constituent origin.
 
-Conclusion map: E1 supports the medium-confidence k1 Fighters assignment under the existing Commons policy; limitation is inaccessible upstream NLI and licence metadata conflict. E2 supports the medium-confidence k4 Mapam crop; limitation is year-only dating and scan-edge clipping. E3 contradicts the assumption that every poster yields a standalone emblem; it does not support campaign-wide absence. E4 provides a 1955 official-poster lead but does not support transferring the 1959 design. The remaining outcomes are unresolved, with low confidence in any historical absence claim. A retrieved dated official original showing the exact emblem and a legible crop would change each gap outcome. Search-result and source-family totals are not presented as pages reviewed.
+Conclusion map: E1 supports the medium-confidence k1 Fighters assignment under the existing Commons policy; limitation is inaccessible upstream NLI and licence metadata conflict. E2 supports the origin and campaign year of the k4 Mapam crop candidate, but fails the existing complete-date build gate; it remains a gap, also with scan-edge clipping. E3 contradicts the assumption that every poster yields a standalone emblem; it does not support campaign-wide absence. E4 provides a 1955 official-poster lead but does not support transferring the 1959 design. The remaining outcomes are unresolved, with low confidence in any historical absence claim. A retrieved dated official original showing the exact emblem and a legible crop would change each gap outcome. Search-result and source-family totals are not presented as pages reviewed.
 
 ## Verification
 
-Election batches run the requested Vitest, TypeScript, Vite and logo-validator commands. Final results and accepted byte hashes will be recorded after k8. No push or merge.
+Election batches run the requested Vitest, TypeScript, Vite and logo-validator commands. Final results and retained byte hashes will be recorded after k8. No push or merge.

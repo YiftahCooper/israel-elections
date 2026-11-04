@@ -4202,5 +4202,41 @@
   "retrievedAt": "2026-11-04",
   "bytes": 89256,
   "sha256": "a9b2da54d6113ff6d66178ca8b826654c145909b33190b8d0298ddeac0b2c271"
+ },
+ {
+  "id": "run2-mapam-original",
+  "file": "logos/k4/mapam-kra3225-original.jpg",
+  "url": "http://www.zionistarchives.org.il/DocLib14/KRA3225.jpg",
+  "publisher": "Mapam (original issuer); Central Zionist Archives (scan custodian)",
+  "official": false,
+  "description": "Original 1959 Mapam poster scan KRA/3225; crop source.",
+  "method": "http",
+  "retrievedAt": "2026-11-04",
+  "bytes": 324257,
+  "sha256": "43cb22ea1ca5aaac66667b041ddb9d4f3141d0bf89d0ee0c9213edad6d06ec8d"
+ },
+ {
+  "id": "run2-cza-description",
+  "file": "logos/k4/cza-election-posters.html",
+  "url": "http://www.zionistarchives.org.il/Pages/ElectionPosters.aspx",
+  "publisher": "Mapam (original issuer); Central Zionist Archives (scan custodian)",
+  "official": false,
+  "description": "Archive exhibition published 14 October 2026; caption dates KRA/3225 to 1959.",
+  "method": "http",
+  "retrievedAt": "2026-11-04",
+  "bytes": 94059,
+  "sha256": "7c382ba998b9f75ef2539365396ff6ae6acf9bdb2f6b96b57285d5a826e367c9"
+ },
+ {
+  "id": "run2-mapam-crop-candidate",
+  "file": "logos/k4/mapam-roundel-candidate.png",
+  "url": "http://www.zionistarchives.org.il/DocLib14/KRA3225.jpg",
+  "publisher": "Mapam; Central Zionist Archives",
+  "official": false,
+  "description": "Unresolved crop candidate; full campaign date missing. Crop [823,614,995,764]; Pillow 12.2.0 RGBA; see logo source card.",
+  "method": "crop",
+  "retrievedAt": "2026-11-04",
+  "bytes": 38606,
+  "sha256": "b9f6f2ec368938216a67c471c304dbd94051c17c2f217c7d2d5517164ca48347"
  }
 ]
