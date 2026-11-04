@@ -23,6 +23,13 @@ page, not a hotlink), `licence`, `attribution`, `hosted`, `inUseEvidence`, and
 - `status`: `verified` (local asset), `download-unavailable` (dated, licensed source,
   but retrieval failed), or `unresolved` (candidate only; no display permission).
 - `sha256`: committed asset hash; `originalSha256`: downloaded original hash.
+- `publicationEvidence`: for a crop from an official printed campaign item,
+  `page` and `asset` identify retained catalogue HTML and original scan records in
+  `data/raw/SOURCES.json`; `publicationDate` is the evidenced campaign-use date,
+  `originalDimensions` is `[width, height]`, and `cropBox` is
+  `[left, top, right, bottom]` with exclusive right/bottom coordinates. Source type
+  is `official party campaign publication`. The complete scan remains unchanged;
+  record the crop and proportional PNG conversion in the run report.
 
 Only entries with `hosted: true`, `status: "verified"`, and a non-null `file` are
 ready for local display. `hosted: false` entries must not be fetched at runtime:

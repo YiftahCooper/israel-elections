@@ -17,6 +17,39 @@
       "originalSha256": "0cbc3d2c7ff0ac39e5ea4e3ba0ffcb6446f07be79d16d63e10990600b5137316",
       "rights": "free-licence",
       "bytes": 17822
+    },
+    {
+      "letters": "מחל",
+      "file": "logos/likud-print-1981.png",
+      "sourceUrl": "https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%9E%D7%AA%D7%A7%D7%93%D7%9D/%D7%A4%D7%A8%D7%99%D7%98?itemId=34179",
+      "licence": "Fair use for identification; copyright remains with the rights holder",
+      "attribution": "Likud; dated official campaign poster (1981-06-17), Jabotinsky Institute item 34179. Cropped from a dated official publication; no redraw or recolouring.",
+      "hosted": true,
+      "inUseEvidence": "Inspected archive catalogue identifies Likud as creator and dates the advertised campaign event to 1981-06-17; retained scan visibly prints that date. Logo is a crop from this dated official publication, outside the archive watermark. Separate campaign evidence; not extended to other elections.",
+      "confidence": "medium",
+      "evidenceId": "jabotinsky-likud-1981-34179",
+      "assetSourceUrl": "https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%9B%D7%A8%D7%96%D7%95%D7%AA/9.05.2013/2423_3966.jpg",
+      "status": "verified",
+      "sha256": "87a6ff9d0396bc647457dbb098c499511988373214ecc5dbbcea7627d1873f1a",
+      "originalSha256": "c2a9287390c8a35cf1950973db1c5f5c4829ac5b71c27ef2efe62bd48b8e845a",
+      "rights": "fair-use-identification",
+      "bytes": 5664,
+      "inUseDate": "1981-06-17",
+      "publicationEvidence": {
+        "page": "logo-k10-likud-print-page",
+        "asset": "logo-k10-likud-print-asset",
+        "publicationDate": "1981-06-17",
+        "cropBox": [
+          244,
+          405,
+          313,
+          436
+        ],
+        "originalDimensions": [
+          314,
+          448
+        ]
+      }
     }
   ]
 }

@@ -57,7 +57,26 @@ for n in range(1, 27):
         assert item['status'] == 'verified'
         assert item['assetSourceUrl'].startswith('https://')
         if item['rights'] == 'fair-use-identification':
-            assert source['sourceType'] in ('official party campaign website', 'official party social publication', 'official CEC publication')
+            assert source['sourceType'] in ('official party campaign website', 'official party social publication', 'official CEC publication', 'official party campaign publication')
+            if source['sourceType'] == 'official party campaign publication':
+                evidence = item['publicationEvidence']
+                assert evidence == source['publicationEvidence'], item
+                for kind in ('page', 'asset'):
+                    record = RAW_SOURCES[evidence[kind]]
+                    relative = Path(record['file'])
+                    assert relative.parts == ('logos', f'k{n}', relative.name), record
+                    original = (ROOT / 'data/raw' / relative).read_bytes()
+                    assert len(original) == record['bytes'], record
+                    assert hashlib.sha256(original).hexdigest() == record['sha256'], record
+                    assert record['url'].startswith('https://') and record['retrievedAt'], record
+                    if kind == 'asset':
+                        assert record['sha256'] == item['originalSha256'], record
+                        assert record['url'] == item['assetSourceUrl'], record
+                assert evidence['publicationDate'] == item['inUseDate'], item
+                x0, y0, x1, y1 = evidence['cropBox']
+                width, height = evidence['originalDimensions']
+                assert all(type(v) is int for v in (x0, y0, x1, y1, width, height)), item
+                assert 0 <= x0 < x1 <= width and 0 <= y0 < y1 <= height, item
             assert item['inUseDate']
             if item.get('archiveUrl') or item.get('archiveTimestamp'):
                 assert item['archiveUrl'] and item['archiveTimestamp']
