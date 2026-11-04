@@ -450,6 +450,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 @media (min-width: 761px) and (max-width: 1100px) { .board .side-panel > .sp-head, .board .side-panel > .sp-body, .board .side-panel > .phone-result-strip { inline-size: 100%; max-inline-size: 720px; margin-inline: auto; box-sizing: border-box; } }
 .drawer { position: fixed; inset-block: 0; inset-inline-end: 0; width: min(440px, 100vw); z-index: 70; box-shadow: var(--shadow-pop); }
 .drawer .side-panel { height: 100%; overflow-y: auto; border-radius: 0; }
+/* a side drawer beside a tool page, not a modal: it starts under the header so undo, the scenario chip and the election stay reachable */
+@media (min-width: 761px) { .drawer { inset-block-start: var(--band-h, 52px); } }
 
 /* the bloc editor beside the chamber: one tinted card per bloc, its members as chips that move by drag or by
    choosing a chip and then a bloc */
