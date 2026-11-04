@@ -117,13 +117,19 @@
       "inUseDate": "2022-11-01",
       "archiveUrl": "https://web.archive.org/web/20221101013442/https://yeshatid.org.il/",
       "archiveTimestamp": "20221101013442",
-      "inUseEvidence": "Inspected election-day official homepage capture references the exact May 2022 SVG as img.dt-logo, alt יש עתיד. Retrieved that exact path from the official origin and visually inspected white lettering. The capture establishes the reference, not a historical byte digest; origin bytes were retrieved in 2026. Distinct from the oversized March 2026 header design.",
+      "inUseEvidence": "Inspected election-day official homepage capture references the exact May 2022 SVG as img.dt-logo, alt יש עתיד. Retrieved that exact path from the official origin and visually inspected white lettering. The capture establishes the reference, not a historical byte digest; origin bytes were retrieved in 2026. Distinct from the oversized March 2026 header design. Continuation: retained raw HTML and the November 2 archived SVG, byte-identical to origin/public SVG; archive asset capture is one day after polling. Not an election-day byte capture.",
       "retrievedAt": "2026-11-04",
       "retrieval": "Generic Mozilla/5.0 User-Agent. Exact official-origin SVG preserved without recolouring or geometry changes.",
       "sha256": "3a969c0c32b70d9cba0b5797f1759314e8282ee333cd154ecc6efcba8b55fc39",
       "originalSha256": "3a969c0c32b70d9cba0b5797f1759314e8282ee333cd154ecc6efcba8b55fc39",
       "bytes": 7087,
-      "displayBackground": "dark"
+      "displayBackground": "dark",
+      "rawEvidence": {
+        "page": "logo-k25-yeshatid-page",
+        "asset": "logo-k25-yeshatid-archived-original"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20221102082854id_/https://yeshatid.org.il/wp-content/uploads/2022/05/logo_svg.svg",
+      "assetArchiveTimestamp": "20221102082854"
     }
   ]
 }

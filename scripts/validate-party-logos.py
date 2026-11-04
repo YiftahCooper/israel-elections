@@ -8,6 +8,7 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = {s['id']: s for s in json.loads((ROOT / 'data/meta/logos/sources.json').read_text())['sources']}
+RAW_SOURCES = {s['id']: s for s in json.loads((ROOT / 'data/raw/SOURCES.json').read_text())}
 seen_files = set()
 counts = {'hosted': 0, 'download-unavailable': 0, 'unresolved': 0}
 for n in range(1, 27):
@@ -30,6 +31,23 @@ for n in range(1, 27):
         assert item['rights'] in ('free-licence', 'fair-use-identification')
         source = SOURCES[item['evidenceId']]
         assert item['sourceUrl'] == source['sourceUrl']
+        if 'rawEvidence' in item:
+            evidence = item['rawEvidence']
+            assert evidence == source['rawEvidence'], item
+            assert 'page' in evidence and set(evidence) <= {'page', 'asset'}, item
+            for kind, source_id in evidence.items():
+                record = RAW_SOURCES[source_id]
+                relative = Path(record['file'])
+                assert relative.parts == ('logos', f'k{n}', relative.name), record
+                content = (ROOT / 'data/raw' / relative).read_bytes()
+                assert len(content) == record['bytes'], record
+                assert hashlib.sha256(content).hexdigest() == record['sha256'], record
+                assert record['url'].startswith('https://') and record['archiveUsed'] and record['retrievedAt'], record
+                if kind == 'page':
+                    assert record['captureTimestamp'] == item['archiveTimestamp'], record
+                else:
+                    assert record['sha256'] == item['originalSha256'], record
+                    assert record['captureTimestamp'] == item.get('assetArchiveTimestamp'), record
         assert isinstance(item['hosted'], bool)
         if not item['hosted']:
             assert item['file'] is None

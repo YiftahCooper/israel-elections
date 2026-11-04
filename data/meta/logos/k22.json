@@ -57,21 +57,31 @@
     },
     {
       "party": "yesh-atid",
-      "file": null,
+      "file": "logos/yesh-atid-2019.png",
       "sourceUrl": "https://www.yeshatid.org.il/",
       "assetSourceUrl": "https://www.yeshatid.org.il/content/images/logo_header.png",
       "licence": "Copyright retained by rights holder; fair-use identification",
       "attribution": "יש עתיד בראשות יאיר לפיד — official party header",
       "rights": "fair-use-identification",
-      "hosted": false,
-      "status": "download-unavailable",
+      "hosted": true,
+      "status": "verified",
       "confidence": "medium",
       "evidenceId": "yeshatid-archive-20190904",
       "inUseDate": "2019-09-04",
       "archiveUrl": "https://web.archive.org/web/20190904082028/https://www.yeshatid.org.il/",
       "archiveTimestamp": "20190904082028",
-      "inUseEvidence": "Inspected official homepage capture dated 2019-09-04 explicitly references /content/images/logo_header.png with alt יש עתיד בראשות יאיר לפיד. Separate party identity; the 2019 capture does not supply a Blue and White whole-list lockup. Exact archived image retrieval returned HTTP 429; no rendering or historical byte match is claimed.",
-      "retrieval": "Generic Mozilla/5.0 User-Agent; archive replay retried after backoff. Remains unhosted until image can be retrieved and visually inspected."
+      "inUseEvidence": "Retained September 4 official campaign HTML references /content/images/logo_header.png with alt יש עתיד בראשות יאיר לפיד. Retrieved and visually inspected that exact path from its September 17 election-day capture: blue/cyan Yesh Atid 2019 lockup. Separate party identity, not a Blue and White whole-list logo. Page and asset captures are different dates in the same campaign; one official-site evidence family.",
+      "retrieval": "Availability API selected the exact image capture; generic Mozilla/5.0 User-Agent; raw id_ replay. Original PNG retained unchanged, no recolouring or resizing.",
+      "rawEvidence": {
+        "page": "logo-k22-yeshatid-page",
+        "asset": "logo-k22-yeshatid-original"
+      },
+      "sha256": "a3050f0f720f82126e9fdd9223e08932fa37b93c40f928f829b0988bf76067c6",
+      "originalSha256": "a3050f0f720f82126e9fdd9223e08932fa37b93c40f928f829b0988bf76067c6",
+      "bytes": 5272,
+      "retrievedAt": "2026-11-04",
+      "assetArchiveUrl": "https://web.archive.org/web/20190917002312id_/https://www.yeshatid.org.il/content/images/logo_header.png",
+      "assetArchiveTimestamp": "20190917002312"
     }
   ]
 }
