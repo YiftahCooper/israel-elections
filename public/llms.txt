@@ -1,0 +1,14 @@
+# Israeli Elections Explorer (סייר הבחירות לכנסת)
+
+> An exact, source-faithful explorer and seat simulator for every Knesset election from 1949 to 2026, in Hebrew and English. Seats are computed with exact arithmetic under each election's own law, from official Central Elections Committee, Reshumot and Knesset sources.
+
+## Data
+
+- [Election index](data/elections.json): the 26 elections and their availability
+- [Sources](data/sources.json): every retained official source with URL, retrieval time and SHA-256
+- Datasets: `data/k1.json` … `data/k26.json` (national results, rosters, agreements, blocs); `data/kNN-localities.json` for elections with locality results
+
+## Notes
+
+- Not affiliated with the Central Elections Committee or any party.
+- Secondary sources are labelled as such; English-language Wikipedia is not used.

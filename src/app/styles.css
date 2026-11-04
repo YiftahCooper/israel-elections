@@ -265,3 +265,5 @@ details > summary { cursor: pointer; }
 .joint-split { margin-top: 6px; }
 .chamber-tools { flex-wrap: wrap; }
 .chamber, .chamber svg { max-width: 100%; }
+/* a fixed width, so the bar does not shift when the election index finishes loading (CLS) */
+.election-picker { width: 15.5rem; max-width: 100%; }
