@@ -1,3 +1,4 @@
+import { GraphicChanges } from './GraphicChanges.tsx';
 import { useEffect, useMemo, useState } from 'react';
 import type { AllocationResult, RemainderStep } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
@@ -40,6 +41,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
 
   return (
     <div>
+      <GraphicChanges s={s} r={r} />
       <div className="row" style={{ marginBottom: 10 }}>
         <button className="btn small" onClick={() => setI(0)}>{L('Start', 'להתחלה')}</button>
         <button className="btn small" onClick={() => setI((x) => Math.max(0, x - 1))} disabled={i === 0}>{L('Previous', 'הקודם')}</button>

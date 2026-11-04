@@ -26,7 +26,7 @@ for (const lang of ['he','en']) for (const phone of [false,true]) {
       if (!phone) {
         const ds=JSON.parse(readFileSync(`public/data/k${n}.json`, 'utf8'));
         const winners=allocate(toEngineInput(scenarioFromDataset(ds))).lists.filter(l=>l.seats>0).length;
-        await expect(diagram.locator('[data-chamber-label]')).toHaveCount(winners);
+        await expect(page.locator('.chamber .legend button')).toHaveCount(winners);
       }
       else {
         await expect(page.locator('.chamber .legend')).toBeVisible();

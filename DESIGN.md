@@ -476,3 +476,35 @@ Custom has no selected Overview tab. About is a compact disclosure beside the el
 picker; its expanded history stays there, and pending gazette status appears once when closed.
 Chamber labels use measured font widths, physical SVG anchors and bounded side rails;
 phones retain the full list legend. Changes retain neutral tokens and logical spacing.
+
+### Graphics contract and persistent comparisons (4 November 2026)
+
+The default colour identifies the list consistently in chamber seats, list bars
+and bloc-member strips. Expert's explicitly named constituent-party/bloc modes
+are categorical overrides; they never encode change. Pale regions identify bloc
+membership. A neutral tinted, dotted “No bloc” region is retained even in a blank
+grouping. Blocks use a fixed 20 × 6 tray; arc and blocks retain the full chamber
+capacity independent of the number of lists. Experimental totals stay explicit.
+List names wrap in a separate legend beneath the tray, in both languages and at
+both viewport sizes, instead of being squeezed into the seat drawing.
+
+The active saved/official reference uses dashed neutral outlines; current changes
+use solid neutral ink segments and optional gained-ordinal outlines. Losses appear
+in a separately labelled baseline miniature of empty outline slots, never as
+extra occupied seats in the current chamber. A static per-list old → new and
+signed difference readout accompanies the drawing. All ordinal marks are
+explicitly schematic: they identify no individual seat or candidate and imply no
+transfer between lists. Comparisons aggregate connected origins through the
+existing derivations so merges and splits do not duplicate reference seats or
+invent per-child historical allocations. This follows principle 10 and the
+“Seat transplantation” / “Animation as evidence” cautions in the families-and-controls study. The
+bloc strip retains the reference boundaries on the same full-total scale; custom
+groupings without a compatible counterpart never invent a baseline. Comparison
+evidence persists after animation and under reduced motion.
+
+Hatching means below threshold, not simply zero seats. A threshold-progress bar
+and seat-change track have different denominators and remain separate. Majority
+markers remain labelled (61 of 120); the independent PM vote uses its labelled
+50% marker. Historical local votes receive no invented geographic scenario delta.
+The complete findings and verification scope are in
+`docs/acceptance/graphics-audit-2026-11-04.md`.

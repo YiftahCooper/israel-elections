@@ -645,3 +645,28 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
   .band .scenario-status .chip { max-inline-size: 150px; white-space: nowrap; }
   .band .scenario-chip-name { overflow: hidden; text-overflow: ellipsis; }
 }
+
+/* Shared persistent comparison grammar: current = solid ink, reference = dashed ink. */
+.chamber .legend { display: flex; flex-wrap: wrap; gap: 4px 8px; }
+.chamber .legend button { max-width: 100%; white-space: normal; overflow-wrap: anywhere; text-align: start; }
+.graphic-key { margin: 4px 0; }
+.lb-bar > .delta-segment { position: absolute; inset-block: -1px; border-block: 2px solid var(--ink); pointer-events: none; }
+.bloc-reference { display: flex; height: 9px; margin-block: 4px; gap: 0; }
+.bloc-reference > span { border: 1.5px dashed var(--ink-2); background: var(--surface-2); box-sizing: border-box; }
+.corridor.no-bloc { border-style: dotted; }
+@media (prefers-reduced-motion: reduce) { .chamber .wedge, .chamber .seat, .chart .bar { transition: none; animation: none; } }
+.graphic-changes { margin-block: 8px 14px; min-width: 0; }
+.graphic-change-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(60px, 1fr) auto; align-items: center; gap: 10px; margin-block: 8px; font-size: 12px; }
+.graphic-change-row > span:first-child { overflow-wrap: anywhere; }
+.no-bloc-key { display: inline-block; border: 1px dotted var(--muted); background: color-mix(in srgb, var(--muted) 24%, var(--surface)); padding: 2px 5px; border-radius: 4px; }
+/* A full 120-seat scale: gaps and fixed horizontal padding must not distort tiny blocs. */
+.strip { gap: 0; }
+.corridor { padding-inline: 0; flex-shrink: 0; }
+.corridor .label { padding-inline: 3px; }
+.corridor .pieces { gap: 0; }
+.corridor .pieces i { min-width: 0; }
+.cmp-blocrow .coal-bar { gap: 0; }
+.cmp-blocrow .coal-bar > i { min-width: 0; box-sizing: border-box; }
+.baseline-mini { max-width: 420px; margin-inline: auto; }
+.baseline-mini p { margin-block: 4px; }
+.chamber .graphic-changes { margin-inline: 8px; }
