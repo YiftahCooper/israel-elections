@@ -150,7 +150,8 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
         else if (action.part === 'coalitions') snapshot = { coalition: { in: [], out: [] } };
         else if (action.part === 'blocs') {
           need(action.name?.trim(), 'name', 'Name the grouping.');
-          snapshot = { blocs: [0, 1].map(i => ({ id: `blank-${i}`, nameHe: `גוש ${i+1}`, nameEn: `Bloc ${i+1}`, color: '#5a6470' })), customGroupingName: action.name, blocSchemeId: null, partyBlocs: {}, candidateBlocs: {}, listBlocs: Object.fromEntries(s.lists.map(l => [l.id, null])) };
+          // two clearly different colours from the bloc palette: grey is reserved for No bloc
+          snapshot = { blocs: [0, 1].map(i => ({ id: `blank-${i}`, nameHe: `גוש ${i+1}`, nameEn: `Bloc ${i+1}`, color: ['#1f5aa5', '#d98c1f'][i] })), customGroupingName: action.name, blocSchemeId: null, partyBlocs: {}, candidateBlocs: {}, listBlocs: Object.fromEntries(s.lists.map(l => [l.id, null])) };
         }
       }
       if (action.source === 'preset') {
