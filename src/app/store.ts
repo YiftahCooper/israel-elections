@@ -5,7 +5,7 @@ import { PRESETS, type FeatureId, type Visibility } from './features.ts';
 import { useSyncExternalStore } from 'react';
 import type { ElectionDataset, ElectionId, ElectionIndexEntry } from '../data/schema.ts';
 import { ActionError, applyAction } from '../model/actions.ts';
-import { scenarioFromDataset, validateScenario, type Action, type ActionContext, type Scenario } from '../model/scenario.ts';
+import { scenarioFromDataset, validateScenario, type Action, type ActionContext, type ChangeEntry, type Scenario } from '../model/scenario.ts';
 import type { Lang } from './i18n.ts';
 import type { SourceChoice } from './voteEdit.ts';
 
@@ -398,4 +398,73 @@ export function keepFeature(id: FeatureId, visibility: Visibility = 'show') {
 }
 export function useFeature(id: FeatureId) {
   return useStore(st => st.customFeatures?.[id] ?? PRESETS[st.level][id]);
+}
+
+// ---- Workspace restore: unsaved work survives a reload (owner decision 2026-11-04) ----
+// The open scenario, each election's session and the session drafts are kept in this browser's storage as their
+// change logs (never as computed results), and rebuilt by replaying the logs against the same datasets. Undo is
+// rebuilt one change at a time. Nothing leaves the device.
+const WS = 'israel-elections:workspace:v1';
+type Snap = { id: string; name: string; description?: string; identityColor?: string; electionId: ElectionId; log: ChangeEntry[]; ref: { id: string; name: string; description?: string; log: ChangeEntry[] } | null };
+type Workspace = { v: 1; electionId: ElectionId; current: Snap | null; sessions: Snap[]; drafts: [string, Snap][] };
+const snapOf = (x: ScenarioSession): Snap => ({ id: x.scenario.id, name: x.scenario.name, description: x.scenario.description, identityColor: x.scenario.identityColor,
+  electionId: x.scenario.electionId, log: x.scenario.log, ref: x.reference ? { id: x.reference.id, name: x.reference.name, description: x.reference.description, log: x.reference.log } : null });
+function writeWorkspace() {
+  const st = state;
+  if (!st.scenario) return;
+  const ws: Workspace = { v: 1, electionId: st.scenario.electionId,
+    current: { ...snapOf({ scenario: st.scenario, reference: st.reference, past: [], future: [] }) },
+    sessions: Object.values(st.sessions).filter((x): x is ScenarioSession => !!x && (x.scenario.log.length > 0 || !!x.reference)).map(snapOf),
+    drafts: Object.entries(st.scenarioDrafts).filter(([, x]) => !!x?.scenario).map(([k, x]) => [k, snapOf(x)]) };
+  try { localStorage.setItem(WS, JSON.stringify(ws)); } catch { /* full or disabled storage: the session simply is not restored */ }
+}
+let wsTimer: ReturnType<typeof setTimeout> | null = null;
+let wsLast: unknown[] = [];
+listeners.add(() => {
+  const now = [state.scenario, state.reference, state.sessions, state.scenarioDrafts];
+  if (now.every((x, i) => x === wsLast[i])) return;
+  wsLast = now;
+  if (wsTimer) clearTimeout(wsTimer);
+  wsTimer = setTimeout(writeWorkspace, 250);
+});
+/** Rebuilds a session from its log; its undo history is the log replayed one change at a time. */
+function rebuild(ds: ElectionDataset, x: Snap): { session: ScenarioSession; failed: number } {
+  const ctx = baseContext(ds);
+  let failed = 0;
+  const run = (name: string, entries: ChangeEntry[], from?: Scenario) => {
+    let s = from ?? scenarioFromDataset(ds, name);
+    const steps: Scenario[] = [];
+    for (const e of entries.slice(from ? from.log.length : 0)) {
+      steps.push(s);
+      try { s = applyAction(s, e.action, undefined, ctx); s = { ...s, log: [...s.log.slice(0, -1), e] }; } catch { failed++; }
+    }
+    return { s, steps };
+  };
+  const ref = x.ref ? { ...run(x.ref.name, x.ref.log).s, id: x.ref.id, name: x.ref.name, ...(x.ref.description ? { description: x.ref.description } : {}) } : null;
+  const shared = ref && x.log.length >= ref.log.length && ref.log.every((e, i) => JSON.stringify(e) === JSON.stringify(x.log[i]));
+  const { s, steps } = run(x.name, x.log, shared ? ref! : undefined);
+  const scenario = { ...s, id: x.id, name: x.name, ...(x.description ? { description: x.description } : {}), ...(x.identityColor ? { identityColor: x.identityColor } : {}) };
+  return { session: { scenario, reference: ref, past: steps.slice(-200), future: [] }, failed };
+}
+/** Restores the last workspace in this browser. Resolves false when there is none (or it cannot be read). */
+export async function restoreWorkspace(): Promise<boolean> {
+  let ws: Workspace | null = null;
+  try { ws = JSON.parse(localStorage.getItem(WS) ?? 'null'); } catch { return false; }
+  if (!ws || ws.v !== 1 || !ws.current) return false;
+  const ids = [...new Set([ws.electionId, ...ws.sessions.map(x => x.electionId), ...ws.drafts.map(([, x]) => x.electionId)])];
+  const loaded = await Promise.allSettled(ids.map(id => loadDataset(id)));
+  const ds = (id: ElectionId) => { const i = ids.indexOf(id); const r = loaded[i]; return r?.status === 'fulfilled' ? r.value : undefined; };
+  const main = ds(ws.electionId);
+  if (!main) return false;
+  let failed = 0;
+  const one = (x: Snap) => { const d = ds(x.electionId); if (!d) return null; const r = rebuild(d, x); failed += r.failed; return r.session; };
+  const current = one(ws.current)!;
+  const sessions: State['sessions'] = {};
+  for (const x of ws.sessions) if (x.electionId !== ws.electionId) { const r = one(x); if (r) sessions[x.electionId] = r; }
+  const drafts: State['scenarioDrafts'] = {};
+  for (const [k, x] of ws.drafts) { const r = one(x); if (r) drafts[k] = r; }
+  const he = state.lang === 'he';
+  setState({ electionId: ws.electionId, ...current, sessions, scenarioDrafts: drafts, selectedListId: null, blocPanel: null, loadError: null,
+    notice: failed ? (he ? `${failed} שינויים מהביקור הקודם לא ניתן היה להחיל מחדש על הנתונים הנוכחיים.` : `${failed} change(s) from your last visit could not be re-applied to the current data.`) : null });
+  return true;
 }

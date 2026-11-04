@@ -10,7 +10,7 @@ import { referenceChanges } from './derive.ts';
 import { X } from 'lucide-react';
 import { allocationOf, baselineOf, ruleChanges, scenarioIssues, tieAffectsSeats, warningText } from './derive.ts';
 import { LangContext, useL } from './i18n.ts';
-import { dispatch, getState, loadElectionIndex, openElection, openSharedFromHash, redo, setState, undo, useStore } from './store.ts';
+import { dispatch, getState, loadElectionIndex, openElection, openSharedFromHash, redo, restoreWorkspace, setState, undo, useStore } from './store.ts';
 import { Hemicycle as HemicycleView } from './components/Hemicycle.tsx';
 import { Figures as FiguresView } from './components/Figures.tsx';
 import { BlocBar as BlocBarView } from './components/Blocs.tsx';
@@ -92,7 +92,8 @@ export function App() {
   }, [lang, theme]);
   useEffect(() => {
     loadElectionIndex();
-    openSharedFromHash().then((opened) => { if (!opened && !getState().scenario) openElection('k26'); });
+    // the last visit's work first (so a share link opened now keeps it as a draft), then the link, then 2026
+    void restoreWorkspace().then(() => openSharedFromHash()).then((opened) => { if (!opened && !getState().scenario) openElection('k26'); });
     // a share link pasted into the address bar of an open tab only changes the hash
     const onHash = () => { void openSharedFromHash(); };
     addEventListener('hashchange', onHash);

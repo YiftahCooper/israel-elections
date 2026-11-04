@@ -46,9 +46,8 @@ test('save moves the reference, official setting restores markers, colour surviv
   await page.getByRole('combobox', { name: 'Mark differences from', exact: true }).selectOption('official');
   await page.getByRole('tab', { name: 'Overview', exact: true }).click();
   expect(await panel.locator('.edit-marker').count()).toBeGreaterThan(2);
+  // a reload restores the work in progress (owner decision 2026-11-04): still Unity, with its colour
   await page.reload();
-  await page.getByRole('tab', { name: 'Scenarios', exact: true }).click();
-  await page.locator('.scn-card').getByRole('button', { name: 'Open', exact: true }).click();
   await expect(page.locator('.band .election-status')).toContainText('Unity');
   await expect(page.locator('.app')).toHaveCSS('--scenario-color', '#486b78');
 });
