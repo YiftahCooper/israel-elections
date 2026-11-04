@@ -57,9 +57,10 @@ for (const lang of ['en','he']) for (const theme of ['light','dark']) for (const
     await page.getByRole('button',{name:lang === 'he' ? 'הסכמי עודפים' : 'Surplus agreements',exact:true}).click();
     await choose(page.getByRole('button', {name:lang === 'he' ? 'התחלה מתוך: הסכמי עודפים' : 'Start from: Agreements',exact:true}), 'blank');
     const removed = page.locator('.removed-agreements li');
-    await expect(removed).toHaveCount(5);
-    await expect(removed.first()).toContainText(' + ');
-    const marker = removed.first().locator('.edit-marker');
+    await expect(removed).toHaveCount(0);
+    const marker = page.locator('.edit-marker[data-marker-kind=part]');
+    await expect(marker).toHaveCount(1);
+    await expect(page.locator('.edit-marker[data-marker-kind=item]')).toHaveCount(0);
     await marker.focus();
     const tip = page.locator('.edit-tooltip');
     await expect(tip).toBeVisible();

@@ -165,3 +165,7 @@ summary semantics for an ordinary sourced grouping.
 The Overview keeps seat order. Every visible selected or mixed member has an individual
 label and tint, including separated runs such as Degel in 1988; no multi-row bracket
 implies adjacency. The list-column header is one short label plus the mixed policy.
+
+Applying a family grouping uses the same stable family colour as its chart/chip for the
+family bloc, muted grey for everyone else, and a distinct muted sand for mixed lists.
+The grouping replacement has one part marker; member lists are not individually marked.

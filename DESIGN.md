@@ -402,7 +402,11 @@ creates a Knesset id or changes k15's result. Aggregate results imply no individ
 
 The saved or loaded action-log replay is the marker reference; otherwise it is the official
 result. A browser preference can pin markers to the official result. All input glyphs use
-`differsFromReference` with stable entity-ID paths. Saving quiets markers while the scenario
+`referenceChanges` with stable entity-ID paths and shared replacement scopes. A whole-part
+replacement has one part marker; induced item changes have none. Subsequent individual edits
+compare with that replacement checkpoint and get one shared field marker. Repeated outlets
+for the same change resolve to one visible glyph. Seat highlights depend only on actual
+seat differences from the active reference. Saving quiets markers while the scenario
 keeps its identity. “Since …” and Compare name the saved reference; Compare also offers the
 official result explicitly. Candidate order is an input, not just candidate membership.
 
@@ -455,8 +459,8 @@ remain beside the candidate display regardless of the editing controls. Registry
 in-place agreement editing, Custom persistence/reset, blank candidates with undo, and human
 change values have automated coverage.
 
-Agreement markers sit beside the partner names. Removed agreements have individually named
-rows rather than an orphaned cluster of glyphs. Marker labels resolve removed entities from
+Individual agreement markers sit beside the partner names. Individually removed agreements
+have named rows; replacing the agreements part has one marker at its Start from control. Marker labels resolve removed entities from
 the reference, and their portal tooltips clamp to the viewport in both text directions.
 Rule starting points name the era, method, threshold and inferred candidate cap where relevant;
 storage identifiers remain internal in selectors and history.

@@ -54,9 +54,18 @@ Principle: **anything not true of the real election is marked at a glance.** Thi
 
 One shared marker is used everywhere:
 
-- a small "edited" glyph plus the accent outline already used for changed seats;
+- a small neutral "edited" glyph; seat outlines appear only for actual seat differences;
 - hover or focus shows "Edited: was X";
 - in exports, the marker is printed as text.
+
+**Whole-part replacement.** A starting point, rule preset or family grouping replaces a part
+and receives one marker at that part. Its induced list, bloc or agreement changes receive no
+individual markers. A later individual edit compares with the replacement checkpoint; its
+marker appears once even when the same field has several UI outlets. This applies to every
+part in the registry, including list-scoped identity/candidate replacements. Undo restores
+the previous scopes. Replaying the ordinary action log reconstructs scopes without changing
+the saved format. Numerical seat comparisons always use the active reference, independently
+of marker scopes.
 
 **Reference.** Markers show differences from the *reference*:
 
@@ -79,7 +88,7 @@ One shared marker is used everywhere:
 
 **Setting.** "Mark differences from: the loaded scenario (default) / always the official result". The second option keeps every per-item marker against the real election.
 
-A scenario is the existing `SavedScenario`: a name plus an action log replayed from the official data. The changes it holds (votes, names, colours, groupings…) are its parts. No new storage model is needed. Add one piece of store state, `reference`: the replayed scenario at save or load time, or null for official. Also add one derive helper, `differsFromReference(path)`, which every marker uses.
+A scenario is the existing `SavedScenario`: a name plus an action log replayed from the official data. The changes it holds (votes, names, colours, groupings…) are its parts. No new storage model is needed. Add one piece of store state, `reference`: the replayed scenario at save or load time, or null for official. Also add one derive helper, `referenceChanges`, which supplies part/item markers, and `markerReference` for their previous values.
 
 ## 3. Levels: three presets plus Custom
 
