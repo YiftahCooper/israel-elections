@@ -32,8 +32,12 @@ import { electionRuleSetId, historicalRules, scenarioFromDataset, toEngineInput,
 import { FAMILIES, families, type Family, type Modules } from './differential.cases.ts';
 
 const EXPECTED: Record<Family, string> = {
-  allocation: '8260bc462e6a076ed2e88154b09bed3aa22e301134e199a2c828c3cb489b3ef1',
-  analysis: 'af4237effa97d1baa18f3e9282e8605f20a993a18a3845daf1b371c93e35bd6c',
+  // Allocation and analysis re-recorded 2026-11-04 for one reviewed engine fix: under a pure divisor method (no quota
+  // stage, so no initial seats) the 1949 initial-seat conditions no longer apply. Before, those cases allocated 0 seats
+  // or deactivated every surplus agreement; 298 allocation and 19 analysis cases differ, all of that kind. The old
+  // engine on the same tree reproduces 8260bc46… and af4237ef…; model, validation and rules digests are unchanged.
+  allocation: 'd0cf49360e51637b14af7c0c827ca6b0eb7101360c8f0747c46a8e02e4ed5d69',
+  analysis: '3b3fbcda087cfab16097cf7b1bb5484109837680b12436dce8d1009abd5e0c8b',
   // Model digest re-recorded for the 1973 party ranks, then for candidate biography links (Candidate.bio): with
   // the build timestamps held fixed and bio not carried, the new code gives the previous digest. Then for three
   // corrected names (0088 addendum: 1955 #24, 1959 #47, 2003 Shinui #14); src unchanged, other digests unchanged.
