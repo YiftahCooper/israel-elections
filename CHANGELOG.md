@@ -27,6 +27,20 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 
 ## [Unreleased]
 
+### Added
+
+- Always-visible scenario switcher with identity and result previews, Official result, and
+  recoverable unsaved session drafts retaining undo history.
+- Searchable election timeline with era groups, repeat-election dates and a distinct 2001
+  PM-only marker, nearby elections and a preview/Open boundary; shared keyboard-operated
+  pickers become phone sheets.
+- Preview pickers for grouping, saved starting parts and colouring.
+- Source-aware fine/coarse vote steps, searched “Reach next seat” with exact/sampled status,
+  paired 1pp transfers, minimum-seat actions, threshold checkpoints,
+  bloc scaling, turnout steps and reuse of official turnout, total steps and era thresholds.
+- Browser coverage for scenario switching and unsaved recovery, keyboard/phone election
+  navigation, exact +1 seat, +10k and undo, and bilingual/theme/viewport screenshots.
+
 ### Changed
 
 - Warn in both languages when candidate-cap counterfactuals depend on the inferred 1977

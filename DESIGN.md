@@ -508,3 +508,47 @@ markers remain labelled (61 of 120); the independent PM vote uses its labelled
 50% marker. Historical local votes receive no invented geographic scenario delta.
 The complete findings and verification scope are in
 `docs/acceptance/graphics-audit-2026-11-04.md`.
+
+## Primary pickers and numeric quick actions
+
+Primary choices use the shared `ChoicePicker`: a searchable dialog with preview rows,
+current-choice check, native buttons, Arrow Up/Down and Home/End, Escape dismissal and
+focus return. At phone widths it becomes a bottom sheet with 52px rows. Search receives
+focus on every opening. Secondary form fields retain native selects. All spacing and
+placement use logical properties and the existing surface, ink, rule and focus tokens.
+
+The header always contains the scenario switcher. Phone inspectors repeat it above the
+list/bloc details, sharing the same session drafts so work stays reachable while a sheet
+covers the header. Official result retains neutral chrome;
+saved scenarios show their identity swatch, result preview, save date, status, change
+count, latest recorded vote source and named rule differences. Switching preserves
+unsaved scenario snapshots and their undo/redo history as explicitly labelled session drafts.
+Saving in browser remains the durable action; session drafts do not survive reload. The
+switcher also retains the inspectable changes-from-official list.
+
+Election browsing offers previous/current/next, nearby elections and All elections. A
+preview never changes the active election; Open commits through `openElection`, and
+Escape cancels. Election navigation is a dated timeline grouped by statutory threshold era, with distinct
+April/September 2019 entries and a separately labelled 2001 PM-only marker. Grouping,
+Start from and colour-by choices use previews. Saved groupings and other parts are reachable
+by the saved scenario's name. `BoardChoices` supplies grouping and chamber colouring outside
+the graphics components; scoped CSS hides their original native selectors so those files
+can evolve independently during the graphics audit.
+
+List quick actions use the active vote source, with neutral seat consequences on focus or
+hover. “Reach next seat” applies a searched vote delta, never assigns seats, and reports the
+computed seat jump (including multi-seat threshold crossings), balancing source and the
+engine’s exact/sampled/no-solution status. A sampled result is never called a minimum.
+The minimum-to-keep-seats action requires an exact boundary. Threshold checkpoints use the source-dependent boundary. Vote steps include ±1 vote and ±0.1pp alongside coarse steps, with units on each button.
+Percentage-point steps and multipliers each commit once. An explicit paired “Transfer
+1pp” moves a rounded 1% of current valid votes between named lists through `dispatchMany`,
+keeping valid votes and turnout fixed, with visible seat consequences. It is disabled
+when the donor cannot supply the full amount; it never clips. No uniform swing is offered. Bloc ±10% actions scale whole lists
+assigned to the bloc proportionally, using the active source and a single undo transaction;
+constituent-party seat assignments are not treated as known vote shares. Totals and turnout
+have domain steps; turnout can reuse another election's official turnout. Threshold era
+buttons remain inside Experimental mode, preserving the historical-rule guard.
+
+The controls incorporate P6–P9 of `docs/research/prior-art-families-and-controls.md`: named
+starting points, percentage-point units, baseline continuity, explicit preview/commit and
+source-aware searched outcomes. No external product code was copied.

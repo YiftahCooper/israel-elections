@@ -1,3 +1,4 @@
+import { choose } from './choices.ts';
 import { expect, test } from '@playwright/test';
 
 test('locality map supports bilingual search, address lookup and table fallback', async ({ page }) => {
@@ -6,7 +7,7 @@ test('locality map supports bilingual search, address lookup and table fallback'
   await page.route('https://tile.openstreetmap.org/**', route => route.abort());
   await page.route('https://photon.komoot.io/**', route => route.fulfill({json:{features:[{geometry:{coordinates:[34.78,32.08]},properties:{name:'Test address',city:'Tel Aviv'}}]}}));
   await page.goto('/');
-  await page.getByRole('combobox', {name:'Election',exact:true}).selectOption('k25');
+  await choose(page.getByRole('button', {name:'Election',exact:true}), 'k25');
   await page.getByRole('tab', {name:'Localities',exact:true}).click();
   await expect(page.getByRole('region', {name:/Locality results map/})).toBeVisible();
   await page.getByRole('searchbox', {name:'Find a locality'}).fill('tel aviv');
@@ -19,7 +20,7 @@ test('locality map supports bilingual search, address lookup and table fallback'
   expect(bounds!.width).toBeLessThanOrEqual(390);
   await page.getByRole('searchbox', {name:'Find a locality'}).fill('תֵּל אָבִיב');
   await expect(page.getByRole('button', {name:/Tel Aviv.*5000/i})).toBeVisible();
-  await page.getByRole('combobox', {name:'Colour by'}).selectOption('list');
+  await choose(page.getByRole('button', {name:'Colour by', exact:true}), 'list');
   await page.getByRole('textbox', {name:'Nearest locality to an address'}).fill('Test address');
   await page.getByRole('button', {name:'Find address',exact:true}).click();
   await page.getByRole('button', {name:'Test address, Tel Aviv'}).click();
@@ -27,7 +28,7 @@ test('locality map supports bilingual search, address lookup and table fallback'
   await page.getByRole('button', {name:'Table',exact:true}).click();
   await page.getByRole('searchbox', {name:'Search localities',exact:true}).fill('tel aviv');
   await expect(page.getByRole('region', {name:'Scrollable table'}).getByRole('table')).toContainText('תל אביב');
-  await page.getByRole('combobox', {name:'Election',exact:true}).selectOption('k17');
+  await choose(page.getByRole('button', {name:'Election',exact:true}), 'k17');
   await page.getByRole('button', {name:'Map',exact:true}).click();
   await expect(page.getByText(/The 2006 locality results lack CBS locality codes/)).toBeVisible();
 });

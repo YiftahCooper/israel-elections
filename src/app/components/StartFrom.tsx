@@ -1,3 +1,6 @@
+import { applyAction } from '../../model/actions.ts';
+import { ChoicePicker } from './ChoicePicker.tsx';
+import { ResultPreview } from './ResultPreview.tsx';
 import { ruleEraLabel } from '../changeValue.tsx';
 import type { Scenario } from '../../model/scenario.ts';
 import { PARTS, partSnapshot, type Part } from '../../model/parts.ts';
@@ -14,8 +17,7 @@ export function StartFrom({ s, part, listId }: { s: Scenario; part: Part; listId
     dispatch({ type: 'startPart', part, listId, source: 'blank', name });
   };
   return <div className="row start-from">
-    <label className="row small">{L('Start from…', 'התחלה מתוך…')} <select aria-label={`${L('Start from', 'התחלה מתוך')}: ${PARTS[part][lang]}`} value="" onChange={e => {
-      const v = e.target.value;
+    <ChoicePicker label={`${L('Start from', 'התחלה מתוך')}: ${PARTS[part][lang]}`} placeholder={L('Start from…', 'התחלה מתוך…')} value="" onChange={v => {
       if (v === 'blank') blank();
       else if (v === 'official') dispatch({ type: 'startPart', part, listId, source: 'official' });
       else if (v.startsWith('preset:')) dispatch({ type: 'startPart', part, listId, source: 'preset', presetId: v.slice(7) });
@@ -23,13 +25,13 @@ export function StartFrom({ s, part, listId }: { s: Scenario; part: Part; listId
         const entry = saved.find(x => x.id === v);
         if (entry && ds) dispatch({ type: 'startPart', part, listId, source: 'saved', name: entry.name, snapshot: partSnapshot(replay(ds, entry.name, entry.log).scenario, part) });
       }
-    }}><option value="">{L('Choose a starting point', 'בחירת נקודת מוצא')}</option>
-      <option value="official">{L('Official result', 'התוצאה הרשמית')}</option>
-      {part === 'blocs' && s.blocSchemes?.map(g => <option key={g.id} value={`preset:${g.id}`}>{lang === 'he' ? g.nameHe : g.nameEn}</option>)}
-      {part === 'rules' && Object.values(RULESETS).map(r => <option key={r.id} value={`preset:${r.id}`}>{ruleEraLabel(r, lang)}</option>)}
-      {saved.filter(x => x.electionId === s.electionId).map(x => <option key={x.id} value={x.id}>{x.name}</option>)}
-      {PARTS[part].blank && <option value="blank">{L('Blank', 'ריק')}</option>}
-    </select></label>
+    }} options={[
+      { value: 'official', label: L('Official result', 'התוצאה הרשמית') },
+      ...(part === 'blocs' ? (s.blocSchemes ?? []).map(g => ({ value: `preset:${g.id}`, label: lang === 'he' ? g.nameHe : g.nameEn, preview: <ResultPreview s={applyAction(s, { type: 'applyBlocScheme', schemeId: g.id })} /> })) : []),
+      ...(part === 'rules' ? Object.values(RULESETS).map(r => ({ value: `preset:${r.id}`, label: ruleEraLabel(r, lang) })) : []),
+      ...saved.filter(x => x.electionId === s.electionId).map(x => ({ value: x.id, label: x.name, detail: L('Saved scenario', 'תרחיש שמור'), preview: ds ? <ResultPreview s={replay(ds, x.name, x.log).scenario} /> : undefined })),
+      ...(PARTS[part].blank ? [{ value: 'blank', label: L('Blank', 'ריק') }] : [])
+    ]} />
     {part === 'blocs' && <button className="btn small" aria-label={L('New grouping', 'חלוקה חדשה')} onClick={blank}>+</button>}
   </div>;
 }

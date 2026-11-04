@@ -1,3 +1,4 @@
+import { choose } from './choices.ts';
 // Blocs per election and constituent parties (decision 0087).
 import { expect, test, type Page } from '@playwright/test';
 
@@ -5,8 +6,8 @@ const start = async (page: Page, level: string) => {
   await page.addInitScript((v) => { if (!sessionStorage.getItem('seeded')) { localStorage.setItem('israel-elections:v1', v); sessionStorage.setItem('seeded', '1'); } },
     JSON.stringify({ lang: 'en', hintDismissed: true, level }));
   await page.goto('/');
-  await page.getByRole('combobox', { name: 'Election' }).selectOption('k25');
-  await expect(page.getByRole('combobox', { name: 'Grouping' }).locator('option:checked')).toHaveText(/37th government/);
+  await choose(page.getByRole('button', { name: 'Election' }), 'k25');
+  await expect(page.getByRole('button', { name: 'Grouping', exact: true })).toHaveText(/37th government/);
 };
 const blocs = (page: Page) => page.getByRole('region', { name: 'Seats by bloc' });
 /** a bloc's band in the strip; its seat count is the bold figure in its label */
@@ -17,11 +18,11 @@ const listRow = (page: Page, name: string) => page.getByRole('region', { name: '
 
 test('an election opens on its first government, and other sourced groupings can be chosen', async ({ page }) => {
   await start(page, 'simple');
-  const grouping = page.getByRole('combobox', { name: 'Grouping' });
-  await expect(grouping.locator('option:checked')).toHaveText(/37th government/);
+  const grouping = page.getByRole('button', { name: 'Grouping', exact: true });
+  await expect(grouping).toHaveText(/37th government/);
   await expect(blocCount(page, 'Coalition')).toHaveText('64');
-  await grouping.selectOption({ label: 'Pre-election blocs' });
-  await expect(grouping.locator('option:checked')).toHaveText('Pre-election blocs');
+  await choose(grouping, { label: 'Pre-election blocs' });
+  await expect(grouping).toContainText('Pre-election blocs');
   // a band opens the bloc editor beside the chamber, at every level
   await band(page, 'Netanyahu bloc').click();
   await expect(editor(page).getByRole('textbox', { name: 'Bloc name' }).first()).toHaveValue('Netanyahu bloc');
@@ -36,7 +37,7 @@ test('a bloc is renamed and recoloured where it is shown, and Undo restores it',
   await name.fill('Government');
   await name.press('Enter');
   await expect(band(page, 'Government')).toBeVisible();
-  await expect(page.getByRole('combobox', { name: 'Grouping' }).locator('option:checked')).toHaveText('Your grouping');
+  await expect(page.getByRole('button', { name: 'Grouping', exact: true })).toContainText('Your grouping');
   await editor(page).getByRole('button', { name: 'Colour of Government' }).click();
   await editor(page).getByRole('button', { name: '#c0392b' }).click();
   await expect(band(page, 'Government')).toHaveCSS('--bc', '#c0392b');
@@ -56,9 +57,9 @@ test('moving one party of a joint list to another bloc moves only its members’
   const after = Number(await blocCount(page, 'Coalition').innerText());
   expect(after).toBeGreaterThan(before);
   expect(after - before).toBeLessThan(12); // only New Hope's members, not all of National Unity
-  const grouping = page.getByRole('combobox', { name: 'Grouping' });
-  await expect(grouping.locator('option:checked')).toHaveText('Your grouping');
-  await grouping.selectOption({ label: '37th government (Netanyahu VI) (Dec 2022)' });
+  const grouping = page.getByRole('button', { name: 'Grouping', exact: true });
+  await expect(grouping).toContainText('Your grouping');
+  await choose(grouping, { label: '37th government (Netanyahu VI) (Dec 2022)' });
   await expect(blocCount(page, 'Coalition')).toHaveText(String(before));
 });
 

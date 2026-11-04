@@ -1,3 +1,4 @@
+import { choose } from './choices.ts';
 // Loading behaviour introduced for speed: tab panels outside the levels' first tabs come in
 // separate chunks (fetched when the page is idle), and seat-security searches run in workers.
 // Each test checks that the user still gets the same content, with an accessible loading state.
@@ -45,7 +46,7 @@ test('seat security is computed in background workers and fills the whole table'
   const workers: string[] = [];
   page.on('worker', (w) => workers.push(w.url()));
   await start(page, { level: 'expert' });
-  await page.getByRole('combobox', { name: 'Election' }).selectOption('k25');
+  await choose(page.getByRole('button', { name: 'Election' }), 'k25');
   await expect(page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: 'Yesh Atid', exact: true })).toBeVisible();
   await page.getByRole('tab', { name: 'Seat safety' }).click();
   await expect.poll(() => workers.length).toBeGreaterThan(0);

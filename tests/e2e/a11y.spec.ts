@@ -1,3 +1,4 @@
+import { choose } from './choices.ts';
 // Keyboard and touch access found missing in the 4 November 2026 UI audit.
 import { expect, test, type Page } from '@playwright/test';
 
@@ -41,7 +42,7 @@ test.describe('on a touch phone', () => {
   test('no analysis tab scrolls sideways (1955, 1973, 2022; Expert)', async ({ page }) => {
     await start(page, { level: 'expert' });
     for (const id of ['k3', 'k8', 'k25']) {
-      await page.getByRole('combobox', { name: 'Election' }).selectOption(id);
+      await choose(page.getByRole('button', { name: 'Election' }), id);
       const tabs = page.getByRole('tablist', { name: 'Tools' }).getByRole('tab');
       for (let i = 0; i < await tabs.count(); i++) {
         await tabs.nth(i).click();
@@ -81,7 +82,7 @@ test('the Save & share menu closes on Escape and returns focus to its button', a
 
 test('a candidate links to the Knesset page, the party page and Hebrew Wikipedia marked secondary', async ({ page }) => {
   await start(page);
-  await page.getByRole('combobox', { name: 'Election' }).selectOption('k25');
+  await choose(page.getByRole('button', { name: 'Election' }), 'k25');
   await page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: 'Likud', exact: true }).click();
   await expect(page.getByRole('region', { name: 'List details' }).getByText(/^Who gets in/)).toBeVisible();
   const about = page.getByRole('group', { name: 'About נתניהו בנימין' });

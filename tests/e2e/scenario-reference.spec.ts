@@ -1,10 +1,11 @@
+import { choose } from './choices.ts';
 import { expect, test, type Page } from '@playwright/test';
 async function start(page: Page, lang = 'en', theme = 'light') {
   await page.addInitScript(v => { if (!localStorage.getItem('israel-elections:v1')) localStorage.setItem('israel-elections:v1', JSON.stringify(v)); }, { lang, theme, level: 'expert', hintDismissed: true });
   await page.goto('/');
   await expect(page.getByRole('region', { name: lang === 'he' ? 'הרשימות' : 'Lists', exact: true })).toBeVisible();
-  await page.getByRole('combobox', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }).selectOption('k25');
-  await expect(page.locator('.election')).toHaveValue('k25');
+  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k25');
+  await expect(page.locator('.election .choice-trigger')).toHaveAttribute('data-value', 'k25');
   await expect(page.locator('.lb-row').filter({ has: page.locator('.lb-name', { hasText: lang === 'he' ? 'ליכוד' : 'Likud' }) }).locator('.lb-seats b')).toHaveText('32');
 }
 test('blank grouping names and unassigns all seats, with undo', async ({ page }) => {
@@ -38,7 +39,7 @@ test('save moves the reference, official setting restores markers, colour surviv
   await page.getByRole('button', { name: 'Save', exact: true }).click();
   await page.getByRole('tab', { name: 'Overview', exact: true }).click();
   await expect(page.locator('.edit-marker')).toHaveCount(0);
-  await expect(page.locator('.election-status')).toContainText('Unity');
+  await expect(page.locator('.band .election-status')).toContainText('Unity');
   await votes.fill('1150100'); await votes.press('Enter');
   await expect(panel.locator('.edit-marker')).not.toHaveCount(0);
   await page.getByRole('tab', { name: 'Scenarios', exact: true }).click();
@@ -48,7 +49,7 @@ test('save moves the reference, official setting restores markers, colour surviv
   await page.reload();
   await page.getByRole('tab', { name: 'Scenarios', exact: true }).click();
   await page.locator('.scn-card').getByRole('button', { name: 'Open', exact: true }).click();
-  await expect(page.locator('.election-status')).toContainText('Unity');
+  await expect(page.locator('.band .election-status')).toContainText('Unity');
   await expect(page.locator('.app')).toHaveCSS('--scenario-color', '#486b78');
 });
 for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (const phone of [false, true]) {

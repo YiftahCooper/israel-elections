@@ -1,3 +1,4 @@
+import { choose } from './choices.ts';
 import { allocate } from '../../src/engine/allocate.ts';
 import { scenarioFromDataset, toEngineInput } from '../../src/model/scenario.ts';
 import { readFileSync } from 'node:fs';
@@ -8,9 +9,9 @@ for (const lang of ['he','en']) for (const phone of [false,true]) {
     await page.setViewportSize(phone ? {width:390,height:844} : {width:1440,height:900});
     await page.addInitScript(lang => localStorage.setItem('israel-elections:v1', JSON.stringify({lang,theme:'light',hintDismissed:true})),lang);
     await page.goto('/');
-    const picker=page.getByRole('combobox',{name:lang==='he'?'בחירות':'Election',exact:true});
+    const picker=page.getByRole('button', {name:lang==='he'?'בחירות':'Election',exact:true});
     for (let n=1;n<=26;n++) {
-      await picker.selectOption(`k${n}`);
+      await choose(picker, `k${n}`);
       await expect(page.locator('.lb-row').first()).toBeVisible();
       await page.evaluate(()=>document.fonts.ready);
       const diagram=page.locator('.chamber svg').first();
@@ -41,8 +42,8 @@ for (const lang of ['he','en']) for (const theme of ['light','dark']) for (const
     await page.setViewportSize(phone ? {width:390,height:844} : {width:1440,height:900});
     await page.addInitScript(v=>localStorage.setItem('israel-elections:v1',JSON.stringify(v)),{lang,theme,level:'standard',hintDismissed:true});
     await page.goto('/');
-    const picker=page.getByRole('combobox',{name:lang==='he'?'בחירות':'Election',exact:true});
-    await picker.selectOption('k26');
+    const picker=page.getByRole('button', {name:lang==='he'?'בחירות':'Election',exact:true});
+    await choose(picker, 'k26');
     await expect(page.locator('.election-about summary')).toContainText(lang==='he'?'ממתין לפרסום ברשומות':'Pending gazette');
     await expect(page.locator('.publication-pending')).toHaveCount(1);
     if (!phone) expect((await page.locator('.band').boundingBox())!.height).toBeLessThanOrEqual(60);
@@ -50,7 +51,7 @@ for (const lang of ['he','en']) for (const theme of ['light','dark']) for (const
     await expect(page.locator('.election-about ul')).toBeVisible();
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
     await page.screenshot({path:`.backup-scratch/polish/about-${lang}-${theme}-${phone?'phone':'desktop'}.png`});
-    await picker.selectOption('k15');
+    await choose(picker, 'k15');
     await expect(page.locator('.lb-row').first()).toBeVisible();
     await page.evaluate(()=>document.fonts.ready);
     if (!phone) expect((await page.locator('.band').boundingBox())!.height).toBeLessThanOrEqual(60);

@@ -1,0 +1,3624 @@
+{
+  "schemaVersion": 1,
+  "id": "haredi",
+  "revision": "draft-2026-11-04",
+  "status": "research-draft-not-production",
+  "nameHe": "מפלגות חרדיות — פרשנות היסטורית",
+  "nameEn": "Haredi parties — historical interpretation",
+  "definition": "Organisational Haredi lineage: Aguda, Poalei Aguda, Degel, Shas and documented related lists. This measures ballots for selected lists, not the religion of voters. Separate self-description, contested extensions and mixed alliances.",
+  "defaultMixedPolicy": "separate-segment",
+  "shareDenominator": "dataset.totals.valid",
+  "rounding": "Exact integer votes and rational percent (100 * numerator / denominator); displayPct rounded to 6 decimals only.",
+  "rights": {
+    "compilation": "MIT: original editorial assignments and calculations",
+    "externalContent": "Citations and short original paraphrases only; no external classification table imported. Official input votes retain source rights in README.md."
+  },
+  "sources": {
+    "aguda": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/agudat-israel/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Party profile: Haredi identity and electoral history."
+    },
+    "pai": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/poalei-agudat-yisrael/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Haredi workers party, independent runs and Religious Torah Front alliances."
+    },
+    "degel": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/degel-hatora/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Haredi party founded in 1988 following split with Aguda."
+    },
+    "shas": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/shas/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "National party from 1984; Sephardi Haredi organisation, broader electorate."
+    },
+    "utj": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/united-torah-judaism/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Alliance of Aguda and Degel from 1992."
+    },
+    "joint": {
+      "url": "https://www.idi.org.il/articles/32955",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Election-specific joint-list constituent table, 1949–2021."
+    },
+    "morasha": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/parties/morasha/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "1984 alliance of Matzad and Poalei Agudat Yisrael."
+    },
+    "yachad": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/parties/yachad/",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Yachad itself bridges Sephardi Haredi and Hardal national religious groups."
+    },
+    "shas-study": {
+      "url": "https://www.idi.org.il/media/10320/a-flock-with-no-shepherd-shas-leadership-the-day-after-rabbi-ovadia-yosef.pdf",
+      "publisher": "Ettinger and Leon / IDI, 2018",
+      "kind": "academic",
+      "accessed": "2026-11-04",
+      "support": "PDF pp.35–36 (printed pp.109–110): Azran 1996, Ahavat Israel 2003, Am Shalem and Koach Lehashpia 2013."
+    },
+    "geula": {
+      "url": "https://www.jta.org/archive/the-israeli-elections-from-communists-to-cab-drivers-array-of-choices-awaits-voters",
+      "publisher": "JTA, 1992",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Geulat Yisrael is an ultra-Orthodox list led by Eliezer Mizrachi; opened with required User-Agent."
+    },
+    "kn-splits": {
+      "url": "https://main.knesset.gov.il/en/mk/apps/faction/general/split-merge",
+      "publisher": "Knesset",
+      "kind": "official",
+      "accessed": "2026-11-04",
+      "support": "Geulat Yisrael split from Aguda. Parliamentary events do not allocate election votes."
+    },
+    "yishai": {
+      "url": "https://library.mevaker.gov.il/sites/DigitalLibrary/Pages/Reports/2359-1.aspx",
+      "publisher": "State Comptroller",
+      "kind": "official",
+      "accessed": "2026-11-04",
+      "support": "1988 Yishai led by Shimon Ben Shlomo; lineage interpretation requires separate evidence."
+    },
+    "haredi-society": {
+      "url": "https://en.idi.org.il/articles/52891",
+      "publisher": "IDI",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Aguda, Degel and Shas identified as parties of main Haredi communities."
+    },
+    "power2009": {
+      "url": "https://www.walla.co.il/news/israel/1416821",
+      "publisher": "Walla, 2009-01-13",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "2009 Koach Lehashpia campaigns on disability rights; do not infer 2013 identity from name."
+    },
+    "cec26": {
+      "url": "https://www.gov.il/he/pages/candidates-lists-26",
+      "publisher": "CEC; retained extraction in data/raw/k26/govil-list-pages.exa.json",
+      "kind": "official",
+      "accessed": "2026-11-04",
+      "support": "2026 registered names and sponsoring parties. Self-description is evidence of claim, not external validation."
+    },
+    "local-dataset": {
+      "kind": "repository-dataset",
+      "locator": "public/data/k{n}.json; data/raw/SOURCES.json",
+      "support": "Registered names, votes and sponsor fields only; not external ideological validation."
+    },
+    "yishai-lineage": {
+      "url": "https://www.idi.org.il/media/17403/political-parties-in-israel-draft.pdf?isExternal=true",
+      "publisher": "Kenig and Rahat / IDI, draft of Parties in Israel 1992–2021",
+      "kind": "academic",
+      "accessed": "2026-11-04",
+      "support": "PDF p.230 (printed 231), Shas chapter: Shimon Ben Shlomo left Shas and ran Yishai in 1988, presenting it as representing Yemenite Jews. This proves ancestry, not a universal Haredi label."
+    },
+    "noam-hardal": {
+      "url": "https://en.idi.org.il/articles/31683",
+      "publisher": "Yair Sheleg / IDI, 2020-10-15",
+      "kind": "secondary",
+      "accessed": "2026-11-04",
+      "support": "Author identifies Noam as the party put forward by the Hardal current; editorial commentary rather than official taxonomy."
+    }
+  },
+  "elections": [
+    {
+      "electionId": "k1",
+      "electionDate": "1949-01-25",
+      "datasetPath": "public/data/k1.json",
+      "datasetSha256": "b14a976b23503fd665236fbd488c44f61edf04823ccff56badc25e91b5c52a90",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2026-11-03",
+        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. הדרגות הרשומות כוללות מועמדים שהתפטרו; מיפוי דרגות הנבחרים נשמר ברשומת הבדיקה. ראו החלטה 0063. יש שוויון במודדים השלמים במושבים 118–119; שתי תוצאות ההגרלה נותנות אותה הקצאה סופית, אך הסדר ההיסטורי אינו ידוע.",
+        "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. Registered ranks include withdrawals; the elected-rank mappings are retained in the reviewed roster record. See decision 0063. Integer quotients tie at seats 118–119; both lottery choices give the same final seats, but the historical order is unknown."
+      },
+      "validVotes": 434684,
+      "voteSourceIds": [
+        "k1-results-gazette",
+        "k1-candidates-gazette",
+        "k1-k7-cbs-national-totals",
+        "k1-national-reviewed",
+        "k1-allocation-appendix",
+        "k1-rosters-reviewed",
+        "k1-k7-law-1948",
+        "k1-k7-law-1948-312737"
+      ],
+      "members": [
+        {
+          "listId": "1-יח",
+          "letters": "יח",
+          "nameHe": "רשימת חרדים",
+          "votes": 2835,
+          "partyIds": [
+            "haredim-list-1949"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "haredim-list-1949"
+          ],
+          "scope": "extension",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k1.json#/lists/14"
+          },
+          "classificationEvidence": {
+            "status": "self-described",
+            "sourceIds": [
+              "haredi-society",
+              "local-dataset"
+            ],
+            "claim": "Official registered list name explicitly says Haredim; inclusion is editorial, organisational ancestry unverified."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "1-ב",
+          "letters": "ב",
+          "nameHe": "החזית הדתית המאוחדת",
+          "votes": 52982,
+          "partyIds": [
+            "agudat-yisrael",
+            "poalei-agudat-yisrael"
+          ],
+          "datasetPartyIds": [
+            "hapoel-hamizrachi",
+            "mizrachi",
+            "poalei-agudat-yisrael",
+            "agudat-yisrael",
+            "non-party-religious-union"
+          ],
+          "proposedPartyIds": [],
+          "scope": "mixed",
+          "treatment": "separate-segment",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k1.json#/lists/2"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "joint",
+              "aguda",
+              "pai"
+            ],
+            "claim": "United Religious Front also includes Mizrachi and Hapoel HaMizrachi; local metadata additionally has non-party-religious-union."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [
+        {
+          "listId": "1-יט",
+          "nameHe": "רשימת היהדות המסורתית",
+          "votes": 239,
+          "treatment": "exclude-pending-or-contested",
+          "evidenceStatus": "unresolved",
+          "sourceIds": [
+            "local-dataset"
+          ],
+          "reason": "Traditional Judaism: name alone does not establish Haredi organisation."
+        },
+        {
+          "listId": "1-פד",
+          "nameHe": "הפועלת והאשה הדתית",
+          "votes": 2796,
+          "treatment": "exclude-pending-or-contested",
+          "evidenceStatus": "unresolved",
+          "sourceIds": [
+            "local-dataset"
+          ],
+          "reason": "Religious or Jerusalem-focused label is insufficient evidence of Haredi organisational membership; review before any exhaustive religious-family classification."
+        },
+        {
+          "listId": "1-ש",
+          "nameHe": "הרשימה המאוחדת של פועלים דתיים",
+          "votes": 1280,
+          "treatment": "exclude-pending-or-contested",
+          "evidenceStatus": "unresolved",
+          "sourceIds": [
+            "local-dataset"
+          ],
+          "reason": "Religious or Jerusalem-focused label is insufficient evidence of Haredi organisational membership; review before any exhaustive religious-family classification."
+        },
+        {
+          "listId": "1-ט",
+          "nameHe": "למען ירושלים",
+          "votes": 842,
+          "treatment": "exclude-pending-or-contested",
+          "evidenceStatus": "unresolved",
+          "sourceIds": [
+            "local-dataset"
+          ],
+          "reason": "Religious or Jerusalem-focused label is insufficient evidence of Haredi organisational membership; review before any exhaustive religious-family classification."
+        }
+      ],
+      "computed": {
+        "coreOnly": null,
+        "includedUnmixed": {
+          "votes": 2835,
+          "percent": {
+            "numerator": 283500,
+            "denominator": 434684
+          },
+          "displayPct": 0.652198
+        },
+        "mixedWholeLists": {
+          "votes": 52982,
+          "percent": {
+            "numerator": 5298200,
+            "denominator": 434684
+          },
+          "displayPct": 12.188624
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 55817,
+          "percent": {
+            "numerator": 5581700,
+            "denominator": 434684
+          },
+          "displayPct": 12.840822
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."
+      }
+    },
+    {
+      "electionId": "k2",
+      "electionDate": "1951-07-30",
+      "datasetPath": "public/data/k2.json",
+      "datasetSha256": "a35aeb0bc7749263767031127a6201bd9665832bf6bc8ab3976023c89318589b",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2026-11-03",
+        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. ראו החלטה 0064.",
+        "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. See decision 0064."
+      },
+      "validVotes": 687492,
+      "voteSourceIds": [
+        "k2-results-gazette",
+        "k2-candidates-gazette",
+        "k1-k7-cbs-national-totals",
+        "k2-national-reviewed",
+        "k2-agreements-gazette",
+        "k2-rosters-reviewed",
+        "k1-k7-law-1951"
+      ],
+      "members": [
+        {
+          "listId": "2-ג",
+          "letters": "ג",
+          "nameHe": "רשימת עם התורה אגודת ישראל",
+          "votes": 13799,
+          "partyIds": [
+            "agudat-yisrael"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "agudat-yisrael"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k2.json#/lists/8"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "aguda"
+            ],
+            "claim": "Independent Aguda run."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "2-ד",
+          "letters": "ד",
+          "nameHe": "פועלי אגודת ישראל",
+          "votes": 11194,
+          "partyIds": [
+            "poalei-agudat-yisrael"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "poalei-agudat-yisrael"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k2.json#/lists/11"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "pai"
+            ],
+            "claim": "Independent Poalei Aguda run; includes below-threshold 1981."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 24993,
+          "percent": {
+            "numerator": 2499300,
+            "denominator": 687492
+          },
+          "displayPct": 3.635388
+        },
+        "includedUnmixed": {
+          "votes": 24993,
+          "percent": {
+            "numerator": 2499300,
+            "denominator": 687492
+          },
+          "displayPct": 3.635388
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 687492
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 24993,
+          "percent": {
+            "numerator": 2499300,
+            "denominator": 687492
+          },
+          "displayPct": 3.635388
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."
+      }
+    },
+    {
+      "electionId": "k3",
+      "electionDate": "1955-07-26",
+      "datasetPath": "public/data/k3.json",
+      "datasetSha256": "1b582dc9a81abda168eff2f3be0b02fcb9d88ebcab4a5569714b02ce15dc9c41",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2026-11-03",
+        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. ראו החלטה 0065.",
+        "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. See decision 0065."
+      },
+      "validVotes": 853219,
+      "voteSourceIds": [
+        "k3-results-gazette",
+        "k3-candidates-gazette",
+        "k1-k7-cbs-national-totals",
+        "k3-national-reviewed",
+        "k3-agreements-gazette",
+        "k3-rosters-reviewed",
+        "k3-candidates-mirror",
+        "k1-k7-law-1955"
+      ],
+      "members": [
+        {
+          "listId": "3-גד",
+          "letters": "גד",
+          "nameHe": "חזית דתית תורתית (אגודת ישראל, פועלי אגודת ישראל ודתיים בלתי מפלגתיים)",
+          "votes": 39836,
+          "partyIds": [
+            "agudat-yisrael",
+            "poalei-agudat-yisrael"
+          ],
+          "datasetPartyIds": [
+            "agudat-yisrael",
+            "poalei-agudat-yisrael"
+          ],
+          "proposedPartyIds": [],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k3.json#/lists/6"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "pai",
+              "joint"
+            ],
+            "claim": "Religious Torah Front, both constituents in family; whole list counted once."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 39836,
+          "percent": {
+            "numerator": 3983600,
+            "denominator": 853219
+          },
+          "displayPct": 4.668907
+        },
+        "includedUnmixed": {
+          "votes": 39836,
+          "percent": {
+            "numerator": 3983600,
+            "denominator": 853219
+          },
+          "displayPct": 4.668907
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 853219
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 39836,
+          "percent": {
+            "numerator": 3983600,
+            "denominator": 853219
+          },
+          "displayPct": 4.668907
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."
+      }
+    },
+    {
+      "electionId": "k4",
+      "electionDate": "1959-11-03",
+      "datasetPath": "public/data/k4.json",
+      "datasetSha256": "39e8521d2a6c50c808b9fd1bf7298e93101e0e938e79554e581240034d8216a5",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2026-11-03",
+        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. ראו החלטה 0066.",
+        "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. See decision 0066."
+      },
+      "validVotes": 969337,
+      "voteSourceIds": [
+        "k4-results-gazette",
+        "k4-candidates-gazette",
+        "k1-k7-cbs-national-totals",
+        "k4-national-reviewed",
+        "k4-agreements-gazette",
+        "k4-rosters-reviewed",
+        "k1-k7-law-1959"
+      ],
+      "members": [
+        {
+          "listId": "4-גד",
+          "letters": "גד",
+          "nameHe": "חזית דתית תורתית אגודת ישראל פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
+          "votes": 45569,
+          "partyIds": [
+            "agudat-yisrael",
+            "poalei-agudat-yisrael"
+          ],
+          "datasetPartyIds": [
+            "agudat-yisrael",
+            "poalei-agudat-yisrael"
+          ],
+          "proposedPartyIds": [],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k4.json#/lists/6"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "pai",
+              "joint"
+            ],
+            "claim": "Religious Torah Front, both constituents in family; whole list counted once."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 45569,
+          "percent": {
+            "numerator": 4556900,
+            "denominator": 969337
+          },
+          "displayPct": 4.701048
+        },
+        "includedUnmixed": {
+          "votes": 45569,
+          "percent": {
+            "numerator": 4556900,
+            "denominator": 969337
+          },
+          "displayPct": 4.701048
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 969337
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 45569,
+          "percent": {
+            "numerator": 4556900,
+            "denominator": 969337
+          },
+          "displayPct": 4.701048
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."
+      }
+    },
+    {
+      "electionId": "k5",
+      "electionDate": "1961-08-15",
+      "datasetPath": "public/data/k5.json",
+      "datasetSha256": "2fc051bfe72bb7e31a5f9225da63a8a8a58f47bcafd79571f951595c11906706",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2026-11-03",
+        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. התוצאות הרשמיות מוציאות את מועמדי הליברלים בדרגות 9 ו־11; הנבחרים כוללים מחליפים עד דרגה 19. ראו החלטה 0067.",
+        "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. The official results exclude Liberal registered ranks 9 and 11; elected ranks include replacements through rank 19. See decision 0067."
+      },
+      "validVotes": 1006964,
+      "voteSourceIds": [
+        "k5-results-gazette",
+        "k5-candidates-gazette",
+        "k1-k7-cbs-national-totals",
+        "k5-national-reviewed",
+        "k5-agreements-gazette",
+        "k5-rosters-reviewed",
+        "k1-k7-law-1959"
+      ],
+      "members": [
+        {
+          "listId": "5-ג",
+          "letters": "ג",
+          "nameHe": "יהדות התורה — אגודת ישראל ודתיים בלתי מפלגתיים",
+          "votes": 37178,
+          "partyIds": [
+            "agudat-yisrael"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "agudat-yisrael"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k5.json#/lists/7"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "aguda"
+            ],
+            "claim": "Independent Aguda run."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "5-ד",
+          "letters": "ד",
+          "nameHe": "המחנה התורתי פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
+          "votes": 19428,
+          "partyIds": [
+            "poalei-agudat-yisrael"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "poalei-agudat-yisrael"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k5.json#/lists/9"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "pai"
+            ],
+            "claim": "Independent Poalei Aguda run; includes below-threshold 1981."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 56606,
+          "percent": {
+            "numerator": 5660600,
+            "denominator": 1006964
+          },
+          "displayPct": 5.621452
+        },
+        "includedUnmixed": {
+          "votes": 56606,
+          "percent": {
+            "numerator": 5660600,
+            "denominator": 1006964
+          },
+          "displayPct": 5.621452
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1006964
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 56606,
+          "percent": {
+            "numerator": 5660600,
+            "denominator": 1006964
+          },
+          "displayPct": 5.621452
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."
+      }
+    },
+    {
+      "electionId": "k6",
+      "electionDate": "1965-11-02",
+      "datasetPath": "public/data/k6.json",
+      "datasetSha256": "750331fe44623aa8110be28421634c622d7ff6a2ff9aeab8086dc4d514c9fee0",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2026-11-03",
+        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. ילקוט הפרסומים 1225 מחבר את המערך (את) לקדמה ופתוח (רא); התמלול הקודם יא היה שגוי. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. ראו החלטה 0069a.",
+        "noteEn": "Official national votes, agreements and all 120 seats verified. YP 1225 connects Alignment (את) to Progress and Development (רא); the earlier יא transcription was incorrect. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. See decision 0069a."
+      },
+      "validVotes": 1206728,
+      "voteSourceIds": [
+        "k6-results-gazette",
+        "k6-candidates-gazette",
+        "k1-k7-cbs-national-totals",
+        "k6-national-reviewed",
+        "k6-agreements-gazette",
+        "k6-rosters-reviewed",
+        "k1-k7-law-1959"
+      ],
+      "members": [
+        {
+          "listId": "6-ג",
+          "letters": "ג",
+          "nameHe": "יהדות התורה—אגודת ישראל ודתיים בלתי מפלגתיים",
+          "votes": 39795,
+          "partyIds": [
+            "agudat-yisrael"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "agudat-yisrael"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k6.json#/lists/6"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "aguda"
+            ],
+            "claim": "Independent Aguda run."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "6-ד",
+          "letters": "ד",
+          "nameHe": "המחנה התורתי פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
+          "votes": 22066,
+          "partyIds": [
+            "poalei-agudat-yisrael"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "poalei-agudat-yisrael"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k6.json#/lists/9"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "pai"
+            ],
+            "claim": "Independent Poalei Aguda run; includes below-threshold 1981."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 61861,
+          "percent": {
+            "numerator": 6186100,
+            "denominator": 1206728
+          },
+          "displayPct": 5.126342
+        },
+        "includedUnmixed": {
+          "votes": 61861,
+          "percent": {
+            "numerator": 6186100,
+            "denominator": 1206728
+          },
+          "displayPct": 5.126342
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1206728
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 61861,
+          "percent": {
+            "numerator": 6186100,
+            "denominator": 1206728
+          },
+          "displayPct": 5.126342
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."
+      }
+    },
+    {
+      "electionId": "k7",
+      "electionDate": "1969-10-28",
+      "datasetPath": "public/data/k7.json",
+      "datasetSha256": "721fd2414c967a189c18f246f49f28cf43917b335c46c500bcf617f1e8033ab7",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2026-11-03",
+        "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. ראו החלטה 0069.",
+        "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. See decision 0069."
+      },
+      "validVotes": 1367743,
+      "voteSourceIds": [
+        "k7-results-gazette",
+        "k7-candidates-gazette",
+        "k1-k7-cbs-national-totals",
+        "k7-national-reviewed",
+        "k7-agreements-gazette",
+        "k7-rosters-reviewed",
+        "k1-k7-law-1969"
+      ],
+      "members": [
+        {
+          "listId": "7-ג",
+          "letters": "ג",
+          "nameHe": "יהדות התורה — אגודת ישראל ודתיים בלתי מפלגתיים",
+          "votes": 44002,
+          "partyIds": [
+            "agudat-yisrael"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "agudat-yisrael"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k7.json#/lists/3"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "aguda"
+            ],
+            "claim": "Independent Aguda run."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "7-ד",
+          "letters": "ד",
+          "nameHe": "המחנה התורתי פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
+          "votes": 24968,
+          "partyIds": [
+            "poalei-agudat-yisrael"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "poalei-agudat-yisrael"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k7.json#/lists/8"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "pai"
+            ],
+            "claim": "Independent Poalei Aguda run; includes below-threshold 1981."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 68970,
+          "percent": {
+            "numerator": 6897000,
+            "denominator": 1367743
+          },
+          "displayPct": 5.042614
+        },
+        "includedUnmixed": {
+          "votes": 68970,
+          "percent": {
+            "numerator": 6897000,
+            "denominator": 1367743
+          },
+          "displayPct": 5.042614
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1367743
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 68970,
+          "percent": {
+            "numerator": 6897000,
+            "denominator": 1367743
+          },
+          "displayPct": 5.042614
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."
+      }
+    },
+    {
+      "electionId": "k8",
+      "electionDate": "1973-12-31",
+      "datasetPath": "public/data/k8.json",
+      "datasetSha256": "203d3d4b5e6d55c8b3a09035e478ce821965c562aa0001548fa3b8691a6fe35e",
+      "datasetStatus": {
+        "stage": "official-final",
+        "noteEn": "National results; every published seat reproduced with the six official list connections from the Central Elections Committee’s calculation record (Form 30 appendix; three had no effect). All 120 elected names transcribed from the official candidate notice (YP 1954) and cross-checked against the results notice (YP 1979) and the committee record. Later ranks truncated (Ratz complete); nonwinning rosters untranscribed. Three ballot letters and four list names corrected from the notices. Full amendment chain unverified; no localities.",
+        "noteHe": "תוצאות ארציות; כל המנדטים שפורסמו משוחזרים עם שש ההתקשרויות הרשמיות מרשומת החישוב של ועדת הבחירות המרכזית (נספח טופס 30; לשלוש מהן לא הייתה השפעה). שמות כל 120 הנבחרים תומללו מהודעת המועמדים הרשמית (י״פ 1954) והוצלבו עם הודעת התוצאות (י״פ 1979) ועם רשומת הוועדה. דרגות מאוחרות חלקיות (רצ מלאה); רשימות לא זוכות לא תומללו. שלוש אותיות רשימה וארבעה שמות רשימות תוקנו לפי ההודעות. שרשרת התיקונים המלאה לא אומתה; אין נתוני יישובים.",
+        "asOf": "2026-11-04"
+      },
+      "validVotes": 1566855,
+      "voteSourceIds": [
+        "k8-results-gazette",
+        "k8-candidates-gazette",
+        "k8-k12-cbs-national-totals",
+        "k8-k12-law-1969",
+        "k8-k12-law-1973",
+        "k8-search-reviewed",
+        "k8-cec-memorandum-appendix",
+        "k8-candidates-reviewed",
+        "k8-cec-elected-appendix",
+        "k8-opening-membership-cross-check-reviewed",
+        "k8-national-reviewed"
+      ],
+      "members": [
+        {
+          "listId": "8-גד",
+          "letters": "גד",
+          "nameHe": "חזית דתית תורתית – אגודת ישראל, פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
+          "votes": 60012,
+          "partyIds": [
+            "agudat-yisrael",
+            "poalei-agudat-yisrael"
+          ],
+          "datasetPartyIds": [
+            "agudat-yisrael",
+            "poalei-agudat-yisrael"
+          ],
+          "proposedPartyIds": [],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k8.json#/lists/2"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "pai",
+              "joint"
+            ],
+            "claim": "Religious Torah Front, both constituents in family; whole list counted once."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 60012,
+          "percent": {
+            "numerator": 6001200,
+            "denominator": 1566855
+          },
+          "displayPct": 3.830093
+        },
+        "includedUnmixed": {
+          "votes": 60012,
+          "percent": {
+            "numerator": 6001200,
+            "denominator": 1566855
+          },
+          "displayPct": 3.830093
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1566855
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 60012,
+          "percent": {
+            "numerator": 6001200,
+            "denominator": 1566855
+          },
+          "displayPct": 3.830093
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."
+      }
+    },
+    {
+      "electionId": "k9",
+      "electionDate": "1977-05-17",
+      "datasetPath": "public/data/k9.json",
+      "datasetSha256": "3435309ed5ef70b846f4979660a8e907bf3c579ef6a8fed01ff849180cf79dda",
+      "datasetStatus": {
+        "stage": "official-final",
+        "noteEn": "National results; all seats reproduce with six official agreements and the k9-only candidate cap (Flatto-Sharon 1, Sheli 2). The procedure is inferred from the officially published result because the statutory text was not located. All 120 winning ranks are cross-checked: 119 names in YP 2326; Ratz’s rank 1 Shulamit Aloni confirmed by official Knesset OData membership and faction records from the first session, 13 June 1977 (the notice omits her paragraph). Later ranks truncated; nonwinning rosters untranscribed. Full amendment chain and unknown full-roster counterfactual capacities unverified; no localities.",
+        "noteHe": "תוצאות ארציות; כל המנדטים משוחזרים עם ששת ההסכמים הרשמיים והגבלת מספר המועמדים המופעלת רק לשנת 1977 (פלאטו שרון 1, שלי 2). ההליך מוסק מהתוצאה הרשמית שפורסמה משום שנוסח החוק המסדיר אותו לא אותר. כל 120 הדרגות הזוכות הוצלבו: 119 שמות בי״פ 2326; שולמית אלוני, דרגה 1 ברצ, אומתה ברישומי החברות בכנסת ובסיעה בממשק OData הרשמי של הכנסת מיום הישיבה הראשונה, 13 ביוני 1977 (פסקתה חסרה בהודעה). דרגות מאוחרות חלקיות ורשימות לא זוכות לא תומללו. שרשרת התיקונים ומגבלות רשימות שמספר מועמדיהן המלא אינו ידוע בתרחישים חלופיים לא אומתו; אין נתוני יישובים.",
+        "asOf": "2026-11-03"
+      },
+      "validVotes": 1747820,
+      "voteSourceIds": [
+        "k9-results-gazette",
+        "k9-candidates-gazette",
+        "k8-k12-cbs-national-totals",
+        "k8-k12-law-1969",
+        "k8-k12-law-1973",
+        "k9-candidates-reviewed",
+        "k9-search-reviewed",
+        "k9-ratz-odata",
+        "k9-odata-positions",
+        "k9-national-reviewed"
+      ],
+      "members": [
+        {
+          "listId": "9-ג",
+          "letters": "ג",
+          "nameHe": "יהדות התורה, אגודת ישראל",
+          "votes": 58652,
+          "partyIds": [
+            "agudat-yisrael"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "agudat-yisrael"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k9.json#/lists/2"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "aguda"
+            ],
+            "claim": "Independent Aguda run."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "9-ד",
+          "letters": "ד",
+          "nameHe": "המחנה התורתי, פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
+          "votes": 23571,
+          "partyIds": [
+            "poalei-agudat-yisrael"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "poalei-agudat-yisrael"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k9.json#/lists/12"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "pai"
+            ],
+            "claim": "Independent Poalei Aguda run; includes below-threshold 1981."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 82223,
+          "percent": {
+            "numerator": 8222300,
+            "denominator": 1747820
+          },
+          "displayPct": 4.704317
+        },
+        "includedUnmixed": {
+          "votes": 82223,
+          "percent": {
+            "numerator": 8222300,
+            "denominator": 1747820
+          },
+          "displayPct": 4.704317
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1747820
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 82223,
+          "percent": {
+            "numerator": 8222300,
+            "denominator": 1747820
+          },
+          "displayPct": 4.704317
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."
+      }
+    },
+    {
+      "electionId": "k10",
+      "electionDate": "1981-06-30",
+      "datasetPath": "public/data/k10.json",
+      "datasetSha256": "87d0bc1a4ed989f706f4052855d5e8cb8c30c4d562d31f4cf285ce712dcaae8b",
+      "datasetStatus": {
+        "stage": "official-final",
+        "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 120 transcribed ranks across all 10 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
+        "noteHe": "תוצאות ארציות בלבד; כל המנדטים הרשמיים שוחזרו. 120 מועמדים תומללו מפרסום הרשימות הרשמי בכל 10 הרשימות הזוכות; שמות כל 120 הנבחרים הוצלבו עם הודעת התוצאות. דרגות מאוחרות לא תומללו; רשימות חלקיות ורשימות לא זוכות שלא תומללו מסומנות במפורש. אין נתוני יישובים. שרשרת התיקונים המלאה למועד הבחירות ושינויים מאוחרים ברשימות טרם אומתו; אלה מגבלות מתועדות.",
+        "asOf": "2026-11-03"
+      },
+      "validVotes": 1937366,
+      "voteSourceIds": [
+        "k10-results-gazette",
+        "k10-candidates-gazette",
+        "k8-k12-cbs-national-totals",
+        "k8-k12-law-1969",
+        "k8-k12-law-1973",
+        "k10-agreements-gazette",
+        "k10-candidates-reviewed",
+        "k10-national-reviewed"
+      ],
+      "members": [
+        {
+          "listId": "10-ג",
+          "letters": "ג",
+          "nameHe": "יהדות התורה – אגודת ישראל",
+          "votes": 72312,
+          "partyIds": [
+            "agudat-yisrael"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "agudat-yisrael"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k10.json#/lists/2"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "aguda"
+            ],
+            "claim": "Independent Aguda run."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "10-ד",
+          "letters": "ד",
+          "nameHe": "המחנה התורתי, פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
+          "votes": 17090,
+          "partyIds": [
+            "poalei-agudat-yisrael"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "poalei-agudat-yisrael"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k10.json#/lists/15"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "pai"
+            ],
+            "claim": "Independent Poalei Aguda run; includes below-threshold 1981."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 89402,
+          "percent": {
+            "numerator": 8940200,
+            "denominator": 1937366
+          },
+          "displayPct": 4.614616
+        },
+        "includedUnmixed": {
+          "votes": 89402,
+          "percent": {
+            "numerator": 8940200,
+            "denominator": 1937366
+          },
+          "displayPct": 4.614616
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 1937366
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 89402,
+          "percent": {
+            "numerator": 8940200,
+            "denominator": 1937366
+          },
+          "displayPct": 4.614616
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."
+      }
+    },
+    {
+      "electionId": "k11",
+      "electionDate": "1984-07-23",
+      "datasetPath": "public/data/k11.json",
+      "datasetSha256": "2b54ce215796bedbf46eb10fa56543969db30ed67ca2df4962ad80f7f58a5423",
+      "datasetStatus": {
+        "stage": "official-final",
+        "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 196 transcribed ranks across all 15 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted except the complete 120-name K11 Alignment roster; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
+        "noteHe": "תוצאות ארציות בלבד; כל המנדטים הרשמיים שוחזרו. 196 מועמדים תומללו מפרסום הרשימות הרשמי בכל 15 הרשימות הזוכות; שמות כל 120 הנבחרים הוצלבו עם הודעת התוצאות. דרגות מאוחרות לא תומללו למעט רשימת המערך המלאה בכנסת ה־11; רשימות חלקיות ורשימות לא זוכות שלא תומללו מסומנות במפורש. אין נתוני יישובים. שרשרת התיקונים המלאה למועד הבחירות ושינויים מאוחרים ברשימות טרם אומתו; אלה מגבלות מתועדות.",
+        "asOf": "2026-11-03"
+      },
+      "validVotes": 2073321,
+      "voteSourceIds": [
+        "k11-results-gazette",
+        "k11-candidates-gazette",
+        "k8-k12-cbs-national-totals",
+        "k8-k12-law-1969",
+        "k8-k12-law-1973",
+        "k11-candidates-reviewed",
+        "k11-national-reviewed"
+      ],
+      "members": [
+        {
+          "listId": "11-ג",
+          "letters": "ג",
+          "nameHe": "יהדות התורה אגודת ישראל",
+          "votes": 36079,
+          "partyIds": [
+            "agudat-yisrael"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "agudat-yisrael"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k11.json#/lists/2"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "aguda",
+              "joint"
+            ],
+            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "11-שס",
+          "letters": "שס",
+          "nameHe": "התאחדות הספרדים שומרי תורה",
+          "votes": 63605,
+          "partyIds": [
+            "shas"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "shas"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k11.json#/lists/7"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "shas",
+              "haredi-society"
+            ],
+            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "11-עי",
+          "letters": "עי",
+          "nameHe": "מורשה מצ״ד – פא״י",
+          "votes": 33287,
+          "partyIds": [
+            "poalei-agudat-yisrael"
+          ],
+          "datasetPartyIds": [
+            "matzad",
+            "poalei-agudat-yisrael"
+          ],
+          "proposedPartyIds": [],
+          "scope": "mixed",
+          "treatment": "separate-segment",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k11.json#/lists/9"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "morasha"
+            ],
+            "claim": "Morasha also contains national religious Matzad."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 99684,
+          "percent": {
+            "numerator": 9968400,
+            "denominator": 2073321
+          },
+          "displayPct": 4.807939
+        },
+        "includedUnmixed": {
+          "votes": 99684,
+          "percent": {
+            "numerator": 9968400,
+            "denominator": 2073321
+          },
+          "displayPct": 4.807939
+        },
+        "mixedWholeLists": {
+          "votes": 33287,
+          "percent": {
+            "numerator": 3328700,
+            "denominator": 2073321
+          },
+          "displayPct": 1.605492
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 132971,
+          "percent": {
+            "numerator": 13297100,
+            "denominator": 2073321
+          },
+          "displayPct": 6.41343
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."
+      }
+    },
+    {
+      "electionId": "k12",
+      "electionDate": "1988-11-01",
+      "datasetPath": "public/data/k12.json",
+      "datasetSha256": "ff601254033ae24bb99b084fac5253ee7f9be0a08634956c169a047773c901a8",
+      "datasetStatus": {
+        "stage": "official-final",
+        "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 120 transcribed ranks across all 15 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
+        "noteHe": "תוצאות ארציות בלבד; כל המנדטים הרשמיים שוחזרו. 120 מועמדים תומללו מפרסום הרשימות הרשמי בכל 15 הרשימות הזוכות; שמות כל 120 הנבחרים הוצלבו עם הודעת התוצאות. דרגות מאוחרות לא תומללו; רשימות חלקיות ורשימות לא זוכות שלא תומללו מסומנות במפורש. אין נתוני יישובים. שרשרת התיקונים המלאה למועד הבחירות ושינויים מאוחרים ברשימות טרם אומתו; אלה מגבלות מתועדות.",
+        "asOf": "2026-11-03"
+      },
+      "validVotes": 2283123,
+      "voteSourceIds": [
+        "k12-results-gazette",
+        "k12-candidates-gazette",
+        "k8-k12-cbs-national-totals",
+        "k8-k12-law-1969",
+        "k8-k12-law-1973",
+        "k12-candidates-reviewed",
+        "k12-national-reviewed"
+      ],
+      "members": [
+        {
+          "listId": "12-ג",
+          "letters": "ג",
+          "nameHe": "יהדות התורה המאוחדת – אגודת ישראל",
+          "votes": 102714,
+          "partyIds": [
+            "agudat-yisrael",
+            "poalei-agudat-yisrael"
+          ],
+          "datasetPartyIds": [
+            "agudat-yisrael",
+            "poalei-agudat-yisrael"
+          ],
+          "proposedPartyIds": [],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k12.json#/lists/2"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "aguda",
+              "joint"
+            ],
+            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "12-שס",
+          "letters": "שס",
+          "nameHe": "התאחדות הספרדים שומרי תורה – ש״ס",
+          "votes": 107709,
+          "partyIds": [
+            "shas"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "shas"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k12.json#/lists/7"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "shas",
+              "haredi-society"
+            ],
+            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "12-עץ",
+          "letters": "עץ",
+          "nameHe": "אגודת החרדים – דגל התורה",
+          "votes": 34279,
+          "partyIds": [
+            "degel-hatorah"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "degel-hatorah"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k12.json#/lists/11"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "degel"
+            ],
+            "claim": "Independent Degel run."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "12-טף",
+          "letters": "טף",
+          "nameHe": "ישי – יחד שבטי ישראל",
+          "votes": 2947,
+          "partyIds": [
+            "yishai-1988"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "yishai-1988"
+          ],
+          "scope": "extension",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k12.json#/lists/18"
+          },
+          "classificationEvidence": {
+            "status": "inferred",
+            "sourceIds": [
+              "yishai",
+              "yishai-lineage"
+            ],
+            "claim": "Former Shas representative Shimon Ben Shlomo; included as a Shas-offshoot interpretation, not the similarly named local list."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 244702,
+          "percent": {
+            "numerator": 24470200,
+            "denominator": 2283123
+          },
+          "displayPct": 10.717863
+        },
+        "includedUnmixed": {
+          "votes": 247649,
+          "percent": {
+            "numerator": 24764900,
+            "denominator": 2283123
+          },
+          "displayPct": 10.846941
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 2283123
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 247649,
+          "percent": {
+            "numerator": 24764900,
+            "denominator": 2283123
+          },
+          "displayPct": 10.846941
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."
+      }
+    },
+    {
+      "electionId": "k13",
+      "electionDate": "1992-06-23",
+      "datasetPath": "public/data/k13.json",
+      "datasetSha256": "92643f881b9e43ed4e3e55ddae9558c649c4193f9bfaa9ac91e54a70d70ae9fe",
+      "datasetStatus": {
+        "stage": "official-final",
+        "noteEn": "Rosters: everyone elected is included and cross-checked; no full rosters; later ranks of winning lists not transcribed. Zero-seat rosters unavailable. Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. The 1992 agreement notice was not found; agreements that did not affect seats may be missing. Empty agreements reproduce every published seat.",
+        "noteHe": "מועמדים: כל הנבחרים נכללו ונבדקו מול הודעת התוצאות; אין רשימות מלאות; מקומות מאוחרים בשאר הרשימות הזוכות לא תועתקו. רשימות ללא מנדטים אינן מתועתקות. סדר המועמדים הרשום נשמר וההשמטות בהודעת הנבחרים תועדו. אין נתוני יישובים. הודעת ההתקשרויות משנת 1992 לא אותרה; ייתכן שחסרים הסכמים שלא השפיעו על חלוקת המנדטים. כל המנדטים שוחזרו ללא הסכמים.",
+        "asOf": "2026-11-03"
+      },
+      "validVotes": 2616841,
+      "voteSourceIds": [
+        "k13-results-gazette",
+        "k13-k15-cbs-national-totals",
+        "k13-candidates-gazette",
+        "k13-national-reviewed",
+        "k13-rosters-reviewed",
+        "k13-elected-reviewed",
+        "k13-candidates-yp4017-idi-6654",
+        "k13-candidates-yp4017-idi-6558",
+        "k13-candidates-yp4017-idi-6891",
+        "k13-candidates-yp4017-idi-6695",
+        "k13-candidates-yp4017-idi-6608",
+        "k13-candidates-yp4017-idi-6731",
+        "k13-candidates-yp4017-idi-6809",
+        "k13-k15-bader-ofer-amendment",
+        "k13-k15-threshold-amendment"
+      ],
+      "members": [
+        {
+          "listId": "13-ג",
+          "letters": "ג",
+          "nameHe": "יהדות התורה המאוחדת - אגודת ישראל - דגל התורה - הרב יצחק פרץ",
+          "votes": 86167,
+          "partyIds": [
+            "agudat-yisrael",
+            "moria",
+            "degel-hatorah"
+          ],
+          "datasetPartyIds": [
+            "agudat-yisrael",
+            "moria",
+            "degel-hatorah"
+          ],
+          "proposedPartyIds": [],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k13.json#/lists/6"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "utj",
+              "haredi-society"
+            ],
+            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "13-שס",
+          "letters": "שס",
+          "nameHe": "ש״ס - התאחדות הספרדים שומרי תורה",
+          "votes": 129347,
+          "partyIds": [
+            "shas"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "shas"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k13.json#/lists/4"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "shas",
+              "haredi-society"
+            ],
+            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "13-קל",
+          "letters": "קל",
+          "nameHe": "גאולת ישראל בראשות הרב אליעזר מזרחי",
+          "votes": 12851,
+          "partyIds": [
+            "geulat-yisrael"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "geulat-yisrael"
+          ],
+          "scope": "extension",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k13.json#/lists/13"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "geula",
+              "kn-splits"
+            ],
+            "claim": "Haredi Aguda offshoot."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 215514,
+          "percent": {
+            "numerator": 21551400,
+            "denominator": 2616841
+          },
+          "displayPct": 8.235655
+        },
+        "includedUnmixed": {
+          "votes": 228365,
+          "percent": {
+            "numerator": 22836500,
+            "denominator": 2616841
+          },
+          "displayPct": 8.726743
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 2616841
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 228365,
+          "percent": {
+            "numerator": 22836500,
+            "denominator": 2616841
+          },
+          "displayPct": 8.726743
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."
+      }
+    },
+    {
+      "electionId": "k14",
+      "electionDate": "1996-05-29",
+      "datasetPath": "public/data/k14.json",
+      "datasetSha256": "3938db2f3d61463bf1d99deaa3473657be1fab46f2354adaf8a20adebb58959a",
+      "datasetStatus": {
+        "stage": "official-final",
+        "noteEn": "Rosters: everyone elected is included and cross-checked; full roster for Third Way; later ranks of other winning lists not transcribed. Zero-seat rosters unavailable. Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. Complete 6-pair agreement notice verified; every published seat reproduced.",
+        "noteHe": "מועמדים: כל הנבחרים נכללו ונבדקו מול הודעת התוצאות; הרשימה המלאה של הדרך השלישית תועתקה; מקומות מאוחרים בשאר הרשימות הזוכות לא תועתקו. רשימות ללא מנדטים אינן מתועתקות. סדר המועמדים הרשום נשמר וההשמטות בהודעת הנבחרים תועדו. אין נתוני יישובים. הודעת ההתקשרויות המלאה (6 זוגות) אומתה וכל המנדטים שוחזרו.",
+        "asOf": "2026-11-03"
+      },
+      "validVotes": 3052130,
+      "voteSourceIds": [
+        "k14-results-gazette",
+        "k13-k15-cbs-national-totals",
+        "k14-candidates-gazette",
+        "k14-national-reviewed",
+        "k14-rosters-reviewed",
+        "k14-elected-reviewed",
+        "k13-k15-bader-ofer-amendment",
+        "k13-k15-threshold-amendment",
+        "k14-agreements-gazette"
+      ],
+      "members": [
+        {
+          "listId": "14-ג",
+          "letters": "ג",
+          "nameHe": "יהדות התורה המאוחדת אגודת ישראל - דגל התורה",
+          "votes": 98657,
+          "partyIds": [
+            "agudat-yisrael",
+            "degel-hatorah"
+          ],
+          "datasetPartyIds": [
+            "agudat-yisrael",
+            "degel-hatorah"
+          ],
+          "proposedPartyIds": [],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k14.json#/lists/7"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "utj",
+              "haredi-society"
+            ],
+            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "14-שס",
+          "letters": "שס",
+          "nameHe": "ש״ס התאחדות הספרדים העולמית שומרי תורה",
+          "votes": 259796,
+          "partyIds": [
+            "shas"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "shas"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k14.json#/lists/2"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "shas",
+              "haredi-society"
+            ],
+            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "14-ת",
+          "letters": "ת",
+          "nameHe": "תלם אמונה תימן בדרכי נועם בראשות הרב יוסף עזרן",
+          "votes": 12737,
+          "partyIds": [
+            "telem-emuna"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "telem-emuna"
+          ],
+          "scope": "extension",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k14.json#/lists/14"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "shas-study"
+            ],
+            "claim": "Yosef Azran Haredi-Mizrahi offshoot; identity matched to the dataset list name."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 358453,
+          "percent": {
+            "numerator": 35845300,
+            "denominator": 3052130
+          },
+          "displayPct": 11.744356
+        },
+        "includedUnmixed": {
+          "votes": 371190,
+          "percent": {
+            "numerator": 37119000,
+            "denominator": 3052130
+          },
+          "displayPct": 12.161671
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 3052130
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 371190,
+          "percent": {
+            "numerator": 37119000,
+            "denominator": 3052130
+          },
+          "displayPct": 12.161671
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."
+      }
+    },
+    {
+      "electionId": "k15",
+      "electionDate": "1999-05-17",
+      "datasetPath": "public/data/k15.json",
+      "datasetSha256": "87e7add2a362ad72c7ce6bab9fff8f41a0b00c07ffc32089a6cc04216d2fe9fe",
+      "datasetStatus": {
+        "stage": "official-final",
+        "noteEn": "Rosters: everyone elected is included and cross-checked; no full rosters; later ranks of winning lists not transcribed. Zero-seat rosters unavailable. Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. Complete 9-pair agreement notice verified; every published seat reproduced.",
+        "noteHe": "מועמדים: כל הנבחרים נכללו ונבדקו מול הודעת התוצאות; אין רשימות מלאות; מקומות מאוחרים בשאר הרשימות הזוכות לא תועתקו. רשימות ללא מנדטים אינן מתועתקות. סדר המועמדים הרשום נשמר וההשמטות בהודעת הנבחרים תועדו. אין נתוני יישובים. הודעת ההתקשרויות המלאה (9 זוגות) אומתה וכל המנדטים שוחזרו.",
+        "asOf": "2026-11-03"
+      },
+      "validVotes": 3309416,
+      "voteSourceIds": [
+        "k15-results-gazette",
+        "k13-k15-cbs-national-totals",
+        "k15-candidates-gazette",
+        "k15-national-reviewed",
+        "k15-rosters-reviewed",
+        "k15-elected-reviewed",
+        "k13-k15-bader-ofer-amendment",
+        "k13-k15-threshold-amendment",
+        "k15-agreements-gazette"
+      ],
+      "members": [
+        {
+          "listId": "15-ג",
+          "letters": "ג",
+          "nameHe": "יהדות התורה המאוחדת והשבת אגודת ישראל - דגל התורה",
+          "votes": 125741,
+          "partyIds": [
+            "agudat-yisrael",
+            "degel-hatorah"
+          ],
+          "datasetPartyIds": [
+            "agudat-yisrael",
+            "degel-hatorah"
+          ],
+          "proposedPartyIds": [],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k15.json#/lists/8"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "utj",
+              "haredi-society"
+            ],
+            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "15-שס",
+          "letters": "שס",
+          "nameHe": "ש״ס התאחדות הספרדים העולמית שומרי תורה",
+          "votes": 430676,
+          "partyIds": [
+            "shas"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "shas"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k15.json#/lists/2"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "shas",
+              "haredi-society"
+            ],
+            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 556417,
+          "percent": {
+            "numerator": 55641700,
+            "denominator": 3309416
+          },
+          "displayPct": 16.813148
+        },
+        "includedUnmixed": {
+          "votes": 556417,
+          "percent": {
+            "numerator": 55641700,
+            "denominator": 3309416
+          },
+          "displayPct": 16.813148
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 3309416
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 556417,
+          "percent": {
+            "numerator": 55641700,
+            "denominator": 3309416
+          },
+          "displayPct": 16.813148
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."
+      }
+    },
+    {
+      "electionId": "k16",
+      "electionDate": "2003-01-28",
+      "datasetPath": "public/data/k16.json",
+      "datasetSha256": "d2a7f1e7c85c1d37a04e7fc7fdaa00c31586004e3db1251a3deed3fa3ad200d5",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2026-11-03",
+        "noteHe": "בעלי זכות בחירה: לוח למ״ס 27.2; קולות כשרים ופסולים: ילקוט הפרסומים; מצביעים = כשרים + פסולים. קולות המפד״ל ולידר לפי סיכומי הקלפיות; הנתונים המודפסים עולים ב-410 על סך הכשרים שבילקוט עצמו. נתוני היישובים סוכמו מקלפיות. בכל רשימה שזכתה במנדטים נכללים כל המקומות שנבחרו, בהצלבה שמית עם סעיף 4 בהודעת התוצאות הרשמית; הבדלי הכתיב מתועדים. 10 רשימות זוכות כוללות רק תחילית מאומתת ומסומנות כקטועות; 4 רשימות שלא זכו במנדטים עדיין חסרות. יתר המקומות ברשימות הקטועות טרם אומתו.",
+        "noteEn": "Registered voters: official CBS table 27.2; valid and invalid votes: results gazette; cast = valid + invalid. Mafdal and Lider use polling sums; printed gazette figures exceed its own valid total by 410. Localities are summed polling rows. Every winning list includes all elected ranks, checked name by name against section 4 of the official results notice; literal name variants are documented. 10 winning rosters are truncated to verified elected prefixes; 4 non-winning rosters remain unavailable. Later ranks on truncated lists are unverified."
+      },
+      "validVotes": 3148364,
+      "voteSourceIds": [
+        "k16-results-gazette",
+        "k16-candidates-gazette",
+        "k16-surplus-gazette",
+        "k16-cbs-national-summary",
+        "k16-ballots-datagov",
+        "k16-national-reviewed",
+        "k16-reconciliation-reviewed",
+        "k16-candidates-reviewed",
+        "k16-localities-reviewed",
+        "k16-membership-odata",
+        "k16-sharansky-withdrawal",
+        "k16-knesset-vote-crosscheck"
+      ],
+      "members": [
+        {
+          "listId": "16-ג",
+          "letters": "ג",
+          "nameHe": "יהדות התורה והשבת אגודת ישראל - דגל התורה",
+          "votes": 135087,
+          "partyIds": [
+            "agudat-yisrael",
+            "degel-hatorah"
+          ],
+          "datasetPartyIds": [
+            "agudat-yisrael",
+            "degel-hatorah"
+          ],
+          "proposedPartyIds": [],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k16.json#/lists/7"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "utj",
+              "haredi-society"
+            ],
+            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "16-שס",
+          "letters": "שס",
+          "nameHe": "התאחדות הספרדים העולמית שומרי תורה",
+          "votes": 258879,
+          "partyIds": [
+            "shas"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "shas"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k16.json#/lists/3"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "shas",
+              "haredi-society"
+            ],
+            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "16-זנ",
+          "letters": "זנ",
+          "nameHe": "אהבת ישראל בנשיאות גדול המקובלים הרב כדורי",
+          "votes": 5468,
+          "partyIds": [
+            "ahavat-yisrael"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "ahavat-yisrael"
+          ],
+          "scope": "extension",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k16.json#/lists/18"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "shas-study"
+            ],
+            "claim": "Kaduri-linked Shas challenger."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 393966,
+          "percent": {
+            "numerator": 39396600,
+            "denominator": 3148364
+          },
+          "displayPct": 12.513356
+        },
+        "includedUnmixed": {
+          "votes": 399434,
+          "percent": {
+            "numerator": 39943400,
+            "denominator": 3148364
+          },
+          "displayPct": 12.687034
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 3148364
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 399434,
+          "percent": {
+            "numerator": 39943400,
+            "denominator": 3148364
+          },
+          "displayPct": 12.687034
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."
+      }
+    },
+    {
+      "electionId": "k17",
+      "electionDate": "2006-03-28",
+      "datasetPath": "public/data/k17.json",
+      "datasetSha256": "f63ef83e3e208aec18fb69da1590832ee68fc931fcc6083137afeab421220e91",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2026-11-03",
+        "noteHe": "בעלי זכות בחירה: לוח למ״ס 27.2; קולות כשרים ופסולים: ילקוט הפרסומים; מצביעים = כשרים + פסולים. מספר המצביעים בסיכומי הקלפיות נמוך ב-9 מהסכום הארצי הנגזר מהילקוט; לא ידוע הסבר מוסמך. נתוני היישובים סוכמו מקלפיות. בכל רשימה שזכתה במנדטים נכללים כל המקומות שנבחרו, בהצלבה שמית עם סעיף 4 בהודעת התוצאות הרשמית; הבדלי הכתיב מתועדים. 7 רשימות זוכות כוללות רק תחילית מאומתת ומסומנות כקטועות; 6 רשימות שלא זכו במנדטים עדיין חסרות. יתר המקומות ברשימות הקטועות טרם אומתו.",
+        "noteEn": "Registered voters: official CBS table 27.2; valid and invalid votes: results gazette; cast = valid + invalid. Polling-station cast votes are 9 below the gazette-derived national cast total; no authoritative explanation is known. Localities are summed polling rows. Every winning list includes all elected ranks, checked name by name against section 4 of the official results notice; literal name variants are documented. 7 winning rosters are truncated to verified elected prefixes; 6 non-winning rosters remain unavailable. Later ranks on truncated lists are unverified."
+      },
+      "validVotes": 3137064,
+      "voteSourceIds": [
+        "k17-results-gazette",
+        "k17-candidates-gazette",
+        "k17-surplus-gazette",
+        "k17-cbs-national-summary",
+        "k17-ballots-datagov",
+        "k17-national-reviewed",
+        "k17-reconciliation-reviewed",
+        "k17-candidates-reviewed",
+        "k17-localities-reviewed",
+        "k17-candidates-archive-crosscheck",
+        "k17-membership-odata"
+      ],
+      "members": [
+        {
+          "listId": "17-ג",
+          "letters": "ג",
+          "nameHe": "יהדות התורה והשבת אגודת ישראל - דגל התורה",
+          "votes": 147091,
+          "partyIds": [
+            "agudat-yisrael",
+            "degel-hatorah"
+          ],
+          "datasetPartyIds": [
+            "agudat-yisrael",
+            "degel-hatorah"
+          ],
+          "proposedPartyIds": [],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k17.json#/lists/7"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "utj",
+              "haredi-society"
+            ],
+            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "17-שס",
+          "letters": "שס",
+          "nameHe": "ש״ס - התאחדות הספרדים העולמית שומרי תורה",
+          "votes": 299054,
+          "partyIds": [
+            "shas"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "shas"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k17.json#/lists/2"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "shas",
+              "haredi-society"
+            ],
+            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 446145,
+          "percent": {
+            "numerator": 44614500,
+            "denominator": 3137064
+          },
+          "displayPct": 14.221737
+        },
+        "includedUnmixed": {
+          "votes": 446145,
+          "percent": {
+            "numerator": 44614500,
+            "denominator": 3137064
+          },
+          "displayPct": 14.221737
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 3137064
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 446145,
+          "percent": {
+            "numerator": 44614500,
+            "denominator": 3137064
+          },
+          "displayPct": 14.221737
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."
+      }
+    },
+    {
+      "electionId": "k18",
+      "electionDate": "2009-02-10",
+      "datasetPath": "public/data/k18.json",
+      "datasetSha256": "1960389cb042036aaa4a8743c4f869cecebb261eed345a42e2636a1658068645",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2009-02-17",
+        "noteHe": "תוצאות רשמיות. פסולים ובעלי זכות בחירה לפי זכרון הדברים של ועדת הבחירות, השונה ממספר הפסולים ברשומות. נתוני היישובים נגזרו מסיכום הקלפיות; ועדה אזורית אינה ידועה (0). המועמדים לפי הפרסום המקורי; שינויים מאוחרים אינם מוחלים. ראו החלטה 0040.",
+        "noteEn": "Official results. Invalid ballots and electorate follow the CEC allocation memorandum, differing from the gazette invalid count. Localities are derived from polling stations, not independently sourced; committee is unknown (0). Candidate rosters are the original gazette snapshot; subsequent changes are not applied. See decision 0040."
+      },
+      "validVotes": 3373490,
+      "voteSourceIds": [
+        "k18-results-gazette",
+        "k18-candidates-gazette",
+        "k18-surplus-gazette",
+        "k18-ballots-datagov",
+        "k18-allocation-memorandum"
+      ],
+      "members": [
+        {
+          "listId": "18-ג",
+          "letters": "ג",
+          "nameHe": "יהדות התורה והשבת אגודת ישראל - דגל התורה",
+          "votes": 147954,
+          "partyIds": [
+            "agudat-yisrael",
+            "degel-hatorah"
+          ],
+          "datasetPartyIds": [
+            "agudat-yisrael",
+            "degel-hatorah"
+          ],
+          "proposedPartyIds": [],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k18.json#/lists/5"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "utj",
+              "haredi-society"
+            ],
+            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "18-שס",
+          "letters": "שס",
+          "nameHe": "התאחדות הספרדים העולמית שומרי תורה",
+          "votes": 286300,
+          "partyIds": [
+            "shas"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "shas"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k18.json#/lists/4"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "shas",
+              "haredi-society"
+            ],
+            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [
+        {
+          "listId": "18-פ",
+          "votes": 3696,
+          "treatment": "exclude",
+          "evidenceStatus": "documented",
+          "sourceIds": [
+            "power2009"
+          ],
+          "reason": "Disability-rights list; name alone does not establish identity with 2013."
+        }
+      ],
+      "computed": {
+        "coreOnly": {
+          "votes": 434254,
+          "percent": {
+            "numerator": 43425400,
+            "denominator": 3373490
+          },
+          "displayPct": 12.872544
+        },
+        "includedUnmixed": {
+          "votes": 434254,
+          "percent": {
+            "numerator": 43425400,
+            "denominator": 3373490
+          },
+          "displayPct": 12.872544
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 3373490
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 434254,
+          "percent": {
+            "numerator": 43425400,
+            "denominator": 3373490
+          },
+          "displayPct": 12.872544
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."
+      }
+    },
+    {
+      "electionId": "k19",
+      "electionDate": "2013-01-22",
+      "datasetPath": "public/data/k19.json",
+      "datasetSha256": "e8d534c2aec90e417abc2ee77b04716a85cfc130652a200d23f407cc3ec2866c",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2013-01-30",
+        "noteHe": "תוצאות סופיות רשמיות של ועדת הבחירות (אתר התוצאות והמאגר הממשלתי), המתואמות עם כל הקלפיות. בהודעה ברשומות (י\"פ 6540) מודפס סך כשרים 3,792,472, אך סכום הרשימות שבה הוא 3,792,742 — כמו בתוצאות הסופיות; ושלוש רשימות שונות במעט (הליכוד ביתנו 109+, קדימה 107−, הישראלים 2−). אותם מנדטים בדיוק בשתי הגרסאות. מעטפות חיצוניות (875) נגזרו מהקלפיות. המועמדים לפי הפרסום המקורי; שינויים מאוחרים אינם מוחלים. ראו החלטות 0041–0042.",
+        "noteEn": "Official final CEC results (results site and government datastore), reconciled with every polling station. The gazette notice (YP 6540) prints 3,792,472 valid votes, but its own list counts sum to 3,792,742, as in the final results; three list totals also differ slightly (Likud–Yisrael Beiteinu +109, Kadima −107, Hayisraelim −2). Both versions give exactly the same seats. External envelopes (code 875) are derived from polling rows. Candidate rosters are the original gazette snapshot; later changes are not applied. See decisions 0041–0042."
+      },
+      "validVotes": 3792742,
+      "voteSourceIds": [
+        "k19-results-gazette",
+        "k19-candidates-gazette",
+        "k19-surplus-gazette",
+        "k19-ballots-datagov",
+        "k19-localities-datagov",
+        "k19-final-results-capture"
+      ],
+      "members": [
+        {
+          "listId": "19-ג",
+          "letters": "ג",
+          "nameHe": " יהדות התורה והשבת, אגודת ישראל - דגל התורה",
+          "votes": 195892,
+          "partyIds": [
+            "agudat-yisrael",
+            "degel-hatorah"
+          ],
+          "datasetPartyIds": [
+            "agudat-yisrael",
+            "degel-hatorah"
+          ],
+          "proposedPartyIds": [],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k19.json#/lists/5"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "utj",
+              "haredi-society"
+            ],
+            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "19-שס",
+          "letters": "שס",
+          "nameHe": "שס התאחדות הספרדים העולמית שומרי תורה",
+          "votes": 331868,
+          "partyIds": [
+            "shas"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "shas"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k19.json#/lists/4"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "shas",
+              "haredi-society"
+            ],
+            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "19-פז",
+          "letters": "פז",
+          "nameHe": "כח להשפיע בהכוונת רבי אמנון יצחק",
+          "votes": 28049,
+          "partyIds": [
+            "koach-lehashpia-2013"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "koach-lehashpia-2013"
+          ],
+          "scope": "extension",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k19.json#/lists/16"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "shas-study"
+            ],
+            "claim": "Amnon Yitzhak list; distinct from 2009."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [
+        {
+          "listId": "19-ץ",
+          "nameHe": "עם שלם - בראשות הרב חיים אמסלם",
+          "votes": 45690,
+          "treatment": "exclude-pending-or-contested",
+          "evidenceStatus": "contested",
+          "sourceIds": [
+            "shas-study"
+          ],
+          "reason": "Am Shalem: Shas ancestry documented, but self-consciously challenges Haredi establishment; excluded from organisational preset, optional Shas-lineage extension."
+        },
+        {
+          "listId": "19-פץ",
+          "nameHe": "כולנו חברים - נ נח",
+          "votes": 2176,
+          "treatment": "exclude-pending-or-contested",
+          "evidenceStatus": "contested",
+          "sourceIds": [
+            "local-dataset"
+          ],
+          "reason": "Na Nach: Breslov association is not enough to establish organisational membership; optional broader religious-subculture preset."
+        }
+      ],
+      "computed": {
+        "coreOnly": {
+          "votes": 527760,
+          "percent": {
+            "numerator": 52776000,
+            "denominator": 3792742
+          },
+          "displayPct": 13.914999
+        },
+        "includedUnmixed": {
+          "votes": 555809,
+          "percent": {
+            "numerator": 55580900,
+            "denominator": 3792742
+          },
+          "displayPct": 14.654543
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 3792742
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 555809,
+          "percent": {
+            "numerator": 55580900,
+            "denominator": 3792742
+          },
+          "displayPct": 14.654543
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."
+      }
+    },
+    {
+      "electionId": "k20",
+      "electionDate": "2015-03-17",
+      "datasetPath": "public/data/k20.json",
+      "datasetSha256": "833d0c0fed196204102bea653ca679b791d376ad2cf545bf031317c4533bceac",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2015-03-25",
+        "noteHe": "תוצאות רשמיות סופיות. המועמדים לפי סדר הרישום בילקוט הפרסומים; הודעות התפטרות ידועות בהערות. לא מוצגת השתייכות לגושים.",
+        "noteEn": "Official final results. Candidates follow the gazetted registration order; known resignation notices are labelled. No default blocs assigned."
+      },
+      "validVotes": 4210884,
+      "voteSourceIds": [
+        "k20-results-gazette",
+        "k20-localities-datagov",
+        "k20-ballots-datagov",
+        "k20-candidates-gazette",
+        "k20-surplus-gazette",
+        "law-elections"
+      ],
+      "members": [
+        {
+          "listId": "20-ג",
+          "letters": "ג",
+          "nameHe": "יהדות התורה והשבת אגודת ישראל - דגל התורה",
+          "votes": 210143,
+          "partyIds": [
+            "agudat-yisrael",
+            "degel-hatorah"
+          ],
+          "datasetPartyIds": [
+            "agudat-yisrael",
+            "degel-hatorah"
+          ],
+          "proposedPartyIds": [],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k20.json#/lists/8"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "utj",
+              "haredi-society"
+            ],
+            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "20-שס",
+          "letters": "שס",
+          "nameHe": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל",
+          "votes": 241613,
+          "partyIds": [
+            "shas"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "shas"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k20.json#/lists/6"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "shas",
+              "haredi-society"
+            ],
+            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "20-נז",
+          "letters": "נז",
+          "nameHe": "ובזכותן - חרדיות עושות שינוי",
+          "votes": 1802,
+          "partyIds": [
+            "uvizchutan"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "uvizchutan"
+          ],
+          "scope": "extension",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k20.json#/lists/15"
+          },
+          "classificationEvidence": {
+            "status": "self-described",
+            "sourceIds": [
+              "haredi-society",
+              "local-dataset"
+            ],
+            "claim": "Registered name says Haredi women making change; include independently of establishment recognition."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "20-קץ",
+          "letters": "קץ",
+          "nameHe": "יחד - העם איתנו בראשות אלי ישי",
+          "votes": 125158,
+          "partyIds": [
+            "yachad"
+          ],
+          "datasetPartyIds": [
+            "yachad",
+            "otzma-yehudit"
+          ],
+          "proposedPartyIds": [],
+          "scope": "mixed",
+          "treatment": "separate-segment",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k20.json#/lists/10"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "yachad"
+            ],
+            "claim": "Yachad bridges Haredi and Hardal constituencies and jointly runs with Otzma Yehudit; all votes indivisible."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [
+        {
+          "listId": "20-ףץ",
+          "nameHe": "כולנו חברים נ נח",
+          "votes": 2493,
+          "treatment": "exclude-pending-or-contested",
+          "evidenceStatus": "unresolved",
+          "sourceIds": [
+            "local-dataset"
+          ],
+          "reason": "Na Nach: same unresolved organisational boundary."
+        }
+      ],
+      "computed": {
+        "coreOnly": {
+          "votes": 451756,
+          "percent": {
+            "numerator": 45175600,
+            "denominator": 4210884
+          },
+          "displayPct": 10.728294
+        },
+        "includedUnmixed": {
+          "votes": 453558,
+          "percent": {
+            "numerator": 45355800,
+            "denominator": 4210884
+          },
+          "displayPct": 10.771087
+        },
+        "mixedWholeLists": {
+          "votes": 125158,
+          "percent": {
+            "numerator": 12515800,
+            "denominator": 4210884
+          },
+          "displayPct": 2.97225
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 578716,
+          "percent": {
+            "numerator": 57871600,
+            "denominator": 4210884
+          },
+          "displayPct": 13.743338
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."
+      }
+    },
+    {
+      "electionId": "k21",
+      "electionDate": "2019-04-09",
+      "datasetPath": "public/data/k21.json",
+      "datasetSha256": "e5d1dd8eac1e3bab0be09972cb0155674eedff6c5762240c89f792f9fe1f6d73",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2026-11-03",
+        "noteHe": "תוצאות רשמיות סופיות. המועמדים לפי סדר הרישום בילקוט הפרסומים; הודעות התפטרות ידועות בהערות. לא מוצגת השתייכות לגושים.",
+        "noteEn": "Official final results. Candidates follow the gazetted registration order; known resignation notices are labelled. No default blocs assigned."
+      },
+      "validVotes": 4309270,
+      "voteSourceIds": [
+        "k21-national-html",
+        "k21-localities-datagov",
+        "k21-ballots-datagov",
+        "k21-candidates-gazette",
+        "k21-surplus-gazette",
+        "law-elections"
+      ],
+      "members": [
+        {
+          "listId": "21-ג",
+          "letters": "ג",
+          "nameHe": "יהדות התורה והשבת אגודת ישראל-דגל התורה",
+          "votes": 249049,
+          "partyIds": [
+            "agudat-yisrael",
+            "degel-hatorah"
+          ],
+          "datasetPartyIds": [
+            "agudat-yisrael",
+            "degel-hatorah"
+          ],
+          "proposedPartyIds": [],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k21.json#/lists/3"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "utj",
+              "haredi-society"
+            ],
+            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "21-שס",
+          "letters": "שס",
+          "nameHe": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל",
+          "votes": 258275,
+          "partyIds": [
+            "shas"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "shas"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k21.json#/lists/2"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "shas",
+              "haredi-society"
+            ],
+            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [
+        {
+          "listId": "21-ףץ",
+          "nameHe": "נ נח - הרשימה הממלכתית - תרימו את הראש",
+          "votes": 624,
+          "treatment": "exclude-pending-or-contested",
+          "evidenceStatus": "unresolved",
+          "sourceIds": [
+            "local-dataset"
+          ],
+          "reason": "Na Nach: same unresolved organisational boundary."
+        },
+        {
+          "listId": "21-זנ",
+          "nameHe": "יחד בראשית אלי ישי",
+          "votes": 0,
+          "treatment": "exclude-pending-or-contested",
+          "evidenceStatus": "unresolved",
+          "sourceIds": [
+            "local-dataset"
+          ],
+          "reason": "Yachad withdrawn; zero votes, no redistribution to UTJ assumed."
+        }
+      ],
+      "computed": {
+        "coreOnly": {
+          "votes": 507324,
+          "percent": {
+            "numerator": 50732400,
+            "denominator": 4309270
+          },
+          "displayPct": 11.772852
+        },
+        "includedUnmixed": {
+          "votes": 507324,
+          "percent": {
+            "numerator": 50732400,
+            "denominator": 4309270
+          },
+          "displayPct": 11.772852
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 4309270
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 507324,
+          "percent": {
+            "numerator": 50732400,
+            "denominator": 4309270
+          },
+          "displayPct": 11.772852
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."
+      }
+    },
+    {
+      "electionId": "k22",
+      "electionDate": "2019-09-17",
+      "datasetPath": "public/data/k22.json",
+      "datasetSha256": "06f12173958383755fc85fe4d156e61957f1c27f10f14ed78071269c416dc4e9",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2026-11-03",
+        "noteEn": "Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. No default blocs assigned. National electorate 6,394,030; locality/polling electorate 6,391,218 (difference 2,812). National total takes precedence; cause unverified. See ADR 0020.",
+        "noteHe": "תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות. ללא שיוך לגושים. מספר בעלי זכות הבחירה הארצי הוא 6,394,030, לעומת 6,391,218 בקובצי היישובים והקלפיות. הפער 2,812; סיבתו לא אומתה. ראו החלטה 0020."
+      },
+      "validVotes": 4436806,
+      "voteSourceIds": [
+        "k22-national-html",
+        "k22-localities-datagov",
+        "k22-ballots-datagov",
+        "k22-candidates-gazette",
+        "k22-surplus-gazette",
+        "law-elections"
+      ],
+      "members": [
+        {
+          "listId": "22-ג",
+          "letters": "ג",
+          "nameHe": "יהדות התורה והשבת אגודת ישראל - דגל התורה",
+          "votes": 268775,
+          "partyIds": [
+            "agudat-yisrael",
+            "degel-hatorah"
+          ],
+          "datasetPartyIds": [
+            "agudat-yisrael",
+            "degel-hatorah"
+          ],
+          "proposedPartyIds": [],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k22.json#/lists/5"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "utj",
+              "haredi-society"
+            ],
+            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "22-שס",
+          "letters": "שס",
+          "nameHe": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל",
+          "votes": 330199,
+          "partyIds": [
+            "shas"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "shas"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k22.json#/lists/3"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "shas",
+              "haredi-society"
+            ],
+            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 598974,
+          "percent": {
+            "numerator": 59897400,
+            "denominator": 4436806
+          },
+          "displayPct": 13.500117
+        },
+        "includedUnmixed": {
+          "votes": 598974,
+          "percent": {
+            "numerator": 59897400,
+            "denominator": 4436806
+          },
+          "displayPct": 13.500117
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 4436806
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 598974,
+          "percent": {
+            "numerator": 59897400,
+            "denominator": 4436806
+          },
+          "displayPct": 13.500117
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."
+      }
+    },
+    {
+      "electionId": "k23",
+      "electionDate": "2020-03-02",
+      "datasetPath": "public/data/k23.json",
+      "datasetSha256": "a7dacef1f60c2e29c2851a53e1ec02b20aab54b9bb6a777a1f2f9e9e01f2f7cf",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2026-11-03",
+        "noteEn": "Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. No default blocs assigned.",
+        "noteHe": "תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות. ללא שיוך לגושים."
+      },
+      "validVotes": 4590062,
+      "voteSourceIds": [
+        "k23-national-html",
+        "k23-localities-datagov",
+        "k23-ballots-datagov",
+        "k23-candidates-gazette",
+        "k23-surplus-gazette",
+        "law-elections"
+      ],
+      "members": [
+        {
+          "listId": "23-ג",
+          "letters": "ג",
+          "nameHe": "יהדות התורה והשבת אגודת ישראל – דגל התורה",
+          "votes": 274437,
+          "partyIds": [
+            "agudat-yisrael",
+            "degel-hatorah"
+          ],
+          "datasetPartyIds": [
+            "agudat-yisrael",
+            "degel-hatorah"
+          ],
+          "proposedPartyIds": [],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k23.json#/lists/4"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "utj",
+              "haredi-society"
+            ],
+            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "23-שס",
+          "letters": "שס",
+          "nameHe": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל",
+          "votes": 352853,
+          "partyIds": [
+            "shas"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "shas"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k23.json#/lists/3"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "shas",
+              "haredi-society"
+            ],
+            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 627290,
+          "percent": {
+            "numerator": 62729000,
+            "denominator": 4590062
+          },
+          "displayPct": 13.666264
+        },
+        "includedUnmixed": {
+          "votes": 627290,
+          "percent": {
+            "numerator": 62729000,
+            "denominator": 4590062
+          },
+          "displayPct": 13.666264
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 4590062
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 627290,
+          "percent": {
+            "numerator": 62729000,
+            "denominator": 4590062
+          },
+          "displayPct": 13.666264
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."
+      }
+    },
+    {
+      "electionId": "k24",
+      "electionDate": "2021-03-23",
+      "datasetPath": "public/data/k24.json",
+      "datasetSha256": "fe584720b45481441be0f7a52bb2b10a95d768e53fc6fde256c4e95b68a2c48f",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2026-11-03",
+        "noteEn": "Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. No default blocs assigned.",
+        "noteHe": "תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות. ללא שיוך לגושים."
+      },
+      "validVotes": 4410052,
+      "voteSourceIds": [
+        "k24-national-html",
+        "k24-localities-datagov",
+        "k24-ballots-datagov",
+        "k24-candidates-gazette",
+        "k24-surplus-gazette",
+        "law-elections"
+      ],
+      "members": [
+        {
+          "listId": "24-ג",
+          "letters": "ג",
+          "nameHe": "יהדות התורה והשבת אגודת ישראל – דגל התורה",
+          "votes": 248391,
+          "partyIds": [
+            "degel-hatorah",
+            "agudat-yisrael"
+          ],
+          "datasetPartyIds": [
+            "degel-hatorah",
+            "agudat-yisrael"
+          ],
+          "proposedPartyIds": [],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k24.json#/lists/6"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "utj",
+              "haredi-society"
+            ],
+            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "24-שס",
+          "letters": "שס",
+          "nameHe": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל",
+          "votes": 316008,
+          "partyIds": [
+            "shas"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "shas"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k24.json#/lists/2"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "shas",
+              "haredi-society"
+            ],
+            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [
+        {
+          "listId": "24-רף",
+          "nameHe": "מפלגת עם שלם – בראשות הרב חיים אמסלם",
+          "votes": 592,
+          "treatment": "exclude-pending-or-contested",
+          "evidenceStatus": "contested",
+          "sourceIds": [
+            "shas-study"
+          ],
+          "reason": "Am Shalem: contested extension; do not equate Shas ancestry with unchanged Haredi character."
+        }
+      ],
+      "computed": {
+        "coreOnly": {
+          "votes": 564399,
+          "percent": {
+            "numerator": 56439900,
+            "denominator": 4410052
+          },
+          "displayPct": 12.798012
+        },
+        "includedUnmixed": {
+          "votes": 564399,
+          "percent": {
+            "numerator": 56439900,
+            "denominator": 4410052
+          },
+          "displayPct": 12.798012
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 4410052
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 564399,
+          "percent": {
+            "numerator": 56439900,
+            "denominator": 4410052
+          },
+          "displayPct": 12.798012
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."
+      }
+    },
+    {
+      "electionId": "k25",
+      "electionDate": "2022-11-01",
+      "datasetPath": "public/data/k25.json",
+      "datasetSha256": "a8b8b667a8e4b6fd9dd104b4dad5cd839b415640efa431cc62c35e6264efc180",
+      "datasetStatus": {
+        "stage": "official-final",
+        "asOf": "2022-11-10",
+        "noteHe": "תוצאות סופיות רשמיות של ועדת הבחירות המרכזית.",
+        "noteEn": "Official final results of the Central Elections Committee."
+      },
+      "validVotes": 4764742,
+      "voteSourceIds": [
+        "k25-national-html",
+        "k25-localities-datagov",
+        "k25-ballots-datagov",
+        "k25-candidates-gazette",
+        "k25-surplus-press",
+        "law-elections"
+      ],
+      "members": [
+        {
+          "listId": "25-ג",
+          "letters": "ג",
+          "nameHe": "יהדות התורה והשבת אגודת ישראל - דגל התורה",
+          "votes": 280194,
+          "partyIds": [
+            "agudat-yisrael",
+            "degel-hatorah"
+          ],
+          "datasetPartyIds": [
+            "agudat-yisrael",
+            "degel-hatorah"
+          ],
+          "proposedPartyIds": [],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k25.json#/lists/3"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "utj",
+              "haredi-society"
+            ],
+            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "25-שס",
+          "letters": "שס",
+          "nameHe": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל",
+          "votes": 392964,
+          "partyIds": [
+            "shas"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "shas"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k25.json#/lists/2"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "shas",
+              "haredi-society"
+            ],
+            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [],
+      "computed": {
+        "coreOnly": {
+          "votes": 673158,
+          "percent": {
+            "numerator": 67315800,
+            "denominator": 4764742
+          },
+          "displayPct": 14.1279
+        },
+        "includedUnmixed": {
+          "votes": 673158,
+          "percent": {
+            "numerator": 67315800,
+            "denominator": 4764742
+          },
+          "displayPct": 14.1279
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 4764742
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 673158,
+          "percent": {
+            "numerator": 67315800,
+            "denominator": 4764742
+          },
+          "displayPct": 14.1279
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."
+      }
+    },
+    {
+      "electionId": "k26",
+      "electionDate": "2026-10-27",
+      "datasetPath": "public/data/k26.json",
+      "datasetSha256": "80231de6d9b3a12214496b8ff240a3adbfff1967d5a801b2b905503d38b4d57e",
+      "datasetStatus": {
+        "stage": "final-count-pending-publication",
+        "asOf": "2026-11-03",
+        "noteHe": "ספירה סופית שפרסמה ועדת הבחירות המרכזית (קבצי התוצאות מיום 3.11.2026). התוצאות הסופיות יפורסמו ברשומות עד 4.11.2026 ועד אז עשויות להשתנות.",
+        "noteEn": "Final count published by the Central Elections Committee (result files of 3 Nov 2026). Final results are due to be gazetted in Reshumot by 4 Nov 2026 and may change until then."
+      },
+      "validVotes": 5691396,
+      "voteSourceIds": [
+        "k26-localities-csv",
+        "k26-ballots-csv",
+        "k26-list-pages",
+        "k26-secondary-fyi",
+        "k26-surplus-gazette",
+        "k26-national-snapshot",
+        "law-elections"
+      ],
+      "members": [
+        {
+          "listId": "26-ג",
+          "letters": "ג",
+          "nameHe": "יהדות התורה והשבת אגודת ישראל – דגל התורה",
+          "votes": 312630,
+          "partyIds": [
+            "degel-hatorah",
+            "agudat-yisrael",
+            "homat-torat-yisrael"
+          ],
+          "datasetPartyIds": [
+            "degel-hatorah",
+            "agudat-yisrael",
+            "homat-torat-yisrael"
+          ],
+          "proposedPartyIds": [],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k26.json#/lists/3"
+          },
+          "classificationEvidence": {
+            "status": "inferred",
+            "sourceIds": [
+              "utj",
+              "haredi-society",
+              "cec26"
+            ],
+            "claim": "Aguda/UTJ: count whole list once; 1992 Moria and 2026 Homat Torat Yisrael identities inherited from local constituent metadata."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "26-שס",
+          "letters": "שס",
+          "nameHe": "התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל",
+          "votes": 299533,
+          "partyIds": [
+            "shas"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "shas"
+          ],
+          "scope": "core",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k26.json#/lists/2"
+          },
+          "classificationEvidence": {
+            "status": "documented",
+            "sourceIds": [
+              "shas",
+              "haredi-society"
+            ],
+            "claim": "Shas organisational Haredi classification; does not classify individual voters."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "26-זך",
+          "letters": "זך",
+          "nameHe": "הציבור החרדי בראשות מוטי ליטנר",
+          "votes": 10599,
+          "partyIds": [
+            "hatzibur-haharedi"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "hatzibur-haharedi"
+          ],
+          "scope": "extension",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k26.json#/lists/14"
+          },
+          "classificationEvidence": {
+            "status": "self-described",
+            "sourceIds": [
+              "cec26",
+              "local-dataset"
+            ],
+            "claim": "Registered name explicitly says Haredi public; no unverified predecessor asserted."
+          },
+          "constituentVotes": null
+        },
+        {
+          "listId": "26-רץ",
+          "letters": "רץ",
+          "nameHe": "הקהל – מפלגה כלל חרדית שנציגיה נבחרים על ידי הציבור בראשות הרב שלמה אלבוים",
+          "votes": 607,
+          "partyIds": [
+            "hakel-2026"
+          ],
+          "datasetPartyIds": [],
+          "proposedPartyIds": [
+            "hakel-2026"
+          ],
+          "scope": "extension",
+          "treatment": "include",
+          "identityEvidence": {
+            "status": "observed-local-dataset",
+            "locator": "public/data/k26.json#/lists/28"
+          },
+          "classificationEvidence": {
+            "status": "self-described",
+            "sourceIds": [
+              "cec26",
+              "local-dataset"
+            ],
+            "claim": "Registered name explicitly says general Haredi party; sponsor is Machane Israel, not a proved historic continuity."
+          },
+          "constituentVotes": null
+        }
+      ],
+      "reviewCandidates": [
+        {
+          "listId": "26-נר",
+          "nameHe": "צבע שחור – מגן עולם התורה",
+          "votes": 11271,
+          "treatment": "exclude-pending-or-contested",
+          "evidenceStatus": "unresolved",
+          "sourceIds": [
+            "local-dataset"
+          ],
+          "reason": "Black Colour / protector of Torah world: suggestive name, insufficient independent classification; uncounted review candidate."
+        },
+        {
+          "listId": "26-צבי",
+          "nameHe": "תנועת אחי תנועתו של הרב יורם אברג'ל זצ\"ל",
+          "votes": 0,
+          "treatment": "exclude-pending-or-contested",
+          "evidenceStatus": "unresolved",
+          "sourceIds": [
+            "local-dataset"
+          ],
+          "reason": "Achi: withdrawn, zero votes; no automatic relation to the national religious ahi id."
+        },
+        {
+          "listId": "26-ני",
+          "nameHe": "נעם לישראל למען עתיד הילדים בראשות אבי מעוז",
+          "votes": 9928,
+          "treatment": "exclude-pending-or-contested",
+          "evidenceStatus": "contested",
+          "sourceIds": [
+            "noam-hardal",
+            "local-dataset"
+          ],
+          "reason": "IDI identifies Noam with Hardal national religious politics; treating the 2026 alliance as Haredi is not implied by the Hardal label. Excluded by editorial rule."
+        }
+      ],
+      "computed": {
+        "coreOnly": {
+          "votes": 612163,
+          "percent": {
+            "numerator": 61216300,
+            "denominator": 5691396
+          },
+          "displayPct": 10.755938
+        },
+        "includedUnmixed": {
+          "votes": 623369,
+          "percent": {
+            "numerator": 62336900,
+            "denominator": 5691396
+          },
+          "displayPct": 10.952831
+        },
+        "mixedWholeLists": {
+          "votes": 0,
+          "percent": {
+            "numerator": 0,
+            "denominator": 5691396
+          },
+          "displayPct": 0.0
+        },
+        "wholeListInclusionAlternative": {
+          "votes": 623369,
+          "percent": {
+            "numerator": 62336900,
+            "denominator": 5691396
+          },
+          "displayPct": 10.952831
+        },
+        "mixedHarediVotes": null,
+        "interpretation": "includedUnmixed is the selected-list total, not an estimate of all ballots cast by Haredi people; wholeListInclusionAlternative counts all mixed-list ballots by explicit convention."
+      }
+    }
+  ],
+  "limitations": [
+    "All k1–k26 files inspected; no assertion of exhaustive ideological classification of every minor list. Candidates requiring more evidence are explicitly recorded, not silently included.",
+    "1949 has no separable vote total for Aguda/Poalei Aguda; core-only votes are null, not zero.",
+    "k26 inherits final-count-pending-publication status from the local dataset; no fresh independent certification of the 2026 count.",
+    "Existing constituent ids are preserved even where roster completeness is uncertain. Proposed singleton ids do not yet exist in public datasets.",
+    "proposedPartyIds means ids requiring a list appearance mapping, including existing canonical ids missing from this singleton list; it does not mean every id is new to the project."
+  ]
+}
