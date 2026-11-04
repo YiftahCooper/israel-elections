@@ -4442,5 +4442,29 @@
     "retrievedAt": "2026-11-04T11:12:12.081501+00:00",
     "bytes": 9191,
     "sha256": "d7effb92cdc0712f8d95d868afaeae42b0cc8418c1e27546b5a2293e765341c7"
+  },
+  {
+    "id": "context-double-envelopes-2019",
+    "file": "context/double-envelopes-2019.pdf",
+    "url": "https://fs.knesset.gov.il/globaldocs/MMM/2e5ce5ea-ec1e-e911-80e1-00155d0a98a9/2_2e5ce5ea-ec1e-e911-80e1-00155d0a98a9_11_10970.pdf",
+    "publisher": "Knesset Research and Information Center / מרכז המחקר והמידע של הכנסת",
+    "official": true,
+    "description": "Voting in double envelopes, 24 March 2019; inspected pp.1–8. Retrospective k19 example and k21 procedures, not a timeless rule.",
+    "method": "http",
+    "retrievedAt": "2026-11-04T12:13:43.562112+00:00",
+    "bytes": 2960191,
+    "sha256": "79fb69eacca9ecd514b2581e462d0017e77937e395198305c2beb6db4a6eb47d"
+  },
+  {
+    "id": "context-idi-disqualifications",
+    "file": "context/idi-disqualifications.retrieval.json",
+    "url": "https://www.idi.org.il/articles/65951",
+    "publisher": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
+    "official": false,
+    "description": "Secondary disqualification review (31 August 2026); URL and body hash only. Manifest hash identifies retrieval record, its sha256 identifies downloaded article. archiveUrl null means unverified, not an invented archive.",
+    "method": "http",
+    "retrievedAt": "2026-11-04T12:13:43.563560+00:00",
+    "bytes": 606,
+    "sha256": "808514738f30fb9ae6619fd6da2aef800d871ab71a29052fd15a61e602d7f11c"
   }
 ]

@@ -221,3 +221,16 @@ targets and independent ballot reconciliation. `data:build` runs it and checks r
 source hashes. The UI bundles the same validated metadata; changing it does not alter
 Knesset build timestamps or the differential engine corpus. All three PM candidate tables
 and the IDI totals were visually checked against the retained scan pages on 4 November 2026.
+
+Step 3 adds `membership-snapshot` and `counting-context` event types. Dates name the
+snapshot actually supported: opening-day membership, election-day final eligibility,
+a dated decision, or an explicitly dated retrospective/source review. Election-day
+eligibility is **not** an invented judgment date; a 2026 source comparison is **not**
+a historical erratum. Whole-list exclusions absent from the dataset remain election
+context without a fabricated `listId`. Candidate decisions attach to their actual list.
+The IDI eligibility review remains secondary. Its copyrighted body is not committed:
+`data/raw/context/idi-disqualifications.retrieval.json` holds the original URL, downloaded
+body hash and retrieval details; `archiveUrl: null` expressly means no archive was verified.
+The manifest hashes that retrieval record. The official Knesset envelope paper is retained
+in full with its own manifest hash. Previously retained gazettes, CEC page captures and
+membership responses are reused by source id.
