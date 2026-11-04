@@ -23,25 +23,50 @@ overlap: compare shows separate small multiples and never adds family totals.
 
 ## Page and selection
 
-The Party families navigation entry is available at Simple. The definition, coverage,
-ambiguity count, policy, separate vote-share/count plots and exact table precede the
-editing controls. Election points use actual dates (both 2019 elections remain
-separate). Charts share the election cursor with one another and table focus/hover.
-Clicking a chart point or date opens the election. Each metric uses one shared scale
-across compared families. Phone stacks metrics vertically; the exact table can scroll
-within its container when comparisons need more width.
+The profile opens with swatched family chips; selecting multiple chips is comparison.
+Hidden definitions stay in Manage, alongside import/export and the exact-figures
+preference. Colours are stable by family identity and remain chromatic, separate from
+neutral change marks. Personal definitions get stable colours from their own ids.
+The most recently selected family supplies the policy, edit and scenario actions.
 
-The default Haredi selection is core plus individually toggleable extensions.
-Excluded/contested lists are disclosed with one-click inclusion. Search uses Hebrew,
-English, registry dated names and canonical appearances, preserving selected chips
-while filtering. Checkboxes require no modifier keys. Mixed lists have indeterminate
-checkboxes and named constituent descriptions. Core selection can also be edited in
-the active election's picker; extensions and contested decisions span all elections.
+The separate share/count charts lead the page. At 1200px and above they sit side by
+side, each 300px high; narrow layouts stack them, each at least 240px high. Small
+multiples use one shared scale per metric. Actual dates position the points; horizontal
+year labels are thinned on phones, not scaled down. End labels identify each series.
+Hover/focus reveals exact votes/share/date, mixed totals and publication status. The
+2026 point is hollow and labelled pending gazette. Tab enters the current point;
+arrow keys move among the 26 elections, and Enter/Space opens the focused election.
+The shared cursor follows chart and table focus. Unknown points break the line;
+observed zero and did-not-contest remain different in exact figures.
 
-Mixed policy is per definition: separate hatched whole-list segment (default), include
-the whole list, or exclude. Policy accompanies the totals, charts and action controls.
-No constituent votes are inferred. A simulation list merging selected and other
-origins becomes mixed. Withdrawn simulation lists cannot supply scaling votes.
+The table is secondary, under **Exact figures (26 elections)**. It starts collapsed
+unless reduced motion or the explicit **Prefer exact figures (screen-reader/table
+view)** browser preference is set. Screen-reader use is not inferred or detected.
+Both the chart and table remain keyboard-operable. There is no animation.
+
+One short definition line and a quiet sourced-draft label replace repeated headings.
+The info button opens the full definition, sources and limitations on demand. Mixed
+policy uses Separate / Include whole lists / Exclude segments next to the charts,
+with grouping and Edit membership beside them. Editing still forks a built-in.
+
+Edit membership is a modal side sheet (full width on phones). An independent
+26-election stepper and ChoicePicker select the election being edited without changing
+the open scenario. Search uses bilingual names and registry aliases. Selection chips
+persist while filtering; mixed-list checkboxes are indeterminate with named members.
+Extensions and contested lists are editable for the sheet's chosen election. Registry
+relationship suggestions and manual partner links remain preview-first. Primary
+choices throughout the profile/sheet use chips, segments or ChoicePicker, not selects.
+
+Scaling has shared quick-action styling, a ± stepper, +1/+5/+10% shortcuts and a
+target-share input mode. Before/after 120-seat strips preview the allocation, with
+exact target votes and conservation/participation consequences before application.
+
+Opening a chart point or table date also sets an ephemeral historical family lens.
+On Overview, FamilyTreatment is at the top of the list column, and consecutive
+member runs have a labelled bracket. Mixed runs have their own label and hatching.
+This lens never edits the scenario; its close control clears it. Explicit Apply family
+as grouping remains a separate undoable scenario action, replacing the lens with
+the applied definition. Sorting lists by seats is preserved.
 
 ## Personal presets and relationships
 
@@ -98,7 +123,26 @@ nine built-ins, plus the metadata branch's evidence tests. Browser coverage open
 26 elections, changes policy, persists/hides/restores a personal copy, groups 1988,
 and scales 2022 by +10% followed by undo. Screenshot cases cover Hebrew/English,
 light/dark, 1440×900 and 390×844, saved under `.backup-scratch/families/` as
-`<he|en>-<light|dark>-<desktop|phone>.png`. These working captures are disposable.
+`<he|en>-<light|dark>-<desktop|phone>.png`, with `-compare` and `-edit` variants. Overview captures also show the grouping and the unedited 1949 family lens. These working captures are disposable.
 
-The family page and registry load in a separate chunk. No changes to vote datasets,
+## Compact runtime and lazy evidence
+
+`scripts/family-runtime.ts` compiles metadata during Vite build (and development) to
+`data/families-runtime.json` and the profile's virtual runtime module. It packs ids,
+bilingual names/definitions, membership/outcome flags, review ids, dates, publication
+flags, immutable whole-list votes and derived totals. The current JSON is 41,323 bytes
+raw. A unit test enforces the 200 KB ceiling and independently reconciles every
+family/election with the full metadata. No generated copy is checked into source.
+
+The initial profile does not import the registry or full evidence, or fetch 26 complete
+election datasets. Full family files are separate dynamic chunks, opened by the
+sources sheet and explicitly loaded when saving/editing/exporting/applying a definition
+so personal files and scenario snapshots retain the original evidence. The registry
+and one elected dataset load only when the editor/import needs them. Full hashes,
+pointers and qualifications remain in metadata, never in the compact profile payload.
+
+ChoicePicker exposes its dialog via aria-controls; browser helpers follow that stable
+id so closing a picker nested inside the editor is not mistaken for closing the sheet.
+
+The family page and registry load in separate chunks. No changes to vote datasets,
 engine allocation rules or concurrent control/graphics implementations are needed.

@@ -1,3 +1,4 @@
+import type { Family } from '../families/model.ts';
 import { PRESETS, type FeatureId, type Visibility } from './features.ts';
 // Application state. Undo/redo keeps immutable scenario snapshots; saved scenarios remain action logs.
 import { useSyncExternalStore } from 'react';
@@ -19,6 +20,8 @@ export interface SavedScenario { id: string; name: string; description?: string;
 export type ScenarioSession = { scenario: Scenario; past: Scenario[]; future: Scenario[]; reference: Scenario | null };
 
 export interface State {
+  /** A historical family lens, independent of scenario edits and browser saves. */
+  familyView?: Family | null;
   datasets: Partial<Record<ElectionId, ElectionDataset>>;
   /** every election the project knows about (public/data/elections.json), newest first */
   elections: ElectionIndexEntry[];

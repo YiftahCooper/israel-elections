@@ -568,3 +568,7 @@ One short chamber caption explains outlines and names the reference. Additional
 explanation is in its (i) tooltip. No bloc uses the normal legend swatch.
 `BoardChoices` owns grouping and colour choices; graphics components do not keep
 hidden duplicate selectors or rely on CSS to conceal them.
+
+### Family profiles: visual pass
+
+Family chips are selection and comparison. Full-width 300px charts (240px on phones) lead; the exact table is disclosed. Mixed policy is a three-way segment and 2026 points are hollow with pending-publication tooltips. Edit membership is an independent-election sheet; scaling previews before/after seat strips. Overview adds labelled brackets to family list runs without changing seat ordering. See [the built design](docs/design/party-families.md) for runtime/evidence loading and the explicit exact-figures preference.

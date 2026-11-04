@@ -45,15 +45,22 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   // one scale for every bar: the largest list now or in the official result
   const scale = Math.max(1, ...rows.map((x) => Math.max(x.lr.seats, x.was ?? 0)));
 
-  const familyRows = s.familyDefinition ? resolve(s.familyDefinition, s) : [];
+  const viewedFamily = useStore(st=>st.familyView);
+  const familyDefinition = viewedFamily ?? s.familyDefinition;
+  const familyRows = familyDefinition ? resolve(familyDefinition, s) : [];
   const row = ({ l, lr, was }: (typeof rows)[number]) => {
+    const family = familyRows.find(x => x.id === l.id)?.family;
+    const displayed = [...inKnesset,...visibleOut], at = displayed.findIndex(x=>x.l.id===l.id);
+    const previousFamily = at > 0 ? familyRows.find(x=>x.id===displayed[at-1].l.id)?.family : undefined;
+    const familyStart = family && family !== 'other' && family !== previousFamily;
     const open = selected === l.id;
     const d = was === null ? 0 : lr.seats - was;
     const agr = standard ? s.agreements.find((a) => a.members.includes(l.id) && a.enabled) : undefined;
     const partner = agr ? s.lists.find((x) => x.id === agr.members.find((m) => m !== l.id)) : undefined;
     const out = !lr.qualified;
     return (
-      <li key={l.id}>
+      <li key={l.id} data-family={family}>
+        {familyStart && familyDefinition && <span className="family-run-label">{lang==='he'?familyDefinition.nameHe:familyDefinition.nameEn}{family==='mixed'?` · ${L('Mixed lists','רשימות מעורבות')}`:''}</span>}
         <button type="button" data-family={familyRows.find(x => x.id === l.id)?.family} ref={open ? selRef : undefined} className={`lb-row ${out ? 'out' : ''} ${selected && !open ? 'dim' : ''}`} aria-pressed={open}
           aria-label={listLabel(l, lang)} aria-describedby={`lbd-${l.id}`}
           onClick={() => setState({ selectedListId: open ? null : l.id })}
