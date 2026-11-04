@@ -1,5 +1,15 @@
 # Changelog
 
+## 4 November 2026 — election context and PM results
+
+- Add sourced, dated election circumstances in an expandable bilingual context layer,
+  including list-targeted notes and a single pending-publication warning.
+- Show independent 1996/1999 Prime Minister results beside the chamber and a selectable
+  2001 PM-only event linked to k15, with neutral majority markers and source-labelled totals.
+- Preserve secondary/unverified fields and withdrawn nominees; retain/hash new evidence.
+  Knesset datasets, seats and scenario actions are unchanged.
+- Add metadata validation, PM reconciliation tests and bilingual/theme/viewport browser coverage.
+
 Notable changes are recorded here using [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 conventions. The history records development commits, not tagged releases; the dated entry
 below groups all existing commits from 3 November 2026. `package.json` currently says 0.1.0.

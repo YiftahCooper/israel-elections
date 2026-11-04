@@ -4406,5 +4406,41 @@
     "retrievedAt": "2026-11-04",
     "bytes": 6629886,
     "sha256": "d3a8f6af0741caffdbe26aacf70e57828652c8f0c1cd646bf8ecb5375eb6aca8"
+  },
+  {
+    "id": "pm2001-gazette",
+    "file": "pm/yp4960.pdf",
+    "url": "https://olaw.org.il/yalkut/yalkut-4960.pdf",
+    "publisher": "CEC / Reshumot, YP 4960 p.1628 (official content on public mirror)",
+    "official": true,
+    "description": "CEC / Reshumot, YP 4960 p.1628 (official content on public mirror)",
+    "method": "http",
+    "retrievedAt": "2026-11-04T11:07:14.134805+00:00",
+    "bytes": 222908,
+    "sha256": "405f7587ede7f13dbc4acdabdbf3ddeb99524c5def26add92259e40cdf37970f"
+  },
+  {
+    "id": "pm1999-idi-totals",
+    "file": "pm/1999-idi.pdf",
+    "url": "https://www.idi.org.il/media/5026/%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9E%D7%91%D7%95%D7%90.pdf",
+    "publisher": "Israel Democracy Institute, The Elections in Israel 1999, p.8",
+    "official": false,
+    "description": "Israel Democracy Institute, The Elections in Israel 1999, p.8",
+    "method": "http",
+    "retrievedAt": "2026-11-04T11:07:14.798845+00:00",
+    "bytes": 428886,
+    "sha256": "73ca159fe16c24807a8949720eb5eda50e90a7c0eb69ff37b36069f524e8bb00"
+  },
+  {
+    "id": "pm-reviewed-transcription",
+    "file": "pm/reviewed-transcription.json",
+    "url": "https://www.gov.il/en/pages/israeli-election-results-may-1996",
+    "publisher": "Project reviewed transcription; MFA retrieval blocked",
+    "official": false,
+    "description": "Visual review of retained gazettes k14 PDF p.3, k15 PDF p.2, YP4960 PDF p.2 and IDI 1999 PDF p.7; all match the era-specific-rules report. MFA totals inherited from that report; fresh direct retrieval returned HTTP 403. No raw MFA page is claimed.",
+    "method": "manual-capture",
+    "retrievedAt": "2026-11-04T11:12:12.081501+00:00",
+    "bytes": 9191,
+    "sha256": "d7effb92cdc0712f8d95d868afaeae42b0cc8418c1e27546b5a2293e765341c7"
   }
 ]

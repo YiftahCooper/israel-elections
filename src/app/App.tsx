@@ -1,3 +1,5 @@
+import { electionContext } from '../data/electionContext.ts';
+import { ElectionAbout, PMResult } from './components/ElectionContext.tsx';
 import { createElement, memo, Suspense, use, useEffect, useState, type ReactNode } from 'react';
 import { X } from 'lucide-react';
 import { allocationOf, baselineOf, ruleChanges, scenarioIssues, tieAffectsSeats, warningText } from './derive.ts';
@@ -110,6 +112,8 @@ export function App() {
 }
 
 function Shell() {
+  const [pmContestId, setPMContestId] = useState<string | null>(null);
+  const pmOnly = electionContext.pmContests.find(c => c.id === pmContestId && c.contestType === 'prime-minister-only');
   const L = useL();
   const committed = useStore((st) => st.scenario);
   const preview = useStore((st) => st.preview);
@@ -195,7 +199,9 @@ function Shell() {
 
   return (
     <div className="app">
-      <TopBar s={committed} r={cr} ds={ds} baseR={baseR} />
+      <TopBar s={pmOnly ? null : committed} r={cr} ds={ds} baseR={baseR} pmContestId={pmContestId} onContestChange={setPMContestId} />
+      {pmOnly ? <main className="work"><PMResult contest={pmOnly} onKnesset={() => setPMContestId(null)} /></main> : <>
+      <ElectionAbout electionId={ds.id} />
       <nav className="toolbar" aria-label={L('Tools', 'כלים')}><div className="tabs" role="tablist" aria-label={L('Tools', 'כלים')}>
                 {ordered.map((t, i) => [
                   i === firstLocked ? <span key="more" className="more-label" aria-hidden>{L('More in other levels', 'עוד ברמות אחרות')}</span> : null,
@@ -214,7 +220,6 @@ function Shell() {
                 ])}
               </div></nav>
       <div>
-        {ds.status.stage !== 'official-final' && <div className="banner warn" role="status">{lang === 'he' ? ds.status.noteHe : ds.status.noteEn}</div>}
         {level === 'simple' && !hintDismissed && <div className="banner info" role="status">{L('Click any list, seat, bloc or figure to see and change what is behind it. Every tool is named in the strip under the header.', 'לחצו על כל רשימה, מושב, גוש או נתון כדי לראות ולשנות את מה שמאחוריו. כל הכלים מופיעים בשורה שמתחת לכותרת.')} <button className="btn small ghost icon-only" onClick={() => setState({ hintDismissed: true })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}
         {loadBanner}
         {s.mode === 'experimental' && <div className="banner info" role="status">{L('Experimental rules: this is an alternative electoral system, not a legally possible Israeli result.', 'כללים ניסיוניים: זוהי שיטת בחירות חלופית ולא תוצאה אפשרית לפי החוק בישראל.')}{(() => { const c = ruleChanges(s, lang); return c.length ? <> {L('Changed: ', 'שינויים: ')}<b>{c.join(' · ')}</b>.</> : null; })()} <button className="btn small" onClick={() => dispatch({ type: 'setMode', mode: 'historical' })}>{L('Back to the real rules', 'חזרה לכללים האמיתיים')}</button></div>}
@@ -230,6 +235,7 @@ function Shell() {
           <div className={`board ${selected || blocPanel ? 'with-panel' : ''}`}>
             <ErrorBoundary label={L('Lists', 'רשימות')} resetKey={s}><ListBars s={s} r={r} base={base} baseR={baseR} /></ErrorBoundary>
             <div className="center">
+              {electionContext.pmContests.filter(c => c.electionId === ds.id && c.contestType === 'parallel-pm').map(c => <PMResult key={c.id} contest={c} />)}
               <section className="panel chamber-panel" aria-label={L('The Knesset', 'הכנסת')}>
                 <div className="body"><ErrorBoundary label={L('Chamber', 'המליאה')} resetKey={s}><Hemicycle s={s} r={r} /></ErrorBoundary></div>
               </section>
@@ -268,7 +274,7 @@ function Shell() {
         )}
         {drawerOpen && <div className="drawer"><ErrorBoundary label={L('List details', 'פרטי רשימה')} resetKey={selected}><ListSidePanel s={committed} r={cr} ds={ds} base={base} baseR={baseR} listId={selected} /></ErrorBoundary></div>}
         <p className="small muted" style={{ margin: 0 }}>{L('Seat allocation is computed by deterministic code from official Central Elections Committee data. Not affiliated with the CEC or any party.', 'חלוקת המנדטים מחושבת בקוד דטרמיניסטי מנתוני ועדת הבחירות המרכזית. אין קשר לוועדת הבחירות או לאף מפלגה.')}</p>
-      </main>
+      </main></>}
       {toast && <div className={`toast toast-${toast.kind}`} role={toast.kind === 'error' ? 'alert' : 'status'}>{toast.text}</div>}
     </div>
   );

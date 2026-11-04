@@ -1,0 +1,54 @@
+import { electionContext, type ContextSource, type PMContest } from '../../data/electionContext.ts';
+import type { ElectionId } from '../../data/schema.ts';
+import { useL, useLang } from '../i18n.ts';
+
+export function EvidenceLink({ source }: { source: ContextSource }) {
+  const L = useL();
+  const label = source.evidence === 'official' ? L('Official', 'רשמי') : source.evidence === 'secondary' ? L('Secondary', 'מקור משני') : L('Unresolved', 'טרם הוברר');
+  return <a href={source.url} target="_blank" rel="noreferrer" className="context-source">{source.publisher} · {label}{source.verification === 'report-only' && <> · {L('Unverified in this build; report transcription', 'לא אומת בבנייה זו; תעתיק מהדוח')}</>}</a>;
+}
+
+/** Immutable history, deliberately independent of the scenario/action log. */
+export function ElectionAbout({ electionId, listId }: { electionId: ElectionId; listId?: string }) {
+  const L = useL(); const lang = useLang();
+  const events = electionContext.events.filter(e => e.electionId === electionId && (!listId || e.listId === listId));
+  if (!events.length) return null;
+  const pending = events.find(e => e.type === 'publication-status');
+  return <details className={`election-about ${pending ? 'publication-pending' : ''}`}>
+    <summary>{L('About this election', 'על הבחירות האלה')}{pending && <> · {L('Pending gazette', 'ממתין לפרסום ברשומות')}</>}</summary>
+    <ul>{events.map(e => <li key={e.id}>
+      <time dateTime={e.effectiveDate}>{e.effectiveDate}</time> · {e.source.evidence === 'unresolved' && <strong>{L('Unresolved: ', 'טרם הוברר: ')}</strong>}{lang === 'he' ? e.textHe : e.textEn}{' '}
+      <EvidenceLink source={e.source} />{e.relatedSources?.map(s => <span key={s.url}> · <EvidenceLink source={s} /></span>)}
+    </li>)}</ul>
+  </details>;
+}
+
+export function PMResult({ contest, onKnesset }: { contest: PMContest; onKnesset?: () => void }) {
+  const L = useL(); const lang = useLang();
+  const num = (n: number) => n.toLocaleString(lang === 'he' ? 'he-IL' : 'en-US');
+  const b = electionContext.ballotIndependence;
+  return <section className="panel pm-result" aria-label={L('Prime Minister result', 'תוצאות הבחירות לראש הממשלה')}>
+    <header><h2>{L('Prime Minister', 'ראש הממשלה')} · {contest.effectiveDate}</h2></header>
+    <div className="body">
+      {contest.contestType === 'prime-minister-only' && <p>{L(`No Knesset was elected in this election. Knesset ${contest.electionId.slice(1)} continued serving, with its seats unchanged.`, `בבחירות אלה לא נבחרה כנסת. הכנסת ה־${contest.electionId.slice(1)} המשיכה לכהן, ללא שינוי במנדטים.`)} <button className="btn small" onClick={onKnesset}>{L(`View ${contest.electionId} · Knesset`, `לכנסת ה־${contest.electionId.slice(1)}`)}</button></p>}
+      <p className="small muted">{L('Historical result · separate PM ballot · read only', 'תוצאה היסטורית · פתק נפרד לראש הממשלה · לקריאה בלבד')}</p>
+      <div className="pm-bars">
+        <div className="pm-majority-label">{L('50% of valid PM votes', '50% מהקולות הכשרים לראש הממשלה')}</div>
+        {contest.candidates.filter(c => c.status === 'final').map(c => {
+          const share = c.votes!.value / contest.totals.valid.value * 100;
+          return <div className="pm-candidate" key={c.id}>
+            <div>{lang === 'he' ? c.nameHe : c.nameEn} <strong>{num(c.votes!.value)}</strong> · {share.toFixed(2)}%</div>
+            <div className="pm-track" aria-hidden="true"><span style={{ width: `${share}%` }} /><i /></div>
+          </div>;
+        })}
+      </div>
+      <EvidenceLink source={contest.source} />
+      <details className="pm-evidence"><summary>{L('Ballot totals & sources', 'סיכומי ההצבעה ומקורות')}</summary>
+        <dl>{(['valid', 'invalid', 'cast'] as const).map(key => <div key={key}><dt>{key === 'valid' ? L('Valid', 'כשרים') : key === 'invalid' ? L('Invalid', 'פסולים') : L('Cast', 'מצביעים')}</dt><dd>{num(contest.totals[key].value)} · <EvidenceLink source={contest.totals[key].source} /></dd></div>)}</dl>
+        <p>{lang === 'he' ? b.textHe : b.textEn} <EvidenceLink source={b.source} /></p>
+        {contest.noteEn && <p>{lang === 'he' ? contest.noteHe : contest.noteEn}</p>}
+      </details>
+      {contest.candidates.some(c => c.status === 'withdrawn') && <details><summary>{L('Withdrawn nominees', 'מועמדים שפרשו')} ({contest.candidates.filter(c => c.status === 'withdrawn').length})</summary><ul>{contest.candidates.filter(c => c.status === 'withdrawn').map(c => <li key={c.id}>{lang === 'he' ? c.nameHe : c.nameEn} · {L('Withdrawn before polling', 'פרש לפני ההצבעה')} · <EvidenceLink source={c.source!} /></li>)}</ul></details>}
+    </div>
+  </section>;
+}

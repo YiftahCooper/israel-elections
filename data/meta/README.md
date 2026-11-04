@@ -198,3 +198,26 @@ named Blue and White from 2021), `yesh-atid`, `telem`, `agudat-yisrael`, `degel-
 `new-movement`, `green-movement`, `meimad`, `independence` (Barak's Israel Democratic Party, 2019), `hatnua`, `yachad`,
 `zehut`, `achiezer`, `kol-yisrael-ahim`, `peula-leyisrael`, `yashar`, `yesodot-yisrael`, `democrats`, `together-bennett`,
 `reservists`, `new-economic`, `tzomet`, `beit-yemini`.
+
+## Read-only election context and PM ballots
+
+`election-context.json` is separate from Knesset datasets and scenario inputs. Each event
+has an election id, stable event id, effective date, contest type, typed circumstance,
+bilingual text and a source with `official`, `secondary` or `unresolved` evidence.
+Optional `listId` targets context to a list panel; `relatedSources` supplies additional evidence.
+An unresolved claim must be worded as unresolved, never as established history.
+
+PM contests link to an existing Knesset id; `prime-minister-only` creates no Knesset or
+seat allocation. Candidate votes and valid/invalid/cast totals each carry sources.
+Withdrawn nominees have status evidence and **no vote count**. The 1999 invalid/cast totals
+are secondary IDI figures, not derived from the Knesset ballot. The 1996 MFA invalid/cast
+figures carry `verification: report-only`: the earlier report inspected them, but this
+implementation's direct request returned 403. The retained reviewed transcription documents
+that limit; it is not a captured MFA page. The 2001 official notice is retained from a
+public mirror, disclosed in both manifest and UI. See `data/raw/pm/` and `SOURCES.json`.
+
+`src/data/electionContext.ts` validates dates, source policy, evidence labels, ids,
+targets and independent ballot reconciliation. `data:build` runs it and checks retained
+source hashes. The UI bundles the same validated metadata; changing it does not alter
+Knesset build timestamps or the differential engine corpus. All three PM candidate tables
+and the IDI totals were visually checked against the retained scan pages on 4 November 2026.

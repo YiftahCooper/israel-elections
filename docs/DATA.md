@@ -659,3 +659,21 @@ Whole-election CEC records are labelled as such; they are not party platforms. T
 rejects unknown ids, non-HTTPS URLs and English Wikipedia, including archive-wrapped URLs;
 scenario imports validate link fields too. Coverage is partial: all missing kinds have
 reasons in the overlays. Method and coverage: `docs/research/party-links.md`.
+
+### Direct Prime Minister results and election context
+
+The read-only metadata in `data/meta/election-context.json` adds 1996/1999 PM ballots
+alongside k14/k15 and the standalone 6 February 2001 election during k15. It does not
+change any Knesset votes or seats. Candidate/valid totals come from YP 4414 p.3483,
+YP 4757 p.3376 and YP 4960 p.1628. The latter is retained from olaw.org.il, a disclosed
+public mirror of official content (SHA-256 in the source manifest). Independent PM invalid/cast
+totals for 1996 are the report's official MFA transcription, explicitly unverified in this
+build after HTTP 403; 1999 uses the labelled secondary IDI introductory chapter p.8;
+2001 uses the gazette. Never substitute the Knesset turnout or infer individual vote flows.
+The 1999 withdrawn nominees are secondary IDI history, with no invented zero-vote results.
+
+Seeded context covers the Constituent Assembly, the 1973 postponement, the 1977
+Flatto-Sharon capacity qualification, separate 2019–2022 elections and k26's existing pending
+publication status. This is not a complete historical event register. Redistribution authority
+in 1977, primary 1999 PM invalid/cast totals, 1999 printed-slip withdrawal instructions and
+a government-hosted 2001 download remain unresolved.

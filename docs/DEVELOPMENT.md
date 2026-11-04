@@ -161,3 +161,17 @@ All 26 elections are available. Not implemented: complete 1949–2006 rosters, E
 candidate portraits, later membership replacements and polling-station-level
 simulation. Locality results can seed a hypothetical turnout model; that model is not
 an official forecast.
+
+## Election circumstances and direct PM results
+
+`src/data/electionContext.ts` validates `data/meta/election-context.json` at import/build
+and keeps it outside scenario actions. `ElectionContext.tsx` renders source-labelled history
+and independent PM counts. The picker’s PM-only selection is UI state in `App.tsx`, linked
+to k15 without extending `ElectionId`, changing the saved-scenario format or reallocating seats.
+No PM counterfactual actions are supported. Source fields distinguish publisher authority
+from fresh verification (1996 MFA totals remain report-only).
+
+To regenerate the bilingual/theme/viewport review captures after a production build:
+`PW_PORT=5310 CAPTURE_SCREENSHOTS=1 npx playwright test tests/e2e/election-context.spec.ts`.
+Screenshots go to `.backup-scratch/era-implementation/screenshots/` (disposable, not release assets).
+The tests also check no horizontal overflow for all four selected events at 390px and 1500px.

@@ -1,0 +1,438 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-04",
+  "events": [
+    {
+      "id": "constituent-assembly",
+      "electionId": "k1",
+      "effectiveDate": "1949-01-25",
+      "contestType": "knesset",
+      "type": "institutional-identity",
+      "textEn": "This election chose the Constituent Assembly. On 16 February 1949 it became the First Knesset; no second election was held.",
+      "textHe": "בבחירות נבחרה האספה המכוננת. ב־16 בפברואר 1949 היא הפכה לכנסת הראשונה, ללא בחירות נוספות.",
+      "source": {
+        "url": "https://main.knesset.gov.il/About/Lexicon/pages/asefa.aspx",
+        "publisher": "Knesset",
+        "evidence": "official"
+      }
+    },
+    {
+      "id": "war-postponement",
+      "electionId": "k8",
+      "effectiveDate": "1973-12-31",
+      "contestType": "knesset",
+      "type": "postponement",
+      "textEn": "The election was postponed from 30 October to 31 December 1973 because of the Yom Kippur War.",
+      "textHe": "הבחירות נדחו מ־30 באוקטובר ל־31 בדצמבר 1973 בשל מלחמת יום הכיפורים.",
+      "source": {
+        "url": "https://main.knesset.gov.il/About/Occasion/pages/yomkippurwar.aspx",
+        "publisher": "Knesset",
+        "evidence": "official"
+      }
+    },
+    {
+      "id": "flatto-capacity",
+      "electionId": "k9",
+      "effectiveDate": "1977-05-17",
+      "contestType": "knesset",
+      "type": "candidate-capacity",
+      "textEn": "Flatto-Sharon had one candidate, 35,049 votes and one published seat. The app’s capacity cap reproduces the result; the precise historical redistribution authority remains unresolved.",
+      "textHe": "לרשימת פלאטו־שרון היה מועמד יחיד, 35,049 קולות ומנדט אחד בתוצאות שפורסמו. הגבלת הקיבולת באפליקציה משחזרת את התוצאה; הסמכות ההיסטורית המדויקת לחלוקה מחדש טרם הובררה.",
+      "source": {
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset9-results.pdf",
+        "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+        "evidence": "official",
+        "sourceId": "k9-results-gazette"
+      },
+      "listId": "9-פש",
+      "relatedSources": [
+        {
+          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset9-cand.pdf",
+          "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+          "evidence": "official",
+          "sourceId": "k9-candidates-gazette"
+        }
+      ]
+    },
+    {
+      "id": "sequence-k21",
+      "electionId": "k21",
+      "effectiveDate": "2019-04-09",
+      "contestType": "knesset",
+      "type": "early-repeat-election",
+      "textEn": "One of five separate Knesset elections in 2019–2022, not a runoff. Each elected its own Knesset.",
+      "textHe": "אחת מחמש בחירות נפרדות לכנסת בשנים 2019–2022, ולא סיבוב שני. בכל אחת נבחרה כנסת חדשה.",
+      "source": {
+        "url": "https://www.gov.il/he/pages/election-committee-history",
+        "publisher": "Central Elections Committee",
+        "evidence": "official"
+      }
+    },
+    {
+      "id": "sequence-k22",
+      "electionId": "k22",
+      "effectiveDate": "2019-09-17",
+      "contestType": "knesset",
+      "type": "early-repeat-election",
+      "textEn": "One of five separate Knesset elections in 2019–2022, not a runoff. Each elected its own Knesset.",
+      "textHe": "אחת מחמש בחירות נפרדות לכנסת בשנים 2019–2022, ולא סיבוב שני. בכל אחת נבחרה כנסת חדשה.",
+      "source": {
+        "url": "https://www.gov.il/he/pages/election-committee-history",
+        "publisher": "Central Elections Committee",
+        "evidence": "official"
+      }
+    },
+    {
+      "id": "sequence-k23",
+      "electionId": "k23",
+      "effectiveDate": "2020-03-02",
+      "contestType": "knesset",
+      "type": "early-repeat-election",
+      "textEn": "One of five separate Knesset elections in 2019–2022, not a runoff. Each elected its own Knesset.",
+      "textHe": "אחת מחמש בחירות נפרדות לכנסת בשנים 2019–2022, ולא סיבוב שני. בכל אחת נבחרה כנסת חדשה.",
+      "source": {
+        "url": "https://www.gov.il/he/pages/election-committee-history",
+        "publisher": "Central Elections Committee",
+        "evidence": "official"
+      }
+    },
+    {
+      "id": "sequence-k24",
+      "electionId": "k24",
+      "effectiveDate": "2021-03-23",
+      "contestType": "knesset",
+      "type": "early-repeat-election",
+      "textEn": "One of five separate Knesset elections in 2019–2022, not a runoff. Each elected its own Knesset.",
+      "textHe": "אחת מחמש בחירות נפרדות לכנסת בשנים 2019–2022, ולא סיבוב שני. בכל אחת נבחרה כנסת חדשה.",
+      "source": {
+        "url": "https://www.gov.il/he/pages/election-committee-history",
+        "publisher": "Central Elections Committee",
+        "evidence": "official"
+      }
+    },
+    {
+      "id": "sequence-k25",
+      "electionId": "k25",
+      "effectiveDate": "2022-11-01",
+      "contestType": "knesset",
+      "type": "early-repeat-election",
+      "textEn": "One of five separate Knesset elections in 2019–2022, not a runoff. Each elected its own Knesset.",
+      "textHe": "אחת מחמש בחירות נפרדות לכנסת בשנים 2019–2022, ולא סיבוב שני. בכל אחת נבחרה כנסת חדשה.",
+      "source": {
+        "url": "https://www.gov.il/he/pages/election-committee-history",
+        "publisher": "Central Elections Committee",
+        "evidence": "official"
+      }
+    },
+    {
+      "id": "no-government-k21",
+      "electionId": "k21",
+      "effectiveDate": "2019-04-09",
+      "contestType": "knesset",
+      "type": "government-formation",
+      "textEn": "No new government was formed following this election.",
+      "textHe": "לא הוקמה ממשלה חדשה בעקבות בחירות אלה.",
+      "source": {
+        "url": "https://www.idi.org.il/media/18514/the-elections-in-israel-2019-2021.pdf",
+        "publisher": "Israel Democracy Institute",
+        "evidence": "secondary"
+      }
+    },
+    {
+      "id": "no-government-k22",
+      "electionId": "k22",
+      "effectiveDate": "2019-09-17",
+      "contestType": "knesset",
+      "type": "government-formation",
+      "textEn": "No new government was formed following this election.",
+      "textHe": "לא הוקמה ממשלה חדשה בעקבות בחירות אלה.",
+      "source": {
+        "url": "https://www.idi.org.il/media/18514/the-elections-in-israel-2019-2021.pdf",
+        "publisher": "Israel Democracy Institute",
+        "evidence": "secondary"
+      }
+    },
+    {
+      "id": "pending-gazette",
+      "electionId": "k26",
+      "effectiveDate": "2026-11-03",
+      "contestType": "knesset",
+      "type": "publication-status",
+      "textEn": "Final count published by the Central Elections Committee (result files of 3 Nov 2026). Final results are due to be gazetted in Reshumot by 4 Nov 2026 and may change until then.",
+      "textHe": "ספירה סופית שפרסמה ועדת הבחירות המרכזית (קבצי התוצאות מיום 3.11.2026). התוצאות הסופיות יפורסמו ברשומות עד 4.11.2026 ועד אז עשויות להשתנות.",
+      "source": {
+        "url": "https://media26.bechirot.gov.il/files/expb.csv",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-26",
+        "evidence": "official",
+        "sourceId": "k26-ballots-csv"
+      }
+    }
+  ],
+  "pmContests": [
+    {
+      "id": "pm1996",
+      "electionId": "k14",
+      "effectiveDate": "1996-05-29",
+      "contestType": "parallel-pm",
+      "candidates": [
+        {
+          "id": "netanyahu",
+          "nameEn": "Benjamin Netanyahu",
+          "nameHe": "בנימין נתניהו",
+          "status": "final",
+          "votes": {
+            "value": 1501023,
+            "source": {
+              "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
+              "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+              "evidence": "official",
+              "sourceId": "k14-results-gazette"
+            }
+          }
+        },
+        {
+          "id": "peres",
+          "nameEn": "Shimon Peres",
+          "nameHe": "שמעון פרס",
+          "status": "final",
+          "votes": {
+            "value": 1471566,
+            "source": {
+              "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
+              "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+              "evidence": "official",
+              "sourceId": "k14-results-gazette"
+            }
+          }
+        }
+      ],
+      "totals": {
+        "valid": {
+          "value": 2972589,
+          "source": {
+            "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
+            "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+            "evidence": "official",
+            "sourceId": "k14-results-gazette"
+          }
+        },
+        "invalid": {
+          "value": 148681,
+          "source": {
+            "url": "https://www.gov.il/en/pages/israeli-election-results-may-1996",
+            "publisher": "Ministry of Foreign Affairs",
+            "evidence": "official",
+            "verification": "report-only",
+            "sourceId": "pm-reviewed-transcription"
+          }
+        },
+        "cast": {
+          "value": 3121270,
+          "source": {
+            "url": "https://www.gov.il/en/pages/israeli-election-results-may-1996",
+            "publisher": "Ministry of Foreign Affairs",
+            "evidence": "official",
+            "verification": "report-only",
+            "sourceId": "pm-reviewed-transcription"
+          }
+        }
+      },
+      "source": {
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
+        "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+        "evidence": "official",
+        "sourceId": "k14-results-gazette"
+      }
+    },
+    {
+      "id": "pm1999",
+      "electionId": "k15",
+      "effectiveDate": "1999-05-17",
+      "contestType": "parallel-pm",
+      "candidates": [
+        {
+          "id": "barak",
+          "nameEn": "Ehud Barak",
+          "nameHe": "אהוד ברק",
+          "status": "final",
+          "votes": {
+            "value": 1791020,
+            "source": {
+              "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-results.pdf",
+              "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+              "evidence": "official",
+              "sourceId": "k15-results-gazette"
+            }
+          }
+        },
+        {
+          "id": "netanyahu",
+          "nameEn": "Benjamin Netanyahu",
+          "nameHe": "בנימין נתניהו",
+          "status": "final",
+          "votes": {
+            "value": 1402474,
+            "source": {
+              "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-results.pdf",
+              "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+              "evidence": "official",
+              "sourceId": "k15-results-gazette"
+            }
+          }
+        },
+        {
+          "id": "mordechai",
+          "nameEn": "Yitzhak Mordechai",
+          "nameHe": "יצחק מרדכי",
+          "status": "withdrawn",
+          "source": {
+            "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1999/",
+            "publisher": "Israel Democracy Institute",
+            "evidence": "secondary"
+          }
+        },
+        {
+          "id": "begin",
+          "nameEn": "Benny Begin",
+          "nameHe": "בני בגין",
+          "status": "withdrawn",
+          "source": {
+            "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1999/",
+            "publisher": "Israel Democracy Institute",
+            "evidence": "secondary"
+          }
+        },
+        {
+          "id": "bishara",
+          "nameEn": "Azmi Bishara",
+          "nameHe": "עזמי בשארה",
+          "status": "withdrawn",
+          "source": {
+            "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1999/",
+            "publisher": "Israel Democracy Institute",
+            "evidence": "secondary"
+          }
+        }
+      ],
+      "totals": {
+        "valid": {
+          "value": 3193494,
+          "source": {
+            "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-results.pdf",
+            "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+            "evidence": "official",
+            "sourceId": "k15-results-gazette"
+          }
+        },
+        "invalid": {
+          "value": 179458,
+          "source": {
+            "url": "https://www.idi.org.il/media/5026/%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9E%D7%91%D7%95%D7%90.pdf",
+            "publisher": "Israel Democracy Institute",
+            "evidence": "secondary",
+            "sourceId": "pm1999-idi-totals"
+          }
+        },
+        "cast": {
+          "value": 3372952,
+          "source": {
+            "url": "https://www.idi.org.il/media/5026/%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9E%D7%91%D7%95%D7%90.pdf",
+            "publisher": "Israel Democracy Institute",
+            "evidence": "secondary",
+            "sourceId": "pm1999-idi-totals"
+          }
+        }
+      },
+      "source": {
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-results.pdf",
+        "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+        "evidence": "official",
+        "sourceId": "k15-results-gazette"
+      }
+    },
+    {
+      "id": "pm2001",
+      "electionId": "k15",
+      "effectiveDate": "2001-02-06",
+      "contestType": "prime-minister-only",
+      "candidates": [
+        {
+          "id": "sharon",
+          "nameEn": "Ariel Sharon",
+          "nameHe": "אריאל שרון",
+          "status": "final",
+          "votes": {
+            "value": 1698077,
+            "source": {
+              "url": "https://olaw.org.il/yalkut/yalkut-4960.pdf",
+              "publisher": "CEC / Reshumot, YP 4960 p.1628 (official content on public mirror)",
+              "evidence": "official",
+              "sourceId": "pm2001-gazette"
+            }
+          }
+        },
+        {
+          "id": "barak",
+          "nameEn": "Ehud Barak",
+          "nameHe": "אהוד ברק",
+          "status": "final",
+          "votes": {
+            "value": 1023944,
+            "source": {
+              "url": "https://olaw.org.il/yalkut/yalkut-4960.pdf",
+              "publisher": "CEC / Reshumot, YP 4960 p.1628 (official content on public mirror)",
+              "evidence": "official",
+              "sourceId": "pm2001-gazette"
+            }
+          }
+        }
+      ],
+      "totals": {
+        "valid": {
+          "value": 2722021,
+          "source": {
+            "url": "https://olaw.org.il/yalkut/yalkut-4960.pdf",
+            "publisher": "CEC / Reshumot, YP 4960 p.1628 (official content on public mirror)",
+            "evidence": "official",
+            "sourceId": "pm2001-gazette"
+          }
+        },
+        "invalid": {
+          "value": 83917,
+          "source": {
+            "url": "https://olaw.org.il/yalkut/yalkut-4960.pdf",
+            "publisher": "CEC / Reshumot, YP 4960 p.1628 (official content on public mirror)",
+            "evidence": "official",
+            "sourceId": "pm2001-gazette"
+          }
+        },
+        "cast": {
+          "value": 2805938,
+          "source": {
+            "url": "https://olaw.org.il/yalkut/yalkut-4960.pdf",
+            "publisher": "CEC / Reshumot, YP 4960 p.1628 (official content on public mirror)",
+            "evidence": "official",
+            "sourceId": "pm2001-gazette"
+          }
+        }
+      },
+      "source": {
+        "url": "https://olaw.org.il/yalkut/yalkut-4960.pdf",
+        "publisher": "CEC / Reshumot, YP 4960 p.1628 (official content on public mirror)",
+        "evidence": "official",
+        "sourceId": "pm2001-gazette"
+      },
+      "noteEn": "Official gazette content retained from a public mirror; government-host availability is unverified.",
+      "noteHe": "תוכן רשמי של רשומות נשמר מאתר מראה ציבורי; הזמינות באתר ממשלתי לא אומתה."
+    }
+  ],
+  "ballotIndependence": {
+    "textEn": "PM and Knesset votes were separate ballots. Aggregate results do not identify individual split-ticket choices.",
+    "textHe": "ההצבעה לראש הממשלה ולכנסת נערכה בפתקים נפרדים. תוצאות מצרפיות אינן מזהות כיצד פיצלו מצביעים יחידים את בחירתם.",
+    "source": {
+      "url": "https://fs.knesset.gov.il/12/law/12_lsr_210707.PDF",
+      "publisher": "Basic Law: The Government (1992), §62",
+      "evidence": "official"
+    }
+  }
+}
