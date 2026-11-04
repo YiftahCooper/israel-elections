@@ -60,7 +60,7 @@ for (const lang of ['en','he']) for (const theme of ['light','dark']) for (const
     await page.screenshot({path:`.backup-scratch/wave-one/${lang}-${theme}-${phone ? 'phone' : 'desktop'}.png`,fullPage:false});
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
     await sheet.getByRole('button',{name:lang === 'he' ? 'מעט מתחת לחסימה' : 'Just below threshold',exact:true}).click();
-    await expect(sheet.locator('.crossing')).toContainText(lang === 'he' ? 'ירדה מתחת' : 'Fell below');
+    await expect(sheet.locator('.crossing')).toContainText(lang === 'he' ? 'מתחת לאחוז החסימה' : 'Below the threshold');
     await sheet.getByRole('button',{name:lang === 'he' ? 'מעבר אחוז החסימה' : 'Cross the threshold',exact:true}).click();
     await expect(sheet.locator('.crossing')).toContainText(lang === 'he' ? 'עברה את' : 'Passed the');
   });

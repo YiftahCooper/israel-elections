@@ -13,7 +13,7 @@ import { arcLayout, annularRegions } from '../layout.ts';
 import { download, isolate, signed } from '../format.ts';
 import { electionLabel } from '../electionLabel.ts';
 import { setState, useStore } from '../store.ts';
-import { Seg } from './ui.tsx';
+import { Info, Seg } from './ui.tsx';
 import { ChoicePicker } from './ChoicePicker.tsx';
 import { ResultPreview } from './ResultPreview.tsx';
 
@@ -252,7 +252,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
         </svg>
       </div>}
       {/* the key is needed only when there is something to compare; the reference is named once, under the small chamber */}
-      {hasChanges && <p className="small muted graphic-key">{L(`Outlined: seats gained since ${referenceLabel(labelReference,lang).name}. Dashed, in the small chamber: seats lost.`, `מתאר: מנדטים שנוספו מאז ${referenceLabel(labelReference,lang).name}. מקווקו, בכנסת הקטנה: מנדטים שאבדו.`)} <span tabIndex={0} className="comparison-info" aria-label={L('About these outlines','על המתארים')} title={L('Outlines compare list seat counts. Dashed outlines in the reference chamber show losses. They do not identify a seat or voter moving between lists. Dashed bars show the reference; neutral ink shows the difference.', 'המתארים משווים את מספר המנדטים של הרשימות. קווים מקווקווים בכנסת הקטנה מציינים אובדן. אין משמעות של מנדט או בוחר שעבר בין רשימות. מתארי העמודות המקווקווים מציינים את הבסיס; דיו ניטרלי מציין שינוי.')}>(i)</span></p>}
+      {hasChanges && <p className="small muted graphic-key">{L('Seat changes', 'שינויי מנדטים')} · {referenceLabel(labelReference,lang).name} <Info title={L('About these outlines','על המתארים')}>{L(`Outlined: seats gained since ${referenceLabel(labelReference,lang).name}. Dashed, in the small chamber: seats lost. Outlines compare list seat counts, not individual seats or voters moving between lists. Dashed bars show the reference; neutral ink shows the difference.`, `מתאר: מנדטים שנוספו מאז ${referenceLabel(labelReference,lang).name}. מקווקו, בכנסת הקטנה: מנדטים שאבדו. המתארים משווים את מספר המנדטים של הרשימות; אין משמעות של מנדט או בוחר שעבר בין רשימות. מתארי העמודות המקווקווים מציינים את הבסיס; דיו ניטרלי מציין שינוי.`)}</Info></p>}
       <GraphicChanges s={s} r={r} reference={reference} compact />
       {hover && hv && (
         <div className="tip" style={{ left: Math.max(0, hover.x - 100), top: Math.max(0, hover.y - 96) }}>

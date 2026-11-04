@@ -56,18 +56,18 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
   return (
     <div className="figures" data-valid-votes={fmtInt(r.totalValid)}>
       {noThreshold
-        ? <Fig id="threshold" open={open} onToggle={toggle} k={L('Threshold', 'אחוז החסימה')} v={L('None', 'אין')} d={L('no percentage threshold in this election', 'לא היה אחוז חסימה בבחירות אלה')} />
+        ? <Fig id="threshold" open={open} onToggle={toggle} k={L('Threshold', 'אחוז החסימה')} v={L('None', 'אין')} />
         : <Fig id="threshold" open={open} onToggle={toggle} k={L('Threshold', 'אחוז החסימה')} term="threshold" v={fmtInt(r.thresholdVotes)} d={`${thrPct}% ${L('of valid votes', 'מהכשרים')}`}>
             {expert && <div className="formula" style={{ marginBottom: 8 }}>⌈{thrPct}% × {fmtInt(r.totalValid)}⌉ = {fmtInt(r.thresholdVotes)}</div>}
             {near.length ? <table className="tbl"><thead><tr><th>{L('Lists near the threshold', 'רשימות סביב החסימה')}</th><th className="n">{L('Votes', 'קולות')}</th><th className="n">{L('Distance', 'מרחק')}</th></tr></thead>
               <tbody>{near.map(({ l }) => <tr key={l.id} ><td><button className="table-action" onClick={() => select(l.id)}>{listLabel(l, lang)}</button></td><td className="n">{fmtInt(l.votes)}</td><td className="n">{signed(l.votes - thr)}</td></tr>)}</tbody></table>
-              : <p className="small muted" style={{ margin: 0 }}>{L('No list is within reach of the threshold.', 'אין רשימה קרובה לאחוז החסימה.')}</p>}
+              : <p className="small muted" style={{ margin: 0 }}>{L('No lists nearby', 'אין רשימות קרובות')}</p>}
           </Fig>}
 
       {r.quota.num > 0n && (
         <Fig id="quota" open={open} onToggle={toggle} k={L('Votes per seat', 'קולות למנדט')} term="quota" v={fmtRat(r.quota, 0)} d={L('the general quota', 'המודד הכללי')}>
           <div className="formula">⌊{fmtInt(r.qualifyingVotes)} ÷ {s.rules.seats}⌋ = {r.quota.den === 1n ? fmtInt(r.quota.num) : fmtFrac(r.quota)}</div>
-          <p className="small" style={{ marginBottom: 0 }}>{L('The votes of the lists that passed the threshold, divided by the seats. It is not a price per extra seat: a further seat depends on every list’s remainder.', 'הקולות של הרשימות שעברו את החסימה, חלקי מספר המנדטים. אין זה "מחיר" למנדט נוסף: מנדט נוסף תלוי בעודפים של כל הרשימות.')}</p>
+          <p className="small" style={{ marginBottom: 0 }}><Info title={L('Quota calculation', 'חישוב המודד')}>{L('The votes of the lists that passed the threshold, divided by the seats. It is not a price per extra seat: a further seat depends on every list’s remainder.', 'הקולות של הרשימות שעברו את החסימה, חלקי מספר המנדטים. אין זה "מחיר" למנדט נוסף: מנדט נוסף תלוי בעודפים של כל הרשימות.')}</Info></p>
         </Fig>
       )}
 
@@ -81,25 +81,24 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
       <Fig id="turnout" open={open} onToggle={toggle} k={L('Turnout', 'שיעור ההצבעה')} term="turnout" v={fmtPct(cast, s.registered, 2)} d={fmtPct(cast, s.registered, 2) === fmtPct(ds.totals.votesCast, ds.totals.registered, 2) ? `${fmtInt(cast)} ${L('ballots cast', 'מצביעים')}` : `${referenceLabel(null, lang).name} ${fmtPct(ds.totals.votesCast, ds.totals.registered, 2)}`}>
         <div className="row">
           <label className="row small">{L('Set turnout to', 'קביעת שיעור ההצבעה ל-')}
-            <DecimalInput value={s.registered ? (cast / s.registered) * 100 : 0} digits={2} width={86} label={L('Turnout %', 'שיעור הצבעה %')} onCommit={(p) => dispatch({ type: 'setTurnout', pct: p })} />%</label>
-          {Math.abs(cast - ds.totals.votesCast) > 0 && s.registered === ds.totals.registered && <button className="btn small" onClick={() => dispatch({ type: 'setTurnout', pct: (ds.totals.votesCast / ds.totals.registered) * 100 })}>{L('Restore the historical turnout', 'שחזור שיעור ההצבעה בפועל')}</button>}
+            <DecimalInput value={s.registered ? (cast / s.registered) * 100 : 0} digits={2} width={86} label={L('Turnout %', 'שיעור הצבעה %')} onCommit={(p) => dispatch({ type: 'setTurnout', pct: p })} />% <Info title={L('Proportional turnout', 'הצבעה יחסית')}>{L('Every list, and the invalid ballots, grows or shrinks in proportion.', 'כל הרשימות, והקולות הפסולים, גדלים או קטנים באופן יחסי.')}</Info></label>
+          {Math.abs(cast - ds.totals.votesCast) > 0 && s.registered === ds.totals.registered && <button className="btn small" onClick={() => dispatch({ type: 'setTurnout', pct: (ds.totals.votesCast / ds.totals.registered) * 100 })}>{L('Restore turnout', 'שחזור ההצבעה')}</button>}
         </div>
-        <p className="small ink2" style={{ marginBottom: 6 }}>{L('Every list, and the invalid ballots, grows or shrinks in proportion.', 'כל הרשימות, והקולות הפסולים, גדלים או קטנים באופן יחסי.')}</p>
         <div className="kv small"><span>{L('Registered voters', 'בעלי זכות בחירה')}</span><span>{fmtInt(s.registered)}</span><span>{L('Ballots cast', 'מצביעים')}</span><span>{fmtInt(cast)}</span><span>{L('Invalid ballots', 'קולות פסולים')}</span><span>{fmtInt(s.invalid)}</span></div>
       </Fig>
 
       {standard && <Fig id="invalid" open={open} onToggle={toggle} k={L('Invalid ballots', 'קולות פסולים')} term="invalid-votes" v={<>{fmtInt(s.invalid)}<EditMarker s={s} path={['invalid']} /></>} d={`${fmtPct(s.invalid, cast, digits)} ${L('of ballots cast', 'מהמצביעים')}`}>
         {/* the valid votes are the complement of this card, so they are its breakdown rather than a card beside it */}
-        <p className="small" style={{ margin: 0 }}>{L('Ballots the polling committees disqualified. They count towards turnout but not towards the threshold or the seats.', 'פתקים שוועדות הקלפי פסלו. הם נספרים בשיעור ההצבעה אך לא באחוז החסימה ובמנדטים.')}{s.invalid !== ds.totals.invalid && ` ${referenceLabel(null, lang).name}: ${fmtInt(ds.totals.invalid)}.`}</p>
+        <p className="small" style={{ margin: 0 }}><Info title={L('Invalid ballots', 'קולות פסולים')}>{L('Ballots the polling committees disqualified. They count towards turnout but not towards the threshold or the seats.', 'פתקים שוועדות הקלפי פסלו. הם נספרים בשיעור ההצבעה אך לא באחוז החסימה ובמנדטים.')}</Info>{s.invalid !== ds.totals.invalid && ` ${referenceLabel(null, lang).name}: ${fmtInt(ds.totals.invalid)}.`}</p>
         <div className="kv small"><span>{L('Ballots cast', 'מצביעים')}</span><span>{fmtInt(cast)}</span><span>{L('Invalid ballots', 'קולות פסולים')}</span><span>{fmtInt(s.invalid)}</span><span><b>{L('Valid votes', 'קולות כשרים')}</b></span><span><b>{fmtInt(r.totalValid)}</b></span></div>
       </Fig>}
       {expert && <Fig id="qualifying" open={open} onToggle={toggle} k={L('Qualifying votes', 'קולות משתתפים')} term="qualifying" v={fmtInt(r.qualifyingVotes)} d={`${fmtPct(Number(r.qualifyingVotes), Number(r.totalValid), digits)} ${L('of valid', 'מהכשרים')}`}>
-        <p className="small" style={{ margin: 0 }}>{L(`The votes of the ${r.lists.filter((x) => x.qualified).length} lists that passed the threshold; only these share the seats. ${fmtInt(r.unrepresentedVotes)} valid votes went to lists that did not.`, `הקולות של ${r.lists.filter((x) => x.qualified).length} הרשימות שעברו את החסימה; רק הן מתחלקות במנדטים. ${fmtInt(r.unrepresentedVotes)} קולות כשרים ניתנו לרשימות שלא עברו.`)}</p>
+        <p className="small" style={{ margin: 0 }}>{L(`${r.lists.filter(x => x.qualified).length} qualifying lists`, `${r.lists.filter(x => x.qualified).length} רשימות משתתפות`)} <Info title={L('Qualifying votes', 'קולות משתתפים')}>{L(`The votes of the ${r.lists.filter((x) => x.qualified).length} lists that passed the threshold; only these share the seats. ${fmtInt(r.unrepresentedVotes)} valid votes went to lists that did not.`, `הקולות של ${r.lists.filter((x) => x.qualified).length} הרשימות שעברו את החסימה; רק הן מתחלקות במנדטים. ${fmtInt(r.unrepresentedVotes)} קולות כשרים ניתנו לרשימות שלא עברו.`)}</Info></p>
       </Fig>}
       {expert && (
         <Fig id="stages" open={open} onToggle={toggle} k={L('Seats: quota + remainder', 'מנדטים: מודד + עודפים')} term={method.term} v={`${r.initialSeatsTotal} + ${r.remainderSeatsTotal}`} d={L(`${r.remainderSeatsTotal} by ${method.en}`, `${r.remainderSeatsTotal} ב${method.he}`)}>
           <p className="small" style={{ margin: '0 0 6px' }}>{L(`${r.initialSeatsTotal} seats went by whole quotas; the remaining ${r.remainderSeatsTotal} by ${method.en}.`, `${r.initialSeatsTotal} מנדטים חולקו במודדים שלמים; ${r.remainderSeatsTotal} הנותרים ב${method.he}.`)}</p>
-          <button className="btn small" onClick={() => setState({ tool: 'walk' })}>{L('Step through the allocation', 'מעבר צעד אחר צעד על החלוקה')}</button>
+          <button className="btn small" onClick={() => setState({ tool: 'walk' })}>{L('Allocation steps', 'שלבי החלוקה')}</button>
         </Fig>
       )}
       {(standardControl || expertControl) && <div className="figures-more">{standardControl}{expertControl}</div>}

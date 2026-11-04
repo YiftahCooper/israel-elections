@@ -58,6 +58,8 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
     return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', onDown); };
   }, [menu]);
   const [shareUrl, setShareUrl] = useState('');
+  // A link describes one snapshot; never offer an older snapshot after an edit.
+  useEffect(() => setShareUrl(''), [s]);
 
   const exportCsv = () => {
     if (!s || !r || !baseR) return;
@@ -92,15 +94,15 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
             <button className="btn small" onClick={() => { if (saveCurrent(getState().scenario?.name || undefined)) toast('info', L('Saved in this browser.', 'נשמר בדפדפן זה.')); setMenu(false); }} disabled={!s}><Save className="icon sm" aria-hidden />{L('Save in this browser', 'שמירה בדפדפן')}</button>
             <button className="btn small" onClick={async () => {
               const url = await shareLink(); setShareUrl(url);
-              try { await navigator.clipboard.writeText(url); toast('info', L(`Share link copied (${url.length} characters).`, `קישור השיתוף הועתק (${url.length} תווים).`)); }
+              try { await navigator.clipboard.writeText(url); toast('info', L('Share link copied', 'קישור השיתוף הועתק')); }
               catch { toast('info', L('Copy the link from the field below.', 'העתיקו את הקישור מהשדה שלמטה.')); }
             }}><Link2 className="icon sm" aria-hidden />{L('Copy a share link', 'העתקת קישור שיתוף')}</button>
             {shareUrl && <input type="text" readOnly value={shareUrl} aria-label={L('Share link', 'קישור שיתוף')} onFocus={(e) => e.target.select()} style={{ width: '100%' }} />}
-            <button className="btn small" onClick={() => { duplicateCurrent(); toast('info', L('Saved as a copy in this browser.', 'נשמר עותק בדפדפן זה.')); setMenu(false); }}><Copy className="icon sm" aria-hidden />{L('Duplicate as a new scenario', 'שכפול לתרחיש חדש')}</button>
+            <button className="btn small" onClick={() => { duplicateCurrent(); toast('info', L('Saved as a copy in this browser.', 'נשמר עותק בדפדפן זה.')); setMenu(false); }}><Copy className="icon sm" aria-hidden />{L('Duplicate scenario', 'שכפול תרחיש')}</button>
             <button className="btn small" onClick={() => { if (s && ds) download(`${s.electionId}-${fileName(s.name)}.json`, JSON.stringify({ ...s, ...exportAnnotations(s, lang), datasetBuiltAt: ds.buildInfo.builtAt }, null, 1), 'application/json'); setMenu(false); }}><Download className="icon sm" aria-hidden />{L('Export scenario (JSON)', 'ייצוא תרחיש (JSON)')}</button>
             <button className="btn small" onClick={() => fileRef.current?.click()}><Upload className="icon sm" aria-hidden />{L('Import scenario (JSON)', 'ייבוא תרחיש (JSON)')}</button>
             <button className="btn small" onClick={() => { exportCsv(); setMenu(false); }}><Table2 className="icon sm" aria-hidden />{L('Export results table (CSV)', 'ייצוא טבלת תוצאות (CSV)')}</button>
-            <button className="btn small" onClick={() => { setState({ tool: 'scenarios' }); setMenu(false); }}><FolderOpen className="icon sm" aria-hidden />{L('All scenarios: names, descriptions, results', 'כל התרחישים: שמות, תיאורים ותוצאות')}</button>
+            <button className="btn small" onClick={() => { setState({ tool: 'scenarios' }); setMenu(false); }}><FolderOpen className="icon sm" aria-hidden />{L('All scenarios', 'כל התרחישים')}</button>
             <div className="section-title" style={{ margin: '8px 0 2px' }}>{L('Saved in this browser', 'שמורים בדפדפן')}</div>
             {saved.length === 0 && <p className="small muted" style={{ margin: 0 }}>{L('Nothing saved yet.', 'אין עדיין.')}</p>}
             {saved.map((x) => (

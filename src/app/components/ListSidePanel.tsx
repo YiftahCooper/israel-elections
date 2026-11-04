@@ -58,7 +58,7 @@ export function ListSidePanel({ s, r, ds, base, baseR, listId }: { s: Scenario; 
         <button className="btn ghost icon-only" aria-label={L('Close', 'סגירה')} onClick={() => setState({ selectedListId: null })}><X className="icon" aria-hidden /></button>
       </header>
       <div className="phone-result-strip" role="status">
-        <span><b>{lr.seats}</b> {L('seats', 'מנדטים')} · <bdi>{was === null ? '—' : signed(d)}</bdi> {lang === 'en' ? baseLabel.since.replace(/^Since /, 'since ') : baseLabel.since} · {L(`${changed} lists changed seats`, `${changed} רשימות שינו מנדטים`)}</span>
+        <span>{d !== 0 && <><bdi dir="ltr">{signed(d)}</bdi> </>}{lang === 'en' ? baseLabel.since.replace(/^Since /, 'since ') : baseLabel.since}{changed > 0 && <> · {L(`${changed} lists changed seats`, `${changed} רשימות שינו מנדטים`)}</>}</span>
         <span className="tiny muted">{groupingLabel(s, lang)}</span>
         {blocs.map(b => <span key={b.id}>{lang === 'he' ? b.nameHe : b.nameEn}: <Majority n={pieces.filter(p => p.bloc === b.id).reduce((n,p) => n+p.n,0)} total={s.rules.seats} /></span>)}
         {!assignedBlocs.length && <span>{L('No bloc assigned', 'ללא שיוך לגוש')}</span>}

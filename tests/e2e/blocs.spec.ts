@@ -80,7 +80,10 @@ test('a joint list can run as separate lists, with the vote shares stated as an 
   const details = page.getByRole('region', { name: 'List details' });
   await expect(details.getByText('Parties on this joint list')).toBeVisible();
   await details.getByRole('button', { name: 'What if they had run separately?' }).click();
-  await expect(details.getByText(/the shares below are an assumption/)).toBeVisible();
+  await expect(details.locator('.joint-split > p').first()).toBeVisible();
+  await details.getByRole('button', { name: 'Split assumptions', exact: true }).click();
+  await expect(details.getByRole('tooltip')).toContainText('the shares below are an assumption');
+  await details.getByRole('button', { name: 'Split assumptions', exact: true }).click();
   await details.getByRole('button', { name: 'Run as 2 separate lists' }).click();
   await expect(listRow(page, 'Agudat Yisrael')).toBeVisible();
   await expect(listRow(page, 'Degel HaTorah').locator('.lb-seats b')).toHaveText('0'); // below the threshold on its own

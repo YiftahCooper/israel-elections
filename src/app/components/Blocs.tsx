@@ -52,8 +52,7 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
   return (
     <section className="panel blocs" aria-label={L('Seats by bloc', 'מנדטים לפי גוש')}>
       <div className="blocs-head">
-        <h2 style={{ margin: 0 }}>{L('Blocs', 'גושים')} <Info term="bloc" /> <EditMarker s={s} path={['customGroupingName']} /></h2>
-        <span className="note">{kindNote}</span>
+        <h2 style={{ margin: 0 }}>{L('Blocs', 'גושים')} <Info term="bloc">{kindNote}</Info> <EditMarker s={s} path={['customGroupingName']} /></h2>
         <button className="btn small" aria-expanded={!!panel} onClick={() => (panel ? setState({ blocPanel: null }) : openPanel(groups[0]?.key ?? NONE))}>
           <Pencil className="icon sm" aria-hidden />{s.blocs.length ? L('Edit blocs', 'עריכת גושים') : L('Group seats into blocs', 'חלוקת המושבים לגושים')}</button>
       </div>
