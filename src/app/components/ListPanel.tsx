@@ -69,7 +69,7 @@ export function ListPanel({ s, r, ds, base, baseR }: { s: Scenario; r: Allocatio
   return (
     <section className="panel" aria-label={L('List details', 'פרטי רשימה')}>
       <header>
-        <Slip letters={l.letters} color={l.color} size="lg" />
+        <Slip letters={l.letters} color={l.color} size="lg" logo={l.logo} />
         <div style={{ minWidth: 0 }}>
           <h2 style={{ fontSize: 17 }}>{listLabel(l, lang)}</h2>
           <div className="small ink2" lang="he">{l.nameHe}</div>

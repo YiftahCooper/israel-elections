@@ -196,6 +196,18 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
         <p className="small muted">{L('List colours, short and English names, and blocs are assigned by this application for legibility; they are not official.', 'צבעי הרשימות, השמות המקוצרים והאנגליים והגושים נקבעו ביישום זה לנוחות; אינם רשמיים.')}</p>
       </div>
       <div>
+        {(() => {
+          // logos are shown under their own licences; CC BY-SA requires this credit with the images
+          const logos = ds.lists.flatMap((l) => [...(l.logo ? [{ name: lang === 'he' ? l.shortHe : l.shortEn ?? l.shortHe, logo: l.logo }] : []),
+            ...(l.parties ?? []).filter((p) => p.logo).map((p) => ({ name: lang === 'he' ? p.nameHe : p.nameEn, logo: p.logo! }))]);
+          return logos.length ? <>
+            <h3>{L('Party logos', 'סמלי המפלגות')}</h3>
+            <p className="small ink2">{L('Logos as used at this election, from Wikimedia Commons, each under its own licence (not the app’s MIT licence).', 'הסמלים כפי שהיו בשימוש בבחירות אלה, מוויקישיתוף, כל אחד ברישיון שלו (לא ברישיון MIT של היישום).')}</p>
+            <ul className="small" style={{ paddingInlineStart: 18 }}>
+              {logos.map((x, i) => <li key={i}><b>{x.name}</b>: <a href={x.logo.sourceUrl} target="_blank" rel="noreferrer">{x.logo.attribution}</a> · {x.logo.licence}</li>)}
+            </ul>
+          </> : null;
+        })()}
         <h3>{L('Glossary', 'מונחים')}</h3>
         <dl className="small">{GLOSSARY.map((g) => <div key={g.id} id={`term-${g.id}`} style={{ marginBottom: 10 }}><dt><b>{lang === 'he' ? g.nameHe : g.nameEn}</b>{lang === 'he' ? '' : <span className="muted"> · {g.nameHe}</span>}</dt><dd style={{ margin: 0 }}>{lang === 'he' ? g.defHe : g.defEn}<br /><GlossaryLink g={g} lang={lang} /></dd></div>)}</dl>
         <h3>{L('Method and limits', 'שיטה ומגבלות')}</h3>

@@ -15,6 +15,7 @@ jobs:
       - run: npx tsc -p tsconfig.json --noEmit
       - run: node scripts/build-datasets.ts   # rebuilds from data/raw and fails on any inconsistency
       - run: node scripts/check-colours.ts    # neighbouring seat-winning lists stay distinguishable
+      - run: python3 -I scripts/validate-party-logos.py   # hosted logos: licence, hash and safe SVG
       - run: npm test
       - run: npm run build
       - run: npx playwright install --with-deps chromium

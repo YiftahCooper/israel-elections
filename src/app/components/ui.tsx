@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
 import { GLOSSARY, useL, useLang, type GlossaryTerm } from '../i18n.ts';
+import type { LogoRef } from '../../data/schema.ts';
 
 /** Accessible info popover: opens on hover, focus or click; Escape closes. */
 export function Info({ title, children, term }: { title?: string; children?: ReactNode; term?: string }) {
@@ -45,9 +46,19 @@ export function Info({ title, children, term }: { title?: string; children?: Rea
   );
 }
 
-export function Slip({ letters, color, size }: { letters: string; color: string; size?: 'sm' | 'lg' }) {
+export function Slip({ letters, color, size, logo }: { letters: string; color: string; size?: 'sm' | 'lg'; logo?: LogoRef }) {
   const lang = useLang();
-  return <span className={`slip ${size ?? ''}`} style={{ ['--c' as string]: color }} aria-label={`${lang === 'he' ? 'אותיות הפתק' : 'ballot letters'} ${letters}`} lang="he" dir="rtl">{letters || '—'}</span>;
+  const label = `${lang === 'he' ? 'אותיות הפתק' : 'ballot letters'} ${letters}`;
+  // the logo the list used at this election, when a freely licensed copy is held; the ballot letters stay
+  // as its accessible name and a small caption, and the credit travels with the image
+  if (logo) return (
+    <span className={`slip logo ${size ?? ''} ${logo.background === 'dark' ? 'on-dark' : ''}`} style={{ ['--c' as string]: color }} aria-label={label}
+      title={`${logo.attribution} · ${logo.licence}`}>
+      <img src={logo.file} alt="" loading="lazy" decoding="async" />
+      <span className="slip-letters" lang="he" dir="rtl" aria-hidden>{letters}</span>
+    </span>
+  );
+  return <span className={`slip ${size ?? ''}`} style={{ ['--c' as string]: color }} aria-label={label} lang="he" dir="rtl">{letters || '—'}</span>;
 }
 
 export function Seg<T extends string>({ value, options, onChange, label }: { value: T; options: { v: T; label: string }[]; onChange: (v: T) => void; label: string }) {

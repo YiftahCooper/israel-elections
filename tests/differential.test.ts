@@ -15,7 +15,8 @@
 // fields switched off, the code gives the earlier digest. And again when the build merged data/meta
 // (party colours, constituent parties, bloc schemes): the old code gives the same digest on the same data.
 // Model and validation were re-recorded for decision 0087 step 2: scenarios now carry bloc schemes and party
-// blocs and start from the default scheme (allocation, analysis and rules digests unchanged).
+// blocs and start from the default scheme (allocation, analysis and rules digests unchanged). Model
+// re-recorded again for the 1973 party ranks and when lists gained their election logos.
 //
 // A changed digest means some output changed. Find the first differing case with
 // tests/differential-compare.ts; update a digest only for a reviewed, intended output change.
@@ -31,7 +32,7 @@ const EXPECTED: Record<Family, string> = {
   allocation: 'aba4d7b5256328d6a1db6591b83369cb066c5c6f0ecb2cc369209b9ee2a7eacf',
   analysis: 'f04635df61b1ca12d56e177f0b249a60ed8056c24b2a003f4a7791f161390ee2',
   // Model digest re-recorded for the 1973 party ranks.
-  model: '33240c001aedd631301413e7636c4c980041e29b59a5c3d3682a60bc4df9f5dc',
+  model: '10848d01b47ae765114d8fc49c636e842201168cf31243ee6979038e7061b74e',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

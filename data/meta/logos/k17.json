@@ -2,18 +2,20 @@
   "electionId": "k17",
   "logos": [
     {
-      "file": null,
+      "file": "logos/national-union-nrp-2006.png",
       "sourceUrl": "https://commons.wikimedia.org/wiki/File:NatUnionMafdal.png",
       "licence": "Public domain (PD-textlogo)",
       "attribution": "גיל יוחנן; File:NatUnionMafdal.png; Public domain (PD-textlogo). Resized to at most 256 px; converted to PNG where necessary.",
-      "hosted": false,
+      "hosted": true,
       "inUseEvidence": "Commons identifies the joint National Union–NRP campaign logo but mistypes the year as “200d”. Its cited Ynet campaign-launch article was retrieved directly: title האיחוד הלאומי-מפדל: הימין שלנו יהודי; publication metadata 21 February 2006. Together these identify the 2006 election; visual tracing remains community evidence. Asset download returned HTTP 429 (Retry-After: 600); no local image is provided.",
       "confidence": "medium",
       "letters": "טב",
       "evidenceId": "commons-83570887",
       "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ee/NatUnionMafdal.png",
-      "status": "download-unavailable",
-      "suggestedFile": "logos/national-union-nrp-2006.png"
+      "status": "verified",
+      "sha256": "dd0a68bec6da88d5bde4f53fdedc390f40251d16a9a64c3e5b8318e5396bffcc",
+      "originalSha256": "6083447e913ef6c18ac56089bea7ad3c8fd0be7248c27ec3277322e7f312ec2f",
+      "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas."
     },
     {
       "file": "logos/shinui-2006.png",

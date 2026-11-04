@@ -55,7 +55,7 @@ export function PartyCards({ s, r, base, baseR }: { s: Scenario; r: AllocationRe
               // on narrow screens the details panel is elsewhere on the page: bring it into view
               if (next && window.innerWidth <= 1180) requestAnimationFrame(() => document.getElementById('detail-col')?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }));
             }}>
-              <Slip letters={l.letters} color={l.color} />
+              <Slip letters={l.letters} color={l.color} logo={l.logo} />
               <div style={{ minWidth: 0 }}>
                 <div className="name" title={l.nameHe}>{listLabel(l, lang)}</div>
                 <div className="meta">
