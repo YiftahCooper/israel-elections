@@ -96,6 +96,9 @@ export interface Scenario {
   partyBlocs?: Record<string, string | null>;
   /** bloc of an individual candidate, overriding party and list */
   candidateBlocs?: Record<string, string | null>;
+  /** joint lists whose Knesset faction has split into its constituent parties after the election: seats stay
+   *  with the list in the allocation; each elected member counts for their own party (decision 0091) */
+  factionSplits?: string[];
   lotteryWinners: Record<string, string>;
   log: ChangeEntry[];
 }
@@ -123,6 +126,8 @@ export type Action =
   | { type: 'applyBlocScheme'; schemeId: string }
   /** inherit: drop the party's own bloc so its seats follow its list again */
   | { type: 'setPartyBloc'; partyId: string; bloc: string | null; inherit?: boolean }
+  /** a joint list's faction splits into its parties after the election (or rejoins); votes and seats do not change */
+  | { type: 'setFactionSplit'; listId: string; split: boolean }
   | { type: 'setLottery'; key: string; winner: string | null }
   /** restores a list from the historical dataset (`base` is only a fallback for logs made before v2) */
   | { type: 'resetList'; listId: string; keepVotes?: boolean; base?: SimList | null }
@@ -310,6 +315,7 @@ const actionFields: Record<Action['type'], Check> = {
   setRules: shape({ patch: partial(ruleFields) }), setMode: shape({ mode: oneOf('historical', 'experimental') }),
   setTotals: shape({ registered: optional(whole), invalid: optional(whole) }), setBlocs: shape({ blocs: array(bloc) }), applyBlocScheme: shape({ schemeId: string }),
   setPartyBloc: shape({ partyId: string, bloc: nullable(string), inherit: optional(boolean) }),
+  setFactionSplit: shape({ listId: string, split: boolean }),
   setLottery: shape({ key: string, winner: nullable(string) }),
   resetList: shape({ listId: string, keepVotes: optional(boolean), base: optional(nullable(list)) }),
   resetVotes: shape({ listId: string }), resetCandidates: shape({ listId: string }), rename: shape({ name: string }),
@@ -342,6 +348,7 @@ export function validateScenario(x: unknown): string[] {
   const blocIds = new Set<string>();
   if (!optional(array(blocScheme))(s.blocSchemes) || !optional(nullable(string))(s.blocSchemeId)
     || !optional(stringMap(nullable(string)))(s.partyBlocs) || !optional(stringMap(nullable(string)))(s.candidateBlocs)) e.push('invalid bloc schemes');
+  if (!optional(uniqueStrings)(s.factionSplits)) e.push('invalid faction splits');
   if (!Array.isArray(s.blocs)) e.push('missing blocs');
   else for (const b of s.blocs) {
     if (!record(b) || !bloc(b)) { e.push('invalid bloc'); continue; }

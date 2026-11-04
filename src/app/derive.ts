@@ -150,3 +150,30 @@ export function blocPieces(s: Scenario, r: AllocationResult): BlocPiece[] {
   const rank = (b: string | null) => { const i = s.blocs.findIndex((x) => x.id === b); return i < 0 ? s.blocs.length : i; };
   return pieces.map((p, i) => ({ p, i })).sort((a, b) => rank(a.p.bloc) - rank(b.p.bloc) || a.i - b.i).map(({ p }) => p);
 }
+
+/** Who holds seats in the Knesset as factions: one entry per list, except a joint list whose faction has split
+ *  (Scenario.factionSplits), which counts as its parties, each with the elected members recorded for it. Members
+ *  whose party is not recorded stay with the list. Votes and the allocation are untouched (decision 0091). */
+export interface SeatHolder {
+  key: string; listId: string; partyId: string | null;
+  nameHe: string; nameEn: string | null; color: string; logo?: SimList['logo']; seats: number; bloc: string | null;
+}
+export function seatHolders(s: Scenario, r: AllocationResult): SeatHolder[] {
+  const split = new Set(s.factionSplits ?? []);
+  const out: SeatHolder[] = [];
+  for (const l of s.lists) {
+    const seats = r.lists.find((x) => x.id === l.id)?.seats ?? 0;
+    const whole: SeatHolder = { key: l.id, listId: l.id, partyId: null, nameHe: l.shortHe, nameEn: l.shortEn, color: l.color, logo: l.logo, seats, bloc: l.bloc };
+    if (!split.has(l.id) || (l.parties?.length ?? 0) < 2) { out.push(whole); continue; }
+    const elected = electedOf(l, seats);
+    let rest = seats;
+    for (const p of l.parties!) {
+      const n = elected.filter((c) => c.partyId === p.id).length;
+      rest -= n;
+      const bloc = s.partyBlocs && p.id in s.partyBlocs ? s.partyBlocs[p.id] : l.bloc;
+      out.push({ key: `${l.id}:${p.id}`, listId: l.id, partyId: p.id, nameHe: p.nameHe, nameEn: p.nameEn, color: p.color ?? l.color, logo: p.logo, seats: n, bloc });
+    }
+    if (rest > 0) out.push({ ...whole, key: `${l.id}:rest`, seats: rest });
+  }
+  return out;
+}

@@ -290,6 +290,13 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       s = { ...s, blocSchemeId: s.blocSchemes ? null : s.blocSchemeId, partyBlocs };
       break;
     }
+    case 'setFactionSplit': {
+      const l = listById(s, action.listId);
+      need((l.parties?.length ?? 0) >= 2, 'not-joint', 'Only a joint list of several parties can split into factions.');
+      const rest = (s.factionSplits ?? []).filter((id) => id !== l.id);
+      s = { ...s, factionSplits: action.split ? [...rest, l.id] : rest };
+      break;
+    }
     case 'setLottery': {
       const lw = { ...s.lotteryWinners };
       if (action.winner) lw[action.key] = action.winner; else delete lw[action.key];

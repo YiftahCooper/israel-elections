@@ -73,6 +73,29 @@ official sources, in Hebrew and English, at three levels of depth.
 4. Every edit is reversible and explains its consequence before or as it happens.
 5. Neutrality: blocs, colours and wording never favour a party or camp *(inferred)*.
 
+## Interaction Principles
+
+Stated by the owner on 4 November 2026 as general rules drawn from specific complaints. Every screen is checked
+against all of them, not only the example that prompted each.
+
+1. **Every visible thing is its own control.** A figure, bar, bloc, seat or label that summarises something opens
+   that something when clicked, in place, directly beneath or beside it (votes that won no seat → the lists that
+   lost them, with votes and share). No separate panel to go and find.
+2. **State is shown as state.** On/off is a switch, a choice among options is a selector showing the current
+   option; never a verb button ("Switch off") or a remove-then-add sequence to change a value.
+3. **Fewest steps for real tasks.** A common action takes one interaction from where the user is looking.
+4. **Everything is findable by what it does.** Tools are signposted by task in plain words; levels hide depth,
+   never the existence of a feature.
+5. **Labels belong to their context.** A word appears only where it means something (a bloc name never leaks from
+   another grouping); every term can be explained in place.
+6. **Reality first, then what-ifs.** Real events (a joint list's faction splitting after the election) are direct
+   actions; counterfactuals are offered beside them and labelled as such.
+7. **Every party is recognisable.** Its own logo as used at that election, its colour and its name, also after it
+   is split from a joint list.
+8. **Groupings are shown as soft regions.** Blocs are pale tinted areas behind their members, not extra bars.
+9. **Craft is checked, not assumed.** Alignment, centring, spacing and wrapping are verified at real sizes in both
+   languages, both themes and every level.
+
 ## Accessibility & Inclusion
 
 WCAG 2.2 AA as the target: keyboard-complete flows, touch-reachable controls on phones, sufficient contrast in

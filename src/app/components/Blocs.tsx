@@ -64,7 +64,7 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
       <p className="tiny muted" style={{ margin: '4px 0 6px' }}>{kindNote}</p>
       <div className="blocbar" role="img" aria-label={groups.map((g) => `${g.label} ${g.n}`).join(', ')}>
         {groups.map((g) => g.n > 0 && (
-          <div key={g.id ?? 'none'} className="blocbar-group" style={{ flexBasis: `${(g.n / total) * 100}%` }} title={`${g.label}: ${g.n}`}>
+          <div key={g.id === null ? '\0no-bloc' : `bloc:${g.id}`} className="blocbar-group" style={{ flexBasis: `${(g.n / total) * 100}%` }} title={`${g.label}: ${g.n}`}>
             <div className="blocbar-bloc" style={{ background: g.color }} />
             <div className="blocbar-pieces">
               {g.pieces.map((p, i) => <div key={i} style={{ flexGrow: p.n, background: p.color }} title={`${partyName(p.listId, p.partyId) ?? listName(p.listId)}: ${p.n}`} />)}
@@ -75,7 +75,7 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
       </div>
       <div className="legend" style={{ marginTop: 6 }}>
         {groups.map((g) => (
-          <span key={g.id ?? 'none'} className="row" style={{ gap: 5 }}>
+          <span key={g.id === null ? '\0no-bloc' : `bloc:${g.id}`} className="row" style={{ gap: 5 }}>
             <span className="swatch" style={{ background: g.color }} />{g.label} <b className="tabnum">{g.n}</b>{g.n >= majority && <span className="chip ok">{L('majority', 'רוב')}</span>}
           </span>
         ))}
