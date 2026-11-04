@@ -39,7 +39,9 @@ const EXPECTED: Record<Family, string> = {
   // Removing those fields/logo and restoring HEAD timestamps reproduces the previous model digest.
   // Live 2026 campaign continuation: new list/constituent logo refs and k26 builtAt only.
   // Restoring HEAD's k26 dataset reproduces all five previous digests; non-logo fields compare equal.
-  model: 'bf90d94a7fab09a9ba7e62eded247acec1346fb5b23aebdfde2267ab79e9c175',
+  // Decision 0093: only links and builtAt differ in the 26 datasets; current model on HEAD
+  // datasets reproduces bf90d94a..., and the other four digests are unchanged.
+  model: 'ba6d9de9556b611ed129a52e8474c2ec8ebf9cca464ab0f0edbde0df9fbf2262',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

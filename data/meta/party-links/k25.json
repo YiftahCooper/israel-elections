@@ -1,0 +1,746 @@
+{
+  "electionId": "k25",
+  "reviewedAt": "2026-11-04",
+  "lists": {
+    "25-מחל": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93",
+        "titleHe": "הליכוד",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "25-ט": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "הציונות הדתית — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-שס": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "ש״ס — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-ג": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%99%D7%94%D7%93%D7%95%D7%AA_%D7%94%D7%AA%D7%95%D7%A8%D7%94",
+        "titleHe": "יהדות התורה",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "25-פה": [
+      {
+        "kind": "partisan",
+        "url": "https://web.archive.org/web/20221001102401/https://yeshatid.org.il/",
+        "titleHe": "יש עתיד — אתר הבחירות בארכיון",
+        "publisher": "יש עתיד",
+        "sourceType": "party-site",
+        "archivedAt": "2022-10-01T10:24:01Z",
+        "confidence": "high"
+      },
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A9_%D7%A2%D7%AA%D7%99%D7%93",
+        "titleHe": "יש עתיד",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "25-אמת": [
+      {
+        "kind": "partisan",
+        "url": "https://www.idi.org.il/media/18506/מפלגת-העבודה.pdf",
+        "titleHe": "מפלגת העבודה — מצע 2022",
+        "publisher": "מפלגת העבודה (עותק באירוח המכון הישראלי לדמוקרטיה)",
+        "sourceType": "platform",
+        "confidence": "medium"
+      },
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA_%D7%94%D7%A2%D7%91%D7%95%D7%93%D7%94_%D7%94%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%D7%AA",
+        "titleHe": "מפלגת העבודה הישראלית",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "25-כן": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9E%D7%97%D7%A0%D7%94_%D7%94%D7%9E%D7%9E%D7%9C%D7%9B%D7%AA%D7%99",
+        "titleHe": "המחנה הממלכתי",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "25-ל": [
+      {
+        "kind": "partisan",
+        "url": "https://www.idi.org.il/media/18470/ישראל-ביתנו.pdf",
+        "titleHe": "ישראל ביתנו — מצע 2022",
+        "publisher": "ישראל ביתנו (עותק באירוח המכון הישראלי לדמוקרטיה)",
+        "sourceType": "platform",
+        "confidence": "medium"
+      },
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%91%D7%99%D7%AA%D7%A0%D7%95",
+        "titleHe": "ישראל ביתנו",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "25-עם": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%94%D7%A8%D7%A9%D7%99%D7%9E%D7%94_%D7%94%D7%A2%D7%A8%D7%91%D7%99%D7%AA_%D7%94%D7%9E%D7%90%D7%95%D7%97%D7%93%D7%AA",
+        "titleHe": "הרשימה הערבית המאוחדת",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "25-ום": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "חד״ש–תע״ל — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-מרצ": [
+      {
+        "kind": "partisan",
+        "url": "https://www.idi.org.il/media/18472/מרצ.pdf",
+        "titleHe": "מרצ — מצע 2022",
+        "publisher": "מרצ (עותק באירוח המכון הישראלי לדמוקרטיה)",
+        "sourceType": "platform",
+        "confidence": "medium"
+      },
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A8%D7%A6",
+        "titleHe": "מרצ",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "25-ד": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%91%D7%A8%D7%99%D7%AA_%D7%9C%D7%90%D7%95%D7%9E%D7%99%D7%AA_%D7%93%D7%9E%D7%95%D7%A7%D7%A8%D7%98%D7%99%D7%AA",
+        "titleHe": "ברית לאומית דמוקרטית",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "25-ב": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%99%D7%AA_%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99",
+        "titleHe": "הבית היהודי",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "25-אצ": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "חופש כלכלי — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-קץ": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "באומץ בשבילך — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-יז": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9E%D7%99%D7%9C%D7%95%D7%90%D7%99%D7%9E%D7%A0%D7%99%D7%A7%D7%99%D7%9D_%D7%95%D7%94%D7%9B%D7%9C%D7%9B%D7%9C%D7%99%D7%AA",
+        "titleHe": "המילואימניקים והכלכלית",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "25-צ": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "צעירים בוערים — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-ף": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "הפיראטים הכי טוב לדעתי אני רוצה להיות שם — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-ק": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "קול הסביבה והחי — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-ת": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "דעת טוב ורע וברית שבט אברהם-עלה ירוק ואוסרת אל איסלמיה — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-ני": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "נתיב - נחיה תמיד יחד בכבוד — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-קנ": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "כל קול קובע נועם קולמן ולירון עופרי לראשות הממשלה — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-נק": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "יש כיוון בראשות עמוס דב סילבר — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-י": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "ישראל חופשית דמוקרטית בראשות אלי אבידר — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-קך": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "סדר חדש - למען האזרחים הותיקים בישראל — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-נץ": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "העצמאים החדשים בראשות יורם מועלמי — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-ץ": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "מנהיגות חברתית — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-רז": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "רשימת שלושים/ארבעים בראשות סטלה ויינשטיין — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-ך": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "אני ואתה — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-ז": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "שחר כוח חברתי בראשות וג'די טאהר — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-קי": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "הלב היהודי בראשות אלי יוסף — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-יק": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "מפלגת הגוש התנ\"כי — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-נז": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "כבוד האדם, בראשות עו\"ד ארקדי פוגץ' — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-נר": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "\"אנחנו\" - בראשות עו\"ד מוש חוג'ה — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-זץ": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "צומת בראשות משה גרין דרכו של רפול — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-יץ": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "צו השעה — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-נף": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "מפלגת שמע בראשות נפתלי גולדמן — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-ינ": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "איחוד בני הברית - בראשות רב חובל בשארה שליאן — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-זך": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "קמ\"ה - קידום מעמד הפרט — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "25-זנ": [
+      {
+        "kind": "neutral",
+        "url": "https://votes25.bechirot.gov.il/nationalresults",
+        "titleHe": "כח להשפיע בראשות בני אלבז — הודעת התוצאות לכנסת 25",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-25",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ]
+  },
+  "parties": {
+    "tkuma": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%94%D7%90%D7%99%D7%97%D7%95%D7%93_%D7%94%D7%9C%D7%90%D7%95%D7%9E%D7%99%E2%80%93%D7%AA%D7%A7%D7%95%D7%9E%D7%94",
+        "titleHe": "האיחוד הלאומי–תקומה",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "otzma-yehudit": [
+      {
+        "kind": "neutral",
+        "url": "https://www.idi.org.il/policy/parties-and-elections/parties/otzma-yehudit/",
+        "titleHe": "עוצמה יהודית",
+        "publisher": "המכון הישראלי לדמוקרטיה",
+        "sourceType": "academic",
+        "confidence": "high"
+      }
+    ],
+    "noam": [],
+    "atid-ehad": [],
+    "eretz-yisrael-shelanu": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%90%D7%A8%D7%A5_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%A9%D7%9C%D7%A0%D7%95",
+        "titleHe": "ארץ ישראל שלנו",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "agudat-yisrael": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%90%D7%92%D7%95%D7%93%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+        "titleHe": "אגודת ישראל",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "degel-hatorah": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%93%D7%92%D7%9C_%D7%94%D7%AA%D7%95%D7%A8%D7%94",
+        "titleHe": "דגל התורה",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "israel-resilience": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%9B%D7%97%D7%95%D7%9C_%D7%9C%D7%91%D7%9F_%D7%97%D7%95%D7%A1%D7%9F_%D7%9C%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+        "titleHe": "כחול לבן חוסן לישראל",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "new-hope": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%AA%D7%A7%D7%95%D7%95%D7%94_%D7%97%D7%93%D7%A9%D7%94",
+        "titleHe": "תקווה חדשה",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "hadash": [
+      {
+        "kind": "partisan",
+        "url": "https://web.archive.org/web/20220902004451/http://hadash.org.il/",
+        "titleHe": "חד\"ש — אתר הבחירות בארכיון",
+        "publisher": "חד\"ש",
+        "sourceType": "party-site",
+        "archivedAt": "2022-09-02T00:44:51Z",
+        "confidence": "high"
+      },
+      {
+        "kind": "neutral",
+        "url": "https://www.idi.org.il/policy/parties-and-elections/parties/hadash/",
+        "titleHe": "חד\"ש",
+        "publisher": "המכון הישראלי לדמוקרטיה",
+        "sourceType": "academic",
+        "confidence": "high"
+      }
+    ],
+    "taal": [],
+    "new-right": [],
+    "jewish-home": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%99%D7%AA_%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99",
+        "titleHe": "הבית היהודי",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "religious-national-israeli": []
+  },
+  "gaps": {
+    "25-מחל": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-ט": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-שס": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-ג": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-כן": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-עם": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-ום": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-ד": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-ב": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-אצ": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-קץ": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-יז": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-צ": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-ף": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-ק": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-ת": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-ני": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-קנ": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-נק": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-י": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-קך": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-נץ": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-ץ": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-רז": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-ך": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-ז": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-קי": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-יק": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-נז": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-נר": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-זץ": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-יץ": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-נף": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-ינ": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-זך": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "25-זנ": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "tkuma": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "otzma-yehudit": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "noam": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; dictionary articles and joint-list sources excluded; further research required."
+    },
+    "atid-ehad": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; dictionary articles and joint-list sources excluded; further research required."
+    },
+    "eretz-yisrael-shelanu": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "agudat-yisrael": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "degel-hatorah": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "israel-resilience": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "new-hope": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "taal": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; dictionary articles and joint-list sources excluded; further research required."
+    },
+    "new-right": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; dictionary articles and joint-list sources excluded; further research required."
+    },
+    "jewish-home": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "religious-national-israeli": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; dictionary articles and joint-list sources excluded; further research required."
+    }
+  }
+}

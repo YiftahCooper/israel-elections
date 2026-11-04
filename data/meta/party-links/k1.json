@@ -1,0 +1,391 @@
+{
+  "electionId": "k1",
+  "reviewedAt": "2026-11-04",
+  "lists": {
+    "1-א": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%90%22%D7%99",
+        "titleHe": "מפא\"י",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "1-מ": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A4%22%D7%9D",
+        "titleHe": "מפ\"ם",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "1-ב": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%94%D7%97%D7%96%D7%99%D7%AA_%D7%94%D7%93%D7%AA%D7%99%D7%AA_%D7%94%D7%9E%D7%90%D7%95%D7%97%D7%93%D7%AA",
+        "titleHe": "החזית הדתית המאוחדת",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "1-ח": [
+      {
+        "kind": "neutral",
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset1-results.pdf",
+        "titleHe": "חרות — הודעת התוצאות לכנסת 1",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-1",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "1-צ": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%94%D7%A6%D7%99%D7%95%D7%A0%D7%99%D7%9D_%D7%94%D7%9B%D7%9C%D7%9C%D7%99%D7%99%D7%9D",
+        "titleHe": "הציונים הכלליים",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "1-פ": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9E%D7%A4%D7%9C%D7%92%D7%94_%D7%94%D7%A4%D7%A8%D7%95%D7%92%D7%A8%D7%A1%D7%99%D7%91%D7%99%D7%AA",
+        "titleHe": "המפלגה הפרוגרסיבית",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "1-ס": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%A1%D7%A4%D7%A8%D7%93%D7%99%D7%9D_%D7%95%D7%A2%D7%93%D7%95%D7%AA_%D7%9E%D7%96%D7%A8%D7%97_(%D7%9E%D7%A4%D7%9C%D7%92%D7%94)",
+        "titleHe": "ספרדים ועדות מזרח (מפלגה)",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "1-ק": [
+      {
+        "kind": "neutral",
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset1-results.pdf",
+        "titleHe": "מק״י — הודעת התוצאות לכנסת 1",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-1",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "1-יד": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%94%D7%A8%D7%A9%D7%99%D7%9E%D7%94_%D7%94%D7%93%D7%9E%D7%95%D7%A7%D7%A8%D7%98%D7%99%D7%AA_%D7%A9%D7%9C_%D7%A0%D7%A6%D7%A8%D7%AA",
+        "titleHe": "הרשימה הדמוקרטית של נצרת",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "1-טו": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%AA_%D7%94%D7%9C%D7%95%D7%97%D7%9E%D7%99%D7%9D",
+        "titleHe": "מפלגת הלוחמים",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "1-נ": [
+      {
+        "kind": "neutral",
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset1-results.pdf",
+        "titleHe": "ויצו — הודעת התוצאות לכנסת 1",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-1",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "1-ל": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%94%D7%AA%D7%90%D7%97%D7%93%D7%95%D7%AA_%D7%94%D7%AA%D7%99%D7%9E%D7%A0%D7%99%D7%9D_%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+        "titleHe": "התאחדות התימנים בישראל",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "1-יא": [
+      {
+        "kind": "neutral",
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset1-results.pdf",
+        "titleHe": "הגוש העובד אלכתלה אלעאמלה — הודעת התוצאות לכנסת 1",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-1",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "1-ג": [
+      {
+        "kind": "neutral",
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset1-results.pdf",
+        "titleHe": "תנועת ז'בוטינסקי — ברית הצה\"ר — הודעת התוצאות לכנסת 1",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-1",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "1-יח": [
+      {
+        "kind": "neutral",
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset1-results.pdf",
+        "titleHe": "רשימת חרדים — הודעת התוצאות לכנסת 1",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-1",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "1-ת": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A4%22%D7%9D",
+        "titleHe": "מפ\"ם",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "1-פד": [
+      {
+        "kind": "neutral",
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset1-results.pdf",
+        "titleHe": "הפועלת והאשה הדתית — הודעת התוצאות לכנסת 1",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-1",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "1-יג": [
+      {
+        "kind": "neutral",
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset1-results.pdf",
+        "titleHe": "רשימת יצחק גרינבוים — הודעת התוצאות לכנסת 1",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-1",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "1-ש": [
+      {
+        "kind": "neutral",
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset1-results.pdf",
+        "titleHe": "הרשימה המאוחדת של פועלים דתיים — הודעת התוצאות לכנסת 1",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-1",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "1-ט": [
+      {
+        "kind": "neutral",
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset1-results.pdf",
+        "titleHe": "למען ירושלים — הודעת התוצאות לכנסת 1",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-1",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "1-יט": [
+      {
+        "kind": "neutral",
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset1-results.pdf",
+        "titleHe": "רשימת היהדות המסורתית — הודעת התוצאות לכנסת 1",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-1",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ]
+  },
+  "parties": {
+    "hapoel-hamizrachi": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%94%D7%A4%D7%95%D7%A2%D7%9C_%D7%94%D7%9E%D7%96%D7%A8%D7%97%D7%99",
+        "titleHe": "הפועל המזרחי",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "mizrachi": [
+      {
+        "kind": "neutral",
+        "url": "https://www.idi.org.il/policy/parties-and-elections/parties/hamizrachi/",
+        "titleHe": "המזרחי",
+        "publisher": "המכון הישראלי לדמוקרטיה",
+        "sourceType": "academic",
+        "confidence": "high"
+      }
+    ],
+    "poalei-agudat-yisrael": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%A4%D7%95%D7%A2%D7%9C%D7%99_%D7%90%D7%92%D7%95%D7%93%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+        "titleHe": "פועלי אגודת ישראל",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "agudat-yisrael": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%90%D7%92%D7%95%D7%93%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+        "titleHe": "אגודת ישראל",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "non-party-religious-union": [
+      {
+        "kind": "neutral",
+        "url": "https://he.wikipedia.org/wiki/%D7%94%D7%90%D7%99%D7%97%D7%95%D7%93_%D7%94%D7%93%D7%AA%D7%99_%D7%94%D7%91%D7%9C%D7%AA%D7%99-%D7%9E%D7%A4%D7%9C%D7%92%D7%AA%D7%99",
+        "titleHe": "האיחוד הדתי הבלתי-מפלגתי",
+        "titleEn": "Hebrew Wikipedia (secondary)",
+        "publisher": "ויקיפדיה העברית (מקור משני)",
+        "sourceType": "hewiki",
+        "confidence": "high"
+      }
+    ],
+    "wizo": [
+      {
+        "kind": "neutral",
+        "url": "https://www.idi.org.il/policy/parties-and-elections/parties/wizo/",
+        "titleHe": "ויצ \"ו",
+        "publisher": "המכון הישראלי לדמוקרטיה",
+        "sourceType": "academic",
+        "confidence": "high"
+      }
+    ],
+    "womens-equal-rights-association": []
+  },
+  "gaps": {
+    "1-א": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "1-מ": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "1-ב": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "1-ח": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "1-צ": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "1-פ": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "1-ס": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "1-ק": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "1-יד": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "1-טו": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "1-נ": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "1-ל": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "1-יא": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "1-ג": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "1-יח": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "1-ת": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "1-פד": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "1-יג": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "1-ש": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "1-ט": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "1-יט": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "hapoel-hamizrachi": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "mizrachi": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "poalei-agudat-yisrael": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "agudat-yisrael": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "non-party-religious-union": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "wizo": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "womens-equal-rights-association": {
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "No verified identity-specific neutral article acquired; dictionary articles and joint-list sources excluded; further research required."
+    }
+  }
+}

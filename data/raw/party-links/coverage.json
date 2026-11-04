@@ -1,0 +1,366 @@
+[
+  {
+    "election": "k26",
+    "year": 2026,
+    "lists": {
+      "partisan": 9,
+      "neutral": 15
+    },
+    "listTotal": 38,
+    "parties": {
+      "partisan": 11,
+      "neutral": 16
+    },
+    "partyTotal": 25
+  },
+  {
+    "election": "k25",
+    "year": 2022,
+    "lists": {
+      "partisan": 4,
+      "neutral": 40
+    },
+    "listTotal": 40,
+    "parties": {
+      "partisan": 1,
+      "neutral": 9
+    },
+    "partyTotal": 14
+  },
+  {
+    "election": "k24",
+    "year": 2021,
+    "lists": {
+      "partisan": 2,
+      "neutral": 39
+    },
+    "listTotal": 39,
+    "parties": {
+      "partisan": 0,
+      "neutral": 9
+    },
+    "partyTotal": 12
+  },
+  {
+    "election": "k23",
+    "year": 2020,
+    "lists": {
+      "partisan": 2,
+      "neutral": 30
+    },
+    "listTotal": 30,
+    "parties": {
+      "partisan": 0,
+      "neutral": 13
+    },
+    "partyTotal": 18
+  },
+  {
+    "election": "k22",
+    "year": 2019,
+    "lists": {
+      "partisan": 3,
+      "neutral": 32
+    },
+    "listTotal": 32,
+    "parties": {
+      "partisan": 0,
+      "neutral": 14
+    },
+    "partyTotal": 19
+  },
+  {
+    "election": "k21",
+    "year": 2019,
+    "lists": {
+      "partisan": 3,
+      "neutral": 43
+    },
+    "listTotal": 43,
+    "parties": {
+      "partisan": 0,
+      "neutral": 12
+    },
+    "partyTotal": 18
+  },
+  {
+    "election": "k20",
+    "year": 2015,
+    "lists": {
+      "partisan": 2,
+      "neutral": 26
+    },
+    "listTotal": 26,
+    "parties": {
+      "partisan": 0,
+      "neutral": 10
+    },
+    "partyTotal": 15
+  },
+  {
+    "election": "k19",
+    "year": 2013,
+    "lists": {
+      "partisan": 5,
+      "neutral": 32
+    },
+    "listTotal": 32,
+    "parties": {
+      "partisan": 0,
+      "neutral": 6
+    },
+    "partyTotal": 9
+  },
+  {
+    "election": "k18",
+    "year": 2009,
+    "lists": {
+      "partisan": 5,
+      "neutral": 33
+    },
+    "listTotal": 33,
+    "parties": {
+      "partisan": 2,
+      "neutral": 10
+    },
+    "partyTotal": 14
+  },
+  {
+    "election": "k17",
+    "year": 2006,
+    "lists": {
+      "partisan": 6,
+      "neutral": 31
+    },
+    "listTotal": 31,
+    "parties": {
+      "partisan": 1,
+      "neutral": 6
+    },
+    "partyTotal": 11
+  },
+  {
+    "election": "k16",
+    "year": 2003,
+    "lists": {
+      "partisan": 7,
+      "neutral": 27
+    },
+    "listTotal": 27,
+    "parties": {
+      "partisan": 3,
+      "neutral": 9
+    },
+    "partyTotal": 14
+  },
+  {
+    "election": "k15",
+    "year": 1999,
+    "lists": {
+      "partisan": 16,
+      "neutral": 31
+    },
+    "listTotal": 31,
+    "parties": {
+      "partisan": 1,
+      "neutral": 6
+    },
+    "partyTotal": 12
+  },
+  {
+    "election": "k14",
+    "year": 1996,
+    "lists": {
+      "partisan": 7,
+      "neutral": 20
+    },
+    "listTotal": 20,
+    "parties": {
+      "partisan": 1,
+      "neutral": 7
+    },
+    "partyTotal": 12
+  },
+  {
+    "election": "k13",
+    "year": 1992,
+    "lists": {
+      "partisan": 9,
+      "neutral": 25
+    },
+    "listTotal": 25,
+    "parties": {
+      "partisan": 0,
+      "neutral": 3
+    },
+    "partyTotal": 6
+  },
+  {
+    "election": "k12",
+    "year": 1988,
+    "lists": {
+      "partisan": 9,
+      "neutral": 27
+    },
+    "listTotal": 27,
+    "parties": {
+      "partisan": 2,
+      "neutral": 5
+    },
+    "partyTotal": 6
+  },
+  {
+    "election": "k11",
+    "year": 1984,
+    "lists": {
+      "partisan": 4,
+      "neutral": 26
+    },
+    "listTotal": 26,
+    "parties": {
+      "partisan": 1,
+      "neutral": 7
+    },
+    "partyTotal": 11
+  },
+  {
+    "election": "k10",
+    "year": 1981,
+    "lists": {
+      "partisan": 4,
+      "neutral": 31
+    },
+    "listTotal": 31,
+    "parties": {
+      "partisan": 0,
+      "neutral": 3
+    },
+    "partyTotal": 7
+  },
+  {
+    "election": "k9",
+    "year": 1977,
+    "lists": {
+      "partisan": 5,
+      "neutral": 22
+    },
+    "listTotal": 22,
+    "parties": {
+      "partisan": 0,
+      "neutral": 4
+    },
+    "partyTotal": 11
+  },
+  {
+    "election": "k8",
+    "year": 1973,
+    "lists": {
+      "partisan": 2,
+      "neutral": 21
+    },
+    "listTotal": 21,
+    "parties": {
+      "partisan": 0,
+      "neutral": 6
+    },
+    "partyTotal": 11
+  },
+  {
+    "election": "k7",
+    "year": 1969,
+    "lists": {
+      "partisan": 2,
+      "neutral": 16
+    },
+    "listTotal": 16,
+    "parties": {
+      "partisan": 0,
+      "neutral": 2
+    },
+    "partyTotal": 4
+  },
+  {
+    "election": "k6",
+    "year": 1965,
+    "lists": {
+      "partisan": 2,
+      "neutral": 17
+    },
+    "listTotal": 17,
+    "parties": {
+      "partisan": 0,
+      "neutral": 2
+    },
+    "partyTotal": 4
+  },
+  {
+    "election": "k5",
+    "year": 1961,
+    "lists": {
+      "partisan": 5,
+      "neutral": 14
+    },
+    "listTotal": 14,
+    "parties": {
+      "partisan": 0,
+      "neutral": 0
+    },
+    "partyTotal": 0
+  },
+  {
+    "election": "k4",
+    "year": 1959,
+    "lists": {
+      "partisan": 3,
+      "neutral": 24
+    },
+    "listTotal": 24,
+    "parties": {
+      "partisan": 0,
+      "neutral": 2
+    },
+    "partyTotal": 2
+  },
+  {
+    "election": "k3",
+    "year": 1955,
+    "lists": {
+      "partisan": 2,
+      "neutral": 18
+    },
+    "listTotal": 18,
+    "parties": {
+      "partisan": 0,
+      "neutral": 4
+    },
+    "partyTotal": 4
+  },
+  {
+    "election": "k2",
+    "year": 1951,
+    "lists": {
+      "partisan": 1,
+      "neutral": 17
+    },
+    "listTotal": 17,
+    "parties": {
+      "partisan": 0,
+      "neutral": 0
+    },
+    "partyTotal": 0
+  },
+  {
+    "election": "k1",
+    "year": 1949,
+    "lists": {
+      "partisan": 0,
+      "neutral": 21
+    },
+    "listTotal": 21,
+    "parties": {
+      "partisan": 0,
+      "neutral": 6
+    },
+    "partyTotal": 7
+  }
+]

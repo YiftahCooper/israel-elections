@@ -1,0 +1,95 @@
+[
+  {
+    "site": "yeshatid.org.il/",
+    "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=yeshatid.org.il%2F&output=json&filter=statuscode%3A200&from=20220701&to=20221101&collapse=timestamp%3A6&fl=timestamp%2Coriginal%2Cstatuscode&limit=3",
+    "rows": [
+      [
+        "timestamp",
+        "original",
+        "statuscode"
+      ],
+      [
+        "20220803194801",
+        "https://yeshatid.org.il/",
+        "200"
+      ],
+      [
+        "20220901052303",
+        "https://yeshatid.org.il/",
+        "200"
+      ],
+      [
+        "20221001102401",
+        "https://yeshatid.org.il/",
+        "200"
+      ]
+    ],
+    "retrieved": "2026-11-04",
+    "capture": "https://web.archive.org/web/20221001102401/https://yeshatid.org.il/",
+    "bytes": 102966,
+    "inspectedText": " \n \n   \n window.addEventListener('DOMContentLoaded',function(){var v=archive_analytics.values;v.service='wb';v.server_name='wwwb-app220.us.archive.org';v.server_ms=717;archive_analytics.send_pageview({});}); \n  \n  \n window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={\"autoplay\":\"on\",\"unmuteOverlay\":\"hidden\",\"showSwfDownload\":true}; \n  \n \n    __wm.init(\"https://web.archive.org/web\");\n  __wm.wombat(\"https://yeshatid.org.il/\",\"20221001102401\",\"https://web.archive.org/\",\"web\",\"https://web-static.archive.org/_static/\",\n\t      \"1664619841\");\n \n \n \n \n\n \n \n יש עתיד | עמוד הבית \n \n \n  \n \n \n\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n {\"@context\":\"https://web.archive.org/web/20221001102401/https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://web.archive.org/web/20221001102401/https://yeshatid.org.il/\",\"url\":\"https://web.archive.org/web/20221001102401/https://yeshatid.org.il/\",\"name\":\"יש עתיד | עמוד הבית\",\"isPartOf\":{\"@id\":\"https://web.archive.org/web/20221001102401/https://yeshatid.org.il/#website\"},\"about\":{\"@id\":\"https://web.archive.org/web/20221001102401/https://yeshatid.org.il/#organization\"},\"datePublished\":\"2022-05-04T09:14:56+00:00\",\"dateModified\":\"2022-07-26T08:52:44+00:00\",\"description\":\"האתר הרשמי של מפלגת יש עתיד. כל העדכונים, החדשות, הכנסים והאירועים באתר אחד. כנסו עכשיו לקרוא על חברי הכנסת, השרים והעשייה של מפלגת יש עתיד.\",\"breadcrumb\":{\"@id\":\"https://web.archive.org/web/20221001102401/https://yeshatid.org.il/#breadcrumb\"},\"inLanguage\":\"he-IL\",\"potentialAction\":[{\"@type\":\"ReadAction\",\"target\":[\"https://web.archive.org/web/20221001102401/https://yeshatid.org.il/\"]}]},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://web.archive.org/web/20221001102401/https://yeshatid.org.il/#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"דף הבית\"}]},{\"@type\":\"WebSite\",\"@id\":\"https://web.archive.org/web/20221001102401/https://yeshatid.org.il/#website\",\"url\":\"https://web.archive.org/web/20221001102401/https://yeshatid.org.il/\",\"name\":\"יש עתיד\",\"description\":\"באנו לשנות!\",\"publisher\":{\"@id\":\"https://web.archive.org/web/20221001102401/https://yeshatid.org.il/#organization\"},\"potentialAction\":[{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://web.archive.org/web/20221001102401/https://yeshatid.org.il/?s={search_term_string}\"},\"query-input\":\"required name=search_term_string\"}],\"inLanguage\":\"he-IL\"},{\"@type\":\"Organization\",\"@id\":\"https://web.archive.org/web/20221001102401/https://yeshatid.org.il/#organization\",\"name\":\"יש עתיד – בראשות יאיר לפיד\",\"url\":\"https://web.archive.org/web/20221001102401/https://yeshatid.org.il/\",\"sameAs\":[\"https://web.archive.org/web/20221001102401/https://www.facebook.com/yeshatidparty\",\"https://web.archive.org/web/20221001102401/https://twitter.com/YeshAtidParty\"],\"logo\":{\"@type\":\"ImageObject\",\"inLanguage\":\"he-IL\",\"@id\":\"https://web.archive.org/web/20221001102401/https://yeshatid.org.il/#/schema/logo/image/\",\"url\":\"https://web.archive.org/web/20221001102401/https://yeshatid.org.il/wp-content/uploads/2022/06/logo_mobile.svg\",\"contentUrl\":\"https://web.archive.org/web/20221001102401/https://yeshatid.org.il/wp-content/uploads/2022/06/logo_mobile.svg\",\"width\":109,\"height\":22,\"caption\":\"יש עתיד – בראשות יאיר לפיד\"},\"image\":{\"@id\":\"https://web.archive.org/web/20221001102401/https://yeshatid.org.il/#/schema/logo/image/\"}}]} \n\n \n \n \n \n \nwindow._wpemojiSettings = {\"baseUrl\":\"https:\\/\\/web.archive.org\\/web\\/20221001102401\\/https:\\/\\/s.w.org\\/images\\/core\\/emoji\\/14.0.0\\/72x72\\/\",\"ext\":\".png\",\"svgUrl\":\"https:\\/\\/web.archive.org\\/web\\/20221001102401\\/https:\\/\\/s.w.org\\/images\\/core\\/emoji\\/14.0.0\\/svg\\/\",\"svgExt\":\".svg\",\"source\":{\"concatemoji\":\"https:\\/\\/web.archive.org\\/web\\/20221001102401\\/https:\\/\\/yeshatid.org.il\\/wp-includes\\/js\\/wp-emoji-release.min.js?ver=6.0.2\"}};\n/*! This file is auto-generated */\n!function(e,a,t){var n,r,o,i=a.createElement(\"canvas\"),p=i.getContext&&i.getContext(\"2d\");function s(e,t){var a=String.fromCharCode,e=(p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0),i.toDataURL());return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement(\"script\");t.src=e,t.defer=t.type=\"text/javascript\",a.getElementsByTagName(\"head\")[0].appendChild(t)}for(o=Array(\"flag\",\"emoji\"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r \n \nimg.wp-smiley,\nimg.emoji {\n\tdisplay: inline !important;\n\tborder: none !important;\n\tbox-shadow: none !important;\n\theight: 1em !important;\n\twidth: 1em !important;\n\tmargin: 0 0.07em !important;\n\tvertical-align: -0.1em !important;\n\tbackground: none !important;\n\tpadding: 0 !important;\n}\n \n \n \n \n \nbody{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan"
+  },
+  {
+    "site": "www.likud.org.il/",
+    "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.likud.org.il%2F&output=json&filter=statuscode%3A200&from=20220701&to=20221101&collapse=timestamp%3A6&fl=timestamp%2Coriginal%2Cstatuscode&limit=3",
+    "error": "<urlopen error timed out>"
+  },
+  {
+    "site": "beytenu.org.il/",
+    "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=beytenu.org.il%2F&output=json&filter=statuscode%3A200&from=20220701&to=20221101&collapse=timestamp%3A6&fl=timestamp%2Coriginal%2Cstatuscode&limit=3",
+    "rows": [
+      [
+        "timestamp",
+        "original",
+        "statuscode"
+      ],
+      [
+        "20220701014415",
+        "https://beytenu.org.il/",
+        "200"
+      ],
+      [
+        "20220802081402",
+        "https://beytenu.org.il/",
+        "200"
+      ],
+      [
+        "20220901204504",
+        "https://beytenu.org.il/",
+        "200"
+      ]
+    ],
+    "retrieved": "2026-11-04",
+    "replayError": "<urlopen error timed out>"
+  },
+  {
+    "site": "hadash.org.il/",
+    "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=hadash.org.il%2F&output=json&filter=statuscode%3A200&from=20220701&to=20221101&collapse=timestamp%3A6&fl=timestamp%2Coriginal%2Cstatuscode&limit=3",
+    "rows": [
+      [
+        "timestamp",
+        "original",
+        "statuscode"
+      ],
+      [
+        "20220703011035",
+        "http://hadash.org.il/",
+        "200"
+      ],
+      [
+        "20220802140150",
+        "https://hadash.org.il/",
+        "200"
+      ],
+      [
+        "20220902004451",
+        "http://hadash.org.il/",
+        "200"
+      ]
+    ],
+    "retrieved": "2026-11-04",
+    "capture": "https://web.archive.org/web/20220902004451/http://hadash.org.il/",
+    "bytes": 108817,
+    "inspectedText": "\n \n \n   \n window.addEventListener('DOMContentLoaded',function(){var v=archive_analytics.values;v.service='wb';v.server_name='wwwb-app220.us.archive.org';v.server_ms=735;archive_analytics.send_pageview({});}); \n  \n  \n window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={\"autoplay\":\"on\",\"unmuteOverlay\":\"hidden\",\"showSwfDownload\":true}; \n  \n \n    __wm.init(\"https://web.archive.org/web\");\n  __wm.wombat(\"http://hadash.org.il/\",\"20220902004451\",\"https://web.archive.org/\",\"web\",\"https://web-static.archive.org/_static/\",\n\t      \"1662079491\");\n \n \n \n \n\n\t\n\t \n\t \n\t\t\n\t \n\t \n\n \n   חד&quot;ש | חזית דמוקרטית לשלום ולשוויון \n\t\n\t  \n \n\n\n  \n\t \n \n \n\t\t \n\t\t \n\t\t\t\t\t \n\t\t\t\t \n\t\t\t\t \n\t\t\twindow._wpemojiSettings = {\"baseUrl\":\"https:\\/\\/web.archive.org\\/web\\/20220902004451\\/https:\\/\\/s.w.org\\/images\\/core\\/emoji\\/13.1.0\\/72x72\\/\",\"ext\":\".png\",\"svgUrl\":\"https:\\/\\/web.archive.org\\/web\\/20220902004451\\/https:\\/\\/s.w.org\\/images\\/core\\/emoji\\/13.1.0\\/svg\\/\",\"svgExt\":\".svg\",\"source\":{\"concatemoji\":\"https:\\/\\/web.archive.org\\/web\\/20220902004451\\/http:\\/\\/hadash.org.il\\/wp-includes\\/js\\/wp-emoji-release.min.js?ver=5.8.5\"}};\n\t\t\t!function(e,a,t){var n,r,o,i=a.createElement(\"canvas\"),p=i.getContext&&i.getContext(\"2d\");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement(\"script\");t.src=e,t.defer=t.type=\"text/javascript\",a.getElementsByTagName(\"head\")[0].appendChild(t)}for(o=Array(\"flag\",\"emoji\"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r \n\t\t \nimg.wp-smiley,\nimg.emoji {\n\tdisplay: inline !important;\n\tborder: none !important;\n\tbox-shadow: none !important;\n\theight: 1em !important;\n\twidth: 1em !important;\n\tmargin: 0 .07em !important;\n\tvertical-align: -0.1em !important;\n\tbackground: none !important;\n\tpadding: 0 !important;\n}\n \n\t \n \n \n \n \n \n \n \n  \n  \n  \n  \n  \n \n\t\t \n\t\t  \n\t\t \n\t\t\twindow.dataLayer = window.dataLayer || [];\n\t\t\tfunction gtag(){dataLayer.push(arguments);}\n\t\t\tgtag('js', new Date());\n\t\t\tgtag('config', 'G-NHZVPVR1SV');\n\t\t \n\n\t   \n\n \n -->  \n\t\n\t\t\n\n \n\n  var _gaq = _gaq || [];\n  _gaq.push([\\'_setAccount\\', \\'UA-1839103-3\\']);\n  _gaq.push([\\'_trackPageview\\']);\n\n  (function() {\n    var ga = document.createElement(\\'script\\'); ga.type = \\'text/javascript\\'; ga.async = true;\n    ga.src = (\\'https:\\' == document.location.protocol ? \\'https://ssl\\' : \\'http://www\\') + \\'.google-analytics.com/ga.js\\';\n    var s = document.getElementsByTagName(\\'script\\')[0]; s.parentNode.insertBefore(ga, s);\n  })();\n\n \n\t\n\n !function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,\"script\",\"https://web.archive.org/web/20220902004451/https://chimpstatic.com/mcjs-connected/js/users/cb707e53bba6339cde9b07fc8/b348e17d56d6cf7e92b8e4b29.js\"); \n\n\t \n  \n \n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'AW-412126941');\n \n\n\t \n  \n \n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'AW-708781533');\n \n\t\n\t\n\t \n  \n \n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'AW-407549433');\n \n\t\n \n\n\n  \n __wm.rw(0); \n \n \n \n   \n     \n     \n   \n  \n   \n     \n         \n     \n     \n           \n       \n       \n                 \n           \n         \n           \n             \n                \n             \n           \n         \n       \n     \n     \n       \n         \n           \n           \n             Aug \n             SEP \n             Oct \n           \n           \n           \n                \n             02 \n                \n           \n           \n           \n             2021 \n             2022 \n             2023 \n           \n         \n       \n     \n     \n       \n                 \n           success \n           fail \n           \n              \n           \n           \n              \n           \n            \n         \n                    \n            \n       \n       \n         \n            \n         \n         \n            \n         \n            \n            \n       \n       \n             About this capture  \n       \n     \n   \n     \n          \n                  \n     \n     TIMESTAMPS \n     \n        \n         \n     \n     \n       The Wayback Machine - https://web.archive.org/web/20220902004451/http://hadash.org.il/ \n //  \n \n \n\n\n\n\t\t \t\n\t\t\t\n\t\t\t\n\t \n\t\t\n\t\t\t \t\t\t\t \n\t\t\t\t\t  \n\t\t\t \n\n\n\n\t \n\t\t \n\t\t\t  русский  \n\t\t\t  English  \n\t\t\t  العربية  \n\t\t \n\n\n\t\n\n\t  \n\t  \n\t\n\t\t\n\n\n\t\t\t \n\t \t\t\t\t\n\t\t    ראשי  \n  מצע חד&quot;ש  \n  חברי כנסת  \n  צרו קשר  \n  \n\n\n\t  \n\t\n\n\n\t \t\t\t \n\t   ברוכים הבאים לאתר של תנועת חד\"ש    התחברו עכשיו לעמוד הפייסבוק של חד\"ש וקבלו את כל העדכונים הכי חשובים על המפלגה .    jQuery(function () {jQuery('#gticker-news1').ticker({speed: 0.10, htmlFeed: true, titleText: '', direction: 'r"
+  }
+]

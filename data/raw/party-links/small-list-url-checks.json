@@ -1,0 +1,20 @@
+[
+  {
+    "url": "https://orothashachar.org.il/website-regulations/",
+    "resolvedUrl": "https://orothashachar.org.il/website-regulations/",
+    "status": 200,
+    "title": "תקנון אתר - מפלגת אורות השחר",
+    "sha256": "7f03e945801d73c296e42f27c46aff5458014711d85eea0aafa0002ad281f3a3",
+    "retrieved": "2026-11-04",
+    "bytes": 108688
+  },
+  {
+    "url": "https://www.piratim.org/flag/",
+    "resolvedUrl": "https://www.piratim.org/flag/",
+    "status": 200,
+    "title": "הדגל · מפלגת הפיראטים",
+    "sha256": "28485396069bb6c890cbc174871beda1a24e810609506636328851d1b4c3eb54",
+    "retrieved": "2026-11-04",
+    "bytes": 36992
+  }
+]

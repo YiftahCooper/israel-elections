@@ -646,3 +646,13 @@ constants, threshold/quota, agreement pairs, all elected names and contiguous ra
 Clean builds require retained evidence and locked dependencies, with no scratch or
 network downloads. Original later roster ranks, separate withdrawal chronology and
 an exhaustive historical-law amendment chain remain outside the verified scope.
+
+Party reading links (`data/meta/party-links/kNN.json`, decision 0093) distinguish **partisan**
+material from **neutral** accounts on both lists and constituent parties. Campaign-period
+archived official sites are preferred; live official sites are permitted for 2026. Party
+platforms held by IDI remain partisan and name the archive host. Neutral sources prefer
+Knesset faction pages, then labelled Hebrew Wikipedia, CEC records and academic profiles.
+Whole-election CEC records are labelled as such; they are not party platforms. The build
+rejects unknown ids, non-HTTPS URLs and English Wikipedia, including archive-wrapped URLs;
+scenario imports validate link fields too. Coverage is partial: all missing kinds have
+reasons in the overlays. Method and coverage: `docs/research/party-links.md`.
