@@ -63,6 +63,13 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 
 ### Changed
 
+- Simplify election browsing to one era timeline with official seat bars and in-place Open;
+  keep neighbour arrows beside the header trigger and spell out repeated-election months.
+- Replace quick-action walls with a shared numeric stepper, relevant goals and a More menu.
+- Automatically balance scenario identity colours, deterministically migrate older saves,
+  and show only exceptional source/rule details in switcher rows.
+- Replace era side stripes with muted labels and hairline rules.
+
 - Warn in both languages when candidate-cap counterfactuals depend on the inferred 1977
   procedure, and when known candidate shortages have no modelled procedure. Preserve the
   original 1977 result without a warning and unknown rosters without invented capacities.

@@ -15,7 +15,7 @@ test('2022: merge, add voters, drop agreement, push Balad over, find Ra’am’s
   await page.goto('/');
   await page.getByRole('button', { name: 'EN', exact: true }).click();
   await page.getByRole('button', { name: 'Expert', exact: true }).click();
-  await choose(page.getByRole('button', { name: 'Election' }), 'k25');
+  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
   await expect(listButton(page, 'Yesh Atid')).toBeVisible();
   expect(await seatsOf(page, 'Likud')).toBe(32);
 
@@ -59,16 +59,13 @@ test('2022: merge, add voters, drop agreement, push Balad over, find Ra’am’s
   const details = page.getByRole('region', { name: 'List details' });
   // the exact minimum is computed on opening (if the added voters already carried Balad over, there is none)
   await expect(details.getByText(/Calculating exactly/)).toHaveCount(0, { timeout: 60_000 });
-  const passes = details.getByText('Passes the threshold with');
-  if (await passes.count()) {
-    await expect(passes).toContainText(/\+\d/);
-    await passes.getByRole('button', { name: 'Apply', exact: true }).click();
-  }
+  const crosses = details.getByRole('button', { name: 'Cross the threshold', exact: true });
+  if (await crosses.count()) { await expect(crosses).toBeEnabled({ timeout: 60000 }); await crosses.click(); }
   expect(await seatsOf(page, 'Balad')).toBeGreaterThan(0);
 
   // 6. How many more votes does Ra'am need for its next seat?
   await listButton(page, "Ra'am").click();
-  await expect(details.getByText(/^Seat \d+ in/)).toContainText(/\+\d{1,3}(,\d{3})*/, { timeout: 60_000 });
+  await expect(details.getByRole('button', { name: /^Reach next seat/ })).toHaveText(/\+\d{1,3}(,\d{3})*/, { timeout: 60_000 });
 
   // 7–9. The chamber still has exactly 120 seats; compare with history; candidates entering/leaving listed
   await expect(page.locator('.chamber circle.seat')).toHaveCount(120);

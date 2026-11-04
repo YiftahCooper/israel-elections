@@ -1,4 +1,3 @@
-import { ChoicePicker } from './ChoicePicker.tsx';
 import { ScenarioSwitcher } from './ScenarioSwitcher.tsx';
 import { useActiveReference } from '../useActiveReference.ts';
 import { ElectionAbout } from './ElectionContext.tsx';
@@ -9,7 +8,7 @@ import { baselineOf, editPathLabel, referenceChanges } from '../derive.ts';
 import { savedColor } from '../scenarioIdentity.ts';
 import { describe } from '../actionDescription.ts';
 import { useEffect, useRef, useState } from 'react';
-import type { ElectionDataset, ElectionId, ElectionIndexEntry } from '../../data/schema.ts';
+import type { ElectionDataset, ElectionId } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
@@ -18,16 +17,8 @@ import { dispatch, duplicateCurrent, getState, importScenarioJson, openElection,
 import { ChevronDown, Copy, Download, FolderOpen, Link2, Moon, Redo2, RotateCcw, Save, Share2, Sun, Table2, Trash2, Undo2, Upload } from 'lucide-react';
 import { Seg } from './ui.tsx';
 
-const MONTHS_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-const MONTHS_HE = ['ינו׳', 'פבר׳', 'מרץ', 'אפר׳', 'מאי', 'יוני', 'יולי', 'אוג׳', 'ספט׳', 'אוק׳', 'נוב׳', 'דצמ׳'];
-const ordinalEn = (n: number) => `${n}${n % 100 >= 11 && n % 100 <= 13 ? 'th' : ['th', 'st', 'nd', 'rd'][n % 10] ?? 'th'}`;
-/** "2026 · 26th"; the month is added when two elections fall in the same year (2019). */
-export function electionLabel(e: ElectionIndexEntry, all: ElectionIndexEntry[], lang: 'he' | 'en') {
-  const year = e.date.slice(0, 4);
-  const month = Number(e.date.slice(5, 7)) - 1;
-  const when = all.filter((x) => x.date.slice(0, 4) === year).length > 1 ? `${(lang === 'he' ? MONTHS_HE : MONTHS_EN)[month]} ${year}` : year;
-  return lang === 'he' ? `${when} · הכנסת ה-${e.knesset}` : `${when} · ${ordinalEn(e.knesset)} Knesset`;
-}
+export { electionLabel } from '../electionLabel.ts';
+import { ElectionPicker } from './ElectionPicker.tsx';
 
 const fileName = (n: string) => (n || 'scenario').replace(/[^\p{L}\p{N}]+/gu, '_').replace(/^_+|_+$/g, '').slice(0, 60) || 'scenario';
 
@@ -79,10 +70,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
   return (
     <header className="band">
       <span className="brand">{L('Israeli Elections Explorer', 'סייר הבחירות לכנסת')}</span>
-      <ChoicePicker confirmLabel={L('Open', 'פתיחה')} className="election" label={L('Election', 'בחירות')} value={pmContestId ?? electionId} options={[
-        ...elections.map(e => ({ value: e.id, label: electionLabel(e, elections, lang), detail: e.date + (e.date.startsWith('2019') ? (e.knesset === 21 ? ' · 2019a' : ' · 2019b') : '') + (e.available ? '' : L(' — not yet available', ' — עדיין לא זמין')), group: Number(e.date.slice(0, 4)) >= 2015 ? L('2015–present · 3.25%', '2015–היום · 3.25%') : Number(e.date.slice(0, 4)) >= 2003 ? '2003–2013 · 2%' : Number(e.date.slice(0, 4)) >= 1992 ? '1992–1999 · 1.5%' : '1949–1988 · 1%', disabled: !e.available })),
-        ...electionContext.pmContests.filter(c => c.contestType === 'prime-minister-only').map(c => ({ value: c.id, label: c.effectiveDate.slice(0, 4) + ' · ' + L('Prime Minister only', 'ראש הממשלה בלבד'), detail: c.effectiveDate, group: L('Direct election · separate contest', 'בחירה ישירה · הליך נפרד') }))
-      ].sort((a, b) => b.detail.slice(0, 10).localeCompare(a.detail.slice(0, 10)))} onChange={async value => { const pm = electionContext.pmContests.find(c => c.id === value && c.contestType === 'prime-minister-only'); if (await openElection(pm?.electionId ?? value as ElectionId)) onContestChange?.(pm?.id ?? null); }} />
+      <ElectionPicker elections={elections} value={pmContestId ?? electionId} onChange={async value => { const pm = electionContext.pmContests.find(c => c.id === value && c.contestType === 'prime-minister-only'); if (await openElection(pm?.electionId ?? value as ElectionId)) onContestChange?.(pm?.id ?? null); }} />
       {ds && !pmContestId && <ElectionAbout electionId={ds.id} />}
       {s && ds && <ScenarioSwitcher s={s} ds={ds} />}
 

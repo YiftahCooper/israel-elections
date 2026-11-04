@@ -31,7 +31,7 @@ for (const lang of ['he','en']) for (const phone of [false,true]) {
       }
       else {
         await expect(page.locator('.chamber .legend')).toBeVisible();
-        expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+        expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth), JSON.stringify(await page.evaluate(() => ({ width: document.documentElement.scrollWidth, viewport: innerWidth, nodes: [...document.querySelectorAll('body *')].filter(el => { const r = el.getBoundingClientRect(); if (r.width === 0 || r.right <= innerWidth + .1) return false; let p = el.parentElement; while (p && p !== document.body) { if (getComputedStyle(p).overflowX !== 'visible') return false; p = p.parentElement; } return true; }).slice(0, 12).map(el => ({ tag: el.tagName, cls: el.className, text: el.textContent?.slice(0, 80), x: el.getBoundingClientRect().x, width: el.getBoundingClientRect().width })) })))).toBe(true);
       }
     }
   });
@@ -49,7 +49,7 @@ for (const lang of ['he','en']) for (const theme of ['light','dark']) for (const
     if (!phone) expect((await page.locator('.band').boundingBox())!.height).toBeLessThanOrEqual(60);
     await page.locator('.election-about summary').click();
     await expect(page.locator('.election-about ul')).toBeVisible();
-    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth), await page.evaluate(() => [...document.querySelectorAll('body *')].filter(el => { const r = el.getBoundingClientRect(); return r.width > 0 && r.right > innerWidth + 1; }).slice(0, 8).map(el => `${el.tagName}.${el.className}: ${Math.round(el.getBoundingClientRect().width)}px`).join(', '))).toBe(true);
     await page.screenshot({path:`.backup-scratch/polish/about-${lang}-${theme}-${phone?'phone':'desktop'}.png`});
     await choose(picker, 'k15');
     await expect(page.locator('.lb-row').first()).toBeVisible();
