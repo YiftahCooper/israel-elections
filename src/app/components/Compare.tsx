@@ -3,7 +3,7 @@ import type { ElectionDataset } from '../../data/schema.ts';
 import { compareAllocations } from '../../engine/analysis.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
-import { allocationOf, electedOf, listLabel } from '../derive.ts';
+import { allocationOf, blocPieces, electedOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct, fmtRat, fmtSigned, isolate, signed } from '../format.ts';
 import { replay, setState, useStore, useDigits } from '../store.ts';
@@ -38,7 +38,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
   const entering = [...eb.entries()].filter(([id]) => !ea.has(id)).map(([, v]) => v);
   const leaving = [...ea.entries()].filter(([id]) => !eb.has(id)).map(([, v]) => v);
 
-  const blocSums = (sc: Scenario, rr: AllocationResult) => Object.fromEntries(s.blocs.map((b) => [b.id, sc.lists.filter((l) => l.bloc === b.id).reduce((t, l) => t + (rr.lists.find((x) => x.id === l.id)?.seats ?? 0), 0)]));
+  const blocSums = (sc: Scenario, rr: AllocationResult) => Object.fromEntries(sc.blocs.map((b) => [b.id, blocPieces(sc, rr).filter((p) => p.bloc === b.id).reduce((t, p) => t + p.n, 0)]));
   const ba = blocSums(a, ar), bb = blocSums(s, r);
 
   const nameA = compareWith === 'historical' ? L('Official result', 'התוצאה הרשמית') : a.name;
@@ -47,13 +47,13 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
   const labelOf = (g: (typeof groups)[number]) => gName(g.bIds.length ? g.bIds : g.aIds, g.bIds.length ? s : a);
   const maxChange = Math.max(1, ...changed.map((g) => Math.abs(g.seatsB - g.seatsA)));
   const total = s.rules.seats, majority = Math.floor(total / 2) + 1;
-  const BlocBarRow = ({ sums, title }: { sums: Record<string, number>; title: string }) => {
-    const rest = total - s.blocs.reduce((t, b) => t + (sums[b.id] ?? 0), 0);
+  const BlocBarRow = ({ sums, title, sc }: { sums: Record<string, number>; title: string; sc: Scenario }) => {
+    const rest = sc.rules.seats - sc.blocs.reduce((t, b) => t + (sums[b.id] ?? 0), 0);
     return (
       <div className="cmp-blocrow">
         <span className="small ink2">{title}</span>
-        <div className="coal-bar big" aria-label={`${title}: ${s.blocs.map((b) => `${lang === 'he' ? b.nameHe : b.nameEn} ${sums[b.id] ?? 0}`).join(', ')}`}>
-          {s.blocs.map((b) => (sums[b.id] ?? 0) > 0 && <i key={b.id} style={{ flexBasis: `${((sums[b.id] ?? 0) / total) * 100}%`, background: b.color }} title={`${lang === 'he' ? b.nameHe : b.nameEn} ${sums[b.id]}`}><span className="cmp-n">{sums[b.id]}</span></i>)}
+        <div className="coal-bar big" aria-label={`${title}: ${sc.blocs.map((b) => `${lang === 'he' ? b.nameHe : b.nameEn} ${sums[b.id] ?? 0}`).join(', ')}`}>
+          {sc.blocs.map((b) => (sums[b.id] ?? 0) > 0 && <i key={b.id} style={{ flexBasis: `${((sums[b.id] ?? 0) / total) * 100}%`, background: b.color }} title={`${lang === 'he' ? b.nameHe : b.nameEn} ${sums[b.id]}`}><span className="cmp-n">{sums[b.id]}</span></i>)}
           {rest > 0 && <i style={{ flexBasis: `${(rest / total) * 100}%`, background: 'var(--axis)' }} title={`${L('No bloc', 'ללא גוש')} ${rest}`}><span className="cmp-n">{rest}</span></i>}
           <span className="maj" style={{ insetInlineStart: `${(majority / total) * 100}%` }} />
         </div>
@@ -81,9 +81,9 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
       {s.blocs.length > 0 && (
         <section className="cmp-section">
           <h3>{L('Blocs', 'גושים')}</h3>
-          <BlocBarRow sums={ba} title={nameA} />
-          <BlocBarRow sums={bb} title={nameB} />
-          <div className="legend small" style={{ marginTop: 6 }}>{s.blocs.map((b) => <span key={b.id} className="row" style={{ gap: 5 }}><span className="swatch" style={{ background: b.color }} />{lang === 'he' ? b.nameHe : b.nameEn} <b>{ba[b.id]} → {bb[b.id]}</b></span>)}</div>
+          <BlocBarRow sums={ba} title={nameA} sc={a} />
+          <BlocBarRow sums={bb} title={nameB} sc={s} />
+          <div className="legend small" style={{ marginTop: 6 }}>{s.blocs.map((b) => <span key={b.id} className="row" style={{ gap: 5 }}><span className="swatch" style={{ background: b.color }} />{lang === 'he' ? b.nameHe : b.nameEn} <b>{ba[b.id] ?? 0} → {bb[b.id] ?? 0}</b></span>)}</div>
         </section>
       )}
 
@@ -95,10 +95,10 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
               const d = g.seatsB - g.seatsA;
               return (
                 <li key={g.key}>
-                  <span className="cmp-label">{labelOf(g)} <span className="muted">{g.seatsA} → {g.seatsB}</span></span>
-                  <span className="cmp-neg">{d < 0 && <i style={{ width: `${(-d / maxChange) * 100}%`, background: colorOfGroup(g) }} />}</span>
+                  <span className="cmp-label"><span className="swatch" style={{ background: colorOfGroup(g) }} /> {labelOf(g)} <span className="muted">{g.seatsA} → {g.seatsB}</span></span>
+                  <span className="cmp-neg">{d < 0 && <i style={{ width: `${(-d / maxChange) * 100}%`, background: 'var(--ink)' }} />}</span>
                   <span className="cmp-axis" aria-hidden />
-                  <span className="cmp-pos">{d > 0 && <i style={{ width: `${(d / maxChange) * 100}%`, background: colorOfGroup(g) }} />}</span>
+                  <span className="cmp-pos">{d > 0 && <i style={{ width: `${(d / maxChange) * 100}%`, background: 'var(--ink)' }} />}</span>
                   <b className="cmp-d" dir="ltr">{d > 0 ? `+${d}` : `−${-d}`}</b>
                 </li>
               );
@@ -146,8 +146,8 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
               {[...groups].sort((x, y) => y.seatsB - x.seatsB || Number(y.votesB - x.votesB)).filter((g) => g.seatsA || g.seatsB || g.votesA !== g.votesB || g.votesB * 100n >= r.totalValid).map((g) => {
                 const dv = g.votesB - g.votesA, ds_ = g.seatsB - g.seatsA;
                 return (
-                  <tr key={g.key} onClick={() => g.bIds[0] && setState({ selectedListId: g.bIds[0] })} style={{ cursor: 'pointer' }}>
-                    <td>{g.aIds.join() === g.bIds.join() ? gName(g.bIds, s) : `${gName(g.aIds, a)} → ${gName(g.bIds, s)}`}</td>
+                  <tr key={g.key}>
+                    <td>{g.bIds.length ? g.bIds.map((id) => <button key={id} className="table-action" onClick={() => setState({ selectedListId: id })}>{gName([id], s)}</button>) : gName(g.aIds, a)}{g.aIds.join() !== g.bIds.join() && <small className="muted"> · {L("officially", "בפועל")} {gName(g.aIds, a)}</small>}</td>
                     <td className="n">{fmtInt(g.votesA)}</td><td className="n">{fmtInt(g.votesB)}</td>
                     <td className="n">{dv === 0n ? '—' : fmtSigned(dv)}</td>
                     <td className="n">{g.votesA > 0n && dv !== 0n ? `${dv > 0n ? '+' : ''}${fmtRat({ num: dv * 100n, den: g.votesA }, 2)}%` : ''}</td>
@@ -190,10 +190,10 @@ export function Slope({ groups, nameA, nameB, colorOf }: { groups: { key: string
         const changed = g.seatsA !== g.seatsB;
         return (
           <g key={g.key} opacity={changed ? 1 : 0.45}>
-            <line x1={x1} y1={y(g.seatsA)} x2={x2} y2={y(g.seatsB)} stroke={c} strokeWidth={changed ? 3 : 2} />
+            <line x1={x1} y1={y(g.seatsA)} x2={x2} y2={y(g.seatsB)} stroke="var(--ink)" strokeWidth={changed ? 3 : 2} />
             <circle cx={x1} cy={y(g.seatsA)} r={4} fill={c} stroke="var(--surface)" strokeWidth={2} />
             <circle cx={x2} cy={y(g.seatsB)} r={4} fill={c} stroke="var(--surface)" strokeWidth={2} />
-            <text x={x1 - 8} y={ly.get(g.key)} textAnchor="end" dominantBaseline="middle" fill="var(--ink)">{isolate(`${g.label} ${g.seatsA}`)}</text>
+            <text x={x1 - 8} y={ly.get(g.key)} textAnchor="end" dominantBaseline="middle" fill="var(--ink)"><title>{`${g.label} ${g.seatsA}`}</title>{isolate(`${g.label.length > 22 ? g.label.slice(0, 21) + '…' : g.label} ${g.seatsA}`)}</text>
             <text x={x2 + 8} y={ry.get(g.key)} textAnchor="start" dominantBaseline="middle" fill="var(--ink)" fontWeight={changed ? 700 : 400}>{g.seatsB}{changed ? ` (${signed(g.seatsB - g.seatsA)})` : ''}</text>
           </g>
         );

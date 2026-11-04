@@ -4,7 +4,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario, SimList } from '../../model/scenario.ts';
-import { electedOf, listLabel } from '../derive.ts';
+import { comparisonGroups, officialSeatsFor, electedOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct } from '../format.ts';
 import { setState, useDigits, useLevel, useStore } from '../store.ts';
@@ -25,9 +25,8 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
 
   const total = Number(r.totalValid);
   const thr = Number(r.thresholdVotes);
-  const baseSeats = (l: SimList) => base.lists.some((b) => b.id === l.id)
-    ? baseR.lists.find((x) => x.id === l.id)?.seats ?? 0
-    : l.originIds.reduce((t, o) => t + (baseR.lists.find((x) => x.id === o)?.seats ?? 0), 0);
+  const groups = comparisonGroups(s, r, base, baseR).filter(g => g.bIds.length > 1);
+  const baseSeats = (l: SimList) => officialSeatsFor(l.id, s, r, base, baseR);
   const rows = s.lists.map((l) => ({ l, lr: r.lists.find((x) => x.id === l.id)!, was: baseSeats(l) }));
   const inKnesset = rows.filter((x) => x.lr.seats > 0 || x.lr.qualified).sort((a, b) => b.lr.seats - a.lr.seats || b.l.votes - a.l.votes);
   const outside = rows.filter((x) => !(x.lr.seats > 0 || x.lr.qualified)).sort((a, b) => b.l.votes - a.l.votes);
@@ -35,11 +34,11 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   const hidden = outside.length - visibleOut.length;
   const splitIds = new Set(s.factionSplits ?? []);
   // one scale for every bar: the largest list now or in the official result
-  const scale = Math.max(1, ...rows.map((x) => Math.max(x.lr.seats, x.was)));
+  const scale = Math.max(1, ...rows.map((x) => Math.max(x.lr.seats, x.was ?? 0)));
 
   const row = ({ l, lr, was }: (typeof rows)[number]) => {
     const open = selected === l.id;
-    const d = lr.seats - was;
+    const d = was === null ? 0 : lr.seats - was;
     const agr = standard ? s.agreements.find((a) => a.members.includes(l.id) && a.enabled) : undefined;
     const partner = agr ? s.lists.find((x) => x.id === agr.members.find((m) => m !== l.id)) : undefined;
     const out = lr.seats === 0;
@@ -55,7 +54,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
             <span className="lb-bar" aria-hidden>
               {out
                 ? <><i className="thr-fill" style={{ width: `${Math.min(100, (l.votes / Math.max(1, thr)) * 100)}%`, background: l.color }} /><span className="thr-tick" /></>
-                : <><i style={{ width: `${(lr.seats / scale) * 100}%`, background: l.color }} />{d !== 0 && <span className="was" style={{ width: `${(was / scale) * 100}%` }} />}</>}
+                : <><i style={{ width: `${(lr.seats / scale) * 100}%`, background: l.color }} />{d !== 0 && <span className="was" style={{ width: `${((was ?? 0) / scale) * 100}%` }} />}</>}
             </span>
             <span className="lb-sub">
               {standard && <>{fmtInt(l.votes)} · </>}{fmtPct(l.votes, total, digits)}
@@ -92,6 +91,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   return (
     <section className="panel lbars" aria-label={L('Lists', 'הרשימות')}>
       <header><h2>{L('Lists', 'הרשימות')}</h2><span className="spacer" /><span className="small muted">{L('seats', 'מנדטים')}</span></header>
+      {groups.map(g => <p key={g.key} className="lb-group-comparison small ink2">{L(`Ran separately: together ${g.seatsB}, officially ${g.seatsA} as `, `רצו בנפרד: יחד ${g.seatsB}, בפועל ${g.seatsA} בתור `)}{g.aIds.map(id => listLabel(base.lists.find(l => l.id === id)!, lang)).join(' + ')}</p>)}
       <ol className="lb">
         {inKnesset.map(row)}
         {outside.length > 0 && (

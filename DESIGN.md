@@ -246,7 +246,7 @@ A restrained cool-neutral board with one navy accent; the only saturated colour 
 
 **Below 1100px.** One column, same order.
 
-**Phones (760px and below).** The band becomes static and wraps (brand on its own line, tool labels hidden to icons, the election selector flexes); the tools strip sticks to the top as a single sideways-scrolling row whose trailing edge fades over 32px (the fade flips side in right-to-left). The board stacks: chamber, blocs, figures, then the lists; the side panel becomes a full-screen sheet; bloc corridor labels give way to a legend of full bloc names beneath the strip. Gutters tighten to 8px. At 600px two-column field grids stack and what-if rows reflow to question over answer, action beside.
+**Phones (760px and below).** The band becomes static and wraps (brand on its own line, tool labels hidden to icons, the election selector occupies its own full-width line); the tools strip sticks to the top as a single sideways-scrolling row whose trailing edge fades over 32px (the fade flips side in right-to-left). The board stacks: chamber, blocs, figures, then the lists; the side panel becomes a full-screen sheet; bloc corridor labels give way to a legend of full bloc names beneath the strip. Gutters tighten to 8px. At 600px two-column field grids stack and what-if rows reflow to question over answer, action beside.
 
 **Rhythm.** A 2/4/6/8/12/16px scale. 8px between controls in a row, 12px between panels, 16px band and page gutters on desktop, 6–8px on phones. Table cells are 5px 8px; panel headers 8px 12px; panel bodies 10px 12px.
 
@@ -347,3 +347,13 @@ State moves, it does not perform: switch 0.15s; corridors and colour pieces 0.3s
 - **Don't** let text replace the picture: every tool page leads with its drawing (chambers, bars against the 61 line, seat-change bars), and tables come after it.
 - **Don't** draw a bloc as an extra bar; it is a soft region behind its members.
 - **Don't** shrink a seat graphic off the 120-seat scale.
+
+### Comparison and table interaction
+
+Lists that ran separately share one comparison against their origin-connected official group,
+using the same grouping as Compare. Their individual seat bars and detail headers have no
+change badge or official outline. The Overview states the combined and official seats once.
+Coalition chips use member-assigned bloc pieces: a party seated outside its list’s bloc has
+its own named chip, with those seats removed from the list chip. This remains arithmetic only.
+Table names that open details are native buttons with the standard visible focus ring.
+Escape restores an uncommitted field first; otherwise it closes the open panel.

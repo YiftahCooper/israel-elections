@@ -4,7 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import './locality-map.css';
 import { isEnvelopeRow, type LocalityDataset, type LocalityRow } from '../../data/schema.ts';
 import type { LocalityLocations } from '../../data/locality-coordinates.ts';
-import type { Scenario } from '../../model/scenario.ts';
+import type { SimList, Scenario } from '../../model/scenario.ts';
 import { allocationOf, listLabel, seatBlocsOf } from '../derive.ts';
 import { localityWinner, matchesLocality, nearestLocality } from '../locality-map-model.ts';
 import { useL, useLang } from '../i18n.ts';
@@ -27,7 +27,7 @@ const photonCache = new Map<string, PhotonFeature[]>();
 let lastRequest = 0;
 interface PhotonFeature { geometry: { coordinates: [number, number] }; properties: Record<string, string> }
 
-export function LocalityMap({ s, data, locations, locationError }: { s: Scenario; data: LocalityDataset; locations: LocalityLocations; locationError: boolean }) {
+export function LocalityMap({ s, data, historicalLists, locations, locationError }: { s: Scenario; data: LocalityDataset; historicalLists: (SimList | null)[]; locations: LocalityLocations; locationError: boolean }) {
   const L = useL(), lang = useLang();
   const container = useRef<HTMLDivElement>(null), map = useRef<Leaflet.Map | null>(null);
   const [mode, setMode] = useState<'bloc' | 'list'>('bloc');
@@ -128,7 +128,7 @@ export function LocalityMap({ s, data, locations, locationError }: { s: Scenario
       <p>{L('Valid votes: ','קולות כשרים: ')}{fmtInt(selected.valid)} · {L('Votes cast: ','מצביעים: ')}{fmtInt(selected.votesCast)} · {L('Turnout: ','הצבעה: ')}{selected.registered?fmtPct(selected.votesCast,selected.registered,1):L('Unavailable','לא זמין')}</p>
       <p className="small ink2">{L('Turnout excludes double-envelope votes. Coordinates are CBS locality reference points, not polling stations.', 'ההצבעה אינה כוללת מעטפות חיצוניות. המיקום הוא נקודת ייחוס של הלמ״ס ליישוב ולא מיקום קלפי.')}</p>
       <div className="tablewrap"><table className="tbl"><thead><tr><th>{L('List','רשימה')}</th><th>{L('Votes','קולות')}</th><th>{L('Share','שיעור')}</th></tr></thead><tbody>{selected.votes.map((v,k)=>({v,k})).filter(x=>x.v>0).sort((a,b)=>b.v-a.v).map(({v,k})=>{
-        const l=s.lists.find(x=>x.id===data.listIds[k]);return <tr key={k}><td>{l?listLabel(l,lang):data.listIds[k]}</td><td>{fmtInt(v)}</td><td>{fmtPct(v,selected.valid,1)}</td></tr>;
+        const l=historicalLists[k];return <tr key={k}><td>{l?listLabel(l,lang):data.listIds[k]}</td><td>{fmtInt(v)}</td><td>{fmtPct(v,selected.valid,1)}</td></tr>;
       })}</tbody></table></div>
     </section>}
   </div>;

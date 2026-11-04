@@ -72,10 +72,10 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
       <span className="spacer" />
       <button className="tool" onClick={undo} disabled={!canUndo} title={L('Undo (Ctrl+Z)', 'ביטול (Ctrl+Z)')} aria-label={L('Undo', 'ביטול')}><Undo2 className="icon" aria-hidden /></button>
       <button className="tool" onClick={redo} disabled={!canRedo} title={L('Redo (Ctrl+Y)', 'חזרה (Ctrl+Y)')} aria-label={L('Redo', 'חזרה')}><Redo2 className="icon" aria-hidden /></button>
-      <button className="tool" onClick={() => { if (!s?.log.length || confirm(L('Reset the whole election to the historical result? (Undo can restore it.)', 'לאפס את כל הבחירות לתוצאה ההיסטורית? (ניתן לבטל)'))) resetAll(); }} disabled={!s?.log.length}>
+      <button className="tool" aria-label={L('Start over', 'התחלה מחדש')} title={L('Start over', 'התחלה מחדש')} onClick={() => { if (!s?.log.length || confirm(L('Reset the whole election to the historical result? (Undo can restore it.)', 'לאפס את כל הבחירות לתוצאה ההיסטורית? (ניתן לבטל)'))) resetAll(); }} disabled={!s?.log.length}>
         <RotateCcw className="icon" aria-hidden /><span className="label">{L('Start over', 'התחלה מחדש')}</span></button>
       <div style={{ position: 'relative' }} ref={menuRef}>
-        <button className="tool" ref={menuButton} aria-expanded={menu} aria-controls="scenarios-menu" onClick={() => setMenu((m) => !m)}>
+        <button className="tool" aria-label={L('Save & share', 'שמירה ושיתוף')} title={L('Save & share', 'שמירה ושיתוף')} ref={menuButton} aria-expanded={menu} aria-controls="scenarios-menu" onClick={() => setMenu((m) => !m)}>
           <Share2 className="icon" aria-hidden /><span className="label">{L('Save & share', 'שמירה ושיתוף')}</span><ChevronDown className="icon sm" aria-hidden /></button>
         {menu && (
           <div className="menu-pop" id="scenarios-menu">
@@ -120,7 +120,7 @@ export function TopBar({ s, r, ds, baseR }: { s: Scenario | null; r: AllocationR
         }} />
       </div>
       <Seg label={L('Language', 'שפה')} value={lang} onChange={(v) => setState({ lang: v })} options={[{ v: 'he', label: 'עב' }, { v: 'en', label: 'EN' }]} />
-      <button className="tool" aria-label={theme === 'dark' ? L('Light theme', 'מצב בהיר') : L('Dark theme', 'מצב כהה')} onClick={() => setState({ theme: theme === 'dark' ? 'light' : 'dark' })}>
+      <button className="tool" title={theme === 'dark' ? L('Light theme', 'מצב בהיר') : L('Dark theme', 'מצב כהה')} aria-label={theme === 'dark' ? L('Light theme', 'מצב בהיר') : L('Dark theme', 'מצב כהה')} onClick={() => setState({ theme: theme === 'dark' ? 'light' : 'dark' })}>
         {theme === 'dark' ? <Sun className="icon" aria-hidden /> : <Moon className="icon" aria-hidden />}</button>
     </header>
   );

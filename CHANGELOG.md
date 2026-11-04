@@ -8,6 +8,12 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 
 ### Fixed
 
+- **Acceptance repairs (4 Nov 2026).** Compare and coalition arithmetic respect member-level bloc moves;
+  separately run lists share one official comparison. Seat safety preserves search qualifications.
+  Phone election labels and named tools stay visible or accessible; table actions work by keyboard,
+  Escape cancels drafts before closing panels, locality results retain historical names, and Compare
+  draws change in neutral ink. The counting engine is unchanged.
+
 - **Editing blocs (4 Nov 2026).** Editing blocs was four steps deep (a band, its detail, a Standard-only button, a
   table of menus) and renaming or recolouring was hard to find. Clicking a bloc, or "Edit blocs", now opens a bloc
   editor beside the chamber at every level: each bloc is a card whose name is edited in place and whose colour comes

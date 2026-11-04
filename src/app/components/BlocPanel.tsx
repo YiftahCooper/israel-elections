@@ -224,6 +224,6 @@ function BlocName({ value, onCommit, label, autoFocus }: { value: string; onComm
   return (
     <input ref={ref} className="bp-name" type="text" value={text} aria-label={label} dir="auto"
       onChange={(e) => setText(e.target.value)} onBlur={() => onCommit(text.trim() || value)}
-      onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); if (e.key === 'Escape') { setText(value); e.stopPropagation(); } }} />
+      onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); if (e.key === 'Escape' && text !== value) { setText(value); e.stopPropagation(); } }} />
   );
 }

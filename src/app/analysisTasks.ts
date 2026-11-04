@@ -4,7 +4,8 @@ import { goals, minimalChange, sweepVotes, type SearchResult, type SweepResult, 
 import type { AllocationInput } from '../engine/types.ts';
 
 export interface SecurityItem { id: string; qualified: boolean; seats: number }
-export interface SecurityRow { id: string; seats: number; gain: number | null; lose: number | null; qualify: number | null }
+export interface SecurityFigure { value: number | null; exact: boolean; reason?: SearchResult['reason']; limit: number; nonMonotonic: boolean }
+export interface SecurityRow { qualification: Partial<Record<SecurityPart, SecurityFigure>>; id: string; seats: number; gain: number | null; lose: number | null; qualify: number | null }
 /** 'qualify' for a list below the threshold; 'gain' and 'lose' for a qualified list */
 export type SecurityPart = ListGoal;
 
@@ -23,10 +24,10 @@ export type AnalysisTask =
 
 export interface TransferOutcome { found: boolean; votes: bigint | null; exact: boolean; reason?: SearchResult['reason'] }
 export type TaskResult<T extends AnalysisTask> =
-  T extends { kind: 'listSearch' } ? SearchResult : T extends { kind: 'security' } ? number | null : T extends { kind: 'groupTransfer' } ? TransferOutcome : SweepResult;
+  T extends { kind: 'listSearch' } ? SearchResult : T extends { kind: 'security' } ? SecurityFigure : T extends { kind: 'groupTransfer' } ? TransferOutcome : SweepResult;
 
 export function runTask<T extends AnalysisTask>(task: T): TaskResult<T>;
-export function runTask(task: AnalysisTask): SearchResult | number | null | TransferOutcome | SweepResult {
+export function runTask(task: AnalysisTask): SearchResult | SecurityFigure | TransferOutcome | SweepResult {
   switch (task.kind) {
     case 'listSearch': return listSearch(task.input, task.src, task.goal, task.id, task.seats);
     case 'security': return securityPart(task.input, task.src, task.part, task.item);
@@ -49,14 +50,14 @@ export function listSearch(input: AllocationInput, src: VoteSource, goal: ListGo
 }
 
 /** The figure for one part: the minimum found (for 'lose', the votes that can go without loss), or null when none was found. */
-export function securityPart(input: AllocationInput, src: VoteSource, part: SecurityPart, item: SecurityItem): number | null {
+export function securityPart(input: AllocationInput, src: VoteSource, part: SecurityPart, item: SecurityItem): SecurityFigure {
   const m = listSearch(input, src, part, item.id, item.seats);
-  return m.found ? Number(m.votes) - (part === 'lose' ? 1 : 0) : null;
+  return { value: m.found ? Number(m.votes) - (part === 'lose' ? 1 : 0) : null, exact: m.exact, reason: m.reason, limit: Number(m.limit), nonMonotonic: m.nonMonotonic };
 }
 
 /** Assembles a list's row from its parts (all parts of `partsOf(item)` must be present). */
-export function securityRow(item: SecurityItem, parts: Partial<Record<SecurityPart, number | null>>): SecurityRow {
+export function securityRow(item: SecurityItem, parts: Partial<Record<SecurityPart, SecurityFigure>>): SecurityRow {
   return item.qualified
-    ? { id: item.id, seats: item.seats, gain: parts.gain ?? null, lose: parts.lose ?? null, qualify: null }
-    : { id: item.id, seats: 0, gain: null, lose: null, qualify: parts.qualify ?? null };
+    ? { qualification: parts, id: item.id, seats: item.seats, gain: parts.gain?.value ?? null, lose: parts.lose?.value ?? null, qualify: null }
+    : { qualification: parts, id: item.id, seats: 0, gain: null, lose: null, qualify: parts.qualify?.value ?? null };
 }

@@ -60,7 +60,7 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
                 {editing === x.id ? (
                   <input type="text" autoFocus value={draft} onChange={(e) => setDraft(e.target.value)} aria-label={L('Candidate name', 'שם המועמד')}
                     onBlur={() => { if (draft.trim() && draft !== x.nameHe) commit(c.map((y) => (y.id === x.id ? { ...y, nameHe: draft.trim(), displayNameHe: undefined } : y)), `rename ${shownName(x)}`); setEditing(null); }}
-                    onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); if (e.key === 'Escape') setEditing(null); }} />
+                    onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); if (e.key === 'Escape') { if (draft !== x.nameHe) { e.preventDefault(); e.stopPropagation(); } setDraft(x.nameHe); setEditing(null); } }} />
                 ) : (
                   <span lang="he">{shownName(x)}</span>
                 )}
