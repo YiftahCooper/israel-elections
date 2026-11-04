@@ -1,0 +1,704 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-04T07:54:31+00:00",
+  "title": "Design System: Israeli Elections Explorer",
+  "extensions": {
+    "colorMeta": {
+      "shell-navy": {
+        "role": "primary",
+        "displayName": "Exchange Navy",
+        "canonical": "#0e2f56",
+        "cssVar": "--shell",
+        "darkValue": "#0a2240",
+        "tonalRamp": [
+          "oklch(15% 0.022 255)",
+          "oklch(26% 0.038 255)",
+          "oklch(37% 0.054 255)",
+          "oklch(48% 0.070 255)",
+          "oklch(60% 0.073 255)",
+          "oklch(72% 0.055 255)",
+          "oklch(84% 0.038 255)",
+          "oklch(95% 0.022 255)"
+        ]
+      },
+      "shell-navy-raised": {
+        "role": "primary",
+        "displayName": "Raised Navy",
+        "canonical": "#1b4675",
+        "cssVar": "--shell-2",
+        "darkValue": "#173a63",
+        "tonalRamp": [
+          "oklch(15% 0.025 253)",
+          "oklch(26% 0.044 253)",
+          "oklch(37% 0.063 253)",
+          "oklch(48% 0.081 253)",
+          "oklch(60% 0.085 253)",
+          "oklch(72% 0.064 253)",
+          "oklch(84% 0.044 253)",
+          "oklch(95% 0.025 253)"
+        ]
+      },
+      "shell-ink": {
+        "role": "primary",
+        "displayName": "Band Ink",
+        "canonical": "#ffffff",
+        "cssVar": "--shell-ink",
+        "darkValue": "#f3f6fa",
+        "tonalRamp": [
+          "oklch(15% 0.000 90)",
+          "oklch(26% 0.000 90)",
+          "oklch(37% 0.000 90)",
+          "oklch(48% 0.000 90)",
+          "oklch(60% 0.000 90)",
+          "oklch(72% 0.000 90)",
+          "oklch(84% 0.000 90)",
+          "oklch(95% 0.000 90)"
+        ]
+      },
+      "shell-ink-quiet": {
+        "role": "primary",
+        "displayName": "Band Quiet Ink",
+        "canonical": "#c9d6e6",
+        "cssVar": "--shell-ink-2",
+        "darkValue": "#a9bbd1",
+        "tonalRamp": [
+          "oklch(15% 0.007 254)",
+          "oklch(26% 0.012 254)",
+          "oklch(37% 0.018 254)",
+          "oklch(48% 0.023 254)",
+          "oklch(60% 0.024 254)",
+          "oklch(72% 0.018 254)",
+          "oklch(84% 0.012 254)",
+          "oklch(95% 0.007 254)"
+        ]
+      },
+      "page-ground": {
+        "role": "neutral",
+        "displayName": "Cool Ground",
+        "canonical": "#e8ecf0",
+        "cssVar": "--page",
+        "darkValue": "#0f1215",
+        "tonalRamp": [
+          "oklch(15% 0.002 248)",
+          "oklch(26% 0.003 248)",
+          "oklch(37% 0.005 248)",
+          "oklch(48% 0.006 248)",
+          "oklch(60% 0.006 248)",
+          "oklch(72% 0.005 248)",
+          "oklch(84% 0.003 248)",
+          "oklch(95% 0.002 248)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "canonical": "#ffffff",
+        "cssVar": "--surface",
+        "darkValue": "#171b20",
+        "tonalRamp": [
+          "oklch(15% 0.000 90)",
+          "oklch(26% 0.000 90)",
+          "oklch(37% 0.000 90)",
+          "oklch(48% 0.000 90)",
+          "oklch(60% 0.000 90)",
+          "oklch(72% 0.000 90)",
+          "oklch(84% 0.000 90)",
+          "oklch(95% 0.000 90)"
+        ]
+      },
+      "surface-quiet": {
+        "role": "neutral",
+        "displayName": "Quiet Surface",
+        "canonical": "#f4f6f8",
+        "cssVar": "--surface-2",
+        "darkValue": "#1c2127",
+        "tonalRamp": [
+          "oklch(15% 0.001 248)",
+          "oklch(26% 0.002 248)",
+          "oklch(37% 0.002 248)",
+          "oklch(48% 0.003 248)",
+          "oklch(60% 0.003 248)",
+          "oklch(72% 0.002 248)",
+          "oklch(84% 0.002 248)",
+          "oklch(95% 0.001 248)"
+        ]
+      },
+      "open-tint": {
+        "role": "neutral",
+        "displayName": "Open Tint",
+        "canonical": "#edf2f8",
+        "cssVar": "--open",
+        "darkValue": "#1b2634",
+        "tonalRamp": [
+          "oklch(15% 0.003 253)",
+          "oklch(26% 0.005 253)",
+          "oklch(37% 0.007 253)",
+          "oklch(48% 0.008 253)",
+          "oklch(60% 0.009 253)",
+          "oklch(72% 0.007 253)",
+          "oklch(84% 0.005 253)",
+          "oklch(95% 0.003 253)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#15171a",
+        "cssVar": "--ink",
+        "darkValue": "#e8eaec",
+        "tonalRamp": [
+          "oklch(15% 0.002 258)",
+          "oklch(26% 0.003 258)",
+          "oklch(37% 0.005 258)",
+          "oklch(48% 0.006 258)",
+          "oklch(60% 0.006 258)",
+          "oklch(72% 0.005 258)",
+          "oklch(84% 0.003 258)",
+          "oklch(95% 0.002 258)"
+        ]
+      },
+      "ink-secondary": {
+        "role": "neutral",
+        "displayName": "Secondary Ink",
+        "canonical": "#454d55",
+        "cssVar": "--ink-2",
+        "darkValue": "#b9c0c7",
+        "tonalRamp": [
+          "oklch(15% 0.005 248)",
+          "oklch(26% 0.008 248)",
+          "oklch(37% 0.011 248)",
+          "oklch(48% 0.015 248)",
+          "oklch(60% 0.015 248)",
+          "oklch(72% 0.012 248)",
+          "oklch(84% 0.008 248)",
+          "oklch(95% 0.005 248)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "canonical": "#5d656e",
+        "cssVar": "--muted",
+        "darkValue": "#9aa2ab",
+        "tonalRamp": [
+          "oklch(15% 0.005 251)",
+          "oklch(26% 0.008 251)",
+          "oklch(37% 0.012 251)",
+          "oklch(48% 0.015 251)",
+          "oklch(60% 0.016 251)",
+          "oklch(72% 0.012 251)",
+          "oklch(84% 0.008 251)",
+          "oklch(95% 0.005 251)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "#dde2e7",
+        "cssVar": "--rule",
+        "darkValue": "#29303a",
+        "tonalRamp": [
+          "oklch(15% 0.002 248)",
+          "oklch(26% 0.004 248)",
+          "oklch(37% 0.006 248)",
+          "oklch(48% 0.008 248)",
+          "oklch(60% 0.008 248)",
+          "oklch(72% 0.006 248)",
+          "oklch(84% 0.004 248)",
+          "oklch(95% 0.002 248)"
+        ]
+      },
+      "rule-strong": {
+        "role": "neutral",
+        "displayName": "Strong Rule",
+        "canonical": "#c4cbd3",
+        "cssVar": "--rule-2",
+        "darkValue": "#3a434e",
+        "tonalRamp": [
+          "oklch(15% 0.004 252)",
+          "oklch(26% 0.006 252)",
+          "oklch(37% 0.009 252)",
+          "oklch(48% 0.012 252)",
+          "oklch(60% 0.012 252)",
+          "oklch(72% 0.009 252)",
+          "oklch(84% 0.006 252)",
+          "oklch(95% 0.004 252)"
+        ]
+      },
+      "axis": {
+        "role": "neutral",
+        "displayName": "Axis",
+        "canonical": "#b5bdc6",
+        "cssVar": "--axis",
+        "darkValue": "#4a535e",
+        "tonalRamp": [
+          "oklch(15% 0.004 251)",
+          "oklch(26% 0.007 251)",
+          "oklch(37% 0.010 251)",
+          "oklch(48% 0.014 251)",
+          "oklch(60% 0.014 251)",
+          "oklch(72% 0.011 251)",
+          "oklch(84% 0.007 251)",
+          "oklch(95% 0.004 251)"
+        ]
+      },
+      "switch-off": {
+        "role": "neutral",
+        "displayName": "Switch Off",
+        "canonical": "#7d8791",
+        "cssVar": "--switch-off",
+        "darkValue": "#75808c",
+        "tonalRamp": [
+          "oklch(15% 0.005 248)",
+          "oklch(26% 0.009 248)",
+          "oklch(37% 0.013 248)",
+          "oklch(48% 0.017 248)",
+          "oklch(60% 0.017 248)",
+          "oklch(72% 0.013 248)",
+          "oklch(84% 0.009 248)",
+          "oklch(95% 0.005 248)"
+        ]
+      },
+      "chart-grid": {
+        "role": "neutral",
+        "displayName": "Chart Grid",
+        "canonical": "#e7eae8",
+        "cssVar": "--grid",
+        "darkValue": "#232931",
+        "tonalRamp": [
+          "oklch(15% 0.001 157)",
+          "oklch(26% 0.002 157)",
+          "oklch(37% 0.003 157)",
+          "oklch(48% 0.004 157)",
+          "oklch(60% 0.004 157)",
+          "oklch(72% 0.003 157)",
+          "oklch(84% 0.002 157)",
+          "oklch(95% 0.001 157)"
+        ]
+      },
+      "focus-blue": {
+        "role": "secondary",
+        "displayName": "Focus Blue",
+        "canonical": "#2160c4",
+        "cssVar": "--focus",
+        "darkValue": "#78a8ff",
+        "tonalRamp": [
+          "oklch(15% 0.046 260)",
+          "oklch(26% 0.080 260)",
+          "oklch(37% 0.114 260)",
+          "oklch(48% 0.148 260)",
+          "oklch(60% 0.154 260)",
+          "oklch(72% 0.117 260)",
+          "oklch(84% 0.080 260)",
+          "oklch(95% 0.046 260)"
+        ]
+      },
+      "threshold-rust": {
+        "role": "tertiary",
+        "displayName": "Threshold Rust",
+        "canonical": "#9b3a24",
+        "cssVar": "--thr",
+        "darkValue": "#f0a184",
+        "tonalRamp": [
+          "oklch(15% 0.037 34)",
+          "oklch(26% 0.064 34)",
+          "oklch(37% 0.091 34)",
+          "oklch(48% 0.117 34)",
+          "oklch(60% 0.122 34)",
+          "oklch(72% 0.093 34)",
+          "oklch(84% 0.064 34)",
+          "oklch(95% 0.037 34)"
+        ]
+      },
+      "threshold-hatch-a": {
+        "role": "tertiary",
+        "displayName": "Threshold Hatch A",
+        "canonical": "#f6e5df",
+        "cssVar": "--thr-a",
+        "darkValue": "#2f201c",
+        "tonalRamp": [
+          "oklch(15% 0.006 41)",
+          "oklch(26% 0.010 41)",
+          "oklch(37% 0.014 41)",
+          "oklch(48% 0.018 41)",
+          "oklch(60% 0.019 41)",
+          "oklch(72% 0.014 41)",
+          "oklch(84% 0.010 41)",
+          "oklch(95% 0.006 41)"
+        ]
+      },
+      "threshold-hatch-b": {
+        "role": "tertiary",
+        "displayName": "Threshold Hatch B",
+        "canonical": "#fbf3f0",
+        "cssVar": "--thr-b",
+        "darkValue": "#251a17",
+        "tonalRamp": [
+          "oklch(15% 0.003 42)",
+          "oklch(26% 0.005 42)",
+          "oklch(37% 0.006 42)",
+          "oklch(48% 0.008 42)",
+          "oklch(60% 0.009 42)",
+          "oklch(72% 0.007 42)",
+          "oklch(84% 0.005 42)",
+          "oklch(95% 0.003 42)"
+        ]
+      },
+      "error-red": {
+        "role": "status",
+        "displayName": "Error Red",
+        "canonical": "#b42318",
+        "cssVar": "--bad",
+        "darkValue": "#ff8a7a",
+        "tonalRamp": [
+          "oklch(15% 0.050 30)",
+          "oklch(26% 0.086 30)",
+          "oklch(37% 0.122 30)",
+          "oklch(48% 0.159 30)",
+          "oklch(60% 0.166 30)",
+          "oklch(72% 0.126 30)",
+          "oklch(84% 0.086 30)",
+          "oklch(95% 0.050 30)"
+        ]
+      },
+      "warn-bg": {
+        "role": "status",
+        "displayName": "Warning Ground",
+        "canonical": "#fff3d1",
+        "cssVar": "--warn-bg",
+        "darkValue": "#3a2f10",
+        "tonalRamp": [
+          "oklch(15% 0.013 91)",
+          "oklch(26% 0.022 91)",
+          "oklch(37% 0.031 91)",
+          "oklch(48% 0.040 91)",
+          "oklch(60% 0.042 91)",
+          "oklch(72% 0.032 91)",
+          "oklch(84% 0.022 91)",
+          "oklch(95% 0.013 91)"
+        ]
+      },
+      "warn-ink": {
+        "role": "status",
+        "displayName": "Warning Ink",
+        "canonical": "#5e4100",
+        "cssVar": "--warn-ink",
+        "darkValue": "#f5d58a",
+        "tonalRamp": [
+          "oklch(15% 0.022 80)",
+          "oklch(26% 0.039 80)",
+          "oklch(37% 0.055 80)",
+          "oklch(48% 0.072 80)",
+          "oklch(60% 0.075 80)",
+          "oklch(72% 0.057 80)",
+          "oklch(84% 0.039 80)",
+          "oklch(95% 0.022 80)"
+        ]
+      },
+      "error-bg": {
+        "role": "status",
+        "displayName": "Error Ground",
+        "canonical": "#fde8e6",
+        "cssVar": "--err-bg",
+        "darkValue": "#3b1714",
+        "tonalRamp": [
+          "oklch(15% 0.006 24)",
+          "oklch(26% 0.011 24)",
+          "oklch(37% 0.016 24)",
+          "oklch(48% 0.020 24)",
+          "oklch(60% 0.021 24)",
+          "oklch(72% 0.016 24)",
+          "oklch(84% 0.011 24)",
+          "oklch(95% 0.006 24)"
+        ]
+      },
+      "experimental-violet": {
+        "role": "tertiary",
+        "displayName": "Experimental Violet",
+        "canonical": "#5b47c9",
+        "cssVar": "--exp",
+        "darkValue": "#a395f0",
+        "tonalRamp": [
+          "oklch(15% 0.052 284)",
+          "oklch(26% 0.091 284)",
+          "oklch(37% 0.129 284)",
+          "oklch(48% 0.168 284)",
+          "oklch(60% 0.175 284)",
+          "oklch(72% 0.133 284)",
+          "oklch(84% 0.091 284)",
+          "oklch(95% 0.052 284)"
+        ]
+      },
+      "ballot-slip": {
+        "role": "neutral",
+        "displayName": "Ballot Slip Paper",
+        "canonical": "#ffffff",
+        "cssVar": "--slip",
+        "darkValue": "#f7f6f1",
+        "tonalRamp": [
+          "oklch(15% 0.000 90)",
+          "oklch(26% 0.000 90)",
+          "oklch(37% 0.000 90)",
+          "oklch(48% 0.000 90)",
+          "oklch(60% 0.000 90)",
+          "oklch(72% 0.000 90)",
+          "oklch(84% 0.000 90)",
+          "oklch(95% 0.000 90)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "brand": {
+        "displayName": "Brand",
+        "purpose": "Product name in the band only; 15px on phones."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings, seat counts, figure values, the band's election selector."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Panel headers, the active tab, key facts in an opened list."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Base text with tabular figures."
+      },
+      "body-dense": {
+        "displayName": "Body dense",
+        "purpose": "Band tools, tool tables, banners, session line, tabs."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Column headers, the threshold rule, chips, figure keys (400)."
+      },
+      "formula": {
+        "displayName": "Formula",
+        "purpose": "Walkthrough formulas, isolated LTR on quiet surface."
+      }
+    },
+    "shadows": [
+      {
+        "name": "pop",
+        "value": "0 6px 24px rgba(14, 47, 86, .16), 0 1px 3px rgba(14, 47, 86, .10)",
+        "darkValue": "0 8px 28px rgba(0, 0, 0, .5)",
+        "purpose": "Floating layers only: share menu, info popovers, chamber tooltip, toast."
+      },
+      {
+        "name": "switch-knob",
+        "value": "0 1px 2px rgba(0,0,0,.25)",
+        "purpose": "Switch thumb only."
+      }
+    ],
+    "motion": [
+      {
+        "name": "switch",
+        "value": "0.15s",
+        "purpose": "Switch track and knob."
+      },
+      {
+        "name": "corridor",
+        "value": "0.3s ease",
+        "purpose": "Bloc corridors and colour pieces regrow with seats."
+      },
+      {
+        "name": "seat-fill",
+        "value": "0.35s ease",
+        "purpose": "Chamber seat colour."
+      },
+      {
+        "name": "bars",
+        "value": "0.4s ease",
+        "purpose": "Chart bars."
+      },
+      {
+        "name": "majority-bar",
+        "value": "0.45s ease",
+        "purpose": "Majority bar segments."
+      },
+      {
+        "name": "tick",
+        "value": "1.2s ease-out",
+        "purpose": "A changed seat count flashes focus blue (30% mix) once."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce",
+        "purpose": "Disables corridor, piece and tick motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "phone",
+        "value": "760px",
+        "purpose": "Static band, icon-only tools, sideways tools strip with edge fade, table to list/share/seats/change, bloc legend under strip."
+      },
+      {
+        "name": "stack",
+        "value": "600px",
+        "purpose": "Two-column field grids stack; what-if rows reflow."
+      },
+      {
+        "name": "one-column",
+        "value": "1100px",
+        "purpose": "Board collapses to one column."
+      },
+      {
+        "name": "sticky-side",
+        "value": "1101px",
+        "purpose": "Side column sticky (top 100px) with own scroll and 28px fade; table header sticky at 92px."
+      }
+    ],
+    "themes": {
+      "light": ":root",
+      "dark": "[data-theme=\"dark\"] remaps the same tokens; corridor tint 14%->22%, dimmed seats .22->.38, tab underline and checked switch use focus blue."
+    },
+    "direction": "Hebrew RTL default, English LTR; logical properties throughout; chamber, charts and formulas pinned LTR."
+  },
+  "components": [
+    {
+      "name": "Button",
+      "kind": "button",
+      "refersTo": "button",
+      "description": "Default control: flat surface, strong-rule hairline, squared 5px.",
+      "html": "<button class=\"ds-btn\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"18\" cy=\"5\" r=\"3\"/><circle cx=\"6\" cy=\"12\" r=\"3\"/><circle cx=\"18\" cy=\"19\" r=\"3\"/><line x1=\"8.59\" y1=\"13.51\" x2=\"15.42\" y2=\"17.49\"/><line x1=\"15.41\" y1=\"6.51\" x2=\"8.59\" y2=\"10.49\"/></svg>Save and share</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:4px 11px;border:1px solid var(--rule-2,#c4cbd3);border-radius:5px;background:var(--surface,#fff);color:var(--ink,#15171a);font:14px/1.2 var(--font,'IBM Plex Sans Hebrew',system-ui,sans-serif);cursor:pointer}.ds-btn:hover{background:var(--surface-2,#f4f6f8);border-color:var(--axis,#b5bdc6)}.ds-btn:active{background:var(--open,#edf2f8)}.ds-btn:focus-visible{outline:2px solid var(--focus,#2160c4);outline-offset:2px}"
+    },
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one decisive action, filled navy.",
+      "html": "<button class=\"ds-btn-primary\">Open it in Standard</button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;min-height:32px;padding:4px 11px;border:1px solid var(--shell,#0e2f56);border-radius:5px;background:var(--shell,#0e2f56);color:var(--shell-ink,#fff);font:14px/1.2 var(--font,'IBM Plex Sans Hebrew',system-ui,sans-serif);cursor:pointer}.ds-btn-primary:hover{background:var(--shell-2,#1b4675);border-color:var(--shell-2,#1b4675)}.ds-btn-primary:focus-visible{outline:2px solid var(--focus,#2160c4);outline-offset:2px}"
+    },
+    {
+      "name": "Segmented Choice",
+      "kind": "custom",
+      "refersTo": "segment-pressed",
+      "description": "A choice shown as state: the current option pressed navy.",
+      "html": "<div class=\"ds-seg\" role=\"group\"><button aria-pressed=\"true\">Simple</button><button aria-pressed=\"false\">Standard</button><button aria-pressed=\"false\">Expert</button></div>",
+      "css": ".ds-seg{display:inline-flex;border:1px solid var(--rule-2,#c4cbd3);border-radius:5px;overflow:hidden;font:14px var(--font,'IBM Plex Sans Hebrew',system-ui,sans-serif)}.ds-seg button{border:0;background:var(--surface,#fff);color:var(--ink,#15171a);padding:4px 11px;min-height:30px;cursor:pointer;font:inherit}.ds-seg button+button{border-inline-start:1px solid var(--rule-2,#c4cbd3)}.ds-seg button:hover:not([aria-pressed=true]){background:var(--surface-2,#f4f6f8)}.ds-seg button[aria-pressed=true]{background:var(--shell,#0e2f56);color:var(--shell-ink,#fff);font-weight:600}.ds-seg button:focus-visible{outline:2px solid var(--focus,#2160c4);outline-offset:-2px}"
+    },
+    {
+      "name": "Switch",
+      "kind": "custom",
+      "description": "On/off state, never a verb button.",
+      "html": "<label class=\"ds-switch\"><input type=\"checkbox\" checked> In force</label>",
+      "css": ".ds-switch{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font:14px var(--font,'IBM Plex Sans Hebrew',system-ui,sans-serif);color:var(--ink,#15171a)}.ds-switch input{appearance:none;margin:0;width:32px;height:18px;border-radius:9px;background:var(--switch-off,#7d8791);position:relative;cursor:pointer;transition:background .15s}.ds-switch input::after{content:'';position:absolute;top:2px;inset-inline-start:2px;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:inset-inline-start .15s}.ds-switch input:checked{background:var(--shell,#0e2f56)}.ds-switch input:checked::after{inset-inline-start:16px}.ds-switch input:focus-visible{outline:2px solid var(--focus,#2160c4);outline-offset:2px}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Flat field with a strong-rule hairline; numbers end-aligned.",
+      "html": "<label class=\"ds-field\">Votes<input class=\"ds-input\" type=\"text\" value=\"1,167,589\"></label>",
+      "css": ".ds-field{display:grid;gap:3px;font:13px var(--font,'IBM Plex Sans Hebrew',system-ui,sans-serif);color:var(--ink-2,#454d55)}.ds-input{border:1px solid var(--rule-2,#c4cbd3);background:var(--surface,#fff);color:var(--ink,#15171a);border-radius:5px;padding:4px 8px;min-height:32px;width:120px;text-align:end;font:14px var(--font,'IBM Plex Sans Hebrew',system-ui,sans-serif);font-variant-numeric:tabular-nums;caret-color:var(--focus,#2160c4)}.ds-input:hover{border-color:var(--axis,#b5bdc6)}.ds-input:focus-visible{outline:2px solid var(--focus,#2160c4);outline-offset:2px}"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Pill tag; coalition chips tint with the party colour when included.",
+      "html": "<span class=\"ds-chip\">Agreement in force</span> <span class=\"ds-chip ds-chip-in\" style=\"--c:#1f5aa6\">Likud 27</span>",
+      "css": ".ds-chip{display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;border:1px solid var(--rule-2,#c4cbd3);background:var(--surface,#fff);color:var(--ink,#15171a);font:12.5px var(--font,'IBM Plex Sans Hebrew',system-ui,sans-serif)}.ds-chip-in{padding:3px 10px;font-size:13.5px;font-weight:600;cursor:pointer;background:color-mix(in srgb,var(--c) 20%,var(--surface,#fff));border-color:var(--c)}.ds-chip-in:hover{border-color:var(--ink-2,#454d55)}"
+    },
+    {
+      "name": "Shell Band",
+      "kind": "nav",
+      "refersTo": "band",
+      "description": "The 52px navy band with reversed controls.",
+      "html": "<header class=\"ds-band\"><b>Israeli Elections Explorer</b><select><option>2026 · 26th Knesset</option></select><div class=\"ds-bseg\"><button aria-pressed=\"true\">Simple</button><button>Standard</button></div><button class=\"ds-tool\">Undo</button></header>",
+      "css": ".ds-band{display:flex;align-items:center;gap:8px 12px;padding:8px 16px;min-height:52px;background:var(--shell,#0e2f56);color:var(--shell-ink,#fff);font:14px var(--font,'IBM Plex Sans Hebrew',system-ui,sans-serif)}.ds-band b{font-size:16px;font-weight:700}.ds-band select{background:var(--shell-ink,#fff);color:var(--shell,#0e2f56);border:0;font:700 15px var(--font,'IBM Plex Sans Hebrew',system-ui,sans-serif);min-height:34px;padding:4px 10px;border-radius:5px}.ds-bseg{display:inline-flex;border:1px solid rgba(255,255,255,.55);border-radius:5px;overflow:hidden}.ds-bseg button{border:0;background:transparent;color:inherit;padding:4px 11px;min-height:30px;font:inherit;cursor:pointer}.ds-bseg button[aria-pressed=true]{background:var(--shell-ink,#fff);color:var(--shell,#0e2f56);font-weight:600}.ds-tool{border:0;border-radius:5px;background:transparent;color:inherit;min-height:34px;padding:4px 9px;font:13.5px var(--font,'IBM Plex Sans Hebrew',system-ui,sans-serif);cursor:pointer}.ds-tool:hover,.ds-bseg button:hover:not([aria-pressed=true]){background:var(--shell-2,#1b4675)}.ds-band :focus-visible{outline:2px solid var(--focus,#2160c4);outline-offset:2px}"
+    },
+    {
+      "name": "Tools Strip",
+      "kind": "nav",
+      "refersTo": "tab-active",
+      "description": "Every tool by name on one line; later-level tools stay listed, muted.",
+      "html": "<nav class=\"ds-tabs\" role=\"tablist\"><button role=\"tab\" aria-selected=\"true\">What if...</button><button role=\"tab\">Coalitions</button><span class=\"ds-more\">Standard</span><button role=\"tab\" class=\"ds-locked\">Compare</button></nav>",
+      "css": ".ds-tabs{display:flex;align-items:center;background:var(--surface,#fff);border-block-end:1px solid var(--rule-2,#c4cbd3);padding-inline:12px;font:13.5px var(--font,'IBM Plex Sans Hebrew',system-ui,sans-serif)}.ds-tabs button{border:0;background:none;padding:9px 10px 7px;border-block-end:2.5px solid transparent;color:var(--ink-2,#454d55);font:500 13.5px var(--font,'IBM Plex Sans Hebrew',system-ui,sans-serif);cursor:pointer}.ds-tabs button:hover{color:var(--ink,#15171a)}.ds-tabs button[aria-selected=true]{color:var(--ink,#15171a);font-weight:700;border-block-end-color:var(--shell,#0e2f56)}.ds-tabs button:focus-visible{outline:2px solid var(--focus,#2160c4);outline-offset:-2px}.ds-more{font-size:12px;color:var(--muted,#5d656e);padding:0 8px 0 4px;border-inline-start:1px solid var(--rule,#dde2e7);margin-inline-start:4px}.ds-tabs .ds-locked{color:var(--muted,#5d656e);font-weight:400}"
+    },
+    {
+      "name": "Lists Table Rows",
+      "kind": "custom",
+      "refersTo": "table-row-open",
+      "description": "Ruled rows; the selected list reverses onto the navy plate; the threshold is a hatched rule.",
+      "html": "<table class=\"ds-lt\"><thead><tr><th>List</th><th class=\"n\">% valid</th><th class=\"n\">Seats</th><th class=\"n\">Change</th></tr></thead><tbody><tr class=\"open\"><td><b>Likud</b></td><td class=\"n\">22.84%</td><td class=\"n s\">29</td><td class=\"n\">&#9650;2</td></tr><tr><td><b>Yashar!</b></td><td class=\"n\">15.58%</td><td class=\"n s\">20</td><td class=\"n\">&#9660;1</td></tr><tr class=\"thr\"><td colspan=\"4\">Threshold · 184,971 votes (3.25%)</td></tr><tr class=\"out\"><td>Reservists</td><td class=\"n\">2.65%</td><td class=\"n s\">0</td><td class=\"n\">·</td></tr></tbody></table>",
+      "css": ".ds-lt{border-collapse:collapse;width:100%;background:var(--surface,#fff);color:var(--ink,#15171a);font:14px/1.45 var(--font,'IBM Plex Sans Hebrew',system-ui,sans-serif);font-variant-numeric:tabular-nums}.ds-lt th{font-size:12.5px;font-weight:600;color:var(--muted,#5d656e);text-align:start;padding:7px 8px;background:var(--surface-2,#f4f6f8);border-block-end:1px solid var(--rule-2,#c4cbd3)}.ds-lt td{padding:5px 8px;border-block-end:1px solid var(--rule,#dde2e7)}.ds-lt .n{text-align:end}.ds-lt td.s{font-weight:700;font-size:15px}.ds-lt tbody tr{cursor:pointer}.ds-lt tbody tr:hover td{background:var(--surface-2,#f4f6f8)}.ds-lt tr.open td{background:var(--shell,#0e2f56);color:var(--shell-ink,#fff);border-block-end-color:var(--shell,#0e2f56)}.ds-lt tr.thr td{padding:4px 10px;font-size:12.5px;font-weight:600;color:var(--thr,#9b3a24);background:repeating-linear-gradient(-45deg,var(--thr-a,#f6e5df) 0 6px,var(--thr-b,#fbf3f0) 6px 12px);border-block:1px solid color-mix(in srgb,var(--thr,#9b3a24) 40%,transparent)}.ds-lt tr.out td{color:var(--ink-2,#454d55)}.ds-lt tr.out td.s{color:var(--muted,#5d656e);font-weight:500}"
+    },
+    {
+      "name": "Bloc Corridor",
+      "kind": "custom",
+      "description": "A bloc as a pale tinted region holding its members' colour pieces, with the 61 milestone.",
+      "html": "<div class=\"ds-strip\"><span class=\"ds-ms\"><i>61</i></span><button class=\"ds-cor\" style=\"--bc:#1f5aa6;flex-grow:53\"><span class=\"ds-pc\"><i style=\"flex:27;background:#1f5aa6\"></i><i style=\"flex:26;background:#9aa7c7\"></i></span><span>Netanyahu bloc <b>53</b></span></button><button class=\"ds-cor\" style=\"--bc:#2a9d8f;flex-grow:48\" aria-expanded=\"true\"><span class=\"ds-pc\"><i style=\"flex:48;background:#2a9d8f\"></i></span><span>Opposition <b>48</b></span></button></div>",
+      "css": ".ds-strip{position:relative;display:flex;gap:3px;padding-top:14px;font:13px var(--font,'IBM Plex Sans Hebrew',system-ui,sans-serif);color:var(--ink,#15171a)}.ds-cor{flex-basis:0;min-width:0;border-radius:5px;padding:5px 6px;display:flex;flex-direction:column;gap:5px;border:1px solid transparent;background:color-mix(in srgb,var(--bc) 14%,transparent);cursor:pointer;text-align:start;font:inherit;color:inherit;transition:flex-grow .3s ease}.ds-cor:hover{border-color:color-mix(in srgb,var(--bc) 45%,transparent)}.ds-cor[aria-expanded=true]{border-color:var(--bc)}.ds-cor:focus-visible{outline:2px solid var(--focus,#2160c4);outline-offset:2px}.ds-pc{display:flex;gap:1px;height:14px;border-radius:3px;overflow:hidden}.ds-pc i{display:block}.ds-ms{position:absolute;top:0;bottom:-4px;inset-inline-start:50.8%;border-inline-start:2px dashed var(--ink,#15171a)}.ds-ms i{position:absolute;top:-2px;inset-inline-start:-15px;background:var(--shell,#0e2f56);color:var(--shell-ink,#fff);font:normal 700 11px/15px var(--font,'IBM Plex Sans Hebrew',system-ui,sans-serif);padding:0 5px;border-radius:3px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Market Board",
+    "overview": "The screen reads like a stock-exchange board or a business-press market table. The official result is the opening price; every edit the user makes is the session, and the board reprices live. A navy shell band sits over a cool grey ground, and the working material is white ruled tables: every list is one row carrying its numbers, and it opens in place, directly beneath itself, for its controls. Nothing is a card grid, and no feature hides behind a menu.\n\nDensity is high and deliberate. One workhorse face with tabular figures carries everything at almost one size; rank comes from weight and from the reversed navy plate on the selected row, not from big type. Party colour belongs to the parties: it appears in their ballot slips, seats, wedges and the pale tinted corridors of their blocs, never in the interface chrome. Change is drawn in neutral ink with a small drawn triangle, never green or red, so no camp is ever coloured as winning or losing.\n\nThe same board serves three levels (Simple, Standard, Expert). Levels thin the board by removing columns and controls; they never move a feature behind a click or hide that it exists. Hebrew right-to-left is the default and English left-to-right is equal; both have light and dark themes.",
+    "keyCharacteristics": [
+      "Navy shell band (52px) over a cool grey ground; white, hairline-ruled surfaces.",
+      "One face (IBM Plex Sans Hebrew, self-hosted 400/500/600/700) with tabular figures everywhere.",
+      "One data type size; rank carried by weight and the reversed navy plate.",
+      "Opened in place: rows, figures and bloc corridors expand beneath themselves.",
+      "Party colour only as party identity; change in neutral ink.",
+      "The threshold is a hatched rule inside the table.",
+      "Flat surfaces; shadow only on floating layers.",
+      "Logical (inline-start/end) layout throughout, so the board mirrors cleanly between Hebrew and English."
+    ],
+    "rules": [
+      {
+        "name": "The Neutral Ink Rule",
+        "body": "Change is drawn in ink (600 weight) with a drawn 8px triangle mark, never green or red. Colour on this board means \"this party\", never \"good\" or \"bad\" for a camp.",
+        "section": "colors"
+      },
+      {
+        "name": "The Party Owns Its Colour Rule",
+        "body": "Party and bloc colours come from the data (passed in as a per-element colour variable) and appear only as identity: ballot-slip borders, seats, chamber wedges, bloc pieces, coalition chips, and pale regions (12% for elected candidates, 14% / 22% dark for bloc corridors, 20% for an included coalition chip). They never colour buttons, tabs or chrome.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Navy Rule",
+        "body": "Navy is the only interface accent. It marks where you are (band, selected row, pressed choice, open tool), not decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Size Rule",
+        "body": "Data sits between 12.5px and 15px. Rank is carried by weight (400 / 600 / 700) and by the reversed navy plate, never by a larger size.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Rule",
+        "body": "Every number is tabular and end-aligned in its column; percentages and counts never jitter as they reprice.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Board Rule",
+        "body": "Panels, tables, figures and corridors never cast a shadow. If it sits on the board, it is ruled, not lifted.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** draw change in ink at 600 weight with the drawn triangle mark (Neutral Ink Rule).",
+      "**Do** open things in place: a row's detail beneath it, a figure across its grid row, a bloc's detail beneath the strip.",
+      "**Do** keep data between 12.5px and 15px and rank it by weight and the navy plate.",
+      "**Do** set every number tabular and end-aligned.",
+      "**Do** show party colour only as identity (slip border, seat, wedge, piece, pale region) and bloc membership only as a pale tinted region behind members.",
+      "**Do** use a switch for on/off and a segmented control or selector showing the current option for a choice.",
+      "**Do** use logical properties for every spacing, border and position; pin the chamber, charts and formulas to LTR.",
+      "**Do** remap tokens under `[data-theme=\"dark\"]` rather than adding theme-specific colours, and raise tint and dim levels so regions stay legible in dark.",
+      "**Do** let levels remove columns and controls while every tool stays listed."
+    ],
+    "donts": [
+      "**Don't** colour change, gains or losses green or red, or colour a camp as winning or losing.",
+      "**Don't** use party or bloc colour on buttons, tabs, banners or other chrome.",
+      "**Don't** add a second interface accent beside navy (focus blue is for focus, links and the change flash only).",
+      "**Don't** lift panels, tables, figures or corridors with shadows; shadow is for floating layers only.",
+      "**Don't** introduce a card-grid dashboard or a separate detail column; every list is a ruled row opened in place.",
+      "**Don't** draw a bloc as an extra bar; it is a soft region behind its members.",
+      "**Don't** shrink a seat graphic off the 120-seat scale."
+    ]
+  }
+}

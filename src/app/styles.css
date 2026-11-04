@@ -317,12 +317,6 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .fig.open > button { background: var(--open); border-radius: var(--radius) var(--radius) 0 0; }
 .fig .more { padding: 8px 10px 10px; border-top: 1px solid var(--rule); font-size: 13px; }
 .fig.static { padding: 8px 10px; }
-/* legacy tiles inside analysis panels */
-.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
-.tile { border: 1px solid var(--rule); border-radius: var(--radius); padding: 8px 10px; background: var(--surface); text-align: start; }
-.tile .k { font-size: 12.5px; color: var(--ink-2); display: flex; gap: 6px; align-items: center; }
-.tile .v { font-size: 15px; font-weight: 700; }
-.tile .d { font-size: 12.5px; color: var(--muted); }
 
 /* ---------- tools */
 .tools-panel > .tabs { padding-inline: 4px; }
@@ -370,12 +364,6 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .steps button { min-width: 30px; max-width: 100%; white-space: normal; }
 .formula { font-family: var(--mono); background: var(--surface-2); border-radius: 5px; padding: 6px 10px; display: inline-block; direction: ltr; unicode-bidi: isolate; }
 
-/* ---------- what-if gallery */
-.whatif { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px; }
-.wi-card { border: 1px solid var(--rule); border-radius: var(--radius); padding: 10px 12px; background: var(--surface); display: flex; flex-direction: column; }
-.wi-card h3, .wi-card h4 { font-size: 13.5px; }
-.wi-card p { margin: 0 0 6px; }
-.wi-card .btn { margin-top: auto; align-self: flex-start; }
 
 /* ---------- seat security */
 .security { display: grid; gap: 2px; }
