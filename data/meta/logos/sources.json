@@ -2793,6 +2793,27 @@
         "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=beytenu.org.il%2Fwp-content%2Fthemes%2Fnisarg%2Fimages%2Flogo2.png&from=20200101&to=20200302&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
         "rawIndex": "logo-k23-beiteinu-index"
       }
+    },
+    {
+      "id": "raam-official-social-20261010",
+      "title": "Ra’am official 2026 election brochure linked by Mansour Abbas",
+      "sourceUrl": "https://www.facebook.com/MansourAbbas.me/videos/1757107092038580",
+      "publisher": "منصور عباس / القائمة العربية الموحدة",
+      "sourceType": "official party social publication",
+      "accessed": "2026-11-04",
+      "accessMethod": "Jina read_url for publication inspection; plain HTTP with project User-Agent for retained originals",
+      "inspectionDepth": "Opened social publication, inspected timestamp and brochure link; downloaded and visually inspected cover and final crop",
+      "date": "2026-10-10",
+      "description": "Official leader Mansour Abbas Facebook publication inspected: visible timestamp Saturday, October 10, 2026 at 1:09 PM; links https://online.fliphtml5.com/gijql/tgzd/. The linked Arabic brochure cover explicitly says Knesset elections 2026 and carries the white الموحدة wordmark with underlines on green. Cover downloaded from its publication CDN and visually inspected. Cropped existing wordmark only; no ballot-paper lettering used. Live publication inspected, not an archived capture. Search snippet suggested October 14; opened publication gives October 10, which controls. The current profile avatar is not the evidence.",
+      "downloadUrl": "https://online.fliphtml5.com/gijql/tgzd/files/large/b2ea0b7332f1d08e10b58a3c8f54614f.webp?1791536864",
+      "evidenceFamily": "raam-campaign-brochure-2026",
+      "selected": true,
+      "retainedEvidenceIds": [
+        "logo-k26-raam-brochure",
+        "logo-k26-raam-brochure-cover",
+        "logo-k26-raam-official-social"
+      ],
+      "licence": "Copyright retained by Ra’am; fair-use identification"
     }
   ]
 }
