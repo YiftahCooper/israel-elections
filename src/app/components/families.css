@@ -92,3 +92,8 @@
 @media(min-width:1200px){.family-plots{grid-template-columns:repeat(2,minmax(0,1fr));}}
 @media(max-width:700px){.families{gap:14px;}.family-profile{display:grid;gap:6px;}.family-profile>.small{white-space:normal;}.family-top{gap:6px;}.family-chip{font-size:12px;padding:6px 9px;}.family-scale{grid-template-columns:minmax(0,1fr);}.family-chart-toolbar{gap:12px;}.family-plots{gap:16px;}.family-sheet{inline-size:100%;}.family-definition{font-size:12px;}.family-chart-toolbar .row{flex-wrap:wrap;}.family-sheet .choice-picker{max-inline-size:100%;}}
 @media(max-width:700px){.family-chips{flex-wrap:nowrap;overflow-x:auto;padding-block:2px 8px;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);padding-inline-end:24px;}[dir=rtl] .family-chips{-webkit-mask-image:linear-gradient(270deg,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(270deg,#000 calc(100% - 28px),transparent);}.family-chip{white-space:nowrap;flex-shrink:0;}.family-top{min-inline-size:0;}.family-chips{min-inline-size:0;}.family-top>.btn{flex-shrink:0;}}
+
+.family-joint-facts { display: grid; gap: 6px; margin-block: 8px; }
+.joint-facts { color: var(--ink-secondary); line-height: 1.5; overflow-wrap: anywhere; }
+.family-policy .seg { flex-wrap: wrap; }
+@media(max-width:700px){.family-policy{inline-size:100%;}.family-policy .seg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));inline-size:100%;}}

@@ -87,3 +87,39 @@ the family when the family's own parties hold the list's first place **and** at 
 list won, read from the official candidate-party column. Lists are still never split. A genuine partnership stays
 mixed (Likud–Yisrael Beiteinu 2013: 20 of 31), as do seatless lists and lists without candidate-party data. The
 research files are unchanged; `tests/family-runtime.test.ts` checks the derived totals against them.
+
+### Joint-list facts and counting (November 2026)
+
+The runtime no longer promotes mixed lists to `led` using an inferred two-thirds
+seat threshold. The default is **Separate**: whole joint ballots remain a separate
+segment. Constituent elected seats do not establish constituent votes. A remembered,
+non-forking **If family heads list** policy includes the whole joint list when a
+family party occupies rank 1, with no seat-share cutoff. Include whole lists and
+Exclude remain available. Edit membership can include/exclude one list or restore
+its policy; that edit makes a personal copy without changing the global policy.
+Existing frozen scenarios retain their saved definitions.
+
+`node scripts/joint-facts.ts` reproduces `data/meta/joint-facts.json` from public
+datasets, official-source metadata and retained Knesset OData snapshots in
+`data/raw/kNN/`. `--fetch-missing` retrieves absent faction snapshots sequentially,
+with a minimum 1.1-second interval, cached raw responses and no retry on HTTP errors
+(including 429). All pagination stays on the official OData origin. The UI loads
+facts on demand and keeps them distinct from simulated seats.
+
+The head is the party of registered rank 1; elected counts skip `notSeated`.
+Submission text is verbatim `partiesHe`/`sponsorsHe`, which may differ from the
+political constituent identities. Opening factions require an opening-day MK
+position and a faction interval covering that date. Identity joins use unique
+exact Hebrew names with punctuation/spacing normalisation, never fuzzy names or
+biography website IDs (a different namespace from OData PersonID). Ambiguities,
+missing ranks/parties/identities and absent faction records stay unknown. The 2026
+snapshot has no MK positions and describes a future opening: its faction entries
+are not presented as confirmed swearing-in. Historical name changes and members
+replaced before opening can therefore leave unknowns. Official source links,
+per-party faction counts, unknown counts and these limitations are in the (i).
+
+Affiliations inherited from the reviewed component metadata are not all official:
+records with components lacking official support carry a visible **Secondary
+affiliations** label and retain their labelled secondary links in (i). No new
+identity or affiliation is inferred. Missing official submission text is Unknown,
+not a reconstruction from the component names.

@@ -9,6 +9,7 @@ import { electedOf } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt } from '../format.ts';
 import { dispatch, dispatchMany, setState, useLevel } from '../store.ts';
+import {JointFacts} from './JointFacts.tsx';
 import { PartyLinks } from './PartyLinks.tsx';
 import { Info, Slip } from './ui.tsx';
 
@@ -59,6 +60,7 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
   return (
     <section>{standardControl}
       <h3>{L('Parties on this joint list', 'המפלגות ברשימה המשותפת')} <Info term="constituent-party" /></h3>
+      <JointFacts listId={l.id}/>
       <label className="switch small" style={{ marginBottom: 6 }}>
         <input type="checkbox" checked={isSplit} onChange={(e) => dispatch({ type: 'setFactionSplit', listId: l.id, split: e.target.checked })} />
         {L('Faction split after the election', 'הסיעה התפצלה אחרי הבחירות')}

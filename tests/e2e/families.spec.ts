@@ -91,3 +91,18 @@ test('Hebrew scaling keeps signs and arrows in reading order',async({page})=>{
  await start(page,'he');await expect(page.locator('.family-scale .quick-actions bdi').first()).toHaveText('−10%');
  await expect(page.locator('.family-seat-count em bdi')).toHaveText('+2');await expect(page.locator('.family-consequence p[role=status]')).toContainText('623,369 → 685,706');
 });
+test('head-party counting is explicit, remembered and one-list overrides keep the view policy',async({page})=>{
+ await start(page);await page.getByRole('button',{name:'Haredi',exact:true}).click();await page.getByRole('button',{name:'Likud lineage',exact:true}).click();
+ const policies=page.getByRole('group',{name:'Mixed-list policy',exact:true});
+ await expect(policies.getByRole('button',{name:'Separate',exact:true})).toHaveAttribute('aria-pressed','true');
+ await expect(page.locator('.family-joint-facts')).toContainText('Head: Likud');
+ await policies.getByRole('button',{name:'If family heads list',exact:true}).click();
+ await expect(page.locator('.family-chip')).toHaveCount(9);
+ await edit(page);await editor(page).getByText('Mixed-list overrides',{exact:true}).click();
+ const override=editor(page).getByRole('combobox',{name:/Counting override/}).first();
+ await override.selectOption('exclude');await expect(page.locator('.family-profile')).toContainText('Personal copy');
+ await expect(policies.getByRole('button',{name:'If family heads list',exact:true})).toHaveAttribute('aria-pressed','true');
+ await expect(editor(page).getByRole('combobox',{name:/Counting override/}).first()).toHaveValue('exclude');
+ await editor(page).getByRole('combobox',{name:/Counting override/}).first().selectOption('default');
+ await expect(editor(page).getByRole('combobox',{name:/Counting override/}).first()).toHaveValue('default');
+});
