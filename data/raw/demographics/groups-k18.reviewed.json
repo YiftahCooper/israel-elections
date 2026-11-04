@@ -1,0 +1,276 @@
+{
+  "schemaVersion": 1,
+  "id": "k18",
+  "national": {
+    "registered": 5278985,
+    "votesCast": 3416587,
+    "invalid": 43097
+  },
+  "dimensions": [
+    {
+      "id": "nationality",
+      "coverage": "partial",
+      "definitionEn": "Disjoint definitions within this dimension; incomplete coverage of national electorate. Cross-dimension edits forbidden."
+    },
+    {
+      "id": "bedouin-identity",
+      "coverage": "partial",
+      "definitionEn": "Disjoint definitions within this dimension; incomplete coverage of national electorate. Cross-dimension edits forbidden."
+    },
+    {
+      "id": "jewish-religiosity",
+      "coverage": "partial",
+      "definitionEn": "Disjoint definitions within this dimension; incomplete coverage of national electorate. Cross-dimension edits forbidden."
+    },
+    {
+      "id": "origin",
+      "coverage": "partial",
+      "definitionEn": "Disjoint definitions within this dimension; incomplete coverage of national electorate. Cross-dimension edits forbidden."
+    },
+    {
+      "id": "origin-ethiopia",
+      "coverage": "partial",
+      "definitionEn": "Disjoint definitions within this dimension; incomplete coverage of national electorate. Cross-dimension edits forbidden."
+    },
+    {
+      "id": "age",
+      "coverage": "partial",
+      "definitionEn": "Disjoint definitions within this dimension; incomplete coverage of national electorate. Cross-dimension edits forbidden."
+    }
+  ],
+  "groups": [
+    {
+      "id": "arab",
+      "nameHe": "ערבים אזרחי ישראל",
+      "nameEn": "Arab citizens",
+      "dimension": "nationality",
+      "definitionEn": "Self-identified Arab citizens other than the separately represented Druze group, including mixed-city residents. Not defined by voting for Arab parties.",
+      "definitionHe": "אזרחים המגדירים עצמם ערבים, ללא הקבוצה הדרוזית המיוצגת בנפרד, כולל תושבי ערים מעורבות; לא מוגדרים לפי הצבעה למפלגות ערביות.",
+      "electorate": {
+        "grade": "insufficient",
+        "reason": "No retained compatible nationwide eligible-voter denominator. Locality coverage and adult population shares are not national group electorate counts."
+      },
+      "turnout": {
+        "grade": "insufficient",
+        "reason": "No retained election-specific turnout estimate with compatible group definition and adequate published uncertainty."
+      },
+      "split": {
+        "grade": "insufficient",
+        "reason": "No adequately reviewed list-level group split for this election."
+      },
+      "ecologicalReference": {
+        "localityGroupId": "arab",
+        "sourceIds": [
+          "cbs-2009",
+          "cbs-2009-normalized",
+          "cbs-intro"
+        ],
+        "limitation": "Supporting geographic subset only: coverage of national group voters is not established; cannot supply nationwide size, turnout or split."
+      }
+    },
+    {
+      "id": "druze",
+      "nameHe": "דרוזים",
+      "nameEn": "Druze",
+      "dimension": "nationality",
+      "definitionEn": "Eligible Druze citizens; no assumption that all residents of Druze localities have voting rights.",
+      "definitionHe": "אזרחים דרוזים בעלי זכות בחירה; לא כל תושב ביישוב דרוזי הוא בעל זכות בחירה.",
+      "electorate": {
+        "grade": "insufficient",
+        "reason": "No retained compatible nationwide eligible-voter denominator. Locality coverage and adult population shares are not national group electorate counts."
+      },
+      "turnout": {
+        "grade": "insufficient",
+        "reason": "No retained election-specific turnout estimate with compatible group definition and adequate published uncertainty."
+      },
+      "split": {
+        "grade": "insufficient",
+        "reason": "No adequately reviewed list-level group split for this election."
+      },
+      "ecologicalReference": {
+        "localityGroupId": "druze",
+        "sourceIds": [
+          "cbs-druze-2022",
+          "k18-ballots-datagov"
+        ],
+        "limitation": "Supporting geographic subset only: coverage of national group voters is not established; cannot supply nationwide size, turnout or split."
+      }
+    },
+    {
+      "id": "bedouin",
+      "nameHe": "בדווים",
+      "nameEn": "Bedouin",
+      "dimension": "bedouin-identity",
+      "definitionEn": "Bedouin citizens, including recognized towns and unrecognized communities; overlaps Arab identity.",
+      "definitionHe": "אזרחים בדווים ביישובים מוכרים ובקהילות בלתי מוכרות; חופף לזהות ערבית.",
+      "electorate": {
+        "grade": "insufficient",
+        "reason": "No retained compatible nationwide eligible-voter denominator. Locality coverage and adult population shares are not national group electorate counts."
+      },
+      "turnout": {
+        "grade": "insufficient",
+        "reason": "No retained election-specific turnout estimate with compatible group definition and adequate published uncertainty."
+      },
+      "split": {
+        "grade": "insufficient",
+        "reason": "No adequately reviewed list-level group split for this election."
+      },
+      "ecologicalReference": {
+        "localityGroupId": "bedouin-tribes",
+        "sourceIds": [
+          "cbs-2009",
+          "cbs-2009-normalized",
+          "cbs-intro"
+        ],
+        "limitation": "Supporting geographic subset only: coverage of national group voters is not established; cannot supply nationwide size, turnout or split."
+      }
+    },
+    {
+      "id": "haredi",
+      "nameHe": "חרדים",
+      "nameEn": "Haredim",
+      "dimension": "jewish-religiosity",
+      "definitionEn": "Jewish voters self-identifying as Haredi; not all Shas voters and not only seven Haredi authorities.",
+      "definitionHe": "בוחרים יהודים המגדירים עצמם חרדים; לא כלל מצביעי ש״ס ולא רק שבע הרשויות החרדיות.",
+      "electorate": {
+        "grade": "insufficient",
+        "reason": "No retained compatible nationwide eligible-voter denominator. Locality coverage and adult population shares are not national group electorate counts."
+      },
+      "turnout": {
+        "grade": "insufficient",
+        "reason": "No retained election-specific turnout estimate with compatible group definition and adequate published uncertainty."
+      },
+      "split": {
+        "grade": "insufficient",
+        "reason": "No adequately reviewed list-level group split for this election."
+      },
+      "ecologicalReference": {
+        "localityGroupId": "haredi",
+        "sourceIds": [
+          "idi-haredi"
+        ],
+        "limitation": "Supporting geographic subset only: coverage of national group voters is not established; cannot supply nationwide size, turnout or split."
+      }
+    },
+    {
+      "id": "religious-zionist",
+      "nameHe": "דתיים לאומיים",
+      "nameEn": "Religious Zionists",
+      "dimension": "jewish-religiosity",
+      "definitionEn": "Self-identified religious-national Jews including Torani/Hardal, not voters for a named list.",
+      "definitionHe": "יהודים המגדירים עצמם דתיים לאומיים כולל תורניים/חרד״לים; לא מצביעי רשימה מסוימת.",
+      "electorate": {
+        "grade": "insufficient",
+        "reason": "No retained compatible nationwide eligible-voter denominator. Locality coverage and adult population shares are not national group electorate counts."
+      },
+      "turnout": {
+        "grade": "insufficient",
+        "reason": "No retained election-specific turnout estimate with compatible group definition and adequate published uncertainty."
+      },
+      "split": {
+        "grade": "insufficient",
+        "reason": "No adequately reviewed list-level group split for this election."
+      }
+    },
+    {
+      "id": "traditional",
+      "nameHe": "מסורתיים",
+      "nameEn": "Traditional Jews",
+      "dimension": "jewish-religiosity",
+      "definitionEn": "Self-identified traditional Jews, religious and nonreligious combined.",
+      "definitionHe": "יהודים המגדירים עצמם מסורתיים, דתיים ולא דתיים יחד.",
+      "electorate": {
+        "grade": "insufficient",
+        "reason": "No retained compatible nationwide eligible-voter denominator. Locality coverage and adult population shares are not national group electorate counts."
+      },
+      "turnout": {
+        "grade": "insufficient",
+        "reason": "No retained election-specific turnout estimate with compatible group definition and adequate published uncertainty."
+      },
+      "split": {
+        "grade": "insufficient",
+        "reason": "No adequately reviewed list-level group split for this election."
+      }
+    },
+    {
+      "id": "secular",
+      "nameHe": "חילונים",
+      "nameEn": "Secular Jews",
+      "dimension": "jewish-religiosity",
+      "definitionEn": "Self-identified secular Jews.",
+      "definitionHe": "יהודים המגדירים עצמם חילונים.",
+      "electorate": {
+        "grade": "insufficient",
+        "reason": "No retained compatible nationwide eligible-voter denominator. Locality coverage and adult population shares are not national group electorate counts."
+      },
+      "turnout": {
+        "grade": "insufficient",
+        "reason": "No retained election-specific turnout estimate with compatible group definition and adequate published uncertainty."
+      },
+      "split": {
+        "grade": "insufficient",
+        "reason": "No adequately reviewed list-level group split for this election."
+      }
+    },
+    {
+      "id": "fsu",
+      "nameHe": "יוצאי ברית המועצות",
+      "nameEn": "FSU immigrants",
+      "dimension": "origin",
+      "definitionEn": "Immigrants from the former Soviet Union; citizenship, arrival cohort and descendants must match the source before use.",
+      "definitionHe": "עולים מברית המועצות לשעבר; נדרשת התאמה למקור באזרחות, שנת עלייה והכללת צאצאים.",
+      "electorate": {
+        "grade": "insufficient",
+        "reason": "No retained compatible nationwide eligible-voter denominator. Locality coverage and adult population shares are not national group electorate counts."
+      },
+      "turnout": {
+        "grade": "insufficient",
+        "reason": "No retained election-specific turnout estimate with compatible group definition and adequate published uncertainty."
+      },
+      "split": {
+        "grade": "insufficient",
+        "reason": "No adequately reviewed list-level group split for this election."
+      }
+    },
+    {
+      "id": "ethiopian",
+      "nameHe": "יוצאי אתיופיה",
+      "nameEn": "Ethiopian Israelis",
+      "dimension": "origin-ethiopia",
+      "definitionEn": "Israeli citizens of Ethiopian origin; immigrant and descendant scope requires an election-specific source.",
+      "definitionHe": "אזרחים ממוצא אתיופי; הכללת עולים וצאצאים דורשת מקור תואם לבחירות.",
+      "electorate": {
+        "grade": "insufficient",
+        "reason": "No retained compatible nationwide eligible-voter denominator. Locality coverage and adult population shares are not national group electorate counts."
+      },
+      "turnout": {
+        "grade": "insufficient",
+        "reason": "No retained election-specific turnout estimate with compatible group definition and adequate published uncertainty."
+      },
+      "split": {
+        "grade": "insufficient",
+        "reason": "No adequately reviewed list-level group split for this election."
+      }
+    },
+    {
+      "id": "young",
+      "nameHe": "צעירים",
+      "nameEn": "Young voters",
+      "dimension": "age",
+      "definitionEn": "Eligible citizens aged 18–24 on election day; no substitution of CBS age-20-plus social-survey population.",
+      "definitionHe": "אזרחים בעלי זכות בחירה בגיל 18–24 ביום הבחירות; אין להחליף באוכלוסיית הסקר החברתי מגיל 20.",
+      "electorate": {
+        "grade": "insufficient",
+        "reason": "No retained compatible nationwide eligible-voter denominator. Locality coverage and adult population shares are not national group electorate counts."
+      },
+      "turnout": {
+        "grade": "insufficient",
+        "reason": "No retained election-specific turnout estimate with compatible group definition and adequate published uncertainty."
+      },
+      "split": {
+        "grade": "insufficient",
+        "reason": "No adequately reviewed list-level group split for this election."
+      }
+    }
+  ]
+}

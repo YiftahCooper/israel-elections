@@ -15,6 +15,19 @@ See [definitions, retained sources, model contract and per-election coverage](re
 and [decision 0090](decisions/0090-demographic-turnout.md). The ordinary dataset build attaches the
 classifications deterministically and verifies source hashes; it requires no network access.
 
+## People-group evidence (0092)
+
+Reviewed `data/raw/demographics/groups-kNN.reviewed.json` files build offline into
+`public/data/kNN-groups.json` for k16–k26. Ten groups per election carry separate size,
+turnout and valid-vote-split grades, reasons and provenance. Insufficient values are absent.
+Current evidence supplies eight estimate-grade religious-group splits (four groups × 2021/2022),
+**no complete usable national baselines**. Do not expose unavailable groups even in speculative
+mode. `groupAvailability` and `demographicGroups` enforce the gate; existing geographic turnout
+remains separate. See [per-group verdicts, methods, gaps and deferred ballot-box extension](research/demographic-groups.md)
+and [decision 0092](decisions/0092-demographic-groups.md). Reviewed-source and cited-original
+hashes are verified in the normal dataset build. No registration or contact was undertaken;
+INES public downloads remain an unanalysed opportunity, not a confirmed access restriction.
+
 ## Source policy
 
 Official sources come first: the law, the Central Elections Committee, Reshumot, the Knesset (including its

@@ -3559,5 +3559,296 @@
     "retrievedAt": "2026-11-04T06:35:19.362668+00:00",
     "bytes": 101734,
     "sha256": "a0751c9f222845b0329e14c5322ffe968df88deea67161a3dc37b7ae56f5338f"
+  },
+  {
+    "id": "idi-religiosity-2021",
+    "file": "demographics/idi-religiosity-2021.html",
+    "url": "https://www.idi.org.il/articles/46138",
+    "publisher": "המכון הישראלי לדמוקרטיה",
+    "official": false,
+    "description": "Demographic group research; see docs/research/demographic-groups.md for scope",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "sha256": "a9496cb8236e4f240243a063d996e993341cdc3c22b7692d652668aa4f785cf1",
+    "bytes": 82978
+  },
+  {
+    "id": "idi-arab-2026",
+    "file": "demographics/idi-arab-2026.html",
+    "url": "https://www.idi.org.il/articles/66809",
+    "publisher": "המכון הישראלי לדמוקרטיה",
+    "official": false,
+    "description": "Demographic group research; see docs/research/demographic-groups.md for scope",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "sha256": "efbcadda8f977c17662ae597889954ebab5319a452df90c20c48f55f28d5131b",
+    "bytes": 75503
+  },
+  {
+    "id": "idi-elections-2022-book",
+    "file": "demographics/idi-elections-2022-book.pdf",
+    "url": "https://www.idi.org.il/media/27873/the-elections-in-israel-2022.pdf",
+    "publisher": "המכון הישראלי לדמוקרטיה",
+    "official": false,
+    "description": "Demographic group research; see docs/research/demographic-groups.md for scope",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "sha256": "2a35e10e326cdb6fec87d5bb48aae1b51971b0c675db0c3a9116528d3fa331cd",
+    "bytes": 4081792
+  },
+  {
+    "id": "idi-fsu-2024",
+    "file": "demographics/idi-fsu-2024.pdf",
+    "url": "https://www.idi.org.il/media/25312/survey-of-immigrants-from-the-former-soviet-union-full-research-report.pdf",
+    "publisher": "המכון הישראלי לדמוקרטיה",
+    "official": false,
+    "description": "Demographic group research; see docs/research/demographic-groups.md for scope",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "sha256": "d5759c4a48af7226fa9f9e7497cdf7be62e0c3f4c871a6a6de689cf9c724c949",
+    "bytes": 499587
+  },
+  {
+    "id": "idi-religiosity-2022",
+    "file": "demographics/idi-religiosity-2022.pdf",
+    "url": "https://www.idi.org.il/media/31202/voting-patterns-of-jews-in-the-2022-elections-by-religious-definition.pdf",
+    "publisher": "המכון הישראלי לדמוקרטיה",
+    "official": false,
+    "description": "Demographic group research; see docs/research/demographic-groups.md for scope",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "sha256": "5262aa43f43e9e22c358cdc313ee340b64d839c2845b9e20b8b033a6bce7c20a",
+    "bytes": 740117
+  },
+  {
+    "id": "ines-catalogue",
+    "file": "demographics/ines-catalogue.html",
+    "url": "https://socsci4.tau.ac.il/mu2/ines/data/our-data/",
+    "publisher": "המכון הישראלי לדמוקרטיה",
+    "official": false,
+    "description": "Demographic group research; see docs/research/demographic-groups.md for scope",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "sha256": "3b730fcd74f2f5eaab16d4dc3be94aa04f12f7cc96ac9d7bcb0ca63d417a50c6",
+    "bytes": 1099296
+  },
+  {
+    "id": "groups-k16-reviewed",
+    "file": "demographics/groups-k16.reviewed.json",
+    "url": null,
+    "official": false,
+    "publisher": "Project evidence review",
+    "method": "derived",
+    "derivedFrom": [
+      "cbs-2003",
+      "cbs-2003-normalized",
+      "cbs-druze-2022",
+      "cbs-intro",
+      "idi-haredi"
+    ],
+    "description": "Conservative people-group evidence review; missing measures deliberately absent. See demographic-groups.md.",
+    "retrievedAt": "2026-11-04",
+    "bytes": 12779,
+    "sha256": "c617b1b5dfff5abc35525f259c7cb365d1a2ce13c280c274763a192158e043a0"
+  },
+  {
+    "id": "groups-k17-reviewed",
+    "file": "demographics/groups-k17.reviewed.json",
+    "url": null,
+    "official": false,
+    "publisher": "Project evidence review",
+    "method": "derived",
+    "derivedFrom": [],
+    "description": "Conservative people-group evidence review; missing measures deliberately absent. See demographic-groups.md.",
+    "retrievedAt": "2026-11-04",
+    "bytes": 11478,
+    "sha256": "c7b1818f7e6e95ea8eb8edfc2b297fd668444cf93bfb7d58fe3181311b00ef4d"
+  },
+  {
+    "id": "groups-k18-reviewed",
+    "file": "demographics/groups-k18.reviewed.json",
+    "url": null,
+    "official": false,
+    "publisher": "Project evidence review",
+    "method": "derived",
+    "derivedFrom": [
+      "cbs-2009",
+      "cbs-2009-normalized",
+      "cbs-druze-2022",
+      "cbs-intro",
+      "idi-haredi",
+      "k18-ballots-datagov"
+    ],
+    "description": "Conservative people-group evidence review; missing measures deliberately absent. See demographic-groups.md.",
+    "retrievedAt": "2026-11-04",
+    "bytes": 12812,
+    "sha256": "3f8f89f325adca5a15305111d274ba74437be81d5dd6c04507f779a3ae9fda43"
+  },
+  {
+    "id": "groups-k19-reviewed",
+    "file": "demographics/groups-k19.reviewed.json",
+    "url": null,
+    "official": false,
+    "publisher": "Project evidence review",
+    "method": "derived",
+    "derivedFrom": [
+      "cbs-2013",
+      "cbs-2013-normalized",
+      "cbs-druze-2022",
+      "cbs-intro",
+      "idi-haredi"
+    ],
+    "description": "Conservative people-group evidence review; missing measures deliberately absent. See demographic-groups.md.",
+    "retrievedAt": "2026-11-04",
+    "bytes": 12779,
+    "sha256": "bdd565ed38f68fce93c326cdab3f0b7a8cd202d085a3d9aeaa6df509b0989faf"
+  },
+  {
+    "id": "groups-k20-reviewed",
+    "file": "demographics/groups-k20.reviewed.json",
+    "url": null,
+    "official": false,
+    "publisher": "Project evidence review",
+    "method": "derived",
+    "derivedFrom": [
+      "cbs-2015",
+      "cbs-2015-normalized",
+      "cbs-druze-2022",
+      "cbs-intro",
+      "idi-haredi"
+    ],
+    "description": "Conservative people-group evidence review; missing measures deliberately absent. See demographic-groups.md.",
+    "retrievedAt": "2026-11-04",
+    "bytes": 12779,
+    "sha256": "feef4ba9a9b55caf3b2bded74388f73f70256ef62477d5eb13ba371d669f6127"
+  },
+  {
+    "id": "groups-k21-reviewed",
+    "file": "demographics/groups-k21.reviewed.json",
+    "url": null,
+    "official": false,
+    "publisher": "Project evidence review",
+    "method": "derived",
+    "derivedFrom": [
+      "cbs-2019",
+      "cbs-2019-normalized",
+      "cbs-druze-2022",
+      "cbs-intro",
+      "idi-haredi"
+    ],
+    "description": "Conservative people-group evidence review; missing measures deliberately absent. See demographic-groups.md.",
+    "retrievedAt": "2026-11-04",
+    "bytes": 12779,
+    "sha256": "59a28ad54428d999905cd1f22e9f5e3ad11feb3ef99ad01f9b4082d361c490a5"
+  },
+  {
+    "id": "groups-k22-reviewed",
+    "file": "demographics/groups-k22.reviewed.json",
+    "url": null,
+    "official": false,
+    "publisher": "Project evidence review",
+    "method": "derived",
+    "derivedFrom": [
+      "cbs-2019",
+      "cbs-2019-normalized",
+      "cbs-druze-2022",
+      "cbs-intro",
+      "idi-haredi"
+    ],
+    "description": "Conservative people-group evidence review; missing measures deliberately absent. See demographic-groups.md.",
+    "retrievedAt": "2026-11-04",
+    "bytes": 12779,
+    "sha256": "ae367cdd554d1bd9d104d868fdfd7960b1813dab6010f5184571d8e041e5f688"
+  },
+  {
+    "id": "groups-k23-reviewed",
+    "file": "demographics/groups-k23.reviewed.json",
+    "url": null,
+    "official": false,
+    "publisher": "Project evidence review",
+    "method": "derived",
+    "derivedFrom": [
+      "cbs-2020",
+      "cbs-2020-normalized",
+      "cbs-druze-2022",
+      "cbs-intro",
+      "idi-haredi"
+    ],
+    "description": "Conservative people-group evidence review; missing measures deliberately absent. See demographic-groups.md.",
+    "retrievedAt": "2026-11-04",
+    "bytes": 12779,
+    "sha256": "50b4823eb6b8542bfd32a626d53236f5410945f85211202dd6d009e67f58f57e"
+  },
+  {
+    "id": "groups-k24-reviewed",
+    "file": "demographics/groups-k24.reviewed.json",
+    "url": null,
+    "official": false,
+    "publisher": "Project evidence review",
+    "method": "derived",
+    "derivedFrom": [
+      "cbs-2021",
+      "cbs-2021-normalized",
+      "cbs-druze-2022",
+      "cbs-intro",
+      "idi-haredi",
+      "idi-religiosity-2021"
+    ],
+    "description": "Conservative people-group evidence review; missing measures deliberately absent. See demographic-groups.md.",
+    "retrievedAt": "2026-11-04",
+    "bytes": 15925,
+    "sha256": "152a6d8ca8725fbe321c9a2db8ad92768a07c11813021b8f8fa1f33f3d10e810"
+  },
+  {
+    "id": "groups-k25-reviewed",
+    "file": "demographics/groups-k25.reviewed.json",
+    "url": null,
+    "official": false,
+    "publisher": "Project evidence review",
+    "method": "derived",
+    "derivedFrom": [
+      "cbs-2022",
+      "cbs-2022-normalized",
+      "cbs-druze-2022",
+      "cbs-intro",
+      "idi-fsu-2024",
+      "idi-haredi",
+      "idi-religiosity-2022"
+    ],
+    "description": "Conservative people-group evidence review; missing measures deliberately absent. See demographic-groups.md.",
+    "retrievedAt": "2026-11-04",
+    "bytes": 17032,
+    "sha256": "a73b281d2095ff2ffbdde53550040213d9165ebe7b6f54b8241dac7d992420ba"
+  },
+  {
+    "id": "groups-k26-reviewed",
+    "file": "demographics/groups-k26.reviewed.json",
+    "url": null,
+    "official": false,
+    "publisher": "Project evidence review",
+    "method": "derived",
+    "derivedFrom": [
+      "cbs-2024",
+      "cbs-2024-normalized",
+      "cbs-druze-2022",
+      "cbs-intro",
+      "idi-haredi"
+    ],
+    "description": "Conservative people-group evidence review; missing measures deliberately absent. See demographic-groups.md.",
+    "retrievedAt": "2026-11-04",
+    "bytes": 12779,
+    "sha256": "0089e4b037bab3a6e03e9292638d2e49dad35a2458f13fe4c7f483041fc22001"
+  },
+  {
+    "id": "dayan-arab-2023",
+    "file": "demographics/dayan-arab-2023.pdf",
+    "url": "https://dayan.org/he/file-download/download/public/17903",
+    "publisher": "המכון הישראלי לדמוקרטיה",
+    "official": false,
+    "description": "Demographic group research; see docs/research/demographic-groups.md for scope",
+    "method": "http",
+    "retrievedAt": "2026-11-04",
+    "sha256": "ce9cc56fb8b7bdfa724627eb419961080f10645180cd84359303d67fd8a0c8ae",
+    "bytes": 173747
   }
 ]

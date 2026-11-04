@@ -8,6 +8,12 @@ below groups all existing commits from 3 November 2026. `package.json` currently
 
 ### Added
 
+- Graded people-group evidence siblings for k16–k26 and an exact signed turnout/split model
+  (decision 0092), with speculative opt-in, insufficient-data refusal, overlap rejection,
+  merged/split origins and explicit clamping. Four religious-group splits in each of 2021/2022
+  are estimates; no complete national baseline is claimed. Includes retained research sources,
+  per-group verdicts and the owner-deferred mixed-city ballot-box extension.
+
 - Official campaign logos may use fair-use identification (decision 0089), with explicit rights basis,
   campaign-date provenance, byte/hash validation and separate constituent-party emblems.
 - Sourced geographic turnout groups for k16 and k18–k26, with bilingual definitions, classification

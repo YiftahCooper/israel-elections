@@ -187,3 +187,33 @@ export interface LocalityGroup {
   codes: number[];
   coverage: { localities: number; registered: number | null; valid: number; nationalValidShare: number };
 }
+
+/** People-based evidence (0092), separate from geographic LocalityGroup. */
+export type GroupGrade = 'solid' | 'estimate' | 'insufficient';
+export type GroupMethod = 'official' | 'survey' | 'exit-poll' | 'ecological';
+export interface GroupProvenance {
+ sourceId: string; method: GroupMethod; locator: string;
+ uncertainty?: { sampleSize?: number; sampleScope?: string; marginPoints?: number; range?: [number, number]; note?: string };
+}
+export type GroupMeasure<T> = { reason: string } & (
+ { grade: 'insufficient'; value?: never; evidence?: GroupProvenance } |
+ { grade: 'solid' | 'estimate'; value: T; evidence: GroupProvenance }
+);
+export interface DemographicGroup {
+ id: string; nameHe: string; nameEn: string; definitionHe: string; definitionEn: string;
+ dimension: string;
+ electorate: GroupMeasure<{ eligible: number } | { sharePct: number }>;
+ turnout: GroupMeasure<number>;
+ /** Percentages among valid votes, historical list IDs; never redistribute the residual. */
+ split: GroupMeasure<{ lists: Record<string, number>; otherPct: number }>;
+ /** Optional observed invalid fraction of cast ballots; otherwise use national historical rate. */
+ invalidRate?: GroupMeasure<number>;
+ /** Supporting geography is explicitly NOT the nationwide people's electorate. */
+ ecologicalReference?: { localityGroupId: string; sourceIds: string[]; limitation: string };
+}
+export interface DemographicGroupDataset {
+ schemaVersion: 1; id: ElectionId;
+ national: { registered: number; votesCast: number; invalid: number };
+ dimensions: { id: string; coverage: 'partition' | 'partial'; definitionEn: string }[];
+ groups: DemographicGroup[];
+}
