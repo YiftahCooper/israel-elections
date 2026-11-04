@@ -174,3 +174,24 @@ test('a list\'s seat count can be typed: the fewest votes that give it are moved
   await panel.getByRole('button', { name: 'Increase Votes', exact: true }).click();
   await expect(ask).toBeVisible();
 });
+
+test('Escape closes an open (i) popover only, not the list panel around it', async ({ page }) => {
+  await start(page); await open(page, 'Likud');
+  const panel = page.locator('.side-panel');
+  await panel.locator('.info button').first().click();
+  await expect(panel.getByRole('tooltip')).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(panel.getByRole('tooltip')).toHaveCount(0);
+  await expect(panel).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(panel).toHaveCount(0);
+});
+
+test('an edit made just before a reload survives it', async ({ page }) => {
+  await start(page); await open(page, 'Likud');
+  await page.locator('.side-panel').getByRole('button', { name: 'Increase Votes', exact: true }).click();
+  const votes = await page.locator('.side-panel').getByRole('textbox', { name: 'Votes', exact: true }).inputValue();
+  await page.reload();
+  await open(page, 'Likud');
+  await expect(page.locator('.side-panel').getByRole('textbox', { name: 'Votes', exact: true })).toHaveValue(votes);
+});

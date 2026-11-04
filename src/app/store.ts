@@ -475,8 +475,10 @@ listeners.add(() => {
   if (now.every((x, i) => x === wsLast[i])) return;
   wsLast = now;
   if (wsTimer) clearTimeout(wsTimer);
-  wsTimer = setTimeout(writeWorkspace, 250);
+  wsTimer = setTimeout(() => { wsTimer = null; writeWorkspace(); }, 250);
 });
+// a reload or tab close inside the debounce still keeps the last edit
+globalThis.addEventListener?.('pagehide', () => { if (wsTimer) { clearTimeout(wsTimer); wsTimer = null; writeWorkspace(); } });
 /** Rebuilds a session from its log; its undo history is the log replayed one change at a time. */
 function rebuild(ds: ElectionDataset, x: Snap): { session: ScenarioSession; failed: number } {
   const ctx = baseContext(ds);

@@ -15,10 +15,11 @@ export function Info({ title, children, term }: { title?: string; children?: Rea
   const g = term ? GLOSSARY.find((x) => x.id === term) : undefined;
   useEffect(() => {
     if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false);
+    // Escape closes this popover only, not the panel or dialog around it
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') { e.stopImmediatePropagation(); setOpen(false); } };
     const onDoc = (e: PointerEvent) => { if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false); };
-    document.addEventListener('keydown', onKey); document.addEventListener('pointerdown', onDoc);
-    return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', onDoc); };
+    document.addEventListener('keydown', onKey, true); document.addEventListener('pointerdown', onDoc);
+    return () => { document.removeEventListener('keydown', onKey, true); document.removeEventListener('pointerdown', onDoc); };
   }, [open]);
   const heading = title ?? (g ? (lang === 'he' ? g.nameHe : `${g.nameEn} (${g.nameHe})`) : '');
   return (
