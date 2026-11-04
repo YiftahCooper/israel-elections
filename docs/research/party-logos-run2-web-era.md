@@ -1506,3 +1506,413 @@ Each election batch k26 → k16 ran the dataset builder, Vitest, TypeScript, Vit
 - **Completeness:** passes only the identity-attempt ledger criterion (219 initial gaps recorded); fails the all-logos coverage goal (79 whole lists and 132 constituents remain). Tool quota failures and bounded routes limit any stronger conclusion.
 
 Final checks: logo validator **26 overlays, 121 source records, 72 assets, 80 hosted entries**, zero download-unavailable and five existing unresolved proposals. `PW_PORT=5361 npx playwright test`: **43 passed (21.5 seconds)**. Repeat dataset build: **0 files written, 38 unchanged**. Final coverage script rerun and compared against retained before inventory. All new original and final asset hashes, and retained raw-manifest hashes, independently recomputed. Branch `t3/2f41f9ae`; commits local only, no push or merge.
+
+
+## Retry pass — 4 November 2026
+
+Scope: retry the interrupted discovery attempts in the three run-2 reports, under
+0089 and the logo README. **231 exact query attempts retried**: 219 web-era social
+quota failures, two web-era Hebrew timeouts, two early-period quota failures,
+two early-period timeouts, one 1977 timeout, and five Shas quota failures.
+Validation-rejected oversized batches had already been successfully reissued in
+the original runs; they are not additional missing searches. Genuine completed
+negative searches were not repeated. Unvisited leads, sampled PDF pages and
+unresolved campaign dates are not automatically retrieval failures.
+
+Discovery used the available web search tool instead of the exhausted Jina key,
+with up to four exact queries per call. The six social queries sharing nonempty
+batches with the Hebrew timeouts were also rerun separately to disambiguate
+results; all six returned empty. All **219 exact social queries returned no
+locators**. This is a bounded search result, not proof of absent official posts
+or absent logos. No official social page was reached by those queries. No
+recall/completeness metric is available. No English Wikipedia page or mirror
+was opened or used; incidental mirror hits were discarded. Search snippets
+remain discovery only. Relevant opened evidence is distinguished below.
+
+Plain HTTP used `israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections)`.
+Initial sandbox DNS failed for Shenkar; network-enabled retry worked at the HTTP
+layer. No 429 or Retry-After was observed. Archive requests were serial, with at
+least three seconds between requests. No challenge, CAPTCHA, login or paywall
+was bypassed. The Jabotinsky catalogue and previously challenged NLI/UCLA/login
+routes were left blocked. No paid retrieval was used.
+
+### Retried queries and results
+
+`Empty` means the tool explicitly returned no results. `H1`–`H10` and `W1`–`W2`
+refer to discovery/evidence dispositions below. Every row records an actual
+resubmission, including separate Mapai straight/curly punctuation attempts.
+
+| # | Election / identity | Exact query | Retry result |
+|---:|---|---|---|
+| 1 | k26 / L `ג` | `site:facebook.com "יהדות התורה" 2026 בחירות` | Empty |
+| 2 | k26 / L `ט` | `site:facebook.com "הציונות הדתית–זהות" 2026 בחירות` | Empty |
+| 3 | k26 / L `עם` | `site:facebook.com "רעם" 2026 בחירות` | Empty |
+| 4 | k26 / P `agudat-yisrael` | `site:facebook.com "אגודת ישראל" 2026 בחירות` | Empty |
+| 5 | k26 / P `atid-ehad` | `site:facebook.com "עתיד אחד" 2026 בחירות` | Empty |
+| 6 | k26 / P `balad` | `site:facebook.com "בלד" 2026 בחירות` | Empty |
+| 7 | k26 / P `degel-hatorah` | `site:facebook.com "דגל התורה" 2026 בחירות` | Empty |
+| 8 | k26 / P `eretz-yisrael-shelanu` | `site:facebook.com "ארץ ישראל שלנו" 2026 בחירות` | Empty |
+| 9 | k26 / P `hadash` | `site:facebook.com "חדש" 2026 בחירות` | Empty |
+| 10 | k26 / P `homat-torat-yisrael` | `site:facebook.com "חומת תורת ישראל" 2026 בחירות` | Empty |
+| 11 | k26 / P `meretz` | `site:facebook.com "מרצ" 2026 בחירות` | Empty |
+| 12 | k26 / P `taal` | `site:facebook.com "תעל" 2026 בחירות` | Empty |
+| 13 | k26 / P `together-bennett` | `site:facebook.com "ביחד בראשות בנט" 2026 בחירות` | Empty |
+| 14 | k26 / P `yesodot-yisrael` | `site:facebook.com "יסודות ישראל" 2026 בחירות` | Empty |
+| 15 | k25 / L `ג` | `site:facebook.com "יהדות התורה" 2022 בחירות` | Empty |
+| 16 | k25 / L `ום` | `site:facebook.com "חדש–תעל" 2022 בחירות` | Empty |
+| 17 | k25 / L `ט` | `site:facebook.com "הציונות הדתית" 2022 בחירות` | Empty |
+| 18 | k25 / L `ל` | `site:facebook.com "ישראל ביתנו" 2022 בחירות` | Empty |
+| 19 | k25 / L `עם` | `site:facebook.com "רעם" 2022 בחירות` | Empty |
+| 20 | k25 / L `שס` | `site:facebook.com "שס" 2022 בחירות` | Empty |
+| 21 | k25 / P `agudat-yisrael` | `site:facebook.com "אגודת ישראל" 2022 בחירות` | Empty |
+| 22 | k25 / P `atid-ehad` | `site:facebook.com "עתיד אחד" 2022 בחירות` | Empty |
+| 23 | k25 / P `degel-hatorah` | `site:facebook.com "דגל התורה" 2022 בחירות` | Empty |
+| 24 | k25 / P `eretz-yisrael-shelanu` | `site:facebook.com "ארץ ישראל שלנו" 2022 בחירות` | Empty |
+| 25 | k25 / P `hadash` | `site:facebook.com "חדש" 2022 בחירות` | Empty |
+| 26 | k25 / P `israel-resilience` | `site:facebook.com "חוסן ישראל" 2022 בחירות` | Empty |
+| 27 | k25 / P `new-hope` | `site:facebook.com "תקווה חדשה" 2022 בחירות` | Empty |
+| 28 | k25 / P `noam` | `site:facebook.com "נעם" 2022 בחירות` | Empty |
+| 29 | k25 / P `otzma-yehudit` | `site:facebook.com "עוצמה יהודית" 2022 בחירות` | Empty |
+| 30 | k25 / P `taal` | `site:facebook.com "תעל" 2022 בחירות` | Empty |
+| 31 | k24 / L `ב` | `site:facebook.com "ימינה" 2021 בחירות` | Empty |
+| 32 | k24 / L `ג` | `site:facebook.com "יהדות התורה" 2021 בחירות` | Empty |
+| 33 | k24 / L `ודעם` | `site:facebook.com "הרשימה המשותפת" 2021 בחירות` | Empty |
+| 34 | k24 / L `ט` | `site:facebook.com "הציונות הדתית" 2021 בחירות` | Empty |
+| 35 | k24 / L `מרצ` | `site:facebook.com "מרצ" 2021 בחירות` | Empty |
+| 36 | k24 / L `שס` | `site:facebook.com "שס" 2021 בחירות` | Empty |
+| 37 | k24 / P `agudat-yisrael` | `site:facebook.com "אגודת ישראל" 2021 בחירות` | Empty |
+| 38 | k24 / P `atid-ehad` | `site:facebook.com "עתיד אחד" 2021 בחירות` | Empty |
+| 39 | k24 / P `balad` | `site:facebook.com "בלד" 2021 בחירות` | Empty |
+| 40 | k24 / P `degel-hatorah` | `site:facebook.com "דגל התורה" 2021 בחירות` | Empty |
+| 41 | k24 / P `derech-eretz` | `site:facebook.com "דרך ארץ" 2021 בחירות` | Empty |
+| 42 | k24 / P `hadash` | `site:facebook.com "חדש" 2021 בחירות` | Empty |
+| 43 | k24 / P `likud` | `site:facebook.com "הליכוד" 2021 בחירות` | Empty |
+| 44 | k24 / P `new-hope` | `site:facebook.com "תקווה חדשה" 2021 בחירות` | Empty |
+| 45 | k24 / P `noam` | `site:facebook.com "נעם" 2021 בחירות` | Empty |
+| 46 | k24 / P `taal` | `site:facebook.com "תעל" 2021 בחירות` | Empty |
+| 47 | k24 / P `tkuma` | `site:facebook.com "האיחוד הלאומי" 2021 בחירות` | Empty |
+| 48 | k23 / L `ג` | `site:facebook.com "יהדות התורה" 2020 בחירות` | Empty |
+| 49 | k23 / L `ודעם` | `site:facebook.com "הרשימה המשותפת" 2020 בחירות` | Empty |
+| 50 | k23 / L `טב` | `site:facebook.com "ימינה" 2020 בחירות` | Empty |
+| 51 | k23 / L `פה` | `site:facebook.com "כחול לבן" 2020 בחירות` | Empty |
+| 52 | k23 / L `שס` | `site:facebook.com "שס" 2020 בחירות` | Empty |
+| 53 | k23 / P `ahi` | `site:facebook.com "אחי" 2020 בחירות` | Empty |
+| 54 | k23 / P `balad` | `site:facebook.com "בלד" 2020 בחירות` | Empty |
+| 55 | k23 / P `degel-hatorah` | `site:facebook.com "דגל התורה" 2020 בחירות` | Empty |
+| 56 | k23 / P `gesher` | `site:facebook.com "גשר" 2020 בחירות` | Empty |
+| 57 | k23 / P `hadash` | `site:facebook.com "חדש" 2020 בחירות` | Empty |
+| 58 | k23 / P `israel-resilience` | `site:facebook.com "חוסן ישראל" 2020 בחירות` | Empty |
+| 59 | k23 / P `jewish-home` | `"הבית היהודי" "2020" לוגו בחירות אתר רשמי -site:en.wikipedia.org` | W1 |
+| 60 | k23 / P `jewish-home` | `site:facebook.com "הבית היהודי" 2020 בחירות` | Empty |
+| 61 | k23 / P `kulanu` | `site:facebook.com "כולנו" 2020 בחירות` | Empty |
+| 62 | k23 / P `labor` | `site:facebook.com "העבודה" 2020 בחירות` | Empty |
+| 63 | k23 / P `likud` | `site:facebook.com "הליכוד" 2020 בחירות` | Empty |
+| 64 | k23 / P `meretz` | `site:facebook.com "מרצ" 2020 בחירות` | Empty |
+| 65 | k23 / P `new-right` | `site:facebook.com "הימין החדש" 2020 בחירות` | Empty |
+| 66 | k23 / P `raam` | `site:facebook.com "רעם" 2020 בחירות` | Empty |
+| 67 | k23 / P `taal` | `site:facebook.com "תעל" 2020 בחירות` | Empty |
+| 68 | k23 / P `telem` | `site:facebook.com "תלם" 2020 בחירות` | Empty |
+| 69 | k23 / P `tkuma` | `site:facebook.com "האיחוד הלאומי" 2020 בחירות` | Empty |
+| 70 | k23 / P `yesh-atid` | `site:facebook.com "יש עתיד" 2020 בחירות` | Empty |
+| 71 | k22 / L `אמת` | `site:facebook.com "העבודה–גשר" 2019 בחירות` | Empty |
+| 72 | k22 / L `ג` | `site:facebook.com "יהדות התורה" 2019 בחירות` | Empty |
+| 73 | k22 / L `מרצ` | `site:facebook.com "המחנה הדמוקרטי" 2019 בחירות` | Empty |
+| 74 | k22 / L `פה` | `site:facebook.com "כחול לבן" 2019 בחירות` | Empty |
+| 75 | k22 / L `שס` | `site:facebook.com "שס" 2019 בחירות` | Empty |
+| 76 | k22 / P `agudat-yisrael` | `site:facebook.com "אגודת ישראל" 2019 בחירות` | Empty |
+| 77 | k22 / P `degel-hatorah` | `site:facebook.com "דגל התורה" 2019 בחירות` | Empty |
+| 78 | k22 / P `gesher` | `site:facebook.com "גשר" 2019 בחירות` | Empty |
+| 79 | k22 / P `green-movement` | `site:facebook.com "התנועה הירוקה" 2019 בחירות` | Empty |
+| 80 | k22 / P `hadash` | `site:facebook.com "חדש" 2019 בחירות` | Empty |
+| 81 | k22 / P `independence` | `site:facebook.com "העצמאות" 2019 בחירות` | Empty |
+| 82 | k22 / P `israel-resilience` | `site:facebook.com "חוסן ישראל" 2019 בחירות` | Empty |
+| 83 | k22 / P `jewish-home` | `site:facebook.com "הבית היהודי" 2019 בחירות` | Empty |
+| 84 | k22 / P `kulanu` | `site:facebook.com "כולנו" 2019 בחירות` | Empty |
+| 85 | k22 / P `labor` | `site:facebook.com "העבודה" 2019 בחירות` | Empty |
+| 86 | k22 / P `likud` | `site:facebook.com "הליכוד" 2019 בחירות` | Empty |
+| 87 | k22 / P `meretz` | `site:facebook.com "מרצ" 2019 בחירות` | Empty |
+| 88 | k22 / P `new-right` | `site:facebook.com "הימין החדש" 2019 בחירות` | Empty |
+| 89 | k22 / P `raam` | `site:facebook.com "רעם" 2019 בחירות` | Empty |
+| 90 | k22 / P `taal` | `site:facebook.com "תעל" 2019 בחירות` | Empty |
+| 91 | k22 / P `telem` | `site:facebook.com "תלם" 2019 בחירות` | Empty |
+| 92 | k22 / P `tkuma` | `site:facebook.com "האיחוד הלאומי" 2019 בחירות` | Empty |
+| 93 | k21 / L `ג` | `site:facebook.com "יהדות התורה" 2019 בחירות` | Empty |
+| 94 | k21 / L `דעם` | `site:facebook.com "רעם–בלד" 2019 בחירות` | Empty |
+| 95 | k21 / L `ום` | `site:facebook.com "חדש–תעל" 2019 בחירות` | Empty |
+| 96 | k21 / L `טב` | `site:facebook.com "איחוד מפלגות הימין" 2019 בחירות` | Empty |
+| 97 | k21 / L `כ` | `site:facebook.com "כולנו" 2019 בחירות` | Empty |
+| 98 | k21 / L `מרצ` | `site:facebook.com "מרצ" 2019 בחירות` | Empty |
+| 99 | k21 / L `פה` | `site:facebook.com "כחול לבן" 2019 בחירות` | Empty |
+| 100 | k21 / L `שס` | `site:facebook.com "שס" 2019 בחירות` | Empty |
+| 101 | k21 / P `agudat-yisrael` | `site:facebook.com "אגודת ישראל" 2019 בחירות` | Empty |
+| 102 | k21 / P `ahi` | `site:facebook.com "אחי" 2019 בחירות` | Empty |
+| 103 | k21 / P `balad` | `site:facebook.com "בלד" 2019 בחירות` | Empty |
+| 104 | k21 / P `degel-hatorah` | `site:facebook.com "דגל התורה" 2019 בחירות` | Empty |
+| 105 | k21 / P `hadash` | `site:facebook.com "חדש" 2019 בחירות` | Empty |
+| 106 | k21 / P `israel-resilience` | `site:facebook.com "חוסן ישראל" 2019 בחירות` | Empty |
+| 107 | k21 / P `jewish-home` | `site:facebook.com "הבית היהודי" 2019 בחירות` | Empty |
+| 108 | k21 / P `likud` | `site:facebook.com "הליכוד" 2019 בחירות` | Empty |
+| 109 | k21 / P `otzma-yehudit` | `site:facebook.com "עוצמה יהודית" 2019 בחירות` | Empty |
+| 110 | k21 / P `raam` | `site:facebook.com "רעם" 2019 בחירות` | Empty |
+| 111 | k21 / P `taal` | `site:facebook.com "תעל" 2019 בחירות` | Empty |
+| 112 | k21 / P `telem` | `site:facebook.com "תלם" 2019 בחירות` | Empty |
+| 113 | k21 / P `tkuma` | `site:facebook.com "האיחוד הלאומי" 2019 בחירות` | Empty |
+| 114 | k21 / P `yesh-atid` | `site:facebook.com "יש עתיד" 2019 בחירות` | Empty |
+| 115 | k20 / L `אמת` | `site:facebook.com "המחנה הציוני" 2015 בחירות` | Empty |
+| 116 | k20 / L `ג` | `site:facebook.com "יהדות התורה" 2015 בחירות` | Empty |
+| 117 | k20 / L `ודעם` | `site:facebook.com "הרשימה המשותפת" 2015 בחירות` | Empty |
+| 118 | k20 / L `טב` | `site:facebook.com "הבית היהודי" 2015 בחירות` | Empty |
+| 119 | k20 / L `ל` | `site:facebook.com "ישראל ביתנו" 2015 בחירות` | Empty |
+| 120 | k20 / L `מרצ` | `site:facebook.com "מרצ" 2015 בחירות` | Empty |
+| 121 | k20 / L `פה` | `site:facebook.com "יש עתיד" 2015 בחירות` | Empty |
+| 122 | k20 / L `שס` | `site:facebook.com "שס" 2015 בחירות` | Empty |
+| 123 | k20 / P `agudat-yisrael` | `site:facebook.com "אגודת ישראל" 2015 בחירות` | Empty |
+| 124 | k20 / P `balad` | `site:facebook.com "בלד" 2015 בחירות` | Empty |
+| 125 | k20 / P `degel-hatorah` | `site:facebook.com "דגל התורה" 2015 בחירות` | Empty |
+| 126 | k20 / P `green-movement` | `site:facebook.com "התנועה הירוקה" 2015 בחירות` | Empty |
+| 127 | k20 / P `hadash` | `site:facebook.com "חדש" 2015 בחירות` | Empty |
+| 128 | k20 / P `hatnua` | `site:facebook.com "התנועה" 2015 בחירות` | Empty |
+| 129 | k20 / P `jewish-home` | `site:facebook.com "הבית היהודי" 2015 בחירות` | Empty |
+| 130 | k20 / P `labor` | `site:facebook.com "העבודה" 2015 בחירות` | Empty |
+| 131 | k20 / P `raam` | `site:facebook.com "רעם" 2015 בחירות` | Empty |
+| 132 | k20 / P `taal` | `site:facebook.com "תעל" 2015 בחירות` | Empty |
+| 133 | k20 / P `tkuma` | `site:facebook.com "האיחוד הלאומי" 2015 בחירות` | Empty |
+| 134 | k19 / L `אמת` | `site:facebook.com "העבודה" 2013 בחירות` | Empty |
+| 135 | k19 / L `ג` | `site:facebook.com "יהדות התורה" 2013 בחירות` | Empty |
+| 136 | k19 / L `ד` | `site:facebook.com "בלד" 2013 בחירות` | Empty |
+| 137 | k19 / L `ו` | `site:facebook.com "חדש" 2013 בחירות` | Empty |
+| 138 | k19 / L `טב` | `site:facebook.com "הבית היהודי" 2013 בחירות` | Empty |
+| 139 | k19 / L `מחל` | `site:facebook.com "הליכוד–ישראל ביתנו" 2013 בחירות` | Empty |
+| 140 | k19 / L `עם` | `site:facebook.com "רעם–תעל–מדע" 2013 בחירות` | Empty |
+| 141 | k19 / L `פה` | `site:facebook.com "יש עתיד" 2013 בחירות` | Empty |
+| 142 | k19 / L `שס` | `site:facebook.com "שס" 2013 בחירות` | Empty |
+| 143 | k19 / P `agudat-yisrael` | `site:facebook.com "אגודת ישראל" 2013 בחירות` | Empty |
+| 144 | k19 / P `degel-hatorah` | `site:facebook.com "דגל התורה" 2013 בחירות` | Empty |
+| 145 | k19 / P `jewish-home` | `site:facebook.com "הבית היהודי" 2013 בחירות` | Empty |
+| 146 | k19 / P `likud` | `site:facebook.com "הליכוד" 2013 בחירות` | Empty |
+| 147 | k19 / P `mada` | `site:facebook.com "מדע" 2013 בחירות` | Empty |
+| 148 | k19 / P `raam` | `site:facebook.com "רעם" 2013 בחירות` | Empty |
+| 149 | k19 / P `taal` | `site:facebook.com "תעל" 2013 בחירות` | Empty |
+| 150 | k19 / P `tkuma` | `site:facebook.com "האיחוד הלאומי" 2013 בחירות` | Empty |
+| 151 | k19 / P `yisrael-beiteinu` | `site:facebook.com "ישראל ביתנו" 2013 בחירות` | Empty |
+| 152 | k18 / L `אמת` | `site:facebook.com "העבודה" 2009 בחירות` | Empty |
+| 153 | k18 / L `ב` | `site:facebook.com "הבית היהודי" 2009 בחירות` | Empty |
+| 154 | k18 / L `ג` | `site:facebook.com "יהדות התורה" 2009 בחירות` | Empty |
+| 155 | k18 / L `ד` | `site:facebook.com "בלד" 2009 בחירות` | Empty |
+| 156 | k18 / L `ו` | `site:facebook.com "חדש" 2009 בחירות` | Empty |
+| 157 | k18 / L `ט` | `site:facebook.com "האיחוד הלאומי" 2009 בחירות` | Empty |
+| 158 | k18 / L `כן` | `site:facebook.com "קדימה" 2009 בחירות` | Empty |
+| 159 | k18 / L `ל` | `site:facebook.com "ישראל ביתנו" 2009 בחירות` | Empty |
+| 160 | k18 / L `עם` | `site:facebook.com "רעם–תעל" 2009 בחירות` | Empty |
+| 161 | k18 / L `שס` | `site:facebook.com "שס" 2009 בחירות` | Empty |
+| 162 | k18 / P `agudat-yisrael` | `site:facebook.com "אגודת ישראל" 2009 בחירות` | Empty |
+| 163 | k18 / P `ahi` | `site:facebook.com "אחי" 2009 בחירות` | Empty |
+| 164 | k18 / P `degel-hatorah` | `site:facebook.com "דגל התורה" 2009 בחירות` | Empty |
+| 165 | k18 / P `eretz-yisrael-shelanu` | `site:facebook.com "ארץ ישראל שלנו" 2009 בחירות` | Empty |
+| 166 | k18 / P `hatikva` | `site:facebook.com "התקווה" 2009 בחירות` | Empty |
+| 167 | k18 / P `likud` | `site:facebook.com "הליכוד" 2009 בחירות` | Empty |
+| 168 | k18 / P `meretz` | `site:facebook.com "מרצ" 2009 בחירות` | Empty |
+| 169 | k18 / P `moledet` | `site:facebook.com "מולדת" 2009 בחירות` | Empty |
+| 170 | k18 / P `new-movement` | `site:facebook.com "התנועה החדשה" 2009 בחירות` | Empty |
+| 171 | k18 / P `raam` | `site:facebook.com "רעם" 2009 בחירות` | Empty |
+| 172 | k18 / P `taal` | `site:facebook.com "תעל" 2009 בחירות` | Empty |
+| 173 | k18 / P `tkuma` | `site:facebook.com "האיחוד הלאומי" 2009 בחירות` | Empty |
+| 174 | k17 / L `אמת` | `site:facebook.com "העבודה–מימד" 2006 בחירות` | Empty |
+| 175 | k17 / L `ג` | `site:facebook.com "יהדות התורה" 2006 בחירות` | Empty |
+| 176 | k17 / L `ד` | `site:facebook.com "בלד" 2006 בחירות` | Empty |
+| 177 | k17 / L `ו` | `site:facebook.com "חדש" 2006 בחירות` | Empty |
+| 178 | k17 / L `זך` | `site:facebook.com "גיל" 2006 בחירות` | Empty |
+| 179 | k17 / L `כן` | `site:facebook.com "קדימה" 2006 בחירות` | Empty |
+| 180 | k17 / L `ל` | `site:facebook.com "ישראל ביתנו" 2006 בחירות` | Empty |
+| 181 | k17 / L `מחל` | `site:facebook.com "הליכוד" 2006 בחירות` | Empty |
+| 182 | k17 / L `מרצ` | `site:facebook.com "מרצ" 2006 בחירות` | Empty |
+| 183 | k17 / L `עם` | `site:facebook.com "רעם–תעל" 2006 בחירות` | Empty |
+| 184 | k17 / L `שס` | `site:facebook.com "שס" 2006 בחירות` | Empty |
+| 185 | k17 / P `agudat-yisrael` | `site:facebook.com "אגודת ישראל" 2006 בחירות` | Empty |
+| 186 | k17 / P `ahi` | `site:facebook.com "אחי" 2006 בחירות` | Empty |
+| 187 | k17 / P `arab-democratic-party` | `site:facebook.com "המפלגה הדמוקרטית הערבית" 2006 בחירות` | Empty |
+| 188 | k17 / P `degel-hatorah` | `site:facebook.com "דגל התורה" 2006 בחירות` | Empty |
+| 189 | k17 / P `labor` | `site:facebook.com "מפלגת העבודה הישראלית" 2006 בחירות` | Empty |
+| 190 | k17 / P `meimad` | `site:facebook.com "מימד" 2006 בחירות` | Empty |
+| 191 | k17 / P `moledet` | `site:facebook.com "מולדת" 2006 בחירות` | Empty |
+| 192 | k17 / P `nrp` | `site:facebook.com "המפדל" 2006 בחירות` | Empty |
+| 193 | k17 / P `ram` | `site:facebook.com "רעם" 2006 בחירות` | Empty |
+| 194 | k17 / P `taal` | `site:facebook.com "תעל" 2006 בחירות` | Empty |
+| 195 | k17 / P `tkuma` | `site:facebook.com "תקומה" 2006 בחירות` | Empty |
+| 196 | k16 / L `ב` | `site:facebook.com "מפדל" 2003 בחירות` | Empty |
+| 197 | k16 / L `ג` | `site:facebook.com "יהדות התורה" 2003 בחירות` | Empty |
+| 198 | k16 / L `ד` | `site:facebook.com "בלד" 2003 בחירות` | Empty |
+| 199 | k16 / L `ו` | `site:facebook.com "חדש–תעל" 2003 בחירות` | Empty |
+| 200 | k16 / L `יש` | `site:facebook.com "שינוי" 2003 בחירות` | Empty |
+| 201 | k16 / L `כן` | `site:facebook.com "ישראל בעלייה" 2003 בחירות` | Empty |
+| 202 | k16 / L `ל` | `site:facebook.com "האיחוד הלאומי" 2003 בחירות` | Empty |
+| 203 | k16 / L `מחל` | `site:facebook.com "הליכוד" 2003 בחירות` | Empty |
+| 204 | k16 / L `מרצ` | `site:facebook.com "מרצ" 2003 בחירות` | Empty |
+| 205 | k16 / L `עם` | `site:facebook.com "רעם" 2003 בחירות` | Empty |
+| 206 | k16 / L `שס` | `site:facebook.com "שס" 2003 בחירות` | Empty |
+| 207 | k16 / P `agudat-yisrael` | `site:facebook.com "אגודת ישראל" 2003 בחירות` | Empty |
+| 208 | k16 / P `arab-democratic-party` | `site:facebook.com "המפלגה הדמוקרטית הערבית" 2003 בחירות` | Empty |
+| 209 | k16 / P `degel-hatorah` | `site:facebook.com "דגל התורה" 2003 בחירות` | Empty |
+| 210 | k16 / P `democratic-choice` | `site:facebook.com "הבחירה הדמוקרטית" 2003 בחירות` | Empty |
+| 211 | k16 / P `hadash` | `site:facebook.com "חדש" 2003 בחירות` | Empty |
+| 212 | k16 / P `labor` | `site:facebook.com "מפלגת העבודה הישראלית" 2003 בחירות` | Empty |
+| 213 | k16 / P `meimad` | `site:facebook.com "מימד" 2003 בחירות` | Empty |
+| 214 | k16 / P `meretz` | `site:facebook.com "מרצ" 2003 בחירות` | Empty |
+| 215 | k16 / P `moledet` | `"מולדת" "2003" לוגו בחירות אתר רשמי -site:en.wikipedia.org` | W2 |
+| 216 | k16 / P `moledet` | `site:facebook.com "מולדת" 2003 בחירות` | Empty |
+| 217 | k16 / P `ram` | `site:facebook.com "רעם" 2003 בחירות` | Empty |
+| 218 | k16 / P `shahar` | `site:facebook.com "שחר" 2003 בחירות` | Empty |
+| 219 | k16 / P `taal` | `site:facebook.com "תעל" 2003 בחירות` | Empty |
+| 220 | k16 / P `tkuma` | `site:facebook.com "תקומה" 2003 בחירות` | Empty |
+| 221 | k16 / P `yisrael-beiteinu` | `site:facebook.com "ישראל ביתנו" 2003 בחירות` | Empty |
+| 222 | k9 / L לע | `ליברלים עצמאיים 1977 כרזה בחירות סמל -site:en.wikipedia.org` | H1 |
+| 223 | k8 / L קנ | `מוקד 1973 כרזה -site:en.wikipedia.org` | H2 |
+| 224 | k3 / L א | `מפא"י 1955 כרזה -site:en.wikipedia.org` | H3 |
+| 225 | k3 / L א | `מפא״י 1955 כרזה -site:en.wikipedia.org` | H4 |
+| 226 | k3 / L צ | `הציונים הכלליים 1955 כרזה -site:en.wikipedia.org` | H5 |
+| 227 | k11 / L שס | `"ש״ס" "1984" "כרזה"` | H6 |
+| 228 | k12 / L שס | `"ש״ס" "1988" "כרזה"` | H7 |
+| 229 | k13 / L שס | `"ש״ס" "1992" "כרזה"` | H8 |
+| 230 | k14 / L שס | `"ש״ס" "1996" "כרזה"` | H9 |
+| 231 | k15 / L שס | `"ש״ס" "1999" "כרזה"` | H10 |
+
+### Discovery dispositions and inspected sources
+
+- **W1 — Jewish Home 2020:** opened [Kipa's 31 December 2019 report](https://www.kipa.co.il/חדשות/952122-לוגו-הבית-היהודי-המאוחד-בלי-סמוטריץ/).
+  It describes a Jewish Home–Otzma joint lockup, not the requested separate
+  Jewish Home emblem. It is also secondary reporting, not an official origin.
+  CEC candidate/result leads establish list identities, not a separate emblem.
+- **W2 — Moledet 2003:** opened [Ynet's 14 November 2002 website survey](https://www.ynet.co.il/articles/0,7340,L-2247834,00.html).
+  It discusses the Moledet website and campaign graphics, but supplies no
+  inspected official asset bytes or digest proof. CEC decision and Knesset
+  history leads concern the joint list, not a clean constituent emblem.
+- **H1 — Independent Liberals 1977:** IDI history/election pages and NLI collection
+  discovery; the Shenkar poster lead concerns Gahal, a different identity.
+  Opening [Shenkar item 152457](https://designarchive.shenkar.ac.il/items/152457)
+  returned 502 through the web tool. No qualifying emblem acquired.
+- **H2 — Moked 1973:** mostly unrelated military, public-service and generic
+  keyword matches; no campaign-specific official artwork recovered.
+- **H3/H4 — Mapai 1955 punctuation variants:** opened [NLI's Mapai teaching item](https://www.nli.org.il/he/education/teaching-resources/primary-sources/nnl_edu997013031809605171).
+  It dates the poster to 1955 and describes Ben-Gurion and the ballot letter א;
+  this does not establish a separate qualifying emblem or a complete date.
+  Opened [Shenkar item 152407](https://designarchive.shenkar.ac.il/items/152407):
+  provenance names Mapai but the date is only the 1950s, insufficient for 1955.
+  [Item 116015](https://designarchive.shenkar.ac.il/items/116015) returned 502.
+- **H5 — General Zionists 1955:** the [NLI “cease fire, vote צ” teaching item](https://www.nli.org.il/he/education/teaching-resources/primary-sources/nnl_edu997013032166805171)
+  returned 403; stopped, no alternate access attempted. Remaining snippets are
+  discovery only and do not establish inspected original campaign artwork.
+- **H6–H10 — Shas 1984/1988/1992/1996/1999:** results are predominantly a later
+  political-history book, Talmud/book-library homonyms, modern reporting and
+  unrelated auction entries. No dated official Shas campaign asset recovered.
+  The Scribd result was not opened; no paywall or login was attempted.
+
+These exclusions are bounded evidence judgments, not historical absence claims.
+No new image was accepted, cropped or hosted; consequently there are no new
+original-byte hashes, cropBox records or CDX digest proofs. Existing originals,
+colours, joint/constituent assignments and hashes are preserved.
+
+### Non-challenge retrieval failures retried
+
+| Original incomplete retrieval | Retry observation | Disposition |
+|---|---|---|
+| `https://designarchive.shenkar.ac.il/articles/84` (1996 Hadash lead) | Required-UA plain HTTP: 500, HTML title “Server Error” | Still a retrieval gap; no inspected artwork. |
+| `http://iiif.nli.org.il/IIIFv21/NNL_Ephemera700129128/manifest` | Redirect to HTTPS; 404, XML “Internal error”, 149 bytes | No FL identifier or original scan recovered. |
+| `https://iiif.nli.org.il/IIIFv21/NNL_Ephemera700129128/manifest` | 404, same XML error, 149 bytes | Still unresolved; not proof the artefact is absent. |
+| `https://web.archive.org/web/19990428045736id_/http://www.likud.org.il:80/navframe.html` | Redirect to `20120928014244id_`, HTTP 404 | Still not a 1999 campaign capture; rejected. |
+
+Previously corrected DNS, encoding and dependency failures are not outstanding
+search gaps. The web-era Zehut DNS failure already had a successful 200 retry.
+The k25 Shas/Yisrael Beiteinu byte/date mismatch is unresolved evidence, rather
+than an interrupted query in these reports; no new campaign assignment is inferred.
+
+### Discovery locators
+
+The following are returned locators, not claims that each page was opened.
+Incidental Wikipedia pages/mirrors and unrelated generic results were not used.
+The complete response transcripts are reproducible scratch; these selected
+locators preserve the material leads and rejection rationale.
+
+- **W1:** [לוגו הבית היהודי המאוחד בלי סמוטריץ - כיפה](https://www.kipa.co.il/%D7%97%D7%93%D7%A9%D7%95%D7%AA/952122-%D7%9C%D7%95%D7%92%D7%95-%D7%94%D7%91%D7%99%D7%AA-%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99-%D7%94%D7%9E%D7%90%D7%95%D7%97%D7%93-%D7%91%D7%9C%D7%99-%D7%A1%D7%9E%D7%95%D7%98%D7%A8%D7%99%D7%A5/); [חפש](https://www.idi.org.il/media/14007/%D7%99%D7%9E%D7%99%D7%A0%D7%94.pdf); [הבית היהודי - המכון הישראלי לדמוקרטיה](https://www.idi.org.il/policy/parties-and-elections/parties/habait-hayehudi/); [8736י"ד באדר הת](https://www.gov.il/BlobFolder/guide/election-committee-history/ar/history_election-dates_knesset23-results.pdf); [הבית היהודי / מפד"ל · איך הכנסת מצביעה](https://knessetvotes.org/he/parties/jewish-home); [תוצאות הבחירות לכנסת בשלוחות](https://elections.kaplanopensource.co.il/locality/439/); [הבית היהודי (הכנסת ה-23) · איך הכנסת מצביעה](https://knessetvotes.org/he/factions/960); [המפלגות בישראל: טיוטה | המכון הישראלי לדמוקרטיה](https://www.idi.org.il/media/17403/political-parties-in-israel-draft.pdf?isExternal=true); [הבית היהודי – המכלול](https://www.hamichlol.org.il/%D7%94%D7%91%D7%99%D7%AA_%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99); [Microsoft Word - äâè ÔÔæÑâÔ ÜÛàáê ÑÙß ÞÖè×ÙÝ ÜÐéÛàÖÙÝ-ÔÞÐÞè 2.0](https://momidahan.huji.ac.il/sites/default/files/momidahan/files/pr_hhtsbh_lknst_byn_mzrkhym_lshknzym_2.0.pdf); [פער ההצבעה לכנסת בין מזרחיים לאשכנזים*](https://ieca.org.il/wp-content/uploads/2024/02/%D7%93%D7%94%D7%9F-%D7%A4%D7%A2%D7%A8-%D7%94%D7%94%D7%A6%D7%91%D7%A2%D7%94-%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA-%D7%91%D7%99%D7%9F-%D7%9E%D7%96%D7%A8%D7%97%D7%99%D7%99%D7%9D-%D7%9C%D7%90%D7%A9%D7%9B%D7%A0%D7%96%D7%99%D7%9D.pdf); [תוצאות הבחירות ביתד: איך הצביעו ביישוב בכל הבחירות לכנסת, 2013 עד 2022 | Israel.com](https://www.israel.com/he/election-results/yated); [<visual_element id="e1">](https://kav-itonut.co.il/wp-content/uploads/2019/12/%D7%A4%D7%AA-19.12.pdf); [News1 | חברים ממרכז הבית היהודי עברו לאיחוד הלאומי](https://www.news1.co.il/Archive/001-D-435161-00.html); [הבית היהודי – המכלול](https://www.hamichlol.org.il/%D7%94%D7%91%D7%99%D7%AA_%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99%2C_%D7%9E%D7%99%D7%A1%D7%95%D7%93%D7%94_%D7%A9%D7%9C_%D7%94%D7%9E%D7%A4%D7%93%22%D7%9C_%E2%80%93_%D7%94%D7%9E%D7%A4%D7%9C%D7%92%D7%94_%D7%94%D7%93%D7%AA%D7%99%D7%AA_%D7%9C%D7%90%D7%95%D7%9E%D7%99%D7%AA_%D7%94%D7%9E%D7%96%D7%A8%D7%97%D7%99_%D7%94%D7%A4%D7%95%D7%A2%D7%9C_%D7%94%D7%9E%D7%96%D7%A8%D7%97%D7%99_%D7%91%D7%90%D7%A8%D7%A5_%D7%99%D7%A9%D7%A8%D7%90%D7%9C); [הבית היהודי – המכלול](https://www.hamichlol.org.il/%D7%94%D7%91%D7%99%D7%AA_%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99_%D7%9E%D7%99%D7%99%D7%A1%D7%95%D7%93%D7%9D_%D7%A9%D7%9C_%D7%94%D7%90%D7%99%D7%97%D7%95%D7%93_%D7%94%D7%9C%D7%90%D7%95%D7%9E%D7%99_%D7%95%D7%94%D7%9E%D7%A4%D7%93%22%D7%9C_%D7%94%D7%97%D7%93%D7%A9%D7%94).
+- **W2:** [מצעד האתרים הפוליטיים 2003](https://www.ynet.co.il/articles/0%2C7340%2CL-2247834%2C00.html); [תוצאות הבחירות במולדת | בחירות 2026](https://israelvoting.com/localities/269); [בחירות לכנסת ה-16](https://www.gov.il/apps/elections/elections-knesset-16/heb/cec/view_announcementfddb.html?id=52); [הכנסת השש-עשרה](https://main.knesset.gov.il/About/History/pages/knessethistory.aspx?kns=16); [בחירות לכנסת ה-16](https://www.gov.il/apps/elections/elections-knesset-16/heb/cec/announcements.html); [המפלגות בישראל: טיוטה | המכון הישראלי לדמוקרטיה](https://www.idi.org.il/media/17403/political-parties-in-israel-draft.pdf?isExternal=true); [המפלגות בישראל 2021-1992 | ספר עיון | פרופ' עופר קניג, פרופ' גדעון רהט | המכון הישראלי לדמוקרטיה](https://www.idi.org.il/media/20997/%D7%94%D7%9E%D7%A4%D7%9C%D7%92%D7%95%D7%AA-%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C-2021-1992.pdf); [חוק הרשויות המקומיות (מימון בחירות), התשנ"ג-](https://library.mevaker.gov.il/sites/DigitalLibrary/Documents/mekomiyot/mekomiyot_2008-1989/2004-Rashuyot-OrAkiva-Haifa-Jerusalem-Jun03/2004-Rashuyot-OrAkiva-Haifa-Jerusalem-Jun03.pdf); [הבחירות בישראל – 2013](https://en.idi.org.il/media/4157/elections_in_israel_2013.pdf).
+- **H1:** [ליברלים עצמאיים - המכון הישראלי לדמוקרטיה](https://www.idi.org.il/policy/parties-and-elections/parties/independent-liberals/); [בחירות בישראל](https://www.nli.org.il/he/discover/israel/elections); [המפלגה הליברלית - המכון הישראלי לדמוקרטיה](https://www.idi.org.il/policy/parties-and-elections/parties/hamiflaga-haliberalit/); [לוח 2: תוצאות הבחירות שנערכו בישראל ב-1977](https://davis.huji.ac.il/sites/default/files/davisinst/files/Politika_26_0.pdf); [תבנית:תוצאות בחירות/תיעוד – ויקיחדשות](https://he.wikinews.org/wiki/%D7%AA%D7%91%D7%A0%D7%99%D7%AA%3A%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA_%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA/%D7%AA%D7%99%D7%A2%D7%95%D7%93); [דן פלזנטל וניקולס מילר](https://openscholar.huji.ac.il/sites/default/files/davisinst/files/Dan_Felsenthal_Nicholas_Miller.pdf); [בחירות 1977 - המכון הישראלי לדמוקרטיה](https://www.idi.org.il/policy/parties-and-elections/elections/1977/); [כרזה, לשלמות הארץ | מרכז שנקר לתיעוד וחקר העיצוב בישראל](https://designarchive.shenkar.ac.il/items/152457); [ברכות מפלגת המערך, המפד״ל, ומשקי חירות-בית״ר, בחירות 1977,](https://public-policy.huji.ac.il/sites/default/files/public-policy/files/tzh_mkhqryt_hydvlvgyh_shl_mtyyshby_bqt_hyrdn_tyr-l_khn.pdf); [ליברלים עצמאיים – המכלול](https://www.hamichlol.org.il/%D7%9C%D7%A2); [מקורות ראשוניים להוראה | חינוך בספרייה הלאומית](https://www.nli.org.il/he/education/teaching-resources/primary-sources); [ליברלים עצמאיים – המכלול](https://www.hamichlol.org.il/%D7%94%D7%9C%D7%99%D7%91%D7%A8%D7%9C%D7%99%D7%9D_%D7%94%D7%A2%D7%A6%D7%9E%D7%90%D7%99%D7%9D); [1977 - The Israel Democracy Institute](https://en.idi.org.il/israeli-elections-and-parties/elections/1977); [2010 , קיץ40 'קשר מס](https://dacenter.tau.ac.il/sites/abraham.tau.ac.il/files/media_server/daniel%20abraham/kesher/40/40_Kossewska.pdf); [הב](https://olam.eu-central-1.linodeobjects.com/pdfs/B-I1820-D190772.pdf); [סיעות](https://main.knesset.gov.il/mk/apps/faction/faction-lobby?FactionID=273&KnessetID=5); [ר ש ו מ ו ת](https://web-archive.nli.org.il/National_Library/20171215161857mp_/http%3A/www.nevo.co.il/Law_word/law10/yalkut-2486.pdf); [עצות לגבי הבחירות?](https://www.reddit.com/r/israel_bm/comments/1xf7nou/%D7%A2%D7%A6%D7%95%D7%AA_%D7%9C%D7%92%D7%91%D7%99_%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA/); [הפיכה_במ](https://www.reddit.com/r/ani_bm/comments/e1pwse).
+- **H2:** [Open Knesset](https://oknesset.org/committees/244.html); [האגודה הישראלית לדיפלומטיה - דף הבית](https://israelidiplomacy.org.il/); [מבצע מנוף - הרכבת האווירית מארה"ב | 50 שנה למלחמת יום כיפור](https://yomkipurwar.mod.gov.il/events/Pages/%D7%9E%D7%91%D7%A6%D7%A2-%D7%9E%D7%A0%D7%95%D7%A3--%D7%94%D7%A8%D7%9B%D7%91%D7%AA-%D7%94%D7%90%D7%95%D7%95%D7%99%D7%A8%D7%99%D7%AA-%D7%9E%D7%90%D7%A8%D7%94%D7%91.aspx); [ציר הזמן - האגודה הישראלית לדיפלומטיה](https://israelidiplomacy.org.il/timeline/); [מוקדים לפניות הציבור ולבירור מידע במהלך מלחמת חרבות ברזל (מלחמת התקומה) (שירות) – כל-זכות](https://www.kolzchut.org.il/he/%D7%9E%D7%95%D7%A7%D7%93%D7%99%D7%9D_%D7%9C%D7%A4%D7%A0%D7%99%D7%95%D7%AA_%D7%94%D7%A6%D7%99%D7%91%D7%95%D7%A8_%D7%95%D7%9C%D7%91%D7%99%D7%A8%D7%95%D7%A8_%D7%9E%D7%99%D7%93%D7%A2_%D7%91%D7%9E%D7%94%D7%9C%D7%9A_%D7%9E%D7%9C%D7%97%D7%9E%D7%AA_%D7%97%D7%A8%D7%91%D7%95%D7%AA_%D7%91%D7%A8%D7%96%D7%9C_%28%D7%9E%D7%9C%D7%97%D7%9E%D7%AA_%D7%94%D7%AA%D7%A7%D7%95%D7%9E%D7%94%29); [מוקדים לפניות הציבור ולבירור מידע במהלך מלחמת חרבות ברזל (מלחמת התקומה) (שירות) – כל-זכות](https://www.kolzchut.org.il/he/%D7%9E%D7%95%D7%A7%D7%93%D7%99%D7%9D_%D7%9C%D7%A4%D7%A0%D7%99%D7%95%D7%AA_%D7%94%D7%A6%D7%99%D7%91%D7%95%D7%A8_%D7%95%D7%9C%D7%91%D7%99%D7%A8%D7%95%D7%A8_%D7%9E%D7%99%D7%93%D7%A2_%D7%91%D7%9E%D7%94%D7%9C%D7%9A_%D7%9E%D7%91%D7%A6%D7%A2_%D7%97%D7%A8%D7%91%D7%95%D7%AA_%D7%91%D7%A8%D7%96%D7%9C); [אתר המרכז למורשת המודיעין מבצעים מיוחדים](https://www.intelligence.org.il/?art_category_id=7&cp=1&item_id=16&module=articles_list&q=%D7%9E%D7%A6%D7%A8%D7%99%D7%9D); [שני שישי: שנות ה-60 והלאה](https://communication.biu.ac.il/sites/communication/files/shared/staff/Neiger-Publishers-2017.pdf); [Microsoft Word - 5280.DOC](https://www.gov.il/BlobFolder/legalinfo/monopolyshmira/he/decisions_%D7%94%D7%9B%D7%A8%D7%96%D7%AA%20%D7%9E%D7%95%D7%A0%D7%95%D7%A4%D7%95%D7%9C%D7%99%D7%9F%20%D7%94%D7%A9%D7%9E%D7%99%D7%A8%D7%94%20%D7%94%D7%98%D7%9B%D7%A0%D7%95%D7%9C%D7%95%D7%92%D7%99%D7%AA.pdf); [הקצין שאיש לא הקשיב לו ב-73': "סאדאת הבטיח לערפאת הסדר אחרי מלחמה"](https://www.ynet.co.il/news/article/rjyc4vbuh); [זקוקים לסיוע ? מוקדי החירום והסיוע של משרדי הממשלה וגופי הביטחון לשירותכם | עיריית נתניה](https://www.netanya.muni.il/news/pages/article3111.aspx/%7B%7Bservice.PATH%7D%7D); [Israel Dialing Plan – Within Israel - רשימת מספרי טלפון לשירותים ארציים](https://govil.ai/datasets/Israel-Dialing-Plan-Within-Israel-%D7%A8%D7%A9%D7%99%D7%9E%D7%AA-%D7%9E%D7%A1%D7%A4%D7%A8%D7%99-%D7%98%D7%9C%D7%A4%D7%95%D7%9F-%D7%9C%D7%A9%D7%99%D7%A8%D7%95%D7%AA%D7%99%D7%9D-%D7%90%D7%A8%D7%A6%D7%99%D7%99%D7%9D-59d2e891/); [Pinpoint - אוסף מלחמת יום הכיפורים חדש - ארכיון המדינה](https://journaliststudio.google.com/pinpoint/search?collection=eb8cd9076d8bdfff); [פיקוח נפש | כרזה | הספרייה הלאומית](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012947926505171/NLI); [בצילא דמהימנותא](https://www.dirshu.co.il/wp-content/uploads/2024/03/%D7%91%D7%A6%D7%99%D7%9C%D7%90-%D7%93%D7%9E%D7%94%D7%99%D7%9E%D7%A0%D7%95%D7%AA%D7%90-%D7%A6%D7%90%D7%A0%D7%96-%D7%A4%D7%A8-%D7%95%D7%99%D7%A7%D7%94%D7%9C-%D7%AA%D7%A9%D7%A4%D7%93.pdf); ['מכרז פומבי מס](https://nahariya-web-public.s3.il-central-1.amazonaws.com/uploads/n/1691994807.9302.pdf); [מ"הקיץ האלקטרוני" של 1970 לחורף 1973 - סיפור אובדן העליונות האווירית  שאול ברונפלד](https://www.idf.il/media/mf4nnu5g/%D7%9E_%D7%94%D7%A7%D7%99%D7%A5-%D7%94%D7%90%D7%9C%D7%A7%D7%98%D7%A8%D7%95%D7%A0%D7%99_-%D7%A9%D7%9C-1970-%D7%9C%D7%97%D7%95%D7%A8%D7%A3-1973-%D7%A1%D7%99%D7%A4%D7%95%D7%A8-%D7%90%D7%95%D7%91%D7%93%D7%9F-%D7%94%D7%A2%D7%9C%D7%99%D7%95%D7%A0%D7%95%D7%AA-%D7%94%D7%90%D7%95%D7%95%D7%99%D7%A8%D7%99%D7%AA-%D7%A9%D7%90%D7%95%D7%9C-%D7%91%D7%A8%D7%95%D7%A0%D7%A4%D7%9C%D7%93.pdf); [תשל״ה,](https://olam.eu-central-1.linodeobjects.com/pdfs/B-I1973-D250675.pdf).
+- **H3:** [הפסק אש! הצביע צ, 1955 | מקור ראשוני | חינוך בספרייה הלאומית](https://www.nli.org.il/he/education/teaching-resources/primary-sources/nnl_edu997013032166805171); [כרזה מטעם חרות לקראת בחירות 1955, על רקע פרשת קסטנר | מקור ראשוני | חינוך בספרייה הלאומית](https://www.nli.org.il/he/education/teaching-resources/primary-sources/NNL_EDU997013031886805171); [כרזת בחירות מטעם תנועת חרות, 1955| מקור ראשוני | חינוך בספרייה הלאומית](https://www.nli.org.il/he/education/teaching-resources/primary-sources/nnl_edu997013031893405171); [הפועל יצביע כך, 1955| מקור ראשוני | חינוך בספרייה הלאומית](https://www.nli.org.il/he/education/teaching-resources/primary-sources/nnl_edu997013031808805171); [להנהגה נאמנה – א, מודעת בחירות מטעם מפא"י| מקור ראשוני | חינוך בספרייה הלאומית](https://www.nli.org.il/he/education/teaching-resources/primary-sources/nnl_edu997013031809605171); [מקורות למים חיים, כרזת בחירות | מקור ראשוני | חינוך בספרייה הלאומית](https://www.nli.org.il/he/education/teaching-resources/primary-sources/nnl_edu997013031807305171); [בחירות 1955 – משה שרת הולך, בן גוריון חוזר](https://www.nli.org.il/he/discover/israel/elections/1955); [כרזת מפלגת מפא"י | מרכז שנקר לתיעוד וחקר העיצוב בישראל](https://designarchive.shenkar.ac.il/items/116015); [: מאבקי גוש השמאל של שנות ה-50 | וואלה חדשות](https://www.walla.co.il/news/israel/2600701); [גזענות בתעמולה: כך הותקפו בני עדות המזרח | וואלה חדשות](https://www.walla.co.il/news/israel/2598054); [שקופית 1](https://apps.land.gov.il/IturTabotData/nispachim/haifa/3053104/12.pdf); [ההבטחות שנזנחות, הכרזות נגד מפא"י ו"אסון" בגין: מבט אל קרבות התעמולה בעבר](https://www.ynet.co.il/news/election2022/article/hyibkhpni); ["זה אנחנו או הם", גירסת 1959](https://www.ynet.co.il/articles/0%2C7340%2CL-4635875%2C00.html); [מקומו של לוי אשכול במפא"י 1965-1944](https://levi-eshkol.org.il/wp-content/uploads/2022/04/%D7%93%D7%95%D7%A7%D7%98%D7%95%D7%A8%D7%98-%D7%9C%D7%9E%D7%A4%D7%A8%D7%95%D7%9D.pdf); [299. מפא״י – כרזה מאוירת](https://bo-kedem.s3.eu-central-1.amazonaws.com/files/PDF/catalog-CA-52.pdf); [332. כרזה לכבוד ה-1 במאי 1954 – המפלגה הקומוניסטית הישראלית – עברית](https://bidspirit-images.global.ssl.fastly.net/kedemauctionDocs/410/catalog/catalog_47_-_web.pdf); [היסטוריה ותרבות יהודית וישראלית](https://bo-kedem.s3.eu-central-1.amazonaws.com/files/PDF/catalog-OL-18.pdf); [הפיכה_במ](https://www.reddit.com/r/ani_bm/comments/e1pwse).
+- **H4:** [כרזה מטעם חרות לקראת בחירות 1955, על רקע פרשת קסטנר | מקור ראשוני | חינוך בספרייה הלאומית](https://www.nli.org.il/he/education/teaching-resources/primary-sources/nnl_edu997013031886805171); [הפסק אש! הצביע צ, 1955 | מקור ראשוני | חינוך בספרייה הלאומית](https://www.nli.org.il/he/education/teaching-resources/primary-sources/nnl_edu997013032166805171); [כרזת בחירות מטעם תנועת חרות, 1955| מקור ראשוני | חינוך בספרייה הלאומית](https://www.nli.org.il/he/education/teaching-resources/primary-sources/nnl_edu997013031893405171); [להנהגה נאמנה – א, מודעת בחירות מטעם מפא"י| מקור ראשוני | חינוך בספרייה הלאומית](https://www.nli.org.il/he/education/teaching-resources/primary-sources/nnl_edu997013031809605171); [הפועל יצביע כך, 1955| מקור ראשוני | חינוך בספרייה הלאומית](https://www.nli.org.il/he/education/teaching-resources/primary-sources/nnl_edu997013031808805171); [הקרן הישנה: על דימויים אנטישמיים במסעות בחירות של ישראל הצעירה - אנו - מוזיאון העם היהודי](https://anumuseum.org.il/he/blog/elections/); [: מאבקי גוש השמאל של שנות ה-50 | וואלה חדשות](https://www.walla.co.il/news/israel/2600701); [גזענות בתעמולה: כך הותקפו בני עדות המזרח | וואלה חדשות](https://www.walla.co.il/news/israel/2598054); [‘מאוסף דוד טרטקובר, מתוך הספר ‘א](https://meyda.education.gov.il/files/Mazkirut_Pedagogit/Historya/Sgula50.PDF); ["זה אנחנו או הם", גירסת 1959](https://www.ynet.co.il/articles/0%2C7340%2CL-4635875%2C00.html); [כרזה גדולה המודיעה על צאתו לאור של הגליון הראשון של 'הדור', בטאונה הרשמי של מפא"י, 1948 - ווינרס מכירות פומביות](https://winners-auctions.com/items/%D7%9B%D7%A8%D7%96%D7%94-%D7%92%D7%93%D7%95%D7%9C%D7%94-%D7%94%D7%9E%D7%95%D7%93%D7%99%D7%A2%D7%94-%D7%A2%D7%9C-%D7%A6%D7%90%D7%AA%D7%95-%D7%9C%D7%90%D7%95%D7%A8-%D7%A9%D7%9C-%D7%94%D7%92%D7%9C%D7%99/); [כרזה, מפלגת א' | מרכז שנקר לתיעוד וחקר העיצוב בישראל](https://designarchive.shenkar.ac.il/items/152407); [בחירות 1955 – משה שרת הולך, בן גוריון חוזר](https://www.nli.org.il/he/discover/israel/elections/1955); [299. מפא״י – כרזה מאוירת](https://bo-kedem.s3.eu-central-1.amazonaws.com/files/PDF/catalog-CA-52.pdf); [בתל־אביב](https://olam.eu-central-1.linodeobjects.com/pdfs/B-I2496-D030785.pdf); [<4D6963726F736F667420576F7264202D20F7E8ECE5E220EEEBE9F8E420313220F1E5F4E9>](https://bo-kedem.s3.eu-central-1.amazonaws.com/files/PDF/catalog-OL-12.pdf); [אייר 11: כרזו (הזמנה) מטעם עיריית ירושלים לתושבי העיר למפגן מ״ב (1955) .................... 177](https://www.policemuseum.org.il/wp-content/uploads/2020/08/%D7%93%D7%95%D7%A7%D7%98%D7%95%D7%A8%D7%98-%D7%9E%D7%A9%D7%9E%D7%A8-%D7%94%D7%92%D7%91%D7%95%D7%9C-%D7%99%D7%95%D7%A1%D7%99-%D7%90%D7%95%D7%97%D7%99%D7%95%D7%9F.pdf); [332. כרזה לכבוד ה-1 במאי 1954 – המפלגה הקומוניסטית הישראלית – עברית](https://bidspirit-images.global.ssl.fastly.net/kedemauctionDocs/410/catalog/catalog_47_-_web.pdf); [הפיכה_במ](https://www.reddit.com/r/ani_bm/comments/e1pwse).
+- **H5:** [הפסק אש! הצביע צ, 1955 | מקור ראשוני | חינוך בספרייה הלאומית](https://www.nli.org.il/he/education/teaching-resources/primary-sources/nnl_edu997013032166805171); [כך הוא חזה את המדינה, 1955 | מקור ראשוני | חינוך בספרייה הלאומית](https://www.nli.org.il/he/education/teaching-resources/primary-sources/nnl_edu997013031808305171); [כרזת בחירות מטעם תנועת חרות, 1955| מקור ראשוני | חינוך בספרייה הלאומית](https://www.nli.org.il/he/education/teaching-resources/primary-sources/nnl_edu997013031893405171); [‘מאוסף דוד טרטקובר, מתוך הספר ‘א](https://meyda.education.gov.il/files/Mazkirut_Pedagogit/Historya/Sgula50.PDF); [הפועל יצביע כך, 1955| מקור ראשוני | חינוך בספרייה הלאומית](https://www.nli.org.il/he/education/teaching-resources/primary-sources/nnl_edu997013031808805171); [בחירות 1955 – משה שרת הולך, בן גוריון חוזר](https://www.nli.org.il/he/discover/israel/elections/1955); [בלי רשתות חברתיות, עם אותן מלחמות: כך נראו פעם הבחירות | היום](https://ion01.israelhayom.co.il/news/politics/article/21706667); [303. "Histadrut HaTziyonim HaKlaliyim" - Elections Poster, 1950s](https://bo-kedem.s3.eu-central-1.amazonaws.com/files/PDF/catalog-CA-52.pdf); [הקרן הישנה: על דימויים אנטישמיים במסעות בחירות של ישראל הצעירה - אנו - מוזיאון העם היהודי](https://anumuseum.org.il/he/blog/elections/); [ציונים כלליים - המכון הישראלי לדמוקרטיה](https://www.idi.org.il/policy/parties-and-elections/parties/general-zionists/); [כרזה, מגיע לך לחיות בארץ הזאת | מרכז שנקר לתיעוד וחקר העיצוב בישראל](https://designarchive.shenkar.ac.il/items/144876); [בחירות 1955 - המכון הישראלי לדמוקרטיה](https://www.idi.org.il/policy/parties-and-elections/elections/1955/); [הציונים הכללים והעיריות - מאגר כתבי מנחם בגין - מרכז מורשת בגין](https://db.begincenter.org.il/quote/%D7%94%D7%A6%D7%99%D7%95%D7%A0%D7%99%D7%9D-%D7%94%D7%9B%D7%9C%D7%9C%D7%99%D7%9D-%D7%95%D7%94%D7%A2%D7%99%D7%A8%D7%99%D7%95%D7%AA/); [מכון ז'בוטינסקי | פריט ארכיון](https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%A4%D7%A9%D7%95%D7%98/%D7%A4%D7%A8%D7%99%D7%98-%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/?itemId=22207); [המערכת הפוליטית כרך א.indb](https://www.idi.org.il/media/3869/politiacal_system_c12.pdf); [ÌÈÂÈˆ‰ ˙ÚÈ˜˘](https://in.bgu.ac.il/bgi/iyunim/16/amirg.pdf); [59. כרזה – כ״ט בנובמבר 1947](https://bo-kedem.s3.eu-central-1.amazonaws.com/files/PDF/catalog-CA-50.pdf); [˙Âˆ¯‡ ÈÂÈˆ](https://in.bgu.ac.il/bgi/iyunim/12/19.pdf); [הפיכה_במ](https://www.reddit.com/r/ani_bm/comments/e1pwse).
+- **H6:** [סיפורה של הפוליטיקה הישראלית by עמית סגל | PDF](https://www.scribd.com/document/552202032/%D7%A1%D7%99%D7%A4%D7%95%D7%A8%D7%94-%D7%A9%D7%9C-%D7%94%D7%A4%D7%95%D7%9C%D7%99%D7%98%D7%99%D7%A7%D7%94-%D7%94%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%D7%AA-by-%D7%A2%D7%9E%D7%99%D7%AA-%D7%A1%D7%92%D7%9C); [בית אריאלה | עם הספר | עמוד 3](https://amhasefer.wordpress.com/tag/%D7%91%D7%99%D7%AA-%D7%90%D7%A8%D7%99%D7%90%D7%9C%D7%94/page/3/); [מורשת יהדות מרוקו](https://moreshet-morocco.com/page/337/?cat=-1); [002-HARETZ-2012-10-02-0001 - inong - הפוך PDF מקוון](https://fliphtml5.com/rpdsv/cohu/002-HARETZ-2012-10-02-0001/).
+- **H7:** [סיפורה של הפוליטיקה הישראלית by עמית סגל | PDF](https://www.scribd.com/document/552202032/%D7%A1%D7%99%D7%A4%D7%95%D7%A8%D7%94-%D7%A9%D7%9C-%D7%94%D7%A4%D7%95%D7%9C%D7%99%D7%98%D7%99%D7%A7%D7%94-%D7%94%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%D7%AA-by-%D7%A2%D7%9E%D7%99%D7%AA-%D7%A1%D7%92%D7%9C); [בית אריאלה | עם הספר | עמוד 3](https://amhasefer.wordpress.com/tag/%D7%91%D7%99%D7%AA-%D7%90%D7%A8%D7%99%D7%90%D7%9C%D7%94/page/3/); [Uncategorized | עם הספר | עמוד 3](https://amhasefer.wordpress.com/category/uncategorized/page/3/); [עם הספר | בלוג מנהל ספריית הרמב"ם | עמוד 3](https://amhasefer.wordpress.com/page/3/).
+- **H8:** [סיפורה של הפוליטיקה הישראלית by עמית סגל | PDF](https://www.scribd.com/document/552202032/%D7%A1%D7%99%D7%A4%D7%95%D7%A8%D7%94-%D7%A9%D7%9C-%D7%94%D7%A4%D7%95%D7%9C%D7%99%D7%98%D7%99%D7%A7%D7%94-%D7%94%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%D7%AA-by-%D7%A2%D7%9E%D7%99%D7%AA-%D7%A1%D7%92%D7%9C); [Reporters' posts about Avigdor Liberman · israelielections.com](https://israelielections.com/politicians/avigdor-liberman/posts/); [בית אריאלה | עם הספר | עמוד 3](https://amhasefer.wordpress.com/tag/%D7%91%D7%99%D7%AA-%D7%90%D7%A8%D7%99%D7%90%D7%9C%D7%94/page/3/); [Reporters' posts about Yisrael Beiteinu · israelielections.com](https://www.israelielections.com/2026/parties/yisrael-beiteinu/posts/); [Reporters' posts about Ra'am – United Arab List · israelielections.com](https://www.israelielections.com/2026/parties/raam/posts/); [Uncategorized | עם הספר | עמוד 3](https://amhasefer.wordpress.com/category/uncategorized/page/3/).
+- **H9:** [Bidspirit 拍卖会 | garage collection 拍卖会 22/10/2020](https://il.bidspirit.com/ui/catalog/auction/garagecollection/11904?lang=zh); [סיפורה של הפוליטיקה הישראלית by עמית סגל | PDF](https://www.scribd.com/document/552202032/%D7%A1%D7%99%D7%A4%D7%95%D7%A8%D7%94-%D7%A9%D7%9C-%D7%94%D7%A4%D7%95%D7%9C%D7%99%D7%98%D7%99%D7%A7%D7%94-%D7%94%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%D7%AA-by-%D7%A2%D7%9E%D7%99%D7%AA-%D7%A1%D7%92%D7%9C); [מורשת יהדות מרוקו](https://moreshet-morocco.com/page/337/?cat=-1); [Reporters' posts about Avigdor Liberman · israelielections.com](https://israelielections.com/politicians/avigdor-liberman/posts/); [בית אריאלה | עם הספר | עמוד 3](https://amhasefer.wordpress.com/tag/%D7%91%D7%99%D7%AA-%D7%90%D7%A8%D7%99%D7%90%D7%9C%D7%94/page/3/); [Reporters' posts about Naftali Bennett · israelielections.com](https://israelielections.com/politicians/naftali-bennett/posts/); [Reporters' posts about Ra'am – United Arab List · israelielections.com](https://www.israelielections.com/2026/parties/raam/posts/).
+- **H10:** [סיפורה של הפוליטיקה הישראלית by עמית סגל | PDF](https://www.scribd.com/document/552202032/%D7%A1%D7%99%D7%A4%D7%95%D7%A8%D7%94-%D7%A9%D7%9C-%D7%94%D7%A4%D7%95%D7%9C%D7%99%D7%98%D7%99%D7%A7%D7%94-%D7%94%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%D7%AA-by-%D7%A2%D7%9E%D7%99%D7%AA-%D7%A1%D7%92%D7%9C); [מורשת יהדות מרוקו](https://moreshet-morocco.com/page/337/?cat=-1); [מקורות – ישראל ביתנו – בחירות לכנסת 2026](https://elections2026.underwar.co.il/parties/yisrael-beiteinu-evidence.html); [קשר מס' 40, קיץ 2010](https://dacenter.tau.ac.il/sites/abraham.tau.ac.il/files/media_server/daniel%20abraham/kesher/40/40_tzarfati.pdf); [בית אריאלה | עם הספר | עמוד 3](https://amhasefer.wordpress.com/tag/%D7%91%D7%99%D7%AA-%D7%90%D7%A8%D7%99%D7%90%D7%9C%D7%94/page/3/); [עם הספר | בלוג מנהל ספריית הרמב"ם | עמוד 3](https://amhasefer.wordpress.com/page/3/).
+
+### Coverage at this checkout, before and after
+
+These counts come from `scripts/research/logo-coverage.py`, using this branch's
+starting datasets, which include later accepted work beyond the original report.
+No artwork was added by this retry pass. Counts are campaign identities, not
+unique image files; k26 winners use the application's retained-count allocation.
+
+| Election | Winning lists | Whole lists before → after | Constituents before → after |
+|---|---:|---:|---:|
+| k1 | 12 | 2 → 2 | 0/7 → 0/7 |
+| k2 | 15 | 0 → 0 | 0/0 → 0/0 |
+| k3 | 12 | 0 → 0 | 0/4 → 0/4 |
+| k4 | 12 | 0 → 0 | 0/2 → 0/2 |
+| k5 | 11 | 0 → 0 | 0/0 → 0/0 |
+| k6 | 13 | 1 → 1 | 0/4 → 0/4 |
+| k7 | 13 | 0 → 0 | 0/4 → 0/4 |
+| k8 | 10 | 0 → 0 | 0/11 → 0/11 |
+| k9 | 13 | 5 → 5 | 0/11 → 0/11 |
+| k10 | 10 | 2 → 2 | 0/7 → 0/7 |
+| k11 | 15 | 3 → 3 | 0/11 → 0/11 |
+| k12 | 15 | 2 → 2 | 0/6 → 0/6 |
+| k13 | 10 | 1 → 1 | 0/6 → 0/6 |
+| k14 | 11 | 2 → 2 | 0/12 → 0/12 |
+| k15 | 15 | 2 → 2 | 0/12 → 0/12 |
+| k16 | 13 | 2 → 2 | 0/14 → 0/14 |
+| k17 | 12 | 1 → 1 | 0/11 → 0/11 |
+| k18 | 12 | 2 → 2 | 0/12 → 0/12 |
+| k19 | 12 | 3 → 3 | 0/9 → 0/9 |
+| k20 | 10 | 3 → 3 | 0/11 → 0/11 |
+| k21 | 11 | 4 → 4 | 1/14 → 1/14 |
+| k22 | 9 | 4 → 4 | 3/19 → 3/19 |
+| k23 | 8 | 3 → 3 | 3/18 → 3/18 |
+| k24 | 13 | 7 → 7 | 2/12 → 2/12 |
+| k25 | 10 | 4 → 4 | 1/11 → 1/11 |
+| k26 | 11 | 9 → 9 | 8/19 → 8/19 |
+
+All-year winning-list coverage stays **62/308**, constituent coverage **18/247**.
+Web-era coverage stays **42/121** whole lists and **18/150** constituents. Thus
+79 web-era whole lists and 132 constituents remain gaps. The retry-attempt
+criterion is met; the complete-logo coverage criterion remains unmet. Confidence
+is high in the observed tool responses and unchanged coverage, low in any claim
+about historical absence. An inspected dated official original with usable bytes
+would change a gap disposition. No failed retrieval is recast as an empty search.
+
+### Verification
+
+- `python3 scripts/validate-party-logos.py`: passed; 26 overlays, 127 source
+  records, 77 assets, 85 hosted entries, zero download-unavailable, six unresolved
+  proposals (all identities, including nonwinners).
+- `npm run -s data:build`: passed; **0 written, 38 unchanged**. All 26 datasets
+  compared exactly equal to starting HEAD, including logos and timestamps;
+  consequently no non-logo fields changed. Before/after coverage JSON also
+  compared byte-for-byte equal.
+- `npx tsc -p tsconfig.json --noEmit`: passed.
+- `npx vitest run --maxWorkers=2`: **64 files / 539 tests passed** in 11.60s.
+  The existing model hash `8c728ca684b7eda2173733bda319bde50fcb37c9b52d8e0434940f707b205a26`
+  was confirmed by the differential test. It is preserved rather than replacing
+  it with a different value for unchanged data; the adjacent comment records
+  this retry pass. The other four digests are also unchanged.
+- `npx vite build`: passed.
+- `PW_PORT=5313 npx playwright test`: initial sandbox attempt failed to start
+  config.webServer (exit 1); network-enabled local execution passed **106 tests
+  in 43.6s**. No test or timeout changes were made.
+- `git diff --check`: passed before commit.
+
+Dependencies: Node 24.18.0, repository lockfile via `npm ci --cache .backup-scratch/npm-cache`.
+Routine search transcripts, HTTP error bodies, coverage inventories and test
+logs remain under `.backup-scratch/logo-retry/`. No backup exclusions were changed
+or independently verified. Durable result is this retry ledger and its evidence
+limitations; there is no new accepted artwork to reproduce. Local branch
+`t3/e5aeb7ca`; no push or merge.

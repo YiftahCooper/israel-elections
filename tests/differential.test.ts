@@ -51,6 +51,8 @@ const EXPECTED: Record<Family, string> = {
   // Fighters List k1 logo (run 2, 1949–1973); all 26 datasets equal HEAD after omitting logo and builtAt.
   // Web-era run 2 logos (k20–k26); all 26 datasets equal HEAD after omitting logo and builtAt.
   // Likud 1984 print logo (run 3); all 26 datasets equal HEAD after omitting logo and builtAt.
+  // Quota/retrieval retry pass: no qualifying additions; all 26 datasets exactly equal HEAD.
+  // Keep the model digest unchanged, including logo fields and build timestamps.
   model: '8c728ca684b7eda2173733bda319bde50fcb37c9b52d8e0434940f707b205a26',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
