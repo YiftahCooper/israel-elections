@@ -858,3 +858,117 @@ Baseline whole lists: **2/10**; constituents: **0/11**. Every one of the 19 init
 - S3: `site:facebook.com "האיחוד הלאומי" 2015 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "האיחוד הלאומי" 2015 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
 
 Batch verification: `npx vitest run` **57 files / 484 tests passed** (single worker and CLI testTimeout=30000 from k23 onward after existing rebuild tests exceeded 5000ms); `npx tsc -p tsconfig.json --noEmit`, `npx vite build`, and `python3 scripts/validate-party-logos.py` passed. Dataset build passed; all 26 election datasets equal prior batch after recursively removing `logo` and `builtAt`.
+
+### k19 · 2013-01-22
+
+Baseline whole lists: **3/12**; constituents: **0/9**. Every one of the 18 initial gaps below was attempted in all three routes; S3 quota failures do not count as completed source searches.
+
+**L `אמת` — העבודה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"העבודה" "2013" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%AA%D7%A9%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections>; <https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf>.
+- S2: `site:commons.wikimedia.org "Labor" logo 2013` → <https://commons.wikimedia.org/wiki/File:U.S._Department_of_Labor_Centennial_Logo.png>; <https://commons.wikimedia.org/wiki/File:Australian_Labor_Party_Logo.svg>; <https://commons.wikimedia.org/wiki/File:Communist_Labor_Party_of_America_logo.svg>.
+- S3: `site:facebook.com "העבודה" 2013 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "העבודה" 2013 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `ג` — יהדות התורה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"יהדות התורה" "2013" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%99%D7%94%D7%93%D7%95%D7%AA_%D7%94%D7%AA%D7%95%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections/parties/yahadut-hatorah>; <https://www.inss.org.il/he/publication/%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA-2015>.
+- S2: `site:commons.wikimedia.org "United Torah Judaism" logo 2013` → <https://commons.wikimedia.org/wiki/Category:Israeli_legislative_election,_2013>; <https://commons.wikimedia.org/wiki/Category:Yaakov_Litzman>; <https://commons.wikimedia.org/wiki/Category:Meir_Porush>.
+- S3: `site:facebook.com "יהדות התורה" 2013 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "יהדות התורה" 2013 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `ד` — בל״ד.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"בל״ד" "2013" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/policy/parties-and-elections/parties/balad>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%AA%D7%A9%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf>.
+- S2: `site:commons.wikimedia.org "Balad" logo 2013` → <https://commons.wikimedia.org/wiki/File:Balad-logo.jpg>; <https://commons.wikimedia.org/wiki/File:Al_Balad_Theater_Amman_JO.JPG>; <https://commons.wikimedia.org/wiki/File:090013_Al-Balad_UrduScript.jpg>.
+- S3: `site:facebook.com "בלד" 2013 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "בלד" 2013 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `ו` — חד״ש.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"חד״ש" "2013" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%AA%D7%A9%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections>; <https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf>.
+- S2: `site:commons.wikimedia.org "Hadash" logo 2013` → <https://commons.wikimedia.org/wiki/File:Hadash.svg>; <https://commons.wikimedia.org/wiki/Category:Political_parties_in_Israel>; <https://commons.wikimedia.org/wiki/Category:Political_parties_in_Israel?uselang=bs>.
+- S3: `site:facebook.com "חדש" 2013 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "חדש" 2013 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `טב` — הבית היהודי.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"הבית היהודי" "2013" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%AA%D7%A9%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections>; <https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf>.
+- S2: `site:commons.wikimedia.org "Jewish Home" logo 2013` → <https://commons.wikimedia.org/wiki/File:Bait-Yehudi-2013-poster-001.JPG>; <https://commons.wikimedia.org/wiki/Category:The_Jewish_Home_elections_posters>; <https://commons.wikimedia.org/wiki/File:Habajit_Hajehudi.png>.
+- S3: `site:facebook.com "הבית היהודי" 2013 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "הבית היהודי" 2013 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `מחל` — הליכוד–ישראל ביתנו.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"הליכוד–ישראל ביתנו" "2013" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%AA%D7%A9%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.idi.org.il/books/4123>; <https://he.wikipedia.org/wiki/%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%91%D7%99%D7%AA%D7%A0%D7%95>.
+- S2: `site:commons.wikimedia.org "Likud–Yisrael Beiteinu" logo 2013` → <https://commons.wikimedia.org/wiki/File:Logo_Likud_Yisrael_Beitenu.png>.
+- S3: `site:facebook.com "הליכוד–ישראל ביתנו" 2013 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "הליכוד–ישראל ביתנו" 2013 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `עם` — רע״ם–תע״ל–מד״ע.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"רע״ם–תע״ל–מד״ע" "2013" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%A8%D7%A2%22%D7%9E-%D7%AA%D7%A2%22%D7%9C>; <https://www.inss.org.il/he/publication/%D7%90%D7%97%D7%95%D7%96-%D7%94%D7%97%D7%A1%D7%99%D7%9E%D7%94-%D7%95%D7%94%D7%A9%D7%9C%D7%9B%D7%95%D7%AA%D7%99%D7%95-%D7%A2%D7%9C-%D7%94%D7%99%D7%99%D7%A6%D7%95%D7%92-%D7%94%D7%A4%D7%95%D7%9C%D7%99>; <https://he.wikipedia.org/wiki/%D7%AA%D7%A0%D7%95%D7%A2%D7%94_%D7%A2%D7%A8%D7%91%D7%99%D7%AA_%D7%9C%D7%94%D7%AA%D7%97%D7%93%D7%A9%D7%95%D7%AA>.
+- S2: `site:commons.wikimedia.org "Ra'am–Ta'al–Mada" logo 2013` → no returned URLs.
+- S3: `site:facebook.com "רעם–תעל–מדע" 2013 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "רעם–תעל–מדע" 2013 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `פה` — יש עתיד.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"יש עתיד" "2013" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%99%D7%A9_%D7%A2%D7%AA%D7%99%D7%93>; <https://www.idi.org.il/policy/parties-and-elections/parties/yesh-atid>; <https://www.kan.org.il/content/kan-news/politic/282772>.
+- S2: `site:commons.wikimedia.org "Yesh Atid" logo 2013` → <https://commons.wikimedia.org/wiki/File:YeshAtidLogo.svg>; <https://commons.wikimedia.org/wiki/File:2013_Knesset.svg>; <https://commons.wikimedia.org/wiki/Category:Political_parties_in_Israel>.
+- S3: `site:facebook.com "יש עתיד" 2013 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "יש עתיד" 2013 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**L `שס` — ש״ס.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"ש״ס" "2013" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%AA%D7%A9%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections>; <https://www.inss.org.il/he/publication/%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA-2015>.
+- S2: `site:commons.wikimedia.org "Shas" logo 2013` → <https://commons.wikimedia.org/wiki/File:Shas_logo.png>; <https://commons.wikimedia.org/wiki/File:En-us-Shas_from_Israel_pronunciation_(Voice_of_America).ogg>; <https://commons.wikimedia.org/wiki/File:Israel_Knesset_2013.svg>.
+- S3: `site:facebook.com "שס" 2013 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "שס" 2013 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `agudat-yisrael` — אגודת ישראל.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"אגודת ישראל" "2013" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://www.idi.org.il/policy/parties-and-elections>; <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%AA%D7%A9%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.walla.co.il/news/israel/2594279>.
+- S2: `site:commons.wikimedia.org "Agudat Yisrael" logo 2013` → <https://commons.wikimedia.org/wiki/Category:Political_parties_in_Israel>; <https://commons.wikimedia.org/wiki/Category:Political_parties_in_Israel?uselang=bs>; <https://commons.wikimedia.org/wiki/Category:Political_parties_in_Israel?uselang=vi>.
+- S3: `site:facebook.com "אגודת ישראל" 2013 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "אגודת ישראל" 2013 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `degel-hatorah` — דגל התורה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"דגל התורה" "2013" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%93%D7%92%D7%9C_%D7%94%D7%AA%D7%95%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections/parties/yahadut-hatorah>; <https://www.walla.co.il/news/politics/3865773>.
+- S2: `site:commons.wikimedia.org "Degel HaTorah" logo 2013` → <https://commons.wikimedia.org/wiki/Category:Political_parties_in_Israel>; <https://commons.wikimedia.org/wiki/Category:Political_parties_in_Israel?uselang=bs>; <https://commons.wikimedia.org/wiki/Category:Political_parties_in_Israel?uselang=de>.
+- S3: `site:facebook.com "דגל התורה" 2013 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "דגל התורה" 2013 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `jewish-home` — הבית היהודי.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"הבית היהודי" "2013" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%AA%D7%A9%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.idi.org.il/articles/3519>; <https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf>.
+- S2: `site:commons.wikimedia.org "The Jewish Home" logo 2013` → <https://commons.wikimedia.org/wiki/Category:The_Jewish_Home_elections_posters>; <https://commons.wikimedia.org/wiki/File:Bait-Yehudi-2013-poster-001.JPG>; <https://commons.wikimedia.org/wiki/File:Habajit_Hajehudi.png>.
+- S3: `site:facebook.com "הבית היהודי" 2013 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "הבית היהודי" 2013 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `likud` — הליכוד.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"הליכוד" "2013" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%AA%D7%A9%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections>; <https://www.likud.org.il/%D7%A2%D7%9C-%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93/%D7%94%D7%94%D7%99%D7%A1%D7%98%D7%95%D7%A8%D7%99%D7%94-%D7%A9%D7%9C-%D7%94%D7%AA%D7%A0%D7%95%D7%A2%D7%94>.
+- S2: `site:commons.wikimedia.org "Likud" logo 2013` → <https://commons.wikimedia.org/wiki/File:Likud_Logo.svg>; <https://commons.wikimedia.org/wiki/File:Logo_Likud_Yisrael_Beitenu.png>; <https://commons.wikimedia.org/wiki/File:Logo_Likud.png>.
+- S3: `site:facebook.com "הליכוד" 2013 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "הליכוד" 2013 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `mada` — מד"ע – המפלגה הערבית הדמוקרטית.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"מד"ע – המפלגה הערבית הדמוקרטית" "2013" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%A8%D7%A9%D7%99%D7%9E%D7%94_%D7%94%D7%A2%D7%A8%D7%91%D7%99%D7%AA_%D7%94%D7%9E%D7%90%D7%95%D7%97%D7%93%D7%AA>; <https://www.idi.org.il/policy/parties-and-elections/parties/balad>; <https://www.inss.org.il/he/publication/%D7%90%D7%97%D7%95%D7%96-%D7%94%D7%97%D7%A1%D7%99%D7%9E%D7%94-%D7%95%D7%94%D7%A9%D7%9C%D7%9B%D7%95%D7%AA%D7%99%D7%95-%D7%A2%D7%9C-%D7%94%D7%99%D7%99%D7%A6%D7%95%D7%92-%D7%94%D7%A4%D7%95%D7%9C%D7%99>.
+- S2: `site:commons.wikimedia.org "Arab Democratic Party (Mada)" logo 2013` → no returned URLs.
+- S3: `site:facebook.com "מדע" 2013 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "מדע" 2013 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `raam` — רע"ם – רשימת האיחוד הערבי.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"רע"ם – רשימת האיחוד הערבי" "2013" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%A8%D7%A9%D7%99%D7%9E%D7%94_%D7%94%D7%A2%D7%A8%D7%91%D7%99%D7%AA_%D7%94%D7%9E%D7%90%D7%95%D7%97%D7%93%D7%AA>; <https://www.gov.il/BlobFolder/guide/candidates-lists-26/he/pr5_26_annex.pdf>; <https://www.idi.org.il/policy/parties-and-elections/parties/joint-arab-list>.
+- S2: `site:commons.wikimedia.org "Ra'am (United Arab List)" logo 2013` → no returned URLs.
+- S3: `site:facebook.com "רעם" 2013 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "רעם" 2013 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `taal` — תע"ל.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"תע"ל" "2013" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%AA%D7%A9%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections>; <https://www.gov.il/BlobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisionsfullbook2022.pdf>.
+- S2: `site:commons.wikimedia.org "Ta'al" logo 2013` → <https://commons.wikimedia.org/wiki/File:2013_Knesset.svg>; <https://commons.wikimedia.org/wiki/File:Israel_Kn%C3%A9set_2013.svg>; <https://commons.wikimedia.org/wiki/Category:Political_parties_in_Israel>.
+- S3: `site:facebook.com "תעל" 2013 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "תעל" 2013 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `tkuma` — האיחוד הלאומי – תקומה.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"האיחוד הלאומי – תקומה" "2013" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%90%D7%99%D7%97%D7%95%D7%93_%D7%94%D7%9C%D7%90%D7%95%D7%9E%D7%99%E2%80%93%D7%AA%D7%A7%D7%95%D7%9E%D7%94>; <https://www.idi.org.il/articles/32955>; <https://library.mevaker.gov.il/sites/DigitalLibrary/Pages/Reports/1409-1.aspx>.
+- S2: `site:commons.wikimedia.org "Tkuma (National Union–Tkuma)" logo 2013` → no returned URLs.
+- S3: `site:facebook.com "האיחוד הלאומי" 2013 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "האיחוד הלאומי" 2013 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+**P `yisrael-beiteinu` — ישראל ביתנו.** Open: campaign-specific official-origin design not verified in this pass; a joint/constituent substitution or a different year is not accepted.
+
+- S1: `"ישראל ביתנו" "2013" לוגו בחירות אתר רשמי -site:en.wikipedia.org` → <https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%AA%D7%A9%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94>; <https://www.idi.org.il/policy/parties-and-elections/parties/yisrael-beytenu>; <https://www.kan.org.il/content/kan-news/politic/282772>.
+- S2: `site:commons.wikimedia.org "Yisrael Beiteinu" logo 2013` → <https://commons.wikimedia.org/wiki/File:Logo_Likud_Yisrael_Beitenu.png>; <https://commons.wikimedia.org/wiki/Category:Political_parties_in_Israel>; <https://commons.wikimedia.org/wiki/Category:Political_parties_in_Israel?uselang=bs>.
+- S3: `site:facebook.com "ישראל ביתנו" 2013 בחירות` → **Tool failure:** Error: Search failed for query "site:facebook.com "ישראל ביתנו" 2013 בחירות": This key is out of quota. Please top up this key at https://jina.ai.
+
+Batch verification: `npx vitest run` **57 files / 484 tests passed** (single worker and CLI testTimeout=30000 from k23 onward after existing rebuild tests exceeded 5000ms); `npx tsc -p tsconfig.json --noEmit`, `npx vite build`, and `python3 scripts/validate-party-logos.py` passed. Dataset build passed; all 26 election datasets equal prior batch after recursively removing `logo` and `builtAt`.
