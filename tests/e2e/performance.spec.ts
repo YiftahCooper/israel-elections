@@ -66,7 +66,7 @@ test('sensitivity searches run in the background and report progress, then their
   await expect(panel(page).getByRole('img', { name: 'Seats against votes' })).toBeVisible({ timeout: 60_000 });
   await expect(panel(page).getByRole('status')).toHaveCount(0);
 
-  await panel(page).getByRole('button', { name: 'Search' }).click();
+  await panel(page).getByRole('button', { name: 'Search', exact: true }).click();
   await expect(panel(page).getByRole('status')).toContainText(/Searching exactly… \d+ of \d+ transfers/);
   await expect(panel(page).getByText(/votes moving from|No single transfer|No transfer found/)).toBeVisible({ timeout: 120_000 });
   await expect(panel(page).getByRole('status')).toHaveCount(0);

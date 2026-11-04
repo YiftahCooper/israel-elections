@@ -10,7 +10,7 @@ import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtRat, signed } from '../format.ts';
 import { dispatch, toast } from '../store.ts';
-import { NumberInput } from './ui.tsx';
+import { Info, NumberInput } from './ui.tsx';
 import { useChartWidth } from './Charts.tsx';
 
 export function Sensitivity({ s, r }: { s: Scenario; r: AllocationResult }) {
@@ -65,11 +65,11 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
   const at = (v: number | bigint) => sweep ? x0 + (Number(BigInt(v) - BigInt(sweep.from)) / (sweep.to - sweep.from + 1)) * plotW : 0;
   return (
     <div>
-      <h3>{L('Vote sweep: every point where seats change', 'סריקת קולות: כל נקודה שבה המנדטים משתנים')}</h3>
-      <p className="small ink2">{L('All other lists keep their votes; the valid total changes with the swept list. Boundaries are exact whole vote counts.', 'שאר הרשימות שומרות על קולותיהן; סך הכשרים משתנה עם הרשימה הנסרקת. הגבולות הם מספרי קולות מדויקים.')}</p>
+      <h3>{L('Vote sweep', 'סריקת קולות')}</h3>
+      <p className="small ink2">{L('Exact vote boundaries', 'גבולות בקולות שלמים')} <Info title={L('Vote sweep assumptions', 'הנחות סריקת הקולות')}>{L('All other lists keep their votes; the valid total changes with the swept list. Boundaries are exact whole vote counts.', 'שאר הרשימות שומרות על קולותיהן; סך הכשרים משתנה עם הרשימה הנסרקת. הגבולות הם מספרי קולות מדויקים.')}</Info></p>
       <div className="row">
         <select value={id} onChange={(e) => pick(e.target.value)} aria-label={L('List', 'רשימה')} style={{ flex: '1 1 160px', maxWidth: 260 }}>{main.slice(0, 30).map((x) => <option key={x.id} value={x.id}>{listLabel(x, lang)}</option>)}</select>
-        <span className="row" style={{ flexWrap: 'nowrap', gap: 6 }}>
+        <span className="row" dir="ltr" style={{ flexWrap: 'nowrap', gap: 6 }}>
           <span className="small">{L('from', 'מ-')}</span><NumberInput value={from} onCommit={setFrom} label={L('From', 'מ')} width={100} />
           <span className="small">{L('to', 'עד')}</span><NumberInput value={to} onCommit={setTo} label={L('To', 'עד')} width={100} />
         </span>
@@ -129,8 +129,8 @@ function ThresholdSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
   return (
     <div>
       <h3>{L('Threshold sensitivity', 'רגישות לאחוז החסימה')}</h3>
-      <p className="small ink2">{L('Seat results for every threshold in the range, with the exact percentages at which the result changes (other rules unchanged; an experimental question).', 'התוצאה לכל אחוז חסימה בטווח, עם האחוזים המדויקים שבהם היא משתנה (שאר הכללים ללא שינוי; שאלה ניסיונית).')}</p>
-      <div className="row">
+      <p className="small ink2">{L('Experimental threshold', 'אחוז חסימה ניסיוני')} <Info title={L('Threshold sweep assumptions', 'הנחות סריקת אחוז החסימה')}>{L('Seat results for every threshold in the range, with the exact percentages at which the result changes (other rules unchanged; an experimental question).', 'התוצאה לכל אחוז חסימה בטווח, עם האחוזים המדויקים שבהם היא משתנה (שאר הכללים ללא שינוי; שאלה ניסיונית).')}</Info></p>
+      <div className="row" dir="ltr">
         <input type="text" value={lo} onChange={(e) => setLo(e.target.value)} style={{ width: 60 }} aria-label={L('From %', 'מ-%')} />% –
         <input type="text" value={hi} onChange={(e) => setHi(e.target.value)} style={{ width: 60 }} aria-label={L('To %', 'עד %')} />%
         <button className="btn primary small" onClick={run}>{L('Run', 'הרצה')}</button>
@@ -208,13 +208,13 @@ function BlocFlip({ s, r }: { s: Scenario; r: AllocationResult }) {
   if (!s.blocs.length) return null;
   return (
     <div>
-      <h3>{L('Smallest transfer that changes a bloc’s majority', 'המעבר הקטן ביותר שמשנה רוב של גוש')}</h3>
+      <h3>{L('Flip a bloc majority', 'שינוי הרוב בגוש')}</h3>
       <div className="row">
         <select value={bloc} onChange={(e) => { setBloc(e.target.value); setRes(null); }} aria-label={L('Bloc', 'גוש')}>{s.blocs.map((b) => <option key={b.id} value={b.id}>{lang === 'he' ? b.nameHe : b.nameEn}</option>)}</select>
-        <span className="small">{seats} / {majority} {has ? L('(has a majority)', '(יש רוב)') : L('(no majority)', '(אין רוב)')}</span>
+        <span className="small"><bdi dir="ltr">{seats} / {majority}</bdi> {has ? L('(has a majority)', '(יש רוב)') : L('(no majority)', '(אין רוב)')}</span>
         <button className="btn primary small" onClick={run} disabled={!!progress}>{L('Search', 'חיפוש')}</button>
       </div>
-      <p className="small muted">{L('Searches every transfer between a list inside and a list outside the bloc (lists with ≥ 0.5% of votes), using the bloc assignment shown.', 'בודק כל מעבר בין רשימה בגוש לרשימה מחוצה לו (רשימות עם ≥ 0.5%), לפי השיוך לגושים המוצג.')}</p>
+      <p className="small muted">{L('Lists with ≥ 0.5%', 'רשימות עם לפחות 0.5%')} <Info title={L('Transfer search scope', 'היקף חיפוש המעברים')}>{L('Searches every transfer between a list inside and a list outside the bloc (lists with ≥ 0.5% of votes), using the bloc assignment shown.', 'בודק כל מעבר בין רשימה בגוש לרשימה מחוצה לו (רשימות עם ≥ 0.5%), לפי השיוך לגושים המוצג.')}</Info></p>
       {progress && <p className="small muted row" role="status">{L(`Searching exactly… ${progress.done} of ${progress.total} transfers`, `מחפש במדויק… ${progress.done} מתוך ${progress.total} מעברים`)}
         <button className="btn small" onClick={() => { job.current?.(); job.current = null; setProgress(null); }}>{L('Cancel', 'ביטול')}</button></p>}
       {res === 'none' && <p className="small">{unsure

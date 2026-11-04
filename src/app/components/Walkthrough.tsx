@@ -78,7 +78,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
           {Number(s.rules.thresholdPct) > 0
             ? <p><span className="formula">{s.rules.thresholdPct}% × {fmtInt(r.totalValid)} = {fmtRat(r.thresholdExact, 3)} → {fmtInt(r.thresholdVotes)}</span></p>
             : <p>{L('No percentage threshold applies: every list takes part.', 'אין אחוז חסימה: כל הרשימות משתתפות.')}</p>}
-          <p className="small ink2">{L('Votes for every list count in the total, including lists that fail.', 'הקולות לכל הרשימות נכללים בסך, גם של רשימות שלא עברו.')}</p>
+          <p className="small ink2">{L('All valid votes count', 'כל הקולות הכשרים נספרים')} <Info title={L('Threshold denominator', 'בסיס אחוז החסימה')}>{L('Votes for every list count in the total, including lists that fail.', 'הקולות לכל הרשימות נכללים בסך, גם של רשימות שלא עברו.')}</Info></p>
           <ListTable s={s} r={r} rows={[...r.lists].filter((l) => l.votes > 0n).sort((a, b) => Number(b.votes - a.votes)).slice(0, 18)} cols={(l) => [fmtInt(l.votes), fmtPct(l.votes, r.totalValid, digits), l.qualified ? L('passes', 'עוברת') : L('fails', 'לא עוברת')]} heads={[L('Votes', 'קולות'), L('Share', 'שיעור'), L('Result', 'תוצאה')]} />
           <p className="small">{L(`Unrepresented votes: ${fmtInt(r.unrepresentedVotes)} (${fmtPct(r.unrepresentedVotes, r.totalValid, digits)})`, `קולות שלא השתתפו בחלוקה: ${fmtInt(r.unrepresentedVotes)} (${fmtPct(r.unrepresentedVotes, r.totalValid, digits)})`)}</p>
         </div>
@@ -88,7 +88,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
           <h3>{n('quota')}. {L('General quota', 'המודד הכללי')} <Info term="quota" /></h3>
           <p><span className="formula">{quotaFormula} = {r.quota.den === 1n ? fmtInt(r.quota.num) : fmtFrac(r.quota)}</span></p>
           {quotaSeats !== s.rules.seats && s.rules.remainderMethod !== 'droop' && <p className="small ink2">{L(`Divided by the seats plus one (${quotaSeats}), as the 1949 rules required.`, `מחולק במספר המושבים ועוד אחד (${quotaSeats}), כפי שקבעו כללי 1949.`)}</p>}
-          <p className="small ink2">{L('Only qualifying votes are divided, so a party’s share of qualifying votes is larger than its share of all valid votes.', 'רק הקולות המשתתפים מחולקים, ולכן שיעור הרשימה מהם גדול משיעורה מכלל הכשרים.')}</p>
+          <p className="small ink2">{L('Qualifying votes only', 'קולות משתתפים בלבד')} <Info title={L('Quota denominator', 'בסיס המודד')}>{L('Only qualifying votes are divided, so a party’s share of qualifying votes is larger than its share of all valid votes.', 'רק הקולות המשתתפים מחולקים, ולכן שיעור הרשימה מהם גדול משיעורה מכלל הכשרים.')}</Info></p>
         </div>
       )}
       {step.kind === 'initial' && (
@@ -135,7 +135,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
           <div>
             <h3>{L('Dividing the pair’s seats', 'חלוקת המנדטים בתוך הצמד')} — {name(d.unitId)} <Info term="surplus" /></h3>
             <p><span className="formula">{L('pair quota', 'מודד הצמד')} = ⌊ {fmtInt(d.totalVotes)} ÷ {d.seats} ⌋ = {fmtRat(d.quota, 0)}</span></p>
-            <p className="small ink2">{L('Section 82(b): the pair’s seats are divided again from scratch by the method of section 81, as if the two lists were the whole Knesset.', 'סעיף 82(ב): מנדטי הצמד מחולקים מחדש מתחילה בשיטת סעיף 81, כאילו שתי הרשימות הן כל הכנסת.')}</p>
+            <p className="small ink2">{L('Recalculated within the pair', 'חישוב מחדש בתוך הצמד')} <Info title={L('Dividing pair seats', 'חלוקת מנדטי הצמד')}>{L('Section 82(b): the pair’s seats are divided again from scratch by the method of section 81, as if the two lists were the whole Knesset.', 'סעיף 82(ב): מנדטי הצמד מחולקים מחדש מתחילה בשיטת סעיף 81, כאילו שתי הרשימות הן כל הכנסת.')}</Info></p>
             <table className="tbl" style={{ maxWidth: 560 }}>
               <thead><tr><th>{L('List', 'רשימה')}</th><th className="n">{L('Votes', 'קולות')}</th><th className="n">{L('By pair quota', 'לפי מודד הצמד')}</th><th className="n">{L('Final', 'סופי')}</th></tr></thead>
               <tbody>{Object.keys(d.final).map((m) => <tr key={m}><td>{name(m)}</td><td className="n">{fmtInt(s.lists.find((x) => x.id === m)!.votes)}</td><td className="n">{d.initial[m]}</td><td className="n"><b>{d.final[m]}</b></td></tr>)}</tbody>

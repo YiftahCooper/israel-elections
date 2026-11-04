@@ -1,5 +1,10 @@
 # Changelog
 
+## 5 November 2026 — concise tool pages
+
+- Keep tool instructions brief in Hebrew and English; retain modelling assumptions, provenance and correctness caveats in named info controls. What-if questions keep their vote and seat consequences visible, with separate assumption controls and reduced-motion-aware navigation.
+- Sensitivity ranges and seats/majority fractions retain left-to-right numeric order in Hebrew.
+
 ## 5 November 2026 — preferences at the action
 
 - Choose vote source, then “For this list” or “Always”; saved-scenario opens ask which comparison to mark. Both use one preference dialog and resettable settings in Rules → Editing.

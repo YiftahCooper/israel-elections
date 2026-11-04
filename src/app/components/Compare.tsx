@@ -1,3 +1,4 @@
+import { Info } from './ui.tsx';
 import { blocDisplayOrder } from '../blocOrder.ts';
 import { useActiveReference } from '../useActiveReference.ts';
 import { referenceLabel } from '../derive.ts';
@@ -125,7 +126,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
             })}
           </ul>
           {indirect.length > 0 && <p className="small ink2" style={{ margin: '6px 0 0' }}>{L('Changed only through the recalculation (their votes did not change): ', 'השתנו רק בגלל החישוב מחדש (קולותיהן לא השתנו): ')}{indirect.map((g) => `${gName(g.bIds, s)} ${signed(g.seatsB - g.seatsA)}`).join(', ')}</p>}
-          {gainers.length > 1 && <p className="small muted" style={{ margin: '4px 0 0' }}>{L('With several lists gaining, the method does not say which seat “came from” which list; the net changes are exact.', 'כשכמה רשימות מרוויחות, השיטה אינה קובעת איזה מנדט "עבר" מאיזו רשימה; השינויים נטו מדויקים.')}</p>}
+          {gainers.length > 1 && <p className="small muted" style={{ margin: '4px 0 0' }}>{L('Net seat changes', 'שינויי מנדטים נטו')} <Info title={L('Seat changes', 'שינויי מנדטים')}>{L('With several lists gaining, the method does not say which seat “came from” which list; the net changes are exact.', 'כשכמה רשימות מרוויחות, השיטה אינה קובעת איזה מנדט "עבר" מאיזו רשימה; השינויים נטו מדויקים.')}</Info></p>}
         </section>
       )}
 
@@ -154,7 +155,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
       </div>}
 
       <details className="cmp-section" open={advanced}>
-        <summary className="small">{L('Every list: votes and seats before and after, and the slope chart', 'כל הרשימות: קולות ומנדטים לפני ואחרי, ותרשים השיפוע')}</summary>
+        <summary className="small">{L('Votes & seats by list', 'קולות ומנדטים לפי רשימה')}</summary>
         <Slope groups={groups.map((g) => ({ key: g.key, seatsA: g.seatsA, seatsB: g.seatsB, label: labelOf(g) }))} nameA={nameA} nameB={nameB} colorOf={(key) => colorOfGroup(groups.find((x) => x.key === key)!)} />
         <div className="tablewrap" tabIndex={0} role="region" aria-label={L('Scrollable table', 'טבלה נגללת')}>
           <table className="tbl">
@@ -180,7 +181,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
           </table>
         </div>
       </details>
-      <p className="small muted">{L('Elected candidates are the first names on each list as registered (election night). Later changes in membership are not modelled.', 'הנבחרים הם המועמדים הראשונים בכל רשימה כפי שנרשמה (ליל הבחירות). שינויים מאוחרים בהרכב אינם מוצגים.')}</p>
+      <p className="small muted">{L('Election-night candidates', 'מועמדים בליל הבחירות')} <Info title={L('Candidate coverage', 'כיסוי המועמדים')}>{L('Elected candidates are the first names on each list as registered (election night). Later changes in membership are not modelled.', 'הנבחרים הם המועמדים הראשונים בכל רשימה כפי שנרשמה (ליל הבחירות). שינויים מאוחרים בהרכב אינם מוצגים.')}</Info></p>
     </div>
   );
 }

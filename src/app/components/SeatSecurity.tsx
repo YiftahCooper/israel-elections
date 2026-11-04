@@ -73,8 +73,8 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
   return (
     <div>
       <div className="row" style={{ marginBottom: 8, justifyContent: 'space-between' }}>
-        <p className="small ink2" style={{ margin: 0, maxWidth: 720 }}>{L('For each list: how many votes it could lose before losing a seat (left column), and how many more it needs for one more seat (right column). Short bars are knife-edge seats.', 'לכל רשימה: כמה קולות היא יכולה לאבד בלי לאבד מנדט (העמודה הימנית), וכמה קולות נוספים היא צריכה למנדט נוסף (העמודה השמאלית). פסים קצרים = מנדטים על חוט השערה.')}
-          <Info title={L('How this is computed', 'איך זה מחושב')}>{L('Exact minima are proven by the search. Large non-monotone searches may sample: a found change is an upper bound, not a proven minimum; no result within the search bound is not proof of impossibility. For losses, a sampled figure does not guarantee that all smaller losses keep the seat. Bars use a square-root scale.', 'מינימום מדויק הוכח בחיפוש. חיפושים גדולים שאינם מונוטוניים עשויים להשתמש בדגימה: שינוי שנמצא הוא חסם עליון ולא מינימום מוכח. תוצאה שלא נמצאה בגבול החיפוש אינה הוכחה לחוסר אפשרות. באובדן קולות, תוצאה מדגימה אינה מבטיחה שכל אובדן קטן יותר שומר על המנדט. הפסים בסקאלת שורש.')}</Info>
+        <p className="small ink2" style={{ margin: 0, maxWidth: 720 }}>{L('Votes to lose / gain a seat', 'קולות לאובדן / לתוספת מנדט')}
+          <Info title={L('How this is computed', 'איך זה מחושב')}>{L('For each list: how many votes it could lose before losing a seat (left column), and how many more it needs for one more seat (right column). Short bars are knife-edge seats.', 'לכל רשימה: כמה קולות היא יכולה לאבד בלי לאבד מנדט (העמודה הימנית), וכמה קולות נוספים היא צריכה למנדט נוסף (העמודה השמאלית). פסים קצרים = מנדטים על חוט השערה.')} {L('Exact minima are proven by the search. Large non-monotone searches may sample: a found change is an upper bound, not a proven minimum; no result within the search bound is not proof of impossibility. For losses, a sampled figure does not guarantee that all smaller losses keep the seat. Bars use a square-root scale.', 'מינימום מדויק הוכח בחיפוש. חיפושים גדולים שאינם מונוטוניים עשויים להשתמש בדגימה: שינוי שנמצא הוא חסם עליון ולא מינימום מוכח. תוצאה שלא נמצאה בגבול החיפוש אינה הוכחה לחוסר אפשרות. באובדן קולות, תוצאה מדגימה אינה מבטיחה שכל אובדן קטן יותר שומר על המנדט. הפסים בסקאלת שורש.')}</Info>
         </p>
         <Seg label={L('Votes move', 'הקולות עוברים')} value={kind} onChange={setKind} options={[{ v: 'proportional', label: L('between lists', 'בין רשימות') }, { v: 'new', label: L('new / staying home', 'חדשים / נמנעים') }]} />
       </div>
@@ -146,7 +146,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
   );
   return (
     <div className="coal"><div className="row"><StartFrom s={s} part="coalitions" /><EditMarker s={s} path={['coalition']} /></div>
-      <p className="small ink2" style={{ marginTop: 0 }}>{L('Build a coalition: choose In, Out or Any for each list. Arithmetic only — it says nothing about political feasibility.', 'בנו קואליציה: בחרו בפנים, בחוץ או כל אפשרות לכל רשימה. חשבון בלבד — לא הערכה פוליטית.')} <Info term="minimal-winning-coalition" /> <Info term="majority-61" /></p>
+      <p className="small ink2" style={{ marginTop: 0 }}>{L('Choose In, Out or Any', 'בחרו בפנים, בחוץ או כל אפשרות')} <Info title={L('Coalition assumptions', 'הנחות הקואליציה')}>{L('Build a coalition: choose In, Out or Any for each list. Arithmetic only — it says nothing about political feasibility.', 'בנו קואליציה: בחרו בפנים, בחוץ או כל אפשרות לכל רשימה. חשבון בלבד — לא הערכה פוליטית.')}</Info> <Info term="minimal-winning-coalition" /> <Info term="majority-61" /></p>
       {startFrom.length > 0 && (
         <div className="row" style={{ marginBottom: 8 }}>
           <span className="small ink2">{L('Fill with a bloc', 'מילוי לפי גוש')}</span>
@@ -169,7 +169,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
       </div>
       <h3 style={{ marginTop: 16 }}>{L(`Smallest winning coalitions${picked.length ? ' with your selection' : ''}`, `הקואליציות המנצחות הקטנות ביותר${picked.length ? ' עם הבחירה שלכם' : ''}`)}
         <span className="muted" style={{ fontWeight: 400 }}> · {minimal.length.toLocaleString('en-US')}{truncated ? '+' : ''} {L('in all', 'בסך הכול')}</span></h3>
-      <p className="small muted" style={{ marginTop: 0 }}>{L('Each needs every member: remove one and the majority is lost. Click one to load it above.', 'כל אחת זקוקה לכל חברותיה: הוצאת אחת מבטלת את הרוב. לחצו על אחת כדי לטעון אותה למעלה.')}</p>
+      <p className="small muted" style={{ marginTop: 0 }}>{L('Choose a coalition to try', 'בחרו קואליציה לניסיון')} <Info title={L('Winning coalitions', 'קואליציות מנצחות')}>{L('Each needs every member: remove one and the majority is lost. Click one to load it above.', 'כל אחת זקוקה לכל חברותיה: הוצאת אחת מבטלת את הרוב. לחצו על אחת כדי לטעון אותה למעלה.')}</Info></p>
       {truncated && <p className="small">{L('There are more than 100,000: include or rule out lists to narrow the search.', 'יש יותר מ-100,000: הכלילו או פסלו רשימות כדי לצמצם את החיפוש.')}</p>}
       <ul className="coal-list">
         {shown.map((c) => (

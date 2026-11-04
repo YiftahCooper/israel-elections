@@ -1,3 +1,4 @@
+import { Info } from './ui.tsx';
 import { EditMarker } from './EditMarker.tsx';
 import { exportAnnotations } from '../scenarioExport.ts';
 // Scenarios as first-class things: the current one with its name and description, and every saved one as a
@@ -104,7 +105,7 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
 
       <section style={{ marginTop: 18 }}>
         <h3>{L(`Saved in this browser (${saved.length})`, `שמורים בדפדפן זה (${saved.length})`)}</h3>
-        {saved.length === 0 && <p className="small muted">{L('Nothing saved yet. Name the scenario above and save it to keep it here; share links and exported files work across devices.', 'עדיין לא נשמר דבר. תנו שם לתרחיש למעלה ושמרו אותו כדי שיופיע כאן; קישורי שיתוף וקבצים מיוצאים עובדים גם במכשירים אחרים.')}</p>}
+        {saved.length === 0 && <p className="small muted">{L('No saved scenarios', 'אין תרחישים שמורים')} <Info title={L('Saving scenarios', 'שמירת תרחישים')}>{L('Nothing saved yet. Name the scenario above and save it to keep it here; share links and exported files work across devices.', 'עדיין לא נשמר דבר. תנו שם לתרחיש למעלה ושמרו אותו כדי שיופיע כאן; קישורי שיתוף וקבצים מיוצאים עובדים גם במכשירים אחרים.')}</Info></p>}
         <ul className="scn-cards">
           {saved.map((x) => {
             const res = results.get(x.id);

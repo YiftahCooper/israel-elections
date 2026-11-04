@@ -411,6 +411,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 /* what-if questions as ruled rows */
 .wi-rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
 .wi-row { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) auto; gap: 4px 14px; align-items: center; padding: 8px 2px; border-bottom: 1px solid var(--rule); }
+.wi-question { display: flex; align-items: center; gap: 4px; min-width: 0; }
 .wi-q { all: unset; box-sizing: border-box; display: grid; gap: 1px; min-width: 0; cursor: pointer; padding: 2px 4px; border-radius: 4px; }
 .wi-q:hover:not(:disabled) { background: var(--surface-2); }
 .wi-q:focus-visible { outline: 2px solid var(--focus); }

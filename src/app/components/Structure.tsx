@@ -194,7 +194,7 @@ function Merge({ s, r }: { s: Scenario; r: AllocationResult }) {
   };
   return (
     <div className="st-task">
-      <p className="small ink2" style={{ marginTop: 0 }}>{L('Choose two or more lists to run together. The merged list faces the threshold and the seat count as one list; its members’ surplus agreements are dropped.', 'בחרו שתי רשימות או יותר שירוצו יחד. הרשימה המאוחדת מתמודדת עם אחוז החסימה ועם חלוקת המנדטים כרשימה אחת; הסכמי העודפים של חברותיה מבוטלים.')}</p>
+      <p className="small ink2" style={{ marginTop: 0 }}>{L('Choose lists to merge', 'בחירת רשימות לאיחוד')} <Info title={L('Merge assumptions', 'הנחות האיחוד')}>{L('Choose two or more lists to run together. The merged list faces the threshold and the seat count as one list; its members’ surplus agreements are dropped.', 'בחרו שתי רשימות או יותר שירוצו יחד. הרשימה המאוחדת מתמודדת עם אחוז החסימה ועם חלוקת המנדטים כרשימה אחת; הסכמי העודפים של חברותיה מבוטלים.')}</Info></p>
       <ListPicker s={s} picked={ids} onToggle={(id) => setIds(ids.includes(id) ? ids.filter((x) => x !== id) : [...ids, id])} />
       {ids.length >= 2 && (
         <div className="st-options">
@@ -262,7 +262,7 @@ function Split({ s, r }: { s: Scenario; r: AllocationResult }) {
   const go = () => { if (actions && dispatchMany(actions)) { setId(''); setState({ selectedListId: ids[0], tool: 'board' }); } };
   return (
     <div className="st-task">
-      <p className="small ink2" style={{ marginTop: 0 }}>{L('What if a list had run as separate lists? Joint lists split into their own parties; any other list splits in two. How its votes would have divided is an assumption you can see and change.', 'מה אילו רשימה הייתה רצה כרשימות נפרדות? רשימה משותפת מתפצלת למפלגותיה; כל רשימה אחרת — לשתיים. חלוקת הקולות היא הנחה גלויה שאפשר לשנות.')}</p>
+      <p className="small ink2" style={{ marginTop: 0 }}>{L('Choose a list to split', 'בחירת רשימה לפיצול')} <Info title={L('Split assumptions', 'הנחות הפיצול')}>{L('What if a list had run as separate lists? Joint lists split into their own parties; any other list splits in two. How its votes would have divided is an assumption you can see and change.', 'מה אילו רשימה הייתה רצה כרשימות נפרדות? רשימה משותפת מתפצלת למפלגותיה; כל רשימה אחרת — לשתיים. חלוקת הקולות היא הנחה גלויה שאפשר לשנות.')}</Info></p>
       <ListPicker s={s} picked={id ? [id] : []} single onToggle={(x) => setId(id === x ? '' : x)} />
       {l && byParty && (
         <div className="st-options">
@@ -302,7 +302,7 @@ function AddList({ s }: { s: Scenario }) {
         <label className="field">{L('Votes (new voters)', 'קולות (מצביעים חדשים)')}<NumberInput value={votes} onCommit={setVotes} label={L('Votes', 'קולות')} /></label>
       </div>
       <button className="btn primary" style={{ marginTop: 6 }} disabled={!nameHe} onClick={() => { const id = newId(); if (dispatch({ type: 'addList', newId: id, nameHe, letters, color: '#5f9ea0', votes })) { setName(''); setLetters(''); setState({ selectedListId: id, tool: 'board' }); } }}>{L('Add list', 'הוספה')}</button>
-      <p className="small muted">{L('A new list starts with no candidates; add them in the list panel (Expert). Move votes to it with the vote tools.', 'רשימה חדשה מתחילה ללא מועמדים; הוסיפו אותם בחלונית הרשימה (מומחה).')}</p>
+      <p className="small muted">{L('No candidates yet', 'עדיין אין מועמדים')} <Info title={L('New lists', 'רשימות חדשות')}>{L('A new list starts with no candidates; add them in the list panel (Expert). Move votes to it with the vote tools.', 'רשימה חדשה מתחילה ללא מועמדים; הוסיפו אותם בחלונית הרשימה (מומחה).')}</Info></p>
     </div>
   );
 }

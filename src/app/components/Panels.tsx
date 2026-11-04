@@ -51,9 +51,9 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
             <button aria-pressed={exp} onClick={() => dispatch({ type: 'setMode', mode: 'experimental' })}>{L('Experimental', 'ניסיוני')}</button>
           </span>
         </div>
-        <p className="small ink2">{exp
+        <p className="small ink2">{exp ? L('Alternative electoral system', 'שיטת בחירות חלופית') : L('This election’s law', 'החוק בבחירות אלה')} <Info title={L('Simulation rules', 'כללי הסימולציה')}>{exp
           ? L('Experimental: you may change the electoral system itself. Results are labelled as an alternative system, not Israeli law.', 'ניסיוני: ניתן לשנות את שיטת הבחירות עצמה. התוצאות מסומנות כשיטה חלופית ולא כחוק הישראלי.')
-          : L(`Historically valid: the law of this election is enforced — ${s.rules.seats} seats, ${Number(s.rules.thresholdPct) > 0 ? `${s.rules.thresholdPct}% threshold` : 'no percentage threshold'}, ${methodOf(s.rules).en}, two-list agreements. Votes, lists, candidates and agreements can still change.`, `תקף היסטורית: החוק של בחירות אלה נאכף — ${s.rules.seats} מושבים, ${Number(s.rules.thresholdPct) > 0 ? `אחוז חסימה ${s.rules.thresholdPct}%` : 'ללא אחוז חסימה'}, ${methodOf(s.rules).he}, הסכמים של שתי רשימות. עדיין ניתן לשנות קולות, רשימות, מועמדים והסכמים.`)}</p>
+          : L(`Historically valid: the law of this election is enforced — ${s.rules.seats} seats, ${Number(s.rules.thresholdPct) > 0 ? `${s.rules.thresholdPct}% threshold` : 'no percentage threshold'}, ${methodOf(s.rules).en}, two-list agreements. Votes, lists, candidates and agreements can still change.`, `תקף היסטורית: החוק של בחירות אלה נאכף — ${s.rules.seats} מושבים, ${Number(s.rules.thresholdPct) > 0 ? `אחוז חסימה ${s.rules.thresholdPct}%` : 'ללא אחוז חסימה'}, ${methodOf(s.rules).he}, הסכמים של שתי רשימות. עדיין ניתן לשנות קולות, רשימות, מועמדים והסכמים.`)}</Info></p>
         {Object.keys(s.lotteryWinners).length > 0 && <p className="small">{L('You have recorded lottery outcomes for tied seats.', 'רשמתם תוצאות הגרלה למושבים בשוויון.')} <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'lottery' })}>{L('Clear them', 'ניקוי')}</button></p>}
         {exp && dep.length > 0 && <div className="callout small" style={{ marginBottom: 8 }}><b>{L('Departs from Israeli law in: ', 'שונה מהחוק הישראלי ב: ')}</b>{dep.map((d) => (lang === 'he' ? depName[d][1] : depName[d][0])).join(', ')}</div>}
         <fieldset disabled={!exp} style={{ border: 0, padding: 0, margin: 0 }}>
@@ -103,7 +103,7 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
       </div>
       <div>
         <h3>{L('Blocs', 'גושים')}</h3>
-        <p className="small ink2">{L('Choose a grouping, move lists and constituent parties between blocs, and rename or recolour blocs in the bloc editor beside the chamber.', 'בחירת חלוקה, העברת רשימות ומפלגות בין גושים ושינוי שמות וצבעים — בעורך הגושים שליד המליאה.')}</p>
+        <p className="small ink2">{L('Edit beside the chamber', 'עריכה ליד המליאה')} <Info title={L('Editing blocs', 'עריכת גושים')}>{L('Choose a grouping, move lists and constituent parties between blocs, and rename or recolour blocs in the bloc editor beside the chamber.', 'בחירת חלוקה, העברת רשימות ומפלגות בין גושים ושינוי שמות וצבעים — בעורך הגושים שליד המליאה.')}</Info></p>
         <button className="btn small" onClick={() => { setState({ tool: 'board', blocPanel: s.blocs[0]?.id ?? '__none', selectedListId: null }); window.scrollTo({ top: 0 }); }}>{L('Edit blocs', 'עריכת גושים')}</button>
         <hr />
         <h3>{L('Display', 'תצוגה')}</h3>
@@ -132,7 +132,7 @@ export function Localities({ s }: { s: Scenario }) {
   const [open, setOpen] = useState<string | null>(null);
   const ds = useStore(st => st.datasets[s.electionId]);
   const histLists = useMemo(() => (data && ds ? data.listIds.map(id => baselineOf(ds).lists.find(l => l.id === id) ?? null) : []), [data, ds]);
-  if (!hasLocalities) return <p className="ink2">{L('Locality-level results are not available for this election in the sources used here; only national results are.', 'תוצאות לפי יישובים אינן זמינות לבחירות אלה במקורות שבשימוש כאן; זמינות רק תוצאות ארציות.')}</p>;
+  if (!hasLocalities) return <p className="ink2">{L('National results only', 'תוצאות ארציות בלבד')} <Info title={L('Locality coverage', 'כיסוי לפי יישובים')}>{L('Locality-level results are not available for this election in the sources used here; only national results are.', 'תוצאות לפי יישובים אינן זמינות לבחירות אלה במקורות שבשימוש כאן; זמינות רק תוצאות ארציות.')}</Info></p>;
   if (error) return <p className="bad">{error}</p>;
   if (!data || data.id !== s.electionId) return <p className="muted">{L('Loading official locality results…', 'טוען תוצאות לפי יישובים…')}</p>;
   // rows are keyed by position in the file: older elections have no locality codes
@@ -151,7 +151,7 @@ export function Localities({ s }: { s: Scenario }) {
         <button aria-pressed={view === 'table'} onClick={() => setView('table')}>{L('Table', 'טבלה')}</button>
       </span>
       {view === 'map' ? <LocalityMap key={s.electionId} s={s} data={data} historicalLists={histLists} locations={locations} locationError={locationError} /> : <>
-      <p className="small ink2">{L(`Official CEC results for ${localityCount} localities plus double-envelope votes. These are the historical figures; your scenario changes are national and are not distributed to localities.`, `תוצאות רשמיות של ועדת הבחירות ל-${localityCount} יישובים ולמעטפות החיצוניות. אלה הנתונים ההיסטוריים; שינויי התרחיש הם ארציים ואינם מחולקים ליישובים.`)}</p>
+      <p className="small ink2">{L('Historical locality results', 'תוצאות היסטוריות לפי יישוב')} <Info title={L('Locality results', 'תוצאות לפי יישוב')}>{L(`Official CEC results for ${localityCount} localities plus double-envelope votes. These are the historical figures; your scenario changes are national and are not distributed to localities.`, `תוצאות רשמיות של ועדת הבחירות ל-${localityCount} יישובים ולמעטפות החיצוניות. אלה הנתונים ההיסטוריים; שינויי התרחיש הם ארציים ואינם מחולקים ליישובים.`)}</Info></p>
       {(data.noteEn || data.noteHe) && <p className="small callout">{lang === 'he' ? data.noteHe ?? data.noteEn : data.noteEn ?? data.noteHe}</p>}
       <div className="row" style={{ marginBottom: 8 }}>
         <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder={L('Locality name or code', 'שם יישוב או סמל')} aria-label={L('Search localities', 'חיפוש יישוב')} />
@@ -185,7 +185,7 @@ export function Localities({ s }: { s: Scenario }) {
       </div>
       {rows.length === 0 && <p className="small">{L('No locality matches the search.', 'אין יישוב תואם לחיפוש.')}</p>}
       {rows.length === 300 && <p className="small muted">{L('Showing the first 300 localities in this order; search to find others.', 'מוצגים 300 היישובים הראשונים לפי המיון; חפשו כדי למצוא אחרים.')}</p>}
-      <p className="small muted">{L('Locality turnout excludes double-envelope votes (soldiers, patients, diplomats…), so it understates true turnout.', 'ההצבעה ביישוב אינה כוללת מעטפות חיצוניות ולכן נמוכה מההצבעה האמיתית.')}</p>
+      <p className="small muted">{L('Excludes double envelopes', 'ללא מעטפות חיצוניות')} <Info title={L('Locality turnout', 'הצבעה ביישוב')}>{L('Locality turnout excludes double-envelope votes (soldiers, patients, diplomats…), so it understates true turnout.', 'ההצבעה ביישוב אינה כוללת מעטפות חיצוניות ולכן נמוכה מההצבעה האמיתית.')}</Info></p>
       </>}
     </div>
   );
@@ -218,7 +218,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
           <span>{L('Dataset built', 'נבנה')}</span><span>{ds.buildInfo.builtAt.slice(0, 10)}</span>
         </div>
         <h3 style={{ marginTop: 14 }}>{L('Sources', 'מקורות')}</h3>
-        <p className="small ink2">{L('Official sources come first; secondary sources are labelled. English-language Wikipedia is never used or linked: it is unreliable on Israel-related information.', 'מקורות רשמיים קודמים לכול; מקורות משניים מסומנים. ויקיפדיה באנגלית אינה משמשת כמקור ואין אליה קישורים: היא אינה אמינה במידע הנוגע לישראל.')}</p>
+        <p className="small ink2">{L('Official sources first', 'מקורות רשמיים תחילה')} <Info title={L('Source policy', 'מדיניות המקורות')}>{L('Official sources come first; secondary sources are labelled. English-language Wikipedia is never used or linked: it is unreliable on Israel-related information.', 'מקורות רשמיים קודמים לכול; מקורות משניים מסומנים. ויקיפדיה באנגלית אינה משמשת כמקור ואין אליה קישורים: היא אינה אמינה במידע הנוגע לישראל.')}</Info></p>
         <ul className="small credits" style={{ paddingInlineStart: 18 }}>
           {used.map((x) => (
             <li key={x.id} style={{ marginBottom: 8 }}>
@@ -230,7 +230,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
             </li>
           ))}
         </ul>
-        <p className="small muted">{L('Short and English list names are assigned by this application. Colours are the colours associated with each party where a source supports it, otherwise an app colour; blocs follow the sources given for each grouping (see decision 0087). None of these is official election data.', 'השמות המקוצרים והאנגליים של הרשימות נקבעו ביישום זה. הצבעים הם הצבעים המזוהים עם כל מפלגה כשיש לכך מקור, ואחרת צבע של היישום; הגושים לפי המקורות של כל חלוקה (ראו החלטה 0087). אף אחד מאלה אינו נתון בחירות רשמי.')}</p>
+        <p className="small muted">{L('Names, colours and blocs', 'שמות, צבעים וגושים')} <Info title={L('App annotations', 'נתונים של היישום')}>{L('Short and English list names are assigned by this application. Colours are the colours associated with each party where a source supports it, otherwise an app colour; blocs follow the sources given for each grouping (see decision 0087). None of these is official election data.', 'השמות המקוצרים והאנגליים של הרשימות נקבעו ביישום זה. הצבעים הם הצבעים המזוהים עם כל מפלגה כשיש לכך מקור, ואחרת צבע של היישום; הגושים לפי המקורות של כל חלוקה (ראו החלטה 0087). אף אחד מאלה אינו נתון בחירות רשמי.')}</Info></p>
       </div>
       <div>
         {(() => {
@@ -239,7 +239,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
             ...(l.parties ?? []).filter((p) => p.logo).map((p) => ({ name: lang === 'he' ? p.nameHe : p.nameEn, logo: p.logo! }))]);
           return logos.length ? <>
             <h3>{L('Party logos', 'סמלי המפלגות')}</h3>
-            <p className="small ink2">{L('Logos as used at this election, from Wikimedia Commons, each under its own licence (not the app’s MIT licence).', 'הסמלים כפי שהיו בשימוש בבחירות אלה, מוויקישיתוף, כל אחד ברישיון שלו (לא ברישיון MIT של היישום).')}</p>
+            <p className="small ink2">{L('Separate licences', 'רישיונות נפרדים')} <Info title={L('Logo licences', 'רישיונות הסמלים')}>{L('Logos as used at this election, from Wikimedia Commons, each under its own licence (not the app’s MIT licence).', 'הסמלים כפי שהיו בשימוש בבחירות אלה, מוויקישיתוף, כל אחד ברישיון שלו (לא ברישיון MIT של היישום).')}</Info></p>
             <ul className="small credits" style={{ paddingInlineStart: 18 }}>
               {logos.map((x, i) => <li key={i}><b>{x.name}</b>: <bdi dir="auto"><a href={x.logo.sourceUrl} target="_blank" rel="noreferrer">{x.logo.attribution}</a> · {x.logo.licence}</bdi></li>)}
             </ul>
