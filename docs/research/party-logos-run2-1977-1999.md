@@ -596,3 +596,88 @@ Batch k12 verification: dataset builder passed; all 26 datasets compared equal t
 
 Batch k13 verification: dataset builder passed; all 26 datasets compared equal to prior commit after removing only `logo` and `builtAt`. `npx vitest run`: 57 files / 484 tests passed; `npx tsc -p tsconfig.json --noEmit`, `npx vite build`, and logo validator passed. No logo or digest changed in this batch. 
 
+## k14 · 1996
+
+### אמת — העבודה
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"העבודה" "1996" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%90%D7%A8%D7%91%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94_%D7%95%D7%9C%D7%A8%D7%90%D7%A9%D7%95%D7%AA_%D7%94%D7%9E%D7%9E%D7%A9%D7%9C%D7%94), [lead 2](https://www.tiktok.com/@knessettv/video/7120232409597086977), [lead 3](https://www.idi.org.il/policy/parties-and-elections/elections/1996), [lead 4](https://elections.walla.co.il/item/2581858).
+- NLI targeted discovery: `query: site:nli.org.il "העבודה" "1996" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997013034403305171/NLI), [lead 2](https://www.nli.org.il/he/newspapers/dav/1952/07/25/01/page/4?&), [lead 3](https://blog.nli.org.il/chov-yanait-aharonson).
+
+### שס — ש״ס התאחדות הספרדים העולמית שומרי תורה
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"שס" "1996" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%90%D7%A8%D7%91%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94_%D7%95%D7%9C%D7%A8%D7%90%D7%A9%D7%95%D7%AA_%D7%94%D7%9E%D7%9E%D7%A9%D7%9C%D7%94), [lead 2](https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf), [lead 3](https://fs.knesset.gov.il/20/Committees/20_cs_bg_502730.pdf), [lead 4](https://www.haifa.ac.il/2026/10/26/%D7%9B%D7%9B%D7%94-%D7%A0%D7%A8%D7%90%D7%95-%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA-%D7%A4%D7%A2%D7%9D-%D7%AA%D7%9E%D7%95%D7%A0%D7%95%D7%AA-%D7%9E%D7%94%D7%90%D7%95%D7%A1%D7%A4%D7%99%D7%9D-%D7%94).
+- NLI targeted discovery: `query: site:nli.org.il "שס" "1996" תעמולה`
+  Empty result set for this exact query.
+
+### ב — מפד״ל המפלגה הדתית לאומית המזרחי - הפועל המזרחי
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"מפדל" "1996" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.instagram.com/reel/DecJrDQqSL0), [lead 2](https://dayan.org/he/file-download/download/public/16411), [lead 3](https://library.mevaker.gov.il/sites/DigitalLibrary/Documents/mekomiyot/mekomiyot_2008-1989/1999-RashuyotNov98/1999-RashuyotNov98-Full.pdf), [lead 4](https://www.makorrishon.co.il/nrg/online/1/ART1/053/325.html).
+- NLI targeted discovery: `query: site:nli.org.il "מפדל" "1996" תעמולה`
+  Empty result set for this exact query.
+
+### מרצ — מרצ - ישראל הדמוקרטית רצ מפם שינוי
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"מרצ" "1996" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.idi.org.il/policy/parties-and-elections/parties/meretz), [lead 2](https://he.wikipedia.org/wiki/%D7%9E%D7%A8%D7%A6), [lead 3](https://www.facebook.com/Meretz/posts/%D7%9B%D7%A8%D7%96%D7%94-%D7%A9%D7%9C-%D7%9E%D7%A8%D7%A6-%D7%9E-1996-%D7%A2%D7%93%D7%99%D7%99%D7%9F-%D7%A8%D7%9C%D7%95%D7%95%D7%A0%D7%98%D7%99-%D7%9E%D7%93%D7%99/10157493256653128), [lead 4](https://www.youtube.com/playlist?list=PLjesnSVT_Ghy61hMTfpSQCErcwHLiYh6f).
+- NLI targeted discovery: `query: site:nli.org.il "מרצ" "1996" תעמולה`
+  Empty result set for this exact query.
+
+### כן — ישראל בעליה בראשותו של נתן שרנסקי
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"ישראל בעליה" "1996" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%91%D7%A2%D7%9C%D7%99%D7%94), [lead 2](https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%90%D7%A8%D7%91%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94_%D7%95%D7%9C%D7%A8%D7%90%D7%A9%D7%95%D7%AA_%D7%94%D7%9E%D7%9E%D7%A9%D7%9C%D7%94), [lead 3](https://www.hamichlol.org.il/%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%91%D7%A2%D7%9C%D7%99%D7%94), [lead 4](https://library.mevaker.gov.il/sites/DigitalLibrary/Pages/Reports/1996-1.aspx).
+- NLI targeted discovery: `query: site:nli.org.il "ישראל בעליה" "1996" תעמולה`
+  Empty result set for this exact query.
+
+### ו — חזית דמוקרטית לשלום ולשוויון (המפלגה הקומוניסטית הישראלית וחוגי ציבור יהודים וערבים) והברית הלאומית הדמוקרטית
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"חדש בלד" "1996" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.idi.org.il/policy/parties-and-elections/parties/balad), [lead 2](https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%90%D7%A8%D7%91%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94_%D7%95%D7%9C%D7%A8%D7%90%D7%A9%D7%95%D7%AA_%D7%94%D7%9E%D7%9E%D7%A9%D7%9C%D7%94), [lead 3](https://dayan.org/file-download/download/public/16324), [lead 4](https://www.kan.org.il/content/kan-news/politic/250926).
+- NLI targeted discovery: `query: site:nli.org.il "חדש בלד" "1996" תעמולה`
+  Empty result set for this exact query.
+
+### ג — יהדות התורה המאוחדת אגודת ישראל - דגל התורה
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"יהדות התורה" "1996" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.idi.org.il/policy/parties-and-elections/parties/yahadut-hatorah), [lead 2](https://he.wikipedia.org/wiki/%D7%99%D7%94%D7%93%D7%95%D7%AA_%D7%94%D7%AA%D7%95%D7%A8%D7%94), [lead 3](https://elections.walla.co.il/item/2581858), [lead 4](https://www.gov.il/blobFolder/guide/knesset-elections-law/he/laws_old_decision_books_decisions%20knesset%2022.pdf).
+- NLI targeted discovery: `query: site:nli.org.il "יהדות התורה" "1996" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997013034400705171/NLI).
+
+### ע — המפלגה הדמוקרטית הערבית - הרשימה הערבית המאוחדת
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"הרשימה הערבית המאוחדת" "1996" (כרזה OR לוגו OR תעמולה)   -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://www.ariel.ac.il/wp/middle-east/blog/%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%AA-%D7%94%D7%9B%D7%A0%D7%A1%D7%AA-%D7%A9%D7%9C-%D7%94%D7%A8%D7%A9%D7%99%D7%9E%D7%94-%D7%94%D7%A2%D7%A8%D7%91%D7%99%D7%AA-%D7%94%D7%9E%D7%90%D7%95%D7%97%D7%93%D7%AA), [lead 2](https://he.wikipedia.org/wiki/%D7%94%D7%A8%D7%A9%D7%99%D7%9E%D7%94_%D7%94%D7%A2%D7%A8%D7%91%D7%99%D7%AA_%D7%94%D7%9E%D7%90%D7%95%D7%97%D7%93%D7%AA), [lead 3](https://www.idi.org.il/policy/parties-and-elections/parties/raam), [lead 4](https://www.gov.il/BlobFolder/guide/candidates-lists-26/he/pr5_26_annex.pdf).
+- NLI targeted discovery: `query: site:nli.org.il "הרשימה הערבית המאוחדת" "1996" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/he/journals/NNL-Journals990020496580205171/NLI).
+
+### ט — מולדת
+
+**Open gap:** campaign-specific original artwork not verified/acquired. No absence finding.
+
+- General discovery: `query: '"מולדת" "1996" (כרזה OR לוגו OR תעמולה) -site:en.wikipedia.org'`
+  Returned locators (snippet inspection only): [lead 1](https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%90%D7%A8%D7%91%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94_%D7%95%D7%9C%D7%A8%D7%90%D7%A9%D7%95%D7%AA_%D7%94%D7%9E%D7%9E%D7%A9%D7%9C%D7%94), [lead 2](https://www.idi.org.il/policy/parties-and-elections/parties/moledet), [lead 3](https://www.nli.org.il/he/archives/NNL_ARCHIVE_AL997012156953705171/NLI), [lead 4](https://open.spotify.com/track/4S3WkqUjzMBsSaybPHT91w).
+- NLI targeted discovery: `query: site:nli.org.il "מולדת" "1996" תעמולה`
+  Returned locators (snippet inspection only): [lead 1](https://www.nli.org.il/en/items/NNL_MUSIC_AL990036589260205171).
+
+Batch k14 verification: dataset builder passed; all 26 datasets compared equal to prior commit after removing only `logo` and `builtAt`. `npx vitest run`: 57 files / 484 tests passed; `npx tsc -p tsconfig.json --noEmit`, `npx vite build`, and logo validator passed. No logo or digest changed in this batch. 
+
