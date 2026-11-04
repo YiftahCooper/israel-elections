@@ -18,6 +18,44 @@
       "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas.",
       "rights": "free-licence",
       "bytes": 13677
+    },
+    {
+      "letters": "מחל",
+      "file": "logos/likud-2015-k20.png",
+      "sourceUrl": "https://likud.org.il/",
+      "assetSourceUrl": "https://likud.org.il/templates/joomla-israel/images/logo-likud-he-il.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "הליכוד — official party header mark",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "likud-archive-20150315041632",
+      "inUseDate": "2015-03-15",
+      "archiveUrl": "https://web.archive.org/web/20150315041632/https://likud.org.il/",
+      "archiveTimestamp": "20150315041632",
+      "inUseEvidence": "Inspected official homepage capture 20150315041632 references https://likud.org.il/templates/joomla-israel/images/logo-likud-he-il.png as its header logo. Exact archived asset bytes at 20150316072010 match campaign-window CDX SHA-1 base32 4Q3IR5ER4UWQULDBATMHQFY36T3NG3RK. Original geometry and colours preserved; separate evidence for this election, no assignment by analogy. CDX pre-election capture: 20150316072010; actual retrieved asset capture: 20150316072010.",
+      "retrievedAt": "2026-11-04",
+      "sha256": "517f1be0d1f92077a3ece2525ca5c6909c93584c7038897f273a7ebca6d23584",
+      "originalSha256": "918d7d46c2e3bfbfbd50b83245764b969600e3dd8d14733d918dd4033593a801",
+      "bytes": 28362,
+      "displayBackground": "dark",
+      "rawEvidence": {
+        "page": "logo-k20-likud-page",
+        "asset": "logo-k20-likud-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20150316072010id_/https://likud.org.il/templates/joomla-israel/images/logo-likud-he-il.png",
+      "assetArchiveTimestamp": "20150316072010",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "4Q3IR5ER4UWQULDBATMHQFY36T3NG3RK",
+        "computedDigest": "4Q3IR5ER4UWQULDBATMHQFY36T3NG3RK",
+        "assetCaptureTimestamp": "20150316072010",
+        "cdxCaptureTimestamp": "20150316072010",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.likud.org.il%2Ftemplates%2Fjoomla-israel%2Fimages%2Flogo-likud-he-il.png&from=20150101&to=20150317&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k20-likud-index"
+      },
+      "retrieval": "Original PNG retained unchanged; Chromium headless shell 1248 canvas drawImage, proportional thumbnail to 256 px width, PNG toDataURL. No cropping or recolouring."
     }
   ]
 }
