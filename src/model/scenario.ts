@@ -1,5 +1,6 @@
 import { validFamily, type Family } from '../families/model.ts';
 import type { SourceChoice } from '../app/voteEdit.ts';
+import { SCENARIO_PALETTE } from './scenarioColors.ts';
 // Editable simulation state. A Scenario is a full, self-contained copy of an election's inputs;
 // the historical dataset it was created from is never modified. Every displayed figure is derived
 // from a Scenario through the engine — no totals are stored separately.
@@ -336,7 +337,7 @@ const coalition = shape({ in: uniqueStrings, out: uniqueStrings });
 const partSnapshotCheck = shape({ familyDefinition: optional(validFamily), validVotes: optional(whole), lists: optional(array(list)), registered: optional(whole), invalid: optional(whole), factionSplits: optional(uniqueStrings), blocs: optional(array(bloc)), blocSchemeId: optional(nullable(string)), customGroupingName: optional(string), partyBlocs: optional(stringMap(nullable(string))), candidateBlocs: optional(stringMap(nullable(string))), listBlocs: optional(stringMap(nullable(string))), agreements: optional(array(agreement)), rules: optional(rules), mode: optional(oneOf('historical', 'experimental')), coalition: optional(coalition) });
 const actionFields: Record<Action['type'], Check> = {
   familyOperation: (x) => record(x) && validFamily(x.definition) && (x.operation === 'group' ? optional(string)(x.name) && record(x.placements) && Object.values(x.placements).every(v => ['selected','mixed','other'].includes(String(v))) : x.operation === 'scale' && array(shape({listId:string,before:whole,votes:whole}))(x.allocations) && signedWhole(x.registeredDelta) && whole(x.target) && shape({kind:oneOf('new','proportional','transfer'),listId:optional(string)})(x.source)),
-  setIdentityColor: shape({ color: oneOf('#65508a', '#486b78', '#77633d', '#80556a', '#526c55') }),
+  setIdentityColor: shape({ color: oneOf(...SCENARIO_PALETTE) }),
   setCoalition: shape({ coalition }),
   startPart: shape({ part: oneOf('votes', 'identity', 'structure', 'agreements', 'blocs', 'coalitions', 'candidates', 'rules', 'totals'), source: oneOf('official', 'saved', 'blank', 'preset'), snapshot: optional(partSnapshotCheck), name: optional(string), presetId: optional(string), listId: optional(string) }),
   setVotes: shape({ listId: string, votes: whole }),
@@ -377,7 +378,7 @@ export function validateScenario(x: unknown): string[] {
   if (s.schema !== SCENARIO_SCHEMA) e.push('not a scenario file exported by this application');
   if (s.version !== SCENARIO_VERSION) e.push('unsupported scenario version');
   if (![s.id, s.name, s.baseBuiltAt].every(string)) e.push('missing scenario identity or build timestamp');
-  if (!optional(oneOf('#65508a', '#486b78', '#77633d', '#80556a', '#526c55'))(s.identityColor)) e.push('invalid scenario colour');
+  if (!optional(oneOf(...SCENARIO_PALETTE))(s.identityColor)) e.push('invalid scenario colour');
   if (!optional(coalition)(s.coalition)) e.push('invalid coalition choices');
   if (!optional(validFamily)(s.familyDefinition)) e.push('invalid family definition');
   if (!optional(string)(s.customGroupingName)) e.push('invalid grouping name');

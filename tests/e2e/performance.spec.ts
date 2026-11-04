@@ -46,7 +46,7 @@ test('seat security is computed in background workers and fills the whole table'
   const workers: string[] = [];
   page.on('worker', (w) => workers.push(w.url()));
   await start(page, { level: 'expert' });
-  await choose(page.getByRole('button', { name: 'Election' }), 'k25');
+  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
   await expect(page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: 'Yesh Atid', exact: true })).toBeVisible();
   await page.getByRole('tab', { name: 'Seat safety' }).click();
   await expect.poll(() => workers.length).toBeGreaterThan(0);

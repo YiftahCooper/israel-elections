@@ -35,6 +35,7 @@ test('clamped and refused numeric edits display the authoritative value', async 
   await expect(votes).toHaveValue('1,168,113');
   await votes.press('Tab');
   await expect(votes).toHaveValue('1,168,113');
+  await details.getByRole('button', { name: 'More', exact: true }).click();
   const percentage = details.getByLabel('Share of valid votes (%)');
   const old = await percentage.inputValue();
   await percentage.fill('101'); await percentage.press('Enter');
@@ -59,6 +60,7 @@ test('the split form conserves the original votes', async ({ page }) => {
 
 test('a refused decimal edit also reverts after Escape while still focused', async ({ page }) => {
   const details = await start(page);
+  await details.getByRole('button', { name: 'More', exact: true }).click();
   const percentage = details.getByLabel('Share of valid votes (%)');
   const before = await percentage.inputValue();
   await percentage.fill('35');

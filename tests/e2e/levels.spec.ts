@@ -88,7 +88,7 @@ test('Simple balances vote edits proportionally even if another source was chose
 
   const before = await listRow(page, 'Yashar!').locator('.lb-sub').innerText();
   await levelButton(page, 'Simple').click();
-  await expect(details(page).getByText('The other lists’ votes shrink or grow in proportion')).toBeVisible();
+  await expect(details(page).getByText('other lists proportionally', { exact: true })).toBeVisible();
   const votes = details(page).getByLabel('Votes', { exact: true });
   await votes.fill('1300000');
   await votes.press('Enter');
@@ -143,7 +143,7 @@ test('a failed election load keeps the open election and offers a retry', async 
   await page.route('**/data/k25.json', (route) => route.fulfill({ status: 404, body: 'missing' }));
   await start(page);
   // This test expects refusal, so do not use choose()'s successful-load barrier.
-  await page.getByRole('button', { name: 'Election' }).click();
+  await page.getByRole('button', { name: 'Election', exact: true }).click();
   await page.getByRole('dialog').locator('[data-choice-value="k25"]').click();
   await page.getByRole('dialog').getByRole('button', { name: 'Open', exact: true }).click();
   await expect(page.getByRole('alert').filter({ hasText: /Could not load the 2022 · 25th Knesset election data/ })).toBeVisible();
@@ -159,6 +159,6 @@ test('the picker labels the open election correctly even if the index omits it',
   await page.getByRole('button', { name: 'Election', exact: true }).click();
   await expect(page.getByRole('dialog').locator('[data-choice-value="k16"]')).toHaveCount(1);
   await page.keyboard.press('Escape');
-  await expect(page.getByRole('button', { name: 'Election' })).toHaveAttribute('data-value', 'k26');
-  await expect(page.getByRole('button', { name: 'Election' })).toContainText('2026 · 26th Knesset');
+  await expect(page.getByRole('button', { name: 'Election', exact: true })).toHaveAttribute('data-value', 'k26');
+  await expect(page.getByRole('button', { name: 'Election', exact: true })).toContainText('2026 · 26th Knesset');
 });

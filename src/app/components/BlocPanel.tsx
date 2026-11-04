@@ -1,7 +1,5 @@
+import { BlocVoteStepper } from './BlocVoteStepper.tsx';
 import { ScenarioSwitcher } from './ScenarioSwitcher.tsx';
-import { allocate } from '../../engine/allocate.ts';
-import { toEngineInput, type Action } from '../../model/scenario.ts';
-import { applyAction, apportion } from '../../model/actions.ts';
 import { voteSourceLabel } from '../voteEdit.ts';
 import { useVoteSource, useStore } from '../store.ts';
 import { FamilyGroupingLink } from './FamilyTreatment.tsx';
@@ -18,7 +16,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { groupingLabel, blocPieces, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { dispatch, dispatchMany, setState } from '../store.ts';
+import { dispatch, setState } from '../store.ts';
 
 /** colours that read both as a seat and as a pale region behind the seats */
 const PALETTE = ['#2f5fa7', '#1f9d73', '#c0392b', '#d98c1f', '#7b4fb0', '#1b8a9a', '#8a6d3b', '#c2477d', '#5d7a2e', '#5a6470'];
@@ -34,7 +32,6 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
   const L = useL();
   const src = useVoteSource();
   const ds = useStore(st => st.datasets[s.electionId]);
-  const [effect, setEffect] = useState('');
   const lang = useLang();
   const [picked, setPicked] = useState<Unit | null>(null);
   const [over, setOver] = useState<string | null>(null);
@@ -140,6 +137,7 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
       <div className="sp-body">
         <FamilyGroupingLink />
         <StartFrom s={s} part="blocs" />
+        <p className="tiny muted">{voteSourceLabel(src, s, lang)}</p>
         <p className="small">{groupingLabel(s, lang)} <EditMarker s={s} path={['customGroupingName']} /></p>
         {picked && (
           <p className="bp-picked small" role="status">
@@ -176,27 +174,7 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
                   </div>
                 )}
                 <div className="bp-meter" aria-hidden><i style={{ width: `${Math.min(100, (n / total) * 100)}%` }} /><span style={{ insetInlineStart: `${((majority - 0.5) / total) * 100}%` }} /></div>
-                <div className="quick-actions">
-                  {[-10, 10].map(pct => {
-                    // Lists follow their assigned bloc; constituent-party seat assignments do not imply vote shares.
-                    const members = s.lists.filter(l => !l.withdrawn && (l.bloc ?? NONE) === k);
-                    const totalVotes = members.reduce((t, l) => t + l.votes, 0);
-                    const delta = Math.round(totalVotes * Math.abs(pct) / 100);
-                    const memberIds = new Set(members.map(l => l.id));
-                    const outside = s.lists.filter(l => !l.withdrawn && !memberIds.has(l.id) && (src.kind !== 'transfer' || l.id === src.listId));
-                    const actions: Action[] = [];
-                    if (src.kind === 'new') {
-                      const targets = apportion(Math.round(totalVotes * (100 + pct) / 100), members.map(l => l.votes));
-                      members.forEach((l, i) => actions.push({ type: 'setVotes', listId: l.id, votes: targets[i] }));
-                    } else if (outside.length && totalVotes > 0 && (src.kind === 'transfer' || outside.some(l => l.votes > 0)) && delta > 0 && (pct < 0 || outside.reduce((t, l) => t + l.votes, 0) >= delta)) {
-                      actions.push({ type: 'redistribute', from: (pct > 0 ? outside : members).map(l => l.id), to: (pct > 0 ? members : outside).map(l => ({ listId: l.id, share: src.kind === 'transfer' && pct < 0 ? 1 : l.votes })), votes: delta });
-                    }
-                    const cur = actions.reduce((x, a) => applyAction(x, a), s);
-                    const explain = () => { const next = allocate(toEngineInput(cur)); setEffect(next.lists.filter(x => x.seats !== r.lists.find(y => y.id === x.id)?.seats).map(x => `${listLabel(listOf(x.id), lang)} ${x.seats - (r.lists.find(y => y.id === x.id)?.seats ?? 0) > 0 ? '+' : ''}${x.seats - (r.lists.find(y => y.id === x.id)?.seats ?? 0)}`).join(' · ')); };
-                    return <button key={pct} className="btn small" disabled={!actions.length} onFocus={explain} onMouseEnter={explain} onClick={() => dispatchMany(actions)}>{L('Lists’ votes', 'קולות הרשימות')} {pct > 0 ? '+' : '−'}10%</button>;
-                  })}
-                </div>
-                <p className="tiny" aria-live="polite">{voteSourceLabel(src, s, lang)}{effect ? ` · ${effect}` : ''}</p>
+                <BlocVoteStepper s={s} r={r} bloc={k === NONE ? null : k} />
                 <ul className="bp-chips">
                   {units_.map((u) => {
                     const l = listOf(u.listId);

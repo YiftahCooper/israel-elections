@@ -45,11 +45,10 @@ for (const lang of ['en','he']) for (const theme of ['light','dark']) for (const
     await start(page,lang,theme,'simple');
     await page.getByRole('region',{name:lang === 'he' ? 'הרשימות' : 'Lists', exact:true}).getByRole('button',{name:lang === 'he' ? 'מרצ' : 'Meretz',exact:true}).click();
     const sheet = page.locator('.side-panel');
-    const at = sheet.getByRole('button',{name:lang === 'he' ? 'באחוז החסימה' : 'At threshold',exact:true});
+    const at = sheet.getByRole('button',{name:lang === 'he' ? 'מעבר אחוז החסימה' : 'Cross the threshold',exact:true});
     await expect(at).toBeVisible({timeout:30000});
     await at.click();
     await expect(sheet.locator('.crossing')).toContainText(lang === 'he' ? 'עברה את אחוז החסימה' : 'Passed the threshold');
-    await expect(at).toBeVisible({timeout:30000});
     const votes = sheet.getByRole('textbox',{name:lang === 'he' ? 'קולות' : 'Votes',exact:true});
     if (phone) {
       await votes.scrollIntoViewIfNeeded();
@@ -60,9 +59,9 @@ for (const lang of ['en','he']) for (const theme of ['light','dark']) for (const
     }
     await page.screenshot({path:`.backup-scratch/wave-one/${lang}-${theme}-${phone ? 'phone' : 'desktop'}.png`,fullPage:false});
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
-    await sheet.getByRole('button',{name:lang === 'he' ? 'מעט מתחת' : 'Just below',exact:true}).click();
+    await sheet.getByRole('button',{name:lang === 'he' ? 'מעט מתחת לחסימה' : 'Just below threshold',exact:true}).click();
     await expect(sheet.locator('.crossing')).toContainText(lang === 'he' ? 'ירדה מתחת' : 'Fell below');
-    await sheet.getByRole('button',{name:lang === 'he' ? 'מעט מעל' : 'Just above',exact:true}).click();
+    await sheet.getByRole('button',{name:lang === 'he' ? 'מעבר אחוז החסימה' : 'Cross the threshold',exact:true}).click();
     await expect(sheet.locator('.crossing')).toContainText(lang === 'he' ? 'עברה את' : 'Passed the');
   });
 }

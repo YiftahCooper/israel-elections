@@ -513,48 +513,49 @@ markers remain labelled (61 of 120); the independent PM vote uses its labelled
 The complete findings and verification scope are in
 `docs/acceptance/graphics-audit-2026-11-04.md`.
 
-## Primary pickers and numeric quick actions
+## Primary pickers and precision controls
 
-Primary choices use the shared `ChoicePicker`: a searchable dialog with preview rows,
-current-choice check, native buttons, Arrow Up/Down and Home/End, Escape dismissal and
-focus return. At phone widths it becomes a bottom sheet with 52px rows. Search receives
-focus on every opening. Secondary form fields retain native selects. All spacing and
-placement use logical properties and the existing surface, ink, rule and focus tokens.
+Primary choices use searchable dialogs with native buttons, Arrow Up/Down and Home/End,
+Escape dismissal and focus return. Phone choices become a bottom sheet. Era headings are
+muted labels above a hairline rule; no side stripes. Secondary fields retain native selects.
 
-The header always contains the scenario switcher. Phone inspectors repeat it above the
-list/bloc details, sharing the same session drafts so work stays reachable while a sheet
-covers the header. Official result retains neutral chrome;
-saved scenarios show their identity swatch, result preview, save date, status, change
-count, latest recorded vote source and named rule differences. Switching preserves
-unsaved scenario snapshots and their undo/redo history as explicitly labelled session drafts.
-Saving in browser remains the durable action; session drafts do not survive reload. The
-switcher also retains the inspectable changes-from-official list.
+The election picker has one timeline, grouped by era, with full month names for repeated
+elections. Every row shows its date/Knesset and the official seat allocation in list colours,
+computed by the same exact engine through ResultPreview. Datasets load into the cache only
+when browsing opens; previewing never changes the active scenario. A selected row expands
+in place for a larger bar and Open; Enter commits the focused election. The 2001 PM-only
+ballot has a distinct dashed row and no invented Knesset bar. The current row scrolls into
+view on opening, including phone. Small Previous/Next arrows live beside the top-bar trigger;
+there are no duplicate nearby chips, preview summary or All elections button inside.
 
-Election browsing offers previous/current/next, nearby elections and All elections. A
-preview never changes the active election; Open commits through `openElection`, and
-Escape cancels. Election navigation is a dated timeline grouped by statutory threshold era, with distinct
-April/September 2019 entries and a separately labelled 2001 PM-only marker. Grouping,
-Start from and colour-by choices use previews. Saved groupings and other parts are reachable
-by the saved scenario's name. `BoardChoices` supplies grouping and chamber colouring outside
-the graphics components; the original native selectors have been removed at source.
+The scenario switcher remains available in the header and phone inspectors. Unsaved branches
+share a session-only draft store and retain undo/redo; saving in browser is durable. Rows show
+the date, changed-field count, identity swatch and mini bar. Default proportional balancing
+and unchanged law are omitted. Exceptional vote sources and changed rules are named. The
+current scenario's change disclosure is explicitly labelled as such.
 
-List quick actions use the active vote source, with neutral seat consequences on focus or
-hover. “Reach next seat” applies a searched vote delta, never assigns seats, and reports the
-computed seat jump (including multi-seat threshold crossings), balancing source and the
-engine’s exact/sampled/no-solution status. A sampled result is never called a minimum.
-The minimum-to-keep-seats action requires an exact boundary. Threshold checkpoints use the source-dependent boundary. Vote steps include ±1 vote and ±0.1pp alongside coarse steps, with units on each button.
-Percentage-point steps and multipliers each commit once. An explicit paired “Transfer
-1pp” moves a rounded 1% of current valid votes between named lists through `dispatchMany`,
-keeping valid votes and turnout fixed, with visible seat consequences. It is disabled
-when the donor cannot supply the full amount; it never clips. No uniform swing is offered. Bloc ±10% actions scale whole lists
-assigned to the bloc proportionally, using the active source and a single undo transaction;
-constituent-party seat assignments are not treated as known vote shares. Totals and turnout
-have domain steps; turnout can reuse another election's official turnout. Threshold era
-buttons remain inside Experimental mode, preserving the historical-rule guard.
+On saving, a scenario with no identity colour receives the least-used of eight muted palette
+colours among this election's saved scenarios. User choices are retained. Old saves missing
+colours migrate oldest first, deterministically (date then identity), accounting for explicit
+colours first. The migration is idempotent and recorded in each saved action log; neutral
+chrome remains reserved for the official result.
 
-The controls incorporate P6–P9 of `docs/research/prior-art-families-and-controls.md`: named
-starting points, percentage-point units, baseline continuity, explicit preview/commit and
-source-aware searched outcomes. No external product code was copied.
+NumericStepper is the common control for list votes, turnout, totals, rule counts and bloc
+votes: mirrored minus/value/plus, LTR numeric entry and a compact step-size segment. List
+steps are 1 vote, 1k, 10k, 0.1pp and 1pp. At most three relevant goal buttons sit beneath it:
+searched next-seat delta, exact minimum to retain the current seats, and the relevant threshold
+crossing. Below threshold, crossing and gaining the first seats are one action. Search status
+retains proven/sampled/no-solution qualifications. A neutral consequence line previews seat
+changes. More contains multiplication, halving, restoration, exact share entry and the paired
+transfer. Each edit remains one undo transaction and uses its named source. Transfers conserve
+valid votes and turnout; insufficient donors disable the action rather than clip it.
+
+BoardChoices owns grouping and chamber colouring. The graphics merge removed the duplicate
+native selectors and their CSS workaround at source. The switcher uses useActiveReference
+for displayed comparisons while retaining the loaded checkpoint separately for draft safety.
+
+Regenerate the bilingual/theme/viewport controls screenshots with the Playwright controls
+specs after building; outputs belong in `.backup-scratch/controls/`.
 
 ## Party families
 

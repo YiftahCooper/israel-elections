@@ -6,7 +6,7 @@ const start = async (page: Page, level: string) => {
   await page.addInitScript((v) => { if (!sessionStorage.getItem('seeded')) { localStorage.setItem('israel-elections:v1', v); sessionStorage.setItem('seeded', '1'); } },
     JSON.stringify({ lang: 'en', hintDismissed: true, level }));
   await page.goto('/');
-  await choose(page.getByRole('button', { name: 'Election' }), 'k25');
+  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
   await expect(page.getByRole('button', { name: 'Grouping', exact: true })).toHaveText(/37th government/);
 };
 const blocs = (page: Page) => page.getByRole('region', { name: 'Seats by bloc' });

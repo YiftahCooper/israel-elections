@@ -1,3 +1,4 @@
+import { NumericStepper } from './NumericStepper.tsx';
 import { TurnoutSteps } from './TurnoutSteps.tsx';
 import { StartFrom } from './StartFrom.tsx';
 import { PartEdits } from './PartEdits.tsx';
@@ -14,7 +15,7 @@ import { GLOSSARY, useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct } from '../format.ts';
 import { dispatch, getState, redo, replay, setState, undo, useStore, useDigits } from '../store.ts';
 import { useLocalities } from './Turnout.tsx';
-import { GlossaryLink, Info, NumberInput, TextField } from './ui.tsx';
+import { GlossaryLink, Info, TextField } from './ui.tsx';
 
 // ------------------------------------------------------------------ rules
 
@@ -52,7 +53,7 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
         {exp && dep.length > 0 && <div className="callout small" style={{ marginBottom: 8 }}><b>{L('Departs from Israeli law in: ', 'שונה מהחוק הישראלי ב: ')}</b>{dep.map((d) => (lang === 'he' ? depName[d][1] : depName[d][0])).join(', ')}</div>}
         <fieldset disabled={!exp} style={{ border: 0, padding: 0, margin: 0 }}>
           <div className="grid2">
-            <label className="field">{L('Seats', 'מושבים')}<NumberInput value={s.rules.seats} onCommit={(n) => set({ seats: n })} label={L('Seats', 'מושבים')} /></label>
+            <div className="field"><span>{L('Seats', 'מושבים')}</span><NumericStepper value={s.rules.seats} min={1} onCommit={(n) => set({ seats: n })} label={L('Seats', 'מושבים')} steps={[{ id: '1', label: '1', amount: 1 }]} /></div>
             <label className="field">{L('Threshold %', 'אחוז חסימה %')}<TextField value={s.rules.thresholdPct} label={L('Threshold %', 'אחוז חסימה %')} onCommit={(v) => set({ thresholdPct: v.trim().replace('%', '') })} /></label>
             <div className="field"><span><span id="remainder-method-label">{L('Remainder method', 'שיטת העודפים')}</span> <Info term={methodOf(s.rules).term} /></span>
               <select aria-labelledby="remainder-method-label" value={s.rules.remainderMethod} onChange={(e) => set({ remainderMethod: e.target.value as Scenario['rules']['remainderMethod'] })}>
@@ -69,7 +70,7 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
                 <option value="floor">{L('Whole number (law)', 'מספר שלם (החוק)')}</option><option value="exact">{L('Exact fraction', 'שבר מדויק')}</option>
               </select>
             </label>
-            <label className="field">{L('Lists per agreement', 'רשימות בהסכם')}<NumberInput value={s.rules.maxAgreementSize} onCommit={(n) => set({ maxAgreementSize: n })} label={L('Lists per agreement', 'רשימות בהסכם')} /></label>
+            <div className="field"><span>{L('Lists per agreement', 'רשימות בהסכם')}</span><NumericStepper value={s.rules.maxAgreementSize} min={1} onCommit={(n) => set({ maxAgreementSize: n })} label={L('Lists per agreement', 'רשימות בהסכם')} steps={[{ id: '1', label: '1', amount: 1 }]} /></div>
             <label className="row small"><input type="checkbox" checked={s.rules.majorityCap} onChange={(e) => set({ majorityCap: e.target.checked })} />{L('Half-seats cap', 'מגבלת מחצית')}</label>
             <label className="row small"><input type="checkbox" checked={s.rules.agreementRequiresAllQualify} onChange={(e) => set({ agreementRequiresAllQualify: e.target.checked })} />{L('Agreement needs all partners above threshold', 'הסכם דורש שכל השותפות יעברו')}</label>
           </div>
@@ -84,11 +85,8 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
         </div>
         <TurnoutSteps s={s} />
         <div className="grid2">
-          <label className="field">{L('Registered voters', 'בעלי זכות בחירה')}<NumberInput value={s.registered} onCommit={(n) => dispatch({ type: 'setTotals', registered: n })} label={L('Registered voters', 'בעלי זכות בחירה')} /></label>
-          <label className="field">{L('Invalid ballots', 'קולות פסולים')}<NumberInput value={s.invalid} onCommit={(n) => dispatch({ type: 'setTotals', invalid: n })} label={L('Invalid ballots', 'קולות פסולים')} /></label>
-        </div>
-        <div className="quick-actions">
-          {(['registered', 'invalid'] as const).flatMap(key => [-1000, 1000, -10000, 10000].map(d => <button key={`${key}-${d}`} className="btn small" disabled={s[key] + d < 0} onClick={() => dispatch({ type: 'setTotals', [key]: s[key] + d })}>{key === 'registered' ? L('Registered', 'בעלי זכות') : L('Invalid', 'פסולים')} {d > 0 ? '+' : '−'}{fmtInt(Math.abs(d))}</button>))}
+          <div className="field"><span>{L('Registered voters', 'בעלי זכות בחירה')}</span><NumericStepper value={s.registered} onCommit={(n) => dispatch({ type: 'setTotals', registered: n })} label={L('Registered voters', 'בעלי זכות בחירה')} steps={[{ id: '1', label: '1', amount: 1 }, { id: '1k', label: '1k', amount: 1000 }, { id: '10k', label: '10k', amount: 10000 }]} /></div>
+          <div className="field"><span>{L('Invalid ballots', 'קולות פסולים')}</span><NumericStepper value={s.invalid} onCommit={(n) => dispatch({ type: 'setTotals', invalid: n })} label={L('Invalid ballots', 'קולות פסולים')} steps={[{ id: '1', label: '1', amount: 1 }, { id: '1k', label: '1k', amount: 1000 }, { id: '10k', label: '10k', amount: 10000 }]} /></div>
         </div>
       </div>
       <div>
