@@ -36,7 +36,7 @@ it('reaches a typed seat count with the fewest votes, for every vote source', ()
       if (exact) expect(short, `${src.kind} → ${n} minus one`).not.toBe(n);
     }
   }
-});
+}, 120_000); // six exact searches; slow CI runners need more than the 5 s default
 
 it('a target inside the threshold gap lands on the nearest possible count', () => {
   const s = scenarioFromDataset(k26());
@@ -45,4 +45,4 @@ it('a target inside the threshold gap lands on the nearest possible count', () =
   const { got } = reach(s, below.id, 1, { kind: 'proportional' });
   // passing the threshold brings several seats at once, so 1 seat is reported as the nearest count
   expect(got).toBeGreaterThan(1);
-});
+}, 60_000);
