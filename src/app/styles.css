@@ -120,8 +120,9 @@ input, textarea { caret-color: var(--focus); }
 .banner > .banner-text { flex: 1 1 14rem; min-inline-size: 0; } /* a dismiss button stays beside the text */
 .session { background: var(--surface); border-block-end: 1px solid var(--rule); padding: 6px 16px; display: flex; align-items: center; flex-wrap: wrap; gap: 4px 14px; font-size: 13.5px; }
 .session > b { font-weight: 700; }
-.session .moves { display: inline-flex; flex-wrap: wrap; gap: 2px 12px; }
-.session .moves span { white-space: nowrap; }
+.session > * { min-width: 0; overflow-wrap: anywhere; }
+.session .moves { display: inline-flex; flex-wrap: wrap; gap: 2px 12px; max-width: 100%; }
+.session .moves > span { min-width: 0; max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
 .session .history { margin-top: 6px; flex-basis: 100%; }
 
 /* ---------- page grid: the board (lists | chamber, blocs, figures | the opened list) and full-width tool pages */
@@ -373,7 +374,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 @media (max-width: 760px) { .sec-row { grid-template-columns: 90px 1fr 36px 1fr; } }
 
 /* ---------- coalition chips */
-.chip.coal { cursor: pointer; padding: 3px 10px; font-size: 13.5px; }
+.chip.coal { cursor: pointer; padding: 3px 10px; font-size: 13.5px; min-width: 0; white-space: normal; overflow-wrap: anywhere; }
 .chip.coal.in { background: color-mix(in srgb, var(--c) 20%, var(--surface)); border-color: var(--c); font-weight: 600; }
 .chip.coal.out { opacity: .5; text-decoration: line-through; }
 
@@ -400,7 +401,9 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 
 /* bloc names in full beneath the strip, on narrow screens */
 .strip-legend { display: none; flex-wrap: wrap; gap: 2px 12px; margin-top: 8px; font-size: 13px; }
-.strip-legend > span { display: inline-flex; align-items: center; gap: 5px; }
+.strip-legend > span { display: inline; min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+.strip-legend .swatch { margin-inline-end: 5px; }
+.strip-legend .consequence { margin-inline-start: 5px; }
 @media (max-width: 760px) {
   .strip-legend { display: flex; }
   .corridor .label { display: none; }
@@ -554,7 +557,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .cmp-section { margin-top: 18px; }
 .cmp-blocrow { display: grid; grid-template-columns: minmax(110px, 180px) minmax(0, 1fr); gap: 10px; align-items: center; margin-bottom: 8px; }
 .coal-bar.big > i { position: relative; display: flex; align-items: center; justify-content: center; }
-.cmp-n { color: #fff; font-weight: 700; font-size: 13px; text-shadow: 0 1px 2px rgba(0,0,0,.45); }
+.cmp-n { color: var(--ink); font-weight: 700; font-size: 13px; }
 .cmp-diff { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
 .cmp-diff li { display: grid; grid-template-columns: minmax(140px, 260px) minmax(0, 1fr) 2px minmax(0, 1fr) 40px; gap: 6px; align-items: center; }
 .cmp-label { font-size: 13.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

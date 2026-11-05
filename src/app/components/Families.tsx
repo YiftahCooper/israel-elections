@@ -24,7 +24,7 @@ function FamilySeats({s,f,label,before}:{s:Scenario;f:Family;label:string;before
  const L=useL(),r=allocationOf(s),fam=new Map(resolve(f,s).map(l=>[l.id,l.family]));
  const n={selected:0,mixed:0,other:0};for(const l of r.lists)n[(fam.get(l.id)??'other') as keyof typeof n]+=l.seats;
  const total=n.selected+n.mixed+n.other,delta=before===undefined?0:n.selected-before;
- return <div className="family-seats"><span>{label}</span><span className="family-seat-strip" aria-hidden style={{['--family-color' as string]:familyColor(f)}}>{(['selected','mixed','other'] as const).filter(k=>n[k]>0).map(k=><i key={k} data-part={k} style={{flex:n[k]}}>{k!=='other'&&n[k]>=4?n[k]:''}</i>)}<b className="family-majority" style={{insetInlineStart:`${100*(Math.floor(total/2)+1)/Math.max(1,total)}%`}}/></span>
+ return <div className="family-seats"><span>{label}</span><span className="family-seat-strip" aria-hidden style={{['--family-color' as string]:familyColor(f)}}>{(['selected','mixed','other'] as const).filter(k=>n[k]>0).map(k=><i key={k} data-part={k} style={{flex:n[k]}}></i>)}<b className="family-majority" style={{insetInlineStart:`${100*(Math.floor(total/2)+1)/Math.max(1,total)}%`}}/></span>
   <span className="family-seat-count"><b>{n.selected}</b> {L('seats','מנדטים')}{n.mixed?<small> + {n.mixed} {L('mixed','מעורבות')}</small>:null}{before!==undefined&&<em data-sign={Math.sign(delta)}><bdi dir="ltr">{delta>0?`+${delta}`:delta<0?`−${-delta}`:'±0'}</bdi></em>}</span></div>;
 }
 export function Families({s}:{s:Scenario}) {
