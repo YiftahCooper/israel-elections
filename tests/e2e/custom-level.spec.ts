@@ -69,7 +69,7 @@ for (const lang of ['en','he']) for (const theme of ['light','dark']) for (const
     expect(box.x).toBeGreaterThanOrEqual(0);
     expect(box.x + box.width).toBeLessThanOrEqual(phone ? 390 : 1440);
     await page.screenshot({path:`.backup-scratch/custom-level/markers-${lang}-${theme}-${phone ? 'phone' : 'desktop'}.png`});
-    await page.getByRole('tab',{name:lang === 'he' ? 'כללים' : 'Rules',exact:true}).click();
+    await page.getByRole('tab',{name:lang === 'he' ? 'כללים והגדרות' : 'Rules & settings',exact:true}).click();
     await page.getByRole('button', {name:lang === 'he' ? 'החלפת: כללים' : 'Replace: Rules',exact:true}).click();
     const options = page.getByRole('dialog').locator('.choice-option');
     expect((await options.allTextContents()).join(' ')).not.toContain('il-');

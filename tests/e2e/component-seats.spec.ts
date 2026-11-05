@@ -46,8 +46,8 @@ for(const lang of ['en','he']) for(const theme of ['light','dark']) for(const wi
      const png=page.waitForEvent('download');await chamber.getByRole('button',{name:'Export PNG'}).click();await (await png).saveAs(`.backup-scratch/components/export-${layout}.png`);
     }
    }
-   await page.getByRole('tab',{name:lang==='en'?'Rules':'כללים',exact:true}).click();
-   await page.getByRole('checkbox',{name:lang==='en'?'Component colours in seats':'צבעי מפלגות במושבים',exact:true}).uncheck();
+   await page.getByRole('tab',{name:lang==='en'?'Rules & settings':'כללים והגדרות',exact:true}).click();
+   await page.getByRole('checkbox',{name:lang==='en'?'Party colours in split joint lists':'צבעי מפלגות ברשימות משותפות שפוצלו',exact:true}).uncheck();
    await page.getByRole('tab',{name:lang==='en'?'Overview':'תמונת מצב',exact:true}).click();
    await expect(page.locator('.chamber [data-component-seat]')).toHaveCount(0);
    await page.reload();await expect(page.locator('.chamber [data-component-seat]')).toHaveCount(0);

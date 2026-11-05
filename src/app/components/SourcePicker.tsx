@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { Scenario, SimList } from '../../model/scenario.ts';
-import { listLabel } from '../derive.ts';
+import type { ElectionId } from '../../data/schema.ts';
+import { baselineOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt } from '../format.ts';
 import { answerPreference, chooseSource, setPreference, setState, useStore, useVoteSource } from '../store.ts';
@@ -81,7 +82,7 @@ export function SourceDialog() {
           ['always', L('Always', 'תמיד')],
         ] as const).map(([v, text]) => <label key={v}><input type="radio" name="preference-scope" value={v} checked={scope === v} onChange={() => setScope(v)} />{text}</label>)}
       </fieldset>
-      <p className="tiny muted">{L('Change Always in Rules → Editing.', 'ניתן לשנות ״תמיד״ בכללים ← עריכה.')}</p>
+      <p className="tiny muted">{L('Change Always in Rules & settings → Editing.', 'ניתן לשנות ״תמיד״ בכללים והגדרות ← עריכה.')}</p>
       <div className="row">
         <button type="submit" className="btn small primary" disabled={!value}>{L('Apply', 'החלה')}</button>
         <button type="button" className="btn small ghost" onClick={cancel}>{L('Cancel', 'ביטול')}</button>
@@ -90,20 +91,50 @@ export function SourceDialog() {
   </dialog>;
 }
 
-/** Registry-driven Settings: every question can be returned to Ask each time. */
+/** Registry-driven Settings: every question shows its Always answer and each item's remembered answer,
+ *  and each can go back to asking ("Just this once" stores nothing, so it is the Ask each time state). */
 export function PreferenceSettings() {
   const L = useL();
   const lang = useLang();
   const answers = useStore(st => st.preferences);
+  const perItem = useStore(st => st.preferenceFor);
   const s = useStore(st => st.scenario);
+  const datasets = useStore(st => st.datasets);
+  const saved = useStore(st => st.saved);
+  const elections = useStore(st => st.elections);
+  const listsOf = (election: string) => s?.electionId === election ? s.lists : datasets[election as ElectionId] ? baselineOf(datasets[election as ElectionId]!).lists : [];
+  const listName = (election: string, id: string) => { const l = listsOf(election).find(x => x.id === id); return l ? listLabel(l, lang) : id; };
+  const answerLabel = (id: PreferenceId, v: string, election: string) => {
+    const o = PREFERENCES[id].options.find(x => x.value === v);
+    return o ? L(o.label[0], o.label[1]) : v.startsWith('t:') ? listName(election, v.slice(2)) : v;
+  };
+  // keys are "<question>:<election or empty>:<item>" (store.ts preferenceKey)
+  const itemLabel = (election: string, key: string) => {
+    const [kind, ...rest] = key.split(':'), id = rest.join(':');
+    const name = kind === 'list' ? listName(election, id)
+      : kind === 'bloc' ? ((b) => b ? (lang === 'he' ? b.nameHe : b.nameEn) : id)(s?.electionId === election ? s.blocs.find(b => b.id === id) : undefined)
+      : saved.find(x => x.id === key)?.name ?? key;
+    const e = election && election !== s?.electionId ? elections.find(x => x.id === election) : undefined;
+    return e ? `${name} (${e.date.slice(0, 4)})` : name;
+  };
+  const forget = (key: string) => setState({ preferenceFor: Object.fromEntries(Object.entries(perItem ?? {}).filter(([k]) => k !== key)) });
   return <>{(Object.keys(PREFERENCES) as PreferenceId[]).map(id => {
     const pref = PREFERENCES[id], value = answers[id] ?? 'ask';
-    return <label className="field" style={{ maxWidth: 260 }} key={id}>{L(pref.label[0], pref.label[1])}
-      <select value={value} onChange={e => setPreference(id, e.target.value === 'ask' ? undefined : e.target.value)}>
-        <option value="ask">{L('Ask each time', 'לשאול בכל פעם')}</option>
-        {pref.options.map(o => <option key={o.value} value={o.value}>{L(o.label[0], o.label[1])}</option>)}
-        {value.startsWith('t:') && <option value={value}>{s?.lists.find(l => l.id === value.slice(2)) ? listLabel(s.lists.find(l => l.id === value.slice(2))!, lang) : L('One list (when available)', 'רשימה אחת (כשזמינה)')}</option>}
-      </select>
-    </label>;
+    const items = Object.entries(perItem ?? {}).filter(([k]) => k.startsWith(`${id}:`));
+    return <div className="pref-setting" key={id}>
+      <label className="field" style={{ maxWidth: 260 }}>{L(pref.label[0], pref.label[1])}
+        <select value={value} onChange={e => setPreference(id, e.target.value === 'ask' ? undefined : e.target.value)}>
+          <option value="ask">{L('Ask each time', 'לשאול בכל פעם')}</option>
+          {pref.options.map(o => <option key={o.value} value={o.value}>{L(o.label[0], o.label[1])}</option>)}
+          {value.startsWith('t:') && <option value={value}>{s?.lists.find(l => l.id === value.slice(2)) ? listLabel(s.lists.find(l => l.id === value.slice(2))!, lang) : L('One list (when available)', 'רשימה אחת (כשזמינה)')}</option>}
+        </select>
+      </label>
+      {items.length > 0 && <><p className="tiny muted pref-items-title">{id === 'comparison' ? L('For one scenario', 'לתרחיש אחד') : L('For one list or bloc', 'לרשימה או לגוש אחד')}</p>
+      <ul className="pref-items small" aria-label={L(pref.label[0], pref.label[1]) + ' · ' + (id === 'comparison' ? L('For one scenario', 'לתרחיש אחד') : L('For one list or bloc', 'לרשימה או לגוש אחד'))}>
+        {items.map(([k, v]) => { const [, election, ...rest] = k.split(':'); const name = itemLabel(election, rest.join(':'));
+          return <li key={k}><span><bdi>{name}</bdi>: <b><bdi>{answerLabel(id, v, election)}</bdi></b></span>
+            <button type="button" className="btn small ghost" aria-label={L(`Ask again for ${name}`, `לשאול שוב עבור ${name}`)} onClick={() => forget(k)}>{L('Ask again', 'לשאול שוב')}</button></li>; })}
+      </ul></>}
+    </div>;
   })}</>;
 }
