@@ -286,7 +286,8 @@
         "Totals are sums of confirmed faction recommendations weighted by the app-calculated seats, not a final presidential tally. Official seat allocation still not independently retrieved.",
         "Recommendation dates: Religious Zionism–Zehut, Shas and Yisrael Beiteinu on 4 November; remaining confirmed recommendations on 5 November.",
         "President notices were retrieved directly in this pass, upgrading the earlier report of inaccessible official originals.",
-        "Likud remains unknown at this check; its projected support for its leader is not recorded as fact."
+        "Likud remains unknown at this check; its projected support for its leader is not recorded as fact.",
+        "Rechecked at 20:36 Israel time after the scheduled 20:30 Likud meeting. The retrieved President’s Residence homepage/archive and targeted searches did not confirm the formal Likud recommendation; the Maariv reader still exposed the 20:00 update. This is a retrieval gap, not proof the meeting or recommendation had not occurred."
       ]
     }
   ],
@@ -318,7 +319,7 @@
         ]
       }
     ],
-    "outcomeNote": "Formation in progress as of 5 November 2026, 20:20 Israel time; no tasking or completed new government verified."
+    "outcomeNote": "Formation in progress; at the 5 November 2026, 20:36 Israel-time retrieval check no tasking or completed new government was verified."
   },
   "term": {
     "inclusionRule": "two-independent-chronologies-one-official-or-academic",
@@ -332,10 +333,10 @@
     "note": "IDI August 2026 Q7 is vote influence, a separate construct. No most-important-problem card is populated; see issue-polling-sources.md."
   },
   "gaps": [
-    "Likud recommendation and final presidential tally not yet verified; meeting scheduled for 5 November at 20:30.",
+    "Likud’s formal recommendation and the final presidential tally were not confirmed in the 20:36 retrieval check. Its 20:30 meeting time had elapsed; no conclusion about actual non-occurrence follows from the unchanged retrieved pages.",
     "No mandate, new government, Knesset inauguration or term end verified; future scheduled steps are not completed events.",
     "Gazette publication and official seat allocation not independently retrieved.",
     "No qualifying general-problem survey topline; vote-influence percentages are not substituted."
   ],
-  "asOf": "2026-11-05T20:20:00+02:00"
+  "asOf": "2026-11-05T20:36:00+02:00"
 }
