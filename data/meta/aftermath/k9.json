@@ -126,6 +126,12 @@
       "publisher": "Israel Ministry of Defense, IDF and Defense Establishment Archives, Time Axis: 1972–1980",
       "kind": "official",
       "accessed": "2026-11-05"
+    },
+    "ecf-litani-withdrawal": {
+      "url": "https://ecf.org.il/issues/issue/959",
+      "publisher": "Economic Cooperation Foundation, historical database entry on UNSC Resolution 425 (1978)",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -532,8 +538,8 @@
         "id": "operation-litani",
         "date": "1978-03",
         "category": "security",
-        "textEn": "Israel launched Operation Litani in southern Lebanon.",
-        "textHe": "ישראל פתחה במבצע ליטני בדרום לבנון.",
+        "textEn": "According to the Knesset history and MFA chronology, Israel launched Operation Litani in southern Lebanon in March 1978; ECF’s historical record dates the completion of Israel’s withdrawal to June 1978.",
+        "textHe": "לפי תולדות הכנסת וציר הזמן של משרד החוץ, ישראל פתחה במבצע ליטני בדרום לבנון במרס 1978; הרשומה ההיסטורית של הקרן לשיתוף פעולה כלכלי (ECF) מתארכת את השלמת נסיגת ישראל ליוני 1978.",
         "cites": [
           {
             "source": "knesset-history-9",
@@ -542,9 +548,16 @@
           {
             "source": "mfa-timeline",
             "quote": "Operation Litani"
+          },
+          {
+            "source": "ecf-litani-withdrawal",
+            "quote": "The Israeli withdrawal was completed in June 1978"
           }
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "notes": [
+          "Withdrawal date is not labelled a ceasefire date. No trigger added without agreement of the original two selection chronologies."
+        ]
       },
       {
         "id": "coastal-road-attack",

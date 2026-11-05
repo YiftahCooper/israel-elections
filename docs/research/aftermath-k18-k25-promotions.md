@@ -1,5 +1,8 @@
 # Term-event promotion handoff: k18–k25
 
+**Review addendum:** [5 November coordinator corrections](aftermath-k25-review.md)
+supersede the k25 event count, pending-item status and conflict-wording findings below.
+
 Checked 5 November 2026 on branch `t3/2494c5ea`, starting at
 `b74bb07387b2542434dddc0892e8a868a45950fc`. Research follows PROMOTE.md and COMMON.md.
 These remain **pilot records**, not production-ready histories. No push or integration

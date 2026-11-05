@@ -76,6 +76,12 @@
       "kind": "official",
       "accessed": "2026-11-05",
       "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies."
+    },
+    "un-yearbook-1956": {
+      "url": "https://www.un.org/unispal/document/auto-insert-197214/",
+      "publisher": "United Nations Yearbook 1955/56/57, excerpts, Further Assembly Action (5–10 November 1956)",
+      "kind": "official",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -420,8 +426,8 @@
         "id": "sinai",
         "date": "1956-10-29",
         "category": "security",
-        "textEn": "The Sinai Campaign began.",
-        "textHe": "מבצע סיני החל.",
+        "textEn": "According to the Knesset history and IDI’s election retrospective, the Sinai Campaign began on 29 October 1956; the UN Yearbook records Israel’s attack on Egypt and its report on 5 November 1956 that fighting between Israeli and Egyptian forces had ceased.",
+        "textHe": "לפי תולדות הכנסת וסקירת הבחירות של המכון הישראלי לדמוקרטיה, מבצע סיני החל ב־29 באוקטובר 1956; שנתון האו״ם מתעד את התקפת ישראל על מצרים ואת הודעתה מ־5 בנובמבר 1956 כי הלחימה בין הכוחות הישראליים והמצריים פסקה.",
         "cites": [
           {
             "source": "term-history",
@@ -430,9 +436,16 @@
           {
             "source": "idi-next",
             "quote": "the IDF had been victorious in the Sinai Campaign."
+          },
+          {
+            "source": "un-yearbook-1956",
+            "quote": "all fighting had ceased between Israel and Egyptian forces."
           }
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "notes": [
+          "Bilateral cessation reported by Israel on 5 November is distinct from the later Anglo-French ceasefire of 6–7 November. No causal trigger added; original Knesset/IDI selection retained."
+        ]
       },
       {
         "id": "kafr-qasim",
