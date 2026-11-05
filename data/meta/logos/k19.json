@@ -67,6 +67,138 @@
       "status": "unresolved",
       "evidenceId": "commons-138448720",
       "rights": "fair-use-identification"
+    },
+    {
+      "letters": "ו",
+      "file": "logos/hadash-2013-k19.png",
+      "sourceUrl": "https://web.archive.org/web/20130110074848/http://hadash.org.il/",
+      "assetSourceUrl": "https://web.archive.org/web/20130127072156id_/http://hadash.org.il/wp-content/themes/hadash-mamp/images/logo-tag.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "חד\"ש — official website header mark (2013 campaign), slogan cropped away",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "medium",
+      "evidenceId": "hadash-archive-20130110074848",
+      "inUseDate": "2013-01-10",
+      "archiveUrl": "https://web.archive.org/web/20130110074848/http://hadash.org.il/",
+      "archiveTimestamp": "20130110074848",
+      "inUseEvidence": "Inspected official Hadash homepage capture 20130110074848 references http://hadash.org.il/wp-content/themes/hadash-mamp/images/logo-tag.png as its header logo. No pre-election CDX row exists for this asset; the earliest capture, 20130127072156 (five days after polling), is used. Its artwork carries the campaign ballot letter ו and the 2013 slogan, so it is the campaign design; medium confidence only. Cropped to box [154, 0, 337, 189] of the 337x189 original (crop only, removing the adjacent slogan text; the emblem and its ballot-letter tile are kept); no redraw or recolouring. Hadash ran alone as list ו in 2013. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "ec8a666e73d9dcc9746f74ea3c6b1f9b9284f93d1755236c725d0ebb1ca690e0",
+      "originalSha256": "428135b4c0cc43e5f1a5bd4a8cbfb638491329dee0499c46ca381bdd51b24152",
+      "bytes": 25845,
+      "rawEvidence": {
+        "page": "logo-k19-hadash-page",
+        "asset": "logo-k19-hadash-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20130127072156id_/http://hadash.org.il/wp-content/themes/hadash-mamp/images/logo-tag.png",
+      "assetArchiveTimestamp": "20130127072156",
+      "cropBox": [
+        154,
+        0,
+        337,
+        189
+      ],
+      "originalDimensions": [
+        337,
+        189
+      ],
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA crop, thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
+    },
+    {
+      "letters": "טב",
+      "file": "logos/jewish-home-list-2013-k19.png",
+      "sourceUrl": "https://web.archive.org/web/20130107235008/http://www.baityehudi.org.il/",
+      "assetSourceUrl": "https://web.archive.org/web/20130113092057id_/http://www.baityehudi.org.il/wp-content/uploads/2012/12/logim1.jpg",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "הבית היהודי בראשות נפתלי בנט — official website header (2013 campaign), slogan cropped away",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "jewish-home-list-archive-20130107235008",
+      "inUseDate": "2013-01-07",
+      "archiveUrl": "https://web.archive.org/web/20130107235008/http://www.baityehudi.org.il/",
+      "archiveTimestamp": "20130107235008",
+      "inUseEvidence": "Inspected official Jewish Home homepage capture 20130107235008 references http://www.baityehudi.org.il/wp-content/uploads/2012/12/logim1.jpg as its header logo (div.logo, alt 'הבית היהודי בראשות נפתלי בנט'). Exact archived asset bytes at 20130113092057 match pre-election CDX SHA-1 base32 SWOWEKTG52CUU74XLAFLP5P7GSR5TF5I (CDX capture 20121218064258). Cropped to box [0, 0, 148, 100] of the 268x100 original (crop only, removing the adjacent slogan 'משהו חדש מתחיל'); no redraw or recolouring. The wordmark reads 'הבית היהודי בראשות נפתלי בנט', the name under which the Jewish Home–Tkuma list ran; whole-list campaign identity. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "9ff6639c95b2d2d9326190b5965e3b20fcae58c5d4e01b823aaf1a0a1bfa12e7",
+      "originalSha256": "4cd85dcf55896c05c51bc60cd1f2bddb3a1033654d10b56fa06b03a2477698d7",
+      "bytes": 21746,
+      "rawEvidence": {
+        "page": "logo-k19-jewish-home-list-page",
+        "asset": "logo-k19-jewish-home-list-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20130113092057id_/http://www.baityehudi.org.il/wp-content/uploads/2012/12/logim1.jpg",
+      "assetArchiveTimestamp": "20130113092057",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "SWOWEKTG52CUU74XLAFLP5P7GSR5TF5I",
+        "computedDigest": "SWOWEKTG52CUU74XLAFLP5P7GSR5TF5I",
+        "assetCaptureTimestamp": "20130113092057",
+        "cdxCaptureTimestamp": "20121218064258",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.baityehudi.org.il%2Fwp-content%2Fuploads%2F2012%2F12%2Flogim1.jpg&from=2012&to=20130122&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k19-jewish-home-list-index"
+      },
+      "cropBox": [
+        0,
+        0,
+        148,
+        100
+      ],
+      "originalDimensions": [
+        268,
+        100
+      ],
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA crop, thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
+    },
+    {
+      "party": "jewish-home",
+      "file": "logos/jewish-home-2013-k19.png",
+      "sourceUrl": "https://web.archive.org/web/20130107235008/http://www.baityehudi.org.il/",
+      "assetSourceUrl": "https://web.archive.org/web/20130113092057id_/http://www.baityehudi.org.il/wp-content/uploads/2012/12/logim1.jpg",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "הבית היהודי — official party website header (2013 campaign), slogan cropped away",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "jewish-home-archive-20130107235008",
+      "inUseDate": "2013-01-07",
+      "archiveUrl": "https://web.archive.org/web/20130107235008/http://www.baityehudi.org.il/",
+      "archiveTimestamp": "20130107235008",
+      "inUseEvidence": "Inspected official Jewish Home homepage capture 20130107235008 references http://www.baityehudi.org.il/wp-content/uploads/2012/12/logim1.jpg as its header logo (div.logo). Exact archived asset bytes at 20130113092057 match pre-election CDX SHA-1 base32 SWOWEKTG52CUU74XLAFLP5P7GSR5TF5I (CDX capture 20121218064258). Cropped to box [0, 0, 148, 100] of the 268x100 original (crop only, removing the adjacent slogan 'משהו חדש מתחיל'); no redraw or recolouring. Jewish Home party's own website mark; the same artwork identifies the טב list, which ran under the Jewish Home name. Tkuma keeps its separate entry. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "9ff6639c95b2d2d9326190b5965e3b20fcae58c5d4e01b823aaf1a0a1bfa12e7",
+      "originalSha256": "4cd85dcf55896c05c51bc60cd1f2bddb3a1033654d10b56fa06b03a2477698d7",
+      "bytes": 21746,
+      "rawEvidence": {
+        "page": "logo-k19-jewish-home-page",
+        "asset": "logo-k19-jewish-home-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20130113092057id_/http://www.baityehudi.org.il/wp-content/uploads/2012/12/logim1.jpg",
+      "assetArchiveTimestamp": "20130113092057",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "SWOWEKTG52CUU74XLAFLP5P7GSR5TF5I",
+        "computedDigest": "SWOWEKTG52CUU74XLAFLP5P7GSR5TF5I",
+        "assetCaptureTimestamp": "20130113092057",
+        "cdxCaptureTimestamp": "20121218064258",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.baityehudi.org.il%2Fwp-content%2Fuploads%2F2012%2F12%2Flogim1.jpg&from=2012&to=20130122&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k19-jewish-home-index"
+      },
+      "cropBox": [
+        0,
+        0,
+        148,
+        100
+      ],
+      "originalDimensions": [
+        268,
+        100
+      ],
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA crop, thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
     }
   ]
 }

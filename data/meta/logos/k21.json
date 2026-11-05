@@ -165,6 +165,81 @@
       "bytes": 4160,
       "retrievedAt": "2026-11-04",
       "retrieval": "Plain HTTP with project User-Agent. SVG unchanged; PNG RGBA thumbnail (256,256), Pillow 13.0.0 LANCZOS, optimize=True. Retained original: data/raw/logos/k21/utj-2019.svg"
+    },
+    {
+      "party": "hadash",
+      "file": "logos/hadash-2019-k21.png",
+      "sourceUrl": "https://web.archive.org/web/20190401001745/http://hadash.org.il/",
+      "assetSourceUrl": "https://web.archive.org/web/20190330211855id_/http://hadash.org.il/wp-content/themes/hadash-mamp/images/logo-tag.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "חד\"ש — official party website header mark",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "hadash-archive-20190401001745",
+      "inUseDate": "2019-04-01",
+      "archiveUrl": "https://web.archive.org/web/20190401001745/http://hadash.org.il/",
+      "archiveTimestamp": "20190401001745",
+      "inUseEvidence": "Inspected official Hadash homepage capture 20190401001745 references http://hadash.org.il/wp-content/themes/hadash-mamp/images/logo-tag.png as its header logo. Exact archived asset bytes at 20190330211855 match pre-election CDX SHA-1 base32 JCIO34UUA5V5Y6PZN54WSHOMCHUO22HS (CDX capture 20190303041047). Original geometry and colours preserved. Hadash constituent emblem only, not the Hadash–Ta'al list lockup. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "0dc053cee8db557ae89dae91a31228b23824b3a06b70d30322f7003d485a171b",
+      "originalSha256": "56907044680c302761f88001e12976b3ffc9e22090268ef853cc44de1ffb03ff",
+      "bytes": 20405,
+      "rawEvidence": {
+        "page": "logo-k21-hadash-page",
+        "asset": "logo-k21-hadash-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20190330211855id_/http://hadash.org.il/wp-content/themes/hadash-mamp/images/logo-tag.png",
+      "assetArchiveTimestamp": "20190330211855",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "JCIO34UUA5V5Y6PZN54WSHOMCHUO22HS",
+        "computedDigest": "JCIO34UUA5V5Y6PZN54WSHOMCHUO22HS",
+        "assetCaptureTimestamp": "20190330211855",
+        "cdxCaptureTimestamp": "20190303041047",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=hadash.org.il%2Fwp-content%2Fthemes%2Fhadash-mamp%2Fimages%2Flogo-tag.png&from=20190101&to=20190409&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k21-hadash-index"
+      },
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
+    },
+    {
+      "party": "taal",
+      "file": "logos/taal-2019-k21.png",
+      "sourceUrl": "https://web.archive.org/web/20190314060443/http://www.a-m-c.org:80/",
+      "assetSourceUrl": "https://web.archive.org/web/20190708185650id_/http://www.a-m-c.org/logo-amc.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "العربية للتغيير برئاسة أحمد الطيبي (תע\"ל) — official website logo, notice text cropped away",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "medium",
+      "evidenceId": "taal-archive-20190314060443",
+      "inUseDate": "2019-03-14",
+      "archiveUrl": "https://web.archive.org/web/20190314060443/http://www.a-m-c.org:80/",
+      "archiveTimestamp": "20190314060443",
+      "inUseEvidence": "Inspected official Ta'al (Arab Movement for Renewal) homepage capture 20190314060443 references http://www.a-m-c.org/logo-amc.png as its only image on the official holding page. The earliest asset capture, 20190708185650, is after polling; its archived original Last-Modified header is 3 March 2019, before this page capture and the election, but no pre-election CDX digest exists, so medium confidence. Cropped to box [40, 28, 920, 316] of the 960x573 original (crop only, removing the 'site under construction' notice beneath the logo); no redraw or recolouring. Ta'al constituent emblem only, not the Hadash–Ta'al list lockup. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "174f38869207cd4974da9dc31b6094f95d3659ada9ef6a42696f244935539d93",
+      "originalSha256": "79876d17c1a08080c292c97740b5527dcc2297218b255c8d1389f48b023459f4",
+      "bytes": 17991,
+      "rawEvidence": {
+        "page": "logo-k21-taal-page",
+        "asset": "logo-k21-taal-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20190708185650id_/http://www.a-m-c.org/logo-amc.png",
+      "assetArchiveTimestamp": "20190708185650",
+      "cropBox": [
+        40,
+        28,
+        920,
+        316
+      ],
+      "originalDimensions": [
+        960,
+        573
+      ],
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA crop, thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
     }
   ]
 }

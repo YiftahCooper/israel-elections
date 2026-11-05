@@ -177,6 +177,43 @@
         "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=havoda.org.il/wp-content/uploads/2022/05/logo.svg&from=20220801&to=20221101&output=json&fl=timestamp,original,statuscode,digest,length&filter=statuscode:200&collapse=digest",
         "rawIndex": "logo-k25-labor-index"
       }
+    },
+    {
+      "party": "hadash",
+      "file": "logos/hadash-2022-k25.png",
+      "sourceUrl": "https://web.archive.org/web/20221001004858/http://hadash.org.il/",
+      "assetSourceUrl": "https://web.archive.org/web/20220707133235id_/http://hadash.org.il/images/logo.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "חד\"ש — official party website header mark",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "hadash-archive-20221001004858",
+      "inUseDate": "2022-10-01",
+      "archiveUrl": "https://web.archive.org/web/20221001004858/http://hadash.org.il/",
+      "archiveTimestamp": "20221001004858",
+      "inUseEvidence": "Inspected official Hadash homepage capture 20221001004858 references http://hadash.org.il/images/logo.png as its header logo. Exact archived asset bytes at 20220707133235 match pre-election CDX SHA-1 base32 JBELXZ73BGFE44GAQVCDV4GNLTUZ5D55 (CDX capture 20220624220805). Original geometry and colours preserved. Hadash constituent emblem only, not the Hadash–Ta'al list lockup. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "0711ecd736cf2bca2ce8418fdf8b693e94d9d7a7dfdd0580f4a7ec98b795c919",
+      "originalSha256": "60c24d4351512aba67de3c44db673abc4e78be643f5bb6eaa4ea96bfa82f7528",
+      "bytes": 17946,
+      "rawEvidence": {
+        "page": "logo-k25-hadash-page",
+        "asset": "logo-k25-hadash-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20220707133235id_/http://hadash.org.il/images/logo.png",
+      "assetArchiveTimestamp": "20220707133235",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "JBELXZ73BGFE44GAQVCDV4GNLTUZ5D55",
+        "computedDigest": "JBELXZ73BGFE44GAQVCDV4GNLTUZ5D55",
+        "assetCaptureTimestamp": "20220707133235",
+        "cdxCaptureTimestamp": "20220624220805",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=hadash.org.il%2Fimages%2Flogo.png&from=20220601&to=20221101&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k25-hadash-index"
+      },
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
     }
   ]
 }

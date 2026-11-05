@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+
+		<title> אתר מפלגת הבית היהודי - דף הבית </title>
+		<meta name="description" content="אתר מפלגת הבית היהודי בראשות נפתלי בנט - דף הבית">
+		<meta name="keywords" content="הבית היהודי, מפלגת הבית היהודי, נפתלי בנט">
+
+		<!-- Use the correct meta names below for your web application
+			 Ref: http://davidbcalhoun.com/2010/viewport-metatag 
+			 
+		<meta name="HandheldFriendly" content="True">
+		<meta name="MobileOptimized" content="320">-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Basic Styles -->
+		<link rel="stylesheet" type="text/css" media="screen" href="http://www.baityehudi.org.il/assets/css/bootstrap.min.css">	
+		<link rel="stylesheet" type="text/css" media="screen" href="http://www.baityehudi.org.il/assets/css/font-awesome.min.css">
+
+		<!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables 
+		<link rel="stylesheet" type="text/css" media="screen" href="http://www.baityehudi.org.il/assets/css/smartadmin-production.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="http://www.baityehudi.org.il/assets/css/smartadmin-skins.css">	
+		-->
+		<!-- SmartAdmin RTL Support is under construction
+			<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-rtl.css"> -->
+		
+		<!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
+		<link rel="stylesheet" type="text/css" media="screen" href="http://www.baityehudi.org.il/assets/css/by_style.css" />
+        <!--[if IE]>
+            <link rel="stylesheet" type="text/css" href="http://www.baityehudi.org.il/assets/css/by_style_ie.css" />
+        <![endif]-->
+		<!-- FAVICONS -->
+		<link rel="shortcut icon" href="http://www.baityehudi.org.il/assets/img/favicon/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="http://www.baityehudi.org.il/assets/img/favicon.ico" type="image/x-icon">
+
+		<!-- GOOGLE FONT -->
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+        <script>
+        var root = 'http://www.baityehudi.org.il/';   
+        </script>
+        
+	    <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+        
+	    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+		<script> if (!window.jQuery) { document.write('<script src="http://www.baityehudi.org.il/assets/js/libs/jquery-2.0.2.min.js"><\/script>');} </script>
+
+	    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+		<script> if (!window.jQuery.ui) { document.write('<script src="http://www.baityehudi.org.il/assets/js/libs/jquery-ui-1.10.3.min.js"><\/script>');} </script>
+        
+		<!-- JS TOUCH : include this plugin for mobile drag / drop touch events 		
+		<script src="js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> -->
+
+		<!-- BOOTSTRAP JS -->		
+		<script src="http://www.baityehudi.org.il/assets/js/bootstrap/bootstrap.min.js"></script>
+
+		<!-- CUSTOM NOTIFICATION -->
+		<script src="http://www.baityehudi.org.il/assets/js/notification/SmartNotification.min.js"></script>
+
+		<!-- JARVIS WIDGETS -->
+		<script src="http://www.baityehudi.org.il/assets/js/smartwidgets/jarvis.widget.min.js"></script>
+		
+	
+		
+		<!-- SPARKLINES -->
+		<script src="http://www.baityehudi.org.il/assets/js/plugin/sparkline/jquery.sparkline.min.js"></script>
+		
+		<!-- JQUERY VALIDATE -->
+		<script src="http://www.baityehudi.org.il/assets/js/plugin/jquery-validate/jquery.validate.min.js"></script>
+		
+		<!-- JQUERY MASKED INPUT -->
+		<script src="http://www.baityehudi.org.il/assets/js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+		
+		<!-- JQUERY SELECT2 INPUT -->
+		<script src="http://www.baityehudi.org.il/assets/js/plugin/select2/select2.min.js"></script>
+
+		<!-- JQUERY UI + Bootstrap Slider -->
+		<script src="http://www.baityehudi.org.il/assets/js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
+		
+		<!-- browser msie issue fix -->
+		<script src="http://www.baityehudi.org.il/assets/js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
+		
+		<!-- SmartClick: For mobile devices -->
+		<script src="http://www.baityehudi.org.il/assets/js/plugin/smartclick/smartclick.js"></script>
+		
+        
+        <script src="http://www.baityehudi.org.il/assets/js/plugin/geo-location-javascript/js/geo-min.js"></script>
+		<!--[if IE 7]>
+			
+			<h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
+			
+		<![endif]-->
+        
+        <script src="http://www.baityehudi.org.il/assets/js/by_ns.js"></script>
+        <!--<script src="http://www.baityehudi.org.il/assets/js/test.js"></script>-->
+		<!-- MAIN APP JS FILE -->
+		<script src="http://www.baityehudi.org.il/assets/js/app.js"></script>
+        
+	</head>
+	<body id="" class="animated fadeInDown ">
+    
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=184113568355552&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    
+		<!-- possible classes: minified, no-right-panel, fixed-ribbon, fixed-header, fixed-width-->
+        
+        
+    <!-- Page Content -->
+    <div class="container">
+    
+        <div class="row">
+            <div class="col-md-12 col-sm-12 " id="header">
+                <a href="http://www.baityehudi.org.il/">
+                <img src="http://www.baityehudi.org.il/assets/img/logo.png" id="mainLogo" />    
+                </a>
+                
+                <div id="langLinks">
+                    <span style="font-weight: bold;">עברית</span> |
+                    <span class="smallFont " style="font-family: arial;"><a href="https://www.facebook.com/bennettnaftalienglish" target="_blank">English</a></span> |
+                    <span class="smallFont " style="font-family: arial;"><a href="http://www.baityehudi.org.il/rus/" target="_blank">Pусский</a></span> |
+                    <span class="smallFont " style="font-family: arial;"><a href="http://www.baityehudi.org.il/main/french">Français</a></span> |
+                    <span class="smallFont " style="font-family: arial;"><a href="https://www.facebook.com/NaftaliBennettArabic" target="_blank">العربية</a></span>
+                
+                </div> 
+                  
+                <div id="contactWrap">
+                    <div id="inputsWraper">
+                    <input class="contactInput" type="text" placeholder="שם פרטי" name="firstname" />
+                    <input class="contactInput" type="text" placeholder="שם משפחה" name="lastname"/>
+                    <input class="contactInput" type="text" placeholder='דוא"ל' name="email"/>
+                    
+                    <img id="confirmContactBtn" src="http://www.baityehudi.org.il/assets/img/confirmIcon.png" />
+                    </div>
+                    <div id="contactWrapBtn">הצטרפו אלינו</div>
+                </div>  
+                       
+            </div>
+            <!--
+            <div class="" id="logo_cell" style="display: none;">
+                <img src="http://www.baityehudi.org.il/assets/img/logoM1.png" />
+            </div>
+            -->
+        </div>
+        
+        
+        <!-- content starts -->
+                    <div class="row" style="">
+            <div class="col-md-12 col-sm-12"  style="padding: 0;">
+            
+                <img src="assets/img/uri_strip.jpg" style="width: 100%; border-bottom: 10px solid #005e85;" />
+            
+            </div>
+            
+        </div>
+        
+        <div class="row" id="youTubeWrap">
+            <div class="col-lg-12 col-md-12 col-sm-12" id="player" >
+            
+            <iframe src="http://www.youtube.com/embed/PBN0nqQX5xo?autoplay=1&loop=1&controls=1&enablejsapi=1&playlist=PBN0nqQX5xo" frameborder="0"></iframe>
+              
+        </div><!-- /.span12 -->          
+        </div><!-- /.row --> 
+                
+                <div class="row" id="iconsWrap">
+            <div class="col-md-12 col-sm-12 text-center" id="" >    
+ 
+                <a href="http://www.baityehudi.org.il/main/team">
+                <div class="iconWrap">
+                                        <img src="http://www.baityehudi.org.il/assets/img/team_icon.png" />
+                    <span>הנבחרת שלנו</span>
+                                    </div>
+                </a>
+                
+                <a href="http://www.baityehudi.org.il/main/record">
+                <div class="iconWrap">
+                                        <img src="http://www.baityehudi.org.il/assets/img/record_icon.png" />
+                    <span>הישגים</span>
+                                    </div>                
+                </a>
+                
+                <a href="http://www.baityehudi.org.il/main/principles">
+                <div class="iconWrap">
+                                        <img src="http://www.baityehudi.org.il/assets/img/manifest_icon.png" />
+                    <span>מצע הבית-היהודי</span>
+                                    </div>                
+                </a>
+                
+                <a href="http://www.baityehudi.org.il/main/future">
+                <div class="iconWrap">
+                                        <img src="http://www.baityehudi.org.il/assets/img/future_icon.png" />
+                    <span>תכניות לעתיד</span>
+                                    </div>                
+                </a>
+                
+                <a href="http://www.baityehudi.org.il/main/contact">
+                <div class="iconWrap">
+                                        <img src="http://www.baityehudi.org.il/assets/img/contact_icon.png" />
+                    <span>צור קשר</span>
+                                    </div>                
+                </a>
+                                <a href="http://www.baityehudi.org.il/main/benettbus">
+                <div class="iconWrap">
+                    <img src="http://www.baityehudi.org.il/assets/img/new_icon.png" />
+                    <span class="newIconText">עדכונים שוטפים ממסע ישראלי</span>
+                </div>
+                </a>
+                                
+            </div>
+        </div>        
+        <div class="row" style="margin-top: 5%!important;" id="indexBottomWrap">
+            <div class="col-md-6 col-sm-6 col-xs-12" >    
+
+                <div class="fb_wrap">
+                    <div class="fb-like-box" data-href="https://www.facebook.com/NaftaliBennett" data-width="95%" data-height="400" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
+                    
+                    <a href="https://www.facebook.com/NaftaliBennett" target="_blank"><img class="socialIcon scfb" src="http://www.baityehudi.org.il/assets/img/facebook_icon.jpg" /></a>
+                    <a href="https://www.youtube.com/user/naftalibennett" target="_blank"><img class="socialIcon scyt" src="http://www.baityehudi.org.il/assets/img/youtube_icon.jpg" /></a>
+                    <a href="https://twitter.com/naftalibennett" target="_blank"><img class="socialIcon sctw" src="http://www.baityehudi.org.il/assets/img/twiter_icon.png" /></a>
+                    <a href="http://instagram.com/naftalibennett" target="_blank"><img class="socialIcon scin" src="http://www.baityehudi.org.il/assets/img/instagram_icon.png" /></a>
+                </div>
+                
+            </div>
+            
+            <div class="col-md-6 col-sm-6 col-xs-12" style="padding: 0; margin-top: -2%;"> 
+                <a href="http://www.baityehudi.org.il/main/benettba">
+                    <img src="http://www.baityehudi.org.il/assets/img/bennet_ba36.png" style="width: 100%;" class="benettBaLink" />
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12" style="padding: 0; margin-top: -1%;"> 
+                <a href="http://www.baityehudi.org.il/main/shaked">
+                    <img src="http://www.baityehudi.org.il/assets/img/shaked.png" style="width: 100%;" class="benettBaLink" />
+                </a>
+            </div>
+            
+            <div class="col-md-6 col-sm-6 col-xs-12 linksWrap" style="padding: 10px;" >    
+                <div class="hp_link">
+                    <a href="http://www.baityehudi.org.il/main/yor">דבר היו"ר</a>
+                </div>
+                <div class="hp_link">
+                    <a href="http://www.baityehudi.org.il/assets/data/Exit_-_Naftaly_Benett.pdf" download>הספר "אקזיט"</a>
+                </div>
+                <div class="hp_link">
+                    <a href="http://www.baityehudi.org.il/assets/data/HabaitHayehudiTakanon.pdf" download">חוקת המפלגה</a>
+                </div>
+                <!--
+                <div class="hp_link">
+                    <a>תוצאות הפריימריז</a>
+                </div>
+                -->
+                <!--
+                <div class="hp_link">
+                    <a>תרומות</a>
+                </div>
+                -->
+                
+            </div>
+            
+        </div>
+        
+        <!-- Footer -->
+        <footer class="text-center">
+            <!--<img src="http://www.baityehudi.org.il/assets/img/powered_by_artizone.png" height="35px" />-->
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+<script>      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+      tag.src = "http://www.youtube.com/player_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubePlayerAPIReady() {
+        player = new YT.Player('player', {
+          playerVars: { 'autoplay': 1, 'controls': 1,'autohide':1, listType:'playlist', list: 'PLSH1V8Iv8_1VZzhTkvVHYdz8KUPeBGfN9', 'loop': 1 },
+          videoId: '0ggR11jYS3A',
+          events: {
+            'onReady': onPlayerReady}
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.mute();
+      }
+</script>
+
+		<!-- content ends -->        
+
+		<!--================================================== -->	
+
+		<!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)
+		<script data-pace-options='{ "restartOnRequestAfter": true }' src="js/plugin/pace/pace.min.js"></script>-->
+<script type="text/javascript">
+var axel = Math.random() + "";
+var a = axel * 10000000000000;
+document.write('<iframe src="//3915130.fls.doubleclick.net/activityi;src=3915130;type=landi0;cat=habai002;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+</script>
+<noscript>
+<iframe src="//3915130.fls.doubleclick.net/activityi;src=3915130;type=landi0;cat=habai002;ord=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+</noscript>
+
+
+	</body>
+    
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-57466324-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TDKBMQ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TDKBMQ');</script>
+<!-- End Google Tag Manager -->
+    
+</html>

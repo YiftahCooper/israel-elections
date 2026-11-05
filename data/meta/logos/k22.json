@@ -192,6 +192,118 @@
         "rawIndex": "logo-k22-likud-index"
       },
       "party": "likud"
+    },
+    {
+      "party": "hadash",
+      "file": "logos/hadash-2019-k22.png",
+      "sourceUrl": "https://web.archive.org/web/20190903042003/http://hadash.org.il:80/",
+      "assetSourceUrl": "https://web.archive.org/web/20190703160814id_/http://hadash.org.il/images/logo.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "חד\"ש — official party website header mark",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "hadash-archive-20190903042003",
+      "inUseDate": "2019-09-03",
+      "archiveUrl": "https://web.archive.org/web/20190903042003/http://hadash.org.il:80/",
+      "archiveTimestamp": "20190903042003",
+      "inUseEvidence": "Inspected official Hadash homepage capture 20190903042003 references http://hadash.org.il/images/logo.png as its header logo. Exact archived asset bytes at 20190703160814 match pre-election CDX SHA-1 base32 JBELXZ73BGFE44GAQVCDV4GNLTUZ5D55 (CDX capture 20190410021043). Original geometry and colours preserved. Hadash constituent emblem only, not the Joint List lockup. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "0711ecd736cf2bca2ce8418fdf8b693e94d9d7a7dfdd0580f4a7ec98b795c919",
+      "originalSha256": "60c24d4351512aba67de3c44db673abc4e78be643f5bb6eaa4ea96bfa82f7528",
+      "bytes": 17946,
+      "rawEvidence": {
+        "page": "logo-k22-hadash-page",
+        "asset": "logo-k22-hadash-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20190703160814id_/http://hadash.org.il/images/logo.png",
+      "assetArchiveTimestamp": "20190703160814",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "JBELXZ73BGFE44GAQVCDV4GNLTUZ5D55",
+        "computedDigest": "JBELXZ73BGFE44GAQVCDV4GNLTUZ5D55",
+        "assetCaptureTimestamp": "20190703160814",
+        "cdxCaptureTimestamp": "20190410021043",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=hadash.org.il%2Fimages%2Flogo.png&from=20190410&to=20190917&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k22-hadash-index"
+      },
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
+    },
+    {
+      "party": "jewish-home",
+      "file": "logos/jewish-home-2019-k22.png",
+      "sourceUrl": "https://web.archive.org/web/20190821141704/http://baityehudi.org.il/",
+      "assetSourceUrl": "https://web.archive.org/web/20190604134932id_/http://baityehudi.org.il/wp-content/themes/baityehudi.org.il/images/new_logo.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "הבית היהודי — official party website header mark",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "medium",
+      "evidenceId": "jewish-home-archive-20190821141704",
+      "inUseDate": "2019-08-21",
+      "archiveUrl": "https://web.archive.org/web/20190821141704/http://baityehudi.org.il/",
+      "archiveTimestamp": "20190821141704",
+      "inUseEvidence": "Inspected official Jewish Home homepage capture 20190821141704 references http://baityehudi.org.il/wp-content/themes/baityehudi.org.il/images/new_logo.png as its header logo. The 4 June 2019 asset capture (before polling) replays these exact bytes with original Last-Modified 6 February 2019, but its CDX index digest (MWNXYMDODAIPTYKVMVKPH2KOZQFXWN6U) differs from the replayed payload's SHA-1 (FF3SNIJKPIOZG6IAJZOVM6DGVYFRW4KE); the identical bytes are independently CDX-indexed on 19 January 2020. Index/payload mismatch unresolved, so medium confidence. Original geometry and colours preserved. Jewish Home constituent emblem only, not the Yamina list lockup. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "38c2afd5aa0340924464295b8007abcd3c1bef244871c964de40ec1db653a64b",
+      "originalSha256": "11710fcd927ff11b8f5ca2d63afebf1a038c8ebfc9e0a8f2e5c1079804e927b4",
+      "bytes": 12603,
+      "rawEvidence": {
+        "page": "logo-k22-jewish-home-page",
+        "asset": "logo-k22-jewish-home-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20190604134932id_/http://baityehudi.org.il/wp-content/themes/baityehudi.org.il/images/new_logo.png",
+      "assetArchiveTimestamp": "20190604134932",
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
+    },
+    {
+      "party": "taal",
+      "file": "logos/taal-2019-k22.png",
+      "sourceUrl": "https://web.archive.org/web/20190812134302/http://www.a-m-c.org:80/",
+      "assetSourceUrl": "https://web.archive.org/web/20190708185650id_/http://www.a-m-c.org/logo-amc.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "العربية للتغيير برئاسة أحمد الطيبي (תע\"ל) — official website logo, notice text cropped away",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "taal-archive-20190812134302",
+      "inUseDate": "2019-08-12",
+      "archiveUrl": "https://web.archive.org/web/20190812134302/http://www.a-m-c.org:80/",
+      "archiveTimestamp": "20190812134302",
+      "inUseEvidence": "Inspected official Ta'al (Arab Movement for Renewal) homepage capture 20190812134302 references http://www.a-m-c.org/logo-amc.png as its only image on the official holding page. Exact archived asset bytes at 20190708185650 match pre-election CDX SHA-1 base32 JX3QLJQHKUF476BDKHWN7DFXBZH37JAJ (CDX capture 20190708185650). Cropped to box [40, 28, 920, 316] of the 960x573 original (crop only, removing the 'site under construction' notice beneath the logo); no redraw or recolouring. Ta'al constituent emblem only, not the Joint List lockup. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "174f38869207cd4974da9dc31b6094f95d3659ada9ef6a42696f244935539d93",
+      "originalSha256": "79876d17c1a08080c292c97740b5527dcc2297218b255c8d1389f48b023459f4",
+      "bytes": 17991,
+      "rawEvidence": {
+        "page": "logo-k22-taal-page",
+        "asset": "logo-k22-taal-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20190708185650id_/http://www.a-m-c.org/logo-amc.png",
+      "assetArchiveTimestamp": "20190708185650",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "JX3QLJQHKUF476BDKHWN7DFXBZH37JAJ",
+        "computedDigest": "JX3QLJQHKUF476BDKHWN7DFXBZH37JAJ",
+        "assetCaptureTimestamp": "20190708185650",
+        "cdxCaptureTimestamp": "20190708185650",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.a-m-c.org%2Flogo-amc.png&from=20190101&to=20190917&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k22-taal-index"
+      },
+      "cropBox": [
+        40,
+        28,
+        920,
+        316
+      ],
+      "originalDimensions": [
+        960,
+        573
+      ],
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA crop, thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
     }
   ]
 }

@@ -1,0 +1,541 @@
+/*  
+Theme Name: PRiNZ BranfordMagazine
+Theme URI: http://www.der-prinz.com/2008/01/20/wordpress-magazine-style-theme-branfordmagazine/
+Description: A premium magazine-style layout for Wordpress with multiple functionalities inspired by the great themes of Brian Gardner and Darren Hoyt
+Version: 2.51 (released 2008-04-20).
+Author: Michael Oeser.
+Author URI: http://www.der-prinz.com.
+
+The CSS, XHTML and design is released under GPL:
+http://www.opensource.org/licenses/gpl-license.php
+
+Credits
+=======
+
+Thanks to Darren Hoyt and his "Mimbo" theme which has been a great inspiration
+and a good source for lots of the code I used for this theme especially the intensive
+use of custom fields.
+
+Thanks to Brian Gardner and "Revolution" which inspired me to put the two additional
+page layouts "Featured Page" and "3-Column-Page" into the theme.
+
+Thanks to Patrick Griffiths who delivered the script for the dropdown menues. 
+http://www.htmldog.com/articles/suckerfish/dropdowns/
+
+I�d also like to thank Klaus Hartl (stilbuero.de) for the brilliant script I used 
+for the tabbed section with the fade effect.
+
+And last but not least my very special thanks go out to all of you out there
+using the theme and sending me tons of emails telling me how great this theme is.
+
+THANK YOU ALL!!!
+
+
+/******************************************
+*   HTML Elements                         
+******************************************/
+
+* {
+	margin:0;
+	padding:0;
+	}
+
+body,html {
+	min-height:101%;
+	direction:rtl;
+	}
+	
+body {
+	background: #7cbc44;
+	color: #000000;
+	padding: 13px 0 25px 0;
+	}
+
+body, select, input, textarea {
+	font: 12px Arial, Verdana, Sans-Serif;
+	line-height:1.5em;
+	}
+	
+p {	
+	margin: 15px 0;
+	}
+
+a:link, a:visited {
+	color: #333;
+	text-decoration:none; /*s*/
+	}
+
+a:hover, a:active {
+	color:#333;
+	text-decoration:underline;
+	}
+
+hr {
+	display: block;
+	height:1px;
+	background:#333;
+	border:0;
+	}
+
+small {
+	font-size: 0.9em;
+	padding:3px 6px;
+	}
+
+/****** Images ****************************/
+
+img, a:link img, a:visited img{padding:1px;}
+img.left,img.center,img.right,img.norm{ margin:5px 0 5px 12px; border:1px solid #999; padding:1px;}
+img.left{ float:right; margin:0 0 5px 12px; }
+img.center{ display:block; margin:0 auto 5px auto; }
+img.right{ float:left; margin:0  12px 5px 0; }
+img align left{ float:right; margin:0 0 5px 12px; }
+	
+		
+/******************************************
+*   General Structure                         
+******************************************/
+
+#page { /*the main container*/
+	width:880px;
+	margin:0 auto;
+	font-size:1em;
+	background:#FFF;
+	padding: 10px 25px 35px 25px;
+	/*border:3px double #333;*/
+	}
+
+#branding {/*where the logo sits*/
+	width:888px;
+	height:177px;
+	padding-bottom:15px;
+	background:url(http://hadash2009.org.il/wp-content/themes/branfordmagazine/images/White_Clean.gif) no-repeat;
+	}
+
+.left {
+	float:right;
+	}
+
+.right {
+	float:left;
+	}
+
+#sidebar {/*you guessed it: it�s the sidebar container*/
+	width: 250px;
+	float:left;
+	}
+
+#leftcol {/*the left homepage column carrying the "Featured Article" section*/
+	width:287px;
+	border-left:1px solid #b6b6b6;
+	padding-left:18px;
+	}
+
+#leftcol, #rightcol {
+	margin-top:10px;
+	float:right
+	}	
+	
+#rightcol {/*actually the column in the middle of the homepage (if the right column is the sidebar)*/
+	width:277px;
+	padding-right:18px;
+	margin-top: -2px;
+	text-align:justify;
+	}
+
+
+		
+/******************************************
+*   Sidebar                         
+******************************************/
+
+.subnav li {/*.subnav is mainly the categories list*/
+	list-style:none;
+	}
+
+.subnav li a:link, .subnav li a:visited {
+	background: #fff;
+	display:block;
+	padding:4px 20px 4px 4px;
+	border-bottom: 1px solid #999;
+	}
+		
+.subnav li a:hover, .subnav li a:active {
+	background: #F4F4EC;
+	text-decoration:none;
+	}
+	
+#sidelist li {
+	list-style:none;
+	}
+	
+.bullets li {
+	margin:0 15px 5px 0;
+	list-style:square;
+	}
+#sidelist .bullets ul{
+	margin: 0 12px 0 0;
+	}	
+#sidelist .bullets li {
+	list-style:square;
+	margin-bottom:5px;
+	
+	margin-right:22px;
+	}
+
+#sidelist .children {
+	background:#F4F4EC;
+	}
+
+#sidelist .children li {
+	background: #F4F4EC;
+	list-style: none;
+	margin-right:15px;
+	padding-right:15px;
+	border-bottom:1px solid #fff;
+	}
+	
+#sidelist .children li a, #sidelist .children li a:visited {
+	padding:2px 0px 2px 2px;
+	border:0;
+	background:#F4F4EC;
+	color: #666;
+	}
+
+#sidelist .children li a:hover, #sidelist .children li a:active	{				
+	color:#000;
+	}
+
+#sidelist .feed li{
+	margin-bottom:5px;
+	padding-right:20px;
+	background:url(images/rss.gif) no-repeat;
+	}
+
+	
+/******************************************
+*   Headlines                         
+******************************************/
+
+.blogtitle, .blogtitle a {
+	color: #000;
+	font-size: 1.8em;
+	font-family: Arial, sans-serif;
+	font-weight: regular;
+	padding: 20px 0px 10px 0px;
+	}
+
+h1 {
+	color: #f11425;
+	font-size: 1.8em;
+	font-family: Arial, sans-serif;
+	font-weight: bold;
+	margin: 0px 0px 0px 10px;
+	padding: 20px 10px 0px 0px;
+	}
+	
+h2 {
+	color: #f11425;
+	font: 1.8em Arial, sans-serif;
+	padding-bottom:8px;
+	border-bottom:1px solid #666;
+	margin: 20px 0;
+	}
+
+h3 {
+	font: 0.9em Arial, Helvetica, sans-serif;
+	margin-bottom:4px;
+	font-weight:bold;
+	color:#F11425;
+	/*background:#f11425;*/
+	}
+
+#sidebar h2, #sidebar h3 a {
+	font: 0.9em Arial, Helvetica, sans-serif;
+	margin-bottom:4px;
+	font-weight:bold;
+	color:#ffffff;
+	background:#f11425;
+	}
+
+#sidebar h3, #sidebar h2 {
+	font-size:1.1em;
+	/*border-top:3px double #999;
+	border-bottom:1px solid #999;*/
+	padding:5px 5px 5px 0px;
+	margin:20px 0 15px 0;
+	color:#ffffff;
+	background:#7bbc44;
+	}
+
+h3#respond {
+	font-size:1.2em;
+	margin-top:10px;
+	margin-bottom:10px;
+	padding-bottom:10px;
+	padding-top:20px;
+	background:#ffffff;
+	color:#f11425;
+	}
+
+h3#comments {
+	margin-top:10px;
+	margin-bottom:10px;
+	padding-bottom:10px;
+	padding-top:20px;
+	font-size:1.2em;
+	margin-top:25px;
+	padding-top:20px;
+	color:#ffffff;
+	background:#f11425;
+	padding-right:10px;
+
+	}
+
+h3 a:link, h3 a:visited { /*s*/
+	color: #f11425;
+	}
+
+h4 {
+	font-size:1.2em;
+	margin-bottom:6px;
+	}
+	
+	
+	
+/******************************************
+*   Content                        
+******************************************/
+
+#content {
+	width:605px;
+	float:right
+	}
+	
+.description {
+	font-size: 1.3em;
+	font-weight: bold; 
+	color:#999;
+	}
+
+/* Featured Articles formatting "leftcol" */
+
+.feature {
+	background: url(images/backgrounds/bg_featured.jpg) repeat-x #ffffff;
+	padding:15px;
+	border: 1px solid #ccc;
+	}
+
+.feature p, #rightcol p { margin:0;	}
+
+#leftcol img, #rightcol img {
+	padding:1px;
+	border:1px solid #999;
+	}
+
+#leftcol .feature {	margin-bottom: 15px; }
+
+/* Formating of the Leadstory stuff in the tabbed section */
+			
+#leadpic {
+	float:left;
+	margin: 0 0 8px 18px;
+	padding:1px;
+	border: 1px solid #999;
+	}
+
+.title, a.title  {
+	font-family: Arial, sans-serif;
+	font-size:1.2em;
+	font-weight:bold;
+	color: #f11425;
+	}
+		
+#lead p {
+	margin-bottom:10px;
+	}
+
+
+/* Formating of "rightcol" which is the column in the homepage middle ;-) */
+
+#rightcol img {
+	float:right;
+	margin:3px 0 4px 10px;
+	}
+
+#leftcol img {
+	margin-bottom: 4px;
+	display:block
+	}
+	
+#rightcol .clearfloat {
+	border-bottom:1px solid #999;
+	padding:12px 0;
+	}	
+
+#rightcol h3 a {
+color:#acacac;
+background:#ffffff;
+font-size:1.5em;
+}	
+
+
+/* Post Formatting */
+
+.entry {
+	padding-bottom:28px;
+	
+	text-align:justify;
+	}
+
+.entry a {font-weight:bold; color:#339900;}
+
+.post blockquote {
+	color:#666;
+	background:#edffd1;
+	padding:6px 14px;
+	margin:18px 35px;
+	border-left:1px solid #DDD;
+	border-bottom:1px solid #DDD;
+	}	
+
+.post ul li {
+	list-style:square;
+	margin-bottom:5px;
+	
+	margin-right:42px;
+	}
+
+.post ol li {
+	margin-bottom:5px;
+	
+	margin-right:48px;
+	}
+	
+#tags {
+	padding:3px;
+	border-bottom:1px solid #DDD;
+	border-top:1px solid #DDD;	
+	}	
+	
+.postmetadata {
+	font-size:0.9em;
+	margin:0 0 10px 0;
+	padding:5px 10px;
+	background:#F4F4EC;
+	border-top:1px solid #E6E3D3;	
+	border-bottom:1px solid #E6E3D3;	
+	}
+				
+
+/* Form Elements */
+
+select {
+	background:#f2f2f2;
+	border:1px solid #9c9c9c;
+	width:100%
+	}
+	
+
+#searchform { 	padding:15px 15px 15px 15px; 	}
+
+.button {
+	padding: 1px;
+	background:#7cbc44;
+	color:#fff;
+	border:none;
+
+	}
+
+.button:hover {
+	background:#F11425;
+	color:#FFF;
+	text-decoration:none
+	}
+
+#commentform input {
+	width: 170px;
+	margin: 5px 0 1px 5px;
+	}
+
+#commentform textarea {
+	width: 100%;
+	margin-top:5px;
+	}
+
+
+
+/* Comments*/
+
+.commentlist {
+	padding-right:30px;
+	}
+	
+.commentlist li {
+	margin: 15px 0 3px;
+	padding: 8px 15px 10px 15px;
+	background:#F4F4EC;
+	border:1px solid #E6E3D3;
+	}
+
+.commentlist blockquote {
+	color:#666;
+	background:#fff;
+	padding:6px 14px;
+	margin:18px 35px;
+	border-left:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+	}	
+
+#commentform small {
+	background:#FFF;
+	font-weight:bold;
+	padding:0;
+	}
+	
+.commentmetadata {
+	display: block;
+	}
+
+.commentlist small {
+	background:#fff;
+	border:1px solid #E6E3D3;
+	}
+
+
+
+/* Float Properties*/
+
+.clearfloat:after {
+	display:block;
+	visibility:hidden;
+	clear:both;
+	height:0;
+	content:".";
+	}
+	
+.clearfloat {
+	display:inline-block;
+	}	
+
+.clearfloat {
+	display:block;
+	}
+	
+	
+/******************************************
+*   Footer                        
+******************************************/
+
+#footer {
+	margin: 0 auto;
+	width: 900px;
+	font-size:0.9em;
+	text-align:center;
+	padding-top:15px;
+	color:#FFF;
+	}
+
+#footer a {
+	color:#ededed;
+	}
