@@ -1,0 +1,341 @@
+{
+  "schemaVersion": 1,
+  "electionId": "k26",
+  "status": "pilot",
+  "reviewedAt": "2026-11-05",
+  "notes": [
+    "Research record following docs/design/after-the-election.md; not wired into the app. Gaps remain explicit.",
+    "Formation is in progress. no-government means no new government recorded as of the dated check, not a completed failed formation. Pending Likud seats use unknown, not none.",
+    "The schema has no in-progress outcome; outcomeNote distinguishes an ongoing process. No government or term-end event is predicted."
+  ],
+  "sources": {
+    "recommendations-1": {
+      "url": "https://www.jpost.com/israel-news/article-913842",
+      "publisher": "The Jerusalem Post",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-2": {
+      "url": "https://www.jns.org/news/israel-news/herzog-resumes-talks-on-who-will-form-next-israeli-govt",
+      "publisher": "JNS (reporting President's Residence statements)",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-3": {
+      "url": "https://www.maariv.co.il/news/elections-2026/article-1384980",
+      "publisher": "Maariv",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-4": {
+      "url": "https://www.haaretz.com/israel-news/elections/2026-11-05/ty-article-live/netanyahu-warns-against-arab-jewish-coalition-in-first-appearance-since-election/000001a1-a9ee-defa-a7f7-adfff1720000",
+      "publisher": "Haaretz",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-5": {
+      "url": "https://www.maariv.co.il/news/elections-2026/article-1384980",
+      "publisher": "Maariv (live page, later update)",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-6": {
+      "url": "https://www.jpost.com/israel-election-2026/article-913989",
+      "publisher": "The Jerusalem Post",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "president-results": {
+      "url": "https://www.president.gov.il/%D7%A0%D7%A9%D7%99%D7%90-%D7%94%D7%9E%D7%93%D7%99%D7%A0%D7%94-%D7%A7%D7%99%D7%91%D7%9C-%D7%9C%D7%99%D7%93%D7%99%D7%95-%D7%90%D7%AA-%D7%AA%D7%95%D7%A6%D7%90%D7%95%D7%AA-%D7%94%D7%91%D7%97%D7%99%D7%A8/",
+      "publisher": "President's Residence",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "president-faction-1": {
+      "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%94%D7%93%D7%9E%D7%95%D7%A7%D7%A8%D7%98%D7%99%D7%9D-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0%D7%A7%D7%95%D7%98-%D7%9C/",
+      "publisher": "President's Residence",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "president-faction-2": {
+      "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%A8%D7%A2%D7%B4%D7%9E-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0%D7%A7%D7%95%D7%98-%D7%9C%D7%94%D7%A8%D7%9B%D7%91%D7%AA/",
+      "publisher": "President's Residence",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "president-faction-3": {
+      "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%99%D7%94%D7%93%D7%95%D7%AA-%D7%94%D7%AA%D7%95%D7%A8%D7%94-%D7%94%D7%97%D7%9C%D7%99%D7%98%D7%94-%D7%A9%D7%9C%D7%90-%D7%9C%D7%94%D7%9E%D7%9C%D7%99%D7%A5-%D7%A2%D7%9C-%D7%90/",
+      "publisher": "President's Residence",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "president-faction-4": {
+      "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%99%D7%A9%D7%A8%D7%90%D7%9C-%D7%91%D7%99%D7%AA%D7%A0%D7%95-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%92%D7%93%D7%99-%D7%90%D7%99%D7%96%D7%A0%D7%A7%D7%95%D7%98/",
+      "publisher": "President's Residence",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "president-faction-5": {
+      "url": "https://www.president.gov.il/%D7%A1%D7%99%D7%A2%D7%AA-%D7%A9%D7%B4%D7%A1-%D7%94%D7%9E%D7%9C%D7%99%D7%A6%D7%94-%D7%A2%D7%9C-%D7%97%D7%B4%D7%9B-%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F-%D7%A0%D7%AA%D7%A0%D7%99%D7%94%D7%95-%D7%9C%D7%94/",
+      "publisher": "President's Residence",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "maariv-consultations": {
+      "url": "https://www.maariv.co.il/news/elections-2026/article-1384980",
+      "publisher": "Maariv",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    }
+  },
+  "results": {
+    "electionDate": "2026-10-27",
+    "certified": {
+      "date": "2026-11-04",
+      "textEn": "The CEC chair presented the official results to President Herzog.",
+      "textHe": "יו״ר ועדת הבחירות המרכזית מסר לנשיא הרצוג את תוצאות הבחירות הרשמיות.",
+      "cites": [
+        {
+          "source": "president-results",
+          "quote": "נשיא המדינה יצחק הרצוג קיבל לידיו היום, יום רביעי, כ״ד בחשוון, 4 בנובמבר, את תוצאות הבחירות הרשמיות לכנסת ה-26"
+        }
+      ],
+      "notes": [
+        "This establishes receipt of official results, not the Gazette number or an independently retrieved official seat allocation. Existing dataset publication-status caveat remains applicable."
+      ]
+    }
+  },
+  "reaction": {
+    "policy": "Only dated institutional steps; leader reactions require all seated lists or none.",
+    "items": [],
+    "gap": "Election-night statements were not collected for all lists; none is selected."
+  },
+  "recommendationRounds": [
+    {
+      "id": "r1",
+      "date": "2026-11-04",
+      "endDate": "2026-11-05",
+      "kind": "consultations",
+      "president": {
+        "nameEn": "Isaac Herzog",
+        "nameHe": "יצחק הרצוג"
+      },
+      "blocSchemeRef": "pm-recommendations",
+      "nominees": {
+        "eisenkot": {
+          "nameEn": "Gadi Eisenkot",
+          "nameHe": "גדי איזנקוט"
+        },
+        "netanyahu": {
+          "nameEn": "Benjamin Netanyahu",
+          "nameHe": "בנימין נתניהו"
+        }
+      },
+      "entries": [
+        {
+          "letters": "דרך",
+          "seats": 21,
+          "status": "recommended",
+          "nominee": "eisenkot",
+          "cites": [
+            {
+              "source": "maariv-consultations",
+              "quote": "ישר! ממליצים על גדי איזנקוט"
+            }
+          ]
+        },
+        {
+          "letters": "רק",
+          "seats": 12,
+          "status": "recommended",
+          "nominee": "eisenkot",
+          "cites": [
+            {
+              "source": "maariv-consultations",
+              "quote": "ביחד: ממליצים על גדי איזנקוט"
+            }
+          ]
+        },
+        {
+          "letters": "ודם",
+          "seats": 11,
+          "status": "recommended",
+          "nominee": "eisenkot",
+          "cites": [
+            {
+              "source": "maariv-consultations",
+              "quote": "הרשימה המשותפת: ממליצים על גדי איזנקוט"
+            }
+          ]
+        },
+        {
+          "letters": "אמת",
+          "seats": 8,
+          "status": "recommended",
+          "nominee": "eisenkot",
+          "cites": [
+            {
+              "source": "president-faction-1",
+              "quote": "סיעת הדמוקרטים המליצה על גדי איזנקוט להרכבת הממשלה בסבב ההתייעצויות בבית הנשיא"
+            }
+          ]
+        },
+        {
+          "letters": "עם",
+          "seats": 8,
+          "status": "recommended",
+          "nominee": "eisenkot",
+          "cites": [
+            {
+              "source": "president-faction-2",
+              "quote": "סיעת רע״מ המליצה על גדי איזנקוט להרכבת הממשלה בסבב ההתייעצויות בבית הנשיא"
+            }
+          ]
+        },
+        {
+          "letters": "ל",
+          "seats": 7,
+          "status": "recommended",
+          "nominee": "eisenkot",
+          "cites": [
+            {
+              "source": "president-faction-4",
+              "quote": "סיעת ישראל ביתנו המליצה על גדי איזנקוט להרכבת הממשלה בסבב ההתייעצויות בבית הנשיא"
+            }
+          ]
+        },
+        {
+          "letters": "ב",
+          "seats": 7,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "שס",
+          "seats": 6,
+          "status": "recommended",
+          "nominee": "netanyahu",
+          "cites": [
+            {
+              "source": "president-faction-5",
+              "quote": "סיעת ש״ס המליצה על ח״כ בנימין נתניהו להרכבת הממשלה בסבב ההתייעצויות בבית הנשיא"
+            }
+          ]
+        },
+        {
+          "letters": "ט",
+          "seats": 6,
+          "status": "recommended",
+          "nominee": "netanyahu",
+          "noteEn": "Consulted as two factions, Religious Zionism and Zehut; both recommended Netanyahu."
+        },
+        {
+          "letters": "ג",
+          "seats": 7,
+          "status": "none",
+          "cites": [
+            {
+              "source": "president-faction-3",
+              "quote": "סיעת יהדות התורה החליטה שלא להמליץ על אף חבר כנסת להרכבת הממשלה בסבב ההתייעצויות בבית הנשיא"
+            }
+          ]
+        },
+        {
+          "letters": "מחל",
+          "seats": 27,
+          "status": "unknown",
+          "noteEn": "Not yet confirmed at the last check; not an explicit non-recommendation."
+        }
+      ],
+      "totals": {
+        "eisenkot": 67,
+        "netanyahu": 19,
+        "none": 7,
+        "unknown": 27
+      },
+      "cites": [
+        {
+          "source": "recommendations-1",
+          "quote": "The Religious Zionist Party, Shas, and Zehut all recommended Netanyahu. Meanwhile, Yisrael Beytenu, led by Avigdor Liberman, recommended chairman of the Yashar party Gadi Eisenkot as the candidate to form the next government."
+        },
+        {
+          "source": "recommendations-2",
+          "quote": "The United Arab List (Ra’am) recommended that Herzog task Yashar Party leader Gadi Eisenkot with forming a government, the President’s Residence said. ... The Democrats faction recommended that Herzog task Eisenkot with forming a government. ... Otzma Yehudit faction recommended that Herzog task Netanyahu with forming a new government, the President’s Residence said. ... United Torah Judaism told Herzog that it would not recommend any Knesset member to form the next government."
+        },
+        {
+          "source": "recommendations-3",
+          "quote": "ביחד: ממליצים על גדי איזנקוט ... הרשימה המשותפת: ממליצים על גדי איזנקוט ... רע\"ם: ממליצים על גדי איזנקוט ... הדמוקרטים: ממליצים על גדי איזנקוט ... עוצמה יהודית: ממליצים על בנימין נתניהו ... יהדות התורה: לא נמליץ על אף מועמד ... בשעה 19:15 נציגי ישר! בראשות גדי איזנקוט, ובשעה 20:30 יגיעו נציגי הליכוד, שיחתמו את סבב ההתייעצויות המתוכנן"
+        },
+        {
+          "source": "recommendations-4",
+          "quote": "The Together party, led by Naftali Bennett and Yair Lapid, recommended Gadi Eisenkot to form Israel's next government during consultations with President Isaac Herzog at the President's Residence on Thursday. ... The Joint List, an alliance of Arab-majority parties, recommended Yashar party leader Gadi Eisenkot to form Israel's next government"
+        },
+        {
+          "source": "recommendations-5",
+          "quote": "שידור חי מבית הנשיא: ישר! ממליצים על גדי איזנקוט סיעת ישר! הגיעה להתייעצויות בבית הנשיא הערב, והמליצה לנשיא המדינה יצחק הרצוג על גדי איזנקוט להרכבת הממשלה."
+        },
+        {
+          "source": "recommendations-6",
+          "quote": "Later, Yashar's delegation called on the president to award Herzog the mandate ... After Herzog met with every party except the largest two, Eisenkot had secured the support of Yisrael Beytenu, the Democrats, Ra'am, the Joint List, and B'Yachad."
+        }
+      ],
+      "notes": [
+        "Partial: checked on 5 November 2026 at about 20:10 Israel time, while the last consultation (Likud, scheduled 20:30) was still to come. Eleven of the twelve factions had been consulted (4 November: Religious Zionism, Shas, Yisrael Beiteinu, Zehut; 5 November: UTJ, Otzma Yehudit, the Democrats, Ra'am, the Joint List, B'Yachad, Yashar). Likud's recommendation is left pending, not inferred. No mandate had been given at the time of checking. JPost's report of the Yashar meeting says 'award Herzog the mandate' (an evident slip for Eisenkot); Maariv states the recommendation of Eisenkot directly. See docs/research/pm-recommendations-2009-2026.md.",
+        "Seats are calculated by the app from the CEC count of 4 November 2026; an official (gazetted) seat allocation is not yet verified. The same per-list seats (Yashar 21, B'Yachad 12, Democrats 8, Yisrael Beiteinu 7, Ra'am 8, Joint List 11, Likud 27, Otzma Yehudit 7, Shas 6, Religious Zionism–Zehut 6) are reported by Maariv on 5 November.",
+        "The President's Residence statements on gov.il could not be retrieved (HTTP 403 to the project client); its statements are cited as reported by JNS. The date is the second consultation day.",
+        "Totals are sums of confirmed faction recommendations weighted by the app-calculated seats, not a final presidential tally. Official seat allocation still not independently retrieved.",
+        "Recommendation dates: Religious Zionism–Zehut, Shas and Yisrael Beiteinu on 4 November; remaining confirmed recommendations on 5 November.",
+        "President notices were retrieved directly in this pass, upgrading the earlier report of inaccessible official originals.",
+        "Likud remains unknown at this check; its projected support for its leader is not recorded as fact."
+      ]
+    }
+  ],
+  "formation": {
+    "outcome": "no-government",
+    "events": [
+      {
+        "date": "2026-11-04",
+        "type": "consultations",
+        "textEn": "Herzog began consultations with factions elected to the 26th Knesset.",
+        "textHe": "הרצוג החל בהתייעצויות עם הסיעות שנבחרו לכנסת ה־26.",
+        "cites": [
+          {
+            "source": "president-results",
+            "quote": "עם תחילת הליך ההתייעצויות"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-05",
+        "type": "consultations",
+        "textEn": "Herzog continued faction consultations; Likud’s meeting was scheduled for 20:30.",
+        "textHe": "הרצוג המשיך בהתייעצויות עם הסיעות; פגישת הליכוד נקבעה ל־20:30.",
+        "cites": [
+          {
+            "source": "maariv-consultations",
+            "quote": "20:30 הליכוד"
+          }
+        ]
+      }
+    ],
+    "outcomeNote": "Formation in progress as of 5 November 2026, 20:20 Israel time; no tasking or completed new government verified."
+  },
+  "term": {
+    "inclusionRule": "two-independent-chronologies-one-official-or-academic",
+    "chronologies": [],
+    "events": [],
+    "candidatesPending": [],
+    "inclusionRuleNote": "No new government has been verified; no government-term events or end date are populated."
+  },
+  "issuePolling": {
+    "status": "pending",
+    "note": "IDI August 2026 Q7 is vote influence, a separate construct. No most-important-problem card is populated; see issue-polling-sources.md."
+  },
+  "gaps": [
+    "Likud recommendation and final presidential tally not yet verified; meeting scheduled for 5 November at 20:30.",
+    "No mandate, new government, Knesset inauguration or term end verified; future scheduled steps are not completed events.",
+    "Gazette publication and official seat allocation not independently retrieved.",
+    "No qualifying general-problem survey topline; vote-influence percentages are not substituted."
+  ],
+  "asOf": "2026-11-05T20:20:00+02:00"
+}
