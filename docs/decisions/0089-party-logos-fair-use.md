@@ -37,3 +37,20 @@ but does not become the recorded official origin of a newly hosted fair-use imag
 Commons assignments retain their documented medium-confidence limitations. Retrieval limits
 and unresolved date/variant questions remain research gaps even though free licensing is no
 longer a prerequisite. See [the research archive](../research/party-logos.md).
+
+## Addendum — year-only print evidence (5 November 2026)
+
+A print item may establish use in an election with only a calendar year when all three
+conditions hold: the year is printed on the item or is an exact catalogue date (not
+estimated); the item is identifiably that list's Knesset campaign material through its
+exact list name, ballot letter or explicit election reference; and that calendar year
+contained exactly one Knesset election. This includes 1973 (31 December), but excludes
+2019. Check the election calendar rather than assuming a year is unique.
+
+Keep `inUseDate` at year precision; never invent a day. Record `dateBasis:
+"year-single-election"` and `dateEvidence` with `yearSource` (`printed-year` or
+`exact-catalogue-year`), `yearEvidence`, `campaignIdentity` (`exact-list-name`,
+`ballot-letter` or `explicit-election`) and `campaignEvidence` on both the overlay and
+source card. Existing publication provenance, retained scan, crop and integrity checks
+still apply. This exception concerns print evidence; web captures still need an inspected
+pre-election full date. An accession date or an undated party name cannot supply the year.

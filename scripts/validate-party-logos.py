@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Validate the research overlays and committed logo assets (standard library only)."""
+from logo_dates import valid_campaign_date
 import hashlib
 import json
 from pathlib import Path
@@ -9,6 +10,7 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = {s['id']: s for s in json.loads((ROOT / 'data/meta/logos/sources.json').read_text())['sources']}
 RAW_SOURCES = {s['id']: s for s in json.loads((ROOT / 'data/raw/SOURCES.json').read_text())}
+ELECTIONS = json.loads((ROOT / 'public/data/elections.json').read_text())
 seen_files = set()
 counts = {'hosted': 0, 'download-unavailable': 0, 'unresolved': 0}
 for n in range(1, 27):
@@ -77,7 +79,10 @@ for n in range(1, 27):
                 width, height = evidence['originalDimensions']
                 assert all(type(v) is int for v in (x0, y0, x1, y1, width, height)), item
                 assert 0 <= x0 < x1 <= width and 0 <= y0 < y1 <= height, item
-            assert item['inUseDate']
+            assert valid_campaign_date(item, data['electionDate'], ELECTIONS), item
+            if item.get('dateBasis') == 'year-single-election':
+                assert source['sourceType'] == 'official party campaign publication', item
+                assert item['dateBasis'] == source.get('dateBasis') and item['dateEvidence'] == source.get('dateEvidence'), item
             if item.get('archiveUrl') or item.get('archiveTimestamp'):
                 assert item['archiveUrl'] and item['archiveTimestamp']
                 assert item['archiveTimestamp'][:8] == item['inUseDate'].replace('-', '')
