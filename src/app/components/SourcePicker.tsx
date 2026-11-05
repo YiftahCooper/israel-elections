@@ -1,3 +1,4 @@
+import { ChoicePicker } from './ChoicePicker.tsx';
 import { useEffect, useRef, useState } from 'react';
 import type { Scenario, SimList } from '../../model/scenario.ts';
 import type { ElectionId } from '../../data/schema.ts';
@@ -123,11 +124,11 @@ export function PreferenceSettings() {
     const items = Object.entries(perItem ?? {}).filter(([k]) => k.startsWith(`${id}:`));
     return <div className="pref-setting" key={id}>
       <label className="field" style={{ maxWidth: 260 }}>{L(pref.label[0], pref.label[1])}
-        <select value={value} onChange={e => setPreference(id, e.target.value === 'ask' ? undefined : e.target.value)}>
-          <option value="ask">{L('Ask each time', 'לשאול בכל פעם')}</option>
-          {pref.options.map(o => <option key={o.value} value={o.value}>{L(o.label[0], o.label[1])}</option>)}
-          {value.startsWith('t:') && <option value={value}>{s?.lists.find(l => l.id === value.slice(2)) ? listLabel(s.lists.find(l => l.id === value.slice(2))!, lang) : L('One list (when available)', 'רשימה אחת (כשזמינה)')}</option>}
-        </select>
+        <ChoicePicker label={L(pref.label[0], pref.label[1])} value={value} onChange={v => setPreference(id, v === 'ask' ? undefined : v)} options={[
+          { value: 'ask', label: L('Ask each time', 'לשאול בכל פעם') },
+          ...pref.options.map(o => ({ value: o.value, label: L(o.label[0], o.label[1]) })),
+          ...(value.startsWith('t:') ? [{ value, label: s?.lists.find(l => l.id === value.slice(2)) ? listLabel(s.lists.find(l => l.id === value.slice(2))!, lang) : L('One list (when available)', 'רשימה אחת (כשזמינה)') }] : []),
+        ]} />
       </label>
       {items.length > 0 && <><p className="tiny muted pref-items-title">{id === 'comparison' ? L('For one scenario', 'לתרחיש אחד') : L('For one list or bloc', 'לרשימה או לגוש אחד')}</p>
       <ul className="pref-items small" aria-label={L(pref.label[0], pref.label[1]) + ' · ' + (id === 'comparison' ? L('For one scenario', 'לתרחיש אחד') : L('For one list or bloc', 'לרשימה או לגוש אחד'))}>

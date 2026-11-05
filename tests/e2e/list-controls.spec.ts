@@ -150,9 +150,9 @@ test('a list\'s seat count can be typed: the fewest votes that give it are moved
   // the remembered answer is the setting in Rules → Display, and can go back to asking
   await page.reload();
   await page.getByRole('tab', { name: 'Rules & settings', exact: true }).click();
-  const setting = page.getByRole('combobox', { name: 'Votes come from' });
-  await expect(setting).toHaveValue('proportional');
-  await setting.selectOption('ask');
+  const setting = page.getByRole('button', { name: 'Votes come from' });
+  await expect(setting).toHaveAttribute('data-value', 'proportional');
+  await choose(setting, 'ask');
   await page.getByRole('tab', { name: 'Overview', exact: true }).click();
   await open(page, 'Likud');
   const now = Number(await seats.inputValue());
