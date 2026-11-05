@@ -41,3 +41,19 @@ longer a prerequisite. See [the research archive](../research/party-logos.md).
 ## Addendum — 5 November 2026: remove cross-election substitution
 
 The owner reaffirmed that historical accuracy requires evidence for the particular election: a nearby campaign’s emblem, even with a visible source year, cannot stand in for a missing whole-list or constituent logo. The dataset builder therefore applies only that election’s verified catalog, and the unused source-year caption is removed. Where no logo can be sourced with the required dated evidence, Hebrew ballot letters are the fallback in both English and Hebrew. The original decision and its conclusions remain unchanged; this restores points 3, 4 and 6 above; it neither withdraws retained assets nor asserts that an unsourced emblem never existed. Coverage counts only same-election verified assignments, with research gaps left explicit.
+## Addendum — year-only print evidence (5 November 2026)
+
+A print item may establish use in an election with only a calendar year when all three
+conditions hold: the year is printed on the item or is an exact catalogue date (not
+estimated); the item is identifiably that list's Knesset campaign material through its
+exact list name, ballot letter or explicit election reference; and that calendar year
+contained exactly one Knesset election. This includes 1973 (31 December), but excludes
+2019. Check the election calendar rather than assuming a year is unique.
+
+Keep `inUseDate` at year precision; never invent a day. Record `dateBasis:
+"year-single-election"` and `dateEvidence` with `yearSource` (`printed-year` or
+`exact-catalogue-year`), `yearEvidence`, `campaignIdentity` (`exact-list-name`,
+`ballot-letter` or `explicit-election`) and `campaignEvidence` on both the overlay and
+source card. Existing publication provenance, retained scan, crop and integrity checks
+still apply. This exception concerns print evidence; web captures still need an inspected
+pre-election full date. An accession date or an undated party name cannot supply the year.

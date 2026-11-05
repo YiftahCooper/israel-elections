@@ -80,7 +80,8 @@ const EXPECTED: Record<Family, string> = {
   // merged with the 2009–2026 logos run (only list/party logo fields and builtAt differ; path walk 5 Nov).
   // 0089 same-election correction: field-by-field diff against integ-1105 found only
   // 212 removed list/party logo refs and 23 builtAt changes; other four digests unchanged.
-  model: '0ffbae5ce1ff1bcff1bc99582ebd29b9db82a1a9b29fd5deeb3e8507b2c32c14',
+  // merged with logos run 4 (year-only print evidence; only 6 logo fields and builtAt differ; path walk 5 Nov).
+  model: 'fedc140ff79491ac96183a066970017d8e3599fdb2c975bf9160065ab1b232d7',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

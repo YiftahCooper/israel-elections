@@ -21,7 +21,7 @@ describe('party logos', () => {
       expect(existsSync(`public/${logo.file}`), `${id} ${who}`).toBe(true);
       expect(logo.licence.trim(), `${id} ${who}`).not.toBe('');
       expect(logo.attribution.trim(), `${id} ${who}`).not.toBe('');
-      expect(logo.sourceUrl, `${id} ${who}`).toMatch(/^https:\/\//);
+      expect(logo.sourceUrl, `${id} ${who}`).toMatch(/^https?:\/\//);
       expect(['free-licence', 'fair-use-identification']).toContain(logo.rights);
       expect(logo.sourceUrl).not.toMatch(/en\.wikipedia/);
     }

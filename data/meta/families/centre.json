@@ -299,7 +299,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k2.json",
-      "sha256": "5ea0a21a6afa61482ba48cf6aff851de875929c918c1e1c94867b625fc964431",
+      "sha256": "3783c82e3ab6288208e95f997185b69764d7edfd5f84a5b610069f4dc8639f03",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k3": {
@@ -313,14 +313,14 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k4.json",
-      "sha256": "d9417395f8d8d31747e1fca5dacb1e27c4ad06171349d84729a092f2c69700dc",
+      "sha256": "df29d0dbe866b9f51b00af619e4babb647043d20a98bf63010acf063ab85c924",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k5": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k5.json",
-      "sha256": "0bc1d9f6a8a731c9a1e1253cd9353fc9d75b87aac0bc13ed1caba44deefac606",
+      "sha256": "c2d2f084abbcea943f29594dd70815bdf2be2e8133659570a4a6979ef56d3bdb",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k6": {
@@ -334,7 +334,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k7.json",
-      "sha256": "bb873de8c2b22de869017979cd616b36de00fd49bf3d26387815de685f3ee531",
+      "sha256": "ce3a599c2d26f605523e4eb50058674c556646960028531d1a527347bb470ca5",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k8": {
@@ -397,7 +397,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k16.json",
-      "sha256": "d4969ee118e47d9b3a9992733fa6f56c2e23411bb82770913b68422ee500c8ba",
+      "sha256": "5e9d450ee110d06dbfccdba77d8f652e2e1de7f3e794a107035a55014546c974",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k17": {
@@ -607,7 +607,7 @@
       "electionId": "k2",
       "electionDate": "1951-07-30",
       "datasetPath": "public/data/k2.json",
-      "datasetSha256": "5ea0a21a6afa61482ba48cf6aff851de875929c918c1e1c94867b625fc964431",
+      "datasetSha256": "3783c82e3ab6288208e95f997185b69764d7edfd5f84a5b610069f4dc8639f03",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -846,7 +846,7 @@
       "electionId": "k4",
       "electionDate": "1959-11-03",
       "datasetPath": "public/data/k4.json",
-      "datasetSha256": "d9417395f8d8d31747e1fca5dacb1e27c4ad06171349d84729a092f2c69700dc",
+      "datasetSha256": "df29d0dbe866b9f51b00af619e4babb647043d20a98bf63010acf063ab85c924",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -965,7 +965,7 @@
       "electionId": "k5",
       "electionDate": "1961-08-15",
       "datasetPath": "public/data/k5.json",
-      "datasetSha256": "0bc1d9f6a8a731c9a1e1253cd9353fc9d75b87aac0bc13ed1caba44deefac606",
+      "datasetSha256": "c2d2f084abbcea943f29594dd70815bdf2be2e8133659570a4a6979ef56d3bdb",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -1146,7 +1146,7 @@
       "electionId": "k7",
       "electionDate": "1969-10-28",
       "datasetPath": "public/data/k7.json",
-      "datasetSha256": "bb873de8c2b22de869017979cd616b36de00fd49bf3d26387815de685f3ee531",
+      "datasetSha256": "ce3a599c2d26f605523e4eb50058674c556646960028531d1a527347bb470ca5",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -2212,7 +2212,7 @@
       "electionId": "k16",
       "electionDate": "2003-01-28",
       "datasetPath": "public/data/k16.json",
-      "datasetSha256": "d4969ee118e47d9b3a9992733fa6f56c2e23411bb82770913b68422ee500c8ba",
+      "datasetSha256": "5e9d450ee110d06dbfccdba77d8f652e2e1de7f3e794a107035a55014546c974",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",

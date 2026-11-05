@@ -1,4 +1,38 @@
 {
   "electionId": "k7",
-  "logos": []
+  "logos": [
+    {
+      "letters": "חל",
+      "file": "logos/gahal-1969.png",
+      "sourceUrl": "https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%9E%D7%AA%D7%A7%D7%93%D7%9D/%D7%A4%D7%A8%D7%99%D7%98/?itemId=33732",
+      "licence": "Copyright retained; fair-use identification",
+      "attribution": "Gahal; Jabotinsky Institute item 33732. Unaltered emblem crop from official campaign poster.",
+      "hosted": true,
+      "inUseEvidence": "Jabotinsky Institute item 33732: original party-issued campaign meeting poster; printed meeting date 1969-10-25. Gahal geometric חל square monogram appears beneath the curved גוש חרות-ליברלים title; printed 25.10.1969 before 28 October election. Catalogue identifies Gahal and exact 1969 year. Clean emblem crop excludes the archive watermark; no redrawing or recolouring.",
+      "inUseDate": "1969-10-25",
+      "confidence": "high",
+      "evidenceId": "run4-gahal-1969",
+      "assetSourceUrl": "https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%9B%D7%A8%D7%96%D7%95%D7%AA/12.2.2013/2159_0439.jpg",
+      "publicationEvidence": {
+        "page": "run4-gahal-1969-page",
+        "asset": "run4-gahal-1969-asset",
+        "publicationDate": "1969-10-25",
+        "cropBox": [
+          184,
+          59,
+          269,
+          128
+        ],
+        "originalDimensions": [
+          448,
+          325
+        ]
+      },
+      "status": "verified",
+      "rights": "fair-use-identification",
+      "originalSha256": "dc17a28eb2846945f6e85eadc5a96501fa62a45410892a9605e0ecc3225c88e5",
+      "bytes": 9883,
+      "sha256": "52b0934fa734181071efd8d2c163453430ca95329c49cb7f585edc7619dc1efa"
+    }
+  ]
 }

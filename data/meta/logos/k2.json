@@ -1,4 +1,38 @@
 {
   "electionId": "k2",
-  "logos": []
+  "logos": [
+    {
+      "letters": "ח",
+      "file": "logos/herut-1951.png",
+      "sourceUrl": "https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%9E%D7%AA%D7%A7%D7%93%D7%9D/%D7%A4%D7%A8%D7%99%D7%98/?itemId=33385",
+      "licence": "Copyright retained; fair-use identification",
+      "attribution": "Herut; Jabotinsky Institute item 33385. Unaltered emblem crop from official campaign poster.",
+      "hosted": true,
+      "inUseEvidence": "Jabotinsky Institute item 33385: original party-issued campaign meeting poster; printed meeting date 1951-07-14. Herut emblem with map, arm/rifle and מולדת וחרות motto; title gives 14.7.1951 and exact catalogue year is 1951 (שנה נכונה). The programme calls for regime change before the 30 July election. Clean emblem crop excludes the archive watermark; no redrawing or recolouring.",
+      "inUseDate": "1951-07-14",
+      "confidence": "high",
+      "evidenceId": "run4-herut-1951",
+      "assetSourceUrl": "https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%9B%D7%A8%D7%96%D7%95%D7%AA/22.07.2013/1948_3337.jpg",
+      "publicationEvidence": {
+        "page": "run4-herut-1951-page",
+        "asset": "run4-herut-1951-asset",
+        "publicationDate": "1951-07-14",
+        "cropBox": [
+          177,
+          24,
+          239,
+          62
+        ],
+        "originalDimensions": [
+          287,
+          448
+        ]
+      },
+      "status": "verified",
+      "rights": "fair-use-identification",
+      "originalSha256": "1b65a2f4bdce60653a054a306b9948d56f097f6ee009e7c23b64af9fdaaebb94",
+      "bytes": 5787,
+      "sha256": "191ae0d0d44a8098e43dd40ce6c058ac64acd3830cb16f6688d3cc9229f9d188"
+    }
+  ]
 }

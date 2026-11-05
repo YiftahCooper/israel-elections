@@ -17,6 +17,39 @@
       "originalSha256": "af51c30d1333a1fca5c520d4fcd43266b667aa9868ac7ab9b0f31b6a74a0c0fd",
       "rights": "free-licence",
       "bytes": 4320
+    },
+    {
+      "letters": "ח",
+      "file": "logos/herut-1961.png",
+      "sourceUrl": "https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%9E%D7%AA%D7%A7%D7%93%D7%9D/%D7%A4%D7%A8%D7%99%D7%98/?itemId=37941",
+      "licence": "Copyright retained; fair-use identification",
+      "attribution": "Herut; Jabotinsky Institute item 37941. Unaltered campaign roundel crop.",
+      "hosted": true,
+      "inUseEvidence": "Jabotinsky item 37941: official Herut victory rally poster, exact catalogue year 1961 (שנה נכונה), title and printed 2.8.61 meeting in Bat Yam before the 15 August election. White ח in a dark-blue circular badge flanks the party name. Cropped the right-hand roundel, clear of the archive watermark on the left; no redrawing, recolouring or watermark removal.",
+      "inUseDate": "1961-08-02",
+      "confidence": "high",
+      "evidenceId": "run4-herut-1961",
+      "assetSourceUrl": "https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%9B%D7%A8%D7%96%D7%95%D7%AA/4098.jpg",
+      "publicationEvidence": {
+        "page": "run4-herut-1961-page",
+        "asset": "run4-herut-1961-asset",
+        "publicationDate": "1961-08-02",
+        "cropBox": [
+          353,
+          1,
+          437,
+          86
+        ],
+        "originalDimensions": [
+          448,
+          331
+        ]
+      },
+      "status": "verified",
+      "rights": "fair-use-identification",
+      "originalSha256": "9c39c4bc9dbd7833a40d6f708f663c02539c3b5c1efa2ca8515a4d118b4a62b0",
+      "bytes": 11009,
+      "sha256": "a0c1f86f6f8c4f4064a09189ca6725cefcc4ce878e8a62a81cc26b7c29eab21d"
     }
   ]
 }

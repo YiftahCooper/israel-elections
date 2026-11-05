@@ -2916,16 +2916,16 @@
       "sourceUrl": "http://www.zionistarchives.org.il/Pages/ElectionPosters.aspx",
       "publisher": "Mapam (original issuer); Central Zionist Archives (scan custodian)",
       "sourceType": "official party campaign publication",
-      "accessed": "2026-11-04",
+      "accessed": "2026-11-05",
       "accessMethod": "Jina read_url catalogue; plain HTTP scan and HTML with project User-Agent",
       "inspectionDepth": "archive caption, full downloaded scan, printed issuer and crop inspected",
       "date": "1959",
       "datePrecision": "year",
-      "description": "Crop from a party-issued 1959 campaign poster, CZA KRA/3225. Archive caption identifies Mapam, 1959, designer Shmuel Katz; printed issuer line identifies Mapam (Haifa). The distinctive white מ in an orange-red circle is preserved without redrawing or recolouring. Year-level campaign date only; the 22 November 1959 accession stamp is NOT an in-use date.",
+      "description": "CZA KRA/3225: exact catalogue year 1959 (not estimated), official Mapam campaign poster with issuer name and מ ballot roundel. 1959 had one Knesset election, 3 November. Year precision under decision 0089; the 22 November accession stamp is not a campaign date. Crop preserves original colours and the scan edge without redrawing.",
       "licence": "Copyright retained; fair-use identification",
       "downloadUrl": "http://www.zionistarchives.org.il/DocLib14/KRA3225.jpg",
       "evidenceFamily": "cza-kra3225",
-      "selected": false,
+      "selected": true,
       "originalFile": "logos/k4/mapam-kra3225-original.jpg",
       "originalSha256": "43cb22ea1ca5aaac66667b041ddb9d4f3141d0bf89d0ee0c9213edad6d06ec8d",
       "cropBox": [
@@ -2935,10 +2935,32 @@
         764
       ],
       "cropCoordinates": "pixels from top-left, Pillow left/top/right/bottom (right and bottom exclusive); original 1024×764",
-      "limitations": "Campaign year supplied by archive; exact printing day unknown; original scan ends at the lower edge of the roundel. Existing fair-use builder requires YYYY-MM-DD; year-only evidence cannot pass. Candidate only, not authorized for display by this record.",
-      "status": "unresolved",
+      "limitations": "Exact printing day unknown. Catalogue year establishes election under decision 0089. Scan ends at lower roundel edge; no extrapolation. Accession stamp is later than polling day and is not used.",
+      "status": "verified",
       "candidateFile": "logos/k4/mapam-roundel-candidate.png",
-      "candidateSha256": "b9f6f2ec368938216a67c471c304dbd94051c17c2f217c7d2d5517164ca48347"
+      "candidateSha256": "b9f6f2ec368938216a67c471c304dbd94051c17c2f217c7d2d5517164ca48347",
+      "dateBasis": "year-single-election",
+      "dateEvidence": {
+        "yearSource": "exact-catalogue-year",
+        "yearEvidence": "CZA exhibition caption KRA/3225 explicitly gives 1959 without an estimate marker. The accession stamp is not used to date campaign use.",
+        "campaignIdentity": "ballot-letter",
+        "campaignEvidence": "Party-issued election poster: printed issuer מפלגת הפועלים המאוחדת (מפ״ם), Haifa; white מ ballot roundel; caption describes Mapam warning against voting Herut in 1959."
+      },
+      "publicationEvidence": {
+        "page": "run4-mapam-page",
+        "asset": "run2-mapam-original",
+        "publicationDate": "1959",
+        "cropBox": [
+          823,
+          614,
+          995,
+          764
+        ],
+        "originalDimensions": [
+          1024,
+          764
+        ]
+      }
     },
     {
       "id": "raam-official-social-20261010",
@@ -4069,6 +4091,157 @@
         960,
         573
       ]
+    },
+    {
+      "id": "run4-hadash-2003",
+      "title": "Hadash official campaign header, 20 January 2003",
+      "sourceUrl": "https://www.hadash.org.il/",
+      "sourceType": "official party campaign website",
+      "publisher": "Hadash",
+      "date": "2003-01-20",
+      "accessed": "2026-11-05",
+      "archiveUrl": "https://web.archive.org/web/20030120211213/http://www.hadash.org.il:80/",
+      "archiveTimestamp": "20030120211213",
+      "assetArchiveTimestamp": "20030120211325",
+      "rawEvidence": {
+        "page": "run4-k16-hadash-page",
+        "asset": "run4-k16-hadash-asset"
+      },
+      "description": "Inspected official Hadash homepage capture 20030120211213 and its referenced images/hadash.gif, independently captured 20030120211325. The white Hebrew Hadash wordmark on red was visually inspected. Both captures precede the 28 January 2003 election. Assigned only to Hadash constituent of Hadash–Taal; not the joint list lockup.",
+      "inspectionDepth": "HTML and referenced image capture independently retrieved; wordmark visually inspected",
+      "evidenceFamily": "hadash-official-20030120",
+      "originalSha256": "84796623a066af0f8aeb7375031304fdb853cba704ea863c6ab53669b007f6d7",
+      "downloadUrl": "https://web.archive.org/web/20030120211325id_/http://www.hadash.org.il:80/images/hadash.gif",
+      "licence": "Copyright retained; fair-use identification",
+      "selected": true,
+      "status": "verified"
+    },
+    {
+      "id": "run4-herut-1951",
+      "title": "herut-1951 campaign emblem, Jabotinsky item 33385",
+      "sourceUrl": "https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%9E%D7%AA%D7%A7%D7%93%D7%9D/%D7%A4%D7%A8%D7%99%D7%98/?itemId=33385",
+      "publisher": "Herut",
+      "sourceType": "official party campaign publication",
+      "date": "1951-07-14",
+      "accessed": "2026-11-05",
+      "description": "Jabotinsky Institute item 33385: original party-issued campaign meeting poster; printed meeting date 1951-07-14. Herut emblem with map, arm/rifle and מולדת וחרות motto; title gives 14.7.1951 and exact catalogue year is 1951 (שנה נכונה). The programme calls for regime change before the 30 July election. Clean emblem crop excludes the archive watermark; no redrawing or recolouring.",
+      "inspectionDepth": "Catalogue and full original scan inspected; printed date and clean emblem crop verified",
+      "evidenceFamily": "jabotinsky-33385",
+      "publicationEvidence": {
+        "page": "run4-herut-1951-page",
+        "asset": "run4-herut-1951-asset",
+        "publicationDate": "1951-07-14",
+        "cropBox": [
+          177,
+          24,
+          239,
+          62
+        ],
+        "originalDimensions": [
+          287,
+          448
+        ]
+      },
+      "originalSha256": "1b65a2f4bdce60653a054a306b9948d56f097f6ee009e7c23b64af9fdaaebb94",
+      "downloadUrl": "https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%9B%D7%A8%D7%96%D7%95%D7%AA/22.07.2013/1948_3337.jpg",
+      "selected": true,
+      "status": "verified",
+      "licence": "Copyright retained; fair-use identification"
+    },
+    {
+      "id": "run4-gahal-1969",
+      "title": "gahal-1969 campaign emblem, Jabotinsky item 33732",
+      "sourceUrl": "https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%9E%D7%AA%D7%A7%D7%93%D7%9D/%D7%A4%D7%A8%D7%99%D7%98/?itemId=33732",
+      "publisher": "Gahal",
+      "sourceType": "official party campaign publication",
+      "date": "1969-10-25",
+      "accessed": "2026-11-05",
+      "description": "Jabotinsky Institute item 33732: original party-issued campaign meeting poster; printed meeting date 1969-10-25. Gahal geometric חל square monogram appears beneath the curved גוש חרות-ליברלים title; printed 25.10.1969 before 28 October election. Catalogue identifies Gahal and exact 1969 year. Clean emblem crop excludes the archive watermark; no redrawing or recolouring.",
+      "inspectionDepth": "Catalogue and full original scan inspected; printed date and clean emblem crop verified",
+      "evidenceFamily": "jabotinsky-33732",
+      "publicationEvidence": {
+        "page": "run4-gahal-1969-page",
+        "asset": "run4-gahal-1969-asset",
+        "publicationDate": "1969-10-25",
+        "cropBox": [
+          184,
+          59,
+          269,
+          128
+        ],
+        "originalDimensions": [
+          448,
+          325
+        ]
+      },
+      "originalSha256": "dc17a28eb2846945f6e85eadc5a96501fa62a45410892a9605e0ecc3225c88e5",
+      "downloadUrl": "https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%9B%D7%A8%D7%96%D7%95%D7%AA/12.2.2013/2159_0439.jpg",
+      "selected": true,
+      "status": "verified",
+      "licence": "Copyright retained; fair-use identification"
+    },
+    {
+      "id": "run4-herut-1961",
+      "title": "Herut campaign roundel, Jabotinsky 37941 (2 August 1961)",
+      "sourceUrl": "https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%9E%D7%AA%D7%A7%D7%93%D7%9D/%D7%A4%D7%A8%D7%99%D7%98/?itemId=37941",
+      "publisher": "Herut",
+      "sourceType": "official party campaign publication",
+      "date": "1961-08-02",
+      "accessed": "2026-11-05",
+      "description": "Jabotinsky item 37941: official Herut victory rally poster, exact catalogue year 1961 (שנה נכונה), title and printed 2.8.61 meeting in Bat Yam before the 15 August election. White ח in a dark-blue circular badge flanks the party name. Cropped the right-hand roundel, clear of the archive watermark on the left; no redrawing, recolouring or watermark removal.",
+      "inspectionDepth": "Catalogue, full scan, printed date and right roundel visually inspected",
+      "evidenceFamily": "jabotinsky-37941",
+      "publicationEvidence": {
+        "page": "run4-herut-1961-page",
+        "asset": "run4-herut-1961-asset",
+        "publicationDate": "1961-08-02",
+        "cropBox": [
+          353,
+          1,
+          437,
+          86
+        ],
+        "originalDimensions": [
+          448,
+          331
+        ]
+      },
+      "originalSha256": "9c39c4bc9dbd7833a40d6f708f663c02539c3b5c1efa2ca8515a4d118b4a62b0",
+      "downloadUrl": "https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%9B%D7%A8%D7%96%D7%95%D7%AA/4098.jpg",
+      "selected": true,
+      "status": "verified",
+      "licence": "Copyright retained; fair-use identification"
+    },
+    {
+      "id": "run4-balad-2003",
+      "title": "Balad official masthead, 20 January 2003",
+      "sourceUrl": "https://www.balad.org/",
+      "sourceType": "official party campaign website",
+      "publisher": "Balad (National Democratic Assembly)",
+      "date": "2003-01-20",
+      "accessed": "2026-11-05",
+      "archiveUrl": "https://web.archive.org/web/20030120211214/http://www.balad.org:80/",
+      "archiveTimestamp": "20030120211214",
+      "assetArchiveTimestamp": "20030120211325",
+      "rawEvidence": {
+        "page": "run4-k16-balad-page",
+        "asset": "run4-k16-balad-asset"
+      },
+      "cropBox": [
+        557,
+        0,
+        720,
+        85
+      ],
+      "cropCoordinates": "Original 720×85; pixels from top left; exclusive right/bottom; Pillow 12.2.0 RGBA crop, optimized PNG.",
+      "description": "Inspected Balad official homepage capture 20030120211214, titled National Democratic Assembly Online, and its referenced banners/b021127183419.gif independently captured 20030120211325. Both before 28 January election. Full banner gives Arabic/Hebrew/English party name; clean orange Arabic التجمع wordmark extracted from right of original banner, crop [557,0,720,85] from 720×85, no redrawing/recolouring. Does not establish a design in any other election.",
+      "inspectionDepth": "HTML and referenced image capture independently retrieved and visually inspected",
+      "evidenceFamily": "balad-official-20030120",
+      "originalSha256": "68db2c291bdaf24ad84b57ebda978f7fe149e342605f959e1bbf4536b66d2b99",
+      "downloadUrl": "https://web.archive.org/web/20030120211325id_/http://www.balad.org/banners/b021127183419.gif",
+      "licence": "Copyright retained; fair-use identification",
+      "selected": true,
+      "status": "verified"
     }
   ]
 }
