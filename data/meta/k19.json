@@ -869,9 +869,12 @@
       },
       {
        "letters": "ג"
+      },
+      {
+       "letters": "כן"
       }
      ],
-     "seats": 80
+     "seats": 82
     },
     {
      "id": "none",
@@ -893,27 +896,30 @@
       },
       {
        "letters": "ו"
-      }
-     ],
-     "seats": 35
-    },
-    {
-     "id": "unverified",
-     "nameHe": "לא אומת",
-     "nameEn": "Not verified",
-     "color": "#cccccc",
-     "members": [
-      {
-       "letters": "כן"
       },
       {
-       "letters": "ד"
+       "letters": "ד",
+       "note": "Balad's delegation is quoted giving its reasons; the 82 total, and Walla's statement that the left-bloc parties other than Kadima recommended no one, place it here. No source retrieved uses the words 'did not recommend' for Balad specifically."
       }
      ],
-     "seats": 5
+     "seats": 38
     }
    ],
    "sources": [
+    {
+     "url": "https://news.walla.co.il/item/2612671",
+     "publisher": "Walla! News",
+     "kind": "secondary",
+     "quote": "בסיכום יומיים של התייעצויות, 82 חברי כנסת המליצו על נתניהו כראש הממשלה הבא. ... מלבד קדימה, המפלגות האחרות בגוש השמאל לא המליצו על איש ... מפלגות \"התנועה\" ומרצ שהתייצבו לאחר מכן לא המליצו על איש ... ח\"כ אחמד טיבי ... לא המליץ על איש. גם בחד\"ש טענו כי אין מועמד מתאים לראשות הממשלה ... את המצעד סגרה קדימה, סיעה בת שני מנדטים בלבד ... \"ומתוקף התוצאות אנו ממליצים על בנימין נתניהו\"",
+     "accessed": "2026-11-05"
+    },
+    {
+     "url": "https://www.bhol.co.il/news/744869",
+     "publisher": "Behadrei Haredim",
+     "kind": "secondary",
+     "quote": "לאחר שהאחרון זכה להמלצות של 82 חברי כנסת - למעלה משני שליש מהמליאה. בממליצים: ש\"ס ויהדות התורה על 18 הח\"כים שלהן, הבית היהודי, יש עתיד, הליכוד ביתנו וקדימה.",
+     "accessed": "2026-11-05"
+    },
     {
      "url": "https://www.ynet.co.il/articles/mobile/0,7340,L-4339378,00.html",
      "publisher": "ynet",
@@ -923,7 +929,7 @@
     }
    ],
    "notes": [
-    "Likud–Yisrael Beiteinu is placed with Netanyahu as the nominee's own list (not quoted in the retrieved article). Kadima's and Balad's positions were not found in a source retrieved under the current source rules and are left unverified."
+    "Consultations were held on 30–31 January 2013; President Peres tasked Netanyahu on 2 February 2013. Corrected on 5 November 2026: Kadima (2) recommended Netanyahu (previously unverified), giving 82; Balad (3) is placed with the lists that made no recommendation (see member note)."
    ]
   }
  ],

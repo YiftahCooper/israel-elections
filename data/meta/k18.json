@@ -1169,7 +1169,7 @@
    "nameHe": "המלצות לנשיא על הרכבת הממשלה",
    "nameEn": "Recommendations to the President for prime minister",
    "kind": "parliamentary",
-   "date": "2009-02-20",
+   "date": "2009-02-19",
    "blocs": [
     {
      "id": "netanyahu",
@@ -1218,16 +1218,7 @@
      "members": [
       {
        "letters": "אמת"
-      }
-     ],
-     "seats": 13
-    },
-    {
-     "id": "unstated",
-     "nameHe": "לא צוין במקור",
-     "nameEn": "Not stated in source",
-     "color": "#cccccc",
-     "members": [
+      },
       {
        "letters": "מרצ"
       },
@@ -1241,27 +1232,34 @@
        "letters": "ד"
       }
      ],
-     "seats": 14
+     "seats": 27
     }
    ],
    "sources": [
+    {
+     "url": "https://m.jpost.com/israel/procession-of-party-chiefs-calls-on-the-president",
+     "publisher": "The Jerusalem Post",
+     "kind": "secondary",
+     "quote": "Of all 12 factions, only Kadima, with its 28 MKs, recommended that Peres designate Kadima leader Tzipi Livni to form the next government. The Likud, Habayit Hayehudi, Israel Beiteinu, Shas, National Union and United Torah Judaism (a total of 65 MKs) recommended that the mandate be given to Likud chairman Binyamin Netanyahu, while Meretz, Balad, Labor, Hadash and the United Arab List-Ta'al refrained from recommending anyone.",
+     "accessed": "2026-11-05"
+    },
+    {
+     "url": "https://www.jta.org/?p=428589",
+     "publisher": "JTA",
+     "kind": "secondary",
+     "quote": "As of Thursday, 65 Knesset members have recommended Netanyahu, including the religious parties, while Livni has received only the nomination of her own party. The left-wing Meretz Party did not nominate a candidate",
+     "accessed": "2026-11-05"
+    },
     {
      "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D_%D7%95%D7%A9%D7%AA%D7%99%D7%99%D7%9D",
      "publisher": "Wikipedia (he)",
      "kind": "secondary",
      "quote": "זאת לאחר ש-65 חברי כנסת המליצו בפני הנשיא על נתניהו כמי שראוי להטיל עליו את הרכבת הממשלה, לעומת 28 חברי כנסת (ממפלגתה בלבד), שהמליצו על ציפי לבני, ולאחר שמפלגת העבודה החליטה שלא להמליץ על אף אחד מחברי הכנסת",
      "accessed": "2026-11-04"
-    },
-    {
-     "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D_%D7%95%D7%A9%D7%AA%D7%99%D7%99%D7%9D",
-     "publisher": "Wikipedia (he)",
-     "kind": "secondary",
-     "quote": "גוש הימין-חרדים התחזק משמעותית והגיע ל-65 חברי-כנסת, כשבראשו הליכוד עם 27 מנדטים",
-     "accessed": "2026-11-04"
     }
    ],
    "notes": [
-    "The 65 are identified with the right-wing and Haredi lists named by the same article (Likud, Yisrael Beiteinu, Shas, UTJ, National Union, Jewish Home), whose seats sum to 65; party-by-party statements were not retrieved. The date is approximate (the President tasked Netanyahu on 20 February 2009)."
+    "Consultations were held on 18–19 February 2009; the date is the last consultation day. President Peres tasked Netanyahu on 20 February 2009. Party-by-party positions are from the Jerusalem Post report of 19 February 2009; Hebrew Wikipedia is kept as a secondary source."
    ]
   }
  ],
