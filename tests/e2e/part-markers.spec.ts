@@ -9,7 +9,7 @@ const part=(page:Page)=>page.locator('.edit-marker[data-marker-kind=part]');
 const items=(page:Page)=>page.locator('.edit-marker[data-marker-kind=item]');
 test('1988 family grouping has one part marker, unchanged seats and distinct chamber regions',async({page})=>{
  await start(page,'k12');await page.getByRole('tab',{name:'Party families',exact:true}).click();
- await page.getByRole('button',{name:'Apply family as grouping',exact:true}).click();
+ await page.getByRole('button',{name:'Apply grouping & open Overview',exact:true}).click();
  await expect(part(page)).toHaveCount(1);await expect(items(page)).toHaveCount(0);
  await expect(page.locator('.blocs-head .edit-marker')).toHaveCount(1);
  await expect(page.locator('.lb-seats .tick')).toHaveCount(0);

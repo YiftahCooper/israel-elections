@@ -3,6 +3,7 @@
 ## 5 November 2026 — release review
 
 - Analysis screens: fixed-scale seat-safety tracks, stable sensitivity loading, complete threshold labels and round axis ticks, nearby chart names with Hebrew phone alignment, inline formula help and compact allocation tables, equal comparison options and compact aligned coalition rows.
+- Editing screens: suppress unchanged resets, keep questions independent and edit controls steady, preserve locked explanations, clarify turnout steps and disabled actions, and align locality search and sticky map.
 
 - Corrected the English and Hebrew data-status notes for k20–k24 by removing obsolete claims that no default blocs are assigned.
 
