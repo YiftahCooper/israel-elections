@@ -1,0 +1,359 @@
+{
+  "schemaVersion": 1,
+  "electionId": "k25",
+  "status": "pilot",
+  "reviewedAt": "2026-11-05",
+  "notes": [
+    "Research record following docs/design/after-the-election.md; not wired into the app. Gaps remain explicit."
+  ],
+  "sources": {
+    "recommendations-1": {
+      "url": "https://www.jns.org/israel-news/netanyahu-accepts-mandate-the-nation-clearly-decided",
+      "publisher": "JNS (quoting President Herzog)",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-2": {
+      "url": "https://www.jpost.com/israel-news/politics-and-diplomacy/article-721778",
+      "publisher": "The Jerusalem Post",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-3": {
+      "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%97%D7%9E%D7%A9",
+      "publisher": "Wikipedia (he)",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "jns-mandate": {
+      "url": "https://www.jns.org/israel-news/netanyahu-accepts-mandate-the-nation-clearly-decided",
+      "publisher": "JNS (quoting the President)",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "jpost-extension": {
+      "url": "https://www.jpost.com/breaking-news/article-724481",
+      "publisher": "The Jerusalem Post",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "jpost-notification": {
+      "url": "https://www.jpost.com/israel-news/politics-and-diplomacy/article-725461",
+      "publisher": "The Jerusalem Post",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "news13-investiture": {
+      "url": "https://13tv.co.il/item/news/politics/politics/new-goverment-903377286/?pid=101676",
+      "publisher": "Channel 13 News",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "knesset-government37": {
+      "url": "https://main.knesset.gov.il/mk/government/pages/governments.aspx?govId=37&govid=37",
+      "publisher": "Knesset",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    }
+  },
+  "results": {
+    "electionDate": "2022-11-01"
+  },
+  "reaction": {
+    "policy": "Only dated institutional steps; leader reactions require all seated lists or none.",
+    "items": [],
+    "gap": "Election-night statements were not collected for all lists; none is selected."
+  },
+  "recommendationRounds": [
+    {
+      "id": "r1",
+      "date": "2022-11-09",
+      "endDate": "2022-11-11",
+      "kind": "consultations",
+      "president": {
+        "nameEn": "Isaac Herzog",
+        "nameHe": "יצחק הרצוג"
+      },
+      "blocSchemeRef": "pm-recommendations",
+      "nominees": {
+        "netanyahu": {
+          "nameEn": "Benjamin Netanyahu",
+          "nameHe": "בנימין נתניהו"
+        },
+        "lapid": {
+          "nameEn": "Yair Lapid",
+          "nameHe": "יאיר לפיד"
+        }
+      },
+      "entries": [
+        {
+          "letters": "מחל",
+          "seats": 32,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "שס",
+          "seats": 11,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "ג",
+          "seats": 7,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "ט",
+          "seats": 14,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "פה",
+          "seats": 24,
+          "status": "recommended",
+          "nominee": "lapid"
+        },
+        {
+          "letters": "אמת",
+          "seats": 4,
+          "status": "recommended",
+          "nominee": "lapid"
+        },
+        {
+          "letters": "כן",
+          "seats": 12,
+          "status": "none"
+        },
+        {
+          "letters": "ל",
+          "seats": 6,
+          "status": "none"
+        },
+        {
+          "letters": "עם",
+          "seats": 5,
+          "status": "none"
+        },
+        {
+          "letters": "ום",
+          "seats": 5,
+          "status": "none"
+        }
+      ],
+      "totals": {
+        "netanyahu": 64,
+        "lapid": 28,
+        "none": 28
+      },
+      "cites": [
+        {
+          "source": "recommendations-1",
+          "quote": "Herzog said, “Ladies and gentlemen, from the consultations I held, the following picture arises: 64 members of Knesset recommended Benjamin Netanyahu MK; 28 members of Knesset recommended Yair Lapid MK; and 28 members of Knesset chose not to recommend any member of Knesset for the role of forming a government.”"
+        },
+        {
+          "source": "recommendations-2",
+          "quote": "Labor announced that it would join Yesh Atid in recommending Prime Minister Yair Lapid ... Yisrael Beytenu and Hadash-Ta'al and National Unity announced that they would not recommend anyone. ... RZP, Otzma Yehudit and Noam ran on the same list but decided to meet with the president separately."
+        },
+        {
+          "source": "recommendations-3",
+          "quote": "64 מחברי הכנסת המליצו על בנימין נתניהו לראשות הממשלה (סיעות הליכוד, ש\"ס, יהדות התורה, הציונות הדתית, עוצמה יהודית ונעם), 28 המליצו על יאיר לפיד לראש הממשלה (סיעות יש עתיד והעבודה), ו-28 בחרו שלא להמליץ על אף חבר כנסת (סיעות המחנה הממלכתי, ישראל ביתנו, רע\"מ וחד\"ש-תע\"ל)"
+        }
+      ],
+      "notes": [
+        "Consultations were held on 9–11 November 2022; President Herzog tasked Netanyahu on 13 November 2022. Religious Zionism, Otzma Yehudit and Noam (list ט) were consulted as three factions and all recommended Netanyahu. Per-faction positions are from Hebrew Wikipedia (secondary) and the Jerusalem Post's pre-consultation report; the totals are the President's own statement as quoted by JNS."
+      ]
+    }
+  ],
+  "formation": {
+    "outcome": "government-formed",
+    "events": [
+      {
+        "date": "2022-11-09",
+        "type": "consultations",
+        "endDate": "2022-11-11",
+        "textEn": "Herzog began three days of consultations with the elected factions.",
+        "textHe": "הרצוג החל שלושה ימי התייעצויות עם הסיעות שנבחרו.",
+        "cites": [
+          {
+            "source": "jns-mandate",
+            "quote": "On Friday, Herzog wrapped up three days of consultations"
+          }
+        ]
+      },
+      {
+        "date": "2022-11-13",
+        "type": "mandate-given",
+        "person": "netanyahu",
+        "days": 28,
+        "textEn": "Herzog tasked Benjamin Netanyahu with forming a government.",
+        "textHe": "הרצוג הטיל על בנימין נתניהו להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "jns-mandate",
+            "quote": "Benjamin Netanyahu received the mandate"
+          }
+        ]
+      },
+      {
+        "date": "2022-12-09",
+        "type": "extension",
+        "person": "netanyahu",
+        "days": 10,
+        "endDate": "2022-12-21",
+        "textEn": "Herzog granted Netanyahu ten additional days, until 21 December.",
+        "textHe": "הרצוג העניק לנתניהו הארכה של עשרה ימים, עד 21 בדצמבר.",
+        "cites": [
+          {
+            "source": "jpost-extension",
+            "quote": "Herzog awarded Netanyahu a ten-day extension to his initial 28 days"
+          }
+        ]
+      },
+      {
+        "date": "2022-12-21",
+        "type": "informed-success",
+        "person": "netanyahu",
+        "textEn": "Netanyahu notified Herzog that he had formed a government.",
+        "textHe": "נתניהו הודיע להרצוג כי עלה בידו להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "jpost-notification",
+            "quote": "Benjamin Netanyahu called President Isaac Herzog late on Wednesday night to announce he has successfully formed a government"
+          }
+        ]
+      },
+      {
+        "date": "2022-12-29",
+        "type": "confidence-vote",
+        "votes": {
+          "for": 63,
+          "against": 54
+        },
+        "textEn": "The Knesset approved the 37th government, 63–54; its ministers were sworn in.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־37 ברוב של 63 מול 54; שריה הושבעו.",
+        "cites": [
+          {
+            "source": "news13-investiture",
+            "quote": "63 ח\"כים הצביעו בעד, 54 התנגדו, והושבעה ממשלת בנימין נתניהו השישית."
+          }
+        ]
+      }
+    ]
+  },
+  "term": {
+    "inclusionRule": "two-independent-chronologies-one-official-or-academic",
+    "chronologies": [],
+    "events": [],
+    "candidatesPending": [
+      {
+        "label": "Judicial legislation and demonstrations",
+        "date": "2023-01",
+        "why": "Research lead only. Two independent qualifying chronologies and direct event evidence have not been inspected; no event is promoted."
+      },
+      {
+        "label": "Reasonableness amendment",
+        "date": "2023-07-24",
+        "why": "Research lead only. Two independent qualifying chronologies and direct event evidence have not been inspected; no event is promoted."
+      },
+      {
+        "label": "Hamas-led attack and war",
+        "date": "2023-10-07",
+        "why": "Research lead only. Two independent qualifying chronologies and direct event evidence have not been inspected; no event is promoted."
+      },
+      {
+        "label": "Emergency government",
+        "date": "2023-10",
+        "why": "Research lead only. Two independent qualifying chronologies and direct event evidence have not been inspected; no event is promoted."
+      },
+      {
+        "label": "Hostage releases and pause in fighting",
+        "date": "2023-11",
+        "why": "Research lead only. Two independent qualifying chronologies and direct event evidence have not been inspected; no event is promoted."
+      },
+      {
+        "label": "Supreme Court judgment on the reasonableness amendment",
+        "date": "2024-01-01",
+        "why": "Research lead only. Two independent qualifying chronologies and direct event evidence have not been inspected; no event is promoted."
+      },
+      {
+        "label": "Iran–Israel exchanges",
+        "date": "2024-04",
+        "why": "Research lead only. Two independent qualifying chronologies and direct event evidence have not been inspected; no event is promoted."
+      },
+      {
+        "label": "Israel–Lebanon ceasefire",
+        "date": "2024-11",
+        "why": "Research lead only. Two independent qualifying chronologies and direct event evidence have not been inspected; no event is promoted."
+      },
+      {
+        "label": "Subsequent war, hostage-release and ceasefire developments",
+        "date": "2025",
+        "why": "Research lead only. Two independent qualifying chronologies and direct event evidence have not been inspected; no event is promoted."
+      },
+      {
+        "label": "Events before the next election",
+        "date": "2026",
+        "why": "Research lead only. Two independent qualifying chronologies and direct event evidence have not been inspected; no event is promoted."
+      }
+    ],
+    "start": "2022-12-29"
+  },
+  "issuePolling": {
+    "status": "pending",
+    "note": "No qualifying published most-important-problem topline retrieved; see docs/research/issue-polling-sources.md. No microdata calculations."
+  },
+  "gaps": [
+    "CEC certification and Knesset inauguration records not retrieved.",
+    "President tasking/extension originals not retrieved; secondary reports identify the formal acts.",
+    "Detailed term chronology and formal end-of-Knesset record remain unfilled; election day must not be treated as the government end date.",
+    "No term event satisfies the two-chronology rule in this pass.",
+    "INSS December 2022 domestic-priority figures remain withheld: exact question and full answer menu not retrieved."
+  ],
+  "government": {
+    "number": 37,
+    "nameEn": "37th government (Netanyahu VI)",
+    "nameHe": "הממשלה ה־37 (נתניהו השישית)",
+    "startDate": "2022-12-29",
+    "primeMinisters": [
+      {
+        "nameEn": "Benjamin Netanyahu",
+        "nameHe": "בנימין נתניהו",
+        "letters": "מחל",
+        "from": "2022-12-29"
+      }
+    ],
+    "firstGovernmentSchemeRef": "first-government",
+    "coalition": [
+      {
+        "letters": "מחל",
+        "seats": 32
+      },
+      {
+        "letters": "ט",
+        "seats": 14
+      },
+      {
+        "letters": "שס",
+        "seats": 11
+      },
+      {
+        "letters": "ג",
+        "seats": 7
+      }
+    ],
+    "coalitionSeats": 64,
+    "cites": [
+      {
+        "source": "knesset-government37",
+        "quote": "מתאריך: ה' בטבת תשפ\"ג, (29/12/2022)"
+      }
+    ],
+    "notes": [
+      "Coalition weights are election-list seats, checked against public/data/k25.json and its first-government scheme. Religious Zionism, Otzma Yehudit and Noam share ballot ט; do not double-count their factions.",
+      "The government continued after the next election; no unverified end date is supplied."
+    ]
+  }
+}
