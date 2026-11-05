@@ -129,7 +129,40 @@ copy used (`via`). Hebrew Wikipedia's "הכנסת ה-N" and "N בישראל" pag
 
 ### (e) "Most pressing issue" polling
 
-*To be merged from the issue-polling helper report (`.backup-scratch/after-election/research-issue-polling.md`).*
+Full source audit: [issue-polling-sources.md](issue-polling-sources.md). Summary:
+
+- **Israel National Election Studies (INES)** is the only long-run candidate. Open questionnaires and codebooks at
+  [TAU](https://socsci4.tau.ac.il/mu2/ines/data/our-data/) show a "main/most important problem the government must
+  deal with" item in every Knesset wave **from 1969 to 2022** (plus 2001 and a 2025 between-election study). The
+  format changes: 1969 prompted three choices from a list (urban Jews only), 1973 two problems, later one open answer
+  coded into schemes that change by wave (the 2022 Hebrew and English code lists even disagree on code 8).
+  Published toplines were found only for **1996** (security and terror 55%, urban Jewish sample; verified in this
+  session). Other waves would need microdata analysis, which is a separate, licensed step.
+- **IDI** has no annual "most important problem" item in the Democracy Index. The Israeli Voice Index asks priority
+  questions occasionally: **May 2021** (verified in this session: if a new government is formed, which issue is most
+  important — unity 28.9%, socioeconomic gaps 27.7%, …), September 2021 (subgroup leaders only) and
+  **August 2026** (what will most influence your vote — a different construct). IDI's **Data Israel** portal has a
+  searchable question bank (e.g. `הבעיה החשובה`), not yet queried; its own help warns that online distributions may
+  be unweighted.
+- **Peace Index** (TAU/IDI, 1994–2019): no most-important-problem item established. **Guttman** archive (via IDI):
+  a lead for pre-1969, nothing retrieved. **INSS National Security Index** Dec 2022: domestic priorities (cost of
+  living 37%, personal security/governance 36%), question wording not yet retrieved. **CBS Social Survey**, **Taub**,
+  broadcaster polls: nothing qualifying.
+- **Nothing qualifying before 1969.** Six elections stay empty.
+
+**Display rule (proposed):**
+
+1. Show a card only for an original academic/official/research-institute survey with inspected wording, full answer
+   list, published topline, population and field dates. Prefer the closest survey in the 12 months *before* the
+   election; a post-election survey is shown under its own "after the election" label and never as the reason for
+   the vote.
+2. Keep three constructs apart: "most important problem", "priority for the new government", "what decides your
+   vote". The card title names the construct and the survey month.
+3. Show the largest share with its close contenders; call it the largest reported share, not a winner. Population
+   and exclusions in the card subtitle (e.g. "urban Jewish adults").
+4. No interpolation, no recoding across years, no figures computed from microdata unless separately authorised and
+   labelled as our analysis.
+5. Otherwise show nothing (or "No comparable survey" behind (i)).
 
 ## 4. Feasibility by era (high confidence vs. gaps)
 
@@ -140,7 +173,7 @@ copy used (`via`). Hebrew Wikipedia's "הכנסת ה-N" and "N בישראל" pag
 | Government and coalition | **High** (Knesset data) | **High** | **High** |
 | Term events (rule-based) | **Feasible** where the Knesset term history exists; second chronology from ISA/IPU | **Feasible** (same) | **Medium**: recent terms lack a retrospective official chronology; interim rule needed |
 | Reaction (option 1) | **High** for dates; statements sparse | **High** | **High** |
-| Issue polling | See §3e | See §3e | See §3e |
+| Issue polling | **None** (nothing qualifying before 1969; 1969–1973 INES items, no toplines) | **Thin**: INES item every wave, published topline only 1996 | **Partial**: IDI Voice 2021 (post-election), INSS 2022 (wording pending), IDI 2026 (vote-influence construct); INES toplines need microdata |
 
 ## 5. Pilot results
 
@@ -151,7 +184,7 @@ copy used (`via`). Hebrew Wikipedia's "הכנסת ה-N" and "N בישראל" pag
 | Government | 36th, 8 lists, 62 seats; Bennett then Lapid | 18th, Likud+Shlomtzion, NRP, Agudat (no ministers); DMC joined Oct 1977 |
 | Term events | 3 included (budget, dissolution, Lebanon maritime agreement); 8 pending, incl. the April 2022 loss of majority (one source so far) | 4 included (Sadat visit, Camp David approval, peace treaty, Iraqi reactor strike); 6 pending |
 | Term end | Dissolution 30 Jun 2022, 92–0 (Knesset News, LoC) | Early election set 10 Feb 1981 (IPU, ISA) |
-| Issue polling | Pending | Pending |
+| Issue polling | IDI Voice Index May 2021, post-election priority question (verified) | Pending: INES 1977 item exists, no topline |
 
 Source quality: 2021 formation is official for votes and dates, secondary (quoting the President) for tallies.
 1977 is official for tasking and the vote, archival (contemporaneous newspaper) for per-list positions, and leans

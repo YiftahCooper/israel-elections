@@ -143,6 +143,18 @@
       "publisher": "Wikipedia (he), \"הטלת המנדט להקמת ממשלה בישראל\"",
       "kind": "secondary",
       "accessed": "2026-11-05"
+    },
+    "idi-voice-2021-05": {
+      "url": "https://en.idi.org.il/media/16382/israeli_voice_index_data_2105_eng-first.pdf",
+      "publisher": "Israel Democracy Institute, Viterbi Family Center, Israeli Voice Index – May 2021 (data)",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "idi-voice-2021-05-article": {
+      "url": "https://en.idi.org.il/articles/34615",
+      "publisher": "Israel Democracy Institute, Israeli Voice Index May 2021 (report)",
+      "kind": "academic",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -765,14 +777,72 @@
     }
   },
   "issuePolling": {
-    "status": "pending",
-    "note": "See docs/research/after-the-election.md §5. Candidate source: IDI Israeli Democracy Index / Israeli Voice Index for 2021–2022; not filled in this pilot."
+    "status": "filled",
+    "rule": "post-election observation; see docs/research/after-the-election.md §3e",
+    "items": [
+      {
+        "timing": "after-election",
+        "fieldwork": "2021-05-30/2021-05-31",
+        "fieldworkSource": "idi-voice-2021-05-article",
+        "fieldworkNote": "Field dates and sample (615 Hebrew, 150 Arabic interviews, adults 18+) reported by the research helper from the IDI article; not re-read in this session.",
+        "construct": "priority-for-new-government",
+        "sourceId": "idi-voice-2021-05",
+        "questionEn": "If a new government is formed, among the following issues which, in your opinion, is the most important one for it to address",
+        "population": "General public (adults); Arab and Jewish columns also published",
+        "answers": [
+          {
+            "labelEn": "Strengthening the unity of the people",
+            "pct": 28.9
+          },
+          {
+            "labelEn": "Closing the socioeconomic gaps",
+            "pct": 27.7
+          },
+          {
+            "labelEn": "The negotiations with the Palestinians",
+            "pct": 10.4
+          },
+          {
+            "labelEn": "The Iranian threat",
+            "pct": 8.2
+          },
+          {
+            "labelEn": "Fighting corruption",
+            "pct": 8.0
+          },
+          {
+            "labelEn": "Investing in and advancing the Arab population",
+            "pct": 5.2
+          },
+          {
+            "labelEn": "Other",
+            "pct": 6.5
+          },
+          {
+            "labelEn": "Don't know",
+            "pct": 5.2
+          }
+        ],
+        "cites": [
+          {
+            "source": "idi-voice-2021-05",
+            "quote": "4. If a new government is formed, among the following issues which, in your opinion, is the most important one for it to address ... 27.7 22.4 28.8 Closing the socioeconomic gaps ... 28.9 12.4 32.2 Strengthening the unity of the people"
+          }
+        ],
+        "notes": [
+          "Post-election and conditional on a new government; not a measure of what drove the vote. The top two answers are 1.2 points apart.",
+          "Hebrew answer labels not yet taken from the Hebrew release."
+        ]
+      }
+    ],
+    "candidates": [
+      "INES March 2021 Q8 (open 'most important problem'); questionnaire verified, published topline not retrieved."
+    ]
   },
   "gaps": [
     "President's Residence press releases (gov.il) for 5–6 April, 5 May and 2 June 2021 not retrieved directly; the President's words are cited through news reports that quote them.",
     "CEC certification date of the final results (presented to the President) not retrieved.",
     "Reaction items not collected (all-or-none rule).",
-    "Term events rely on an interim two-source rule; several candidate events are listed but not included.",
-    "Issue polling not filled."
+    "Term events rely on an interim two-source rule; several candidate events are listed but not included."
   ]
 }

@@ -598,7 +598,10 @@
   },
   "issuePolling": {
     "status": "pending",
-    "note": "See docs/research/after-the-election.md §5. Candidate source: Israel National Election Study 1977 (Arian), via ISDC; not filled in this pilot."
+    "note": "INES 1977 phase 2 codebook item a2 ('most important government problem') verified by the research helper; original wording and published percentages not retrieved. Nothing shown until a published topline is found.",
+    "candidates": [
+      "https://socsci4.tau.ac.il/mu2/ines/wp-content/uploads/sites/4/2023/06/1977_2.txt"
+    ]
   },
   "gaps": [
     "Positions of four one-seat lists in the 1977 consultations not found (ISA file נ-571/13 is the primary target).",
