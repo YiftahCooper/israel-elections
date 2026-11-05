@@ -18,6 +18,7 @@
 - Seat safety: lay out every row at once and fill figures in place; keep the chart left to right in Hebrew; quote one figure per seat change (votes to lose / gain a seat); show lists below the threshold against it; name the vote source; stop failing on election switch.
 - Sensitivity answers on opening, with no Run or Search: plain headings, a threshold drop-out chart, tables against the current result, a bloc seats meter with the result checked against the chamber, and pickers that follow the election.
 - Sources: English publishers and descriptions on English pages, official sources listed first, project records named instead of dead links, "not in the data" instead of zero locality counts, one credit per logo (English first, Commons labelled secondary once), method and limits above the glossary, data downloads, and no layout shift when the source list loads; About events in date order.
+- What if… answers that move no seat now show what does change (a joint list as the sum of its parts, the threshold in votes, agreements that moved nothing); every question's (i) states its assumptions, including surplus agreements a merger ends, and points to the election's sources. Questions and merged lists use the lists' own names, and each (i) sits on its question's line.
 
 ## 5 November 2026 — concise tool pages
 
