@@ -47,29 +47,37 @@ test('a divisor method in 1949 still allocates every seat', async ({ page }) => 
   await expect(panel(page).locator('.walk-slider input')).toHaveAttribute('max', '120');
 });
 
-test('a sweep keeps the range it was run for when the fields change', async ({ page }) => {
+test('the vote sweep draws on open and redraws for a range typed in', async ({ page }) => {
   await start(page);
   await tool(page, 'sens');
   const from = panel(page).getByRole('textbox', { name: 'From', exact: true });
   const first = await from.inputValue();
-  await panel(page).getByRole('button', { name: 'Run' }).first().click();
-  const chart = panel(page).locator('svg.chart').first();
-  await expect(chart).toContainText(first);
+  const chart = panel(page).getByRole('img', { name: 'Seats against votes' });
+  await expect(chart).toContainText(first, { timeout: 60_000 });
   await from.fill('1000000'); await from.press('Enter');
-  await expect(chart).toContainText(first);
-  await expect(chart).not.toContainText('1,000,000');
+  await expect(chart).toContainText('1,000,000', { timeout: 60_000 });
+  await expect(chart).not.toContainText(first);
+  // back to the default range, which follows the list's votes
+  await panel(page).getByRole('button', { name: 'Reset', exact: true }).click();
+  await expect(from).toHaveValue(first);
+  await expect(chart).toContainText(first, { timeout: 60_000 });
 });
 
-test('the threshold sweep refuses an empty or reversed range', async ({ page }) => {
+test('the sweeps refuse an empty or reversed range in place, without a result', async ({ page }) => {
   await start(page);
   await tool(page, 'sens');
   const lo = panel(page).getByRole('textbox', { name: 'From %' }), hi = panel(page).getByRole('textbox', { name: 'To %' });
-  for (const [a, b] of [['5', '1'], ['3', '3'], ['-1', '2'], ['1', '101']]) {
-    await lo.fill(a); await hi.fill(b);
-    await panel(page).getByRole('button', { name: 'Run' }).nth(1).click();
-    await expect(page.locator('.toast')).toContainText('from 0 to 100');
+  for (const [a, b] of [['5', '1'], ['3', '3'], ['-1', '2'], ['1', '101'], ['', '2']]) {
+    await lo.fill(a); await lo.press('Enter'); await hi.fill(b); await hi.press('Enter');
+    await expect(panel(page).getByRole('alert')).toContainText('from 0 to 100');
     await expect(panel(page).getByRole('columnheader', { name: 'Threshold above' })).toHaveCount(0);
   }
+  await lo.fill('1'); await lo.press('Enter'); await hi.fill('5'); await hi.press('Enter');
+  await expect(panel(page).getByRole('columnheader', { name: 'Threshold above' })).toBeVisible();
+  const from = panel(page).getByRole('textbox', { name: 'From', exact: true });
+  await from.fill('99999999'); await from.press('Enter');
+  await expect(panel(page).getByRole('alert')).toHaveText('“To” must be above “from”.');
+  await expect(panel(page).getByRole('img', { name: 'Seats against votes' })).toHaveCount(0);
 });
 
 // Owner rule (2026-11-04): Hebrew graphics read left to right like English; only text is right-to-left.

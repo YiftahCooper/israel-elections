@@ -15,6 +15,7 @@
 - Keep long edited bloc names and official list names readable on phones, restore contrast for Compare counts, and show family scaling counts once beside their strips.
 - Prevent map zoom completion from accessing a destroyed pane after tool navigation.
 - Seat safety: lay out every row at once and fill figures in place; keep the chart left to right in Hebrew; quote one figure per seat change (votes to lose / gain a seat); show lists below the threshold against it; name the vote source; stop failing on election switch.
+- Sensitivity answers on opening, with no Run or Search: plain headings, a threshold drop-out chart, tables against the current result, a bloc seats meter with the result checked against the chamber, and pickers that follow the election.
 
 ## 5 November 2026 — concise tool pages
 
