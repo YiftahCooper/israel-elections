@@ -76,6 +76,20 @@
       "publisher": "Jewish Telegraphic Agency, Daily Bulletin archive",
       "kind": "archival",
       "accessed": "2026-11-05"
+    },
+    "israel-cerd-1994": {
+      "url": "https://www.un.org/unispal/document/auto-insert-176177/",
+      "publisher": "Government of Israel, report to CERD, 30 June 1994",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "UN UNISPAL reproduction of the Israeli government submission; used for the event date, not as an independent national chronology."
+    },
+    "mfa-timeline": {
+      "url": "https://www.gov.il/en/pages/timeline-of-events-half-a-century-of-independence",
+      "publisher": "Israel Ministry of Foreign Affairs, Timeline of Events: Half a Century of Independence, 1948–1998",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies."
     }
   },
   "results": {
@@ -237,7 +251,8 @@
       "mfa-history",
       "knesset-history",
       "ipu1992",
-      "ipu1996"
+      "ipu1996",
+      "mfa-timeline"
     ],
     "events": [
       {
@@ -254,6 +269,32 @@
           {
             "source": "mfa-history",
             "quote": "Its signing, on 13 September 1993"
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "hebron-massacre",
+        "date": "1994-02-25",
+        "category": "security",
+        "textEn": "Baruch Goldstein killed Palestinian worshippers in the Cave of the Patriarchs in Hebron.",
+        "textHe": "ברוך גולדשטיין הרג מתפללים פלסטינים במערת המכפלה בחברון.",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "the massacre of 29 Palestinians"
+          },
+          {
+            "source": "mfa-timeline",
+            "quote": "A Jewish extremist kills 29 Muslim worshippers in Hebron"
+          },
+          {
+            "source": "israel-cerd-1994",
+            "quote": "the Tomb of the Patriarchs in Hebron on 25 February 1994"
+          },
+          {
+            "source": "israel-cerd-1994",
+            "quote": "Dr. Baruch Goldstein bears direct responsibility for the massacre"
           }
         ],
         "confidence": "high"
@@ -277,6 +318,27 @@
         "confidence": "high"
       },
       {
+        "id": "oslo-ii",
+        "date": "1995-09",
+        "category": "foreign-relations",
+        "textEn": "Israel and the PLO signed the Interim Agreement on the West Bank and Gaza Strip (Oslo II).",
+        "textHe": "ישראל ואש״ף חתמו על הסכם הביניים בדבר הגדה המערבית ורצועת עזה (אוסלו ב׳).",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "An additional agreement, Oslo II, was signed"
+          },
+          {
+            "source": "mfa-history",
+            "quote": "the Israeli- Palestinian Interim Agreement of September 1995."
+          }
+        ],
+        "confidence": "high",
+        "notes": [
+          "Month precision preserves the unresolved difference between the Knesset narrative’s Taba date (27 September) and the Washington signing ceremony (28 September). No day is inferred."
+        ]
+      },
+      {
         "id": "rabin-assassination",
         "date": "1995-11-04",
         "category": "governance",
@@ -293,28 +355,32 @@
           }
         ],
         "confidence": "high"
+      },
+      {
+        "id": "suicide-bombings-1996",
+        "date": "1996-02",
+        "category": "security",
+        "textEn": "Suicide bombings took place in Israel during February and March 1996.",
+        "textHe": "פיגועי התאבדות התרחשו בישראל בפברואר ובמרץ 1996.",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "the terrorist wave of February/March 1996"
+          },
+          {
+            "source": "mfa-history",
+            "quote": "Suicide bomb attacks, perpetrated by Hamas terrorists in Jerusalem and Tel Aviv during 1996"
+          }
+        ],
+        "confidence": "high",
+        "endDate": "1996-03"
       }
     ],
     "candidatesPending": [
       {
-        "label": "Oslo II signing (Taba text versus Washington ceremony date)",
-        "date": "1995-09",
-        "why": "Appears in the Knesset term history; a second independent qualifying chronology and/or direct date evidence was not verified in this pass."
-      },
-      {
-        "label": "Cave of the Patriarchs massacre",
-        "date": "1994-02",
-        "why": "Appears in the Knesset term history; a second independent qualifying chronology and/or direct date evidence was not verified in this pass."
-      },
-      {
         "label": "National Health Insurance Law",
         "date": "1994-06",
-        "why": "Appears in the Knesset term history; a second independent qualifying chronology and/or direct date evidence was not verified in this pass."
-      },
-      {
-        "label": "February–March suicide bombings",
-        "date": "1996-02",
-        "why": "Appears in the Knesset term history; a second independent qualifying chronology and/or direct date evidence was not verified in this pass."
+        "why": "Knesset history selects enactment, while MFA timeline selects entry into force in 1995. These are different acts: a direct enactment date and an independent chronology selecting enactment remain needed."
       }
     ],
     "endedBy": {
