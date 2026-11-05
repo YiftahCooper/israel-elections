@@ -7,7 +7,7 @@ import { PartEdits } from './PartEdits.tsx';
 import { describe } from '../actionDescription.ts';
 import { EditMarker } from './EditMarker.tsx';
 import { ruleEraLabel } from '../changeValue.tsx';
-import { LocalityMap, useLocalityLocations } from './LocalityMap.tsx';
+import { LocalityMap, LocalityName, localityName, useLocalityLocations, useLocalityNames } from './LocalityMap.tsx';
 import { matchesLocality } from '../locality-map-model.ts';
 import { Fragment, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { isEnvelopeRow, type ElectionDataset } from '../../data/schema.ts';
@@ -175,20 +175,22 @@ export function Localities({ s }: { s: Scenario }) {
   const hasLocalities = useStore((st) => st.datasets[s.electionId]?.hasLocalities !== false);
   const { data, error } = useLocalities(s.electionId, hasLocalities);
   const { locations, error: locationError } = useLocalityLocations(s.electionId, hasLocalities);
+  const names = useLocalityNames(s.electionId, hasLocalities);
   const [view, setView] = useState<'map' | 'table'>('map');
   const [q, setQ] = useState('');
   const [sort, setSort] = useState<'registered' | 'turnout' | 'name'>('registered');
   const [open, setOpen] = useState<string | null>(null);
   const ds = useStore(st => st.datasets[s.electionId]);
   const histLists = useMemo(() => (data && ds ? data.listIds.map(id => baselineOf(ds).lists.find(l => l.id === id) ?? null) : []), [data, ds]);
-  if (!hasLocalities) return <p className="ink2">{L('National results only', 'תוצאות ארציות בלבד')} <Info title={L('Locality coverage', 'כיסוי לפי יישובים')}>{L('Locality-level results are not available for this election in the sources used here; only national results are.', 'תוצאות לפי יישובים אינן זמינות לבחירות אלה במקורות שבשימוש כאן; זמינות רק תוצאות ארציות.')}</Info></p>;
+  if (!hasLocalities) return <p className="ink2">{L('National results only', 'תוצאות ארציות בלבד')} <Info title={L('Locality coverage', 'כיסוי לפי יישובים')}>{L('Locality-level results are not available for this election in the sources used here; only national results are. Locality results start with the 2003 election (16th Knesset).', 'תוצאות לפי יישובים אינן זמינות לבחירות אלה במקורות שבשימוש כאן; זמינות רק תוצאות ארציות. תוצאות לפי יישובים זמינות החל מבחירות 2003 (הכנסת ה־16).')}</Info></p>;
   if (error) return <p className="bad">{error}</p>;
   if (!data || data.id !== s.electionId) return <p className="muted">{L('Loading official locality results…', 'טוען תוצאות לפי יישובים…')}</p>;
   // rows are keyed by position in the file: older elections have no locality codes
   const keyed = data.rows.map((r, i) => ({ r, key: String(i) }));
   const hasRegistered = data.rows.some((r) => r.registered !== null);
-  const rows = keyed.filter(({ r }) => matchesLocality(q, { ...locations[String(r.code)], nameHe: r.nameHe, code: r.code }))
-    .sort(({ r: a }, { r: b }) => sort === 'name' || (!hasRegistered && sort !== 'turnout') ? a.nameHe.localeCompare(b.nameHe, 'he')
+  const nameAt = (key: string) => localityName(names, data.rows[Number(key)], Number(key), lang);
+  const rows = keyed.filter(({ r, key }) => matchesLocality(q, { ...locations[String(r.code)], nameHe: r.nameHe, code: r.code, aliases: [...(locations[String(r.code)]?.aliases ?? []), names.names[Number(key)] ?? ''] }))
+    .sort(({ r: a, key: ka }, { r: b, key: kb }) => sort === 'name' || (!hasRegistered && sort !== 'turnout') ? nameAt(ka).localeCompare(nameAt(kb), lang)
       : sort === 'turnout' ? (b.registered ? b.votesCast / b.registered : -1) - (a.registered ? a.votesCast / a.registered : -1)
       : (b.registered ?? 0) - (a.registered ?? 0)).slice(0, 300);
   const localityCount = data.rows.filter((r) => !isEnvelopeRow(r)).length;
@@ -199,7 +201,7 @@ export function Localities({ s }: { s: Scenario }) {
         <button aria-pressed={view === 'map'} onClick={() => setView('map')}>{L('Map', 'מפה')}</button>
         <button aria-pressed={view === 'table'} onClick={() => setView('table')}>{L('Table', 'טבלה')}</button>
       </span>
-      {view === 'map' ? <LocalityMap key={s.electionId} s={s} data={data} historicalLists={histLists} locations={locations} locationError={locationError} /> : <>
+      {view === 'map' ? <LocalityMap key={s.electionId} s={s} data={data} historicalLists={histLists} locations={locations} names={names} locationError={locationError} /> : <>
       <p className="small ink2">{L('Historical locality results', 'תוצאות היסטוריות לפי יישוב')} <Info title={L('Locality results', 'תוצאות לפי יישוב')}>{L(`Official CEC results for ${localityCount} localities plus double-envelope votes. These are the historical figures; your scenario changes are national and are not distributed to localities.`, `תוצאות רשמיות של ועדת הבחירות ל-${localityCount} יישובים ולמעטפות החיצוניות. אלה הנתונים ההיסטוריים; שינויי התרחיש הם ארציים ואינם מחולקים ליישובים.`)}</Info></p>
       {(data.noteEn || data.noteHe) && <p className="small callout">{lang === 'he' ? data.noteHe ?? data.noteEn : data.noteEn ?? data.noteHe}</p>}
       <div className="row" style={{ marginBottom: 8 }}>
@@ -216,7 +218,7 @@ export function Localities({ s }: { s: Scenario }) {
             return (
               <Fragment key={key}>
                 <tr className={open === key ? 'sel' : ''}>
-                  <td lang="he"><button className="table-action" aria-expanded={open === key} onClick={() => setOpen(open === key ? null : key)}>{r.nameHe}</button> <span className="muted tiny">{r.code}</span></td>
+                  <td><button className="table-action" aria-expanded={open === key} onClick={() => setOpen(open === key ? null : key)} title={lang === 'en' ? r.nameHe : undefined}><LocalityName names={names} row={r} index={Number(key)} /></button> <span className="muted tiny">{r.code}</span></td>
                   <td className="n">{r.registered ? fmtInt(r.registered) : '—'}</td><td className="n">{fmtInt(r.votesCast)}</td>
                   <td className="n">{r.registered ? fmtPct(r.votesCast, r.registered, 1) : '—'}</td><td className="n">{fmtInt(r.valid)}</td>
                   <td className="small">{top.slice(0, 3).filter((x) => x.v > 0).map((x) => `${nameOf(x.k)} ${fmtPct(x.v, r.valid, 0)}`).join(' · ')}</td>

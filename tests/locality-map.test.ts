@@ -81,3 +81,65 @@ it('published coordinates place only rows with retained, plausible source positi
     }
   }
 });
+
+it('keys Hebrew names spelling-insensitively without merging separate words', async () => {
+  const { hebrewNameKey, tidyCbsEnglish } = await import('../src/data/locality-names.ts');
+  expect(hebrewNameKey('הרצליה')).toBe(hebrewNameKey('הרצלייה'));
+  expect(hebrewNameKey('בנימינה-גבעת עדה*')).toBe(hebrewNameKey('בנימינה גבעת עדה'));
+  expect(hebrewNameKey('צוקי ים')).not.toBe(hebrewNameKey('צוקים'));
+  expect(tidyCbsEnglish('KINNERET(QEVUZA)')).toBe('Kinneret (Qevuza)');
+  expect(tidyCbsEnglish('BAQA -JATT  ')).toBe('Baqa-Jatt');
+  expect(tidyCbsEnglish("GIV'AT ADA")).toBe("Giv'at Ada");
+  expect(tidyCbsEnglish("Qiryat Ye'arim")).toBe("Qiryat Ye'arim");
+});
+
+it('resolves English locality names from CBS by code, then by unique Hebrew name or truncated prefix', async () => {
+  const { resolveLocalityEnglish } = await import('../src/data/locality-names.ts');
+  const records = [
+    { code: 6000, year: 2006, nameHe: "באקה-ג'ת*", nameEn: 'BAQA -JATT' },
+    { code: 6000, year: 2024, nameHe: 'באקה אל-גרביה', nameEn: 'Baqa Al-Gharbiyye' },
+    { code: 1200, year: 2009, nameHe: 'מודיעין-מכבים-רעות*', nameEn: "MODI'IN-MAKKABBIM-RE'UT" },
+    { code: 1200, year: 2024, nameHe: 'מודיעין-מכבים-רעות', nameEn: "Modi'in-Makkabbim-Re'ut" },
+    { code: 1328, year: 2006, nameHe: 'סנסנה', nameEn: 'SANSANA' },
+    { code: 3777, year: 2024, nameHe: 'סנסנה', nameEn: 'Sansana' },
+    { code: 1, year: 2024, nameHe: 'כפר', nameEn: 'Kefar A' },
+    { code: 2, year: 2024, nameHe: 'כפר', nameEn: 'Kefar B' },
+  ];
+  // a code keeps the name of its era, not the locality's later name
+  expect(resolveLocalityEnglish({ code: 6000, nameHe: "באקה-ג'ת" }, 2009, records)).toBe('Baqa-Jatt');
+  expect(resolveLocalityEnglish({ code: 6000, nameHe: 'באקה אל-גרביה' }, 2022, records)).toBe('Baqa Al-Gharbiyye');
+  // mixed-case CBS spelling preferred over the older all-capitals file
+  expect(resolveLocalityEnglish({ code: null, nameHe: 'מודיעין-מכבים-רעו' }, 2006, records)).toBe("Modi'in-Makkabbim-Re'ut");
+  expect(resolveLocalityEnglish({ code: null, nameHe: 'סנסנה' }, 2006, records)).toBe('Sansana');
+  // two codes, two English names: no guess
+  expect(resolveLocalityEnglish({ code: null, nameHe: 'כפר' }, 2006, records)).toBeNull();
+});
+
+it('every published locality row has a Latin English name; project transliterations are few and listed', async () => {
+  const { readFileSync, readdirSync } = await import('node:fs');
+  const { isEnvelopeRow } = await import('../src/data/schema.ts');
+  const files = readdirSync('public/data').filter(f => /^k\d+-localities.json$/.test(f));
+  expect(files.length).toBeGreaterThan(10);
+  for (const file of files) {
+    const data = JSON.parse(readFileSync(`public/data/${file}`, 'utf8')) as import('../src/data/schema.ts').LocalityDataset;
+    const names = JSON.parse(readFileSync(`public/data/${file.replace('-localities', '-locality-names')}`, 'utf8')) as import('../src/data/locality-names.ts').LocalityNames;
+    expect(names.names).toHaveLength(data.rows.length);
+    data.rows.forEach((row, i) => {
+      const name = names.names[i];
+      if (isEnvelopeRow(row)) { expect(name).toBe(''); return; }
+      expect(name, `${file} ${row.nameHe}`).toMatch(/^[A-Za-z]/);
+      expect(name).not.toMatch(/[֐-׿؀-ۿ]/);
+      expect(name).not.toBe(name.toUpperCase());
+    });
+    expect(names.project.length).toBeLessThanOrEqual(7);
+  }
+});
+
+it('explains a locality result: ranked group totals and the lead over the runner-up', async () => {
+  const { localityTotals } = await import('../src/app/locality-map-model.ts');
+  const s = scenarioFromDataset(loadDataset('k25'));
+  const [a, b] = s.lists;
+  const totals = localityTotals(s, [a.id, b.id], [70, 30], 'list');
+  expect(totals.map(t => t.key)).toEqual([a.id, b.id]);
+  expect(localityWinner(s, [a.id, b.id], [70, 30], 'list')).toMatchObject({ key: a.id, runnerUp: b.id, margin: 40 });
+});
