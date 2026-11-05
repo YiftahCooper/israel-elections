@@ -60,6 +60,36 @@
       "publisher": "Knesset News",
       "kind": "official",
       "accessed": "2026-11-05"
+    },
+    "sipri-2014": {
+      "url": "https://www.sipri.org/sites/default/files/SIPRIYB15cC.pdf",
+      "publisher": "SIPRI Yearbook 2015, Nigel Chamberlain and Ian Davis, Annex C: Chronology 2014, 8 July entry, p.717",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "reuters-confrontation-2021": {
+      "url": "https://uk.investing.com/news/world-news/timeline--hamas-and-israel-a-history-of-confrontation-2378704?ampMode=1",
+      "publisher": "Reuters, Hamas and Israel: a history of confrontation (20 May 2021), via Investing.com",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "idi-2015-retrospective": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/2015/",
+      "publisher": "Israel Democracy Institute, 2015 election retrospective (opening narrative)",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "ipu-2015-retrospective": {
+      "url": "https://data.ipu.org/parliament/IL/IL-LC01/election/IL-LC01-E20150317/",
+      "publisher": "Inter-Parliamentary Union, March 2015 election retrospective",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "idi-dismissal-date": {
+      "url": "https://en.idi.org.il/articles/6104",
+      "publisher": "Israel Democracy Institute, Ofer Kenig, The Firing of Ministers in Israel: A Historical Overview (14 December 2014)",
+      "kind": "academic",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -254,43 +284,83 @@
   },
   "term": {
     "inclusionRule": "two-independent-chronologies-one-official-or-academic",
-    "chronologies": [],
-    "events": [],
+    "chronologies": [
+      "sipri-2014",
+      "reuters-confrontation-2021",
+      "idi-2015-retrospective",
+      "ipu-2015-retrospective"
+    ],
+    "events": [
+      {
+        "id": "protective-edge-2014",
+        "date": "2014-07-08",
+        "category": "security",
+        "textEn": "Israel launched Operation Protective Edge in Gaza.",
+        "textHe": "ישראל פתחה במבצע צוק איתן ברצועת עזה.",
+        "cites": [
+          {
+            "source": "sipri-2014",
+            "quote": "8 July"
+          },
+          {
+            "source": "sipri-2014",
+            "quote": "launches Operation Protective Edge against Gaza"
+          },
+          {
+            "source": "reuters-confrontation-2021",
+            "quote": "July-August 2014"
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "ministers-dismissed-2014",
+        "date": "2014-12-02",
+        "category": "governance",
+        "textEn": "Prime Minister Benjamin Netanyahu dismissed Finance Minister Yair Lapid and Justice Minister Tzipi Livni.",
+        "textHe": "ראש הממשלה בנימין נתניהו פיטר את שר האוצר יאיר לפיד ואת שרת המשפטים ציפי לבני.",
+        "cites": [
+          {
+            "source": "idi-2015-retrospective",
+            "quote": "ראש הממשלה פיטר את השניים בראשית דצמבר 2014"
+          },
+          {
+            "source": "ipu-2015-retrospective",
+            "quote": "dismissal in December 2014 of Finance Minister Yair Lapid"
+          },
+          {
+            "source": "idi-dismissal-date",
+            "quote": "On December 2, 2014, Prime Minister Benjamin Netanyahu fired Finance Minister Yair Lapid and Justice Minister Tzipi Livni."
+          }
+        ],
+        "confidence": "high"
+      }
+    ],
     "candidatesPending": [
       {
         "label": "US President Obama visit",
         "date": "2013-03",
-        "why": "Research lead only; two independent qualifying chronologies and direct-date evidence not inspected."
+        "why": "No pair of inspected qualifying chronologies selects the March 2013 visit; a standalone diplomatic visit record would not establish selection."
       },
       {
         "label": "Israeli–Palestinian negotiations resumed",
         "date": "2013-07",
-        "why": "Research lead only; two independent qualifying chronologies and direct-date evidence not inspected."
+        "why": "The CFR chronology selects the restart on 30 July 2013; a second inspected qualifying chronology is missing."
       },
       {
         "label": "Conscription and electoral-threshold legislation",
         "date": "2014-03",
-        "why": "Research lead only; two independent qualifying chronologies and direct-date evidence not inspected."
+        "why": "IDI and IPU retrospectively select the threshold change, but not both elements of this bundled candidate; the exact enactment record and separately scoped conscription evidence remain missing."
       },
       {
         "label": "Abduction and killing of three Israeli teenagers",
         "date": "2014-06",
-        "why": "Research lead only; two independent qualifying chronologies and direct-date evidence not inspected."
+        "why": "Reuters selects the kidnapping and killing in its July–August war entry, but no second qualifying chronology with an inspected abduction/discovery date distinction was added."
       },
       {
         "label": "Killing of Muhammad Abu Khdeir",
         "date": "2014-07",
-        "why": "Research lead only; two independent qualifying chronologies and direct-date evidence not inspected."
-      },
-      {
-        "label": "Operation Protective Edge",
-        "date": "2014-07",
-        "why": "Research lead only; two independent qualifying chronologies and direct-date evidence not inspected."
-      },
-      {
-        "label": "Lapid and Livni dismissed",
-        "date": "2014-12",
-        "why": "Research lead only; two independent qualifying chronologies and direct-date evidence not inspected."
+        "why": "No pair of inspected qualifying chronologies selecting this event was recovered; do not infer inclusion from the adjacent war chronology."
       }
     ],
     "start": "2013-03-18",
