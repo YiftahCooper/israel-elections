@@ -855,3 +855,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
   .party-row { grid-template-columns: auto minmax(0, 1fr) auto; }
   .party-row select { grid-column: 2 / -1; max-width: 100%; width: 100%; }
 }
+
+/* Party identity when no verified emblem is held: readable initials, never a bare square. */
+.slip.monogram { color: var(--ink); background: var(--surface); border-inline-start: 6px solid var(--c); font-size: 12px; font-weight: 700; direction: ltr; }
+.slip.logo { position: relative; }
+.slip.logo .slip-letters.logo-year { display: block; position: absolute; inset-inline-end: 0; bottom: 0; padding: 0 2px; background: var(--surface); color: var(--ink); font: 9px/1.15 var(--font); }

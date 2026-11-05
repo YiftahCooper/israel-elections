@@ -1,3 +1,4 @@
+import {englishLabel} from '../data/names.ts';
 import {familyLabel} from '../families/labels.ts';
 import { RULESETS } from '../engine/rules.ts';
 import { ruleEraLabel, changeText } from './changeValue.tsx';
@@ -25,9 +26,9 @@ export function describe(a: Action, s: Scenario, lang: Lang): string {
       return he ? `חלוקה מחדש של ${fmtInt(a.votes)} קולות` : `Redistributed ${fmtInt(a.votes)} votes`;
     }
     case 'scaleAll': return he ? `שינוי כל הקולות ל-${a.factorPct}%` : `Scaled all votes to ${a.factorPct}%`;
-    case 'merge': return he ? `איחוד: ${a.nameHe} (${a.ids.length} רשימות, שימור ${a.retentionPct}%)` : `Merged ${a.ids.length} lists into ${a.nameHe} (${a.retentionPct}% retained)`;
-    case 'split': return he ? `פיצול ל-${a.parts.map((p) => p.nameHe).join(' / ')}` : `Split into ${a.parts.map((p) => p.nameHe).join(' / ')}`;
-    case 'addList': return he ? `רשימה חדשה: ${a.nameHe}` : `New list: ${a.nameHe}`;
+    case 'merge': return he ? `איחוד: ${a.nameHe} (${a.ids.length} רשימות, שימור ${a.retentionPct}%)` : `Merged ${a.ids.length} lists into ${n(a.newId) === 'Removed list' ? englishLabel(null,a.nameHe) : n(a.newId)} (${a.retentionPct}% retained)`;
+    case 'split': return he ? `פיצול ל-${a.parts.map((p) => p.nameHe).join(' / ')}` : `Split into ${a.parts.map((p) => s.lists.some(l => l.id === p.newId) ? n(p.newId) : englishLabel(null,p.nameHe)).join(' / ')}`;
+    case 'addList': return he ? `רשימה חדשה: ${a.nameHe}` : `New list: ${s.lists.some(l => l.id === a.newId) ? n(a.newId) : englishLabel(null,a.nameHe)}`;
     case 'removeList': return he ? `הוסרה רשימה` : `Removed a list`;
     case 'setWithdrawn': return `${n(a.listId)}: ${a.withdrawn ? (he ? 'פרשה' : 'withdrawn') : (he ? 'הוחזרה' : 'reinstated')}`;
     case 'setListMeta': return he ? `${n(a.listId)}: עריכת פרטים` : `${n(a.listId)}: edited details`;

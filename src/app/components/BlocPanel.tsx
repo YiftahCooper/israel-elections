@@ -1,3 +1,4 @@
+import { Slip } from './ui.tsx';
 import { BlocVoteStepper } from './BlocVoteStepper.tsx';
 import { ScenarioSwitcher } from './ScenarioSwitcher.tsx';
 import { voteSourceLabel } from '../voteEdit.ts';
@@ -188,7 +189,7 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
                           <button type="button" className="bp-chip-main" aria-pressed={chosen} disabled={u.kind === 'member'}
                             title={u.kind === 'member' ? L('Placed member by member by the sourced grouping; moves with the list', 'שובצו חבר אחר חבר לפי החלוקה המתועדת; זזים עם הרשימה') : undefined}
                             onClick={() => setPicked(chosen ? null : u)} {...(u.kind === 'member' ? {} : dragProps(u))}>
-                            <span className="swatch" style={{ background: p?.color ?? l.color }} />
+                            <Slip size="sm" letters={l.letters} name={p ? name(p) : listLabel(l,lang)} color={p?.color ?? l.color} logo={p?.logo ?? l.logo} />
                             <span className="bp-chip-name">{chipLabel(u)}<EditMarker s={s} path={u.kind === 'party' ? ['partyBlocs', u.partyId] : ['lists', u.listId, 'bloc']} /></span>
                             <b className="tabnum">{u.n}</b>
                           </button>
@@ -202,7 +203,7 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
                                   <button key={x.partyId} type="button" className={`bp-sub ${subChosen ? 'picked' : ''}`} aria-pressed={subChosen}
                                     aria-label={L(`${name(pp)}, ${x.n === 1 ? '1 seat' : `${x.n} seats`}: move this party on its own`, `${name(pp)}, ${x.n === 1 ? 'מנדט אחד' : `${x.n} מנדטים`}: העברת המפלגה לבדה`)}
                                     onClick={() => setPicked(subChosen ? null : unit)} {...dragProps(unit)}>
-                                    <span className="swatch" style={{ background: pp.color ?? l.color }} />{name(pp)} <b className="tabnum">{x.n}</b>
+                                    <Slip size="sm" letters={l.letters} name={name(pp)} color={pp.color ?? l.color} logo={pp.logo} />{name(pp)} <b className="tabnum">{x.n}</b>
                                   </button>
                                 );
                               })}

@@ -26,8 +26,17 @@ console.log(JSON.stringify(allocationOf(baselineOf(d)).lists.filter(l => l.seats
         winners = {l['letters'] for l in data['lists'] if data['officialSeats'].get(l['id'], 0) > 0}
     hosted = {l['letters'] for l in data['lists'] if l.get('logo')}
     constituents = {p['id'] for l in data['lists'] if l['letters'] in winners for p in l.get('parties', [])}
-    party_hosted = {e.get('party') for e in entries if e['hosted'] and e['status'] == 'verified'}
-    return dict(election=f'k{n}', winners=len(winners), hosted=len(winners & hosted),
+    party_hosted = {p['id'] for l in data['lists'] for p in l.get('parties', []) if p.get('logo')}
+    all_parties = [p for l in data['lists'] for p in l.get('parties', [])]
+    return dict(election=f'k{n}', allLists=len(data['lists']),
+                englishLabels=sum(bool(l['shortEn']) for l in data['lists']),
+                unofficialTransliterations=sum(l.get('englishName', {}).get('kind') == 'transliteration' for l in data['lists']),
+                allListLogos=len(hosted), nearestPeriodListLogos=sum(bool(l.get('logo', {}).get('year')) for l in data['lists']),
+                allConstituents=len(all_parties), allConstituentLogos=sum(bool(p.get('logo')) for p in all_parties),
+                nearestPeriodConstituentLogos=sum(bool(p.get('logo', {}).get('year')) for p in all_parties),
+                missingAllLists=[l['id'] for l in data['lists'] if not l.get('logo')],
+                missingAllConstituents=[p['id'] for p in all_parties if not p.get('logo')],
+                winners=len(winners), hosted=len(winners & hosted),
                 constituents=len(constituents), constituentHosted=len(constituents & party_hosted),
                 missingLists=sorted(winners-hosted), missingConstituents=sorted(constituents-party_hosted))
 

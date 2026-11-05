@@ -1,3 +1,4 @@
+import {englishLabel} from '../data/names.ts';
 // One rule for every vote edit on a list: where the difference comes from or goes to.
 // Shared by the number field, slider, percentage fields, quick buttons and boundary tools so that
 // the same counterfactual is always applied (and matches analysis.perturb exactly).
@@ -61,5 +62,5 @@ export function voteSourceLabel(src: SourceChoice, s: Scenario, lang: 'he' | 'en
   if (src.kind === 'new') return lang === 'he' ? 'מצביעים חדשים / נמנעים' : 'new voters / voters staying home';
   if (src.kind === 'proportional') return lang === 'he' ? 'שאר הרשימות באופן יחסי' : 'other lists proportionally';
   const l = s.lists.find(l => l.id === src.listId);
-  return l ? (lang === 'he' ? l.shortHe : l.shortEn ?? l.shortHe) : lang === 'he' ? 'רשימה אחרת' : 'another list';
+  return l ? (lang === 'he' ? l.shortHe : englishLabel(l.shortEn,l.shortHe)) : lang === 'he' ? 'רשימה אחרת' : 'another list';
 }

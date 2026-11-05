@@ -3,7 +3,28 @@
   "electionDate": "1951-07-30",
   "era": "1949-1977",
   "generated": "2026-11-04",
-  "lists": [],
+  "lists": [
+    {
+      "letters": "טח",
+      "nameHe": "אמוני ישראל אחוד ספרדים אשכנזים",
+      "englishName": {
+        "label": "Emunei Yisrael",
+        "kind": "transliteration",
+        "sourceId": "k2-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ש",
+      "nameHe": "למען העולים החדשים והחיילים המשוחררים",
+      "englishName": {
+        "label": "Lemaan HaOlim HaHadashim VeHaHayalim HaMeshuhrarim",
+        "kind": "transliteration",
+        "sourceId": "k2-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    }
+  ],
   "blocSchemes": [
     {
       "id": "first-government",

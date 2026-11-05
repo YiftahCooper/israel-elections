@@ -71,7 +71,7 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
       <div className="party-rows">
         {parties.map((p) => (
           <div key={p.id} className="party-row">
-            {p.logo ? <Slip letters={l.letters} color={p.color ?? l.color} logo={p.logo} /> : <span className="swatch" style={{ background: p.color ?? l.color }} />}
+            <Slip letters={l.letters} name={lang === 'he' ? p.nameHe : p.nameEn} color={p.color ?? l.color} logo={p.logo} />
             <span style={{ minWidth: 0 }}>{name(p)}{l.candidates[0]?.partyId === p.id && <small className="muted"> · {L('Lead party', 'מפלגה מובילה')}</small>}<PartyLinks links={p.links} name={name(p)} /></span>
             <b>{held(p.id)}</b>
             {standard && s.blocs.length > 0 ? (

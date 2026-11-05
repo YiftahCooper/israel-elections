@@ -57,6 +57,7 @@ export interface ListRecord {
   shortHe: string;
   shortEn: string | null; // app-assigned common English name; null when none is in common use
   /** sponsoring parties exactly as published */
+  englishName?: { label: string; kind: 'official' | 'transliteration'; sourceId: string; note: string };
   sponsorsHe: string;
   /** individual parties, only when the source separates them unambiguously */
   partiesHe: string[] | null;
@@ -118,7 +119,7 @@ export interface PartyLink {
 
 /** A party logo as used at that election: a locally hosted file with its rights basis and credit. */
 export type LogoRights = 'free-licence' | 'fair-use-identification';
-export interface LogoRef { rights: LogoRights; file: string; licence: string; attribution: string; sourceUrl: string; background?: string }
+export interface LogoRef { rights: LogoRights; file: string; licence: string; attribution: string; sourceUrl: string; background?: string; year?: number }
 
 /** A constituent party of a joint list (decision 0087). */
 export interface PartyDef { id: string; nameHe: string; nameEn: string; color?: string; logo?: LogoRef; links?: PartyLink[] }

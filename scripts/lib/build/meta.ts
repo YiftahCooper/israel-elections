@@ -13,7 +13,7 @@ import type { BlocScheme, ElectionDataset } from '../../../src/data/schema.ts';
 const META = join(import.meta.dirname, '..', '..', '..', 'data', 'meta');
 
 interface MetaParty { id: string; nameHe: string; nameEn: string; candidateRanks?: number[]; confidence?: string }
-interface MetaList { letters: string; parties?: MetaParty[] }
+interface MetaList { englishName?: import('../../../src/data/schema.ts').ListRecord['englishName']; letters: string; parties?: MetaParty[] }
 interface MetaMember { letters?: string; party?: string; parties?: string[]; ranks?: number[]; note?: string; joined?: string }
 interface MetaScheme { id: string; nameHe: string; nameEn: string; kind: string; date?: string; notes?: unknown;
   blocs: { id: string; nameHe: string; nameEn: string; color: string; members: MetaMember[] }[] }
@@ -73,8 +73,11 @@ export function applyMeta(ds: ElectionDataset): ElectionDataset {
   for (const c of meta.colours ?? []) if (c.letters && strong(c)) associated.set(listId(c.letters), c.color.toLowerCase());
   let lists = ds.lists.map((l) => {
     const parties = partiesByList.get(l.id);
+    const englishName = meta.lists.find(x => x.letters === l.letters)?.englishName;
+    if (englishName && (!englishName.label || /[\u0590-\u05ff]/.test(englishName.label) || !englishName.sourceId || !englishName.note || !['official','transliteration'].includes(englishName.kind))) fail(`${l.letters}: invalid English name provenance`);
     return {
       ...l,
+      ...(englishName ? {shortEn: englishName.label, englishName} : {}),
       color: associated.get(l.id) ?? l.color,
       ...(parties ? { parties } : {}),
       candidates: l.candidates.map((c) => (partyOfCandidate.has(c.id) ? { ...c, partyId: partyOfCandidate.get(c.id)! } : c)),

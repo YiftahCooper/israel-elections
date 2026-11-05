@@ -1,3 +1,4 @@
+import {englishLabel} from '../../data/names.ts';
 import {useEffect,useState} from 'react';
 import type facts from '../../../data/meta/joint-facts.json';
 import {useL,useLang} from '../i18n.ts';
@@ -23,10 +24,10 @@ export function JointFacts({listId,showListName=false,compact=false}:{listId:str
    <span>{L('Head','בראש')}: {head?name(head):L('Unknown','לא ידוע')} · {L('Elected','נבחרים')}: {elected||'0'}{f.unknownElected>0&&` · ${L('Unknown','לא ידוע')} ${f.unknownElected}`}{f.pending&&` · ${L('Provisional','זמני')}`}{f.secondaryAffiliations&&` · ${L('Secondary affiliations','שיוך ממקור משני')}`}</span>
   <span> · {L('Opening factions','סיעות בהשבעה')}: {factions.length?`${factions.length} ${L('factions','סיעות')}`:L('Unknown','לא ידוע')}{unknown>0&&factions.length>0&&` · ${L('Unknown','לא ידוע')} ${unknown}`}</span>{' '}
 <br/>
-   <strong>{L('Official submission','הגשה רשמית')}: </strong>{f.submissionHe.join(' · ')||L('Unknown','לא ידוע')}<br/>
+   <strong>{L('Official submission','הגשה רשמית')}: </strong>{(lang === 'he' ? f.submissionHe.join(' · ') : f.parties.map(name).join(' · '))||L('Unknown','לא ידוע')}<br/>
    {L('Published baseline, not the current simulation. Component affiliations follow the reviewed metadata; secondary evidence is labelled. Rank 1 identifies the head party. Elected seats are not a division of votes.','נתוני המקור, לא ההדמיה הנוכחית. שיוכי המפלגות לפי המטא־דאטה שנבדק; מקורות משניים מסומנים. מקום 1 מזהה את המפלגה שבראש. חלוקת הנבחרים אינה חלוקת קולות.')}<br/>
    {L('Opening day','יום ההשבעה')}: {f.openingDate??L('Unconfirmed','טרם אומת')}<br/>
-   {f.parties.map(p=><span key={p.id}>{name(p)}: {p.factions.map(x=>`${x.nameHe} ${x.seats}`).join(' · ')}{p.unknownFaction>0&&` · ${L('Unknown','לא ידוע')} ${p.unknownFaction}`}<br/></span>)}
+   {f.parties.map(p=><span key={p.id}>{name(p)}: {p.factions.map(x=>`${lang === 'he' ? x.nameHe : englishLabel(f.parties.find(p => p.nameHe === x.nameHe)?.nameEn, x.nameHe)} ${x.seats}`).join(' · ')}{p.unknownFaction>0&&` · ${L('Unknown','לא ידוע')} ${p.unknownFaction}`}<br/></span>)}
    {L('Only unique exact names and faction date intervals are matched. Unmatched members, missing faction records and future swearings-in stay unknown.','ההתאמה לפי שם מדויק וייחודי, ובטווח התאריכים של הסיעה. נבחרים שלא זוהו, רשומות חסרות והשבעה עתידית נשארים לא ידועים.')}<br/>
    {f.sources.map((url,i)=><span key={url}><a href={url} target="_blank" rel="noreferrer">{L('Official source','מקור רשמי')} {i+1}</a>{' '}</span>)}
    {f.secondarySources.map(url=><span key={url}><a href={url} target="_blank" rel="noreferrer">{L('Secondary affiliation source','מקור משני לשיוך')}</a>{' '}</span>)}

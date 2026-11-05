@@ -1559,6 +1559,36 @@
       "notes": [
         "Dataset rank 23 \"קצנלבוגן בן-ציון\" is Ben-Zion Keshet (PersonID 5955), matched by Knesset 7 Gahal membership."
       ]
+    },
+    {
+      "letters": "כן",
+      "nameHe": "רשימה למען ארץ-ישראל",
+      "englishName": {
+        "label": "Reshima Lemaan Eretz Yisrael",
+        "kind": "transliteration",
+        "sourceId": "k7-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "נס",
+      "nameHe": "רשימת שלום",
+      "englishName": {
+        "label": "Reshimat Shalom",
+        "kind": "transliteration",
+        "sourceId": "k7-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "פז",
+      "nameHe": "ישראל הצעירה",
+      "englishName": {
+        "label": "Yisrael HaTzeira",
+        "kind": "transliteration",
+        "sourceId": "k7-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
     }
   ],
   "blocSchemes": [

@@ -3,7 +3,28 @@
   "electionDate": "1961-08-15",
   "era": "1949-1977",
   "generated": "2026-11-04",
-  "lists": [],
+  "lists": [
+    {
+      "letters": "סס",
+      "nameHe": "למען הצדק והאחווה, רשימה ספרדית דתית",
+      "englishName": {
+        "label": "Lemaan HaTzedek VeHaAhva",
+        "kind": "transliteration",
+        "sourceId": "k5-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "עע",
+      "nameHe": "הגוש העממי",
+      "englishName": {
+        "label": "HaGush HaAmami",
+        "kind": "transliteration",
+        "sourceId": "k5-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    }
+  ],
   "blocSchemes": [
     {
       "id": "first-government",

@@ -1,7 +1,7 @@
 {
  "electionId": "k24",
  "lists": [
-  {
+    {
    "letters": "מחל",
    "nameHe": "הליכוד בהנהגת בנימין נתניהו לראשות הממשלה",
    "seats": 30,
@@ -178,7 +178,7 @@
     "electedAssigned": 30
    }
   },
-  {
+    {
    "letters": "ג",
    "nameHe": "יהדות התורה והשבת אגודת ישראל – דגל התורה",
    "seats": 7,
@@ -355,7 +355,7 @@
     "electedAssigned": 7
    }
   },
-  {
+    {
    "letters": "ודעם",
    "nameHe": "הרשימה המשותפת (חד\"ש, תע\"ל, בל\"ד)",
    "seats": 6,
@@ -549,7 +549,7 @@
     "electedAssigned": 6
    }
   },
-  {
+    {
    "letters": "ט",
    "nameHe": "הציונות הדתית בראשות בצלאל סמוטריץ'",
    "seats": 6,
@@ -644,7 +644,7 @@
     "electedAssigned": 6
    }
   },
-  {
+    {
    "letters": "ת",
    "nameHe": "תקווה חדשה בהנהגת גדעון סער לראשות הממשלה",
    "seats": 6,
@@ -762,8 +762,248 @@
     "elected": 6,
     "electedAssigned": 6
    }
-  }
- ],
+  },
+    {
+      "letters": "ר",
+      "nameHe": "רפא – רק בריאות בראשות דוקטור אריה אבני",
+      "englishName": {
+        "label": "Rapeh – Rak Briut",
+        "kind": "transliteration",
+        "sourceId": "k24-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ףז",
+      "nameHe": "הפיראטים",
+      "englishName": {
+        "label": "HaPiratim",
+        "kind": "transliteration",
+        "sourceId": "k24-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "כך",
+      "nameHe": "אני ואתה – מפלגת העם הישראלית",
+      "englishName": {
+        "label": "Ani VeAta",
+        "kind": "transliteration",
+        "sourceId": "k24-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "רנ",
+      "nameHe": "התקווה לשינוי",
+      "englishName": {
+        "label": "HaTikva LeShinui",
+        "kind": "transliteration",
+        "sourceId": "k24-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "י",
+      "nameHe": "המפץ החברתי – גימלאים",
+      "englishName": {
+        "label": "HaMapatz HaHevrati – Gimlaim",
+        "kind": "transliteration",
+        "sourceId": "k24-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "קץ",
+      "nameHe": "משפט צדק בראשות ד\"ר לריסה עמיר טרימבובלר",
+      "englishName": {
+        "label": "Mishpat Tzedek",
+        "kind": "transliteration",
+        "sourceId": "k24-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "רף",
+      "nameHe": "מפלגת עם שלם – בראשות הרב חיים אמסלם",
+      "englishName": {
+        "label": "Am Shalem",
+        "kind": "transliteration",
+        "sourceId": "k24-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "קך",
+      "nameHe": "סדר חדש לשינוי שיטת הבחירות והממשל בישראל בראשות עו\"ד אביטל אופק",
+      "englishName": {
+        "label": "Seder Hadash",
+        "kind": "transliteration",
+        "sourceId": "k24-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "נ",
+      "nameHe": "קמ\"ה – קידום מעמד הפרט",
+      "englishName": {
+        "label": "Kama – Kidum Maamad HaPrat",
+        "kind": "transliteration",
+        "sourceId": "k24-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ק",
+      "nameHe": "נועם קולמן, לירון עופרי וסולי וולף הבלתי אפשרי, אפשרי",
+      "englishName": {
+        "label": "Noam Colman, Liron Ofri VeSuli Wolf",
+        "kind": "transliteration",
+        "sourceId": "k24-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "כ",
+      "nameHe": "הלב היהודי בראשות אלי יוסף",
+      "englishName": {
+        "label": "HaLev HaYehudi",
+        "kind": "transliteration",
+        "sourceId": "k24-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "צי",
+      "nameHe": "עצמנו עצמאים וליברלים",
+      "englishName": {
+        "label": "Atzmenu Atzmaim VeLiberalim",
+        "kind": "transliteration",
+        "sourceId": "k24-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "יק",
+      "nameHe": "מפלגת הגוש התנ\"כי",
+      "englishName": {
+        "label": "Mifleget HaGush HaTanakhi",
+        "kind": "transliteration",
+        "sourceId": "k24-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ני",
+      "nameHe": "עולם חדש בראשות יורם אדרי",
+      "englishName": {
+        "label": "Olam Hadash",
+        "kind": "transliteration",
+        "sourceId": "k24-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ינ",
+      "nameHe": "ברית השותפות לאיחוד לאומי בהנהגת רב חובל ב. שליאן",
+      "englishName": {
+        "label": "Brit HaShutafut LeIhud Leumi",
+        "kind": "transliteration",
+        "sourceId": "k24-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ז",
+      "nameHe": "הישראלים",
+      "englishName": {
+        "label": "HaYisraelim",
+        "kind": "transliteration",
+        "sourceId": "k24-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "קי",
+      "nameHe": "מפלגת שמע בראשות נפתלי גולדמן",
+      "englishName": {
+        "label": "Shma",
+        "kind": "transliteration",
+        "sourceId": "k24-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ץ",
+      "nameHe": "דעם – כלכלה ירוקה מדינה אחת",
+      "englishName": {
+        "label": "Daam",
+        "kind": "transliteration",
+        "sourceId": "k24-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "יר",
+      "nameHe": "מנהיגות חברתית",
+      "englishName": {
+        "label": "Manhigut Hevratit",
+        "kind": "transliteration",
+        "sourceId": "k24-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "צכ",
+      "nameHe": "מען (יחד) לעידן חדש",
+      "englishName": {
+        "label": "Maan – LeIdan Hadash",
+        "kind": "transliteration",
+        "sourceId": "k24-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "צף",
+      "nameHe": "חץ",
+      "englishName": {
+        "label": "Hetz",
+        "kind": "transliteration",
+        "sourceId": "k24-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "נר",
+      "nameHe": "\"אנחנו\" – בראשות עו\"ד מוש חוג'ה",
+      "englishName": {
+        "label": "Anahnu",
+        "kind": "transliteration",
+        "sourceId": "k24-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "יף",
+      "nameHe": "כבוד האדם, בראשות עו\"ד ארקדי פוגץ'",
+      "englishName": {
+        "label": "Kvod HaAdam",
+        "kind": "transliteration",
+        "sourceId": "k24-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "רק",
+      "nameHe": "דמוקרטית – חירות, שיוויון וערבות הדדית",
+      "englishName": {
+        "label": "Demokratit",
+        "kind": "transliteration",
+        "sourceId": "k24-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    }
+  ],
  "blocSchemes": [
   {
    "id": "first-government",

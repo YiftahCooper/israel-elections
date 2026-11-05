@@ -1593,6 +1593,66 @@
         }
       ],
       "unassignedRanks": []
+    },
+    {
+      "letters": "הם",
+      "nameHe": "דמוקרטים בצדק",
+      "englishName": {
+        "label": "Demokratim BeTzedek",
+        "kind": "transliteration",
+        "sourceId": "k9-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "זה",
+      "nameHe": "התנועה להתחדשות חברתית בראשותו של מרדכי בן־פורת",
+      "englishName": {
+        "label": "HaTnua LeHithadshut Hevratit",
+        "kind": "transliteration",
+        "sourceId": "k9-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "חך",
+      "nameHe": "בית ישראל, ברית נאמני תימן ועדות ישראל",
+      "englishName": {
+        "label": "Beit Yisrael",
+        "kind": "transliteration",
+        "sourceId": "k9-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "כה",
+      "nameHe": "הדור החדש – תנועת הצעירים של ישראל",
+      "englishName": {
+        "label": "HaDor HeHadash",
+        "kind": "transliteration",
+        "sourceId": "k9-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "פז",
+      "nameHe": "הפנתרים הציוניים, רשימת ציבור ודורשי עבודה",
+      "englishName": {
+        "label": "HaPanterim HaTzionim",
+        "kind": "transliteration",
+        "sourceId": "k9-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "פח",
+      "nameHe": "חופש, חזית פועלים, פנתרים שחורים, ישראל הצעירה, יוצאי עדות, ועדי שכונות עוני ובלתי מפלגתיים",
+      "englishName": {
+        "label": "Hofesh",
+        "kind": "transliteration",
+        "sourceId": "k9-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
     }
   ],
   "blocSchemes": [

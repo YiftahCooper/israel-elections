@@ -539,6 +539,96 @@
       "notes": [
         "Joint list of two women's organisations rather than political parties; included because the list title names both."
       ]
+    },
+    {
+      "letters": "יא",
+      "nameHe": "הגוש העובד אלכתלה אלעאמלה",
+      "englishName": {
+        "label": "HaGush HaOved",
+        "kind": "transliteration",
+        "sourceId": "k1-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ג",
+      "nameHe": "תנועת ז'בוטינסקי — ברית הצה\"ר",
+      "englishName": {
+        "label": "Tnuat Jabotinsky – Brit HaTzohar",
+        "kind": "transliteration",
+        "sourceId": "k1-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "יח",
+      "nameHe": "רשימת חרדים",
+      "englishName": {
+        "label": "Reshimat Haredim",
+        "kind": "transliteration",
+        "sourceId": "k1-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ת",
+      "nameHe": "הגוש העממי הערבי",
+      "englishName": {
+        "label": "HaGush HaAmami HaAravi",
+        "kind": "transliteration",
+        "sourceId": "k1-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "פד",
+      "nameHe": "הפועלת והאשה הדתית",
+      "englishName": {
+        "label": "HaPoelet VeHaIsha HaDatit",
+        "kind": "transliteration",
+        "sourceId": "k1-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "יג",
+      "nameHe": "רשימת יצחק גרינבוים",
+      "englishName": {
+        "label": "Reshimat Yitzhak Gruenbaum",
+        "kind": "transliteration",
+        "sourceId": "k1-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ש",
+      "nameHe": "הרשימה המאוחדת של פועלים דתיים",
+      "englishName": {
+        "label": "HaReshima HaMeuhedet Shel Poalim Datiim",
+        "kind": "transliteration",
+        "sourceId": "k1-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ט",
+      "nameHe": "למען ירושלים",
+      "englishName": {
+        "label": "Lemaan Yerushalayim",
+        "kind": "transliteration",
+        "sourceId": "k1-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "יט",
+      "nameHe": "רשימת היהדות המסורתית",
+      "englishName": {
+        "label": "Reshimat HaYahadut HaMasortit",
+        "kind": "transliteration",
+        "sourceId": "k1-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
     }
   ],
   "blocSchemes": [

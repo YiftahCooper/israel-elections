@@ -1,3 +1,4 @@
+import {englishLabel} from '../data/names.ts';
 import type { RuleSet } from '../engine/types.ts';
 import type { Scenario } from '../model/scenario.ts';
 import type { Lang } from './i18n.ts';
@@ -26,7 +27,7 @@ export function changeText(s: Scenario, path: EditPath, lang: Lang): string {
     const c = s.lists.flatMap(l => l.candidates).find(c => c.id === id);
     const p = s.lists.flatMap(l => l.parties ?? []).find(p => p.id === id);
     const entity = b ?? g ?? c ?? p;
-    return l ? (he ? l.shortHe : l.shortEn ?? l.shortHe) : entity ? (he ? entity.nameHe : ('nameEn' in entity ? entity.nameEn : null) ?? entity.nameHe) : he ? 'פריט שהוסר' : 'Removed item';
+    return l ? (he ? l.shortHe : englishLabel(l.shortEn,l.shortHe)) : entity ? (he ? entity.nameHe : englishLabel('nameEn' in entity ? entity.nameEn : null,entity.nameHe)) : he ? 'פריט שהוסר' : 'Removed item';
   };
   const format = (v: unknown, key: string): string => {
     if (v === undefined || v === null || v === '') return none;
@@ -36,12 +37,12 @@ export function changeText(s: Scenario, path: EditPath, lang: Lang): string {
       if (key === 'thresholdPct') return v + '%';
       if (key === 'color') return he ? 'צבע' : 'Colour';
       if (['bloc', 'blocSchemeId', 'members', 'originIds', 'factionSplits', 'in', 'out', 'partyBlocs', 'candidateBlocs', 'lotteryWinners', 'partyId', 'originListId'].includes(key)) return name(v);
-      return terms[v]?.[he ? 1 : 0] ?? v;
+      return terms[v]?.[he ? 1 : 0] ?? (!he && ['nameHe','shortHe','sponsorsHe','partyHe'].includes(key) ? englishLabel(null,v) : v);
     }
     if (Array.isArray(v)) return v.length ? v.map(x => format(x, key)).join(key === 'members' ? ' + ' : ' · ') : none;
     const o = v as Record<string, unknown>;
     if ('members' in o) return format(o.members, 'members') + ' · ' + (o.enabled === false ? (he ? 'כבוי' : 'Off') : (he ? 'בתוקף' : 'In force'));
-    if ('nameHe' in o) return String(he ? o.nameHe : o.shortEn ?? o.nameEn ?? o.nameHe);
+    if ('nameHe' in o) return String(he ? o.nameHe : englishLabel(String(o.shortEn ?? o.nameEn ?? ''),String(o.nameHe)));
     return Object.entries(o).filter(([k]) => !['id', 'at', 'source'].includes(k)).map(([k,x]) =>
       editPathLabel(s, [k], lang) + ': ' + format(x, ['partyBlocs', 'candidateBlocs', 'lotteryWinners'].includes(key) ? key : k)).join(' · ') || none;
   };

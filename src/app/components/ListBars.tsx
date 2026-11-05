@@ -78,7 +78,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
         <button type="button" data-family={familyRows.find(x => x.id === l.id)?.family} ref={open ? selRef : undefined} className={`lb-row ${out ? 'out' : ''} ${selected && !open ? 'dim' : ''}`} aria-pressed={open}
           aria-label={listLabel(l, lang)} aria-describedby={`lbd-${l.id}`}
           onClick={() => setState({ selectedListId: open ? null : l.id })}
-          title={l.logo ? l.nameHe : `${l.nameHe} — ${L('ballot letters (no logo is sourced for this election yet)', 'אותיות הפתק (טרם נמצא סמל ממקור לבחירות אלה)')}`}>
+          title={l.logo ? listLabel(l, lang) : `${listLabel(l, lang)} — ${L('ballot letters (no logo is sourced for this election yet)', 'אותיות הפתק (טרם נמצא סמל ממקור לבחירות אלה)')}`}>
           <Slip letters={l.letters} color={l.color} logo={l.logo} />
           <span className="lb-main">
             <span className="lb-name">{listLabel(l, lang)}<PartEdits single s={s} prefix={['lists', l.id]} /></span>
@@ -111,7 +111,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
               const n = electedOf(l, lr.seats).filter((c) => c.partyId === p.id).length;
               return (
                 <li key={p.id}>
-                  {p.logo ? <Slip letters={l.letters} color={p.color ?? l.color} logo={p.logo} /> : <span className="swatch" style={{ background: p.color ?? l.color }} />}
+                  <Slip letters={l.letters} name={lang === 'he' ? p.nameHe : p.nameEn} color={p.color ?? l.color} logo={p.logo} />
                   <span className="lb-pname">{lang === 'he' ? p.nameHe : p.nameEn}</span>
                   <span className="lb-bar" aria-hidden><i style={{ width: `${(n / scale) * 100}%`, background: p.color ?? l.color }} /></span>
                   <b>{n}</b>

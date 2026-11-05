@@ -1,3 +1,4 @@
+import { Slip } from './ui.tsx';
 import { EditMarker } from './EditMarker.tsx';
 import { useDisclosure } from './Feature.tsx';
 import { StartFrom } from './StartFrom.tsx';
@@ -182,7 +183,7 @@ function Merge({ s, r }: { s: Scenario; r: AllocationResult }) {
   const sel = s.lists.filter((l) => ids.includes(l.id));
   const total = sel.reduce((t, l) => t + l.votes, 0);
   const kept = Number((BigInt(total) * BigInt(Math.round(retention * 100))) / 10000n);
-  const defaultHe = sel.map((l) => l.shortHe).join('–'), defaultEn = sel.map((l) => l.shortEn ?? l.shortHe).join('–');
+  const defaultHe = sel.map((l) => l.shortHe).join('–'), defaultEn = sel.map((l) => listLabel(l, 'en')).join('–');
   // the merged list looks like its largest member (a merged Likud stays Likud-blue with Likud's letters)
   const biggest = sel.reduce<typeof sel[number] | undefined>((b, l) => (!b || l.votes > b.votes ? l : b), undefined);
   const color = chosenColor ?? biggest?.color ?? '#7a6fd0';
@@ -257,7 +258,7 @@ function Split({ s, r }: { s: Scenario; r: AllocationResult }) {
     return [{ type: 'split', id: l.id, parts: [
       { newId: ids[0], nameHe: `${l.shortHe} א`, letters: l.letters, color: l.color, votes: va, candidateIds: ca.map((x) => x.id) },
       { newId: ids[1], nameHe: `${l.shortHe} ב`, letters: `${l.letters}2`, color: '#8a8f99', votes: l.votes - va, candidateIds: cb.map((x) => x.id) }] },
-      { type: 'setListMeta', listId: ids[0], patch: { shortEn: `${l.shortEn ?? l.shortHe} A` } }, { type: 'setListMeta', listId: ids[1], patch: { shortEn: `${l.shortEn ?? l.shortHe} B` } }];
+      { type: 'setListMeta', listId: ids[0], patch: { shortEn: `${listLabel(l, 'en')} A` } }, { type: 'setListMeta', listId: ids[1], patch: { shortEn: `${listLabel(l, 'en')} B` } }];
   }, [l, byParty, parties, partyShares, mode, topN, shareA, ids]);
   const go = () => { if (actions && dispatchMany(actions)) { setId(''); setState({ selectedListId: ids[0], tool: 'board' }); } };
   return (
@@ -267,7 +268,7 @@ function Split({ s, r }: { s: Scenario; r: AllocationResult }) {
       {l && byParty && (
         <div className="st-options">
           <p className="small" style={{ margin: 0, gridColumn: '1 / -1' }}>{L('Split into its parties. Each gets the votes in proportion to its share of the list’s elected members (the assumption):', 'פיצול למפלגותיה. כל מפלגה מקבלת קולות לפי חלקה בנבחרי הרשימה (ההנחה):')}</p>
-          {parties.map((p, i) => <span key={p.id} className="small"><span className="swatch" style={{ background: p.color ?? l.color }} /> {lang === 'he' ? p.nameHe : p.nameEn}: <b>{Math.round(partyShares[i] * 1000) / 10}%</b></span>)}
+          {parties.map((p, i) => <span key={p.id} className="small"><Slip letters={l.letters} name={lang === 'he' ? p.nameHe : p.nameEn} color={p.color ?? l.color} logo={p.logo} /> {lang === 'he' ? p.nameHe : p.nameEn}: <b>{Math.round(partyShares[i] * 1000) / 10}%</b></span>)}
           <p className="tiny muted" style={{ margin: 0, gridColumn: '1 / -1' }}>{L('To set the shares yourself, open the list on the Overview and use “What if they had run separately?”.', 'כדי לקבוע את החלוקה בעצמכם, פתחו את הרשימה בתמונת המצב והשתמשו ב"מה אילו היו רצות בנפרד?".')}</p>
         </div>
       )}

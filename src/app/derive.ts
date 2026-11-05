@@ -1,3 +1,4 @@
+import { englishLabel } from '../data/names.ts';
 import {inputDiffs,inputPart,replacementScopes,scopeCovers} from '../model/editScopes.ts';
 import {PARTS,type Part} from '../model/parts.ts';
 import {isFamilyGrouping} from '../families/labels.ts';
@@ -59,7 +60,7 @@ export function ruleChanges(s: Scenario, lang: Lang): string[] {
   return out;
 }
 
-export const listLabel = (l: Pick<SimList, 'shortHe' | 'shortEn'>, lang: Lang) => (lang === 'en' && l.shortEn ? l.shortEn : l.shortHe);
+export const listLabel = (l: Pick<SimList, 'shortHe' | 'shortEn'>, lang: Lang) => (lang === 'en' ? englishLabel(l.shortEn, l.shortHe) : l.shortHe);
 
 /** Pass null only for the real election result; saved bases are always named. */
 export function referenceLabel(reference: Pick<Scenario, 'name'> | null, lang: Lang) {
@@ -86,7 +87,7 @@ export function scenarioIssues(s: Scenario, r: AllocationResult): ScenarioIssue[
     const sl = s.lists.find((x) => x.id === l.id)!;
     // an unavailable or truncated roster is unknown beyond what is listed, not short of candidates
     const n = seatedOrder(sl).length;
-    if (l.seats > n && !sl.rosterUnavailable && !sl.rosterTruncated) out.push({ level: 'error', en: `${sl.shortEn ?? sl.shortHe} wins ${l.seats} seats but has only ${n} candidates; ${l.seats - n} seat(s) would stay vacant.`, he: `${sl.shortHe} זוכה ב-${l.seats} מנדטים אך יש בה רק ${n} מועמדים; ${l.seats - n} מושבים יישארו ריקים.` });
+    if (l.seats > n && !sl.rosterUnavailable && !sl.rosterTruncated) out.push({ level: 'error', en: `${listLabel(sl, 'en')} wins ${l.seats} seats but has only ${n} candidates; ${l.seats - n} seat(s) would stay vacant.`, he: `${sl.shortHe} זוכה ב-${l.seats} מנדטים אך יש בה רק ${n} מועמדים; ${l.seats - n} מושבים יישארו ריקים.` });
   }
   const letters = new Map<string, number>();
   for (const l of s.lists) letters.set(l.letters, (letters.get(l.letters) ?? 0) + 1);
@@ -357,7 +358,7 @@ export function editPathLabel(s: Scenario, path: EditPath, lang: Lang, fallback?
   };
   const listName = (id: string) => {
     const l = s.lists.find(l => l.id === id) ?? fallback?.lists.find(l => l.id === id);
-    return l ? (lang === 'he' ? l.shortHe : l.shortEn ?? l.shortHe) : undefined;
+    return l ? (lang === 'he' ? l.shortHe : listLabel(l, 'en')) : undefined;
   };
   return path.map(k => {
     if (names[k]) return names[k][lang === 'he' ? 1 : 0];
@@ -365,6 +366,6 @@ export function editPathLabel(s: Scenario, path: EditPath, lang: Lang, fallback?
     if (agreement) return agreement.members.map(id => listName(id) ?? (lang === 'he' ? 'רשימה שהוסרה' : 'Removed list')).join(' + ');
     const entity = [...s.blocs, ...(s.blocSchemes ?? []), ...s.lists.flatMap(l => [...l.candidates, ...(l.parties ?? [])]),
       ...(fallback ? [...fallback.blocs, ...(fallback.blocSchemes ?? []), ...fallback.lists.flatMap(l => [...l.candidates, ...(l.parties ?? [])])] : [])].find(x => x.id === k);
-    return listName(k) ?? (entity ? (lang === 'he' ? entity.nameHe : ('nameEn' in entity ? entity.nameEn : null) ?? entity.nameHe) : (lang === 'he' ? 'פרט' : 'Detail'));
+    return listName(k) ?? (entity ? (lang === 'he' ? entity.nameHe : englishLabel('nameEn' in entity ? entity.nameEn : null,entity.nameHe)) : (lang === 'he' ? 'פרט' : 'Detail'));
   }).join(' · ');
 }

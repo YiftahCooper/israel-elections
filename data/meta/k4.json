@@ -243,6 +243,116 @@
         }
       ],
       "unassignedRanks": []
+    },
+    {
+      "letters": "יס",
+      "nameHe": "ליכוד יוצאי צפון-אפריקה — בלתי תלוי",
+      "englishName": {
+        "label": "Likud Yotzei Tzfon Afrika",
+        "kind": "transliteration",
+        "sourceId": "k4-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "יד",
+      "nameHe": "סיעה עצמאית לערביי ישראל",
+      "englishName": {
+        "label": "Sia Atzmait LeAravei Yisrael",
+        "kind": "transliteration",
+        "sourceId": "k4-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "שת",
+      "nameHe": "מפלגת עבודה ערבית ישראלית",
+      "englishName": {
+        "label": "Mifleget Avoda Aravit Yisraelit",
+        "kind": "transliteration",
+        "sourceId": "k4-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "סט",
+      "nameHe": "מפלגה לאומית ספרדית, עדות מזרח ובלתי מפלגתיים",
+      "englishName": {
+        "label": "Miflaga Leumit Sfaradit",
+        "kind": "transliteration",
+        "sourceId": "k4-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "סר",
+      "nameHe": "איחוד לאומי מיסודם של ספרדים ובני עדות מזרח",
+      "englishName": {
+        "label": "Ihud Leumi",
+        "kind": "transliteration",
+        "sourceId": "k4-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ש",
+      "nameHe": "סיעת נכים נפגעי נאצים",
+      "englishName": {
+        "label": "Siat Nekhim Nifgeei Natzim",
+        "kind": "transliteration",
+        "sourceId": "k4-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "לש",
+      "nameHe": "סיעת התימנים",
+      "englishName": {
+        "label": "Siat HaTeimanim",
+        "kind": "transliteration",
+        "sourceId": "k4-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "רט",
+      "nameHe": "בלתי תלויים",
+      "englishName": {
+        "label": "Bilti Tluyim",
+        "kind": "transliteration",
+        "sourceId": "k4-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "רו",
+      "nameHe": "איגוד סוציאליסטי \"בונד\" ובלתי מפלגתיים",
+      "englishName": {
+        "label": "Igud Sotzialisti Bund",
+        "kind": "transliteration",
+        "sourceId": "k4-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "רי",
+      "nameHe": "חזית העולה החדש",
+      "englishName": {
+        "label": "Hazit HaOleh HeHadash",
+        "kind": "transliteration",
+        "sourceId": "k4-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "טט",
+      "nameHe": "כוח לעלות",
+      "englishName": {
+        "label": "Koah Laalot",
+        "kind": "transliteration",
+        "sourceId": "k4-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
     }
   ],
   "blocSchemes": [
