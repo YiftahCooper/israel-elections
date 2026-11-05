@@ -9,6 +9,7 @@
 
 - Keep long edited bloc names and official list names readable on phones, restore contrast for Compare counts, and show family scaling counts once beside their strips.
 - Prevent map zoom completion from accessing a destroyed pane after tool navigation.
+- What if… answers that move no seat now show what does change (a joint list as the sum of its parts, the threshold in votes, agreements that moved nothing); every question's (i) states its assumptions, including surplus agreements a merger ends, and points to the election's sources. Questions and merged lists use the lists' own names, and each (i) sits on its question's line.
 
 ## 5 November 2026 — concise tool pages
 
