@@ -10,11 +10,11 @@ async function edit(page:Page){await page.getByRole('button',{name:'Edit members
 test('hero charts, collapsed table, policy view, exact pending tooltip',async({page})=>{
  await start(page);await expect(page.locator('.family-exact')).not.toHaveAttribute('open');
  await expect(page.locator('.family-plots svg').first()).toHaveJSProperty('clientHeight',300);
- await page.locator('.family-plots [role=link]').filter({hasText:'Gazette unverified'}).first().focus();await expect(page.getByRole('tooltip')).toContainText('Gazette unverified');
+ await page.locator('.family-plots [role=button]').filter({hasText:'Gazette unverified'}).first().focus();await expect(page.getByRole('tooltip')).toContainText('Gazette unverified');
  await page.getByText('Exact figures (26 elections)',{exact:true}).click();await expect(page.locator('.family-table tbody tr')).toHaveCount(26);await expect(page.locator('.family-table')).toContainText('52,982');
- await page.getByRole('group',{name:'Mixed-list policy',exact:true}).getByRole('button',{name:'Include whole lists',exact:true}).click();
+ await page.getByRole('group',{name:'Mixed-list policy',exact:true}).getByRole('button',{name:'Count all mixed lists',exact:true}).click();
  await expect(page.locator('.family-table')).toContainText('55,817');await expect(page.locator('.family-profile')).toContainText('Sourced draft interpretation');await expect(page.locator('.family-chip')).toHaveCount(9);
- await page.getByRole('group',{name:'Mixed-list policy',exact:true}).getByRole('button',{name:'Exclude',exact:true}).click();await expect(page.locator('.family-table tbody tr').first()).toContainText('2,835');await expect(page.locator('.family-table tbody tr').first()).toContainText('Mixed lists excluded: 52,982');
+ await page.getByRole('group',{name:'Mixed-list policy',exact:true}).getByRole('button',{name:'Do not count mixed lists',exact:true}).click();await expect(page.locator('.family-table tbody tr').first()).toContainText('2,835');await expect(page.locator('.family-table tbody tr').first()).toContainText('Mixed lists excluded: 52,982');
 });
 test('fork, save, hide, restore and cross-election membership persists',async({page})=>{
  await start(page);await edit(page);await editor(page).getByRole('button',{name:'Save as my preset',exact:true}).click();await expect(page.locator('.family-profile')).toContainText('Personal copy');
@@ -56,7 +56,7 @@ for(const lang of ['he','en'])for(const theme of ['light','dark'])for(const phon
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
 });
 test('opening a historical chart retains a family lens without editing the election',async({page})=>{
- await start(page);await page.locator('.family-plots [role=link]').first().click();await expect(page.locator('.family-row-label').first()).toContainText('Mixed lists');await expect(page.locator('.family-treatment')).toContainText('Haredi');await expect(page.getByRole('button',{name:/^Undo:/})).toHaveCount(0);
+ await start(page);await page.locator('.family-plots [role=button]').first().click();await page.getByRole('button',{name:'Open this election',exact:true}).click();await expect(page.locator('.family-row-label').first()).toContainText('Mixed lists');await expect(page.locator('.family-treatment')).toContainText('Haredi');await expect(page.getByRole('button',{name:/^Undo:/})).toHaveCount(0);
  await page.screenshot({path:'.backup-scratch/families/overview-family-view-1949.png'});await page.getByRole('button',{name:'Clear family view',exact:true}).click();await expect(page.locator('.family-row-label')).toHaveCount(0);
 });
 test('mixed-only elections are not plotted as zero; mixed policy is a persistent view that never forks',async({page})=>{
@@ -64,14 +64,14 @@ test('mixed-only elections are not plotted as zero; mixed policy is a persistent
  await start(page);await choose(page.getByRole('button',{name:'Election',exact:true}),'k19');await page.getByRole('tab',{name:'Party families',exact:true}).click();
  await page.getByRole('button',{name:'Haredi',exact:true}).click();await page.getByRole('button',{name:'Likud lineage',exact:true}).click();
  await expect(page.locator('.family-legend')).toHaveCount(1);await expect(page.locator('.family-legend')).toContainText('Mixed lists (up to)');
- const share=page.locator('.family-plots section').first();await share.locator('[role=link]').nth(18).focus();
+ const share=page.locator('.family-plots section').first();await share.locator('[role=button]').nth(18).focus();
  await expect(page.getByRole('tooltip')).toContainText('Only in mixed lists');await expect(page.getByRole('tooltip')).not.toContainText('0 votes');
  await expect(page.locator('.family-scale')).toContainText('only mixed lists in this election');
- await page.getByRole('group',{name:'Mixed-list policy',exact:true}).getByRole('button',{name:'Exclude',exact:true}).click();
- await share.locator('[role=link]').nth(18).focus();await expect(page.getByRole('tooltip')).toContainText('Only in mixed lists (excluded)');
+ await page.getByRole('group',{name:'Mixed-list policy',exact:true}).getByRole('button',{name:'Do not count mixed lists',exact:true}).click();
+ await share.locator('[role=button]').nth(18).focus();await expect(page.getByRole('tooltip')).toContainText('Only in mixed lists (excluded)');
  await expect(page.locator('.family-chip')).toHaveCount(9);await expect(page.locator('.family-profile')).toContainText('Sourced draft interpretation');
  await page.reload();await page.getByRole('tab',{name:'Party families',exact:true}).click();await page.getByRole('button',{name:'Haredi',exact:true}).click();await page.getByRole('button',{name:'Likud lineage',exact:true}).click();
- await expect(page.getByRole('group',{name:'Mixed-list policy',exact:true}).getByRole('button',{name:'Exclude',exact:true})).toHaveAttribute('aria-pressed','true');
+ await expect(page.getByRole('group',{name:'Mixed-list policy',exact:true}).getByRole('button',{name:'Do not count mixed lists',exact:true})).toHaveAttribute('aria-pressed','true');
  // Centre names only contested lists in 2026: that is not "did not contest".
  await page.getByRole('button',{name:'Centre',exact:true}).click();await page.getByText('Exact figures (26 elections)',{exact:true}).click();
  await expect(page.locator('.family-table tbody tr').last()).toContainText('No list counted');await expect(page.locator('.family-table tbody tr').last()).not.toContainText('Did not contest');
@@ -94,15 +94,42 @@ test('Hebrew scaling keeps signs and arrows in reading order',async({page})=>{
 test('head-party counting is explicit, remembered and one-list overrides keep the view policy',async({page})=>{
  await start(page);await page.getByRole('button',{name:'Haredi',exact:true}).click();await page.getByRole('button',{name:'Likud lineage',exact:true}).click();
  const policies=page.getByRole('group',{name:'Mixed-list policy',exact:true});
- await expect(policies.getByRole('button',{name:'Separate',exact:true})).toHaveAttribute('aria-pressed','true');
- await expect(page.locator('.family-joint-facts')).toContainText('Head: Likud');
- await policies.getByRole('button',{name:'If family heads list',exact:true}).click();
+ await expect(policies.getByRole('button',{name:'Show mixed lists separately',exact:true})).toHaveAttribute('aria-pressed','true');
+ await page.locator('.family-plots [role=button]').last().click();await expect(page.getByRole('dialog')).toContainText('Head: Likud');await page.getByRole('dialog').getByRole('button',{name:'Close',exact:true}).click();
+ await policies.getByRole('button',{name:'Count if family leads',exact:true}).click();
  await expect(page.locator('.family-chip')).toHaveCount(9);
  await edit(page);await editor(page).getByText('Mixed-list overrides',{exact:true}).click();
  const override=editor(page).getByRole('combobox',{name:/Counting override/}).first();
  await override.selectOption('exclude');await expect(page.locator('.family-profile')).toContainText('Personal copy');
- await expect(policies.getByRole('button',{name:'If family heads list',exact:true})).toHaveAttribute('aria-pressed','true');
+ await expect(policies.getByRole('button',{name:'Count if family leads',exact:true})).toHaveAttribute('aria-pressed','true');
  await expect(editor(page).getByRole('combobox',{name:/Counting override/}).first()).toHaveValue('exclude');
  await editor(page).getByRole('combobox',{name:/Counting override/}).first().selectOption('default');
  await expect(editor(page).getByRole('combobox',{name:/Counting override/}).first()).toHaveValue('default');
+});
+
+test('family aggregates open details without navigating; hover never moves plots',async({page})=>{
+ await start(page);await page.getByRole('button',{name:'Haredi',exact:true}).click();await page.getByRole('button',{name:'Likud lineage',exact:true}).click();
+ const marks=page.locator('.family-plots section').first().locator('g[role=button]');
+ const top=await page.locator('.family-plots').evaluate(e=>e.getBoundingClientRect().top);
+ for(const i of [0,18,25]){await marks.nth(i).hover();expect(await page.locator('.family-plots').evaluate(e=>e.getBoundingClientRect().top)).toBe(top);}
+ await marks.nth(18).focus();await page.keyboard.press('Enter');
+ const detail=page.getByRole('dialog',{name:'Election breakdown',exact:true});await expect(detail).toBeVisible();
+ await expect(detail).toContainText('Likud');await expect(detail).toContainText('Yisrael Beiteinu');await expect(detail).toContainText('885,163');await expect(detail).toContainText('+156,109');await expect(detail).not.toContainText('0 counted votes');await expect(detail).toContainText('Since');
+ await expect(page.getByRole('tab',{name:'Party families',exact:true})).toHaveAttribute('aria-selected','true');
+ await detail.getByRole('button',{name:'Open this election',exact:true}).click();await expect(page.locator('.family-treatment')).toContainText('Likud lineage');
+});
+
+for(const lang of ['he','en'])test(`family detail sheet keyboard and calculation caveats at 390: ${lang}`,async({page})=>{
+ await page.setViewportSize({width:390,height:844});await start(page,lang,'dark');
+ const marks=page.locator('.family-plots section').first().locator('g[role=button]');await marks.last().focus();await page.keyboard.press('Home');await expect(marks.first()).toBeFocused();
+ await page.keyboard.press('ArrowRight');await expect(marks.nth(1)).toBeFocused();await page.keyboard.press('End');await expect(marks.last()).toBeFocused();await page.keyboard.press('Space');
+ const d=page.getByRole('dialog');await expect(d.locator('.family-point')).toBeVisible({timeout:15000});await expect(d).toContainText(lang==='en'?'Calculated seats':'מנדטים מחושבים');
+ expect(await d.evaluate(e=>e.scrollWidth<=e.clientWidth)).toBe(true);await d.evaluate(e=>{e.scrollTop=e.scrollHeight;});await expect(d.getByRole('button',{name:lang==='en'?'Close':'סגירה',exact:true})).toBeInViewport();
+ await page.keyboard.press('Escape');await expect(d).not.toBeVisible();await expect(marks.last()).toBeFocused();
+});
+
+
+test('1988 changes name constituents in English and retain the sourced split',async({page})=>{
+ await start(page);await page.locator('.family-plots section').first().locator('g[role=button]').nth(11).focus();await page.keyboard.press('Enter');
+ const changes=page.locator('.family-point-changes');await expect(changes).toBeVisible({timeout:15000});await expect(changes).toContainText('Split · 1988');await expect(changes).toContainText('Degel HaTorah');expect(await changes.innerText()).not.toMatch(/[א-ת]/);
 });

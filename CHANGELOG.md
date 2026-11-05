@@ -3,6 +3,7 @@
 ## 5 November 2026 — release review
 
 - Distinguish joint-list component candidates and seats with party tints and list-colour envelopes, include component identities in chamber exports, and prevent component-row logo overlap. Component seat colours can be disabled under Rules → Display.
+- Keep family-chart hover facts out of page flow, clarify mixed-list counting, and open election breakdowns with named lists, logos, votes, seats and sourced constituent changes before navigating.
 
 - Clarify vote sources, section replacements, joint-list actions and edited markers; remove single-vote nudges and let sliders cover the valid-vote total. Preference prompts offer one-use, item and global scopes with one explicit Apply action.
 - Complete English list labels with sourced, explicitly unofficial transliterations where needed; localise menus, exports and identity captions. Show year-labelled nearest-period logos, preserve component logos through splits, and replace bare party squares with monograms.
