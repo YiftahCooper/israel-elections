@@ -1,0 +1,666 @@
+{
+  "schemaVersion": 1,
+  "electionId": "k5",
+  "status": "pilot",
+  "reviewedAt": "2026-11-05",
+  "notes": [
+    "Research draft; not wired into the application. Official session records anchor all government approvals. Reused recommendation and first-coalition evidence retains the earlier research limitations.",
+    "The government card describes the first cabinet. Each replacement cabinet has a full-session confidence step and a numbered government.changes entry; available replacement coalition snapshots are attached to that entry.",
+    "New PDF quotations preserve the extracted text order (including OCR errors); whitespace is collapsed. Full-session sources identify the sitting; source excerpts are recoverable from the public PDF. Existing coalition OData quotes are labelled project tabulations in the source text, not purported verbatim minister lists."
+  ],
+  "sources": {
+    "plenum-gov10": {
+      "url": "https://fs.knesset.gov.il/5/Plenum/5_ptm_252197.pdf",
+      "publisher": "Knesset, Knesset 5, sitting 19, 1961-11-02 (full plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "presentation-gov10": {
+      "url": "https://main.knesset.gov.il/mk/government/documents/gov10.pdf",
+      "publisher": "Knesset, government 10 presentation (extract from plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "plenum-gov11": {
+      "url": "https://fs.knesset.gov.il/5/Plenum/5_ptm_252310.pdf",
+      "publisher": "Knesset, Knesset 5, sitting 264, 1963-06-26 (full plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "presentation-gov11": {
+      "url": "https://main.knesset.gov.il/mk/government/documents/gov11.pdf",
+      "publisher": "Knesset, government 11 presentation (extract from plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "plenum-gov12": {
+      "url": "https://fs.knesset.gov.il/5/Plenum/5_ptm_252364.pdf",
+      "publisher": "Knesset, Knesset 5, sitting 424, 1964-12-22 (full plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "presentation-gov12": {
+      "url": "https://main.knesset.gov.il/mk/government/documents/gov12.pdf",
+      "publisher": "Knesset, government 12 presentation (extract from plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-jta": {
+      "url": "https://www.jta.org/archive/israel-president-opens-talks-on-cabinet-formation-sees-party-leaders",
+      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin (reused recommendation research)",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "isa-1961": {
+      "url": "https://catalog.archives.gov.il/site/chapter/eshkol-moadon-haarba/",
+      "publisher": "Israel State Archives, מעשה מרכבה – מועדון הארבע והקמת הממשלה ב-1961",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    },
+    "jta-eshkol-1961": {
+      "url": "https://www.jta.org/archive/mapai-wants-eshkol-to-be-entrusted-with-formation-of-new-cabinet",
+      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin, 14 September 1961",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "coalition-1": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2010&$format=json",
+      "publisher": "Knesset OData (ParliamentInfo)",
+      "kind": "official",
+      "accessed": "2026-11-04"
+    },
+    "coalition-2": {
+      "url": "https://he.wikipedia.org/wiki/ממשלת_ישראל_העשירית",
+      "publisher": "Hebrew Wikipedia",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "term-history": {
+      "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-fifth-knesset-1961-1965",
+      "publisher": "Knesset, history of the fifth Knesset (credited official text on Jewish Virtual Library)",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Jewish Virtual Library mirror; original https://main.knesset.gov.il/EN/About/History/pages/knessethistory.aspx?kns=5"
+    },
+    "idi-next": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/elections/1965/",
+      "publisher": "Israel Democracy Institute, election chronology",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "jta-ben-gurion-1961": {
+      "url": "https://www.jta.org/archive/israel-president-entrusts-ben-gurion-with-formation-of-new-cabinet",
+      "publisher": "Jewish Telegraphic Agency, Daily Bulletin, 7 September 1961",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    }
+  },
+  "results": {
+    "electionDate": "1961-08-15",
+    "officialResultsSourceId": "k5-results-gazette"
+  },
+  "reaction": {
+    "policy": "Only dated institutional steps and attributed statements, all lists or none.",
+    "items": [],
+    "gap": "Not collected."
+  },
+  "recommendationRounds": [
+    {
+      "id": "r1",
+      "date": "1961-09-05",
+      "kind": "consultations",
+      "president": {
+        "nameEn": "Yitzhak Ben-Zvi",
+        "nameHe": "יצחק בן־צבי"
+      },
+      "nominees": {
+        "ben-gurion": {
+          "nameEn": "David Ben-Gurion",
+          "nameHe": "דוד בן־גוריון"
+        }
+      },
+      "entries": [
+        {
+          "letters": "א",
+          "seats": 42,
+          "status": "recommended",
+          "nominee": "ben-gurion",
+          "cites": [
+            {
+              "source": "recommendations-jta",
+              "quote": "that Premier David Ben-Gurion be given the task"
+            }
+          ]
+        },
+        {
+          "letters": "ח",
+          "seats": 17,
+          "status": "unknown"
+        },
+        {
+          "letters": "ל",
+          "seats": 17,
+          "status": "unknown"
+        },
+        {
+          "letters": "ב",
+          "seats": 12,
+          "status": "unknown"
+        },
+        {
+          "letters": "מ",
+          "seats": 9,
+          "status": "unknown"
+        },
+        {
+          "letters": "תו",
+          "seats": 8,
+          "status": "unknown"
+        },
+        {
+          "letters": "ק",
+          "seats": 5,
+          "status": "unknown"
+        },
+        {
+          "letters": "ג",
+          "seats": 4,
+          "status": "unknown"
+        },
+        {
+          "letters": "יא",
+          "seats": 2,
+          "status": "unknown"
+        },
+        {
+          "letters": "ד",
+          "seats": 2,
+          "status": "unknown"
+        },
+        {
+          "letters": "רא",
+          "seats": 2,
+          "status": "unknown"
+        }
+      ],
+      "totals": {
+        "ben-gurion": 42,
+        "unknown": 78
+      },
+      "cites": [
+        {
+          "source": "recommendations-jta",
+          "quote": "that Premier David Ben-Gurion be given the task"
+        }
+      ],
+      "notes": [
+        "Reuses docs/research/pm-recommendations-1949-1973.md; consultation conditions are not personal recommendations. Unknown does not mean no recommendation.",
+        "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved."
+      ],
+      "endDate": "1961-09-06"
+    },
+    {
+      "id": "r2",
+      "date": "1961-09-14",
+      "kind": "consultations",
+      "president": {
+        "nameEn": "Yitzhak Ben-Zvi",
+        "nameHe": "יצחק בן־צבי"
+      },
+      "nominees": {
+        "eshkol": {
+          "nameEn": "Levi Eshkol",
+          "nameHe": "לוי אשכול"
+        }
+      },
+      "entries": [
+        {
+          "letters": "א",
+          "seats": 42,
+          "status": "recommended",
+          "nominee": "eshkol",
+          "cites": [
+            {
+              "source": "jta-eshkol-1961",
+              "quote": "he should entrust Finance Minister Levi Eshkol with the formation of a new government since Mr. Ben-Gurion has refused to undertake this task."
+            }
+          ]
+        },
+        {
+          "letters": "ח",
+          "seats": 17,
+          "status": "unknown"
+        },
+        {
+          "letters": "ל",
+          "seats": 17,
+          "status": "unknown"
+        },
+        {
+          "letters": "ב",
+          "seats": 12,
+          "status": "unknown"
+        },
+        {
+          "letters": "מ",
+          "seats": 9,
+          "status": "unknown"
+        },
+        {
+          "letters": "תו",
+          "seats": 8,
+          "status": "unknown"
+        },
+        {
+          "letters": "ק",
+          "seats": 5,
+          "status": "unknown"
+        },
+        {
+          "letters": "ג",
+          "seats": 4,
+          "status": "unknown"
+        },
+        {
+          "letters": "יא",
+          "seats": 2,
+          "status": "unknown"
+        },
+        {
+          "letters": "ד",
+          "seats": 2,
+          "status": "unknown"
+        },
+        {
+          "letters": "רא",
+          "seats": 2,
+          "status": "unknown"
+        }
+      ],
+      "totals": {
+        "eshkol": 42,
+        "unknown": 78
+      },
+      "cites": [
+        {
+          "source": "jta-eshkol-1961",
+          "quote": "he should entrust Finance Minister Levi Eshkol with the formation of a new government since Mr. Ben-Gurion has refused to undertake this task."
+        }
+      ],
+      "notes": [
+        "Reuses docs/research/pm-recommendations-1949-1973.md; consultation conditions are not personal recommendations. Unknown does not mean no recommendation.",
+        "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved."
+      ]
+    }
+  ],
+  "formation": {
+    "outcome": "government-formed",
+    "events": [
+      {
+        "date": "1961-09-05",
+        "type": "consultations",
+        "textEn": "President Yitzhak Ben-Zvi held consultations on government formation.",
+        "textHe": "הנשיא יצחק בן־צבי קיים התייעצויות על הרכבת הממשלה.",
+        "cites": [
+          {
+            "source": "recommendations-jta",
+            "quote": "that Premier David Ben-Gurion be given the task"
+          }
+        ],
+        "endDate": "1961-09-06"
+      },
+      {
+        "date": "1961-09-07",
+        "type": "mandate-given",
+        "textEn": "Ben-Zvi asked Ben-Gurion to form a government.",
+        "textHe": "בן־צבי ביקש מבן־גוריון להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "jta-ben-gurion-1961",
+            "quote": "asked Prime Minister David Ben-Gurion to undertake the task of forming a new Government."
+          }
+        ],
+        "person": "ben-gurion",
+        "notes": [
+          "Date follows the reused archival research. JTA bulletin dates and datelines can differ by one day."
+        ]
+      },
+      {
+        "date": "1961-09-08",
+        "type": "mandate-returned",
+        "textEn": "Ben-Gurion declined to undertake government formation under the existing conditions.",
+        "textHe": "בן־גוריון סירב לקבל על עצמו את הרכבת הממשלה בתנאים הקיימים.",
+        "cites": [
+          {
+            "source": "isa-1961",
+            "quote": "לצערי הרב איני מוכן לקבל על עצמי בתנאים הקיימים הרכבת הממשלה"
+          }
+        ],
+        "person": "ben-gurion",
+        "notes": [
+          "Refusal of the assignment, not expiry of a statutory mandate. Reused from the ISA text inspected in the earlier recommendation research."
+        ]
+      },
+      {
+        "date": "1961-11-02",
+        "type": "mandate-given",
+        "textEn": "The President tasked David Ben-Gurion with forming a government.",
+        "textHe": "הנשיא הטיל על דוד בן־גוריון להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "presentation-gov10",
+            "quote": "שאם אני י כול – שעה קלה לאחר שהנשיא הטיל עלי ה ב וקר תפקיד זה – להציג עכשיו ממשלה , הרי זוהי זכותו הבלעדית של ידידי וחברי לוי אשכול , שהשקיע מאמצים עצומים מתוך סבלנות יוצאת מגדר הרגיל , מתוך שקי ד ה מפליאה וברוח טובה בלתי - רגילה במגעו עם המפלגות; ורק הודות לו אפשר היה לי למלא רצון הנשיא ולהביא לכנסת עו ד היום הצעת הממשלה הנשענת על רוב בכנסת ."
+          }
+        ],
+        "person": "ben-gurion"
+      },
+      {
+        "date": "1961-11-02",
+        "type": "confidence-vote",
+        "textEn": "The Knesset expressed confidence in government 10, headed by David Ben-Gurion, 63–46.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־10 בראשות דוד בן־גוריון, ברוב של 63 מול 46.",
+        "cites": [
+          {
+            "source": "plenum-gov10",
+            "quote": "אנו עוברים להצבעה על הבעת אמון לממשלה שהתייצבה לפני הכנסת. הצבעה 63 בעד הבעת אמון לממשלה 46 נגד לוז: ק. היו\"ר ושישה הביעה נגר ארבעים של שישים ושלושה ברוב הכנסת אמון לממשלה, בראשותו של דוד בןגוריון. אני מברך את הממשלה להתכוננותה, ומאחל לה הצלחה בניהול עניני המדינה."
+          }
+        ],
+        "votes": {
+          "for": 63,
+          "against": 46
+        },
+        "governmentNumber": 10,
+        "person": "ben-gurion"
+      },
+      {
+        "date": "1963-06-19",
+        "type": "mandate-given",
+        "textEn": "The President tasked Levi Eshkol with forming a government.",
+        "textHe": "הנשיא הטיל על לוי אשכול להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "presentation-gov11",
+            "quote": "נכבד . ביום ד ' כ \" ז בסי ו ון ה ' תשכ \" ג ( 19 ביוני 1963 ) הטיל עלי י נשיא המדינה , מר שניאור זלמן שזר , את התפקיד להרכיב ממשלה בהתאם לחוק המעבר , תש \" ט – 1949 , סעיף 9 ( א ) . בהתאם לסעיף 9 ( ט ) לחוק האמור , הנני מתכבד להודיעך כי הצלחתי לבצע התפקיד שהטיל על י י הנשיא , ואני מבקש להציג את הממשלה החדשה בפני הכנסת היום , ב ' בתמוז ה' תשכ \" ג ( 24 ביוני"
+          }
+        ],
+        "person": "eshkol"
+      },
+      {
+        "date": "1963-06-26",
+        "type": "confidence-vote",
+        "textEn": "The Knesset expressed confidence in government 11, headed by Levi Eshkol, 64–43.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־11 בראשות לוי אשכול, ברוב של 64 מול 43.",
+        "cites": [
+          {
+            "source": "plenum-gov11",
+            "quote": "אמון לממשלה. להצבעה על הבעת הצבעה 64 בעד הבעת אמון לממשלה 43 נגד היו\"ר ק. לוז: החדשה אמון לממשלה הכנסת הביעה לה ומאחל ישראל להתכוננותה ממשלת את מברך אני בניהול עניני המדינה. הצלחה הצהרת אמונים של חברי הממשלה ב,"
+          }
+        ],
+        "votes": {
+          "for": 64,
+          "against": 43
+        },
+        "governmentNumber": 11,
+        "person": "eshkol"
+      },
+      {
+        "date": "1964-12-20",
+        "type": "mandate-given",
+        "textEn": "The President tasked Levi Eshkol with forming a government.",
+        "textHe": "הנשיא הטיל על לוי אשכול להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "presentation-gov12",
+            "quote": "שלשום , ביום 20 בדצמבר 1964 , הטיל על י י נשיא המדינה , מר שניאור זלמן שזר , להרכיב ממשלה . הממשלה שאני מציג לפניכם הפעם זהה בהרכבה המפלגתי והאישי עם הממשלה שהתפטרה לפני שבוע ימים בערך . אני רוצה לנצל הזדמנות זו כדי להודות למפלגות ולשרים שניחנו בתחושת השעה"
+          }
+        ],
+        "person": "eshkol"
+      },
+      {
+        "date": "1964-12-22",
+        "type": "confidence-vote",
+        "textEn": "The Knesset expressed confidence in government 12, headed by Levi Eshkol, 59–36, with 9 abstentions.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־12 בראשות לוי אשכול, ברוב של 59 מול 36, עם 9 נמנעים.",
+        "cites": [
+          {
+            "source": "plenum-gov12",
+            "quote": "אנחנו עוברים להצבעה. הצבעה 59 בעד הבעת אמון לממשלה 36 נגד 9 נמנעים היו\"ר ק. לוז: הממשלה בראשותו של לוי אשכול זכתה באמון הכנסת. אני מברך את הממשלה בהתכוננותה ומאחל לה הצלחה"
+          }
+        ],
+        "votes": {
+          "for": 59,
+          "against": 36,
+          "abstain": 9
+        },
+        "governmentNumber": 12,
+        "person": "eshkol"
+      }
+    ]
+  },
+  "government": {
+    "number": 10,
+    "nameEn": "Government 10 (David Ben-Gurion)",
+    "nameHe": "הממשלה ה־10 (דוד בן־גוריון)",
+    "startDate": "1961-11-02",
+    "endDate": "1963-06-26",
+    "primeMinisters": [
+      {
+        "nameEn": "David Ben-Gurion",
+        "nameHe": "דוד בן־גוריון",
+        "letters": "א",
+        "from": "1961-11-02",
+        "to": "1963-06-26"
+      }
+    ],
+    "firstGovernmentSchemeRef": "first-government",
+    "coalition": [
+      {
+        "letters": "א",
+        "seats": 42
+      },
+      {
+        "letters": "ב",
+        "seats": 12
+      },
+      {
+        "letters": "תו",
+        "seats": 8
+      },
+      {
+        "letters": "ד",
+        "seats": 2
+      },
+      {
+        "letters": "יא",
+        "seats": 2
+      },
+      {
+        "letters": "רא",
+        "seats": 2
+      }
+    ],
+    "coalitionSeats": 68,
+    "coalitionSeatsNote": "Election-list seat totals, including support-only lists; not the confidence-vote tally. Reuses the existing overlay: ministerial factions are official; support-only membership is labelled secondary. Later government changes are listed separately.",
+    "cites": [
+      {
+        "source": "coalition-1",
+        "quote": "Government 10 sworn in 1961-11-02. Ministers at swearing-in by their Knesset faction (project tabulation of the OData records): {'מפלגה דתית לאומית': 3, 'מפלגת פועלי ארץ-ישראל': 9, 'NON-MK': 2, 'אחדות העבודה - פועלי ציון': 2}"
+      },
+      {
+        "source": "coalition-2",
+        "quote": "קואליציה: מפא\"י, מפד\"ל, אחדות העבודה-פועלי ציון, פא\"י, שיתוף ואחווה, קידמה ופיתוח | אופוזיציה: חרות, המפלגה הליברלית, מפ\"ם, מק\"י, אגודת ישראל"
+      }
+    ],
+    "changes": [
+      {
+        "date": "1963-06-26",
+        "number": 11,
+        "nameEn": "Government 11 (Levi Eshkol)",
+        "nameHe": "הממשלה ה־11 (לוי אשכול)",
+        "textEn": "Eshkol succeeded Ben-Gurion after Ben-Gurion’s resignation.",
+        "textHe": "אשכול החליף את בן־גוריון לאחר התפטרותו של בן־גוריון.",
+        "cites": [
+          {
+            "source": "plenum-gov11",
+            "quote": "אמון לממשלה. להצבעה על הבעת הצבעה 64 בעד הבעת אמון לממשלה 43 נגד היו\"ר ק. לוז: החדשה אמון לממשלה הכנסת הביעה לה ומאחל ישראל להתכוננותה ממשלת את מברך אני בניהול עניני המדינה. הצלחה הצהרת אמונים של חברי הממשלה ב,"
+          },
+          {
+            "source": "presentation-gov11",
+            "quote": "א ד וני היושב - ראש , כנסת נכבדה . התפטרותו של ראש הממשלה מר דוד בן - גוריון יצרה צורך להרכיב ממשלה חדשה . יודע אני ועד שהעם לשדרותיו שמע וקיבל ב צער עמוק את החלטתו של דוד בן - גוריון לפרוש מתפקידו הרם ורב - האחריות ולהחזירו לנשיא המדינה , למען יטיל הנשיא תפקיד זה על חבר כנסת אחר . ביום ד ,' 19 ביוני 1 963 , קרא לי נשיא המדינה והטיל על י י את התפקיד להרכיב ממשלה ,"
+          },
+          {
+            "source": "presentation-gov11",
+            "quote": "שקיימנו בימים אלה הכירו בצורך להקים את הממשלה במהירות , במתכונתה הקודמת . הריני מתכבד א פוא להציג לפני הכנסת ממשלה הנתמכת על - ידי כל סיעות הקואליציה הקודמת : מפלגת פועלי ארץ ישראל , המפלגה הדתית - לאומית , מפלגת אחדות העבודה – פועלי ציון , פועלי אגודת ישראל , השיתוף והאחווה , הקדמה והפיתוח . הממשלה החדשה היא ממשלת המשך . ת ו כנית"
+          }
+        ],
+        "coalition": [
+          {
+            "letters": "א",
+            "seats": 42
+          },
+          {
+            "letters": "ב",
+            "seats": 12
+          },
+          {
+            "letters": "תו",
+            "seats": 8
+          },
+          {
+            "letters": "ד",
+            "seats": 2
+          },
+          {
+            "letters": "יא",
+            "seats": 2
+          },
+          {
+            "letters": "רא",
+            "seats": 2
+          }
+        ],
+        "coalitionSeats": 68,
+        "coalitionSeatsNote": "Seats won by the component lists at this election; not the confidence-vote count. Affiliated Arab support lists retain the first-government overlay’s labelled secondary evidence unless named in the protocol."
+      },
+      {
+        "date": "1964-12-14",
+        "textEn": "Eshkol submitted his resignation to the President.",
+        "textHe": "אשכול הגיש את התפטרותו לנשיא.",
+        "cites": [
+          {
+            "source": "presentation-gov12",
+            "quote": "ראש - הממשלה ל ' אשכול : אישי היושב - ראש , חברי הכנסת . לפני שבוע בדיוק מסרתי הודעה לבית הזה על ההתפטרות ש הגשתי יום קודם - לכן , ביום 14 בדצמבר 1964 , לנשיא . נערך אז דיון ואיני רואה צורך לחזור עתה אל עני י ן ההתפטרות . אעיר רק , באופן כללי , כי מה שאירע איננו חורג בשום פ נ ים מן המנהג המקובל"
+          }
+        ]
+      },
+      {
+        "date": "1964-12-22",
+        "number": 12,
+        "nameEn": "Government 12 (Levi Eshkol)",
+        "nameHe": "הממשלה ה־12 (לוי אשכול)",
+        "textEn": "Government 12, headed by Levi Eshkol, succeeded government 11.",
+        "textHe": "הממשלה ה־12 בראשות לוי אשכול החליפה את הממשלה ה־11.",
+        "cites": [
+          {
+            "source": "plenum-gov12",
+            "quote": "אנחנו עוברים להצבעה. הצבעה 59 בעד הבעת אמון לממשלה 36 נגד 9 נמנעים היו\"ר ק. לוז: הממשלה בראשותו של לוי אשכול זכתה באמון הכנסת. אני מברך את הממשלה בהתכוננותה ומאחל לה הצלחה"
+          },
+          {
+            "source": "presentation-gov12",
+            "quote": "שלשום , ביום 20 בדצמבר 1964 , הטיל על י י נשיא המדינה , מר שניאור זלמן שזר , להרכיב ממשלה . הממשלה שאני מציג לפניכם הפעם זהה בהרכבה המפלגתי והאישי עם הממשלה שהתפטרה לפני שבוע ימים בערך . אני רוצה לנצל הזדמנות זו כדי להודות למפלגות ולשרים שניחנו בתחושת השעה"
+          }
+        ],
+        "coalition": [
+          {
+            "letters": "א",
+            "seats": 42
+          },
+          {
+            "letters": "ב",
+            "seats": 12
+          },
+          {
+            "letters": "תו",
+            "seats": 8
+          },
+          {
+            "letters": "ד",
+            "seats": 2
+          },
+          {
+            "letters": "יא",
+            "seats": 2
+          },
+          {
+            "letters": "רא",
+            "seats": 2
+          }
+        ],
+        "coalitionSeats": 68,
+        "coalitionSeatsNote": "Seats won by the component lists at this election; not the confidence-vote count. Affiliated Arab support lists retain the first-government overlay’s labelled secondary evidence unless named in the protocol."
+      }
+    ],
+    "endDateCites": [
+      {
+        "source": "plenum-gov11",
+        "quote": "אמון לממשלה. להצבעה על הבעת הצבעה 64 בעד הבעת אמון לממשלה 43 נגד היו\"ר ק. לוז: החדשה אמון לממשלה הכנסת הביעה לה ומאחל ישראל להתכוננותה ממשלת את מברך אני בניהול עניני המדינה. הצלחה הצהרת אמונים של חברי הממשלה ב,"
+      }
+    ]
+  },
+  "term": {
+    "start": "1961-08-15",
+    "end": "1965-11-02",
+    "inclusionRule": "At least two independent chronologies, including one official or academic; a direct date source is also required.",
+    "chronologies": [
+      "term-history",
+      "idi-next"
+    ],
+    "events": [],
+    "candidatesPending": [
+      {
+        "label": "New economic policy",
+        "date": "1962-02",
+        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+      },
+      {
+        "label": "Diplomatic relations with West Germany",
+        "date": "1965-05",
+        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+      },
+      {
+        "label": "Conclusion of the Eichmann proceedings",
+        "date": "1962",
+        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+      }
+    ],
+    "endedBy": {
+      "type": "election",
+      "date": "1965-11-02",
+      "nextElection": "k6",
+      "textEn": "The next Knesset election was held on 1965-11-02.",
+      "textHe": "הבחירות לכנסת הבאה נערכו ב־1965-11-02.",
+      "cites": [
+        {
+          "source": "idi-next",
+          "quote": "2.11.1965"
+        }
+      ]
+    }
+  },
+  "issuePolling": {
+    "status": "none",
+    "items": [],
+    "notes": [
+      "No qualifying pre-1969 issue survey was retrieved in the agreed sourcing plan."
+    ]
+  },
+  "gaps": [
+    "Official result-certification date and the first sitting are not transcribed; election dates and seat counts reuse the verified national dataset.",
+    "Reaction statements are not collected.",
+    "Mid-term consultation positions, mandate deadlines and extensions are incomplete unless an explicit step below records them.",
+    "Closing date is the next election, not dissolution day. The governing dissolution/election-date law has not been retrieved; regular versus early termination is not inferred from term length.",
+    "Eshkol’s reported return of the mandate on 2 November 1961 still needs a direct excerpt; Ben-Gurion’s reassignment that morning is explicit in the official presentation. The 14 September assignment needs a fuller excerpt.",
+    "Replacement-coalition snapshots are partial: government 14’s faction splits and current seat counts require a separate audit. Other replacement snapshots use election-list seats with stated support-list limitations.",
+    "Presentation dates can precede approval dates; confidence steps use the full protocol. The exact assignment days not transcribed here remain unknown."
+  ]
+}
