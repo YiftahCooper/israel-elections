@@ -54,10 +54,45 @@
       "publisher": "Knesset",
       "kind": "official",
       "accessed": "2026-11-05"
+    },
+    "toi-results": {
+      "url": "https://www.timesofisrael.com/liveblog_entry/receiving-official-election-results-herzog-to-hand-out-mandate-to-form-government-sunday/",
+      "publisher": "The Times of Israel (President’s Residence statement)",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "knesset-war-chronology": {
+      "url": "https://main.knesset.gov.il/en/about/pages/ironswords.aspx",
+      "publisher": "Knesset, The Knesset in Swords of Iron War (first twenty weeks)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "iiss-one-year": {
+      "url": "https://www.iiss.org/globalassets/global-content---content--migration/oa/oa/the-israelhamas-war-one-year-on.pdf",
+      "publisher": "International Institute for Strategic Studies, The Israel–Hamas war one year on (October 2024), Sascha Bruchmann and Sir Tom Beckett, opening chapter",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "reuters-war-timeline": {
+      "url": "https://www.investing.com/news/world-news/major-events-during-war-in-gaza-3410764",
+      "publisher": "Reuters, Major events during war in Gaza (1 May 2024), via Investing.com",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
-    "electionDate": "2022-11-01"
+    "electionDate": "2022-11-01",
+    "certified": {
+      "date": "2022-11-09",
+      "textEn": "CEC chair Isaac Amit presented the official results to President Herzog.",
+      "textHe": "יו״ר ועדת הבחירות יצחק עמית מסר לנשיא הרצוג את התוצאות הרשמיות.",
+      "cites": [
+        {
+          "source": "toi-results",
+          "quote": "President Isaac Herzog has officially been given the results of last week’s national election"
+        }
+      ]
+    }
   },
   "reaction": {
     "policy": "Only dated institutional steps; leader reactions require all seated lists or none.",
@@ -245,8 +280,37 @@
   },
   "term": {
     "inclusionRule": "two-independent-chronologies-one-official-or-academic",
-    "chronologies": [],
-    "events": [],
+    "chronologies": [
+      "knesset-war-chronology",
+      "iiss-one-year"
+    ],
+    "events": [
+      {
+        "id": "attack-war-2023",
+        "date": "2023-10-07",
+        "category": "security",
+        "textEn": "Hamas-led armed groups attacked Israel; Israel began airstrikes in Gaza.",
+        "textHe": "ארגונים חמושים בהובלת חמאס תקפו את ישראל; ישראל החלה בתקיפות אוויריות ברצועת עזה.",
+        "cites": [
+          {
+            "source": "knesset-war-chronology",
+            "quote": "October 7, 2023, a large-scale surprise attack was launched against Israel by Hamas"
+          },
+          {
+            "source": "iiss-one-year",
+            "quote": "Hamas-led attacks on Israel on 7 October 2023"
+          },
+          {
+            "source": "reuters-war-timeline",
+            "quote": "Retaliatory airstrikes on Gaza begin"
+          }
+        ],
+        "confidence": "high",
+        "notes": [
+          "The sentence records the dated outbreak only. It does not claim to summarize subsequent military operations, hostage releases, civilian deaths, displacement or humanitarian conditions; these require separately sourced dated entries."
+        ]
+      }
+    ],
     "candidatesPending": [
       {
         "label": "Judicial legislation and demonstrations",
@@ -256,11 +320,6 @@
       {
         "label": "Reasonableness amendment",
         "date": "2023-07-24",
-        "why": "Research lead only. Two independent qualifying chronologies and direct event evidence have not been inspected; no event is promoted."
-      },
-      {
-        "label": "Hamas-led attack and war",
-        "date": "2023-10-07",
         "why": "Research lead only. Two independent qualifying chronologies and direct event evidence have not been inspected; no event is promoted."
       },
       {
@@ -299,18 +358,19 @@
         "why": "Research lead only. Two independent qualifying chronologies and direct event evidence have not been inspected; no event is promoted."
       }
     ],
-    "start": "2022-12-29"
+    "start": "2022-12-29",
+    "inclusionRuleNote": "The war onset appears in the Knesset’s retrospective twenty-week chronology and IISS’s one-year multi-author retrospective, opening chapter (academic reference report). They are separate institutional evidence families. Reuters’s dated timeline supplies direct corroboration. This qualifies only the included event; it does not promote other items from either publication."
   },
   "issuePolling": {
     "status": "pending",
     "note": "No qualifying published most-important-problem topline retrieved; see docs/research/issue-polling-sources.md. No microdata calculations."
   },
   "gaps": [
-    "CEC certification and Knesset inauguration records not retrieved.",
     "President tasking/extension originals not retrieved; secondary reports identify the formal acts.",
     "Detailed term chronology and formal end-of-Knesset record remain unfilled; election day must not be treated as the government end date.",
-    "No term event satisfies the two-chronology rule in this pass.",
-    "INSS December 2022 domestic-priority figures remain withheld: exact question and full answer menu not retrieved."
+    "INSS December 2022 domestic-priority figures remain withheld: exact question and full answer menu not retrieved.",
+    "Knesset inauguration record not retrieved.",
+    "Only the October 2023 war onset meets the two-chronology rule here; other national events, subsequent war phases and the formal end-of-Knesset record need further evidence."
   ],
   "government": {
     "number": 37,
