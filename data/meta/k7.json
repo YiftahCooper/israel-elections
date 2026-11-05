@@ -1689,6 +1689,96 @@
       "confidence": "high"
     },
     {
+      "id": "pm-recommendations",
+      "nameHe": "המלצות לנשיא על הרכבת הממשלה",
+      "nameEn": "Recommendations to the President for prime minister",
+      "kind": "parliamentary",
+      "date": "1969-11-10",
+      "blocs": [
+        {
+          "id": "meir",
+          "nameHe": "המליצו על גולדה מאיר",
+          "nameEn": "Recommended Golda Meir",
+          "color": "#c0392b",
+          "members": [
+            {
+              "letters": "אמת"
+            },
+            {
+              "letters": "חל"
+            },
+            {
+              "letters": "ב"
+            },
+            {
+              "letters": "לע"
+            },
+            {
+              "letters": "ד"
+            },
+            {
+              "letters": "רא"
+            },
+            {
+              "letters": "יא"
+            }
+          ],
+          "seats": 104
+        },
+        {
+          "id": "unstated",
+          "nameHe": "לא צוין במקור",
+          "nameEn": "Not stated in source",
+          "color": "#cccccc",
+          "members": [
+            {
+              "letters": "ג"
+            },
+            {
+              "letters": "עמ"
+            },
+            {
+              "letters": "ו"
+            },
+            {
+              "letters": "ש"
+            },
+            {
+              "letters": "ט"
+            },
+            {
+              "letters": "ק"
+            }
+          ],
+          "seats": 16
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.jta.org/archive/shazar-finishes-consultations-with-all-parties-told-all-support-mrs-meir-for-premier",
+          "publisher": "Jewish Telegraphic Agency (JTA) Daily News Bulletin archive",
+          "kind": "secondary",
+          "quote": "All of the factions represented in the outgoing National Unity Government reportedly told Mr. Shazar that they wished Mrs. Meir to continue as Premier.",
+          "accessed": "2026-11-05",
+          "note": "Bulletin dated 1969-11-10. Its headline ('told all support Mrs. Meir') is broader than its text; the text is used."
+        },
+        {
+          "url": "https://main.knesset.gov.il/mk/government/Documents/gov.14.pdf",
+          "publisher": "Knesset (Divrei HaKnesset, 17 Mar 1969, government pages)",
+          "kind": "official",
+          "quote": "דיווחתי לנשיא על הרכבת הממשלה החדשה, הכוללת את סיעת המערך (מפלגת העבודה הישראלית – מפ\"ם), גוש חירות – ליברלים, המפלגה הדתית-לאומית, המפלגה הליברלית העצמאית, מפלגת פועלי אגודת ישראל, סיעת הקידמה והפיתוח, סיעת השיתוף והאחווה, הסיעה הדרוזית הישראלית וסיעת האחווה הערבית-יהודית.",
+          "accessed": "2026-11-05",
+          "note": "Identifies the factions of the outgoing government; the Druze and Arab-Jewish Brotherhood factions did not win seats as such in 1969."
+        }
+      ],
+      "notes": [
+        "'Recommended Golda Meir' = the lists of the outgoing government's factions, as reported by JTA ('reportedly'). The six other lists (Agudat Yisrael, State List, Rakah, HaOlam HaZeh, Free Centre, Maki; 16 seats) are not documented in any source inspected and are shown as 'Not stated in source', not as 'no recommendation'.",
+        "Hebrew Wikipedia (secondary), citing Davar 11 Nov 1969, says most factions recommended Meir and the State List (4) did not express consent; that Davar page could not be inspected (JPress bot challenge), so the State List stays 'Not stated in source'.",
+        "Date: the President gave Meir the task on 10 November 1969 per Hebrew Wikipedia/Davar; the JTA bulletin of 10 November says consultations ended 'today' and the mandate was expected 'tomorrow'. One-day uncertainty.",
+        "Confidence: medium."
+      ]
+    },
+    {
       "id": "labour-affiliated-arab-lists",
       "nameHe": "מפא\"י/המערך והרשימות הערביות המסונפות אליה (רשימות לוויין)",
       "nameEn": "Mapai/Alignment and its affiliated Arab (satellite) lists",

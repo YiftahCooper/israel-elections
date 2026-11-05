@@ -313,7 +313,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k4.json",
-      "sha256": "cf442184902bdc28a53baabadac3a7e1f15384d46f6ead09a9b9c051c186120f",
+      "sha256": "48c446e7881435989a3bbb221f4dbe8c8968f37e0302dafc5107a81682c959c4",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k5": {
@@ -334,14 +334,14 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k7.json",
-      "sha256": "46dfb51703fe59e0cab3f93288745046e33f16477952b551f40320952fb4d9af",
+      "sha256": "be0780529ed3af7f79f5d55c039b2ae8c08cb73c9f8e77390b729442d902a0d4",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k8": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k8.json",
-      "sha256": "0efebfab7c5cb8a7e4a660a558749ea8dd47275a29b0016f67b58b53787021ff",
+      "sha256": "1829557a5fcac4569ffaa3542786d3fdc16c826ee6cdcc7535af8077ba81c2d5",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k9": {
@@ -980,7 +980,7 @@
       "electionId": "k4",
       "electionDate": "1959-11-03",
       "datasetPath": "public/data/k4.json",
-      "datasetSha256": "cf442184902bdc28a53baabadac3a7e1f15384d46f6ead09a9b9c051c186120f",
+      "datasetSha256": "48c446e7881435989a3bbb221f4dbe8c8968f37e0302dafc5107a81682c959c4",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -1528,7 +1528,7 @@
       "electionId": "k7",
       "electionDate": "1969-10-28",
       "datasetPath": "public/data/k7.json",
-      "datasetSha256": "46dfb51703fe59e0cab3f93288745046e33f16477952b551f40320952fb4d9af",
+      "datasetSha256": "be0780529ed3af7f79f5d55c039b2ae8c08cb73c9f8e77390b729442d902a0d4",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -1693,7 +1693,7 @@
       "electionId": "k8",
       "electionDate": "1973-12-31",
       "datasetPath": "public/data/k8.json",
-      "datasetSha256": "0efebfab7c5cb8a7e4a660a558749ea8dd47275a29b0016f67b58b53787021ff",
+      "datasetSha256": "1829557a5fcac4569ffaa3542786d3fdc16c826ee6cdcc7535af8077ba81c2d5",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "National results; every published seat reproduced with the six official list connections from the Central Elections Committee’s calculation record (Form 30 appendix; three had no effect). All 120 elected names transcribed from the official candidate notice (YP 1954) and cross-checked against the results notice (YP 1979) and the committee record. Later ranks truncated (Ratz complete); nonwinning rosters untranscribed. Three ballot letters and four list names corrected from the notices. Full amendment chain unverified; no localities.",

@@ -447,6 +447,82 @@
       "confidence": "high"
     },
     {
+      "id": "pm-recommendations",
+      "nameHe": "המלצות לנשיא על הרכבת הממשלה",
+      "nameEn": "Recommendations to the President for prime minister",
+      "kind": "parliamentary",
+      "date": "1959-12-08",
+      "blocs": [
+        {
+          "id": "ben-gurion",
+          "nameHe": "המליצו על מועמד מפא\"י (בן-גוריון)",
+          "nameEn": "Recommended Mapai's candidate (Ben-Gurion)",
+          "color": "#c0392b",
+          "members": [
+            {
+              "letters": "א"
+            },
+            {
+              "letters": "ח"
+            },
+            {
+              "letters": "ב"
+            },
+            {
+              "letters": "מ"
+            },
+            {
+              "letters": "צ"
+            },
+            {
+              "letters": "תו"
+            },
+            {
+              "letters": "גד"
+            },
+            {
+              "letters": "פ"
+            },
+            {
+              "letters": "רא"
+            },
+            {
+              "letters": "יא"
+            },
+            {
+              "letters": "ק"
+            },
+            {
+              "letters": "ע"
+            }
+          ],
+          "seats": 120
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.jta.org/archive/israel-president-appoints-ben-gurion-to-form-a-new-government",
+          "publisher": "Jewish Telegraphic Agency (JTA) Daily News Bulletin archive",
+          "kind": "secondary",
+          "quote": "All parties, in their talks with the President, agreed that the Mapai candidate for Prime Minister should be given the task of forming a new government.",
+          "accessed": "2026-11-05",
+          "note": "Bulletin dated 1959-12-09, reporting the President's action 'today'."
+        },
+        {
+          "url": "https://main.knesset.gov.il/mk/government/documents/gov9.pdf",
+          "publisher": "Knesset (Divrei HaKnesset, 16 Dec 1959, government pages)",
+          "kind": "official",
+          "quote": "לפני שמונה ימים, ביום השלישי של השבוע שעבר, הטיל עליי נשיא המדינה – לאחר שהתייעץ עם כל סיעות הכנסת – הרכבת ממשלה לתקופת כהונת הכנסת הרביעית.",
+          "accessed": "2026-11-05"
+        }
+      ],
+      "notes": [
+        "Every seat-winning list is accounted for only by one contemporaneous agency summary ('All parties ... agreed'); no per-faction wording was inspected. The National Library's JPress newspapers, which would carry per-faction reports, were behind a bot challenge and were not read.",
+        "'The Mapai candidate' was David Ben-Gurion, to whom President Ben-Zvi gave the task on Tuesday 8 December 1959 (Ben-Gurion's own Knesset statement). Agudat Yisrael (in the Torah Religious Front) told the President it could not join the government; that is a coalition position, not a recommendation.",
+        "Confidence: medium (single secondary source for the recommendations; official source for the date)."
+      ]
+    },
+    {
       "id": "labour-affiliated-arab-lists",
       "nameHe": "מפא\"י/המערך והרשימות הערביות המסונפות אליה (רשימות לוויין)",
       "nameEn": "Mapai/Alignment and its affiliated Arab (satellite) lists",
