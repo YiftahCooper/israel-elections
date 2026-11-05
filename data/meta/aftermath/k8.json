@@ -65,6 +65,32 @@
       "publisher": "Inter-Parliamentary Union, Chronicle of Parliamentary Elections, Israel 1977",
       "kind": "academic",
       "accessed": "2026-11-05"
+    },
+    "mfa-timeline": {
+      "url": "https://www.gov.il/en/pages/timeline-of-events-half-a-century-of-independence",
+      "publisher": "Israel Ministry of Foreign Affairs, Timeline of Events: Half a Century of Independence, 1948–1998",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies."
+    },
+    "mod-1972-1980": {
+      "url": "https://archives.mod.gov.il/sites/English/theTimeAxis/Pages/1972-%E2%80%93-1980.aspx",
+      "publisher": "Israel Ministry of Defense, IDF and Defense Establishment Archives, Time Axis: 1972–1980",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "mod-agranat-reports": {
+      "url": "https://archives.mod.gov.il/docs/Pages/vagranat.aspx",
+      "publisher": "Israel Ministry of Defense, IDF and Defense Establishment Archives, Agranat reports",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "un-resolution-3379": {
+      "url": "https://www.refworld.org/legal/resolution/unga/1975/35454",
+      "publisher": "United Nations General Assembly, Resolution 3379 (XXX), 10 November 1975",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Official UN resolution reproduced by UNHCR Refworld; source for the text, resolution number and date, not a second national chronology."
     }
   },
   "results": {
@@ -376,9 +402,138 @@
     "chronologies": [
       "term-history",
       "idi-next",
-      "ipu-next"
+      "ipu-next",
+      "mfa-timeline",
+      "mod-1972-1980"
     ],
     "events": [
+      {
+        "id": "disengagement-agreements",
+        "date": "1974",
+        "category": "foreign-relations",
+        "textEn": "Israel signed disengagement agreements with Egypt and Syria.",
+        "textHe": "ישראל חתמה על הסכמי הפרדת כוחות עם מצרים ועם סוריה.",
+        "cites": [
+          {
+            "source": "term-history",
+            "quote": "the disengagement agreements were signed with Egypt and Syria in 1974"
+          },
+          {
+            "source": "mfa-timeline",
+            "quote": "Separation-of-forces agreement signed with Egypt"
+          },
+          {
+            "source": "mfa-timeline",
+            "quote": "Disengagement agreement is signed with Syria"
+          }
+        ],
+        "confidence": "high",
+        "notes": [
+          "A combined year-level row; separate signing days are not asserted. Both agreements fall in the eighth Knesset, across the Meir and Rabin cabinets."
+        ]
+      },
+      {
+        "id": "agranat-interim-report",
+        "date": "1974-04-01",
+        "category": "governance",
+        "textEn": "The Agranat Commission published its first interim report on the Yom Kippur War.",
+        "textHe": "ועדת אגרנט פרסמה את דוח הביניים הראשון שלה על מלחמת יום הכיפורים.",
+        "cites": [
+          {
+            "source": "term-history",
+            "quote": "published its report"
+          },
+          {
+            "source": "mfa-timeline",
+            "quote": "Agranat Commission"
+          },
+          {
+            "source": "mod-agranat-reports",
+            "quote": "פורסם לציבור ב- 1.4.1974"
+          }
+        ],
+        "confidence": "high",
+        "notes": [
+          "The exact date follows the MOD archival account. The Knesset copy corrupts the date and incorrectly places appointment before the war; neither error is adopted."
+        ]
+      },
+      {
+        "id": "un-resolution-3379",
+        "date": "1975-11-10",
+        "category": "foreign-relations",
+        "textEn": "The UN General Assembly adopted Resolution 3379, declaring Zionism a form of racism and racial discrimination.",
+        "textHe": "העצרת הכללית של האו״ם קיבלה את החלטה 3379, שקבעה כי הציונות היא צורה של גזענות ואפליה גזעית.",
+        "cites": [
+          {
+            "source": "term-history",
+            "quote": "UN General Assembly resolution of 1975"
+          },
+          {
+            "source": "mfa-timeline",
+            "quote": "equates Zionism with racism"
+          },
+          {
+            "source": "un-resolution-3379",
+            "quote": "3379. Elimination of all forms of racial discrimination"
+          },
+          {
+            "source": "un-resolution-3379",
+            "quote": "10 November 1975"
+          }
+        ],
+        "confidence": "high",
+        "notes": [
+          "MFA timeline misnumbers the resolution as 3375; the number and adoption date follow the resolution itself. The text describes the Assembly’s determination, not an editorial endorsement."
+        ]
+      },
+      {
+        "id": "land-day",
+        "date": "1976-03",
+        "category": "society",
+        "textEn": "Land Day protests against land confiscations took place; security forces killed six Arab citizens.",
+        "textHe": "ביום האדמה נערכו מחאות נגד הפקעת קרקעות; כוחות הביטחון הרגו שישה אזרחים ערבים.",
+        "cites": [
+          {
+            "source": "term-history",
+            "quote": "In March, there were the events of Land Day"
+          },
+          {
+            "source": "term-history",
+            "quote": "six Israeli Arabs were killed by the security forces"
+          },
+          {
+            "source": "mfa-timeline",
+            "quote": "Land Day is marked by Israeli Arabs for the first time"
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "entebbe",
+        "date": "1976-07-04",
+        "category": "security",
+        "textEn": "The IDF rescued hostages at Entebbe in Uganda.",
+        "textHe": "צה״ל חילץ בני ערובה באנטבה שבאוגנדה.",
+        "cites": [
+          {
+            "source": "term-history",
+            "quote": "In July 1976"
+          },
+          {
+            "source": "term-history",
+            "quote": "release the hostages from Entebbe"
+          },
+          {
+            "source": "mfa-timeline",
+            "quote": "The IDF frees hostages held captive in Entebbe, Uganda"
+          },
+          {
+            "source": "mod-1972-1980",
+            "quote": "in Uganda on 4 July 1976"
+          }
+        ],
+        "confidence": "high"
+      },
       {
         "id": "nrp-departure",
         "date": "1976-12",
@@ -398,33 +553,7 @@
         "confidence": "high"
       }
     ],
-    "candidatesPending": [
-      {
-        "label": "Agranat Commission report",
-        "date": "1974-04",
-        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
-      },
-      {
-        "label": "Egyptian and Syrian disengagement agreements",
-        "date": "1974",
-        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
-      },
-      {
-        "label": "Entebbe hostage rescue",
-        "date": "1976-07",
-        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
-      },
-      {
-        "label": "Land Day",
-        "date": "1976-03",
-        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
-      },
-      {
-        "label": "UN General Assembly Resolution 3379",
-        "date": "1975-11",
-        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
-      }
-    ],
+    "candidatesPending": [],
     "endedBy": {
       "type": "early-election",
       "date": "1977-01-05",
