@@ -1432,3 +1432,43 @@ Locality names still have Hebrew-only paths in English mode (`Panels.tsx` locali
 table and `LocalityMap.tsx` unmapped rows/fallbacks); this task's data scope is list
 and party identity. Candidate personal-name translation is likewise outside this
 list/party task. No new owner preference decision is required.
+
+## Run 4 — year-only print evidence (5 November 2026)
+
+The coordinator's decision 0089 addendum is implemented in both date gates with Python
+and TypeScript unit tests. No day is invented; estimated years, missing campaign evidence,
+mismatched years and 2019 are rejected. Tests include 1949, 1951, 1955 and 31 December 1973.
+
+**E4-1 accepted: Mapam k4 (1959).** Independently inspected the retained 1024×764 scan and
+newly retrieved [CZA exhibition caption](http://www.zionistarchives.org.il/Pages/ElectionPosters.aspx),
+KRA/3225. The caption states 1959 without an estimate qualifier. The campaign poster shows
+Mapam's printed issuer name and white מ ballot roundel. Exactly one Knesset election occurred
+in 1959 (3 November). All three conditions pass, medium confidence in the archive dating;
+printing day remains unknown. The 22 November accession stamp is excluded as campaign evidence.
+Promoted the unchanged retained crop [823,614,995,764] to logos/mapam-1959.png: 38,606 bytes,
+SHA-256 b9f6f2ec368938216a67c471c304dbd94051c17c2f217c7d2d5517164ca48347.
+The scan edge still clips the circle bottom; no invented pixels. Source card and overlay
+retain identical structured date proof, publication evidence, original scan and hashes.
+CZA HTTP retrieval is recorded honestly; its HTTPS route failed in earlier work. Publication
+provenance now permits HTTP(S); archive-capture checks retain their existing HTTPS checks.
+
+**E4-2 rejected: Herut 31935.** Independently opened the
+[Jabotinsky catalogue](https://www.jabotinsky.org/ארכיון/חיפוש-מתקדם/פריט?itemId=31935)
+and visually inspected the downloaded 336×434 scan. Title identifies Herut founded by the
+IZL, subject בחירות and issuer תנועת החרות, but date type is explicitly לא ידוע (unknown).
+No printed year was found on the scan. Campaign identity passes; year evidence fails. Exact
+list wording cannot establish 1949. Existing k1 Herut remains the dated item 35059 design.
+
+Part A checks: logo validator passed (104 hosted, 96 assets, five unresolved); build completed
+(9 written, 29 unchanged); all 26 k datasets compared field by field against integration
+baseline 3112bed after omitting only logo and builtAt. Family hashes refreshed and validated.
+Only the model digest changed; all four others reproduced unchanged. TypeScript passed;
+Vitest passed 91 files / 866 tests; Python date-gate tests: three passed. Initial sandbox
+suite failed on gallery-build subprocess permissions and the newly hosted HTTP source;
+the provenance URL check now accepts HTTP(S), and the full suite passed with subprocess rights.
+
+Coverage after Part A, from logo-coverage.py: displayed winners 159/308 → 159/308;
+winning-list constituents 105/247 → 105/247; all lists 184/701 → 184/701;
+all constituent occurrences 109/267 → 109/267. Mapam already displayed the 1988 fallback:
+own-election whole-list entries rise 83 → 84; nearest-period refs fall 101 → 100.
+No constituent dating gain.

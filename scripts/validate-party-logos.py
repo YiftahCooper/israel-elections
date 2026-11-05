@@ -70,10 +70,10 @@ for n in range(1, 27):
                     original = (ROOT / 'data/raw' / relative).read_bytes()
                     assert len(original) == record['bytes'], record
                     assert hashlib.sha256(original).hexdigest() == record['sha256'], record
-                    assert record['url'].startswith('https://') and record['retrievedAt'], record
+                    assert record['url'].startswith(('https://', 'http://')) and record['retrievedAt'], record
                     if kind == 'asset':
                         assert record['sha256'] == item['originalSha256'], record
-                        assert record['url'] == item['assetSourceUrl'], record
+                        assert record['url'] == item.get('retrievedAssetUrl', item['assetSourceUrl']), record
                 assert evidence['publicationDate'] == item['inUseDate'], item
                 x0, y0, x1, y1 = evidence['cropBox']
                 width, height = evidence['originalDimensions']

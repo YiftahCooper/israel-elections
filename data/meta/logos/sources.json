@@ -2916,16 +2916,16 @@
       "sourceUrl": "http://www.zionistarchives.org.il/Pages/ElectionPosters.aspx",
       "publisher": "Mapam (original issuer); Central Zionist Archives (scan custodian)",
       "sourceType": "official party campaign publication",
-      "accessed": "2026-11-04",
+      "accessed": "2026-11-05",
       "accessMethod": "Jina read_url catalogue; plain HTTP scan and HTML with project User-Agent",
       "inspectionDepth": "archive caption, full downloaded scan, printed issuer and crop inspected",
       "date": "1959",
       "datePrecision": "year",
-      "description": "Crop from a party-issued 1959 campaign poster, CZA KRA/3225. Archive caption identifies Mapam, 1959, designer Shmuel Katz; printed issuer line identifies Mapam (Haifa). The distinctive white מ in an orange-red circle is preserved without redrawing or recolouring. Year-level campaign date only; the 22 November 1959 accession stamp is NOT an in-use date.",
+      "description": "CZA KRA/3225: exact catalogue year 1959 (not estimated), official Mapam campaign poster with issuer name and מ ballot roundel. 1959 had one Knesset election, 3 November. Year precision under decision 0089; the 22 November accession stamp is not a campaign date. Crop preserves original colours and the scan edge without redrawing.",
       "licence": "Copyright retained; fair-use identification",
       "downloadUrl": "http://www.zionistarchives.org.il/DocLib14/KRA3225.jpg",
       "evidenceFamily": "cza-kra3225",
-      "selected": false,
+      "selected": true,
       "originalFile": "logos/k4/mapam-kra3225-original.jpg",
       "originalSha256": "43cb22ea1ca5aaac66667b041ddb9d4f3141d0bf89d0ee0c9213edad6d06ec8d",
       "cropBox": [
@@ -2935,10 +2935,32 @@
         764
       ],
       "cropCoordinates": "pixels from top-left, Pillow left/top/right/bottom (right and bottom exclusive); original 1024×764",
-      "limitations": "Campaign year supplied by archive; exact printing day unknown; original scan ends at the lower edge of the roundel. Existing fair-use builder requires YYYY-MM-DD; year-only evidence cannot pass. Candidate only, not authorized for display by this record.",
-      "status": "unresolved",
+      "limitations": "Exact printing day unknown. Catalogue year establishes election under decision 0089. Scan ends at lower roundel edge; no extrapolation. Accession stamp is later than polling day and is not used.",
+      "status": "verified",
       "candidateFile": "logos/k4/mapam-roundel-candidate.png",
-      "candidateSha256": "b9f6f2ec368938216a67c471c304dbd94051c17c2f217c7d2d5517164ca48347"
+      "candidateSha256": "b9f6f2ec368938216a67c471c304dbd94051c17c2f217c7d2d5517164ca48347",
+      "dateBasis": "year-single-election",
+      "dateEvidence": {
+        "yearSource": "exact-catalogue-year",
+        "yearEvidence": "CZA exhibition caption KRA/3225 explicitly gives 1959 without an estimate marker. The accession stamp is not used to date campaign use.",
+        "campaignIdentity": "ballot-letter",
+        "campaignEvidence": "Party-issued election poster: printed issuer מפלגת הפועלים המאוחדת (מפ״ם), Haifa; white מ ballot roundel; caption describes Mapam warning against voting Herut in 1959."
+      },
+      "publicationEvidence": {
+        "page": "run4-mapam-page",
+        "asset": "run2-mapam-original",
+        "publicationDate": "1959",
+        "cropBox": [
+          823,
+          614,
+          995,
+          764
+        ],
+        "originalDimensions": [
+          1024,
+          764
+        ]
+      }
     },
     {
       "id": "raam-official-social-20261010",

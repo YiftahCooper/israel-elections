@@ -4534,5 +4534,17 @@
     "retrievedAt": "2026-11-05",
     "bytes": 54461,
     "sha256": "dc33334291c5222d0f1118898548a72491e5740a4453081e2783347f138d6e2e"
+  },
+  {
+    "id": "run4-mapam-page",
+    "file": "logos/k4/cza-election-posters-run4.html",
+    "url": "http://www.zionistarchives.org.il/Pages/ElectionPosters.aspx",
+    "publisher": "Central Zionist Archives",
+    "official": false,
+    "description": "Inspected exact 1959 catalogue caption for Mapam KRA/3225; decision 0089 year-single-election.",
+    "method": "http",
+    "retrievedAt": "2026-11-05",
+    "bytes": 94059,
+    "sha256": "27834738717532d2605c4311e32e138627eb1c060b706abac9367d289a70a4f8"
   }
 ]
