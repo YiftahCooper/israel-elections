@@ -2,6 +2,7 @@
 
 ## 5 November 2026 — release review
 
+- How seats were allocated: seven numbered stages on one line (seats or pairs of the open stage beneath, a slider for divisor methods), a seat tray that fills seat by seat, a new surplus-agreements step, every list with the threshold line drawn, full-height tables, era-correct rule text and arithmetic (1949 quota gate and pair quota, 1951–69 remainders, 1977 candidate cap), and edits marked against the reference at each stage.
 - Distinguish joint-list component candidates and seats with party tints and list-colour envelopes, include component identities in chamber exports, and prevent component-row logo overlap. Component seat colours can be disabled under Rules → Display.
 - Keep family-chart hover facts out of page flow, clarify mixed-list counting, and open election breakdowns with named lists, logos, votes, seats and sourced constituent changes before navigating.
 - Keep coalition inspection independent of In/Out filters, show partner seats and pivotal members, and expose local resets. Clarify scenario save/share flow, align name/description fields and bound option widths; serve the community gallery from an automatically generated Pages index instead of anonymous visitor API calls.

@@ -27,10 +27,11 @@ test('a merged list keeps the first list’s colour instead of an app default', 
 test('the 1949 walkthrough states the quota and threshold as that law computed them', async ({ page }) => {
   await start(page, 'en', 'k1');
   await tool(page, 'walk');
-  await expect(panel(page).locator('.steps button').nth(0)).toHaveText('Threshold');
-  await expect(panel(page)).toContainText('No percentage threshold applies');
-  await panel(page).locator('.steps button').nth(1).click();
-  await expect(panel(page).locator('.formula')).toHaveText('⌊ 434,684 ÷ 121 ⌋ = 3,592');
+  await expect(panel(page).locator('.walk-stages button').nth(0)).toHaveText('1Threshold');
+  // 1949: no percentage, but a list needed one whole quota to win any seat
+  await expect(panel(page)).toContainText('No percentage threshold. A list needs one whole quota (3,592 votes');
+  await panel(page).locator('.walk-stages button').nth(1).click();
+  await expect(panel(page).locator('.formula')).toHaveText('quota = ⌊ 434,684 ÷ 121 ⌋ = 3,592');
 });
 
 test('a divisor method in 1949 still allocates every seat', async ({ page }) => {
@@ -40,8 +41,10 @@ test('a divisor method in 1949 still allocates every seat', async ({ page }) => 
   await panel(page).getByLabel('Remainder method', { exact: true }).selectOption('sainte-lague');
   await expect(page.getByText('Not every seat could be allocated')).toHaveCount(0);
   await tool(page, 'walk');
-  // no quota stage: all 120 seats are awarded one at a time
-  await expect(panel(page).locator('.steps button').filter({ hasText: /^Seat \d+$/ })).toHaveCount(120);
+  // no quota stage: all 120 seats are awarded one at a time, chosen with a slider rather than 120 buttons
+  await expect(panel(page).locator('.walk-stages button').filter({ hasText: 'Remainder seats (120)' })).toHaveCount(1);
+  await panel(page).locator('.walk-stages button').filter({ hasText: 'Remainder seats' }).click();
+  await expect(panel(page).locator('.walk-slider input')).toHaveAttribute('max', '120');
 });
 
 test('a sweep keeps the range it was run for when the fields change', async ({ page }) => {
