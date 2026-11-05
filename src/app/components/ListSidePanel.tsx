@@ -48,7 +48,7 @@ export function ListSidePanel({ s, r, ds, base, baseR, listId }: { s: Scenario; 
     <aside className="panel side-panel" ref={ref} aria-label={listLabel(l, lang)}>
       <div className="sheet-scenario-switcher"><ScenarioSwitcher s={s} ds={ds} /></div>
       <header className="sp-head">
-        <Slip letters={l.letters} color={l.color} logo={l.logo} size="lg" />
+        <Slip name={listLabel(l, lang)} letters={l.letters} color={l.color} logo={l.logo} size="lg" />
         <div style={{ minWidth: 0, flex: 1 }}>
           <h2 style={{ margin: 0 }}>{listLabel(l, lang)}</h2>
           <div className="small ink2" lang="he">{l.nameHe}</div>

@@ -2,7 +2,7 @@
 .families h2,.families h3,.families p {margin:0;}
 .family-top {display:flex;gap:12px;align-items:flex-start;}
 .family-chips {display:flex;gap:6px;flex-wrap:wrap;flex:1;}
-.family-chip {display:inline-flex;align-items:center;gap:7px;border:1px solid var(--rule-2);border-radius:999px;background:var(--surface);color:var(--ink);padding:7px 12px;cursor:pointer;min-block-size:34px;}
+.family-chip {font-weight:600;display:inline-flex;align-items:center;gap:7px;border:1px solid var(--rule-2);border-radius:999px;background:var(--surface);color:var(--ink);padding:7px 12px;cursor:pointer;min-block-size:34px;}
 .family-chip>span {max-inline-size:24ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .family-chip i {inline-size:9px;block-size:9px;border-radius:50%;background:var(--family-color);flex-shrink:0;}
 .family-chip[aria-pressed=true] {border-color:var(--family-color);box-shadow:inset 0 0 0 1px var(--family-color);background:color-mix(in srgb,var(--family-color) 9%,var(--surface));font-weight:600;}

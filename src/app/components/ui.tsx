@@ -48,7 +48,7 @@ export function Slip({ letters, color, size, logo, name }: { name?: string; lett
   const lang = useLang();
   const label = name ?? `${lang === 'he' ? 'אותיות הפתק' : 'ballot letters'} ${letters}`;
   const year = logo?.year ? ` · ${logo.year}` : '';
-  if (!logo && name) return <span className={`slip monogram ${size ?? ''}`} style={{ ['--c' as string]: color }} aria-label={name} title={lang === 'he' ? 'סמל לא זמין — ראשי תיבות' : 'Logo unavailable — monogram'}>{name.split(/\s+/).map(w => w[0]).slice(0,3).join('').toUpperCase()}</span>;
+  if (!logo && name) return <span className={`slip monogram ${size ?? ''}`} style={{ ['--c' as string]: color }} aria-label={name} title={lang === 'he' ? 'סמל לא זמין — ראשי תיבות ואותיות הפתק' : 'Logo unavailable — name monogram'}><span>{name.trim().split(/\s+/).length === 1 ? name.slice(0, 3).toUpperCase() : name.split(/\s+/).map(w => w[0]).slice(0,3).join('').toUpperCase()}</span>{lang === 'he' && <small lang="he" dir="rtl">{letters}</small>}</span>;
   // the logo the list used at this election, when a verified local copy is held; the ballot letters stay
   // as its accessible name and a small caption, and the credit travels with the image
   if (logo) return (
@@ -137,4 +137,9 @@ export function GlossaryLink({ g, lang }: { g: GlossaryTerm; lang: 'he' | 'en' }
       <span className="muted"> · {link.publisher}</span>
     </span>
   );
+}
+
+/** Both labels reserve their width so expanding content cannot move its trigger. */
+export function DisclosureToggle({ open, onToggle, more, fewer }: { open: boolean; onToggle: () => void; more: string; fewer: string }) {
+  return <button type="button" className="btn small list-disclosure" aria-expanded={open} onClick={onToggle}><span>{open ? fewer : more}</span><span className="reserve" aria-hidden data-label={open ? more : fewer} /></button>;
 }

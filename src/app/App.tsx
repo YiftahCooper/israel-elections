@@ -188,7 +188,7 @@ function Shell() {
     <div className={`app ${preview ? 'board-preview' : ''}`} style={{ ['--scenario-color' as string]: reference || referenceChanges(committed, base).length || committed.identityColor ? liveScenarioColor(committed, saved) : undefined }}>
       <TopBar s={pmOnly ? null : committed} r={cr} ds={ds} baseR={baseR} pmContestId={pmContestId} onContestChange={setPMContestId} />
       {pmOnly ? <main className="work"><PMResult contest={pmOnly} onKnesset={() => setPMContestId(null)} /></main> : <>
-      <nav className="toolbar" aria-label={L('Tools', 'כלים')}><div className="tabs" role="tablist" aria-label={L('Tools', 'כלים')}>
+      <nav className="toolbar" aria-label={L('Tools', 'כלים')}><div ref={trackTabOverflow} className="tabs" role="tablist" aria-label={L('Tools', 'כלים')}>
                 {ordered.map((t, i) => [
                   i === firstLocked ? <span key="more" className="more-label" aria-hidden>{L('More in other levels', 'עוד ברמות אחרות')}</span> : null,
                   <button key={t.id} id={`tab-${t.id}`} role="tab" aria-selected={!customPage && tool === t.id} aria-controls="analysis-panel" tabIndex={tool === t.id ? 0 : -1}
@@ -210,10 +210,10 @@ function Shell() {
         {loadBanner}
         {s.mode === 'experimental' && <div className="banner note" role="status">{L('Alternative electoral system', 'שיטת בחירות חלופית')} <Info title={L('Experimental rules', 'כללים ניסיוניים')}>{L('Experimental rules: this is an alternative electoral system, not a legally possible Israeli result.', 'כללים ניסיוניים: זוהי שיטת בחירות חלופית ולא תוצאה אפשרית לפי החוק בישראל.')}</Info>{(() => { const c = ruleChanges(s, lang); return c.length ? <> {L('Changed: ', 'שינויים: ')}<b>{c.join(' · ')}</b>.</> : null; })()} <button className="btn small" onClick={() => dispatch({ type: 'setMode', mode: 'historical' })}>{L('Back to the real rules', 'חזרה לכללים האמיתיים')}</button></div>}
         {notice && <div className="banner note" role="status"><span className="banner-text">{notice}</span> <button className="btn small ghost icon-only" onClick={() => setState({ notice: null })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}
-        {issues.map((x, i) => <div key={i} className={`banner ${x.level === 'error' ? 'err' : 'warn'}`} role="alert">{lang === 'he' ? x.he : x.en}</div>)}
-        {r.warnings.filter((w) => w.code !== 'internal-loss').map((w, i) => tieAffectsSeats(s, w)
+        {tool !== 'board' && r.warnings.filter((w) => w.code !== 'internal-loss').map((w, i) => tieAffectsSeats(s, w)
           ? <div key={`w${i}`} className="banner warn" role="alert">{warningText(w, s, lang)}</div>
           : <div key={`w${i}`} className="banner note" role="status">{warningText(w, s, lang)}</div>)}
+        {issues.map((x, i) => <div key={i} className={`banner ${x.level === 'error' ? 'err' : 'warn'}`} role="alert">{lang === 'he' ? x.he : x.en}</div>)}
       </div>
       <ChangeSummary s={committed} r={cr} base={base} baseR={baseR} ds={ds} />
       <main className="work">
@@ -224,6 +224,9 @@ function Shell() {
               <section className="panel chamber-panel" aria-label={L('The Knesset', 'הכנסת')}>
                 <div className="body"><ErrorBoundary label={L('Chamber', 'המליאה')} resetKey={s}><Hemicycle s={s} r={r} /></ErrorBoundary></div>
               </section>
+              {r.warnings.filter((w) => w.code !== 'internal-loss').map((w, i) => tieAffectsSeats(s, w)
+                ? <div key={`w${i}`} className="banner warn" role="alert">{warningText(w, s, lang)}</div>
+                : <div key={`w${i}`} className="banner note" role="status">{warningText(w, s, lang)}</div>)}
               <ErrorBoundary label={L('Blocs', 'גושים')} resetKey={s}><BlocBar s={s} r={r} /></ErrorBoundary>
               <ErrorBoundary label={L('Figures', 'נתונים')} resetKey={s}><Figures s={s} r={r} ds={ds} /></ErrorBoundary>
               {/* separate PM ballot: below the Knesset result so the chamber stays in the same place for every election */}
@@ -263,4 +266,16 @@ function Shell() {
       {toast && <div className={`toast toast-${toast.kind}`} role={toast.kind === 'error' ? 'alert' : 'status'}>{toast.text}</div>}
     </div>
   );
+}
+
+/** Keep the trailing fade only while more tools remain outside the visible strip. */
+function trackTabOverflow(el: HTMLDivElement | null) {
+  if (!el) return;
+  const update = () => el.toggleAttribute('data-more', el.scrollWidth - el.clientWidth - Math.abs(el.scrollLeft) > 1);
+  const observer = new ResizeObserver(update);
+  observer.observe(el); el.addEventListener('scroll', update, { passive: true });
+  const content = new MutationObserver(update);
+  content.observe(el, { childList: true, subtree: true, characterData: true });
+  void document.fonts.ready.then(update);
+  return () => { observer.disconnect(); content.disconnect(); el.removeEventListener('scroll', update); };
 }

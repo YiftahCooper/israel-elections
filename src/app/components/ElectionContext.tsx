@@ -38,7 +38,7 @@ export function ElectionAbout({ electionId, listId }: { electionId: ElectionId; 
   // in the election's own About, a list's event says which list ("this list" alone is ambiguous there)
   const listName = (id?: string) => { const l = !listId && id ? lists?.find(x => x.id === id) : undefined; return l ? <b><bdi>{listLabel(l, lang)}</bdi>: </b> : null; };
   return <details ref={ref} onToggle={e => setOpen(e.currentTarget.open)} className={`election-about ${pending ? 'publication-pending' : ''}`}>
-    <summary>{L('About', 'על הבחירות')}{pending && <> · {L('Gazette unverified', 'הפרסום ברשומות לא אומת')}</>}</summary>
+    <summary>{L('About', 'אודות')}{pending && <><span className="publication-summary"> · {L('Gazette unverified', 'רשומות: לא אומת')}</span><span className="publication-short" title={L('Gazette publication unverified', 'הפרסום ברשומות לא אומת')}> · {L('Unverified', 'לא אומת')}</span></>}</summary>
     <ul ref={popup}>{events.map(e => <li key={e.id}>
       <time dateTime={e.effectiveDate}>{e.effectiveDate}</time> · {listName(e.listId)}{e.source.evidence === 'unresolved' && <strong>{L('Unresolved: ', 'טרם הוברר: ')}</strong>}{lang === 'he' ? e.textHe : e.textEn}{' '}
       <EvidenceLink source={e.source} />{e.relatedSources?.map(s => <span key={s.url}> · <EvidenceLink source={s} /></span>)}

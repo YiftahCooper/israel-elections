@@ -2,6 +2,8 @@
 
 ## 5 November 2026 — release review
 
+- QA2 Overview and header: keep phone scenarios readable, selection widths and election header slots stable, expose tab scrolling, toggle figure popovers natively, align values and isolate sums, trim the arc’s empty margin, keep show-more triggers before their content, wrap grouping names, unify fallback identities, and show sourced Hebrew member names in given-name order. Shared labels wrap between words; Sources leads with English labels and retains original credits.
+
 - Corrected the English and Hebrew data-status notes for k20–k24 by removing obsolete claims that no default blocs are assigned.
 
 - List panel: Knesset members appear under their official English names (Knesset website) in English mode, with the registered Hebrew name beside them; English link and sponsor labels carry no Hebrew or letter-by-letter text; candidate links say less with detail behind (i); "Restore list" appears only for non-vote edits; renaming a candidate no longer moves its row; component parties without a colour get a distinguishable one on candidates, party rows and when split. Shared controls: short pickers open without a search box and re-choosing the current option is not an edit; secondary-source chips are neutral, not error red; dark-mode sliders are visible; small buttons match a 32px field beside them.
