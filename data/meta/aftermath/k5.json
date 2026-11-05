@@ -93,6 +93,19 @@
       "publisher": "Jewish Telegraphic Agency, Daily Bulletin, 7 September 1961",
       "kind": "secondary",
       "accessed": "2026-11-05"
+    },
+    "mfa-timeline": {
+      "url": "https://www.gov.il/en/pages/timeline-of-events-half-a-century-of-independence",
+      "publisher": "Israel Ministry of Foreign Affairs, Timeline of Events: Half a Century of Independence, 1948–1998",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies."
+    },
+    "german-foreign-office-1965": {
+      "url": "https://www.auswaertiges-amt.de/en/aussenpolitik/laenderinformationen/israel-node/2707760-2707760",
+      "publisher": "German Federal Foreign Office, 60 years of diplomatic relations, 11 April 2025",
+      "kind": "official",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -613,24 +626,56 @@
     "inclusionRule": "At least two independent chronologies, including one official or academic; a direct date source is also required.",
     "chronologies": [
       "term-history",
-      "idi-next"
+      "idi-next",
+      "mfa-timeline"
     ],
-    "events": [],
+    "events": [
+      {
+        "id": "new-economic-policy",
+        "date": "1962",
+        "category": "economy",
+        "textEn": "The government introduced an economic programme including currency devaluation.",
+        "textHe": "הממשלה הנהיגה תוכנית כלכלית שכללה פיחות במטבע.",
+        "cites": [
+          {
+            "source": "term-history",
+            "quote": "the government's new economic policy"
+          },
+          {
+            "source": "mfa-timeline",
+            "quote": "An economic program which includes a large devaluation"
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "west-germany-relations",
+        "date": "1965-05-12",
+        "category": "foreign-relations",
+        "textEn": "Israel and West Germany established diplomatic relations.",
+        "textHe": "ישראל וגרמניה המערבית כוננו יחסים דיפלומטיים.",
+        "cites": [
+          {
+            "source": "term-history",
+            "quote": "the establishment of diplomatic relations with West Germany"
+          },
+          {
+            "source": "mfa-timeline",
+            "quote": "Israel and Germany establish diplomatic relations"
+          },
+          {
+            "source": "german-foreign-office-1965",
+            "quote": "on 12 May 1965, Israel and the Federal Republic established diplomatic relations."
+          }
+        ],
+        "confidence": "high"
+      }
+    ],
     "candidatesPending": [
-      {
-        "label": "New economic policy",
-        "date": "1962-02",
-        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
-      },
-      {
-        "label": "Diplomatic relations with West Germany",
-        "date": "1965-05",
-        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
-      },
       {
         "label": "Conclusion of the Eichmann proceedings",
         "date": "1962",
-        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+        "why": "Knesset history selects the end of proceedings, and MFA history selects execution in 1962. Exact execution date and a defined legal act still require a direct source; trial opening remains in k4."
       }
     ],
     "endedBy": {
