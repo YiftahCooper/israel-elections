@@ -38,7 +38,7 @@ export function EditMarker({ s, path, summary = false }: { s: Scenario; path: Ed
   const label = context + ' · ' + L('Edited: was ', 'נערך: קודם ') + changeText(before, logicalPath, lang);
   return <span ref={anchor} className="edit-marker-slot" data-marker-path={logicalPath.join('/')}>{visible&&<span className="edit-marker" data-marker-kind={logicalPath[0]==='parts'?'part':'item'} tabIndex={visible?0:undefined} aria-label={label} aria-describedby={open&&visible ? id : undefined}
     onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)} onFocus={() => setOpen(true)} onBlur={() => setOpen(false)}
-    onKeyDown={e => { if (e.key === 'Escape' && open) { e.stopPropagation(); setOpen(false); } }}>◇
+    onKeyDown={e => { if (e.key === 'Escape' && open) { e.stopPropagation(); setOpen(false); } }}>{L('Edited', 'נערך')}
     {open && visible && createPortal(<span ref={tooltip} id={id} role="tooltip" className="edit-tooltip" style={position}>
       {context} · {L('Edited: was ', 'נערך: קודם ')}<ChangeValue s={before} path={logicalPath} lang={lang} />
     </span>, document.body)}

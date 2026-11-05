@@ -5,7 +5,7 @@ import {Info} from './ui.tsx';
 type Fact=(typeof facts)[number];
 let loaded:Promise<Fact[]>|undefined;
 /** Official baseline facts remain distinct from a simulated allocation. Loaded only at point of use. */
-export function JointFacts({listId,showListName=false}:{listId:string;showListName?:boolean}) {
+export function JointFacts({listId,showListName=false,compact=false}:{listId:string;showListName?:boolean;compact?:boolean}) {
  const L=useL(),lang=useLang(),[all,setAll]=useState<Fact[]>([]);
  useEffect(()=>{let live=true;loaded??=import('../../../data/meta/joint-facts.json').then(m=>m.default);loaded.then(x=>{if(live)setAll(x);}).catch(()=>{});return()=>{live=false;};},[]);
  const f=all.find(f=>f.listId===listId);if(!f)return null;
@@ -14,11 +14,15 @@ export function JointFacts({listId,showListName=false}:{listId:string;showListNa
  const elected=f.parties.filter(p=>p.elected>0).map(p=>`${name(p)} ${p.elected}`).join(' · ');
  const factions=[...new Set(f.parties.flatMap(p=>p.factions.map(x=>x.nameHe)))];
  const unknown=f.unknownElected+f.parties.reduce((n,p)=>n+p.unknownFaction,0);
- return <div className="joint-facts small">
+ return <span className="joint-facts small">
   {showListName&&<b>{L('Joint list','רשימה משותפת')} · </b>}
-  <span>{L('Head','בראש')}: {head?name(head):L('Unknown','לא ידוע')} · {L('Elected','נבחרים')}: {elected||'0'}{f.unknownElected>0&&` · ${L('Unknown','לא ידוע')} ${f.unknownElected}`}{f.pending&&` · ${L('Provisional','זמני')}`}{f.secondaryAffiliations&&` · ${L('Secondary affiliations','שיוך ממקור משני')}`}</span>
+  {!compact && <>   <span>{L('Head','בראש')}: {head?name(head):L('Unknown','לא ידוע')} · {L('Elected','נבחרים')}: {elected||'0'}{f.unknownElected>0&&` · ${L('Unknown','לא ידוע')} ${f.unknownElected}`}{f.pending&&` · ${L('Provisional','זמני')}`}{f.secondaryAffiliations&&` · ${L('Secondary affiliations','שיוך ממקור משני')}`}</span>
   <span> · {L('Opening factions','סיעות בהשבעה')}: {factions.length?`${factions.length} ${L('factions','סיעות')}`:L('Unknown','לא ידוע')}{unknown>0&&factions.length>0&&` · ${L('Unknown','לא ידוע')} ${unknown}`}</span>{' '}
+</>}
   <Info title={L('Joint-list facts and sources','עובדות ומקורות לרשימה משותפת')}>
+   <span>{L('Head','בראש')}: {head?name(head):L('Unknown','לא ידוע')} · {L('Elected','נבחרים')}: {elected||'0'}{f.unknownElected>0&&` · ${L('Unknown','לא ידוע')} ${f.unknownElected}`}{f.pending&&` · ${L('Provisional','זמני')}`}{f.secondaryAffiliations&&` · ${L('Secondary affiliations','שיוך ממקור משני')}`}</span>
+  <span> · {L('Opening factions','סיעות בהשבעה')}: {factions.length?`${factions.length} ${L('factions','סיעות')}`:L('Unknown','לא ידוע')}{unknown>0&&factions.length>0&&` · ${L('Unknown','לא ידוע')} ${unknown}`}</span>{' '}
+<br/>
    <strong>{L('Official submission','הגשה רשמית')}: </strong>{f.submissionHe.join(' · ')||L('Unknown','לא ידוע')}<br/>
    {L('Published baseline, not the current simulation. Component affiliations follow the reviewed metadata; secondary evidence is labelled. Rank 1 identifies the head party. Elected seats are not a division of votes.','נתוני המקור, לא ההדמיה הנוכחית. שיוכי המפלגות לפי המטא־דאטה שנבדק; מקורות משניים מסומנים. מקום 1 מזהה את המפלגה שבראש. חלוקת הנבחרים אינה חלוקת קולות.')}<br/>
    {L('Opening day','יום ההשבעה')}: {f.openingDate??L('Unconfirmed','טרם אומת')}<br/>
@@ -27,5 +31,5 @@ export function JointFacts({listId,showListName=false}:{listId:string;showListNa
    {f.sources.map((url,i)=><span key={url}><a href={url} target="_blank" rel="noreferrer">{L('Official source','מקור רשמי')} {i+1}</a>{' '}</span>)}
    {f.secondarySources.map(url=><span key={url}><a href={url} target="_blank" rel="noreferrer">{L('Secondary affiliation source','מקור משני לשיוך')}</a>{' '}</span>)}
   </Info>
- </div>;
+ </span>;
 }

@@ -12,7 +12,7 @@ const start = async (page: import('@playwright/test').Page) => {
 
 test('reset everything keeps votes supplied by the selected donor', async ({ page }) => {
   const details = await start(page);
-  const source = details.getByRole('combobox', { name: /Balance votes with/ });
+  const source = details.getByRole('combobox', { name: /Take votes from \/ return votes to/ });
   await source.selectOption('new');
   await details.getByLabel('Votes', { exact: true }).fill('0');
   await details.getByLabel('Votes', { exact: true }).press('Enter');
@@ -25,7 +25,7 @@ test('reset everything keeps votes supplied by the selected donor', async ({ pag
 
 test('clamped and refused numeric edits display the authoritative value', async ({ page }) => {
   const details = await start(page);
-  const source = details.getByRole('combobox', { name: /Balance votes with/ });
+  const source = details.getByRole('combobox', { name: /Take votes from \/ return votes to/ });
   await source.selectOption('t:26-נף');
   const votes = details.getByLabel('Votes', { exact: true });
   await votes.fill('9999999'); await votes.press('Enter');
@@ -35,7 +35,7 @@ test('clamped and refused numeric edits display the authoritative value', async 
   await expect(votes).toHaveValue('1,168,115');
   await votes.press('Tab');
   await expect(votes).toHaveValue('1,168,115');
-  await details.getByRole('button', { name: 'More', exact: true }).click();
+  await details.getByRole('button', { name: 'Scale, share & transfer', exact: true }).click();
   const percentage = details.getByLabel('Share of valid votes (%)');
   const old = await percentage.inputValue();
   await percentage.fill('101'); await percentage.press('Enter');
@@ -60,7 +60,7 @@ test('the split form conserves the original votes', async ({ page }) => {
 
 test('a refused decimal edit also reverts after Escape while still focused', async ({ page }) => {
   const details = await start(page);
-  await details.getByRole('button', { name: 'More', exact: true }).click();
+  await details.getByRole('button', { name: 'Scale, share & transfer', exact: true }).click();
   const percentage = details.getByLabel('Share of valid votes (%)');
   const before = await percentage.inputValue();
   await percentage.fill('35');

@@ -104,7 +104,7 @@ test('a tall logo stays inside its slip', async ({ page }) => {
 
 test('Hebrew: a paired transfer reads from the donor to the list with a right-to-left arrow', async ({ page }) => {
   await start(page, { lang: 'he' }); await open(page, 'הליכוד');
-  await page.locator('.side-panel').getByRole('button', { name: 'עוד', exact: true }).click();
+  await page.locator('.side-panel').getByRole('button', { name: 'הכפלה, אחוזים והעברה', exact: true }).click();
   await expect(page.locator('.transfer-step p')).toContainText('יש עתיד ← הליכוד');
 });
 
@@ -129,8 +129,9 @@ test('a list\'s seat count can be typed: the fewest votes that give it are moved
   // the first seat edit asks where the votes come from; Remember stops asking
   const ask = page.getByRole('dialog', { name: 'Votes from' });
   await expect(ask).toContainText('Likud');
-  await ask.getByRole('button', { name: 'Other lists', exact: true }).click();
-  await ask.getByRole('button', { name: 'Always', exact: true }).click();
+  await ask.getByRole('combobox').selectOption('proportional');
+  await ask.getByRole('radio', { name: 'Always', exact: true }).check();
+  await ask.getByRole('button', { name: 'Apply', exact: true }).click();
   await expect(seats).toHaveValue('35', { timeout: 30000 });
   await expect(votes).not.toHaveValue('1,115,336');
   await expect(panel.locator('.sp-seats b')).toHaveText('35');
@@ -164,8 +165,9 @@ test('a list\'s seat count can be typed: the fewest votes that give it are moved
   await expect(seats).toHaveValue(String(now));
   // an answer without Remember holds for this list, and is asked again for another
   await seats.fill(String(now - 2)); await seats.press('Enter');
-  await ask.getByRole('button', { name: 'New voters', exact: true }).click();
-  await ask.getByRole('button', { name: 'For this list', exact: true }).click();
+  await ask.getByRole('combobox').selectOption('new');
+  await ask.getByRole('radio', { name: 'For this list', exact: true }).check();
+  await ask.getByRole('button', { name: 'Apply', exact: true }).click();
   await expect(seats).toHaveValue(String(now - 2), { timeout: 30000 });
   await panel.getByRole('button', { name: 'Increase Seats', exact: true }).click();
   await expect(seats).toHaveValue(String(now - 1), { timeout: 30000 });

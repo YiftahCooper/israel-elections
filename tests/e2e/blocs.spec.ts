@@ -67,7 +67,7 @@ test('a joint list’s faction can split after the election, keeping votes and s
   await start(page, 'standard');
   await page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: 'National Unity', exact: true }).click();
   const details = page.getByRole('region', { name: 'List details' });
-  await details.getByRole('checkbox', { name: 'Faction split after the election' }).check();
+  await details.getByRole('checkbox', { name: 'Count seats by party' }).check();
   // each party now has its own row of seats under the list, and its own place in the chamber
   await expect(page.getByRole('region', { name: 'Lists' }).getByRole('list', { name: /factions after the split/ }).getByText('New Hope')).toBeVisible();
   await expect(listRow(page, 'National Unity')).toContainText('12');
@@ -79,7 +79,7 @@ test('a joint list can run as separate lists, with the vote shares stated as an 
   await page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: 'United Torah Judaism', exact: true }).click();
   const details = page.getByRole('region', { name: 'List details' });
   await expect(details.getByText('Parties on this joint list')).toBeVisible();
-  await details.getByRole('button', { name: 'What if they had run separately?' }).click();
+  await details.getByRole('button', { name: 'Split into separate lists' }).click();
   await expect(details.locator('.joint-split > p').first()).toBeVisible();
   await details.getByRole('button', { name: 'Split assumptions', exact: true }).click();
   await expect(details.getByRole('tooltip')).toContainText('the shares below are an assumption');

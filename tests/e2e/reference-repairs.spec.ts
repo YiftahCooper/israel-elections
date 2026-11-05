@@ -9,7 +9,7 @@ async function start(page: Page, lang = 'en', theme = 'light') {
 async function split(page: Page, he = false) {
   await page.getByRole('button', { name: he ? 'יהדות התורה' : 'United Torah Judaism', exact: true }).click();
   // Keep the matrix driven by UI in each language; the first electoral split control lives in JointParties.
-  await page.getByRole('button', { name: he ? 'מה אילו היו רצות בנפרד?' : 'What if they had run separately?', exact: true }).click();
+  await page.getByRole('button', { name: he ? 'פיצול לרשימות נפרדות' : 'Split into separate lists', exact: true }).click();
   await page.getByRole('button', { name: he ? 'ריצה ב-2 רשימות נפרדות' : 'Run as 2 separate lists', exact: true }).click();
   await page.keyboard.press('Escape');
 }

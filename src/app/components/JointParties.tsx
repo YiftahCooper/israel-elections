@@ -59,20 +59,20 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
   const isSplit = (s.factionSplits ?? []).includes(l.id);
   return (
     <section>{standardControl}
-      <h3>{L('Parties on this joint list', 'המפלגות ברשימה המשותפת')} <Info term="constituent-party" /></h3>
-      <JointFacts listId={l.id}/>
-      <label className="switch small" style={{ marginBottom: 6 }}>
+      <h3>{L('Parties on this joint list', 'המפלגות ברשימה המשותפת')} <JointFacts listId={l.id} compact /></h3>
+
+      <div className="row" style={{ gap: 4, marginBottom: 6, flexWrap: 'nowrap' }}><label className="switch small">
         <input type="checkbox" checked={isSplit} onChange={(e) => dispatch({ type: 'setFactionSplit', listId: l.id, split: e.target.checked })} />
-        {L('Faction split after the election', 'הסיעה התפצלה אחרי הבחירות')}
+        {L('Count seats by party', 'ספירת מנדטים לפי מפלגה')}
       </label>
       <Info title={L('About faction splits', 'על פיצול סיעות')}>{isSplit
         ? L('Each party now counts as its own faction in the chamber and the blocs, with the members elected for it. Votes and seats are unchanged.', 'כל מפלגה נספרת עתה כסיעה נפרדת במליאה ובגושים, עם הנבחרים מטעמה. הקולות והמנדטים ללא שינוי.')
-        : L('As happened after some elections (New Hope left National Unity in 2024): the members keep their seats and sit as separate factions.', 'כפי שקרה אחרי בחירות אחדות (תקווה חדשה פרשה מהמחנה הממלכתי ב-2024): הנבחרים שומרים על מושביהם ויושבים כסיעות נפרדות.')}</Info>
+        : L('Show each party as a separate faction in the chamber and blocs after the election. Members keep their seats; votes and allocation do not change.', 'הצגת כל מפלגה כסיעה נפרדת במליאה ובגושים אחרי הבחירות. הנבחרים שומרים על מושביהם; הקולות וחלוקת המנדטים אינם משתנים.')}</Info></div>
       <div className="party-rows">
         {parties.map((p) => (
           <div key={p.id} className="party-row">
             {p.logo ? <Slip letters={l.letters} color={p.color ?? l.color} logo={p.logo} /> : <span className="swatch" style={{ background: p.color ?? l.color }} />}
-            <span style={{ minWidth: 0 }}>{name(p)}<PartyLinks links={p.links} name={name(p)} /></span>
+            <span style={{ minWidth: 0 }}>{name(p)}{l.candidates[0]?.partyId === p.id && <small className="muted"> · {L('Lead party', 'מפלגה מובילה')}</small>}<PartyLinks links={p.links} name={name(p)} /></span>
             <b>{held(p.id)}</b>
             {standard && s.blocs.length > 0 ? (
               <select aria-label={L(`Bloc of ${p.nameEn}`, `הגוש של ${p.nameHe}`)} value={s.partyBlocs && p.id in s.partyBlocs ? s.partyBlocs[p.id] ?? '__none' : '__list'}
@@ -88,7 +88,7 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
       {unknownElected > 0 && <p className="tiny muted">{L(`${unknownElected} unassigned seats`, `${unknownElected} מנדטים ללא שיוך`)} <Info title={L('Unknown party', 'מפלגה לא ידועה')}>{L(`${unknownElected} elected member(s) have no recorded party; their seats stay with the list.`, `ל-${unknownElected} נבחרים לא תועדה מפלגה; מושביהם נשארים עם הרשימה.`)}</Info></p>}
       {standard && (
         <div style={{ marginTop: 6 }}>
-          <button className="btn small" aria-expanded={open} onClick={() => setOpen((o) => !o)}>{L('What if they had run separately?', 'מה אילו היו רצות בנפרד?')}</button>
+          <button className="btn small" aria-expanded={open} onClick={() => setOpen((o) => !o)}>{L('Split into separate lists', 'פיצול לרשימות נפרדות')}</button>
           {open && <div className="joint-split">
           <p className="small ink2">{L('Assumed vote shares', 'חלוקת קולות משוערת')} <Info title={L('Split assumptions', 'הנחות הפיצול')}>{L('What if these parties had run on their own? Nobody knows how the joint list’s votes would have divided, so the shares below are an assumption: by default, each party’s share of the list’s elected members. Each part must then pass the threshold on its own, and the joint list’s surplus-vote agreement is dropped. Undo restores the joint list.',
             'מה אילו המפלגות היו רצות לבד? איש אינו יודע כיצד היו מתחלקים הקולות, ולכן החלוקה שלהלן היא הנחה: כברירת מחדל, חלקה של כל מפלגה בנבחרי הרשימה. כל חלק יצטרך לעבור את אחוז החסימה בעצמו, והסכם העודפים של הרשימה יבוטל. ביטול מחזיר את הרשימה המשותפת.')}</Info></p>

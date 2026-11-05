@@ -59,7 +59,7 @@ export interface State {
   voteSource: SourceChoice;
   preferences: PreferenceAnswers;
   preferenceAsk: PreferenceAsk | null;
-  preferenceFor: { id: PreferenceId; key: string; value: string } | null;
+  preferenceFor: Record<string, string> | null;
   /** per-election work kept while switching elections (scenario + undo history) */
   sessions: Partial<Record<ElectionId, ScenarioSession>>;
   /** Unsaved branches shared by the header and phone inspectors; deliberately session-only. */
@@ -230,7 +230,7 @@ export async function openElection(id: ElectionId, from?: { id?: string; name: s
       ({ scenario, past, future, reference } = sessions[id]!);
     }
     delete sessions[id];
-    setState({ electionId: id, scenario, reference, past, future, sessions, preferenceFor: null, selectedListId: null, blocPanel: null, compareWith: 'historical', loadError: null, notice });
+    setState({ electionId: id, scenario, reference, past, future, sessions, selectedListId: null, blocPanel: null, compareWith: 'historical', loadError: null, notice });
     return true;
   } catch (e) {
     if (seq === openSeq) setState({ loadError: { id, message: e instanceof Error ? e.message : String(e) } });
@@ -392,12 +392,14 @@ export function importScenarioJson(text: string): Scenario {
 
 /** Only explicit completed actions call this; never a drag preview or keystroke stream.
  * A second action cannot replace an unanswered question. */
+function preferenceKey(id: PreferenceId, key: string) {
+  return `${id}:${id === 'voteSource' ? state.electionId : ''}:${key}`;
+}
 export function askPreference(ask: PreferenceAsk) {
   const st = getState();
   if (st.preferenceAsk) return;
   const saved = st.preferences[ask.id];
-  const local = st.preferenceFor;
-  const answer = local?.id === ask.id && local.key === ask.key ? local.value : saved;
+  const answer = st.preferenceFor?.[preferenceKey(ask.id, ask.key)] ?? saved;
   // A named donor cannot be reused when absent, withdrawn or part of the edited target.
   const compatible = answer && (!answer.startsWith('t:') || st.scenario?.lists.some(l => l.id === answer.slice(2) && !l.withdrawn && !ask.exclude?.includes(l.id)));
   if (compatible) return ask.run(answer);
@@ -406,12 +408,12 @@ export function askPreference(ask: PreferenceAsk) {
 export function setPreference(id: PreferenceId, value?: string) {
   const preferences = { ...state.preferences };
   if (value) preferences[id] = value; else delete preferences[id];
-  setState({ preferences, preferenceFor: null, ...(id === 'voteSource' && value ? { voteSource: sourceChoice(value) } : {}), ...(id === 'comparison' && value ? { markOfficial: value === 'official' } : {}) });
+  setState({ preferences, preferenceFor: Object.fromEntries(Object.entries(state.preferenceFor ?? {}).filter(([key]) => !key.startsWith(`${id}:`))), ...(id === 'voteSource' && value ? { voteSource: sourceChoice(value) } : {}), ...(id === 'comparison' && value ? { markOfficial: value === 'official' } : {}) });
 }
-export function answerPreference(value: string, always: boolean) {
+export function answerPreference(value: string, scope: 'once' | 'item' | 'always') {
   const ask = state.preferenceAsk; if (!ask) return;
-  if (always) setPreference(ask.id, value);
-  setState({ preferenceAsk: null, preferenceFor: { id: ask.id, key: ask.key, value } });
+  if (scope === 'always') setPreference(ask.id, value);
+  setState({ preferenceAsk: null, preferenceFor: scope === 'item' ? { ...state.preferenceFor, [preferenceKey(ask.id, ask.key)]: value } : state.preferenceFor });
   ask.run(value);
 }
 export function withSource(key: string, title: string, exclude: string[], run: (src: SourceChoice) => void) {
@@ -424,7 +426,7 @@ export function withSource(key: string, title: string, exclude: string[], run: (
 /** Choosing the inline source is already an explicit answer for the current target. */
 export function chooseSource(key: string, src: SourceChoice) {
   if (state.preferences.voteSource) setPreference('voteSource', sourceValue(src));
-  setState({ voteSource: src, preferenceFor: { id: 'voteSource', key, value: sourceValue(src) } });
+  setState({ voteSource: src, preferenceFor: { ...state.preferenceFor, [preferenceKey('voteSource', key)]: sourceValue(src) } });
 }
 
 export function useVoteSource(): SourceChoice {

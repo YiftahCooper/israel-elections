@@ -37,7 +37,7 @@ export function BlocVoteStepper({ s, r, bloc }: { s: Scenario; r: AllocationResu
     : target > max ? (from.kind === 'transfer' && outside[0] ? L(`At most ${fmtInt(max)}: ${listLabel(outside[0], lang)} holds ${fmtInt(pool)} votes`, `לכל היותר ${fmtInt(max)}: ל${listLabel(outside[0], lang)} ${fmtInt(pool)} קולות`)
       : L(`At most ${fmtInt(max)}: the other lists hold ${fmtInt(pool)} votes`, `לכל היותר ${fmtInt(max)}: לשאר הרשימות ${fmtInt(pool)} קולות`)) : '';
   return <div className="bloc-vote-stepper"><NumericStepper showLabel label={L('Lists’ votes', 'קולות הרשימות')} value={total} min={possible ? 0 : total} max={max}
-    steps={[{ id: '1', label: '1', amount: 1 }, { id: '1k', label: '1k', amount: 1000 }, { id: '1%', label: '1%', amount: total / 100 }, { id: '10%', label: '10%', amount: total / 10 }]}
+    steps={[{ id: '1k', label: '1k', amount: 1000 }, { id: '1%', label: '1%', amount: total / 100 }, { id: '10%', label: '10%', amount: total / 10 }]}
     targetForStep={(step, dir) => Math.max(0, Math.round(total + dir * step.amount))}
     onCommit={target => withSource(`bloc:${bloc}`, L('Lists’ votes', 'קולות הרשימות'), [...ids], (from) => { const p = plan(from); const why = refusal(target, p, from); if (why) { setEffect(why); return; } dispatchMany(p.actionsFor(target)); setEffect(''); })} onPreview={target => {
       const next = allocate(toEngineInput(actionsFor(target).reduce((cur, a) => applyAction(cur, a), s)));

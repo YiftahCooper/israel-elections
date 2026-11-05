@@ -32,7 +32,7 @@ export function PartyLinks({ links, name }: { links?: PartyLink[]; name: string 
     <span className="party-links tiny" role="group" aria-label={L(`About ${name}`, `על ${name}`)}>
       {(['partisan', 'neutral'] as const).map((k) => group(k).length > 0 && (
         <span key={k} className="pl-group">
-          <span className="muted">{k === 'partisan' ? L('Its own voice:', 'בקולה:') : L('Neutral:', 'ניטרלי:')}</span>
+          <span className="muted">{k === 'partisan' ? L('Partisan:', 'מפלגתי:') : L('Neutral:', 'ניטרלי:')}</span>
           {group(k).map((x) => <a key={x.url} href={x.url} target="_blank" rel="noreferrer" title={title(x)} hrefLang={x.sourceType === 'hewiki' ? 'he' : undefined}>{label(x)}</a>)}
         </span>
       ))}

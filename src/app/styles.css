@@ -846,3 +846,12 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
   .chamber .tip { inset-inline-end: 8px; min-inline-size: 0; max-inline-size: calc(100% - 16px); overflow-wrap: anywhere; }
   [dir="rtl"] .chamber .tip { inset-inline-start: 8px; }
 }
+
+/* Action-time preference choices use form semantics, distinct from the commit action. */
+.preference-scope { border: 0; padding: 0; margin: 10px 0; display: flex; gap: 12px; flex-wrap: wrap; }
+.preference-scope label { display: inline-flex; align-items: center; gap: 4px; min-height: 28px; }
+
+@media (max-width: 600px) {
+  .party-row { grid-template-columns: auto minmax(0, 1fr) auto; }
+  .party-row select { grid-column: 2 / -1; max-width: 100%; width: 100%; }
+}
