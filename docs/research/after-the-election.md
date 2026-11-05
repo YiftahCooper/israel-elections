@@ -26,7 +26,35 @@ Findings checked directly in this session are marked ✔. Items from the paralle
 
 ### 1.2 Wider prior art
 
-*To be merged from the prior-art helper report (`.backup-scratch/after-election/research-prior-art.md`).*
+Full source-by-source ledger (S01–S28, with retrieval failures): [prior-art-after-the-election.md](prior-art-after-the-election.md).
+Summary:
+
+- **IDI** ([2021 profile](https://en.idi.org.il/israeli-elections-and-parties/elections/2021/), [Hebrew 2022 profile](https://www.idi.org.il/policy/parties-and-elections/elections/2022-1/))
+  links each election to the next: result → formation attempts → government → why the next election came. Good
+  continuity, but the narratives attribute motives and use evaluative words; copy the structure, not the prose.
+- **IDI's explainer on the President's role** ([articles/67022](https://en.idi.org.il/articles/67022), Kenig and
+  Blander) separates recommendations, assignment and investiture, and cites a 2019–2022 assignment chart coloured by
+  outcome. The largest party or most-recommended MK is not automatically tasked.
+- **President's Residence** ([president.gov.il](https://president.gov.il/)) publishes one dated card per faction:
+  "Faction A recommended MK B" or "did not recommend any MK". Explicit non-recommendation is distinct from
+  not-yet-consulted. (The homepage carried 4–5 November 2026 cards: the 2026 round is under way.)
+- **Parlement.com** (Dutch reference) keeps formations and cabinets as separate records: a one-line entry per
+  formation since 1945 ([index](https://www.parlement.com/kabinetsformaties-sinds-1945)), per-formation pages with each
+  mandate holder's start/end dates ([2023–24](https://www.parlement.com/kabinetsformatie-2023-2024)), and per-cabinet
+  pages with tenure, caretaker interval, minister changes, seat snapshots and national events
+  ([Rutte III](https://www.parlement.com/kabinet-rutte-iii-2017-2022)). Its own duration figures are internally
+  inconsistent in places: compute durations from dates, never copy them.
+- **Parliament explainers** ([Tweede Kamer](https://www.tweedekamer.nl/zo-werkt-de-kamer/verkiezingen-en-kabinetsformatie),
+  [Riksdag](https://www.riksdagen.se/en/how-the-riksdag-works/democracy/forming-a-government/),
+  [Bundestag](https://www.bundestag.de/en/parliament/function/chancellor)) use numbered steps with a named actor and
+  act per step, and show failure paths and the outgoing government's continuity.
+- **Journalism** ([BBC 2021](https://www.bbc.com/news/world-middle-east-57462470), Guardian 2021 and 2021 Germany)
+  distinguishes agreement, notification, investiture and taking office, and labels calculated coalition possibilities
+  as the publisher's own. Prose is not neutral enough to quote beyond facts.
+- **Academic** (Oxford Handbook of Israeli Politics and Society; Arian–Shamir and Shamir–Rahat *The Elections in
+  Israel* series) put government formation in its own part after the results and keep chronology apart from analysis.
+- **Not retrieved:** Britannica (403), Israel State Archives home (403/DNS to that helper; the ISA catalogue chapter in
+  §1.1 was retrieved separately), gov.il President pages (challenge), Economist, Danish Folketing (challenge).
 
 ### 1.3 What the sources have in common
 
@@ -38,8 +66,12 @@ Findings checked directly in this session are marked ✔. Items from the paralle
 
 ## 2. Graphics precedent
 
-The project's own bloc graphic (seat-weighted horizontal bar) is the closest fit; Israeli media show the 2019–2022
-consultation results as such bars or tallies. See §1.2 for international examples once merged.
+No publisher example of a seat-weighted bar *by nominee* was verified; it is our synthesis of the project's bloc
+graphic and the President's per-faction announcements. Formation Gantt charts are likewise a synthesis of
+Parlement.com's start/end/person tables (no rendered Gantt inspected). Open-source hemicycle primitives exist under
+MIT: [d3-parliament](https://github.com/geoffreybr/d3-parliament) and
+[d3-parliament-chart](https://github.com/dkaoster/d3-parliament-chart); the app already has its own chamber, so a
+nominee-coloured hemicycle is an optional toggle at most. Any chart needs a table equivalent.
 
 ## 3. Sourcing plan per component
 
