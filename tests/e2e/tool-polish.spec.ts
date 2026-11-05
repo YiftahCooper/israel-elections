@@ -41,5 +41,5 @@ test('Hebrew sensitivity ranges and majority counts read left to right', async (
   const lo = await panel.getByRole('textbox', { name: 'מ-%', exact: true }).boundingBox();
   const hi = await panel.getByRole('textbox', { name: 'עד %', exact: true }).boundingBox();
   expect(lo!.x).toBeLessThan(hi!.x);
-  await expect(panel.locator('bdi[dir="ltr"]')).toHaveText('53 / 61');
+  await expect(panel.locator('.row > .small > bdi[dir="ltr"]')).toHaveText('53 / 61');
 });
