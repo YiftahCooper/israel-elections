@@ -50,7 +50,7 @@ function Plot({family:f,metric,scale,cursor,onCursor,onInspect}:{family:Family;m
   if(status)parts.push(status);if(a.votes!==null&&a.status==='observed'&&!onlyMixed(a))parts.push(num(a.votes,e));
   if(a.mixed)parts.push(`${onlyMixed(a)?'':L('Mixed lists','רשימות מעורבות')+': '}${num(a.mixed,e)}`);
   if(a.excluded&&a.status==='observed')parts.push(`${L('Mixed lists left out','רשימות מעורבות שהושמטו')}: ${Number(a.excluded).toLocaleString()}`);
-  if(e.pending)parts.push(L('Gazette unverified','הפרסום ברשומות לא אומת'));return parts.join(' · ');};
+  if(e.pending)parts.push(L('Gazette not yet verified','הפרסום ברשומות טרם אומת'));return parts.join(' · ');};
  const years=historyElections.map(d=>+d.electionDate.slice(0,4)),every=narrow?20:10;
  const ticks:number[]=[];for(let yr=Math.ceil(years[0]/every)*every;yr<=years[25];yr+=every)ticks.push(yr);
  const label=shortFamilyName(f,lang);

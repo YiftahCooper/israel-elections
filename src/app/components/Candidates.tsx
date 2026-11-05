@@ -1,3 +1,4 @@
+import { CandidateName } from './CandidateName.tsx';
 import {romanize} from '../../data/names.ts';
 import { StartFrom } from './StartFrom.tsx';
 import { useDisclosure } from './Feature.tsx';
@@ -49,14 +50,14 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
       {l.rosterTruncated && !l.rosterUnavailable && <p className="small callout">{L(`Only the first ${c.length} candidates of this list’s official roster are available here (everyone elected is included); later names were not transcribed.`, `כאן זמינים רק ${c.length} המועמדים הראשונים ברשימה הרשמית (כולל כל הנבחרים); השמות שאחריהם לא הוקלדו.`)}</p>}
       {!simple && !l.rosterUnavailable && <div className="kv small" style={{ marginBottom: 8 }}>
         <span>{l.rosterTruncated ? L('Candidates available', 'מועמדים זמינים') : L('Registered candidates', 'מועמדים ברשימה')}</span><span>{c.length}</span>
-        <span>{L('Last elected', 'האחרון שנבחר')}</span><span>{lastIn ? <><bdi>{candidateName(lastIn, lang)}</bdi> <span className="muted">(#{c.indexOf(lastIn) + 1})</span></> : '—'}</span>
-        <span>{L('Next in line', 'הבא בתור')}</span><span>{nextIn ? <><bdi>{candidateName(nextIn, lang)}</bdi> <span className="muted">(#{c.indexOf(nextIn) + 1})</span></> : l.rosterTruncated ? L('not available', 'לא זמין') : L('none', 'אין')}</span>
+        <span>{L('Last elected', 'האחרון שנבחר')}</span><span>{lastIn ? <><CandidateName candidate={lastIn} note={false} /> <span className="muted">(#{c.indexOf(lastIn) + 1})</span></> : '—'}</span>
+        <span>{L('Next in line', 'הבא בתור')}</span><span>{nextIn ? <><CandidateName candidate={nextIn} note={false} /> <span className="muted">(#{c.indexOf(nextIn) + 1})</span></> : l.rosterTruncated ? L('not available', 'לא זמין') : L('none', 'אין')}</span>
       </div>}
       {baseCandidates && JSON.stringify(baseCandidates) !== JSON.stringify(c) && <button className="btn small" style={{ marginBottom: 6 }} onClick={() => dispatch({ type: 'resetCandidates', listId: l.id })}>{L('Restore the registered candidate list', 'שחזור רשימת המועמדים הרשומה')}</button>}
       {seats > seated.length && !l.rosterUnavailable && !l.rosterTruncated && <p className="bad small">{L(`The list has only ${seated.length} candidates for ${seats} seats.`, `ברשימה רק ${seated.length} מועמדים ל-${seats} מנדטים.`)}</p>}
       {c.length === 0 && !l.rosterUnavailable && <p className="muted small">{L('No candidates registered.', 'אין מועמדים רשומים.')}</p>}
       {(c.some((x) => x.bio) || (lang === 'en' && c.length > 0)) && <p className="tiny muted bio-key">{L('Names and links', 'קישורים')} <Info title={L('Candidate names and links', 'קישורים למועמדים')}>
-        {lang === 'en' && <>{L('English names are the official names on the Knesset website (today’s names, which can differ from the ballot); the registered Hebrew name is shown beside them. Candidates who never sat in the Knesset have no official English name and appear in Hebrew as registered.', '')} </>}
+        {lang === 'en' && <>{L('English names are the official names on the Knesset website (today’s names, which can differ from the ballot); the registered Hebrew name is shown beside them. Hebrew-only names have no official English spelling recorded; candidates who never served in the Knesset remain in Hebrew.', '')} </>}
         {L('Links: Knesset member pages (official); party pages (partisan, archived from the campaign where possible); Hebrew Wikipedia (secondary). English Wikipedia is not linked: it is not reliable on Israel.',
         'דפי חברי הכנסת (רשמי); דפי המפלגות (מפלגתי, מארכיון תקופת הבחירות כשאפשר); ויקיפדיה העברית (משני). ויקיפדיה האנגלית אינה מקושרת: אינה אמינה בענייני ישראל.')}</Info></p>}
       <ol className="cands" style={{ ['--c' as string]: l.color }} aria-label={L('Candidate list', 'רשימת המועמדים')}>
@@ -77,7 +78,7 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
                     onBlur={() => { if (draft.trim() && draft !== x.nameHe) commit(c.map((y) => (y.id === x.id ? { ...y, nameHe: draft.trim(), displayNameHe: undefined, nameEn: undefined } : y)), `rename ${shownName(x)}`); setEditing(null); }}
                     onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); if (e.key === 'Escape') { if (draft !== x.nameHe) { e.preventDefault(); e.stopPropagation(); } setDraft(x.nameHe); setEditing(null); } }} />
                 ) : (
-                  lang === 'en' && x.nameEn ? <><span>{x.nameEn}</span> <span className="muted tiny" lang="he">{shownName(x)}</span></> : <span lang="he">{shownName(x)}</span>
+                  lang === 'en' && x.nameEn ? <><CandidateName candidate={x} note={false} /> <bdi className="muted tiny" lang="he" dir="rtl">{shownName(x)}</bdi></> : <CandidateName candidate={x} note={false} />
                 )}
                 {x.notes?.map((n, k) => <span key={k} className="muted tiny cand-note"> · {lang === 'he' ? n.he : n.en}</span>)}
                 {(() => { const p = x.partyId ? l.parties?.find((q) => q.id === x.partyId) : undefined;

@@ -5,6 +5,7 @@
 - After the election (research): sourced "Recommendations to the President" groupings for 1984, 1988, 2003 and 2006, and a partial one for 1981; 1977 and 1992 documented as gaps, 1996/1999 as direct-election years with no recommendation round (docs/research/pm-recommendations-1977-2006.md).
 - Recommendations to the President: new partial 2026 record (4–5 Nov consultations; Likud pending) and 2009–2022 re-verified against news reports (2013: Kadima recommended Netanyahu, 82; 2009: all 12 factions sourced). See docs/research/pm-recommendations-2009-2026.md.
 - Research: recommendations to the President after the 1949–1973 elections (docs/research/pm-recommendations-1949-1973.md); added sourced `pm-recommendations` bloc schemes for 1959, 1969 and 1974, with undocumented lists shown as “Not stated in source”.
+- Owner answers: use Hebrew ballot-letter logo fallbacks and neutral constituent badges, shorten data status with full details behind (i), and isolate Hebrew-only candidate names with an English explanation.
 
 - QA2 leftovers: use shared analysis/settings pickers, tighten stable list-panel spacing, place global notices after the work area, and compact the phone header while keeping every control directly available.
 

@@ -387,7 +387,7 @@ function Split({ s, r }: { s: Scenario; r: AllocationResult }) {
           <div className="st-full"><ShareBar parts={parties.map((p, i) => ({ key: p.id, color: colours[i], votes: partyVotes[i] ?? 0 }))} /></div>
           {parties.map((p, i) => (
             <div key={p.id} className="st-share st-full">
-              <Slip letters={l.letters} name={name(p)} color={colours[i]} logo={p.logo} />
+              <Slip letters="" name={name(p)} color={colours[i]} logo={p.logo} />
               <span style={{ minWidth: 0 }}>{name(p)}</span>
               <span className="row" style={{ gap: 4, flexWrap: 'nowrap' }}>
                 <input type="number" min={0} max={100} step={0.1} value={pct[i]} style={{ width: 76 }} aria-label={L(`Vote share of ${p.nameEn} (%)`, `חלק הקולות של ${p.nameHe} (%)`)}

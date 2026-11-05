@@ -1,3 +1,4 @@
+import { CandidateName } from './CandidateName.tsx';
 import { Info } from './ui.tsx';
 import { blocDisplayOrder } from '../blocOrder.ts';
 import { useActiveReference } from '../useActiveReference.ts';
@@ -197,11 +198,11 @@ function ScenarioCompare({ s, r, base, ds }: { s: Scenario; r: AllocationResult;
       {(entering.length > 0 || leaving.length > 0) && <div className="grid2 stack-sm cmp-section">
         <div>
           <h3>{L(`Entering the Knesset (${entering.length})`, `נכנסים לכנסת (${entering.length})`)}</h3>
-          {entering.length === 0 ? <p className="muted small">—</p> : <ul className="small">{entering.map(({ c, l }) => <li key={c.id}><bdi lang="he">{c.nameHe}</bdi> <span className="muted">· {listLabel(l, lang)} #{l.candidates.indexOf(c) + 1}</span></li>)}</ul>}
+          {entering.length === 0 ? <p className="muted small">—</p> : <ul className="small">{entering.map(({ c, l }) => <li key={c.id}><CandidateName candidate={c} /> <span className="muted">· {listLabel(l, lang)} #{l.candidates.indexOf(c) + 1}</span></li>)}</ul>}
         </div>
         <div>
           <h3>{L(`Leaving the Knesset (${leaving.length})`, `יוצאים מהכנסת (${leaving.length})`)}</h3>
-          {leaving.length === 0 ? <p className="muted small">—</p> : <ul className="small">{leaving.map(({ c, l }) => <li key={c.id}><bdi lang="he">{c.nameHe}</bdi> <span className="muted">· {listLabel(l, lang)} #{l.candidates.indexOf(c) + 1}</span></li>)}</ul>}
+          {leaving.length === 0 ? <p className="muted small">—</p> : <ul className="small">{leaving.map(({ c, l }) => <li key={c.id}><CandidateName candidate={c} /> <span className="muted">· {listLabel(l, lang)} #{l.candidates.indexOf(c) + 1}</span></li>)}</ul>}
         </div>
       </div>}
 

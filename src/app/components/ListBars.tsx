@@ -123,7 +123,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
               const n = electedOf(l, lr.seats).filter((c) => c.partyId === p.id).length;
               return (
                 <li key={p.id}>
-                  <Slip letters={l.letters} name={lang === 'he' ? p.nameHe : p.nameEn} color={p.color ?? l.color} logo={p.logo} />
+                  <Slip letters="" name={lang === 'he' ? p.nameHe : p.nameEn} color={p.color ?? l.color} logo={p.logo} />
                   <span className="lb-pname">{lang === 'he' ? p.nameHe : p.nameEn}</span>
                   <span className="lb-bar" aria-hidden><i style={{ width: `${(n / scale) * 100}%`, background: p.color ?? l.color }} /></span>
                   <b>{n}</b>
