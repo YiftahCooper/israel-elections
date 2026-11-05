@@ -277,6 +277,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
   const listed = ds.sourceIds.flatMap((id) => byId.get(id) ?? []);
   // "official sources first": the list keeps that promise; the dataset's order is kept within each group
   const used = [...listed.filter((x) => x.official), ...listed.filter((x) => !x.official)];
+  const englishSourceText = (text: string) => ds.lists.reduce((out, l) => [l.nameHe, l.shortHe].filter(Boolean).sort((a, b) => b.length - a.length).reduce((t, name) => t.replaceAll(name, listLabel(l, 'en')), out), text).replace(/\s*\([א-ת״׳]+\)/g, '');
   const noLocalities = !ds.totals.ballotBoxes && !ds.totals.localities;
   return (
     <div className="grid2 stack-sm" style={{ alignItems: 'start', gap: 18 }}>
@@ -311,7 +312,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
               {/* source records are written in English (Hebrew originals keep an English publisher for English
                   pages); each runs in its own direction inside a Hebrew page */}
               <b dir="auto">{lang === 'en' ? x.publisherEn ?? x.publisher : x.publisher}</b> {x.official ? <span className="chip ok">{L('official', 'רשמי')}</span> : <span className="chip secondary">{L('secondary', 'משני')}</span>}<br />
-              <span dir="auto" style={{ display: 'block' }}>{lang === 'en' ? x.descriptionEn ?? x.description : x.description}</span>
+              <span dir="auto" style={{ display: 'block' }}>{lang === 'en' ? englishSourceText(x.descriptionEn ?? x.description) : x.description}</span>
               <SourceAddress x={x} />
               <div className="muted tiny">{x.retrievedAt && <>{L('Retrieved', 'נשלף')} <bdi dir="ltr">{x.retrievedAt.slice(0, 10)}</bdi></>}{x.sha256 && <>{x.retrievedAt ? ' · ' : ''}<bdi dir="ltr">SHA-256 {x.sha256.slice(0, 16)}…</bdi></>}{x.note ? <> · <bdi dir="auto">{x.note}</bdi></> : ''}</div>
             </li>
@@ -354,7 +355,8 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
             const parts = c.split(/(; | — )/);
             let i = 0;
             while (i < parts.length && (nonLatin.test(parts[i]) || /^(; | — )$/.test(parts[i]))) i++;
-            if (i === 0 || i >= parts.length) return { main: c };
+            if (i >= parts.length) return { main: 'Rights holder credit', original: c };
+            if (i === 0) return { main: c };
             return { main: parts.slice(i).join(''), original: parts.slice(0, i).join('').replace(/(; | — )$/, '') };
           };
           const commons = (url: string) => { try { return new URL(url).hostname.endsWith('wikimedia.org'); } catch { return false; } };

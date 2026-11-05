@@ -10,6 +10,7 @@ for (const lang of ['en', 'he'] as const) for (const width of [1500, 390]) {
     await start(page, lang, width);
     await page.goto('/');
     await page.getByRole('tab', { name: lang === 'he' ? 'קואליציות' : 'Coalitions', exact: true }).click();
+    await expect(page.locator('.coal-choice').first()).toBeVisible();
     // Every party card keeps In/Out/Any beside its name, including the compact phone layout (QA2 CO1).
     const layout = await page.locator('.coal-choice').evaluateAll((cards) => cards.map((c) => {
       const who = c.querySelector('.coal-who')!.getBoundingClientRect(), seg = c.querySelector('.seg')!.getBoundingClientRect();

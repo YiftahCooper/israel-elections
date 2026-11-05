@@ -1,3 +1,4 @@
+import memberNames from '../../data/candidate-display-names.json';
 import { Floating, useHoverBridge } from '../floating.tsx';
 import { blocDisplayOrder } from '../blocOrder.ts';
 import { changedSeatKeys } from '../graphics.ts';
@@ -95,7 +96,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   const total = s.rules.seats;
   const rtl = false; // Geometry is physically left-to-right in both languages, like the 61 marker.
   const { seats: pos, r: rad } = useMemo(() => arcLayout(total), [total]);
-  const W = 1000, H = layout === 'hemicycle' ? 560 : 0;
+  const W = 1000, H = layout === 'hemicycle' ? 490 : 0;
   const listOf = (id: string) => s.lists.find((l) => l.id === id) as SimList;
   // one region per run of seats in the same bloc (seats are ordered by angle); bandOf[i] is seat i's region
   const { bands, bandOf } = useMemo(() => {
@@ -198,7 +199,14 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   const m = methodOf(s.rules);
   const remainderHow = L(`Seat won by ${m.en}`, `מנדט שהושג בשיטת ${m.he}`);
   const hv = hover ? listOf(hover.seat.listId) : null;
+  const originalDataset = useStore(st => st.datasets[s.electionId]);
   const cand = hover && hv ? seatedOrder(hv)[hover.seat.idx] ?? null : null;
+
+  // Only certain official identities use the Knesset's given-name-first display; user edits keep their text.
+  const unchangedCandidate = cand && originalDataset?.lists.some(l => l.candidates.some(c => c.id === cand.id && c.nameHe === cand.nameHe));
+  const sourcedName = cand?.bio?.knesset && !cand.bio.probable && !cand.displayNameHe && unchangedCandidate
+    ? (memberNames as Record<string, string>)[cand.bio.knesset.split('/').at(-1)!] : undefined;
+  const hoverCandidateName = cand ? (lang === 'he' && sourcedName ? sourcedName : candidateName(cand, lang)) : '';
 
   const seatLabel = (st: SeatInfo) => {
     const l = listOf(st.listId), party = l.parties?.find(p => p.id === st.partyId);
@@ -284,7 +292,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       {body}
       {hasChanges && <div className="baseline-mini">
         <span className="small muted">{referenceLabel(labelReference,lang).name}</span>
-        <svg viewBox="40 30 920 530" role="img" aria-label={referenceLabel(labelReference,lang).name}>
+        <svg viewBox="40 30 920 460" role="img" aria-label={referenceLabel(labelReference,lang).name}>
           {annularRegions(pos, baselineSeats.map(st=>blocDisplayOrder(base).indexOf(st.bloc)),rad).map(w=>{
             const id=blocDisplayOrder(base)[w.band], color=base.blocs.find(b=>b.id===id)?.color ?? 'var(--muted)';
             return <g key={w.band}><path className="wedge" d={w.fill} fill={color} stroke="none" /></g>;
@@ -301,7 +309,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       {hover && hv && (
         <Floating onPointerEnter={hoverBridge.cancel} onPointerLeave={hoverBridge.leave} className="tip" preferAbove anchor={() => hover.anchor.getBoundingClientRect()}>
           <div className="row"><span className="swatch" style={{ background: hover.seat.color }} /><b>{listLabel(hv, lang)}</b> <span className="muted">({hv.letters})</span></div>
-          {cand ? <div><b><bdi>{candidateName(cand, lang)}</bdi></b> · {L('rank', 'מקום')} {hover.seat.idx + 1}{cand.notes?.map((n, k) => <div key={k} className="muted small">{lang === 'he' ? n.he : n.en}</div>)}</div>
+          {cand ? <div><b><bdi>{hoverCandidateName}</bdi></b> · {L('rank', 'מקום')} {hover.seat.idx + 1}{cand.notes?.map((n, k) => <div key={k} className="muted small">{lang === 'he' ? n.he : n.en}</div>)}</div>
             : hv.rosterUnavailable || hv.rosterTruncated ? <div className="muted">{L(`Seat ${hover.seat.idx + 1} of the list; candidate names are not available for this election`, `מושב ${hover.seat.idx + 1} של הרשימה; שמות המועמדים אינם זמינים לבחירות אלה`)}</div>
             : <div className="bad">{L('Vacant — the list has too few candidates', 'מושב ריק — אין די מועמדים ברשימה')}</div>}
           {cand?.partyHe && <div className="muted small">{seatLabel(hover.seat)}</div>}

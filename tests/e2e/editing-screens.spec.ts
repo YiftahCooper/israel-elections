@@ -28,7 +28,7 @@ test('R1 R2 R3 R4 T1 T2: explanations stay live, edits stay put and labels are r
   await steady(page.getByRole('button', { name: 'Experimental', exact: true }));
   await steady(page.getByRole('button', { name: 'Increase Turnout %', exact: true }));
   await expect(page.locator('.band').getByRole('button', { name: /^Undo:/ })).toHaveAccessibleName(/Turnout set to \d+\.\d{2}%/);
-  await expect(page.getByRole('button', { name: '0.1 percentage points', exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: '0.1 points', exact: true })).toBeVisible();
   await steady(page.getByRole('button', { name: 'Increase Registered voters', exact: true }));
   const rulesSteps = (await page.locator('.rules-turnout .seg').boundingBox())!;
   const picker = (await page.getByRole('button', { name: 'Use another election’s turnout', exact: true }).boundingBox())!;
@@ -95,4 +95,13 @@ test('R2: phone mode switch stays under the pointer when its reset appears', asy
   await page.setViewportSize({width:390,height:844}); await start(page);
   await tab(page,'Rules & settings');
   await steady(page.getByRole('button',{name:'Experimental',exact:true}));
+});
+
+test('turnout step choices stay on one line on a Hebrew phone', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await start(page, 'he');
+  await tab(page, 'שיעור הצבעה');
+  const steps = page.locator('.numeric-stepper .seg button');
+  await expect(steps.first()).toBeVisible();
+  for (const b of await steps.all()) expect((await b.boundingBox())!.height).toBeLessThanOrEqual(36);
 });

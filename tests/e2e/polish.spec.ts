@@ -44,7 +44,7 @@ for (const lang of ['he','en']) for (const theme of ['light','dark']) for (const
     await page.goto('/');
     const picker=page.getByRole('button', {name:lang==='he'?'בחירות':'Election',exact:true});
     await choose(picker, 'k26');
-    await expect(page.locator('.election-about summary')).toContainText(lang==='he'?'הפרסום ברשומות לא אומת':'Gazette unverified');
+    await expect(page.locator('.election-about summary')).toContainText(lang==='he'?'רשומות: לא אומת':'Gazette unverified');
     await expect(page.locator('.publication-pending')).toHaveCount(1);
     if (!phone) expect((await page.locator('.band').boundingBox())!.height).toBeLessThanOrEqual(60);
     await page.locator('.election-about summary').click();

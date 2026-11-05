@@ -12,7 +12,7 @@ import { runTasks } from '../analysisPool.ts';
 import { partsOf, type SecurityFigure, type SecurityItem, type SecurityPart } from '../analysisTasks.ts';
 import { setState } from '../store.ts';
 import { toVoteSource, type SourceChoice } from '../voteEdit.ts';
-import { Info, Seg, Slip } from './ui.tsx';
+import { DisclosureToggle, Info, Seg, Slip } from './ui.tsx';
 import { minimalWinning } from '../coalitions.ts';
 
 type Kind = 'proportional' | 'new';
@@ -148,6 +148,7 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
       {below.length > 0 && (
         <section className="sec-below" aria-label={L('Below the threshold', 'מתחת לאחוז החסימה')}>
           <h3 className="small">{L('Below the threshold', 'מתחת לאחוז החסימה')} <span className="muted tabnum" style={{ fontWeight: 400 }}>· {fmtInt(thr)} {L('votes', 'קולות')}</span></h3>
+          {near.length < below.length && <DisclosureToggle open={allBelow} onToggle={() => setAllBelow(!allBelow)} more={L(`${below.length - near.length} smaller lists`, `עוד ${below.length - near.length} רשימות קטנות`)} fewer={L('Fewer', 'פחות')} />}
           <ul>
             {belowShown.map(({ l }) => {
               const q = fig(l.id, 'qualify');
@@ -160,11 +161,7 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
               );
             })}
           </ul>
-          {near.length < below.length && (
-            <button type="button" className="btn small" aria-expanded={allBelow} onClick={() => setAllBelow(!allBelow)}>
-              {allBelow ? L('Fewer', 'פחות') : L(`${below.length - near.length} smaller lists`, `עוד ${below.length - near.length} רשימות קטנות`)}
-            </button>
-          )}
+
         </section>
       )}
       {(sampled || unknown || bounded) && (

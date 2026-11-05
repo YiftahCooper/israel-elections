@@ -100,7 +100,7 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
           {s.mode === 'experimental' && <span className="chip exp">{L('Experimental rules', 'כללים ניסיוניים')}</span>}
         </>}
       </span>
-      {edited && <button ref={trigger} className="btn small ghost" aria-expanded={open} aria-controls={historyId} onClick={() => pop.current?.togglePopover()}>
+      {edited && <button ref={trigger} className="btn small ghost" aria-expanded={open} aria-controls={historyId} popoverTarget={historyId}>
         {L(`History · ${s.log.length} edit${s.log.length === 1 ? '' : 's'}`, `היסטוריה · ${s.log.length} שינויים`)}
         {open ? <ChevronUp className="icon sm" aria-hidden /> : <ChevronDown className="icon sm" aria-hidden />}
       </button>}
