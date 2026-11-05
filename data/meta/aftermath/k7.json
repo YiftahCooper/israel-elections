@@ -84,6 +84,18 @@
       "publisher": "Israel Ministry of Defense, IDF and Defense Establishment Archives, Time Axis: 1972–1980",
       "kind": "official",
       "accessed": "2026-11-05"
+    },
+    "un-yearbook-1973": {
+      "url": "https://www.un.org/unispal/document/auto-insert-207378/",
+      "publisher": "United Nations Yearbook 1973, Middle East chapter (resolutions 338,339,340)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "cfr-conflict-timeline": {
+      "url": "https://www.cfr.org/education/learn/timelines/israeli-palestinian-conflict-timeline",
+      "publisher": "Council on Foreign Relations Education, Israeli-Palestinian Conflict Timeline, 6 October 1973 entry",
+      "kind": "academic",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -375,7 +387,9 @@
       "ipu-next",
       "mfa-timeline",
       "mfa-history",
-      "mod-1972-1980"
+      "mod-1972-1980",
+      "cfr-conflict-timeline",
+      "un-yearbook-1973"
     ],
     "events": [
       {
@@ -442,10 +456,10 @@
       },
       {
         "id": "yom-kippur-war",
-        "date": "1973-10",
+        "date": "1973-10-06",
         "category": "security",
-        "textEn": "The Yom Kippur War took place.",
-        "textHe": "מלחמת יום הכיפורים התרחשה.",
+        "textEn": "According to CFR’s chronology, Egyptian and Syrian forces attacked Israeli positions on 6 October 1973, beginning the Yom Kippur War; according to the UN Yearbook, the Security Council called for a ceasefire on 22 October, reaffirmed it on 23 October and demanded its observance on 25 October 1973 after further fighting.",
+        "textHe": "לפי ציר הזמן של CFR, כוחות מצריים וסוריים תקפו עמדות ישראליות ב־6 באוקטובר 1973, עם תחילת מלחמת יום הכיפורים; לפי שנתון האו״ם, מועצת הביטחון קראה להפסקת אש ב־22 באוקטובר, שבה ואישרה אותה ב־23 באוקטובר ודרשה את קיומה ב־25 באוקטובר 1973 לאחר שהלחימה נמשכה.",
         "cites": [
           {
             "source": "term-history",
@@ -458,9 +472,20 @@
           {
             "source": "ipu-next",
             "quote": "The October conflict"
+          },
+          {
+            "source": "cfr-conflict-timeline",
+            "quote": "Oct 6, 1973"
+          },
+          {
+            "source": "un-yearbook-1973",
+            "quote": "On 25 October the Council adopted another resolution (340 (1973))"
           }
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "notes": [
+          "The onset action is described, without a broader causal claim. No single endDate is assigned: ceasefire resolutions and their implementation differed across fronts. Original selection retained, supplemented by CFR/UN chronology."
+        ]
       }
     ],
     "candidatesPending": [

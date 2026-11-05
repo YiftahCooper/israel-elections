@@ -296,8 +296,8 @@
         "id": "second-lebanon-war",
         "date": "2006-07-12",
         "category": "security",
-        "textEn": "The Second Lebanon War began between Israel and Hezbollah.",
-        "textHe": "מלחמת לבנון השנייה החלה בין ישראל לחזבאללה.",
+        "textEn": "According to the MFA’s history and CRS’s 2009 retrospective, Hezbollah’s capture of two Israeli soldiers on 12 July 2006 was followed by war between Israel and Hezbollah in Lebanon; CRS dates the cessation of hostilities to 14 August 2006.",
+        "textHe": "לפי סקירת משרד החוץ וסקירת CRS מ־2009, בעקבות חטיפת שני חיילים ישראלים בידי חזבאללה ב־12 ביולי 2006 התנהלה מלחמה בין ישראל לחזבאללה בלבנון; CRS מתארך את הפסקת פעולות האיבה ל־14 באוגוסט 2006.",
         "cites": [
           {
             "source": "mfa-history",
@@ -306,9 +306,17 @@
           {
             "source": "crs2009",
             "quote": "July 12, 2006 provoked Israel to launch a war against Hezbollah in Lebanon"
+          },
+          {
+            "source": "crs2009",
+            "quote": "a cessation of hostilities on August 14"
           }
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "endDate": "2006-08-14",
+        "notes": [
+          "Both selection accounts identify the capture preceding the war. MFA links the conclusion to Resolution 1701 adopted 11 August; CRS gives cessation on 14 August. Adoption and effective cessation are distinct dates."
+        ]
       },
       {
         "id": "hamas-gaza-takeover",
@@ -350,8 +358,8 @@
         "id": "cast-lead",
         "date": "2008-12-27",
         "category": "security",
-        "textEn": "Israel began Operation Cast Lead in the Gaza Strip.",
-        "textHe": "ישראל פתחה במבצע עופרת יצוקה ברצועת עזה.",
+        "textEn": "According to the MFA’s history and IPU’s 2009 retrospective, Israel launched Operation Cast Lead against Hamas in Gaza on 27 December 2008; CRS’s 2009 retrospective dates the end of the operation to 18 January 2009.",
+        "textHe": "לפי סקירת משרד החוץ וסקירת IPU מ־2009, ישראל פתחה במבצע עופרת יצוקה נגד חמאס ברצועת עזה ב־27 בדצמבר 2008; סקירת CRS מ־2009 מתארכת את סיום המבצע ל־18 בינואר 2009.",
         "cites": [
           {
             "source": "mfa-history",
@@ -360,9 +368,17 @@
           {
             "source": "ipu2009",
             "quote": "military operations against Hamas in the Gaza Strip that began on 27 December"
+          },
+          {
+            "source": "crs2009",
+            "quote": "ended on January 18, 2009"
           }
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "endDate": "2009-01-18",
+        "notes": [
+          "The ending is the operation’s ending as reported by CRS, not a peace treaty. No trigger is added without agreement between the selection chronologies."
+        ]
       }
     ],
     "candidatesPending": [
