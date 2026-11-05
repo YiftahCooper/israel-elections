@@ -1,0 +1,773 @@
+{
+  "schemaVersion": 1,
+  "electionId": "k24",
+  "status": "pilot",
+  "reviewedAt": "2026-11-05",
+  "notes": [
+    "Pilot for docs/design/after-the-election.md. Not wired into the app.",
+    "Every fact cites sources by id; each citation carries a short verbatim quote. Wording is descriptive and attributed; no evaluative adjectives."
+  ],
+  "sources": {
+    "knesset-news-2021-06-14": {
+      "url": "https://main.knesset.gov.il/EN/News/PressReleases/Pages/press14621d.aspx",
+      "publisher": "Knesset News",
+      "publisherHe": "חדשות הכנסת",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "knesset-news-2022-06-30": {
+      "url": "https://main.knesset.gov.il/News/PressReleases/Pages/press30062022D.aspx",
+      "publisher": "Knesset News",
+      "publisherHe": "חדשות הכנסת",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "reshumot-sh-2933": {
+      "url": "https://fs.knesset.gov.il/24/law/24_lsr_611801.pdf",
+      "publisher": "Reshumot, Sefer HaHukkim 2933 (Knesset copy)",
+      "publisherHe": "רשומות, ספר החוקים 2933",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "gov-pmo-2022-10-12": {
+      "url": "https://www.gov.il/he/pages/event-press121022",
+      "publisher": "Prime Minister's Office (gov.il)",
+      "publisherHe": "משרד ראש הממשלה",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "loc-glm-2022-07-06": {
+      "url": "https://www.loc.gov/item/global-legal-monitor/2022-07-06/israel-parliament-dissolves-itself-approves-national-election-and-financing-adjustments/",
+      "publisher": "Library of Congress, Global Legal Monitor",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "toi-2021-04-06-rivlin": {
+      "url": "https://www.timesofisrael.com/rivlin-reluctantly-taps-netanyahu-to-form-government-not-an-easy-moral-choice/",
+      "publisher": "The Times of Israel",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "toi-2021-04-06-liveblog": {
+      "url": "https://www.timesofisrael.com/liveblog-april-06-2021/",
+      "publisher": "The Times of Israel (live blog; carries the President's Residence text of Rivlin's statement)",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "globes-2021-04-06": {
+      "url": "https://en.globes.co.il/en/article-president-rivlin-tasks-netanyahu-with-forming-government-1001366407",
+      "publisher": "Globes",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "ynet-2021-05-05": {
+      "url": "https://www.ynetnews.com/article/r1NizEeOO",
+      "publisher": "Ynetnews",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "globes-2021-05-05": {
+      "url": "https://en.globes.co.il/en/article-rivlin-asks-lapid-to-form-a-government-1001370105",
+      "publisher": "Globes",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "toi-2021-06-02": {
+      "url": "https://www.timesofisrael.com/lapid-informs-president-he-can-form-government-removing-netanyahu-from-power/",
+      "publisher": "The Times of Israel",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "inn-2021-06-02": {
+      "url": "https://www.israelnationalnews.com/news/307378",
+      "publisher": "Israel National News",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "jpost-2021-06-03": {
+      "url": "https://www.jpost.com/israel-news/politics-and-diplomacy/lapid-tells-rivlin-new-government-ready-669937",
+      "publisher": "The Jerusalem Post",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "n12-2021-06-13": {
+      "url": "https://www.mako.co.il/news-politics/2021_q2/Article-61ff3bc2da60a71027.htm",
+      "publisher": "N12 (mako)",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "ynet-2021-11-04": {
+      "url": "https://www.ynetnews.com/article/bjkkjg11vt",
+      "publisher": "Ynetnews (Reuters)",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "toi-2021-11-04": {
+      "url": "https://www.timesofisrael.com/how-much-of-a-revolution-13-key-plans-in-israels-new-state-budget/",
+      "publisher": "The Times of Israel",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "crisisgroup-2022-07-04": {
+      "url": "https://www.crisisgroup.org/middle-east-north-africa/east-mediterranean-mena/israelpalestine/israels-governing-coalition-crashes-setting-stage-new-elections",
+      "publisher": "International Crisis Group",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "nyt-2022-06-20": {
+      "url": "https://www.nytimes.com/2022/06/20/world/middleeast/israel-election-government-collapse.html",
+      "publisher": "The New York Times",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "toi-2022-06-30": {
+      "url": "https://www.timesofisrael.com/knesset-disbands-sets-elections-for-november-1-lapid-to-become-pm-at-midnight/",
+      "publisher": "The Times of Israel",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "reuters-2022-10-27": {
+      "url": "https://www.reuters.com/world/middle-east/lebanon-israel-set-approve-maritime-border-deal-2022-10-27/",
+      "publisher": "Reuters",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "jpost-2022-10-27": {
+      "url": "https://www.jpost.com/breaking-news/article-720727",
+      "publisher": "The Jerusalem Post",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "hewiki-mandate": {
+      "url": "https://he.wikipedia.org/wiki/%D7%94%D7%98%D7%9C%D7%AA_%D7%94%D7%9E%D7%A0%D7%93%D7%98_%D7%9C%D7%94%D7%A7%D7%9E%D7%AA_%D7%9E%D7%9E%D7%A9%D7%9C%D7%94_%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "publisher": "Wikipedia (he), \"הטלת המנדט להקמת ממשלה בישראל\"",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    }
+  },
+  "results": {
+    "electionDate": "2021-03-23",
+    "knessetSwornIn": {
+      "date": "2021-04-06",
+      "cites": [
+        {
+          "source": "toi-2021-04-06-rivlin",
+          "quote": "Rivlin met Monday with representatives of all 13 parties that won Knesset seats in the March 23 election. The 120 MKs were being sworn in on Tuesday afternoon."
+        }
+      ]
+    }
+  },
+  "reaction": {
+    "policy": "Only dated institutional steps and statements attributed to their speaker, applied to every list or to none.",
+    "items": [],
+    "gap": "No reaction items collected for this pilot. Election-night statements by all 13 seated lists were not gathered, so none is shown (all-or-none rule)."
+  },
+  "recommendationRounds": [
+    {
+      "id": "r1",
+      "date": "2021-04-05",
+      "kind": "consultations",
+      "president": {
+        "nameEn": "Reuven Rivlin",
+        "nameHe": "ראובן ריבלין"
+      },
+      "blocSchemeRef": "pm-recommendations",
+      "nominees": {
+        "netanyahu": {
+          "nameEn": "Benjamin Netanyahu",
+          "nameHe": "בנימין נתניהו"
+        },
+        "lapid": {
+          "nameEn": "Yair Lapid",
+          "nameHe": "יאיר לפיד"
+        },
+        "bennett": {
+          "nameEn": "Naftali Bennett",
+          "nameHe": "נפתלי בנט"
+        }
+      },
+      "entries": [
+        {
+          "letters": "מחל",
+          "seats": 30,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "שס",
+          "seats": 9,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "ג",
+          "seats": 7,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "ט",
+          "seats": 6,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "פה",
+          "seats": 17,
+          "status": "recommended",
+          "nominee": "lapid"
+        },
+        {
+          "letters": "כן",
+          "seats": 8,
+          "status": "recommended",
+          "nominee": "lapid"
+        },
+        {
+          "letters": "ל",
+          "seats": 7,
+          "status": "recommended",
+          "nominee": "lapid"
+        },
+        {
+          "letters": "אמת",
+          "seats": 7,
+          "status": "recommended",
+          "nominee": "lapid"
+        },
+        {
+          "letters": "מרצ",
+          "seats": 6,
+          "status": "recommended",
+          "nominee": "lapid"
+        },
+        {
+          "letters": "ב",
+          "seats": 7,
+          "status": "recommended",
+          "nominee": "bennett"
+        },
+        {
+          "letters": "ת",
+          "seats": 6,
+          "status": "none"
+        },
+        {
+          "letters": "ודעם",
+          "seats": 6,
+          "status": "none"
+        },
+        {
+          "letters": "עם",
+          "seats": 4,
+          "status": "none"
+        }
+      ],
+      "totals": {
+        "netanyahu": 52,
+        "lapid": 45,
+        "bennett": 7,
+        "none": 16
+      },
+      "cites": [
+        {
+          "source": "toi-2021-04-06-liveblog",
+          "quote": "After consulting with the representatives of all the factions in the Knesset, the following picture has emerged: 52 MKs requested that I entrust MK Benjamin Netanyahu with forming a government. 45 MKs requested that I entrust MK Yair Lapid with forming a government. 7 MKs requested that I entrust MK Naftali Bennett with forming a government. 16 MKs did not make any recommendation to me."
+        },
+        {
+          "source": "toi-2021-04-06-rivlin",
+          "quote": "Netanyahu was endorsed by his Likud party, with 30 seats, Shas, with 9; United Torah Judaism, 7; and Religious Zionism, 6. Lapid was recommended as prime minister by 45 lawmakers (Yesh Atid 17, Blue and White 8, Yisrael Beytenu 7, Labor 7, Meretz 6), and Naftali Bennett by the seven members of his own Yamina party."
+        },
+        {
+          "source": "globes-2021-04-06",
+          "quote": "Yamina recommended its own party leader Naftali Bennett and Gideon Sa'ar's New Hope and the two Arab parties did not recommend anybody."
+        }
+      ],
+      "notes": [
+        "The President's own statement is carried by ToI as \"courtesy of the President's Residence\"; the press release on the President's Residence site was not retrieved (gap)."
+      ]
+    },
+    {
+      "id": "r2",
+      "date": "2021-05-05",
+      "kind": "updated-positions",
+      "president": {
+        "nameEn": "Reuven Rivlin",
+        "nameHe": "ראובן ריבלין"
+      },
+      "nominees": {
+        "lapid": {
+          "nameEn": "Yair Lapid",
+          "nameHe": "יאיר לפיד"
+        },
+        "bennett": {
+          "nameEn": "Naftali Bennett",
+          "nameHe": "נפתלי בנט"
+        },
+        "knesset": {
+          "nameEn": "Return the task to the Knesset",
+          "nameHe": "החזרת המנדט לכנסת"
+        }
+      },
+      "entries": [
+        {
+          "letters": "פה",
+          "seats": 17,
+          "status": "recommended",
+          "nominee": "lapid"
+        },
+        {
+          "letters": "כן",
+          "seats": 8,
+          "status": "recommended",
+          "nominee": "lapid"
+        },
+        {
+          "letters": "ל",
+          "seats": 7,
+          "status": "recommended",
+          "nominee": "lapid"
+        },
+        {
+          "letters": "אמת",
+          "seats": 7,
+          "status": "recommended",
+          "nominee": "lapid"
+        },
+        {
+          "letters": "ת",
+          "seats": 6,
+          "status": "recommended",
+          "nominee": "lapid"
+        },
+        {
+          "letters": "מרצ",
+          "seats": 6,
+          "status": "recommended",
+          "nominee": "lapid"
+        },
+        {
+          "letters": "ודעם",
+          "seats": 6,
+          "status": "split",
+          "split": [
+            {
+              "nominee": "lapid",
+              "seats": 5
+            },
+            {
+              "status": "none",
+              "seats": 1
+            }
+          ]
+        },
+        {
+          "letters": "ב",
+          "seats": 7,
+          "status": "recommended",
+          "nominee": "bennett"
+        },
+        {
+          "letters": "מחל",
+          "seats": 30,
+          "status": "other",
+          "nominee": "knesset"
+        },
+        {
+          "letters": "שס",
+          "seats": 9,
+          "status": "other",
+          "nominee": "knesset"
+        },
+        {
+          "letters": "ג",
+          "seats": 7,
+          "status": "other",
+          "nominee": "knesset"
+        },
+        {
+          "letters": "ט",
+          "seats": 6,
+          "status": "other",
+          "nominee": "knesset"
+        },
+        {
+          "letters": "עם",
+          "seats": 4,
+          "status": "none"
+        }
+      ],
+      "totals": {
+        "lapid": 56,
+        "bennett": 7,
+        "knesset": 52,
+        "none": 5
+      },
+      "cites": [
+        {
+          "source": "globes-2021-05-05",
+          "quote": "I spoke with Bennett and Lapid and it was made clear to me that Bennett remains with seven recommendations while Lapid has 11 more recommendations and now has 56. MK Mansour Abbas wrote to me that he would cooperate with the person who received the most recommendations."
+        },
+        {
+          "source": "ynet-2021-05-05",
+          "quote": "Lapid received 56 recommendations to be the next candidate to receive the mandate, including from Gideon Saar's New Hope party and five out of six MKs from the predominantly Arab Joint List. Yamina leader Naftali Bennett received seven nominations, with the 52-MK right-wing bloc headed by Netanyahu asking for the mandate to be returned to Knesset."
+        },
+        {
+          "source": "hewiki-mandate",
+          "quote": "לפיד - 56, בנט - 7 ... פירוט: ליאיר לפיד - יש עתיד 17, כחול לבן 8, העבודה 7, ישראל ביתנו 7, תקווה חדשה 6, מרצ 6 וחמישה מחברי הרשימה המשותפת. לבנט - ימינה 7."
+        }
+      ],
+      "notes": [
+        "Not a full new consultation round: the President described updated positions conveyed to him after the first mandate lapsed.",
+        "The one Joint List MK who did not recommend Lapid is not named in the retrieved sources (gap). Ra'am (4) is counted as no recommendation per the President's description of a letter, not a named nominee."
+      ]
+    }
+  ],
+  "formation": {
+    "outcome": "government-formed",
+    "events": [
+      {
+        "date": "2021-04-05",
+        "type": "consultations",
+        "textEn": "President Rivlin consulted all 13 Knesset lists.",
+        "textHe": "הנשיא ריבלין התייעץ עם כל 13 הרשימות שנבחרו.",
+        "cites": [
+          {
+            "source": "toi-2021-04-06-rivlin",
+            "quote": "Rivlin met Monday with representatives of all 13 parties that won Knesset seats in the March 23 election."
+          }
+        ]
+      },
+      {
+        "date": "2021-04-06",
+        "type": "mandate-given",
+        "person": "netanyahu",
+        "days": 28,
+        "textEn": "Rivlin tasked Benjamin Netanyahu with forming a government (28 days).",
+        "textHe": "ריבלין הטיל על בנימין נתניהו להרכיב ממשלה (28 ימים).",
+        "cites": [
+          {
+            "source": "toi-2021-04-06-liveblog",
+            "quote": "I have come to a decision based on the numbers of recommendations, which indicates that MK Benjamin Netanyahu has a slightly higher chance of forming a government. Accordingly, I have decided to entrust him with the task of doing so."
+          },
+          {
+            "source": "globes-2021-04-06",
+            "quote": "Netanyahu has been given 28 days to cobble together a coalition, with an option to ask Rivlin for a 14 day extension."
+          }
+        ]
+      },
+      {
+        "date": "2021-05-04",
+        "type": "mandate-expired",
+        "person": "netanyahu",
+        "textEn": "Netanyahu's 28 days ended at midnight without a government.",
+        "textHe": "28 הימים של נתניהו הסתיימו בחצות ללא ממשלה.",
+        "cites": [
+          {
+            "source": "ynet-2021-05-05",
+            "quote": "Prime Minister Benjamin Netanyahu's deadline for forming a government expired at midnight"
+          },
+          {
+            "source": "globes-2021-05-05",
+            "quote": "after Prime Minister Benjamin Netanyahu failed to do so in the 28 days allocated to him"
+          }
+        ]
+      },
+      {
+        "date": "2021-05-05",
+        "type": "mandate-given",
+        "person": "lapid",
+        "days": 28,
+        "textEn": "Rivlin tasked Yair Lapid with forming a government (28 days).",
+        "textHe": "ריבלין הטיל על יאיר לפיד להרכיב ממשלה (28 ימים).",
+        "cites": [
+          {
+            "source": "globes-2021-05-05",
+            "quote": "As part of my powers, I have informed Lapid that I have granted him the task of forming a government in which he might head of or serve as alternate prime minister."
+          },
+          {
+            "source": "ynet-2021-05-05",
+            "quote": "President Reuven Rivlin Wednesday announced that he has decided to task Yesh Atid leader Yair Lapid with forming Israel's next government."
+          }
+        ]
+      },
+      {
+        "date": "2021-06-02",
+        "type": "informed-success",
+        "person": "lapid",
+        "textEn": "Lapid informed the President, before midnight, that he had formed a government in which Bennett would serve as prime minister first.",
+        "textHe": "לפיד הודיע לנשיא, לפני חצות, שהצליח להרכיב ממשלה שבה בנט יכהן ראשון כראש הממשלה.",
+        "cites": [
+          {
+            "source": "toi-2021-06-02",
+            "quote": "I am honored to inform you that I have succeeded in forming a government ... The government will be an alternate government in accordance with Clause 13(a) of the Basic Law: The Government, and MK Naftali Bennett will serve as prime minister first."
+          },
+          {
+            "source": "inn-2021-06-02",
+            "quote": "Lapid spoke to the president on the phone and informed him that the government will comprise Yesh Atid, Blue and White, Yamina, Labor, Yisrael Beytenu, New Hope, Meretz and Ra'am."
+          }
+        ]
+      },
+      {
+        "date": "2021-06-13",
+        "type": "confidence-vote",
+        "votes": {
+          "for": 60,
+          "against": 59,
+          "abstain": 1
+        },
+        "textEn": "The Knesset approved the 36th government, 60–59 with one abstention; ministers were sworn in.",
+        "textHe": "הכנסת אישרה את הממשלה ה־36 ברוב של 60 מול 59 ונמנע אחד; השרים הושבעו.",
+        "cites": [
+          {
+            "source": "knesset-news-2021-06-14",
+            "quote": "By a vote of 60 to 59, with one abstention, the Knesset Plenum Sunday night confirmed the 36th Government of Israel headed by Prime Minister MK Naftali Bennett (Yemina). Following the vote, the government ministers were sworn in."
+          },
+          {
+            "source": "n12-2021-06-13",
+            "quote": "ח\"כ עמיחי שיקלי מימינה הצביע נגד, וח\"כ סעיד אלחרומי מרע\"ם החליט ברגע האחרון להימנע"
+          }
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "about": "Time Lapid informed the President on 2 June 2021",
+        "values": [
+          {
+            "value": "11:22 p.m.",
+            "source": "inn-2021-06-02"
+          },
+          {
+            "value": "about 35 minutes before midnight",
+            "source": "toi-2021-06-02"
+          },
+          {
+            "value": "11:35 p.m.",
+            "source": "jpost-2021-06-03"
+          }
+        ],
+        "resolution": "Not resolved; UI shows the date only."
+      }
+    ]
+  },
+  "government": {
+    "number": 36,
+    "nameEn": "36th government (Bennett–Lapid)",
+    "nameHe": "הממשלה ה־36 (בנט–לפיד)",
+    "startDate": "2021-06-13",
+    "endDate": "2022-12-29",
+    "endDateRef": "data/meta/k25.json blocSchemes[first-government].date (37th government)",
+    "primeMinisters": [
+      {
+        "nameEn": "Naftali Bennett",
+        "nameHe": "נפתלי בנט",
+        "letters": "ב",
+        "from": "2021-06-13",
+        "to": "2022-06-30"
+      },
+      {
+        "nameEn": "Yair Lapid",
+        "nameHe": "יאיר לפיד",
+        "letters": "פה",
+        "from": "2022-07-01",
+        "to": "2022-12-29"
+      }
+    ],
+    "firstGovernmentSchemeRef": "first-government",
+    "coalition": [
+      {
+        "letters": "פה",
+        "seats": 17
+      },
+      {
+        "letters": "כן",
+        "seats": 8
+      },
+      {
+        "letters": "ב",
+        "seats": 7
+      },
+      {
+        "letters": "אמת",
+        "seats": 7
+      },
+      {
+        "letters": "ל",
+        "seats": 7
+      },
+      {
+        "letters": "ת",
+        "seats": 6
+      },
+      {
+        "letters": "מרצ",
+        "seats": 6
+      },
+      {
+        "letters": "עם",
+        "seats": 4
+      }
+    ],
+    "coalitionSeats": 62,
+    "cites": [
+      {
+        "source": "inn-2021-06-02",
+        "quote": "the government will comprise Yesh Atid, Blue and White, Yamina, Labor, Yisrael Beytenu, New Hope, Meretz and Ra'am. Yamina chairman Naftali Bennett will be Prime Minister and Yesh Atid chairman MK Yair Lapid will be Alternate Prime Minister."
+      },
+      {
+        "source": "toi-2022-06-30",
+        "quote": "Foreign Minister and Alternate Prime Minister Yair Lapid will formally succeed Prime Minister Naftali Bennett as premier at midnight between Thursday and Friday. He will hold the post through the elections and until a new coalition is formed."
+      }
+    ],
+    "notes": [
+      "Seats are list seats at the election. Ra'am held no ministry; Yamina MK Amichai Chikli voted against (see k24.json first-government notes)."
+    ]
+  },
+  "term": {
+    "start": "2021-06-13",
+    "end": "2022-12-29",
+    "inclusionRule": "interim-2src",
+    "inclusionRuleNote": "No retrospective chronology of 2021–22 by the Knesset, ISA or an encyclopaedia was retrieved. Interim rule: at least two independent sources, at least one official, each reporting the event at the time. Replace with the chronology rule when one is available.",
+    "events": [
+      {
+        "id": "budget-2021",
+        "date": "2021-11-04",
+        "category": "governance",
+        "textEn": "The Knesset passed the 2021 state budget, 61–59, the first budget since 2018.",
+        "textHe": "הכנסת אישרה את תקציב המדינה ל־2021, ברוב של 61 מול 59 – התקציב הראשון מאז 2018.",
+        "cites": [
+          {
+            "source": "reshumot-sh-2933",
+            "quote": "התקבל בכנסת ביום כ\"ט בחשוון התשפ\"ב (4 בנובמבר 2021)"
+          },
+          {
+            "source": "ynet-2021-11-04",
+            "quote": "The legislature voted 61-59 vote in favor of the 2021 budget"
+          },
+          {
+            "source": "toi-2021-11-04",
+            "quote": "The NIS 609 billion ($194 billion) spending plan for 2021 is the first budget Israel has passed since 2018"
+          }
+        ],
+        "notes": [
+          "The Reshumot citation is the accompanying Economic Plan law passed the same night; the Budget Law's own gazette entry was not retrieved."
+        ]
+      },
+      {
+        "id": "majority-lost-2022",
+        "date": "2022-04",
+        "category": "politics",
+        "textEn": "The coalition lost its majority after Yamina MK Idit Silman left it.",
+        "textHe": "הקואליציה איבדה את הרוב לאחר שח\"כ עידית סילמן מימינה פרשה ממנה.",
+        "confidence": "medium",
+        "cites": [
+          {
+            "source": "crisisgroup-2022-07-04",
+            "quote": "The coalition had an extremely slim parliamentary majority to begin with (61 of 120 seats) with a member from Bennett's Yamina faction, Idit Silman, defecting to the Netanyahu-led opposition in April."
+          }
+        ],
+        "notes": [
+          "Only one independent source retrieved; fails the interim rule until a second (Knesset House Committee record or contemporaneous report) is added. Kept to show the pattern."
+        ]
+      },
+      {
+        "id": "dissolution-2022",
+        "date": "2022-06-30",
+        "category": "politics",
+        "textEn": "The Knesset dissolved itself, 92–0, and set an election for 1 November 2022. Lapid became prime minister under the rotation agreement.",
+        "textHe": "הכנסת התפזרה ברוב של 92 ללא מתנגדים וקבעה בחירות ל־1 בנובמבר 2022. לפיד נעשה ראש הממשלה לפי הסכם הרוטציה.",
+        "cites": [
+          {
+            "source": "knesset-news-2022-06-30",
+            "quote": "בקריאה השלישית תמכו 92 חברי כנסת ללא מתנגדים. מוצע לקבוע כי הכנסת העשרים וארבע תפוזר לפני גמר כהונתה, וכי הבחירות לכנסת העשרים וחמש תיערכנה ביום ז' בחשוון התשפ\"ג, 1 בנובמבר 2022."
+          },
+          {
+            "source": "loc-glm-2022-07-06",
+            "quote": "On June 30, 2022, the Knesset (Israel's parliament) approved the Law for the Dissolution of the 24th Knesset ... for national elections to take place on November 1, 2022."
+          },
+          {
+            "source": "toi-2022-06-30",
+            "quote": "Foreign Minister and Alternate Prime Minister Yair Lapid will formally succeed Prime Minister Naftali Bennett as premier at midnight between Thursday and Friday."
+          }
+        ]
+      },
+      {
+        "id": "lebanon-maritime-2022",
+        "date": "2022-10-27",
+        "category": "foreign-relations",
+        "textEn": "Israel and Lebanon each signed a US-mediated maritime boundary agreement.",
+        "textHe": "ישראל ולבנון חתמו, כל אחת בנפרד, על הסכם גבול ימי בתיווך ארה\"ב.",
+        "cites": [
+          {
+            "source": "gov-pmo-2022-10-12",
+            "quote": "הצלחנו להגיע להסכם מדיני-כלכלי עם לבנון על הגבול הימי בין המדינות ... הממשלה אישרה להניח את ההסכם על שולחן הכנסת למשך 14 יום"
+          },
+          {
+            "source": "reuters-2022-10-27",
+            "quote": "Lebanese and Israeli leaders finalised a U.S.-brokered maritime demarcation deal on Thursday ... there was no joint signing ceremony"
+          },
+          {
+            "source": "jpost-2022-10-27",
+            "quote": "Earlier, Prime Minister Yair Lapid signed the deal in Jerusalem and Lebanese President Michel Aoun signed it in Beirut."
+          }
+        ]
+      }
+    ],
+    "candidatesPending": [
+      {
+        "label": "Operation Guardian of the Walls and riots in mixed cities",
+        "date": "2021-05-10/2021-05-21",
+        "why": "During formation, before the government; sources not yet retrieved."
+      },
+      {
+        "label": "Mount Meron disaster",
+        "date": "2021-04-30",
+        "why": "During formation; official commission source not yet retrieved."
+      },
+      {
+        "label": "Negev Summit",
+        "date": "2022-03-27/2022-03-28",
+        "why": "Not yet retrieved."
+      },
+      {
+        "label": "Wave of attacks, spring 2022",
+        "date": "2022-03/2022-05",
+        "why": "Not yet retrieved."
+      },
+      {
+        "label": "US President Biden's visit",
+        "date": "2022-07-13/2022-07-15",
+        "why": "Not yet retrieved."
+      },
+      {
+        "label": "Operation Breaking Dawn (Gaza)",
+        "date": "2022-08-05/2022-08-07",
+        "why": "Not yet retrieved."
+      },
+      {
+        "label": "Announcement of dissolution bill",
+        "date": "2022-06-20",
+        "why": "Merged into the dissolution event; source nyt-2022-06-20 held for (i) detail."
+      }
+    ],
+    "endedBy": {
+      "type": "knesset-dissolved",
+      "date": "2022-06-30",
+      "nextElection": "k25",
+      "textEn": "Election to the 25th Knesset, 1 November 2022.",
+      "textHe": "בחירות לכנסת ה־25, 1 בנובמבר 2022."
+    }
+  },
+  "issuePolling": {
+    "status": "pending",
+    "note": "See docs/research/after-the-election.md §5. Candidate source: IDI Israeli Democracy Index / Israeli Voice Index for 2021–2022; not filled in this pilot."
+  },
+  "gaps": [
+    "President's Residence press releases (gov.il) for 5–6 April, 5 May and 2 June 2021 not retrieved directly; the President's words are cited through news reports that quote them.",
+    "CEC certification date of the final results (presented to the President) not retrieved.",
+    "Reaction items not collected (all-or-none rule).",
+    "Term events rely on an interim two-source rule; several candidate events are listed but not included.",
+    "Issue polling not filled."
+  ]
+}
