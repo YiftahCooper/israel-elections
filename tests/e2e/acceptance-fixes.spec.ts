@@ -72,8 +72,9 @@ test('E8 locality historical name survives a separate electoral run', async ({pa
   const search=page.getByRole('searchbox', {name:'Find a locality'});
   await search.fill('tel aviv');
   await page.locator('.locality-map-matches button').filter({hasText:/5000/}).first().click();
-  await expect(page.getByRole('region', {name:'Selected locality results'}).getByRole('table')).toContainText('United Torah Judaism');
-  await expect(page.getByRole('region', {name:'Selected locality results'}).getByRole('table')).not.toContainText('25-ג');
+  const lists=page.getByRole('region', {name:'Selected locality results'}).getByRole('table').filter({has:page.getByRole('columnheader',{name:'List',exact:true})});
+  await expect(lists).toContainText('United Torah Judaism');
+  await expect(lists).not.toContainText('25-ג');
 });
 test('E9 Escape reverts a draft first, then closes the panel', async ({page}) => {
   await start(page); await page.getByRole('button',{name:'Likud',exact:true}).click();

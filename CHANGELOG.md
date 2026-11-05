@@ -9,6 +9,7 @@
 
 - Keep long edited bloc names and official list names readable on phones, restore contrast for Compare counts, and show family scaling counts once beside their strips.
 - Prevent map zoom completion from accessing a destroyed pane after tool navigation.
+- Localities: English mode names every locality in English (CBS names, including 2006 by exact name; a few labelled project transliterations) on the map, table and lists; the basemap is muted and dark in dark theme; a selected locality shows who leads, by how much, and the bloc breakdown; the address field is styled as an input, a blocked tile server is reported, and zooming no longer scrolls the page.
 
 ## 5 November 2026 — concise tool pages
 

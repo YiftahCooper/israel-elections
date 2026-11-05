@@ -189,7 +189,7 @@ details > summary { cursor: pointer; }
 .seg button + button { border-inline-start: 1px solid var(--rule-2); }
 .seg button:hover:not([aria-pressed="true"]) { background: var(--surface-2); }
 .seg button[aria-pressed="true"] { background: var(--shell); color: var(--shell-ink); font-weight: 600; }
-input[type="text"], input[type="number"], input[type="search"], select, textarea { border: 1px solid var(--rule-2); background: var(--surface); border-radius: 5px; padding: 4px 8px; min-height: 32px; min-width: 0; }
+input[type="text"], input[type="number"], input[type="search"], input:not([type]), select, textarea { border: 1px solid var(--rule-2); background: var(--surface); border-radius: 5px; padding: 4px 8px; min-height: 32px; min-width: 0; }
 select { padding-inline-end: 6px; }
 input:hover:not(:disabled), select:hover:not(:disabled) { border-color: var(--axis); }
 input.num-in { width: 120px; text-align: end; }

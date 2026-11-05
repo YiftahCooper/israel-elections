@@ -9,10 +9,10 @@ export function matchesLocality(query: string, names: { nameHe: string; nameEn?:
   const q = normalizeLocalityName(query);
   return [names.nameHe, names.nameEn ?? '', ...(names.aliases ?? []), String(names.code ?? '')].some(n => normalizeLocalityName(n).includes(q));
 }
-export interface Winner { key: string | null; color: string; votes: number; tied: boolean }
 /** Constituents have no separate local ballots: apportion list votes by current elected-seat bloc fractions.
  * Lists without seats use their list bloc. This is a labelled estimate, not observed constituent votes. */
-export function localityWinner(s: Scenario, listIds: string[], votes: number[], mode: 'bloc' | 'list'): Winner {
+/** Each group's (bloc's or list's) share of a locality's valid votes, largest first; null = unassigned. */
+export function localityTotals(s: Scenario, listIds: string[], votes: number[], mode: 'bloc' | 'list'): { key: string | null; votes: number }[] {
   const totals = new Map<string | null, number>();
   const allocation = allocationOf(s);
   for (let i = 0; i < listIds.length; i++) {
@@ -33,10 +33,15 @@ export function localityWinner(s: Scenario, listIds: string[], votes: number[], 
       }
     }
   }
-  const sorted = [...totals].sort((a,b) => b[1] - a[1]);
-  const [key, count] = sorted[0] ?? [null, 0];
-  const tied = sorted.length > 1 && Math.abs(count - sorted[1][1]) < 1e-8;
-  return { key: count > 0 && !tied ? key : null, votes: count, tied, color: tied || count <= 0 ? '#78838c' : (mode === 'bloc' ? s.blocs.find(b => b.id === key)?.color : s.lists.find(l => l.id === key)?.color) ?? '#78838c' };
+  return [...totals].map(([key, v]) => ({ key, votes: v })).sort((a, b) => b.votes - a.votes);
+}
+export interface Winner { key: string | null; color: string; votes: number; tied: boolean; runnerUp: string | null; margin: number }
+export function localityWinner(s: Scenario, listIds: string[], votes: number[], mode: 'bloc' | 'list'): Winner {
+  const sorted = localityTotals(s, listIds, votes, mode);
+  const { key, votes: count } = sorted[0] ?? { key: null, votes: 0 };
+  const tied = sorted.length > 1 && Math.abs(count - sorted[1].votes) < 1e-8;
+  return { key: count > 0 && !tied ? key : null, votes: count, tied, runnerUp: sorted[1]?.key ?? null, margin: count - (sorted[1]?.votes ?? 0),
+    color: tied || count <= 0 ? '#78838c' : (mode === 'bloc' ? s.blocs.find(b => b.id === key)?.color : s.lists.find(l => l.id === key)?.color) ?? '#78838c' };
 }
 export function nearestLocality<T extends Coordinate>(items: T[], point: Coordinate): {item: T; km: number} | null {
   const rad = Math.PI / 180;
