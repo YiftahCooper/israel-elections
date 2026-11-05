@@ -1,0 +1,476 @@
+{
+  "schemaVersion": 1,
+  "electionId": "k23",
+  "status": "pilot",
+  "reviewedAt": "2026-11-05",
+  "notes": [
+    "Research record following docs/design/after-the-election.md; not wired into the app. Gaps remain explicit."
+  ],
+  "sources": {
+    "recommendations-1": {
+      "url": "https://www.jns.org/israel-news/netanyahu-rival-gantz-to-get-first-chance-to-form-a-government",
+      "publisher": "JNS",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "toi-tasking": {
+      "url": "https://www.timesofisrael.com/accepting-task-of-forming-government-gantz-says-hell-work-to-form-one-in-days/amp/",
+      "publisher": "The Times of Israel",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "toi-extension-refused": {
+      "url": "https://www.timesofisrael.com/president-denies-gantzs-request-for-extension-to-form-a-government/amp/",
+      "publisher": "The Times of Israel",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "toi-extension-granted": {
+      "url": "https://www.timesofisrael.com/rivlin-gives-pm-gantz-48-more-hours-to-seal-deal-as-sides-cite-major-progress/amp/",
+      "publisher": "The Times of Israel",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "toi-knesset-fallback": {
+      "url": "https://www.timesofisrael.com/rivlin-sends-mandate-to-knesset-starting-21-day-clock-on-possible-new-election/amp/",
+      "publisher": "The Times of Israel",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "inn-tasking": {
+      "url": "https://www.israelnationalnews.com/news/279867",
+      "publisher": "Israel National News (quoting the President’s letter)",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "toi-success": {
+      "url": "https://www.timesofisrael.com/netanyahu-said-to-offer-miri-regev-foreign-ministry-when-gantz-takes-premiership/",
+      "publisher": "The Times of Israel",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "knesset-investiture": {
+      "url": "https://main.knesset.gov.il/EN/News/PressReleases/Pages/press1752020r.aspx",
+      "publisher": "Knesset News",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "coalition-0": {
+      "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D_%D7%95%D7%97%D7%9E%D7%A9",
+      "publisher": "Wikipedia (he)",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "coalition-1": {
+      "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D_%D7%95%D7%97%D7%9E%D7%A9",
+      "publisher": "Wikipedia (he)",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "coalition-2": {
+      "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D_%D7%95%D7%97%D7%9E%D7%A9",
+      "publisher": "Wikipedia (he)",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "coalition-3": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum eq 35",
+      "publisher": "Knesset OData (KNS_PersonToPosition, GovernmentNum)",
+      "kind": "official",
+      "accessed": "2026-11-04"
+    },
+    "coalition-4": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum eq 23 and FactionID ne null",
+      "publisher": "Knesset OData (KNS_PersonToPosition / KNS_Faction)",
+      "kind": "official",
+      "accessed": "2026-11-04"
+    },
+    "commons-2021": {
+      "url": "https://researchbriefings.files.parliament.uk/documents/CBP-9189/CBP-9189.pdf",
+      "publisher": "UK House of Commons Library, CBP-9189 (14 June 2021), p.5",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    }
+  },
+  "results": {
+    "electionDate": "2020-03-02"
+  },
+  "reaction": {
+    "policy": "Only dated institutional steps; leader reactions require all seated lists or none.",
+    "items": [],
+    "gap": "Election-night statements were not collected for all lists; none is selected."
+  },
+  "recommendationRounds": [
+    {
+      "id": "r1",
+      "date": "2020-03-15",
+      "endDate": "2020-03-15",
+      "kind": "consultations",
+      "president": {
+        "nameEn": "Reuven Rivlin",
+        "nameHe": "ראובן ריבלין"
+      },
+      "blocSchemeRef": "pm-recommendations",
+      "nominees": {
+        "gantz": {
+          "nameEn": "Benny Gantz",
+          "nameHe": "בני גנץ"
+        },
+        "netanyahu": {
+          "nameEn": "Benjamin Netanyahu",
+          "nameHe": "בנימין נתניהו"
+        }
+      },
+      "entries": [
+        {
+          "letters": "פה",
+          "seats": 33,
+          "status": "recommended",
+          "nominee": "gantz"
+        },
+        {
+          "letters": "ודעם",
+          "seats": 15,
+          "status": "recommended",
+          "nominee": "gantz"
+        },
+        {
+          "letters": "ל",
+          "seats": 7,
+          "status": "recommended",
+          "nominee": "gantz"
+        },
+        {
+          "letters": "מחל",
+          "seats": 36,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "שס",
+          "seats": 9,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "ג",
+          "seats": 7,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "טב",
+          "seats": 6,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "אמת",
+          "seats": 7,
+          "status": "split",
+          "split": [
+            {
+              "nominee": "gantz",
+              "seats": 6
+            },
+            {
+              "status": "none",
+              "seats": 1
+            }
+          ],
+          "noteEn": "Labor and Meretz recommended Gantz; Gesher’s one remaining seat is inferred as no recommendation from the totals, not directly quoted."
+        }
+      ],
+      "totals": {
+        "gantz": 61,
+        "netanyahu": 58,
+        "none": 1
+      },
+      "cites": [
+        {
+          "source": "recommendations-1",
+          "quote": "heard 61 recommendations for Gantz as prime minister—33 from his own Blue and White Party, six from Labor/Meretz ... seven from Avigdor Lieberman's Yisrael Beiteinu and an unprecedented 15 from the Joint Arab List ... received the support of 58 MKs—36 from his Likud Party, nine from Shas, seven from United Torah Judaism ... six from Yamina"
+        }
+      ],
+      "notes": [
+        "Gesher's Orly Levy-Abekasis is the one remaining MK (120 − 61 − 58); \"six from Labor/Meretz\" excludes her. Her abstention is inferred from the totals, not quoted."
+      ]
+    }
+  ],
+  "formation": {
+    "outcome": "government-formed",
+    "events": [
+      {
+        "date": "2020-03-16",
+        "type": "mandate-given",
+        "person": "gantz",
+        "days": 28,
+        "textEn": "Rivlin tasked Benny Gantz with forming a government.",
+        "textHe": "ריבלין הטיל על בני גנץ להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "toi-tasking",
+            "quote": "President Reuven Rivlin tasked the centrist alliance leader with forming a government"
+          }
+        ]
+      },
+      {
+        "date": "2020-04-12",
+        "type": "extension",
+        "person": "gantz",
+        "days": 0,
+        "notes": [
+          "Refusal, not a granted extension. The subsequent two-day extension is recorded separately."
+        ],
+        "textEn": "Rivlin initially refused Gantz’s request for a fourteen-day extension.",
+        "textHe": "ריבלין דחה תחילה את בקשת גנץ להארכה של ארבעה עשר ימים.",
+        "cites": [
+          {
+            "source": "toi-extension-refused",
+            "quote": "will not grant Blue and White chairman Benny Gantz a 14-day extension"
+          }
+        ]
+      },
+      {
+        "date": "2020-04-14",
+        "type": "extension",
+        "person": "gantz",
+        "days": 2,
+        "endDate": "2020-04-15",
+        "notes": [
+          "Report published 14 April at 01:44 describes approval overnight Monday–Tuesday; exact before/after-midnight approval time not verified."
+        ],
+        "textEn": "Rivlin approved a 48-hour extension of Gantz’s mandate, until Wednesday midnight.",
+        "textHe": "ריבלין אישר הארכה של 48 שעות למנדט של גנץ, עד חצות ביום רביעי.",
+        "cites": [
+          {
+            "source": "toi-extension-granted",
+            "quote": "the president approved a last-minute joint request by the two to extend Gantz’s mandate to form a government by 48 hours"
+          }
+        ]
+      },
+      {
+        "date": "2020-04-15",
+        "type": "mandate-expired",
+        "person": "gantz",
+        "textEn": "Gantz’s extended mandate ended at midnight without a government.",
+        "textHe": "המנדט המוארך של גנץ הסתיים בחצות ללא ממשלה.",
+        "cites": [
+          {
+            "source": "toi-knesset-fallback",
+            "quote": "his mandate to form a government had ended"
+          }
+        ]
+      },
+      {
+        "date": "2020-04-16",
+        "type": "knesset-21-days",
+        "days": 21,
+        "textEn": "Rivlin passed the choice of a candidate to the Knesset for 21 days.",
+        "textHe": "ריבלין העביר לכנסת את בחירת המועמד לתקופה של 21 ימים.",
+        "cites": [
+          {
+            "source": "toi-knesset-fallback",
+            "quote": "the 21-day period during which the entire Knesset as a whole may select a candidate"
+          }
+        ]
+      },
+      {
+        "date": "2020-05-07",
+        "type": "mandate-given",
+        "person": "netanyahu",
+        "days": 14,
+        "textEn": "After 72 MKs signed a request, Rivlin tasked Netanyahu with forming a government within fourteen days.",
+        "textHe": "לאחר בקשה בחתימת 72 חברי כנסת, ריבלין הטיל על נתניהו להרכיב ממשלה בתוך ארבעה עשר ימים.",
+        "cites": [
+          {
+            "source": "inn-tasking",
+            "quote": "following the request of 72 Members of Knesset"
+          },
+          {
+            "source": "inn-tasking",
+            "quote": "you have a period of 14 days to form a government"
+          }
+        ]
+      },
+      {
+        "date": "2020-05-13",
+        "type": "informed-success",
+        "person": "netanyahu",
+        "textEn": "Netanyahu informed Rivlin and the Knesset Speaker that he could form a government.",
+        "textHe": "נתניהו הודיע לריבלין וליושב ראש הכנסת כי עלה בידו להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "toi-success",
+            "quote": "he informed President Reuven Rivlin and Gantz, who is currently Knesset speaker, that he is able to form a government"
+          }
+        ]
+      },
+      {
+        "date": "2020-05-17",
+        "type": "confidence-vote",
+        "votes": {
+          "for": 73,
+          "against": 46
+        },
+        "textEn": "The Knesset approved the 35th government, 73–46; Netanyahu became prime minister and Gantz alternate prime minister.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־35 ברוב של 73 מול 46; נתניהו נעשה ראש הממשלה וגנץ ראש הממשלה החלופי.",
+        "cites": [
+          {
+            "source": "knesset-investiture",
+            "quote": "The vote of confidence in the new government passed with 73 in favor and 46 against."
+          }
+        ]
+      }
+    ]
+  },
+  "term": {
+    "inclusionRule": "two-independent-chronologies-one-official-or-academic",
+    "chronologies": [],
+    "events": [],
+    "candidatesPending": [
+      {
+        "label": "COVID-19 emergency during formation",
+        "date": "2020-03",
+        "why": "Not promoted: two independent qualifying chronologies and direct-date evidence not fully inspected. Dissolution is separately evidenced in endedBy."
+      },
+      {
+        "label": "Budget deadline extension",
+        "date": "2020-08",
+        "why": "Not promoted: two independent qualifying chronologies and direct-date evidence not fully inspected. Dissolution is separately evidenced in endedBy."
+      },
+      {
+        "label": "Abraham Accords signing",
+        "date": "2020-09-15",
+        "why": "Not promoted: two independent qualifying chronologies and direct-date evidence not fully inspected. Dissolution is separately evidenced in endedBy."
+      },
+      {
+        "label": "Second national lockdown",
+        "date": "2020-09",
+        "why": "Not promoted: two independent qualifying chronologies and direct-date evidence not fully inspected. Dissolution is separately evidenced in endedBy."
+      },
+      {
+        "label": "Vaccination campaign began",
+        "date": "2020-12",
+        "why": "Not promoted: two independent qualifying chronologies and direct-date evidence not fully inspected. Dissolution is separately evidenced in endedBy."
+      },
+      {
+        "label": "Automatic dissolution",
+        "date": "2020-12-23",
+        "why": "Not promoted: two independent qualifying chronologies and direct-date evidence not fully inspected. Dissolution is separately evidenced in endedBy."
+      },
+      {
+        "label": "Guardian of the Walls before replacement government",
+        "date": "2021-05",
+        "why": "Not promoted: two independent qualifying chronologies and direct-date evidence not fully inspected. Dissolution is separately evidenced in endedBy."
+      }
+    ],
+    "start": "2020-05-17",
+    "end": "2021-06-13",
+    "endedBy": {
+      "type": "automatic-dissolution-budget",
+      "date": "2020-12-23",
+      "nextElection": "k24",
+      "textEn": "The budget deadline expired and the Knesset dissolved automatically; the next election was set for 23 March 2021.",
+      "textHe": "המועד לאישור התקציב חלף והכנסת התפזרה אוטומטית; הבחירות הבאות נקבעו ל־23 במרס 2021.",
+      "cites": [
+        {
+          "source": "commons-2021",
+          "quote": "a deadline to approve a 2020 budget expired on 23 December 2020"
+        },
+        {
+          "source": "commons-2021",
+          "quote": "The Knesset is automatically dissolved"
+        }
+      ]
+    }
+  },
+  "issuePolling": {
+    "status": "pending",
+    "note": "No qualifying published most-important-problem topline retrieved; see docs/research/issue-polling-sources.md. No microdata calculations."
+  },
+  "gaps": [
+    "Official results certification and first Knesset sitting records not retrieved.",
+    "Presidential letters for the Gantz mandate and its extension were not retrieved directly; contemporary reports quote or describe them.",
+    "The 7 May written request is recorded as a formal step; a complete 120-seat updated recommendation round (including non-signatories) was not reconstructed.",
+    "No term event satisfies the two-chronology inclusion rule in this pass.",
+    "The coalition rank split reuses established research rather than equating the entire Blue and White, Labor–Gesher–Meretz or Yamina lists with coalition membership."
+  ],
+  "government": {
+    "number": 35,
+    "nameEn": "35th government (Netanyahu–Gantz)",
+    "nameHe": "הממשלה ה־35 (נתניהו–גנץ)",
+    "startDate": "2020-05-17",
+    "endDate": "2021-06-13",
+    "endDateRef": "data/meta/aftermath/k24.json formation confidence-vote",
+    "primeMinisters": [
+      {
+        "nameEn": "Benjamin Netanyahu",
+        "nameHe": "בנימין נתניהו",
+        "letters": "מחל",
+        "from": "2020-05-17",
+        "to": "2021-06-13"
+      }
+    ],
+    "firstGovernmentSchemeRef": "first-government",
+    "coalition": [
+      {
+        "letters": "מחל",
+        "seats": 36
+      },
+      {
+        "letters": "שס",
+        "seats": 9
+      },
+      {
+        "letters": "ג",
+        "seats": 7
+      },
+      {
+        "letters": "פה",
+        "seats": 17,
+        "electionSeats": 33,
+        "note": "15 Blue and White + 2 Derech Eretz; only part of the elected list joined."
+      },
+      {
+        "letters": "אמת",
+        "seats": 3,
+        "electionSeats": 7,
+        "note": "2 Labor + 1 Gesher; only part of the elected list joined."
+      },
+      {
+        "letters": "טב",
+        "seats": 1,
+        "electionSeats": 6,
+        "note": "Rafi Peretz (Jewish Home); other five remained outside."
+      }
+    ],
+    "coalitionSeats": 73,
+    "cites": [
+      {
+        "source": "coalition-0",
+        "quote": "שקיבלה ב-17 במאי 2020 את אמון הכנסת העשרים ושלוש"
+      },
+      {
+        "source": "coalition-1",
+        "quote": "סיעות הקבינט=הליכוד ... כחול לבן ... ש\"ס ... יהדות התורה ... העבודה ... דרך ארץ ... גשר ... הבית היהודי"
+      },
+      {
+        "source": "coalition-2",
+        "quote": "בעת הקמת הממשלה הסיעה מנתה 15 ח\"כים"
+      },
+      {
+        "source": "coalition-3",
+        "quote": "Ministers/deputy ministers starting 2020-05-17, by Knesset faction on that date: Likud 15, Blue and White 13, Labor 2, Shas, UTJ, Gesher, Derech Eretz and Yamina (Rafi Peretz) 1 each"
+      },
+      {
+        "source": "coalition-4",
+        "quote": "Faction \"כחול לבן / יש עתיד - תל\"ם / דרך ארץ\" from 2020-03-29: faction membership on 2020-05-17 used to split the Blue and White list by rank"
+      }
+    ],
+    "notes": [
+      "Coalition portions reuse the rank-level first-government scheme, derived from Knesset faction membership. Election-list totals checked against public/data/k23.json.",
+      "Gantz was alternate prime minister; the planned November 2021 rotation did not happen and is not recorded as an actual prime-minister tenure."
+    ]
+  }
+}

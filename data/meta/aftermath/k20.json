@@ -1,0 +1,393 @@
+{
+  "schemaVersion": 1,
+  "electionId": "k20",
+  "status": "pilot",
+  "reviewedAt": "2026-11-05",
+  "notes": [
+    "Research record following docs/design/after-the-election.md; not wired into the app. Gaps remain explicit."
+  ],
+  "sources": {
+    "recommendations-1": {
+      "url": "https://www.ynetnews.com/articles/0,7340,L-4639993,00.html",
+      "publisher": "Ynetnews",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-2": {
+      "url": "https://www.jpost.com/Israel-Elections/Rivlin-continues-consultations-with-party-representatives-to-form-coalition-394780",
+      "publisher": "The Jerusalem Post",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-3": {
+      "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D_%D7%95%D7%90%D7%A8%D7%91%D7%A2",
+      "publisher": "Wikipedia (he)",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "toi-tasking": {
+      "url": "https://www.timesofisrael.com/netanyahu-tasked-to-form-coalition-offers-hand-in-peace-to-palestinians/",
+      "publisher": "The Times of Israel",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "jta-extension": {
+      "url": "https://www.jta.org/2015/04/20/israel/netanyahu-granted-two-more-weeks-to-form-government",
+      "publisher": "JTA",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "toi-notification": {
+      "url": "https://www.timesofisrael.com/in-the-11th-hour-netanyahu-finalizes-61-strong-coalition/",
+      "publisher": "The Times of Israel (quoting the letter via the President’s Residence)",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "eprs-investiture": {
+      "url": "https://www.europarl.europa.eu/RegData/etudes/ATAG/2015/564397/EPRS_ATA%282015%29564397_EN.pdf",
+      "publisher": "European Parliamentary Research Service, July 2015, p.1",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "knesset-investiture": {
+      "url": "https://main.knesset.gov.il/en/News/PressReleases/Pages/Pr11581_pg.aspx",
+      "publisher": "Knesset News (15 May, describing Thursday’s vote)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "idi-coalition": {
+      "url": "https://en.idi.org.il/articles/5190",
+      "publisher": "Israel Democracy Institute, Ofer Kenig (18 May 2015)",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "knesset-dissolution": {
+      "url": "https://main.knesset.gov.il/EN/News/PressReleases/pages/press2612f.aspx",
+      "publisher": "Knesset News",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    }
+  },
+  "results": {
+    "electionDate": "2015-03-17"
+  },
+  "reaction": {
+    "policy": "Only dated institutional steps; leader reactions require all seated lists or none.",
+    "items": [],
+    "gap": "Election-night statements were not collected for all lists; none is selected."
+  },
+  "recommendationRounds": [
+    {
+      "id": "r1",
+      "date": "2015-03-22",
+      "endDate": "2015-03-23",
+      "kind": "consultations",
+      "president": {
+        "nameEn": "Reuven Rivlin",
+        "nameHe": "ראובן ריבלין"
+      },
+      "blocSchemeRef": "pm-recommendations",
+      "nominees": {
+        "netanyahu": {
+          "nameEn": "Benjamin Netanyahu",
+          "nameHe": "בנימין נתניהו"
+        },
+        "herzog": {
+          "nameEn": "Isaac Herzog",
+          "nameHe": "יצחק הרצוג"
+        }
+      },
+      "entries": [
+        {
+          "letters": "מחל",
+          "seats": 30,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "כ",
+          "seats": 10,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "טב",
+          "seats": 8,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "שס",
+          "seats": 7,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "ל",
+          "seats": 6,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "ג",
+          "seats": 6,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "אמת",
+          "seats": 24,
+          "status": "recommended",
+          "nominee": "herzog"
+        },
+        {
+          "letters": "מרצ",
+          "seats": 5,
+          "status": "recommended",
+          "nominee": "herzog"
+        },
+        {
+          "letters": "ודעם",
+          "seats": 13,
+          "status": "none"
+        },
+        {
+          "letters": "פה",
+          "seats": 11,
+          "status": "none"
+        }
+      ],
+      "totals": {
+        "netanyahu": 67,
+        "herzog": 29,
+        "none": 24
+      },
+      "cites": [
+        {
+          "source": "recommendations-1",
+          "quote": "The Likud, Bayit Yehudi, Shas, and United Torah Judaism recommended Netanyahu – giving him 51 voices. The Zionist Union expectedly threw its support behind its leader, Herzog, who thus won 24 voices,and was joined by Meretz' five seats. The Joint Arab List has decided to not nominate any candidate for prime minister. ... Yesh Atid informed President Reuven Rivlin that it would not recommend any candidate as prime minister."
+        },
+        {
+          "source": "recommendations-2",
+          "quote": "The score before the Meretz meeting is 24 nominations for Zionist Union leader Isaac Herzog, 67 for Netanyahu, and 24 MKs have decided not to nominate anyone."
+        },
+        {
+          "source": "recommendations-3",
+          "quote": "שש רשימות, המייצגות 67 מנדטים, המליצו על הטלת תפקיד הרכבת הממשלה על בנימין נתניהו: הליכוד, כולנו, הבית היהודי, ש\"ס, יהדות התורה וישראל ביתנו ... רשימות המחנה הציוני ומרצ המליצו על הטלת התפקיד על יצחק הרצוג"
+        }
+      ],
+      "notes": [
+        "Consultations were held on 22–23 March 2015; President Rivlin tasked Netanyahu on 25 March 2015. Updated on 5 November 2026: the Joint List and Yesh Atid are now quoted as making no recommendation (previously the unstated remainder)."
+      ]
+    }
+  ],
+  "formation": {
+    "outcome": "government-formed",
+    "events": [
+      {
+        "date": "2015-03-25",
+        "type": "mandate-given",
+        "person": "netanyahu",
+        "days": 28,
+        "textEn": "Rivlin tasked Netanyahu with forming a government for 28 days.",
+        "textHe": "ריבלין הטיל על נתניהו להרכיב ממשלה בתוך 28 ימים.",
+        "cites": [
+          {
+            "source": "toi-tasking",
+            "quote": "Netanyahu tasked to form coalition"
+          }
+        ]
+      },
+      {
+        "date": "2015-04-20",
+        "type": "extension",
+        "person": "netanyahu",
+        "days": 14,
+        "textEn": "Rivlin granted Netanyahu a two-week extension.",
+        "textHe": "ריבלין העניק לנתניהו הארכה של שבועיים.",
+        "cites": [
+          {
+            "source": "jta-extension",
+            "quote": "Israeli President Reuven Rivlin granted Prime Minister Benjamin Netanyahu’s request for an additional two weeks in which to form a government."
+          }
+        ]
+      },
+      {
+        "date": "2015-05-06",
+        "type": "informed-success",
+        "person": "netanyahu",
+        "textEn": "Netanyahu notified Rivlin that he had formed a government.",
+        "textHe": "נתניהו הודיע לריבלין כי עלה בידו להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "toi-notification",
+            "quote": "I am honored to inform you that I have been successful in forming a government"
+          }
+        ]
+      },
+      {
+        "date": "2015-05-14",
+        "type": "confidence-vote",
+        "votes": {
+          "for": 61,
+          "against": 59
+        },
+        "textEn": "The Knesset approved the 34th government, 61–59.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־34 ברוב של 61 מול 59.",
+        "cites": [
+          {
+            "source": "eprs-investiture",
+            "quote": "The Israeli Parliament (Knesset) voted on Thursday 14 May 2015 61-59 in favour of Prime Minister Benjamin Netanyahu's cabinet"
+          }
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "about": "Investiture vote tally",
+        "values": [
+          {
+            "value": "69 for / 59 against in the English Knesset News item (128 in total)",
+            "source": "knesset-investiture"
+          },
+          {
+            "value": "61 for / 59 against in the EPRS report",
+            "source": "eprs-investiture"
+          }
+        ],
+        "resolution": "Use 61–59, consistent with the 120-seat chamber and independent contemporaneous reports. Preserve the Knesset wording as a source error; plenum protocol remains the target."
+      }
+    ]
+  },
+  "term": {
+    "inclusionRule": "two-independent-chronologies-one-official-or-academic",
+    "chronologies": [],
+    "events": [],
+    "candidatesPending": [
+      {
+        "label": "Yisrael Beiteinu joined the coalition",
+        "date": "2016-05",
+        "why": "Research lead only; two independent qualifying chronologies and direct event evidence not yet inspected."
+      },
+      {
+        "label": "UN Security Council Resolution 2334",
+        "date": "2016-12",
+        "why": "Research lead only; two independent qualifying chronologies and direct event evidence not yet inspected."
+      },
+      {
+        "label": "US Embassy moved to Jerusalem",
+        "date": "2018-05",
+        "why": "Research lead only; two independent qualifying chronologies and direct event evidence not yet inspected."
+      },
+      {
+        "label": "Nation-State Basic Law",
+        "date": "2018-07",
+        "why": "Research lead only; two independent qualifying chronologies and direct event evidence not yet inspected."
+      },
+      {
+        "label": "Gaza fighting and Lieberman’s resignation",
+        "date": "2018-11",
+        "why": "Research lead only; two independent qualifying chronologies and direct event evidence not yet inspected."
+      }
+    ],
+    "start": "2015-05-14",
+    "end": "2020-05-17",
+    "endedBy": {
+      "type": "knesset-dissolved",
+      "date": "2018-12-26",
+      "nextElection": "k21",
+      "textEn": "The Knesset passed the dissolution law, 102–2, setting an election for 9 April 2019.",
+      "textHe": "הכנסת קיבלה את חוק ההתפזרות ברוב של 102 מול 2 וקבעה בחירות ל־9 באפריל 2019.",
+      "cites": [
+        {
+          "source": "knesset-dissolution",
+          "quote": "passed by a vote of 102-2"
+        },
+        {
+          "source": "knesset-dissolution",
+          "quote": "sets early elections for April 9, 2019"
+        }
+      ]
+    }
+  },
+  "issuePolling": {
+    "status": "pending",
+    "note": "No qualifying published most-important-problem topline retrieved; see docs/research/issue-polling-sources.md. No microdata calculations."
+  },
+  "gaps": [
+    "Certification and inauguration dates not independently sourced here.",
+    "Presidential original notices and final investiture protocol not retrieved.",
+    "Official English Knesset News investiture tally conflicts with the 120-seat total; 61–59 is supported independently by EPRS.",
+    "Coalition membership changes are not yet fully researched.",
+    "The term card spans the government tenure, but only events before the next election should be promoted without an explicit caretaker-period label.",
+    "No included term event meets the two-chronology rule."
+  ],
+  "government": {
+    "number": 34,
+    "nameEn": "34th government (Netanyahu IV)",
+    "nameHe": "הממשלה ה־34 (נתניהו הרביעית)",
+    "startDate": "2015-05-14",
+    "endDate": "2020-05-17",
+    "endDateRef": "data/meta/aftermath/k23.json confidence-vote",
+    "primeMinisters": [
+      {
+        "nameEn": "Benjamin Netanyahu",
+        "nameHe": "בנימין נתניהו",
+        "letters": "מחל",
+        "from": "2015-05-14",
+        "to": "2020-05-17"
+      }
+    ],
+    "firstGovernmentSchemeRef": "first-government",
+    "coalition": [
+      {
+        "letters": "מחל",
+        "seats": 30
+      },
+      {
+        "letters": "כ",
+        "seats": 10
+      },
+      {
+        "letters": "טב",
+        "seats": 8
+      },
+      {
+        "letters": "שס",
+        "seats": 7
+      },
+      {
+        "letters": "ג",
+        "seats": 6
+      }
+    ],
+    "coalitionSeats": 61,
+    "cites": [
+      {
+        "source": "idi-coalition",
+        "quote": "Likud"
+      },
+      {
+        "source": "idi-coalition",
+        "quote": "Kulanu"
+      },
+      {
+        "source": "idi-coalition",
+        "quote": "Jewish Home"
+      },
+      {
+        "source": "idi-coalition",
+        "quote": "Shas"
+      },
+      {
+        "source": "idi-coalition",
+        "quote": "United Torah Judaism (UTJ)*"
+      }
+    ],
+    "notes": [
+      "Election-list seats at formation; the five rows of the IDI table match public/data/k20.json.",
+      "The EPRS prose omits Shas from its coalition list; use the five-party IDI table and the established first-government scheme for composition.",
+      "The government continued through the two elections in 2019; its replacement date is 17 May 2020, not the April 2019 election."
+    ]
+  }
+}

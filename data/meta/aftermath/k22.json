@@ -1,0 +1,347 @@
+{
+  "schemaVersion": 1,
+  "electionId": "k22",
+  "status": "pilot",
+  "reviewedAt": "2026-11-05",
+  "notes": [
+    "Research record following docs/design/after-the-election.md; not wired into the app. Gaps remain explicit."
+  ],
+  "sources": {
+    "recommendations-1": {
+      "url": "https://www.jpost.com/Israel-Elections/Netanyahu-to-have-more-support-than-Gantz-after-Balad-revocation-602566",
+      "publisher": "The Jerusalem Post",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-2": {
+      "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%9C%D7%95%D7%A9",
+      "publisher": "Wikipedia (he)",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "toi-netanyahu-tasked": {
+      "url": "https://www.timesofisrael.com/rivlin-tasks-netanyahu-with-forming-next-government-after-unity-talks-fail/amp/",
+      "publisher": "The Times of Israel",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "toi-netanyahu-return": {
+      "url": "https://www.timesofisrael.com/netanyahu-tells-president-he-cant-form-government-now-its-gantzs-turn-to-try/",
+      "publisher": "The Times of Israel",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "toi-gantz-tasked": {
+      "url": "https://www.timesofisrael.com/liveblog_entry/rivlin-tasks-gantz-with-forming-next-government/",
+      "publisher": "The Times of Israel",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "toi-fallback": {
+      "url": "https://www.timesofisrael.com/making-history-knesset-set-to-enter-21-day-grace-period-for-forming-government/",
+      "publisher": "The Times of Israel",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "toi-end": {
+      "url": "https://www.timesofisrael.com/israel-calls-another-election-for-march-the-third-in-a-year/amp/",
+      "publisher": "The Times of Israel",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "idi-dissolution": {
+      "url": "https://en.idi.org.il/articles/38887",
+      "publisher": "Israel Democracy Institute, Dissolving the Knesset: A Historical Survey",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    }
+  },
+  "results": {
+    "electionDate": "2019-09-17"
+  },
+  "reaction": {
+    "policy": "Only dated institutional steps; leader reactions require all seated lists or none.",
+    "items": [],
+    "gap": "Election-night statements were not collected for all lists; none is selected."
+  },
+  "recommendationRounds": [
+    {
+      "id": "r1",
+      "date": "2019-09-22",
+      "endDate": "2019-09-23",
+      "kind": "consultations",
+      "president": {
+        "nameEn": "Reuven Rivlin",
+        "nameHe": "ראובן ריבלין"
+      },
+      "blocSchemeRef": "pm-recommendations",
+      "nominees": {
+        "netanyahu": {
+          "nameEn": "Benjamin Netanyahu",
+          "nameHe": "בנימין נתניהו"
+        },
+        "gantz": {
+          "nameEn": "Benny Gantz",
+          "nameHe": "בני גנץ"
+        }
+      },
+      "entries": [
+        {
+          "letters": "מחל",
+          "seats": 32,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "שס",
+          "seats": 9,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "ג",
+          "seats": 7,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "טב",
+          "seats": 7,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "פה",
+          "seats": 33,
+          "status": "recommended",
+          "nominee": "gantz"
+        },
+        {
+          "letters": "אמת",
+          "seats": 6,
+          "status": "recommended",
+          "nominee": "gantz"
+        },
+        {
+          "letters": "מרצ",
+          "seats": 5,
+          "status": "recommended",
+          "nominee": "gantz"
+        },
+        {
+          "letters": "ל",
+          "seats": 8,
+          "status": "none"
+        },
+        {
+          "letters": "ודעם",
+          "seats": 13,
+          "status": "split",
+          "split": [
+            {
+              "nominee": "gantz",
+              "seats": 10
+            },
+            {
+              "status": "none",
+              "seats": 3
+            }
+          ],
+          "noteEn": "The President counted ten recommendations after the Balad withdrawal; Odeh disputed that the original thirteen-member recommendation had changed."
+        }
+      ],
+      "totals": {
+        "netanyahu": 55,
+        "gantz": 54,
+        "none": 11
+      },
+      "cites": [
+        {
+          "source": "recommendations-1",
+          "quote": "President Reuven Rivlin subtracted Balad, one of the parties making up the Joint List, from the recommendations for Blue and White leader Benny Gantz to be prime minister. This put Prime Minister Benjamin Netanyahu in the lead, with 55 recommendations to Gantz's 54 ... The remaining Knesset seats belong to Yisrael Beytenu, which chose to recommend no one ... \"the recommendation is by 10 MKs of Hadash, UAL and Ta'al, and not 13,\" Tibi wrote to Rivlin."
+        },
+        {
+          "source": "recommendations-2",
+          "quote": "המפלגות: הליכוד (32), ש\"ס (9), יהדות התורה (7) וימינה (7) המליצו על נתניהו (ס\"ה 55), והמפלגות: כחול לבן (33), העבודה-גשר (6), המחנה הדמוקרטי (5) וחלק מחברי הרשימה המשותפת (10 מתוך 13) המליצו על גנץ (ס\"ה 54), מפלגת ישראל ביתנו (8) וחברי סיעת בל\"ד (3) לא המליצו על אף מועמד (ס\"ה 11)"
+        }
+      ],
+      "notes": [
+        "Consultations were held on 22–23 September 2019. The Joint List recommended Gantz in the name of its 13 MKs; Balad's 3 MKs then withdrew from the recommendation by letter, and the President counted 10. Replaced the headline-only Jerusalem Post citation with the body of its 24 September 2019 report (5 November 2026)."
+      ]
+    }
+  ],
+  "formation": {
+    "outcome": "no-government",
+    "events": [
+      {
+        "date": "2019-09-25",
+        "type": "mandate-given",
+        "person": "netanyahu",
+        "days": 28,
+        "textEn": "Rivlin tasked Benjamin Netanyahu with forming a government.",
+        "textHe": "ריבלין הטיל על בנימין נתניהו להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "toi-netanyahu-tasked",
+            "quote": "President Reuven Rivlin on Wednesday tasked Benjamin Netanyahu, the Likud party leader, with forming Israel’s next government"
+          }
+        ]
+      },
+      {
+        "date": "2019-10-21",
+        "type": "mandate-returned",
+        "person": "netanyahu",
+        "textEn": "Netanyahu returned the mandate without forming a government.",
+        "textHe": "נתניהו החזיר את המנדט בלי שהרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "toi-netanyahu-return",
+            "quote": "returned the mandate to form a government to President Reuven Rivlin"
+          }
+        ]
+      },
+      {
+        "date": "2019-10-23",
+        "type": "mandate-given",
+        "person": "gantz",
+        "days": 28,
+        "textEn": "Rivlin tasked Benny Gantz with forming a government for 28 days.",
+        "textHe": "ריבלין הטיל על בני גנץ להרכיב ממשלה בתוך 28 ימים.",
+        "cites": [
+          {
+            "source": "toi-gantz-tasked",
+            "quote": "Rivlin officially mandates Gantz with the task"
+          }
+        ]
+      },
+      {
+        "date": "2019-11-20",
+        "type": "mandate-returned",
+        "person": "gantz",
+        "textEn": "Gantz returned the mandate without forming a government.",
+        "textHe": "גנץ החזיר את המנדט בלי שהרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "toi-fallback",
+            "quote": "handing the mandate back to President Reuven Rivlin after 28 days"
+          }
+        ]
+      },
+      {
+        "date": "2019-11-21",
+        "type": "knesset-21-days",
+        "days": 21,
+        "endDate": "2019-12-11",
+        "textEn": "The Knesset’s 21-day period to propose a candidate began, ending at midnight on 11 December.",
+        "textHe": "החלה תקופת 21 הימים שבה הכנסת רשאית להציע מועמד, עד חצות ב־11 בדצמבר.",
+        "cites": [
+          {
+            "source": "toi-fallback",
+            "quote": "which begins Thursday and ends at midnight on December 11"
+          }
+        ]
+      },
+      {
+        "date": "2019-12-11",
+        "type": "mandate-expired",
+        "notes": [
+          "This is expiry of the parliamentary nomination period, not a third personal mandate."
+        ],
+        "textEn": "The 21-day period ended at midnight without a candidate supported by 61 MKs.",
+        "textHe": "תקופת 21 הימים הסתיימה בחצות ללא מועמד שנתמך ב־61 חברי כנסת.",
+        "cites": [
+          {
+            "source": "toi-end",
+            "quote": "With no Knesset member having gained the support of 61 MKs by the midnight deadline"
+          }
+        ]
+      },
+      {
+        "date": "2019-12-12",
+        "type": "knesset-dissolved",
+        "textEn": "The Knesset passed a dissolution law and advanced the next election to 2 March 2020. No government was formed.",
+        "textHe": "הכנסת קיבלה חוק התפזרות והקדימה את הבחירות הבאות ל־2 במרס 2020. לא הוקמה ממשלה.",
+        "cites": [
+          {
+            "source": "idi-dissolution",
+            "quote": "the Knesset passed a law to dissolve the 22nd Knesset"
+          },
+          {
+            "source": "toi-end",
+            "quote": "MKs eventually finalized a bill setting the elections for March 2"
+          }
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "about": "Formal dissolution mechanism after the 21-day period",
+        "values": [
+          {
+            "value": "Automatically dispersed at midnight (news shorthand)",
+            "source": "toi-end"
+          },
+          {
+            "value": "The dissolution law passed before presidential notification, advancing the election by eight days.",
+            "source": "idi-dissolution"
+          }
+        ],
+        "resolution": "Use the academic legal account for the formal mechanism; separately record the failed parliamentary nomination period. Do not describe it solely as automatic dissolution."
+      }
+    ]
+  },
+  "term": {
+    "inclusionRule": "two-independent-chronologies-one-official-or-academic",
+    "chronologies": [],
+    "events": [],
+    "candidatesPending": [
+      {
+        "label": "Gaza fighting",
+        "date": "2019-11",
+        "why": "Research lead only; two independent qualifying chronologies and direct event evidence not yet inspected."
+      },
+      {
+        "label": "Attorney General indictment announcement",
+        "date": "2019-11-21",
+        "why": "Research lead only; two independent qualifying chronologies and direct event evidence not yet inspected."
+      },
+      {
+        "label": "US peace proposal",
+        "date": "2020-01",
+        "why": "Research lead only; two independent qualifying chronologies and direct event evidence not yet inspected."
+      }
+    ],
+    "start": "2019-09-17",
+    "end": "2020-03-02",
+    "scope": "Election-to-next-election interval; no new government formed. The outgoing 34th government continued.",
+    "endedBy": {
+      "type": "knesset-dissolved",
+      "date": "2019-12-12",
+      "nextElection": "k23",
+      "textEn": "Dissolution law set an election for 2 March 2020.",
+      "textHe": "חוק ההתפזרות קבע בחירות ל־2 במרס 2020.",
+      "cites": [
+        {
+          "source": "idi-dissolution",
+          "quote": "the Knesset passed a law to dissolve the 22nd Knesset"
+        },
+        {
+          "source": "toi-end",
+          "quote": "MKs eventually finalized a bill setting the elections for March 2"
+        }
+      ]
+    }
+  },
+  "issuePolling": {
+    "status": "pending",
+    "note": "No qualifying published most-important-problem topline retrieved; see docs/research/issue-polling-sources.md. No microdata calculations."
+  },
+  "gaps": [
+    "CEC certification date and first-sitting official record not retrieved.",
+    "Direct presidential letters not retrieved; dated contemporaneous reports describe mandate assignments and returns.",
+    "No separate fully reconstructed updated recommendation round after Netanyahu returned his mandate.",
+    "Dissolution law Gazette and distinct final vote counts not retrieved. The 96–7 figure in the news report may concern the companion election provisions; no dissolution tally is asserted.",
+    "No government card is created: no new government formed; term scope refers to the election interval, not a new cabinet.",
+    "No term event satisfies the two-chronology rule in this pass."
+  ]
+}
