@@ -59,7 +59,7 @@ test('moving one party of a joint list to another bloc moves only its members’
   expect(after - before).toBeLessThan(12); // only New Hope's members, not all of National Unity
   const grouping = page.getByRole('button', { name: 'Grouping', exact: true });
   await expect(grouping).toContainText('Your grouping');
-  await choose(grouping, { label: '37th government (Netanyahu VI) (Dec 2022)' });
+  await choose(grouping, { label: '37th government (Netanyahu VI)' });
   await expect(blocCount(page, 'Coalition')).toHaveText(String(before));
 });
 

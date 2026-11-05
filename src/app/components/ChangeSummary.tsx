@@ -4,7 +4,11 @@ import { referenceLabel } from '../derive.ts';
 import { allocationOf } from '../derive.ts';
 // "What changed": the session's net effect against the official result, kept to one line however many edits
 // were made (seats that moved, the blocs, the majority), with the full undoable history one click away.
-import { lazy, Suspense, useMemo, useState } from 'react';
+// The line is always there (before the first edit it says so) and never wraps or grows: a first edit, or one
+// that changes how much there is to say, must not push the page down under the pointer. What does not fit
+// scrolls sideways; History opens as a popover over the page.
+import { lazy, Suspense, useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useFloating } from '../floating.tsx';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import type { ElectionDataset } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
@@ -19,7 +23,7 @@ const MAX_MOVES = 5;
  *  the official seats of the lists it came from, and lists that no longer exist count as losing theirs. */
 export function seatMoves(s: Scenario, r: AllocationResult, base: Scenario, baseR: AllocationResult) {
   return comparisonGroups(s, r, base, baseR).filter(g => g.seatsA !== g.seatsB).map(g => ({
-    id: g.key, d: g.seatsB - g.seatsA,
+    id: g.key, d: g.seatsB - g.seatsA, n: g.seatsB,
     label: (lang: 'he' | 'en') => (g.bIds.length ? g.bIds.map(id => s.lists.find(l => l.id === id)!) : g.aIds.map(id => base.lists.find(l => l.id === id)!)).map(l => listLabel(l, lang)).join(' + '),
   })).sort((a,b) => Math.abs(b.d)-Math.abs(a.d) || b.d-a.d);
 }
@@ -37,6 +41,27 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
   const lang = useLang();
   const baseLabel = referenceLabel(reference, lang);
   const [open, setOpen] = useState(false);
+  const historyId = useId();
+  const pop = useRef<HTMLDivElement>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
+  const line = useRef<HTMLDivElement>(null);
+  const changes = useRef<HTMLSpanElement>(null);
+  useFloating(pop, () => trigger.current?.getBoundingClientRect(), open, false);
+  // the sticky header stack (band, tools, this line) is what the board, side panel and focus scrolling sit under
+  useLayoutEffect(() => {
+    const el = line.current; if (!el || typeof ResizeObserver === 'undefined') return;
+    const root = document.documentElement.style;
+    const o = new ResizeObserver(() => root.setProperty('--session-h', `${el.offsetHeight}px`));
+    o.observe(el); return () => { o.disconnect(); root.removeProperty('--session-h'); };
+  }, []);
+  // a trailing fade says there is more to scroll to, and goes once the end is reached
+  useLayoutEffect(() => {
+    const el = changes.current; if (!el) return;
+    const mark = () => { const rest = el.scrollWidth - el.clientWidth - Math.abs(el.scrollLeft); el.toggleAttribute('data-more', rest > 1); };
+    mark(); el.addEventListener('scroll', mark, { passive: true });
+    const o = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(mark); o?.observe(el);
+    return () => { el.removeEventListener('scroll', mark); o?.disconnect(); };
+  });
   const moves = useMemo(() => seatMoves(s, r, base, baseR), [s, r, base, baseR]);
   // blocs are compared under the same sourced grouping; an edited grouping has no official counterpart
   const blocs = useMemo(() => {
@@ -47,8 +72,7 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
     if (b) was = blocTotals(b, allocationOf(b));
     return s.blocs.map((b) => ({ b, n: now.get(b.id) ?? 0, d: was ? (now.get(b.id) ?? 0) - (was.get(b.id) ?? 0) : null }));
   }, [s, r, base, baseR]);
-  if (!s.log.length) return null;
-
+  const edited = s.log.length > 0;
   const familyGrouping = isFamilyGrouping(s);
   const majority = Math.floor(s.rules.seats / 2) + 1;
   const holder = blocs?.find((x) => x.n >= majority);
@@ -57,27 +81,32 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
   const shown = moves.slice(0, MAX_MOVES);
 
   return (
-    <div className="session" role="status" aria-live="polite">
-      <b>{baseLabel.since}</b>
-      {moves.length === 0
-        ? <span className="muted">{L('No seats changed', 'המנדטים לא השתנו')}</span>
-        : <span className="moves">
-            {shown.map((m) => <span key={m.id}><bdi>{m.label(lang)}</bdi> <b dir="ltr">{sign(m.d)}</b></span>)}
-            {moves.length > MAX_MOVES && <span className="muted">{L(`+${moves.length - MAX_MOVES} more`, `ועוד ${moves.length - MAX_MOVES}`)}</span>}
+    <div ref={line} className={`session ${edited ? '' : 'idle'}`} role="status" aria-live="polite">
+      <b title={baseLabel.since}>{baseLabel.since}</b>
+      <span ref={changes} className="session-changes">
+        {!edited ? <span className="muted">{L('No changes yet', 'אין שינויים עדיין')}</span> : <>
+          {moves.length === 0
+            ? <span className="muted">{L('No seats changed', 'המנדטים לא השתנו')}</span>
+            : <span className="moves">
+                {shown.map((m) => <span key={m.id}><bdi>{m.label(lang)}</bdi> {m.n} <span dir="ltr">({sign(m.d)})</span></span>)}
+                {moves.length > MAX_MOVES && <span className="muted">{L(`+${moves.length - MAX_MOVES} more`, `ועוד ${moves.length - MAX_MOVES}`)}</span>}
+              </span>}
+          {nonSeatChanges(s, base, lang).length > 0 && <span>{nonSeatChanges(s, base, lang).join(' · ')}</span>}
+          {blocs && <span className="moves" style={{ color: 'var(--ink-2)' }}>
+            {!familyGrouping && <span>{groupingLabel(s, lang)}</span>}
+            {blocs.filter((x) => x.n > 0 || x.d).map(({ b, n, d }) => <span key={b.id}><bdi>{name(b)}</bdi> {n}{d ? <span dir="ltr"> ({sign(d)})</span> : null}</span>)}
+            {!familyGrouping && <span>{holder ? L(`${name(holder.b)} holds a majority`, `ל${name(holder.b)} יש רוב`) : L('no bloc has a majority', 'לאף גוש אין רוב')}</span>}
           </span>}
-      {nonSeatChanges(s, base, lang).length > 0 && <span>{nonSeatChanges(s, base, lang).join(' · ')}</span>}
-      {blocs && <span className="moves" style={{ color: 'var(--ink-2)' }}>
-        {!familyGrouping && <span>{groupingLabel(s, lang)}</span>}
-        {blocs.filter((x) => x.n > 0 || x.d).map(({ b, n, d }) => <span key={b.id}><bdi>{name(b)}</bdi> {n}{d ? <span dir="ltr"> ({sign(d)})</span> : null}</span>)}
-        {!familyGrouping && <span>{holder ? L(`${name(holder.b)} holds a majority`, `ל${name(holder.b)} יש רוב`) : L('no bloc has a majority', 'לאף גוש אין רוב')}</span>}
-      </span>}
-      {s.mode === 'experimental' && <span className="chip exp">{L('Experimental rules', 'כללים ניסיוניים')}</span>}
-      <span className="spacer" />
-      <button className="btn small ghost" aria-expanded={open} onClick={() => setOpen((o) => !o)}>
+          {s.mode === 'experimental' && <span className="chip exp">{L('Experimental rules', 'כללים ניסיוניים')}</span>}
+        </>}
+      </span>
+      {edited && <button ref={trigger} className="btn small ghost" aria-expanded={open} aria-controls={historyId} onClick={() => pop.current?.togglePopover()}>
         {L(`History · ${s.log.length} edit${s.log.length === 1 ? '' : 's'}`, `היסטוריה · ${s.log.length} שינויים`)}
         {open ? <ChevronUp className="icon sm" aria-hidden /> : <ChevronDown className="icon sm" aria-hidden />}
-      </button>
-      {open && <div className="history"><Suspense fallback={<p className="muted small">{L('Loading…', 'טוען…')}</p>}><History s={s} r={r} ds={ds} /></Suspense></div>}
+      </button>}
+      <div id={historyId} ref={pop} className="history" popover="auto" onToggle={(e) => setOpen(e.newState === 'open')}>
+        {open && <Suspense fallback={<p className="muted small">{L('Loading…', 'טוען…')}</p>}><History s={s} r={r} ds={ds} /></Suspense>}
+      </div>
     </div>
   );
 }

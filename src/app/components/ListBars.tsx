@@ -149,7 +149,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
         {outside.length > 0 && (
           <li className="lb-thr">
             <span>{belowThreshold ? L(`Below the threshold · ${fmtInt(r.thresholdVotes)} votes (${s.rules.thresholdPct}%)`, `מתחת לאחוז החסימה · ${fmtInt(r.thresholdVotes)} קולות (${s.rules.thresholdPct}%)`) : L('Lists that won no seat', 'רשימות שלא זכו במנדט')}</span>
-            {(hidden > 0 || showAll) && <button type="button" onClick={() => setShowAll((x) => !x)}>{showAll ? L('Show fewer', 'הצגת פחות') : L(`Show all ${outside.length}`, `הצגת כל ${outside.length}`)}</button>}
+            {(hidden > 0 || showAll) && <button type="button" aria-expanded={showAll} onClick={() => setShowAll((x) => !x)}>{showAll ? L('Show fewer', 'הצגת פחות') : L(`Show all ${outside.length}`, `הצגת כל ${outside.length}`)}</button>}
           </li>
         )}
         {visibleOut.map(row)}

@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 for (const lang of ['he', 'en']) for (const theme of ['light', 'dark']) {
-  test(`long edited names wrap in the change summary (${lang}, ${theme})`, async ({ page }) => {
+  test(`long edited names stay on the one-line change summary without widening the page (${lang}, ${theme})`, async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.addInitScript(s => localStorage.setItem('israel-elections:v1', JSON.stringify(s)), { lang, theme, level: 'standard', hintDismissed: true });
     await page.goto('/');
@@ -12,6 +12,9 @@ for (const lang of ['he', 'en']) for (const theme of ['light', 'dark']) {
       const summary = page.locator('.session');
       await expect(summary).toContainText(name);
       expect(await summary.evaluate(el => el.scrollWidth)).toBeLessThanOrEqual(390);
+      // the line never grows (no page jump); what does not fit scrolls sideways inside it
+      expect(await summary.evaluate(el => el.getBoundingClientRect().height)).toBe(66);
+      expect(await summary.locator('.session-changes').evaluate(el => el.scrollWidth > el.clientWidth && el.hasAttribute('data-more'))).toBe(true);
       expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390);
     }
     await page.keyboard.press('Escape');
