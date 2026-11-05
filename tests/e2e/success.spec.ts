@@ -28,6 +28,9 @@ test('2022: merge, add voters, drop agreement, push Balad over, find Ra’am’s
   await page.getByLabel('Name', { exact: true }).fill('Labor–Meretz');
   await expect(page.getByText('What would change')).toBeVisible(); // the merge is previewed before it is applied
   await page.getByRole('button', { name: 'Merge 2 lists' }).click();
+  // the page stays on Merge & split and records the merge there; its list opens on the Overview
+  await expect(page.locator('#st-applied')).toContainText('Labor–Meretz');
+  await page.getByRole('tab', { name: 'Overview' }).click();
   await expect(listButton(page, 'Labor–Meretz')).toBeVisible();
   const merged = await seatsOf(page, 'Labor–Meretz');
   expect(merged).toBeGreaterThanOrEqual(8);

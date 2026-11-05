@@ -721,14 +721,35 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .session .scn-name { font-weight: 700; padding-inline-end: 10px; border-inline-end: 1px solid var(--rule-2); max-width: 32ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 /* ---------- merge & split: one task at a time, with a drawn preview */
-.st-task { display: grid; gap: 10px; max-width: 980px; }
+.st-task { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; max-width: 980px; }
 .st-options { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px 16px; padding: 10px 12px; border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface-2); }
 .st-preview { padding: 10px 12px; border: 1px solid var(--rule); border-radius: var(--radius); }
 .st-preview h4 { margin: 0 0 8px; }
 .st-task > .btn { justify-self: start; }
-.structure > .seg { display: inline-grid; grid-template-columns: repeat(4, auto); gap: 1px; background: var(--rule-2); }
-.structure > .seg button + button { border-inline-start: 0; }
-@media (max-width: 600px) { .structure > .seg { display: grid; grid-template-columns: 1fr 1fr; } }
+.st-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+.st-head > .seg { display: inline-grid; grid-template-columns: repeat(4, auto); gap: 1px; background: var(--rule-2); }
+.st-head > .seg button + button { border-inline-start: 0; }
+@media (max-width: 600px) { .st-head > .seg { display: grid; grid-template-columns: 1fr 1fr; width: 100%; } }
+.st-applied { max-width: 980px; margin-top: 14px; }
+.st-applied:focus { outline: none; }
+.st-rows { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.st-rows li { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(120px, 1fr) 40px; gap: 8px; align-items: center; }
+.st-what { font-size: 13.5px; min-width: 0; }
+.st-part { display: inline-flex; align-items: center; gap: 4px; }
+.st-link { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-decoration-color: var(--rule-2); text-underline-offset: 3px; }
+.st-link:hover { text-decoration-color: currentColor; }
+.st-bar { display: grid; grid-template-columns: minmax(0, 1fr) 2px minmax(0, 1fr); gap: 0 4px; align-items: center; align-self: stretch; }
+@media (max-width: 600px) { .st-rows li { grid-template-columns: minmax(0, 1fr) 36px; } .st-what { grid-column: 1 / -1; } }
+.st-sharebar { display: flex; gap: 2px; height: 14px; border-radius: 3px; overflow: hidden; }
+.st-sharebar i { display: block; min-width: 0; }
+.st-share { display: grid; grid-template-columns: auto minmax(0, 1fr) auto minmax(110px, auto); gap: 4px 10px; align-items: center; }
+@media (max-width: 600px) { .st-share { grid-template-columns: auto minmax(0, 1fr) auto; } .st-share > :last-child { grid-column: 2 / -1; } }
+.st-task > .removed-agreements:empty { display: none; }
+.st-full { grid-column: 1 / -1; }
+.st-more { border-style: dashed; color: var(--ink-2); gap: 4px; cursor: pointer; padding: 3px 10px; font-size: 13.5px; }
+.st-more:hover { color: var(--ink); border-style: solid; }
+.st-eff { display: inline-flex; align-items: center; gap: 4px; margin-inline-end: 12px; white-space: nowrap; }
+.st-agreements .cand { align-items: start; }
 
 /* a split faction's parties under their list */
 .lb-parties { list-style: none; margin: 4px 0 8px; padding: 0 12px 0 0; padding-inline: 34px 12px; display: grid; gap: 4px; }
@@ -937,7 +958,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .cmp-chambers { direction: ltr; }
 [dir="rtl"] .cmp-chambers > figure { direction: rtl; }
 /* data graphics read left to right in Hebrew too (owner, 2026-11-04): bars grow from the left, before precedes after; only text is right-to-left */
-.strip, .bloc-reference, .walk-tray, .coal-bar, .lb-bar, .family-seat-strip, .bp-meter, .majority-bar, .pm-track, .result-preview, .sec-bar, .sec-l, .sec-r, .sec-gauge, .st-preview, .wi-preview, .era-thresholds { direction: ltr; }
+.strip, .bloc-reference, .walk-tray, .coal-bar, .lb-bar, .family-seat-strip, .bp-meter, .majority-bar, .pm-track, .result-preview, .sec-bar, .sec-l, .sec-r, .sec-gauge, .wi-preview, .era-thresholds, .st-bar, .st-sharebar { direction: ltr; }
 [dir="rtl"] .corridor .label { direction: rtl; }
 .baseline-mini { width: 30%; min-width: 160px; max-width: 310px; margin-inline: auto; text-align: center; }
 .baseline-mini svg { display: block; width: 100%; }
