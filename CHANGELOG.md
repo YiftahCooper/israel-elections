@@ -8,6 +8,7 @@
 - Complete English list labels with sourced, explicitly unofficial transliterations where needed; localise menus, exports and identity captions. Show year-labelled nearest-period logos, preserve component logos through splits, and replace bare party squares with monograms.
 
 - Keep long edited bloc names and official list names readable on phones, restore contrast for Compare counts, and show family scaling counts once beside their strips.
+- Charts: whole list names (stacked above bars on phones), one list order and edge lines in both waffles, votes→seats read left to right in Hebrew, and "Votes with no seat" counted as on the overview (1949 lists that won nothing, no false "below threshold"); table names open their list, and switching to the table no longer shrinks or scrolls the page.
 - Prevent map zoom completion from accessing a destroyed pane after tool navigation.
 
 ## 5 November 2026 — concise tool pages

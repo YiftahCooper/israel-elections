@@ -292,6 +292,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .chamber-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 6px; margin-block-end: 4px; }
 .legend { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 13px; }
 .legend button { display: inline-flex; gap: 6px; align-items: center; border: 0; background: none; padding: 3px 0; cursor: pointer; }
+.legend .info > button { display: inline-grid; padding: 0; } /* an (i) in a legend keeps its own shape */
 .majority-bar { position: relative; height: 26px; border-radius: 5px; overflow: hidden; display: flex; gap: 2px; background: var(--surface); }
 .majority-bar > div { height: 100%; transition: flex-basis .45s ease; }
 .majority-line { position: absolute; inset-block: -4px; width: 2px; background: var(--ink); }
