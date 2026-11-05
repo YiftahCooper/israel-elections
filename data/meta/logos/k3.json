@@ -1,4 +1,22 @@
 {
   "electionId": "k3",
-  "logos": []
+  "logos": [
+    {
+      "file": "logos/yemenite-association-1955.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/YemeniteAssociation.png",
+      "licence": "CC BY-SA 4.0",
+      "attribution": "ארכיון הציוני; File:YemeniteAssociation.png; CC BY-SA 4.0. Resized to at most 256 px; converted to PNG where necessary.",
+      "hosted": true,
+      "inUseEvidence": "Commons identifies the Yemenite Association stylised ל from 1955, citing a Central Zionist Archives poster record. Not extended to 1949/1951.",
+      "confidence": "medium",
+      "letters": "ל",
+      "sha256": "a421bdb3e821aad9639d923f10fb7b3caa0561f6d166fc8d4a28e572944612bd",
+      "evidenceId": "commons-90154278",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/9/91/YemeniteAssociation.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "status": "verified",
+      "originalSha256": "fcda69b2cb867c05ddeaf0e513dbdf7ae8459900ec483cf7593e20b3be94bb62",
+      "rights": "free-licence",
+      "bytes": 2498
+    }
+  ]
 }

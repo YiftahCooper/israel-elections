@@ -10,18 +10,18 @@ Seat-winning denominators come from public/data/kNN.json officialSeats; k26 has 
 
 | Election | Winners | Hosted | Dated external | Rights only | Local constituent emblems |
 |---|---:|---:|---:|---:|---:|
-| k1 · 1949-01-25 | 12 | 1 | 0 | 0 | 0 |
+| k1 · 1949-01-25 | 12 | 3 | 0 | 0 | 0 |
 | k2 · 1951-07-30 | 15 | 0 | 0 | 0 | 0 |
 | k3 · 1955-07-26 | 12 | 0 | 0 | 0 | 0 |
 | k4 · 1959-11-03 | 12 | 0 | 0 | 0 | 0 |
-| k5 · 1961-08-15 | 11 | 0 | 0 | 0 | 0 |
-| k6 · 1965-11-02 | 13 | 1 | 0 | 0 | 0 |
+| k5 · 1961-08-15 | 11 | 1 | 0 | 0 | 0 |
+| k6 · 1965-11-02 | 13 | 3 | 0 | 0 | 0 |
 | k7 · 1969-10-28 | 13 | 0 | 0 | 0 | 0 |
-| k8 · 1973-12-31 | 10 | 0 | 0 | 0 | 0 |
-| k9 · 1977-05-17 | 13 | 4 | 0 | 0 | 0 |
-| k10 · 1981-06-30 | 10 | 1 | 0 | 0 | 0 |
-| k11 · 1984-07-23 | 15 | 2 | 0 | 0 | 0 |
-| k12 · 1988-11-01 | 15 | 1 | 0 | 0 | 0 |
+| k8 · 1973-12-31 | 10 | 1 | 0 | 0 | 0 |
+| k9 · 1977-05-17 | 13 | 5 | 0 | 0 | 0 |
+| k10 · 1981-06-30 | 10 | 2 | 0 | 0 | 0 |
+| k11 · 1984-07-23 | 15 | 4 | 0 | 0 | 0 |
+| k12 · 1988-11-01 | 15 | 3 | 0 | 0 | 0 |
 | k13 · 1992-06-23 | 10 | 1 | 0 | 0 | 0 |
 | k14 · 1996-05-29 | 11 | 2 | 0 | 0 | 0 |
 | k15 · 1999-05-17 | 15 | 2 | 0 | 0 | 0 |
@@ -36,6 +36,91 @@ Seat-winning denominators come from public/data/kNN.json officialSeats; k26 has 
 | k24 · 2021-03-23 | 13 | 5 | 0 | 0 | 1 |
 | k25 · 2022-11-01 | 10 | 3 | 0 | 4 | 1 |
 | k26 · 2026-10-27 | 11 | 8 | 0 | 1 | 10 |
+
+## Run 3 — k1–k17 (5 November 2026)
+
+Scope: k1 (1949) to k17 (2006). Table rows k1–k17 above now count only **own-election** winner logos; the
+build's nearest-period fallback (shown with its source year) is excluded. Coverage script before → after for
+k1–k17: winners displayed with any logo 62 → 83 of 212 (own-election 24 → 42 lists of all kinds); constituents
+displayed 26 → 43 of 122 (all of the constituent gain is nearest-period fallback; **no own-election constituent
+emblem was verified**); all lists 67 → 102 of 388.
+
+New avenues (not used by runs 1–2):
+
+1. **Commons per-election categories** (`Category:Israeli legislative election, YEAR`) and
+   `Category:Logos of political parties in Israel` (172 members + Communist/SVG subcategories) were enumerated via
+   the MediaWiki API; 120 files had never been reviewed. Accepted only where the description, credited NLI
+   election-ephemera page or the category ties the mark to one election and the list contested only that
+   election, or the description names the election. SHA-1 of each download matched `imageinfo`.
+2. **Jabotinsky Institute catalogue search** (`ItemType=34`, posters) driven directly, not via Google snippets:
+   1,226 posters with subject “בחירות” harvested; 58 Herut/Gahal/Liberal items opened for catalogue year/date.
+
+Added (17 free-licence Commons, medium confidence; 1 fair-use print crop):
+
+| Election | List | File | Evidence |
+|---|---|---|---|
+| k1 | ח Herut | herut-print-1949.png | Jabotinsky item 35059, official Herut poster for 1.1.1949 meeting; “מולדת וחרות” emblem cropped `[309,26,438,66]` from 448×333 scan. Catalogue year field says 1948 (estimated), contradicting its own title and the printed date 1-1-49; printed date used. Item 31951 (21.1.1949) shows the same emblem. |
+| k1 | ג Hatzohar; יח Haredi List; ת Popular Arab Bloc; פד Working & Religious Women; יג Gruenbaum List; ט For Jerusalem | *-1949.png | Commons descriptions name the 1949 election (Haredi List: 1949 category only, list ran only in 1949). Non-winning lists. |
+| k3 | ל Yemenite Association | yemenite-association-1955.png | Commons “from 1955”, CZA poster credited. Non-winning in 1955. |
+| k5 | ל Liberal Party | liberal-party-1961.png | Commons: symbol during the 1961 election. Liberal2.png (1961 newspaper wordmark) is an alternative, not used. |
+| k6 | את Alignment | alignment-1965.png | First Alignment (1965–68) א+ת mark, NLI ephemera 700094557; that Alignment contested only 1965. |
+| k6 | ו Rakah | rakah-1965.png | Commons: Rakah logo from 1965, NLI ephemera 700098530. |
+| k8 | גד Torah Religious Front | torah-religious-front-1973.png | Commons credits NLI `elect_ephemera_1973`. |
+| k10 | זה Unity Party | unity-party-1981.png | Commons: 1981 election, NLI 700153721. Non-winning. |
+| k11 | פ Progressive List for Peace | progressive-list-peace-1984.png | Dated 1984, NLI `ephemera_1984/01.jpg`. JPEG kept RGB (no alpha) to stay under 60 KB. |
+| k12 | ט Moledet | moledet-1988.png | Commons: Moledet in the 12th Knesset election, NLI IE10915803. |
+| k13 | ת Tehiya | tehiya-1992.png | Commons credits NLI `elect_ephemera_1992`. Non-winning. |
+| k14 | יד Yamin Yisrael | yamin-yisrael-1996.png | Dated 1996, NLI IE4160829. Non-winning. |
+| k16 | זנ Ahavat Yisrael | ahavat-yisrael-2003.png | 2003 category, NLI 700080849; list ran only in 2003. Non-winning. |
+
+Rejected or held (reason):
+
+- LamedAyin.png (Independent Liberals), Laamparty.png (La’am), NationalReligiousFront.png: tied only to a
+  category year, but each identity contested several elections; no campaign-specific evidence.
+- Liberal5.png (“early 1980s”), Libralit-Logo.png, AhdutHaAvoda logo.png, HaPoel HaMizrachi(.png/ logo.png),
+  General Zionists(.png/-1.png): undated NLI ephemera; no election identified.
+- Emblem of Maki 1959 or 1961.svg: the year is ambiguous between k4 and k5.
+- Herut-NM.png (2003) and Hetz2006.png (2006): CC BY-SA claims with a third-party shop/blog as “author” — a
+  conflicting upstream credit (same rule as earlier runs); no official origin for fair use.
+- Shai Movement.png: pre-Shinui name; the 1981 list was already Shinui. Alignment-2.png (1981): TV-footage
+  depiction with a doubtful CC licence. Mapai-arabic.png: a poster for an Arab satellite list, not Mapai’s mark.
+  Bilingual PLP logo: “Newspaper” source only; the NLI-credited variant was used.
+- Jabotinsky 33655/33657 (Herut, 7.3.1973): text signature “תנועת החרות” only, no emblem. 33196 (Herut 1961,
+  “לקראת הבחירות לכנסת החמישית”): shows the ballot slip “ח תנועת החרות”, no separate emblem; catalogue date is
+  year-only, so it cannot satisfy the full-date rule anyway. 31935 (“ח” with the IZL rifle emblem, exact 1949
+  list name) is undated in the catalogue.
+- NRP 2003 web logo (`mafdal.org.il/imgs/site/slog.gif`): Wayback CDX shows first capture 2003-01-29, one day
+  **after** the election; the only pre-election homepage capture (2002-11-30) is a domain-parking page. No
+  pre-election digest; not hosted.
+
+Letter-only findings: none recorded as campaign-wide absence. Herut 1961 (33196) and Herut 1973 (33655/7) items
+are letter/text-only, but other Herut items carry an emblem, so one poster cannot establish absence.
+
+Remaining gaps, k1–k17 (seat winners lacking an own-election logo; constituents lacking one), from
+`scripts/research/logo-coverage.py` and the built datasets:
+
+- **k1** winners without an own-election logo: א מפא״י; מ מפ״ם (nearest 1988); ב החזית הדתית; צ הציונים הכלליים; פ הפרוגרסיבים; ס ספרדים ועדות המזרח; ק מק״י; יד דמוקרטית נצרת; ל התימנים (nearest 1955). Constituents without one: agudat-yisrael, hapoel-hamizrachi, mizrachi, non-party-religious-union, poalei-agudat-yisrael, wizo, womens-equal-rights-association.
+- **k2** winners without an own-election logo: א מפא״י; צ הציונים הכלליים; מ מפ״ם (nearest 1988); ה הפועל המזרחי; ח חרות (nearest 1949); ק מק״י; פ הפרוגרסיבים; יד דמוקרטית לערביי ישראל; ג אגודת ישראל; סצ ספרדים ועדות המזרח; ב המזרחי; ד פועלי אגודת ישראל; נ קידמה ועבודה; ל התימנים (nearest 1955); ע חקלאות ופיתוח. Constituents without one: none.
+- **k3** winners without an own-election logo: א מפא״י; ח חרות (nearest 1949); צ הציונים הכלליים; ב מפד״ל; תו אחדות העבודה; מ מפ״ם (nearest 1988); גד חזית דתית תורתית (nearest 1973); יד דמוקרטית לערביי ישראל; ק מק״י; נ קידמה ועבודה; פ הפרוגרסיבים; ע חקלאות ופיתוח. Constituents without one: agudat-yisrael, hapoel-hamizrachi, mizrachi, poalei-agudat-yisrael.
+- **k4** winners without an own-election logo: א מפא״י; ח חרות (nearest 1949); ב מפד״ל; מ מפ״ם (nearest 1988); צ הציונים הכלליים; תו אחדות העבודה; גד חזית דתית תורתית (nearest 1973); רא קידמה ופיתוח; פ הפרוגרסיבים; יא שיתוף ואחווה; ק מק״י; ע חקלאות ופיתוח. Constituents without one: agudat-yisrael, poalei-agudat-yisrael.
+- **k5** winners without an own-election logo: א מפא״י; ח חרות (nearest 1949); ב מפד״ל; מ מפ״ם (nearest 1988); תו אחדות העבודה; ק מק״י; ג אגודת ישראל; יא שיתוף ואחווה; ד פועלי אגודת ישראל; רא קידמה ופיתוח. Constituents without one: none.
+- **k6** winners without an own-election logo: חל גח״ל; ב מפד״ל; מ מפ״ם (nearest 1988); לע ליברלים עצמאיים; ג אגודת ישראל; רא קידמה ופיתוח; ד פועלי אגודת ישראל; יא שיתוף ואחווה; ש העולם הזה; ק מק״י. Constituents without one: ahdut-haavoda, herut, liberal-party, mapai.
+- **k7** winners without an own-election logo: אמת המערך (nearest 1965); חל גח״ל; ב מפד״ל; ג אגודת ישראל; לע ליברלים עצמאיים; עמ רשימה ממלכתית; ו רק״ח (nearest 1965); רא קידמה ופיתוח; ד פועלי אגודת ישראל; יא שיתוף ואחווה; ש העולם הזה; ק מק״י; ט המרכז החופשי. Constituents without one: herut, israeli-labor-party, liberal-party, mapam.
+- **k8** winners without an own-election logo: חל טעם הליכוד (nearest 1977); אמת המערך (nearest 1977); רצ רצ; ב מפד״ל; ו רק״ח (nearest 1965); לע ליברלים עצמאיים; עא ערבית לבדווים וכפריים; רא קידמה ופיתוח; קנ מוקד. Constituents without one: agudat-yisrael, blue-red-movement, free-centre, greater-israel-movement, herut, israeli-labor-party, liberal-party, maki, mapam, poalei-agudat-yisrael, state-list.
+- **k9** winners without an own-election logo: ג אגודת ישראל; רצ רצ; ב מפד״ל; ו חד״ש; לע ליברלים עצמאיים; ים הרשימה הערבית המאוחדת; ש שלי; ד פועלי אגודת ישראל. Constituents without one: ahdut-seidel-1977, black-panthers, herut, independent-socialists, israeli-labor-party, laam, liberal-party, mapam, meri, moked, rakah.
+- **k10** winners without an own-election logo: אמת המערך (nearest 1977); ג אגודת ישראל; רצ רצ; ב מפד״ל; ו חד״ש; הן שינוי; ת התחיה (nearest 1992); ני תמ״י. Constituents without one: black-panthers, herut, israeli-communist-party, laam, labor, liberal-party, mapam.
+- **k11** winners without an own-election logo: אמת המערך (nearest 1977); ג אגודת ישראל; רצ רצ; ב מפד״ל; ו חד״ש; הן שינוי; שס ש״ס (nearest 2026); עי מורשה; יש אומץ; ני תמ״י; כך כך. Constituents without one: black-panthers, herut, independent-liberals, israeli-communist-party, labor, liberal-party, mapam, matzad, poalei-agudat-yisrael, tehiya, tzomet.
+- **k12** winners without an own-election logo: אמת המערך (nearest 1977); ג אגודת ישראל; רצ רצ; ב מפד״ל; ו חד״ש; הן שינוי; שס ש״ס (nearest 2026); ת התחיה (nearest 1992); פ מתקדמת לשלום (nearest 1984); עץ דגל התורה; ע מד״ע; ץ צומת. Constituents without one: agudat-yisrael, black-panthers, independent-liberals, israeli-communist-party, poalei-agudat-yisrael, shinui.
+- **k13** winners without an own-election logo: אמת העבודה (nearest 2019); מחל הליכוד (nearest 1988); ץ צומת; שס ש״ס (nearest 2026); ב מפד״ל; ג יהדות התורה; ו חד״ש; ט מולדת (nearest 1988); ע המפלגה הדמוקרטית הערבית. Constituents without one: agudat-yisrael, degel-hatorah, mapam, moria, ratz, shinui.
+- **k14** winners without an own-election logo: אמת העבודה (nearest 2019); שס ש״ס (nearest 2026); ב מפד״ל; מרצ מרצ (nearest 1992); כן ישראל בעליה; ו חד״ש–בל״ד; ג יהדות התורה; ע הרשימה הערבית המאוחדת; ט מולדת (nearest 1988). Constituents without one: agudat-yisrael, arab-democratic-party, balad, degel-hatorah, gesher, hadash, likud, mapam, ram, ratz, shinui, tzomet.
+- **k15** winners without an own-election logo: אמת ישראל אחת (nearest 2003); מחל הליכוד (nearest 2009); שס ש״ס (nearest 2026); מרצ מרצ (nearest 1992); כן ישראל בעליה; יש שינוי; ב מפד״ל; ג יהדות התורה; עם הרשימה הערבית המאוחדת; ו חד״ש; ל ישראל ביתנו (nearest 2019); ד בל״ד; ם עם אחד (nearest 2003). Constituents without one: agudat-yisrael, arab-democratic-party, balad, degel-hatorah, gesher, herut-national-movement, labor, meimad, moledet, ram, taal, tkuma.
+- **k16** winners without an own-election logo: מחל הליכוד (nearest 2009); יש שינוי; שס ש״ס (nearest 2026); ל האיחוד הלאומי (nearest 1999); מרצ מרצ (nearest 2009); ב מפד״ל; ג יהדות התורה (nearest 2019); ו חד״ש–תע״ל; ד בל״ד; כן ישראל בעלייה; עם רע״ם. Constituents without one: agudat-yisrael, arab-democratic-party, degel-hatorah, democratic-choice, hadash, labor, meimad, meretz, moledet, ram, shahar, taal, tkuma, yisrael-beiteinu.
+- **k17** winners without an own-election logo: כן קדימה (nearest 2013); אמת העבודה–מימד (nearest 2003); שס ש״ס (nearest 2026); מחל הליכוד (nearest 2009); ל ישראל ביתנו (nearest 2019); זך גיל; ג יהדות התורה (nearest 2019); מרצ מרצ (nearest 2009); עם רע״ם–תע״ל; ו חד״ש; ד בל״ד. Constituents without one: agudat-yisrael, ahi, arab-democratic-party, degel-hatorah, labor, meimad, moledet, nrp, ram, taal, tkuma.
+
+Next avenues not completed in the time box: page through the remaining 1,168 harvested Jabotinsky election
+posters for exactly dated Herut (1951–1961), Gahal (1965–1973) and Liberal items; NLI JPress election ads (site
+challenge blocked earlier runs); Wayback CDX for 1996–2006 party sites (shinui, hadash, balad, Yisrael BaAliyah,
+Gil) checking for pre-election digests.
 
 ## Earlier pass: licence and retrieval outcome (historical)
 

@@ -17,6 +17,23 @@
       "originalSha256": "22a70bd064cc9205f25de28d34bdbbb0e939d3b4d97703d270951cb0416d7a8b",
       "rights": "free-licence",
       "bytes": 18189
+    },
+    {
+      "file": "logos/tehiya-1992.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/Logo_Tehiya.png",
+      "licence": "CC BY-SA 4.0",
+      "attribution": "הספרייה הלאומית; File:Logo Tehiya.png; CC BY-SA 4.0. Resized to at most 256 px; converted to PNG where necessary.",
+      "hosted": true,
+      "inUseEvidence": "Commons credits the NLI 1992 election-ephemera page (elect_ephemera_1992) for this Tehiya logo. Not extended to earlier campaigns.",
+      "confidence": "medium",
+      "letters": "ת",
+      "sha256": "60bf10d24ba51ed4f980a6dff2eb18db052c6fe955a76e037c0e4eb2993a920a",
+      "evidenceId": "commons-92820616",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/35/Logo_Tehiya.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "status": "verified",
+      "originalSha256": "13b7424504982d1ca42fcb0c45d63d733929e1d6e5bfd3b707c7c8a87d30f38f",
+      "rights": "free-licence",
+      "bytes": 22568
     }
   ]
 }

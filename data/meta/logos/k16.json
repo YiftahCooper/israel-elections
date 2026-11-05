@@ -34,6 +34,23 @@
       "originalSha256": "7f3bd339fae19311176c6212c5761a5f55ea29f73074d8050e57a9fa1242bcf3",
       "rights": "free-licence",
       "bytes": 11015
+    },
+    {
+      "file": "logos/ahavat-yisrael-2003.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/AhavatIsrael.png",
+      "licence": "Public domain (PD-textlogo)",
+      "attribution": "הספרייה הלאומית; File:AhavatIsrael.png; Public domain (PD-textlogo). Resized to at most 256 px; converted to PNG where necessary.",
+      "hosted": true,
+      "inUseEvidence": "Commons identifies the Ahavat Yisrael Party logo and files it under the 2003 election, citing NLI ephemera item 700080849; the list contested only 2003 in this dataset.",
+      "confidence": "medium",
+      "letters": "זנ",
+      "sha256": "0c1702af9b5ef660684796f6a4d4ef7df71f09abc6ce0a4cefa0aa4ec32df8e0",
+      "evidenceId": "commons-115264588",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b4/AhavatIsrael.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "status": "verified",
+      "originalSha256": "6fc2c51693d35c94b811bbefc2796a8684b51613becb61c39eb261b97945f91c",
+      "rights": "free-licence",
+      "bytes": 14180
     }
   ]
 }

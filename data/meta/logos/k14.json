@@ -34,6 +34,23 @@
       "originalSha256": "a5adaf8bc021c37e8f95f225f9b7f0b429e0eee494321f8db9769220ad2f397a",
       "rights": "free-licence",
       "bytes": 11548
+    },
+    {
+      "file": "logos/yamin-yisrael-1996.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/Yamin_Yisrael_logo.jpg",
+      "licence": "Public domain (PD-textlogo)",
+      "attribution": "Unknown author; File:Yamin Yisrael logo.jpg; Public domain (PD-textlogo). Resized to at most 256 px; converted to PNG where necessary.",
+      "hosted": true,
+      "inUseEvidence": "Commons dates the Yamin Yisrael logo 1996 (1996 elections category), citing NLI item IE4160829; the list contested only 1996 in this dataset.",
+      "confidence": "medium",
+      "letters": "יד",
+      "sha256": "f00ad406a20222d1ad6fd6d63c84d371a1c57d21bee39037ef30e2ad1da06a66",
+      "evidenceId": "commons-146786687",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/9/93/Yamin_Yisrael_logo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "status": "verified",
+      "originalSha256": "52b46b7934af3436df13fb0e6ed1f78bdcab2e344a1cfbffdac2f2db626e3ef0",
+      "rights": "free-licence",
+      "bytes": 32272
     }
   ]
 }

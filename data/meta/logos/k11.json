@@ -67,6 +67,23 @@
           1842
         ]
       }
+    },
+    {
+      "file": "logos/progressive-list-peace-1984.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/Progressive_List_for_Peace_logo.jpg",
+      "licence": "Public domain (PD-textlogo)",
+      "attribution": "Unknown author; File:Progressive List for Peace logo.jpg; Public domain (PD-textlogo). Resized to at most 256 px; converted to PNG where necessary.",
+      "hosted": true,
+      "inUseEvidence": "Commons dates the Progressive List for Peace logo 1984 and credits the NLI 1984 election-ephemera image (ephemera_1984/01.jpg). Not extended to 1988/1992.",
+      "confidence": "medium",
+      "letters": "פ",
+      "sha256": "3e0a90f91161be8ce58afba43dc408dbf53fe0cb04f3099e958a7068495cea22",
+      "evidenceId": "commons-146786818",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Progressive_List_for_Peace_logo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "status": "verified",
+      "originalSha256": "bd333ea6df1a38fecf9f574fef4cd3d4df3a4deb3705593b983e71306f894f6c",
+      "rights": "free-licence",
+      "bytes": 28195
     }
   ]
 }

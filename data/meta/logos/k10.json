@@ -50,6 +50,23 @@
           448
         ]
       }
+    },
+    {
+      "file": "logos/unity-party-1981.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/Unity_Party.png",
+      "licence": "CC BY-SA 3.0",
+      "attribution": "הספרייה הלאומית; File:Unity Party.png; CC BY-SA 3.0. Resized to at most 256 px; converted to PNG where necessary.",
+      "hosted": true,
+      "inUseEvidence": "Commons explicitly identifies the Unity Party logo during the 1981 election, citing NLI ephemera item 700153721. List name מפלגת האיחוד matches.",
+      "confidence": "medium",
+      "letters": "זה",
+      "sha256": "2f5316ad3f2b617b3b4cdcf2aa07976565dd66f713739dd26d6b6651b28b4b9e",
+      "evidenceId": "commons-103212858",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Unity_Party.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "status": "verified",
+      "originalSha256": "76eecb9da0460386add02312ea3905a1b017e83f96cb4d1fcc1c9e16e3d4c5b8",
+      "rights": "free-licence",
+      "bytes": 13391
     }
   ]
 }
