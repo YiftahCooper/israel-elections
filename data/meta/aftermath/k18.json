@@ -66,6 +66,24 @@
       "publisher": "The Times of Israel",
       "kind": "secondary",
       "accessed": "2026-11-05"
+    },
+    "sipri-2011": {
+      "url": "https://www.sipri.org/sites/default/files/files/FS/SIPRIFS1201.pdf",
+      "publisher": "SIPRI, Nenne Bodell, Chronology of armaments, disarmament and international security 2011, p.15",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "sipri-2012": {
+      "url": "https://www.sipri.org/sites/default/files/files/FS/SIPRIFS1301.pdf",
+      "publisher": "SIPRI, Nenne Bodell, Chronology of armaments, disarmament and international security 2012, p.14",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "reuters-confrontation-2021": {
+      "url": "https://uk.investing.com/news/world-news/timeline--hamas-and-israel-a-history-of-confrontation-2378704?ampMode=1",
+      "publisher": "Reuters, Hamas and Israel: a history of confrontation (20 May 2021), via Investing.com",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -272,53 +290,88 @@
   },
   "term": {
     "inclusionRule": "two-independent-chronologies-one-official-or-academic",
-    "chronologies": [],
-    "events": [],
+    "chronologies": [
+      "sipri-2011",
+      "sipri-2012",
+      "reuters-confrontation-2021"
+    ],
+    "events": [
+      {
+        "id": "shalit-exchange-2011",
+        "date": "2011-10-18",
+        "category": "security",
+        "textEn": "Gilad Shalit was released from captivity in Gaza in a prisoner exchange between Israel and Hamas.",
+        "textHe": "גלעד שליט שוחרר מהשבי ברצועת עזה בעסקת חילופי אסירים בין ישראל לחמאס.",
+        "cites": [
+          {
+            "source": "sipri-2011",
+            "quote": "The exchange of prisoners starts on 18 October."
+          },
+          {
+            "source": "reuters-confrontation-2021",
+            "quote": "Shalit is finally freed over five years later in a prisoner exchange."
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "pillar-defense-2012",
+        "date": "2012-11-14",
+        "category": "security",
+        "textEn": "Israel launched Operation Pillar of Defense in Gaza; a ceasefire was announced on 21 November.",
+        "textHe": "ישראל פתחה במבצע עמוד ענן ברצועת עזה; הפסקת אש הוכרזה ב־21 בנובמבר.",
+        "cites": [
+          {
+            "source": "sipri-2012",
+            "quote": "a ceasefire agreement between Israel and Hamas is announced on 21 November"
+          },
+          {
+            "source": "reuters-confrontation-2021",
+            "quote": "Nov 14, 2012"
+          }
+        ],
+        "confidence": "high",
+        "endDate": "2012-11-21",
+        "notes": [
+          "During the 32nd government’s caretaker tenure, after the October dissolution."
+        ]
+      }
+    ],
     "candidatesPending": [
       {
         "label": "Bar-Ilan speech",
         "date": "2009-06",
-        "why": "Research lead only; two independent qualifying chronologies and direct event evidence not yet inspected."
+        "why": "No pair of inspected qualifying chronologies selects the June 2009 speech; a transcript alone would establish content/date but not chronology selection."
       },
       {
         "label": "Gaza flotilla raid",
         "date": "2010-05",
-        "why": "Research lead only; two independent qualifying chronologies and direct event evidence not yet inspected."
+        "why": "CNN’s biography selects the later comptroller report, not the raid as a dated event; no inspected chronology pair for the raid was assembled."
       },
       {
         "label": "Carmel fire",
         "date": "2010-12",
-        "why": "Research lead only; two independent qualifying chronologies and direct event evidence not yet inspected."
+        "why": "No pair of inspected qualifying chronologies selects the December 2010 disaster. Security chronologies do not provide broad society coverage."
       },
       {
         "label": "Labor split / Independence faction",
         "date": "2011-01",
-        "why": "Research lead only; two independent qualifying chronologies and direct event evidence not yet inspected."
+        "why": "No pair of inspected qualifying chronologies selects the January 2011 faction split."
       },
       {
         "label": "Social protests",
         "date": "2011-07",
-        "why": "Research lead only; two independent qualifying chronologies and direct event evidence not yet inspected."
-      },
-      {
-        "label": "Gilad Shalit prisoner exchange",
-        "date": "2011-10",
-        "why": "Research lead only; two independent qualifying chronologies and direct event evidence not yet inspected."
+        "why": "The IDI English 2013 page supplied results, not a retrospective event narrative; the Knesset/JVL history was not readable. Two qualifying protest chronologies were not inspected."
       },
       {
         "label": "Kadima entered the coalition",
         "date": "2012-05",
-        "why": "Research lead only; two independent qualifying chronologies and direct event evidence not yet inspected."
+        "why": "No pair of inspected qualifying chronologies selects the May 2012 accession."
       },
       {
         "label": "Kadima left the coalition",
         "date": "2012-07",
-        "why": "Research lead only; two independent qualifying chronologies and direct event evidence not yet inspected."
-      },
-      {
-        "label": "Operation Pillar of Defense during caretaker period",
-        "date": "2012-11",
-        "why": "Research lead only; two independent qualifying chronologies and direct event evidence not yet inspected."
+        "why": "No pair of inspected qualifying chronologies selects the July 2012 departure."
       }
     ],
     "start": "2009-03-31",

@@ -90,6 +90,36 @@
       "publisher": "UK House of Commons Library, CBP-9189 (14 June 2021), p.5",
       "kind": "official",
       "accessed": "2026-11-05"
+    },
+    "sipri-2020": {
+      "url": "https://www.sipri.org/sites/default/files/SIPRIYB21cC.pdf",
+      "publisher": "SIPRI Yearbook 2021, Annex C: Chronology 2020, September entries",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "cfr-conflict-timeline": {
+      "url": "https://www.cfr.org/education/learn/timelines/israeli-palestinian-conflict-timeline",
+      "publisher": "Council on Foreign Relations Education, Israeli-Palestinian Conflict Timeline (updated 14 July 2026)",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "idi-2021-retrospective": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/elections/2021/",
+      "publisher": "Israel Democracy Institute, 2021 election retrospective (opening narrative)",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "ipf-election-timeline": {
+      "url": "https://israelpolicyforum.org/wp-content/uploads/2022/09/The-Elections-Era-Timeline-2018-2022.pdf",
+      "publisher": "Israel Policy Forum, The Elections Era 2018–2022, p.2",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "reuters-confrontation-2021": {
+      "url": "https://uk.investing.com/news/world-news/timeline--hamas-and-israel-a-history-of-confrontation-2378704?ampMode=1",
+      "publisher": "Reuters, Hamas and Israel: a history of confrontation (20 May 2021), via Investing.com",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -326,43 +356,108 @@
   },
   "term": {
     "inclusionRule": "two-independent-chronologies-one-official-or-academic",
-    "chronologies": [],
-    "events": [],
+    "chronologies": [
+      "sipri-2020",
+      "cfr-conflict-timeline",
+      "idi-2021-retrospective",
+      "ipf-election-timeline",
+      "reuters-confrontation-2021"
+    ],
+    "events": [
+      {
+        "id": "abraham-accords-2020",
+        "date": "2020-09-15",
+        "category": "foreign-relations",
+        "textEn": "Israel, the United Arab Emirates and Bahrain signed agreements to establish diplomatic relations at the White House.",
+        "textHe": "ישראל, איחוד האמירויות ובחריין חתמו בבית הלבן על הסכמים לכינון יחסים דיפלומטיים.",
+        "cites": [
+          {
+            "source": "sipri-2020",
+            "quote": "The USA hosts a signing ceremony for the Abraham Accords"
+          },
+          {
+            "source": "cfr-conflict-timeline",
+            "quote": "Sep 15, 2020"
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "budget-dissolution-2020",
+        "date": "2020-12-23",
+        "category": "governance",
+        "textEn": "The Knesset dissolved automatically after the deadline to pass the 2020 budget expired.",
+        "textHe": "הכנסת התפזרה אוטומטית לאחר שחלף המועד לאישור תקציב המדינה לשנת 2020.",
+        "cites": [
+          {
+            "source": "idi-2021-retrospective",
+            "quote": "automatic dissolution of the Knesset due to non-transfer of budget"
+          },
+          {
+            "source": "ipf-election-timeline",
+            "quote": "Knesset fails to pass a budget"
+          },
+          {
+            "source": "commons-2021",
+            "quote": "a deadline to approve a 2020 budget expired on 23 December 2020"
+          },
+          {
+            "source": "commons-2021",
+            "quote": "The Knesset is automatically dissolved"
+          }
+        ],
+        "confidence": "high",
+        "notes": [
+          "IPF labels the event 22 December (the deadline-night sitting); the Commons Library dates expiry to 23 December. Preserve the midnight distinction; do not change the existing endedBy date."
+        ]
+      },
+      {
+        "id": "guardian-walls-2021",
+        "date": "2021-05-10",
+        "category": "security",
+        "textEn": "Hamas fired rockets toward Israel and Israel launched air strikes in Gaza; a ceasefire took effect on 21 May.",
+        "textHe": "חמאס ירה רקטות לעבר ישראל וישראל פתחה בתקיפות אוויריות ברצועת עזה; הפסקת אש נכנסה לתוקף ב־21 במאי.",
+        "cites": [
+          {
+            "source": "cfr-conflict-timeline",
+            "quote": "May 2021 Israel-Hamas Crisis"
+          },
+          {
+            "source": "reuters-confrontation-2021",
+            "quote": "May 10"
+          },
+          {
+            "source": "reuters-confrontation-2021",
+            "quote": "effective on Friday"
+          }
+        ],
+        "confidence": "high",
+        "endDate": "2021-05-21",
+        "notes": [
+          "During the outgoing 35th government’s caretaker tenure, before the 36th government took office. Reuters chronology published Thursday 20 May dates the ceasefire to Friday. Not duplicated as a k24 term event."
+        ]
+      }
+    ],
     "candidatesPending": [
       {
         "label": "COVID-19 emergency during formation",
         "date": "2020-03",
-        "why": "Not promoted: two independent qualifying chronologies and direct-date evidence not fully inspected. Dissolution is separately evidenced in endedBy."
+        "why": "March 2020 is before this record’s 17 May government-term start; a separately scoped formation-period event would need two qualifying chronologies."
       },
       {
         "label": "Budget deadline extension",
         "date": "2020-08",
-        "why": "Not promoted: two independent qualifying chronologies and direct-date evidence not fully inspected. Dissolution is separately evidenced in endedBy."
-      },
-      {
-        "label": "Abraham Accords signing",
-        "date": "2020-09-15",
-        "why": "Not promoted: two independent qualifying chronologies and direct-date evidence not fully inspected. Dissolution is separately evidenced in endedBy."
+        "why": "The IDI 2021 retrospective selects the August postponement; a second qualifying chronology selecting the extension is missing."
       },
       {
         "label": "Second national lockdown",
         "date": "2020-09",
-        "why": "Not promoted: two independent qualifying chronologies and direct-date evidence not fully inspected. Dissolution is separately evidenced in endedBy."
+        "why": "The inspected political chronologies do not select the September lockdown; two date-specific qualifying chronologies remain missing."
       },
       {
         "label": "Vaccination campaign began",
         "date": "2020-12",
-        "why": "Not promoted: two independent qualifying chronologies and direct-date evidence not fully inspected. Dissolution is separately evidenced in endedBy."
-      },
-      {
-        "label": "Automatic dissolution",
-        "date": "2020-12-23",
-        "why": "Not promoted: two independent qualifying chronologies and direct-date evidence not fully inspected. Dissolution is separately evidenced in endedBy."
-      },
-      {
-        "label": "Guardian of the Walls before replacement government",
-        "date": "2021-05",
-        "why": "Not promoted: two independent qualifying chronologies and direct-date evidence not fully inspected. Dissolution is separately evidenced in endedBy."
+        "why": "IPU’s 2021 election narrative selects the vaccination rollout but does not date its launch; no second qualifying launch chronology inspected."
       }
     ],
     "start": "2020-05-17",
