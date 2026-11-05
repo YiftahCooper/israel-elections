@@ -1,0 +1,613 @@
+{
+  "schemaVersion": 1,
+  "electionId": "k9",
+  "status": "pilot",
+  "reviewedAt": "2026-11-05",
+  "notes": [
+    "Pilot for docs/design/after-the-election.md. Not wired into the app.",
+    "Jerusalem Post 1977 citations use the OCR text of the Internet Archive item TheJerusalemPost1977IsraelEnglish (archival mirror of the printed paper). Quotes are copied from that OCR with obvious OCR errors corrected only inside [brackets]. The NLI JPress copies (Davar, Maariv, Haaretz) were behind a browser challenge and were not used."
+  ],
+  "sources": {
+    "knesset-plenum-1977-06-20": {
+      "url": "https://fs.knesset.gov.il/9/Plenum/9_ptm_254065.pdf",
+      "publisher": "Knesset, plenum record, 9th Knesset, 3rd sitting (20 June 1977)",
+      "publisherHe": "הכנסת, דברי הכנסת, הישיבה השלישית של הכנסת התשיעית",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "jpost-1977-05-31": {
+      "url": "https://archive.org/download/TheJerusalemPost1977IsraelEnglish/May%2031%201977%2C%20The%20Jerusalem%20Post%2C%20%2314025%2C%20Israel%20%28en%29_djvu.txt",
+      "publisher": "The Jerusalem Post, 31 May 1977 (Internet Archive OCR)",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    },
+    "jpost-1977-06-01": {
+      "url": "https://archive.org/download/TheJerusalemPost1977IsraelEnglish/Jun%2001%201977%2C%20The%20Jerusalem%20Post%2C%20%2314026%2C%20Israel%20%28en%29_djvu.txt",
+      "publisher": "The Jerusalem Post, 1 June 1977 (Internet Archive OCR)",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    },
+    "jpost-1977-06-02": {
+      "url": "https://archive.org/download/TheJerusalemPost1977IsraelEnglish/Jun%2002%201977%2C%20The%20Jerusalem%20Post%2C%20%2314027%2C%20Israel%20%28en%29_djvu.txt",
+      "publisher": "The Jerusalem Post, 2 June 1977 (Internet Archive OCR)",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    },
+    "jpost-1977-06-03": {
+      "url": "https://archive.org/download/TheJerusalemPost1977IsraelEnglish/Jun%2003%201977%2C%20The%20Jerusalem%20Post%2C%20%2314028%2C%20Israel%20%28en%29_djvu.txt",
+      "publisher": "The Jerusalem Post, 3 June 1977 (Internet Archive OCR)",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    },
+    "jpost-1977-06-06": {
+      "url": "https://archive.org/download/TheJerusalemPost1977IsraelEnglish/Jun%2006%201977%2C%20The%20Jerusalem%20Post%2C%20%2314031%2C%20Israel%20%28en%29_djvu.txt",
+      "publisher": "The Jerusalem Post, 6 June 1977 (Internet Archive OCR)",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    },
+    "jpost-1977-06-08": {
+      "url": "https://archive.org/download/TheJerusalemPost1977IsraelEnglish/Jun%2008%201977%2C%20The%20Jerusalem%20Post%2C%20%2314033%2C%20Israel%20%28en%29_djvu.txt",
+      "publisher": "The Jerusalem Post, 8 June 1977 (Internet Archive OCR)",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    },
+    "jta-1977-06-08": {
+      "url": "https://www.jta.org/archive/katzir-officially-asks-begin-to-form-new-government-likud-leader-urges-labor-join-him",
+      "publisher": "Jewish Telegraphic Agency, Daily Bulletin, 8 June 1977",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    },
+    "jta-1977-06-21": {
+      "url": "https://www.jta.org/archive/begin-takes-oath-of-office-after-long-debate-in-knesset",
+      "publisher": "Jewish Telegraphic Agency, Daily Bulletin (June 1977)",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    },
+    "knesset-history-9": {
+      "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-ninth-knesset-1977-1981",
+      "publisher": "Knesset, \"Knesset History: Ninth Knesset\" (text credited \"Sources: The Knesset\"; read on the Jewish Virtual Library copy because the Knesset page loads by script)",
+      "kind": "official",
+      "via": "Jewish Virtual Library (AICE) mirror; original https://main.knesset.gov.il/EN/About/History/pages/knessethistory.aspx?kns=9",
+      "accessed": "2026-11-05"
+    },
+    "knesset-shamir-bio": {
+      "url": "https://main.knesset.gov.il/EN/About/Pages/shamir.aspx",
+      "publisher": "Knesset, biography of Speaker Yitzhak Shamir",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "isa-navon-1981": {
+      "url": "https://catalog.archives.gov.il/site/chapter/navon-and-10-knesset-election/",
+      "publisher": "Israel State Archives, \"הנשיא נבון והבחירות לכנסת העשירית\"",
+      "publisherHe": "ארכיון המדינה",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    },
+    "ipu-1981": {
+      "url": "https://data.ipu.org/election-summary/PDF/ISRAEL_1981_E.PDF",
+      "publisher": "Inter-Parliamentary Union, Chronicle of Parliamentary Elections (Israel 1981)",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "idi-1981": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/elections/1981/",
+      "publisher": "Israel Democracy Institute",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "efrata-2025": {
+      "url": "https://efrata.emef.ac.il/wp-content/uploads/2025/03/%D7%94%D7%9E%D7%94%D7%A4%D7%9A-%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA-%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA-%D7%94%D7%AA%D7%A9%D7%99%D7%A2%D7%99%D7%AA-1977-%D7%9E%D7%A9%D7%9E%D7%A2%D7%95%D7%AA-%D7%94%D7%9E%D7%95%D7%A9%D7%92-%D7%92%D7%95%D7%A9-%D7%97%D7%95%D7%A1%D7%9D-%D7%95%D7%94%D7%91%D7%A8%D7%99%D7%AA-%D7%94%D7%94%D7%99%D7%A1%D7%98%D7%95%D7%A8%D7%99%D7%AA-%D7%94%D7%97%D7%93%D7%A9%D7%94.pdf",
+      "publisher": "Efrata College journal article, \"המהפך — הבחירות לכנסת התשיעית (1977)\" (2025)",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "hewiki-knesset9": {
+      "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%AA%D7%A9%D7%99%D7%A2%D7%99%D7%AA",
+      "publisher": "Wikipedia (he), \"הכנסת התשיעית\"",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    }
+  },
+  "results": {
+    "electionDate": "1977-05-17",
+    "officialResultsSourceId": "k9-results-gazette",
+    "knessetSwornIn": {
+      "date": "1977-06-13",
+      "confidence": "medium",
+      "cites": [
+        {
+          "source": "hewiki-knesset9",
+          "quote": "כהונתה של הכנסת התשיעית החלה ב- 13 ביוני 1977"
+        }
+      ],
+      "notes": [
+        "Only a labelled secondary source retrieved; the Knesset's own record of the first sitting is the target."
+      ]
+    }
+  },
+  "reaction": {
+    "policy": "Only dated institutional steps and statements attributed to their speaker, applied to every list or to none.",
+    "items": [],
+    "gap": "Not collected for this pilot."
+  },
+  "recommendationRounds": [
+    {
+      "id": "r1",
+      "date": "1977-05-30",
+      "endDate": "1977-06-05",
+      "kind": "consultations",
+      "president": {
+        "nameEn": "Ephraim Katzir",
+        "nameHe": "אפרים קציר"
+      },
+      "nominees": {
+        "begin": {
+          "nameEn": "Menachem Begin",
+          "nameHe": "מנחם בגין"
+        }
+      },
+      "entries": [
+        {
+          "letters": "מחל",
+          "seats": 43,
+          "status": "recommended",
+          "nominee": "begin",
+          "cites": [
+            {
+              "source": "jpost-1977-05-31",
+              "quote": "Likud leaders proposed yesterday that Menahem Begin be [invited] by President Ephraim Katzir to form a government"
+            }
+          ]
+        },
+        {
+          "letters": "אמת",
+          "seats": 32,
+          "status": "none",
+          "cites": [
+            {
+              "source": "jpost-1977-06-01",
+              "quote": "After hearing from Bar-Lev of Alignment support for the tradition that the head of the largest party be [invited] first to form a government, Prof. Katzir asked if that meant the Alignment was not proposing its own candidate. Bar-Lev responded, \"At this stage, we are not.\""
+            }
+          ]
+        },
+        {
+          "letters": "יש",
+          "seats": 15,
+          "status": "recommended",
+          "nominee": "begin",
+          "cites": [
+            {
+              "source": "jpost-1977-06-02",
+              "quote": "Leaders of the Democratic Movement for Change and of the National Religious [Party] ... asked President Ephraim [Katzir] yesterday to select Menahem Begin to head the next government."
+            }
+          ]
+        },
+        {
+          "letters": "ב",
+          "seats": 12,
+          "status": "recommended",
+          "nominee": "begin",
+          "cites": [
+            {
+              "source": "jpost-1977-06-02",
+              "quote": "Leaders of the Democratic Movement for Change and of the National Religious [Party] ... asked President Ephraim [Katzir] yesterday to select Menahem Begin to head the next government."
+            }
+          ]
+        },
+        {
+          "letters": "ו",
+          "seats": 5,
+          "status": "other",
+          "noteEn": "Named no candidate in the report; stated the President was not bound to ask the largest party first.",
+          "cites": [
+            {
+              "source": "jpost-1977-06-03",
+              "quote": "Rakah, however, said the President was not legally required to first ask the head of the largest party in the new Knesset."
+            }
+          ]
+        },
+        {
+          "letters": "ג",
+          "seats": 4,
+          "status": "recommended",
+          "nominee": "begin",
+          "cites": [
+            {
+              "source": "jpost-1977-06-03",
+              "quote": "Agudat Yisrael and [Shlomzion] proposed Likud leader Menahem [Begin]."
+            }
+          ]
+        },
+        {
+          "letters": "כנ",
+          "seats": 2,
+          "status": "recommended",
+          "nominee": "begin",
+          "cites": [
+            {
+              "source": "jpost-1977-06-03",
+              "quote": "Agudat Yisrael and [Shlomzion] proposed Likud leader Menahem [Begin]. ... Ariel [Sharon], head of [Shlomzion], appeared despite his announcement that he is joining the Likud, since the merger is not yet [official]."
+            }
+          ]
+        },
+        {
+          "letters": "ש",
+          "seats": 2,
+          "status": "other",
+          "noteEn": "Asked for \"a moderate statesman\" and gave two Alignment MKs as examples.",
+          "cites": [
+            {
+              "source": "jpost-1977-06-03",
+              "quote": "A [Sheli] spokesman said its delegation had asked the President to select a \"moderate statesman, such as Haim Zadok (present Justice minister) or Yitzhak Navon (another Alignment MK),\" to form a government."
+            }
+          ]
+        },
+        {
+          "letters": "פש",
+          "seats": 1,
+          "status": "recommended",
+          "nominee": "begin",
+          "noteEn": "Reported as support for a Begin-led government.",
+          "cites": [
+            {
+              "source": "jpost-1977-06-06",
+              "quote": "In his talk with the President yesterday, Flatto Sharon voiced his support for a government led by Menahem Begin"
+            }
+          ]
+        },
+        {
+          "letters": "ד",
+          "seats": 1,
+          "status": "unknown"
+        },
+        {
+          "letters": "לע",
+          "seats": 1,
+          "status": "unknown"
+        },
+        {
+          "letters": "רצ",
+          "seats": 1,
+          "status": "unknown"
+        },
+        {
+          "letters": "ים",
+          "seats": 1,
+          "status": "unknown"
+        }
+      ],
+      "totals": {
+        "begin": 77,
+        "none": 32,
+        "other": 7,
+        "unknown": 4
+      },
+      "cites": [
+        {
+          "source": "jpost-1977-05-31",
+          "quote": "The Alignment will appear today, followed by the NRP and the DMC tomorrow and smaller parties through Sunday."
+        },
+        {
+          "source": "jpost-1977-06-06",
+          "quote": "President Ephraim Katzir yesterday received MK-elect Samuel Flatto Sharon, thus concluding his consultations with representatives of all parties successful in the elections."
+        },
+        {
+          "source": "knesset-plenum-1977-06-20",
+          "quote": "הואיל נשיא המדינה, מכוח סמכותו ועל־פי המלצתן של סיעות בכנסת המייצגות רוב מכריע של חבריה, להטיל עלי את התפקיד להרכיב את הממשלה"
+        }
+      ],
+      "notes": [
+        "Totals are sums of the per-list entries above, not a figure published by the President. No official tally was retrieved.",
+        "Four one-seat lists (Poalei Agudat Yisrael, Independent Liberals, Civil Rights Movement, United Arab List) were consulted on 3 or 5 June per the schedule, but their positions were not found in the issues read (gap).",
+        "Primary record to retrieve: Israel State Archives presidential file נ-571/13, \"הנשיאים קציר ונבון – תיקי הרכבת ממשלות – הרכבת הממשלה ה-18\" (cited in isa-navon-1981)."
+      ]
+    }
+  ],
+  "formation": {
+    "outcome": "government-formed",
+    "events": [
+      {
+        "date": "1977-05-30",
+        "endDate": "1977-06-05",
+        "type": "consultations",
+        "textEn": "President Katzir consulted the lists elected to the Ninth Knesset.",
+        "textHe": "הנשיא קציר התייעץ עם הרשימות שנבחרו לכנסת התשיעית.",
+        "cites": [
+          {
+            "source": "jpost-1977-05-31",
+            "quote": "were the first to be received by the President for party consultations"
+          },
+          {
+            "source": "jpost-1977-06-06",
+            "quote": "thus concluding his consultations with representatives of all parties successful in the elections"
+          }
+        ]
+      },
+      {
+        "date": "1977-06-07",
+        "type": "mandate-given",
+        "person": "begin",
+        "days": 21,
+        "textEn": "Katzir tasked Menachem Begin with forming a government (21 days).",
+        "textHe": "קציר הטיל על מנחם בגין להרכיב ממשלה (21 ימים).",
+        "cites": [
+          {
+            "source": "knesset-plenum-1977-06-20",
+            "quote": "ביום כ\"א בסיון תשל\"ז, 7 ביוני 1977, הואיל כבוד נשיא המדינה להטיל עלי את התפקיד להרכיב ממשלה."
+          },
+          {
+            "source": "jpost-1977-06-08",
+            "quote": "\"I have consulted with all the parties that will be represented in the Ninth Knesset, and I decided to ask Mr. Begin to form a government,\" said the President"
+          },
+          {
+            "source": "jta-1977-06-08",
+            "quote": "Israeli law gives Begin 21 days to form a government and an additional 21 days if needed."
+          }
+        ]
+      },
+      {
+        "date": "1977-06-20",
+        "type": "confidence-vote",
+        "votes": {
+          "for": 63,
+          "against": 53
+        },
+        "textEn": "Begin presented the 18th government; the Knesset approved it, 63–53, and the ministers made their declarations.",
+        "textHe": "בגין הציג את הממשלה ה־18; הכנסת הביעה בה אמון ברוב של 63 מול 53, והשרים הצהירו אמונים.",
+        "cites": [
+          {
+            "source": "knesset-plenum-1977-06-20",
+            "quote": "בעד ההצעה להביע אמון בממשלה – 63 / נגד – 53 / ההצעה להביע אמון בממשלה נתקבלה."
+          },
+          {
+            "source": "jta-1977-06-21",
+            "quote": "his 63-53 margin was strictly along party lines. Voting for the government were Likud, the National Religious Party (NRP) and Aguda bloc, Moshe Dayan and Samuel Flatto-Sharon."
+          }
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "about": "Date of the ministers' oath",
+        "values": [
+          {
+            "value": "Sitting dated 20 June 1977 (declarations follow the vote in the same record)",
+            "source": "knesset-plenum-1977-06-20"
+          },
+          {
+            "value": "\"in the early hours of this morning\" (i.e. after midnight, 21 June)",
+            "source": "jta-1977-06-21"
+          }
+        ],
+        "resolution": "Both are consistent with a sitting that began on 20 June and ended after midnight. UI uses 20 June (the sitting date) with an (i) note."
+      }
+    ]
+  },
+  "government": {
+    "number": 18,
+    "nameEn": "18th government (Begin)",
+    "nameHe": "הממשלה ה־18 (בגין)",
+    "startDate": "1977-06-20",
+    "endDate": "1981-08-05",
+    "primeMinisters": [
+      {
+        "nameEn": "Menachem Begin",
+        "nameHe": "מנחם בגין",
+        "letters": "מחל",
+        "from": "1977-06-20",
+        "to": "1981-08-05"
+      }
+    ],
+    "firstGovernmentSchemeRef": "first-government",
+    "coalition": [
+      {
+        "letters": "מחל",
+        "seats": 43
+      },
+      {
+        "letters": "כנ",
+        "seats": 2,
+        "note": "Merged into the Likud faction after the election."
+      },
+      {
+        "letters": "ב",
+        "seats": 12
+      },
+      {
+        "letters": "ג",
+        "seats": 4,
+        "note": "Supported the coalition; held no ministry."
+      }
+    ],
+    "coalitionSeats": 61,
+    "coalitionSeatsNote": "Sum of list seats at the election (43+2+12+4). With Moshe Dayan (elected on the Alignment list) the government's supporters numbered 62; Flatto-Sharon also voted for it (63).",
+    "ministers": "Listed in knesset-plenum-1977-06-20 (13 ministers; the Prime Minister held Welfare, Justice, Transport and Communications pending the DMC).",
+    "cites": [
+      {
+        "source": "knesset-plenum-1977-06-20",
+        "quote": "מנחם בגין – ראש הממשלה ... משה דיין – שר החוץ ... בתקופת מעבר קצרה יהיה ראש הממשלה אחראי למשרדי הרווחה, המשפטים, התחבורה והתקשורת."
+      },
+      {
+        "source": "efrata-2025",
+        "quote": "ממשלתו הצרה — הממשלה השמונה עשרה — קיבלה את אמון הכנסת ב־20 ביוני 1977, ובקואליציה היו 62 חברי כנסת בלבד. הממשלה החדשה התבססה על שלוש מפלגות: על הליכוד ... המפד\"ל ... ואגודת ישראל"
+      },
+      {
+        "source": "isa-navon-1981",
+        "quote": "ב-4 באוגוסט 1981 הודיע ראש הממשלה מנחם בגין לנבון כי עלה בידו להקים ממשלה חדשה ... למחרת הביעה הכנסת אמון בממשלתו החדשה של בגין"
+      }
+    ],
+    "changes": [
+      {
+        "date": "1977-10",
+        "textEn": "The Democratic Movement for Change joined the government.",
+        "textHe": "התנועה הדמוקרטית לשינוי (ד\"ש) הצטרפה לממשלה.",
+        "confidence": "medium",
+        "cites": [
+          {
+            "source": "hewiki-knesset9",
+            "quote": "ב- 25 באוקטובר הצטרפה לקואליציה סיעת ד\"ש, והיא התרחבה ל-77 חברי כנסת."
+          }
+        ],
+        "notes": [
+          "Exact day not confirmed by a primary source (secondary gives 25 October; other secondary references give 24 October). Shown at month precision."
+        ]
+      }
+    ]
+  },
+  "term": {
+    "start": "1977-06-20",
+    "end": "1981-08-05",
+    "inclusionRule": "two-chronologies",
+    "inclusionRuleNote": "Included only if listed in the Knesset's own term history (knesset-history-9) and confirmed by at least one independent official, archival or academic source.",
+    "chronologies": [
+      "knesset-history-9"
+    ],
+    "events": [
+      {
+        "id": "sadat-visit",
+        "date": "1977-11-20",
+        "category": "foreign-relations",
+        "textEn": "Egyptian President Anwar Sadat visited Jerusalem and addressed the Knesset.",
+        "textHe": "נשיא מצרים אנואר סאדאת ביקר בירושלים ונאם בכנסת.",
+        "cites": [
+          {
+            "source": "knesset-history-9",
+            "quote": "The main event during the term of the ninth Knesset was the visit of Egyptian President Anwar Sadat to Jerusalem in November 1977, and his appearance in the Knesset."
+          },
+          {
+            "source": "knesset-shamir-bio",
+            "quote": "He served as Speaker of the Knesset during Egyptian President Anwar Sadat's visit to Israel."
+          }
+        ],
+        "notes": [
+          "Date of the Knesset address (20 November) from hewiki-knesset9: \"ב- 20 בנובמבר 1977 הגיע לכנסת נשיא מצרים אנואר סאדאת\"."
+        ]
+      },
+      {
+        "id": "camp-david-approval",
+        "date": "1978-09",
+        "category": "foreign-relations",
+        "textEn": "The Knesset approved the Camp David Accords.",
+        "textHe": "הכנסת אישרה את הסכמי קמפ דייוויד.",
+        "cites": [
+          {
+            "source": "knesset-history-9",
+            "quote": "The Knesset [approved] the Camp David Accords in September 1978, by a large majority"
+          },
+          {
+            "source": "knesset-shamir-bio",
+            "quote": "he abstained from the vote on the Camp David Accords"
+          },
+          {
+            "source": "hewiki-knesset9",
+            "quote": "ב- 27 בספטמבר 1978 אישרה הכנסת את הסכמי קמפ דייוויד ברוב של 84 מול 19 מתנגדים, ו-17 נמנעים."
+          }
+        ],
+        "notes": [
+          "Vote 84–19–17 from a labelled secondary source; the plenum record is the target. Day shown at month precision (27 or 28 September in different references; the sitting ran overnight)."
+        ]
+      },
+      {
+        "id": "peace-treaty-egypt",
+        "date": "1979-03",
+        "category": "foreign-relations",
+        "textEn": "The Knesset approved the peace treaty with Egypt, the first between Israel and an Arab state.",
+        "textHe": "הכנסת אישרה את הסכם השלום עם מצרים, הראשון בין ישראל למדינה ערבית.",
+        "cites": [
+          {
+            "source": "knesset-history-9",
+            "quote": "After less than a year and a half, the first peace agreement between Israel and an Arab state was signed. The Knesset [approved] ... the peace treaty with Egypt in March 1979."
+          },
+          {
+            "source": "knesset-shamir-bio",
+            "quote": "and also abstained from the vote to ratify the peace treaty, which was held in March 1979."
+          }
+        ]
+      },
+      {
+        "id": "iraq-reactor-strike",
+        "date": "1981-06-07",
+        "category": "security",
+        "textEn": "The Israeli Air Force struck the Iraqi nuclear reactor.",
+        "textHe": "חיל האוויר תקף את הכור הגרעיני בעיראק.",
+        "cites": [
+          {
+            "source": "knesset-history-9",
+            "quote": "Toward the end of the ninth Knesset the Israeli air force attacked the Iraqi nuclear reactor."
+          },
+          {
+            "source": "isa-navon-1981",
+            "quote": "הפצצת הכור העיראקי ב-7 ביוני על ידי חיל האוויר הישראלי"
+          },
+          {
+            "source": "idi-1981",
+            "quote": "Three weeks before the election, Begin approved an Israeli air strike on the Iraqi nuclear installation, which was soon to have become active."
+          }
+        ]
+      }
+    ],
+    "candidatesPending": [
+      {
+        "label": "Operation Litani",
+        "date": "1978-03",
+        "why": "In knesset-history-9; second independent source not yet retrieved."
+      },
+      {
+        "label": "Coastal Road attack",
+        "date": "1978-03",
+        "why": "In knesset-history-9; second independent source not yet retrieved."
+      },
+      {
+        "label": "Settlement growth in the territories (to about 8,300)",
+        "date": "1977/1981",
+        "why": "Trend, not a dated event; needs a defined form before inclusion."
+      },
+      {
+        "label": "Peace Now founded",
+        "date": "1978",
+        "why": "In knesset-history-9; second source not retrieved."
+      },
+      {
+        "label": "Economic liberalisation (October 1977)",
+        "date": "1977-10",
+        "why": "Not in knesset-history-9; would need two chronologies."
+      },
+      {
+        "label": "Basic Law: Jerusalem",
+        "date": "1980-07-30",
+        "why": "Not in the retrieved part of knesset-history-9."
+      }
+    ],
+    "endedBy": {
+      "type": "early-election",
+      "date": "1981-02-10",
+      "nextElection": "k10",
+      "textEn": "The Knesset set an early election for 30 June 1981.",
+      "textHe": "הכנסת הקדימה את הבחירות ל־30 ביוני 1981.",
+      "cites": [
+        {
+          "source": "ipu-1981",
+          "quote": "The June election date was set by the Knesset on 10 February 1981; the parliamentary term would normally have run until November 1981."
+        },
+        {
+          "source": "isa-navon-1981",
+          "quote": "הבחירות נועדו להתקיים בנובמבר 1981 אולם הן הוקדמו ל-30 ביוני 1981 בשל משבר פוליטי – התפטרותו מהממשלה של שר האוצר יִגָאֵל הורביץ בינואר 1981 שהותירה את ממשלתו של מנחם בגין כממשלת מיעוט הנשענת על 58 מנדטים בלבד"
+        }
+      ]
+    }
+  },
+  "issuePolling": {
+    "status": "pending",
+    "note": "INES 1977 phase 2 codebook item a2 ('most important government problem') verified by the research helper; original wording and published percentages not retrieved. Nothing shown until a published topline is found.",
+    "candidates": [
+      "https://socsci4.tau.ac.il/mu2/ines/wp-content/uploads/sites/4/2023/06/1977_2.txt"
+    ]
+  },
+  "gaps": [
+    "Positions of four one-seat lists in the 1977 consultations not found (ISA file נ-571/13 is the primary target).",
+    "No official tally of 1977 recommendations; totals are computed from per-list reports.",
+    "Hebrew press (Davar, Maariv, Haaretz on NLI JPress) not used: browser challenge; not circumvented.",
+    "Knesset first-sitting date, DMC accession date and Camp David vote use a labelled secondary source.",
+    "Reaction items and issue polling not filled."
+  ]
+}
