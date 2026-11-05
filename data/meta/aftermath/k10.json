@@ -1,0 +1,484 @@
+{
+  "schemaVersion": 1,
+  "electionId": "k10",
+  "status": "pilot",
+  "reviewedAt": "2026-11-05",
+  "notes": [
+    "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
+    "The term window runs from this election to the next Knesset election. Government tenure may extend past that window. Mid-term institutional succession is recorded in formation.events; it is not a new post-election recommendation round.",
+    "Additional dated mid-term acts that do not fit the proposal’s closed formation type vocabulary are kept as formalStep=true entries in government.changes (Dated-compatible). No new formation enum values are introduced."
+  ],
+  "sources": {
+    "mfa-history": {
+      "url": "https://www.gov.il/BlobFolder/generalpage/facts-about-israel-history/en/English_SiteTransfer_DOCUMENTS_History2010.pdf",
+      "publisher": "Israel Ministry of Foreign Affairs, Facts About Israel: History (2010), pp. 48–70",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "knesset-history": {
+      "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-tenth-knesset-1981-1984",
+      "publisher": "Knesset, history of the 10th Knesset (credited text)",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Jewish Virtual Library mirror; original https://main.knesset.gov.il/EN/About/History/pages/knessethistory.aspx?kns=10"
+    },
+    "ipu1981": {
+      "url": "https://data.ipu.org/election-summary/PDF/ISRAEL_1981_E.PDF",
+      "publisher": "Inter-Parliamentary Union, Chronicle / Parline, Israel 1981",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "ipu1984": {
+      "url": "https://data.ipu.org/election-summary/PDF/ISRAEL_1984_E.PDF",
+      "publisher": "Inter-Parliamentary Union, Chronicle / Parline, Israel 1984",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "government-research-1": {
+      "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%AA%D7%A9%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94",
+      "publisher": "Hebrew Wikipedia",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "government-research-2": {
+      "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%AA%D7%A9%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94",
+      "publisher": "Hebrew Wikipedia",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "government-research-3": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=GovernmentNum%20eq%2019",
+      "publisher": "Knesset OData (ParliamentInfo)",
+      "kind": "official",
+      "accessed": "2026-11-04",
+      "via": "Existing first-government research extraction from official OData, accessed 2026-11-04; the associated quote is the retained extraction summary, not verbatim API serialization."
+    },
+    "recommendations-research-1": {
+      "url": "https://www.upi.com/Archives/1981/07/14/Begin-asked-to-form-new-Israeli-government/8570363931200/",
+      "publisher": "UPI Archives",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-research-2": {
+      "url": "https://www.upi.com/Archives/1981/07/14/Navon-to-ask-Begin-to-form-government/1036363931200/",
+      "publisher": "UPI Archives",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-research-3": {
+      "url": "https://www.jta.org/archive/navon-says-he-will-invite-begin-to-form-a-new-government",
+      "publisher": "Jewish Telegraphic Agency (archive, 15 July 1981)",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-research-4": {
+      "url": "https://catalog.archives.gov.il/site/chapter/navon-and-10-knesset-election/",
+      "publisher": "Israel State Archives",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    },
+    "plenum10": {
+      "url": "https://fs.knesset.gov.il/10/Plenum/10_ptm_529613.pdf",
+      "publisher": "Knesset, plenum 5 August 1981",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "plenum1983": {
+      "url": "https://fs.knesset.gov.il/10/Plenum/10_ptm_530067.pdf",
+      "publisher": "Knesset, plenum 10 October 1983",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "jta1981task": {
+      "url": "https://www.jta.org/archive/begin-starts-task-of-forming-new-government",
+      "publisher": "Jewish Telegraphic Agency, Daily Bulletin archive",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    }
+  },
+  "results": {
+    "electionDate": "1981-06-30",
+    "officialResultsSourceId": "k10-results-gazette"
+  },
+  "reaction": {
+    "policy": "Only dated institutional steps and statements attributed to their speaker, applied to every list or to none.",
+    "items": [],
+    "gap": "Comparably sourced reactions for every list were not collected."
+  },
+  "recommendationRounds": [
+    {
+      "id": "r1",
+      "date": "1981-07-14",
+      "kind": "consultations",
+      "president": {
+        "nameEn": "Yitzhak Navon",
+        "nameHe": "יצחק נבון"
+      },
+      "blocSchemeRef": "pm-recommendations",
+      "nominees": {
+        "begin": {
+          "nameEn": "Menachem Begin",
+          "nameHe": "מנחם בגין"
+        }
+      },
+      "entries": [
+        {
+          "letters": "מחל",
+          "seats": 48,
+          "status": "recommended",
+          "nominee": "begin"
+        },
+        {
+          "letters": "ב",
+          "seats": 6,
+          "status": "recommended",
+          "nominee": "begin"
+        },
+        {
+          "letters": "ג",
+          "seats": 4,
+          "status": "recommended",
+          "nominee": "begin"
+        },
+        {
+          "letters": "ני",
+          "seats": 3,
+          "status": "recommended",
+          "nominee": "begin"
+        },
+        {
+          "letters": "אמת",
+          "seats": 47,
+          "status": "unknown"
+        },
+        {
+          "letters": "ו",
+          "seats": 4,
+          "status": "unknown"
+        },
+        {
+          "letters": "ת",
+          "seats": 3,
+          "status": "unknown"
+        },
+        {
+          "letters": "כן",
+          "seats": 2,
+          "status": "unknown"
+        },
+        {
+          "letters": "הן",
+          "seats": 2,
+          "status": "unknown"
+        },
+        {
+          "letters": "רצ",
+          "seats": 1,
+          "status": "unknown"
+        }
+      ],
+      "totals": {
+        "begin": 61,
+        "unknown": 59
+      },
+      "cites": [
+        {
+          "source": "recommendations-research-1",
+          "quote": "'I arrived at the conclusion that Mr. Menachem Begin has more chances than any other candidate to form the next government -- that is, 61 Knesset members spoke out in favor of his forming the government."
+        },
+        {
+          "source": "recommendations-research-2",
+          "quote": "Begin has support in principle from three religious parties -- the National Religious Party, the Tami Party and the Agudat Israel Party -- which hold a total of 13 seats in the Knesset (parliament)."
+        },
+        {
+          "source": "recommendations-research-3",
+          "quote": "Aharon Abu Hatzeira's Tami faction, with three seats, indicated to Navon that it preferred a government headed by Begin, while Moshe Dayan's two-seat Telem party leaned toward Labor"
+        },
+        {
+          "source": "recommendations-research-4",
+          "quote": "ב-10 ביולי זימן נבון את סיעות הבית להתייעצויות ב-13 וב-14 ביולי"
+        }
+      ],
+      "notes": [
+        "Partial: President Navon stated that 61 MKs backed Begin (Likud 48 + NRP 6 + Agudat Yisrael 4 + Tami 3, the parties UPI names). What the Alignment, Hadash, Tehiya, Telem, Shinui and Ratz told the President is not stated as a recommendation in the sources retrieved (JTA describes leanings only), so they are 'not stated', not 'no recommendation'.",
+        "Mandate given to Begin on 15 July 1981 (Navon's letter is dated 16 July in the State Archives account). UPI's 1981 pages returned 403 to a direct request on 2026-11-05; their quotes are from a search-index extract. The State Archives chapter also returned 403; its quote is from a search-index extract."
+      ]
+    }
+  ],
+  "formation": {
+    "outcome": "government-formed",
+    "events": [
+      {
+        "date": "1981-07-13",
+        "type": "consultations",
+        "textEn": "President Navon consulted the factions on 13–14 July.",
+        "textHe": "הנשיא נבון התייעץ עם הסיעות ב־13–14 ביולי.",
+        "cites": [
+          {
+            "source": "recommendations-research-4",
+            "quote": "ב-10 ביולי זימן נבון את סיעות הבית להתייעצויות ב-13 וב-14 ביולי"
+          }
+        ],
+        "endDate": "1981-07-14"
+      },
+      {
+        "date": "1981-07-15",
+        "type": "mandate-given",
+        "textEn": "Navon tasked Begin with forming a government; the State Archives dates the letter to 16 July.",
+        "textHe": "נבון הטיל על בגין להרכיב ממשלה; ארכיון המדינה מתארך את המכתב ל־16 ביולי.",
+        "cites": [
+          {
+            "source": "jta1981task",
+            "quote": "formally summoned by President Yitzhak Navon today to form a new government"
+          }
+        ],
+        "person": "begin"
+      },
+      {
+        "date": "1981-08-04",
+        "type": "informed-success",
+        "textEn": "Begin notified the Speaker that he had formed a government.",
+        "textHe": "בגין הודיע ליושב ראש הכנסת כי הרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "plenum10",
+            "quote": "הריני מתכבד להודיעך כי הרכבתי ממשלה"
+          }
+        ],
+        "person": "begin"
+      },
+      {
+        "date": "1981-08-05",
+        "type": "confidence-vote",
+        "textEn": "The Knesset approved Begin’s 19th government, 61–58.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־19 בראשות בגין, ברוב של 61 מול 58.",
+        "cites": [
+          {
+            "source": "plenum10",
+            "quote": "61 בעד הבעת אמון בממשלה החדשה"
+          },
+          {
+            "source": "plenum10",
+            "quote": "נגד 58"
+          }
+        ],
+        "votes": {
+          "against": 58,
+          "for": 61
+        }
+      },
+      {
+        "date": "1983-09-21",
+        "type": "mandate-given",
+        "textEn": "President Herzog tasked Shamir with forming a government.",
+        "textHe": "הנשיא הרצוג הטיל על שמיר להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "plenum1983",
+            "quote": "כי הטלתי היום את התפקיד להרכיב ממשלה על חבר הכנסת יצחק שמיר"
+          }
+        ],
+        "person": "shamir",
+        "scope": "mid-term"
+      },
+      {
+        "date": "1983-10-05",
+        "type": "informed-success",
+        "textEn": "Shamir notified the Speaker that he had formed a government.",
+        "textHe": "שמיר הודיע ליושב ראש הכנסת כי הרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "plenum1983",
+            "quote": "הודיע לי המיועד לראשות הממשלה, חבר הכנסת יצחק שמיר"
+          }
+        ],
+        "person": "shamir",
+        "scope": "mid-term"
+      },
+      {
+        "date": "1983-10-10",
+        "type": "confidence-vote",
+        "textEn": "The Knesset approved Shamir’s 20th government, 60–53.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־20 בראשות שמיר, ברוב של 60 מול 53.",
+        "cites": [
+          {
+            "source": "plenum1983",
+            "quote": "ב60 קולות בעד ו53 נגד הוחלט להביע אמון בממשלה"
+          }
+        ],
+        "votes": {
+          "for": 60,
+          "against": 53
+        },
+        "scope": "mid-term",
+        "governmentNumber": 20
+      }
+    ],
+    "conflicts": [
+      {
+        "about": "Begin tasking date",
+        "values": [
+          {
+            "value": "15 July 1981 in the existing JTA/UPI research",
+            "source": "jta1981task"
+          },
+          {
+            "value": "16 July 1981 presidential letter in the State Archives account",
+            "source": "recommendations-research-4"
+          }
+        ],
+        "resolution": "Use 15 July for the tasking per the existing contemporary JTA/UPI research. The JTA bulletin dated 16 July reports the preceding day’s event; the State Archives dates the presidential letter to 16 July. The letter scan has not been inspected."
+      }
+    ]
+  },
+  "term": {
+    "start": "1981-06-30",
+    "end": "1984-07-23",
+    "inclusionRule": "At least two independently authored qualifying chronologies, including one official or academic, plus direct support for the date. The Knesset and MFA histories count separately; the JVL mirror is not another independent source. Formal government succession steps are recorded separately in formation.events.",
+    "chronologies": [
+      "mfa-history",
+      "knesset-history",
+      "ipu1981",
+      "ipu1984"
+    ],
+    "events": [
+      {
+        "id": "lebanon-war",
+        "date": "1982-06",
+        "category": "security",
+        "textEn": "The First Lebanon War began (Operation Peace for Galilee).",
+        "textHe": "מלחמת לבנון הראשונה החלה (מבצע שלום הגליל).",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "which began in June 1982"
+          },
+          {
+            "source": "mfa-history",
+            "quote": "Operation Peace for Galilee"
+          }
+        ],
+        "confidence": "high"
+      }
+    ],
+    "candidatesPending": [
+      {
+        "label": "Completion of the Sinai withdrawal",
+        "date": "1982-04",
+        "why": "Appears in the Knesset term history; a second independent qualifying chronology and/or direct date evidence was not verified in this pass."
+      },
+      {
+        "label": "Sabra and Shatila massacre and Kahan inquiry",
+        "date": "1982-09",
+        "why": "Appears in the Knesset term history; a second independent qualifying chronology and/or direct date evidence was not verified in this pass."
+      },
+      {
+        "label": "Bank-share crisis",
+        "date": "1983-10",
+        "why": "Appears in the Knesset term history; a second independent qualifying chronology and/or direct date evidence was not verified in this pass."
+      },
+      {
+        "label": "Bus 300 affair",
+        "date": "1984-04",
+        "why": "Appears in the Knesset term history; a second independent qualifying chronology and/or direct date evidence was not verified in this pass."
+      }
+    ],
+    "endedBy": {
+      "type": "dissolution-law",
+      "date": "1984-04-04",
+      "nextElection": "1984-07-23",
+      "textEn": "The Knesset enacted a dissolution law; the next election was held on 23 July 1984.",
+      "textHe": "הכנסת חוקקה חוק התפזרות; הבחירות הבאות נערכו ב־23 ביולי 1984.",
+      "cites": [
+        {
+          "source": "ipu1984",
+          "quote": "dissolution law on 4 April 1984"
+        }
+      ]
+    }
+  },
+  "issuePolling": {
+    "status": "pending",
+    "items": [],
+    "gap": "INES instrument exists; no qualifying published topline verified for this election. No microdata analysis performed."
+  },
+  "gaps": [
+    "Certification date and official first-sitting record not retrieved; election date comes from the existing verified result dataset.",
+    "Formation timeline is a sourced subset; missing steps must not be inferred from statutory maximum periods.",
+    "First-government coalition membership is reused from the existing first-government scheme, whose party membership evidence includes labelled Hebrew Wikipedia; a complete independent primary coalition agreement cross-check remains pending.",
+    "Recommendation evidence and caveats are inherited from docs/research/pm-recommendations-1977-2006.md; a source quoting the President is not an original presidential record.",
+    "Original 1981 presidential letter remains uninspected; the tasking-day versus letter-date discrepancy is preserved. Government 19 ended when government 20 was invested on 10 October 1983, verified in the plenum record."
+  ],
+  "government": {
+    "number": 19,
+    "nameEn": "Government 19 (Menachem Begin)",
+    "nameHe": "הממשלה ה־19 (מנחם בגין)",
+    "startDate": "1981-08-05",
+    "endDate": "1983-10-10",
+    "primeMinisters": [
+      {
+        "nameEn": "Menachem Begin",
+        "nameHe": "מנחם בגין",
+        "to": "1983-10-10",
+        "from": "1981-08-05"
+      }
+    ],
+    "firstGovernmentSchemeRef": "first-government",
+    "coalition": [
+      {
+        "letters": "מחל",
+        "seats": 48
+      },
+      {
+        "letters": "ג",
+        "seats": 4,
+        "note": "in the coalition without cabinet ministers"
+      },
+      {
+        "letters": "ב",
+        "seats": 6
+      },
+      {
+        "letters": "ני",
+        "seats": 3
+      }
+    ],
+    "coalitionSeats": 61,
+    "coalitionSeatsNote": "Election-list seat envelope, checked against officialSeats; not the confidence-vote tally or a reconstruction of later faction membership.",
+    "cites": [
+      {
+        "source": "government-research-1",
+        "quote": "בגין הצליח להקים קואליציה מבוססת על רוב דחוק של 61 ח\"כים, והממשלה יצאה לדרכה ב-5 באוגוסט 1981"
+      },
+      {
+        "source": "government-research-2",
+        "quote": "סיעות הקואליציה=="
+      },
+      {
+        "source": "government-research-3",
+        "quote": "KNS_PersonToPosition, GovernmentNum 19: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 1981-08-05: צפורי-הנדין מרדכי, מרידור יעקב, ארליך שמחה, בגין מנחם, ברמן יצחק, מודעי יצחק, נסים משה, קורפו חיים, בורג יוסף, לוי דוד, שרון אריאל, פת גדעון, ארידור יורם, המר זבולון, שריר אברהם, אבוחצירא אהרן, שוסטק אליעזר, שמיר יצחק"
+      },
+      {
+        "source": "plenum1983",
+        "quote": "ב60 קולות בעד ו53 נגד הוחלט להביע אמון בממשלה"
+      }
+    ],
+    "changes": [
+      {
+        "date": "1983-09-15",
+        "type": "resignation",
+        "textEn": "Begin formally resigned as prime minister.",
+        "textHe": "בגין התפטר רשמית מראשות הממשלה.",
+        "cites": [
+          {
+            "source": "plenum1983",
+            "quote": "התפטר ביום ח' בתשרי התשמ''ד, 15 בספטמבר 1983"
+          }
+        ],
+        "person": "begin",
+        "scope": "mid-term",
+        "formalStep": true
+      }
+    ]
+  }
+}

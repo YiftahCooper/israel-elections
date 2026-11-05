@@ -1,0 +1,427 @@
+{
+  "schemaVersion": 1,
+  "electionId": "k17",
+  "status": "pilot",
+  "reviewedAt": "2026-11-05",
+  "notes": [
+    "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
+    "The term window runs from this election to the next Knesset election. Government tenure may extend past that window. Mid-term institutional succession is recorded in formation.events; it is not a new post-election recommendation round.",
+    "Additional dated mid-term acts that do not fit the proposal’s closed formation type vocabulary are kept as formalStep=true entries in government.changes (Dated-compatible). No new formation enum values are introduced."
+  ],
+  "sources": {
+    "mfa-history": {
+      "url": "https://www.gov.il/BlobFolder/generalpage/facts-about-israel-history/en/English_SiteTransfer_DOCUMENTS_History2010.pdf",
+      "publisher": "Israel Ministry of Foreign Affairs, Facts About Israel: History (2010), pp. 48–70",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "ipu2006": {
+      "url": "https://data.ipu.org/election-summary/HTML/2155_06.htm",
+      "publisher": "Inter-Parliamentary Union, Chronicle / Parline, Israel 2006",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "ipu2009": {
+      "url": "https://data.ipu.org/election-summary/HTML/2155_09.htm",
+      "publisher": "Inter-Parliamentary Union, Chronicle / Parline, Israel 2009",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "government-research-1": {
+      "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D_%D7%95%D7%90%D7%97%D7%AA",
+      "publisher": "Hebrew Wikipedia",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "government-research-2": {
+      "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D_%D7%95%D7%90%D7%97%D7%AA",
+      "publisher": "Hebrew Wikipedia",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "government-research-3": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=GovernmentNum%20eq%2031",
+      "publisher": "Knesset OData (ParliamentInfo)",
+      "kind": "official",
+      "accessed": "2026-11-04",
+      "via": "Existing first-government research extraction from official OData, accessed 2026-11-04; the associated quote is the retained extraction summary, not verbatim API serialization."
+    },
+    "recommendations-research-1": {
+      "url": "https://www.globes.co.il/news/article.aspx?did=1000081213",
+      "publisher": "Globes",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-research-2": {
+      "url": "https://www.israelnationalnews.com/news/101500",
+      "publisher": "Israel National News",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-research-3": {
+      "url": "https://www.ynetnews.com/articles/0,7340,L-3235659,00.html",
+      "publisher": "Ynetnews",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-research-4": {
+      "url": "https://www.ynetnews.com/articles/0,7340,L-3236272,00.html",
+      "publisher": "Ynetnews",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-research-5": {
+      "url": "https://www.inn.co.il/news/144780",
+      "publisher": "ערוץ 7",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-research-6": {
+      "url": "https://he.wikipedia.org/wiki/%D7%94%D7%98%D7%9C%D7%AA_%D7%94%D7%9E%D7%A0%D7%93%D7%98_%D7%9C%D7%94%D7%A7%D7%9E%D7%AA_%D7%9E%D7%9E%D7%A9%D7%9C%D7%94_%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+      "publisher": "Wikipedia (he)",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "vote2006": {
+      "url": "https://www.rediff.com/news/interview/israel/20060505.htm",
+      "publisher": "Press Trust of India / Rediff, Harinder Mishra, 5 May 2006",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    }
+  },
+  "results": {
+    "electionDate": "2006-03-28",
+    "officialResultsSourceId": "k17-results-gazette"
+  },
+  "reaction": {
+    "policy": "Only dated institutional steps and statements attributed to their speaker, applied to every list or to none.",
+    "items": [],
+    "gap": "Comparably sourced reactions for every list were not collected."
+  },
+  "recommendationRounds": [
+    {
+      "id": "r1",
+      "date": "2006-04-06",
+      "kind": "updated-positions",
+      "president": {
+        "nameEn": "Moshe Katsav",
+        "nameHe": "משה קצב"
+      },
+      "blocSchemeRef": "pm-recommendations",
+      "nominees": {
+        "olmert": {
+          "nameEn": "Ehud Olmert",
+          "nameHe": "אהוד אולמרט"
+        }
+      },
+      "entries": [
+        {
+          "letters": "כן",
+          "seats": 29,
+          "status": "recommended",
+          "nominee": "olmert"
+        },
+        {
+          "letters": "אמת",
+          "seats": 19,
+          "status": "recommended",
+          "nominee": "olmert"
+        },
+        {
+          "letters": "שס",
+          "seats": 12,
+          "status": "recommended",
+          "nominee": "olmert"
+        },
+        {
+          "letters": "זך",
+          "seats": 7,
+          "status": "recommended",
+          "nominee": "olmert"
+        },
+        {
+          "letters": "ג",
+          "seats": 6,
+          "status": "recommended",
+          "nominee": "olmert",
+          "noteEn": "Rabbi Elyashiv’s instruction is reported; the final six-seat attribution also matches the President’s aggregate and the retrospective breakdown. An account of UTJ’s actual presidential meeting remains a gap."
+        },
+        {
+          "letters": "מרצ",
+          "seats": 5,
+          "status": "recommended",
+          "nominee": "olmert"
+        },
+        {
+          "letters": "מחל",
+          "seats": 12,
+          "status": "none"
+        },
+        {
+          "letters": "ל",
+          "seats": 11,
+          "status": "none"
+        },
+        {
+          "letters": "טב",
+          "seats": 9,
+          "status": "none",
+          "noteEn": "Final position is no recommendation. Sources differ about an earlier Peretz endorsement versus a request for more time; see round notes."
+        },
+        {
+          "letters": "עם",
+          "seats": 4,
+          "status": "none"
+        },
+        {
+          "letters": "ו",
+          "seats": 3,
+          "status": "none"
+        },
+        {
+          "letters": "ד",
+          "seats": 3,
+          "status": "none"
+        }
+      ],
+      "totals": {
+        "olmert": 78,
+        "none": 42
+      },
+      "cites": [
+        {
+          "source": "recommendations-research-1",
+          "quote": "קצב ציין, כי 78 מחברי הכנסת הבאה תמכו במועמדותו של אולמרט בסבב ההתייעצויות, שקיים עם הסיעות וזאת ללא התנגדות, או המלצה על מועמד אחר. קצב הבהיר, כי יו\"ר העבודה, עמיר פרץ הודיע לו טלפונית שלשום בערב, כי גם סיעת העבודה מעבירה את תמיכתה לאולמרט."
+        },
+        {
+          "source": "recommendations-research-2",
+          "quote": "Kadima, Labor, Shas and the Pensioners’ Party all endorsed Olmert. UTJ is expected to endorse him as well. National Union-NRP initially endorsed Peretz, until it became clear that he did not really intend to pursue the position. Likud, Yisrael Beiteinu and all three Arab parties declined to endorse anybody."
+        },
+        {
+          "source": "recommendations-research-3",
+          "quote": "Meretz has recommended Ehud Olmert as candidate for prime minister in a meeting with President Moshe Katsav Monday."
+        },
+        {
+          "source": "recommendations-research-4",
+          "quote": "Shas members recommended Olmert for prime minister."
+        },
+        {
+          "source": "recommendations-research-5",
+          "quote": "הרב אליישיב הורה לנציגים החרדים בסיעה להמליץ באוזני הנשיא על אולמרט."
+        },
+        {
+          "source": "recommendations-research-6",
+          "quote": "אולמרט - 78 פירוט: קדימה 29, העבודה 19, ש\"ס 12, גיל 7, יהדות התורה 6 ומרצ 5."
+        }
+      ],
+      "notes": [
+        "Consultations ran 2–6 April 2006; Olmert was given the mandate on 6 April. Labor first recommended Amir Peretz (2 April) and transferred its support to Olmert by phone on 4 April; the President counted it in his 78. The National Union–NRP did not recommend anyone at its meeting and asked for more time (Ynet); INN says it 'initially endorsed Peretz' — a source conflict; the President's final statement records no other candidate. No contemporary report of UTJ's own meeting with the President was retrieved: its 6 follow from the President's 78 total less the five other recommending lists (72) and match the Hebrew Wikipedia breakdown.",
+        "Final positions as of 6 April. Labor initially recommended Peretz on 2 April, then transferred support to Olmert on 4 April; the final tally must not be presented as the initial consultation positions."
+      ]
+    }
+  ],
+  "formation": {
+    "outcome": "government-formed",
+    "events": [
+      {
+        "date": "2006-04-06",
+        "type": "mandate-given",
+        "textEn": "Katsav tasked Olmert with forming a government after the final consultation positions were recorded.",
+        "textHe": "קצב הטיל על אולמרט להרכיב ממשלה לאחר שנרשמו עמדות הסיעות הסופיות.",
+        "cites": [
+          {
+            "source": "recommendations-research-1",
+            "quote": "78 מחברי הכנסת הבאה תמכו במועמדותו של אולמרט"
+          }
+        ],
+        "person": "olmert"
+      },
+      {
+        "date": "2006-05-04",
+        "type": "confidence-vote",
+        "textEn": "The Knesset approved Olmert’s 31st government, 65–49.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־31 בראשות אולמרט, ברוב של 65 מול 49.",
+        "cites": [
+          {
+            "source": "vote2006",
+            "quote": "Lawmakers at the Knesset voted 65-49 in favour of the government on Thursday"
+          }
+        ],
+        "votes": {
+          "for": 65,
+          "against": 49
+        }
+      },
+      {
+        "date": "2008-11-10",
+        "type": "knesset-dissolved",
+        "textEn": "The Knesset dissolved before the election set for 10 February 2009.",
+        "textHe": "הכנסת התפזרה לקראת הבחירות שנקבעו ל־10 בפברואר 2009.",
+        "cites": [
+          {
+            "source": "ipu2009",
+            "quote": "The Knesset was dissolved on 10 November"
+          }
+        ],
+        "scope": "mid-term"
+      }
+    ]
+  },
+  "term": {
+    "start": "2006-03-28",
+    "end": "2009-02-10",
+    "inclusionRule": "At least two independently authored qualifying chronologies, including one official or academic, plus direct support for the date. The Knesset and MFA histories count separately; the JVL mirror is not another independent source. Formal government succession steps are recorded separately in formation.events.",
+    "chronologies": [
+      "mfa-history",
+      "ipu2006",
+      "ipu2009"
+    ],
+    "events": [
+      {
+        "id": "cast-lead",
+        "date": "2008-12-27",
+        "category": "security",
+        "textEn": "Israel began Operation Cast Lead in the Gaza Strip.",
+        "textHe": "ישראל פתחה במבצע עופרת יצוקה ברצועת עזה.",
+        "cites": [
+          {
+            "source": "mfa-history",
+            "quote": "Cast Lead (27 December 2008"
+          },
+          {
+            "source": "ipu2009",
+            "quote": "military operations against Hamas in the Gaza Strip that began on 27 December"
+          }
+        ],
+        "confidence": "high"
+      }
+    ],
+    "candidatesPending": [
+      {
+        "label": "Second Lebanon War",
+        "date": "2006-07",
+        "why": "A second qualifying independent chronology and/or primary dated formal record was not retrieved. The attempted JVL seventeenth-Knesset history URL returned a generic page, not a credited Knesset history; it is not cited."
+      },
+      {
+        "label": "Annapolis conference",
+        "date": "2007-11",
+        "why": "A second qualifying independent chronology and/or primary dated formal record was not retrieved. The attempted JVL seventeenth-Knesset history URL returned a generic page, not a credited Knesset history; it is not cited."
+      },
+      {
+        "label": "Olmert resignation and Livni tasking/extension",
+        "date": "2008-09",
+        "why": "A second qualifying independent chronology and/or primary dated formal record was not retrieved. The attempted JVL seventeenth-Knesset history URL returned a generic page, not a credited Knesset history; it is not cited."
+      },
+      {
+        "label": "Gaza takeover by Hamas",
+        "date": "2007-06",
+        "why": "A second qualifying independent chronology and/or primary dated formal record was not retrieved. The attempted JVL seventeenth-Knesset history URL returned a generic page, not a credited Knesset history; it is not cited."
+      },
+      {
+        "label": "Winograd inquiry report",
+        "date": "2008-01",
+        "why": "A second qualifying independent chronology and/or primary dated formal record was not retrieved. The attempted JVL seventeenth-Knesset history URL returned a generic page, not a credited Knesset history; it is not cited."
+      }
+    ],
+    "endedBy": {
+      "type": "no-government",
+      "date": "2008-11-10",
+      "nextElection": "2009-02-10",
+      "textEn": "After the attempt to form a replacement government failed, the Knesset dissolved; the next election was held on 10 February 2009.",
+      "textHe": "לאחר שנכשל הניסיון להקים ממשלה חלופית, הכנסת התפזרה; הבחירות הבאות נערכו ב־10 בפברואר 2009.",
+      "cites": [
+        {
+          "source": "ipu2009",
+          "quote": "early dissolution on 10 November 2008"
+        }
+      ]
+    }
+  },
+  "issuePolling": {
+    "status": "pending",
+    "items": [],
+    "gap": "INES instrument exists; no qualifying published topline verified for this election. No microdata analysis performed."
+  },
+  "gaps": [
+    "Certification date and official first-sitting record not retrieved; election date comes from the existing verified result dataset.",
+    "Formation timeline is a sourced subset; missing steps must not be inferred from statutory maximum periods.",
+    "First-government coalition membership is reused from the existing first-government scheme, whose party membership evidence includes labelled Hebrew Wikipedia; a complete independent primary coalition agreement cross-check remains pending.",
+    "Recommendation evidence and caveats are inherited from docs/research/pm-recommendations-1977-2006.md; a source quoting the President is not an original presidential record.",
+    "No usable Knesset 17 term history retrieved from the attempted mirror URL. Livni’s tasking and extension dates, Olmert’s resignation letter and failed-formation notices await primary records. The term selection is therefore especially incomplete."
+  ],
+  "government": {
+    "number": 31,
+    "nameEn": "Government 31 (Ehud Olmert)",
+    "nameHe": "הממשלה ה־31 (אהוד אולמרט)",
+    "startDate": "2006-05-04",
+    "endDate": "2009-03-31",
+    "primeMinisters": [
+      {
+        "nameEn": "Ehud Olmert",
+        "nameHe": "אהוד אולמרט",
+        "to": "2009-03-31",
+        "from": "2006-05-04"
+      }
+    ],
+    "firstGovernmentSchemeRef": "first-government",
+    "coalition": [
+      {
+        "letters": "כן",
+        "seats": 29
+      },
+      {
+        "letters": "אמת",
+        "seats": 19
+      },
+      {
+        "letters": "שס",
+        "seats": 12
+      },
+      {
+        "letters": "זך",
+        "seats": 7
+      }
+    ],
+    "coalitionSeats": 67,
+    "coalitionSeatsNote": "Election-list seat envelope, checked against officialSeats; not the confidence-vote tally or a reconstruction of later faction membership.",
+    "cites": [
+      {
+        "source": "government-research-1",
+        "quote": "כיהנה מ-4 במאי 2006 עד 31 במרץ 2009"
+      },
+      {
+        "source": "government-research-2",
+        "quote": "סיעות הקואליציה =="
+      },
+      {
+        "source": "government-research-3",
+        "quote": "KNS_PersonToPosition, GovernmentNum 31: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 2006-05-04: רמון חיים, פינס-פז אופיר, אולמרט אהוד, כבל איתן, לבני ציפי, פרץ עמיר, ישי אליהו, מופז שאול, נהרי משולם, כהן יצחק, בוים זאב, בר-און רוני, אדרי יעקב, פרס שמעון, בן-אליעזר בנימין, אטיאס אריאל, איתן רפי, הרצוג יצחק, שמחון שלום, שטרית מאיר, הירשזון אברהם, בן-יזרי יעקב, דיכטר אבי, עזרא גדעון, תמיר יולי"
+      },
+      {
+        "source": "ipu2006",
+        "quote": "thus controlling 67 seats in the 120-member Parliament"
+      },
+      {
+        "source": "ipu2009",
+        "quote": "On 31 March the Knesset endorsed the new government."
+      }
+    ],
+    "changes": [
+      {
+        "date": "2008-10-26",
+        "type": "no-replacement-government",
+        "textEn": "Livni’s attempt to form a replacement government ended without a coalition agreement.",
+        "textHe": "ניסיונה של לבני להקים ממשלה חלופית הסתיים ללא הסכם קואליציוני.",
+        "cites": [
+          {
+            "source": "ipu2009",
+            "quote": "She failed to reach a coalition agreement with other parties before the extended deadline of 26 October."
+          }
+        ],
+        "person": "livni",
+        "scope": "mid-term",
+        "formalStep": true
+      }
+    ]
+  }
+}
