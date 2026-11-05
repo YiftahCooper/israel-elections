@@ -97,8 +97,8 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
         </div>
         <TurnoutSteps s={s} />
         <div className="grid2">
-          <div className="field"><span>{L('Registered voters', 'בעלי זכות בחירה')}</span><NumericStepper value={s.registered} onCommit={(n) => dispatch({ type: 'setTotals', registered: n })} label={L('Registered voters', 'בעלי זכות בחירה')} steps={[{ id: '1', label: '1', amount: 1 }, { id: '1k', label: '1k', amount: 1000 }, { id: '10k', label: '10k', amount: 10000 }]} /></div>
-          <div className="field"><span>{L('Invalid ballots', 'קולות פסולים')}</span><NumericStepper value={s.invalid} onCommit={(n) => dispatch({ type: 'setTotals', invalid: n })} label={L('Invalid ballots', 'קולות פסולים')} steps={[{ id: '1', label: '1', amount: 1 }, { id: '1k', label: '1k', amount: 1000 }, { id: '10k', label: '10k', amount: 10000 }]} /></div>
+          <div className="field"><span>{L('Registered voters', 'בעלי זכות בחירה')}</span><NumericStepper value={s.registered} onCommit={(n) => dispatch({ type: 'setTotals', registered: n })} label={L('Registered voters', 'בעלי זכות בחירה')} steps={[{ id: '1k', label: '1k', amount: 1000 }, { id: '10k', label: '10k', amount: 10000 }]} /></div>
+          <div className="field"><span>{L('Invalid ballots', 'קולות פסולים')}</span><NumericStepper value={s.invalid} onCommit={(n) => dispatch({ type: 'setTotals', invalid: n })} label={L('Invalid ballots', 'קולות פסולים')} steps={[{ id: '1k', label: '1k', amount: 1000 }, { id: '10k', label: '10k', amount: 10000 }]} /></div>
         </div>
       </div>
       <div>

@@ -35,7 +35,7 @@ test('one vote stepper, three goals, overflow for rarer operations', async ({ pa
   await expect(panel.getByRole('group', { name: 'Votes controls', exact: true })).toHaveCount(1);
   await expect(panel.locator('.vote-goals > button')).toHaveCount(3);
   await expect(panel.getByRole('button', { name: 'Transfer 1pp', exact: true })).not.toBeVisible();
-  await panel.getByRole('button', { name: 'More', exact: true }).click();
+  await panel.getByRole('button', { name: 'Scale, share & transfer', exact: true }).click();
   await expect(panel.getByRole('button', { name: 'Transfer 1pp', exact: true })).toBeVisible();
 });
 test('saving three unnamed-colour scenarios assigns three distinct identities', async ({ page }) => {

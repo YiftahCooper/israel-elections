@@ -68,9 +68,9 @@ test('fine vote/share nudges and a paired 1pp transfer are single undo steps', a
   await start(page); const votes = await detail(page);
   const before = await votes.inputValue();
   const value = (text: string) => Number(text.replaceAll(',', ''));
-  await page.getByRole('group', { name: 'Votes step size', exact: true }).getByRole('button', { name: '1', exact: true }).click();
+  await page.getByRole('group', { name: 'Votes step size', exact: true }).getByRole('button', { name: '1k', exact: true }).click();
   await page.getByRole('button', { name: 'Increase Votes', exact: true }).click();
-  expect(value(await votes.inputValue())).toBe(value(before) + 1);
+  expect(value(await votes.inputValue())).toBe(value(before) + 1000);
   await page.getByRole('button', { name: /^Undo:/ }).click(); await expect(votes).toHaveValue(before);
   await page.getByRole('group', { name: 'Votes step size', exact: true }).getByRole('button', { name: '0.1pp', exact: true }).click();
   await page.getByRole('button', { name: 'Increase Votes', exact: true }).click();
@@ -79,7 +79,7 @@ test('fine vote/share nudges and a paired 1pp transfer are single undo steps', a
   const donorRow = page.locator('.lb-row').filter({ has: page.locator('.lb-name', { hasText: 'Yesh Atid' }) });
   const donorVotes = async () => value((await donorRow.locator('.lb-sub').innerText()).split(' · ')[0]);
   const donorBefore = await donorVotes();
-  await page.locator('.side-panel').getByRole('button', { name: 'More', exact: true }).click();
+  await page.locator('.side-panel').getByRole('button', { name: 'Scale, share & transfer', exact: true }).click();
   await page.getByRole('button', { name: 'Transfer 1pp', exact: true }).click();
   const gain = value(await votes.inputValue()) - value(before);
   expect(gain).toBe(47647);

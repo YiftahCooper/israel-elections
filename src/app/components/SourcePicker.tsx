@@ -20,10 +20,10 @@ export function SourcePicker({ s, l }: { s: Scenario; l: SimList }) {
   return (
     <div>
       <label className="field">
-        <span className="row" style={{ gap: 6 }}>{L('Balance votes with', 'איזון הקולות מול')}
+        <span className="row" style={{ gap: 6 }}>{L('Take votes from / return votes to', 'לקיחת קולות מ־ / החזרתם אל')}
           <Info title={L('Different counterfactuals', 'תרחישים שונים')}>{L('Taking votes from all other lists keeps turnout and the valid total fixed. New voters (or voters staying home) change the valid total, and so the threshold in votes. A transfer moves votes from or to one list — if that list is below the threshold, those votes stop being wasted. These give different seat results.', 'לקיחה מכל שאר הרשימות שומרת על ההצבעה ועל סך הכשרים. מצביעים חדשים (או נמנעים) משנים את סך הכשרים ולכן את אחוז החסימה בקולות. מעבר מזיז קולות מול רשימה אחת — אם היא מתחת לחסימה, הקולות מפסיקים להתבזבז. התוצאות שונות.')}</Info>
         </span>
-        <select aria-label={L('Balance votes with', 'איזון הקולות מול')} value={src.kind === 'transfer' ? `t:${src.listId}` : src.kind} onChange={(e) => {
+        <select aria-label={L('Take votes from / return votes to', 'לקיחת קולות מ־ / החזרתם אל')} value={src.kind === 'transfer' ? `t:${src.listId}` : src.kind} onChange={(e) => {
           const v = e.target.value;
           chooseSource(`list:${l.id}`, v === 'new' ? { kind: 'new' } : v === 'proportional' ? { kind: 'proportional' } : { kind: 'transfer', listId: v.slice(2) });
         }}>
@@ -45,10 +45,11 @@ export function SourceDialog() {
   const ask = useStore(st => st.preferenceAsk);
   const s = useStore(st => st.scenario);
   const [value, setValue] = useState('');
+  const [scope, setScope] = useState<'once' | 'item' | 'always'>('once');
   const dialog = useRef<HTMLDialogElement>(null);
   useEffect(() => {
     const d = dialog.current; if (!d) return;
-    if (ask && !d.open) { setValue(''); d.showModal(); d.focus(); }
+    if (ask && !d.open) { setValue(''); setScope('once'); d.showModal(); d.focus({ preventScroll: true }); }
     if (!ask && d.open) d.close();
   }, [ask]);
   const cancel = () => { ask?.cancel?.(); setState({ preferenceAsk: null }); };
@@ -58,22 +59,34 @@ export function SourceDialog() {
   return <dialog ref={dialog} tabIndex={-1} className="source-ask" aria-label={id === 'voteSource' ? L('Votes from', 'הקולות מגיעים מ') : label}
     onCancel={e => { e.preventDefault(); cancel(); }} onKeyDown={e => { if (e.key === 'Escape') e.stopPropagation(); }}
     onClick={e => { if (e.target === e.currentTarget) cancel(); }}>
-    <p className="small" style={{ margin: 0 }}><b>{ask?.title}</b> · {label}
+    <p className="small" style={{ margin: 0 }}><b>{ask?.title}</b>
       <Info title={label}>{id === 'voteSource'
         ? L('Other lists: taken from all, in proportion; turnout unchanged. New voters: turnout changes. One list: only that list gives or takes. A remembered donor is asked again if unavailable or part of the edited group.', 'שאר הרשימות: מכולן, באופן יחסי; ההצבעה ללא שינוי. מצביעים חדשים: ההצבעה משתנה. רשימה אחת: רק היא נותנת או מקבלת. נשאל שוב אם הרשימה שנזכרה אינה זמינה או נכללת בקבוצה הנערכת.')
         : L('Loaded scenario: highlight only your subsequent edits. Official result: highlight all changes from the election result.', 'התרחיש הטעון: סימון השינויים הבאים שלכם בלבד. התוצאה הרשמית: סימון כל השינויים מתוצאות הבחירות.')}</Info></p>
-    <div className="row" role="group" aria-label={label}>
-      {PREFERENCES[id].options.map(o => <button key={o.value} className="btn small" aria-pressed={value === o.value} onClick={() => setValue(o.value)}>{L(o.label[0], o.label[1])}</button>)}
-      {id === 'voteSource' && <select className="small" aria-label={L('One list', 'רשימה אחת')} value={value.startsWith('t:') ? value : ''} onChange={e => setValue(e.target.value)}>
-        <option value="">{L('One list…', 'רשימה אחת…')}</option>
-        {others.map(x => <option key={x.id} value={sourceValue({ kind: 'transfer', listId: x.id })}>{listLabel(x, lang)}</option>)}
-      </select>}
-    </div>
-    <div className="row">
-      <button className="btn small primary" disabled={!value} onClick={() => answerPreference(value, false)}>{id === 'voteSource' ? ask?.key.startsWith('bloc:') ? L('For this bloc', 'לגוש זה') : L('For this list', 'לרשימה זו') : L('This time', 'הפעם')}</button>
-      <button className="btn small" disabled={!value} onClick={() => answerPreference(value, true)}>{L('Always', 'תמיד')}</button>
-      <button className="btn small ghost" onClick={cancel}>{L('Cancel', 'ביטול')}</button>
-    </div>
+    <form onSubmit={e => { e.preventDefault(); if (value) answerPreference(value, scope); }}>
+      <label className="field">{label}
+        <select aria-label={label} value={value} onChange={e => setValue(e.target.value)}>
+          <option value="" disabled>{L('Choose…', 'בחירה…')}</option>
+          {PREFERENCES[id].options.map(o => <option key={o.value} value={o.value}>{L(o.label[0], o.label[1])}</option>)}
+          {id === 'voteSource' && <optgroup label={L('One list', 'רשימה אחת')}>
+            {others.map(x => <option key={x.id} value={sourceValue({ kind: 'transfer', listId: x.id })}>{listLabel(x, lang)}</option>)}
+          </optgroup>}
+        </select>
+      </label>
+      <fieldset className="preference-scope">
+        <legend>{L('Use this choice', 'שימוש בבחירה')}</legend>
+        {([
+          ['once', L('Just this once', 'רק הפעם')],
+          ['item', id === 'comparison' ? L('For this scenario', 'לתרחיש זה') : ask?.key.startsWith('bloc:') ? L('For this bloc', 'לגוש זה') : L('For this list', 'לרשימה זו')],
+          ['always', L('Always', 'תמיד')],
+        ] as const).map(([v, text]) => <label key={v}><input type="radio" name="preference-scope" value={v} checked={scope === v} onChange={() => setScope(v)} />{text}</label>)}
+      </fieldset>
+      <p className="tiny muted">{L('Change Always in Rules → Editing.', 'ניתן לשנות ״תמיד״ בכללים ← עריכה.')}</p>
+      <div className="row">
+        <button type="submit" className="btn small primary" disabled={!value}>{L('Apply', 'החלה')}</button>
+        <button type="button" className="btn small ghost" onClick={cancel}>{L('Cancel', 'ביטול')}</button>
+      </div>
+    </form>
   </dialog>;
 }
 

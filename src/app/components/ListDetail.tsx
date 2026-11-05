@@ -31,11 +31,11 @@ import { SourcePicker } from './SourcePicker.tsx';
 const niceCeil = (n: number) => { const p = 10 ** Math.max(0, Math.floor(Math.log10(Math.max(1, n))) - 1); return Math.ceil(n / p) * p; };
 
 /** A vote slider that previews the whole board live while dragged and commits one undoable edit on release. */
-function LiveSlider({ l, hist, thr, onCommit }: { l: SimList; hist: number; thr: number; onCommit: (v: number) => void }) {
+function LiveSlider({ l, ceiling, onCommit }: { l: SimList; ceiling: number; onCommit: (v: number) => void }) {
   const L = useL();
   const src = useVoteSource();
   const [drag, setDrag] = useState<number | null>(null);
-  const [scale] = useState(() => niceCeil(Math.max(hist * 2, thr * 2, 20_000)));
+  const [scale] = useState(() => niceCeil(Math.max(ceiling, 20_000)));
   const max = Math.max(scale, l.votes);
   const committed = getState().scenario?.lists.find((x) => x.id === l.id) ?? l;
   const value = drag ?? committed.votes;
@@ -139,11 +139,9 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
 
   const baseList = base.lists.find((b) => b.id === l.id) ?? null;
   const listChanged = useMemo(() => !!baseList && JSON.stringify(baseList) !== JSON.stringify(l), [baseList, l]);
-  const histVotes = baseList ? baseList.votes : l.originIds.reduce((t, o) => t + (base.lists.find((x) => x.id === o)?.votes ?? 0), 0);
   const histSeats = baseList ? baseR.lists.find((x) => x.id === l.id)!.seats : -1;
   const histShares = Object.fromEntries(base.lists.map((b) => [b.id, b.votes]));
   const pctValid = r.totalValid > 0n ? (l.votes / Number(r.totalValid)) * 100 : 0;
-  const thr = Number(r.thresholdVotes);
   const nameOf = (id: string) => { const x = s.lists.find((y) => y.id === id); return x ? listLabel(x, lang) : L('Removed list', 'רשימה שהוסרה'); };
 
   /** every edit of this list's votes goes through the shared source setting */
@@ -207,7 +205,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
   const transferShown = useFeature('voteSource') === 'show';
   const total = Number(r.totalValid);
   // the default step is the largest round amount that is still a small move in this election (≤ 2% of the valid votes)
-  const defaultStep = total >= 500_000 ? '10k' : total >= 50_000 ? '1k' : '1';
+  const defaultStep = total >= 500_000 ? '10k' : total >= 50_000 ? '1k' : '1k';
   const [moreOpen, setMoreOpen] = useState(false);
   const gain = lr.qualified ? margins?.gain : margins?.qualify;
   const gainTarget = gain?.found && gain.votes !== null ? l.votes + Number(gain.votes) : null;
@@ -244,7 +242,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
         <fieldset disabled={l.withdrawn} style={{ border: 0, padding: 0, margin: 0, minWidth: 0, display: 'grid', gap: 8 }}>
           <NumericStepper label={L('Votes', 'קולות')} value={l.votes} onCommit={(v) => commit((from) => editTo(v, from))} max={clampTarget(s, l, Number.MAX_SAFE_INTEGER, src)}
             onStepCommit={(step, direction) => commit((from) => editTo(step.unit === 'pp' ? votesForShare(s, l, pctValid + direction * step.amount, from) ?? l.votes : l.votes + direction * step.amount, from))}
-            steps={[{ id: '1', label: '1', amount: 1 }, { id: '1k', label: '1k', amount: 1000 }, { id: '10k', label: '10k', amount: 10000 }, { id: '0.1pp', label: L('0.1pp', '0.1 נק׳'), amount: 0.1, unit: 'pp' }, { id: '1pp', label: L('1pp', '1 נק׳'), amount: 1, unit: 'pp' }]}
+            steps={[{ id: '1k', label: '1k', amount: 1000 }, { id: '10k', label: '10k', amount: 10000 }, { id: '0.1pp', label: L('0.1pp', '0.1 נק׳'), amount: 0.1, unit: 'pp' }, { id: '1pp', label: L('1pp', '1 נק׳'), amount: 1, unit: 'pp' }]}
             defaultStep={defaultStep}
             targetForStep={(step, direction) => step.unit === 'pp' ? votesForShare(s, l, pctValid + direction * step.amount, src) : l.votes + direction * step.amount}
             onPreview={explainTarget} />
@@ -261,10 +259,10 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
             return <><bdi dir="ltr">+{seats}</bdi> {seats === 1 ? L('seat', 'מנדט') : L('seats', 'מנדטים')} · {gain.exact ? L('proven minimum', 'מינימום מוכח') : L('sampled; minimum unproven', 'דגימה; המינימום לא הוכח')}</>;
           })()}</p>
           <p className="tiny quick-consequence" role="status">{consequence}</p></>}
-          <LiveSlider key={l.id} l={l} hist={histVotes} thr={thr} onCommit={(v) => commit((from) => editTo(v, from))} />
+          <LiveSlider key={l.id} l={l} ceiling={Number(r.totalValid)} onCommit={(v) => commit((from) => editTo(v, from))} />
           {simple && <p className="tiny ink2" style={{ margin: 0 }}>{sourceName}</p>}
           <Feature id="voteSource"><SourcePicker s={s} l={l} /></Feature>
-          <button className="btn small more-trigger" aria-expanded={moreOpen} onClick={() => setMoreOpen(v => !v)}>{L('More', 'עוד')} <span aria-hidden>▾</span></button>
+          <button className="btn small more-trigger" aria-expanded={moreOpen} onClick={() => setMoreOpen(v => !v)}>{L('Scale, share & transfer', 'הכפלה, אחוזים והעברה')} <span aria-hidden>▾</span></button>
           {moreOpen && <div className="vote-more">
             <div className="row">{quick('×2', l.votes * 2, false)}{quick('÷2', Math.round(l.votes / 2), false)}</div>
             <label className="row small">{L('Share of valid votes (%)', 'שיעור מהקולות הכשרים (%)')}<DecimalInput value={pctValid} digits={Math.max(2, digits)} width={74} label={L('Share of valid votes (%)', 'שיעור מהקולות הכשרים (%)')} onCommit={p => commit((from) => { const t = votesForShare(s, l, p, from); if (t !== null) editTo(t, from); })} /></label>

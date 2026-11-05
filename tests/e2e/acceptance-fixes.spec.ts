@@ -8,7 +8,7 @@ async function start(page: Page) {
 }
 async function split(page: Page) {
   await page.getByRole('button', {name:'United Torah Judaism', exact:true}).click();
-  await page.getByRole('button', {name:'What if they had run separately?', exact:true}).click();
+  await page.getByRole('button', {name:'Split into separate lists', exact:true}).click();
   await page.getByRole('button', {name:'Run as 2 separate lists', exact:true}).click();
   await page.keyboard.press('Escape');
 }
