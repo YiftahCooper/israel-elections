@@ -1,0 +1,574 @@
+{
+  "schemaVersion": 1,
+  "electionId": "k11",
+  "status": "pilot",
+  "reviewedAt": "2026-11-05",
+  "notes": [
+    "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
+    "The term window runs from this election to the next Knesset election. Government tenure may extend past that window. Mid-term institutional succession is recorded in formation.events; it is not a new post-election recommendation round.",
+    "Additional dated mid-term acts that do not fit the proposal’s closed formation type vocabulary are kept as formalStep=true entries in government.changes (Dated-compatible). No new formation enum values are introduced."
+  ],
+  "sources": {
+    "mfa-history": {
+      "url": "https://www.gov.il/BlobFolder/generalpage/facts-about-israel-history/en/English_SiteTransfer_DOCUMENTS_History2010.pdf",
+      "publisher": "Israel Ministry of Foreign Affairs, Facts About Israel: History (2010), pp. 48–70",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "knesset-history": {
+      "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-eleventh-knesset-1984-1988",
+      "publisher": "Knesset, history of the 11th Knesset (credited text)",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Jewish Virtual Library mirror; original https://main.knesset.gov.il/EN/About/History/pages/knessethistory.aspx?kns=11"
+    },
+    "ipu1984": {
+      "url": "https://data.ipu.org/election-summary/PDF/ISRAEL_1984_E.PDF",
+      "publisher": "Inter-Parliamentary Union, Chronicle / Parline, Israel 1984",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "ipu1988": {
+      "url": "https://data.ipu.org/election-summary/PDF/ISRAEL_1988_E.PDF",
+      "publisher": "Inter-Parliamentary Union, Chronicle / Parline, Israel 1988",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "government-research-1": {
+      "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%90%D7%97%D7%AA",
+      "publisher": "Hebrew Wikipedia",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "government-research-2": {
+      "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%90%D7%97%D7%AA",
+      "publisher": "Hebrew Wikipedia",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "government-research-3": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=GovernmentNum%20eq%2021",
+      "publisher": "Knesset OData (ParliamentInfo)",
+      "kind": "official",
+      "accessed": "2026-11-04",
+      "via": "Existing first-government research extraction from official OData, accessed 2026-11-04; the associated quote is the retained extraction summary, not verbatim API serialization."
+    },
+    "recommendations-research-1": {
+      "url": "https://www.jta.org/archive/peres-shamir-talks-on-forming-a-government-are-inconclusive",
+      "publisher": "Jewish Telegraphic Agency (archive, 7 Aug 1984)",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-research-2": {
+      "url": "https://elpais.com/diario/1984/08/06/internacional/460591203_850215.html",
+      "publisher": "El País",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-research-3": {
+      "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%90%D7%97%D7%AA_%D7%A2%D7%A9%D7%A8%D7%94",
+      "publisher": "Wikipedia (he)",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "jta1984mandate": {
+      "url": "https://www.jta.org/archive/herzog-names-peres-to-form-new-government-stressing-that-the-nation-desires-unity-government",
+      "publisher": "Jewish Telegraphic Agency, Daily Bulletin archive",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    },
+    "jta1984vote": {
+      "url": "https://www.jta.org/archive/peres-defends-new-government",
+      "publisher": "Jewish Telegraphic Agency, Daily Bulletin archive",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    },
+    "jta1984coalition": {
+      "url": "https://www.jta.org/archive/israel-has-unity-government-headed-by-peres-he-and-shamir-to-rotate-as-premier-after-25-months",
+      "publisher": "Jewish Telegraphic Agency, Daily Bulletin archive",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    },
+    "government22": {
+      "url": "https://jewishvirtuallibrary.org/jsource/Politics/22gov.html",
+      "publisher": "Israel Ministry of Foreign Affairs, 22nd government (JVL mirror)",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Jewish Virtual Library; government dates reused from named official transcription"
+    },
+    "intifada1987": {
+      "url": "https://www.un.org/unispal/document/auto-insert-209471/",
+      "publisher": "United Nations, The Origins and Evolution of the Palestine Problem, Part V",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    }
+  },
+  "results": {
+    "electionDate": "1984-07-23",
+    "officialResultsSourceId": "k11-results-gazette"
+  },
+  "reaction": {
+    "policy": "Only dated institutional steps and statements attributed to their speaker, applied to every list or to none.",
+    "items": [],
+    "gap": "Comparably sourced reactions for every list were not collected."
+  },
+  "recommendationRounds": [
+    {
+      "id": "r1",
+      "date": "1984-08-03",
+      "kind": "consultations",
+      "president": {
+        "nameEn": "Chaim Herzog",
+        "nameHe": "חיים הרצוג"
+      },
+      "blocSchemeRef": "pm-recommendations",
+      "nominees": {
+        "peres": {
+          "nameEn": "Shimon Peres",
+          "nameHe": "שמעון פרס"
+        },
+        "shamir": {
+          "nameEn": "Yitzhak Shamir",
+          "nameHe": "יצחק שמיר"
+        }
+      },
+      "entries": [
+        {
+          "letters": "אמת",
+          "seats": 44,
+          "status": "recommended",
+          "nominee": "peres",
+          "cites": [
+            {
+              "source": "jta1984mandate",
+              "quote": "joined the Alignment, Shinui, Citizens Rights Movement (CRM) and Yahad in asking Herzog to name Peres"
+            }
+          ]
+        },
+        {
+          "letters": "ו",
+          "seats": 4,
+          "status": "recommended",
+          "nominee": "peres",
+          "cites": [
+            {
+              "source": "jta1984mandate",
+              "quote": "Other parties joining in this move were the Progressive List for Peace and the Communists."
+            }
+          ]
+        },
+        {
+          "letters": "רצ",
+          "seats": 3,
+          "status": "recommended",
+          "nominee": "peres",
+          "cites": [
+            {
+              "source": "jta1984mandate",
+              "quote": "joined the Alignment, Shinui, Citizens Rights Movement (CRM) and Yahad in asking Herzog to name Peres"
+            }
+          ]
+        },
+        {
+          "letters": "ט",
+          "seats": 3,
+          "status": "recommended",
+          "nominee": "peres",
+          "cites": [
+            {
+              "source": "jta1984mandate",
+              "quote": "joined the Alignment, Shinui, Citizens Rights Movement (CRM) and Yahad in asking Herzog to name Peres"
+            }
+          ]
+        },
+        {
+          "letters": "הן",
+          "seats": 3,
+          "status": "recommended",
+          "nominee": "peres",
+          "cites": [
+            {
+              "source": "jta1984mandate",
+              "quote": "joined the Alignment, Shinui, Citizens Rights Movement (CRM) and Yahad in asking Herzog to name Peres"
+            }
+          ]
+        },
+        {
+          "letters": "פ",
+          "seats": 2,
+          "status": "recommended",
+          "nominee": "peres",
+          "cites": [
+            {
+              "source": "jta1984mandate",
+              "quote": "Other parties joining in this move were the Progressive List for Peace and the Communists."
+            }
+          ]
+        },
+        {
+          "letters": "יש",
+          "seats": 1,
+          "status": "recommended",
+          "nominee": "peres",
+          "cites": [
+            {
+              "source": "jta1984mandate",
+              "quote": "joined the Alignment, Shinui, Citizens Rights Movement (CRM) and Yahad in asking Herzog to name Peres"
+            }
+          ]
+        },
+        {
+          "letters": "מחל",
+          "seats": 41,
+          "status": "recommended",
+          "nominee": "shamir",
+          "cites": [
+            {
+              "source": "jta1984mandate",
+              "quote": "The Likud, Tehiya, Shas, Aguda Israel and Morasha asked Herzog to give Shamir the first chance to form a government."
+            }
+          ]
+        },
+        {
+          "letters": "ת",
+          "seats": 5,
+          "status": "recommended",
+          "nominee": "shamir",
+          "cites": [
+            {
+              "source": "jta1984mandate",
+              "quote": "The Likud, Tehiya, Shas, Aguda Israel and Morasha asked Herzog to give Shamir the first chance to form a government."
+            }
+          ]
+        },
+        {
+          "letters": "שס",
+          "seats": 4,
+          "status": "recommended",
+          "nominee": "shamir",
+          "cites": [
+            {
+              "source": "jta1984mandate",
+              "quote": "The Likud, Tehiya, Shas, Aguda Israel and Morasha asked Herzog to give Shamir the first chance to form a government."
+            }
+          ]
+        },
+        {
+          "letters": "ג",
+          "seats": 2,
+          "status": "recommended",
+          "nominee": "shamir",
+          "cites": [
+            {
+              "source": "jta1984mandate",
+              "quote": "The Likud, Tehiya, Shas, Aguda Israel and Morasha asked Herzog to give Shamir the first chance to form a government."
+            }
+          ]
+        },
+        {
+          "letters": "עי",
+          "seats": 2,
+          "status": "recommended",
+          "nominee": "shamir",
+          "cites": [
+            {
+              "source": "jta1984mandate",
+              "quote": "The Likud, Tehiya, Shas, Aguda Israel and Morasha asked Herzog to give Shamir the first chance to form a government."
+            }
+          ]
+        },
+        {
+          "letters": "ב",
+          "seats": 4,
+          "status": "none",
+          "cites": [
+            {
+              "source": "jta1984mandate",
+              "quote": "The National Religious Party (NRP) and Tami asked merely that a national unity government be formed."
+            }
+          ]
+        },
+        {
+          "letters": "ני",
+          "seats": 1,
+          "status": "none",
+          "cites": [
+            {
+              "source": "jta1984mandate",
+              "quote": "The National Religious Party (NRP) and Tami asked merely that a national unity government be formed."
+            }
+          ]
+        },
+        {
+          "letters": "כך",
+          "seats": 1,
+          "status": "other",
+          "cites": [
+            {
+              "source": "jta1984mandate",
+              "quote": "with the exception of the Kach Party headed by Rabbi Meir Kahane"
+            }
+          ]
+        }
+      ],
+      "totals": {
+        "peres": 60,
+        "shamir": 54,
+        "none": 5,
+        "other": 1
+      },
+      "cites": [
+        {
+          "source": "recommendations-research-1",
+          "quote": "because 60 Knesset members asked Herzog last Friday to choose Peres to form the next government while Likud could only muster 54 MKs to ask the President to give Shamir the first chance."
+        },
+        {
+          "source": "recommendations-research-2",
+          "quote": "Los laboristas, por su parte, lograron reunir un total de 59 diputados, al sumar a sus 44 escaños los seis de sus propios aliados naturales\" -el centrista Shinui y el Movimiento por los Derechos Civiles-, los tres que aunan Ezer Weiznan y el Partido Ometz y los seis del partido comunista y de la Lista Progresista."
+        },
+        {
+          "source": "recommendations-research-3",
+          "quote": "על פרס המליצו 60 חברי כנסת להרכבת הממשלה (המערך, יחד, רצ, שינוי, חד\"ש, הרשימה המתקדמת ואומץ) בעוד שעל שמיר המליצו 54 (הליכוד, התחייה, ש\"ס, אגודת ישראל ומורשה), כשהמפד\"ל ואבוחצירא תומכים בממשלת אחדות וכהנא לא הוזמן לבית הנשיא."
+        },
+        {
+          "source": "jta1984mandate",
+          "quote": "60 Knesset members asked Herzog to choose Peres"
+        }
+      ],
+      "notes": [
+        "Per-list split (Alignment 44, Hadash 4, Ratz 3, Yahad 3, Shinui 3, Progressive List 2, Ometz 1 = 60; Likud 41, Tehiya–Tzomet 5, Shas 4, Agudat Yisrael 2, Morasha 2 = 54) matches JTA's contemporary totals; El País counted 59 for Labor (it groups Yahad and Ometz as 'three'), recorded as a source conflict. Recommendations were made on Friday 3 August 1984; Herzog gave Peres the mandate on 5 August. The two-year rotation agreement came later and is not a recommendation.",
+        "Upgrade: JTA 6 August 1984 names every faction on each side, including Ometz/Hurwitz and the unity-government positions; the per-list classification no longer depends solely on Hebrew Wikipedia. Kach was not invited, not an explicit refusal to recommend."
+      ]
+    }
+  ],
+  "formation": {
+    "outcome": "government-formed",
+    "events": [
+      {
+        "date": "1984-08-05",
+        "type": "mandate-given",
+        "textEn": "Herzog tasked Peres with forming a government.",
+        "textHe": "הרצוג הטיל על פרס להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "jta1984mandate",
+            "quote": "President Chaim Herzog today gave Labor Party leader Shimon Peres the task of forming a government"
+          }
+        ],
+        "person": "peres",
+        "days": 21
+      },
+      {
+        "date": "1984-09-13",
+        "type": "confidence-vote",
+        "textEn": "The Knesset approved Peres’s 21st government, 89–18.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־21 בראשות פרס, ברוב של 89 מול 18.",
+        "cites": [
+          {
+            "source": "jta1984vote",
+            "quote": "The Knesset voted 89-18 to approve the new government."
+          }
+        ],
+        "votes": {
+          "for": 89,
+          "against": 18
+        }
+      }
+    ],
+    "conflicts": [
+      {
+        "about": "Investiture sitting versus oath after midnight",
+        "values": [
+          {
+            "value": "13 September confidence sitting",
+            "source": "ipu1984"
+          },
+          {
+            "value": "early Friday morning (14 September)",
+            "source": "jta1984vote"
+          }
+        ],
+        "resolution": "Use 13 September for the sitting and official government start; JTA reports completion after midnight."
+      }
+    ]
+  },
+  "term": {
+    "start": "1984-07-23",
+    "end": "1988-11-01",
+    "inclusionRule": "At least two independently authored qualifying chronologies, including one official or academic, plus direct support for the date. The Knesset and MFA histories count separately; the JVL mirror is not another independent source. Formal government succession steps are recorded separately in formation.events.",
+    "chronologies": [
+      "mfa-history",
+      "knesset-history",
+      "ipu1984",
+      "ipu1988"
+    ],
+    "events": [
+      {
+        "id": "first-intifada",
+        "date": "1987-12",
+        "category": "security",
+        "textEn": "The First Intifada began.",
+        "textHe": "האינתיפאדה הראשונה החלה.",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "At the end of 1987 the intifada broke out."
+          },
+          {
+            "source": "mfa-history",
+            "quote": "Intifada) starts"
+          },
+          {
+            "source": "intifada1987",
+            "quote": "the first intifada was launched in December 1987"
+          }
+        ],
+        "confidence": "high"
+      }
+    ],
+    "candidatesPending": [
+      {
+        "label": "1985 economic stabilization programme",
+        "date": "1985-07",
+        "why": "Appears in the Knesset term history; a second independent qualifying chronology and/or direct date evidence was not verified in this pass."
+      },
+      {
+        "label": "IDF withdrawal to the South Lebanon security zone",
+        "date": "1985-06",
+        "why": "Appears in the Knesset term history; a second independent qualifying chronology and/or direct date evidence was not verified in this pass."
+      },
+      {
+        "label": "Operation Moses",
+        "date": "1984-11",
+        "why": "Appears in the Knesset term history; a second independent qualifying chronology and/or direct date evidence was not verified in this pass."
+      },
+      {
+        "label": "Bus 300 / GSS affair",
+        "date": "1986",
+        "why": "Appears in the Knesset term history; a second independent qualifying chronology and/or direct date evidence was not verified in this pass."
+      }
+    ],
+    "endedBy": {
+      "type": "regular-end",
+      "date": "1988-11-01",
+      "nextElection": "1988-11-01",
+      "textEn": "The next election was held on 1 November 1988 at the normal expiry of the term.",
+      "textHe": "הבחירות הבאות נערכו ב־1 בנובמבר 1988 בתום תקופת הכהונה.",
+      "cites": [
+        {
+          "source": "ipu1988",
+          "quote": "on the normal expiry of the members' term of office"
+        }
+      ]
+    }
+  },
+  "issuePolling": {
+    "status": "pending",
+    "items": [],
+    "gap": "INES instrument exists; no qualifying published topline verified for this election. No microdata analysis performed."
+  },
+  "gaps": [
+    "Certification date and official first-sitting record not retrieved; election date comes from the existing verified result dataset.",
+    "Formation timeline is a sourced subset; missing steps must not be inferred from statutory maximum periods.",
+    "First-government coalition membership is reused from the existing first-government scheme, whose party membership evidence includes labelled Hebrew Wikipedia; a complete independent primary coalition agreement cross-check remains pending.",
+    "Recommendation evidence and caveats are inherited from docs/research/pm-recommendations-1977-2006.md; a source quoting the President is not an original presidential record.",
+    "1984 mandate extension not verified; the lawful 21-day allowance is not evidence that an extension was granted on a particular day.",
+    "Government 21 ended with the 20 October 1986 rotation; exact tasking, confidence tally and primary succession record for government 22 remain to be retrieved.",
+    "1984 Alignment’s 44 election seats include opponents; the ballot-list envelope is 104, while the reported coalition has 97 MKs. A source-verified faction-level allocation is still needed. Do not sum coalition[].seats as actual coalition strength in this case."
+  ],
+  "government": {
+    "number": 21,
+    "nameEn": "Government 21 (Shimon Peres)",
+    "nameHe": "הממשלה ה־21 (שמעון פרס)",
+    "startDate": "1984-09-13",
+    "endDate": "1986-10-20",
+    "primeMinisters": [
+      {
+        "nameEn": "Shimon Peres",
+        "nameHe": "שמעון פרס",
+        "to": "1986-10-20",
+        "from": "1984-09-13"
+      }
+    ],
+    "firstGovernmentSchemeRef": "first-government",
+    "coalition": [
+      {
+        "letters": "מחל",
+        "seats": 41
+      },
+      {
+        "letters": "אמת",
+        "note": "44 seats on the election list, including members opposing the government. This is the election-list reference, not 44 coalition supporters; exact faction-level membership is pending.",
+        "seats": 44
+      },
+      {
+        "letters": "ג",
+        "seats": 2
+      },
+      {
+        "letters": "ב",
+        "seats": 4
+      },
+      {
+        "letters": "הן",
+        "seats": 3
+      },
+      {
+        "letters": "שס",
+        "seats": 4
+      },
+      {
+        "letters": "עי",
+        "seats": 2
+      },
+      {
+        "letters": "ט",
+        "seats": 3,
+        "note": "Yahad (Ezer Weizman) joined the Alignment faction; Weizman was a minister from the swearing-in"
+      },
+      {
+        "letters": "יש",
+        "seats": 1
+      }
+    ],
+    "coalitionSeatsNote": "JTA reports 97 coalition MKs. The election lists in coalition[] together won 104 seats, including Alignment members opposing the government. Their election-list seats are retained without inventing a partial-list allocation; coalitionElectionListSeats and coalitionSeats describe different quantities.",
+    "cites": [
+      {
+        "source": "government-research-1",
+        "quote": "ממשלת ישראל העשרים ואחת בראשות שמעון פרס הושבעה ב-13 בספטמבר 1984"
+      },
+      {
+        "source": "government-research-2",
+        "quote": "סיעות הקואליציה=="
+      },
+      {
+        "source": "government-research-3",
+        "quote": "KNS_PersonToPosition, GovernmentNum 21: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 1984-09-13: מודעי יצחק, צור יעקב, שחל משה, ויצמן עזר, רבין יצחק, פרץ יצחק-חיים, ארנס משה, נסים משה, קצב משה, נבון יצחק, לוי דוד, קורפו חיים, שמיר יצחק, רובינשטיין אמנון, נחמקין אריה, יעקבי גד, פרס שמעון, בר-לב חיים, שפירא יוסף, שריר אברהם, שרון אריאל, גור מרדכי, הורביץ יגאל, בורג יוסף, פת גדעון"
+      },
+      {
+        "source": "government22",
+        "quote": "October 20, 1986 - December 22, 1988"
+      }
+    ],
+    "changes": [
+      {
+        "date": "1986-10-20",
+        "type": "government-succession",
+        "textEn": "Shamir became prime minister of the 22nd government under the rotation agreement.",
+        "textHe": "שמיר נעשה ראש הממשלה ה־22 במסגרת הסכם הרוטציה.",
+        "cites": [
+          {
+            "source": "government22",
+            "quote": "October 20, 1986 - December 22, 1988"
+          }
+        ],
+        "person": "shamir",
+        "scope": "mid-term",
+        "governmentNumber": 22,
+        "formalStep": true
+      }
+    ],
+    "coalitionElectionListSeats": 104,
+    "coalitionSeats": 97
+  }
+}
