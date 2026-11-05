@@ -1,3 +1,4 @@
+import { seatOrder } from './Hemicycle.tsx';
 import {familyLabel} from '../../families/labels.ts';
 import { FamilyListTreatment } from './FamilyTreatment.tsx';
 import { resolve } from '../../families/model.ts';
@@ -59,6 +60,12 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   const belowThreshold = thr > 0 && outside.every((x) => !x.lr.qualified);
   const anyAgreement = standard && s.agreements.some((a) => a.enabled);
   const hidden = outside.length - visibleOut.length;
+  const showComponents = useStore(st=>st.showComponentSeats);
+  const componentSeats = seatOrder(s,r,'list',showComponents);
+  const barFill = (l: SimList) => {
+    const seats = componentSeats.filter(st=>st.listId===l.id);
+    return seats.some(st=>st.innerColor) ? `linear-gradient(90deg, ${seats.map((st,i)=>`${st.innerColor ?? st.color} ${i/seats.length*100}% ${(i+1)/seats.length*100}%`).join(', ')})` : l.color;
+  };
   const splitIds = new Set(s.factionSplits ?? []);
   // one scale for every bar: the largest list now or in the official result
   const scale = Math.max(1, ...rows.map((x) => Math.max(x.lr.seats, x.was ?? 0)));
@@ -86,7 +93,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
             <span className="lb-bar" aria-hidden>
               {out
                 ? <><i className="thr-fill" style={{ width: `${Math.min(100, (l.votes / Math.max(1, thr)) * 100)}%`, background: l.color }} /><span className="thr-tick" /></>
-                : <><i style={{ width: `${(lr.seats / scale) * 100}%`, background: l.color }} />{d !== 0 && <span className="delta-segment" style={{ insetInlineStart: `${(Math.min(lr.seats, was ?? 0) / scale) * 100}%`, width: `${(Math.abs(d) / scale) * 100}%` }} />}{d !== 0 && <span className="was" style={{ width: `${((was ?? 0) / scale) * 100}%` }} />}</>}
+                : <><i style={{ width: `${(lr.seats / scale) * 100}%`, background: barFill(l), borderBlock: (s.factionSplits ?? []).includes(l.id) && showComponents ? `2px solid ${l.color}` : undefined, boxSizing: 'border-box' }} />{d !== 0 && <span className="delta-segment" style={{ insetInlineStart: `${(Math.min(lr.seats, was ?? 0) / scale) * 100}%`, width: `${(Math.abs(d) / scale) * 100}%` }} />}{d !== 0 && <span className="was" style={{ width: `${((was ?? 0) / scale) * 100}%` }} />}</>}
             </span>
             {out && (was ?? 0) > 0 && <span className="lb-bar" aria-hidden title={baseLabel.seats}>
               <span className="was" style={{width:`${(was ?? 0)/scale*100}%`}} />
