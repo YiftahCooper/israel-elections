@@ -12,6 +12,7 @@ import { dispatch, dispatchMany, setState, useLevel } from '../store.ts';
 import {JointFacts} from './JointFacts.tsx';
 import { PartyLinks } from './PartyLinks.tsx';
 import { Info, Slip } from './ui.tsx';
+import { componentColours } from '../newListColour.ts';
 
 const newId = (k: number) => `sim-${Date.now().toString(36)}${k}${Math.floor(Math.random() * 1e4).toString(36)}`;
 
@@ -36,6 +37,9 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
     const total = base.reduce((a, b) => a + b, 0) || 1;
     return base.map((x) => Math.round((x / total) * 1000) / 10);
   }, [l, seats]);
+  // each party's colour here, on its candidates and when split: its own, else a distinguishable variant of the list's
+  const colourOf = useMemo(() => componentColours(parties, l.candidates.find((c) => c.partyId)?.partyId, l.color,
+    s.lists.filter((x) => x.id !== l.id && !x.withdrawn).map((x) => x.color)), [parties, l, s.lists]);
   const [shares, setShares] = useState<number[] | null>(null);
   const [open, setOpen] = useState(false);
   if (parties.length < 2) return null;
@@ -48,7 +52,7 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
 
   const run = () => {
     const parts = parties.map((p, i) => ({
-      newId: newId(i), nameHe: p.nameHe, letters: i === 0 ? l.letters : `${l.letters}${i + 1}`, color: p.color ?? l.color, votes: votes[i],
+      newId: newId(i), nameHe: p.nameHe, letters: i === 0 ? l.letters : `${l.letters}${i + 1}`, color: colourOf[p.id], votes: votes[i],
       candidateIds: l.candidates.filter((c) => (c.partyId && parties.some((x) => x.id === c.partyId) ? c.partyId : lead) === p.id).map((c) => c.id),
     }));
     const actions: Action[] = [{ type: 'split', id: l.id, parts },
@@ -71,7 +75,7 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
       <div className="party-rows">
         {parties.map((p) => (
           <div key={p.id} className="party-row">
-            <Slip letters={l.letters} name={lang === 'he' ? p.nameHe : p.nameEn} color={p.color ?? l.color} logo={p.logo} />
+            <Slip letters={l.letters} name={lang === 'he' ? p.nameHe : p.nameEn} color={colourOf[p.id]} logo={p.logo} />
             <span style={{ minWidth: 0 }}>{name(p)}{l.candidates[0]?.partyId === p.id && <small className="muted"> · {L('Lead party', 'מפלגה מובילה')}</small>}<PartyLinks links={p.links} name={name(p)} /></span>
             <b>{held(p.id)}</b>
             {standard && s.blocs.length > 0 ? (

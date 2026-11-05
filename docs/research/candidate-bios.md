@@ -237,6 +237,17 @@ Pages dropped by the matching rules (no candidate or more than one) are listed p
 | Party pages | 20 links, two per source | 20/20 HTTP 200; surname on the page in 20/20 |
 <!-- leftout:end -->
 
+## English names (5 November 2026)
+
+English mode shows a candidate's **official English name from the Knesset website** (the `Name` field of
+`https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkDetailsHeader?mkId={siteId}&languageKey=en`), retained in
+`data/raw/bios/knesset-site-mk-names-en.json` (1,050 members, fetched by `scripts/research/fetch-mk-names-en.py`) and
+attached by `scripts/lib/build/bios.ts` as `Candidate.nameEn`. Only a certain Knesset identity takes one: a candidate matched
+as an elected member or as one who entered the Knesset in the list's faction (official OData), or a high reviewed decision —
+3,197 of 15,543 candidates. A name-only match of a candidate who never sat ("not elected; identical name…") does not. The site
+gives today's name, which can differ from the ballot, so the registered Hebrew name is always shown beside it. Candidates who
+never sat in the Knesset have no official English name and appear in Hebrew as registered; no transliteration is invented.
+
 ## Limits
 
 - **Wayback Machine availability.** During this research the Wayback CDX and capture servers were

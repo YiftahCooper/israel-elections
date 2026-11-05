@@ -18,7 +18,8 @@ test('reset everything keeps votes supplied by the selected donor', async ({ pag
   await details.getByLabel('Votes', { exact: true }).press('Enter');
   const total = await validVotes(page).getAttribute('data-valid-votes');
   await source.selectOption('t:26-נף');
-  await details.getByRole('button', { name: 'Restore list' }).click();
+  // a vote-only edit is undone by Restore votes ("Restore list" appears only when something else changed)
+  await details.locator('.vote-goals').getByRole('button', { name: 'Restore votes' }).click();
   await expect(details.getByLabel('Votes', { exact: true })).toHaveValue('524');
   await expect(validVotes(page)).toHaveAttribute('data-valid-votes', total!);
 });

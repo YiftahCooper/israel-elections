@@ -67,7 +67,9 @@ const EXPECTED: Record<Family, string> = {
   // 5 Nov feedback: English labels/provenance and nearest-period logo refs (F9/F13), then bloc colours
   // and build timestamps; recursively omitting color/builtAt reproduces the previous merged datasets.
   // Other four digests unchanged.
-  model: 'da0ff97b3a27f034ca12fe427bbb9de2c35768ff3c2d6f6f7200cc8abb6cf46f',
+  // 5 Nov round 2: official English names of Knesset members (Candidate.nameEn) and build timestamps only; with HEAD's
+  // datasets the new code reproduces da0ff97b... and the other four digests.
+  model: '5d267f26c5d14b59764ee9cd3fc69518b76aceb3686e3acda58fb8b4adeced8b',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

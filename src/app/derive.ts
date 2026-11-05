@@ -98,6 +98,8 @@ export function scenarioIssues(s: Scenario, r: AllocationResult): ScenarioIssue[
 
 /** The name to show: the curated correction of a misprinted candidate-notice name, else the name as printed. */
 export const shownName = (c: { nameHe: string; displayNameHe?: string }) => c.displayNameHe ?? c.nameHe;
+/** A candidate's name in the interface language: the official English name when the Knesset publishes one, else the Hebrew. */
+export const candidateName = (c: { nameHe: string; displayNameHe?: string; nameEn?: string }, lang: Lang) => (lang === 'en' && c.nameEn ? c.nameEn : shownName(c));
 
 /** The candidates who fill a list's seats, in order: the roster minus those the official notice did not seat. */
 export const seatedOrder = (l: Pick<SimList, 'candidates'>) => l.candidates.filter((c) => !c.notSeated);

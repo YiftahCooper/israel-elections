@@ -60,7 +60,7 @@ export function SourceDialog() {
   return <dialog ref={dialog} tabIndex={-1} className="source-ask" aria-label={id === 'voteSource' ? L('Votes from', 'הקולות מגיעים מ') : label}
     onCancel={e => { e.preventDefault(); cancel(); }} onKeyDown={e => { if (e.key === 'Escape') e.stopPropagation(); }}
     onClick={e => { if (e.target === e.currentTarget) cancel(); }}>
-    <p className="small" style={{ margin: 0 }}><b>{ask?.title}</b>
+    <p className="small" style={{ margin: 0 }}><b>{ask?.title}</b>{' '}
       <Info title={label}>{id === 'voteSource'
         ? L('Other lists: taken from all, in proportion; turnout unchanged. New voters: turnout changes. One list: only that list gives or takes. A remembered donor is asked again if unavailable or part of the edited group.', 'שאר הרשימות: מכולן, באופן יחסי; ההצבעה ללא שינוי. מצביעים חדשים: ההצבעה משתנה. רשימה אחת: רק היא נותנת או מקבלת. נשאל שוב אם הרשימה שנזכרה אינה זמינה או נכללת בקבוצה הנערכת.')
         : L('Loaded scenario: highlight only your subsequent edits. Official result: highlight all changes from the election result.', 'התרחיש הטעון: סימון השינויים הבאים שלכם בלבד. התוצאה הרשמית: סימון כל השינויים מתוצאות הבחירות.')}</Info></p>

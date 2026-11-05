@@ -34,3 +34,12 @@ export function partColours(seeds: (string | null | undefined)[], fallback: stri
     return out;
   });
 }
+
+/** Display colours of a joint list's component parties, by party id: each party's own colour; a party without one
+ *  gets a variant of the list's colour that the other lists and parts can be told apart from. The lead party (else
+ *  the first) without a colour keeps the list's colour. The same colours are used when the list is split. */
+export function componentColours(parties: { id: string; color?: string | null }[], leadId: string | undefined, listColour: string, taken: string[]): Record<string, string> {
+  const order = [...parties].sort((a, b) => Number(b.id === leadId) - Number(a.id === leadId));
+  const colours = partColours(order.map((p) => p.color), listColour, [...taken, listColour]);
+  return Object.fromEntries(order.map((p, i) => [p.id, colours[i]]));
+}

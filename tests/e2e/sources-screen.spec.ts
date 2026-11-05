@@ -20,7 +20,7 @@ test('k1: no zero counts for missing localities, no dead project links, secondar
   await expect(panel.getByText('Lists', { exact: true })).toBeVisible();
   await expect(panel.locator('a[href^="local:"], a[href^="project:"]')).toHaveCount(0);
   await expect(panel.getByText(/^Project record: data\/raw\/k1\//).first()).toBeVisible();
-  await expect(panel.locator('.chip.no', { hasText: 'secondary' }).first()).toBeVisible();
+  await expect(panel.locator('.chip.secondary', { hasText: 'secondary' }).first()).toBeVisible();
   // official sources are listed before secondary ones
   const kinds = await panel.locator('ul.credits').first().locator('> li .chip').allInnerTexts();
   expect(kinds.indexOf('secondary')).toBeGreaterThan(-1);
@@ -33,6 +33,8 @@ test('k26 in English: English publishers, one credit per logo, downloads served,
   await open(page, 'en', 'k26');
   await sourcesTab(page, 'en');
   const panel = page.locator('#analysis-panel');
+  // the source list loads after the tab opens; allInnerTexts does not wait for it
+  await expect(panel.locator('ul.credits').first().locator('> li > b').first()).toBeVisible();
   const publishers = await panel.locator('ul.credits').first().locator('> li > b').allInnerTexts();
   expect(publishers.length).toBeGreaterThan(3);
   for (const p of publishers) expect(p, p).toMatch(/[A-Za-z]{4}/);

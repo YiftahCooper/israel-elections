@@ -8,14 +8,24 @@ import type { CandidateBio, ElectionDataset } from '../../../src/data/schema.ts'
 
 const ROOT = join(import.meta.dirname, '..', '..', '..');
 interface Entry {
-  knesset?: { url: string } | null; hewiki?: { title: string; url: string } | null;
-  party?: { url: string; publisher?: string; archivedAt?: string | null; kind?: string } | null; confidence: 'high' | 'medium';
+  knesset?: { url: string; siteId?: number } | null; hewiki?: { title: string; url: string } | null;
+  party?: { url: string; publisher?: string; archivedAt?: string | null; kind?: string } | null; confidence: 'high' | 'medium'; basis?: string;
 }
+/** Whether the Knesset identity itself is certain. An entry's confidence covers all its links (a probable Hebrew Wikipedia
+ *  or party match makes it medium), so the identity is read from its basis (scripts/research/build-bios.py): matched as an
+ *  elected member or as one who entered the Knesset in the list's faction (official OData), or a high reviewed decision.
+ *  A name-only match of a candidate who was never elected ("not elected; identical name…") stays probable. */
+const knessetIdentitySure = (e: Entry) => /^(elected; Knesset \d+ member|not elected at the election; entered Knesset )/.test(e.basis ?? '')
+  || (e.confidence === 'high' && /^elected; reviewed decision/.test(e.basis ?? ''));
 
 export function applyBios(ds: ElectionDataset): ElectionDataset {
   const file = join(ROOT, 'data', 'meta', 'bios', `${ds.id}.json`);
   if (!existsSync(file)) return ds;
   const bios = (JSON.parse(readFileSync(file, 'utf8')) as { candidates: Record<string, Entry> }).candidates;
+  // official English names from the Knesset website, keyed by member site id; only certain Knesset identities take one
+  const namesFile = join(ROOT, 'data', 'raw', 'bios', 'knesset-site-mk-names-en.json');
+  const namesEn = new Map(existsSync(namesFile) ? (JSON.parse(readFileSync(namesFile, 'utf8')) as { siteId: number; nameEn: string | null }[]).filter((x) => x.nameEn).map((x) => [x.siteId, x.nameEn!]) : []);
+  const nameEnOf = (e: Entry) => (knessetIdentitySure(e) && e.knesset?.siteId ? namesEn.get(e.knesset.siteId) : undefined);
   const ids = new Set(ds.lists.flatMap((l) => l.candidates.map((c) => c.id)));
   const unknown = Object.keys(bios).filter((id) => !ids.has(id));
   if (unknown.length) throw new Error(`data/meta/bios/${ds.id}.json: not in the roster: ${unknown.slice(0, 5).join(', ')}`);
@@ -29,5 +39,5 @@ export function applyBios(ds: ElectionDataset): ElectionDataset {
     if (/en\.wikipedia/.test(JSON.stringify(b))) throw new Error(`data/meta/bios/${ds.id}.json: English Wikipedia is never linked`);
     return b.knesset || b.hewiki || b.party ? b : null;
   };
-  return { ...ds, lists: ds.lists.map((l) => ({ ...l, candidates: l.candidates.map((c) => { const e = bios[c.id]; const b = e ? bioOf(e) : null; return b ? { ...c, bio: b } : c; }) })) };
+  return { ...ds, lists: ds.lists.map((l) => ({ ...l, candidates: l.candidates.map((c) => { const e = bios[c.id]; const b = e ? bioOf(e) : null; const en = e ? nameEnOf(e) : undefined; return b || en ? { ...c, ...(en ? { nameEn: en } : {}), ...(b ? { bio: b } : {}) } : c; }) })) };
 }

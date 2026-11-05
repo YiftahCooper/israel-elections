@@ -1,4 +1,3 @@
-import {englishLabel} from '../../data/names.ts';
 import { NumericStepper } from './NumericStepper.tsx';
 import { TransferStep } from './TransferStep.tsx';
 import { applyAction } from '../../model/actions.ts';
@@ -143,7 +142,8 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
   }, [s, r, agr]);
 
   const baseList = base.lists.find((b) => b.id === l.id) ?? null;
-  const listChanged = useMemo(() => !!baseList && JSON.stringify(baseList) !== JSON.stringify(l), [baseList, l]);
+  // votes have their own "Restore votes" beside the goals; "Restore list" appears only when something else changed
+  const listChanged = useMemo(() => !!baseList && JSON.stringify({ ...baseList, votes: 0 }) !== JSON.stringify({ ...l, votes: 0 }), [baseList, l]);
   const histSeats = baseList ? baseR.lists.find((x) => x.id === l.id)!.seats : -1;
   const histShares = Object.fromEntries(base.lists.map((b) => [b.id, b.votes]));
   const pctValid = r.totalValid > 0n ? (l.votes / Number(r.totalValid)) * 100 : 0;
@@ -317,7 +317,8 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
               dispatchMany([...(a ? [a] : []), { type: 'resetList', listId: l.id, keepVotes: true }]);
             }}>{L('Restore list', 'שחזור הרשימה')}</button>}
           </div>
-          {l.sponsorsHe && <p className="tiny muted" lang={lang} style={{ margin: '6px 0 0' }}>{L('Submitted by: ', 'הוגשה מטעם: ')}{(lang === 'he' ? l.sponsorsHe : l.parties?.length ? l.parties.map(p => p.nameEn).join(' · ') : englishLabel(null,l.sponsorsHe)).replace(/; /g, ' · ')}</p>}
+          {/* English shows the parties' English names; a letter-by-letter rendering of the registered Hebrew names is unreadable, so none is shown */}
+          {l.sponsorsHe && (lang === 'he' || !!l.parties?.length) && <p className="tiny muted" lang={lang} style={{ margin: '6px 0 0' }}>{L('Submitted by: ', 'הוגשה מטעם: ')}{(lang === 'he' ? l.sponsorsHe : l.parties!.map(p => p.nameEn).join(' · ')).replace(/; /g, ' · ')}</p>}
         </section></Feature>
 
       <Feature id="allocation">
@@ -353,14 +354,15 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
 
       {notes.length > 0 && (<Feature id="notes">
         <section>
-          <h3>{L('Official notes (Central Elections Committee)', 'הערות רשמיות (ועדת הבחירות)')}</h3>
+          {/* written by this project's data build about the official publications (not text of the Elections Committee); Hebrew only so far */}
+          <h3>{L('Notes on the sources (in Hebrew)', 'הערות על המקורות')}</h3>
           {notes.map((n, i) => <p key={i} className="small" lang="he" dir="rtl" style={{ margin: '0 0 4px' }}>{n}</p>)}
         </section>
       </Feature>)}
 
       <section className="wide">
         <h3>{simple ? L(`Who gets in (${lr.seats})`, `מי נכנס לכנסת (${lr.seats})`) : L('Candidates', 'מועמדים')}<EditMarker s={s} path={['lists', l.id, 'candidates']} /></h3>
-        {ds.lists.find((x) => x.id === l.id)?.candidatesSecondary && <p className="small" style={{ color: 'var(--warn-ink)' }}>{L('Secondary source', 'מקור משני')} <Info title={L('Candidate source', 'מקור המועמדים')}>{L('Candidate list from a secondary source (the official page could not be retrieved).', 'רשימת המועמדים ממקור משני (העמוד הרשמי לא נטען).')}</Info></p>}
+        {ds.lists.find((x) => x.id === l.id)?.candidatesSecondary && <p className="small ink2">{L('Secondary source', 'מקור משני')} <Info title={L('Candidate source', 'מקור המועמדים')}>{L('Candidate list from a secondary source (the official page could not be retrieved).', 'רשימת המועמדים ממקור משני (העמוד הרשמי לא נטען).')}</Info></p>}
         <Candidates l={l} seats={lr.seats} baseSeats={baseList ? histSeats : -1} baseCandidates={baseList?.candidates} />
       </section>
     </div>

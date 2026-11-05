@@ -192,6 +192,8 @@ details > summary { cursor: pointer; }
 .btn.ghost { border-color: transparent; background: transparent; }
 .btn.ghost:hover:not(:disabled) { background: var(--surface-2); border-color: transparent; }
 .btn.small { padding: 2px 8px; min-height: 28px; font-size: 13px; }
+/* beside a 32px field in the same row, a small button takes the field's height so their edges line up */
+.row:has(> select, > input[type="text"], > label > select, > label > input[type="text"]) > .btn.small { min-height: 32px; }
 .btn.danger { color: var(--bad); }
 .btn.icon-only { padding: 0; width: 30px; }
 .seg { display: inline-flex; flex-wrap: wrap; max-width: 100%; border: 1px solid var(--rule-2); border-radius: 5px; overflow: hidden; }
@@ -207,6 +209,8 @@ input[type="text"]:disabled, input[type="number"]:disabled, input[type="search"]
 input.num-in { width: 120px; text-align: end; }
 input.num-in[aria-invalid="true"] { border-color: var(--bad); box-shadow: 0 0 0 1px var(--bad); }
 input[type="range"] { direction: ltr; width: 100%; accent-color: var(--shell); }
+/* the shell navy vanishes on a dark surface; dark sliders fill with the lifted focus blue, as dark switches do */
+[data-theme="dark"] input[type="range"] { accent-color: var(--focus); }
 input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px solid var(--rule-2); border-radius: 5px; background: var(--surface); }
 .field { display: grid; gap: 3px; font-size: 13px; color: var(--ink-2); }
 /* a switch: on/off state, never a verb button */
@@ -222,6 +226,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .chip.ok { border-color: var(--ink-2); }
 .chip.no { border-color: color-mix(in srgb, var(--bad) 55%, var(--rule-2)); color: var(--bad); }
 .chip.exp { border-color: var(--exp); color: var(--exp); }
+/* a labelled secondary source is information, not an error: a neutral dashed chip, never the error red */
+.chip.secondary { border-style: dashed; border-color: var(--axis); color: var(--ink-2); }
 .swatch { width: 10px; height: 10px; border-radius: 2px; flex: none; display: inline-block; }
 .toast { position: fixed; inset-block-end: 18px; inset-inline-start: 50%; transform: translateX(-50%); z-index: 100; max-width: min(640px, 92vw); padding: 10px 16px; border-radius: var(--radius); background: var(--ink); color: var(--surface); box-shadow: var(--shadow-pop); }
 [dir="rtl"] .toast { transform: translateX(50%); }
@@ -359,6 +365,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .cand.cut { border-block-start: 2px dashed var(--ink-2); border-radius: 0; margin-top: 4px; padding-top: 6px; }
 .cand.drag { opacity: .4; }
 .cand .tools { display: flex; gap: 2px; }
+/* renaming edits the name in its own line box: the row, its links and its buttons stay where they were */
+.cand input[type="text"] { box-sizing: border-box; min-height: 0; height: 1.45em; padding: 0 4px; font: inherit; line-height: 1; max-width: 100%; vertical-align: baseline; }
 .bio-links { display: inline-flex; flex-wrap: wrap; gap: 0 8px; margin-inline-start: 8px; vertical-align: baseline; }
 .bio-key { margin: 0 0 6px; }
 .bio-links a { color: var(--ink-2); text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); padding: 2px 0; }
