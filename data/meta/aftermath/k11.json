@@ -101,6 +101,25 @@
       "publisher": "United Nations, The Origins and Evolution of the Palestine Problem, Part V",
       "kind": "official",
       "accessed": "2026-11-05"
+    },
+    "mfa-timeline": {
+      "url": "https://www.gov.il/en/pages/timeline-of-events-half-a-century-of-independence",
+      "publisher": "Israel Ministry of Foreign Affairs, Timeline of Events: Half a Century of Independence, 1948–1998",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies."
+    },
+    "idi-review-1988": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/elections/1988/",
+      "publisher": "Israel Democracy Institute, 1988 election retrospective",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "boi-annual-1985": {
+      "url": "https://www.boi.org.il/media/dvspbz5g/pe_1.pdf",
+      "publisher": "Bank of Israel, Annual Report 1985, Chapter I, pp. 14–16",
+      "kind": "official",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -400,9 +419,61 @@
       "mfa-history",
       "knesset-history",
       "ipu1984",
-      "ipu1988"
+      "ipu1988",
+      "mfa-timeline",
+      "idi-review-1988"
     ],
     "events": [
+      {
+        "id": "lebanon-security-zone",
+        "date": "1985",
+        "category": "security",
+        "textEn": "Israel withdrew its forces from the interior of Lebanon and retained a security zone in the south.",
+        "textHe": "ישראל הסיגה את כוחותיה מפנים לבנון והותירה רצועת ביטחון בדרום.",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "The IDF was taken out of Lebanon"
+          },
+          {
+            "source": "mfa-timeline",
+            "quote": "Israel withdraws from Lebanon, retaining a narrow security zone"
+          },
+          {
+            "source": "idi-review-1988",
+            "quote": "realigned its forces along a narrow security zone in Southern Lebanon"
+          }
+        ],
+        "confidence": "high",
+        "notes": [
+          "The Knesset’s unqualified withdrawal wording is bounded by MFA and IDI: forces remained in the southern security zone. Year precision; the stages and final withdrawal day are not asserted."
+        ]
+      },
+      {
+        "id": "economic-stabilization",
+        "date": "1985-07",
+        "category": "economy",
+        "textEn": "The government introduced an economic stabilization programme.",
+        "textHe": "הממשלה הנהיגה תוכנית לייצוב המשק.",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "stabilize the economy"
+          },
+          {
+            "source": "mfa-timeline",
+            "quote": "An emergency stabilization program put into effect by the government"
+          },
+          {
+            "source": "boi-annual-1985",
+            "quote": "program initiated aj the beginning of July 1985."
+          }
+        ],
+        "confidence": "high",
+        "notes": [
+          "Month precision follows the Bank of Israel annual report. The retained excerpt preserves its PDF text-layer typo “aj”; no inflation figures or causal claims are copied."
+        ]
+      },
       {
         "id": "first-intifada",
         "date": "1987-12",
@@ -428,24 +499,14 @@
     ],
     "candidatesPending": [
       {
-        "label": "1985 economic stabilization programme",
-        "date": "1985-07",
-        "why": "Appears in the Knesset term history; a second independent qualifying chronology and/or direct date evidence was not verified in this pass."
-      },
-      {
-        "label": "IDF withdrawal to the South Lebanon security zone",
-        "date": "1985-06",
-        "why": "Appears in the Knesset term history; a second independent qualifying chronology and/or direct date evidence was not verified in this pass."
-      },
-      {
         "label": "Operation Moses",
         "date": "1984-11",
-        "why": "Appears in the Knesset term history; a second independent qualifying chronology and/or direct date evidence was not verified in this pass."
+        "why": "MFA history/timeline select Operation Moses (one evidence family); the retrieved Knesset history does not select it. A second independent chronology and precise operation dates are needed."
       },
       {
         "label": "Bus 300 / GSS affair",
         "date": "1986",
-        "why": "Appears in the Knesset term history; a second independent qualifying chronology and/or direct date evidence was not verified in this pass."
+        "why": "Knesset history selects the GSS aftermath; MFA timeline selects the bus hijacking in 1984, a different act in k10. A second independent chronology of the 1986 affair is needed."
       }
     ],
     "endedBy": {
