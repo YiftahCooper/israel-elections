@@ -13,7 +13,16 @@
 .family-info {display:inline-grid;place-items:center;border:1px solid var(--rule-2);border-radius:50%;inline-size:25px;block-size:25px;background:var(--surface);color:var(--ink);cursor:pointer;}
 .family-chart-toolbar {display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;}
 .family-policy {display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px;}
-.family-policy .seg button {min-block-size:32px;}
+.family-policy .seg button {min-block-size:32px;display:inline-flex;align-items:center;gap:6px;}
+.family-policy-label small {color:var(--muted);font-size:inherit;}
+/* Each counting choice carries the mark it produces on the chart: hatched, solid if the family heads the list, solid, or nothing. */
+.family-policy-icon {display:inline-grid;place-items:center;inline-size:11px;block-size:13px;flex-shrink:0;border:1px solid var(--family-color);border-radius:2px;font-size:9px;font-style:normal;font-weight:700;line-height:1;color:#fff;}
+.family-policy-icon[data-policy=separate-segment] {background:repeating-linear-gradient(45deg,var(--family-color) 0 1.2px,transparent 1.2px 3.5px);}
+.family-policy-icon[data-policy=include-headed-list],.family-policy-icon[data-policy=include-whole-list] {background:var(--family-color);}
+.family-policy-icon[data-policy=exclude] {border:1.5px dashed var(--ink-2);}
+.family-policy [aria-pressed=true] .family-policy-icon {box-shadow:0 0 0 1px var(--shell-ink);}
+.family-policy [aria-pressed=true] .family-policy-icon[data-policy=exclude] {border-color:var(--shell-ink);box-shadow:none;}
+.family-scale-inputs .quick-actions {direction:ltr;}
 .family-plots {display:grid;grid-template-columns:minmax(0,1fr);gap:20px;}
 .family-plots section {min-inline-size:0;display:grid;gap:8px;align-content:start;}
 .family-plots h3 {font-size:14px;}
@@ -32,7 +41,15 @@
 .family-key-mixed {inline-size:7px;block-size:12px;border:1px solid var(--ink-2);background:repeating-linear-gradient(45deg,var(--ink-2) 0 1.2px,transparent 1.2px 3.5px);}
 .family-plot g[role=button] {cursor:pointer;}
 .family-plot g[role=button]:focus-visible {outline:2px solid var(--focus);}
-.family-tooltip {display:block;position:fixed;inset-block-start:8px;max-inline-size:min(300px,calc(100vw - 16px));font-size:12px;line-height:1.4;background:var(--surface);border:1px solid var(--rule-2);box-shadow:var(--shadow-pop);padding:7px 10px;border-radius:5px;color:var(--ink);}
+.family-tooltip {display:grid;gap:3px;position:fixed;inset-block-start:8px;inline-size:min(330px,calc(100vw - 16px));font-size:12px;line-height:1.4;background:var(--surface);border:1px solid var(--rule-2);box-shadow:var(--shadow-pop);padding:7px 10px;border-radius:5px;color:var(--ink);pointer-events:none;}
+/* The hover box only reports; it never takes the pointer, so moving along the chart cannot make it flicker or jump. */
+.family-tooltip .ft-row {display:flex;gap:6px;align-items:flex-start;}
+.family-tooltip .ft-row>i {flex-shrink:0;margin-block-start:3px;}
+.family-tooltip .family-key-line {margin-block-start:7px;background:var(--family-color);}
+.family-tooltip .family-key-mixed {border-color:var(--family-color);background:repeating-linear-gradient(45deg,var(--family-color) 0 1.2px,transparent 1.2px 3.5px);}
+.family-tooltip .ft-row b {font-weight:700;}
+.family-tooltip .ft-delta {font-weight:600;}
+.family-tooltip .ft-hint {color:var(--muted);}
 .family-exact {border-block:1px solid var(--rule);padding-block:10px;}
 .family-exact summary {cursor:pointer;font-weight:600;min-block-size:24px;}
 .family-table {overflow-x:auto;max-inline-size:100%;margin-block-start:10px;}
@@ -68,7 +85,8 @@
 .family-editor,.family-manage,.family-evidence {display:grid;gap:14px;min-inline-size:0;}
 .family-editor label,.family-manage label {display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
 .family-editor small {display:block;color:var(--muted);}
-.family-picker {max-block-size:42vh;overflow:auto;border:1px solid var(--rule);border-radius:6px;}
+.family-picker {block-size:42vh;overflow:auto;border:1px solid var(--rule);border-radius:6px;}
+.family-picker>p {padding:8px;}
 .family-picker label {padding:8px;flex-wrap:nowrap;border-block-end:1px solid var(--rule);align-items:start;min-block-size:40px;}
 .family-picker label>span {flex:1;min-inline-size:0;}
 .family-picker input {margin-block-start:3px;}
@@ -99,7 +117,17 @@
 @media(max-width:700px){.family-policy{inline-size:100%;}.family-policy .seg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));inline-size:100%;}}
 
 .family-point {display:grid;gap:14px;min-inline-size:0;overflow-wrap:anywhere;}
-.family-point-total {display:flex;flex-wrap:wrap;gap:6px 14px;}
+.family-point-total {display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;}
+.family-point-mixed {display:inline-flex;align-items:center;gap:6px;}
+.family-point-mixed .family-key-mixed,.family-point-total .family-key-mixed {border-color:var(--family-color);background:repeating-linear-gradient(45deg,var(--family-color) 0 1.2px,transparent 1.2px 3.5px);}
+.family-point-delta {font-weight:600;font-size:13px;}
+.family-point-lists article {position:relative;padding-inline-start:10px;}
+/* Counted lists carry the family's solid line, mixed lists its hatching, so the sheet reads like the chart. */
+.family-point-lists article[data-state]::before {content:'';position:absolute;inset-inline-start:0;inset-block:0 12px;inline-size:3px;border-radius:2px;}
+.family-point-lists article[data-state=counted]::before {background:var(--family-color);}
+.family-point-lists article[data-state=mixed]::before {inline-size:5px;background:repeating-linear-gradient(45deg,var(--family-color) 0 1.5px,transparent 1.5px 4px);box-shadow:inset 0 0 0 1px var(--family-color);}
+.family-own-dot {inline-size:8px;block-size:8px;border-radius:50%;background:var(--family-color);flex-shrink:0;}
+.family-point-changes h3 {display:flex;align-items:center;gap:6px;}
 .family-point-lists {display:grid;gap:12px;}
 .family-point-lists article {border-block-end:1px solid var(--rule);padding-block-end:12px;display:grid;gap:8px;}
 .family-point-list {display:flex;align-items:center;gap:8px;flex-wrap:wrap;}

@@ -18,11 +18,11 @@ export function JointFacts({listId,showListName=false,compact=false}:{listId:str
  return <span className="joint-facts small">
   {showListName&&<b>{L('Joint list','רשימה משותפת')} · </b>}
   {!compact && <>   <span>{L('Head','בראש')}: {head?name(head):L('Unknown','לא ידוע')} · {L('Elected','נבחרים')}: {elected||'0'}{f.unknownElected>0&&` · ${L('Unknown','לא ידוע')} ${f.unknownElected}`}{f.pending&&` · ${L('Provisional','זמני')}`}{f.secondaryAffiliations&&` · ${L('Secondary affiliations','שיוך ממקור משני')}`}</span>
-  <span> · {L('Opening factions','סיעות בהשבעה')}: {factions.length?`${factions.length} ${L('factions','סיעות')}`:L('Unknown','לא ידוע')}{unknown>0&&factions.length>0&&` · ${L('Unknown','לא ידוע')} ${unknown}`}</span>{' '}
+  <span> · {L('Opening factions','סיעות בהשבעה')}: {factions.length?(factions.length===1?L('1 faction','סיעה אחת'):`${factions.length} ${L('factions','סיעות')}`):L('Unknown','לא ידוע')}{unknown>0&&factions.length>0&&` · ${L('Unknown','לא ידוע')} ${unknown}`}</span>{' '}
 </>}
   <Info title={L('Joint-list facts and sources','עובדות ומקורות לרשימה משותפת')}>
    <span>{L('Head','בראש')}: {head?name(head):L('Unknown','לא ידוע')} · {L('Elected','נבחרים')}: {elected||'0'}{f.unknownElected>0&&` · ${L('Unknown','לא ידוע')} ${f.unknownElected}`}{f.pending&&` · ${L('Provisional','זמני')}`}{f.secondaryAffiliations&&` · ${L('Secondary affiliations','שיוך ממקור משני')}`}</span>
-  <span> · {L('Opening factions','סיעות בהשבעה')}: {factions.length?`${factions.length} ${L('factions','סיעות')}`:L('Unknown','לא ידוע')}{unknown>0&&factions.length>0&&` · ${L('Unknown','לא ידוע')} ${unknown}`}</span>{' '}
+  <span> · {L('Opening factions','סיעות בהשבעה')}: {factions.length?(factions.length===1?L('1 faction','סיעה אחת'):`${factions.length} ${L('factions','סיעות')}`):L('Unknown','לא ידוע')}{unknown>0&&factions.length>0&&` · ${L('Unknown','לא ידוע')} ${unknown}`}</span>{' '}
 <br/>
    <strong>{L('Official submission','הגשה רשמית')}: </strong>{(lang === 'he' ? f.submissionHe.join(' · ') : f.parties.map(name).join(' · '))||L('Unknown','לא ידוע')}<br/>
    {L('Published baseline, not the current simulation. Component affiliations follow the reviewed metadata; secondary evidence is labelled. Rank 1 identifies the head party. Elected seats are not a division of votes.','נתוני המקור, לא ההדמיה הנוכחית. שיוכי המפלגות לפי המטא־דאטה שנבדק; מקורות משניים מסומנים. מקום 1 מזהה את המפלגה שבראש. חלוקת הנבחרים אינה חלוקת קולות.')}<br/>

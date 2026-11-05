@@ -94,3 +94,14 @@ test('heading a joint list is an explicit policy with per-list overrides',async(
  expect(membership({...likud,defaultMixedPolicy:'include-whole-list',disabled:['26-מחל']},'k26').selected.has('26-מחל')).toBe(false);
  expect(parseFamily(JSON.stringify({...likud,defaultMixedPolicy:'include-headed-list'})).defaultMixedPolicy).toBe('include-headed-list');
 });
+test('hover facts come from the runtime: list names and mixed compositions with the family’s own parties (aliases resolved)',async()=>{
+ const {builtins,mixedComposition,historyListName}=await import('../src/families/runtime.ts');const by=(id:string)=>builtins.find(x=>x.id===id)!;
+ expect(historyListName('k20','20-קץ','en')).toBe('Yachad');expect(historyListName('k20','20-קץ','he')).toBe('יחד');
+ expect(mixedComposition(by('haredi'),'k20','20-קץ','en')).toEqual([{name:'Yachad',own:true},{name:'Otzma Yehudit (Jewish National Front)',own:false}]);
+ expect(mixedComposition(by('radical-right'),'k20','20-קץ','en').map(p=>p.own)).toEqual([false,true]);
+ // 1996: the dataset says "ram", the family says "raam"; they are one party.
+ expect(mixedComposition(by('religious-parties'),'k14','14-ע','en').filter(p=>p.own)).toHaveLength(1);
+ // A personal copy has no packed flags; its own member party ids decide.
+ expect(mixedComposition(fork(f),'k20','20-קץ','en')).toEqual([{name:'Yachad',own:true},{name:'Otzma Yehudit (Jewish National Front)',own:false}]);
+ expect(mixedComposition(by('haredi'),'k25','25-שס','en')).toEqual([]);
+});
