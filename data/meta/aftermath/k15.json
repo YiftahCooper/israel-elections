@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 1,
+  "electionId": "k15",
+  "status": "pilot",
+  "reviewedAt": "2026-11-05",
+  "notes": [
+    "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
+    "The term window runs from this election to the next Knesset election. Government tenure may extend past that window. Mid-term institutional succession is recorded in formation.events; it is not a new post-election recommendation round.",
+    "Additional dated mid-term acts that do not fit the proposal’s closed formation type vocabulary are kept as formalStep=true entries in government.changes (Dated-compatible). No new formation enum values are introduced."
+  ],
+  "sources": {
+    "mfa-history": {
+      "url": "https://www.gov.il/BlobFolder/generalpage/facts-about-israel-history/en/English_SiteTransfer_DOCUMENTS_History2010.pdf",
+      "publisher": "Israel Ministry of Foreign Affairs, Facts About Israel: History (2010), pp. 48–70",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "knesset-history": {
+      "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-fifteenth-knesset-1999-2003",
+      "publisher": "Knesset, history of the 15th Knesset (credited text)",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Jewish Virtual Library mirror; original https://main.knesset.gov.il/EN/About/History/pages/knessethistory.aspx?kns=15"
+    },
+    "ipu1999": {
+      "url": "https://data.ipu.org/election-summary/HTML/2155_99.htm",
+      "publisher": "Inter-Parliamentary Union, Chronicle / Parline, Israel 1999",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "ipu2003": {
+      "url": "https://data.ipu.org/election-summary/HTML/2155_03.htm",
+      "publisher": "Inter-Parliamentary Union, Chronicle / Parline, Israel 2003",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "government-research-1": {
+      "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%9E%D7%95%D7%A0%D7%94",
+      "publisher": "Hebrew Wikipedia",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "government-research-2": {
+      "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%9E%D7%95%D7%A0%D7%94",
+      "publisher": "Hebrew Wikipedia",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "government-research-3": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=GovernmentNum%20eq%2028",
+      "publisher": "Knesset OData (ParliamentInfo)",
+      "kind": "official",
+      "accessed": "2026-11-04",
+      "via": "Existing first-government research extraction from official OData, accessed 2026-11-04; the associated quote is the retained extraction summary, not verbatim API serialization."
+    },
+    "direct-election-law": {
+      "url": "https://fs.knesset.gov.il/12/law/12_lsr_210707.pdf",
+      "publisher": "Knesset, Basic Law: The Government (1992), section 3(b)",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Legal quotation reused from docs/research/pm-recommendations-1977-2006.md"
+    },
+    "jta1999vote": {
+      "url": "https://www.jta.org/1999/07/06/lifestyle/barak-pledges-to-be-peacemaker-as-he-takes-prime-ministers-oath",
+      "publisher": "Jewish Telegraphic Agency, Daily Bulletin archive",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    },
+    "vote2001": {
+      "url": "https://www.chron.com/news/nation-world/article/sharon-takes-over-in-israel-2001027.php",
+      "publisher": "Houston Chronicle News Services, 8 March 2001",
+      "kind": "secondary",
+      "accessed": "2026-11-05",
+      "via": "Opened full article with web tool; local HTTP response was a JavaScript challenge and was not used."
+    },
+    "idi2001": {
+      "url": "https://www.idi.org.il/parliaments/7129/9016",
+      "publisher": "Israel Democracy Institute, review of The Elections in Israel 2001",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    }
+  },
+  "results": {
+    "electionDate": "1999-05-17",
+    "officialResultsSourceId": "k15-results-gazette"
+  },
+  "reaction": {
+    "policy": "Only dated institutional steps and statements attributed to their speaker, applied to every list or to none.",
+    "items": [],
+    "gap": "Comparably sourced reactions for every list were not collected."
+  },
+  "recommendationRounds": [],
+  "formation": {
+    "outcome": "government-formed",
+    "events": [
+      {
+        "date": "1999-05-17",
+        "type": "direct-election",
+        "textEn": "Ehud Barak was elected prime minister by direct vote; no presidential recommendation round was held.",
+        "textHe": "אהוד ברק נבחר לראש הממשלה בבחירה ישירה; לא נערך סבב המלצות לנשיא.",
+        "cites": [
+          {
+            "source": "ipu1999",
+            "quote": "Mr. Barak was elected Prime Minister"
+          },
+          {
+            "source": "direct-election-law",
+            "quote": "ראש הממשלה מכהן מכוח היבחרו בבחירות כלליות, ארציות, ישירות, שוות וחשאיות"
+          }
+        ],
+        "person": "barak"
+      },
+      {
+        "date": "1999-07-06",
+        "type": "confidence-vote",
+        "textEn": "The Knesset approved Barak’s 28th government and the ministers were sworn in.",
+        "textHe": "הכנסת אישרה את הממשלה ה־28 בראשות ברק והשרים הושבעו.",
+        "cites": [
+          {
+            "source": "jta1999vote",
+            "quote": "the new Israeli government and policy guidelines were approved by the Knesset"
+          }
+        ]
+      },
+      {
+        "date": "2001-02-06",
+        "type": "direct-election",
+        "textEn": "Ariel Sharon was elected prime minister in a special PM-only election during the Fifteenth Knesset; no Knesset election or recommendation round was held.",
+        "textHe": "אריאל שרון נבחר לראש הממשלה בבחירות מיוחדות לראשות הממשלה בלבד, במהלך כהונת הכנסת החמש־עשרה; לא נערכו בחירות לכנסת או סבב המלצות.",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "Ariel Sharon from the Likud on February 6, 2001"
+          },
+          {
+            "source": "idi2001",
+            "quote": "לבחור ראש ממשלה בלבד, בלי לבחור רשימה לכנסת"
+          }
+        ],
+        "person": "sharon",
+        "scope": "mid-term",
+        "contestRef": "pm2001"
+      },
+      {
+        "date": "2001-03-07",
+        "type": "confidence-vote",
+        "textEn": "The Knesset approved Sharon’s 29th government, 72–21.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־29 בראשות שרון, ברוב של 72 מול 21.",
+        "cites": [
+          {
+            "source": "vote2001",
+            "quote": "by a vote of 72-21, with 27 members absent"
+          }
+        ],
+        "votes": {
+          "for": 72,
+          "against": 21
+        },
+        "scope": "mid-term",
+        "governmentNumber": 29
+      }
+    ],
+    "conflicts": [
+      {
+        "about": "Coalition seats at formation versus later snapshot",
+        "values": [
+          {
+            "value": "75 (JTA formation report, matching the seven ballot lists)",
+            "source": "jta1999vote"
+          },
+          {
+            "value": "73 after two Yisrael BaAliyah members broke away",
+            "source": "ipu1999"
+          }
+        ],
+        "resolution": "Use 75 for the formation ballot-list card. Retain IPU’s later 73-seat snapshot as a different point in time; do not change the official election seats."
+      }
+    ]
+  },
+  "term": {
+    "start": "1999-05-17",
+    "end": "2003-01-28",
+    "inclusionRule": "At least two independently authored qualifying chronologies, including one official or academic, plus direct support for the date. The Knesset and MFA histories count separately; the JVL mirror is not another independent source. Formal government succession steps are recorded separately in formation.events.",
+    "chronologies": [
+      "mfa-history",
+      "knesset-history",
+      "ipu1999",
+      "ipu2003"
+    ],
+    "events": [
+      {
+        "id": "lebanon-withdrawal",
+        "date": "2000-05",
+        "category": "security",
+        "textEn": "Israel withdrew its forces from southern Lebanon.",
+        "textHe": "ישראל הסיגה את כוחותיה מדרום לבנון.",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "the IDF unilaterally withdrew from Lebanon"
+          },
+          {
+            "source": "mfa-history",
+            "quote": "In May of 2000 Israel withdrew all its forces"
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "second-intifada",
+        "date": "2000-09",
+        "category": "security",
+        "textEn": "The Second Intifada began.",
+        "textHe": "האינתיפאדה השנייה החלה.",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "In September 2000, the Second Intifada broke out"
+          },
+          {
+            "source": "mfa-history",
+            "quote": "In September 2000, the Palestinians initiated an Intifada"
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "pm-only-election",
+        "date": "2001-02-06",
+        "category": "governance",
+        "textEn": "Ariel Sharon won a special direct election for prime minister; the Fifteenth Knesset remained in office.",
+        "textHe": "אריאל שרון ניצח בבחירות מיוחדות ישירות לראש הממשלה; הכנסת החמש־עשרה המשיכה בכהונתה.",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "Ariel Sharon from the Likud on February 6, 2001"
+          },
+          {
+            "source": "mfa-history",
+            "quote": "Ariel Sharon ( Likud ) elected prime minister"
+          },
+          {
+            "source": "idi2001",
+            "quote": "לבחור ראש ממשלה בלבד, בלי לבחור רשימה לכנסת"
+          }
+        ],
+        "confidence": "high"
+      }
+    ],
+    "candidatesPending": [
+      {
+        "label": "Camp David summit",
+        "date": "2000-07",
+        "why": "Needs verified direct date evidence and/or a second qualifying chronology for this precise row. The Knesset mirror misdates Ze’evi’s assassination to 2000; MFA places it in 2001. No erroneous date is promoted."
+      },
+      {
+        "label": "October riots",
+        "date": "2000-10",
+        "why": "Needs verified direct date evidence and/or a second qualifying chronology for this precise row. The Knesset mirror misdates Ze’evi’s assassination to 2000; MFA places it in 2001. No erroneous date is promoted."
+      },
+      {
+        "label": "Rehavam Ze’evi assassination",
+        "date": "2001-10",
+        "why": "Needs verified direct date evidence and/or a second qualifying chronology for this precise row. The Knesset mirror misdates Ze’evi’s assassination to 2000; MFA places it in 2001. No erroneous date is promoted."
+      },
+      {
+        "label": "Operation Defensive Shield",
+        "date": "2002-03",
+        "why": "Needs verified direct date evidence and/or a second qualifying chronology for this precise row. The Knesset mirror misdates Ze’evi’s assassination to 2000; MFA places it in 2001. No erroneous date is promoted."
+      },
+      {
+        "label": "Barak resignation and calling the special election",
+        "date": "2000-12",
+        "why": "Needs verified direct date evidence and/or a second qualifying chronology for this precise row. The Knesset mirror misdates Ze’evi’s assassination to 2000; MFA places it in 2001. No erroneous date is promoted."
+      }
+    ],
+    "endedBy": {
+      "type": "early-election",
+      "date": "2002-11-11",
+      "nextElection": "2003-01-28",
+      "textEn": "The Knesset set 28 January 2003 for the early election after Sharon initiated dissolution.",
+      "textHe": "הכנסת קבעה את הבחירות המוקדמות ל־28 בינואר 2003 לאחר ששרון יזם את פיזורה.",
+      "cites": [
+        {
+          "source": "ipu2003",
+          "quote": "On 11 November 2002, the Knesset set 28 January 2003"
+        }
+      ]
+    }
+  },
+  "issuePolling": {
+    "status": "pending",
+    "items": [],
+    "gap": "INES instrument exists; no qualifying published topline verified for this election. No microdata analysis performed."
+  },
+  "gaps": [
+    "Certification date and official first-sitting record not retrieved; election date comes from the existing verified result dataset.",
+    "Formation timeline is a sourced subset; missing steps must not be inferred from statutory maximum periods.",
+    "First-government coalition membership is reused from the existing first-government scheme, whose party membership evidence includes labelled Hebrew Wikipedia; a complete independent primary coalition agreement cross-check remains pending.",
+    "Knesset history mirror errors: Rehavam Ze’evi’s assassination is printed as 23 October 2000; MFA puts it in 2001. The inaccurate date is excluded. Government 29 faction membership and all Barak-to-Sharon intermediate formal steps remain unfilled.",
+    "Government endDate is the established succession/death date in the existing project chronology; a dedicated primary tenure source should be added in review.",
+    "The UPI photo caption indexes a 75–29 confidence vote, but the original returned 403. The tally is held out until an inspectable original is obtained; coalition size 75 is independently verified by JTA."
+  ],
+  "government": {
+    "number": 28,
+    "nameEn": "Government 28 (Ehud Barak)",
+    "nameHe": "הממשלה ה־28 (אהוד ברק)",
+    "startDate": "1999-07-06",
+    "endDate": "2001-03-07",
+    "primeMinisters": [
+      {
+        "nameEn": "Ehud Barak",
+        "nameHe": "אהוד ברק",
+        "to": "2001-03-07",
+        "from": "1999-07-06"
+      }
+    ],
+    "firstGovernmentSchemeRef": "first-government",
+    "coalition": [
+      {
+        "letters": "אמת",
+        "seats": 26
+      },
+      {
+        "letters": "שס",
+        "seats": 17
+      },
+      {
+        "letters": "מרצ",
+        "seats": 10
+      },
+      {
+        "letters": "כן",
+        "seats": 6
+      },
+      {
+        "letters": "פה",
+        "seats": 6
+      },
+      {
+        "letters": "ב",
+        "seats": 5
+      },
+      {
+        "letters": "ג",
+        "seats": 5,
+        "note": "in the coalition without cabinet ministers; left on 1999-09-05"
+      }
+    ],
+    "coalitionSeats": 75,
+    "coalitionSeatsNote": "Election-list seat envelope, checked against officialSeats; not the confidence-vote tally or a reconstruction of later faction membership.",
+    "cites": [
+      {
+        "source": "government-research-1",
+        "quote": "הממשלה כיהנה מ-6 ביולי 1999 ועד 7 במרץ 2001"
+      },
+      {
+        "source": "government-research-2",
+        "quote": "סיעות הקואליציה=="
+      },
+      {
+        "source": "government-research-3",
+        "quote": "KNS_PersonToPosition, GovernmentNum 28: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 1999-07-06: איציק דליה, ביילין יוסי, מרדכי יצחק, סויסה אליהו, פרס שמעון, בן-עמי שלמה, ברק אהוד, בן-אליעזר בנימין, בניזרי שלמה, ישי אליהו, כהן יצחק, כהן רן, לוי דוד, לוי יצחק, שריד יוסי, שרנסקי נתן, רמון חיים, שוחט אברהם-בייגה"
+      },
+      {
+        "source": "jta1999vote",
+        "quote": "seven political parties representing 75 of the Knesset’s 120 legislators"
+      },
+      {
+        "source": "vote2001",
+        "quote": "took over as prime minister Wednesday"
+      }
+    ]
+  },
+  "recommendationsNotApplicable": {
+    "reason": "direct-pm-election",
+    "textEn": "The prime minister was elected directly; no recommendation round or presidential tasking took place.",
+    "textHe": "ראש הממשלה נבחר בבחירה ישירה; לא התקיים סבב המלצות ולא הוטל מנדט בידי הנשיא.",
+    "cites": [
+      {
+        "source": "direct-election-law",
+        "quote": "ראש הממשלה מכהן מכוח היבחרו בבחירות כלליות, ארציות, ישירות, שוות וחשאיות"
+      }
+    ]
+  }
+}
