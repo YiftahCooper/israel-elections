@@ -33,7 +33,7 @@ test('coalition choices show In Out Any explicitly and keep constraints', async 
   await expect(choice.getByRole('button',{name:'In',exact:true})).toHaveAttribute('aria-pressed','true');
   await expect(total).toHaveText('32 / 120 · 29 short of 61');
   await choice.getByRole('button',{name:'Out',exact:true}).click();
-  await expect(total).toHaveText('0 / 120 · 61 short of 61');
+  await expect(total).toHaveCount(0);
   await expect(choice.getByRole('button',{name:'Out',exact:true})).toHaveAttribute('aria-pressed','true');
   await expect(page.locator('.coal-list')).not.toContainText('Likud');
   await choice.getByRole('button',{name:'Any',exact:true}).click();

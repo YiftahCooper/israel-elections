@@ -59,7 +59,7 @@ export function ScenarioGallery() {
   const canPublish = !!scenario?.log.length && !publishing;
   return <section className="scenario-gallery" aria-label={L('Community scenario gallery', 'גלריית תרחישים קהילתית')}>
     <h3>{L('Community scenarios', 'תרחישים מהקהילה')}</h3>
-    <div className="sg-publish">
+    <details className="sg-publish-disclosure"><summary>{L('Publish this scenario on GitHub', 'פרסום התרחיש ב-GitHub')}</summary><div className="sg-publish">
       <div className="sg-what">
         <span className="small ink2">{L('Publish this scenario', 'פרסום התרחיש הזה')}</span>
         <b dir="auto">{scenario?.name || L('Untitled scenario', 'תרחיש ללא שם')}</b>
@@ -69,16 +69,19 @@ export function ScenarioGallery() {
       <button type="button" className="btn primary" disabled={!canPublish} onClick={prepare}>{L('Publish on GitHub ↗', 'פרסום ב-GitHub ↗')}</button>
       <p className="tiny muted sg-note">{L('Public · GitHub account required', 'פרסום ציבורי · נדרש חשבון GitHub')} <InfoPopover title={L('Publishing privacy', 'פרטיות בפרסום')}>{L('Publishing is public and needs a GitHub account: the scenario, its description and tags appear under your GitHub username. Do not include private information.', 'הפרסום ציבורי ודורש חשבון GitHub: התרחיש, התיאור והתגיות יופיעו תחת שם המשתמש שלכם. אין לכלול מידע פרטי.')}</InfoPopover></p>
     </div>
-    <div className="sg-filters">
+    </details>
+    {entries.length > 0 && <div className="sg-filters">
       <label className="field sg-search">{L('Search', 'חיפוש')}<input type="search" value={query} onChange={e => setQuery(e.target.value)} placeholder={L('Name, description or tag', 'שם, תיאור או תגית')} /></label>
       <label className="field">{L('Election year', 'שנת בחירות')}<select value={year} onChange={e => setYear(e.target.value)}><option value="">{L('All years', 'כל השנים')}</option>{[...new Set(entries.map(e => e.year))].sort().reverse().map(y => <option key={y}>{y}</option>)}</select></label>
       <label className="field">{L('Tag', 'תגית')}<select value={tag} onChange={e => setTag(e.target.value)}><option value="">{L('All tags', 'כל התגיות')}</option>{[...new Set(entries.flatMap(e => e.tags))].sort().map(t => <option key={t}>{t}</option>)}</select></label>
       <label className="field">{L('Sort', 'מיון')}<select value={sort} onChange={e => setSort(e.target.value)}><option value="likes">{L('Most liked', 'הכי אהובים')}</option><option value="newest">{L('Newest', 'החדשים ביותר')}</option></select></label>
-      <button type="button" className="btn ghost" disabled={busy} onClick={refresh} title={L('Refreshes at most every 10 minutes; GitHub allows 60 anonymous requests an hour.', 'מתרענן לכל היותר פעם ב-10 דקות; GitHub מאפשר 60 בקשות אנונימיות בשעה.')}>{busy ? L('Loading…', 'טוען…') : L('Refresh', 'רענון')}</button>
-    </div>
+      <button type="button" className="btn ghost" disabled={busy} onClick={refresh} title={L('Refreshes at most every 10 minutes; the community index is updated automatically.', 'מתרענן לכל היותר פעם ב-10 דקות; האינדקס הקהילתי מתעדכן אוטומטית.')}>{busy ? L('Loading…', 'טוען…') : L('Refresh', 'רענון')}</button>
+    </div>}
     <p className="tiny muted" role="status">{busy ? L('Loading…', 'טוען…') : L(`${visible.length} of ${entries.length} scenarios`, `${visible.length} מתוך ${entries.length} תרחישים`)}{timestamp > 0 && ` · ${L('updated', 'עודכן')} ${new Date(timestamp).toLocaleString(lang === 'he' ? 'he-IL' : 'en-GB', { dateStyle: 'short', timeStyle: 'short' })}`}</p>
     {error && <p className="banner warn" role="alert">{error === 'rate-limit' ? L('GitHub rate limit reached. Try again later; cached results remain visible.', 'הגעתם למגבלת הבקשות של GitHub. נסו מאוחר יותר; תוצאות שמורות נשארות מוצגות.') : error === 'popup' ? L('Allow pop-ups to open GitHub, then try again.', 'אפשרו חלונות קופצים כדי לפתוח את GitHub ונסו שוב.') : error === 'publish' ? L('Could not prepare the share link. Try again.', 'לא ניתן להכין קישור שיתוף. נסו שוב.') : L('Could not load GitHub. Check your connection and retry in 10 minutes. Cached results remain visible.', 'לא ניתן לטעון מ-GitHub. בדקו את החיבור ונסו שוב בעוד 10 דקות. תוצאות שמורות נשארות מוצגות.')}</p>}
-    {!busy && !error && entries.length === 0 && <p className="small muted">{L('No community scenarios yet.', 'עדיין אין תרחישים מהקהילה.')}</p>}
+    {!busy && !error && entries.length === 0 && <p className="small muted">{L('No community scenarios yet. Share yours above.', 'עדיין אין תרחישים מהקהילה. אפשר לפרסם למעלה.')}</p>}
+    {!busy && entries.length > 0 && !visible.length && <p className="small muted">{L('No matches. Clear your search or filters.', 'לא נמצאו תוצאות. נקו את החיפוש או המסננים.')}</p>}
+    {entries.length === 0 && <button type="button" className="btn small ghost" disabled={busy} onClick={refresh}>{L('Refresh', 'רענון')}</button>}
     <ul className="scn-cards">{visible.map(e => <li key={e.issue} className="scn-card">
       <div className="scn-title"><span className="swatch" style={{ background: scenarioColor(e) }} /><b dir="auto">{e.name}</b><span className="small muted">{e.year} · <bdi>{e.author}</bdi> · <time dateTime={e.date}>{new Date(e.date).toLocaleDateString(lang === 'he' ? 'he-IL' : 'en-GB')}</time> · <span aria-label={L(`${e.likes} likes`, `${e.likes} לייקים`)}>♥ {e.likes}</span></span></div>
       {e.tags.length > 0 && <div className="sg-tags">{e.tags.map(t => <button type="button" key={t} className="chip" aria-pressed={tag === t} onClick={() => setTag(tag === t ? '' : t)} dir="auto">{t}</button>)}</div>}

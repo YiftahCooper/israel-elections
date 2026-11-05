@@ -30,30 +30,58 @@ export function filterEntries(entries: GalleryEntry[], query: string, year: stri
   return entries.filter(e => (!year || e.year === year) && (!tag || e.tags.includes(tag)) && terms.every(t => normalizeSearch([e.name, e.description, ...e.tags].join(' ')).includes(t)))
     .sort((a, b) => (sort === 'likes' ? b.likes - a.likes : 0) || b.date.localeCompare(a.date) || b.issue - a.issue);
 }
-interface Snapshot { entries: GalleryEntry[]; timestamp: number }
+export interface Snapshot { entries: GalleryEntry[]; timestamp: number; fetchedAt?: number }
+/** Shared validation for disk index and browser cache; never trust public issue content. */
+export function validSnapshot(value: unknown, site: string): value is Snapshot {
+  if (!value || typeof value !== 'object') return false;
+  const v = value as Snapshot;
+  return (v.fetchedAt === undefined || (Number.isFinite(v.fetchedAt) && v.fetchedAt > 0 && v.fetchedAt <= Date.now())) && Number.isFinite(v.timestamp) && v.timestamp > 0 && v.timestamp <= Date.now() && Array.isArray(v.entries) && v.entries.every(e =>
+    e && parseBody(buildBody(e), site) && Number.isInteger(e.issue) && e.issue > 0 && typeof e.author === 'string' &&
+    typeof e.date === 'string' && Number.isFinite(Date.parse(e.date)) && Number.isFinite(e.likes) && e.likes >= 0);
+}
 type StorageLike = Pick<Storage, 'getItem' | 'setItem'>;
 export class GalleryClient {
   private snapshot?: Snapshot;
   private attempted = 0;
   private failure?: Error;
   private pending?: Promise<Snapshot>;
-  constructor(private site: string, private fetcher: typeof fetch = (input, init) => fetch(input, init), private storage?: StorageLike) {
+  private site: string;
+  private fetcher: typeof fetch;
+  private storage?: StorageLike;
+  constructor(site: string, fetcher: typeof fetch = (input, init) => fetch(input, init), storage?: StorageLike) {
+    this.site = site; this.fetcher = fetcher; this.storage = storage;
     try {
       const cached = JSON.parse(storage?.getItem(KEY) ?? 'null');
-      if (cached && Number.isFinite(cached.timestamp) && cached.timestamp <= Date.now() && Array.isArray(cached.entries) && cached.entries.every((e: GalleryEntry) => parseBody(buildBody(e), site) && Number.isInteger(e.issue) && e.issue > 0 && typeof e.author === 'string' && typeof e.date === 'string' && Number.isFinite(e.likes))) this.snapshot = cached;
+      if (validSnapshot(cached, site)) this.snapshot = cached;
     } catch { /* unavailable/corrupt cache */ }
   }
   cached() { return this.snapshot; }
   load(): Promise<Snapshot> {
     if (this.pending) return this.pending;
     if (Date.now() - this.attempted < TTL && this.failure) return Promise.reject(this.failure);
-    if (this.snapshot && Date.now() - this.snapshot.timestamp < TTL) return Promise.resolve(this.snapshot);
+    if (this.snapshot && Date.now() - (this.snapshot.fetchedAt ?? this.snapshot.timestamp) < TTL) return Promise.resolve(this.snapshot);
     this.attempted = Date.now();
     this.pending = this.fetchAll().finally(() => { this.pending = undefined; });
     return this.pending;
   }
+  private remember(snapshot: Snapshot) {
+    this.snapshot = snapshot;
+    this.failure = undefined;
+    try { this.storage?.setItem(KEY, JSON.stringify(snapshot)); } catch { /* memory cache still works */ }
+    return snapshot;
+  }
   private async fetchAll(): Promise<Snapshot> {
     try {
+      // Normal reads use Pages, never the anonymous GitHub quota. The published
+      // index is validated exactly like issue bodies before exposing any links.
+      try {
+        const response = await this.fetcher(new URL('./data/scenarios.json', this.site).href, { signal: AbortSignal.timeout(15000) });
+        if (!response.ok) throw new Error('index');
+        const index: unknown = await response.json();
+        if (!validSnapshot(index, this.site)) throw new Error('index');
+        return this.remember({ entries: index.entries, timestamp: index.timestamp, fetchedAt: Date.now() });
+      } catch { /* old deployments and transient Pages failures may use the API */ }
+
       const entries: GalleryEntry[] = [];
       // Bounded to ten pages per refresh so one visit cannot consume an IP's hourly quota.
       for (let page = 1; page <= 10; page++) {
@@ -68,10 +96,7 @@ export class GalleryClient {
         }
         if (rows.length < 100) break;
       }
-      this.snapshot = { entries, timestamp: Date.now() };
-      this.failure = undefined;
-      try { this.storage?.setItem(KEY, JSON.stringify(this.snapshot)); } catch { /* memory cache still works */ }
-      return this.snapshot;
+      return this.remember({ entries, timestamp: Date.now() });
     } catch (error) {
       this.failure = new Error(error instanceof Error && error.message === 'rate-limit' ? 'rate-limit' : 'network');
       throw this.failure;

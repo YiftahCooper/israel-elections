@@ -6,14 +6,19 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  issues:
+    types: [opened, edited, labeled, unlabeled, closed, reopened, deleted, transferred]
+  schedule:
+    - cron: '17,47 * * * *'
   workflow_dispatch:
 permissions:
   contents: read
+  issues: read
   pages: write
   id-token: write
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   deploy:
     if: ${{ !github.event.repository.private }}
@@ -22,7 +27,10 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      # Issue bodies are data only: never execute code from an issue or PR ref.
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: actions/setup-node@v4
         with:
           node-version: 24
@@ -30,6 +38,9 @@ jobs:
       - run: npm ci
       - run: npx tsc -p tsconfig.json --noEmit
       - run: npm test
+      - run: node scripts/build-gallery.ts
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
       - run: npm run build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
