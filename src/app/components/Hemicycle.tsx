@@ -1,6 +1,5 @@
 import { Floating, useHoverBridge } from '../floating.tsx';
 import { blocDisplayOrder } from '../blocOrder.ts';
-import { GraphicChanges } from './GraphicChanges.tsx';
 import { changedSeatKeys } from '../graphics.ts';
 import { useGraphicReference } from '../useGraphicReference.ts';
 import { useDisclosure } from './Feature.tsx';
@@ -298,7 +297,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       </div>}
       {/* the key is needed only when there is something to compare; the reference is named once, under the small chamber */}
       {hasChanges && <p className="small muted graphic-key">{L('Seat changes', 'שינויי מנדטים')} · {referenceLabel(labelReference,lang).name} <Info title={L('About these outlines','על המתארים')}>{L(`Outlined: seats gained since ${referenceLabel(labelReference,lang).name}. Dashed, in the small chamber: seats lost. Outlines compare list seat counts, not individual seats or voters moving between lists. Dashed bars show the reference; neutral ink shows the difference.`, `מתאר: מנדטים שנוספו מאז ${referenceLabel(labelReference,lang).name}. מקווקו, בכנסת הקטנה: מנדטים שאבדו. המתארים משווים את מספר המנדטים של הרשימות; אין משמעות של מנדט או בוחר שעבר בין רשימות. מתארי העמודות המקווקווים מציינים את הבסיס; דיו ניטרלי מציין שינוי.`)}</Info></p>}
-      {!paired && <GraphicChanges s={evidenceScenario} r={evidenceResult} reference={reference} compact />}
+      {/* the per-list seat changes are said once, in the change line under the tools strip */}
       {hover && hv && (
         <Floating onPointerEnter={hoverBridge.cancel} onPointerLeave={hoverBridge.leave} className="tip" preferAbove anchor={() => hover.anchor.getBoundingClientRect()}>
           <div className="row"><span className="swatch" style={{ background: hover.seat.color }} /><b>{listLabel(hv, lang)}</b> <span className="muted">({hv.letters})</span></div>

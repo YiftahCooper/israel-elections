@@ -105,7 +105,8 @@ export function App() {
       if (t && /INPUT|TEXTAREA|SELECT/.test(t.tagName) && e.key !== 'Escape') return;
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); if (e.shiftKey) redo(); else undo(); }
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'y') { e.preventDefault(); redo(); }
-      if (e.key === 'Escape') setState((st) => (st.selectedListId ? { selectedListId: null } : { blocPanel: null }));
+      // Escape closes an open popover (a figure, History) first, not the side panel beneath it
+      if (e.key === 'Escape' && !document.querySelector('[popover="auto"]:popover-open')) setState((st) => (st.selectedListId ? { selectedListId: null } : { blocPanel: null }));
     };
     addEventListener('keydown', onKey);
     return () => { removeEventListener('keydown', onKey); removeEventListener('hashchange', onHash); };

@@ -77,14 +77,14 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
             <span className="pieces" aria-hidden>
               {g.pieces.map((p, i) => <i key={i} className={selected && selected !== p.listId ? 'dim' : ''} style={{ flexGrow: p.n, background: showComponents && (s.factionSplits ?? []).includes(p.listId) ? p.color : s.lists.find(l=>l.id===p.listId)?.color ?? p.color, borderBlock: showComponents && (s.factionSplits ?? []).includes(p.listId) ? `3px solid ${s.lists.find(l=>l.id===p.listId)?.color}` : undefined, boxSizing: 'border-box' }} />)}
             </span>
-            <span className="label"><span className="clip">{g.label}</span> <b key={g.n >= majority ? 'majority' : 'minority'} className={g.id !== null && previous.current.election === s.electionId && previous.current.scheme === s.blocSchemeId && previous.current.seats.has(g.id) && ((previous.current.seats.get(g.id)! >= majority) !== (g.n >= majority)) ? 'tick' : ''}>{g.n}</b>{g.id !== null && <span className="consequence">{consequence(g.n)}</span>}{g.n >= majority && <span className="sr-only">{L(' (majority)', ' (רוב)')}</span>}</span>
+            <span className="label"><span className="clip">{g.label}</span> <b key={g.n >= majority ? 'majority' : 'minority'} className={g.id !== null && previous.current.election === s.electionId && previous.current.scheme === s.blocSchemeId && previous.current.seats.has(g.id) && ((previous.current.seats.get(g.id)! >= majority) !== (g.n >= majority)) ? 'tick' : ''}>{g.n}</b>{g.id !== null && <> <bdi className="consequence">{consequence(g.n)}</bdi></>}{g.n >= majority && <span className="sr-only">{L(' (majority)', ' (רוב)')}</span>}</span>
           </button>
         ))}
         <span className="milestone" aria-hidden style={{ left: `${(majority / total) * 100}%` }}><span>{majority}</span></span>
       </div>
       {/* on narrow screens the bands are too short for their names: they are listed in full beneath */}
       <div className="strip-legend" aria-hidden>
-        {groups.map((g) => <span key={g.key}><span className="swatch" style={{ background: g.color }} />{g.label} <b key={g.n >= majority ? 'majority' : 'minority'} className={g.id !== null && previous.current.election === s.electionId && previous.current.scheme === s.blocSchemeId && previous.current.seats.has(g.id) && ((previous.current.seats.get(g.id)! >= majority) !== (g.n >= majority)) ? 'tick' : ''}>{g.n}</b>{g.id !== null && <span className="consequence">{consequence(g.n)}</span>}</span>)}
+        {groups.map((g) => <span key={g.key}><span className="swatch" style={{ background: g.color }} />{g.label} <b key={g.n >= majority ? 'majority' : 'minority'} className={g.id !== null && previous.current.election === s.electionId && previous.current.scheme === s.blocSchemeId && previous.current.seats.has(g.id) && ((previous.current.seats.get(g.id)! >= majority) !== (g.n >= majority)) ? 'tick' : ''}>{g.n}</b>{g.id !== null && <> <bdi className="consequence">{consequence(g.n)}</bdi></>}</span>)}
       </div>
     </section>
   );

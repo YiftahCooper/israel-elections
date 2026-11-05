@@ -118,21 +118,40 @@ input, textarea { caret-color: var(--focus); }
 .banner.err { background: var(--err-bg); }
 .banner.note { background: var(--surface-2); } /* not .info: that class styles the (i) popover and would shrink banner buttons to icon size */
 .banner > .banner-text { flex: 1 1 14rem; min-inline-size: 0; } /* a dismiss button stays beside the text */
-.session { background: var(--surface); border-block-end: 1px solid var(--rule); padding: 6px 16px; display: flex; align-items: center; flex-wrap: wrap; gap: 4px 14px; font-size: 13.5px; }
-.session > b { font-weight: 700; }
-.session > * { min-width: 0; overflow-wrap: anywhere; }
-.session .moves { display: inline-flex; flex-wrap: wrap; gap: 2px 12px; max-width: 100%; }
-.session .moves > span { min-width: 0; max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
-.session .history { margin-top: 6px; flex-basis: 100%; }
+/* One fixed line, present from the start: edits never change its height (no page jump); overflow scrolls sideways
+   behind a trailing fade, and History is a popover. Sticky under the tools strip on desktops (beside the sticky lists and panel). */
+.session { background: var(--surface); border-block-end: 1px solid var(--rule); padding: 0 16px; display: flex; align-items: center; flex-wrap: nowrap; gap: 14px; font-size: 13.5px; block-size: 41px; box-sizing: border-box; white-space: nowrap; }
+.session > b { font-weight: 700; flex: none; max-inline-size: 40%; overflow: hidden; text-overflow: ellipsis; }
+.session > .btn { flex: none; margin-inline-start: auto; }
+.session-changes { flex: 1 1 auto; min-width: 0; display: flex; align-items: center; gap: 14px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; overscroll-behavior-x: contain; }
+.session-changes::-webkit-scrollbar { display: none; }
+.session-changes[data-more] { mask-image: linear-gradient(to left, transparent 0, #000 32px); }
+[dir="rtl"] .session-changes[data-more] { mask-image: linear-gradient(to right, transparent 0, #000 32px); }
+.session-changes > * { flex: none; }
+.session .moves { display: inline-flex; flex-wrap: nowrap; gap: 12px; }
+.session .history { inline-size: min(520px, calc(100vw - 24px)); padding: 12px; border: 1px solid var(--rule-2); border-radius: var(--radius); background: var(--surface); color: var(--ink); box-shadow: var(--shadow-pop); white-space: normal; overscroll-behavior: contain; }
+@media (min-width: 1101px) { .session { position: sticky; top: calc(var(--band-h, 52px) + var(--toolbar-h)); z-index: 24; } }
+/* phones: two fixed lines, the reference and History above, the changes across the full width beneath */
+@media (max-width: 600px) {
+  .session { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: 30px 24px; align-content: center; column-gap: 10px; block-size: 66px; }
+  .session > b { grid-area: 1 / 1; max-inline-size: none; }
+  .session > .btn { grid-area: 1 / 2; }
+  .session-changes { grid-area: 2 / 1 / 3 / -1; }
+}
 
 /* Edits change content above the viewport; browser anchoring must not move the editing surface. */
 html, body { overflow-anchor: none; }
-:root { --toolbar-h: 40px; --board-top: calc(var(--band-h, 52px) + var(--toolbar-h) + 12px); }
+:root { --toolbar-h: 40px; --session-h: 0px; --board-top: calc(var(--band-h, 52px) + var(--toolbar-h) + var(--session-h) + 12px); }
+/* keyboard focus and in-page scrolling land below the sticky band, tools strip and change line */
+html { scroll-padding-block-start: calc(var(--band-h, 52px) + var(--toolbar-h) + var(--session-h) + 8px); }
+@media (max-width: 1100px) { html { scroll-padding-block-start: calc(var(--band-h, 52px) + var(--toolbar-h) + 8px); } }
+@media (max-width: 760px) { html { scroll-padding-block-start: calc(var(--toolbar-h) + 8px); } }
 
 /* ---------- page grid: the board (lists | chamber, blocs, figures | the opened list) and full-width tool pages */
 .work { display: flex; flex-direction: column; gap: 12px; padding: 12px 16px 28px; }
-.board { display: grid; grid-template-columns: minmax(300px, 380px) minmax(0, 1fr); gap: 12px; align-items: start; }
-.board.with-panel { grid-template-columns: minmax(280px, 340px) minmax(0, 1fr) minmax(360px, 430px); }
+/* the lists column keeps its width when the side panel opens, so the row just chosen does not move or rewrap */
+.board { --lists-w: clamp(300px, 26vw, 380px); display: grid; grid-template-columns: var(--lists-w) minmax(0, 1fr); gap: 12px; align-items: start; }
+.board.with-panel { grid-template-columns: var(--lists-w) minmax(0, 1fr) clamp(360px, 30vw, 430px); }
 .center { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
 .tool-page > .body { padding: 14px 16px 18px; }
 @media (max-width: 1100px) {
@@ -489,7 +508,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .strip-legend { display: none; flex-wrap: wrap; gap: 2px 12px; margin-top: 8px; font-size: 13px; }
 .strip-legend > span { display: inline; min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
 .strip-legend .swatch { margin-inline-end: 5px; }
-.strip-legend .consequence { margin-inline-start: 5px; }
+.strip-legend .consequence { margin-inline-start: 2px; }
 @media (max-width: 760px) {
   .strip-legend { display: flex; }
   .corridor .label { display: none; }
@@ -546,7 +565,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .lb-seats small { font-size: 12px; font-weight: 600; }
 .lb-row.out .lb-seats b { color: var(--muted); font-weight: 500; font-size: 15px; }
 .lb-thr { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; margin: 4px 0; padding: 4px 12px; font-size: 12.5px; font-weight: 600; color: var(--thr); background: repeating-linear-gradient(-45deg, var(--thr-a) 0 6px, var(--thr-b) 6px 12px); border-block: 1px solid color-mix(in srgb, var(--thr) 40%, transparent); }
-.lb-thr button { all: unset; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; font-weight: 500; }
+.lb-thr button { all: unset; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; font-weight: 500; display: inline-flex; align-items: center; min-block-size: 24px; padding-inline: 2px; border-radius: 3px; }
+.lb-thr button:focus-visible { outline: 2px solid var(--focus); outline-offset: 0; }
 /* Pointer previews follow the hand immediately; completed edits ease once. */
 .board-preview .seat, .board-preview .wedge, .board-preview .lb-bar > i,
 .board-preview .corridor, .board-preview .corridor .pieces i { transition: none; }
@@ -679,8 +699,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .cmp-pick .result-preview { inline-size: 100%; block-size: 10px; }
 .cmp-bloclegend { margin: -2px 0 10px; }
 /* Compare's change rows and seat dumbbell: bars and dots read left to right in Hebrew too; the name stays on the reading side */
-[dir="rtl"] .cmp .cmp-diff li { direction: ltr; grid-template-columns: minmax(0, 1fr) 2px minmax(0, 1fr) 40px minmax(140px, 260px); }
-[dir="rtl"] .cmp .cmp-diff .cmp-label { order: 9; direction: rtl; }
+[dir="rtl"] :is(.cmp, .wi-preview) .cmp-diff li { direction: ltr; grid-template-columns: minmax(0, 1fr) 2px minmax(0, 1fr) 40px minmax(140px, 260px); }
+[dir="rtl"] :is(.cmp, .wi-preview) .cmp-diff .cmp-label { order: 9; direction: rtl; }
 .cmp-dumbbell { margin: 10px 0 16px; max-width: 900px; }
 .cmp-dumbbell ul { list-style: none; margin: 0; padding: 0; }
 .cmp-dumbbell li, .db-axis { display: grid; grid-template-columns: minmax(120px, 220px) minmax(0, 1fr) 64px; gap: 10px; align-items: center; direction: ltr; }
@@ -706,8 +726,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 [dir="rtl"] .db-axis > span:first-child { order: 3; }
 [dir="rtl"] .db-v { text-align: start; }
 @media (max-width: 600px) {
-  [dir="rtl"] .cmp .cmp-diff li { grid-template-columns: minmax(0, 1fr) 2px minmax(0, 1fr) 36px; }
-  [dir="rtl"] .cmp .cmp-diff .cmp-label { order: -1; }
+  [dir="rtl"] :is(.cmp, .wi-preview) .cmp-diff li { grid-template-columns: minmax(0, 1fr) 2px minmax(0, 1fr) 36px; }
+  [dir="rtl"] :is(.cmp, .wi-preview) .cmp-diff .cmp-label { order: -1; }
   /* the name takes its own line above the track (as in .cmp-diff), so the track keeps the full width */
   .cmp-dumbbell li, .db-axis, [dir="rtl"] .cmp-dumbbell li, [dir="rtl"] .db-axis { grid-template-columns: minmax(0, 1fr) 52px; gap: 0 6px; }
   [dir="rtl"] .cmp-dumbbell .cmp-label { order: -1; }
@@ -868,8 +888,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .custom-page .custom-reset { margin-block-end: 4px; }
 .custom-grid .custom-feature { max-inline-size: none; border: 1px solid var(--rule); border-radius: 6px; padding: 10px 12px; background: var(--surface-2); flex-wrap: wrap; }
 .custom-feature p { margin: 3px 0 0; }
-.band .election-about { position: relative; margin: 0; padding: 4px 8px; background: transparent; border-color: var(--shell-ink-2); color: inherit; font-size: 12px; flex-shrink: 0; }
-.band .election-about summary { white-space: nowrap; }
+.band .election-about { position: relative; margin: 0; padding: 0; background: transparent; border-color: var(--shell-ink-2); color: inherit; font-size: 12px; flex-shrink: 0; }
+.band .election-about summary { white-space: nowrap; padding: 7px 9px; line-height: 17px; border-radius: 5px; } /* the whole box is the target, as tall as the band's other controls */
 .band .election-about ul { position: absolute; z-index: 60; inset-block-start: 100%; inset-inline-start: 0; inline-size: min(480px, 85vw); max-block-size: 65vh; overflow: auto; margin: 6px 0 0; padding: 16px 28px; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); color: var(--ink); box-shadow: 0 8px 24px #0003; white-space: normal; }
 @media (max-width: 700px) { .custom-grid { grid-template-columns: minmax(0, 1fr); } }
 @media (min-width: 1200px) and (max-width: 1550px) {
@@ -891,8 +911,10 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .corridor.no-bloc { border-style: dotted; }
 @media (prefers-reduced-motion: reduce) { .chamber .wedge, .chamber .seat, .chart .bar { transition: none; animation: none; } }
 .graphic-changes { margin-block: 8px 14px; min-width: 0; }
-.graphic-change-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(60px, 1fr) auto; align-items: center; gap: 10px; margin-block: 8px; font-size: 12px; }
-.graphic-change-row > span:first-child { overflow-wrap: anywhere; }
+/* one grid for all rows: names in a column as wide as the longest (at most 40%), set against their bars */
+.change-bars { display: grid; grid-template-columns: fit-content(40%) minmax(60px, 1fr) max-content; align-items: center; gap: 8px 10px; font-size: 12px; max-inline-size: 960px; }
+.graphic-change-row { display: contents; }
+.graphic-change-row > span:first-child { overflow-wrap: anywhere; text-align: end; }
 /* A full 120-seat scale: gaps and fixed horizontal padding must not distort tiny blocs. */
 .strip { gap: 0; }
 .corridor { padding-inline: 0; flex-shrink: 0; }
@@ -903,7 +925,6 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .cmp-blocrow .coal-bar > i { min-width: 0; box-sizing: border-box; }
 .baseline-mini { max-width: 420px; margin-inline: auto; }
 .baseline-mini p { margin-block: 4px; }
-.chamber .graphic-changes { margin-inline: 8px; }
 
 /* Designed primary choices: the same focus model on desktop and phone. */
 .choice-picker { display: inline-flex; min-inline-size: 0; }
@@ -925,6 +946,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .band .choice-trigger { color: var(--ink); background: var(--surface); }
 .band .election { max-inline-size: 270px; flex-shrink: 0; }
 .band .scenario-switcher { max-inline-size: 185px; }
+/* phones: the switcher fills the row beside About, so a longer name after the first edit never wraps the band */
+@media (max-width: 760px) { .band .scenario-switcher { flex: 1 1 0; min-inline-size: 0; max-inline-size: none; } .band .scenario-switcher .choice-trigger { inline-size: 100%; justify-content: space-between; } }
 .band .scenario-switcher .choice-trigger > .result-preview { display: none; }
 .quick-actions { display: flex; flex-wrap: wrap; gap: 4px; }
 /* Rules & settings: the scenario's rules beside a separate settings card */
@@ -980,20 +1003,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 [dir="rtl"] .corridor .label { direction: rtl; }
 .baseline-mini { width: 30%; min-width: 160px; max-width: 310px; margin-inline: auto; text-align: center; }
 .baseline-mini svg { display: block; width: 100%; }
-.compact-changes .change-items { display: flex; flex-wrap: wrap; gap: 5px 16px; }
-.compact-changes .graphic-change-row { display: inline-flex; gap: 6px; margin: 0; }
-.compact-changes summary { cursor: pointer; font-size: 12px; }
-.phone-changes { display: none; }
 .comparison-info { cursor: help; }
 .no-bloc-legend { font-size: 12px; }
-@media (max-width: 600px) {
-  .desktop-changes { display: none; }
-  .phone-changes { display: block; }
-  .compact-changes .change-items { display: grid; gap: 5px; }
-  .compact-changes .graphic-change-row { display: flex; justify-content: space-between; }
-}
-/* Styled children must stay hidden when the native disclosure is closed. */
-.compact-changes .desktop-changes:not([open]) > .change-items { display: none; }
 
 /* Timeline and shared precision controls: no side-stripe treatments. */
 .election-navigation { align-items: center; gap: 2px; }

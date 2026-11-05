@@ -49,7 +49,9 @@ for(const lang of ['he','en']) for(const theme of ['light','dark']) for(const ph
       };
       await check();
       if(c.name==='owner') {
-        await expect(page.locator('.chamber .graphic-change-row:visible')).toHaveCount(phone?9:0);
+        // seat changes are said in the change line and on each list row (directly under the chamber on phones), not again under the chamber
+        await expect(page.locator('.chamber .graphic-change-row')).toHaveCount(0);
+        await expect(page.locator('.lbars .lb-row .delta-segment')).toHaveCount(9);
         await expect(page.locator('.baseline-mini [data-reference-seat]')).toHaveCount(120);
         const lefts=await page.locator('.strip .corridor').evaluateAll(nodes=>nodes.map(n=>n.getBoundingClientRect().left));
         expect(lefts).toEqual([...lefts].sort((a,b)=>a-b));
@@ -92,10 +94,11 @@ test('chamber export retains labels and standalone comparison ink',async({page})
   expect(svg).toMatch(/stroke-dasharray="4(?:px)?[, ]+3(?:px)?"/);
   await expect(page.locator('.baseline-mini [data-reference-seat]')).toHaveCount(120);
   await expect(page.locator('.baseline-mini [data-lost]')).toHaveCount(9);
-  await page.locator('.chamber .desktop-changes summary').click();
-  const readout=(await page.locator('.chamber .graphic-changes').innerText()).replace(/[\u2066-\u2069]/g,'');
-  expect(readout).toContain('0 → 4 (+4)');
-  expect(readout).toContain('0 → 5 (+5)');
+  // the per-list seat changes are said once, in the change line, not again under the chamber
+  await expect(page.locator('.chamber .graphic-changes')).toHaveCount(0);
+  const readout=(await page.locator('.session').innerText()).replace(/[\u2066-\u2069]/g,'');
+  expect(readout).toContain('Meretz 4 (+4)');
+  expect(readout).toContain('Balad 5 (+5)');
 });
 
 
@@ -115,8 +118,8 @@ test('summary, graphics and Compare default follow the same reference setting',a
     await expect(page.locator('.session')).toContainText(changed?'Meretz':'No seats changed');
     await expect(page.locator('.baseline-mini [data-reference-seat]')).toHaveCount(changed?120:0);
     if(changed) {
-      await expect(page.locator('.chamber .desktop-changes summary')).toHaveText('9 lists changed');
-      await expect(page.locator('.chamber .desktop-changes')).not.toHaveAttribute('open');
+      await expect(page.locator('.session')).toContainText('+4 more');
+      await expect(page.locator('.chamber .graphic-changes')).toHaveCount(0);
       const order=await page.locator('.strip .corridor').evaluateAll(nodes=>nodes.map(n=>n.textContent));
       expect(order[1]).toContain('No bloc');
       const x=await page.locator('.chamber [data-seat][data-bloc="__none"]').evaluateAll(nodes=>nodes.map(n=>Number(n.getAttribute('cx'))));

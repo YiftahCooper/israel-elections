@@ -240,7 +240,7 @@ A restrained cool-neutral board with one navy accent; the only saturated colour 
 
 ## Layout
 
-**The board (the Overview tab).** A sticky 52px band, then a sticky one-line tools strip naming the Overview, Scenarios and every tool, then (once edited) a one-line "What changed" summary led by the scenario's name, any banners, and the work area (padding 12px 16px 28px, 12px gaps). The board is the lists column (`minmax(300px, 380px)`) and the centre (the chamber, the bloc strip, the figures); choosing a list, or a bloc, adds a third column, the side panel (`minmax(360px, 430px)`); a list's panel takes precedence over the bloc editor. **Tool pages** (every other tab) are one full-width panel; choosing a list from a tool page opens the same panel as a drawer from the inline-end edge.
+**The board (the Overview tab).** A sticky 52px band, then a sticky one-line tools strip naming the Overview, Scenarios and every tool, then a fixed one-line "What changed" summary (present before the first edit, sticky under the strip from 1101px; two fixed lines on phones), any banners, and the work area (padding 12px 16px 28px, 12px gaps). The board is the lists column (`clamp(300px, 26vw, 380px)`, the same width with or without the side panel) and the centre (the chamber, the bloc strip, the figures); choosing a list, or a bloc, adds a third column, the side panel (`clamp(360px, 30vw, 430px)`); a list's panel takes precedence over the bloc editor. **Tool pages** (every other tab) are one full-width panel; choosing a list from a tool page opens the same panel as a drawer from the inline-end edge.
 
 **Desktop (1101px and up).** The lists column sticks below the measured header and tools strip. The side panel is fixed within its grid column and viewport; its header stays visible while its body scrolls independently.
 
@@ -321,7 +321,7 @@ Key numbers as a dense auto-fill grid of 132px-minimum tiles: 12.5px secondary k
 A 120-seat hemicycle (or blocks), always on the 120-seat scale. Blocks keep a fixed 20 × 6 tray, with bold boundaries only around contiguous bloc groups. Seats fill with party colour (0.18s); when a list is selected the rest dim to .22 (.38 dark). A floating tooltip uses the Pop shadow.
 
 ### Session Summary and Banners
-"What changed" is a single 13.5px line on surface with a hairline beneath: 700 label, then net moves in ink. Banners are full-width 13.5px strips: warn (amber ground, brown ink), error (pale red), info (quiet surface, dismissible).
+"What changed" is a single 13.5px line on surface with a hairline beneath: 700 label, then net moves in ink (each list as now and signed change, as blocs). Its height never changes: overflow scrolls sideways behind a trailing fade, and History opens as a popover, so an edit never pushes the board down. Banners are full-width 13.5px strips: warn (amber ground, brown ink), error (pale red), info (quiet surface, dismissible).
 
 ### Motion
 State moves, it does not perform: switch 0.15s; corridors and colour pieces 0.3s ease; seat fill 0.18s; chart bars 0.4s; the majority bar 0.45s; a changed seat count flashes focus blue once over 1.2s. All of it stops under reduced motion. During a slider drag, graphics follow the pointer without easing or repeated flashes; searches, edit markers and history use committed inputs. Releasing commits one undoable edit. Seat deltas and the Restore votes slot reserve their space so controls stay under the pointer. Crossing either side of a majority briefly highlights the existing bloc count in focus blue.

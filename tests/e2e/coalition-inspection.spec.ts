@@ -55,7 +55,7 @@ test('filters remain unchanged when inspecting and community index drives search
   await page.goto('/');
   await page.getByRole('tab', { name: 'Coalitions', exact: true }).click();
   await page.locator('.coal-choice').first().getByRole('button', { name: 'Any', exact: true }).click();
-  await expect(page.locator('.session')).toHaveCount(0);
+  await expect(page.locator('.session')).toContainText('No changes yet');
   await expect(page.locator('.band').getByRole('button', { name: 'Undo', exact: true })).toBeDisabled();
   await page.locator('.coal-choice').first().getByRole('button', { name: 'In', exact: true }).click();
   const edited = await page.locator('.session').innerText();
