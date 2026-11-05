@@ -287,7 +287,8 @@
         "Recommendation dates: Religious Zionism–Zehut, Shas and Yisrael Beiteinu on 4 November; remaining confirmed recommendations on 5 November.",
         "President notices were retrieved directly in this pass, upgrading the earlier report of inaccessible official originals.",
         "Likud remains unknown at this check; its projected support for its leader is not recorded as fact.",
-        "Rechecked at 20:36 Israel time after the scheduled 20:30 Likud meeting. The retrieved President’s Residence homepage/archive and targeted searches did not confirm the formal Likud recommendation; the Maariv reader still exposed the 20:00 update. This is a retrieval gap, not proof the meeting or recommendation had not occurred."
+        "Rechecked at 20:36 Israel time after the scheduled 20:30 Likud meeting. The retrieved President’s Residence homepage/archive and targeted searches did not confirm the formal Likud recommendation; the Maariv reader still exposed the 20:00 update. This is a retrieval gap, not proof the meeting or recommendation had not occurred.",
+        "Rechecked on 5 November 2026 at 20:51 Israel time: the President’s Residence homepage and news archive, plus targeted official/reputable-news searches, still did not supply a formal Likud recommendation or mandate decision. Retrieval remains incomplete; the scheduled meeting time is not evidence of its outcome."
       ]
     }
   ],
@@ -319,7 +320,7 @@
         ]
       }
     ],
-    "outcomeNote": "Formation in progress; at the 5 November 2026, 20:36 Israel-time retrieval check no tasking or completed new government was verified."
+    "outcomeNote": "Formation in progress; at the 5 November 2026, 20:51 Israel-time retrieval check no tasking or completed new government was verified."
   },
   "term": {
     "inclusionRule": "two-independent-chronologies-one-official-or-academic",
@@ -333,10 +334,10 @@
     "note": "IDI August 2026 Q7 is vote influence, a separate construct. No most-important-problem card is populated; see issue-polling-sources.md."
   },
   "gaps": [
-    "Likud’s formal recommendation and the final presidential tally were not confirmed in the 20:36 retrieval check. Its 20:30 meeting time had elapsed; no conclusion about actual non-occurrence follows from the unchanged retrieved pages.",
+    "Likud’s formal recommendation and the final presidential tally remain unconfirmed in the 20:51 retrieval check (previous cutoff 20:36). No conclusion about actual non-occurrence follows from unchanged retrieved pages.",
     "No mandate, new government, Knesset inauguration or term end verified; future scheduled steps are not completed events.",
     "Gazette publication and official seat allocation not independently retrieved.",
     "No qualifying general-problem survey topline; vote-influence percentages are not substituted."
   ],
-  "asOf": "2026-11-05T20:36:00+02:00"
+  "asOf": "2026-11-05T20:51:00+02:00"
 }
