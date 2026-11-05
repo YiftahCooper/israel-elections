@@ -198,8 +198,8 @@ export async function build(n: 20 | 21, national: National, expectedCounts: Reco
   const ds: ElectionDataset = {
     schemaVersion: DATASET_SCHEMA_VERSION, id: `k${n}`, knesset: n, electionDate: date, nameHe: `הבחירות לכנסת ה-${n}`, nameEn: `Election to the ${n === 20 ? '20th' : '21st'} Knesset`,
     status: { stage: 'official-final', asOf,
-      noteHe: 'תוצאות רשמיות סופיות. המועמדים לפי סדר הרישום בילקוט הפרסומים; הודעות התפטרות ידועות בהערות. לא מוצגת השתייכות לגושים.',
-      noteEn: 'Official final results. Candidates follow the gazetted registration order; known resignation notices are labelled. No default blocs assigned.' },
+      noteHe: 'תוצאות רשמיות סופיות. המועמדים לפי סדר הרישום בילקוט הפרסומים; הודעות התפטרות ידועות בהערות.',
+      noteEn: 'Official final results. Candidates follow the gazetted registration order; known resignation notices are labelled.' },
     ruleSetId: 'il-2014-bader-ofer-3.25', totals: { registered: national.registered, votesCast: national.votesCast, invalid: national.invalid, valid: national.valid, ballotBoxes: geo.ballotRows, ...geographyTotals(geo.rows) },
     lists, agreements: agreementRecords(n, pairs, `k${n}-surplus-gazette`), blocs: [], officialSeats: officialSeatsOf(n, national.lists), officialSeatsSourceId: nationalSource,
     sourceIds: [...ids, 'law-elections'], buildInfo: { builtAt: new Date().toISOString(), rawSha256 },

@@ -425,35 +425,35 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k20.json",
-      "sha256": "1a9954651910ee8026046f8dd385fdfc5db08ad0a866b51a998e24a047546351",
+      "sha256": "c425724b31ea53f1185a69128437eda586003023c4b111c4c0e9611263814128",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k21": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k21.json",
-      "sha256": "092463e8746ceea8b79e53ab63e632746a3af6bbf8fc1b655a347fbbdda57e98",
+      "sha256": "e9c6d8f78175e86602dfd2a56861d7dc6c970f26c717e1cc8a738c1a7f683256",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k22": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k22.json",
-      "sha256": "0522280c9eebaeea808b4acb209f86ddb43417a26f3e59288b523ce596ac7d9e",
+      "sha256": "cfaec8a8e1a0ad9a138ef11912520f9380d076ed9852055d62380b9ab733aecd",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k23": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k23.json",
-      "sha256": "ad5b20c2dc1e4910bfd37c18ec495f90b01d85eba4a55a03d0e9ca5b14f63062",
+      "sha256": "5372195b230ae24bdf7cc8799d8c13c67368aa703fddd81c00863f0d204a5524",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k24": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k24.json",
-      "sha256": "9b3f1bcf5b89188159eb593f1cc47767da6cef34b544f7ef3592253e6c6dd01b",
+      "sha256": "44b868956a12ad9d4bbfeabbb571ec690976f03b10dbc957e9e21755cb41907f",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k25": {
@@ -2636,7 +2636,7 @@
       "electionId": "k20",
       "electionDate": "2015-03-17",
       "datasetPath": "public/data/k20.json",
-      "datasetSha256": "1a9954651910ee8026046f8dd385fdfc5db08ad0a866b51a998e24a047546351",
+      "datasetSha256": "c425724b31ea53f1185a69128437eda586003023c4b111c4c0e9611263814128",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2015-03-25",
@@ -2785,7 +2785,7 @@
       "electionId": "k21",
       "electionDate": "2019-04-09",
       "datasetPath": "public/data/k21.json",
-      "datasetSha256": "092463e8746ceea8b79e53ab63e632746a3af6bbf8fc1b655a347fbbdda57e98",
+      "datasetSha256": "e9c6d8f78175e86602dfd2a56861d7dc6c970f26c717e1cc8a738c1a7f683256",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -2924,7 +2924,7 @@
       "electionId": "k22",
       "electionDate": "2019-09-17",
       "datasetPath": "public/data/k22.json",
-      "datasetSha256": "0522280c9eebaeea808b4acb209f86ddb43417a26f3e59288b523ce596ac7d9e",
+      "datasetSha256": "cfaec8a8e1a0ad9a138ef11912520f9380d076ed9852055d62380b9ab733aecd",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -3047,7 +3047,7 @@
       "electionId": "k23",
       "electionDate": "2020-03-02",
       "datasetPath": "public/data/k23.json",
-      "datasetSha256": "ad5b20c2dc1e4910bfd37c18ec495f90b01d85eba4a55a03d0e9ca5b14f63062",
+      "datasetSha256": "5372195b230ae24bdf7cc8799d8c13c67368aa703fddd81c00863f0d204a5524",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -3171,7 +3171,7 @@
       "electionId": "k24",
       "electionDate": "2021-03-23",
       "datasetPath": "public/data/k24.json",
-      "datasetSha256": "9b3f1bcf5b89188159eb593f1cc47767da6cef34b544f7ef3592253e6c6dd01b",
+      "datasetSha256": "44b868956a12ad9d4bbfeabbb571ec690976f03b10dbc957e9e21755cb41907f",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",

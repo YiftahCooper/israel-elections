@@ -67,7 +67,9 @@ const EXPECTED: Record<Family, string> = {
   // 5 Nov feedback: English labels/provenance and nearest-period logo refs (F9/F13), then bloc colours
   // and build timestamps; recursively omitting color/builtAt reproduces the previous merged datasets.
   // Other four digests unchanged.
-  model: 'da0ff97b3a27f034ca12fe427bbb9de2c35768ff3c2d6f6f7200cc8abb6cf46f',
+  // k20–k24 stale bloc-note removal: only status.noteEn/noteHe and k20/k21 builtAt differ.
+  // Current model with HEAD datasets reproduces da0ff97b…; all other dataset fields verified equal.
+  model: 'd14f291f72083702a1e8bf9a1792afc9abf24df5fc824cb82dc5f155193e47ba',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };
