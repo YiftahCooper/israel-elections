@@ -4510,5 +4510,29 @@
   "retrievedAt": "2026-11-04T12:13:43.563560+00:00",
   "bytes": 606,
   "sha256": "808514738f30fb9ae6619fd6da2aef800d871ab71a29052fd15a61e602d7f11c"
+ },
+ {
+  "id": "logo-k1-herut-print-page",
+  "file": "logos/k1/herut-jabotinsky-35059.html",
+  "url": "https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%9E%D7%AA%D7%A7%D7%93%D7%9D/%D7%A4%D7%A8%D7%99%D7%98?itemId=35059",
+  "publisher": "Jabotinsky Institute; original publisher: Herut",
+  "official": true,
+  "description": "Herut official campaign poster, 1949-01-01; page; archive catalogue item 35059.",
+  "method": "http",
+  "retrievedAt": "2026-11-05",
+  "bytes": 33788,
+  "sha256": "b1b57f271c5b83bb297186166ed6fda2ab296bccd7cbf9188b326d9d68a404fd"
+ },
+ {
+  "id": "logo-k1-herut-print-asset",
+  "file": "logos/k1/herut-jabotinsky-35059.jpg",
+  "url": "https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%9B%D7%A8%D7%96%D7%95%D7%AA/22.05.2013/2994_9735.jpg",
+  "publisher": "Jabotinsky Institute; original publisher: Herut",
+  "official": true,
+  "description": "Herut official campaign poster, 1949-01-01; asset; archive catalogue item 35059.",
+  "method": "http",
+  "retrievedAt": "2026-11-05",
+  "bytes": 54461,
+  "sha256": "dc33334291c5222d0f1118898548a72491e5740a4453081e2783347f138d6e2e"
  }
 ]

@@ -136,6 +136,39 @@
       "originalSha256": "55bc6f08939a2a0d218306420a80258ee3f3ae5c3ed37020320a65292286c3c5",
       "rights": "free-licence",
       "bytes": 5014
+    },
+    {
+      "letters": "ח",
+      "file": "logos/herut-print-1949.png",
+      "sourceUrl": "https://www.jabotinsky.org/%D7%90%D7%A8%D7%9B%D7%99%D7%95%D7%9F/%D7%97%D7%99%D7%A4%D7%95%D7%A9-%D7%9E%D7%AA%D7%A7%D7%93%D7%9D/%D7%A4%D7%A8%D7%99%D7%98?itemId=35059",
+      "licence": "Fair use for identification; copyright remains with the rights holder",
+      "attribution": "Herut; dated official campaign poster (1949-01-01), Jabotinsky Institute item 35059. Cropped from a dated official publication; no redraw or recolouring.",
+      "hosted": true,
+      "inUseEvidence": "Inspected Jabotinsky Institute catalogue item 35059 (כר-2994) names Herut (תנועת החרות) as creator, subject elections, and dates the advertised meeting to 1.1.1949; the retained scan visibly prints \"שבת ל׳ כסלו 1-1-49\". The catalogue year field says 1948 (estimated), which conflicts with its own title and the printed date; the printed date is used. Logo is the \"מולדת וחרות\" emblem lockup cropped from the poster masthead; a faint edge of an archive date stamp touches the lower-left corner and was not removed. Not extended to other elections.",
+      "confidence": "medium",
+      "evidenceId": "jabotinsky-herut-1949-35059",
+      "assetSourceUrl": "https://www.infocenters.co.il/jabo/jabo_multimedia/%D7%9B%D7%A8%D7%96%D7%95%D7%AA/22.05.2013/2994_9735.jpg",
+      "status": "verified",
+      "sha256": "738664003d2fb28bf33f95266ff6aa038f29d4d14a3f72b7b989753fc5285ca3",
+      "originalSha256": "dc33334291c5222d0f1118898548a72491e5740a4453081e2783347f138d6e2e",
+      "rights": "fair-use-identification",
+      "bytes": 9535,
+      "inUseDate": "1949-01-01",
+      "publicationEvidence": {
+        "page": "logo-k1-herut-print-page",
+        "asset": "logo-k1-herut-print-asset",
+        "publicationDate": "1949-01-01",
+        "cropBox": [
+          309,
+          26,
+          438,
+          66
+        ],
+        "originalDimensions": [
+          448,
+          333
+        ]
+      }
     }
   ]
 }
