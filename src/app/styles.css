@@ -810,6 +810,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .edit-tooltip { position: fixed; z-index: 100; padding: 6px; background: var(--surface); color: var(--ink); border: 1px solid var(--rule-2); inline-size: max-content; max-inline-size: min(320px, calc(100vw - 16px)); max-block-size: calc(100vh - 16px); overflow: auto; white-space: normal; overflow-wrap: anywhere; font-size: 12px; line-height: 1.45; }
 .part-edits { display: inline-flex; flex-wrap: wrap; gap: 2px; }
 .start-from { margin-block: 8px; flex-wrap: wrap; }
+/* in a list's panel the reset row keeps its height, so an edit below it never pushes the controls down */
+.ld .start-from { min-height: 30px; }
 .start-from select { max-width: 100%; min-width: 0; }
 .start-from label { flex-wrap: wrap; min-width: 0; }
 @media print { .edit-tooltip { display: inline; position: static; border: 0; } }

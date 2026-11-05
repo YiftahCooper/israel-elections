@@ -1,14 +1,23 @@
+import './turnout.css';
 import { TurnoutSteps } from './TurnoutSteps.tsx';
 import { StartFrom } from './StartFrom.tsx';
-import { useEffect, useMemo, useState } from 'react';
-import { isEnvelopeRow, type ElectionId, type LocalityDataset } from '../../data/schema.ts';
-import { apportion } from '../../model/actions.ts';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { Download, Save, Trash2, Upload } from 'lucide-react';
+import type { ElectionId, LocalityDataset, LocalityGroup } from '../../data/schema.ts';
 import type { Scenario } from '../../model/scenario.ts';
-import { listLabel } from '../derive.ts';
+import { applyAction } from '../../model/actions.ts';
+import {
+  groupAction, groupChange, parseVoterGroups, resolveGroup, VOTER_GROUP_KIND,
+  type GroupFacts, type GroupProblem, type VoterGroupMembers, type VoterGroupPreset,
+} from '../../model/voterGroups.ts';
+import { allocationOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, fmtPct } from '../format.ts';
+import { fmtInt, signed } from '../format.ts';
 import { dispatch, toast, useStore } from '../store.ts';
+import { deleteVoterGroup, exportVoterGroup, newGroupId, saveVoterGroup, useVoterGroups } from '../voterGroupStore.ts';
+import { ChoicePicker, type Choice } from './ChoicePicker.tsx';
 import { Info, NumberInput } from './ui.tsx';
+export { mapToScenario } from '../../model/voterGroups.ts';
 
 const locCache = new Map<ElectionId, Promise<LocalityDataset>>();
 /** Loads an election's locality results; `available` is false when the election has none. */
@@ -27,127 +36,214 @@ export function useLocalities(id: ElectionId, available = true) {
   return { data: d, error: err };
 }
 
-/** Maps historical-list vote columns onto the scenario's (possibly merged or split) lists. */
-export function mapToScenario(s: Scenario, listIds: string[], votes: number[]): number[] {
-  return s.lists.map((l) => l.originIds.reduce((t, o) => {
-    const k = listIds.indexOf(o); if (k < 0) return t;
-    const sharers = s.lists.filter((x) => x.originIds.includes(o));
-    const tot = sharers.reduce((u, x) => u + x.votes, 0);
-    return t + (sharers.length === 1 || tot === 0 ? votes[k] : (votes[k] * l.votes) / tot);
-  }, 0));
+type Source = { id: string; publisher?: string; url?: string; official?: boolean };
+let sourcesP: Promise<Source[]> | null = null;
+function useSources() {
+  const [src, setSrc] = useState<Source[]>([]);
+  useEffect(() => { (sourcesP ??= fetch('data/sources.json').then((r) => r.json()).catch(() => [])).then(setSrc); }, []);
+  return src;
 }
 
+type Draft = { members: VoterGroupMembers | null; name: string; savedId?: string; builtIn?: boolean; change: number; vote: 'observed' | 'shares'; shares: Record<string, string>; sharesFor?: ElectionId };
+const EMPTY: Draft = { members: null, name: '', change: 0, vote: 'observed', shares: {} };
+// the group being edited outlives election switches, so a sourced group can be tried on each election
+let lastDraft: Draft = EMPTY;
+const isFacts = (f: GroupFacts | GroupProblem | null): f is GroupFacts => !!f && typeof f === 'object';
+const pct1 = (n: number) => `${n.toFixed(1)}%`;
+
 export function Turnout({ s }: { s: Scenario }) {
-  const L = useL();
-  const lang = useLang();
+  const L = useL(), lang = useLang();
   const hasLocalities = useStore((st) => st.datasets[s.electionId]?.hasLocalities !== false);
   const { data } = useLocalities(s.electionId, hasLocalities);
-  const [label, setLabel] = useState('');
-  const [electorate, setElectorate] = useState(1_000_000);
-  const [cur, setCur] = useState('50');
-  const [hyp, setHyp] = useState('60');
-  const [inv, setInv] = useState('1');
-  const [prefMode, setPrefMode] = useState<'group' | 'custom'>('custom');
-  const [custom, setCustom] = useState<Record<string, string>>({});
-  // preferences are keyed by list id (never by position) and dropped when the lists change
-  const [groupPref, setGroupPref] = useState<Record<string, number> | null>(null);
-  const listKey = s.lists.map((l) => l.id).join('|');
-  useEffect(() => { setGroupPref(null); setBasis(''); setPrefMode('custom'); }, [listKey]);
-  const [basis, setBasis] = useState<string>('');
-  // locality preset
-  const [presetLists, setPresetLists] = useState<string[]>([]);
-  const [presetPct, setPresetPct] = useState('50');
+  const saved = useVoterGroups();
+  const sources = useSources();
+  const [d, setDraft] = useState<Draft>(lastDraft);
+  const set = (patch: Partial<Draft>) => setDraft((x) => (lastDraft = { ...x, ...patch }));
+  const file = useRef<HTMLInputElement>(null);
+  const [showAll, setShowAll] = useState(false);
 
-  const num = (t: string) => { const n = Number(String(t).replace('%', '').trim()); return t.trim() !== '' && Number.isFinite(n) ? n : NaN; };
-  const curN = num(cur), hypN = num(hyp), invN = num(inv);
-  const inputsOk = Number.isFinite(curN) && Number.isFinite(hypN) && Number.isFinite(invN) && curN >= 0 && hypN <= 100 && invN >= 0 && invN < 100;
-  const added = inputsOk ? Math.max(0, Math.round((electorate * (hypN - curN)) / 100)) : 0;
-  const invalid = Math.round((added * (inputsOk ? invN : 0)) / 100);
-  const valid = added - invalid;
-  const weights = s.lists.map((l) => (prefMode === 'group' && groupPref ? groupPref[l.id] ?? 0 : Math.max(0, num(custom[l.id] ?? '') || 0)));
-  const wsum = weights.reduce((a, b) => a + b, 0);
-  const alloc = useMemo(() => (wsum > 0 && valid > 0 ? apportion(valid, weights) : weights.map(() => 0)), [valid, weights, wsum]);
+  const groupName = (g: LocalityGroup) => (lang === 'he' ? g.nameHe : g.nameEn);
+  const sourced = useMemo(() => (data?.groups ?? []).map((g) => ({ g, f: resolveGroup(s, data, { type: 'sourced', groupId: g.id }) })), [s, data]);
+  const facts = useMemo(() => (d.members ? resolveGroup(s, data, d.members) : null), [s, data, d.members]);
+  const f = isFacts(facts) ? facts : null;
+  const curPct = f && f.electorate ? (100 * f.cast) / f.electorate : 0;
+  const canObserve = !!f?.mix && f.mix.some((x) => x > 0);
+  const vote = d.vote === 'observed' && canObserve ? 'observed' : 'shares';
+  const shareOf = (id: string) => { const n = Number(d.shares[id]); return d.sharesFor && d.sharesFor !== s.electionId ? 0 : Number.isFinite(n) && n > 0 ? n : 0; };
+  const weights = vote === 'observed' ? f!.mix! : s.lists.map((l) => shareOf(l.id));
+  const shareSum = s.lists.reduce((t, l) => t + shareOf(l.id), 0);
+  const change = useMemo(() => (f ? groupChange(s, f, d.change, weights) : null), [s, f, d.change, weights.join(',')]); // eslint-disable-line react-hooks/exhaustive-deps
+  const label = `${d.name || L('Voter group', 'קבוצת מצביעים')} ${d.change >= 0 ? '+' : '−'}${Math.abs(d.change).toFixed(1)} ${L('pp', 'נק׳')}`;
+  const seatDiff = useMemo(() => {
+    if (!change || change.error || !change.delta) return null;
+    try {
+      const before = allocationOf(s);
+      const after = allocationOf(applyAction(s, groupAction(change, label)));
+      return s.lists.map((l) => ({ l, n: (after.lists.find((x) => x.id === l.id)?.seats ?? 0) - (before.lists.find((x) => x.id === l.id)?.seats ?? 0) })).filter((x) => x.n !== 0).sort((a, b) => b.n - a.n);
+    } catch { return null; }
+  }, [s, change, label]);
 
-  const buildFromLocalities = () => {
-    if (!data) return;
-    const cols = presetLists.map((id) => s.lists.find((l) => l.id === id)!).flatMap((l) => l.originIds).map((o) => data.listIds.indexOf(o)).filter((k) => k >= 0);
-    const p = Number(presetPct) / 100;
-    const rows = data.rows.filter((r) => !isEnvelopeRow(r) && r.valid > 0 && cols.reduce((t, k) => t + r.votes[k], 0) >= p * r.valid);
-    // older elections lack locality electorates: the turnout model cannot be built from them
-    if (rows.some((r) => r.registered === null)) { toast('error', L('This election’s locality data has no registered-voter counts, so turnout cannot be estimated from it.', 'בנתוני היישובים של בחירות אלה אין מספרי בעלי זכות בחירה, ולכן אי אפשר לאמוד מהם הצבעה.')); return; }
-    const reg = rows.reduce((t, r) => t + (r.registered ?? 0), 0), cast = rows.reduce((t, r) => t + r.votesCast, 0), inval = rows.reduce((t, r) => t + r.invalid, 0);
-    const sum = data.listIds.map((_, k) => rows.reduce((t, r) => t + r.votes[k], 0));
-    const curPct = (cast / Math.max(1, reg)) * 100;
-    setElectorate(reg);
-    setCur(curPct.toFixed(2));
-    setHyp(Math.min(100, curPct + 10).toFixed(2)); // a starting assumption the user can change
-    setInv(((inval / Math.max(1, cast)) * 100).toFixed(2));
-    const mapped = mapToScenario(s, data.listIds, sum);
-    setGroupPref(Object.fromEntries(s.lists.map((l, i) => [l.id, mapped[i]])));
-    setPrefMode('group');
-    setBasis(L(`${rows.length} localities where ${presetLists.map((id) => listLabel(s.lists.find((l) => l.id === id)!, lang)).join(' + ')} received ≥ ${presetPct}% of valid votes`, `${rows.length} יישובים שבהם ${presetLists.map((id) => listLabel(s.lists.find((l) => l.id === id)!, lang)).join(' + ')} קיבלו ≥ ${presetPct}% מהקולות הכשרים`));
-    if (!label) setLabel(L('Locality group', 'קבוצת יישובים'));
+  const preset = (): VoterGroupPreset | null => d.members && {
+    kind: VOTER_GROUP_KIND, schemaVersion: 1, id: d.savedId ?? newGroupId(), name: d.name.trim() || L('Voter group', 'קבוצת מצביעים'), createdAt: new Date().toISOString(),
+    members: d.members, turnoutChange: d.change,
+    vote: vote === 'observed' ? { type: 'observed' } : { type: 'shares', electionId: s.electionId, shares: Object.fromEntries(s.lists.filter((l) => shareOf(l.id) > 0).map((l) => [l.id, shareOf(l.id)])) },
   };
+  const load = (p: VoterGroupPreset, builtIn = false) => setDraft(lastDraft = {
+    members: p.members, name: p.name, savedId: builtIn ? undefined : p.id, builtIn, change: p.turnoutChange, vote: p.vote.type,
+    shares: p.vote.type === 'shares' ? Object.fromEntries(Object.entries(p.vote.shares).map(([k, v]) => [k, String(v)])) : {}, sharesFor: p.vote.type === 'shares' ? p.vote.electionId : undefined,
+  });
+  const choose = (v: string) => {
+    if (v === 'manual') return load({ ...base(), name: L('My group', 'הקבוצה שלי'), members: { type: 'manual', electorate: 100_000, turnoutPct: 50, invalidPct: 1 }, vote: { type: 'shares', electionId: s.electionId, shares: {} } });
+    if (v === 'share') return load({ ...base(), name: L('Localities by vote', 'יישובים לפי הצבעה'), members: { type: 'voteShare', electionId: s.electionId, listIds: [], minPct: 50 } });
+    if (v.startsWith('src:')) { const g = data?.groups?.find((x) => x.id === v.slice(4)); if (g) load({ ...base(), name: groupName(g), members: { type: 'sourced', groupId: g.id } }, true); return; }
+    const p = saved.find((x) => x.id === v.slice(6)); if (p) load(p);
+  };
+  const base = (): VoterGroupPreset => ({ kind: VOTER_GROUP_KIND, schemaVersion: 1, id: '', name: '', createdAt: '', members: { type: 'sourced', groupId: '' }, turnoutChange: 0, vote: { type: 'observed' } });
+  const value = !d.members ? '' : d.savedId ? `saved:${d.savedId}` : d.members.type === 'sourced' ? `src:${d.members.groupId}` : d.members.type === 'voteShare' ? 'share' : 'manual';
+
+  const problemText = (p: GroupProblem) => ({
+    'needs-localities': L('Needs locality results (2003 on)', 'דורש תוצאות לפי יישובים (מ-2003)'),
+    'no-registered': L('No registered-voter counts by locality', 'אין מספרי בעלי זכות בחירה לפי יישוב'),
+    'unknown-group': L('Not defined for this election', 'לא מוגדר לבחירות אלה'),
+    'other-election': L('Defined for another election', 'מוגדר לבחירות אחרות'),
+    empty: L('No localities match', 'אין יישובים מתאימים'),
+  })[p];
+  const options: Choice[] = [
+    ...sourced.map(({ g, f }) => ({ value: `src:${g.id}`, label: groupName(g), group: L('Official locality data', 'נתונים רשמיים לפי יישובים'), disabled: !isFacts(f),
+      detail: isFacts(f) ? L(`${fmtInt(f.localities!)} localities · ${fmtInt(f.electorate)} registered · turnout ${pct1(100 * f.cast / f.electorate)}`, `${fmtInt(f.localities!)} יישובים · ${fmtInt(f.electorate)} בעלי זכות · הצבעה ${pct1(100 * f.cast / f.electorate)}`) : problemText(f) })),
+    ...(!hasLocalities ? [{ value: 'none', label: L('Groups from locality results', 'קבוצות מתוצאות היישובים'), group: L('Official locality data', 'נתונים רשמיים לפי יישובים'), disabled: true, detail: problemText('needs-localities') }] : []),
+    ...(data ? [{ value: 'share', label: L('Localities where chosen lists got ≥ X%', 'יישובים שבהם רשימות נבחרות קיבלו ≥ X%'), group: L('Official locality data', 'נתונים רשמיים לפי יישובים'), disabled: data.rows.every((r) => r.registered === null), detail: data.rows.every((r) => r.registered === null) ? problemText('no-registered') : undefined }] : []),
+    ...saved.map((p) => { const r = resolveGroup(s, data, p.members); return { value: `saved:${p.id}`, label: p.name, group: L('Saved in this browser', 'שמורות בדפדפן זה'), detail: isFacts(r) ? `${signed(Math.round(p.turnoutChange * 10) / 10)} ${L('pp', 'נק׳')}` : problemText(r) }; }),
+    { value: 'manual', label: L('Type the numbers', 'הזנת מספרים'), group: L('Your own', 'משלכם') },
+  ];
+
+  const sg = d.members?.type === 'sourced' ? data?.groups?.find((g) => g.id === (d.members as { groupId: string }).groupId) : undefined;
+  const lists = useMemo(() => [...s.lists].filter((l) => !l.withdrawn).sort((a, b) => b.votes - a.votes), [s.lists]);
+  const mixTotal = f?.mix?.reduce((a, b) => a + b, 0) ?? 0;
+  const apply = () => { if (change && !change.error && change.delta) dispatch(groupAction(change, label)); };
 
   return (
-    <div><StartFrom s={s} part="totals" /><TurnoutSteps s={s} />
-      <div className="callout small" style={{ marginBottom: 10 }}>
-        <b>{L('Hypothetical modelling', 'מודל היפותטי')}</b>{' '}<Info title={L('Hypothetical modelling', 'מודל היפותטי')}>
-        {L('Everything here is an assumption you supply, not a historical result. Locality-based groups use official results by locality: they describe places, not individual voters (a mostly-Arab locality is not proof of how each resident voted), and votes in double envelopes are not attributed to localities.', 'כל מה שכאן הוא הנחה שלכם ואינו תוצאה היסטורית. קבוצות לפי יישובים מבוססות על התוצאות הרשמיות ליישוב: הן מתארות מקומות, לא מצביעים יחידים (יישוב שרוב תושביו ערבים אינו מוכיח כיצד הצביע כל תושב), וקולות המעטפות החיצוניות אינם משויכים ליישובים.')}</Info>
-      </div>
-      <div className="grid2 stack-sm" style={{ alignItems: 'start', gap: 18 }}>
-        <div>
-          <h3>{L('1. Define the group', '1. הגדרת הקבוצה')}</h3>
-          {hasLocalities && <details open={!!data}>
-            <summary className="small">{L('Start from official locality results (optional)', 'התחלה מהתוצאות הרשמיות לפי יישובים (רשות)')}</summary>
-            <div className="small" style={{ margin: '6px 0' }}>{L('Localities where these lists together received at least', 'יישובים שבהם הרשימות האלה יחד קיבלו לפחות')}{' '}
-              <input type="text" value={presetPct} onChange={(e) => setPresetPct(e.target.value)} style={{ width: 56 }} aria-label="%" />%:
-            </div>
-            <div className="tablewrap" tabIndex={0} role="region" aria-label={L('Scrollable table', 'טבלה נגללת')} style={{ maxHeight: 150 }}>
-              {[...s.lists].filter((l) => l.originIds.length).sort((a, b) => b.votes - a.votes).slice(0, 20).map((l) => (
-                <label key={l.id} className="row small" style={{ padding: '2px 8px' }}><input type="checkbox" checked={presetLists.includes(l.id)} onChange={(e) => setPresetLists(e.target.checked ? [...presetLists, l.id] : presetLists.filter((x) => x !== l.id))} />{listLabel(l, lang)}</label>
-              ))}
-            </div>
-            <button className="btn small" style={{ marginTop: 6 }} disabled={!data || !presetLists.length} onClick={buildFromLocalities}>{L('Use these localities', 'שימוש ביישובים אלה')}</button>
-            {basis && <p className="small ink2">{L('Basis: ', 'בסיס: ')}{basis}. {L('Electorate, current turnout, invalid rate and party preferences below are measured from these localities.', 'גודל הקבוצה, ההצבעה, שיעור הפסולים וההעדפות להלן נמדדו ביישובים אלה.')}</p>}
-          </details>}
-          <div className="grid2" style={{ marginTop: 8 }}>
-            <label className="field">{L('Group name', 'שם הקבוצה')}<input type="text" value={label} onChange={(e) => setLabel(e.target.value)} placeholder={L('e.g. Arab voters', 'למשל: מצביעים ערבים')} /></label>
-            <label className="field">{L('Electorate (registered voters)', 'בעלי זכות בחירה בקבוצה')}<NumberInput value={electorate} onCommit={setElectorate} label={L('Electorate', 'בעלי זכות בחירה')} /></label>
-            <label className="field">{L('Current turnout %', 'שיעור הצבעה נוכחי %')}<input type="text" inputMode="decimal" value={cur} onChange={(e) => setCur(e.target.value)} /></label>
-            <label className="field">{L('Hypothetical turnout %', 'שיעור הצבעה היפותטי %')}<input type="text" inputMode="decimal" value={hyp} onChange={(e) => setHyp(e.target.value)} /></label>
-            <label className="field">{L('Invalid-ballot rate % (of new voters)', 'שיעור פסולים % (מהמצביעים החדשים)')}<input type="text" inputMode="decimal" value={inv} onChange={(e) => setInv(e.target.value)} /></label>
-          </div>
+    <div className="turnout">
+      <div className="turnout-national"><TurnoutSteps s={s}><StartFrom s={s} part="totals" /></TurnoutSteps></div>
+
+      <section className="vg" aria-label={L('Voter group', 'קבוצת מצביעים')}>
+        <div className="vg-head">
+          <h3>{L('Voter group', 'קבוצת מצביעים')} <Info title={L('Hypothetical modelling', 'מודל היפותטי')}>
+            {L('Change one group’s turnout and see the national result. The change is your assumption, not a historical result. Locality groups describe places, not individual voters, and double-envelope votes are not attributed to localities.', 'שנו את שיעור ההצבעה של קבוצה אחת וראו את התוצאה הארצית. השינוי הוא הנחה שלכם ואינו תוצאה היסטורית. קבוצות יישובים מתארות מקומות ולא מצביעים יחידים, וקולות המעטפות החיצוניות אינם משויכים ליישובים.')}</Info></h3>
+          <ChoicePicker label={L('Voter group', 'קבוצת מצביעים')} placeholder={L('Choose a group…', 'בחירת קבוצה…')} value={value} options={options} onChange={choose} />
+          <span className="vg-files">
+            {d.members && <button type="button" className="btn small" onClick={() => {
+              const name = prompt(L('Name this voter group', 'שם לקבוצת המצביעים'), d.name)?.trim(); if (!name) return;
+              const p = preset()!; const next = { ...p, name, id: d.savedId ?? p.id }; saveVoterGroup(next); load(next); toast('info', L('Voter group saved in this browser.', 'קבוצת המצביעים נשמרה בדפדפן זה.'));
+            }}><Save className="icon sm" aria-hidden />{d.savedId ? L('Save changes', 'שמירת השינויים') : L('Save', 'שמירה')}</button>}
+            {d.members && <button type="button" className="btn small" onClick={() => exportVoterGroup(preset()!)}><Download className="icon sm" aria-hidden />{L('Export', 'ייצוא')}</button>}
+            <button type="button" className="btn small" onClick={() => file.current?.click()}><Upload className="icon sm" aria-hidden />{L('Import', 'ייבוא')}</button>
+            {d.savedId && <button type="button" className="btn small ghost" aria-label={L('Delete saved group', 'מחיקת הקבוצה השמורה')} title={L('Delete saved group', 'מחיקת הקבוצה השמורה')} onClick={() => {
+              if (!confirm(L(`Delete “${d.name}” from this browser?`, `למחוק את "${d.name}" מדפדפן זה?`))) return;
+              deleteVoterGroup(d.savedId!); set({ savedId: undefined });
+            }}><Trash2 className="icon sm" aria-hidden /></button>}
+          </span>
+          <input ref={file} type="file" accept="application/json,.json" hidden onChange={async (e) => {
+            const x = e.target.files?.[0]; e.target.value = ''; if (!x) return;
+            try { const ps = parseVoterGroups(await x.text()); ps.forEach(saveVoterGroup); load(ps[0]); toast('info', L(`Imported ${ps.length} voter group${ps.length > 1 ? 's' : ''}.`, `יובאו ${ps.length} קבוצות מצביעים.`)); }
+            catch (err) { toast('error', err instanceof Error ? err.message : String(err)); }
+          }} />
         </div>
-        <div>
-          <h3>{L('2. How do the additional voters vote?', '2. איך מצביעים המצביעים הנוספים?')}</h3>
-          <div className="row small" style={{ marginBottom: 6 }}>
-            <label className="row"><input type="radio" checked={prefMode === 'group'} disabled={!groupPref} onChange={() => setPrefMode('group')} />{L('Like the group’s current voters', 'כמו המצביעים הנוכחיים בקבוצה')}</label>
-            <label className="row"><input type="radio" checked={prefMode === 'custom'} onChange={() => setPrefMode('custom')} />{L('Custom distribution (%)', 'התפלגות מותאמת (%)')}</label>
+
+        {!d.members && <p className="small ink2">{data?.groups?.length
+          ? L('Pick a group, move its turnout, and add or remove its voters.', 'בחרו קבוצה, שנו את שיעור ההצבעה שלה והוסיפו או הסירו מצביעים.')
+          : L('Pick a saved group or type the numbers.', 'בחרו קבוצה שמורה או הזינו מספרים.')}</p>}
+
+        {d.members && <div className="vg-body">
+          <div className="vg-who">
+            {d.members.type === 'manual' && <div className="vg-fields">
+              <label className="field">{L('Registered voters', 'בעלי זכות בחירה')}<NumberInput value={d.members.electorate} label={L('Registered voters', 'בעלי זכות בחירה')} onCommit={(n) => n > 0 && set({ members: { ...(d.members as Extract<VoterGroupMembers, { type: 'manual' }>), electorate: n } })} /></label>
+              <PctField label={L('Turnout now %', 'הצבעה כיום %')} value={d.members.turnoutPct} max={100} onCommit={(n) => set({ members: { ...(d.members as Extract<VoterGroupMembers, { type: 'manual' }>), turnoutPct: n } })} />
+              <PctField label={L('Invalid %', 'פסולים %')} value={d.members.invalidPct} max={99.9} onCommit={(n) => set({ members: { ...(d.members as Extract<VoterGroupMembers, { type: 'manual' }>), invalidPct: n } })} />
+            </div>}
+            {d.members.type === 'voteShare' && (() => {
+              const m = d.members;
+              const shown = showAll ? lists : lists.slice(0, 10);
+              const pick = (l: Scenario['lists'][number]) => {
+                const on = l.originIds.every((o) => m.listIds.includes(o));
+                set({ members: { ...m, electionId: s.electionId, listIds: on ? m.listIds.filter((o) => !l.originIds.includes(o)) : [...new Set([...m.listIds, ...l.originIds])] } });
+              };
+              return <div className="vg-share">
+                <span className="small">{L('Localities where', 'יישובים שבהם')}</span>
+                <span className="vg-chips" role="group" aria-label={L('Lists', 'רשימות')}>{shown.filter((l) => l.originIds.length).map((l) => <button key={l.id} type="button" className="chip" aria-pressed={l.originIds.every((o) => m.listIds.includes(o))} onClick={() => pick(l)}><span className="swatch" style={{ background: l.color }} />{listLabel(l, lang)}</button>)}
+                  {lists.length > 10 && <button type="button" className="btn small ghost" onClick={() => setShowAll(!showAll)}>{showAll ? L('Fewer', 'פחות') : L(`+${lists.length - 10} more`, `+${lists.length - 10} נוספות`)}</button>}</span>
+                <span className="small row">{L('together got ≥', 'קיבלו יחד ≥')} <PctField label={L('Minimum share %', 'שיעור מינימלי %')} bare value={m.minPct} max={100} onCommit={(n) => set({ members: { ...m, minPct: n } })} /> {L('of valid votes', 'מהקולות הכשרים')}</span>
+              </div>;
+            })()}
+            {facts && !f && (d.members.type === 'voteShare' && !d.members.listIds.length ? <p className="small ink2">{L('Pick one or more lists.', 'בחרו רשימה אחת או יותר.')}</p> : <p className="small bad">{problemText(facts as GroupProblem)}</p>)}
+            {f && d.members.type !== 'manual' && <p className="small vg-facts">
+              {L(`${fmtInt(f.localities!)} localities · ${fmtInt(f.electorate)} registered · turnout ${pct1(curPct)} · invalid ${pct1(f.cast ? 100 * f.invalid / f.cast : 0)}`, `${fmtInt(f.localities!)} יישובים · ${fmtInt(f.electorate)} בעלי זכות · הצבעה ${pct1(curPct)} · פסולים ${pct1(f.cast ? 100 * f.invalid / f.cast : 0)}`)}{' '}
+              <Info title={L('Definition and source', 'הגדרה ומקור')}>
+                {sg ? <>{lang === 'he' ? sg.definitionHe : sg.definitionEn} {L(`Classification year ${sg.classificationYear}.`, `שנת סיווג ${sg.classificationYear}.`)}{' '}
+                  {sg.sourceIds.map((id) => sources.find((x) => x.id === id)).filter((x) => x?.official && x.url).map((x) => <a key={x!.id} href={x!.url} target="_blank" rel="noreferrer">{x!.publisher} </a>)}</>
+                  : L('Measured from this election’s official results by locality.', 'נמדד מהתוצאות הרשמיות של בחירות אלה לפי יישובים.')}
+                {' '}{(lang === 'he' ? data?.demographicNoteHe : data?.demographicNoteEn) ?? L('Places, not people. Envelopes excluded.', 'מקומות, לא אנשים. המעטפות החיצוניות אינן כלולות.')}
+              </Info></p>}
           </div>
-          <div className="tablewrap" tabIndex={0} role="region" aria-label={L('Scrollable table', 'טבלה נגללת')} style={{ maxHeight: 260 }}>
-            <table className="tbl">
-              <thead><tr><th>{L('List', 'רשימה')}</th><th className="n">{L('Share', 'חלק')}</th><th className="n">{L('Added votes', 'קולות נוספים')}</th></tr></thead>
-              <tbody>
-                {s.lists.map((l, i) => ({ l, i })).filter(({ l, i }) => (prefMode === 'custom' ? l.votes > 0 || custom[l.id] : weights[i] > 0)).sort((a, b) => (weights[b.i] - weights[a.i]) || (b.l.votes - a.l.votes)).slice(0, prefMode === 'custom' ? 20 : 14).map(({ l, i }) => (
-                  <tr key={l.id}>
-                    <td><span className="row" style={{ gap: 6 }}><span className="swatch" style={{ background: l.color }} />{listLabel(l, lang)}</span></td>
-                    <td className="n">{prefMode === 'custom' ? <input type="text" inputMode="decimal" style={{ width: 64 }} value={custom[l.id] ?? ''} onChange={(e) => setCustom({ ...custom, [l.id]: e.target.value })} aria-label={L('Share %', 'חלק %')} /> : wsum ? fmtPct(Math.round(weights[i] * 1000), Math.round(wsum * 1000), 1) : '—'}</td>
-                    <td className="n">{fmtInt(alloc[i] ?? 0)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="small">{L(`Additional voters: ${fmtInt(added)} · invalid: ${fmtInt(invalid)} · valid: ${fmtInt(valid)}`, `מצביעים נוספים: ${fmtInt(added)} · פסולים: ${fmtInt(invalid)} · כשרים: ${fmtInt(valid)}`)}{prefMode === 'custom' && wsum > 0 && Math.abs(wsum - 100) > 0.01 ? L(` (shares sum to ${wsum}%; they are normalised)`, ` (סך החלקים ${wsum}%; מנורמל)`) : ''}</p>
-          {!inputsOk && <p className="small bad">{L('Enter turnout and invalid rates as numbers between 0 and 100.', 'הזינו שיעורי הצבעה ופסולים כמספרים בין 0 ל-100.')}</p>}
-          {inputsOk && hypN < curN && <p className="small bad">{L('Only turnout increases are modelled here; use the vote tools to remove votes.', 'כאן ממודלת רק עלייה בהצבעה; להסרת קולות השתמשו בכלי הקולות.')}</p>}
-          <button className="btn primary" disabled={valid <= 0 || wsum <= 0} onClick={() => dispatch({ type: 'addVoters', allocations: s.lists.map((l, i) => ({ listId: l.id, votes: alloc[i] ?? 0 })).filter((x) => x.votes > 0), invalid, label: label || 'turnout' })}>
-            {L('Add these voters', 'הוספת המצביעים')}
-          </button>
-          <p className="small muted">{L('National recalculation', 'חישוב ארצי מחדש')} <Info title={L('Recalculation', 'חישוב מחדש')}>{L('The national result is fully recalculated, including the threshold in votes.', 'התוצאה הארצית מחושבת מחדש במלואה, כולל אחוז החסימה בקולות.')}</Info></p>
-        </div>
-      </div>
+
+          {f && <>
+            <div className="vg-turnout">
+              <label className="small" htmlFor="vg-change">{L('Turnout', 'שיעור הצבעה')}</label>
+              <span className="vg-range"><bdi dir="ltr"><b>{pct1(curPct)}</b> → <b>{pct1(curPct + d.change)}</b></bdi> <span className="ink2">({signed(Math.round(d.change * 10) / 10)} {L('pp', 'נק׳')})</span></span>
+              <input id="vg-change" type="range" min={-Math.floor(curPct * 10) / 10} max={Math.floor((100 - curPct) * 10) / 10} step={0.1} value={d.change}
+                aria-valuetext={`${pct1(curPct + d.change)}`} onChange={(e) => set({ change: Number(e.target.value) })} />
+              <PctField label={L('New turnout %', 'שיעור הצבעה חדש %')} bare value={Math.round((curPct + d.change) * 10) / 10} max={100} onCommit={(n) => set({ change: Math.round((n - curPct) * 10) / 10 })} />
+            </div>
+
+            <div className="vg-vote">
+              <span className="small">{canObserve ? L('How they vote', 'איך הם מצביעים') : L('How they vote (% per list)', 'איך הם מצביעים (% לכל רשימה)')}</span>
+              {canObserve && <span className="seg" role="group" aria-label={L('How they vote', 'איך הם מצביעים')}>
+                <button type="button" aria-pressed={vote === 'observed'} onClick={() => set({ vote: 'observed' })}>{L('Like this group voted', 'כמו שהקבוצה הצביעה')}</button>
+                <button type="button" aria-pressed={vote === 'shares'} onClick={() => set({ vote: 'shares' })}>{L('My shares', 'חלוקה שלי')}</button>
+              </span>}
+              {vote === 'observed' && mixTotal > 0 && <div className="vg-mix" role="img" aria-label={lists.filter((l) => f.mix![s.lists.indexOf(l)] > 0).slice(0, 6).map((l) => `${listLabel(l, lang)} ${pct1(100 * f.mix![s.lists.indexOf(l)] / mixTotal)}`).join(', ')}>
+                <div className="vg-bar">{[...s.lists.keys()].filter((i) => f.mix![i] / mixTotal >= 0.01).sort((a, b) => f.mix![b] - f.mix![a]).map((i) => <i key={s.lists[i].id} style={{ background: s.lists[i].color, flex: f.mix![i] }} title={`${listLabel(s.lists[i], lang)} ${pct1(100 * f.mix![i] / mixTotal)}`} />)}
+                  {/* lists under 1% share one segment instead of a run of slivers */}
+                  {(() => { const rest = f.mix!.filter((x) => x / mixTotal < 0.01).reduce((a, b) => a + b, 0); return rest > 0 && <i key="other" className="vg-other" style={{ flex: rest }} title={`${L('Other lists', 'רשימות אחרות')} ${pct1(100 * rest / mixTotal)}`} />; })()}</div>
+                <div className="vg-legend small">{[...s.lists.keys()].filter((i) => f.mix![i] / mixTotal >= 0.03).sort((a, b) => f.mix![b] - f.mix![a]).map((i) => <span key={i}><span className="swatch" style={{ background: s.lists[i].color }} />{listLabel(s.lists[i], lang)} {pct1(100 * f.mix![i] / mixTotal)}</span>)}</div>
+              </div>}
+              {vote === 'shares' && <>
+                {d.sharesFor && d.sharesFor !== s.electionId && <p className="small bad">{L('These shares were set for another election’s lists; set them again here.', 'החלוקה הוגדרה לרשימות של בחירות אחרות; הגדירו אותה מחדש כאן.')}</p>}
+                <div className="vg-shares">{lists.slice(0, showAll ? undefined : 12).map((l) => <label key={l.id} className="vg-share-row small">
+                  <span className="swatch" style={{ background: l.color }} /><span className="vg-name">{listLabel(l, lang)}</span>
+                  <input type="text" inputMode="decimal" aria-label={`${listLabel(l, lang)} %`} value={d.sharesFor === s.electionId || !d.sharesFor ? d.shares[l.id] ?? '' : ''} 
+                    onChange={(e) => set({ shares: { ...(d.sharesFor && d.sharesFor !== s.electionId ? {} : d.shares), [l.id]: e.target.value }, sharesFor: s.electionId })} />%
+                </label>)}</div>
+                <p className="small ink2">{lists.length > 12 && <button type="button" className="btn small ghost" onClick={() => setShowAll(!showAll)}>{showAll ? L('Fewer lists', 'פחות רשימות') : L(`All ${lists.length} lists`, `כל ${lists.length} הרשימות`)}</button>}
+                  {shareSum > 0 && Math.abs(shareSum - 100) > 0.01 && L(` Total ${shareSum}%, scaled to 100%.`, ` סך הכול ${shareSum}%, מותאם ל-100%.`)}</p>
+              </>}
+            </div>
+
+            <div className="vg-result">
+              {change?.error === 'range' && <p id="vg-why" className="small bad">{L('Turnout must stay between 0% and 100%.', 'שיעור ההצבעה חייב להישאר בין 0% ל-100%.')}</p>}
+              {change?.error === 'no-split' && <p id="vg-why" className="small bad">{L('Give at least one list a share.', 'תנו חלק לרשימה אחת לפחות.')}</p>}
+              {change?.error === 'too-few' && <p id="vg-why" className="small bad">{L('Some lists do not have enough votes to remove.', 'לחלק מהרשימות אין די קולות להסרה.')}</p>}
+              {change && !change.error && change.delta !== 0 && <>
+                <p className="small"><bdi dir="ltr">{signed(change.delta)}</bdi> {L('ballots', 'פתקים')} · <bdi dir="ltr">{signed(change.invalid)}</bdi> {L('invalid', 'פסולים')}</p>
+                <div className="vg-seats small" aria-live="polite">{seatDiff?.length ? seatDiff.map(({ l, n }) => <span key={l.id} className="chip"><span className="swatch" style={{ background: l.color }} />{listLabel(l, lang)} <b><bdi dir="ltr">{signed(n)}</bdi></b></span>) : <span className="ink2">{L('No seat changes', 'אין שינוי במנדטים')}</span>}</div>
+              </>}
+              <button type="button" className="btn primary" disabled={!change || !!change.error || !change.delta} aria-describedby={change?.error ? 'vg-why' : undefined} onClick={apply}>
+                {!change?.delta ? L('Move the turnout to add or remove voters', 'שנו את שיעור ההצבעה כדי להוסיף או להסיר מצביעים')
+                  : change.delta > 0 ? L(`Add ${fmtInt(change.delta)} voters`, `הוספת ${fmtInt(change.delta)} מצביעים`) : L(`Remove ${fmtInt(-change.delta)} voters`, `הסרת ${fmtInt(-change.delta)} מצביעים`)}
+              </button>
+            </div>
+          </>}
+        </div>}
+      </section>
     </div>
   );
+}
+
+/** A percentage field that commits on Enter or blur; rejects text outside 0…max. */
+function PctField({ label, value, max, onCommit, bare }: { label: string; value: number; max: number; onCommit: (n: number) => void; bare?: boolean }) {
+  const [text, setText] = useState(String(value));
+  useEffect(() => setText(String(value)), [value]);
+  const commit = () => { const n = Number(text.replace('%', '').trim()); if (text.trim() !== '' && Number.isFinite(n) && n >= 0 && n <= max) onCommit(n); else setText(String(value)); };
+  const input = <input type="text" inputMode="decimal" className="vg-pct" aria-label={label} value={text} onChange={(e) => setText(e.target.value)} onBlur={commit} onKeyDown={(e) => { if (e.key === 'Enter') commit(); }} />;
+  return bare ? input : <label className="field">{label}{input}</label>;
 }

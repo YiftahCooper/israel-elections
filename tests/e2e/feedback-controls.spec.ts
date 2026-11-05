@@ -38,11 +38,8 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
       await ask.screenshot({ path: `.backup-scratch/task-b/after-prefs-${election}-${lang}-${theme}-${width}.png` });
       await page.keyboard.press('Escape');
       expect(Number((await votes.inputValue()).replaceAll(',', ''))).toBe(original);
-      await panel.locator('.start-from .choice-trigger').first().click();
-      const replace = page.locator('.choice-dialog[open]');
-      await expect(replace).toContainText(lang === 'en' ? 'Votes for every list' : 'הקולות של כל הרשימות');
-      await replace.screenshot({ path: `.backup-scratch/task-b/after-replace-${election}-${lang}-${theme}-${width}.png` });
-      await page.keyboard.press('Escape');
+      // unedited votes and no saved scenarios: nothing to reset or copy, so no replacement control
+      await expect(panel.locator('.start-from').first().locator('button')).toHaveCount(0);
       await panel.getByRole('button', { name: lang === 'en' ? 'Close' : 'סגירה', exact: true }).click();
       if (election === 'k26') {
         await page.getByRole('region', { name: lang === 'en' ? 'Lists' : 'הרשימות', exact: true }).getByRole('button', { name: lang === 'en' ? 'The Democrats' : 'הדמוקרטים', exact: true }).click();

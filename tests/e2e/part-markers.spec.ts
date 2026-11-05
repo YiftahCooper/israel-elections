@@ -22,7 +22,7 @@ test('1988 family grouping has one part marker, unchanged seats and distinct cha
 });
 test('2022 blank grouping is marked once and undo clears it',async({page})=>{
  await start(page);await page.getByRole('button',{name:'Edit blocs',exact:true}).click();page.once('dialog',d=>d.accept('My grouping'));
- await choose(page.getByRole('button',{name:'Replace: Blocs',exact:true}),'blank');
+ await page.getByRole('button',{name:'New grouping',exact:true}).click();
  await expect(part(page)).toHaveCount(1);await expect(items(page)).toHaveCount(0);
  await expect(page.locator('.blocs-head .edit-marker')).toHaveCount(1);
  await expect(page.locator('.lb-seats .tick')).toHaveCount(0);
@@ -32,7 +32,7 @@ test('2022 blank grouping is marked once and undo clears it',async({page})=>{
 });
 test('rules preset has one marker, then an individual threshold edit adds one',async({page})=>{
  await start(page);await page.getByRole('tab',{name:'Rules & settings',exact:true}).click();
- await choose(page.getByRole('button',{name:'Replace: Rules',exact:true}),'preset:il-1992-bader-ofer-1.5');
+ await choose(page.getByRole('button',{name:'Copy rules from…',exact:true}),'preset:il-1992-bader-ofer-1.5');
  await expect(part(page)).toHaveCount(1);await expect(items(page)).toHaveCount(0);
  await page.evaluate(()=>window.scrollTo(0,0));
  await page.screenshot({path:'.backup-scratch/part-markers/2022-rules-preset.png',fullPage:true});

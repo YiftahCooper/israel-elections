@@ -37,17 +37,14 @@ test('2022: merge, add voters, drop agreement, push Balad over, find Ra’am’s
 
   // 3. 200,000 additional voters for Arab lists (custom split)
   await page.getByRole('tab', { name: 'Turnout', exact: true }).click();
-  await page.getByLabel('Electorate', { exact: true }).fill('400000');
-  await page.getByLabel('Electorate', { exact: true }).press('Enter');
-  await page.getByLabel('Current turnout %').fill('50');
-  await page.getByLabel('Hypothetical turnout %').fill('100');
-  await page.getByLabel('Invalid-ballot rate % (of new voters)').fill('0');
-  const shares = page.getByLabel('Share %');
-  const rows = page.locator('tr', { has: shares });
-  for (const [list, pct] of [["Ra'am", '40'], ["Hadash–Ta'al", '30'], ['Balad', '30']] as const) {
-    await rows.filter({ hasText: list }).getByLabel('Share %').fill(pct);
-  }
-  await page.getByRole('button', { name: 'Add these voters' }).click();
+  await choose(page.getByRole('button', { name: 'Voter group', exact: true }), 'manual');
+  const enter = async (label: string, value: string) => { const f = page.getByLabel(label, { exact: true }); await f.fill(value); await f.press('Enter'); };
+  await enter('Registered voters', '400000');
+  await enter('Turnout now %', '50');
+  await enter('Invalid %', '0');
+  await enter('New turnout %', '100');
+  for (const [list, pct] of [["Ra'am", '40'], ["Hadash–Ta'al", '30'], ['Balad', '30']] as const) await page.getByLabel(`${list} %`, { exact: true }).fill(pct);
+  await page.getByRole('button', { name: 'Add 200,000 voters', exact: true }).click();
   await page.getByRole('tab', { name: 'Overview' }).click();
   await expect(validVotes(page)).toHaveAttribute('data-valid-votes', '4,964,742');
 
