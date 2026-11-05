@@ -65,6 +65,25 @@
       "publisher": "Knesset, Knesset 8, sitting 21, 1974-03-10 (full plenum record)",
       "kind": "official",
       "accessed": "2026-11-05"
+    },
+    "mfa-timeline": {
+      "url": "https://www.gov.il/en/pages/timeline-of-events-half-a-century-of-independence",
+      "publisher": "Israel Ministry of Foreign Affairs, Timeline of Events: Half a Century of Independence, 1948–1998",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies."
+    },
+    "mfa-history": {
+      "url": "https://www.gov.il/BlobFolder/generalpage/facts-about-israel-history/en/English_SiteTransfer_DOCUMENTS_History2010.pdf",
+      "publisher": "Israel Ministry of Foreign Affairs, Facts About Israel: History (2010), pp. 48–70",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "mod-1972-1980": {
+      "url": "https://archives.mod.gov.il/sites/English/theTimeAxis/Pages/1972-%E2%80%93-1980.aspx",
+      "publisher": "Israel Ministry of Defense, IDF and Defense Establishment Archives, Time Axis: 1972–1980",
+      "kind": "official",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -353,9 +372,74 @@
     "chronologies": [
       "term-history",
       "idi-next",
-      "ipu-next"
+      "ipu-next",
+      "mfa-timeline",
+      "mfa-history",
+      "mod-1972-1980"
     ],
     "events": [
+      {
+        "id": "black-panthers",
+        "date": "1971",
+        "category": "society",
+        "textEn": "The Black Panthers movement held demonstrations in Jerusalem.",
+        "textHe": "תנועת הפנתרים השחורים קיימה הפגנות בירושלים.",
+        "cites": [
+          {
+            "source": "term-history",
+            "quote": "The Black Panthers started a series of violent demonstrations in Jerusalem."
+          },
+          {
+            "source": "mfa-timeline",
+            "quote": "Black Panthers, a radical protest movement"
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "lod-airport-attack",
+        "date": "1972-05-30",
+        "category": "security",
+        "textEn": "Gunmen attacked Lod airport.",
+        "textHe": "חמושים תקפו בנמל התעופה לוד.",
+        "cites": [
+          {
+            "source": "term-history",
+            "quote": "the attack at Lod airport"
+          },
+          {
+            "source": "mfa-timeline",
+            "quote": "Three Japanese terrorists open fire at Lod airport"
+          },
+          {
+            "source": "mod-1972-1980",
+            "quote": "May 30, 1972"
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "munich-attack",
+        "date": "1972-09-05",
+        "category": "security",
+        "textEn": "Members of the Israeli Olympic team were murdered in Munich.",
+        "textHe": "חברי המשלחת האולימפית הישראלית נרצחו במינכן.",
+        "cites": [
+          {
+            "source": "term-history",
+            "quote": "the murder of the Israeli sportsmen in Munich"
+          },
+          {
+            "source": "mfa-history",
+            "quote": "murder of 11 Israeli athletes at the Munich Olympics in 1972."
+          },
+          {
+            "source": "mod-1972-1980",
+            "quote": "September 5, 1972"
+          }
+        ],
+        "confidence": "high"
+      },
       {
         "id": "yom-kippur-war",
         "date": "1973-10",
@@ -381,24 +465,9 @@
     ],
     "candidatesPending": [
       {
-        "label": "Black Panthers demonstrations",
-        "date": "1971",
-        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
-      },
-      {
-        "label": "Lod airport attack",
-        "date": "1972-05",
-        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
-      },
-      {
-        "label": "Munich attack",
-        "date": "1972-09",
-        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
-      },
-      {
         "label": "Geneva peace conference",
         "date": "1973-12",
-        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+        "why": "Knesset history selects Geneva before the eighth election; no second retrieved qualifying chronology selects the December 1973 conference."
       }
     ],
     "endedBy": {
