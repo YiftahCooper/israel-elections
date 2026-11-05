@@ -1,0 +1,400 @@
+{
+  "schemaVersion": 1,
+  "electionId": "k13",
+  "status": "pilot",
+  "reviewedAt": "2026-11-05",
+  "notes": [
+    "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
+    "The term window runs from this election to the next Knesset election. Government tenure may extend past that window. Mid-term institutional succession is recorded in formation.events; it is not a new post-election recommendation round.",
+    "Additional dated mid-term acts that do not fit the proposal’s closed formation type vocabulary are kept as formalStep=true entries in government.changes (Dated-compatible). No new formation enum values are introduced."
+  ],
+  "sources": {
+    "mfa-history": {
+      "url": "https://www.gov.il/BlobFolder/generalpage/facts-about-israel-history/en/English_SiteTransfer_DOCUMENTS_History2010.pdf",
+      "publisher": "Israel Ministry of Foreign Affairs, Facts About Israel: History (2010), pp. 48–70",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "knesset-history": {
+      "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-thirteenth-knesset-1992-1996",
+      "publisher": "Knesset, history of the 13th Knesset (credited text)",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Jewish Virtual Library mirror; original https://main.knesset.gov.il/EN/About/History/pages/knessethistory.aspx?kns=13"
+    },
+    "ipu1992": {
+      "url": "https://data.ipu.org/election-summary/PDF/ISRAEL_1992_E.PDF",
+      "publisher": "Inter-Parliamentary Union, Chronicle / Parline, Israel 1992",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "ipu1996": {
+      "url": "https://data.ipu.org/election-summary/HTML/2155_96.htm",
+      "publisher": "Inter-Parliamentary Union, Chronicle / Parline, Israel 1996",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "government-research-1": {
+      "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%97%D7%9E%D7%A9",
+      "publisher": "Hebrew Wikipedia",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "government-research-2": {
+      "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%97%D7%9E%D7%A9",
+      "publisher": "Hebrew Wikipedia",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "government-research-3": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=GovernmentNum%20eq%2025",
+      "publisher": "Knesset OData (ParliamentInfo)",
+      "kind": "official",
+      "accessed": "2026-11-04",
+      "via": "Existing first-government research extraction from official OData, accessed 2026-11-04; the associated quote is the retained extraction summary, not verbatim API serialization."
+    },
+    "jta1992consultations": {
+      "url": "https://www.jta.org/archive/rabin-starts-building-coalition-with-haredi-parties-readay-to-talk",
+      "publisher": "Jewish Telegraphic Agency, 29 June 1992",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    },
+    "jta1992vote": {
+      "url": "https://www.jta.org/archive/rabin-becomes-prime-minister-with-pledge-to-work-for-peace",
+      "publisher": "Jewish Telegraphic Agency, Daily Bulletin archive",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    },
+    "jta1995vote": {
+      "url": "https://www.jta.org/archive/news-analysis-peres-gives-prominent-roles-in-cabinet-to-next-generation",
+      "publisher": "Jewish Telegraphic Agency, Daily Bulletin archive",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    },
+    "jta1992mandate": {
+      "url": "https://www.jta.org/archive/herzog-gives-rabin-21-days-to-form-coalition-government",
+      "publisher": "Jewish Telegraphic Agency, Daily Bulletin archive",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    }
+  },
+  "results": {
+    "electionDate": "1992-06-23",
+    "officialResultsSourceId": "k13-results-gazette"
+  },
+  "reaction": {
+    "policy": "Only dated institutional steps and statements attributed to their speaker, applied to every list or to none.",
+    "items": [],
+    "gap": "Comparably sourced reactions for every list were not collected."
+  },
+  "recommendationRounds": [
+    {
+      "id": "r1",
+      "date": "1992-06-28",
+      "kind": "consultations",
+      "president": {
+        "nameEn": "Chaim Herzog",
+        "nameHe": "חיים הרצוג"
+      },
+      "nominees": {},
+      "entries": [
+        {
+          "letters": "אמת",
+          "seats": 44,
+          "status": "unknown"
+        },
+        {
+          "letters": "ב",
+          "seats": 6,
+          "status": "unknown"
+        },
+        {
+          "letters": "ג",
+          "seats": 4,
+          "status": "unknown"
+        },
+        {
+          "letters": "ו",
+          "seats": 3,
+          "status": "unknown"
+        },
+        {
+          "letters": "ט",
+          "seats": 3,
+          "status": "unknown"
+        },
+        {
+          "letters": "מחל",
+          "seats": 32,
+          "status": "unknown"
+        },
+        {
+          "letters": "מרצ",
+          "seats": 12,
+          "status": "unknown"
+        },
+        {
+          "letters": "ע",
+          "seats": 2,
+          "status": "unknown"
+        },
+        {
+          "letters": "ץ",
+          "seats": 8,
+          "status": "unknown"
+        },
+        {
+          "letters": "שס",
+          "seats": 6,
+          "status": "unknown"
+        }
+      ],
+      "totals": {
+        "unknown": 120
+      },
+      "cites": [
+        {
+          "source": "jta1992consultations",
+          "quote": "began legally mandated meetings with the 10 parties elected to the new Knesset."
+        }
+      ],
+      "notes": [
+        "No complete per-faction recommendation record was recovered by the existing research. A 61-seat blocking bloc is not a recommendation tally. Unknown is not an explicit decision to recommend nobody."
+      ]
+    }
+  ],
+  "formation": {
+    "outcome": "government-formed",
+    "events": [
+      {
+        "date": "1992-06-28",
+        "type": "consultations",
+        "textEn": "Herzog began consultations with the ten elected factions.",
+        "textHe": "הרצוג החל להתייעץ עם עשר הסיעות שנבחרו.",
+        "cites": [
+          {
+            "source": "jta1992consultations",
+            "quote": "began legally mandated meetings with the 10 parties elected to the new Knesset."
+          }
+        ]
+      },
+      {
+        "date": "1992-07-02",
+        "type": "mandate-given",
+        "textEn": "Herzog tasked Rabin with forming a government (21 days).",
+        "textHe": "הרצוג הטיל על רבין להרכיב ממשלה (21 ימים).",
+        "cites": [
+          {
+            "source": "jta1992mandate",
+            "quote": "President Chaim Herzog asked Labor Party leader Yitzhak Rabin on Thursday to form Israel’s next government."
+          }
+        ],
+        "person": "rabin",
+        "days": 21
+      },
+      {
+        "date": "1992-07-13",
+        "type": "confidence-vote",
+        "textEn": "The Knesset approved Rabin’s 25th government, 67–53.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־25 בראשות רבין, ברוב של 67 מול 53.",
+        "cites": [
+          {
+            "source": "jta1992vote",
+            "quote": "won Knesset approval Monday evening, by a comfortable majority of 67-53"
+          }
+        ],
+        "votes": {
+          "for": 67,
+          "against": 53
+        }
+      },
+      {
+        "date": "1995-11-22",
+        "type": "confidence-vote",
+        "textEn": "The Knesset approved Peres’s 26th government, 62–8, with 38 abstentions.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־26 בראשות פרס, ברוב של 62 מול 8, עם 38 נמנעים.",
+        "cites": [
+          {
+            "source": "jta1995vote",
+            "quote": "The final vote was 62-8, with 38 abstentions."
+          }
+        ],
+        "votes": {
+          "for": 62,
+          "against": 8,
+          "abstain": 38
+        },
+        "scope": "mid-term",
+        "governmentNumber": 26
+      }
+    ]
+  },
+  "term": {
+    "start": "1992-06-23",
+    "end": "1996-05-29",
+    "inclusionRule": "At least two independently authored qualifying chronologies, including one official or academic, plus direct support for the date. The Knesset and MFA histories count separately; the JVL mirror is not another independent source. Formal government succession steps are recorded separately in formation.events.",
+    "chronologies": [
+      "mfa-history",
+      "knesset-history",
+      "ipu1992",
+      "ipu1996"
+    ],
+    "events": [
+      {
+        "id": "oslo-declaration",
+        "date": "1993-09-13",
+        "category": "foreign-relations",
+        "textEn": "Israel and the PLO signed the Declaration of Principles (Oslo I).",
+        "textHe": "ישראל ואש״ף חתמו על הצהרת העקרונות (אוסלו א׳).",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "On September 13, 1993, the Declaration of Principles was signed"
+          },
+          {
+            "source": "mfa-history",
+            "quote": "Its signing, on 13 September 1993"
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "jordan-peace",
+        "date": "1994-10-26",
+        "category": "foreign-relations",
+        "textEn": "Israel and Jordan signed a peace treaty.",
+        "textHe": "ישראל וירדן חתמו על הסכם שלום.",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "was signed in the Arava on 26 October, 1994"
+          },
+          {
+            "source": "mfa-history",
+            "quote": "on 26 October 1994"
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "rabin-assassination",
+        "date": "1995-11-04",
+        "category": "governance",
+        "textEn": "Prime Minister Yitzhak Rabin was assassinated at a peace rally in Tel Aviv.",
+        "textHe": "ראש הממשלה יצחק רבין נרצח בעצרת למען השלום בתל אביב.",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "Prime Minister Yitzhak Rabin was assassinated by Yigal Amir"
+          },
+          {
+            "source": "mfa-history",
+            "quote": "murder on 4 November 1995"
+          }
+        ],
+        "confidence": "high"
+      }
+    ],
+    "candidatesPending": [
+      {
+        "label": "Oslo II signing (Taba text versus Washington ceremony date)",
+        "date": "1995-09",
+        "why": "Appears in the Knesset term history; a second independent qualifying chronology and/or direct date evidence was not verified in this pass."
+      },
+      {
+        "label": "Cave of the Patriarchs massacre",
+        "date": "1994-02",
+        "why": "Appears in the Knesset term history; a second independent qualifying chronology and/or direct date evidence was not verified in this pass."
+      },
+      {
+        "label": "National Health Insurance Law",
+        "date": "1994-06",
+        "why": "Appears in the Knesset term history; a second independent qualifying chronology and/or direct date evidence was not verified in this pass."
+      },
+      {
+        "label": "February–March suicide bombings",
+        "date": "1996-02",
+        "why": "Appears in the Knesset term history; a second independent qualifying chronology and/or direct date evidence was not verified in this pass."
+      }
+    ],
+    "endedBy": {
+      "type": "early-election",
+      "date": "1996-02",
+      "nextElection": "1996-05-29",
+      "textEn": "An early election was set for 29 May 1996; the final dissolution-law date remains unverified here.",
+      "textHe": "הוקדמו הבחירות ל־29 במאי 1996; מועד חקיקת חוק ההתפזרות טרם אומת כאן.",
+      "cites": [
+        {
+          "source": "ipu1996",
+          "quote": "The election date was set in February 1996"
+        }
+      ]
+    }
+  },
+  "issuePolling": {
+    "status": "pending",
+    "items": [],
+    "gap": "INES instrument exists; no qualifying published topline verified for this election. No microdata analysis performed."
+  },
+  "gaps": [
+    "Certification date and official first-sitting record not retrieved; election date comes from the existing verified result dataset.",
+    "Formation timeline is a sourced subset; missing steps must not be inferred from statutory maximum periods.",
+    "First-government coalition membership is reused from the existing first-government scheme, whose party membership evidence includes labelled Hebrew Wikipedia; a complete independent primary coalition agreement cross-check remains pending.",
+    "The Knesset history dates Oslo II to Taba on 27 September; the Washington signing ceremony is a different step. This pass does not conflate them.",
+    "Government endDate is the established succession/death date in the existing project chronology; a dedicated primary tenure source should be added in review."
+  ],
+  "government": {
+    "number": 25,
+    "nameEn": "Government 25 (Yitzhak Rabin)",
+    "nameHe": "הממשלה ה־25 (יצחק רבין)",
+    "startDate": "1992-07-13",
+    "endDate": "1995-11-04",
+    "primeMinisters": [
+      {
+        "nameEn": "Yitzhak Rabin",
+        "nameHe": "יצחק רבין",
+        "to": "1995-11-04",
+        "from": "1992-07-13"
+      }
+    ],
+    "firstGovernmentSchemeRef": "first-government",
+    "coalition": [
+      {
+        "letters": "אמת",
+        "seats": 44
+      },
+      {
+        "letters": "מרצ",
+        "seats": 12
+      },
+      {
+        "letters": "שס",
+        "seats": 6
+      }
+    ],
+    "coalitionSeats": 62,
+    "coalitionSeatsNote": "Election-list seat envelope, checked against officialSeats; not the confidence-vote tally or a reconstruction of later faction membership.",
+    "cites": [
+      {
+        "source": "government-research-1",
+        "quote": "ממשלת ישראל העשרים וחמש בראשותו של יצחק רבין, שכונתה ממשלת רבין השנייה, הושבעה ב-13 ביולי 1992"
+      },
+      {
+        "source": "government-research-2",
+        "quote": "סיעות הקואליציה=="
+      },
+      {
+        "source": "government-research-3",
+        "quote": "KNS_PersonToPosition, GovernmentNum 25: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 1992-07-13: דרעי אריה מכלוף, שטרית שמעון, צור יעקב, שוחט אברהם-בייגה, שחל משה, רבין יצחק, רובינשטיין אמנון, פרס שמעון, רמון חיים, צבן יאיר, קיסר ישראל, ליבאי דוד, בן-אליעזר בנימין, נמיר אורה, חריש מיכאל, ברעם עוזי, אלוני שולמית"
+      },
+      {
+        "source": "jta1992vote",
+        "quote": "The three coalition partners, which together hold 62 seats"
+      },
+      {
+        "source": "mfa-history",
+        "quote": "murder on 4 November 1995"
+      }
+    ]
+  }
+}
