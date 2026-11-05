@@ -355,21 +355,21 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k10.json",
-      "sha256": "0593abb753becdfcfb82732745adc7e953dbd571395855f8df700de5306d8479",
+      "sha256": "325b979405b9ed487b56f74bf9b7acdb104f485691d72acf7cda3f5f910aadfa",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k11": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k11.json",
-      "sha256": "c4fbb7bd55bc3e86f6f3722c0471271a8a4ef6c588846208865417d9c63b4645",
+      "sha256": "d37cbac3da2c26415d1d1f8ae7bbaef820a55f147021b69be1c417d577f526eb",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k12": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k12.json",
-      "sha256": "65981a1feb95abf89dd59c32033f0e6cb7532104bb4d298358e8bce3e4db3dcc",
+      "sha256": "0bbdf2d07da539729cfe5739059a45b23fc45951f46a8ddb7eb000b73d29d813",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k13": {
@@ -397,14 +397,14 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k16.json",
-      "sha256": "698d80fc186b9b82d7fee8d0e2b4270c038913b4c250267dd4893541e204bd06",
+      "sha256": "6bc6089c2489633d97884904e691314684f7448963e20e97fda70e20784b031e",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k17": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k17.json",
-      "sha256": "7f280c89c2cbeb0aa18b20c7411fa22c1e96b1ad7136c4eccfebc5bced5646b5",
+      "sha256": "4d5d4469f7d553596bade3e3726a6859dc7949d755abe9bcf07903949e50cd7f",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k18": {
@@ -1322,7 +1322,7 @@
       "electionId": "k10",
       "electionDate": "1981-06-30",
       "datasetPath": "public/data/k10.json",
-      "datasetSha256": "0593abb753becdfcfb82732745adc7e953dbd571395855f8df700de5306d8479",
+      "datasetSha256": "325b979405b9ed487b56f74bf9b7acdb104f485691d72acf7cda3f5f910aadfa",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 120 transcribed ranks across all 10 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
@@ -1418,7 +1418,7 @@
       "electionId": "k11",
       "electionDate": "1984-07-23",
       "datasetPath": "public/data/k11.json",
-      "datasetSha256": "c4fbb7bd55bc3e86f6f3722c0471271a8a4ef6c588846208865417d9c63b4645",
+      "datasetSha256": "d37cbac3da2c26415d1d1f8ae7bbaef820a55f147021b69be1c417d577f526eb",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 196 transcribed ranks across all 15 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted except the complete 120-name K11 Alignment roster; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
@@ -1511,7 +1511,7 @@
       "electionId": "k12",
       "electionDate": "1988-11-01",
       "datasetPath": "public/data/k12.json",
-      "datasetSha256": "65981a1feb95abf89dd59c32033f0e6cb7532104bb4d298358e8bce3e4db3dcc",
+      "datasetSha256": "0bbdf2d07da539729cfe5739059a45b23fc45951f46a8ddb7eb000b73d29d813",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 120 transcribed ranks across all 15 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
@@ -1889,7 +1889,7 @@
       "electionId": "k16",
       "electionDate": "2003-01-28",
       "datasetPath": "public/data/k16.json",
-      "datasetSha256": "698d80fc186b9b82d7fee8d0e2b4270c038913b4c250267dd4893541e204bd06",
+      "datasetSha256": "6bc6089c2489633d97884904e691314684f7448963e20e97fda70e20784b031e",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -1985,7 +1985,7 @@
       "electionId": "k17",
       "electionDate": "2006-03-28",
       "datasetPath": "public/data/k17.json",
-      "datasetSha256": "7f280c89c2cbeb0aa18b20c7411fa22c1e96b1ad7136c4eccfebc5bced5646b5",
+      "datasetSha256": "4d5d4469f7d553596bade3e3726a6859dc7949d755abe9bcf07903949e50cd7f",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",

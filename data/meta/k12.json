@@ -409,6 +409,127 @@
           "accessed": "2026-11-04"
         }
       ]
+    },
+    {
+      "id": "pm-recommendations",
+      "nameHe": "המלצות לנשיא על הרכבת הממשלה",
+      "nameEn": "Recommendations to the President for prime minister",
+      "kind": "parliamentary",
+      "date": "1988-11-13",
+      "blocs": [
+        {
+          "id": "shamir",
+          "nameHe": "המליצו על שמיר",
+          "nameEn": "Recommended Shamir",
+          "color": "#1f5aa5",
+          "members": [
+            {
+              "letters": "מחל"
+            },
+            {
+              "letters": "שס"
+            },
+            {
+              "letters": "ג"
+            },
+            {
+              "letters": "ב"
+            },
+            {
+              "letters": "ת"
+            },
+            {
+              "letters": "ץ"
+            },
+            {
+              "letters": "ט"
+            }
+          ],
+          "seats": 63
+        },
+        {
+          "id": "peres",
+          "nameHe": "המליצו על פרס",
+          "nameEn": "Recommended Peres",
+          "color": "#2aa198",
+          "members": [
+            {
+              "letters": "אמת"
+            },
+            {
+              "letters": "רצ"
+            },
+            {
+              "letters": "ו"
+            },
+            {
+              "letters": "מפם"
+            },
+            {
+              "letters": "הן"
+            },
+            {
+              "letters": "פ"
+            },
+            {
+              "letters": "ע"
+            }
+          ],
+          "seats": 55
+        },
+        {
+          "id": "none",
+          "nameHe": "לא המליצו (תמכו בממשלה רחבה)",
+          "nameEn": "No recommendation (backed a broad government)",
+          "color": "#9e9e9e",
+          "members": [
+            {
+              "letters": "עץ"
+            }
+          ],
+          "seats": 2
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.latimes.com/archives/la-xpm-1988-11-14-mn-244-story.html",
+          "publisher": "Los Angeles Times (UPI)",
+          "kind": "secondary",
+          "quote": "The decision gave Shamir the support of 63 members of Israel's 120-member parliament, the Knesset. Foreign Minister Shimon Peres, leader of the center-left Labor Party and Shamir's rival in the current governing coalition, could muster only 55 Knesset members to support a Labor-led government.",
+          "accessed": "2026-11-05"
+        },
+        {
+          "url": "https://www.upi.com/Archives/1988/11/14/President-Chaim-Herzog-asked-Prime-Minister-Yitzhak-Shamir-to/7730595486800/",
+          "publisher": "UPI Archives",
+          "kind": "secondary",
+          "quote": "Of the two other religious parties, one of them, the National Religious Party, pledged its five seats to Likud last week. The other, Degel Hatorah, pledged its two Knesset seats to a broad-based coalition of Labor and Likud.",
+          "accessed": "2026-11-05"
+        },
+        {
+          "url": "https://www.jta.org/archive/fate-of-next-government-hangs-on-outcome-of-shas-party-session",
+          "publisher": "Jewish Telegraphic Agency (archive, 9 Nov 1988)",
+          "kind": "secondary",
+          "quote": "The leftist Mapam and Citizens Rights Movement, as well as the Center-Shinui Movement, have declared their preference for a Labor-led government. They urged Herzog to approach Foreign Minister Shimon Peres. The right-wing Tehiya, Tsomet and Moledet parties all have opted for a Likud government headed by Premier Yitzhak Shamir.",
+          "accessed": "2026-11-05"
+        },
+        {
+          "url": "https://www.latimes.com/archives/la-xpm-1988-11-14-mn-53-story.html",
+          "publisher": "Los Angeles Times",
+          "kind": "secondary",
+          "quote": "With its own 40 seats and the 11 seats offered Sunday, plus previously pledged support from one other religious party and three far-right parties, Likud can claim a majority with 63 seats in the 120-member Knesset",
+          "accessed": "2026-11-05"
+        },
+        {
+          "url": "https://www.972mag.com/palestinian-citizens-israel-coalition-elections/",
+          "publisher": "+972 Magazine",
+          "kind": "secondary",
+          "quote": "Hadash, the Progressive List, and the Arab Democratic Party all recommended Peres for the premiership",
+          "accessed": "2026-11-05"
+        }
+      ],
+      "notes": [
+        "Shas (6) and Agudat Yisrael (5) recommended Shamir on Sunday 13 November 1988; Herzog gave Shamir the mandate on 14 November. Per-list split matches the reported 63/55 totals. The Hadash, Progressive List and Arab Democratic Party recommendations rest on a secondary 2022 account (+972) and on arithmetic against the 55 total; no contemporary report naming them was retrieved. UPI's page and +972 returned 403 to a direct request on 2026-11-05; their quotes are from a search-index extract."
+      ]
     }
   ],
   "colours": [

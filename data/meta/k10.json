@@ -643,6 +643,97 @@
           "accessed": "2026-11-04"
         }
       ]
+    },
+    {
+      "id": "pm-recommendations",
+      "nameHe": "המלצות לנשיא על הרכבת הממשלה",
+      "nameEn": "Recommendations to the President for prime minister",
+      "kind": "parliamentary",
+      "date": "1981-07-14",
+      "blocs": [
+        {
+          "id": "begin",
+          "nameHe": "המליצו על בגין",
+          "nameEn": "Recommended Begin",
+          "color": "#1f5aa5",
+          "members": [
+            {
+              "letters": "מחל"
+            },
+            {
+              "letters": "ב"
+            },
+            {
+              "letters": "ג"
+            },
+            {
+              "letters": "ני"
+            }
+          ],
+          "seats": 61
+        },
+        {
+          "id": "unstated",
+          "nameHe": "לא מצוין במקור",
+          "nameEn": "Not stated in source",
+          "color": "#cccccc",
+          "members": [
+            {
+              "letters": "אמת"
+            },
+            {
+              "letters": "ו"
+            },
+            {
+              "letters": "ת"
+            },
+            {
+              "letters": "כן"
+            },
+            {
+              "letters": "הן"
+            },
+            {
+              "letters": "רצ"
+            }
+          ],
+          "seats": 59
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.upi.com/Archives/1981/07/14/Begin-asked-to-form-new-Israeli-government/8570363931200/",
+          "publisher": "UPI Archives",
+          "kind": "secondary",
+          "quote": "'I arrived at the conclusion that Mr. Menachem Begin has more chances than any other candidate to form the next government -- that is, 61 Knesset members spoke out in favor of his forming the government.",
+          "accessed": "2026-11-05"
+        },
+        {
+          "url": "https://www.upi.com/Archives/1981/07/14/Navon-to-ask-Begin-to-form-government/1036363931200/",
+          "publisher": "UPI Archives",
+          "kind": "secondary",
+          "quote": "Begin has support in principle from three religious parties -- the National Religious Party, the Tami Party and the Agudat Israel Party -- which hold a total of 13 seats in the Knesset (parliament).",
+          "accessed": "2026-11-05"
+        },
+        {
+          "url": "https://www.jta.org/archive/navon-says-he-will-invite-begin-to-form-a-new-government",
+          "publisher": "Jewish Telegraphic Agency (archive, 15 July 1981)",
+          "kind": "secondary",
+          "quote": "Aharon Abu Hatzeira's Tami faction, with three seats, indicated to Navon that it preferred a government headed by Begin, while Moshe Dayan's two-seat Telem party leaned toward Labor",
+          "accessed": "2026-11-05"
+        },
+        {
+          "url": "https://catalog.archives.gov.il/site/chapter/navon-and-10-knesset-election/",
+          "publisher": "Israel State Archives",
+          "kind": "archival",
+          "quote": "ב-10 ביולי זימן נבון את סיעות הבית להתייעצויות ב-13 וב-14 ביולי",
+          "accessed": "2026-11-05"
+        }
+      ],
+      "notes": [
+        "Partial: President Navon stated that 61 MKs backed Begin (Likud 48 + NRP 6 + Agudat Yisrael 4 + Tami 3, the parties UPI names). What the Alignment, Hadash, Tehiya, Telem, Shinui and Ratz told the President is not stated as a recommendation in the sources retrieved (JTA describes leanings only), so they are 'not stated', not 'no recommendation'.",
+        "Mandate given to Begin on 15 July 1981 (Navon's letter is dated 16 July in the State Archives account). UPI's 1981 pages returned 403 to a direct request on 2026-11-05; their quotes are from a search-index extract. The State Archives chapter also returned 403; its quote is from a search-index extract."
+      ]
     }
   ],
   "colours": [

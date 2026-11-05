@@ -72,7 +72,9 @@ const EXPECTED: Record<Family, string> = {
   // 5 Nov round 2: official English names of Knesset members (Candidate.nameEn) and build timestamps only; with HEAD's
   // datasets the new code reproduces da0ff97b... and the other four digests.
   // merged: both changes above together (bloc notes + nameEn), no other field differs.
-  model: '9f25a59a10168fd48b34142d6f39a16f9613c17b29c294c40ee861e3a6e19b44',
+  // 5 Nov: pm-recommendations schemes appended for k10, k11, k12, k16, k17; in those five datasets only blocSchemes
+  // (new last entry; earlier schemes equal) and buildInfo differ from HEAD. Allocation/analysis/validation/rules unchanged.
+  model: 'b7864d36d5d08a9fd8309ddbeeb8fb52c2b75201694387477a7055f6a4b46675',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };
