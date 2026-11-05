@@ -266,7 +266,9 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
           <p className="tiny quick-consequence" role="status">{consequence}</p></>}
           <LiveSlider key={l.id} l={l} ceiling={Number(r.totalValid)} onCommit={(v) => commit((from) => editTo(v, from))} />
           {simple && <p className="tiny ink2" style={{ margin: 0 }}>{sourceName}</p>}
+          </fieldset>
           <Feature id="voteSource"><SourcePicker s={s} l={l} /></Feature>
+          <fieldset disabled={l.withdrawn} style={{ border: 0, padding: 0, margin: 0, minWidth: 0 }}>
           <button className="btn small more-trigger" aria-expanded={moreOpen} onClick={() => setMoreOpen(v => !v)}>{L('Scale, share & transfer', 'הכפלה, אחוזים והעברה')} <span aria-hidden>▾</span></button>
           {moreOpen && <div className="vote-more">
             <div className="row">{quick('×2', l.votes * 2, false)}{quick('÷2', Math.round(l.votes / 2), false)}</div>

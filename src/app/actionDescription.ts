@@ -55,7 +55,7 @@ export function describe(a: Action, s: Scenario, lang: Lang): string {
     case 'rename': return he ? `שם התרחיש: ${a.name}` : `Renamed to ${a.name}`;
     case 'resetVotes': return he ? `${n(a.listId)}: הקולות אופסו` : `${n(a.listId)}: votes reset`;
     case 'resetCandidates': return he ? `${n(a.listId)}: רשימת המועמדים שוחזרה` : `${n(a.listId)}: candidate list restored`;
-    case 'setTurnout': return he ? `שיעור ההצבעה נקבע ל-${a.pct}%` : `Turnout set to ${a.pct}%`;
+    case 'setTurnout': return he ? `שיעור ההצבעה נקבע ל-${a.pct.toFixed(2)}%` : `Turnout set to ${a.pct.toFixed(2)}%`;
     case 'restore': return he ? ({ agreements: 'שוחזרו הסכמי העודפים', totals: 'שוחזרו בעלי זכות הבחירה והפסולים', blocs: 'שוחזרו הגושים', lottery: 'בוטלו תוצאות ההגרלה' } as const)[a.what] : ({ agreements: 'Restored the historical agreements', totals: 'Restored electorate and invalid ballots', blocs: 'Restored the default blocs', lottery: 'Cleared lottery outcomes' } as const)[a.what];
   }
 }

@@ -219,15 +219,15 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     {split && mode === 'bloc' && <p className="callout small">{L('A list spans several blocs: its locality votes are apportioned by its current elected members’ blocs.', 'רשימה משויכת לכמה גושים: קולותיה ביישוב מחולקים לפי שיוך חבריה הנבחרים כיום.')}</p>}
     <div className="row">
       <ChoicePicker label={L('Colour by', 'צביעה לפי')} value={mode} options={[{ value: 'bloc', label: L('Winning bloc', 'הגוש המוביל'), preview: <ResultPreview s={s} /> }, { value: 'list', label: L('Winning list', 'הרשימה המובילה'), preview: <ResultPreview s={s} blocs={false} /> }]} onChange={v => setMode(v as typeof mode)} />
-      <label>{L('Find a locality ', 'חיפוש יישוב ')}<input type="search" value={q} onChange={e=>setQ(e.target.value)} placeholder={L('Hebrew, English or code','עברית, אנגלית או סמל')} /></label>
+      <label className="field">{L('Find a locality ', 'חיפוש יישוב ')}<input type="search" value={q} onChange={e=>setQ(e.target.value)} placeholder={L('Hebrew, English or code','עברית, אנגלית או סמל')} /></label>
     </div>
     {normalizeLocalityName(q) && <div className="locality-map-matches" aria-label={L('Matching localities','יישובים תואמים')}>
       {matches.slice(0,30).map(i=><button className="btn small" key={i} onClick={()=>choose(i)} dir="auto">{nameOf(i)} ({data.rows[i].code ?? '—'})</button>)}
       <p className="small" role="status">{L(`${matches.length} matches; up to 30 shown.`,`${matches.length} התאמות; מוצגות עד 30.`)}</p>
     </div>}
     <form className="locality-map-address" onSubmit={e=>{e.preventDefault();void searchAddress();}}>
-      <label>{L('Nearest locality to an address ', 'היישוב הקרוב לכתובת ')}<input type="text" value={address} onChange={e=>setAddress(e.target.value)} /></label>
-      <button className="btn" disabled={busy || !address.trim()}>{busy?L('Searching…','מחפש…'):L('Find address','חיפוש כתובת')}</button>
+      <label className="field">{L('Nearest locality to an address ', 'היישוב הקרוב לכתובת ')}<input type="text" value={address} onChange={e=>setAddress(e.target.value)} /></label>
+      <button className="btn" disabled={busy || !address.trim()} title={busy ? L('Search in progress', 'החיפוש מתבצע') : !address.trim() ? L('Enter an address first', 'תחילה הזינו כתובת') : undefined}>{busy?L('Searching…','מחפש…'):L('Find address','חיפוש כתובת')}</button>
       <small>{L('Submitting sends the address to ', 'שליחה מעבירה את הכתובת ל־')}<a href="https://photon.komoot.io/">Photon</a> · <a href="https://www.openstreetmap.org/copyright">© OpenStreetMap</a></small>
     </form>
     <p className="small locality-map-status" role="status">{message}</p>

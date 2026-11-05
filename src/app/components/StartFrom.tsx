@@ -6,7 +6,7 @@ import { ResultPreview } from './ResultPreview.tsx';
 import { applyAction } from '../../model/actions.ts';
 import { ruleEraLabel } from '../changeValue.tsx';
 import type { Scenario } from '../../model/scenario.ts';
-import { startEffect, type StartAction } from '../../model/partEffect.ts';
+import { partKey, startEffect, type StartAction } from '../../model/partEffect.ts';
 import { PARTS, partSnapshot, type Part } from '../../model/parts.ts';
 import { RULESETS } from '../../engine/rules.ts';
 import { baseContext, dispatch, replay, useStore } from '../store.ts';
@@ -53,7 +53,7 @@ export function StartFrom({ s: shown, part, listId }: { s: Scenario; part: Part;
     }) : [];
     const clear: Option[] = clearLabel[part] ? [{ value: 'blank', label: clearLabel[part]!, action: { type: 'startPart', part, listId, source: 'blank' } }] : [];
     // where the official part is the blank one (no coalition choices), offer only the named clear action
-    const blankIsOfficial = (() => { try { return !!clear.length && !!base && JSON.stringify(partSnapshot(base, part)) === JSON.stringify(partSnapshot(applyAction(s, clear[0].action, undefined, { base }), part)); } catch { return false; } })();
+    const blankIsOfficial = (() => { try { return !!clear.length && !!base && partKey(base, part, listId) === partKey(applyAction(s, clear[0].action, undefined, { base }), part, listId); } catch { return false; } })();
     return {
       official: ds && !blankIsOfficial && startEffect(s, official, base) === 'change' ? official : null,
       others: [...presets, ...fromSaved, ...clear].map(keep).filter((o): o is Option => !!o),

@@ -69,7 +69,7 @@ export function Seg<T extends string>({ value, options, onChange, label }: { val
   );
 }
 
-export function NumberInput({ value, onCommit, label, width }: { value: number; onCommit: (n: number) => void; label: string; width?: number }) {
+export function NumberInput({ disabled = false, value, onCommit, label, width }: { disabled?: boolean; value: number; onCommit: (n: number) => void; label: string; width?: number }) {
   const [text, setText] = useState(value.toLocaleString('en-US'));
   const L = useL();
   const [commits, setCommits] = useState(0);
@@ -86,7 +86,7 @@ export function NumberInput({ value, onCommit, label, width }: { value: number; 
     setCommits((c) => c + 1);
   };
   return (
-    <input type="text" inputMode="numeric" className="num-in" aria-label={label} aria-invalid={invalid || undefined}
+    <input disabled={disabled} type="text" inputMode="numeric" className="num-in" aria-label={label} aria-invalid={invalid || undefined}
       title={invalid ? L('Not applied: enter a whole number ≥ 0 (e.g. 125000 or 125k)', 'לא הוחל: יש להזין מספר שלם ≥ 0 (למשל 125000 או 125k)') : L('Whole number ≥ 0; press Enter to apply', 'מספר שלם ≥ 0; Enter להחלה')}
       style={width ? { width } : undefined} value={text} onChange={(e) => { setInvalid(false); setText(e.target.value); }} onBlur={commit}
       onKeyDown={(e) => { if (e.key === 'Enter') commit(); if (e.key === 'Escape' && text !== value.toLocaleString('en-US')) { e.preventDefault(); e.stopPropagation(); setText(value.toLocaleString('en-US')); } }} />
@@ -94,7 +94,7 @@ export function NumberInput({ value, onCommit, label, width }: { value: number; 
 }
 
 /** Decimal field (e.g. a percentage) that commits on Enter or blur; shows the live value otherwise. */
-export function DecimalInput({ value, onCommit, label, digits = 2, width = 84 }: { value: number; onCommit: (n: number) => void; label: string; digits?: number; width?: number }) {
+export function DecimalInput({ disabled = false, value, onCommit, label, digits = 2, width = 84 }: { disabled?: boolean; value: number; onCommit: (n: number) => void; label: string; digits?: number; width?: number }) {
   const shown = Number.isFinite(value) ? value.toFixed(digits) : '';
   const [text, setText] = useState(shown);
   const [editing, setEditing] = useState(false);
@@ -107,20 +107,20 @@ export function DecimalInput({ value, onCommit, label, digits = 2, width = 84 }:
     setCommits((c) => c + 1);
   };
   return (
-    <input type="text" inputMode="decimal" className="num-in" aria-label={label} style={{ width }} value={text}
+    <input disabled={disabled} type="text" inputMode="decimal" className="num-in" aria-label={label} style={{ width }} value={text}
       onFocus={(e) => { setEditing(true); e.target.select(); }} onChange={(e) => setText(e.target.value)} onBlur={commit}
       onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); if (e.key === 'Escape' && text !== shown) { e.preventDefault(); e.stopPropagation(); setText(shown); setEditing(false); } }} />
   );
 }
 
 /** Text field that applies on Enter or blur (one undo step per edit, not per keystroke). */
-export function TextField({ value, onCommit, label, placeholder }: { value: string; onCommit: (v: string) => void; label?: string; placeholder?: string }) {
+export function TextField({ disabled = false, value, onCommit, label, placeholder }: { disabled?: boolean; value: string; onCommit: (v: string) => void; label?: string; placeholder?: string }) {
   const [text, setText] = useState(value);
   const [commits, setCommits] = useState(0);
   useEffect(() => setText(value), [value, commits]);
   // after committing, show the value actually in force (a rejected edit reverts)
   const commit = () => { if (text !== value) onCommit(text); setCommits((c) => c + 1); };
-  return <input type="text" aria-label={label} placeholder={placeholder} value={text} onChange={(e) => setText(e.target.value)} onBlur={commit}
+  return <input disabled={disabled} type="text" aria-label={label} placeholder={placeholder} value={text} onChange={(e) => setText(e.target.value)} onBlur={commit}
     onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); if (e.key === 'Escape' && text !== value) { e.preventDefault(); e.stopPropagation(); setText(value); } }} />;
 }
 

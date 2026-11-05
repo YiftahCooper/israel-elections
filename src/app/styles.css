@@ -954,8 +954,12 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .rules-page { align-items: start; gap: 18px; }
 .rules-fields { border: 0; padding: 0; margin: 0; min-width: 0; }
 .rules-grid { align-items: start; }
-.rules-turnout > .row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 14px; align-items: end; margin-block-end: 6px; }
+.rules-turnout > .row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 14px; align-items: start; margin-block-end: 6px; }
 .rules-turnout .numeric-stepper { inline-size: 100%; }
+.rules-turnout .choice-trigger { margin-block-start: 23px; }
+.electorate-heading { min-block-size: 49px; }
+@media (max-width: 600px) { .rules-grid { grid-template-columns: minmax(0, 1fr); } }
+.turnout-step-row .numeric-stepper .seg { inline-size: max-content; max-inline-size: 100%; }
 @media (max-width: 600px) { .rules-turnout > .row > :last-child { grid-column: 1 / -1; } }
 .rules-checks { display: grid; gap: 4px; align-content: start; padding-block-start: 18px; }
 .rule-check { flex-wrap: nowrap; align-items: start; gap: 6px; }

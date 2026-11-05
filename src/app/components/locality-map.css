@@ -1,21 +1,20 @@
 .locality-map-tool { min-width: 0; }
 .locality-map-canvas { height: min(65vh, 580px); min-height: 340px; width: 100%; margin-block: 12px; position: relative; isolation: isolate; border: 1px solid #78838c; border-radius: 8px; }
 .locality-map-canvas .leaflet-tooltip { direction: inherit; unicode-bidi: plaintext; color: #182638; background: #fff; }
-.locality-map-matches, .locality-map-address, .locality-map-legend { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-block: 10px; }
+.locality-map-matches, .locality-map-address, .locality-map-legend { display: flex; flex-wrap: wrap; gap: 8px; align-items: end; margin-block: 10px; }
 .locality-map-address label { flex: 1 1 230px; }
 .locality-map-address input { width: 100%; }
 .locality-map-address small { flex-basis: 100%; }
 .locality-map-legend span { display: inline-flex; gap: 5px; align-items: center; font-size: .8rem; }
 .locality-map-legend i { width: 12px; height: 12px; border: 1px solid #78838c; border-radius: 50%; }
 .locality-map-results { margin-block: 14px; }
-.locality-map-tool button, .locality-map-tool select { min-height: 36px; }
-.locality-map-tool :focus-visible { outline: 3px solid #3d91df; outline-offset: 2px; }
+.locality-map-tool button:not(.info button), .locality-map-tool select { min-height: 32px; }
 
 /* Israel is tall and narrow: on desktop the map is a tall column beside the search, legend and results */
 @media (min-width: 1000px) {
   .locality-map-tool { display: grid; grid-template-columns: minmax(0, 1fr) minmax(440px, 40%); column-gap: 20px; align-items: start; }
   .locality-map-tool > * { grid-column: 1; }
-  .locality-map-tool > .locality-map-canvas { grid-column: 2; grid-row: 1 / span 30; height: calc(100vh - 170px); min-height: 560px; margin: 0; position: sticky; top: 104px; }
+  .locality-map-tool > .locality-map-canvas { grid-column: 2; grid-row: 1 / span 30; height: calc(100dvh - var(--board-top) - 48px); min-height: min(560px, calc(100dvh - var(--board-top) - 48px)); margin: 0; position: sticky; top: var(--board-top); }
 }
 @media (max-width: 999px) { .locality-map-canvas { height: 72vh; } }
 .locality-map-results { border: 1px solid var(--rule, #dde2e7); border-radius: 6px; padding: 10px 12px; }

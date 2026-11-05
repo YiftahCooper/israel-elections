@@ -46,7 +46,7 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
     return out;
   }, [ds, lang]);
 
-  const [open, setOpen] = useState<string | null>(null);
+  const [open, setOpen] = useState<Set<string>>(() => new Set());
   /** loads the question as a named scenario (its assumptions as the description) and shows it on the Overview */
   const tryIt = (title: string, description: string, actions: Action[]) => {
     const st = getState();
@@ -74,13 +74,13 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
           // the row already shows the first fact when no seat moves; details hold only what it does not show
           const more = changes.length ? facts : facts.slice(1);
           const expandable = !!actions && (changes.length > 0 || more.length > 0);
-          const isOpen = expandable && open === p.id;
+          const isOpen = expandable && open.has(p.id);
           const Chevron = isOpen ? ChevronUp : ChevronDown;
           const answer = changes.length ? changes.map((c) => `${c.label} ${signed(c.after - c.before)}`).join(', ') : L('No seat changes', 'אין שינוי במנדטים');
           return (
             <li key={p.id} className={`wi-row ${isOpen ? 'open' : ''}`}>
               {/* the (i) follows the title inline, on its last line; the vote subtitle sits below both */}
-              <div className="wi-question"><div className="wi-title"><button type="button" className="wi-q" aria-expanded={expandable ? isOpen : undefined} disabled={!expandable} onClick={() => setOpen(isOpen ? null : p.id)}>
+              <div className="wi-question"><div className="wi-title"><button type="button" className="wi-q" aria-expanded={expandable ? isOpen : undefined} disabled={!expandable} onClick={() => setOpen(current => { const next = new Set(current); if (next.has(p.id)) next.delete(p.id); else next.add(p.id); return next; })}>
                 {/* the chevron stays on the title's last word, never alone on a line */}
                 <b>{title.slice(0, title.lastIndexOf(' ') + 1)}<span className="nowrap">{title.slice(title.lastIndexOf(' ') + 1)}{expandable && <> <Chevron className="icon sm wi-chev" aria-hidden /></>}</span></b>
               </button><Info title={L(`Assumptions: ${title}`, `הנחות: ${title}`)}>{body}</Info></div>
