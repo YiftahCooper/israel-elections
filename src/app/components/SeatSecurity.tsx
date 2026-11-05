@@ -73,12 +73,11 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
   const done = all.filter((x) => partsOf(x.item).every((p) => figs.has(figureKey(x.item.id, p)))).length;
   const busy = done < all.length;
 
-  // A stable bar scale: a quarter more than one seat's worth of votes, or the largest figure if larger;
+  // A fixed scale independent of the order in which workers finish;
   // square root, so knife-edge margins stay visible.
   const perSeat = Number(r.qualifyingVotes) / Math.max(1, r.rules.seats);
-  const values = above.flatMap((x) => (['gain', 'lose'] as const).map((p) => fig(x.l.id, p)?.value ?? 0));
-  const max = Math.max(1, 1.25 * perSeat, ...values);
-  const scale = (v: number) => Math.sqrt(v / max) * 100;
+  const max = Math.max(1, 1.25 * perSeat);
+  const scale = (v: number) => Math.sqrt(Math.min(v, max) / max) * 100;
   const nm = (id: string) => listLabel(s.lists.find((l) => l.id === id)!, lang);
 
   const text = (f: SecurityFigure | undefined) => {
@@ -114,7 +113,7 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
         <Info title={L('How this is computed', 'איך זה מחושב')}>
           {L('Each figure is the fewest votes a list must lose or gain to change its seats, found by recomputing the whole election.', 'כל מספר הוא הכי מעט קולות שרשימה צריכה לאבד או להוסיף כדי שמספר המנדטים שלה ישתנה, לפי חישוב מחדש של כל הבחירות.')}{' '}
           {L('Other lists: votes move to or from all other lists in proportion; turnout stays the same. New voters: votes come from new voters, or are lost to voters staying home, so the threshold moves too.', 'שאר הרשימות: הקולות עוברים מכל שאר הרשימות או אליהן, באופן יחסי; שיעור ההצבעה לא משתנה. מצביעים חדשים: הקולות באים ממצביעים חדשים, או הולכים לנמנעים, ולכן גם אחוז החסימה בקולות זז.')}{' '}
-          {L('Bars use a square-root scale, so small margins stay visible. ≤ marks a figure found by sampling: the smallest may be lower. > means none was found within the search limit; ? that sampling found none.', 'הפסים בסקאלת שורש, כדי שגם פערים קטנים ייראו. ≤ מסמן מספר שנמצא בדגימה: הקטן ביותר עשוי להיות נמוך יותר. > פירושו שלא נמצא בגבול החיפוש; ? שהדגימה לא מצאה.')}
+          {L('Bars use a fixed square-root scale, capped at 1.25 seats’ worth of votes; numbers show the full margin. ≤ marks a figure found by sampling: the smallest may be lower. > means none was found within the search limit; ? that sampling found none.', 'הפסים בסקאלת שורש קבועה, עד קולות בשווי 1.25 מנדטים; המספרים מציגים את הפער המלא. ≤ מסמן מספר שנמצא בדגימה: הקטן ביותר עשוי להיות נמוך יותר. > פירושו שלא נמצא בגבול החיפוש; ? שהדגימה לא מצאה.')}
         </Info>
       </div>
       <div className="sec-summary small">
@@ -138,9 +137,9 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
             return (
               <div key={l.id} className="sec-row" role="row">
                 <span role="cell" style={{ minWidth: 0 }}>{name(l)}</span>
-                <span role="cell" className="sec-l">{item.seats > 0 && <><span className="tabnum small">{text(lose)}</span>{lose?.value != null && <span className="sec-bar" style={{ width: `${scale(lose.value)}%`, background: `color-mix(in srgb, ${l.color} 30%, transparent)`, boxShadow: `inset 0 0 0 1px ${l.color}` }} />}</>}</span>
+                <span role="cell" className="sec-l">{item.seats > 0 && <><span className="tabnum small">{text(lose)}</span><span className="sec-track">{lose?.value != null && <span className="sec-bar" style={{ width: `${scale(lose.value)}%`, background: `color-mix(in srgb, ${l.color} 30%, transparent)`, boxShadow: `inset 0 0 0 1px ${l.color}` }} />}</span></>}</span>
                 <span role="cell" className="sec-seats tabnum">{item.seats}</span>
-                <span role="cell" className="sec-r">{gain?.value != null && <span className="sec-bar" style={{ width: `${scale(gain.value)}%`, background: l.color }} />}<span className="tabnum small">{text(gain)}</span></span>
+                <span role="cell" className="sec-r"><span className="sec-track">{gain?.value != null && <span className="sec-bar" style={{ width: `${scale(gain.value)}%`, background: l.color }} />}</span><span className="tabnum small">{text(gain)}</span></span>
               </div>
             );
           })}
