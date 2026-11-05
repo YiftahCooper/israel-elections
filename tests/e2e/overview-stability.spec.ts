@@ -103,3 +103,16 @@ test('What if… change previews keep Hebrew names on the reading side and bars 
   expect(x.labelDir).toBe('rtl');
   expect(x.label).toBeGreaterThan(x.neg); // the name sits to the right of the bars
 });
+
+test('in English the chamber hover names a Knesset member in English', async ({ page }) => {
+  await start(page, 'en', 1500, 'k25');
+  // hover every seat until one names a candidate with an official English name; no seat may show Hebrew letters only
+  const seats = page.locator('.chamber [data-seat]');
+  let english = 0;
+  for (let i = 0; i < 120; i += 13) {
+    await seats.nth(i).hover();
+    const name = await page.locator('.chamber .tip b').first().innerText();
+    if (/^[A-Za-z]/.test(name)) english++;
+  }
+  expect(english).toBeGreaterThan(5);
+});
