@@ -21,7 +21,8 @@ export function PartyLinks({ links, name }: { links?: PartyLink[]; name: string 
       case 'knesset': return L('Knesset', 'הכנסת');
       case 'hewiki': return L('Wikipedia (he)', 'ויקיפדיה');
       case 'cec': return L('Elections Committee', 'ועדת הבחירות');
-      case 'academic': return x.publisher;
+      // the publisher is stored as published (in Hebrew); the one research institute linked has an official English name
+      case 'academic': return x.publisher === 'המכון הישראלי לדמוקרטיה' ? L('Israel Democracy Institute', x.publisher) : L('Research', x.publisher);
     }
   };
   const title = (x: PartyLink) => [L(x.titleEn ?? name, x.titleHe ?? name), x.kind === 'partisan' ? L('the party’s own voice (partisan)', 'בקולה של המפלגה (מפלגתי)') : L('a neutral source', 'מקור ניטרלי'),

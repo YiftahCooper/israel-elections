@@ -23,6 +23,8 @@ export interface SimCandidate {
   notSeated?: boolean;
   /** shown instead of nameHe where the candidate notice misprints the name (Candidate.displayNameHe) */
   displayNameHe?: string;
+  /** official English name (Candidate.nameEn); cleared when the candidate is renamed */
+  nameEn?: string;
   /** curated bilingual notes (Candidate.notes) */
   notes?: { en: string; he: string }[];
   /** constituent party on a joint list (Candidate.partyId; decision 0087) */
@@ -239,7 +241,7 @@ function scenarioBase(ds: ElectionDataset, name: string): Scenario {
       id: l.id, originIds: [l.id], letters: l.letters, nameHe: l.nameHe, shortHe: l.shortHe, shortEn: l.shortEn,
       color: l.color, bloc: l.bloc, votes: l.votes, withdrawn: l.withdrawn, sponsorsHe: l.sponsorsHe,
       candidates: l.candidates.map((c) => ({ id: c.id, nameHe: c.nameHe, partyHe: c.partyHe, originListId: l.id, ...(c.notSeated ? { notSeated: true } : {}),
-        ...(c.displayNameHe ? { displayNameHe: c.displayNameHe } : {}), ...(c.notes?.length ? { notes: c.notes } : {}),
+        ...(c.displayNameHe ? { displayNameHe: c.displayNameHe } : {}), ...(c.nameEn ? { nameEn: c.nameEn } : {}), ...(c.notes?.length ? { notes: c.notes } : {}),
         ...(c.partyId ? { partyId: c.partyId } : {}), ...(c.bio ? { bio: c.bio } : {}) })),
       ...(l.candidatesUnavailable ? { rosterUnavailable: true } : {}),
       ...(l.candidatesTruncated ? { rosterTruncated: true } : {}),
@@ -287,7 +289,7 @@ const httpsUrl: Check = (x) => typeof x === 'string' && /^https:\/\/[^\s]+$/.tes
 const oneOf = (...values: unknown[]): Check => (x) => values.includes(x);
 const uniqueStrings: Check = (x) => array(string)(x) && new Set(x as string[]).size === (x as string[]).length;
 const candidate = shape({ id: string, nameHe: string, partyHe: optional(string), originListId: optional(string),
-  displayNameHe: optional(string), notes: optional(array(shape({ en: string, he: string }))), partyId: optional(string),
+  displayNameHe: optional(string), nameEn: optional(string), notes: optional(array(shape({ en: string, he: string }))), partyId: optional(string),
   bio: optional(shape({ knesset: optional(httpsUrl), hewiki: optional(shape({ title: string, url: httpsUrl })),
     party: optional(shape({ url: httpsUrl, publisher: optional(string), archivedAt: optional(string) })), probable: optional(boolean) })) });
 const logo = shape({ rights: optional(oneOf('free-licence', 'fair-use-identification')), file: string, licence: string, attribution: string, sourceUrl: string, background: optional(string) });

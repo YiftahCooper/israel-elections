@@ -42,3 +42,26 @@ describe('candidate biography links', () => {
     expect(() => applyBios(pruned)).toThrow(/not in the roster/);
   });
 });
+
+describe('official English names of Knesset members', () => {
+  const names = JSON.parse(readFileSync('data/raw/bios/knesset-site-mk-names-en.json', 'utf8')) as { siteId: number; nameEn: string | null }[];
+  it('come from the retained Knesset file, for certain identities only, never in Hebrew', () => {
+    const bySite = new Map(names.map((x) => [x.siteId, x.nameEn]));
+    let n = 0;
+    for (const e of index.filter((x) => x.available)) {
+      const meta = JSON.parse(readFileSync(`data/meta/bios/${e.id}.json`, 'utf8')).candidates as Record<string, { knesset?: { siteId?: number } | null; basis?: string }>;
+      for (const l of load(e.id).lists) for (const c of l.candidates) {
+        const m = meta[c.id];
+        if (m?.basis?.startsWith('not elected; ')) expect(c.nameEn, c.id).toBeUndefined();
+        if (!c.nameEn) continue;
+        n++;
+        expect(c.nameEn, c.id).toBe(bySite.get(m!.knesset!.siteId!));
+        expect(c.nameEn, c.id).not.toMatch(/[֐-׿]/);
+      }
+    }
+    expect(n).toBeGreaterThan(3000);
+    const s = scenarioFromDataset(load('k25'));
+    expect(s.lists.flatMap((l) => l.candidates).find((c) => c.id === '25-מחל#1')?.nameEn).toBe('Benjamin Netanyahu');
+    expect(validateScenario(JSON.parse(JSON.stringify(s)))).toEqual([]);
+  });
+});

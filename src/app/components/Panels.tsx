@@ -310,7 +310,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
             <li key={x.id} style={{ marginBottom: 8 }}>
               {/* source records are written in English (Hebrew originals keep an English publisher for English
                   pages); each runs in its own direction inside a Hebrew page */}
-              <b dir="auto">{lang === 'en' ? x.publisherEn ?? x.publisher : x.publisher}</b> {x.official ? <span className="chip ok">{L('official', 'רשמי')}</span> : <span className="chip no">{L('secondary', 'משני')}</span>}<br />
+              <b dir="auto">{lang === 'en' ? x.publisherEn ?? x.publisher : x.publisher}</b> {x.official ? <span className="chip ok">{L('official', 'רשמי')}</span> : <span className="chip secondary">{L('secondary', 'משני')}</span>}<br />
               <span dir="auto" style={{ display: 'block' }}>{lang === 'en' ? x.descriptionEn ?? x.description : x.description}</span>
               <SourceAddress x={x} />
               <div className="muted tiny">{x.retrievedAt && <>{L('Retrieved', 'נשלף')} <bdi dir="ltr">{x.retrievedAt.slice(0, 10)}</bdi></>}{x.sha256 && <>{x.retrievedAt ? ' · ' : ''}<bdi dir="ltr">SHA-256 {x.sha256.slice(0, 16)}…</bdi></>}{x.note ? <> · <bdi dir="auto">{x.note}</bdi></> : ''}</div>
@@ -369,7 +369,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
             <h3>{L('Party logos', 'סמלי המפלגות')}</h3>
             <p className="small ink2">{L('Separate licences', 'רישיונות נפרדים')} <Info title={L('Logo licences', 'רישיונות הסמלים')}>{L('Verified party marks from official sources or Wikimedia Commons (secondary). A year identifies a nearest-period logo, not a verified election-day design. Rights and credits are separate from the app licence.', 'סמלים ממקורות רשמיים או מוויקישיתוף (משני). שנה מציינת סמל מתקופה קרובה, לא עיצוב שאומת ליום הבחירות. הזכויות והייחוס נפרדים מרישיון היישום.')}</Info></p>
             {groups.map((g) => <Fragment key={g.id}>
-              <p className="small" style={{ margin: '8px 0 2px', fontWeight: 600 }}><bdi>{g.title}</bdi>{g.secondary && <> <span className="chip no">{L('secondary', 'משני')}</span></>}</p>
+              <p className="small" style={{ margin: '8px 0 2px', fontWeight: 600 }}><bdi>{g.title}</bdi>{g.secondary && <> <span className="chip secondary">{L('secondary', 'משני')}</span></>}</p>
               <ul className="small credits" style={{ paddingInlineStart: 18, marginTop: 2 }}>{g.rows.map(item)}</ul>
             </Fragment>)}
           </> : null;

@@ -42,6 +42,9 @@ export interface Candidate {
   notSeated?: boolean;
   /** the name to show when the candidate notice misprints it (from data/meta/candidate-notes.json) */
   displayNameHe?: string;
+  /** the member's official English name on the Knesset website (a current name; data/raw/bios/knesset-site-mk-names-en.json),
+   *  attached only to a candidate whose Knesset identity is certain (official OData match or a high reviewed decision) */
+  nameEn?: string;
   /** curated bilingual notes, e.g. a replacement before the Knesset's first sitting (decision 0088) */
   notes?: { en: string; he: string }[];
   /** the constituent party (ListRecord.parties) the candidate represented on a joint list, when sourced */

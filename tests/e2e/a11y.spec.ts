@@ -85,7 +85,7 @@ test('a candidate links to the Knesset page, the party page and Hebrew Wikipedia
   await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
   await page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: 'Likud', exact: true }).click();
   await expect(page.getByRole('region', { name: 'List details' }).getByText(/^Who gets in/)).toBeVisible();
-  const about = page.getByRole('group', { name: 'About נתניהו בנימין' });
+  const about = page.getByRole('group', { name: 'About Benjamin Netanyahu' });
   await expect(about.getByRole('link', { name: 'Knesset' })).toHaveAttribute('href', /^https:\/\/main\.knesset\.gov\.il\/mk\//);
   await expect(about.getByRole('link', { name: 'Wikipedia (he)' })).toHaveAttribute('href', /^https:\/\/he\.wikipedia\.org\//);
   await expect(page.locator('a[href*="en.wikipedia.org"]')).toHaveCount(0);

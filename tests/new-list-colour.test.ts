@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { deltaE2000, hexToLab, MIN_NEIGHBOUR_DELTA_E, SEAT_LIGHTNESS } from '../src/data/colour.ts';
-import { distinctColour, partColours } from '../src/app/newListColour.ts';
+import { componentColours, distinctColour, partColours } from '../src/app/newListColour.ts';
 
 // 2026 seat-holding colours (Likud, Yashar!, Together, Joint List, The Democrats, Ra'am, Yisrael Beiteinu,
 // Otzma Yehudit, UTJ, Shas, Religious Zionism–Zehut) — a crowded chamber with several blues and greens
@@ -25,5 +25,16 @@ describe('colours for lists the user creates', () => {
     expect(clears(b, [...others, lead])).toBe(true);
     expect(clears(c, [...others, lead, b])).toBe(true);
     expect(partColours(['#2535d8', '#42b23c'], '#222dd1', others)).toEqual(['#2535d8', '#42b23c']);
+  });
+});
+
+describe('component-party colours of a joint list', () => {
+  it('keep sourced colours, give the lead the list colour and every colourless party one that stands apart', () => {
+    const others = chamber.filter((c) => c !== '#a0601e');
+    const parties = [{ id: 'degel', color: null }, { id: 'aguda', color: null }, { id: 'yesh', color: '#003aa7' }];
+    const out = componentColours(parties, 'aguda', '#a0601e', others);
+    expect(out.aguda).toBe('#a0601e');
+    expect(out.yesh).toBe('#003aa7');
+    expect(clears(out.degel, [...others, '#a0601e'])).toBe(true);
   });
 });

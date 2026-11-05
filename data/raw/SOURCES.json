@@ -3112,6 +3112,18 @@
     "sha256": "8530fbe65f436f21228559fc8cb275480b093817898ed8a70c2a0275aa38f891"
   },
   {
+    "id": "bios-knesset-site-names-en",
+    "file": "bios/knesset-site-mk-names-en.json",
+    "url": "https://knesset.gov.il/WebSiteApi/knessetapi/MKs/GetMkDetailsHeader?mkId={siteId}&languageKey=en",
+    "publisher": "Knesset (official website, English member pages)",
+    "official": true,
+    "description": "The English name (field Name) of every Knesset member the candidate bios link to, keyed by the Knesset website member id (KNS_MkSiteCode.SiteId); 1,050 members. The site shows each member's current name, which can differ from the name on an old ballot. Fetched by scripts/research/fetch-mk-names-en.py.",
+    "method": "http",
+    "retrievedAt": "2026-11-05",
+    "bytes": 46776,
+    "sha256": "ab438870b66b12ed314c0a6f0111696ccec491b741d3a0ba0ca98a320923d0c8"
+  },
+  {
     "id": "bios-wikidata-p9770",
     "file": "bios/wikidata-knesset-member-ids.json",
     "url": "https://query.wikidata.org/sparql?query=SELECT ?item ?kid ?article ?label WHERE { ?item wdt:P9770 ?kid . OPTIONAL { ?article schema:about ?item ; schema:isPartOf <https://he.wikipedia.org/> . } OPTIONAL { ?item rdfs:label ?label FILTER(lang(?label)=\"he\") } }",
