@@ -78,6 +78,24 @@
       "publisher": "Reuters, Major events during war in Gaza (1 May 2024), via Investing.com",
       "kind": "secondary",
       "accessed": "2026-11-05"
+    },
+    "idi-annual-review-2024": {
+      "url": "https://www.idi.org.il/media/26312/a-year-to-iron-swords-war-and-towards-the-winter-session-of-the-knesset-an-overview-of-the-moves-to-weaken-israeli-democracy.pdf",
+      "publisher": "Israel Democracy Institute, Anat Thon Ashkenazy and Daphne Benvenisty, October 2024 retrospective, opening page",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "reuters-judicial-timeline": {
+      "url": "https://kelo.com/2023/03/27/timeline-israeli-governments-judicial-overhaul-plan-and-reaction/",
+      "publisher": "Reuters, judicial-overhaul timeline (27 March 2023), via KELO-AM",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "jpost-year-review-2023": {
+      "url": "https://www.jpost.com/israel-news/article-779957",
+      "publisher": "The Jerusalem Post, Maayan Jaffe-Hoffman, 23 Israeli, Jewish defining moments of 2023",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -282,9 +300,48 @@
     "inclusionRule": "two-independent-chronologies-one-official-or-academic",
     "chronologies": [
       "knesset-war-chronology",
-      "iiss-one-year"
+      "iiss-one-year",
+      "idi-annual-review-2024",
+      "reuters-judicial-timeline",
+      "jpost-year-review-2023"
     ],
     "events": [
+      {
+        "id": "judicial-plan-2023",
+        "date": "2023-01-04",
+        "category": "governance",
+        "textEn": "Justice Minister Yariv Levin announced proposals to change the judicial system.",
+        "textHe": "שר המשפטים יריב לוין הציג הצעות לשינויים במערכת המשפט.",
+        "cites": [
+          {
+            "source": "idi-annual-review-2024",
+            "quote": "נאומו של שר המשפטים יריב לוין ב-4 בינואר 2023"
+          },
+          {
+            "source": "reuters-judicial-timeline",
+            "quote": "Jan. 4 – Netanyahu’s new government announces a plan"
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "reasonableness-amendment-2023",
+        "date": "2023-07-24",
+        "category": "governance",
+        "textEn": "The Knesset passed an amendment to Basic Law: The Judiciary barring judicial review of government and ministerial decisions on grounds of reasonableness.",
+        "textHe": "הכנסת אישרה תיקון לחוק־יסוד: השפיטה המונע ביקורת שיפוטית על החלטות הממשלה והשרים בעילת הסבירות.",
+        "cites": [
+          {
+            "source": "idi-annual-review-2024",
+            "quote": "התיקון לחוק יסוד: השפיטה לביטול עילת הסבירות"
+          },
+          {
+            "source": "jpost-year-review-2023",
+            "quote": "Levin’s plan, the first part which passed on July 24"
+          }
+        ],
+        "confidence": "high"
+      },
       {
         "id": "attack-war-2023",
         "date": "2023-10-07",
@@ -313,49 +370,39 @@
     ],
     "candidatesPending": [
       {
-        "label": "Judicial legislation and demonstrations",
-        "date": "2023-01",
-        "why": "Research lead only. Two independent qualifying chronologies and direct event evidence have not been inspected; no event is promoted."
-      },
-      {
-        "label": "Reasonableness amendment",
-        "date": "2023-07-24",
-        "why": "Research lead only. Two independent qualifying chronologies and direct event evidence have not been inspected; no event is promoted."
-      },
-      {
         "label": "Emergency government",
         "date": "2023-10",
-        "why": "Research lead only. Two independent qualifying chronologies and direct event evidence have not been inspected; no event is promoted."
+        "why": "The retrieved Reuters war timeline does not select the emergency-government agreement; a second qualifying chronology and direct date source remain missing."
       },
       {
         "label": "Hostage releases and pause in fighting",
         "date": "2023-11",
-        "why": "Research lead only. Two independent qualifying chronologies and direct event evidence have not been inspected; no event is promoted."
+        "why": "Reuters and the Jerusalem Post year review select the November exchange, but no readable official/academic chronology for that event was retrieved. IISS returned a security challenge; not bypassed."
       },
       {
         "label": "Supreme Court judgment on the reasonableness amendment",
         "date": "2024-01-01",
-        "why": "Research lead only. Two independent qualifying chronologies and direct event evidence have not been inspected; no event is promoted."
+        "why": "The IDI October 2024 retrospective selects the judgment and cites 1 January 2024; a second qualifying chronology remains missing."
       },
       {
         "label": "Iran–Israel exchanges",
         "date": "2024-04",
-        "why": "Research lead only. Two independent qualifying chronologies and direct event evidence have not been inspected; no event is promoted."
+        "why": "Reuters selects the 13 April 2024 attack; no second inspected official/academic chronology selecting it was recovered."
       },
       {
         "label": "Israel–Lebanon ceasefire",
         "date": "2024-11",
-        "why": "Research lead only. Two independent qualifying chronologies and direct event evidence have not been inspected; no event is promoted."
+        "why": "The inspected 2023/early-2024 chronologies predate the November 2024 ceasefire; two qualifying later chronologies remain missing."
       },
       {
         "label": "Subsequent war, hostage-release and ceasefire developments",
         "date": "2025",
-        "why": "Research lead only. Two independent qualifying chronologies and direct event evidence have not been inspected; no event is promoted."
+        "why": "The IEMed 2025 chronology returned a verification challenge; no date-specific pair of qualifying chronologies was inspected for these broad leads."
       },
       {
         "label": "Events before the next election",
         "date": "2026",
-        "why": "Research lead only. Two independent qualifying chronologies and direct event evidence have not been inspected; no event is promoted."
+        "why": "Too broad for an event row; requires separately dated events selected by two inspected chronologies, including official/academic evidence."
       }
     ],
     "start": "2022-12-29",
