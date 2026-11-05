@@ -1,0 +1,410 @@
+{
+  "schemaVersion": 1,
+  "electionId": "k18",
+  "status": "pilot",
+  "reviewedAt": "2026-11-05",
+  "notes": [
+    "Research record following docs/design/after-the-election.md; not wired into the app. Gaps remain explicit."
+  ],
+  "sources": {
+    "recommendations-1": {
+      "url": "https://m.jpost.com/israel/procession-of-party-chiefs-calls-on-the-president",
+      "publisher": "The Jerusalem Post",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-2": {
+      "url": "https://www.jta.org/?p=428589",
+      "publisher": "JTA",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-3": {
+      "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D_%D7%95%D7%A9%D7%AA%D7%99%D7%99%D7%9D",
+      "publisher": "Wikipedia (he)",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "ipu-2009": {
+      "url": "https://data.ipu.org/election-summary/HTML/2155_09.htm",
+      "publisher": "Inter-Parliamentary Union, Parline",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "inn-tasking": {
+      "url": "https://www.israelnationalnews.com/news/130062",
+      "publisher": "Israel National News",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "reuters-extension": {
+      "url": "https://mg.co.za/news/south-africa/2009-03-20-israel-s-netanyahu-gets-more-time-to-woo-labour/",
+      "publisher": "Reuters, via Mail & Guardian",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "jta-investiture": {
+      "url": "https://www.jta.org/2009/03/31/israel/bibi-speaks-of-comprehensive-peace-at-swearing-in-rite",
+      "publisher": "JTA",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "idi-coalition": {
+      "url": "https://en.idi.org.il/articles/11757",
+      "publisher": "Israel Democracy Institute, The 32nd Israeli Government: The 2009 Coalition",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "ipu-2013": {
+      "url": "https://data.ipu.org/election-summary/HTML/2155_13.htm",
+      "publisher": "Inter-Parliamentary Union, Parline",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "toi-dissolution": {
+      "url": "https://www.timesofisrael.com/knesset-to-vote-on-its-dissolution/",
+      "publisher": "The Times of Israel",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    }
+  },
+  "results": {
+    "electionDate": "2009-02-10",
+    "knessetSwornIn": {
+      "date": "2009-02-24",
+      "cites": [
+        {
+          "source": "ipu-2009",
+          "quote": "On 24 February the newly elected Knesset held its first session."
+        }
+      ]
+    }
+  },
+  "reaction": {
+    "policy": "Only dated institutional steps; leader reactions require all seated lists or none.",
+    "items": [],
+    "gap": "Election-night statements were not collected for all lists; none is selected."
+  },
+  "recommendationRounds": [
+    {
+      "id": "r1",
+      "date": "2009-02-18",
+      "endDate": "2009-02-19",
+      "kind": "consultations",
+      "president": {
+        "nameEn": "Shimon Peres",
+        "nameHe": "שמעון פרס"
+      },
+      "blocSchemeRef": "pm-recommendations",
+      "nominees": {
+        "netanyahu": {
+          "nameEn": "Benjamin Netanyahu",
+          "nameHe": "בנימין נתניהו"
+        },
+        "livni": {
+          "nameEn": "Tzipi Livni",
+          "nameHe": "ציפי לבני"
+        }
+      },
+      "entries": [
+        {
+          "letters": "מחל",
+          "seats": 27,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "ל",
+          "seats": 15,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "שס",
+          "seats": 11,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "ג",
+          "seats": 5,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "ט",
+          "seats": 4,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "ב",
+          "seats": 3,
+          "status": "recommended",
+          "nominee": "netanyahu"
+        },
+        {
+          "letters": "כן",
+          "seats": 28,
+          "status": "recommended",
+          "nominee": "livni"
+        },
+        {
+          "letters": "אמת",
+          "seats": 13,
+          "status": "none"
+        },
+        {
+          "letters": "מרצ",
+          "seats": 3,
+          "status": "none"
+        },
+        {
+          "letters": "ו",
+          "seats": 4,
+          "status": "none"
+        },
+        {
+          "letters": "עם",
+          "seats": 4,
+          "status": "none"
+        },
+        {
+          "letters": "ד",
+          "seats": 3,
+          "status": "none"
+        }
+      ],
+      "totals": {
+        "netanyahu": 65,
+        "livni": 28,
+        "none": 27
+      },
+      "cites": [
+        {
+          "source": "recommendations-1",
+          "quote": "Of all 12 factions, only Kadima, with its 28 MKs, recommended that Peres designate Kadima leader Tzipi Livni to form the next government. The Likud, Habayit Hayehudi, Israel Beiteinu, Shas, National Union and United Torah Judaism (a total of 65 MKs) recommended that the mandate be given to Likud chairman Binyamin Netanyahu, while Meretz, Balad, Labor, Hadash and the United Arab List-Ta'al refrained from recommending anyone."
+        },
+        {
+          "source": "recommendations-2",
+          "quote": "As of Thursday, 65 Knesset members have recommended Netanyahu, including the religious parties, while Livni has received only the nomination of her own party. The left-wing Meretz Party did not nominate a candidate"
+        },
+        {
+          "source": "recommendations-3",
+          "quote": "זאת לאחר ש-65 חברי כנסת המליצו בפני הנשיא על נתניהו כמי שראוי להטיל עליו את הרכבת הממשלה, לעומת 28 חברי כנסת (ממפלגתה בלבד), שהמליצו על ציפי לבני, ולאחר שמפלגת העבודה החליטה שלא להמליץ על אף אחד מחברי הכנסת"
+        }
+      ],
+      "notes": [
+        "Consultations were held on 18–19 February 2009; the date is the last consultation day. President Peres tasked Netanyahu on 20 February 2009. Party-by-party positions are from the Jerusalem Post report of 19 February 2009; Hebrew Wikipedia is kept as a secondary source."
+      ]
+    }
+  ],
+  "formation": {
+    "outcome": "government-formed",
+    "events": [
+      {
+        "date": "2009-02-20",
+        "type": "mandate-given",
+        "person": "netanyahu",
+        "days": 28,
+        "textEn": "Peres tasked Benjamin Netanyahu with forming a government for 28 days.",
+        "textHe": "פרס הטיל על בנימין נתניהו להרכיב ממשלה בתוך 28 ימים.",
+        "cites": [
+          {
+            "source": "inn-tasking",
+            "quote": "entrusted him with the task of forming a government. Netanyahu now has 28 days"
+          }
+        ]
+      },
+      {
+        "date": "2009-03-20",
+        "type": "extension",
+        "person": "netanyahu",
+        "days": 14,
+        "endDate": "2009-04-03",
+        "textEn": "Peres granted Netanyahu a two-week extension, until 3 April.",
+        "textHe": "פרס העניק לנתניהו הארכה של שבועיים, עד 3 באפריל.",
+        "cites": [
+          {
+            "source": "reuters-extension",
+            "quote": "won a two-week extension on Friday to form a government"
+          },
+          {
+            "source": "reuters-extension",
+            "quote": "The extension sets April 3 as his new deadline."
+          }
+        ]
+      },
+      {
+        "date": "2009-03-31",
+        "type": "confidence-vote",
+        "votes": {
+          "for": 69,
+          "against": 45,
+          "abstained": 5
+        },
+        "textEn": "The Knesset approved the 32nd government, 69–45, with five abstentions; the ministers were sworn in.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־32 ברוב של 69 מול 45, וחמישה נמנעים; השרים הושבעו.",
+        "cites": [
+          {
+            "source": "jta-investiture",
+            "quote": "a vote of 69 to 45 with five abstentions."
+          }
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "about": "Coalition membership in the IPU summary",
+        "values": [
+          {
+            "value": "IPU names National Union and UTJ as coalition members",
+            "source": "ipu-2009"
+          },
+          {
+            "value": "IDI lists Jewish Home in the five-party, 69-seat formation coalition, with UTJ still prospective",
+            "source": "idi-coalition"
+          }
+        ],
+        "resolution": "Use the election-specific IDI composition, consistent with the established first-government scheme and seats. IPU is used only for first sitting and date chronology, not coalition membership."
+      }
+    ]
+  },
+  "term": {
+    "inclusionRule": "two-independent-chronologies-one-official-or-academic",
+    "chronologies": [],
+    "events": [],
+    "candidatesPending": [
+      {
+        "label": "Bar-Ilan speech",
+        "date": "2009-06",
+        "why": "Research lead only; two independent qualifying chronologies and direct event evidence not yet inspected."
+      },
+      {
+        "label": "Gaza flotilla raid",
+        "date": "2010-05",
+        "why": "Research lead only; two independent qualifying chronologies and direct event evidence not yet inspected."
+      },
+      {
+        "label": "Carmel fire",
+        "date": "2010-12",
+        "why": "Research lead only; two independent qualifying chronologies and direct event evidence not yet inspected."
+      },
+      {
+        "label": "Labor split / Independence faction",
+        "date": "2011-01",
+        "why": "Research lead only; two independent qualifying chronologies and direct event evidence not yet inspected."
+      },
+      {
+        "label": "Social protests",
+        "date": "2011-07",
+        "why": "Research lead only; two independent qualifying chronologies and direct event evidence not yet inspected."
+      },
+      {
+        "label": "Gilad Shalit prisoner exchange",
+        "date": "2011-10",
+        "why": "Research lead only; two independent qualifying chronologies and direct event evidence not yet inspected."
+      },
+      {
+        "label": "Kadima entered the coalition",
+        "date": "2012-05",
+        "why": "Research lead only; two independent qualifying chronologies and direct event evidence not yet inspected."
+      },
+      {
+        "label": "Kadima left the coalition",
+        "date": "2012-07",
+        "why": "Research lead only; two independent qualifying chronologies and direct event evidence not yet inspected."
+      },
+      {
+        "label": "Operation Pillar of Defense during caretaker period",
+        "date": "2012-11",
+        "why": "Research lead only; two independent qualifying chronologies and direct event evidence not yet inspected."
+      }
+    ],
+    "start": "2009-03-31",
+    "end": "2013-03-18",
+    "endedBy": {
+      "type": "knesset-dissolved",
+      "date": "2012-10-15",
+      "nextElection": "k19",
+      "textEn": "The Knesset voted to dissolve itself, 100–0, and set an election for 22 January 2013.",
+      "textHe": "הכנסת הצביעה על התפזרותה ברוב של 100 ללא מתנגדים וקבעה בחירות ל־22 בינואר 2013.",
+      "cites": [
+        {
+          "source": "ipu-2013",
+          "quote": "Date of dissolution of the outgoing legislature: 15 October 2012"
+        },
+        {
+          "source": "toi-dissolution",
+          "quote": "One hundred MKs voted in favor, with no opposing votes and zero abstentions"
+        }
+      ],
+      "notes": [
+        "15 October is the IPU/sitting date and the date on the ToI report. Reports published after midnight on 16 October describe the same vote; exact civil-time/Gazette date not verified."
+      ]
+    }
+  },
+  "issuePolling": {
+    "status": "pending",
+    "note": "No qualifying published most-important-problem topline retrieved; see docs/research/issue-polling-sources.md. No microdata calculations."
+  },
+  "gaps": [
+    "CEC certification date not retrieved.",
+    "Formal successful-formation notification date and original presidential letters not retrieved; not inferred from the investiture.",
+    "UTJ accession date reuses the established scheme’s note; a direct contemporary source is still needed before adding a government-change event.",
+    "IPU coalition-membership error is explicitly flagged; it is not used for the cabinet composition.",
+    "Exact civil-time/Gazette dissolution date needs verification against the late 15/early 16 October sitting.",
+    "No included term event meets the two-chronology rule."
+  ],
+  "government": {
+    "number": 32,
+    "nameEn": "32nd government (Netanyahu II)",
+    "nameHe": "הממשלה ה־32 (נתניהו השנייה)",
+    "startDate": "2009-03-31",
+    "endDate": "2013-03-18",
+    "endDateRef": "data/meta/aftermath/k19.json confidence-vote",
+    "primeMinisters": [
+      {
+        "nameEn": "Benjamin Netanyahu",
+        "nameHe": "בנימין נתניהו",
+        "letters": "מחל",
+        "from": "2009-03-31",
+        "to": "2013-03-18"
+      }
+    ],
+    "firstGovernmentSchemeRef": "first-government",
+    "coalition": [
+      {
+        "letters": "מחל",
+        "seats": 27
+      },
+      {
+        "letters": "ל",
+        "seats": 15
+      },
+      {
+        "letters": "אמת",
+        "seats": 13
+      },
+      {
+        "letters": "שס",
+        "seats": 11
+      },
+      {
+        "letters": "ב",
+        "seats": 3
+      }
+    ],
+    "coalitionSeats": 69,
+    "cites": [
+      {
+        "source": "idi-coalition",
+        "quote": "Likud (27), Yisrael Beiteinu (15), Labor (13), Shas (11) and Habayit Hayehudi (3)."
+      }
+    ],
+    "notes": [
+      "Formation-day coalition is 69. The established first-government scheme also includes UTJ’s five seats marked joined 1 April 2009 (74 after accession). These are different dated snapshots, not competing formation-day totals.",
+      "Seat weights checked against public/data/k18.json. The 69-seat coalition weight is not a reconstructed individual roll-call vote: the JTA report separately records 69–45–5."
+    ]
+  }
+}
