@@ -69,6 +69,24 @@
       "publisher": "Knesset, sitting 155 of the Second Knesset, 22 December 1952 (retrospective account)",
       "kind": "official",
       "accessed": "2026-11-05"
+    },
+    "mfa-history": {
+      "url": "https://www.gov.il/BlobFolder/generalpage/facts-about-israel-history/en/English_SiteTransfer_DOCUMENTS_History2010.pdf",
+      "publisher": "Israel Ministry of Foreign Affairs, Facts About Israel: History (2010), pp. 48–70",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "idi-constitutional-history": {
+      "url": "https://www.idi.org.il/parliaments/11535/11538",
+      "publisher": "Israel Democracy Institute, History of the Constitutional Process in Israel, 16 September 2000",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "un-admission-1949": {
+      "url": "https://www.un.org/unispal/document/auto-insert-180950/",
+      "publisher": "United Nations General Assembly, 207th plenary meeting, 11 May 1949",
+      "kind": "official",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -432,24 +450,61 @@
     "inclusionRule": "At least two independent chronologies, including one official or academic; a direct date source is also required.",
     "chronologies": [
       "term-history",
-      "idi-next"
+      "idi-next",
+      "mfa-history",
+      "idi-constitutional-history"
     ],
-    "events": [],
-    "candidatesPending": [
+    "events": [
       {
-        "label": "Harari resolution",
+        "id": "un-membership",
+        "date": "1949-05-11",
+        "category": "foreign-relations",
+        "textEn": "Israel was admitted to the United Nations.",
+        "textHe": "ישראל התקבלה לארגון האומות המאוחדות.",
+        "cites": [
+          {
+            "source": "term-history",
+            "quote": "Israel's acceptance as a member of the UN in 1949"
+          },
+          {
+            "source": "mfa-history",
+            "quote": "1949, Israel took its seat as the 59th member of the United Nations."
+          },
+          {
+            "source": "mfa-history",
+            "quote": "On11May"
+          },
+          {
+            "source": "un-admission-1949",
+            "quote": "He therefore formally declared Israel admitted to membership in the United Nations."
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "harari-resolution",
         "date": "1950-06",
-        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
-      },
-      {
-        "label": "Israel admitted to the United Nations",
-        "date": "1949-05",
-        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
-      },
+        "category": "governance",
+        "textEn": "The Knesset adopted the Harari resolution for preparing a constitution in chapters, each a Basic Law.",
+        "textHe": "הכנסת קיבלה את החלטת הררי להכנת חוקה בפרקים, שכל אחד מהם יהיה חוק יסוד.",
+        "cites": [
+          {
+            "source": "term-history",
+            "quote": "the Harari resolution"
+          },
+          {
+            "source": "idi-constitutional-history",
+            "quote": "ביוני 1950 קיבלה הכנסת הראשונה"
+          }
+        ],
+        "confidence": "high"
+      }
+    ],
+    "candidatesPending": [
       {
         "label": "Government and Knesset move to Jerusalem",
         "date": "1949-12",
-        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+        "why": "Knesset history records the move and Ben-Gurion’s 5 December 1949 declaration. MFA timeline places the Knesset/ministries move under 1950. Separate declaration, relocation and premises before resolving dates; no bundled row promoted."
       }
     ],
     "endedBy": {
