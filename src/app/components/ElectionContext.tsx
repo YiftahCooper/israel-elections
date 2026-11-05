@@ -16,7 +16,9 @@ export function EvidenceLink({ source }: { source: ContextSource }) {
 /** Immutable history, deliberately independent of the scenario/action log. */
 export function ElectionAbout({ electionId, listId }: { electionId: ElectionId; listId?: string }) {
   const L = useL(); const lang = useLang();
-  const events = electionContext.events.filter(e => e.electionId === electionId && (!listId || e.listId === listId));
+  // the result's own status leads; the rest read as a timeline (the record order groups by list)
+  const events = electionContext.events.filter(e => e.electionId === electionId && (!listId || e.listId === listId))
+    .sort((a, b) => Number(b.type === 'publication-status') - Number(a.type === 'publication-status') || a.effectiveDate.localeCompare(b.effectiveDate));
   const lists = useStore(st => st.datasets[electionId]?.lists);
   // the band's About is a popover: like the other menus it closes on Escape or a press outside it
   const ref = useRef<HTMLDetailsElement>(null);

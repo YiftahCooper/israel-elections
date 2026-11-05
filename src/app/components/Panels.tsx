@@ -1,3 +1,4 @@
+import { Download } from 'lucide-react';
 import { PreferenceSettings } from './SourcePicker.tsx';
 import { NumericStepper } from './NumericStepper.tsx';
 import { TurnoutSteps } from './TurnoutSteps.tsx';
@@ -195,44 +196,87 @@ export function Localities({ s }: { s: Scenario }) {
 
 // ------------------------------------------------------------------ sources
 
-interface Src { id: string; url: string; publisher: string; official: boolean; description: string; retrievedAt?: string; sha256?: string; bytes?: number; note?: string; method: string; file: string }
+interface Src { id: string; url: string; publisher: string; publisherEn?: string; official: boolean; description: string; descriptionEn?: string; retrievedAt?: string; sha256?: string; bytes?: number; note?: string; method: string; file: string }
+
+/** A source's address: a link for a web address (any words after it stay plain text); a project
+ *  record (no web address) is named by its retained file, never as a dead link. */
+function SourceAddress({ x }: { x: Src }) {
+  const L = useL();
+  const [href, ...rest] = x.url.split(' ');
+  if (!/^https?:\/\//.test(href)) return <span className="muted" style={{ display: 'block' }}>{L('Project record', 'רשומת הפרויקט')}: <bdi dir="ltr">{x.file && !x.file.startsWith('..') ? `data/raw/${x.file}` : x.url.replace(/^(local|project):/, '')}</bdi></span>;
+  return <span dir="ltr" style={{ display: 'block', wordBreak: 'break-all' }}><a href={href} target="_blank" rel="noreferrer">{href}</a>{rest.length ? ` ${rest.join(' ')}` : ''}</span>;
+}
+
+/** The manifest is fetched once per page load and kept, so a return visit to Sources renders at once. */
+let sourcesCache: Src[] | undefined;
+let sourcesLoad: Promise<Src[]> | undefined;
+const loadSources = () => sourcesLoad ??= fetch('data/sources.json')
+  .then((r) => { if (!r.ok) throw new Error(String(r.status)); return r.json() as Promise<Src[]>; })
+  .then((x) => (sourcesCache = x))
+  .catch((e) => { sourcesLoad = undefined; throw e; });
 
 export function Sources({ ds }: { ds: ElectionDataset }) {
   const L = useL();
   const lang = useLang();
-  const [src, setSrc] = useState<Src[]>([]);
-  useEffect(() => { fetch('data/sources.json').then((r) => r.json()).then(setSrc).catch(() => setSrc([])); }, []);
-  const used = src.filter((x) => ds.sourceIds.includes(x.id));
+  // A failed load says so rather than showing an empty list.
+  const [src, setSrc] = useState<Src[] | null>(sourcesCache ?? null);
+  const [failed, setFailed] = useState(false);
+  useEffect(() => { if (!src) loadSources().then(setSrc).catch(() => setFailed(true)); }, [src]);
+  // The page appears whole once the list has loaded: the list is long, and inserting it into a page already
+  // shown would push everything after it (on phones the whole second column) hundreds of pixels down.
+  if (!src && !failed) return <p className="small muted" role="status">{L('Loading…', 'טוען…')}</p>;
+  const byId = new Map((src ?? []).map((x) => [x.id, x]));
+  const listed = ds.sourceIds.flatMap((id) => byId.get(id) ?? []);
+  // "official sources first": the list keeps that promise; the dataset's order is kept within each group
+  const used = [...listed.filter((x) => x.official), ...listed.filter((x) => !x.official)];
+  const noLocalities = !ds.totals.ballotBoxes && !ds.totals.localities;
   return (
     <div className="grid2 stack-sm" style={{ alignItems: 'start', gap: 18 }}>
       <div>
         <h3>{L('Data status', 'מצב הנתונים')}</h3>
-        <p className={ds.status.stage === 'official-final' ? 'small' : 'small'} style={ds.status.stage === 'official-final' ? undefined : { color: 'var(--warn-ink)' }}>{lang === 'he' ? ds.status.noteHe : ds.status.noteEn}</p>
+        <p className="small" style={ds.status.stage === 'official-final' ? undefined : { color: 'var(--warn-ink)' }}>{lang === 'he' ? ds.status.noteHe : ds.status.noteEn}</p>
         <div className="kv small" style={{ maxWidth: 440 }}>
           <span>{L('Registered voters', 'בעלי זכות בחירה')}</span><span>{fmtInt(ds.totals.registered)}</span>
           <span>{L('Votes cast', 'מצביעים')}</span><span>{fmtInt(ds.totals.votesCast)}</span>
           <span>{L('Valid', 'כשרים')}</span><span>{fmtInt(ds.totals.valid)}</span>
           <span>{L('Invalid', 'פסולים')}</span><span>{fmtInt(ds.totals.invalid)}</span>
-          <span>{L('Polling stations', 'קלפיות')} <Info term="polling-station" /></span><span>{fmtInt(ds.totals.ballotBoxes)}</span>
-          <span>{L('Localities', 'יישובים')}</span><span>{fmtInt(ds.totals.localities)}</span>
+          {/* elections without locality data have no counts here: "0" would read as a real figure */}
+          {noLocalities
+            ? <><span>{L('Polling stations and localities', 'קלפיות ויישובים')}</span><span className="muted">{L('Not in the data', 'אין בנתונים')}</span></>
+            : <><span>{L('Polling stations', 'קלפיות')} <Info term="polling-station" /></span><span>{fmtInt(ds.totals.ballotBoxes)}</span>
+              <span>{L('Localities', 'יישובים')}</span><span>{fmtInt(ds.totals.localities)}</span></>}
           {ds.totals.envelopeVotes !== undefined && <><span>{L('Double-envelope votes', 'מעטפות חיצוניות')} <Info term="envelopes" /></span><span>{fmtInt(ds.totals.envelopeVotes)}</span></>}
-          <span>{L('Lists / candidates', 'רשימות / מועמדים')}</span><span>{ds.lists.length} / {fmtInt(ds.lists.reduce((t, l) => t + l.candidates.length, 0))}</span>
-          <span>{L('Dataset built', 'נבנה')}</span><span>{ds.buildInfo.builtAt.slice(0, 10)}</span>
+          <span>{L('Lists', 'רשימות')}</span><span>{ds.lists.length}</span>
+          <span>{L('Candidates in the data', 'מועמדים בנתונים')}</span><span>{fmtInt(ds.lists.reduce((t, l) => t + l.candidates.length, 0))}</span>
+          <span>{L('Dataset built', 'נבנה')}</span><span><bdi dir="ltr">{ds.buildInfo.builtAt.slice(0, 10)}</bdi></span>
         </div>
+        <p className="small"><Download className="icon sm" aria-hidden style={{ verticalAlign: '-2px', marginInlineEnd: 4 }} />{L('Download', 'הורדה')}:{' '}
+          <a href={`data/${ds.id}.json`} download>{L('election data', 'נתוני הבחירות')}</a>
+          {!noLocalities && <> · <a href={`data/${ds.id}-localities.json`} download>{L('localities', 'יישובים')}</a></>}
+          {' · '}<a href="data/sources.json" download>{L('all sources', 'כל המקורות')}</a> <span className="muted">(JSON)</span></p>
         <h3 style={{ marginTop: 14 }}>{L('Sources', 'מקורות')}</h3>
         <p className="small ink2">{L('Official sources first', 'מקורות רשמיים תחילה')} <Info title={L('Source policy', 'מדיניות המקורות')}>{L('Official sources come first; secondary sources are labelled. English-language Wikipedia is never used or linked: it is unreliable on Israel-related information.', 'מקורות רשמיים קודמים לכול; מקורות משניים מסומנים. ויקיפדיה באנגלית אינה משמשת כמקור ואין אליה קישורים: היא אינה אמינה במידע הנוגע לישראל.')}</Info></p>
-        <ul className="small credits" style={{ paddingInlineStart: 18 }}>
+        {failed ? <p className="small" role="alert">{L('The source list could not be loaded. Reload to try again.', 'לא ניתן לטעון את רשימת המקורות. טענו מחדש כדי לנסות שוב.')}</p>
+          : <ul className="small credits" style={{ paddingInlineStart: 18 }}>
           {used.map((x) => (
             <li key={x.id} style={{ marginBottom: 8 }}>
-              {/* source records are written in English: each runs in its own direction inside a Hebrew page */}
-              <b dir="auto">{x.publisher}</b> {x.official ? <span className="chip ok">{L('official', 'רשמי')}</span> : <span className="chip no">{L('secondary', 'משני')}</span>}<br />
-              <span dir="auto" style={{ display: 'block' }}>{x.description}</span>
-              <a href={x.url.split(' ')[0]} target="_blank" rel="noreferrer" dir="ltr" style={{ wordBreak: 'break-all', display: 'block' }}>{x.url}</a>
-              <div className="muted tiny">{L('Retrieved', 'נשלף')} <bdi dir="ltr">{x.retrievedAt?.slice(0, 10)}{x.sha256 ? ` · SHA-256 ${x.sha256.slice(0, 16)}…` : ''}</bdi>{x.note ? <> · <bdi dir="auto">{x.note}</bdi></> : ''}</div>
+              {/* source records are written in English (Hebrew originals keep an English publisher for English
+                  pages); each runs in its own direction inside a Hebrew page */}
+              <b dir="auto">{lang === 'en' ? x.publisherEn ?? x.publisher : x.publisher}</b> {x.official ? <span className="chip ok">{L('official', 'רשמי')}</span> : <span className="chip no">{L('secondary', 'משני')}</span>}<br />
+              <span dir="auto" style={{ display: 'block' }}>{lang === 'en' ? x.descriptionEn ?? x.description : x.description}</span>
+              <SourceAddress x={x} />
+              <div className="muted tiny">{x.retrievedAt && <>{L('Retrieved', 'נשלף')} <bdi dir="ltr">{x.retrievedAt.slice(0, 10)}</bdi></>}{x.sha256 && <>{x.retrievedAt ? ' · ' : ''}<bdi dir="ltr">SHA-256 {x.sha256.slice(0, 16)}…</bdi></>}{x.note ? <> · <bdi dir="auto">{x.note}</bdi></> : ''}</div>
             </li>
           ))}
-        </ul>
+        </ul>}
         <p className="small muted">{L('Names, colours and blocs', 'שמות, צבעים וגושים')} <Info title={L('App annotations', 'נתונים של היישום')}>{L('Short and English list names are assigned by this application. Colours are the colours associated with each party where a source supports it, otherwise an app colour; blocs follow the sources given for each grouping (see decision 0087). None of these is official election data.', 'השמות המקוצרים והאנגליים של הרשימות נקבעו ביישום זה. הצבעים הם הצבעים המזוהים עם כל מפלגה כשיש לכך מקור, ואחרת צבע של היישום; הגושים לפי המקורות של כל חלוקה (ראו החלטה 0087). אף אחד מאלה אינו נתון בחירות רשמי.')}</Info></p>
+        <h3 style={{ marginTop: 14 }}>{L('Method and limits', 'שיטה ומגבלות')}</h3>
+        <ul className="small" style={{ paddingInlineStart: 18 }}>
+          <li>{L('Seats are computed by deterministic code implementing sections 81–82 of the Knesset Elections Law with exact integer arithmetic. Automated tests check that it reproduces the officially published seats of every list in every election offered here (2026: the reported final count).', 'המנדטים מחושבים בקוד דטרמיניסטי המממש את סעיפים 81–82 לחוק הבחירות בחשבון שלמים מדויק. בדיקות אוטומטיות מוודאות שהוא משחזר את המנדטים שפורסמו רשמית לכל רשימה בכל מערכת בחירות המוצגת כאן (2026: הספירה הסופית שדווחה).')}</li>
+          <li>{L('Exact ties are decided by lottery under the law; the app flags them and lets you choose the lottery outcome.', 'שוויון מדויק מוכרע בהגרלה לפי החוק; היישום מסמן זאת ומאפשר לבחור את תוצאת ההגרלה.')}</li>
+          <li>{L('Elected candidates are those elected on election night; later replacements and the Norwegian Law are not modelled.', 'הנבחרים הם מי שנבחרו בליל הבחירות; מחליפים מאוחרים והחוק הנורבגי אינם ממודלים.')}</li>
+          <li>{L('Demographic turnout tools are hypothetical and labelled as such.', 'כלי ההצבעה הדמוגרפיים היפותטיים ומסומנים ככאלה.')}</li>
+        </ul>
       </div>
       <div>
         <details><summary>{L('English list names', 'שמות הרשימות באנגלית')}</summary>
@@ -240,26 +284,50 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
           <ul className="small">{ds.lists.filter(l => l.englishName).map(l => <li key={l.id}>{listLabel(l, lang)} · {L('Unofficial transliteration', 'תעתיק לא רשמי')} · {l.englishName!.sourceId}</li>)}</ul>
         </details>
         {(() => {
-          // Logos keep their licence or fair-use notice and attribution with the images.
-          const logos = ds.lists.flatMap((l) => [...(l.logo ? [{ name: listLabel(l, lang), logo: l.logo }] : []),
-            ...(l.parties ?? []).filter((p) => p.logo).map((p) => ({ name: lang === 'he' ? p.nameHe : p.nameEn, logo: p.logo! }))]);
+          // Logos keep their licence or fair-use notice and attribution with the images. One entry per image
+          // file: a joint list and its party often share one logo, and the credit is the same.
+          const byFile = new Map<string, { names: string[]; logo: NonNullable<ElectionDataset['lists'][number]['logo']> }>();
+          for (const l of ds.lists) for (const x of [...(l.logo ? [{ name: listLabel(l, lang), logo: l.logo }] : []),
+            ...(l.parties ?? []).filter((p) => p.logo).map((p) => ({ name: lang === 'he' ? p.nameHe : p.nameEn, logo: p.logo! }))]) {
+            const e = byFile.get(x.logo.file);
+            if (!e) byFile.set(x.logo.file, { names: [x.name], logo: x.logo });
+            else if (!e.names.includes(x.name)) e.names.push(x.name);
+          }
+          const logos = [...byFile.values()];
+          // the credit line, without repeating the licence shown beside it; in English the party's Hebrew
+          // name that opens an official-mark credit is dropped (the English name already leads the row)
+          // The credit line, without repeating the licence shown beside it. In English the credit leads with its
+          // English part; a Hebrew or Arabic opening (the party's own name, a credited uploader) moves to a
+          // quiet note at the end of the row rather than being dropped.
+          const nonLatin = /[\u0590-\u05FF\u0600-\u06FF]/;
+          const credit = (a: string, licence: string): { main: string; original?: string } => {
+            const c = a.replace(`; ${licence}.`, '.');
+            if (lang !== 'en' || !nonLatin.test(c)) return { main: c };
+            const parts = c.split(/(; | — )/);
+            let i = 0;
+            while (i < parts.length && (nonLatin.test(parts[i]) || /^(; | — )$/.test(parts[i]))) i++;
+            if (i === 0 || i >= parts.length) return { main: c };
+            return { main: parts.slice(i).join(''), original: parts.slice(0, i).join('').replace(/(; | — )$/, '') };
+          };
+          const commons = (url: string) => { try { return new URL(url).hostname.endsWith('wikimedia.org'); } catch { return false; } };
+          // a credit runs in the direction of most of its letters, so a Hebrew uploader name before a Latin
+          // file name does not reorder the line
+          const dir = (t: string) => (t.match(/[A-Za-z]/g)?.length ?? 0) >= (t.match(/[\u0590-\u05FF\u0600-\u06FF]/g)?.length ?? 0) ? 'ltr' : 'rtl';
+          const item = (x: typeof logos[number]) => { const c = credit(x.logo.attribution, x.logo.licence); return <li key={x.logo.file}><b>{x.names.join(' · ')}</b>: <bdi dir={dir(c.main)}><a href={x.logo.sourceUrl} target="_blank" rel="noreferrer">{c.main}</a></bdi> · <bdi dir="auto">{x.logo.licence}</bdi>{x.logo.year ? <> · <bdi dir="ltr">{x.logo.year}</bdi></> : ''}{c.original && <> · <bdi className="muted" dir="rtl" lang={/[\u0600-\u06FF]/.test(c.original) ? 'ar' : 'he'}>{c.original}</bdi></>}</li>; };
+          // the secondary label is said once, for the Commons group, not on every row
+          const groups = [{ id: 'party', title: L('From the parties', 'מהמפלגות'), secondary: false, rows: logos.filter((x) => !commons(x.logo.sourceUrl)) },
+            { id: 'commons', title: 'Wikimedia Commons', secondary: true, rows: logos.filter((x) => commons(x.logo.sourceUrl)) }].filter((g) => g.rows.length);
           return logos.length ? <>
             <h3>{L('Party logos', 'סמלי המפלגות')}</h3>
             <p className="small ink2">{L('Separate licences', 'רישיונות נפרדים')} <Info title={L('Logo licences', 'רישיונות הסמלים')}>{L('Verified party marks from official sources or Wikimedia Commons (secondary). A year identifies a nearest-period logo, not a verified election-day design. Rights and credits are separate from the app licence.', 'סמלים ממקורות רשמיים או מוויקישיתוף (משני). שנה מציינת סמל מתקופה קרובה, לא עיצוב שאומת ליום הבחירות. הזכויות והייחוס נפרדים מרישיון היישום.')}</Info></p>
-            <ul className="small credits" style={{ paddingInlineStart: 18 }}>
-              {logos.map((x, i) => <li key={i}><b>{x.name}</b>: <bdi dir="auto"><a href={x.logo.sourceUrl} target="_blank" rel="noreferrer">{x.logo.attribution}</a> · {x.logo.licence}{x.logo.year ? ` · ${x.logo.year}` : ''}</bdi></li>)}
-            </ul>
+            {groups.map((g) => <Fragment key={g.id}>
+              <p className="small" style={{ margin: '8px 0 2px', fontWeight: 600 }}><bdi>{g.title}</bdi>{g.secondary && <> <span className="chip no">{L('secondary', 'משני')}</span></>}</p>
+              <ul className="small credits" style={{ paddingInlineStart: 18, marginTop: 2 }}>{g.rows.map(item)}</ul>
+            </Fragment>)}
           </> : null;
         })()}
         <h3>{L('Glossary', 'מונחים')}</h3>
         <dl className="small">{GLOSSARY.map((g) => <div key={g.id} id={`term-${g.id}`} style={{ marginBottom: 10 }}><dt><b>{lang === 'he' ? g.nameHe : g.nameEn}</b>{lang === 'he' ? '' : <span className="muted"> · {g.nameHe}</span>}</dt><dd style={{ margin: 0 }}>{lang === 'he' ? g.defHe : g.defEn}<br /><GlossaryLink g={g} lang={lang} /></dd></div>)}</dl>
-        <h3>{L('Method and limits', 'שיטה ומגבלות')}</h3>
-        <ul className="small" style={{ paddingInlineStart: 18 }}>
-          <li>{L('Seats are computed by deterministic code implementing sections 81–82 of the Knesset Elections Law with exact integer arithmetic. Automated tests check that it reproduces the officially published seats of every list in every election offered here (2026: the reported final count).', 'המנדטים מחושבים בקוד דטרמיניסטי המממש את סעיפים 81–82 לחוק הבחירות בחשבון שלמים מדויק. בדיקות אוטומטיות מוודאות שהוא משחזר את המנדטים שפורסמו רשמית לכל רשימה בכל מערכת בחירות המוצגת כאן (2026: הספירה הסופית שדווחה).')}</li>
-          <li>{L('Exact ties are decided by lottery under the law; the app flags them and lets you choose the lottery outcome.', 'שוויון מדויק מוכרע בהגרלה לפי החוק; היישום מסמן זאת ומאפשר לבחור את תוצאת ההגרלה.')}</li>
-          <li>{L('Elected candidates are those elected on election night; later replacements and the Norwegian Law are not modelled.', 'הנבחרים הם מי שנבחרו בליל הבחירות; מחליפים מאוחרים והחוק הנורבגי אינם ממודלים.')}</li>
-          <li>{L('Demographic turnout tools are hypothetical and labelled as such.', 'כלי ההצבעה הדמוגרפיים היפותטיים ומסומנים ככאלה.')}</li>
-        </ul>
       </div>
     </div>
   );

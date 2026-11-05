@@ -9,6 +9,7 @@
 
 - Keep long edited bloc names and official list names readable on phones, restore contrast for Compare counts, and show family scaling counts once beside their strips.
 - Prevent map zoom completion from accessing a destroyed pane after tool navigation.
+- Sources: English publishers and descriptions on English pages, official sources listed first, project records named instead of dead links, "not in the data" instead of zero locality counts, one credit per logo (English first, Commons labelled secondary once), method and limits above the glossary, data downloads, and no layout shift when the source list loads; About events in date order.
 
 ## 5 November 2026 — concise tool pages
 

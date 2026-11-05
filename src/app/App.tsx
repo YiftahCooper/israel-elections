@@ -250,7 +250,7 @@ function Shell() {
           </section>
         )}
         {drawerOpen && <div className="drawer"><ErrorBoundary label={L('List details', 'פרטי רשימה')} resetKey={selected}><ListSidePanel s={committed} r={cr} ds={ds} base={base} baseR={baseR} listId={selected} /></ErrorBoundary></div>}
-        <p className="small muted" style={{ margin: 0 }}>{L('Independent election simulator', 'סימולטור בחירות עצמאי')} <Info title={L('Calculation and independence', 'חישוב ואי־תלות')}>{L('Seat allocation is computed by deterministic code from official Central Elections Committee data. Not affiliated with the CEC or any party.', 'חלוקת המנדטים מחושבת בקוד דטרמיניסטי מנתוני ועדת הבחירות המרכזית. אין קשר לוועדת הבחירות או לאף מפלגה.')}</Info></p>
+        <p className="small muted" style={{ margin: 0 }}>{L('Independent election simulator', 'סימולטור בחירות עצמאי')} <Info title={L('Calculation and independence', 'חישוב ואי־תלות')}>{L('Seats are computed by deterministic code from the official results (Central Elections Committee, Reshumot); secondary sources are labelled under Sources. Not affiliated with the CEC or any party.', 'המנדטים מחושבים בקוד דטרמיניסטי מהתוצאות הרשמיות (ועדת הבחירות המרכזית, רשומות); מקורות משניים מסומנים בלשונית מקורות. אין קשר לוועדת הבחירות או לאף מפלגה.')}</Info></p>
       </main></>}
       <SourceDialog />
       {toast && <div className={`toast toast-${toast.kind}`} role={toast.kind === 'error' ? 'alert' : 'status'}>{toast.text}</div>}
