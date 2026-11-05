@@ -17,7 +17,9 @@ export function EvidenceLink({ source }: { source: ContextSource }) {
 /** Immutable history, deliberately independent of the scenario/action log. */
 export function ElectionAbout({ electionId, listId }: { electionId: ElectionId; listId?: string }) {
   const L = useL(); const lang = useLang();
-  const events = electionContext.events.filter(e => e.electionId === electionId && (!listId || e.listId === listId));
+  // the result's own status leads; the rest read as a timeline (the record order groups by list)
+  const events = electionContext.events.filter(e => e.electionId === electionId && (!listId || e.listId === listId))
+    .sort((a, b) => Number(b.type === 'publication-status') - Number(a.type === 'publication-status') || a.effectiveDate.localeCompare(b.effectiveDate));
   const lists = useStore(st => st.datasets[electionId]?.lists);
   // the band's About is a popover: like the other menus it closes on Escape or a press outside it
   const ref = useRef<HTMLDetailsElement>(null);
@@ -40,7 +42,7 @@ export function ElectionAbout({ electionId, listId }: { electionId: ElectionId; 
     <ul ref={popup}>{events.map(e => <li key={e.id}>
       <time dateTime={e.effectiveDate}>{e.effectiveDate}</time> · {listName(e.listId)}{e.source.evidence === 'unresolved' && <strong>{L('Unresolved: ', 'טרם הוברר: ')}</strong>}{lang === 'he' ? e.textHe : e.textEn}{' '}
       <EvidenceLink source={e.source} />{e.relatedSources?.map(s => <span key={s.url}> · <EvidenceLink source={s} /></span>)}
-    </li>)}{!listId && <li className="independence-note"><b>{L('Independent election simulator', 'סימולטור בחירות עצמאי')}</b><br />{L('Seat allocation is computed by deterministic code from official Central Elections Committee data. Not affiliated with the CEC or any party.', 'חלוקת המנדטים מחושבת בקוד דטרמיניסטי מנתוני ועדת הבחירות המרכזית. אין קשר לוועדת הבחירות או לאף מפלגה.')}</li>}</ul>
+    </li>)}{!listId && <li className="independence-note"><b>{L('Independent election simulator', 'סימולטור בחירות עצמאי')}</b><br />{L('Seats are computed by deterministic code from the official results (Central Elections Committee, Reshumot); secondary sources are labelled under Sources. Not affiliated with the CEC or any party.', 'המנדטים מחושבים בקוד דטרמיניסטי מהתוצאות הרשמיות (ועדת הבחירות המרכזית, רשומות); מקורות משניים מסומנים בלשונית מקורות. אין קשר לוועדת הבחירות או לאף מפלגה.')}</li>}</ul>
   </details>;
 }
 
