@@ -1890,6 +1890,120 @@
    "notes": [
     "Hebrew Wikipedia equates the outgoing coalition bloc with these five lists; party composition of the 37th government changed during its term (e.g. UTJ and Otzma Yehudit left and returned)."
    ]
+  },
+  {
+   "id": "pm-recommendations",
+   "nameHe": "המלצות לנשיא על הרכבת הממשלה",
+   "nameEn": "Recommendations to the President for prime minister",
+   "kind": "parliamentary",
+   "date": "2026-11-05",
+   "blocs": [
+    {
+     "id": "eisenkot",
+     "nameHe": "המליצו על איזנקוט",
+     "nameEn": "Recommended Eisenkot",
+     "color": "#2aa198",
+     "members": [
+      {
+       "letters": "רק"
+      },
+      {
+       "letters": "ודם"
+      },
+      {
+       "letters": "אמת"
+      },
+      {
+       "letters": "עם"
+      },
+      {
+       "letters": "ל"
+      }
+     ],
+     "seats": 46
+    },
+    {
+     "id": "netanyahu",
+     "nameHe": "המליצו על נתניהו",
+     "nameEn": "Recommended Netanyahu",
+     "color": "#1f5aa5",
+     "members": [
+      {
+       "letters": "ב"
+      },
+      {
+       "letters": "שס"
+      },
+      {
+       "letters": "ט",
+       "note": "Consulted as two factions, Religious Zionism and Zehut; both recommended Netanyahu."
+      }
+     ],
+     "seats": 19
+    },
+    {
+     "id": "none",
+     "nameHe": "לא המליצו",
+     "nameEn": "No recommendation",
+     "color": "#9e9e9e",
+     "members": [
+      {
+       "letters": "ג"
+      }
+     ],
+     "seats": 7
+    },
+    {
+     "id": "pending",
+     "nameHe": "טרם אומת (ההתייעצויות נמשכות)",
+     "nameEn": "Not yet confirmed (consultations under way)",
+     "color": "#cccccc",
+     "members": [
+      {
+       "letters": "דרך"
+      },
+      {
+       "letters": "מחל"
+      }
+     ],
+     "seats": 48
+    }
+   ],
+   "sources": [
+    {
+     "url": "https://www.jpost.com/israel-news/article-913842",
+     "publisher": "The Jerusalem Post",
+     "kind": "secondary",
+     "quote": "The Religious Zionist Party, Shas, and Zehut all recommended Netanyahu. Meanwhile, Yisrael Beytenu, led by Avigdor Liberman, recommended chairman of the Yashar party Gadi Eisenkot as the candidate to form the next government.",
+     "accessed": "2026-11-05"
+    },
+    {
+     "url": "https://www.jns.org/news/israel-news/herzog-resumes-talks-on-who-will-form-next-israeli-govt",
+     "publisher": "JNS (reporting President's Residence statements)",
+     "kind": "secondary",
+     "quote": "The United Arab List (Ra’am) recommended that Herzog task Yashar Party leader Gadi Eisenkot with forming a government, the President’s Residence said. ... The Democrats faction recommended that Herzog task Eisenkot with forming a government. ... Otzma Yehudit faction recommended that Herzog task Netanyahu with forming a new government, the President’s Residence said. ... United Torah Judaism told Herzog that it would not recommend any Knesset member to form the next government.",
+     "accessed": "2026-11-05"
+    },
+    {
+     "url": "https://www.maariv.co.il/news/elections-2026/article-1384980",
+     "publisher": "Maariv",
+     "kind": "secondary",
+     "quote": "ביחד: ממליצים על גדי איזנקוט ... הרשימה המשותפת: ממליצים על גדי איזנקוט ... רע\"ם: ממליצים על גדי איזנקוט ... הדמוקרטים: ממליצים על גדי איזנקוט ... עוצמה יהודית: ממליצים על בנימין נתניהו ... יהדות התורה: לא נמליץ על אף מועמד ... בשעה 19:15 נציגי ישר! בראשות גדי איזנקוט, ובשעה 20:30 יגיעו נציגי הליכוד, שיחתמו את סבב ההתייעצויות המתוכנן",
+     "accessed": "2026-11-05"
+    },
+    {
+     "url": "https://www.haaretz.com/israel-news/elections/2026-11-05/ty-article-live/netanyahu-warns-against-arab-jewish-coalition-in-first-appearance-since-election/000001a1-a9ee-defa-a7f7-adfff1720000",
+     "publisher": "Haaretz",
+     "kind": "secondary",
+     "quote": "The Together party, led by Naftali Bennett and Yair Lapid, recommended Gadi Eisenkot to form Israel's next government during consultations with President Isaac Herzog at the President's Residence on Thursday. ... The Joint List, an alliance of Arab-majority parties, recommended Yashar party leader Gadi Eisenkot to form Israel's next government",
+     "accessed": "2026-11-05"
+    }
+   ],
+   "notes": [
+    "Partial: checked on 5 November 2026 at about 20:00 Israel time, while the second and last day of consultations was still under way. Ten of the twelve factions had been consulted (4 November: Religious Zionism, Shas, Yisrael Beiteinu, Zehut; 5 November: UTJ, Otzma Yehudit, the Democrats, Ra'am, the Joint List, B'Yachad). Yashar (19:15) and Likud (20:30) were still to meet the President; their recommendations are left pending, not inferred. No mandate had been given at the time of checking. See docs/research/pm-recommendations-2009-2026.md.",
+    "Seats are calculated by the app from the CEC count of 4 November 2026; an official (gazetted) seat allocation is not yet verified. The same per-list seats (Yashar 21, B'Yachad 12, Democrats 8, Yisrael Beiteinu 7, Ra'am 8, Joint List 11, Likud 27, Otzma Yehudit 7, Shas 6, Religious Zionism–Zehut 6) are reported by Maariv on 5 November.",
+    "The President's Residence statements on gov.il could not be retrieved (HTTP 403 to the project client); its statements are cited as reported by JNS. The date is the second consultation day."
+   ]
   }
  ],
  "colours": [
@@ -2299,5 +2413,5 @@
    "confidence": "low"
   }
  ],
- "governmentNote": "As of 4 November 2026 no government has been formed: President Herzog's consultations with the new Knesset factions were due to begin on 4 November 2026. The pre-election blocs and the outgoing (37th) government are given instead."
+ "governmentNote": "As of 5 November 2026 no government has been formed. President Herzog held consultations with the 26th Knesset factions on 4–5 November 2026; the pm-recommendations scheme records the recommendations confirmed while they were still under way. The pre-election blocs and the outgoing (37th) government are also given."
 }

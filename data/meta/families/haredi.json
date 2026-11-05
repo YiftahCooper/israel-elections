@@ -3406,7 +3406,7 @@
       "electionId": "k26",
       "electionDate": "2026-10-27",
       "datasetPath": "public/data/k26.json",
-      "datasetSha256": "8e0017c947bd0b1bfd9dd71ebabf7e0e310d7c935cdaa82515901b80da681bee",
+      "datasetSha256": "c9c27ee3a258fb201cf54246371d8885c3d12379c5803a2febab8d2803923a56",
       "datasetStatus": {
         "stage": "final-count-pending-publication",
         "asOf": "2026-11-04",
