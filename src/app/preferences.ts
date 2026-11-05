@@ -7,6 +7,13 @@ export const PREFERENCES = {
       { value: 'new', label: ['New voters', 'מצביעים חדשים'] },
     ],
   },
+  jointSeats: {
+    label: ["Count joint lists’ seats by party", 'ספירת מנדטים ברשימות משותפות לפי מפלגה'],
+    options: [
+      { value: 'off', label: ['Off', 'כבוי'] },
+      { value: 'on', label: ['On', 'פעיל'] },
+    ],
+  },
   comparison: {
     label: ['Mark differences from', 'סימון הבדלים לעומת'],
     options: [

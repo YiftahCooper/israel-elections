@@ -48,7 +48,7 @@ export function StartFrom({ s: shown, part, listId }: { s: Scenario; part: Part;
       ? (s.blocSchemes ?? []).map(g => ({ value: `preset:${g.id}`, label: lang === 'he' ? g.nameHe : g.nameEn, group: L('Sourced groupings', 'חלוקות ממקור מתועד'), preview: <ResultPreview s={applyAction(s, { type: 'applyBlocScheme', schemeId: g.id })} />, action: { type: 'startPart', part, source: 'preset', presetId: g.id } }))
       : part === 'rules' ? Object.values(RULESETS).map(r => ({ value: `preset:${r.id}`, label: ruleEraLabel(r, lang), group: L('Rules of an era', 'כללי תקופה'), action: { type: 'startPart', part, source: 'preset', presetId: r.id } })) : [];
     const fromSaved: Option[] = ds ? saved.filter(x => x.electionId === s.electionId).map(x => {
-      const sc = replay(ds, x.name, x.log).scenario;
+      const sc = replay(ds, x.name, x.log, x.factionSplitBaseline ?? false).scenario;
       return { value: x.id, label: x.name, group: L('Saved scenarios', 'תרחישים שמורים'), preview: <ResultPreview s={sc} />, action: { type: 'startPart', part, listId, source: 'saved', name: x.name, snapshot: partSnapshot(sc, part) } };
     }) : [];
     const clear: Option[] = clearLabel[part] ? [{ value: 'blank', label: clearLabel[part]!, action: { type: 'startPart', part, listId, source: 'blank' } }] : [];

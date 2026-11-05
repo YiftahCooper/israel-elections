@@ -1,3 +1,4 @@
+import { freshScenario } from '../factionDefaults.ts';
 import { Info } from './ui.tsx';
 // One-click counterfactuals (presets and engine runs in ../whatIf.ts). A row reads question → answer:
 // the seat changes as coloured chips, or, when no seat moves, what does change and why.
@@ -5,7 +6,7 @@ import { useMemo, useState, type ReactNode } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import type { ElectionDataset } from '../../data/schema.ts';
 import { applyAction } from '../../model/actions.ts';
-import { scenarioFromDataset, type Action, type Scenario } from '../../model/scenario.ts';
+import { type Action, type Scenario } from '../../model/scenario.ts';
 import { useL, useLang, type Lang } from '../i18n.ts';
 import { fmtInt, signed } from '../format.ts';
 import { getState, setState, useLevel } from '../store.ts';
@@ -50,7 +51,7 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
   /** loads the question as a named scenario (its assumptions as the description) and shows it on the Overview */
   const tryIt = (title: string, description: string, actions: Action[]) => {
     const st = getState();
-    let s: Scenario = { ...scenarioFromDataset(ds, title), description };
+    let s: Scenario = { ...freshScenario(ds, title), description };
     for (const a of actions) s = applyAction(s, a);
     setState({ scenario: s, past: st.scenario ? [...st.past, st.scenario] : st.past, future: [], selectedListId: null, compareWith: 'historical', tool: 'board' });
     window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });

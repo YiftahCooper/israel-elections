@@ -1,3 +1,4 @@
+import { baselineOf, freshScenario, factionDefault, setFactionDefault } from './factionDefaults.ts';
 import { validAnswers, sourceChoice, sourceValue, type PreferenceAnswers, type PreferenceAsk, type PreferenceId } from './preferences.ts';
 import type { Family } from '../families/model.ts';
 import { migrateSavedColors, nextScenarioColor } from './scenarioIdentity.ts';
@@ -17,7 +18,7 @@ const LEVELS: Level[] = ['simple', 'standard', 'expert'];
 /** settings saved by the two-level version ('explore' | 'advanced') map onto the three levels */
 const migrateLevel = (v: unknown): Level => (v === 'advanced' ? 'expert' : v === 'explore' ? 'simple' : LEVELS.includes(v as Level) ? (v as Level) : 'simple');
 
-export interface SavedScenario { id: string; name: string; description?: string; electionId: ElectionId; savedAt: string; baseBuiltAt: string; log: Action[] }
+export interface SavedScenario { id: string; name: string; description?: string; electionId: ElectionId; savedAt: string; baseBuiltAt: string; log: Action[]; factionSplitBaseline?: boolean }
 
 export type ScenarioSession = { scenario: Scenario; past: Scenario[]; future: Scenario[]; reference: Scenario | null };
 
@@ -89,6 +90,7 @@ const SOURCE = 'israel-elections:vote-source';
 const rememberedSource = (() => { try { return globalThis.localStorage?.getItem(SOURCE) ?? 'ask'; } catch { return 'ask'; } })();
 const PREFERENCES_KEY = 'israel-elections:preferences';
 const rememberedPreferences = (() => { try { const raw = globalThis.localStorage?.getItem(PREFERENCES_KEY); return raw ? validAnswers(JSON.parse(raw)) : (rememberedSource === 'new' || rememberedSource === 'proportional' ? { voteSource: rememberedSource } : {}); } catch { return {}; } })();
+setFactionDefault(rememberedPreferences.jointSeats === 'on');
 const persisted = (() => { try { return JSON.parse(globalThis.localStorage?.getItem(LS) ?? '{}'); } catch { return {}; } })();
 
 let state: State = {
@@ -127,13 +129,9 @@ export function toast(kind: 'error' | 'info', text: string) {
   toastTimer = setTimeout(() => setState({ toast: null }), kind === 'error' ? 7000 : 3500);
 }
 
-const baseCache = new WeakMap<ElectionDataset, Scenario>();
-/** The historical scenario of a dataset: what reset/restore actions resolve against. */
-export function baseContext(ds: ElectionDataset | undefined): ActionContext {
-  if (!ds) return {};
-  let b = baseCache.get(ds);
-  if (!b) { b = scenarioFromDataset(ds, 'historical'); baseCache.set(ds, b); }
-  return { base: b };
+/** Resets use the same personal baseline as comparisons. */
+export function baseContext(ds: ElectionDataset | undefined, splitBaseline = factionDefault()): ActionContext {
+  return ds ? { base: splitBaseline === factionDefault() ? baselineOf(ds) : scenarioFromDataset(ds, 'historical', splitBaseline) } : {};
 }
 
 /** Applies an action to the current scenario. Returns false (and shows why) when it is rejected. */
@@ -141,7 +139,7 @@ export function dispatch(action: Action): boolean {
   const s = state.scenario;
   if (!s) return false;
   try {
-    const next = applyAction(s, action, undefined, baseContext(state.datasets[s.electionId]));
+    const next = applyAction(s, action, undefined, baseContext(state.datasets[s.electionId], s.factionSplitBaseline ?? false));
     setState({ scenario: next, past: [...state.past.slice(-199), s], future: [] });
     return true;
   } catch (e) {
@@ -155,7 +153,7 @@ export function dispatchMany(actions: Action[]): boolean {
   const s = state.scenario;
   if (!s || !actions.length) return false;
   try {
-    const ctx = baseContext(state.datasets[s.electionId]);
+    const ctx = baseContext(state.datasets[s.electionId], s.factionSplitBaseline ?? false);
     const next = actions.reduce((x, a) => applyAction(x, a, undefined, ctx), s);
     setState({ scenario: next, past: [...state.past.slice(-199), s], future: [] });
     return true;
@@ -169,7 +167,7 @@ export function dispatchMany(actions: Action[]): boolean {
 export function previewAction(action: Action | null) {
   const s = state.scenario;
   if (!s || !action) { if (state.preview) setState({ preview: null }); return; }
-  try { setState({ preview: applyAction(s, action, undefined, baseContext(state.datasets[s.electionId])) }); }
+  try { setState({ preview: applyAction(s, action, undefined, baseContext(state.datasets[s.electionId], s.factionSplitBaseline ?? false)) }); }
   catch { /* an impossible intermediate value is simply not previewed */ }
 }
 
@@ -195,10 +193,10 @@ export async function loadDataset(id: ElectionId): Promise<ElectionDataset> {
 }
 
 /** Rebuilds a scenario by replaying its action log on the current historical dataset. */
-export function replay(ds: ElectionDataset, name: string, log: Action[]): { scenario: Scenario; failed: number } {
-  let s = { ...scenarioFromDataset(ds, name) };
+export function replay(ds: ElectionDataset, name: string, log: Action[], splitBaseline = factionDefault()): { scenario: Scenario; failed: number } {
+  let s = { ...scenarioFromDataset(ds, name, splitBaseline) };
   let failed = 0;
-  const ctx = baseContext(ds);
+  const ctx = { base: scenarioFromDataset(ds, 'historical', splitBaseline) };
   for (const a of log) { try { s = applyAction(s, a, undefined, ctx); } catch { failed++; } }
   return { scenario: s, failed };
 }
@@ -206,7 +204,7 @@ export function replay(ds: ElectionDataset, name: string, log: Action[]): { scen
 let openSeq = 0;
 /** Opens an election (optionally replaying a saved or shared log). Resolves false if it could not be loaded.
  *  Replacing unsaved work in the same election first keeps it as a session draft (see stashCurrent). */
-export async function openElection(id: ElectionId, from?: { id?: string; name: string; description?: string; log: Action[]; baseBuiltAt?: string }): Promise<boolean> {
+export async function openElection(id: ElectionId, from?: { id?: string; name: string; description?: string; log: Action[]; factionSplitBaseline?: boolean; baseBuiltAt?: string }): Promise<boolean> {
   const seq = ++openSeq;
   try {
     const ds = await loadDataset(id);
@@ -215,12 +213,12 @@ export async function openElection(id: ElectionId, from?: { id?: string; name: s
     // keep the work of the election we are leaving, so switching back restores it (with undo)
     const leaving = state.scenario ? { [state.scenario.electionId]: { scenario: state.scenario, past: state.past, future: state.future, reference: state.reference } } : {};
     const sessions = { ...state.sessions, ...leaving };
-    let scenario = scenarioFromDataset(ds);
+    let scenario = freshScenario(ds);
     let past: Scenario[] = []; let future: Scenario[] = [];
     let reference: Scenario | null = null;
     let notice: string | null = null;
     if (from) {
-      const r = replay(ds, from.name, from.log);
+      const r = replay(ds, from.name, from.log, from.factionSplitBaseline ?? false);
       // a scenario's undo history is its own: undo never steps back into another scenario's identity
       scenario = { ...r.scenario, ...(from.description ? { description: from.description } : {}), ...(from.id ? { id: from.id } : {}) };
       reference = scenario;
@@ -263,7 +261,7 @@ export function stashCurrent(): boolean {
 export async function openSaved(x: SavedScenario): Promise<boolean> {
   return new Promise(resolve => askPreference({ id: 'comparison', key: x.id, title: x.name, cancel: () => resolve(false), run: value => {
     setState({ markOfficial: value === 'official' });
-    void openElection(x.electionId, { id: x.id, name: x.name, description: x.description, log: x.log, baseBuiltAt: x.baseBuiltAt }).then(resolve);
+    void openElection(x.electionId, { id: x.id, name: x.name, description: x.description, log: x.log, factionSplitBaseline: x.factionSplitBaseline, baseBuiltAt: x.baseBuiltAt }).then(resolve);
   } }));
 }
 
@@ -272,7 +270,7 @@ export function openOfficial() {
   const ds = state.scenario && state.datasets[state.scenario.electionId];
   if (!ds || scenarioKey() === 'official') return;
   stashCurrent();
-  setState({ scenario: scenarioFromDataset(ds), reference: null, past: [], future: [], selectedListId: null, blocPanel: null, notice: null });
+  setState({ scenario: freshScenario(ds), reference: null, past: [], future: [], selectedListId: null, blocPanel: null, notice: null });
 }
 
 /** Resumes a session draft; it leaves the draft store while it is the current scenario. */
@@ -317,7 +315,7 @@ export async function openSharedFromHash(): Promise<boolean> {
 export function resetAll() {
   const ds = state.datasets[state.electionId];
   if (!ds || !state.scenario) return;
-  const fresh = scenarioFromDataset(ds, '');
+  const fresh = freshScenario(ds, '');
   setState({ scenario: fresh, past: [...state.past, state.scenario], future: [] });
 }
 
@@ -326,7 +324,7 @@ export function saveCurrent(name?: string): boolean {
   const s = original && !original.identityColor ? applyAction(original, { type: 'setIdentityColor', color: nextScenarioColor(state.saved.filter(x => x.id !== original.id), original.electionId) }) : original;
   if (!s) return false;
   const he = state.lang === 'he';
-  const entry: SavedScenario = { id: s.id, name: name || s.name || (he ? 'תרחיש' : 'Scenario'), ...(s.description ? { description: s.description } : {}), electionId: s.electionId, savedAt: new Date().toISOString(), baseBuiltAt: s.baseBuiltAt, log: s.log.map((e) => e.action) };
+  const entry: SavedScenario = { id: s.id, name: name || s.name || (he ? 'תרחיש' : 'Scenario'), ...(s.description ? { description: s.description } : {}), electionId: s.electionId, savedAt: new Date().toISOString(), baseBuiltAt: s.baseBuiltAt, factionSplitBaseline: s.factionSplitBaseline ?? false, log: s.log.map((e) => e.action) };
   const before = state.saved;
   const oldReference = state.reference;
   setState((st) => ({ reference: { ...s, name: entry.name }, saved: [entry, ...st.saved.filter((x) => x.id !== s.id)], scenario: { ...s, name: entry.name } }));
@@ -368,18 +366,18 @@ async function pipe(bytes: Uint8Array, stream: CompressionStream | Decompression
 
 export async function shareLink(): Promise<string> {
   const s = state.scenario!;
-  const payload = JSON.stringify({ e: s.electionId, n: s.name, ...(s.description ? { d: s.description } : {}), b: s.baseBuiltAt, l: s.log.map((x) => x.action) });
+  const payload = JSON.stringify({ e: s.electionId, n: s.name, ...(s.description ? { d: s.description } : {}), b: s.baseBuiltAt, f: s.factionSplitBaseline ?? false, l: s.log.map((x) => x.action) });
   const z = await pipe(new TextEncoder().encode(payload), new CompressionStream('deflate-raw'));
   return `${location.origin}${location.pathname}#s=${b64url(z)}`;
 }
 
-export async function readSharedFromHash(): Promise<{ electionId: ElectionId; name: string; description?: string; log: Action[]; baseBuiltAt: string } | null> {
+export async function readSharedFromHash(): Promise<{ electionId: ElectionId; name: string; description?: string; log: Action[]; factionSplitBaseline?: boolean; baseBuiltAt: string } | null> {
   const m = location.hash.match(/#s=([A-Za-z0-9_-]+)/);
   if (!m) return null;
   try {
     const raw = await pipe(unb64url(m[1]), new DecompressionStream('deflate-raw'));
     const p = JSON.parse(new TextDecoder().decode(raw));
-    return { electionId: p.e, name: p.n ?? '', ...(typeof p.d === 'string' ? { description: p.d } : {}), log: p.l ?? [], baseBuiltAt: p.b };
+    return { electionId: p.e, name: p.n ?? '', ...(typeof p.d === 'string' ? { description: p.d } : {}), log: p.l ?? [], factionSplitBaseline: p.f === true, baseBuiltAt: p.b };
   } catch { return null; }
 }
 
@@ -407,6 +405,26 @@ export function askPreference(ask: PreferenceAsk) {
   setState({ preferenceAsk: ask });
 }
 export function setPreference(id: PreferenceId, value?: string) {
+  if (id === 'jointSeats') {
+    const on = value === 'on';
+    setFactionDefault(on);
+    const one = (s: Scenario): Scenario => {
+      const ds = state.datasets[s.electionId];
+      if (!ds) return s;
+      // Replay under the new implicit baseline so resets and structure checkpoints
+      // follow the same semantics on screen, after reload, and in a share link.
+      let rebuilt = scenarioFromDataset(ds, s.name, on);
+      const ctx = { base: scenarioFromDataset(ds, 'historical', on) };
+      try {
+        for (const e of s.log) rebuilt = applyAction(rebuilt, e.action, e.at, ctx);
+      } catch { return s; } // malformed imported logs must not discard work
+      return { ...s, factionSplitBaseline: on, factionSplits: rebuilt.factionSplits, log: rebuilt.log };
+    };
+    const session = (x: ScenarioSession): ScenarioSession => ({ scenario: one(x.scenario), reference: x.reference && one(x.reference), past: x.past.map(one), future: x.future.map(one) });
+    state = { ...state, ...(state.scenario ? session({ scenario: state.scenario, reference: state.reference, past: state.past, future: state.future }) : {}), preview: null,
+      sessions: Object.fromEntries(Object.entries(state.sessions).map(([k, x]) => [k, session(x!)])),
+      scenarioDrafts: Object.fromEntries(Object.entries(state.scenarioDrafts).map(([k, x]) => [k, session(x)])) };
+  }
   const preferences = { ...state.preferences };
   if (value) preferences[id] = value; else delete preferences[id];
   setState({ preferences, preferenceFor: Object.fromEntries(Object.entries(state.preferenceFor ?? {}).filter(([key]) => !key.startsWith(`${id}:`))), ...(id === 'voteSource' && value ? { voteSource: sourceChoice(value) } : {}), ...(id === 'comparison' && value ? { markOfficial: value === 'official' } : {}) });
@@ -458,10 +476,10 @@ export function useFeature(id: FeatureId) {
 // change logs (never as computed results), and rebuilt by replaying the logs against the same datasets. Undo is
 // rebuilt one change at a time. Nothing leaves the device.
 const WS = 'israel-elections:workspace:v1';
-type Snap = { id: string; name: string; description?: string; identityColor?: string; electionId: ElectionId; log: ChangeEntry[]; ref: { id: string; name: string; description?: string; log: ChangeEntry[] } | null };
+type Snap = { factionSplitBaseline?: boolean; id: string; name: string; description?: string; identityColor?: string; electionId: ElectionId; log: ChangeEntry[]; ref: { factionSplitBaseline?: boolean; id: string; name: string; description?: string; log: ChangeEntry[] } | null };
 type Workspace = { v: 1; electionId: ElectionId; current: Snap | null; sessions: Snap[]; drafts: [string, Snap][] };
-const snapOf = (x: ScenarioSession): Snap => ({ id: x.scenario.id, name: x.scenario.name, description: x.scenario.description, identityColor: x.scenario.identityColor,
-  electionId: x.scenario.electionId, log: x.scenario.log, ref: x.reference ? { id: x.reference.id, name: x.reference.name, description: x.reference.description, log: x.reference.log } : null });
+const snapOf = (x: ScenarioSession): Snap => ({ factionSplitBaseline: x.scenario.factionSplitBaseline, id: x.scenario.id, name: x.scenario.name, description: x.scenario.description, identityColor: x.scenario.identityColor,
+  electionId: x.scenario.electionId, log: x.scenario.log, ref: x.reference ? { factionSplitBaseline: x.reference.factionSplitBaseline, id: x.reference.id, name: x.reference.name, description: x.reference.description, log: x.reference.log } : null });
 function writeWorkspace() {
   const st = state;
   if (!st.scenario) return;
@@ -484,10 +502,10 @@ listeners.add(() => {
 globalThis.addEventListener?.('pagehide', () => { if (wsTimer) { clearTimeout(wsTimer); wsTimer = null; writeWorkspace(); } });
 /** Rebuilds a session from its log; its undo history is the log replayed one change at a time. */
 function rebuild(ds: ElectionDataset, x: Snap): { session: ScenarioSession; failed: number } {
-  const ctx = baseContext(ds);
+  const ctx = { base: scenarioFromDataset(ds, 'historical', x.factionSplitBaseline ?? false) };
   let failed = 0;
-  const run = (name: string, entries: ChangeEntry[], from?: Scenario) => {
-    let s = from ?? scenarioFromDataset(ds, name);
+  const run = (name: string, entries: ChangeEntry[], splitBaseline: boolean, from?: Scenario) => {
+    let s = from ?? scenarioFromDataset(ds, name, splitBaseline);
     const steps: Scenario[] = [];
     for (const e of entries.slice(from ? from.log.length : 0)) {
       steps.push(s);
@@ -495,9 +513,9 @@ function rebuild(ds: ElectionDataset, x: Snap): { session: ScenarioSession; fail
     }
     return { s, steps };
   };
-  const ref = x.ref ? { ...run(x.ref.name, x.ref.log).s, id: x.ref.id, name: x.ref.name, ...(x.ref.description ? { description: x.ref.description } : {}) } : null;
+  const ref = x.ref ? { ...run(x.ref.name, x.ref.log, x.ref.factionSplitBaseline ?? false).s, id: x.ref.id, name: x.ref.name, ...(x.ref.description ? { description: x.ref.description } : {}) } : null;
   const shared = ref && x.log.length >= ref.log.length && ref.log.every((e, i) => JSON.stringify(e) === JSON.stringify(x.log[i]));
-  const { s, steps } = run(x.name, x.log, shared ? ref! : undefined);
+  const { s, steps } = run(x.name, x.log, x.factionSplitBaseline ?? false, shared ? ref! : undefined);
   const scenario = { ...s, id: x.id, name: x.name, ...(x.description ? { description: x.description } : {}), ...(x.identityColor ? { identityColor: x.identityColor } : {}) };
   return { session: { scenario, reference: ref, past: steps.slice(-200), future: [] }, failed };
 }

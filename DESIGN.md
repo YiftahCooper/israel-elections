@@ -591,3 +591,19 @@ pale fills provide grouping without stray lines crossing seat rows.
 All custom tooltips, info marks, chart hovers, menus, About and figure popovers use the shared viewport placement helper. They flip above when needed, clamp to an 8px viewport gutter, and scroll internally when tall. Native top-layer placement escapes scroll-panel clipping and never increases the document height. Pointer users can cross the small gap into long info text without losing it. Native select menus and modal choice dialogs retain browser viewport handling.
 
 The independence note lives inside the header’s About disclosure. The board ends at its content and normal gutter; there is no separate footer strip or off-screen tooltip below it.
+
+### Joint-list seat default
+
+Rules & settings → Editing stores “Count joint lists’ seats by party” in the same
+browser preference registry as remembered editing answers (off initially). A small
+remembered-default switch beside each joint list's counting switch offers it at use.
+It counts constituent parties using recorded elected-member party IDs; unassigned
+seats remain with the list. It changes neither votes nor allocation. The official
+baseline and new scenarios include this choice without a logged edit. Switching an
+individual list away from it remains an edit. Changing the preference rebases open
+scenarios, loaded references, session drafts and undo/redo snapshots, keeping explicit
+list switches, structure checkpoints and all other edits. Saved scenarios and links
+encode their starting faction-counting choice separately from their action logs;
+opening them preserves that choice regardless of the viewer's preference. Legacy
+links/saves without it retain the previous off baseline. Workspace restore retains
+the same metadata. The preference itself never enters History.

@@ -396,7 +396,7 @@ export function History({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
   const redoName = next ? L('Redo: ', 'חזרה: ') + describe(next.action, future.at(-1)!, lang) : L('Redo', 'חזרה');
   void r;
   const revertTo = (n: number) => {
-    const { scenario } = replay(ds, s.name, s.log.slice(0, n).map((e) => e.action));
+    const { scenario } = replay(ds, s.name, s.log.slice(0, n).map((e) => e.action), s.factionSplitBaseline ?? false);
     setState({ scenario: { ...scenario, id: s.id }, past: [...getState().past, s], future: [] });
   };
   return (

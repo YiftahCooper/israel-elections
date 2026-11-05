@@ -112,6 +112,8 @@ export interface Scenario {
   /** joint lists whose Knesset faction has split into its constituent parties after the election: seats stay
    *  with the list in the allocation; each elected member counts for their own party (decision 0091) */
   factionSplits?: string[];
+  /** Implicit faction counting at the start of the action log; persisted separately from edits. */
+  factionSplitBaseline?: boolean;
   lotteryWinners: Record<string, string>;
   log: ChangeEntry[];
 }
@@ -223,8 +225,12 @@ export function blocSchemeState(scheme: BlocScheme, lists: { id: string }[]) {
   };
 }
 
-export function scenarioFromDataset(ds: ElectionDataset, name = ''): Scenario {
+export function scenarioFromDataset(ds: ElectionDataset, name = '', splitByDefault = false): Scenario {
   const s = scenarioBase(ds, name);
+  if (splitByDefault) {
+    s.factionSplitBaseline = true;
+    s.factionSplits = s.lists.filter(l => (l.parties?.length ?? 0) >= 2).map(l => l.id);
+  }
   const scheme = ds.blocSchemes?.find((x) => x.id === ds.defaultBlocScheme);
   if (!scheme) return s;
   const st = blocSchemeState(scheme, s.lists);
@@ -397,6 +403,7 @@ export function validateScenario(x: unknown): string[] {
   const blocIds = new Set<string>();
   if (!optional(array(blocScheme))(s.blocSchemes) || !optional(nullable(string))(s.blocSchemeId)
     || !optional(stringMap(nullable(string)))(s.partyBlocs) || !optional(stringMap(nullable(string)))(s.candidateBlocs)) e.push('invalid bloc schemes');
+  if (s.factionSplitBaseline !== undefined && typeof s.factionSplitBaseline !== 'boolean') e.push('invalid faction split baseline');
   if (!optional(uniqueStrings)(s.factionSplits)) e.push('invalid faction splits');
   if (!Array.isArray(s.blocs)) e.push('missing blocs');
   else for (const b of s.blocs) {
