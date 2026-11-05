@@ -580,7 +580,7 @@ hidden duplicate selectors or rely on CSS to conceal them.
 
 ### Family profiles: visual pass
 
-Family chips are selection and comparison. Full-width 300px charts (240px on phones) lead; the exact table is disclosed. Mixed policy is a three-way segment and 2026 points are hollow with pending-publication tooltips. Edit membership is an independent-election sheet; scaling previews before/after seat strips. Overview adds labelled brackets to family list runs without changing seat ordering. See [the built design](docs/design/party-families.md) for runtime/evidence loading and the explicit exact-figures preference.
+Family chips are selection and comparison. Full-width 300px charts (240px on phones) lead; the exact table is disclosed. Mixed lists (family + other parties) has four named options — Show hatched, Count if family heads it, Count all, Leave out — each with an icon of its chart mark; 2026 points are hollow with pending-publication tooltips. Edit membership is an independent-election sheet; scaling previews before/after seat strips. Overview adds labelled brackets to family list runs without changing seat ordering. See [the built design](docs/design/party-families.md) for runtime/evidence loading and the explicit exact-figures preference.
 
 
 Small blocs at either end of the arc use the same fill-only region rule as all
