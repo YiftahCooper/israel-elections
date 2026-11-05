@@ -112,6 +112,12 @@
       "publisher": "Jewish Telegraphic Agency, Daily Bulletin archive",
       "kind": "archival",
       "accessed": "2026-11-05"
+    },
+    "idi-constitutional-history": {
+      "url": "https://www.idi.org.il/parliaments/11535/11538",
+      "publisher": "Israel Democracy Institute, History of the Constitutional Process in Israel, 16 September 2000",
+      "kind": "academic",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -358,9 +364,31 @@
       "mfa-history",
       "knesset-history",
       "ipu1988",
-      "ipu1992"
+      "ipu1992",
+      "idi-constitutional-history"
     ],
     "events": [
+      {
+        "id": "gulf-war-missiles",
+        "date": "1991",
+        "category": "security",
+        "textEn": "Iraq fired Scud missiles at Israel during the Gulf War.",
+        "textHe": "עיראק שיגרה טילי סקאד לעבר ישראל במלחמת המפרץ.",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "direct hits by Iraqi Scud missiles"
+          },
+          {
+            "source": "mfa-history",
+            "quote": "1991 Israel attacked by Iraqi Scud missiles during Gulf War"
+          }
+        ],
+        "confidence": "high",
+        "notes": [
+          "Year precision: these retrieved chronology passages establish 1991 but not the date of the first launch. No missile or casualty count is asserted."
+        ]
+      },
       {
         "id": "operation-solomon",
         "date": "1991-05-24",
@@ -400,28 +428,43 @@
           }
         ],
         "confidence": "high"
+      },
+      {
+        "id": "rights-basic-laws",
+        "date": "1992",
+        "category": "governance",
+        "textEn": "The Knesset enacted Basic Law: Human Dignity and Liberty and Basic Law: Freedom of Occupation.",
+        "textHe": "הכנסת חוקקה את חוק־יסוד: כבוד האדם וחירותו ואת חוק־יסוד: חופש העיסוק.",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "the Basic Law: Freedom of Occupation, the Basic Law: Human Dignity and Freedom"
+          },
+          {
+            "source": "idi-constitutional-history",
+            "quote": "חוק יסוד: כבוד האדם וחירותו וחוק יסוד: חופש העיסוק"
+          },
+          {
+            "source": "idi-constitutional-history",
+            "quote": "חוקי היסוד של 1992"
+          }
+        ],
+        "confidence": "high",
+        "notes": [
+          "Combined year-level entry: the two enactments are distinct and their individual March dates are not asserted."
+        ]
       }
     ],
     "candidatesPending": [
       {
-        "label": "Iraqi missile attacks during the Gulf War",
-        "date": "1991-01",
-        "why": "Chronology coverage exists for some candidates, but a direct date/count source or second independent chronology was not verified for this row; no casualty figures copied."
-      },
-      {
         "label": "Immigration from the Soviet Union",
         "date": "1989",
-        "why": "Chronology coverage exists for some candidates, but a direct date/count source or second independent chronology was not verified for this row; no casualty figures copied."
+        "why": "Knesset history and MFA history select immigration from the Soviet Union, but it is a multi-year process, not a single dated event. MFA history marks a start in 1989; MFA timeline uses 1990. Define a bounded row and resolve that scope before promotion."
       },
       {
         "label": "Temple Mount killings",
         "date": "1990-10",
-        "why": "Chronology coverage exists for some candidates, but a direct date/count source or second independent chronology was not verified for this row; no casualty figures copied."
-      },
-      {
-        "label": "Basic Laws: Human Dignity and Liberty; Freedom of Occupation",
-        "date": "1992-03",
-        "why": "Chronology coverage exists for some candidates, but a direct date/count source or second independent chronology was not verified for this row; no casualty figures copied."
+        "why": "Knesset history selects the Temple Mount killings, but no second retrieved qualifying chronology selects the event. Its casualty counts are not adopted."
       }
     ],
     "endedBy": {

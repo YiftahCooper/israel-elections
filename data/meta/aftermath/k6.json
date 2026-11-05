@@ -69,6 +69,19 @@
       "publisher": "Inter-Parliamentary Union, Chronicle of Parliamentary Elections, Israel 1969",
       "kind": "academic",
       "accessed": "2026-11-05"
+    },
+    "mfa-timeline": {
+      "url": "https://www.gov.il/en/pages/timeline-of-events-half-a-century-of-independence",
+      "publisher": "Israel Ministry of Foreign Affairs, Timeline of Events: Half a Century of Independence, 1948–1998",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies."
+    },
+    "idi-democracy-timeline": {
+      "url": "https://en.idi.org.il/articles/22171",
+      "publisher": "Israel Democracy Institute, The Democracy Pavilion, 1 April 2019",
+      "kind": "academic",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -383,9 +396,32 @@
     "chronologies": [
       "term-history",
       "idi-next",
-      "ipu-next"
+      "ipu-next",
+      "mfa-timeline",
+      "idi-democracy-timeline"
     ],
     "events": [
+      {
+        "id": "military-administration-ends",
+        "date": "1966",
+        "category": "governance",
+        "textEn": "Israel ended military administration over its Arab citizens.",
+        "textHe": "ישראל ביטלה את הממשל הצבאי על אזרחיה הערבים.",
+        "cites": [
+          {
+            "source": "term-history",
+            "quote": "in 1966, finally terminated the military administration"
+          },
+          {
+            "source": "idi-democracy-timeline",
+            "quote": "1966 - End of the Military Administration"
+          }
+        ],
+        "confidence": "high",
+        "notes": [
+          "Year precision: the two chronologies independently date termination to 1966; an exact commencement-of-effect day is not asserted."
+        ]
+      },
       {
         "id": "six-day-war",
         "date": "1967",
@@ -407,20 +443,27 @@
           }
         ],
         "confidence": "high"
-      }
-    ],
-    "candidatesPending": [
-      {
-        "label": "End of military administration over Arab citizens",
-        "date": "1966",
-        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
       },
       {
-        "label": "First national unity coalition",
+        "id": "national-unity-government",
         "date": "1967-06",
-        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+        "category": "governance",
+        "textEn": "Israel formed its first national unity government before the Six-Day War.",
+        "textHe": "ישראל הקימה את ממשלת האחדות הלאומית הראשונה שלה לפני מלחמת ששת הימים.",
+        "cites": [
+          {
+            "source": "term-history",
+            "quote": "On the eve of the Six Day War, Israel's first national unity government was formed"
+          },
+          {
+            "source": "mfa-timeline",
+            "quote": "National unity government is formed"
+          }
+        ],
+        "confidence": "high"
       }
     ],
+    "candidatesPending": [],
     "endedBy": {
       "type": "regular-election",
       "date": "1969-10-28",

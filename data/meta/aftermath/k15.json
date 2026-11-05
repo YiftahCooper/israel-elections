@@ -78,6 +78,12 @@
       "publisher": "Israel Democracy Institute, review of The Elections in Israel 2001",
       "kind": "academic",
       "accessed": "2026-11-05"
+    },
+    "idi-democracy-timeline": {
+      "url": "https://en.idi.org.il/articles/22171",
+      "publisher": "Israel Democracy Institute, The Democracy Pavilion, 1 April 2019",
+      "kind": "academic",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -185,7 +191,8 @@
       "mfa-history",
       "knesset-history",
       "ipu1999",
-      "ipu2003"
+      "ipu2003",
+      "idi-democracy-timeline"
     ],
     "events": [
       {
@@ -202,6 +209,28 @@
           {
             "source": "mfa-history",
             "quote": "In May of 2000 Israel withdrew all its forces"
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "camp-david-summit",
+        "date": "2000-07",
+        "category": "foreign-relations",
+        "textEn": "Ehud Barak, Yasser Arafat and Bill Clinton met at Camp David; the summit ended without an agreement.",
+        "textHe": "אהוד ברק, יאסר ערפאת וביל קלינטון נפגשו בקמפ דייוויד; הפסגה הסתיימה ללא הסכם.",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "on the Palestinian front at Camp David"
+          },
+          {
+            "source": "mfa-history",
+            "quote": "attended a summit at Camp David in July 2000"
+          },
+          {
+            "source": "mfa-history",
+            "quote": "The summit ended without an agreement"
           }
         ],
         "confidence": "high"
@@ -225,6 +254,31 @@
         "confidence": "high"
       },
       {
+        "id": "october-riots",
+        "date": "2000-10",
+        "category": "society",
+        "textEn": "Protests and clashes took place in Arab communities in Israel; police killed Arab citizens.",
+        "textHe": "ביישובים ערביים בישראל התקיימו מחאות ועימותים; המשטרה הרגה אזרחים ערבים.",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "In October, riots broke out in the Israeli Arab sector"
+          },
+          {
+            "source": "idi-democracy-timeline",
+            "quote": "In October 2000"
+          },
+          {
+            "source": "idi-democracy-timeline",
+            "quote": "were killed by police gunfire"
+          }
+        ],
+        "confidence": "high",
+        "notes": [
+          "No casualty figure is copied: the Knesset text calls all 13 victims Israeli Arabs, whereas IDI distinguishes twelve Israeli Arabs."
+        ]
+      },
+      {
         "id": "pm-only-election",
         "date": "2001-02-06",
         "category": "governance",
@@ -245,33 +299,36 @@
           }
         ],
         "confidence": "high"
+      },
+      {
+        "id": "defensive-shield",
+        "date": "2002-03",
+        "category": "security",
+        "textEn": "Israel launched Operation Defensive Shield.",
+        "textHe": "ישראל פתחה במבצע חומת מגן.",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "At the end of March 2002, Operation Defensive Shield was initiated."
+          },
+          {
+            "source": "mfa-history",
+            "quote": "Israel launches Operation Defensive Shield"
+          }
+        ],
+        "confidence": "high"
       }
     ],
     "candidatesPending": [
       {
-        "label": "Camp David summit",
-        "date": "2000-07",
-        "why": "Needs verified direct date evidence and/or a second qualifying chronology for this precise row. The Knesset mirror misdates Ze’evi’s assassination to 2000; MFA places it in 2001. No erroneous date is promoted."
-      },
-      {
-        "label": "October riots",
-        "date": "2000-10",
-        "why": "Needs verified direct date evidence and/or a second qualifying chronology for this precise row. The Knesset mirror misdates Ze’evi’s assassination to 2000; MFA places it in 2001. No erroneous date is promoted."
-      },
-      {
         "label": "Rehavam Ze’evi assassination",
         "date": "2001-10",
-        "why": "Needs verified direct date evidence and/or a second qualifying chronology for this precise row. The Knesset mirror misdates Ze’evi’s assassination to 2000; MFA places it in 2001. No erroneous date is promoted."
-      },
-      {
-        "label": "Operation Defensive Shield",
-        "date": "2002-03",
-        "why": "Needs verified direct date evidence and/or a second qualifying chronology for this precise row. The Knesset mirror misdates Ze’evi’s assassination to 2000; MFA places it in 2001. No erroneous date is promoted."
+        "why": "Knesset history selects the assassination but misdates it to 23 October 2000; MFA selects it under 2001. Exact day requires a direct record before promotion."
       },
       {
         "label": "Barak resignation and calling the special election",
         "date": "2000-12",
-        "why": "Needs verified direct date evidence and/or a second qualifying chronology for this precise row. The Knesset mirror misdates Ze’evi’s assassination to 2000; MFA places it in 2001. No erroneous date is promoted."
+        "why": "MFA history dates resignation to December 2000; the Knesset history selects the 2001 special election, already included. The bundled resignation/calling act still needs a second chronology and direct resignation record."
       }
     ],
     "endedBy": {

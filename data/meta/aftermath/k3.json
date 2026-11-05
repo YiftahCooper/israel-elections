@@ -69,6 +69,13 @@
       "publisher": "Jewish Telegraphic Agency, Daily Bulletin, 17 August 1955",
       "kind": "secondary",
       "accessed": "2026-11-05"
+    },
+    "mfa-timeline": {
+      "url": "https://www.gov.il/en/pages/timeline-of-events-half-a-century-of-independence",
+      "publisher": "Israel Ministry of Foreign Affairs, Timeline of Events: Half a Century of Independence, 1948–1998",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies."
     }
   },
   "results": {
@@ -405,7 +412,8 @@
     "inclusionRule": "At least two independent chronologies, including one official or academic; a direct date source is also required.",
     "chronologies": [
       "term-history",
-      "idi-next"
+      "idi-next",
+      "mfa-timeline"
     ],
     "events": [
       {
@@ -425,23 +433,40 @@
           }
         ],
         "confidence": "high"
+      },
+      {
+        "id": "kafr-qasim",
+        "date": "1956-10-29",
+        "category": "security",
+        "textEn": "Border Police soldiers killed residents of Kafr Qasim who were unaware of a curfew.",
+        "textHe": "חיילי משמר הגבול הרגו תושבים בכפר קאסם שלא ידעו על עוצר.",
+        "cites": [
+          {
+            "source": "term-history",
+            "quote": "the Kfar Kassem affair on 29 October, 1956"
+          },
+          {
+            "source": "term-history",
+            "quote": "a curfew of the existence of which they were not aware"
+          },
+          {
+            "source": "mfa-timeline",
+            "quote": "open fire on Arab villagers in Kafr Kassem"
+          }
+        ],
+        "confidence": "high"
       }
     ],
     "candidatesPending": [
       {
-        "label": "Kafr Qasim killings",
-        "date": "1956-10-29",
-        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
-      },
-      {
         "label": "Wadi Salib protests",
         "date": "1959-07",
-        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+        "why": "Knesset history gives 9 May 1959; the pending candidate gives July. MFA timeline selects Wadi Salib only at year precision. A direct dated record is needed to resolve the disagreement."
       },
       {
         "label": "Grenade thrown in the Knesset",
         "date": "1957-10-29",
-        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+        "why": "Selected with date 29 October 1957 in Knesset history; not selected in the retrieved MFA chronology or IDI 1959. A second independent qualifying chronology is missing."
       }
     ],
     "endedBy": {

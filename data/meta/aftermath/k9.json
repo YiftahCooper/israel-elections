@@ -5,7 +5,8 @@
   "reviewedAt": "2026-11-05",
   "notes": [
     "Pilot for docs/design/after-the-election.md. Not wired into the app.",
-    "Jerusalem Post 1977 citations use the OCR text of the Internet Archive item TheJerusalemPost1977IsraelEnglish (archival mirror of the printed paper). Quotes are copied from that OCR with obvious OCR errors corrected only inside [brackets]. The NLI JPress copies (Davar, Maariv, Haaretz) were behind a browser challenge and were not used."
+    "Jerusalem Post 1977 citations use the OCR text of the Internet Archive item TheJerusalemPost1977IsraelEnglish (archival mirror of the printed paper). Quotes are copied from that OCR with obvious OCR errors corrected only inside [brackets]. The NLI JPress copies (Davar, Maariv, Haaretz) were behind a browser challenge and were not used.",
+    "Promotion audit: term window corrected from first-government tenure to the election-to-next-election window (17 May 1977–30 June 1981), using results.electionDate and the already cited IPU 1981 election record. Government dates and formation data are unchanged."
   ],
   "sources": {
     "knesset-plenum-1977-06-20": {
@@ -105,6 +106,25 @@
       "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%AA%D7%A9%D7%99%D7%A2%D7%99%D7%AA",
       "publisher": "Wikipedia (he), \"הכנסת התשיעית\"",
       "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "mfa-history": {
+      "url": "https://www.gov.il/BlobFolder/generalpage/facts-about-israel-history/en/English_SiteTransfer_DOCUMENTS_History2010.pdf",
+      "publisher": "Israel Ministry of Foreign Affairs, Facts About Israel: History (2010), pp. 48–70",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "mfa-timeline": {
+      "url": "https://www.gov.il/en/pages/timeline-of-events-half-a-century-of-independence",
+      "publisher": "Israel Ministry of Foreign Affairs, Timeline of Events: Half a Century of Independence, 1948–1998",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies."
+    },
+    "mod-1972-1980": {
+      "url": "https://archives.mod.gov.il/sites/English/theTimeAxis/Pages/1972-%E2%80%93-1980.aspx",
+      "publisher": "Israel Ministry of Defense, IDF and Defense Establishment Archives, Time Axis: 1972–1980",
+      "kind": "official",
       "accessed": "2026-11-05"
     }
   },
@@ -455,12 +475,15 @@
     ]
   },
   "term": {
-    "start": "1977-06-20",
-    "end": "1981-08-05",
+    "start": "1977-05-17",
+    "end": "1981-06-30",
     "inclusionRule": "two-chronologies",
-    "inclusionRuleNote": "Included only if listed in the Knesset's own term history (knesset-history-9) and confirmed by at least one independent official, archival or academic source.",
+    "inclusionRuleNote": "Selected in at least two independently authored chronologies, including official or academic evidence. The Knesset original and its JVL copy are one source family; all MFA texts are one family.",
     "chronologies": [
-      "knesset-history-9"
+      "knesset-history-9",
+      "mfa-history",
+      "mfa-timeline",
+      "mod-1972-1980"
     ],
     "events": [
       {
@@ -477,11 +500,73 @@
           {
             "source": "knesset-shamir-bio",
             "quote": "He served as Speaker of the Knesset during Egyptian President Anwar Sadat's visit to Israel."
+          },
+          {
+            "source": "mfa-history",
+            "quote": "visit of Egyptian President Anwar Sadat to Jerusalem (November 1977)"
           }
         ],
         "notes": [
           "Date of the Knesset address (20 November) from hewiki-knesset9: \"ב- 20 בנובמבר 1977 הגיע לכנסת נשיא מצרים אנואר סאדאת\"."
         ]
+      },
+      {
+        "id": "peace-now-founded",
+        "date": "1978",
+        "category": "society",
+        "textEn": "The Peace Now movement was founded.",
+        "textHe": "תנועת שלום עכשיו הוקמה.",
+        "cites": [
+          {
+            "source": "knesset-history-9",
+            "quote": "\"Peace Now\" was founded in 1978."
+          },
+          {
+            "source": "mfa-timeline",
+            "quote": "Peace Now movement is founded"
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "operation-litani",
+        "date": "1978-03",
+        "category": "security",
+        "textEn": "Israel launched Operation Litani in southern Lebanon.",
+        "textHe": "ישראל פתחה במבצע ליטני בדרום לבנון.",
+        "cites": [
+          {
+            "source": "knesset-history-9",
+            "quote": "the Litani Operation took place in March 1978"
+          },
+          {
+            "source": "mfa-timeline",
+            "quote": "Operation Litani"
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "coastal-road-attack",
+        "date": "1978-03-11",
+        "category": "security",
+        "textEn": "Attackers hijacked a bus on the Coastal Road.",
+        "textHe": "תוקפים חטפו אוטובוס בכביש החוף.",
+        "cites": [
+          {
+            "source": "knesset-history-9",
+            "quote": "in March 1978 there was an attack along the Coastal Road"
+          },
+          {
+            "source": "mfa-timeline",
+            "quote": "A bus is hijacked by terrorists on the coastal road"
+          },
+          {
+            "source": "mod-1972-1980",
+            "quote": "March 11, 1978"
+          }
+        ],
+        "confidence": "high"
       },
       {
         "id": "camp-david-approval",
@@ -501,10 +586,15 @@
           {
             "source": "hewiki-knesset9",
             "quote": "ב- 27 בספטמבר 1978 אישרה הכנסת את הסכמי קמפ דייוויד ברוב של 84 מול 19 מתנגדים, ו-17 נמנעים."
+          },
+          {
+            "source": "mfa-history",
+            "quote": "Camp David Accords (September 1978)"
           }
         ],
         "notes": [
-          "Vote 84–19–17 from a labelled secondary source; the plenum record is the target. Day shown at month precision (27 or 28 September in different references; the sitting ran overnight)."
+          "Vote 84–19–17 from a labelled secondary source; the plenum record is the target. Day shown at month precision (27 or 28 September in different references; the sitting ran overnight).",
+          "MFA independently selects the accords/treaty as a national event; the Knesset history supplies the parliamentary approval act. MFA is not evidence for the approval vote or its tally."
         ]
       },
       {
@@ -521,7 +611,14 @@
           {
             "source": "knesset-shamir-bio",
             "quote": "and also abstained from the vote to ratify the peace treaty, which was held in March 1979."
+          },
+          {
+            "source": "mfa-history",
+            "quote": "On 26 March 1979, Israel and Egypt signed a peace treaty"
           }
+        ],
+        "notes": [
+          "MFA independently selects the accords/treaty as a national event; the Knesset history supplies the parliamentary approval act. MFA is not evidence for the approval vote or its tally."
         ]
       },
       {
@@ -542,40 +639,29 @@
           {
             "source": "idi-1981",
             "quote": "Three weeks before the election, Begin approved an Israeli air strike on the Iraqi nuclear installation, which was soon to have become active."
+          },
+          {
+            "source": "mfa-history",
+            "quote": "Israel Air Force destroys Iraqi nuclear reactor"
           }
         ]
       }
     ],
     "candidatesPending": [
       {
-        "label": "Operation Litani",
-        "date": "1978-03",
-        "why": "In knesset-history-9; second independent source not yet retrieved."
-      },
-      {
-        "label": "Coastal Road attack",
-        "date": "1978-03",
-        "why": "In knesset-history-9; second independent source not yet retrieved."
-      },
-      {
         "label": "Settlement growth in the territories (to about 8,300)",
         "date": "1977/1981",
-        "why": "Trend, not a dated event; needs a defined form before inclusion."
-      },
-      {
-        "label": "Peace Now founded",
-        "date": "1978",
-        "why": "In knesset-history-9; second source not retrieved."
+        "why": "A multi-year trend, not a dated event; the 8,300 figure lacks a defined observation date and independent verification."
       },
       {
         "label": "Economic liberalisation (October 1977)",
         "date": "1977-10",
-        "why": "Not in knesset-history-9; would need two chronologies."
+        "why": "The full Knesset history does discuss Simha Erlich’s foreign-currency liberalization; IDI 1981 also discusses liberalizing measures. Exact October 1977 policy act/date has not been inspected."
       },
       {
         "label": "Basic Law: Jerusalem",
         "date": "1980-07-30",
-        "why": "Not in the retrieved part of knesset-history-9."
+        "why": "MFA timeline selects the Jerusalem law under 1980, but the retrieved Knesset history does not. A second qualifying chronology remains needed."
       }
     ],
     "endedBy": {

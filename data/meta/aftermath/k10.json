@@ -94,6 +94,12 @@
       "publisher": "Jewish Telegraphic Agency, Daily Bulletin archive",
       "kind": "archival",
       "accessed": "2026-11-05"
+    },
+    "idi-review-1984": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/elections/1984/",
+      "publisher": "Israel Democracy Institute, 1984 election retrospective",
+      "kind": "academic",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -339,9 +345,28 @@
       "mfa-history",
       "knesset-history",
       "ipu1981",
-      "ipu1984"
+      "ipu1984",
+      "idi-review-1984"
     ],
     "events": [
+      {
+        "id": "sinai-withdrawal",
+        "date": "1982",
+        "category": "foreign-relations",
+        "textEn": "Israel completed its withdrawal from the Sinai Peninsula under the peace treaty with Egypt.",
+        "textHe": "ישראל השלימה את נסיגתה מחצי האי סיני במסגרת הסכם השלום עם מצרים.",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "the withdrawal from the Sinai was completed with the evacuation of Yamit"
+          },
+          {
+            "source": "mfa-history",
+            "quote": "Israel’s three-stage withdrawal from Sinai Peninsula completed"
+          }
+        ],
+        "confidence": "high"
+      },
       {
         "id": "lebanon-war",
         "date": "1982-06",
@@ -359,28 +384,40 @@
           }
         ],
         "confidence": "high"
+      },
+      {
+        "id": "bank-share-crisis",
+        "date": "1983-10",
+        "category": "economy",
+        "textEn": "Bank shares collapsed, and the government closed the stock market for two weeks.",
+        "textHe": "מניות הבנקים קרסו, והממשלה סגרה את הבורסה לשבועיים.",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "the collapse of the bank shares took place"
+          },
+          {
+            "source": "idi-review-1984",
+            "quote": "in October 1983, after the collapse of the bank shares"
+          },
+          {
+            "source": "idi-review-1984",
+            "quote": "the government ordered the closing down of the stock market for two weeks."
+          }
+        ],
+        "confidence": "high"
       }
     ],
     "candidatesPending": [
       {
-        "label": "Completion of the Sinai withdrawal",
-        "date": "1982-04",
-        "why": "Appears in the Knesset term history; a second independent qualifying chronology and/or direct date evidence was not verified in this pass."
-      },
-      {
         "label": "Sabra and Shatila massacre and Kahan inquiry",
         "date": "1982-09",
-        "why": "Appears in the Knesset term history; a second independent qualifying chronology and/or direct date evidence was not verified in this pass."
-      },
-      {
-        "label": "Bank-share crisis",
-        "date": "1983-10",
-        "why": "Appears in the Knesset term history; a second independent qualifying chronology and/or direct date evidence was not verified in this pass."
+        "why": "Both Knesset history and MFA timeline select the massacre and inquiry. The candidate bundles September 1982 killings with the 1983 report. Knesset history also misdates appointment of the inquiry to November 1982. Split the acts and inspect direct dates before promotion."
       },
       {
         "label": "Bus 300 affair",
         "date": "1984-04",
-        "why": "Appears in the Knesset term history; a second independent qualifying chronology and/or direct date evidence was not verified in this pass."
+        "why": "Both Knesset history and MFA timeline select the 1984 bus affair/hijacking. The candidate needs to distinguish the hijacking from the later killing/disclosure acts and verify their direct dates."
       }
     ],
     "endedBy": {
