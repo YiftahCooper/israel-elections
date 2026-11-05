@@ -86,9 +86,11 @@ test('Hebrew charts keep the English left-to-right geometry', async ({ page }) =
   await start(page, 'he');
   await tool(page, 'charts');
   const fig = panel(page).locator('figure').filter({ hasText: 'מרחק מאחוז החסימה' });
-  const box = (await fig.locator('svg').boundingBox())!;
-  const label = (await fig.locator('svg text').first().boundingBox())!;
-  expect(label.x).toBeLessThan(box.x + box.width / 2);
+  // Text follows its language; the positive and negative bars retain the physical LTR axis (QA2 C1/C2).
+  const svg = fig.locator('svg');
+  const mid = await svg.evaluate(el => (el as SVGSVGElement).viewBox.baseVal.width / 2);
+  expect(Number(await svg.locator('.bar').first().getAttribute('x'))).toBeCloseTo(mid, 0);
+  expect(Number(await svg.locator('.bar').last().getAttribute('x'))).toBeLessThan(mid);
   await tool(page, 'compare');
   await panel(page).locator('.cmp-pick').filter({ hasText: '2022' }).click();
   const figs = panel(page).locator('.cmp-chambers figure');

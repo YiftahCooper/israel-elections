@@ -126,12 +126,12 @@ function VotesVsSeats({ s, r }: { s: Scenario; r: AllocationResult }) {
           const list = row.id !== NO_SEAT;
           // beside the bars, names sit flush against the axis in Hebrew (their reading edge) and at the column
           // start in English; stacked above the bars (phone), they start where the bars start
-          const lx = stacked ? x0 : he ? labelW - 8 : 4;
+          const lx = stacked ? (he ? W - 4 : x0) : he ? labelW - 8 : 4;
           return (
             <g key={row.id} onMouseMove={(e) => { bridge.cancel(); setTip({ x: e.clientX, y: e.clientY, html: <><b>{row.name}</b><div>{L('Votes', 'קולות')}: {fmtInt(row.v)} ({fmtPct(row.v, total, digits)})</div>{list && <div>{L('Seats', 'מנדטים')}: {row.seats} ({fmtPct(row.seats, seats, digits)})</div>}</> }); }}
               onMouseLeave={bridge.leave} onClick={() => list && setState({ selectedListId: row.id })} style={{ cursor: list ? 'pointer' : 'default' }}>
               <rect x={0} y={y - 2} width={W} height={rowH - 4} fill="transparent" />
-              <text x={lx} y={stacked ? y + 9 : yb + barH + 3} textAnchor={he && !stacked ? 'end' : 'start'} fill="var(--ink)" data-chart-label=""><title>{row.name}</title>{isolate(clip(row.name, stacked ? W - 8 : labelW - 12))}</text>
+              <text x={lx} y={stacked ? y + 9 : yb + barH + 3} textAnchor={he ? 'end' : 'start'} fill="var(--ink)" data-chart-label=""><title>{row.name}</title>{isolate(clip(row.name, stacked ? W - 8 : labelW - 12))}</text>
               <rect className="bar" x={x0} y={yb + 0.5} width={vw} height={barH - 1} rx={2} fill={row.color} fillOpacity={0.28} stroke={edge(row.color)} strokeWidth={1} />
               {list && <rect className="bar" x={x0} y={yb + barH + gap} width={sw} height={barH} rx={2} fill={row.color} />}
               {componentSeats.filter(st=>st.listId===row.id).map((st,k)=>st.innerColor && <rect key={k} data-component-seat={st.partyId} x={x0+sw*k/row.seats} y={yb+barH+gap+2} width={sw/row.seats} height={barH-4} fill={st.innerColor}><title>{(lang==='he' ? s.lists.find(l=>l.id===row.id)?.parties?.find(p=>p.id===st.partyId)?.nameHe : s.lists.find(l=>l.id===row.id)?.parties?.find(p=>p.id===st.partyId)?.nameEn) ?? ''} · {row.name}</title></rect>)}
@@ -162,8 +162,8 @@ function ThresholdDistance({ s, r }: { s: Scenario; r: AllocationResult }) {
   // to right in both languages (owner, 2026-11-04), so "right of the line passes" holds in Hebrew too.
   // On a phone each name sits on its own line above its bar.
   const stacked = W < 420, he = lang === 'he';
-  const labelW = stacked ? 0 : labelColumn(rows.map((x) => x.name), Math.round(W * 0.42));
-  const top = stacked ? 16 : 0, rowH = 24 + top + (stacked ? 4 : 0), H = rows.length * rowH + 14, numW = stacked ? 66 : 78;
+  const labelW = 0;
+  const top = 20, rowH = 48, H = rows.length * rowH + 14, numW = stacked ? 66 : 78;
   const half = (W - labelW - 2 * numW) / 2, mid = labelW + numW + half;
   return (
     <figure ref={box} style={{ margin: 0, position: 'relative' }}>
@@ -174,12 +174,12 @@ function ThresholdDistance({ s, r }: { s: Scenario; r: AllocationResult }) {
           const w = (Math.abs(d) / max) * half;
           const y = 8 + i * rowH, yb = y + top;
           const x = d >= 0 ? mid : mid - w;
-          const lx = stacked ? 4 : he ? labelW - 8 : 8;
+          const lx = stacked ? (he ? W - 4 : 4) : mid + (d >= 0 ? 4 : -4);
           return (
             <g key={l.id} onMouseMove={(e) => { bridge.cancel(); setTip({ x: e.clientX, y: e.clientY, html: <><b>{name}</b><div>{fmtInt(l.votes)} {L('votes', 'קולות')}</div><div>{d >= 0 ? '+' : '−'}{fmtInt(Math.abs(d))} {L('vs threshold', 'מול החסימה')}</div></> }); }}
               onMouseLeave={bridge.leave} onClick={() => setState({ selectedListId: l.id })} style={{ cursor: 'pointer' }}>
               <rect x={0} y={y - 3} width={W} height={rowH - 2} fill="transparent" />
-              <text x={lx} y={stacked ? y + 9 : y + 11} textAnchor={he && !stacked ? 'end' : 'start'} fill="var(--ink)" data-chart-label=""><title>{name}</title>{isolate(clip(name, stacked ? W - 8 : labelW - 12))}</text>
+              <text x={lx} y={y + 9} textAnchor={stacked ? (he ? 'end' : 'start') : (d >= 0 ? 'start' : 'end')} fill="var(--ink)" data-chart-label=""><title>{name}</title>{isolate(name)}</text>
               <rect className="bar" x={x} y={yb + 2} width={Math.max(1, w)} height={12} rx={2} fill={l.color} stroke={edge(l.color)} strokeWidth={1} />
               <text x={d >= 0 ? mid + w + 4 : mid - w - 4} y={yb + 12} textAnchor={d >= 0 ? 'start' : 'end'} className="tabnum">{d >= 0 ? '+' : '−'}{fmtInt(Math.abs(d))}</text>
             </g>

@@ -10,13 +10,13 @@ for (const lang of ['en', 'he'] as const) for (const width of [1500, 390]) {
     await start(page, lang, width);
     await page.goto('/');
     await page.getByRole('tab', { name: lang === 'he' ? 'קואליציות' : 'Coalitions', exact: true }).click();
-    // every party card puts its In/Out/Any choice in the same place: beside the name on wide screens, beneath it on phones
+    // Every party card keeps In/Out/Any beside its name, including the compact phone layout (QA2 CO1).
     const layout = await page.locator('.coal-choice').evaluateAll((cards) => cards.map((c) => {
       const who = c.querySelector('.coal-who')!.getBoundingClientRect(), seg = c.querySelector('.seg')!.getBoundingClientRect();
       return seg.top >= who.bottom - 1 ? 'below' : 'beside';
     }));
     expect(new Set(layout).size).toBe(1);
-    expect(layout[0]).toBe(width > 760 ? 'beside' : 'below');
+    expect(layout[0]).toBe('beside');
     // the first In/Out adds its reset beside the instruction, not a new line above the cards
     const card = await top(page, '.coal-choice', 2);
     await page.locator('.coal-choice').first().getByRole('button', { name: lang === 'he' ? 'בפנים' : 'In', exact: true }).click();

@@ -2,6 +2,8 @@
 
 ## 5 November 2026 — release review
 
+- Analysis screens: fixed-scale seat-safety tracks, stable sensitivity loading, complete threshold labels and round axis ticks, nearby chart names with Hebrew phone alignment, inline formula help and compact allocation tables, equal comparison options and compact aligned coalition rows.
+
 - Corrected the English and Hebrew data-status notes for k20–k24 by removing obsolete claims that no default blocs are assigned.
 
 - List panel: Knesset members appear under their official English names (Knesset website) in English mode, with the registered Hebrew name beside them; English link and sponsor labels carry no Hebrew or letter-by-letter text; candidate links say less with detail behind (i); "Restore list" appears only for non-vote edits; renaming a candidate no longer moves its row; component parties without a colour get a distinguishable one on candidates, party rows and when split. Shared controls: short pickers open without a search box and re-choosing the current option is not an edit; secondary-source chips are neutral, not error red; dark-mode sliders are visible; small buttons match a 32px field beside them.

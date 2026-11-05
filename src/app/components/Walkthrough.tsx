@@ -212,9 +212,9 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
           <div>
             {heading(quotaGate ? L('Which lists can win a seat?', 'אילו רשימות יכולות לזכות במנדט?') : L('Which lists pass the threshold?', 'אילו רשימות עוברות את אחוז החסימה?'), <Info term="threshold" />)}
             {Number(s.rules.thresholdPct) > 0
-              ? <p><span className="formula">{s.rules.thresholdPct}% × {fmtInt(r.totalValid)} = {fmtRat(r.thresholdExact, 3)} → {fmtInt(r.thresholdVotes)}</span> <Info title={L('Threshold denominator', 'בסיס אחוז החסימה')}>{L('All valid votes count, including votes for lists that fail. The result is rounded up to whole votes.', 'כל הקולות הכשרים נספרים, גם של רשימות שלא עברו. התוצאה מעוגלת כלפי מעלה לקולות שלמים.')}</Info></p>
+              ? <p><span className="formula">{s.rules.thresholdPct}% × {fmtInt(r.totalValid)} = {fmtRat(r.thresholdExact, 3)} → <span style={{ whiteSpace: 'nowrap' }}>{fmtInt(r.thresholdVotes)} <Info title={L('Threshold denominator', 'בסיס אחוז החסימה')}>{L('All valid votes count, including votes for lists that fail. The result is rounded up to whole votes.', 'כל הקולות הכשרים נספרים, גם של רשימות שלא עברו. התוצאה מעוגלת כלפי מעלה לקולות שלמים.')}</Info></span></span></p>
               : <p>{quotaGate ? L(`No percentage threshold. A list needs one whole quota (${fmtInt(r.quota.num / r.quota.den)} votes, step 2) to win a seat.`, `אין אחוז חסימה. רשימה צריכה מודד שלם אחד (${fmtInt(r.quota.num / r.quota.den)} קולות, צעד 2) כדי לזכות במנדט.`) : L('No percentage threshold applies: every list takes part.', 'אין אחוז חסימה: כל הרשימות משתתפות.')}</p>}
-            <div className="tablewrap" tabIndex={0} role="region" aria-label={L('Lists by votes', 'רשימות לפי קולות')}>
+            <div className="tablewrap walk-narrow" tabIndex={0} role="region" aria-label={L('Lists by votes', 'רשימות לפי קולות')}>
               <table className="tbl">
                 <thead><tr><th>{L('List', 'רשימה')}</th><th className="n">{L('Votes', 'קולות')}</th><th className="n">{L('Share', 'שיעור')}</th></tr></thead>
                 <tbody>

@@ -41,7 +41,13 @@ function revealRow(row: HTMLElement | null) {
   requestAnimationFrame(() => {
     const head = box.querySelector('thead')?.getBoundingClientRect().height ?? 0;
     const top = row.getBoundingClientRect().top - box.getBoundingClientRect().top - box.clientTop;
-    if (top < head || top + row.offsetHeight > box.clientHeight) box.scrollTop = Math.max(0, box.scrollTop + top - head);
+    if (top < head || top + row.offsetHeight > box.clientHeight) {
+      const desired = Math.max(0, box.scrollTop + top - head);
+      // Let the final row reach the header too; clamping to the table end cuts an earlier row in half.
+      const extra = Math.max(0, desired - (box.scrollHeight - box.clientHeight));
+      if (extra) box.style.paddingBottom = `${(parseFloat(box.style.paddingBottom) || 0) + extra}px`;
+      box.scrollTop = desired;
+    }
   });
 }
 
@@ -94,7 +100,7 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
   const ticks = niceTicks(maxSeats);
   const x0 = 30, plotW = W - 50;
   const at = (v: number | bigint) => shown ? x0 + (Number(BigInt(v) - BigInt(shown.from)) / (shown.to - shown.from + 1)) * plotW : 0;
-  const y = (n: number) => 150 - (n / maxSeats) * 130;
+  const y = (n: number) => 150 - (n / ticks[ticks.length - 1]) * 130;
   return (
     <div>
       <h3>{L('Seats by votes', 'מנדטים לפי קולות')} <Info title={L('Seats by votes', 'מנדטים לפי קולות')}>{L('The seats one list wins at every vote count in the range. All other lists keep their votes, so the valid total changes with this list. Boundaries are exact whole vote counts.', 'המנדטים שרשימה אחת מקבלת בכל מספר קולות בטווח. שאר הרשימות שומרות על קולותיהן, ולכן סך הקולות הכשרים משתנה עם הרשימה. הגבולות הם מספרי קולות מדויקים.')}</Info></h3>
@@ -114,9 +120,11 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
           : shown && !shown.exact ? <>{L(`Checked every ${fmtInt(shown.step)} votes`, `נבדק כל ${fmtInt(shown.step)} קולות`)} <Info title={L('Sampled range', 'טווח מדוגם')}>{L(`The range is wide, so every ${fmtInt(shown.step)}th vote count was calculated and each change was then located to the exact vote. A change that reverses within ${fmtInt(shown.step)} votes could be missed; narrow the range to 50,000 votes or less for a complete result.`, `הטווח רחב, ולכן חושב כל ${fmtInt(shown.step)} קולות וכל שינוי אותר עד הקול המדויק. שינוי שמתהפך בתוך ${fmtInt(shown.step)} קולות עלול להיעלם; צמצמו את הטווח ל-50,000 קולות או פחות לתוצאה מלאה.`)}</Info></>
           : null}
       </p>
+      <div ref={box}>
+      {!shown && <><svg className="chart" viewBox={`0 0 ${W} 180`} width="100%" aria-hidden /><div style={{ height: 300 }} /></>}
       {shown && (
         <div aria-busy={!current} style={{ opacity: current ? 1 : 0.45, transition: 'opacity .2s' }}>
-          <div ref={box}>
+          <div>
           <svg className="chart" viewBox={`0 0 ${W} 180`} width="100%" role="img" aria-label={L('Seats against votes', 'מנדטים מול קולות')}>
             {ticks.map((t) => <g key={t}><line className="gridl" x1={x0} x2={x0 + plotW} y1={y(t)} y2={y(t)} /><text x={x0 - 6} y={y(t) + 4} textAnchor="end">{t}</text></g>)}
             {segs.map((sg, k) => {
@@ -145,16 +153,15 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 }
 
-/** about four round steps from 0 to max, ending at max */
+/** About four equal, round steps, including the first round tick above the data. */
 function niceTicks(max: number) {
-  const step = [1, 2, 5, 10, 20, 25, 50].find((x) => max / x <= 4) ?? 50;
-  const out: number[] = [];
-  for (let t = 0; t < max; t += step) if (max - t >= step / 3 || t === 0) out.push(t);
-  return [...out, max];
+  const step = [1, 2, 5, 10, 20, 25, 50].find((x) => max / x <= 4) ?? Math.ceil(max / 200) * 50;
+  return Array.from({ length: Math.ceil(max / step) + 1 }, (_, i) => i * step);
 }
 
 /** a percentage field committed on Enter or leaving it, so a half-typed value is never judged */
@@ -227,28 +234,26 @@ function ThresholdLadder({ s, r, lo, hi }: { s: Scenario; r: AllocationResult; l
     .map((l) => ({ l, share: { num: BigInt(l.votes), den: total } }))
     .filter((x) => cmp(x.share, lo) > 0 && cmp(x.share, hi) <= 0).sort((a, b) => b.l.votes - a.l.votes);
   const a = toNumber(lo) * 100, b = toNumber(hi) * 100;
-  const labelW = Math.min(170, Math.round(W * 0.34)), right = 52, rowH = 18, top = 16;
+  const labelW = 16, right = 72, rowH = 40, top = 44;
   const plotW = W - labelW - right;
   const x = (p: number) => labelW + ((p - a) / (b - a)) * plotW;
   const cur = toNumber(r.rules.threshold) * 100;
   const H = top + rows.length * rowH + 24;
-  const chars = Math.max(6, Math.floor((labelW - 8) / 6.6));
-  const cut = (t: string) => (t.length > chars ? `${t.slice(0, chars - 1)}…` : t);
   const ticks = b - a <= 10 && Number.isInteger(a) && Number.isInteger(b) ? Array.from({ length: b - a + 1 }, (_, i) => a + i) : [a, b];
   if (!rows.length) return <p className="small muted">{L('The same lists pass at every threshold in this range.', 'אותן רשימות עוברות בכל אחוז חסימה בטווח.')}</p>;
   return (
     <div ref={box} style={{ marginTop: 8 }}>
       <svg className="chart" viewBox={`0 0 ${W} ${H}`} width="100%" role="img" aria-label={L('Highest threshold each list passes', 'אחוז החסימה הגבוה ביותר שכל רשימה עוברת')}>
         {ticks.map((t) => <g key={t}><line className="gridl" x1={x(t)} x2={x(t)} y1={top - 4} y2={H - 20} /><text x={x(t)} y={H - 6} textAnchor="middle">{`${t}%`}</text></g>)}
+        {cur >= a && cur <= b && <g><line x1={x(cur)} x2={x(cur)} y1={top - 12} y2={H - 20} stroke="var(--ink)" strokeDasharray="3 3" /><text x={x(cur)} y={12} textAnchor="middle" fill="var(--ink)">{L('now', 'עכשיו')}</text></g>}
         {rows.map(({ l, share }, i) => {
           const yy = top + i * rowH, p = toNumber(share) * 100, label = listLabel(l, lang);
           return <g key={l.id}>
-            <text x={labelW - 6} y={yy + 12} textAnchor="end"><title>{label}</title>{cut(label)}</text>
-            <rect x={x(a)} y={yy + 3} width={Math.max(1, x(p) - x(a))} height={rowH - 6} fill={l.color} rx={2} stroke="var(--rule-2)" strokeWidth={0.5} />
-            <text className="halo" x={x(p) + 4} y={yy + 12}>{pctText(share)}</text>
+            <text x={lang === 'he' ? W - 4 : 4} y={yy - 2} textAnchor={lang === 'he' ? 'end' : 'start'}><title>{label}</title>{label}</text>
+            <rect x={x(a)} y={yy + 3} width={Math.max(1, x(p) - x(a))} height={12} fill={l.color} rx={2} stroke="var(--rule-2)" strokeWidth={0.5} />
+            <text className="halo" x={W - 2} y={yy + 12} textAnchor="end">{pctText(share)}</text>
           </g>;
         })}
-        {cur >= a && cur <= b && <g><line x1={x(cur)} x2={x(cur)} y1={top - 6} y2={H - 20} stroke="var(--ink)" strokeDasharray="3 3" /><text x={x(cur)} y={top - 8} textAnchor="middle" fill="var(--ink)">{L('now', 'עכשיו')}</text></g>}
       </svg>
     </div>
   );
