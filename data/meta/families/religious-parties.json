@@ -2400,7 +2400,7 @@
       "electionId": "k13",
       "electionDate": "1992-06-23",
       "datasetPath": "public/data/k13.json",
-      "datasetSha256": "f28c58c7a928c81dc0847e60ff894b008da8e4b4b409c68305d0a8a7c9a52773",
+      "datasetSha256": "4e16d399ed49fdf9cc5db0b5db06a030dea18b486d175c2b33a710a0317a3c6f",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "Rosters: everyone elected is included and cross-checked; no full rosters; later ranks of winning lists not transcribed. Zero-seat rosters unavailable. Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. The 1992 agreement notice was not found; agreements that did not affect seats may be missing. Empty agreements reproduce every published seat.",
@@ -3874,7 +3874,7 @@
       "electionId": "k19",
       "electionDate": "2013-01-22",
       "datasetPath": "public/data/k19.json",
-      "datasetSha256": "8a151d5dee8957b1506d2b414b0a017c0d39855b3eeee8b1703503bce2139909",
+      "datasetSha256": "67b6a72209001ae64c354e96dd1f02b852352353fd10e3ec7196728a19a2ee3c",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2013-01-30",
@@ -4116,7 +4116,7 @@
       "electionId": "k20",
       "electionDate": "2015-03-17",
       "datasetPath": "public/data/k20.json",
-      "datasetSha256": "6a05532b61155cb30848593c6ef6daf34a2dea4b981ea9dc3604a287e87b9894",
+      "datasetSha256": "1a9954651910ee8026046f8dd385fdfc5db08ad0a866b51a998e24a047546351",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2015-03-25",
@@ -4378,7 +4378,7 @@
       "electionId": "k21",
       "electionDate": "2019-04-09",
       "datasetPath": "public/data/k21.json",
-      "datasetSha256": "7570d509f1a9459d7e20af9b38fca062b39deb5401ef1ee125b2b6394645466b",
+      "datasetSha256": "092463e8746ceea8b79e53ab63e632746a3af6bbf8fc1b655a347fbbdda57e98",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -4625,7 +4625,7 @@
       "electionId": "k22",
       "electionDate": "2019-09-17",
       "datasetPath": "public/data/k22.json",
-      "datasetSha256": "5143415f7313d9163094db341244f261efb213a96e1d2be14ffa862dfdb7673c",
+      "datasetSha256": "0522280c9eebaeea808b4acb209f86ddb43417a26f3e59288b523ce596ac7d9e",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -4833,7 +4833,7 @@
       "electionId": "k23",
       "electionDate": "2020-03-02",
       "datasetPath": "public/data/k23.json",
-      "datasetSha256": "700eff04b0e0de8bfee1ce8b7066d892df0174098cc852b906a2afbb9dfde547",
+      "datasetSha256": "ad5b20c2dc1e4910bfd37c18ec495f90b01d85eba4a55a03d0e9ca5b14f63062",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -5024,7 +5024,7 @@
       "electionId": "k24",
       "electionDate": "2021-03-23",
       "datasetPath": "public/data/k24.json",
-      "datasetSha256": "328ea1b1d8adc76d5c9c546ca170f1b3169b5e378f581d75ea86e4bc9c57406c",
+      "datasetSha256": "9b3f1bcf5b89188159eb593f1cc47767da6cef34b544f7ef3592253e6c6dd01b",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -5240,7 +5240,7 @@
       "electionId": "k25",
       "electionDate": "2022-11-01",
       "datasetPath": "public/data/k25.json",
-      "datasetSha256": "86cafc75c726700e809f37ad8acf67f964653871c3e5e949e0a41af6ea4b469a",
+      "datasetSha256": "4fd7385dac94ddcf5a59c1cb5d0617990cb7cf3b1f705ac2489a549a8822dc85",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2022-11-10",
@@ -5461,7 +5461,7 @@
       "electionId": "k26",
       "electionDate": "2026-10-27",
       "datasetPath": "public/data/k26.json",
-      "datasetSha256": "9e8349f5a7e1659ccc6184208b0b7aecd0d7849420d726f53714672d1f3e60c8",
+      "datasetSha256": "b5574c5c526b3580c9a7e37bf508aa79c438a0e4a37041b86b88e5eb078a58ac",
       "datasetStatus": {
         "stage": "final-count-pending-publication",
         "asOf": "2026-11-04",
