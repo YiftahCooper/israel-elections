@@ -17,7 +17,8 @@ export function describe(a: Action, s: Scenario, lang: Lang): string {
     case 'startPart': return `${PARTS[a.part][lang]}: ${a.name ?? (a.source === 'official' ? (he ? 'התוצאה הרשמית' : 'official result') : a.source === 'blank' ? (he ? 'ריק' : 'blank') : (a.source === 'preset' ? (a.part === 'rules' ? (a.presetId && RULESETS[a.presetId] ? ruleEraLabel(RULESETS[a.presetId], lang) : (he ? 'כללים ממקור מתועד' : 'Sourced rules')) : s.blocSchemes?.find(g => g.id === a.presetId)?.[he ? 'nameHe' : 'nameEn'] ?? (he ? 'חלוקה ממקור מתועד' : 'Sourced grouping')) : (he ? 'תרחיש שמור' : 'saved scenario')))}`;
     case 'setVotes': return he ? `${n(a.listId)}: ${fmtInt(a.votes)} קולות` : `${n(a.listId)}: set to ${fmtInt(a.votes)} votes`;
     case 'transfer': return he ? `העברת ${fmtInt(a.votes)} קולות מ${n(a.from)} ל${n(a.to)}` : `Moved ${fmtInt(a.votes)} votes from ${n(a.from)} to ${n(a.to)}`;
-    case 'addVoters': return he ? `נוספו ${fmtInt(a.allocations.reduce((t, x) => t + x.votes, 0) + a.invalid)} מצביעים${a.label ? ` (${a.label})` : ''}` : `Added ${fmtInt(a.allocations.reduce((t, x) => t + x.votes, 0) + a.invalid)} voters${a.label ? ` (${a.label})` : ''}`;
+    case 'addVoters': { const n = a.allocations.reduce((t, x) => t + x.votes, 0) + a.invalid, k = fmtInt(Math.abs(n)), why = a.label && !a.label.startsWith('[') ? ` (${a.label})` : '';
+      return n < 0 ? (he ? `הוסרו ${k} מצביעים${why}` : `Removed ${k} voters${why}`) : he ? `נוספו ${k} מצביעים${why}` : `Added ${k} voters${why}`; }
     // name the list the user moved: the one that gains (from all others) or loses (to all others)
     case 'redistribute': {
       if (a.to.length === 1 && a.from.length !== 1) return he ? `${n(a.to[0].listId)}: ${signed(a.votes)} קולות משאר הרשימות` : `${n(a.to[0].listId)}: ${signed(a.votes)} votes from the other lists`;

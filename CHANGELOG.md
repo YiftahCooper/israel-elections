@@ -2,6 +2,7 @@
 
 ## 5 November 2026 — release review
 
+- Section reset and copy controls appear only when they would change something (“Official turnout”, “Copy from…”, “Remove all agreements”). Turnout models one voter group at a time — sourced CBS locality groups, vote-share localities or typed numbers — with a turnout slider, measured vote mix, seat-change preview, increases and decreases, and saved, exported and imported voter-group presets.
 - Distinguish joint-list component candidates and seats with party tints and list-colour envelopes, include component identities in chamber exports, and prevent component-row logo overlap. Component seat colours can be disabled under Rules → Display.
 
 - Clarify vote sources, section replacements, joint-list actions and edited markers; remove single-vote nudges and let sliders cover the valid-vote total. Preference prompts offer one-use, item and global scopes with one explicit Apply action.

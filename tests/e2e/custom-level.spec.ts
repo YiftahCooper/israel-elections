@@ -32,7 +32,7 @@ test('blank candidates can be undone and chip changes are human wording', async 
   await start(page,'expert');
   const candidates = page.locator('.side-panel .cands li');
   const count = await candidates.count();
-  await choose(page.getByRole('button', {name:'Replace: Candidates',exact:true}), 'blank');
+  await page.getByRole('button', {name:'Empty this roster',exact:true}).click();
   await expect(candidates).toHaveCount(0);
   await expect(page.locator('.banner.warn').filter({hasText:'unfilled seats'})).toContainText('32 seats and 0 candidates');
   await expect(page.locator('.ld').filter({hasText:'unfilled seats'})).toBeVisible();
@@ -55,7 +55,7 @@ for (const lang of ['en','he']) for (const theme of ['light','dark']) for (const
     await expect(page.locator('.lb-row').filter({has:page.locator('.lb-name',{hasText:lang === 'he' ? 'ליכוד' : 'Likud'})}).locator('.lb-seats b')).toHaveText('32');
     await page.getByRole('tab',{name:lang === 'he' ? 'איחוד ופיצול' : 'Merge & split',exact:true}).click();
     await page.getByRole('button',{name:lang === 'he' ? 'הסכמי עודפים' : 'Surplus agreements',exact:true}).click();
-    await choose(page.getByRole('button', {name:lang === 'he' ? 'החלפת: הסכמי עודפים' : 'Replace: Agreements',exact:true}), 'blank');
+    await page.getByRole('button', {name:lang === 'he' ? 'ביטול כל ההסכמים' : 'Remove all agreements',exact:true}).click();
     const removed = page.locator('.removed-agreements li');
     await expect(removed).toHaveCount(0);
     const marker = page.locator('.edit-marker[data-marker-kind=part]');
@@ -70,7 +70,7 @@ for (const lang of ['en','he']) for (const theme of ['light','dark']) for (const
     expect(box.x + box.width).toBeLessThanOrEqual(phone ? 390 : 1440);
     await page.screenshot({path:`.backup-scratch/custom-level/markers-${lang}-${theme}-${phone ? 'phone' : 'desktop'}.png`});
     await page.getByRole('tab',{name:lang === 'he' ? 'כללים' : 'Rules',exact:true}).click();
-    await page.getByRole('button', {name:lang === 'he' ? 'החלפת: כללים' : 'Replace: Rules',exact:true}).click();
+    await page.getByRole('button', {name:lang === 'he' ? 'העתקת כללים מ…' : 'Copy rules from…',exact:true}).click();
     const options = page.getByRole('dialog').locator('.choice-option');
     expect((await options.allTextContents()).join(' ')).not.toContain('il-');
     await expect(options.filter({hasText:'1977'})).toContainText(lang === 'he' ? 'מגבלת מועמדים' : 'Candidate cap');

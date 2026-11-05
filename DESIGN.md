@@ -419,7 +419,7 @@ show identity swatches. Edit glyphs use neutral ink and an outline; hover and ke
 explain the previous value in the active language. Export annotations describe edited inputs;
 exports add no scenario footer or extra scenario text (owner revision, 4 November 2026).
 
-`StartFrom` is the shared starting-point selector. This pass connects blocs, agreements,
+`StartFrom` is the shared starting-point selector. It offers only choices that would change the section (owner revision, 5 November 2026): an “Official …” reset when the section differs from the official result, “Copy from…” for sourced presets and same-election saved scenarios whose section differs, and a named clear action; with nothing to offer it renders only its marker. Voter-group presets (`src/model/voterGroups.ts`) are self-describing JSON (`kind: israel-elections/voter-group`, `schemaVersion`) stored in browser storage and exported/imported as files, so a future shared gallery can host them; their built-in groups are the sourced locality classifications, measured from official locality results, never invented preferences. This pass connects blocs, agreements,
 rules and coalitions to one `startPart` action, replayable and undoable as one step. Blocs
 can start as a named pair of empty neutral blocs with every list, party and member unassigned;
 the plus button invokes that same blank action. Rules offer sourced era presets; agreements

@@ -2,6 +2,7 @@ import { Slip } from './ui.tsx';
 import { EditMarker } from './EditMarker.tsx';
 import { useDisclosure } from './Feature.tsx';
 import { StartFrom } from './StartFrom.tsx';
+import { startEffect } from '../../model/partEffect.ts'; // its Official agreements button covers restoring when every list still exists
 import { PartEdits } from './PartEdits.tsx';
 import { X } from 'lucide-react';
 import { useMemo, useState } from 'react';
@@ -111,7 +112,7 @@ function Agreements({ s, r, base }: { s: Scenario; r: AllocationResult; base: Sc
     <div>
       <div className="row" style={{ justifyContent: 'space-between' }}>
         <h3>{L('Surplus-vote agreements', 'הסכמי עודפים')} <Info term="surplus" /></h3>
-        <span className="row">{JSON.stringify(s.agreements) !== JSON.stringify(base.agreements) && <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'agreements' })}>{L('Restore historical agreements', 'שחזור ההסכמים ההיסטוריים')}</button>}<StartFrom s={s} part="agreements" /></span>
+        <span className="row">{JSON.stringify(s.agreements) !== JSON.stringify(base.agreements) && startEffect(s, { type: 'startPart', part: 'agreements', source: 'official' }, base) !== 'change' && <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'agreements' })}>{L('Restore historical agreements', 'שחזור ההסכמים ההיסטוריים')}</button>}<StartFrom s={s} part="agreements" /></span>
       </div>
       <PartEdits s={s} prefix={['agreements']} />
       {s.agreements.length === 0 && <p className="muted small">{L('None.', 'אין.')}</p>}
