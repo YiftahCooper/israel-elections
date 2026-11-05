@@ -43,7 +43,8 @@ export function runTask(task: AnalysisTask): SearchResult | SecurityFigure | Tra
   }
 }
 
-export const partsOf = (item: SecurityItem): SecurityPart[] => (item.qualified ? ['gain', 'lose'] : ['qualify']);
+/** 'lose' only for a list with seats: a qualified list without seats has none to lose */
+export const partsOf = (item: SecurityItem): SecurityPart[] => (item.qualified ? (item.seats > 0 ? ['gain', 'lose'] : ['gain']) : ['qualify']);
 
 /** One list's search; 'lose' looks for the first seat lost (or, with no seats, falling below the threshold). */
 export function listSearch(input: AllocationInput, src: VoteSource, goal: ListGoal, id: string, seats: number): SearchResult {
@@ -59,10 +60,10 @@ export function seatTarget(input: AllocationInput, src: VoteSource, id: string, 
   return n > seats ? minimalChange(input, id, src, goals.seatsAtLeast(id, n)) : minimalChange(input, id, src, goals.seatsAtMost(id, n), 'lose');
 }
 
-/** The figure for one part: the minimum found (for 'lose', the votes that can go without loss), or null when none was found. */
+/** The figure for one part: the fewest votes found (for 'lose', the fewest lost that cost a seat), or null when none was found. */
 export function securityPart(input: AllocationInput, src: VoteSource, part: SecurityPart, item: SecurityItem): SecurityFigure {
   const m = listSearch(input, src, part, item.id, item.seats);
-  return { value: m.found ? Number(m.votes) - (part === 'lose' ? 1 : 0) : null, exact: m.exact, reason: m.reason, limit: Number(m.limit), nonMonotonic: m.nonMonotonic };
+  return { value: m.found ? Number(m.votes) : null, exact: m.exact, reason: m.reason, limit: Number(m.limit), nonMonotonic: m.nonMonotonic };
 }
 
 /** Assembles a list's row from its parts (all parts of `partsOf(item)` must be present). */

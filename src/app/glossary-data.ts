@@ -605,8 +605,8 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'seat-security', nameHe: 'עד כמה מנדט בטוח', nameEn: 'Seat security', level: 'standard', provenance: 'app',
-    defHe: 'לכל רשימה: כמה קולות אפשר לאבד לפני שמאבדים מנדט, וכמה קולות נוספים דרושים למנדט הבא. המספרים מחושבים בחישוב מחדש של כל הבחירות, והם תלויים בשאלה לאן עוברים הקולות. זה איננו המודד הכללי.',
-    defEn: 'For each list, how many votes it could lose before losing a seat, and how many more it needs for the next one. The figures come from recomputing the whole election, and they depend on where the votes move. They are not the general quota.',
+    defHe: 'לכל רשימה: כמה קולות היא צריכה לאבד כדי לאבד מנדט, וכמה קולות נוספים דרושים למנדט הבא. המספרים מחושבים בחישוב מחדש של כל הבחירות, והם תלויים בשאלה לאן עוברים הקולות. זה איננו המודד הכללי.',
+    defEn: 'For each list, how many votes it would have to lose to lose a seat, and how many more it needs for the next one. The figures come from recomputing the whole election, and they depend on where the votes move. They are not the general quota.',
     linkHe: H.seats, linkEn: E.seats,
     sources: [
       src(E.seats, 'en', 'institute', 'background: why the marginal seat depends on all lists’ remainders'),
