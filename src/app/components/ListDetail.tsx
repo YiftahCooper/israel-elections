@@ -65,12 +65,16 @@ function LiveSlider({ l, ceiling, onCommit }: { l: SimList; ceiling: number; onC
     if (v !== committed.votes) onCommit(v);
     previewAction(null);
   };
-  const step = Math.max(1, Math.round(max / 2000));
+  // cube-root track: the threshold region sits about a third of the way along, so small lists get fine control
+  // while the track still reaches every list's votes; values snap to a round amount for the size
+  const POS = 1000;
+  const toPos = (v: number) => Math.round(Math.cbrt(Math.max(0, v) / max) * POS);
+  const fromPos = (p: number) => { const raw = max * (p / POS) ** 3; const q = raw < 10_000 ? 100 : raw < 100_000 ? 500 : 1000; return Math.min(max, Math.round(raw / q) * q); };
   return (
     <div>
-      <input type="range" min={0} max={max} step={step} value={value} aria-label={L('Votes slider', 'מחוון קולות')} aria-valuetext={value.toLocaleString('en-US')}
+      <input type="range" min={0} max={POS} step={1} value={toPos(value)} aria-label={L('Votes slider', 'מחוון קולות')} aria-valuetext={value.toLocaleString('en-US')}
         onPointerDown={e => e.currentTarget.setPointerCapture(e.pointerId)}
-        onChange={(e) => preview(Number(e.target.value))} onPointerUp={commit} onPointerCancel={commit} onKeyUp={commit} onBlur={commit} onTouchEnd={commit} />
+        onChange={(e) => preview(fromPos(Number(e.target.value)))} onPointerUp={commit} onPointerCancel={commit} onKeyUp={commit} onBlur={commit} onTouchEnd={commit} />
       <div dir="ltr" className="row tiny muted" style={{ justifyContent: 'space-between' }}>
         <span>0</span>
         <span>{drag !== null ? <b className="ink2">{drag.toLocaleString('en-US')}</b> : L('Drag to adjust', 'גררו לשינוי')}</span>
@@ -205,7 +209,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
   const transferShown = useFeature('voteSource') === 'show';
   const total = Number(r.totalValid);
   // the default step is the largest round amount that is still a small move in this election (≤ 2% of the valid votes)
-  const defaultStep = total >= 500_000 ? '10k' : total >= 50_000 ? '1k' : '1k';
+  const defaultStep = total >= 500_000 ? '10k' : '1k';
   const [moreOpen, setMoreOpen] = useState(false);
   const gain = lr.qualified ? margins?.gain : margins?.qualify;
   const gainTarget = gain?.found && gain.votes !== null ? l.votes + Number(gain.votes) : null;

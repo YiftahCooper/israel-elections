@@ -16,7 +16,11 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
       await expect(steps.getByRole('button', { name: '1', exact: true })).toHaveCount(0);
       const votes = panel.getByRole('textbox', { name: lang === 'en' ? 'Votes' : 'קולות', exact: true });
       const original = Number((await votes.inputValue()).replaceAll(',', ''));
-      expect(Number(await panel.getByRole('slider').getAttribute('max'))).toBeGreaterThan(original * 2);
+      const slider = panel.getByRole('slider');
+      expect(Number((await slider.locator('xpath=following-sibling::div[1]/span[last()]').textContent())!.replaceAll(',', ''))).toBeGreaterThan(original * 2);
+      // cube-root track: the list's own votes sit well inside the track, never squeezed against 0
+      expect(Number(await slider.inputValue())).toBeGreaterThan(200);
+      await expect(slider).toHaveAttribute('aria-valuetext', original.toLocaleString('en-US'));
       await panel.getByRole('button', { name: lang === 'en' ? 'Scale, share & transfer' : 'הכפלה, אחוזים והעברה', exact: true }).click();
       await panel.screenshot({ path: `.backup-scratch/task-b/after-${election}-${lang}-${theme}-${width}.png` });
       const split = panel.getByRole('checkbox', { name: lang === 'en' ? 'Count seats by party' : 'ספירת מנדטים לפי מפלגה', exact: true });
