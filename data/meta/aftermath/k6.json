@@ -439,9 +439,13 @@
         "id": "six-day-war",
         "date": "1967-06-05",
         "category": "security",
-        "textEn": "Israel fought Egypt, Jordan and Syria in the Six-Day War, from 5 to 10 June 1967.",
-        "textHe": "ישראל נלחמה במצרים, בירדן ובסוריה במלחמת ששת הימים, מ־5 עד 10 ביוני 1967.",
+        "textEn": "After Egypt blockaded the Straits of Tiran, Israel fought Egypt, Jordan and Syria in the Six-Day War, 5–10 June 1967.",
+        "textHe": "לאחר שמצרים חסמה את מצרי טיראן, ישראל נלחמה במצרים, בירדן ובסוריה במלחמת ששת הימים, מ־5 עד 10 ביוני 1967.",
         "cites": [
+          {
+            "source": "mfa-timeline",
+            "quote": "an Egyptian blockade of the Straits of Tiran"
+          },
           {
             "source": "term-history",
             "quote": "Six Day War"
@@ -466,7 +470,7 @@
         "confidence": "high",
         "endDate": "1967-06-10",
         "notes": [
-          "Original Knesset/IDI selection retained; CFR supplies dated onset and action, UN report supplies the final-front ceasefire. No motive/preemption judgment adopted.",
+          "Knesset and IDI retain independent event selection; MFA supplies the blockade context and Israeli account of the preemptive strike, CFR corroborates onset, and the UN report supplies the final-front ceasefire.",
           "The UN Secretary-General’s 10 June report records Israeli and Syrian acceptance of a ceasefire at 16:30 GMT; the final-front cessation supplies the ending.",
           "דוח מזכ״ל האו״ם מ־10 ביוני מתעד את הסכמת ישראל וסוריה להפסקת אש ב־16:30 לפי שעון גריניץ׳."
         ]

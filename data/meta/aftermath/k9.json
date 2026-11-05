@@ -132,6 +132,12 @@
       "publisher": "Economic Cooperation Foundation, historical database entry on UNSC Resolution 425 (1978)",
       "kind": "secondary",
       "accessed": "2026-11-05"
+    },
+    "mod-coastal-road": {
+      "url": "https://archives.mod.gov.il/sites/English/Exhibitions/Pages/The-Coastal-road-Massacre.aspx",
+      "publisher": "Ministry of Defense, IDF and Defense Establishment Archives, The Coastal road Massacre",
+      "kind": "official",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -569,9 +575,13 @@
         "id": "coastal-road-attack",
         "date": "1978-03-11",
         "category": "security",
-        "textEn": "Terrorists hijacked a bus in the Coastal Road massacre.",
-        "textHe": "מחבלים חטפו אוטובוס בפיגוע כביש החוף.",
+        "textEn": "Terrorists hijacked a bus and murdered passengers in the Coastal Road massacre.",
+        "textHe": "מחבלים חטפו אוטובוס ורצחו נוסעים בפיגוע כביש החוף.",
         "cites": [
+          {
+            "source": "mod-coastal-road",
+            "quote": "a group of eleven PLO-Fatah terrorists"
+          },
           {
             "source": "knesset-history-9",
             "quote": "in March 1978 there was an attack along the Coastal Road"

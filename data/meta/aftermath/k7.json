@@ -421,8 +421,8 @@
         "id": "lod-airport-attack",
         "date": "1972-05-30",
         "category": "security",
-        "textEn": "Three Japanese terrorists opened fire at Lod airport in a terror attack.",
-        "textHe": "שלושה מחבלים יפנים פתחו באש בפיגוע בנמל התעופה לוד.",
+        "textEn": "Three Japanese terrorists murdered people in the Lod airport massacre.",
+        "textHe": "שלושה מחבלים יפנים רצחו בני אדם בטבח בנמל התעופה לוד.",
         "cites": [
           {
             "source": "idf-attrition-history",
@@ -473,9 +473,13 @@
         "id": "yom-kippur-war",
         "date": "1973-10-06",
         "category": "security",
-        "textEn": "Egypt and Syria attacked Israel on 6 October 1973, beginning the Yom Kippur War.",
-        "textHe": "מצרים וסוריה תקפו את ישראל ב־6 באוקטובר 1973, ופתחו במלחמת יום הכיפורים.",
+        "textEn": "Egypt and Syria launched a surprise attack on Israel on 6 October 1973, beginning the Yom Kippur War.",
+        "textHe": "מצרים וסוריה פתחו במתקפת פתע על ישראל ב־6 באוקטובר 1973, עם תחילת מלחמת יום הכיפורים.",
         "cites": [
+          {
+            "source": "mfa-timeline",
+            "quote": "Egypt and Syria launch a coordinated surprise attack"
+          },
           {
             "source": "term-history",
             "quote": "Yom Kippur War"

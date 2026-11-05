@@ -721,8 +721,8 @@
         "id": "dissolution-2022",
         "date": "2022-06-30",
         "category": "politics",
-        "textEn": "The Knesset dissolved itself, 92–0, and set an election for 1 November 2022. Lapid became prime minister under the rotation agreement.",
-        "textHe": "הכנסת התפזרה ברוב של 92 ללא מתנגדים וקבעה בחירות ל־1 בנובמבר 2022. לפיד נעשה ראש הממשלה לפי הסכם הרוטציה.",
+        "textEn": "The Knesset dissolved itself, 92–0, and set an election for 1 November 2022.",
+        "textHe": "הכנסת התפזרה ברוב של 92 ללא מתנגדים וקבעה בחירות ל־1 בנובמבר 2022.",
         "cites": [
           {
             "source": "knesset-news-2022-06-30",
@@ -736,6 +736,10 @@
             "source": "toi-2022-06-30",
             "quote": "Foreign Minister and Alternate Prime Minister Yair Lapid will formally succeed Prime Minister Naftali Bennett as premier at midnight between Thursday and Friday."
           }
+        ],
+        "notes": [
+          "Yair Lapid became prime minister on 1 July 2022 under the rotation agreement, not at the time of the 30 June vote.",
+          "יאיר לפיד נכנס לתפקיד ראש הממשלה ב־1 ביולי 2022 לפי הסכם הרוטציה, ולא במועד ההצבעה ב־30 ביוני."
         ]
       },
       {

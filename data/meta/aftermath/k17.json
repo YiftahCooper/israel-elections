@@ -358,8 +358,8 @@
         "id": "cast-lead",
         "date": "2008-12-27",
         "category": "security",
-        "textEn": "Israel launched Operation Cast Lead against Hamas in Gaza on 27 December 2008; the operation ended on 18 January 2009.",
-        "textHe": "ישראל פתחה במבצע עופרת יצוקה נגד חמאס בעזה ב־27 בדצמבר 2008; המבצע הסתיים ב־18 בינואר 2009.",
+        "textEn": "Israel launched Operation Cast Lead against Hamas in Gaza after rocket attacks; the operation ran from 27 December 2008 to 18 January 2009.",
+        "textHe": "ישראל פתחה במבצע עופרת יצוקה נגד חמאס בעזה בעקבות ירי רקטות; המבצע נמשך מ־27 בדצמבר 2008 עד 18 בינואר 2009.",
         "cites": [
           {
             "source": "mfa-history",
@@ -372,12 +372,17 @@
           {
             "source": "crs2009",
             "quote": "ended on January 18, 2009"
+          },
+          {
+            "source": "mfa-history",
+            "quote": "Israel launches its Gaza Operation (Operation Cast Lead) in response to the"
           }
         ],
         "confidence": "high",
         "endDate": "2009-01-18",
         "notes": [
-          "The ending is the operation’s ending as reported by CRS, not a peace treaty. No trigger is added without agreement between the selection chronologies."
+          "MFA’s historical chronology supplies the rocket-attack context and operation dates, independently selected by IPU; CRS corroborates the endpoint. The operation ending is not a peace treaty.",
+          "ציר הזמן של משרד החוץ מתאר את המבצע כמענה לירי רקטות ופצצות מרגמה מרצועת עזה; סיום המבצע אינו הסכם שלום."
         ]
       }
     ],

@@ -426,9 +426,13 @@
         "id": "sinai",
         "date": "1956-10-29",
         "category": "security",
-        "textEn": "Israel launched the Sinai Campaign against Egypt on 29 October 1956.",
-        "textHe": "ישראל פתחה במבצע סיני נגד מצרים ב־29 באוקטובר 1956.",
+        "textEn": "Israel launched the Sinai Campaign against Egypt on 29 October 1956 following Egypt’s blockade of the Straits of Tiran.",
+        "textHe": "ישראל פתחה במבצע סיני נגד מצרים ב־29 באוקטובר 1956 בעקבות חסימת מצרי טיראן בידי מצרים.",
         "cites": [
+          {
+            "source": "mfa-timeline",
+            "quote": "following an Egyptian blockade of the Straits of Tiran"
+          },
           {
             "source": "term-history",
             "quote": "which began on 29 October, 1956."
@@ -444,7 +448,6 @@
         ],
         "confidence": "high",
         "notes": [
-          "Bilateral cessation reported by Israel on 5 November is distinct from the later Anglo-French ceasefire of 6–7 November. No causal trigger added; original Knesset/IDI selection retained.",
           "The UN Yearbook records Israel’s report on 5 November 1956 that fighting between Israeli and Egyptian forces had ceased; this is not an Anglo-French ceasefire date.",
           "לפי שנתון האו״ם, ישראל הודיעה ב־5 בנובמבר 1956 כי הלחימה בינה לבין מצרים פסקה; זה אינו מועד הפסקת האש של בריטניה וצרפת."
         ]
