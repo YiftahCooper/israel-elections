@@ -35,6 +35,90 @@
       "originalSha256": "5626f1bb98d1749392e21c39335053c7cc22e4032385d40aa88d8465f977485b",
       "rights": "free-licence",
       "bytes": 13116
+    },
+    {
+      "letters": "ו",
+      "file": "logos/hadash-2009-k18.png",
+      "sourceUrl": "https://web.archive.org/web/20090209134832/http://hadash2009.org.il/",
+      "assetSourceUrl": "https://web.archive.org/web/20090209141239id_/http://hadash2009.org.il/wp-content/themes/branfordmagazine/images/White_Clean.gif",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "חד\"ש — official 2009 campaign website header (hadash2009.org.il), emblem cropped",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "hadash-archive-20090209134832",
+      "inUseDate": "2009-02-09",
+      "archiveUrl": "https://web.archive.org/web/20090209134832/http://hadash2009.org.il/",
+      "archiveTimestamp": "20090209134832",
+      "inUseEvidence": "Inspected official Hadash 2009 campaign homepage capture 20090209134832 references http://hadash2009.org.il/wp-content/themes/branfordmagazine/images/White_Clean.gif as its #branding header background (via the theme stylesheet style.css, captured 20090209134949). Exact archived asset bytes at 20090209141239 match pre-election CDX SHA-1 base32 QW6IVS26GFDLUZUY3RUJ64UKUXVJORDQ (CDX capture 20090209141239). Cropped to box [682, 0, 862, 176] of the 888x176 original (crop only, isolating the Hadash emblem from the banner slogan and ballot letter); no redraw or recolouring. Hadash ran alone as list ו in 2009; this is its own campaign-site emblem. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "ba5972fd47a347e1844a08752eb962b886bb6b74d7f05f316bb5b07066246a55",
+      "originalSha256": "f94e122e104d1267ea6e4bd354f896212020186ff8f8a5bbee19b3cf441c0274",
+      "bytes": 7371,
+      "rawEvidence": {
+        "page": "logo-k18-hadash-page",
+        "asset": "logo-k18-hadash-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20090209141239id_/http://hadash2009.org.il/wp-content/themes/branfordmagazine/images/White_Clean.gif",
+      "assetArchiveTimestamp": "20090209141239",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "QW6IVS26GFDLUZUY3RUJ64UKUXVJORDQ",
+        "computedDigest": "QW6IVS26GFDLUZUY3RUJ64UKUXVJORDQ",
+        "assetCaptureTimestamp": "20090209141239",
+        "cdxCaptureTimestamp": "20090209141239",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=hadash2009.org.il%2Fwp-content%2Fthemes%2Fbranfordmagazine%2Fimages%2FWhite_Clean.gif&from=2008&to=20090210&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k18-hadash-index"
+      },
+      "cropBox": [
+        682,
+        0,
+        862,
+        176
+      ],
+      "originalDimensions": [
+        888,
+        176
+      ],
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA crop, thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
+    },
+    {
+      "party": "taal",
+      "file": "logos/taal-2009-k18.png",
+      "sourceUrl": "https://web.archive.org/web/20090203060529/http://www.a-m-c.org/",
+      "assetSourceUrl": "https://web.archive.org/web/20090203060711id_/http://www.a-m-c.org/images/logo.gif",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "الحركة العربية للتغيير (תע\"ל) — official party website header logo",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "taal-archive-20090203060529",
+      "inUseDate": "2009-02-03",
+      "archiveUrl": "https://web.archive.org/web/20090203060529/http://www.a-m-c.org/",
+      "archiveTimestamp": "20090203060529",
+      "inUseEvidence": "Inspected official Ta'al (Arab Movement for Renewal) homepage capture 20090203060529 references http://www.a-m-c.org/images/logo.gif as its header logo (img alt 'logo'). Exact archived asset bytes at 20090203060711 match pre-election CDX SHA-1 base32 W74GGT33OFF3ONZ7QE3Y3HCNCDJIGOV6 (CDX capture 20081124064842). Original geometry and colours preserved. Ta'al constituent emblem only, not the Ra'am–Ta'al list lockup. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "b530f8659939e01d5848951af70cfb8044f528a5223b54cb260dfcd3bc1e5b5f",
+      "originalSha256": "e2e8e06c7b175843988219395b8ac20e377c5bc48866c1e054cbe2df4b70a4ce",
+      "bytes": 13627,
+      "rawEvidence": {
+        "page": "logo-k18-taal-page",
+        "asset": "logo-k18-taal-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20090203060711id_/http://www.a-m-c.org/images/logo.gif",
+      "assetArchiveTimestamp": "20090203060711",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "W74GGT33OFF3ONZ7QE3Y3HCNCDJIGOV6",
+        "computedDigest": "W74GGT33OFF3ONZ7QE3Y3HCNCDJIGOV6",
+        "assetCaptureTimestamp": "20090203060711",
+        "cdxCaptureTimestamp": "20081124064842",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.a-m-c.org%2Fimages%2Flogo.gif&from=2008&to=20090210&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k18-taal-index"
+      },
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
     }
   ]
 }

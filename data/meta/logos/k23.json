@@ -165,6 +165,80 @@
       "bytes": 28664,
       "retrievedAt": "2026-11-04",
       "retrieval": "Plain HTTP with project User-Agent. SVG unchanged; PNG RGBA thumbnail (256,256), Pillow 13.0.0 LANCZOS, optimize=True. Retained original: data/raw/logos/k23/telem-2020-original.png"
+    },
+    {
+      "party": "hadash",
+      "file": "logos/hadash-2020-k23.png",
+      "sourceUrl": "https://web.archive.org/web/20200219044510/http://hadash.org.il:80/",
+      "assetSourceUrl": "https://web.archive.org/web/20200119215700id_/http://hadash.org.il/images/logo.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "חד\"ש — official party website header mark",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "hadash-archive-20200219044510",
+      "inUseDate": "2020-02-19",
+      "archiveUrl": "https://web.archive.org/web/20200219044510/http://hadash.org.il:80/",
+      "archiveTimestamp": "20200219044510",
+      "inUseEvidence": "Inspected official Hadash homepage capture 20200219044510 references http://hadash.org.il/images/logo.png as its header logo. Exact archived asset bytes at 20200119215700 match pre-election CDX SHA-1 base32 JBELXZ73BGFE44GAQVCDV4GNLTUZ5D55 (CDX capture 20191025112854). Original geometry and colours preserved. Hadash constituent emblem only, not the Joint List lockup. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "0711ecd736cf2bca2ce8418fdf8b693e94d9d7a7dfdd0580f4a7ec98b795c919",
+      "originalSha256": "60c24d4351512aba67de3c44db673abc4e78be643f5bb6eaa4ea96bfa82f7528",
+      "bytes": 17946,
+      "rawEvidence": {
+        "page": "logo-k23-hadash-page",
+        "asset": "logo-k23-hadash-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20200119215700id_/http://hadash.org.il/images/logo.png",
+      "assetArchiveTimestamp": "20200119215700",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "JBELXZ73BGFE44GAQVCDV4GNLTUZ5D55",
+        "computedDigest": "JBELXZ73BGFE44GAQVCDV4GNLTUZ5D55",
+        "assetCaptureTimestamp": "20200119215700",
+        "cdxCaptureTimestamp": "20191025112854",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=hadash.org.il%2Fimages%2Flogo.png&from=20191001&to=20200302&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k23-hadash-index"
+      },
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
+    },
+    {
+      "party": "jewish-home",
+      "file": "logos/jewish-home-2020-k23.png",
+      "sourceUrl": "https://web.archive.org/web/20200117093520/http://baityehudi.org.il/",
+      "assetSourceUrl": "https://web.archive.org/web/20200119220049id_/http://baityehudi.org.il/wp-content/themes/baityehudi.org.il/images/new_logo.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "הבית היהודי — official party website header mark",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "jewish-home-archive-20200117093520",
+      "inUseDate": "2020-01-17",
+      "archiveUrl": "https://web.archive.org/web/20200117093520/http://baityehudi.org.il/",
+      "archiveTimestamp": "20200117093520",
+      "inUseEvidence": "Inspected official Jewish Home homepage capture 20200117093520 references http://baityehudi.org.il/wp-content/themes/baityehudi.org.il/images/new_logo.png as its header logo. Exact archived asset bytes at 20200119220049 match pre-election CDX SHA-1 base32 FF3SNIJKPIOZG6IAJZOVM6DGVYFRW4KE (CDX capture 20200119220049). Original geometry and colours preserved. Jewish Home constituent emblem only, not the Yamina list lockup. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "38c2afd5aa0340924464295b8007abcd3c1bef244871c964de40ec1db653a64b",
+      "originalSha256": "11710fcd927ff11b8f5ca2d63afebf1a038c8ebfc9e0a8f2e5c1079804e927b4",
+      "bytes": 12603,
+      "rawEvidence": {
+        "page": "logo-k23-jewish-home-page",
+        "asset": "logo-k23-jewish-home-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20200119220049id_/http://baityehudi.org.il/wp-content/themes/baityehudi.org.il/images/new_logo.png",
+      "assetArchiveTimestamp": "20200119220049",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "FF3SNIJKPIOZG6IAJZOVM6DGVYFRW4KE",
+        "computedDigest": "FF3SNIJKPIOZG6IAJZOVM6DGVYFRW4KE",
+        "assetCaptureTimestamp": "20200119220049",
+        "cdxCaptureTimestamp": "20200119220049",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=baityehudi.org.il%2Fwp-content%2Fthemes%2Fbaityehudi.org.il%2Fimages%2Fnew_logo.png&from=20191001&to=20200302&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k23-jewish-home-index"
+      },
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
     }
   ]
 }

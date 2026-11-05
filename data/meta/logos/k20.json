@@ -75,6 +75,117 @@
       "bytes": 20265,
       "retrievedAt": "2026-11-04",
       "retrieval": "Plain HTTP with project User-Agent. SVG unchanged; PNG RGBA thumbnail (256,256), Pillow 13.0.0 LANCZOS, optimize=True. Retained original: data/raw/logos/k20/joint-list-2015-original.png"
+    },
+    {
+      "party": "hadash",
+      "file": "logos/hadash-2015-k20.png",
+      "sourceUrl": "https://web.archive.org/web/20150316235328/http://hadash.org.il/",
+      "assetSourceUrl": "https://web.archive.org/web/20150317003439id_/http://hadash.org.il/wp-content/themes/hadash-mamp/images/logo-tag.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "חד\"ש — official party website header mark",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "hadash-archive-20150316235328",
+      "inUseDate": "2015-03-16",
+      "archiveUrl": "https://web.archive.org/web/20150316235328/http://hadash.org.il/",
+      "archiveTimestamp": "20150316235328",
+      "inUseEvidence": "Inspected official Hadash homepage capture 20150316235328 references http://hadash.org.il/wp-content/themes/hadash-mamp/images/logo-tag.png as its header logo. Exact archived asset bytes at 20150317003439 match pre-election CDX SHA-1 base32 JCIO34UUA5V5Y6PZN54WSHOMCHUO22HS (CDX capture 20150317003439). Original geometry and colours preserved. Hadash constituent emblem only, not the Joint List lockup. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "0dc053cee8db557ae89dae91a31228b23824b3a06b70d30322f7003d485a171b",
+      "originalSha256": "56907044680c302761f88001e12976b3ffc9e22090268ef853cc44de1ffb03ff",
+      "bytes": 20405,
+      "rawEvidence": {
+        "page": "logo-k20-hadash-page",
+        "asset": "logo-k20-hadash-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20150317003439id_/http://hadash.org.il/wp-content/themes/hadash-mamp/images/logo-tag.png",
+      "assetArchiveTimestamp": "20150317003439",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "JCIO34UUA5V5Y6PZN54WSHOMCHUO22HS",
+        "computedDigest": "JCIO34UUA5V5Y6PZN54WSHOMCHUO22HS",
+        "assetCaptureTimestamp": "20150317003439",
+        "cdxCaptureTimestamp": "20150317003439",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=hadash.org.il%2Fwp-content%2Fthemes%2Fhadash-mamp%2Fimages%2Flogo-tag.png&from=20150101&to=20150317&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k20-hadash-index"
+      },
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
+    },
+    {
+      "letters": "טב",
+      "file": "logos/jewish-home-list-2015-k20.png",
+      "sourceUrl": "https://web.archive.org/web/20150305051722/http://www.baityehudi.org.il:80/",
+      "assetSourceUrl": "https://web.archive.org/web/20150311143033id_/http://www.baityehudi.org.il/assets/img/logo.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "הבית היהודי בראשות נפתלי בנט — official website header mark (2015 campaign)",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "jewish-home-list-archive-20150305051722",
+      "inUseDate": "2015-03-05",
+      "archiveUrl": "https://web.archive.org/web/20150305051722/http://www.baityehudi.org.il:80/",
+      "archiveTimestamp": "20150305051722",
+      "inUseEvidence": "Inspected official Jewish Home homepage capture 20150305051722 references http://www.baityehudi.org.il/assets/img/logo.png as its header logo (img#mainLogo). Exact archived asset bytes at 20150311143033 match pre-election CDX SHA-1 base32 AAWVI5K7W67ABHX253GXW6YEZVXM2CB7 (CDX capture 20150216194804). Original geometry and colours preserved. The wordmark reads 'הבית היהודי בראשות נפתלי בנט', the list's ballot name; whole-list campaign identity. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "b5f67d24528c31ea51cb6fdd2aa15bef040821c27bb9cd481cf915005cd8db7b",
+      "originalSha256": "1f9500c5766f2bb06cc4796010a6d57edb9baeda2c623b23bb9d2aeba43d667e",
+      "bytes": 3144,
+      "rawEvidence": {
+        "page": "logo-k20-jewish-home-list-page",
+        "asset": "logo-k20-jewish-home-list-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20150311143033id_/http://www.baityehudi.org.il/assets/img/logo.png",
+      "assetArchiveTimestamp": "20150311143033",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "AAWVI5K7W67ABHX253GXW6YEZVXM2CB7",
+        "computedDigest": "AAWVI5K7W67ABHX253GXW6YEZVXM2CB7",
+        "assetCaptureTimestamp": "20150311143033",
+        "cdxCaptureTimestamp": "20150216194804",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.baityehudi.org.il%2Fassets%2Fimg%2Flogo.png&from=20150101&to=20150317&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k20-jewish-home-list-index"
+      },
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
+    },
+    {
+      "party": "jewish-home",
+      "file": "logos/jewish-home-2015-k20.png",
+      "sourceUrl": "https://web.archive.org/web/20150305051722/http://www.baityehudi.org.il:80/",
+      "assetSourceUrl": "https://web.archive.org/web/20150311143033id_/http://www.baityehudi.org.il/assets/img/logo.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "הבית היהודי — official party website header mark (2015 campaign)",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "jewish-home-archive-20150305051722",
+      "inUseDate": "2015-03-05",
+      "archiveUrl": "https://web.archive.org/web/20150305051722/http://www.baityehudi.org.il:80/",
+      "archiveTimestamp": "20150305051722",
+      "inUseEvidence": "Inspected official Jewish Home homepage capture 20150305051722 references http://www.baityehudi.org.il/assets/img/logo.png as its header logo (img#mainLogo). Exact archived asset bytes at 20150311143033 match pre-election CDX SHA-1 base32 AAWVI5K7W67ABHX253GXW6YEZVXM2CB7 (CDX capture 20150216194804). Original geometry and colours preserved. Jewish Home party's own website mark; the same artwork identifies the טב list, which ran under the Jewish Home name. Tkuma keeps its separate entry. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "b5f67d24528c31ea51cb6fdd2aa15bef040821c27bb9cd481cf915005cd8db7b",
+      "originalSha256": "1f9500c5766f2bb06cc4796010a6d57edb9baeda2c623b23bb9d2aeba43d667e",
+      "bytes": 3144,
+      "rawEvidence": {
+        "page": "logo-k20-jewish-home-page",
+        "asset": "logo-k20-jewish-home-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20150311143033id_/http://www.baityehudi.org.il/assets/img/logo.png",
+      "assetArchiveTimestamp": "20150311143033",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "AAWVI5K7W67ABHX253GXW6YEZVXM2CB7",
+        "computedDigest": "AAWVI5K7W67ABHX253GXW6YEZVXM2CB7",
+        "assetCaptureTimestamp": "20150311143033",
+        "cdxCaptureTimestamp": "20150216194804",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.baityehudi.org.il%2Fassets%2Fimg%2Flogo.png&from=20150101&to=20150317&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k20-jewish-home-index"
+      },
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
     }
   ]
 }

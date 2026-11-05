@@ -348,126 +348,126 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k9.json",
-      "sha256": "f9c10f8a84dbb71b40bc625751fdfb586181c493e85b0f62a901217ba6c117bd",
+      "sha256": "de77bb0cbc6dc27279d9748e8febb3f367cd6ee7149f87f657bb3d63b20edf31",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k10": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k10.json",
-      "sha256": "29bab029f9471239912f4d697c380b8b1929df95f6cde91551ad060c540578c6",
+      "sha256": "694643761342843b0bcb55230eced35c8ec90920275d403fba41c07af6d5af33",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k11": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k11.json",
-      "sha256": "e092e2462011354ae17df63638b645ae2b32860f96bb977ab5547f23809209d2",
+      "sha256": "02181d1cd73af10d6bff933b2d92141e3b33b05ffbcc36c6a8988b8e6c5227a5",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k12": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k12.json",
-      "sha256": "5ab69d3e8ee0d67076884bee329d7116c76455893b93014dbfddc1545829148e",
+      "sha256": "ca94ad16bc32b4494e8003295bbee1f152a4d88fcc923db3e0b4e8253c077756",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k13": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k13.json",
-      "sha256": "9a4188050d4ef4fb87b15d5546c091b7aff75f9b133a2059095a6593c61885ee",
+      "sha256": "aa3f395405e572d8b00f887c0390fc67007f79c3faa08bb1b4c0ac2da63115bb",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k14": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k14.json",
-      "sha256": "237d2f1806c43c9f08832af8fbf829038d54dba3767fb979d487c6933ed61bdd",
+      "sha256": "1f4b0e71b1ccb60b9ea75afed2e670849200c0c083772a7bc66041370e0a1b5b",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k15": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k15.json",
-      "sha256": "929254a6df6aa435106e0a15c39fa8f200aac9667c164004f37fbb7bdcab848b",
+      "sha256": "889d19bbc95e7856526c393cf4268e3c3ae85cac0942771b30a8981a54a0e0c8",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k16": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k16.json",
-      "sha256": "84706a1b6f11de9344bedf37ff4be4911465b3a950e895a938e775c82ea27e9e",
+      "sha256": "26bffdec527a504039071b83c3505ca80228ea6d20c8aebd38ae267e94cfe2ba",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k17": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k17.json",
-      "sha256": "c1387aa5012d9b02e9de4ffbe353842bf23c049ac8df07e6ba2782c497e7d8f2",
+      "sha256": "01c031ae3495e63dd69b643e7a8033cd78ed2befc9f1eda0e42988bc667d0778",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k18": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k18.json",
-      "sha256": "1ebd033751830d9418075e3a1e75a5e282912b32538f65310ba556278c8bf330",
+      "sha256": "a2ce12d4d979fc70c37e4e57e6e9d0219dd3f25c47e7ac83e3ad8cea57fcf924",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k19": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k19.json",
-      "sha256": "ed04ceb3070213e233f5168e1d864befbf12a9bbf95cb1bf77788d3f461ca7e5",
+      "sha256": "08040d84c7a97a5d595da63950d37689ea131d292e963258f5dee0bd8a1ee264",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k20": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k20.json",
-      "sha256": "92d2464eda538030e61eccd37169f165d6c16f533d45ba2841291faba0df15dd",
+      "sha256": "3a4898491992cde4016a0035243915fb32ef28d971ad3016d30cd50d69e8ea7b",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k21": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k21.json",
-      "sha256": "18497d3a52b6d43cae32f539065a45bb66002ce2786f57d24701c222ea3dbac5",
+      "sha256": "7801adc29d8d83786cbc8ec93f541a5c33f139378b03191509ec850794c8c52f",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k22": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k22.json",
-      "sha256": "bc277efa2a7c6973ef1b0b6273fdb21e19bf66d90e70feb769b98c0107ed3f2a",
+      "sha256": "b917c3052f37c3200e260612a1caeeef8aa53ac7a61b4a96c29e69da80d0b00e",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k23": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k23.json",
-      "sha256": "7dea4b91e5aaaeb90fb59a0cfc85a6ed67e0cab2f08d76be87fd5a6fc76e1b69",
+      "sha256": "af54cfdcf59cb32e748a7e43a7e99c80d10c4d30fac896c8f0f1475662ae8537",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k24": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k24.json",
-      "sha256": "b662f23a52a39ad57ee2de6e2138eab50addf8b858e1d04a907ebb109a4e0ccb",
+      "sha256": "912466a0cfd072d45c9047e12eaa43647544488a049e291d8e921a3ad383a1d7",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k25": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k25.json",
-      "sha256": "6e6dd050dd74837e308ffc3c6960919a3bc20f794d726f869920308fdabfcc04",
+      "sha256": "b1d460d928dfb4e77a53118b3eb1b944573d6eff502de0cdae3100ab8923d9f0",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k26": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k26.json",
-      "sha256": "3824392ed04f1f19b8f50fcaa84515df56f6f7fe509091b72152ab06045d8400",
+      "sha256": "3a3454900d55b83f6285d7565d7f87403a1a3061d692391503ce9436b3e53b64",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     }
   },
@@ -1580,7 +1580,7 @@
       "electionId": "k9",
       "electionDate": "1977-05-17",
       "datasetPath": "public/data/k9.json",
-      "datasetSha256": "f9c10f8a84dbb71b40bc625751fdfb586181c493e85b0f62a901217ba6c117bd",
+      "datasetSha256": "de77bb0cbc6dc27279d9748e8febb3f367cd6ee7149f87f657bb3d63b20edf31",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "National results; all seats reproduce with six official agreements and the k9-only candidate cap (Flatto-Sharon 1, Sheli 2). The procedure is inferred from the officially published result because the statutory text was not located. All 120 winning ranks are cross-checked: 119 names in YP 2326; Ratz’s rank 1 Shulamit Aloni confirmed by official Knesset OData membership and faction records from the first session, 13 June 1977 (the notice omits her paragraph). Later ranks truncated; nonwinning rosters untranscribed. Full amendment chain and unknown full-roster counterfactual capacities unverified; no localities.",
@@ -1744,7 +1744,7 @@
       "electionId": "k10",
       "electionDate": "1981-06-30",
       "datasetPath": "public/data/k10.json",
-      "datasetSha256": "29bab029f9471239912f4d697c380b8b1929df95f6cde91551ad060c540578c6",
+      "datasetSha256": "694643761342843b0bcb55230eced35c8ec90920275d403fba41c07af6d5af33",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 120 transcribed ranks across all 10 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
@@ -1928,7 +1928,7 @@
       "electionId": "k11",
       "electionDate": "1984-07-23",
       "datasetPath": "public/data/k11.json",
-      "datasetSha256": "e092e2462011354ae17df63638b645ae2b32860f96bb977ab5547f23809209d2",
+      "datasetSha256": "02181d1cd73af10d6bff933b2d92141e3b33b05ffbcc36c6a8988b8e6c5227a5",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 196 transcribed ranks across all 15 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted except the complete 120-name K11 Alignment roster; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
@@ -2112,7 +2112,7 @@
       "electionId": "k12",
       "electionDate": "1988-11-01",
       "datasetPath": "public/data/k12.json",
-      "datasetSha256": "5ab69d3e8ee0d67076884bee329d7116c76455893b93014dbfddc1545829148e",
+      "datasetSha256": "ca94ad16bc32b4494e8003295bbee1f152a4d88fcc923db3e0b4e8253c077756",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 120 transcribed ranks across all 15 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
@@ -2263,7 +2263,7 @@
       "electionId": "k13",
       "electionDate": "1992-06-23",
       "datasetPath": "public/data/k13.json",
-      "datasetSha256": "9a4188050d4ef4fb87b15d5546c091b7aff75f9b133a2059095a6593c61885ee",
+      "datasetSha256": "aa3f395405e572d8b00f887c0390fc67007f79c3faa08bb1b4c0ac2da63115bb",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "Rosters: everyone elected is included and cross-checked; no full rosters; later ranks of winning lists not transcribed. Zero-seat rosters unavailable. Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. The 1992 agreement notice was not found; agreements that did not affect seats may be missing. Empty agreements reproduce every published seat.",
@@ -2395,7 +2395,7 @@
       "electionId": "k14",
       "electionDate": "1996-05-29",
       "datasetPath": "public/data/k14.json",
-      "datasetSha256": "237d2f1806c43c9f08832af8fbf829038d54dba3767fb979d487c6933ed61bdd",
+      "datasetSha256": "1f4b0e71b1ccb60b9ea75afed2e670849200c0c083772a7bc66041370e0a1b5b",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "Rosters: everyone elected is included and cross-checked; full roster for Third Way; later ranks of other winning lists not transcribed. Zero-seat rosters unavailable. Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. Complete 6-pair agreement notice verified; every published seat reproduced.",
@@ -2521,7 +2521,7 @@
       "electionId": "k15",
       "electionDate": "1999-05-17",
       "datasetPath": "public/data/k15.json",
-      "datasetSha256": "929254a6df6aa435106e0a15c39fa8f200aac9667c164004f37fbb7bdcab848b",
+      "datasetSha256": "889d19bbc95e7856526c393cf4268e3c3ae85cac0942771b30a8981a54a0e0c8",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "Rosters: everyone elected is included and cross-checked; no full rosters; later ranks of winning lists not transcribed. Zero-seat rosters unavailable. Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. Complete 9-pair agreement notice verified; every published seat reproduced.",
@@ -2676,7 +2676,7 @@
       "electionId": "k16",
       "electionDate": "2003-01-28",
       "datasetPath": "public/data/k16.json",
-      "datasetSha256": "84706a1b6f11de9344bedf37ff4be4911465b3a950e895a938e775c82ea27e9e",
+      "datasetSha256": "26bffdec527a504039071b83c3505ca80228ea6d20c8aebd38ae267e94cfe2ba",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -2837,7 +2837,7 @@
       "electionId": "k17",
       "electionDate": "2006-03-28",
       "datasetPath": "public/data/k17.json",
-      "datasetSha256": "c1387aa5012d9b02e9de4ffbe353842bf23c049ac8df07e6ba2782c497e7d8f2",
+      "datasetSha256": "01c031ae3495e63dd69b643e7a8033cd78ed2befc9f1eda0e42988bc667d0778",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -2963,7 +2963,7 @@
       "electionId": "k18",
       "electionDate": "2009-02-10",
       "datasetPath": "public/data/k18.json",
-      "datasetSha256": "1ebd033751830d9418075e3a1e75a5e282912b32538f65310ba556278c8bf330",
+      "datasetSha256": "a2ce12d4d979fc70c37e4e57e6e9d0219dd3f25c47e7ac83e3ad8cea57fcf924",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2009-02-17",
@@ -3084,7 +3084,7 @@
       "electionId": "k19",
       "electionDate": "2013-01-22",
       "datasetPath": "public/data/k19.json",
-      "datasetSha256": "ed04ceb3070213e233f5168e1d864befbf12a9bbf95cb1bf77788d3f461ca7e5",
+      "datasetSha256": "08040d84c7a97a5d595da63950d37689ea131d292e963258f5dee0bd8a1ee264",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2013-01-30",
@@ -3204,7 +3204,7 @@
       "electionId": "k20",
       "electionDate": "2015-03-17",
       "datasetPath": "public/data/k20.json",
-      "datasetSha256": "92d2464eda538030e61eccd37169f165d6c16f533d45ba2841291faba0df15dd",
+      "datasetSha256": "3a4898491992cde4016a0035243915fb32ef28d971ad3016d30cd50d69e8ea7b",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2015-03-25",
@@ -3327,7 +3327,7 @@
       "electionId": "k21",
       "electionDate": "2019-04-09",
       "datasetPath": "public/data/k21.json",
-      "datasetSha256": "18497d3a52b6d43cae32f539065a45bb66002ce2786f57d24701c222ea3dbac5",
+      "datasetSha256": "7801adc29d8d83786cbc8ec93f541a5c33f139378b03191509ec850794c8c52f",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -3447,7 +3447,7 @@
       "electionId": "k22",
       "electionDate": "2019-09-17",
       "datasetPath": "public/data/k22.json",
-      "datasetSha256": "bc277efa2a7c6973ef1b0b6273fdb21e19bf66d90e70feb769b98c0107ed3f2a",
+      "datasetSha256": "b917c3052f37c3200e260612a1caeeef8aa53ac7a61b4a96c29e69da80d0b00e",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -3572,7 +3572,7 @@
       "electionId": "k23",
       "electionDate": "2020-03-02",
       "datasetPath": "public/data/k23.json",
-      "datasetSha256": "7dea4b91e5aaaeb90fb59a0cfc85a6ed67e0cab2f08d76be87fd5a6fc76e1b69",
+      "datasetSha256": "af54cfdcf59cb32e748a7e43a7e99c80d10c4d30fac896c8f0f1475662ae8537",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -3665,7 +3665,7 @@
       "electionId": "k24",
       "electionDate": "2021-03-23",
       "datasetPath": "public/data/k24.json",
-      "datasetSha256": "b662f23a52a39ad57ee2de6e2138eab50addf8b858e1d04a907ebb109a4e0ccb",
+      "datasetSha256": "912466a0cfd072d45c9047e12eaa43647544488a049e291d8e921a3ad383a1d7",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -3785,7 +3785,7 @@
       "electionId": "k25",
       "electionDate": "2022-11-01",
       "datasetPath": "public/data/k25.json",
-      "datasetSha256": "6e6dd050dd74837e308ffc3c6960919a3bc20f794d726f869920308fdabfcc04",
+      "datasetSha256": "b1d460d928dfb4e77a53118b3eb1b944573d6eff502de0cdae3100ab8923d9f0",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2022-11-10",
@@ -3905,7 +3905,7 @@
       "electionId": "k26",
       "electionDate": "2026-10-27",
       "datasetPath": "public/data/k26.json",
-      "datasetSha256": "3824392ed04f1f19b8f50fcaa84515df56f6f7fe509091b72152ab06045d8400",
+      "datasetSha256": "3a3454900d55b83f6285d7565d7f87403a1a3061d692391503ce9436b3e53b64",
       "datasetStatus": {
         "stage": "final-count-pending-publication",
         "asOf": "2026-11-04",

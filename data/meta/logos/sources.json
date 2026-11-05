@@ -3458,6 +3458,617 @@
           333
         ]
       }
+    },
+    {
+      "id": "hadash-archive-20090209134832",
+      "title": "Hadash 2009 campaign official website — 2009-02-09",
+      "sourceUrl": "https://web.archive.org/web/20090209134832/http://hadash2009.org.il/",
+      "publisher": "חד\"ש",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-05",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3 seconds apart",
+      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; exact bytes checked against CDX digest",
+      "date": "2009-02-09",
+      "description": "Inspected official Hadash 2009 campaign homepage capture 20090209134832 references http://hadash2009.org.il/wp-content/themes/branfordmagazine/images/White_Clean.gif as its #branding header background (via the theme stylesheet style.css, captured 20090209134949). Exact archived asset bytes at 20090209141239 match pre-election CDX SHA-1 base32 QW6IVS26GFDLUZUY3RUJ64UKUXVJORDQ (CDX capture 20090209141239). Cropped to box [682, 0, 862, 176] of the 888x176 original (crop only, isolating the Hadash emblem from the banner slogan and ballot letter); no redraw or recolouring. Hadash ran alone as list ו in 2009; this is its own campaign-site emblem. Separate evidence for this election; no assignment by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20090209134832/http://hadash2009.org.il/",
+      "archiveTimestamp": "20090209134832",
+      "downloadUrl": "http://hadash2009.org.il/wp-content/themes/branfordmagazine/images/White_Clean.gif",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "hadash-official-site",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k18-hadash-page",
+        "asset": "logo-k18-hadash-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20090209141239id_/http://hadash2009.org.il/wp-content/themes/branfordmagazine/images/White_Clean.gif",
+      "assetArchiveTimestamp": "20090209141239",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "QW6IVS26GFDLUZUY3RUJ64UKUXVJORDQ",
+        "computedDigest": "QW6IVS26GFDLUZUY3RUJ64UKUXVJORDQ",
+        "assetCaptureTimestamp": "20090209141239",
+        "cdxCaptureTimestamp": "20090209141239",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=hadash2009.org.il%2Fwp-content%2Fthemes%2Fbranfordmagazine%2Fimages%2FWhite_Clean.gif&from=2008&to=20090210&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k18-hadash-index"
+      },
+      "cropBox": [
+        682,
+        0,
+        862,
+        176
+      ],
+      "originalDimensions": [
+        888,
+        176
+      ]
+    },
+    {
+      "id": "hadash-archive-20130110074848",
+      "title": "Hadash official website — 2013-01-10",
+      "sourceUrl": "https://web.archive.org/web/20130110074848/http://hadash.org.il/",
+      "publisher": "חד\"ש",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-05",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3 seconds apart",
+      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; no pre-election CDX digest available",
+      "date": "2013-01-10",
+      "description": "Inspected official Hadash homepage capture 20130110074848 references http://hadash.org.il/wp-content/themes/hadash-mamp/images/logo-tag.png as its header logo. No pre-election CDX row exists for this asset; the earliest capture, 20130127072156 (five days after polling), is used. Its artwork carries the campaign ballot letter ו and the 2013 slogan, so it is the campaign design; medium confidence only. Cropped to box [154, 0, 337, 189] of the 337x189 original (crop only, removing the adjacent slogan text; the emblem and its ballot-letter tile are kept); no redraw or recolouring. Hadash ran alone as list ו in 2013. Separate evidence for this election; no assignment by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20130110074848/http://hadash.org.il/",
+      "archiveTimestamp": "20130110074848",
+      "downloadUrl": "http://hadash.org.il/wp-content/themes/hadash-mamp/images/logo-tag.png",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "hadash-official-site",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k19-hadash-page",
+        "asset": "logo-k19-hadash-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20130127072156id_/http://hadash.org.il/wp-content/themes/hadash-mamp/images/logo-tag.png",
+      "assetArchiveTimestamp": "20130127072156",
+      "cropBox": [
+        154,
+        0,
+        337,
+        189
+      ],
+      "originalDimensions": [
+        337,
+        189
+      ]
+    },
+    {
+      "id": "hadash-archive-20150316235328",
+      "title": "Hadash official website — 2015-03-16",
+      "sourceUrl": "https://web.archive.org/web/20150316235328/http://hadash.org.il/",
+      "publisher": "חד\"ש",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-05",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3 seconds apart",
+      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; exact bytes checked against CDX digest",
+      "date": "2015-03-16",
+      "description": "Inspected official Hadash homepage capture 20150316235328 references http://hadash.org.il/wp-content/themes/hadash-mamp/images/logo-tag.png as its header logo. Exact archived asset bytes at 20150317003439 match pre-election CDX SHA-1 base32 JCIO34UUA5V5Y6PZN54WSHOMCHUO22HS (CDX capture 20150317003439). Original geometry and colours preserved. Hadash constituent emblem only, not the Joint List lockup. Separate evidence for this election; no assignment by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20150316235328/http://hadash.org.il/",
+      "archiveTimestamp": "20150316235328",
+      "downloadUrl": "http://hadash.org.il/wp-content/themes/hadash-mamp/images/logo-tag.png",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "hadash-official-site",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k20-hadash-page",
+        "asset": "logo-k20-hadash-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20150317003439id_/http://hadash.org.il/wp-content/themes/hadash-mamp/images/logo-tag.png",
+      "assetArchiveTimestamp": "20150317003439",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "JCIO34UUA5V5Y6PZN54WSHOMCHUO22HS",
+        "computedDigest": "JCIO34UUA5V5Y6PZN54WSHOMCHUO22HS",
+        "assetCaptureTimestamp": "20150317003439",
+        "cdxCaptureTimestamp": "20150317003439",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=hadash.org.il%2Fwp-content%2Fthemes%2Fhadash-mamp%2Fimages%2Flogo-tag.png&from=20150101&to=20150317&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k20-hadash-index"
+      }
+    },
+    {
+      "id": "hadash-archive-20190401001745",
+      "title": "Hadash official website — 2019-04-01",
+      "sourceUrl": "https://web.archive.org/web/20190401001745/http://hadash.org.il/",
+      "publisher": "חד\"ש",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-05",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3 seconds apart",
+      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; exact bytes checked against CDX digest",
+      "date": "2019-04-01",
+      "description": "Inspected official Hadash homepage capture 20190401001745 references http://hadash.org.il/wp-content/themes/hadash-mamp/images/logo-tag.png as its header logo. Exact archived asset bytes at 20190330211855 match pre-election CDX SHA-1 base32 JCIO34UUA5V5Y6PZN54WSHOMCHUO22HS (CDX capture 20190303041047). Original geometry and colours preserved. Hadash constituent emblem only, not the Hadash–Ta'al list lockup. Separate evidence for this election; no assignment by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20190401001745/http://hadash.org.il/",
+      "archiveTimestamp": "20190401001745",
+      "downloadUrl": "http://hadash.org.il/wp-content/themes/hadash-mamp/images/logo-tag.png",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "hadash-official-site",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k21-hadash-page",
+        "asset": "logo-k21-hadash-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20190330211855id_/http://hadash.org.il/wp-content/themes/hadash-mamp/images/logo-tag.png",
+      "assetArchiveTimestamp": "20190330211855",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "JCIO34UUA5V5Y6PZN54WSHOMCHUO22HS",
+        "computedDigest": "JCIO34UUA5V5Y6PZN54WSHOMCHUO22HS",
+        "assetCaptureTimestamp": "20190330211855",
+        "cdxCaptureTimestamp": "20190303041047",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=hadash.org.il%2Fwp-content%2Fthemes%2Fhadash-mamp%2Fimages%2Flogo-tag.png&from=20190101&to=20190409&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k21-hadash-index"
+      }
+    },
+    {
+      "id": "hadash-archive-20190903042003",
+      "title": "Hadash official website — 2019-09-03",
+      "sourceUrl": "https://web.archive.org/web/20190903042003/http://hadash.org.il:80/",
+      "publisher": "חד\"ש",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-05",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3 seconds apart",
+      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; exact bytes checked against CDX digest",
+      "date": "2019-09-03",
+      "description": "Inspected official Hadash homepage capture 20190903042003 references http://hadash.org.il/images/logo.png as its header logo. Exact archived asset bytes at 20190703160814 match pre-election CDX SHA-1 base32 JBELXZ73BGFE44GAQVCDV4GNLTUZ5D55 (CDX capture 20190410021043). Original geometry and colours preserved. Hadash constituent emblem only, not the Joint List lockup. Separate evidence for this election; no assignment by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20190903042003/http://hadash.org.il:80/",
+      "archiveTimestamp": "20190903042003",
+      "downloadUrl": "http://hadash.org.il/images/logo.png",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "hadash-official-site",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k22-hadash-page",
+        "asset": "logo-k22-hadash-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20190703160814id_/http://hadash.org.il/images/logo.png",
+      "assetArchiveTimestamp": "20190703160814",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "JBELXZ73BGFE44GAQVCDV4GNLTUZ5D55",
+        "computedDigest": "JBELXZ73BGFE44GAQVCDV4GNLTUZ5D55",
+        "assetCaptureTimestamp": "20190703160814",
+        "cdxCaptureTimestamp": "20190410021043",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=hadash.org.il%2Fimages%2Flogo.png&from=20190410&to=20190917&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k22-hadash-index"
+      }
+    },
+    {
+      "id": "hadash-archive-20200219044510",
+      "title": "Hadash official website — 2020-02-19",
+      "sourceUrl": "https://web.archive.org/web/20200219044510/http://hadash.org.il:80/",
+      "publisher": "חד\"ש",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-05",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3 seconds apart",
+      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; exact bytes checked against CDX digest",
+      "date": "2020-02-19",
+      "description": "Inspected official Hadash homepage capture 20200219044510 references http://hadash.org.il/images/logo.png as its header logo. Exact archived asset bytes at 20200119215700 match pre-election CDX SHA-1 base32 JBELXZ73BGFE44GAQVCDV4GNLTUZ5D55 (CDX capture 20191025112854). Original geometry and colours preserved. Hadash constituent emblem only, not the Joint List lockup. Separate evidence for this election; no assignment by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20200219044510/http://hadash.org.il:80/",
+      "archiveTimestamp": "20200219044510",
+      "downloadUrl": "http://hadash.org.il/images/logo.png",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "hadash-official-site",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k23-hadash-page",
+        "asset": "logo-k23-hadash-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20200119215700id_/http://hadash.org.il/images/logo.png",
+      "assetArchiveTimestamp": "20200119215700",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "JBELXZ73BGFE44GAQVCDV4GNLTUZ5D55",
+        "computedDigest": "JBELXZ73BGFE44GAQVCDV4GNLTUZ5D55",
+        "assetCaptureTimestamp": "20200119215700",
+        "cdxCaptureTimestamp": "20191025112854",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=hadash.org.il%2Fimages%2Flogo.png&from=20191001&to=20200302&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k23-hadash-index"
+      }
+    },
+    {
+      "id": "hadash-archive-20210303121058",
+      "title": "Hadash official website — 2021-03-03",
+      "sourceUrl": "https://web.archive.org/web/20210303121058/http://hadash.org.il/",
+      "publisher": "חד\"ש",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-05",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3 seconds apart",
+      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; exact bytes checked against CDX digest",
+      "date": "2021-03-03",
+      "description": "Inspected official Hadash homepage capture 20210303121058 references http://hadash.org.il/images/logo.png as its header logo. Exact archived asset bytes at 20210322212313 match pre-election CDX SHA-1 base32 JBELXZ73BGFE44GAQVCDV4GNLTUZ5D55 (CDX capture 20210322212313). Original geometry and colours preserved. Hadash constituent emblem only, not the Joint List lockup. Separate evidence for this election; no assignment by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20210303121058/http://hadash.org.il/",
+      "archiveTimestamp": "20210303121058",
+      "downloadUrl": "http://hadash.org.il/images/logo.png",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "hadash-official-site",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k24-hadash-page",
+        "asset": "logo-k24-hadash-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20210322212313id_/http://hadash.org.il/images/logo.png",
+      "assetArchiveTimestamp": "20210322212313",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "JBELXZ73BGFE44GAQVCDV4GNLTUZ5D55",
+        "computedDigest": "JBELXZ73BGFE44GAQVCDV4GNLTUZ5D55",
+        "assetCaptureTimestamp": "20210322212313",
+        "cdxCaptureTimestamp": "20210322212313",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=hadash.org.il%2Fimages%2Flogo.png&from=20210101&to=20210323&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k24-hadash-index"
+      }
+    },
+    {
+      "id": "hadash-archive-20221001004858",
+      "title": "Hadash official website — 2022-10-01",
+      "sourceUrl": "https://web.archive.org/web/20221001004858/http://hadash.org.il/",
+      "publisher": "חד\"ש",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-05",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3 seconds apart",
+      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; exact bytes checked against CDX digest",
+      "date": "2022-10-01",
+      "description": "Inspected official Hadash homepage capture 20221001004858 references http://hadash.org.il/images/logo.png as its header logo. Exact archived asset bytes at 20220707133235 match pre-election CDX SHA-1 base32 JBELXZ73BGFE44GAQVCDV4GNLTUZ5D55 (CDX capture 20220624220805). Original geometry and colours preserved. Hadash constituent emblem only, not the Hadash–Ta'al list lockup. Separate evidence for this election; no assignment by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20221001004858/http://hadash.org.il/",
+      "archiveTimestamp": "20221001004858",
+      "downloadUrl": "http://hadash.org.il/images/logo.png",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "hadash-official-site",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k25-hadash-page",
+        "asset": "logo-k25-hadash-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20220707133235id_/http://hadash.org.il/images/logo.png",
+      "assetArchiveTimestamp": "20220707133235",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "JBELXZ73BGFE44GAQVCDV4GNLTUZ5D55",
+        "computedDigest": "JBELXZ73BGFE44GAQVCDV4GNLTUZ5D55",
+        "assetCaptureTimestamp": "20220707133235",
+        "cdxCaptureTimestamp": "20220624220805",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=hadash.org.il%2Fimages%2Flogo.png&from=20220601&to=20221101&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k25-hadash-index"
+      }
+    },
+    {
+      "id": "jewish-home-list-archive-20130107235008",
+      "title": "Jewish Home official website — 2013-01-07",
+      "sourceUrl": "https://web.archive.org/web/20130107235008/http://www.baityehudi.org.il/",
+      "publisher": "הבית היהודי",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-05",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3 seconds apart",
+      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; exact bytes checked against CDX digest",
+      "date": "2013-01-07",
+      "description": "Inspected official Jewish Home homepage capture 20130107235008 references http://www.baityehudi.org.il/wp-content/uploads/2012/12/logim1.jpg as its header logo (div.logo, alt 'הבית היהודי בראשות נפתלי בנט'). Exact archived asset bytes at 20130113092057 match pre-election CDX SHA-1 base32 SWOWEKTG52CUU74XLAFLP5P7GSR5TF5I (CDX capture 20121218064258). Cropped to box [0, 0, 148, 100] of the 268x100 original (crop only, removing the adjacent slogan 'משהו חדש מתחיל'); no redraw or recolouring. The wordmark reads 'הבית היהודי בראשות נפתלי בנט', the name under which the Jewish Home–Tkuma list ran; whole-list campaign identity. Separate evidence for this election; no assignment by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20130107235008/http://www.baityehudi.org.il/",
+      "archiveTimestamp": "20130107235008",
+      "downloadUrl": "http://www.baityehudi.org.il/wp-content/uploads/2012/12/logim1.jpg",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "jewish-home-official-site",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k19-jewish-home-list-page",
+        "asset": "logo-k19-jewish-home-list-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20130113092057id_/http://www.baityehudi.org.il/wp-content/uploads/2012/12/logim1.jpg",
+      "assetArchiveTimestamp": "20130113092057",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "SWOWEKTG52CUU74XLAFLP5P7GSR5TF5I",
+        "computedDigest": "SWOWEKTG52CUU74XLAFLP5P7GSR5TF5I",
+        "assetCaptureTimestamp": "20130113092057",
+        "cdxCaptureTimestamp": "20121218064258",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.baityehudi.org.il%2Fwp-content%2Fuploads%2F2012%2F12%2Flogim1.jpg&from=2012&to=20130122&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k19-jewish-home-list-index"
+      },
+      "cropBox": [
+        0,
+        0,
+        148,
+        100
+      ],
+      "originalDimensions": [
+        268,
+        100
+      ]
+    },
+    {
+      "id": "jewish-home-archive-20130107235008",
+      "title": "Jewish Home official website — 2013-01-07",
+      "sourceUrl": "https://web.archive.org/web/20130107235008/http://www.baityehudi.org.il/",
+      "publisher": "הבית היהודי",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-05",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3 seconds apart",
+      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; exact bytes checked against CDX digest",
+      "date": "2013-01-07",
+      "description": "Inspected official Jewish Home homepage capture 20130107235008 references http://www.baityehudi.org.il/wp-content/uploads/2012/12/logim1.jpg as its header logo (div.logo). Exact archived asset bytes at 20130113092057 match pre-election CDX SHA-1 base32 SWOWEKTG52CUU74XLAFLP5P7GSR5TF5I (CDX capture 20121218064258). Cropped to box [0, 0, 148, 100] of the 268x100 original (crop only, removing the adjacent slogan 'משהו חדש מתחיל'); no redraw or recolouring. Jewish Home party's own website mark; the same artwork identifies the טב list, which ran under the Jewish Home name. Tkuma keeps its separate entry. Separate evidence for this election; no assignment by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20130107235008/http://www.baityehudi.org.il/",
+      "archiveTimestamp": "20130107235008",
+      "downloadUrl": "http://www.baityehudi.org.il/wp-content/uploads/2012/12/logim1.jpg",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "jewish-official-site",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k19-jewish-home-page",
+        "asset": "logo-k19-jewish-home-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20130113092057id_/http://www.baityehudi.org.il/wp-content/uploads/2012/12/logim1.jpg",
+      "assetArchiveTimestamp": "20130113092057",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "SWOWEKTG52CUU74XLAFLP5P7GSR5TF5I",
+        "computedDigest": "SWOWEKTG52CUU74XLAFLP5P7GSR5TF5I",
+        "assetCaptureTimestamp": "20130113092057",
+        "cdxCaptureTimestamp": "20121218064258",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.baityehudi.org.il%2Fwp-content%2Fuploads%2F2012%2F12%2Flogim1.jpg&from=2012&to=20130122&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k19-jewish-home-index"
+      },
+      "cropBox": [
+        0,
+        0,
+        148,
+        100
+      ],
+      "originalDimensions": [
+        268,
+        100
+      ]
+    },
+    {
+      "id": "jewish-home-list-archive-20150305051722",
+      "title": "Jewish Home official website — 2015-03-05",
+      "sourceUrl": "https://web.archive.org/web/20150305051722/http://www.baityehudi.org.il:80/",
+      "publisher": "הבית היהודי",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-05",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3 seconds apart",
+      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; exact bytes checked against CDX digest",
+      "date": "2015-03-05",
+      "description": "Inspected official Jewish Home homepage capture 20150305051722 references http://www.baityehudi.org.il/assets/img/logo.png as its header logo (img#mainLogo). Exact archived asset bytes at 20150311143033 match pre-election CDX SHA-1 base32 AAWVI5K7W67ABHX253GXW6YEZVXM2CB7 (CDX capture 20150216194804). Original geometry and colours preserved. The wordmark reads 'הבית היהודי בראשות נפתלי בנט', the list's ballot name; whole-list campaign identity. Separate evidence for this election; no assignment by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20150305051722/http://www.baityehudi.org.il:80/",
+      "archiveTimestamp": "20150305051722",
+      "downloadUrl": "http://www.baityehudi.org.il/assets/img/logo.png",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "jewish-home-official-site",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k20-jewish-home-list-page",
+        "asset": "logo-k20-jewish-home-list-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20150311143033id_/http://www.baityehudi.org.il/assets/img/logo.png",
+      "assetArchiveTimestamp": "20150311143033",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "AAWVI5K7W67ABHX253GXW6YEZVXM2CB7",
+        "computedDigest": "AAWVI5K7W67ABHX253GXW6YEZVXM2CB7",
+        "assetCaptureTimestamp": "20150311143033",
+        "cdxCaptureTimestamp": "20150216194804",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.baityehudi.org.il%2Fassets%2Fimg%2Flogo.png&from=20150101&to=20150317&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k20-jewish-home-list-index"
+      }
+    },
+    {
+      "id": "jewish-home-archive-20150305051722",
+      "title": "Jewish Home official website — 2015-03-05",
+      "sourceUrl": "https://web.archive.org/web/20150305051722/http://www.baityehudi.org.il:80/",
+      "publisher": "הבית היהודי",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-05",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3 seconds apart",
+      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; exact bytes checked against CDX digest",
+      "date": "2015-03-05",
+      "description": "Inspected official Jewish Home homepage capture 20150305051722 references http://www.baityehudi.org.il/assets/img/logo.png as its header logo (img#mainLogo). Exact archived asset bytes at 20150311143033 match pre-election CDX SHA-1 base32 AAWVI5K7W67ABHX253GXW6YEZVXM2CB7 (CDX capture 20150216194804). Original geometry and colours preserved. Jewish Home party's own website mark; the same artwork identifies the טב list, which ran under the Jewish Home name. Tkuma keeps its separate entry. Separate evidence for this election; no assignment by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20150305051722/http://www.baityehudi.org.il:80/",
+      "archiveTimestamp": "20150305051722",
+      "downloadUrl": "http://www.baityehudi.org.il/assets/img/logo.png",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "jewish-official-site",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k20-jewish-home-page",
+        "asset": "logo-k20-jewish-home-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20150311143033id_/http://www.baityehudi.org.il/assets/img/logo.png",
+      "assetArchiveTimestamp": "20150311143033",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "AAWVI5K7W67ABHX253GXW6YEZVXM2CB7",
+        "computedDigest": "AAWVI5K7W67ABHX253GXW6YEZVXM2CB7",
+        "assetCaptureTimestamp": "20150311143033",
+        "cdxCaptureTimestamp": "20150216194804",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.baityehudi.org.il%2Fassets%2Fimg%2Flogo.png&from=20150101&to=20150317&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k20-jewish-home-index"
+      }
+    },
+    {
+      "id": "jewish-home-archive-20190821141704",
+      "title": "Jewish Home official website — 2019-08-21",
+      "sourceUrl": "https://web.archive.org/web/20190821141704/http://baityehudi.org.il/",
+      "publisher": "הבית היהודי",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-05",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3 seconds apart",
+      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; no pre-election CDX digest available",
+      "date": "2019-08-21",
+      "description": "Inspected official Jewish Home homepage capture 20190821141704 references http://baityehudi.org.il/wp-content/themes/baityehudi.org.il/images/new_logo.png as its header logo. The 4 June 2019 asset capture (before polling) replays these exact bytes with original Last-Modified 6 February 2019, but its CDX index digest (MWNXYMDODAIPTYKVMVKPH2KOZQFXWN6U) differs from the replayed payload's SHA-1 (FF3SNIJKPIOZG6IAJZOVM6DGVYFRW4KE); the identical bytes are independently CDX-indexed on 19 January 2020. Index/payload mismatch unresolved, so medium confidence. Original geometry and colours preserved. Jewish Home constituent emblem only, not the Yamina list lockup. Separate evidence for this election; no assignment by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20190821141704/http://baityehudi.org.il/",
+      "archiveTimestamp": "20190821141704",
+      "downloadUrl": "http://baityehudi.org.il/wp-content/themes/baityehudi.org.il/images/new_logo.png",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "jewish-official-site",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k22-jewish-home-page",
+        "asset": "logo-k22-jewish-home-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20190604134932id_/http://baityehudi.org.il/wp-content/themes/baityehudi.org.il/images/new_logo.png",
+      "assetArchiveTimestamp": "20190604134932"
+    },
+    {
+      "id": "jewish-home-archive-20200117093520",
+      "title": "Jewish Home official website — 2020-01-17",
+      "sourceUrl": "https://web.archive.org/web/20200117093520/http://baityehudi.org.il/",
+      "publisher": "הבית היהודי",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-05",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3 seconds apart",
+      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; exact bytes checked against CDX digest",
+      "date": "2020-01-17",
+      "description": "Inspected official Jewish Home homepage capture 20200117093520 references http://baityehudi.org.il/wp-content/themes/baityehudi.org.il/images/new_logo.png as its header logo. Exact archived asset bytes at 20200119220049 match pre-election CDX SHA-1 base32 FF3SNIJKPIOZG6IAJZOVM6DGVYFRW4KE (CDX capture 20200119220049). Original geometry and colours preserved. Jewish Home constituent emblem only, not the Yamina list lockup. Separate evidence for this election; no assignment by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20200117093520/http://baityehudi.org.il/",
+      "archiveTimestamp": "20200117093520",
+      "downloadUrl": "http://baityehudi.org.il/wp-content/themes/baityehudi.org.il/images/new_logo.png",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "jewish-official-site",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k23-jewish-home-page",
+        "asset": "logo-k23-jewish-home-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20200119220049id_/http://baityehudi.org.il/wp-content/themes/baityehudi.org.il/images/new_logo.png",
+      "assetArchiveTimestamp": "20200119220049",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "FF3SNIJKPIOZG6IAJZOVM6DGVYFRW4KE",
+        "computedDigest": "FF3SNIJKPIOZG6IAJZOVM6DGVYFRW4KE",
+        "assetCaptureTimestamp": "20200119220049",
+        "cdxCaptureTimestamp": "20200119220049",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=baityehudi.org.il%2Fwp-content%2Fthemes%2Fbaityehudi.org.il%2Fimages%2Fnew_logo.png&from=20191001&to=20200302&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k23-jewish-home-index"
+      }
+    },
+    {
+      "id": "taal-archive-20090203060529",
+      "title": "Ta'al (Arab Movement for Renewal) official website — 2009-02-03",
+      "sourceUrl": "https://web.archive.org/web/20090203060529/http://www.a-m-c.org/",
+      "publisher": "תע\"ל — الحركة العربية للتغيير",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-05",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3 seconds apart",
+      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; exact bytes checked against CDX digest",
+      "date": "2009-02-03",
+      "description": "Inspected official Ta'al (Arab Movement for Renewal) homepage capture 20090203060529 references http://www.a-m-c.org/images/logo.gif as its header logo (img alt 'logo'). Exact archived asset bytes at 20090203060711 match pre-election CDX SHA-1 base32 W74GGT33OFF3ONZ7QE3Y3HCNCDJIGOV6 (CDX capture 20081124064842). Original geometry and colours preserved. Ta'al constituent emblem only, not the Ra'am–Ta'al list lockup. Separate evidence for this election; no assignment by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20090203060529/http://www.a-m-c.org/",
+      "archiveTimestamp": "20090203060529",
+      "downloadUrl": "http://www.a-m-c.org/images/logo.gif",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "taal-official-site",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k18-taal-page",
+        "asset": "logo-k18-taal-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20090203060711id_/http://www.a-m-c.org/images/logo.gif",
+      "assetArchiveTimestamp": "20090203060711",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "W74GGT33OFF3ONZ7QE3Y3HCNCDJIGOV6",
+        "computedDigest": "W74GGT33OFF3ONZ7QE3Y3HCNCDJIGOV6",
+        "assetCaptureTimestamp": "20090203060711",
+        "cdxCaptureTimestamp": "20081124064842",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.a-m-c.org%2Fimages%2Flogo.gif&from=2008&to=20090210&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k18-taal-index"
+      }
+    },
+    {
+      "id": "taal-archive-20190314060443",
+      "title": "Ta'al (Arab Movement for Renewal) official website — 2019-03-14",
+      "sourceUrl": "https://web.archive.org/web/20190314060443/http://www.a-m-c.org:80/",
+      "publisher": "תע\"ל — الحركة العربية للتغيير",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-05",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3 seconds apart",
+      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; no pre-election CDX digest available",
+      "date": "2019-03-14",
+      "description": "Inspected official Ta'al (Arab Movement for Renewal) homepage capture 20190314060443 references http://www.a-m-c.org/logo-amc.png as its only image on the official holding page. The earliest asset capture, 20190708185650, is after polling; its archived original Last-Modified header is 3 March 2019, before this page capture and the election, but no pre-election CDX digest exists, so medium confidence. Cropped to box [40, 28, 920, 316] of the 960x573 original (crop only, removing the 'site under construction' notice beneath the logo); no redraw or recolouring. Ta'al constituent emblem only, not the Hadash–Ta'al list lockup. Separate evidence for this election; no assignment by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20190314060443/http://www.a-m-c.org:80/",
+      "archiveTimestamp": "20190314060443",
+      "downloadUrl": "http://www.a-m-c.org/logo-amc.png",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "taal-official-site",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k21-taal-page",
+        "asset": "logo-k21-taal-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20190708185650id_/http://www.a-m-c.org/logo-amc.png",
+      "assetArchiveTimestamp": "20190708185650",
+      "cropBox": [
+        40,
+        28,
+        920,
+        316
+      ],
+      "originalDimensions": [
+        960,
+        573
+      ]
+    },
+    {
+      "id": "taal-archive-20190812134302",
+      "title": "Ta'al (Arab Movement for Renewal) official website — 2019-08-12",
+      "sourceUrl": "https://web.archive.org/web/20190812134302/http://www.a-m-c.org:80/",
+      "publisher": "תע\"ל — الحركة العربية للتغيير",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-05",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3 seconds apart",
+      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; exact bytes checked against CDX digest",
+      "date": "2019-08-12",
+      "description": "Inspected official Ta'al (Arab Movement for Renewal) homepage capture 20190812134302 references http://www.a-m-c.org/logo-amc.png as its only image on the official holding page. Exact archived asset bytes at 20190708185650 match pre-election CDX SHA-1 base32 JX3QLJQHKUF476BDKHWN7DFXBZH37JAJ (CDX capture 20190708185650). Cropped to box [40, 28, 920, 316] of the 960x573 original (crop only, removing the 'site under construction' notice beneath the logo); no redraw or recolouring. Ta'al constituent emblem only, not the Joint List lockup. Separate evidence for this election; no assignment by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20190812134302/http://www.a-m-c.org:80/",
+      "archiveTimestamp": "20190812134302",
+      "downloadUrl": "http://www.a-m-c.org/logo-amc.png",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "taal-official-site",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k22-taal-page",
+        "asset": "logo-k22-taal-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20190708185650id_/http://www.a-m-c.org/logo-amc.png",
+      "assetArchiveTimestamp": "20190708185650",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "JX3QLJQHKUF476BDKHWN7DFXBZH37JAJ",
+        "computedDigest": "JX3QLJQHKUF476BDKHWN7DFXBZH37JAJ",
+        "assetCaptureTimestamp": "20190708185650",
+        "cdxCaptureTimestamp": "20190708185650",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.a-m-c.org%2Flogo-amc.png&from=20190101&to=20190917&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k22-taal-index"
+      },
+      "cropBox": [
+        40,
+        28,
+        920,
+        316
+      ],
+      "originalDimensions": [
+        960,
+        573
+      ]
     }
   ]
 }
