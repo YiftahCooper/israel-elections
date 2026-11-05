@@ -96,6 +96,12 @@
       "publisher": "Council on Foreign Relations Education, Israeli-Palestinian Conflict Timeline, 6 October 1973 entry",
       "kind": "academic",
       "accessed": "2026-11-05"
+    },
+    "idf-attrition-history": {
+      "url": "https://www.idf.il/en/mini-sites/wars-and-operations/the-war-of-attrition/",
+      "publisher": "IDF, What Was the War of Attrition? (1967–1970), post-war chronology",
+      "kind": "official",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -382,6 +388,7 @@
     "end": "1973-12-31",
     "inclusionRule": "At least two independent chronologies, including one official or academic; a direct date source is also required.",
     "chronologies": [
+      "idf-attrition-history",
       "term-history",
       "idi-next",
       "ipu-next",
@@ -414,9 +421,13 @@
         "id": "lod-airport-attack",
         "date": "1972-05-30",
         "category": "security",
-        "textEn": "Gunmen attacked Lod airport.",
-        "textHe": "חמושים תקפו בנמל התעופה לוד.",
+        "textEn": "Three Japanese terrorists opened fire at Lod airport in a terror attack.",
+        "textHe": "שלושה מחבלים יפנים פתחו באש בפיגוע בנמל התעופה לוד.",
         "cites": [
+          {
+            "source": "idf-attrition-history",
+            "quote": "the massacre at the Lod airport on May 30 1972"
+          },
           {
             "source": "term-history",
             "quote": "the attack at Lod airport"
@@ -436,9 +447,13 @@
         "id": "munich-attack",
         "date": "1972-09-05",
         "category": "security",
-        "textEn": "Members of the Israeli Olympic team were murdered in Munich.",
-        "textHe": "חברי המשלחת האולימפית הישראלית נרצחו במינכן.",
+        "textEn": "Black September terrorists murdered eleven members of the Israeli Olympic delegation in the Munich massacre.",
+        "textHe": "מחבלי ספטמבר השחור רצחו אחד־עשר מחברי המשלחת האולימפית הישראלית בטבח מינכן.",
         "cites": [
+          {
+            "source": "idf-attrition-history",
+            "quote": "by the \"Black September\" organization"
+          },
           {
             "source": "term-history",
             "quote": "the murder of the Israeli sportsmen in Munich"
@@ -458,8 +473,8 @@
         "id": "yom-kippur-war",
         "date": "1973-10-06",
         "category": "security",
-        "textEn": "According to CFR’s chronology, Egyptian and Syrian forces attacked Israeli positions on 6 October 1973, beginning the Yom Kippur War; according to the UN Yearbook, the Security Council called for a ceasefire on 22 October, reaffirmed it on 23 October and demanded its observance on 25 October 1973 after further fighting.",
-        "textHe": "לפי ציר הזמן של CFR, כוחות מצריים וסוריים תקפו עמדות ישראליות ב־6 באוקטובר 1973, עם תחילת מלחמת יום הכיפורים; לפי שנתון האו״ם, מועצת הביטחון קראה להפסקת אש ב־22 באוקטובר, שבה ואישרה אותה ב־23 באוקטובר ודרשה את קיומה ב־25 באוקטובר 1973 לאחר שהלחימה נמשכה.",
+        "textEn": "Egypt and Syria attacked Israel on 6 October 1973, beginning the Yom Kippur War.",
+        "textHe": "מצרים וסוריה תקפו את ישראל ב־6 באוקטובר 1973, ופתחו במלחמת יום הכיפורים.",
         "cites": [
           {
             "source": "term-history",
@@ -484,7 +499,9 @@
         ],
         "confidence": "high",
         "notes": [
-          "The onset action is described, without a broader causal claim. No single endDate is assigned: ceasefire resolutions and their implementation differed across fronts. Original selection retained, supplemented by CFR/UN chronology."
+          "The onset action is described, without a broader causal claim. No single endDate is assigned: ceasefire resolutions and their implementation differed across fronts. Original selection retained, supplemented by CFR/UN chronology.",
+          "The UN Security Council called for a ceasefire on 22 October, reaffirmed it on 23 October and demanded compliance on 25 October after further fighting; these are not one verified cessation date.",
+          "מועצת הביטחון קראה להפסקת אש ב־22 באוקטובר, אישרה אותה שוב ב־23 באוקטובר ודרשה את קיומה ב־25 באוקטובר לאחר שהלחימה נמשכה."
         ]
       }
     ],

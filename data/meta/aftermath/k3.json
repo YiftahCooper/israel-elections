@@ -426,8 +426,8 @@
         "id": "sinai",
         "date": "1956-10-29",
         "category": "security",
-        "textEn": "According to the Knesset history and IDI’s election retrospective, the Sinai Campaign began on 29 October 1956; the UN Yearbook records Israel’s attack on Egypt and its report on 5 November 1956 that fighting between Israeli and Egyptian forces had ceased.",
-        "textHe": "לפי תולדות הכנסת וסקירת הבחירות של המכון הישראלי לדמוקרטיה, מבצע סיני החל ב־29 באוקטובר 1956; שנתון האו״ם מתעד את התקפת ישראל על מצרים ואת הודעתה מ־5 בנובמבר 1956 כי הלחימה בין הכוחות הישראליים והמצריים פסקה.",
+        "textEn": "Israel launched the Sinai Campaign against Egypt on 29 October 1956.",
+        "textHe": "ישראל פתחה במבצע סיני נגד מצרים ב־29 באוקטובר 1956.",
         "cites": [
           {
             "source": "term-history",
@@ -444,15 +444,17 @@
         ],
         "confidence": "high",
         "notes": [
-          "Bilateral cessation reported by Israel on 5 November is distinct from the later Anglo-French ceasefire of 6–7 November. No causal trigger added; original Knesset/IDI selection retained."
+          "Bilateral cessation reported by Israel on 5 November is distinct from the later Anglo-French ceasefire of 6–7 November. No causal trigger added; original Knesset/IDI selection retained.",
+          "The UN Yearbook records Israel’s report on 5 November 1956 that fighting between Israeli and Egyptian forces had ceased; this is not an Anglo-French ceasefire date.",
+          "לפי שנתון האו״ם, ישראל הודיעה ב־5 בנובמבר 1956 כי הלחימה בינה לבין מצרים פסקה; זה אינו מועד הפסקת האש של בריטניה וצרפת."
         ]
       },
       {
         "id": "kafr-qasim",
         "date": "1956-10-29",
         "category": "security",
-        "textEn": "Border Police soldiers killed residents of Kafr Qasim who were unaware of a curfew.",
-        "textHe": "חיילי משמר הגבול הרגו תושבים בכפר קאסם שלא ידעו על עוצר.",
+        "textEn": "Border Police soldiers killed residents unaware of a curfew in the Kafr Qasim massacre.",
+        "textHe": "בטבח כפר קאסם הרגו חיילי משמר הגבול תושבים שלא ידעו על העוצר.",
         "cites": [
           {
             "source": "term-history",

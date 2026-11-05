@@ -90,6 +90,12 @@
       "kind": "official",
       "accessed": "2026-11-05",
       "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies."
+    },
+    "knesset-political-violence": {
+      "url": "https://fs.knesset.gov.il/globaldocs/MMM/469ac3ed-8e32-e811-80de-00155d0a0235/2_469ac3ed-8e32-e811-80de-00155d0a0235_11_7679.pdf",
+      "publisher": "הכנסת, מרכז המחקר והמידע, אלימות פוליטית מצד יהודים בישראל, 17 באוגוסט 2005, עמ׳ 12",
+      "kind": "official",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -277,9 +283,13 @@
         "id": "hebron-massacre",
         "date": "1994-02-25",
         "category": "security",
-        "textEn": "Baruch Goldstein killed Palestinian worshippers in the Cave of the Patriarchs in Hebron.",
-        "textHe": "ברוך גולדשטיין הרג מתפללים פלסטינים במערת המכפלה בחברון.",
+        "textEn": "Baruch Goldstein murdered Palestinian worshippers in the Cave of the Patriarchs massacre in Hebron.",
+        "textHe": "ברוך גולדשטיין רצח מתפללים פלסטינים בטבח במערת המכפלה בחברון.",
         "cites": [
+          {
+            "source": "knesset-political-violence",
+            "quote": "רצח ברוך גולדשטיין"
+          },
           {
             "source": "knesset-history",
             "quote": "the massacre of 29 Palestinians"
@@ -360,8 +370,8 @@
         "id": "suicide-bombings-1996",
         "date": "1996-02",
         "category": "security",
-        "textEn": "Suicide bombings took place in Israel during February and March 1996.",
-        "textHe": "פיגועי התאבדות התרחשו בישראל בפברואר ובמרץ 1996.",
+        "textEn": "Hamas terrorists carried out suicide bombings in Jerusalem and Tel Aviv during February and March 1996.",
+        "textHe": "מחבלי חמאס ביצעו פיגועי התאבדות בירושלים ובתל אביב בפברואר ובמרץ 1996.",
         "cites": [
           {
             "source": "knesset-history",

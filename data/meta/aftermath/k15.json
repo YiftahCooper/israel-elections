@@ -90,6 +90,12 @@
       "publisher": "United Nations Yearbook 2002, excerpts, military action and Secretary-General report on Jenin",
       "kind": "official",
       "accessed": "2026-11-05"
+    },
+    "mod-2000-2005": {
+      "url": "https://archives.mod.gov.il/sites/English/theTimeAxis/Pages/2000-2005.aspx",
+      "publisher": "Ministry of Defense, IDF and Defense Establishment Archives, Time Axis: 2000–2005",
+      "kind": "official",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -194,6 +200,7 @@
     "end": "2003-01-28",
     "inclusionRule": "At least two independently authored qualifying chronologies, including one official or academic, plus direct support for the date. The Knesset and MFA histories count separately; the JVL mirror is not another independent source. Formal government succession steps are recorded separately in formation.events.",
     "chronologies": [
+      "mod-2000-2005",
       "mfa-history",
       "knesset-history",
       "ipu1999",
@@ -245,9 +252,13 @@
         "id": "second-intifada",
         "date": "2000-09",
         "category": "security",
-        "textEn": "The Second Intifada began.",
-        "textHe": "האינתיפאדה השנייה החלה.",
+        "textEn": "The Second Intifada began in September 2000 and included suicide bombings and other terror attacks against Israelis.",
+        "textHe": "האינתיפאדה השנייה החלה בספטמבר 2000 וכללה פיגועי התאבדות ופיגועי טרור נוספים נגד ישראלים.",
         "cites": [
+          {
+            "source": "mod-2000-2005",
+            "quote": "and suicide bombings."
+          },
           {
             "source": "knesset-history",
             "quote": "In September 2000, the Second Intifada broke out"
@@ -308,11 +319,15 @@
       },
       {
         "id": "defensive-shield",
-        "date": "2002-03",
+        "date": "2002-03-29",
         "category": "security",
-        "textEn": "According to the Knesset history and MFA’s chronology, Israel launched Operation Defensive Shield in the West Bank in March 2002.",
-        "textHe": "לפי תולדות הכנסת וציר הזמן של משרד החוץ, ישראל פתחה במבצע חומת מגן בגדה המערבית במרס 2002.",
+        "textEn": "Israel launched Operation Defensive Shield in Judea and Samaria after the Passover terror attack in Netanya.",
+        "textHe": "ישראל פתחה במבצע חומת מגן ביהודה ושומרון בעקבות הפיגוע בליל הסדר בנתניה.",
         "cites": [
+          {
+            "source": "mod-2000-2005",
+            "quote": "Operation \"Defensive Shield,\" (March 29 – May 10, 2002)."
+          },
           {
             "source": "knesset-history",
             "quote": "At the end of March 2002, Operation Defensive Shield was initiated."
@@ -328,8 +343,10 @@
         ],
         "confidence": "high",
         "notes": [
-          "No trigger asserted: the two inherited selection chronologies do not both supply the same causal account. No ceasefire endDate added without verified endpoint evidence; see review report."
-        ]
+          "The MOD chronology identifies the Park Hotel bombing on 27 March as the main trigger and dates Operation Defensive Shield to 29 March–10 May 2002; the latter is an operation endpoint, not a peace agreement. The inherited UN yearbook gives inconsistent 28/29 March launch dates; the Israeli official chronology controls.",
+          "ציר הזמן של משרד הביטחון מציין את הפיגוע במלון פארק ב־27 במרס כגורם המרכזי למבצע ומתארך אותו ל־29 במרס עד 10 במאי 2002; זהו מועד סיום המבצע ולא הסכם שלום."
+        ],
+        "endDate": "2002-05-10"
       }
     ],
     "candidatesPending": [

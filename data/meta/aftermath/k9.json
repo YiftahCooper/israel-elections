@@ -538,9 +538,13 @@
         "id": "operation-litani",
         "date": "1978-03",
         "category": "security",
-        "textEn": "According to the Knesset history and MFA chronology, Israel launched Operation Litani in southern Lebanon in March 1978; ECF’s historical record dates the completion of Israel’s withdrawal to June 1978.",
-        "textHe": "לפי תולדות הכנסת וציר הזמן של משרד החוץ, ישראל פתחה במבצע ליטני בדרום לבנון במרס 1978; הרשומה ההיסטורית של הקרן לשיתוף פעולה כלכלי (ECF) מתארכת את השלמת נסיגת ישראל ליוני 1978.",
+        "textEn": "Israel launched Operation Litani in southern Lebanon after the Coastal Road terror attack.",
+        "textHe": "ישראל פתחה במבצע ליטני בדרום לבנון בעקבות פיגוע כביש החוף.",
         "cites": [
+          {
+            "source": "mod-1972-1980",
+            "quote": "following which Israel launched the Litani Operation in Lebanon."
+          },
           {
             "source": "knesset-history-9",
             "quote": "the Litani Operation took place in March 1978"
@@ -556,15 +560,17 @@
         ],
         "confidence": "high",
         "notes": [
-          "Withdrawal date is not labelled a ceasefire date. No trigger added without agreement of the original two selection chronologies."
+          "Withdrawal date is not labelled a ceasefire date. No trigger added without agreement of the original two selection chronologies.",
+          "The Defense Ministry chronology explicitly links Operation Litani to the Coastal Road massacre; ECF dates completion of withdrawal to June 1978, distinct from a ceasefire.",
+          "ציר הזמן של משרד הביטחון קושר את מבצע ליטני לפיגוע כביש החוף; ECF מתארך את השלמת הנסיגה ליוני 1978, ואינו מציג זאת כמועד הפסקת אש."
         ]
       },
       {
         "id": "coastal-road-attack",
         "date": "1978-03-11",
         "category": "security",
-        "textEn": "Attackers hijacked a bus on the Coastal Road.",
-        "textHe": "תוקפים חטפו אוטובוס בכביש החוף.",
+        "textEn": "Terrorists hijacked a bus in the Coastal Road massacre.",
+        "textHe": "מחבלים חטפו אוטובוס בפיגוע כביש החוף.",
         "cites": [
           {
             "source": "knesset-history-9",

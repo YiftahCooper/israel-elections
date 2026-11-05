@@ -439,8 +439,8 @@
         "id": "six-day-war",
         "date": "1967-06-05",
         "category": "security",
-        "textEn": "According to CFR’s chronology, Israel launched strikes at the start of the Six-Day War on 5 June 1967 and fought Egypt, Jordan and Syria; the UN Secretary-General’s 10 June 1967 report records Israeli and Syrian acceptance of a ceasefire at 16:30 GMT that day.",
-        "textHe": "לפי ציר הזמן של CFR, ישראל פתחה בתקיפות עם תחילת מלחמת ששת הימים ב־5 ביוני 1967 ונלחמה במצרים, בירדן ובסוריה; דוח מזכ״ל האו״ם מ־10 ביוני 1967 מתעד את הסכמת ישראל וסוריה להפסקת אש בשעה 16:30 לפי שעון גריניץ׳ באותו יום.",
+        "textEn": "Israel fought Egypt, Jordan and Syria in the Six-Day War, from 5 to 10 June 1967.",
+        "textHe": "ישראל נלחמה במצרים, בירדן ובסוריה במלחמת ששת הימים, מ־5 עד 10 ביוני 1967.",
         "cites": [
           {
             "source": "term-history",
@@ -466,7 +466,9 @@
         "confidence": "high",
         "endDate": "1967-06-10",
         "notes": [
-          "Original Knesset/IDI selection retained; CFR supplies dated onset and action, UN report supplies the final-front ceasefire. No motive/preemption judgment adopted."
+          "Original Knesset/IDI selection retained; CFR supplies dated onset and action, UN report supplies the final-front ceasefire. No motive/preemption judgment adopted.",
+          "The UN Secretary-General’s 10 June report records Israeli and Syrian acceptance of a ceasefire at 16:30 GMT; the final-front cessation supplies the ending.",
+          "דוח מזכ״ל האו״ם מ־10 ביוני מתעד את הסכמת ישראל וסוריה להפסקת אש ב־16:30 לפי שעון גריניץ׳."
         ]
       },
       {
