@@ -123,7 +123,9 @@ test('summary, graphics and Compare default follow the same reference setting',a
       expect(Math.max(...x)).toBeLessThan(650);
     }
     await page.getByRole('tab',{name:'Compare',exact:true}).click();
-    await expect(page.locator('.cmp > p').first()).toContainText(`Baseline: ${name}`);
+    // with nothing to compare, Compare names the result and offers other comparisons instead
+    if(changed) await expect(page.locator('.cmp-head .choice-trigger')).toHaveText(new RegExp(name));
+    else await expect(page.locator('#cmp-empty-title')).toHaveText(`Compare ${name} with…`);
     if(changed) expect(await page.locator('.cmp-blocrow').last().locator('i').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('data-bloc')))).toEqual(expect.arrayContaining(['__none']));
   }
 });

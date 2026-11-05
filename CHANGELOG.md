@@ -2,6 +2,7 @@
 
 ## 5 November 2026 — release review
 
+- Compare offers saved scenarios, the previous or any other election and What-if questions when nothing differs, instead of two identical results; compares two elections side by side without pairing their lists; replaces the crowded slope chart with a seat dumbbell that keeps tied lists readable; and keeps change bars, tracks and signs left to right in Hebrew.
 - Distinguish joint-list component candidates and seats with party tints and list-colour envelopes, include component identities in chamber exports, and prevent component-row logo overlap. Component seat colours can be disabled under Rules → Display.
 
 - Clarify vote sources, section replacements, joint-list actions and edited markers; remove single-vote nudges and let sliders cover the valid-vote total. Preference prompts offer one-use, item and global scopes with one explicit Apply action.

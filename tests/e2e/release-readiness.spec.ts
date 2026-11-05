@@ -23,6 +23,7 @@ for (const lang of ['he', 'en']) for (const theme of ['light', 'dark']) {
 test('comparison counts have readable contrast on pale bloc regions', async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', level: 'expert' })));
   await page.goto('/'); await page.locator('#tab-compare').click();
+  await page.locator('.cmp-pick').filter({ hasText: '2022' }).click(); // nothing differs from the official result: compare with 2022
   const number = page.locator('.cmp-n').first();
   await expect(number).toBeVisible();
   const contrast = await number.evaluate(el => {

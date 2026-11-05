@@ -52,7 +52,7 @@ for (const separate of [false, true]) test(`B2 saved custom grouping draws paire
   await votes.fill('1300000'); await votes.press('Enter'); await page.keyboard.press('Escape');
   await expect(page.locator('.session')).toContainText(separate ? '(+2)' : '(+4)');
   await page.getByRole('tab', { name: 'Compare', exact: true }).click();
-  await expect(page.locator('.cmp')).not.toContainText('no baseline counterpart');
+  await expect(page.locator('.cmp')).not.toContainText('no counterpart in');
   await expect(page.locator('.cmp-blocrow')).toHaveCount(2);
   await expect(page.locator('.cmp-blocrow').first()).toContainText(separate ? '66' : '68');
   await expect(page.locator('.cmp-blocrow').last()).toContainText(separate ? '68' : '72');

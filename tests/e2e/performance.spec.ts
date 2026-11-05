@@ -38,7 +38,7 @@ test('a tab whose code is still downloading shows a loading status, then its con
   await expect(panel(page).getByRole('status')).toHaveText('Loading…');
   await expect(page.getByRole('tab', { name: 'Compare' })).toHaveAttribute('aria-selected', 'true');
   release();
-  await expect(panel(page).getByRole('option', { name: /official result/i }).first()).toBeAttached();
+  await expect(panel(page).getByRole('heading', { name: /Compare Official result with/ })).toBeVisible();
   await expect(panel(page).getByRole('status')).toHaveCount(0);
 });
 
