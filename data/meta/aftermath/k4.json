@@ -1,0 +1,432 @@
+{
+  "schemaVersion": 1,
+  "electionId": "k4",
+  "status": "pilot",
+  "reviewedAt": "2026-11-05",
+  "notes": [
+    "Research draft; not wired into the application. Official session records anchor all government approvals. Reused recommendation and first-coalition evidence retains the earlier research limitations.",
+    "The government card describes the first cabinet. Each replacement cabinet has a full-session confidence step and a numbered government.changes entry; available replacement coalition snapshots are attached to that entry.",
+    "New PDF quotations preserve the extracted text order (including OCR errors); whitespace is collapsed. Full-session sources identify the sitting; source excerpts are recoverable from the public PDF. Existing coalition OData quotes are labelled project tabulations in the source text, not purported verbatim minister lists."
+  ],
+  "sources": {
+    "plenum-gov9": {
+      "url": "https://fs.knesset.gov.il/4/Plenum/4_ptm_251773.pdf",
+      "publisher": "Knesset, Knesset 4, sitting 11, 1959-12-17 (full plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "presentation-gov9": {
+      "url": "https://main.knesset.gov.il/mk/government/documents/gov9.pdf",
+      "publisher": "Knesset, government 9 presentation (extract from plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-1": {
+      "url": "https://www.jta.org/archive/israel-president-appoints-ben-gurion-to-form-a-new-government",
+      "publisher": "Jewish Telegraphic Agency (JTA) Daily News Bulletin archive",
+      "kind": "secondary",
+      "accessed": "2026-11-05",
+      "note": "Bulletin dated 1959-12-09, reporting the President's action 'today'."
+    },
+    "recommendations-2": {
+      "url": "https://main.knesset.gov.il/mk/government/documents/gov9.pdf",
+      "publisher": "Knesset (Divrei HaKnesset, 16 Dec 1959, government pages)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "coalition-1": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%209&$format=json",
+      "publisher": "Knesset OData (ParliamentInfo)",
+      "kind": "official",
+      "accessed": "2026-11-04"
+    },
+    "coalition-2": {
+      "url": "https://he.wikipedia.org/wiki/ממשלת_ישראל_התשיעית",
+      "publisher": "Hebrew Wikipedia",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "term-history": {
+      "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-fourth-knesset-1959-1961",
+      "publisher": "Knesset, history of the fourth Knesset (credited official text on Jewish Virtual Library)",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Jewish Virtual Library mirror; original https://main.knesset.gov.il/EN/About/History/pages/knessethistory.aspx?kns=4"
+    },
+    "idi-next": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/elections/1961/",
+      "publisher": "Israel Democracy Institute, election chronology",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "plenum-gov10": {
+      "url": "https://fs.knesset.gov.il/5/Plenum/5_ptm_252197.pdf",
+      "publisher": "Knesset, Knesset 5, sitting 19, 1961-11-02 (full plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    }
+  },
+  "results": {
+    "electionDate": "1959-11-03",
+    "officialResultsSourceId": "k4-results-gazette"
+  },
+  "reaction": {
+    "policy": "Only dated institutional steps and attributed statements, all lists or none.",
+    "items": [],
+    "gap": "Not collected."
+  },
+  "recommendationRounds": [
+    {
+      "id": "r1",
+      "date": "1959-12",
+      "kind": "consultations",
+      "president": {
+        "nameEn": "Yitzhak Ben-Zvi",
+        "nameHe": "יצחק בן־צבי"
+      },
+      "nominees": {
+        "ben-gurion": {
+          "nameEn": "David Ben-Gurion",
+          "nameHe": "דוד בן־גוריון"
+        }
+      },
+      "entries": [
+        {
+          "letters": "א",
+          "seats": 47,
+          "status": "recommended",
+          "nominee": "ben-gurion",
+          "cites": [
+            {
+              "source": "recommendations-1",
+              "quote": "All parties, in their talks with the President, agreed that the Mapai candidate for Prime Minister should be given the task of forming a new government."
+            }
+          ]
+        },
+        {
+          "letters": "ח",
+          "seats": 17,
+          "status": "recommended",
+          "nominee": "ben-gurion",
+          "cites": [
+            {
+              "source": "recommendations-1",
+              "quote": "All parties, in their talks with the President, agreed that the Mapai candidate for Prime Minister should be given the task of forming a new government."
+            }
+          ]
+        },
+        {
+          "letters": "ב",
+          "seats": 12,
+          "status": "recommended",
+          "nominee": "ben-gurion",
+          "cites": [
+            {
+              "source": "recommendations-1",
+              "quote": "All parties, in their talks with the President, agreed that the Mapai candidate for Prime Minister should be given the task of forming a new government."
+            }
+          ]
+        },
+        {
+          "letters": "מ",
+          "seats": 9,
+          "status": "recommended",
+          "nominee": "ben-gurion",
+          "cites": [
+            {
+              "source": "recommendations-1",
+              "quote": "All parties, in their talks with the President, agreed that the Mapai candidate for Prime Minister should be given the task of forming a new government."
+            }
+          ]
+        },
+        {
+          "letters": "צ",
+          "seats": 8,
+          "status": "recommended",
+          "nominee": "ben-gurion",
+          "cites": [
+            {
+              "source": "recommendations-1",
+              "quote": "All parties, in their talks with the President, agreed that the Mapai candidate for Prime Minister should be given the task of forming a new government."
+            }
+          ]
+        },
+        {
+          "letters": "תו",
+          "seats": 7,
+          "status": "recommended",
+          "nominee": "ben-gurion",
+          "cites": [
+            {
+              "source": "recommendations-1",
+              "quote": "All parties, in their talks with the President, agreed that the Mapai candidate for Prime Minister should be given the task of forming a new government."
+            }
+          ]
+        },
+        {
+          "letters": "גד",
+          "seats": 6,
+          "status": "recommended",
+          "nominee": "ben-gurion",
+          "cites": [
+            {
+              "source": "recommendations-1",
+              "quote": "All parties, in their talks with the President, agreed that the Mapai candidate for Prime Minister should be given the task of forming a new government."
+            }
+          ]
+        },
+        {
+          "letters": "רא",
+          "seats": 2,
+          "status": "recommended",
+          "nominee": "ben-gurion",
+          "cites": [
+            {
+              "source": "recommendations-1",
+              "quote": "All parties, in their talks with the President, agreed that the Mapai candidate for Prime Minister should be given the task of forming a new government."
+            }
+          ]
+        },
+        {
+          "letters": "פ",
+          "seats": 6,
+          "status": "recommended",
+          "nominee": "ben-gurion",
+          "cites": [
+            {
+              "source": "recommendations-1",
+              "quote": "All parties, in their talks with the President, agreed that the Mapai candidate for Prime Minister should be given the task of forming a new government."
+            }
+          ]
+        },
+        {
+          "letters": "יא",
+          "seats": 2,
+          "status": "recommended",
+          "nominee": "ben-gurion",
+          "cites": [
+            {
+              "source": "recommendations-1",
+              "quote": "All parties, in their talks with the President, agreed that the Mapai candidate for Prime Minister should be given the task of forming a new government."
+            }
+          ]
+        },
+        {
+          "letters": "ק",
+          "seats": 3,
+          "status": "recommended",
+          "nominee": "ben-gurion",
+          "cites": [
+            {
+              "source": "recommendations-1",
+              "quote": "All parties, in their talks with the President, agreed that the Mapai candidate for Prime Minister should be given the task of forming a new government."
+            }
+          ]
+        },
+        {
+          "letters": "ע",
+          "seats": 1,
+          "status": "recommended",
+          "nominee": "ben-gurion",
+          "cites": [
+            {
+              "source": "recommendations-1",
+              "quote": "All parties, in their talks with the President, agreed that the Mapai candidate for Prime Minister should be given the task of forming a new government."
+            }
+          ]
+        }
+      ],
+      "totals": {
+        "ben-gurion": 120
+      },
+      "cites": [
+        {
+          "source": "recommendations-1",
+          "quote": "All parties, in their talks with the President, agreed that the Mapai candidate for Prime Minister should be given the task of forming a new government."
+        },
+        {
+          "source": "recommendations-2",
+          "quote": "לפני שמונה ימים, ביום השלישי של השבוע שעבר, הטיל עליי נשיא המדינה – לאחר שהתייעץ עם כל סיעות הכנסת – הרכבת ממשלה לתקופת כהונת הכנסת הרביעית."
+        }
+      ],
+      "notes": [
+        "Reuses docs/research/pm-recommendations-1949-1973.md; consultation conditions are not personal recommendations. Unknown does not mean no recommendation.",
+        "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved.",
+        "120 seats rests on one JTA blanket report, not 12 separately verified statements; medium confidence. The date is tasking day, not a recovered consultation schedule."
+      ],
+      "blocSchemeRef": "pm-recommendations"
+    }
+  ],
+  "formation": {
+    "outcome": "government-formed",
+    "events": [
+      {
+        "date": "1959-12",
+        "type": "consultations",
+        "textEn": "President Yitzhak Ben-Zvi held consultations on government formation.",
+        "textHe": "הנשיא יצחק בן־צבי קיים התייעצויות על הרכבת הממשלה.",
+        "cites": [
+          {
+            "source": "recommendations-1",
+            "quote": "All parties, in their talks with the President, agreed that the Mapai candidate for Prime Minister should be given the task of forming a new government."
+          },
+          {
+            "source": "recommendations-2",
+            "quote": "לפני שמונה ימים, ביום השלישי של השבוע שעבר, הטיל עליי נשיא המדינה – לאחר שהתייעץ עם כל סיעות הכנסת – הרכבת ממשלה לתקופת כהונת הכנסת הרביעית."
+          }
+        ]
+      },
+      {
+        "date": "1959-12-08",
+        "type": "mandate-given",
+        "textEn": "The President tasked David Ben-Gurion with forming a government.",
+        "textHe": "הנשיא הטיל על דוד בן־גוריון להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "presentation-gov9",
+            "quote": "לפני שמונה ימים , ביום השלישי של השבוע שעבר , הטיל עלי י נשיא המדינה – לאחר שהתייעץ עם כל סיעות הכנסת – הרכבת ממשלה לתקופת כהונת הכנסת הרביעית . הנשיא הביע שתי משאלות : ב סיס רחב עד כמה שאפשר לממשלה , והצגתה במוקדם לפני הכנסת . לצערי הרב , לא כל הסיעות שפניתי אליהן נצטרפו לממשלה המוצעת , וא נ י מתכבד להציג לפניכם ממשלה של חמש סיעות המונות יחד 86 חברי כנסת : המפלגה הפרוגרסיבית , אחדות העבודה – פועלי ציון , מפלגת הפועלים"
+          }
+        ],
+        "person": "ben-gurion"
+      },
+      {
+        "date": "1959-12-17",
+        "type": "confidence-vote",
+        "textEn": "The Knesset expressed confidence in government 9, headed by David Ben-Gurion, 78–33.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־9 בראשות דוד בן־גוריון, ברוב של 78 מול 33.",
+        "cites": [
+          {
+            "source": "plenum-gov9",
+            "quote": "הצבעה 78 בעד הבעת אמון לממשלה 33 נגד היו\"ר ק. לוז: בן של דוד בראשותו אמונה לממשלה הכנסת הביעה גוריון. אני מברך את ממשלת ישראל ומאחל לה הצלחה בניהול"
+          }
+        ],
+        "votes": {
+          "for": 78,
+          "against": 33
+        },
+        "governmentNumber": 9,
+        "person": "ben-gurion"
+      }
+    ]
+  },
+  "government": {
+    "number": 9,
+    "nameEn": "Government 9 (David Ben-Gurion)",
+    "nameHe": "הממשלה ה־9 (דוד בן־גוריון)",
+    "startDate": "1959-12-17",
+    "endDate": "1961-11-02",
+    "primeMinisters": [
+      {
+        "nameEn": "David Ben-Gurion",
+        "nameHe": "דוד בן־גוריון",
+        "letters": "א",
+        "from": "1959-12-17",
+        "to": "1961-11-02"
+      }
+    ],
+    "firstGovernmentSchemeRef": "first-government",
+    "coalition": [
+      {
+        "letters": "א",
+        "seats": 47
+      },
+      {
+        "letters": "ב",
+        "seats": 12
+      },
+      {
+        "letters": "מ",
+        "seats": 9
+      },
+      {
+        "letters": "תו",
+        "seats": 7
+      },
+      {
+        "letters": "פ",
+        "seats": 6
+      },
+      {
+        "letters": "רא",
+        "seats": 2
+      },
+      {
+        "letters": "יא",
+        "seats": 2
+      },
+      {
+        "letters": "ע",
+        "seats": 1
+      }
+    ],
+    "coalitionSeats": 86,
+    "coalitionSeatsNote": "Election-list seat totals, including support-only lists; not the confidence-vote tally. Reuses the existing overlay: ministerial factions are official; support-only membership is labelled secondary. Later government changes are listed separately.",
+    "cites": [
+      {
+        "source": "coalition-1",
+        "quote": "Government 9 sworn in 1959-12-17. Ministers at swearing-in by their Knesset faction (project tabulation of the OData records): {'מפלגת פועלים מאוחדת': 2, 'מפלגה דתית לאומית': 2, 'מפלגת פועלי ארץ-ישראל': 9, 'מפלגה פרוגרסיבית': 1, 'אחדות העבודה - פועלי ציון': 1, 'NON-MK': 1}"
+      },
+      {
+        "source": "coalition-2",
+        "quote": "קואליציה: מפא\"י, מפד\"ל, מפ\"ם, אחדות העבודה-פועלי ציון, המפלגה הפרוגרסיבית, קידמה ופיתוח, שיתוף ואחווה, חקלאות ופיתוח | אופוזיציה: חרות, הציונים הכלליים, חזית דתית תורתית, מק\"י"
+      }
+    ],
+    "changes": [],
+    "endDateCites": [
+      {
+        "source": "plenum-gov10",
+        "quote": "אנו עוברים להצבעה על הבעת אמון לממשלה שהתייצבה לפני הכנסת. הצבעה 63 בעד הבעת אמון לממשלה 46 נגד לוז: ק. היו\"ר ושישה הביעה נגר ארבעים של שישים ושלושה ברוב הכנסת אמון לממשלה, בראשותו של דוד בןגוריון. אני מברך את הממשלה להתכוננותה, ומאחל לה הצלחה בניהול עניני המדינה."
+      }
+    ]
+  },
+  "term": {
+    "start": "1959-11-03",
+    "end": "1961-08-15",
+    "inclusionRule": "At least two independent chronologies, including one official or academic; a direct date source is also required.",
+    "chronologies": [
+      "term-history",
+      "idi-next"
+    ],
+    "events": [],
+    "candidatesPending": [
+      {
+        "label": "Capture of Adolf Eichmann",
+        "date": "1960-05",
+        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+      },
+      {
+        "label": "Opening of the Eichmann trial",
+        "date": "1961-04",
+        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+      }
+    ],
+    "endedBy": {
+      "type": "election",
+      "date": "1961-08-15",
+      "nextElection": "k5",
+      "textEn": "The next Knesset election was held on 1961-08-15.",
+      "textHe": "הבחירות לכנסת הבאה נערכו ב־1961-08-15.",
+      "cites": [
+        {
+          "source": "idi-next",
+          "quote": "15.8.1961"
+        }
+      ]
+    }
+  },
+  "issuePolling": {
+    "status": "none",
+    "items": [],
+    "notes": [
+      "No qualifying pre-1969 issue survey was retrieved in the agreed sourcing plan."
+    ]
+  },
+  "gaps": [
+    "Official result-certification date and the first sitting are not transcribed; election dates and seat counts reuse the verified national dataset.",
+    "Reaction statements are not collected.",
+    "Mid-term consultation positions, mandate deadlines and extensions are incomplete unless an explicit step below records them.",
+    "Closing date is the next election, not dissolution day. The governing dissolution/election-date law has not been retrieved; regular versus early termination is not inferred from term length.",
+    "Replacement-coalition snapshots are partial: government 14’s faction splits and current seat counts require a separate audit. Other replacement snapshots use election-list seats with stated support-list limitations.",
+    "Presentation dates can precede approval dates; confidence steps use the full protocol. The exact assignment days not transcribed here remain unknown."
+  ]
+}
