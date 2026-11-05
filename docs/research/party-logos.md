@@ -1515,3 +1515,39 @@ decades is a product question outside this research pass.
   The same official-domain Wayback route is the recommended next step for each.
 - Search tooling: the Jina key now returns "set your API key"; Exa was used for domain discovery
   only. An official-sites directory (uzit.co.il) returned a 131-byte response; not pursued.
+
+## Same-election gap continuation, k18–k26 — 5 November 2026
+
+Baseline: `d62c234` (fast-forward of `integ-1105`). Scope is verified campaign-specific
+logos, never the builder's nearest-period fallbacks. Reused the previous pass's helper
+and raster recipe (Pillow 13.0.0), recovered from its original worktree because the
+brief's root-checkout scratch path did not exist. Public Wayback requests use the
+required project User-Agent and bounded timeouts; retrieval failures remain gaps.
+
+### First retained batch
+
+| Election / identity | Inspected dated official evidence | Proof / transformation |
+|---|---|---|
+| k18 Moledet constituent | `moledet.org.il` homepage 20090203114202; `heb/homestyles_heb.css` 20081124064706, `#htop` → `images/hp_logo.jpg` | Image CDX 20081124064853; rectangular crop [385,20,545,113] of 558×279 banner; original white wordmark/wheat, background preserved |
+| k18 National Union list ט | Same Moledet campaign homepage links National Union at `leumi.org.il` using `images/logo-Haihud-Haleumi.gif` | Exact image CDX 20090203114224; whole alliance artwork unchanged except PNG thumbnail |
+| k22 Israel Democratic Party constituent (`independence`) | `dem.co.il` homepage 20190723182203, `h1.site-logo` → `2019/07/logo-header.png` | Exact pre-election image CDX digest; original party mark, not joint-list substitution |
+| k22 Democratic Union list מרצ | `dem.co.il` homepage 20190817130706, campaign primary image → `2019/08/logo-new.png` | Exact pre-election image CDX digest; includes alliance name and leaders |
+| k23 New Right constituent | `newyamin.org` homepage 20200103163508 → `2019/12/yamin-logo.png` | Exact image CDX 20200104172702; party mark, not Yamina lockup |
+| k26 Hadash constituent | `hadash.org.il` homepage 20261002043950, first home-link header background SVG data URI | Exact **containing HTML** CDX SHA-1 `D3FH2ZMJ6LVFK4KK2WMFTUFESVKNETPR`; percent-decoded original SVG unchanged. No separate image CDX exists for inline artwork; `embeddedSvgProof` explicitly scopes proof to HTML |
+
+Every entry has retained original and final SHA-256, source card, dated capture and raw
+manifest. Standalone image inputs match base32 SHA-1 against pre-election CDX rows.
+The Hadash exception retains its exact inline SVG and containing page/index, with no
+redraw, vectorisation, recolouring or rasterisation. No logo is copied across elections.
+The shared National Union evidence comes from an official constituent's campaign
+site and explicitly identifies the alliance, not the constituent.
+
+Batch validation: logo validator 26 overlays / 168 source cards / 118 assets / 126
+hosted assignments; family validator 9 presets. All 26 datasets compare equal to
+`d62c234` after recursively omitting only `logo` and `builtAt`. Only the model
+differential digest changed, to `fbf90ee7b40a8725ad46fafbf9ce50929f95b5928c2ca16d94f995579f1c0be9`;
+allocation, analysis, validation and rules digests passed unchanged. TypeScript passed.
+Full Vitest: **90 files, 857 tests passed**. An earlier sandbox run could not spawn
+the gallery subprocess (`EPERM`); rerun with subprocess permission passed. An
+intermediate run while overlays had changed but datasets were not rebuilt failed
+three provenance/rebuild checks; final regenerated datasets resolve those failures.

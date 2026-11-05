@@ -239,6 +239,43 @@
         "rawIndex": "logo-k23-jewish-home-index"
       },
       "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
+    },
+    {
+      "party": "new-right",
+      "file": "logos/new-right-2020-k23.png",
+      "sourceUrl": "https://web.archive.org/web/20200103163508/https://newyamin.org/",
+      "assetSourceUrl": "https://web.archive.org/web/20200104172702id_/https://newyamin.org/wp-content/uploads/2019/12/yamin-logo.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "הימין החדש — official party website header, 2020 campaign",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "new-right-archive-20200103163508",
+      "inUseDate": "2020-01-03",
+      "archiveUrl": "https://web.archive.org/web/20200103163508/https://newyamin.org/",
+      "archiveTimestamp": "20200103163508",
+      "inUseEvidence": "Inspected official New Right homepage capture 20200103163508 references https://newyamin.org/wp-content/uploads/2019/12/yamin-logo.png as its header logo (attachment-full). Exact archived asset bytes at 20200104172702 match pre-election CDX SHA-1 base32 GMWQCIFYXA4KQ4HUPSXHRCYC7J6KBBQU (CDX capture 20200104172702). Original geometry and colours preserved. The artwork reads New Right, a separate constituent of Yamina; not the joint-list mark. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "59c229e08e39d57bfd59c0a97c593dda64e790600909292d543a0c23479f0793",
+      "originalSha256": "5175d5d6b844e65d38e7f7adab6eac06156c60f17ff519733dceb592f4e6fce6",
+      "bytes": 3063,
+      "rawEvidence": {
+        "page": "logo-k23-new-right-page",
+        "asset": "logo-k23-new-right-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20200104172702id_/https://newyamin.org/wp-content/uploads/2019/12/yamin-logo.png",
+      "assetArchiveTimestamp": "20200104172702",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "GMWQCIFYXA4KQ4HUPSXHRCYC7J6KBBQU",
+        "computedDigest": "GMWQCIFYXA4KQ4HUPSXHRCYC7J6KBBQU",
+        "assetCaptureTimestamp": "20200104172702",
+        "cdxCaptureTimestamp": "20200104172702",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=newyamin.org%2Fwp-content%2Fuploads%2F2019%2F12%2Fyamin-logo.png&from=2019&to=20200302&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k23-new-right-index"
+      },
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
     }
   ]
 }

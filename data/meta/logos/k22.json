@@ -304,6 +304,80 @@
         573
       ],
       "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA crop, thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
+    },
+    {
+      "party": "independence",
+      "file": "logos/israel-democratic-2019-k22.png",
+      "sourceUrl": "https://web.archive.org/web/20190723182203/https://www.dem.co.il/",
+      "assetSourceUrl": "https://web.archive.org/web/20190723182203id_/https://www.dem.co.il/wp-content/uploads/2019/07/logo-header.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "ישראל דמוקרטית — official website header",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "israel-democratic-archive-20190723182203",
+      "inUseDate": "2019-07-23",
+      "archiveUrl": "https://web.archive.org/web/20190723182203/https://www.dem.co.il/",
+      "archiveTimestamp": "20190723182203",
+      "inUseEvidence": "Inspected official Israel Democratic Party homepage capture 20190723182203 references https://www.dem.co.il/wp-content/uploads/2019/07/logo-header.png as its header logo (h1.site-logo). Exact archived asset bytes at 20190723182203 match pre-election CDX SHA-1 base32 VWTCDPTV65L5FILZ3AUJCIEIMX3EMRUE (CDX capture 20190708003556). Original geometry and colours preserved. Israel Democratic Party constituent emblem only, keyed independence in the roster; not the Democratic Union joint lockup. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "70f6646f7fa31fa93f57fd68d2aa15da73b01372473127091341b89f91cb834b",
+      "originalSha256": "9190361bfd22253525d9c7dd0733e24614878cbbadfa4a2d843450c9d9d58828",
+      "bytes": 15016,
+      "rawEvidence": {
+        "page": "logo-k22-israel-democratic-page",
+        "asset": "logo-k22-israel-democratic-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20190723182203id_/https://www.dem.co.il/wp-content/uploads/2019/07/logo-header.png",
+      "assetArchiveTimestamp": "20190723182203",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "VWTCDPTV65L5FILZ3AUJCIEIMX3EMRUE",
+        "computedDigest": "VWTCDPTV65L5FILZ3AUJCIEIMX3EMRUE",
+        "assetCaptureTimestamp": "20190723182203",
+        "cdxCaptureTimestamp": "20190708003556",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.dem.co.il%2Fwp-content%2Fuploads%2F2019%2F07%2Flogo-header.png&from=2019&to=20190917&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k22-israel-democratic-index"
+      },
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
+    },
+    {
+      "letters": "מרצ",
+      "file": "logos/democratic-union-2019-k22.png",
+      "sourceUrl": "https://web.archive.org/web/20190817130706/https://www.dem.co.il/",
+      "assetSourceUrl": "https://web.archive.org/web/20190817130706id_/https://www.dem.co.il/wp-content/uploads/2019/08/logo-new.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "המחנה הדמוקרטי — official campaign homepage masthead",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "democratic-union-archive-20190817130706",
+      "inUseDate": "2019-08-17",
+      "archiveUrl": "https://web.archive.org/web/20190817130706/https://www.dem.co.il/",
+      "archiveTimestamp": "20190817130706",
+      "inUseEvidence": "Inspected official Democratic Union homepage capture 20190817130706 references https://www.dem.co.il/wp-content/uploads/2019/08/logo-new.png as its campaign masthead (fl-photo-img wp-image-904; social primary image). Exact archived asset bytes at 20190817130706 match pre-election CDX SHA-1 base32 4SROXORG4IF4LQJUKFNQHDB6RS2G6NKI (CDX capture 20190801213912). Original geometry and colours preserved. The artwork names the Democratic Union joint list, not merely Meretz or Israel Democratic Party. Assigned to list מרצ only. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "8f367a2688ab7cff36d0bd4f181205d2799eca3a37b85af9588a373ff5ed445d",
+      "originalSha256": "ad529a7e4f56c4e3a7afce6e3f645466baf03a1c65fde387abf2ecef22877ba0",
+      "bytes": 12068,
+      "rawEvidence": {
+        "page": "logo-k22-democratic-union-page",
+        "asset": "logo-k22-democratic-union-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20190817130706id_/https://www.dem.co.il/wp-content/uploads/2019/08/logo-new.png",
+      "assetArchiveTimestamp": "20190817130706",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "4SROXORG4IF4LQJUKFNQHDB6RS2G6NKI",
+        "computedDigest": "4SROXORG4IF4LQJUKFNQHDB6RS2G6NKI",
+        "assetCaptureTimestamp": "20190817130706",
+        "cdxCaptureTimestamp": "20190801213912",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.dem.co.il%2Fwp-content%2Fuploads%2F2019%2F08%2Flogo-new.png&from=2019&to=20190917&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k22-democratic-union-index"
+      },
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
     }
   ]
 }

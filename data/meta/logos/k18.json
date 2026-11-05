@@ -119,6 +119,90 @@
         "rawIndex": "logo-k18-taal-index"
       },
       "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
+    },
+    {
+      "party": "moledet",
+      "file": "logos/moledet-2009-k18.png",
+      "sourceUrl": "https://web.archive.org/web/20090203114202/http://www.moledet.org.il/",
+      "assetSourceUrl": "https://web.archive.org/web/20081124064853id_/http://www.moledet.org.il/heb/images/hp_logo.jpg",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "מולדת — official 2009 campaign website header, rectangular crop",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "moledet-archive-20090203114202",
+      "inUseDate": "2009-02-03",
+      "archiveUrl": "https://web.archive.org/web/20090203114202/http://www.moledet.org.il/",
+      "archiveTimestamp": "20090203114202",
+      "inUseEvidence": "Inspected official Moledet homepage capture 20090203114202 references http://www.moledet.org.il/heb/images/hp_logo.jpg as its #htop background through heb/homestyles_heb.css, captured 20081124064706 (retained as logo-k18-moledet-style). Exact archived asset bytes at 20081124064853 match pre-election CDX SHA-1 base32 BJLJRWR6ZZ34PHXHY7755EJS7WU62P57 (CDX capture 20081124064853). Cropped to box [385, 20, 545, 113] of the 558x279 original (crop only, isolating the original white wordmark and wheat emblem from the olive-branch banner); no redraw or recolouring. Moledet constituent emblem only; not the National Union joint-list mark. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "3607b116b95ac5d18a5253026daf03ed2dd1cf0993da4e02a023bac5eac039cc",
+      "originalSha256": "b47c8d5d827e3a74be978c227a2315f5739e5bda595f817984b3b51ebca9454b",
+      "bytes": 32185,
+      "rawEvidence": {
+        "page": "logo-k18-moledet-page",
+        "asset": "logo-k18-moledet-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20081124064853id_/http://www.moledet.org.il/heb/images/hp_logo.jpg",
+      "assetArchiveTimestamp": "20081124064853",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "BJLJRWR6ZZ34PHXHY7755EJS7WU62P57",
+        "computedDigest": "BJLJRWR6ZZ34PHXHY7755EJS7WU62P57",
+        "assetCaptureTimestamp": "20081124064853",
+        "cdxCaptureTimestamp": "20081124064853",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.moledet.org.il%2Fheb%2Fimages%2Fhp_logo.jpg&from=2008&to=20090210&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k18-moledet-index"
+      },
+      "cropBox": [
+        385,
+        20,
+        545,
+        113
+      ],
+      "originalDimensions": [
+        558,
+        279
+      ],
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA crop, thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
+    },
+    {
+      "letters": "ט",
+      "file": "logos/national-union-2009-k18.png",
+      "sourceUrl": "https://web.archive.org/web/20090203114202/http://www.moledet.org.il/",
+      "assetSourceUrl": "https://web.archive.org/web/20090203114224id_/http://www.moledet.org.il/images/logo-Haihud-Haleumi.gif",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "האיחוד הלאומי — campaign lockup published by constituent Moledet's official site",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "national-union-archive-20090203114202",
+      "inUseDate": "2009-02-03",
+      "archiveUrl": "https://web.archive.org/web/20090203114202/http://www.moledet.org.il/",
+      "archiveTimestamp": "20090203114202",
+      "inUseEvidence": "Inspected official Moledet / National Union homepage capture 20090203114202 references http://www.moledet.org.il/images/logo-Haihud-Haleumi.gif as its linked National Union alliance logo (link to leumi.org.il). Exact archived asset bytes at 20090203114224 match pre-election CDX SHA-1 base32 BWKWIQMFZEQ2IYQBVAX3NVHGSWYHGSAL (CDX capture 20081124064702). Original geometry and colours preserved. The artwork explicitly names National Union, the ט joint list in which Moledet ran in 2009; not a Moledet-only emblem. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "457fbf293dd82b4d024817a698c5d5b7093df1d23c951a204356cc5a42c7a65b",
+      "originalSha256": "33f7c36a57351dd74e18aecda2f1cbd89276d84b95da9d7a2b9c3b154329753f",
+      "bytes": 17867,
+      "rawEvidence": {
+        "page": "logo-k18-national-union-page",
+        "asset": "logo-k18-national-union-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20090203114224id_/http://www.moledet.org.il/images/logo-Haihud-Haleumi.gif",
+      "assetArchiveTimestamp": "20090203114224",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "BWKWIQMFZEQ2IYQBVAX3NVHGSWYHGSAL",
+        "computedDigest": "BWKWIQMFZEQ2IYQBVAX3NVHGSWYHGSAL",
+        "assetCaptureTimestamp": "20090203114224",
+        "cdxCaptureTimestamp": "20081124064702",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.moledet.org.il%2Fimages%2Flogo-Haihud-Haleumi.gif&from=2008&to=20090210&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k18-national-union-index"
+      },
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
     }
   ]
 }

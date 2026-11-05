@@ -406,6 +406,42 @@
       "bytes": 19778,
       "retrievedAt": "2026-11-04",
       "retrieval": "Plain HTTP with project User-Agent. Original 1556×2200 WebP retained. Pillow 13.0.0: convert RGBA; crop (1040,195,1460,335); thumbnail (256,256) LANCZOS; optimized PNG. Original green backdrop retained."
+    },
+    {
+      "party": "hadash",
+      "file": "logos/hadash-2026-k26.svg",
+      "sourceUrl": "https://web.archive.org/web/20261002043950/https://hadash.org.il/",
+      "assetSourceUrl": "https://web.archive.org/web/20261002043950id_/https://hadash.org.il/#header-embedded-svg",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "חד״ש / الجبهة — original inline SVG from official campaign website header",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "hadash-inline-archive-20261002043950",
+      "inUseDate": "2026-10-02",
+      "archiveUrl": "https://web.archive.org/web/20261002043950/https://hadash.org.il/",
+      "archiveTimestamp": "20261002043950",
+      "inUseEvidence": "Inspected official Hadash homepage capture 20261002043950: home-link header background-image embeds this original SVG data URI (viewBox 0 0 219.535 53). Complete HTML bytes match CDX SHA-1 D3FH2ZMJ6LVFK4KK2WMFTUFESVKNETPR. SVG percent-decoded unchanged from that page; no redraw, vectorisation, recolouring or crop. Proof covers the containing page, not a separately indexed image response. Hebrew/Arabic artwork visually inspected. Hadash constituent only, not the Joint List lockup.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "107a64b2ace98171a7f712a4714e5747756402dd10ae92280c7d0754841c0b8e",
+      "originalSha256": "107a64b2ace98171a7f712a4714e5747756402dd10ae92280c7d0754841c0b8e",
+      "bytes": 9594,
+      "rawEvidence": {
+        "page": "logo-k26-hadash-inline-page",
+        "asset": "logo-k26-hadash-inline-asset"
+      },
+      "assetArchiveTimestamp": "20261002043950",
+      "embeddedSvgProof": {
+        "algorithm": "SHA-1 (base32), complete containing HTML",
+        "cdxDigest": "D3FH2ZMJ6LVFK4KK2WMFTUFESVKNETPR",
+        "computedDigest": "D3FH2ZMJ6LVFK4KK2WMFTUFESVKNETPR",
+        "cdxCaptureTimestamp": "20261002043950",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=hadash.org.il%2F&from=20261002&to=20261002&output=json&fl=timestamp,original,statuscode,digest&filter=statuscode:200&collapse=timestamp:6",
+        "rawIndex": "logo-k26-hadash-inline-index",
+        "extraction": "First header background-image SVG data URI, percent-decoded only; paths and colours unchanged"
+      },
+      "retrieval": "Exact percent-decoding of original SVG data URI; final bytes identical to retained extracted original. No rasterisation or editing."
     }
   ]
 }
