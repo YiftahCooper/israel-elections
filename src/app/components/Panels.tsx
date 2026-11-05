@@ -24,6 +24,7 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
   const L = useL();
   const lang = useLang();
   const digits = useDigits();
+  const showComponentSeats = useStore(st => st.showComponentSeats);
   const exp = s.mode === 'experimental';
   const dep = ruleDepartures(toRuleSet(s.rules, null), RULESETS[electionRuleSetId(s.electionId)]);
   const depName: Record<string, [string, string]> = {
@@ -107,6 +108,7 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
         <button className="btn small" onClick={() => { setState({ tool: 'board', blocPanel: s.blocs[0]?.id ?? '__none', selectedListId: null }); window.scrollTo({ top: 0 }); }}>{L('Edit blocs', 'עריכת גושים')}</button>
         <hr />
         <h3>{L('Display', 'תצוגה')}</h3>
+        <label className="row small"><input type="checkbox" aria-label={L('Component colours in seats', 'צבעי מפלגות במושבים')} checked={showComponentSeats} onChange={e => setState({showComponentSeats:e.target.checked})} />{L('Component colours in seats', 'צבעי מפלגות במושבים')} <Info title={L('Component colours', 'צבעי מפלגות')}>{L('When counting seats by party: outer colour identifies the list; inner colour identifies its component party.', 'בספירת מנדטים לפי מפלגה: הצבע החיצוני מציין את הרשימה; הצבע הפנימי מציין את המפלגה שבה.')}</Info></label>
         <label className="field" style={{ maxWidth: 220 }}>{L('Decimal places for percentages', 'ספרות אחרי הנקודה באחוזים')}
           <select value={digits} onChange={(e) => setState({ digits: Number(e.target.value) })}>{[0, 1, 2, 3, 4, 6, 8].map((d) => <option key={d} value={d}>{d}</option>)}</select>
         </label>

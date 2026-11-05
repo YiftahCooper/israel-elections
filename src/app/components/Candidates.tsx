@@ -53,11 +53,13 @@ export function Candidates({ l, seats, baseSeats, baseCandidates }: { l: SimList
         'קישורים: דפי הכנסת (רשמי), דפי המפלגות (מפלגתי, מארכיון תקופת הבחירות כשאפשר), ויקיפדיה העברית (משני). ויקיפדיה האנגלית אינה מקושרת: אינה אמינה בענייני ישראל.')}</p>}
       <ol className="cands" style={{ ['--c' as string]: l.color }} aria-label={L('Candidate list', 'רשימת המועמדים')}>
         {c.slice(0, limit).map((x, i) => {
+          const party = l.parties?.find(p => p.id === x.partyId);
+          const component = (l.parties?.length ?? 0) > 1 && party && party.id !== c.find(c=>c.partyId)?.partyId;
           const pos = seatPos.get(x.id);
           const elected = pos !== undefined && pos < seats;
           const changed = !x.notSeated && elected !== (pos !== undefined && pos < baseSeats);
           return (
-            <li key={x.id} className={`cand ${elected ? 'el' : 'out'} ${x === nextIn && seats > 0 ? 'cut' : ''} ${drag === i ? 'drag' : ''}`}
+            <li key={x.id} data-component-party={component ? party.id : undefined} style={component ? { ['--c' as string]: party.color ?? l.color } : undefined} className={`cand ${elected ? 'el' : 'out'} ${x === nextIn && seats > 0 ? 'cut' : ''} ${drag === i ? 'drag' : ''}`}
               draggable={advanced} onDragStart={() => setDrag(i)} onDragEnd={() => setDrag(null)}
               onDragOver={(e) => advanced && e.preventDefault()} onDrop={() => { if (drag !== null) move(drag, i); setDrag(null); }}>
               <span className="rk">{i + 1}</span>

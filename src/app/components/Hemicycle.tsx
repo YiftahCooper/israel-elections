@@ -17,11 +17,11 @@ import { Info, Seg } from './ui.tsx';
 import { ChoicePicker } from './ChoicePicker.tsx';
 import { ResultPreview } from './ResultPreview.tsx';
 
-export interface SeatInfo { listId: string; idx: number; color: string; remainder: boolean; bloc: string | null; holder: string }
+export interface SeatInfo { listId: string; idx: number; color: string; innerColor?: string; partyId?: string; remainder: boolean; bloc: string | null; holder: string }
 
 /** Seats in chamber order. With a bloc grouping, seats are grouped by bloc (decision 0087): each seat counts
  *  for its member's party bloc when it differs from the list's. Within a bloc, lists keep their order. */
-export function seatOrder(s: Scenario, r: AllocationResult, colorBy: 'list' | 'bloc' | 'party'): SeatInfo[] {
+export function seatOrder(s: Scenario, r: AllocationResult, colorBy: 'list' | 'bloc' | 'party', showComponents = true): SeatInfo[] {
   const out: (SeatInfo & { k: number })[] = [];
   const split = new Set(s.factionSplits ?? []);
   let k = 0;
@@ -38,13 +38,20 @@ export function seatOrder(s: Scenario, r: AllocationResult, colorBy: 'list' | 'b
       if (colorBy === 'bloc') color = s.blocs.find((b) => b.id === blocs[i])?.color ?? '#8e8e93';
       if (colorBy === 'party') color = (c?.partyId && l.parties?.find(p => p.id === c.partyId)?.color) || (parties.length > 1 ? shade(l.color, parties.indexOf(c?.partyHe ?? '')) : l.color);
       const holder = split.has(l.id) && c?.partyId && l.parties?.some((p) => p.id === c.partyId) ? `${l.id}:${c.partyId}` : l.id;
-      out.push({ listId: l.id, idx: i, color, remainder: i >= lr.initialSeats, bloc: blocs[i], holder, k: k++ });
+      const party = l.parties?.find(p => p.id === c?.partyId);
+      const head = seated.find(c => c.partyId)?.partyId;
+      const innerColor = showComponents && split.has(l.id) && (l.parties?.length ?? 0) > 1 && party && party.id !== head ? party.color ?? l.color : undefined;
+      if (innerColor) color = l.color;
+      out.push({ innerColor, partyId: party?.id, listId: l.id, idx: i, color, remainder: i >= lr.initialSeats, bloc: blocs[i], holder, k: k++ });
     }
   }
-  if (!s.blocs.length) return out;
+  // Keep component seats together within each list/bloc, preserving original candidate indices.
+  const componentRank = (st: SeatInfo) => split.has(st.listId) ? s.lists.find(l => l.id === st.listId)?.parties?.findIndex(p => p.id === st.partyId) ?? -1 : 0;
+  const within = (a: SeatInfo & { k: number }, b: SeatInfo & { k: number }) => a.listId === b.listId ? componentRank(a) - componentRank(b) || a.k - b.k : a.k - b.k;
+  if (!s.blocs.length) return out.sort(within);
   const order = blocDisplayOrder(s);
   const rank = (b: string | null) => order.indexOf(b);
-  return out.sort((a, b) => rank(a.bloc) - rank(b.bloc) || a.k - b.k);
+  return out.sort((a, b) => rank(a.bloc) - rank(b.bloc) || within(a, b));
 }
 
 function shade(hex: string, i: number): string {
@@ -65,6 +72,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   // layout and colouring are Expert settings: below Expert the chamber always uses the defaults
   const layout = useStore((st) => (expert ? st.layout : 'hemicycle'));
   const colorBy = useStore((st) => (expert ? st.colorBy : 'list'));
+  const showComponents = useStore(st => st.showComponentSeats);
   const previewing = useStore(st => st.preview) === s;
   const committed = useStore(st => st.scenario);
   const evidenceScenario = previewing && committed ? committed : s;
@@ -75,14 +83,14 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   // on a phone the arc fills the width without labels; the legend below names the lists instead
 
   const [hover, setHover] = useState<{ seat: SeatInfo; x: number; y: number } | null>(null);
-  const seats = useMemo(() => seatOrder(s, r, colorBy), [s, r, colorBy]);
+  const seats = useMemo(() => seatOrder(s, r, colorBy, showComponents), [s, r, colorBy, showComponents]);
   const { base, result: br, labelReference } = useGraphicReference(s, reference);
   const changes = useMemo(() => changedSeatKeys(s, r, base, br), [s, r, base, br]);
   // Supplemental evidence follows completed edits, keeping the first drag from
   // mounting a second chamber and moving the legend under the pointer.
   const evidenceChanges = useMemo(() => changedSeatKeys(evidenceScenario, evidenceResult, base, br), [evidenceScenario, evidenceResult, base, br]);
   const hasChanges = evidenceChanges.gained.size > 0 || evidenceChanges.lost.size > 0;
-  const baselineSeats = useMemo(() => seatOrder(base, br, colorBy), [base, br, colorBy]);
+  const baselineSeats = useMemo(() => seatOrder(base, br, colorBy, showComponents), [base, br, colorBy, showComponents]);
   const total = s.rules.seats;
   const rtl = false; // Geometry is physically left-to-right in both languages, like the 61 marker.
   const { seats: pos, r: rad } = useMemo(() => arcLayout(total), [total]);
@@ -151,21 +159,24 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
     // the legend in chamber order, each list with its seat colour(s), and old → new only where the seats changed
     const groupsNow = comparisonGroups(s,r,base,br);
     const rowsY = vb.y+vb.height+extra+20;
-    legendRows.forEach(({l,n,colors},i) => {
-      const x = colStart(i % 2), y = rowsY + Math.floor(i/2)*28, dir = rtlText ? -1 : 1;
-      colors.forEach((c, k) => {
-        const dot = document.createElementNS(NS, 'circle');
-        dot.setAttribute('cx', String(x + dir * (7 + k * 16))); dot.setAttribute('cy', String(y - 5)); dot.setAttribute('r', '7'); dot.setAttribute('fill', c);
-        clone.appendChild(dot);
-      });
-      const label = listLabel(l,lang);
-      const g = groupsNow.find(g=>g.bIds.includes(l.id));
-      const numbers = g?.bIds.length === 1 && g.seatsA !== g.seatsB ? `${g.seatsA} → ${g.seatsB} (${signed(g.seatsB-g.seatsA)})` : String(n);
-      clone.appendChild(svgText(x + dir * (8 + colors.length * 16), y, 16, `${label.length>28 ? label.slice(0,27)+'…' : label} \u2066${numbers}\u2069`));
+    const exportRows = legendRows.flatMap(({l,n,colors}) => {
+      const components = componentRows.filter(row=>row.l.id===l.id);
+      return components.length ? components.map(({p,n})=>({l,n,colors:[l.color],label:componentName(l,p),inner:p.id===seatedOrder(l).find(c=>c.partyId)?.partyId ? undefined : p.color}))
+        : [{l,n,colors,label:listLabel(l,lang),inner:undefined}];
     });
-    // what the picture is: the election, and the scenario or the official result
-    const entry = elections.find(e => e.id === s.electionId);
-    const captionY = rowsY + Math.ceil(legendRows.length/2)*28 + 8;
+    exportRows.forEach(({l,n,colors,label,inner},i) => {
+      const x = colStart(i % 2), y = rowsY + Math.floor(i/2)*28, dir = rtlText ? -1 : 1;
+      colors.forEach((c,k)=>{
+        const dot = document.createElementNS(NS,'circle');
+        dot.setAttribute('cx',String(x+dir*(7+k*16))); dot.setAttribute('cy',String(y-5)); dot.setAttribute('r','7'); dot.setAttribute('fill',c); clone.appendChild(dot);
+        if(inner) { const fill=dot.cloneNode() as SVGCircleElement; fill.setAttribute('r','4.5'); fill.setAttribute('fill',inner); clone.appendChild(fill); }
+      });
+      const g = groupsNow.find(g=>g.bIds.includes(l.id));
+      const numbers = !componentRows.some(row=>row.l.id===l.id) && g?.bIds.length===1 && g.seatsA!==g.seatsB ? `${g.seatsA} → ${g.seatsB} (${signed(g.seatsB-g.seatsA)})` : String(n);
+      clone.appendChild(svgText(x+dir*(8+colors.length*16),y,16,`${label.length>42?label.slice(0,41)+'…':label} \u2066${numbers}\u2069`));
+    });
+    const entry = elections.find(e=>e.id===s.electionId);
+    const captionY = rowsY + Math.ceil(exportRows.length/2)*28 + 8;
     clone.appendChild(svgText(colStart(0), captionY, 13, `${entry ? electionLabel(entry, elections, lang) : ''}${entry ? ' · ' : ''}${s.log.length ? s.name || L('Scenario', 'תרחיש') : L('Official result', 'התוצאה הרשמית')}`));
     clone.setAttribute('viewBox', `${vb.x} ${vb.y} ${vb.width} ${captionY - vb.y + 14}`);
     const xml = new XMLSerializer().serializeToString(clone);
@@ -188,6 +199,10 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   const hv = hover ? listOf(hover.seat.listId) : null;
   const cand = hover && hv ? seatedOrder(hv)[hover.seat.idx] ?? null : null;
 
+  const seatLabel = (st: SeatInfo) => {
+    const l = listOf(st.listId), party = l.parties?.find(p => p.id === st.partyId);
+    return `${party && (s.factionSplits ?? []).includes(l.id) ? (lang === 'he' ? party.nameHe : party.nameEn) + ' · ' : ''}${listLabel(l, lang)}`;
+  };
   let body: React.ReactNode;
   if (layout === 'hemicycle') {
     const cx = W / 2, cy = 470, R = 400;
@@ -204,10 +219,12 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
           const p = pos[rtl ? pos.length - 1 - i : i]; if (!p) return null;
           const dim = selected && selected !== st.listId;
           return (
-            <circle key={i} className={`seat ${dim ? 'dim' : ''}`} cx={cx + p.x * R} cy={cy + p.y * R} r={rad * R} fill={st.color}
+            <g key={i}><circle className={`seat ${dim ? 'dim' : ''}`} cx={cx + p.x * R} cy={cy + p.y * R} r={rad * R} fill={st.color}
               data-seat="" data-bloc={st.bloc ?? "__none"} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? "var(--ink)" : "var(--surface)"} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`) ? 4 : 2}
               onMouseEnter={(e) => onSeat(st, e)} onMouseLeave={() => setHover(null)} onFocus={(e) => onSeat(st, e)} onBlur={() => setHover(null)}
-              onClick={() => setState({ selectedListId: selected === st.listId ? null : st.listId })} />
+              onClick={() => setState({ selectedListId: selected === st.listId ? null : st.listId })}><title>{seatLabel(st)}</title></circle>
+            {st.innerColor && <circle data-component-seat={st.partyId} pointerEvents="none" cx={cx + p.x * R} cy={cy + p.y * R} r={rad * R * .64} fill={st.innerColor} className={dim ? 'seat dim' : 'seat'} />}
+            </g>
           );
         })}
         <text className="centre-total" x={cx} y={cy - 40} textAnchor="middle" fontSize={44} fontWeight={700} fill="var(--ink)">{r.seatsAllocated}</text>
@@ -222,7 +239,8 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
         const bc = s.blocs.find(b => b.id === st.bloc)?.color ?? 'var(--muted)';
         return <g key={i}><rect data-bloc-region={st.bloc ?? '__none'} x={x-5} y={y-5} width={46} height={46} rx={8} fill={bc} stroke="none" className="wedge" />
           <rect data-seat="" className="seat" x={x} y={y} width={36} height={36} rx={4} fill={st.color} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? 'var(--ink)' : 'var(--surface)'} strokeWidth={3}
-            onMouseEnter={e => onSeat(st,e)} onMouseLeave={() => setHover(null)} onClick={() => setState({selectedListId: st.listId})} />
+            onMouseEnter={e => onSeat(st,e)} onMouseLeave={() => setHover(null)} onClick={() => setState({selectedListId: st.listId})}><title>{seatLabel(st)}</title></rect>
+          {st.innerColor && <circle data-component-seat={st.partyId} pointerEvents="none" cx={x+18} cy={y+18} r={12} fill={st.innerColor} />}
         </g>;
       })}
 
@@ -232,6 +250,8 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   // lists in the order their seats are drawn (blocs left to right, No bloc between their halves), each with the colours
   // its seats actually carry in the chosen colour mode
   const legendRows = [...new Set(seats.map(st => st.listId))].map(id => ({ l: listOf(id), n: r.lists.find(x => x.id === id)?.seats ?? 0, colors: [...new Set(seats.filter(st => st.listId === id).map(st => st.color))] }));
+  const componentName = (l: SimList, p: NonNullable<SimList['parties']>[number]) => { const name = lang === 'he' ? p.nameHe : p.nameEn; return name === listLabel(l,lang) ? name : `${name} · ${listLabel(l,lang)}`; };
+  const componentRows = legendRows.flatMap(({l}) => (s.factionSplits ?? []).includes(l.id) && showComponents ? (l.parties ?? []).map(p => ({l,p,n:seats.filter(st=>st.listId===l.id && st.partyId===p.id).length})).filter(x=>x.n>0) : []);
   const head = !compactProp && (expertControl || standardControl || expert);
   return (
     <div className="chamber">
@@ -252,9 +272,9 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
             const id=blocDisplayOrder(base)[w.band], color=base.blocs.find(b=>b.id===id)?.color ?? 'var(--muted)';
             return <g key={w.band}><path className="wedge" d={w.fill} fill={color} stroke="none" /></g>;
           })}
-          {baselineSeats.map((st,i)=> <circle key={i} data-reference-seat="" data-lost={changes.lost.has(`${st.listId}:${st.idx}`) ? '' : undefined}
+          {baselineSeats.map((st,i)=> <g key={i}><circle data-reference-seat="" data-lost={changes.lost.has(`${st.listId}:${st.idx}`) ? '' : undefined}
             cx={500+pos[i].x*400} cy={470+pos[i].y*400} r={rad*400} fill={st.color}
-            stroke={changes.lost.has(`${st.listId}:${st.idx}`)?'var(--ink)':'var(--surface)'} strokeWidth={changes.lost.has(`${st.listId}:${st.idx}`)?5:2} strokeDasharray={changes.lost.has(`${st.listId}:${st.idx}`)?'4 3':undefined} />)}
+            stroke={changes.lost.has(`${st.listId}:${st.idx}`)?'var(--ink)':'var(--surface)'} strokeWidth={changes.lost.has(`${st.listId}:${st.idx}`)?5:2} strokeDasharray={changes.lost.has(`${st.listId}:${st.idx}`)?'4 3':undefined} />{st.innerColor && <circle cx={500+pos[i].x*400} cy={470+pos[i].y*400} r={rad*400*.64} fill={st.innerColor} />}</g>)}
           <text x={500} y={440} textAnchor="middle" fontSize={44} fill="var(--ink)">{br.seatsAllocated}</text>
         </svg>
       </div>}
@@ -267,14 +287,15 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
           {cand ? <div><b>{shownName(cand)}</b> · {L('rank', 'מקום')} {hover.seat.idx + 1}{cand.notes?.map((n, k) => <div key={k} className="muted small">{lang === 'he' ? n.he : n.en}</div>)}</div>
             : hv.rosterUnavailable || hv.rosterTruncated ? <div className="muted">{L(`Seat ${hover.seat.idx + 1} of the list; candidate names are not available for this election`, `מושב ${hover.seat.idx + 1} של הרשימה; שמות המועמדים אינם זמינים לבחירות אלה`)}</div>
             : <div className="bad">{L('Vacant — the list has too few candidates', 'מושב ריק — אין די מועמדים ברשימה')}</div>}
-          {cand?.partyHe && <div className="muted small">{L('Party: ', 'מפלגה: ')}{cand.partyHe}</div>}
+          {cand?.partyHe && <div className="muted small">{seatLabel(hover.seat)}</div>}
           <div className="muted small">{hover.seat.remainder ? remainderHow : L('Seat won by whole quota', 'מנדט שהושג במודד שלם')}</div>
         </div>
       )}
       {!compactProp && (
         <div className="legend" role="group" aria-label={L('Lists in the Knesset', 'הרשימות בכנסת')} style={{ marginTop: 6 }}>
           {seats.some(st=>st.bloc===null) && <span className="row no-bloc-legend"><span className="swatch" style={{background:'color-mix(in srgb, var(--muted) 30%, var(--surface))',border:'1px dotted var(--muted)'}} />{L('No bloc','ללא גוש')}</span>}
-          {legendRows.map(({ l, n, colors }) => (
+          {componentRows.map(({l,p,n}) => <button key={`${l.id}:${p.id}`} aria-pressed={selected === l.id} onClick={()=>setState({selectedListId:selected === l.id ? null : l.id})}><span className="component-key" style={{background:p.color ?? l.color,borderColor:l.color}} />{componentName(l,p)} <b>{n}</b></button>)}
+          {legendRows.filter(({l})=>!componentRows.some(row=>row.l.id===l.id)).map(({ l, n, colors }) => (
             <button key={l.id} aria-pressed={selected === l.id} onClick={() => setState({ selectedListId: selected === l.id ? null : l.id })}>
               <span className="swatch" style={{ background: colors.length > 1 ? `linear-gradient(90deg, ${colors.map((c, i) => `${c} ${i / colors.length * 100}% ${(i + 1) / colors.length * 100}%`).join(', ')})` : colors[0] }} />{listLabel(l, lang)} <b className="tabnum">{n}</b>
             </button>

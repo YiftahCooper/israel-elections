@@ -1,3 +1,4 @@
+import { seatOrder } from './Hemicycle.tsx';
 import { GraphicChanges } from './GraphicChanges.tsx';
 import { useId, useLayoutEffect, useState } from 'react';
 import type { AllocationResult } from '../../engine/types.ts';
@@ -5,7 +6,7 @@ import type { Scenario } from '../../model/scenario.ts';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct, isolate } from '../format.ts';
-import { setState, useDigits } from '../store.ts';
+import { setState, useDigits, useStore } from '../store.ts';
 import { apportion } from '../../model/actions.ts';
 import { Seg } from './ui.tsx';
 
@@ -59,6 +60,8 @@ function rowsFor(s: Scenario, r: AllocationResult) {
 }
 
 function VotesVsSeats({ s, r }: { s: Scenario; r: AllocationResult }) {
+  const showComponents = useStore(st=>st.showComponentSeats);
+  const componentSeats = seatOrder(s,r,'list',showComponents);
   const L = useL();
   const lang = useLang();
   const digits = useDigits();
@@ -91,6 +94,7 @@ function VotesVsSeats({ s, r }: { s: Scenario; r: AllocationResult }) {
               <text x={rtl ? W - 4 : 4} y={y + barH + 3} textAnchor={rtl ? 'end' : 'start'} fill="var(--ink)"><title>{row.name}</title>{isolate(clip(row.name, labelW - 8))}</text>
               <rect className="bar" x={rtl ? W - labelW - vw : labelW} y={y + 0.5} width={vw} height={barH - 1} rx={2} fill={row.color} fillOpacity={0.28} stroke={row.color} strokeWidth={1} />
               {row.id !== '__unrep' && <rect className="bar" x={rtl ? W - labelW - sw : labelW} y={y + barH + gap} width={sw} height={barH} rx={2} fill={row.color} />}
+              {componentSeats.filter(st=>st.listId===row.id).map((st,k)=>st.innerColor && <rect key={k} data-component-seat={st.partyId} x={labelW+sw*k/row.seats} y={y+barH+gap+2} width={sw/row.seats} height={barH-4} fill={st.innerColor}><title>{(lang==='he' ? s.lists.find(l=>l.id===row.id)?.parties?.find(p=>p.id===st.partyId)?.nameHe : s.lists.find(l=>l.id===row.id)?.parties?.find(p=>p.id===st.partyId)?.nameEn) ?? ''} · {row.name}</title></rect>)}
               <text x={rtl ? W - labelW - Math.max(vw, sw) - 4 : labelW + Math.max(vw, sw) + 4} y={y + barH + 3} textAnchor={rtl ? 'end' : 'start'} className="tabnum">
                 {fmtPct(row.v, total, 1)}{row.id !== '__unrep' ? ` / ${fmtPct(row.seats, seats, 1)}` : ''}
               </text>
@@ -173,6 +177,7 @@ function ShareTable({ s, r }: { s: Scenario; r: AllocationResult }) {
 /** Votes vs seats as two unit charts: 200 squares of 0.5% of valid votes, and one square per seat.
  *  Votes for lists below the threshold are drawn hatched grey, so wasted votes stay visible. */
 export function Waffles({ s, r }: { s: Scenario; r: AllocationResult }) {
+  const showComponents = useStore(st=>st.showComponentSeats);
   const L = useL();
   const lang = useLang();
   const hatch = useId();
@@ -185,11 +190,10 @@ export function Waffles({ s, r }: { s: Scenario; r: AllocationResult }) {
   const voteCells: { color: string; id: string | null }[] = [];
   qualified.forEach((x, i) => { for (let k = 0; k < counts[i]; k++) voteCells.push({ color: x.l.color, id: x.l.id }); });
   for (let k = 0; k < counts[counts.length - 1]; k++) voteCells.push({ color: `url(#${hatch})`, id: null });
-  const seatCells: { color: string; id: string }[] = [];
-  qualified.forEach((x) => { for (let k = 0; k < x.lr.seats; k++) seatCells.push({ color: x.l.color, id: x.l.id }); });
+  const seatCells = seatOrder(s,r,'list',showComponents).map(st=>({color:st.color,id:st.listId,innerColor:st.innerColor,partyId:st.partyId}));
   // squares fill in reading order: from the top right in Hebrew
   const rtl = false; // graphics read left to right in Hebrew too: bars, axes and fill order are never mirrored (owner, 2026-11-04)
-  const grid = (items: { color: string; id: string | null }[], cols: number, title: string) => {
+  const grid = (items: { color: string; id: string | null; innerColor?: string; partyId?: string }[], cols: number, title: string) => {
     const size = 14, gap = 3;
     const rows = Math.ceil(items.length / cols);
     return (
@@ -197,7 +201,7 @@ export function Waffles({ s, r }: { s: Scenario; r: AllocationResult }) {
         <figcaption className="small ink2" style={{ marginBottom: 4 }}>{title}</figcaption>
         <svg viewBox={`0 0 ${cols * (size + gap)} ${rows * (size + gap)}`} width="100%" style={{ maxWidth: cols * (size + gap) }} role="img" aria-label={title}>
           <defs><pattern id={hatch} width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="4" height="4" fill="var(--grid)" /><line x1="0" y1="0" x2="0" y2="4" stroke="var(--muted)" strokeWidth="1.6" /></pattern></defs>
-          {items.map((c, i) => <rect key={i} x={(rtl ? cols - 1 - (i % cols) : i % cols) * (size + gap)} y={Math.floor(i / cols) * (size + gap)} width={size} height={size} rx={3} fill={c.color} style={{ cursor: c.id ? 'pointer' : 'default' }} onClick={() => c.id && setState({ selectedListId: c.id })}><title>{c.id ? listLabel(s.lists.find((l) => l.id === c.id)!, lang) : L('Votes for lists below the threshold', 'קולות לרשימות מתחת לחסימה')}</title></rect>)}
+          {items.map((c, i) => <g key={i}><rect x={(rtl ? cols - 1 - (i % cols) : i % cols) * (size + gap)} y={Math.floor(i / cols) * (size + gap)} width={size} height={size} rx={3} fill={c.color} style={{ cursor: c.id ? 'pointer' : 'default' }} onClick={() => c.id && setState({ selectedListId: c.id })}><title>{c.partyId && (s.factionSplits ?? []).includes(c.id ?? '') ? ((lang==='he' ? s.lists.find(l=>l.id===c.id)?.parties?.find(p=>p.id===c.partyId)?.nameHe : s.lists.find(l=>l.id===c.id)?.parties?.find(p=>p.id===c.partyId)?.nameEn) ?? '') + ' · ' : ''}{c.id ? listLabel(s.lists.find((l) => l.id === c.id)!, lang) : L('Votes for lists below the threshold', 'קולות לרשימות מתחת לחסימה')}</title></rect>{c.innerColor && <circle data-component-seat={c.partyId} pointerEvents="none" cx={(i%cols)*(size+gap)+size/2} cy={Math.floor(i/cols)*(size+gap)+size/2} r={size*.31} fill={c.innerColor} />}</g>)}
         </svg>
       </figure>
     );
