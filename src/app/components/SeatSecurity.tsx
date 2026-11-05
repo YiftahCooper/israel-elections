@@ -11,7 +11,7 @@ import { fmtInt, fmtSigned } from '../format.ts';
 import { runTasks } from '../analysisPool.ts';
 import { partsOf, type SecurityFigure, type SecurityItem, type SecurityPart } from '../analysisTasks.ts';
 import { setState } from '../store.ts';
-import { toVoteSource, type SourceChoice } from '../voteEdit.ts';
+import { stayingHome, toVoteSource, type SourceChoice } from '../voteEdit.ts';
 import { DisclosureToggle, Info, Seg, Slip } from './ui.tsx';
 import { minimalWinning } from '../coalitions.ts';
 
@@ -36,7 +36,9 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
   const [kind, setKind] = useState<Kind>('proportional');
   const [allBelow, setAllBelow] = useState(false);
   const input = useMemo(() => toEngineInput(s), [s]);
-  const key = useMemo(() => kind + JSON.stringify(input, (_, v) => (typeof v === 'bigint' ? v.toString() : v)), [input, kind]);
+  // new voters are capped by the voters staying home, which the engine input does not carry
+  const home = kind === 'new' ? stayingHome(s) : 0;
+  const key = useMemo(() => kind + home + JSON.stringify(input, (_, v) => (typeof v === 'bigint' ? v.toString() : v)), [input, kind, home]);
   const thr = Number(r.thresholdVotes);
   // Every row is known before any search, so the table is laid out at once in its final order and
   // fills in as figures arrive: lists that passed the threshold by seats, then votes; the rest by votes.
@@ -58,7 +60,7 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
   useEffect(() => {
     const m = new Map(figureCache.get(key) ?? noFigures);
     remember(key, m);
-    const todo = items.current.flatMap((item) => partsOf(item).filter((part) => !m.has(figureKey(item.id, part))).map((part) => ({ kind: 'security' as const, input, src: toVoteSource({ kind } as SourceChoice), part, item })));
+    const todo = items.current.flatMap((item) => partsOf(item).filter((part) => !m.has(figureKey(item.id, part))).map((part) => ({ kind: 'security' as const, input, src: toVoteSource({ kind } as SourceChoice, s), part, item })));
     setLive({ key, m: new Map(m) });
     if (!todo.length) return;
     return runTasks(todo, (k, value) => {

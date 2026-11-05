@@ -22,7 +22,7 @@ import { listLabel, referenceLabel, warningText } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtFrac, fmtInt, fmtPct, fmtRat, fmtSigned, signed } from '../format.ts';
 import { dispatch, dispatchMany, getState, useStore, previewAction, setState, toast, useFeature, useLevel, useVoteSource, useDigits, withSource } from '../store.ts';
-import { clampTarget, deltaAction, toVoteSource, type SourceChoice, votesForShare, voteSourceLabel } from '../voteEdit.ts';
+import { clampTarget, deltaAction, stayingHome, toVoteSource, type SourceChoice, votesForShare, voteSourceLabel } from '../voteEdit.ts';
 import { Candidates } from './Candidates.tsx';
 import { JointParties } from './JointParties.tsx';
 import { DecimalInput, Info, TextField } from './ui.tsx';
@@ -94,7 +94,7 @@ function useMargins(s: Scenario, l: SimList, seats: number, qualified: boolean) 
     if (l.withdrawn) return;
     const input = toEngineInput(s);
     const goals = qualified ? (['gain', 'lose', 'disqualify'] as const) : (['qualify'] as const);
-    const tasks = goals.map((goal) => ({ kind: 'listSearch', input, src: toVoteSource(src), goal, id: l.id, seats } as const));
+    const tasks = goals.map((goal) => ({ kind: 'listSearch', input, src: toVoteSource(src, s), goal, id: l.id, seats } as const));
     const out: Record<string, SearchResult> = {};
     job.current = runTasks(tasks, (i, v) => { out[goals[i]] = v; if (Object.keys(out).length === goals.length) setRes({ scenario: s, source: src, listId: l.id, value: { ...out } }); });
     return () => { job.current?.(); job.current = null; };
@@ -176,7 +176,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
   /** a typed or stepped seat count: the fewest votes that give it, as one ordinary (marked, undoable) vote edit */
   const seatsFrom = (n: number, from: SourceChoice) => {
     const shown = lr.qualified && n === lr.seats + 1 ? margins?.gain : lr.qualified && lr.seats > 0 && n === lr.seats - 1 ? margins?.lose : undefined;
-    searchThen(from, { kind: 'seatTarget', input: toEngineInput(s), src: toVoteSource(from), id: l.id, seats: lr.seats, n }, shown, (res) => {
+    searchThen(from, { kind: 'seatTarget', input: toEngineInput(s), src: toVoteSource(from, s), id: l.id, seats: lr.seats, n }, shown, (res) => {
       if (!res.found || res.votes === null) return notFound(res);
       const got = res.after?.lists.find((x) => x.id === l.id)?.seats ?? n;
       editTo(l.votes + (n > lr.seats ? 1 : -1) * Number(res.votes), from);
@@ -186,7 +186,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
   /** a boundary goal: keep the seats with the fewest votes, or sit just either side of the threshold */
   const goalFrom = (goal: 'lose' | 'qualify' | 'disqualify', from: SourceChoice) => {
     const shown = margins?.[goal];
-    searchThen(from, { kind: 'listSearch', input: toEngineInput(s), src: toVoteSource(from), goal, id: l.id, seats: lr.seats }, shown, (res) => {
+    searchThen(from, { kind: 'listSearch', input: toEngineInput(s), src: toVoteSource(from, s), goal, id: l.id, seats: lr.seats }, shown, (res) => {
       if (!res.found || res.votes === null || !res.exact) return notFound(res);
       const k = Number(res.votes);
       editTo(goal === 'qualify' ? l.votes + k : goal === 'disqualify' ? l.votes - k : l.votes - k + 1, from);
@@ -264,6 +264,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
           })()}</p>
           <p className="tiny quick-consequence" role="status">{consequence}</p></>}
           <LiveSlider key={l.id} l={l} ceiling={Number(r.totalValid)} onCommit={(v) => commit((from) => editTo(v, from))} />
+          {src.kind === 'new' && <p className="tiny ink2" style={{ margin: 0 }}>{L(`Staying home: ${fmtInt(stayingHome(s))}`, `לא הצביעו: ${fmtInt(stayingHome(s))}`)}</p>}
           {simple && <p className="tiny ink2" style={{ margin: 0 }}>{sourceName}</p>}
           </fieldset>
           <Feature id="voteSource"><SourcePicker s={s} l={l} /></Feature>

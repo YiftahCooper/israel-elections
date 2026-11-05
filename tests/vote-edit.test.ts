@@ -1,11 +1,14 @@
 import { describe, expect, it } from 'vitest';
 import { applyAction } from '../src/model/actions.ts';
-import { scenarioFromDataset, validVotes } from '../src/model/scenario.ts';
-import { clampTarget, deltaAction, votesForShare, type SourceChoice } from '../src/app/voteEdit.ts';
+import { scenarioFromDataset, toEngineInput, validVotes, votesCast } from '../src/model/scenario.ts';
+import { minimalChange, goals } from '../src/engine/analysis.ts';
+import { clampTarget, deltaAction, stayingHome, toVoteSource, votesForShare, type SourceChoice } from '../src/app/voteEdit.ts';
 import { loadDataset } from './helpers.ts';
 
 const base = scenarioFromDataset(loadDataset('k26'));
 const likud = base.lists.find((l) => l.id === '26-מחל')!;
+// the largest list below the threshold
+const allocateBelow = () => [...base.lists].filter((l) => !l.withdrawn && l.votes > 0 && l.votes / validVotes(base) < Number(base.rules.thresholdPct) / 100).sort((a, b) => b.votes - a.votes)[0].id;
 const edit = (target: number, src: SourceChoice) => {
   const s0 = base; const l = s0.lists.find((x) => x.id === likud.id)!;
   const a = deltaAction(s0, l, clampTarget(s0, l, target, src) - l.votes, src)!;
@@ -26,6 +29,26 @@ describe('every vote edit follows the chosen source', () => {
   });
   it('new voters: total changes by exactly the difference', () => {
     expect(validVotes(edit(likud.votes + 7, { kind: 'new' }))).toBe(validVotes(base) + 7);
+  });
+  it('new voters never push turnout past 100%: they come only from voters staying home', () => {
+    const home = stayingHome(base);
+    expect(home).toBe(base.registered - votesCast(base));
+    const s = edit(likud.votes + 10_000_000, { kind: 'new' });
+    expect(s.lists.find((l) => l.id === likud.id)!.votes).toBe(likud.votes + home);
+    expect(votesCast(s)).toBe(s.registered);
+    expect(stayingHome(s)).toBe(0);
+    const l = s.lists.find((x) => x.id === likud.id)!;
+    expect(clampTarget(s, l, l.votes + 1, { kind: 'new' })).toBe(l.votes); // nobody left at home
+    expect(clampTarget(s, l, l.votes - 1, { kind: 'new' })).toBe(l.votes - 1); // losing voters to home is always possible
+  });
+  it('searches with new voters respect the same cap', () => {
+    const below = allocateBelow();
+    const src = toVoteSource({ kind: 'new' }, base);
+    expect(src).toEqual({ kind: 'new', max: BigInt(stayingHome(base)) });
+    const open = minimalChange(toEngineInput(base), below, src, goals.qualify(below));
+    expect(open.found).toBe(true);
+    const tight = { ...base, registered: votesCast(base) + Number(open.votes) - 1 };
+    expect(minimalChange(toEngineInput(tight), below, toVoteSource({ kind: 'new' }, tight), goals.qualify(below)).found).toBe(false);
   });
   it('transfer: only the two lists change', () => {
     const s = edit(likud.votes + 1000, { kind: 'transfer', listId: '26-ב' });

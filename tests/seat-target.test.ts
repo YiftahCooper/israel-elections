@@ -16,7 +16,7 @@ const seatsOf = (s: Scenario, id: string) => allocate(toEngineInput(s)).lists.fi
 function reach(s: Scenario, id: string, n: number, src: SourceChoice) {
   const l = s.lists.find((x) => x.id === id)!;
   const seats = seatsOf(s, id);
-  const res = seatTarget(toEngineInput(s), toVoteSource(src), id, seats, n);
+  const res = seatTarget(toEngineInput(s), toVoteSource(src, s), id, seats, n);
   expect(res.found).toBe(true);
   const k = Number(res.votes) * (n > seats ? 1 : -1);
   const at = (d: number) => { const a = deltaAction(s, l, d, src); return a ? applyAction(s, a) : s; };

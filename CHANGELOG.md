@@ -2,6 +2,7 @@
 
 ## 5 November 2026 — release review
 
+- Turnout can no longer pass 100% through vote edits: “new voters” come only from registered voters who stayed home, in the vote field, slider, quick buttons, seat searches, seat security, bloc totals and What if… presets; the list panel shows how many stayed home. Lowering registered voters below votes cast still warns rather than blocks.
 - Personal editing preference: count joint lists’ seats by party by default, with an inline remembered default, unedited baselines and portable saved/shared faction counting.
 
 - After the election (research): sourced "Recommendations to the President" groupings for 1984, 1988, 2003 and 2006, and a partial one for 1981; 1977 and 1992 documented as gaps, 1996/1999 as direct-election years with no recommendation round (docs/research/pm-recommendations-1977-2006.md).

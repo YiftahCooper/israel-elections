@@ -8,7 +8,7 @@ import type { AllocationInput, AllocationResult, ListInput } from './types.ts';
 /** Where the extra (or removed) votes come from / go to. These are different counterfactuals and
  *  generally give different answers. */
 export type VoteSource =
-  | { kind: 'new' } // additional voters: valid total grows
+  | { kind: 'new'; max?: bigint } // additional voters: valid total grows, by at most `max` (the voters staying home)
   | { kind: 'transfer'; listId: string } // from (or to) one other list: valid total fixed
   | { kind: 'proportional'; listIds: string[] }; // from (or to) a group, in proportion to their votes; [] = all other lists
 
@@ -31,7 +31,7 @@ function perturbation(lists: readonly ListInput[], target: string, source: VoteS
     v[t] += sign * k;
     return v;
   };
-  if (source.kind === 'new') return moveTarget;
+  if (source.kind === 'new') return (k) => (dir === 'gain' && source.max !== undefined && k > source.max ? null : moveTarget(k));
   if (source.kind === 'transfer') {
     const o = lists.findIndex((l) => l.id === source.listId);
     return (k) => {
@@ -110,7 +110,7 @@ function limitFor(input: AllocationInput, target: string, source: VoteSource, di
   const total = input.lists.reduce((s, l) => s + l.votes, 0n);
   const t = input.lists.find((l) => l.id === target)?.votes ?? 0n;
   if (dir === 'lose') return t;
-  if (source.kind === 'new') return total * 4n + 1000n;
+  if (source.kind === 'new') { const open = total * 4n + 1000n; return source.max !== undefined && source.max < open ? source.max : open; }
   if (source.kind === 'transfer') return input.lists.find((l) => l.id === source.listId)?.votes ?? 0n;
   return input.lists.filter((l) => l.id !== target && (source.listIds.length === 0 || source.listIds.includes(l.id))).reduce((s, l) => s + l.votes, 0n);
 }

@@ -3,11 +3,20 @@ import {englishLabel} from '../data/names.ts';
 // Shared by the number field, slider, percentage fields, quick buttons and boundary tools so that
 // the same counterfactual is always applied (and matches analysis.perturb exactly).
 import type { VoteSource } from '../engine/analysis.ts';
-import type { Action, Scenario, SimList } from '../model/scenario.ts';
+import { votesCast, type Action, type Scenario, type SimList } from '../model/scenario.ts';
 
 export type SourceChoice = { kind: 'new' } | { kind: 'transfer'; listId: string } | { kind: 'proportional' };
 
-export const toVoteSource = (c: SourceChoice): VoteSource => (c.kind === 'proportional' ? { kind: 'proportional', listIds: [] } : c);
+/** Registered voters who did not vote: the most that "new voters" can add before turnout would pass 100%. */
+export const stayingHome = (s: Scenario): number => Math.max(0, s.registered - votesCast(s));
+
+/** The engine's form of a source. New voters need the scenario: they are capped at the voters staying home. */
+export function toVoteSource(c: Exclude<SourceChoice, { kind: 'new' }>): VoteSource;
+export function toVoteSource(c: SourceChoice, s: Scenario): VoteSource;
+export function toVoteSource(c: SourceChoice, s?: Scenario): VoteSource {
+  if (c.kind === 'proportional') return { kind: 'proportional', listIds: [] };
+  return c.kind === 'new' ? { kind: 'new', max: BigInt(stayingHome(s!)) } : c;
+}
 
 /** The action that changes `l` by `delta` votes, taking/returning them per `src`. */
 export function deltaAction(s: Scenario, l: SimList, delta: number, src: SourceChoice, fallbackShares?: Record<string, number>): Action | null {
@@ -32,9 +41,10 @@ export function deltaAction(s: Scenario, l: SimList, delta: number, src: SourceC
   return { type: 'redistribute', from: [l.id], to, votes: -delta };
 }
 
-/** Largest change the source can supply (for gains); losses are limited by the list's own votes. */
+/** Largest change the source can supply (for gains); losses are limited by the list's own votes.
+ *  New voters come from those staying home, so turnout never passes 100%. */
 export function maxGain(s: Scenario, l: SimList, src: SourceChoice): number {
-  if (src.kind === 'new') return Number.MAX_SAFE_INTEGER;
+  if (src.kind === 'new') return stayingHome(s);
   if (src.kind === 'transfer') return s.lists.find((x) => x.id === src.listId)?.votes ?? 0;
   return s.lists.filter((x) => x.id !== l.id && !x.withdrawn).reduce((t, x) => t + x.votes, 0);
 }

@@ -12,6 +12,7 @@ import { scenarioFromDataset, toEngineInput, votesCast, type Action, type Scenar
 import { listLabel } from './derive.ts';
 import type { Lang } from './i18n.ts';
 import { fmtInt } from './format.ts';
+import { toVoteSource } from './voteEdit.ts';
 
 type Text = (s: Scenario, lang: Lang) => string;
 export interface WhatIfPreset { id: string; titleEn: string; titleHe: string; experimental?: boolean; body: Text; actions: (s: Scenario) => Action[] | null }
@@ -26,7 +27,7 @@ const joinNames = (names: string[], lang: Lang) => names.length < 2 ? names.join
 
 /** minimal transfer/new votes for `id` to pass the threshold, as an action */
 function toPass(s: Scenario, id: string, from?: string): Action[] | null {
-  const src = from ? { kind: 'transfer' as const, listId: from } : { kind: 'new' as const };
+  const src = toVoteSource(from ? { kind: 'transfer', listId: from } : { kind: 'new' }, s);
   const m = minimalChange(toEngineInput(s), id, src, goals.qualify(id));
   if (!m.found || m.votes === null) return null;
   const k = Number(m.votes);

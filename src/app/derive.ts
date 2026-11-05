@@ -76,7 +76,7 @@ export interface ScenarioIssue { level: 'error' | 'warning'; en: string; he: str
 export function scenarioIssues(s: Scenario, r: AllocationResult): ScenarioIssue[] {
   const out: ScenarioIssue[] = [];
   const cast = votesCast(s);
-  if (cast > s.registered) out.push({ level: 'warning', en: `Votes cast (${cast.toLocaleString()}) exceed registered voters (${s.registered.toLocaleString()}); turnout would be above 100%. Raise the electorate or reduce votes.`, he: `מספר המצביעים (${cast.toLocaleString()}) עולה על מספר בעלי זכות הבחירה (${s.registered.toLocaleString()}); שיעור ההצבעה עולה על 100%.` });
+  if (cast > s.registered) out.push({ level: 'warning', en: `Votes cast (${cast.toLocaleString()}) exceed registered voters (${s.registered.toLocaleString()}); turnout would be above 100%. Raise the electorate or reduce votes.`, he: `מספר המצביעים (${cast.toLocaleString()}) עולה על מספר בעלי זכות הבחירה (${s.registered.toLocaleString()}); שיעור ההצבעה עולה על 100%. הגדילו את מספר בעלי זכות הבחירה או הפחיתו קולות.` });
   for (const l of r.lists) {
     const sl = s.lists.find((x) => x.id === l.id)!;
     // an unavailable or truncated roster is unknown beyond what is listed, not short of candidates
