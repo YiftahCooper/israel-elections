@@ -2,6 +2,8 @@
 
 ## 5 November 2026 — release review
 
+- Owner answers: use Hebrew ballot-letter logo fallbacks and neutral constituent badges, shorten data status with full details behind (i), and isolate Hebrew-only candidate names with an English explanation.
+
 - QA2 leftovers: use shared analysis/settings pickers, tighten stable list-panel spacing, place global notices after the work area, and compact the phone header while keeping every control directly available.
 
 - Analysis screens: fixed-scale seat-safety tracks, stable sensitivity loading, complete threshold labels and round axis ticks, nearby chart names with Hebrew phone alignment, inline formula help and compact allocation tables, equal comparison options and compact aligned coalition rows.

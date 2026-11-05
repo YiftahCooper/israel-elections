@@ -181,7 +181,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
     const list = s.lists.find(l => l.id === p.listId)!;
     const party = list.parties?.find(x => x.id === p.partyId);
     const label = party ? `${lang === 'he' ? party.nameHe : party.nameEn} (${listLabel(list, lang)})` : listLabel(list, lang);
-    return { l: { id: p.id, color: p.color, bloc: p.bloc }, listId: p.listId, partyId: p.partyId, logo: party ? party.logo : list.logo, n: p.n, label };
+    return { l: { id: p.id, color: p.color, bloc: p.bloc }, letters: party ? '' : list.letters, listId: p.listId, partyId: p.partyId, logo: party ? party.logo : list.logo, n: p.n, label };
   });
   const [inspected, setInspected] = useState<{ election: string; ids: string[] } | null>(null);
   const selected = inspected?.election === s.electionId ? inspected.ids.filter(id => seated.some(x => x.l.id === id)) : [];
@@ -235,7 +235,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
     const pivotal = seats >= majority ? ids.filter(id => seats - seatsOf(id) < majority) : [];
     const tag = pivotal.length > 0 && pivotal.length < ids.length;
     return <>
-      <ul className="coal-partners">{ids.map(id => <li key={id}><Slip letters="" name={nm(id)} logo={seated.find(x => x.l.id === id)?.logo} color={colorOf(id)} size="sm" />{nm(id)} <b>{seatsOf(id)}</b> {tag && pivotal.includes(id) && <span className="small">{L('Pivotal', 'חיונית לרוב')}</span>}</li>)}</ul>
+      <ul className="coal-partners">{ids.map(id => <li key={id}><Slip letters={seated.find(x => x.l.id === id)?.letters ?? ''} name={nm(id)} logo={seated.find(x => x.l.id === id)?.logo} color={colorOf(id)} size="sm" />{nm(id)} <b>{seatsOf(id)}</b> {tag && pivotal.includes(id) && <span className="small">{L('Pivotal', 'חיונית לרוב')}</span>}</li>)}</ul>
       <div className="row small">{[...s.blocs, { id: null, nameHe: 'ללא גוש', nameEn: 'No bloc' }].map(b => {
         const n = seated.filter(x => ids.includes(x.l.id) && x.l.bloc === b.id).reduce((n, x) => n + x.n, 0);
         return n > 0 && <span key={b.id ?? 'none'}>{blocName(b)} <b>{n}</b></span>;
@@ -257,10 +257,10 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
         </div>
       )}
       <div className="coal-chips">
-        {seated.map(({ l, n, label, logo }) => {
+        {seated.map(({ l, n, label, logo, letters }) => {
           const st = picked.includes(l.id) ? 'in' : excluded.includes(l.id) ? 'out' : '';
           return <div key={l.id} className="coal-choice">
-            <span className="coal-who"><Slip letters="" name={label} logo={logo} color={l.color} size="sm" /><span>{label} <b>{n}</b></span></span>
+            <span className="coal-who"><Slip letters={letters} name={label} logo={logo} color={l.color} size="sm" /><span>{label} <b>{n}</b></span></span>
             <Seg label={label} value={st || 'any'} onChange={v => choose(l.id, v)} options={[{ v: 'in', label: L('In', 'בפנים') }, { v: 'out', label: L('Out', 'בחוץ') }, { v: 'any', label: L('Any', 'כל אפשרות') }]} />
           </div>;
         })}

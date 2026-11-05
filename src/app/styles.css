@@ -1085,6 +1085,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .band-levels .seg { flex-wrap: nowrap; }
 .band .election-about { inline-size: 200px; min-block-size: 34px; display: flex; align-items: center; }
 .band .election-about summary { white-space: normal; }
+@media (min-width: 761px) { .band .election-about summary { padding-block: 2px; line-height: 15px; } }
 .band .scenario-switcher .choice-trigger { inline-size: 100%; white-space: normal; text-align: start; }
 .band .scenario-switcher .choice-current { overflow: visible; min-inline-size: 0; overflow-wrap: anywhere; }
 .board-choices .choice-trigger { white-space: normal; text-align: start; }

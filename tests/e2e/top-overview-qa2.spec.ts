@@ -62,10 +62,10 @@ test('show all stays in place and every stat value shares its row baseline', asy
 });
 
 test('fallback slips use the same identity in the list and inspector', async ({ page }) => {
-  const row = page.locator('.lb-row').filter({ has: page.locator('.monogram') }).first();
-  const identity = await row.locator('.monogram').evaluate(e => e.textContent ?? '');
+  const row = page.locator('.lb-row').filter({ has: page.locator('.slip:not(.logo)') }).first();
+  const identity = await row.locator('.slip:not(.logo)').first().evaluate(e => e.textContent ?? '');
   await row.click();
-  await expect(page.locator('.side-panel .sp-head .monogram, .side-panel header .monogram').first()).toHaveText(identity);
+  await expect(page.locator('.side-panel .sp-head .slip:not(.logo)').first()).toHaveText(identity);
 });
 
 

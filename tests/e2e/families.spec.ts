@@ -10,7 +10,7 @@ async function edit(page:Page){await page.getByRole('button',{name:'Edit members
 test('hero charts, collapsed table, policy view, exact pending tooltip',async({page})=>{
  await start(page);await expect(page.locator('.family-exact')).not.toHaveAttribute('open');
  await expect(page.locator('.family-plots svg').first()).toHaveJSProperty('clientHeight',300);
- await page.locator('.family-plots [role=button]').filter({hasText:'Gazette unverified'}).first().focus();await expect(page.getByRole('tooltip')).toContainText('Gazette unverified');
+ await page.locator('.family-plots [role=button]').filter({hasText:'Gazette not yet verified'}).first().focus();await expect(page.getByRole('tooltip')).toContainText('Gazette not yet verified');
  await page.getByText('Exact figures (26 elections)',{exact:true}).click();await expect(page.locator('.family-table tbody tr')).toHaveCount(26);await expect(page.locator('.family-table')).toContainText('52,982');
  await page.getByRole('group',{name:'Mixed-list policy',exact:true}).getByRole('button',{name:'Count all',exact:true}).click();
  await expect(page.locator('.family-table')).toContainText('55,817');await expect(page.locator('.family-profile')).toContainText('Sourced draft interpretation');await expect(page.locator('.family-chip')).toHaveCount(9);
