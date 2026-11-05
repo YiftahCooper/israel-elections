@@ -15,10 +15,14 @@ The workflow always checks out main; issue bodies are parsed as data, never code
 Generation fails rather than silently deploying an empty index on API failure.
 
 Both the generator and browser validate the template and restrict share links to
-the app's own origin/path. Old deployments without a valid index can fall back to
-the paginated anonymous API. That fallback retains the ten-minute cache, shared
-in-flight request and retry throttle; stale cached entries remain visible if
-refresh fails. Normal visits make no GitHub API requests.
+the app's own origin/path. Visitors' browsers never call the GitHub API (the
+anonymous fallback was removed on 5 November 2026 because it could exhaust a
+shared IP's 60-requests-an-hour quota): they read only the Pages index. A failed
+read waits at least ten minutes, or as long as a 429/503 `Retry-After` asks (up
+to a day); the wait is stored in the browser so reloads do not retry early, the
+page retries by itself when it ends, and stale cached entries remain visible.
+The generator retries a rate-limited API page after GitHub's `Retry-After` or
+`x-ratelimit-reset` (twice, at most a minute each) and otherwise fails the run.
 
 Reproduce the deployed index using Node 24:
 `GITHUB_TOKEN=<provided securely in environment> node scripts/build-gallery.ts`,

@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { buildBody, parseBody, normalizeSearch, filterEntries, GalleryClient, validShareLink } from '../src/app/gallery/gallery.ts';
+import { buildBody, parseBody, normalizeSearch, filterEntries, GalleryClient, GalleryError, retryAfterMs, validShareLink } from '../src/app/gallery/gallery.ts';
 const site = 'https://yiftahcooper.github.io/israel-elections/';
 const scenario = { name: 'שלום', description: '<img src=x onerror=alert(1)>\nDetails', electionId: 'k26', year: '2026', tags: ['test'], shareLink: `${site}#s=abc_12` };
 describe('gallery template', () => {
@@ -47,41 +47,55 @@ describe('API', () => {
     await new GalleryClient(site, fetcher, storage).load();
     expect(fetcher).toHaveBeenCalledTimes(1);
   });
-  it('rejects unsafe index entries and falls back to validated issue data', async () => {
-    const fetcher = vi.fn().mockResolvedValueOnce(new Response(JSON.stringify({ timestamp: Date.now(), entries: [{ ...scenario, shareLink: 'https://evil.example/#s=abc' }] })))
-      .mockResolvedValueOnce(new Response('[]'));
-    expect((await new GalleryClient(site, fetcher).load()).entries).toEqual([]);
-    expect(fetcher).toHaveBeenCalledTimes(2);
-    expect(fetcher.mock.calls[1][0]).toContain('api.github.com');
+  const memory = () => { const values = new Map<string, string>(); return { getItem: (k: string) => values.get(k) ?? null, setItem: (k: string, v: string) => { values.set(k, v); } }; };
+  it('rejects unsafe index entries and never falls back to the GitHub API', async () => {
+    const fetcher = vi.fn().mockResolvedValue(new Response(JSON.stringify({ timestamp: Date.now(), entries: [{ ...scenario, shareLink: 'https://evil.example/#s=abc' }] })));
+    await expect(new GalleryClient(site, fetcher).load()).rejects.toThrow('network');
+    expect(fetcher).toHaveBeenCalledTimes(1);
+    expect(fetcher.mock.calls.every(([url]) => !String(url).includes('api.github.com'))).toBe(true);
   });
-
   it('calls the global fetch unbound by default (browsers reject fetch called as a method)', async () => {
     const strict = vi.fn(function (this: unknown) {
       if (this !== undefined && this !== globalThis) throw new TypeError('Illegal invocation');
-      return Promise.resolve(new Response('[]', { status: 200 }));
+      return Promise.resolve(new Response(JSON.stringify({ timestamp: Date.now(), entries: [] }), { status: 200 }));
     });
     vi.stubGlobal('fetch', strict);
     try { await expect(new GalleryClient(site).load()).resolves.toMatchObject({ entries: [] }); }
     finally { vi.unstubAllGlobals(); }
   });
-  const issue = { number: 1, body: buildBody(scenario), user: { login: 'alice' }, created_at: '2026-01-01', reactions: { '+1': 3 } };
-  it('paginates and caches, including manual refresh within ten minutes', async () => {
-    const fetcher = vi.fn().mockResolvedValueOnce(new Response('', { status: 404 })).mockResolvedValueOnce(new Response(JSON.stringify(Array(100).fill(issue)))).mockResolvedValueOnce(new Response('[]'));
-    const values = new Map<string, string>();
-    const storage = { getItem: (k: string) => values.get(k) ?? null, setItem: (k: string, v: string) => { values.set(k, v); } };
-    const client = new GalleryClient(site, fetcher, storage);
-    expect((await client.load()).entries).toHaveLength(100);
-    await client.load();
-    expect(fetcher).toHaveBeenCalledTimes(3);
-    expect(fetcher.mock.calls[2][0]).toContain('page=2');
-    expect((await new GalleryClient(site, fetcher, storage).load()).entries).toHaveLength(100);
+  it('honours 429 Retry-After across reloads and keeps cached entries', async () => {
+    const storage = memory();
+    const entry = { ...scenario, issue: 1, author: 'alice', date: '2026-01-01', likes: 3 };
+    const stamp = Date.now(), ok = vi.fn().mockImplementation(async () => new Response(JSON.stringify({ timestamp: stamp, entries: [entry] })));
+    await new GalleryClient(site, ok, storage).load();
+    vi.useFakeTimers({ now: Date.now() + 11 * 60_000 });
+    try {
+      const limited = vi.fn().mockResolvedValue(new Response('', { status: 429, headers: { 'Retry-After': '3600' } }));
+      const client = new GalleryClient(site, limited, storage);
+      const error = await client.load().then(() => { throw new Error('loaded'); }, (e: unknown) => e as GalleryError);
+      expect(error).toBeInstanceOf(GalleryError);
+      expect(error.message).toBe('rate-limit');
+      expect(error.retryAt - Date.now()).toBe(3_600_000);
+      expect(client.cached()?.entries).toEqual([entry]);
+      // a reload (a new client) within the hour does not ask again
+      await expect(new GalleryClient(site, limited, storage).load()).rejects.toThrow('rate-limit');
+      vi.setSystemTime(Date.now() + 30 * 60_000);
+      await expect(new GalleryClient(site, limited, storage).load()).rejects.toThrow('rate-limit');
+      expect(limited).toHaveBeenCalledTimes(1);
+      vi.setSystemTime(Date.now() + 31 * 60_000);
+      await expect(new GalleryClient(site, ok, storage).load()).resolves.toMatchObject({ entries: [entry] });
+    } finally { vi.useRealTimers(); }
   });
-  it('reports rate limits and network errors and throttles retries', async () => {
-    const fetcher = vi.fn().mockResolvedValue(new Response('', { status: 403 }));
-    const client = new GalleryClient(site, fetcher);
-    await expect(client.load()).rejects.toThrow('rate-limit');
-    await expect(client.load()).rejects.toThrow('rate-limit');
-    expect(fetcher).toHaveBeenCalledTimes(2);
-    await expect(new GalleryClient(site, vi.fn().mockRejectedValue(new Error('offline'))).load()).rejects.toThrow('network');
+  it('waits at least ten minutes after network errors and reads HTTP-date Retry-After', async () => {
+    const offline = vi.fn().mockRejectedValue(new Error('offline'));
+    const client = new GalleryClient(site, offline);
+    await expect(client.load()).rejects.toThrow('network');
+    await expect(client.load()).rejects.toThrow('network');
+    expect(offline).toHaveBeenCalledTimes(1);
+    const now = Date.parse('2026-11-05T10:00:00Z');
+    expect(retryAfterMs('120', now)).toBe(120_000);
+    expect(retryAfterMs('Thu, 05 Nov 2026 10:05:00 GMT', now)).toBe(300_000);
+    expect(retryAfterMs('soon', now)).toBeNull();
+    expect(retryAfterMs(null, now)).toBeNull();
   });
 });

@@ -1,9 +1,10 @@
 export interface GalleryScenario { identityColor?: string; name: string; description: string; electionId: string; year: string; tags: string[]; shareLink: string }
 export interface GalleryEntry extends GalleryScenario { issue: number; author: string; date: string; likes: number }
 const REPO = 'https://github.com/YiftahCooper/israel-elections';
-const API = 'https://api.github.com/repos/YiftahCooper/israel-elections/issues?labels=scenario&state=open&per_page=100';
 const TTL = 600_000;
 const KEY = 'israel-elections:gallery:v1';
+const RETRY_KEY = 'israel-elections:gallery:retry:v1';
+const DAY = 86_400_000;
 export function validShareLink(value: string, site: string): boolean {
   try {
     const url = new URL(value), base = new URL(site);
@@ -40,10 +41,27 @@ export function validSnapshot(value: unknown, site: string): value is Snapshot {
     typeof e.date === 'string' && Number.isFinite(Date.parse(e.date)) && Number.isFinite(e.likes) && e.likes >= 0);
 }
 type StorageLike = Pick<Storage, 'getItem' | 'setItem'>;
+export type GalleryFailure = 'rate-limit' | 'network';
+/** A failed load: its kind and when the next attempt is allowed. */
+export class GalleryError extends Error {
+  retryAt: number;
+  constructor(kind: GalleryFailure, retryAt: number) { super(kind); this.retryAt = retryAt; }
+}
+/** Milliseconds a Retry-After header asks for (delta-seconds or an HTTP date), or null. */
+export function retryAfterMs(header: string | null, now = Date.now()): number | null {
+  if (!header?.trim()) return null;
+  const seconds = Number(header);
+  if (Number.isFinite(seconds)) return seconds >= 0 ? seconds * 1000 : null;
+  const date = Date.parse(header);
+  return Number.isFinite(date) ? Math.max(0, date - now) : null;
+}
+/** Reads the community index that the Pages workflow builds once for everyone (scripts/build-gallery.ts).
+ *  Visitors' browsers never call the GitHub API, so no visit can use up anyone's GitHub quota. The index is
+ *  cached for ten minutes; a failure waits at least ten minutes, or longer when a 429/503 says Retry-After,
+ *  and that wait is kept in storage so reloading the page does not retry early. Stale entries stay visible. */
 export class GalleryClient {
   private snapshot?: Snapshot;
-  private attempted = 0;
-  private failure?: Error;
+  private backoff?: { kind: GalleryFailure; until: number };
   private pending?: Promise<Snapshot>;
   private site: string;
   private fetcher: typeof fetch;
@@ -54,52 +72,41 @@ export class GalleryClient {
       const cached = JSON.parse(storage?.getItem(KEY) ?? 'null');
       if (validSnapshot(cached, site)) this.snapshot = cached;
     } catch { /* unavailable/corrupt cache */ }
+    try {
+      const b = JSON.parse(storage?.getItem(RETRY_KEY) ?? 'null');
+      if (b && (b.kind === 'rate-limit' || b.kind === 'network') && Number.isFinite(b.until) && b.until > Date.now() && b.until <= Date.now() + DAY) this.backoff = b;
+    } catch { /* unavailable/corrupt */ }
   }
   cached() { return this.snapshot; }
   load(): Promise<Snapshot> {
     if (this.pending) return this.pending;
-    if (Date.now() - this.attempted < TTL && this.failure) return Promise.reject(this.failure);
+    if (this.backoff && Date.now() < this.backoff.until) return Promise.reject(new GalleryError(this.backoff.kind, this.backoff.until));
     if (this.snapshot && Date.now() - (this.snapshot.fetchedAt ?? this.snapshot.timestamp) < TTL) return Promise.resolve(this.snapshot);
-    this.attempted = Date.now();
-    this.pending = this.fetchAll().finally(() => { this.pending = undefined; });
+    this.pending = this.fetchIndex().finally(() => { this.pending = undefined; });
     return this.pending;
   }
   private remember(snapshot: Snapshot) {
     this.snapshot = snapshot;
-    this.failure = undefined;
-    try { this.storage?.setItem(KEY, JSON.stringify(snapshot)); } catch { /* memory cache still works */ }
+    this.backoff = undefined;
+    try { this.storage?.setItem(KEY, JSON.stringify(snapshot)); this.storage?.setItem(RETRY_KEY, 'null'); } catch { /* memory cache still works */ }
     return snapshot;
   }
-  private async fetchAll(): Promise<Snapshot> {
-    try {
-      // Normal reads use Pages, never the anonymous GitHub quota. The published
-      // index is validated exactly like issue bodies before exposing any links.
-      try {
-        const response = await this.fetcher(new URL('./data/scenarios.json', this.site).href, { signal: AbortSignal.timeout(15000) });
-        if (!response.ok) throw new Error('index');
-        const index: unknown = await response.json();
-        if (!validSnapshot(index, this.site)) throw new Error('index');
-        return this.remember({ entries: index.entries, timestamp: index.timestamp, fetchedAt: Date.now() });
-      } catch { /* old deployments and transient Pages failures may use the API */ }
-
-      const entries: GalleryEntry[] = [];
-      // Bounded to ten pages per refresh so one visit cannot consume an IP's hourly quota.
-      for (let page = 1; page <= 10; page++) {
-        const response = await this.fetcher(`${API}&page=${page}`, { headers: { Accept: 'application/vnd.github+json' }, signal: AbortSignal.timeout(15000) });
-        if (!response.ok) throw new Error(response.status === 403 || response.status === 429 ? 'rate-limit' : 'network');
-        const rows: unknown = await response.json();
-        if (!Array.isArray(rows)) throw new Error('network');
-        for (const row of rows) {
-          if (!row || row.pull_request || typeof row.body !== 'string') continue;
-          const scenario = parseBody(row.body, this.site);
-          if (scenario && Number.isInteger(row.number) && row.number > 0 && typeof row.user?.login === 'string' && typeof row.created_at === 'string' && Number.isFinite(Date.parse(row.created_at))) entries.push({ ...scenario, issue: row.number, author: row.user.login, date: row.created_at, likes: Math.max(0, Number(row.reactions?.['+1']) || 0) });
-        }
-        if (rows.length < 100) break;
-      }
-      return this.remember({ entries, timestamp: Date.now() });
-    } catch (error) {
-      this.failure = new Error(error instanceof Error && error.message === 'rate-limit' ? 'rate-limit' : 'network');
-      throw this.failure;
-    }
+  private fail(kind: GalleryFailure, wait: number) {
+    this.backoff = { kind, until: Date.now() + Math.min(DAY, Math.max(TTL, wait)) };
+    try { this.storage?.setItem(RETRY_KEY, JSON.stringify(this.backoff)); } catch { /* memory backoff still works */ }
+    return new GalleryError(kind, this.backoff.until);
+  }
+  private async fetchIndex(): Promise<Snapshot> {
+    let response: Response;
+    try { response = await this.fetcher(new URL('./data/scenarios.json', this.site).href, { signal: AbortSignal.timeout(15000) }); }
+    catch { throw this.fail('network', TTL); }
+    if (response.status === 429 || response.status === 503)
+      throw this.fail(response.status === 429 ? 'rate-limit' : 'network', retryAfterMs(response.headers.get('Retry-After')) ?? TTL);
+    if (!response.ok) throw this.fail('network', TTL);
+    let index: unknown;
+    try { index = await response.json(); } catch { throw this.fail('network', TTL); }
+    // the published index is validated exactly like issue bodies before exposing any links
+    if (!validSnapshot(index, this.site)) throw this.fail('network', TTL);
+    return this.remember({ entries: index.entries, timestamp: index.timestamp, fetchedAt: Date.now() });
   }
 }

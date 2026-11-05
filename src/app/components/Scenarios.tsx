@@ -7,14 +7,14 @@ import { exportAnnotations } from '../scenarioExport.ts';
 import { SCENARIO_PALETTE, liveScenarioColor, scenarioColor } from '../scenarioIdentity.ts';
 import { dispatch } from '../store.ts';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Copy, Download, FolderOpen, GitCompare, Link2, RotateCcw, Save, Trash2, Upload } from 'lucide-react';
+import { Check, Copy, Download, FolderOpen, GitCompare, Link2, RotateCcw, Save, Trash2, Upload } from 'lucide-react';
 import type { ElectionDataset } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
-import { allocationOf } from '../derive.ts';
+import { allocationOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { download } from '../format.ts';
-import { deleteSaved, duplicateCurrent, importScenarioJson, openImported, openSaved, replay, resetAll, saveCurrent, setPreference, setState, shareLink, toast, useStore, type SavedScenario } from '../store.ts';
+import { deleteSaved, duplicateCurrent, importScenarioJson, openImported, openSaved, replay, resetAll, saveCurrent, scenarioKey, setPreference, setState, shareLink, toast, useStore, type SavedScenario } from '../store.ts';
 import { ScenarioGallery } from './ScenarioGallery.tsx';
 import { electionLabel } from './TopBar.tsx';
 
@@ -22,13 +22,14 @@ const fileName = (n: string) => (n || 'scenario').replace(/[^\p{L}\p{N}]+/gu, '_
 
 /** The seats of a scenario as one bar, lists grouped by bloc in their colours. */
 export function ResultBar({ s, r }: { s: Scenario; r: AllocationResult }) {
+  const lang = useLang();
   const total = s.rules.seats, majority = Math.floor(total / 2) + 1;
   const rank = (b: string | null) => { const i = s.blocs.findIndex((x) => x.id === b); return i < 0 ? s.blocs.length : i; };
   const lists = s.lists.map((l) => ({ l, n: r.lists.find((x) => x.id === l.id)?.seats ?? 0 })).filter((x) => x.n > 0)
     .sort((a, b) => rank(a.l.bloc) - rank(b.l.bloc) || b.n - a.n);
   return (
     <div className="coal-bar" aria-hidden>
-      {lists.map(({ l, n }) => <i key={l.id} style={{ flexBasis: `${(n / total) * 100}%`, background: l.color }} title={`${l.shortHe} ${n}`} />)}
+      {lists.map(({ l, n }) => <i key={l.id} style={{ flexBasis: `${(n / total) * 100}%`, background: l.color }} title={`${listLabel(l, lang)} ${n}`} />)}
       <span className="maj" style={{ insetInlineStart: `${(majority / total) * 100}%` }} />
     </div>
   );
@@ -61,6 +62,9 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
   const [link, setLink] = useState('');
   useEffect(() => setLink(''), [s]);
   const isSaved = saved.some((x) => x.id === s.id);
+  // 'official' (nothing changed), the saved id (no unsaved changes) or a draft key (unsaved changes)
+  const key = useStore((st) => scenarioKey(st));
+  const official = key === 'official', clean = isSaved && key === s.id;
   // the result of every saved scenario of this election, replayed once
   const results = useMemo(() => new Map(saved.filter((x) => x.electionId === s.electionId).map((x) => {
     const sc = replay(ds, x.name, x.log).scenario;
@@ -74,7 +78,7 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
     <div className="scn">
       <p className="small ink2" style={{ marginTop: 0 }}>{L('A scenario is your edited election. Save it here, or share a link.', 'תרחיש הוא הבחירות עם השינויים שלכם. שמרו כאן או שתפו קישור.')} <Info title={L('Using scenarios', 'שימוש בתרחישים')}>{L('Change votes, partners or rules in the other tabs, then name and save the result here. Saved scenarios stay in this browser; links and files can be opened on another device.', 'שנו קולות, שותפות או כללים בלשוניות האחרות, ואז תנו שם ושמרו כאן. תרחישים נשמרים בדפדפן זה; קישורים וקבצים נפתחים גם במכשיר אחר.')}</Info></p>
       <section className="scn-current">
-        <h3>{L('This scenario', 'התרחיש הנוכחי')} <span className="muted" style={{ fontWeight: 400 }}>· {electionName(s.electionId)} · {L(`${s.log.length} edits`, `${s.log.length} שינויים`)}</span></h3>
+        <h3>{official ? L('Official result', 'התוצאה הרשמית') : L('This scenario', 'התרחיש הנוכחי')} <span className="muted" style={{ fontWeight: 400 }}>· {electionName(s.electionId)} · {official ? L('no changes yet', 'ללא שינויים עדיין') : L(`${s.log.length} edits`, `${s.log.length} שינויים`)}</span></h3>
         <div className="scn-form">
           <label className="field"><span>{L('Name', 'שם')}</span>
             <ScenarioText value={s.name} label={L('Name', 'שם')} placeholder={L('e.g. “Arab turnout returns to 2015 levels”', 'למשל "שיעור ההצבעה בחברה הערבית חוזר לרמת 2015"')} onCommit={(name) => dispatch({ type: 'rename', name })} /></label>
@@ -87,12 +91,12 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
         </div></details>
         <ResultBar s={s} r={allocationOf(s)} />
         <div className="row" style={{ marginTop: 10 }}>
-          <button className="btn primary" onClick={() => { if (saveCurrent(s.name || undefined)) toast('info', L('Saved in this browser.', 'נשמר בדפדפן זה.')); }}><Save className="icon sm" aria-hidden />{isSaved ? L('Save changes', 'שמירת השינויים') : L('Save', 'שמירה')}</button>
+          <button className="btn primary scn-save" disabled={official || clean} title={official ? L('Change something first', 'תחילה שנו משהו') : undefined} onClick={() => { if (saveCurrent(s.name || undefined)) toast('info', L('Saved in this browser.', 'נשמר בדפדפן זה.')); }}>{clean ? <><Check className="icon sm" aria-hidden />{L('Saved', 'נשמר')}</> : <><Save className="icon sm" aria-hidden />{isSaved ? L('Save changes', 'שמירת השינויים') : L('Save', 'שמירה')}</>}</button>
           <button className="btn" onClick={async () => {
             const url = await shareLink(); setLink(url);
             try { await navigator.clipboard.writeText(url); toast('info', L('Share link copied.', 'קישור השיתוף הועתק.')); } catch { /* the field below shows it */ }
           }}><Link2 className="icon sm" aria-hidden />{L('Copy a share link', 'העתקת קישור שיתוף')}</button>
-          <button className="btn" onClick={() => { duplicateCurrent(); toast('info', L('Saved as a copy in this browser.', 'נשמר עותק בדפדפן זה.')); }}><Copy className="icon sm" aria-hidden />{L('Duplicate', 'שכפול')}</button>
+          <button className="btn" disabled={official} onClick={() => { duplicateCurrent(); toast('info', L('Saved as a copy in this browser.', 'נשמר עותק בדפדפן זה.')); }}><Copy className="icon sm" aria-hidden />{L('Duplicate', 'שכפול')}</button>
           <button className="btn" onClick={() => exportJson(s)}><Download className="icon sm" aria-hidden />{L('Export', 'ייצוא')}</button>
           <button className="btn" onClick={() => fileRef.current?.click()}><Upload className="icon sm" aria-hidden />{L('Import', 'ייבוא')}</button>
           <button className="btn ghost" disabled={!s.log.length} onClick={() => { if (confirm(L('Start over from the official result? (Undo can restore it.)', 'להתחיל מחדש מהתוצאה הרשמית? (ניתן לבטל)'))) resetAll(); }}><RotateCcw className="icon sm" aria-hidden />{L('Start over', 'התחלה מחדש')}</button>
@@ -115,12 +119,12 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
             const res = results.get(x.id);
             return (
               <li key={x.id} className={`scn-card ${x.id === s.id ? 'current' : ''}`}>
-                <div className="scn-title"><span className="swatch" style={{ background: scenarioColor(res?.sc ?? {}) }} /><b>{x.name}</b><span className="small muted">{electionName(x.electionId)} · {new Date(x.savedAt).toLocaleDateString(lang === 'he' ? 'he-IL' : 'en-GB')}</span></div>
+                <div className="scn-title"><b><span className="swatch" style={{ background: scenarioColor(res?.sc ?? {}) }} />{x.name}</b><span className="small muted">{electionName(x.electionId)} · {new Date(x.savedAt).toLocaleDateString(lang === 'he' ? 'he-IL' : 'en-GB')}</span></div>
                 {x.description && <p className="small ink2" style={{ margin: 0 }}>{x.description}</p>}
                 {res ? <ResultBar s={res.sc} r={res.r} /> : <p className="tiny muted" style={{ margin: 0 }}>{L('Open it to see its result.', 'פתחו כדי לראות את התוצאה.')}</p>}
                 <div className="row" style={{ gap: 4 }}>
                   <button className="btn small" onClick={() => open(x)} disabled={x.id === s.id}><FolderOpen className="icon sm" aria-hidden />{x.id === s.id ? L('Open now', 'פתוח עכשיו') : L('Open', 'פתיחה')}</button>
-                  <button className="btn small" disabled={x.electionId !== s.electionId || x.id === s.id} onClick={() => setState({ compareWith: x.id, tool: 'compare' })}><GitCompare className="icon sm" aria-hidden />{L('Compare with this one', 'השוואה לנוכחי')}</button>
+                  <button className="btn small" disabled={x.electionId !== s.electionId || x.id === s.id} onClick={() => setState({ compareWith: x.id, tool: 'compare' })}><GitCompare className="icon sm" aria-hidden />{L('Compare', 'השוואה')}</button>
                   {res && <button className="btn small ghost" onClick={() => exportJson(res.sc)}><Download className="icon sm" aria-hidden />{L('Export', 'ייצוא')}</button>}
                   <span className="spacer" />
                   <button className="btn small ghost danger icon-only" aria-label={L(`Delete ${x.name}`, `מחיקת ${x.name}`)} onClick={() => { if (confirm(L(`Delete “${x.name}” from this browser?`, `למחוק את "${x.name}" מהדפדפן?`))) deleteSaved(x.id); }}><Trash2 className="icon sm" aria-hidden /></button>

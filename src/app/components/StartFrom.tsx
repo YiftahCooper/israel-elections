@@ -52,8 +52,10 @@ export function StartFrom({ s: shown, part, listId }: { s: Scenario; part: Part;
       return { value: x.id, label: x.name, group: L('Saved scenarios', 'תרחישים שמורים'), preview: <ResultPreview s={sc} />, action: { type: 'startPart', part, listId, source: 'saved', name: x.name, snapshot: partSnapshot(sc, part) } };
     }) : [];
     const clear: Option[] = clearLabel[part] ? [{ value: 'blank', label: clearLabel[part]!, action: { type: 'startPart', part, listId, source: 'blank' } }] : [];
+    // where the official part is the blank one (no coalition choices), offer only the named clear action
+    const blankIsOfficial = (() => { try { return !!clear.length && !!base && JSON.stringify(partSnapshot(base, part)) === JSON.stringify(partSnapshot(applyAction(s, clear[0].action, undefined, { base }), part)); } catch { return false; } })();
     return {
-      official: ds && startEffect(s, official, base) === 'change' ? official : null,
+      official: ds && !blankIsOfficial && startEffect(s, official, base) === 'change' ? official : null,
       others: [...presets, ...fromSaved, ...clear].map(keep).filter((o): o is Option => !!o),
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
