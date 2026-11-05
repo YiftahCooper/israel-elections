@@ -724,6 +724,122 @@
           "accessed": "2026-11-04"
         }
       ]
+    },
+    {
+      "id": "pm-recommendations",
+      "nameHe": "המלצות לנשיא על הרכבת הממשלה",
+      "nameEn": "Recommendations to the President for prime minister",
+      "kind": "parliamentary",
+      "date": "1984-08-03",
+      "blocs": [
+        {
+          "id": "peres",
+          "nameHe": "המליצו על פרס",
+          "nameEn": "Recommended Peres",
+          "color": "#2aa198",
+          "members": [
+            {
+              "letters": "אמת"
+            },
+            {
+              "letters": "ו"
+            },
+            {
+              "letters": "רצ"
+            },
+            {
+              "letters": "ט"
+            },
+            {
+              "letters": "הן"
+            },
+            {
+              "letters": "פ"
+            },
+            {
+              "letters": "יש"
+            }
+          ],
+          "seats": 60
+        },
+        {
+          "id": "shamir",
+          "nameHe": "המליצו על שמיר",
+          "nameEn": "Recommended Shamir",
+          "color": "#1f5aa5",
+          "members": [
+            {
+              "letters": "מחל"
+            },
+            {
+              "letters": "ת"
+            },
+            {
+              "letters": "שס"
+            },
+            {
+              "letters": "ג"
+            },
+            {
+              "letters": "עי"
+            }
+          ],
+          "seats": 54
+        },
+        {
+          "id": "none",
+          "nameHe": "לא המליצו (תמכו בממשלה רחבה)",
+          "nameEn": "No recommendation (backed a broad government)",
+          "color": "#9e9e9e",
+          "members": [
+            {
+              "letters": "ב"
+            },
+            {
+              "letters": "ני"
+            }
+          ],
+          "seats": 5
+        },
+        {
+          "id": "not-invited",
+          "nameHe": "לא הוזמנה להתייעצויות",
+          "nameEn": "Not invited to the consultations",
+          "color": "#bdbdbd",
+          "members": [
+            {
+              "letters": "כך"
+            }
+          ],
+          "seats": 1
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.jta.org/archive/peres-shamir-talks-on-forming-a-government-are-inconclusive",
+          "publisher": "Jewish Telegraphic Agency (archive, 7 Aug 1984)",
+          "kind": "secondary",
+          "quote": "because 60 Knesset members asked Herzog last Friday to choose Peres to form the next government while Likud could only muster 54 MKs to ask the President to give Shamir the first chance.",
+          "accessed": "2026-11-05"
+        },
+        {
+          "url": "https://elpais.com/diario/1984/08/06/internacional/460591203_850215.html",
+          "publisher": "El País",
+          "kind": "secondary",
+          "quote": "Los laboristas, por su parte, lograron reunir un total de 59 diputados, al sumar a sus 44 escaños los seis de sus propios aliados naturales\" -el centrista Shinui y el Movimiento por los Derechos Civiles-, los tres que aunan Ezer Weiznan y el Partido Ometz y los seis del partido comunista y de la Lista Progresista.",
+          "accessed": "2026-11-05"
+        },
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%90%D7%97%D7%AA_%D7%A2%D7%A9%D7%A8%D7%94",
+          "publisher": "Wikipedia (he)",
+          "kind": "secondary",
+          "quote": "על פרס המליצו 60 חברי כנסת להרכבת הממשלה (המערך, יחד, רצ, שינוי, חד\"ש, הרשימה המתקדמת ואומץ) בעוד שעל שמיר המליצו 54 (הליכוד, התחייה, ש\"ס, אגודת ישראל ומורשה), כשהמפד\"ל ואבוחצירא תומכים בממשלת אחדות וכהנא לא הוזמן לבית הנשיא.",
+          "accessed": "2026-11-05"
+        }
+      ],
+      "notes": [
+        "Per-list split (Alignment 44, Hadash 4, Ratz 3, Yahad 3, Shinui 3, Progressive List 2, Ometz 1 = 60; Likud 41, Tehiya–Tzomet 5, Shas 4, Agudat Yisrael 2, Morasha 2 = 54) matches JTA's contemporary totals; El País counted 59 for Labor (it groups Yahad and Ometz as 'three'), recorded as a source conflict. Recommendations were made on Friday 3 August 1984; Herzog gave Peres the mandate on 5 August. The two-year rotation agreement came later and is not a recommendation."
+      ]
     }
   ],
   "colours": [

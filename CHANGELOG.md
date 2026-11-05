@@ -2,6 +2,8 @@
 
 ## 5 November 2026 — release review
 
+- After the election (research): sourced "Recommendations to the President" groupings for 1984, 1988, 2003 and 2006, and a partial one for 1981; 1977 and 1992 documented as gaps, 1996/1999 as direct-election years with no recommendation round (docs/research/pm-recommendations-1977-2006.md).
+
 - QA2 leftovers: use shared analysis/settings pickers, tighten stable list-panel spacing, place global notices after the work area, and compact the phone header while keeping every control directly available.
 
 - Analysis screens: fixed-scale seat-safety tracks, stable sensitivity loading, complete threshold labels and round axis ticks, nearby chart names with Hebrew phone alignment, inline formula help and compact allocation tables, equal comparison options and compact aligned coalition rows.

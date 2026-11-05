@@ -674,6 +674,98 @@
           "accessed": "2026-11-04"
         }
       ]
+    },
+    {
+      "id": "pm-recommendations",
+      "nameHe": "המלצות לנשיא על הרכבת הממשלה",
+      "nameEn": "Recommendations to the President for prime minister",
+      "kind": "parliamentary",
+      "date": "2003-02-06",
+      "blocs": [
+        {
+          "id": "sharon",
+          "nameHe": "המליצו על שרון",
+          "nameEn": "Recommended Sharon",
+          "color": "#1f5aa5",
+          "members": [
+            {
+              "letters": "מחל"
+            },
+            {
+              "letters": "יש"
+            },
+            {
+              "letters": "שס"
+            },
+            {
+              "letters": "ל"
+            },
+            {
+              "letters": "ב"
+            },
+            {
+              "letters": "ג"
+            },
+            {
+              "letters": "ם"
+            },
+            {
+              "letters": "כן"
+            }
+          ],
+          "seats": 87
+        },
+        {
+          "id": "none",
+          "nameHe": "לא המליצו",
+          "nameEn": "No recommendation",
+          "color": "#9e9e9e",
+          "members": [
+            {
+              "letters": "אמת"
+            },
+            {
+              "letters": "מרצ"
+            },
+            {
+              "letters": "ו"
+            },
+            {
+              "letters": "ד"
+            },
+            {
+              "letters": "עם"
+            }
+          ],
+          "seats": 33
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.walla.co.il/news/israel/346012",
+          "publisher": "Walla! News (Haaretz report)",
+          "kind": "secondary",
+          "quote": "עד כה המליצו סיעות הליכוד, שינוי, ש\"ס, האיחוד הלאומי, מפדל, יהדות התורה, עם אחד וישראל בעלייה על שרון. נציגי שאר הסיעות, העבודה, מרצ, בל\"ד, חד\"ש-תע\"ל לא התנגדו להטלת התפקיד על שרון, ולא הציעו כל מועמד אחר.",
+          "accessed": "2026-11-05"
+        },
+        {
+          "url": "https://www.israelnationalnews.com/news/38648",
+          "publisher": "Israel National News",
+          "kind": "secondary",
+          "quote": "The representatives of 87 MKs recommended Sharon as the next Prime Minister. Only Labor (19 seats), Meretz (6), and the Arab parties (8) did not recommend Sharon.",
+          "accessed": "2026-11-05"
+        },
+        {
+          "url": "https://www.haaretz.co.il/misc/2003-02-08/ty-article/0000017f-ee6d-d3be-ad7f-fe6f09130000",
+          "publisher": "Haaretz",
+          "kind": "secondary",
+          "quote": "\"87 חברי כנסת המליצו לי להטיל את המשימה על אריאל שרון. שרון הודיעני כי הוא מסכים לקבל על עצמו את המשימה.\"",
+          "accessed": "2026-11-05"
+        }
+      ],
+      "notes": [
+        "Consultations with President Katsav ran 3–6 February 2003 (Ra'am, the last faction, met him on the evening of the 6th); Sharon was given the mandate on Sunday 9 February. Per-list split (Likud 38, Shinui 15, Shas 11, National Union 7, NRP 6, UTJ 5, One Nation 3, Yisrael BaAliyah 2) equals the President's 87. Haaretz returned 403 to a direct request on 2026-11-05; its quote is from a search-index extract."
+      ]
     }
   ],
   "colours": [

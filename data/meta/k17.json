@@ -759,6 +759,116 @@
           "accessed": "2026-11-04"
         }
       ]
+    },
+    {
+      "id": "pm-recommendations",
+      "nameHe": "המלצות לנשיא על הרכבת הממשלה",
+      "nameEn": "Recommendations to the President for prime minister",
+      "kind": "parliamentary",
+      "date": "2006-04-06",
+      "blocs": [
+        {
+          "id": "olmert",
+          "nameHe": "המליצו על אולמרט",
+          "nameEn": "Recommended Olmert",
+          "color": "#2aa198",
+          "members": [
+            {
+              "letters": "כן"
+            },
+            {
+              "letters": "אמת"
+            },
+            {
+              "letters": "שס"
+            },
+            {
+              "letters": "זך"
+            },
+            {
+              "letters": "ג"
+            },
+            {
+              "letters": "מרצ"
+            }
+          ],
+          "seats": 78
+        },
+        {
+          "id": "none",
+          "nameHe": "לא המליצו",
+          "nameEn": "No recommendation",
+          "color": "#9e9e9e",
+          "members": [
+            {
+              "letters": "מחל"
+            },
+            {
+              "letters": "ל"
+            },
+            {
+              "letters": "טב"
+            },
+            {
+              "letters": "עם"
+            },
+            {
+              "letters": "ו"
+            },
+            {
+              "letters": "ד"
+            }
+          ],
+          "seats": 42
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.globes.co.il/news/article.aspx?did=1000081213",
+          "publisher": "Globes",
+          "kind": "secondary",
+          "quote": "קצב ציין, כי 78 מחברי הכנסת הבאה תמכו במועמדותו של אולמרט בסבב ההתייעצויות, שקיים עם הסיעות וזאת ללא התנגדות, או המלצה על מועמד אחר. קצב הבהיר, כי יו\"ר העבודה, עמיר פרץ הודיע לו טלפונית שלשום בערב, כי גם סיעת העבודה מעבירה את תמיכתה לאולמרט.",
+          "accessed": "2026-11-05"
+        },
+        {
+          "url": "https://www.israelnationalnews.com/news/101500",
+          "publisher": "Israel National News",
+          "kind": "secondary",
+          "quote": "Kadima, Labor, Shas and the Pensioners’ Party all endorsed Olmert. UTJ is expected to endorse him as well. National Union-NRP initially endorsed Peretz, until it became clear that he did not really intend to pursue the position. Likud, Yisrael Beiteinu and all three Arab parties declined to endorse anybody.",
+          "accessed": "2026-11-05"
+        },
+        {
+          "url": "https://www.ynetnews.com/articles/0,7340,L-3235659,00.html",
+          "publisher": "Ynetnews",
+          "kind": "secondary",
+          "quote": "Meretz has recommended Ehud Olmert as candidate for prime minister in a meeting with President Moshe Katsav Monday.",
+          "accessed": "2026-11-05"
+        },
+        {
+          "url": "https://www.ynetnews.com/articles/0,7340,L-3236272,00.html",
+          "publisher": "Ynetnews",
+          "kind": "secondary",
+          "quote": "Shas members recommended Olmert for prime minister.",
+          "accessed": "2026-11-05"
+        },
+        {
+          "url": "https://www.inn.co.il/news/144780",
+          "publisher": "ערוץ 7",
+          "kind": "secondary",
+          "quote": "הרב אליישיב הורה לנציגים החרדים בסיעה להמליץ באוזני הנשיא על אולמרט.",
+          "accessed": "2026-11-05"
+        },
+        {
+          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%98%D7%9C%D7%AA_%D7%94%D7%9E%D7%A0%D7%93%D7%98_%D7%9C%D7%94%D7%A7%D7%9E%D7%AA_%D7%9E%D7%9E%D7%A9%D7%9C%D7%94_%D7%91%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
+          "publisher": "Wikipedia (he)",
+          "kind": "secondary",
+          "quote": "אולמרט - 78 פירוט: קדימה 29, העבודה 19, ש\"ס 12, גיל 7, יהדות התורה 6 ומרצ 5.",
+          "accessed": "2026-11-05"
+        }
+      ],
+      "notes": [
+        "Consultations ran 2–6 April 2006; Olmert was given the mandate on 6 April. Labor first recommended Amir Peretz (2 April) and transferred its support to Olmert by phone on 4 April; the President counted it in his 78. The National Union–NRP did not recommend anyone at its meeting and asked for more time (Ynet); INN says it 'initially endorsed Peretz' — a source conflict; the President's final statement records no other candidate. No contemporary report of UTJ's own meeting with the President was retrieved: its 6 follow from the President's 78 total less the five other recommending lists (72) and match the Hebrew Wikipedia breakdown."
+      ]
     }
   ],
   "colours": [
