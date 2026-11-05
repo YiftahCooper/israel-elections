@@ -48,7 +48,8 @@ export function LocalityMap({ s, data, historicalLists, locations, locationError
   const fittedFor = useRef<unknown>(null);
   useEffect(() => {
     if (!container.current) return;
-    const m = Leaflet.map(container.current, { preferCanvas:true, scrollWheelZoom:false }).setView([31.7,35],7);
+    // Tool tabs unmount immediately; Leaflet's delayed zoom completion can outlive the map pane.
+    const m = Leaflet.map(container.current, { preferCanvas:true, scrollWheelZoom:false, zoomAnimation:false }).setView([31.7,35],7);
     map.current = m;
     Leaflet.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom:19, attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>', referrerPolicy:'strict-origin-when-cross-origin' }).addTo(m);
     const observer = new ResizeObserver(() => m.invalidateSize()); observer.observe(container.current);

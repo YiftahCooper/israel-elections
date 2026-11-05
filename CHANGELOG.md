@@ -1,5 +1,10 @@
 # Changelog
 
+## 5 November 2026 — release review
+
+- Keep long edited bloc names and official list names readable on phones, restore contrast for Compare counts, and show family scaling counts once beside their strips.
+- Prevent map zoom completion from accessing a destroyed pane after tool navigation.
+
 ## 5 November 2026 — concise tool pages
 
 - Keep tool instructions brief in Hebrew and English; retain modelling assumptions, provenance and correctness caveats in named info controls. What-if questions keep their vote and seat consequences visible, with separate assumption controls and reduced-motion-aware navigation.
