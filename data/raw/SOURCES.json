@@ -5685,5 +5685,18 @@
     "retrievedAt": "2026-11-05",
     "bytes": 1245032,
     "sha256": "79d940ad78cbfc4e8d688468f76e0069b3315dc69b49eb5787cfdd9816ff2488"
+  },
+  {
+    "id": "logo-k25-hadash-taal-publication",
+    "file": "logos/k25/hadash-taal-20221026.pdf",
+    "url": "https://maki.org.il/he/wp-content/uploads/2022/10/G41_2022.pdf",
+    "publisher": "מק״י — זו הדרך",
+    "official": true,
+    "description": "Zo Haderekh issue 41, 26 October 2022; page 1 official Hadash–Ta’al campaign artwork",
+    "method": "http",
+    "archiveUsed": "Retained original dated publication PDF",
+    "retrievedAt": "2026-11-05",
+    "bytes": 1593631,
+    "sha256": "021d12aa0a7d80716e13fe0b3352e7254ed4f1d81632974647edcca2a63fae51"
   }
 ]

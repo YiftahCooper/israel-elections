@@ -2912,7 +2912,7 @@
       "electionId": "k25",
       "electionDate": "2022-11-01",
       "datasetPath": "public/data/k25.json",
-      "datasetSha256": "1a0670357d0306273388b2fd1bb722d7994a9aa9eb9b4bc8993622052e708879",
+      "datasetSha256": "791a7b25a5ed12a6418a83100231cfce434bd6046bb00775bc37a15e84669002",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2022-11-10",
@@ -3009,7 +3009,7 @@
       "electionId": "k26",
       "electionDate": "2026-10-27",
       "datasetPath": "public/data/k26.json",
-      "datasetSha256": "9ff2480b3e4f0b9f5e046493ddf31c97b24a1088da5d37ed55ed7d9d2d9aa926",
+      "datasetSha256": "5a64412d75d1baf023fce666427f6e5e23c35781d3ed108ccc62c7efcf18c069",
       "datasetStatus": {
         "stage": "final-count-pending-publication",
         "asOf": "2026-11-04",

@@ -1600,3 +1600,30 @@ The separately assigned k25 Tkuma constituent remains correct. The owner has
 assigned fallback removal to a parallel worker; this research does not change that
 code or weaken the test. This is an integration dependency, not a logo-evidence
 failure or a passing final suite claim.
+
+### 2022 dated-publication continuation
+
+The official Maki newspaper index links *Zo Haderekh*, issue 41, **26 October 2022**,
+`https://maki.org.il/he/wp-content/uploads/2022/10/G41_2022.pdf`. Page 1 visibly
+prints that date and a large joined Hadash–Ta'al campaign mark above a separate
+ballot note and slogan. Retained the original PDF under `data/raw/logos/k25/`.
+Rendered its original page at scale 4 (2382×3368), with
+`scripts/research/render-logo-pdf-page.mjs`, then applied rectangular crops only:
+
+- **k25 list ום:** `[480,796,1930,1205]`, joined red/yellow lockup.
+- **k25 Ta'al constituent:** `[500,805,1210,1195]`, only the separately named yellow
+  Ta'al panel with its Hebrew/Arabic wordmark and Ahmad Tibi subtitle, excluding
+  Hadash's panel. This is a distinct constituent crop, not a joint-logo substitution.
+
+Pillow 13.0.0 RGBA, thumbnail 256 LANCZOS, optimized PNG. Original colours and printed
+background retained; no redrawing, recolouring, shape reconstruction or cleaning.
+The PDF's own embedded vectors/fonts are rendered as published, not traced anew.
+Exact recipes, original/final hashes and `publicationEvidence` are on both entries.
+No archive timestamp/CDX proof is invented for this direct dated publication.
+
+Third-batch checks: logo validator **176 source cards, 126 assets, 134 hosted
+assignments**; family validator 9 presets; TypeScript passed; all 26 datasets equal
+the merged baseline omitting only `logo`/`builtAt`. Only the model digest changes,
+to `cab8ce9f706616266e9d5a059b936f61ba7be2a3ab159a35ee2f9c2bd4c41053`.
+Full Vitest remains **856/857**, with precisely the previously documented
+nearest-year Religious Zionism fallback / joint-list separation failure.
