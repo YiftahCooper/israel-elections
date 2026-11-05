@@ -2,6 +2,8 @@
 
 ## 5 November 2026 — release review
 
+- Corrected the English and Hebrew data-status notes for k20–k24 by removing obsolete claims that no default blocs are assigned.
+
 - How seats were allocated: seven numbered stages on one line (seats or pairs of the open stage beneath, a slider for divisor methods), a seat tray that fills seat by seat, a new surplus-agreements step, every list with the threshold line drawn, full-height tables, era-correct rule text and arithmetic (1949 quota gate and pair quota, 1951–69 remainders, 1977 candidate cap), and edits marked against the reference at each stage.
 - Compare offers saved scenarios, the previous or any other election and What-if questions when nothing differs, instead of two identical results; compares two elections side by side without pairing their lists; replaces the crowded slope chart with a seat dumbbell that keeps tied lists readable; and keeps change bars, tracks and signs left to right in Hebrew.
 - Rules tab renamed Rules & settings: settings sit in their own card (display, editing questions with each remembered per-list answer and Ask again); each era's law is named, its own rules (1949, 1951–1969, 1977) are shown, thresholds carry their years, locked fields look locked, and rule edits are marked at their field.
