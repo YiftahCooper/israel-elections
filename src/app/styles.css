@@ -726,7 +726,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .st-preview { padding: 10px 12px; border: 1px solid var(--rule); border-radius: var(--radius); }
 .st-preview h4 { margin: 0 0 8px; }
 .st-task > .btn { justify-self: start; }
-.st-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+.st-head { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 8px; }
 .st-head > .seg { display: inline-grid; grid-template-columns: repeat(4, auto); gap: 1px; background: var(--rule-2); }
 .st-head > .seg button + button { border-inline-start: 0; }
 @media (max-width: 600px) { .st-head > .seg { display: grid; grid-template-columns: 1fr 1fr; width: 100%; } }

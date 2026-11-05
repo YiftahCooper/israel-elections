@@ -33,6 +33,7 @@ test('k26 in English: English publishers, one credit per logo, downloads served,
   await open(page, 'en', 'k26');
   await sourcesTab(page, 'en');
   const panel = page.locator('#analysis-panel');
+  await expect(panel.locator('ul.credits').first().locator('> li').first()).toBeVisible();
   const publishers = await panel.locator('ul.credits').first().locator('> li > b').allInnerTexts();
   expect(publishers.length).toBeGreaterThan(3);
   for (const p of publishers) expect(p, p).toMatch(/[A-Za-z]{4}/);
