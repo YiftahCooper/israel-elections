@@ -91,6 +91,12 @@
       "kind": "official",
       "accessed": "2026-11-05",
       "via": "Official UN resolution reproduced by UNHCR Refworld; source for the text, resolution number and date, not a second national chronology."
+    },
+    "mod-entebbe": {
+      "url": "https://archives.mod.gov.il/sites/English/Exhibitions/Pages/Operation-Entebbe.aspx",
+      "publisher": "Ministry of Defense, IDF and Defense Establishment Archives, Operation Entebbe / Jonathan",
+      "kind": "official",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -512,9 +518,13 @@
         "id": "entebbe",
         "date": "1976-07-04",
         "category": "security",
-        "textEn": "The IDF rescued hostages at Entebbe in Uganda.",
-        "textHe": "צה״ל חילץ בני ערובה באנטבה שבאוגנדה.",
+        "textEn": "The IDF rescued hostages held by terrorists in Uganda during Operation Entebbe (Operation Yonatan).",
+        "textHe": "צה״ל חילץ בני ערובה שהוחזקו בידי מחבלים באוגנדה במבצע אנטבה (מבצע יונתן).",
         "cites": [
+          {
+            "source": "mod-entebbe",
+            "quote": "Palestinian terrorists hijacked an Air France aircraft"
+          },
           {
             "source": "term-history",
             "quote": "In July 1976"

@@ -168,6 +168,16 @@ Hidden entirely where no survey meets the rule in the research doc. Never interp
 
 ## Copy rules
 
+This is an Israeli, Zionist civic project, without an activist purpose. Israeli official and academic accounts
+are the preferred historical anchors, and Hebrew sources are welcome. Name terror attacks and terrorists plainly,
+including Hamas and the other participants in 7 October, and use Israeli war and operation names. Nonpartisanship
+means factual, attributed treatment of disputes within Israeli politics, without adopting either camp’s judgments.
+The two-independent-chronology inclusion rule still applies; an Israeli official or academic chronology is the
+preferred anchor, and multiple publications from the same institution do not become independent sources.
+
+
+- Each term-event short text is one concise sentence (about 25 words maximum); keep extra chronology,
+  source attribution and caveats in the existing event `notes` and `cites` behind (i), not new detail fields.
 - Labels only on screen; dates, provenance, conflicts and caveats behind (i) (owner rule: concise copy).
 - Sentences follow one pattern: actor, verb, object, figure. "The Knesset approved the 36th government, 60–59."
 - No evaluative adjectives (historic, narrow, dramatic, controversial), no motives, no consequences unless a cited

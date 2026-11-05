@@ -100,6 +100,13 @@
       "publisher": "Israel Democracy Institute, 1984 election retrospective",
       "kind": "academic",
       "accessed": "2026-11-05"
+    },
+    "mfa-timeline": {
+      "url": "https://www.gov.il/en/pages/timeline-of-events-half-a-century-of-independence",
+      "publisher": "Israel Ministry of Foreign Affairs, Timeline of Events: Half a Century of Independence, 1948–1998",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies."
     }
   },
   "results": {
@@ -342,6 +349,7 @@
     "end": "1984-07-23",
     "inclusionRule": "At least two independently authored qualifying chronologies, including one official or academic, plus direct support for the date. The Knesset and MFA histories count separately; the JVL mirror is not another independent source. Formal government succession steps are recorded separately in formation.events.",
     "chronologies": [
+      "mfa-timeline",
       "mfa-history",
       "knesset-history",
       "ipu1981",
@@ -371,9 +379,13 @@
         "id": "lebanon-war",
         "date": "1982-06",
         "category": "security",
-        "textEn": "According to the Knesset history and MFA’s history, Israel launched Operation Peace for Galilee in Lebanon in June 1982, beginning the First Lebanon War.",
-        "textHe": "לפי תולדות הכנסת וסקירת משרד החוץ, ישראל פתחה במבצע שלום הגליל בלבנון ביוני 1982, עם תחילת מלחמת לבנון הראשונה.",
+        "textEn": "Israel launched Operation Peace for Galilee against PLO terrorist bases in Lebanon in June 1982, beginning the First Lebanon War.",
+        "textHe": "ישראל פתחה במבצע שלום הגליל נגד בסיסי טרור של אש״ף בלבנון ביוני 1982, עם תחילת מלחמת לבנון הראשונה.",
         "cites": [
+          {
+            "source": "mfa-timeline",
+            "quote": "PLO terrorist strongholds in Lebanon used for attacks against northern Israel"
+          },
           {
             "source": "knesset-history",
             "quote": "which began in June 1982"
@@ -385,7 +397,8 @@
         ],
         "confidence": "high",
         "notes": [
-          "No trigger asserted: the two inherited selection chronologies do not both supply the same causal account. No ceasefire endDate added without verified endpoint evidence; see review report."
+          "MFA’s chronology identifies PLO terrorist strongholds used for attacks against northern Israel. Its 1985 withdrawal is described separately under k11 and retained a security zone; no single ceasefire endpoint is inferred.",
+          "לפי ציר הזמן של משרד החוץ, בסיסי הטרור של אש״ף שימשו לתקיפות על צפון ישראל. הנסיגה ב־1985, תוך השארת רצועת ביטחון, מתוארת בנפרד בכנסת ה־11 ואינה מוצגת כמועד הפסקת אש."
         ]
       },
       {

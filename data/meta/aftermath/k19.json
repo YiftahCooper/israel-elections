@@ -96,6 +96,12 @@
       "publisher": "UN OCHA, Monthly Humanitarian Bulletin, 31 August 2014",
       "kind": "official",
       "accessed": "2026-11-05"
+    },
+    "idf-protective-edge-history": {
+      "url": "https://www.idf.il/en/mini-sites/wars-and-operations/operation-protective-edge/operation-protective-edge/",
+      "publisher": "IDF, Operation Protective Edge, 8 July–26 August 2014",
+      "kind": "official",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -291,6 +297,7 @@
   "term": {
     "inclusionRule": "two-independent-chronologies-one-official-or-academic",
     "chronologies": [
+      "idf-protective-edge-history",
       "sipri-2014",
       "reuters-confrontation-2021",
       "idi-2015-retrospective",
@@ -301,9 +308,13 @@
         "id": "protective-edge-2014",
         "date": "2014-07-08",
         "category": "security",
-        "textEn": "According to SIPRI and Reuters’s chronologies, Israel launched Operation Protective Edge in Gaza on 8 July 2014; according to OCHA’s August retrospective, Israeli forces carried out airstrikes and a ground operation and Palestinian armed groups fired rockets and mortars at Israel, before an indefinite ceasefire took effect on 26 August 2014.",
-        "textHe": "לפי צירי הזמן של SIPRI ורויטרס, ישראל פתחה במבצע צוק איתן ברצועת עזה ב־8 ביולי 2014; לפי סקירת OCHA מאוגוסט, כוחות ישראליים ביצעו תקיפות אוויריות ומבצע קרקעי וארגונים פלסטיניים חמושים ירו רקטות ופצצות מרגמה לעבר ישראל, עד שהפסקת אש ללא מועד סיום נכנסה לתוקף ב־26 באוגוסט 2014.",
+        "textEn": "Israel launched Operation Protective Edge in Gaza after rocket attacks on Israeli civilians; a ceasefire took effect on 26 August 2014.",
+        "textHe": "ישראל פתחה במבצע צוק איתן בעזה בעקבות ירי רקטות על אזרחים בישראל; הפסקת אש נכנסה לתוקף ב־26 באוגוסט 2014.",
         "cites": [
+          {
+            "source": "idf-protective-edge-history",
+            "quote": "after numerous rocket attacks."
+          },
           {
             "source": "sipri-2014",
             "quote": "8 July"
@@ -324,7 +335,7 @@
         "confidence": "high",
         "endDate": "2014-08-26",
         "notes": [
-          "SIPRI dates the operation’s launch; Reuters labels July–August. Reuters alone connects the war to the teenagers’ abduction and killing; SIPRI’s entry does not state that trigger, so none is asserted. OCHA supplies the ending and action sequence; the original two-chronology selection is preserved."
+          "The IDF operation history supplies the Israeli name and rocket-attack context; the inherited independent chronology pair remains the selection evidence. The date field gives the launch; endDate records the cited ceasefire, not a peace treaty."
         ]
       },
       {

@@ -84,6 +84,19 @@
       "publisher": "SIPRI Yearbook 2020, Ian Davis, Annex C: Chronology 2019",
       "kind": "academic",
       "accessed": "2026-11-05"
+    },
+    "supreme-indictment-2019": {
+      "url": "https://bagats.org.il/judgments/%D7%94%D7%A2%D7%9C%D7%99%D7%95%D7%9F/%D7%91%D7%92%D7%A5-7928-19.html",
+      "publisher": "Supreme Court of Israel, HCJ 7871/19 and 7928/19, judgment of 12 December 2019, paragraph 2 (reproduction)",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Judgment reproduced by bagats.org.il; use the judgment text, not the host’s commentary."
+    },
+    "whitehouse-plan-2020": {
+      "url": "https://trumpwhitehouse.archives.gov/briefings-statements/president-donald-j-trumps-vision-peace-prosperity-brighter-future-israel-palestinian-people/",
+      "publisher": "White House, President Donald J. Trump’s Vision for Peace, Prosperity, and a Brighter Future, 28 January 2020",
+      "kind": "official",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -338,6 +351,10 @@
         "textHe": "היועץ המשפטי לממשלה אביחי מנדלבליט הודיע על החלטתו להגיש כתב אישום נגד ראש הממשלה בנימין נתניהו בגין שוחד, מרמה והפרת אמונים.",
         "cites": [
           {
+            "source": "supreme-indictment-2019",
+            "quote": "ביום 21.11.2019 הודיע היועץ המשפטי לממשלה על החלטתו להגיש כתב אישום"
+          },
+          {
             "source": "brookings-2019-timeline",
             "quote": "announced his decision to indict Prime Minister Benjamin Netanyahu"
           },
@@ -358,6 +375,10 @@
         "textEn": "US President Donald Trump presented his administration’s Israeli–Palestinian peace proposal.",
         "textHe": "נשיא ארה״ב דונלד טראמפ הציג את הצעת ממשלו להסדר ישראלי–פלסטיני.",
         "cites": [
+          {
+            "source": "whitehouse-plan-2020",
+            "quote": "Issued on: January 28, 2020"
+          },
           {
             "source": "sipri-2020",
             "quote": "28 Jan. The USA publishes its long-awaited plan"

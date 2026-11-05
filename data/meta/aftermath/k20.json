@@ -84,6 +84,12 @@
       "publisher": "White House, archived fact sheet, 14 May 2018",
       "kind": "official",
       "accessed": "2026-11-05"
+    },
+    "knesset-embassy-2018": {
+      "url": "https://main.knesset.gov.il/en/News/PressReleases/Pages/Pr13872_pg.aspx",
+      "publisher": "Knesset News, special sitting marking Jerusalem Day and US embassy inauguration, 14 May 2018",
+      "kind": "official",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -291,6 +297,10 @@
         "textEn": "The United States opened its embassy in Jerusalem.",
         "textHe": "ארה״ב פתחה את שגרירותה בירושלים.",
         "cites": [
+          {
+            "source": "knesset-embassy-2018",
+            "quote": "the official inauguration of the US Embassy in the capital"
+          },
           {
             "source": "crs-us-actions-chronology",
             "quote": "May 2018 U.S. embassy opens in Jerusalem"
