@@ -5,10 +5,9 @@ import {isFamilyGrouping} from '../families/labels.ts';
 import { applyAction } from '../model/actions.ts';
 import { compareAllocations } from '../engine/analysis.ts';
 // Memoised derivations: every displayed figure comes from allocate(scenario).
-import type { ElectionDataset } from '../data/schema.ts';
 import { allocate } from '../engine/allocate.ts';
 import type { AllocationResult, EngineWarning } from '../engine/types.ts';
-import { electionRuleSetId, historicalRules, scenarioFromDataset, toEngineInput, validVotes, votesCast, type Scenario, type SimList, type SimRules } from '../model/scenario.ts';
+import { electionRuleSetId, historicalRules, toEngineInput, validVotes, votesCast, type Scenario, type SimList, type SimRules } from '../model/scenario.ts';
 import type { Lang } from './i18n.ts';
 
 const allocCache = new WeakMap<Scenario, AllocationResult>();
@@ -18,12 +17,7 @@ export function allocationOf(s: Scenario): AllocationResult {
   return r;
 }
 
-const baseCache = new WeakMap<ElectionDataset, Scenario>();
-export function baselineOf(ds: ElectionDataset): Scenario {
-  let s = baseCache.get(ds);
-  if (!s) { s = scenarioFromDataset(ds, 'historical'); baseCache.set(ds, s); }
-  return s;
-}
+export { baselineOf } from './factionDefaults.ts';
 
 /** Names, glossary term and per-seat rule of every allocation method, in one place for all screens. */
 export const METHODS: Record<SimRules['remainderMethod'], { en: string; he: string; term: string; stepEn: string; stepHe: string }> = {

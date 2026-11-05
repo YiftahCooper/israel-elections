@@ -1,3 +1,4 @@
+import { EditMarker } from './EditMarker.tsx';
 import { useDisclosure } from './Feature.tsx';
 // A joint list's constituent parties (decision 0087): who holds its seats, which bloc each party sits in,
 // and "Run as separate lists", a counterfactual whose vote shares are an explicit, editable assumption.
@@ -8,7 +9,7 @@ import type { Action, Scenario, SimList } from '../../model/scenario.ts';
 import { electedOf } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt } from '../format.ts';
-import { dispatch, dispatchMany, setState, useLevel } from '../store.ts';
+import { dispatch, dispatchMany, setPreference, setState, useStore, useLevel } from '../store.ts';
 import {JointFacts} from './JointFacts.tsx';
 import { PartyLinks } from './PartyLinks.tsx';
 import { Info, Slip } from './ui.tsx';
@@ -21,6 +22,7 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
   const { shown: standard, control: standardControl } = useDisclosure('jointEditing');
   const lang = useLang();
   const { expert } = useLevel();
+  const defaultSplit = useStore(st => st.preferences.jointSeats === 'on');
   const parties = l.parties ?? [];
   const seats = r.lists.find((x) => x.id === l.id)?.seats ?? 0;
   const elected = electedOf(l, seats);
@@ -69,9 +71,14 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
         <input type="checkbox" checked={isSplit} onChange={(e) => dispatch({ type: 'setFactionSplit', listId: l.id, split: e.target.checked })} />
         {L('Count seats by party', 'ספירת מנדטים לפי מפלגה')}
       </label>
+      <EditMarker s={s} path={['factionSplits']} />
       <Info title={L('About faction splits', 'על פיצול סיעות')}>{isSplit
         ? L('Each party now counts as its own faction in the chamber and the blocs, with the members elected for it. Votes and seats are unchanged.', 'כל מפלגה נספרת עתה כסיעה נפרדת במליאה ובגושים, עם הנבחרים מטעמה. הקולות והמנדטים ללא שינוי.')
         : L('Show each party as a separate faction in the chamber and blocs after the election. Members keep their seats; votes and allocation do not change.', 'הצגת כל מפלגה כסיעה נפרדת במליאה ובגושים אחרי הבחירות. הנבחרים שומרים על מושביהם; הקולות וחלוקת המנדטים אינם משתנים.')}</Info></div>
+      <label className="switch small" style={{ marginBottom: 6 }}>
+        <input type="checkbox" checked={defaultSplit} onChange={e => setPreference('jointSeats', e.target.checked ? 'on' : 'off')} />
+        {L('Use by default for joint lists', 'ברירת מחדל לרשימות משותפות')}
+      </label>
       <div className="party-rows">
         {parties.map((p) => (
           <div key={p.id} className="party-row">

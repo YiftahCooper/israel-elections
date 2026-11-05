@@ -46,7 +46,7 @@ function useCompareChoices(s: Scenario, ds: ElectionDataset) {
   const choices: Choice[] = useMemo(() => [
     ...(reference ? [{ value: 'official', label: L('Official result', 'התוצאה הרשמית'), group: here }] : []),
     { value: 'historical', label: referenceLabel(reference, lang).name, group: here },
-    ...savedHere.map((x) => ({ value: x.id, label: x.name, group: here, preview: <span className="swatch" style={{ background: scenarioColor(replay(ds, x.name, x.log).scenario) }} /> })),
+    ...savedHere.map((x) => ({ value: x.id, label: x.name, group: here, preview: <span className="swatch" style={{ background: scenarioColor(replay(ds, x.name, x.log, x.factionSplitBaseline ?? false).scenario) }} /> })),
     ...elections.filter((e) => e.available && e.id !== s.electionId).map((e) => ({ value: ELECTION + e.id, label: electionLabel(e, elections, lang), detail: L('Official result', 'התוצאה הרשמית'), group: others })),
   ], [reference, saved, ds, elections, lang, s.electionId, s.id]); // eslint-disable-line react-hooks/exhaustive-deps -- L and the filtered lists follow lang, saved and s
   const at = elections.findIndex((e) => e.id === s.electionId);
@@ -103,7 +103,7 @@ function ScenarioCompare({ s, r, base, ds }: { s: Scenario; r: AllocationResult;
     if (compareWith === 'official') return base;
     if (compareWith === 'historical') return reference ?? base;
     const sv = saved.find((x) => x.id === compareWith && x.electionId === s.electionId);
-    return sv ? replay(ds, sv.name, sv.log).scenario : base;
+    return sv ? replay(ds, sv.name, sv.log, sv.factionSplitBaseline ?? false).scenario : base;
   }, [compareWith, saved, base, ds, s.electionId, reference]);
   const a = other, ar = allocationOf(other);
   const groups = useMemo(() => comparisonGroups(s, r, a, ar), [ar, a, r, s]);
@@ -253,7 +253,7 @@ function EmptyCompare({ s, ds, base, compareWith, nameA, nameB }: { s: Scenario;
     if (value === 'official') return base;
     if (value === 'historical') return reference ?? base;
     const sv = saved.find((x) => x.id === value);
-    return sv ? replay(ds, sv.name, sv.log).scenario : null;
+    return sv ? replay(ds, sv.name, sv.log, sv.factionSplitBaseline ?? false).scenario : null;
   };
   const card = (key: string, title: string, sc: Scenario | null, onClick: () => void) => <button key={key} type="button" className="btn cmp-pick" onClick={onClick}>
     <b>{title}</b>{sc ? <ResultPreview s={sc} blocs={false} /> : <span className="result-preview" aria-hidden />}
@@ -281,7 +281,7 @@ function ElectionCompare({ s, r, base, ds, otherId }: { s: Scenario; r: Allocati
   const ods = useStore((st) => st.datasets[otherId]);
   const { electionName } = useCompareChoices(s, ds);
   useEffect(() => { if (!ods) loadDataset(otherId).catch(() => { toast('error', L('Could not load this election.', 'לא ניתן לטעון את הבחירות האלה.')); setState({ compareWith: 'historical' }); }); }, [ods, otherId]); // eslint-disable-line react-hooks/exhaustive-deps
-  const o = useMemo(() => ods ? baselineOf(ods) : null, [ods]);
+  const o = ods ? baselineOf(ods) : null;
   const or = useMemo(() => o ? allocationOf(o) : null, [o]);
   const current = { sc: s, rr: r, election: electionName(s.electionId), name: s.name || (referenceChanges(s, base).length ? L('Your scenario', 'התרחיש שלכם') : L('Official result', 'התוצאה הרשמית')), color: referenceChanges(s, base).length || s.identityColor ? scenarioColor(s) : 'var(--rule)' };
   if (!o || !or || !ods) return <div className="cmp"><ComparePicker s={s} ds={ds} name={current.name} value={ELECTION + otherId} /><p className="small muted">{L('Loading…', 'טוען…')}</p></div>;

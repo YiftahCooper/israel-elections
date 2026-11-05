@@ -29,7 +29,7 @@ export function inputDiffs(a:Scenario,b:Scenario):InputPath[]{
   }else out.push(p);
  };
  for(const k of ['description','lists','rules','registered','invalid','agreements','blocs','blocSchemeId','customGroupingName','partyBlocs','candidateBlocs','factionSplits','lotteryWinners','mode','coalition'] as const){
-  const normal=(v:unknown)=>v??(k==='coalition'?{in:[],out:[]}:k==='partyBlocs'||k==='candidateBlocs'?{}:undefined);
+  const normal=(v:unknown)=>k==='factionSplits'?[...((v??[]) as string[])].sort():v??(k==='coalition'?{in:[],out:[]}:k==='partyBlocs'||k==='candidateBlocs'?{}:undefined);
   walk(normal(a[k]),normal(b[k]),[k]);
  }
  return out;

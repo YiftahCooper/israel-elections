@@ -120,12 +120,13 @@ export function PreferenceSettings() {
   };
   const forget = (key: string) => setState({ preferenceFor: Object.fromEntries(Object.entries(perItem ?? {}).filter(([k]) => k !== key)) });
   return <>{(Object.keys(PREFERENCES) as PreferenceId[]).map(id => {
-    const pref = PREFERENCES[id], value = answers[id] ?? 'ask';
+    const pref = PREFERENCES[id], value = answers[id] ?? (id === 'jointSeats' ? 'off' : 'ask');
     const items = Object.entries(perItem ?? {}).filter(([k]) => k.startsWith(`${id}:`));
     return <div className="pref-setting" key={id}>
       <label className="field" style={{ maxWidth: 260 }}>{L(pref.label[0], pref.label[1])}
+        {id === 'jointSeats' && <Info title={L('Joint-list default', 'ברירת מחדל לרשימות משותפות')}>{L('Starts joint lists as party factions without an edit. Votes and allocation stay unchanged; members without a recorded party stay with the list. Changing this keeps explicit list choices and other edits. Shared and saved scenarios retain their encoded starting choice.', 'רשימות משותפות מתחילות כסיעות מפלגתיות ללא עריכה. הקולות והחלוקה אינם משתנים; נבחרים ללא מפלגה מתועדת נשארים ברשימה. שינוי ההעדפה שומר בחירות מפורשות ועריכות אחרות. תרחישים שמורים ומשותפים שומרים את ברירת המחדל שקודדה בהם.')}</Info>}
         <ChoicePicker label={L(pref.label[0], pref.label[1])} value={value} onChange={v => setPreference(id, v === 'ask' ? undefined : v)} options={[
-          { value: 'ask', label: L('Ask each time', 'לשאול בכל פעם') },
+          ...(id === 'jointSeats' ? [] : [{ value: 'ask', label: L('Ask each time', 'לשאול בכל פעם') }]),
           ...pref.options.map(o => ({ value: o.value, label: L(o.label[0], o.label[1]) })),
           ...(value.startsWith('t:') ? [{ value, label: s?.lists.find(l => l.id === value.slice(2)) ? listLabel(s.lists.find(l => l.id === value.slice(2))!, lang) : L('One list (when available)', 'רשימה אחת (כשזמינה)') }] : []),
         ]} />

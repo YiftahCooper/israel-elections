@@ -68,7 +68,7 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
   const official = key === 'official', clean = isSaved && key === s.id;
   // the result of every saved scenario of this election, replayed once
   const results = useMemo(() => new Map(saved.filter((x) => x.electionId === s.electionId).map((x) => {
-    const sc = replay(ds, x.name, x.log).scenario;
+    const sc = replay(ds, x.name, x.log, x.factionSplitBaseline ?? false).scenario;
     return [x.id, { sc, r: allocationOf(sc) }] as const;
   })), [saved, ds, s.electionId]);
   const electionName = (id: string) => { const e = elections.find((x) => x.id === id); return e ? electionLabel(e, elections, lang) : id; };
