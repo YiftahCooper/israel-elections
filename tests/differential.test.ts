@@ -78,7 +78,9 @@ const EXPECTED: Record<Family, string> = {
   // merged with the 1949–1973 recommendations branch (k4, k7, k8 schemes; field-verified on that branch).
   // merged with the 1949–2006 logos run 3 (only list/party logo fields and builtAt differ; path walk 5 Nov).
   // Mapam 1959 year-only print: all 26 datasets field-equal to 3112bed after removing only logo/builtAt.
-  model: 'e533e2f031dd1d96fa23e65bb79c059e84daf910bc9003b4ce4c067cb3a77dfa',
+  // Herut 1951/1961, Gahal 1969 and Hadash constituent 2003: same field-by-field check.
+  // Balad 2003 official masthead crop: all 26 datasets still match 3112bed outside logo/builtAt.
+  model: 'f2dc2179a6ad575ec061ee4787c964bf61a73f0df24e26c1f46c55a9b7034a63',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

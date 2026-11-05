@@ -1,22 +1,22 @@
 # Party logos by election — research and source archive
 
-Research objective: supply election-specific list and constituent emblems for the explorer without substituting later designs, under the owner’s free-licence or fair-use identification policy (decision 0089). As of 4 November 2026. The catalogue remains incomplete; the continuation below records the live-site research and exact remaining gaps. The source policy in README.md and docs/DATA.md applies.
+Research objective: supply election-specific list and constituent emblems for the explorer without substituting later designs, under the owner’s free-licence or fair-use identification policy (decision 0089). As of 5 November 2026. The catalogue remains incomplete; the continuation below records the live-site research and exact remaining gaps. The source policy in README.md and docs/DATA.md applies.
 
 ## Reading coverage
 
 “Hosted” counts whole seat-winning lists with a local, eligible logo. “Dated external” counts whole-list candidates with date evidence but a failed download; these are not display-ready. “Rights only” was the earlier name for source-only candidates; these now require official-origin and campaign-date verification, and do not count as coverage. Constituent emblems never count as whole-list coverage. Missing means no qualifying emblem was verified here, not that the party had no emblem.
 
-Seat-winning denominators come from public/data/kNN.json officialSeats; k26 has null officialSeats. Its meta.lists covers joint lists only and therefore incorrectly yielded eight winners in the earlier pass. The eleven members of the pre-election bloc scheme in data/meta/k26.json supply the complete winner set (reported results, pending official gazettement). The research does not alter or independently verify those results.
+Seat-winning denominators come from public/data/kNN.json officialSeats; k26 has null officialSeats, so the coverage script uses the application's historical allocation of the retained CEC count. The table counts own-election logos only for all elections (nearest-period display is excluded); the continuation reports displayed coverage separately. The research does not alter the results.
 
 | Election | Winners | Hosted | Dated external | Rights only | Local constituent emblems |
 |---|---:|---:|---:|---:|---:|
 | k1 · 1949-01-25 | 12 | 3 | 0 | 0 | 0 |
-| k2 · 1951-07-30 | 15 | 0 | 0 | 0 | 0 |
+| k2 · 1951-07-30 | 15 | 1 | 0 | 0 | 0 |
 | k3 · 1955-07-26 | 12 | 0 | 0 | 0 | 0 |
-| k4 · 1959-11-03 | 12 | 0 | 0 | 0 | 0 |
-| k5 · 1961-08-15 | 11 | 1 | 0 | 0 | 0 |
+| k4 · 1959-11-03 | 12 | 1 | 0 | 0 | 0 |
+| k5 · 1961-08-15 | 11 | 2 | 0 | 0 | 0 |
 | k6 · 1965-11-02 | 13 | 3 | 0 | 0 | 0 |
-| k7 · 1969-10-28 | 13 | 0 | 0 | 0 | 0 |
+| k7 · 1969-10-28 | 13 | 1 | 0 | 0 | 0 |
 | k8 · 1973-12-31 | 10 | 1 | 0 | 0 | 0 |
 | k9 · 1977-05-17 | 13 | 5 | 0 | 0 | 0 |
 | k10 · 1981-06-30 | 10 | 2 | 0 | 0 | 0 |
@@ -25,17 +25,17 @@ Seat-winning denominators come from public/data/kNN.json officialSeats; k26 has 
 | k13 · 1992-06-23 | 10 | 1 | 0 | 0 | 0 |
 | k14 · 1996-05-29 | 11 | 2 | 0 | 0 | 0 |
 | k15 · 1999-05-17 | 15 | 2 | 0 | 0 | 0 |
-| k16 · 2003-01-28 | 13 | 2 | 0 | 0 | 0 |
+| k16 · 2003-01-28 | 13 | 3 | 0 | 0 | 1 |
 | k17 · 2006-03-28 | 12 | 1 | 0 | 0 | 0 |
 | k18 · 2009-02-10 | 12 | 2 | 0 | 0 | 0 |
 | k19 · 2013-01-22 | 12 | 3 | 0 | 1 | 0 |
-| k20 · 2015-03-17 | 10 | 2 | 0 | 0 | 0 |
-| k21 · 2019-04-09 | 11 | 2 | 0 | 0 | 0 |
-| k22 · 2019-09-17 | 9 | 3 | 0 | 0 | 2 |
-| k23 · 2020-03-02 | 8 | 2 | 0 | 0 | 1 |
-| k24 · 2021-03-23 | 13 | 5 | 0 | 0 | 1 |
-| k25 · 2022-11-01 | 10 | 3 | 0 | 4 | 1 |
-| k26 · 2026-10-27 | 11 | 8 | 0 | 1 | 10 |
+| k20 · 2015-03-17 | 10 | 3 | 0 | 0 | 0 |
+| k21 · 2019-04-09 | 11 | 4 | 0 | 0 | 1 |
+| k22 · 2019-09-17 | 9 | 4 | 0 | 0 | 3 |
+| k23 · 2020-03-02 | 8 | 3 | 0 | 0 | 3 |
+| k24 · 2021-03-23 | 13 | 7 | 0 | 0 | 2 |
+| k25 · 2022-11-01 | 10 | 4 | 0 | 3 | 1 |
+| k26 · 2026-10-27 | 11 | 9 | 0 | 1 | 8 |
 
 ## Run 3 — k1–k17 (5 November 2026)
 
@@ -1472,3 +1472,150 @@ winning-list constituents 105/247 → 105/247; all lists 184/701 → 184/701;
 all constituent occurrences 109/267 → 109/267. Mapam already displayed the 1988 fallback:
 own-election whole-list entries rise 83 → 84; nearest-period refs fall 101 → 100.
 No constituent dating gain.
+
+### Run 4 continuation — print and website sources
+
+Four further own-election assignments (official-origin fair use, high confidence in date
+and identity; retained original HTML/image bytes and crop/capture hashes):
+
+| Source record | Election / identity | Asset | Decisive inspected evidence |
+|---|---|---|---|
+| run4-herut-1951 | k2 / ח Herut | herut-1951.png | [Jabotinsky 33385](https://www.jabotinsky.org/ארכיון/חיפוש-מתקדם/פריט/?itemId=33385), official 14 July 1951 campaign meeting; printed 14.7.51 and exact catalogue year 1951. Map/arm/rifle emblem with מולדת וחרות motto, crop [177,24,239,62] from 287×448. Small original emblem (62×38); no enlargement or reconstruction. |
+| run4-herut-1961 | k5 / ח Herut | herut-1961.png | [Jabotinsky 37941](https://www.jabotinsky.org/ארכיון/חיפוש-מתקדם/פריט/?itemId=37941), victory rally 2 August 1961 before the 15 August election. Printed 2.8.61; exact catalogue year. White ח in blue circular badge, right-hand copy clear of watermark; crop [353,1,437,86] from 448×331. |
+| run4-gahal-1969 | k7 / חל Gahal | gahal-1969.png | [Jabotinsky 33732](https://www.jabotinsky.org/ארכיון/חיפוש-מתקדם/פריט/?itemId=33732), official Gahal election meeting, printed 25.10.1969 before 28 October election. Geometric חל square monogram below Gahal heading; crop [184,59,269,128] from 448×325, clear of watermark. Whole joint list only. |
+| run4-hadash-2003 | k16 / constituent hadash | hadash-2003.png | [Inspected official homepage capture](https://web.archive.org/web/20030120211213/http://www.hadash.org.il:80/) references images/hadash.gif; [independently inspected image capture](https://web.archive.org/web/20030120211325id_/http://www.hadash.org.il:80/images/hadash.gif). Both 20 January 2003, before 28 January. White Hebrew Hadash wordmark on red; no joint-list substitution for Hadash–Ta’al. GIF converted to RGBA PNG without resizing. |
+
+Reproduction for these crops/conversion: CPython 3.13 with Pillow 12.2.0; open retained
+original, convert RGBA, apply the stated Pillow left/top/right/bottom crop (exclusive right
+and bottom), save PNG with optimize=True. No colour editing, vectorisation, watermark
+removal or generated pixels. Final bytes, download URLs and original/final SHA-256 values
+are in the overlay/source/raw records. Nearest-period display remains labelled by source year.
+
+**Catalogue accounting.** The previous run's harvested scratch list was not found in the
+accessible worktrees. Re-queried the institute's own advanced search, ItemType=34,
+SearchTerm.FieldValue=בחירות, SearchTerm.FieldFunc=Stem, SortBy=#33; followed all 126 result
+pages. The current response reports 1,254 items (not the previous 1,226). Title harvesting
+is discovery, not inspection of 1,254 original posters. Scratch inventory and request queues:
+.backup-scratch/logos-run4/poster-titles.json and poster-pages.json. Nineteen selected item
+catalogues opened in this continuation; sixteen scans downloaded and visually inspected,
+plus the separately inspected 31935 candidate above. A date-filtered 1959 query returned
+an application error, not evidence of absent holdings.
+
+Other inspected catalogue outcomes (all at the institute's item?itemId=ID route):
+
+- 30619, 30623, 33784, 33785, 34325, 34664: undated. The striking red/blue Gahal lockups
+  in 33784/33785 cannot be attached to 1965 or 1969 from visual similarity alone.
+- 33189: only estimated to the 1950s; excluded by the new rule.
+- 33275 and 33309: dated 1955 Herut meeting posters, but plain text/ballot-letter headings,
+  no distinct emblem selected. 33528: 1961 Arabic meeting poster, text only. 33387: 1951
+  meeting poster with ordinary letter/header treatment; the separate emblem in 33385 used.
+- 33144: 1 November 1965 Gahal meeting, ordinary heading rather than isolated emblem.
+  33746 corroborates the square monogram on a second 1969 meeting poster.
+- 33413: 1951 meeting catalogue inspected, scan not acquired. 37926 is a 1961 Begin name
+  banner, not a separate emblem. 34514 corroborates the 1961 roundel. No one-poster absence
+  observation is promoted to a campaign-wide claim that a party had no logo.
+
+**Commons continuation.** Enumerated direct constituent categories Agudat Yisrael,
+Degel HaTorah, National Religious Party, Mapam, Gahal, Ratz, and Herut (political party),
+plus Mapam election campaign, HaKnesset Square, 1951. Other guessed category names were
+empty; Category:Herut was a village and was excluded. Category enumeration is discovery;
+only five selected file descriptions were inspected here:
+
+- [Gahal-Logo.png](https://commons.wikimedia.org/wiki/File:Gahal-Logo.png): only “1960s”
+  in the description, third-party Israel21c author/source; not sufficient for a new exact
+  campaign assignment. The independently dated official 1969 monogram was used instead.
+- [MAFDAL001.png](https://commons.wikimedia.org/wiki/File:MAFDAL001.png): cites an image
+  capture on 1 February 2003, after the election. [SVG derivative](https://commons.wikimedia.org/wiki/File:National_Religious_Party_logo.svg)
+  is a 2022 tracing of that raster, not new date evidence.
+- [RFF Logo.png](https://commons.wikimedia.org/wiki/File:RFF_Logo.png): NLI 1973 joint-list
+  mark already represented; no new constituent assignment.
+- [MAPAM Hebrew Letter.png](https://commons.wikimedia.org/wiki/File:MAPAM_Hebrew_Letter.png):
+  uploader's 2022 typeset letters, no historical campaign evidence.
+
+**E4-6 accepted — Balad k16 (2003), run4-balad-2003.** The
+[official homepage capture](https://web.archive.org/web/20030120211214/http://www.balad.org:80/)
+identifies the National Democratic Assembly and references its
+[masthead image, independently captured at 20030120211325](https://web.archive.org/web/20030120211325id_/http://www.balad.org/banners/b021127183419.gif).
+Both captures are 20 January, before the 28 January election. Visually inspected the full
+720×85 single-frame GIF: the banner names the party in Arabic, Hebrew and English, with
+its orange Arabic التجمع wordmark at right. Extracted [557,0,720,85] as balad-2003.png,
+without colour changes or resizing. Original banner and page retained with hashes; crop
+coordinates on the source card. High confidence; only k16 receives an own-election assignment.
+
+**Wayback continuation scope and negative findings.** CDX root queries covered 1996–27 March
+2006, with exact image queries as required. A root index record is discovery only. Domain
+variants were leads, not assumed official origins. The following observations concern the
+specific requests made, not all possible domains or holdings:
+
+| Party / route | Inspected outcome and remaining gap |
+|---|---|
+| Hadash / hadash.org.il | 1999 homepage retrieved, banner request timed out; 2003 page and image accepted for constituent; 2006 page timed out. No 1996 design verified. |
+| Mafdal / mafdal.org.il | 2006 homepage retrieved. Referenced images/top/top0.jpg independently captured 20 February is a photo strip, not emblem. Branding uses Flash top_a/top_b; not rendered or accepted. Later-page index timed out. Prior run's 2003 late image remains rejected. |
+| UTJ / yahadut-hatorah.org.il, yahadut.org.il | First root query empty; second timed out. No independently inspected pre-election emblem. |
+| Balad / balad.org.il, balad.org, tajamoa.org, altajamoa.org | .org supplies the accepted 2003 masthead. 2006 page retrieved, but referenced logo-200x140.jpg resolves to 26 June 2006, after election; rejected for k17. Other roots empty. |
+| Ra’am / raam.org.il, raam-taal.org.il | Root indexes empty; no official pre-election asset acquired. |
+| Yisrael BaAliyah / baaliya.org.il, baaliya.co.il, israel-baalya.org.il, yba.org.il | First three root indexes empty. yba.org.il has a 2002 capture, but inspected page title is generic mercaz with banking links; party identity unproved, not accepted. Initial capture request timed out, non-port retry retrieved it. |
+| Shinui / shinui.org.il | 8 May 1999 homepage frameset and main frame retrieved. References yesh2.gif/yesh3.gif; yesh2 index before 2006 empty, navigation frame 404. No independent pre-election logo bytes. |
+| Shas / shas.org.il, shasnet.org.il, shas.org, shas.co.il | shasnet first root capture 31 January 2003 is after election; shas.org timed out; other root indexes empty. No dated asset accepted. |
+| Meretz / meretz.org.il | 1999 homepage retrieved, but referenced meretzhead.JPG resolves to 12 March 2006 HTML, not an image. First 2003 root index result is after election; 2006 homepage timed out. No transfer of 1992 mark. |
+| Yisrael Beiteinu / israelbeytenu.com, beytenu.org.il | First root empty; beytenu 2003/2006 homepages inspected. 2003 intro is Flash promo_main.swf; 2006 logo is Flash images/logo.swf. No rendered/verified raster logo acquired. |
+| Likud / likud.org.il | 2003 campaign page retrieved, identifies Flash main_likudsite.swf. 2006 root is JavaScript screen-size redirect; 1999 capture timed out. No accepted emblem extraction. |
+| Labor/One Israel / havoda.org.il | 25 January 2003 homepage retrieved; referenced avodaLogo.gif resolves to 7 February, after election. Image retrieved only as a rejected late capture, not used for k16. No 1999/1996 logo verified. |
+| Center Party / merkaz.org.il, merkaz99.org.il | First root capture returned by query is October 2003, too late for 1999; alternate root empty. No logo accepted. |
+| National Union / haichud-haleumi.org.il | First root capture returned is October 1999, after May election; no accepted pre-election design. Constituent Mafdal and Yisrael Beiteinu routes checked separately above. |
+
+No 429 or Retry-After response occurred in this pass; timeouts and 404s were retained as
+retrieval outcomes. No proxy, CAPTCHA, login or paywall circumvention. All network requests
+used the prescribed project User-Agent. Website/Commons request queues and diagnostic bodies
+stay in project scratch, not the durable research archive; accepted originals are under
+data/raw/logos and source cards retain canonical locators, dates, inspection limits and hashes.
+
+**Final emblem-focused catalogue challenge.** Opened twenty more title-shortlisted records
+(39 catalogues in the continuation, plus 31935 above). 30614, 30615, 30616, 31888, 31892,
+34583, 34329, 34956, 34962, 31750, 31643, 35043, 30620, 30451, 31943, 31873 and 30604
+have no catalogue year and date type unknown; not promoted without a printed year.
+34584 gives 1951 based on a stamp on the reverse and marks it estimated; 35041 gives
+estimated 1955; 33786 gives estimated 1969. All three fail the exact-year branch of the
+new rule. These twenty catalogues were read, but their scans were not downloaded or
+inspected; no printed-date absence is asserted. They remain possible routes if an original
+scan provides a printed campaign year/date. All 1,254 title records were ultimately harvested;
+page 6 initially timed out and was successfully retrieved once.
+
+### Run 4 final coverage and verification
+
+Six accepted own-election assignments: Mapam 1959; Herut 1951 and 1961; Gahal 1969;
+Hadash constituent 2003; Balad 2003. Five whole-list dating gains and one constituent dating
+gain, not a claim of complete historical logo coverage. Some display gains below arise
+from the application's existing nearest-period fallback, rather than new proof for that year.
+
+| Scope / measure | Before → after |
+|---|---:|
+| All elections: displayed winning lists | 159 → 166 / 308 |
+| All elections: displayed winning-list constituents | 105 → 114 / 247 |
+| All elections: displayed lists of all kinds | 184 → 192 / 701 |
+| All elections: displayed non-winning lists | 25 → 26 / 393 |
+| All elections: displayed constituent occurrences | 109 → 118 / 267 |
+| All elections: own-election list logos | 83 → 88 |
+| All elections: own-election constituent occurrences | 20 → 21 |
+| k1–k17: displayed winning lists | 83 → 88 / 212 |
+| k1–k17: displayed winning-list constituents | 43 → 45 / 122 |
+| k1–k17: displayed lists of all kinds | 102 → 107 / 388 |
+| k1–k17: own-election list logos | 42 → 47 |
+| k1–k17: own-election constituents | 0 → 1 |
+
+Before is the merged integration baseline 3112bed. Generated coverage inventories stay in
+.backup-scratch/logos-run4; reproduction is scripts/research/logo-coverage.py against the
+baseline and this commit. Current missing-own-election identities remain gaps unless an
+accepted assignment above explicitly names them. Remaining retrieval routes and their
+limitations are recorded in the website table and catalogue exclusions above.
+
+Final checks: logo validator passed (26 overlays, 150 sources, 101 assets, 109 hosted
+assignments, five unresolved); build-datasets passed; family dataset hashes refreshed and
+validate-families passed (nine presets). All 26 k datasets are field-equal to 3112bed after
+recursively omitting only logo and builtAt. Only after that check, model digest re-recorded
+as f2dc2179a6ad575ec061ee4787c964bf61a73f0df24e26c1f46c55a9b7034a63;
+allocation, analysis, validation and rules digests reproduced unchanged. TypeScript passed;
+Vitest 91 files / 866 tests passed; Python date-gate tests three passed; git diff --check passed.
+No push, deployment or post-initial integration merge performed. Routine diagnostic output,
+request queues and intermediate contact sheets remain scratch; only accepted originals,
+final assets and necessary provenance are durable. Backup exclusions were not changed.

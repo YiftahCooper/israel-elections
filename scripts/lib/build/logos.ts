@@ -39,7 +39,7 @@ export function applyLogos(ds: ElectionDataset): ElectionDataset {
     if (e.rights === 'fair-use-identification' && !validCampaignDate(e, electionDate, elections)) throw new Error(`Invalid campaign-use date: ${ds.id}`);
     if (e.dateBasis === 'year-single-election') {
       const source = sources.sources.find(s => s.id === e.evidenceId);
-      if (source?.sourceType !== 'official party campaign publication' || source.dateBasis !== e.dateBasis || JSON.stringify(source.dateEvidence) !== JSON.stringify(e.dateEvidence)) throw new Error(`Invalid year evidence source: ${ds.id}`);
+      if (source?.sourceType !== 'official party campaign publication' || source.dateBasis !== e.dateBasis || (['yearSource', 'yearEvidence', 'campaignIdentity', 'campaignEvidence'] as const).some(key => source.dateEvidence?.[key] !== e.dateEvidence?.[key])) throw new Error(`Invalid year evidence source: ${ds.id}`);
     }
     if (!/^logos\/[^/]+\.(svg|png)$/.test(e.file!)) throw new Error(`Invalid logo path: ${e.file}`);
     if (!existsSync(join(ROOT, 'public', e.file!))) throw new Error(`data/meta/logos/${ds.id}.json: missing public/${e.file}`);
