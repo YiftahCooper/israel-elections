@@ -1347,3 +1347,86 @@ Locality names still have Hebrew-only paths in English mode (`Panels.tsx` locali
 table and `LocalityMap.tsx` unmapped rows/fallbacks); this task's data scope is list
 and party identity. Candidate personal-name translation is likewise outside this
 list/party task. No new owner preference decision is required.
+
+## Official-site Wayback pass, k18–k26 — 5 November 2026
+
+Scope: joint-list constituents first, then seat-winning lists, k18–k26. Earlier web-era
+runs made **no archive.org requests** and relied on search; this pass went directly to the
+parties' own domains in the Wayback Machine. Method per entry: find a pre-election official
+homepage capture, inspect its HTML for the header/logo reference, fetch that exact asset raw
+(`id_`), and match base32(SHA-1) of the bytes to a pre-election CDX row. Page, asset and CDX
+response are retained under `data/raw/logos/kNN/` with `data/raw/SOURCES.json` records;
+`sourceUrl` is the inspected Wayback capture. Requests were serial, ≥3 s apart, with the
+project User-Agent; no 429 occurred. Raster recipe unchanged (Pillow 13.0.0: RGBA, optional
+crop, thumbnail 256 LANCZOS, optimized PNG). Where a header graphic also carried slogan or
+notice text, only a rectangular crop was applied; `cropBox`/`originalDimensions` sit on the
+entry and source card. Reproducible tooling and scratch: `.backup-scratch/logos-k18-26/`
+(`add_logo.py spec-*.json`).
+
+**Accepted (17 identities, fair-use identification):**
+
+| Party / list | Elections | Official page capture → asset | Confidence |
+|---|---|---|---|
+| Hadash, whole list ו | k18 | `hadash2009.org.il` 2009-02-09; stylesheet `#branding` → `White_Clean.gif`, CDX digest match; emblem cropped from the banner | high |
+| Hadash, whole list ו | k19 | `hadash.org.il` 2013-01-10 → `logo-tag.png` (ballot-letter ו + 2013 slogan). Only capture is 2013-01-27, five days after polling; slogan cropped | medium |
+| Hadash constituent | k20, k21 | `hadash.org.il` 2015-03-16 / 2019-04-01 → `logo-tag.png`, pre-election CDX match | high |
+| Hadash constituent | k22–k25 | `hadash.org.il` 2019-09-03, 2020-02-19, 2021-03-03, 2022-10-01 → `images/logo.png`, one digest 2019–2026, pre-election rows | high |
+| Jewish Home list טב + constituent | k19 | `baityehudi.org.il` 2013-01-07 → `logim1.jpg` ("הבית היהודי בראשות נפתלי בנט", the list's ballot name); slogan cropped | high |
+| Jewish Home list טב + constituent | k20 | `baityehudi.org.il` 2015-03-05 → `assets/img/logo.png` | high |
+| Jewish Home constituent | k22 | 2019-08-21 page → `new_logo.png`; 4 June 2019 capture replays these bytes (orig. Last-Modified 2019-02-06) but its CDX digest differs from the payload hash; same bytes CDX-indexed 2020-01-19 | medium |
+| Jewish Home constituent | k23 | 2020-01-17 page → `new_logo.png`, CDX match 2020-01-19 | high |
+| Ta'al constituent | k18 | `a-m-c.org` 2009-02-03 → `images/logo.gif`, CDX match | high |
+| Ta'al constituent | k21 | `a-m-c.org` holding page 2019-03-14 → `logo-amc.png`; first asset capture 2019-07-08 (orig. Last-Modified 2019-03-03); notice text cropped | medium |
+| Ta'al constituent | k22 | holding page 2019-08-12 → same asset, CDX 2019-07-08 match | high |
+
+For the k19/k20 Jewish Home entries the same official artwork is assigned to the טב list and
+to the `jewish-home` constituent, because the list ran under that exact party name; Tkuma
+keeps its separate entry. Every other entry is constituent-only and is not the joint lockup.
+
+**Coverage (`logo-coverage.py`, k18–k26 seat winners).** Note the script counts the
+builder's labelled nearest-period fallbacks as covered; same-campaign gains are in the table above.
+
+| Election | Winning lists | Constituents of winners |
+|---|---:|---:|
+| k18 | 8/12 → 10/12 | 4/12 → 5/12 |
+| k19 | 7/12 → 9/12 | 4/9 → 6/9 |
+| k20 | 8/10 → 9/10 | 4/11 → 7/11 |
+| k21 | 8/11 → 8/11 | 7/14 → 10/14 |
+| k22 | 7/9 → 7/9 | 9/19 → 12/19 |
+| k23 | 8/8 → 8/8 | 9/18 → 12/18 |
+| k24 | 12/13 → 12/13 | 7/12 → 9/12 |
+| k25 | 8/10 → 8/10 | 5/11 → 7/11 |
+| k26 | 10/11 → 10/11 | 12/19 → 14/19 |
+
+All elections: winners 138 → 150 of 308; constituents 87 → 113 of 247. Same-campaign
+gains are the 17 identities above. The rest are the builder's existing nearest-period
+fallback (shown with the source year): Ta'al k19, k20, k23–k26 and k15–k17; Hadash k26
+(2022 mark); Jewish Home k21 (2019) and k25 (2020); k18 ב (2013 Jewish Home mark); and
+Hadash's 2009 emblem on the Hadash lists/constituents of k9–k17. These are labelled
+substitutes, not evidence of use in those campaigns; whether the fallback should reach back
+decades is a product question outside this research pass.
+
+**Tried and not accepted (gaps remain open, not absence findings):**
+
+- Hadash k26: the 2026 site is a Framer build with an inline SVG data URI (see above); no
+  separate asset/CDX pair was established in this pass. `images/logo.png` was last indexed
+  January 2026, after which the site changed.
+- Ta'al k19/k20: `a-m-c.org` 2013-01-06 and 2014-12-15 captures render the header through
+  scripts/iframes (`/online/slider`); no logo reference found in the HTML. k23–k26: no
+  asset capture after July 2019 (holding page then social redirect).
+- Jewish Home k21: no `baityehudi.org.il` capture between January and 9 April 2019.
+- Balad k18/k19 whole list: `balad.org` has no captures in the Nov 2008–Feb 2009 or
+  Nov 2012–Jan 2013 windows.
+- Hatnua k20: `hatnua.org.il` has no captures between December 2014 and polling day 2015.
+- Israel Resilience k21: `bg19.co.il` 2019-01-19 is a text-only holding page (no logo image);
+  by 2019-03-24 the site carries Blue and White joint branding, which is not the
+  constituent emblem. k22/k23/k25 not reached in this pass.
+- Ta'al/Ra'am: `taal.org.il` has no captures; `raam.org.il` CDX timed out (60 s). Ra'am
+  constituent (k18–k23) remains open.
+- Not reached in the time box: Degel HaTorah (all years), New Right, Gesher, Israel
+  Democratic Party (`independence`), Green Movement, Ahi, Moledet, HaTikva, Eretz Yisrael
+  Shelanu, New Movement, Mada, Atid Ehad, Derech Eretz, Homat Torat Yisrael, Yesodot Yisrael;
+  joint lockups k19 מחל, k20 אמת, k21 דעם/ום/טב, k22 אמת/מרצ, k24–k26 ט, k25 ום.
+  The same official-domain Wayback route is the recommended next step for each.
+- Search tooling: the Jina key now returns "set your API key"; Exa was used for domain discovery
+  only. An official-sites directory (uzit.co.il) returned a 131-byte response; not pursued.
