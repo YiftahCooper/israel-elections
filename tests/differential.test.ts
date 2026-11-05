@@ -74,7 +74,8 @@ const EXPECTED: Record<Family, string> = {
   // merged: both changes above together (bloc notes + nameEn), no other field differs.
   // 5 Nov: pm-recommendations schemes appended for k10, k11, k12, k16, k17; in those five datasets only blocSchemes
   // (new last entry; earlier schemes equal) and buildInfo differ from HEAD. Allocation/analysis/validation/rules unchanged.
-  model: 'b7864d36d5d08a9fd8309ddbeeb8fb52c2b75201694387477a7055f6a4b46675',
+  // merged with the 2009–2026 recommendations branch (k18, k19, k20, k26 schemes; field-verified on that branch).
+  model: '2e0c8406158a50fcb4f2e4853fc858fd373fdf47ff7667f054e034973958ec39',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

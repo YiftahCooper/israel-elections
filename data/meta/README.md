@@ -158,7 +158,7 @@ parties appear in `lists`. A rank goes to `unassignedRanks` unless a source attr
 
 | Where | Field | Meaning |
 |---|---|---|
-| file | `governmentNote` | Why no `first-government` scheme exists (k21, k22: no government formed; k26: formation still under way on 2026-11-04). |
+| file | `governmentNote` | Why no `first-government` scheme exists (k21, k22: no government formed; k26: formation still under way on 2026-11-05). |
 | list | `seats` | Seats won by the list. For k26 this is the reported CEC final count (the dataset has no gazetted seat table yet). |
 | list | `sources` | Sources showing that the list was an alliance (normally the CEC gazette's sponsoring parties or official list name). |
 | list | `coverage` | `roster`, `assigned`, `elected` (ranks 1..seats) and `electedAssigned` counts. `rosterTruncated` is copied from the dataset. |
@@ -169,6 +169,7 @@ parties appear in `lists`. A rank goes to `unassignedRanks` unless a source attr
 | bloc | `seats` | Seats of the bloc, computed from list seats and member ranks. Totals were checked against each source's stated totals where it gives one. |
 | bloc member | `{ "letters", "parties": [ids] }` | Only the elected candidates of those constituent parties (as attributed in `lists`). |
 | bloc member | `{ "letters", "ranks": [ … ], "note" }` | Only those elected ranks (lists that split between coalition and opposition). |
+| bloc | `id: "pending"` | k26 only: factions whose recommendation was not yet confirmed when checked (consultations under way). |
 | bloc member | `joined` | Date a list joined after the scheme's date (UTJ, 1 April 2009). |
 
 Bloc scheme ids: `first-government` (coalition and opposition when the first government after the election was sworn in),
