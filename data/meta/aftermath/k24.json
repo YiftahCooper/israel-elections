@@ -155,6 +155,24 @@
       "publisher": "Israel Democracy Institute, Israeli Voice Index May 2021 (report)",
       "kind": "academic",
       "accessed": "2026-11-05"
+    },
+    "idi-2022-retrospective": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/2022-1/",
+      "publisher": "Israel Democracy Institute, 2022 election retrospective (opening narrative)",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "ipf-election-timeline": {
+      "url": "https://israelpolicyforum.org/wp-content/uploads/2022/09/The-Elections-Era-Timeline-2018-2022.pdf",
+      "publisher": "Israel Policy Forum, The Elections Era 2018–2022, p.2",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "ejpr-2022-yearbook": {
+      "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/271F195CECC2ECC092F9D69AA96CC54F/S2047884400703685a.pdf/israel-political-developments-and-data-in-2022-the-return-of-netanyahu-all-right-wing-government.pdf",
+      "publisher": "European Journal of Political Research Political Data Yearbook 62 (2023), Yosi Ganel, Israel: Political Developments and Data in 2022, pp.249,251",
+      "kind": "academic",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -660,10 +678,43 @@
           {
             "source": "toi-2021-11-04",
             "quote": "The NIS 609 billion ($194 billion) spending plan for 2021 is the first budget Israel has passed since 2018"
+          },
+          {
+            "source": "idi-2022-retrospective",
+            "quote": "העבירה תקציב מדינה"
+          },
+          {
+            "source": "ipf-election-timeline",
+            "quote": "NOVEMBER 4, 2021"
           }
         ],
         "notes": [
           "The Reshumot citation is the accompanying Economic Plan law passed the same night; the Budget Law's own gazette entry was not retrieved."
+        ]
+      },
+      {
+        "id": "majority-lost-2022",
+        "date": "2022-04-06",
+        "category": "governance",
+        "textEn": "The coalition lost its Knesset majority when Yamina MK Idit Silman left it.",
+        "textHe": "הקואליציה איבדה את הרוב בכנסת לאחר שח״כ עידית סילמן מימינה פרשה ממנה.",
+        "cites": [
+          {
+            "source": "idi-2022-retrospective",
+            "quote": "אובדן הרוב הפרלמנטרי"
+          },
+          {
+            "source": "ipf-election-timeline",
+            "quote": "Coalition Chair Idit Silman of Yamina"
+          },
+          {
+            "source": "ejpr-2022-yearbook",
+            "quote": "6 April 2022, the Member of the Knesset (MK) Idit Silman"
+          }
+        ],
+        "confidence": "high",
+        "notes": [
+          "The EJPR annual political chronology and independent IPF timeline both name Silman and date her departure to 6 April. IDI independently selects the spring loss of majority. The yearbook’s June 20 dissolution wording conflates the announcement with the later law and is not used to date dissolution."
         ]
       },
       {
@@ -711,56 +762,34 @@
     ],
     "candidatesPending": [
       {
-        "label": "Coalition lost its majority (MK Idit Silman left)",
-        "date": "2022-04",
-        "why": "One independent source retrieved (crisisgroup-2022-07-04); needs a second.",
-        "draft": {
-          "id": "majority-lost-2022",
-          "date": "2022-04",
-          "category": "politics",
-          "textEn": "The coalition lost its majority after Yamina MK Idit Silman left it.",
-          "textHe": "הקואליציה איבדה את הרוב לאחר שח\"כ עידית סילמן מימינה פרשה ממנה.",
-          "confidence": "medium",
-          "cites": [
-            {
-              "source": "crisisgroup-2022-07-04",
-              "quote": "The coalition had an extremely slim parliamentary majority to begin with (61 of 120 seats) with a member from Bennett's Yamina faction, Idit Silman, defecting to the Netanyahu-led opposition in April."
-            }
-          ],
-          "notes": [
-            "Only one independent source retrieved; fails the interim rule until a second (Knesset House Committee record or contemporaneous report) is added. Kept to show the pattern."
-          ]
-        }
-      },
-      {
         "label": "Operation Guardian of the Walls (Gaza)",
         "date": "2021-05-10/2021-05-21",
-        "why": "During formation, before the government; sources not yet retrieved."
+        "why": "10–21 May 2021 precedes this record’s 13 June government-term start. It belongs to k23’s caretaker interval; do not duplicate it here."
       },
       {
         "label": "Mount Meron disaster",
         "date": "2021-04-30",
-        "why": "During formation; official commission source not yet retrieved."
+        "why": "30 April 2021 precedes this record’s 13 June government-term start; no pair of inspected qualifying chronologies recovered."
       },
       {
         "label": "Negev Summit",
         "date": "2022-03-27/2022-03-28",
-        "why": "Not yet retrieved."
+        "why": "The IEMed Yearbook 2023 chronology was located but returned a verification challenge; no second readable qualifying chronology inspected."
       },
       {
         "label": "Wave of attacks, spring 2022",
         "date": "2022-03/2022-05",
-        "why": "Not yet retrieved."
+        "why": "The retrieved IDI/IPF political retrospectives do not select this broad event; needs a dated scope and two qualifying chronologies."
       },
       {
         "label": "US President Biden's visit",
         "date": "2022-07-13/2022-07-15",
-        "why": "Not yet retrieved."
+        "why": "No pair of inspected qualifying chronologies selects the July 2022 visit; a contemporaneous report alone would not meet the promotion rule."
       },
       {
         "label": "Operation Breaking Dawn (Gaza)",
         "date": "2022-08-05/2022-08-07",
-        "why": "Not yet retrieved."
+        "why": "No pair of inspected qualifying chronologies selects the August 2022 operation; IEMed Yearbook 2023 could not be read (verification challenge)."
       },
       {
         "label": "Announcement of dissolution bill",
@@ -774,7 +803,12 @@
       "nextElection": "k25",
       "textEn": "Election to the 25th Knesset, 1 November 2022.",
       "textHe": "בחירות לכנסת ה־25, 1 בנובמבר 2022."
-    }
+    },
+    "chronologies": [
+      "idi-2022-retrospective",
+      "ipf-election-timeline",
+      "ejpr-2022-yearbook"
+    ]
   },
   "issuePolling": {
     "status": "filled",
