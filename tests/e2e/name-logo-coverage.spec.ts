@@ -25,8 +25,9 @@ for(const election of ['k26','k25','k12','k1','k21']) test(`${election}: names a
   if(election==='k26'){
    await democrat.click();await panel.locator('.party-rows').scrollIntoViewIfNeeded();
    const meretz=panel.locator('.party-row').filter({hasText:lang==='en'?'Meretz':'מרצ'});
-   await expect(meretz.locator('img')).toHaveAttribute('src','logos/meretz-2013.svg');
-   await expect(meretz.locator('.slip-letters')).toHaveText('2013');
+   await expect(meretz.locator('img')).toHaveCount(0);
+   await expect(meretz.locator('.slip')).toBeVisible();
+   await expect(panel.locator('.sp-head .slip img')).toHaveAttribute('src', 'logos/democrats-2026.svg');
    await expect(panel.locator('.party-row > .swatch')).toHaveCount(0);
   }
   await page.screenshot({path:`.backup-scratch/feedback-data/after/${election}-${lang}-${theme}-${width}.png`,fullPage:true});

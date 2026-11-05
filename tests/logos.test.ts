@@ -39,6 +39,24 @@ function dataset(n: number): ElectionDataset {
 }
 
 describe('election-specific logo overlays', () => {
+  it('never borrows a whole-list or constituent logo from another election', () => {
+    for (let n = 1; n <= 26; n++) {
+      const ds = dataset(n);
+      for (const l of ds.lists) {
+        delete l.logo;
+        for (const p of l.parties ?? []) delete p.logo;
+      }
+      const entries = JSON.parse(readFileSync(`data/meta/logos/k${n}.json`, 'utf8')).logos
+        .filter((e: { hosted: boolean; status: string; file: string | null }) => e.hosted && e.status === 'verified' && e.file);
+      const result = applyLogos(ds);
+      for (const l of result.lists) {
+        expect(l.logo?.file, `${ds.id}/${l.letters}`).toBe(entries.find((e: { letters?: string }) => e.letters === l.letters)?.file);
+        for (const p of l.parties ?? []) {
+          expect(p.logo?.file, `${ds.id}/${p.id}`).toBe(entries.find((e: { party?: string }) => e.party === p.id)?.file);
+        }
+      }
+    }
+  });
   it('attaches a fair-use whole-list emblem with its rights notice', () => {
     const ds = applyLogos(dataset(26));
     const logo = ds.lists.find((l) => l.letters === 'רק')!.logo!;

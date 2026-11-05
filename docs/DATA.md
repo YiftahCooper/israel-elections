@@ -64,7 +64,7 @@ Final bytes and SHA-256 are checked, and original SHA-256 is retained. Newly ret
 and their source cards use optional `rawEvidence.page` / `rawEvidence.asset` manifest IDs; the logo
 validator verifies the retained files offline. Page/use and asset capture timestamps remain distinct. Constituent entries keyed by party id
 attach to `list.parties[].logo`; joint lists retain their own emblems. A party objection means removal
-([decision 0089](decisions/0089-party-logos-fair-use.md)); the Sources tab lists the credits. Lists without one keep their ballot letters.
+([decision 0089](decisions/0089-party-logos-fair-use.md)); the Sources tab lists the credits. Lists and constituents without election-specific evidence use Hebrew ballot letters in both interface languages. Cross-election logo reuse is disabled (0089 addendum, 5 November 2026).
 
 Candidate biography links (`data/meta/bios/kNN.json`, attached by `scripts/lib/build/bios.ts`) follow the
 same order: the Knesset's member page (official), the party's own page (partisan, archived from the campaign

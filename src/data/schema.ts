@@ -122,7 +122,7 @@ export interface PartyLink {
 
 /** A party logo as used at that election: a locally hosted file with its rights basis and credit. */
 export type LogoRights = 'free-licence' | 'fair-use-identification';
-export interface LogoRef { rights: LogoRights; file: string; licence: string; attribution: string; sourceUrl: string; background?: string; year?: number }
+export interface LogoRef { rights: LogoRights; file: string; licence: string; attribution: string; sourceUrl: string; background?: string }
 
 /** A constituent party of a joint list (decision 0087). */
 export interface PartyDef { id: string; nameHe: string; nameEn: string; color?: string; logo?: LogoRef; links?: PartyLink[] }

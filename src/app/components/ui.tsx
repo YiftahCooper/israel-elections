@@ -47,15 +47,13 @@ export function Info({ title, children, term }: { title?: string; children?: Rea
 export function Slip({ letters, color, size, logo, name }: { name?: string; letters: string; color: string; size?: 'sm' | 'lg'; logo?: LogoRef }) {
   const lang = useLang();
   const label = name ?? `${lang === 'he' ? 'אותיות הפתק' : 'ballot letters'} ${letters}`;
-  const year = logo?.year ? ` · ${logo.year}` : '';
-
   // the logo the list used at this election, when a verified local copy is held; the ballot letters stay
   // as its accessible name and a small caption, and the credit travels with the image
   if (logo) return (
     <span className={`slip logo ${size ?? ''} ${logo.background === 'dark' ? 'on-dark' : ''}`} style={{ ['--c' as string]: color }} aria-label={label}
-      title={`${label}${year} · ${logo.licence}`}>
+      title={`${label} · ${logo.licence}`}>
       <img src={logo.file} alt="" loading="lazy" decoding="async" />
-      <span className={`slip-letters ${logo.year ? 'logo-year' : ''}`} lang={logo.year ? undefined : "he"} dir={logo.year ? "ltr" : "rtl"} aria-hidden>{logo.year ?? (name ? '' : letters)}</span>
+      <span className="slip-letters" lang="he" dir="rtl" aria-hidden>{name ? '' : letters}</span>
     </span>
   );
   const fallbackLabel = letters ? (lang === 'he' ? `אותיות הפתק ${letters} (ללא סמל)` : `Ballot letters ${letters} (no logo)`)
