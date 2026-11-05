@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 1,
+  "electionId": "k7",
+  "status": "pilot",
+  "reviewedAt": "2026-11-05",
+  "notes": [
+    "Research draft; not wired into the application. Official session records anchor all government approvals. Reused recommendation and first-coalition evidence retains the earlier research limitations.",
+    "The government card describes the first cabinet. Each replacement cabinet has a full-session confidence step and a numbered government.changes entry; available replacement coalition snapshots are attached to that entry.",
+    "New PDF quotations preserve the extracted text order (including OCR errors); whitespace is collapsed. Full-session sources identify the sitting; source excerpts are recoverable from the public PDF. Existing coalition OData quotes are labelled project tabulations in the source text, not purported verbatim minister lists."
+  ],
+  "sources": {
+    "plenum-gov15": {
+      "url": "https://fs.knesset.gov.il/7/Plenum/7_ptm_253121.pdf",
+      "publisher": "Knesset, Knesset 7, sitting 13, 1969-12-15 (full plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-1": {
+      "url": "https://www.jta.org/archive/shazar-finishes-consultations-with-all-parties-told-all-support-mrs-meir-for-premier",
+      "publisher": "Jewish Telegraphic Agency (JTA) Daily News Bulletin archive",
+      "kind": "secondary",
+      "accessed": "2026-11-05",
+      "note": "Bulletin dated 1969-11-10. Its headline ('told all support Mrs. Meir') is broader than its text; the text is used."
+    },
+    "recommendations-2": {
+      "url": "https://main.knesset.gov.il/mk/government/Documents/gov.14.pdf",
+      "publisher": "Knesset (Divrei HaKnesset, 17 Mar 1969, government pages)",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "note": "Identifies the factions of the outgoing government; the Druze and Arab-Jewish Brotherhood factions did not win seats as such in 1969."
+    },
+    "coalition-1": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2015&$format=json",
+      "publisher": "Knesset OData (ParliamentInfo)",
+      "kind": "official",
+      "accessed": "2026-11-04"
+    },
+    "coalition-2": {
+      "url": "https://he.wikipedia.org/wiki/ממשלת_ישראל_החמש_עשרה",
+      "publisher": "Hebrew Wikipedia",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "term-history": {
+      "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-seventh-knesset-1969-1973",
+      "publisher": "Knesset, history of the seventh Knesset (credited official text on Jewish Virtual Library)",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Jewish Virtual Library mirror; original https://main.knesset.gov.il/EN/About/History/pages/knessethistory.aspx?kns=7"
+    },
+    "idi-next": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/elections/1973/",
+      "publisher": "Israel Democracy Institute, election chronology",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "ipu-next": {
+      "url": "https://data.ipu.org/election-summary/PDF/ISRAEL_1973_E.PDF",
+      "publisher": "Inter-Parliamentary Union, Chronicle of Parliamentary Elections, Israel 1973",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "plenum-gov16": {
+      "url": "https://fs.knesset.gov.il/8/Plenum/8_ptm_253620.pdf",
+      "publisher": "Knesset, Knesset 8, sitting 21, 1974-03-10 (full plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    }
+  },
+  "results": {
+    "electionDate": "1969-10-28",
+    "officialResultsSourceId": "k7-results-gazette"
+  },
+  "reaction": {
+    "policy": "Only dated institutional steps and attributed statements, all lists or none.",
+    "items": [],
+    "gap": "Not collected."
+  },
+  "recommendationRounds": [
+    {
+      "id": "r1",
+      "date": "1969-11-01",
+      "kind": "consultations",
+      "president": {
+        "nameEn": "Zalman Shazar",
+        "nameHe": "זלמן שזר"
+      },
+      "nominees": {
+        "meir": {
+          "nameEn": "Golda Meir",
+          "nameHe": "גולדה מאיר"
+        }
+      },
+      "entries": [
+        {
+          "letters": "אמת",
+          "seats": 56,
+          "status": "recommended",
+          "nominee": "meir",
+          "cites": [
+            {
+              "source": "recommendations-1",
+              "quote": "All of the factions represented in the outgoing National Unity Government reportedly told Mr. Shazar that they wished Mrs. Meir to continue as Premier."
+            }
+          ]
+        },
+        {
+          "letters": "חל",
+          "seats": 26,
+          "status": "recommended",
+          "nominee": "meir",
+          "cites": [
+            {
+              "source": "recommendations-1",
+              "quote": "All of the factions represented in the outgoing National Unity Government reportedly told Mr. Shazar that they wished Mrs. Meir to continue as Premier."
+            }
+          ]
+        },
+        {
+          "letters": "ב",
+          "seats": 12,
+          "status": "recommended",
+          "nominee": "meir",
+          "cites": [
+            {
+              "source": "recommendations-1",
+              "quote": "All of the factions represented in the outgoing National Unity Government reportedly told Mr. Shazar that they wished Mrs. Meir to continue as Premier."
+            }
+          ]
+        },
+        {
+          "letters": "ג",
+          "seats": 4,
+          "status": "unknown"
+        },
+        {
+          "letters": "לע",
+          "seats": 4,
+          "status": "recommended",
+          "nominee": "meir",
+          "cites": [
+            {
+              "source": "recommendations-1",
+              "quote": "All of the factions represented in the outgoing National Unity Government reportedly told Mr. Shazar that they wished Mrs. Meir to continue as Premier."
+            }
+          ]
+        },
+        {
+          "letters": "עמ",
+          "seats": 4,
+          "status": "unknown"
+        },
+        {
+          "letters": "ו",
+          "seats": 3,
+          "status": "unknown"
+        },
+        {
+          "letters": "רא",
+          "seats": 2,
+          "status": "recommended",
+          "nominee": "meir",
+          "cites": [
+            {
+              "source": "recommendations-1",
+              "quote": "All of the factions represented in the outgoing National Unity Government reportedly told Mr. Shazar that they wished Mrs. Meir to continue as Premier."
+            }
+          ]
+        },
+        {
+          "letters": "ד",
+          "seats": 2,
+          "status": "recommended",
+          "nominee": "meir",
+          "cites": [
+            {
+              "source": "recommendations-1",
+              "quote": "All of the factions represented in the outgoing National Unity Government reportedly told Mr. Shazar that they wished Mrs. Meir to continue as Premier."
+            }
+          ]
+        },
+        {
+          "letters": "יא",
+          "seats": 2,
+          "status": "recommended",
+          "nominee": "meir",
+          "cites": [
+            {
+              "source": "recommendations-1",
+              "quote": "All of the factions represented in the outgoing National Unity Government reportedly told Mr. Shazar that they wished Mrs. Meir to continue as Premier."
+            }
+          ]
+        },
+        {
+          "letters": "ש",
+          "seats": 2,
+          "status": "unknown"
+        },
+        {
+          "letters": "ק",
+          "seats": 1,
+          "status": "unknown"
+        },
+        {
+          "letters": "ט",
+          "seats": 2,
+          "status": "unknown"
+        }
+      ],
+      "totals": {
+        "meir": 104,
+        "unknown": 16
+      },
+      "cites": [
+        {
+          "source": "recommendations-1",
+          "quote": "All of the factions represented in the outgoing National Unity Government reportedly told Mr. Shazar that they wished Mrs. Meir to continue as Premier."
+        },
+        {
+          "source": "recommendations-2",
+          "quote": "דיווחתי לנשיא על הרכבת הממשלה החדשה, הכוללת את סיעת המערך (מפלגת העבודה הישראלית – מפ\"ם), גוש חירות – ליברלים, המפלגה הדתית-לאומית, המפלגה הליברלית העצמאית, מפלגת פועלי אגודת ישראל, סיעת הקידמה והפיתוח, סיעת השיתוף והאחווה, הסיעה הדרוזית הישראלית וסיעת האחווה הערבית-יהודית."
+        }
+      ],
+      "notes": [
+        "Reuses docs/research/pm-recommendations-1949-1973.md; consultation conditions are not personal recommendations. Unknown does not mean no recommendation.",
+        "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved.",
+        "104 seats rests on a reportedly qualified JTA statement about the outgoing-government factions, identified in the official government 14 record; medium confidence."
+      ],
+      "endDate": "1969-11-09",
+      "blocSchemeRef": "pm-recommendations"
+    }
+  ],
+  "formation": {
+    "outcome": "government-formed",
+    "events": [
+      {
+        "date": "1969-11-01",
+        "type": "consultations",
+        "textEn": "President Zalman Shazar held consultations on government formation.",
+        "textHe": "הנשיא זלמן שזר קיים התייעצויות על הרכבת הממשלה.",
+        "cites": [
+          {
+            "source": "recommendations-1",
+            "quote": "All of the factions represented in the outgoing National Unity Government reportedly told Mr. Shazar that they wished Mrs. Meir to continue as Premier."
+          },
+          {
+            "source": "recommendations-2",
+            "quote": "דיווחתי לנשיא על הרכבת הממשלה החדשה, הכוללת את סיעת המערך (מפלגת העבודה הישראלית – מפ\"ם), גוש חירות – ליברלים, המפלגה הדתית-לאומית, המפלגה הליברלית העצמאית, מפלגת פועלי אגודת ישראל, סיעת הקידמה והפיתוח, סיעת השיתוף והאחווה, הסיעה הדרוזית הישראלית וסיעת האחווה הערבית-יהודית."
+          }
+        ],
+        "endDate": "1969-11-09"
+      },
+      {
+        "date": "1969-11-10",
+        "type": "mandate-given",
+        "textEn": "The President tasked Golda Meir with forming a government.",
+        "textHe": "הנשיא הטיל על גולדה מאיר להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "plenum-gov15",
+            "quote": "המ ''ביום 10 בנובמבר 1969 הטיל עלי כבוד נשיא ,13 דינה את התפקיד להרכיב ממשלה. בהתאם לסעיף סעיף קטן )ב(, לחוק יסוד: הממשלה, אני מתכבדת להודיעך כי הרכבתי ממשלה. אודה לך אם תקבע מועד שבו תתייצב הממשלה לפני הכנסת ותבקש הבעת אמון."
+          }
+        ],
+        "person": "meir"
+      },
+      {
+        "date": "1969-12-15",
+        "type": "confidence-vote",
+        "textEn": "The Knesset expressed confidence in government 15, headed by Golda Meir, 90–10, with 4 abstentions.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־15 בראשות גולדה מאיר, ברוב של 90 מול 10, עם 4 נמנעים.",
+        "cites": [
+          {
+            "source": "plenum-gov15",
+            "quote": "הצבעה 90 בעד הבעת אמון לממשלה 0ו נגד 4 נמנעים ההצעה להביע אמון לממשלה נתקבלה. היו\"ר ר. ברקת:"
+          }
+        ],
+        "votes": {
+          "for": 90,
+          "against": 10,
+          "abstain": 4
+        },
+        "governmentNumber": 15,
+        "person": "meir"
+      }
+    ]
+  },
+  "government": {
+    "number": 15,
+    "nameEn": "Government 15 (Golda Meir)",
+    "nameHe": "הממשלה ה־15 (גולדה מאיר)",
+    "startDate": "1969-12-15",
+    "endDate": "1974-03-10",
+    "primeMinisters": [
+      {
+        "nameEn": "Golda Meir",
+        "nameHe": "גולדה מאיר",
+        "letters": "אמת",
+        "from": "1969-12-15",
+        "to": "1974-03-10"
+      }
+    ],
+    "firstGovernmentSchemeRef": "first-government",
+    "coalition": [
+      {
+        "letters": "אמת",
+        "seats": 56
+      },
+      {
+        "letters": "חל",
+        "seats": 26
+      },
+      {
+        "letters": "ב",
+        "seats": 12
+      },
+      {
+        "letters": "לע",
+        "seats": 4
+      },
+      {
+        "letters": "רא",
+        "seats": 2
+      },
+      {
+        "letters": "יא",
+        "seats": 2
+      }
+    ],
+    "coalitionSeats": 102,
+    "coalitionSeatsNote": "Election-list seat totals, including support-only lists; not the confidence-vote tally. Reuses the existing overlay: ministerial factions are official; support-only membership is labelled secondary. Later government changes are listed separately.",
+    "cites": [
+      {
+        "source": "coalition-1",
+        "quote": "Government 15 sworn in 1969-12-15. Ministers at swearing-in by their Knesset faction (project tabulation of the OData records): {'גוש חרות ליברלים': 4, 'מפלגה דתית לאומית': 3, 'ליברלים עצמאיים': 1, 'מערך': 11, 'NON-MK': 5}"
+      },
+      {
+        "source": "coalition-2",
+        "quote": "קואליציה: המערך, מפד\"ל, ליברלים עצמאיים, קידמה ופיתוח, שיתוף ואחווה | אופוזיציה: אגודת ישראל, הרשימה הממלכתית, רק\"ח, פועלי אגודת ישראל, העולם הזה-כוח חדש, המרכז החופשי, מק\"י"
+      }
+    ],
+    "changes": [],
+    "endDateCites": [
+      {
+        "source": "plenum-gov16",
+        "quote": "/ היו\"ר י. ישעיהו: תוצאות ההצבעה: בעד ההצעה להביע אמון לממשלה .9 46; נמנעים 62; נגד נתקבלה. לממשלה אמון להביע ההצעה ז. הצהרת אמונים של חברי הממשלה היו\"ר י. ישעיהו: את ראש הכנסת הביעה אמון לממשלה, ואני מזמין אמונים. להצהיר לדוכן הממשלה לעלות"
+      }
+    ]
+  },
+  "term": {
+    "start": "1969-10-28",
+    "end": "1973-12-31",
+    "inclusionRule": "At least two independent chronologies, including one official or academic; a direct date source is also required.",
+    "chronologies": [
+      "term-history",
+      "idi-next",
+      "ipu-next"
+    ],
+    "events": [
+      {
+        "id": "yom-kippur-war",
+        "date": "1973-10",
+        "category": "security",
+        "textEn": "The Yom Kippur War took place.",
+        "textHe": "מלחמת יום הכיפורים התרחשה.",
+        "cites": [
+          {
+            "source": "term-history",
+            "quote": "Yom Kippur War"
+          },
+          {
+            "source": "idi-next",
+            "quote": "The elections for the Eighth Knesset were delayed as a result of the Yom Kippur War"
+          },
+          {
+            "source": "ipu-next",
+            "quote": "The October conflict"
+          }
+        ],
+        "confidence": "high"
+      }
+    ],
+    "candidatesPending": [
+      {
+        "label": "Black Panthers demonstrations",
+        "date": "1971",
+        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+      },
+      {
+        "label": "Lod airport attack",
+        "date": "1972-05",
+        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+      },
+      {
+        "label": "Munich attack",
+        "date": "1972-09",
+        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+      },
+      {
+        "label": "Geneva peace conference",
+        "date": "1973-12",
+        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+      }
+    ],
+    "endedBy": {
+      "type": "regular-election-postponed",
+      "date": "1973-12-31",
+      "nextElection": "k8",
+      "textEn": "The election scheduled for 30 October was postponed to 31 December 1973 following the outbreak of war.",
+      "textHe": "הבחירות שנקבעו ל־30 באוקטובר נדחו ל־31 בדצמבר 1973 בעקבות פרוץ המלחמה.",
+      "cites": [
+        {
+          "source": "idi-next",
+          "quote": "31.12.1973"
+        },
+        {
+          "source": "ipu-next",
+          "quote": "originally scheduled for October 30, 1973, were postponed until the end of the year"
+        }
+      ]
+    }
+  },
+  "issuePolling": {
+    "status": "pending",
+    "items": [],
+    "notes": [
+      "INES instruments exist, but no eligible published issue-priority topline was retrieved. No percentages calculated from microdata."
+    ],
+    "leads": [
+      "https://socsci4.tau.ac.il/mu2/ines/wp-content/uploads/sites/4/2023/06/1969_1.txt"
+    ]
+  },
+  "gaps": [
+    "Official result-certification date and the first sitting are not transcribed; election dates and seat counts reuse the verified national dataset.",
+    "Reaction statements are not collected.",
+    "Mid-term consultation positions, mandate deadlines and extensions are incomplete unless an explicit step below records them.",
+    "The closing entry uses the IPU account; the original election-date/dissolution law is not transcribed.",
+    "Replacement-coalition snapshots are partial: government 14’s faction splits and current seat counts require a separate audit. Other replacement snapshots use election-list seats with stated support-list limitations.",
+    "Presentation dates can precede approval dates; confidence steps use the full protocol. The exact assignment days not transcribed here remain unknown."
+  ]
+}
