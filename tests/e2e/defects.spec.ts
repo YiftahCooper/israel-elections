@@ -54,6 +54,7 @@ test('the split form conserves the original votes', async ({ page }) => {
   await page.getByRole('group', { name: 'List' }).getByRole('button', { name: 'Likud', exact: true }).click();
   await page.getByRole('button', { name: 'Split', exact: true }).click();
   // Likud 2026 is Likud + New Hope: it splits into its parties, and the vote total is conserved
+  await page.getByRole('tab', { name: 'Overview', exact: true }).click();
   await expect(page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: /^New Hope/ })).toBeVisible();
   await expect(total).toHaveAttribute('data-valid-votes', before!);
 });

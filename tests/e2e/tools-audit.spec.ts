@@ -18,6 +18,7 @@ test('a merged list keeps the first list’s colour instead of an app default', 
   await panel(page).getByRole('button', { name: 'Likud', exact: true }).click();
   await panel(page).getByRole('button', { name: 'Shas', exact: true }).click();
   await panel(page).getByRole('button', { name: /^Merge 2 lists/ }).click();
+  await tool(page, 'board');
   const merged = page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: /Likud–Shas/ }).first();
   await expect(merged).toBeVisible();
   await tool(page, 'charts');

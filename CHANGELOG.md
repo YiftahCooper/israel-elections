@@ -2,6 +2,7 @@
 
 ## 5 November 2026 — release review
 
+- Merge & split: previews and a new "Changed lists" record compare a split once with all its parts (no more "27 → 0" per part); the page stays put after applying; split vote shares are shown as a bar with votes and are editable in place; split parts and new lists get distinguishable colours; each era's surplus-agreement rule is stated; tabs no longer jump.
 - Distinguish joint-list component candidates and seats with party tints and list-colour envelopes, include component identities in chamber exports, and prevent component-row logo overlap. Component seat colours can be disabled under Rules → Display.
 
 - Clarify vote sources, section replacements, joint-list actions and edited markers; remove single-vote nudges and let sliders cover the valid-vote total. Preference prompts offer one-use, item and global scopes with one explicit Apply action.
