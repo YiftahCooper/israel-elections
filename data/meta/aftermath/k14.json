@@ -1,0 +1,371 @@
+{
+  "schemaVersion": 1,
+  "electionId": "k14",
+  "status": "pilot",
+  "reviewedAt": "2026-11-05",
+  "notes": [
+    "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
+    "The term window runs from this election to the next Knesset election. Government tenure may extend past that window. Mid-term institutional succession is recorded in formation.events; it is not a new post-election recommendation round.",
+    "Additional dated mid-term acts that do not fit the proposal’s closed formation type vocabulary are kept as formalStep=true entries in government.changes (Dated-compatible). No new formation enum values are introduced."
+  ],
+  "sources": {
+    "mfa-history": {
+      "url": "https://www.gov.il/BlobFolder/generalpage/facts-about-israel-history/en/English_SiteTransfer_DOCUMENTS_History2010.pdf",
+      "publisher": "Israel Ministry of Foreign Affairs, Facts About Israel: History (2010), pp. 48–70",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "knesset-history": {
+      "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-fourteenth-knesset-1996-1999",
+      "publisher": "Knesset, history of the 14th Knesset (credited text)",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Jewish Virtual Library mirror; original https://main.knesset.gov.il/EN/About/History/pages/knessethistory.aspx?kns=14"
+    },
+    "ipu1996": {
+      "url": "https://data.ipu.org/election-summary/HTML/2155_96.htm",
+      "publisher": "Inter-Parliamentary Union, Chronicle / Parline, Israel 1996",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "ipu1999": {
+      "url": "https://data.ipu.org/election-summary/HTML/2155_99.htm",
+      "publisher": "Inter-Parliamentary Union, Chronicle / Parline, Israel 1999",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "government-research-1": {
+      "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%91%D7%A2",
+      "publisher": "Hebrew Wikipedia",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "government-research-2": {
+      "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%91%D7%A2",
+      "publisher": "Hebrew Wikipedia",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "government-research-3": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=GovernmentNum%20eq%2027",
+      "publisher": "Knesset OData (ParliamentInfo)",
+      "kind": "official",
+      "accessed": "2026-11-04",
+      "via": "Existing first-government research extraction from official OData, accessed 2026-11-04; the associated quote is the retained extraction summary, not verbatim API serialization."
+    },
+    "direct-election-law": {
+      "url": "https://fs.knesset.gov.il/12/law/12_lsr_210707.pdf",
+      "publisher": "Knesset, Basic Law: The Government (1992), section 3(b)",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Legal quotation reused from docs/research/pm-recommendations-1977-2006.md"
+    },
+    "jta1996coalition": {
+      "url": "https://www.jta.org/archive/netanyahu-finalizes-deals-to-form-right-wing-coalition",
+      "publisher": "Jewish Telegraphic Agency, Daily Bulletin archive",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    },
+    "vote1996": {
+      "url": "https://www.washingtonpost.com/archive/politics/1996/06/19/israeli-cabinet-is-forged-after-tense-wrangling/2302656f-2291-4a73-860a-5c4884dea8b7/",
+      "publisher": "The Washington Post, 19 June 1996",
+      "kind": "secondary",
+      "accessed": "2026-11-05",
+      "via": "Opened full article with web tool; local HTTP request timed out. Excerpt checked against article text."
+    },
+    "ines1996": {
+      "url": "https://socsci4.tau.ac.il/mu2/ines/wp-content/uploads/sites/4/2023/06/1996_Questionnaire_Eng.pdf",
+      "publisher": "Israel National Election Studies, Arian and Shamir, Elections Study 1996, pp. 1–3",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "jta1999vote": {
+      "url": "https://www.jta.org/1999/07/06/lifestyle/barak-pledges-to-be-peacemaker-as-he-takes-prime-ministers-oath",
+      "publisher": "Jewish Telegraphic Agency, Daily Bulletin archive",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    }
+  },
+  "results": {
+    "electionDate": "1996-05-29",
+    "officialResultsSourceId": "k14-results-gazette"
+  },
+  "reaction": {
+    "policy": "Only dated institutional steps and statements attributed to their speaker, applied to every list or to none.",
+    "items": [],
+    "gap": "Comparably sourced reactions for every list were not collected."
+  },
+  "recommendationRounds": [],
+  "formation": {
+    "outcome": "government-formed",
+    "events": [
+      {
+        "date": "1996-05-29",
+        "type": "direct-election",
+        "textEn": "Benjamin Netanyahu was elected prime minister by direct vote; no presidential recommendation round was held.",
+        "textHe": "בנימין נתניהו נבחר לראש הממשלה בבחירה ישירה; לא נערך סבב המלצות לנשיא.",
+        "cites": [
+          {
+            "source": "ipu1996",
+            "quote": "Mr. Peres was edged out in the race for Premier"
+          },
+          {
+            "source": "direct-election-law",
+            "quote": "ראש הממשלה מכהן מכוח היבחרו בבחירות כלליות, ארציות, ישירות, שוות וחשאיות"
+          }
+        ],
+        "person": "netanyahu"
+      },
+      {
+        "date": "1996-06-18",
+        "type": "confidence-vote",
+        "textEn": "The Knesset approved Netanyahu’s 27th government, 62–50.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־27 בראשות נתניהו, ברוב של 62 מול 50.",
+        "cites": [
+          {
+            "source": "vote1996",
+            "quote": "The new government was endorsed by a vote of 62-50"
+          }
+        ],
+        "votes": {
+          "for": 62,
+          "against": 50
+        }
+      }
+    ]
+  },
+  "term": {
+    "start": "1996-05-29",
+    "end": "1999-05-17",
+    "inclusionRule": "At least two independently authored qualifying chronologies, including one official or academic, plus direct support for the date. The Knesset and MFA histories count separately; the JVL mirror is not another independent source. Formal government succession steps are recorded separately in formation.events.",
+    "chronologies": [
+      "mfa-history",
+      "knesset-history",
+      "ipu1996",
+      "ipu1999"
+    ],
+    "events": [
+      {
+        "id": "hebron-protocol",
+        "date": "1997-01",
+        "category": "foreign-relations",
+        "textEn": "Israel and the Palestinian Authority signed the Hebron Protocol.",
+        "textHe": "ישראל והרשות הפלסטינית חתמו על פרוטוקול חברון.",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "the Hebron Agreement , that was approved by the Knesset on January 16, 1997"
+          },
+          {
+            "source": "mfa-history",
+            "quote": "redeployment in Hebron was signed in January 1997"
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "wye-memorandum",
+        "date": "1998-10",
+        "category": "foreign-relations",
+        "textEn": "Israel and the PLO signed the Wye River Memorandum.",
+        "textHe": "ישראל ואש״ף חתמו על מזכר וואי.",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "signed in October 1998 in Washington"
+          },
+          {
+            "source": "mfa-history",
+            "quote": "Wye River Memorandum of October 1998"
+          }
+        ],
+        "confidence": "high"
+      }
+    ],
+    "candidatesPending": [
+      {
+        "label": "Helicopter disaster",
+        "date": "1997-02-04",
+        "why": "Not verified in two qualifying independent chronologies in this pass; candidate for further research only."
+      },
+      {
+        "label": "September tunnel clashes",
+        "date": "1996-09",
+        "why": "Not verified in two qualifying independent chronologies in this pass; candidate for further research only."
+      },
+      {
+        "label": "Bar-On appointment affair",
+        "date": "1997-01",
+        "why": "Not verified in two qualifying independent chronologies in this pass; candidate for further research only."
+      }
+    ],
+    "endedBy": {
+      "type": "dissolution-law",
+      "date": "1999-01-04",
+      "nextElection": "1999-05-17",
+      "textEn": "The Knesset enacted a dissolution law; the next election was held on 17 May 1999.",
+      "textHe": "הכנסת חוקקה חוק התפזרות; הבחירות הבאות נערכו ב־17 במאי 1999.",
+      "cites": [
+        {
+          "source": "ipu1999",
+          "quote": "early dissolution on 4 January 1999"
+        }
+      ]
+    }
+  },
+  "issuePolling": {
+    "status": "filled",
+    "items": [
+      {
+        "date": "1996-05",
+        "sourceId": "ines1996",
+        "construct": "most-important-problem",
+        "timing": "pre-election",
+        "fieldDates": {
+          "to": "1996-05-27",
+          "from": "1996-05-01"
+        },
+        "questionEn": "what do you think is the main problem of which the government has to take care? (Please state only one problem)",
+        "questionHe": "מהי לדעתך הבעיה העיקרית שבה הממשלה צריכה לטפל? (בעיה אחת בלבד)",
+        "questionHeNote": "Editorial Hebrew rendering; original instrument inspected here is English.",
+        "sampleSize": 1168,
+        "populationEn": "Urban adult Jewish population in Israel, excluding kibbutzim and settlements beyond the Green Line",
+        "populationHe": "האוכלוסייה היהודית הבוגרת העירונית בישראל, ללא קיבוצים ויישובים מעבר לקו הירוק",
+        "mode": "In-home interviews by Modiin Ezrahi",
+        "answers": [
+          {
+            "labelEn": "Security and terror in general",
+            "labelHe": "ביטחון וטרור בכלל",
+            "pct": 55
+          },
+          {
+            "labelEn": "The peace process",
+            "labelHe": "תהליך השלום",
+            "pct": 12
+          },
+          {
+            "labelEn": "Social problems (unemployment, seniors, class-gap, poverty)",
+            "labelHe": "בעיות חברתיות (אבטלה, קשישים, פערים ועוני)",
+            "pct": 7
+          },
+          {
+            "labelEn": "Internal security",
+            "labelHe": "ביטחון פנים",
+            "pct": 4
+          },
+          {
+            "labelEn": "Economy",
+            "labelHe": "כלכלה",
+            "pct": 3
+          },
+          {
+            "labelEn": "Education",
+            "labelHe": "חינוך",
+            "pct": 3
+          },
+          {
+            "labelEn": "Security and peace",
+            "labelHe": "ביטחון ושלום",
+            "pct": 3
+          }
+        ],
+        "notes": [
+          "These are selected published categories, not a full distribution and not percentages of all Israelis. The full coding list including <1 and dash values is retained below. No recoding or microdata estimation."
+        ],
+        "cites": [
+          {
+            "source": "ines1996",
+            "quote": "Security and terror in general 55"
+          },
+          {
+            "source": "ines1996",
+            "quote": "between May 1-27 1996 among 1,168 Jewish interviewees"
+          }
+        ],
+        "publishedCodingText": "1. Security and terror in general 55 2. Economy 3 3. The peace process 12 4. The problem of Gaza and the territories/ the Palastinian problem 2 5. Histadrut - 6. Golan Heights <1 7. Housing 1 8. Internal conflicts <1 9. Social problems (unemployment, seniors, class-gap, poverty) 7 10. Keeping a consistent government policy <1 11. Settlements <1 12. Wrong policy of the government <1 13. Traffic accidents (public transportation) 1 14. Military (discharged soldiers) <1 15. Education 3 16. The Iranian threat <1 17. Internal security 4 18. Foreign policy <1 19. Security and peace 3 20. Social-economic <1 21. Jerusalem <1 22. Arab citizens of Israel <1 23. Coalitions and giving up to religious - 24. Missings in action - 25. Health care (health maintenance organizations) <1 26. Fulfilment of Zionism, connection to the Jewish people, love of the land (assimilation) 1 27. Security of north of Israel’s residents and Lebanon <1 28. Religius coercion <1 29. Inadequate government (corruption, multiplicity of parties) <1 30. Foreign workers <1 31. Environment <1 32. Relations with Arabs in general <1 3 33. Education for tolerance (fighting violence) <1 97. Other <1 98. There’s more then one problem <1 99. Don’t know/neither <1"
+      }
+    ]
+  },
+  "gaps": [
+    "Certification date and official first-sitting record not retrieved; election date comes from the existing verified result dataset.",
+    "Formation timeline is a sourced subset; missing steps must not be inferred from statutory maximum periods.",
+    "First-government coalition membership is reused from the existing first-government scheme, whose party membership evidence includes labelled Hebrew Wikipedia; a complete independent primary coalition agreement cross-check remains pending."
+  ],
+  "government": {
+    "number": 27,
+    "nameEn": "Government 27 (Benjamin Netanyahu)",
+    "nameHe": "הממשלה ה־27 (בנימין נתניהו)",
+    "startDate": "1996-06-18",
+    "endDate": "1999-07-06",
+    "primeMinisters": [
+      {
+        "nameEn": "Benjamin Netanyahu",
+        "nameHe": "בנימין נתניהו",
+        "to": "1999-07-06",
+        "from": "1996-06-18"
+      }
+    ],
+    "firstGovernmentSchemeRef": "first-government",
+    "coalition": [
+      {
+        "letters": "מחל",
+        "seats": 32
+      },
+      {
+        "letters": "שס",
+        "seats": 10
+      },
+      {
+        "letters": "ב",
+        "seats": 9
+      },
+      {
+        "letters": "כן",
+        "seats": 7
+      },
+      {
+        "letters": "ג",
+        "seats": 4
+      },
+      {
+        "letters": "הד",
+        "seats": 4
+      }
+    ],
+    "coalitionSeats": 66,
+    "coalitionSeatsNote": "Election-list seat envelope, checked against officialSeats; not the confidence-vote tally or a reconstruction of later faction membership.",
+    "cites": [
+      {
+        "source": "government-research-1",
+        "quote": "ממשלת ישראל העשרים ושבע בראשות בנימין נתניהו, המכונה גם ממשלת נתניהו הראשונה, הושבעה ב-18 ביוני 1996"
+      },
+      {
+        "source": "government-research-2",
+        "quote": "סיעות הקואליציה{{ביאור|הטבלה אינה כוללת פילוגים ומיזוגים שקשורים בסיעות שונות בקואליציה שהתקיימו לאחר התפזרות הכנסת ה-14.}}=="
+      },
+      {
+        "source": "government-research-3",
+        "quote": "KNS_PersonToPosition, GovernmentNum 27: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 1996-06-18: נאמן יעקב, אדלשטיין יולי יואל, ישי אליהו, סויסה אליהו, קהלני אביגדור, לבנת לימור, לוי יצחק, נתניהו בנימין, הנגבי צחי, בגין זאב בנימין, קצב משה, לוי דוד, מרידור דן, המר זבולון, איתן רפאל, מרדכי יצחק, שרנסקי נתן"
+      },
+      {
+        "source": "jta1996coalition",
+        "quote": "giving the incoming government a 66-seat majority"
+      },
+      {
+        "source": "jta1999vote",
+        "quote": "JERUSALEM, July 6 (JTA)"
+      }
+    ]
+  },
+  "recommendationsNotApplicable": {
+    "reason": "direct-pm-election",
+    "textEn": "The prime minister was elected directly; no recommendation round or presidential tasking took place.",
+    "textHe": "ראש הממשלה נבחר בבחירה ישירה; לא התקיים סבב המלצות ולא הוטל מנדט בידי הנשיא.",
+    "cites": [
+      {
+        "source": "direct-election-law",
+        "quote": "ראש הממשלה מכהן מכוח היבחרו בבחירות כלליות, ארציות, ישירות, שוות וחשאיות"
+      }
+    ]
+  }
+}
