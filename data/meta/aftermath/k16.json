@@ -82,6 +82,13 @@
       "publisher": "Press Trust of India / Rediff, 5 May 2006",
       "kind": "secondary",
       "accessed": "2026-11-05"
+    },
+    "crs2009": {
+      "url": "https://www.everycrsreport.com/files/20090814_RL33476_e8cc0693598c855ba52b077cada7639dff51fa56.html",
+      "publisher": "Congressional Research Service, Carol Migdalovitz, Israel: Background and Relations with the United States, RL33476, 14 August 2009",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "EveryCRSReport reproduction of the CRS report; independently authored retrospective, especially Government and Politics, pp. 6–10."
     }
   },
   "results": {
@@ -283,7 +290,8 @@
       "mfa-history",
       "knesset-history",
       "ipu2003",
-      "ipu2006"
+      "ipu2006",
+      "crs2009"
     ],
     "events": [
       {
@@ -325,23 +333,43 @@
           }
         ],
         "confidence": "high"
+      },
+      {
+        "id": "sharon-incapacity",
+        "date": "2006-01-04",
+        "category": "governance",
+        "textEn": "Ariel Sharon suffered a stroke; Ehud Olmert became acting prime minister.",
+        "textHe": "אריאל שרון לקה בשבץ מוחי; אהוד אולמרט נעשה ממלא מקום ראש הממשלה.",
+        "cites": [
+          {
+            "source": "crs2009",
+            "quote": "On January 4, 2006, Sharon suffered an incapacitating stroke."
+          },
+          {
+            "source": "crs2009",
+            "quote": "Ehud Olmert became Acting Prime Minister"
+          },
+          {
+            "source": "mfa-history",
+            "quote": "Ehud Olmert becomes acting prime minister"
+          }
+        ],
+        "confidence": "high",
+        "notes": [
+          "IPU 2006 misdates the incapacitating stroke to December 2005. The exact date and acting status follow CRS, not that IPU passage."
+        ]
       }
     ],
     "candidatesPending": [
       {
-        "label": "Sharon incapacitated; Olmert becomes acting PM",
-        "date": "2006-01-04",
-        "why": "Direct source for exact date and formal status not retrieved for this row. IPU incorrectly dates Sharon’s incapacitating stroke to December 2005, so its date is not copied."
-      },
-      {
         "label": "Road Map accepted",
         "date": "2003-05",
-        "why": "Direct source for exact date and formal status not retrieved for this row. IPU incorrectly dates Sharon’s incapacitating stroke to December 2005, so its date is not copied."
+        "why": "MFA history dates acceptance to 25 May 2003. Neither the retrieved Knesset history nor IPU 2003/2006 selects this acceptance. A second independent qualifying chronology is needed."
       },
       {
         "label": "2005 budget and coalition changes",
         "date": "2004-12",
-        "why": "Direct source for exact date and formal status not retrieved for this row. IPU incorrectly dates Sharon’s incapacitating stroke to December 2005, so its date is not copied."
+        "why": "Knesset history and IPU 2006 cover coalition changes, but the candidate combines budget passage with changes over several months. A defined act and direct date evidence are still required."
       }
     ],
     "endedBy": {
