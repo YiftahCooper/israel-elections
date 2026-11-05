@@ -2,6 +2,8 @@
 
 ## 5 November 2026 — release review
 
+- Research: recommendations to the President after the 1949–1973 elections (docs/research/pm-recommendations-1949-1973.md); added sourced `pm-recommendations` bloc schemes for 1959, 1969 and 1974, with undocumented lists shown as “Not stated in source”.
+
 - QA2 leftovers: use shared analysis/settings pickers, tighten stable list-panel spacing, place global notices after the work area, and compact the phone header while keeping every control directly available.
 
 - Analysis screens: fixed-scale seat-safety tracks, stable sensitivity loading, complete threshold labels and round axis ticks, nearby chart names with Hebrew phone alignment, inline formula help and compact allocation tables, equal comparison options and compact aligned coalition rows.
