@@ -2170,7 +2170,7 @@
       "electionId": "k19",
       "electionDate": "2013-01-22",
       "datasetPath": "public/data/k19.json",
-      "datasetSha256": "b9aad6f537bbc4269d2427719fccfa50e40456b779dd9fb2887972974fb61cd4",
+      "datasetSha256": "5d1e17825e5928b3eb44397f674da4988a2f285decf98e9ea5565c274fb330ce",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2013-01-30",
@@ -2261,7 +2261,7 @@
       "electionId": "k20",
       "electionDate": "2015-03-17",
       "datasetPath": "public/data/k20.json",
-      "datasetSha256": "dd9e9eb16c4f03c8401260b1375ff6abe7c916907f863dd46c08b09118994489",
+      "datasetSha256": "0c8849f9838e3af99f7a4b2c0c9956940d7a413efc8c64ca33bef6c7452e70d7",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2015-03-25",
@@ -2715,7 +2715,7 @@
       "electionId": "k25",
       "electionDate": "2022-11-01",
       "datasetPath": "public/data/k25.json",
-      "datasetSha256": "791a7b25a5ed12a6418a83100231cfce434bd6046bb00775bc37a15e84669002",
+      "datasetSha256": "915e5034fb25153d45e8cc1bb84fae8af54f3141b444d31114942f0f942dbb79",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2022-11-10",

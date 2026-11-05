@@ -1627,3 +1627,153 @@ the merged baseline omitting only `logo`/`builtAt`. Only the model digest change
 to `cab8ce9f706616266e9d5a059b936f61ba7be2a3ab159a35ee2f9c2bd4c41053`.
 Full Vitest remains **856/857**, with precisely the previously documented
 nearest-year Religious Zionism fallback / joint-list separation failure.
+
+### CSS-header and original-Flash follow-up
+
+**Ta'al k19:** the previous run's iframe lead was unrelated news content. The
+January 6, 2013 official homepage (20130106190643) uses `.header` and links
+`/images/styles.css`; the actual rule is `background:url(header.jpg)`. The retained
+stylesheet working copy from the previous run exactly matches the **20120623183235**
+CDX SHA-1 `FMWXZ3PBF6LRRE2HTOL3B32YUPCDBFSN` (fresh retrieval timed out). The header
+bytes at **20110302142223** match pre-poll CDX
+`DEXNGMTFR4MCMWXQ3QKHLJP45FYHQIIS`, also indexed unchanged in September 2011,
+February 2013 and January 2015. Cropped only its original circular crowd/arrows
+emblem, **[303,12,432,139]** of **776×150**, excluding photos, portrait and slogan.
+The dated 2013 page supplies same-election use; an old file capture alone would
+not justify the assignment. Original page/image/CDX and stylesheet are retained.
+
+**Balad k19:** inspected January 3, 2013 homepage **20130103044745** explicitly
+references the same `swf/logo.swf` header and dimensions. The last pre-poll asset
+capture **20100712195624** is byte-identical to the retained 2009 SWF and matches
+CDX **U7VEQTP4RCYDNDOUJCRW4U4OHPYUU3T7**. Extracted its original JPEG3 character 5
+again; output is byte-identical to the 2009 decoded bitmap. **Medium confidence:**
+the page proves a 2013 reference to the header, but no 2013 SWF capture was found.
+The older original-capture date is disclosed; this is an explicit dated page
+reference, not automatic nearest-year reuse. It remains open to replacement if a
+different contemporary asset is recovered.
+
+### Remaining evidence gaps and rejected candidates
+
+These are bounded retrieval/search outcomes, **not findings that no historical
+logo existed**. No adjacent-year fallback is included in coverage below.
+
+| Identity / scope | Newly tried or rechecked; disposition |
+|---|---|
+| Degel HaTorah | `degel.org.il` pre-poll captures queried; April 2019 raw capture repeatedly timed out, September 15 retrieved an IIS 8 default page. No party emblem accepted. Targeted official-social discovery returned no usable publication. |
+| Agudat Yisrael gaps outside its existing k23 entry | `agudat-israel.org.il` index empty; `agudat-i.com` index has 2023–2026 captures, inspected January 2026 mailing-list page has no qualifying artwork. Alternate similarly named domains were not authenticated as the party. Social discovery did not yield inspected dated artwork. |
+| New Right k25 | k22/k23 closed; no new 2022 constituent acquisition. Existing k21 whole list was already covered and was not counted as a new addition. |
+| Gesher k22/k23; Labor–Gesher k22 אמת | Inspected April/September/December 2019 official `gesherparty.co.il` pages. April `NEWHEADER2.jpg` and variants have no pre-poll CDX rows; September `gesher-_-site-new-bunner-01.png` query timed out, exact-path retry returned no rows. CSS retrieval timed out. No artwork assigned from page reference alone. |
+| Green Movement k18/k20/k22; Green Movement–Meimad nonwinner k18 ה | `hayeruka.org.il` July 2019 page inspected: indexed Wix logo is an explicitly blurred 194px placeholder, visually rejected. `yeruka.org.il` February 2009 page references `images/logos/newbaner1.png`: download timed out, exact/path index empty. `hayeruka-meimad.org.il` February 1 page inspected: explicit `ym_main_header.jpg` masthead, but no pre-poll asset row found. No constituent inferred from a combined logo. |
+| Ahi | Targeted Hebrew discovery did not establish a dated official origin; municipal similarly named lists were false positives. No new asset acquired. |
+| HaTikva k18 | Inspected February 3, 2009 homepage: exact `/templates/hatikva/images_hebrew/logo.gif` reference. Index empty; raw asset 404. No reconstruction. |
+| Eretz Yisrael Shelanu k18 and later gaps | Inspected `sos-israel.com` February 3, 2009 page: Flash `contentManagment/uploadedFiles/fileBanner/header.swf`. Exact/path CDX and raw download timed out. No bitmap extracted. Later elections not inferred. |
+| New Movement | Discovery points to the combined Meretz campaign identity; no separately authenticated constituent artwork acquired. |
+| Mada | Targeted Hebrew/Arabic-party discovery did not produce an authenticated dated official asset; new archival acquisition remains incomplete. |
+| Atid Ehad k24–k26 | `atidechad.org` has older captures only (none after 2017 in the query); alternate `atid1.org.il` March 2015 page is **Protecting Our Children**, not a 2021–2026 identity. Its logo first indexes in November 2015, after that campaign; not accepted or carried forward. |
+| Derech Eretz | Discovery did not supply an authenticated pre-poll party site or dated logo asset. No new acquisition. |
+| Homat Torat Yisrael | Targeted discovery returned a 2026 forum/discussion lead, not official artwork. Not promoted. |
+| Yesodot Yisrael | Search false positives were construction/property businesses, not party evidence. No new authenticated asset. |
+| Israel Resilience | Requeried `bg19.co.il` index: January 19 holding page / March 24 Blue and White remain the captures from the earlier pass. No new distinct constituent artwork; k22/k23/k25 acquisition incomplete. |
+| Telem gaps | Queried and inspected 2019 `telem.org.il` captures: a psychology network, not the party. Directory/social discovery did not establish a dated inspected party emblem. Existing k23 entry remains unchanged. |
+| Hatnua k20 | Index through polling has no capture after September 2014. Inspected that older Wix page as a lead, not 2015 campaign evidence. Zionist Union's linked `header_totnua.jpg` image query timed out; not promoted. |
+| Ra'am | Broad `raam.org.il` CDX retry timed out; later narrow `*logo*` 2012–2015 query returned no rows. No 429/Retry-After was observed. No other party's emblem substituted. |
+| Jewish Home k21; Union of Right-Wing Parties k21 טב | `baityehudi.org.il/*` February–April 9, 2019 index empty. No joint lockup or constituent inferred from the June 2019 artwork. |
+| k19 מחל Likud–Yisrael Beiteinu | January 21, 2013 homepage retrieval timed out. December 8 page inspected: Likud-only header; exact header-image index empty. Neither establishes the joint lockup. |
+| k21 דעם Ra'am–Balad | No acquired official lockup. `jointlist.org.il` index timed out and was not treated as a confirmed official source. |
+| k25/k26 ט | October 2022 Religious Zionism homepage inspected; no verified combined Otzma Yehudit mark acquired. Existing 2026 Smotrich-only candidate remains insufficient for Zehut joint identity. The new **2021** list entry is not evidence for either later alliance. |
+| Other nonwinning lists | Greens k18 page explicitly references `personalheader.jpg`, but asset is 404 and index empty. Or k19 page explicitly references `/images/orimages/logo.png`, but asset is 404 and pre-poll index empty. Ale Yarok k19 `ale-yarok.org.il` is a text-only page; alternate `aleyarok.org.il` k20 site inspected, CSS/primary-image retrieval and index queries timed out. Da'am k21 page references `images/logo.png`, asset fetch timed out and index empty. Other nonwinners were not exhaustively searched in this continuation. |
+
+Closed joint-lockup gaps: k18 ט, k20 אמת, k21 ום, k22 מרצ, k24 ט, k25 ום.
+Closed or newly evidenced constituent gaps: Moledet k18; Israel Democratic Party
+and New Right k22; New Right k23; Tkuma k24; Ta'al k25; Hadash k26; Ta'al k19.
+Balad whole-list k18/k19 are independently keyed. Existing assignments are preserved.
+
+**Ta'al k20 also closed:** inspected December 15, 2014 campaign homepage and
+December 19 stylesheet (`logo-k20-taal-style`) both identify the same `.header`
+image. Direct January 2015 / May 2014 image retrieval timed out, but the **1 January
+2015 CDX row 20150101203700** records SHA-1 **DEXNGMTFR4MCMWXQ3QKHLJP45FYHQIIS**,
+exactly matching original bytes successfully retrieved from the March 2011 capture.
+Retained those identical original bytes and the **2015 CDX proof**, with both capture
+dates explicit in `digestProof`. The campaign-period index establishes payload
+identity; this is not nearest-year reuse. Same rectangular emblem crop as k19.
+
+### Final same-election coverage and byte audit
+
+Counts intersect **verified, hosted entries in each election overlay** with that
+election’s winner/constituent identities. They do not count the current builder’s
+nearest-period references. k26 winners use the app’s allocation of retained final
+CEC counts, as in the coverage script. Constituents are distinct party ids per
+election among winners; nonwinners include withdrawn dataset entries. Baseline
+is merged commit `d62c234`, after the previous run.
+
+| Election | Winning lists before → after | Winner constituents before → after | Nonwinning lists before → after |
+|---|---:|---:|---:|
+| k18 | 3 → 5 / 12 | 1 → 2 / 12 | 0 → 0 / 21 |
+| k19 | 5 → 6 / 12 | 1 → 2 / 9 | 0 → 0 / 20 |
+| k20 | 4 → 5 / 10 | 2 → 3 / 11 | 0 → 0 / 16 |
+| k21 | 4 → 5 / 11 | 3 → 3 / 14 | 1 → 1 / 32 |
+| k22 | 4 → 5 / 9 | 6 → 8 / 19 | 0 → 0 / 23 |
+| k23 | 3 → 3 / 8 | 5 → 6 / 18 | 0 → 0 / 22 |
+| k24 | 7 → 8 / 13 | 3 → 4 / 12 | 0 → 0 / 26 |
+| k25 | 4 → 5 / 10 | 2 → 3 / 11 | 0 → 0 / 30 |
+| k26 | 9 → 9 / 11 | 8 → 9 / 19 | 1 → 1 / 27 |
+| **Total k18–k26** | **43 → 51 / 96** | **31 → 40 / 125** | **2 → 2 / 217** |
+
+**17 new identity assignments, 14 distinct final byte hashes**: the k24 list and
+constituent share artwork; Balad k18/k19 and Ta’al k19/k20 each have separately
+dated page evidence for byte-identical original designs. No other election use
+is inferred. Nonwinner acquisition remains partial with no newly accepted entry.
+
+Every original SHA-256 is retained on the election overlay and raw manifest; the
+final files below were independently rehashed. Original image/container SHA-1
+was recomputed and checked against the retained CDX row, including the exact
+pre-poll timestamp, for each Wayback assignment. Hadash’s inline SVG has explicit
+containing-page proof; the three publication assignments have dated PDF/crop proof.
+
+| Election / identity | Hosted file | Final SHA-256 |
+|---|---|---|
+| k18 `moledet` | `logos/moledet-2009-k18.png` | `3607b116b95ac5d18a5253026daf03ed2dd1cf0993da4e02a023bac5eac039cc` |
+| k18 `ט` | `logos/national-union-2009-k18.png` | `457fbf293dd82b4d024817a698c5d5b7093df1d23c951a204356cc5a42c7a65b` |
+| k18 `ד` | `logos/balad-2009-k18.png` | `048d3c6087efe1fce2dc543f63f5ff3e9a52bb9516e12be86a29bcedfb9c155b` |
+| k19 `taal` | `logos/taal-2013-k19.png` | `925830652e9557300a7dd456134b5ea43201d5e08b9b81934648ae892c12850e` |
+| k19 `ד` | `logos/balad-2013-k19.png` | `048d3c6087efe1fce2dc543f63f5ff3e9a52bb9516e12be86a29bcedfb9c155b` |
+| k20 `אמת` | `logos/zionist-union-2015-k20.png` | `4e0c0d2564bd60b583dccb6d8971e5e65ed3710d93c578719952b91d83c1be74` |
+| k20 `taal` | `logos/taal-2015-k20.png` | `925830652e9557300a7dd456134b5ea43201d5e08b9b81934648ae892c12850e` |
+| k21 `ום` | `logos/hadash-taal-2019-k21.png` | `e5d443c999cd9fa701dad3fc5a0457810736ecf38f359d1013b8b38fb894db5d` |
+| k22 `independence` | `logos/israel-democratic-2019-k22.png` | `70f6646f7fa31fa93f57fd68d2aa15da73b01372473127091341b89f91cb834b` |
+| k22 `מרצ` | `logos/democratic-union-2019-k22.png` | `8f367a2688ab7cff36d0bd4f181205d2799eca3a37b85af9588a373ff5ed445d` |
+| k22 `new-right` | `logos/new-right-2019-k22.png` | `4c485e3a42ef8f4dccde04a5077f565cafad808b7989470e7d9e708116351593` |
+| k23 `new-right` | `logos/new-right-2020-k23.png` | `59c229e08e39d57bfd59c0a97c593dda64e790600909292d543a0c23479f0793` |
+| k24 `ט` | `logos/religious-zionism-list-2021-k24.png` | `d59369d9c1123ec953f6beb7096ccf1a4f8f1cb79e81d89a689a9ee3258022eb` |
+| k24 `tkuma` | `logos/religious-zionism-2021-k24.png` | `d59369d9c1123ec953f6beb7096ccf1a4f8f1cb79e81d89a689a9ee3258022eb` |
+| k25 `ום` | `logos/hadash-taal-2022-k25.png` | `cedcb35d5c0c0d00f6d0437ce718185befcb45ba2ee310d257e929e2af854621` |
+| k25 `taal` | `logos/taal-2022-k25.png` | `b5c99a816ead6680f8929b2bdab3194321b105474433f2bfaaa527ee4ae68e18` |
+| k26 `hadash` | `logos/hadash-2026-k26.svg` | `107a64b2ace98171a7f712a4714e5747756402dd10ae92280c7d0754841c0b8e` |
+
+Final verification for all **17 additions** (14 distinct final byte hashes):
+
+- `python3 scripts/validate-party-logos.py`: **26 overlays, 179 source cards,
+  129 assets, 137 hosted assignments**, zero download-unavailable, six prior
+  unresolved records. Original inputs, final assets and all raw manifest hashes pass.
+- Independent recomputation of every new final SHA-256, original image/container
+  base32 SHA-1 and selected retained pre-poll CDX row passed. Hadash's inline proof
+  is explicitly the complete containing HTML; publication dates/PDF hashes were
+  checked separately. Balad's decoder regenerated its final bitmap byte-for-byte.
+- `node scripts/build-datasets.ts` passed; repeat build: **0 written, 38 unchanged**.
+  Existing build policy skips full polling-station reconciliation where station
+  scratch is absent, while retained source and derived locality hashes are verified.
+- All 26 election datasets compare equal to `d62c234` after recursively omitting
+  only `logo` and `builtAt`. No votes, seats, candidates, names, rules or other fields
+  changed. Family dataset SHA-256 pins refreshed; **9 presets** validate.
+- Model differential digest is
+  `1ceceb56d9704a2a8fb535304247812bc6bc0a3cf1a13d0ec95eb84b90ae1665`.
+  Allocation, analysis, validation and rules digests remain unchanged and pass.
+- `npx tsc -p tsconfig.json --noEmit` passed. Final
+  `npx vitest run --maxWorkers=2`: **89 files passed, one file failed;
+  856 tests passed, one failed**. The sole failure is the documented existing
+  nearest-year fallback causing k25's differently composed Religious Zionism list
+  to inherit the new k24 whole-list mark. This research preserves that regression
+  test and leaves the separately assigned fallback-removal worker to resolve it.
+- Work is committed locally in batches; no push or subsequent merge. Unaccepted
+  candidates remain scratch; no rejected artwork is displayed. Backup exclusion
+  beyond the existing repository ignore rule was not independently verified.

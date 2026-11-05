@@ -199,6 +199,100 @@
         100
       ],
       "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA crop, thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
+    },
+    {
+      "party": "taal",
+      "file": "logos/taal-2013-k19.png",
+      "sourceUrl": "https://web.archive.org/web/20130106190643/http://www.a-m-c.org:80/",
+      "assetSourceUrl": "https://web.archive.org/web/20110302142223id_/http://www.a-m-c.org/images/header.jpg",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "תע״ל / الحركة العربية للتغيير — official 2013 campaign site CSS masthead emblem crop",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "taal-archive-20130106190643",
+      "inUseDate": "2013-01-06",
+      "archiveUrl": "https://web.archive.org/web/20130106190643/http://www.a-m-c.org:80/",
+      "archiveTimestamp": "20130106190643",
+      "inUseEvidence": "Inspected official Ta'al (Arab Movement for Renewal) homepage capture 20130106190643 references http://www.a-m-c.org/images/header.jpg as its CSS .header masthead, via /images/styles.css captured 20120623183235. Exact archived asset bytes at 20110302142223 match pre-election CDX SHA-1 base32 DEXNGMTFR4MCMWXQ3QKHLJP45FYHQIIS (CDX capture 20110302142223). Cropped to box [303, 12, 432, 139] of the 776x150 original (crop only, isolating the original circular crowd-and-arrows emblem from photographs, leader portrait and slogan); no redraw or recolouring. Inspected 2013 official homepage explicitly uses the .header masthead and links the stylesheet. The exact masthead bytes are indexed in March/September 2011 and February 2013; the retained pre-poll capture supplies original bytes. Dated 2013 page usage, not nearest-year assignment. Ta'al constituent emblem only, not the Ra'am–Ta'al joint lockup. Separate evidence for this election; no assignment by analogy. Stylesheet retained as logo-k19-taal-style; exact pre-poll CDX row is retained in logo-k19-taal-style-index. Prior-run stylesheet bytes match that row; fresh fetch timed out.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "925830652e9557300a7dd456134b5ea43201d5e08b9b81934648ae892c12850e",
+      "originalSha256": "636b63a9e16dd8f1979906ac209121d1122f677019260df8b1fa69f309cffb12",
+      "bytes": 32253,
+      "rawEvidence": {
+        "page": "logo-k19-taal-page",
+        "asset": "logo-k19-taal-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20110302142223id_/http://www.a-m-c.org/images/header.jpg",
+      "assetArchiveTimestamp": "20110302142223",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "DEXNGMTFR4MCMWXQ3QKHLJP45FYHQIIS",
+        "computedDigest": "DEXNGMTFR4MCMWXQ3QKHLJP45FYHQIIS",
+        "assetCaptureTimestamp": "20110302142223",
+        "cdxCaptureTimestamp": "20110302142223",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=a-m-c.org%2Fimages%2Fheader.jpg&from=2008&to=20130122&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k19-taal-index"
+      },
+      "cropBox": [
+        303,
+        12,
+        432,
+        139
+      ],
+      "originalDimensions": [
+        776,
+        150
+      ],
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA crop, thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
+    },
+    {
+      "letters": "ד",
+      "file": "logos/balad-2013-k19.png",
+      "sourceUrl": "https://web.archive.org/web/20130103044745/http://www.tajamoa.org:80/",
+      "assetSourceUrl": "https://web.archive.org/web/20100712195624id_/http://www.tajamoa.org/swf/logo.swf",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "التجمع الوطني الديمقراطي / בל״ד — original bitmap in official January 2013 website Flash header",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "medium",
+      "evidenceId": "balad-archive-20130103044745",
+      "inUseDate": "2013-01-03",
+      "archiveUrl": "https://web.archive.org/web/20130103044745/http://www.tajamoa.org:80/",
+      "archiveTimestamp": "20130103044745",
+      "inUseEvidence": "Inspected official Balad (National Democratic Assembly) homepage capture 20130103044745 references http://www.tajamoa.org/swf/logo.swf as its header logo (div.logo, SWFObject swf/logo.swf, 218x132). Exact archived asset bytes at 20100712195624 match pre-election CDX SHA-1 base32 U7VEQTP4RCYDNDOUJCRW4U4OHPYUU3T7 (CDX capture 20090125092001). Original geometry and colours preserved. Inspected January 2013 campaign homepage explicitly references this same SWF header path and dimensions. The retained July 2010 SWF capture is byte-identical to the 2009 file and matches the last pre-poll CDX row; there is no 2013 asset capture. Original JPEG3 bitmap character 5 decoded with its original alpha; no vector rendering, redraw or animation reconstruction. This is dated 2013 page usage of the same header, not a nearest-year assignment. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "048d3c6087efe1fce2dc543f63f5ff3e9a52bb9516e12be86a29bcedfb9c155b",
+      "originalSha256": "3f386a268a8c0df41636640ee7393dffec1d2c3fb5bbe1e1f1d9e78f2fbb86eb",
+      "bytes": 14957,
+      "rawEvidence": {
+        "page": "logo-k19-balad-page",
+        "asset": "logo-k19-balad-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20100712195624id_/http://www.tajamoa.org/swf/logo.swf",
+      "assetArchiveTimestamp": "20100712195624",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "U7VEQTP4RCYDNDOUJCRW4U4OHPYUU3T7",
+        "computedDigest": "U7VEQTP4RCYDNDOUJCRW4U4OHPYUU3T7",
+        "assetCaptureTimestamp": "20100712195624",
+        "cdxCaptureTimestamp": "20090125092001",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=tajamoa.org%2Fswf%2Flogo.swf&from=2008&to=20130122&output=json&fl=timestamp,original,statuscode,digest&filter=statuscode:200&collapse=timestamp:6",
+        "rawIndex": "logo-k19-balad-index"
+      },
+      "retrieval": "Decode original JPEG3 bitmap character 5 using scripts/research/extract-swf-bitmap.py; original SWF retained, pixels and alpha preserved. No redraw or vector rendering.",
+      "bitmapExtraction": {
+        "container": "SWF DefineBitsJPEG3",
+        "characterId": 5,
+        "dimensions": [
+          180,
+          97
+        ],
+        "decoder": "scripts/research/extract-swf-bitmap.py",
+        "recipe": "Original JPEG pixels plus original alpha; RGBA optimized PNG"
+      }
     }
   ]
 }

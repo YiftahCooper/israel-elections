@@ -223,6 +223,53 @@
         "rawIndex": "logo-k20-zionist-union-index"
       },
       "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
+    },
+    {
+      "party": "taal",
+      "file": "logos/taal-2015-k20.png",
+      "sourceUrl": "https://web.archive.org/web/20141215062340/http://www.a-m-c.org/",
+      "assetSourceUrl": "https://web.archive.org/web/20110302142223id_/http://www.a-m-c.org/images/header.jpg",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "תע״ל / الحركة العربية للتغيير — official 2015 campaign site CSS masthead emblem crop",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "taal-archive-20141215062340",
+      "inUseDate": "2014-12-15",
+      "archiveUrl": "https://web.archive.org/web/20141215062340/http://www.a-m-c.org/",
+      "archiveTimestamp": "20141215062340",
+      "inUseEvidence": "Inspected official Ta'al (Arab Movement for Renewal) homepage capture 20141215062340 references http://www.a-m-c.org/images/header.jpg as its CSS .header masthead, via /images/styles.css captured 20141219042241. Exact archived asset bytes at 20110302142223 match pre-election CDX SHA-1 base32 DEXNGMTFR4MCMWXQ3QKHLJP45FYHQIIS (CDX capture 20150101203700). Cropped to box [303, 12, 432, 139] of the 776x150 original (crop only, isolating the original circular crowd-and-arrows emblem from photographs, leader portrait and slogan); no redraw or recolouring. The December 2014 campaign homepage and retained December 2014 stylesheet explicitly reference this masthead. Original image bytes retained from the March 2011 capture exactly match the CDX SHA-1 recorded on 1 January 2015, proving the 2015 indexed payload is identical. Direct retrieval of the January 2015 and May 2014 captures timed out; reuse is of cryptographically identical original bytes with dated campaign-page/CSS and campaign-period CDX proof, not by nearest-year analogy. Ta’al constituent emblem only, not the Joint List lockup. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "925830652e9557300a7dd456134b5ea43201d5e08b9b81934648ae892c12850e",
+      "originalSha256": "636b63a9e16dd8f1979906ac209121d1122f677019260df8b1fa69f309cffb12",
+      "bytes": 32253,
+      "rawEvidence": {
+        "page": "logo-k20-taal-page",
+        "asset": "logo-k20-taal-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20110302142223id_/http://www.a-m-c.org/images/header.jpg",
+      "assetArchiveTimestamp": "20110302142223",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "DEXNGMTFR4MCMWXQ3QKHLJP45FYHQIIS",
+        "computedDigest": "DEXNGMTFR4MCMWXQ3QKHLJP45FYHQIIS",
+        "assetCaptureTimestamp": "20110302142223",
+        "cdxCaptureTimestamp": "20150101203700",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=a-m-c.org%2Fimages%2Fheader.jpg&from=2012&to=20150317&output=json&fl=timestamp,original,statuscode,digest&filter=statuscode:200&collapse=timestamp:6",
+        "rawIndex": "logo-k20-taal-index"
+      },
+      "cropBox": [
+        303,
+        12,
+        432,
+        139
+      ],
+      "originalDimensions": [
+        776,
+        150
+      ],
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA crop, thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
     }
   ]
 }

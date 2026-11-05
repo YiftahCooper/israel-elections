@@ -4569,6 +4569,138 @@
         "renderer": "scripts/research/render-logo-pdf-page.mjs"
       },
       "reproduction": "Node 24.18.0 and locked pdfjs-dist/@napi-rs/canvas: node scripts/research/render-logo-pdf-page.mjs data/raw/logos/k25/hadash-taal-20221026.pdf 1 4 .backup-scratch/ht2022-page.png; Pillow 13.0.0 RGBA crop([500, 805, 1210, 1195]), thumbnail((256,256), LANCZOS), optimized PNG."
+    },
+    {
+      "id": "taal-archive-20130106190643",
+      "title": "Ta'al (Arab Movement for Renewal) official website — 2013-01-06",
+      "sourceUrl": "https://web.archive.org/web/20130106190643/http://www.a-m-c.org:80/",
+      "publisher": "الحركة العربية للتغيير / תע״ל",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-05",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3 seconds apart",
+      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; exact bytes checked against CDX digest",
+      "date": "2013-01-06",
+      "description": "Inspected official Ta'al (Arab Movement for Renewal) homepage capture 20130106190643 references http://www.a-m-c.org/images/header.jpg as its CSS .header masthead, via /images/styles.css captured 20120623183235. Exact archived asset bytes at 20110302142223 match pre-election CDX SHA-1 base32 DEXNGMTFR4MCMWXQ3QKHLJP45FYHQIIS (CDX capture 20110302142223). Cropped to box [303, 12, 432, 139] of the 776x150 original (crop only, isolating the original circular crowd-and-arrows emblem from photographs, leader portrait and slogan); no redraw or recolouring. Inspected 2013 official homepage explicitly uses the .header masthead and links the stylesheet. The exact masthead bytes are indexed in March/September 2011 and February 2013; the retained pre-poll capture supplies original bytes. Dated 2013 page usage, not nearest-year assignment. Ta'al constituent emblem only, not the Ra'am–Ta'al joint lockup. Separate evidence for this election; no assignment by analogy. Stylesheet retained as logo-k19-taal-style; exact pre-poll CDX row is retained in logo-k19-taal-style-index. Prior-run stylesheet bytes match that row; fresh fetch timed out.",
+      "archiveUrl": "https://web.archive.org/web/20130106190643/http://www.a-m-c.org:80/",
+      "archiveTimestamp": "20130106190643",
+      "downloadUrl": "http://www.a-m-c.org/images/header.jpg",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "taal-official-site",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k19-taal-page",
+        "asset": "logo-k19-taal-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20110302142223id_/http://www.a-m-c.org/images/header.jpg",
+      "assetArchiveTimestamp": "20110302142223",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "DEXNGMTFR4MCMWXQ3QKHLJP45FYHQIIS",
+        "computedDigest": "DEXNGMTFR4MCMWXQ3QKHLJP45FYHQIIS",
+        "assetCaptureTimestamp": "20110302142223",
+        "cdxCaptureTimestamp": "20110302142223",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=a-m-c.org%2Fimages%2Fheader.jpg&from=2008&to=20130122&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k19-taal-index"
+      },
+      "cropBox": [
+        303,
+        12,
+        432,
+        139
+      ],
+      "originalDimensions": [
+        776,
+        150
+      ]
+    },
+    {
+      "id": "balad-archive-20130103044745",
+      "title": "Balad (National Democratic Assembly) official website — 2013-01-03",
+      "sourceUrl": "https://web.archive.org/web/20130103044745/http://www.tajamoa.org:80/",
+      "publisher": "التجمع الوطني الديمقراطي / בל״ד",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-05",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3 seconds apart",
+      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; exact bytes checked against CDX digest",
+      "date": "2013-01-03",
+      "description": "Inspected official Balad (National Democratic Assembly) homepage capture 20130103044745 references http://www.tajamoa.org/swf/logo.swf as its header logo (div.logo, SWFObject swf/logo.swf, 218x132). Exact archived asset bytes at 20100712195624 match pre-election CDX SHA-1 base32 U7VEQTP4RCYDNDOUJCRW4U4OHPYUU3T7 (CDX capture 20090125092001). Original geometry and colours preserved. Inspected January 2013 campaign homepage explicitly references this same SWF header path and dimensions. The retained July 2010 SWF capture is byte-identical to the 2009 file and matches the last pre-poll CDX row; there is no 2013 asset capture. Original JPEG3 bitmap character 5 decoded with its original alpha; no vector rendering, redraw or animation reconstruction. This is dated 2013 page usage of the same header, not a nearest-year assignment. Separate evidence for this election; no assignment by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20130103044745/http://www.tajamoa.org:80/",
+      "archiveTimestamp": "20130103044745",
+      "downloadUrl": "http://www.tajamoa.org/swf/logo.swf",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "balad-official-site",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k19-balad-page",
+        "asset": "logo-k19-balad-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20100712195624id_/http://www.tajamoa.org/swf/logo.swf",
+      "assetArchiveTimestamp": "20100712195624",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "U7VEQTP4RCYDNDOUJCRW4U4OHPYUU3T7",
+        "computedDigest": "U7VEQTP4RCYDNDOUJCRW4U4OHPYUU3T7",
+        "assetCaptureTimestamp": "20100712195624",
+        "cdxCaptureTimestamp": "20090125092001",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=tajamoa.org%2Fswf%2Flogo.swf&from=2008&to=20130122&output=json&fl=timestamp,original,statuscode,digest&filter=statuscode:200&collapse=timestamp:6",
+        "rawIndex": "logo-k19-balad-index"
+      },
+      "bitmapExtraction": {
+        "container": "SWF DefineBitsJPEG3",
+        "characterId": 5,
+        "dimensions": [
+          180,
+          97
+        ],
+        "decoder": "scripts/research/extract-swf-bitmap.py",
+        "recipe": "Original JPEG pixels plus original alpha; RGBA optimized PNG"
+      }
+    },
+    {
+      "id": "taal-archive-20141215062340",
+      "title": "Ta'al (Arab Movement for Renewal) official website — 2014-12-15",
+      "sourceUrl": "https://web.archive.org/web/20141215062340/http://www.a-m-c.org/",
+      "publisher": "الحركة العربية للتغيير / תע״ל",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-05",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3 seconds apart",
+      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; exact bytes checked against CDX digest",
+      "date": "2014-12-15",
+      "description": "Inspected official Ta'al (Arab Movement for Renewal) homepage capture 20141215062340 references http://www.a-m-c.org/images/header.jpg as its CSS .header masthead, via /images/styles.css captured 20141219042241. Exact archived asset bytes at 20110302142223 match pre-election CDX SHA-1 base32 DEXNGMTFR4MCMWXQ3QKHLJP45FYHQIIS (CDX capture 20150101203700). Cropped to box [303, 12, 432, 139] of the 776x150 original (crop only, isolating the original circular crowd-and-arrows emblem from photographs, leader portrait and slogan); no redraw or recolouring. The December 2014 campaign homepage and retained December 2014 stylesheet explicitly reference this masthead. Original image bytes retained from the March 2011 capture exactly match the CDX SHA-1 recorded on 1 January 2015, proving the 2015 indexed payload is identical. Direct retrieval of the January 2015 and May 2014 captures timed out; reuse is of cryptographically identical original bytes with dated campaign-page/CSS and campaign-period CDX proof, not by nearest-year analogy. Ta’al constituent emblem only, not the Joint List lockup. Separate evidence for this election; no assignment by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20141215062340/http://www.a-m-c.org/",
+      "archiveTimestamp": "20141215062340",
+      "downloadUrl": "http://www.a-m-c.org/images/header.jpg",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "taal-official-site",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k20-taal-page",
+        "asset": "logo-k20-taal-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20110302142223id_/http://www.a-m-c.org/images/header.jpg",
+      "assetArchiveTimestamp": "20110302142223",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "DEXNGMTFR4MCMWXQ3QKHLJP45FYHQIIS",
+        "computedDigest": "DEXNGMTFR4MCMWXQ3QKHLJP45FYHQIIS",
+        "assetCaptureTimestamp": "20110302142223",
+        "cdxCaptureTimestamp": "20150101203700",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=a-m-c.org%2Fimages%2Fheader.jpg&from=2012&to=20150317&output=json&fl=timestamp,original,statuscode,digest&filter=statuscode:200&collapse=timestamp:6",
+        "rawIndex": "logo-k20-taal-index"
+      },
+      "cropBox": [
+        303,
+        12,
+        432,
+        139
+      ],
+      "originalDimensions": [
+        776,
+        150
+      ]
     }
   ]
 }
