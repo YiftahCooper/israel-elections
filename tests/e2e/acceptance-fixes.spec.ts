@@ -55,6 +55,10 @@ for (const lang of ['en','he']) test(`E5 E6 phone election and named tools ${lan
 });
 test('E7 native list controls in Compare and Seat safety open with Enter', async ({page}) => {
   await start(page);
+  // Compare lists rows only when something differs
+  await page.getByRole('button',{name:'Likud',exact:true}).click();
+  const votes=page.getByRole('region',{name:'List details'}).getByLabel('Votes',{exact:true});
+  await votes.fill('1300000'); await votes.press('Enter'); await page.keyboard.press('Escape');
   for(const tab of ['Compare','Seat safety']) {
     await page.getByRole('tab',{name:tab,exact:true}).click();
     if(tab==='Compare') await page.locator('.cmp details summary').click();

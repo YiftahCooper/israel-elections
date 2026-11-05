@@ -64,7 +64,8 @@ function shade(hex: string, i: number): string {
   return `#${((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1)}`;
 }
 
-export function Hemicycle({ s, r, compact: compactProp = false, title, reference }: { s: Scenario; r: AllocationResult; compact?: boolean; title?: string; reference?: Scenario }) {
+/** `paired`: drawn beside its reference chamber (Compare), so the small reference chamber and change list are not repeated. */
+export function Hemicycle({ s, r, compact: compactProp = false, title, reference, paired = false }: { s: Scenario; r: AllocationResult; compact?: boolean; title?: string; reference?: Scenario; paired?: boolean }) {
   const L = useL();
   const { shown: standard, control: standardControl } = useDisclosure('chamberLegend');
   const { shown: expert, control: expertControl } = useDisclosure('chamberOptions');
@@ -90,7 +91,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   // Supplemental evidence follows completed edits, keeping the first drag from
   // mounting a second chamber and moving the legend under the pointer.
   const evidenceChanges = useMemo(() => changedSeatKeys(evidenceScenario, evidenceResult, base, br), [evidenceScenario, evidenceResult, base, br]);
-  const hasChanges = evidenceChanges.gained.size > 0 || evidenceChanges.lost.size > 0;
+  const hasChanges = !paired && (evidenceChanges.gained.size > 0 || evidenceChanges.lost.size > 0);
   const baselineSeats = useMemo(() => seatOrder(base, br, colorBy, showComponents), [base, br, colorBy, showComponents]);
   const total = s.rules.seats;
   const rtl = false; // Geometry is physically left-to-right in both languages, like the 61 marker.
@@ -297,7 +298,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       </div>}
       {/* the key is needed only when there is something to compare; the reference is named once, under the small chamber */}
       {hasChanges && <p className="small muted graphic-key">{L('Seat changes', 'שינויי מנדטים')} · {referenceLabel(labelReference,lang).name} <Info title={L('About these outlines','על המתארים')}>{L(`Outlined: seats gained since ${referenceLabel(labelReference,lang).name}. Dashed, in the small chamber: seats lost. Outlines compare list seat counts, not individual seats or voters moving between lists. Dashed bars show the reference; neutral ink shows the difference.`, `מתאר: מנדטים שנוספו מאז ${referenceLabel(labelReference,lang).name}. מקווקו, בכנסת הקטנה: מנדטים שאבדו. המתארים משווים את מספר המנדטים של הרשימות; אין משמעות של מנדט או בוחר שעבר בין רשימות. מתארי העמודות המקווקווים מציינים את הבסיס; דיו ניטרלי מציין שינוי.`)}</Info></p>}
-      <GraphicChanges s={evidenceScenario} r={evidenceResult} reference={reference} compact />
+      {!paired && <GraphicChanges s={evidenceScenario} r={evidenceResult} reference={reference} compact />}
       {hover && hv && (
         <Floating onPointerEnter={hoverBridge.cancel} onPointerLeave={hoverBridge.leave} className="tip" preferAbove anchor={() => hover.anchor.getBoundingClientRect()}>
           <div className="row"><span className="swatch" style={{ background: hover.seat.color }} /><b>{listLabel(hv, lang)}</b> <span className="muted">({hv.letters})</span></div>

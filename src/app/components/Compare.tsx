@@ -1,20 +1,94 @@
 import { Info } from './ui.tsx';
 import { blocDisplayOrder } from '../blocOrder.ts';
 import { useActiveReference } from '../useActiveReference.ts';
-import { referenceLabel } from '../derive.ts';
+import { baselineOf, referenceLabel } from '../derive.ts';
 import { scenarioColor } from '../scenarioIdentity.ts';
-import { useMemo } from 'react';
-import type { ElectionDataset } from '../../data/schema.ts';
+import { useEffect, useMemo, useRef, type MouseEvent, type ReactNode } from 'react';
+import type { ElectionDataset, ElectionId } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
-import type { Scenario } from '../../model/scenario.ts';
+import { votesCast, type Scenario } from '../../model/scenario.ts';
 import { referenceChanges, allocationOf, comparisonGroups, groupingBaseline, groupingLabel, nonSeatChanges, blocPieces, electedOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, fmtPct, fmtRat, fmtSigned, isolate, signed } from '../format.ts';
-import { replay, setState, useStore, useDigits } from '../store.ts';
+import { fmtInt, fmtPct, fmtRat, fmtSigned, signed } from '../format.ts';
+import { loadDataset, replay, setState, toast, useStore, useDigits } from '../store.ts';
+import { electionLabel } from '../electionLabel.ts';
+import { ChoicePicker, type Choice } from './ChoicePicker.tsx';
 import { Hemicycle } from './Hemicycle.tsx';
-import { clip, useChartWidth } from './Charts.tsx';
+import { ResultPreview } from './ResultPreview.tsx';
+
+const ELECTION = 'election:';
+type L = (en: string, he: string) => string;
+
+/** A signed decimal with a true minus sign ("+5.85", "−1.36"), for left-to-right isolation in either language. */
+const signedDecimal = (t: string) => (t.startsWith('-') ? `−${t.slice(1)}` : /^0(\.0*)?$/.test(t) ? t : `+${t}`);
+const blocSums = (sc: Scenario, rr: AllocationResult) => Object.fromEntries(sc.blocs.map((b) => [b.id, blocPieces(sc, rr).filter((p) => p.bloc === b.id).reduce((t, p) => t + p.n, 0)]));
+const turnout = (sc: Scenario, digits: number) => sc.registered ? fmtPct(votesCast(sc), sc.registered, digits) : '—';
+const threshold = (sc: Scenario, rr: AllocationResult, L: L) => Number(sc.rules.thresholdPct) === 0 ? L('None', 'אין') : fmtInt(rr.thresholdVotes);
 
 export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; base: Scenario; ds: ElectionDataset }) {
+  const compareWith = useStore((st) => st.compareWith);
+  const elections = useStore((st) => st.elections);
+  const otherElection = compareWith.startsWith(ELECTION) ? compareWith.slice(ELECTION.length) as ElectionId : null;
+  if (otherElection && otherElection !== s.electionId && elections.some((e) => e.id === otherElection && e.available)) return <ElectionCompare s={s} r={r} base={base} ds={ds} otherId={otherElection} />;
+  return <ScenarioCompare s={s} r={r} base={base} ds={ds} />;
+}
+
+/** What the current result can be compared with: this election's official result, the loaded reference and saved
+ *  scenarios, or another election's official result. */
+function useCompareChoices(s: Scenario, ds: ElectionDataset) {
+  const L = useL(), lang = useLang();
+  const { reference } = useActiveReference();
+  const saved = useStore((st) => st.saved);
+  const elections = useStore((st) => st.elections);
+  const here = L('This election', 'הבחירות האלה'), others = L('Other elections', 'בחירות אחרות');
+  const savedHere = saved.filter((x) => x.electionId === s.electionId && x.id !== s.id);
+  const choices: Choice[] = useMemo(() => [
+    ...(reference ? [{ value: 'official', label: L('Official result', 'התוצאה הרשמית'), group: here }] : []),
+    { value: 'historical', label: referenceLabel(reference, lang).name, group: here },
+    ...savedHere.map((x) => ({ value: x.id, label: x.name, group: here, preview: <span className="swatch" style={{ background: scenarioColor(replay(ds, x.name, x.log).scenario) }} /> })),
+    ...elections.filter((e) => e.available && e.id !== s.electionId).map((e) => ({ value: ELECTION + e.id, label: electionLabel(e, elections, lang), detail: L('Official result', 'התוצאה הרשמית'), group: others })),
+  ], [reference, saved, ds, elections, lang, s.electionId, s.id]); // eslint-disable-line react-hooks/exhaustive-deps -- L and the filtered lists follow lang, saved and s
+  const at = elections.findIndex((e) => e.id === s.electionId);
+  const previous = elections.slice(at + 1).find((e) => e.available) ?? elections.slice(0, Math.max(0, at)).reverse().find((e) => e.available);
+  return { choices, previous, label: L('Compare with', 'השוואה עם'), electionName: (id: string) => { const e = elections.find((x) => x.id === id); return e ? electionLabel(e, elections, lang) : id; } };
+}
+
+function ComparePicker({ s, ds, name, value, children }: { s: Scenario; ds: ElectionDataset; name: string; value: string; children?: ReactNode }) {
+  const L = useL();
+  const { choices, label } = useCompareChoices(s, ds);
+  return <div className="row cmp-head">
+    <span>{L('Compare', 'השוואה בין')} <b>{name}</b> {L('with', 'לבין')}</span>
+    <ChoicePicker label={label} value={value} options={choices} onChange={(v) => setState({ compareWith: v })} />
+    {children}
+  </div>;
+}
+
+/** Toggling a disclosure keeps its summary under the pointer. When closing it would shorten the page below the
+ *  current scroll position (the browser would then pull the page, and the summary, down), a spacer holds the page
+ *  where it was; the spacer gives way as the reader scrolls back up, so nothing ever jumps. */
+function useSteadyDisclosure() {
+  const ref = useRef<HTMLDivElement>(null);
+  const shrink = () => {
+    const el = ref.current; if (!el || !el.offsetHeight) return;
+    const below = document.documentElement.scrollHeight - (window.scrollY + window.innerHeight);
+    if (below > 0) el.style.height = `${Math.max(0, el.offsetHeight - below)}px`;
+  };
+  useEffect(() => { window.addEventListener('scroll', shrink, { passive: true }); return () => window.removeEventListener('scroll', shrink); }, []);
+  const onClick = (e: MouseEvent<HTMLElement>) => {
+    const details = e.currentTarget.parentElement as HTMLDetailsElement, el = ref.current;
+    if (!el) return;
+    e.preventDefault();
+    const y = window.scrollY;
+    details.open = !details.open;
+    const short = y + window.innerHeight - document.documentElement.scrollHeight;
+    if (short > 0) el.style.height = `${el.offsetHeight + short}px`;
+    window.scrollTo({ top: y, behavior: 'instant' });
+    shrink();
+  };
+  return { onClick, spacer: <div ref={ref} className="cmp-spacer" aria-hidden /> };
+}
+
+function ScenarioCompare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; base: Scenario; ds: ElectionDataset }) {
   const L = useL();
   const lang = useLang();
   const { reference } = useActiveReference();
@@ -23,6 +97,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
   const compareWith = compareWithRaw === 'official' ? 'official' : saved.some((x) => x.id === compareWithRaw && x.electionId === s.electionId && x.id !== s.id) ? compareWithRaw : 'historical';
   const digits = useDigits();
   const advanced = useStore((st) => st.level === 'expert');
+  const steady = useSteadyDisclosure();
   const other = useMemo(() => {
     if (compareWith === 'official') return base;
     if (compareWith === 'historical') return reference ?? base;
@@ -45,53 +120,32 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
   const entering = [...eb.entries()].filter(([id]) => !ea.has(id)).map(([, v]) => v);
   const leaving = [...ea.entries()].filter(([id]) => !eb.has(id)).map(([, v]) => v);
 
-  const blocSums = (sc: Scenario, rr: AllocationResult) => Object.fromEntries(sc.blocs.map((b) => [b.id, blocPieces(sc, rr).filter((p) => p.bloc === b.id).reduce((t, p) => t + p.n, 0)]));
   const groupedA = groupingBaseline(s, a);
   const ba = groupedA ? blocSums(groupedA, allocationOf(groupedA)) : {}, bb = blocSums(s, r);
 
   const baseLabel = referenceLabel(a === base ? null : a, lang);
   const nameA = baseLabel.name;
-  const nameB = s.name || L('Your scenario', 'התרחיש שלכם');
+  const nameB = s.name || (referenceChanges(s, base).length ? L('Your scenario', 'התרחיש שלכם') : L('Official result', 'התוצאה הרשמית'));
   const colorOfGroup = (g: (typeof groups)[number]) => (s.lists.find((l) => l.id === g.bIds[0]) ?? a.lists.find((l) => l.id === g.aIds[0]))?.color ?? '#888';
   const labelOf = (g: (typeof groups)[number]) => gName(g.bIds.length ? g.bIds : g.aIds, g.bIds.length ? s : a);
   const maxChange = Math.max(1, ...changed.map((g) => Math.abs(g.seatsB - g.seatsA)));
-  const total = s.rules.seats, majority = Math.floor(total / 2) + 1;
-  const BlocBarRow = ({ sums, title, sc }: { sums: Record<string, number>; title: string; sc: Scenario }) => {
-    const rest = sc.rules.seats - sc.blocs.reduce((t, b) => t + (sums[b.id] ?? 0), 0);
-    return (
-      <div className="cmp-blocrow">
-        <span className="small ink2">{title}</span>
-        <div className="coal-bar big" aria-label={`${title}: ${sc.blocs.map((b) => `${lang === 'he' ? b.nameHe : b.nameEn} ${sums[b.id] ?? 0}`).join(', ')}, ${L('No bloc','ללא גוש')} ${rest}`}>
-          {blocDisplayOrder(sc).map(id=>{
-            const bloc=sc.blocs.find(b=>b.id===id), n=id===null?rest:sums[id]??0;
-            if(!n)return null;
-            const color=bloc?.color ?? 'var(--muted)';
-            return <i key={id??'__none'} data-bloc={id??'__none'} style={{flexBasis:`${n/total*100}%`,background:`color-mix(in srgb, ${color} 24%, var(--surface))`,border:`1px ${id===null?'dotted':'solid'} ${color}`}} title={`${bloc ? (lang==='he'?bloc.nameHe:bloc.nameEn) : L('No bloc','ללא גוש')} ${n}`}><span className="cmp-n">{n}</span></i>;
-          })}
-          <span className="maj" style={{ left: `${(majority / total) * 100}%` }} />
-        </div>
-      </div>
-    );
-  };
+  const total = s.rules.seats;
+  const same = changed.length === 0 && referenceChanges(s, a).length === 0;
+  const otherNow = nonSeatChanges(s, a, lang);
+
+  if (same) return <EmptyCompare s={s} ds={ds} base={base} compareWith={compareWith} nameA={nameA} nameB={nameB} />;
 
   return (
     <div className="cmp">
-      <p className="small">{L('Baseline: ', 'בסיס ההשוואה: ')}{nameA} · {groupingLabel(s, lang)}{!groupedA && L(' · custom grouping has no baseline counterpart', ' · לחלוקה אישית אין מקבילה בבסיס')}</p>
-      <div className="row" style={{ marginBottom: 12 }}>
-        <label className="row small">{L('Compare', 'השוואה בין')} <b>{nameB}</b> {L('with', 'לבין')} <span className="swatch" style={{ background: compareWith === 'official' || (!reference && compareWith === 'historical') ? 'var(--axis)' : scenarioColor(a) }} />
-          <select value={compareWith} onChange={(e) => setState({ compareWith: e.target.value })}>
-            {reference && <option value="official">{L('the official result', 'התוצאה הרשמית')}</option>}
-            <option value="historical">{referenceLabel(reference, lang).name}</option>
-            {saved.filter((x) => x.electionId === s.electionId && x.id !== s.id).map((x) => <option key={x.id} value={x.id} style={{ color: scenarioColor(replay(ds, x.name, x.log).scenario) }}>{x.name}</option>)}
-          </select>
-        </label>
-        {changed.length === 0 && <span className="small muted">{[L('No seats changed', 'המנדטים לא השתנו'), ...nonSeatChanges(s, a, lang)].join(' · ')}</span>}
-      </div>
+      <ComparePicker s={s} ds={ds} name={nameB} value={compareWith}>
+        {changed.length === 0 && <span className="small muted">{[L('No seats changed', 'המנדטים לא השתנו'), ...otherNow].join(' · ')}</span>}
+      </ComparePicker>
 
       <div className="cmp-chambers">
-        <figure style={{ border: `2px solid ${compareWith !== 'official' && (reference || compareWith !== 'historical') ? scenarioColor(a) : 'var(--rule)'}` }}><figcaption>{nameA}</figcaption><Hemicycle reference={groupedA ?? a} s={groupedA ?? a} r={ar} compact title={nameA} /></figure>
-        <figure style={{ border: `2px solid ${reference || referenceChanges(s, base).length || s.identityColor ? scenarioColor(s) : 'var(--rule)'}` }}><figcaption>{nameB}</figcaption><Hemicycle reference={groupedA ?? a} s={s} r={r} compact title={nameB} /></figure>
+        <figure style={{ border: `2px solid ${compareWith !== 'official' && (reference || compareWith !== 'historical') ? scenarioColor(a) : 'var(--rule)'}` }}><figcaption>{nameA}</figcaption><Hemicycle reference={groupedA ?? a} s={groupedA ?? a} r={ar} compact paired title={nameA} /></figure>
+        <figure style={{ border: `2px solid ${reference || referenceChanges(s, base).length || s.identityColor ? scenarioColor(s) : 'var(--rule)'}` }}><figcaption>{nameB}</figcaption><Hemicycle reference={groupedA ?? a} s={s} r={r} compact paired title={nameB} /></figure>
       </div>
+      {gainers.length > 0 && <p className="small muted cmp-key">{L(`Outlined: seats gained since ${nameA}`, `מתאר: מנדטים שנוספו מאז ${nameA}`)} <Info title={L('About these outlines', 'על המתארים')}>{L('Outlines compare list seat counts, not individual seats or voters moving between lists.', 'המתארים משווים את מספר המנדטים של הרשימות; אין משמעות של מנדט או בוחר שעבר בין רשימות.')}</Info></p>}
 
       {s.blocs.length > 0 && (
         <section className="cmp-section">
@@ -105,6 +159,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
             if(!now&&!before)return null;
             return <span key={id??'__none'} className="row" style={{gap:5}}><span className="swatch" style={{background:`color-mix(in srgb, ${color} 24%, var(--surface))`,border:`1px ${id===null?'dotted':'solid'} ${color}`}} />{bloc?(lang==='he'?bloc.nameHe:bloc.nameEn):L('No bloc','ללא גוש')} <b><bdi dir="ltr">{groupedA?`${before} → `:''}{now}</bdi></b></span>;
           })}</div>
+          {!groupedA && <p className="small muted" style={{ margin: '4px 0 0' }}>{L(`${groupingLabel(s, lang)}: no counterpart in ${nameA}`, `${groupingLabel(s, lang)}: אין מקבילה ב${nameA}`)}</p>}
         </section>
       )}
 
@@ -130,33 +185,29 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
         </section>
       )}
 
-      <section className="cmp-section">
-        <h3>{L('Key numbers', 'מספרי מפתח')}</h3>
-        <div className="figures">
-          {[
-            [L('Valid votes', 'קולות כשרים'), fmtInt(ar.totalValid), fmtInt(r.totalValid)],
-            [L('Threshold (votes)', 'אחוז החסימה (קולות)'), fmtInt(ar.thresholdVotes), fmtInt(r.thresholdVotes)],
-            [L('Votes per seat', 'קולות למנדט'), fmtRat(ar.quota, 0), fmtRat(r.quota, 0)],
-            [L('Remainder seats', 'מנדטים מעודפים'), String(ar.remainderSeatsTotal), String(r.remainderSeatsTotal)],
-            [L('Votes with no seat', 'קולות ללא מנדט'), fmtPct(ar.unrepresentedVotes, ar.totalValid, digits), fmtPct(r.unrepresentedVotes, r.totalValid, digits)],
-          ].map(([k, x, y]) => <div key={k} className="fig static"><span className="k"><span>{k}</span></span><span className="v">{y}</span><span className="d">{x === y ? '\u00a0' : `${L('was', 'היה')} ${x}`}</span></div>)}
-        </div>
-      </section>
+      <KeyNumbers rows={[
+        [L('Valid votes', 'קולות כשרים'), fmtInt(ar.totalValid), fmtInt(r.totalValid)],
+        [L('Turnout', 'שיעור הצבעה'), turnout(a, digits), turnout(s, digits)],
+        [L('Threshold (votes)', 'אחוז החסימה (קולות)'), threshold(a, ar, L), threshold(s, r, L)],
+        [L('Votes per seat', 'קולות למנדט'), fmtRat(ar.quota, 0), fmtRat(r.quota, 0)],
+        [L('Remainder seats', 'מנדטים מעודפים'), String(ar.remainderSeatsTotal), String(r.remainderSeatsTotal)],
+        [L('Votes with no seat', 'קולות ללא מנדט'), fmtPct(ar.unrepresentedVotes, ar.totalValid, digits), fmtPct(r.unrepresentedVotes, r.totalValid, digits)],
+      ]} was={L('was', 'היה')} />
 
       {(entering.length > 0 || leaving.length > 0) && <div className="grid2 stack-sm cmp-section">
         <div>
           <h3>{L(`Entering the Knesset (${entering.length})`, `נכנסים לכנסת (${entering.length})`)}</h3>
-          {entering.length === 0 ? <p className="muted small">—</p> : <ul className="small">{entering.map(({ c, l }) => <li key={c.id} lang="he">{c.nameHe} <span className="muted">· {listLabel(l, lang)} #{l.candidates.indexOf(c) + 1}</span></li>)}</ul>}
+          {entering.length === 0 ? <p className="muted small">—</p> : <ul className="small">{entering.map(({ c, l }) => <li key={c.id}><bdi lang="he">{c.nameHe}</bdi> <span className="muted">· {listLabel(l, lang)} #{l.candidates.indexOf(c) + 1}</span></li>)}</ul>}
         </div>
         <div>
           <h3>{L(`Leaving the Knesset (${leaving.length})`, `יוצאים מהכנסת (${leaving.length})`)}</h3>
-          {leaving.length === 0 ? <p className="muted small">—</p> : <ul className="small">{leaving.map(({ c, l }) => <li key={c.id} lang="he">{c.nameHe} <span className="muted">· {listLabel(l, lang)} #{l.candidates.indexOf(c) + 1}</span></li>)}</ul>}
+          {leaving.length === 0 ? <p className="muted small">—</p> : <ul className="small">{leaving.map(({ c, l }) => <li key={c.id}><bdi lang="he">{c.nameHe}</bdi> <span className="muted">· {listLabel(l, lang)} #{l.candidates.indexOf(c) + 1}</span></li>)}</ul>}
         </div>
       </div>}
 
       <details className="cmp-section" open={advanced}>
-        <summary className="small">{L('Votes & seats by list', 'קולות ומנדטים לפי רשימה')}</summary>
-        <Slope groups={groups.map((g) => ({ key: g.key, seatsA: g.seatsA, seatsB: g.seatsB, label: labelOf(g) }))} nameA={nameA} nameB={nameB} colorOf={(key) => colorOfGroup(groups.find((x) => x.key === key)!)} />
+        <summary className="small" onClick={steady.onClick}>{L('Votes & seats by list', 'קולות ומנדטים לפי רשימה')}</summary>
+        <SeatDumbbell rows={[...groups].sort((x, y) => y.seatsB - x.seatsB || y.seatsA - x.seatsA).filter((g) => g.seatsA || g.seatsB).map((g) => ({ key: g.key, a: g.seatsA, b: g.seatsB, label: labelOf(g), color: colorOfGroup(g) }))} nameA={nameA} nameB={nameB} />
         <div className="tablewrap" tabIndex={0} role="region" aria-label={L('Scrollable table', 'טבלה נגללת')}>
           <table className="tbl">
             <thead><tr>
@@ -166,14 +217,15 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
             <tbody>
               {[...groups].sort((x, y) => y.seatsB - x.seatsB || Number(y.votesB - x.votesB)).filter((g) => g.seatsA || g.seatsB || g.votesA !== g.votesB || g.votesB * 100n >= r.totalValid).map((g) => {
                 const dv = g.votesB - g.votesA, ds_ = g.seatsB - g.seatsA;
+                const share = { num: 100n * (g.votesB * ar.totalValid - g.votesA * r.totalValid), den: ar.totalValid * r.totalValid };
                 return (
                   <tr key={g.key}>
                     <td>{g.bIds.length ? g.bIds.map((id) => <button key={id} className="table-action" onClick={() => setState({ selectedListId: id })}>{gName([id], s)}</button>) : gName(g.aIds, a)}{g.aIds.join() !== g.bIds.join() && <small className="muted"> · {baseLabel.at} {gName(g.aIds, a)}</small>}</td>
                     <td className="n">{fmtInt(g.votesA)}</td><td className="n">{fmtInt(g.votesB)}</td>
-                    <td className="n">{dv === 0n ? '—' : fmtSigned(dv)}</td>
-                    <td className="n">{ar.totalValid > 0n && r.totalValid > 0n ? fmtRat({ num: 100n * (g.votesB * ar.totalValid - g.votesA * r.totalValid), den: ar.totalValid * r.totalValid }, 2) : '—'}</td>
+                    <td className="n"><bdi dir="ltr">{dv === 0n ? '—' : fmtSigned(dv)}</bdi></td>
+                    <td className="n"><bdi dir="ltr">{ar.totalValid > 0n && r.totalValid > 0n && share.num !== 0n ? signedDecimal(fmtRat(share, 2)) : '—'}</bdi></td>
                     <td className="n">{g.seatsA}</td><td className="n"><b>{g.seatsB}</b></td>
-                    <td className="n">{ds_ === 0 ? '—' : ds_ > 0 ? `+${ds_}` : `−${-ds_}`}</td>
+                    <td className="n"><bdi dir="ltr">{ds_ === 0 ? '—' : ds_ > 0 ? `+${ds_}` : `−${-ds_}`}</bdi></td>
                   </tr>
                 );
               })}
@@ -182,54 +234,154 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
         </div>
       </details>
       <p className="small muted">{L('Election-night candidates', 'מועמדים בליל הבחירות')} <Info title={L('Candidate coverage', 'כיסוי המועמדים')}>{L('Elected candidates are the first names on each list as registered (election night). Later changes in membership are not modelled.', 'הנבחרים הם המועמדים הראשונים בכל רשימה כפי שנרשמה (ליל הבחירות). שינויים מאוחרים בהרכב אינם מוצגים.')}</Info></p>
+      {steady.spacer}
     </div>
   );
 }
 
-/** Seats before → after as a slope chart; one line per list (merged lists line up with their parts).
- *  Change is drawn in neutral ink; each list's colour is on its dots.
- *  The baseline is on the reading side (right in Hebrew), as in the chamber pair above it. */
-export function Slope({ groups, nameA, nameB, colorOf }: { groups: { key: string; seatsA: number; seatsB: number; label: string }[]; nameA: string; nameB: string; colorOf: (key: string) => string }) {
-  const rtl = false; // before on the left, after on the right in both languages (owner, 2026-11-04)
-  const [box, W] = useChartWidth(640);
-  const rows = groups.filter((g) => g.seatsA || g.seatsB);
-  const max = Math.max(1, ...rows.flatMap((g) => [g.seatsA, g.seatsB]));
-  const inner = Math.round(W * 0.3), H = Math.max(360, rows.length * 18 + 60), top = 30, bottom = H - 16;
-  const xA = rtl ? W - inner : inner, xB = rtl ? inner : W - inner, out = rtl ? 1 : -1; // `out`: from A's axis away from B
-  const y = (v: number) => bottom - (v / max) * (bottom - top);
-  // keep labels at least 15 units apart on each side
-  const spread = (vals: { key: string; y: number }[]) => {
-    const s = [...vals].sort((a, b) => a.y - b.y);
-    for (let i = 1; i < s.length; i++) if (s[i].y - s[i - 1].y < 15) s[i].y = s[i - 1].y + 15;
-    if (s.length && s[s.length-1].y > bottom) {
-      s[s.length-1].y = bottom;
-      for (let i=s.length-2;i>=0;i--) s[i].y = Math.min(s[i].y,s[i+1].y-15);
-    }
-    return new Map(s.map((v) => [v.key, v.y]));
+/** Nothing differs: instead of two identical pictures, the quickest ways to something worth comparing,
+ *  each with a strip of its seats. */
+function EmptyCompare({ s, ds, base, compareWith, nameA, nameB }: { s: Scenario; ds: ElectionDataset; base: Scenario; compareWith: string; nameA: string; nameB: string }) {
+  const L = useL();
+  const { reference } = useActiveReference();
+  const saved = useStore((st) => st.saved);
+  const { choices, previous, electionName } = useCompareChoices(s, ds);
+  const prevDs = useStore((st) => previous ? st.datasets[previous.id] : undefined);
+  useEffect(() => { if (previous && !prevDs) loadDataset(previous.id).catch(() => {}); }, [previous, prevDs]);
+  const scenarioOf = (value: string) => {
+    if (value === 'official') return base;
+    if (value === 'historical') return reference ?? base;
+    const sv = saved.find((x) => x.id === value);
+    return sv ? replay(ds, sv.name, sv.log).scenario : null;
   };
-  const ly = spread(rows.map((g) => ({ key: g.key, y: y(g.seatsA) })));
-  const ry = spread(rows.map((g) => ({ key: g.key, y: y(g.seatsB) })));
+  const card = (key: string, title: string, sc: Scenario | null, onClick: () => void) => <button key={key} type="button" className="btn cmp-pick" onClick={onClick}>
+    <b>{title}</b>{sc ? <ResultPreview s={sc} blocs={false} /> : <span className="result-preview" aria-hidden />}
+  </button>;
   return (
-    <div ref={box} style={{ maxWidth: 640, margin: '10px 0' }}>
-    <svg className="chart" viewBox={`0 0 ${W} ${H + 10}`} width="100%" role="img" aria-label={`${nameA} → ${nameB}`}>
-      <text x={xA} y={16} textAnchor="middle" fontWeight={600}>{isolate(clip(nameA, 2 * inner - 10))}</text>
-      <text x={xB} y={16} textAnchor="middle" fontWeight={600}>{isolate(clip(nameB, 2 * inner - 10))}</text>
-      <line x1={xA} x2={xA} y1={top - 6} y2={bottom} stroke="var(--axis)" />
-      <line x1={xB} x2={xB} y1={top - 6} y2={bottom} stroke="var(--axis)" />
-      {rows.map((g) => {
-        const c = colorOf(g.key);
-        const changed = g.seatsA !== g.seatsB;
-        return (
-          <g key={g.key} opacity={changed ? 1 : 0.5}>
-            <line x1={xA} y1={y(g.seatsA)} x2={xB} y2={y(g.seatsB)} stroke={changed ? 'var(--ink)' : 'var(--axis)'} strokeWidth={changed ? 3 : 1.5} />
-            <circle cx={xA} cy={y(g.seatsA)} r={4} fill="var(--surface)" stroke={c} strokeDasharray="2 2" strokeWidth={2} />
-            <circle cx={xB} cy={y(g.seatsB)} r={4} fill={c} stroke="var(--surface)" strokeWidth={2} />
-            <text x={xA + out * 8} y={ly.get(g.key)} textAnchor={rtl ? 'start' : 'end'} dominantBaseline="middle" fill="var(--ink)"><title>{`${g.label} ${g.seatsA}`}</title>{isolate(`${clip(g.label, inner - 34)} ${g.seatsA}`)}</text>
-            <text x={xB - out * 8} y={ry.get(g.key)} textAnchor={rtl ? 'end' : 'start'} dominantBaseline="middle" fill="var(--ink)" fontWeight={changed ? 700 : 400}>{g.seatsB}{changed ? ` (${signed(g.seatsB - g.seatsA)})` : ''}</text>
-          </g>
-        );
-      })}
-    </svg>
+    <div className="cmp">
+      <section className="cmp-empty" aria-labelledby="cmp-empty-title">
+        <h3 id="cmp-empty-title">{L('Compare ', 'השוואת ')}<bdi>{nameB}</bdi>{L(' with…', ' עם…')}</h3>
+        <div className="cmp-picks">
+          {choices.filter((c) => c.value !== compareWith && !c.value.startsWith(ELECTION)).map((c) => card(c.value, c.label, scenarioOf(c.value), () => setState({ compareWith: c.value })))}
+          {previous && card(previous.id, electionName(previous.id), prevDs ? baselineOf(prevDs) : null, () => setState({ compareWith: ELECTION + previous.id }))}
+          <ChoicePicker className="cmp-other" label={L('Another election', 'בחירות אחרות')} placeholder={L('Another election…', 'בחירות אחרות…')} value="" options={choices.filter((c) => c.value.startsWith(ELECTION))} onChange={(v) => setState({ compareWith: v })} />
+          <button type="button" className="btn" onClick={() => setState({ tool: 'whatif' })}>{L('A What-if question…', 'שאלת "מה אם"…')}</button>
+        </div>
+        <p className="small muted">{nameA !== nameB && <>{L(`Same as ${nameA}. `, `זהה ל${nameA}. `)}</>}{L('Edits you make show here.', 'עריכות שתבצעו יוצגו כאן.')}</p>
+      </section>
     </div>
+  );
+}
+
+/** Two elections side by side: each official (or edited) result with its own grouping. Lists are not matched
+ *  across elections, since no sourced list-to-list correspondence exists; Party families follows parties over time. */
+function ElectionCompare({ s, r, base, ds, otherId }: { s: Scenario; r: AllocationResult; base: Scenario; ds: ElectionDataset; otherId: ElectionId }) {
+  const L = useL(), lang = useLang(), digits = useDigits();
+  const ods = useStore((st) => st.datasets[otherId]);
+  const { electionName } = useCompareChoices(s, ds);
+  useEffect(() => { if (!ods) loadDataset(otherId).catch(() => { toast('error', L('Could not load this election.', 'לא ניתן לטעון את הבחירות האלה.')); setState({ compareWith: 'historical' }); }); }, [ods, otherId]); // eslint-disable-line react-hooks/exhaustive-deps
+  const o = useMemo(() => ods ? baselineOf(ods) : null, [ods]);
+  const or = useMemo(() => o ? allocationOf(o) : null, [o]);
+  const current = { sc: s, rr: r, election: electionName(s.electionId), name: s.name || (referenceChanges(s, base).length ? L('Your scenario', 'התרחיש שלכם') : L('Official result', 'התוצאה הרשמית')), color: referenceChanges(s, base).length || s.identityColor ? scenarioColor(s) : 'var(--rule)' };
+  if (!o || !or || !ods) return <div className="cmp"><ComparePicker s={s} ds={ds} name={current.name} value={ELECTION + otherId} /><p className="small muted">{L('Loading…', 'טוען…')}</p></div>;
+  const otherSide = { sc: o, rr: or, election: electionName(otherId), name: L('Official result', 'התוצאה הרשמית'), color: 'var(--rule)' };
+  // the earlier election is drawn first, so time reads left to right in either language
+  const [left, right] = ods.electionDate < ds.electionDate ? [otherSide, current] : [current, otherSide];
+  const elected = (rr: AllocationResult) => String(rr.lists.filter((x) => x.seats > 0).length);
+  const when = left.election.split(' · ')[0];
+  return (
+    <div className="cmp">
+      <ComparePicker s={s} ds={ds} name={current.name} value={ELECTION + otherId} />
+      <div className="cmp-chambers">
+        {[left, right].map((x) => <figure key={x.sc.electionId} style={{ border: `2px solid ${x.color}` }}>
+          <figcaption>{x.election}<span className="small muted cmp-sub">{x.name}</span></figcaption>
+          {/* another election's seats open no list here: its lists are not part of the open scenario */}
+          <div onClickCapture={x.sc === o ? (e) => e.stopPropagation() : undefined}><Hemicycle reference={x.sc} s={x.sc} r={x.rr} compact paired title={x.election} /></div>
+        </figure>)}
+      </div>
+      <p className="small muted cmp-key">{L('Lists are not matched across elections', 'הרשימות אינן מותאמות בין בחירות')} <Info title={L('Comparing elections', 'השוואת בחירות')}>{L('Parties merge, split and rename between elections, so lists are not paired here and no seat change is computed. Party families follows parties over time.', 'מפלגות מתאחדות, מתפצלות ומשנות שם בין בחירות, ולכן הרשימות אינן מוצמדות כאן ולא מחושב שינוי במנדטים. "משפחות מפלגות" עוקב אחר המפלגות לאורך זמן.')}</Info> <button type="button" className="btn small ghost" onClick={() => setState({ tool: 'families' })}>{L('Party families', 'משפחות מפלגות')}</button></p>
+
+      {(left.sc.blocs.length > 0 || right.sc.blocs.length > 0) && <section className="cmp-section">
+        <h3>{L('Blocs', 'גושים')}</h3>
+        {[left, right].filter((x) => x.sc.blocs.length).map((x) => { const sums = blocSums(x.sc, x.rr); return <div key={x.sc.electionId}>
+          <BlocBarRow sums={sums} title={x.election} sc={x.sc} />
+          <div className="legend small cmp-bloclegend"><span className="muted">{groupingLabel(x.sc, lang)}:</span>{blocDisplayOrder(x.sc).map((id) => { const bloc = x.sc.blocs.find((b) => b.id === id), n = id === null ? x.sc.rules.seats - Object.values(sums).reduce((t, v) => t + v, 0) : sums[id] ?? 0; if (!n) return null; const color = bloc?.color ?? 'var(--muted)';
+            return <span key={id ?? '__none'} className="row" style={{ gap: 5 }}><span className="swatch" style={{ background: `color-mix(in srgb, ${color} 24%, var(--surface))`, border: `1px ${id === null ? 'dotted' : 'solid'} ${color}` }} />{bloc ? (lang === 'he' ? bloc.nameHe : bloc.nameEn) : L('No bloc', 'ללא גוש')} <b>{n}</b></span>; })}</div>
+        </div>; })}
+      </section>}
+
+      <KeyNumbers rows={[
+        [L('Valid votes', 'קולות כשרים'), fmtInt(left.rr.totalValid), fmtInt(right.rr.totalValid)],
+        [L('Turnout', 'שיעור הצבעה'), turnout(left.sc, digits), turnout(right.sc, digits)],
+        [L('Threshold (votes)', 'אחוז החסימה (קולות)'), threshold(left.sc, left.rr, L), threshold(right.sc, right.rr, L)],
+        [L('Votes per seat', 'קולות למנדט'), fmtRat(left.rr.quota, 0), fmtRat(right.rr.quota, 0)],
+        [L('Lists elected', 'רשימות שנבחרו'), elected(left.rr), elected(right.rr)],
+        [L('Votes with no seat', 'קולות ללא מנדט'), fmtPct(left.rr.unrepresentedVotes, left.rr.totalValid, digits), fmtPct(right.rr.unrepresentedVotes, right.rr.totalValid, digits)],
+      ]} was={L(`${when}:`, /^\d/.test(when) ? `ב-${when}:` : `ב${when}:`)} always />
+    </div>
+  );
+}
+
+function KeyNumbers({ rows, was, always = false }: { rows: string[][]; was: string; always?: boolean }) {
+  const L = useL();
+  return <section className="cmp-section">
+    <h3>{L('Key numbers', 'מספרי מפתח')}</h3>
+    <div className="figures">
+      {rows.map(([k, x, y]) => <div key={k} className="fig static"><span className="k"><span>{k}</span></span><span className="v">{y}</span><span className="d">{x === y && !always ? ' ' : `${was} ${x}`}</span></div>)}
+    </div>
+  </section>;
+}
+
+function BlocBarRow({ sums, title, sc }: { sums: Record<string, number>; title: string; sc: Scenario }) {
+  const L = useL(), lang = useLang();
+  const total = sc.rules.seats, majority = Math.floor(total / 2) + 1;
+  const rest = total - sc.blocs.reduce((t, b) => t + (sums[b.id] ?? 0), 0);
+  return (
+    <div className="cmp-blocrow">
+      <span className="small ink2">{title}</span>
+      <div className="coal-bar big" aria-label={`${title}: ${sc.blocs.map((b) => `${lang === 'he' ? b.nameHe : b.nameEn} ${sums[b.id] ?? 0}`).join(', ')}, ${L('No bloc','ללא גוש')} ${rest}`}>
+        {blocDisplayOrder(sc).map(id=>{
+          const bloc=sc.blocs.find(b=>b.id===id), n=id===null?rest:sums[id]??0;
+          if(!n)return null;
+          const color=bloc?.color ?? 'var(--muted)';
+          return <i key={id??'__none'} data-bloc={id??'__none'} style={{flexBasis:`${n/total*100}%`,background:`color-mix(in srgb, ${color} 24%, var(--surface))`,border:`1px ${id===null?'dotted':'solid'} ${color}`}} title={`${bloc ? (lang==='he'?bloc.nameHe:bloc.nameEn) : L('No bloc','ללא גוש')} ${n}`}><span className="cmp-n">{n}</span></i>;
+        })}
+        <span className="maj" style={{ left: `${(majority / total) * 100}%` }} />
+      </div>
+    </div>
+  );
+}
+
+/** Seats before → after for every list, one row each (a dumbbell): the hollow dashed dot is the baseline, the filled dot
+ *  the result, joined in neutral ink when they differ. Rows never collide, so equal seat counts stay readable.
+ *  The track reads left to right in both languages; only the names follow the page direction. */
+export function SeatDumbbell({ rows, nameA, nameB }: { rows: { key: string; a: number; b: number; label: string; color: string }[]; nameA: string; nameB: string }) {
+  const L = useL();
+  const max = Math.max(1, ...rows.flatMap((g) => [g.a, g.b]));
+  const step = max > 40 ? 20 : max > 16 ? 10 : 5;
+  const ticks = Array.from({ length: Math.floor(max / step) + 1 }, (_, i) => i * step);
+  const at = (v: number) => `${(v / max) * 100}%`;
+  return (
+    <figure className="cmp-dumbbell" aria-label={L(`Seats: ${nameA} → ${nameB}`, `מנדטים: ${nameA} → ${nameB}`)}>
+      <figcaption className="small ink2 db-key"><span className="db-was" aria-hidden /> <bdi>{nameA}</bdi> <span className="db-now" aria-hidden /> <bdi>{nameB}</bdi></figcaption>
+      <ul>
+        {rows.map((g) => {
+          const changed = g.a !== g.b, lo = Math.min(g.a, g.b);
+          return (
+            <li key={g.key} className={changed ? 'changed' : ''} title={`${g.label}: ${g.a} → ${g.b}`}>
+              <span className="cmp-label"><span className="swatch" style={{ background: g.color }} /> {g.label}</span>
+              <span className="db-track" aria-hidden>
+                {ticks.map((t) => <span key={t} className="db-tick" style={{ left: at(t) }} />)}
+                {changed && <i className="db-seg" style={{ left: at(lo), width: `${(Math.abs(g.b - g.a) / max) * 100}%` }} />}
+                {changed && <i className="db-was" style={{ left: at(g.a) }} />}
+                <i className="db-now" style={{ left: at(g.b), background: g.color }} />
+              </span>
+              <bdi dir="ltr" className="db-v">{changed ? <>{g.a} → <b>{g.b}</b></> : g.b}</bdi>
+            </li>
+          );
+        })}
+      </ul>
+      <div className="db-axis" aria-hidden><span />{<span className="db-track">{ticks.map((t) => <span key={t} style={{ left: at(t) }}>{t}</span>)}</span>}<span /></div>
+    </figure>
   );
 }
