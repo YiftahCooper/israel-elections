@@ -94,6 +94,20 @@
       "publisher": "Knesset, Second Knesset, sitting 159, 24 December 1952 (declarations and additional ministers)",
       "kind": "official",
       "accessed": "2026-11-05"
+    },
+    "mfa-timeline": {
+      "url": "https://www.gov.il/en/pages/timeline-of-events-half-a-century-of-independence",
+      "publisher": "Israel Ministry of Foreign Affairs, Timeline of Events: Half a Century of Independence, 1948–1998",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies."
+    },
+    "un-scorpion-pass-1954": {
+      "url": "https://digitallibrary.un.org/record/603141/files/S_3252-EN.pdf",
+      "publisher": "United Nations Truce Supervision Organization, report S/3252, 25 June 1954",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Full document read with Jina; ordinary web fetch returned 403. Used for incident date and observations, not national-event selection."
     }
   },
   "results": {
@@ -631,24 +645,63 @@
     "inclusionRule": "At least two independent chronologies, including one official or academic; a direct date source is also required.",
     "chronologies": [
       "term-history",
-      "idi-next"
+      "idi-next",
+      "mfa-timeline"
     ],
-    "events": [],
+    "events": [
+      {
+        "id": "maale-akrabim",
+        "date": "1954-03-17",
+        "category": "security",
+        "textEn": "Attackers fired on a passenger bus at Ma’ale Akrabim in the Negev.",
+        "textHe": "תוקפים ירו לעבר אוטובוס נוסעים במעלה עקרבים שבנגב.",
+        "cites": [
+          {
+            "source": "term-history",
+            "quote": "a bus at Ma'aleh Ha'akrabim in the Negev"
+          },
+          {
+            "source": "mfa-timeline",
+            "quote": "attack a bus at Ma'ale Akrabim"
+          },
+          {
+            "source": "un-scorpion-pass-1954",
+            "quote": "On 17 March 1954"
+          },
+          {
+            "source": "un-scorpion-pass-1954",
+            "quote": "an attack on an Israeli passenger bus which had occured about noon on the same day"
+          }
+        ],
+        "confidence": "high",
+        "notes": [
+          "Knesset history gives 18 March; the contemporary UN report places the attack and the observer’s first visit on 17 March. The direct record controls the date; no perpetrator nationality or casualty total is inferred."
+        ]
+      },
+      {
+        "id": "egypt-executions",
+        "date": "1955-01-31",
+        "category": "security",
+        "textEn": "Egypt executed two Jews convicted of spying for Israel.",
+        "textHe": "מצרים הוציאה להורג שני יהודים שהורשעו בריגול למען ישראל.",
+        "cites": [
+          {
+            "source": "term-history",
+            "quote": "the execution of two of them on 31 January, 1955"
+          },
+          {
+            "source": "mfa-timeline",
+            "quote": "Two Egyptian Jews are hanged after being convicted of spying for Israel"
+          }
+        ],
+        "confidence": "high"
+      }
+    ],
     "candidatesPending": [
-      {
-        "label": "Ma’ale Akrabim bus attack",
-        "date": "1954-03",
-        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
-      },
-      {
-        "label": "Egyptian trial and executions of Israeli agents",
-        "date": "1955-01",
-        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
-      },
       {
         "label": "Kastner trial",
         "date": "1955",
-        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+        "why": "Both Knesset history and MFA timeline select the affair; the latter inaccurately describes Kastner as a convicted defendant. Define the libel judgment as the act and inspect the judgment/date before promotion."
       }
     ],
     "endedBy": {
