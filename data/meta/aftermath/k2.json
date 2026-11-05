@@ -1,0 +1,683 @@
+{
+  "schemaVersion": 1,
+  "electionId": "k2",
+  "status": "pilot",
+  "reviewedAt": "2026-11-05",
+  "notes": [
+    "Research draft; not wired into the application. Official session records anchor all government approvals. Reused recommendation and first-coalition evidence retains the earlier research limitations.",
+    "The government card describes the first cabinet. Each replacement cabinet has a full-session confidence step and a numbered government.changes entry; available replacement coalition snapshots are attached to that entry.",
+    "Government 4: confidence on 23 December 1952, declarations on 24 December. Government numbers and steps distinguish each replacement cabinet from a change of prime minister within one cabinet.",
+    "New PDF quotations preserve the extracted text order (including OCR errors); whitespace is collapsed. Full-session sources identify the sitting; source excerpts are recoverable from the public PDF. Existing coalition OData quotes are labelled project tabulations in the source text, not purported verbatim minister lists."
+  ],
+  "sources": {
+    "plenum-gov3": {
+      "url": "https://fs.knesset.gov.il/2/Plenum/2_ptm_250617.pdf",
+      "publisher": "Knesset, Knesset 2, sitting 13, 1951-10-08 (full plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "presentation-gov3": {
+      "url": "https://main.knesset.gov.il/mk/government/documents/gov3.pdf",
+      "publisher": "Knesset, government 3 presentation (extract from plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "plenum-gov4": {
+      "url": "https://fs.knesset.gov.il/2/Plenum/2_ptm_250692.pdf",
+      "publisher": "Knesset, Knesset 2, sitting 158, 1952-12-23 (full plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "presentation-gov4": {
+      "url": "https://main.knesset.gov.il/mk/government/documents/gov4.pdf",
+      "publisher": "Knesset, government 4 presentation (extract from plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "plenum-gov5": {
+      "url": "https://fs.knesset.gov.il/2/Plenum/2_ptm_250781.pdf",
+      "publisher": "Knesset, Knesset 2, sitting 362, 1954-01-26 (full plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "presentation-gov5": {
+      "url": "https://main.knesset.gov.il/mk/government/documents/gov5.pdf",
+      "publisher": "Knesset, government 5 presentation (extract from plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "plenum-gov6": {
+      "url": "https://fs.knesset.gov.il/2/Plenum/2_ptm_250532.pdf",
+      "publisher": "Knesset, Knesset 2, sitting 623, 1955-06-29 (full plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "presentation-gov6": {
+      "url": "https://main.knesset.gov.il/mk/government/documents/gov6.pdf",
+      "publisher": "Knesset, government 6 presentation (extract from plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-jta": {
+      "url": "https://www.jta.org/archive/weizmann-continues-consultations-with-party-leaders-on-composition-of-government",
+      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin (reused recommendation research)",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "coalition-1": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%203&$format=json",
+      "publisher": "Knesset OData (ParliamentInfo)",
+      "kind": "official",
+      "accessed": "2026-11-04"
+    },
+    "coalition-2": {
+      "url": "https://he.wikipedia.org/wiki/ממשלת_ישראל_השלישית",
+      "publisher": "Hebrew Wikipedia",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "term-history": {
+      "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-second-knesset-1951-1955",
+      "publisher": "Knesset, history of the second Knesset (credited official text on Jewish Virtual Library)",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Jewish Virtual Library mirror; original https://main.knesset.gov.il/EN/About/History/pages/knessethistory.aspx?kns=2"
+    },
+    "idi-next": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/elections/1955/",
+      "publisher": "Israel Democracy Institute, election chronology",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "oath-gov4": {
+      "url": "https://fs.knesset.gov.il/2/Plenum/2_ptm_250350.pdf",
+      "publisher": "Knesset, Second Knesset, sitting 159, 24 December 1952 (declarations and additional ministers)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    }
+  },
+  "results": {
+    "electionDate": "1951-07-30",
+    "officialResultsSourceId": "k2-results-gazette"
+  },
+  "reaction": {
+    "policy": "Only dated institutional steps and attributed statements, all lists or none.",
+    "items": [],
+    "gap": "Not collected."
+  },
+  "recommendationRounds": [
+    {
+      "id": "r1",
+      "date": "1951-08",
+      "kind": "consultations",
+      "president": {
+        "nameEn": "Chaim Weizmann",
+        "nameHe": "חיים ויצמן"
+      },
+      "nominees": {
+        "ben-gurion": {
+          "nameEn": "David Ben-Gurion",
+          "nameHe": "דוד בן־גוריון"
+        }
+      },
+      "entries": [
+        {
+          "letters": "א",
+          "seats": 45,
+          "status": "unknown"
+        },
+        {
+          "letters": "צ",
+          "seats": 20,
+          "status": "unknown"
+        },
+        {
+          "letters": "מ",
+          "seats": 15,
+          "status": "unknown"
+        },
+        {
+          "letters": "ה",
+          "seats": 8,
+          "status": "unknown"
+        },
+        {
+          "letters": "ח",
+          "seats": 8,
+          "status": "unknown"
+        },
+        {
+          "letters": "ק",
+          "seats": 5,
+          "status": "unknown"
+        },
+        {
+          "letters": "פ",
+          "seats": 4,
+          "status": "unknown"
+        },
+        {
+          "letters": "יד",
+          "seats": 3,
+          "status": "unknown"
+        },
+        {
+          "letters": "ג",
+          "seats": 3,
+          "status": "unknown"
+        },
+        {
+          "letters": "סצ",
+          "seats": 2,
+          "status": "unknown"
+        },
+        {
+          "letters": "ב",
+          "seats": 2,
+          "status": "unknown"
+        },
+        {
+          "letters": "ד",
+          "seats": 2,
+          "status": "unknown"
+        },
+        {
+          "letters": "נ",
+          "seats": 1,
+          "status": "unknown"
+        },
+        {
+          "letters": "ל",
+          "seats": 1,
+          "status": "unknown"
+        },
+        {
+          "letters": "ע",
+          "seats": 1,
+          "status": "unknown"
+        }
+      ],
+      "totals": {
+        "unknown": 120
+      },
+      "cites": [
+        {
+          "source": "recommendations-jta",
+          "quote": "His consultations will conclude tomorrow"
+        }
+      ],
+      "notes": [
+        "Reuses docs/research/pm-recommendations-1949-1973.md; consultation conditions are not personal recommendations. Unknown does not mean no recommendation.",
+        "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved.",
+        "The opening day is not established: the report refers to meetings during the weekend. Only the month is displayed."
+      ],
+      "endDate": "1951-08-15"
+    }
+  ],
+  "formation": {
+    "outcome": "government-formed",
+    "events": [
+      {
+        "date": "1951-08",
+        "type": "consultations",
+        "textEn": "President Chaim Weizmann held consultations on government formation.",
+        "textHe": "הנשיא חיים ויצמן קיים התייעצויות על הרכבת הממשלה.",
+        "cites": [
+          {
+            "source": "recommendations-jta",
+            "quote": "His consultations will conclude tomorrow"
+          }
+        ],
+        "endDate": "1951-08-15"
+      },
+      {
+        "date": "1951-08-20",
+        "type": "mandate-given",
+        "textEn": "The President tasked David Ben-Gurion with forming a government.",
+        "textHe": "הנשיא הטיל על דוד בן־גוריון להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "presentation-gov3",
+            "quote": "אדוני היושב - ראש , חברי הכנסת . ברגשות מעורבים עליתי הפעם על הבימה . בעשרים לאוגוסט , הטיל עלי הנשיא הרכבת ממשלת הכנסת השני י ה . ראיתי אז – ועדיין אני רואה – צו התקופה בהקמת קואליציה רחבה , מורכבת מכל המפלגות שהשתתפו בממשלה הזמנית . ועשיתי בזמן לא - קצר זה"
+          }
+        ],
+        "person": "ben-gurion"
+      },
+      {
+        "date": "1951-10-08",
+        "type": "confidence-vote",
+        "textEn": "The Knesset expressed confidence in government 3, headed by David Ben-Gurion, 56–40, with 4 abstentions.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־3 בראשות דוד בן־גוריון, ברוב של 56 מול 40, עם 4 נמנעים.",
+        "cites": [
+          {
+            "source": "plenum-gov3",
+            "quote": "הצבעה חברהכנסת ט. ארגוב בעד הצעת 56 )הבעת אמון לממשלה( 40 נגד 4 ~ נמנעים ההצעה נתקבלה. היו\"ר י. שפרינצק:"
+          }
+        ],
+        "votes": {
+          "for": 56,
+          "against": 40,
+          "abstain": 4
+        },
+        "governmentNumber": 3,
+        "person": "ben-gurion"
+      },
+      {
+        "date": "1952-12-21",
+        "type": "mandate-given",
+        "textEn": "The President tasked David Ben-Gurion with forming a government.",
+        "textHe": "הנשיא הטיל על דוד בן־גוריון להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "presentation-gov4",
+            "quote": "אדוני היושב - ראש, חברי - הכנסת. ביום ו ' שעבר הגשתי לנשיא התפטרות ההמשלה, ואתמול הטיל עלי נשיא המדינה להרכיב ממשלה חדשה."
+          }
+        ],
+        "person": "ben-gurion"
+      },
+      {
+        "date": "1952-12-23",
+        "type": "confidence-vote",
+        "textEn": "The Knesset expressed confidence in government 4, headed by David Ben-Gurion, 63–24.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־4 בראשות דוד בן־גוריון, ברוב של 63 מול 24.",
+        "cites": [
+          {
+            "source": "plenum-gov4",
+            "quote": "הצבעה ■ בעד הצעת סיעות הקואליציה לאשר את קתיהיסוד של הממשלה ולהביע לה 63 קולות אמון 24 קולות נגד הגעת סיעות הקואליציה נתקבלה. שפרינצק: היו\"ר י. על ב63 קולות נגד 24 הובע אמון לממשלה שהוצגה ידי ראשהממשלה דוד בןגוריון ואושרו קוויהיסוד של תכ ניתה. הוקמה ממשלת ישראל חדשה. הרא הנני לברך את הממשלה החדשה והישגי. החשוב"
+          }
+        ],
+        "votes": {
+          "for": 63,
+          "against": 24
+        },
+        "governmentNumber": 4,
+        "person": "ben-gurion"
+      },
+      {
+        "date": "1954-01-26",
+        "type": "confidence-vote",
+        "textEn": "The Knesset expressed confidence in government 5, headed by Moshe Sharett, 75–23, with 5 abstentions.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־5 בראשות משה שרת, ברוב של 75 מול 23, עם 5 נמנעים.",
+        "cites": [
+          {
+            "source": "plenum-gov5",
+            "quote": "הצבעה 7 5 לממשלה בעד ההצעה להביע אמון 23 איאמון לממשלה בעד ההצעה להביע 5 נמנעים היו\"ר ז. שפר: בזה החליטה הכנסת על הבעת אמון לממשלה. השרים של אמונים הצהרת .4 היו\"ר ז. שפר:"
+          }
+        ],
+        "votes": {
+          "for": 75,
+          "against": 23,
+          "abstain": 5
+        },
+        "governmentNumber": 5,
+        "person": "sharett"
+      },
+      {
+        "date": "1955-06-29",
+        "type": "confidence-vote",
+        "textEn": "The Knesset expressed confidence in government 6, headed by Moshe Sharett, 66–32, with 3 abstentions.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־6 בראשות משה שרת, ברוב של 66 מול 32, עם 3 נמנעים.",
+        "cites": [
+          {
+            "source": "plenum-gov6",
+            "quote": "הצבעה בעד הבעת אמון לממשלה שהורכבה והוצגה 66 חברהכנסת משה שרת עלידי 32 נגד הבעת אמון לממשלה 3 נמנעו היו\"ר י. שפרינצק: שלושיםושנים אישרה הכנסת בשישיםוששה קולות נגד חברהכנסת עלידי את הממשלה של מדינת ישראל, שהוצגה שרת. משה הצהרת אמונים של השרים ג."
+          }
+        ],
+        "votes": {
+          "for": 66,
+          "against": 32,
+          "abstain": 3
+        },
+        "governmentNumber": 6,
+        "person": "sharett"
+      },
+      {
+        "date": "1955-06-29",
+        "type": "mandate-given",
+        "textEn": "The President tasked Sharett with forming a replacement government.",
+        "textHe": "הנשיא הטיל על שרת להרכיב ממשלה חדשה.",
+        "cites": [
+          {
+            "source": "presentation-gov6",
+            "quote": "הצהרים הזמינני והטיל עלי את המשימה להרכיב את הממשלה החדשה , קיבלתי עלי משימה זו והשגתי הסכמתם של כל חברי הממשלה הקודמת , שאליהם פניתי , להמשיך בשירותם וכן את הסכמת סיעותיהם לתמוך בממשלה החדשה , המורכבת מסיעות מפלגת פועלי ארץ ישראל , המזרחי והפועל המזרחי והמפלגה הפרוגרסיבית . הנני מוסר את ההודעה על התמורה שחלה מתוך צער רב אבל גם מתוך הכרה עמוקה כי בנסיבות שנוצרו לא היה כנוס ממנה ."
+          }
+        ],
+        "person": "sharett"
+      }
+    ],
+    "conflicts": [
+      {
+        "about": "Fourth government confidence vote and declarations",
+        "values": [
+          {
+            "value": "23 December 1952: confidence vote, sitting 158",
+            "source": "plenum-gov4"
+          },
+          {
+            "value": "24 December 1952: ministerial declarations, sitting 159",
+            "source": "oath-gov4"
+          }
+        ],
+        "resolution": "Both dates describe separate procedural steps; the change entry uses the conventional government start (declarations), while formation records the confidence vote."
+      }
+    ]
+  },
+  "government": {
+    "number": 3,
+    "nameEn": "Government 3 (David Ben-Gurion)",
+    "nameHe": "הממשלה ה־3 (דוד בן־גוריון)",
+    "startDate": "1951-10-08",
+    "endDate": "1952-12-24",
+    "primeMinisters": [
+      {
+        "nameEn": "David Ben-Gurion",
+        "nameHe": "דוד בן־גוריון",
+        "letters": "א",
+        "from": "1951-10-08",
+        "to": "1952-12-24"
+      }
+    ],
+    "firstGovernmentSchemeRef": "first-government",
+    "coalition": [
+      {
+        "letters": "א",
+        "seats": 45
+      },
+      {
+        "letters": "ה",
+        "seats": 8
+      },
+      {
+        "letters": "ב",
+        "seats": 2
+      },
+      {
+        "letters": "ג",
+        "seats": 3
+      },
+      {
+        "letters": "ד",
+        "seats": 2
+      },
+      {
+        "letters": "יד",
+        "seats": 3
+      },
+      {
+        "letters": "נ",
+        "seats": 1
+      },
+      {
+        "letters": "ע",
+        "seats": 1
+      }
+    ],
+    "coalitionSeats": 65,
+    "coalitionSeatsNote": "Election-list seat totals, including support-only lists; not the confidence-vote tally. Reuses the existing overlay: ministerial factions are official; support-only membership is labelled secondary. Later government changes are listed separately.",
+    "cites": [
+      {
+        "source": "coalition-1",
+        "quote": "Government 3 sworn in 1951-10-08. Ministers at swearing-in by their Knesset faction (project tabulation of the OData records): {'מפלגת פועלי ארץ-ישראל': 8, 'הפועל המזרחי': 2, 'NON-MK': 1, 'מזרחי': 1, 'אגודת ישראל': 1}"
+      },
+      {
+        "source": "coalition-2",
+        "quote": "קואליציה: מפא\"י, הפועל המזרחי, רשימה דמוקרטית לערביי ישראל, פועלי אגודת ישראל, המזרחי, קידמה ועבודה, חקלאות ופיתוח | אופוזיציה: הציונים הכלליים, מפ\"ם, חרות, מק\"י, המפלגה הפרוגרסיבית, ספרדים ועדות מזרח, התאחדות התימנים בישראל"
+      }
+    ],
+    "changes": [
+      {
+        "date": "1952-12-19",
+        "textEn": "Ben-Gurion submitted the government’s resignation.",
+        "textHe": "בן־גוריון הגיש את התפטרות הממשלה.",
+        "cites": [
+          {
+            "source": "presentation-gov4",
+            "quote": "אדוני היושב - ראש, חברי - הכנסת. ביום ו ' שעבר הגשתי לנשיא התפטרות ההמשלה, ואתמול הטיל עלי נשיא המדינה להרכיב ממשלה חדשה."
+          }
+        ]
+      },
+      {
+        "date": "1952-12-24",
+        "number": 4,
+        "nameEn": "Government 4 (David Ben-Gurion)",
+        "nameHe": "הממשלה ה־4 (דוד בן־גוריון)",
+        "textEn": "Government 4, headed by David Ben-Gurion, succeeded government 3.",
+        "textHe": "הממשלה ה־4 בראשות דוד בן־גוריון החליפה את הממשלה ה־3.",
+        "cites": [
+          {
+            "source": "plenum-gov4",
+            "quote": "הצבעה ■ בעד הצעת סיעות הקואליציה לאשר את קתיהיסוד של הממשלה ולהביע לה 63 קולות אמון 24 קולות נגד הגעת סיעות הקואליציה נתקבלה. שפרינצק: היו\"ר י. על ב63 קולות נגד 24 הובע אמון לממשלה שהוצגה ידי ראשהממשלה דוד בןגוריון ואושרו קוויהיסוד של תכ ניתה. הוקמה ממשלת ישראל חדשה. הרא הנני לברך את הממשלה החדשה והישגי. החשוב"
+          },
+          {
+            "source": "oath-gov4",
+            "quote": "המאהוחמישיםותשע של הכנסת השניה הישיבה תשי\"ג )24 דצמבר 1952( יום רביעי, ו' טבת בנין הכנסת, שעה 11.08 ירושלים, הצהרת אמונים של חברי הממשלה א. היו\"ר י. שפרינצק: אני מתכבד לפתוח את ישיבת הכנסת המאהוחמישים לתשע. סעיף 11 לחוק המעבר, סעיףקטן )א( אומר: \"הממשלה, מיד לפני הכנסת ותיכון לאחר שתקבל תתייצב משהורכבה ימים שבעה \"תוך אומר: סעיףקטן )ב( אמון\"; הבעת בה ראש ויחתמו אמון יקראו הבעת מיום שהממשלה קיבלה אני הממשלה והשרים האחרים בפני הכנסת הצהרה זו: ולחו למדינתישראל כחברהממשלה לשמור אמונים מתחייב החלטות הכנסת\". את ולקיים קיה, ישראל לממשלת הנבחרים את מזמין בהתאם לזה אני"
+          },
+          {
+            "source": "presentation-gov5",
+            "quote": "הממשלה שיש לי הכבוד להציג לפני הבית נתמכת על - ידי ארבע מחמש הסיעות שהיוו את הקואליציה הקודמת : מפלגת פועלי ארץ - ישראל , הציונים הכלליים , הפועל המזרחי והמזרחי , ארבע מפלגות אלו הסכימו מחדש לשאת שכם אחד באחריות לשלטון ובעול בנין המדינה . ברית זו של אמון הדדי ומאמץ משותף מושתתה א פוא על תמיכתו של רוב יציב בכנסת . --- PDF page 1 --- הנני לציין כי המפלגה הפרוגרסיבית לא ראתה לעת עתה אפשרות להיכנס לקואליציה המחודשת . כל הסיעות המשתתפות בממשלה מצפות עדיין להחלטת המפלגה הפרוגרסיבית לחזור לקואליציה הממשלתית . בשם חברי בממשלה הקודמת והמיועדת , הנני להביע צער מיוחד על היעדרו מתוך סוד"
+          }
+        ],
+        "coalition": [
+          {
+            "letters": "א",
+            "seats": 45
+          },
+          {
+            "letters": "צ",
+            "seats": 20
+          },
+          {
+            "letters": "ה",
+            "seats": 8
+          },
+          {
+            "letters": "ב",
+            "seats": 2
+          },
+          {
+            "letters": "פ",
+            "seats": 4
+          },
+          {
+            "letters": "יד",
+            "seats": 3
+          },
+          {
+            "letters": "נ",
+            "seats": 1
+          },
+          {
+            "letters": "ע",
+            "seats": 1
+          }
+        ],
+        "coalitionSeats": 84,
+        "coalitionSeatsNote": "Election-list seat sum, including affiliated Arab support lists from the existing overlay. Not the vote tally. Snapshot after the religious ministers joined on 24 December, not the initial 23 December confidence vote."
+      },
+      {
+        "date": "1954-01-26",
+        "number": 5,
+        "nameEn": "Government 5 (Moshe Sharett)",
+        "nameHe": "הממשלה ה־5 (משה שרת)",
+        "textEn": "Sharett succeeded Ben-Gurion after Ben-Gurion’s resignation.",
+        "textHe": "שרת החליף את בן־גוריון לאחר התפטרותו של בן־גוריון.",
+        "cites": [
+          {
+            "source": "plenum-gov5",
+            "quote": "הצבעה 7 5 לממשלה בעד ההצעה להביע אמון 23 איאמון לממשלה בעד ההצעה להביע 5 נמנעים היו\"ר ז. שפר: בזה החליטה הכנסת על הבעת אמון לממשלה. השרים של אמונים הצהרת .4 היו\"ר ז. שפר:"
+          },
+          {
+            "source": "presentation-gov5",
+            "quote": "הצורך בהקמת ממשלה חדשה נבע מהתפטרות הממשלה הקודמת שבאה בעקבות התפטרותו האישית של ראש - הממשלה . זו הפעם הראשונה מוקמת ממשלה במדינתנו אשר דוד בן - גוריון אינו עומד בראשה ואינו נמנה עם חבריה . המוני אזרחי המדינה שמעו בצער עמוק ובדאגה ח מורה על"
+          },
+          {
+            "source": "presentation-gov5",
+            "quote": "הממשלה שיש לי הכבוד להציג לפני הבית נתמכת על - ידי ארבע מחמש הסיעות שהיוו את הקואליציה הקודמת : מפלגת פועלי ארץ - ישראל , הציונים הכלליים , הפועל המזרחי והמזרחי , ארבע מפלגות אלו הסכימו מחדש לשאת שכם אחד באחריות לשלטון ובעול בנין המדינה . ברית זו של אמון הדדי ומאמץ משותף מושתתה א פוא על תמיכתו של רוב יציב בכנסת . --- PDF page 1 --- הנני לציין כי המפלגה הפרוגרסיבית לא ראתה לעת עתה אפשרות להיכנס לקואליציה המחודשת . כל הסיעות המשתתפות בממשלה מצפות עדיין להחלטת המפלגה הפרוגרסיבית לחזור לקואליציה הממשלתית . בשם חברי בממשלה הקודמת והמיועדת , הנני להביע צער מיוחד על היעדרו מתוך סוד"
+          }
+        ],
+        "coalition": [
+          {
+            "letters": "א",
+            "seats": 45
+          },
+          {
+            "letters": "צ",
+            "seats": 20
+          },
+          {
+            "letters": "ה",
+            "seats": 8
+          },
+          {
+            "letters": "ב",
+            "seats": 2
+          },
+          {
+            "letters": "יד",
+            "seats": 3
+          },
+          {
+            "letters": "נ",
+            "seats": 1
+          },
+          {
+            "letters": "ע",
+            "seats": 1
+          }
+        ],
+        "coalitionSeats": 80,
+        "coalitionSeatsNote": "Election-list seat sum, including affiliated Arab support lists from the existing overlay. Not the vote tally."
+      },
+      {
+        "date": "1955-06-29",
+        "number": 6,
+        "nameEn": "Government 6 (Moshe Sharett)",
+        "nameHe": "הממשלה ה־6 (משה שרת)",
+        "textEn": "Government 6, headed by Moshe Sharett, succeeded government 5.",
+        "textHe": "הממשלה ה־6 בראשות משה שרת החליפה את הממשלה ה־5.",
+        "cites": [
+          {
+            "source": "plenum-gov6",
+            "quote": "הצבעה בעד הבעת אמון לממשלה שהורכבה והוצגה 66 חברהכנסת משה שרת עלידי 32 נגד הבעת אמון לממשלה 3 נמנעו היו\"ר י. שפרינצק: שלושיםושנים אישרה הכנסת בשישיםוששה קולות נגד חברהכנסת עלידי את הממשלה של מדינת ישראל, שהוצגה שרת. משה הצהרת אמונים של השרים ג."
+          },
+          {
+            "source": "presentation-gov6",
+            "quote": "הצהרים הזמינני והטיל עלי את המשימה להרכיב את הממשלה החדשה , קיבלתי עלי משימה זו והשגתי הסכמתם של כל חברי הממשלה הקודמת , שאליהם פניתי , להמשיך בשירותם וכן את הסכמת סיעותיהם לתמוך בממשלה החדשה , המורכבת מסיעות מפלגת פועלי ארץ ישראל , המזרחי והפועל המזרחי והמפלגה הפרוגרסיבית . הנני מוסר את ההודעה על התמורה שחלה מתוך צער רב אבל גם מתוך הכרה עמוקה כי בנסיבות שנוצרו לא היה כנוס ממנה ."
+          },
+          {
+            "source": "plenum-gov6",
+            "quote": ")התימנים(: שמעון גרידי להו רצוני חבריהכנסת המכובדים. היושבראש, כבוד אמון אצביע בעד וכי על הצטרפותי לקואליציה בזה דיע אני מצורף עוד כי אין מתוף כך יובן המוצעת. לממשלה בזה כי הנני נציג בכנסת. אזכיר הציונים הכלליים לסיעת התאחדות השניה בשם לכנסת מיוחדת שיצאה של רשימה התימנים, המייצגת יהודים דתיים ועובדים החיים מיגיע כפיהם. אידיאו לא בתוקף נסיבות כספיות של הרשימה בזמנה היה עלי להצטרף לסיעת הציונים הכלליים. לוגיות"
+          }
+        ],
+        "coalition": [
+          {
+            "letters": "א",
+            "seats": 45
+          },
+          {
+            "letters": "ה",
+            "seats": 8
+          },
+          {
+            "letters": "ב",
+            "seats": 2
+          },
+          {
+            "letters": "פ",
+            "seats": 4
+          },
+          {
+            "letters": "יד",
+            "seats": 3
+          },
+          {
+            "letters": "נ",
+            "seats": 1
+          },
+          {
+            "letters": "ע",
+            "seats": 1
+          },
+          {
+            "letters": "ל",
+            "seats": 1
+          }
+        ],
+        "coalitionSeats": 65,
+        "coalitionSeatsNote": "Election-list seat sum, including affiliated Arab support lists from the existing overlay. Not the vote tally. The Yemenite representative explicitly announced joining; no additional seat is inferred from the 66 votes for confidence."
+      },
+      {
+        "date": "1955-06-29",
+        "textEn": "Sharett resigned; the President accepted the resignation.",
+        "textHe": "שרת התפטר; הנשיא קיבל את ההתפטרות.",
+        "cites": [
+          {
+            "source": "presentation-gov6",
+            "quote": "לפיכך הודעתי הבוקר בישיבה שלא מן המני י ן של הממשלה על החלטתי להתפטר ובצהרים הגשתי א ת התפטרותי לנשיא המדינה למען תת לו האפשרות , בהתאם לחוק המעבר , להטיל את משימת הרכבת הממשלה על חבר - כנסת שימצאנו ראוי לדבר , תוך תקווה ואמונה כי כתוצאה מנ י סיון חדש זה תקום ממשלה בישראל שתקיים באמונה את עקרונות הפעולה המשותפת והאחריות הקיבוצית . כבוד הנשיא קיבל את ההתפטרות ועל - ידי כך נסתיימה תקופת חייה של הממשלה שהיה לי הכבוד להציגה בפני הכנסת ביום כ\"א בשבט תשי\"ד, 25 בינואר 1954 ."
+          }
+        ]
+      }
+    ],
+    "endDateCites": [
+      {
+        "source": "oath-gov4",
+        "quote": "המאהוחמישיםותשע של הכנסת השניה הישיבה תשי\"ג )24 דצמבר 1952( יום רביעי, ו' טבת בנין הכנסת, שעה 11.08 ירושלים, הצהרת אמונים של חברי הממשלה א. היו\"ר י. שפרינצק: אני מתכבד לפתוח את ישיבת הכנסת המאהוחמישים לתשע. סעיף 11 לחוק המעבר, סעיףקטן )א( אומר: \"הממשלה, מיד לפני הכנסת ותיכון לאחר שתקבל תתייצב משהורכבה ימים שבעה \"תוך אומר: סעיףקטן )ב( אמון\"; הבעת בה ראש ויחתמו אמון יקראו הבעת מיום שהממשלה קיבלה אני הממשלה והשרים האחרים בפני הכנסת הצהרה זו: ולחו למדינתישראל כחברהממשלה לשמור אמונים מתחייב החלטות הכנסת\". את ולקיים קיה, ישראל לממשלת הנבחרים את מזמין בהתאם לזה אני"
+      }
+    ]
+  },
+  "term": {
+    "start": "1951-07-30",
+    "end": "1955-07-26",
+    "inclusionRule": "At least two independent chronologies, including one official or academic; a direct date source is also required.",
+    "chronologies": [
+      "term-history",
+      "idi-next"
+    ],
+    "events": [],
+    "candidatesPending": [
+      {
+        "label": "Ma’ale Akrabim bus attack",
+        "date": "1954-03",
+        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+      },
+      {
+        "label": "Egyptian trial and executions of Israeli agents",
+        "date": "1955-01",
+        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+      },
+      {
+        "label": "Kastner trial",
+        "date": "1955",
+        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+      }
+    ],
+    "endedBy": {
+      "type": "election",
+      "date": "1955-07-26",
+      "nextElection": "k3",
+      "textEn": "The next Knesset election was held on 1955-07-26.",
+      "textHe": "הבחירות לכנסת הבאה נערכו ב־1955-07-26.",
+      "cites": [
+        {
+          "source": "idi-next",
+          "quote": "26.7.1955"
+        }
+      ]
+    }
+  },
+  "issuePolling": {
+    "status": "none",
+    "items": [],
+    "notes": [
+      "No qualifying pre-1969 issue survey was retrieved in the agreed sourcing plan."
+    ]
+  },
+  "gaps": [
+    "Official result-certification date and the first sitting are not transcribed; election dates and seat counts reuse the verified national dataset.",
+    "Reaction statements are not collected.",
+    "Mid-term consultation positions, mandate deadlines and extensions are incomplete unless an explicit step below records them.",
+    "Closing date is the next election, not dissolution day. The governing dissolution/election-date law has not been retrieved; regular versus early termination is not inferred from term length.",
+    "Replacement-coalition snapshots are partial: government 14’s faction splits and current seat counts require a separate audit. Other replacement snapshots use election-list seats with stated support-list limitations.",
+    "Presentation dates can precede approval dates; confidence steps use the full protocol. The exact assignment days not transcribed here remain unknown."
+  ]
+}

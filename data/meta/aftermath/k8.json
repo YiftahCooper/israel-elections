@@ -1,0 +1,462 @@
+{
+  "schemaVersion": 1,
+  "electionId": "k8",
+  "status": "pilot",
+  "reviewedAt": "2026-11-05",
+  "notes": [
+    "Research draft; not wired into the application. Official session records anchor all government approvals. Reused recommendation and first-coalition evidence retains the earlier research limitations.",
+    "The government card describes the first cabinet. Each replacement cabinet has a full-session confidence step and a numbered government.changes entry; available replacement coalition snapshots are attached to that entry.",
+    "New PDF quotations preserve the extracted text order (including OCR errors); whitespace is collapsed. Full-session sources identify the sitting; source excerpts are recoverable from the public PDF. Existing coalition OData quotes are labelled project tabulations in the source text, not purported verbatim minister lists."
+  ],
+  "sources": {
+    "plenum-gov16": {
+      "url": "https://fs.knesset.gov.il/8/Plenum/8_ptm_253620.pdf",
+      "publisher": "Knesset, Knesset 8, sitting 21, 1974-03-10 (full plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "plenum-gov17": {
+      "url": "https://fs.knesset.gov.il/8/Plenum/8_ptm_253635.pdf",
+      "publisher": "Knesset, Knesset 8, sitting 53, 1974-06-03 (full plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-1": {
+      "url": "https://www.jta.org/archive/official-moves-begun-by-katzir-to-form-new-government",
+      "publisher": "Jewish Telegraphic Agency (JTA) Daily News Bulletin archive",
+      "kind": "secondary",
+      "accessed": "2026-11-05",
+      "note": "Bulletin dated 1974-01-17 (first day of consultations)."
+    },
+    "recommendations-2": {
+      "url": "https://www.jta.org/archive/mrs-meir-accepts-task-of-forming-new-govt-efforts-so-far-deadlocked",
+      "publisher": "Jewish Telegraphic Agency (JTA) Daily News Bulletin archive",
+      "kind": "secondary",
+      "accessed": "2026-11-05",
+      "note": "Bulletin dated 1974-01-31."
+    },
+    "coalition-1": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2016&$format=json",
+      "publisher": "Knesset OData (ParliamentInfo)",
+      "kind": "official",
+      "accessed": "2026-11-04"
+    },
+    "coalition-2": {
+      "url": "https://he.wikipedia.org/wiki/ממשלת_ישראל_השש_עשרה",
+      "publisher": "Hebrew Wikipedia",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "term-history": {
+      "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-eighth-knesset-1973-1977",
+      "publisher": "Knesset, history of the eighth Knesset (credited official text on Jewish Virtual Library)",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Jewish Virtual Library mirror; original https://main.knesset.gov.il/EN/About/History/pages/knessethistory.aspx?kns=8"
+    },
+    "idi-next": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/elections/1977/",
+      "publisher": "Israel Democracy Institute, election chronology",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "ipu-next": {
+      "url": "https://data.ipu.org/election-summary/PDF/ISRAEL_1977_E.PDF",
+      "publisher": "Inter-Parliamentary Union, Chronicle of Parliamentary Elections, Israel 1977",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    }
+  },
+  "results": {
+    "electionDate": "1973-12-31",
+    "officialResultsSourceId": "k8-results-gazette"
+  },
+  "reaction": {
+    "policy": "Only dated institutional steps and attributed statements, all lists or none.",
+    "items": [],
+    "gap": "Not collected."
+  },
+  "recommendationRounds": [
+    {
+      "id": "r1",
+      "date": "1974-01-16",
+      "kind": "consultations",
+      "president": {
+        "nameEn": "Ephraim Katzir",
+        "nameHe": "אפרים קציר"
+      },
+      "nominees": {
+        "meir": {
+          "nameEn": "Golda Meir",
+          "nameHe": "גולדה מאיר"
+        }
+      },
+      "entries": [
+        {
+          "letters": "חל טעם",
+          "seats": 39,
+          "status": "none",
+          "cites": [
+            {
+              "source": "recommendations-1",
+              "quote": "Katzir met for more than 2 1/2 hours with the Labor delegation headed by Knesset member Moshe Baram who reportedly suggested that Premier Golda Meir be entrusted to form a new government. ... Bader told reporters later that he had made no suggestions as to the next Prime Minister because \"this is the task of Labor.\""
+            }
+          ]
+        },
+        {
+          "letters": "אמת",
+          "seats": 51,
+          "status": "recommended",
+          "nominee": "meir",
+          "cites": [
+            {
+              "source": "recommendations-1",
+              "quote": "Katzir met for more than 2 1/2 hours with the Labor delegation headed by Knesset member Moshe Baram who reportedly suggested that Premier Golda Meir be entrusted to form a new government. ... Bader told reporters later that he had made no suggestions as to the next Prime Minister because \"this is the task of Labor.\""
+            }
+          ]
+        },
+        {
+          "letters": "גד",
+          "seats": 5,
+          "status": "unknown"
+        },
+        {
+          "letters": "רצ",
+          "seats": 3,
+          "status": "unknown"
+        },
+        {
+          "letters": "ב",
+          "seats": 10,
+          "status": "unknown"
+        },
+        {
+          "letters": "ו",
+          "seats": 4,
+          "status": "unknown"
+        },
+        {
+          "letters": "לע",
+          "seats": 4,
+          "status": "unknown"
+        },
+        {
+          "letters": "עא",
+          "seats": 1,
+          "status": "unknown"
+        },
+        {
+          "letters": "רא",
+          "seats": 2,
+          "status": "unknown"
+        },
+        {
+          "letters": "קנ",
+          "seats": 1,
+          "status": "unknown"
+        }
+      ],
+      "totals": {
+        "none": 39,
+        "meir": 51,
+        "unknown": 30
+      },
+      "cites": [
+        {
+          "source": "recommendations-1",
+          "quote": "Katzir met for more than 2 1/2 hours with the Labor delegation headed by Knesset member Moshe Baram who reportedly suggested that Premier Golda Meir be entrusted to form a new government. ... Bader told reporters later that he had made no suggestions as to the next Prime Minister because \"this is the task of Labor.\""
+        },
+        {
+          "source": "recommendations-2",
+          "quote": "Katzir charged Mrs. Meir with the task of forming a new government after two weeks of consultations with the representatives of the various parties represented in the new Knesset."
+        }
+      ],
+      "notes": [
+        "Reuses docs/research/pm-recommendations-1949-1973.md; consultation conditions are not personal recommendations. Unknown does not mean no recommendation.",
+        "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved."
+      ],
+      "endDate": "1974-01-30",
+      "blocSchemeRef": "pm-recommendations"
+    }
+  ],
+  "formation": {
+    "outcome": "government-formed",
+    "events": [
+      {
+        "date": "1974-01-16",
+        "type": "consultations",
+        "textEn": "President Ephraim Katzir held consultations on government formation.",
+        "textHe": "הנשיא אפרים קציר קיים התייעצויות על הרכבת הממשלה.",
+        "cites": [
+          {
+            "source": "recommendations-1",
+            "quote": "Katzir met for more than 2 1/2 hours with the Labor delegation headed by Knesset member Moshe Baram who reportedly suggested that Premier Golda Meir be entrusted to form a new government. ... Bader told reporters later that he had made no suggestions as to the next Prime Minister because \"this is the task of Labor.\""
+          },
+          {
+            "source": "recommendations-2",
+            "quote": "Katzir charged Mrs. Meir with the task of forming a new government after two weeks of consultations with the representatives of the various parties represented in the new Knesset."
+          }
+        ],
+        "endDate": "1974-01-30"
+      },
+      {
+        "date": "1974-01-30",
+        "type": "mandate-given",
+        "textEn": "The President tasked Golda Meir with forming a government.",
+        "textHe": "הנשיא הטיל על גולדה מאיר להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "plenum-gov16",
+            "quote": "ז' בשבט תשל\"ד 30 בינואר 1974 ובה נאמר: \"יושב לחוקיסוד: לסעיף 13)א( בהתאם הנכבד, הכנסת ראש הממשלה, הריני להודיעך כי לאחר שהתייעצתי עם נציגי סיעות בכנסת הטלתי היום על חברתהכנסת גולדה מאיר את התפקיד להרכיב ממשלה. הואלנא להביא את תוכן לחוק הודעתי זו לידיעת הכנסת, כאמור בסעיף 13)א( קציר. אפרים חתום: פרופסור הממשלה.\" יסוד: קיבלתי את תשל\"ד, באדר ט\"ז מוצאי שבת אמש,"
+          }
+        ],
+        "person": "meir"
+      },
+      {
+        "date": "1974-03-10",
+        "type": "confidence-vote",
+        "textEn": "The Knesset expressed confidence in government 16, headed by Golda Meir, 62–46, with 9 abstentions.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־16 בראשות גולדה מאיר, ברוב של 62 מול 46, עם 9 נמנעים.",
+        "cites": [
+          {
+            "source": "plenum-gov16",
+            "quote": "/ היו\"ר י. ישעיהו: תוצאות ההצבעה: בעד ההצעה להביע אמון לממשלה .9 46; נמנעים 62; נגד נתקבלה. לממשלה אמון להביע ההצעה ז. הצהרת אמונים של חברי הממשלה היו\"ר י. ישעיהו: את ראש הכנסת הביעה אמון לממשלה, ואני מזמין אמונים. להצהיר לדוכן הממשלה לעלות"
+          }
+        ],
+        "votes": {
+          "for": 62,
+          "against": 46,
+          "abstain": 9
+        },
+        "governmentNumber": 16,
+        "person": "meir"
+      },
+      {
+        "date": "1974-06-03",
+        "type": "confidence-vote",
+        "textEn": "The Knesset expressed confidence in government 17, headed by Yitzhak Rabin, 61–51, with 5 abstentions.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־17 בראשות יצחק רבין, ברוב של 61 מול 51, עם 5 נמנעים.",
+        "cites": [
+          {
+            "source": "plenum-gov17",
+            "quote": "הצבעה 61 החדשה לממשלה אמון הבעת בעד 51 נגד 4 ' נמנעים ההצעה להביע אמון לממשלה נתקבלה. אהרן אבוחצירא )חזית דתית לאומית(: מצביע נגד ז ואיננו מי נגד חמישה.( הוא הנמנעים מספר )קריאה: היו\"ר י. ישעיהו: נמנעים ההצבעה: תוצאות את מתקן אני חמישה. מנחם בגין )הליכוד(: בןפורת. חברהכנסת תשכח את נא אל היו\"ר י. ישעיהו: הסתכלתי לצד זה ולא ראיתי."
+          }
+        ],
+        "votes": {
+          "for": 61,
+          "against": 51,
+          "abstain": 5
+        },
+        "governmentNumber": 17,
+        "person": "rabin"
+      }
+    ],
+    "conflicts": [
+      {
+        "about": "Abstentions in the 17th government confidence vote",
+        "values": [
+          {
+            "value": "4 in the initial tally",
+            "source": "plenum-gov17"
+          },
+          {
+            "value": "5 after the Speaker’s correction",
+            "source": "plenum-gov17"
+          }
+        ],
+        "resolution": "Use the Speaker’s expressly corrected tally: 61 for, 51 against, 5 abstentions."
+      }
+    ]
+  },
+  "government": {
+    "number": 16,
+    "nameEn": "Government 16 (Golda Meir)",
+    "nameHe": "הממשלה ה־16 (גולדה מאיר)",
+    "startDate": "1974-03-10",
+    "endDate": "1974-06-03",
+    "primeMinisters": [
+      {
+        "nameEn": "Golda Meir",
+        "nameHe": "גולדה מאיר",
+        "letters": "אמת",
+        "from": "1974-03-10",
+        "to": "1974-06-03"
+      }
+    ],
+    "firstGovernmentSchemeRef": "first-government",
+    "coalition": [
+      {
+        "letters": "אמת",
+        "seats": 51
+      },
+      {
+        "letters": "ב",
+        "seats": 10
+      },
+      {
+        "letters": "לע",
+        "seats": 4
+      },
+      {
+        "letters": "רא",
+        "seats": 2
+      },
+      {
+        "letters": "עא",
+        "seats": 1
+      }
+    ],
+    "coalitionSeats": 68,
+    "coalitionSeatsNote": "Election-list seat totals, including support-only lists; not the confidence-vote tally. Reuses the existing overlay: ministerial factions are official; support-only membership is labelled secondary. Later government changes are listed separately.",
+    "cites": [
+      {
+        "source": "coalition-1",
+        "quote": "Government 16 sworn in 1974-03-10. Ministers at swearing-in by their Knesset faction (project tabulation of the OData records): {'מערך': 11, 'מפלגה דתית לאומית': 3, 'ליברלים עצמאיים': 2, 'NON-MK': 6}"
+      },
+      {
+        "source": "coalition-2",
+        "quote": "קואליציה: המערך, מפד\"ל, ליברלים עצמאיים, קידמה ופיתוח, רשימה ערבית{{ש}} לבדואים וכפריים | אופוזיציה: הליכוד, חזית דתית תורתית, רק\"ח, רצ, מוקד"
+      }
+    ],
+    "changes": [
+      {
+        "date": "1974-06-03",
+        "number": 17,
+        "nameEn": "Government 17 (Yitzhak Rabin)",
+        "nameHe": "הממשלה ה־17 (יצחק רבין)",
+        "textEn": "Government 17, headed by Yitzhak Rabin, succeeded government 16.",
+        "textHe": "הממשלה ה־17 בראשות יצחק רבין החליפה את הממשלה ה־16.",
+        "cites": [
+          {
+            "source": "plenum-gov17",
+            "quote": "הצבעה 61 החדשה לממשלה אמון הבעת בעד 51 נגד 4 ' נמנעים ההצעה להביע אמון לממשלה נתקבלה. אהרן אבוחצירא )חזית דתית לאומית(: מצביע נגד ז ואיננו מי נגד חמישה.( הוא הנמנעים מספר )קריאה: היו\"ר י. ישעיהו: נמנעים ההצבעה: תוצאות את מתקן אני חמישה. מנחם בגין )הליכוד(: בןפורת. חברהכנסת תשכח את נא אל היו\"ר י. ישעיהו: הסתכלתי לצד זה ולא ראיתי."
+          },
+          {
+            "source": "plenum-gov17",
+            "quote": "המערך סיעות משתתפות הכנסת לאישור היום מפלגת העבודה, מפ\"ם והרשימות הערביות , המפ האזרח. לזכויות והתנועה העצמאית הליברלית לגה איננו פוסלים שום מפלגה מלהיות שותפה בממשלה"
+          }
+        ],
+        "coalition": [
+          {
+            "letters": "אמת",
+            "seats": 51
+          },
+          {
+            "letters": "לע",
+            "seats": 4
+          },
+          {
+            "letters": "רצ",
+            "seats": 3
+          },
+          {
+            "letters": "רא",
+            "seats": 2
+          },
+          {
+            "letters": "עא",
+            "seats": 1
+          }
+        ],
+        "coalitionSeats": 61,
+        "coalitionSeatsNote": "Seats won by the component lists at this election; not the confidence-vote count. Affiliated Arab support lists retain the first-government overlay’s labelled secondary evidence unless named in the protocol."
+      }
+    ],
+    "endDateCites": [
+      {
+        "source": "plenum-gov17",
+        "quote": "הצבעה 61 החדשה לממשלה אמון הבעת בעד 51 נגד 4 ' נמנעים ההצעה להביע אמון לממשלה נתקבלה. אהרן אבוחצירא )חזית דתית לאומית(: מצביע נגד ז ואיננו מי נגד חמישה.( הוא הנמנעים מספר )קריאה: היו\"ר י. ישעיהו: נמנעים ההצבעה: תוצאות את מתקן אני חמישה. מנחם בגין )הליכוד(: בןפורת. חברהכנסת תשכח את נא אל היו\"ר י. ישעיהו: הסתכלתי לצד זה ולא ראיתי."
+      }
+    ]
+  },
+  "term": {
+    "start": "1973-12-31",
+    "end": "1977-05-17",
+    "inclusionRule": "At least two independent chronologies, including one official or academic; a direct date source is also required.",
+    "chronologies": [
+      "term-history",
+      "idi-next",
+      "ipu-next"
+    ],
+    "events": [
+      {
+        "id": "nrp-departure",
+        "date": "1976-12",
+        "category": "governance",
+        "textEn": "The National Religious Party ministers left Rabin’s government.",
+        "textHe": "שרי המפד״ל עזבו את ממשלת רבין.",
+        "cites": [
+          {
+            "source": "term-history",
+            "quote": "The historical alliance between the Labor Party and the National Religious Party came to an end"
+          },
+          {
+            "source": "ipu-next",
+            "quote": "excluded the three National Religious Party (NRP) members"
+          }
+        ],
+        "confidence": "high"
+      }
+    ],
+    "candidatesPending": [
+      {
+        "label": "Agranat Commission report",
+        "date": "1974-04",
+        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+      },
+      {
+        "label": "Egyptian and Syrian disengagement agreements",
+        "date": "1974",
+        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+      },
+      {
+        "label": "Entebbe hostage rescue",
+        "date": "1976-07",
+        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+      },
+      {
+        "label": "Land Day",
+        "date": "1976-03",
+        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+      },
+      {
+        "label": "UN General Assembly Resolution 3379",
+        "date": "1975-11",
+        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+      }
+    ],
+    "endedBy": {
+      "type": "early-election",
+      "date": "1977-01-05",
+      "nextElection": "k9",
+      "textEn": "The Knesset set the early election for 17 May 1977.",
+      "textHe": "הכנסת קבעה את הבחירות המוקדמות ל־17 במאי 1977.",
+      "cites": [
+        {
+          "source": "ipu-next",
+          "quote": "The May election date was set by the Knesset on January 5, 1977."
+        }
+      ],
+      "nextElectionDate": "1977-05-17"
+    }
+  },
+  "issuePolling": {
+    "status": "pending",
+    "items": [],
+    "notes": [
+      "INES instruments exist, but no eligible published issue-priority topline was retrieved. No percentages calculated from microdata."
+    ],
+    "leads": [
+      "https://socsci4.tau.ac.il/mu2/ines/wp-content/uploads/sites/4/2023/06/1973_1.txt"
+    ]
+  },
+  "gaps": [
+    "Official result-certification date and the first sitting are not transcribed; election dates and seat counts reuse the verified national dataset.",
+    "Reaction statements are not collected.",
+    "Mid-term consultation positions, mandate deadlines and extensions are incomplete unless an explicit step below records them.",
+    "The closing entry uses the IPU account; the original election-date/dissolution law is not transcribed.",
+    "Replacement-coalition snapshots are partial: government 14’s faction splits and current seat counts require a separate audit. Other replacement snapshots use election-list seats with stated support-list limitations.",
+    "Meir’s 1974 extensions, Rabin’s April assignment and May extensions, and the January 1977 uncompleted formation round still need full formal session evidence. Their absence here does not imply they did not occur.",
+    "Presentation dates can precede approval dates; confidence steps use the full protocol. The exact assignment days not transcribed here remain unknown."
+  ]
+}

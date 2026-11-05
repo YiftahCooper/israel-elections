@@ -1,0 +1,477 @@
+{
+  "schemaVersion": 1,
+  "electionId": "k3",
+  "status": "pilot",
+  "reviewedAt": "2026-11-05",
+  "notes": [
+    "Research draft; not wired into the application. Official session records anchor all government approvals. Reused recommendation and first-coalition evidence retains the earlier research limitations.",
+    "The government card describes the first cabinet. Each replacement cabinet has a full-session confidence step and a numbered government.changes entry; available replacement coalition snapshots are attached to that entry.",
+    "New PDF quotations preserve the extracted text order (including OCR errors); whitespace is collapsed. Full-session sources identify the sitting; source excerpts are recoverable from the public PDF. Existing coalition OData quotes are labelled project tabulations in the source text, not purported verbatim minister lists."
+  ],
+  "sources": {
+    "plenum-gov7": {
+      "url": "https://fs.knesset.gov.il/3/Plenum/3_ptm_251311.pdf",
+      "publisher": "Knesset, Knesset 3, sitting 21, 1955-11-03 (full plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "presentation-gov7": {
+      "url": "https://main.knesset.gov.il/mk/government/documents/gov7.pdf",
+      "publisher": "Knesset, government 7 presentation (extract from plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "plenum-gov8": {
+      "url": "https://fs.knesset.gov.il/3/Plenum/3_ptm_251466.pdf",
+      "publisher": "Knesset, Knesset 3, sitting 388, 1958-01-07 (full plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "presentation-gov8": {
+      "url": "https://main.knesset.gov.il/mk/government/documents/gov8.pdf",
+      "publisher": "Knesset, government 8 presentation (extract from plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-jta": {
+      "url": "https://www.jta.org/archive/ben-zvi-ends-talks-on-cabinet-formation-will-summon-ben-gurion",
+      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin (reused recommendation research)",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "coalition-1": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%207&$format=json",
+      "publisher": "Knesset OData (ParliamentInfo)",
+      "kind": "official",
+      "accessed": "2026-11-04"
+    },
+    "coalition-2": {
+      "url": "https://he.wikipedia.org/wiki/ממשלת_ישראל_השביעית",
+      "publisher": "Hebrew Wikipedia",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "term-history": {
+      "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-third-knesset-1955-1959",
+      "publisher": "Knesset, history of the third Knesset (credited official text on Jewish Virtual Library)",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Jewish Virtual Library mirror; original https://main.knesset.gov.il/EN/About/History/pages/knessethistory.aspx?kns=3"
+    },
+    "idi-next": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/elections/1959/",
+      "publisher": "Israel Democracy Institute, election chronology",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "jta-consultations-start": {
+      "url": "https://www.jta.org/archive/israel-president-starts-consultations-on-formation-of-cabinet",
+      "publisher": "Jewish Telegraphic Agency, Daily Bulletin, 17 August 1955",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    }
+  },
+  "results": {
+    "electionDate": "1955-07-26",
+    "officialResultsSourceId": "k3-results-gazette"
+  },
+  "reaction": {
+    "policy": "Only dated institutional steps and attributed statements, all lists or none.",
+    "items": [],
+    "gap": "Not collected."
+  },
+  "recommendationRounds": [
+    {
+      "id": "r1",
+      "date": "1955-08-16",
+      "kind": "consultations",
+      "president": {
+        "nameEn": "Yitzhak Ben-Zvi",
+        "nameHe": "יצחק בן־צבי"
+      },
+      "nominees": {
+        "ben-gurion": {
+          "nameEn": "David Ben-Gurion",
+          "nameHe": "דוד בן־גוריון"
+        }
+      },
+      "entries": [
+        {
+          "letters": "א",
+          "seats": 40,
+          "status": "unknown"
+        },
+        {
+          "letters": "ח",
+          "seats": 15,
+          "status": "unknown"
+        },
+        {
+          "letters": "צ",
+          "seats": 13,
+          "status": "unknown"
+        },
+        {
+          "letters": "ב",
+          "seats": 11,
+          "status": "unknown"
+        },
+        {
+          "letters": "תו",
+          "seats": 10,
+          "status": "unknown"
+        },
+        {
+          "letters": "מ",
+          "seats": 9,
+          "status": "unknown"
+        },
+        {
+          "letters": "גד",
+          "seats": 6,
+          "status": "unknown"
+        },
+        {
+          "letters": "יד",
+          "seats": 2,
+          "status": "unknown"
+        },
+        {
+          "letters": "ק",
+          "seats": 6,
+          "status": "unknown"
+        },
+        {
+          "letters": "נ",
+          "seats": 2,
+          "status": "unknown"
+        },
+        {
+          "letters": "פ",
+          "seats": 5,
+          "status": "unknown"
+        },
+        {
+          "letters": "ע",
+          "seats": 1,
+          "status": "unknown"
+        }
+      ],
+      "totals": {
+        "unknown": 120
+      },
+      "cites": [
+        {
+          "source": "jta-consultations-start",
+          "quote": "They suggested that the representatives of the largest party (Mapai) be asked to form a government."
+        },
+        {
+          "source": "recommendations-jta",
+          "quote": "refused to accept the President's invitation"
+        }
+      ],
+      "notes": [
+        "Reuses docs/research/pm-recommendations-1949-1973.md; consultation conditions are not personal recommendations. Unknown does not mean no recommendation.",
+        "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved.",
+        "Herut refused to attend; the National Religious Front asked that the largest party be tasked without naming a person. Neither is converted into a personal recommendation."
+      ],
+      "endDate": "1955-08-18"
+    }
+  ],
+  "formation": {
+    "outcome": "government-formed",
+    "events": [
+      {
+        "date": "1955-08-16",
+        "type": "consultations",
+        "textEn": "President Yitzhak Ben-Zvi held consultations on government formation.",
+        "textHe": "הנשיא יצחק בן־צבי קיים התייעצויות על הרכבת הממשלה.",
+        "cites": [
+          {
+            "source": "jta-consultations-start",
+            "quote": "They suggested that the representatives of the largest party (Mapai) be asked to form a government."
+          },
+          {
+            "source": "recommendations-jta",
+            "quote": "refused to accept the President's invitation"
+          }
+        ],
+        "endDate": "1955-08-18"
+      },
+      {
+        "date": "1955-08-18",
+        "type": "mandate-given",
+        "textEn": "The President tasked David Ben-Gurion with forming a government.",
+        "textHe": "הנשיא הטיל על דוד בן־גוריון להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "presentation-gov7",
+            "quote": "ביום 18 באוגוסט הטיל עלי הנשיא להרכיב ממשלה , ואחרי שיחות ובירורים עם כל מפלגה לחוד ועם כמה מפלגות בצוותא , השלמתי את מלאכתי ביום 7 באוקטובר , כשהמצאתי לחמש המפלגות , שהסכימו מקודם על קווי - יסוד משותפים , הצעתי הסופית על הרכב הממשלה . הדיון על הרכב"
+          }
+        ],
+        "person": "ben-gurion"
+      },
+      {
+        "date": "1955-11-03",
+        "type": "confidence-vote",
+        "textEn": "The Knesset expressed confidence in government 7, headed by David Ben-Gurion, 73–32, with 3 abstentions.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־7 בראשות דוד בן־גוריון, ברוב של 73 מול 32, עם 3 נמנעים.",
+        "cites": [
+          {
+            "source": "plenum-gov7",
+            "quote": "הצבעה 73 בעד הבעת אמון לממשלה 32 נגד 3 * נמנעו היו\"ר י. שפרינצק: חבר של בזאת בחרה הכנסת בממשלת ישראל בראשותו הכנסת דוד בןגוריון. אני מביע ברכה לממשלה שנבחרה שתצליח בהנהלת ענייני המדינה, ב. דברי שרהחוץ מ. שרת עם סיום כהונתו כראש הממשלה"
+          }
+        ],
+        "votes": {
+          "for": 73,
+          "against": 32,
+          "abstain": 3
+        },
+        "governmentNumber": 7,
+        "person": "ben-gurion"
+      },
+      {
+        "date": "1958-01-01",
+        "type": "mandate-given",
+        "textEn": "The President tasked Ben-Gurion with forming a new government.",
+        "textHe": "הנשיא הטיל על בן־גוריון להרכיב ממשלה חדשה.",
+        "cites": [
+          {
+            "source": "presentation-gov8",
+            "quote": "כשהנשיא הטיל עלי ביום ט׳ בטבת ( 1 בינואר 1958 ) הרכבת ממשלה חד שה , אמרתי לו שאקבל על עצמי תפקיד זה רק אם עד יום ב ' , י \" ד בטבת ( 6 בינואר 1958 ,) יתברר לי בהחלט , כי הסיעות בעלות רוב בכנסת המוכנות להשתתף בממשלה , מתחייבות לשני דברים : לקיים האחריות המשותפת של הממשלה להלכה ולמעשה ולהבטיח שמירה יעילה על סודות הדיונים בממשלה , ביחוד בענ י יני חוץ וב י טחון ."
+          }
+        ],
+        "person": "ben-gurion"
+      },
+      {
+        "date": "1958-01-07",
+        "type": "confidence-vote",
+        "textEn": "The Knesset expressed confidence in government 8, headed by David Ben-Gurion, 76–33.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־8 בראשות דוד בן־גוריון, ברוב של 76 מול 33.",
+        "cites": [
+          {
+            "source": "plenum-gov8",
+            "quote": "ה צ ב ע ה 76 בעד הבעת אמון לממשלה 33 נגד ההצעה להביע אמון לממשלה נתקבלה. ד. הודעה אישית של שר הפנים"
+          }
+        ],
+        "votes": {
+          "for": 76,
+          "against": 33
+        },
+        "governmentNumber": 8,
+        "person": "ben-gurion"
+      }
+    ]
+  },
+  "government": {
+    "number": 7,
+    "nameEn": "Government 7 (David Ben-Gurion)",
+    "nameHe": "הממשלה ה־7 (דוד בן־גוריון)",
+    "startDate": "1955-11-03",
+    "endDate": "1958-01-07",
+    "primeMinisters": [
+      {
+        "nameEn": "David Ben-Gurion",
+        "nameHe": "דוד בן־גוריון",
+        "letters": "א",
+        "from": "1955-11-03",
+        "to": "1958-01-07"
+      }
+    ],
+    "firstGovernmentSchemeRef": "first-government",
+    "coalition": [
+      {
+        "letters": "א",
+        "seats": 40
+      },
+      {
+        "letters": "ב",
+        "seats": 11
+      },
+      {
+        "letters": "תו",
+        "seats": 10
+      },
+      {
+        "letters": "מ",
+        "seats": 9
+      },
+      {
+        "letters": "פ",
+        "seats": 5
+      },
+      {
+        "letters": "יד",
+        "seats": 2
+      },
+      {
+        "letters": "נ",
+        "seats": 2
+      },
+      {
+        "letters": "ע",
+        "seats": 1
+      }
+    ],
+    "coalitionSeats": 80,
+    "coalitionSeatsNote": "Election-list seat totals, including support-only lists; not the confidence-vote tally. Reuses the existing overlay: ministerial factions are official; support-only membership is labelled secondary. Later government changes are listed separately.",
+    "cites": [
+      {
+        "source": "coalition-1",
+        "quote": "Government 7 sworn in 1955-11-03. Ministers at swearing-in by their Knesset faction (project tabulation of the OData records): {'מפלגת פועלי ארץ-ישראל': 8, 'מפלגת פועלים מאוחדת': 2, 'הפועל המזרחי - המזרחי': 2, 'אחדות העבודה - פועלי ציון': 1, 'מפלגה פרוגרסיבית': 1, 'NON-MK': 2}"
+      },
+      {
+        "source": "coalition-2",
+        "quote": "קואליציה: מפא\"י, חזית דתית לאומית, אחדות העבודה-פועלי ציון, מפ\"ם, המפלגה הפרוגרסיבית, רשימה דמוקרטית לערביי ישראל, קידמה ועבודה, חקלאות ופיתוח | אופוזיציה: חרות, הציונים הכלליים, חזית דתית תורתית, מק\"י"
+      }
+    ],
+    "changes": [
+      {
+        "date": "1957-12-31",
+        "textEn": "Ben-Gurion submitted his resignation, which entailed the government’s resignation.",
+        "textHe": "בן־גוריון הגיש את התפטרותו, שמשמעותה הייתה התפטרות הממשלה.",
+        "cites": [
+          {
+            "source": "presentation-gov8",
+            "quote": "אדוני היושב - ראש , חברי הכנסת . לפני שבוע , ביום ח׳ בטבת תשי \" ח , הגשתי לנשיא המדינה התפטרותי מהממשלה , שלפי חוק המעבר פירושה התפטרות הממשלה כולה . מטעמים ממלכתיים מסרתי לנשיא עיקרי הדברים שהביאו לידי התפטרותי , בעל - פה , ורק מקצתם בכתב . ואלה הם דברי"
+          }
+        ]
+      },
+      {
+        "date": "1958-01-07",
+        "number": 8,
+        "nameEn": "Government 8 (David Ben-Gurion)",
+        "nameHe": "הממשלה ה־8 (דוד בן־גוריון)",
+        "textEn": "Government 8, headed by David Ben-Gurion, succeeded government 7.",
+        "textHe": "הממשלה ה־8 בראשות דוד בן־גוריון החליפה את הממשלה ה־7.",
+        "cites": [
+          {
+            "source": "plenum-gov8",
+            "quote": "ה צ ב ע ה 76 בעד הבעת אמון לממשלה 33 נגד ההצעה להביע אמון לממשלה נתקבלה. ד. הודעה אישית של שר הפנים"
+          },
+          {
+            "source": "presentation-gov8",
+            "quote": "העבודה – פועלי ציון , מפלגת הפועלים המאוחדת , המפלגה הפרוגרסיבית , כי הם מסכימים לכונן ממשלה שתתבסס על קווי - היסוד וההסכמים הקואליציוניים של הממשלה הקודמת , שתפעל מתוך שיתוף - פעולה בכל תחומי - העשייה של הממשלה . סעיף ראשון של קווי - היסוד קובע \" האחריות המשותפת של כל חברי הממשלה ושל כל הסיעות המשתתפות בה . האחריות חלה על ת ו כנית פעולה מוסכמת מראש ועל החלטות הממשלה \" . כל הסיעות הנ \" ל מצהירות על נכונותן לקיים הממשלה עד גמר כהונתה ביולי 1959 , או כמה ח ו דשים לאחר כך . למען חיזוק האחריות המשותפת ושמירת הסודיות הסכימו חמש הסיעות לדברים הבאים :"
+          }
+        ],
+        "coalition": [
+          {
+            "letters": "א",
+            "seats": 40
+          },
+          {
+            "letters": "ב",
+            "seats": 11
+          },
+          {
+            "letters": "תו",
+            "seats": 10
+          },
+          {
+            "letters": "מ",
+            "seats": 9
+          },
+          {
+            "letters": "פ",
+            "seats": 5
+          },
+          {
+            "letters": "יד",
+            "seats": 2
+          },
+          {
+            "letters": "נ",
+            "seats": 2
+          },
+          {
+            "letters": "ע",
+            "seats": 1
+          }
+        ],
+        "coalitionSeats": 80,
+        "coalitionSeatsNote": "Seats won by the component lists at this election; not the confidence-vote count. Affiliated Arab support lists retain the first-government overlay’s labelled secondary evidence unless named in the protocol."
+      }
+    ],
+    "endDateCites": [
+      {
+        "source": "plenum-gov8",
+        "quote": "ה צ ב ע ה 76 בעד הבעת אמון לממשלה 33 נגד ההצעה להביע אמון לממשלה נתקבלה. ד. הודעה אישית של שר הפנים"
+      }
+    ]
+  },
+  "term": {
+    "start": "1955-07-26",
+    "end": "1959-11-03",
+    "inclusionRule": "At least two independent chronologies, including one official or academic; a direct date source is also required.",
+    "chronologies": [
+      "term-history",
+      "idi-next"
+    ],
+    "events": [
+      {
+        "id": "sinai",
+        "date": "1956-10-29",
+        "category": "security",
+        "textEn": "The Sinai Campaign began.",
+        "textHe": "מבצע סיני החל.",
+        "cites": [
+          {
+            "source": "term-history",
+            "quote": "which began on 29 October, 1956."
+          },
+          {
+            "source": "idi-next",
+            "quote": "the IDF had been victorious in the Sinai Campaign."
+          }
+        ],
+        "confidence": "high"
+      }
+    ],
+    "candidatesPending": [
+      {
+        "label": "Kafr Qasim killings",
+        "date": "1956-10-29",
+        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+      },
+      {
+        "label": "Wadi Salib protests",
+        "date": "1959-07",
+        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+      },
+      {
+        "label": "Grenade thrown in the Knesset",
+        "date": "1957-10-29",
+        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+      }
+    ],
+    "endedBy": {
+      "type": "election",
+      "date": "1959-11-03",
+      "nextElection": "k4",
+      "textEn": "The next Knesset election was held on 1959-11-03.",
+      "textHe": "הבחירות לכנסת הבאה נערכו ב־1959-11-03.",
+      "cites": [
+        {
+          "source": "idi-next",
+          "quote": "3.11.1959"
+        }
+      ]
+    }
+  },
+  "issuePolling": {
+    "status": "none",
+    "items": [],
+    "notes": [
+      "No qualifying pre-1969 issue survey was retrieved in the agreed sourcing plan."
+    ]
+  },
+  "gaps": [
+    "Official result-certification date and the first sitting are not transcribed; election dates and seat counts reuse the verified national dataset.",
+    "Reaction statements are not collected.",
+    "Mid-term consultation positions, mandate deadlines and extensions are incomplete unless an explicit step below records them.",
+    "Closing date is the next election, not dissolution day. The governing dissolution/election-date law has not been retrieved; regular versus early termination is not inferred from term length.",
+    "The mirrored term history misdates Wadi Salib and includes an aircraft incident before this election. Those dates were not promoted to included events.",
+    "Replacement-coalition snapshots are partial: government 14’s faction splits and current seat counts require a separate audit. Other replacement snapshots use election-list seats with stated support-list limitations.",
+    "Presentation dates can precede approval dates; confidence steps use the full protocol. The exact assignment days not transcribed here remain unknown."
+  ]
+}

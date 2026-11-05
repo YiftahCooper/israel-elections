@@ -1,0 +1,458 @@
+{
+  "schemaVersion": 1,
+  "electionId": "k6",
+  "status": "pilot",
+  "reviewedAt": "2026-11-05",
+  "notes": [
+    "Research draft; not wired into the application. Official session records anchor all government approvals. Reused recommendation and first-coalition evidence retains the earlier research limitations.",
+    "The government card describes the first cabinet. Each replacement cabinet has a full-session confidence step and a numbered government.changes entry; available replacement coalition snapshots are attached to that entry.",
+    "New PDF quotations preserve the extracted text order (including OCR errors); whitespace is collapsed. Full-session sources identify the sitting; source excerpts are recoverable from the public PDF. Existing coalition OData quotes are labelled project tabulations in the source text, not purported verbatim minister lists."
+  ],
+  "sources": {
+    "plenum-gov13": {
+      "url": "https://fs.knesset.gov.il/6/Plenum/6_ptm_252623.pdf",
+      "publisher": "Knesset, Knesset 6, sitting 21, 1966-01-12 (full plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "presentation-gov13": {
+      "url": "https://main.knesset.gov.il/mk/government/documents/gov13.pdf",
+      "publisher": "Knesset, government 13 presentation (extract from plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "plenum-gov14": {
+      "url": "https://fs.knesset.gov.il/6/Plenum/6_ptm_252808.pdf",
+      "publisher": "Knesset, Knesset 6, sitting 388, 1969-03-17 (full plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "presentation-gov14": {
+      "url": "https://main.knesset.gov.il/mk/government/documents/gov.14.pdf",
+      "publisher": "Knesset, government 14 presentation (extract from plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-jta": {
+      "url": "https://www.jta.org/archive/formation-of-new-cabinet-by-eshkol-proposed-by-opposition-parties",
+      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin (reused recommendation research)",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "coalition-1": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2013&$format=json",
+      "publisher": "Knesset OData (ParliamentInfo)",
+      "kind": "official",
+      "accessed": "2026-11-04"
+    },
+    "coalition-2": {
+      "url": "https://he.wikipedia.org/wiki/ממשלת_ישראל_השלוש_עשרה",
+      "publisher": "Hebrew Wikipedia",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "term-history": {
+      "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-sixth-knesset-1965-1969",
+      "publisher": "Knesset, history of the sixth Knesset (credited official text on Jewish Virtual Library)",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Jewish Virtual Library mirror; original https://main.knesset.gov.il/EN/About/History/pages/knessethistory.aspx?kns=6"
+    },
+    "idi-next": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/elections/1969/",
+      "publisher": "Israel Democracy Institute, election chronology",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "ipu-next": {
+      "url": "https://data.ipu.org/election-summary/PDF/ISRAEL_1969_E.PDF",
+      "publisher": "Inter-Parliamentary Union, Chronicle of Parliamentary Elections, Israel 1969",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    }
+  },
+  "results": {
+    "electionDate": "1965-11-02",
+    "officialResultsSourceId": "k6-results-gazette"
+  },
+  "reaction": {
+    "policy": "Only dated institutional steps and attributed statements, all lists or none.",
+    "items": [],
+    "gap": "Not collected."
+  },
+  "recommendationRounds": [
+    {
+      "id": "r1",
+      "date": "1965-11-24",
+      "kind": "consultations",
+      "president": {
+        "nameEn": "Zalman Shazar",
+        "nameHe": "זלמן שזר"
+      },
+      "nominees": {
+        "eshkol": {
+          "nameEn": "Levi Eshkol",
+          "nameHe": "לוי אשכול"
+        }
+      },
+      "entries": [
+        {
+          "letters": "את",
+          "seats": 45,
+          "status": "unknown"
+        },
+        {
+          "letters": "חל",
+          "seats": 26,
+          "status": "recommended",
+          "nominee": "eshkol",
+          "cites": [
+            {
+              "source": "recommendations-jta",
+              "quote": "he entrust the formation of a new Cabinet to Premier Levi Eshkol."
+            }
+          ]
+        },
+        {
+          "letters": "ב",
+          "seats": 11,
+          "status": "unknown"
+        },
+        {
+          "letters": "כא",
+          "seats": 10,
+          "status": "recommended",
+          "nominee": "eshkol",
+          "cites": [
+            {
+              "source": "recommendations-jta",
+              "quote": "he entrust the formation of a new Cabinet to Premier Levi Eshkol."
+            }
+          ]
+        },
+        {
+          "letters": "מ",
+          "seats": 8,
+          "status": "unknown"
+        },
+        {
+          "letters": "לע",
+          "seats": 5,
+          "status": "unknown"
+        },
+        {
+          "letters": "ג",
+          "seats": 4,
+          "status": "unknown"
+        },
+        {
+          "letters": "ו",
+          "seats": 3,
+          "status": "unknown"
+        },
+        {
+          "letters": "רא",
+          "seats": 2,
+          "status": "unknown"
+        },
+        {
+          "letters": "ד",
+          "seats": 2,
+          "status": "unknown"
+        },
+        {
+          "letters": "יא",
+          "seats": 2,
+          "status": "unknown"
+        },
+        {
+          "letters": "ש",
+          "seats": 1,
+          "status": "unknown"
+        },
+        {
+          "letters": "ק",
+          "seats": 1,
+          "status": "unknown"
+        }
+      ],
+      "totals": {
+        "unknown": 84,
+        "eshkol": 36
+      },
+      "cites": [
+        {
+          "source": "recommendations-jta",
+          "quote": "he entrust the formation of a new Cabinet to Premier Levi Eshkol."
+        }
+      ],
+      "notes": [
+        "Reuses docs/research/pm-recommendations-1949-1973.md; consultation conditions are not personal recommendations. Unknown does not mean no recommendation.",
+        "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved."
+      ],
+      "endDate": "1965-11-26"
+    }
+  ],
+  "formation": {
+    "outcome": "government-formed",
+    "events": [
+      {
+        "date": "1965-11-24",
+        "type": "consultations",
+        "textEn": "President Zalman Shazar held consultations on government formation.",
+        "textHe": "הנשיא זלמן שזר קיים התייעצויות על הרכבת הממשלה.",
+        "cites": [
+          {
+            "source": "recommendations-jta",
+            "quote": "he entrust the formation of a new Cabinet to Premier Levi Eshkol."
+          }
+        ],
+        "endDate": "1965-11-26"
+      },
+      {
+        "date": "1965-11-28",
+        "type": "mandate-given",
+        "textEn": "The President tasked Levi Eshkol with forming a government.",
+        "textHe": "הנשיא הטיל על לוי אשכול להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "presentation-gov13",
+            "quote": "אישי היושב - ראש , כנסת נכבדה . קודם כל אני רוצה להשיב בברכה על ברכה ולהודות ליושב - ראש ה כנסת . ביום ד ' בכסלו תשכ \" ו הטיל עלי י נשיא המדינה את התפקיד להרכיב את הממשלה . ביום א ' בטבת וביום ט \" ו בטבת מסרתי לנשיא דין - וחשבון על מהלך המשא - ומתן לקראת הקמת הממשלה . הנשיא הואיל להאריך את המועד להשלמת התפקיד שהטיל על י י ."
+          }
+        ],
+        "person": "eshkol"
+      },
+      {
+        "date": "1965-12",
+        "type": "extension",
+        "textEn": "The President extended Eshkol’s formation period during negotiations.",
+        "textHe": "הנשיא האריך את פרק הזמן שניתן לאשכול להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "presentation-gov13",
+            "quote": "ה כנסת . ביום ד ' בכסלו תשכ \" ו הטיל עלי י נשיא המדינה את התפקיד להרכיב את הממשלה . ביום א ' בטבת וביום ט \" ו בטבת מסרתי לנשיא דין - וחשבון על מהלך המשא - ומתן לקראת הקמת הממשלה . הנשיא הואיל להאריך את המועד להשלמת התפקיד שהטיל על י י ."
+          }
+        ],
+        "person": "eshkol",
+        "endDate": "1966-01",
+        "notes": [
+          "Eshkol reports to the President on 1 and 15 Tevet 5726 and states that time was extended. Exact extension acts, their days and duration are not separately transcribed."
+        ]
+      },
+      {
+        "date": "1966-01-12",
+        "type": "confidence-vote",
+        "textEn": "The Knesset expressed confidence in government 13, headed by Levi Eshkol, 71–41.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־13 בראשות לוי אשכול, ברוב של 71 מול 41.",
+        "cites": [
+          {
+            "source": "plenum-gov13",
+            "quote": "אני מעמיד להצבעה את ההצעה להביע אמון לממשלה. הצבעה 71 בער הבעת אמון לממשלה 41 נגד היו\"ר ק. לוז: ברא ברוב של 71 נגד 41 הביעה הכנסת אמון לממשלה, שותו של לוי אשכול. אני מברך את הממשלה ומאחל לה הצלחה בניהול עניני"
+          }
+        ],
+        "votes": {
+          "for": 71,
+          "against": 41
+        },
+        "governmentNumber": 13,
+        "person": "eshkol"
+      },
+      {
+        "date": "1969-03-11",
+        "type": "mandate-given",
+        "textEn": "The President tasked Golda Meir with forming a government.",
+        "textHe": "הנשיא הטיל על גולדה מאיר להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "plenum-gov14",
+            "quote": "יושבראש הכנסת, ביום כ\"א באדר תשכ\"ט11 במארס 1969 הטיל עלי כבוד נשיא המדינה את התפקיד להרכיב ממשלה. הממ בהתאם להוראות סעיף 13 )ב( לחוק יסוד: ממשלה. שלה הנני מתכבדת בזה להודיע כי הרכבתי"
+          }
+        ],
+        "person": "meir"
+      },
+      {
+        "date": "1969-03-17",
+        "type": "confidence-vote",
+        "textEn": "The Knesset expressed confidence in government 14, headed by Golda Meir, 84–12, with 1 abstentions.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־14 בראשות גולדה מאיר, ברוב של 84 מול 12, עם 1 נמנעים.",
+        "cites": [
+          {
+            "source": "plenum-gov14",
+            "quote": "להביע לה אמון. הצבעה בעד ההצעה להביע אמון 84 לממשלה המיועדת 12 נגד ו נמנע ההצעה להביע אמון לממשלה המיועדת נתקבלה. היו\"ר ק. לוז: את מברך אני לממשלה. הכנסת אמון הובע"
+          }
+        ],
+        "votes": {
+          "for": 84,
+          "against": 12,
+          "abstain": 1
+        },
+        "governmentNumber": 14,
+        "person": "meir"
+      }
+    ]
+  },
+  "government": {
+    "number": 13,
+    "nameEn": "Government 13 (Levi Eshkol)",
+    "nameHe": "הממשלה ה־13 (לוי אשכול)",
+    "startDate": "1966-01-12",
+    "endDate": "1969-03-17",
+    "primeMinisters": [
+      {
+        "nameEn": "Levi Eshkol",
+        "nameHe": "לוי אשכול",
+        "letters": "את",
+        "from": "1966-01-12",
+        "to": "1969-03-17"
+      }
+    ],
+    "firstGovernmentSchemeRef": "first-government",
+    "coalition": [
+      {
+        "letters": "את",
+        "seats": 45
+      },
+      {
+        "letters": "ב",
+        "seats": 11
+      },
+      {
+        "letters": "מ",
+        "seats": 8
+      },
+      {
+        "letters": "לע",
+        "seats": 5
+      },
+      {
+        "letters": "ד",
+        "seats": 2
+      },
+      {
+        "letters": "רא",
+        "seats": 2
+      },
+      {
+        "letters": "יא",
+        "seats": 2
+      }
+    ],
+    "coalitionSeats": 75,
+    "coalitionSeatsNote": "Election-list seat totals, including support-only lists; not the confidence-vote tally. Reuses the existing overlay: ministerial factions are official; support-only membership is labelled secondary. Later government changes are listed separately.",
+    "cites": [
+      {
+        "source": "coalition-1",
+        "quote": "Government 13 sworn in 1966-01-12. Ministers at swearing-in by their Knesset faction (project tabulation of the OData records): {'NON-MK': 4, 'מפלגה דתית לאומית': 3, 'מערך': 11}"
+      },
+      {
+        "source": "coalition-2",
+        "quote": "קואליציה: המערך, מפד\"ל, מפ\"ם, ליברלים עצמאיים, פועלי אגודת ישראל, קידמה ופיתוח, שיתוף ואחווה | אופוזיציה: אגודת ישראל, רק\"ח, העולם הזה-כוח חדש, מק\"י"
+      }
+    ],
+    "changes": [
+      {
+        "date": "1969-03-17",
+        "number": 14,
+        "nameEn": "Government 14 (Golda Meir)",
+        "nameHe": "הממשלה ה־14 (גולדה מאיר)",
+        "textEn": "Meir succeeded Eshkol after Eshkol’s death.",
+        "textHe": "מאיר החליפה את אשכול לאחר מותו של אשכול.",
+        "cites": [
+          {
+            "source": "plenum-gov14",
+            "quote": "להביע לה אמון. הצבעה בעד ההצעה להביע אמון 84 לממשלה המיועדת 12 נגד ו נמנע ההצעה להביע אמון לממשלה המיועדת נתקבלה. היו\"ר ק. לוז: את מברך אני לממשלה. הכנסת אמון הובע"
+          },
+          {
+            "source": "plenum-gov14",
+            "quote": "מי אני של הממשלה לעמוד. אני אף יודעת במקומו עומדת. רק לפני ימים מעטים הביע הבית את רגש הצער לוי על פטירתו בלא עת של ראש הממשלה העמוק הכגסת והעם כולו ביטאו מה לברכה. זכרונו אשכול, היה להם לוי אשכול. לוי אשכול היה אחד מן הקבוצה המופלאה של אנשי העלייה השנייה. הם לא היו ראשונים"
+          }
+        ]
+      }
+    ],
+    "endDateCites": [
+      {
+        "source": "plenum-gov14",
+        "quote": "להביע לה אמון. הצבעה בעד ההצעה להביע אמון 84 לממשלה המיועדת 12 נגד ו נמנע ההצעה להביע אמון לממשלה המיועדת נתקבלה. היו\"ר ק. לוז: את מברך אני לממשלה. הכנסת אמון הובע"
+      }
+    ]
+  },
+  "term": {
+    "start": "1965-11-02",
+    "end": "1969-10-28",
+    "inclusionRule": "At least two independent chronologies, including one official or academic; a direct date source is also required.",
+    "chronologies": [
+      "term-history",
+      "idi-next",
+      "ipu-next"
+    ],
+    "events": [
+      {
+        "id": "six-day-war",
+        "date": "1967",
+        "category": "security",
+        "textEn": "The Six-Day War took place.",
+        "textHe": "מלחמת ששת הימים התרחשה.",
+        "cites": [
+          {
+            "source": "term-history",
+            "quote": "Six Day War"
+          },
+          {
+            "source": "idi-next",
+            "quote": "over two years after the end of the Six Day War"
+          },
+          {
+            "source": "term-history",
+            "quote": "territories occupied by the IDF"
+          }
+        ],
+        "confidence": "high"
+      }
+    ],
+    "candidatesPending": [
+      {
+        "label": "End of military administration over Arab citizens",
+        "date": "1966",
+        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+      },
+      {
+        "label": "First national unity coalition",
+        "date": "1967-06",
+        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+      }
+    ],
+    "endedBy": {
+      "type": "regular-election",
+      "date": "1969-10-28",
+      "nextElection": "k7",
+      "textEn": "The next election took place on 28 October 1969, on normal expiry of the legislature.",
+      "textHe": "הבחירות הבאות נערכו ב־28 באוקטובר 1969 עם תום תקופת כהונת הכנסת.",
+      "cites": [
+        {
+          "source": "idi-next",
+          "quote": "28.10.1969"
+        },
+        {
+          "source": "ipu-next",
+          "quote": "upon the normal expiry of the previous legislature."
+        }
+      ]
+    }
+  },
+  "issuePolling": {
+    "status": "none",
+    "items": [],
+    "notes": [
+      "No qualifying pre-1969 issue survey was retrieved in the agreed sourcing plan."
+    ]
+  },
+  "gaps": [
+    "Official result-certification date and the first sitting are not transcribed; election dates and seat counts reuse the verified national dataset.",
+    "Reaction statements are not collected.",
+    "Mid-term consultation positions, mandate deadlines and extensions are incomplete unless an explicit step below records them.",
+    "The closing entry uses the IPU account; the original election-date/dissolution law is not transcribed.",
+    "Six-Day War is dated only to 1967 here; a direct chronology with the opening and closing days has not been transcribed.",
+    "Replacement-coalition snapshots are partial: government 14’s faction splits and current seat counts require a separate audit. Other replacement snapshots use election-list seats with stated support-list limitations.",
+    "Presentation dates can precede approval dates; confidence steps use the full protocol. The exact assignment days not transcribed here remain unknown."
+  ]
+}
