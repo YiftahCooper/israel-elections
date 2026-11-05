@@ -1,3 +1,4 @@
+import {englishLabel} from '../../data/names.ts';
 import { NumericStepper } from './NumericStepper.tsx';
 import { TransferStep } from './TransferStep.tsx';
 import { applyAction } from '../../model/actions.ts';
@@ -314,7 +315,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
               dispatchMany([...(a ? [a] : []), { type: 'resetList', listId: l.id, keepVotes: true }]);
             }}>{L('Restore list', 'שחזור הרשימה')}</button>}
           </div>
-          {l.sponsorsHe && <p className="tiny muted" lang="he" style={{ margin: '6px 0 0' }}>{L('Submitted by: ', 'הוגשה מטעם: ')}{l.sponsorsHe.replace(/; /g, ' · ')}</p>}
+          {l.sponsorsHe && <p className="tiny muted" lang={lang} style={{ margin: '6px 0 0' }}>{L('Submitted by: ', 'הוגשה מטעם: ')}{(lang === 'he' ? l.sponsorsHe : l.parties?.length ? l.parties.map(p => p.nameEn).join(' · ') : englishLabel(null,l.sponsorsHe)).replace(/; /g, ' · ')}</p>}
         </section></Feature>
 
       <Feature id="allocation">

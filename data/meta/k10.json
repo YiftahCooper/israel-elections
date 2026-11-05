@@ -439,6 +439,126 @@
         }
       ],
       "unassignedRanks": []
+    },
+    {
+      "letters": "הם",
+      "nameHe": "ביטול חוק מס הכנסה",
+      "englishName": {
+        "label": "Bitul Hok Mas Hakhnasa",
+        "kind": "transliteration",
+        "sourceId": "k10-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "זה",
+      "nameHe": "מפלגת האיחוד",
+      "englishName": {
+        "label": "Mifleget HaIhud",
+        "kind": "transliteration",
+        "sourceId": "k10-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "טן",
+      "nameHe": "המועצה להצלת המולדת – רשימה משותפת לכנסת",
+      "englishName": {
+        "label": "HaMoatza LeHatzalat HaMoledet",
+        "kind": "transliteration",
+        "sourceId": "k10-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "יפ",
+      "nameHe": "יעד",
+      "englishName": {
+        "label": "Yaad",
+        "kind": "transliteration",
+        "sourceId": "k10-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "כה",
+      "nameHe": "יוזמה – תנועת העצמאים בישראל",
+      "englishName": {
+        "label": "Yozma",
+        "kind": "transliteration",
+        "sourceId": "k10-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "כט",
+      "nameHe": "עצמאות",
+      "englishName": {
+        "label": "Atzmaut",
+        "kind": "transliteration",
+        "sourceId": "k10-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "נן",
+      "nameHe": "רשימת האחוה הערבית",
+      "englishName": {
+        "label": "Reshimat HaAhva HaAravit",
+        "kind": "transliteration",
+        "sourceId": "k10-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "נכ",
+      "nameHe": "התנועה למען עליה",
+      "englishName": {
+        "label": "HaTnua Lemaan Aliya",
+        "kind": "transliteration",
+        "sourceId": "k10-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "נק",
+      "nameHe": "תנועת האזרחים הערבים בישראל",
+      "englishName": {
+        "label": "Tnuat HaEzrahim HaAravim BeYisrael",
+        "kind": "transliteration",
+        "sourceId": "k10-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ס",
+      "nameHe": "עמך",
+      "englishName": {
+        "label": "Amkha",
+        "kind": "transliteration",
+        "sourceId": "k10-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "פז",
+      "nameHe": "תנועת האוהלים",
+      "englishName": {
+        "label": "Tnuat HaOhalim",
+        "kind": "transliteration",
+        "sourceId": "k10-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "קן",
+      "nameHe": "עוצמה",
+      "englishName": {
+        "label": "Otzma",
+        "kind": "transliteration",
+        "sourceId": "k10-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
     }
   ],
   "blocSchemes": [

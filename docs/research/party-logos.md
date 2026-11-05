@@ -1219,3 +1219,131 @@ The final `PW_PORT=5321 npx playwright test` passed: **43 tests in 21.8 seconds*
 merge, deployment or live-site change. **254 whole-list identities remain without
 logos**; the complete coverage goal is not achieved. The table and reason/search
 records above are the continuation handoff, with unsearched scope explicitly marked.
+
+
+## F9/F13 continuation — 5 November 2026
+
+Principles: a language choice applies to every rendered list/party label, including
+menus, exports and change descriptions. A component party retains its identity when
+split from an alliance. A missing logo is an unresolved research gap, not proof that
+no historical mark existed.
+
+The existing per-election `data/meta/kN.json` lists now carry `englishName` where an
+English label was absent: `label`, `kind: transliteration`, `sourceId` referencing
+the retained Hebrew record, and an explicit unofficial/shortened-label note.
+`applyMeta` carries that provenance into the dataset. Sources exposes the list of
+unofficial names. Existing common-use labels retain their original app-annotation
+status; none was promoted to official English without evidence. Legacy/custom names
+and unmatched sponsor/faction labels have conservative consonantal romanisation;
+unpointed Hebrew cannot establish their vowels. This is labelled in Sources.
+
+Official-English acquisition attempts, with the project User-Agent, serial plain
+HTTP, no bypass or proxies:
+
+- `https://votes25.bechirot.gov.il/en/nationalresults`: HTTP 404.
+- `https://main.knesset.gov.il/EN/mk/apps/election/Pages/ElectionResults.aspx?KnessetID=25`:
+  HTTP 247/challenge body; stopped, no circumvention.
+- `https://www.gov.il/apps/elections/elections-knesset-17/eng/Results/main_results_eng.html`:
+  HTTP 403; stopped. Official-source discovery did not establish usable new English
+  names. These bounded attempts are **not** an exhaustive official-English-source
+  audit for all 26 elections. Official-name upgrades remain open research.
+
+No new external image bytes were accepted. The existing verified logo catalogue is
+reused for exactly matching English party identities (or a matching stable component
+party id). Whole-list fallbacks only use whole-list marks; a constituent mark never
+stands for an alliance. The nearest source-election date wins, with the earlier
+source preferred on a tie; a later source can therefore identify an earlier party,
+without claiming it was used in that earlier campaign. Every reused reference
+carries a visible year, original source URL, rights notice and attribution. Existing
+campaign-specific references are unchanged. Sources explains the year convention.
+No source card is invented and no existing rights notice is changed.
+
+Meretz on the 2026 Democrats list now uses the retained 2013 emblem, visibly labelled
+2013. Its source is [Commons Meretz Logo.svg](https://commons.wikimedia.org/wiki/File:Meretz_Logo.svg),
+a labelled secondary source dating the design to December 2012. Reinspection found
+an August 2022 optimisation entry, which is **not** evidence of a new 2022 campaign
+design. The existing 2013 assignment remains the evidence date. A split into named
+component parties carries their own English label/logo; arbitrary split groups do
+not inherit an alliance emblem. Unresolved component identities use initials with a
+colour border, never bare squares or the alliance's shared ballot letters.
+
+### Coverage (all lists, including nonwinners; component appearances, not unique parties)
+
+| Election | English labels before → after / lists | List logos before → after | Component logos before → after / appearances |
+|---|---:|---:|---:|
+| k1 | 12 → 21 / 21 | 2 → 3 | 0 → 2 / 7 |
+| k2 | 15 → 17 / 17 | 0 → 1 | 0 → 0 / 0 |
+| k3 | 14 → 18 / 18 | 0 → 1 | 0 → 1 / 4 |
+| k4 | 13 → 24 / 24 | 0 → 1 | 0 → 1 / 2 |
+| k5 | 12 → 14 / 14 | 0 → 1 | 0 → 0 / 0 |
+| k6 | 13 → 17 / 17 | 1 → 3 | 0 → 0 / 4 |
+| k7 | 13 → 16 / 16 | 0 → 1 | 0 → 1 / 4 |
+| k8 | 13 → 21 / 21 | 0 → 2 | 0 → 2 / 11 |
+| k9 | 16 → 22 / 22 | 5 → 5 | 0 → 1 / 12 |
+| k10 | 19 → 31 / 31 | 2 → 5 | 0 → 1 / 7 |
+| k11 | 18 → 26 / 26 | 3 → 6 | 0 → 1 / 11 |
+| k12 | 17 → 27 / 27 | 2 → 4 | 0 → 1 / 6 |
+| k13 | 25 → 25 / 25 | 1 → 4 | 0 → 2 / 6 |
+| k14 | 20 → 20 / 20 | 2 → 5 | 0 → 4 / 12 |
+| k15 | 31 → 31 / 31 | 2 → 9 | 0 → 3 / 12 |
+| k16 | 15 → 27 / 27 | 2 → 7 | 0 → 4 / 14 |
+| k17 | 14 → 31 / 31 | 2 → 9 | 0 → 2 / 11 |
+| k18 | 32 → 33 / 33 | 2 → 8 | 0 → 4 / 14 |
+| k19 | 32 → 32 / 32 | 3 → 7 | 0 → 4 / 9 |
+| k20 | 21 → 26 / 26 | 3 → 8 | 0 → 5 / 15 |
+| k21 | 38 → 43 / 43 | 5 → 9 | 1 → 8 / 18 |
+| k22 | 13 → 32 / 32 | 4 → 8 | 3 → 9 / 19 |
+| k23 | 10 → 30 / 30 | 3 → 9 | 3 → 9 / 18 |
+| k24 | 15 → 39 / 39 | 7 → 12 | 2 → 7 / 12 |
+| k25 | 16 → 40 / 40 | 4 → 9 | 1 → 5 / 14 |
+| k26 | 15 → 38 / 38 | 10 → 12 | 10 → 14 / 25 |
+
+Totals: **472/701 → 701/701** English labels, comprising 472 existing app-assigned
+labels and **229 new unofficial shortened transliterations**. Logo refs:
+**65/701 → 149/701** whole lists; **20/267 → 91/267** component appearances. All
+84 + 71 additions are nearest-period reuse, **zero newly verified election-day
+marks**. Remaining gaps: 552 whole lists and 176 component appearances. Their
+complete identity inventory is reproducible with the existing
+`python3 scripts/research/logo-coverage.py` (now reports all-list/name/component
+coverage and missing identities as well as the earlier winner subset). No claim of
+nonexistence or exhaustive new acquisition is made for those gaps.
+
+### Verification and reproduction
+
+`tests/names-coverage.test.ts` checks English labels/provenance in every election,
+legacy fallback and preservation of Meretz's dated logo through a party split.
+`tests/e2e/name-logo-coverage.spec.ts` checks all elections' partner menus and writes
+60 captures for k26/k25/k12/k1/k21 × Hebrew/English × light/dark × 1500/1024/390,
+including the visible Meretz image/year. Captures are disposable under
+`.backup-scratch/feedback-data/after/`; recreate with the production build and
+`PW_PORT=5483 npx playwright test tests/e2e/name-logo-coverage.spec.ts`.
+Shared preview returned ERR_CONNECTION_REFUSED twice before local serving was
+available; the brief's local Playwright fallback was used.
+
+All 26 datasets recursively match the baseline after omitting only `shortEn`,
+`englishName`, `logo` and `builtAt`; family dataset hash pins were refreshed without
+changing research classifications or totals. Current model code with baseline input
+datasets passed all five original differential digests. With the new presentation
+inputs, only the model digest changes; allocation, analysis, rules and validation
+remain unchanged. Dataset rebuilding retains the existing documented omission of
+full polling-station reconciliation when that scratch source is unavailable.
+
+Owner clarification during this pass: Hebrew secondary subtitles beside an English
+name are welcome. The restriction is **Hebrew-only identity in English mode**.
+The existing Hebrew official-name subtitle and original-name editing fields are
+preserved; primary labels, menus and exports use English.
+
+Final checks for this continuation: TypeScript and production build passed;
+**740 unit tests** and **239 full browser tests** passed (two browser workers).
+After the final source-title/sponsor-label rendering adjustment, all **6 targeted
+browser tests** passed again, including CSV output and Sources provenance; the 60
+captures were regenerated. Logo validator: 26 overlays, 127 source cards, 77 assets,
+85 original hosted assignments. Family validator: 9 presets. Repeat dataset build:
+**0 written, 38 unchanged**. Existing large-bundle warning remains advisory.
+
+Outside this workstream: side-panel headers still scroll out of view (F1, owned by
+another worker), including at 1024px; the name/logo fixes do not alter panel layout.
+Locality names still have Hebrew-only paths in English mode (`Panels.tsx` locality
+table and `LocalityMap.tsx` unmapped rows/fallbacks); this task's data scope is list
+and party identity. Candidate personal-name translation is likewise outside this
+list/party task. No new owner preference decision is required.

@@ -1,7 +1,7 @@
 {
  "electionId": "k18",
  "lists": [
-  {
+    {
    "letters": "מחל",
    "nameHe": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה",
    "seats": 27,
@@ -192,7 +192,7 @@
     "electedAssigned": 27
    }
   },
-  {
+    {
    "letters": "ג",
    "nameHe": "יהדות התורה והשבת אגודת ישראל - דגל התורה",
    "seats": 5,
@@ -371,7 +371,7 @@
     "electedAssigned": 5
    }
   },
-  {
+    {
    "letters": "ט",
    "nameHe": "האיחוד הלאומי - תקומה, התקווה, ארץ ישראל שלנו, מולדת",
    "seats": 4,
@@ -495,7 +495,7 @@
     "electedAssigned": 4
    }
   },
-  {
+    {
    "letters": "עם",
    "nameHe": "הרשימה הערבית המאוחדת - התנועה הערבית להתחדשות",
    "seats": 4,
@@ -669,7 +669,7 @@
     "electedAssigned": 4
    }
   },
-  {
+    {
    "letters": "מרצ",
    "nameHe": "התנועה החדשה מרצ",
    "seats": 3,
@@ -863,7 +863,7 @@
     "electedAssigned": 2
    }
   },
-  {
+    {
    "letters": "ה",
    "nameHe": "התנועה הירוקה מימד בראשות הרב מלכיאור וערן בן–ימיני",
    "seats": 0,
@@ -1053,8 +1053,18 @@
     "elected": 0,
     "electedAssigned": 0
    }
-  }
- ],
+  },
+    {
+      "letters": "נר",
+      "nameHe": "לוחמי חברה מאוחדים בראשות יגאל אנקורי",
+      "englishName": {
+        "label": "Lohamei Hevra Meuhadim",
+        "kind": "transliteration",
+        "sourceId": "k18-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    }
+  ],
  "blocSchemes": [
   {
    "id": "first-government",

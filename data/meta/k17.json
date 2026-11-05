@@ -500,6 +500,176 @@
         }
       ],
       "unassignedRanks": []
+    },
+    {
+      "letters": "כ",
+      "nameHe": "חזית יהודית לאומית בראשות ברוך מרזל",
+      "englishName": {
+        "label": "Hazit Yehudit Leumit",
+        "kind": "transliteration",
+        "sourceId": "k17-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "פ",
+      "nameHe": "תפנית בראשות עוזי דיין",
+      "englishName": {
+        "label": "Tafnit",
+        "kind": "transliteration",
+        "sourceId": "k17-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "זה",
+      "nameHe": "עתיד אחד - עתיד טוב לישראל",
+      "englishName": {
+        "label": "Atid Ehad",
+        "kind": "transliteration",
+        "sourceId": "k17-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "חץ",
+      "nameHe": "חץ - תנועה חילונית ציונית בראשות אברהם פורז",
+      "englishName": {
+        "label": "Hetz",
+        "kind": "transliteration",
+        "sourceId": "k17-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "יש",
+      "nameHe": "שינוי - המפלגה האזרחית של ישראל",
+      "englishName": {
+        "label": "Shinui",
+        "kind": "transliteration",
+        "sourceId": "k17-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "קז",
+      "nameHe": "צדק לכל - רע״ש",
+      "englishName": {
+        "label": "Tzedek LaKol",
+        "kind": "transliteration",
+        "sourceId": "k17-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ק",
+      "nameHe": "דע״ם - מפלגת פועלים",
+      "englishName": {
+        "label": "Daam",
+        "kind": "transliteration",
+        "sourceId": "k17-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "נץ",
+      "nameHe": "חרות",
+      "englishName": {
+        "label": "Herut",
+        "kind": "transliteration",
+        "sourceId": "k17-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "פץ",
+      "nameHe": "מפלגה למלחמה בבנקים",
+      "englishName": {
+        "label": "Miflaga LeMilhama BaBankim",
+        "kind": "transliteration",
+        "sourceId": "k17-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ה",
+      "nameHe": "ברית עולם",
+      "englishName": {
+        "label": "Brit Olam",
+        "kind": "transliteration",
+        "sourceId": "k17-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "פז",
+      "nameHe": "לב",
+      "englishName": {
+        "label": "Lev",
+        "kind": "transliteration",
+        "sourceId": "k17-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ז",
+      "nameHe": "לחם",
+      "englishName": {
+        "label": "Lehem",
+        "kind": "transliteration",
+        "sourceId": "k17-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "כץ",
+      "nameHe": "צומת",
+      "englishName": {
+        "label": "Tzomet",
+        "kind": "transliteration",
+        "sourceId": "k17-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "צה",
+      "nameHe": "הציונות החדשה",
+      "englishName": {
+        "label": "HaTzionut HaHadasha",
+        "kind": "transliteration",
+        "sourceId": "k17-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "פכ",
+      "nameHe": "עוז לעניים",
+      "englishName": {
+        "label": "Oz LaAniyim",
+        "kind": "transliteration",
+        "sourceId": "k17-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "קפ",
+      "nameHe": "המפלגה הלאומית הערבית בראשות מוחמד כנעאן",
+      "englishName": {
+        "label": "HaMiflaga HaLeumit HaAravit",
+        "kind": "transliteration",
+        "sourceId": "k17-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ף",
+      "nameHe": "לידר",
+      "englishName": {
+        "label": "Lider",
+        "kind": "transliteration",
+        "sourceId": "k17-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
     }
   ],
   "blocSchemes": [

@@ -1859,6 +1859,46 @@
         }
       ],
       "unassignedRanks": []
+    },
+    {
+      "letters": "עס",
+      "nameHe": "רשימת תנועת לאורה",
+      "englishName": {
+        "label": "Reshimat Tnuat Leora",
+        "kind": "transliteration",
+        "sourceId": "k6-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "כס",
+      "nameHe": "רשימת שלום",
+      "englishName": {
+        "label": "Reshimat Shalom",
+        "kind": "transliteration",
+        "sourceId": "k6-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "נס",
+      "nameHe": "אייבי נתן לכנסת",
+      "englishName": {
+        "label": "Abie Nathan LaKnesset",
+        "kind": "transliteration",
+        "sourceId": "k6-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "סס",
+      "nameHe": "ישראל הצעירה תנועת ספרדים ובני עדות מזרח",
+      "englishName": {
+        "label": "Yisrael HaTzeira",
+        "kind": "transliteration",
+        "sourceId": "k6-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
     }
   ],
   "blocSchemes": [

@@ -1,7 +1,7 @@
 {
  "electionId": "k26",
  "lists": [
-  {
+    {
    "letters": "מחל",
    "nameHe": "הליכוד בהנהגת בנימין נתניהו לראשות הממשלה",
    "seats": 27,
@@ -178,7 +178,7 @@
     "electedAssigned": 27
    }
   },
-  {
+    {
    "letters": "דרך",
    "nameHe": "ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל",
    "seats": 21,
@@ -354,7 +354,7 @@
     "electedAssigned": 21
    }
   },
-  {
+    {
    "letters": "רק",
    "nameHe": "ביחד בראשות נפתלי בנט",
    "seats": 12,
@@ -529,7 +529,7 @@
     "electedAssigned": 12
    }
   },
-  {
+    {
    "letters": "ודם",
    "nameHe": "הרשימה המשותפת",
    "seats": 11,
@@ -721,7 +721,7 @@
     "electedAssigned": 11
    }
   },
-  {
+    {
    "letters": "אמת",
    "nameHe": "הדמוקרטים בראשות יאיר גולן",
    "seats": 8,
@@ -897,7 +897,7 @@
     "electedAssigned": 8
    }
   },
-  {
+    {
    "letters": "ב",
    "nameHe": "עוצמה יהודית בראשות איתמר בן גביר",
    "seats": 7,
@@ -989,7 +989,7 @@
     "electedAssigned": 7
    }
   },
-  {
+    {
    "letters": "ג",
    "nameHe": "יהדות התורה והשבת אגודת ישראל – דגל התורה",
    "seats": 7,
@@ -1181,7 +1181,7 @@
     "electedAssigned": 7
    }
   },
-  {
+    {
    "letters": "ט",
    "nameHe": "הציונות הדתית בראשות בצלאל סמוטריץ' וזהות בראשות משה פייגלין",
    "seats": 6,
@@ -1288,7 +1288,7 @@
     "electedAssigned": 6
    }
   },
-  {
+    {
    "letters": "בי",
    "nameHe": "צומת בית ישראל",
    "seats": 0,
@@ -1355,9 +1355,15 @@
     "assigned": 12,
     "elected": 0,
     "electedAssigned": 0
-   }
-  },
-  {
+   },
+      "englishName": {
+        "label": "Tzomet Beit Yisrael",
+        "kind": "transliteration",
+        "sourceId": "k26-secondary-fyi",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
    "letters": "די",
    "nameHe": "המילואימניקים והכלכלית בראשות יועז הנדל וירון זליכה",
    "seats": 0,
@@ -1450,7 +1456,7 @@
     "electedAssigned": 0
    }
   },
-  {
+    {
    "letters": "ני",
    "nameHe": "נעם לישראל למען עתיד הילדים בראשות אבי מעוז",
    "seats": 0,
@@ -1522,8 +1528,228 @@
     "elected": 0,
     "electedAssigned": 0
    }
-  }
- ],
+  },
+    {
+      "letters": "נר",
+      "nameHe": "צבע שחור – מגן עולם התורה",
+      "englishName": {
+        "label": "Tzeva Shahor",
+        "kind": "transliteration",
+        "sourceId": "k26-list-pages",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "זך",
+      "nameHe": "הציבור החרדי בראשות מוטי ליטנר",
+      "englishName": {
+        "label": "HaTzibur HaHaredi",
+        "kind": "transliteration",
+        "sourceId": "k26-list-pages",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ד",
+      "nameHe": "השותפות לכולם",
+      "englishName": {
+        "label": "HaShutafut LaKulam",
+        "kind": "transliteration",
+        "sourceId": "k26-list-pages",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "צדק",
+      "nameHe": "שרשר לאהבה ואחדות העם",
+      "englishName": {
+        "label": "Sharsher LeAhava VeAhdut HaAm",
+        "kind": "transliteration",
+        "sourceId": "k26-list-pages",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "בד",
+      "nameHe": "מפלגת ביחד נצליח – רשימה משותפת ערבית יהודית בראשות אבי שקד",
+      "englishName": {
+        "label": "BeYahad Natzliah",
+        "kind": "transliteration",
+        "sourceId": "k26-list-pages",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "צף",
+      "nameHe": "הפיראטים – צפים לטוב",
+      "englishName": {
+        "label": "HaPiratim",
+        "kind": "transliteration",
+        "sourceId": "k26-list-pages",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "י",
+      "nameHe": "ישראל תחילה בראשות שרן השכל",
+      "englishName": {
+        "label": "Yisrael Tehila",
+        "kind": "transliteration",
+        "sourceId": "k26-list-pages",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "קך",
+      "nameHe": "סדר-חדש לכינון חוקה, להפרדת רשויות ולבחירות אישיות",
+      "englishName": {
+        "label": "Seder Hadash",
+        "kind": "transliteration",
+        "sourceId": "k26-list-pages",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "פה",
+      "nameHe": "אני ואתה מפלגת העם הישראלית",
+      "englishName": {
+        "label": "Ani VeAta",
+        "kind": "transliteration",
+        "sourceId": "k26-list-pages",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "קץ",
+      "nameHe": "משפט צדק",
+      "englishName": {
+        "label": "Mishpat Tzedek",
+        "kind": "transliteration",
+        "sourceId": "k26-list-pages",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "נקי",
+      "nameHe": "התיקון לשיטת הבחירות והממשל",
+      "englishName": {
+        "label": "HaTikun LeShitat HaBhirot VeHaMimshal",
+        "kind": "transliteration",
+        "sourceId": "k26-list-pages",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "בקר",
+      "nameHe": "אורות השחר בראשות ניסים לוק",
+      "englishName": {
+        "label": "Orot HaShahar",
+        "kind": "transliteration",
+        "sourceId": "k26-list-pages",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "קה",
+      "nameHe": "קול הנשים",
+      "englishName": {
+        "label": "Kol HaNashim",
+        "kind": "transliteration",
+        "sourceId": "k26-list-pages",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "רץ",
+      "nameHe": "הקהל – מפלגה כלל חרדית שנציגיה נבחרים על ידי הציבור בראשות הרב שלמה אלבוים",
+      "englishName": {
+        "label": "HaKahal",
+        "kind": "transliteration",
+        "sourceId": "k26-list-pages",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ק",
+      "nameHe": "דרך חזון ותקומה",
+      "englishName": {
+        "label": "Derekh Hazon UTkuma",
+        "kind": "transliteration",
+        "sourceId": "k26-list-pages",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "נף",
+      "nameHe": "שמע בראשות נפתלי גולדמן",
+      "englishName": {
+        "label": "Shma",
+        "kind": "transliteration",
+        "sourceId": "k26-list-pages",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ז",
+      "nameHe": "בטח – בטחון חברתי בראשות סמיון גרפמן",
+      "englishName": {
+        "label": "Betah – Bitahon Hevrati",
+        "kind": "transliteration",
+        "sourceId": "k26-list-pages",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "נץ",
+      "nameHe": "ביטחון אישי",
+      "englishName": {
+        "label": "Bitahon Ishi",
+        "kind": "transliteration",
+        "sourceId": "k26-list-pages",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "יק",
+      "nameHe": "גה\"ת – גוש התנ\"כי",
+      "englishName": {
+        "label": "Gush HaTanakhi",
+        "kind": "transliteration",
+        "sourceId": "k26-list-pages",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ה",
+      "nameHe": "גן עדן בראשות ישוע ישראל בן דוד",
+      "englishName": {
+        "label": "Gan Eden",
+        "kind": "transliteration",
+        "sourceId": "k26-list-pages",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "זץ",
+      "nameHe": "ברית עולם לגאולת ישראל",
+      "englishName": {
+        "label": "Brit Olam LeGeulat Yisrael",
+        "kind": "transliteration",
+        "sourceId": "k26-list-pages",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "צבי",
+      "nameHe": "תנועת אחי תנועתו של הרב יורם אברג'ל זצ\"ל",
+      "englishName": {
+        "label": "Tnuat Ahi",
+        "kind": "transliteration",
+        "sourceId": "k26-list-pages",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    }
+  ],
  "blocSchemes": [
   {
    "id": "pre-election-blocs",

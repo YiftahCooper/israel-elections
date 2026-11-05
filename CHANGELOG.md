@@ -2,6 +2,8 @@
 
 ## 5 November 2026 — release review
 
+- Complete English list labels with sourced, explicitly unofficial transliterations where needed; localise menus, exports and identity captions. Show year-labelled nearest-period logos, preserve component logos through splits, and replace bare party squares with monograms.
+
 - Keep long edited bloc names and official list names readable on phones, restore contrast for Compare counts, and show family scaling counts once beside their strips.
 - Prevent map zoom completion from accessing a destroyed pane after tool navigation.
 

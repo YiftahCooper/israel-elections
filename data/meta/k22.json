@@ -1,7 +1,7 @@
 {
  "electionId": "k22",
  "lists": [
-  {
+    {
    "letters": "פה",
    "nameHe": "כחול לבן בראשות בני גנץ ויאיר לפיד",
    "seats": 33,
@@ -195,7 +195,7 @@
     "electedAssigned": 33
    }
   },
-  {
+    {
    "letters": "מחל",
    "nameHe": "הליכוד בהנהגת בנימין נתניהו לראשות הממשלה",
    "seats": 32,
@@ -372,7 +372,7 @@
     "electedAssigned": 32
    }
   },
-  {
+    {
    "letters": "ודעם",
    "nameHe": "הרשימה המשותפת חד\"ש, רע\"ם, תע\"ל, בל\"ד",
    "seats": 13,
@@ -583,7 +583,7 @@
     "electedAssigned": 13
    }
   },
-  {
+    {
    "letters": "ג",
    "nameHe": "יהדות התורה והשבת אגודת ישראל - דגל התורה",
    "seats": 7,
@@ -760,7 +760,7 @@
     "electedAssigned": 7
    }
   },
-  {
+    {
    "letters": "טב",
    "nameHe": "ימינה בראשות איילת שקד הבית היהודי - האיחוד הלאומי - הימין החדש",
    "seats": 7,
@@ -875,7 +875,7 @@
     "electedAssigned": 7
    }
   },
-  {
+    {
    "letters": "אמת",
    "nameHe": "העבודה - גשר בראשות עמיר פרץ ואורלי לוי אבקסיס",
    "seats": 6,
@@ -1052,7 +1052,7 @@
     "electedAssigned": 6
    }
   },
-  {
+    {
    "letters": "מרצ",
    "nameHe": "המחנה הדמוקרטי בהנהגת הורביץ, שפיר וברק",
    "seats": 5,
@@ -1245,8 +1245,198 @@
     "elected": 5,
     "electedAssigned": 5
    }
-  }
- ],
+  },
+    {
+      "letters": "כי",
+      "nameHe": "האחדות העממית - אלחודה אלשעביה בראשות פרופ' אסעד גאנם",
+      "englishName": {
+        "label": "HaAhdut HaAmamit – Al Wahda Al Shaabiya",
+        "kind": "transliteration",
+        "sourceId": "k22-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "יז",
+      "nameHe": "אדום לבן - לגליזציה לקנביס, שוויון לאתיופים, ערבים ומקופחים",
+      "englishName": {
+        "label": "Adom Lavan",
+        "kind": "transliteration",
+        "sourceId": "k22-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "צ",
+      "nameHe": "צדק בראשות אבי ילאו",
+      "englishName": {
+        "label": "Tzedek",
+        "kind": "transliteration",
+        "sourceId": "k22-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "רק",
+      "nameHe": "רון קובי - הימין החילוני נלחמים בכפייה החרדית",
+      "englishName": {
+        "label": "Ron Kobi – HaYamin HaHiloni",
+        "kind": "transliteration",
+        "sourceId": "k22-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "נך",
+      "nameHe": "כבוד ושוויון",
+      "englishName": {
+        "label": "Kavod VeShivyon",
+        "kind": "transliteration",
+        "sourceId": "k22-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ק",
+      "nameHe": "זכויותינו בקולנו - לחיים בכבוד",
+      "englishName": {
+        "label": "Zkhuyotenu BeKolenu",
+        "kind": "transliteration",
+        "sourceId": "k22-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ףז",
+      "nameHe": "הפיראטים - כי כולנו באותה סירה והכל אותו שייט",
+      "englishName": {
+        "label": "HaPiratim",
+        "kind": "transliteration",
+        "sourceId": "k22-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ז",
+      "nameHe": "עוצמה כלכלית קולם של העסקים בישראל",
+      "englishName": {
+        "label": "Otzma Kalkalit",
+        "kind": "transliteration",
+        "sourceId": "k22-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "נ",
+      "nameHe": "מתקדמת",
+      "englishName": {
+        "label": "Mitkademet",
+        "kind": "transliteration",
+        "sourceId": "k22-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "קץ",
+      "nameHe": "קמ\"ה - קידום מעמד הפרט",
+      "englishName": {
+        "label": "Kama – Kidum Maamad HaPrat",
+        "kind": "transliteration",
+        "sourceId": "k22-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "קך",
+      "nameHe": "סדר חדש - לשינוי שיטת הבחירות",
+      "englishName": {
+        "label": "Seder Hadash",
+        "kind": "transliteration",
+        "sourceId": "k22-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "זכ",
+      "nameHe": "מפלגת הדמוקראטורה",
+      "englishName": {
+        "label": "Mifleget HaDemokratura",
+        "kind": "transliteration",
+        "sourceId": "k22-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "צן",
+      "nameHe": "צפון",
+      "englishName": {
+        "label": "Tzafon",
+        "kind": "transliteration",
+        "sourceId": "k22-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ינ",
+      "nameHe": "התנועה הנוצרית הליברלית",
+      "englishName": {
+        "label": "HaTnua HaNotzrit HaLiberalit",
+        "kind": "transliteration",
+        "sourceId": "k22-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ץ",
+      "nameHe": "דעם - כלכלה ירוקה מדינה אחת",
+      "englishName": {
+        "label": "Daam",
+        "kind": "transliteration",
+        "sourceId": "k22-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "יף",
+      "nameHe": "כבוד האדם",
+      "englishName": {
+        "label": "Kvod HaAdam",
+        "kind": "transliteration",
+        "sourceId": "k22-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "יק",
+      "nameHe": "מפלגת הגוש התנ\"כי",
+      "englishName": {
+        "label": "Mifleget HaGush HaTanakhi",
+        "kind": "transliteration",
+        "sourceId": "k22-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "י",
+      "nameHe": "מנהיגות חברתית",
+      "englishName": {
+        "label": "Manhigut Hevratit",
+        "kind": "transliteration",
+        "sourceId": "k22-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "נץ",
+      "nameHe": "כל ישראל אחים לשוויון חברתי",
+      "englishName": {
+        "label": "Kol Yisrael Ahim LeShivyon Hevrati",
+        "kind": "transliteration",
+        "sourceId": "k22-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    }
+  ],
  "blocSchemes": [
   {
    "id": "pm-recommendations",

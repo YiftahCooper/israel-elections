@@ -460,6 +460,126 @@
         }
       ],
       "unassignedRanks": []
+    },
+    {
+      "letters": "נץ",
+      "nameHe": "חרות",
+      "englishName": {
+        "label": "Herut",
+        "kind": "transliteration",
+        "sourceId": "k16-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "צף",
+      "nameHe": "הברית הלאומית המתקדמת - מפלגת האחדות הלאומית",
+      "englishName": {
+        "label": "HaBrit HaLeumit HaMitkademet",
+        "kind": "transliteration",
+        "sourceId": "k16-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "נ",
+      "nameHe": "ישראל אחרת כי נשבר מפוליטיקאים",
+      "englishName": {
+        "label": "Yisrael Aheret",
+        "kind": "transliteration",
+        "sourceId": "k16-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "זנ",
+      "nameHe": "אהבת ישראל בנשיאות גדול המקובלים הרב כדורי",
+      "englishName": {
+        "label": "Ahavat Yisrael",
+        "kind": "transliteration",
+        "sourceId": "k16-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "צ",
+      "nameHe": "צומת",
+      "englishName": {
+        "label": "Tzomet",
+        "kind": "transliteration",
+        "sourceId": "k16-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "פה",
+      "nameHe": "המרכז - תנועה חברתית לאומית בראשות דוד מגן",
+      "englishName": {
+        "label": "HaMerkaz",
+        "kind": "transliteration",
+        "sourceId": "k16-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ק",
+      "nameHe": "ארגון הפעולה הדמוקרטי - דע״ם",
+      "englishName": {
+        "label": "Daam",
+        "kind": "transliteration",
+        "sourceId": "k16-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "קך",
+      "nameHe": "אזרח ומדינה",
+      "englishName": {
+        "label": "Ezrah UMedina",
+        "kind": "transliteration",
+        "sourceId": "k16-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ט",
+      "nameHe": "מפלגת זכויות הגבר במשפחה - רע״ש",
+      "englishName": {
+        "label": "Mifleget Zkhuyot HaGever BaMishpaha",
+        "kind": "transliteration",
+        "sourceId": "k16-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "קץ",
+      "nameHe": "ל.ה.ב.ה",
+      "englishName": {
+        "label": "Lehava",
+        "kind": "transliteration",
+        "sourceId": "k16-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ז",
+      "nameHe": "זעם צדק חברתי",
+      "englishName": {
+        "label": "Zaam Tzedek Hevrati",
+        "kind": "transliteration",
+        "sourceId": "k16-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ף",
+      "nameHe": "לידר - מפלגה מתקדמת ליברלית דמוקרטית",
+      "englishName": {
+        "label": "Lider",
+        "kind": "transliteration",
+        "sourceId": "k16-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
     }
   ],
   "blocSchemes": [

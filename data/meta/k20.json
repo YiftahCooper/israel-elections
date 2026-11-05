@@ -1,7 +1,7 @@
 {
  "electionId": "k20",
  "lists": [
-  {
+    {
    "letters": "אמת",
    "nameHe": "המחנה הציוני בראשות יצחק הרצוג וציפי לבני",
    "seats": 24,
@@ -383,7 +383,7 @@
     "electedAssigned": 24
    }
   },
-  {
+    {
    "letters": "ודעם",
    "nameHe": "הרשימה המשותפת (חד\"ש, רע\"מ, בל\"ד, תע\"ל)",
    "seats": 13,
@@ -609,7 +609,7 @@
     "electedAssigned": 13
    }
   },
-  {
+    {
    "letters": "טב",
    "nameHe": "הבית היהודי בראשות נפתלי בנט",
    "seats": 8,
@@ -776,7 +776,7 @@
     "electedAssigned": 8
    }
   },
-  {
+    {
    "letters": "ג",
    "nameHe": "יהדות התורה והשבת אגודת ישראל - דגל התורה",
    "seats": 6,
@@ -994,7 +994,7 @@
     "electedAssigned": 6
    }
   },
-  {
+    {
    "letters": "ע",
    "nameHe": "הרשימה הערבית",
    "seats": 0,
@@ -1099,7 +1099,7 @@
     "electedAssigned": 0
    }
   },
-  {
+    {
    "letters": "קץ",
    "nameHe": "יחד - העם איתנו בראשות אלי ישי",
    "seats": 0,
@@ -1198,8 +1198,58 @@
     "elected": 0,
     "electedAssigned": 0
    }
-  }
- ],
+  },
+    {
+      "letters": "זץ",
+      "nameHe": "נבחרת העם (הזמנית)",
+      "englishName": {
+        "label": "Nivheret HaAm",
+        "kind": "transliteration",
+        "sourceId": "k20-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "י",
+      "nameHe": "שכירות בכבוד",
+      "englishName": {
+        "label": "Skhirut BeKhavod",
+        "kind": "transliteration",
+        "sourceId": "k20-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "זך",
+      "nameHe": "תומכי מפלגת הדמוקראטורה",
+      "englishName": {
+        "label": "Tomkhei HaDemokratura",
+        "kind": "transliteration",
+        "sourceId": "k20-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "יז",
+      "nameHe": "מנהיגות חברתית",
+      "englishName": {
+        "label": "Manhigut Hevratit",
+        "kind": "transliteration",
+        "sourceId": "k20-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "יך",
+      "nameHe": "מגינים על ילדינו",
+      "englishName": {
+        "label": "Meginim Al Yeladenu",
+        "kind": "transliteration",
+        "sourceId": "k20-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    }
+  ],
  "blocSchemes": [
   {
    "id": "first-government",

@@ -210,6 +210,106 @@
         }
       ],
       "unassignedRanks": []
+    },
+    {
+      "letters": "ז",
+      "nameHe": "הכח השקט",
+      "englishName": {
+        "label": "HaKoah HaShaket",
+        "kind": "transliteration",
+        "sourceId": "k12-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "זב",
+      "nameHe": "אחדות – למען ישועה וחיים לכנסת",
+      "englishName": {
+        "label": "Ahdut – Lemaan Yeshua VeHayim",
+        "kind": "transliteration",
+        "sourceId": "k12-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "זפ",
+      "nameHe": "זעם ורעש",
+      "englishName": {
+        "label": "Zaam VeRaash",
+        "kind": "transliteration",
+        "sourceId": "k12-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "טף",
+      "nameHe": "ישי – יחד שבטי ישראל",
+      "englishName": {
+        "label": "Yishai – Yahad Shivtei Yisrael",
+        "kind": "transliteration",
+        "sourceId": "k12-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "טע",
+      "nameHe": "דרך ארץ",
+      "englishName": {
+        "label": "Derekh Eretz",
+        "kind": "transliteration",
+        "sourceId": "k12-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "יע",
+      "nameHe": "התאחדות התימנים בישראל",
+      "englishName": {
+        "label": "Hitahdut HaTeimanim BeYisrael",
+        "kind": "transliteration",
+        "sourceId": "k12-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "מעם",
+      "nameHe": "תנועה למען מועמדים־ערי פיתוח ושכונות",
+      "englishName": {
+        "label": "Tnua Lemaan Muamadim – Arei Pituah UShkhunot",
+        "kind": "transliteration",
+        "sourceId": "k12-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ענף",
+      "nameHe": "תנועת לאו״ר – לב אחד ורוח חדשה בראשות יעקב חסדאי",
+      "englishName": {
+        "label": "Tnuat Leor",
+        "kind": "transliteration",
+        "sourceId": "k12-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "קז",
+      "nameHe": "התנועה למען חברה צודקת",
+      "englishName": {
+        "label": "HaTnua Lemaan Hevra Tzodeket",
+        "kind": "transliteration",
+        "sourceId": "k12-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "קק",
+      "nameHe": "התנועה למען חיילים משוחררים",
+      "englishName": {
+        "label": "HaTnua Lemaan Hayalim Meshuhrarim",
+        "kind": "transliteration",
+        "sourceId": "k12-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
     }
   ],
   "blocSchemes": [

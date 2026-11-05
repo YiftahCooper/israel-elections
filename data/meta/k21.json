@@ -1,7 +1,7 @@
 {
  "electionId": "k21",
  "lists": [
-  {
+    {
    "letters": "מחל",
    "nameHe": "הליכוד בהנהגת בנימין נתניהו לראשות הממשלה",
    "seats": 35,
@@ -176,7 +176,7 @@
     "electedAssigned": 35
    }
   },
-  {
+    {
    "letters": "פה",
    "nameHe": "כחול לבן בראשות בני גנץ ויאיר לפיד",
    "seats": 35,
@@ -370,7 +370,7 @@
     "electedAssigned": 35
    }
   },
-  {
+    {
    "letters": "ג",
    "nameHe": "יהדות התורה והשבת אגודת ישראל-דגל התורה",
    "seats": 8,
@@ -546,7 +546,7 @@
     "electedAssigned": 8
    }
   },
-  {
+    {
    "letters": "ום",
    "nameHe": "חד\"ש תע\"ל בראשות איימן עודה ואחמד טיבי",
    "seats": 6,
@@ -721,7 +721,7 @@
     "electedAssigned": 6
    }
   },
-  {
+    {
    "letters": "טב",
    "nameHe": "איחוד מפלגות הימין הבית היהודי - האיחוד הלאומי - עוצמה יהודית",
    "seats": 5,
@@ -843,7 +843,7 @@
     "electedAssigned": 5
    }
   },
-  {
+    {
    "letters": "דעם",
    "nameHe": "רע\"מ - בל\"ד הרשימה הערבית המאוחדת ברית לאומית דמוקרטית",
    "seats": 4,
@@ -1015,7 +1015,7 @@
     "electedAssigned": 4
    }
   },
-  {
+    {
    "letters": "ז",
    "nameHe": "זהות - תנועה ישראלית יהודית בהנהגת משה פייגלין",
    "seats": 0,
@@ -1183,7 +1183,7 @@
     "electedAssigned": 0
    }
   },
-  {
+    {
    "letters": "קף",
    "nameHe": "כל ישראל אחים ופעולה לישראל",
    "seats": 0,
@@ -1255,9 +1255,55 @@
     "assigned": 17,
     "elected": 0,
     "electedAssigned": 0
-   }
-  }
- ],
+   },
+      "englishName": {
+        "label": "Kol Yisrael Ahim",
+        "kind": "transliteration",
+        "sourceId": "k21-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "נז",
+      "nameHe": "זכויותינו בקולנו",
+      "englishName": {
+        "label": "Zkhuyotenu BeKolenu",
+        "kind": "transliteration",
+        "sourceId": "k21-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "יץ",
+      "nameHe": "אחריות למייסדים בראשות חיים דיין",
+      "englishName": {
+        "label": "Ahrayut LaMeyasdim",
+        "kind": "transliteration",
+        "sourceId": "k21-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ןנ",
+      "nameHe": "מנהיגות חברתית",
+      "englishName": {
+        "label": "Manhigut Hevratit",
+        "kind": "transliteration",
+        "sourceId": "k21-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ץז",
+      "nameHe": "אופק חדש בכבוד",
+      "englishName": {
+        "label": "Ofek Hadash BeKhavod",
+        "kind": "transliteration",
+        "sourceId": "k21-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    }
+  ],
  "blocSchemes": [
   {
    "id": "pm-recommendations",

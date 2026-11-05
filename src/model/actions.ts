@@ -317,7 +317,8 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
         used.add(cid);
       }
       const newLists: SimList[] = action.parts.map((p) => ({
-        id: p.newId, originIds: orig.originIds, letters: p.letters, nameHe: p.nameHe, shortHe: p.nameHe, shortEn: null, color: p.color,
+        id: p.newId, originIds: orig.originIds, letters: p.letters, nameHe: p.nameHe, shortHe: p.nameHe, shortEn: orig.parties?.find(q => q.nameHe === p.nameHe)?.nameEn ?? null, color: p.color,
+        ...(orig.parties?.find(q => q.nameHe === p.nameHe)?.logo ? {logo: orig.parties.find(q => q.nameHe === p.nameHe)!.logo} : {}),
         bloc: orig.bloc, votes: p.votes, withdrawn: false, sponsorsHe: orig.sponsorsHe,
         candidates: p.candidateIds.map((cid) => byId.get(cid)!),
         ...rosterFlags([orig]), ...partiesOf(orig.parties ?? [], p.candidateIds.map((cid) => byId.get(cid)!)),

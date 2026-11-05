@@ -540,6 +540,86 @@
         }
       ],
       "unassignedRanks": []
+    },
+    {
+      "letters": "דף",
+      "nameHe": "לבא אליאב לכנסת",
+      "englishName": {
+        "label": "Lova Eliav LaKnesset",
+        "kind": "transliteration",
+        "sourceId": "k11-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "הם",
+      "nameHe": "הס מס, תנועה לביטול חוק מס הכנסה",
+      "englishName": {
+        "label": "Has Mas",
+        "kind": "transliteration",
+        "sourceId": "k11-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "זה",
+      "nameHe": "התנועה להתחדשות בראשות ח״כ מרדכי בן־פורת",
+      "englishName": {
+        "label": "HaTnua LeHithadshut",
+        "kind": "transliteration",
+        "sourceId": "k11-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "זך",
+      "nameHe": "עמך",
+      "englishName": {
+        "label": "Amkha",
+        "kind": "transliteration",
+        "sourceId": "k11-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "טן",
+      "nameHe": "התנועה למען המולדת",
+      "englishName": {
+        "label": "HaTnua Lemaan HaMoledet",
+        "kind": "transliteration",
+        "sourceId": "k11-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "פט",
+      "nameHe": "עצמאות בראשות עזרא זהר",
+      "englishName": {
+        "label": "Atzmaut",
+        "kind": "transliteration",
+        "sourceId": "k11-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "נ",
+      "nameHe": "תנועת עליה וצעירים",
+      "englishName": {
+        "label": "Tnuat Aliya VeTzeirim",
+        "kind": "transliteration",
+        "sourceId": "k11-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "פז",
+      "nameHe": "א.נ.י. – ארגון נכים",
+      "englishName": {
+        "label": "ANI – Irgun Nekhim",
+        "kind": "transliteration",
+        "sourceId": "k11-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
     }
   ],
   "blocSchemes": [

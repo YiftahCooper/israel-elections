@@ -233,15 +233,19 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
         <p className="small muted">{L('Names, colours and blocs', 'שמות, צבעים וגושים')} <Info title={L('App annotations', 'נתונים של היישום')}>{L('Short and English list names are assigned by this application. Colours are the colours associated with each party where a source supports it, otherwise an app colour; blocs follow the sources given for each grouping (see decision 0087). None of these is official election data.', 'השמות המקוצרים והאנגליים של הרשימות נקבעו ביישום זה. הצבעים הם הצבעים המזוהים עם כל מפלגה כשיש לכך מקור, ואחרת צבע של היישום; הגושים לפי המקורות של כל חלוקה (ראו החלטה 0087). אף אחד מאלה אינו נתון בחירות רשמי.')}</Info></p>
       </div>
       <div>
+        <details><summary>{L('English list names', 'שמות הרשימות באנגלית')}</summary>
+          <p className="small">{L('Existing common-use English labels are app annotations. The entries below are unofficial shortened transliterations, not verified official English names. Unmatched sponsor/faction names and legacy or user-created names use unofficial consonantal romanisation.', 'השמות האנגליים המקובלים הם נתוני תצוגה של היישום. הרשומות להלן הן תעתיקים מקוצרים לא רשמיים, לא שמות רשמיים באנגלית שאומתו. לשמות ישנים או חדשים ללא שם אנגלי מוצג תעתיק עיצורים.')}</p>
+          <ul className="small">{ds.lists.filter(l => l.englishName).map(l => <li key={l.id}>{listLabel(l, lang)} · {L('Unofficial transliteration', 'תעתיק לא רשמי')} · {l.englishName!.sourceId}</li>)}</ul>
+        </details>
         {(() => {
           // Logos keep their licence or fair-use notice and attribution with the images.
-          const logos = ds.lists.flatMap((l) => [...(l.logo ? [{ name: lang === 'he' ? l.shortHe : l.shortEn ?? l.shortHe, logo: l.logo }] : []),
+          const logos = ds.lists.flatMap((l) => [...(l.logo ? [{ name: listLabel(l, lang), logo: l.logo }] : []),
             ...(l.parties ?? []).filter((p) => p.logo).map((p) => ({ name: lang === 'he' ? p.nameHe : p.nameEn, logo: p.logo! }))]);
           return logos.length ? <>
             <h3>{L('Party logos', 'סמלי המפלגות')}</h3>
-            <p className="small ink2">{L('Separate licences', 'רישיונות נפרדים')} <Info title={L('Logo licences', 'רישיונות הסמלים')}>{L('Logos as used at this election, from Wikimedia Commons, each under its own licence (not the app’s MIT licence).', 'הסמלים כפי שהיו בשימוש בבחירות אלה, מוויקישיתוף, כל אחד ברישיון שלו (לא ברישיון MIT של היישום).')}</Info></p>
+            <p className="small ink2">{L('Separate licences', 'רישיונות נפרדים')} <Info title={L('Logo licences', 'רישיונות הסמלים')}>{L('Verified party marks from official sources or Wikimedia Commons (secondary). A year identifies a nearest-period logo, not a verified election-day design. Rights and credits are separate from the app licence.', 'סמלים ממקורות רשמיים או מוויקישיתוף (משני). שנה מציינת סמל מתקופה קרובה, לא עיצוב שאומת ליום הבחירות. הזכויות והייחוס נפרדים מרישיון היישום.')}</Info></p>
             <ul className="small credits" style={{ paddingInlineStart: 18 }}>
-              {logos.map((x, i) => <li key={i}><b>{x.name}</b>: <bdi dir="auto"><a href={x.logo.sourceUrl} target="_blank" rel="noreferrer">{x.logo.attribution}</a> · {x.logo.licence}</bdi></li>)}
+              {logos.map((x, i) => <li key={i}><b>{x.name}</b>: <bdi dir="auto"><a href={x.logo.sourceUrl} target="_blank" rel="noreferrer">{x.logo.attribution}</a> · {x.logo.licence}{x.logo.year ? ` · ${x.logo.year}` : ''}</bdi></li>)}
             </ul>
           </> : null;
         })()}

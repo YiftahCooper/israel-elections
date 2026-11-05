@@ -24,7 +24,7 @@ export function PartyLinks({ links, name }: { links?: PartyLink[]; name: string 
       case 'academic': return x.publisher;
     }
   };
-  const title = (x: PartyLink) => [x.titleHe, x.kind === 'partisan' ? L('the party’s own voice (partisan)', 'בקולה של המפלגה (מפלגתי)') : L('a neutral source', 'מקור ניטרלי'),
+  const title = (x: PartyLink) => [L(x.titleEn ?? name, x.titleHe ?? name), x.kind === 'partisan' ? L('the party’s own voice (partisan)', 'בקולה של המפלגה (מפלגתי)') : L('a neutral source', 'מקור ניטרלי'),
     x.sourceType === 'hewiki' ? L('Hebrew Wikipedia: a secondary source', 'ויקיפדיה העברית: מקור משני') : '', x.archivedAt ? L(`archived ${x.archivedAt}`, `ארכיון ${x.archivedAt}`) : '',
     x.confidence === 'medium' ? L('probable match', 'התאמה סבירה') : ''].filter(Boolean).join(' · ');
   const group = (kind: PartyLink['kind']) => ok.filter((x) => x.kind === kind);

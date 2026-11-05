@@ -769,6 +769,86 @@
         }
       ],
       "unassignedRanks": []
+    },
+    {
+      "letters": "ז",
+      "nameHe": "הפנתרים השחורים – דמוקרטים ישראלים",
+      "englishName": {
+        "label": "HaPanterim HaShhorim – Demokratim Yisraelim",
+        "kind": "transliteration",
+        "sourceId": "k8-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "יא",
+      "nameHe": "שיתוף ואחוה",
+      "englishName": {
+        "label": "Shituf VeAhva",
+        "kind": "transliteration",
+        "sourceId": "k8-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "מס",
+      "nameHe": "התנועה לשוויון חברתי",
+      "englishName": {
+        "label": "HaTnua LeShivyon Hevrati",
+        "kind": "transliteration",
+        "sourceId": "k8-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "סנ",
+      "nameHe": "תנועה עממית",
+      "englishName": {
+        "label": "Tnua Amamit",
+        "kind": "transliteration",
+        "sourceId": "k8-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ענ",
+      "nameHe": "תנועה לאחוה",
+      "englishName": {
+        "label": "Tnua LeAhva",
+        "kind": "transliteration",
+        "sourceId": "k8-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "ער",
+      "nameHe": "רשימה ערבית ישראלית",
+      "englishName": {
+        "label": "Reshima Aravit Yisraelit",
+        "kind": "transliteration",
+        "sourceId": "k8-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "רה",
+      "nameHe": "רשימת תימנים בישראל",
+      "englishName": {
+        "label": "Reshimat Teimanim BeYisrael",
+        "kind": "transliteration",
+        "sourceId": "k8-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "רס",
+      "nameHe": "רשימה סוציאליסטית מהפכנית",
+      "englishName": {
+        "label": "Reshima Sotzialistit Mahpekhanit",
+        "kind": "transliteration",
+        "sourceId": "k8-candidates-gazette",
+        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
     }
   ],
   "blocSchemes": [
