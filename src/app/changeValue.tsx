@@ -58,7 +58,7 @@ export function ChangeValue({ s, path, lang }: { s: Scenario; path: EditPath; la
 export function ruleEraLabel(r: RuleSet, lang: Lang): string {
   const he = lang === 'he', year = r.id.match(/il-(\d+)/)?.[1] ?? '';
   const method = r.id.includes('1949') ? (he ? 'הממוצע הגבוה' : 'Highest averages')
-    : r.remainderMethod === 'largest-remainder' ? (he ? 'השארית הגדולה' : 'Largest remainder') : (he ? 'באדר–עופר' : 'Bader–Ofer');
+    : r.remainderMethod === 'largest-remainder' ? (he ? 'השארית הגדולה' : 'Largest remainder') : (he ? 'בדר–עופר' : 'Bader–Ofer');
   const threshold = Number(r.threshold.num) / Number(r.threshold.den) * 100;
   return year + ' · ' + method + ' · ' + (threshold ? threshold + (he ? '% חסימה' : '% threshold') : (he ? 'ללא אחוז חסימה' : 'No percentage threshold'))
     + (r.seatsCappedAtCandidates ? (he ? ' · מגבלת מועמדים (מוסקת)' : ' · Candidate cap (inferred)') : '');

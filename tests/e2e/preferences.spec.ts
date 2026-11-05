@@ -46,7 +46,7 @@ test('opening a saved scenario asks about its comparison, persists Always, and S
   await ask.getByRole('button', { name: 'Apply', exact: true }).click();
   await expect(switcher).toHaveAttribute('data-value', saved!);
   await page.reload();
-  await page.getByRole('tab', { name: 'Rules', exact: true }).click();
+  await page.getByRole('tab', { name: 'Rules & settings', exact: true }).click();
   const setting = page.getByRole('combobox', { name: 'Mark differences from', exact: true });
   await expect(setting).toHaveValue('official'); await setting.selectOption('ask');
   await expect(setting).toHaveValue('ask');

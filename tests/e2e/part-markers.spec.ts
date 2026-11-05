@@ -31,7 +31,7 @@ test('2022 blank grouping is marked once and undo clears it',async({page})=>{
  await page.getByRole('button',{name:/^Undo:/}).click();await expect(part(page)).toHaveCount(0);await expect(items(page)).toHaveCount(0);
 });
 test('rules preset has one marker, then an individual threshold edit adds one',async({page})=>{
- await start(page);await page.getByRole('tab',{name:'Rules',exact:true}).click();
+ await start(page);await page.getByRole('tab',{name:'Rules & settings',exact:true}).click();
  await choose(page.getByRole('button',{name:'Replace: Rules',exact:true}),'preset:il-1992-bader-ofer-1.5');
  await expect(part(page)).toHaveCount(1);await expect(items(page)).toHaveCount(0);
  await page.evaluate(()=>window.scrollTo(0,0));

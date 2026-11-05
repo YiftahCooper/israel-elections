@@ -2,6 +2,7 @@
 
 ## 5 November 2026 — release review
 
+- Rules tab renamed Rules & settings: settings sit in their own card (display, editing questions with each remembered per-list answer and Ask again); each era's law is named, its own rules (1949, 1951–1969, 1977) are shown, thresholds carry their years, locked fields look locked, and rule edits are marked at their field.
 - Distinguish joint-list component candidates and seats with party tints and list-colour envelopes, include component identities in chamber exports, and prevent component-row logo overlap. Component seat colours can be disabled under Rules → Display.
 
 - Clarify vote sources, section replacements, joint-list actions and edited markers; remove single-vote nudges and let sliders cover the valid-vote total. Preference prompts offer one-use, item and global scopes with one explicit Apply action.

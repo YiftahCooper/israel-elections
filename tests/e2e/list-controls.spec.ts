@@ -149,7 +149,7 @@ test('a list\'s seat count can be typed: the fewest votes that give it are moved
   await panel.screenshot({ path: '.backup-scratch/seat-target.png' });
   // the remembered answer is the setting in Rules → Display, and can go back to asking
   await page.reload();
-  await page.getByRole('tab', { name: 'Rules', exact: true }).click();
+  await page.getByRole('tab', { name: 'Rules & settings', exact: true }).click();
   const setting = page.getByRole('combobox', { name: 'Votes come from' });
   await expect(setting).toHaveValue('proportional');
   await setting.selectOption('ask');

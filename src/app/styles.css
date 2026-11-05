@@ -192,6 +192,8 @@ details > summary { cursor: pointer; }
 input[type="text"], input[type="number"], input[type="search"], select, textarea { border: 1px solid var(--rule-2); background: var(--surface); border-radius: 5px; padding: 4px 8px; min-height: 32px; min-width: 0; }
 select { padding-inline-end: 6px; }
 input:hover:not(:disabled), select:hover:not(:disabled) { border-color: var(--axis); }
+/* a disabled field looks disabled: a locked value must not read as editable */
+input[type="text"]:disabled, input[type="number"]:disabled, input[type="search"]:disabled, textarea:disabled { opacity: .55; cursor: not-allowed; }
 input.num-in { width: 120px; text-align: end; }
 input.num-in[aria-invalid="true"] { border-color: var(--bad); box-shadow: 0 0 0 1px var(--bad); }
 input[type="range"] { direction: ltr; width: 100%; accent-color: var(--shell); }
@@ -750,6 +752,26 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .band .scenario-switcher { max-inline-size: 185px; }
 .band .scenario-switcher .choice-trigger > .result-preview { display: none; }
 .quick-actions { display: flex; flex-wrap: wrap; gap: 4px; }
+/* Rules & settings: the scenario's rules beside a separate settings card */
+.rules-page { align-items: start; gap: 18px; }
+.rules-fields { border: 0; padding: 0; margin: 0; min-width: 0; }
+.rules-grid { align-items: start; }
+.rules-turnout > .row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 14px; align-items: end; margin-block-end: 6px; }
+.rules-turnout .numeric-stepper { inline-size: 100%; }
+@media (max-width: 600px) { .rules-turnout > .row > :last-child { grid-column: 1 / -1; } }
+.rules-checks { display: grid; gap: 4px; align-content: start; padding-block-start: 18px; }
+.rule-check { flex-wrap: nowrap; align-items: start; gap: 6px; }
+.rule-check input { margin-block-start: 2px; }
+.era-thresholds { margin-block-start: 8px; }
+[dir="rtl"] .era-thresholds { justify-content: flex-end; }
+.era-thresholds .btn { flex-direction: column; gap: 0; line-height: 1.15; padding-block: 3px; }
+.era-thresholds .btn .tiny { font-weight: 400; }
+.settings-card { border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface-2); padding: 10px 12px; }
+.settings-card h4 { margin: 14px 0 6px; padding-block-start: 10px; border-block-start: 1px solid var(--rule); }
+.pref-setting { margin-block-end: 8px; }
+.pref-items-title { margin: 6px 0 0; }
+.pref-items { list-style: none; padding: 0; margin: 2px 0 0; display: grid; gap: 2px; max-width: 300px; }
+.pref-items li { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .quick-consequence { block-size: 2.9em; margin: 0; color: var(--ink-2); overflow: auto; }
 @media (min-width: 1200px) { .band { gap: 6px; } .band .tool .label { display: none; } .band .brand { font-size: 15px; } }
 @media (max-width: 600px) {
@@ -779,7 +801,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .cmp-chambers { direction: ltr; }
 [dir="rtl"] .cmp-chambers > figure { direction: rtl; }
 /* data graphics read left to right in Hebrew too (owner, 2026-11-04): bars grow from the left, before precedes after; only text is right-to-left */
-.strip, .bloc-reference, .coal-bar, .lb-bar, .family-seat-strip, .bp-meter, .majority-bar, .pm-track, .result-preview, .sec-bar, .st-preview, .wi-preview { direction: ltr; }
+.era-thresholds, .strip, .bloc-reference, .coal-bar, .lb-bar, .family-seat-strip, .bp-meter, .majority-bar, .pm-track, .result-preview, .sec-bar, .st-preview, .wi-preview { direction: ltr; }
 [dir="rtl"] .corridor .label { direction: rtl; }
 .baseline-mini { width: 30%; min-width: 160px; max-width: 310px; margin-inline: auto; text-align: center; }
 .baseline-mini svg { display: block; width: 100%; }
