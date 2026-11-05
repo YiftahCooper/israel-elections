@@ -1,4 +1,22 @@
 {
   "electionId": "k5",
-  "logos": []
+  "logos": [
+    {
+      "file": "logos/liberal-party-1961.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/Liberal3.png",
+      "licence": "Public domain (PD-textlogo)",
+      "attribution": "המועצה לקידום המורשת הישראלית; File:Liberal3.png; Public domain (PD-textlogo). Resized to at most 256 px; converted to PNG where necessary.",
+      "hosted": true,
+      "inUseEvidence": "Commons explicitly identifies the Liberal Party symbol during the 1961 election, its only independent contest (Council for the Preservation of Heritage Sites credited). Ballot letter ל matches.",
+      "confidence": "medium",
+      "letters": "ל",
+      "sha256": "17242b218349e6d8e410b017e923753dfb7289a6a56b1ae25840a47f0b92be41",
+      "evidenceId": "commons-108279754",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Liberal3.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "status": "verified",
+      "originalSha256": "af51c30d1333a1fca5c520d4fcd43266b667aa9868ac7ab9b0f31b6a74a0c0fd",
+      "rights": "free-licence",
+      "bytes": 4320
+    }
+  ]
 }

@@ -50,6 +50,23 @@
           448
         ]
       }
+    },
+    {
+      "file": "logos/moledet-1988.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/Moledet_party_old_logo.jpg",
+      "licence": "Public domain (PD-textlogo)",
+      "attribution": "מולדת (מפלגה); File:Moledet party old logo.jpg; Public domain (PD-textlogo). Resized to at most 256 px; converted to PNG where necessary.",
+      "hosted": true,
+      "inUseEvidence": "Commons explicitly identifies the Moledet logo in the 12th Knesset election (1988), citing NLI item IE10915803. Not extended to later campaigns.",
+      "confidence": "medium",
+      "letters": "ט",
+      "sha256": "7c4f022b2e08804a4b200bc1bc9660c6153b22ebd5b4f6e3fba77754355b3589",
+      "evidenceId": "commons-146785841",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/34/Moledet_party_old_logo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "status": "verified",
+      "originalSha256": "5fa323599af8d426aac6246864d392e89e74f72b7f26b8878939266fe82bda43",
+      "rights": "free-licence",
+      "bytes": 52997
     }
   ]
 }

@@ -17,6 +17,40 @@
       "originalSha256": "59a1d799714d2464bb75e9904bee222bc404cdd8280f69c357e3678252cfebd7",
       "rights": "free-licence",
       "bytes": 2433
+    },
+    {
+      "file": "logos/alignment-1965.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/Maarach-1.png",
+      "licence": "CC BY-SA 4.0",
+      "attribution": "הספרייה הלאומית; File:Maarach-1.png; CC BY-SA 4.0. Resized to at most 256 px; converted to PNG where necessary.",
+      "hosted": true,
+      "inUseEvidence": "Commons identifies the First Alignment (1965–68) logo combining Mapai’s א and Ahdut HaAvoda’s ת, citing NLI ephemera item 700094557. That Alignment contested only the 1965 election; ballot letters את match. Not extended to later Alignment lists.",
+      "confidence": "medium",
+      "letters": "את",
+      "sha256": "49cc6852d08b0f3b9a7db603671ecfce6bb7c853010d3eb0ba6d59a40a7f1988",
+      "evidenceId": "commons-83237684",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Maarach-1.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "status": "verified",
+      "originalSha256": "e51051c372fcb4843d4f34474276d27b623f8b44a264b6aabe288080b95e98cd",
+      "rights": "free-licence",
+      "bytes": 8685
+    },
+    {
+      "file": "logos/rakah-1965.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/Rakah1965.png",
+      "licence": "Public domain (PD-textlogo)",
+      "attribution": "הספרייה הלאומית; File:Rakah1965.png; Public domain (PD-textlogo). Resized to at most 256 px; converted to PNG where necessary.",
+      "hosted": true,
+      "inUseEvidence": "Commons explicitly identifies the New Communist List (Rakah) logo from 1965, citing NLI ephemera item 700098530. Ballot letter ו matches.",
+      "confidence": "medium",
+      "letters": "ו",
+      "sha256": "0d29a03f6a06da2286fd0e1502a34522f48abbefecb47bd39f8defe3100f854d",
+      "evidenceId": "commons-115558437",
+      "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/23/Rakah1965.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "status": "verified",
+      "originalSha256": "dc80278799296fe4b42b164e1f588a5f8fc1eccfb3b26260abb5ab3663e6115d",
+      "rights": "free-licence",
+      "bytes": 10857
     }
   ]
 }
