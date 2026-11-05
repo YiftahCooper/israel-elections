@@ -269,7 +269,7 @@ function Split({ s, r }: { s: Scenario; r: AllocationResult }) {
         <div className="st-options">
           <p className="small" style={{ margin: 0, gridColumn: '1 / -1' }}>{L('Split into its parties. Each gets the votes in proportion to its share of the list’s elected members (the assumption):', 'פיצול למפלגותיה. כל מפלגה מקבלת קולות לפי חלקה בנבחרי הרשימה (ההנחה):')}</p>
           {parties.map((p, i) => <span key={p.id} className="small"><Slip letters={l.letters} name={lang === 'he' ? p.nameHe : p.nameEn} color={p.color ?? l.color} logo={p.logo} /> {lang === 'he' ? p.nameHe : p.nameEn}: <b>{Math.round(partyShares[i] * 1000) / 10}%</b></span>)}
-          <p className="tiny muted" style={{ margin: 0, gridColumn: '1 / -1' }}>{L('To set the shares yourself, open the list on the Overview and use “What if they had run separately?”.', 'כדי לקבוע את החלוקה בעצמכם, פתחו את הרשימה בתמונת המצב והשתמשו ב"מה אילו היו רצות בנפרד?".')}</p>
+          <p className="tiny muted" style={{ margin: 0, gridColumn: '1 / -1' }}>{L('To set the shares yourself, open the list on the Overview and use “Split into separate lists”.', 'כדי לקבוע את החלוקה בעצמכם, פתחו את הרשימה בתמונת המצב והשתמשו ב"פיצול לרשימות נפרדות".')}</p>
         </div>
       )}
       {l && !byParty && (
