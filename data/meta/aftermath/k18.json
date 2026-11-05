@@ -318,22 +318,27 @@
         "id": "pillar-defense-2012",
         "date": "2012-11-14",
         "category": "security",
-        "textEn": "Israel launched Operation Pillar of Defense in Gaza; a ceasefire was announced on 21 November.",
-        "textHe": "ישראל פתחה במבצע עמוד ענן ברצועת עזה; הפסקת אש הוכרזה ב־21 בנובמבר.",
+        "textEn": "According to SIPRI and Reuters’s chronologies, Israel killed Hamas military commander Ahmed Jabari on 14 November 2012 and carried out airstrikes in Gaza during Operation Pillar of Defense while Palestinian armed groups fired rockets at Israel; SIPRI dates the ceasefire announcement to 21 November 2012.",
+        "textHe": "לפי צירי הזמן של SIPRI ורויטרס, ישראל הרגה את מפקד הזרוע הצבאית של חמאס אחמד ג׳עברי ב־14 בנובמבר 2012 וביצעה תקיפות אוויריות ברצועת עזה במהלך מבצע עמוד ענן, וארגונים פלסטיניים חמושים ירו רקטות לעבר ישראל; SIPRI מתארך את ההכרזה על הפסקת האש ל־21 בנובמבר 2012.",
         "cites": [
+          {
+            "source": "sipri-2012",
+            "quote": "Ahmed Jabari, Hamas’s top military commander."
+          },
           {
             "source": "sipri-2012",
             "quote": "a ceasefire agreement between Israel and Hamas is announced on 21 November"
           },
           {
             "source": "reuters-confrontation-2021",
-            "quote": "Nov 14, 2012"
+            "quote": "Israel kills Hamas's military chief of staff, Ahmad Jabari"
           }
         ],
         "confidence": "high",
         "endDate": "2012-11-21",
         "notes": [
-          "During the 32nd government’s caretaker tenure, after the October dissolution."
+          "During the 32nd government’s caretaker tenure, after the October dissolution.",
+          "Both chronologies select Jabari’s killing and airstrikes/rocket fire. SIPRI alone describes prior rocket fire as the trigger; Reuters starts with the killing. No shared causal explanation is inferred."
         ]
       }
     ],

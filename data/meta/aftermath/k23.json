@@ -415,8 +415,8 @@
         "id": "guardian-walls-2021",
         "date": "2021-05-10",
         "category": "security",
-        "textEn": "Hamas fired rockets toward Israel and Israel launched air strikes in Gaza; a ceasefire took effect on 21 May.",
-        "textHe": "חמאס ירה רקטות לעבר ישראל וישראל פתחה בתקיפות אוויריות ברצועת עזה; הפסקת אש נכנסה לתוקף ב־21 במאי.",
+        "textEn": "According to CFR and Reuters’s chronologies, Hamas fired rockets toward Israel and Israel launched airstrikes in Gaza on 10 May 2021; a ceasefire took effect on 21 May 2021.",
+        "textHe": "לפי צירי הזמן של CFR ורויטרס, חמאס ירה רקטות לעבר ישראל וישראל פתחה בתקיפות אוויריות ברצועת עזה ב־10 במאי 2021; הפסקת אש נכנסה לתוקף ב־21 במאי 2021.",
         "cites": [
           {
             "source": "cfr-conflict-timeline",
@@ -434,7 +434,8 @@
         "confidence": "high",
         "endDate": "2021-05-21",
         "notes": [
-          "During the outgoing 35th government’s caretaker tenure, before the 36th government took office. Reuters chronology published Thursday 20 May dates the ceasefire to Friday. Not duplicated as a k24 term event."
+          "During the outgoing 35th government’s caretaker tenure, before the 36th government took office. Reuters chronology published Thursday 20 May dates the ceasefire to Friday. Not duplicated as a k24 term event.",
+          "Sequence is supported by both chronologies; no broader cause or claim that either action was unprovoked is asserted. CFR also discusses Jerusalem unrest; the row is not a full conflict history."
         ]
       }
     ],

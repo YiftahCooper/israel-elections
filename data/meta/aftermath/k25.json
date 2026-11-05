@@ -96,6 +96,114 @@
       "publisher": "The Jerusalem Post, Maayan Jaffe-Hoffman, 23 Israeli, Jewish defining moments of 2023",
       "kind": "secondary",
       "accessed": "2026-11-05"
+    },
+    "cfr-conflict-timeline": {
+      "url": "https://www.cfr.org/education/learn/timelines/israeli-palestinian-conflict-timeline",
+      "publisher": "Council on Foreign Relations Education, Israeli-Palestinian Conflict Timeline, updated 14 July 2026",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "ui-regional-timeline": {
+      "url": "https://www.ui.se/globalassets/ui.se-eng/publications/sceeus/2026/five-wars-and-a-funeral.pdf",
+      "publisher": "Swedish Institute of International Affairs / SCEEUS, Aron Lund, Five Wars and a Funeral (13 January 2026), p.3 timeline",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "commons-gaza-2025": {
+      "url": "https://commonslibrary.parliament.uk/research-briefings/cbp-10085/",
+      "publisher": "House of Commons Library, Israel and the Occupied Palestinian Territories: UK response July 2024 to March 2025 (16 April 2025), summary and pp.58,61",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "commons-gaza-2024": {
+      "url": "https://commonslibrary.parliament.uk/research-briefings/cbp-9874/",
+      "publisher": "House of Commons Library, Israel-Hamas conflict: UK response October 2023 to July 2024 (11 September 2024)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "commons-lebanon": {
+      "url": "https://commonslibrary.parliament.uk/research-briefings/cbp-10108/",
+      "publisher": "House of Commons Library, Israel-Hezbollah conflict 2023/24 (12 December 2024)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "crs-regional-2024": {
+      "url": "https://www.everycrsreport.com/files/2024-12-05_R44245_a229591d75ea86d8bb24dec2e3ceeade83e5cbc9.html",
+      "publisher": "Congressional Research Service, Israel: Major Issues and U.S. Relations, 5 December 2024, pp.5,18–19 (EveryCRSReport reproduction)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "crs-war-2024": {
+      "url": "https://www.everycrsreport.com/reports/R47828.html",
+      "publisher": "Congressional Research Service, Israel and Hamas Conflict In Brief, 4 October 2024 (EveryCRSReport reproduction)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "mfa-oct7-figures": {
+      "url": "https://embassies.gov.il/cyprus/en/node/9202",
+      "publisher": "Israel Ministry of Foreign Affairs / Embassy in Cyprus, Two years since October 7, 2023",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "pmo-war-authorization": {
+      "url": "https://www.gov.il/en/pages/spoke-war081023",
+      "publisher": "Prime Minister’s Office, Security Cabinet Approves War Situation, 8 October 2023 (updated 9 October)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "idi-war-law": {
+      "url": "https://en.idi.org.il/articles/51077",
+      "publisher": "Israel Democracy Institute, Amichai Cohen, Eran Shamir-Borer and Mirit Lavi, The Decision to Go to War, 11 October 2023",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "ipf-judicial-tracker": {
+      "url": "https://israelpolicyforum.org/judicial-legislation-tracker/",
+      "publisher": "Israel Policy Forum, Judicial Legislation Tracker, reasonableness amendment dated history",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "cnn-netanyahu-timeline": {
+      "url": "https://abc17news.com/news/national-world/cnn-world/2024/01/04/benjamin-netanyahu-fast-facts-4/",
+      "publisher": "CNN Editorial Research, Benjamin Netanyahu Fast Facts, updated through April 2026, via ABC17",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "commons-iran-2025": {
+      "url": "https://commonslibrary.parliament.uk/research-briefings/cbp-10284/",
+      "publisher": "House of Commons Library, Israel-Iran 2025: Developments in Iran’s nuclear programme and military action, 24 June 2025",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "ap-iran-timeline": {
+      "url": "https://apnews.com/article/1c1e810598dd3323bcb5f0f771362471",
+      "publisher": "Associated Press, Long, fraught timeline of Iran nuclear tensions, 28 September 2025",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "loc-election-2026": {
+      "url": "https://blogs.loc.gov/law/2026/10/falqs-israels-upcoming-election-on-october-27-2026/",
+      "publisher": "Law Library of Congress, Ruth Levush, FALQs: Israel’s Upcoming Election on October 27, 2026, 9 October 2026",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "crs-election-2026": {
+      "url": "https://www.everycrsreport.com/reports/IN12751.html",
+      "publisher": "Congressional Research Service, Israel: 2026 Elections and Government Formation, 30 October 2026 (EveryCRSReport reproduction)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "globes-election-date": {
+      "url": "https://en.globes.co.il/en/article-date-set-for-knesset-elections-1001549071",
+      "publisher": "Globes, Yuval Einhorn, Date set for Knesset elections, 12 July 2026",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "pmo-iran-ceasefire": {
+      "url": "https://www.gov.il/en/pages/event-statement240625",
+      "publisher": "Prime Minister’s Office, Statement by PM Netanyahu, 24 June 2025 (updated 25 June)",
+      "kind": "official",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -303,23 +411,45 @@
       "iiss-one-year",
       "idi-annual-review-2024",
       "reuters-judicial-timeline",
-      "jpost-year-review-2023"
+      "jpost-year-review-2023",
+      "cfr-conflict-timeline",
+      "ui-regional-timeline",
+      "commons-gaza-2025",
+      "commons-gaza-2024",
+      "commons-lebanon",
+      "crs-regional-2024",
+      "crs-war-2024",
+      "ipf-judicial-tracker",
+      "cnn-netanyahu-timeline",
+      "commons-iran-2025",
+      "ap-iran-timeline",
+      "loc-election-2026",
+      "crs-election-2026",
+      "globes-election-date"
     ],
     "events": [
       {
         "id": "judicial-plan-2023",
         "date": "2023-01-04",
         "category": "governance",
-        "textEn": "Justice Minister Yariv Levin announced proposals to change the judicial system.",
-        "textHe": "שר המשפטים יריב לוין הציג הצעות לשינויים במערכת המשפט.",
+        "textEn": "According to IDI’s October 2024 review and Reuters’s timeline, Justice Minister Yariv Levin presented judicial-system changes on 4 January 2023, followed by protests during 2023.",
+        "textHe": "לפי סקירת המכון הישראלי לדמוקרטיה מאוקטובר 2024 וציר הזמן של רויטרס, שר המשפטים יריב לוין הציג שינויים במערכת המשפט ב־4 בינואר 2023, ולאחר מכן התקיימו מחאות במהלך 2023.",
         "cites": [
           {
             "source": "idi-annual-review-2024",
-            "quote": "נאומו של שר המשפטים יריב לוין ב-4 בינואר 2023"
+            "quote": "4 בינואר 2023"
           },
           {
             "source": "reuters-judicial-timeline",
             "quote": "Jan. 4 – Netanyahu’s new government announces a plan"
+          },
+          {
+            "source": "idi-annual-review-2024",
+            "quote": "תנועת מחאה ציבורית"
+          },
+          {
+            "source": "reuters-judicial-timeline",
+            "quote": "protests"
           }
         ],
         "confidence": "high"
@@ -328,8 +458,8 @@
         "id": "reasonableness-amendment-2023",
         "date": "2023-07-24",
         "category": "governance",
-        "textEn": "The Knesset passed an amendment to Basic Law: The Judiciary barring judicial review of government and ministerial decisions on grounds of reasonableness.",
-        "textHe": "הכנסת אישרה תיקון לחוק־יסוד: השפיטה המונע ביקורת שיפוטית על החלטות הממשלה והשרים בעילת הסבירות.",
+        "textEn": "According to IDI’s review and IPF’s legislation tracker, on 24 July 2023 the Knesset barred judicial review of government and ministerial decisions on grounds of reasonableness; on 1 January 2024 the Supreme Court struck down that amendment to Basic Law: The Judiciary.",
+        "textHe": "לפי סקירת המכון הישראלי לדמוקרטיה ומעקב החקיקה של פורום מדיניות ישראל, ב־24 ביולי 2023 הכנסת מנעה ביקורת שיפוטית על החלטות הממשלה והשרים בעילת הסבירות; ב־1 בינואר 2024 בית המשפט העליון פסל תיקון זה לחוק־יסוד: השפיטה.",
         "cites": [
           {
             "source": "idi-annual-review-2024",
@@ -338,33 +468,240 @@
           {
             "source": "jpost-year-review-2023",
             "quote": "Levin’s plan, the first part which passed on July 24"
+          },
+          {
+            "source": "ipf-judicial-tracker",
+            "quote": "Date passed: July 24, 2023"
+          },
+          {
+            "source": "ipf-judicial-tracker",
+            "quote": "Date overturned by the court: January 1, 2024"
+          },
+          {
+            "source": "idi-annual-review-2024",
+            "quote": "1.1.2024"
           }
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "endDate": "2024-01-01"
       },
       {
         "id": "attack-war-2023",
         "date": "2023-10-07",
         "category": "security",
-        "textEn": "Hamas-led armed groups attacked Israel; Israel began airstrikes in Gaza.",
-        "textHe": "ארגונים חמושים בהובלת חמאס תקפו את ישראל; ישראל החלה בתקיפות אוויריות ברצועת עזה.",
+        "textEn": "According to the MFA’s October 2025 account, Hamas-led attackers killed over 1,200 people and took 251 hostages on 7 October 2023. According to the PMO’s 8 October announcement and IDI’s legal account, the security cabinet authorized war under section 40 of Basic Law: The Government, effective from 7 October (the statutory decision is under section 40(a)). According to CFR’s chronology, Israel began airstrikes in Gaza on 7 October and a ground offensive on 27 October 2023. According to the Commons Library, citing OCHA and Gaza’s Ministry of Health, 50,144 Palestinians had been reported killed by 25 March 2025.",
+        "textHe": "לפי תיאור משרד החוץ מאוקטובר 2025, תוקפים בהובלת חמאס הרגו יותר מ־1,200 בני אדם וחטפו 251 ב־7 באוקטובר 2023. לפי הודעת משרד ראש הממשלה מ־8 באוקטובר וההסבר המשפטי של המכון הישראלי לדמוקרטיה, הקבינט המדיני־ביטחוני אישר יציאה למלחמה לפי סעיף 40 לחוק־יסוד: הממשלה, בתוקף מ־7 באוקטובר (ההחלטה הקבועה בחוק היא לפי סעיף 40(א)). לפי ציר הזמן של CFR, ישראל החלה בתקיפות אוויריות ברצועת עזה ב־7 באוקטובר ובמתקפה קרקעית ב־27 באוקטובר 2023. לפי ספריית בית הנבחרים הבריטי, המצטטת את OCHA ואת משרד הבריאות בעזה, עד 25 במרס 2025 דווח על 50,144 פלסטינים שנהרגו.",
         "cites": [
           {
             "source": "knesset-war-chronology",
             "quote": "October 7, 2023, a large-scale surprise attack was launched against Israel by Hamas"
           },
           {
-            "source": "iiss-one-year",
-            "quote": "Hamas-led attacks on Israel on 7 October 2023"
+            "source": "cfr-conflict-timeline",
+            "quote": "Militants also take 251 hostages."
           },
           {
-            "source": "reuters-war-timeline",
-            "quote": "Retaliatory airstrikes on Gaza begin"
+            "source": "mfa-oct7-figures",
+            "quote": "over 1,200 people"
+          },
+          {
+            "source": "mfa-oct7-figures",
+            "quote": "251 people were taken hostage"
+          },
+          {
+            "source": "pmo-war-authorization",
+            "quote": "Last night, the Security Cabinet approved the war situation"
+          },
+          {
+            "source": "pmo-war-authorization",
+            "quote": "as per Article 40 of Basic Law: The Government"
+          },
+          {
+            "source": "idi-war-law",
+            "quote": "According to section 40(a)"
+          },
+          {
+            "source": "idi-war-law",
+            "quote": "On Sunday October 8, 2023"
+          },
+          {
+            "source": "crs-war-2024",
+            "quote": "More than 1,200 Israelis and foreign nationals"
+          },
+          {
+            "source": "commons-gaza-2025",
+            "quote": "50,144"
           }
         ],
         "confidence": "high",
         "notes": [
-          "The sentence records the dated outbreak only. It does not claim to summarize subsequent military operations, hostage releases, civilian deaths, displacement or humanitarian conditions; these require separately sourced dated entries."
+          "Selection: Knesset first-twenty-week retrospective and CFR timeline; CRS independently corroborates the onset. MFA figures are an attributed retrospective count, not a claim that all victims were civilians. The Gaza total is a dated reported total, not a civilian-only count or independently verified final toll. PMO announced authorization on 8 October but describes approval as “last night”; IDI describes the approval on 8 October and its retrospective effect. Section 40(a)(1) permits cabinet delegation; this is not a separate section 40A. No war end date is inferred."
+        ]
+      },
+      {
+        "id": "northern-front-ceasefire",
+        "date": "2023-10-08",
+        "category": "security",
+        "textEn": "According to the Commons Library and UI’s regional chronology, Hezbollah attacked Israel from Lebanon from October 2023 and Israel struck Lebanon; the Commons Library dates the opening attacks to 8 October 2023 and Israel’s ground entry to 1 October 2024. According to CRS’s December 2024 review and UI’s chronology, the Israel–Lebanon ceasefire took effect on 27 November 2024.",
+        "textHe": "לפי ספריית בית הנבחרים הבריטי וציר הזמן האזורי של UI, חזבאללה תקף את ישראל מלבנון מאוקטובר 2023 וישראל תקפה בלבנון; הספרייה מתארכת את התקיפות הראשונות ל־8 באוקטובר 2023 ואת כניסת כוחות הקרקע של ישראל ל־1 באוקטובר 2024. לפי סקירת CRS מדצמבר 2024 וציר הזמן של UI, הפסקת האש בין ישראל ללבנון נכנסה לתוקף ב־27 בנובמבר 2024.",
+        "cites": [
+          {
+            "source": "commons-lebanon",
+            "quote": "From 8 October 2023"
+          },
+          {
+            "source": "commons-lebanon",
+            "quote": "Israeli ground forces entered Lebanon on 1 October 2024."
+          },
+          {
+            "source": "ui-regional-timeline",
+            "quote": "ceasefire on Nov. 27"
+          },
+          {
+            "source": "crs-regional-2024",
+            "quote": "effective starting November 27"
+          }
+        ],
+        "confidence": "high",
+        "notes": [
+          "27 November is the effective date; 26 November is agreement approval. This describes the 2023–24 phase, not a permanent end of northern-front fighting; CFR reports renewed hostilities in 2026."
+        ]
+      },
+      {
+        "id": "gaza-hostage-ceasefires",
+        "date": "2023-11-24",
+        "category": "security",
+        "textEn": "According to the Commons Library and Reuters’s chronology, a Gaza truce enabled exchanges of hostages and Palestinian prisoners from 24 November to 1 December 2023, when fighting resumed. According to the Commons Library and UI’s chronology, another exchange-and-ceasefire agreement took effect on 19 January 2025; Israel resumed military action on 18 March 2025. According to UI and CFR, a further Gaza ceasefire agreement was reached in October 2025; CNN’s chronology dates its implementation to 10 October 2025.",
+        "textHe": "לפי ספריית בית הנבחרים הבריטי וציר הזמן של רויטרס, הפוגה ברצועת עזה אפשרה חילופי חטופים ואסירים פלסטינים מ־24 בנובמבר עד 1 בדצמבר 2023, אז התחדשה הלחימה. לפי הספרייה וציר הזמן של המכון השוודי לעניינים בינלאומיים (UI), הסכם נוסף לחילופים ולהפסקת אש נכנס לתוקף ב־19 בינואר 2025; ישראל חידשה את הפעילות הצבאית ב־18 במרס 2025. לפי UI ו־CFR, הסכם נוסף להפסקת אש ברצועת עזה הושג באוקטובר 2025; ציר הזמן של CNN מתארך את כניסתו לתוקף ל־10 באוקטובר 2025.",
+        "cites": [
+          {
+            "source": "commons-gaza-2025",
+            "quote": "24 November 2023 to 1 December 2023"
+          },
+          {
+            "source": "commons-gaza-2025",
+            "quote": "19 January 2025 and 18 March 2025"
+          },
+          {
+            "source": "reuters-war-timeline",
+            "quote": "before war resumes on Dec. 1."
+          },
+          {
+            "source": "ui-regional-timeline",
+            "quote": "ended by Israel in March"
+          },
+          {
+            "source": "ui-regional-timeline",
+            "quote": "new ceasefire in Gaza"
+          },
+          {
+            "source": "cfr-conflict-timeline",
+            "quote": "October 9, 2025"
+          },
+          {
+            "source": "cnn-netanyahu-timeline",
+            "quote": "October 10"
+          }
+        ],
+        "confidence": "high",
+        "notes": [
+          "Grouped agreement milestones, not one continuous ceasefire. Each phase has its own chronology pair: November 2023 Commons/Reuters; January–March 2025 Commons/UI; October 2025 UI/CFR (CNN supplies implementation date). This is not a finding that the war permanently ended; CFR reports subsequent violations. Commons CBP-10235’s web summary dates the October agreement to 13 October, the living-hostage release day, and its January agreement to 18 January; not used for effective dates. CBP-10085 gives 19 January and CNN gives 10 October."
+        ]
+      },
+      {
+        "id": "international-court-proceedings",
+        "date": "2024-01-26",
+        "category": "foreign-relations",
+        "textEn": "According to the Commons Library and Reuters’s chronology, on 26 January 2024 the ICJ ordered provisional measures in South Africa’s Genocide Convention case against Israel. According to CRS’s December 2024 review and CNN’s chronology, on 21 November 2024 the ICC issued arrest warrants for Benjamin Netanyahu, Yoav Gallant and Hamas commander Mohammed Deif over alleged war crimes and crimes against humanity.",
+        "textHe": "לפי ספריית בית הנבחרים הבריטי וציר הזמן של רויטרס, ב־26 בינואר 2024 בית הדין הבינלאומי לצדק הורה על סעדים זמניים בתביעת דרום אפריקה נגד ישראל לפי האמנה למניעת רצח עם. לפי סקירת שירות המחקר של הקונגרס (CRS) מדצמבר 2024 וציר הזמן של CNN, ב־21 בנובמבר 2024 בית הדין הפלילי הבינלאומי הוציא צווי מעצר לבנימין נתניהו, יואב גלנט ומפקד חמאס מוחמד דף בגין חשדות לפשעי מלחמה ולפשעים נגד האנושות.",
+        "cites": [
+          {
+            "source": "commons-gaza-2025",
+            "quote": "provisional measures"
+          },
+          {
+            "source": "reuters-war-timeline",
+            "quote": "Jan 26:"
+          },
+          {
+            "source": "crs-regional-2024",
+            "quote": "On November 21, 2024, the ICC issued arrest warrants"
+          },
+          {
+            "source": "cnn-netanyahu-timeline",
+            "quote": "November 21, 2024"
+          }
+        ],
+        "confidence": "high",
+        "notes": [
+          "ICJ provisional measures are not a merits judgment that genocide occurred. ICC warrants concern allegations, not convictions. Two selection pairs: Commons/Reuters (ICJ); CRS/CNN (ICC). The official retrospective reports identify the original court orders; original ICC retrieval returned 403."
+        ]
+      },
+      {
+        "id": "iran-exchanges-and-war",
+        "date": "2024-04-13",
+        "category": "security",
+        "textEn": "According to Reuters and UI’s chronologies, Iran attacked Israel with missiles and drones on 13 April 2024; strikes near Isfahan followed on 19 April 2024, which Reuters attributed to Israel as a presumption. According to UI’s chronology and CRS’s December 2024 review, Iran and Israel exchanged direct strikes again in October 2024. According to UI’s and AP’s chronologies and the Commons Library, Israel attacked Iran on 13 June 2025, Iran struck Israel, and the United States attacked Iranian nuclear sites on 22 June; the PMO’s 24 June 2025 statement describes a ceasefire that day.",
+        "textHe": "לפי צירי הזמן של רויטרס ו־UI, איראן תקפה את ישראל בטילים ובכטב״מים ב־13 באפריל 2024; ב־19 באפריל 2024 התרחשו תקיפות ליד אספהאן, שרויטרס ייחסה לישראל כהערכה. לפי ציר הזמן של UI וסקירת CRS מדצמבר 2024, איראן וישראל החליפו שוב תקיפות ישירות באוקטובר 2024. לפי צירי הזמן של UI ו־AP וספריית בית הנבחרים הבריטי, ישראל תקפה באיראן ב־13 ביוני 2025, איראן תקפה בישראל וארצות הברית תקפה אתרי גרעין באיראן ב־22 ביוני; הודעת משרד ראש הממשלה מ־24 ביוני 2025 מתארת הפסקת אש באותו יום.",
+        "cites": [
+          {
+            "source": "reuters-war-timeline",
+            "quote": "Iran's first ever direct attack on Israel"
+          },
+          {
+            "source": "ui-regional-timeline",
+            "quote": "exchange direct strikes"
+          },
+          {
+            "source": "crs-regional-2024",
+            "quote": "Israel and Iran directly"
+          },
+          {
+            "source": "ap-iran-timeline",
+            "quote": "June 13, 2025"
+          },
+          {
+            "source": "ap-iran-timeline",
+            "quote": "June 22, 2025"
+          },
+          {
+            "source": "ap-iran-timeline",
+            "quote": "June 24, 2025"
+          },
+          {
+            "source": "commons-iran-2025",
+            "quote": "Iran initially responded to the Israeli attacks with drones strikes"
+          },
+          {
+            "source": "pmo-iran-ceasefire",
+            "quote": "Today, this morning, a few hours before the ceasefire"
+          }
+        ],
+        "confidence": "high",
+        "notes": [
+          "April and October exchanges are selected by UI and the CRS regional retrospective (Reuters independently selects April). No claim that an April ceasefire was signed. UI selects June onset; AP and Commons give day precision and the US intervention. Commons dates Trump’s announcement 23 June (US time), AP labels it 24 June; preserve the difference. A 2026 Iran war is outside this grouped 2024–25 row and remains pending.",
+          "No shared causal explanation for April is asserted: Reuters links it to the Damascus embassy-compound strike, but UI’s selection timeline does not. PMO’s dated 24 June statement supplies the effective ceasefire day separately from the announcement-date conflict."
+        ]
+      },
+      {
+        "id": "election-2026",
+        "date": "2026-10-27",
+        "category": "governance",
+        "textEn": "According to the Library of Congress’s 9 October 2026 election explainer and CRS’s 30 October retrospective, the election for the 26th Knesset was held on 27 October 2026.",
+        "textHe": "לפי הסבר הבחירות של ספריית הקונגרס מ־9 באוקטובר 2026 וסקירת CRS מ־30 באוקטובר, הבחירות לכנסת ה־26 נערכו ב־27 באוקטובר 2026.",
+        "cites": [
+          {
+            "source": "loc-election-2026",
+            "quote": "October 27, 2026"
+          },
+          {
+            "source": "crs-election-2026",
+            "quote": "October 27, 2026, Knesset (parliament) elections"
+          }
+        ],
+        "confidence": "high",
+        "notes": [
+          "Retrospective selection by CRS corroborates LoC’s pre-election institutional chronology. No results, seats or government end date imported. LoC calls 17 July dissolution; Globes distinguishes that date from legal continuity and recess. Enacted dissolution law/date needs original Knesset or Gazette verification and is retained pending."
         ]
       }
     ],
@@ -375,38 +712,18 @@
         "why": "The retrieved Reuters war timeline does not select the emergency-government agreement; a second qualifying chronology and direct date source remain missing."
       },
       {
-        "label": "Hostage releases and pause in fighting",
-        "date": "2023-11",
-        "why": "Reuters and the Jerusalem Post year review select the November exchange, but no readable official/academic chronology for that event was retrieved. IISS returned a security challenge; not bypassed."
+        "label": "Enacted dissolution law / legal status of 17 July 2026",
+        "date": "2026-07-17",
+        "why": "LoC election explainer calls 17 July dissolution; Globes 12 July explains continuity and pre-election recess. June 2 Knesset notice is first reading only and proposes an earlier election window. No enacted law/Gazette inspected; do not convert first reading or recess into legal dissolution."
       },
       {
-        "label": "Supreme Court judgment on the reasonableness amendment",
-        "date": "2024-01-01",
-        "why": "The IDI October 2024 retrospective selects the judgment and cites 1 January 2024; a second qualifying chronology remains missing."
-      },
-      {
-        "label": "Iran–Israel exchanges",
-        "date": "2024-04",
-        "why": "Reuters selects the 13 April 2024 attack; no second inspected official/academic chronology selecting it was recovered."
-      },
-      {
-        "label": "Israel–Lebanon ceasefire",
-        "date": "2024-11",
-        "why": "The inspected 2023/early-2024 chronologies predate the November 2024 ceasefire; two qualifying later chronologies remain missing."
-      },
-      {
-        "label": "Subsequent war, hostage-release and ceasefire developments",
-        "date": "2025",
-        "why": "The IEMed 2025 chronology returned a verification challenge; no date-specific pair of qualifying chronologies was inspected for these broad leads."
-      },
-      {
-        "label": "Events before the next election",
+        "label": "Renewed Iran war and Lebanon fighting in 2026",
         "date": "2026",
-        "why": "Too broad for an event row; requires separately dated events selected by two inspected chronologies, including official/academic evidence."
+        "why": "CFR chronology selects renewed Lebanon fighting after US–Israel attacks on Iran in 2026; no fully inspected independent second chronology for the 2026 phase assembled. INSS dashboard returned 403; not treated as read."
       }
     ],
     "start": "2022-12-29",
-    "inclusionRuleNote": "The war onset appears in the Knesset’s retrospective twenty-week chronology and IISS’s one-year multi-author retrospective, opening chapter (academic reference report). They are separate institutional evidence families. Reuters’s dated timeline supplies direct corroboration. This qualifies only the included event; it does not promote other items from either publication."
+    "inclusionRuleNote": "Eight grouped, dated milestones. Each promoted component has two independently authored chronological selection accounts; see event notes and docs/research/aftermath-k25-review.md for the claim-level pairs, exact-date sources and conflicts. Parliamentary research retrospectives and dated institutional explainers are selection accounts under PROMOTE.md, not all daily timelines. Multiple Commons publications count as one family; CRS, LoC, UI, IDI, CFR, Reuters, AP, CNN and IPF are distinct publisher families. Primary notices supply particulars but are not counted as two chronologies."
   },
   "issuePolling": {
     "status": "pending",
@@ -417,7 +734,8 @@
     "Detailed term chronology and formal end-of-Knesset record remain unfilled; election day must not be treated as the government end date.",
     "INSS December 2022 domestic-priority figures remain withheld: exact question and full answer menu not retrieved.",
     "Knesset inauguration record not retrieved.",
-    "Only the October 2023 war onset meets the two-chronology rule here; other national events, subsequent war phases and the formal end-of-Knesset record need further evidence."
+    "Legal dissolution date remains pending; 27 October 2026 election is sourced separately. No end date for the government or war is inferred from an election or ceasefire.",
+    "This eight-row selection groups judicial and conflict phases; the 2026 Iran/Lebanon phase remains an explicit evidence gap."
   ],
   "government": {
     "number": 37,

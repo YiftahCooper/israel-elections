@@ -371,8 +371,8 @@
         "id": "lebanon-war",
         "date": "1982-06",
         "category": "security",
-        "textEn": "The First Lebanon War began (Operation Peace for Galilee).",
-        "textHe": "מלחמת לבנון הראשונה החלה (מבצע שלום הגליל).",
+        "textEn": "According to the Knesset history and MFA’s history, Israel launched Operation Peace for Galilee in Lebanon in June 1982, beginning the First Lebanon War.",
+        "textHe": "לפי תולדות הכנסת וסקירת משרד החוץ, ישראל פתחה במבצע שלום הגליל בלבנון ביוני 1982, עם תחילת מלחמת לבנון הראשונה.",
         "cites": [
           {
             "source": "knesset-history",
@@ -383,7 +383,10 @@
             "quote": "Operation Peace for Galilee"
           }
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "notes": [
+          "No trigger asserted: the two inherited selection chronologies do not both supply the same causal account. No ceasefire endDate added without verified endpoint evidence; see review report."
+        ]
       },
       {
         "id": "bank-share-crisis",

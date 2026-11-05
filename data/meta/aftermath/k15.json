@@ -84,6 +84,12 @@
       "publisher": "Israel Democracy Institute, The Democracy Pavilion, 1 April 2019",
       "kind": "academic",
       "accessed": "2026-11-05"
+    },
+    "un-yearbook-2002": {
+      "url": "https://www.un.org/unispal/document/auto-insert-196470/",
+      "publisher": "United Nations Yearbook 2002, excerpts, military action and Secretary-General report on Jenin",
+      "kind": "official",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -304,8 +310,8 @@
         "id": "defensive-shield",
         "date": "2002-03",
         "category": "security",
-        "textEn": "Israel launched Operation Defensive Shield.",
-        "textHe": "ישראל פתחה במבצע חומת מגן.",
+        "textEn": "According to the Knesset history and MFA’s chronology, Israel launched Operation Defensive Shield in the West Bank in March 2002.",
+        "textHe": "לפי תולדות הכנסת וציר הזמן של משרד החוץ, ישראל פתחה במבצע חומת מגן בגדה המערבית במרס 2002.",
         "cites": [
           {
             "source": "knesset-history",
@@ -314,9 +320,16 @@
           {
             "source": "mfa-history",
             "quote": "Israel launches Operation Defensive Shield"
+          },
+          {
+            "source": "un-yearbook-2002",
+            "quote": "major Palestinian cities, villages and refugee camps in the West Bank"
           }
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "notes": [
+          "No trigger asserted: the two inherited selection chronologies do not both supply the same causal account. No ceasefire endDate added without verified endpoint evidence; see review report."
+        ]
       }
     ],
     "candidatesPending": [
