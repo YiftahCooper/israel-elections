@@ -203,6 +203,53 @@
         "rawIndex": "logo-k18-national-union-index"
       },
       "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
+    },
+    {
+      "letters": "ד",
+      "file": "logos/balad-2009-k18.png",
+      "sourceUrl": "https://web.archive.org/web/20090203060530/http://www.tajamoa.org/",
+      "assetSourceUrl": "https://web.archive.org/web/20090203060632id_/http://www.tajamoa.org/swf/logo.swf",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "التجمع الوطني الديمقراطي / בל״ד — original bitmap embedded in official 2009 website Flash header",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "balad-archive-20090203060530",
+      "inUseDate": "2009-02-03",
+      "archiveUrl": "https://web.archive.org/web/20090203060530/http://www.tajamoa.org/",
+      "archiveTimestamp": "20090203060530",
+      "inUseEvidence": "Inspected official Balad (National Democratic Assembly) homepage capture 20090203060530 references http://www.tajamoa.org/swf/logo.swf as its header logo (div.logo, SWFObject swf/logo.swf, 218x132). Exact archived asset bytes at 20090203060632 match pre-election CDX SHA-1 base32 U7VEQTP4RCYDNDOUJCRW4U4OHPYUU3T7 (CDX capture 20090125092001). Original geometry and colours preserved. The original SWF contains JPEG3 bitmap character 5 (180x97), the Arabic Balad wordmark. Decoded its original JPEG pixels and zlib alpha only using scripts/research/extract-swf-bitmap.py; no Flash vector rendering, tracing, recolouring, compositing of animation elements or redrawing. Bitmap 1 is merely the orange background and is excluded. Balad ran independently as list ד in 2009. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "048d3c6087efe1fce2dc543f63f5ff3e9a52bb9516e12be86a29bcedfb9c155b",
+      "originalSha256": "3f386a268a8c0df41636640ee7393dffec1d2c3fb5bbe1e1f1d9e78f2fbb86eb",
+      "bytes": 14957,
+      "rawEvidence": {
+        "page": "logo-k18-balad-page",
+        "asset": "logo-k18-balad-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20090203060632id_/http://www.tajamoa.org/swf/logo.swf",
+      "assetArchiveTimestamp": "20090203060632",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "U7VEQTP4RCYDNDOUJCRW4U4OHPYUU3T7",
+        "computedDigest": "U7VEQTP4RCYDNDOUJCRW4U4OHPYUU3T7",
+        "assetCaptureTimestamp": "20090203060632",
+        "cdxCaptureTimestamp": "20090125092001",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.tajamoa.org%2Fswf%2Flogo.swf&from=2008&to=20090210&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k18-balad-index"
+      },
+      "retrieval": "Original SWF retained unchanged. Decode embedded JPEG3 bitmap character 5 using scripts/research/extract-swf-bitmap.py; original JPEG pixels plus original alpha, RGBA optimized PNG. No crop, redraw, recolouring or vector rendering.",
+      "bitmapExtraction": {
+        "container": "SWF DefineBitsJPEG3",
+        "characterId": 5,
+        "dimensions": [
+          180,
+          97
+        ],
+        "decoder": "scripts/research/extract-swf-bitmap.py",
+        "recipe": "CWS zlib decompression; original JPEG RGB plus original zlib alpha; RGBA PNG, optimize=True; no crop or animation reconstruction"
+      }
     }
   ]
 }

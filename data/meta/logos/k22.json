@@ -378,6 +378,43 @@
         "rawIndex": "logo-k22-democratic-union-index"
       },
       "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
+    },
+    {
+      "party": "new-right",
+      "file": "logos/new-right-2019-k22.png",
+      "sourceUrl": "https://web.archive.org/web/20190718043311/https://newyamin.org/privacy-policy",
+      "assetSourceUrl": "https://web.archive.org/web/20190225195814id_/https://newyamin.org/img/NewYaminLogo.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "הימין החדש — official party website header, July 2019 capture",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "new-right-archive-20190718043311",
+      "inUseDate": "2019-07-18",
+      "archiveUrl": "https://web.archive.org/web/20190718043311/https://newyamin.org/privacy-policy",
+      "archiveTimestamp": "20190718043311",
+      "inUseEvidence": "Inspected official New Right homepage capture 20190718043311 references https://newyamin.org/img/NewYaminLogo.png as its official-site header and footer logo (alt NewYamin); homepage fetch timed out, inspected same site's dated policy page. Exact archived asset bytes at 20190225195814 match pre-election CDX SHA-1 base32 K2P6SYA6F4G2ZF5SWCG4R7323CMLNOTD (CDX capture 20190225195814). Original geometry and colours preserved. New Right constituent mark only, not the Yamina joint lockup. The pre-election July page still references this exact header path; archived asset bytes are indexed before both 2019 polls. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "4c485e3a42ef8f4dccde04a5077f565cafad808b7989470e7d9e708116351593",
+      "originalSha256": "0463a377b716f832b0b15b4fcead0d5958205d22d9cc1acaea671615b06a46de",
+      "bytes": 20285,
+      "rawEvidence": {
+        "page": "logo-k22-new-right-page",
+        "asset": "logo-k22-new-right-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20190225195814id_/https://newyamin.org/img/NewYaminLogo.png",
+      "assetArchiveTimestamp": "20190225195814",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "K2P6SYA6F4G2ZF5SWCG4R7323CMLNOTD",
+        "computedDigest": "K2P6SYA6F4G2ZF5SWCG4R7323CMLNOTD",
+        "assetCaptureTimestamp": "20190225195814",
+        "cdxCaptureTimestamp": "20190225195814",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=newyamin.org%2Fimg%2FNewYaminLogo.png&from=2019&to=20190917&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k22-new-right-index"
+      },
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
     }
   ]
 }

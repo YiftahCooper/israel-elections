@@ -78,8 +78,8 @@ const EXPECTED: Record<Family, string> = {
   // merged with the 1949–1973 recommendations branch (k4, k7, k8 schemes; field-verified on that branch).
   // merged with the 1949–2006 logos run 3 (only list/party logo fields and builtAt differ; path walk 5 Nov).
   // merged with the 2009–2026 logos run (only list/party logo fields and builtAt differ; path walk 5 Nov).
-  // Archived k18/k22/k23/k26 logos: field-diff permits only logo/builtAt.
-  model: 'fbf90ee7b40a8725ad46fafbf9ce50929f95b5928c2ca16d94f995579f1c0be9',
+  // Archived k18/k20/k21/k22/k23/k24/k26 logos and dated Hadash–Taal publication crop: only logo/builtAt.
+  model: '3ed138b2b49015fde8c6953d7e3a02b8a13f53b0ba1fe9bdfd9e99585cddbfe7',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

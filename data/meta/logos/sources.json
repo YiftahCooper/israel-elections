@@ -4281,6 +4281,222 @@
         "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.moledet.org.il%2Fimages%2Flogo-Haihud-Haleumi.gif&from=2008&to=20090210&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
         "rawIndex": "logo-k18-national-union-index"
       }
+    },
+    {
+      "id": "zionist-union-archive-20150301054934",
+      "title": "Zionist Union official website — 2015-03-01",
+      "sourceUrl": "https://web.archive.org/web/20150301054934/http://hamahanehazioni.co.il/zionist/",
+      "publisher": "המחנה הציוני",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-05",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3 seconds apart",
+      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; exact bytes checked against CDX digest",
+      "date": "2015-03-01",
+      "description": "Inspected official Zionist Union homepage capture 20150301054934 references http://hamahanehazioni.co.il/zionist/wp-content/themes/html5blank-stable/img/logos/he_logo.png as its header logo (alt: המחנה הציוני בראשות יצחק הרצוג וציפי לבני). Exact archived asset bytes at 20150301054938 match pre-election CDX SHA-1 base32 BNCAOJ2NF7V4L5SVONXVQCYMJYXU7MJO (CDX capture 20150227082154). Original geometry and colours preserved. The artwork names the Zionist Union and both leaders; joint-list lockup for list אמת, not either constituent substituted. Separate evidence for this election; no assignment by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20150301054934/http://hamahanehazioni.co.il/zionist/",
+      "archiveTimestamp": "20150301054934",
+      "downloadUrl": "http://hamahanehazioni.co.il/zionist/wp-content/themes/html5blank-stable/img/logos/he_logo.png",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "zionist-official-site",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k20-zionist-union-page",
+        "asset": "logo-k20-zionist-union-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20150301054938id_/http://hamahanehazioni.co.il/zionist/wp-content/themes/html5blank-stable/img/logos/he_logo.png",
+      "assetArchiveTimestamp": "20150301054938",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "BNCAOJ2NF7V4L5SVONXVQCYMJYXU7MJO",
+        "computedDigest": "BNCAOJ2NF7V4L5SVONXVQCYMJYXU7MJO",
+        "assetCaptureTimestamp": "20150301054938",
+        "cdxCaptureTimestamp": "20150227082154",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=hamahanehazioni.co.il%2Fzionist%2Fwp-content%2Fthemes%2Fhtml5blank-stable%2Fimg%2Flogos%2Fhe_logo.png&from=2015&to=20150317&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k20-zionist-union-index"
+      }
+    },
+    {
+      "id": "balad-archive-20090203060530",
+      "title": "Balad (National Democratic Assembly) official website — 2009-02-03",
+      "sourceUrl": "https://web.archive.org/web/20090203060530/http://www.tajamoa.org/",
+      "publisher": "التجمع الوطني الديمقراطي / בל״ד",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-05",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3 seconds apart",
+      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; exact bytes checked against CDX digest",
+      "date": "2009-02-03",
+      "description": "Inspected official Balad (National Democratic Assembly) homepage capture 20090203060530 references http://www.tajamoa.org/swf/logo.swf as its header logo (div.logo, SWFObject swf/logo.swf, 218x132). Exact archived asset bytes at 20090203060632 match pre-election CDX SHA-1 base32 U7VEQTP4RCYDNDOUJCRW4U4OHPYUU3T7 (CDX capture 20090125092001). Original geometry and colours preserved. The original SWF contains JPEG3 bitmap character 5 (180x97), the Arabic Balad wordmark. Decoded its original JPEG pixels and zlib alpha only using scripts/research/extract-swf-bitmap.py; no Flash vector rendering, tracing, recolouring, compositing of animation elements or redrawing. Bitmap 1 is merely the orange background and is excluded. Balad ran independently as list ד in 2009. Separate evidence for this election; no assignment by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20090203060530/http://www.tajamoa.org/",
+      "archiveTimestamp": "20090203060530",
+      "downloadUrl": "http://www.tajamoa.org/swf/logo.swf",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "balad-official-site",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k18-balad-page",
+        "asset": "logo-k18-balad-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20090203060632id_/http://www.tajamoa.org/swf/logo.swf",
+      "assetArchiveTimestamp": "20090203060632",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "U7VEQTP4RCYDNDOUJCRW4U4OHPYUU3T7",
+        "computedDigest": "U7VEQTP4RCYDNDOUJCRW4U4OHPYUU3T7",
+        "assetCaptureTimestamp": "20090203060632",
+        "cdxCaptureTimestamp": "20090125092001",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=www.tajamoa.org%2Fswf%2Flogo.swf&from=2008&to=20090210&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k18-balad-index"
+      },
+      "bitmapExtraction": {
+        "container": "SWF DefineBitsJPEG3",
+        "characterId": 5,
+        "dimensions": [
+          180,
+          97
+        ],
+        "decoder": "scripts/research/extract-swf-bitmap.py",
+        "recipe": "CWS zlib decompression; original JPEG RGB plus original zlib alpha; RGBA PNG, optimize=True; no crop or animation reconstruction"
+      }
+    },
+    {
+      "id": "religious-zionism-list-archive-20210301153126",
+      "title": "Religious Zionism official website — 2021-03-01",
+      "sourceUrl": "https://web.archive.org/web/20210301153126/https://zionutdatit.org.il/",
+      "publisher": "הציונות הדתית",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-05",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3 seconds apart",
+      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; exact bytes checked against CDX digest",
+      "date": "2021-03-01",
+      "description": "Inspected official Religious Zionism homepage capture 20210301153126 references https://zionutdatit.org.il/wp-content/uploads/2021/02/zionut-logo-1.png as its homepage custom-logo header (alt הציונות הדתית). Exact archived asset bytes at 20210317203127 match pre-election CDX SHA-1 base32 PB7IKP75BFO7IZ2BJSURFXMR2MMLRNL5 (CDX capture 20210226154134). Original geometry and colours preserved. The artwork reads Religious Zionism led by Bezalel Smotrich, the exact campaign name of list ט in 2021. It identifies that list as well as the party. This does not establish the different 2022 Otzma Yehudit or 2026 Zehut joint lockups. Separate evidence for this election; no assignment by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20210301153126/https://zionutdatit.org.il/",
+      "archiveTimestamp": "20210301153126",
+      "downloadUrl": "https://zionutdatit.org.il/wp-content/uploads/2021/02/zionut-logo-1.png",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "religious-zionism-official-site",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k24-religious-zionism-list-page",
+        "asset": "logo-k24-religious-zionism-list-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20210317203127id_/https://zionutdatit.org.il/wp-content/uploads/2021/02/zionut-logo-1.png",
+      "assetArchiveTimestamp": "20210317203127",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "PB7IKP75BFO7IZ2BJSURFXMR2MMLRNL5",
+        "computedDigest": "PB7IKP75BFO7IZ2BJSURFXMR2MMLRNL5",
+        "assetCaptureTimestamp": "20210317203127",
+        "cdxCaptureTimestamp": "20210226154134",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=zionutdatit.org.il%2Fwp-content%2Fuploads%2F2021%2F02%2Fzionut-logo-1.png&from=2021&to=20210323&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k24-religious-zionism-list-index"
+      }
+    },
+    {
+      "id": "religious-zionism-archive-20210301153126",
+      "title": "Religious Zionism official website — 2021-03-01",
+      "sourceUrl": "https://web.archive.org/web/20210301153126/https://zionutdatit.org.il/",
+      "publisher": "הציונות הדתית",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-05",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3 seconds apart",
+      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; exact bytes checked against CDX digest",
+      "date": "2021-03-01",
+      "description": "Inspected official Religious Zionism homepage capture 20210301153126 references https://zionutdatit.org.il/wp-content/uploads/2021/02/zionut-logo-1.png as its homepage custom-logo header (alt הציונות הדתית). Exact archived asset bytes at 20210317203127 match pre-election CDX SHA-1 base32 PB7IKP75BFO7IZ2BJSURFXMR2MMLRNL5 (CDX capture 20210226154134). Original geometry and colours preserved. Religious Zionism/Tkuma's own campaign emblem. Separately keyed constituent; Otzma Yehudit and Noam keep their separate identities. The list ran under this same Religious Zionism–Smotrich campaign name. Separate evidence for this election; no assignment by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20210301153126/https://zionutdatit.org.il/",
+      "archiveTimestamp": "20210301153126",
+      "downloadUrl": "https://zionutdatit.org.il/wp-content/uploads/2021/02/zionut-logo-1.png",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "religious-official-site",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k24-religious-zionism-page",
+        "asset": "logo-k24-religious-zionism-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20210317203127id_/https://zionutdatit.org.il/wp-content/uploads/2021/02/zionut-logo-1.png",
+      "assetArchiveTimestamp": "20210317203127",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "PB7IKP75BFO7IZ2BJSURFXMR2MMLRNL5",
+        "computedDigest": "PB7IKP75BFO7IZ2BJSURFXMR2MMLRNL5",
+        "assetCaptureTimestamp": "20210317203127",
+        "cdxCaptureTimestamp": "20210226154134",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=zionutdatit.org.il%2Fwp-content%2Fuploads%2F2021%2F02%2Fzionut-logo-1.png&from=2021&to=20210323&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k24-religious-zionism-index"
+      }
+    },
+    {
+      "id": "new-right-archive-20190718043311",
+      "title": "New Right official website — 2019-07-18",
+      "sourceUrl": "https://web.archive.org/web/20190718043311/https://newyamin.org/privacy-policy",
+      "publisher": "הימין החדש",
+      "sourceType": "official party campaign website",
+      "accessed": "2026-11-05",
+      "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3 seconds apart",
+      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; exact bytes checked against CDX digest",
+      "date": "2019-07-18",
+      "description": "Inspected official New Right homepage capture 20190718043311 references https://newyamin.org/img/NewYaminLogo.png as its official-site header and footer logo (alt NewYamin); homepage fetch timed out, inspected same site's dated policy page. Exact archived asset bytes at 20190225195814 match pre-election CDX SHA-1 base32 K2P6SYA6F4G2ZF5SWCG4R7323CMLNOTD (CDX capture 20190225195814). Original geometry and colours preserved. New Right constituent mark only, not the Yamina joint lockup. The pre-election July page still references this exact header path; archived asset bytes are indexed before both 2019 polls. Separate evidence for this election; no assignment by analogy.",
+      "archiveUrl": "https://web.archive.org/web/20190718043311/https://newyamin.org/privacy-policy",
+      "archiveTimestamp": "20190718043311",
+      "downloadUrl": "https://newyamin.org/img/NewYaminLogo.png",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "new-official-site",
+      "selected": true,
+      "rawEvidence": {
+        "page": "logo-k22-new-right-page",
+        "asset": "logo-k22-new-right-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20190225195814id_/https://newyamin.org/img/NewYaminLogo.png",
+      "assetArchiveTimestamp": "20190225195814",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "K2P6SYA6F4G2ZF5SWCG4R7323CMLNOTD",
+        "computedDigest": "K2P6SYA6F4G2ZF5SWCG4R7323CMLNOTD",
+        "assetCaptureTimestamp": "20190225195814",
+        "cdxCaptureTimestamp": "20190225195814",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=newyamin.org%2Fimg%2FNewYaminLogo.png&from=2019&to=20190917&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k22-new-right-index"
+      }
+    },
+    {
+      "id": "hadash-taal-zohaderekh-20190320",
+      "title": "Zo Haderekh issue 12 — 20 March 2019, front-page campaign advertisement",
+      "sourceUrl": "https://maki.org.il/he/wp-content/uploads/2019/03/G12_2019.pdf#page=1",
+      "publisher": "מק״י — זו הדרך",
+      "sourceType": "official party campaign publication",
+      "accessed": "2026-11-05",
+      "accessMethod": "Direct HTTPS original PDF with required project User-Agent",
+      "inspectionDepth": "Publication date and page 1 advertisement visually inspected; original embedded RGB bitmap decoded, exact rectangular logo crop inspected",
+      "date": "2019-03-20",
+      "description": "Inspected Maki official publication Zo Haderekh, issue 12, dated 20 March 2019 on page 1, before the 9 April election. Page 1 campaign ad shows Ayman Odeh and Ahmad Tibi above the joined Hadash (red) and Ta’al (yellow) wordmark. Decoded original RGB image XObject img_p0_8 (960x673) using pdfjs-dist; rectangular crop [63,593,324,660] retains the joined lockup and border, excluding portraits, slogan and separate ballot-note graphic. No vector rendering, redraw, recolouring or alteration. Joint-list mark for list ום only; separate constituents remain separately keyed. Dated primary publication evidence; no Wayback/CDX proof claimed for this live PDF.",
+      "downloadUrl": "https://maki.org.il/he/wp-content/uploads/2019/03/G12_2019.pdf",
+      "licence": "Copyright retained by rights holder",
+      "licenceTemplates": [],
+      "evidenceFamily": "hadash-taal-campaign-2019",
+      "selected": true,
+      "publicationEvidence": {
+        "page": "logo-k21-hadash-taal-publication",
+        "asset": "logo-k21-hadash-taal-publication",
+        "publicationDate": "2019-03-20",
+        "cropBox": [
+          63,
+          593,
+          324,
+          660
+        ],
+        "originalDimensions": [
+          960,
+          673
+        ],
+        "pdfPage": 1,
+        "imageObject": "img_p0_8",
+        "decoder": "scripts/research/extract-pdf-bitmap.mjs"
+      },
+      "reproduction": "Node 24.18.0, locked pdfjs-dist and @napi-rs/canvas: node scripts/research/extract-pdf-bitmap.mjs data/raw/logos/k21/hadash-taal-20190320.pdf 1 img_p0_8 .backup-scratch/hadash-taal-ad.png; Pillow 13.0.0 RGBA crop((63,593,324,660)), thumbnail((256,256), LANCZOS), optimized PNG."
     }
   ]
 }

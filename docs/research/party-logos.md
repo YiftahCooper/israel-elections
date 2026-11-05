@@ -1551,3 +1551,52 @@ Full Vitest: **90 files, 857 tests passed**. An earlier sandbox run could not sp
 the gallery subprocess (`EPERM`); rerun with subprocess permission passed. An
 intermediate run while overlays had changed but datasets were not rebuilt failed
 three provenance/rebuild checks; final regenerated datasets resolve those failures.
+
+### Second retained batch
+
+- **k18 Balad list ד:** correct official campaign domain `tajamoa.org` (the
+  February 2009 IDI party-site directory identifies it; `balad.org` was a German
+  support site). Inspected homepage 20090203060530 references `swf/logo.swf`.
+  Exact SWF 20090203060632 matches CDX SHA-1. Extracted original **JPEG3 bitmap
+  character 5, 180×97**, including its original alpha, rather than rendering Flash
+  vectors or assembling animation. Character 1 is only the orange background and
+  is excluded. Reproduce with `scripts/research/extract-swf-bitmap.py`; original
+  SWF, homepage and CDX retained. `bitmapExtraction` records the recipe.
+- **k20 Zionist Union list אמת:** inspected `hamahanehazioni.co.il/zionist/`
+  20150301054934, header `img/logos/he_logo.png`, alt explicitly names the Zionist
+  Union and Herzog/Livni. Exact asset 20150301054938 matches pre-election CDX.
+  The earlier root capture only redirects to `/usorhim`; it is not the logo proof.
+- **k21 Hadash–Ta'al list ום:** Maki's official newspaper *Zo Haderekh*, issue 12,
+  **20 March 2019**, front-page campaign advertisement. Decoded existing RGB image
+  XObject `img_p0_8` (960×673) from the retained original PDF; rectangular crop
+  **[63,593,324,660]**, thumbnail ≤256. The joined red/yellow lockup is retained;
+  portraits, slogan and separate ballot note are excluded. PDF date and artwork
+  visually inspected. `publicationEvidence` is the existing crop-provenance field;
+  no schema change. Reproduce with `scripts/research/extract-pdf-bitmap.mjs` and the
+  Pillow recipe in the entry. This is dated official publication evidence, **not**
+  a Wayback/CDX claim.
+- **k22 New Right constituent:** July 18 official-site policy page
+  `newyamin.org/privacy-policy`, capture 20190718043311, has the same explicit
+  header/footer `img/NewYaminLogo.png`; exact February 25 asset matches pre-poll
+  CDX. August homepage retrieval timed out twice, so this inspected pre-election
+  internal page supplies the usage evidence. No assignment from the September 21
+  post-election capture.
+- **k24 Religious Zionism list ט and Tkuma constituent:** inspected official
+  homepage 20210301153126; `custom-logo` references `2021/02/zionut-logo-1.png`.
+  Exact asset 20210317203127 matches pre-poll CDX. The mark reads Religious Zionism
+  under Bezalel Smotrich, the exact 2021 list campaign name, so the two identities
+  receive separately keyed entries (as in the earlier Jewish Home pass). Otzma
+  Yehudit/Noam are not substituted. This does not establish the distinct 2022 or
+  2026 joint lockups.
+
+Second-batch checks: logo validator **174 source cards, 124 assets, 132 hosted
+assignments**; family validator **9 presets**; TypeScript passed. All 26 datasets
+match `d62c234` recursively after omitting only `logo` and `builtAt`. Only the model
+digest changes to `3ed138b2b49015fde8c6953d7e3a02b8a13f53b0ba1fe9bdfd9e99585cddbfe7`.
+Vitest: **856/857 passed**. The remaining `logos.test.ts` joint-list separation
+assertion correctly detects the existing nearest-year builder assigning the new
+k24 Religious Zionism whole-list mark to k25's differently composed alliance.
+The separately assigned k25 Tkuma constituent remains correct. The owner has
+assigned fallback removal to a parallel worker; this research does not change that
+code or weaken the test. This is an integration dependency, not a logo-evidence
+failure or a passing final suite claim.

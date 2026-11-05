@@ -186,6 +186,43 @@
         "rawIndex": "logo-k20-jewish-home-index"
       },
       "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
+    },
+    {
+      "letters": "אמת",
+      "file": "logos/zionist-union-2015-k20.png",
+      "sourceUrl": "https://web.archive.org/web/20150301054934/http://hamahanehazioni.co.il/zionist/",
+      "assetSourceUrl": "https://web.archive.org/web/20150301054938id_/http://hamahanehazioni.co.il/zionist/wp-content/themes/html5blank-stable/img/logos/he_logo.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "המחנה הציוני — official 2015 joint campaign website header",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "zionist-union-archive-20150301054934",
+      "inUseDate": "2015-03-01",
+      "archiveUrl": "https://web.archive.org/web/20150301054934/http://hamahanehazioni.co.il/zionist/",
+      "archiveTimestamp": "20150301054934",
+      "inUseEvidence": "Inspected official Zionist Union homepage capture 20150301054934 references http://hamahanehazioni.co.il/zionist/wp-content/themes/html5blank-stable/img/logos/he_logo.png as its header logo (alt: המחנה הציוני בראשות יצחק הרצוג וציפי לבני). Exact archived asset bytes at 20150301054938 match pre-election CDX SHA-1 base32 BNCAOJ2NF7V4L5SVONXVQCYMJYXU7MJO (CDX capture 20150227082154). Original geometry and colours preserved. The artwork names the Zionist Union and both leaders; joint-list lockup for list אמת, not either constituent substituted. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "4e0c0d2564bd60b583dccb6d8971e5e65ed3710d93c578719952b91d83c1be74",
+      "originalSha256": "2efe8c6ef079d8c82eeb10ad3082f91643abbe1e5f83144f46f8a3ebb3fc43be",
+      "bytes": 9022,
+      "rawEvidence": {
+        "page": "logo-k20-zionist-union-page",
+        "asset": "logo-k20-zionist-union-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20150301054938id_/http://hamahanehazioni.co.il/zionist/wp-content/themes/html5blank-stable/img/logos/he_logo.png",
+      "assetArchiveTimestamp": "20150301054938",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "BNCAOJ2NF7V4L5SVONXVQCYMJYXU7MJO",
+        "computedDigest": "BNCAOJ2NF7V4L5SVONXVQCYMJYXU7MJO",
+        "assetCaptureTimestamp": "20150301054938",
+        "cdxCaptureTimestamp": "20150227082154",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=hamahanehazioni.co.il%2Fzionist%2Fwp-content%2Fthemes%2Fhtml5blank-stable%2Fimg%2Flogos%2Fhe_logo.png&from=2015&to=20150317&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k20-zionist-union-index"
+      },
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
     }
   ]
 }
