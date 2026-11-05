@@ -214,6 +214,82 @@
         "rawIndex": "logo-k25-hadash-index"
       },
       "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
+    },
+    {
+      "letters": "ום",
+      "file": "logos/hadash-taal-2022-k25.png",
+      "sourceUrl": "https://maki.org.il/he/wp-content/uploads/2022/10/G41_2022.pdf#page=1",
+      "assetSourceUrl": "https://maki.org.il/he/wp-content/uploads/2022/10/G41_2022.pdf",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "חד״ש–תע״ל — campaign wordmark in מק״י / זו הדרך, issue 41, 26 October 2022, p. 1",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "hadash-taal-zohaderekh-20221026",
+      "inUseDate": "2022-10-26",
+      "inUseEvidence": "Inspected Maki official publication Zo Haderekh, issue 41, dated 26 October 2022 on page 1, before the 1 November election; issue also linked with that date by official maki.org.il/zo/ index. Page 1 campaign artwork displays a joined red Hadash and yellow Ta’al mark. Rendered original PDF page 1 at scale 4 (2382x3368), then rectangular crop [480, 796, 1930, 1205]. Whole joined Hadash–Ta’al lockup only, excluding separate ballot-note and campaign slogan. No redraw, vectorisation, recolouring, manual cleaning or shape reconstruction. Dated official publication evidence; no Wayback/CDX proof claimed.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "cedcb35d5c0c0d00f6d0437ce718185befcb45ba2ee310d257e929e2af854621",
+      "originalSha256": "021d12aa0a7d80716e13fe0b3352e7254ed4f1d81632974647edcca2a63fae51",
+      "bytes": 25744,
+      "publicationEvidence": {
+        "page": "logo-k25-hadash-taal-publication",
+        "asset": "logo-k25-hadash-taal-publication",
+        "publicationDate": "2022-10-26",
+        "cropBox": [
+          480,
+          796,
+          1930,
+          1205
+        ],
+        "originalDimensions": [
+          2382,
+          3368
+        ],
+        "pdfPage": 1,
+        "renderScale": 4,
+        "renderer": "scripts/research/render-logo-pdf-page.mjs"
+      },
+      "retrieval": "Node 24.18.0 and locked pdfjs-dist/@napi-rs/canvas: node scripts/research/render-logo-pdf-page.mjs data/raw/logos/k25/hadash-taal-20221026.pdf 1 4 .backup-scratch/ht2022-page.png; Pillow 13.0.0 RGBA crop([480, 796, 1930, 1205]), thumbnail((256,256), LANCZOS), optimized PNG."
+    },
+    {
+      "party": "taal",
+      "file": "logos/taal-2022-k25.png",
+      "sourceUrl": "https://maki.org.il/he/wp-content/uploads/2022/10/G41_2022.pdf#page=1",
+      "assetSourceUrl": "https://maki.org.il/he/wp-content/uploads/2022/10/G41_2022.pdf",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "תע״ל / العربية للتغيير — campaign wordmark in מק״י / זו הדרך, issue 41, 26 October 2022, p. 1",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "taal-zohaderekh-20221026",
+      "inUseDate": "2022-10-26",
+      "inUseEvidence": "Inspected Maki official publication Zo Haderekh, issue 41, dated 26 October 2022 on page 1, before the 1 November election; issue also linked with that date by official maki.org.il/zo/ index. Page 1 campaign artwork displays a joined red Hadash and yellow Ta’al mark. Rendered original PDF page 1 at scale 4 (2382x3368), then rectangular crop [500, 805, 1210, 1195]. Only the separately branded yellow Ta’al panel (תע״ל בראשות אחמד טיבי / العربية للتغيير برئاسة أحمد الطيبي), excluding the red Hadash panel, ballot-note and campaign slogan. This is the constituent wordmark, not the alliance substituted for it. No redraw, vectorisation, recolouring, manual cleaning or shape reconstruction. Dated official publication evidence; no Wayback/CDX proof claimed.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "b5c99a816ead6680f8929b2bdab3194321b105474433f2bfaaa527ee4ae68e18",
+      "originalSha256": "021d12aa0a7d80716e13fe0b3352e7254ed4f1d81632974647edcca2a63fae51",
+      "bytes": 38924,
+      "publicationEvidence": {
+        "page": "logo-k25-hadash-taal-publication",
+        "asset": "logo-k25-hadash-taal-publication",
+        "publicationDate": "2022-10-26",
+        "cropBox": [
+          500,
+          805,
+          1210,
+          1195
+        ],
+        "originalDimensions": [
+          2382,
+          3368
+        ],
+        "pdfPage": 1,
+        "renderScale": 4,
+        "renderer": "scripts/research/render-logo-pdf-page.mjs"
+      },
+      "retrieval": "Node 24.18.0 and locked pdfjs-dist/@napi-rs/canvas: node scripts/research/render-logo-pdf-page.mjs data/raw/logos/k25/hadash-taal-20221026.pdf 1 4 .backup-scratch/ht2022-page.png; Pillow 13.0.0 RGBA crop([500, 805, 1210, 1195]), thumbnail((256,256), LANCZOS), optimized PNG."
     }
   ]
 }

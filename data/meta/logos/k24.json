@@ -283,6 +283,80 @@
         "rawIndex": "logo-k24-hadash-index"
       },
       "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
+    },
+    {
+      "letters": "ט",
+      "file": "logos/religious-zionism-list-2021-k24.png",
+      "sourceUrl": "https://web.archive.org/web/20210301153126/https://zionutdatit.org.il/",
+      "assetSourceUrl": "https://web.archive.org/web/20210317203127id_/https://zionutdatit.org.il/wp-content/uploads/2021/02/zionut-logo-1.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "הציונות הדתית בראשות בצלאל סמוטריץ׳ — official 2021 campaign website header",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "religious-zionism-list-archive-20210301153126",
+      "inUseDate": "2021-03-01",
+      "archiveUrl": "https://web.archive.org/web/20210301153126/https://zionutdatit.org.il/",
+      "archiveTimestamp": "20210301153126",
+      "inUseEvidence": "Inspected official Religious Zionism homepage capture 20210301153126 references https://zionutdatit.org.il/wp-content/uploads/2021/02/zionut-logo-1.png as its homepage custom-logo header (alt הציונות הדתית). Exact archived asset bytes at 20210317203127 match pre-election CDX SHA-1 base32 PB7IKP75BFO7IZ2BJSURFXMR2MMLRNL5 (CDX capture 20210226154134). Original geometry and colours preserved. The artwork reads Religious Zionism led by Bezalel Smotrich, the exact campaign name of list ט in 2021. It identifies that list as well as the party. This does not establish the different 2022 Otzma Yehudit or 2026 Zehut joint lockups. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "d59369d9c1123ec953f6beb7096ccf1a4f8f1cb79e81d89a689a9ee3258022eb",
+      "originalSha256": "02fdc6830007d3dd7c0c87afe6e1f647d112c3836ebc89b83edaa4efd4225335",
+      "bytes": 26386,
+      "rawEvidence": {
+        "page": "logo-k24-religious-zionism-list-page",
+        "asset": "logo-k24-religious-zionism-list-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20210317203127id_/https://zionutdatit.org.il/wp-content/uploads/2021/02/zionut-logo-1.png",
+      "assetArchiveTimestamp": "20210317203127",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "PB7IKP75BFO7IZ2BJSURFXMR2MMLRNL5",
+        "computedDigest": "PB7IKP75BFO7IZ2BJSURFXMR2MMLRNL5",
+        "assetCaptureTimestamp": "20210317203127",
+        "cdxCaptureTimestamp": "20210226154134",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=zionutdatit.org.il%2Fwp-content%2Fuploads%2F2021%2F02%2Fzionut-logo-1.png&from=2021&to=20210323&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k24-religious-zionism-list-index"
+      },
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
+    },
+    {
+      "party": "tkuma",
+      "file": "logos/religious-zionism-2021-k24.png",
+      "sourceUrl": "https://web.archive.org/web/20210301153126/https://zionutdatit.org.il/",
+      "assetSourceUrl": "https://web.archive.org/web/20210317203127id_/https://zionutdatit.org.il/wp-content/uploads/2021/02/zionut-logo-1.png",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "הציונות הדתית — official 2021 party website header",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "religious-zionism-archive-20210301153126",
+      "inUseDate": "2021-03-01",
+      "archiveUrl": "https://web.archive.org/web/20210301153126/https://zionutdatit.org.il/",
+      "archiveTimestamp": "20210301153126",
+      "inUseEvidence": "Inspected official Religious Zionism homepage capture 20210301153126 references https://zionutdatit.org.il/wp-content/uploads/2021/02/zionut-logo-1.png as its homepage custom-logo header (alt הציונות הדתית). Exact archived asset bytes at 20210317203127 match pre-election CDX SHA-1 base32 PB7IKP75BFO7IZ2BJSURFXMR2MMLRNL5 (CDX capture 20210226154134). Original geometry and colours preserved. Religious Zionism/Tkuma's own campaign emblem. Separately keyed constituent; Otzma Yehudit and Noam keep their separate identities. The list ran under this same Religious Zionism–Smotrich campaign name. Separate evidence for this election; no assignment by analogy.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "d59369d9c1123ec953f6beb7096ccf1a4f8f1cb79e81d89a689a9ee3258022eb",
+      "originalSha256": "02fdc6830007d3dd7c0c87afe6e1f647d112c3836ebc89b83edaa4efd4225335",
+      "bytes": 26386,
+      "rawEvidence": {
+        "page": "logo-k24-religious-zionism-page",
+        "asset": "logo-k24-religious-zionism-asset"
+      },
+      "assetArchiveUrl": "https://web.archive.org/web/20210317203127id_/https://zionutdatit.org.il/wp-content/uploads/2021/02/zionut-logo-1.png",
+      "assetArchiveTimestamp": "20210317203127",
+      "digestProof": {
+        "algorithm": "SHA-1 (base32)",
+        "cdxDigest": "PB7IKP75BFO7IZ2BJSURFXMR2MMLRNL5",
+        "computedDigest": "PB7IKP75BFO7IZ2BJSURFXMR2MMLRNL5",
+        "assetCaptureTimestamp": "20210317203127",
+        "cdxCaptureTimestamp": "20210226154134",
+        "cdxUrl": "https://web.archive.org/cdx/search/cdx?url=zionutdatit.org.il%2Fwp-content%2Fuploads%2F2021%2F02%2Fzionut-logo-1.png&from=2021&to=20210323&output=json&fl=timestamp%2Coriginal%2Cstatuscode%2Cdigest%2Clength&filter=statuscode%3A200&collapse=digest",
+        "rawIndex": "logo-k24-religious-zionism-index"
+      },
+      "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
     }
   ]
 }

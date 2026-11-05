@@ -240,6 +240,44 @@
         573
       ],
       "retrieval": "Original retained unchanged under data/raw; Pillow 13.0.0 RGBA crop, thumbnail((256,256), LANCZOS), optimized PNG. No recolouring."
+    },
+    {
+      "letters": "ום",
+      "file": "logos/hadash-taal-2019-k21.png",
+      "sourceUrl": "https://maki.org.il/he/wp-content/uploads/2019/03/G12_2019.pdf#page=1",
+      "assetSourceUrl": "https://maki.org.il/he/wp-content/uploads/2019/03/G12_2019.pdf",
+      "licence": "Copyright retained by rights holder; fair-use identification",
+      "attribution": "חד״ש–תע״ל — campaign lockup in מק״י / זו הדרך, issue 12, 20 March 2019, p. 1",
+      "rights": "fair-use-identification",
+      "hosted": true,
+      "status": "verified",
+      "confidence": "high",
+      "evidenceId": "hadash-taal-zohaderekh-20190320",
+      "inUseDate": "2019-03-20",
+      "inUseEvidence": "Inspected Maki official publication Zo Haderekh, issue 12, dated 20 March 2019 on page 1, before the 9 April election. Page 1 campaign ad shows Ayman Odeh and Ahmad Tibi above the joined Hadash (red) and Ta’al (yellow) wordmark. Decoded original RGB image XObject img_p0_8 (960x673) using pdfjs-dist; rectangular crop [63,593,324,660] retains the joined lockup and border, excluding portraits, slogan and separate ballot-note graphic. No vector rendering, redraw, recolouring or alteration. Joint-list mark for list ום only; separate constituents remain separately keyed. Dated primary publication evidence; no Wayback/CDX proof claimed for this live PDF.",
+      "retrievedAt": "2026-11-05",
+      "sha256": "e5d443c999cd9fa701dad3fc5a0457810736ecf38f359d1013b8b38fb894db5d",
+      "originalSha256": "79d940ad78cbfc4e8d688468f76e0069b3315dc69b49eb5787cfdd9816ff2488",
+      "bytes": 22977,
+      "publicationEvidence": {
+        "page": "logo-k21-hadash-taal-publication",
+        "asset": "logo-k21-hadash-taal-publication",
+        "publicationDate": "2019-03-20",
+        "cropBox": [
+          63,
+          593,
+          324,
+          660
+        ],
+        "originalDimensions": [
+          960,
+          673
+        ],
+        "pdfPage": 1,
+        "imageObject": "img_p0_8",
+        "decoder": "scripts/research/extract-pdf-bitmap.mjs"
+      },
+      "retrieval": "Node 24.18.0, locked pdfjs-dist and @napi-rs/canvas: node scripts/research/extract-pdf-bitmap.mjs data/raw/logos/k21/hadash-taal-20190320.pdf 1 img_p0_8 .backup-scratch/hadash-taal-ad.png; Pillow 13.0.0 RGBA crop((63,593,324,660)), thumbnail((256,256), LANCZOS), optimized PNG."
     }
   ]
 }
