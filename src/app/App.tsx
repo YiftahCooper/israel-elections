@@ -5,7 +5,7 @@ import { CustomPage } from './components/Feature.tsx';
 import { TOOL_FEATURES, RANK, LEVEL_LABELS, featureLabel, type Preset } from './features.ts';
 import { electionContext } from '../data/electionContext.ts';
 import { PMResult } from './components/ElectionContext.tsx';
-import { createElement, memo, Suspense, use, useEffect, useState, type ReactNode } from 'react';
+import { createElement, memo, Suspense, use, useEffect, useLayoutEffect, useState, type ReactNode } from 'react';
 import { liveScenarioColor } from './scenarioIdentity.ts';
 import { referenceChanges } from './derive.ts';
 import { X } from 'lucide-react';
@@ -138,6 +138,12 @@ function Shell() {
   const hintDismissed = useStore((st) => st.hintDismissed);
   const saved = useStore((st) => st.saved);
   const ready = !!(committed && ds);
+  useLayoutEffect(() => {
+    const nav = document.querySelector<HTMLElement>('.toolbar');
+    if (!nav) return;
+    const observer = new ResizeObserver(() => document.documentElement.style.setProperty('--toolbar-h', `${nav.offsetHeight}px`));
+    observer.observe(nav); return () => observer.disconnect();
+  }, [ready]);
   // once the election is on screen, fetch the code of this level's tools while the page is idle; the others
   // load when pointed at or focused, so a Simple visit does not download tools it may never open
   useEffect(() => {
@@ -222,8 +228,8 @@ function Shell() {
               {/* separate PM ballot: below the Knesset result so the chamber stays in the same place for every election */}
               {electionContext.pmContests.filter(c => c.electionId === ds.id && c.contestType === 'parallel-pm').map(c => <PMResult key={c.id} contest={c} />)}
             </div>
-            {selected && <ErrorBoundary label={L('List details', 'פרטי רשימה')} resetKey={selected}><ListSidePanel s={s} r={r} ds={ds} base={base} baseR={baseR} listId={selected} /></ErrorBoundary>}
-            {!selected && blocPanel && <ErrorBoundary label={L('Blocs', 'גושים')} resetKey={s}><BlocPanel s={s} r={r} focus={blocPanel} /></ErrorBoundary>}
+            {selected && <div className="panel-slot"><ErrorBoundary label={L('List details', 'פרטי רשימה')} resetKey={selected}><ListSidePanel s={s} r={r} ds={ds} base={base} baseR={baseR} listId={selected} /></ErrorBoundary></div>}
+            {!selected && blocPanel && <div className="panel-slot"><ErrorBoundary label={L('Blocs', 'גושים')} resetKey={s}><BlocPanel s={s} r={r} focus={blocPanel} /></ErrorBoundary></div>}
           </div>
         ) : (
           <section className="panel tool-page" id="tool-panel" aria-label={label(tool)}>
@@ -250,7 +256,7 @@ function Shell() {
           </section>
         )}
         {drawerOpen && <div className="drawer"><ErrorBoundary label={L('List details', 'פרטי רשימה')} resetKey={selected}><ListSidePanel s={committed} r={cr} ds={ds} base={base} baseR={baseR} listId={selected} /></ErrorBoundary></div>}
-        <p className="small muted" style={{ margin: 0 }}>{L('Independent election simulator', 'סימולטור בחירות עצמאי')} <Info title={L('Calculation and independence', 'חישוב ואי־תלות')}>{L('Seat allocation is computed by deterministic code from official Central Elections Committee data. Not affiliated with the CEC or any party.', 'חלוקת המנדטים מחושבת בקוד דטרמיניסטי מנתוני ועדת הבחירות המרכזית. אין קשר לוועדת הבחירות או לאף מפלגה.')}</Info></p>
+
       </main></>}
       <SourceDialog />
       {toast && <div className={`toast toast-${toast.kind}`} role={toast.kind === 'error' ? 'alert' : 'status'}>{toast.text}</div>}

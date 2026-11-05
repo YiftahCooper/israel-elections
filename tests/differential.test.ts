@@ -64,10 +64,10 @@ const EXPECTED: Record<Family, string> = {
   // Keep the model digest unchanged, including logo fields and build timestamps.
   // Party- and bloc-colour separation (decision 0087 revised 2026-11-04): only list colours, bloc-scheme colours and
   // builtAt differ from HEAD in the 26 datasets (141 list colours, 48 bloc colours); every other field verified equal.
-  // F9/F13: only English labels/provenance, nearest-period logo refs and builtAt change.
-  // Current model with original HEAD datasets reproduces the previous model digest;
-  // allocation, analysis, validation and rules digests remain unchanged.
-  model: 'cdccc4774d19451873c51d8232e11d85be308a40f6fac0a2d966079842ba23d9',
+  // 5 Nov feedback: English labels/provenance and nearest-period logo refs (F9/F13), then bloc colours
+  // and build timestamps; recursively omitting color/builtAt reproduces the previous merged datasets.
+  // Other four digests unchanged.
+  model: 'da0ff97b3a27f034ca12fe427bbb9de2c35768ff3c2d6f6f7200cc8abb6cf46f',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

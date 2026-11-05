@@ -6,6 +6,7 @@
 
 - Clarify vote sources, section replacements, joint-list actions and edited markers; remove single-vote nudges and let sliders cover the valid-vote total. Preference prompts offer one-use, item and global scopes with one explicit Apply action.
 - Complete English list labels with sourced, explicitly unofficial transliterations where needed; localise menus, exports and identity captions. Show year-labelled nearest-period logos, preserve component logos through splits, and replace bare party squares with monograms.
+- Keep list and bloc panels within the viewport with independent body scrolling; prevent edit anchoring jumps. Figures open consistent popovers without reflow. Keep floating content inside the viewport and move the footer independence note into About. Define block-group boundaries, enlarge bloc strips, and separate default bloc/scenario colours while preserving saved choices.
 
 - Keep long edited bloc names and official list names readable on phones, restore contrast for Compare counts, and show family scaling counts once beside their strips.
 - Prevent map zoom completion from accessing a destroyed pane after tool navigation.

@@ -32,7 +32,7 @@
 .family-key-mixed {inline-size:7px;block-size:12px;border:1px solid var(--ink-2);background:repeating-linear-gradient(45deg,var(--ink-2) 0 1.2px,transparent 1.2px 3.5px);}
 .family-plot g[role=link] {cursor:pointer;}
 .family-plot g[role=link]:focus-visible {outline:2px solid var(--focus);}
-.family-tooltip {position:absolute;inset-block-start:8px;max-inline-size:min(300px,calc(100% - 20px));font-size:12px;line-height:1.4;background:var(--surface);border:1px solid var(--rule-2);box-shadow:var(--shadow-pop);padding:7px 10px;border-radius:5px;pointer-events:none;color:var(--ink);}
+.family-tooltip {display:block;position:fixed;inset-block-start:8px;max-inline-size:min(300px,calc(100vw - 16px));font-size:12px;line-height:1.4;background:var(--surface);border:1px solid var(--rule-2);box-shadow:var(--shadow-pop);padding:7px 10px;border-radius:5px;color:var(--ink);}
 .family-exact {border-block:1px solid var(--rule);padding-block:10px;}
 .family-exact summary {cursor:pointer;font-weight:600;min-block-size:24px;}
 .family-table {overflow-x:auto;max-inline-size:100%;margin-block-start:10px;}

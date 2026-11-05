@@ -1,4 +1,5 @@
 import { seatOrder } from './Hemicycle.tsx';
+import { Floating, useHoverBridge } from '../floating.tsx';
 import { GraphicChanges } from './GraphicChanges.tsx';
 import { useId, useLayoutEffect, useState } from 'react';
 import type { AllocationResult } from '../../engine/types.ts';
@@ -66,6 +67,7 @@ function VotesVsSeats({ s, r }: { s: Scenario; r: AllocationResult }) {
   const lang = useLang();
   const digits = useDigits();
   const [tip, setTip] = useState<Tip>(null);
+  const bridge = useHoverBridge(() => setTip(null));
   const [box, W] = useChartWidth(600);
   const rows = rowsFor(s, r);
   const total = Number(r.totalValid), seats = s.rules.seats;
@@ -88,8 +90,8 @@ function VotesVsSeats({ s, r }: { s: Scenario; r: AllocationResult }) {
           const y = 10 + i * rowH;
           const vw = xs(row.v / total), sw = xs(row.seats / seats);
           return (
-            <g key={row.id} onMouseMove={(e) => setTip({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY, html: <><b>{row.name}</b><div>{L('Votes', 'קולות')}: {fmtInt(row.v)} ({fmtPct(row.v, total, digits)})</div>{row.id !== '__unrep' && <div>{L('Seats', 'מנדטים')}: {row.seats} ({fmtPct(row.seats, seats, digits)})</div>}</> })}
-              onMouseLeave={() => setTip(null)} onClick={() => row.id !== '__unrep' && setState({ selectedListId: row.id })} style={{ cursor: row.id !== '__unrep' ? 'pointer' : 'default' }}>
+            <g key={row.id} onMouseMove={(e) => { bridge.cancel(); setTip({ x: e.clientX, y: e.clientY, html: <><b>{row.name}</b><div>{L('Votes', 'קולות')}: {fmtInt(row.v)} ({fmtPct(row.v, total, digits)})</div>{row.id !== '__unrep' && <div>{L('Seats', 'מנדטים')}: {row.seats} ({fmtPct(row.seats, seats, digits)})</div>}</> }); }}
+              onMouseLeave={bridge.leave} onClick={() => row.id !== '__unrep' && setState({ selectedListId: row.id })} style={{ cursor: row.id !== '__unrep' ? 'pointer' : 'default' }}>
               <rect x={0} y={y - 2} width={W} height={rowH - 4} fill="transparent" />
               <text x={rtl ? W - 4 : 4} y={y + barH + 3} textAnchor={rtl ? 'end' : 'start'} fill="var(--ink)"><title>{row.name}</title>{isolate(clip(row.name, labelW - 8))}</text>
               <rect className="bar" x={rtl ? W - labelW - vw : labelW} y={y + 0.5} width={vw} height={barH - 1} rx={2} fill={row.color} fillOpacity={0.28} stroke={row.color} strokeWidth={1} />
@@ -103,7 +105,7 @@ function VotesVsSeats({ s, r }: { s: Scenario; r: AllocationResult }) {
         })}
         <line x1={rtl ? W - labelW : labelW} x2={rtl ? W - labelW : labelW} y1={4} y2={H - 20} stroke="var(--axis)" />
       </svg>
-      {tip && <div className="tip chamber" style={{ position: 'absolute', left: tip.x + 12, top: tip.y + 30, background: 'var(--surface)', border: '1px solid var(--line)', borderRadius: 8, padding: '6px 9px', fontSize: 12.5, pointerEvents: 'none', boxShadow: '0 6px 18px rgba(0,0,0,.15)' }}>{tip.html}</div>}
+      {tip && <Floating onPointerEnter={bridge.cancel} onPointerLeave={bridge.leave} className="chart-tooltip" anchor={() => ({left: tip.x, right: tip.x, top: tip.y, bottom: tip.y})}>{tip.html}</Floating>}
     </figure>
   );
 }
@@ -112,6 +114,7 @@ function ThresholdDistance({ s, r }: { s: Scenario; r: AllocationResult }) {
   const L = useL();
   const lang = useLang();
   const [tip, setTip] = useState<Tip>(null);
+  const bridge = useHoverBridge(() => setTip(null));
   const [box, W] = useChartWidth(600);
   const thr = Number(r.thresholdVotes);
   if (thr === 0) return <p className="small muted">{L('No percentage threshold in this election.', 'בבחירות אלה אין אחוז חסימה.')}</p>;
@@ -132,8 +135,8 @@ function ThresholdDistance({ s, r }: { s: Scenario; r: AllocationResult }) {
           const y = 8 + i * rowH;
           const x = d >= 0 ? mid : mid - w;
           return (
-            <g key={l.id} onMouseMove={(e) => setTip({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY, html: <><b>{listLabel(l, lang)}</b><div>{fmtInt(l.votes)} {L('votes', 'קולות')}</div><div>{d >= 0 ? '+' : '−'}{fmtInt(Math.abs(d))} {L('vs threshold', 'מול החסימה')}</div></> })}
-              onMouseLeave={() => setTip(null)} onClick={() => setState({ selectedListId: l.id })} style={{ cursor: 'pointer' }}>
+            <g key={l.id} onMouseMove={(e) => { bridge.cancel(); setTip({ x: e.clientX, y: e.clientY, html: <><b>{listLabel(l, lang)}</b><div>{fmtInt(l.votes)} {L('votes', 'קולות')}</div><div>{d >= 0 ? '+' : '−'}{fmtInt(Math.abs(d))} {L('vs threshold', 'מול החסימה')}</div></> }); }}
+              onMouseLeave={bridge.leave} onClick={() => setState({ selectedListId: l.id })} style={{ cursor: 'pointer' }}>
               <rect x={0} y={y - 3} width={W} height={rowH - 2} fill="transparent" />
               <text x={rtl ? W - 8 : 8} y={y + 11} textAnchor={rtl ? 'end' : 'start'} fill="var(--ink)"><title>{listLabel(l, lang)}</title>{isolate(clip(listLabel(l, lang), labelW - 12))}</text>
               <rect className="bar" x={x} y={y + 2} width={Math.max(1, w)} height={12} rx={2} fill={l.color} />
@@ -143,7 +146,7 @@ function ThresholdDistance({ s, r }: { s: Scenario; r: AllocationResult }) {
         })}
         <line x1={mid} x2={mid} y1={2} y2={H - 18} stroke="var(--ink)" strokeWidth={1.5} />
       </svg>
-      {tip && <div style={{ position: 'absolute', left: tip.x + 12, top: tip.y + 40, background: 'var(--surface)', border: '1px solid var(--line)', borderRadius: 8, padding: '6px 9px', fontSize: 12.5, pointerEvents: 'none', boxShadow: '0 6px 18px rgba(0,0,0,.15)' }}>{tip.html}</div>}
+      {tip && <Floating onPointerEnter={bridge.cancel} onPointerLeave={bridge.leave} className="chart-tooltip" anchor={() => ({left: tip.x, right: tip.x, top: tip.y, bottom: tip.y})}>{tip.html}</Floating>}
     </figure>
   );
 }

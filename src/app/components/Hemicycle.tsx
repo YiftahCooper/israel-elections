@@ -1,3 +1,4 @@
+import { Floating, useHoverBridge } from '../floating.tsx';
 import { blocDisplayOrder } from '../blocOrder.ts';
 import { GraphicChanges } from './GraphicChanges.tsx';
 import { changedSeatKeys } from '../graphics.ts';
@@ -82,7 +83,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   const svgRef = useRef<SVGSVGElement>(null);
   // on a phone the arc fills the width without labels; the legend below names the lists instead
 
-  const [hover, setHover] = useState<{ seat: SeatInfo; x: number; y: number } | null>(null);
+  const [hover, setHover] = useState<{ seat: SeatInfo; anchor: Element } | null>(null);
   const seats = useMemo(() => seatOrder(s, r, colorBy, showComponents), [s, r, colorBy, showComponents]);
   const { base, result: br, labelReference } = useGraphicReference(s, reference);
   const changes = useMemo(() => changedSeatKeys(s, r, base, br), [s, r, base, br]);
@@ -110,10 +111,10 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
     return { bands: out, bandOf };
   }, [seats, s.blocs, layout]);
 
+  const hoverBridge = useHoverBridge(() => setHover(null));
   const onSeat = (st: SeatInfo, evt: React.MouseEvent | React.FocusEvent) => {
-    const box = (evt.currentTarget as SVGElement).ownerSVGElement!.parentElement!.getBoundingClientRect();
-    const t = (evt.currentTarget as SVGElement).getBoundingClientRect();
-    setHover({ seat: st, x: t.left - box.left + t.width / 2, y: t.top - box.top });
+    hoverBridge.cancel();
+    setHover({ seat: st, anchor: evt.currentTarget });
   };
 
   const exportSvg = (kind: 'svg' | 'png') => {
@@ -221,7 +222,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
           return (
             <g key={i}><circle className={`seat ${dim ? 'dim' : ''}`} cx={cx + p.x * R} cy={cy + p.y * R} r={rad * R} fill={st.color}
               data-seat="" data-bloc={st.bloc ?? "__none"} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? "var(--ink)" : "var(--surface)"} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`) ? 4 : 2}
-              onMouseEnter={(e) => onSeat(st, e)} onMouseLeave={() => setHover(null)} onFocus={(e) => onSeat(st, e)} onBlur={() => setHover(null)}
+              onMouseEnter={(e) => onSeat(st, e)} onMouseLeave={hoverBridge.leave} onFocus={(e) => onSeat(st, e)} onBlur={() => setHover(null)}
               onClick={() => setState({ selectedListId: selected === st.listId ? null : st.listId })}><title>{seatLabel(st)}</title></circle>
             {st.innerColor && <circle data-component-seat={st.partyId} pointerEvents="none" cx={cx + p.x * R} cy={cy + p.y * R} r={rad * R * .64} fill={st.innerColor} className={dim ? 'seat dim' : 'seat'} />}
             </g>
@@ -239,11 +240,27 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
         const bc = s.blocs.find(b => b.id === st.bloc)?.color ?? 'var(--muted)';
         return <g key={i}><rect data-bloc-region={st.bloc ?? '__none'} x={x-5} y={y-5} width={46} height={46} rx={8} fill={bc} stroke="none" className="wedge" />
           <rect data-seat="" className="seat" x={x} y={y} width={36} height={36} rx={4} fill={st.color} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? 'var(--ink)' : 'var(--surface)'} strokeWidth={3}
-            onMouseEnter={e => onSeat(st,e)} onMouseLeave={() => setHover(null)} onClick={() => setState({selectedListId: st.listId})}><title>{seatLabel(st)}</title></rect>
+            onMouseEnter={e => onSeat(st,e)} onMouseLeave={hoverBridge.leave} onClick={() => setState({selectedListId: st.listId})}><title>{seatLabel(st)}</title></rect>
           {st.innerColor && <circle data-component-seat={st.partyId} pointerEvents="none" cx={x+18} cy={y+18} r={12} fill={st.innerColor} />}
         </g>;
       })}
-
+      {/* Only the outside edge of each bloc is outlined; there are no per-seat frames. */}
+      {seats.map((st, i) => {
+        const col = i % 20, row = Math.floor(i / 20);
+        const x = 19 + col * 48, y = 11 + row * 48;
+        const same = (n: number) => n >= 0 && n < seats.length && seats[n].bloc === st.bloc;
+        const d = [
+          (row === 0 || !same(i - 20)) ? `M${x} ${y}h48` : '',
+          (col === 19 || !same(i + 1)) ? `M${x + 48} ${y}v48` : '',
+          (row === Math.ceil(seats.length / 20) - 1 || !same(i + 20)) ? `M${x} ${y + 48}h48` : '',
+          (col === 0 || !same(i - 1)) ? `M${x} ${y}v48` : '',
+        ].join(' ');
+        if (!d.trim()) return null;
+        return <g key={`boundary-${i}`} aria-hidden="true" pointerEvents="none">
+          <path data-bloc-boundary-gap="" d={d} fill="none" stroke="var(--surface)" strokeWidth={8} />
+          <path data-bloc-boundary={st.bloc ?? '__none'} d={d} fill="none" stroke={s.blocs.find(b => b.id === st.bloc)?.color ?? 'var(--muted)'} strokeWidth={3} />
+        </g>;
+      })}
     </svg>;
   }
 
@@ -282,14 +299,14 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       {hasChanges && <p className="small muted graphic-key">{L('Seat changes', 'שינויי מנדטים')} · {referenceLabel(labelReference,lang).name} <Info title={L('About these outlines','על המתארים')}>{L(`Outlined: seats gained since ${referenceLabel(labelReference,lang).name}. Dashed, in the small chamber: seats lost. Outlines compare list seat counts, not individual seats or voters moving between lists. Dashed bars show the reference; neutral ink shows the difference.`, `מתאר: מנדטים שנוספו מאז ${referenceLabel(labelReference,lang).name}. מקווקו, בכנסת הקטנה: מנדטים שאבדו. המתארים משווים את מספר המנדטים של הרשימות; אין משמעות של מנדט או בוחר שעבר בין רשימות. מתארי העמודות המקווקווים מציינים את הבסיס; דיו ניטרלי מציין שינוי.`)}</Info></p>}
       <GraphicChanges s={evidenceScenario} r={evidenceResult} reference={reference} compact />
       {hover && hv && (
-        <div className="tip" style={{ left: Math.max(0, hover.x - 100), top: Math.max(0, hover.y - 96) }}>
+        <Floating onPointerEnter={hoverBridge.cancel} onPointerLeave={hoverBridge.leave} className="tip" preferAbove anchor={() => hover.anchor.getBoundingClientRect()}>
           <div className="row"><span className="swatch" style={{ background: hover.seat.color }} /><b>{listLabel(hv, lang)}</b> <span className="muted">({hv.letters})</span></div>
           {cand ? <div><b>{shownName(cand)}</b> · {L('rank', 'מקום')} {hover.seat.idx + 1}{cand.notes?.map((n, k) => <div key={k} className="muted small">{lang === 'he' ? n.he : n.en}</div>)}</div>
             : hv.rosterUnavailable || hv.rosterTruncated ? <div className="muted">{L(`Seat ${hover.seat.idx + 1} of the list; candidate names are not available for this election`, `מושב ${hover.seat.idx + 1} של הרשימה; שמות המועמדים אינם זמינים לבחירות אלה`)}</div>
             : <div className="bad">{L('Vacant — the list has too few candidates', 'מושב ריק — אין די מועמדים ברשימה')}</div>}
           {cand?.partyHe && <div className="muted small">{seatLabel(hover.seat)}</div>}
           <div className="muted small">{hover.seat.remainder ? remainderHow : L('Seat won by whole quota', 'מנדט שהושג במודד שלם')}</div>
-        </div>
+        </Floating>
       )}
       {!compactProp && (
         <div className="legend" role="group" aria-label={L('Lists in the Knesset', 'הרשימות בכנסת')} style={{ marginTop: 6 }}>

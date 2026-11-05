@@ -33,7 +33,7 @@ export function ListSidePanel({ s, r, ds, base, baseR, listId }: { s: Scenario; 
   const previousSeats = useRef({ id: listId, seats: lr?.seats });
   useEffect(() => { if (!previewing) previousSeats.current = { id: listId, seats: lr?.seats }; }, [listId, lr?.seats, previewing]);
   // a newly opened list starts at the top of the panel
-  useEffect(() => { ref.current?.scrollTo({ top: 0 }); }, [listId]);
+  useEffect(() => { ref.current?.querySelector('.sp-body')?.scrollTo({ top: 0 }); }, [listId]);
   if (!l || !lr) return null;
   const was = officialSeatsFor(l.id, s, r, base, baseR);
   const d = was === null ? 0 : lr.seats - was;

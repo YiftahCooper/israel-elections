@@ -125,6 +125,10 @@ input, textarea { caret-color: var(--focus); }
 .session .moves > span { min-width: 0; max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
 .session .history { margin-top: 6px; flex-basis: 100%; }
 
+/* Edits change content above the viewport; browser anchoring must not move the editing surface. */
+html, body { overflow-anchor: none; }
+:root { --toolbar-h: 40px; --board-top: calc(var(--band-h, 52px) + var(--toolbar-h) + 12px); }
+
 /* ---------- page grid: the board (lists | chamber, blocs, figures | the opened list) and full-width tool pages */
 .work { display: flex; flex-direction: column; gap: 12px; padding: 12px 16px 28px; }
 .board { display: grid; grid-template-columns: minmax(300px, 380px) minmax(0, 1fr); gap: 12px; align-items: start; }
@@ -220,7 +224,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .info > button { position: relative; border: 0; background: transparent; color: var(--muted); width: 24px; height: 24px; margin: -4px; padding: 0; font-size: 11px; font-weight: 700; line-height: 1; cursor: help; display: inline-grid; place-items: center; }
 .info > button::before { content: ''; position: absolute; inset: 4px; border: 1px solid var(--axis); border-radius: 50%; }
 .info > button:hover::before, .info > button[aria-expanded="true"]::before { border-color: var(--ink-2); }
-.info .pop { position: absolute; z-index: 40; inset-block-start: 22px; inset-inline-start: -8px; width: 300px; max-width: 80vw; padding: 10px 12px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--rule); box-shadow: var(--shadow-pop); color: var(--ink); font-size: 13px; font-weight: 400; text-align: start; white-space: normal; }
+.info .pop { display: block; position: fixed; z-index: 40; inset-block-start: 22px; inset-inline-start: -8px; width: 300px; max-width: 80vw; padding: 10px 12px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--rule); box-shadow: var(--shadow-pop); color: var(--ink); font-size: 13px; font-weight: 400; text-align: start; white-space: normal; }
 .info .pop b { display: block; margin-bottom: 3px; }
 .info .pop .glossary-link { display: block; margin-top: 6px; font-size: 12.5px; }
 
@@ -244,10 +248,10 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 [data-theme="dark"] .corridor { background: color-mix(in srgb, var(--bc) 32%, transparent); border-color: color-mix(in srgb, var(--bc) 45%, transparent); }
 .corridor:hover { border-color: color-mix(in srgb, var(--bc) 70%, transparent); }
 .corridor[aria-pressed="true"] { border-color: var(--bc); box-shadow: inset 0 0 0 1px var(--bc); }
-.corridor .pieces { display: flex; gap: 1px; height: 14px; border-radius: 3px; overflow: hidden; }
+.corridor .pieces { display: flex; gap: 1px; height: clamp(26px, 3vw, 38px); border-radius: 3px; overflow: hidden; }
 .corridor .pieces i { display: block; min-width: 1px; transition: flex-grow .3s ease, opacity .2s; }
 .corridor .pieces i.dim { opacity: .25; }
-.corridor .label { font-size: 13px; display: flex; gap: 6px; align-items: baseline; overflow: hidden; white-space: nowrap; }
+.corridor .label { font-size: 14px; display: flex; gap: 6px; align-items: baseline; overflow: hidden; white-space: nowrap; }
 .corridor .label b { font-weight: 700; }
 .corridor .label .clip { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
 .corridor .label > b { flex-shrink: 0; }
@@ -288,7 +292,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 [data-theme="dark"] .seat.dim { opacity: .38; }
 /* the centre readout scales with the drawing; on a phone it would shrink to ~6px, so it is drawn larger there */
 @media (max-width: 760px) { .chamber .centre-total { font-size: 64px; } .chamber .centre-sub { font-size: 28px; } }
-.chamber .tip { position: absolute; pointer-events: none; z-index: 30; background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); box-shadow: var(--shadow-pop); padding: 8px 10px; font-size: 13px; min-width: 180px; }
+.chamber .tip, .chart-tooltip { display: block; position: fixed; z-index: 30; background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); box-shadow: var(--shadow-pop); padding: 8px 10px; font-size: 13px; min-width: min(180px, calc(100vw - 16px)); max-width: min(360px, calc(100vw - 16px)); }
 .chamber-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 6px; margin-block-end: 4px; }
 .legend { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 13px; }
 .legend button { display: inline-flex; gap: 6px; align-items: center; border: 0; background: none; padding: 3px 0; cursor: pointer; }
@@ -308,9 +312,10 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .fig .k { font-size: 12.5px; color: var(--ink-2); display: flex; align-items: center; gap: 4px; justify-content: space-between; }
 .fig .v { font-size: 15px; font-weight: 700; display: block; margin-top: 1px; }
 .fig .d { font-size: 12.5px; color: var(--muted); display: block; }
-.fig.open { grid-column: 1 / -1; border-color: var(--shell); }
+.fig.open { border-color: var(--shell); }
 .fig.open > button { background: var(--open); border-radius: var(--radius) var(--radius) 0 0; }
-.fig .more { padding: 8px 10px 10px; border-top: 1px solid var(--rule); font-size: 13px; }
+.fig .more { margin: auto; inset: 0; padding: 12px; border: 1px solid var(--rule-2); border-radius: var(--radius); font-size: 13px; background: var(--surface); color: var(--ink); box-shadow: var(--shadow-pop); width: min(460px, calc(100vw - 24px)); max-height: min(420px, calc(100dvh - 32px)); overflow-y: auto; overscroll-behavior: contain; }
+.fig .more-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
 .fig.static { padding: 8px 10px; }
 
 /* ---------- tools */
@@ -462,21 +467,23 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .board-preview .corridor, .board-preview .corridor .pieces i { transition: none; }
 .board-preview .tick { animation: none; }
 @media (prefers-reduced-motion: reduce) { .lb-bar > i { transition: none; } }
-@media (min-width: 1101px) { .lbars { position: sticky; top: 100px; max-height: calc(100vh - 112px); overflow-y: auto; overscroll-behavior: contain; } }
+@media (min-width: 1101px) { .lbars { position: sticky; top: var(--board-top); max-height: calc(100dvh - var(--board-top) - 12px); overflow-y: auto; overscroll-behavior: contain; } }
 
 /* ---------- the opened list: a side panel on desktop, a sheet on narrow screens */
-.side-panel { display: flex; flex-direction: column; min-width: 0; }
-.sp-head { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-block-end: 1px solid var(--rule); }
+.side-panel { display: flex; flex-direction: column; min-width: 0; overflow: hidden; }
+.side-panel > * { flex-shrink: 0; }
+.side-panel > .sp-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+.sp-head { background: var(--surface); display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-block-end: 1px solid var(--rule); }
 .sp-seats { display: grid; justify-items: center; line-height: 1.1; }
 .sp-seats b { font-size: 28px; font-weight: 700; }
 .sp-body { padding: 12px 14px 16px; }
 .side-panel .ld { columns: 1; }
-@media (min-width: 1101px) { .board .side-panel { position: sticky; top: 100px; max-height: calc(100vh - 112px); overflow-y: auto; overscroll-behavior: contain; } }
-@media (max-width: 1100px) { .board .side-panel { position: fixed; inset: 0; z-index: 70; overflow-y: auto; border-radius: 0; border: 0; } }
+@media (min-width: 1101px) { .panel-slot { container-type: inline-size; } .board .side-panel { position: fixed; inset-block: var(--board-top) 12px; inset-inline-end: 16px; width: 100cqw; z-index: 26; } }
+@media (max-width: 1100px) { .board .side-panel { position: fixed; inset: 0; z-index: 70; overflow: hidden; border-radius: 0; border: 0; } }
 /* a full-screen sheet on a tablet keeps the controls at a readable width rather than stretching them across it */
 @media (min-width: 761px) and (max-width: 1100px) { .board .side-panel > .sp-head, .board .side-panel > .sp-body, .board .side-panel > .phone-result-strip { inline-size: 100%; max-inline-size: 720px; margin-inline: auto; box-sizing: border-box; } }
 .drawer { position: fixed; inset-block: 0; inset-inline-end: 0; width: min(440px, 100vw); z-index: 70; box-shadow: var(--shadow-pop); }
-.drawer .side-panel { height: 100%; overflow-y: auto; border-radius: 0; }
+.drawer .side-panel { height: 100%; overflow: hidden; border-radius: 0; }
 /* a side drawer beside a tool page, not a modal: it starts under the header so undo, the scenario chip and the election stay reachable */
 @media (min-width: 761px) { .drawer { inset-block-start: var(--band-h, 52px); } }
 

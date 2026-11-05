@@ -1,7 +1,7 @@
+import { Floating } from '../floating.tsx';
 import {markerOwner,registerMarker,subscribeMarkers} from '../markerOwners.ts';
 import { useActiveReference } from '../useActiveReference.ts';
 import { useId, useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react';
-import { createPortal } from 'react-dom';
 import { changeText, ChangeValue } from '../changeValue.tsx';
 import type { Scenario } from '../../model/scenario.ts';
 import { baselineOf, editPathLabel, markerPath, markerReference, type EditPath } from '../derive.ts';
@@ -18,17 +18,8 @@ export function EditMarker({ s, path, summary = false }: { s: Scenario; path: Ed
   const resolved=base?markerPath(s,base,path):null;
   const key=`${s.id}/${resolved?.join('/')??''}`;
   const owner=useSyncExternalStore(subscribeMarkers,()=>markerOwner(key),()=> '');
-  const anchor = useRef<HTMLSpanElement>(null), tooltip = useRef<HTMLSpanElement>(null);
-  const [open, setOpen] = useState(false), [position, setPosition] = useState({ left: 8, top: 8 });
-  useLayoutEffect(() => {
-    if (!open || !anchor.current || !tooltip.current) return;
-    const a = anchor.current.getBoundingClientRect(), t = tooltip.current.getBoundingClientRect();
-    setPosition({ left: Math.max(8, Math.min(a.left, innerWidth - t.width - 8)),
-      top: Math.max(8, Math.min(a.bottom + 4, innerHeight - t.height - 8)) });
-    const close = () => setOpen(false);
-    window.addEventListener('scroll', close, true); window.addEventListener('resize', close);
-    return () => { window.removeEventListener('scroll', close, true); window.removeEventListener('resize', close); };
-  }, [open, lang]);
+  const anchor = useRef<HTMLSpanElement>(null);
+  const [open, setOpen] = useState(false);
   useLayoutEffect(()=>{if(!resolved||!anchor.current)return;return registerMarker(key,{id,node:anchor.current,priority:path[0]==='parts'||path[0]==='customGroupingName'?0:summary?2:1});},[key,id,!!resolved,path[0],summary]);
   if (!base || !resolved) return null;
   const before=markerReference(s,base,resolved);
@@ -39,8 +30,8 @@ export function EditMarker({ s, path, summary = false }: { s: Scenario; path: Ed
   return <span ref={anchor} className="edit-marker-slot" data-marker-path={logicalPath.join('/')}>{visible&&<span className="edit-marker" data-marker-kind={logicalPath[0]==='parts'?'part':'item'} tabIndex={visible?0:undefined} aria-label={label} aria-describedby={open&&visible ? id : undefined}
     onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)} onFocus={() => setOpen(true)} onBlur={() => setOpen(false)}
     onKeyDown={e => { if (e.key === 'Escape' && open) { e.stopPropagation(); setOpen(false); } }}>{L('Edited', 'נערך')}
-    {open && visible && createPortal(<span ref={tooltip} id={id} role="tooltip" className="edit-tooltip" style={position}>
+    {open && visible && <Floating id={id} className="edit-tooltip" anchor={() => anchor.current?.getBoundingClientRect()}>
       {context} · {L('Edited: was ', 'נערך: קודם ')}<ChangeValue s={before} path={logicalPath} lang={lang} />
-    </span>, document.body)}
+    </Floating>}
   </span>}</span>;
 }

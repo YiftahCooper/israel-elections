@@ -2,7 +2,7 @@ import {familyColor} from '../families/colors.ts';
 import {recordEditScope} from './editScopes.ts';
 import {familyLabel} from '../families/labels.ts';
 import { resolve, distribute } from '../families/model.ts';
-import { SCENARIO_PALETTE } from './scenarioColors.ts';
+import { SCENARIO_COLOURS } from './scenarioColors.ts';
 import { RULESETS } from "../engine/rules.ts";
 import { PARTS, partSnapshot } from './parts.ts';
 // Pure scenario transitions. Each returns a new Scenario and never mutates its input.
@@ -132,7 +132,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       break;
     }
     case 'setIdentityColor':
-      need(/^#[0-9a-f]{6}$/i.test(action.color) && (SCENARIO_PALETTE as readonly string[]).includes(action.color), 'colour', 'Choose a scenario palette colour.');
+      need(/^#[0-9a-f]{6}$/i.test(action.color) && (SCENARIO_COLOURS as readonly string[]).includes(action.color), 'colour', 'Choose a scenario palette colour.');
       s = { ...s, identityColor: action.color }; break;
     case 'setCoalition':
       s = { ...s, coalition: { in: [...new Set(action.coalition.in)], out: [...new Set(action.coalition.out)].filter(id => !action.coalition.in.includes(id)) } }; break;
