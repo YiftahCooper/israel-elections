@@ -48,6 +48,12 @@
       "publisher": "Knesset, Basic Law: The Government, section 12",
       "kind": "official",
       "accessed": "2026-11-05"
+    },
+    "sipri-2019": {
+      "url": "https://www.sipri.org/sites/default/files/SIPRIYB20cC.pdf",
+      "publisher": "SIPRI Yearbook 2020, Ian Davis, Annex C: Chronology 2019",
+      "kind": "academic",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -250,13 +256,21 @@
   },
   "term": {
     "inclusionRule": "two-independent-chronologies-one-official-or-academic",
-    "chronologies": [],
+    "chronologies": [
+      "sipri-2019"
+    ],
     "events": [],
     "candidatesPending": [
       {
         "label": "Gaza fighting",
         "date": "2019-05",
-        "why": "Not promoted: no two independent qualifying chronologies inspected."
+        "why": "SIPRI’s 2019 chronology selects escalation on 4–5 May; no second inspected qualifying chronology selecting this round was recovered. The AP timeline locator returned a cache miss; contemporary reporting alone does not meet the rule.",
+        "cites": [
+          {
+            "source": "sipri-2019",
+            "quote": "4–5 May The Gaza–Israel conflict escalates"
+          }
+        ]
       }
     ],
     "start": "2019-04-09",
