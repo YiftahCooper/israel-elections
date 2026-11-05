@@ -87,6 +87,19 @@
       "publisher": "Press Trust of India / Rediff, Harinder Mishra, 5 May 2006",
       "kind": "secondary",
       "accessed": "2026-11-05"
+    },
+    "crs2009": {
+      "url": "https://www.everycrsreport.com/files/20090814_RL33476_e8cc0693598c855ba52b077cada7639dff51fa56.html",
+      "publisher": "Congressional Research Service, Carol Migdalovitz, Israel: Background and Relations with the United States, RL33476, 14 August 2009",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "EveryCRSReport reproduction of the CRS report; independently authored retrospective, especially Government and Politics, pp. 6–10."
+    },
+    "idi-review-2009": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/elections/2009/",
+      "publisher": "Israel Democracy Institute, 2009 election retrospective",
+      "kind": "academic",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -274,9 +287,65 @@
     "chronologies": [
       "mfa-history",
       "ipu2006",
-      "ipu2009"
+      "ipu2009",
+      "crs2009",
+      "idi-review-2009"
     ],
     "events": [
+      {
+        "id": "second-lebanon-war",
+        "date": "2006-07-12",
+        "category": "security",
+        "textEn": "The Second Lebanon War began between Israel and Hezbollah.",
+        "textHe": "מלחמת לבנון השנייה החלה בין ישראל לחזבאללה.",
+        "cites": [
+          {
+            "source": "mfa-history",
+            "quote": "on 12 July 2006"
+          },
+          {
+            "source": "crs2009",
+            "quote": "July 12, 2006 provoked Israel to launch a war against Hezbollah in Lebanon"
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "hamas-gaza-takeover",
+        "date": "2007-06",
+        "category": "security",
+        "textEn": "Hamas took control of the Gaza Strip.",
+        "textHe": "חמאס השתלט על רצועת עזה.",
+        "cites": [
+          {
+            "source": "mfa-history",
+            "quote": "Hamas violent takeover of Gaza Strip"
+          },
+          {
+            "source": "crs2009",
+            "quote": "After Hamas took over the Gaza Strip in June 2007"
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "winograd-final-report",
+        "date": "2008-01-30",
+        "category": "governance",
+        "textEn": "The Winograd Commission released its final report on the Second Lebanon War.",
+        "textHe": "ועדת וינוגרד פרסמה את הדוח הסופי שלה על מלחמת לבנון השנייה.",
+        "cites": [
+          {
+            "source": "crs2009",
+            "quote": "The final report, released on January 30, 2008"
+          },
+          {
+            "source": "idi-review-2009",
+            "quote": "the final report of the Winograd Commission"
+          }
+        ],
+        "confidence": "high"
+      },
       {
         "id": "cast-lead",
         "date": "2008-12-27",
@@ -298,29 +367,14 @@
     ],
     "candidatesPending": [
       {
-        "label": "Second Lebanon War",
-        "date": "2006-07",
-        "why": "A second qualifying independent chronology and/or primary dated formal record was not retrieved. The attempted JVL seventeenth-Knesset history URL returned a generic page, not a credited Knesset history; it is not cited."
-      },
-      {
         "label": "Annapolis conference",
         "date": "2007-11",
-        "why": "A second qualifying independent chronology and/or primary dated formal record was not retrieved. The attempted JVL seventeenth-Knesset history URL returned a generic page, not a credited Knesset history; it is not cited."
+        "why": "CRS independently selects and dates Annapolis (27 November 2007), but the retrieved MFA history, IPU 2009 and IDI 2009 do not select it. A second qualifying chronology is still needed."
       },
       {
         "label": "Olmert resignation and Livni tasking/extension",
         "date": "2008-09",
-        "why": "A second qualifying independent chronology and/or primary dated formal record was not retrieved. The attempted JVL seventeenth-Knesset history URL returned a generic page, not a credited Knesset history; it is not cited."
-      },
-      {
-        "label": "Gaza takeover by Hamas",
-        "date": "2007-06",
-        "why": "A second qualifying independent chronology and/or primary dated formal record was not retrieved. The attempted JVL seventeenth-Knesset history URL returned a generic page, not a credited Knesset history; it is not cited."
-      },
-      {
-        "label": "Winograd inquiry report",
-        "date": "2008-01",
-        "why": "A second qualifying independent chronology and/or primary dated formal record was not retrieved. The attempted JVL seventeenth-Knesset history URL returned a generic page, not a credited Knesset history; it is not cited."
+        "why": "IDI 2009 and IPU 2009 select the resignation/failed replacement sequence. A formal failed-formation entry already exists in government.changes. Exact resignation, tasking and extension notices have not been inspected; this bundled candidate is not duplicated as a term event."
       }
     ],
     "endedBy": {
