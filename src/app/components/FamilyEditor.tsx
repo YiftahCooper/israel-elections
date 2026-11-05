@@ -10,7 +10,7 @@ import { useL, useLang } from '../i18n.ts';
 import { ChoicePicker } from './ChoicePicker.tsx';
 import {JointFacts} from './JointFacts.tsx';
 import { Seg } from './ui.tsx';
-import { historyElections } from '../../families/runtime.ts';
+import { historyElections, historyListName } from '../../families/runtime.ts';
 export function FamilyEditor({f,initialElection,onEdit,onSave}: {f:Family;initialElection:ElectionId;onEdit:(change:(f:Family)=>Family)=>void;onSave:()=>void}) {
  const L=useL(),lang=useLang();
  const [election,setElection]=useState(initialElection),[ds,setDataset]=useState<ElectionDataset|null>(null),[search,setSearch]=useState(''),[error,setError]=useState('');
@@ -26,7 +26,7 @@ export function FamilyEditor({f,initialElection,onEdit,onSave}: {f:Family;initia
  const apply=()=>{onEdit(x=>({...x,included:[...new Set([...x.included??[],...linked])],links:[...(x.links??[]),...(edge?edge.from.flatMap(from=>edge.to.map(to=>({from,to,type:edge.relation==='electoral-partner'?'electoral-partner' as const:'lineage' as const,sourceEdgeId:edge.id,...(scope?{electionId:scope}:{})}))):[{from,to,type,...(scope?{electionId:scope}:{})}])]}));setPreview(false);setSuggested('');};
  return <div className="family-editor">
   <div className="row"><button className="btn" onClick={onSave}>{L('Save as my preset','שמירה כתבנית שלי')}</button><span className="small muted">{L('Browser-only · edits make a personal copy','בדפדפן זה בלבד · עריכות יוצרות עותק אישי')}</span></div>
-  <label>{L('Preset name','שם התבנית')}<input key={`${f.id}-${lang}`} defaultValue={familyLabel(f,lang)} onBlur={e=>{const v=e.target.value.trim();if(v&&v!==(familyLabel(f,lang)))onEdit(x=>({...x,[lang==='he'?'nameHe':'nameEn']:v,[lang==='he'?'labelHe':'labelEn']:v}));}}/></label>
+  <label>{L('Preset name','שם התבנית')}<input type="text" key={`${f.id}-${lang}`} defaultValue={familyLabel(f,lang)} onBlur={e=>{const v=e.target.value.trim();if(v&&v!==(familyLabel(f,lang)))onEdit(x=>({...x,[lang==='he'?'nameHe':'nameEn']:v,[lang==='he'?'labelHe':'labelEn']:v}));}}/></label>
   <div className="family-election-stepper" role="group" aria-label={L('Membership election','בחירות לעריכת חברות')}>
    <button className="btn" disabled={at===0} aria-label={L('Earlier membership election','בחירות קודמות לעריכת חברות')} onClick={()=>setElection(historyElections[at-1].id)}>‹</button>
    <ChoicePicker label={L('Membership election','בחירות לעריכת חברות')} value={election} options={historyElections.map(d=>({value:d.id,label:new Date(d.electionDate+'T12:00:00').toLocaleDateString(lang==='he'?'he-IL':'en-GB')}))} onChange={id=>setElection(id as ElectionId)}/>
@@ -34,11 +34,12 @@ export function FamilyEditor({f,initialElection,onEdit,onSave}: {f:Family;initia
   </div>
   <label>{L('Search lists and aliases','חיפוש רשימות וכינויים')}<input type="search" value={search} onChange={e=>setSearch(e.target.value)}/></label>
   {error&&<p role="alert">{error}</p>}
-  <div className="family-selected">{ds?.lists.filter(l=>selected.selected.has(l.id)).map(l=><button key={l.id} className="btn small" onClick={()=>toggle(l.id,false)}>{listName(l.id)} ×</button>)}</div>
-  {!ds?<p role="status">{L('Loading lists…','טעינת רשימות…')}</p>:<div className="family-picker">{ds.lists.filter(l=>[l.nameHe,l.shortHe,l.shortEn,...appearances.filter(a=>a.listId===l.id).flatMap(a=>{const p=parties.find(p=>p.id===a.partyId);return p?[p.nameHe,p.nameEn,...p.names.flatMap(n=>[n.nameHe,n.nameEn])]:[];})].join(' ').toLocaleLowerCase().includes(search.toLocaleLowerCase())).map(l=><label key={l.id}><input type="checkbox" checked={selected.selected.has(l.id)} ref={el=>{if(el)el.indeterminate=selected.mixed.has(l.id);}} onChange={e=>toggle(l.id,e.target.checked)}/><span>{listName(l.id)}{l.parties?.length?<small>{l.parties.map(p=>lang==='he'?p.nameHe:p.nameEn).join(' · ')}</small>:null}</span>{selected.mixed.has(l.id)&&<small>{L('Mixed','מעורבת')}</small>}</label>)}</div>}
+  <div className="family-selected">{historyElections[at].lists.filter(l=>selected.selected.has(l.id)).map(l=><button key={l.id} className="btn small" onClick={()=>toggle(l.id,false)}>{historyListName(election,l.id,lang)} ×</button>)}</div>
+  {/* One fixed-height box for loading and loaded lists, so changing the election never moves the sections below. */}
+  <div className="family-picker" aria-busy={!ds}>{!ds?<p role="status">{L('Loading lists…','טעינת רשימות…')}</p>:ds.lists.filter(l=>[l.nameHe,l.shortHe,l.shortEn,...appearances.filter(a=>a.listId===l.id).flatMap(a=>{const p=parties.find(p=>p.id===a.partyId);return p?[p.nameHe,p.nameEn,...p.names.flatMap(n=>[n.nameHe,n.nameEn])]:[];})].join(' ').toLocaleLowerCase().includes(search.toLocaleLowerCase())).map(l=><label key={l.id}><input type="checkbox" checked={selected.selected.has(l.id)} ref={el=>{if(el)el.indeterminate=selected.mixed.has(l.id);}} onChange={e=>toggle(l.id,e.target.checked)}/><span>{listName(l.id)}{l.parties?.length?<small>{l.parties.map(p=>lang==='he'?p.nameHe:p.nameEn).join(' · ')}</small>:null}</span>{selected.mixed.has(l.id)&&<small>{L('Mixed','מעורבת')}</small>}</label>)}</div>
   {!!row?.members.some(m=>m.scope==='mixed')&&<details><summary>{L('Mixed-list overrides','חריגות לרשימות מעורבות')}</summary>{row.members.filter(m=>m.scope==='mixed').map(m=><div key={m.listId}>
    <label>{listName(m.listId)} <select aria-label={L(`Counting override for ${listName(m.listId)}`,`חריגת ספירה עבור ${listName(m.listId)}`)} value={f.disabled?.includes(m.listId)?'exclude':f.included?.includes(m.listId)?'include':'default'} onChange={e=>{const v=e.target.value;onEdit(x=>({...x,disabled:[...(x.disabled??[]).filter(id=>id!==m.listId),...(v==='exclude'?[m.listId]:[])],included:[...(x.included??[]).filter(id=>id!==m.listId),...(v==='include'?[m.listId]:[])]}));}}>
-    <option value="default">{L('Use policy','לפי המדיניות')}</option><option value="include">{L('Include whole list','הכללת הרשימה')}</option><option value="exclude">{L('Exclude','ללא הרשימה')}</option>
+    <option value="default">{L('As set for mixed lists','לפי ההגדרה לרשימות מעורבות')}</option><option value="include">{L('Count','ספירה')}</option><option value="exclude">{L('Leave out','השמטה')}</option>
    </select></label><JointFacts listId={m.listId}/>
   </div>)}</details>}
   {!!row?.members.some(m=>m.scope==='extension')&&<details><summary>{L('Optional extensions','הרחבות לבחירה')}</summary>{row.members.filter(m=>m.scope==='extension').map(m=><label key={m.listId}><input type="checkbox" checked={!f.disabled?.includes(m.listId)} onChange={e=>toggle(m.listId,e.target.checked)}/>{listName(m.listId)}</label>)}</details>}

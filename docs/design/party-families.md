@@ -48,8 +48,12 @@ Both the chart and table remain keyboard-operable. There is no animation.
 
 One short definition line and a quiet sourced-draft label replace repeated headings.
 The info button opens the full definition, sources and limitations on demand. Mixed
-policy uses Separate / Include whole lists / Exclude segments next to the charts. It is a
+lists (family + other parties) use Show hatched / Count if family heads it / Count all /
+Leave out next to the charts, each with the mark it produces on the chart. It is a
 per-family view remembered in this browser, not a membership edit, so it never forks.
+Hover reports without taking the pointer or loading anything (list names and mixed-list
+compositions are in the compact runtime): the change since the previous election, the
+counted lists, and each hatched list with the family's own parties in bold.
 Under Separate the line shows whole lists only and a hatched bar stacked on it shows how
 far mixed lists could add (one legend states this once); an election where the family
 ran only inside mixed lists breaks the line instead of plotting zero. Lists left out by

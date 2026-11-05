@@ -1,11 +1,10 @@
 import { Floating } from '../floating.tsx';
-import {useEffect,useId,useRef,useState} from 'react';
-import {aggregate,type Family} from '../../families/model.ts';
-import {familyColor,historyElections,shortFamilyName,type HistoryElection} from '../../families/runtime.ts';
-import {loadDataset,openElection,setState} from '../store.ts';
+import {Fragment,useEffect,useId,useRef,useState} from 'react';
+import {aggregate,membership,type Family} from '../../families/model.ts';
+import {familyColor,historyElections,historyListName,mixedComposition,shortFamilyName,type HistoryElection} from '../../families/runtime.ts';
+import {openElection,setState} from '../store.ts';
 import {useL,useLang} from '../i18n.ts';
-import {listLabel} from '../derive.ts';
-import type {ElectionDataset,ElectionId} from '../../data/schema.ts';
+import type {ElectionId} from '../../data/schema.ts';
 export const familyDate=(d:HistoryElection,lang:'he'|'en')=>new Date(d.electionDate+'T12:00:00').toLocaleDateString(lang==='he'?'he-IL':'en-GB',{year:'numeric',month:'short',day:'numeric'});
 export async function openFamilyElection(id:ElectionId,family?:Family){if(await openElection(id))setState({tool:'board',...(family?{familyView:family}:{})});}
 type Agg=ReturnType<typeof aggregate>;
@@ -17,7 +16,7 @@ const drawn=(a:Agg)=>a.votes!==null&&a.status==='observed'&&!onlyMixed(a);
 export function familyStatus(a:Agg,L:Tr):string|null {
  if(a.votes===null)return L('Unknown','לא ידוע');
  if(a.status==='did-not-contest')return L('Did not contest','לא התמודדו');
- if(a.status==='not-counted')return a.excluded?L('Only in mixed lists (excluded)','רק ברשימות מעורבות (לא נכללות)'):L('No list counted','אין רשימה שנספרה');
+ if(a.status==='not-counted')return a.excluded?L('Only in mixed lists (left out)','רק ברשימות מעורבות (הושמטו)'):L('No list counted','אין רשימה שנספרה');
  if(onlyMixed(a))return L('Only in mixed lists','רק ברשימות מעורבות');
  return null;
 }
@@ -37,8 +36,6 @@ export function FamilyCharts({families,cursor,onCursor,onInspect}:{families:Fami
 function Plot({family:f,metric,scale,cursor,onCursor,onInspect}:{family:Family;metric:'share'|'votes';scale:{top:number;ticks:number[]};cursor:ElectionId;onCursor:(id:ElectionId)=>void;onInspect:(f:Family,id:ElectionId)=>void}) {
  const L=useL(),lang=useLang(),ref=useRef<HTMLDivElement>(null),id=useId().replace(/:/g,''),[width,setWidth]=useState(640),[hover,setHover]=useState(false);
  useEffect(()=>{const el=ref.current;if(!el)return;const o=new ResizeObserver(()=>setWidth(Math.max(270,el.clientWidth)));o.observe(el);setWidth(Math.max(270,el.clientWidth));return()=>o.disconnect();},[]);
- const [hoverDataset,setHoverDataset]=useState<ElectionDataset|null>(null);
- useEffect(()=>{let live=true;if(hover)loadDataset(cursor).then(d=>{if(live)setHoverDataset(d);}).catch(()=>{});return()=>{live=false;};},[hover,cursor]);
  const narrow=width<500,height=narrow?240:300,left=narrow?44:50,right=narrow?78:110,bottom=height-38,top=20,max=scale.top;
  const t0=Date.parse(historyElections[0].electionDate),t1=Date.parse(historyElections[25].electionDate);
  const xAt=(t:number)=>left+(t-t0)/(t1-t0)*(width-left-right);
@@ -52,7 +49,7 @@ function Plot({family:f,metric,scale,cursor,onCursor,onInspect}:{family:Family;m
  const describe=(a:Agg,e:HistoryElection)=>{const status=familyStatus(a,L);const parts=[familyDate(e,lang)];
   if(status)parts.push(status);if(a.votes!==null&&a.status==='observed'&&!onlyMixed(a))parts.push(num(a.votes,e));
   if(a.mixed)parts.push(`${onlyMixed(a)?'':L('Mixed lists','רשימות מעורבות')+': '}${num(a.mixed,e)}`);
-  if(a.excluded&&a.status==='observed')parts.push(`${L('Mixed lists excluded','רשימות מעורבות שלא נכללו')}: ${Number(a.excluded).toLocaleString()}`);
+  if(a.excluded&&a.status==='observed')parts.push(`${L('Mixed lists left out','רשימות מעורבות שהושמטו')}: ${Number(a.excluded).toLocaleString()}`);
   if(e.pending)parts.push(L('Gazette unverified','הפרסום ברשומות לא אומת'));return parts.join(' · ');};
  const years=historyElections.map(d=>+d.electionDate.slice(0,4)),every=narrow?20:10;
  const ticks:number[]=[];for(let yr=Math.ceil(years[0]/every)*every;yr<=years[25];yr+=every)ticks.push(yr);
@@ -81,6 +78,25 @@ function Plot({family:f,metric,scale,cursor,onCursor,onInspect}:{family:Family;m
    {!path&&!data.some(a=>a.mixed)&&<text className="family-empty" x={(left+width-right)/2} y={(top+bottom)/2} textAnchor="middle">{L('No lists counted in any election','לא נספרו רשימות באף מערכת בחירות')}</text>}
    {lastAt!==undefined&&<text className="family-end-label" x={width-right+12} y={endY} textAnchor="start">{labelLines.slice(0,3).map((line,i)=><tspan key={i} x={width-right+12} dy={i?13:0}>{line.length>(narrow?11:17)?line.slice(0,narrow?10:16)+'…':line}{i===2&&labelLines.length>3?'…':''}</tspan>)}</text>}
   </svg>
-  {hover&&at>=0&&<Floating className="family-tooltip" anchor={() => ref.current?.querySelector(`[aria-label="${CSS.escape(describe(data[at],historyElections[at]))}"]`)?.getBoundingClientRect() ?? ref.current?.getBoundingClientRect()}>{describe(data[at],historyElections[at])}{hoverDataset?.id===cursor&&<><br/>{hoverDataset.lists.filter(l=>f.elections.find(e=>e.electionId===cursor)?.members.some(m=>m.listId===l.id)).map(l=>listLabel(l,lang)).join(' · ')}<br/>{L('Select for lists and changes','בחרו לפירוט הרשימות והשינויים')}</>}</Floating>}
+  {hover&&at>=0&&<Floating className="family-tooltip" anchor={() => ref.current?.querySelector(`[aria-label="${CSS.escape(describe(data[at],historyElections[at]))}"]`)?.getBoundingClientRect() ?? ref.current?.getBoundingClientRect()}><PointFacts f={f} at={at} metric={metric} text={describe(data[at],historyElections[at])}/></Floating>}
  </div>;
+}
+
+/** What one point is made of, from the packed runtime (no loading, so the box never grows under the pointer):
+ * the change since the previous election, the counted lists, and each hatched mixed list with the family's own parties in bold. */
+function PointFacts({f,at,metric,text}:{f:Family;at:number;metric:'share'|'votes';text:string}) {
+ const L=useL(),lang=useLang(),e=historyElections[at],prev=historyElections[at-1],a=aggregate(f,e),pa=prev?aggregate(f,prev):null,m=membership(f,e.id);
+ const votes=new Map(e.lists.map(l=>[l.id,l.votes])),byVotes=(ids:Set<string>)=>[...ids].filter(id=>votes.has(id)).sort((x,y)=>votes.get(y)!-votes.get(x)!);
+ const name=(id:string)=>historyListName(e.id,id,lang);
+ const share=(x:Agg,d:HistoryElection)=>Number(x.votes)*100/d.totals.valid;
+ const delta=prev&&pa&&drawn(a)&&drawn(pa)?(metric==='share'?share(a,e)-share(pa,prev):Number(a.votes!-pa.votes!)):null;
+ const sign=(n:number)=>n>0?'+':n<0?'−':'±';
+ return <>
+  <span>{text}</span>
+  {delta!==null&&<span className="ft-delta">{L('Since','מאז')} {familyDate(prev!,lang)}: <bdi dir="ltr">{sign(delta)}{metric==='share'?`${Math.abs(delta).toFixed(2)} ${L('points','נקודות אחוז')}`:Math.abs(delta).toLocaleString()}</bdi></span>}
+  {m.selected.size>0&&<span className="ft-row"><i className="family-key-line" aria-hidden/>{byVotes(m.selected).map(name).join(' · ')}</span>}
+  {byVotes(m.mixed).map(id=>{const parts=mixedComposition(f,e.id,id,lang);return <span key={id} className="ft-row"><i className="family-key-mixed" aria-hidden/><span>{name(id)}{parts.length>1&&<>: {parts.map((p,i)=><Fragment key={i}>{i>0&&' + '}{p.own?<b>{p.name}</b>:p.name}</Fragment>)}</>}</span></span>;})}
+  {m.excluded.size>0&&<span className="ft-row muted">{L('Left out','לא נספרו')}: {byVotes(m.excluded).map(name).join(' · ')}</span>}
+  <span className="ft-hint">{L('Click for details and changes','לחיצה לפירוט ולשינויים')}</span>
+ </>;
 }
