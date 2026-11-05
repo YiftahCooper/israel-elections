@@ -19,10 +19,10 @@ describe('complete English list identity',()=>{
   expect(listLabel({shortHe:'מרצ',shortEn:null},'en')).toBe('mrtz');
   expect(listLabel({shortHe:'מרצ',shortEn:null},'he')).toBe('מרצ');
  });
- it('keeps Meretz identity and its dated logo after splitting the Democrats',()=>{
+ it('keeps Meretz identity without borrowing its 2013 logo after splitting the Democrats',()=>{
   const s=baselineOf(datasets[25]);const l=s.lists.find(l=>l.parties?.some(p=>p.id==='meretz'))!;
   const p=l.parties!.find(p=>p.id==='meretz')!;
-  expect(p.logo?.year).toBe(2013);
+  expect(p.logo).toBeUndefined();
   const split=applyAction(s,{type:'split',id:l.id,parts:l.parties!.map((p,i)=>({newId:`part-${i}`,nameHe:p.nameHe,letters:l.letters,color:p.color??l.color,votes:i===0?l.votes:0,candidateIds:l.candidates.filter(c=>c.partyId===p.id).map(c=>c.id)}))});
   const meretz=split.lists.find(x=>x.nameHe===p.nameHe)!;
   expect(meretz.shortEn).toBe(p.nameEn);expect(meretz.logo).toEqual(p.logo);

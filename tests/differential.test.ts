@@ -78,7 +78,9 @@ const EXPECTED: Record<Family, string> = {
   // merged with the 1949–1973 recommendations branch (k4, k7, k8 schemes; field-verified on that branch).
   // merged with the 1949–2006 logos run 3 (only list/party logo fields and builtAt differ; path walk 5 Nov).
   // merged with the 2009–2026 logos run (only list/party logo fields and builtAt differ; path walk 5 Nov).
-  model: '69564601b48c9d28b54bd99d16f398fe7d3cdfb8608b7dcfb95adb5f4042c6bf',
+  // 0089 same-election correction: field-by-field diff against integ-1105 found only
+  // 212 removed list/party logo refs and 23 builtAt changes; other four digests unchanged.
+  model: '0ffbae5ce1ff1bcff1bc99582ebd29b9db82a1a9b29fd5deeb3e8507b2c32c14',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

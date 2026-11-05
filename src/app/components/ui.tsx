@@ -47,15 +47,14 @@ export function Info({ title, children, term }: { title?: string; children?: Rea
 export function Slip({ letters, color, size, logo, name }: { name?: string; letters: string; color: string; size?: 'sm' | 'lg'; logo?: LogoRef }) {
   const lang = useLang();
   const label = name ?? `${lang === 'he' ? 'אותיות הפתק' : 'ballot letters'} ${letters}`;
-  const year = logo?.year ? ` · ${logo.year}` : '';
   if (!logo && name) return <span className={`slip monogram ${size ?? ''}`} style={{ ['--c' as string]: color }} aria-label={name} title={lang === 'he' ? 'סמל לא זמין — ראשי תיבות ואותיות הפתק' : 'Logo unavailable — name monogram'}><span>{name.trim().split(/\s+/).length === 1 ? name.slice(0, 3).toUpperCase() : name.split(/\s+/).map(w => w[0]).slice(0,3).join('').toUpperCase()}</span>{lang === 'he' && <small lang="he" dir="rtl">{letters}</small>}</span>;
   // the logo the list used at this election, when a verified local copy is held; the ballot letters stay
   // as its accessible name and a small caption, and the credit travels with the image
   if (logo) return (
     <span className={`slip logo ${size ?? ''} ${logo.background === 'dark' ? 'on-dark' : ''}`} style={{ ['--c' as string]: color }} aria-label={label}
-      title={`${label}${year} · ${logo.licence}`}>
+      title={`${label} · ${logo.licence}`}>
       <img src={logo.file} alt="" loading="lazy" decoding="async" />
-      <span className={`slip-letters ${logo.year ? 'logo-year' : ''}`} lang={logo.year ? undefined : "he"} dir={logo.year ? "ltr" : "rtl"} aria-hidden>{logo.year ?? (name ? '' : letters)}</span>
+      <span className="slip-letters" lang="he" dir="rtl" aria-hidden>{name ? '' : letters}</span>
     </span>
   );
   return <span className={`slip ${size ?? ''} ${letters.length > 4 ? 'long' : ''}`} style={{ ['--c' as string]: color }} aria-label={label} lang="he" dir="rtl">{letters || '—'}</span>;

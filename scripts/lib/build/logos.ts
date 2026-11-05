@@ -1,10 +1,9 @@
 // Election-specific party logos: verified local files under a free licence or the owner's
 // fair-use identification policy (decision 0089). Rights, source and credit travel with the image.
-// Nothing is fetched at runtime. Nearest-period identification marks retain their source year.
+// Nothing is fetched at runtime. Only this election’s evidenced catalogue is applied.
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { META } from '../list-meta.ts';
 import type { ElectionDataset, LogoRef, LogoRights } from '../../../src/data/schema.ts';
 
 const ROOT = join(import.meta.dirname, '..', '..', '..');
@@ -15,9 +14,9 @@ export function applyLogos(ds: ElectionDataset): ElectionDataset {
   if (!existsSync(file)) return ds;
   const entries = (JSON.parse(readFileSync(file, 'utf8')) as { logos: Entry[] }).logos
     .filter((e) => e.hosted && e.status === 'verified' && e.file);
-  const ref = (e: Entry, electionDate = ds.electionDate): LogoRef => {
+  const ref = (e: Entry): LogoRef => {
     if (!['free-licence', 'fair-use-identification'].includes(e.rights) || !e.inUseEvidence || !e.sourceUrl || !e.attribution || !e.licence) throw new Error(`Invalid logo provenance: ${ds.id}`);
-    if (e.rights === 'fair-use-identification' && (!e.inUseDate || !/^\d{4}-\d{2}-\d{2}$/.test(e.inUseDate) || e.inUseDate > electionDate)) throw new Error(`Invalid campaign-use date: ${ds.id}`);
+    if (e.rights === 'fair-use-identification' && (!e.inUseDate || !/^\d{4}-\d{2}-\d{2}$/.test(e.inUseDate) || e.inUseDate > ds.electionDate)) throw new Error(`Invalid campaign-use date: ${ds.id}`);
     if (!/^logos\/[^/]+\.(svg|png)$/.test(e.file!)) throw new Error(`Invalid logo path: ${e.file}`);
     if (!existsSync(join(ROOT, 'public', e.file!))) throw new Error(`data/meta/logos/${ds.id}.json: missing public/${e.file}`);
     const content = readFileSync(join(ROOT, 'public', e.file!));
@@ -31,26 +30,5 @@ export function applyLogos(ds: ElectionDataset): ElectionDataset {
   });
   for (const e of entries) if (e.letters && !ds.lists.some((l) => l.letters === e.letters)) throw new Error(`data/meta/logos/${ds.id}.json: no list ${e.letters}`);
   for (const e of entries) if (e.party && !ds.lists.some((l) => l.parties?.some((p) => p.id === e.party))) throw new Error(`data/meta/logos/${ds.id}.json: no party ${e.party}`);
-  // Use only already verified assets, keyed to the same party identity; never use a
-  // constituent emblem as a whole joint-list emblem. Source year stays visible.
-  const elections = JSON.parse(readFileSync(join(ROOT, 'public/data/elections.json'), 'utf8')) as {id: string; date: string}[];
-  const candidates: {identity: string; party?: string; year: number; time: number; logo: LogoRef}[] = [];
-  for (let n = 1; n <= 26; n++) {
-    const catalog = JSON.parse(readFileSync(join(ROOT, 'data', 'meta', 'logos', `k${n}.json`), 'utf8')) as {logos: Entry[]};
-    const meta = JSON.parse(readFileSync(join(ROOT, 'data', 'meta', `k${n}.json`), 'utf8')) as {lists: {parties?: {id: string; nameEn: string}[]}[]};
-    const date = elections.find(x => x.id === `k${n}`)!.date;
-    const year = Number(date.slice(0,4));
-    for (const e of catalog.logos.filter(e => e.hosted && e.status === 'verified' && e.file)) {
-      const identity = e.party ? meta.lists.flatMap(l => l.parties ?? []).find(p => p.id === e.party)?.nameEn : META[`${n}-${e.letters}`]?.en;
-      if (identity) candidates.push({identity, party: e.party, year, time: Date.parse(date), logo: ref(e, date)});
-    }
-  }
-  const time = Date.parse(ds.electionDate);
-  const nearest = (name: string | null, party?: string) => {
-    const c = candidates.filter(c => (party ? c.party === party || c.identity === name : !c.party && c.identity === name))
-      .sort((a,b) => Math.abs(a.time-time)-Math.abs(b.time-time) || a.time-b.time)[0];
-    return c ? {...c.logo, year: c.year} : undefined;
-  };
-  return { ...ds, lists: lists.map(l => ({...l, ...(!l.logo ? {logo: nearest(l.shortEn)} : {}),
-    ...(l.parties ? {parties: l.parties.map(p => ({...p, ...(!p.logo ? {logo: nearest(p.nameEn,p.id)} : {})}))} : {})})) };
+  return { ...ds, lists };
 }

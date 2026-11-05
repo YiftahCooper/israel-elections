@@ -37,3 +37,7 @@ but does not become the recorded official origin of a newly hosted fair-use imag
 Commons assignments retain their documented medium-confidence limitations. Retrieval limits
 and unresolved date/variant questions remain research gaps even though free licensing is no
 longer a prerequisite. See [the research archive](../research/party-logos.md).
+
+## Addendum — 5 November 2026: remove cross-election substitution
+
+The owner reaffirmed that historical accuracy requires evidence for the particular election: a nearby campaign’s emblem, even with a visible source year, cannot stand in for a missing whole-list or constituent logo. The dataset builder therefore applies only that election’s verified catalog, and the unused source-year caption is removed. Where no logo can be sourced with the required dated evidence, Hebrew ballot letters are the fallback in both English and Hebrew. The original decision and its conclusions remain unchanged; this restores points 3, 4 and 6 above; it neither withdraws retained assets nor asserts that an unsourced emblem never existed. Coverage counts only same-election verified assignments, with research gaps left explicit.

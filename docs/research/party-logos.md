@@ -1352,7 +1352,9 @@ component parties carries their own English label/logo; arbitrary split groups d
 not inherit an alliance emblem. Unresolved component identities use initials with a
 colour border, never bare squares or the alliance's shared ballot letters.
 
-### Coverage (all lists, including nonwinners; component appearances, not unique parties)
+### Historical coverage before the 5 November same-election correction
+
+This table records the earlier fallback implementation and is superseded by the current coverage below.
 
 | Election | English labels before → after / lists | List logos before → after | Component logos before → after / appearances |
 |---|---:|---:|---:|
@@ -1468,7 +1470,7 @@ For the k19/k20 Jewish Home entries the same official artwork is assigned to the
 to the `jewish-home` constituent, because the list ran under that exact party name; Tkuma
 keeps its separate entry. Every other entry is constituent-only and is not the joint lockup.
 
-**Coverage (`logo-coverage.py`, k18–k26 seat winners).** Note the script counts the
+**Historical coverage (superseded below; k18–k26 seat winners).** At that point the script counted the
 builder's labelled nearest-period fallbacks as covered; same-campaign gains are in the table above.
 
 | Election | Winning lists | Constituents of winners |
@@ -1515,3 +1517,42 @@ decades is a product question outside this research pass.
   The same official-domain Wayback route is the recommended next step for each.
 - Search tooling: the Jina key now returns "set your API key"; Exa was used for domain discovery
   only. An official-sites directory (uzit.co.il) returned a 131-byte response; not pursued.
+
+## Current coverage — 5 November 2026, same-election evidence only
+
+Decision 0089’s addendum removes all cross-election substitution, including the Meretz 2013 emblem on the 2026 Democrats’ constituent. Earlier nearest-period tables above are historical records, not current coverage. Hebrew ballot letters are the fallback in both languages when election-specific evidence is missing; a year caption cannot make a borrowed design historically accurate. No source assets or dated catalog entries were removed.
+
+| Election | All list logos before → after / lists | Constituent logos before → after / appearances | Winner list logos | Winner constituents |
+|---|---:|---:|---:|---:|
+| k1 | 11 → 9 / 21 | 2 → 0 / 7 | 3/12 | 0/7 |
+| k2 | 3 → 0 / 17 | 0 → 0 / 0 | 0/15 | 0/0 |
+| k3 | 4 → 1 / 18 | 1 → 0 / 4 | 0/12 | 0/4 |
+| k4 | 3 → 0 / 24 | 1 → 0 / 2 | 0/12 | 0/2 |
+| k5 | 3 → 1 / 14 | 0 → 0 / 0 | 1/11 | 0/0 |
+| k6 | 4 → 3 / 17 | 2 → 0 / 4 | 3/13 | 0/4 |
+| k7 | 2 → 0 / 16 | 3 → 0 / 4 | 0/13 | 0/4 |
+| k8 | 4 → 1 / 21 | 4 → 0 / 11 | 1/10 | 0/11 |
+| k9 | 6 → 5 / 22 | 4 → 0 / 12 | 5/13 | 0/11 |
+| k10 | 8 → 3 / 31 | 3 → 0 / 7 | 2/10 | 0/7 |
+| k11 | 8 → 4 / 26 | 4 → 0 / 11 | 4/15 | 0/11 |
+| k12 | 8 → 3 / 27 | 1 → 0 / 6 | 3/15 | 0/6 |
+| k13 | 8 → 2 / 25 | 2 → 0 / 6 | 1/10 | 0/6 |
+| k14 | 7 → 3 / 20 | 5 → 0 / 12 | 2/11 | 0/12 |
+| k15 | 10 → 2 / 31 | 5 → 0 / 12 | 2/15 | 0/12 |
+| k16 | 9 → 3 / 27 | 7 → 0 / 14 | 2/13 | 0/14 |
+| k17 | 11 → 2 / 31 | 4 → 0 / 11 | 1/12 | 0/11 |
+| k18 | 10 → 3 / 33 | 6 → 1 / 14 | 3/12 | 1/12 |
+| k19 | 9 → 5 / 32 | 6 → 1 / 9 | 5/12 | 1/9 |
+| k20 | 9 → 4 / 26 | 8 → 2 / 15 | 4/10 | 2/11 |
+| k21 | 9 → 5 / 43 | 11 → 3 / 18 | 4/11 | 3/14 |
+| k22 | 8 → 4 / 32 | 12 → 6 / 19 | 4/9 | 6/19 |
+| k23 | 9 → 3 / 30 | 12 → 5 / 18 | 3/8 | 5/18 |
+| k24 | 12 → 7 / 39 | 9 → 3 / 12 | 7/13 | 3/12 |
+| k25 | 9 → 4 / 40 | 8 → 2 / 14 | 4/10 | 2/11 |
+| k26 | 12 → 10 / 38 | 16 → 10 / 25 | 9/11 | 8/19 |
+
+Displayed coverage falls from **196/701 to 87/701 whole lists**, and **136/267 to 33/267 constituent appearances**. Winner coverage falls from **171/308 to 73/308 lists**, and **131/247 to 31/247 constituents** (k26 uses the retained count’s allocation). The removed 109 list refs and 103 constituent refs were borrowed, not evidence for those elections; genuine same-election coverage is unchanged. Remaining gaps: 614 list appearances and 234 constituent appearances. These are research gaps, not findings of nonexistence.
+
+Reproduce with `npm run data:build` and `python3 scripts/research/logo-coverage.py`. The report now matches each ref’s identity and file against its election’s hosted, verified catalog and excludes year-labelled borrowed refs. Unit tests check every election’s overlay against its own catalog, retain real-logo provenance checks, and verify Meretz’s split identity without a borrowed logo; e2e retains the genuine 2026 Democrats emblem and checks that its Meretz constituent has no borrowed image. A recursive field-by-field comparison of every `public/data/*.json` against the merged baseline found only 212 removed `logo` fields and 23 changed `builtAt` fields. Family dataset hashes were refreshed for both locator/sha256 and datasetPath/datasetSha256 pairs.
+
+Verification for this correction: `npm run typecheck`, `npx vitest run --maxWorkers=2` (90 files, 858 tests), `npm run build`, `node scripts/validate-families.ts` (9 presets), and `PW_PORT=5499 npx playwright test --workers=2` (469 tests) passed. The initial unrestricted-worker unit run hit a demographic-rebuild timeout and a sandbox-blocked gallery subprocess; the complete two-worker run with subprocess access passed without test changes for either issue. Vite retains its existing large-chunk advisory.
