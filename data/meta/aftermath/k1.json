@@ -1,0 +1,486 @@
+{
+  "schemaVersion": 1,
+  "electionId": "k1",
+  "status": "pilot",
+  "reviewedAt": "2026-11-05",
+  "notes": [
+    "Research draft; not wired into the application. Official session records anchor all government approvals. Reused recommendation and first-coalition evidence retains the earlier research limitations.",
+    "The government card describes the first cabinet. Each replacement cabinet has a full-session confidence step and a numbered government.changes entry; available replacement coalition snapshots are attached to that entry.",
+    "New PDF quotations preserve the extracted text order (including OCR errors); whitespace is collapsed. Full-session sources identify the sitting; source excerpts are recoverable from the public PDF. Existing coalition OData quotes are labelled project tabulations in the source text, not purported verbatim minister lists."
+  ],
+  "sources": {
+    "plenum-gov1": {
+      "url": "https://fs.knesset.gov.il/1/Plenum/1_ptm_250182.pdf",
+      "publisher": "Knesset, Knesset 1, sitting 12, 1949-03-10 (full plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "presentation-gov1": {
+      "url": "https://main.knesset.gov.il/mk/government/documents/gov1.pdf",
+      "publisher": "Knesset, government 1 presentation (extract from plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "plenum-gov2": {
+      "url": "https://fs.knesset.gov.il/1/Plenum/1_ptm_250247.pdf",
+      "publisher": "Knesset, Knesset 1, sitting 186, 1950-11-01 (full plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "presentation-gov2": {
+      "url": "https://main.knesset.gov.il/mk/government/documents/gov2.pdf",
+      "publisher": "Knesset, government 2 presentation (extract from plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-jta": {
+      "url": "https://www.jta.org/archive/weizmann-summons-leaders-of-all-parties-in-assembly-to-consult-today-on-cabinet-make-up",
+      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin (reused recommendation research)",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "coalition-1": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%201&$format=json",
+      "publisher": "Knesset OData (ParliamentInfo)",
+      "kind": "official",
+      "accessed": "2026-11-04"
+    },
+    "coalition-2": {
+      "url": "https://he.wikipedia.org/wiki/ממשלת_ישראל_הראשונה",
+      "publisher": "Hebrew Wikipedia",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "term-history": {
+      "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-first-knesset-1949-1951",
+      "publisher": "Knesset, history of the first Knesset (credited official text on Jewish Virtual Library)",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Jewish Virtual Library mirror; original https://main.knesset.gov.il/EN/About/History/pages/knessethistory.aspx?kns=1"
+    },
+    "idi-next": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/elections/1951/",
+      "publisher": "Israel Democracy Institute, election chronology",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "presentation-gov4": {
+      "url": "https://main.knesset.gov.il/mk/government/documents/gov4.pdf",
+      "publisher": "Knesset, sitting 155 of the Second Knesset, 22 December 1952 (retrospective account)",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    }
+  },
+  "results": {
+    "electionDate": "1949-01-25",
+    "officialResultsSourceId": "k1-results-gazette"
+  },
+  "reaction": {
+    "policy": "Only dated institutional steps and attributed statements, all lists or none.",
+    "items": [],
+    "gap": "Not collected."
+  },
+  "recommendationRounds": [
+    {
+      "id": "r1",
+      "date": "1949-02-22",
+      "kind": "consultations",
+      "president": {
+        "nameEn": "Chaim Weizmann",
+        "nameHe": "חיים ויצמן"
+      },
+      "nominees": {
+        "ben-gurion": {
+          "nameEn": "David Ben-Gurion",
+          "nameHe": "דוד בן־גוריון"
+        }
+      },
+      "entries": [
+        {
+          "letters": "א",
+          "seats": 46,
+          "status": "unknown"
+        },
+        {
+          "letters": "מ",
+          "seats": 19,
+          "status": "unknown"
+        },
+        {
+          "letters": "ב",
+          "seats": 16,
+          "status": "unknown"
+        },
+        {
+          "letters": "ח",
+          "seats": 14,
+          "status": "unknown"
+        },
+        {
+          "letters": "צ",
+          "seats": 7,
+          "status": "unknown"
+        },
+        {
+          "letters": "פ",
+          "seats": 5,
+          "status": "unknown"
+        },
+        {
+          "letters": "ס",
+          "seats": 4,
+          "status": "unknown"
+        },
+        {
+          "letters": "ק",
+          "seats": 4,
+          "status": "unknown"
+        },
+        {
+          "letters": "יד",
+          "seats": 2,
+          "status": "unknown"
+        },
+        {
+          "letters": "טו",
+          "seats": 1,
+          "status": "unknown"
+        },
+        {
+          "letters": "נ",
+          "seats": 1,
+          "status": "unknown"
+        },
+        {
+          "letters": "ל",
+          "seats": 1,
+          "status": "unknown"
+        }
+      ],
+      "totals": {
+        "unknown": 120
+      },
+      "cites": [
+        {
+          "source": "recommendations-jta",
+          "quote": "President Weitzman today invited leaders of the various parties in the Israeli Constituent Assembly to consult with him tomorrow on composition of the new government."
+        }
+      ],
+      "notes": [
+        "Reuses docs/research/pm-recommendations-1949-1973.md; consultation conditions are not personal recommendations. Unknown does not mean no recommendation.",
+        "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved."
+      ]
+    }
+  ],
+  "formation": {
+    "outcome": "government-formed",
+    "events": [
+      {
+        "date": "1949-02-22",
+        "type": "consultations",
+        "textEn": "President Chaim Weizmann held consultations on government formation.",
+        "textHe": "הנשיא חיים ויצמן קיים התייעצויות על הרכבת הממשלה.",
+        "cites": [
+          {
+            "source": "recommendations-jta",
+            "quote": "President Weitzman today invited leaders of the various parties in the Israeli Constituent Assembly to consult with him tomorrow on composition of the new government."
+          }
+        ]
+      },
+      {
+        "date": "1949-02-24",
+        "type": "mandate-given",
+        "textEn": "The President tasked David Ben-Gurion with forming a government.",
+        "textHe": "הנשיא הטיל על דוד בן־גוריון להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "presentation-gov1",
+            "quote": "של כל הכוחות הבונים והיוצרים , כדי לקדם במשותף את מפעלנו .\" כשהנשיא הטיל עלי ביום כ \" ה שבט להרכיב ממשלה , פניתי מיד לכל המפלגות , שלדעתי נ מנות במידה מסוימת על הכוחות הבונים ,"
+          }
+        ],
+        "person": "ben-gurion"
+      },
+      {
+        "date": "1949-03-10",
+        "type": "confidence-vote",
+        "textEn": "The Knesset expressed confidence in government 1, headed by David Ben-Gurion, 73–45.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־1 בראשות דוד בן־גוריון, ברוב של 73 מול 45.",
+        "cites": [
+          {
+            "source": "plenum-gov1",
+            "quote": "הראשונה הביעה הכנסת ,45 נגד קולות ב73 שהורכבה ע\"י דוד בממשלה אמונה את ישראל לעם בןגוריון ואישרה את תכניתה. )מחיאות כפים ממושכות(."
+          }
+        ],
+        "votes": {
+          "for": 73,
+          "against": 45
+        },
+        "governmentNumber": 1,
+        "person": "ben-gurion"
+      },
+      {
+        "date": "1950-10",
+        "type": "mandate-returned",
+        "textEn": "Ben-Gurion returned the task of forming a government.",
+        "textHe": "בן־גוריון החזיר את התפקיד להרכבת ממשלה.",
+        "cites": [
+          {
+            "source": "presentation-gov2",
+            "quote": "כידוע לכם , מאחר שלפני שבועיים דחתה הכנסת ברוב את הצעתי להקים ממשלת מעבר בת 7 חברים , כדי לסדר בחירות בהקדם האפשרי , החזרתי לנשיא את המ נ דט על ייסוד ממשלה חדשה . הנשיא הטיל את התפקיד על הח ' פ ' רוזן , ומ ה שלא עלה בידי להביא לפני הכנסת – הצעה על"
+          }
+        ],
+        "person": "ben-gurion",
+        "notes": [
+          "The presentation on 30 October recounts this sequence without the individual days. Month only; sequence is the order reported by Ben-Gurion."
+        ]
+      },
+      {
+        "date": "1950-10",
+        "type": "mandate-given",
+        "textEn": "The President tasked Pinchas Rosen with forming a government.",
+        "textHe": "הנשיא הטיל על פנחס רוזן להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "presentation-gov2",
+            "quote": "הנשיא הטיל את התפקיד על הח ' פ ' רוזן , ומ ה שלא עלה בידי להביא לפני הכנסת – הצעה על ממשלה יציבה בת 13 חברים – עלה בידו , ואני מביא לפניכם , בעצם , רק פרי עבודתו ."
+          }
+        ],
+        "person": "rosen",
+        "notes": [
+          "The presentation on 30 October recounts this sequence without the individual days. Month only; sequence is the order reported by Ben-Gurion."
+        ]
+      },
+      {
+        "date": "1950-10",
+        "type": "mandate-returned",
+        "textEn": "Rosen declined the assignment and advised the President to task Ben-Gurion.",
+        "textHe": "רוזן לא קיבל על עצמו את השליחות והציע לנשיא להטיל אותה על בן־גוריון.",
+        "cites": [
+          {
+            "source": "presentation-gov2",
+            "quote": "החבר פנחס רוזן מתוך עניוות ואצילות ד עת לא רצה לקחת על עצמו הכבוד להביא ההצעה לכנסת והודיע לנשיא , כי אינו מקבל על עצמו השליחות ומייעץ לנשיא למסור זאת לראש - הממשלה . הנשיא הטיל עלי מח ד ש תפקי ד זה , ואני מביא לפניכם ממשלה של שלושה - עשר על בסיס קווי - היסוד של הממשלה שאושרה בכנסת במרס 949 1 , בתוספת המסקנות הכלכליות של הממשלה המונחות"
+          }
+        ],
+        "person": "rosen",
+        "notes": [
+          "The presentation on 30 October recounts this sequence without the individual days. Month only; sequence is the order reported by Ben-Gurion."
+        ]
+      },
+      {
+        "date": "1950-10",
+        "type": "mandate-given",
+        "textEn": "The President again tasked Ben-Gurion with forming a government.",
+        "textHe": "הנשיא שב והטיל על בן־גוריון להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "presentation-gov2",
+            "quote": "והודיע לנשיא , כי אינו מקבל על עצמו השליחות ומייעץ לנשיא למסור זאת לראש - הממשלה . הנשיא הטיל עלי מח ד ש תפקי ד זה , ואני מביא לפניכם ממשלה של שלושה - עשר על בסיס קווי - היסוד של הממשלה שאושרה בכנסת במרס 949 1 , בתוספת המסקנות הכלכליות של הממשלה המונחות לפניכם על השולחן . הממשלה מיוסדת על אחריות קולקטיבית , בהתאם לפרק הראשון של קווי -"
+          }
+        ],
+        "person": "ben-gurion",
+        "notes": [
+          "The presentation on 30 October recounts this sequence without the individual days. Month only; sequence is the order reported by Ben-Gurion."
+        ]
+      },
+      {
+        "date": "1950-11-01",
+        "type": "confidence-vote",
+        "textEn": "The Knesset expressed confidence in government 2, headed by David Ben-Gurion, 69–42, with 2 abstentions.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־2 בראשות דוד בן־גוריון, ברוב של 69 מול 42, עם 2 נמנעים.",
+        "cites": [
+          {
+            "source": "plenum-gov2",
+            "quote": "הצבעה 69 חברהכנסת מ. גרבובסקי בעד הצעת 42 נגד 2 נמנעים ההצעה נתקבלה. היו\"ר י. שפרינצק: בזה נכונה הממשלה החדשה של מדינתישראל. הצהרתאמונים של השרים (4) היו\"ר י. שפרינצק: והשרים לעלות על הבמה ראשהממשלה אבקש את"
+          }
+        ],
+        "votes": {
+          "for": 69,
+          "against": 42,
+          "abstain": 2
+        },
+        "governmentNumber": 2,
+        "person": "ben-gurion"
+      }
+    ]
+  },
+  "government": {
+    "number": 1,
+    "nameEn": "Government 1 (David Ben-Gurion)",
+    "nameHe": "הממשלה ה־1 (דוד בן־גוריון)",
+    "startDate": "1949-03-10",
+    "endDate": "1950-11-01",
+    "primeMinisters": [
+      {
+        "nameEn": "David Ben-Gurion",
+        "nameHe": "דוד בן־גוריון",
+        "letters": "א",
+        "from": "1949-03-10",
+        "to": "1950-11-01"
+      }
+    ],
+    "firstGovernmentSchemeRef": "first-government",
+    "coalition": [
+      {
+        "letters": "א",
+        "seats": 46
+      },
+      {
+        "letters": "ב",
+        "seats": 16
+      },
+      {
+        "letters": "פ",
+        "seats": 5
+      },
+      {
+        "letters": "ס",
+        "seats": 4
+      },
+      {
+        "letters": "יד",
+        "seats": 2
+      }
+    ],
+    "coalitionSeats": 73,
+    "coalitionSeatsNote": "Election-list seat totals, including support-only lists; not the confidence-vote tally. Reuses the existing overlay: ministerial factions are official; support-only membership is labelled secondary. Later government changes are listed separately.",
+    "cites": [
+      {
+        "source": "coalition-1",
+        "quote": "Government 1 sworn in 1949-03-10. Ministers at swearing-in by their Knesset faction (project tabulation of the OData records): {'מפלגת פועלי ארץ-ישראל': 7, 'חזית דתית מאוחדת': 3, 'מפלגה פרוגרסיבית': 1, 'ספרדים ועדות מזרח': 1}"
+      },
+      {
+        "source": "coalition-2",
+        "quote": "קואליציה: מפא\"י, החזית הדתית המאוחדת, המפלגה הפרוגרסיבית, ספרדים ועדות מזרח, הרשימה הדמוקרטית של נצרת | אופוזיציה: מפ\"ם, תנועת החרות, הציונים הכלליים, מק\"י, רשימת לוחמים, ויצו, התאחדות התימנים בישראל"
+      }
+    ],
+    "changes": [
+      {
+        "date": "1950-10-16",
+        "textEn": "The first government resigned.",
+        "textHe": "הממשלה הראשונה התפטרה.",
+        "cites": [
+          {
+            "source": "presentation-gov4",
+            "quote": "לא היו דומות לגמרי בכל מקרה, אולם לשל ו שתם היה שורש אחד. פעמיים קרה הדבר בימי הכנסת הראשונה: בראשונה ב - 16 באוקטובר 1950 , 19 חודש אחרי התמנות הממשלה הנבחרת הראשונה, בפעם השני י ה – ב - 14 בפברואר 1951 , ח ו דשיים וחצי אחרי"
+          }
+        ]
+      },
+      {
+        "date": "1950-11-01",
+        "number": 2,
+        "nameEn": "Government 2 (David Ben-Gurion)",
+        "nameHe": "הממשלה ה־2 (דוד בן־גוריון)",
+        "textEn": "Government 2, headed by David Ben-Gurion, succeeded government 1.",
+        "textHe": "הממשלה ה־2 בראשות דוד בן־גוריון החליפה את הממשלה ה־1.",
+        "cites": [
+          {
+            "source": "plenum-gov2",
+            "quote": "הצבעה 69 חברהכנסת מ. גרבובסקי בעד הצעת 42 נגד 2 נמנעים ההצעה נתקבלה. היו\"ר י. שפרינצק: בזה נכונה הממשלה החדשה של מדינתישראל. הצהרתאמונים של השרים (4) היו\"ר י. שפרינצק: והשרים לעלות על הבמה ראשהממשלה אבקש את"
+          },
+          {
+            "source": "presentation-gov2",
+            "quote": "והודיע לנשיא , כי אינו מקבל על עצמו השליחות ומייעץ לנשיא למסור זאת לראש - הממשלה . הנשיא הטיל עלי מח ד ש תפקי ד זה , ואני מביא לפניכם ממשלה של שלושה - עשר על בסיס קווי - היסוד של הממשלה שאושרה בכנסת במרס 949 1 , בתוספת המסקנות הכלכליות של הממשלה המונחות לפניכם על השולחן . הממשלה מיוסדת על אחריות קולקטיבית , בהתאם לפרק הראשון של קווי - היסוד . חלקי הקואליציה המוצעת הודיעו לי על רצונם לתמוך בממשלה זו עד תום כהונת הכנסת , בראשית שנת 1953 , והממשלה הזאת – אם תאושר – תציע לכנסת חוק על משך כהונת הכנסת , עד"
+          }
+        ],
+        "coalition": [
+          {
+            "letters": "א",
+            "seats": 46
+          },
+          {
+            "letters": "ב",
+            "seats": 16
+          },
+          {
+            "letters": "פ",
+            "seats": 5
+          },
+          {
+            "letters": "ס",
+            "seats": 4
+          },
+          {
+            "letters": "יד",
+            "seats": 2
+          }
+        ],
+        "coalitionSeats": 73,
+        "coalitionSeatsNote": "Seats won by the component lists at this election; not the confidence-vote count. Affiliated Arab support lists retain the first-government overlay’s labelled secondary evidence unless named in the protocol."
+      },
+      {
+        "date": "1951-02-14",
+        "textEn": "The second government resigned.",
+        "textHe": "הממשלה השנייה התפטרה.",
+        "cites": [
+          {
+            "source": "presentation-gov4",
+            "quote": "התמנות הממשלה הנבחרת הראשונה, בפעם השני י ה – ב - 14 בפברואר 1951 , ח ו דשיים וחצי אחרי התמנות הממשלה. הסיעות שנכנסו אז לקואליציה הבטיחו לקיים הממשלה עד תום כהונת הכנסת, אולם חברי \" החזית הדתית \" הצביעו בכנסת יחד עם סיעות האופוזיציה נגד הממשלה."
+          }
+        ]
+      }
+    ],
+    "endDateCites": [
+      {
+        "source": "plenum-gov2",
+        "quote": "הצבעה 69 חברהכנסת מ. גרבובסקי בעד הצעת 42 נגד 2 נמנעים ההצעה נתקבלה. היו\"ר י. שפרינצק: בזה נכונה הממשלה החדשה של מדינתישראל. הצהרתאמונים של השרים (4) היו\"ר י. שפרינצק: והשרים לעלות על הבמה ראשהממשלה אבקש את"
+      }
+    ]
+  },
+  "term": {
+    "start": "1949-01-25",
+    "end": "1951-07-30",
+    "inclusionRule": "At least two independent chronologies, including one official or academic; a direct date source is also required.",
+    "chronologies": [
+      "term-history",
+      "idi-next"
+    ],
+    "events": [],
+    "candidatesPending": [
+      {
+        "label": "Harari resolution",
+        "date": "1950-06",
+        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+      },
+      {
+        "label": "Israel admitted to the United Nations",
+        "date": "1949-05",
+        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+      },
+      {
+        "label": "Government and Knesset move to Jerusalem",
+        "date": "1949-12",
+        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+      }
+    ],
+    "endedBy": {
+      "type": "election",
+      "date": "1951-07-30",
+      "nextElection": "k2",
+      "textEn": "The next Knesset election was held on 1951-07-30.",
+      "textHe": "הבחירות לכנסת הבאה נערכו ב־1951-07-30.",
+      "cites": [
+        {
+          "source": "idi-next",
+          "quote": "Early elections were held for the Second Knesset"
+        }
+      ]
+    }
+  },
+  "issuePolling": {
+    "status": "none",
+    "items": [],
+    "notes": [
+      "No qualifying pre-1969 issue survey was retrieved in the agreed sourcing plan."
+    ]
+  },
+  "gaps": [
+    "Official result-certification date and the first sitting are not transcribed; election dates and seat counts reuse the verified national dataset.",
+    "Reaction statements are not collected.",
+    "Mid-term consultation positions, mandate deadlines and extensions are incomplete unless an explicit step below records them.",
+    "Closing date is the next election, not dissolution day. The governing dissolution/election-date law has not been retrieved; regular versus early termination is not inferred from term length.",
+    "Individual days of the October 1950 Ben-Gurion–Rosen–Ben-Gurion tasking sequence have not been recovered.",
+    "Replacement-coalition snapshots are partial: government 14’s faction splits and current seat counts require a separate audit. Other replacement snapshots use election-list seats with stated support-list limitations.",
+    "Presentation dates can precede approval dates; confidence steps use the full protocol. The exact assignment days not transcribed here remain unknown.",
+    "Termination: early election is described by IDI; the original dissolution act and its passage date remain untranscribed."
+  ]
+}
