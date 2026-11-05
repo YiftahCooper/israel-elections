@@ -25,7 +25,7 @@ premiership then (see [era-specific-rules.md](era-specific-rules.md)). Elections
 
 | Election | Change | Evidence |
 |---|---|---|
-| 2026 (k26) | New scheme. It is partial: 10 of 12 factions were confirmed, and Yashar and Likud are `pending`. | JPost, JNS (President's Residence statements), Maariv, Haaretz |
+| 2026 (k26) | New scheme. It is partial: 11 of 12 factions were confirmed, and Likud is `pending`. | JPost, JNS (President's Residence statements), Maariv, Haaretz |
 | 2009 (k18) | 14 "not stated" seats resolved: Labor, Meretz, Hadash, Ra'am–Ta'al and Balad made **no recommendation** (27). Date 20 → **19 Feb 2009**, the last consultation day. | JPost 19 Feb 2009, JTA |
 | 2013 (k19) | **Kadima (2) recommended Netanyahu**: 80 → **82**. Balad (3) is now in "no recommendation", with a note. | Walla, Behadrei Haredim |
 | 2015 (k20) | The Joint List and Yesh Atid are now quoted as making no recommendation. The bloc label no longer says "not stated". | Ynetnews, JPost |
@@ -36,9 +36,10 @@ premiership then (see [era-specific-rules.md](era-specific-rules.md)). Elections
 
 ## 2026 — 26th Knesset (consultations 4–5 November 2026)
 
-**Status: partial.** The second and last day was still under way when checked (about 20:00 Israel time,
+**Status: partial.** The second and last day was still under way when last checked (about 20:10 Israel time,
 5 November 2026). No mandate had been given. Maariv published the schedule: Yashar at 19:15 and Likud at 20:30, which
-ends the planned round. Their recommendations are **not recorded**, because nothing confirmed them before the check.
+ends the planned round. Yashar's recommendation was confirmed by then. Likud's is **not recorded**, because nothing
+confirmed it before the check.
 The President "does not rule out another round of consultations if needed" (Maariv). The new Knesset is due to be
 sworn in on 10 November 2026.
 
@@ -54,16 +55,16 @@ sworn in on 10 November 2026.
 | Ra'am (עם) | 8 | Eisenkot | 5 Nov | JNS (President's Residence); Haaretz |
 | Joint List (ודם) | 11 | Eisenkot | 5 Nov | Haaretz; Maariv; Arutz 7 |
 | B'Yachad (רק) | 12 | Eisenkot | 5 Nov | Haaretz; Maariv; i24NEWS |
-| Yashar (דרך) | 21 | **pending** | 5 Nov 19:15 (scheduled) | Maariv schedule |
+| Yashar (דרך) | 21 | Eisenkot | 5 Nov | Maariv (later update); JPost 913989 (see conflict) |
 | Likud (מחל) | 27 | **pending** | 5 Nov 20:30 (scheduled) | Maariv schedule |
 
 *The seats are those Maariv reported on 5 November: "ישר! … 21 מנדטים, ביחד … 12, הדמוקרטים … שמונה וישראל ביתנו …
 שבעה", and "27 מהליכוד, שבעה מעוצמה יהודית, שישה מש"ס ושישה מרשימת הציונות הדתית-זהות". These match the app's
 calculated seats.
 
-Confirmed totals in the scheme: Eisenkot **46**, Netanyahu **19**, no recommendation **7**, pending **48** (120).
-Reporters projected 67 for Eisenkot and 46 for Netanyahu, assuming Yashar backs its own leader and Likud backs Netanyahu.
-That projection is **not** recorded as fact.
+Confirmed totals in the scheme: Eisenkot **67**, Netanyahu **19**, no recommendation **7**, pending **27** (Likud)
+(120). Reporters projected 46 for Netanyahu, assuming Likud backs its own leader. That projection is **not** recorded
+as fact.
 
 Quotes:
 - JPost, 4 Nov 2026 (https://www.jpost.com/israel-news/article-913842): "The Religious Zionist Party, Shas, and Zehut
@@ -78,6 +79,8 @@ Quotes:
   The Joint List … recommended Yashar party leader Gadi Eisenkot to form Israel's next government".
 - Maariv live, 5 Nov 2026 (https://www.maariv.co.il/news/elections-2026/article-1384980), section headings: "ביחד:
   ממליצים על גדי איזנקוט", "הרשימה המשותפת: ממליצים על גדי איזנקוט", "יהדות התורה: לא נמליץ על אף מועמד".
+- Maariv live, later update (same URL): "סיעת ישר! הגיעה להתייעצויות בבית הנשיא הערב, והמליצה לנשיא המדינה יצחק הרצוג על
+  גדי איזנקוט להרכבת הממשלה."
 - Arutz 7, 5 Nov 2026 (https://www.inn.co.il/news/710161): "המליצה הרשימה המשותפת להטיל את מלאכת הרכבת הממשלה על יו"ר
   סיעת ישר, גדי איזנקוט".
 
@@ -88,11 +91,15 @@ Conflicts and nuances (recorded, not resolved):
   scheme records the 5 November position.
 - **Religious Zionism–Zehut** ran as one list but met the President as two factions. Both recommended Netanyahu, so the
   whole list sits in one bloc. The split of its 6 seats between the two factions was not checked.
+- **Yashar:** JPost (https://www.jpost.com/israel-election-2026/article-913989) wrote "Yashar's delegation called on
+  the president to award Herzog the mandate". This is an evident slip for Eisenkot, since the same article says
+  "Meridor insisted that Eisenkot would form a government". Maariv states the recommendation directly. The scheme
+  follows Maariv.
 - Reports on 4 November (C14) said Ra'am "announced separately" its support for Eisenkot. Its formal consultation was on
   5 November.
 
-Gaps: the recommendations of Yashar and Likud; the mandate decision; any President's Residence page (gov.il returned 403).
-**Update the scheme** when these are confirmed: move דרך and מחל out of `pending`, and add the mandate date here.
+Gaps: Likud's recommendation; the mandate decision; any President's Residence page (gov.il returned 403).
+**Update the scheme** when these are confirmed: move מחל out of `pending`, and add the mandate date here.
 
 ## 2022 — 25th Knesset (consultations 9–11 November 2022)
 
@@ -242,7 +249,7 @@ Rounds: on 20 Feb 2009 Peres met Netanyahu and Livni and tasked Netanyahu [S] (s
 
 ## Remaining gaps and next steps
 
-1. **2026:** record Yashar's and Likud's recommendations and the mandate (who, date) once reported. Try the President's
+1. **2026:** record Likud's recommendation and the mandate (who, date) once reported. Try the President's
    Residence page again if gov.il becomes reachable.
 2. **No official President's Residence text** for any year. The old president.gov.il archive, the MFA/embassy mirrors
    (one returned 404) and Knesset News were not reached in the time box.

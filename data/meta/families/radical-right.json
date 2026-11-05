@@ -467,7 +467,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k26.json",
-      "sha256": "c9c27ee3a258fb201cf54246371d8885c3d12379c5803a2febab8d2803923a56",
+      "sha256": "3824392ed04f1f19b8f50fcaa84515df56f6f7fe509091b72152ab06045d8400",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     }
   },
@@ -3009,7 +3009,7 @@
       "electionId": "k26",
       "electionDate": "2026-10-27",
       "datasetPath": "public/data/k26.json",
-      "datasetSha256": "c9c27ee3a258fb201cf54246371d8885c3d12379c5803a2febab8d2803923a56",
+      "datasetSha256": "3824392ed04f1f19b8f50fcaa84515df56f6f7fe509091b72152ab06045d8400",
       "datasetStatus": {
         "stage": "final-count-pending-publication",
         "asOf": "2026-11-04",

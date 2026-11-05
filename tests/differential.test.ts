@@ -75,7 +75,8 @@ const EXPECTED: Record<Family, string> = {
   // k26 pm-recommendations scheme (5 Nov consultations): k26 gains one blocScheme and a new builtAt; no other field differs.
   // k18–k20 pm-recommendations re-verified: only those schemes' blocs/lists/date/labels, one build-assigned bloc colour (k18)
   // and builtAt differ in k18–k20; all other datasets unchanged.
-  model: '688de9c4a599c9bfbf33afdcceeeed40d06324531fc84373c25497f3fbb9a25f',
+  // k26 Yashar recommendation confirmed: only that scheme's eisenkot/pending lists and builtAt differ in k26.
+  model: 'f1f25a17472d64d32b3717ebeb0ddd3f539fdf563d0ae221888ce4dbfd75828f',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

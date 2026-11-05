@@ -2,7 +2,7 @@
 
 ## 5 November 2026 — release review
 
-- Recommendations to the President: new partial 2026 record (4–5 Nov consultations; Yashar and Likud pending) and 2009–2022 re-verified against news reports (2013: Kadima recommended Netanyahu, 82; 2009: all 12 factions sourced). See docs/research/pm-recommendations-2009-2026.md.
+- Recommendations to the President: new partial 2026 record (4–5 Nov consultations; Likud pending) and 2009–2022 re-verified against news reports (2013: Kadima recommended Netanyahu, 82; 2009: all 12 factions sourced). See docs/research/pm-recommendations-2009-2026.md.
 
 - QA2 leftovers: use shared analysis/settings pickers, tighten stable list-panel spacing, place global notices after the work area, and compact the phone header while keeping every control directly available.
 

@@ -1905,6 +1905,9 @@
      "color": "#2aa198",
      "members": [
       {
+       "letters": "דרך"
+      },
+      {
        "letters": "רק"
       },
       {
@@ -1920,7 +1923,7 @@
        "letters": "ל"
       }
      ],
-     "seats": 46
+     "seats": 67
     },
     {
      "id": "netanyahu",
@@ -1960,13 +1963,10 @@
      "color": "#cccccc",
      "members": [
       {
-       "letters": "דרך"
-      },
-      {
        "letters": "מחל"
       }
      ],
-     "seats": 48
+     "seats": 27
     }
    ],
    "sources": [
@@ -1997,10 +1997,24 @@
      "kind": "secondary",
      "quote": "The Together party, led by Naftali Bennett and Yair Lapid, recommended Gadi Eisenkot to form Israel's next government during consultations with President Isaac Herzog at the President's Residence on Thursday. ... The Joint List, an alliance of Arab-majority parties, recommended Yashar party leader Gadi Eisenkot to form Israel's next government",
      "accessed": "2026-11-05"
+    },
+    {
+     "url": "https://www.maariv.co.il/news/elections-2026/article-1384980",
+     "publisher": "Maariv (live page, later update)",
+     "kind": "secondary",
+     "quote": "שידור חי מבית הנשיא: ישר! ממליצים על גדי איזנקוט סיעת ישר! הגיעה להתייעצויות בבית הנשיא הערב, והמליצה לנשיא המדינה יצחק הרצוג על גדי איזנקוט להרכבת הממשלה.",
+     "accessed": "2026-11-05"
+    },
+    {
+     "url": "https://www.jpost.com/israel-election-2026/article-913989",
+     "publisher": "The Jerusalem Post",
+     "kind": "secondary",
+     "quote": "Later, Yashar's delegation called on the president to award Herzog the mandate ... After Herzog met with every party except the largest two, Eisenkot had secured the support of Yisrael Beytenu, the Democrats, Ra'am, the Joint List, and B'Yachad.",
+     "accessed": "2026-11-05"
     }
    ],
    "notes": [
-    "Partial: checked on 5 November 2026 at about 20:00 Israel time, while the second and last day of consultations was still under way. Ten of the twelve factions had been consulted (4 November: Religious Zionism, Shas, Yisrael Beiteinu, Zehut; 5 November: UTJ, Otzma Yehudit, the Democrats, Ra'am, the Joint List, B'Yachad). Yashar (19:15) and Likud (20:30) were still to meet the President; their recommendations are left pending, not inferred. No mandate had been given at the time of checking. See docs/research/pm-recommendations-2009-2026.md.",
+    "Partial: checked on 5 November 2026 at about 20:10 Israel time, while the last consultation (Likud, scheduled 20:30) was still to come. Eleven of the twelve factions had been consulted (4 November: Religious Zionism, Shas, Yisrael Beiteinu, Zehut; 5 November: UTJ, Otzma Yehudit, the Democrats, Ra'am, the Joint List, B'Yachad, Yashar). Likud's recommendation is left pending, not inferred. No mandate had been given at the time of checking. JPost's report of the Yashar meeting says 'award Herzog the mandate' (an evident slip for Eisenkot); Maariv states the recommendation of Eisenkot directly. See docs/research/pm-recommendations-2009-2026.md.",
     "Seats are calculated by the app from the CEC count of 4 November 2026; an official (gazetted) seat allocation is not yet verified. The same per-list seats (Yashar 21, B'Yachad 12, Democrats 8, Yisrael Beiteinu 7, Ra'am 8, Joint List 11, Likud 27, Otzma Yehudit 7, Shas 6, Religious Zionism–Zehut 6) are reported by Maariv on 5 November.",
     "The President's Residence statements on gov.il could not be retrieved (HTTP 403 to the project client); its statements are cited as reported by JNS. The date is the second consultation day."
    ]
