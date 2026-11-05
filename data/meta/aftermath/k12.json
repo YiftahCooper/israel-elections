@@ -1,0 +1,541 @@
+{
+  "schemaVersion": 1,
+  "electionId": "k12",
+  "status": "pilot",
+  "reviewedAt": "2026-11-05",
+  "notes": [
+    "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
+    "The term window runs from this election to the next Knesset election. Government tenure may extend past that window. Mid-term institutional succession is recorded in formation.events; it is not a new post-election recommendation round.",
+    "Additional dated mid-term acts that do not fit the proposal’s closed formation type vocabulary are kept as formalStep=true entries in government.changes (Dated-compatible). No new formation enum values are introduced."
+  ],
+  "sources": {
+    "mfa-history": {
+      "url": "https://www.gov.il/BlobFolder/generalpage/facts-about-israel-history/en/English_SiteTransfer_DOCUMENTS_History2010.pdf",
+      "publisher": "Israel Ministry of Foreign Affairs, Facts About Israel: History (2010), pp. 48–70",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "knesset-history": {
+      "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-twelfth-knesset-1988-1992",
+      "publisher": "Knesset, history of the 12th Knesset (credited text)",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Jewish Virtual Library mirror; original https://main.knesset.gov.il/EN/About/History/pages/knessethistory.aspx?kns=12"
+    },
+    "ipu1988": {
+      "url": "https://data.ipu.org/election-summary/PDF/ISRAEL_1988_E.PDF",
+      "publisher": "Inter-Parliamentary Union, Chronicle / Parline, Israel 1988",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "ipu1992": {
+      "url": "https://data.ipu.org/election-summary/PDF/ISRAEL_1992_E.PDF",
+      "publisher": "Inter-Parliamentary Union, Chronicle / Parline, Israel 1992",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "government-research-1": {
+      "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%9C%D7%95%D7%A9",
+      "publisher": "Hebrew Wikipedia",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "government-research-2": {
+      "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%9C%D7%95%D7%A9",
+      "publisher": "Hebrew Wikipedia",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "government-research-3": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=GovernmentNum%20eq%2023",
+      "publisher": "Knesset OData (ParliamentInfo)",
+      "kind": "official",
+      "accessed": "2026-11-04",
+      "via": "Existing first-government research extraction from official OData, accessed 2026-11-04; the associated quote is the retained extraction summary, not verbatim API serialization."
+    },
+    "recommendations-research-1": {
+      "url": "https://www.latimes.com/archives/la-xpm-1988-11-14-mn-244-story.html",
+      "publisher": "Los Angeles Times (UPI)",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-research-2": {
+      "url": "https://www.upi.com/Archives/1988/11/14/President-Chaim-Herzog-asked-Prime-Minister-Yitzhak-Shamir-to/7730595486800/",
+      "publisher": "UPI Archives",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-research-3": {
+      "url": "https://www.jta.org/archive/fate-of-next-government-hangs-on-outcome-of-shas-party-session",
+      "publisher": "Jewish Telegraphic Agency (archive, 9 Nov 1988)",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-research-4": {
+      "url": "https://www.latimes.com/archives/la-xpm-1988-11-14-mn-53-story.html",
+      "publisher": "Los Angeles Times",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-research-5": {
+      "url": "https://www.972mag.com/palestinian-citizens-israel-coalition-elections/",
+      "publisher": "+972 Magazine",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "jta1988vote": {
+      "url": "https://www.jta.org/archive/knesset-approves-new-government-more-cabinet-portfolios-named",
+      "publisher": "Jewish Telegraphic Agency, Daily Bulletin archive",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    },
+    "jta1988extension": {
+      "url": "https://www.jta.org/archive/herzog-gives-shamir-an-extension-but-calls-for-a-unity-government",
+      "publisher": "Jewish Telegraphic Agency, Daily Bulletin archive",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    },
+    "jta1990fall": {
+      "url": "https://www.jta.org/archive/israels-coalition-government-falls-with-help-from-two-orthodox-parties",
+      "publisher": "Jewish Telegraphic Agency, Daily Bulletin archive",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    },
+    "jta1990vote": {
+      "url": "https://www.jta.org/archive/shamir-government-wins-approval-in-the-knesset-by-a-vote-of-62-57",
+      "publisher": "Jewish Telegraphic Agency, Daily Bulletin archive",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    },
+    "jta1990returned": {
+      "url": "https://www.jta.org/archive/rabin-issues-challenge-to-peres-over-leadership-of-labor-party",
+      "publisher": "Jewish Telegraphic Agency, Daily Bulletin archive",
+      "kind": "archival",
+      "accessed": "2026-11-05"
+    }
+  },
+  "results": {
+    "electionDate": "1988-11-01",
+    "officialResultsSourceId": "k12-results-gazette"
+  },
+  "reaction": {
+    "policy": "Only dated institutional steps and statements attributed to their speaker, applied to every list or to none.",
+    "items": [],
+    "gap": "Comparably sourced reactions for every list were not collected."
+  },
+  "recommendationRounds": [
+    {
+      "id": "r1",
+      "date": "1988-11-13",
+      "kind": "consultations",
+      "president": {
+        "nameEn": "Chaim Herzog",
+        "nameHe": "חיים הרצוג"
+      },
+      "blocSchemeRef": "pm-recommendations",
+      "nominees": {
+        "shamir": {
+          "nameEn": "Yitzhak Shamir",
+          "nameHe": "יצחק שמיר"
+        },
+        "peres": {
+          "nameEn": "Shimon Peres",
+          "nameHe": "שמעון פרס"
+        }
+      },
+      "entries": [
+        {
+          "letters": "מחל",
+          "seats": 40,
+          "status": "recommended",
+          "nominee": "shamir"
+        },
+        {
+          "letters": "שס",
+          "seats": 6,
+          "status": "recommended",
+          "nominee": "shamir"
+        },
+        {
+          "letters": "ג",
+          "seats": 5,
+          "status": "recommended",
+          "nominee": "shamir"
+        },
+        {
+          "letters": "ב",
+          "seats": 5,
+          "status": "recommended",
+          "nominee": "shamir"
+        },
+        {
+          "letters": "ת",
+          "seats": 3,
+          "status": "recommended",
+          "nominee": "shamir"
+        },
+        {
+          "letters": "ץ",
+          "seats": 2,
+          "status": "recommended",
+          "nominee": "shamir"
+        },
+        {
+          "letters": "ט",
+          "seats": 2,
+          "status": "recommended",
+          "nominee": "shamir"
+        },
+        {
+          "letters": "אמת",
+          "seats": 39,
+          "status": "recommended",
+          "nominee": "peres"
+        },
+        {
+          "letters": "רצ",
+          "seats": 5,
+          "status": "recommended",
+          "nominee": "peres"
+        },
+        {
+          "letters": "ו",
+          "seats": 4,
+          "status": "recommended",
+          "nominee": "peres",
+          "noteEn": "Reused retrospective +972 report; contemporary per-faction confirmation was not retrieved. This is weaker evidence than the contemporary reports for other lists."
+        },
+        {
+          "letters": "מפם",
+          "seats": 3,
+          "status": "recommended",
+          "nominee": "peres"
+        },
+        {
+          "letters": "הן",
+          "seats": 2,
+          "status": "recommended",
+          "nominee": "peres"
+        },
+        {
+          "letters": "פ",
+          "seats": 1,
+          "status": "recommended",
+          "nominee": "peres",
+          "noteEn": "Reused retrospective +972 report; contemporary per-faction confirmation was not retrieved. This is weaker evidence than the contemporary reports for other lists."
+        },
+        {
+          "letters": "ע",
+          "seats": 1,
+          "status": "recommended",
+          "nominee": "peres",
+          "noteEn": "Reused retrospective +972 report; contemporary per-faction confirmation was not retrieved. This is weaker evidence than the contemporary reports for other lists."
+        },
+        {
+          "letters": "עץ",
+          "seats": 2,
+          "status": "none"
+        }
+      ],
+      "totals": {
+        "shamir": 63,
+        "peres": 55,
+        "none": 2
+      },
+      "cites": [
+        {
+          "source": "recommendations-research-1",
+          "quote": "The decision gave Shamir the support of 63 members of Israel's 120-member parliament, the Knesset. Foreign Minister Shimon Peres, leader of the center-left Labor Party and Shamir's rival in the current governing coalition, could muster only 55 Knesset members to support a Labor-led government."
+        },
+        {
+          "source": "recommendations-research-2",
+          "quote": "Of the two other religious parties, one of them, the National Religious Party, pledged its five seats to Likud last week. The other, Degel Hatorah, pledged its two Knesset seats to a broad-based coalition of Labor and Likud."
+        },
+        {
+          "source": "recommendations-research-3",
+          "quote": "The leftist Mapam and Citizens Rights Movement, as well as the Center-Shinui Movement, have declared their preference for a Labor-led government. They urged Herzog to approach Foreign Minister Shimon Peres. The right-wing Tehiya, Tsomet and Moledet parties all have opted for a Likud government headed by Premier Yitzhak Shamir."
+        },
+        {
+          "source": "recommendations-research-4",
+          "quote": "With its own 40 seats and the 11 seats offered Sunday, plus previously pledged support from one other religious party and three far-right parties, Likud can claim a majority with 63 seats in the 120-member Knesset"
+        },
+        {
+          "source": "recommendations-research-5",
+          "quote": "Hadash, the Progressive List, and the Arab Democratic Party all recommended Peres for the premiership"
+        }
+      ],
+      "notes": [
+        "Shas (6) and Agudat Yisrael (5) recommended Shamir on Sunday 13 November 1988; Herzog gave Shamir the mandate on 14 November. Per-list split matches the reported 63/55 totals. The Hadash, Progressive List and Arab Democratic Party recommendations rest on a secondary 2022 account (+972) and on arithmetic against the 55 total; no contemporary report naming them was retrieved. UPI's page and +972 returned 403 to a direct request on 2026-11-05; their quotes are from a search-index extract."
+      ]
+    }
+  ],
+  "formation": {
+    "outcome": "government-formed",
+    "events": [
+      {
+        "date": "1988-11-14",
+        "type": "mandate-given",
+        "textEn": "Herzog tasked Shamir with forming a government.",
+        "textHe": "הרצוג הטיל על שמיר להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "recommendations-research-1",
+            "quote": "The decision gave Shamir the support of 63 members"
+          }
+        ],
+        "person": "shamir",
+        "days": 21
+      },
+      {
+        "date": "1988-12-05",
+        "type": "extension",
+        "textEn": "Herzog extended Shamir’s mandate by 21 days.",
+        "textHe": "הרצוג האריך את המנדט של שמיר ב־21 ימים.",
+        "cites": [
+          {
+            "source": "jta1988extension",
+            "quote": "he gave Prime Minister Yitzhak Shamir an additional 21 days"
+          }
+        ],
+        "person": "shamir",
+        "days": 21
+      },
+      {
+        "date": "1988-12-22",
+        "type": "confidence-vote",
+        "textEn": "The Knesset approved Shamir’s 23rd government, 84–19.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־23 בראשות שמיר, ברוב של 84 מול 19.",
+        "cites": [
+          {
+            "source": "jta1988vote",
+            "quote": "The lopsided 84-19 vote of confidence"
+          }
+        ],
+        "votes": {
+          "for": 84,
+          "against": 19
+        }
+      },
+      {
+        "date": "1990-04-26",
+        "type": "mandate-returned",
+        "textEn": "Peres returned the mandate to Herzog without forming a government.",
+        "textHe": "פרס החזיר להרצוג את המנדט מבלי שהרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "jta1990returned",
+            "quote": "Peres’ fruitless attempts ended April 26, when he handed back his mandate to President Chaim Herzog."
+          }
+        ],
+        "person": "peres",
+        "scope": "mid-term"
+      },
+      {
+        "date": "1990-06-11",
+        "type": "confidence-vote",
+        "textEn": "The Knesset approved Shamir’s 24th government, 62–57.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־24 בראשות שמיר, ברוב של 62 מול 57.",
+        "cites": [
+          {
+            "source": "jta1990vote",
+            "quote": "late Monday by a vote of 62-57"
+          }
+        ],
+        "votes": {
+          "for": 62,
+          "against": 57
+        },
+        "scope": "mid-term",
+        "governmentNumber": 24
+      }
+    ]
+  },
+  "term": {
+    "start": "1988-11-01",
+    "end": "1992-06-23",
+    "inclusionRule": "At least two independently authored qualifying chronologies, including one official or academic, plus direct support for the date. The Knesset and MFA histories count separately; the JVL mirror is not another independent source. Formal government succession steps are recorded separately in formation.events.",
+    "chronologies": [
+      "mfa-history",
+      "knesset-history",
+      "ipu1988",
+      "ipu1992"
+    ],
+    "events": [
+      {
+        "id": "operation-solomon",
+        "date": "1991-05-24",
+        "category": "society",
+        "textEn": "Operation Solomon airlifted Ethiopian Jews to Israel.",
+        "textHe": "במבצע שלמה הוטסו יהודים מאתיופיה לישראל.",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "Operation Solomon"
+          },
+          {
+            "source": "knesset-history",
+            "quote": "Ma 24, 1991"
+          },
+          {
+            "source": "mfa-history",
+            "quote": "Operation Solomon, airlift of Jews from Ethiopia"
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "madrid-conference",
+        "date": "1991-10",
+        "category": "foreign-relations",
+        "textEn": "The Madrid peace conference convened.",
+        "textHe": "ועידת השלום במדריד התכנסה.",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "The Conference convened in the Spanish capital at the end of October 1991"
+          },
+          {
+            "source": "mfa-history",
+            "quote": "Conference (October 1991)"
+          }
+        ],
+        "confidence": "high"
+      }
+    ],
+    "candidatesPending": [
+      {
+        "label": "Iraqi missile attacks during the Gulf War",
+        "date": "1991-01",
+        "why": "Chronology coverage exists for some candidates, but a direct date/count source or second independent chronology was not verified for this row; no casualty figures copied."
+      },
+      {
+        "label": "Immigration from the Soviet Union",
+        "date": "1989",
+        "why": "Chronology coverage exists for some candidates, but a direct date/count source or second independent chronology was not verified for this row; no casualty figures copied."
+      },
+      {
+        "label": "Temple Mount killings",
+        "date": "1990-10",
+        "why": "Chronology coverage exists for some candidates, but a direct date/count source or second independent chronology was not verified for this row; no casualty figures copied."
+      },
+      {
+        "label": "Basic Laws: Human Dignity and Liberty; Freedom of Occupation",
+        "date": "1992-03",
+        "why": "Chronology coverage exists for some candidates, but a direct date/count source or second independent chronology was not verified for this row; no casualty figures copied."
+      }
+    ],
+    "endedBy": {
+      "type": "dissolution-law",
+      "date": "1992-02-04",
+      "nextElection": "1992-06-23",
+      "textEn": "The Knesset dissolved; the next election was held on 23 June 1992.",
+      "textHe": "הכנסת התפזרה; הבחירות הבאות נערכו ב־23 ביוני 1992.",
+      "cites": [
+        {
+          "source": "ipu1992",
+          "quote": "dissolution of this body on 4 February 1992"
+        }
+      ]
+    }
+  },
+  "issuePolling": {
+    "status": "pending",
+    "items": [],
+    "gap": "INES instrument exists; no qualifying published topline verified for this election. No microdata analysis performed."
+  },
+  "gaps": [
+    "Certification date and official first-sitting record not retrieved; election date comes from the existing verified result dataset.",
+    "Formation timeline is a sourced subset; missing steps must not be inferred from statutory maximum periods.",
+    "First-government coalition membership is reused from the existing first-government scheme, whose party membership evidence includes labelled Hebrew Wikipedia; a complete independent primary coalition agreement cross-check remains pending.",
+    "Recommendation evidence and caveats are inherited from docs/research/pm-recommendations-1977-2006.md; a source quoting the President is not an original presidential record.",
+    "1990 Peres/Shamir tasking dates and extensions need the primary letters or verified contemporary texts; not reconstructed from prospective reports. Government 24 coalition splits are not represented by the first-government card."
+  ],
+  "government": {
+    "number": 23,
+    "nameEn": "Government 23 (Yitzhak Shamir)",
+    "nameHe": "הממשלה ה־23 (יצחק שמיר)",
+    "startDate": "1988-12-22",
+    "endDate": "1990-06-11",
+    "primeMinisters": [
+      {
+        "nameEn": "Yitzhak Shamir",
+        "nameHe": "יצחק שמיר",
+        "to": "1990-06-11",
+        "from": "1988-12-22"
+      }
+    ],
+    "firstGovernmentSchemeRef": "first-government",
+    "coalition": [
+      {
+        "letters": "מחל",
+        "seats": 40
+      },
+      {
+        "letters": "אמת",
+        "seats": 39
+      },
+      {
+        "letters": "ג",
+        "seats": 5
+      },
+      {
+        "letters": "ב",
+        "seats": 5
+      },
+      {
+        "letters": "שס",
+        "seats": 6
+      },
+      {
+        "letters": "עץ",
+        "seats": 2,
+        "note": "in the coalition without cabinet ministers"
+      }
+    ],
+    "coalitionSeats": 97,
+    "coalitionSeatsNote": "Election-list seat envelope, checked against officialSeats; not the confidence-vote tally or a reconstruction of later faction membership.",
+    "cites": [
+      {
+        "source": "government-research-1",
+        "quote": "הממשלה העשרים ושלוש הוקמה לאחר הבחירות לכנסת ה-12 והושבעה בכנסת ב-22 בדצמבר 1988"
+      },
+      {
+        "source": "government-research-2",
+        "quote": "סיעות הקואליציה=="
+      },
+      {
+        "source": "government-research-3",
+        "quote": "KNS_PersonToPosition, GovernmentNum 23: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 1988-12-22: דרעי אריה מכלוף, צור יעקב, שחל משה, ויצמן עזר, מודעי יצחק, רבין יצחק, נבון יצחק, פרץ יצחק-חיים, גור מרדכי, נסים משה, קצב משה, לוי דוד, שרון אריאל, יעקבי גד, פת גדעון, פרס שמעון, שמיר יצחק, מרידור דן, כץ-עוז אברהם, אולמרט אהוד, מילוא רוני, אדרי רפאל, בר-לב חיים, ארנס משה"
+      },
+      {
+        "source": "jta1990vote",
+        "quote": "late Monday by a vote of 62-57"
+      }
+    ],
+    "changes": [
+      {
+        "date": "1990-03-15",
+        "type": "no-confidence-vote",
+        "textEn": "The Knesset passed a no-confidence motion against Shamir’s government, 60–55; it continued as a caretaker government.",
+        "textHe": "הכנסת קיבלה הצעת אי־אמון בממשלת שמיר ברוב של 60 מול 55; הממשלה המשיכה לכהן כממשלת מעבר.",
+        "cites": [
+          {
+            "source": "jta1990fall",
+            "quote": "The 60-55 vote came shortly before 9 p.m."
+          },
+          {
+            "source": "jta1990fall",
+            "quote": "Shamir remains at the helm of a Likud-led caretaker government"
+          }
+        ],
+        "votes": {
+          "for": 60,
+          "against": 55
+        },
+        "scope": "mid-term",
+        "governmentNumber": 23,
+        "formalStep": true
+      }
+    ]
+  }
+}
