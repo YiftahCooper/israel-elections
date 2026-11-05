@@ -1,3 +1,4 @@
+import { useFloating } from '../floating.tsx';
 import { ScenarioSwitcher } from './ScenarioSwitcher.tsx';
 import { useActiveReference } from '../useActiveReference.ts';
 import { ElectionAbout } from './ElectionContext.tsx';
@@ -48,11 +49,13 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
   const [menu, setMenu] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const menuButton = useRef<HTMLButtonElement>(null);
+  const popupRef = useRef<HTMLDivElement>(null);
+  useFloating(popupRef, () => menuButton.current?.getBoundingClientRect(), menu);
   // the menu closes on Escape (focus returns to its button) or a press outside it, not on mouse leave,
   // so keyboard and touch users can use it
   useEffect(() => {
     if (!menu) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') { setMenu(false); menuButton.current?.focus(); } };
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') { setMenu(false); menuButton.current?.focus({preventScroll:true}); } };
     const onDown = (e: PointerEvent) => { if (!menuRef.current?.contains(e.target as Node)) setMenu(false); };
     document.addEventListener('keydown', onKey); document.addEventListener('pointerdown', onDown);
     return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', onDown); };
@@ -89,7 +92,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
         <button className="tool" aria-label={L('Save & share', 'שמירה ושיתוף')} title={L('Save & share', 'שמירה ושיתוף')} ref={menuButton} aria-expanded={menu} aria-controls="scenarios-menu" onClick={() => setMenu((m) => !m)}>
           <Share2 className="icon" aria-hidden /><span className="label">{L('Save & share', 'שמירה ושיתוף')}</span><ChevronDown className="icon sm" aria-hidden /></button>
         {menu && (
-          <div className="menu-pop" id="scenarios-menu">
+          <div ref={popupRef} className="menu-pop" id="scenarios-menu">
             {s && <ScenarioName key={`${s.id}-${s.name}`} name={s.name} placeholder={L('Untitled scenario', 'תרחיש ללא שם')} label={L('Scenario name', 'שם התרחיש')} />}
             <button className="btn small" onClick={() => { if (saveCurrent(getState().scenario?.name || undefined)) toast('info', L('Saved in this browser.', 'נשמר בדפדפן זה.')); setMenu(false); }} disabled={!s}><Save className="icon sm" aria-hidden />{L('Save in this browser', 'שמירה בדפדפן')}</button>
             <button className="btn small" onClick={async () => {

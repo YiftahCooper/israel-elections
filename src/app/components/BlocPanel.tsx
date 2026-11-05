@@ -79,7 +79,8 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
   }, [s, r]);
   const seatsIn = (k: string) => (units.get(k) ?? []).reduce((t, u) => t + u.n, 0);
 
-  useEffect(() => { cards.current[focus]?.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }, [focus]);
+  useEffect(() => { const card = cards.current[focus], body = card?.closest('.sp-body');
+    if (card && body) body.scrollTop += card.getBoundingClientRect().top - body.getBoundingClientRect().top; }, [focus]);
   // Escape first cancels a move or closes the colours, before it closes the panel (the app's handler)
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {

@@ -29,3 +29,10 @@ it('every offered identity colour can be applied, exported and replayed', () => 
     expect(validateScenario(coloured)).toEqual([]);
   }
 });
+
+it('preserves explicit colours saved before the new default palette', () => {
+  const base = scenarioFromDataset(loadDataset('k25'));
+  const old = applyAction(base, {type:'setIdentityColor',color:'#65508a'});
+  expect(validateScenario(old)).toEqual([]);
+  expect(savedColor(old.log.map(e=>e.action))).toBe('#65508a');
+});

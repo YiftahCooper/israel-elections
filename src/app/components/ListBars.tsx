@@ -34,7 +34,12 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   const selected = useStore((st) => st.selectedListId);
   const [showAll, setShowAll] = useState(false);
   const selRef = useRef<HTMLButtonElement>(null);
-  useEffect(() => { if (selected) selRef.current?.scrollIntoView({ block: 'nearest' }); }, [selected]);
+  useEffect(() => { const row = selRef.current, panel = row?.closest('.lbars');
+    if (selected && row && panel && panel.scrollHeight > panel.clientHeight) {
+      const r = row.getBoundingClientRect(), p = panel.getBoundingClientRect();
+      if (r.top < p.top) panel.scrollTop += r.top - p.top;
+      else if (r.bottom > p.bottom) panel.scrollTop += r.bottom - p.bottom;
+    } }, [selected]);
 
   const previousSeats = useRef({ election: s.electionId, seats: new Map(r.lists.map(x => [x.id, x.seats])) });
   useEffect(() => { if (previewing) return; previousSeats.current = { election: s.electionId, seats: new Map(r.lists.map(x => [x.id, x.seats])) }; }, [s.electionId, r, previewing]);

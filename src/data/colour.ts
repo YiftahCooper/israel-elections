@@ -122,7 +122,14 @@ export const noBlocTints = () => BLOC_TINTS.map((t) => mixHex(t.muted, t.surface
  *  No bloc, otherwise it takes the nearest colour (smallest CIEDE2000 change) whose tints do, trying hue and chroma. */
 export function separateBlocColours(colors: string[], min = MIN_BLOC_TINT_DELTA_E): string[] {
   const placed: string[][] = [noBlocTints()], out: string[] = [];
-  const margin = (c: string) => { const t = blocTints(c); return placed.reduce((m, p) => Math.min(m, ...t.map((x, i) => deltaE2000(x, p[i]) - min)), Infinity); };
+  const margin = (c: string) => {
+    const t = blocTints(c), h = hexToOklch(c)[2];
+    const solid = out.reduce((m, p) => {
+      const dh = Math.abs(h - hexToOklch(p)[2]);
+      return Math.min(m, deltaE2000(c, p) - 20, (Math.min(dh, Math.PI * 2 - dh) * 180 / Math.PI - (colors.length <= 3 ? 90 : colors.length <= 5 ? 50 : 25)) / 5);
+    }, Infinity);
+    return placed.reduce((m, p) => Math.min(m, ...t.map((x, i) => deltaE2000(x, p[i]) - min)), solid);
+  };
   const rad = Math.PI / 180;
   for (const color of colors) {
     const own = color.toLowerCase();

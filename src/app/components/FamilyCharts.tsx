@@ -1,3 +1,4 @@
+import { Floating } from '../floating.tsx';
 import {useEffect,useId,useRef,useState} from 'react';
 import {aggregate,type Family} from '../../families/model.ts';
 import {familyColor,historyElections,shortFamilyName,type HistoryElection} from '../../families/runtime.ts';
@@ -59,7 +60,7 @@ function Plot({family:f,metric,scale,cursor,onCursor}:{family:Family;metric:'sha
  const endY=lastAt===undefined?top+10:Math.max(top+5,Math.min(bottom-10-13*(Math.min(3,labelLines.length)-1),y(data[lastAt].votes!,historyElections[lastAt])+4));
  const mid=(i:number)=>i<0?left-6:i>25?width-right+6:x(historyElections[i]);
  const fmtTick=(v:number)=>metric==='share'?`${+v.toFixed(1)}%`:v>=1000000?`${+(v/1000000).toFixed(2)}m`:v>=1000?`${Math.round(v/1000)}k`:String(v);
- const tipAt=at>=0?x(historyElections[at])/width:0.5;
+
  return <div ref={ref} className="family-plot" style={{['--family-color' as string]:color}} onPointerLeave={()=>setHover(false)}>
   <svg viewBox={`0 0 ${width} ${height}`} height={height} role="group" aria-label={`${label} — ${metric==='share'?L('Vote share','שיעור קולות'):L('Votes','קולות')}`}>
    <defs><pattern id={`hatch${id}`} width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V5" stroke={color} strokeWidth="1.6"/></pattern></defs>
@@ -77,6 +78,6 @@ function Plot({family:f,metric,scale,cursor,onCursor}:{family:Family;metric:'sha
    {!path&&!data.some(a=>a.mixed)&&<text className="family-empty" x={(left+width-right)/2} y={(top+bottom)/2} textAnchor="middle">{L('No lists counted in any election','לא נספרו רשימות באף מערכת בחירות')}</text>}
    {lastAt!==undefined&&<text className="family-end-label" x={width-right+12} y={endY} textAnchor="start">{labelLines.slice(0,3).map((line,i)=><tspan key={i} x={width-right+12} dy={i?13:0}>{line.length>(narrow?11:17)?line.slice(0,narrow?10:16)+'…':line}{i===2&&labelLines.length>3?'…':''}</tspan>)}</text>}
   </svg>
-  {hover&&at>=0&&<div className="family-tooltip" role="tooltip" style={tipAt>0.55?{right:`calc(${((1-tipAt)*100).toFixed(2)}% + 10px)`}:{left:`calc(${(tipAt*100).toFixed(2)}% + 10px)`}}>{describe(data[at],historyElections[at])}</div>}
+  {hover&&at>=0&&<Floating className="family-tooltip" anchor={() => ref.current?.querySelector(`[aria-label="${CSS.escape(describe(data[at],historyElections[at]))}"]`)?.getBoundingClientRect() ?? ref.current?.getBoundingClientRect()}>{describe(data[at],historyElections[at])}</Floating>}
  </div>;
 }

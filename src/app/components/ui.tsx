@@ -1,3 +1,4 @@
+import { Floating, useHoverBridge } from '../floating.tsx';
 import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
 import { GLOSSARY, useL, useLang, type GlossaryTerm } from '../i18n.ts';
 import type { LogoRef } from '../../data/schema.ts';
@@ -9,6 +10,7 @@ export function Info({ title, children, term }: { title?: string; children?: Rea
   // press or a second click. A click used to toggle a popover that hover or focus had just opened,
   // so it closed at once, and touch users could never open it.
   const [open, setOpen] = useState<false | 'hover' | 'focus' | 'pinned'>(false);
+  const bridge = useHoverBridge(() => setOpen(o => o === 'hover' ? false : o));
   const id = useId();
   const lang = useLang();
   const ref = useRef<HTMLSpanElement>(null);
@@ -24,25 +26,19 @@ export function Info({ title, children, term }: { title?: string; children?: Rea
   const heading = title ?? (g ? (lang === 'he' ? g.nameHe : `${g.nameEn} (${g.nameHe})`) : '');
   return (
     <span className="info" ref={ref}
-      onPointerEnter={(e) => { if (e.pointerType === 'mouse') setOpen((o) => o || 'hover'); }}
-      onPointerLeave={(e) => { if (e.pointerType === 'mouse') setOpen((o) => (o === 'hover' ? false : o)); }}>
+      onPointerEnter={(e) => { if (e.pointerType === 'mouse') { bridge.cancel(); setOpen((o) => o || 'hover'); } }}
+      onPointerLeave={(e) => { if (e.pointerType === 'mouse') bridge.leave(); }}>
       <button type="button" aria-label={heading || 'info'} aria-expanded={!!open} aria-describedby={open ? id : undefined}
         onClick={() => setOpen((o) => (o === 'pinned' ? false : 'pinned'))}
         onFocus={(e) => { if (e.currentTarget.matches(':focus-visible')) setOpen((o) => o || 'focus'); }}
         onBlur={(e) => { if (!ref.current?.contains(e.relatedTarget as Node)) setOpen((o) => (o === 'hover' ? o : false)); }}>i</button>
       {open && (
-        <span className="pop" role="tooltip" id={id} ref={(el) => {
-          if (!el) return;
-          el.style.transform = '';
-          const r = el.getBoundingClientRect(); const vw = document.documentElement.clientWidth;
-          const dx = r.right > vw - 8 ? vw - 8 - r.right : r.left < 8 ? 8 - r.left : 0;
-          if (dx) el.style.transform = `translateX(${dx}px)`;
-        }}>
+        <Floating onPointerEnter={bridge.cancel} onPointerLeave={bridge.leave} className="pop" id={id} anchor={() => ref.current?.querySelector('button')?.getBoundingClientRect()}>
           {heading && <b>{heading}</b>}
           {g && <span>{lang === 'he' ? g.defHe : g.defEn}</span>}
           {g && <GlossaryLink g={g} lang={lang} />}
           {children}
-        </span>
+        </Floating>
       )}
     </span>
   );
