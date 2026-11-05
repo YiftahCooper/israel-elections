@@ -18,11 +18,11 @@ test('settings sit in their own card, apart from the scenario rules', async ({ p
   await start(page); await openRules(page);
   const settings = page.getByRole('region', { name: 'Settings', exact: true });
   await expect(settings).toBeVisible();
-  for (const name of ['Votes come from', 'Mark differences from', 'Decimal places for percentages']) await expect(settings.getByRole('combobox', { name, exact: true })).toBeVisible();
+  for (const name of ['Votes come from', 'Mark differences from', 'Decimal places for percentages']) await expect(settings.getByRole('button', { name, exact: true })).toBeVisible();
   await expect(settings.getByRole('checkbox', { name: 'Party colours in split joint lists', exact: true })).toBeChecked();
   // rules are not in the settings card, settings are not among the rules
   await expect(settings.getByRole('textbox', { name: 'Threshold %' })).toHaveCount(0);
-  await expect(page.locator('.rules-fields').getByRole('combobox', { name: 'Votes come from' })).toHaveCount(0);
+  await expect(page.locator('.rules-fields').getByRole('button', { name: 'Votes come from' })).toHaveCount(0);
 });
 
 test('a "For this list" answer is listed in Settings and Ask again makes the edit ask again', async ({ page }) => {
@@ -39,7 +39,7 @@ test('a "For this list" answer is listed in Settings and Ask again makes the edi
   const items = page.getByRole('list', { name: 'Votes come from · For one list or bloc' });
   await expect(items.getByRole('listitem')).toHaveCount(1);
   await expect(items).toContainText('Likud: New voters');
-  await expect(page.getByRole('combobox', { name: 'Votes come from', exact: true })).toHaveValue('ask');
+  await expect(page.getByRole('button', { name: 'Votes come from', exact: true })).toHaveAttribute('data-value', 'ask');
   await items.getByRole('button', { name: /^Ask again for Likud/ }).click();
   await expect(items).toHaveCount(0);
   // the board keeps its selection: Likud's panel is open again
@@ -94,7 +94,8 @@ test('below Expert the precision setting is shown fixed, not as a select that do
   await start(page, 'simple');
   // below Expert the tab sits among the other levels' tools, named with its level
   await page.getByRole('tab', { name: /^Rules & settings/ }).click();
-  await expect(page.getByRole('combobox', { name: 'Decimal places for percentages' })).toBeDisabled();
+  await expect(page.getByRole('button', { name: 'Decimal places for percentages' })).toHaveCount(0);
+  await expect(page.locator('.settings-card .field').filter({ hasText: 'Decimal places for percentages' }).locator('span').first()).toHaveText(/^[0-9]+$/);
   await expect(page.getByRole('region', { name: 'Settings', exact: true })).toContainText('Expert level');
 });
 

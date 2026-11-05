@@ -235,7 +235,6 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
       {r.warnings.filter(w => w.data?.list === l.id || (w.data?.ids as string[] | undefined)?.includes(l.id)).map((w, i) =>
         <p key={i} className="callout small">{warningText(w, s, lang)}</p>)}
       <section>
-        <Feature id="voteStart"><StartFrom s={s} part="votes" /></Feature>
         {!l.withdrawn && <div className="seat-target">
           <NumericStepper label={L('Seats', 'מנדטים')} showLabel value={lr.seats} onCommit={(n) => commit((from) => seatsFrom(n, from))} max={s.rules.seats}
               steps={[{ id: '1', label: '1', amount: 1 }]} onPreview={(n) => { const t = seatVotes(n); if (t !== null) explainTarget(t); }} />
@@ -277,6 +276,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
             {transferShown && <TransferStep s={s} l={l} />}
           </div>}
         </fieldset>
+        <Feature id="voteStart"><StartFrom s={s} part="votes" /></Feature>
       </section>
 
       {crossing !== null && Number(s.rules.thresholdPct) > 0 && <p className="small crossing">{crossing ? L('Passed the threshold', 'עברה את אחוז החסימה') : L('Below the threshold', 'מתחת לאחוז החסימה')} <Info title={L('Allocation recalculated', 'החלוקה חושבה מחדש')}>{L('Qualifying votes and every allocation were recalculated.', 'הקולות המשתתפים וכל החלוקה חושבו מחדש.')}</Info> <button className="table-action" onClick={() => setState({ tool: 'walk', selectedListId: null })}>{L('Walkthrough: threshold', 'שלבי החלוקה: אחוז החסימה')}</button></p>}

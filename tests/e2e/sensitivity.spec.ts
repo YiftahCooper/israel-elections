@@ -45,7 +45,7 @@ test('switching election on the page gives that election’s lists and blocs', a
   await start(page);
   await expect(blocRow(page)).toHaveText('53 / 61');
   await election(page, 'k12');
-  await expect(panel(page).getByRole('combobox', { name: 'List' })).toHaveValue('12-מחל');
+  await expect(panel(page).getByRole('button', { name: 'List', exact: true })).toHaveAttribute('data-value', '12-מחל');
   await expect(panel(page).getByRole('textbox', { name: 'From', exact: true })).toHaveValue('20,549');
   await expect(blocRow(page)).toHaveText('97 / 61');
   await expect(panel(page).getByRole('img', { name: 'Seats against votes' })).toContainText('20,549', { timeout: 60_000 });

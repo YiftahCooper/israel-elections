@@ -205,16 +205,6 @@ function Shell() {
                   }}>{label(t.id)}{RANK[t.level] > RANK[level] && <span className="sr-only"> ({L(...LEVEL_LABELS[t.level])})</span>}</button>,
                 ])}
               </div></nav>
-      <div>
-        {level === 'simple' && !hintDismissed && <div className="banner note" role="status"><span className="banner-text">{L('Pick a list. Try a change.', 'בחרו רשימה. נסו לשנות.')} <Info title={L('Explore the board', 'מגלים את תמונת המצב')}>{L('Click any list, seat, bloc or figure to see and change what is behind it. Every tool is named in the strip under the header.', 'לחצו על כל רשימה, מושב, גוש או נתון כדי לראות ולשנות את מה שמאחוריו. כל הכלים מופיעים בשורה שמתחת לכותרת.')}</Info></span> <button className="btn small ghost icon-only" onClick={() => setState({ hintDismissed: true })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}
-        {loadBanner}
-
-        {notice && <div className="banner note" role="status"><span className="banner-text">{notice}</span> <button className="btn small ghost icon-only" onClick={() => setState({ notice: null })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}
-        {tool !== 'board' && r.warnings.filter((w) => w.code !== 'internal-loss').map((w, i) => tieAffectsSeats(s, w)
-          ? <div key={`w${i}`} className="banner warn" role="alert">{warningText(w, s, lang)}</div>
-          : <div key={`w${i}`} className="banner note" role="status">{warningText(w, s, lang)}</div>)}
-        {issues.map((x, i) => <div key={i} className={`banner ${x.level === 'error' ? 'err' : 'warn'}`} role="alert">{lang === 'he' ? x.he : x.en}</div>)}
-      </div>
       <ChangeSummary s={committed} r={cr} base={base} baseR={baseR} ds={ds} />
       <main className="work">
         {customPage ? <CustomPage /> : tool === 'board' ? (
@@ -262,7 +252,18 @@ function Shell() {
         {drawerOpen && <div className="drawer"><ErrorBoundary label={L('List details', 'פרטי רשימה')} resetKey={selected}><ListSidePanel s={committed} r={cr} ds={ds} base={base} baseR={baseR} listId={selected} /></ErrorBoundary></div>}
 
         {s.mode === 'experimental' && <div className="banner note" role="status">{L('Alternative electoral system', 'שיטת בחירות חלופית')} <Info title={L('Experimental rules', 'כללים ניסיוניים')}>{L('Experimental rules: this is an alternative electoral system, not a legally possible Israeli result.', 'כללים ניסיוניים: זוהי שיטת בחירות חלופית ולא תוצאה אפשרית לפי החוק בישראל.')}</Info>{(() => { const c = ruleChanges(s, lang); return c.length ? <> {L('Changed: ', 'שינויים: ')}<b>{c.join(' · ')}</b>.</> : null; })()} <button className="btn small" onClick={() => dispatch({ type: 'setMode', mode: 'historical' })}>{L('Back to the real rules', 'חזרה לכללים האמיתיים')}</button></div>}
-      </main></>}
+      </main>
+      <div className="app-notices">
+        {level === 'simple' && !hintDismissed && <div className="banner note" role="status"><span className="banner-text">{L('Pick a list. Try a change.', 'בחרו רשימה. נסו לשנות.')} <Info title={L('Explore the board', 'מגלים את תמונת המצב')}>{L('Click any list, seat, bloc or figure to see and change what is behind it. Every tool is named in the strip under the header.', 'לחצו על כל רשימה, מושב, גוש או נתון כדי לראות ולשנות את מה שמאחוריו. כל הכלים מופיעים בשורה שמתחת לכותרת.')}</Info></span> <button className="btn small ghost icon-only" onClick={() => setState({ hintDismissed: true })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}
+        {loadBanner}
+
+        {notice && <div className="banner note" role="status"><span className="banner-text">{notice}</span> <button className="btn small ghost icon-only" onClick={() => setState({ notice: null })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}
+        {tool !== 'board' && r.warnings.filter((w) => w.code !== 'internal-loss').map((w, i) => tieAffectsSeats(s, w)
+          ? <div key={`w${i}`} className="banner warn" role="alert">{warningText(w, s, lang)}</div>
+          : <div key={`w${i}`} className="banner note" role="status">{warningText(w, s, lang)}</div>)}
+        {issues.map((x, i) => <div key={i} className={`banner ${x.level === 'error' ? 'err' : 'warn'}`} role="alert">{lang === 'he' ? x.he : x.en}</div>)}
+      </div>
+      </>}
       <SourceDialog />
       {toast && <div className={`toast toast-${toast.kind}`} role={toast.kind === 'error' ? 'alert' : 'status'}>{toast.text}</div>}
     </div>

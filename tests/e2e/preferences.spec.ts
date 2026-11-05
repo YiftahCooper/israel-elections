@@ -47,9 +47,9 @@ test('opening a saved scenario asks about its comparison, persists Always, and S
   await expect(switcher).toHaveAttribute('data-value', saved!);
   await page.reload();
   await page.getByRole('tab', { name: 'Rules & settings', exact: true }).click();
-  const setting = page.getByRole('combobox', { name: 'Mark differences from', exact: true });
-  await expect(setting).toHaveValue('official'); await setting.selectOption('ask');
-  await expect(setting).toHaveValue('ask');
+  const setting = page.getByRole('button', { name: 'Mark differences from', exact: true });
+  await expect(setting).toHaveAttribute('data-value', 'official'); await choose(setting, 'ask');
+  await expect(setting).toHaveAttribute('data-value', 'ask');
 });
 
 for (const scope of ['Just this once', 'For this scenario']) test(`comparison scope: ${scope}`, async ({ page }) => {

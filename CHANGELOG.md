@@ -2,6 +2,8 @@
 
 ## 5 November 2026 — release review
 
+- QA2 leftovers: use shared analysis/settings pickers, tighten stable list-panel spacing, place global notices after the work area, and compact the phone header while keeping every control directly available.
+
 - Analysis screens: fixed-scale seat-safety tracks, stable sensitivity loading, complete threshold labels and round axis ticks, nearby chart names with Hebrew phone alignment, inline formula help and compact allocation tables, equal comparison options and compact aligned coalition rows.
 - Editing screens: suppress unchanged resets, keep questions independent and edit controls steady, preserve locked explanations, clarify turnout steps and disabled actions, and align locality search and sticky map.
 - QA2 Overview and header: keep phone scenarios readable, selection widths and election header slots stable, expose tab scrolling, toggle figure popovers natively, align values and isolate sums, trim the arc’s empty margin, keep show-more triggers before their content, wrap grouping names, unify fallback identities, and show sourced Hebrew member names in given-name order. Shared labels wrap between words; Sources leads with English labels and retains original credits.

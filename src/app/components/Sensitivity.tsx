@@ -1,3 +1,4 @@
+import { ChoicePicker } from './ChoicePicker.tsx';
 import { GraphicChanges } from './GraphicChanges.tsx';
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import { allocate } from '../../engine/allocate.ts';
@@ -105,7 +106,7 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
     <div>
       <h3>{L('Seats by votes', 'מנדטים לפי קולות')} <Info title={L('Seats by votes', 'מנדטים לפי קולות')}>{L('The seats one list wins at every vote count in the range. All other lists keep their votes, so the valid total changes with this list. Boundaries are exact whole vote counts.', 'המנדטים שרשימה אחת מקבלת בכל מספר קולות בטווח. שאר הרשימות שומרות על קולותיהן, ולכן סך הקולות הכשרים משתנה עם הרשימה. הגבולות הם מספרי קולות מדויקים.')}</Info></h3>
       <div className="row">
-        <select value={id} onChange={(e) => setPicked(e.target.value)} aria-label={L('List', 'רשימה')} style={{ flex: '1 1 160px', maxWidth: 260 }}>{main.slice(0, 30).map((x) => <option key={x.id} value={x.id}>{listLabel(x, lang)}</option>)}</select>
+        <ChoicePicker label={L('List', 'רשימה')} value={id} onChange={setPicked} options={main.slice(0, 30).map(x => ({ value: x.id, label: listLabel(x, lang) }))} />
         <span className="row" dir="ltr" style={{ flexWrap: 'nowrap', gap: 6 }}>
           <span className="small">{L('from', 'מ')}</span><NumberInput value={from} onCommit={(n) => setRange(n, to)} label={L('From', 'מ')} width={100} />
           <span className="small">{L('to', 'עד')}</span><NumberInput value={to} onCommit={(n) => setRange(from, n)} label={L('To', 'עד')} width={100} />
@@ -337,7 +338,7 @@ function BlocFlip({ s, r }: { s: Scenario; r: AllocationResult }) {
     <div>
       <h3>{L('Flip a bloc majority', 'היפוך הרוב של גוש')} <Info title={L('Flip a bloc majority', 'היפוך הרוב של גוש')}>{L(`The fewest votes moving from one list to another that give the bloc a majority (${majority} of ${s.rules.seats}), or end it. Every pair of a list inside and a list outside the bloc is searched, among lists with at least 0.5% of the votes, by the bloc assignment shown; each list's seats count for the list's own bloc.`, `מספר הקולות הקטן ביותר שעוברים מרשימה אחת לאחרת ונותנים לגוש רוב (${majority} מתוך ${s.rules.seats}), או מבטלים אותו. נבדק כל זוג של רשימה בגוש ורשימה מחוצה לו, מבין הרשימות עם 0.5% מהקולות לפחות, לפי השיוך לגושים המוצג; המנדטים של כל רשימה נספרים לגוש של הרשימה.`)}</Info></h3>
       <div className="row">
-        <select value={bid} onChange={(e) => setPicked(e.target.value)} aria-label={L('Bloc', 'גוש')}>{s.blocs.map((b) => <option key={b.id} value={b.id}>{lang === 'he' ? b.nameHe : b.nameEn}</option>)}</select>
+        <ChoicePicker label={L('Bloc', 'גוש')} value={bid} onChange={setPicked} options={s.blocs.map(b => ({ value: b.id, label: lang === 'he' ? b.nameHe : b.nameEn }))} />
         {meter(seats)}
         <span className="small"><bdi dir="ltr">{seats} / {majority}</bdi> {seats >= majority ? L('(has a majority)', '(יש רוב)') : L('(no majority)', '(אין רוב)')}</span>
       </div>

@@ -1,3 +1,4 @@
+import { ChoicePicker } from './ChoicePicker.tsx';
 import { Download } from 'lucide-react';
 import { PreferenceSettings } from './SourcePicker.tsx';
 import { NumericStepper } from './NumericStepper.tsx';
@@ -157,7 +158,7 @@ function Settings() {
       <div className="row" style={{ gap: 4 }}><label className="switch small"><input type="checkbox" checked={showComponentSeats} onChange={e => setState({ showComponentSeats: e.target.checked })} />{L('Party colours in split joint lists', 'צבעי מפלגות ברשימות משותפות שפוצלו')}</label>
       <Info title={L('Party colours', 'צבעי מפלגות')}>{L('When a joint list is split into its parties after the election, the seats and bars of its parties show the party colour inside the list colour. Off: the list colour only.', 'כשרשימה משותפת מפוצלת למפלגותיה אחרי הבחירות, המושבים והעמודות של מפלגותיה מציגים את צבע המפלגה בתוך צבע הרשימה. כבוי: צבע הרשימה בלבד.')}</Info></div>
       <label className="field" style={{ maxWidth: 260, marginBlockStart: 8 }}>{L('Decimal places for percentages', 'ספרות אחרי הנקודה באחוזים')}
-        <select value={digits} disabled={!precision} onChange={(e) => setState({ digits: Number(e.target.value) })}>{[0, 1, 2, 3, 4, 6, 8].map((d) => <option key={d} value={d}>{d}</option>)}</select>
+        {precision ? <ChoicePicker label={L('Decimal places for percentages', 'ספרות אחרי הנקודה באחוזים')} value={String(digits)} onChange={v => setState({ digits: Number(v) })} options={[0, 1, 2, 3, 4, 6, 8].map(d => ({ value: String(d), label: String(d) }))} /> : <span>{digits}</span>}
         {!precision && <span className="tiny muted">{L('Expert level', 'ברמת מומחה')}</span>}
       </label>
       <h4>{L('Editing', 'עריכה')} <Info title={L('Questions while editing', 'שאלות בזמן עריכה')}>{L('Some edits ask how to apply them. Just this once: asked again next time. For this list, bloc or scenario: kept for that item until the page is reloaded. Always: used everywhere; change it here.', 'חלק מהעריכות שואלות איך להחיל אותן. רק הפעם: תישאלו שוב בפעם הבאה. לרשימה, לגוש או לתרחיש זה: נשמר לאותו פריט עד לטעינה מחדש של הדף. תמיד: חל בכל מקום; ניתן לשנות כאן.')}</Info></h4>

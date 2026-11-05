@@ -978,7 +978,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .pref-items-title { margin: 6px 0 0; }
 .pref-items { list-style: none; padding: 0; margin: 2px 0 0; display: grid; gap: 2px; max-width: 300px; }
 .pref-items li { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-.quick-consequence { block-size: 2.9em; margin: 0; color: var(--ink-2); overflow: auto; }
+.quick-consequence { block-size: 1.45em; margin: 0; color: var(--ink-2); overflow: auto; }
 @media (min-width: 1200px) { .band { gap: 6px; } .band .tool .label { display: none; } .band .brand { font-size: 15px; } }
 @media (max-width: 600px) {
   .choice-dialog { position: fixed; margin: 0; inset-block-start: auto; inset-block-end: 0; inset-inline: 0; inline-size: 100%; max-inline-size: none; max-block-size: 85dvh; border-radius: 12px 12px 0 0; padding: 14px; }
@@ -1108,3 +1108,19 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 
 @media (min-width: 1200px) { .band .election { max-inline-size: 220px; } }
 @media (min-width: 761px) and (max-width: 1399px) { .band { flex-wrap: wrap; } }
+
+/* Keep the list's computed status compact without resizing when results arrive. */
+.seat-search-status { margin: 0; }
+.brand-short { display: none; }
+@media (max-width: 760px) {
+  .band .brand { flex: 0 0 60px; font-size: 13px; }
+  .brand-full { display: none; }
+  .brand-short { display: inline; }
+  .band .election { flex: 1 1 270px; max-inline-size: calc(100% - 68px); }
+  .band { gap: 5px 8px; }
+  .band .election-about { flex: 0 0 100px; inline-size: 100px; min-block-size: 34px; block-size: 34px; }
+  .band .scenario-switcher .choice-trigger { min-block-size: 34px; }
+  .band-levels .seg button { padding-inline: 8px; }
+  .band-levels { gap: 4px; }
+  .band .band-custom { padding-inline: 6px; }
+}
