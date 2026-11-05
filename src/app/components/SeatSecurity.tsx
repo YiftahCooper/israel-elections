@@ -12,7 +12,7 @@ import { runTasks } from '../analysisPool.ts';
 import { partsOf, securityRow, type SecurityFigure, type SecurityItem, type SecurityPart, type SecurityRow as Row } from '../analysisTasks.ts';
 import { setState } from '../store.ts';
 import { toVoteSource, type SourceChoice } from '../voteEdit.ts';
-import { Info, Seg } from './ui.tsx';
+import { Info, Seg, Slip } from './ui.tsx';
 import { minimalWinning } from '../coalitions.ts';
 
 /** How close every list is to its next seat and to losing one — the "knife-edge" view. */
@@ -115,12 +115,13 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
     const list = s.lists.find(l => l.id === p.listId)!;
     const party = list.parties?.find(x => x.id === p.partyId);
     const label = party ? `${lang === 'he' ? party.nameHe : party.nameEn} (${listLabel(list, lang)})` : listLabel(list, lang);
-    return { l: { id: p.id, color: p.color, bloc: p.bloc }, n: p.n, label };
+    return { l: { id: p.id, color: p.color, bloc: p.bloc }, listId: p.listId, partyId: p.partyId, logo: party ? party.logo : list.logo, n: p.n, label };
   });
+  const [inspected, setInspected] = useState<{ election: string; ids: string[] } | null>(null);
+  const selected = inspected?.election === s.electionId ? inspected.ids.filter(id => seated.some(x => x.l.id === id)) : [];
   const majority = Math.floor(s.rules.seats / 2) + 1;
   const picked = s.coalition?.in ?? [];
   const excluded = s.coalition?.out ?? [];
-  const pickedSeats = seated.filter((x) => picked.includes(x.l.id)).reduce((t, x) => t + x.n, 0);
   // pruned search (src/app/coalitions.ts): same coalitions and order as the former 2^N enumeration,
   // without its 18-list limit; it stops at 100,000 coalitions and says so
   const { coalitions: minimal, truncated } = useMemo(
@@ -128,9 +129,24 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
     [seated, majority, picked, excluded]);
   const nm = (id: string) => seated.find(x => x.l.id === id)!.label;
   const choose = (id: string, state: string) => {
+    const current = picked.includes(id) ? 'in' : excluded.includes(id) ? 'out' : 'any';
+    if (state === current) return;
+    setInspected(null);
     dispatch({ type: 'setCoalition', coalition: { in: state === 'in' ? [...picked.filter(x => x !== id), id] : picked.filter(x => x !== id), out: state === 'out' ? [...excluded.filter(x => x !== id), id] : excluded.filter(x => x !== id) } });
   };
   const total = s.rules.seats;
+  const detailIds = selected.length ? selected : picked.filter(id => seated.some(x => x.l.id === id));
+  const detailSeats = seated.filter(x => detailIds.includes(x.l.id)).reduce((n, x) => n + x.n, 0);
+  const government = s.blocSchemes?.find(g => g.kind === 'government');
+  const governmentBloc = government?.blocs.find(b => b.id === 'coalition');
+  // A structural edit or a collapsed mixed list cannot establish partner identity.
+  const historyComparable = governmentBloc && !governmentBloc.candidates.length &&
+    governmentBloc.lists.every(id => s.lists.some(l => l.id === id)) &&
+    !seated.some(x => !x.partyId && s.lists.find(l => l.id === x.listId)?.parties?.some(p => governmentBloc.parties.includes(p.id)));
+  const missingGovernmentPartner = governmentBloc?.lists.some(id => !seated.some(x => x.listId === id));
+  const historicalIds = historyComparable
+    ? seated.filter(x => governmentBloc.lists.includes(x.listId) || (!!x.partyId && governmentBloc.parties.includes(x.partyId))).map(x => x.l.id) : null;
+  const historyMatches = !missingGovernmentPartner && historicalIds?.length && historicalIds.length === detailIds.length && historicalIds.every(id => detailIds.includes(id));
   const sorted = [...minimal].sort((a, b) => a.n - b.n || a.ids.length - b.ids.length);
   const shown = sorted.slice(0, 24);
   const blocName = (b: { nameHe: string; nameEn: string }) => (lang === 'he' ? b.nameHe : b.nameEn);
@@ -145,36 +161,45 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
     </div>
   );
   return (
-    <div className="coal"><div className="row"><StartFrom s={s} part="coalitions" /><EditMarker s={s} path={['coalition']} /></div>
-      <p className="small ink2" style={{ marginTop: 0 }}>{L('Choose In, Out or Any', 'בחרו בפנים, בחוץ או כל אפשרות')} <Info title={L('Coalition assumptions', 'הנחות הקואליציה')}>{L('Build a coalition: choose In, Out or Any for each list. Arithmetic only — it says nothing about political feasibility.', 'בנו קואליציה: בחרו בפנים, בחוץ או כל אפשרות לכל רשימה. חשבון בלבד — לא הערכה פוליטית.')}</Info> <Info term="minimal-winning-coalition" /> <Info term="majority-61" /></p>
+    <div className="coal"><div className="row"><StartFrom s={s} part="coalitions" /><button className="btn small ghost" disabled={!picked.length && !excluded.length} onClick={() => { setInspected(null); dispatch({ type: 'setCoalition', coalition: { in: [], out: [] } }); }}>{L('Reset filters', 'איפוס מסננים')}</button><EditMarker s={s} path={['coalition']} /></div>
+      <p className="small ink2" style={{ marginTop: 0 }}>{L('Choose In, Out or Any', 'בחרו בפנים, בחוץ או כל אפשרות')} <Info title={L('Coalition assumptions', 'הנחות הקואליציה')}>{L('Build a coalition: choose In, Out or Any for each list. Arithmetic only — it says nothing about political feasibility.', 'בנו קואליציה: בחרו בפנים, בחוץ או כל אפשרות לכל רשימה. חשבון בלבד — לא הערכה פוליטית.')} {L('Results below need every partner to reach a majority. Selecting a result leaves these filters unchanged.', 'התוצאות למטה זקוקות לכל שותפה כדי להגיע לרוב. בחירת תוצאה אינה משנה את המסננים.')}</Info></p>
       {startFrom.length > 0 && (
         <div className="row" style={{ marginBottom: 8 }}>
           <span className="small ink2">{L('Fill with a bloc', 'מילוי לפי גוש')}</span>
-          {startFrom.map(({ b, ids }) => { const on = excluded.length === 0 && picked.length === ids.length && ids.every((id) => picked.includes(id)); return <button key={b.id} className={`btn small ${on ? 'primary' : ''}`} aria-pressed={on} onClick={() => { dispatch({ type: 'setCoalition', coalition: { in: ids, out: [] } }); }}><span className="swatch" style={{ background: b.color }} />{blocName(b)}</button>; })}
-          {(picked.length > 0 || excluded.length > 0) && <button className="btn small ghost" onClick={() => { dispatch({ type: 'setCoalition', coalition: { in: [], out: [] } }); }}>{L('Clear', 'ניקוי')}</button>}
+          {startFrom.map(({ b, ids }) => { const on = excluded.length === 0 && picked.length === ids.length && ids.every((id) => picked.includes(id)); return <button key={b.id} className={`btn small ${on ? 'primary' : ''}`} aria-pressed={on} onClick={() => { if (on) return; setInspected(null); dispatch({ type: 'setCoalition', coalition: { in: ids, out: [] } }); }}><span className="swatch" style={{ background: b.color }} />{blocName(b)}</button>; })}
         </div>
       )}
       <div className="row coal-chips">
-        {seated.map(({ l, n, label }) => {
+        {seated.map(({ l, n, label, logo }) => {
           const st = picked.includes(l.id) ? 'in' : excluded.includes(l.id) ? 'out' : '';
           return <div key={l.id} className="coal-choice">
-            <span><span className="swatch" style={{ background: l.color }} />{label} <b>{n}</b></span>
+            <span className="row"><Slip letters="" name={label} logo={logo} color={l.color} size="sm" />{label} <b>{n}</b></span>
             <Seg label={label} value={st || 'any'} onChange={v => choose(l.id, v)} options={[{ v: 'in', label: L('In', 'בפנים') }, { v: 'out', label: L('Out', 'בחוץ') }, { v: 'any', label: L('Any', 'כל אפשרות') }]} />
           </div>;
         })}
       </div>
-      <div className="coal-now">
-        <Majority n={pickedSeats} total={total} />
-        <SeatBar ids={seated.filter((x) => picked.includes(x.l.id)).map((x) => x.l.id)} big />
-      </div>
+      {detailIds.length > 0 && <section className="coal-now" aria-label={L('Coalition details', 'פרטי הקואליציה')}>
+        <div className="row"><h3 style={{ margin: 0 }}>{selected.length ? L('Selected coalition', 'הקואליציה שנבחרה') : L('Required partners', 'השותפות הנדרשות')}</h3>
+          {selected.length > 0 && <button className="btn small ghost" onClick={() => setInspected(null)}>{L('Clear selection', 'ניקוי הבחירה')}</button>}</div>
+        <Majority n={detailSeats} total={total} />
+        <SeatBar ids={detailIds} big />
+        <ul className="coal-partners">{detailIds.map(id => <li key={id}><Slip letters="" name={nm(id)} logo={seated.find(x => x.l.id === id)?.logo} color={colorOf(id)} size="sm" />{nm(id)} <b>{seatsOf(id)}</b> {detailSeats >= majority && detailSeats - seatsOf(id) < majority && <span className="small">{L('Pivotal', 'חיונית לרוב')}</span>}</li>)}</ul>
+        <div className="row small">{[...s.blocs, { id: null, nameHe: 'ללא גוש', nameEn: 'No bloc' }].map(b => {
+          const n = seated.filter(x => detailIds.includes(x.l.id) && x.l.bloc === b.id).reduce((n, x) => n + x.n, 0);
+          return n > 0 && <span key={b.id ?? 'none'}>{blocName(b)} <b>{n}</b></span>;
+        })}<Info title={L('Coalition breakdown', 'הרכב הקואליציה')}>{L('Uses the active grouping. Pivotal means this partner’s departure would remove the majority. Arithmetic does not establish political feasibility.', 'לפי החלוקה הפעילה. שותפה חיונית היא כזו שבלעדיה אין רוב. חשבון אינו מעיד על היתכנות פוליטית.')}</Info></div>
+        <p className="small muted" style={{ margin: 0 }}>{!governmentBloc || !historicalIds ? L('First-government comparison unavailable', 'אין נתונים להשוואה לממשלה הראשונה') : historyMatches ? L('Matches the recorded first-government partners', 'תואמת לשותפות הממשלה הראשונה המתועדת') : L('Different from the recorded first-government partners', 'שונה משותפות הממשלה הראשונה המתועדת')}
+          <Info title={L('Historical comparison', 'השוואה היסטורית')}>{L('Compares partners with the recorded first government only, not every government during this Knesset. Scenario seats can differ from the historical result.', 'השוואת שותפות לממשלה הראשונה המתועדת בלבד, ולא לכל ממשלה במהלך הכנסת. המנדטים בתרחיש עשויים להיות שונים מהתוצאה ההיסטורית.')} {government && `${blocName(government)} · ${government.date ?? ''}`}</Info></p>
+      </section>}
       <h3 style={{ marginTop: 16 }}>{L(`Smallest winning coalitions${picked.length ? ' with your selection' : ''}`, `הקואליציות המנצחות הקטנות ביותר${picked.length ? ' עם הבחירה שלכם' : ''}`)}
         <span className="muted" style={{ fontWeight: 400 }}> · {minimal.length.toLocaleString('en-US')}{truncated ? '+' : ''} {L('in all', 'בסך הכול')}</span></h3>
-      <p className="small muted" style={{ marginTop: 0 }}>{L('Choose a coalition to try', 'בחרו קואליציה לניסיון')} <Info title={L('Winning coalitions', 'קואליציות מנצחות')}>{L('Each needs every member: remove one and the majority is lost. Click one to load it above.', 'כל אחת זקוקה לכל חברותיה: הוצאת אחת מבטלת את הרוב. לחצו על אחת כדי לטעון אותה למעלה.')}</Info></p>
+      <p className="small muted" style={{ marginTop: 0 }}>{L('Choose a coalition to try', 'בחרו קואליציה לניסיון')} <Info title={L('Winning coalitions', 'קואליציות מנצחות')}>{L('Each needs every member: remove one and the majority is lost. Select one to inspect its partners; filters stay unchanged.', 'כל אחת זקוקה לכל חברותיה: הוצאת אחת מבטלת את הרוב. בחרו אחת לצפייה בשותפות; המסננים אינם משתנים.')}</Info></p>
+      {!minimal.length && <p className="small muted">{L('No winning coalition fits these filters. Try Any or reset filters.', 'אין קואליציה מנצחת למסננים אלה. נסו כל אפשרות או אפסו מסננים.')}</p>}
       {truncated && <p className="small">{L('There are more than 100,000: include or rule out lists to narrow the search.', 'יש יותר מ-100,000: הכלילו או פסלו רשימות כדי לצמצם את החיפוש.')}</p>}
       <ul className="coal-list">
         {shown.map((c) => (
           <li key={c.ids.join()}>
-            <button type="button" aria-pressed={excluded.length === 0 && picked.length === c.ids.length && c.ids.every((id) => picked.includes(id))} onClick={() => { dispatch({ type: 'setCoalition', coalition: { in: c.ids, out: [] } }); }}>
+            <button type="button" aria-pressed={selected.length === c.ids.length && c.ids.every(id => selected.includes(id))} onClick={() => setInspected({ election: s.electionId, ids: c.ids })}>
               <span className="coal-n">{c.n}</span>
               <SeatBar ids={c.ids} />
               <span className="coal-names">{c.ids.map(nm).join(' · ')}</span>

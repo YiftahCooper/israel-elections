@@ -27,6 +27,34 @@ describe('gallery template', () => {
   });
 });
 describe('API', () => {
+  it('uses the static index without consuming any GitHub quota', async () => {
+    const entry = { ...scenario, issue: 1, author: 'alice', date: '2026-01-01', likes: 3 };
+    const fetcher = vi.fn().mockResolvedValue(new Response(JSON.stringify({ timestamp: Date.now(), entries: [entry] })));
+    const client = new GalleryClient(site, fetcher);
+    expect((await client.load()).entries).toEqual([entry]);
+    await client.load();
+    expect(fetcher).toHaveBeenCalledTimes(1);
+    expect(fetcher.mock.calls[0][0]).toBe(`${site}data/scenarios.json`);
+  });
+  it('caches an old static index by retrieval time while retaining its update date', async () => {
+    const timestamp = Date.now() - 86_400_000;
+    const fetcher = vi.fn().mockResolvedValue(new Response(JSON.stringify({ timestamp, entries: [] })));
+    const values = new Map<string, string>();
+    const storage = { getItem: (k: string) => values.get(k) ?? null, setItem: (k: string, v: string) => { values.set(k, v); } };
+    const client = new GalleryClient(site, fetcher, storage);
+    expect((await client.load()).timestamp).toBe(timestamp);
+    await client.load();
+    await new GalleryClient(site, fetcher, storage).load();
+    expect(fetcher).toHaveBeenCalledTimes(1);
+  });
+  it('rejects unsafe index entries and falls back to validated issue data', async () => {
+    const fetcher = vi.fn().mockResolvedValueOnce(new Response(JSON.stringify({ timestamp: Date.now(), entries: [{ ...scenario, shareLink: 'https://evil.example/#s=abc' }] })))
+      .mockResolvedValueOnce(new Response('[]'));
+    expect((await new GalleryClient(site, fetcher).load()).entries).toEqual([]);
+    expect(fetcher).toHaveBeenCalledTimes(2);
+    expect(fetcher.mock.calls[1][0]).toContain('api.github.com');
+  });
+
   it('calls the global fetch unbound by default (browsers reject fetch called as a method)', async () => {
     const strict = vi.fn(function (this: unknown) {
       if (this !== undefined && this !== globalThis) throw new TypeError('Illegal invocation');
@@ -38,14 +66,14 @@ describe('API', () => {
   });
   const issue = { number: 1, body: buildBody(scenario), user: { login: 'alice' }, created_at: '2026-01-01', reactions: { '+1': 3 } };
   it('paginates and caches, including manual refresh within ten minutes', async () => {
-    const fetcher = vi.fn().mockResolvedValueOnce(new Response(JSON.stringify(Array(100).fill(issue)))).mockResolvedValueOnce(new Response('[]'));
+    const fetcher = vi.fn().mockResolvedValueOnce(new Response('', { status: 404 })).mockResolvedValueOnce(new Response(JSON.stringify(Array(100).fill(issue)))).mockResolvedValueOnce(new Response('[]'));
     const values = new Map<string, string>();
     const storage = { getItem: (k: string) => values.get(k) ?? null, setItem: (k: string, v: string) => { values.set(k, v); } };
     const client = new GalleryClient(site, fetcher, storage);
     expect((await client.load()).entries).toHaveLength(100);
     await client.load();
-    expect(fetcher).toHaveBeenCalledTimes(2);
-    expect(fetcher.mock.calls[1][0]).toContain('page=2');
+    expect(fetcher).toHaveBeenCalledTimes(3);
+    expect(fetcher.mock.calls[2][0]).toContain('page=2');
     expect((await new GalleryClient(site, fetcher, storage).load()).entries).toHaveLength(100);
   });
   it('reports rate limits and network errors and throttles retries', async () => {
@@ -53,7 +81,7 @@ describe('API', () => {
     const client = new GalleryClient(site, fetcher);
     await expect(client.load()).rejects.toThrow('rate-limit');
     await expect(client.load()).rejects.toThrow('rate-limit');
-    expect(fetcher).toHaveBeenCalledTimes(1);
+    expect(fetcher).toHaveBeenCalledTimes(2);
     await expect(new GalleryClient(site, vi.fn().mockRejectedValue(new Error('offline'))).load()).rejects.toThrow('network');
   });
 });

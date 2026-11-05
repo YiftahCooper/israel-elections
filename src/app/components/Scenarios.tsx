@@ -59,6 +59,7 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
   const elections = useStore((st) => st.elections);
   const fileRef = useRef<HTMLInputElement>(null);
   const [link, setLink] = useState('');
+  useEffect(() => setLink(''), [s]);
   const isSaved = saved.some((x) => x.id === s.id);
   // the result of every saved scenario of this election, replayed once
   const results = useMemo(() => new Map(saved.filter((x) => x.electionId === s.electionId).map((x) => {
@@ -71,16 +72,19 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
 
   return (
     <div className="scn">
+      <p className="small ink2" style={{ marginTop: 0 }}>{L('A scenario is your edited election. Save it here, or share a link.', 'תרחיש הוא הבחירות עם השינויים שלכם. שמרו כאן או שתפו קישור.')} <Info title={L('Using scenarios', 'שימוש בתרחישים')}>{L('Change votes, partners or rules in the other tabs, then name and save the result here. Saved scenarios stay in this browser; links and files can be opened on another device.', 'שנו קולות, שותפות או כללים בלשוניות האחרות, ואז תנו שם ושמרו כאן. תרחישים נשמרים בדפדפן זה; קישורים וקבצים נפתחים גם במכשיר אחר.')}</Info></p>
       <section className="scn-current">
         <h3>{L('This scenario', 'התרחיש הנוכחי')} <span className="muted" style={{ fontWeight: 400 }}>· {electionName(s.electionId)} · {L(`${s.log.length} edits`, `${s.log.length} שינויים`)}</span></h3>
-        <label className="field">{L('Scenario colour', 'צבע התרחיש')}<select aria-label={L('Scenario colour', 'צבע התרחיש')} value={liveScenarioColor(s, saved)} onChange={e => dispatch({ type: 'setIdentityColor', color: e.target.value })}>{SCENARIO_PALETTE.map((c, i) => <option key={c} value={c}>{L(['Violet', 'Slate', 'Ochre', 'Mauve', 'Sage', 'Blue', 'Clay', 'Olive'][i], ['סגול', 'כחלחל', 'אוכרה', 'סגלגל', 'מרווה', 'כחול', 'חרס', 'זית'][i])}</option>)}</select></label>
-        <label className="field">{L('Mark differences from', 'סימון הבדלים לעומת')}<select aria-label={L('Mark differences from', 'סימון הבדלים לעומת')} value={useStore(st => st.markOfficial) ? 'official' : 'reference'} onChange={e => setPreference('comparison', e.target.value)}><option value="reference">{L('The loaded scenario', 'התרחיש הטעון')}</option><option value="official">{L('Always the official result', 'תמיד התוצאה הרשמית')}</option></select></label>
         <div className="scn-form">
-          <label className="field">{L('Name', 'שם')}
+          <label className="field"><span>{L('Name', 'שם')}</span>
             <ScenarioText value={s.name} label={L('Name', 'שם')} placeholder={L('e.g. “Arab turnout returns to 2015 levels”', 'למשל "שיעור ההצבעה בחברה הערבית חוזר לרמת 2015"')} onCommit={(name) => dispatch({ type: 'rename', name })} /></label>
-          <label className="field">{L('Description', 'תיאור')}<EditMarker s={s} path={['description']} />
+          <label className="field"><span>{L('Description', 'תיאור')}<EditMarker s={s} path={['description']} /></span>
             <ScenarioText multiline value={s.description ?? ''} label={L('Description', 'תיאור')} placeholder={L('What does this scenario explore, and why?', 'מה התרחיש בודק, ולמה?')} onCommit={(description) => dispatch({ type: 'setDescription', description })} /></label>
         </div>
+        <details className="scn-options"><summary>{L('Colour & comparison', 'צבע והשוואה')}</summary><div className="scn-form">
+          <label className="field">{L('Scenario colour', 'צבע התרחיש')}<select aria-label={L('Scenario colour', 'צבע התרחיש')} value={liveScenarioColor(s, saved)} onChange={e => dispatch({ type: 'setIdentityColor', color: e.target.value })}>{SCENARIO_PALETTE.map((c, i) => <option key={c} value={c}>{L(['Violet', 'Slate', 'Ochre', 'Mauve', 'Sage', 'Blue', 'Clay', 'Olive'][i], ['סגול', 'כחלחל', 'אוכרה', 'סגלגל', 'מרווה', 'כחול', 'חרס', 'זית'][i])}</option>)}</select></label>
+        <label className="field">{L('Mark differences from', 'סימון הבדלים לעומת')}<select aria-label={L('Mark differences from', 'סימון הבדלים לעומת')} value={useStore(st => st.markOfficial) ? 'official' : 'reference'} onChange={e => setPreference('comparison', e.target.value)}><option value="reference">{L('The loaded scenario', 'התרחיש הטעון')}</option><option value="official">{L('Always the official result', 'תמיד התוצאה הרשמית')}</option></select></label>
+        </div></details>
         <ResultBar s={s} r={allocationOf(s)} />
         <div className="row" style={{ marginTop: 10 }}>
           <button className="btn primary" onClick={() => { if (saveCurrent(s.name || undefined)) toast('info', L('Saved in this browser.', 'נשמר בדפדפן זה.')); }}><Save className="icon sm" aria-hidden />{isSaved ? L('Save changes', 'שמירת השינויים') : L('Save', 'שמירה')}</button>
@@ -105,7 +109,7 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
 
       <section style={{ marginTop: 18 }}>
         <h3>{L(`Saved in this browser (${saved.length})`, `שמורים בדפדפן זה (${saved.length})`)}</h3>
-        {saved.length === 0 && <p className="small muted">{L('No saved scenarios', 'אין תרחישים שמורים')} <Info title={L('Saving scenarios', 'שמירת תרחישים')}>{L('Nothing saved yet. Name the scenario above and save it to keep it here; share links and exported files work across devices.', 'עדיין לא נשמר דבר. תנו שם לתרחיש למעלה ושמרו אותו כדי שיופיע כאן; קישורי שיתוף וקבצים מיוצאים עובדים גם במכשירים אחרים.')}</Info></p>}
+        {saved.length === 0 && <p className="small muted">{L('Save this scenario to find it here.', 'שמרו את התרחיש כדי למצוא אותו כאן.')} <Info title={L('Saving scenarios', 'שמירת תרחישים')}>{L('Nothing saved yet. Name the scenario above and save it to keep it here; share links and exported files work across devices.', 'עדיין לא נשמר דבר. תנו שם לתרחיש למעלה ושמרו אותו כדי שיופיע כאן; קישורי שיתוף וקבצים מיוצאים עובדים גם במכשירים אחרים.')}</Info></p>}
         <ul className="scn-cards">
           {saved.map((x) => {
             const res = results.get(x.id);

@@ -6,7 +6,7 @@ import {graphicsCases,dataset} from '../graphics-cases.ts';
 test.describe.configure({mode:'parallel'});
 for(const lang of ['he','en']) for(const theme of ['light','dark']) for(const phone of [false,true]) {
   test(`graphics invariants and captures ${lang} ${theme} ${phone?'phone':'desktop'}`,async({page})=>{
-    test.setTimeout(180000);
+    test.setTimeout(Number(process.env.PW_GRAPHICS_TIMEOUT ?? 180000));
     await page.emulateMedia({reducedMotion:'reduce'});
     await page.setViewportSize(phone?{width:390,height:844}:{width:1440,height:900});
     await page.addInitScript(v=>localStorage.setItem('israel-elections:v1',JSON.stringify(v)),{lang,theme,level:'expert',hintDismissed:true,markOfficial:true});
@@ -14,7 +14,7 @@ for(const lang of ['he','en']) for(const theme of ['light','dark']) for(const ph
       const payload={e:`k${c.n}`,n:'Graphics audit',b:dataset(c.n).buildInfo.builtAt,l:c.actions};
       await page.goto('about:blank');
       await page.goto('/#s='+deflateRawSync(JSON.stringify(payload)).toString('base64url'));
-      await expect(page.locator('.chamber [data-seat]')).toHaveCount(120);
+      await expect(page.locator('.chamber [data-seat]')).toHaveCount(120, { timeout: Number(process.env.PW_GRAPHICS_READY_TIMEOUT ?? 5000) });
       await page.evaluate(()=>document.fonts.ready);
       const check = async()=> {
         const errors=await page.locator('.chamber').first().evaluate(el=>{
@@ -105,6 +105,7 @@ test('summary, graphics and Compare default follow the same reference setting',a
   await page.goto('/#s='+deflateRawSync(JSON.stringify({e:'k25',n:'Graphics audit',b:dataset(25).buildInfo.builtAt,l:c.actions})).toString('base64url'));
   for(const [setting,name,changed] of [['official','Official result',true],['reference','Graphics audit',false],['official','Official result',true]] as const) {
     await page.getByRole('tab',{name:'Scenarios',exact:true}).click();
+    if (!await page.locator('.scn-options').evaluate(el => el.hasAttribute('open'))) await page.locator('.scn-options summary').click();
     await page.getByRole('combobox',{name:'Mark differences from'}).selectOption(setting);
     await page.getByRole('tab',{name:'Overview',exact:true}).click();
     await expect(page.locator('.session > b')).toHaveText(`Since ${name==='Official result'?'official result':name}`);

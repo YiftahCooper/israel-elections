@@ -35,6 +35,7 @@ test('save moves the reference, official setting restores markers, colour surviv
   await expect(panel.locator('.edit-marker')).not.toHaveCount(0);
   await page.getByRole('tab', { name: 'Scenarios', exact: true }).click();
   await page.locator('.scn-form input').fill('Unity');
+  if (!await page.locator('.scn-options').evaluate(el => el.hasAttribute('open'))) await page.locator('.scn-options summary').click();
   await page.getByRole('combobox', { name: 'Scenario colour', exact: true }).selectOption('#486b78');
   await page.getByRole('button', { name: 'Save', exact: true }).click();
   await page.getByRole('tab', { name: 'Overview', exact: true }).click();
@@ -43,6 +44,7 @@ test('save moves the reference, official setting restores markers, colour surviv
   await votes.fill('1150100'); await votes.press('Enter');
   await expect(panel.locator('.edit-marker')).not.toHaveCount(0);
   await page.getByRole('tab', { name: 'Scenarios', exact: true }).click();
+  if (!await page.locator('.scn-options').evaluate(el => el.hasAttribute('open'))) await page.locator('.scn-options summary').click();
   await page.getByRole('combobox', { name: 'Mark differences from', exact: true }).selectOption('official');
   await page.getByRole('tab', { name: 'Overview', exact: true }).click();
   expect(await panel.locator('.edit-marker').count()).toBeGreaterThan(2);

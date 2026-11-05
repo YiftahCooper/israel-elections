@@ -2,6 +2,8 @@
 
 ## 5 November 2026 — release review
 
+- Keep coalition inspection independent of In/Out filters, show partner seats and pivotal members, and expose local resets. Clarify scenario save/share flow, align name/description fields and bound option widths; serve the community gallery from an automatically generated Pages index instead of anonymous visitor API calls.
+
 - Clarify vote sources, section replacements, joint-list actions and edited markers; remove single-vote nudges and let sliders cover the valid-vote total. Preference prompts offer one-use, item and global scopes with one explicit Apply action.
 - Complete English list labels with sourced, explicitly unofficial transliterations where needed; localise menus, exports and identity captions. Show year-labelled nearest-period logos, preserve component logos through splits, and replace bare party squares with monograms.
 
