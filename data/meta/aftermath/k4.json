@@ -64,6 +64,18 @@
       "publisher": "Knesset, Knesset 5, sitting 19, 1961-11-02 (full plenum record)",
       "kind": "official",
       "accessed": "2026-11-05"
+    },
+    "mfa-history": {
+      "url": "https://www.gov.il/BlobFolder/generalpage/facts-about-israel-history/en/English_SiteTransfer_DOCUMENTS_History2010.pdf",
+      "publisher": "Israel Ministry of Foreign Affairs, Facts About Israel: History (2010), pp. 48–70",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "asser-eichmann": {
+      "url": "https://www.internationalcrimesdatabase.org/Case/185/Eichmann/",
+      "publisher": "T.M.C. Asser Institute, International Crimes Database, Attorney General v. Adolf Eichmann, procedural history",
+      "kind": "academic",
+      "accessed": "2026-11-05"
     }
   },
   "results": {
@@ -385,21 +397,56 @@
     "inclusionRule": "At least two independent chronologies, including one official or academic; a direct date source is also required.",
     "chronologies": [
       "term-history",
-      "idi-next"
+      "idi-next",
+      "mfa-history"
     ],
-    "events": [],
-    "candidatesPending": [
+    "events": [
       {
-        "label": "Capture of Adolf Eichmann",
+        "id": "eichmann-capture",
         "date": "1960-05",
-        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+        "category": "security",
+        "textEn": "Israeli agents captured Adolf Eichmann in Argentina and brought him to Israel.",
+        "textHe": "סוכנים ישראלים לכדו את אדולף אייכמן בארגנטינה והביאו אותו לישראל.",
+        "cites": [
+          {
+            "source": "term-history",
+            "quote": "Eichmann had been caught by the Mossad in Argentina, in May 1960"
+          },
+          {
+            "source": "mfa-history",
+            "quote": "In May 1960, Adolf Eichmann"
+          },
+          {
+            "source": "mfa-history",
+            "quote": "was brought to the country to stand trial"
+          }
+        ],
+        "confidence": "high"
       },
       {
-        "label": "Opening of the Eichmann trial",
-        "date": "1961-04",
-        "why": "One qualifying term chronology retrieved; no second independent qualifying chronology and complete direct date evidence have been recorded."
+        "id": "eichmann-trial-opens",
+        "date": "1961-04-11",
+        "category": "society",
+        "textEn": "Adolf Eichmann’s trial opened in the Jerusalem District Court.",
+        "textHe": "משפטו של אדולף אייכמן נפתח בבית המשפט המחוזי בירושלים.",
+        "cites": [
+          {
+            "source": "term-history",
+            "quote": "his trial opened before the District Court in Jerusalem in April 1961."
+          },
+          {
+            "source": "mfa-history",
+            "quote": "which opened in April 1961"
+          },
+          {
+            "source": "asser-eichmann",
+            "quote": "The trial commenced on 11 April 1961"
+          }
+        ],
+        "confidence": "high"
       }
     ],
+    "candidatesPending": [],
     "endedBy": {
       "type": "election",
       "date": "1961-08-15",
