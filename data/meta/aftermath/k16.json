@@ -1,0 +1,433 @@
+{
+  "schemaVersion": 1,
+  "electionId": "k16",
+  "status": "pilot",
+  "reviewedAt": "2026-11-05",
+  "notes": [
+    "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
+    "The term window runs from this election to the next Knesset election. Government tenure may extend past that window. Mid-term institutional succession is recorded in formation.events; it is not a new post-election recommendation round.",
+    "Additional dated mid-term acts that do not fit the proposal’s closed formation type vocabulary are kept as formalStep=true entries in government.changes (Dated-compatible). No new formation enum values are introduced."
+  ],
+  "sources": {
+    "mfa-history": {
+      "url": "https://www.gov.il/BlobFolder/generalpage/facts-about-israel-history/en/English_SiteTransfer_DOCUMENTS_History2010.pdf",
+      "publisher": "Israel Ministry of Foreign Affairs, Facts About Israel: History (2010), pp. 48–70",
+      "kind": "official",
+      "accessed": "2026-11-05"
+    },
+    "knesset-history": {
+      "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-sixteenth-knesset-2003-2006",
+      "publisher": "Knesset, history of the 16th Knesset (credited text)",
+      "kind": "official",
+      "accessed": "2026-11-05",
+      "via": "Jewish Virtual Library mirror; original https://main.knesset.gov.il/EN/About/History/pages/knessethistory.aspx?kns=16"
+    },
+    "ipu2003": {
+      "url": "https://data.ipu.org/election-summary/HTML/2155_03.htm",
+      "publisher": "Inter-Parliamentary Union, Chronicle / Parline, Israel 2003",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "ipu2006": {
+      "url": "https://data.ipu.org/election-summary/HTML/2155_06.htm",
+      "publisher": "Inter-Parliamentary Union, Chronicle / Parline, Israel 2006",
+      "kind": "academic",
+      "accessed": "2026-11-05"
+    },
+    "government-research-1": {
+      "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D",
+      "publisher": "Hebrew Wikipedia",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "government-research-2": {
+      "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D",
+      "publisher": "Hebrew Wikipedia",
+      "kind": "secondary",
+      "accessed": "2026-11-04"
+    },
+    "government-research-3": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=GovernmentNum%20eq%2030",
+      "publisher": "Knesset OData (ParliamentInfo)",
+      "kind": "official",
+      "accessed": "2026-11-04",
+      "via": "Existing first-government research extraction from official OData, accessed 2026-11-04; the associated quote is the retained extraction summary, not verbatim API serialization."
+    },
+    "recommendations-research-1": {
+      "url": "https://www.walla.co.il/news/israel/346012",
+      "publisher": "Walla! News (Haaretz report)",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-research-2": {
+      "url": "https://www.israelnationalnews.com/news/38648",
+      "publisher": "Israel National News",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "recommendations-research-3": {
+      "url": "https://www.haaretz.co.il/misc/2003-02-08/ty-article/0000017f-ee6d-d3be-ad7f-fe6f09130000",
+      "publisher": "Haaretz",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "vote2003": {
+      "url": "https://www.irishtimes.com/news/sharon-begins-new-term-as-israeli-premier-1.464184",
+      "publisher": "The Irish Times, 28 February 2003",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    },
+    "vote2006": {
+      "url": "https://www.rediff.com/news/interview/israel/20060505.htm",
+      "publisher": "Press Trust of India / Rediff, 5 May 2006",
+      "kind": "secondary",
+      "accessed": "2026-11-05"
+    }
+  },
+  "results": {
+    "electionDate": "2003-01-28",
+    "officialResultsSourceId": "k16-results-gazette"
+  },
+  "reaction": {
+    "policy": "Only dated institutional steps and statements attributed to their speaker, applied to every list or to none.",
+    "items": [],
+    "gap": "Comparably sourced reactions for every list were not collected."
+  },
+  "recommendationRounds": [
+    {
+      "id": "r1",
+      "date": "2003-02-06",
+      "kind": "consultations",
+      "president": {
+        "nameEn": "Moshe Katsav",
+        "nameHe": "משה קצב"
+      },
+      "blocSchemeRef": "pm-recommendations",
+      "nominees": {
+        "sharon": {
+          "nameEn": "Ariel Sharon",
+          "nameHe": "אריאל שרון"
+        }
+      },
+      "entries": [
+        {
+          "letters": "מחל",
+          "seats": 38,
+          "status": "recommended",
+          "nominee": "sharon"
+        },
+        {
+          "letters": "יש",
+          "seats": 15,
+          "status": "recommended",
+          "nominee": "sharon"
+        },
+        {
+          "letters": "שס",
+          "seats": 11,
+          "status": "recommended",
+          "nominee": "sharon"
+        },
+        {
+          "letters": "ל",
+          "seats": 7,
+          "status": "recommended",
+          "nominee": "sharon"
+        },
+        {
+          "letters": "ב",
+          "seats": 6,
+          "status": "recommended",
+          "nominee": "sharon"
+        },
+        {
+          "letters": "ג",
+          "seats": 5,
+          "status": "recommended",
+          "nominee": "sharon"
+        },
+        {
+          "letters": "ם",
+          "seats": 3,
+          "status": "recommended",
+          "nominee": "sharon"
+        },
+        {
+          "letters": "כן",
+          "seats": 2,
+          "status": "recommended",
+          "nominee": "sharon"
+        },
+        {
+          "letters": "אמת",
+          "seats": 19,
+          "status": "none"
+        },
+        {
+          "letters": "מרצ",
+          "seats": 6,
+          "status": "none"
+        },
+        {
+          "letters": "ו",
+          "seats": 3,
+          "status": "none"
+        },
+        {
+          "letters": "ד",
+          "seats": 3,
+          "status": "none"
+        },
+        {
+          "letters": "עם",
+          "seats": 2,
+          "status": "none"
+        }
+      ],
+      "totals": {
+        "sharon": 87,
+        "none": 33
+      },
+      "cites": [
+        {
+          "source": "recommendations-research-1",
+          "quote": "עד כה המליצו סיעות הליכוד, שינוי, ש\"ס, האיחוד הלאומי, מפדל, יהדות התורה, עם אחד וישראל בעלייה על שרון. נציגי שאר הסיעות, העבודה, מרצ, בל\"ד, חד\"ש-תע\"ל לא התנגדו להטלת התפקיד על שרון, ולא הציעו כל מועמד אחר."
+        },
+        {
+          "source": "recommendations-research-2",
+          "quote": "The representatives of 87 MKs recommended Sharon as the next Prime Minister. Only Labor (19 seats), Meretz (6), and the Arab parties (8) did not recommend Sharon."
+        },
+        {
+          "source": "recommendations-research-3",
+          "quote": "\"87 חברי כנסת המליצו לי להטיל את המשימה על אריאל שרון. שרון הודיעני כי הוא מסכים לקבל על עצמו את המשימה.\""
+        }
+      ],
+      "notes": [
+        "Consultations with President Katsav ran 3–6 February 2003 (Ra'am, the last faction, met him on the evening of the 6th); Sharon was given the mandate on Sunday 9 February. Per-list split (Likud 38, Shinui 15, Shas 11, National Union 7, NRP 6, UTJ 5, One Nation 3, Yisrael BaAliyah 2) equals the President's 87. Haaretz returned 403 to a direct request on 2026-11-05; its quote is from a search-index extract."
+      ]
+    }
+  ],
+  "formation": {
+    "outcome": "government-formed",
+    "events": [
+      {
+        "date": "2003-02-09",
+        "type": "mandate-given",
+        "textEn": "Katsav tasked Sharon with forming a government.",
+        "textHe": "קצב הטיל על שרון להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "recommendations-research-3",
+            "quote": "שרון הודיעני כי הוא מסכים לקבל על עצמו את המשימה."
+          }
+        ],
+        "person": "sharon"
+      },
+      {
+        "date": "2003-02-27",
+        "type": "confidence-vote",
+        "textEn": "The Knesset approved Sharon’s 30th government, 66–48.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־30 בראשות שרון, ברוב של 66 מול 48.",
+        "cites": [
+          {
+            "source": "vote2003",
+            "quote": "The 120-member Knesset voted 66-48 in favour"
+          },
+          {
+            "source": "ipu2003",
+            "quote": "On 27 February 2003, a new coalition government"
+          }
+        ],
+        "votes": {
+          "for": 66,
+          "against": 48
+        }
+      }
+    ],
+    "conflicts": [
+      {
+        "about": "Tasking date",
+        "values": [
+          {
+            "value": "9 February (existing contemporary Haaretz/INN recommendation research)",
+            "source": "recommendations-research-3"
+          },
+          {
+            "value": "10 February (IPU narrative)",
+            "source": "ipu2003"
+          }
+        ],
+        "resolution": "Use 9 February as in the contemporary research; retain IPU’s one-day disagreement."
+      },
+      {
+        "about": "Government 30 formation date",
+        "values": [
+          {
+            "value": "27 February (official OData minister StartDate and IPU)",
+            "source": "government-research-3"
+          },
+          {
+            "value": "28 February (first-government scheme / labelled Hebrew Wikipedia)",
+            "source": "government-research-1"
+          }
+        ],
+        "resolution": "Use 27 February for the investiture; the newspaper report was published on 28 February. Existing meta scheme is not modified by this overlay."
+      }
+    ]
+  },
+  "term": {
+    "start": "2003-01-28",
+    "end": "2006-03-28",
+    "inclusionRule": "At least two independently authored qualifying chronologies, including one official or academic, plus direct support for the date. The Knesset and MFA histories count separately; the JVL mirror is not another independent source. Formal government succession steps are recorded separately in formation.events.",
+    "chronologies": [
+      "mfa-history",
+      "knesset-history",
+      "ipu2003",
+      "ipu2006"
+    ],
+    "events": [
+      {
+        "id": "gaza-disengagement",
+        "date": "2005-08",
+        "category": "security",
+        "textEn": "Israel implemented the disengagement plan in Gaza and northern Samaria.",
+        "textHe": "ישראל ביצעה את תוכנית ההתנתקות ברצועת עזה ובצפון השומרון.",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "This Government implemented the disengagement plan."
+          },
+          {
+            "source": "mfa-history",
+            "quote": "In August 2005, Israel disengaged from the Gaza Strip and"
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "kadima-founded",
+        "date": "2005-11",
+        "category": "governance",
+        "textEn": "Sharon left Likud and established Kadima.",
+        "textHe": "שרון עזב את הליכוד והקים את קדימה.",
+        "cites": [
+          {
+            "source": "knesset-history",
+            "quote": "the Kadima Party was formed"
+          },
+          {
+            "source": "mfa-history",
+            "quote": "Party formed by Sharon in November 2005"
+          },
+          {
+            "source": "ipu2006",
+            "quote": "subsequently established a new party called Kadima"
+          }
+        ],
+        "confidence": "high"
+      }
+    ],
+    "candidatesPending": [
+      {
+        "label": "Sharon incapacitated; Olmert becomes acting PM",
+        "date": "2006-01-04",
+        "why": "Direct source for exact date and formal status not retrieved for this row. IPU incorrectly dates Sharon’s incapacitating stroke to December 2005, so its date is not copied."
+      },
+      {
+        "label": "Road Map accepted",
+        "date": "2003-05",
+        "why": "Direct source for exact date and formal status not retrieved for this row. IPU incorrectly dates Sharon’s incapacitating stroke to December 2005, so its date is not copied."
+      },
+      {
+        "label": "2005 budget and coalition changes",
+        "date": "2004-12",
+        "why": "Direct source for exact date and formal status not retrieved for this row. IPU incorrectly dates Sharon’s incapacitating stroke to December 2005, so its date is not copied."
+      }
+    ],
+    "endedBy": {
+      "type": "early-dissolution",
+      "date": "2005-11-24",
+      "nextElection": "2006-03-28",
+      "textEn": "The Knesset was dissolved early; the next election was held on 28 March 2006.",
+      "textHe": "הכנסת פוזרה לפני תום כהונתה; הבחירות הבאות נערכו ב־28 במרץ 2006.",
+      "cites": [
+        {
+          "source": "ipu2006",
+          "quote": "early dissolution on 24 November 2005"
+        }
+      ]
+    }
+  },
+  "issuePolling": {
+    "status": "pending",
+    "items": [],
+    "gap": "INES instrument exists; no qualifying published topline verified for this election. No microdata analysis performed."
+  },
+  "gaps": [
+    "Certification date and official first-sitting record not retrieved; election date comes from the existing verified result dataset.",
+    "Formation timeline is a sourced subset; missing steps must not be inferred from statutory maximum periods.",
+    "First-government coalition membership is reused from the existing first-government scheme, whose party membership evidence includes labelled Hebrew Wikipedia; a complete independent primary coalition agreement cross-check remains pending.",
+    "Recommendation evidence and caveats are inherited from docs/research/pm-recommendations-1977-2006.md; a source quoting the President is not an original presidential record.",
+    "Sharon’s January 2006 incapacity and Olmert’s acting premiership need a direct dated record; IPU’s December 2005 chronology wording is erroneous. NRP and Sharansky ministerial entry on 3 March differs from formation-day support; existing scheme notes are preserved."
+  ],
+  "government": {
+    "number": 30,
+    "nameEn": "Government 30 (Ariel Sharon)",
+    "nameHe": "הממשלה ה־30 (אריאל שרון)",
+    "startDate": "2003-02-27",
+    "endDate": "2006-05-04",
+    "primeMinisters": [
+      {
+        "nameEn": "Ariel Sharon",
+        "nameHe": "אריאל שרון",
+        "to": "2006-05-04",
+        "from": "2003-02-27"
+      }
+    ],
+    "firstGovernmentSchemeRef": "first-government",
+    "coalition": [
+      {
+        "letters": "מחל",
+        "seats": 38
+      },
+      {
+        "letters": "יש",
+        "seats": 15
+      },
+      {
+        "letters": "ל",
+        "seats": 7
+      },
+      {
+        "letters": "ב",
+        "seats": 6,
+        "note": "NRP ministers took office on 2003-03-03 (OData); Hebrew Wikipedia lists the NRP among the coalition factions on the day of formation"
+      },
+      {
+        "letters": "כן",
+        "seats": 2,
+        "note": "Yisrael BaAliyah merged into the Likud faction on 2003-03-10; Sharansky took office 2003-03-03 (OData)"
+      }
+    ],
+    "coalitionSeats": 68,
+    "coalitionSeatsNote": "Election-list seat envelope, checked against officialSeats; not the confidence-vote tally or a reconstruction of later faction membership.",
+    "cites": [
+      {
+        "source": "government-research-1",
+        "quote": "שהוקמה לאחר הבחירות לכנסת ה-16 ואושרה בכנסת ב-28 בפברואר 2003"
+      },
+      {
+        "source": "government-research-2",
+        "quote": "סיעות הקואליציה=="
+      },
+      {
+        "source": "government-research-3",
+        "quote": "KNS_PersonToPosition, GovernmentNum 30: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 2003-02-27: מופז שאול, שרון אריאל, אולמרט אהוד, לפיד יוסף (טומי), שלום סילבן, אלון בנימין, הנגבי צחי, זנדברג אליעזר, כץ ישראל, לבנת לימור, ליברמן אביגדור, לנדאו עוזי, נאות יהודית, נוה דני, נתניהו בנימין, פורז אברהם, פריצקי יוסף יצחק, שטרית מאיר, לבני ציפי, עזרא גדעון"
+      },
+      {
+        "source": "vote2006",
+        "quote": "has been sworn in after parliamentary approval"
+      }
+    ]
+  }
+}
