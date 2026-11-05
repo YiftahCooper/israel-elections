@@ -54,7 +54,7 @@ test('seat security is computed in background workers and fills the whole table'
   await expect(panel(page).getByText(/Calculating exactly/)).toHaveCount(0);
   const table = panel(page).getByRole('table', { name: 'Seat security' });
   await expect(table.getByRole('row').filter({ hasText: 'Likud' })).toHaveCount(1);
-  await expect(table.getByRole('row').filter({ hasText: 'Balad' })).toContainText('to pass the threshold');
+  await expect(panel(page).getByRole('region', { name: 'Below the threshold' }).getByRole('listitem').filter({ hasText: 'Balad' })).toContainText(/[\d,]+ short/);
 });
 
 test('sensitivity searches run in the background and report progress, then their result', async ({ page }) => {

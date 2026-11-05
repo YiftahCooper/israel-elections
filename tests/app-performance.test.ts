@@ -40,11 +40,18 @@ describe('seat-security tasks', () => {
         expect(row).toMatchObject({ id: item.id, seats: 0, gain: null, lose: null, qualify: q.found ? Number(q.votes) : null });
       } else {
         const g = minimalChange(input, item.id, src, goals.seatGain(item.id));
-        const lo = minimalChange(input, item.id, src, item.seats > 0 ? goals.seatLoss(item.id) : goals.disqualify(item.id), 'lose');
-        expect(row).toMatchObject({ id: item.id, seats: item.seats, gain: g.found ? Number(g.votes) : null, lose: lo.found ? Number(lo.votes) - 1 : null, qualify: null });
+        const lo = minimalChange(input, item.id, src, goals.seatLoss(item.id), 'lose');
+        // 'lose' is the fewest votes lost that cost a seat; a list without seats has none to lose
+        expect(row).toMatchObject({ id: item.id, seats: item.seats, gain: g.found ? Number(g.votes) : null, lose: item.seats > 0 && lo.found ? Number(lo.votes) : null, qualify: null });
       }
     }
     expect(items.some((x) => !x.qualified)).toBe(true);
+  });
+
+  it('ask for a seat loss only from lists that have seats', () => {
+    expect(partsOf({ id: 'A', qualified: true, seats: 3 })).toEqual(['gain', 'lose']);
+    expect(partsOf({ id: 'A', qualified: true, seats: 0 })).toEqual(['gain']);
+    expect(partsOf({ id: 'A', qualified: false, seats: 0 })).toEqual(['qualify']);
   });
 
   it('run every task once on the main thread when workers are unavailable, and stop on request', async () => {
