@@ -984,7 +984,7 @@
       "candidates": [
         {
           "rank": 1,
-          "nameHe": "אבו-חצירא אהרון",
+          "nameHe": "אבוחצירא אהרון",
           "page": 2059
         },
         {
@@ -1014,14 +1014,7 @@
           "רובין בן ציון"
         ],
         "note": "Visually compared name by name; namesHe uses surname/given order also when results print given/surname order. Punctuation normalized; explicit variants retain other differences.",
-        "spellingVariants": [
-          {
-            "rank": 1,
-            "candidateNameHe": "אבו-חצירא אהרון",
-            "electedNameHe": "אבוחצירא אהרון",
-            "note": "Same rank and person in the two statutory notices; spelling, spacing, name order or alias differs."
-          }
-        ]
+        "spellingVariants": []
       }
     },
     {
@@ -1214,6 +1207,16 @@
       "from": "יגורי יצחק",
       "to": "זיגר יצחק",
       "evidence": "Re-read at high zoom: YP 2721 pp. 2058–2059 (candidate PDF pages 12–13); results YP 2727 p. 2192 (results PDF page 4)."
+    },
+    {
+      "letters": "ני",
+      "rank": 1,
+      "previousNameHe": "אבו-חצירא אהרון",
+      "nameHe": "אבוחצירא אהרון",
+      "sourceId": "k10-candidates-gazette",
+      "page": 2059,
+      "quote": "1. אבוחצירא אהרון",
+      "note": "2026-11-06: visually rechecked candidate notice p. 2059 and results p. 2192; both print the surname without a hyphen. Stable candidate ID unchanged."
     }
   ]
 }

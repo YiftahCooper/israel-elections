@@ -1164,7 +1164,7 @@
       "electionId": "k10",
       "electionDate": "1981-06-30",
       "datasetPath": "public/data/k10.json",
-      "datasetSha256": "ea60c8a9519f147b6ba123b7ae14b0693da535453e2b849d67dc3fb6fe38eb4d",
+      "datasetSha256": "a44dd69a8253518f234fca2e2447d0bde27d3ea2757e2c4fc82ffca886757074",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 120 transcribed ranks across all 10 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
@@ -1213,7 +1213,7 @@
         {
           "listId": "10-ד",
           "letters": "ד",
-          "nameHe": "המחנה התורתי, פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
+          "nameHe": "המחנה התורתי – פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
           "votes": 17090,
           "partyIds": [
             "poalei-agudat-yisrael"

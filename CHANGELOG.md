@@ -11,6 +11,7 @@
 - k13: corrected official list names and ballot letters, four candidate spellings, and Government 25’s end (22 November 1995, with Peres as acting prime minister).
 - k12: corrected seven ballot-letter readings and list names while retaining stable IDs, settled the opening coalition at 95–25, documented Reiser’s death, and qualified unsupported recommendations and campaign logos.
 - k11: corrected ballot labels and small-list identities with stable IDs, removed Shiluv from Sheli’s family/lineage, corrected candidate #61 and the 97-MK coalition, and refreshed sourced aftermath gaps.
+- k10: corrected printed ballot letters while preserving stable IDs, repaired One Israel/pensioners/Aliyah identities and family classification, corrected a candidate spelling and tenure dates, and strengthened coalition and logo evidence.
 
 ## 5 November 2026 — release review
 

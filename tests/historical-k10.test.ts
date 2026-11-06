@@ -35,6 +35,20 @@ describe('k10 — released national dataset', () => {
     expect(a.review.allocationCheck.exact).toBe(true);
     expect(a.review.allocationCheck.differences.map(d => d.letters)).toEqual(Object.keys(unresolved));
   });
+  it('corrects printed ballot identities while preserving saved-scenario and candidate keys', () => {
+    const ds = researchDataset(verifyK10({ log: false }));
+    // YP 2727 p. 2190, independently checked against YP 2721 headers.
+    const corrected = { 'הם': 'הס', 'טן': 'טז', 'יש': 'טי', 'ים': 'ימ', 'יפ': 'יס',
+      'נן': 'נז', 'נכ': 'נס', 'פז': 'סז', 'קנ': 'קז', 'קן': 'קי' };
+    for (const [oldLetters, printed] of Object.entries(corrected)) {
+      const list = ds.lists.find(l => l.id === `10-${oldLetters}`)!;
+      expect(list.letters).toBe(printed);
+      expect(ds.officialSeats?.[list.id]).toBe(0);
+    }
+    expect(ds.lists.find(l => l.id === '10-ט')).toMatchObject({ shortHe: 'ישראל אחת', shortEn: 'One Israel' });
+    expect(ds.lists.find(l => l.id === '10-קנ')).toMatchObject({ shortHe: 'רשימת הגימלאים', shortEn: 'Pensioners and Elderly List' });
+    expect(ds.lists.find(l => l.id === '10-ני')?.candidates[0]).toMatchObject({ id: '10-ני#1', nameHe: 'אבוחצירא אהרון' });
+  });
   it('retains the sourced agreement set without inventing missing pairs', () => {
     const a = verifyK10({ log: false });
     expect(a.review.agreements.complete).toBe(true);
