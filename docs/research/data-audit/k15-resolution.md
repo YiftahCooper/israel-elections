@@ -22,8 +22,8 @@ All accessed 2026-11-06. Official scans were read as rendered images; empty extr
 
 | Findings | Decision, independent check and changes |
 |---|---|
-| Codex F01 / Opus 2 | **Fixed.** R/C/A agree on יט. Migrated `15-ט` → `15-יט`, every `#rank` identity, context event ID, agreement/bloc references, list-meta, raw national/roster/elected inputs, bios keys, logos, party links, registry/appearance and lineage IDs and family references. Votes remain 100181 and seats 4. |
-| Opus 3 (Codex concluding observation disagrees) | **Fixed.** Enlarged retained R p.3376 shows קפ, as do C p.3047 and W2 p.3269. Codex's statement that R prints קף is a visual-reading error. Migrated `15-קף` → `15-קפ`, registry vehicle and all dependent links/family references. No numeric change. |
+| Codex F01 / Opus 2 | **Fixed.** R/C/A agree on יט. Corrected letters to יט in raw national/roster/elected inputs and metadata. Per the coordinator’s subsequent cross-election decision, opaque list/candidate IDs remain `15-ט` / `15-ט#rank`, with matching context, agreement/bloc, list-meta, bios, party-link, registry/lineage and family references; see the follow-up below. Votes remain 100181 and seats 4. |
+| Opus 3 (Codex concluding observation disagrees) | **Fixed.** Enlarged retained R p.3376 shows קפ, as do C p.3047 and W2 p.3269. Codex's statement that R prints קף is a visual-reading error. Corrected letters to קפ while retaining stable `15-קף` IDs, registry vehicle and dependent links/family references per the follow-up below. No numeric change. |
 | Codex F02 / Opus 11 | **Fixed.** R's One Israel includes Labor, Gesher and Meimad; later Labor–Meimad faction name is not the ballot label. Correct list-meta English and k15 vehicle English name to One Israel. |
 | Codex F03/F04 / Opus 1 | **Fixed, with rejected subclaim.** C confirms both registered lists; W1/W2 settle withdrawal mechanism and dates. Add 0-vote/0-seat presentation records with withdrawn=true, complete 1/4-candidate registrations and statutory source IDs/notes. Zero is a placeholder for absent final-result rows, not a published vote count. Codex F04's שמעוני דן and בסעדה רחל are not printed in C. The printed names are קרמר רוני, קליין דוד, שוגרמן דוד, **בסעוד שחל**. W1 spells the last candidate **שחל מסעוד**, a surname variant; retain C's registration spelling, record the variant here. New English names are project translations, not official English registrations. Builder support is limited to evidence-backed withdrawn records; no invented elected list entries. |
 | Opus 4 | **Fixed.** C and R both print גאגולה איסק; O's later יצחק גאגולה does not override contemporaneous notices. Correct both transcriptions and add a sourced candidate note documenting the distinction. Preserve PersonID 485, biography and English rendering. |
@@ -51,8 +51,8 @@ None. Source evidence decides the actual disagreements. The nine remaining group
 
 | Before | After |
 |---|---|
-| ט / 15-ט | יט / 15-יט |
-| קף / 15-קף | קפ / 15-קפ |
+| Displayed ט (stable ID 15-ט) | Displayed יט (same stable ID) |
+| Displayed קף (stable ID 15-קף) | Displayed קפ (same stable ID) |
 | Labor–Meimad (1999 list) | One Israel |
 | גאגולה יצחק | גאגולה איסק, with variant note |
 | אלתג׳מע אלוטני אלדימוקרטי (בל״ד) | אלתג׳מע אלוחדוי אלדמוקרטי (בל״ד) |
@@ -118,3 +118,19 @@ Required order: `BUILD_JOBS=2 node scripts/build-datasets.ts`; refresh only k15 
 - `docs/research/data-audit/k15-resolution.md`
 
 Final checks: **95 Vitest files / 905 tests passed**, including historical-k15 and all five differential families; family validation (9 presets), logo validation (26 overlays / 184 source records), TypeScript and git diff --check passed. The final source-catalogue-only deduplication reuses byte-identical retained resignation PDFs; a second build confirms k15 dataset bytes unchanged.
+
+## Coordinator follow-up — stable opaque IDs
+
+The coordinator’s cross-election decision supersedes the initial ID migration. Restore every list/candidate key and reference to **15-ט**, **15-ט#1–5**, and **15-קף** (including the vehicle/lineage/context keys derived from them). Historical ballot-letter fields remain **יט** and **קפ**, and all corrected names and prior audit fixes remain. The note in data/meta/k15.json explicitly explains that the keys predate the letter corrections. Raw transcriptions and logo metadata continue to use actual printed letters; they are not opaque-ID keys.
+
+The election-specific builder resolves these two historical keys separately from displayed letters, including candidate IDs, agreement members and official-seat keys. It preserves existing list-meta identities/colours, bios and related data. scripts/joint-facts.ts is unchanged; its output was regenerated from the restored keys. Family/registry/lineage k15 hashes were refreshed.
+
+UI/export check: searched all src TypeScript/TSX for ID suffix extraction (`slice`, `split`, `substring`, `substr`, `replace`) and for assignments combining letters with IDs. No runtime ballot display/export derives letters from a list ID. Inspected Slip/ui.tsx, ListBars, ListSidePanel, Walkthrough and FamilyPoint (each uses the list’s letters field), TopBar CSV rows (`l.letters`), JSON/scenario creation (`letters:l.letters` alongside the preserved id), and synthetic SVG (`p.letters`). IDs remain identifiers in serialized scenarios and DOM keys, not displayed letter strings. One builder diagnostic and two historical-test expectations that inferred letters from IDs now look up the list’s letters. The schema comment now identifies IDs as opaque stable keys.
+
+Regression coverage renders the actual Slip component with the rebuilt scenario, verifies יט/קפ text and stable origin/candidate IDs, and checks National Union agreement/biography references. Browser/Playwright tests were not run.
+
+Recursive comparison with e543560 after canonicalizing only `15-יט` → `15-ט`, `15-קפ` → `15-קף` in keys/reference strings and normalizing builtAt is **exactly equal**. All other 25 national datasets are byte-identical. Thus no names, displayed letters, votes, seats, ranks, colours, flags or source evidence changed. The dataset hash was refreshed in all k15 consumers. The old audit finding is settled historically; this follow-up changes compatibility keys only.
+
+The differential harness substitutes e543560’s k15 dataset at scenarioFromDataset and reproduces all five prior digests: allocation 52d8f62f… and model 99089dfd…. The restored-key digests are allocation 5857d33b… and model 65183270…; analysis, validation and rules are unchanged. The fixture documents this narrow field diff.
+
+Follow-up verification: **95 files / 906 tests passed**, including 6 historical-k15 tests and all five differential checks. TypeScript passed after removing the now-unused ID-suffix helper variable. Family validation (9 presets), logo validation (26 overlays / 184 source records) and git diff --check passed. Final BUILD_JOBS=2 rebuild wrote **0 files, 38 unchanged**. No Playwright or push.

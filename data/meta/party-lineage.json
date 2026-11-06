@@ -364,7 +364,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k15.json",
-      "sha256": "58de1bfaa7b23fff75dfff572563dbbcfbc951cb6276947c5c4d54cf8c011eb8",
+      "sha256": "8669c994eaffe4342f03353bfa166c7270e701d4eabb321030b02b493b46ffb0",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k16": {
@@ -1569,14 +1569,14 @@
       "listId": "15-עם"
     },
     {
-      "id": "partners-15-יט",
+      "id": "partners-15-ט",
       "from": [
         "herut-national-movement",
         "moledet",
         "tkuma"
       ],
       "to": [
-        "vehicle-15-יט"
+        "vehicle-15-ט"
       ],
       "relation": "electoral-partner",
       "date": "1999-05-17",
@@ -1591,7 +1591,7 @@
         "interpretation": "Predecessor to successor; no inheritance of votes or automatic family propagation."
       },
       "electionId": "k15",
-      "listId": "15-יט"
+      "listId": "15-ט"
     },
     {
       "id": "partners-15-ד",

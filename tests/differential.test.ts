@@ -1,3 +1,6 @@
+// k15 stable-ID follow-up: restore opaque IDs 15-ט / 15-קף without changing letters.
+// Recursive dataset diff is exactly those ID/reference reversions and builtAt; all
+// other 25 datasets unchanged. HEAD k15 substitution reproduces all prior digests.
 // k15 audit (6 Nov): only k15 changes: ballot-ID migrations, gazetted names,
 // two withdrawn registration records, roster status, Gagula note, two withheld logos and provenance.
 // Field diff recorded in k15-resolution.md. Restoring HEAD k15 at scenarioFromDataset
@@ -57,7 +60,7 @@ const EXPECTED: Record<Family, string> = {
   // engine on the same tree reproduces 8260bc46… and af4237ef…; model, validation and rules digests are unchanged.
   // merged with the k24 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k20 audit fixes: combined digest = union of the separately reviewed changes.
-  allocation: '52d8f62f4a87cffa94424b7a1eed596fd865f770391fed886d71d793b0164ca5',
+  allocation: '5857d33b899e504cfed7848cdf52c06ef62782adc838b9af33de99f5d797ea5b',
   analysis: 'b682af4570daf5cd7967e77afda56c8a9bcb2b5de4850f4d8ebc1652228269e0',
   // Model digest re-recorded for the 1973 party ranks, then for candidate biography links (Candidate.bio): with
   // the build timestamps held fixed and bio not carried, the new code gives the previous digest. Then for three
@@ -121,7 +124,7 @@ const EXPECTED: Record<Family, string> = {
   // and builtAt changed (recursive field diff); HEAD k19 with current src reproduces 2694440f….
   // All four non-model digests unchanged. See docs/research/data-audit/k19-resolution.md.
   // merged with k19 audit fixes: combined digest = union of the separately reviewed changes.
-  model: '99089dfd6022c2573501e101a96752a6212f2b2c87861eeebcdc46349f5a8244',
+  model: '65183270b15bf5bf30c165e6b21e8b8c03f5ba585343ca370f962baf0979a41c',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

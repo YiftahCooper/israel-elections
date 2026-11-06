@@ -1,4 +1,10 @@
 import { describe, expect, it } from 'vitest';
+import { readFileSync } from 'node:fs';
+import { createElement } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+import { Slip } from '../src/app/components/ui.tsx';
+import { scenarioFromDataset } from '../src/model/scenario.ts';
+import type { ElectionDataset } from '../src/data/schema.ts';
 import { buildK15, verifyK15 } from '../scripts/lib/historical/k15.ts';
 import { releasedElection } from './historical-k13-k15.helpers.ts';
 
@@ -17,6 +23,24 @@ describe('k15 — 1999 released gazetted results and elected-prefix rosters', ()
     expect(a.rosters.lists.find(l => l.letters === 'ק')!.candidates.map(c => c.nameHe)).toEqual(['קרמר רוני', 'קליין דוד', 'שוגרמן דוד', 'בסעוד שחל']);
     expect(a.rosters.lists.find(l => l.letters === 'שס')!.candidates[17].nameHe).toBe('גאגולה איסק');
     expect(a.review.lists.find(l => l.letters === 'קפ')!.nameHe).toBe('הערבי החדש');
+  });
+  it('keeps stable keys while rendering corrected ballot letters', () => {
+    const ds = JSON.parse(readFileSync('public/data/k15.json', 'utf8')) as ElectionDataset;
+    const scenario = scenarioFromDataset(ds);
+    for (const [id, letters] of [['15-ט', 'יט'], ['15-קף', 'קפ']]) {
+      const list = scenario.lists.find(l => l.id === id)!;
+      expect(list.letters).toBe(letters);
+      expect(list.originIds).toEqual([id]);
+      expect(list.candidates.every(c => c.id.startsWith(`${id}#`))).toBe(true);
+      const rendered = renderToStaticMarkup(createElement(Slip, { letters: list.letters, color: list.color }));
+      expect(rendered).toContain(`>${letters}</span>`);
+      expect(rendered).not.toContain(id);
+      expect(ds.officialSeats).toHaveProperty(id);
+    }
+    const nu = ds.lists.find(l => l.id === '15-ט')!;
+    expect(nu.candidates.map(c => c.id)).toEqual([1, 2, 3, 4, 5].map(rank => `15-ט#${rank}`));
+    expect(nu.candidates[1].bio).toBeTruthy();
+    expect(ds.agreements.find(a => a.id === '15-agr-2')!.members).toEqual(['15-ט', '15-כן']);
   });
   it('preserves original registered heads and includes every elected successor, without silently shifting ranks', () => {
     expect(buildK15({ log: false })).toHaveLength(1);

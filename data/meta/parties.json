@@ -364,7 +364,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k15.json",
-      "sha256": "58de1bfaa7b23fff75dfff572563dbbcfbc951cb6276947c5c4d54cf8c011eb8",
+      "sha256": "8669c994eaffe4342f03353bfa166c7270e701d4eabb321030b02b493b46ffb0",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k16": {
@@ -11589,7 +11589,7 @@
       "externalIds": {}
     },
     {
-      "id": "vehicle-15-יט",
+      "id": "vehicle-15-ט",
       "entityType": "alliance",
       "nameHe": "האיחוד הלאומי - מולדת חרות תקומה",
       "nameEn": "National Union",
@@ -12342,7 +12342,7 @@
       "externalIds": {}
     },
     {
-      "id": "vehicle-15-קפ",
+      "id": "vehicle-15-קף",
       "entityType": "electoral-vehicle",
       "nameHe": "הערבי החדש",
       "nameEn": "New Arab",
@@ -28630,8 +28630,8 @@
     },
     {
       "electionId": "k15",
-      "listId": "15-יט",
-      "partyId": "vehicle-15-יט",
+      "listId": "15-ט",
+      "partyId": "vehicle-15-ט",
       "role": "alliance",
       "sources": [
         "k15"
@@ -28641,7 +28641,7 @@
     },
     {
       "electionId": "k15",
-      "listId": "15-יט",
+      "listId": "15-ט",
       "partyId": "herut-national-movement",
       "role": "constituent",
       "sources": [
@@ -28654,7 +28654,7 @@
     },
     {
       "electionId": "k15",
-      "listId": "15-יט",
+      "listId": "15-ט",
       "partyId": "moledet",
       "role": "constituent",
       "sources": [
@@ -28667,7 +28667,7 @@
     },
     {
       "electionId": "k15",
-      "listId": "15-יט",
+      "listId": "15-ט",
       "partyId": "tkuma",
       "role": "constituent",
       "sources": [
@@ -28925,8 +28925,8 @@
     },
     {
       "electionId": "k15",
-      "listId": "15-קפ",
-      "partyId": "vehicle-15-קפ",
+      "listId": "15-קף",
+      "partyId": "vehicle-15-קף",
       "role": "singleton",
       "sources": [
         "k15",
