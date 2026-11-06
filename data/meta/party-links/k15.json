@@ -470,6 +470,28 @@
         "sourceType": "cec",
         "confidence": "high"
       }
+    ],
+    "15-ני": [
+      {
+        "kind": "neutral",
+        "url": "https://olaw.org.il/yalkut/yalkut-4754.pdf",
+        "publisher": "CEC / Reshumot, YP 4754 (third-party mirror)",
+        "sourceType": "cec",
+        "confidence": "high",
+        "titleEn": "Official candidate resignation notice",
+        "titleHe": "הודעת התפטרות כל מועמדי הרשימה"
+      }
+    ],
+    "15-ק": [
+      {
+        "kind": "neutral",
+        "url": "https://olaw.org.il/yalkut/yalkut-4751.pdf",
+        "publisher": "CEC / Reshumot, YP 4751 (third-party mirror)",
+        "sourceType": "cec",
+        "confidence": "high",
+        "titleEn": "Official candidate resignation notice",
+        "titleHe": "הודעת התפטרות כל מועמדי הרשימה"
+      }
     ]
   },
   "parties": {
@@ -637,6 +659,12 @@
     "taal": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
       "neutral": "No verified identity-specific neutral article acquired; dictionary articles and joint-list sources excluded; further research required."
+    },
+    "15-ני": {
+      "partisan": "No verified 1999 campaign source acquired; registration and resignation are established by the gazette."
+    },
+    "15-ק": {
+      "partisan": "No verified 1999 campaign source acquired; registration and resignation are established by the gazette."
     }
   }
 }

@@ -43,7 +43,7 @@
     },
     {
       "letters": "דן",
-      "nameHe": "מפלגת ההתפתחות",
+      "nameHe": "מפלגת ההתישבות",
       "votes": 5533,
       "officialSeats": 0
     },
@@ -79,7 +79,7 @@
     },
     {
       "letters": "כן",
-      "nameHe": "ישראל בעליה בראשותו של נתן שרנסקי",
+      "nameHe": "ישראל בעלייה בראשותו של נתן שרנסקי",
       "votes": 174994,
       "officialSeats": 7
     },
@@ -91,7 +91,7 @@
     },
     {
       "letters": "מרצ",
-      "nameHe": "מרצ - ישראל הדמוקרטית רצ מפם שינוי",
+      "nameHe": "מרצ - ישראל הדמוקרטית רצ, מפ\"ם, שינוי",
       "votes": 226275,
       "officialSeats": 9
     },
@@ -115,13 +115,13 @@
     },
     {
       "letters": "פא",
-      "nameHe": "הברית הדמוקרטית",
+      "nameHe": "הברית המתקדמת",
       "votes": 13983,
       "officialSeats": 0
     },
     {
       "letters": "ק",
-      "nameHe": "אחדות למען השלום בראשות אפרים גור",
+      "nameHe": "אחדות למען העליה בראשות אפרים גור",
       "votes": 22741,
       "officialSeats": 0
     },
@@ -133,9 +133,17 @@
     },
     {
       "letters": "ת",
-      "nameHe": "תלם אמונה תימן בדרכי נועם בראשות הרב יוסף עזרן",
+      "nameHe": "תלם אמונה יהדות בדרכי נועם בראשות הרב יוסף עזרן",
       "votes": 12737,
       "officialSeats": 0
+    },
+    {
+      "letters": "זך",
+      "nameHe": "מורשת-אבות",
+      "votes": 0,
+      "officialSeats": 0,
+      "withdrawn": true,
+      "note": "YP 4408 p.3289 registers זך; YP 4411 p.3398: כל המועמדים ברשימה זו התפטרו ביום ט׳ בסיון התשנ״ו (27 במאי 1996). Omitted from YP 4414; zero is a non-contesting placeholder, not a reported vote count."
     }
   ],
   "agreements": {
@@ -177,6 +185,8 @@
   "localityNote": "No reconciled locality dataset is released. Secondary polling spreadsheets are not treated as reconciled national evidence.",
   "sourceNotes": [
     "Likud–Gesher–Tzomet is 767,401 in YP 4414 p.3482, not the 767,951 in secondary tables (550 more). Gazette rows sum exactly to 3,052,130.",
-    "PM-ballot valid 2,972,589 is excluded; Knesset valid is 3,052,130."
+    "PM-ballot valid 2,972,589 is excluded; Knesset valid is 3,052,130.",
+    "2026-11-06 visual recheck, YP 4414 p.3482: דן מפלגת ההתישבות; פא הברית המתקדמת; ק אחדות למען העליה בראשות אפרים גור; ת תלם אמונה יהדות בדרכי נועם בראשות הרב יוסף עזרן. Gazette spelling governs full titles; English short names are editorial translations.",
+    "YP 4414 p.3482 also prints ישראל בעלייה and מרצ - ישראל הדמוקרטית רצ, מפ״ם, שינוי."
   ]
 }

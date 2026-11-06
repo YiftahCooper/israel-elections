@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "k13",
-  "reviewedOn": "2026-11-03",
+  "reviewedOn": "2026-11-06",
   "resultsSourceId": "k13-results-gazette",
   "resultsPages": [
     3776,
@@ -25,7 +25,7 @@
     },
     {
       "letters": "ב",
-      "nameHe": "מפד״ל חזית דתית לאומית - המזרחי הפועל המזרחי",
+      "nameHe": "מפד״ל, חזית דתית לאומית - המזרחי, הפועל המזרחי",
       "votes": 129663,
       "officialSeats": 6
     },
@@ -37,7 +37,7 @@
     },
     {
       "letters": "ד",
-      "nameHe": "התנועה הלאומית הדמוקרטית ועליה",
+      "nameHe": "התנועה הלאומית לדמוקרטיה ועליה",
       "votes": 11697,
       "officialSeats": 0
     },
@@ -55,7 +55,7 @@
     },
     {
       "letters": "זה",
-      "nameHe": "ציפר",
+      "nameHe": "ציפור",
       "votes": 523,
       "officialSeats": 0
     },
@@ -67,13 +67,13 @@
     },
     {
       "letters": "יד",
-      "nameHe": "התקוה - תנועה חברתית לרווחה בראשות צ׳רלי ביטון",
+      "nameHe": "התקוה - תנועה חברתית לוחמת בראשות צ׳רלי ביטון",
       "votes": 2053,
       "officialSeats": 0
     },
     {
       "letters": "יז",
-      "nameHe": "התורה הארץ בראשות הרב משה לוינגר",
+      "nameHe": "התורה והארץ בראשות הרב משה לוינגר",
       "votes": 3708,
       "officialSeats": 0
     },
@@ -85,7 +85,7 @@
     },
     {
       "letters": "כי",
-      "nameHe": "תל״י התנועה להתחדשות ישראל",
+      "nameHe": "תל״י תנועה להתחדשות ישראל",
       "votes": 1336,
       "officialSeats": 0
     },
@@ -97,7 +97,7 @@
     },
     {
       "letters": "מרצ",
-      "nameHe": "מרצ - ישראל הדמוקרטית - רצ מפם שינוי",
+      "nameHe": "מרצ - ישראל הדמוקרטית - רצ, מפם, שינוי",
       "votes": 250667,
       "officialSeats": 12
     },
@@ -108,13 +108,13 @@
       "officialSeats": 0
     },
     {
-      "letters": "נז",
-      "nameHe": "תנועת נפגעי משכנתאות חסרי דיור ועולים משוחררים",
+      "letters": "נד",
+      "nameHe": "תנועת נפגעי משכנתאות, חסרי דיור וחיילים משוחררים",
       "votes": 5962,
       "officialSeats": 0
     },
     {
-      "letters": "נס",
+      "letters": "נכ",
       "nameHe": "מפלגת נשים",
       "votes": 2886,
       "officialSeats": 0
@@ -139,7 +139,7 @@
     },
     {
       "letters": "ק",
-      "nameHe": "גימלאים עולים קשישים בישראל",
+      "nameHe": "גימלאים, עולים וקשישים",
       "votes": 8327,
       "officialSeats": 0
     },
@@ -150,7 +150,7 @@
       "officialSeats": 0
     },
     {
-      "letters": "קנ",
+      "letters": "קן",
       "nameHe": "המפלגה הליברלית החדשה בראשות יצחק מודעי",
       "votes": 16669,
       "officialSeats": 0
@@ -163,7 +163,7 @@
     },
     {
       "letters": "ת",
-      "nameHe": "תחיה",
+      "nameHe": "התחיה",
       "votes": 31957,
       "officialSeats": 0
     }
@@ -180,6 +180,7 @@
   "hasLocalities": false,
   "localityNote": "No reconciled locality dataset is released. Secondary polling spreadsheets are not treated as reconciled national evidence.",
   "sourceNotes": [
-    "IDI table is 1,000 votes short in aggregate; no secondary vote table is imported."
+    "IDI table is 1,000 votes short in aggregate; no secondary vote table is imported.",
+    "2026-11-06: YP 4021 p. 3776: \"נד\", \"נכ\", \"קן\"; YP 4017 pp. 3631, 3633, 3635 confirms \"ציפור\", \"התקוה - תנועה חברתית לוחמת\", \"התורה והארץ\", \"תל״י תנועה להתחדשות ישראל\". Candidate titles settle faint/omitted letters in the results scan; see docs/research/data-audit/k13-resolution.md."
   ]
 }

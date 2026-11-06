@@ -96,7 +96,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
     if (q.capped) {
       const counts = unitMembers(q.unitId).map((m) => { const l = listOf(m); return !l || l.rosterUnavailable || l.rosterTruncated ? undefined : l.candidates.filter((c) => !c.notSeated).length; });
       const capacity = counts.every((c) => c !== undefined) ? counts.reduce<number>((a, c) => a + c!, 0) : undefined;
-      if (s.rules.seatsCappedAtCandidates && capacity !== undefined && q.seats >= capacity) return <>{L('no more candidates', 'אין עוד מועמדים')} <Info title={L('Candidate cap (1977)', 'מגבלת המועמדים (1977)')}>{L('A list gets no more seats than it has candidates. This matches the official 1977 table, but its legal rule was not located: an inference.', 'רשימה אינה מקבלת יותר מנדטים ממספר מועמדיה. כך עולה מהטבלה הרשמית של 1977, אך הכלל המשפטי לא אותר: זו הסקה.')}</Info></>;
+      if (s.rules.seatsCappedAtCandidates && capacity !== undefined && q.seats >= capacity) return <>{L('no more candidates', 'אין עוד מועמדים')} <Info title={L('Candidate cap (1977)', 'מגבלת המועמדים (1977)')}>{L('A list gets no more seats than it has candidates. The Knesset’s 1 November 1977 appeal determination documents this initial cap and the distribution of six surplus seats under section 81(d).', 'רשימה אינה מקבלת יותר מנדטים ממספר מועמדיה. הכרעת הכנסת בערעור מיום 1 בנובמבר 1977 מתעדת הגבלה זו בחלוקה הראשונה ואת חלוקת ששת המנדטים העודפים לפי סעיף 81(ד).')}</Info></>;
       return <>{L('half-seats cap', 'מגבלת מחצית המנדטים')} <Info term="cap" /></>;
     }
     if (q.value.num < 0n) return s.rules.largestRemainderRepeat === false ? L('already won one', 'כבר זכתה באחד') : L('won one this round', 'זכתה באחד בסבב זה');

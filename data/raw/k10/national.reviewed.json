@@ -40,7 +40,7 @@
     },
     {
       "letters": "ד",
-      "nameHe": "המחנה התורתי, פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
+      "nameHe": "המחנה התורתי – פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
       "gazetteVotes": 17090,
       "officialSeats": 0
     },
@@ -51,10 +51,11 @@
       "officialSeats": 2
     },
     {
-      "letters": "הם",
+      "letters": "הס",
       "nameHe": "ביטול חוק מס הכנסה",
       "gazetteVotes": 503,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyId": "10-הם"
     },
     {
       "letters": "ו",
@@ -75,28 +76,32 @@
       "officialSeats": 0
     },
     {
-      "letters": "טן",
+      "letters": "טז",
       "nameHe": "המועצה להצלת המולדת – רשימה משותפת לכנסת",
       "gazetteVotes": 405,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyId": "10-טן"
     },
     {
-      "letters": "יש",
+      "letters": "טי",
       "nameHe": "תנועת הצעירים",
       "gazetteVotes": 412,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyId": "10-יש"
     },
     {
-      "letters": "ים",
+      "letters": "ימ",
       "nameHe": "הרשימה הערבית המאוחדת",
       "gazetteVotes": 11590,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyId": "10-ים"
     },
     {
-      "letters": "יפ",
+      "letters": "יס",
       "nameHe": "יעד",
       "gazetteVotes": 1228,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyId": "10-יפ"
     },
     {
       "letters": "כה",
@@ -135,10 +140,11 @@
       "officialSeats": 48
     },
     {
-      "letters": "נן",
+      "letters": "נז",
       "nameHe": "רשימת האחוה הערבית",
       "gazetteVotes": 8304,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyId": "10-נן"
     },
     {
       "letters": "ני",
@@ -147,10 +153,11 @@
       "officialSeats": 3
     },
     {
-      "letters": "נכ",
-      "nameHe": "התנועה למען עליה",
+      "letters": "נס",
+      "nameHe": "הרשימה למען עליה",
       "gazetteVotes": 6992,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyId": "10-נכ"
     },
     {
       "letters": "נק",
@@ -165,10 +172,11 @@
       "officialSeats": 0
     },
     {
-      "letters": "פז",
+      "letters": "סז",
       "nameHe": "תנועת האוהלים",
       "gazetteVotes": 545,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyId": "10-פז"
     },
     {
       "letters": "פש",
@@ -177,16 +185,18 @@
       "officialSeats": 0
     },
     {
-      "letters": "קנ",
+      "letters": "קז",
       "nameHe": "רשימת הגימלאים והקשישים בישראל",
       "gazetteVotes": 2404,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyId": "10-קנ"
     },
     {
-      "letters": "קן",
+      "letters": "קי",
       "nameHe": "עוצמה",
       "gazetteVotes": 839,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyId": "10-קן"
     },
     {
       "letters": "רצ",
@@ -320,7 +330,7 @@
         "publishedCount": 41,
         "first": {
           "rank": 1,
-          "nameHe": "אבו-חצירא אהרון"
+          "nameHe": "אבוחצירא אהרון"
         },
         "pages": [
           2059
@@ -368,5 +378,25 @@
     "exact": true,
     "differences": [],
     "note": "Every list matches the gazetted seats through the scenario pipeline, using the complete published agreement notice. Required winning-roster prefixes and all 120 elected-name comparisons verified."
-  }
+  },
+  "corrections": [
+    {
+      "sourceId": "k10-results-gazette",
+      "page": 2190,
+      "note": "Re-read YP 2727 and YP 2721 list headers, 2026-11-06; IDs remain opaque stable keys from before the transcription corrections.",
+      "letters": {
+        "הם": "הס",
+        "טן": "טז",
+        "יש": "טי",
+        "ים": "ימ",
+        "יפ": "יס",
+        "נן": "נז",
+        "נכ": "נס",
+        "פז": "סז",
+        "קנ": "קז",
+        "קן": "קי"
+      },
+      "quote": "ישראל אחת; הרשימה למען עליה; רשימת הגימלאים והקשישים בישראל"
+    }
+  ]
 }

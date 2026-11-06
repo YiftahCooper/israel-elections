@@ -11,7 +11,6 @@ export function releasedElection(id: 'k13' | 'k14' | 'k15', expected: {
   threshold: bigint; quota: bigint; pairs: [string, string][]; rosterSizes: Record<string, number>;
 }) {
   const ds = JSON.parse(readFileSync(`public/data/${id}.json`, 'utf8')) as ElectionDataset;
-  const n = id.slice(1);
   const audit = () => verifyHistoricalProgress(id, { log: false });
   it('releases the built file with exact national totals and every official seat, including zero seats', () => {
     const a = audit();
@@ -32,7 +31,7 @@ export function releasedElection(id: 'k13' | 'k14' | 'k15', expected: {
     expect(result.quota).toEqual({ num: expected.quota, den: 1n });
     expect(Object.keys(ds.officialSeats!)).toHaveLength(ds.lists.length);
     expect(ds.officialSeats).toEqual(Object.fromEntries(ds.lists.map(l => [l.id, expected.seats[l.letters] ?? 0])));
-    for (const l of result.lists) expect(l.seats, l.id).toBe(expected.seats[l.id.slice(n.length + 1)] ?? 0);
+    for (const l of result.lists) expect(l.seats, l.id).toBe(expected.seats[ds.lists.find(x => x.id === l.id)!.letters] ?? 0);
     const index = JSON.parse(readFileSync('public/data/elections.json', 'utf8')).find((e: { id: string }) => e.id === id);
     expect(index.available).toBe(true);
     expect(index.status).toEqual({ stage: ds.status.stage, noteEn: ds.status.noteEn, noteHe: ds.status.noteHe });
@@ -44,7 +43,7 @@ export function releasedElection(id: 'k13' | 'k14' | 'k15', expected: {
   });
   it('retains the complete sourced agreement pairs, or the explicit 1992 search caveat', () => {
     const a = audit();
-    expect(ds.agreements.map(p => p.members.map(m => m.slice(n.length + 1)))).toEqual(expected.pairs);
+    expect(ds.agreements.map(p => p.members.map(m => ds.lists.find(l => l.id === m)!.letters))).toEqual(expected.pairs);
     expect(a.review.agreements.pairs).toEqual(expected.pairs);
     if (id === 'k13') {
       expect(a.review.agreements).toMatchObject({ sourceId: null, complete: false });
@@ -65,6 +64,13 @@ export function releasedElection(id: 'k13' | 'k14' | 'k15', expected: {
       expect(list.candidates.map(c => c.rank)).toEqual(list.candidates.map((_, i) => i + 1));
       expect(list.candidates.map(c => c.id)).toEqual(list.candidates.map(c => `${list.id}#${c.rank}`));
       const won = expected.seats[list.letters] ?? 0;
+      if (list.withdrawn && id === 'k15') {
+        expect(list.votes).toBe(0);
+        expect(list.candidates).toHaveLength(list.letters === 'ני' ? 1 : 4);
+        expect(list.candidatesTruncated).not.toBe(true);
+        expect(list.candidatesUnavailable).not.toBe(true);
+        continue;
+      }
       if (won === 0) {
         expect(list.candidates).toEqual([]);
         expect(list.candidatesUnavailable).toBe(true);
@@ -95,6 +101,6 @@ export function releasedElection(id: 'k13' | 'k14' | 'k15', expected: {
         } else expect(normalize(candidate.nameHe), `${list.id}, elected ${i + 1}`).toBe(normalize(name));
       }
     }
-    expect(a.rosters.lists.filter(l => l.complete).map(l => l.letters)).toEqual(id === 'k14' ? ['הד'] : []);
+    expect(a.rosters.lists.filter(l => l.complete).map(l => l.letters)).toEqual(id === 'k15' ? ['ני', 'ק'] : []);
   });
 }

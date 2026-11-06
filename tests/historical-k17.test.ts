@@ -120,8 +120,12 @@ describe('k17 — released national and locality datasets; explicit roster limit
     const labor = ds.lists.find(l => l.letters === 'אמת')!;
     const yb = ds.lists.find(l => l.letters === 'ל')!;
     expect(labor.candidates[18].nameHe).toBe('מגדלה גאלב');
-    expect(yb.candidates[2].nameHe).toBe('חסון ארדי ישראל');
-    expect(yb.candidates.slice(6, 8).map(c => c.nameHe)).toEqual(['לנדבר אהרון- סופיה סוניה', 'אהרונוביץ יצחק']);
+    expect(yb.candidates[2].nameHe).toBe('חסון אדוי ישראל');
+    expect(yb.candidates.slice(6, 8).map(c => c.nameHe)).toEqual(['לנדבר-אהרון סופיה סוניה', 'אהרונוביץ יצחק']);
+    // YP 5504 pp. 2190, 2194 and YP 5514 pp. 2466, 2468 (6 Nov audit).
+    expect(ds.lists.find(l => l.letters === 'טב')!.candidates[4].nameHe).toBe('סולומינסקי ניסן');
+    expect(ds.lists.find(l => l.letters === 'טב')!.candidates[6].nameHe).toBe('גבאי אליהו בדור');
+    expect(ds.lists.find(l => l.letters === 'מחל')!.candidates[9].nameHe).toBe('לבנת לימור אהבה');
     const reviewed = JSON.parse(readFileSync(new URL('../data/raw/k17/candidates.reviewed.json', import.meta.url), 'utf8'));
     const check = reviewed.lists.find((r: { letters: string }) => r.letters === 'ל').electedCrossCheck;
     expect(check.resultsNamesHe.slice(6, 8)).toEqual(['לנדבר אהרון סופיה סוניה', 'אהרונוביץ יצחק']);

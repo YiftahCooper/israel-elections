@@ -4,11 +4,11 @@
   "lists": [
     {
       "letters": "מרצ",
-      "nameHe": "מרצ - ישראל הדמוקרטית - רצ מפם שינוי",
+      "nameHe": "מרצ - ישראל הדמוקרטית - רצ, מפם, שינוי",
       "seats": 12,
       "rosterRanks": 12,
       "candidatesTruncated": true,
-      "notes": "Meretz – joint list of Ratz, Mapam and Shinui (official list name).",
+      "notes": "Meretz – joint list of Ratz, Mapam and Shinui (official list name). Official composition is distinct from the per-candidate allocations, which remain secondary (unofficial annotations corroborate them).",
       "parties": [
         {
           "id": "ratz",
@@ -102,7 +102,17 @@
           "confidence": "high"
         }
       ],
-      "unassignedRanks": []
+      "unassignedRanks": [],
+      "sources": [
+        {
+          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset13-results.pdf",
+          "publisher": "Reshumot, YP 4021, p. 3776",
+          "kind": "official",
+          "quote": "מרצ - ישראל הדמוקרטית - רצ, מפם, שינוי",
+          "accessed": "2026-11-06",
+          "note": "Official composition only; individual ranks remain secondary, corroborated by unofficial handwritten tags on YP 4017 p. 3638."
+        }
+      ]
     },
     {
       "letters": "ג",
@@ -110,7 +120,7 @@
       "seats": 4,
       "rosterRanks": 4,
       "candidatesTruncated": true,
-      "notes": "United Torah Judaism: Agudat Yisrael, Degel HaTorah and Rabbi Yitzhak Peretz (Moria) — all named in the official list title. Degel's Ravitz and Gafni entered later as replacements (ranks beyond the transcribed roster).",
+      "notes": "United Torah Judaism: Agudat Yisrael, Degel HaTorah and Rabbi Yitzhak Peretz (Moria) — the official title names the two parties and Peretz, not Moria. Degel's Ravitz and Gafni entered later as replacements (ranks beyond the transcribed roster).",
       "parties": [
         {
           "id": "agudat-yisrael",
@@ -155,14 +165,15 @@
               "accessed": "2026-11-04"
             },
             {
-              "url": "public/data/k13.json",
-              "publisher": "Central Elections Committee — approved list name as transcribed in the project dataset (see its candidatesSource)",
+              "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset13-results.pdf",
+              "publisher": "Reshumot, YP 4021, p. 3776",
               "kind": "official",
-              "quote": "כינוי הרשימה: יהדות התורה המאוחדת - אגודת ישראל - דגל התורה - הרב יצחק פרץ",
-              "accessed": "2026-11-04"
+              "quote": "יהדות התורה המאוחדת - אגודת ישראל - דגל התורה - הרב יצחק פרץ",
+              "accessed": "2026-11-06"
             }
           ],
-          "confidence": "high"
+          "confidence": "high",
+          "notes": "The notice names Peretz, not Moria. Moria affiliation relies on the explicitly secondary Hebrew source."
         },
         {
           "id": "degel-hatorah",
@@ -247,21 +258,21 @@
           ]
         }
       ],
-      "notes": "Membership by list at the swearing-in of the first government after the election, from the coalition table of the Hebrew Wikipedia government article (faction, seats, start/end dates), cross-checked against Knesset OData ministerial records for that GovernmentNum. Bloc colours are neutral display suggestions, not party colours.",
+      "notes": "Opening coalition: Labor, Meretz and Shas (62 seats), checked against the official coalition agreements and first-sitting transcript; IDI independently confirms membership. Bloc colours are display suggestions.",
       "sources": [
         {
-          "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%97%D7%9E%D7%A9",
-          "publisher": "Hebrew Wikipedia",
-          "kind": "secondary",
-          "quote": "ממשלת ישראל העשרים וחמש בראשותו של יצחק רבין, שכונתה ממשלת רבין השנייה, הושבעה ב-13 ביולי 1992",
-          "accessed": "2026-11-04"
+          "url": "https://main.knesset.gov.il/mk/government/documents/cagreement25.pdf",
+          "publisher": "הכנסת, הסכמים קואליציוניים לממשלה ה־25",
+          "kind": "official",
+          "quote": "הסכם קואליציוני בין מפלגת העבודה הישראלית לבין",
+          "accessed": "2026-11-06"
         },
         {
-          "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%97%D7%9E%D7%A9",
-          "publisher": "Hebrew Wikipedia",
-          "kind": "secondary",
-          "quote": "סיעות הקואליציה==",
-          "accessed": "2026-11-04"
+          "url": "https://main.knesset.gov.il/Documents/FB/rabin001-92jul13.pdf",
+          "publisher": "הכנסת, הישיבה הראשונה של הכנסת השלוש-עשרה, 13 ביולי 1992",
+          "kind": "official",
+          "quote": "הישיבה הראשונה של הכנסת השלוש-עשרה",
+          "accessed": "2026-11-06"
         },
         {
           "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=GovernmentNum%20eq%2025",
@@ -269,6 +280,13 @@
           "kind": "official",
           "quote": "KNS_PersonToPosition, GovernmentNum 25: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 1992-07-13: דרעי אריה מכלוף, שטרית שמעון, צור יעקב, שוחט אברהם-בייגה, שחל משה, רבין יצחק, רובינשטיין אמנון, פרס שמעון, רמון חיים, צבן יאיר, קיסר ישראל, ליבאי דוד, בן-אליעזר בנימין, נמיר אורה, חריש מיכאל, ברעם עוזי, אלוני שולמית",
           "accessed": "2026-11-04"
+        },
+        {
+          "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1992/",
+          "publisher": "המכון הישראלי לדמוקרטיה",
+          "kind": "academic",
+          "quote": "לגוש השמאל (עבודה, מרצ, חד״ש ומד״ע) יש בלוק חוסם של 61 חברי כנסת",
+          "accessed": "2026-11-06"
         }
       ]
     },
@@ -330,6 +348,13 @@
       ],
       "notes": "Labor (44), Meretz (12), Hadash (3) and the Arab Democratic Party (2) together held 61 seats, blocking any Likud-led coalition; Hadash and the ADP supported Rabin from outside the government. The second bloc is simply the remaining lists, not a named alliance.",
       "sources": [
+        {
+          "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1992/",
+          "publisher": "המכון הישראלי לדמוקרטיה",
+          "kind": "academic",
+          "quote": "לגוש השמאל (עבודה, מרצ, חד״ש ומד״ע) יש בלוק חוסם של 61 חברי כנסת",
+          "accessed": "2026-11-06"
+        },
         {
           "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%94_%D7%93%D7%9E%D7%95%D7%A7%D7%A8%D7%98%D7%99%D7%AA_%D7%A2%D7%A8%D7%91%D7%99%D7%AA",
           "publisher": "Hebrew Wikipedia",
@@ -575,35 +600,20 @@
     {
       "party": "moria",
       "color": "#008EE0",
-      "basis": "Hebrew Wikipedia 12th Knesset infobox only.",
+      "basis": "Unsourced display convention; no historical party-colour evidence established. Previous citation referred to a different party and was removed.",
       "colourId": "moria",
-      "sources": [
-        {
-          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%90%D7%A8%D7%91%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94",
-          "publisher": "Hebrew Wikipedia",
-          "kind": "secondary",
-          "quote": "*{{מקרא2|#008EE0|גבול=1px solid #A9A9A9}}[[ישראל בעליה]] (7)",
-          "accessed": "2026-11-04"
-        }
-      ],
+      "sources": [],
       "confidence": "low"
     },
     {
       "party": "degel-hatorah",
       "color": "#03428F",
-      "basis": "Hebrew Wikipedia 12th Knesset infobox only; the same blue is used for other parties.",
+      "basis": "Unsourced display convention; no historical party-colour evidence established. Previous citation referred to a different party and was removed.",
       "colourId": "degel-hatorah",
-      "sources": [
-        {
-          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%90%D7%97%D7%AA_%D7%A2%D7%A9%D7%A8%D7%94",
-          "publisher": "Hebrew Wikipedia",
-          "kind": "secondary",
-          "quote": "*{{מקרא2|#03428F|גבול=1px solid #A9A9A9}}[[סיעת מורשה|מורשה]] (2)",
-          "accessed": "2026-11-04"
-        }
-      ],
+      "sources": [],
       "confidence": "low"
     }
   ],
-  "datasetRosterConflicts": []
+  "datasetRosterConflicts": [],
+  "stableIdNote": "Internal list IDs 13-נז, 13-נס and 13-קנ predate the ballot-letter correction to נד, נכ and קן. They remain opaque stable keys for saved scenarios and references; display and export ballot letters from the letters field, never from an ID."
 }

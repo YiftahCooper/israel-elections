@@ -176,6 +176,8 @@ export interface BuildOptions {
 }
 export async function buildHistorical(o: BuildOptions): Promise<{ ds: ElectionDataset; loc: LocalityDataset }> {
   const { n } = o;
+  const corrections = n === 18 ? rawJson('../meta/k18-corrections.json') as { textReplacements: Record<string, string>; withdrawn: { letters: string; noteHe: string }[] } : { textReplacements: {}, withdrawn: [] };
+  const normalize = (text: string) => Object.entries(corrections.textReplacements).reduce((s, [a, b]) => s.replaceAll(a, b), text);
   const national = await gazetteNational(n);
   const rosters = await parseCandidates(n);
   const finalCapture = n === 19 ? JSON.parse(readFileSync(join(RAW, 'k19/final-results.capture.json'), 'utf8')) as { lists: National[] } : null;
@@ -191,9 +193,9 @@ export async function buildHistorical(o: BuildOptions): Promise<{ ds: ElectionDa
     const r = rosters.find(r => r.letters === l.letters);
     check(r, `k${n}: roster missing for ${l.letters}`);
     check(r.candidates.length === o.candidateCounts[l.letters], `k${n} ${l.letters}: candidate count differs from reviewed last rank`);
-    return listRecord(n, i, { letters: l.letters, nameHe: l.nameHe, fallbackShortHe: r.nameHe,
+    return listRecord(n, i, { letters: l.letters, nameHe: normalize(l.nameHe), fallbackShortHe: r.nameHe,
       votes: finalCapture?.lists.find(r => r.letters === l.letters)?.votes ?? l.votes,
-      candidates: r.candidates, candidatesSource: `k${n}-candidates-gazette`,
+      candidates: r.candidates.map(c => ({ ...c, nameHe: normalize(c.nameHe) })), candidatesSource: `k${n}-candidates-gazette`,
       notesHe: n === 19 && l.letters in correction ? ['מספר הקולות לפי התוצאות הסופיות באתר ועדת הבחירות; שונה מפרסום רשומות המקורי. ראו החלטה 0041.'] : [] });
   });
   for (const [letters, leader] of Object.entries(o.candidateLeaders)) check(lists.find(l => l.letters === letters)?.candidates[0].nameHe === leader, `k${n} ${letters}: unexpected first candidate`);
@@ -206,6 +208,13 @@ export async function buildHistorical(o: BuildOptions): Promise<{ ds: ElectionDa
   // Rebuild that exact object; new metadata is verified and reattached by the top-level builder.
   const { groups: _groups, demographicNoteEn: _en, demographicNoteHe: _he, ...loc } =
     JSON.parse(readFileSync(join(ROOT, `public/data/k${n}-localities.json`), 'utf8')) as Omit<LocalityDataset, 'rows'> & { rows: LocRow[] };
+  for (const w of corrections.withdrawn) {
+    const i = loc.listIds.indexOf(`${n}-${w.letters}`);
+    if (i < 0) continue;
+    check(loc.rows.every(r => r.votes[i] === 0), `k${n}: withdrawn locality votes must be zero`);
+    loc.listIds.splice(i, 1);
+    for (const r of loc.rows) r.votes.splice(i, 1);
+  }
   check(loc.id === `k${n}` && JSON.stringify(loc.listIds) === JSON.stringify(lists.map(l => l.id)), `k${n}: locality schema/list order mismatch`);
   const fingerprint = rawJson(`k${n}/localities.sha256.json`);
   check(hash(JSON.stringify(loc)) === fingerprint.sha256, `k${n}: committed locality checksum differs`);
@@ -234,12 +243,22 @@ export async function buildHistorical(o: BuildOptions): Promise<{ ds: ElectionDa
     check(JSON.stringify(aggregate(ballots)) === JSON.stringify(loc.rows), `k${n}: polling/locality reconciliation failed`);
     console.log(`k${n}: full polling-station/locality reconciliation passed`);
   } else console.log(`k${n}: scratch polling stations absent; skipping full polling reconciliation; committed locality SHA-256 and national checks passed`);
+  // Approved withdrawn lists have no polling column; append explicit zero columns only after
+  // validating the original retained locality fingerprint and active-list arithmetic.
+  for (const w of corrections.withdrawn) {
+    const r = rosters.find(r => r.letters === w.letters);
+    check(r && r.candidates.length === 12, `k${n}: withdrawn approved roster missing`);
+    lists.push(listRecord(n, lists.length, { letters: w.letters, nameHe: r.nameHe, votes: 0, withdrawn: true,
+      candidates: r.candidates, candidatesSource: `k${n}-candidates-gazette`, notesHe: [w.noteHe] }));
+    loc.listIds.push(`${n}-${w.letters}`);
+    for (const row of loc.rows) row.votes.push(0);
+  }
   const ds: ElectionDataset = { schemaVersion: 1, id: `k${n}`, knesset: n, electionDate: o.date,
     nameHe: `הבחירות לכנסת ה-${n}`, nameEn: `Election to the ${n}th Knesset`,
     status: { stage: 'official-final', asOf: o.asOf, noteHe: o.noteHe, noteEn: o.noteEn },
     // envelope rows are not localities: code 0 (double envelopes), 9999, or the external-envelope group by name
     ruleSetId: 'il-2004-bader-ofer-2', totals: { ...o.totals, localities: geographyTotals(loc.rows, r => r.code === 0 || r.code === 9999 || r.nameHe === 'מעטפות חיצוניות').localities }, lists, agreements: await agreements(n, o.pairs), blocs: [],
-    officialSeats: officialSeatsOf(n, national.lists), officialSeatsSourceId: `k${n}-results-gazette`, sourceIds,
+    officialSeats: officialSeatsOf(n, [...national.lists, ...corrections.withdrawn.map(w => ({ letters: w.letters, seats: 0 }))]), officialSeatsSourceId: `k${n}-results-gazette`, sourceIds,
     buildInfo: { builtAt: new Date().toISOString(), rawSha256 } };
   // Independently retained CEC totals corroborate each documented national exception.
   if (n === 19) {

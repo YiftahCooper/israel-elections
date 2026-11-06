@@ -96,6 +96,30 @@
       "publisher": "הכנסת, מרכז המחקר והמידע, אלימות פוליטית מצד יהודים בישראל, 17 באוגוסט 2005, עמ׳ 12",
       "kind": "official",
       "accessed": "2026-11-05"
+    },
+    "first-sitting": {
+      "url": "https://main.knesset.gov.il/Documents/FB/rabin001-92jul13.pdf",
+      "publisher": "הכנסת, הישיבה הראשונה של הכנסת השלוש-עשרה, 13 ביולי 1992",
+      "kind": "official",
+      "accessed": "2026-11-06"
+    },
+    "coalition-agreements": {
+      "url": "https://main.knesset.gov.il/mk/government/documents/cagreement25.pdf",
+      "publisher": "הכנסת, הסכמים קואליציוניים לממשלה ה־25",
+      "kind": "official",
+      "accessed": "2026-11-06"
+    },
+    "gov25-odata": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2025&$format=json",
+      "publisher": "Knesset OData",
+      "kind": "official",
+      "accessed": "2026-11-06"
+    },
+    "dissolution-law": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_IsraelLaw?$filter=IsraelLawID%20eq%202000623&$format=json",
+      "publisher": "Knesset OData",
+      "kind": "official",
+      "accessed": "2026-11-06"
     }
   },
   "results": {
@@ -397,13 +421,20 @@
       "type": "early-election",
       "date": "1996-02",
       "nextElection": "1996-05-29",
-      "textEn": "An early election was set for 29 May 1996; the final dissolution-law date remains unverified here.",
-      "textHe": "הוקדמו הבחירות ל־29 במאי 1996; מועד חקיקת חוק ההתפזרות טרם אומת כאן.",
+      "textEn": "An early election was set for 29 May 1996; the dissolution law was published on 27 February 1996.",
+      "textHe": "הוקדמו הבחירות ל־29 במאי 1996; חוק ההתפזרות פורסם ב־27 בפברואר 1996.",
       "cites": [
         {
           "source": "ipu1996",
           "quote": "The election date was set in February 1996"
+        },
+        {
+          "source": "dissolution-law",
+          "quote": "IsraelLawID 2000623: חוק התפזרות הכנסת השלוש-עשרה, התשנ״ו-1996; PublicationDate 1996-02-27T00:00:00 (field extraction)."
         }
+      ],
+      "notes": [
+        "Month precision for the early-election decision is retained. Publication on 27 February is distinct from the approval date (26 February)."
       ]
     }
   },
@@ -413,24 +444,31 @@
     "gap": "INES instrument exists; no qualifying published topline verified for this election. No microdata analysis performed."
   },
   "gaps": [
-    "Certification date and official first-sitting record not retrieved; election date comes from the existing verified result dataset.",
     "Formation timeline is a sourced subset; missing steps must not be inferred from statutory maximum periods.",
-    "First-government coalition membership is reused from the existing first-government scheme, whose party membership evidence includes labelled Hebrew Wikipedia; a complete independent primary coalition agreement cross-check remains pending.",
     "The Knesset history dates Oslo II to Taba on 27 September; the Washington signing ceremony is a different step. This pass does not conflate them.",
-    "Government endDate is the established succession/death date in the existing project chronology; a dedicated primary tenure source should be added in review."
+    "Official results publication: 1 July 1992 (YP 4021); first sitting: 13 July 1992 (official transcript). No earlier certification act inferred. Government 25 tenure and Peres succession checked against official OData on 6 November 2026."
   ],
   "government": {
     "number": 25,
     "nameEn": "Government 25 (Yitzhak Rabin)",
     "nameHe": "הממשלה ה־25 (יצחק רבין)",
     "startDate": "1992-07-13",
-    "endDate": "1995-11-04",
+    "endDate": "1995-11-22",
     "primeMinisters": [
       {
         "nameEn": "Yitzhak Rabin",
         "nameHe": "יצחק רבין",
         "to": "1995-11-04",
         "from": "1992-07-13"
+      },
+      {
+        "nameEn": "Shimon Peres",
+        "nameHe": "שמעון פרס",
+        "from": "1995-11-05",
+        "to": "1995-11-22",
+        "notes": [
+          "Acting prime minister after Rabin’s assassination; Government 26 began on 22 November."
+        ]
       }
     ],
     "firstGovernmentSchemeRef": "first-government",
@@ -452,14 +490,6 @@
     "coalitionSeatsNote": "Election-list seat envelope, checked against officialSeats; not the confidence-vote tally or a reconstruction of later faction membership.",
     "cites": [
       {
-        "source": "government-research-1",
-        "quote": "ממשלת ישראל העשרים וחמש בראשותו של יצחק רבין, שכונתה ממשלת רבין השנייה, הושבעה ב-13 ביולי 1992"
-      },
-      {
-        "source": "government-research-2",
-        "quote": "סיעות הקואליציה=="
-      },
-      {
         "source": "government-research-3",
         "quote": "KNS_PersonToPosition, GovernmentNum 25: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 1992-07-13: דרעי אריה מכלוף, שטרית שמעון, צור יעקב, שוחט אברהם-בייגה, שחל משה, רבין יצחק, רובינשטיין אמנון, פרס שמעון, רמון חיים, צבן יאיר, קיסר ישראל, ליבאי דוד, בן-אליעזר בנימין, נמיר אורה, חריש מיכאל, ברעם עוזי, אלוני שולמית"
       },
@@ -468,8 +498,12 @@
         "quote": "The three coalition partners, which together hold 62 seats"
       },
       {
-        "source": "mfa-history",
-        "quote": "murder on 4 November 1995"
+        "source": "gov25-odata",
+        "quote": "PersonToPositionID 4318: PersonID 456, PositionID 45, GovernmentNum 25, StartDate 1995-11-05T00:00:00, FinishDate 1995-11-22T00:00:00 (field extraction)."
+      },
+      {
+        "source": "coalition-agreements",
+        "quote": "הסכם קואליציוני בין מפלגת העבודה הישראלית לבין"
       }
     ]
   }

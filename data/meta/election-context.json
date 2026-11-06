@@ -38,8 +38,8 @@
       "effectiveDate": "1977-05-17",
       "contestType": "knesset",
       "type": "candidate-capacity",
-      "textEn": "Flatto-Sharon had one candidate, 35,049 votes and one published seat. The app’s capacity cap reproduces the result; the precise historical redistribution authority remains unresolved.",
-      "textHe": "לרשימת פלאטו־שרון היה מועמד יחיד, 35,049 קולות ומנדט אחד בתוצאות שפורסמו. הגבלת הקיבולת באפליקציה משחזרת את התוצאה; הסמכות ההיסטורית המדויקת לחלוקה מחדש טרם הובררה.",
+      "textEn": "Flatto-Sharon had one candidate, 35,049 votes and one published seat. The Knesset’s 1 November 1977 appeal determination confirms the CEC’s one-seat initial cap, 114 initial seats and six surplus seats under section 81(d).",
+      "textHe": "לרשימת פלאטו־שרון היה מועמד יחיד, 35,049 קולות ומנדט אחד. הכרעת הכנסת בערעור מיום 1 בנובמבר 1977 מאשרת שהוועדה הגבילה את הרשימה למנדט אחד בחלוקה הראשונה, שבה חולקו 114 מנדטים, וחילקה שישה מנדטים עודפים לפי סעיף 81(ד).",
       "source": {
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset9-results.pdf",
         "publisher": "Central Elections Committee / Official Gazette",
@@ -55,6 +55,13 @@
           "publisherHe": "ועדת הבחירות המרכזית / רשומות",
           "evidence": "official",
           "sourceId": "k9-candidates-gazette"
+        },
+        {
+          "url": "https://fs.knesset.gov.il/9/Plenum/9_ptm_253927.pdf",
+          "publisher": "Knesset, 1 November 1977, p.237",
+          "publisherHe": "הכנסת, 1 בנובמבר 1977, עמ׳ 237",
+          "evidence": "official",
+          "sourceId": "k9-cap-appeal-protocol"
         }
       ]
     },
@@ -251,8 +258,8 @@
       "effectiveDate": "1992-06-23",
       "contestType": "knesset",
       "type": "disqualification",
-      "textEn": "Election-day eligibility: Kach and Kahane Chai. The list was excluded; the Supreme Court rejected the appeal. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
-      "textHe": "מעמד ביום הבחירות: כך וכהנא חי. הרשימה נפסלה ובית המשפט העליון דחה את הערעור. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
+      "textEn": "Election-day eligibility: Kach and Kahane Chai. Both lists were excluded; the Supreme Court rejected the appeals. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+      "textHe": "מעמד ביום הבחירות: כך וכהנא חי. שתי הרשימות נפסלו ובית המשפט העליון דחה את הערעורים. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
       "source": {
         "url": "https://www.idi.org.il/articles/65951",
         "publisher": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
@@ -474,12 +481,12 @@
       "textEn": "Election-day eligibility: Ibtisam Mara’ana was allowed to participate. The approved-list gazette cites the Supreme Court decision in election-approval proceeding 1156/21 (28 February 2021). This date is the election-day status, not the judgment date.",
       "textHe": "מעמד ביום הבחירות: אבתיסאם מראענה הורשתה להשתתף. הודעת הרשימות המאושרות מפנה להחלטת בית המשפט העליון בא״ב 1156/21 מ־28 בפברואר 2021. התאריך הוא יום הבחירות ולא מועד פסק הדין.",
       "source": {
-  "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-9476.pdf",
-  "publisher": "CEC / Reshumot YP 9476 p.4248, case 1156/21 (28 February 2021)",
-  "publisherHe": "ועדת הבחירות / רשומות",
-  "evidence": "official",
-  "sourceId": "k24-candidates-gazette"
-},
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-9476.pdf",
+        "publisher": "CEC / Reshumot YP 9476 p.4248, case 1156/21 (28 February 2021)",
+        "publisherHe": "ועדת הבחירות / רשומות",
+        "evidence": "official",
+        "sourceId": "k24-candidates-gazette"
+      },
       "listId": "24-אמת"
     },
     {
@@ -506,7 +513,7 @@
       "contestType": "knesset",
       "type": "disqualification",
       "textEn": "Election-day eligibility: Michael Ben-Ari disqualified by the Supreme Court after the CEC had approved the candidacy. This excluded individual candidates, not their entire list. IDI secondary account; date denotes election-day status.",
-      "textHe": "מעמד ביום הבחירות: מיכאל בן ארי נפסלו בבית המשפט העליון לאחר שהוועדה אישרה את מועמדותם. זו פסילת מועמדים יחידים ולא הרשימה כולה. לפי המכון הישראלי לדמוקרטיה, מקור משני; התאריך מציין את המעמד ביום הבחירות.",
+      "textHe": "מעמד ביום הבחירות: מיכאל בן ארי נפסל בבית המשפט העליון לאחר שהוועדה אישרה את מועמדותו. זו פסילת מועמדים יחידים ולא הרשימה כולה. לפי המכון הישראלי לדמוקרטיה, מקור משני; התאריך מציין את המעמד ביום הבחירות.",
       "source": {
         "url": "https://www.idi.org.il/articles/65951",
         "publisher": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
@@ -819,37 +826,37 @@
       },
       "listId": "24-ב",
       "relatedSources": [
-  {
-    "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-9476.pdf",
-    "publisher": "Central Elections Committee / Reshumot",
-    "publisherHe": "Central Elections Committee / Reshumot",
-    "evidence": "official",
-    "sourceId": "k24-candidates-gazette"
-  },
-  {
-    "url": "https://olaw.org.il/yalkut/yalkut-9511.pdf",
-    "publisher": "CEC / Reshumot YP 9511 §4",
-    "publisherHe": "ועדת הבחירות / רשומות",
-    "evidence": "official",
-    "sourceId": "k24-results-gazette"
-  },
-  {
-    "url": "https://www.davar1.co.il/294946/",
-    "publisher": "Davar, 5 April 2021",
-    "publisherHe": "דבר",
-    "evidence": "secondary",
-  "sourceId": "k24-davidi-resignation-press"
-  }
-]
+        {
+          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-9476.pdf",
+          "publisher": "Central Elections Committee / Reshumot",
+          "publisherHe": "Central Elections Committee / Reshumot",
+          "evidence": "official",
+          "sourceId": "k24-candidates-gazette"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-9511.pdf",
+          "publisher": "CEC / Reshumot YP 9511 §4",
+          "publisherHe": "ועדת הבחירות / רשומות",
+          "evidence": "official",
+          "sourceId": "k24-results-gazette"
+        },
+        {
+          "url": "https://www.davar1.co.il/294946/",
+          "publisher": "Davar, 5 April 2021",
+          "publisherHe": "דבר",
+          "evidence": "secondary",
+          "sourceId": "k24-davidi-resignation-press"
+        }
+      ]
     },
     {
       "id": "registered-not-declared-k12-מחל",
       "electionId": "k12",
-      "effectiveDate": "1988-11-21",
+      "effectiveDate": "1988-10-27",
       "contestType": "knesset",
       "type": "membership-snapshot",
-      "textEn": "By opening day: Michael Reiser (#25) appears in the registered list but is omitted from the gazetted elected names. Original ranks are preserved; the dataset skips this rank, following the results notice. No resignation date or cause is inferred from the omission.",
-      "textHe": "עד יום הפתיחה: מיכאל רייסר (25) מופיע ברשימה הרשומה אך אינו מופיע בשמות הנבחרים ברשומות. הדירוג המקורי נשמר ובנתונים מדלגים על מקום זה בהתאם להודעת התוצאות. אין מסיקים מההשמטה מועד התפטרות או סיבה.",
+      "textEn": "Michael Reiser (Likud #25) died on 27 October 1988, before polling day. The results notice omits him; original registered ranks are preserved.",
+      "textHe": "מיכאל רייסר (הליכוד, מקום 25) נפטר ב־27 באוקטובר 1988, לפני יום הבחירות. הוא אינו מופיע בשמות הנבחרים בהודעת התוצאות; דירוג הרשימה הרשומה נשמר.",
       "source": {
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset12-results.pdf",
         "publisher": "Central Elections Committee / Reshumot (gov.il host)",
@@ -872,6 +879,14 @@
           "publisherHe": "Knesset (official OData API, ParliamentInfo.svc)",
           "evidence": "official",
           "sourceId": "k12-membership-odata"
+        },
+        {
+          "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/623",
+          "publisher": "Knesset — Michael Reiser, personal details",
+          "publisherHe": "הכנסת — מיכאל רייסר, פרטים אישיים",
+          "evidence": "official",
+          "quote": "תאריך פטירה: ט״ז בחשוון תשמ״ט, 27/10/1988",
+          "sourceId": "k12-reiser-personal-details"
         }
       ]
     },
@@ -893,11 +908,11 @@
       "listId": "13-מחל",
       "relatedSources": [
         {
-          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset13-cand.pdf",
-          "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+          "url": "https://www.idi.org.il/media/6891/%D7%9B%D7%A0%D7%A1%D7%AA-13-%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93.pdf",
+          "publisher": "Reshumot / IDI-hosted facsimile, YP 4017 p. 3636",
           "publisherHe": "Central Elections Committee / Reshumot (gov.il host)",
           "evidence": "official",
-          "sourceId": "k13-candidates-gazette"
+          "sourceId": "k13-candidates-yp4017-idi-6891"
         },
         {
           "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2013%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
@@ -911,11 +926,11 @@
     {
       "id": "registered-not-declared-k14-אמת",
       "electionId": "k14",
-      "effectiveDate": "1996-06-17",
+      "effectiveDate": "1996-05-21",
       "contestType": "knesset",
       "type": "membership-snapshot",
-      "textEn": "By opening day: Ora Namir (#18) appears in the registered list but is omitted from the gazetted elected names. Original ranks are preserved; the dataset skips this rank, following the results notice. No resignation date or cause is inferred from the omission.",
-      "textHe": "עד יום הפתיחה: אורה נמיר (18) מופיע ברשימה הרשומה אך אינו מופיע בשמות הנבחרים ברשומות. הדירוג המקורי נשמר ובנתונים מדלגים על מקום זה בהתאם להודעת התוצאות. אין מסיקים מההשמטה מועד התפטרות או סיבה.",
+      "textEn": "Ora Namir (#18) resigned from the registered Labor list on 21 May 1996 (YP 4411 p.3398). She is absent from the gazetted elected names; the original ranks are preserved and this rank is skipped.",
+      "textHe": "אורה נמיר (18) התפטרה מרשימת העבודה ביום 21 במאי 1996 (י״פ 4411 עמ׳ 3398). היא אינה מופיעה בשמות הנבחרים ברשומות; הדירוג המקורי נשמר ובנתונים מדלגים על מקום זה.",
       "source": {
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
         "publisher": "Central Elections Committee / Reshumot (gov.il host)",
@@ -938,6 +953,13 @@
           "publisherHe": "Knesset (official OData API, ParliamentInfo.svc)",
           "evidence": "official",
           "sourceId": "k14-membership-odata"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-4411.pdf",
+          "publisher": "CEC / Reshumot, YP 4411 p.3398 (disclosed mirror)",
+          "publisherHe": "ועדת הבחירות המרכזית / רשומות, י״פ 4411 עמ׳ 3398 (אתר מראה)",
+          "evidence": "official",
+          "sourceId": "k14-agreements-gazette"
         }
       ]
     },
@@ -1039,13 +1061,13 @@
       "effectiveDate": "2026-11-04",
       "contestType": "knesset",
       "type": "correction",
-      "textEn": "Source comparison reviewed 4 November 2026 (not a historical correction date): The dataset follows the final gazetted Knesset figures. The report records a conflicting MFA table; no formal result-correction notice has been verified. The separate PM ballot must not be substituted for Knesset totals.",
-      "textHe": "השוואת מקורות שנבדקה ב־4 בנובמבר 2026 (לא מועד תיקון היסטורי): הנתונים מבוססים על תוצאות הכנסת הסופיות ברשומות. הדוח מתעד טבלה שונה של משרד החוץ; לא אומתה הודעת תיקון רשמית. אין להחליף את סיכומי הכנסת בסיכומי הפתק הנפרד לראש הממשלה.",
+      "textEn": "The gazetted results (YP 4414) govern this dataset. CBS corroborates the national totals. Differing secondary/MFA report values do not override the statutory notice; no later formal correction has been verified.",
+      "textHe": "הנתונים מבוססים על התוצאות ברשומות (י״פ 4414). הלמ״ס מאשרת את הסיכומים הארציים. ערכים שונים במקורות משניים או בדוח המבוסס על משרד החוץ אינם גוברים על ההודעה הרשמית; לא אומתה הודעת תיקון מאוחרת.",
       "source": {
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
-        "publisher": "Central Elections Committee / Reshumot (gov.il host)",
-        "publisherHe": "Central Elections Committee / Reshumot (gov.il host)",
-        "evidence": "unresolved",
+        "publisher": "CEC / Reshumot",
+        "publisherHe": "ועדת הבחירות המרכזית / רשומות",
+        "evidence": "official",
         "sourceId": "k14-results-gazette"
       }
     },
@@ -1402,6 +1424,91 @@
         "quote": "רשימת \"יך - מגינים על ילדינו\" הודיעה על הסרת מועמדותה",
         "sourceId": "k20-withdrawal-comptroller"
       }
+    },
+    {
+      "id": "moreshet-avot-withdrawal-k14",
+      "electionId": "k14",
+      "listId": "14-זך",
+      "effectiveDate": "1996-05-27",
+      "contestType": "knesset",
+      "type": "withdrawal",
+      "textEn": "All candidates of Moreshet Avot (זך) resigned on 27 May 1996. The registered list did not contest and is absent from the results notice.",
+      "textHe": "כל מועמדי מורשת-אבות (זך) התפטרו ב־27 במאי 1996. הרשימה הרשומה לא התמודדה ואינה מופיעה בהודעת התוצאות.",
+      "source": {
+        "url": "https://olaw.org.il/yalkut/yalkut-4411.pdf",
+        "publisher": "CEC / Reshumot, YP 4411 p.3398 (disclosed mirror)",
+        "publisherHe": "ועדת הבחירות המרכזית / רשומות, י״פ 4411 עמ׳ 3398 (אתר מראה)",
+        "evidence": "official",
+        "sourceId": "k14-agreements-gazette"
+      }
+    },
+    {
+      "id": "arab-union-resignations-k14",
+      "electionId": "k14",
+      "listId": "14-נ",
+      "effectiveDate": "1996-05-21",
+      "contestType": "knesset",
+      "type": "withdrawal",
+      "textEn": "Ahmad Tibi (#1) and Osama Saadia (#113) resigned on 21 May 1996. This was not whole-list cancellation: the Arab Union remained in the results notice with 2,087 votes.",
+      "textHe": "אחמד טיבי (1) ואוסאמה סעדיה (113) התפטרו ב־21 במאי 1996. הרשימה כולה לא בוטלה: האיחוד הערבי נכלל בהודעת התוצאות עם 2,087 קולות.",
+      "source": {
+        "url": "https://olaw.org.il/yalkut/yalkut-4411.pdf",
+        "publisher": "CEC / Reshumot, YP 4411 p.3398 (disclosed mirror)",
+        "publisherHe": "ועדת הבחירות המרכזית / רשומות, י״פ 4411 עמ׳ 3398 (אתר מראה)",
+        "evidence": "official",
+        "sourceId": "k14-agreements-gazette"
+      }
+    },
+    {
+      "id": "candidate-resignation-k14-ט-93",
+      "electionId": "k14",
+      "listId": "14-ט",
+      "effectiveDate": "1996-05-09",
+      "contestType": "knesset",
+      "type": "withdrawal",
+      "textEn": "Ilan Hirshfeld (#93) resigned from the Moledet list on 9 May 1996.",
+      "textHe": "אילן הירשפלד (93) התפטר מרשימת מולדת ב־9 במאי 1996.",
+      "source": {
+        "url": "https://olaw.org.il/yalkut/yalkut-4411.pdf",
+        "publisher": "CEC / Reshumot, YP 4411 p.3398 (disclosed mirror)",
+        "publisherHe": "ועדת הבחירות המרכזית / רשומות, י״פ 4411 עמ׳ 3398 (אתר מראה)",
+        "evidence": "official",
+        "sourceId": "k14-agreements-gazette"
+      }
+    },
+    {
+      "id": "candidate-resignation-k14-ב-20",
+      "electionId": "k14",
+      "listId": "14-ב",
+      "effectiveDate": "1996-05-14",
+      "contestType": "knesset",
+      "type": "withdrawal",
+      "textEn": "David Boknik (#20) resigned from the NRP list on 14 May 1996.",
+      "textHe": "דוד בוכניק (20) התפטר מרשימת המפד״ל ב־14 במאי 1996.",
+      "source": {
+        "url": "https://olaw.org.il/yalkut/yalkut-4411.pdf",
+        "publisher": "CEC / Reshumot, YP 4411 p.3398 (disclosed mirror)",
+        "publisherHe": "ועדת הבחירות המרכזית / רשומות, י״פ 4411 עמ׳ 3398 (אתר מראה)",
+        "evidence": "official",
+        "sourceId": "k14-agreements-gazette"
+      }
+    },
+    {
+      "id": "candidate-resignation-k14-ב-44",
+      "electionId": "k14",
+      "listId": "14-ב",
+      "effectiveDate": "1996-05-09",
+      "contestType": "knesset",
+      "type": "withdrawal",
+      "textEn": "Rachel Silbetzki (#44) resigned from the NRP list on 9 May 1996.",
+      "textHe": "רחל סילבצקי (44) התפטרה מרשימת המפד״ל ב־9 במאי 1996.",
+      "source": {
+        "url": "https://olaw.org.il/yalkut/yalkut-4411.pdf",
+        "publisher": "CEC / Reshumot, YP 4411 p.3398 (disclosed mirror)",
+        "publisherHe": "ועדת הבחירות המרכזית / רשומות, י״פ 4411 עמ׳ 3398 (אתר מראה)",
+        "evidence": "official",
+        "sourceId": "k14-agreements-gazette"
+      }
     }
   ],
   "pmContests": [
@@ -1425,6 +1532,16 @@
               "evidence": "official",
               "sourceId": "k14-results-gazette"
             }
+          },
+          "publishedPercent": {
+            "value": 50.49,
+            "source": {
+              "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
+              "publisher": "Central Elections Committee / Official Gazette",
+              "publisherHe": "ועדת הבחירות המרכזית / רשומות",
+              "evidence": "official",
+              "sourceId": "k14-results-gazette"
+            }
           }
         },
         {
@@ -1434,6 +1551,16 @@
           "status": "final",
           "votes": {
             "value": 1471566,
+            "source": {
+              "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
+              "publisher": "Central Elections Committee / Official Gazette",
+              "publisherHe": "ועדת הבחירות המרכזית / רשומות",
+              "evidence": "official",
+              "sourceId": "k14-results-gazette"
+            }
+          },
+          "publishedPercent": {
+            "value": 49.51,
             "source": {
               "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
               "publisher": "Central Elections Committee / Official Gazette",
@@ -1458,23 +1585,19 @@
         "invalid": {
           "value": 148681,
           "source": {
-            "url": "https://www.gov.il/en/pages/israeli-election-results-may-1996",
-            "publisher": "Ministry of Foreign Affairs",
-            "publisherHe": "משרד החוץ",
-            "evidence": "official",
-            "verification": "report-only",
-            "sourceId": "pm-reviewed-transcription"
+            "url": "https://library.fes.de/libalt/journals/swetsfulltext/7116597.pdf",
+            "publisher": "Efraim Torgovnik, Party Politics 6(1), 2000, p.97, table 1 note f",
+            "publisherHe": "אפרים טורגובניק, Party Politics כרך 6(1), עמ׳ 97, הערה f",
+            "evidence": "secondary"
           }
         },
         "cast": {
           "value": 3121270,
           "source": {
-            "url": "https://www.gov.il/en/pages/israeli-election-results-may-1996",
-            "publisher": "Ministry of Foreign Affairs",
-            "publisherHe": "משרד החוץ",
-            "evidence": "official",
-            "verification": "report-only",
-            "sourceId": "pm-reviewed-transcription"
+            "url": "https://library.fes.de/libalt/journals/swetsfulltext/7116597.pdf",
+            "publisher": "Efraim Torgovnik, Party Politics 6(1), 2000, p.97, table 1 note f",
+            "publisherHe": "אפרים טורגובניק, Party Politics כרך 6(1), עמ׳ 97, הערה f",
+            "evidence": "secondary"
           }
         }
       },
@@ -1484,7 +1607,9 @@
         "publisherHe": "ועדת הבחירות המרכזית / רשומות",
         "evidence": "official",
         "sourceId": "k14-results-gazette"
-      }
+      },
+      "noteEn": "Shares are printed as 50.49% / 49.51% in YP 4414 p.3483; rounding the vote ratios gives 50.50% / 49.50%. A winner needed more than half the valid PM votes. Cast and invalid totals are corroborated by Torgovnik (2000), p.97 note f; the earlier MFA citation was not retrieved.",
+      "noteHe": "בי״פ 4414 עמ׳ 3483 נדפסו 50.49% / 49.51%; עיגול היחס בין הקולות נותן 50.50% / 49.50%. לניצחון נדרשו יותר ממחצית הקולות הכשרים לראש הממשלה. מספר המצביעים והקולות הפסולים אושר אצל טורגובניק (2000), עמ׳ 97 הערה f; מקור משרד החוץ הקודם לא אוחזר."
     },
     {
       "id": "pm1999",
@@ -1530,10 +1655,11 @@
           "nameHe": "יצחק מרדכי",
           "status": "withdrawn",
           "source": {
-            "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1999/",
-            "publisher": "Israel Democracy Institute",
-            "publisherHe": "המכון הישראלי לדמוקרטיה",
-            "evidence": "secondary"
+            "url": "https://olaw.org.il/yalkut/yalkut-4755.pdf",
+            "publisher": "CEC / Reshumot, YP 4755 p.3305: PM withdrawals 16 May 1999 (mirror)",
+            "publisherHe": "ועדת הבחירות המרכזית / רשומות; התפטרו ביום 16.5.1999",
+            "evidence": "official",
+            "sourceId": "k15-agreements-gazette"
           }
         },
         {
@@ -1542,10 +1668,11 @@
           "nameHe": "בני בגין",
           "status": "withdrawn",
           "source": {
-            "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1999/",
-            "publisher": "Israel Democracy Institute",
-            "publisherHe": "המכון הישראלי לדמוקרטיה",
-            "evidence": "secondary"
+            "url": "https://olaw.org.il/yalkut/yalkut-4755.pdf",
+            "publisher": "CEC / Reshumot, YP 4755 p.3305: PM withdrawals 16 May 1999 (mirror)",
+            "publisherHe": "ועדת הבחירות המרכזית / רשומות; התפטרו ביום 16.5.1999",
+            "evidence": "official",
+            "sourceId": "k15-agreements-gazette"
           }
         },
         {
@@ -1554,10 +1681,11 @@
           "nameHe": "עזמי בשארה",
           "status": "withdrawn",
           "source": {
-            "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1999/",
-            "publisher": "Israel Democracy Institute",
-            "publisherHe": "המכון הישראלי לדמוקרטיה",
-            "evidence": "secondary"
+            "url": "https://olaw.org.il/yalkut/yalkut-4755.pdf",
+            "publisher": "CEC / Reshumot, YP 4755 p.3305: PM withdrawals 16 May 1999 (mirror)",
+            "publisherHe": "ועדת הבחירות המרכזית / רשומות; התפטרו ביום 16.5.1999",
+            "evidence": "official",
+            "sourceId": "k15-agreements-gazette"
           }
         }
       ],

@@ -96,6 +96,7 @@ test('heading a joint list is an explicit policy with per-list overrides',async(
 });
 test('hover facts come from the runtime: list names and mixed compositions with the family’s own parties (aliases resolved)',async()=>{
  const {builtins,mixedComposition,historyListName}=await import('../src/families/runtime.ts');const by=(id:string)=>builtins.find(x=>x.id===id)!;
+ expect(historyListName('k12','12-זב','he')).toBe('אחדות – למען ויקטור תייר לכנסת');expect(historyListName('k12','12-unknown','en')).toBe('Unknown list');
  expect(historyListName('k20','20-קץ','en')).toBe('Yachad');expect(historyListName('k20','20-קץ','he')).toBe('יחד');
  expect(mixedComposition(by('haredi'),'k20','20-קץ','en')).toEqual([{name:'Yachad',own:true},{name:'Otzma Yehudit (Jewish National Front)',own:false}]);
  expect(mixedComposition(by('radical-right'),'k20','20-קץ','en').map(p=>p.own)).toEqual([false,true]);

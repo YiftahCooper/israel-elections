@@ -1,7 +1,7 @@
 {
  "electionId": "k18",
  "lists": [
-    {
+  {
    "letters": "מחל",
    "nameHe": "הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה",
    "seats": 27,
@@ -178,6 +178,13 @@
        "kind": "official",
        "quote": "Faction \"הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה\" from 2009-02-24: all 27 elected members sat in the joint Likud–Ahi faction",
        "accessed": "2026-11-04"
+      },
+      {
+       "url": "https://news.walla.co.il/item/1405053",
+       "publisher": "Walla",
+       "kind": "secondary",
+       "quote": "המרכז קבע כי המקום ה-39 ברשימה ישוריין לאח\"י",
+       "accessed": "2026-11-06"
       }
      ],
      "confidence": "medium",
@@ -192,7 +199,7 @@
     "electedAssigned": 27
    }
   },
-    {
+  {
    "letters": "ג",
    "nameHe": "יהדות התורה והשבת אגודת ישראל - דגל התורה",
    "seats": 5,
@@ -371,7 +378,7 @@
     "electedAssigned": 5
    }
   },
-    {
+  {
    "letters": "ט",
    "nameHe": "האיחוד הלאומי - תקומה, התקווה, ארץ ישראל שלנו, מולדת",
    "seats": 4,
@@ -462,6 +469,13 @@
        "kind": "secondary",
        "quote": "נציג מולדת אורי בנק, שהוצב במקום החמישי, לא נכנס",
        "accessed": "2026-11-04"
+      },
+      {
+       "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset18-results.pdf",
+       "publisher": "Reshumot YP 5917 p. 2405",
+       "kind": "official",
+       "quote": "בא כוח סיעת \"מולדת-האיחוד הלאומי\" הוא אורי בנק",
+       "accessed": "2026-11-06"
       }
      ],
      "confidence": "medium"
@@ -495,7 +509,7 @@
     "electedAssigned": 4
    }
   },
-    {
+  {
    "letters": "עם",
    "nameHe": "הרשימה הערבית המאוחדת - התנועה הערבית להתחדשות",
    "seats": 4,
@@ -511,7 +525,7 @@
    "parties": [
     {
      "id": "raam",
-     "nameHe": "רע\"ם – רשימת האיחוד הערבי",
+     "nameHe": "רע\"ם – הרשימה הערבית המאוחדת",
      "nameEn": "Ra'am (United Arab List)",
      "candidateRanks": [
       1,
@@ -669,7 +683,7 @@
     "electedAssigned": 4
    }
   },
-    {
+  {
    "letters": "מרצ",
    "nameHe": "התנועה החדשה מרצ",
    "seats": 3,
@@ -718,6 +732,7 @@
      "nameEn": "Meretz",
      "candidateRanks": [
       1,
+      2,
       4
      ],
      "sources": [
@@ -734,6 +749,13 @@
        "kind": "secondary",
        "quote": "חברת הכנסת הוותיקה זהבה גלאון, שמוקמה במקום הרביעי ברשימה, לא נכנסה לכנסת לאחר הבחירות, אולם עם התפטרותו מהכנסת של יושב המפלגה אורון שבה גלאון לספסלי הכנסת",
        "accessed": "2026-11-04"
+      },
+      {
+       "url": "https://news.walla.co.il/item/1434768",
+       "publisher": "Walla",
+       "kind": "secondary",
+       "quote": "מספר 2 במרצ",
+       "accessed": "2026-11-06"
       }
      ],
      "confidence": "medium",
@@ -741,7 +763,6 @@
     }
    ],
    "unassignedRanks": [
-    2,
     5,
     6,
     8,
@@ -858,12 +879,12 @@
    ],
    "coverage": {
     "roster": 120,
-    "assigned": 6,
+    "assigned": 7,
     "elected": 3,
-    "electedAssigned": 2
+    "electedAssigned": 3
    }
   },
-    {
+  {
    "letters": "ה",
    "nameHe": "התנועה הירוקה מימד בראשות הרב מלכיאור וערן בן–ימיני",
    "seats": 0,
@@ -1054,17 +1075,27 @@
     "electedAssigned": 0
    }
   },
-    {
-      "letters": "נר",
-      "nameHe": "לוחמי חברה מאוחדים בראשות יגאל אנקורי",
-      "englishName": {
-        "label": "Lohamei Hevra Meuhadim",
-        "kind": "transliteration",
-        "sourceId": "k18-candidates-gazette",
-        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
-    }
-  ],
+  {
+   "letters": "נר",
+   "nameHe": "לוחמי חברה מאוחדים בראשות יגאל אנקורי",
+   "englishName": {
+    "label": "Lohamei Hevra Meuhadim",
+    "kind": "transliteration",
+    "sourceId": "k18-candidates-gazette",
+    "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+   }
+  },
+  {
+   "letters": "פח",
+   "nameHe": "מהפך בחינוך",
+   "englishName": {
+    "label": "Mahapach BeHinuch",
+    "kind": "transliteration",
+    "sourceId": "k18-candidates-gazette",
+    "note": "Unofficial app transliteration of the approved Hebrew name in YP 5909 p. 2102; not an official English name."
+   }
+  }
+ ],
  "blocSchemes": [
   {
    "id": "first-government",
@@ -1094,13 +1125,9 @@
       },
       {
        "letters": "ב"
-      },
-      {
-       "letters": "ג",
-       "joined": "2009-04-01"
       }
      ],
-     "seats": 74
+     "seats": 69
     },
     {
      "id": "opposition",
@@ -1125,32 +1152,28 @@
       },
       {
        "letters": "ד"
+      },
+      {
+       "letters": "ג"
       }
      ],
-     "seats": 46
+     "seats": 51
     }
    ],
    "sources": [
     {
-     "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D_%D7%95%D7%A9%D7%AA%D7%99%D7%99%D7%9D",
-     "publisher": "Wikipedia (he)",
-     "kind": "secondary",
-     "quote": "שהוקמה לאחר הבחירות לכנסת ה-18 והושבעה ב-31 במרץ 2009",
-     "accessed": "2026-11-04"
+     "url": "https://en.idi.org.il/articles/11757",
+     "publisher": "Israel Democracy Institute",
+     "kind": "academic",
+     "quote": "a coalition of five parties, who together hold 69 seats",
+     "accessed": "2026-11-06"
     },
     {
-     "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D_%D7%95%D7%A9%D7%AA%D7%99%D7%99%D7%9D",
-     "publisher": "Wikipedia (he)",
+     "url": "https://www.ynet.co.il/articles/0,7340,L-3695524,00.html",
+     "publisher": "Ynet",
      "kind": "secondary",
-     "quote": "סיעות הקואליציה ביום כינון הממשלה ... הליכוד ... ישראל ביתנו ... העבודה ... ש\"ס",
-     "accessed": "2026-11-04"
-    },
-    {
-     "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D_%D7%95%D7%A9%D7%AA%D7%99%D7%99%D7%9D",
-     "publisher": "Wikipedia (he)",
-     "kind": "secondary",
-     "quote": "יהדות התורה ... ג ... קואליציה",
-     "accessed": "2026-11-04"
+     "quote": "מפלגת הליכוד חתמה על הסכם קואליציוני עם יהדות התורה.",
+     "accessed": "2026-11-06"
     },
     {
      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum eq 32",
@@ -1161,7 +1184,7 @@
     }
    ],
    "notes": [
-    "United Torah Judaism joined on 1 April 2009, the day after the government was sworn in; it is marked with \"joined\"."
+    "Formation-day snapshot, 31 March: 69 coalition seats. UTJ signed its coalition agreement on 1 April 2009, after this snapshot (74 seats after accession)."
    ]
   },
   {

@@ -1,6 +1,6 @@
 {
   "question": "Legal basis of the 1977 unfillable seat and missing Ratz elected-member paragraph",
-  "result": "No specific statutory redistribution text or contemporaneous CEC procedure located. Candidate-cap hypothesis exactly reproduces official seats. Ratz elected-name paragraph absent in both copies of YP2326; no correction found in bounded nearby-cover search.",
+  "result": "Cap procedure resolved: 1 November 1977 Knesset accepted rejection of Yaakov Gross appeal; CEC capped the one-candidate list at one in initial allocation (114 seats), then distributed six seats under section 81(d). Ratz gazette omission remains supplemented by official opening membership.",
   "queries": [
     "פלאטו שרון מנדט אחד שני מנדטים ועדת הבחירות 1977 סעיף 83",
     "רשימת מועמדים פחות מנדטים 1977",
@@ -97,7 +97,7 @@
   "limitations": "Bounded discovery; not proof of nonexistence. Scratch downloads/renders are reproducible working copies; relevant unique observations retained here.",
   "followUp": {
     "reviewedAt": "2026-11-03T16:58:39.222721+00:00",
-    "result": "Ratz elected-member cross-check recovered from the official Knesset OData API; no gazette correction is claimed. The legal basis of the candidate cap remains unlocated.",
+    "result": "Ratz recovered from official OData. Subsequent 6 November audit located the primary cap appeal determination; earlier bounded negative searches below are history.",
     "officialUrl": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%209%20and%20PersonID%20eq%202143%20and%20(PositionID%20eq%2061%20or%20PositionID%20eq%2054)&$expand=KNS_Person&$format=json",
     "member": {
       "personId": 2143,
@@ -203,5 +203,12 @@
         "LastUpdatedDate": "2016-02-24T11:53:23.03"
       }
     }
+  },
+  "capResolution": {
+    "sourceId": "k9-cap-appeal-protocol",
+    "url": "https://fs.knesset.gov.il/9/Plenum/9_ptm_253927.pdf",
+    "page": 237,
+    "accessed": "2026-11-06",
+    "quote": "בדרך זו חולקו 114 מאנדאטים. שישה מאנדאטים עודפים, שנותרו לחלוקה לאחר השלב הראשון, חולקו בהתאם להוראות סעיף 81(ד)"
   }
 }

@@ -1,3 +1,44 @@
+// k16 audit (6 Nov): only k16 dataset changes: two candidate spellings, first-government
+// date, logo URL, withdrawn Moreshet Avot with its approved roster and official link,
+// plus source hashes/timestamp. Zero-vote withdrawn list changes corpus allocation shape.
+// Baseline datasets with current engine reproduce every previous digest exactly.
+// k13 audit (6 Nov 2026): reviewed field diff changes three zero-seat list IDs/letters,
+// official names, four candidate spellings, Cohen display punctuation, Tehiya source URL
+// and build provenance. Numeric inputs/seats unchanged. HEAD k13 in scratch reproduces
+// prior allocation/model digests; other 25 datasets and three other digests unchanged.
+  // merged with k13 audit fixes: combined digest = union of the separately reviewed changes.
+// k12 audit (6 Nov): reviewed recursive diff changes only k12 letter/name labels,
+// candidate display notes/names, two withheld logos, party link, blocs and status/source metadata.
+// Every list/candidate ID, vote, seat, colour and agreement reference is unchanged; only model digest changes.
+  // merged with k12 audit fixes: combined digest = union of the separately reviewed changes.
+// k13 audit (6 Nov 2026): preserve opaque pre-correction list/candidate IDs;
+// corrected ballot letters, names, typography, Tehiya source URL and build provenance
+// affect model only. All numeric inputs/seats unchanged. The scratch baseline with
+// pre-audit k13 reproduces 4faa7f17…; allocation and three other digests unchanged.
+  // merged with k13 audit fixes: combined digest = union of the separately reviewed changes.
+// k15 stable-ID follow-up: restore opaque IDs 15-ט / 15-קף without changing letters.
+// Recursive dataset diff is exactly those ID/reference reversions and builtAt; all
+// other 25 datasets unchanged. HEAD k15 substitution reproduces all prior digests.
+// k15 audit (6 Nov): only k15 changes: ballot-ID migrations, gazetted names,
+// two withdrawn registration records, roster status, Gagula note, two withheld logos and provenance.
+// Field diff recorded in k15-resolution.md. Restoring HEAD k15 at scenarioFromDataset
+// reproduces all five old digests; src and the other 25 datasets are unchanged.
+  // merged with k15 audit fixes: combined digest = union of the separately reviewed changes.
+// k11 audit 6 Nov 2026: recursive field diff confirms only corrected ballot letters,
+// list/candidate names, neutral identity colours, links, Sarid opposition override,
+// asOf and build provenance change. All 25 other datasets, IDs, votes, seats and
+// agreements are preserved. Only the model digest changes; no engine/src changes.
+  // merged with k11 audit fixes: combined digest = union of the separately reviewed changes.
+// k9 audit 6 Nov: 51 recursive dataset paths (identity/display, bios, supporter grouping,
+// untranscribed-roster notes, status and provenance); all keys/votes/seats/agreements unchanged.
+// Allocation/analysis change only because the candidate-cap warning now distinguishes documented
+// 1977 procedure from counterfactual inference. No allocation logic changed; other 25 datasets equal HEAD.
+  // merged with k9 audit fixes: combined digest = union of the separately reviewed changes.
+// k14 audit (6 Nov): reviewed field diff changes only k14 names/links, roster status,
+// eight membership notes, Namir note, logo URL, source hashes and withdrawn zero-vote זך.
+// Other 25 datasets are byte-identical. Allocation changes with the extra withdrawn list;
+// model carries the corrected labels/notes. Analysis, validation and rules unchanged.
+  // merged with k14 audit fixes: combined digest = union of the separately reviewed changes.
 // 6 Nov 2026 k22 audit: reviewed scalar diff changes only status, logical Hebrew
 // punctuation, CEC link titles, three withdrawal flags and distinct modern Gesher
 // IDs (also k23). Withdrawal flags affect hypothetical corpus allocations; model
@@ -46,6 +87,15 @@ import { FAMILIES, families, type Family, type Modules } from './differential.ca
 // project-grouping labels, four candidate notes, withdrawn Demokratit and New Hope logo removal change.
 // Allocation changes because the cancelled zero-vote list is excluded; model also carries display fields.
 // All 25 other datasets and engine/model source are unchanged; analysis/validation/rules retain their digests.
+// k21 audit (6 Nov): 60 reviewed dataset leaves: withdrawal flags, gazette corrections,
+// resignation/source notes, CEC link labels and builtAt only. Replacing k21 at
+// scenarioFromDataset with merged HEAD reproduces ALL five old digests exactly.
+// Only allocation (cancelled lists excluded) and model (display fields) change.
+// k18 audit: added the approved withdrawn zero-vote list; corrected names/notes,
+// Meretz affiliation, formation-day blocs, and two unproved logo claims. Only k18
+// dataset/localities change. Substituting HEAD k18 at scenarioFromDataset reproduces
+// bf733b00… allocation and ffb2cc3a… model exactly; engine/model source is unchanged.
+  // merged with k18 audit fixes: combined digest = union of the separately reviewed changes.
 const EXPECTED: Record<Family, string> = {
   // Allocation and analysis re-recorded 2026-11-04 for one reviewed engine fix: under a pure divisor method (no quota
   // stage, so no initial seats) the 1949 initial-seat conditions no longer apply. Before, those cases allocated 0 seats
@@ -53,8 +103,16 @@ const EXPECTED: Record<Family, string> = {
   // engine on the same tree reproduces 8260bc46… and af4237ef…; model, validation and rules digests are unchanged.
   // merged with the k24 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k20 audit fixes: combined digest = union of the separately reviewed changes.
-  allocation: 'bf50217e327445c12941453eb13b84cb7badc51dce3d0ac173136068075e71ab',
-  analysis: 'b682af4570daf5cd7967e77afda56c8a9bcb2b5de4850f4d8ebc1652228269e0',
+  // merged with k21 audit fixes: combined digest = union of the separately reviewed changes.
+  // merged with k18 audit fixes: combined digest = union of the separately reviewed changes.
+  // merged with k16 audit fixes: combined digest = union of the separately reviewed changes.
+  // merged with k13 audit fixes: combined digest = union of the separately reviewed changes.
+  // merged with k13 audit fixes: combined digest = union of the separately reviewed changes.
+  // merged with k15 audit fixes: combined digest = union of the separately reviewed changes.
+  // merged with k9 audit fixes: combined digest = union of the separately reviewed changes.
+  // merged with k14 audit fixes: combined digest = union of the separately reviewed changes.
+  allocation: 'da03e53f61fe4bb573de00163d4c20f4df10f8224a72109fc69aae1b11a9adb6',
+  analysis: '0b41ade19f938f415b693825f3600693a9e5f17e81ec7d12a6d16fb82177f30b',
   // Model digest re-recorded for the 1973 party ranks, then for candidate biography links (Candidate.bio): with
   // the build timestamps held fixed and bio not carried, the new code gives the previous digest. Then for three
   // corrected names (0088 addendum: 1955 #24, 1959 #47, 2003 Shinui #14); src unchanged, other digests unchanged.
@@ -117,7 +175,29 @@ const EXPECTED: Record<Family, string> = {
   // and builtAt changed (recursive field diff); HEAD k19 with current src reproduces 2694440f….
   // All four non-model digests unchanged. See docs/research/data-audit/k19-resolution.md.
   // merged with k19 audit fixes: combined digest = union of the separately reviewed changes.
-  model: '4faa7f17ce364956de29269c7575a52a553ca40ea4da216f29fcc9620d9c21e5',
+  // merged with k21 audit fixes: combined digest = union of the separately reviewed changes.
+  // merged with k18 audit fixes: combined digest = union of the separately reviewed changes.
+  // merged with k16 audit fixes: combined digest = union of the separately reviewed changes.
+  // merged with k13 audit fixes: combined digest = union of the separately reviewed changes.
+  // merged with k12 audit fixes: combined digest = union of the separately reviewed changes.
+  // merged with k13 audit fixes: combined digest = union of the separately reviewed changes.
+  // merged with k15 audit fixes: combined digest = union of the separately reviewed changes.
+  // merged with k11 audit fixes: combined digest = union of the separately reviewed changes.
+  // k10 audit (6 Nov): reviewed recursive field diff contains only ten printed letters,
+  // three list labels/three link titles, Abu Hatzeira spelling, withheld Telem logo,
+  // Unity source URL and build provenance. All IDs/votes/seats and 25 other datasets equal HEAD.
+  // Only model output changes; the four engine/validation/rules digests stay unchanged.
+  // merged with k10 audit fixes: combined digest = union of the separately reviewed changes.
+  // merged with k9 audit fixes: combined digest = union of the separately reviewed changes.
+  // k17 audit (6 Nov): field walk of every public election dataset confirms only k17 changes:
+  // five gazette names, three list names, election-period constituent label, three platform links
+  // and buildInfo source hashes/timestamp. Numeric inputs and all four other digests are unchanged.
+  // merged with k17 audit fixes: combined digest = union of the separately reviewed changes.
+  // merged with k14 audit fixes: combined digest = union of the separately reviewed changes.
+  // k7 audit: only Tamir nameEn whitespace, Reshimat Shalom sourceId and builtAt differ.
+  // Restoring HEAD k7 at scenarioFromDataset reproduces 4faa7f17… exactly; numeric inputs unchanged.
+  // merged with k7 audit fixes: combined digest = union of the separately reviewed changes.
+  model: '263d8aa506f8992e8fdd6917138323f15dada0f659ccd873c79a30575cacbdb6',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

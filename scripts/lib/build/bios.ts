@@ -8,6 +8,7 @@ import type { CandidateBio, ElectionDataset } from '../../../src/data/schema.ts'
 
 const ROOT = join(import.meta.dirname, '..', '..', '..');
 interface Entry {
+  displayNameEn?: string; // Reviewed display transliteration; original official extract stays intact.
   knesset?: { url: string; siteId?: number } | null; hewiki?: { title: string; url: string } | null;
   party?: { url: string; publisher?: string; archivedAt?: string | null; kind?: string } | null; confidence: 'high' | 'medium'; basis?: string;
 }
@@ -25,7 +26,13 @@ export function applyBios(ds: ElectionDataset): ElectionDataset {
   // official English names from the Knesset website, keyed by member site id; only certain Knesset identities take one
   const namesFile = join(ROOT, 'data', 'raw', 'bios', 'knesset-site-mk-names-en.json');
   const namesEn = new Map(existsSync(namesFile) ? (JSON.parse(readFileSync(namesFile, 'utf8')) as { siteId: number; nameEn: string | null }[]).filter((x) => x.nameEn).map((x) => [x.siteId, x.nameEn!]) : []);
-  const nameEnOf = (e: Entry) => (knessetIdentitySure(e) && e.knesset?.siteId ? namesEn.get(e.knesset.siteId) : undefined);
+  const nameEnOf = (e: Entry) => {
+    if (!knessetIdentitySure(e) || !e.knesset?.siteId) return undefined;
+    // k12 audit: a reviewed displayNameEn overrides a misspelt site value; the raw site value stays as evidence.
+    if (e.displayNameEn) return e.displayNameEn;
+    const name = namesEn.get(e.knesset.siteId);
+    return name;
+  };
   const ids = new Set(ds.lists.flatMap((l) => l.candidates.map((c) => c.id)));
   const unknown = Object.keys(bios).filter((id) => !ids.has(id));
   if (unknown.length) throw new Error(`data/meta/bios/${ds.id}.json: not in the roster: ${unknown.slice(0, 5).join(', ')}`);
@@ -39,5 +46,7 @@ export function applyBios(ds: ElectionDataset): ElectionDataset {
     if (/en\.wikipedia/.test(JSON.stringify(b))) throw new Error(`data/meta/bios/${ds.id}.json: English Wikipedia is never linked`);
     return b.knesset || b.hewiki || b.party ? b : null;
   };
-  return { ...ds, lists: ds.lists.map((l) => ({ ...l, candidates: l.candidates.map((c) => { const e = bios[c.id]; const b = e ? bioOf(e) : null; const en = e ? nameEnOf(e) : undefined; return b || en ? { ...c, ...(en ? { nameEn: en } : {}), ...(b ? { bio: b } : {}) } : c; }) })) };
+  // Display form of official site names: backticks become apostrophes and repeated whitespace collapses (audits k7, k9, k13, k18).
+  // The raw site value stays in data/raw/bios as evidence; spelling is never changed here.
+  return { ...ds, lists: ds.lists.map((l) => ({ ...l, candidates: l.candidates.map((c) => { const e = bios[c.id]; const b = e ? bioOf(e) : null; const en = e ? nameEnOf(e) : undefined; const displayEn = en?.replaceAll('`', "'").replace(/\s+/g, ' ').trim(); return b || displayEn ? { ...c, ...(displayEn ? { nameEn: displayEn } : {}), ...(b ? { bio: b } : {}) } : c; }) })) };
 }

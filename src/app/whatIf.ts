@@ -21,7 +21,7 @@ const t = (lang: Lang, en: string, he: string) => (lang === 'he' ? he : en);
 const fixed = (en: string, he: string): Text => (_s, lang) => t(lang, en, he);
 const has = (s: Scenario, ...ids: string[]) => ids.every((id) => s.lists.some((l) => l.id === id));
 const agreementWith = (s: Scenario, id: string) => s.agreements.find((a) => a.members.includes(id));
-const nameOf = (s: Scenario, id: string, lang: Lang) => { const l = s.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : id; };
+const nameOf = (s: Scenario, id: string, lang: Lang) => { const l = s.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : (lang === 'he' ? 'רשימה לא ידועה' : 'Unknown list'); };
 const joinNames = (names: string[], lang: Lang) => names.length < 2 ? names.join('') : `${names.slice(0, -1).join(', ')} ${t(lang, 'and', 'ו')}${lang === 'en' ? ' ' : ''}${names[names.length - 1]}`;
 
 /** minimal transfer/new votes for `id` to pass the threshold, as an action */

@@ -3,12 +3,12 @@
   "id": "k14",
   "sourceId": "k14-candidates-gazette",
   "reviewedOn": "2026-11-03",
-  "note": "Release standard: contiguous registered prefixes include every elected name in section 4 of the results gazette. Only k14 Third Way is a full roster; later ranks elsewhere are not transcribed. Original registered ranks are preserved, including names omitted from the elected notice; candidateRanks in elected.reviewed.json explicitly reconciles those omissions. No withdrawal date is inferred from omission.",
+  "note": "Release standard: contiguous registered prefixes include every elected name in section 4 of the results gazette. No full roster is transcribed; Third Way retains ranks 1–12 of 52, and other winning lists retain elected prefixes. Original registered ranks are preserved, including names omitted from the elected notice; candidateRanks in elected.reviewed.json explicitly reconciles those omissions. Resignations are documented separately from the retained YP 4411 notice.",
   "lists": [
     {
       "letters": "הד",
-      "complete": true,
-      "publishedCount": 12,
+      "complete": false,
+      "publishedCount": 52,
       "gazettePages": [
         3288
       ],
@@ -788,7 +788,7 @@
     {
       "letters": "שס",
       "complete": false,
-      "publishedCount": 120,
+      "publishedCount": 118,
       "gazettePages": [
         3293,
         3294

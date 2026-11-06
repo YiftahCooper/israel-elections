@@ -112,7 +112,8 @@
           ]
         }
       ],
-      "unassignedRanks": []
+      "unassignedRanks": [],
+      "affiliationEvidenceNote": "Candidate-level constituent assignments retain their labelled secondary provenance. Opening Knesset faction membership alone does not independently establish internal party affiliation."
     },
     {
       "letters": "אמת",
@@ -364,6 +365,16 @@
         118,
         119,
         120
+      ],
+      "affiliationEvidenceNote": "Candidate-level constituent assignments retain their labelled secondary provenance. Opening Knesset faction membership alone does not independently establish internal party affiliation.",
+      "sources": [
+        {
+          "url": "https://www.idi.org.il/policy/parties-and-elections/parties/independent-liberals/",
+          "publisher": "Israel Democracy Institute",
+          "kind": "academic",
+          "quote": "בבחירות לכנסת האחת עשרה (1984) נבחר חבר כנסת מטעמה במסגרת רשימת המערך.",
+          "accessed": "2026-11-06"
+        }
       ]
     },
     {
@@ -372,7 +383,7 @@
       "seats": 5,
       "rosterRanks": 5,
       "candidatesTruncated": true,
-      "notes": "Joint list of Tehiya and Tzomet; Tzomet merged into Tehiya in June 1986 and Eitan re-formed Tzomet in November 1987.",
+      "notes": "Joint list of Tehiya and Tzomet; Hebrew Wikipedia reports a party-level merger of Tzomet into Tehiya in June 1986 (not a separately verified faction change) and Eitan re-formed Tzomet in November 1987.",
       "parties": [
         {
           "id": "tehiya",
@@ -429,10 +440,11 @@
           "confidence": "high"
         }
       ],
-      "unassignedRanks": []
+      "unassignedRanks": [],
+      "affiliationEvidenceNote": "Candidate-level constituent assignments retain their labelled secondary provenance. Opening Knesset faction membership alone does not independently establish internal party affiliation."
     },
     {
-      "letters": "עי",
+      "letters": "עד",
       "nameHe": "מורשה מצ״ד – פא״י",
       "seats": 2,
       "rosterRanks": 2,
@@ -476,7 +488,17 @@
           "confidence": "medium"
         }
       ],
-      "unassignedRanks": []
+      "unassignedRanks": [],
+      "affiliationEvidenceNote": "Candidate-level constituent assignments retain their labelled secondary provenance. Opening Knesset faction membership alone does not independently establish internal party affiliation.",
+      "sources": [
+        {
+          "url": "https://www.idi.org.il/policy/parties-and-elections/parties/morasha/",
+          "publisher": "Israel Democracy Institute",
+          "kind": "academic",
+          "quote": "הרשימה זכתה בשני מושבים בבחירות לכנסת האחת עשרה אך התפרקה ב-1986",
+          "accessed": "2026-11-06"
+        }
+      ]
     },
     {
       "letters": "ו",
@@ -539,11 +561,12 @@
           "confidence": "medium"
         }
       ],
-      "unassignedRanks": []
+      "unassignedRanks": [],
+      "affiliationEvidenceNote": "Candidate-level constituent assignments retain their labelled secondary provenance. Opening Knesset faction membership alone does not independently establish internal party affiliation."
     },
     {
       "letters": "דף",
-      "nameHe": "לבא אליאב לכנסת",
+      "nameHe": "לובה אליאב לכנסת",
       "englishName": {
         "label": "Lova Eliav LaKnesset",
         "kind": "transliteration",
@@ -552,8 +575,8 @@
       }
     },
     {
-      "letters": "הם",
-      "nameHe": "הס מס, תנועה לביטול חוק מס הכנסה",
+      "letters": "הס",
+      "nameHe": "הס־מס, תנועה לביטול חוק מס־הכנסה",
       "englishName": {
         "label": "Has Mas",
         "kind": "transliteration",
@@ -582,7 +605,7 @@
       }
     },
     {
-      "letters": "טן",
+      "letters": "טס",
       "nameHe": "התנועה למען המולדת",
       "englishName": {
         "label": "HaTnua Lemaan HaMoledet",
@@ -592,8 +615,8 @@
       }
     },
     {
-      "letters": "פט",
-      "nameHe": "עצמאות בראשות עזרא זהר",
+      "letters": "כט",
+      "nameHe": "עצמאות בראשות עזרה זהר",
       "englishName": {
         "label": "Atzmaut",
         "kind": "transliteration",
@@ -602,7 +625,7 @@
       }
     },
     {
-      "letters": "נ",
+      "letters": "ס",
       "nameHe": "תנועת עליה וצעירים",
       "englishName": {
         "label": "Tnuat Aliya VeTzeirim",
@@ -613,9 +636,9 @@
     },
     {
       "letters": "פז",
-      "nameHe": "א.נ.י. – ארגון נכים",
+      "nameHe": "א. נ. – ארגון נכים",
       "englishName": {
-        "label": "ANI – Irgun Nekhim",
+        "label": "A.N. – Irgun Nekhim",
         "kind": "transliteration",
         "sourceId": "k11-candidates-gazette",
         "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
@@ -635,7 +658,7 @@
           "nameHe": "קואליציה",
           "nameEn": "Coalition",
           "color": "#2E7D32",
-          "seats": 104,
+          "seats": 97,
           "members": [
             {
               "letters": "מחל"
@@ -657,7 +680,7 @@
               "letters": "שס"
             },
             {
-              "letters": "עי"
+              "letters": "עד"
             },
             {
               "letters": "ט",
@@ -673,7 +696,7 @@
           "nameHe": "אופוזיציה",
           "nameEn": "Opposition",
           "color": "#9E9E9E",
-          "seats": 16,
+          "seats": 23,
           "members": [
             {
               "letters": "רצ"
@@ -696,11 +719,18 @@
             {
               "party": "mapam",
               "note": "Mapam opposed the national unity government and left the Alignment on 1984-10-22"
+            },
+            {
+              "letters": "אמת",
+              "ranks": [
+                25
+              ],
+              "note": "Yossi Sarid opposed the unity government; formal faction transfer followed on 22 October."
             }
           ]
         }
       ],
-      "notes": "Membership by list at the swearing-in of the first government after the election, from the coalition table of the Hebrew Wikipedia government article (faction, seats, start/end dates), cross-checked against Knesset OData ministerial records for that GovernmentNum. Bloc colours are neutral display suggestions, not party colours.",
+      "notes": "At formation: 97 coalition MKs; the 104-seat election-list envelope excludes six Mapam members and Yossi Sarid. Coalition membership is distinct from the 89–18 confidence vote. Neutral display colours.",
       "sources": [
         {
           "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%90%D7%97%D7%AA",
@@ -722,6 +752,27 @@
           "kind": "official",
           "quote": "KNS_PersonToPosition, GovernmentNum 21: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 1984-09-13: מודעי יצחק, צור יעקב, שחל משה, ויצמן עזר, רבין יצחק, פרץ יצחק-חיים, ארנס משה, נסים משה, קצב משה, נבון יצחק, לוי דוד, קורפו חיים, שמיר יצחק, רובינשטיין אמנון, נחמקין אריה, יעקבי גד, פרס שמעון, בר-לב חיים, שפירא יוסף, שריר אברהם, שרון אריאל, גור מרדכי, הורביץ יגאל, בורג יוסף, פת גדעון",
           "accessed": "2026-11-04"
+        },
+        {
+          "url": "https://www.gov.il/BlobFolder/generalpage/gov21/he/part21.pdf",
+          "publisher": "Prime Minister’s Office, government 21 formation speech, printed pp.95–96",
+          "kind": "official",
+          "quote": "קבוצת מפלגות המייצגות 97 חברי כנסת",
+          "accessed": "2026-11-06"
+        },
+        {
+          "url": "https://www.jta.org/archive/peres-defends-new-government",
+          "publisher": "JTA, 17 September 1984 (contemporary foreign reporting)",
+          "kind": "secondary",
+          "quote": "Yossi Sarid, a one-time close associate of Peres who quit the Labor Party in protest against the coalition with Likud",
+          "accessed": "2026-11-06"
+        },
+        {
+          "url": "https://en.idi.org.il/media/3869/politiacal_system_c12.pdf",
+          "publisher": "Israel Democracy Institute, The Political System in Israel, chapter 12, pp.617–618",
+          "kind": "academic",
+          "quote": "פורשי המערך (מפ״ם ויוסי שריד — 7)",
+          "accessed": "2026-11-06"
         }
       ]
     },
@@ -781,7 +832,7 @@
               "letters": "ג"
             },
             {
-              "letters": "עי"
+              "letters": "עד"
             }
           ],
           "seats": 54
@@ -838,7 +889,7 @@
         }
       ],
       "notes": [
-        "Per-list split (Alignment 44, Hadash 4, Ratz 3, Yahad 3, Shinui 3, Progressive List 2, Ometz 1 = 60; Likud 41, Tehiya–Tzomet 5, Shas 4, Agudat Yisrael 2, Morasha 2 = 54) matches JTA's contemporary totals; El País counted 59 for Labor (it groups Yahad and Ometz as 'three'), recorded as a source conflict. Recommendations were made on Friday 3 August 1984; Herzog gave Peres the mandate on 5 August. The two-year rotation agreement came later and is not a recommendation."
+        "Per-list split (Alignment 44, Hadash 4, Ratz 3, Yahad 3, Shinui 3, Progressive List 2, Ometz 1 = 60; Likud 41, Tehiya–Tzomet 5, Shas 4, Agudat Yisrael 2, Morasha 2 = 54) matches JTA's contemporary totals; El País counted 59 for Labor (it groups Yahad and Ometz as 'three'), recorded as a source conflict. Recommendations were made on Friday 3 August 1984; Herzog gave Peres the mandate on 5 August. The rotation agreement (Shamir to take over after 25 months) came later and is not a recommendation."
       ]
     }
   ],
@@ -988,7 +1039,7 @@
       "confidence": "medium"
     },
     {
-      "letters": "עי",
+      "letters": "עד",
       "color": "#03428F",
       "basis": "Hebrew Wikipedia 11th Knesset infobox only.",
       "colourId": "morasha",
@@ -1205,6 +1256,18 @@
       "evidence": "YP 3073 p. 2832; YP 3081 p. 3008",
       "resolvedOn": "2026-11-04",
       "record": "docs/decisions/0088-roster-corrections-and-odata-audit.md"
+    }
+  ],
+  "identityNotes": [
+    "List and candidate IDs are opaque stable keys predating the 2026-11-06 ballot-letter corrections. Retained IDs 11-הם, 11-טן, 11-פט, 11-נ and 11-עי display הס, טס, כט, ס and עד respectively; never derive a ballot label from an ID. Source: YP 3073 pp.2829–2834; YP 3081 p.3006."
+  ],
+  "sources": [
+    {
+      "url": "https://olaw.org.il/yalkut/yalkut-3073.pdf",
+      "publisher": "Reshumot YP 3073, p.2837",
+      "kind": "official",
+      "quote": "שילוב רשימה עצמאית של עולי הודו לכנסת",
+      "accessed": "2026-11-06"
     }
   ]
 }

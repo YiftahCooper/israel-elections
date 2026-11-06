@@ -9,7 +9,7 @@ export interface ContextEvent {
   textEn: string; textHe: string; source: ContextSource; listId?: string; relatedSources?: ContextSource[];
 }
 export interface SourcedCount { value: number; source: ContextSource }
-export interface PMCandidate { id: string; nameEn: string; nameHe: string; status: 'final' | 'withdrawn'; votes?: SourcedCount; source?: ContextSource }
+export interface PMCandidate { id: string; nameEn: string; nameHe: string; status: 'final' | 'withdrawn'; votes?: SourcedCount; publishedPercent?: SourcedCount; source?: ContextSource }
 export interface PMContest {
   id: string; electionId: ElectionId; effectiveDate: string; contestType: 'parallel-pm' | 'prime-minister-only';
   noteEn?: string; noteHe?: string;
@@ -57,6 +57,7 @@ export function validateElectionContext(input: unknown): asserts input is Electi
     for (const value of c.candidates) {
       const p = obj(value); text(p.id); text(p.nameEn); text(p.nameHe);
       if (candidates.has(p.id)) fail('duplicate candidate'); candidates.add(p.id);
+      if (p.publishedPercent !== undefined) { const share = obj(p.publishedPercent); if (typeof share.value !== 'number' || !Number.isFinite(share.value) || share.value < 0 || share.value > 100) fail('invalid published percentage'); source(share.source); }
       if (p.status === 'final') { sum += count(p.votes); finalists++; }
       else if (p.status === 'withdrawn') { source(p.source); if (p.votes !== undefined) fail('withdrawn nominee cannot have finalist votes'); }
       else fail('invalid candidate status');

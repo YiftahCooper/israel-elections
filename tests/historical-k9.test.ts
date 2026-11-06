@@ -8,9 +8,9 @@ import { scenarioFromDataset, toEngineInput, validateScenario } from '../src/mod
 
 // Independently read from YP 2326, pp. 1494, 1495.
 // Zero seats for every other gazetted list; never calculated expectations.
-const published: Record<string, number> = {"אמת": 32, "ב": 12, "ג": 4, "ד": 1, "ו": 5, "ים": 1, "יש": 15, "כנ": 2, "לע": 1, "מחל": 43, "פש": 1, "רצ": 1, "ש": 2};
+const published: Record<string, number> = {"אמת": 32, "ב": 12, "ג": 4, "ד": 1, "ו": 5, "ימ": 1, "יש": 15, "כנ": 2, "לע": 1, "מחל": 43, "פש": 1, "רצ": 1, "ש": 2};
 const unresolved: Record<string, number> = {"פש": 2, "ש": 1};
-describe('k9 — released national data with a disclosed candidate-cap inference', () => {
+describe('k9 — released national data with a documented candidate-cap procedure', () => {
   it('reconciles every national vote with the gazette and CBS totals', () => {
     const { review: r } = verifyK9({ log: false });
     expect(r.lists).toHaveLength(22);
@@ -19,7 +19,7 @@ describe('k9 — released national data with a disclosed candidate-cap inference
     expect(r.supplementalTotals).toMatchObject({ registered: 2236293, votesCast: 1771726 });
     for (const l of r.lists) expect(l.officialSeats, l.letters).toBe(published[l.letters] ?? 0);
   });
-  it('tests every official seat through the application pipeline and reproduces every published seat with the inferred capacity procedure', () => {
+  it('tests every official seat through the application pipeline and reproduces every published seat with the documented capacity procedure', () => {
     const a = verifyK9({ log: false });
     const s = scenarioFromDataset(researchDataset(a));
     expect(validateScenario(JSON.parse(JSON.stringify(s)))).toEqual([]);
@@ -29,7 +29,7 @@ describe('k9 — released national data with a disclosed candidate-cap inference
     expect(result.seatsAllocated).toBe(120);
     expect(result.warnings).toEqual([]);
     for (const l of result.lists) {
-      const letters = l.id.slice(2);
+      const letters = researchDataset(a).lists.find(x => x.id === l.id)!.letters;
       expect(l.seats, l.id).toBe(published[letters] ?? 0);
     }
     expect(a.review.allocationCheck.exact).toBe(true);
@@ -38,7 +38,7 @@ describe('k9 — released national data with a disclosed candidate-cap inference
   it('retains the sourced agreement set without inventing missing pairs', () => {
     const a = verifyK9({ log: false });
     expect(a.review.agreements.complete).toBe(true);
-    expect(a.review.agreements.pairs).toEqual([["אמת", "ים"], ["לע", "יש"], ["מחל", "כנ"], ["ב", "ג"], ["ש", "נס"], ["רצ", "סם"]]);
+    expect(a.review.agreements.pairs).toEqual([["אמת", "ימ"], ["לע", "יש"], ["מחל", "כנ"], ["ב", "ג"], ["ש", "נס"], ["רצ", "ספ"]]);
   });
   it('rebuilds the committed national-only release with complete elected coverage', () => {
     const a = verifyK9({ log: false, available: true });
@@ -53,12 +53,12 @@ describe('k9 — released national data with a disclosed candidate-cap inference
     expect(ds.hasLocalities).toBe(false);
     expect(ds.ruleSetId).toBe('il-1977-bader-ofer-1-candidate-cap');
     expect(ds.sourceIds).toContain('k9-ratz-odata');
-    expect(ds.status.noteEn).toContain('inferred from the officially published result because the statutory text was not located');
-    expect(ds.status.noteHe).toContain('מוסק מהתוצאה הרשמית שפורסמה משום שנוסח החוק המסדיר אותו לא אותר');
+    expect(ds.status.noteEn).toContain('appeal determination confirms the initial cap');
+    expect(ds.status.noteHe).toContain('הכרעת הכנסת בערעור');
     expect(ds.status.noteEn).toContain('Knesset OData');
     expect(ds.status.noteHe).toContain('OData');
     const result = allocate(toEngineInput(scenarioFromDataset(committed)));
-    for (const l of result.lists) expect(l.seats, l.id).toBe(published[l.id.slice(2)] ?? 0);
+    for (const l of result.lists) expect(l.seats, l.id).toBe(published[committed.lists.find((x: {id: string}) => x.id === l.id).letters] ?? 0);
     for (const l of ds.lists) {
       if (ds.officialSeats![l.id]! > 0) {
         expect(l.candidates.length).toBeGreaterThanOrEqual(ds.officialSeats![l.id]!);
@@ -89,7 +89,7 @@ it('retains the uncapped seat table and supplements the missing gazette paragrap
   s.mode = 'experimental'; s.rules.seatsCappedAtCandidates = false;
   expect(validateScenario(s)).toEqual([]);
   const result = allocate(toEngineInput(s));
-  for (const l of result.lists) expect(l.seats).toBe(unresolved[l.id.slice(2)] ?? published[l.id.slice(2)] ?? 0);
+  for (const l of result.lists) expect(l.seats).toBe(unresolved[l.id.slice(2)] ?? published[researchDataset(a).lists.find(x => x.id === l.id)!.letters] ?? 0);
   expect(a.rosters.find(r => r.letters === 'רצ')?.electedCrossCheck).toMatchObject({ sourceId: 'k9-ratz-odata', pages: [], ranks: [1], namesHe: ['אלוני שולמית'] });
   expect(a.rosters.reduce((sum, r) => sum + (r.electedCrossCheck?.namesHe?.length ?? 0), 0)).toBe(120);
   const capped = scenarioFromDataset(researchDataset(a));
@@ -113,4 +113,20 @@ it('requires official opening-date membership and Ratz affiliation for the same 
   const incomplete = structuredClone(official);
   incomplete['odata.nextLink'] = 'another-page';
   expect(() => verifyRatzMembership(incomplete)).toThrow(/incomplete/);
+});
+
+it('corrects ballot identity without breaking saved-scenario keys or conflating פ with פז', () => {
+  const ds = finalizeDataset(buildK9({ log: false })[0]().ds);
+  const expected = { '9-הם': 'הפ', '9-חך': 'זך', '9-ים': 'ימ', '9-סם': 'ספ', '9-פז': 'פ', '9-פח': 'פז', '9-כך': 'כך' };
+  for (const [id, letters] of Object.entries(expected)) expect(ds.lists.find(l => l.id === id)?.letters).toBe(letters);
+  expect(new Set(ds.lists.map(l => l.id)).size).toBe(22);
+  expect(ds.agreements[0].members).toEqual(['9-אמת', '9-ים']);
+  expect(ds.agreements[5].members).toEqual(['9-רצ', '9-סם']);
+  const s = scenarioFromDataset(ds);
+  expect(validateScenario(s)).toEqual([]);
+  expect(s.lists.find(l => l.id === '9-ים')?.candidates[0].id).toBe('9-ים#1');
+  expect(ds.blocSchemes?.[0].blocs[0].lists).toContain('9-פש');
+  expect(ds.blocSchemes?.[0].blocs[1].lists).not.toContain('9-פש');
+  expect(ds.lists.find(l => l.id === '9-מחל')?.candidates[20].nameEn).toBe('Yigal Cohen');
+  expect(ds.lists.find(l => l.id === '9-מחל')?.candidates[23].nameEn).toBe('Yigal Cohen-Orgad');
 });

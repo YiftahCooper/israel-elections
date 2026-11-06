@@ -3,12 +3,14 @@ import { finalizeDataset } from '../scripts/lib/build/finalize.ts';
 import { describe, expect, it } from 'vitest';
 import { buildK11, verifyK11 } from '../scripts/lib/historical/k11.ts';
 import { researchDataset, releasedDataset } from '../scripts/lib/historical/k8-k12-common.ts';
+import { seatBlocsOf, listLabel } from '../src/app/derive.ts';
+import { applyAction } from '../src/model/actions.ts';
 import { allocate } from '../src/engine/allocate.ts';
 import { scenarioFromDataset, toEngineInput, validateScenario } from '../src/model/scenario.ts';
 
 // Independently read from YP 3081, pp. 3006, 3007.
 // Zero seats for every other gazetted list; never calculated expectations.
-const published: Record<string, number> = {"אמת": 44, "ב": 4, "ג": 2, "הן": 3, "ו": 4, "ט": 3, "יש": 1, "כך": 1, "מחל": 41, "ני": 1, "עי": 2, "פ": 2, "רצ": 3, "שס": 4, "ת": 5};
+const published: Record<string, number> = {"אמת": 44, "ב": 4, "ג": 2, "הן": 3, "ו": 4, "ט": 3, "יש": 1, "כך": 1, "מחל": 41, "ני": 1, "עד": 2, "פ": 2, "רצ": 3, "שס": 4, "ת": 5};
 const unresolved: Record<string, number> = {};
 describe('k11 — released national dataset', () => {
   it('reconciles every national vote with the gazette and CBS totals', () => {
@@ -29,7 +31,7 @@ describe('k11 — released national dataset', () => {
     expect(result.seatsAllocated).toBe(120);
     expect(result.warnings).toEqual([]);
     for (const l of result.lists) {
-      const letters = l.id.slice(3);
+      const letters = s.lists.find(x => x.id === l.id)!.letters;
       expect(l.seats, l.id).toBe(unresolved[letters] ?? published[letters] ?? 0);
     }
     expect(a.review.allocationCheck.exact).toBe(true);
@@ -51,7 +53,7 @@ describe('k11 — released national dataset', () => {
     expect(existsSync('public/data/k11-localities.json')).toBe(false);
     expect(validateScenario(scenarioFromDataset(ds))).toEqual([]);
     const result = allocate(toEngineInput(scenarioFromDataset(ds)));
-    for (const l of result.lists) expect(l.seats, l.id).toBe(published[l.id.slice(3)] ?? 0);
+    for (const l of result.lists) expect(l.seats, l.id).toBe(published[ds.lists.find((x: {id: string}) => x.id === l.id).letters] ?? 0);
     for (const l of ds.lists) {
       const seats = ds.officialSeats[l.id];
       if (!seats) { expect(l.candidatesUnavailable).toBe(true); expect(l.candidates).toEqual([]); continue; }
@@ -77,4 +79,32 @@ it('retains all 120 Alignment candidates, contiguous ranks and the elected 44-ra
   expect(roster.candidates.at(-1)?.nameHe).toBe('קציר אפרים');
   expect(roster.electedCrossCheck?.ranks).toEqual(Array.from({ length: 44 }, (_, i) => i + 1));
   expect(a.review.candidateChecks.completeWinningRostersVerified).toBe(true);
+});
+
+// Gazette YP 3073 pp.2829–2837; stable IDs must survive old saved/share actions.
+it('corrects ballot labels while preserving opaque list and candidate IDs', () => {
+  const ds = JSON.parse(readFileSync('public/data/k11.json', 'utf8'));
+  const s = scenarioFromDataset(ds);
+  for (const [id, letters] of Object.entries({'11-הם':'הס','11-טן':'טס','11-פט':'כט','11-נ':'ס','11-עי':'עד'})) {
+    const l = s.lists.find(x => x.id === id)!;
+    expect(l.letters).toBe(letters);
+    expect(l.candidates.every(c => c.id.startsWith(`${id}#`))).toBe(true);
+    expect(listLabel(l, 'he')).not.toContain(id);
+    expect(applyAction(s, {type:'setListMeta', listId:id, patch:{shortHe:'saved edit'}}).lists.find(x => x.id === id)!.shortHe).toBe('saved edit');
+  }
+  expect(ds.lists.find((l: {id: string}) => l.id === '11-אמת').candidates[60].nameHe).toBe('חזיזה יצחק');
+  expect(ds.lists.find((l: {id: string}) => l.id === '11-ע').shortEn).toBe('National Tenants’ Protection Organisation');
+  expect(ds.lists.find((l: {id: string}) => l.id === '11-ש').shortEn).toBe('Shiluv');
+});
+
+it('represents the sourced 97 coalition MKs separately from the list envelope and confidence voters', () => {
+  const ds = JSON.parse(readFileSync('public/data/k11.json', 'utf8'));
+  const s = scenarioFromDataset(ds), r = allocate(toEngineInput(s));
+  const counts: Record<string, number> = {};
+  for (const l of s.lists) for (const b of seatBlocsOf(s, l, r.lists.find(x => x.id === l.id)!.seats)) counts[b ?? 'none'] = (counts[b ?? 'none'] ?? 0) + 1;
+  expect(counts).toEqual({coalition:97, opposition:23});
+  expect(s.candidateBlocs?.['11-אמת#25']).toBe('opposition');
+  const f = JSON.parse(readFileSync('data/meta/families/labour-zionist-left.json', 'utf8')).elections.find((e: {electionId: string}) => e.electionId === 'k11');
+  expect(f.members.some((m: {listId: string}) => m.listId === '11-ש')).toBe(false);
+  expect(f.computed.coreOnly.votes).toBe(65046);
 });

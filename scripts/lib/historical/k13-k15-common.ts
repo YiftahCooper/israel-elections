@@ -12,7 +12,7 @@ export interface Review {
   id: ElectionId; reviewedOn: string; resultsSourceId: string; resultsPages: number[];
   gazetteTotals: { valid: number; invalid: number };
   supplementalTotals: { sourceId: string; registered: number; votesCast: number };
-  lists: { letters: string; nameHe: string; votes: number; officialSeats: number }[];
+  lists: { letters: string; nameHe: string; votes: number; officialSeats: number; withdrawn?: boolean; withdrawalSourceId?: string; notesHe?: string[] }[];
   agreements: { sourceId: string | null; complete: boolean; pages: number[]; pairs: [string, string][] };
   discrepancies: unknown[]; releaseBlockers: string[]; hasLocalities: false; localityNote: string;
 }
@@ -40,6 +40,7 @@ export function verifyHistoricalProgress(id: 'k13' | 'k14' | 'k15', options: Ver
   const rawSha256 = verifySources([review.resultsSourceId, review.supplementalTotals.sourceId, rosters.sourceId,
     `${id}-national-reviewed`, `${id}-rosters-reviewed`, `${id}-elected-reviewed`,
     ...rosters.lists.flatMap(l => l.sourceId ? [l.sourceId] : []),
+    ...review.lists.flatMap(l => l.withdrawalSourceId ? [l.withdrawalSourceId] : []),
     'k13-k15-bader-ofer-amendment', 'k13-k15-threshold-amendment', ...(review.agreements.sourceId ? [review.agreements.sourceId] : [])], assert, { checkBytes: true });
   checkNationalTable(assert, id, review.lists.map(l => ({ letters: l.letters, nameHe: l.nameHe, votes: l.votes, seats: l.officialSeats })),
     { valid: review.gazetteTotals.valid, invalid: review.gazetteTotals.invalid, votesCast: review.supplementalTotals.votesCast, registered: review.supplementalTotals.registered });
@@ -53,6 +54,10 @@ export function verifyHistoricalProgress(id: 'k13' | 'k14' | 'k15', options: Ver
     assert(list.candidates.every((c, i) => c.rank === i + 1 && c.nameHe.trim() && list.gazettePages.includes(c.page)), `${id}: missing name, rank or page`);
     const won = review.lists.find(l => l.letters === list.letters)!.officialSeats;
     const members = elected.lists.find(e => e.letters === list.letters);
+    if (id === 'k15' && review.lists.find(l => l.letters === list.letters)?.withdrawn) {
+      assert(won === 0 && !members && list.complete && list.electedCrossCheck.checkedThroughRank === 0, `${id}: invalid withdrawn roster`);
+      continue;
+    }
     assert(members && members.names.length === won && members.candidateRanks.length === won, `${id}: incomplete elected names ${list.letters}`);
     assert(members.resultsPages.length > 0 && members.resultsPages.every(p => review.resultsPages.includes(p)), `${id}: invalid results page`);
     assert(JSON.stringify(members.resultsPages) === JSON.stringify(list.electedCrossCheck.resultsPages), `${id}: cross-check pages differ`);
@@ -84,7 +89,7 @@ export function verifyHistoricalProgress(id: 'k13' | 'k14' | 'k15', options: Ver
   assert(validateScenario(JSON.parse(JSON.stringify(s))).length === 0, `${id}: invalid historical scenario`);
   const result = allocateDataset(ds);
   assert(result.seatsAllocated === 120 && result.warnings.length === 0, `${id}: incomplete/ambiguous allocation`);
-  audit.seatDifferences = result.lists.filter(l => l.seats !== ds.officialSeats![l.id]).map(l => ({ letters: l.id.slice(3), official: ds.officialSeats![l.id], computed: l.seats }));
+  audit.seatDifferences = result.lists.filter(l => l.seats !== ds.officialSeats![l.id]).map(l => ({ letters: ds.lists.find(x => x.id === l.id)!.letters, official: ds.officialSeats![l.id], computed: l.seats }));
   // Missing agreements are NOT reverse-engineered to obtain a matching result.
   assert(audit.seatDifferences.length === 0, `${id}: sourced inputs do not reproduce every official seat`);
   const entry = indexEntry(id);
@@ -98,9 +103,16 @@ export function verifyHistoricalProgress(id: 'k13' | 'k14' | 'k15', options: Ver
 const LIST_KEYS = ['id', 'letters', 'nameHe', 'shortHe', 'shortEn', 'sponsorsHe', 'partiesHe', 'votes', 'withdrawn', 'color', 'bloc', 'candidates',
   'candidatesSource', 'candidatesSecondary', 'candidatesTruncated', 'candidatesUnavailable', 'notesHe'];
 
+// k13 keys predate the corrected official letters; saved scenarios depend on these opaque IDs.
+// k13/k15 audits: corrected ballot letters keep their original list IDs (stable keys for saved scenarios and links).
+const LEGACY_ID_LETTERS: Record<number, Record<string, string>> = { 13: { נד: 'נז', נכ: 'נס', קן: 'קנ' }, 15: { יט: 'ט', קפ: 'קף' } };
+const keyLetters = (n: number, letters: string) => LEGACY_ID_LETTERS[n]?.[letters] ?? letters;
+
 export function historicalDataset({ review, rosters, rawSha256 }: Audit): ElectionDataset {
   const n = Number(review.id.slice(1));
   const elected = rawJson<ElectedReview>(`${review.id}/elected.reviewed.json`);
+  // Saved scenarios and links use opaque IDs established before the k15 letter correction.
+  const stableLetters = (letters: string) => keyLetters(n, letters);
   return {
     schemaVersion: 1, id: review.id, knesset: n,
     electionDate: n === 13 ? '1992-06-23' : n === 14 ? '1996-05-29' : '1999-05-17',
@@ -110,18 +122,19 @@ export function historicalDataset({ review, rosters, rawSha256 }: Audit): Electi
     // Zero geographic counts mean no geography supplied in this dataset, not an official count.
     totals: { ...review.gazetteTotals, registered: review.supplementalTotals.registered, votesCast: review.supplementalTotals.votesCast, ballotBoxes: 0, localities: 0 },
     lists: seatOrder(review.lists.map((l, i) => {
-      const id = `${n}-${l.letters}`;
+      const id = `${n}-${stableLetters(l.letters)}`;
       const roster = rosters.lists.find(r => r.letters === l.letters);
       // candidates ranked above the last elected member but absent from the notice's elected names
       const notSeated = notSeatedRanks(elected.lists.find(x => x.letters === l.letters)?.candidateRanks ?? [], (roster?.candidates ?? []).map(c => c.rank));
-      return listRecord(n, i, { letters: l.letters, nameHe: l.nameHe, votes: l.votes,
+      const record = listRecord(n, i, { letters: stableLetters(l.letters), nameHe: l.nameHe, votes: l.votes, withdrawn: l.withdrawn === true,
         candidates: roster?.candidates.map(c => ({ id: candidateId(id, c.rank), rank: c.rank, nameHe: c.nameHe, ...(notSeated.has(c.rank) ? { notSeated: true } : {}) })) ?? [],
         candidatesSource: roster ? (roster.sourceId ?? rosters.sourceId) : '',
         ...rosterFlags(!roster ? 'unavailable' : roster.complete ? 'complete' : 'truncated', 'explicit'),
-        notesHe: (roster?.candidates ?? []).filter(c => notSeated.has(c.rank)).map(notSeatedNoteHe) }, LIST_KEYS);
+        notesHe: [...(l.notesHe ?? []), ...(roster?.candidates ?? []).filter(c => notSeated.has(c.rank)).map(c => n === 14 && l.letters === 'אמת' && c.rank === 18 ? 'נמיר אורה (מקום 18) התפטרה ב־21 במאי 1996 (י״פ 4411 עמ׳ 3398); אינה מופיעה בין הנבחרים והדירוג המקורי נשמר.' : notSeatedNoteHe(c))] }, LIST_KEYS);
+      return { ...record, letters: l.letters };
     })),
-    agreements: agreementRecords(n, review.agreements.pairs, review.agreements.sourceId!),
-    blocs: [], officialSeats: officialSeatsOf(n, review.lists.map(l => ({ letters: l.letters, seats: l.officialSeats }))),
+    agreements: agreementRecords(n, review.agreements.pairs.map(([a, b]) => [stableLetters(a), stableLetters(b)]), review.agreements.sourceId!),
+    blocs: [], officialSeats: officialSeatsOf(n, review.lists.map(l => ({ letters: stableLetters(l.letters), seats: l.officialSeats }))),
     officialSeatsSourceId: review.resultsSourceId, sourceIds: Object.keys(rawSha256),
     buildInfo: { builtAt: new Date().toISOString(), rawSha256 },
   };

@@ -1,6 +1,6 @@
 {
   "electionId": "k10",
-  "generatedNote": "Research metadata (joint-list composition, blocs, colours). See data/meta/README.md and docs/research/meta-1981-2006.md.",
+  "generatedNote": "Research metadata (joint-list composition, blocs, colours). See data/meta/README.md and docs/research/meta-1981-2006.md. Stable list/candidate IDs predate the 2026-11-06 ballot-letter corrections; use letters for display, never infer ballot letters from IDs. See docs/research/data-audit/k10-resolution.md.",
   "lists": [
     {
       "letters": "מחל",
@@ -56,6 +56,9 @@
               "rank": 20,
               "datasetName": "צפורי מרדכי",
               "note": "Roster corrected on 2026-11-04 from the misreading \"ציפורי מרדכי\" to \"צפורי מרדכי\" as printed (YP 2721 p. 2058; YP 2727 p. 2192); see docs/decisions/0088-roster-corrections-and-odata-audit.md."
+            },
+            {
+              "note": "Constituent-party membership is labelled secondary evidence; official OData establishes opening faction only, not internal party allocation."
             }
           ]
         },
@@ -118,16 +121,9 @@
               "kind": "secondary",
               "quote": "בני שליטא, מיכאל רייסר, יצחק זיגר, יצחק פרץ, עקיבא נוף",
               "accessed": "2026-11-04"
-            },
-            {
-              "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=KnessetNum%20eq%2010",
-              "publisher": "Knesset OData (ParliamentInfo)",
-              "kind": "official",
-              "quote": "KNS_PersonToPosition, KnessetNum 10, PositionID 54: PersonID 2273 דורון שרה, 2336 זייגרמן דרור, 2614 רנר צבי, 2335 זיגר יצחק — each FactionName \"הליכוד\" from 1981-07-20 (seated at the opening, so elected ranks; the dataset roster contains none of these names)",
-              "accessed": "2026-11-04"
             }
           ],
-          "confidence": "high",
+          "confidence": "medium",
           "rankNotes": [
             {
               "rank": 31,
@@ -148,6 +144,9 @@
               "rank": 46,
               "datasetName": "זיגר יצחק",
               "note": "Roster corrected on 2026-11-04 from the misreading \"יגורי יצחק\" to \"זיגר יצחק\" as printed (YP 2721 p. 2059; YP 2727 p. 2192); see docs/decisions/0088-roster-corrections-and-odata-audit.md."
+            },
+            {
+              "note": "Constituent-party membership is labelled secondary evidence; official OData establishes opening faction only, not internal party allocation."
             }
           ]
         },
@@ -171,7 +170,12 @@
               "accessed": "2026-11-04"
             }
           ],
-          "confidence": "medium"
+          "confidence": "medium",
+          "rankNotes": [
+            {
+              "note": "Constituent-party membership is labelled secondary evidence; official OData establishes opening faction only, not internal party allocation."
+            }
+          ]
         }
       ],
       "unassignedRanks": [],
@@ -181,6 +185,13 @@
           "publisher": "Hebrew Wikipedia",
           "kind": "secondary",
           "quote": "רשימה משותפת למפלגות חרות, המפלגה הליברלית ולע\"ם",
+          "accessed": "2026-11-04"
+        },
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=KnessetNum%20eq%2010",
+          "publisher": "Knesset OData (ParliamentInfo)",
+          "kind": "official",
+          "quote": "KNS_PersonToPosition, KnessetNum 10, PositionID 54: PersonID 2273 דורון שרה, 2336 זייגרמן דרור, 2614 רנר צבי, 2335 זיגר יצחק — each FactionName \"הליכוד\" from 1981-07-20 (seated at the opening, so elected ranks; the dataset roster contains none of these names)",
           "accessed": "2026-11-04"
         }
       ]
@@ -267,16 +278,9 @@
               "kind": "secondary",
               "quote": "רפאל סוויסה, אהרן-רפאל נחמיאס, רענן נעים, נפתלי פדר",
               "accessed": "2026-11-04"
-            },
-            {
-              "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=KnessetNum%20eq%2010",
-              "publisher": "Knesset OData (ParliamentInfo)",
-              "kind": "official",
-              "quote": "KNS_PersonToPosition, KnessetNum 10, PositionID 54: PersonID 2356 חריף משה, 2413 כץ-עוז אברהם, 2491 נעים רענן — each FactionName \"מערך\" from 1981-07-20",
-              "accessed": "2026-11-04"
             }
           ],
-          "confidence": "high",
+          "confidence": "medium",
           "rankNotes": [
             {
               "rank": 17,
@@ -307,6 +311,9 @@
               "rank": 45,
               "datasetName": "נעים רענן",
               "note": "Roster corrected on 2026-11-04 from the misreading \"נעים עבד\" to \"נעים רענן\" as printed (YP 2721 p. 2048; YP 2727 p. 2191); see docs/decisions/0088-roster-corrections-and-odata-audit.md."
+            },
+            {
+              "note": "Constituent-party membership is labelled secondary evidence; official OData establishes opening faction only, not internal party allocation."
             }
           ]
         },
@@ -351,16 +358,9 @@
               "kind": "secondary",
               "quote": "יהודה חשאי, אמרי רון, מיכאל בר-זוהר",
               "accessed": "2026-11-04"
-            },
-            {
-              "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=KnessetNum%20eq%2010",
-              "publisher": "Knesset OData (ParliamentInfo)",
-              "kind": "official",
-              "quote": "KNS_PersonToPosition, KnessetNum 10, PositionID 54: PersonID 2328 ותד מחמד, 2603 רון אמרי — each FactionName \"מערך\" from 1981-07-20",
-              "accessed": "2026-11-04"
             }
           ],
-          "confidence": "high",
+          "confidence": "medium",
           "rankNotes": [
             {
               "rank": 33,
@@ -371,11 +371,30 @@
               "rank": 40,
               "datasetName": "רון אמרי",
               "note": "Roster corrected on 2026-11-04 from the misreading \"רון אמיר\" to \"רון אמרי\" as printed (YP 2721 p. 2048; YP 2727 p. 2191); see docs/decisions/0088-roster-corrections-and-odata-audit.md."
+            },
+            {
+              "note": "Constituent-party membership is labelled secondary evidence; official OData establishes opening faction only, not internal party allocation."
             }
           ]
         }
       ],
-      "unassignedRanks": []
+      "unassignedRanks": [],
+      "sources": [
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=KnessetNum%20eq%2010",
+          "publisher": "Knesset OData (ParliamentInfo)",
+          "kind": "official",
+          "quote": "KNS_PersonToPosition, KnessetNum 10, PositionID 54: PersonID 2356 חריף משה, 2413 כץ-עוז אברהם, 2491 נעים רענן — each FactionName \"מערך\" from 1981-07-20",
+          "accessed": "2026-11-04"
+        },
+        {
+          "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=KnessetNum%20eq%2010",
+          "publisher": "Knesset OData (ParliamentInfo)",
+          "kind": "official",
+          "quote": "KNS_PersonToPosition, KnessetNum 10, PositionID 54: PersonID 2328 ותד מחמד, 2603 רון אמרי — each FactionName \"מערך\" from 1981-07-20",
+          "accessed": "2026-11-04"
+        }
+      ]
     },
     {
       "letters": "ו",
@@ -417,7 +436,12 @@
               "accessed": "2026-11-04"
             }
           ],
-          "confidence": "medium"
+          "confidence": "medium",
+          "rankNotes": [
+            {
+              "note": "Constituent-party membership is labelled secondary evidence; official OData establishes opening faction only, not internal party allocation."
+            }
+          ]
         },
         {
           "id": "black-panthers",
@@ -435,13 +459,19 @@
               "accessed": "2026-11-04"
             }
           ],
-          "confidence": "medium"
+          "confidence": "medium",
+          "rankNotes": [
+            {
+              "note": "Constituent-party membership is labelled secondary evidence; official OData establishes opening faction only, not internal party allocation."
+            }
+          ]
         }
       ],
-      "unassignedRanks": []
+      "unassignedRanks": [],
+      "sources": []
     },
     {
-      "letters": "הם",
+      "letters": "הס",
       "nameHe": "ביטול חוק מס הכנסה",
       "englishName": {
         "label": "Bitul Hok Mas Hakhnasa",
@@ -461,7 +491,7 @@
       }
     },
     {
-      "letters": "טן",
+      "letters": "טז",
       "nameHe": "המועצה להצלת המולדת – רשימה משותפת לכנסת",
       "englishName": {
         "label": "HaMoatza LeHatzalat HaMoledet",
@@ -471,7 +501,7 @@
       }
     },
     {
-      "letters": "יפ",
+      "letters": "יס",
       "nameHe": "יעד",
       "englishName": {
         "label": "Yaad",
@@ -501,7 +531,7 @@
       }
     },
     {
-      "letters": "נן",
+      "letters": "נז",
       "nameHe": "רשימת האחוה הערבית",
       "englishName": {
         "label": "Reshimat HaAhva HaAravit",
@@ -511,8 +541,8 @@
       }
     },
     {
-      "letters": "נכ",
-      "nameHe": "התנועה למען עליה",
+      "letters": "נס",
+      "nameHe": "הרשימה למען עליה",
       "englishName": {
         "label": "HaTnua Lemaan Aliya",
         "kind": "transliteration",
@@ -541,7 +571,7 @@
       }
     },
     {
-      "letters": "פז",
+      "letters": "סז",
       "nameHe": "תנועת האוהלים",
       "englishName": {
         "label": "Tnuat HaOhalim",
@@ -551,7 +581,7 @@
       }
     },
     {
-      "letters": "קן",
+      "letters": "קי",
       "nameHe": "עוצמה",
       "englishName": {
         "label": "Otzma",
@@ -621,6 +651,13 @@
       ],
       "notes": "Membership by list at the swearing-in of the first government after the election, from the coalition table of the Hebrew Wikipedia government article (faction, seats, start/end dates), cross-checked against Knesset OData ministerial records for that GovernmentNum. Bloc colours are neutral display suggestions, not party colours.",
       "sources": [
+        {
+          "url": "https://fs.knesset.gov.il/10/Plenum/10_ptm_529613.pdf",
+          "publisher": "Knesset plenum, 5 August 1981, printed p. 82 (PDF p. 1)",
+          "kind": "official",
+          "quote": "ההסכם הקואליציוני לכנסת העשירית בין הסיעות: הליכוד, המפלגה הדתית לאומית, יהדות התורה — אגודת ישראל והתנועה למסורת ישראל",
+          "accessed": "2026-11-06"
+        },
         {
           "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%AA%D7%A9%D7%A2_%D7%A2%D7%A9%D7%A8%D7%94",
           "publisher": "Hebrew Wikipedia",
@@ -732,7 +769,7 @@
       ],
       "notes": [
         "Partial: President Navon stated that 61 MKs backed Begin (Likud 48 + NRP 6 + Agudat Yisrael 4 + Tami 3, the parties UPI names). What the Alignment, Hadash, Tehiya, Telem, Shinui and Ratz told the President is not stated as a recommendation in the sources retrieved (JTA describes leanings only), so they are 'not stated', not 'no recommendation'.",
-        "Mandate given to Begin on 15 July 1981 (Navon's letter is dated 16 July in the State Archives account). UPI's 1981 pages returned 403 to a direct request on 2026-11-05; their quotes are from a search-index extract. The State Archives chapter also returned 403; its quote is from a search-index extract."
+        "Formal mandate date is disputed: press reports point to 15 July 1981; the State Archives account dates the presidential letter to 16 July. Neither original letter nor original wire bulletin has been inspected. UPI and ISA quotations are retained search-index extracts (direct requests returned 403)."
       ]
     }
   ],

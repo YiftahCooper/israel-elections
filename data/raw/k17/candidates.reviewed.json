@@ -1,7 +1,7 @@
 {
   "id": "k17",
   "sourceId": "k17-candidates-gazette",
-  "reviewedOn": "2026-11-03",
+  "reviewedOn": "2026-11-06",
   "method": "Manual visual reading of pdfjs PNG renderings; wasmUrl=node_modules/pdfjs-dist/wasm/. Ranks are printed ranks, page is the gazette page number. Uncertain complete rosters omitted under the owner-approved per-list fallback; no guessed names published. Punctuation in confirmed names follows the scan. Archived primary CEC candidate HTML additionally resolved UTJ/Shas spellings and Kadima line wrapping; all consulted URLs and captured names are retained in candidates-archive.crosscheck.json. Elected-rank review: candidate and section 4 results scans rendered at scale 4 with pdfjs-dist 6.5.438 and local wasmUrl; visually compared name by name. Every winning list retains at least ranks 1..seats. Later unresolved ranks do not suppress a verified prefix. Results spellings and explicit variants are retained separately in electedCrossCheck; no secondary transcription supplies the new published names.",
   "lists": [
     {
@@ -1802,7 +1802,7 @@
         },
         {
           "rank": 5,
-          "nameHe": "סלומינסקי ניסן",
+          "nameHe": "סולומינסקי ניסן",
           "page": 2190
         },
         {
@@ -1812,7 +1812,7 @@
         },
         {
           "rank": 7,
-          "nameHe": "גבאי אליהו ברוך",
+          "nameHe": "גבאי אליהו בדור",
           "page": 2190
         },
         {
@@ -1853,9 +1853,9 @@
           "אורלב זבולון",
           "הנדל צבי",
           "איתם אפרים",
-          "סלומינסקי ניסן",
+          "סולומינסקי ניסן",
           "לוי יצחק",
-          "גבאי אליהו ברוך",
+          "גבאי אליהו בדור",
           "אלדד אריה",
           "אריאל אורי יהודה"
         ],
@@ -1864,9 +1864,9 @@
           "אורלב זבולון",
           "הנדל צבי",
           "איתם אפרים",
-          "סלומינסקי ניסן",
+          "סולומינסקי ניסן",
           "לוי יצחק",
-          "גבאי אליהו ברוך",
+          "גבאי אליהו בדור",
           "אלדד אריה",
           "אריאל אורי-יהודה"
         ],
@@ -2883,7 +2883,7 @@
         },
         {
           "rank": 3,
-          "nameHe": "חסון ארדי ישראל",
+          "nameHe": "חסון אדוי ישראל",
           "page": 2193
         },
         {
@@ -2903,7 +2903,7 @@
         },
         {
           "rank": 7,
-          "nameHe": "לנדבר אהרון- סופיה סוניה",
+          "nameHe": "לנדבר-אהרון סופיה סוניה",
           "page": 2193
         },
         {
@@ -3009,11 +3009,11 @@
         "namesHe": [
           "ליברמן אביגדור",
           "שטרן יורי",
-          "חסון ארדי ישראל",
+          "חסון אדוי ישראל",
           "שגל יוסף",
           "טרטמן אסתרינה",
           "מיסז'ניקוב סטס",
-          "לנדבר אהרון- סופיה סוניה",
+          "לנדבר-אהרון סופיה סוניה",
           "אהרונוביץ יצחק",
           "אילטוב רוברט",
           "מילר אלכס",
@@ -3022,7 +3022,7 @@
         "resultsNamesHe": [
           "ליברמן אביגדור",
           "שטרן יורי",
-          "חסון ארדי ישראל",
+          "חסון אדוי ישראל",
           "שגל יוסף",
           "טרטמן אסתרינה",
           "מיסז'ניקוב סטס",
@@ -3035,9 +3035,9 @@
         "nameVariants": [
           {
             "rank": 7,
-            "candidateNameHe": "לנדבר אהרון- סופיה סוניה",
+            "candidateNameHe": "לנדבר-אהרון סופיה סוניה",
             "resultsNameHe": "לנדבר אהרון סופיה סוניה",
-            "explanation": "Candidate p. 2193 wraps אהרון- below לנדבר in the family-name column at rank 7. Results p. 2467 explicitly assigns לנדבר אהרון to rank 7, without the trailing hyphen, and אהרונוביץ to rank 8. The results notice resolves the row assignment; preserve the printed trailing hyphen in the registered surname. The previous transcription wrongly attached אהרון- to rank 8’s given name."
+            "explanation": "Candidate p. 2193 wraps the compound surname לנדבר / אהרון- in the family-name column; join it as לנדבר-אהרון. Results p. 2467 prints לנדבר אהרון without a hyphen. Both notices assign it to rank 7; אהרונוביץ is rank 8."
           }
         ],
         "result": "matches-results-notice-with-documented-name-variants",
@@ -3167,7 +3167,7 @@
         },
         {
           "rank": 10,
-          "nameHe": "לבנת לימור אהובה",
+          "nameHe": "לבנת לימור אהבה",
           "page": 2194
         },
         {
@@ -3216,7 +3216,7 @@
           "ריבלין ראובן רובי",
           "נוה דני",
           "שטייניץ יובל",
-          "לבנת לימור אהובה",
+          "לבנת לימור אהבה",
           "שרנסקי נתן אנטולי",
           "כץ ישראל"
         ],
@@ -3230,7 +3230,7 @@
           "ריבלין ראובן רובי",
           "נוה דני",
           "שטייניץ יובל",
-          "לבנת לימור אהובה",
+          "לבנת לימור אהבה",
           "שרנסקי נתן אנטולי",
           "כץ ישראל"
         ],
@@ -5433,19 +5433,19 @@
       "letters": "ל",
       "rank": 3,
       "before": "חסון ארני ישראל",
-      "after": "חסון ארדי ישראל",
+      "after": "חסון אדוי ישראל",
       "candidatePage": 2193,
       "resultsPage": 2467,
-      "note": "Both official scans print ארדי."
+      "note": "Fixer visual re-reading, 6 November 2026: candidate notice p. 2193, results notice p. 2467: חסון אדוי ישראל."
     },
     {
       "letters": "ל",
       "rank": 7,
       "before": "לנדבר סופיה סוניה",
-      "after": "לנדבר אהרון- סופיה סוניה",
+      "after": "לנדבר-אהרון סופיה סוניה",
       "candidatePage": 2193,
       "resultsPage": 2467,
-      "note": "Results notice resolves the wrapped family-name continuation at rank 7; candidate-notice trailing hyphen retained."
+      "note": "Fixer re-reading: wrapped compound surname joined as לנדבר-אהרון (YP 5504 p. 2193); YP 5514 p. 2467 prints לנדבר אהרון. The former trailing hyphen was a line-wrap artefact."
     },
     {
       "letters": "ל",
@@ -5455,6 +5455,33 @@
       "candidatePage": 2193,
       "resultsPage": 2467,
       "note": "אהרון- belongs to rank 7’s family-name column. Neither scan prints an apostrophe after rank 8’s surname."
+    },
+    {
+      "letters": "טב",
+      "rank": 7,
+      "before": "גבאי אליהו ברוך",
+      "after": "גבאי אליהו בדור",
+      "candidatePage": 2190,
+      "resultsPage": 2466,
+      "note": "Fixer visual re-reading, 6 November 2026: candidate notice p. 2190, results notice p. 2466: גבאי אליהו בדור."
+    },
+    {
+      "letters": "טב",
+      "rank": 5,
+      "before": "סלומינסקי ניסן",
+      "after": "סולומינסקי ניסן",
+      "candidatePage": 2190,
+      "resultsPage": 2466,
+      "note": "Fixer visual re-reading, 6 November 2026: candidate notice p. 2190, results notice p. 2466: סולומינסקי ניסן. Knesset OData uses סלומינסקי ניסן; both gazettes print סולומינסקי ניסן, which controls this transcription."
+    },
+    {
+      "letters": "מחל",
+      "rank": 10,
+      "before": "לבנת לימור אהובה",
+      "after": "לבנת לימור אהבה",
+      "candidatePage": 2194,
+      "resultsPage": 2468,
+      "note": "Fixer visual re-reading, 6 November 2026: candidate notice p. 2194, results notice p. 2468: לבנת לימור אהבה."
     }
   ]
 }

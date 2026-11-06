@@ -308,7 +308,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k7.json",
-      "sha256": "721fd2414c967a189c18f246f49f28cf43917b335c46c500bcf617f1e8033ab7",
+      "sha256": "6aeaff3a56bf928795b1d29948cd2132ea61158f1d5508f8fe48c28c80912359",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k8": {
@@ -322,21 +322,21 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k9.json",
-      "sha256": "3435309ed5ef70b846f4979660a8e907bf3c579ef6a8fed01ff849180cf79dda",
+      "sha256": "9f3ff9e738ebc11912f80ab71a30cc52f510923471f361c792faf09137b2238d",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k10": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k10.json",
-      "sha256": "87d0bc1a4ed989f706f4052855d5e8cb8c30c4d562d31f4cf285ce712dcaae8b",
+      "sha256": "ac710dff899b176e8b5152bc3afe1257a0a1022eb7cc65d61ea49fc66f5c6119",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k11": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k11.json",
-      "sha256": "2b54ce215796bedbf46eb10fa56543969db30ed67ca2df4962ad80f7f58a5423",
+      "sha256": "f42b6a28991a34acc8bdb896b0699b74de0b2e5e4618fec42fdd79461c8543e0",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k12": {
@@ -350,42 +350,42 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k13.json",
-      "sha256": "92643f881b9e43ed4e3e55ddae9558c649c4193f9bfaa9ac91e54a70d70ae9fe",
+      "sha256": "6075f9aba1d51098c5a8c65c0b7b889264112d681e1baaeaeb575e1ce6738268",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k14": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k14.json",
-      "sha256": "3938db2f3d61463bf1d99deaa3473657be1fab46f2354adaf8a20adebb58959a",
+      "sha256": "d5261fca18ef313f05a3afdbf62b89c09bf9fe6522b5d5d183e13e97f2bbe470",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k15": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k15.json",
-      "sha256": "87e7add2a362ad72c7ce6bab9fff8f41a0b00c07ffc32089a6cc04216d2fe9fe",
+      "sha256": "8669c994eaffe4342f03353bfa166c7270e701d4eabb321030b02b493b46ffb0",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k16": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k16.json",
-      "sha256": "d2a7f1e7c85c1d37a04e7fc7fdaa00c31586004e3db1251a3deed3fa3ad200d5",
+      "sha256": "06f494841743daa22a23b34acdd003fb7874751ae5c5c840eaf46d9a29cf1415",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k17": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k17.json",
-      "sha256": "f63ef83e3e208aec18fb69da1590832ee68fc931fcc6083137afeab421220e91",
+      "sha256": "0aebe35a52aad424fd80d82c3b84a8eea2b1c48e0db8e4fc7617f0b43c887dd2",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k18": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k18.json",
-      "sha256": "1960389cb042036aaa4a8743c4f869cecebb261eed345a42e2636a1658068645",
+      "sha256": "8f014955a071800d56cd243e3ff3c4c9e6da2f8dcb64b211eb7b5a2484378059",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k19": {
@@ -406,7 +406,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k21.json",
-      "sha256": "e5d1dd8eac1e3bab0be09972cb0155674eedff6c5762240c89f792f9fe1f6d73",
+      "sha256": "c5eedbfbd1c299ffba819af168b47bf80a74603ad75eb8621dc221fc46d19bd5",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k22": {
@@ -938,7 +938,8 @@
             "k7",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed 1969 ballot-list display name (YP 1573, כינוי הרשימה); not a claim about the registered party name."
         },
         {
           "date": "1973-12-31",
@@ -960,12 +961,13 @@
             "k9",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name in YP 2326; not a claim about the registered party name."
         },
         {
           "date": "1981-06-30",
           "datePrecision": "day",
-          "nameHe": "המחנה התורתי, פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
+          "nameHe": "המחנה התורתי – פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
           "nameEn": "Poalei Agudat Yisrael",
           "sources": [
             "k10",
@@ -1102,7 +1104,8 @@
             "k7",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed 1969 ballot-list display name (YP 1573, כינוי הרשימה); not a claim about the registered party name."
         },
         {
           "date": "1973-12-31",
@@ -1124,7 +1127,8 @@
             "k9",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name in YP 2326; not a claim about the registered party name."
         },
         {
           "date": "1981-06-30",
@@ -1140,7 +1144,7 @@
         {
           "date": "1984-07-23",
           "datePrecision": "day",
-          "nameHe": "יהדות התורה אגודת ישראל",
+          "nameHe": "יהדות התורה – אגודת ישראל",
           "nameEn": "Agudat Yisrael",
           "sources": [
             "k11",
@@ -2957,7 +2961,8 @@
             "k7",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed 1969 ballot-list display name (YP 1573, כינוי הרשימה); not a claim about the registered party name."
         },
         {
           "date": "1973-12-31",
@@ -2979,7 +2984,8 @@
             "k9",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name in YP 2326; not a claim about the registered party name."
         },
         {
           "date": "1981-06-30",
@@ -3017,7 +3023,7 @@
         {
           "date": "1992-06-23",
           "datePrecision": "day",
-          "nameHe": "מפד״ל חזית דתית לאומית - המזרחי הפועל המזרחי",
+          "nameHe": "מפד״ל, חזית דתית לאומית - המזרחי, הפועל המזרחי",
           "nameEn": "NRP",
           "sources": [
             "k13",
@@ -4017,7 +4023,8 @@
             "k7",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed 1969 ballot-list display name (YP 1573, כינוי הרשימה); not a claim about the registered party name."
         },
         {
           "date": "1973-12-31",
@@ -4117,7 +4124,8 @@
             "k7",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed 1969 ballot-list display name (YP 1573, כינוי הרשימה); not a claim about the registered party name."
         },
         {
           "date": "1973-12-31",
@@ -4411,7 +4419,8 @@
             "k18",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name (כינוי הרשימה), not a registered party-name claim; YP 5909."
         },
         {
           "date": "2013-01-22",
@@ -4444,7 +4453,8 @@
             "k21",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name in k21; not a claim about the registered submitting party name."
         },
         {
           "date": "2019-09-17",
@@ -5894,28 +5904,16 @@
             "proposal"
           ],
           "status": "observed-local-dataset"
-        },
-        {
-          "date": "1981-06-30",
-          "datePrecision": "day",
-          "nameHe": "רשימת הגימלאים והקשישים בישראל",
-          "nameEn": "Moked",
-          "sources": [
-            "k10",
-            "proposal"
-          ],
-          "status": "observed-local-dataset"
         }
       ],
       "aliases": [],
       "activePeriod": {
         "from": "1977-05-17",
-        "to": "1981-06-30",
+        "to": "1977-05-17",
         "datePrecision": "day",
         "basis": "observed-election-appearances-not-lifetime"
       },
       "sources": [
-        "k10",
         "k9",
         "proposal"
       ],
@@ -6025,7 +6023,7 @@
         {
           "date": "1977-05-17",
           "datePrecision": "day",
-          "nameHe": "דמוקרטים בצדק",
+          "nameHe": "דו קיום בצדק",
           "nameEn": null,
           "sources": [
             "k9",
@@ -6057,7 +6055,7 @@
         {
           "date": "1977-05-17",
           "datePrecision": "day",
-          "nameHe": "התנועה להתחדשות חברתית בראשותו של מרדכי בן־פורת",
+          "nameHe": "התנועה להתחדשות ציונית חברתית בראשותו של מרדכי בן־פורת",
           "nameEn": null,
           "sources": [
             "k9",
@@ -6089,7 +6087,7 @@
         {
           "date": "1977-05-17",
           "datePrecision": "day",
-          "nameHe": "בית ישראל, ברית נאמני תימן ועדות ישראל",
+          "nameHe": "בית ישראל, ברית יוצאי תימן ועדות ישראל",
           "nameEn": null,
           "sources": [
             "k9",
@@ -6217,7 +6215,7 @@
         {
           "date": "1977-05-17",
           "datePrecision": "day",
-          "nameHe": "הפנתרים הציוניים, רשימת ציבור ודורשי עבודה",
+          "nameHe": "הפנתרים הציוניים, רשימת עובדי ייצור וועדי עובדים",
           "nameEn": null,
           "sources": [
             "k9",
@@ -6249,7 +6247,7 @@
         {
           "date": "1977-05-17",
           "datePrecision": "day",
-          "nameHe": "חופש, חזית פועלים, פנתרים שחורים, ישראל הצעירה, יוצאי עדות, ועדי שכונות עוני ובלתי מפלגתיים",
+          "nameHe": "חופש, חזית פועלים, פנתרים שחורים, ישראל הצעירה, יוצאי עודד, ועדי שכונות עוני ובלתי מפלגתיים",
           "nameEn": null,
           "sources": [
             "k9",
@@ -6564,7 +6562,7 @@
         {
           "date": "1992-06-23",
           "datePrecision": "day",
-          "nameHe": "תחיה",
+          "nameHe": "התחיה",
           "nameEn": "Tehiya",
           "sources": [
             "k13",
@@ -6594,13 +6592,13 @@
       "id": "vehicle-10-ט",
       "entityType": "electoral-vehicle",
       "nameHe": "ישראל אחת",
-      "nameEn": "Yahad",
+      "nameEn": "One Israel",
       "names": [
         {
           "date": "1981-06-30",
           "datePrecision": "day",
           "nameHe": "ישראל אחת",
-          "nameEn": "Yahad",
+          "nameEn": "One Israel",
           "sources": [
             "k10",
             "proposal"
@@ -6734,29 +6732,17 @@
             "proposal"
           ],
           "status": "observed-local-dataset"
-        },
-        {
-          "date": "1984-07-23",
-          "datePrecision": "day",
-          "nameHe": "שילוב רשימה עצמאית של עולי ההר לכנסת",
-          "nameEn": "Sheli",
-          "sources": [
-            "k11",
-            "proposal"
-          ],
-          "status": "observed-local-dataset"
         }
       ],
       "aliases": [],
       "activePeriod": {
         "from": "1981-06-30",
-        "to": "1984-07-23",
+        "to": "1981-06-30",
         "datePrecision": "day",
         "basis": "observed-election-appearances-not-lifetime"
       },
       "sources": [
         "k10",
-        "k11",
         "proposal"
       ],
       "status": "observed-local-dataset",
@@ -7053,13 +7039,13 @@
     {
       "id": "vehicle-10-נכ",
       "entityType": "electoral-vehicle",
-      "nameHe": "התנועה למען עליה",
+      "nameHe": "הרשימה למען עליה",
       "nameEn": null,
       "names": [
         {
           "date": "1981-06-30",
           "datePrecision": "day",
-          "nameHe": "התנועה למען עליה",
+          "nameHe": "הרשימה למען עליה",
           "nameEn": null,
           "sources": [
             "k10",
@@ -7392,7 +7378,8 @@
             "k18",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name (כינוי הרשימה), not a registered party-name claim; YP 5909."
         },
         {
           "date": "2013-01-22",
@@ -7425,7 +7412,8 @@
             "k21",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name in k21; not a claim about the registered submitting party name."
         },
         {
           "date": "2019-09-17",
@@ -7594,7 +7582,8 @@
             "k21",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name in k21; not a claim about the registered submitting party name."
         },
         {
           "date": "2019-09-17",
@@ -7914,13 +7903,13 @@
       "id": "vehicle-11-ע",
       "entityType": "electoral-vehicle",
       "nameHe": "ארגון ארצי להגנת הדייר",
-      "nameEn": "Arab Democratic Party",
+      "nameEn": "National Tenants’ Protection Organisation",
       "names": [
         {
           "date": "1984-07-23",
           "datePrecision": "day",
           "nameHe": "ארגון ארצי להגנת הדייר",
-          "nameEn": "Arab Democratic Party",
+          "nameEn": "National Tenants’ Protection Organisation",
           "sources": [
             "k11",
             "proposal"
@@ -7977,13 +7966,13 @@
     {
       "id": "vehicle-11-דף",
       "entityType": "electoral-vehicle",
-      "nameHe": "לבא אליאב לכנסת",
+      "nameHe": "לובה אליאב לכנסת",
       "nameEn": null,
       "names": [
         {
           "date": "1984-07-23",
           "datePrecision": "day",
-          "nameHe": "לבא אליאב לכנסת",
+          "nameHe": "לובה אליאב לכנסת",
           "nameEn": null,
           "sources": [
             "k11",
@@ -8009,13 +7998,13 @@
     {
       "id": "vehicle-11-הם",
       "entityType": "electoral-vehicle",
-      "nameHe": "הס מס, תנועה לביטול חוק מס הכנסה",
+      "nameHe": "הס־מס, תנועה לביטול חוק מס־הכנסה",
       "nameEn": null,
       "names": [
         {
           "date": "1984-07-23",
           "datePrecision": "day",
-          "nameHe": "הס מס, תנועה לביטול חוק מס הכנסה",
+          "nameHe": "הס־מס, תנועה לביטול חוק מס־הכנסה",
           "nameEn": null,
           "sources": [
             "k11",
@@ -8137,13 +8126,13 @@
     {
       "id": "vehicle-11-פט",
       "entityType": "electoral-vehicle",
-      "nameHe": "עצמאות בראשות עזרא זהר",
+      "nameHe": "עצמאות בראשות עזרה זהר",
       "nameEn": null,
       "names": [
         {
           "date": "1984-07-23",
           "datePrecision": "day",
-          "nameHe": "עצמאות בראשות עזרא זהר",
+          "nameHe": "עצמאות בראשות עזרה זהר",
           "nameEn": null,
           "sources": [
             "k11",
@@ -8201,13 +8190,13 @@
     {
       "id": "vehicle-11-פז",
       "entityType": "electoral-vehicle",
-      "nameHe": "א.נ.י. – ארגון נכים",
+      "nameHe": "א. נ. – ארגון נכים",
       "nameEn": null,
       "names": [
         {
           "date": "1984-07-23",
           "datePrecision": "day",
-          "nameHe": "א.נ.י. – ארגון נכים",
+          "nameHe": "א. נ. – ארגון נכים",
           "nameEn": null,
           "sources": [
             "k11",
@@ -8493,13 +8482,13 @@
     {
       "id": "vehicle-12-הן",
       "entityType": "alliance",
-      "nameHe": "תנועת המרכז – שינוי (שינוי־לע״מ־המרכז הליברלי)",
+      "nameHe": "תנועת המרכז – שינוי (שינוי – ל״ע – המרכז הליברלי)",
       "nameEn": "Shinui",
       "names": [
         {
           "date": "1988-11-01",
           "datePrecision": "day",
-          "nameHe": "תנועת המרכז – שינוי (שינוי־לע״מ־המרכז הליברלי)",
+          "nameHe": "תנועת המרכז – שינוי (שינוי – ל״ע – המרכז הליברלי)",
           "nameEn": "Shinui",
           "sources": [
             "k12"
@@ -8984,13 +8973,13 @@
     {
       "id": "vehicle-12-זב",
       "entityType": "electoral-vehicle",
-      "nameHe": "אחדות – למען ישועה וחיים לכנסת",
+      "nameHe": "אחדות – למען ויקטור תייר לכנסת",
       "nameEn": null,
       "names": [
         {
           "date": "1988-11-01",
           "datePrecision": "day",
-          "nameHe": "אחדות – למען ישועה וחיים לכנסת",
+          "nameHe": "אחדות – למען ויקטור תייר לכנסת",
           "nameEn": null,
           "sources": [
             "k12",
@@ -9016,13 +9005,13 @@
     {
       "id": "vehicle-12-זפ",
       "entityType": "electoral-vehicle",
-      "nameHe": "זעם ורעש",
+      "nameHe": "תרשיש",
       "nameEn": null,
       "names": [
         {
           "date": "1988-11-01",
           "datePrecision": "day",
-          "nameHe": "זעם ורעש",
+          "nameHe": "תרשיש",
           "nameEn": null,
           "sources": [
             "k12",
@@ -9224,13 +9213,13 @@
     {
       "id": "vehicle-12-מעם",
       "entityType": "electoral-vehicle",
-      "nameHe": "תנועה למען מועמדים־ערי פיתוח ושכונות",
+      "nameHe": "תנועה למען מושבים, ערי פיתוח ושכונות",
       "nameEn": null,
       "names": [
         {
           "date": "1988-11-01",
           "datePrecision": "day",
-          "nameHe": "תנועה למען מועמדים־ערי פיתוח ושכונות",
+          "nameHe": "תנועה למען מושבים, ערי פיתוח ושכונות",
           "nameEn": null,
           "sources": [
             "k12",
@@ -9384,13 +9373,13 @@
     {
       "id": "vehicle-13-מרצ",
       "entityType": "alliance",
-      "nameHe": "מרצ - ישראל הדמוקרטית - רצ מפם שינוי",
+      "nameHe": "מרצ - ישראל הדמוקרטית - רצ, מפם, שינוי",
       "nameEn": "Meretz",
       "names": [
         {
           "date": "1992-06-23",
           "datePrecision": "day",
-          "nameHe": "מרצ - ישראל הדמוקרטית - רצ מפם שינוי",
+          "nameHe": "מרצ - ישראל הדמוקרטית - רצ, מפם, שינוי",
           "nameEn": "Meretz",
           "sources": [
             "k13"
@@ -9537,7 +9526,7 @@
         {
           "date": "2009-02-10",
           "datePrecision": "day",
-          "nameHe": "חד\"ש החזית הדמוקרטית לשלום ושיוויון )המפלגה הקומוניסטית הישראלית וחוגי ציבור ערבים ויהודים(",
+          "nameHe": "חד\"ש החזית הדמוקרטית לשלום ושיוויון (המפלגה הקומוניסטית הישראלית וחוגי ציבור ערבים ויהודים)",
           "nameEn": "Hadash",
           "sources": [
             "k18",
@@ -9728,14 +9717,14 @@
     {
       "id": "vehicle-13-ד",
       "entityType": "electoral-vehicle",
-      "nameHe": "התנועה הלאומית הדמוקרטית ועליה",
-      "nameEn": "National Democratic Movement and Aliyah",
+      "nameHe": "התנועה הלאומית לדמוקרטיה ועליה",
+      "nameEn": "National Movement for Democracy and Aliyah",
       "names": [
         {
           "date": "1992-06-23",
           "datePrecision": "day",
-          "nameHe": "התנועה הלאומית הדמוקרטית ועליה",
-          "nameEn": "National Democratic Movement and Aliyah",
+          "nameHe": "התנועה הלאומית לדמוקרטיה ועליה",
+          "nameEn": "National Movement for Democracy and Aliyah",
           "sources": [
             "k13",
             "proposal"
@@ -9760,13 +9749,13 @@
     {
       "id": "vehicle-13-ק",
       "entityType": "electoral-vehicle",
-      "nameHe": "גימלאים עולים קשישים בישראל",
+      "nameHe": "גימלאים, עולים וקשישים",
       "nameEn": "Pensioners, Immigrants and Elderly",
       "names": [
         {
           "date": "1992-06-23",
           "datePrecision": "day",
-          "nameHe": "גימלאים עולים קשישים בישראל",
+          "nameHe": "גימלאים, עולים וקשישים",
           "nameEn": "Pensioners, Immigrants and Elderly",
           "sources": [
             "k13",
@@ -9792,13 +9781,13 @@
     {
       "id": "vehicle-13-נז",
       "entityType": "electoral-vehicle",
-      "nameHe": "תנועת נפגעי משכנתאות חסרי דיור ועולים משוחררים",
+      "nameHe": "תנועת נפגעי משכנתאות, חסרי דיור וחיילים משוחררים",
       "nameEn": "Mortgage Victims",
       "names": [
         {
           "date": "1992-06-23",
           "datePrecision": "day",
-          "nameHe": "תנועת נפגעי משכנתאות חסרי דיור ועולים משוחררים",
+          "nameHe": "תנועת נפגעי משכנתאות, חסרי דיור וחיילים משוחררים",
           "nameEn": "Mortgage Victims",
           "sources": [
             "k13",
@@ -9856,13 +9845,13 @@
     {
       "id": "vehicle-13-יז",
       "entityType": "electoral-vehicle",
-      "nameHe": "התורה הארץ בראשות הרב משה לוינגר",
+      "nameHe": "התורה והארץ בראשות הרב משה לוינגר",
       "nameEn": "Torah and Land",
       "names": [
         {
           "date": "1992-06-23",
           "datePrecision": "day",
-          "nameHe": "התורה הארץ בראשות הרב משה לוינגר",
+          "nameHe": "התורה והארץ בראשות הרב משה לוינגר",
           "nameEn": "Torah and Land",
           "sources": [
             "k13",
@@ -9952,13 +9941,13 @@
     {
       "id": "vehicle-13-יד",
       "entityType": "electoral-vehicle",
-      "nameHe": "התקוה - תנועה חברתית לרווחה בראשות צ׳רלי ביטון",
+      "nameHe": "התקוה - תנועה חברתית לוחמת בראשות צ׳רלי ביטון",
       "nameEn": "Hatikva",
       "names": [
         {
           "date": "1992-06-23",
           "datePrecision": "day",
-          "nameHe": "התקוה - תנועה חברתית לרווחה בראשות צ׳רלי ביטון",
+          "nameHe": "התקוה - תנועה חברתית לוחמת בראשות צ׳רלי ביטון",
           "nameEn": "Hatikva",
           "sources": [
             "k13",
@@ -10016,13 +10005,13 @@
     {
       "id": "vehicle-13-כי",
       "entityType": "electoral-vehicle",
-      "nameHe": "תל״י התנועה להתחדשות ישראל",
+      "nameHe": "תל״י תנועה להתחדשות ישראל",
       "nameEn": "Israeli Renewal Movement",
       "names": [
         {
           "date": "1992-06-23",
           "datePrecision": "day",
-          "nameHe": "תל״י התנועה להתחדשות ישראל",
+          "nameHe": "תל״י תנועה להתחדשות ישראל",
           "nameEn": "Israeli Renewal Movement",
           "sources": [
             "k13",
@@ -10048,14 +10037,14 @@
     {
       "id": "vehicle-13-זה",
       "entityType": "electoral-vehicle",
-      "nameHe": "ציפר",
-      "nameEn": "Tziper",
+      "nameHe": "ציפור",
+      "nameEn": "Tzipor",
       "names": [
         {
           "date": "1992-06-23",
           "datePrecision": "day",
-          "nameHe": "ציפר",
-          "nameEn": "Tziper",
+          "nameHe": "ציפור",
+          "nameEn": "Tzipor",
           "sources": [
             "k13",
             "proposal"
@@ -10155,13 +10144,13 @@
     {
       "id": "vehicle-14-מרצ",
       "entityType": "alliance",
-      "nameHe": "מרצ - ישראל הדמוקרטית רצ מפם שינוי",
+      "nameHe": "מרצ - ישראל הדמוקרטית רצ, מפ\"ם, שינוי",
       "nameEn": "Meretz",
       "names": [
         {
           "date": "1996-05-29",
           "datePrecision": "day",
-          "nameHe": "מרצ - ישראל הדמוקרטית רצ מפם שינוי",
+          "nameHe": "מרצ - ישראל הדמוקרטית רצ, מפ\"ם, שינוי",
           "nameEn": "Meretz",
           "sources": [
             "k14"
@@ -10185,13 +10174,13 @@
     {
       "id": "yisrael-baaliyah",
       "entityType": "party",
-      "nameHe": "ישראל בעליה בראשותו של נתן שרנסקי",
+      "nameHe": "ישראל בעלייה בראשותו של נתן שרנסקי",
       "nameEn": "Yisrael BaAliyah",
       "names": [
         {
           "date": "1996-05-29",
           "datePrecision": "day",
-          "nameHe": "ישראל בעליה בראשותו של נתן שרנסקי",
+          "nameHe": "ישראל בעלייה בראשותו של נתן שרנסקי",
           "nameEn": "Yisrael BaAliyah",
           "sources": [
             "k14",
@@ -10280,7 +10269,7 @@
         {
           "date": "2006-03-28",
           "datePrecision": "day",
-          "nameHe": "אלתג׳מוע אלווטני אל דמוקרטי - בל״ד",
+          "nameHe": "אלתג׳מוע אלווטני אל דימוקרטי - בל״ד",
           "nameEn": "Balad",
           "sources": [
             "k17",
@@ -10736,14 +10725,14 @@
     {
       "id": "vehicle-14-ק",
       "entityType": "electoral-vehicle",
-      "nameHe": "אחדות למען השלום בראשות אפרים גור",
-      "nameEn": "Unity for Peace",
+      "nameHe": "אחדות למען העליה בראשות אפרים גור",
+      "nameEn": "Unity for Aliyah",
       "names": [
         {
           "date": "1996-05-29",
           "datePrecision": "day",
-          "nameHe": "אחדות למען השלום בראשות אפרים גור",
-          "nameEn": "Unity for Peace",
+          "nameHe": "אחדות למען העליה בראשות אפרים גור",
+          "nameEn": "Unity for Aliyah",
           "sources": [
             "k14",
             "proposal"
@@ -10800,14 +10789,14 @@
     {
       "id": "vehicle-14-פא",
       "entityType": "electoral-vehicle",
-      "nameHe": "הברית הדמוקרטית",
-      "nameEn": "Democratic Alliance",
+      "nameHe": "הברית המתקדמת",
+      "nameEn": "Progressive Alliance",
       "names": [
         {
           "date": "1996-05-29",
           "datePrecision": "day",
-          "nameHe": "הברית הדמוקרטית",
-          "nameEn": "Democratic Alliance",
+          "nameHe": "הברית המתקדמת",
+          "nameEn": "Progressive Alliance",
           "sources": [
             "k14",
             "proposal"
@@ -10832,13 +10821,13 @@
     {
       "id": "telem-emuna",
       "entityType": "party",
-      "nameHe": "תלם אמונה תימן בדרכי נועם בראשות הרב יוסף עזרן",
+      "nameHe": "תלם אמונה יהדות בדרכי נועם בראשות הרב יוסף עזרן",
       "nameEn": "Telem Emuna",
       "names": [
         {
           "date": "1996-05-29",
           "datePrecision": "day",
-          "nameHe": "תלם אמונה תימן בדרכי נועם בראשות הרב יוסף עזרן",
+          "nameHe": "תלם אמונה יהדות בדרכי נועם בראשות הרב יוסף עזרן",
           "nameEn": "Telem Emuna",
           "sources": [
             "k14",
@@ -10864,14 +10853,14 @@
     {
       "id": "vehicle-14-דן",
       "entityType": "electoral-vehicle",
-      "nameHe": "מפלגת ההתפתחות",
-      "nameEn": "Development Party",
+      "nameHe": "מפלגת ההתישבות",
+      "nameEn": "Settlement Party",
       "names": [
         {
           "date": "1996-05-29",
           "datePrecision": "day",
-          "nameHe": "מפלגת ההתפתחות",
-          "nameEn": "Development Party",
+          "nameHe": "מפלגת ההתישבות",
+          "nameEn": "Settlement Party",
           "sources": [
             "k14",
             "proposal"
@@ -11026,7 +11015,8 @@
             "k18",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name (כינוי הרשימה), not a registered party-name claim; YP 5909."
         },
         {
           "date": "2013-01-22",
@@ -11048,7 +11038,8 @@
             "k21",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name in k21; not a claim about the registered submitting party name."
         },
         {
           "date": "2019-09-17",
@@ -11110,13 +11101,13 @@
       "id": "vehicle-15-אמת",
       "entityType": "alliance",
       "nameHe": "ישראל אחת בראשות אהוד ברק - העבודה גשר מימד",
-      "nameEn": "Labor–Meimad",
+      "nameEn": "One Israel",
       "names": [
         {
           "date": "1999-05-17",
           "datePrecision": "day",
           "nameHe": "ישראל אחת בראשות אהוד ברק - העבודה גשר מימד",
-          "nameEn": "Labor–Meimad",
+          "nameEn": "One Israel",
           "sources": [
             "k15"
           ],
@@ -11167,7 +11158,7 @@
         {
           "date": "2006-03-28",
           "datePrecision": "day",
-          "nameHe": "מרצ - ישראל החברתית דמוקרטית",
+          "nameHe": "מרצ - ישראל חברתית דמוקרטית",
           "nameEn": "Meretz",
           "sources": [
             "k17",
@@ -11217,7 +11208,8 @@
             "k21",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name in k21; not a claim about the registered submitting party name."
         },
         {
           "date": "2019-09-17",
@@ -11666,7 +11658,8 @@
             "k18",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name (כינוי הרשימה), not a registered party-name claim; YP 5909."
         },
         {
           "date": "2013-01-22",
@@ -11699,7 +11692,8 @@
             "k21",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name in k21; not a claim about the registered submitting party name."
         },
         {
           "date": "2019-09-17",
@@ -11950,13 +11944,13 @@
     {
       "id": "vehicle-15-ד",
       "entityType": "alliance",
-      "nameHe": "אלתג׳מע אלוטני אלדימוקרטי (בל״ד)",
+      "nameHe": "אלתג׳מע אלוחדוי אלדמוקרטי (בל״ד)",
       "nameEn": "Balad",
       "names": [
         {
           "date": "1999-05-17",
           "datePrecision": "day",
-          "nameHe": "אלתג׳מע אלוטני אלדימוקרטי (בל״ד)",
+          "nameHe": "אלתג׳מע אלוחדוי אלדמוקרטי (בל״ד)",
           "nameEn": "Balad",
           "sources": [
             "k15"
@@ -12184,13 +12178,13 @@
     {
       "id": "vehicle-15-קז",
       "entityType": "electoral-vehicle",
-      "nameHe": "מפלגת הקזינו - עזרא טיסונה מוסד ההימורים הישראלי",
+      "nameHe": "מפלגת הקזינו - עזרא טיסונה מיסוד ההימורים בישראל",
       "nameEn": "Casino Party",
       "names": [
         {
           "date": "1999-05-17",
           "datePrecision": "day",
-          "nameHe": "מפלגת הקזינו - עזרא טיסונה מוסד ההימורים הישראלי",
+          "nameHe": "מפלגת הקזינו - עזרא טיסונה מיסוד ההימורים בישראל",
           "nameEn": "Casino Party",
           "sources": [
             "k15",
@@ -12248,13 +12242,13 @@
     {
       "id": "vehicle-15-נץ",
       "entityType": "electoral-vehicle",
-      "nameHe": "מפלגת הנגב",
+      "nameHe": "מפלגת נגב",
       "nameEn": "Negev Party",
       "names": [
         {
           "date": "1999-05-17",
           "datePrecision": "day",
-          "nameHe": "מפלגת הנגב",
+          "nameHe": "מפלגת נגב",
           "nameEn": "Negev Party",
           "sources": [
             "k15",
@@ -12344,13 +12338,13 @@
     {
       "id": "vehicle-15-קף",
       "entityType": "electoral-vehicle",
-      "nameHe": "ערבי חדש",
+      "nameHe": "הערבי החדש",
       "nameEn": "New Arab",
       "names": [
         {
           "date": "1999-05-17",
           "datePrecision": "day",
-          "nameHe": "ערבי חדש",
+          "nameHe": "הערבי החדש",
           "nameEn": "New Arab",
           "sources": [
             "k15",
@@ -12408,13 +12402,13 @@
     {
       "id": "vehicle-15-זך",
       "entityType": "electoral-vehicle",
-      "nameHe": "מורשת אבות בראשות הרב בא-גד",
+      "nameHe": "מורשת־אבות בראשות הרב בא־גד",
       "nameEn": "Moreshet Avot",
       "names": [
         {
           "date": "1999-05-17",
           "datePrecision": "day",
-          "nameHe": "מורשת אבות בראשות הרב בא-גד",
+          "nameHe": "מורשת־אבות בראשות הרב בא־גד",
           "nameEn": "Moreshet Avot",
           "sources": [
             "k15",
@@ -13155,7 +13149,8 @@
             "k18",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name (כינוי הרשימה), not a registered party-name claim; YP 5909."
         },
         {
           "date": "2013-01-22",
@@ -13218,14 +13213,14 @@
     {
       "id": "ahi",
       "entityType": "party",
-      "nameHe": "אח\"י – ציונות דתית לאומית מתחדשת",
-      "nameEn": "Ahi (Renewed Religious National Zionism)",
+      "nameHe": "ציונות דתית לאומית מתחדשת",
+      "nameEn": "Renewed Religious National Zionism",
       "names": [
         {
           "date": "2006-03-28",
           "datePrecision": "day",
-          "nameHe": "אח\"י – ציונות דתית לאומית מתחדשת",
-          "nameEn": "Ahi (Renewed Religious National Zionism)",
+          "nameHe": "ציונות דתית לאומית מתחדשת",
+          "nameEn": "Renewed Religious National Zionism",
           "sources": [
             "k17",
             "proposal"
@@ -13378,13 +13373,13 @@
     {
       "id": "vehicle-17-עם",
       "entityType": "alliance",
-      "nameHe": "הרשימה הערבית המאוחדת והתנועה הערבית להתחדשות",
+      "nameHe": "הרשימה הערבית המאוחדת התנועה הערבית להתחדשות",
       "nameEn": "Ra’am–Ta’al",
       "names": [
         {
           "date": "2006-03-28",
           "datePrecision": "day",
-          "nameHe": "הרשימה הערבית המאוחדת והתנועה הערבית להתחדשות",
+          "nameHe": "הרשימה הערבית המאוחדת התנועה הערבית להתחדשות",
           "nameEn": "Ra’am–Ta’al",
           "sources": [
             "k17"
@@ -16108,7 +16103,8 @@
             "k21",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name in k21; not a claim about the registered submitting party name."
         },
         {
           "date": "2019-09-17",
@@ -18199,7 +18195,7 @@
         {
           "date": "2019-04-09",
           "datePrecision": "day",
-          "nameHe": "יחד בראשית אלי ישי",
+          "nameHe": "יחד בראשות אלי ישי",
           "nameEn": "Yachad",
           "sources": [
             "k21",
@@ -23446,6 +23442,230 @@
       ],
       "status": "observed-local-dataset",
       "externalIds": {}
+    },
+    {
+      "id": "vehicle-18-פח",
+      "entityType": "electoral-vehicle",
+      "nameHe": "מהפך בחינוך",
+      "nameEn": null,
+      "names": [
+        {
+          "date": "2009-02-10",
+          "datePrecision": "day",
+          "nameHe": "מהפך בחינוך",
+          "nameEn": null,
+          "sources": [
+            "k18",
+            "proposal"
+          ],
+          "status": "observed-local-dataset"
+        }
+      ],
+      "aliases": [],
+      "activePeriod": {
+        "from": "2009-02-10",
+        "to": "2009-02-10",
+        "datePrecision": "day",
+        "basis": "observed-election-appearances-not-lifetime"
+      },
+      "sources": [
+        "k18",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "externalIds": {}
+    },
+    {
+      "id": "vehicle-16-זך",
+      "entityType": "electoral-vehicle",
+      "nameHe": "מורשת-אבות בראשות הרב יוסף בא-גד",
+      "nameEn": "Moreshet Avot",
+      "names": [
+        {
+          "date": "2003-01-28",
+          "datePrecision": "day",
+          "nameHe": "מורשת-אבות בראשות הרב יוסף בא-גד",
+          "sources": [
+            "k16",
+            "proposal"
+          ],
+          "status": "observed-local-dataset",
+          "nameEn": "Moreshet Avot"
+        }
+      ],
+      "aliases": [],
+      "activePeriod": {
+        "from": "2003-01-28",
+        "to": "2003-01-28",
+        "datePrecision": "day",
+        "basis": "observed-election-appearances-not-lifetime"
+      },
+      "sources": [
+        "k16",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "externalIds": {}
+    },
+    {
+      "id": "vehicle-15-ני",
+      "entityType": "electoral-vehicle",
+      "nameHe": "מנהיגות יהודית לישראל",
+      "nameEn": "Jewish Leadership for Israel",
+      "names": [
+        {
+          "date": "1999-05-17",
+          "datePrecision": "day",
+          "nameHe": "מנהיגות יהודית לישראל",
+          "nameEn": "Jewish Leadership for Israel",
+          "sources": [
+            "k15",
+            "proposal"
+          ],
+          "status": "observed-local-dataset"
+        }
+      ],
+      "aliases": [],
+      "activePeriod": {
+        "from": "1999-05-17",
+        "to": "1999-05-17",
+        "datePrecision": "day",
+        "basis": "observed-election-appearances-not-lifetime"
+      },
+      "sources": [
+        "k15",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "externalIds": {}
+    },
+    {
+      "id": "vehicle-15-ק",
+      "entityType": "electoral-vehicle",
+      "nameHe": "קול הסביבה",
+      "nameEn": "Voice of the Environment",
+      "names": [
+        {
+          "date": "1999-05-17",
+          "datePrecision": "day",
+          "nameHe": "קול הסביבה",
+          "nameEn": "Voice of the Environment",
+          "sources": [
+            "k15",
+            "proposal"
+          ],
+          "status": "observed-local-dataset"
+        }
+      ],
+      "aliases": [],
+      "activePeriod": {
+        "from": "1999-05-17",
+        "to": "1999-05-17",
+        "datePrecision": "day",
+        "basis": "observed-election-appearances-not-lifetime"
+      },
+      "sources": [
+        "k15",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "externalIds": {}
+    },
+    {
+      "id": "vehicle-11-ש",
+      "entityType": "electoral-vehicle",
+      "nameHe": "שילוב רשימה עצמאית של עולי הודו לכנסת",
+      "nameEn": "Shiluv",
+      "names": [
+        {
+          "date": "1984-07-23",
+          "datePrecision": "day",
+          "nameHe": "שילוב רשימה עצמאית של עולי הודו לכנסת",
+          "nameEn": "Shiluv",
+          "sources": [
+            "k11",
+            "proposal"
+          ],
+          "status": "observed-local-dataset"
+        }
+      ],
+      "aliases": [],
+      "activePeriod": {
+        "from": "1984-07-23",
+        "to": "1984-07-23",
+        "datePrecision": "day",
+        "basis": "observed-election-appearances-not-lifetime"
+      },
+      "sources": [
+        "k11",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "externalIds": {}
+    },
+    {
+      "id": "vehicle-10-קנ",
+      "entityType": "electoral-vehicle",
+      "nameHe": "רשימת הגימלאים והקשישים בישראל",
+      "nameEn": "Pensioners and Elderly List",
+      "names": [
+        {
+          "date": "1981-06-30",
+          "datePrecision": "day",
+          "nameHe": "רשימת הגימלאים והקשישים בישראל",
+          "nameEn": "Pensioners and Elderly List",
+          "sources": [
+            "k10",
+            "proposal"
+          ],
+          "status": "observed-local-dataset"
+        }
+      ],
+      "aliases": [],
+      "activePeriod": {
+        "from": "1981-06-30",
+        "to": "1981-06-30",
+        "datePrecision": "day",
+        "basis": "observed-election-appearances-not-lifetime"
+      },
+      "sources": [
+        "k10",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "externalIds": {}
+    },
+    {
+      "id": "vehicle-14-זך",
+      "entityType": "electoral-vehicle",
+      "nameHe": "מורשת-אבות",
+      "nameEn": "Moreshet Avot",
+      "names": [
+        {
+          "date": "1996-05-29",
+          "datePrecision": "day",
+          "nameHe": "מורשת-אבות",
+          "nameEn": "Moreshet Avot",
+          "sources": [
+            "k14",
+            "proposal"
+          ],
+          "status": "observed-local-dataset"
+        }
+      ],
+      "aliases": [],
+      "activePeriod": {
+        "from": "1996-05-29",
+        "to": "1996-05-29",
+        "datePrecision": "day",
+        "basis": "observed-election-appearances-not-lifetime"
+      },
+      "sources": [
+        "k14",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "externalIds": {}
     }
   ],
   "partyAppearances": [
@@ -26472,19 +26692,6 @@
     },
     {
       "electionId": "k10",
-      "listId": "10-קנ",
-      "partyId": "moked",
-      "role": "singleton",
-      "sources": [
-        "k10",
-        "proposal"
-      ],
-      "status": "observed-local-dataset",
-      "locator": "public/data/k10.json#/lists/16",
-      "continuity": "inherited-local-research"
-    },
-    {
-      "electionId": "k10",
       "listId": "10-כן",
       "partyId": "vehicle-10-כן",
       "role": "singleton",
@@ -26987,19 +27194,6 @@
       "status": "observed-local-dataset",
       "locator": "public/data/k11.json#/lists/14",
       "continuity": "unresolved"
-    },
-    {
-      "electionId": "k11",
-      "listId": "11-ש",
-      "partyId": "sheli",
-      "role": "singleton",
-      "sources": [
-        "k11",
-        "proposal"
-      ],
-      "status": "observed-local-dataset",
-      "locator": "public/data/k11.json#/lists/15",
-      "continuity": "inherited-local-research"
     },
     {
       "electionId": "k11",
@@ -28357,7 +28551,8 @@
       "sources": [
         "k15"
       ],
-      "status": "observed-local-dataset"
+      "status": "observed-local-dataset",
+      "locator": "public/data/k15.json#/lists/0"
     },
     {
       "electionId": "k15",
@@ -28497,7 +28692,8 @@
       "sources": [
         "k15"
       ],
-      "status": "observed-local-dataset"
+      "status": "observed-local-dataset",
+      "locator": "public/data/k15.json#/lists/8"
     },
     {
       "electionId": "k15",
@@ -28533,7 +28729,8 @@
       "sources": [
         "k15"
       ],
-      "status": "observed-local-dataset"
+      "status": "observed-local-dataset",
+      "locator": "public/data/k15.json#/lists/9"
     },
     {
       "electionId": "k15",
@@ -28569,7 +28766,8 @@
       "sources": [
         "k15"
       ],
-      "status": "observed-local-dataset"
+      "status": "observed-local-dataset",
+      "locator": "public/data/k15.json#/lists/10"
     },
     {
       "electionId": "k15",
@@ -28644,7 +28842,8 @@
       "sources": [
         "k15"
       ],
-      "status": "observed-local-dataset"
+      "status": "observed-local-dataset",
+      "locator": "public/data/k15.json#/lists/13"
     },
     {
       "electionId": "k15",
@@ -35710,6 +35909,97 @@
       "status": "observed-local-dataset",
       "locator": "public/data/k26.json#/lists/37",
       "continuity": "unresolved"
+    },
+    {
+      "electionId": "k18",
+      "listId": "18-פח",
+      "partyId": "vehicle-18-פח",
+      "role": "singleton",
+      "sources": [
+        "k18",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "locator": "public/data/k18.json#/lists/33",
+      "continuity": "unresolved"
+    },
+    {
+      "electionId": "k16",
+      "listId": "16-זך",
+      "partyId": "vehicle-16-זך",
+      "role": "singleton",
+      "sources": [
+        "k16",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "locator": "public/data/k16.json#/lists/27",
+      "continuity": "no-cross-election-continuity-inferred"
+    },
+    {
+      "electionId": "k15",
+      "listId": "15-ני",
+      "partyId": "vehicle-15-ני",
+      "role": "singleton",
+      "sources": [
+        "k15",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "locator": "public/data/k15.json#/lists/31",
+      "continuity": "unresolved"
+    },
+    {
+      "electionId": "k15",
+      "listId": "15-ק",
+      "partyId": "vehicle-15-ק",
+      "role": "singleton",
+      "sources": [
+        "k15",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "locator": "public/data/k15.json#/lists/32",
+      "continuity": "unresolved"
+    },
+    {
+      "electionId": "k11",
+      "listId": "11-ש",
+      "partyId": "vehicle-11-ש",
+      "role": "singleton",
+      "sources": [
+        "k11",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "locator": "public/data/k11.json#/lists/15",
+      "continuity": "inherited-local-research"
+    },
+    {
+      "electionId": "k10",
+      "listId": "10-קנ",
+      "partyId": "vehicle-10-קנ",
+      "role": "singleton",
+      "sources": [
+        "k10",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "locator": "public/data/k10.json#/lists/16",
+      "continuity": "unresolved"
+    },
+    {
+      "electionId": "k14",
+      "listId": "14-זך",
+      "partyId": "vehicle-14-זך",
+      "role": "singleton",
+      "sources": [
+        "k14",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "locator": "public/data/k14.json#/lists/20",
+      "continuity": "unresolved"
     }
   ],
   "conflicts": [
@@ -35737,7 +36027,7 @@
         "proposal",
         "k11"
       ],
-      "interpretation": "11-ע English short label says Arab Democratic Party; Hebrew name is a tenants organisation. Not mapped to Mada."
+      "interpretation": "Corrected after official YP 3073 p.2834 review: list ע is the tenants organisation. Display no longer names the Arab Democratic Party."
     },
     {
       "id": "koach-and-achi",

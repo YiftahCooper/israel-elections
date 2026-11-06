@@ -116,12 +116,12 @@ export function tieAffectsSeats(s: Scenario, w: EngineWarning): boolean {
 /** Engine warnings in the interface language (the engine's own messages are English diagnostics). */
 export function warningText(w: EngineWarning, s: Scenario, lang: Lang): string {
   const he = lang === 'he';
-  const nm = (id: string) => { const l = s.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : id; };
+  const nm = (id: string) => { const l = s.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : (lang === 'he' ? 'רשימה לא ידועה' : 'Unknown list'); };
   const d = (w.data ?? {}) as Record<string, unknown>;
   switch (w.code) {
     case 'inferred-candidate-cap': {
       const names = (d.cappedIds as string[]).map(nm).join(he ? ' ו' : ' and ');
-      return he ? `מספר המועמדים הגביל את המנדטים של ${names} ושינה את החלוקה. השיטה משחזרת את הטבלה הרשמית של 1977, אך הכלל המשפטי לא אותר; התוצאה הזו היא מסקנה משוערת.` : `Candidate counts limited the seats of ${names} and changed the allocation. This method matches the official 1977 table, but the legal rule was not found; this outcome is an inference.`;
+      return he ? `מספר המועמדים הגביל את המנדטים של ${names} ושינה את החלוקה. ההגבלה ההיסטורית של 1977 מתועדת; החלתה בתרחיש ששונה היא הסקה של האפליקציה.` : `Candidate counts limited the seats of ${names} and changed the allocation. The historical 1977 cap is documented; applying it to this changed scenario is an app inference.`;
     }
     case 'unfilled-seats': return he ? `${nm(String(d.list))}: ${d.seats} מנדטים ו־${d.candidates} מועמדים. ההליך של תקופה זו למושבים שלא ניתן לאייש אינו ממודל.` : `${nm(String(d.list))}: ${d.seats} seats and ${d.candidates} candidates. This era’s procedure for unfilled seats is not modelled.`;
     case 'lottery-required': {

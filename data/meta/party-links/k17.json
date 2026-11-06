@@ -1,8 +1,16 @@
 {
   "electionId": "k17",
-  "reviewedAt": "2026-11-04",
+  "reviewedAt": "2026-11-06",
   "lists": {
     "17-כן": [
+      {
+        "kind": "partisan",
+        "url": "https://en.idi.org.il/media/6739/kadima-17.pdf",
+        "titleHe": "קדימה — מצע 2006",
+        "publisher": "קדימה (עותק באירוח המכון הישראלי לדמוקרטיה)",
+        "sourceType": "platform",
+        "confidence": "medium"
+      },
       {
         "kind": "neutral",
         "url": "https://he.wikipedia.org/wiki/%D7%A7%D7%93%D7%99%D7%9E%D7%94_(%D7%9E%D7%A4%D7%9C%D7%92%D7%94)",
@@ -14,6 +22,14 @@
       }
     ],
     "17-אמת": [
+      {
+        "kind": "partisan",
+        "url": "https://en.idi.org.il/media/6670/עבודה-17.pdf",
+        "titleHe": "העבודה — מצע 2006",
+        "publisher": "העבודה (עותק באירוח המכון הישראלי לדמוקרטיה)",
+        "sourceType": "platform",
+        "confidence": "medium"
+      },
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset17-results.pdf",
@@ -82,6 +98,14 @@
       }
     ],
     "17-טב": [
+      {
+        "kind": "partisan",
+        "url": "https://en.idi.org.il/media/6434/ihud-mafdal_2006.doc",
+        "titleHe": "האיחוד הלאומי–מפד״ל — מצע 2006",
+        "publisher": "האיחוד הלאומי–מפד״ל (עותק באירוח המכון הישראלי לדמוקרטיה)",
+        "sourceType": "platform",
+        "confidence": "medium"
+      },
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset17-results.pdf",
@@ -473,15 +497,9 @@
     "arab-democratic-party": []
   },
   "gaps": {
-    "17-כן": {
-      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
-    },
-    "17-אמת": {
-      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
-    },
-    "17-טב": {
-      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
-    },
+    "17-כן": {},
+    "17-אמת": {},
+    "17-טב": {},
     "17-ג": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },

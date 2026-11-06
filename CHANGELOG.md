@@ -2,8 +2,21 @@
 
 ## 6 November 2026 — data audit
 
+- k15: corrected ballot identities and gazetted names, restored two withdrawn registrations, clarified PM/dissolution evidence and roster coverage, and withheld unverified logos.
 - k24: corrected Demokratit’s withdrawal, retained official final notices, clarified opening membership and polling-station scope, added candidate resignation notes, and corrected overstated source and logo verification claims.
 - k19: retained the formal Gazette total correction, repaired list identity, context and stale research notes, strengthened constituent sourcing and withheld three unproven campaign logos.
+- k21: corrected three withdrawn lists, gazette name/sponsor transcriptions and resignation notes; retained official results and replaced recommendation inference with explicit reports.
+- k18: retain withdrawn Mahapach BeHinuch; correct formation-day coalition, Meretz affiliation, names and dated source claims.
+- k16: corrected government/succession and dissolution chronology, two candidate names and roster extent; retained withdrawn Moreshet Avot and clarified source and envelope-voter claims.
+- k13: corrected official list names and ballot letters, four candidate spellings, and Government 25’s end (22 November 1995, with Peres as acting prime minister).
+- k12: corrected seven ballot-letter readings and list names while retaining stable IDs, settled the opening coalition at 95–25, documented Reiser’s death, and qualified unsupported recommendations and campaign logos.
+- k11: corrected ballot labels and small-list identities with stable IDs, removed Shiluv from Sheli’s family/lineage, corrected candidate #61 and the 97-MK coalition, and refreshed sourced aftermath gaps.
+- k10: corrected printed ballot letters while preserving stable IDs, repaired One Israel/pensioners/Aliyah identities and family classification, corrected a candidate spelling and tenure dates, and strengthened coalition and logo evidence.
+- k9: corrected official ballot letters/names without renaming stable IDs, repaired elected-name and biography displays, sourced the historical candidate cap and first-government support, and reconciled primary-evidence gaps.
+- All elections: official English member names now display with apostrophes instead of backticks and single spaces; the raw Knesset values stay as evidence.
+- k17: corrected five elected names and three list names against both gazettes, the election-period constituent label, the 2008 constitutional election route, platform gaps and evidence attribution.
+- k14: corrected ballot names, retained withdrawn Moreshet Avot, repaired roster coverage and resignation notes, and displayed the Gazette’s published PM percentages with corroborated ballot totals.
+- k7: recorded Gahal’s six-minister withdrawal on 6 August 1970 (102→76 coalition seats), corrected source/quote metadata and Tamir’s English spacing, and removed the unsupported consultation end date.
 
 ## 5 November 2026 — release review
 

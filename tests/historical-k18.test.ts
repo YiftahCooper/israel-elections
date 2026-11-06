@@ -17,9 +17,16 @@ describe('k18 — official 2009 result', () => {
   });
   it('checks every roster count against the final rank in the candidate gazette', () => {
     const ds: ElectionDataset = JSON.parse(readFileSync('public/data/k18.json', 'utf8'));
-    expect(Object.fromEntries(ds.lists.map(l => [l.letters, l.candidates.length]))).toEqual({"אמת": 120, "אר": 20, "ב": 34, "ג": 120, "ד": 105, "ה": 119, "ו": 119, "זך": 26, "חי": 48, "ט": 24, "ים": 23, "ינ": 9, "יק": 17, "כן": 120, "ל": 26, "מחל": 118, "מרצ": 120, "נ": 9, "נפ": 15, "נץ": 4, "נר": 10, "עם": 115, "פ": 12, "פי": 17, "פק": 2, "ץ": 11, "צי": 31, "ק": 40, "קנ": 9, "קפ": 7, "קץ": 16, "רק": 33, "שס": 114});
+    expect(Object.fromEntries(ds.lists.map(l => [l.letters, l.candidates.length]))).toEqual({"פח": 12, "אמת": 120, "אר": 20, "ב": 34, "ג": 120, "ד": 105, "ה": 119, "ו": 119, "זך": 26, "חי": 48, "ט": 24, "ים": 23, "ינ": 9, "יק": 17, "כן": 120, "ל": 26, "מחל": 118, "מרצ": 120, "נ": 9, "נפ": 15, "נץ": 4, "נר": 10, "עם": 115, "פ": 12, "פי": 17, "פק": 2, "ץ": 11, "צי": 31, "ק": 40, "קנ": 9, "קפ": 7, "קץ": 16, "רק": 33, "שס": 114});
     expect(Object.fromEntries(ds.lists.filter(l => l.letters in seats).map(l => [l.letters, l.candidates[0].nameHe]))).toEqual({"אמת": "ברק אהוד", "ב": "הרשקוביץ דניאל", "ג": "ליצמן יעקב", "ד": "זחאלקה ג'מאל", "ו": "ברכה מוחמד", "ט": "כץ יעקב דב", "כן": "לבני ציפי צפורה", "ל": "ליברמן אביגדור", "מחל": "נתניהו בנימין", "מרצ": "אורון חיים", "עם": "צרצור אברהים", "שס": "ישי אליהו"});
     for (const l of ds.lists) expect(l.candidates.map(c => c.rank)).toEqual(Array.from({ length: l.candidates.length }, (_, i) => i + 1));
+  });
+  it('retains the withdrawn approved list and corrected formation-day snapshot', () => {
+    const ds: ElectionDataset = JSON.parse(readFileSync('public/data/k18.json', 'utf8'));
+    expect(ds.lists.find(l => l.letters === 'פח')).toMatchObject({ withdrawn: true, votes: 0, candidates: expect.any(Array) });
+    expect(ds.lists.find(l => l.letters === 'ו')?.nameHe).toContain('(המפלגה');
+    expect(ds.lists.find(l => l.letters === 'מרצ')?.candidates[1].partyId).toBe('meretz');
+    expect(ds.blocSchemes?.find(s => s.id === 'first-government')?.blocs.map(b => b.lists.length)).toEqual([5, 7]);
   });
   it('reproduces every gazetted seat, threshold and quota through the scenario model', () => {
     const ds: ElectionDataset = JSON.parse(readFileSync('public/data/k18.json', 'utf8'));

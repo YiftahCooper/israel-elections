@@ -38,7 +38,7 @@ describe('k12 — released national dataset', () => {
   it('retains the sourced agreement set without inventing missing pairs', () => {
     const a = verifyK12({ log: false });
     expect(a.review.agreements.complete).toBe(true);
-    expect(a.review.agreements.pairs).toEqual([["אמת", "רצ"], ["הן", "מפם"], ["מחל", "ת"], ["קז", "יע"], ["שס", "עץ"]]);
+    expect(a.review.agreements.pairs).toEqual([["אמת", "רצ"], ["הן", "מפם"], ["מחל", "ת"], ["קז", "יענ"], ["שס", "עץ"]]);
   });
   it('builds the committed national-only release with every elected rank cross-checked', () => {
     const a = verifyK12({ log: false });
@@ -67,6 +67,16 @@ describe('k12 — released national dataset', () => {
       expect(l.candidatesUnavailable).toBeUndefined();
     }
     expect(a.rosters.reduce((sum, r) => sum + (r.electedCrossCheck?.namesHe?.length ?? 0), 0)).toBe(120);
+  });
+  it('corrects ballot letters while preserving saved-scenario identities', () => {
+    const ds = JSON.parse(readFileSync('public/data/k12.json', 'utf8'));
+    for (const [old, letters] of Object.entries({זב:'זכ', זפ:'זעמ', טף:'טיף', יע:'יענ', מעם:'מעש', קק:'קם', קצץ:'קמע'})) {
+      expect(ds.lists.find((l: {id: string}) => l.id === `12-${old}`)?.letters).toBe(letters);
+    }
+    expect(ds.agreements[3].members).toEqual(['12-קז', '12-יע']);
+    const opening = ds.blocSchemes.find((b: {id: string}) => b.id === 'first-government');
+    expect(opening.blocs[0].lists).not.toContain('12-עץ');
+    expect(opening.blocs[1].lists).toContain('12-עץ');
   });
   it('restores Likud rank 32 (Goldberg) and does not seat rank 25 (Reiser), as printed', () => {
     const ds = JSON.parse(readFileSync('public/data/k12.json', 'utf8'));

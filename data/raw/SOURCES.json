@@ -661,7 +661,7 @@
     "url": "https://olaw.org.il/yalkut/yalkut-5151.pdf",
     "publisher": "Reshumot / Yalkut HaPirsumim 5151 (olaw.org.il mirror)",
     "official": true,
-    "description": "Complete official surplus-agreement notice, visually verified from the scan; six pairs for 2003, four for 2006.",
+    "description": "Complete official surplus-agreement notice, visually verified from the scan; six pairs for 2003.",
     "method": "http",
     "retrievedAt": "2026-11-03T15:31:36.320940+00:00",
     "bytes": 221023,
@@ -686,11 +686,11 @@
     "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset16-results.pdf",
     "publisher": "Project transcription of official CEC / Reshumot scans",
     "official": false,
-    "description": "Partial reviewed national and agreement transcription. Not a released dataset; preserves unresolved source discrepancies.",
+    "description": "Reviewed national evidence for the released k16 dataset; remaining roster gaps and gazette vote discrepancies are explicitly disclosed.",
     "method": "manual-capture",
     "retrievedAt": "2026-11-03T15:31:36.321195+00:00",
-    "bytes": 7213,
-    "sha256": "18763593e4136eee06605f76e3b09e948ce8c132b8b7f165ebf12c7ad77c5c30"
+    "bytes": 7351,
+    "sha256": "fb7381ffe56a49c8d982a8c4cbc24b147a5413d9be4a70ce8521be3ac964f7c1"
   },
   {
     "id": "k17-surplus-gazette",
@@ -723,11 +723,11 @@
     "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset17-results.pdf",
     "publisher": "Project transcription of official CEC / Reshumot scans",
     "official": false,
-    "description": "Partial reviewed national and agreement transcription. Not a released dataset; preserves unresolved source discrepancies.",
+    "description": "Partial reviewed national and agreement transcription. Historical partial transcription, now an input to the released k17 dataset; preserves unresolved source discrepancies.",
     "method": "manual-capture",
     "retrievedAt": "2026-11-03T15:31:36.321449+00:00",
-    "bytes": 7360,
-    "sha256": "e827d486c89a17a4a6e644af7b60122d1493054832d26edf75de001d4bb741d5"
+    "bytes": 7653,
+    "sha256": "a42dc908024383a004466be2825b7f80481b341b1288e22c42b3c767a310c03f"
   },
   {
     "id": "k16-reconciliation-reviewed",
@@ -869,7 +869,7 @@
     "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-results.pdf",
     "publisher": "Central Elections Committee / Reshumot (gov.il host)",
     "official": true,
-    "description": "Knesset national votes, invalid votes, seats and elected members; Knesset ballot only",
+    "description": "Prime Minister and Knesset final results, elected members, and separate Deri resignation notice; YP 4757 pp.3376–3378.",
     "method": "http",
     "retrievedAt": "2026-11-03T15:27:21.833266+00:00",
     "bytes": 175416,
@@ -917,7 +917,7 @@
     "url": "https://olaw.org.il/yalkut/yalkut-4411.pdf",
     "publisher": "State of Israel / Central Elections Committee (olaw.org.il mirror)",
     "official": true,
-    "description": "Complete six-pair statutory agreement notice, YP 4411 p.3398; official publication on disclosed olaw.org.il mirror",
+    "description": "Complete six-pair statutory agreement notice, YP 4411 p.3398; official publication on disclosed olaw.org.il mirror; candidate resignations and whole-list Moreshet Avot withdrawal, p.3398",
     "method": "http",
     "retrievedAt": "2026-11-03T15:32:59.650817+00:00",
     "bytes": 176289,
@@ -1148,8 +1148,8 @@
     "description": "Released national evidence: six official agreements, exact inferred-cap reproduction, all 120 elected names checked; Ratz supplemented by official opening-date Knesset OData.",
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-03T16:58:39.222721+00:00",
-    "bytes": 9874,
-    "sha256": "86d77cfb51327acdaaf12548414c8edf1a81992b845b3986368a5655f42fd323"
+    "bytes": 10168,
+    "sha256": "9fcd7a343fab7ce167cf48e7d3b639d2bbfd6c898e5eecd9505837466648978d"
   },
   {
     "id": "k9-candidates-reviewed",
@@ -1161,7 +1161,7 @@
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-03T17:01:30.664880+00:00",
     "bytes": 27482,
-    "sha256": "bad96a6f64a27b4913edc3a0a88aca98f4518080c6d3a7650465d83121ad9c9e"
+    "sha256": "0a5828e19e32b97c7596eef1e8d349567f28d7b4c3f83a1c4a061f0f7463d9f4"
   },
   {
     "id": "k10-results-gazette",
@@ -1196,8 +1196,8 @@
     "description": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-03T16:14:46.283817+00:00",
-    "bytes": 9654,
-    "sha256": "cde3ee5aff994788866a5c60f093e05a39d660cbcd87a7abc8bfa7608be704d7"
+    "bytes": 10580,
+    "sha256": "d7803b9a1ffb27787145edbee8a5857dd32833219e77e2ee556f347834629204"
   },
   {
     "id": "k11-results-gazette",
@@ -1232,8 +1232,8 @@
     "description": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-03T16:14:46.283817+00:00",
-    "bytes": 10445,
-    "sha256": "c3d8a566c32c19558eecd93b43b7418f2fe1c4158af7abe70dada7265ea50c99"
+    "bytes": 10606,
+    "sha256": "6e3f7bdc3fb77b0d0008f5852ac56829385999d096fb4b64eb4bfca9c5b8ccc4"
   },
   {
     "id": "k11-candidates-reviewed",
@@ -1244,8 +1244,8 @@
     "description": "Official winning-list leading ranks and name-by-name elected comparisons; page references, spelling variants and incomplete checks explicitly retained.",
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-03T16:34:27.797495+00:00",
-    "bytes": 38758,
-    "sha256": "2a881fef88dd088e7b91adc93a750c61527323716de4f9ebd0352c94d969a1e7"
+    "bytes": 38749,
+    "sha256": "aedcea95c0d3b6f1e8fe2da48cba22d6e48573e8fc01daece9bf32ce4065d9e2"
   },
   {
     "id": "k12-results-gazette",
@@ -1280,8 +1280,8 @@
     "description": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-03T16:14:46.283817+00:00",
-    "bytes": 10757,
-    "sha256": "c89f4b27b1be27db617d6eaef8b35230f2c8951901b6838c8d7259a941adcd05"
+    "bytes": 11334,
+    "sha256": "b2ff182c67843419bc8d0af86ab89de98410b1602f8f96fee432cd9567528453"
   },
   {
     "id": "k8-k12-cbs-national-totals",
@@ -1340,8 +1340,8 @@
     "description": "Reviewed manual candidate-scan transcription with complete or elected-prefix coverage, page references, independent section 4 results-notice names and explicit printed-name variants; non-winning unavailable rosters and prior membership/reserve checks retained",
     "method": "manual-capture",
     "retrievedAt": "2026-11-03",
-    "bytes": 101714,
-    "sha256": "92411133ab746a6a01a048b37caec77e251b0ceb6588c3e8176e89d6d6cce428"
+    "bytes": 102222,
+    "sha256": "5c963df363b538b89f4614bbe295315a11167d5fd5b8abfd7a4d6373630054d0"
   },
   {
     "id": "k16-localities-reviewed",
@@ -1377,8 +1377,8 @@
     "description": "Reviewed manual candidate-scan transcription with complete or elected-prefix coverage, page references, independent section 4 results-notice names and explicit printed-name variants; non-winning unavailable rosters and prior membership/reserve checks retained",
     "method": "manual-capture",
     "retrievedAt": "2026-11-03",
-    "bytes": 140258,
-    "sha256": "fcbcb6c2a721da9a200675141a0fc1c8bb5c5a09fd6d32a72fa3cd292c905fcb"
+    "bytes": 141433,
+    "sha256": "70848ca0256f77f7e5ef77cc0cd7b4255367a3a9b4f57c23cbd665a7c5517335"
   },
   {
     "id": "k17-localities-reviewed",
@@ -2634,8 +2634,8 @@
     "description": "Reviewed national transcription; source and printed page references retained in JSON.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
-    "bytes": 4901,
-    "sha256": "c74a96838674b8bd46c53aca6c39b92d25f01bfd71ddea32006527778f126a1a"
+    "bytes": 5268,
+    "sha256": "d696b8598add75a72c4b96366c6291a7742578df7a6e9731ef5b7790808d55c0"
   },
   {
     "id": "k13-rosters-reviewed",
@@ -2646,8 +2646,8 @@
     "description": "Reviewed rosters transcription; source and printed page references retained in JSON.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
-    "bytes": 19847,
-    "sha256": "5f6a4b6ba79e7ac448999c2ab9ee80f57dc2419eb3d9bdc1b6af509e5532f7cf"
+    "bytes": 20204,
+    "sha256": "a178b3291d2a43fc8c02a2143a1858e1edd5a2feb164c30ed721dd34bf43de32"
   },
   {
     "id": "k13-elected-reviewed",
@@ -2659,7 +2659,7 @@
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
     "bytes": 7347,
-    "sha256": "4cece71a5a4626d0d36649bad3646221903c9a701c689200a7548c567724cd24"
+    "sha256": "ac619c9060064059a2abb904f60fe742773ffa7be5d6dc9da34f34b8b33ad75d"
   },
   {
     "id": "k14-national-reviewed",
@@ -2670,8 +2670,8 @@
     "description": "Reviewed national transcription; source and printed page references retained in JSON.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
-    "bytes": 4556,
-    "sha256": "c58c0cc097e21582b067f9bd681c3c0663e7f8227dfb11c4a8aa9d25ae8e5240"
+    "bytes": 5455,
+    "sha256": "5ebf49a32267d7b23575f71cf43ffdc43494adb53f588a46c98c97ff44425eaa"
   },
   {
     "id": "k14-rosters-reviewed",
@@ -2682,8 +2682,8 @@
     "description": "Reviewed rosters transcription; source and printed page references retained in JSON.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
-    "bytes": 23180,
-    "sha256": "06ea04f9a4e76622130c119ab11db6a8c0eb4114da74aa4b387120074aee658e"
+    "bytes": 23246,
+    "sha256": "711387e420681f4821855598ee1d85e16d3071a0a0d306eda5131502be0ef1fd"
   },
   {
     "id": "k14-elected-reviewed",
@@ -2706,8 +2706,8 @@
     "description": "Reviewed national transcription; source and printed page references retained in JSON.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
-    "bytes": 6428,
-    "sha256": "dc312dab1d7ad020e9cb0705985f528672916f81546492bab018941a195e9853"
+    "bytes": 8378,
+    "sha256": "d58607aa09b30ee425b5a7026fc4163f1d718e1d042e07a05d0d60c7da3deb4b"
   },
   {
     "id": "k15-rosters-reviewed",
@@ -2718,8 +2718,8 @@
     "description": "Reviewed rosters transcription; source and printed page references retained in JSON.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
-    "bytes": 22377,
-    "sha256": "ed832424d917cd498dfeeaa3252bcc22a88762acff9200a2ca0725179298b482"
+    "bytes": 24129,
+    "sha256": "62c9026acc769fc8ad87e9ea08a8320ea505b0e9d95d77ff4a3fecaaf2e8c203"
   },
   {
     "id": "k15-elected-reviewed",
@@ -2730,8 +2730,8 @@
     "description": "Reviewed elected transcription; source and printed page references retained in JSON.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
-    "bytes": 8055,
-    "sha256": "7efe298f8577952161853ca3689d63fdbd92ee1ffac011a5275d8b331decdb33"
+    "bytes": 8057,
+    "sha256": "c2ae25c2a3e6909acf8dab9e1703da9dd8e03ad5803c73858bd7a3812ae7e01c"
   },
   {
     "id": "k10-candidates-reviewed",
@@ -2743,7 +2743,7 @@
     "description": "Official winning-list leading ranks and name-by-name elected comparisons; page references, spelling variants and incomplete checks explicitly retained.",
     "retrievedAt": "2026-11-03T16:34:27.797461+00:00",
     "bytes": 30436,
-    "sha256": "fe5cfaf28d2a09ce8d76ca41d4a290139922aa939534b7d7b6e834f3d2b619b3"
+    "sha256": "3aebef1efd39d0bc06776dc11b7ab7938e16945a80e85930007dd10d3a34a618"
   },
   {
     "id": "k12-candidates-reviewed",
@@ -2754,8 +2754,8 @@
     "method": "manual-review",
     "description": "Official winning-list leading ranks and name-by-name elected comparisons; page references, spelling variants and incomplete checks explicitly retained.",
     "retrievedAt": "2026-11-03T16:34:27.797524+00:00",
-    "bytes": 29588,
-    "sha256": "1d91248bcc31070d99cc91cf776527b89b719c8f581ab5f147af925771dc4aac"
+    "bytes": 29592,
+    "sha256": "5b3628e54715aa92c0591824b7571b241e53ae4cbd74b25e897c4428b0d24b2a"
   },
   {
     "id": "k8-search-reviewed",
@@ -2778,8 +2778,8 @@
     "description": "Legal basis of the 1977 unfillable seat and missing Ratz elected-member paragraph — bounded search scope, retrieval hashes and evidence gaps.",
     "method": "manual-review",
     "retrievedAt": "2026-11-03T16:58:39.222721+00:00",
-    "bytes": 8333,
-    "sha256": "fbcd855efe1223cb48b576a2c99ddab2a8e7405e2f6bd2634a5bc6d13bc86ee1"
+    "bytes": 8754,
+    "sha256": "83a6f424c1c33f80e22d6b04d6938fccd68e181ec54222e3c4740c5ddfc73403"
   },
   {
     "id": "k9-ratz-odata",
@@ -4481,11 +4481,11 @@
     "url": "https://www.gov.il/en/pages/israeli-election-results-may-1996",
     "publisher": "Project reviewed transcription; MFA retrieval blocked",
     "official": false,
-    "description": "Visual review of retained gazettes k14 PDF p.3, k15 PDF p.2, YP4960 PDF p.2 and IDI 1999 PDF p.7; all match the era-specific-rules report. MFA totals inherited from that report; fresh direct retrieval returned HTTP 403. No raw MFA page is claimed.",
+    "description": "Visual review of retained gazettes k14 PDF p.3, k15 PDF p.2, YP4960 PDF p.2 and IDI 1999 PDF p.7; all match the era-specific-rules report. MFA totals inherited from that report; fresh direct retrieval returned HTTP 403. No raw MFA page is claimed. k14 2026-11-06: invalid/cast corroborated in Torgovnik, Party Politics 6(1), p.97 table 1 note f (https://library.fes.de/libalt/journals/swetsfulltext/7116597.pdf); printed shares read from Gazette.",
     "method": "manual-capture",
     "retrievedAt": "2026-11-04T11:12:12.081501+00:00",
-    "bytes": 9191,
-    "sha256": "d7effb92cdc0712f8d95d868afaeae42b0cc8418c1e27546b5a2293e765341c7"
+    "bytes": 11480,
+    "sha256": "4c8b9104ad8183a670854e1d198dd00924e3da8fe5fd658eca2ab79b75b847b7"
   },
   {
     "id": "context-double-envelopes-2019",
@@ -6100,5 +6100,149 @@
     "retrievedAt": "2026-11-06",
     "bytes": 466905,
     "sha256": "997628f9f5b6d556b62e2547489cbc9b6fbd64fa721c6eff687577ae1074cc24"
+  },
+  {
+    "id": "k21-resignations-8172",
+    "file": "k21/yp-8172.pdf",
+    "url": "https://olaw.org.il/yalkut/yalkut-8172.pdf",
+    "publisher": "רשומות — ילקוט הפרסומים 8172 (2019-03-26), עמ׳ 9194–9195",
+    "publisherEn": "Reshumot — YP 8172, 2019-03-26, pp. 9194–9195; olaw.org.il mirror",
+    "official": true,
+    "description": "21st Knesset candidate resignation notices; registered rosters preserved",
+    "method": "http",
+    "retrievedAt": "2026-11-06",
+    "bytes": 431337,
+    "sha256": "588c0bd7295b28e22d69b228d3a54c929aecf2b0b0dbf4cbe5c61345d3581538"
+  },
+  {
+    "id": "k21-resignations-8186",
+    "file": "k21/yp-8186.pdf",
+    "url": "https://olaw.org.il/yalkut/yalkut-8186.pdf",
+    "publisher": "רשומות — ילקוט הפרסומים 8186 (2019-04-04), עמ׳ 9542",
+    "publisherEn": "Reshumot — YP 8186, 2019-04-04, pp. 9542; olaw.org.il mirror",
+    "official": true,
+    "description": "21st Knesset candidate resignation notices; registered rosters preserved",
+    "method": "http",
+    "retrievedAt": "2026-11-06",
+    "bytes": 362557,
+    "sha256": "fd4d59182a1b89b64d58e2ffbb54a9c37a7203d277e5f21809e3614a2b22231f"
+  },
+  {
+    "id": "k21-resignations-8196",
+    "file": "k21/yp-8196.pdf",
+    "url": "https://olaw.org.il/yalkut/yalkut-8196.pdf",
+    "publisher": "רשומות — ילקוט הפרסומים 8196 (2019-04-10), עמ׳ 9858",
+    "publisherEn": "Reshumot — YP 8196, 2019-04-10, pp. 9858; olaw.org.il mirror",
+    "official": true,
+    "description": "21st Knesset candidate resignation notices; registered rosters preserved",
+    "method": "http",
+    "retrievedAt": "2026-11-06",
+    "bytes": 426096,
+    "sha256": "78050c0b8b696a53226b479ef0068d2b0508ed1c9cbe57fae2dba28fc91a9cf4"
+  },
+  {
+    "id": "k21-results-gazette",
+    "file": "k21/yp-8208.pdf",
+    "url": "https://olaw.org.il/yalkut/yalkut-8208.pdf",
+    "publisher": "רשומות — ילקוט הפרסומים 8208 (2019-04-17), עמ׳ 10062–10066",
+    "publisherEn": "Reshumot — YP 8208, 2019-04-17, pp. 10062–10066; olaw.org.il mirror",
+    "official": true,
+    "description": "21st Knesset final results and elected members",
+    "method": "http",
+    "retrievedAt": "2026-11-06",
+    "bytes": 378817,
+    "sha256": "1c55879fd58cacdd1398ac41a6b9382e95d539b0744ea4f03dab6531680b9b09"
+  },
+  {
+    "id": "k16-dissolution-gazette",
+    "file": "k16/yp5467-dissolution.pdf",
+    "url": "https://olaw.org.il/yalkut/yalkut-5467.pdf",
+    "publisher": "Reshumot (official document via olaw.org.il mirror)",
+    "official": true,
+    "description": "YP 5467, 8 December 2005, p.728: order dated 27 November dissolving Knesset 16; publication and order dates distinguished.",
+    "method": "http",
+    "retrievedAt": "2026-11-06",
+    "bytes": 318617,
+    "sha256": "f55311ec3f3a36b02b16a2774a7668fb9bcae176edb7bde535e0f518dbee0047"
+  },
+  {
+    "id": "k12-reiser-personal-details",
+    "file": "context/k12-reiser-knesset.txt",
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/623",
+    "publisher": "Knesset",
+    "retrievedAt": "2026-11-06",
+    "sha256": "d30fbfa1d852e270288491c36686f023662b6738b573793a059c1bbaa32dd2dc",
+    "bytes": 253,
+    "description": "Retained exact personal-details excerpt confirming Michael Reiser death date."
+  },
+  {
+    "id": "k15-withdrawals-yp4751",
+    "file": "research/yp4751-candidate-changes-1999.pdf",
+    "url": "https://olaw.org.il/yalkut/yalkut-4751.pdf",
+    "publisher": "State of Israel / CEC (olaw.org.il mirror)",
+    "official": true,
+    "description": "Statutory resignation notice; YP 4751 p.3184 קול הסביבה",
+    "method": "http",
+    "retrievedAt": "2026-11-06",
+    "bytes": 1475197,
+    "sha256": "94b7df52b2ed4eaaba4fbc50b60009778e2ad134442a37ca6a2d407870956caf"
+  },
+  {
+    "id": "k15-withdrawals-yp4754",
+    "file": "research/yp4754-candidate-changes-1999.pdf",
+    "url": "https://olaw.org.il/yalkut/yalkut-4754.pdf",
+    "publisher": "State of Israel / CEC (olaw.org.il mirror)",
+    "official": true,
+    "description": "Statutory resignation notice; YP 4754 p.3269 מנהיגות יהודית לישראל",
+    "method": "http",
+    "retrievedAt": "2026-11-06",
+    "bytes": 1491677,
+    "sha256": "ff922eeb33c59ef8524a34f943bdbcd25d387c95e230df488051b07720fd71c9"
+  },
+  {
+    "id": "k15-gov28-tenure",
+    "file": "k15/gov28-tenure.pdf",
+    "url": "https://www.gov.il/BlobFolder/generalpage/gov28/he/gov28.pdf",
+    "publisher": "State of Israel (disclosed host in URL)",
+    "official": true,
+    "description": "Official government 28 tenure, p.120; 6.7.1999–7.3.2001",
+    "method": "http",
+    "retrievedAt": "2026-11-06",
+    "bytes": 342336,
+    "sha256": "22afd8c08cc5f35a6077ec280910ff0b7f1cc382ef0ab5629908bc3902c36ac9"
+  },
+  {
+    "id": "k15-cec-dissolution",
+    "file": "k15/cec-dissolution.pdf",
+    "url": "https://lacuna.co.il/posts/election_date/04-1.pdf",
+    "publisher": "State of Israel (disclosed host in URL)",
+    "official": true,
+    "description": "CEC chair decision 1/04, 3 March 2004, pp.26–27, historical dissolution act on 5 November 2002; third-party mirror",
+    "method": "http",
+    "retrievedAt": "2026-11-06",
+    "bytes": 196518,
+    "sha256": "21d6d4777f072e7d461d5ba93fca06b33ab9d7af9075113ac4d31df0cc3d382f"
+  },
+  {
+    "id": "k9-cap-appeal-protocol",
+    "file": "k9/cap-appeal-protocol.pdf",
+    "url": "https://fs.knesset.gov.il/9/Plenum/9_ptm_253927.pdf",
+    "publisher": "Knesset",
+    "description": "1 November 1977, p.237: accepted determination rejecting Gross appeal; initial one-seat cap, 114 initial seats and six surplus seats under section 81(d).",
+    "retrievedAt": "2026-11-06",
+    "sha256": "1cf2999f7a715175d5d722a910a8fefd637361ac2de00d844d93a84d45bb110c",
+    "bytes": 2971615
+  },
+  {
+    "id": "k7-government-15-positions",
+    "file": "k7/government-15-positions.json",
+    "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2015&$format=json",
+    "publisher": "Knesset OData (ParliamentInfo)",
+    "official": true,
+    "description": "Government 15 ministerial positions; six Gahal ministers end office on 6 August 1970.",
+    "method": "http",
+    "retrievedAt": "2026-11-06",
+    "bytes": 42266,
+    "sha256": "ff512e978110b10b2f3ebfdec85cf9d0a430be588bb90062e87e02c0e086a49b"
   }
 ]

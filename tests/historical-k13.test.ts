@@ -20,3 +20,14 @@ describe('k13 — 1992 released gazetted results and elected-prefix rosters', ()
     expect(a.rosters.lists.find(l => l.letters === 'אמת')!.candidates[13].nameHe).toBe('אור אורי');
   });
 });
+
+// Audit regression: YP 4021 p. 3776 letters/titles; YP 4017 pp. 3620, 3629, 3638, 3642 names.
+it('preserves corrected official identities and distinct registered Ben-Elissar punctuation', () => {
+  const { review, rosters } = verifyK13({ log: false });
+  expect(review.lists.filter(l => ['נד', 'נכ', 'קן'].includes(l.letters)).map(l => l.votes).sort((a,b) => a-b)).toEqual([2886, 5962, 16669]);
+  expect(review.lists.find(l => l.letters === 'זה')!.nameHe).toBe('ציפור');
+  for (const [letters, rank, name] of [
+    ['אמת', 10, 'זוילי נסים'], ['מרצ', 7, 'פורז פוזמנטיר אברהם'],
+    ['ו', 3, 'גוז׳נסקי תמר'], ['ע', 1, 'דראושה עבד-אלוהאב'], ['מחל', 12, 'בן-אלישר אליהו'],
+  ] as const) expect(rosters.lists.find(l => l.letters === letters)!.candidates[rank - 1].nameHe).toBe(name);
+});

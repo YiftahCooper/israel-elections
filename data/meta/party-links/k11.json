@@ -191,11 +191,11 @@
     "11-ע": [
       {
         "kind": "neutral",
-        "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%A4%D7%9C%D7%92%D7%94_%D7%93%D7%9E%D7%95%D7%A7%D7%A8%D7%98%D7%99%D7%AA_%D7%A2%D7%A8%D7%91%D7%99%D7%AA",
-        "titleHe": "מפלגה דמוקרטית ערבית",
-        "titleEn": "Hebrew Wikipedia (secondary)",
-        "publisher": "ויקיפדיה העברית (מקור משני)",
-        "sourceType": "hewiki",
+        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset11-results.pdf",
+        "titleHe": "ארגון ארצי להגנת הדייר — הודעת התוצאות לכנסת 11",
+        "titleEn": "Official election results record (whole-election document)",
+        "publisher": "ועדת הבחירות המרכזית לכנסת ה-11",
+        "sourceType": "cec",
         "confidence": "high"
       }
     ],
@@ -203,7 +203,7 @@
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset11-results.pdf",
-        "titleHe": "שלי — הודעת התוצאות לכנסת 11",
+        "titleHe": "שילוב — הודעת התוצאות לכנסת 11",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-11",
         "sourceType": "cec",
@@ -225,7 +225,7 @@
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset11-results.pdf",
-        "titleHe": "לבא אליאב לכנסת — הודעת התוצאות לכנסת 11",
+        "titleHe": "לובה אליאב לכנסת — הודעת התוצאות לכנסת 11",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-11",
         "sourceType": "cec",
@@ -236,7 +236,7 @@
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset11-results.pdf",
-        "titleHe": "הס מס, תנועה לביטול חוק מס הכנסה — הודעת התוצאות לכנסת 11",
+        "titleHe": "הס־מס, תנועה לביטול חוק מס־הכנסה — הודעת התוצאות לכנסת 11",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-11",
         "sourceType": "cec",
@@ -280,7 +280,7 @@
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset11-results.pdf",
-        "titleHe": "עצמאות בראשות עזרא זהר — הודעת התוצאות לכנסת 11",
+        "titleHe": "עצמאות בראשות עזרה זהר — הודעת התוצאות לכנסת 11",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-11",
         "sourceType": "cec",
@@ -313,7 +313,7 @@
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset11-results.pdf",
-        "titleHe": "א.נ.י. – ארגון נכים — הודעת התוצאות לכנסת 11",
+        "titleHe": "א. נ. – ארגון נכים — הודעת התוצאות לכנסת 11",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-11",
         "sourceType": "cec",

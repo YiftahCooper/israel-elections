@@ -1,6 +1,6 @@
 {
   "electionId": "k12",
-  "generatedNote": "Research metadata (joint-list composition, blocs, colours). See data/meta/README.md and docs/research/meta-1981-2006.md.",
+  "generatedNote": "Research metadata (joint-list composition, blocs, colours). See data/meta/README.md and docs/research/meta-1981-2006.md. Internal list IDs predate the 6 November 2026 ballot-letter correction and remain opaque stable keys for saved scenarios, share links, candidate notes and lineage. Read letters for ballot text, never infer it from an ID.",
   "lists": [
     {
       "letters": "ג",
@@ -145,11 +145,11 @@
     },
     {
       "letters": "הן",
-      "nameHe": "תנועת המרכז – שינוי (שינוי־לע״מ־המרכז הליברלי)",
+      "nameHe": "תנועת המרכז – שינוי (שינוי – ל״ע – המרכז הליברלי)",
       "seats": 2,
       "rosterRanks": 2,
       "candidatesTruncated": true,
-      "notes": "Movement for the Centre – Shinui: Shinui with the Independent Liberals (and the Liberal Centre named in the list title). Both elected members were Shinui.",
+      "notes": "Movement for the Centre – Shinui: Shinui with the Independent Liberals (and the Liberal Centre named in the list title). Both elected members were Shinui. Liberal Centre is named in the official title (YP 3588 p.150), but no candidate affiliation is established here; therefore it is not assigned a constituent seat or candidate.",
       "parties": [
         {
           "id": "shinui",
@@ -222,27 +222,27 @@
       }
     },
     {
-      "letters": "זב",
-      "nameHe": "אחדות – למען ישועה וחיים לכנסת",
+      "letters": "זכ",
+      "nameHe": "אחדות – למען ויקטור תייר לכנסת",
       "englishName": {
-        "label": "Ahdut – Lemaan Yeshua VeHayim",
+        "label": "Ahdut – Lemaan Victor Tayar LaKnesset",
         "kind": "transliteration",
         "sourceId": "k12-candidates-gazette",
         "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
       }
     },
     {
-      "letters": "זפ",
-      "nameHe": "זעם ורעש",
+      "letters": "זעמ",
+      "nameHe": "תרשיש",
       "englishName": {
-        "label": "Zaam VeRaash",
+        "label": "Tarshish",
         "kind": "transliteration",
         "sourceId": "k12-candidates-gazette",
         "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
       }
     },
     {
-      "letters": "טף",
+      "letters": "טיף",
       "nameHe": "ישי – יחד שבטי ישראל",
       "englishName": {
         "label": "Yishai – Yahad Shivtei Yisrael",
@@ -262,7 +262,7 @@
       }
     },
     {
-      "letters": "יע",
+      "letters": "יענ",
       "nameHe": "התאחדות התימנים בישראל",
       "englishName": {
         "label": "Hitahdut HaTeimanim BeYisrael",
@@ -272,10 +272,10 @@
       }
     },
     {
-      "letters": "מעם",
-      "nameHe": "תנועה למען מועמדים־ערי פיתוח ושכונות",
+      "letters": "מעש",
+      "nameHe": "תנועה למען מושבים, ערי פיתוח ושכונות",
       "englishName": {
-        "label": "Tnua Lemaan Muamadim – Arei Pituah UShkhunot",
+        "label": "Tnua Lemaan Moshavim, Arei Pituah UShkhunot",
         "kind": "transliteration",
         "sourceId": "k12-candidates-gazette",
         "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
@@ -302,7 +302,7 @@
       }
     },
     {
-      "letters": "קק",
+      "letters": "קם",
       "nameHe": "התנועה למען חיילים משוחררים",
       "englishName": {
         "label": "HaTnua Lemaan Hayalim Meshuhrarim",
@@ -325,7 +325,7 @@
           "nameHe": "קואליציה",
           "nameEn": "Coalition",
           "color": "#2E7D32",
-          "seats": 97,
+          "seats": 95,
           "members": [
             {
               "letters": "מחל"
@@ -341,10 +341,6 @@
             },
             {
               "letters": "שס"
-            },
-            {
-              "letters": "עץ",
-              "note": "in the coalition without cabinet ministers"
             }
           ]
         },
@@ -353,7 +349,7 @@
           "nameHe": "אופוזיציה",
           "nameEn": "Opposition",
           "color": "#9E9E9E",
-          "seats": 23,
+          "seats": 25,
           "members": [
             {
               "letters": "רצ"
@@ -381,11 +377,14 @@
             },
             {
               "letters": "ץ"
+            },
+            {
+              "letters": "עץ"
             }
           ]
         }
       ],
-      "notes": "Membership by list at the swearing-in of the first government after the election, from the coalition table of the Hebrew Wikipedia government article (faction, seats, start/end dates), cross-checked against Knesset OData ministerial records for that GovernmentNum. Bloc colours are neutral display suggestions, not party colours.",
+      "notes": "Opening coalition: 95 seats. Ravitz explicitly described Degel HaTorah as opposition in the opening debate (p.238), while promising to vote for the government. This rank-1 record overrides the earlier Hebrew Wikipedia-based 97-seat grouping. Confidence support is separate from coalition membership.",
       "sources": [
         {
           "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%9C%D7%95%D7%A9",
@@ -407,6 +406,13 @@
           "kind": "official",
           "quote": "KNS_PersonToPosition, GovernmentNum 23: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 1988-12-22: דרעי אריה מכלוף, צור יעקב, שחל משה, ויצמן עזר, מודעי יצחק, רבין יצחק, נבון יצחק, פרץ יצחק-חיים, גור מרדכי, נסים משה, קצב משה, לוי דוד, שרון אריאל, יעקבי גד, פת גדעון, פרס שמעון, שמיר יצחק, מרידור דן, כץ-עוז אברהם, אולמרט אהוד, מילוא רוני, אדרי רפאל, בר-לב חיים, ארנס משה",
           "accessed": "2026-11-04"
+        },
+        {
+          "url": "https://fs.knesset.gov.il/12/Plenum/12_ptm_531200.PDF",
+          "publisher": "Knesset, Divrei HaKnesset, 22 December 1988, p.238",
+          "kind": "official",
+          "quote": "נגזר עלינו לשרת את בוחרינו כאופוזיציה",
+          "accessed": "2026-11-06"
         }
       ]
     },
@@ -460,34 +466,34 @@
               "letters": "רצ"
             },
             {
-              "letters": "ו"
-            },
-            {
               "letters": "מפם"
             },
             {
               "letters": "הן"
+            }
+          ],
+          "seats": 49
+        },
+        {
+          "id": "unconfirmed",
+          "nameHe": "המלצה לא מאומתת",
+          "nameEn": "Recommendation unconfirmed",
+          "color": "#9e9e9e",
+          "members": [
+            {
+              "letters": "ו"
             },
             {
               "letters": "פ"
             },
             {
               "letters": "ע"
-            }
-          ],
-          "seats": 55
-        },
-        {
-          "id": "none",
-          "nameHe": "לא המליצו (תמכו בממשלה רחבה)",
-          "nameEn": "No recommendation (backed a broad government)",
-          "color": "#9e9e9e",
-          "members": [
+            },
             {
               "letters": "עץ"
             }
           ],
-          "seats": 2
+          "seats": 8
         }
       ],
       "sources": [
@@ -518,17 +524,10 @@
           "kind": "secondary",
           "quote": "With its own 40 seats and the 11 seats offered Sunday, plus previously pledged support from one other religious party and three far-right parties, Likud can claim a majority with 63 seats in the 120-member Knesset",
           "accessed": "2026-11-05"
-        },
-        {
-          "url": "https://www.972mag.com/palestinian-citizens-israel-coalition-elections/",
-          "publisher": "+972 Magazine",
-          "kind": "secondary",
-          "quote": "Hadash, the Progressive List, and the Arab Democratic Party all recommended Peres for the premiership",
-          "accessed": "2026-11-05"
         }
       ],
       "notes": [
-        "Shas (6) and Agudat Yisrael (5) recommended Shamir on Sunday 13 November 1988; Herzog gave Shamir the mandate on 14 November. Per-list split matches the reported 63/55 totals. The Hadash, Progressive List and Arab Democratic Party recommendations rest on a secondary 2022 account (+972) and on arithmetic against the 55 total; no contemporary report naming them was retrieved. UPI's page and +972 returned 403 to a direct request on 2026-11-05; their quotes are from a search-index extract."
+        "Contemporary reporting gives aggregate support of 63 for Shamir and 55 for Peres. Only 49 Peres seats are assigned here from named-party reporting; Hadash, PLP and ADP (6 seats) are unconfirmed. Degel (2 seats) supported a broad government, but a formal presidential recommendation is unconfirmed. Arithmetic is not evidence of a per-list recommendation."
       ]
     }
   ],

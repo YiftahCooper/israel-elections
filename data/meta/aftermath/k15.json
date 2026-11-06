@@ -17,7 +17,7 @@
     },
     "knesset-history": {
       "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-fifteenth-knesset-1999-2003",
-      "publisher": "Knesset, history of the 15th Knesset (credited text)",
+      "publisher": "Knesset historical text, reproduced by Jewish Virtual Library (mirror)",
       "kind": "official",
       "accessed": "2026-11-05",
       "via": "Jewish Virtual Library mirror; original https://main.knesset.gov.il/EN/About/History/pages/knessethistory.aspx?kns=15"
@@ -96,6 +96,24 @@
       "publisher": "Ministry of Defense, IDF and Defense Establishment Archives, Time Axis: 2000–2005",
       "kind": "official",
       "accessed": "2026-11-05"
+    },
+    "idi-coalition": {
+      "url": "https://www.idi.org.il/articles/8082",
+      "publisher": "Israel Democracy Institute, 14 August 2010",
+      "kind": "academic",
+      "accessed": "2026-11-06"
+    },
+    "cec-dissolution": {
+      "url": "https://lacuna.co.il/posts/election_date/04-1.pdf",
+      "publisher": "CEC chair, decision 1/04, 3 March 2004, pp.26–27 (third-party mirror)",
+      "kind": "official",
+      "accessed": "2026-11-06"
+    },
+    "gov28-tenure": {
+      "url": "https://www.gov.il/BlobFolder/generalpage/gov28/he/gov28.pdf",
+      "publisher": "Government of Israel, government 28, p.120",
+      "kind": "official",
+      "accessed": "2026-11-06"
     }
   },
   "results": {
@@ -274,8 +292,8 @@
         "id": "october-riots",
         "date": "2000-10",
         "category": "society",
-        "textEn": "Protests and clashes took place in Arab communities in Israel; police killed Arab citizens.",
-        "textHe": "ביישובים ערביים בישראל התקיימו מחאות ועימותים; המשטרה הרגה אזרחים ערבים.",
+        "textEn": "Riots broke out in Arab communities in Israel; police fire killed Arab citizens.",
+        "textHe": "מהומות פרצו ביישובים ערביים בישראל; אזרחים ערבים נהרגו מירי המשטרה.",
         "cites": [
           {
             "source": "knesset-history",
@@ -363,14 +381,15 @@
     ],
     "endedBy": {
       "type": "early-election",
-      "date": "2002-11-11",
+      "date": "2002-11-05",
       "nextElection": "2003-01-28",
-      "textEn": "The Knesset set 28 January 2003 for the early election after Sharon initiated dissolution.",
-      "textHe": "הכנסת קבעה את הבחירות המוקדמות ל־28 בינואר 2003 לאחר ששרון יזם את פיזורה.",
+      "textEn": "Prime Minister Sharon dissolved the Knesset with President Katsav’s consent; the election followed on 28 January 2003.",
+      "textHe": "ראש הממשלה שרון פיזר את הכנסת בהסכמת הנשיא קצב; הבחירות נערכו ב־28 בינואר 2003.",
       "cites": [
         {
-          "source": "ipu2003",
-          "quote": "On 11 November 2002, the Knesset set 28 January 2003"
+          "source": "cec-dissolution",
+          "quote": "בתאריך ל׳ בחשוון תשס״ג (5.11.2002)",
+          "locator": "pp.26–27, paragraph 1; Sharon, with presidential consent, ordered dissolution under section 22."
         }
       ]
     }
@@ -381,11 +400,11 @@
     "gap": "INES instrument exists; no qualifying published topline verified for this election. No microdata analysis performed."
   },
   "gaps": [
-    "Certification date and official first-sitting record not retrieved; election date comes from the existing verified result dataset.",
+    "The retained results notice was signed and published on 25 May 1999 (YP 4757); retained Knesset OData opening membership starts 7 June 1999. An independently earlier certification act and first-sitting protocol have not been retrieved.",
     "Formation timeline is a sourced subset; missing steps must not be inferred from statutory maximum periods.",
     "First-government coalition membership is reused from the existing first-government scheme, whose party membership evidence includes labelled Hebrew Wikipedia; a complete independent primary coalition agreement cross-check remains pending.",
-    "Knesset history mirror errors: Rehavam Ze’evi’s assassination is printed as 23 October 2000; MFA puts it in 2001. The inaccurate date is excluded. Government 29 faction membership and all Barak-to-Sharon intermediate formal steps remain unfilled.",
-    "Government endDate is the established succession/death date in the existing project chronology; a dedicated primary tenure source should be added in review.",
+    "Knesset history mirror misdates Ze’evi’s assassination; the inaccurate date remains excluded. Government 29 faction membership and intermediate Barak-to-Sharon formal acts remain incomplete; membership snapshots alone do not establish the legal effective time of resignation.",
+    "Government 28 tenure independently checked against retained official gov28.pdf p.120: 6 July 1999–7 March 2001. Intermediate formal resignation/caretaker acts remain incomplete.",
     "The UPI photo caption indexes a 75–29 confidence vote, but the original returned 403. The tally is held out until an inspectable original is obtained; coalition size 75 is independently verified by JTA."
   ],
   "government": {
@@ -431,7 +450,7 @@
       {
         "letters": "ג",
         "seats": 5,
-        "note": "in the coalition without cabinet ministers; left on 1999-09-05"
+        "note": "in the coalition without cabinet ministers; left in September 1999 (IDI; exact day not independently established)"
       }
     ],
     "coalitionSeats": 75,
@@ -456,7 +475,19 @@
       {
         "source": "vote2001",
         "quote": "took over as prime minister Wednesday"
+      },
+      {
+        "source": "gov28-tenure",
+        "quote": "6.7.1999",
+        "locator": "p.120, government 28 heading; through 7.3.2001"
+      },
+      {
+        "source": "idi-coalition",
+        "quote": "כללה הקואליציה שבע סיעות ונסמכה על רוב של 75 חברי כנסת"
       }
+    ],
+    "notes": [
+      "IDI independently confirms seven founding factions / 75 seats and UTJ leaving in September 1999; exact day not independently established. Quote: היא עזבה את הקואליציה כבר בספטמבר 1999. https://www.idi.org.il/articles/8082"
     ]
   },
   "recommendationsNotApplicable": {
