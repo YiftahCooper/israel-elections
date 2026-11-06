@@ -117,7 +117,10 @@ const EXPECTED: Record<Family, string> = {
   // and builtAt changed (recursive field diff); HEAD k19 with current src reproduces 2694440f….
   // All four non-model digests unchanged. See docs/research/data-audit/k19-resolution.md.
   // merged with k19 audit fixes: combined digest = union of the separately reviewed changes.
-  model: '4faa7f17ce364956de29269c7575a52a553ca40ea4da216f29fcc9620d9c21e5',
+  // k8 audit 6 Nov: recursive field diff limits dataset changes to מס names/link title,
+  // Shechterman display name/note, affiliated-list scheme title, unresolved logo removal,
+  // and build metadata. Every other election and all engine/model source are unchanged.
+  model: '5e32c44790d90ad6671399bdbb3e06823af7f348db95342e7814f5859865ac9e',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

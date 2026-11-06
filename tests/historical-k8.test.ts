@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { buildK8, verifyK8 } from '../scripts/lib/historical/k8.ts';
 import { researchDataset } from '../scripts/lib/historical/k8-k12-common.ts';
+import { listLabel, shownName } from '../src/app/derive.ts';
 import { allocate } from '../src/engine/allocate.ts';
 import { scenarioFromDataset, toEngineInput, validateScenario } from '../src/model/scenario.ts';
 
@@ -47,6 +48,19 @@ describe('k8 (1973) — released on the official list connections', () => {
     expect(pair('ב', 'גד')?.active).toBe(true);
     expect(pair('לע', 'רצ')?.active).toBe(true);
     expect(pair('רא', 'עא')?.active).toBe(true);
+  });
+  it('shows the sourced corrections while preserving the gazetted roster and stable IDs', () => {
+    const ds = JSON.parse(readFileSync('public/data/k8.json', 'utf8'));
+    const likud = ds.lists.find((l: { id: string }) => l.id === '8-חל טעם');
+    const c = likud.candidates[37];
+    expect(c).toMatchObject({ id: '8-חל טעם#38', rank: 38, nameHe: 'שחטרמן אברהם', displayNameHe: 'שכטרמן אברהם' });
+    expect(shownName(c)).toBe('שכטרמן אברהם');
+    expect(likud.candidates[12].nameHe).toBe('אברמוב שנאור זלמן');
+    const social = ds.lists.find((l: { id: string }) => l.id === '8-מס');
+    expect(social.nameHe).toBe('תנועה לשויון חברתי');
+    expect(listLabel(social, 'he')).toBe('תנועה לשויון חברתי');
+    expect(listLabel(social, 'en')).toBe('Tnua LeShivyon Hevrati');
+    expect(ds.lists.find((l: { letters: string }) => l.letters === 'גד').logo).toBeUndefined();
   });
   it('is release-ready, with every elected member cross-checked', () => {
     const a = verifyK8({ log: false });

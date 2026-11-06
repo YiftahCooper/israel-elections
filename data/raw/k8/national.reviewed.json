@@ -1,7 +1,7 @@
 {
   "id": "k8",
   "reviewedOn": "2026-11-04",
-  "scope": "National votes and seats visually transcribed from the official scanned results gazette. Partial research evidence; not a released application dataset.",
+  "scope": "Reviewed national votes and seats visually transcribed from the official scanned results gazette; input to the released application dataset. Roster coverage limitations are recorded separately.",
   "resultsSourceId": "k8-results-gazette",
   "resultsIssue": 1979,
   "resultsPages": [
@@ -75,7 +75,7 @@
     },
     {
       "letters": "מס",
-      "nameHe": "התנועה לשוויון חברתי",
+      "nameHe": "תנועה לשויון חברתי",
       "gazetteVotes": 10202,
       "officialSeats": 0
     },
@@ -213,5 +213,8 @@
     "exact": true,
     "differences": [],
     "note": "With the six official connections, every gazetted seat is reproduced (decision 0077)."
-  }
+  },
+  "notes": [
+    "k8 audit, 2026-11-06: מס is תנועה לשויון חברתי, as printed in YP 1979 p.608 and YP 1954 p.93 (k8-results-gazette / k8-candidates-gazette); the added article in התנועה לשוויון חברתי was a transcription error."
+  ]
 }

@@ -792,9 +792,9 @@
     },
     {
       "letters": "מס",
-      "nameHe": "התנועה לשוויון חברתי",
+      "nameHe": "תנועה לשויון חברתי",
       "englishName": {
-        "label": "HaTnua LeShivyon Hevrati",
+        "label": "Tnua LeShivyon Hevrati",
         "kind": "transliteration",
         "sourceId": "k8-candidates-gazette",
         "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
@@ -928,10 +928,17 @@
           "kind": "secondary",
           "quote": "קואליציה: המערך, מפד\"ל, ליברלים עצמאיים, קידמה ופיתוח, רשימה ערבית{{ש}} לבדואים וכפריים | אופוזיציה: הליכוד, חזית דתית תורתית, רק\"ח, רצ, מוקד",
           "accessed": "2026-11-04"
+        },
+        {
+          "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1973/",
+          "publisher": "Israel Democracy Institute, בחירות 1973",
+          "kind": "academic",
+          "quote": "ועם רשימות המיעוטים מנתה 68 חברי כנסת",
+          "accessed": "2026-11-06"
         }
       ],
       "notes": [
-        "Coalition = lists that joined or supported the government at its formation. Official records give ministers only; support-only lists (e.g. Mapai-affiliated Arab lists) rest on Hebrew Wikipedia.",
+        "Coalition = lists that joined or supported the government at formation, counted by election-list seats. Official OData records give ministers; IDI’s Hebrew 1973 account confirms 68 seats including the minority lists.",
         "Hebrew Wikipedia notes that Progress and Development and the Arab List for Bedouin and Villagers joined the Alignment faction before the government was formed (OData: 1974-02-26)."
       ],
       "confidence": "high"
@@ -1017,18 +1024,32 @@
           "quote": "Katzir charged Mrs. Meir with the task of forming a new government after two weeks of consultations with the representatives of the various parties represented in the new Knesset.",
           "accessed": "2026-11-05",
           "note": "Bulletin dated 1974-01-31."
+        },
+        {
+          "url": "https://fs.knesset.gov.il/8/Plenum/8_ptm_253620.pdf",
+          "publisher": "Knesset, sitting 21, 10 March 1974, p.1; presidential letter of 30 January 1974",
+          "kind": "official",
+          "quote": "30 בינואר 1974 … הטלתי היום על חברת־הכנסת גולדה מאיר את התפקיד להרכיב ממשלה",
+          "accessed": "2026-11-06"
+        },
+        {
+          "url": "http://pdfs.jta.org/1974/1974-01-17_012.pdf",
+          "publisher": "JTA Daily News Bulletin, 17 January 1974, p.3 (dateline 16 January)",
+          "kind": "secondary",
+          "accessed": "2026-11-06",
+          "quote": "JERUSALEM, Jan. 16 (JTA)--President Ephraim Katzir met separately today with delegations from the Labor Party and Likud in the first official moves toward the formation of a new government."
         }
       ],
       "notes": [
-        "Only the Alignment (Labor delegation: Meir) and the Likud (no name; 'this is the task of Labor') are documented in the sources inspected. The eight other lists (30 seats) are shown as 'Not stated in source'.",
-        "Date: Hebrew Wikipedia (citing Davar 31 Jan 1974) gives 30 January 1974 for the mandate; the JTA bulletin dated 31 January says 'today'. One-day uncertainty.",
+        "The Alignment recommendation is reported by JTA (\"reportedly suggested\"), not an inspected official recommendation letter. Likud named no candidate according to the same report. Eight other lists (30 seats) remain Not stated in source.",
+        "Mandate date: 30 January 1974, settled by the President’s dated letter reproduced in Knesset sitting 21 (10 March 1974, p.1). The JTA archive heading is 31 January; the primary act takes precedence.",
         "Confidence: medium for the Alignment and Likud entries."
       ]
     },
     {
       "id": "labour-affiliated-arab-lists",
-      "nameHe": "מפא\"י/המערך והרשימות הערביות המסונפות אליה (רשימות לוויין)",
-      "nameEn": "Mapai/Alignment and its affiliated Arab (satellite) lists",
+      "nameHe": "המערך והרשימות הערביות המסונפות אליו",
+      "nameEn": "The Alignment and its affiliated Arab lists",
       "kind": "parliamentary",
       "date": "1973-12-31",
       "blocs": [
@@ -1072,6 +1093,13 @@
           "kind": "secondary",
           "quote": "שתפעל כמפלגת לווין של המערך",
           "accessed": "2026-11-04"
+        },
+        {
+          "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1973/",
+          "publisher": "Israel Democracy Institute, בחירות 1973",
+          "kind": "academic",
+          "quote": "ועם רשימות המיעוטים מנתה 68 חברי כנסת",
+          "accessed": "2026-11-06"
         }
       ],
       "notes": [
@@ -1398,6 +1426,7 @@
   ],
   "datasetAvailable": true,
   "notes": [
-    "All 96 named opening members of the four joint lists are matched to same-list candidate ranks in data/raw/k8/candidates.reviewed.json (YP 1954), cross-checked with public/data/k8.json and Knesset PersonIDs in data/raw/k8/knesset-odata-members.json. No unmatched members or unassigned elected ranks remain."
+    "All 96 named opening members of the four joint lists are matched to same-list candidate ranks in data/raw/k8/candidates.reviewed.json (YP 1954), cross-checked with public/data/k8.json and Knesset PersonIDs in data/raw/k8/knesset-odata-members.json. No unmatched members or unassigned elected ranks remain.",
+    "Internal list IDs and candidate IDs are opaque stable keys, not ballot-letter labels; displayed/exported letters come from the letters field. No IDs were changed in the k8 audit."
   ]
 }
