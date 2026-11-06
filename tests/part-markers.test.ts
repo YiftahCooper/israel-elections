@@ -12,7 +12,7 @@ const base={...scenarioFromDataset(loadDataset('k25')),mode:'experimental' as co
 const change:Record<Part,Action>={
  votes:{type:'setVotes',listId:id,votes:base.lists[0].votes+100},
  identity:{type:'setListMeta',listId:id,patch:{nameHe:'Test'}},
- structure:{type:'setFactionSplit',listId:base.lists.find(l=>(l.parties?.length??0)>1)!.id,split:true},
+ structure:{type:'setWithdrawn',listId:id,withdrawn:true},
  candidates:{type:'candidates',listId:id,candidates:[...base.lists[0].candidates].reverse(),note:'test'},
  agreements:{type:'removeAgreement',id:base.agreements[0].id},
  blocs:{type:'setListMeta',listId:id,patch:{bloc:null}},
@@ -20,16 +20,17 @@ const change:Record<Part,Action>={
  rules:{type:'setRules',patch:{thresholdPct:'2'}},
  totals:{type:'setTotals',invalid:base.invalid+10},
 };
-const editAgain=(s:Scenario,p:Part):Action=>p==='votes'?{type:'setVotes',listId:id,votes:s.lists[0].votes+1}:p==='identity'?{type:'setListMeta',listId:id,patch:{nameHe:'Individual'}}:p==='structure'?{...change.structure,split:false} as Action:p==='candidates'?{type:'candidates',listId:id,candidates:[...s.lists[0].candidates].reverse(),note:'individual'}:p==='agreements'?{type:'setAgreement',agreement:{...s.agreements[0],enabled:false}}:p==='blocs'?{type:'setListMeta',listId:base.lists[1].id,patch:{bloc:null}}:p==='coalitions'?{type:'setCoalition',coalition:{in:[id,base.lists[1].id],out:[]}}:p==='rules'?{type:'setRules',patch:{thresholdPct:'1'}}:{type:'setTotals',invalid:s.invalid+1};
+const editAgain=(s:Scenario,p:Part):Action=>p==='votes'?{type:'setVotes',listId:id,votes:s.lists[0].votes+1}:p==='identity'?{type:'setListMeta',listId:id,patch:{nameHe:'Individual'}}:p==='structure'?{type:'setWithdrawn',listId:base.lists[1].id,withdrawn:true}:p==='candidates'?{type:'candidates',listId:id,candidates:[...s.lists[0].candidates].reverse(),note:'individual'}:p==='agreements'?{type:'setAgreement',agreement:{...s.agreements[0],enabled:false}}:p==='blocs'?{type:'setListMeta',listId:base.lists[1].id,patch:{bloc:null}}:p==='coalitions'?{type:'setCoalition',coalition:{in:[id,base.lists[1].id],out:[]}}:p==='rules'?{type:'setRules',patch:{thresholdPct:'1'}}:{type:'setTotals',invalid:s.invalid+1};
 for(const part of Object.keys(PARTS) as Part[])it(`${part}: whole replacement gives one part marker, then one item edit gives one item marker`,()=>{
  const source=applyAction(base,change[part]);
  const whole=applyAction(base,{type:'startPart',part,source:'saved',snapshot:partSnapshot(source,part),name:'Source'});
+ if(part==='coalitions'){expect(referenceChanges(whole,base)).toEqual([]);expect(referenceChanges(applyAction(whole,editAgain(whole,part)),base)).toEqual([]);return;}
  expect(referenceChanges(whole,base)).toEqual([['parts',part]]);
  const edited=applyAction(whole,editAgain(whole,part)),markers=referenceChanges(edited,base);
  expect(markers.filter(p=>p[0]==='parts')).toEqual([['parts',part]]);
- expect(markers.filter(p=>p[0]!=='parts')).toHaveLength(1);
+ expect(markers.filter(p=>p[0]!=='parts')).toHaveLength(part==='structure'?3:1);
  expect(referenceChanges(edited,edited)).toEqual([]);
- expect(referenceChanges(edited,whole)).toHaveLength(1);
+ expect(referenceChanges(edited,whole)).toHaveLength(part==='structure'?3:1);
 });
 it('family grouping is one marker; donor/list/bloc fields are not individually marked',()=>{
  const b=scenarioFromDataset(JSON.parse(readFileSync(new URL('../public/data/k12.json',import.meta.url),'utf8'))),f=parseFamily(JSON.stringify(family)),s=applyAction(b,groupingAction(f,b,'en'));

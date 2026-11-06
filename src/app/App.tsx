@@ -1,6 +1,5 @@
 import { Info } from './components/ui.tsx';
 import { BoardChoices } from './components/BoardChoices.tsx';
-import { useActiveReference } from './useActiveReference.ts';
 import { CustomPage } from './components/Feature.tsx';
 import { TOOL_FEATURES, RANK, LEVEL_LABELS, featureLabel, type Preset } from './features.ts';
 import { electionContext } from '../data/electionContext.ts';
@@ -118,7 +117,6 @@ function Shell() {
   const [pmContestId, setPMContestId] = useState<string | null>(null);
   const pmOnly = electionContext.pmContests.find(c => c.id === pmContestId && c.contestType === 'prime-minister-only');
   const L = useL();
-  const { reference } = useActiveReference();
   const committed = useStore((st) => st.scenario);
   const preview = useStore((st) => st.preview);
   const ds = useStore((st) => (st.scenario ? st.datasets[st.scenario.electionId] : undefined));
@@ -185,7 +183,7 @@ function Shell() {
   const drawerOpen = tool !== 'board' && !!selected && drawerFor === selected;
 
   return (
-    <div className={`app ${preview ? 'board-preview' : ''}`} style={{ ['--scenario-color' as string]: reference || referenceChanges(committed, base).length || committed.identityColor ? liveScenarioColor(committed, saved) : undefined }}>
+    <div className={`app ${preview ? 'board-preview' : ''}`} style={{ ['--scenario-color' as string]: referenceChanges(committed, base).length ? liveScenarioColor(committed, saved) : undefined }}>
       <TopBar s={pmOnly ? null : committed} r={cr} ds={ds} baseR={baseR} pmContestId={pmContestId} onContestChange={setPMContestId} />
       {pmOnly ? <main className="work"><PMResult contest={pmOnly} onKnesset={() => setPMContestId(null)} /></main> : <>
       <nav className="toolbar" aria-label={L('Tools', 'כלים')}><div ref={trackTabOverflow} className="tabs" role="tablist" aria-label={L('Tools', 'כלים')}>

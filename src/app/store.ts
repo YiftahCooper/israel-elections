@@ -1,3 +1,5 @@
+import { inputDiffs } from '../model/editScopes.ts';
+import { factLog, saveLog } from '../model/actionClassification.ts';
 import { baselineOf, freshScenario, factionDefault, setFactionDefault } from './factionDefaults.ts';
 import { validAnswers, sourceChoice, sourceValue, type PreferenceAnswers, type PreferenceAsk, type PreferenceId } from './preferences.ts';
 import type { Family } from '../families/model.ts';
@@ -242,8 +244,10 @@ export async function openElection(id: ElectionId, from?: { id?: string; name: s
 export function scenarioKey(st: Pick<State, 'scenario' | 'reference'> = state): string | null {
   const s = st.scenario;
   if (!s) return null;
-  if (!st.reference && s.log.length === 0) return 'official';
-  const dirty = !st.reference || JSON.stringify(s.log) !== JSON.stringify(st.reference.log);
+  // Authoring a named snapshot is saveable even when its election facts remain official.
+  const authored = s.log.some(e => e.action.type === 'rename' || e.action.type === 'setDescription');
+  if (factLog(s).length === 0 && !authored) return 'official';
+  const dirty = !st.reference || inputDiffs(s, st.reference).length > 0 || JSON.stringify(saveLog(s)) !== JSON.stringify(saveLog(st.reference));
   return dirty ? `draft:${s.id}:${s.log.at(-1)?.at ?? s.log.length}` : s.id;
 }
 const isUnsavedKey = (key: string | null, st: Pick<State, 'saved'> = state) => !!key && key !== 'official' && !st.saved.some((x) => x.id === key);

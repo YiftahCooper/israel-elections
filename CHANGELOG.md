@@ -2,6 +2,8 @@
 
 ## 5 November 2026 — release review
 
+- Keep sourced groupings, faction display and coalition inspection official; preserve view choices in saves and links without edit markers or scenario tint.
+
 - Compare opens unchanged results against the previous election, including when saved scenarios exist; explicit comparison choices stay selected, edits use the usual official result/reference, and the earliest election keeps its chooser.
 
 - Turnout can no longer pass 100% through vote edits: “new voters” come only from registered voters who stayed home, in the vote field, slider, quick buttons, seat searches, seat security, bloc totals and What if… presets; the list panel shows how many stayed home. Lowering registered voters below votes cast still warns rather than blocks.

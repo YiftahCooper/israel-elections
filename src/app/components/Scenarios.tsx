@@ -1,3 +1,4 @@
+import { factLog } from '../../model/actionClassification.ts';
 import { ChoicePicker } from './ChoicePicker.tsx';
 import { Info } from './ui.tsx';
 import { EditMarker } from './EditMarker.tsx';
@@ -79,7 +80,7 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
     <div className="scn">
       <p className="small ink2" style={{ marginTop: 0 }}>{L('A scenario is your edited election. Save it here, or share a link.', 'תרחיש הוא הבחירות עם השינויים שלכם. שמרו כאן או שתפו קישור.')} <Info title={L('Using scenarios', 'שימוש בתרחישים')}>{L('Change votes, partners or rules in the other tabs, then name and save the result here. Saved scenarios stay in this browser; links and files can be opened on another device.', 'שנו קולות, שותפות או כללים בלשוניות האחרות, ואז תנו שם ושמרו כאן. תרחישים נשמרים בדפדפן זה; קישורים וקבצים נפתחים גם במכשיר אחר.')}</Info></p>
       <section className="scn-current">
-        <h3>{official ? L('Official result', 'התוצאה הרשמית') : L('This scenario', 'התרחיש הנוכחי')} <span className="muted" style={{ fontWeight: 400 }}>· {electionName(s.electionId)} · {official ? L('no changes yet', 'ללא שינויים עדיין') : L(`${s.log.length} edits`, `${s.log.length} שינויים`)}</span></h3>
+        <h3>{official ? L('Official result', 'התוצאה הרשמית') : L('This scenario', 'התרחיש הנוכחי')} <span className="muted" style={{ fontWeight: 400 }}>· {electionName(s.electionId)} · {official ? L('no changes yet', 'ללא שינויים עדיין') : L(`${factLog(s).length} edits`, `${factLog(s).length} שינויים`)}</span></h3>
         <div className="scn-form">
           <label className="field"><span>{L('Name', 'שם')}</span>
             <ScenarioText value={s.name} label={L('Name', 'שם')} placeholder={L('e.g. “Arab turnout returns to 2015 levels”', 'למשל "שיעור ההצבעה בחברה הערבית חוזר לרמת 2015"')} onCommit={(name) => dispatch({ type: 'rename', name })} /></label>
@@ -120,7 +121,7 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
             const res = results.get(x.id);
             return (
               <li key={x.id} className={`scn-card ${x.id === s.id ? 'current' : ''}`}>
-                <div className="scn-title"><b><span className="swatch" style={{ background: scenarioColor(res?.sc ?? {}) }} />{x.name}</b><span className="small muted">{electionName(x.electionId)} · {new Date(x.savedAt).toLocaleDateString(lang === 'he' ? 'he-IL' : 'en-GB', { dateStyle: 'medium' })}</span></div>
+                <div className="scn-title"><b><span className="swatch" style={{ background: res && !factLog(res.sc).length ? 'var(--muted)' : scenarioColor(res?.sc ?? {}) }} />{x.name}</b><span className="small muted">{electionName(x.electionId)} · {new Date(x.savedAt).toLocaleDateString(lang === 'he' ? 'he-IL' : 'en-GB', { dateStyle: 'medium' })}</span></div>
                 {x.description && <p className="small ink2" style={{ margin: 0 }}>{x.description}</p>}
                 {res ? <ResultBar s={res.sc} r={res.r} /> : <p className="tiny muted" style={{ margin: 0 }}>{L('Open it to see its result.', 'פתחו כדי לראות את התוצאה.')}</p>}
                 <div className="row" style={{ gap: 4 }}>

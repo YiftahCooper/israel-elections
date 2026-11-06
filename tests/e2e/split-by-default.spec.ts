@@ -28,8 +28,8 @@ for (const lang of ['en', 'he'] as const) test(`${lang}: joint-list default is p
   await expect(toggle).toBeChecked();
   await expect(page.locator('.session')).toHaveClass(/idle/);
   await toggle.uncheck();
-  await expect(page.locator('.session')).not.toHaveClass(/idle/);
-  await expect(panel.locator('[data-marker-path="factionSplits"] .edit-marker')).toHaveCount(1);
+  await expect(page.locator('.session')).toHaveClass(/idle/);
+  await expect(panel.locator('[data-marker-path="factionSplits"] .edit-marker')).toHaveCount(0);
   await page.waitForTimeout(350); // workspace debounce
   await page.reload();
   await row.click();

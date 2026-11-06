@@ -1,0 +1,31 @@
+import { expect, test } from '@playwright/test';
+import { choose } from './choices.ts';
+
+test('sourced groupings stay official; moving a member is an edit; shares preserve the view', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({lang:'en',theme:'light',level:'expert',hintDismissed:true})));
+  await page.goto('/');
+  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
+  await page.getByRole('button', { name: 'Edit blocs', exact: true }).click();
+  const panel = page.locator('.bloc-panel');
+  const picker = panel.locator('.start-from .choice-trigger');
+  await choose(picker, 'preset:pm-recommendations');
+  await expect(page.locator('.session')).toContainText('No changes yet');
+  expect(await page.locator('.app').evaluate(el => (el as HTMLElement).style.getPropertyValue('--scenario-color'))).toBe('');
+  await expect(page.locator('.edit-marker')).toHaveCount(0);
+  await expect(page.locator('.band .scenario-switcher .choice-trigger')).toHaveAttribute('data-value', 'official');
+  await page.getByRole('tab', { name: 'Scenarios', exact: true }).click();
+  await page.getByRole('button', { name: 'Copy a share link', exact: true }).click();
+  const link = await page.getByRole('textbox', { name: 'Share link', exact: true }).inputValue();
+  await page.goto(link);
+  await expect(page.locator('.session')).toContainText('No changes yet');
+  expect(await page.locator('.app').evaluate(el => (el as HTMLElement).style.getPropertyValue('--scenario-color'))).toBe('');
+  await page.getByRole('tab', { name: 'Overview', exact: true }).click();
+  await page.getByRole('button', { name: 'Edit blocs', exact: true }).click();
+  const cards = panel.locator('.bp-card');
+  await cards.first().locator('.bp-chip-main:not([disabled])').first().click();
+  await cards.nth(1).getByRole('button', { name: /Move here/ }).click();
+  expect(await page.locator('.app').evaluate(el => (el as HTMLElement).style.getPropertyValue('--scenario-color'))).not.toBe('');
+  await expect(page.locator('.session')).not.toContainText('No changes yet');
+  await expect(page.locator('.edit-marker').first()).toBeVisible();
+  await page.screenshot({ path: '.backup-scratch/u7/membership-edited.png' });
+});

@@ -1,3 +1,4 @@
+import { factLog } from '../../model/actionClassification.ts';
 import {isFamilyGrouping} from '../../families/labels.ts';
 import { useActiveReference } from '../useActiveReference.ts';
 import { referenceLabel } from '../derive.ts';
@@ -72,7 +73,8 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
     if (b) was = blocTotals(b, allocationOf(b));
     return s.blocs.map((b) => ({ b, n: now.get(b.id) ?? 0, d: was ? (now.get(b.id) ?? 0) - (was.get(b.id) ?? 0) : null }));
   }, [s, r, base, baseR]);
-  const edited = s.log.length > 0;
+  const edits = factLog(s).length;
+  const edited = edits > 0;
   const familyGrouping = isFamilyGrouping(s);
   const majority = Math.floor(s.rules.seats / 2) + 1;
   const holder = blocs?.find((x) => x.n >= majority);
@@ -101,7 +103,7 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
         </>}
       </span>
       {edited && <button ref={trigger} className="btn small ghost" aria-expanded={open} aria-controls={historyId} popoverTarget={historyId}>
-        {L(`History · ${s.log.length} edit${s.log.length === 1 ? '' : 's'}`, `היסטוריה · ${s.log.length} שינויים`)}
+        {L(`History · ${edits} edit${edits === 1 ? '' : 's'}`, `היסטוריה · ${edits} שינויים`)}
         {open ? <ChevronUp className="icon sm" aria-hidden /> : <ChevronDown className="icon sm" aria-hidden />}
       </button>}
       <div id={historyId} ref={pop} className="history" popover="auto" onToggle={(e) => setOpen(e.newState === 'open')}>
