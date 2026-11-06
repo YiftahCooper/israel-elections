@@ -1,5 +1,9 @@
 # Changelog
 
+## 6 November 2026 — k24 data audit
+
+- Corrected Demokratit’s withdrawal, retained official final notices, clarified opening membership and polling-station scope, added candidate resignation notes, and corrected overstated source and logo verification claims.
+
 ## 5 November 2026 — release review
 
 - Compare opens unchanged results against the previous election, including when saved scenarios exist; explicit comparison choices stay selected, edits use the usual official result/reference, and the earliest election keeps its chooser.

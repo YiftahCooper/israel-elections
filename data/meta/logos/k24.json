@@ -30,7 +30,7 @@
       "letters": "ת",
       "evidenceId": "commons-100640724",
       "assetSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/72/New_Hope_party_logo.png",
-      "status": "verified",
+      "status": "unresolved",
       "sha256": "39fd2b7c50acd40048bca32abc7cf25986383984cc25eca8e9f528c0191246b1",
       "originalSha256": "120850e33b5296398d10da4abec5d74ebce3dc48b7a2ed89a63e59e0589cd680",
       "retrieval": "Downloaded 2026-11-04 by the parent agent with a descriptive User-Agent after the research run was rate-limited; PNGs resized to 256 px with a browser canvas.",

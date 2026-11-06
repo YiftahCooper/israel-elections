@@ -24,7 +24,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1",
     "siteId": 1,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "יולי אדלשטיין",
@@ -40,7 +40,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/69",
     "siteId": 69,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "ישראל כ\"ץ (הליכוד)",
@@ -56,7 +56,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/831",
     "siteId": 831,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "מירי רגב",
@@ -72,7 +72,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/826",
     "siteId": 826,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "יריב לוין",
@@ -88,7 +88,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/921",
     "siteId": 921,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "יואב גלנט",
@@ -104,7 +104,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/974",
     "siteId": 974,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "ניר ברקת",
@@ -120,7 +120,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/723",
     "siteId": 723,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "גילה גמליאל",
@@ -136,7 +136,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/771",
     "siteId": 771,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אבי דיכטר",
@@ -152,7 +152,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1059",
     "siteId": 1059,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "גלית דיסטל-אטבריאן",
@@ -168,7 +168,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/212",
     "siteId": 212,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "חיים כץ",
@@ -184,7 +184,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/928",
     "siteId": 928,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אלי כהן (פוליטיקאי, 1972)",
@@ -200,7 +200,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/45",
     "siteId": 45,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "צחי הנגבי",
@@ -216,7 +216,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/830",
     "siteId": 830,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אופיר אקוניס",
@@ -232,7 +232,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/695",
     "siteId": 695,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "יובל שטייניץ",
@@ -248,7 +248,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/912",
     "siteId": 912,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "דודי אמסלם",
@@ -264,7 +264,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/990",
     "siteId": 990,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "גדי יברקן",
@@ -280,7 +280,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/953",
     "siteId": 953,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אמיר אוחנה",
@@ -296,7 +296,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/976",
     "siteId": 976,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אופיר כץ",
@@ -312,7 +312,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/992",
     "siteId": 992,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אתי עטייה",
@@ -328,7 +328,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/945",
     "siteId": 945,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "יואב קיש",
@@ -344,7 +344,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/914",
     "siteId": 914,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "דוד ביטן",
@@ -360,7 +360,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1019",
     "siteId": 1019,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "קרן ברק",
@@ -376,7 +376,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1011",
     "siteId": 1011,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "שלמה קרעי",
@@ -392,7 +392,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/922",
     "siteId": 922,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "מיקי זוהר",
@@ -408,7 +408,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/832",
     "siteId": 832,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אורלי לוי-אבקסיס",
@@ -424,7 +424,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1018",
     "siteId": 1018,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "קטי שטרית",
@@ -440,7 +440,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/977",
     "siteId": 977,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אופיר סופר",
@@ -456,7 +456,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1016",
     "siteId": 1016,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "פטין מולא",
@@ -472,7 +472,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1002",
     "siteId": 1002,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "מאי גולן",
@@ -488,7 +488,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/942",
     "siteId": 942,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "טלי פלוסקוב",
@@ -504,7 +504,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1010",
     "siteId": 1010,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "עוזי דיין",
@@ -520,7 +520,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/987",
     "siteId": 987,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אריאל קלנר",
@@ -536,7 +536,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/972",
     "siteId": 972,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אוסנת מארק",
@@ -552,7 +552,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1044",
     "siteId": 1044,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "עמית הלוי",
@@ -568,7 +568,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1045",
     "siteId": 1045,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "ניסים ואטורי",
@@ -584,7 +584,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1046",
     "siteId": 1046,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "שבח שטרן",
@@ -600,7 +600,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/230",
     "siteId": 230,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "איוב קרא",
@@ -616,7 +616,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1047",
     "siteId": 1047,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "מטי יוגב",
@@ -644,7 +644,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1101",
     "siteId": 1101,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": null,
    "party": null,
@@ -656,7 +656,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1134",
     "siteId": 1134,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "שבתאי קטש",
@@ -688,7 +688,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/980",
     "siteId": 980,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אורנה ברביבאי",
@@ -704,7 +704,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/874",
     "siteId": 874,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "מאיר כהן",
@@ -720,7 +720,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/860",
     "siteId": 860,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "קארין אלהרר",
@@ -736,7 +736,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1006",
     "siteId": 1006,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "מירב כהן",
@@ -752,7 +752,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/897",
     "siteId": 897,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "יואל רזבוזוב",
@@ -768,7 +768,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/899",
     "siteId": 899,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אלעזר שטרן",
@@ -784,7 +784,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/876",
     "siteId": 876,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "מיקי לוי",
@@ -800,7 +800,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/915",
     "siteId": 915,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "מירב בן ארי",
@@ -816,7 +816,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1022",
     "siteId": 1022,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "רם בן ברק",
@@ -832,7 +832,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/995",
     "siteId": 995,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "יואב סגלוביץ",
@@ -848,7 +848,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/872",
     "siteId": 872,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "בועז טופורובסקי",
@@ -864,7 +864,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1009",
     "siteId": 1009,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "עידן רול",
@@ -880,7 +880,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/998",
     "siteId": 998,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "יוראי להב-הרצנו",
@@ -896,7 +896,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1049",
     "siteId": 1049,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "ולדימיר בליאק",
@@ -912,7 +912,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1061",
     "siteId": 1061,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "רון כץ",
@@ -928,7 +928,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1071",
     "siteId": 1071,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "נירה שפק",
@@ -944,7 +944,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1076",
     "siteId": 1076,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "טטיאנה מזרסקי",
@@ -960,7 +960,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1079",
     "siteId": 1079,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "יסמין סאקס פרידמן",
@@ -976,7 +976,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1084",
     "siteId": 1084,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "ענבר בזק",
@@ -992,7 +992,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1050",
     "siteId": 1050,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "משה טור-פז",
@@ -1008,7 +1008,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1085",
     "siteId": 1085,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "סימון דוידסון",
@@ -1024,7 +1024,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1131",
     "siteId": 1131,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "עוז חיים",
@@ -1040,7 +1040,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1133",
     "siteId": 1133,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "מיכל סלבני כבביה",
@@ -1072,7 +1072,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/751",
     "siteId": 751,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "יעקב מרגי",
@@ -1088,7 +1088,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/906",
     "siteId": 906,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "יואב בן צור",
@@ -1104,7 +1104,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/957",
     "siteId": 957,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "מיכאל מלכיאלי",
@@ -1120,7 +1120,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1055",
     "siteId": 1055,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "חיים ביטון",
@@ -1136,7 +1136,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1008",
     "siteId": 1008,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "משה ארבל",
@@ -1152,7 +1152,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/970",
     "siteId": 970,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "ינון אזולאי",
@@ -1168,7 +1168,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1029",
     "siteId": 1029,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "משה אבוטבול",
@@ -1184,7 +1184,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1039",
     "siteId": 1039,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אוריאל בוסו",
@@ -1200,7 +1200,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1043",
     "siteId": 1043,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "יוסי טייב",
@@ -1216,7 +1216,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1119",
     "siteId": 1119,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "ארז מלול",
@@ -1232,7 +1232,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1115",
     "siteId": 1115,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": null,
    "party": null,
@@ -1244,7 +1244,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/988",
     "siteId": 988,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "בני גנץ",
@@ -1260,7 +1260,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/905",
     "siteId": 905,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "פנינה תמנו",
@@ -1276,7 +1276,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1000",
     "siteId": 1000,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "חילי טרופר",
@@ -1292,7 +1292,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1003",
     "siteId": 1003,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "מיכאל ביטון",
@@ -1308,7 +1308,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/978",
     "siteId": 978,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אורית פרקש-הכהן",
@@ -1324,7 +1324,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/982",
     "siteId": 982,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אלון שוסטר",
@@ -1340,7 +1340,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/981",
     "siteId": 981,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "איתן גינזבורג",
@@ -1356,7 +1356,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1048",
     "siteId": 1048,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "יעל רון בן משה",
@@ -1372,7 +1372,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1077",
     "siteId": 1077,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "מופיד מרעי",
@@ -1388,7 +1388,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1052",
     "siteId": 1052,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "רות וסרמן-לנדה",
@@ -1404,7 +1404,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1073",
     "siteId": 1073,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אלון טל",
@@ -1420,7 +1420,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/864",
     "siteId": 864,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "נפתלי בנט",
@@ -1436,7 +1436,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/904",
     "siteId": 904,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "איילת שקד",
@@ -1452,7 +1452,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1030",
     "siteId": 1030,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "מתן כהנא",
@@ -1468,7 +1468,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1070",
     "siteId": 1070,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "עמיחי שיקלי",
@@ -1484,7 +1484,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1054",
     "siteId": 1054,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "ניר אורבך",
@@ -1500,7 +1500,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1065",
     "siteId": 1065,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אביר קארה",
@@ -1516,7 +1516,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1014",
     "siteId": 1014,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "עידית סילמן",
@@ -1532,7 +1532,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1078",
     "siteId": 1078,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "שירלי פינטו קדוש",
@@ -1548,7 +1548,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1083",
     "siteId": 1083,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "יום טוב כלפון",
@@ -1564,7 +1564,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/881",
     "siteId": 881,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "מרב מיכאלי",
@@ -1580,7 +1580,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/866",
     "siteId": 866,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "עמר בר-לב",
@@ -1596,7 +1596,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1062",
     "siteId": 1062,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אמילי מואטי",
@@ -1612,7 +1612,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1066",
     "siteId": 1066,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "גלעד קריב",
@@ -1628,7 +1628,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1068",
     "siteId": 1068,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אפרת רייטן",
@@ -1644,7 +1644,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1023",
     "siteId": 1023,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "רם שפע",
@@ -1660,7 +1660,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1064",
     "siteId": 1064,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אבתיסאם מראענה",
@@ -1676,7 +1676,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1082",
     "siteId": 1082,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "נעמה לזימי",
@@ -1732,7 +1732,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/216",
     "siteId": 216,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "יעקב ליצמן",
@@ -1748,7 +1748,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/814",
     "siteId": 814,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אורי מקלב",
@@ -1764,7 +1764,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/103",
     "siteId": 103,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "מאיר פרוש",
@@ -1780,7 +1780,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/861",
     "siteId": 861,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "יעקב אשר",
@@ -1796,7 +1796,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/754",
     "siteId": 754,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "ישראל אייכלר",
@@ -1812,7 +1812,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1001",
     "siteId": 1001,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "יצחק פינדרוס",
@@ -1828,7 +1828,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/996",
     "siteId": 996,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "יעקב טסלר",
@@ -1844,7 +1844,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1042",
     "siteId": 1042,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אליהו ברוכי",
@@ -1860,7 +1860,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1117",
     "siteId": 1117,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "משה רוט",
@@ -1904,7 +1904,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/951",
     "siteId": 951,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "עודד פורר",
@@ -1920,7 +1920,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/994",
     "siteId": 994,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "יבגני סובה",
@@ -1936,7 +1936,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/983",
     "siteId": 983,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אלי אבידר",
@@ -1952,7 +1952,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/956",
     "siteId": 956,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "יוליה מלינובסקי",
@@ -1968,7 +1968,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/837",
     "siteId": 837,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "חמד עמאר",
@@ -1984,7 +1984,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1024",
     "siteId": 1024,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אלכס קושניר",
@@ -2000,7 +2000,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1080",
     "siteId": 1080,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "יוסי שיין",
@@ -2016,7 +2016,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1075",
     "siteId": 1075,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "לימור מגן-תלם",
@@ -2032,7 +2032,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1072",
     "siteId": 1072,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אלינה ברדץ'-יאלוב",
@@ -2048,7 +2048,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1087",
     "siteId": 1087,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "שרון רופא אופיר",
@@ -2064,7 +2064,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/936",
     "siteId": 936,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "בצלאל סמוטריץ'",
@@ -2080,7 +2080,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1060",
     "siteId": 1060,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "מיכל וולדיגר",
@@ -2096,7 +2096,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1056",
     "siteId": 1056,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "איתמר בן גביר",
@@ -2112,7 +2112,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1067",
     "siteId": 1067,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "שמחה רוטמן",
@@ -2128,7 +2128,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/884",
     "siteId": 884,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אורית סטרוק",
@@ -2144,7 +2144,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1063",
     "siteId": 1063,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אבי מעוז",
@@ -2160,7 +2160,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1102",
     "siteId": 1102,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": null,
    "party": null,
@@ -2172,7 +2172,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/938",
     "siteId": 938,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "איימן עודה",
@@ -2204,7 +2204,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1031",
     "siteId": 1031,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "סאמי אבו שחאדה",
@@ -2220,7 +2220,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/948",
     "siteId": 948,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "עאידה תומא סלימאן",
@@ -2236,7 +2236,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/937",
     "siteId": 937,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אוסאמה סעדי",
@@ -2252,7 +2252,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1013",
     "siteId": 1013,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "עופר כסיף",
@@ -2268,7 +2268,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/991",
     "siteId": 991,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "היבה יזבק",
@@ -2284,7 +2284,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/919",
     "siteId": 919,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "יוסף ג'בארין",
@@ -2300,7 +2300,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1034",
     "siteId": 1034,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "סונדוס סאלח",
@@ -2316,7 +2316,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1025",
     "siteId": 1025,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "ג'אבר עסאקלה",
@@ -2332,7 +2332,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/964",
     "siteId": 964,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "יוסף עטאונה",
@@ -2348,7 +2348,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/985",
     "siteId": 985,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "מטאנס שחאדה",
@@ -2364,7 +2364,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/725",
     "siteId": 725,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "גדעון סער",
@@ -2380,7 +2380,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/946",
     "siteId": 946,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "יפעת שאשא-ביטון",
@@ -2396,7 +2396,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/768",
     "siteId": 768,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "זאב אלקין",
@@ -2412,7 +2412,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/997",
     "siteId": 997,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "יועז הנדל",
@@ -2428,7 +2428,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/950",
     "siteId": 950,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "שרן השכל",
@@ -2444,7 +2444,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/14",
     "siteId": 14,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "זאב בנימין בגין",
@@ -2460,7 +2460,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1074",
     "siteId": 1074,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "מאיר יצחק-הלוי",
@@ -2476,7 +2476,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1017",
     "siteId": 1017,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "צבי האוזר",
@@ -2492,7 +2492,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1004",
     "siteId": 1004,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "מיכל שיר",
@@ -2508,7 +2508,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1088",
     "siteId": 1088,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": null,
    "party": null,
@@ -2520,7 +2520,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/843",
     "siteId": 843,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "ניצן הורוביץ",
@@ -2552,7 +2552,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1027",
     "siteId": 1027,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "יאיר גולן",
@@ -2568,7 +2568,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1069",
     "siteId": 1069,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "ג'ידא רינאוי זועבי",
@@ -2584,7 +2584,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/888",
     "siteId": 888,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "עיסאווי פריג'",
@@ -2600,7 +2600,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/708",
     "siteId": 708,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "מוסי רז",
@@ -2616,7 +2616,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/895",
     "siteId": 895,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "מיכל רוזין",
@@ -2632,7 +2632,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1086",
     "siteId": 1086,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "עלי סלאלחה",
@@ -2684,7 +2684,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1007",
     "siteId": 1007,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "מנסור עבאס",
@@ -2700,7 +2700,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1057",
     "siteId": 1057,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "מאזן גנאים",
@@ -2716,7 +2716,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1026",
     "siteId": 1026,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "וליד טאהא",
@@ -2732,7 +2732,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/959",
     "siteId": 959,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "סעיד אלחרומי",
@@ -2748,7 +2748,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1032",
     "siteId": 1032,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": {
     "title": "אימאן ח'טיב-יאסין",
@@ -2764,7 +2764,7 @@
    "knesset": {
     "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/1103",
     "siteId": 1103,
-    "verified": "pattern"
+    "verified": "official OData KNS_MkSiteCode PersonID/SiteId mapping; live destination not verified (location denial, 2026-11-06)"
    },
    "hewiki": null,
    "party": null,

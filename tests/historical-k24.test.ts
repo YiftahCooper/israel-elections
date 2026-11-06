@@ -23,6 +23,16 @@ describe('k24: official final result and release gates', () => {
     expect(result.seatsAllocated).toBe(120);
     expect(result.warnings).toEqual([]);
   });
+  it('distinguishes the cancelled registered roster from the 38 contesting lists', () => {
+    // CEC statutory determination, 30 March 2021, p.4: all Demokratit candidates resigned.
+    const cancelled = ds.lists.find(l => l.letters === 'רק')!;
+    expect(cancelled.withdrawn).toBe(true);
+    expect(cancelled.votes).toBe(0);
+    expect(cancelled.candidates).toHaveLength(34);
+    expect(ds.lists.filter(l => !l.withdrawn)).toHaveLength(38);
+    // Commons uploader/date does not authenticate campaign use of the New Hope reconstruction.
+    expect(ds.lists.find(l => l.letters === 'ת')!.logo).toBeUndefined();
+  });
   it('retains the official national totals', () => {
     expect(ds.totals).toMatchObject({"registered": 6578084, "votesCast": 4436365, "invalid": 26313, "valid": 4410052});
     expect(result.totalValid).toBe(4410052n);

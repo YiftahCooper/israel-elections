@@ -175,6 +175,7 @@ export interface BuildConfig {
 export async function buildHistorical(config:BuildConfig){
   const {n}=config;
   const ids=[`k${n}-national-html`,`k${n}-localities-datagov`,`k${n}-ballots-datagov`,`k${n}-candidates-gazette`,`k${n}-surplus-gazette`];
+  if(n===24) ids.push('k24-results-gazette','k24-cec-protocol');
   const rawSha256=verifySources(ids.filter(id=>!id.includes('-ballots-')),check);
   const national=nationalResults(n),letters=national.lists.map(l=>l.letters);
   const rows=readDatastoreRows(join(RAW,`k${n}/localities.datagov.json`),letters,check);nationalCheck(n,rows,national);
@@ -208,7 +209,7 @@ export async function buildHistorical(config:BuildConfig){
     check(r.candidates.length===config.counts[list.letters],`k${n} ${list.letters}: candidate count ${r.candidates.length} differs from reviewed last rank ${config.counts[list.letters]}`);
     const candidates=r.candidates.map(c=>({...c,id:candidateId(id,c.rank),nameHe:`${c.familyHe} ${c.givenHe}`}));
     if(config.leaders[list.letters])check(candidates[0].nameHe===config.leaders[list.letters],`k${n} ${list.letters}: unexpected party leader ${candidates[0].nameHe}`);
-    return listRecord(n,i,{letters:list.letters,nameHe:r.nameHe,votes:list.votes,sponsorsHe:r.sponsorsHe,withdrawn:n===23&&list.letters==='זץ',
+    return listRecord(n,i,{letters:list.letters,nameHe:r.nameHe,votes:list.votes,sponsorsHe:r.sponsorsHe,withdrawn:(n===23&&list.letters==='זץ')||(n===24&&list.letters==='רק'),
       candidates,candidatesSource:`k${n}-candidates-gazette`,notesHe:config.notes?.[list.letters]??[]});
   });
   const pairs=await agreementPairs(n,surplus);
