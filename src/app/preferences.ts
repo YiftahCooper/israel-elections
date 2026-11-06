@@ -39,3 +39,13 @@ export function validAnswers(value: unknown): PreferenceAnswers {
   }
   return answers;
 }
+
+/** Read only recognised, election-scoped item answers. Entity existence is checked against
+ * the scenario when used: custom lists may only exist in a restored browser workspace. */
+export function validItemAnswers(value: unknown): Record<string, string> {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return {};
+  return Object.fromEntries(Object.entries(value).filter(([key, answer]) => {
+    const match = /^voteSource:(k(?:[1-9]|1[0-9]|2[0-6])):(list|bloc):(.+)$/.exec(key);
+    return match && typeof answer === 'string' && validAnswers({ voteSource: answer }).voteSource === answer;
+  }));
+}

@@ -18,6 +18,7 @@ test('X1 analysis choices and settings use the shared picker', async ({ page }) 
   await choose(page.getByRole('button', { name: 'Votes from', exact: true }), 'new');
   await expect(page.getByRole('button', { name: 'Votes from', exact: true })).toContainText('New voters');
   await page.locator('#tab-rules').click();
+  await page.locator('.band').getByRole('button', { name: 'Your settings', exact: true }).click();
   await choose(page.getByRole('button', { name: 'Decimal places for percentages', exact: true }), '6');
   await choose(page.getByRole('button', { name: 'Mark differences from', exact: true }), 'official');
   await expect(page.getByRole('button', { name: 'Mark differences from', exact: true })).toContainText('Official');

@@ -1,3 +1,4 @@
+import { electionLabel } from '../electionLabel.ts';
 import { ChoicePicker } from './ChoicePicker.tsx';
 import { useEffect, useRef, useState } from 'react';
 import type { Scenario, SimList } from '../../model/scenario.ts';
@@ -5,7 +6,7 @@ import type { ElectionId } from '../../data/schema.ts';
 import { baselineOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt } from '../format.ts';
-import { answerPreference, chooseSource, setPreference, setState, useStore, useVoteSource } from '../store.ts';
+import { answerPreference, chooseSource, loadDataset, setPreference, setState, useStore, useVoteSource } from '../store.ts';
 import { PREFERENCES, sourceValue, type PreferenceId } from '../preferences.ts';
 import { Info } from './ui.tsx';
 
@@ -83,7 +84,7 @@ export function SourceDialog() {
           ['always', L('Always', 'תמיד')],
         ] as const).map(([v, text]) => <label key={v}><input type="radio" name="preference-scope" value={v} checked={scope === v} onChange={() => setScope(v)} />{text}</label>)}
       </fieldset>
-      <p className="tiny muted">{L('Change Always in Rules & settings → Editing.', 'ניתן לשנות ״תמיד״ בכללים והגדרות ← עריכה.')}</p>
+      <p className="tiny muted">{L('Manage answers in Your settings.', 'ניהול התשובות בהגדרות שלכם.')}</p>
       <div className="row">
         <button type="submit" className="btn small primary" disabled={!value}>{L('Apply', 'החלה')}</button>
         <button type="button" className="btn small ghost" onClick={cancel}>{L('Cancel', 'ביטול')}</button>
@@ -103,7 +104,17 @@ export function PreferenceSettings() {
   const datasets = useStore(st => st.datasets);
   const saved = useStore(st => st.saved);
   const elections = useStore(st => st.elections);
+  const requested = useRef(new Set<string>());
+  useEffect(() => {
+    for (const election of new Set(Object.keys(perItem ?? {}).filter(k => k.startsWith('voteSource:')).map(k => k.split(':')[1]))) {
+      if (!datasets[election as ElectionId] && !requested.current.has(election)) {
+        requested.current.add(election);
+        void loadDataset(election as ElectionId).catch(() => {});
+      }
+    }
+  }, [perItem, datasets]);
   const listsOf = (election: string) => s?.electionId === election ? s.lists : datasets[election as ElectionId] ? baselineOf(datasets[election as ElectionId]!).lists : [];
+  const blocsOf = (election: string) => s?.electionId === election ? s.blocs : datasets[election as ElectionId] ? baselineOf(datasets[election as ElectionId]!).blocs : [];
   const listName = (election: string, id: string) => { const l = listsOf(election).find(x => x.id === id); return l ? listLabel(l, lang) : id; };
   const answerLabel = (id: PreferenceId, v: string, election: string) => {
     const o = PREFERENCES[id].options.find(x => x.value === v);
@@ -113,18 +124,26 @@ export function PreferenceSettings() {
   const itemLabel = (election: string, key: string) => {
     const [kind, ...rest] = key.split(':'), id = rest.join(':');
     const name = kind === 'list' ? listName(election, id)
-      : kind === 'bloc' ? ((b) => b ? (lang === 'he' ? b.nameHe : b.nameEn) : id)(s?.electionId === election ? s.blocs.find(b => b.id === id) : undefined)
+      : kind === 'bloc' && id === 'null' ? L('No bloc', 'ללא גוש') : kind === 'bloc' ? ((b) => b ? (lang === 'he' ? b.nameHe : b.nameEn) : id)(blocsOf(election).find(b => b.id === id))
       : saved.find(x => x.id === key)?.name ?? key;
-    const e = election && election !== s?.electionId ? elections.find(x => x.id === election) : undefined;
-    return e ? `${name} (${e.date.slice(0, 4)})` : name;
+    const e = election ? elections.find(x => x.id === election) : undefined;
+    return e ? `${name} (${electionLabel(e, elections, lang)})` : name;
   };
   const forget = (key: string) => setState({ preferenceFor: Object.fromEntries(Object.entries(perItem ?? {}).filter(([k]) => k !== key)) });
-  return <>{(Object.keys(PREFERENCES) as PreferenceId[]).map(id => {
+  return <>{Object.keys(perItem ?? {}).length > 0 && <button className="btn small" onClick={e => { e.currentTarget.closest('dialog')?.focus({ preventScroll: true }); setState({ preferenceFor: {} }); }}>{L('Clear all answers', 'מחיקת כל התשובות')}</button>}{(Object.keys(PREFERENCES) as PreferenceId[]).map(id => {
     const pref = PREFERENCES[id], value = answers[id] ?? (id === 'jointSeats' ? 'off' : 'ask');
-    const items = Object.entries(perItem ?? {}).filter(([k]) => k.startsWith(`${id}:`));
+    const items = Object.entries(perItem ?? {}).filter(([k, v]) => {
+      if (!k.startsWith(`${id}:`)) return false;
+      const [, election, kind, ...rest] = k.split(':');
+      if (id !== 'voteSource') return true;
+      if (v.startsWith('t:') && !listsOf(election).some(l => l.id === v.slice(2) && !l.withdrawn)) return false;
+      const entity = rest.join(':');
+      if (kind === 'list') return listsOf(election).some(l => l.id === entity);
+      return kind === 'bloc' && (entity === 'null' || blocsOf(election).some(b => b.id === entity));
+    });
     return <div className="pref-setting" key={id}>
-      <label className="field" style={{ maxWidth: 260 }}>{L(pref.label[0], pref.label[1])}
-        {id === 'jointSeats' && <Info title={L('Joint-list default', 'ברירת מחדל לרשימות משותפות')}>{L('Starts joint lists as party factions without an edit. Votes and allocation stay unchanged; members without a recorded party stay with the list. Changing this keeps explicit list choices and other edits. Shared and saved scenarios retain their encoded starting choice.', 'רשימות משותפות מתחילות כסיעות מפלגתיות ללא עריכה. הקולות והחלוקה אינם משתנים; נבחרים ללא מפלגה מתועדת נשארים ברשימה. שינוי ההעדפה שומר בחירות מפורשות ועריכות אחרות. תרחישים שמורים ומשותפים שומרים את ברירת המחדל שקודדה בהם.')}</Info>}
+      <label className="field" style={{ maxWidth: 300 }}><span>{id === 'jointSeats' ? L('Joint-list seats by party', 'מנדטים משותפים לפי מפלגה') : L(pref.label[0], pref.label[1])}
+        {id === 'jointSeats' && <Info title={L('Joint-list default', 'ברירת מחדל לרשימות משותפות')}>{L('Starts joint lists as party factions without an edit. Votes and allocation stay unchanged; members without a recorded party stay with the list. Changing this keeps explicit list choices and other edits. Shared and saved scenarios retain their encoded starting choice.', 'רשימות משותפות מתחילות כסיעות מפלגתיות ללא עריכה. הקולות והחלוקה אינם משתנים; נבחרים ללא מפלגה מתועדת נשארים ברשימה. שינוי ההעדפה שומר בחירות מפורשות ועריכות אחרות. תרחישים שמורים ומשותפים שומרים את ברירת המחדל שקודדה בהם.')}</Info>}</span>
         <ChoicePicker label={L(pref.label[0], pref.label[1])} value={value} onChange={v => setPreference(id, v === 'ask' ? undefined : v)} options={[
           ...(id === 'jointSeats' ? [] : [{ value: 'ask', label: L('Ask each time', 'לשאול בכל פעם') }]),
           ...pref.options.map(o => ({ value: o.value, label: L(o.label[0], o.label[1]) })),
@@ -135,7 +154,7 @@ export function PreferenceSettings() {
       <ul className="pref-items small" aria-label={L(pref.label[0], pref.label[1]) + ' · ' + (id === 'comparison' ? L('For one scenario', 'לתרחיש אחד') : L('For one list or bloc', 'לרשימה או לגוש אחד'))}>
         {items.map(([k, v]) => { const [, election, ...rest] = k.split(':'); const name = itemLabel(election, rest.join(':'));
           return <li key={k}><span><bdi>{name}</bdi>: <b><bdi>{answerLabel(id, v, election)}</bdi></b></span>
-            <button type="button" className="btn small ghost" aria-label={L(`Ask again for ${name}`, `לשאול שוב עבור ${name}`)} onClick={() => forget(k)}>{L('Ask again', 'לשאול שוב')}</button></li>; })}
+            <button type="button" className="btn small ghost" aria-label={L(`Ask again for ${name}`, `לשאול שוב עבור ${name}`)} onClick={e => { e.currentTarget.closest('dialog')?.focus({ preventScroll: true }); forget(k); }}>{L('Ask again', 'לשאול שוב')}</button></li>; })}
       </ul></>}
     </div>;
   })}</>;

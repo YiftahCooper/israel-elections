@@ -1,6 +1,6 @@
 import { nextCopyName, scenarioDirty } from './scenarioDocument.ts';
 import { baselineOf, freshScenario, factionDefault, setFactionDefault } from './factionDefaults.ts';
-import { validAnswers, sourceChoice, sourceValue, type PreferenceAnswers, type PreferenceAsk, type PreferenceId } from './preferences.ts';
+import { validItemAnswers, validAnswers, sourceChoice, sourceValue, type PreferenceAnswers, type PreferenceAsk, type PreferenceId } from './preferences.ts';
 import type { Family } from '../families/model.ts';
 import { migrateSavedColors, nextScenarioColor } from './scenarioIdentity.ts';
 import { PRESETS, type FeatureId, type Visibility } from './features.ts';
@@ -61,6 +61,7 @@ export interface State {
   /** how every vote edit on a list is balanced (shared by all vote controls) */
   voteSource: SourceChoice;
   preferences: PreferenceAnswers;
+  settingsOpen?: boolean;
   preferenceAsk: PreferenceAsk | null;
   preferenceFor: Record<string, string> | null;
   /** per-election work kept while switching elections (scenario + undo history) */
@@ -89,6 +90,8 @@ export async function loadElectionIndex() {
 /** where vote edits take their votes from: 'ask' (each time) or the remembered answer */
 const SOURCE = 'israel-elections:vote-source';
 const rememberedSource = (() => { try { return globalThis.localStorage?.getItem(SOURCE) ?? 'ask'; } catch { return 'ask'; } })();
+const ITEM_PREFERENCES_KEY = 'israel-elections:item-preferences';
+const rememberedItems = (() => { try { return validItemAnswers(JSON.parse(globalThis.localStorage?.getItem(ITEM_PREFERENCES_KEY) ?? '{}')); } catch { return {}; } })();
 const PREFERENCES_KEY = 'israel-elections:preferences';
 const rememberedPreferences = (() => { try { const raw = globalThis.localStorage?.getItem(PREFERENCES_KEY); return raw ? validAnswers(JSON.parse(raw)) : (rememberedSource === 'new' || rememberedSource === 'proportional' ? { voteSource: rememberedSource } : {}); } catch { return {}; } })();
 setFactionDefault(rememberedPreferences.jointSeats === 'on');
@@ -98,7 +101,7 @@ let state: State = {
   datasets: {}, elections: FALLBACK_INDEX, electionId: 'k26', scenario: null, preview: null, reference: null, markOfficial: persisted.markOfficial === true, past: [], future: [], selectedListId: null, blocPanel: null, tool: null, compareWith: 'auto',
   lang: persisted.lang ?? 'he', theme: persisted.theme ?? (globalThis.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
   level: migrateLevel(persisted.level), customFeatures: persisted.customFeatures ?? null, hintDismissed: persisted.hintDismissed === true, digits: persisted.digits ?? 2, layout: 'hemicycle', colorBy: 'list', showComponentSeats: persisted.showComponentSeats !== false,
-  saved: migrateSavedColors(persisted.saved ?? []), toast: null, loadError: null, notice: null, voteSource: sourceChoice(rememberedPreferences.voteSource ?? 'proportional'), preferences: rememberedPreferences, preferenceAsk: null, preferenceFor: null, sessions: {}, scenarioDrafts: {},
+  saved: migrateSavedColors(persisted.saved ?? []), toast: null, loadError: null, notice: null, voteSource: sourceChoice(rememberedPreferences.voteSource ?? 'proportional'), preferences: rememberedPreferences, preferenceAsk: null, preferenceFor: rememberedItems, sessions: {}, scenarioDrafts: {},
 };
 const listeners = new Set<() => void>();
 const emit = () => { for (const l of listeners) l(); };
@@ -106,7 +109,8 @@ const emit = () => { for (const l of listeners) l(); };
 const persist = (): boolean => {
   try { localStorage.setItem(LS, JSON.stringify({ lang: state.lang, theme: state.theme, level: state.level, customFeatures: state.customFeatures, markOfficial: state.markOfficial, hintDismissed: state.hintDismissed, digits: state.digits, showComponentSeats: state.showComponentSeats, saved: state.saved}));
     // its own key, so the answer survives independently of the other settings
-    localStorage.setItem(PREFERENCES_KEY, JSON.stringify(state.preferences)); return true; }
+    localStorage.setItem(PREFERENCES_KEY, JSON.stringify(state.preferences));
+    localStorage.setItem(ITEM_PREFERENCES_KEY, JSON.stringify(validItemAnswers(state.preferenceFor))); return true; }
   catch { return false; }
 };
 
@@ -414,7 +418,10 @@ export function askPreference(ask: PreferenceAsk) {
   const st = getState();
   if (st.preferenceAsk) return;
   const saved = st.preferences[ask.id];
-  const answer = st.preferenceFor?.[preferenceKey(ask.id, ask.key)] ?? saved;
+  const item = st.preferenceFor?.[preferenceKey(ask.id, ask.key)];
+  const target = ask.key.startsWith('list:') ? st.scenario?.lists.some(l => l.id === ask.key.slice(5))
+    : ask.key.startsWith('bloc:') ? ask.key === 'bloc:null' || st.scenario?.blocs.some(b => b.id === ask.key.slice(5)) : true;
+  const answer = (target !== false ? item : undefined) ?? saved;
   // A named donor cannot be reused when absent, withdrawn or part of the edited target.
   const compatible = answer && (!answer.startsWith('t:') || st.scenario?.lists.some(l => l.id === answer.slice(2) && !l.withdrawn && !ask.exclude?.includes(l.id)));
   if (compatible) return ask.run(answer);

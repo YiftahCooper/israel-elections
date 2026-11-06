@@ -1,5 +1,4 @@
 import { ScenarioSave, UnsavedMark } from './ScenarioSave.tsx';
-import { ChoicePicker } from './ChoicePicker.tsx';
 import { Info } from './ui.tsx';
 import { EditMarker } from './EditMarker.tsx';
 import { exportAnnotations } from '../scenarioExport.ts';
@@ -16,7 +15,7 @@ import type { Scenario } from '../../model/scenario.ts';
 import { allocationOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { download } from '../format.ts';
-import { deleteSaved, duplicateCurrent, importScenarioJson, openImported, openSaved, replay, resetAll, scenarioKey, setPreference, setState, shareLink, toast, useStore, type SavedScenario } from '../store.ts';
+import { deleteSaved, duplicateCurrent, importScenarioJson, openImported, openSaved, replay, resetAll, scenarioKey, setState, shareLink, toast, useStore, type SavedScenario } from '../store.ts';
 import { ScenarioGallery } from './ScenarioGallery.tsx';
 import { electionLabel } from './TopBar.tsx';
 
@@ -89,7 +88,7 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
         </div>
         <details className="scn-options"><summary>{L('Colour & comparison', 'צבע והשוואה')}</summary><div className="scn-form">
           <label className="field">{L('Scenario colour', 'צבע התרחיש')}<select aria-label={L('Scenario colour', 'צבע התרחיש')} value={liveScenarioColor(s, saved)} onChange={e => dispatch({ type: 'setIdentityColor', color: e.target.value })}>{!(SCENARIO_PALETTE as readonly string[]).includes(liveScenarioColor(s, saved)) && <option value={liveScenarioColor(s, saved)}>{L('Saved colour', 'צבע שמור')}</option>}{SCENARIO_PALETTE.map((c, i) => <option key={c} value={c}>{L(['Violet', 'Slate', 'Ochre', 'Mauve', 'Sage', 'Blue', 'Clay', 'Olive'][i], ['סגול', 'כחלחל', 'אוכרה', 'סגלגל', 'מרווה', 'כחול', 'חרס', 'זית'][i])}</option>)}</select></label>
-        <label className="field">{L('Mark differences from', 'סימון הבדלים לעומת')}<ChoicePicker label={L('Mark differences from', 'סימון הבדלים לעומת')} value={useStore(st => st.markOfficial) ? 'official' : 'reference'} onChange={v => setPreference('comparison', v)} options={[{value:'reference',label:L('The loaded scenario', 'התרחיש הטעון')},{value:'official',label:L('Always the official result', 'תמיד התוצאה הרשמית')}]} /></label>
+        <button className="btn small" onClick={() => setState({ settingsOpen: true })}>{L('Your settings…', 'ההגדרות שלכם…')}</button>
         </div></details>
         <ResultBar s={s} r={allocationOf(s)} />
         <div className="row" style={{ marginTop: 10 }}>

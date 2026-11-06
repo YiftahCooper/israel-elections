@@ -135,7 +135,9 @@ test('percentage precision chosen in Expert does not apply below Expert', async 
   await start(page);
   await levelButton(page, 'Expert').click();
   await page.getByRole('tab', { name: 'Rules & settings', exact: true }).click();
+  await page.locator('.band').getByRole('button', { name: 'Your settings', exact: true }).click();
   await choose(page.getByRole('button', { name: 'Decimal places for percentages' }), '8');
+  await page.keyboard.press('Escape');
   await page.getByRole('tab', { name: 'Overview' }).click();
   await expect(listRow(page, 'Likud').first()).toContainText('20.51491138%');
   await levelButton(page, 'Simple').click();
