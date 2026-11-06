@@ -73,7 +73,9 @@ describe('election-specific logo overlays', () => {
     const result = applyLogos(ds);
     const joint = result.lists.find((l) => l.letters === 'ט')!;
     expect(joint.logo).toBeUndefined();
-    expect(joint.parties!.find((p) => p.id === 'tkuma')!.logo!.file).toBe('logos/religious-zionism-2022.png');
+    // k25 audit: campaign use of the Tkuma emblem is unproved, so it must stay hidden.
+    expect(joint.parties!.find((p) => p.id === 'tkuma')!.logo).toBeUndefined();
+    expect(result.lists.find((l) => l.letters === 'ום')!.parties!.find((p) => p.id === 'hadash')!.logo!.file).toBe('logos/hadash-2022-k25.png');
     expect(result.lists.find((l) => l.letters === 'כן')!.logo!.rights).toBe('free-licence');
   });
   it('rejects an unknown list and an unknown constituent', () => {
@@ -82,6 +84,6 @@ describe('election-specific logo overlays', () => {
     expect(() => applyLogos(ds)).toThrow('no list רק');
     const noParties = dataset(25);
     for (const list of noParties.lists) list.parties = [];
-    expect(() => applyLogos(noParties)).toThrow('no party tkuma');
+    expect(() => applyLogos(noParties)).toThrow('no party hadash');
   });
 });

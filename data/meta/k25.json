@@ -1,7 +1,7 @@
 {
  "electionId": "k25",
  "lists": [
-    {
+  {
    "letters": "ט",
    "nameHe": "הציונות הדתית בראשות בצלאל סמוטריץ' ועוצמה יהודית בראשות איתמר בן גביר",
    "seats": 14,
@@ -38,7 +38,8 @@
        "accessed": "2026-11-04"
       }
      ],
-     "confidence": "high"
+     "confidence": "high",
+     "note": "All fourteen elected candidates initially sat in joint faction 1097, הציונות הדתית, from 15 to 20 November 2022. The cited constituent-faction records start at the 20 November split, not opening day."
     },
     {
      "id": "otzma-yehudit",
@@ -159,7 +160,7 @@
     "electedAssigned": 14
    }
   },
-    {
+  {
    "letters": "כן",
    "nameHe": "המחנה הממלכתי בהנהגת בני גנץ לראשות הממשלה",
    "seats": 12,
@@ -172,11 +173,11 @@
      "accessed": "2026-11-04"
     },
     {
-     "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9E%D7%97%D7%A0%D7%94_%D7%94%D7%9E%D7%9E%D7%9C%D7%9B%D7%AA%D7%99",
-     "publisher": "Wikipedia (he)",
+     "url": "https://13tv.co.il/item/news/politics/politics/gadi-eizenkot-903221340/",
+     "publisher": "Channel 13, 14 August 2022",
      "kind": "secondary",
-     "quote": "הוסכם כי איזנקוט ישובץ במקום השלישי ברשימה, אליו צירף את מתן כהנא מימינה, שמוקם במקום התשיעי ברשימה",
-     "accessed": "2026-11-04"
+     "quote": "איזנקוט למעשה לא מקים מפלגה משלו, אלא בפועל מצטרף ל\"חוסן לישראל\" של גנץ, וכך גם האנשים שיביא איתו.",
+     "accessed": "2026-11-06"
     }
    ],
    "parties": [
@@ -205,21 +206,14 @@
        "accessed": "2026-11-04"
       },
       {
-       "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9E%D7%97%D7%A0%D7%94_%D7%94%D7%9E%D7%9E%D7%9C%D7%9B%D7%AA%D7%99",
-       "publisher": "Wikipedia (he)",
+       "url": "https://13tv.co.il/item/news/politics/politics/gadi-eizenkot-903221340/",
+       "publisher": "Channel 13, 14 August 2022",
        "kind": "secondary",
-       "quote": "כחול לבן חוסן לישראל: בני גנץ, גדי איזנקוט, פנינה תמנו, חילי טרופר, מיכאל ביטון, מתן כהנא, אורית פרקש-הכהן, אלון שוסטר",
-       "accessed": "2026-11-04"
-      },
-      {
-       "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9E%D7%97%D7%A0%D7%94_%D7%94%D7%9E%D7%9E%D7%9C%D7%9B%D7%AA%D7%99",
-       "publisher": "Wikipedia (he)",
-       "kind": "secondary",
-       "quote": "כחול לבן חוסן לישראל: בני גנץ, גדי איזנקוט, ... מתן כהנא, ...",
-       "accessed": "2026-11-04"
+       "quote": "איזנקוט למעשה לא מקים מפלגה משלו, אלא בפועל מצטרף ל\"חוסן לישראל\" של גנץ, וכך גם האנשים שיביא איתו.",
+       "accessed": "2026-11-06"
       }
      ],
-     "confidence": "low",
+     "confidence": "medium",
      "evidenceGroups": [
       {
        "candidateRanks": [
@@ -257,15 +251,15 @@
        ],
        "sources": [
         {
-         "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9E%D7%97%D7%A0%D7%94_%D7%94%D7%9E%D7%9E%D7%9C%D7%9B%D7%AA%D7%99",
-         "publisher": "Wikipedia (he)",
+         "url": "https://13tv.co.il/item/news/politics/politics/gadi-eizenkot-903221340/",
+         "publisher": "Channel 13, 14 August 2022",
          "kind": "secondary",
-         "quote": "כחול לבן חוסן לישראל: בני גנץ, גדי איזנקוט, ... מתן כהנא, ...",
-         "accessed": "2026-11-04"
+         "quote": "איזנקוט למעשה לא מקים מפלגה משלו, אלא בפועל מצטרף ל\"חוסן לישראל\" של גנץ, וכך גם האנשים שיביא איתו.",
+         "accessed": "2026-11-06"
         }
        ],
-       "confidence": "low",
-       "note": "Eisenkot joined the alliance in August 2022 and brought Kahana (from Yamina); Hebrew Wikipedia counts both in Gantz's party, but neither came from a sponsoring party's own roster. Both left in July 2025."
+       "confidence": "medium",
+       "note": "Contemporaneous August 2022 reporting places Eisenkot and the people joining with him in Israel Resilience and identifies Kahana at rank 9. Their July 2025 departure does not disprove their 2022 attribution."
       }
      ]
     },
@@ -288,10 +282,17 @@
        "kind": "official",
        "quote": "Faction \"הימין הממלכתי\" from 2024-03-13: סער, אלקין, השכל, שאשא ביטון; בוסקילה from 2024-07-05; חסון from 2025-07-10",
        "accessed": "2026-11-04"
+      },
+      {
+       "url": "https://www.srugim.co.il/676691-חבר-כנסת-לשעבר-מצטרף-למפלגת-תקווה-חדשה",
+       "publisher": "Srugim, 25 May 2022",
+       "kind": "secondary",
+       "quote": "חבר הכנסת לשעבר אכרם חסון הודיע על הצטרפותו למפלגת תקווה חדשה",
+       "accessed": "2026-11-06"
       }
      ],
      "confidence": "high",
-     "note": "New Hope left the joint faction in March 2024 as \"הימין הממלכתי\"."
+     "note": "New Hope left the joint faction in March 2024 as \"הימין הממלכתי\". Hasson joined in May 2022 (Srugim); later faction rows alone do not establish election-day affiliation. Rank 13 remains corroborated only by later service."
     }
    ],
    "unassignedRanks": [
@@ -407,7 +408,7 @@
     "electedAssigned": 12
    }
   },
-    {
+  {
    "letters": "ג",
    "nameHe": "יהדות התורה והשבת אגודת ישראל - דגל התורה",
    "seats": 7,
@@ -434,14 +435,14 @@
      ],
      "sources": [
       {
-       "url": "https://he.wikipedia.org/wiki/%D7%99%D7%94%D7%93%D7%95%D7%AA_%D7%94%D7%AA%D7%95%D7%A8%D7%94",
-       "publisher": "Wikipedia (he)",
+       "url": "https://www.zman.co.il/live/338915/",
+       "publisher": "Zman Israel, 12 September 2022",
        "kind": "secondary",
-       "quote": "הכנסת ה-25 (2022) ... אגודת ישראל: יצחק גולדקנופף, מאיר פרוש, יעקב טסלר, ... ישראל אייכלר, משה רוט",
-       "accessed": "2026-11-04"
+       "quote": "(1) יצחק גולדקנופף, אגודת ישראל; (2) משה גפני, דגל התורה",
+       "accessed": "2026-11-06"
       }
      ],
-     "confidence": "medium"
+     "confidence": "high"
     },
     {
      "id": "degel-hatorah",
@@ -456,14 +457,14 @@
      ],
      "sources": [
       {
-       "url": "https://he.wikipedia.org/wiki/%D7%99%D7%94%D7%93%D7%95%D7%AA_%D7%94%D7%AA%D7%95%D7%A8%D7%94",
-       "publisher": "Wikipedia (he)",
+       "url": "https://www.zman.co.il/live/338915/",
+       "publisher": "Zman Israel, 12 September 2022",
        "kind": "secondary",
-       "quote": "דגל התורה: משה גפני, אורי מקלב, יעקב אשר, יצחק פינדרוס, אליהו ברוכי",
-       "accessed": "2026-11-04"
+       "quote": "(1) יצחק גולדקנופף, אגודת ישראל; (2) משה גפני, דגל התורה",
+       "accessed": "2026-11-06"
       }
      ],
-     "confidence": "medium"
+     "confidence": "high"
     }
    ],
    "unassignedRanks": [
@@ -585,7 +586,7 @@
     "electedAssigned": 7
    }
   },
-    {
+  {
    "letters": "ום",
    "nameHe": "חד\"ש תע\"ל בראשות איימן עודה ואחמד טיבי",
    "seats": 5,
@@ -611,14 +612,15 @@
      ],
      "sources": [
       {
-       "url": "https://he.wikipedia.org/wiki/%D7%97%D7%93%22%D7%A9-%D7%AA%D7%A2%22%D7%9C",
-       "publisher": "Wikipedia (he)",
-       "kind": "secondary",
-       "quote": "הכנסת ה-25 ... חד\"ש: איימן עודה, עאידה תומא סלימאן, עופר כסיף, יוסף עטאונה",
-       "accessed": "2026-11-04"
+       "url": "https://en.idi.org.il/media/18440/חדש-תעל-2022.pdf",
+       "publisher": "CEC candidate page, captured 19 October 2022; retained by IDI",
+       "kind": "official",
+       "quote": "איימן עודה; אחמד טיבי; עאידה תומא סלימאן; עופר כסיף; יוסף עטאונה; סמיר בן סעיד",
+       "accessed": "2026-11-06"
       }
      ],
-     "confidence": "medium"
+     "confidence": "high",
+     "note": " CEC captured page identifies each candidate’s sponsoring party: Hadash ranks 1,3,4,5; Ta’al ranks 2,6."
     },
     {
      "id": "taal",
@@ -630,15 +632,15 @@
      ],
      "sources": [
       {
-       "url": "https://he.wikipedia.org/wiki/%D7%97%D7%93%22%D7%A9-%D7%AA%D7%A2%22%D7%9C",
-       "publisher": "Wikipedia (he)",
-       "kind": "secondary",
-       "quote": "תע\"ל: אחמד טיבי, סמיר בן סעיד",
-       "accessed": "2026-11-04"
+       "url": "https://en.idi.org.il/media/18440/חדש-תעל-2022.pdf",
+       "publisher": "CEC candidate page, captured 19 October 2022; retained by IDI",
+       "kind": "official",
+       "quote": "איימן עודה; אחמד טיבי; עאידה תומא סלימאן; עופר כסיף; יוסף עטאונה; סמיר בן סעיד",
+       "accessed": "2026-11-06"
       }
      ],
-     "confidence": "medium",
-     "note": "Bin Said (rank 6) entered on 2025-06-20 (Knesset OData)."
+     "confidence": "high",
+     "note": "Bin Said (rank 6) entered on 2025-06-20 (Knesset OData). CEC captured page identifies each candidate’s sponsoring party: Hadash ranks 1,3,4,5; Ta’al ranks 2,6."
     }
    ],
    "unassignedRanks": [
@@ -733,7 +735,7 @@
     "electedAssigned": 5
    }
   },
-    {
+  {
    "letters": "ב",
    "nameHe": "הבית היהודי בראשות איילת שקד",
    "seats": 0,
@@ -836,247 +838,247 @@
     "electedAssigned": 0
    }
   },
-    {
-      "letters": "קץ",
-      "nameHe": "באומץ בשבילך",
-      "englishName": {
-        "label": "BeOmetz Bishvilekh",
-        "kind": "transliteration",
-        "sourceId": "k25-candidates-gazette",
-        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
-    },
-    {
-      "letters": "ף",
-      "nameHe": "הפיראטים הכי טוב לדעתי אני רוצה להיות שם",
-      "englishName": {
-        "label": "HaPiratim",
-        "kind": "transliteration",
-        "sourceId": "k25-candidates-gazette",
-        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
-    },
-    {
-      "letters": "ק",
-      "nameHe": "קול הסביבה והחי",
-      "englishName": {
-        "label": "Kol HaSviva VeHaHai",
-        "kind": "transliteration",
-        "sourceId": "k25-candidates-gazette",
-        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
-    },
-    {
-      "letters": "ת",
-      "nameHe": "דעת טוב ורע וברית שבט אברהם-עלה ירוק ואוסרת אל איסלמיה",
-      "englishName": {
-        "label": "Daat Tov VeRa – Brit Shevet Avraham",
-        "kind": "transliteration",
-        "sourceId": "k25-candidates-gazette",
-        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
-    },
-    {
-      "letters": "ני",
-      "nameHe": "נתיב - נחיה תמיד יחד בכבוד",
-      "englishName": {
-        "label": "Nativ",
-        "kind": "transliteration",
-        "sourceId": "k25-candidates-gazette",
-        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
-    },
-    {
-      "letters": "קנ",
-      "nameHe": "כל קול קובע נועם קולמן ולירון עופרי לראשות הממשלה",
-      "englishName": {
-        "label": "Kol Kol Kovea",
-        "kind": "transliteration",
-        "sourceId": "k25-candidates-gazette",
-        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
-    },
-    {
-      "letters": "נק",
-      "nameHe": "יש כיוון בראשות עמוס דב סילבר",
-      "englishName": {
-        "label": "Yesh Kivun",
-        "kind": "transliteration",
-        "sourceId": "k25-candidates-gazette",
-        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
-    },
-    {
-      "letters": "י",
-      "nameHe": "ישראל חופשית דמוקרטית בראשות אלי אבידר",
-      "englishName": {
-        "label": "Yisrael Hofshit Demokratit",
-        "kind": "transliteration",
-        "sourceId": "k25-candidates-gazette",
-        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
-    },
-    {
-      "letters": "קך",
-      "nameHe": "סדר חדש - למען האזרחים הותיקים בישראל",
-      "englishName": {
-        "label": "Seder Hadash",
-        "kind": "transliteration",
-        "sourceId": "k25-candidates-gazette",
-        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
-    },
-    {
-      "letters": "נץ",
-      "nameHe": "העצמאים החדשים בראשות יורם מועלמי",
-      "englishName": {
-        "label": "HaAtzmaim HaHadashim",
-        "kind": "transliteration",
-        "sourceId": "k25-candidates-gazette",
-        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
-    },
-    {
-      "letters": "ץ",
-      "nameHe": "מנהיגות חברתית",
-      "englishName": {
-        "label": "Manhigut Hevratit",
-        "kind": "transliteration",
-        "sourceId": "k25-candidates-gazette",
-        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
-    },
-    {
-      "letters": "רז",
-      "nameHe": "רשימת שלושים/ארבעים בראשות סטלה ויינשטיין",
-      "englishName": {
-        "label": "Reshimat Shloshim Arbaim",
-        "kind": "transliteration",
-        "sourceId": "k25-candidates-gazette",
-        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
-    },
-    {
-      "letters": "ך",
-      "nameHe": "אני ואתה",
-      "englishName": {
-        "label": "Ani VeAta",
-        "kind": "transliteration",
-        "sourceId": "k25-candidates-gazette",
-        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
-    },
-    {
-      "letters": "ז",
-      "nameHe": "שחר כוח חברתי בראשות וג'די טאהר",
-      "englishName": {
-        "label": "Shahar Koah Hevrati",
-        "kind": "transliteration",
-        "sourceId": "k25-candidates-gazette",
-        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
-    },
-    {
-      "letters": "קי",
-      "nameHe": "הלב היהודי בראשות אלי יוסף",
-      "englishName": {
-        "label": "HaLev HaYehudi",
-        "kind": "transliteration",
-        "sourceId": "k25-candidates-gazette",
-        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
-    },
-    {
-      "letters": "יק",
-      "nameHe": "מפלגת הגוש התנ\"כי",
-      "englishName": {
-        "label": "Mifleget HaGush HaTanakhi",
-        "kind": "transliteration",
-        "sourceId": "k25-candidates-gazette",
-        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
-    },
-    {
-      "letters": "נז",
-      "nameHe": "כבוד האדם, בראשות עו\"ד ארקדי פוגץ'",
-      "englishName": {
-        "label": "Kvod HaAdam",
-        "kind": "transliteration",
-        "sourceId": "k25-candidates-gazette",
-        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
-    },
-    {
-      "letters": "נר",
-      "nameHe": "\"אנחנו\" - בראשות עו\"ד מוש חוג'ה",
-      "englishName": {
-        "label": "Anahnu",
-        "kind": "transliteration",
-        "sourceId": "k25-candidates-gazette",
-        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
-    },
-    {
-      "letters": "זץ",
-      "nameHe": "צומת בראשות משה גרין דרכו של רפול",
-      "englishName": {
-        "label": "Tzomet",
-        "kind": "transliteration",
-        "sourceId": "k25-candidates-gazette",
-        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
-    },
-    {
-      "letters": "יץ",
-      "nameHe": "צו השעה",
-      "englishName": {
-        "label": "Tzav HaShaa",
-        "kind": "transliteration",
-        "sourceId": "k25-candidates-gazette",
-        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
-    },
-    {
-      "letters": "נף",
-      "nameHe": "מפלגת שמע בראשות נפתלי גולדמן",
-      "englishName": {
-        "label": "Shma",
-        "kind": "transliteration",
-        "sourceId": "k25-candidates-gazette",
-        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
-    },
-    {
-      "letters": "ינ",
-      "nameHe": "איחוד בני הברית - בראשות רב חובל בשארה שליאן",
-      "englishName": {
-        "label": "Ihud Bnei HaBrit",
-        "kind": "transliteration",
-        "sourceId": "k25-candidates-gazette",
-        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
-    },
-    {
-      "letters": "זך",
-      "nameHe": "קמ\"ה - קידום מעמד הפרט",
-      "englishName": {
-        "label": "Kama – Kidum Maamad HaPrat",
-        "kind": "transliteration",
-        "sourceId": "k25-candidates-gazette",
-        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
-    },
-    {
-      "letters": "זנ",
-      "nameHe": "כח להשפיע בראשות בני אלבז",
-      "englishName": {
-        "label": "Koah LeHashpia",
-        "kind": "transliteration",
-        "sourceId": "k25-candidates-gazette",
-        "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
-    }
-  ],
+  {
+   "letters": "קץ",
+   "nameHe": "באומץ בשבילך",
+   "englishName": {
+    "label": "BeOmetz Bishvilekh",
+    "kind": "transliteration",
+    "sourceId": "k25-candidates-gazette",
+    "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+   }
+  },
+  {
+   "letters": "ף",
+   "nameHe": "הפיראטים הכי טוב לדעתי אני רוצה להיות שם",
+   "englishName": {
+    "label": "HaPiratim",
+    "kind": "transliteration",
+    "sourceId": "k25-candidates-gazette",
+    "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+   }
+  },
+  {
+   "letters": "ק",
+   "nameHe": "קול הסביבה והחי",
+   "englishName": {
+    "label": "Kol HaSviva VeHaHai",
+    "kind": "transliteration",
+    "sourceId": "k25-candidates-gazette",
+    "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+   }
+  },
+  {
+   "letters": "ת",
+   "nameHe": "דעת טוב ורע וברית שבט אברהם-עלה ירוק ואוסרת אל איסלמיה",
+   "englishName": {
+    "label": "Daat Tov VeRa – Brit Shevet Avraham",
+    "kind": "transliteration",
+    "sourceId": "k25-candidates-gazette",
+    "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+   }
+  },
+  {
+   "letters": "ני",
+   "nameHe": "נתיב - נחיה תמיד יחד בכבוד",
+   "englishName": {
+    "label": "Nativ",
+    "kind": "transliteration",
+    "sourceId": "k25-candidates-gazette",
+    "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+   }
+  },
+  {
+   "letters": "קנ",
+   "nameHe": "כל קול קובע נועם קולמן ולירון עופרי לראשות הממשלה",
+   "englishName": {
+    "label": "Kol Kol Kovea",
+    "kind": "transliteration",
+    "sourceId": "k25-candidates-gazette",
+    "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+   }
+  },
+  {
+   "letters": "נק",
+   "nameHe": "יש כיוון בראשות עמוס דב סילבר",
+   "englishName": {
+    "label": "Yesh Kivun",
+    "kind": "transliteration",
+    "sourceId": "k25-candidates-gazette",
+    "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+   }
+  },
+  {
+   "letters": "י",
+   "nameHe": "ישראל חופשית דמוקרטית בראשות אלי אבידר",
+   "englishName": {
+    "label": "Yisrael Hofshit Demokratit",
+    "kind": "transliteration",
+    "sourceId": "k25-candidates-gazette",
+    "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+   }
+  },
+  {
+   "letters": "קך",
+   "nameHe": "סדר חדש - למען האזרחים הותיקים בישראל",
+   "englishName": {
+    "label": "Seder Hadash",
+    "kind": "transliteration",
+    "sourceId": "k25-candidates-gazette",
+    "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+   }
+  },
+  {
+   "letters": "נץ",
+   "nameHe": "העצמאים החדשים בראשות יורם מועלמי",
+   "englishName": {
+    "label": "HaAtzmaim HaHadashim",
+    "kind": "transliteration",
+    "sourceId": "k25-candidates-gazette",
+    "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+   }
+  },
+  {
+   "letters": "ץ",
+   "nameHe": "מנהיגות חברתית",
+   "englishName": {
+    "label": "Manhigut Hevratit",
+    "kind": "transliteration",
+    "sourceId": "k25-candidates-gazette",
+    "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+   }
+  },
+  {
+   "letters": "רז",
+   "nameHe": "רשימת שלושים/ארבעים בראשות סטלה ויינשטיין",
+   "englishName": {
+    "label": "Reshimat Shloshim Arbaim",
+    "kind": "transliteration",
+    "sourceId": "k25-candidates-gazette",
+    "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+   }
+  },
+  {
+   "letters": "ך",
+   "nameHe": "אני ואתה",
+   "englishName": {
+    "label": "Ani VeAta",
+    "kind": "transliteration",
+    "sourceId": "k25-candidates-gazette",
+    "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+   }
+  },
+  {
+   "letters": "ז",
+   "nameHe": "שחר כוח חברתי בראשות וג'די טאהר",
+   "englishName": {
+    "label": "Shahar Koah Hevrati",
+    "kind": "transliteration",
+    "sourceId": "k25-candidates-gazette",
+    "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+   }
+  },
+  {
+   "letters": "קי",
+   "nameHe": "הלב היהודי בראשות אלי יוסף",
+   "englishName": {
+    "label": "HaLev HaYehudi",
+    "kind": "transliteration",
+    "sourceId": "k25-candidates-gazette",
+    "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+   }
+  },
+  {
+   "letters": "יק",
+   "nameHe": "מפלגת הגוש התנ\"כי",
+   "englishName": {
+    "label": "Mifleget HaGush HaTanakhi",
+    "kind": "transliteration",
+    "sourceId": "k25-candidates-gazette",
+    "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+   }
+  },
+  {
+   "letters": "נז",
+   "nameHe": "כבוד האדם, בראשות עו\"ד ארקדי פוגץ'",
+   "englishName": {
+    "label": "Kvod HaAdam",
+    "kind": "transliteration",
+    "sourceId": "k25-candidates-gazette",
+    "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+   }
+  },
+  {
+   "letters": "נר",
+   "nameHe": "\"אנחנו\" - בראשות עו\"ד מוש חוג'ה",
+   "englishName": {
+    "label": "Anahnu",
+    "kind": "transliteration",
+    "sourceId": "k25-candidates-gazette",
+    "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+   }
+  },
+  {
+   "letters": "זץ",
+   "nameHe": "צומת בראשות משה גרין דרכו של רפול",
+   "englishName": {
+    "label": "Tzomet",
+    "kind": "transliteration",
+    "sourceId": "k25-candidates-gazette",
+    "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+   }
+  },
+  {
+   "letters": "יץ",
+   "nameHe": "צו השעה",
+   "englishName": {
+    "label": "Tzav HaShaa",
+    "kind": "transliteration",
+    "sourceId": "k25-candidates-gazette",
+    "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+   }
+  },
+  {
+   "letters": "נף",
+   "nameHe": "מפלגת שמע בראשות נפתלי גולדמן",
+   "englishName": {
+    "label": "Shma",
+    "kind": "transliteration",
+    "sourceId": "k25-candidates-gazette",
+    "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+   }
+  },
+  {
+   "letters": "ינ",
+   "nameHe": "איחוד בני הברית - בראשות רב חובל בשארה שליאן",
+   "englishName": {
+    "label": "Ihud Bnei HaBrit",
+    "kind": "transliteration",
+    "sourceId": "k25-candidates-gazette",
+    "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+   }
+  },
+  {
+   "letters": "זך",
+   "nameHe": "קמ\"ה - קידום מעמד הפרט",
+   "englishName": {
+    "label": "Kama – Kidum Maamad HaPrat",
+    "kind": "transliteration",
+    "sourceId": "k25-candidates-gazette",
+    "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+   }
+  },
+  {
+   "letters": "זנ",
+   "nameHe": "כח להשפיע בראשות בני אלבז",
+   "englishName": {
+    "label": "Koah LeHashpia",
+    "kind": "transliteration",
+    "sourceId": "k25-candidates-gazette",
+    "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+   }
+  }
+ ],
  "blocSchemes": [
   {
    "id": "first-government",
@@ -1226,35 +1228,21 @@
    ],
    "sources": [
     {
-     "url": "https://www.jns.org/israel-news/netanyahu-accepts-mandate-the-nation-clearly-decided",
-     "publisher": "JNS (quoting President Herzog)",
+     "url": "https://www.timesofisrael.com/president-to-hand-netanyahu-mandate-to-form-government-on-sunday/",
+     "publisher": "The Times of Israel, 11 November 2022",
      "kind": "secondary",
-     "quote": "Herzog said, “Ladies and gentlemen, from the consultations I held, the following picture arises: 64 members of Knesset recommended Benjamin Netanyahu MK; 28 members of Knesset recommended Yair Lapid MK; and 28 members of Knesset chose not to recommend any member of Knesset for the role of forming a government.”",
-     "accessed": "2026-11-05"
-    },
-    {
-     "url": "https://www.jpost.com/israel-news/politics-and-diplomacy/article-721778",
-     "publisher": "The Jerusalem Post",
-     "kind": "secondary",
-     "quote": "Labor announced that it would join Yesh Atid in recommending Prime Minister Yair Lapid ... Yisrael Beytenu and Hadash-Ta'al and National Unity announced that they would not recommend anyone. ... RZP, Otzma Yehudit and Noam ran on the same list but decided to meet with the president separately.",
-     "accessed": "2026-11-05"
-    },
-    {
-     "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%97%D7%9E%D7%A9",
-     "publisher": "Wikipedia (he)",
-     "kind": "secondary",
-     "quote": "64 מחברי הכנסת המליצו על בנימין נתניהו לראשות הממשלה (סיעות הליכוד, ש\"ס, יהדות התורה, הציונות הדתית, עוצמה יהודית ונעם), 28 המליצו על יאיר לפיד לראש הממשלה (סיעות יש עתיד והעבודה), ו-28 בחרו שלא להמליץ על אף חבר כנסת (סיעות המחנה הממלכתי, ישראל ביתנו, רע\"מ וחד\"ש-תע\"ל)",
-     "accessed": "2026-11-04"
+     "quote": "with the remaining 28 (National Unity, Yisrael Beiteinu, Ra’am and Hadash-Ta’al) declining to recommend anyone for the post.",
+     "accessed": "2026-11-06"
     }
    ],
    "notes": [
-    "Consultations were held on 9–11 November 2022; President Herzog tasked Netanyahu on 13 November 2022. Religious Zionism, Otzma Yehudit and Noam (list ט) were consulted as three factions and all recommended Netanyahu. Per-faction positions are from Hebrew Wikipedia (secondary) and the Jerusalem Post's pre-consultation report; the totals are the President's own statement as quoted by JNS."
+    "Completed consultations, 9–11 November 2022: Netanyahu 64, Lapid 28, no recommendation 28. List-level positions are reported after consultation completion by ToI on 11 November; list ט was consulted as three factions."
    ]
   },
   {
    "id": "pre-election-blocs",
-   "nameHe": "גושים לפני הבחירות",
-   "nameEn": "Pre-election blocs",
+   "nameHe": "קבוצות להשוואה (הגדרת היישומון)",
+   "nameEn": "Comparison groups (app-defined)",
    "kind": "pre-election",
    "date": "2022-11-01",
    "blocs": [
@@ -1281,8 +1269,8 @@
     },
     {
      "id": "change",
-     "nameHe": "גוש השינוי",
-     "nameEn": "Change bloc",
+     "nameHe": "קבוצת שינוי (הגדרת היישומון)",
+     "nameEn": "Change grouping (app-defined)",
      "color": "#2aa198",
      "members": [
       {
@@ -1324,22 +1312,15 @@
    ],
    "sources": [
     {
-     "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%A9",
-     "publisher": "Wikipedia (he)",
+     "url": "https://www.timesofisrael.com/president-to-hand-netanyahu-mandate-to-form-government-on-sunday/",
+     "publisher": "The Times of Israel, 11 November 2022",
      "kind": "secondary",
-     "quote": "בבחירות לכנסת העשרים וחמש, שנערכו בנובמבר 2022, זכו המפלגות שהרכיבו את ממשלת ישראל השלושים ושבע ב־64 מנדטים",
-     "accessed": "2026-11-04"
-    },
-    {
-     "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D_%D7%95%D7%A9%D7%91%D7%A2",
-     "publisher": "Wikipedia (he)",
-     "kind": "secondary",
-     "quote": "על בנימין נתניהו המליצו 64 חברי הכנסת: 32 חברי הליכוד, 11 חברי ש\"ס, 7 חברי יהדות התורה, 7 חברי הציונות הדתית, 6 חברי עוצמה יהודית וחבר אחד מטעם נעם",
-     "accessed": "2026-11-04"
+     "quote": "with the remaining 28 (National Unity, Yisrael Beiteinu, Ra’am and Hadash-Ta’al) declining to recommend anyone for the post.",
+     "accessed": "2026-11-06"
     }
    ],
    "notes": [
-    "Only the Netanyahu bloc is sourced. The split of the other lists into change bloc and Arab lists mirrors the app's existing k25 blocs and is not sourced here (low confidence); compare the 2021 description of the anti-Netanyahu bloc, which excluded the Arab lists. Meretz and Balad won no seats; they are placed with the change camp and the Arab lists respectively, as in the app."
+    "Editorial comparison grouping, not a sourced pre-election alliance or the outgoing coalition. The five-list Change grouping excludes Ra’am, which belonged to the outgoing coalition. Arab lists are grouped separately for comparison. Jewish Home and other small lists are unassigned. Membership and seat sums are unchanged."
    ]
   }
  ],
