@@ -1,3 +1,4 @@
+import { groupingName } from '../groupingName.ts';
 import { electionLabel } from '../electionLabel.ts';
 import { ChoicePicker } from './ChoicePicker.tsx';
 import { useEffect, useRef, useState } from 'react';
@@ -124,7 +125,7 @@ export function PreferenceSettings() {
   const itemLabel = (election: string, key: string) => {
     const [kind, ...rest] = key.split(':'), id = rest.join(':');
     const name = kind === 'list' ? listName(election, id)
-      : kind === 'bloc' && id === 'null' ? L('No bloc', 'ללא גוש') : kind === 'bloc' ? ((b) => b ? (lang === 'he' ? b.nameHe : b.nameEn) : id)(blocsOf(election).find(b => b.id === id))
+      : kind === 'bloc' && id === 'null' ? L('No bloc', 'ללא גוש') : kind === 'bloc' ? ((b) => b ? groupingName(b, lang) : id)(blocsOf(election).find(b => b.id === id))
       : saved.find(x => x.id === key)?.name ?? key;
     const e = election ? elections.find(x => x.id === election) : undefined;
     return e ? `${name} (${electionLabel(e, elections, lang)})` : name;

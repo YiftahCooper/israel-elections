@@ -1,3 +1,4 @@
+import { groupingName, appGroupingExplanation } from '../groupingName.ts';
 import { SeatDelta } from './SeatDelta.tsx';
 import { dispatch } from '../store.ts';
 import { StartFrom } from './StartFrom.tsx';
@@ -220,7 +221,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
   const historyMatches = (ids: string[]) => !missingGovernmentPartner && !!historicalIds?.length && historicalIds.length === ids.length && historicalIds.every(id => ids.includes(id));
   const sorted = [...minimal].sort((a, b) => a.n - b.n || a.ids.length - b.ids.length);
   const shown = sorted.slice(0, 24);
-  const blocName = (b: { nameHe: string; nameEn: string }) => (lang === 'he' ? b.nameHe : b.nameEn);
+  const blocName = (b: { nameHe: string; nameEn: string; appDefined?: boolean }) => groupingName(b, lang);
   const startFrom = s.blocs.map((b) => ({ b, ids: seated.filter((x) => x.l.bloc === b.id).map((x) => x.l.id) })).filter((x) => x.ids.length);
   const colorOf = (id: string) => seated.find(x => x.l.id === id)!.l.color;
   const sameSet = (a: string[], b: string[]) => a.length === b.length && a.every(id => b.includes(id));
@@ -241,7 +242,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
       <ul className="coal-partners">{ids.map(id => <li key={id}><Slip letters={seated.find(x => x.l.id === id)?.letters ?? ''} synthetic={seated.find(x => x.l.id === id)?.synthetic} name={nm(id)} logo={seated.find(x => x.l.id === id)?.logo} color={colorOf(id)} size="sm" />{nm(id)} <b>{seatsOf(id)}</b> {tag && pivotal.includes(id) && <span className="small">{L('Pivotal', 'חיונית לרוב')}</span>}</li>)}</ul>
       <div className="row small">{[...s.blocs, { id: null, nameHe: 'ללא גוש', nameEn: 'No bloc' }].map(b => {
         const n = seated.filter(x => ids.includes(x.l.id) && x.l.bloc === b.id).reduce((n, x) => n + x.n, 0);
-        return n > 0 && <span key={b.id ?? 'none'}>{blocName(b)} <b>{n}</b></span>;
+        return n > 0 && <span key={b.id ?? 'none'} title={'appDefined' in b && b.appDefined ? appGroupingExplanation(lang) : undefined}>{blocName(b)} <b>{n}</b></span>;
       })}{sayAllNeeded && pivotal.length === ids.length && pivotal.length > 1 && <span className="muted">{L('Each is needed for the majority', 'כל אחת נחוצה לרוב')}</span>}
         <Info title={L('Coalition breakdown', 'הרכב הקואליציה')}>{L('Uses the active grouping. Pivotal means this partner’s departure would remove the majority. Arithmetic does not establish political feasibility.', 'לפי החלוקה הפעילה. שותפה חיונית היא כזו שבלעדיה אין רוב. חשבון אינו מעיד על היתכנות פוליטית.')}</Info></div>
       {governmentBloc && <p className="small muted" style={{ margin: 0 }}>{!historicalIds ? L('First-government comparison unavailable', 'אין נתונים להשוואה לממשלה הראשונה') : historyMatches(ids) ? L('Matches the recorded first-government partners', 'תואמת לשותפות הממשלה הראשונה המתועדת') : L('Different from the recorded first-government partners', 'שונה משותפות הממשלה הראשונה המתועדת')}{' '}
@@ -256,7 +257,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
       {startFrom.length > 0 && (
         <div className="row" style={{ marginBottom: 8 }}>
           <span className="small ink2">{L('Fill with a bloc', 'מילוי לפי גוש')}</span>
-          {startFrom.map(({ b, ids }) => { const on = excluded.length === 0 && picked.length === ids.length && ids.every((id) => picked.includes(id)); return <button key={b.id} className={`btn small ${on ? 'primary' : ''}`} aria-pressed={on} onClick={() => { if (on) return; setInspected(null); dispatch({ type: 'setCoalition', coalition: { in: ids, out: [] } }); }}><span className="swatch" style={{ background: b.color }} />{blocName(b)}</button>; })}
+          {startFrom.map(({ b, ids }) => { const on = excluded.length === 0 && picked.length === ids.length && ids.every((id) => picked.includes(id)); return <button key={b.id} title={b.appDefined ? appGroupingExplanation(lang) : undefined} className={`btn small ${on ? 'primary' : ''}`} aria-pressed={on} onClick={() => { if (on) return; setInspected(null); dispatch({ type: 'setCoalition', coalition: { in: ids, out: [] } }); }}><span className="swatch" style={{ background: b.color }} />{blocName(b)}</button>; })}
         </div>
       )}
       <div className="coal-chips">

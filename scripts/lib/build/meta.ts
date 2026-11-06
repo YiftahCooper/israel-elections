@@ -15,8 +15,8 @@ const META = join(import.meta.dirname, '..', '..', '..', 'data', 'meta');
 interface MetaParty { id: string; nameHe: string; nameEn: string; candidateRanks?: number[]; confidence?: string }
 interface MetaList { englishName?: import('../../../src/data/schema.ts').ListRecord['englishName']; letters: string; parties?: MetaParty[] }
 interface MetaMember { letters?: string; party?: string; parties?: string[]; ranks?: number[]; note?: string; joined?: string }
-interface MetaScheme { id: string; nameHe: string; nameEn: string; kind: string; date?: string; notes?: unknown;
-  blocs: { id: string; nameHe: string; nameEn: string; color: string; members: MetaMember[] }[] }
+interface MetaScheme { appDefined?: boolean; id: string; nameHe: string; nameEn: string; kind: string; date?: string; notes?: unknown;
+  blocs: { appDefined?: boolean; id: string; nameHe: string; nameEn: string; color: string; members: MetaMember[] }[] }
 interface MetaColour { letters?: string; party?: string; color: string; confidence?: string }
 interface Meta { electionId: string; lists: MetaList[]; blocSchemes?: MetaScheme[]; colours?: MetaColour[] }
 
@@ -88,10 +88,10 @@ export function applyMeta(ds: ElectionDataset): ElectionDataset {
   const schemes: BlocScheme[] = (meta.blocSchemes ?? []).map((s) => {
     if (!KINDS.has(s.kind)) fail(`scheme ${s.id}: kind ${s.kind}`);
     return {
-      id: s.id, kind: s.kind as BlocScheme['kind'], nameHe: s.nameHe, nameEn: s.nameEn, ...(s.date ? { date: s.date } : {}),
+      ...(s.appDefined ? { appDefined: true } : {}), id: s.id, kind: s.kind as BlocScheme['kind'], nameHe: s.nameHe, nameEn: s.nameEn, ...(s.date ? { date: s.date } : {}),
       blocs: s.blocs.map((b) => {
         if (!HEX.test(b.color)) fail(`scheme ${s.id} bloc ${b.id}: colour ${b.color}`);
-        const out = { id: b.id, nameHe: b.nameHe, nameEn: b.nameEn, color: b.color.toLowerCase(), lists: [] as string[], parties: [] as string[], candidates: [] as string[] };
+        const out = { ...(b.appDefined || s.appDefined ? { appDefined: true } : {}), id: b.id, nameHe: b.nameHe, nameEn: b.nameEn, color: b.color.toLowerCase(), lists: [] as string[], parties: [] as string[], candidates: [] as string[] };
         for (const m of b.members) {
           if (m.party) { if (!partyLists.has(m.party)) fail(`scheme ${s.id}: unknown party ${m.party}`); out.parties.push(m.party); continue; }
           if (!m.letters) fail(`scheme ${s.id}: member without list or party`);

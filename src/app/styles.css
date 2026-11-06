@@ -287,7 +287,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .corridor .label { font-size: 14px; display: flex; gap: 6px; align-items: baseline; overflow: hidden; white-space: nowrap; }
 .corridor .label b { font-weight: 700; }
 .corridor .label .clip { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
-.corridor .label > b { flex-shrink: 0; }
+.corridor .label > b, .corridor .app-grouping-tag { flex-shrink: 0; }
+.corridor .app-grouping-tag { font: inherit; font-size: 12px; }
 /* the shortfall is shown whole or not at all: a narrow corridor keeps the bloc's name and seats (the title and the bloc
    editor still give the shortfall) */
 .corridor { container-type: inline-size; }

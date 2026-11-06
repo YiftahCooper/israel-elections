@@ -1209,8 +1209,9 @@
   },
   {
    "id": "knesset-blocs-2021",
-   "nameHe": "חלוקה פוליטית (פרשנות הפרויקט, 2021)",
-   "nameEn": "Political grouping (project interpretation, 2021)",
+   "nameHe": "חלוקה פוליטית",
+   "nameEn": "Political grouping",
+   "appDefined": true,
    "kind": "parliamentary",
    "date": "2021-04-06",
    "blocs": [
@@ -1237,8 +1238,9 @@
     },
     {
      "id": "change",
-     "nameHe": "מפלגות מתנגדות נתניהו (חלוקת הפרויקט)",
-     "nameEn": "Anti-Netanyahu parties (project grouping)",
+     "nameHe": "מפלגות מתנגדות נתניהו",
+     "nameEn": "Anti-Netanyahu parties",
+     "appDefined": true,
      "color": "#2aa198",
      "members": [
       {

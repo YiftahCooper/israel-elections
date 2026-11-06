@@ -1241,8 +1241,9 @@
   },
   {
    "id": "pre-election-blocs",
-   "nameHe": "קבוצות להשוואה (הגדרת היישומון)",
-   "nameEn": "Comparison groups (app-defined)",
+   "nameHe": "קבוצות להשוואה",
+   "nameEn": "Comparison groups",
+   "appDefined": true,
    "kind": "pre-election",
    "date": "2022-11-01",
    "blocs": [
@@ -1269,8 +1270,9 @@
     },
     {
      "id": "change",
-     "nameHe": "קבוצת שינוי (הגדרת היישומון)",
-     "nameEn": "Change grouping (app-defined)",
+     "nameHe": "קבוצת שינוי",
+     "nameEn": "Change grouping",
+     "appDefined": true,
      "color": "#2aa198",
      "members": [
       {

@@ -1,3 +1,4 @@
+import { groupingName } from './groupingName.ts';
 import { englishLabel } from '../data/names.ts';
 import {inputDiffs,inputPart,replacementScopes,scopeCovers} from '../model/editScopes.ts';
 import {PARTS,type Part} from '../model/parts.ts';
@@ -243,7 +244,7 @@ export function groupingBaseline(s: Scenario, base: Scenario): Scenario | null {
 export function groupingLabel(s: Scenario, lang: Lang): string {
   if(isFamilyGrouping(s)) {const b=s.blocs.find(b=>b.id==='selected')!;return lang==='he'?b.nameHe:b.nameEn;}
   const g = s.blocSchemes?.find(g => g.id === s.blocSchemeId);
-  return g ? `${lang === 'he' ? g.nameHe : g.nameEn} · ${g.date ?? (lang === 'he' ? 'חלוקה מוכרת בבחירות אלה' : 'recognised grouping of this election')}` : s.customGroupingName ?? (lang === 'he' ? 'החלוקה שלכם' : 'Your grouping');
+  return g ? `${groupingName(g, lang)}${g.appDefined ? '' : ` · ${g.date ?? (lang === 'he' ? 'חלוקה מוכרת בבחירות אלה' : 'recognised grouping of this election')}`}` : s.customGroupingName ?? (lang === 'he' ? 'החלוקה שלכם' : 'Your grouping');
 }
 export function majorityText(n: number, total: number, lang: Lang): string {
   const m = Math.floor(total / 2) + 1;

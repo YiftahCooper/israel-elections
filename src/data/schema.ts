@@ -87,12 +87,14 @@ export interface ListRecord {
 
 export interface AgreementRecord { id: string; members: [string, string]; sourceId: string }
 
-export interface BlocDef { id: string; nameHe: string; nameEn: string; color: string }
+export interface BlocDef { id: string; nameHe: string; nameEn: string; color: string; appDefined?: boolean }
 
-/** A sourced grouping of an election (decision 0087): the first government, or a recognised bloc.
+/** A sourced or app-defined grouping of an election (decision 0087): the first government, or a recognised bloc.
  *  Members are whole lists, constituent parties of joint lists, or individual candidates. */
 export interface BlocScheme {
   id: string;
+  /** App-defined comparison, not an official or contemporaneous grouping. */
+  appDefined?: boolean;
   kind: 'government' | 'parliamentary' | 'pre-election';
   nameHe: string;
   nameEn: string;

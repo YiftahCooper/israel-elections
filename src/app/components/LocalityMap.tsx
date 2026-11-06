@@ -1,3 +1,4 @@
+import { groupingName, appGroupingExplanation } from '../groupingName.ts';
 import { Info } from './ui.tsx';
 import { ChoicePicker } from './ChoicePicker.tsx';
 import { ResultPreview } from './ResultPreview.tsx';
@@ -100,7 +101,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
   const matches = useMemo(() => data.rows.flatMap((r, i) => matchesLocality(q, searchNames(r, i)) ? [i] : []), [data, locations, names, q]);
   const winners = useMemo(() => placed.map(p => localityWinner(s, data.listIds, p.row.votes, mode)), [placed,s,data.listIds,mode]);
   const groupName = (key: string | null) => key === null ? (mode === 'bloc' ? L('No bloc', 'ללא גוש') : L('Unassigned', 'ללא שיוך')) : mode === 'bloc'
-    ? (() => { const b = s.blocs.find(x => x.id === key); return (lang === 'he' ? b?.nameHe : b?.nameEn) ?? key; })()
+    ? (() => { const b = s.blocs.find(x => x.id === key); return b ? groupingName(b, lang) : key; })()
     : (() => { const l = s.lists.find(x => x.id === key); return l ? listLabel(l, lang) : key; })();
   const groupColor = (key: string | null) => key === null ? GREY : (mode === 'bloc' ? s.blocs.find(b => b.id === key)?.color : s.lists.find(l => l.id === key)?.color) ?? GREY;
   const fittedFor = useRef<unknown>(null);
@@ -220,8 +221,8 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
   const selectedWinner = selected ? localityWinner(s, data.listIds, selected.votes, mode) : null;
   const localities = data.rows.filter(r => !isEnvelopeRow(r)).length;
   const unplaced = data.rows.flatMap((r, i) => !isEnvelopeRow(r) && !locations[localityLocationKey(r, i)] ? [i] : []);
-  const legend = mode === 'bloc' ? s.blocs.map(b => ({ id: b.id, color: b.color, label: lang === 'he' ? b.nameHe : b.nameEn }))
-    : s.lists.filter(l => winners.some(w => w.key === l.id)).map(l => ({ id: l.id, color: l.color, label: listLabel(l, lang) }));
+  const legend = mode === 'bloc' ? s.blocs.map(b => ({ id: b.id, color: b.color, label: groupingName(b, lang), title: b.appDefined ? appGroupingExplanation(lang) : undefined }))
+    : s.lists.filter(l => winners.some(w => w.key === l.id)).map(l => ({ id: l.id, color: l.color, label: listLabel(l, lang), title: undefined }));
   const shareBar = (v: number, top: number, color: string) => <span className="locality-share"><span><i style={{ width: `${v / (top || 1) * 100}%`, background: color }} /></span><span className="tabnum">{share(v, selected!.valid)}</span></span>;
   return <div className="locality-map-tool">
     <p className="small ink2">{L('Historical votes · current grouping', 'קולות היסטוריים · חלוקה נוכחית')} <Info title={L('Map assumptions', 'הנחות המפה')}>{L('Historical local votes; colours follow your current scenario grouping. National vote edits are not distributed geographically. Split lists use national vote proportions; split blocs use elected-seat proportions, an estimate rather than measured party votes. English place names are CBS locality names; a few localities missing from CBS lists have this project’s transliteration (dotted underline).', 'קולות היסטוריים ביישובים; הצבעים לפי חלוקת הגושים הנוכחית. שינויי קולות ארציים אינם מחולקים גאוגרפית. רשימות שפוצלו מחולקות לפי יחס הקולות הארצי; גושים בתוך רשימה לפי יחס המושבים הנבחרים — אומדן ולא קולות מפלגתיים שנמדדו.')}</Info></p>
@@ -246,7 +247,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
       if (near) {choose(near.item.index);setMessage(L(`Nearest mapped locality: ${nameOf(near.item.index)}, ${near.km.toFixed(1)} km (straight line).`, `היישוב הממופה הקרוב: ${near.item.row.nameHe}, ${near.km.toFixed(1)} ק״מ בקו אווירי.`));}
     }}>{[f.properties.name,f.properties.street,f.properties.housenumber,f.properties.city,f.properties.country].filter(Boolean).join(', ')}</button>)}</div>}
     {data.id === 'k17' && <Locality2006Note />}
-    <div className="locality-map-legend">{legend.map(x=><span key={x.id}><i style={{background:x.color}} />{x.label}</span>)}<span><i style={{background:GREY}}/>{L('Tie / unassigned / no votes','שוויון / ללא שיוך / ללא קולות')}</span></div>
+    <div className="locality-map-legend">{legend.map(x=><span key={x.id} title={x.title}><i style={{background:x.color}} />{x.label}</span>)}<span><i style={{background:GREY}}/>{L('Tie / unassigned / no votes','שוויון / ללא שיוך / ללא קולות')}</span></div>
     <div ref={container} className="locality-map-canvas" role="region" aria-label={L('Locality results map; use search or table for keyboard selection','מפת תוצאות ביישובים; לבחירה במקלדת השתמשו בחיפוש או בטבלה')} />
     {tilesFailed && <p className="small bad">{L('The background map could not load; the locality dots still work.', 'מפת הרקע לא נטענה; נקודות היישובים עדיין פעילות.')}</p>}
     {selected && <section className="locality-map-results" aria-live="polite" aria-label={L('Selected locality results','תוצאות היישוב הנבחר')}>

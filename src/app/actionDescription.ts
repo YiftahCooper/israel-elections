@@ -1,3 +1,4 @@
+import { groupingName } from './groupingName.ts';
 import {englishLabel} from '../data/names.ts';
 import {familyLabel} from '../families/labels.ts';
 import { RULESETS } from '../engine/rules.ts';
@@ -14,7 +15,7 @@ export function describe(a: Action, s: Scenario, lang: Lang): string {
     case 'familyOperation': return (a.operation === 'group' ? (he ? 'קיבוץ לפי משפחה: ' : 'Family grouping: ') : (he ? 'שינוי קולות המשפחה: ' : 'Scaled family votes: ')) + familyLabel(a.definition,lang);
     case 'setIdentityColor': return he ? 'צבע התרחיש השתנה' : 'Scenario colour changed';
     case 'setCoalition': return he ? 'בחירת הקואליציה השתנתה' : 'Coalition selection changed';
-    case 'startPart': return `${PARTS[a.part][lang]}: ${a.name ?? (a.source === 'official' ? (he ? 'התוצאה הרשמית' : 'official result') : a.source === 'blank' ? (he ? 'ריק' : 'blank') : (a.source === 'preset' ? (a.part === 'rules' ? (a.presetId && RULESETS[a.presetId] ? ruleEraLabel(RULESETS[a.presetId], lang) : (he ? 'כללים ממקור מתועד' : 'Sourced rules')) : s.blocSchemes?.find(g => g.id === a.presetId)?.[he ? 'nameHe' : 'nameEn'] ?? (he ? 'חלוקה ממקור מתועד' : 'Sourced grouping')) : (he ? 'תרחיש שמור' : 'saved scenario')))}`;
+    case 'startPart': return `${PARTS[a.part][lang]}: ${a.name ?? (a.source === 'official' ? (he ? 'התוצאה הרשמית' : 'official result') : a.source === 'blank' ? (he ? 'ריק' : 'blank') : (a.source === 'preset' ? (a.part === 'rules' ? (a.presetId && RULESETS[a.presetId] ? ruleEraLabel(RULESETS[a.presetId], lang) : (he ? 'כללים ממקור מתועד' : 'Sourced rules')) : ((g) => g ? groupingName(g, lang) : undefined)(s.blocSchemes?.find(g => g.id === a.presetId)) ?? (he ? 'חלוקה ממקור מתועד' : 'Sourced grouping')) : (he ? 'תרחיש שמור' : 'saved scenario')))}`;
     case 'setVotes': return he ? `${n(a.listId)}: ${fmtInt(a.votes)} קולות` : `${n(a.listId)}: set to ${fmtInt(a.votes)} votes`;
     case 'transfer': return he ? `העברת ${fmtInt(a.votes)} קולות מ${n(a.from)} ל${n(a.to)}` : `Moved ${fmtInt(a.votes)} votes from ${n(a.from)} to ${n(a.to)}`;
     case 'addVoters': { const n = a.allocations.reduce((t, x) => t + x.votes, 0) + a.invalid, k = fmtInt(Math.abs(n)), why = a.label && !a.label.startsWith('[') ? ` (${a.label})` : '';
@@ -43,12 +44,12 @@ export function describe(a: Action, s: Scenario, lang: Lang): string {
     case 'setMode': return a.mode === 'historical' ? (he ? 'מצב תקף היסטורית' : 'Historically valid mode') : (he ? 'מצב ניסיוני' : 'Experimental mode');
     case 'setTotals': return he ? 'עדכון בעלי זכות / פסולים' : 'Electorate / invalid ballots changed';
     case 'setBlocs': return he ? 'עריכת גושים' : 'Edited blocs';
-    case 'applyBlocScheme': { const sc = s.blocSchemes?.find((x) => x.id === a.schemeId); return he ? `חלוקה לגושים: ${sc?.nameHe ?? 'חלוקה שהוסרה'}` : `Bloc grouping: ${sc?.nameEn ?? 'Removed grouping'}`; }
+    case 'applyBlocScheme': { const sc = s.blocSchemes?.find((x) => x.id === a.schemeId); return he ? `חלוקה לגושים: ${sc ? groupingName(sc, lang) : 'חלוקה שהוסרה'}` : `Bloc grouping: ${sc ? groupingName(sc, lang) : 'Removed grouping'}`; }
     case 'setFactionSplit': return a.split
       ? (he ? `${n(a.listId)}: הסיעה התפצלה למפלגותיה` : `${n(a.listId)}: faction split into its parties`)
       : (he ? `${n(a.listId)}: הסיעה אוחדה מחדש` : `${n(a.listId)}: faction rejoined`);
     case 'setPartyBloc': { const p = s.lists.flatMap((l) => l.parties ?? []).find((x) => x.id === a.partyId); const b = s.blocs.find((x) => x.id === a.bloc);
-      return he ? `${p?.nameHe ?? 'מפלגה שהוסרה'} ← ${b?.nameHe ?? 'ללא גוש'}` : `${p?.nameEn ?? 'Removed party'} → ${b?.nameEn ?? 'no bloc'}`; }
+      return he ? `${p?.nameHe ?? 'מפלגה שהוסרה'} ← ${b ? groupingName(b, lang) : 'ללא גוש'}` : `${p?.nameEn ?? 'Removed party'} → ${b ? groupingName(b, lang) : 'no bloc'}`; }
     case 'setLottery': return he ? 'נבחרה תוצאת הגרלה' : 'Chose a lottery outcome';
     case 'resetList': return he ? `${n(a.listId)}: אופסה` : `${n(a.listId)}: reset`;
     case 'setDescription': return he ? 'תיאור התרחיש השתנה' : 'Scenario description changed';

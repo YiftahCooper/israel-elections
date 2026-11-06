@@ -1,3 +1,4 @@
+import { groupingName, appGroupingExplanation } from '../groupingName.ts';
 import { SeatDelta } from './SeatDelta.tsx';
 import { ScenarioSwitcher } from './ScenarioSwitcher.tsx';
 import { useActiveReference } from '../useActiveReference.ts';
@@ -62,7 +63,7 @@ export function ListSidePanel({ s, r, ds, base, baseR, listId }: { s: Scenario; 
       <div className="phone-result-strip" role="status">
         <span>{d !== 0 && <><bdi dir="ltr"><SeatDelta value={d} /></bdi> </>}{lang === 'en' ? baseLabel.since.replace(/^Since /, 'since ') : baseLabel.since}{changed > 0 && <> · {L(`${changed} lists changed seats`, `${changed} רשימות שינו מנדטים`)}</>}</span>
         <span className="tiny muted">{groupingLabel(s, lang)}</span>
-        {blocs.map(b => <span key={b.id}>{lang === 'he' ? b.nameHe : b.nameEn}: <Majority n={pieces.filter(p => p.bloc === b.id).reduce((n,p) => n+p.n,0)} total={s.rules.seats} /></span>)}
+        {blocs.map(b => <span key={b.id} title={b.appDefined ? appGroupingExplanation(lang) : undefined}>{groupingName(b, lang)}: <Majority n={pieces.filter(p => p.bloc === b.id).reduce((n,p) => n+p.n,0)} total={s.rules.seats} /></span>)}
         {!assignedBlocs.length && <span>{L('No bloc assigned', 'ללא שיוך לגוש')}</span>}
       </div>
       <div className="sp-body"><ElectionAbout electionId={ds.id} listId={listId} /><ListDetail s={s} r={r} ds={ds} base={base} baseR={baseR} l={l} /></div>

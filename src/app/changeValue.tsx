@@ -1,3 +1,4 @@
+import { groupingName } from './groupingName.ts';
 import {englishLabel} from '../data/names.ts';
 import type { RuleSet } from '../engine/types.ts';
 import type { Scenario } from '../model/scenario.ts';
@@ -26,7 +27,8 @@ export function changeText(s: Scenario, path: EditPath, lang: Lang): string {
     const g = s.blocSchemes?.find(g => g.id === id);
     const c = s.lists.flatMap(l => l.candidates).find(c => c.id === id);
     const p = s.lists.flatMap(l => l.parties ?? []).find(p => p.id === id);
-    const entity = b ?? g ?? c ?? p;
+    if (!l && (b || g)) return groupingName((b ?? g)!, lang);
+    const entity = c ?? p;
     return l ? (he ? l.shortHe : englishLabel(l.shortEn,l.shortHe)) : entity ? (he ? entity.nameHe : englishLabel('nameEn' in entity ? entity.nameEn : null,entity.nameHe)) : he ? 'פריט שהוסר' : 'Removed item';
   };
   const format = (v: unknown, key: string): string => {
@@ -42,6 +44,7 @@ export function changeText(s: Scenario, path: EditPath, lang: Lang): string {
     if (Array.isArray(v)) return v.length ? v.map(x => format(x, key)).join(key === 'members' ? ' + ' : ' · ') : none;
     const o = v as Record<string, unknown>;
     if ('members' in o) return format(o.members, 'members') + ' · ' + (o.enabled === false ? (he ? 'כבוי' : 'Off') : (he ? 'בתוקף' : 'In force'));
+    if ('appDefined' in o && o.appDefined && typeof o.nameHe === 'string' && typeof o.nameEn === 'string') return groupingName({ nameHe: o.nameHe, nameEn: o.nameEn, appDefined: true }, lang);
     if ('nameHe' in o) return String(he ? o.nameHe : englishLabel(String(o.shortEn ?? o.nameEn ?? ''),String(o.nameHe)));
     return Object.entries(o).filter(([k]) => !['id', 'at', 'source'].includes(k)).map(([k,x]) =>
       editPathLabel(s, [k], lang) + ': ' + format(x, ['partyBlocs', 'candidateBlocs', 'lotteryWinners'].includes(key) ? key : k)).join(' · ') || none;

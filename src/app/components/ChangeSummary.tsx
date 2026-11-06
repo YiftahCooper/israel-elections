@@ -1,3 +1,4 @@
+import { groupingName, appGroupingExplanation } from '../groupingName.ts';
 import { SeatDelta } from './SeatDelta.tsx';
 import { factLog } from '../../model/actionClassification.ts';
 import {isFamilyGrouping} from '../../families/labels.ts';
@@ -79,7 +80,7 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
   const familyGrouping = isFamilyGrouping(s);
   const majority = Math.floor(s.rules.seats / 2) + 1;
   const holder = blocs?.find((x) => x.n >= majority);
-  const name = (b: { nameHe: string; nameEn: string }) => (lang === 'he' ? b.nameHe : b.nameEn);
+  const name = (b: { nameHe: string; nameEn: string; appDefined?: boolean }) => groupingName(b, lang);
   const shown = moves.slice(0, MAX_MOVES);
 
   return (
@@ -96,7 +97,7 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
           {nonSeatChanges(s, base, lang).length > 0 && <span>{nonSeatChanges(s, base, lang).join(' · ')}</span>}
           {blocs && <span className="moves" style={{ color: 'var(--ink-2)' }}>
             {!familyGrouping && <span>{groupingLabel(s, lang)}</span>}
-            {blocs.filter((x) => x.n > 0 || x.d).map(({ b, n, d }) => <span key={b.id}><bdi>{name(b)}</bdi> {n}{d ? <span dir="ltr"> (<SeatDelta value={d} />)</span> : null}</span>)}
+            {blocs.filter((x) => x.n > 0 || x.d).map(({ b, n, d }) => <span key={b.id} title={b.appDefined ? appGroupingExplanation(lang) : undefined}><bdi>{name(b)}</bdi> {n}{d ? <span dir="ltr"> (<SeatDelta value={d} />)</span> : null}</span>)}
             {!familyGrouping && <span>{holder ? L(`${name(holder.b)} holds a majority`, `ל${name(holder.b)} יש רוב`) : L('no bloc has a majority', 'לאף גוש אין רוב')}</span>}
           </span>}
           {s.mode === 'experimental' && <span className="chip exp">{L('Experimental rules', 'כללים ניסיוניים')}</span>}

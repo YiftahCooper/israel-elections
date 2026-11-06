@@ -22,7 +22,7 @@ test('an election opens on its first government, and other sourced groupings can
   await expect(grouping).toHaveText(/37th government/);
   await expect(blocCount(page, 'Coalition')).toHaveText('64');
   await choose(grouping, 'pre-election-blocs');
-  await expect(grouping).toContainText('Comparison groups (app-defined)');
+  await expect(grouping).toContainText('Comparison groups · App');
   // a band opens the bloc editor beside the chamber, at every level
   await band(page, 'Netanyahu bloc').click();
   await expect(editor(page).getByRole('textbox', { name: 'Bloc name' }).first()).toHaveValue('Netanyahu bloc');
@@ -90,3 +90,44 @@ test('a joint list can run as separate lists, with the vote shares stated as an 
   await page.getByRole('button', { name: /^Undo:/ }).click();
   await expect(listRow(page, 'United Torah Judaism')).toBeVisible();
 });
+
+for (const lang of ['en', 'he'] as const) for (const election of ['k24', 'k25']) {
+  test(`${election} app-defined grouping labels retain provenance in ${lang}`, async ({ page }) => {
+    await page.addInitScript(({lang}) => localStorage.setItem('israel-elections:v1', JSON.stringify({lang, level:'standard', hintDismissed:true})), {lang});
+    await page.goto('/');
+    await choose(page.getByRole('button', {name: lang === 'en' ? 'Election' : 'בחירות', exact:true}), election);
+    const picker = page.getByRole('button', {name:lang === 'en' ? 'Grouping' : 'חלוקה לגושים', exact:true});
+    const scheme = election === 'k24' ? 'knesset-blocs-2021' : 'pre-election-blocs';
+    await picker.click();
+    const option = page.locator(`.choice-option[data-choice-value="${scheme}"]`);
+    const tag = lang === 'en' ? 'App' : 'יישומון';
+    await expect(option).toContainText(`· ${tag}`);
+    await expect(option).toHaveAttribute('title', /not an official|אינה חלוקה רשמית/);
+    await option.click();
+    await expect(picker).toContainText(`· ${tag}`);
+    await expect(picker).toHaveAttribute('title', /not an official|אינה חלוקה רשמית/);
+    const downloadEvent = page.waitForEvent('download');
+    await page.getByRole('button', {name: lang === 'en' ? 'Export SVG' : 'ייצוא SVG', exact:true}).click();
+    const download = await downloadEvent;
+    const stream = await download.createReadStream();
+    const chunks: Buffer[] = [];
+    for await (const chunk of stream!) chunks.push(Buffer.from(chunk));
+    const svg = Buffer.concat(chunks).toString('utf8');
+    expect(svg).toContain(`· ${tag}`);
+    expect(svg).toContain('<desc>');
+    expect(svg).toMatch(/not an official|אינה חלוקה רשמית/);
+    // Every named, app-defined bloc must remain marked even when detached from the picker.
+    const bands = page.locator('.corridor:not(.no-bloc)');
+    expect(await bands.count()).toBeGreaterThan(0);
+    for (const band of await bands.all()) {
+      await expect(band.locator('.label')).toContainText(`· ${tag}`);
+      const marker = await band.locator('.app-grouping-tag').boundingBox(), box = await band.boundingBox();
+      expect(marker!.x).toBeGreaterThanOrEqual(box!.x);
+      expect(marker!.x + marker!.width).toBeLessThanOrEqual(box!.x + box!.width);
+      await expect(band).toHaveAttribute('title', /not an official|אינה חלוקה רשמית/);
+    }
+    for (const label of await page.locator('.strip-legend > span').all()) {
+      if (!(await label.textContent())?.includes(lang === 'en' ? 'No bloc' : 'ללא גוש')) await expect(label).toContainText(`· ${tag}`);
+    }
+  });
+}

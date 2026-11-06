@@ -1,3 +1,4 @@
+import { groupingName, appGroupingExplanation } from '../groupingName.ts';
 import { SeatDelta } from './SeatDelta.tsx';
 import { CandidateName } from './CandidateName.tsx';
 import { Info, Slip } from './ui.tsx';
@@ -163,7 +164,7 @@ function ScenarioCompare({ s, r, base, ds }: { s: Scenario; r: AllocationResult;
             const before=id===null ? total-Object.values(ba).reduce((n,v)=>n+v,0) : ba[id]??0;
             const now=id===null ? total-Object.values(bb).reduce((n,v)=>n+v,0) : bb[id]??0;
             if(!now&&!before)return null;
-            return <span key={id??'__none'} className="row" style={{gap:5}}><span className="swatch" style={{background:`color-mix(in srgb, ${color} 24%, var(--surface))`,border:`1px ${id===null?'dotted':'solid'} ${color}`}} />{bloc?(lang==='he'?bloc.nameHe:bloc.nameEn):L('No bloc','ללא גוש')} <b><bdi dir="ltr">{groupedA?`${before} → `:''}{now}</bdi></b></span>;
+            return <span key={id??'__none'} className="row" title={bloc?.appDefined ? appGroupingExplanation(lang) : undefined} style={{gap:5}}><span className="swatch" style={{background:`color-mix(in srgb, ${color} 24%, var(--surface))`,border:`1px ${id===null?'dotted':'solid'} ${color}`}} />{bloc?groupingName(bloc, lang):L('No bloc','ללא גוש')} <b><bdi dir="ltr">{groupedA?`${before} → `:''}{now}</bdi></b></span>;
           })}</div>
           {!groupedA && <p className="small muted" style={{ margin: '4px 0 0' }}>{L(`${groupingLabel(s, lang)}: no counterpart in ${nameA}`, `${groupingLabel(s, lang)}: אין מקבילה ב${nameA}`)}</p>}
         </section>
@@ -313,7 +314,7 @@ function ElectionCompare({ s, r, base, ds, otherId }: { s: Scenario; r: Allocati
         {[left, right].filter((x) => x.sc.blocs.length).map((x) => { const sums = blocSums(x.sc, x.rr); return <div key={x.sc.electionId}>
           <BlocBarRow sums={sums} title={x.election} sc={x.sc} />
           <div className="legend small cmp-bloclegend"><span className="muted">{groupingLabel(x.sc, lang)}:</span>{blocDisplayOrder(x.sc).map((id) => { const bloc = x.sc.blocs.find((b) => b.id === id), n = id === null ? x.sc.rules.seats - Object.values(sums).reduce((t, v) => t + v, 0) : sums[id] ?? 0; if (!n) return null; const color = bloc?.color ?? 'var(--muted)';
-            return <span key={id ?? '__none'} className="row" style={{ gap: 5 }}><span className="swatch" style={{ background: `color-mix(in srgb, ${color} 24%, var(--surface))`, border: `1px ${id === null ? 'dotted' : 'solid'} ${color}` }} />{bloc ? (lang === 'he' ? bloc.nameHe : bloc.nameEn) : L('No bloc', 'ללא גוש')} <b>{n}</b></span>; })}</div>
+            return <span key={id ?? '__none'} className="row" title={bloc?.appDefined ? appGroupingExplanation(lang) : undefined} style={{ gap: 5 }}><span className="swatch" style={{ background: `color-mix(in srgb, ${color} 24%, var(--surface))`, border: `1px ${id === null ? 'dotted' : 'solid'} ${color}` }} />{bloc ? groupingName(bloc, lang) : L('No bloc', 'ללא גוש')} <b>{n}</b></span>; })}</div>
         </div>; })}
       </section>}
 
@@ -346,12 +347,12 @@ function BlocBarRow({ sums, title, sc }: { sums: Record<string, number>; title: 
   return (
     <div className="cmp-blocrow">
       <span className="small ink2">{title}</span>
-      <div className="coal-bar big" aria-label={`${title}: ${sc.blocs.map((b) => `${lang === 'he' ? b.nameHe : b.nameEn} ${sums[b.id] ?? 0}`).join(', ')}, ${L('No bloc','ללא גוש')} ${rest}`}>
+      <div className="coal-bar big" aria-label={`${title}: ${sc.blocs.map((b) => `${groupingName(b, lang)} ${sums[b.id] ?? 0}`).join(', ')}, ${L('No bloc','ללא גוש')} ${rest}`}>
         {blocDisplayOrder(sc).map(id=>{
           const bloc=sc.blocs.find(b=>b.id===id), n=id===null?rest:sums[id]??0;
           if(!n)return null;
           const color=bloc?.color ?? 'var(--muted)';
-          return <i key={id??'__none'} data-bloc={id??'__none'} style={{flexBasis:`${n/total*100}%`,background:`color-mix(in srgb, ${color} 24%, var(--surface))`,border:`1px ${id===null?'dotted':'solid'} ${color}`}} title={`${bloc ? (lang==='he'?bloc.nameHe:bloc.nameEn) : L('No bloc','ללא גוש')} ${n}`}><span className="cmp-n">{n}</span></i>;
+          return <i key={id??'__none'} data-bloc={id??'__none'} style={{flexBasis:`${n/total*100}%`,background:`color-mix(in srgb, ${color} 24%, var(--surface))`,border:`1px ${id===null?'dotted':'solid'} ${color}`}} title={`${bloc?.appDefined ? appGroupingExplanation(lang) + " " : ""}${bloc ? groupingName(bloc, lang) : L('No bloc','ללא גוש')} ${n}`}><span className="cmp-n">{n}</span></i>;
         })}
         <span className="maj" style={{ left: `${(majority / total) * 100}%` }} />
       </div>

@@ -228,7 +228,7 @@ export function blocSchemeState(scheme: BlocScheme, lists: { id: string }[]) {
     for (const c of b.candidates) candidateBlocs[c] = b.id;
   }
   return {
-    blocs: scheme.blocs.map(({ id, nameHe, nameEn, color }) => ({ id, nameHe, nameEn, color })),
+    blocs: scheme.blocs.map(({ id, nameHe, nameEn, color, appDefined }) => ({ id, nameHe, nameEn, color, ...(appDefined || scheme.appDefined ? { appDefined: true } : {}) })),
     listBloc: Object.fromEntries(lists.map((l) => [l.id, listBloc.get(l.id) ?? null])) as Record<string, string | null>,
     partyBlocs, candidateBlocs,
   };
@@ -324,7 +324,7 @@ const partyLinks = array(shape({ kind: oneOf('partisan', 'neutral'), url: partyL
   confidence: oneOf('high', 'medium') }));
 const party = shape({ id: string, nameHe: string, nameEn: string, color: optional(string), logo: optional(logo), links: optional(partyLinks) });
 const candidates: Check = (x) => array(candidate)(x) && new Set((x as SimCandidate[]).map((c) => c.id)).size === (x as SimCandidate[]).length;
-const bloc = shape({ id: string, nameHe: string, nameEn: string, color: string });
+const bloc = shape({ id: string, nameHe: string, nameEn: string, appDefined: optional(boolean), color: string });
 const agreement = shape({ id: string, members: uniqueStrings, enabled: boolean });
 const listFields = shape({ id: string, originIds: uniqueStrings, letters: string, nameHe: string, shortHe: string,
   shortEn: nullable(string), color: string, bloc: nullable(string), votes: whole, withdrawn: boolean,
@@ -349,8 +349,8 @@ const rules = shape(ruleFields);
 const partial = (fields: Record<string, Check>): Check => (x) => record(x) && Object.entries(x).every(([k, v]) => Object.hasOwn(fields, k) && fields[k](v));
 const stringMap = (value: Check): Check => (x) => record(x) && Object.values(x).every(value);
 const strings = array(string);
-const blocScheme = shape({ id: string, kind: oneOf('government', 'parliamentary', 'pre-election'), nameHe: string, nameEn: string, date: optional(string),
-  blocs: array(shape({ id: string, nameHe: string, nameEn: string, color: string, lists: strings, parties: strings, candidates: strings })) });
+const blocScheme = shape({ appDefined: optional(boolean), id: string, kind: oneOf('government', 'parliamentary', 'pre-election'), nameHe: string, nameEn: string, date: optional(string),
+  blocs: array(shape({ id: string, nameHe: string, nameEn: string, appDefined: optional(boolean), color: string, lists: strings, parties: strings, candidates: strings })) });
 const coalition = shape({ in: uniqueStrings, out: uniqueStrings });
 const partSnapshotCheck = shape({ familyDefinition: optional(validFamily), validVotes: optional(whole), lists: optional(array(list)), registered: optional(whole), invalid: optional(whole), factionSplits: optional(uniqueStrings), blocs: optional(array(bloc)), blocSchemeId: optional(nullable(string)), customGroupingName: optional(string), partyBlocs: optional(stringMap(nullable(string))), candidateBlocs: optional(stringMap(nullable(string))), listBlocs: optional(stringMap(nullable(string))), agreements: optional(array(agreement)), rules: optional(rules), mode: optional(oneOf('historical', 'experimental')), coalition: optional(coalition) });
 const actionFields: Record<Action['type'], Check> = {

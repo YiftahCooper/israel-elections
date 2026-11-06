@@ -1,3 +1,4 @@
+import { groupingName, appGroupingExplanation } from '../groupingName.ts';
 import { EditMarker } from './EditMarker.tsx';
 import { useDisclosure } from './Feature.tsx';
 // A joint list's constituent parties (decision 0087): who holds its seats, which bloc each party sits in,
@@ -29,7 +30,7 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
   const held = (id: string) => elected.filter((c) => c.partyId === id).length;
   const unknownElected = elected.filter((c) => !c.partyId || !parties.some((p) => p.id === c.partyId)).length;
   const name = (p: { nameHe: string; nameEn: string }) => (lang === 'he' ? p.nameHe : p.nameEn);
-  const blocName = (id: string | null | undefined) => { const b = s.blocs.find((x) => x.id === id); return b ? name(b) : L('no bloc', 'ללא גוש'); };
+  const blocName = (id: string | null | undefined) => { const b = s.blocs.find((x) => x.id === id); return b ? groupingName(b, lang) : L('no bloc', 'ללא גוש'); };
 
   // the default assumption: each party's share of the list's seated members (else of its named candidates)
   const defaults = useMemo(() => {
@@ -89,7 +90,7 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
               <select aria-label={L(`Bloc of ${p.nameEn}`, `הגוש של ${p.nameHe}`)} value={s.partyBlocs && p.id in s.partyBlocs ? s.partyBlocs[p.id] ?? '__none' : '__list'}
                 onChange={(e) => { const v = e.target.value; dispatch(v === '__list' ? { type: 'setPartyBloc', partyId: p.id, bloc: null, inherit: true } : { type: 'setPartyBloc', partyId: p.id, bloc: v === '__none' ? null : v }); }}>
                 <option value="__list" title={blocName(l.bloc)}>{L('As the list', 'כמו הרשימה')}</option>
-                {s.blocs.map((b) => <option key={b.id} value={b.id}>{name(b)}</option>)}
+                {s.blocs.map((b) => <option key={b.id} value={b.id} title={b.appDefined ? appGroupingExplanation(lang) : undefined}>{groupingName(b, lang)}</option>)}
                 <option value="__none">{L('No bloc', 'ללא גוש')}</option>
               </select>
             ) : s.blocs.length > 0 ? <span className="tiny muted">{blocName(s.partyBlocs && p.id in s.partyBlocs ? s.partyBlocs[p.id] : l.bloc)}</span> : <span />}

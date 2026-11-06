@@ -1,3 +1,4 @@
+import { groupingName, appGroupingExplanation } from '../groupingName.ts';
 import { cachedAnalysis } from '../analysisCache.ts';
 import { SeatDelta } from './SeatDelta.tsx';
 import { PartyName } from './PartyName.tsx';
@@ -359,7 +360,7 @@ function BlocFlip({ s, r }: { s: Scenario; r: AllocationResult }) {
     <div>
       <h3>{L('Votes to flip a majority', 'קולות להיפוך הרוב')} <Info title={L('Votes to flip a majority', 'קולות להיפוך הרוב')}>{L(`The fewest votes moving from one list to another that give the bloc a majority (${majority} of ${s.rules.seats}), or end it. Every pair of a list inside and a list outside the bloc is searched, among lists with at least 0.5% of the votes, by the bloc assignment shown; each list's seats count for the list's own bloc.`, `מספר הקולות הקטן ביותר שעוברים מרשימה אחת לאחרת ונותנים לגוש רוב (${majority} מתוך ${s.rules.seats}), או מבטלים אותו. נבדק כל זוג של רשימה בגוש ורשימה מחוצה לו, מבין הרשימות עם 0.5% מהקולות לפחות, לפי השיוך לגושים המוצג; המנדטים של כל רשימה נספרים לגוש של הרשימה.`)}</Info></h3>
       <div className="row">
-        <ChoicePicker label={L('Bloc', 'גוש')} value={bid} onChange={setPicked} options={s.blocs.map(b => ({ value: b.id, label: lang === 'he' ? b.nameHe : b.nameEn, preview: <span className="swatch" style={{ background: b.color }} /> }))} />
+        <ChoicePicker label={L('Bloc', 'גוש')} value={bid} onChange={setPicked} options={s.blocs.map(b => ({ value: b.id, label: groupingName(b, lang), title: b.appDefined ? appGroupingExplanation(lang) : undefined, preview: <span className="swatch" style={{ background: b.color }} /> }))} />
         {meter(seats)}
         <span className="small"><bdi dir="ltr">{seats} / {majority}</bdi> {seats >= majority ? L('(has a majority)', '(יש רוב)') : L('(no majority)', '(אין רוב)')}</span>
       </div>
