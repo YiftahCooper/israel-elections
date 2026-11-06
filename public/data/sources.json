@@ -2634,8 +2634,8 @@
   "description": "Reviewed national transcription; source and printed page references retained in JSON.",
   "method": "manual-transcription",
   "retrievedAt": "2026-11-03T16:34:32.905Z",
-  "bytes": 4901,
-  "sha256": "c74a96838674b8bd46c53aca6c39b92d25f01bfd71ddea32006527778f126a1a"
+  "bytes": 5268,
+  "sha256": "d696b8598add75a72c4b96366c6291a7742578df7a6e9731ef5b7790808d55c0"
  },
  {
   "id": "k13-rosters-reviewed",
@@ -2646,8 +2646,8 @@
   "description": "Reviewed rosters transcription; source and printed page references retained in JSON.",
   "method": "manual-transcription",
   "retrievedAt": "2026-11-03T16:34:32.905Z",
-  "bytes": 19847,
-  "sha256": "5f6a4b6ba79e7ac448999c2ab9ee80f57dc2419eb3d9bdc1b6af509e5532f7cf"
+  "bytes": 20204,
+  "sha256": "a178b3291d2a43fc8c02a2143a1858e1edd5a2feb164c30ed721dd34bf43de32"
  },
  {
   "id": "k13-elected-reviewed",
@@ -2659,7 +2659,7 @@
   "method": "manual-transcription",
   "retrievedAt": "2026-11-03T16:34:32.905Z",
   "bytes": 7347,
-  "sha256": "4cece71a5a4626d0d36649bad3646221903c9a701c689200a7548c567724cd24"
+  "sha256": "ac619c9060064059a2abb904f60fe742773ffa7be5d6dc9da34f34b8b33ad75d"
  },
  {
   "id": "k14-national-reviewed",

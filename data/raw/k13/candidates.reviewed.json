@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "k13",
   "sourceId": "k13-candidates-gazette",
-  "reviewedOn": "2026-11-03",
+  "reviewedOn": "2026-11-06",
   "note": "Release standard: contiguous registered prefixes include every elected name in section 4 of the results gazette. Only k14 Third Way is a full roster; later ranks elsewhere are not transcribed. Original registered ranks are preserved, including names omitted from the elected notice; candidateRanks in elected.reviewed.json explicitly reconciles those omissions. No withdrawal date is inferred from omission.",
   "lists": [
     {
@@ -60,7 +60,7 @@
         },
         {
           "rank": 10,
-          "nameHe": "זווילי נסים",
+          "nameHe": "זוילי נסים",
           "page": 3620
         },
         {
@@ -352,7 +352,7 @@
         },
         {
           "rank": 3,
-          "nameHe": "גוזנסקי תמר",
+          "nameHe": "גוז׳נסקי תמר",
           "page": 3629
         }
       ],
@@ -622,7 +622,7 @@
         },
         {
           "rank": 7,
-          "nameHe": "פורז פורמנטיר אברהם",
+          "nameHe": "פורז פוזמנטיר אברהם",
           "page": 3638
         },
         {
@@ -671,7 +671,7 @@
       "candidates": [
         {
           "rank": 1,
-          "nameHe": "דראושה עבד-אל-והאב",
+          "nameHe": "דראושה עבד-אלוהאב",
           "page": 3642
         },
         {
@@ -808,6 +808,10 @@
       "from": "אור אריה",
       "to": "אור אורי",
       "evidence": "Candidate notice YP 4017 p. 3620 (k13-candidates-gazette PDF page 2) prints \"אור אורי\" (a stray dot over the א), as does the results notice YP 4021 p. 3776. The \"given-name variant\" accepted in decision 0084 was a misreading; the exception is removed."
+    },
+    {
+      "reviewedOn": "2026-11-06",
+      "evidence": "YP 4017 pp. 3620, 3629, 3638, 3642 and YP 4021 pp. 3776–3777: \"זוילי נסים\", \"גוז׳נסקי תמר\", \"פורז פוזמנטיר אברהם\", \"דראושה עבד-אלוהאב\". Registered בן-אלישר is retained; results בן אלישר differs only in punctuation."
     }
   ]
 }

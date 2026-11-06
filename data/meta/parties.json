@@ -350,7 +350,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k13.json",
-      "sha256": "92643f881b9e43ed4e3e55ddae9558c649c4193f9bfaa9ac91e54a70d70ae9fe",
+      "sha256": "e78587d81946a60b7b0d7e596b2c1e84c6b004520197c7cc4f41f6f849fcf282",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k14": {
@@ -3017,7 +3017,7 @@
         {
           "date": "1992-06-23",
           "datePrecision": "day",
-          "nameHe": "מפד״ל חזית דתית לאומית - המזרחי הפועל המזרחי",
+          "nameHe": "מפד״ל, חזית דתית לאומית - המזרחי, הפועל המזרחי",
           "nameEn": "NRP",
           "sources": [
             "k13",
@@ -6566,7 +6566,7 @@
         {
           "date": "1992-06-23",
           "datePrecision": "day",
-          "nameHe": "תחיה",
+          "nameHe": "התחיה",
           "nameEn": "Tehiya",
           "sources": [
             "k13",
@@ -9389,13 +9389,13 @@
     {
       "id": "vehicle-13-מרצ",
       "entityType": "alliance",
-      "nameHe": "מרצ - ישראל הדמוקרטית - רצ מפם שינוי",
+      "nameHe": "מרצ - ישראל הדמוקרטית - רצ, מפם, שינוי",
       "nameEn": "Meretz",
       "names": [
         {
           "date": "1992-06-23",
           "datePrecision": "day",
-          "nameHe": "מרצ - ישראל הדמוקרטית - רצ מפם שינוי",
+          "nameHe": "מרצ - ישראל הדמוקרטית - רצ, מפם, שינוי",
           "nameEn": "Meretz",
           "sources": [
             "k13"
@@ -9667,7 +9667,7 @@
       "externalIds": {}
     },
     {
-      "id": "vehicle-13-קנ",
+      "id": "vehicle-13-קן",
       "entityType": "electoral-vehicle",
       "nameHe": "המפלגה הליברלית החדשה בראשות יצחק מודעי",
       "nameEn": "New Liberal Party",
@@ -9733,14 +9733,14 @@
     {
       "id": "vehicle-13-ד",
       "entityType": "electoral-vehicle",
-      "nameHe": "התנועה הלאומית הדמוקרטית ועליה",
-      "nameEn": "National Democratic Movement and Aliyah",
+      "nameHe": "התנועה הלאומית לדמוקרטיה ועליה",
+      "nameEn": "National Movement for Democracy and Aliyah",
       "names": [
         {
           "date": "1992-06-23",
           "datePrecision": "day",
-          "nameHe": "התנועה הלאומית הדמוקרטית ועליה",
-          "nameEn": "National Democratic Movement and Aliyah",
+          "nameHe": "התנועה הלאומית לדמוקרטיה ועליה",
+          "nameEn": "National Movement for Democracy and Aliyah",
           "sources": [
             "k13",
             "proposal"
@@ -9765,13 +9765,13 @@
     {
       "id": "vehicle-13-ק",
       "entityType": "electoral-vehicle",
-      "nameHe": "גימלאים עולים קשישים בישראל",
+      "nameHe": "גימלאים, עולים וקשישים",
       "nameEn": "Pensioners, Immigrants and Elderly",
       "names": [
         {
           "date": "1992-06-23",
           "datePrecision": "day",
-          "nameHe": "גימלאים עולים קשישים בישראל",
+          "nameHe": "גימלאים, עולים וקשישים",
           "nameEn": "Pensioners, Immigrants and Elderly",
           "sources": [
             "k13",
@@ -9795,15 +9795,15 @@
       "externalIds": {}
     },
     {
-      "id": "vehicle-13-נז",
+      "id": "vehicle-13-נד",
       "entityType": "electoral-vehicle",
-      "nameHe": "תנועת נפגעי משכנתאות חסרי דיור ועולים משוחררים",
+      "nameHe": "תנועת נפגעי משכנתאות, חסרי דיור וחיילים משוחררים",
       "nameEn": "Mortgage Victims",
       "names": [
         {
           "date": "1992-06-23",
           "datePrecision": "day",
-          "nameHe": "תנועת נפגעי משכנתאות חסרי דיור ועולים משוחררים",
+          "nameHe": "תנועת נפגעי משכנתאות, חסרי דיור וחיילים משוחררים",
           "nameEn": "Mortgage Victims",
           "sources": [
             "k13",
@@ -9861,13 +9861,13 @@
     {
       "id": "vehicle-13-יז",
       "entityType": "electoral-vehicle",
-      "nameHe": "התורה הארץ בראשות הרב משה לוינגר",
+      "nameHe": "התורה והארץ בראשות הרב משה לוינגר",
       "nameEn": "Torah and Land",
       "names": [
         {
           "date": "1992-06-23",
           "datePrecision": "day",
-          "nameHe": "התורה הארץ בראשות הרב משה לוינגר",
+          "nameHe": "התורה והארץ בראשות הרב משה לוינגר",
           "nameEn": "Torah and Land",
           "sources": [
             "k13",
@@ -9923,7 +9923,7 @@
       "externalIds": {}
     },
     {
-      "id": "vehicle-13-נס",
+      "id": "vehicle-13-נכ",
       "entityType": "electoral-vehicle",
       "nameHe": "מפלגת נשים",
       "nameEn": "Women’s Party",
@@ -9957,13 +9957,13 @@
     {
       "id": "vehicle-13-יד",
       "entityType": "electoral-vehicle",
-      "nameHe": "התקוה - תנועה חברתית לרווחה בראשות צ׳רלי ביטון",
+      "nameHe": "התקוה - תנועה חברתית לוחמת בראשות צ׳רלי ביטון",
       "nameEn": "Hatikva",
       "names": [
         {
           "date": "1992-06-23",
           "datePrecision": "day",
-          "nameHe": "התקוה - תנועה חברתית לרווחה בראשות צ׳רלי ביטון",
+          "nameHe": "התקוה - תנועה חברתית לוחמת בראשות צ׳רלי ביטון",
           "nameEn": "Hatikva",
           "sources": [
             "k13",
@@ -10021,13 +10021,13 @@
     {
       "id": "vehicle-13-כי",
       "entityType": "electoral-vehicle",
-      "nameHe": "תל״י התנועה להתחדשות ישראל",
+      "nameHe": "תל״י תנועה להתחדשות ישראל",
       "nameEn": "Israeli Renewal Movement",
       "names": [
         {
           "date": "1992-06-23",
           "datePrecision": "day",
-          "nameHe": "תל״י התנועה להתחדשות ישראל",
+          "nameHe": "תל״י תנועה להתחדשות ישראל",
           "nameEn": "Israeli Renewal Movement",
           "sources": [
             "k13",
@@ -10053,14 +10053,14 @@
     {
       "id": "vehicle-13-זה",
       "entityType": "electoral-vehicle",
-      "nameHe": "ציפר",
-      "nameEn": "Tziper",
+      "nameHe": "ציפור",
+      "nameEn": "Tzipor",
       "names": [
         {
           "date": "1992-06-23",
           "datePrecision": "day",
-          "nameHe": "ציפר",
-          "nameEn": "Tziper",
+          "nameHe": "ציפור",
+          "nameEn": "Tzipor",
           "sources": [
             "k13",
             "proposal"
@@ -27857,8 +27857,8 @@
     },
     {
       "electionId": "k13",
-      "listId": "13-קנ",
-      "partyId": "vehicle-13-קנ",
+      "listId": "13-קן",
+      "partyId": "vehicle-13-קן",
       "role": "singleton",
       "sources": [
         "k13",
@@ -27909,8 +27909,8 @@
     },
     {
       "electionId": "k13",
-      "listId": "13-נז",
-      "partyId": "vehicle-13-נז",
+      "listId": "13-נד",
+      "partyId": "vehicle-13-נד",
       "role": "singleton",
       "sources": [
         "k13",
@@ -27961,8 +27961,8 @@
     },
     {
       "electionId": "k13",
-      "listId": "13-נס",
-      "partyId": "vehicle-13-נס",
+      "listId": "13-נכ",
+      "partyId": "vehicle-13-נכ",
       "role": "singleton",
       "sources": [
         "k13",

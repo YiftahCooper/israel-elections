@@ -56,8 +56,9 @@ describe('official English names of Knesset members', () => {
         if (!c.nameEn) continue;
         n++;
         const sourceName = bySite.get(m!.knesset!.siteId!);
-        // k18 audit: retain spelling, normalize source backticks and repeated whitespace.
-        expect(c.nameEn, c.id).toBe(e.id === 'k18' ? sourceName?.replaceAll('`', "'").replace(/\s+/g, ' ').trim() : sourceName);
+        // k18 and k13 audits: retain spelling, normalize source backticks and repeated whitespace (k13: Ra'anan Cohen only).
+        const normalized = sourceName?.replaceAll('`', "'").replace(/\s+/g, ' ').trim();
+        expect(c.nameEn, c.id).toBe(e.id === 'k18' || c.id === '13-אמת#22' ? normalized : sourceName);
         expect(c.nameEn, c.id).not.toMatch(/[֐-׿]/);
       }
     }
