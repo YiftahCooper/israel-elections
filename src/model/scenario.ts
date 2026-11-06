@@ -33,6 +33,13 @@ export interface SimCandidate {
   bio?: CandidateBio;
 }
 
+export interface SyntheticIdentity {
+  kind: 'merge' | 'split' | 'new';
+  parts: { letters: string; color: string }[];
+  part?: number;
+  total?: number;
+}
+
 export interface SimList {
   id: string; // dataset list id for historical lists; `sim-…` for lists created by merge/split/add
   originIds: string[]; // historical lists this list derives from
@@ -56,6 +63,8 @@ export interface SimList {
   parties?: PartyDef[];
   /** the list's logo at this election (ListRecord.logo) */
   logo?: LogoRef;
+  /** Scenario artwork, never a verified election logo. */
+  synthetic?: SyntheticIdentity;
   links?: PartyLink[];
 }
 
@@ -319,6 +328,7 @@ const bloc = shape({ id: string, nameHe: string, nameEn: string, color: string }
 const agreement = shape({ id: string, members: uniqueStrings, enabled: boolean });
 const listFields = shape({ id: string, originIds: uniqueStrings, letters: string, nameHe: string, shortHe: string,
   shortEn: nullable(string), color: string, bloc: nullable(string), votes: whole, withdrawn: boolean,
+  synthetic: optional(shape({ kind: oneOf('merge', 'split', 'new'), parts: array(shape({ letters: string, color: string })), part: optional(whole), total: optional(whole) })),
   heldVotes: optional(whole), sponsorsHe: string, parties: optional(array(party)), logo: optional(logo), links: optional(partyLinks) });
 const list: Check = (x) => listFields(x) && candidates((x as Record<string, unknown>).candidates);
 const ruleFields: Record<keyof SimRules, Check> = {

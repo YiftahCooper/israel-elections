@@ -1,6 +1,8 @@
 import { Floating, useHoverBridge } from '../floating.tsx';
 import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
 import { GLOSSARY, useL, useLang, type GlossaryTerm } from '../i18n.ts';
+import { syntheticIconUrl } from '../syntheticIcon.ts';
+import type { SyntheticIdentity } from '../../model/scenario.ts';
 import type { LogoRef } from '../../data/schema.ts';
 import { parseIntInput } from '../format.ts';
 
@@ -44,9 +46,16 @@ export function Info({ title, children, term }: { title?: string; children?: Rea
   );
 }
 
-export function Slip({ letters, color, size, logo, name }: { name?: string; letters: string; color: string; size?: 'sm' | 'lg'; logo?: LogoRef }) {
+export function Slip({ letters, color, size, logo, name, synthetic }: { name?: string; letters: string; color: string; size?: 'sm' | 'lg'; logo?: LogoRef; synthetic?: SyntheticIdentity }) {
   const lang = useLang();
   const label = name ?? `${lang === 'he' ? 'אותיות הפתק' : 'ballot letters'} ${letters}`;
+  const generated = syntheticIconUrl({ letters, color, synthetic });
+  if (generated) {
+    const kind = synthetic!.kind;
+    const note = lang === 'he' ? (kind === 'merge' ? 'איחוד רשימות' : kind === 'split' ? `חלק ${synthetic!.part}/${synthetic!.total}` : 'רשימה חדשה')
+      : (kind === 'merge' ? 'Merged lists' : kind === 'split' ? `Part ${synthetic!.part}/${synthetic!.total}` : 'New list');
+    return <span className={`slip synthetic ${size ?? ''}`} style={{ ['--c' as string]: color }} aria-label={`${label} · ${note}`} title={`${label} · ${note}`}><img src={generated} alt="" /></span>;
+  }
   // the logo the list used at this election, when a verified local copy is held; the ballot letters stay
   // as its accessible name and a small caption, and the credit travels with the image
   if (logo) return (

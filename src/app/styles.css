@@ -1075,7 +1075,6 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 }
 
 /* Party identity when no verified emblem is held: readable initials, never a bare square. */
-.slip.monogram { color: var(--ink); background: var(--surface); border: 2px solid var(--c); box-shadow: inset 0 -4px 0 var(--c); font-size: 12px; font-weight: 700; direction: ltr; }
 .slip.logo { position: relative; }
 
 /* Stable header slots and selection weights: changing content never reflows sibling controls. */
@@ -1103,8 +1102,6 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
   .band .election-about summary { padding: 7px 4px; }
 }
 
-.slip.monogram { display: inline-flex; flex-direction: column; gap: 2px; }
-.slip.monogram small { font-size: 9px; font-weight: 400; }
 
 @media (min-width: 1200px) { .band .election { max-inline-size: 220px; } }
 @media (min-width: 761px) and (max-width: 1399px) { .band { flex-wrap: wrap; } }
@@ -1124,3 +1121,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
   .band-levels { gap: 4px; }
   .band .band-custom { padding-inline: 6px; }
 }
+
+/* Synthetic ballot artwork shares the real logo footprint, including compact contexts. */
+.slip.synthetic { padding: 0; overflow: hidden; background: #fff; }
+.slip.synthetic img { display: block; width: 100%; height: 100%; object-fit: fill; }
+.slip.sm { width: 44px; height: 24px; box-sizing: border-box; font-size: 12px; }

@@ -190,7 +190,7 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
                           <button type="button" className="bp-chip-main" aria-pressed={chosen} disabled={u.kind === 'member'}
                             title={u.kind === 'member' ? L('Placed member by member by the sourced grouping; moves with the list', 'שובצו חבר אחר חבר לפי החלוקה המתועדת; זזים עם הרשימה') : undefined}
                             onClick={() => setPicked(chosen ? null : u)} {...(u.kind === 'member' ? {} : dragProps(u))}>
-                            <Slip size="sm" letters={p ? '' : l.letters} name={p ? name(p) : listLabel(l,lang)} color={p?.color ?? l.color} logo={p ? p.logo : l.logo} />
+                            <Slip size="sm" letters={p ? '' : l.letters} name={p ? name(p) : listLabel(l,lang)} color={p?.color ?? l.color} logo={p ? p.logo : l.logo} synthetic={p ? undefined : l.synthetic} />
                             <span className="bp-chip-name">{chipLabel(u)}<EditMarker s={s} path={u.kind === 'party' ? ['partyBlocs', u.partyId] : ['lists', u.listId, 'bloc']} /></span>
                             <b className="tabnum">{u.n}</b>
                           </button>

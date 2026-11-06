@@ -10,7 +10,7 @@ import { allocate } from '../../engine/allocate.ts';
 import { compareAllocations } from '../../engine/analysis.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import { applyAction, apportion } from '../../model/actions.ts';
-import { toEngineInput, type Action, type Scenario, type SimRules } from '../../model/scenario.ts';
+import { toEngineInput, type Action, type Scenario, type SimList, type SimRules } from '../../model/scenario.ts';
 import { allocationOf, listLabel, referenceLabel } from '../derive.ts';
 import { useL, useLang, type Lang } from '../i18n.ts';
 import { fmtInt, signed } from '../format.ts';
@@ -54,7 +54,7 @@ export function Structure({ s, r, base }: { s: Scenario; r: AllocationResult; ba
   );
 }
 
-type Side = { id: string; label: string; color: string; seats: number; withdrawn: boolean };
+type Side = { list: SimList; id: string; label: string; color: string; seats: number; withdrawn: boolean };
 type Row = { key: string; from: Side[]; to: Side[]; was: number; now: number; structural: boolean; withdrew: boolean; returned: boolean };
 
 /** Seat changes from one scenario to another, grouped by connected origins (as Compare and the summary do): a merged
@@ -62,7 +62,7 @@ type Row = { key: string; from: Side[]; to: Side[]; was: number; now: number; st
 function changeRows(aS: Scenario, aR: AllocationResult, bS: Scenario, bR: AllocationResult, lang: Lang): Row[] {
   const side = (S: Scenario, R: AllocationResult, id: string): Side => {
     const l = S.lists.find((x) => x.id === id)!;
-    return { id, label: listLabel(l, lang), color: l.color, seats: R.lists.find((x) => x.id === id)?.seats ?? 0, withdrawn: l.withdrawn };
+    return { list: l, id, label: listLabel(l, lang), color: l.color, seats: R.lists.find((x) => x.id === id)?.seats ?? 0, withdrawn: l.withdrawn };
   };
   return compareAllocations(aR, aS.lists, bR, bS.lists).map((g) => {
     const from = g.aIds.map((id) => side(aS, aR, id)), to = g.bIds.map((id) => side(bS, bR, id));
@@ -81,7 +81,7 @@ function ChangeRows({ rows, open }: { rows: Row[]; open?: boolean }) {
   const max = Math.max(5, ...rows.map((x) => Math.abs(x.now - x.was)));
   // each list reads in the page's language (swatch, name, seats); only the flow between lists runs left to right
   const part = (p: Side, seats = true) => {
-    const body = <><span className="swatch" style={{ background: p.color }} /><bdi>{p.label}</bdi>{seats && <span className="muted tabnum">{p.seats}</span>}</>;
+    const body = <><span aria-hidden="true"><Slip {...p.list} name={p.label} size="sm" /></span><bdi>{p.label}</bdi>{seats && <span className="muted tabnum">{p.seats}</span>}</>;
     return open && !p.withdrawn
       ? <button key={p.id} type="button" dir={dir} className="st-part st-link" title={L('Show on the Overview', 'הצגה בתמונת המצב')}
         onClick={() => setState({ selectedListId: p.id, tool: 'board' })}>{body}</button>

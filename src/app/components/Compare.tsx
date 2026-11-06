@@ -1,5 +1,5 @@
 import { CandidateName } from './CandidateName.tsx';
-import { Info } from './ui.tsx';
+import { Info, Slip } from './ui.tsx';
 import { blocDisplayOrder } from '../blocOrder.ts';
 import { useActiveReference } from '../useActiveReference.ts';
 import { baselineOf, referenceLabel } from '../derive.ts';
@@ -109,6 +109,7 @@ function ScenarioCompare({ s, r, base, ds }: { s: Scenario; r: AllocationResult;
   const a = other, ar = allocationOf(other);
   const groups = useMemo(() => comparisonGroups(s, r, a, ar), [ar, a, r, s]);
 
+  const groupIcons = (g: { bIds: string[]; aIds: string[] }) => (g.bIds.length ? g.bIds.map(id => s.lists.find(l => l.id === id)) : g.aIds.map(id => a.lists.find(l => l.id === id))).filter(l => !!l).map(l => <span key={l.id} aria-hidden="true"><Slip {...l} name={listLabel(l, lang)} size="sm" /></span>);
   const gName = (ids: string[], sc: Scenario) => ids.map((id) => { const l = sc.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : id; }).join(' + ') || '—';
   const changed = groups.filter((g) => g.seatsA !== g.seatsB).sort((x, y) => (y.seatsB - y.seatsA) - (x.seatsB - x.seatsA));
   const gainers = changed.filter((g) => g.seatsB > g.seatsA);
@@ -175,7 +176,7 @@ function ScenarioCompare({ s, r, base, ds }: { s: Scenario; r: AllocationResult;
               const d = g.seatsB - g.seatsA;
               return (
                 <li key={g.key}>
-                  <span className="cmp-label"><span className="swatch" style={{ background: colorOfGroup(g) }} /> {labelOf(g)} <bdi className="muted" dir="ltr">{g.seatsA} → {g.seatsB}</bdi></span>
+                  <span className="cmp-label">{groupIcons(g)} {labelOf(g)} <bdi className="muted" dir="ltr">{g.seatsA} → {g.seatsB}</bdi></span>
                   <span className="cmp-neg">{d < 0 && <i style={{ width: `${(-d / maxChange) * 100}%`, background: 'var(--ink)' }} />}</span>
                   <span className="cmp-axis" aria-hidden />
                   <span className="cmp-pos">{d > 0 && <i style={{ width: `${(d / maxChange) * 100}%`, background: 'var(--ink)' }} />}</span>
@@ -211,7 +212,7 @@ function ScenarioCompare({ s, r, base, ds }: { s: Scenario; r: AllocationResult;
 
       <details className="cmp-section" open={advanced}>
         <summary className="small" onClick={steady.onClick}>{L('Votes & seats by list', 'קולות ומנדטים לפי רשימה')}</summary>
-        <SeatDumbbell rows={[...groups].sort((x, y) => y.seatsB - x.seatsB || y.seatsA - x.seatsA).filter((g) => g.seatsA || g.seatsB).map((g) => ({ key: g.key, a: g.seatsA, b: g.seatsB, label: labelOf(g), color: colorOfGroup(g) }))} nameA={nameA} nameB={nameB} />
+        <SeatDumbbell rows={[...groups].sort((x, y) => y.seatsB - x.seatsB || y.seatsA - x.seatsA).filter((g) => g.seatsA || g.seatsB).map((g) => ({ key: g.key, a: g.seatsA, b: g.seatsB, label: labelOf(g), color: colorOfGroup(g), icon: groupIcons(g) }))} nameA={nameA} nameB={nameB} />
         <div className="tablewrap" tabIndex={0} role="region" aria-label={L('Scrollable table', 'טבלה נגללת')}>
           <table className="tbl">
             <thead><tr>
@@ -360,7 +361,7 @@ function BlocBarRow({ sums, title, sc }: { sums: Record<string, number>; title: 
 /** Seats before → after for every list, one row each (a dumbbell): the hollow dashed dot is the baseline, the filled dot
  *  the result, joined in neutral ink when they differ. Rows never collide, so equal seat counts stay readable.
  *  The track reads left to right in both languages; only the names follow the page direction. */
-export function SeatDumbbell({ rows, nameA, nameB }: { rows: { key: string; a: number; b: number; label: string; color: string }[]; nameA: string; nameB: string }) {
+export function SeatDumbbell({ rows, nameA, nameB }: { rows: { key: string; a: number; b: number; label: string; color: string; icon?: ReactNode }[]; nameA: string; nameB: string }) {
   const L = useL();
   const max = Math.max(1, ...rows.flatMap((g) => [g.a, g.b]));
   const step = max > 40 ? 20 : max > 16 ? 10 : 5;
@@ -374,7 +375,7 @@ export function SeatDumbbell({ rows, nameA, nameB }: { rows: { key: string; a: n
           const changed = g.a !== g.b, lo = Math.min(g.a, g.b);
           return (
             <li key={g.key} className={changed ? 'changed' : ''} title={`${g.label}: ${g.a} → ${g.b}`}>
-              <span className="cmp-label"><span className="swatch" style={{ background: g.color }} /> {g.label}</span>
+              <span className="cmp-label">{g.icon ?? <span className="swatch" style={{ background: g.color }} />} {g.label}</span>
               <span className="db-track" aria-hidden>
                 {ticks.map((t) => <span key={t} className="db-tick" style={{ left: at(t) }} />)}
                 {changed && <i className="db-seg" style={{ left: at(lo), width: `${(Math.abs(g.b - g.a) / max) * 100}%` }} />}
