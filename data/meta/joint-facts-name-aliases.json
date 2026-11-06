@@ -1,0 +1,33 @@
+{
+  "note": "Explicit candidate-scoped aliases reviewed 2026-11-06 against retained rank-1 OData person records and existing high-confidence biography identities. Used only after ID and normalized exact name.",
+  "aliases": [
+    {
+      "candidateId": "23-מחל#11",
+      "nameHe": "דיכטר אברהם משה",
+      "personId": 4395,
+      "source": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person(4395)",
+      "note": "Reviewed against retained data/raw/k23/knesset-odata-members.json: דיכטר אבי; retained data/meta/bios/k23.json identity: elected; Knesset 23 member, name matches (2.5). Candidate-scoped full-name variant, never a global nickname substitution."
+    },
+    {
+      "candidateId": "25-כן#3",
+      "nameHe": "איזנקוט גד",
+      "personId": 30836,
+      "source": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person(30836)",
+      "note": "Reviewed against retained data/raw/k25/knesset-odata-members.json: איזנקוט גדי; retained data/meta/bios/k25.json identity: elected; Knesset 25 member, name matches (2.5). Candidate-scoped full-name variant, never a global nickname substitution."
+    },
+    {
+      "candidateId": "25-ט#11",
+      "nameHe": "מעוז אביגדור",
+      "personId": 30814,
+      "source": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person(30814)",
+      "note": "Reviewed against retained data/raw/k25/knesset-odata-members.json: מעוז אבי; retained data/meta/bios/k25.json identity: elected; Knesset 25 member, name matches (2.5). Candidate-scoped full-name variant, never a global nickname substitution."
+    },
+    {
+      "candidateId": "23-פה#12",
+      "nameHe": "טרופר יחיאל משה",
+      "personId": 30683,
+      "source": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_Person(30683)",
+      "note": "Reviewed against retained data/raw/k23/knesset-odata-members.json: טרופר חילי; retained data/meta/bios/k23.json identity: elected; reviewed decision: טרופר יחיאל משה = טרופר חילי (Hili Tropper).. Candidate-scoped full-name variant, never a global nickname substitution."
+    }
+  ]
+}
