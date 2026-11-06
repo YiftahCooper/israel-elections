@@ -6,7 +6,7 @@
   "lists": [
     {
       "letters": "את",
-      "nameHe": "רשימת המערך לאחדות פועלי ישראל, מפלגת פועלי ארץ-ישראל, מפלגת אחדות העבודה פועלי ציון ובלתי מפלגתיים",
+      "nameHe": "רשימת המערך לאחדות פועלי ארץ-ישראל, מפלגת פועלי ארץ-ישראל, מפלגת אחדות העבודה—פועלי ציון ובלתי מפלגתיים",
       "parties": [
         {
           "id": "mapai",
@@ -58,6 +58,14 @@
               "quote": "אחדות העבודה – פועלי ציון: ישראל גלילי, יגאל אלון, משה כרמל, מרדכי ביבי, רות הקטין, זאב צור, משה ארם, גבריאל כהן, אברהם ביטון, [שושנה ארבלי-אלמוזלינו – מחליפה] / מפא\"י: לוי אשכול, קדיש לוז, גולדה מאיר, בכור-שלום שטרית, זלמן ארן, פנחס ספיר, אבא אבן, ... (36 נבחרים ומחליפים)",
               "accessed": "2026-11-04",
               "quoteNote": "Condensed transcription of a member list in the source; \"/\" separates its party headings, \"...\" marks omitted names and [ ] marks editorial notes."
+            },
+            {
+              "url": "https://www.idi.org.il/media/7012/כנסת-6-מערך.pdf",
+              "publisher": "Israel Democracy Institute, annotated YP 1222 candidate list",
+              "kind": "academic",
+              "quote": "מא = מפא״י; א = אחדות העבודה; annotated ranks: 1, 2, 4, 5, 7, 8, 9, 10, 12, 13, 14, 15, 16, 18, 19, 20, 22, 23, 24, 25, 27, 28, 29, 30, 32, 33, 34, 35, 37, 38, 39, 40, 42, 43, 44, 45",
+              "quoteNote": "Project transcription of handwritten party marks next to the candidate ranks; abbreviation expansion is editorial.",
+              "accessed": "2026-11-06"
             }
           ],
           "confidence": "high",
@@ -805,7 +813,8 @@
               ],
               "confidence": "high"
             }
-          ]
+          ],
+          "note": "Rank assignments corroborated by IDI-hosted handwritten annotations to YP 1222. Annotations are academic evidence, not official Gazette text."
         },
         {
           "id": "ahdut-haavoda",
@@ -837,6 +846,14 @@
               "kind": "secondary",
               "quote": "Scan of YP 1222 (17.10.1965) pp. 113-114, list את; handwritten marks distinguish Ahdut HaAvoda candidates (ranks 3, 6, 11, 17, 21, 26, 31, 36, 41, 46, 51, 56) from the rest",
               "accessed": "2026-11-04"
+            },
+            {
+              "url": "https://www.idi.org.il/media/7012/כנסת-6-מערך.pdf",
+              "publisher": "Israel Democracy Institute, annotated YP 1222 candidate list",
+              "kind": "academic",
+              "quote": "מא = מפא״י; א = אחדות העבודה; annotated ranks: 3, 6, 11, 17, 21, 26, 31, 36, 41",
+              "quoteNote": "Project transcription of handwritten party marks next to the candidate ranks; abbreviation expansion is editorial.",
+              "accessed": "2026-11-06"
             }
           ],
           "confidence": "high",
@@ -1118,7 +1135,8 @@
               ],
               "confidence": "medium"
             }
-          ]
+          ],
+          "note": "Rank assignments corroborated by IDI-hosted handwritten annotations to YP 1222. Annotations are academic evidence, not official Gazette text."
         }
       ],
       "unassignedRanks": [],
@@ -1159,6 +1177,14 @@
               "quote": "הכנסת השישית (1965), 26 מנדטים: חרות: מנחם בגין, יוחנן בדר, אריה בן-אליעזר, יעקב מרידור, חיים לנדאו, יוסף שופמן, שמואל תמיר, אליעזר שוסטק, בנימין אבניאל, אסתר רזיאל-נאור, אברהם טיאר, יוסף קרמרמן, אליהו מרידור, חיים כהן-מגורי, מנחם ידיד / המפלגה הליברלית: יוסף ספיר, אלימלך-שמעון רימלט, יוסף סרלין, מרדכי-חיים שטרן, יצחק-הנס קלינגהופר, צבי צימרמן, שניאור זלמן אברמוב, ברוך עוזיאל, שלמה פרלשטיין, אהרן גולדשטיין, יוסף תמיר",
               "accessed": "2026-11-04",
               "quoteNote": "Condensed transcription of a member list in the source; \"/\" separates its party headings, \"...\" marks omitted names and [ ] marks editorial notes."
+            },
+            {
+              "url": "https://www.idi.org.il/media/6442/כנסת-6-גחל.pdf",
+              "publisher": "Israel Democracy Institute, annotated YP 1222 candidate list",
+              "kind": "academic",
+              "quote": "ח = חרות; ל = ליברלים; annotated ranks: 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 24, 25, 26",
+              "quoteNote": "Project transcription of handwritten party marks next to the candidate ranks; abbreviation expansion is editorial.",
+              "accessed": "2026-11-06"
             }
           ],
           "confidence": "high",
@@ -1557,7 +1583,8 @@
               ],
               "confidence": "high"
             }
-          ]
+          ],
+          "note": "Rank assignments corroborated by IDI-hosted handwritten annotations to YP 1222. Annotations are academic evidence, not official Gazette text."
         },
         {
           "id": "liberal-party",
@@ -1584,6 +1611,14 @@
               "quote": "הכנסת השישית (1965), 26 מנדטים: חרות: מנחם בגין, יוחנן בדר, אריה בן-אליעזר, יעקב מרידור, חיים לנדאו, יוסף שופמן, שמואל תמיר, אליעזר שוסטק, בנימין אבניאל, אסתר רזיאל-נאור, אברהם טיאר, יוסף קרמרמן, אליהו מרידור, חיים כהן-מגורי, מנחם ידיד / המפלגה הליברלית: יוסף ספיר, אלימלך-שמעון רימלט, יוסף סרלין, מרדכי-חיים שטרן, יצחק-הנס קלינגהופר, צבי צימרמן, שניאור זלמן אברמוב, ברוך עוזיאל, שלמה פרלשטיין, אהרן גולדשטיין, יוסף תמיר",
               "accessed": "2026-11-04",
               "quoteNote": "Condensed transcription of a member list in the source; \"/\" separates its party headings, \"...\" marks omitted names and [ ] marks editorial notes."
+            },
+            {
+              "url": "https://www.idi.org.il/media/6442/כנסת-6-גחל.pdf",
+              "publisher": "Israel Democracy Institute, annotated YP 1222 candidate list",
+              "kind": "academic",
+              "quote": "ח = חרות; ל = ליברלים; annotated ranks: 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22",
+              "quoteNote": "Project transcription of handwritten party marks next to the candidate ranks; abbreviation expansion is editorial.",
+              "accessed": "2026-11-06"
             }
           ],
           "confidence": "high",
@@ -1855,26 +1890,27 @@
               ],
               "confidence": "high"
             }
-          ]
+          ],
+          "note": "Rank assignments corroborated by IDI-hosted handwritten annotations to YP 1222. Annotations are academic evidence, not official Gazette text."
         }
       ],
       "unassignedRanks": []
     },
     {
-      "letters": "עס",
-      "nameHe": "רשימת תנועת לאורה",
+      "letters": "ענ",
+      "nameHe": "רשימת התנועה לאחוה",
       "englishName": {
-        "label": "Reshimat Tnuat Leora",
+        "label": "Reshimat HaTnua LeAhva",
         "kind": "transliteration",
         "sourceId": "k6-candidates-gazette",
         "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
       }
     },
     {
-      "letters": "כס",
-      "nameHe": "רשימת שלום",
+      "letters": "כנ",
+      "nameHe": "רשימת השלום",
       "englishName": {
-        "label": "Reshimat Shalom",
+        "label": "Reshimat HaShalom",
         "kind": "transliteration",
         "sourceId": "k6-candidates-gazette",
         "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
@@ -1891,7 +1927,7 @@
       }
     },
     {
-      "letters": "סס",
+      "letters": "פש",
       "nameHe": "ישראל הצעירה תנועת ספרדים ובני עדות מזרח",
       "englishName": {
         "label": "Yisrael HaTzeira",
@@ -1982,16 +2018,31 @@
           "accessed": "2026-11-04"
         },
         {
-          "url": "https://he.wikipedia.org/wiki/ממשלת_ישראל_השלוש_עשרה",
-          "publisher": "Hebrew Wikipedia",
-          "kind": "secondary",
-          "quote": "קואליציה: המערך, מפד\"ל, מפ\"ם, ליברלים עצמאיים, פועלי אגודת ישראל, קידמה ופיתוח, שיתוף ואחווה | אופוזיציה: אגודת ישראל, רק\"ח, העולם הזה-כוח חדש, מק\"י",
-          "accessed": "2026-11-04"
+          "url": "https://main.knesset.gov.il/mk/government/documents/gov13.pdf",
+          "publisher": "Knesset, Eshkol government presentation, 12 January 1966",
+          "kind": "official",
+          "quote": "ממשלה חדשה הכוללת את הסיעות: המערך לאחדות פועלי ארץ ישראל, המפלגה הדתית-לאומית, מפלגת הפועלים המאוחדת, המפלגה הליברלית העצמאית ומפלגת פועלי אגודת ישראל.",
+          "accessed": "2026-11-06"
+        },
+        {
+          "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1965/",
+          "publisher": "Israel Democracy Institute",
+          "kind": "academic",
+          "quote": "בקואליציה שהוקמה בסופו של דבר היו חמש סיעות (המערך, המפד\"ל, מפ\"ם, הליברלים העצמאיים ופועלי אגודת ישראל), ויחד עם רשימות המיעוטים היה לממשלה רוב של 75 חברי כנסת.",
+          "accessed": "2026-11-06"
+        },
+        {
+          "url": "https://archives.mod.gov.il/Exhib/sixdayswar/opening/Pages/default.aspx",
+          "publisher": "IDF and Defense Establishment Archive",
+          "kind": "official",
+          "quote": "ב-1 ביוני הורחב הבסיס הקואליציוני של הממשלה, וסיעות גח\"ל ורפ\"י הצטרפו אליה.",
+          "accessed": "2026-11-06"
         }
       ],
       "notes": [
-        "Coalition = lists that joined or supported the government at its formation. Official records give ministers only; support-only lists (e.g. Mapai-affiliated Arab lists) rest on Hebrew Wikipedia.",
-        "Rafi joined on 1 June 1967 and Gahal on 5 June 1967 (Hebrew Wikipedia, הכנסת השישית); not part of the coalition at formation."
+        "Coalition = lists that joined or supported the government at formation (project convention). Eshkol names five governing factions (71 election seats); IDI confirms a majority of 75 with the two affiliated Arab lists (4). These supporting lists had no ministers; 75 is not the 71–41 confidence tally.",
+        "Rafi and Gahal joined in the expansion decided on 1 June 1967 (Defense Archive). The formal ministerial appointments of Dayan, Begin and Yosef Sapir start on 5 June in Knesset OData; these are distinct acts, not conflicting dates.",
+        "The OData tabulation classifies serving MKs at 12 January 1966. Moshe Kol resigned his Knesset seat on 11 January and is correctly one of four NON-MK ministers; it is not a count by party affiliation."
       ],
       "confidence": "high"
     },
@@ -2030,18 +2081,18 @@
       ],
       "sources": [
         {
-          "url": "https://he.wikipedia.org/wiki/קידמה_ופיתוח",
-          "publisher": "Hebrew Wikipedia",
-          "kind": "secondary",
-          "quote": "הייתה מפלגת מיעוטים ששימשה כמפלגת לוויין של מפא\"י והמערך",
-          "accessed": "2026-11-04"
+          "url": "https://www.idi.org.il/policy/parties-and-elections/parties/progress-and-development/",
+          "publisher": "Israel Democracy Institute",
+          "kind": "academic",
+          "quote": "רשימת מיעוטים נלווית למפא\"י (מפלגת לוויין)",
+          "accessed": "2026-11-06"
         },
         {
-          "url": "https://he.wikipedia.org/wiki/שיתוף_ואחווה",
-          "publisher": "Hebrew Wikipedia",
-          "kind": "secondary",
-          "quote": "הייתה מפלגת מיעוטים שהייתה קשורה למפא\"י ומפלגת העבודה, והיוותה ... מפלגת לוויין",
-          "accessed": "2026-11-04"
+          "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1965/",
+          "publisher": "Israel Democracy Institute",
+          "kind": "academic",
+          "quote": "בקואליציה שהוקמה בסופו של דבר היו חמש סיעות (המערך, המפד\"ל, מפ\"ם, הליברלים העצמאיים ופועלי אגודת ישראל), ויחד עם רשימות המיעוטים היה לממשלה רוב של 75 חברי כנסת.",
+          "accessed": "2026-11-06"
         }
       ],
       "notes": [
@@ -2325,5 +2376,8 @@
       ],
       "confidence": "medium"
     }
+  ],
+  "notes": [
+    "Stable opaque list IDs 6-כס, 6-עס and 6-סס are preserved for saved references; ballot letters are כנ, ענ and פש respectively. Never derive a display label from those IDs."
   ]
 }

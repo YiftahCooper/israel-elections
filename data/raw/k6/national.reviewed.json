@@ -1,6 +1,6 @@
 {
   "id": "k6",
-  "reviewedOn": "2026-11-03",
+  "reviewedOn": "2026-11-06",
   "resultsSourceId": "k6-results-gazette",
   "candidateSourceId": "k6-candidates-gazette",
   "pages": {
@@ -23,7 +23,7 @@
   "lists": [
     {
       "letters": "את",
-      "nameHe": "רשימת המערך לאחדות פועלי ישראל, מפלגת פועלי ארץ-ישראל, מפלגת אחדות העבודה פועלי ציון ובלתי מפלגתיים",
+      "nameHe": "רשימת המערך לאחדות פועלי ארץ-ישראל, מפלגת פועלי ארץ-ישראל, מפלגת אחדות העבודה—פועלי ציון ובלתי מפלגתיים",
       "votes": 443379,
       "officialSeats": 45
     },
@@ -59,7 +59,7 @@
     },
     {
       "letters": "יא",
-      "nameHe": "שיתוף ואחווה",
+      "nameHe": "השיתוף והאחוה",
       "votes": 16464,
       "officialSeats": 2
     },
@@ -70,8 +70,8 @@
       "officialSeats": 10
     },
     {
-      "letters": "כס",
-      "nameHe": "רשימת שלום",
+      "letters": "כנ",
+      "nameHe": "רשימת השלום",
       "votes": 5536,
       "officialSeats": 0
     },
@@ -94,13 +94,13 @@
       "officialSeats": 0
     },
     {
-      "letters": "עס",
-      "nameHe": "רשימת תנועת לאורה",
+      "letters": "ענ",
+      "nameHe": "רשימת התנועה לאחוה",
       "votes": 11244,
       "officialSeats": 0
     },
     {
-      "letters": "סס",
+      "letters": "פש",
       "nameHe": "ישראל הצעירה תנועת ספרדים ובני עדות מזרח",
       "votes": 1990,
       "officialSeats": 0
@@ -113,7 +113,7 @@
     },
     {
       "letters": "רא",
-      "nameHe": "קידמה ופתוח",
+      "nameHe": "קדמה ופיתוח",
       "votes": 23430,
       "officialSeats": 2
     },
@@ -133,13 +133,13 @@
       ],
       [
         "כא",
-        "כס"
+        "כנ"
       ]
     ],
     "sourceId": "k6-agreements-gazette",
     "page": 189,
     "pdfPage": 1,
-    "note": "YP 1225 p.189, PDF p.1: the complete signed notice explicitly names Alignment (את) with Progress and Development (קדמה ופתוח, רא), NOT Cooperation and Brotherhood (יא). Second pair כא–כס retained; Peace fails 1%. Corrected after fresh visual inspection; see decision 0069a. Official publication on the disclosed olaw.org.il mirror."
+    "note": "YP 1225 p.189: כא–כנ (רשימת השלום); Peace fails 1%. את–רא is the effective connection. Re-read with YP 1230 p.311 and YP 1222 p.131 on 2026-11-06; supersedes the false כס premise of decision 0069a. Stable list IDs retain the old letter strings as opaque keys."
   },
   "rosters": {
     "completeWinningRosters": false,
@@ -161,5 +161,18 @@
     ],
     "sourceId": "k6-rosters-reviewed"
   },
-  "releaseBlockers": []
+  "releaseBlockers": [],
+  "auditNotes": [
+    {
+      "sourceId": "k6-results-gazette",
+      "quote": "כנ רשימת השלום; ענ רשימת התנועה לאחוה; פש ישראל הצעירה תנועת ספרדים ובני עדות מזרח; רא קדמה ופיתוח",
+      "note": "YP 1230 pp.311–313 governs official names. YP 1222 has קידמה ופיתוח; YP 1225 has קדמה ופתוח. The results notice wins."
+    },
+    {
+      "sourceId": "k1-k7-cbs-national-totals",
+      "quote": "1,499,709",
+      "note": "CEC historical BasicFacts.html also gives 1,499,709. Knesset history and IDI give 1,499,988; prefer the election administrator and CBS statistical series over later summaries; no contemporary register certification recovered.",
+      "url": "https://www.gov.il/apps/elections/heb/history/BasicFacts.html"
+    }
+  ]
 }

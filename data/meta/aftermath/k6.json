@@ -2,11 +2,12 @@
   "schemaVersion": 1,
   "electionId": "k6",
   "status": "pilot",
-  "reviewedAt": "2026-11-05",
+  "reviewedAt": "2026-11-06",
   "notes": [
     "Research draft; not wired into the application. Official session records anchor all government approvals. Reused recommendation and first-coalition evidence retains the earlier research limitations.",
     "The government card describes the first cabinet. Each replacement cabinet has a full-session confidence step and a numbered government.changes entry; available replacement coalition snapshots are attached to that entry.",
-    "New PDF quotations preserve the extracted text order (including OCR errors); whitespace is collapsed. Full-session sources identify the sitting; source excerpts are recoverable from the public PDF. Existing coalition OData quotes are labelled project tabulations in the source text, not purported verbatim minister lists."
+    "New PDF quotations preserve the extracted text order (including OCR errors); whitespace is collapsed. Full-session sources identify the sitting; source excerpts are recoverable from the public PDF. Existing coalition OData quotes are labelled project tabulations in the source text, not purported verbatim minister lists.",
+    "term.start/end delimit an election-cycle research window, not the institutional Knesset term; opening membership was 22 November 1965 and continued until 17 November 1969."
   ],
   "sources": {
     "plenum-gov13": {
@@ -45,16 +46,10 @@
       "kind": "official",
       "accessed": "2026-11-04"
     },
-    "coalition-2": {
-      "url": "https://he.wikipedia.org/wiki/ממשלת_ישראל_השלוש_עשרה",
-      "publisher": "Hebrew Wikipedia",
-      "kind": "secondary",
-      "accessed": "2026-11-04"
-    },
     "term-history": {
       "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-sixth-knesset-1965-1969",
-      "publisher": "Knesset, history of the sixth Knesset (credited official text on Jewish Virtual Library)",
-      "kind": "official",
+      "publisher": "Jewish Virtual Library, attributed reproduction of Knesset history (mirror provenance not independently certified)",
+      "kind": "secondary",
       "accessed": "2026-11-05",
       "via": "Jewish Virtual Library mirror; original https://main.knesset.gov.il/EN/About/History/pages/knessethistory.aspx?kns=6"
     },
@@ -94,11 +89,35 @@
       "publisher": "UN Secretary-General, UNTSO supplemental information, S/7930/Add.2, 10 June 1967",
       "kind": "official",
       "accessed": "2026-11-05"
+    },
+    "idi-1965": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1965/",
+      "publisher": "Israel Democracy Institute",
+      "kind": "academic",
+      "accessed": "2026-11-06"
+    },
+    "defense-archive": {
+      "url": "https://archives.mod.gov.il/Exhib/sixdayswar/opening/Pages/default.aspx",
+      "publisher": "IDF and Defense Establishment Archive",
+      "kind": "official",
+      "accessed": "2026-11-06"
+    },
+    "consultations-jta-start": {
+      "url": "https://www.jta.org/archive/israel-president-starts-talks-today-on-formation-of-new-cabinet",
+      "publisher": "JTA bulletin, 24 November 1965",
+      "kind": "secondary",
+      "accessed": "2026-11-06"
     }
   },
   "results": {
     "electionDate": "1965-11-02",
-    "officialResultsSourceId": "k6-results-gazette"
+    "officialResultsSourceId": "k6-results-gazette",
+    "certificationDate": "1965-11-09",
+    "publicationDate": "1965-11-12",
+    "firstSittingDate": "1965-11-22",
+    "notes": [
+      "YP 1230 p.313 signed י״ד בחשון תשכ״ו (9 בנובמבר 1965); issue date 12 November. Retained Knesset OData opening membership starts 22 November."
+    ]
   },
   "reaction": {
     "policy": "Only dated institutional steps and attributed statements, all lists or none.",
@@ -108,7 +127,7 @@
   "recommendationRounds": [
     {
       "id": "r1",
-      "date": "1965-11-24",
+      "date": "1965-11",
       "kind": "consultations",
       "president": {
         "nameEn": "Zalman Shazar",
@@ -209,20 +228,24 @@
         {
           "source": "recommendations-jta",
           "quote": "he entrust the formation of a new Cabinet to Premier Levi Eshkol."
+        },
+        {
+          "source": "consultations-jta-start",
+          "quote": "The President’s consultation will start tomorrow with a meeting with the Mapai-Achdut Avoda alignment faction."
         }
       ],
       "notes": [
         "Reuses docs/research/pm-recommendations-1949-1973.md; consultation conditions are not personal recommendations. Unknown does not mean no recommendation.",
-        "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved."
+        "Month precision: 24 November JTA bulletin says consultations will start tomorrow; title says today. 26 November bulletin reports recommendations today. Bulletin and meeting dates are not assumed identical; exact start/end days remain unestablished."
       ],
-      "endDate": "1965-11-26"
+      "endDate": "1965-11"
     }
   ],
   "formation": {
     "outcome": "government-formed",
     "events": [
       {
-        "date": "1965-11-24",
+        "date": "1965-11",
         "type": "consultations",
         "textEn": "President Zalman Shazar held consultations on government formation.",
         "textHe": "הנשיא זלמן שזר קיים התייעצויות על הרכבת הממשלה.",
@@ -230,9 +253,16 @@
           {
             "source": "recommendations-jta",
             "quote": "he entrust the formation of a new Cabinet to Premier Levi Eshkol."
+          },
+          {
+            "source": "consultations-jta-start",
+            "quote": "The President’s consultation will start tomorrow with a meeting with the Mapai-Achdut Avoda alignment faction."
           }
         ],
-        "endDate": "1965-11-26"
+        "endDate": "1965-11",
+        "notes": [
+          "Month precision: 24 November JTA bulletin says consultations will start tomorrow; title says today. 26 November bulletin reports recommendations today. Bulletin and meeting dates are not assumed identical; exact start/end days remain unestablished."
+        ]
       },
       {
         "date": "1965-11-28",
@@ -298,12 +328,12 @@
       {
         "date": "1969-03-17",
         "type": "confidence-vote",
-        "textEn": "The Knesset expressed confidence in government 14, headed by Golda Meir, 84–12, with 1 abstentions.",
-        "textHe": "הכנסת הביעה אמון בממשלה ה־14 בראשות גולדה מאיר, ברוב של 84 מול 12, עם 1 נמנעים.",
+        "textEn": "The Knesset expressed confidence in government 14, headed by Golda Meir, 84–12, with 1 abstention.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־14 בראשות גולדה מאיר, ברוב של 84 מול 12, עם נמנע אחד.",
         "cites": [
           {
             "source": "plenum-gov14",
-            "quote": "להביע לה אמון. הצבעה בעד ההצעה להביע אמון 84 לממשלה המיועדת 12 נגד ו נמנע ההצעה להביע אמון לממשלה המיועדת נתקבלה. היו\"ר ק. לוז: את מברך אני לממשלה. הכנסת אמון הובע"
+            "quote": "בעד ההצעה להביע אמון לממשלה המיועדת — 84; נגד — 12; נמנע — 1 (page 1982, visually read)."
           }
         ],
         "votes": {
@@ -328,6 +358,13 @@
         "nameHe": "לוי אשכול",
         "letters": "את",
         "from": "1966-01-12",
+        "to": "1969-02-26"
+      },
+      {
+        "nameEn": "Yigal Allon (acting Prime Minister)",
+        "nameHe": "יגאל אלון (ראש הממשלה בפועל)",
+        "letters": "את",
+        "from": "1969-02-26",
         "to": "1969-03-17"
       }
     ],
@@ -363,15 +400,23 @@
       }
     ],
     "coalitionSeats": 75,
-    "coalitionSeatsNote": "Election-list seat totals, including support-only lists; not the confidence-vote tally. Reuses the existing overlay: ministerial factions are official; support-only membership is labelled secondary. Later government changes are listed separately.",
+    "coalitionSeatsNote": "Project convention includes support-only lists: five governing factions held 71 election seats; the affiliated Arab lists added four for a 75-seat majority (IDI). Eshkol’s statement names the five governing factions only. This is distinct from the 71–41 confidence vote.",
     "cites": [
       {
         "source": "coalition-1",
         "quote": "Government 13 sworn in 1966-01-12. Ministers at swearing-in by their Knesset faction (project tabulation of the OData records): {'NON-MK': 4, 'מפלגה דתית לאומית': 3, 'מערך': 11}"
       },
       {
-        "source": "coalition-2",
-        "quote": "קואליציה: המערך, מפד\"ל, מפ\"ם, ליברלים עצמאיים, פועלי אגודת ישראל, קידמה ופיתוח, שיתוף ואחווה | אופוזיציה: אגודת ישראל, רק\"ח, העולם הזה-כוח חדש, מק\"י"
+        "source": "presentation-gov13",
+        "quote": "ממשלה חדשה הכוללת את הסיעות: המערך לאחדות פועלי ארץ ישראל, המפלגה הדתית-לאומית, מפלגת הפועלים המאוחדת, המפלגה הליברלית העצמאית ומפלגת פועלי אגודת ישראל."
+      },
+      {
+        "source": "idi-1965",
+        "quote": "בקואליציה שהוקמה בסופו של דבר היו חמש סיעות (המערך, המפד\"ל, מפ\"ם, הליברלים העצמאיים ופועלי אגודת ישראל), ויחד עם רשימות המיעוטים היה לממשלה רוב של 75 חברי כנסת."
+      },
+      {
+        "source": "coalition-1",
+        "quote": "PersonID 2173: ראש הממשלה, 1966-01-12–1969-02-26; PersonID 2142: ראש הממשלה בפועל, 1969-02-26–1969-03-17 (structured OData fields)."
       }
     ],
     "changes": [
@@ -380,8 +425,8 @@
         "number": 14,
         "nameEn": "Government 14 (Golda Meir)",
         "nameHe": "הממשלה ה־14 (גולדה מאיר)",
-        "textEn": "Meir succeeded Eshkol after Eshkol’s death.",
-        "textHe": "מאיר החליפה את אשכול לאחר מותו של אשכול.",
+        "textEn": "Meir took office after Yigal Allon served as acting Prime Minister following Eshkol’s death on 26 February 1969.",
+        "textHe": "מאיר נכנסה לתפקיד לאחר שיגאל אלון כיהן כראש הממשלה בפועל בעקבות מות אשכול ב־26 בפברואר 1969.",
         "cites": [
           {
             "source": "plenum-gov14",
@@ -477,7 +522,7 @@
       },
       {
         "id": "national-unity-government",
-        "date": "1967-06",
+        "date": "1967-06-01",
         "category": "governance",
         "textEn": "Israel formed its first national unity government before the Six-Day War.",
         "textHe": "ישראל הקימה את ממשלת האחדות הלאומית הראשונה שלה לפני מלחמת ששת הימים.",
@@ -489,6 +534,10 @@
           {
             "source": "mfa-timeline",
             "quote": "National unity government is formed"
+          },
+          {
+            "source": "defense-archive",
+            "quote": "ב-1 ביוני הורחב הבסיס הקואליציוני של הממשלה, וסיעות גח\"ל ורפ\"י הצטרפו אליה."
           }
         ],
         "confidence": "high"
@@ -521,12 +570,10 @@
     ]
   },
   "gaps": [
-    "Official result-certification date and the first sitting are not transcribed; election dates and seat counts reuse the verified national dataset.",
     "Reaction statements are not collected.",
     "Mid-term consultation positions, mandate deadlines and extensions are incomplete unless an explicit step below records them.",
     "The closing entry uses the IPU account; the original election-date/dissolution law is not transcribed.",
-    "Six-Day War is dated only to 1967 here; a direct chronology with the opening and closing days has not been transcribed.",
-    "Replacement-coalition snapshots are partial: government 14’s faction splits and current seat counts require a separate audit. Other replacement snapshots use election-list seats with stated support-list limitations.",
+    "Replacement-coalition snapshots are partial: government 14’s faction splits and current seat counts require a separate audit.",
     "Presentation dates can precede approval dates; confidence steps use the full protocol. The exact assignment days not transcribed here remain unknown."
   ]
 }

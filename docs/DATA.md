@@ -432,7 +432,7 @@ investigation records, not current release status.
 | k3 | 853,219 | 18 | 6,938 | YP 427 p.1053: א–יד, פ–ש, צ–צח, סא–ל, נ–ע | All seats match | 12 / 120 / 120 |
 | k4 | 969,337 | 24 | 7,800 | YP 709 p.125: א–רא, יא–ע | All seats match; resolves former Mapai/Cooperation gap | 12 / 120 / 120 |
 | k5 | 1,006,964 | 14 | 8,332 | YP 865 p.1843: ב–ד, מ–תו, יא–רא | All seats match | 11 / 122 / 120 |
-| k6 | 1,206,728 | 17 | 9,881 | YP 1225 p.189: את–רא, כא–כס | All seats match; corrected misread partner רא (Progress and Development), formerly יא | 13 / 120 / 120 |
+| k6 | 1,206,728 | 17 | 9,881 | YP 1225 p.189: את–רא, כא–כנ | All seats match; corrected misread partner רא (Progress and Development), formerly יא | 13 / 120 / 120 |
 | k7 | 1,367,743 | 16 | 11,274 | YP 1565 p.246: יא–רא | All seats match | 13 / 120 / 120 |
 
 All seven national tables reconcile list votes and invalid/cast/registered totals

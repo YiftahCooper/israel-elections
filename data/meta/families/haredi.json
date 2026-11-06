@@ -721,7 +721,7 @@
       "electionId": "k6",
       "electionDate": "1965-11-02",
       "datasetPath": "public/data/k6.json",
-      "datasetSha256": "ad32bb4902bc523b3b15bff896a87c2c7b949f9724ed0e06fb13b34f07020aae",
+      "datasetSha256": "c14817a6015bbd3183ffc9e11c3fdbfcfdeffa6c4d0baa70e07db7e0d0deff82",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
