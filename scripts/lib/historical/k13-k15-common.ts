@@ -84,7 +84,7 @@ export function verifyHistoricalProgress(id: 'k13' | 'k14' | 'k15', options: Ver
   assert(validateScenario(JSON.parse(JSON.stringify(s))).length === 0, `${id}: invalid historical scenario`);
   const result = allocateDataset(ds);
   assert(result.seatsAllocated === 120 && result.warnings.length === 0, `${id}: incomplete/ambiguous allocation`);
-  audit.seatDifferences = result.lists.filter(l => l.seats !== ds.officialSeats![l.id]).map(l => ({ letters: l.id.slice(3), official: ds.officialSeats![l.id], computed: l.seats }));
+  audit.seatDifferences = result.lists.filter(l => l.seats !== ds.officialSeats![l.id]).map(l => ({ letters: ds.lists.find(x => x.id === l.id)!.letters, official: ds.officialSeats![l.id], computed: l.seats }));
   // Missing agreements are NOT reverse-engineered to obtain a matching result.
   assert(audit.seatDifferences.length === 0, `${id}: sourced inputs do not reproduce every official seat`);
   const entry = indexEntry(id);
@@ -98,6 +98,9 @@ export function verifyHistoricalProgress(id: 'k13' | 'k14' | 'k15', options: Ver
 const LIST_KEYS = ['id', 'letters', 'nameHe', 'shortHe', 'shortEn', 'sponsorsHe', 'partiesHe', 'votes', 'withdrawn', 'color', 'bloc', 'candidates',
   'candidatesSource', 'candidatesSecondary', 'candidatesTruncated', 'candidatesUnavailable', 'notesHe'];
 
+// k13 keys predate the corrected official letters; saved scenarios depend on these opaque IDs.
+const keyLetters = (n: number, letters: string) => n === 13 ? (({ נד: 'נז', נכ: 'נס', קן: 'קנ' } as Record<string, string>)[letters] ?? letters) : letters;
+
 export function historicalDataset({ review, rosters, rawSha256 }: Audit): ElectionDataset {
   const n = Number(review.id.slice(1));
   const elected = rawJson<ElectedReview>(`${review.id}/elected.reviewed.json`);
@@ -110,18 +113,18 @@ export function historicalDataset({ review, rosters, rawSha256 }: Audit): Electi
     // Zero geographic counts mean no geography supplied in this dataset, not an official count.
     totals: { ...review.gazetteTotals, registered: review.supplementalTotals.registered, votesCast: review.supplementalTotals.votesCast, ballotBoxes: 0, localities: 0 },
     lists: seatOrder(review.lists.map((l, i) => {
-      const id = `${n}-${l.letters}`;
+      const id = `${n}-${keyLetters(n, l.letters)}`;
       const roster = rosters.lists.find(r => r.letters === l.letters);
       // candidates ranked above the last elected member but absent from the notice's elected names
       const notSeated = notSeatedRanks(elected.lists.find(x => x.letters === l.letters)?.candidateRanks ?? [], (roster?.candidates ?? []).map(c => c.rank));
-      return listRecord(n, i, { letters: l.letters, nameHe: l.nameHe, votes: l.votes,
+      return { ...listRecord(n, i, { letters: keyLetters(n, l.letters), nameHe: l.nameHe, votes: l.votes,
         candidates: roster?.candidates.map(c => ({ id: candidateId(id, c.rank), rank: c.rank, nameHe: c.nameHe, ...(notSeated.has(c.rank) ? { notSeated: true } : {}) })) ?? [],
         candidatesSource: roster ? (roster.sourceId ?? rosters.sourceId) : '',
         ...rosterFlags(!roster ? 'unavailable' : roster.complete ? 'complete' : 'truncated', 'explicit'),
-        notesHe: (roster?.candidates ?? []).filter(c => notSeated.has(c.rank)).map(notSeatedNoteHe) }, LIST_KEYS);
+        notesHe: (roster?.candidates ?? []).filter(c => notSeated.has(c.rank)).map(notSeatedNoteHe) }, LIST_KEYS), letters: l.letters };
     })),
     agreements: agreementRecords(n, review.agreements.pairs, review.agreements.sourceId!),
-    blocs: [], officialSeats: officialSeatsOf(n, review.lists.map(l => ({ letters: l.letters, seats: l.officialSeats }))),
+    blocs: [], officialSeats: officialSeatsOf(n, review.lists.map(l => ({ letters: keyLetters(n, l.letters), seats: l.officialSeats }))),
     officialSeatsSourceId: review.resultsSourceId, sourceIds: Object.keys(rawSha256),
     buildInfo: { builtAt: new Date().toISOString(), rawSha256 },
   };

@@ -350,7 +350,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k13.json",
-      "sha256": "e78587d81946a60b7b0d7e596b2c1e84c6b004520197c7cc4f41f6f849fcf282",
+      "sha256": "6075f9aba1d51098c5a8c65c0b7b889264112d681e1baaeaeb575e1ce6738268",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k14": {
@@ -9662,7 +9662,7 @@
       "externalIds": {}
     },
     {
-      "id": "vehicle-13-קן",
+      "id": "vehicle-13-קנ",
       "entityType": "electoral-vehicle",
       "nameHe": "המפלגה הליברלית החדשה בראשות יצחק מודעי",
       "nameEn": "New Liberal Party",
@@ -9790,7 +9790,7 @@
       "externalIds": {}
     },
     {
-      "id": "vehicle-13-נד",
+      "id": "vehicle-13-נז",
       "entityType": "electoral-vehicle",
       "nameHe": "תנועת נפגעי משכנתאות, חסרי דיור וחיילים משוחררים",
       "nameEn": "Mortgage Victims",
@@ -9918,7 +9918,7 @@
       "externalIds": {}
     },
     {
-      "id": "vehicle-13-נכ",
+      "id": "vehicle-13-נס",
       "entityType": "electoral-vehicle",
       "nameHe": "מפלגת נשים",
       "nameEn": "Women’s Party",
@@ -27781,8 +27781,8 @@
     },
     {
       "electionId": "k13",
-      "listId": "13-קן",
-      "partyId": "vehicle-13-קן",
+      "listId": "13-קנ",
+      "partyId": "vehicle-13-קנ",
       "role": "singleton",
       "sources": [
         "k13",
@@ -27833,8 +27833,8 @@
     },
     {
       "electionId": "k13",
-      "listId": "13-נד",
-      "partyId": "vehicle-13-נד",
+      "listId": "13-נז",
+      "partyId": "vehicle-13-נז",
       "role": "singleton",
       "sources": [
         "k13",
@@ -27885,8 +27885,8 @@
     },
     {
       "electionId": "k13",
-      "listId": "13-נכ",
-      "partyId": "vehicle-13-נכ",
+      "listId": "13-נס",
+      "partyId": "vehicle-13-נס",
       "role": "singleton",
       "sources": [
         "k13",

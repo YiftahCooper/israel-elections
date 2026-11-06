@@ -21,7 +21,7 @@ O numbers refer to Opus's numbered non-OK rows, F numbers to Codex's. Generated 
 
 | Findings | Decision and deciding evidence | Input files changed |
 |---|---|---|
-| O1, O3, O4; Codex OK-letter disagreements | Correct נז→נד, נס→נכ, קנ→קן. R letter cells decide. Rename list/vehicle references together; zero-seat counts unchanged. | `raw/k13/national.reviewed.json`, `meta/parties.json`, `meta/party-links/k13.json`, `meta/families/centre.json`, `scripts/lib/list-meta.ts` |
+| O1, O3, O4; Codex OK-letter disagreements | Correct נז→נד, נס→נכ, קנ→קן. R letter cells decide. Preserve opaque pre-correction list/vehicle keys; correct only ballot letters (coordinator follow-up below). Zero-seat counts unchanged. | `raw/k13/national.reviewed.json`, `meta/parties.json`, `meta/party-links/k13.json`, `meta/families/centre.json`, `scripts/lib/list-meta.ts` |
 | O2 / F05 | “ועולים משוחררים”→“וחיילים משוחררים”, with comma, R. | national transcription and registry |
 | O5 / F02 | ציפר→ציפור, Tziper→Tzipor; C p. 3631 decides the title. | national, registry, links, list-meta |
 | O6 / F04 | התורה הארץ→התורה והארץ; C p. 3633. | national, registry, family member labels, links, list-meta |
@@ -36,7 +36,7 @@ O numbers refer to Opus's numbered non-OK rows, F numbers to Codex's. Generated 
 | O17; Codex roster-OK disagreement | Correct registered עבד-אל-והאב→עבד-אלוהאב; C p. 3642; elected form already agrees. | candidates transcription |
 | O18 / F08–09 | Government 25 ends 22 November; add acting Peres 5–22 November, G. Keep Rabin's personal end date. | aftermath/k13 |
 | O19 | Refresh lineage hash after corrections. Its old reported hash had already been updated on main; no remaining historical claim dispute. | lineage, registry source and nine family hashes |
-| O20 | Propagated IDs/names corrected consistently; R/C as above. | registry, links, families, list-meta |
+| O20 | Propagated names corrected consistently; R/C as above. Internal IDs retain their original values. | registry, links, families, list-meta |
 | O21; Codex O46 editorial note | Two excluded lists and appeals, I. No change to election-day status date. | election-context |
 | O22 / F14 | Replace stale first-sitting/results-publication gap; R/P. Do not invent an earlier certification act. | aftermath/k13 |
 | O23 / F22 | Resolve publication/approval distinction with L. Remove obsolete “unverified” wording, retain month-level decision date. | aftermath/k13 |
@@ -62,7 +62,7 @@ None. Remaining items are evidence gaps, not competing equally ranked factual va
 
 ## Visible label changes for integration
 
-- Ballot letters/IDs: נז→נד, נס→נכ, קנ→קן (IDs carry the same `13-` prefix).
+- Ballot letters: נז→נד, נס→נכ, קנ→קן. Internal IDs remain `13-נז`, `13-נס`, `13-קנ`.
 - ציפר→ציפור; Tziper→Tzipor.
 - התורה הארץ→התורה והארץ (also full title ending בראשות הרב משה לוינגר).
 - התנועה הלאומית הדמוקרטית ועליה→התנועה הלאומית לדמוקרטיה ועליה; National Democratic Movement and Aliyah→National Movement for Democracy and Aliyah.
@@ -115,3 +115,17 @@ Changed files (excluding the two merged auditor reports):
 - `tests/differential.test.ts`
 - `tests/historical-k13.test.ts`
 - `docs/research/data-audit/k13-resolution.md`
+
+## Coordinator follow-up: preserve opaque keys
+
+The cross-election decision supplied after the initial repair supersedes the original ID-renaming implementation. A new commit on top of `d1c4eb8` restores **all** pre-correction list/vehicle IDs and keyed references: `13-נז`, `13-נס`, `13-קנ`. The raw official transcription continues to carry corrected ballot letters `נד`, `נכ`, `קן`. An election-specific mapping in the historical builder separates stable identity from ballot text, including official-seat keys and candidate-ID construction. All 121 candidate IDs and all 25 list IDs match the pre-audit baseline; these three lists currently have no transcribed candidates. No raw official data was reverted. The metadata note explains why keys differ from letters.
+
+Verification of presentation: source review found no app code deriving letters by slicing/splitting an ID. The shared `Slip` component, bars, list side panel, bloc panel, walkthrough, family points and synthetic icons read `letters`; `listLabel` reads names. `TopBar`'s CSV ballot-letter column uses `l.letters`; scenario JSON preserves stable opaque keys alongside corrected `letters`. Diagnostics in the historical builder now also look up the field rather than slicing IDs. A regression test renders the actual shared ballot component in Hebrew and English and confirms corrected visible letters and accessible labels, with neither the opaque key nor its obsolete letter suffix present. It also checks rebuilds, official-seat references and scenario serialization. No browser or Playwright run.
+
+A recursive field diff against `d1c4eb8` is limited to the three list IDs, their official-seat keys and `builtAt`; every `letters` field and displayed name remains unchanged. All other 25 national datasets are byte-identical. Only affected keyed metadata, the nine k13 family/source hashes and registry/lineage source hashes were refreshed.
+
+Differential proof: allocation returns to pre-audit `bf50217e327445c12941453eb13b84cb7badc51dce3d0ac173136068075e71ab`. Model now yields `2bd5acda259ad3cc59903ce8328d26b6814206fe577d715c75e18826c4acaa66`; scratch pre-audit k13 still reproduces `4faa7f17…` on unchanged engine/model source. The three other digests remain unchanged. Earlier validation figures above describe the initial repair; follow-up checks are recorded below.
+
+The initial follow-up test run found the expected two stale digest assertions and two unrelated 5-second timeouts (graphics/names coverage) under concurrent machine load. Digest expectations were updated after the field diff and baseline proof; the full suite was rerun with `--maxWorkers=2 --testTimeout=120000 --hookTimeout=120000`. No implementation change was made for the timing failures.
+
+Follow-up verification complete: **96 Vitest files / 906 tests passed**, including historical k13, all five differential families and the stable-ID rendering/serialization regression. Dataset rebuild, all nine family catalogues, logo validation (26 overlays / 184 source records / 131 assets), TypeScript and `git diff --check` passed. Corrected visible letters and names did not change in this follow-up. New test: `tests/k13-stable-identities.test.ts`; schema comment now documents opaque identity semantics. Commit remains local, with no rebase, push, main merge or Playwright.
