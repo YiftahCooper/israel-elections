@@ -1,3 +1,4 @@
+import { SeatDelta, SeatEffects } from './SeatDelta.tsx';
 import { NumericStepper } from './NumericStepper.tsx';
 import { TransferStep } from './TransferStep.tsx';
 import { applyAction } from '../../model/actions.ts';
@@ -20,7 +21,7 @@ import { runTasks } from '../analysisPool.ts';
 import type { AnalysisTask } from '../analysisTasks.ts';
 import { listLabel, referenceLabel, warningText } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtFrac, fmtInt, fmtPct, fmtRat, fmtSigned, signed } from '../format.ts';
+import { fmtFrac, fmtInt, fmtPct, fmtRat, fmtSigned } from '../format.ts';
 import { dispatch, dispatchMany, getState, useStore, previewAction, setState, toast, useFeature, useLevel, useVoteSource, useDigits, withSource } from '../store.ts';
 import { clampTarget, deltaAction, stayingHome, toVoteSource, type SourceChoice, votesForShare, voteSourceLabel } from '../voteEdit.ts';
 import { Candidates } from './Candidates.tsx';
@@ -157,7 +158,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
     const a = deltaAction(cur, cl, t - cl.votes, from, histShares);
     if (a) dispatch(a);
   };
-  const [consequence, setConsequence] = useState('');
+  const [consequence, setConsequence] = useState<import('react').ReactNode>('');
   useEffect(() => setConsequence(''), [s, src]);
   // Every vote edit here asks where its votes come from (one shared dialog) unless that is remembered or was
   // already answered for this list. Targets that depend on the source are worked out under the answer.
@@ -199,7 +200,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
   const explainTarget = (target: number) => {
     const t = clampTarget(s, l, target, src), a = deltaAction(s, l, t - l.votes, src, histShares);
     if (!a) return setConsequence(L('Seats unchanged', 'המנדטים ללא שינוי'));
-    try { const next = allocate(toEngineInput(applyAction(s, a))); setConsequence(next.lists.map(x => ({ id: x.id, d: x.seats - (r.lists.find(y => y.id === x.id)?.seats ?? 0) })).filter(x => x.d).map(x => `${nameOf(x.id)} ${signed(x.d)}`).join(' · ') || L('Seats unchanged', 'המנדטים ללא שינוי')); } catch { setConsequence(''); }
+    try { const next = allocate(toEngineInput(applyAction(s, a))); setConsequence(<SeatEffects>{next.lists.map(x => ({ id: x.id, d: x.seats - (r.lists.find(y => y.id === x.id)?.seats ?? 0) })).filter(x => x.d).map(x => <span key={x.id}>{nameOf(x.id)} <SeatDelta value={x.d} /> </span>)}</SeatEffects>); } catch { setConsequence(''); }
   };
   /** A one-press vote edit. Goals show the signed change they make, so every goal reads the same way. */
   const quick = (label: string, target: number | null, showDelta = true, go?: (from: SourceChoice) => void) => {
@@ -260,7 +261,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
             if (!gain) return L('Searching…', 'מחפש…');
             if (!gain.found || gain.votes === null) return gain.reason === 'inconclusive' ? L('Inconclusive within the search limit', 'לא הוכרע בטווח החיפוש') : gain.reason === 'limit' ? L('Not reachable from this source', 'לא ניתן להגיע מהמקור הזה') : gain.reason === 'already' ? L('Already reached', 'כבר הושג') : L('No solution from this source', 'אין פתרון מהמקור הזה');
             const seats = (gain.after?.lists.find(x => x.id === l.id)?.seats ?? lr.seats) - lr.seats;
-            return <><bdi dir="ltr">+{seats}</bdi> {seats === 1 ? L('seat', 'מנדט') : L('seats', 'מנדטים')} · {gain.exact ? L('proven minimum', 'מינימום מוכח') : L('sampled; minimum unproven', 'דגימה; המינימום לא הוכח')}</>;
+            return <><SeatDelta value={seats} /> {seats === 1 ? L('seat', 'מנדט') : L('seats', 'מנדטים')} · {gain.exact ? L('proven minimum', 'מינימום מוכח') : L('sampled; minimum unproven', 'דגימה; המינימום לא הוכח')}</>;
           })()}</p>
           <p className="tiny quick-consequence" role="status">{consequence}</p></>}
           <LiveSlider key={l.id} l={l} ceiling={Number(r.totalValid)} onCommit={(v) => commit((from) => editTo(v, from))} />
@@ -297,7 +298,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
           {agr && <p className="small" style={{ margin: '6px 0 0' }}>
             {!agr.enabled ? L('Switched off: both lists compete alone for the remaining seats.', 'כבוי: שתי הרשימות מתחרות לבד על המנדטים הנותרים.')
               : !agrStatus?.active ? (agrStatus?.reason === 'member-withdrawn' ? L('No effect: a partner withdrew.', 'ללא השפעה: שותפה פרשה.') : agrStatus?.reason === 'duplicate-membership' ? L('No effect: a list is in two agreements.', 'ללא השפעה: רשימה בשני הסכמים.') : agrStatus?.reason === 'too-many-members' ? L('Not allowed under these rules.', 'לא מותר לפי הכללים.') : agrStatus?.reason === 'member-no-initial-seat' ? L('No effect: a partner won no whole-quota seat.', 'ללא השפעה: שותפה לא זכתה במנדט במודד שלם.') : L('No effect: a partner failed the threshold.', 'ללא השפעה: שותפה לא עברה את החסימה.'))
-              : agreementEffect && agreementEffect.length ? <>{L('Effect: ', 'השפעה: ')}{agreementEffect.map((e) => `${nameOf(e.id)} ${signed(e.d)}`).join(' · ')}</> : L('Effect: none — the same seats are won without it.', 'השפעה: אין — אותם מנדטים גם בלעדיו.')}
+              : agreementEffect && agreementEffect.length ? <>{L('Effect: ', 'השפעה: ')}{agreementEffect.map(e => <span key={e.id}>{nameOf(e.id)} <SeatDelta value={e.d} /> </span>)}</> : L('Effect: none — the same seats are won without it.', 'השפעה: אין — אותם מנדטים גם בלעדיו.')}
           </p>}
         </section></Feature>
 

@@ -1,3 +1,4 @@
+import { SeatDelta } from './SeatDelta.tsx';
 import { Slip } from './ui.tsx';
 import { EditMarker } from './EditMarker.tsx';
 import { useDisclosure } from './Feature.tsx';
@@ -13,7 +14,7 @@ import { applyAction, apportion } from '../../model/actions.ts';
 import { toEngineInput, type Action, type Scenario, type SimRules } from '../../model/scenario.ts';
 import { allocationOf, listLabel, referenceLabel } from '../derive.ts';
 import { useL, useLang, type Lang } from '../i18n.ts';
-import { fmtInt, signed } from '../format.ts';
+import { fmtInt } from '../format.ts';
 import { partColours, distinctColour } from '../newListColour.ts';
 import { dispatch, dispatchMany, setState } from '../store.ts';
 import { useActiveReference } from '../useActiveReference.ts';
@@ -100,7 +101,7 @@ function ChangeRows({ rows, open }: { rows: Row[]; open?: boolean }) {
             <span className="cmp-axis" />
             <span className="cmp-pos">{d > 0 && <i style={{ width: `${(d / max) * 100}%`, background: 'var(--ink)' }} />}</span>
           </span>
-          <b className="cmp-d" dir="ltr">{d === 0 ? '0' : d > 0 ? `+${d}` : `−${-d}`}</b>
+          <b className="cmp-d" dir="ltr"><SeatDelta value={d} /></b>
         </li>
       ); })}
     </ul>
@@ -228,7 +229,7 @@ function Agreements({ s, r, base }: { s: Scenario; r: AllocationResult; base: Sc
                 {!inactive && <div className="small muted st-effect">{eff.length === 0
                   ? (ag.enabled ? L('Moves no seat.', 'אינו מזיז מנדט.') : L('Switching it on would move no seat.', 'הפעלתו לא הייתה מזיזה מנדט.'))
                   : <>{ag.enabled ? L('Effect:', 'השפעה:') : L('If switched on:', 'אם יופעל:')}{' '}{eff.map((e) => (
-                    <span key={e.id} className="st-eff"><span className="swatch" style={{ background: list(e.id)?.color }} /><bdi>{name(e.id)}</bdi> <b className="tabnum">{signed(ag.enabled ? e.d : -e.d)}</b></span>))}</>}</div>}
+                    <span key={e.id} className="st-eff"><span className="swatch" style={{ background: list(e.id)?.color }} /><bdi>{name(e.id)}</bdi> <b className="tabnum"><SeatDelta value={ag.enabled ? e.d : -e.d} /></b></span>))}</>}</div>}
               </span>
               <span className="tools">
                 <label className="switch small"><input type="checkbox" checked={ag.enabled} onChange={(e) => dispatch({ type: 'setAgreement', agreement: { ...ag, enabled: e.target.checked } })}

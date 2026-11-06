@@ -1,0 +1,5 @@
+:root { --seat-gain: #17633a; --seat-loss: #a12830; }
+[data-theme="dark"] { --seat-gain: #83dfac; --seat-loss: #ffabb2; }
+.seat-delta { display: inline-block; white-space: nowrap; font-weight: 600; color: var(--ink); }
+.seat-delta[data-sign="1"] { color: var(--seat-gain); }
+.seat-delta[data-sign="-1"] { color: var(--seat-loss); }

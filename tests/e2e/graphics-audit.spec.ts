@@ -97,8 +97,8 @@ test('chamber export retains labels and standalone comparison ink',async({page})
   // the per-list seat changes are said once, in the change line, not again under the chamber
   await expect(page.locator('.chamber .graphic-changes')).toHaveCount(0);
   const readout=(await page.locator('.session').innerText()).replace(/[\u2066-\u2069]/g,'');
-  expect(readout).toContain('Meretz 4 (+4)');
-  expect(readout).toContain('Balad 5 (+5)');
+  expect(readout).toContain('Meretz 4 (▲ +4)');
+  expect(readout).toContain('Balad 5 (▲ +5)');
 });
 
 

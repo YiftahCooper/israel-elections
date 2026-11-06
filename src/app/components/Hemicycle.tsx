@@ -12,7 +12,7 @@ import type { Scenario, SimList } from '../../model/scenario.ts';
 import { allocationOf, listLabel, methodOf, seatBlocsOf, seatedOrder, candidateName, referenceLabel, comparisonGroups } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { arcLayout, annularRegions } from '../layout.ts';
-import { download, isolate, signed } from '../format.ts';
+import { download, isolate, seatDeltaText } from '../format.ts';
 import { electionLabel } from '../electionLabel.ts';
 import { setState, useStore } from '../store.ts';
 import { Info, Seg } from './ui.tsx';
@@ -175,8 +175,16 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
         if(inner) { const fill=dot.cloneNode() as SVGCircleElement; fill.setAttribute('r','4.5'); fill.setAttribute('fill',inner); clone.appendChild(fill); }
       });
       const g = groupsNow.find(g=>g.bIds.includes(l.id));
-      const numbers = !componentRows.some(row=>row.l.id===l.id) && g?.bIds.length===1 && g.seatsA!==g.seatsB ? `${g.seatsA} → ${g.seatsB} (${signed(g.seatsB-g.seatsA)})` : String(n);
-      clone.appendChild(svgText(x+dir*(8+colors.length*16),y,16,`${label.length>42?label.slice(0,41)+'…':label} \u2066${numbers}\u2069`));
+      const delta = !componentRows.some(row=>row.l.id===l.id) && g?.bIds.length===1 ? g.seatsB-g.seatsA : 0;
+      const numbers = delta && g ? `${g.seatsA} → ${g.seatsB}` : String(n);
+      const legend = svgText(x+dir*(8+colors.length*16),y,16,`${label.length>42?label.slice(0,41)+'…':label} \u2066${numbers}\u2069`);
+      if (delta) {
+        const change = document.createElementNS(NS, 'tspan');
+        change.textContent = ` \u2066(${seatDeltaText(delta)})\u2069`;
+        change.setAttribute('fill', css.getPropertyValue(delta > 0 ? '--seat-gain' : '--seat-loss').trim());
+        legend.appendChild(change);
+      }
+      clone.appendChild(legend);
     });
     const entry = elections.find(e=>e.id===s.electionId);
     const captionY = rowsY + Math.ceil(exportRows.length/2)*28 + 8;

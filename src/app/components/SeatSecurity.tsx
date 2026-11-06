@@ -1,3 +1,4 @@
+import { SeatDelta } from './SeatDelta.tsx';
 import { dispatch } from '../store.ts';
 import { StartFrom } from './StartFrom.tsx';
 import { EditMarker } from './EditMarker.tsx';
@@ -132,7 +133,7 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
       </div>
       {above.length > 0 && (
         <div className="security" role="table" aria-label={L('Seat security', 'ביטחון המנדטים')}>
-          <div className="sec-row head" role="row"><span role="columnheader" className="sec-name">{L('List', 'רשימה')}</span><span role="columnheader" className="sec-l">{L('Votes to lose a seat', 'קולות לאובדן מנדט')}</span><span role="columnheader" className="sec-seats">{L('Seats', 'מנדטים')}</span><span role="columnheader" className="sec-r">{L('Votes to gain a seat', 'קולות למנדט נוסף')}</span></div>
+          <div className="sec-row head" role="row"><span role="columnheader" className="sec-name">{L('List', 'רשימה')}</span><span role="columnheader" className="sec-l">{L('Votes to lose a seat', 'קולות לאובדן מנדט')} <SeatDelta value={-1} /></span><span role="columnheader" className="sec-seats">{L('Seats', 'מנדטים')}</span><span role="columnheader" className="sec-r">{L('Votes to gain a seat', 'קולות למנדט נוסף')} <SeatDelta value={1} /></span></div>
           {above.map(({ l, item }) => {
             const lose = item.seats > 0 ? fig(l.id, 'lose') : undefined;
             const gain = fig(l.id, 'gain');

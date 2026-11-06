@@ -22,7 +22,7 @@ test('a plain split is compared once with the list it came from, not once per pa
   await expect(split).toHaveCount(1);
   await expect(split).toContainText('Likud B');
   // 32 seats before, A + B after: the net change is a couple of seats, never −17 for each half
-  const d = Number((await split.locator('.cmp-d').innerText()).replace('−', '-'));
+  const d = Number((await split.locator('.cmp-d').innerText()).replace(/[▲▼\s]/g, '').replace('−', '-'));
   expect(Math.abs(d)).toBeLessThan(5);
 });
 

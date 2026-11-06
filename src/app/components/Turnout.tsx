@@ -1,3 +1,4 @@
+import { SeatDelta } from './SeatDelta.tsx';
 import './turnout.css';
 import { TurnoutSteps } from './TurnoutSteps.tsx';
 import { StartFrom } from './StartFrom.tsx';
@@ -225,7 +226,7 @@ export function Turnout({ s }: { s: Scenario }) {
               {change?.error === 'too-few' && <p id="vg-why" className="small bad">{L('Some lists do not have enough votes to remove.', 'לחלק מהרשימות אין די קולות להסרה.')}</p>}
               {change && !change.error && change.delta !== 0 && <>
                 <p className="small"><bdi dir="ltr">{signed(change.delta)}</bdi> {L('ballots', 'פתקים')} · <bdi dir="ltr">{signed(change.invalid)}</bdi> {L('invalid', 'פסולים')}</p>
-                <div className="vg-seats small" aria-live="polite">{seatDiff?.length ? seatDiff.map(({ l, n }) => <span key={l.id} className="chip"><span className="swatch" style={{ background: l.color }} />{listLabel(l, lang)} <b><bdi dir="ltr">{signed(n)}</bdi></b></span>) : <span className="ink2">{L('No seat changes', 'אין שינוי במנדטים')}</span>}</div>
+                <div className="vg-seats small" aria-live="polite">{seatDiff?.length ? seatDiff.map(({ l, n }) => <span key={l.id} className="chip"><span className="swatch" style={{ background: l.color }} />{listLabel(l, lang)} <b><bdi dir="ltr"><SeatDelta value={n} /></bdi></b></span>) : <span className="ink2">{L('No seat changes', 'אין שינוי במנדטים')}</span>}</div>
               </>}
               <button type="button" className="btn primary" disabled={!change || !!change.error || !change.delta} aria-describedby={change?.error ? 'vg-why' : undefined} onClick={apply}>
                 {!change?.delta ? L('Move the turnout to add or remove voters', 'שנו את שיעור ההצבעה כדי להוסיף או להסיר מצביעים')

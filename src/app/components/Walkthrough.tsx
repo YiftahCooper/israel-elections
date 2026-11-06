@@ -1,3 +1,4 @@
+import { SeatDelta } from './SeatDelta.tsx';
 import { GraphicChanges } from './GraphicChanges.tsx';
 import { EditMarker } from './EditMarker.tsx';
 import { Fragment, useEffect, useMemo, useState, type ReactNode } from 'react';
@@ -17,7 +18,7 @@ type Step = { kind: 'threshold' } | { kind: 'quota' } | { kind: 'initial' } | { 
 /** A whole number without trailing ".000"; other values to `digits` decimals. */
 const num = (r: Rational, digits: number) => (r.den === 1n || r.num % r.den === 0n ? fmtInt(r.num / r.den) : fmtRat(r, digits));
 /** "was → now" for a value that differs from the active reference; numbers read left to right in Hebrew too. */
-const delta = (now: number, was: number | undefined): ReactNode => (was === undefined || was === now ? String(now) : <bdi dir="ltr" className="walk-delta">{was} → {now}</bdi>);
+const delta = (now: number, was: number | undefined): ReactNode => (was === undefined || was === now ? String(now) : <bdi dir="ltr" className="walk-delta">{was} → {now} (<SeatDelta value={now - was} />)</bdi>);
 const DIVISOR = ['sainte-lague', 'dhondt', 'modified-sainte-lague'];
 
 export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {

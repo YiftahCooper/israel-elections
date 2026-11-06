@@ -47,3 +47,6 @@ export const signed = (d: number | bigint) => {
   const n = Number(d);
   return `\u2066${n > 0 ? '+' : n < 0 ? '−' : '±'}${EN.format(Math.abs(n))}\u2069`;
 };
+
+/** Plain-text equivalent of SeatDelta, also used in exported SVG legends. */
+export const seatDeltaText = (n: number) => `${n > 0 ? "▲ " : n < 0 ? "▼ " : ""}${fmtSigned(n)}`;
