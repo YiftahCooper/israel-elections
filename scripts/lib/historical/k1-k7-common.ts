@@ -103,7 +103,7 @@ export function verifyEarlyProgress(n:number,opts:{available?:boolean;log?:boole
     const roster=earlyRosterReview(n);
     assert.equal(roster.id,r.id);assert.equal(roster.candidateSourceId,r.candidateSourceId);assert.equal(roster.resultsSourceId,r.resultsSourceId);
     const winners=r.lists.filter(l=>l.officialSeats>0).map(l=>l.letters).sort();
-    assert.deepEqual(roster.lists.map(l=>l.letters).sort(),winners);
+    assert.deepEqual(roster.lists.map(l=>l.letters).sort(),n===2?r.lists.map(l=>l.letters).sort():winners);
     assert.deepEqual([...r.rosters.reviewedLists].sort(),winners);
     for(const l of roster.lists) {
       const seats=r.lists.find(x=>x.letters===l.letters)!.officialSeats;
@@ -114,7 +114,7 @@ export function verifyEarlyProgress(n:number,opts:{available?:boolean;log?:boole
       assert.deepEqual(l.electedCandidateRanks,[...l.electedCandidateRanks].sort((a,b)=>a-b));
       assert.deepEqual(l.electedNames,l.electedCandidateRanks.map(rank=>l.candidates[rank-1]?.nameHe));
       const excluded=l.excludedCandidateRanks??[];
-      assert.deepEqual(l.candidates.filter(c=>!l.electedCandidateRanks.includes(c.rank)).map(c=>c.rank),excluded);
+      assert.deepEqual(n===2&&seats===0?[]:l.candidates.filter(c=>!l.electedCandidateRanks.includes(c.rank)).map(c=>c.rank),excluded);
       assert(l.candidatePdfPages.length>0 && l.resultsPdfPages.length>0 && l.crossCheck.length>0);
       assert([...l.candidatePdfPages,...l.resultsPdfPages].every(p=>Number.isInteger(p)&&p>0));
     }

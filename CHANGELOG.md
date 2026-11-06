@@ -2,6 +2,7 @@
 
 ## 6 November 2026 — data audit
 
+- k2: corrected ballot letters with stable IDs, registered names and five elected spellings; transcribed both losing rosters, strengthened satellite-list sources and repaired aftermath dates/gaps.
 - k15: corrected ballot identities and gazetted names, restored two withdrawn registrations, clarified PM/dissolution evidence and roster coverage, and withheld unverified logos.
 - k24: corrected Demokratit’s withdrawal, retained official final notices, clarified opening membership and polling-station scope, added candidate resignation notes, and corrected overstated source and logo verification claims.
 - k19: retained the formal Gazette total correction, repaired list identity, context and stale research notes, strengthened constituent sourcing and withheld three unproven campaign logos.

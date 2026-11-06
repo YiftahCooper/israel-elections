@@ -1,6 +1,6 @@
 {
   "id": "k2",
-  "reviewedOn": "2026-11-03",
+  "reviewedOn": "2026-11-06",
   "candidateSourceId": "k2-candidates-gazette",
   "resultsSourceId": "k2-results-gazette",
   "method": "Visual transcription of official candidate gazette; name-by-name comparison to elected names in official results. PDF pages are 1-based. No secondary candidate names.",
@@ -386,7 +386,7 @@
       ]
     },
     {
-      "letters": "ה",
+      "letters": "ו",
       "candidatePdfPages": [
         5
       ],
@@ -398,7 +398,7 @@
         },
         {
           "rank": 2,
-          "nameHe": "אונא משה"
+          "nameHe": "אונה משה"
         },
         {
           "rank": 3,
@@ -427,7 +427,7 @@
       ],
       "electedNames": [
         "שפירא משה",
-        "אונא משה",
+        "אונה משה",
         "רפאל יצחק",
         "בורג ד״ר יוסף",
         "ורהפטיג זרח",
@@ -532,13 +532,13 @@
         },
         {
           "rank": 3,
-          "nameHe": "מעדי גבר"
+          "nameHe": "מעדי ג׳בר"
         }
       ],
       "electedNames": [
         "אל זועבי סייף אלדין",
         "קסיס מסעד",
-        "מעדי גבר"
+        "מעדי ג׳בר"
       ],
       "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted.",
       "electedCandidateRanks": [
@@ -689,11 +689,11 @@
       "candidates": [
         {
           "rank": 1,
-          "nameHe": "חניפס צאלח חסן"
+          "nameHe": "ח׳ניפס צאלח חסן"
         }
       ],
       "electedNames": [
-        "חניפס צאלח חסן"
+        "ח׳ניפס צאלח חסן"
       ],
       "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted.",
       "electedCandidateRanks": [
@@ -716,12 +716,12 @@
         },
         {
           "rank": 2,
-          "nameHe": "ששון סלים בנימין"
+          "nameHe": "ששון סילס בנימין"
         }
       ],
       "electedNames": [
         "אלישר אליהו",
-        "ששון סלים בנימין"
+        "ששון סילס בנימין"
       ],
       "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted.",
       "electedCandidateRanks": [
@@ -954,7 +954,7 @@
         },
         {
           "rank": 4,
-          "nameHe": "וילנסקה (ברישטיין) אסתר"
+          "nameHe": "וילנסקה (בריטשטיין) אסתר"
         },
         {
           "rank": 5,
@@ -965,7 +965,7 @@
         "מיקוניס שמואל",
         "טובי תופיק",
         "וילנר (קובנר) מאיר (בר)",
-        "וילנסקה (ברישטיין) אסתר",
+        "וילנסקה (בריטשטיין) אסתר",
         "חביבי אמיל"
       ],
       "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted.",
@@ -979,6 +979,236 @@
       "resultsPdfPages": [
         2
       ]
+    },
+    {
+      "letters": "טת",
+      "candidatePdfPages": [
+        7
+      ],
+      "resultsPdfPages": [
+        1
+      ],
+      "truncated": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "מוקוטובסקי אברהם אליהו"
+        },
+        {
+          "rank": 2,
+          "nameHe": "רחמים יצחק נסים"
+        },
+        {
+          "rank": 3,
+          "nameHe": "שרגא אברהם וולף"
+        },
+        {
+          "rank": 4,
+          "nameHe": "אסטיוק סלמאן"
+        },
+        {
+          "rank": 5,
+          "nameHe": "פציפיצי ד״ר מנחם יהודה"
+        },
+        {
+          "rank": 6,
+          "nameHe": "בלויא יהודה"
+        },
+        {
+          "rank": 7,
+          "nameHe": "רפול דוד"
+        },
+        {
+          "rank": 8,
+          "nameHe": "וינשטין מרדכי"
+        },
+        {
+          "rank": 9,
+          "nameHe": "שטרן חיים"
+        },
+        {
+          "rank": 10,
+          "nameHe": "מוסאיוף רחביה"
+        },
+        {
+          "rank": 11,
+          "nameHe": "גלרנטר יוסף אפרים פישל"
+        },
+        {
+          "rank": 12,
+          "nameHe": "הכהן רפאל חיים"
+        },
+        {
+          "rank": 13,
+          "nameHe": "ארליך נפתלי"
+        },
+        {
+          "rank": 14,
+          "nameHe": "משה יהושע"
+        },
+        {
+          "rank": 15,
+          "nameHe": "שורץ שמחה בונם"
+        },
+        {
+          "rank": 16,
+          "nameHe": "ישראל בן ציון"
+        },
+        {
+          "rank": 17,
+          "nameHe": "איזקס יצחק"
+        },
+        {
+          "rank": 18,
+          "nameHe": "שורץ אריה שלמה"
+        },
+        {
+          "rank": 19,
+          "nameHe": "ברוסין שלמה"
+        },
+        {
+          "rank": 20,
+          "nameHe": "שפרינצלס מיכאל אליעזר"
+        },
+        {
+          "rank": 21,
+          "nameHe": "כהן פרחיה עזרא"
+        },
+        {
+          "rank": 22,
+          "nameHe": "וינברג אברהם"
+        },
+        {
+          "rank": 23,
+          "nameHe": "שוריקי יצחק"
+        },
+        {
+          "rank": 24,
+          "nameHe": "צימר אוריאל"
+        },
+        {
+          "rank": 25,
+          "nameHe": "אוחנה גד"
+        },
+        {
+          "rank": 26,
+          "nameHe": "שטוקהמר יהושע משה"
+        },
+        {
+          "rank": 27,
+          "nameHe": "ששון דוד"
+        },
+        {
+          "rank": 28,
+          "nameHe": "שפירא משה"
+        },
+        {
+          "rank": 29,
+          "nameHe": "אמסלם אברהם"
+        },
+        {
+          "rank": 30,
+          "nameHe": "רובינשטין קלמן"
+        },
+        {
+          "rank": 31,
+          "nameHe": "דהאן יוסף"
+        },
+        {
+          "rank": 32,
+          "nameHe": "מונדשיין מרדכי"
+        },
+        {
+          "rank": 33,
+          "nameHe": "עקיבא שלום"
+        },
+        {
+          "rank": 34,
+          "nameHe": "מגיד צבי"
+        }
+      ],
+      "electedNames": [],
+      "electedCandidateRanks": [],
+      "crossCheck": "Complete 34-name roster visually transcribed from YP 174 printed p.1147; YP 181 gives zero seats. No elected names or excluded ranks. Not a withdrawn list."
+    },
+    {
+      "letters": "ש",
+      "candidatePdfPages": [
+        15
+      ],
+      "resultsPdfPages": [
+        1
+      ],
+      "truncated": false,
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "פעילן אדם"
+        },
+        {
+          "rank": 2,
+          "nameHe": "פייגנבוים צבי"
+        },
+        {
+          "rank": 3,
+          "nameHe": "גרסיאני יצחק"
+        },
+        {
+          "rank": 4,
+          "nameHe": "הורביץ לואיס"
+        },
+        {
+          "rank": 5,
+          "nameHe": "אקסן יוסף"
+        },
+        {
+          "rank": 6,
+          "nameHe": "שיבר חביב"
+        },
+        {
+          "rank": 7,
+          "nameHe": "אוברלנדר הנריך"
+        },
+        {
+          "rank": 8,
+          "nameHe": "ברון זאב (משה)"
+        },
+        {
+          "rank": 9,
+          "nameHe": "לוריא אלכסנדר"
+        },
+        {
+          "rank": 10,
+          "nameHe": "ברנר אלפרד"
+        },
+        {
+          "rank": 11,
+          "nameHe": "אפל ד״ר שנדור"
+        },
+        {
+          "rank": 12,
+          "nameHe": "גרינבלט ז׳ן"
+        },
+        {
+          "rank": 13,
+          "nameHe": "כשיון דוד"
+        },
+        {
+          "rank": 14,
+          "nameHe": "לוי ז׳ן יעקב"
+        },
+        {
+          "rank": 15,
+          "nameHe": "גולדשטיין ברנרד"
+        },
+        {
+          "rank": 16,
+          "nameHe": "סגל שמעון"
+        }
+      ],
+      "electedNames": [],
+      "electedCandidateRanks": [],
+      "crossCheck": "Complete 16-name roster visually transcribed from YP 174 printed p.1155; YP 181 gives zero seats. No elected names or excluded ranks. Not a withdrawn list."
     }
   ],
   "electedNamesConvention": "Reviewed elected identities, in the candidate-gazette spelling, not a diplomatic transcription of results typography. electedCandidateRanks maps the results order back to registered candidate ranks. Honorifics, commas, spacing and hyphens are not identity differences.",
@@ -1062,6 +1292,46 @@
       "from": "המדאן פארס",
       "to": "חמדאן פארס",
       "evidence": "Re-read at high zoom; both notices print \"חמדאן פארס\": k2-candidates-gazette PDF page 10 (printed p. 1150); k2-results-gazette PDF page 2."
+    },
+    {
+      "reviewedOn": "2026-11-06",
+      "letters": "ו",
+      "rank": 2,
+      "from": "אונא משה",
+      "to": "אונה משה",
+      "evidence": "Visual re-read of YP 174 PDF page 5 and YP 181 elected names; candidate-notice spelling \"אונה משה\" controls this field; modern Knesset spelling is a separate biography convention."
+    },
+    {
+      "reviewedOn": "2026-11-06",
+      "letters": "יד",
+      "rank": 3,
+      "from": "מעדי גבר",
+      "to": "מעדי ג׳בר",
+      "evidence": "Visual re-read of YP 174 PDF page 8 and YP 181 elected names; candidate-notice spelling \"מעדי ג׳בר\" controls this field; modern Knesset spelling is a separate biography convention."
+    },
+    {
+      "reviewedOn": "2026-11-06",
+      "letters": "נ",
+      "rank": 1,
+      "from": "חניפס צאלח חסן",
+      "to": "ח׳ניפס צאלח חסן",
+      "evidence": "Visual re-read of YP 174 PDF page 10 and YP 181 elected names; candidate-notice spelling \"ח׳ניפס צאלח חסן\" controls this field; modern Knesset spelling is a separate biography convention."
+    },
+    {
+      "reviewedOn": "2026-11-06",
+      "letters": "סצ",
+      "rank": 2,
+      "from": "ששון סלים בנימין",
+      "to": "ששון סילס בנימין",
+      "evidence": "Visual re-read of YP 174 PDF page 10 and YP 181 elected names; candidate-notice spelling \"ששון סילס בנימין\" controls this field; modern Knesset spelling is a separate biography convention."
+    },
+    {
+      "reviewedOn": "2026-11-06",
+      "letters": "ק",
+      "rank": 4,
+      "from": "וילנסקה (ברישטיין) אסתר",
+      "to": "וילנסקה (בריטשטיין) אסתר",
+      "evidence": "Visual re-read of YP 174 PDF page 13 and YP 181 elected names; candidate-notice spelling \"וילנסקה (בריטשטיין) אסתר\" controls this field; modern Knesset spelling is a separate biography convention."
     }
   ]
 }

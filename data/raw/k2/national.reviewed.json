@@ -1,6 +1,6 @@
 {
   "id": "k2",
-  "reviewedOn": "2026-11-03",
+  "reviewedOn": "2026-11-06",
   "resultsSourceId": "k2-results-gazette",
   "candidateSourceId": "k2-candidates-gazette",
   "pages": {
@@ -29,7 +29,7 @@
     },
     {
       "letters": "ב",
-      "nameHe": "המזרחי והדתיים בלתי מפלגתיים",
+      "nameHe": "המזרחי ודתיים בלתי מפלגתיים",
       "votes": 10383,
       "officialSeats": 2
     },
@@ -46,10 +46,11 @@
       "officialSeats": 2
     },
     {
-      "letters": "ה",
+      "letters": "ו",
       "nameHe": "רשימת תורה ועבודה הפועל המזרחי ודתיים בלתי מפלגתיים",
       "votes": 46347,
-      "officialSeats": 8
+      "officialSeats": 8,
+      "legacyId": "2-ה"
     },
     {
       "letters": "ח",
@@ -58,10 +59,11 @@
       "officialSeats": 8
     },
     {
-      "letters": "טח",
+      "letters": "טת",
       "nameHe": "אמוני ישראל אחוד ספרדים אשכנזים",
       "votes": 4038,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyId": "2-טח"
     },
     {
       "letters": "יד",
@@ -89,7 +91,7 @@
     },
     {
       "letters": "סצ",
-      "nameHe": "רשימה ספרדים ועדות המזרח ותיקים ועולים",
+      "nameHe": "רשימת ספרדים ועדות המזרח ותיקים ועולים",
       "votes": 12002,
       "officialSeats": 2
     },
@@ -143,7 +145,7 @@
       "ב",
       "ג",
       "ד",
-      "ה",
+      "ו",
       "ח",
       "יד",
       "ל",
@@ -158,5 +160,15 @@
     "sourceId": "k2-rosters-reviewed",
     "note": "Contiguous prefixes cover every elected member, with results-notice exclusions explicitly mapped. Later ranks omitted, not complete registered lists."
   },
-  "releaseBlockers": []
+  "releaseBlockers": [],
+  "corrections": [
+    {
+      "reviewedOn": "2026-11-06",
+      "sourceIds": [
+        "k2-results-gazette",
+        "k2-candidates-gazette"
+      ],
+      "evidence": "YP 181 p.1241 prints ו (46347 votes) and טת (4038 votes); YP 174 p.1145 prints \"אות הרשימה: ו\". YP 174 p.1147 heading appears טח; results-record טת controls displayed letters. Internal IDs remain 2-ה and 2-טח. YP 174 p.1142: \"המזרחי ודתיים בלתי מפלגתיים\"; p.1150: \"רשימת ספרדים ועדות המזרח ותיקים ועולים\". YP 181 table prints רשימה ספרדים, retained here as a printed variant rather than the registered name."
+    }
+  ]
 }

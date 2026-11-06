@@ -273,7 +273,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k2.json",
-      "sha256": "3783c82e3ab6288208e95f997185b69764d7edfd5f84a5b610069f4dc8639f03",
+      "sha256": "eafd3ffcc1c022cfd9c76fe2f04d6306be643e05c873062aa54a9aa942f2af9f",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k3": {
