@@ -16,7 +16,9 @@ export interface EarlyReview {
   id: ElectionId; reviewedOn: string; resultsSourceId: string; candidateSourceId: string;
   pages: { votes: number; seats: number; invalid: number };
   nationalTotals: { registered: number; votesCast: number; valid: number; invalid: number };
-  lists: { letters: string; nameHe: string; votes: number; officialSeats: number }[];
+  // legacyId: a corrected ballot letter keeps its original list ID (stable key for saved scenarios and links).
+  // withdrawn: an approved list that did not run (votes and seats 0); notesHe carries its sourced explanation.
+  lists: { letters: string; nameHe: string; votes: number; officialSeats: number; legacyId?: string; withdrawn?: boolean; notesHe?: string[] }[];
   agreements: { complete: boolean; pairs: [string,string][] | null; note: string; sourceId?: string };
   rosters: { completeWinningRosters: boolean; meetsReleaseStandard?: boolean; reviewedLists: string[]; sourceId?: string };
   releaseBlockers: string[];
@@ -33,9 +35,11 @@ export interface EarlyRosterReview {
 export function earlyReview(n:number):EarlyReview { assert(n>=1&&n<=7);return rawJson(`k${n}/national.reviewed.json`); }
 export function earlyRosterReview(n:number):EarlyRosterReview { return rawJson(`k${n}/rosters.reviewed.json`); }
 
-// k6 audit: corrected ballot letters must not rename saved scenario/list keys.
-const stableLetters = (n:number, letters:string) => n===6
-  ? ({כנ:'כס',ענ:'עס',פש:'סס'} as Record<string,string>)[letters] ?? letters : letters;
+// Audits k3–k6: the ID key for a list is its legacyId's letters when its ballot letter was corrected.
+const keyLetters = (r:EarlyReview, letters:string) => {
+  const id = r.lists.find(l=>l.letters===letters)?.legacyId;
+  return id ? id.slice(id.indexOf('-')+1) : letters;
+};
 
 /** k1–k7 serialize color/votes earlier and sponsors/parties later than other eras; roster flags last. */
 const EARLY_LIST_KEYS = ['id', 'letters', 'nameHe', 'shortHe', 'shortEn', 'color', 'votes', 'withdrawn', 'bloc', 'candidates', 'candidatesSource',
@@ -51,10 +55,10 @@ export function earlyResearchDataset(n:number):ElectionDataset {
     status:{stage:'official-final',asOf:r.reviewedOn,noteHe:'נתוני מחקר בלבד; רשימות המועמדים לא תומללו.',noteEn:'RESEARCH ONLY. No-connections diagnostic when notice missing; candidate rosters unverified.'},
     ruleSetId:n===1?ISRAEL_1949.id:ISRAEL_1951.id,
     totals:{...r.nationalTotals,ballotBoxes:0,localities:0},
-    lists:r.lists.map((l,i)=>({...listRecord(n,i,{letters:stableLetters(n,l.letters),nameHe:l.nameHe,votes:l.votes,candidatesSource:r.candidateSourceId,candidatesUnavailable:true,
+    lists:r.lists.map((l,i)=>({...listRecord(n,i,{letters:keyLetters(r,l.letters),nameHe:l.nameHe,votes:l.votes,...(l.withdrawn?{withdrawn:true}:{}),candidatesSource:r.candidateSourceId,candidatesUnavailable:true,
       notesHe:['RESEARCH ONLY — full candidate roster unverified.']},EARLY_LIST_KEYS),letters:l.letters})),
-    agreements:agreementRecords(n,(r.agreements.pairs??[]).map(([a,b])=>[stableLetters(n,a),stableLetters(n,b)]),r.agreements.sourceId!),
-    blocs:[],hasLocalities:false,officialSeats:officialSeatsOf(n,r.lists.map(l=>({letters:stableLetters(n,l.letters),seats:l.officialSeats}))),officialSeatsSourceId:r.resultsSourceId,
+    agreements:agreementRecords(n,(r.agreements.pairs??[]).map(([a,b])=>[keyLetters(r,a),keyLetters(r,b)] as [string,string]),r.agreements.sourceId!),
+    blocs:[],hasLocalities:false,officialSeats:officialSeatsOf(n,r.lists.map(l=>({letters:keyLetters(r,l.letters),seats:l.officialSeats}))),officialSeatsSourceId:r.resultsSourceId,
     sourceIds:[r.resultsSourceId,r.candidateSourceId,'k1-k7-cbs-national-totals'],buildInfo:{builtAt:r.reviewedOn,rawSha256:{}},
   };
 }
@@ -65,7 +69,7 @@ export function earlyDiagnostic(n:number) {
 function evidenceIds(n:number,r:EarlyReview) {
   return [r.resultsSourceId,r.candidateSourceId,'k1-k7-cbs-national-totals',`k${n}-national-reviewed`,
     ...(r.agreements.sourceId?[r.agreements.sourceId]:[]),...(r.rosters.sourceId?[r.rosters.sourceId]:[]),
-    ...(n===3?['k3-candidates-mirror']:[]),
+    ...(n===3?['k3-candidates-mirror','k3-withdrawals-gazette']:[]),
     `k1-k7-law-${n===1?'1948':n===2?'1951':n===3?'1955':n===7?'1969':'1959'}`,
     ...(n===1?['k1-k7-law-1948-312737']:[])];
 }
@@ -134,7 +138,7 @@ export function earlyReleasedDataset(n:number,audit:EarlyAudit=verifyEarlyProgre
     // the pre-roster record marks capacity unknown; a reviewed roster replaces that flag
     const {candidatesUnavailable:_pending,...base}=l;
     return inKeyOrder({...base,
-      notesHe:(reviewed?.candidates??[]).filter(c=>excluded.has(c.rank)).map(notSeatedNoteHe),
+      notesHe:[...(r.lists.find(x=>x.letters===l.letters)?.notesHe??[]),...(reviewed?.candidates??[]).filter(c=>excluded.has(c.rank)).map(notSeatedNoteHe)],
       candidates:reviewed?.candidates.map(c=>({...c,id:candidateId(l.id,c.rank),...(excluded.has(c.rank)?{notSeated:true}:{})}))??[],
       ...rosterFlags(!reviewed?'unavailable':reviewed.truncated?'truncated':'complete','explicit'),
     },EARLY_LIST_KEYS) as unknown as ElectionDataset['lists'][number];

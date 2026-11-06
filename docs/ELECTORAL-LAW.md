@@ -188,7 +188,7 @@ HaOlam HaZeh 1. The pair receives 47 seats and re-divides 45+2 at internal quota
 [0069a](decisions/0069a-k6-corrected-connection-national-release.md) supersedes the
 1965-specific uncertainty in decisions 0060–0062 and 0068. Follow-up evidence now supplies complete notices for the released
 1951–1969 datasets: **YP 177 p.1177** (צ–סצ), **YP 427 p.1053** (א–יד, פ–ש,
-צ–צח, סא–ל, נ–ע), **YP 709 p.125** (א–רא, יא–ע), **YP 865 p.1843** (ב–ד,
+צ–צח, סצ–ל, נ–ע), **YP 709 p.125** (א–רא, יא–ע), **YP 865 p.1843** (ב–ד,
 מ–תו, יא–רא), and **YP 1565 p.246** (יא–רא). Signed primary notices were read
 in full; inactive pairs are retained. All seats match with the existing preset,
 including the formerly mismatched 1959 Mapai 47 and Cooperation and Brotherhood 2.

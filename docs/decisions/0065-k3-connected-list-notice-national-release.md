@@ -4,11 +4,11 @@
 
 ## Evidence and allocation
 
-A fresh search recovered [YP 427, p.1053, PDF p.1](https://olaw.org.il/yalkut/yalkut-0427.pdf), the complete signed notice of **א–יד, פ–ש, צ–צח, סא–ל, נ–ע**. The file is retained as `data/raw/k3/agreements.pdf`. In particular the second pair is **Progressive פ–Popular Economic ש**, not Ahdut HaAvoda. Only א–יד and נ–ע activate; all five remain in the dataset. Every gazetted seat reproduces without changing the formula.
+A fresh search recovered [YP 427, p.1053, PDF p.1](https://olaw.org.il/yalkut/yalkut-0427.pdf), the complete signed notice of **א–יד, פ–ש, צ–צח, סצ–ל, נ–ע**. The file is retained as `data/raw/k3/agreements.pdf`. In particular the second pair is **Progressive פ–Popular Economic ש**, not Ahdut HaAvoda. Only א–יד and נ–ע activate; all five remain in the dataset. Every gazetted seat reproduces without changing the formula.
 
 The fresh search retrieved zero-padded mirror issues **425–432**; covers 426–431 were inspected to locate the notice, then its whole three-page issue was read (notice, unrelated land publication, blank page). The retained candidate/results BlobFolder originals were read. The inferred gov.il memorandum URL `memorandum-knesset3/he/archive_knesset3_memorandum1.pdf` returned 404; this is a failed path, not proof of absent CEC records. A fresh NLI query for התקשרות in 1955 returned HTTP 403, so no newspaper content or absence is claimed. The complete official notice removes the missing-agreements qualification.
 
-A second copy of [candidate issue YP 425](https://olaw.org.il/yalkut/yalkut-0425.pdf), retained as `candidates-mirror.pdf`, was used with the results to resolve **אבו-מוך פארס חמדאן** (p.1017, PDF p.13). Other difficult readings were checked at enlarged resolution, including Mapam rank 9 **חיים יהודה**, and the NRP's **זוארץ פריג׳ה**. No modern biographical list supplied a candidate name.
+A byte-identical mirror (same scan, not independent evidence) of [candidate issue YP 425](https://olaw.org.il/yalkut/yalkut-0425.pdf), retained as `candidates-mirror.pdf`, was used with the results to resolve **אבו-מוך פארס חמדאן** (p.1017, PDF p.13). Other difficult readings were checked at enlarged resolution, including Mapam rank 9 **חיים יהודה**, and the National Religious Front's **זוארץ פריג׳ה**. No modern biographical list supplied a candidate name.
 
 National valid votes **853,219** reconcile with CBS; invalid/cast/registered totals are unchanged. Quota **6,938**. Every published list seat count, including all zero-seat lists, matches; **120/120 seats**. Original gazettes, reviewed national/roster JSON, and connection evidence are SHA-256 bound in `SOURCES.json` and the built dataset.
 

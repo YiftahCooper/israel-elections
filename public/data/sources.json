@@ -1911,7 +1911,7 @@
   "url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/records-results3/he/archive_knesset3_records-results3.pdf",
   "publisher": "Central Elections Committee / Reshumot (gov.il host)",
   "official": true,
-  "description": "Official results gazette for Knesset 3; government-hosted primary publication",
+  "description": "Official results gazette for Knesset 3; government-hosted primary publication; YP 432 (8 August 1955), pp.1137–1139, signed 4 August 1955.",
   "method": "http",
   "retrievedAt": "2026-11-03T15:32:04.218633+00:00",
   "bytes": 3631315,
@@ -1938,8 +1938,8 @@
   "description": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
   "method": "manual-transcription",
   "retrievedAt": "2026-11-03T18:20:00Z",
-  "bytes": 4534,
-  "sha256": "97a7bc1f02ff67e67e56fbb9acfe8a07a2e1357a17c247f4d5a0f63afc00ec83"
+  "bytes": 5892,
+  "sha256": "e0f56dbe03cb914835b9f8848f60a554c328e762daf90dd220d0ea7227d138d5"
  },
  {
   "id": "k4-results-gazette",
@@ -2046,8 +2046,8 @@
   "description": "Visually reviewed national votes and published seats; YP 1225 first partner corrected to רא after fresh primary-scan inspection (0069a). Winning-prefix and elected-name release requirements met; no inferred agreements.",
   "method": "manual-transcription",
   "retrievedAt": "2026-11-03T18:20:00Z",
-  "bytes": 5196,
-  "sha256": "bc7ce308f04d017eaaf4319e55f2cdfbb57632a01f9bf807af12e2d3b24a0a32"
+  "bytes": 5280,
+  "sha256": "76b7918edd48e964a644824749ed18f912e3e2e836c6ef8d20899b442dea3c23"
  },
  {
   "id": "k7-results-gazette",
@@ -2894,7 +2894,7 @@
   "publisher": "רשומות — ילקוט הפרסומים 425",
   "publisherEn": "Reshumot — Yalkut HaPirsumim 425",
   "official": true,
-  "description": "Second scan copy used to resolve the Agriculture and Development candidate spelling on p.1017 (PDF p.13).",
+  "description": "Byte-identical mirror of the candidate gazette (same scan, not independent evidence); spelling also checked against YP 432.",
   "method": "http",
   "retrievedAt": "2026-11-03",
   "bytes": 818680,
@@ -2936,8 +2936,8 @@
   "description": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
   "method": "visual-primary-review",
   "retrievedAt": "2026-11-03",
-  "bytes": 23465,
-  "sha256": "d505687fba01577641a9ad7671d73bfe417da6273378df7446117aec313aef6d",
+  "bytes": 23478,
+  "sha256": "d067a7f8fb84a10b9ee74a98fb077b85460535b76456904939906a99f0935a9e",
   "lastModified": null
  },
  {
@@ -6262,5 +6262,18 @@
   "bytes": 1211675,
   "retrievedAt": "2026-11-06",
   "note": "IDI-hosted annotated copy of YP 1222; handwritten party marks are academic evidence, not part of the official printed notice."
+ },
+ {
+  "id": "k3-withdrawals-gazette",
+  "file": "k3/withdrawals.pdf",
+  "url": "https://olaw.org.il/yalkut/yalkut-0429.pdf",
+  "publisher": "רשומות — ילקוט הפרסומים 429 (24.7.1955), עמ׳ 1087–1088",
+  "official": true,
+  "description": "Candidate resignations, including all nine candidates of list יז (item 6), signed 20 July 1955; candidate-name correction p.1088.",
+  "method": "http",
+  "retrievedAt": "2026-11-06",
+  "bytes": 106573,
+  "sha256": "ac285b71c7cffdee37e3321b36f39ed7d8a3c186688498c86ae61df18ddc22ac",
+  "publisherEn": "Reshumot — Yalkut HaPirsumim 429 (24 July 1955), pp.1087–1088"
  }
 ]

@@ -429,7 +429,7 @@ investigation records, not current release status.
 |---|---:|---:|---:|---|---|---|
 | k1 | 434,684 | 21 | 3,592 | CEC allocation appendix p.5 (PDF p.6): ב–ל, ט–יג, יא–יד, מ–ת, ס–צ | All seats match; both choices in an integer-quotient tie yield the same totals | 12 / 128 / 120 |
 | k2 | 687,492 | 17 | 5,692 | YP 177 p.1177: צ–סצ | All seats match | 15 / 120 / 120 |
-| k3 | 853,219 | 18 | 6,938 | YP 427 p.1053: א–יד, פ–ש, צ–צח, סא–ל, נ–ע | All seats match | 12 / 120 / 120 |
+| k3 | 853,219 | 18 | 6,938 | YP 427 p.1053: א–יד, פ–ש, צ–צח, סצ–ל, נ–ע | All seats match | 12 / 120 / 120 |
 | k4 | 969,337 | 24 | 7,800 | YP 709 p.125: א–רא, יא–ע | All seats match; resolves former Mapai/Cooperation gap | 12 / 120 / 120 |
 | k5 | 1,006,964 | 14 | 8,332 | YP 865 p.1843: ב–ד, מ–תו, יא–רא | All seats match | 11 / 122 / 120 |
 | k6 | 1,206,728 | 17 | 9,881 | YP 1225 p.189: את–רא, כא–כנ | All seats match; corrected misread partner רא (Progress and Development), formerly יא | 13 / 120 / 120 |

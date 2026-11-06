@@ -176,7 +176,7 @@
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/records-results3/he/archive_knesset3_records-results3.pdf",
-        "titleHe": "ליכוד — תנועה כללית עממית — הודעת התוצאות לכנסת 3",
+        "titleHe": "ליכוד — תנועה כלכלית עממית — הודעת התוצאות לכנסת 3",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-3",
         "sourceType": "cec",
@@ -198,7 +198,7 @@
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/records-results3/he/archive_knesset3_records-results3.pdf",
-        "titleHe": "רשימה דתית מקורית, נציגה בני תימן ודתיים בלתי מפלגתיים — הודעת התוצאות לכנסת 3",
+        "titleHe": "רשימה דתית מקורית, תנועת בני תימן ודתיים בלתי מפלגתיים — הודעת התוצאות לכנסת 3",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-3",
         "sourceType": "cec",
@@ -215,7 +215,8 @@
         "sourceType": "cec",
         "confidence": "high"
       }
-    ]
+    ],
+    "3-יז": []
   },
   "parties": {
     "hapoel-hamizrachi": [
@@ -322,6 +323,10 @@
     },
     "poalei-agudat-yisrael": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "3-יז": {
+      "neutral": "Approved in YP 425 p.1013; all candidates withdrew per YP 429 p.1087. No independent party profile retrieved.",
+      "partisan": "No contemporaneous party-owned page retrieved."
     }
   }
 }
