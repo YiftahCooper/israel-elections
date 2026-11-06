@@ -167,7 +167,7 @@ components:
 
 The screen reads like a stock-exchange board or a business-press market table. The official result is the opening price; every edit the user makes is the session, and the board reprices live. A navy shell band sits over a cool grey ground, and the picture leads: the chamber is the centre of the board, the lists are a column of seat bars, and an opened list sits in a side panel beside them. Each tool is a full-width page of its own, drawn rather than written, and the board keeps its state when you come back. Nothing is a card grid, and no feature hides behind a menu.
 
-Density is high and deliberate. One workhorse face with tabular figures carries everything at almost one size; rank comes from weight and from the navy marker on the selected list, not from big type. Party colour belongs to the parties: it appears in their ballot slips, seats, wedges and the pale tinted corridors of their blocs, never in the interface chrome. Change is drawn in neutral ink with a small drawn triangle, never green or red, so no camp is ever coloured as winning or losing.
+Density is high and deliberate. One workhorse face with tabular figures carries everything at almost one size; rank comes from weight and from the navy marker on the selected list, not from big type. Party colour belongs to the parties: it appears in their ballot slips, seats, wedges and the pale tinted corridors of their blocs, never in the interface chrome. Seat changes use signed green ▲ gains and red ▼ losses, with arrows and signs so colour is never the only cue. These describe seat counts, not a political endorsement.
 
 The same board serves three levels (Simple, Standard, Expert). Levels thin the board by removing columns and controls; they never move a feature behind a click or hide that it exists. Hebrew right-to-left is the default and English left-to-right is equal; both have light and dark themes.
 
@@ -176,14 +176,14 @@ The same board serves three levels (Simple, Standard, Expert). Levels thin the b
 - One face (IBM Plex Sans Hebrew, self-hosted 400/500/600/700) with tabular figures everywhere.
 - One data type size; rank carried by weight and the reversed navy plate.
 - Figures open viewport-bounded popovers; bloc corridors open their editor; a list opens in the side panel; tools are pages.
-- Party colour only as party identity; change in neutral ink.
+- Party colour only as party identity; seat changes use shared signed gain/loss arrows.
 - The threshold is a hatched rule inside the table.
 - Flat surfaces; shadow only on floating layers.
 - Logical (inline-start/end) layout throughout, so the board mirrors cleanly between Hebrew and English.
 
 ## Colors
 
-A restrained cool-neutral board with one navy accent; the only saturated colour on screen belongs to the parties.
+A restrained cool-neutral board with one navy accent. Party colours identify parties; small signed seat-change readouts use the gain/loss status colours.
 
 ### Primary
 - **Exchange Navy** (shell-navy): the shell band, primary buttons, pressed segment buttons, the selected list's hairline outline, the border of an opened figure, the active tab underline, the majority milestone's label, a checked switch and range-slider accent.
@@ -212,7 +212,7 @@ A restrained cool-neutral board with one navy accent; the only saturated colour 
 **Dark theme.** `[data-theme="dark"]` remaps every token rather than adding new ones: navy deepens (#0a2240 band, #173a63 raised), the ground goes near-black (#0f1215) under #171b20 surfaces, ink lightens to #e8eaec, rules to #29303a/#3a434e, focus to #78a8ff, threshold rust to #f0a184 on a #2f201c/#251a17 hatch, and the floating shadow becomes `0 8px 28px rgba(0,0,0,.5)`. Bloc corridors rise from a 14% to a 22% tint and dimmed seats from .22 to .38 opacity so they stay legible.
 
 ### Named Rules
-**The Neutral Ink Rule.** Change is drawn in ink (600 weight) with a drawn 8px triangle mark, never green or red. Colour on this board means "this party", never "good" or "bad" for a camp.
+**The Seat Change Rule.** Use the shared `SeatDelta` treatment: green ▲ +N for gains, red ▼ −N for losses, neutral ±0. Keep arrows and signs left-to-right in both languages. Light-theme gain/loss colours are #17633a/#a12830; dark-theme colours are #83dfac/#ffabb2. Check text contrast against result surfaces by test. Party colours continue to mean party identity; gain/loss colours describe a count, not a camp.
 
 **The Party Owns Its Colour Rule.** Party and bloc colours come from the data (passed in as a per-element colour variable) and appear only as identity: ballot-slip borders, seats, chamber wedges, bloc pieces, coalition chips, and pale regions (12% for elected candidates, 14% / 22% dark for bloc corridors, 20% for an included coalition chip). They never colour buttons, tabs or chrome.
 
@@ -329,7 +329,7 @@ State moves, it does not perform: switch 0.15s; corridors and colour pieces 0.3s
 ## Do's and Don'ts
 
 ### Do:
-- **Do** draw change in ink at 600 weight with the drawn triangle mark (Neutral Ink Rule).
+- **Do** show seat changes with the shared signed gain/loss arrows (Seat Change Rule).
 - **Do** open things where they are: a figure in a popover beside its tile, a bloc in the side panel beside the chamber, which redraws as it is edited; a list in the side panel; a tool as its own page.
 - **Do** keep data between 12.5px and 15px and rank it by weight and the navy plate.
 - **Do** set every number tabular and end-aligned.

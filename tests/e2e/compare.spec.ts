@@ -102,7 +102,7 @@ test('Hebrew Compare keeps bars, tracks and signs left to right', async ({ page 
   const ticks = page.locator('.db-axis .db-track span');
   expect((await ticks.first().boundingBox())!.x).toBeLessThan((await ticks.last().boundingBox())!.x);
   const shares = await page.locator('.cmp tbody tr').first().locator('td bdi').allTextContents();
-  expect(shares.every(t => /^[+−]/.test(t))).toBe(true);
+  expect(shares.every(t => /^(?:[▲▼]\s*)?[+−±]/.test(t))).toBe(true);
 });
 
 test('an election without a threshold says so', async ({ page }) => {

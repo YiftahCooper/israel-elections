@@ -1,3 +1,4 @@
+import { SeatDelta } from './SeatDelta.tsx';
 import { freshScenario } from '../factionDefaults.ts';
 import { Info } from './ui.tsx';
 // One-click counterfactuals (presets and engine runs in ../whatIf.ts). A row reads question → answer:
@@ -89,7 +90,7 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
               </div>
               {/* the answer at a glance: each list that moves, in its colour, with its seat change; otherwise what does change */}
               <div className="wi-a small" aria-label={answer}>{changes.length ? changes.map((c) => (
-                <span key={c.label} className="wi-chip"><span className="swatch" style={{ background: c.color }} />{c.label} <b dir="ltr">{signed(c.after - c.before)}</b></span>
+                <span key={c.label} className="wi-chip"><span className="swatch" style={{ background: c.color }} />{c.label} <b dir="ltr"><SeatDelta value={c.after - c.before} /></b></span>
               )) : <><span className="muted">{L('No seat changes', 'אין שינוי במנדטים')}</span>{facts[0] && <Fact f={facts[0]} lang={lang} />}</>}</div>
               <button className="btn small" disabled={!actions} onClick={() => actions && tryIt(title, body, actions)}>{L('Open as a scenario', 'פתיחה כתרחיש')}</button>
               {isOpen && changes.length > 0 && (
@@ -101,7 +102,7 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
                         <span className="cmp-neg">{d < 0 && <i style={{ width: `${(-d / max) * 100}%`, background: 'var(--ink)' }} />}</span>
                         <span className="cmp-axis" aria-hidden />
                         <span className="cmp-pos">{d > 0 && <i style={{ width: `${(d / max) * 100}%`, background: 'var(--ink)' }} />}</span>
-                        <b className="cmp-d" dir="ltr">{d > 0 ? `+${d}` : `−${-d}`}</b>
+                        <b className="cmp-d" dir="ltr"><SeatDelta value={d} /></b>
                       </li>
                     ); })}
                   </ul>

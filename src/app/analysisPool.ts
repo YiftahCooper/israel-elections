@@ -1,11 +1,12 @@
 // Runs analysis tasks on a small pool of workers (in parallel on multi-core devices), falling back
 // to the main thread, one task per macrotask, when workers are unavailable or fail.
+import { encodeAnalysis, readAnalysis, retainAnalysis } from './analysisCache.ts';
 import { runTask, type AnalysisTask, type TaskResult } from './analysisTasks.ts';
 
 const poolSize = () => Math.max(1, Math.min(4, (globalThis.navigator?.hardwareConcurrency || 2) - 1));
 
 /** Calls `done` once per task, in completion order; returns a function that stops all work. */
-export function runTasks<T extends AnalysisTask>(tasks: T[], done: (index: number, value: TaskResult<T>) => void): () => void {
+function executeTasks<T extends AnalysisTask>(tasks: T[], done: (index: number, value: TaskResult<T>) => void): () => void {
   let stopped = false;
   let next = 0;
   const remaining = new Set(tasks.map((_, i) => i));
@@ -53,4 +54,29 @@ export function runTasks<T extends AnalysisTask>(tasks: T[], done: (index: numbe
     } catch { failed(); }
   }
   return () => { stopped = true; clearTimeout(timer); for (const w of workers.splice(0)) w.terminate(); };
+}
+
+/** Retain whole batches: the many bloc searches share one stored engine input/result entry. */
+export function runTasks<T extends AnalysisTask>(tasks: T[], done: (index: number, value: TaskResult<T>) => void): () => void {
+  const inputs: unknown[] = [], seen = new Map<string, number>();
+  const compact = tasks.map(({ input, ...task }) => {
+    const source = encodeAnalysis(input);
+    let index = seen.get(source);
+    if (index === undefined) { index = inputs.length; inputs.push(input); seen.set(source, index); }
+    return { ...task, input: index };
+  });
+  const key = { inputs, tasks: compact };
+  const cached = readAnalysis<TaskResult<T>[]>(key);
+  if (cached) {
+    let stopped = false;
+    queueMicrotask(() => { cached.forEach((value, i) => { if (!stopped) done(i, value); }); });
+    return () => { stopped = true; };
+  }
+  const results: TaskResult<T>[] = new Array(tasks.length);
+  let count = 0;
+  return executeTasks(tasks, (i, value) => {
+    results[i] = value;
+    if (++count === tasks.length) retainAnalysis(key, results);
+    done(i, value);
+  });
 }

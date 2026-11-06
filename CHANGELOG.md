@@ -9,6 +9,7 @@
 - Scenarios mark unsaved changes, reopen saved versions while keeping drafts, and resolve duplicate names with overwrite, numbered copy or a custom name.
 - Synthetic lists use divided constituent ballot tiles, marked split parts and clean new-list letters through the shared logo path, comparison records, chamber legends and image exports.
 - Make allocation walkthrough navigation manual, drop the 80% turnout What-if preset, and name self-defined voter groups “Custom group” in English and Hebrew; new groups still start with no turnout change.
+- Sensitivity: votes, majority, then threshold; persistent input-keyed analysis reuse, scenario-colour party labels and preferred precision. Shared signed green/red seat arrows across result and editing screens.
 
 - Compare opens unchanged results against the previous election, including when saved scenarios exist; explicit comparison choices stay selected, edits use the usual official result/reference, and the earliest election keeps its chooser.
 

@@ -1,3 +1,6 @@
+import { cachedAnalysis } from '../analysisCache.ts';
+import { SeatDelta } from './SeatDelta.tsx';
+import { PartyName } from './PartyName.tsx';
 import { ChoicePicker } from './ChoicePicker.tsx';
 import { GraphicChanges } from './GraphicChanges.tsx';
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
@@ -10,8 +13,8 @@ import { runTasks } from '../analysisPool.ts';
 import type { AnalysisTask, TransferOutcome } from '../analysisTasks.ts';
 import { blocPieces, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, fmtRat, signed } from '../format.ts';
-import { dispatch } from '../store.ts';
+import { fmtInt, fmtRat } from '../format.ts';
+import { dispatch, useDigits } from '../store.ts';
 import { Info, NumberInput } from './ui.tsx';
 import { useChartWidth } from './Charts.tsx';
 
@@ -25,7 +28,7 @@ export function Sensitivity({ s, r }: { s: Scenario; r: AllocationResult }) {
       <GraphicChanges s={s} r={r} />
       <div key={s.electionId} className="grid2 stack-sm sens" style={{ alignItems: 'start', gap: 18 }}>
         <VoteSweep s={s} r={r} />
-        <div><ThresholdSweep s={s} r={r} /><hr /><BlocFlip s={s} r={r} /></div>
+        <div><BlocFlip s={s} r={r} /><hr /><ThresholdSweep s={s} r={r} /></div>
       </div>
     </>
   );
@@ -33,8 +36,9 @@ export function Sensitivity({ s, r }: { s: Scenario; r: AllocationResult }) {
 
 const seatsOf = (r: AllocationResult) => Object.fromEntries(r.lists.filter((x) => x.seats).map((x) => [x.id, x.seats]));
 /** other lists whose seats differ from `now`, as "Name +1 · Name −2" */
-const diffText = (seats: Record<string, number>, now: Record<string, number>, skip: string | null, name: (id: string) => string) =>
-  Object.keys({ ...now, ...seats }).filter((x) => x !== skip && (seats[x] ?? 0) !== (now[x] ?? 0)).map((x) => `${name(x)} ${signed((seats[x] ?? 0) - (now[x] ?? 0))}`).join(' · ');
+function SeatChanges({ seats, now, skip = null, s }: { seats: Record<string, number>; now: Record<string, number>; skip?: string | null; s: Scenario }) {
+  return Object.keys({ ...now, ...seats }).filter(id => id !== skip && (seats[id] ?? 0) !== (now[id] ?? 0)).map(id => <span key={id} style={{ display: 'inline-block', marginInlineEnd: 8 }}><PartyName s={s} id={id} /> <SeatDelta value={(seats[id] ?? 0) - (now[id] ?? 0)} /></span>);
+}
 /** scrolls a table's container (never the page) so the row sits just under the sticky header */
 function revealRow(row: HTMLElement | null) {
   const box = row?.closest('.tablewrap') as HTMLElement | null;
@@ -95,8 +99,16 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
   const nowAt = sl ? segs.findIndex((g) => BigInt(sl.votes) >= g.from && BigInt(sl.votes) <= g.to) : -1;
   const active = sel !== null && sel < segs.length ? sel : nowAt;
   useEffect(() => setSel(null), [shown]);
-  useEffect(() => { if (active >= 0) revealRow(table.current?.children[active] as HTMLElement); }, [shown, active]);
-  const name = (lid: string) => { const x = (shown?.s ?? s).lists.find((y) => y.id === lid); return x ? listLabel(x, lang) : lid; };
+  useEffect(() => {
+    const row = table.current?.children[active] as HTMLElement | undefined;
+    if (!row) return;
+    const update = () => revealRow(row);
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(table.current!);
+    return () => observer.disconnect();
+  }, [shown, active]);
+
   const maxSeats = Math.max(1, ...segs.map((x) => x.seats[sid] ?? 0));
   const ticks = niceTicks(maxSeats);
   const x0 = 30, plotW = W - 50;
@@ -104,9 +116,9 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
   const y = (n: number) => 150 - (n / ticks[ticks.length - 1]) * 130;
   return (
     <div>
-      <h3>{L('Seats by votes', 'מנדטים לפי קולות')} <Info title={L('Seats by votes', 'מנדטים לפי קולות')}>{L('The seats one list wins at every vote count in the range. All other lists keep their votes, so the valid total changes with this list. Boundaries are exact whole vote counts.', 'המנדטים שרשימה אחת מקבלת בכל מספר קולות בטווח. שאר הרשימות שומרות על קולותיהן, ולכן סך הקולות הכשרים משתנה עם הרשימה. הגבולות הם מספרי קולות מדויקים.')}</Info></h3>
+      <h3>{L('Votes → seats', 'קולות ← מנדטים')} <Info title={L('Votes → seats', 'קולות ← מנדטים')}>{L('The seats one list wins at every vote count in the range. All other lists keep their votes, so the valid total changes with this list. Boundaries are exact whole vote counts.', 'המנדטים שרשימה אחת מקבלת בכל מספר קולות בטווח. שאר הרשימות שומרות על קולותיהן, ולכן סך הקולות הכשרים משתנה עם הרשימה. הגבולות הם מספרי קולות מדויקים.')}</Info></h3>
       <div className="row">
-        <ChoicePicker label={L('List', 'רשימה')} value={id} onChange={setPicked} options={main.slice(0, 30).map(x => ({ value: x.id, label: listLabel(x, lang) }))} />
+        <ChoicePicker label={L('List', 'רשימה')} value={id} onChange={setPicked} options={main.slice(0, 30).map(x => ({ value: x.id, label: listLabel(x, lang), preview: <span className="swatch" style={{ background: x.color }} /> }))} />
         <span className="row" dir="ltr" style={{ flexWrap: 'nowrap', gap: 6 }}>
           <span className="small">{L('from', 'מ')}</span><NumberInput value={from} onCommit={(n) => setRange(n, to)} label={L('From', 'מ')} width={100} />
           <span className="small">{L('to', 'עד')}</span><NumberInput value={to} onCommit={(n) => setRange(from, n)} label={L('To', 'עד')} width={100} />
@@ -147,7 +159,7 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
                 <tr key={k} className={k === active ? 'sel' : undefined} aria-current={k === nowAt || undefined} onClick={() => setSel(k)}>
                   <td className="n">{fmtInt(sg.from)}</td><td className="n">{fmtInt(sg.to)}</td>
                   <td className="n"><b>{sg.seats[sid] ?? 0}</b>{!sg.qualified.includes(sid) ? <span className="muted" title={L('Below the threshold', 'מתחת לאחוז החסימה')}> ✕</span> : ''}{k === nowAt && <span className="muted"> · {L('now', 'עכשיו')}</span>}</td>
-                  <td className="small">{diffText(sg.seats, shown.now, sid, name)}</td>
+                  <td className="small"><SeatChanges seats={sg.seats} now={shown.now} skip={sid} s={shown.s} /></td>
                 </tr>
               ))}</tbody>
             </table>
@@ -174,11 +186,11 @@ function PctInput({ value, onCommit, label }: { value: string; onCommit: (v: str
 }
 
 /** up to four decimals, without trailing zeros (1%, 3.25%, 3.1648%) */
-const pctText = (r: Rational) => { const t = fmtRat({ num: r.num * 100n, den: r.den }, 4); return `${t.includes('.') ? t.replace(/0+$/, '').replace(/\.$/, '') : t}%`; };
+const pctText = (r: Rational, digits: number) => { const t = fmtRat({ num: r.num * 100n, den: r.den }, digits); return `${t.includes('.') ? t.replace(/0+$/, '').replace(/\.$/, '') : t}%`; };
 
 function ThresholdSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
   const L = useL();
-  const lang = useLang();
+  const digits = useDigits();
   const [lo, setLo] = useState('1'); const [hi, setHi] = useState('5');
   const out = useMemo(() => {
     const clean = (x: string) => x.trim().replace('%', '');
@@ -186,18 +198,26 @@ function ThresholdSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
     if (!clean(lo) || !clean(hi) || !Number.isFinite(a) || !Number.isFinite(b) || a < 0 || b > 100 || a >= b) return null;
     try {
       const loR = percentToRational(clean(lo)), hiR = percentToRational(clean(hi));
-      return { segs: sweepThreshold(toEngineInput(s), loR, hiR), loR, hiR };
+      return { segs: cachedAnalysis({ kind: 'threshold', input: toEngineInput(s), loR, hiR }, () => sweepThreshold(toEngineInput(s), loR, hiR)), loR, hiR };
     } catch { return null; }
   }, [s, lo, hi]);
   const now = seatsOf(r);
   const cur = r.rules.threshold;
-  const name = (lid: string) => { const x = s.lists.find((y) => y.id === lid); return x ? listLabel(x, lang) : lid; };
+
   const curRow = out ? out.segs.findIndex((g) => (cmp(g.fromPct, g.toPct) === 0 ? cmp(cur, g.fromPct) === 0 : cmp(cur, g.fromPct) > 0 && cmp(cur, g.toPct) <= 0)) : -1;
   const table = useRef<HTMLTableSectionElement>(null);
-  useEffect(() => { if (curRow >= 0) revealRow(table.current?.children[curRow] as HTMLElement); }, [out, curRow]);
+  useEffect(() => {
+    const row = table.current?.children[curRow] as HTMLElement | undefined;
+    if (!row) return;
+    const update = () => revealRow(row);
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(table.current!);
+    return () => observer.disconnect();
+  }, [out, curRow]);
   return (
     <div>
-      <h3>{L('Seats by threshold', 'מנדטים לפי אחוז החסימה')} <Info title={L('Seats by threshold', 'מנדטים לפי אחוז החסימה')}>{L('The result at every threshold in the range, with the exact percentages where it changes. Experimental: the other rules stay as they are.', 'התוצאה בכל אחוז חסימה בטווח, עם האחוזים המדויקים שבהם היא משתנה. ניסיוני: שאר הכללים נשארים כפי שהם.')}</Info></h3>
+      <h3>{L('Threshold → seats', 'אחוז חסימה ← מנדטים')} <Info title={L('Threshold → seats', 'אחוז חסימה ← מנדטים')}>{L('The result at every threshold in the range, with the exact percentages where it changes. Experimental: the other rules stay as they are.', 'התוצאה בכל אחוז חסימה בטווח, עם האחוזים המדויקים שבהם היא משתנה. ניסיוני: שאר הכללים נשארים כפי שהם.')}</Info></h3>
       <div className="row">
         <span className="row" dir="ltr" style={{ flexWrap: 'nowrap', gap: 6 }}>
           <span className="small">{L('from', 'מ')}</span><PctInput value={lo} onCommit={setLo} label={L('From %', 'מ-%')} />%
@@ -212,9 +232,9 @@ function ThresholdSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
             <thead><tr><th className="n">{L('Threshold above', 'אחוז חסימה מעל')}</th><th className="n">{L('up to', 'עד')}</th><th className="n">{L('Lists in', 'רשימות')}</th><th>{L('Seats vs now', 'מנדטים לעומת עכשיו')}</th></tr></thead>
             <tbody ref={table}>{out.segs.map((sg, k) => (
               <tr key={k} className={k === curRow ? 'sel' : undefined} aria-current={k === curRow || undefined}>
-                <td className="n">{pctText(sg.fromPct)}</td><td className="n">{pctText(sg.toPct)}</td>
+                <td className="n" title={`${sg.fromPct.num * 100n}/${sg.fromPct.den}%`}>{pctText(sg.fromPct, digits)}</td><td className="n" title={`${sg.toPct.num * 100n}/${sg.toPct.den}%`}>{pctText(sg.toPct, digits)}</td>
                 <td className="n">{sg.qualified.length}</td>
-                <td className="small">{diffText(sg.seats, now, null, name) || (k === curRow ? L('now', 'עכשיו') : L('same as now', 'כמו עכשיו'))}</td>
+                <td className="small">{Object.keys({ ...now, ...sg.seats }).some(id => (sg.seats[id] ?? 0) !== (now[id] ?? 0)) ? <SeatChanges seats={sg.seats} now={now} s={s} /> : (k === curRow ? L('now', 'עכשיו') : L('same as now', 'כמו עכשיו'))}</td>
               </tr>
             ))}</tbody>
           </table>
@@ -229,6 +249,7 @@ function ThresholdSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
 function ThresholdLadder({ s, r, lo, hi }: { s: Scenario; r: AllocationResult; lo: Rational; hi: Rational }) {
   const L = useL();
   const lang = useLang();
+  const digits = useDigits();
   const [box, W] = useChartWidth(720);
   const total = s.lists.filter((l) => !l.withdrawn).reduce((t, l) => t + BigInt(l.votes), 0n);
   const rows = total === 0n ? [] : s.lists.filter((l) => !l.withdrawn && l.votes > 0)
@@ -252,7 +273,7 @@ function ThresholdLadder({ s, r, lo, hi }: { s: Scenario; r: AllocationResult; l
           return <g key={l.id}>
             <text x={lang === 'he' ? W - 4 : 4} y={yy - 2} textAnchor={lang === 'he' ? 'end' : 'start'}><title>{label}</title>{label}</text>
             <rect x={x(a)} y={yy + 3} width={Math.max(1, x(p) - x(a))} height={12} fill={l.color} rx={2} stroke="var(--rule-2)" strokeWidth={0.5} />
-            <text className="halo" x={W - 2} y={yy + 12} textAnchor="end">{pctText(share)}</text>
+            <text className="halo" x={W - 2} y={yy + 12} textAnchor="end"><title>{`${share.num * 100n}/${share.den}%`}</title>{pctText(share, digits)}</text>
           </g>;
         })}
       </svg>
@@ -330,15 +351,15 @@ function BlocFlip({ s, r }: { s: Scenario; r: AllocationResult }) {
     return seatsIn(s2, allocate(toEngineInput(s2)));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [found, s, bid]);
-  const name = (lid: string) => { const x = s.lists.find((y) => y.id === lid); return x ? listLabel(x, lang) : lid; };
+
   const one = found?.votes === 1n;
   if (!bloc) return null;
   const meter = (n: number) => <div className="bp-meter sens-meter" aria-hidden style={{ '--bc': bloc.color } as CSSProperties}><i style={{ width: `${Math.min(100, (n / s.rules.seats) * 100)}%` }} /><span style={{ insetInlineStart: `${((majority - 0.5) / s.rules.seats) * 100}%` }} /></div>;
   return (
     <div>
-      <h3>{L('Flip a bloc majority', 'היפוך הרוב של גוש')} <Info title={L('Flip a bloc majority', 'היפוך הרוב של גוש')}>{L(`The fewest votes moving from one list to another that give the bloc a majority (${majority} of ${s.rules.seats}), or end it. Every pair of a list inside and a list outside the bloc is searched, among lists with at least 0.5% of the votes, by the bloc assignment shown; each list's seats count for the list's own bloc.`, `מספר הקולות הקטן ביותר שעוברים מרשימה אחת לאחרת ונותנים לגוש רוב (${majority} מתוך ${s.rules.seats}), או מבטלים אותו. נבדק כל זוג של רשימה בגוש ורשימה מחוצה לו, מבין הרשימות עם 0.5% מהקולות לפחות, לפי השיוך לגושים המוצג; המנדטים של כל רשימה נספרים לגוש של הרשימה.`)}</Info></h3>
+      <h3>{L('Votes to flip a majority', 'קולות להיפוך הרוב')} <Info title={L('Votes to flip a majority', 'קולות להיפוך הרוב')}>{L(`The fewest votes moving from one list to another that give the bloc a majority (${majority} of ${s.rules.seats}), or end it. Every pair of a list inside and a list outside the bloc is searched, among lists with at least 0.5% of the votes, by the bloc assignment shown; each list's seats count for the list's own bloc.`, `מספר הקולות הקטן ביותר שעוברים מרשימה אחת לאחרת ונותנים לגוש רוב (${majority} מתוך ${s.rules.seats}), או מבטלים אותו. נבדק כל זוג של רשימה בגוש ורשימה מחוצה לו, מבין הרשימות עם 0.5% מהקולות לפחות, לפי השיוך לגושים המוצג; המנדטים של כל רשימה נספרים לגוש של הרשימה.`)}</Info></h3>
       <div className="row">
-        <ChoicePicker label={L('Bloc', 'גוש')} value={bid} onChange={setPicked} options={s.blocs.map(b => ({ value: b.id, label: lang === 'he' ? b.nameHe : b.nameEn }))} />
+        <ChoicePicker label={L('Bloc', 'גוש')} value={bid} onChange={setPicked} options={s.blocs.map(b => ({ value: b.id, label: lang === 'he' ? b.nameHe : b.nameEn, preview: <span className="swatch" style={{ background: b.color }} /> }))} />
         {meter(seats)}
         <span className="small"><bdi dir="ltr">{seats} / {majority}</bdi> {seats >= majority ? L('(has a majority)', '(יש רוב)') : L('(no majority)', '(אין רוב)')}</span>
       </div>
@@ -351,7 +372,7 @@ function BlocFlip({ s, r }: { s: Scenario; r: AllocationResult }) {
           : L('No single transfer between two lists achieves it.', 'אין מעבר יחיד בין שתי רשימות שמשיג זאת.')}</p>}
         {found && (
           <div className="callout small">
-            {found.unsure && <>{L('At most', 'לכל היותר')} </>}<b>{fmtInt(found.votes)}</b>{found.unsure && <> <Info title={L('Smallest found', 'הקטן ביותר שנמצא')}>{L('Some searches could not test every count, so a smaller transfer may exist.', 'חלק מהחיפושים לא בדקו כל מספר, ולכן ייתכן מעבר קטן יותר.')}</Info></>} {one ? L('vote moving from ', 'קול שעובר מ') : L('votes moving from ', 'קולות שעוברים מ')}<b>{name(found.from)}</b> {L('to ', 'ל')}<b>{name(found.to)}</b> {after === null || (has ? after < majority : after >= majority)
+            {found.unsure && <>{L('At most', 'לכל היותר')} </>}<b>{fmtInt(found.votes)}</b>{found.unsure && <> <Info title={L('Smallest found', 'הקטן ביותר שנמצא')}>{L('Some searches could not test every count, so a smaller transfer may exist.', 'חלק מהחיפושים לא בדקו כל מספר, ולכן ייתכן מעבר קטן יותר.')}</Info></>} {one ? L('vote moving from ', 'קול שעובר מ') : L('votes moving from ', 'קולות שעוברים מ')}<PartyName s={s} id={found.from} /> {L('to ', 'ל')}<PartyName s={s} id={found.to} /> {after === null || (has ? after < majority : after >= majority)
               ? (has ? (one ? L('ends the majority.', 'מבטל את הרוב.') : L('end the majority.', 'מבטלים את הרוב.')) : (one ? L('gives the bloc a majority.', 'נותן לגוש רוב.') : L('give the bloc a majority.', 'נותנים לגוש רוב.')))
               : <>{one ? L('does not flip it in the chamber', 'אינו הופך אותו במליאה') : L('do not flip it in the chamber', 'אינם הופכים אותו במליאה')} <Info title={L('Members counted apart', 'חברים שנספרים בנפרד')}>{L('Some parties or members of these lists count for another bloc, and the search moves whole lists.', 'חלק מהמפלגות או החברים ברשימות אלה נספרים בגוש אחר, והחיפוש מזיז רשימות שלמות.')}</Info></>}
             {after !== null && <div className="row" style={{ marginTop: 6 }}>{meter(after)}<bdi dir="ltr">{seats} → {after} / {majority}</bdi></div>}

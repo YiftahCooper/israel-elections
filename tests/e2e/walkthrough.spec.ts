@@ -95,7 +95,7 @@ test('an edited scenario is explained against the official result at every stage
   await expect(panel(page).locator('tr', { hasText: 'Labor' })).toContainText('compete as one');
   await expect(panel(page).locator('tr', { hasText: 'Labor' })).toContainText('had no effect');
   await stage(page, 'Result');
-  await expect(panel(page).locator('tr', { hasText: 'Meretz' }).locator('.walk-delta')).toHaveText('0 → 4');
+  await expect(panel(page).locator('tr', { hasText: 'Meretz' }).locator('.walk-delta')).toHaveText('0 → 4 (▲ +4)');
 });
 
 test('Hebrew: formulas read left to right and no table scrolls sideways on a phone', async ({ page }) => {

@@ -1,3 +1,4 @@
+import { SeatDelta } from './SeatDelta.tsx';
 import { CandidateName } from './CandidateName.tsx';
 import { Info, Slip } from './ui.tsx';
 import { blocDisplayOrder } from '../blocOrder.ts';
@@ -10,7 +11,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import { votesCast, type Scenario } from '../../model/scenario.ts';
 import { referenceChanges, allocationOf, comparisonGroups, groupingBaseline, groupingLabel, nonSeatChanges, blocPieces, electedOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, fmtPct, fmtRat, fmtSigned, signed } from '../format.ts';
+import { fmtInt, fmtPct, fmtRat, fmtSigned } from '../format.ts';
 import { loadDataset, replay, setState, toast, useStore, useDigits } from '../store.ts';
 import { electionLabel } from '../electionLabel.ts';
 import { ChoicePicker, type Choice } from './ChoicePicker.tsx';
@@ -180,12 +181,12 @@ function ScenarioCompare({ s, r, base, ds }: { s: Scenario; r: AllocationResult;
                   <span className="cmp-neg">{d < 0 && <i style={{ width: `${(-d / maxChange) * 100}%`, background: 'var(--ink)' }} />}</span>
                   <span className="cmp-axis" aria-hidden />
                   <span className="cmp-pos">{d > 0 && <i style={{ width: `${(d / maxChange) * 100}%`, background: 'var(--ink)' }} />}</span>
-                  <b className="cmp-d" dir="ltr">{d > 0 ? `+${d}` : `−${-d}`}</b>
+                  <b className="cmp-d" dir="ltr"><SeatDelta value={d} /></b>
                 </li>
               );
             })}
           </ul>
-          {indirect.length > 0 && <p className="small ink2" style={{ margin: '6px 0 0' }}>{L('Changed only through the recalculation (their votes did not change): ', 'השתנו רק בגלל החישוב מחדש (קולותיהן לא השתנו): ')}{indirect.map((g) => `${gName(g.bIds, s)} ${signed(g.seatsB - g.seatsA)}`).join(', ')}</p>}
+          {indirect.length > 0 && <p className="small ink2" style={{ margin: '6px 0 0' }}>{L('Changed only through the recalculation (their votes did not change): ', 'השתנו רק בגלל החישוב מחדש (קולותיהן לא השתנו): ')}{indirect.map(g => <span key={g.key}>{gName(g.bIds, s)} <SeatDelta value={g.seatsB - g.seatsA} /> </span>)}</p>}
           {gainers.length > 1 && <p className="small muted" style={{ margin: '4px 0 0' }}>{L('Net seat changes', 'שינויי מנדטים נטו')} <Info title={L('Seat changes', 'שינויי מנדטים')}>{L('With several lists gaining, the method does not say which seat “came from” which list; the net changes are exact.', 'כשכמה רשימות מרוויחות, השיטה אינה קובעת איזה מנדט "עבר" מאיזו רשימה; השינויים נטו מדויקים.')}</Info></p>}
         </section>
       )}
@@ -230,7 +231,7 @@ function ScenarioCompare({ s, r, base, ds }: { s: Scenario; r: AllocationResult;
                     <td className="n"><bdi dir="ltr">{dv === 0n ? '—' : fmtSigned(dv)}</bdi></td>
                     <td className="n"><bdi dir="ltr">{ar.totalValid > 0n && r.totalValid > 0n && share.num !== 0n ? signedDecimal(fmtRat(share, 2)) : '—'}</bdi></td>
                     <td className="n">{g.seatsA}</td><td className="n"><b>{g.seatsB}</b></td>
-                    <td className="n"><bdi dir="ltr">{ds_ === 0 ? '—' : ds_ > 0 ? `+${ds_}` : `−${-ds_}`}</bdi></td>
+                    <td className="n"><bdi dir="ltr"><SeatDelta value={ds_} /></bdi></td>
                   </tr>
                 );
               })}
