@@ -47,7 +47,7 @@ for (const lang of ['en','he']) test(`E5 E6 phone election and named tools ${lan
   if(lang==='he') await page.getByRole('button',{name:'עב',exact:true}).click();
   for(const level of (lang==='en'?['Simple','Standard','Expert']:['פשוט','רגיל','מומחה'])) {
     await page.getByRole('button',{name:level,exact:true}).click();
-    expect.soft((await page.locator('.election .choice-trigger').boundingBox())!.width).toBeGreaterThan(210);
+    expect.soft((await page.locator('.election .choice-trigger').boundingBox())!.width).toBeGreaterThan(180); // leaves room for two 44px election arrows in the compact phone row
   }
   for (const name of (lang==='en'?['Save & share','Start over']:['שמירה ושיתוף','התחלה מחדש'])) {
     await expect.soft(page.getByRole('button',{name,exact:true})).toHaveAttribute('title',name);

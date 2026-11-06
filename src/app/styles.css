@@ -1082,7 +1082,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .publication-short { display: none; }
 .band-levels { display: inline-flex; flex: none; align-items: center; gap: 6px; }
 .band-levels .seg { flex-wrap: nowrap; }
-.band .election-about { inline-size: 200px; min-block-size: 34px; display: flex; align-items: center; }
+.band .election-about { inline-size: auto; min-block-size: 34px; display: block; }
 .band .election-about summary { white-space: normal; }
 @media (min-width: 761px) { .band .election-about summary { padding-block: 2px; line-height: 15px; } }
 .band .scenario-switcher .choice-trigger { inline-size: 100%; white-space: normal; text-align: start; }
@@ -1096,7 +1096,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .list-disclosure > .reserve::after { content: attr(data-label); }
 @media (max-width: 760px) {
   .band-custom-base { display: none; }
-  .band .election-about { flex: 0 0 80px; inline-size: 80px; min-block-size: 50px; }
+  .band .election-about { flex: none; inline-size: auto; }
   .band .publication-summary { display: none; }
   .band .publication-short { display: inline; }
   .band .scenario-switcher .choice-trigger { min-block-size: 44px; }
@@ -1118,9 +1118,56 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
   .brand-short { display: inline; }
   .band .election { flex: 1 1 270px; max-inline-size: calc(100% - 68px); }
   .band { gap: 5px 8px; }
-  .band .election-about { flex: 0 0 100px; inline-size: 100px; min-block-size: 34px; block-size: 34px; }
+  .band .election-about { flex: none; inline-size: auto; block-size: auto; }
   .band .scenario-switcher .choice-trigger { min-block-size: 34px; }
   .band-levels .seg button { padding-inline: 8px; }
   .band-levels { gap: 4px; }
   .band .band-custom { padding-inline: 6px; }
 }
+
+/* Header controls share one rhythm; styled surfaces belong to their actual targets. */
+.band { flex-wrap: wrap; gap: 8px; }
+.band-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-inline-start: auto; }
+.band :is(.tool, .choice-trigger, .band-custom, .election-about summary) { min-block-size: 34px; border-radius: 5px; }
+.band .tool { min-inline-size: 34px; }
+.band .seg { border-radius: 5px; }
+.band .seg button { min-block-size: 32px; }
+.band .election { flex: 0 1 280px; max-inline-size: 280px; }
+.election-navigation { gap: 6px; }
+.band .election-arrow { min-inline-size: 34px; padding: 4px; background: var(--shell-2); }
+[dir="rtl"] .election-arrow > span { transform: scaleX(-1); }
+.band .election-about { border: 0; }
+.band .election-about summary { padding: 7px 9px; line-height: 20px; border: 1px solid var(--shell-ink-2); cursor: pointer; }
+.band .publication-summary { display: none; }
+.band .publication-short { display: inline; }
+.band .scenario-switcher { flex: 0 1 190px; min-inline-size: 150px; }
+.band .choice-trigger { justify-content: space-between; }
+.picker-affordance { margin-inline-start: auto; flex: none; }
+/* The menu's saved rows use independent Open / Compare / Delete targets. */
+.band .menu-pop .row > .btn { width: auto; flex: 1; }
+.band .menu-pop .row > .row { flex: none; }
+@media (max-width: 760px) {
+  .band .election { flex: 1 1 270px; max-inline-size: calc(100% - 68px); }
+  .band :is(.tool, .choice-trigger, .band-custom, .election-about summary) { min-block-size: 44px; }
+  .band .tool, .band .seg button { min-inline-size: 44px; }
+  .band .seg button { min-block-size: 44px; }
+  .band .scenario-switcher { flex: 1 1 160px; min-inline-size: 150px; }
+  .band-actions { margin-inline-start: 0; }
+}
+@media (pointer: coarse) {
+  .band :is(.tool, .choice-trigger, .band-custom, .election-about summary) { min-block-size: 44px; }
+  .band .tool, .band .seg button { min-inline-size: 44px; }
+  .band .seg button { min-block-size: 44px; }
+}
+/* Edited is an inline annotation, with the same ink and underline as text disclosures. */
+.edit-marker { border: 0; border-radius: 0; background: transparent; padding: 0; margin-inline-start: 5px; font-size: 12px; font-weight: 500; line-height: 1.2; text-decoration: underline dotted; text-underline-offset: 3px; cursor: pointer; }
+.edit-marker:hover, .edit-marker[aria-expanded="true"] { text-decoration-style: solid; }
+.edit-tooltip .marker-restore { display: block; margin-block-start: 6px; }
+
+/* Segment focus rings must escape the group, like neighbouring controls. */
+.seg { overflow: visible; }
+.seg > button:first-child { border-start-start-radius: 4px; border-end-start-radius: 4px; }
+.seg > button:last-child { border-start-end-radius: 4px; border-end-end-radius: 4px; }
+
+/* The first edit changes the scenario label, never the sticky header height. */
+.band .scenario-switcher .choice-current { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; overflow-wrap: normal; }

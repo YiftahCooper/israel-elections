@@ -1,3 +1,4 @@
+import { ChevronsUpDown } from 'lucide-react';
 import { useId, useMemo, useRef, useState, type ReactNode } from 'react';
 import { useL } from '../i18n.ts';
 
@@ -17,7 +18,7 @@ export function ChoicePicker({ label, value, options, onChange, className = '', 
   const focusStart = () => (searchable ? dialog.current?.querySelector<HTMLElement>('input[type="search"]')
     : dialog.current?.querySelector<HTMLElement>('.choice-option[aria-pressed="true"]:not(:disabled)') ?? dialog.current?.querySelector<HTMLElement>('.choice-option:not(:disabled)'))?.focus();
   return <span className={`choice-picker ${className}`}>
-    <button ref={trigger} type="button" className="btn choice-trigger" aria-label={label} data-value={value} aria-haspopup="dialog" aria-controls={dialogId} onClick={() => { setQuery(''); dialog.current?.showModal(); focusStart(); }}>{options.find(o => o.value === value)?.preview}<span className="choice-current">{options.find(o => o.value === value)?.label ?? placeholder ?? label}</span><span aria-hidden>▾</span></button>
+    <button ref={trigger} type="button" className="btn choice-trigger" aria-label={label} data-value={value} aria-haspopup="dialog" aria-controls={dialogId} onClick={() => { setQuery(''); dialog.current?.showModal(); focusStart(); }}>{options.find(o => o.value === value)?.preview}<span className="choice-current">{options.find(o => o.value === value)?.label ?? placeholder ?? label}</span><ChevronsUpDown className="icon sm picker-affordance" aria-hidden /></button>
     <dialog id={dialogId} ref={dialog} className="choice-dialog" aria-label={label} onKeyDown={e => { if (e.key === 'Escape') e.stopPropagation(); }} onCancel={e => { e.preventDefault(); e.stopPropagation(); close(); }} onClick={e => { if (e.target === e.currentTarget) close(); }}>
       <div className="choice-head"><b>{label}</b><button className="btn" aria-label={L('Close', 'סגירה')} onClick={close}>×</button></div>
       {searchable && <input autoFocus type="search" value={query} aria-label={L('Search choices', 'חיפוש אפשרויות')} placeholder={L('Search…', 'חיפוש…')} onChange={e => setQuery(e.target.value)} onKeyDown={e => { if (e.key === 'ArrowDown') { e.preventDefault(); dialog.current?.querySelector<HTMLButtonElement>('.choice-option:not(:disabled)')?.focus(); } }} />}
