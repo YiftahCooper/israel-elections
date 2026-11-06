@@ -1,15 +1,21 @@
+import {resultDiffs} from '../model/editScopes.ts';
 import { factLog } from '../model/actionClassification.ts';
-import type { Scenario } from '../model/scenario.ts';
-import { referenceLabel } from './derive.ts';
+import { baselineOf, referenceLabel } from './derive.ts';
 import { useLang } from './i18n.ts';
-import { useStore } from './store.ts';
+import { useStore, type State } from './store.ts';
 
-export const activeReferenceOf = (st: {markOfficial:boolean;reference:Scenario|null}) => st.markOfficial || st.reference && !factLog(st.reference).length ? null : st.reference;
+export const activeReferenceOf = (st: Pick<State,'markOfficial'|'reference'> & Partial<Pick<State,'datasets'>>) => {
+ const ds=st.reference&&st.datasets?.[st.reference.electionId];
+ const hasResult=st.reference&&(ds?resultDiffs(st.reference,baselineOf(ds)).length>0:factLog(st.reference).length>0);
+ return st.markOfficial||!hasResult?null:st.reference;
+};
 
 /** One reference policy for summaries, comparisons, edits and graphics. Null means official. */
 export function useActiveReference() {
   const loadedReference = useStore(st => st.reference);
   const reference = useStore(activeReferenceOf);
+  const markOfficial=useStore(st=>st.markOfficial);
+  const markerReference=markOfficial?null:loadedReference;
   const lang = useLang();
-  return { reference, loadedReference, label: referenceLabel(reference, lang) };
+  return { reference, markerReference, loadedReference, label: referenceLabel(reference, lang) };
 }

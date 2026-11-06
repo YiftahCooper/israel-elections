@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { loadDataset } from './helpers.ts';
 import { scenarioFromDataset, toEngineInput } from '../src/model/scenario.ts';
 import { applyAction } from '../src/model/actions.ts';
-import { referenceChanges } from '../src/app/derive.ts';
+import { referenceChanges, resultChanges } from '../src/app/derive.ts';
 import { ACTION_CLASSIFICATION, isFactAction } from '../src/model/actionClassification.ts';
 import { scenarioKey } from '../src/app/store.ts';
 const base = scenarioFromDataset(loadDataset('k25'));
@@ -21,15 +21,17 @@ describe('view-only choices', () => {
     const joint = base.lists.find(l => (l.parties?.length ?? 0) > 1)!;
     const s = applyAction(applyAction(base, { type: 'setFactionSplit', listId: joint.id, split: true }), { type: 'setCoalition', coalition: { in: [joint.id], out: [] } });
     expect(toEngineInput(s)).toEqual(toEngineInput(base));
-    expect(referenceChanges(s, base)).toEqual([]);
+    expect(resultChanges(s, base)).toEqual([]);
+    expect(referenceChanges(s, base)).toEqual([['coalition','in']]);
     expect(scenarioKey({ scenario: s, reference: null })).toBe('official');
   });
-  it('membership and custom schemes stay edits after selecting another sourced scheme', () => {
+  it('membership and custom schemes stay marked analysis after selecting another sourced scheme', () => {
     const s = applyAction(base, { type: 'applyBlocScheme', schemeId: base.blocSchemes!.at(-1)!.id });
     const edited = applyAction(s, { type: 'setListMeta', listId: s.lists[0].id, patch: { bloc: null } });
     expect(referenceChanges(edited, base).length).toBeGreaterThan(0);
-    expect(scenarioKey({ scenario: edited, reference: null })).toMatch(/^draft:/);
-    expect(referenceChanges(applyAction(s, { type: 'setBlocs', blocs: s.blocs, name: 'Mine' }), base)).toEqual([]);
+    expect(scenarioKey({ scenario: edited, reference: null })).toBe('official');
+    expect(resultChanges(edited,base)).toEqual([]);
+    expect(referenceChanges(applyAction(s, { type: 'setBlocs', blocs: s.blocs, name: 'Mine' }), base).length).toBeGreaterThan(0);
   });
   it('legacy saved logs with view choices and assigned identity remain official, clean and intact', () => {
     const s = applyAction(applyAction(base, { type: 'applyBlocScheme', schemeId: base.blocSchemes!.at(-1)!.id }), { type: 'setIdentityColor', color: '#486b78' });
@@ -44,7 +46,7 @@ it('classifies every declared action type explicitly (including payload-dependen
   const types = [...new Set([...source.matchAll(/type: '([^']+)'/g)].map(m => m[1]))].sort();
   expect(Object.keys(ACTION_CLASSIFICATION).sort()).toEqual(types);
   expect(isFactAction({ type: 'startPart', part: 'blocs', source: 'preset', presetId: 'pm-recommendations' })).toBe(false);
-  expect(isFactAction({ type: 'startPart', part: 'blocs', source: 'blank', name: 'Mine' })).toBe(true);
+  expect(isFactAction({ type: 'startPart', part: 'blocs', source: 'blank', name: 'Mine' })).toBe(false);
   expect(isFactAction({ type: 'startPart', part: 'coalitions', source: 'blank' })).toBe(false);
 });
 

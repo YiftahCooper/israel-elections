@@ -13,7 +13,7 @@ import { PartEdits } from './PartEdits.tsx';
 import { useEffect, useRef, useState } from 'react';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario, SimList } from '../../model/scenario.ts';
-import { comparisonGroups, officialSeatsFor, electedOf, listLabel, referenceChanges } from '../derive.ts';
+import { comparisonGroups, officialSeatsFor, electedOf, listLabel, resultChanges } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct } from '../format.ts';
 import { setState, useDigits, useLevel, useStore } from '../store.ts';
@@ -56,7 +56,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
   // A list never folds away behind "Show all" because of an edit: one shown in the reference stays shown when its
   // votes fall (a withdrawal drops them to 0), and one edited beyond its votes (withdrawn, renamed) is shown too.
   // Small vote changes spread proportionally over every list do not unfold the long tail.
-  const editedBeyondVotes = new Set(referenceChanges(markerScenario, base).filter((p) => p[0] === 'lists' && p[2] !== 'votes').map((p) => p[1]));
+  const editedBeyondVotes = new Set(resultChanges(markerScenario, base).filter((p) => p[0] === 'lists' && p[2] !== 'votes').map((p) => p[1]));
   const baseTotal = base.lists.reduce((t, b) => t + b.votes, 0);
   const visibleOut = showAll ? outside : outside.filter(({ l }) => {
     const b = base.lists.find((x) => x.id === l.id);

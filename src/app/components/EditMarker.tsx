@@ -11,16 +11,16 @@ import type { Scenario } from '../../model/scenario.ts';
 import { baselineOf, editPathLabel, markerPath, markerReference, type EditPath } from '../derive.ts';
 import { useStore } from '../store.ts';
 import { useL, useLang } from '../i18n.ts';
-export function EditMarker({ s, path, summary = false }: { s: Scenario; path: EditPath; summary?: boolean }) {
+export function EditMarker({ s, path, summary = false, outlet = '' }: { s: Scenario; path: EditPath; summary?: boolean; outlet?: string }) {
   const L = useL(), lang = useLang(), id = useId();
-  const { reference } = useActiveReference();
+  const { markerReference: reference } = useActiveReference();
   const committed = useStore(st => st.scenario);
   const preview = useStore(st => st.preview);
   if (s === preview && committed) s = committed;
   const ds = useStore(st => st.datasets[s.electionId]);
   const base = reference ?? (ds ? baselineOf(ds) : null);
   const resolved=base?markerPath(s,base,path):null;
-  const key=`${s.id}/${resolved?.join('/')??''}`;
+  const key=`${s.id}/${outlet}/${resolved?.join('/')??''}`;
   const owner=useSyncExternalStore(subscribeMarkers,()=>markerOwner(key),()=> '');
   const anchor = useRef<HTMLSpanElement>(null);
   const [open, setOpen] = useState(false);

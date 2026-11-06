@@ -48,17 +48,19 @@ Details:
 - The grouping's name appears wherever sourced groupings show theirs: the dropdown, bloc summaries and Compare. It carries an **edited** marker, never a date or source.
 - It is an ordinary undoable action. Add a `name` to the custom grouping in the scenario, so `setBlocs` can carry it; `blocSchemeId: null` keeps meaning "not a sourced grouping".
 
-## 2. Mark every edit; the reference decides what counts as an edit
+## 2. Three classes of change; the reference decides the local marker
 
-**Owner revision, 6 November:** arbitrary colours and grouping display names are saved appearance, not factual edits. They never receive edit markers or change official result identity. See [appearance and result identity](appearance-and-result-identity.md) for the exhaustive classification and independent reset behavior. This supersedes the older colour-marker wording below.
+The owner's 6 November 2026 rule supersedes this document's earlier treatment of colours and groupings as result edits. His words:
 
-Principle: **anything not true of the real election is marked at a glance.** This covers votes, names, colours, groupings, agreements, rules, merges and turnout.
+> “It should only actually count as a new scenario and look like a different result from the official one if something tangible changes. If it's just things like changing the block colours, that's arbitrary and shouldn't confusingly render as different from the actual election results.”
 
-One shared marker is used everywhere:
+The binding 6 November coordinator clarification applies the same test to grouping membership: changing which lists or parties sit in a bloc, creating a grouping, and naming it do not change the election result.
 
-- a small neutral "edited" glyph; seat outlines appear only for actual seat differences;
-- hover or focus shows "Edited: was X";
-- in exports, the marker is printed as text.
+- **A — result:** votes, turnout/totals, list topology and identities, candidate rosters/order, agreements, lottery outcomes and allocation rules. These change official figures or their calculation; retain result identity/tint, factual summaries and shared markers.
+- **B — analysis:** custom bloc topology, list/party/candidate membership, grouping names, coalition membership/constraints and family definitions used only for grouping. Save, share and undo these changes. Use the shared local “Edited: was X” marker at the grouping, bloc or coalition, including the picker, bands and Compare. They never change result identity/tint or enter “Since official result”. Sourced-view and faction-counting choices remain unmarked views. A family vote-scaling operation is A because it changes votes; freezing a family grouping is B.
+- **C — appearance:** list, party, bloc and family colours and purely visual display labels. Save/share appearance and retain it for the official result, with no Edited marker, factual summary or scenario tint. A grouping's own authored name is B; a bloc's purely visual display label is C.
+
+Result identity uses A-only differences; shared marker/reference comparisons retain A and B. An otherwise-official result with custom analysis or appearance remains “Official result”. Saving/loading uses the document checkpoint for local markers and dirty state independently of the factual comparison. See [the complete field inventory](appearance-and-result-identity.md).
 
 **Whole-part replacement.** A starting point, rule preset or family grouping replaces a part
 and receives one marker at that part. Its induced list, bloc or agreement changes receive no
@@ -80,7 +82,7 @@ of marker scopes.
 
 **Scenario colour, not repeated labels.** Revised 4 November 2026 after owner feedback: no repetitive "hypothetical" text.
 
-- **Identity colour.** Every scenario has an identity colour, chosen from a scenario palette and editable. The colour is visible wherever scenarios are chosen (the saved list, the gallery, Compare's pickers), so a scenario is recognisable before it is opened.
+- **Identity colour (A only).** Every result-edited scenario has an identity colour, chosen from a scenario palette and editable. The colour is visible wherever scenarios are chosen (the saved list, the gallery, Compare's pickers), so a scenario is recognisable before it is opened.
 - **Official result.** It always uses one reserved, untinted (neutral) treatment, and no scenario can choose it. An unsaved edited state gets the default scenario tint.
 - **Chrome only.** The colour tints the app chrome: the top-bar band, the board frame, and the frames of Compare's two sides. It never tints seats, lists or bloc regions, because those colours are data.
 - **One quiet text cue.** Colour alone fails for colour-blind readers and for cropped screenshots. So there is a single chip in the top bar: a swatch plus the scenario name. It expands on demand to list the changes from the official result.
@@ -90,7 +92,7 @@ of marker scopes.
 
 **Setting.** "Mark differences from: the loaded scenario (default) / always the official result". The second option keeps every per-item marker against the real election.
 
-A scenario is the existing `SavedScenario`: a name plus an action log replayed from the official data. The changes it holds (votes, names, colours, groupings…) are its parts. No new storage model is needed. Add one piece of store state, `reference`: the replayed scenario at save or load time, or null for official. Also add one derive helper, `referenceChanges`, which supplies part/item markers, and `markerReference` for their previous values.
+A scenario is the existing `SavedScenario`: a name plus an action log replayed from the official data. Its parts retain result edits (A), analysis (B) and appearance (C) independently. No new storage model is needed. Add one piece of store state, `reference`: the replayed scenario at save or load time, or null for official. Also add one derive helper, `referenceChanges`, which supplies part/item markers, and `markerReference` for their previous values.
 
 ## 3. Levels: three presets plus Custom
 

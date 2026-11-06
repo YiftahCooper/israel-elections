@@ -1,7 +1,7 @@
+import { AnalysisEdits } from './AnalysisEdits.tsx';
 import { groupingName, appGroupingExplanation, appGroupingTag } from '../groupingName.ts';
 import { blocDisplayOrder } from '../blocOrder.ts';
 import { useGraphicReference } from '../useGraphicReference.ts';
-import { EditMarker } from './EditMarker.tsx';
 // Blocs (decision 0087): the election's sourced groupings (the first government, recognised blocs) and
 // the user's own. Seats count per seat: a constituent party of a joint list can sit in another bloc
 // than its list. Moving parties between blocs never changes votes or seats. A bloc opens its editor
@@ -61,7 +61,7 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
   return (
     <section className="panel blocs" aria-label={L('Seats by bloc', 'מנדטים לפי גוש')}>
       <div className="blocs-head">
-        <h2 style={{ margin: 0 }}>{L('Blocs', 'גושים')} <Info term="bloc">{kindNote}</Info> <EditMarker s={s} path={['customGroupingName']} /></h2>
+        <h2 style={{ margin: 0 }}>{L('Blocs', 'גושים')} <Info term="bloc">{kindNote}</Info> <AnalysisEdits s={s} outlet="bloc-bands" /></h2>
         <button className="btn small" aria-expanded={!!panel} onClick={() => (panel ? setState({ blocPanel: null }) : openPanel(groups[0]?.key ?? NONE))}>
           <Pencil className="icon sm" aria-hidden />{s.blocs.length ? L('Edit blocs', 'עריכת גושים') : L('Group seats into blocs', 'חלוקת המושבים לגושים')}</button>
       </div>

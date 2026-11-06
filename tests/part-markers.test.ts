@@ -4,7 +4,7 @@ import {loadDataset} from './helpers.ts';
 import {scenarioFromDataset,type Action,type Scenario} from '../src/model/scenario.ts';
 import {applyAction} from '../src/model/actions.ts';
 import {PARTS,partSnapshot,type Part} from '../src/model/parts.ts';
-import {referenceChanges,markerPath,markerReference} from '../src/app/derive.ts';
+import {referenceChanges,resultChanges,markerPath,markerReference} from '../src/app/derive.ts';
 import {groupingAction,parseFamily} from '../src/families/model.ts';
 import {familyColor} from '../src/families/colors.ts';
 import family from '../data/meta/families/haredi.json';
@@ -24,7 +24,6 @@ const editAgain=(s:Scenario,p:Part):Action=>p==='votes'?{type:'setVotes',listId:
 for(const part of Object.keys(PARTS) as Part[])it(`${part}: whole replacement gives one part marker, then one item edit gives one item marker`,()=>{
  const source=applyAction(base,change[part]);
  const whole=applyAction(base,{type:'startPart',part,source:'saved',snapshot:partSnapshot(source,part),name:'Source'});
- if(part==='coalitions'){expect(referenceChanges(whole,base)).toEqual([]);expect(referenceChanges(applyAction(whole,editAgain(whole,part)),base)).toEqual([]);return;}
  expect(referenceChanges(whole,base)).toEqual([['parts',part]]);
  const edited=applyAction(whole,editAgain(whole,part)),markers=referenceChanges(edited,base);
  expect(markers.filter(p=>p[0]==='parts')).toEqual([['parts',part]]);
@@ -35,6 +34,7 @@ for(const part of Object.keys(PARTS) as Part[])it(`${part}: whole replacement gi
 it('family grouping is one marker; donor/list/bloc fields are not individually marked',()=>{
  const b=scenarioFromDataset(JSON.parse(readFileSync(new URL('../public/data/k12.json',import.meta.url),'utf8'))),f=parseFamily(JSON.stringify(family)),s=applyAction(b,groupingAction(f,b,'en'));
  expect(referenceChanges(s,b)).toEqual([['parts','blocs']]);
+ expect(resultChanges(s,b)).toEqual([]);
  for(const l of s.lists)expect(markerPath(s,b,['lists',l.id,'bloc'])).toBe(null);
  for(const bloc of s.blocs)expect(markerPath(s,b,['blocs',bloc.id,'nameEn'])).toBe(null);
  expect(s.blocs.find(b=>b.id==='selected')!.color).toBe(familyColor(f));

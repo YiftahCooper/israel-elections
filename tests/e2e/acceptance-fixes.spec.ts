@@ -20,7 +20,7 @@ test('E1 Compare and E2 coalition shortcuts use the moved party seats', async ({
   await editor.locator('.bp-card').first().getByRole('button', {name:'Move here'}).click();
   await page.keyboard.press('Escape');
   await page.getByRole('tab', {name:'Compare', exact:true}).click();
-  await expect.soft(page.locator('.cmp .legend')).toContainText('68');
+  await expect(page.locator('.cmp .legend').last()).toContainText('68'); // Current election; analysis-only edits retain the previous-election comparison.
   await page.getByRole('tab', {name:'Coalitions', exact:true}).click();
   await page.locator('.coal').getByRole('button', {name:'Coalition', exact:true}).click();
   await expect(page.locator('.coal-now .majority-readout')).toContainText('68 / 120');

@@ -6,7 +6,7 @@ import { electionContext } from '../data/electionContext.ts';
 import { PMResult } from './components/ElectionContext.tsx';
 import { createElement, memo, Suspense, use, useEffect, useLayoutEffect, useState, type ReactNode } from 'react';
 import { liveScenarioColor } from './scenarioIdentity.ts';
-import { referenceChanges } from './derive.ts';
+import { resultChanges } from './derive.ts';
 import { X } from 'lucide-react';
 import { allocationOf, baselineOf, ruleChanges, scenarioIssues, tieAffectsSeats, warningText } from './derive.ts';
 import { LangContext, useL } from './i18n.ts';
@@ -183,7 +183,7 @@ function Shell() {
   const drawerOpen = tool !== 'board' && !!selected && drawerFor === selected;
 
   return (
-    <div className={`app ${preview ? 'board-preview' : ''}`} style={{ ['--scenario-color' as string]: referenceChanges(committed, base).length ? liveScenarioColor(committed, saved) : undefined }}>
+    <div className={`app ${preview ? 'board-preview' : ''}`} style={{ ['--scenario-color' as string]: resultChanges(committed, base).length ? liveScenarioColor(committed, saved) : undefined }}>
       <TopBar s={pmOnly ? null : committed} r={cr} ds={ds} baseR={baseR} pmContestId={pmContestId} onContestChange={setPMContestId} />
       {pmOnly ? <main className="work"><PMResult contest={pmOnly} onKnesset={() => setPMContestId(null)} /></main> : <>
       <nav className="toolbar" aria-label={L('Tools', 'כלים')}><div ref={trackTabOverflow} className="tabs" role="tablist" aria-label={L('Tools', 'כלים')}>

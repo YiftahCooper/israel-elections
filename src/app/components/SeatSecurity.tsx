@@ -1,8 +1,8 @@
+import { AnalysisEdits } from './AnalysisEdits.tsx';
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
 import { SeatDelta } from './SeatDelta.tsx';
 import { dispatch } from '../store.ts';
 import { StartFrom } from './StartFrom.tsx';
-import { EditMarker } from './EditMarker.tsx';
 import { Majority } from './Majority.tsx';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { AllocationResult } from '../../engine/types.ts';
@@ -253,7 +253,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
     <div className="coal">
       {/* one line that is always there: its reset/copy buttons appear beside the text, never above the cards */}
       <div className="row coal-head"><span className="small ink2">{L('Require or rule out lists', 'חייבו או פסלו רשימות')} <Info title={L('Coalition assumptions', 'הנחות הקואליציה')}>{L('In: every coalition below includes the list. Out: none does. Any: either. Arithmetic only — it says nothing about political feasibility.', 'בפנים: כל קואליציה למטה כוללת את הרשימה. בחוץ: אף אחת אינה כוללת. כל אפשרות: שתיהן. חשבון בלבד — לא הערכה פוליטית.')}</Info></span>
-        <span className="spacer" /><StartFrom s={s} part="coalitions" /><EditMarker s={s} path={['coalition']} /></div>
+        <span className="spacer" /><StartFrom s={s} part="coalitions" /><AnalysisEdits s={s} part="coalitions" outlet="coalition-panel" /></div>
       {startFrom.length > 0 && (
         <div className="row" style={{ marginBottom: 8 }}>
           <span className="small ink2">{L('Fill with a bloc', 'מילוי לפי גוש')}</span>

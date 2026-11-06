@@ -1,3 +1,4 @@
+import { AnalysisEdits } from './AnalysisEdits.tsx';
 import { appGroupingTag, appGroupingExplanation } from '../groupingName.ts';
 import { Slip } from './ui.tsx';
 import { BlocVoteStepper } from './BlocVoteStepper.tsx';
@@ -144,7 +145,7 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
         <StartFrom s={s} part="blocs" />
         <button className="btn small" onClick={()=>dispatch({type:'resetColors'})}>{L('Reset colours','איפוס צבעים')}</button>
         <p className="tiny muted">{L(`Vote changes here are balanced by: ${voteSourceLabel(src, s, lang)}`, `שינויי קולות כאן מתקזזים מול: ${voteSourceLabel(src, s, lang)}`)}</p>
-        <p className="small">{groupingLabel(s, lang)} <EditMarker s={s} path={['customGroupingName']} /></p>
+        <p className="small">{groupingLabel(s, lang)} <AnalysisEdits s={s} outlet="bloc-panel" /></p>
         {picked && (
           <p className="bp-picked small" role="status">
             {L(`Moving ${chipLabel(picked)}: choose a bloc.`, `מעבירים את ${chipLabel(picked)}: בחרו גוש.`)}

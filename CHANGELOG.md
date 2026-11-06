@@ -2,6 +2,8 @@
 
 ## 6 November 2026 — data audit
 
+- Mark custom bloc, coalition and family groupings locally as analysis while preserving official result identity and factual summaries.
+
 - Keep custom list, party and bloc colours and grouping display names separate from result identity; save/share appearance and reset colours independently of result edits.
 
 - Show app-defined provenance once per marked scheme context; keep individual markers for standalone blocs and tooltips.

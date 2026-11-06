@@ -1,3 +1,4 @@
+import { AnalysisEdits } from './AnalysisEdits.tsx';
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
 import { SeatDelta } from './SeatDelta.tsx';
 import { CandidateName } from './CandidateName.tsx';
@@ -10,7 +11,7 @@ import { useEffect, useMemo, useRef, type MouseEvent, type ReactNode } from 'rea
 import type { ElectionDataset, ElectionId } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import { votesCast, type Scenario } from '../../model/scenario.ts';
-import { referenceChanges, allocationOf, comparisonGroups, groupingBaseline, groupingLabel, nonSeatChanges, blocPieces, electedOf, listLabel } from '../derive.ts';
+import { resultChanges, allocationOf, comparisonGroups, groupingBaseline, groupingLabel, nonSeatChanges, blocPieces, electedOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct, fmtRat, fmtSigned } from '../format.ts';
 import { loadDataset, replay, setState, toast, useStore, useDigits } from '../store.ts';
@@ -40,7 +41,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
  *  scenarios, or another election's official result. */
 function useCompareChoices(s: Scenario, ds: ElectionDataset) {
   const L = useL(), lang = useLang();
-  const { reference } = useActiveReference();
+  const { markerReference: reference } = useActiveReference();
   const saved = useStore((st) => st.saved);
   const elections = useStore((st) => st.elections);
   const here = L('This election', 'הבחירות האלה'), others = L('Other elections', 'בחירות אחרות');
@@ -48,7 +49,7 @@ function useCompareChoices(s: Scenario, ds: ElectionDataset) {
   const choices: Choice[] = useMemo(() => [
     ...(reference ? [{ value: 'official', label: L('Official result', 'התוצאה הרשמית'), group: here }] : []),
     { value: 'historical', label: referenceLabel(reference, lang).name, group: here },
-    ...savedHere.map((x) => ({ value: x.id, label: x.name, group: here, preview: <span className="swatch" style={{ background: (()=>{const sc=replay(ds,x.name,x.log,x.factionSplitBaseline??false).scenario;return referenceChanges(sc,baselineOf(ds)).length?scenarioColor(sc):'var(--muted)';})() }} /> })),
+    ...savedHere.map((x) => ({ value: x.id, label: x.name, group: here, preview: <span className="swatch" style={{ background: (()=>{const sc=replay(ds,x.name,x.log,x.factionSplitBaseline??false).scenario;return resultChanges(sc,baselineOf(ds)).length?scenarioColor(sc):'var(--muted)';})() }} /> })),
     ...elections.filter((e) => e.available && e.id !== s.electionId).map((e) => ({ value: ELECTION + e.id, label: electionLabel(e, elections, lang), detail: L('Official result', 'התוצאה הרשמית'), group: others })),
   ], [reference, saved, ds, elections, lang, s.electionId, s.id]); // eslint-disable-line react-hooks/exhaustive-deps -- L and the filtered lists follow lang, saved and s
   const at = elections.findIndex((e) => e.id === s.electionId);
@@ -94,7 +95,7 @@ function useSteadyDisclosure() {
 function ScenarioCompare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; base: Scenario; ds: ElectionDataset }) {
   const L = useL();
   const lang = useLang();
-  const { reference } = useActiveReference();
+  const { markerReference: reference } = useActiveReference();
   const compareWithRaw = useStore((st) => st.compareWith);
   const { previous } = useCompareChoices(s, ds);
   const saved = useStore((st) => st.saved);
@@ -130,12 +131,12 @@ function ScenarioCompare({ s, r, base, ds }: { s: Scenario; r: AllocationResult;
 
   const baseLabel = referenceLabel(a === base ? null : a, lang);
   const nameA = baseLabel.name;
-  const nameB = s.name || (referenceChanges(s, base).length ? L('Your scenario', 'התרחיש שלכם') : L('Official result', 'התוצאה הרשמית'));
+  const nameB = resultChanges(s, base).length ? s.name || L('Your scenario', 'התרחיש שלכם') : L('Official result', 'התוצאה הרשמית');
   const colorOfGroup = (g: (typeof groups)[number]) => (s.lists.find((l) => l.id === g.bIds[0]) ?? a.lists.find((l) => l.id === g.aIds[0]))?.color ?? '#888';
   const labelOf = (g: (typeof groups)[number]) => gName(g.bIds.length ? g.bIds : g.aIds, g.bIds.length ? s : a);
   const maxChange = Math.max(1, ...changed.map((g) => Math.abs(g.seatsB - g.seatsA)));
   const total = s.rules.seats;
-  const same = changed.length === 0 && referenceChanges(s, a).length === 0;
+  const same = changed.length === 0 && resultChanges(s, a).length === 0;
   const otherNow = nonSeatChanges(s, a, lang);
 
   // Derive the automatic target without changing the session choice or undo history.
@@ -144,13 +145,13 @@ function ScenarioCompare({ s, r, base, ds }: { s: Scenario; r: AllocationResult;
 
   return (
     <div className="cmp">
-      <ComparePicker s={s} ds={ds} name={nameB} value={compareWith}>
+      <AnalysisEdits s={s} outlet="compare-grouping" /><ComparePicker s={s} ds={ds} name={nameB} value={compareWith}>
         {changed.length === 0 && <span className="small muted">{[L('No seats changed', 'המנדטים לא השתנו'), ...otherNow].join(' · ')}</span>}
       </ComparePicker>
 
       <div className="cmp-chambers">
-        <figure style={{ border: `2px solid ${referenceChanges(a,base).length ? scenarioColor(a) : 'var(--rule)'}` }}><figcaption>{nameA}</figcaption><Hemicycle reference={groupedA ?? a} s={groupedA ?? a} r={ar} compact paired title={nameA} /></figure>
-        <figure style={{ border: `2px solid ${referenceChanges(s, base).length ? scenarioColor(s) : 'var(--rule)'}` }}><figcaption>{nameB}</figcaption><Hemicycle reference={groupedA ?? a} s={s} r={r} compact paired title={nameB} /></figure>
+        <figure style={{ border: `2px solid ${resultChanges(a,base).length ? scenarioColor(a) : 'var(--rule)'}` }}><figcaption>{nameA}</figcaption><Hemicycle reference={groupedA ?? a} s={groupedA ?? a} r={ar} compact paired title={nameA} /></figure>
+        <figure style={{ border: `2px solid ${resultChanges(s, base).length ? scenarioColor(s) : 'var(--rule)'}` }}><figcaption>{nameB}</figcaption><Hemicycle reference={groupedA ?? a} s={s} r={r} compact paired title={nameB} /></figure>
       </div>
       {gainers.length > 0 && <p className="small muted cmp-key">{L(`Outlined: seats gained since ${nameA}`, `מתאר: מנדטים שנוספו מאז ${nameA}`)} <Info title={L('About these outlines', 'על המתארים')}>{L('Outlines compare list seat counts, not individual seats or voters moving between lists.', 'המתארים משווים את מספר המנדטים של הרשימות; אין משמעות של מנדט או בוחר שעבר בין רשימות.')}</Info></p>}
 
@@ -250,7 +251,7 @@ function ScenarioCompare({ s, r, base, ds }: { s: Scenario; r: AllocationResult;
  *  each with a strip of its seats. */
 function EmptyCompare({ s, ds, base, compareWith, nameA, nameB }: { s: Scenario; ds: ElectionDataset; base: Scenario; compareWith: string; nameA: string; nameB: string }) {
   const L = useL();
-  const { reference } = useActiveReference();
+  const { markerReference: reference } = useActiveReference();
   const saved = useStore((st) => st.saved);
   const { choices, previous, electionName } = useCompareChoices(s, ds);
   const prevDs = useStore((st) => previous ? st.datasets[previous.id] : undefined);
@@ -266,7 +267,7 @@ function EmptyCompare({ s, ds, base, compareWith, nameA, nameB }: { s: Scenario;
   </button>;
   return (
     <div className="cmp">
-      <ComparePicker s={s} ds={ds} name={nameB} value={compareWith} />
+      <AnalysisEdits s={s} outlet="compare-grouping" /><ComparePicker s={s} ds={ds} name={nameB} value={compareWith} />
       <section className="cmp-empty" aria-labelledby="cmp-empty-title">
         <h3 id="cmp-empty-title">{L('Compare ', 'השוואת ')}<bdi>{nameB}</bdi>{L(' with…', ' עם…')}</h3>
         <div className="cmp-picks">
@@ -290,8 +291,8 @@ function ElectionCompare({ s, r, base, ds, otherId }: { s: Scenario; r: Allocati
   useEffect(() => { if (!ods) loadDataset(otherId).catch(() => { toast('error', L('Could not load this election.', 'לא ניתן לטעון את הבחירות האלה.')); setState({ compareWith: 'historical' }); }); }, [ods, otherId]); // eslint-disable-line react-hooks/exhaustive-deps
   const o = ods ? baselineOf(ods) : null;
   const or = useMemo(() => o ? allocationOf(o) : null, [o]);
-  const current = { sc: s, rr: r, election: electionName(s.electionId), name: s.name || (referenceChanges(s, base).length ? L('Your scenario', 'התרחיש שלכם') : L('Official result', 'התוצאה הרשמית')), color: referenceChanges(s, base).length ? scenarioColor(s) : 'var(--rule)' };
-  if (!o || !or || !ods) return <div className="cmp"><ComparePicker s={s} ds={ds} name={current.name} value={ELECTION + otherId} /><p className="small muted">{L('Loading…', 'טוען…')}</p></div>;
+  const current = { sc: s, rr: r, election: electionName(s.electionId), name: resultChanges(s, base).length ? s.name || L('Your scenario', 'התרחיש שלכם') : L('Official result', 'התוצאה הרשמית'), color: resultChanges(s, base).length ? scenarioColor(s) : 'var(--rule)' };
+  if (!o || !or || !ods) return <div className="cmp"><AnalysisEdits s={s} outlet="compare-grouping" /><ComparePicker s={s} ds={ds} name={current.name} value={ELECTION + otherId} /><p className="small muted">{L('Loading…', 'טוען…')}</p></div>;
   const otherSide = { sc: o, rr: or, election: electionName(otherId), name: L('Official result', 'התוצאה הרשמית'), color: 'var(--rule)' };
   // the earlier election is drawn first, so time reads left to right in either language
   const [left, right] = ods.electionDate < ds.electionDate ? [otherSide, current] : [current, otherSide];
@@ -299,7 +300,7 @@ function ElectionCompare({ s, r, base, ds, otherId }: { s: Scenario; r: Allocati
   const when = left.election.split(' · ')[0];
   return (
     <div className="cmp">
-      <ComparePicker s={s} ds={ds} name={current.name} value={ELECTION + otherId} />
+      <AnalysisEdits s={s} outlet="compare-grouping" /><ComparePicker s={s} ds={ds} name={current.name} value={ELECTION + otherId} />
       <div className="cmp-chambers">
         {[left, right].map((x) => <figure key={x.sc.electionId} style={{ border: `2px solid ${x.color}` }}>
           <figcaption>{x.election}<span className="small muted cmp-sub">{x.name}</span></figcaption>

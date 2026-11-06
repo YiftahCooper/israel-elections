@@ -1,5 +1,5 @@
 /** Appearance is saved separately from factual marker comparisons. */
-export const appearancePath=(p:readonly string[])=>p.includes('color')||p[0]==='customGroupingName'||p[0]==='blocs'&&p.length>2&&['nameHe','nameEn'].includes(p[2]);
+export const appearancePath=(p:readonly string[])=>p.includes('color')||p[0]==='blocs'&&p.length>2&&['nameHe','nameEn'].includes(p[2]);
 import { blocSchemeState, type Action, type Scenario } from './scenario.ts';
 import type {Part} from './parts.ts';
 export type InputPath=readonly string[];
@@ -11,7 +11,7 @@ const equal=(a:unknown,b:unknown)=>JSON.stringify(a)===JSON.stringify(b);
 export const inputPart=(p:InputPath):Part|undefined=>{
  if(p[0]==='parts')return p[1] as Part;
  if(p[0]==='lists')return p[2]==='bloc'?'blocs':p[2]==='votes'?'votes':p[2]==='candidates'||p[2]==='rosterUnavailable'||p[2]==='rosterTruncated'?'candidates':['withdrawn','heldVotes','originIds'].includes(p[2])?'structure':'identity';
- if(['blocs','customGroupingName','blocSchemeId','partyBlocs','candidateBlocs'].includes(p[0]))return 'blocs';
+ if(['familyDefinition','blocs','customGroupingName','blocSchemeId','partyBlocs','candidateBlocs'].includes(p[0]))return 'blocs';
  if(['rules','mode','lotteryWinners'].includes(p[0]))return 'rules';
  if(['registered','invalid'].includes(p[0]))return 'totals';
  if(p[0]==='coalition')return 'coalitions';
@@ -22,7 +22,7 @@ export const overlaps=(a:InputPath,b:InputPath)=>a.every((k,i)=>b[i]===k)||b.eve
 export function inputDiffs(a:Scenario,b:Scenario):InputPath[]{
  // Compare sourced views using the same sourced scheme. A detached/custom grouping is
  // compared to the last sourced choice before its membership edit, never erased.
- if (b.blocSchemeId && a.electionId === b.electionId) {
+ if (b.blocSchemeId && a.electionId === b.electionId && a.blocSchemeId !== b.blocSchemeId) {
   const choice = a.blocSchemeId ?? [...a.log].reverse().map(e=>e.action).find(x=>x.type==='applyBlocScheme'||x.type==='startPart'&&x.part==='blocs'&&(x.source==='preset'||!!x.snapshot?.blocSchemeId));
   const id = typeof choice === 'string' ? choice : choice?.type==='applyBlocScheme' ? choice.schemeId : choice?.type==='startPart' ? choice.presetId??choice.snapshot?.blocSchemeId : undefined;
   const scheme = b.blocSchemes?.find(g=>g.id===id);
@@ -41,8 +41,8 @@ export function inputDiffs(a:Scenario,b:Scenario):InputPath[]{
    for(const k of new Set([...Object.keys(x),...Object.keys(y)]))walk(x[k],y[k],[...p,k]);
   }else if(!appearancePath(p)) out.push(p);
  };
- for(const k of ['lists','rules','registered','invalid','agreements','blocs','blocSchemeId','customGroupingName','partyBlocs','candidateBlocs','lotteryWinners','mode'] as const){
-  const normal=(v:unknown)=>v??(k==='partyBlocs'||k==='candidateBlocs'?{}:undefined);
+ for(const k of ['lists','rules','registered','invalid','agreements','blocs','blocSchemeId','customGroupingName','partyBlocs','candidateBlocs','lotteryWinners','mode','coalition','familyDefinition'] as const){
+  const normal=(v:unknown)=>v??(k==='coalition'?{in:[],out:[]}:k==='partyBlocs'||k==='candidateBlocs'?{}:undefined);
   walk(normal(a[k]),normal(b[k]),[k]);
  }
  return out;
@@ -62,3 +62,10 @@ export const replacementScopes=(s:Scenario)=>scopes.get(s.log)??[];
 export function scopeCovers(scope:ReplacementScope,path:InputPath){
  return (inputPart(path)===scope.part&&(!scope.listId||path[0]==='lists'&&path[1]===scope.listId))||scope.changed.some(p=>overlaps(p,path));
 }
+
+/** B changes have shared local markers, but never describe a different election result. */
+export const analysisPart=(p:InputPath):'blocs'|'coalitions'|undefined => {
+ const part=inputPart(p);
+ return part==='blocs'||part==='coalitions'?part:undefined;
+};
+export const resultDiffs=(a:Scenario,b:Scenario)=>inputDiffs(a,b).filter(p=>!analysisPart(p));

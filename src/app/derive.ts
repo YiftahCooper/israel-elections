@@ -1,6 +1,6 @@
 import { groupingName } from './groupingName.ts';
 import { englishLabel } from '../data/names.ts';
-import {inputDiffs,inputPart,replacementScopes,scopeCovers} from '../model/editScopes.ts';
+import {inputDiffs,analysisPart,inputPart,replacementScopes,scopeCovers} from '../model/editScopes.ts';
 import {PARTS,type Part} from '../model/parts.ts';
 import {isFamilyGrouping} from '../families/labels.ts';
 import { applyAction } from '../model/actions.ts';
@@ -257,7 +257,6 @@ export function nonSeatChanges(s: Scenario, base: Scenario, lang: Lang): string[
   const changes: string[] = [];
   if (JSON.stringify(s.lists.map(l => [l.id,l.votes,l.withdrawn])) !== JSON.stringify(base.lists.map(l => [l.id,l.votes,l.withdrawn]))) changes.push(he ? 'הקולות השתנו' : 'votes changed');
   if (JSON.stringify(s.agreements) !== JSON.stringify(base.agreements)) changes.push(he ? 'הסכמי העודפים השתנו' : 'agreements changed');
-  if (inputDiffs(s, base).some(p => inputPart(p) === 'blocs')) changes.push(he ? 'החלוקה לגושים השתנתה' : 'grouping changed');
   return changes;
 }
 
@@ -366,3 +365,6 @@ export function editPathLabel(s: Scenario, path: EditPath, lang: Lang, fallback?
     return listName(k) ?? (entity ? (lang === 'he' ? entity.nameHe : englishLabel('nameEn' in entity ? entity.nameEn : null,entity.nameHe)) : (lang === 'he' ? 'פרט' : 'Detail'));
   }).join(' · ');
 }
+
+/** A-only comparison for chrome, identity and factual summaries. Marker scopes remain A/B. */
+export const resultChanges=(s:Scenario,reference:Scenario):EditPath[]=>referenceChanges(s,reference).filter(p=>!analysisPart(p));

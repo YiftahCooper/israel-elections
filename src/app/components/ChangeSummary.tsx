@@ -3,7 +3,7 @@ import { SeatDelta } from './SeatDelta.tsx';
 import { factLog } from '../../model/actionClassification.ts';
 import {isFamilyGrouping} from '../../families/labels.ts';
 import { useActiveReference } from '../useActiveReference.ts';
-import { referenceLabel } from '../derive.ts';
+import { referenceLabel, resultChanges } from '../derive.ts';
 import { allocationOf } from '../derive.ts';
 // "What changed": the session's net effect against the official result, kept to one line however many edits
 // were made (seats that moved, the blocs, the majority), with the full undoable history one click away.
@@ -72,11 +72,12 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
     const now = blocTotals(s, r);
     let was: Map<string | null, number> | null = null;
     const b = groupingBaseline(s, base);
+    if (!b) return null; // Custom analysis has no official grouping to compare.
     if (b) was = blocTotals(b, allocationOf(b));
     return s.blocs.map((b) => ({ b, n: now.get(b.id) ?? 0, d: was ? (now.get(b.id) ?? 0) - (was.get(b.id) ?? 0) : null }));
   }, [s, r, base, baseR]);
   const edits = factLog(s).length;
-  const edited = edits > 0;
+  const edited = resultChanges(s,base).length > 0;
   const familyGrouping = isFamilyGrouping(s);
   const majority = Math.floor(s.rules.seats / 2) + 1;
   const holder = blocs?.find((x) => x.n >= majority);

@@ -136,7 +136,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
     }
     case 'setBlocAppearance':
       need(action.blocs.length===s.blocs.length&&action.blocs.every(b=>s.blocs.some(x=>x.id===b.id)), 'blocs', 'Appearance cannot change bloc membership.');
-      s={...s,blocs:s.blocs.map(b=>{const v=action.blocs.find(x=>x.id===b.id)!;return {...b,color:v.color,nameHe:v.nameHe,nameEn:v.nameEn};}),customGroupingName:action.name??s.customGroupingName};break;
+      s={...s,blocs:s.blocs.map(b=>{const v=action.blocs.find(x=>x.id===b.id)!;return {...b,color:v.color,nameHe:v.nameHe,nameEn:v.nameEn};}),customGroupingName:action.name??s.customGroupingName,...(action.name!==undefined?{blocSchemeId:null}:{})};break;
     case 'setPartyColor':
       need(listById(s,action.listId).parties?.some(p=>p.id===action.partyId),'party','Unknown party.');
       s=replaceList(s,action.listId,l=>({...l,parties:l.parties?.map(p=>p.id===action.partyId?{...p,color:action.color}:p)}));break;

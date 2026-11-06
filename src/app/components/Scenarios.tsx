@@ -1,6 +1,6 @@
 import { scenarioDirty } from '../scenarioDocument.ts';
 import { ScenarioSave, UnsavedMark } from './ScenarioSave.tsx';
-import { hasAppearance, factLog } from '../../model/actionClassification.ts';
+import { hasAppearance, hasAnalysis, factLog } from '../../model/actionClassification.ts';
 import { Info } from './ui.tsx';
 import { EditMarker } from './EditMarker.tsx';
 import { exportAnnotations } from '../scenarioExport.ts';
@@ -14,7 +14,7 @@ import { Check, Copy, Download, FolderOpen, GitCompare, Link2, RotateCcw, Save, 
 import type { ElectionDataset } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
-import { allocationOf, listLabel } from '../derive.ts';
+import { allocationOf, listLabel, baselineOf, resultChanges } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { download } from '../format.ts';
 import { deleteSaved, duplicateCurrent, importScenarioJson, openImported, openSaved, replay, resetAll, scenarioKey, setState, shareLink, toast, useStore, type SavedScenario } from '../store.ts';
@@ -95,8 +95,8 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
         </div></details>
         <ResultBar s={s} r={allocationOf(s)} />
         <div className="row" style={{ marginTop: 10 }}>
-          <ScenarioSave className="btn primary scn-save" disabled={clean || official && !hasAppearance(s)}>{clean ? <><Check className="icon sm" aria-hidden />{L('Saved', 'נשמר')}</> : <><Save className="icon sm" aria-hidden />{L('Save', 'שמירה')}</>}</ScenarioSave>
-          <ScenarioSave as disabled={official && !hasAppearance(s)}>{L('Save as…', 'שמירה בשם…')}</ScenarioSave>
+          <ScenarioSave className="btn primary scn-save" disabled={clean || official && !(hasAppearance(s)||hasAnalysis(s))}>{clean ? <><Check className="icon sm" aria-hidden />{L('Saved', 'נשמר')}</> : <><Save className="icon sm" aria-hidden />{L('Save', 'שמירה')}</>}</ScenarioSave>
+          <ScenarioSave as disabled={official && !(hasAppearance(s)||hasAnalysis(s))}>{L('Save as…', 'שמירה בשם…')}</ScenarioSave>
           {isSaved && !clean && <button className="btn" onClick={() => openSaved(saved.find(x => x.id === s.id)!)}>{L('Reopen saved version', 'פתיחת הגרסה השמורה')}</button>}
           <button className="btn" onClick={async () => {
             const url = await shareLink(); setLink(url);
@@ -125,7 +125,7 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
             const res = results.get(x.id);
             return (
               <li key={x.id} className={`scn-card ${x.id === s.id ? 'current' : ''}`}>
-                <div className="scn-title"><b><span className="swatch" style={{ background: res && !factLog(res.sc).length ? 'var(--muted)' : scenarioColor(res?.sc ?? {}) }} />{x.name}{x.id === s.id && !clean && <UnsavedMark />}</b><span className="small muted">{electionName(x.electionId)} · {new Date(x.savedAt).toLocaleDateString(lang === 'he' ? 'he-IL' : 'en-GB', { dateStyle: 'medium' })}</span></div>
+                <div className="scn-title"><b><span className="swatch" style={{ background: res && !resultChanges(res.sc,baselineOf(ds)).length ? 'var(--muted)' : scenarioColor(res?.sc ?? {}) }} />{x.name}{x.id === s.id && !clean && <UnsavedMark />}</b><span className="small muted">{electionName(x.electionId)} · {new Date(x.savedAt).toLocaleDateString(lang === 'he' ? 'he-IL' : 'en-GB', { dateStyle: 'medium' })}</span></div>
                 {x.description && <p className="small ink2" style={{ margin: 0 }}>{x.description}</p>}
                 {res ? <ResultBar s={res.sc} r={res.r} /> : <p className="tiny muted" style={{ margin: 0 }}>{L('Open it to see its result.', 'פתחו כדי לראות את התוצאה.')}</p>}
                 <div className="row" style={{ gap: 4 }}>

@@ -67,7 +67,7 @@ export function StartFrom({ s: shown, part, listId }: { s: Scenario; part: Part;
   };
   const single = others.length === 1 && !others[0].disabled && !others[0].group ? others[0] : null;
   return <div className="row start-from">
-    <EditMarker s={s} path={['parts', part, ...(listId ? [listId] : [])]} />
+    <EditMarker s={s} path={['parts', part, ...(listId ? [listId] : [])]} outlet={part==='blocs'?'bloc-panel':part==='coalitions'?'coalition-panel':undefined} />
     {official && <button type="button" className="btn small" title={L(`Restore ${partName} as officially published`, `שחזור ${partName} לפי הפרסום הרשמי`)} onClick={() => dispatch(official)}>
       <RotateCcw className="icon sm" aria-hidden />{L(...officialLabel[part])}</button>}
     {single && <button type="button" className="btn small" onClick={() => dispatch(single.action)}>{single.label}</button>}

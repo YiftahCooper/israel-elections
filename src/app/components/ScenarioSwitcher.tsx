@@ -2,7 +2,7 @@ import { factLog } from '../../model/actionClassification.ts';
 import { useActiveReference } from '../useActiveReference.ts';
 import { describe } from '../actionDescription.ts';
 import { voteSourceLabel } from '../voteEdit.ts';
-import { baselineOf, referenceChanges, editPathLabel } from '../derive.ts';
+import { baselineOf, resultChanges, editPathLabel } from '../derive.ts';
 import { changeText, ChangeValue } from '../changeValue.tsx';
 import { useMemo } from 'react';
 import { type Scenario } from '../../model/scenario.ts';
@@ -22,13 +22,13 @@ export function ScenarioSwitcher({ s, ds }: { s: Scenario; ds: ElectionDataset }
   const entries = useMemo(() => saved.filter(x => x.electionId === s.electionId).map(x => { const result = replay(ds, x.name, x.log, x.factionSplitBaseline ?? false); return { ...x, failed: result.failed, scenario: { ...result.scenario, ...(x.description ? { description: x.description } : {}), id: x.id } }; }), [saved, ds, s.electionId]);
   // 'official', a saved id, or unsaved work: changed since loading, or never saved (an opened share link)
   const current = scenarioKey({ scenario: s, reference: checkpointReference, saved, datasets: { [ds.id]: ds } }) ?? 'official';
-  const preview = (x: Scenario, neutral = false) => <><span className="swatch" style={{ background: neutral || !referenceChanges(x, official).length ? 'var(--muted)' : liveScenarioColor(x, saved) }} /><ResultPreview s={x} /></>;
+  const preview = (x: Scenario, neutral = false) => <><span className="swatch" style={{ background: neutral || !resultChanges(x, official).length ? 'var(--muted)' : liveScenarioColor(x, saved) }} /><ResultPreview s={x} /></>;
   // rows describe each scenario against the official result, so counts mean the same thing in every row
   const markerBase = official;
   const details = (x: Scenario, date: string, status: string) => {
     const action = [...x.log].reverse().map(e => e.action).find(a => ['setVotes', 'redistribute', 'transfer', 'addVoters', 'scaleAll', 'setTurnout'].includes(a.type));
     const source = !action ? L('Official votes', 'קולות רשמיים') : action.type === 'setVotes' || action.type === 'addVoters' ? voteSourceLabel({ kind: 'new' }, x, lang) : action.type === 'redistribute' ? L('Lists balanced proportionally', 'איזון יחסי בין הרשימות') : describe(action, x, lang);
-    const rules = referenceChanges(x, markerBase).filter(p => p[0] === 'rules'||p[0]==='parts'&&p[1]==='rules').map(p => `${editPathLabel(x, p, lang, markerBase)}: ${changeText(x, p, lang)}`);
+    const rules = resultChanges(x, markerBase).filter(p => p[0] === 'rules'||p[0]==='parts'&&p[1]==='rules').map(p => `${editPathLabel(x, p, lang, markerBase)}: ${changeText(x, p, lang)}`);
     // count the user's edits, not the fields they touched: one balanced vote edit is one edit, not dozens of lists
     const count = factLog(x).length;
     const changedVotes = x.lists.some(l => l.votes !== markerBase.lists.find(y => y.id === l.id)?.votes);
@@ -47,5 +47,5 @@ export function ScenarioSwitcher({ s, ds }: { s: Scenario; ds: ElectionDataset }
     if (key === 'official') openOfficial();
     else if (drafts[key]) restoreDraft(key);
     else { const x = saved.find(y => y.id === key); if (x) void openSaved(x); }
-  }}><details className="scenario-changes"><summary>{L('Current scenario', 'התרחיש הנוכחי')} · {activeLabel.since}</summary><ul>{referenceChanges(s, reference ?? baselineOf(ds)).map(p => <li key={p.join('/')}><bdi>{editPathLabel(s, p, lang, reference ?? baselineOf(ds))}</bdi>: <ChangeValue s={s} path={p} lang={lang} /></li>)}</ul></details></ChoicePicker>;
+  }}><details className="scenario-changes"><summary>{L('Current scenario', 'התרחיש הנוכחי')} · {activeLabel.since}</summary><ul>{resultChanges(s, reference ?? baselineOf(ds)).map(p => <li key={p.join('/')}><bdi>{editPathLabel(s, p, lang, reference ?? baselineOf(ds))}</bdi>: <ChangeValue s={s} path={p} lang={lang} /></li>)}</ul></details></ChoicePicker>;
 }
