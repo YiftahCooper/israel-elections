@@ -2,6 +2,8 @@
 
 ## 6 November 2026 — data audit
 
+- k11: corrected ballot labels and small-list identities with stable IDs, removed Shiluv from Sheli’s family/lineage, corrected candidate #61 and the 97-MK coalition, and refreshed sourced aftermath gaps.
+
 - k24: corrected Demokratit’s withdrawal, retained official final notices, clarified opening membership and polling-station scope, added candidate resignation notes, and corrected overstated source and logo verification claims.
 - k19: retained the formal Gazette total correction, repaired list identity, context and stale research notes, strengthened constituent sourcing and withheld three unproven campaign logos.
 

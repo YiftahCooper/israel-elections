@@ -26,7 +26,7 @@ export interface Review {
   resultsPages: number[];
   gazetteTotals: { valid: number; invalid: number; registered: null; votesCast: null };
   supplementalTotals: { registered: number; votesCast: number; sourceId: string };
-  lists: { letters: string; nameHe: string; gazetteVotes: number; officialSeats: number }[];
+  lists: { letters: string; legacyIdLetters?: string; nameHe: string; gazetteVotes: number; officialSeats: number }[];
   agreements: { sourceId: string; issue?: number; page: number | null; complete: boolean; pairs: [string, string][] };
   candidateChecks: { completeWinningRostersVerified: boolean; lists: { letters: string; publishedCount: number; first: { rank: number; nameHe: string }; pages: number[]; scope: string }[] };
   sourceIds: string[];
@@ -65,14 +65,14 @@ export function researchDataset({ review: r, rosters }: Audit): ElectionDataset 
       const roster = rosters.find(c => c.letters === l.letters);
       // registered candidates ranked above the last elected member whom the results notice omits
       const notSeated = notSeatedRanks(roster?.electedCrossCheck?.ranks ?? [], (roster?.candidates ?? []).map(c => c.rank));
-      return listRecord(n, i, { letters: l.letters, nameHe: l.nameHe, votes: l.gazetteVotes,
-        candidates: (roster?.candidates ?? []).map(c => ({ id: candidateId(`${n}-${l.letters}`, c.rank), rank: c.rank, nameHe: c.nameHe, ...(notSeated.has(c.rank) ? { notSeated: true as const } : {}) })),
+      return { ...listRecord(n, i, { letters: l.legacyIdLetters ?? l.letters, nameHe: l.nameHe, votes: l.gazetteVotes,
+        candidates: (roster?.candidates ?? []).map(c => ({ id: candidateId(`${n}-${l.legacyIdLetters ?? l.letters}`, c.rank), rank: c.rank, nameHe: c.nameHe, ...(notSeated.has(c.rank) ? { notSeated: true as const } : {}) })),
         ...rosterFlags(!roster ? 'unavailable' : roster.complete ? 'complete' : 'truncated', 'when-set'),
         candidatesSource: `${r.id}-candidates-gazette`,
-        notesHe: roster ? roster.candidates.filter(c => notSeated.has(c.rank)).map(notSeatedNoteHe) : ['RESEARCH ONLY: official roster exists but has not been transcribed.'] }, LIST_KEYS);
+        notesHe: roster ? roster.candidates.filter(c => notSeated.has(c.rank)).map(notSeatedNoteHe) : ['RESEARCH ONLY: official roster exists but has not been transcribed.'] }, LIST_KEYS), letters: l.letters };
     }),
     agreements: agreementRecords(n, r.agreements.pairs, r.agreements.sourceId),
-    blocs: [], officialSeats: officialSeatsOf(n, r.lists.map(l => ({ letters: l.letters, seats: l.officialSeats }))),
+    blocs: [], officialSeats: officialSeatsOf(n, r.lists.map(l => ({ letters: l.legacyIdLetters ?? l.letters, seats: l.officialSeats }))),
     officialSeatsSourceId: r.resultsSourceId, sourceIds: [...r.sourceIds, `${r.id}-national-reviewed`], hasLocalities: false,
     buildInfo: { builtAt: r.reviewedOn, rawSha256: {} },
   };
@@ -126,7 +126,7 @@ export function verifyHistoricalProgress(id: HistoricalId, opts: VerifyOptions =
   check(allocation.seatsAllocated === 120 && allocation.warnings.length === 0, `${id}: incomplete/ambiguous allocation`);
   // Recorded as evidence: an inexact reproduction is a release blocker, never adjusted to match.
   const differences = r.lists.flatMap(l => {
-    const computed = allocation.lists.find(x => x.id === `${id.slice(1)}-${l.letters}`)!.seats;
+    const computed = allocation.lists.find(x => x.id === `${id.slice(1)}-${l.legacyIdLetters ?? l.letters}`)!.seats;
     return computed === l.officialSeats ? [] : [{ letters: l.letters, computed, official: l.officialSeats }];
   });
   check(JSON.stringify(differences) === JSON.stringify(r.allocationCheck.differences), `${id}: allocation diagnostic changed`);

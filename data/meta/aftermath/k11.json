@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "electionId": "k11",
   "status": "pilot",
-  "reviewedAt": "2026-11-05",
+  "reviewedAt": "2026-11-06",
   "notes": [
     "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
     "The term window runs from this election to the next Knesset election. Government tenure may extend past that window. Mid-term institutional succession is recorded in formation.events; it is not a new post-election recommendation round.",
@@ -18,7 +18,7 @@
     "knesset-history": {
       "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-eleventh-knesset-1984-1988",
       "publisher": "Knesset, history of the 11th Knesset (credited text)",
-      "kind": "official",
+      "kind": "secondary",
       "accessed": "2026-11-05",
       "via": "Jewish Virtual Library mirror; original https://main.knesset.gov.il/EN/About/History/pages/knessethistory.aspx?kns=11"
     },
@@ -90,11 +90,10 @@
       "accessed": "2026-11-05"
     },
     "government22": {
-      "url": "https://jewishvirtuallibrary.org/jsource/Politics/22gov.html",
-      "publisher": "Israel Ministry of Foreign Affairs, 22nd government (JVL mirror)",
+      "url": "https://main.knesset.gov.il/mk/government/documents/gov22.pdf",
+      "publisher": "Knesset, 20 October 1986 investiture protocol",
       "kind": "official",
-      "accessed": "2026-11-05",
-      "via": "Jewish Virtual Library; government dates reused from named official transcription"
+      "accessed": "2026-11-06"
     },
     "intifada1987": {
       "url": "https://www.un.org/unispal/document/auto-insert-209471/",
@@ -120,6 +119,12 @@
       "publisher": "Bank of Israel, Annual Report 1985, Chapter I, pp. 14–16",
       "kind": "official",
       "accessed": "2026-11-05"
+    },
+    "mandate-extension": {
+      "url": "https://www.csmonitor.com/1984/0827/082726.html",
+      "publisher": "Christian Science Monitor, 27 August 1984 (contemporary foreign reporting)",
+      "kind": "secondary",
+      "accessed": "2026-11-06"
     }
   },
   "results": {
@@ -285,7 +290,7 @@
           ]
         },
         {
-          "letters": "עי",
+          "letters": "עד",
           "seats": 2,
           "status": "recommended",
           "nominee": "shamir",
@@ -355,7 +360,7 @@
         }
       ],
       "notes": [
-        "Per-list split (Alignment 44, Hadash 4, Ratz 3, Yahad 3, Shinui 3, Progressive List 2, Ometz 1 = 60; Likud 41, Tehiya–Tzomet 5, Shas 4, Agudat Yisrael 2, Morasha 2 = 54) matches JTA's contemporary totals; El País counted 59 for Labor (it groups Yahad and Ometz as 'three'), recorded as a source conflict. Recommendations were made on Friday 3 August 1984; Herzog gave Peres the mandate on 5 August. The two-year rotation agreement came later and is not a recommendation.",
+        "Per-list split (Alignment 44, Hadash 4, Ratz 3, Yahad 3, Shinui 3, Progressive List 2, Ometz 1 = 60; Likud 41, Tehiya–Tzomet 5, Shas 4, Agudat Yisrael 2, Morasha 2 = 54) matches JTA's contemporary totals; El País counted 59 for Labor (it groups Yahad and Ometz as 'three'), recorded as a source conflict. Recommendations were made on Friday 3 August 1984; Herzog gave Peres the mandate on 5 August. The rotation agreement (Shamir to take over after 25 months) came later and is not a recommendation.",
         "Upgrade: JTA 6 August 1984 names every faction on each side, including Ometz/Hurwitz and the unity-government positions; the per-list classification no longer depends solely on Hebrew Wikipedia. Kach was not invited, not an explicit refusal to recommend."
       ]
     }
@@ -376,6 +381,20 @@
         ],
         "person": "peres",
         "days": 21
+      },
+      {
+        "date": "1984-08-26",
+        "type": "mandate-extended",
+        "textEn": "Herzog extended Peres’s mandate by 21 days.",
+        "textHe": "הרצוג האריך את המנדט של פרס ב־21 ימים.",
+        "person": "peres",
+        "days": 21,
+        "cites": [
+          {
+            "source": "mandate-extension",
+            "quote": "won a 21-day extension of his mandate"
+          }
+        ]
       },
       {
         "date": "1984-09-13",
@@ -529,13 +548,11 @@
     "gap": "INES instrument exists; no qualifying published topline verified for this election. No microdata analysis performed."
   },
   "gaps": [
-    "Certification date and official first-sitting record not retrieved; election date comes from the existing verified result dataset.",
+    "Results notice signed 31 July and gazetted 1 August 1984 (YP 3081 p.3008); opening membership starts 13 August 1984 in retained official OData. No distinct certification act is asserted.",
     "Formation timeline is a sourced subset; missing steps must not be inferred from statutory maximum periods.",
-    "First-government coalition membership is reused from the existing first-government scheme, whose party membership evidence includes labelled Hebrew Wikipedia; a complete independent primary coalition agreement cross-check remains pending.",
+    "First-government membership: the primary formation speech states 97 MKs; six Mapam MKs and Sarid are excluded from the Alignment election-list envelope. A complete independent primary coalition-agreement cross-check remains pending.",
     "Recommendation evidence and caveats are inherited from docs/research/pm-recommendations-1977-2006.md; a source quoting the President is not an original presidential record.",
-    "1984 mandate extension not verified; the lawful 21-day allowance is not evidence that an extension was granted on a particular day.",
-    "Government 21 ended with the 20 October 1986 rotation; exact tasking, confidence tally and primary succession record for government 22 remain to be retrieved.",
-    "1984 Alignment’s 44 election seats include opponents; the ballot-list envelope is 104, while the reported coalition has 97 MKs. A source-verified faction-level allocation is still needed. Do not sum coalition[].seats as actual coalition strength in this case."
+    "Government 22: the official 20 October 1986 protocol reproduces Herzog’s tasking letter of 17 October and Shamir’s formation letter of 19 October. Confidence tally has not been transcribed."
   ],
   "government": {
     "number": 21,
@@ -559,7 +576,7 @@
       },
       {
         "letters": "אמת",
-        "note": "44 seats on the election list, including members opposing the government. This is the election-list reference, not 44 coalition supporters; exact faction-level membership is pending.",
+        "note": "Election-list envelope 44; actual coalition component 37 after excluding six Mapam MKs and Yossi Sarid.",
         "seats": 44
       },
       {
@@ -579,7 +596,7 @@
         "seats": 4
       },
       {
-        "letters": "עי",
+        "letters": "עד",
         "seats": 2
       },
       {
@@ -592,7 +609,7 @@
         "seats": 1
       }
     ],
-    "coalitionSeatsNote": "JTA reports 97 coalition MKs. The election lists in coalition[] together won 104 seats, including Alignment members opposing the government. Their election-list seats are retained without inventing a partial-list allocation; coalitionElectionListSeats and coalitionSeats describe different quantities.",
+    "coalitionSeatsNote": "The primary formation speech states 97 coalition MKs. The election-list envelope is 104: six Mapam MKs and Yossi Sarid opposed the government; the scheme now represents these seven exceptions. Confidence voting (89–18) is a separate quantity.",
     "cites": [
       {
         "source": "government-research-1",
@@ -608,7 +625,7 @@
       },
       {
         "source": "government22",
-        "quote": "October 20, 1986 - December 22, 1988"
+        "quote": "20 באוקטובר 1986"
       }
     ],
     "changes": [
@@ -620,7 +637,7 @@
         "cites": [
           {
             "source": "government22",
-            "quote": "October 20, 1986 - December 22, 1988"
+            "quote": "20 באוקטובר 1986"
           }
         ],
         "person": "shamir",

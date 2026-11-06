@@ -1933,7 +1933,7 @@
       "electionId": "k11",
       "electionDate": "1984-07-23",
       "datasetPath": "public/data/k11.json",
-      "datasetSha256": "3822036aa3f24bc7d6b95565f6fd7140d156ecd16964f32007b5d028562b3984",
+      "datasetSha256": "f42b6a28991a34acc8bdb896b0699b74de0b2e5e4618fec42fdd79461c8543e0",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 196 transcribed ranks across all 15 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted except the complete 120-name K11 Alignment roster; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
@@ -2015,39 +2015,9 @@
           "constituentVotes": null
         },
         {
-          "listId": "11-ש",
-          "letters": "ש",
-          "nameHe": "שילוב רשימה עצמאית של עולי ההר לכנסת",
-          "votes": 5499,
-          "partyIds": [
-            "sheli"
-          ],
-          "datasetPartyIds": [],
-          "proposedPartyIds": [
-            "sheli"
-          ],
-          "scope": "core",
-          "treatment": "include",
-          "identityEvidence": {
-            "status": "observed-local-dataset",
-            "locator": "public/data/k11.json#/lists/15"
-          },
-          "classificationEvidence": {
-            "status": "inferred",
-            "sourceIds": [
-              "proposal",
-              "k11",
-              "labour",
-              "mergers"
-            ],
-            "claim": "Original editorial selection under Labour and broader Zionist left; proposal §2 records election-specific qualifiers. Whole list selected under the stated convention; no constituent vote split."
-          },
-          "constituentVotes": null
-        },
-        {
           "listId": "11-דף",
           "letters": "דף",
-          "nameHe": "לבא אליאב לכנסת",
+          "nameHe": "לובה אליאב לכנסת",
           "votes": 15348,
           "partyIds": [
             "vehicle-11-דף"
@@ -2078,20 +2048,20 @@
       "reviewCandidates": [],
       "computed": {
         "coreOnly": {
-          "votes": 70545,
+          "votes": 65046,
           "percent": {
-            "numerator": 7054500,
+            "numerator": 6504600,
             "denominator": 2073321
           },
-          "displayPct": 3.402512
+          "displayPct": 3.137286
         },
         "includedUnmixed": {
-          "votes": 70545,
+          "votes": 65046,
           "percent": {
-            "numerator": 7054500,
+            "numerator": 6504600,
             "denominator": 2073321
           },
-          "displayPct": 3.402512
+          "displayPct": 3.137286
         },
         "mixedWholeLists": {
           "votes": 724074,
@@ -2102,12 +2072,12 @@
           "displayPct": 34.923391
         },
         "wholeListInclusionAlternative": {
-          "votes": 794619,
+          "votes": 789120,
           "percent": {
-            "numerator": 79461900,
+            "numerator": 78912000,
             "denominator": 2073321
           },
-          "displayPct": 38.325903
+          "displayPct": 38.060677
         },
         "mixedHarediVotes": null,
         "interpretation": "Selected list ballots only; internal constituent votes unknown. Whole-list alternative is a convention, not a demographic estimate."

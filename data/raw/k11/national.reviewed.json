@@ -1,12 +1,13 @@
 {
   "id": "k11",
-  "reviewedOn": "2026-11-03",
+  "reviewedOn": "2026-11-06",
   "scope": "National votes and seats visually transcribed from the official scanned results gazette. Partial research evidence; not a released application dataset.",
   "resultsSourceId": "k11-results-gazette",
   "resultsIssue": 3081,
   "resultsPages": [
     3006,
-    3007
+    3007,
+    3008
   ],
   "gazetteTotals": {
     "valid": 2073321,
@@ -34,13 +35,13 @@
     },
     {
       "letters": "ג",
-      "nameHe": "יהדות התורה אגודת ישראל",
+      "nameHe": "יהדות התורה – אגודת ישראל",
       "gazetteVotes": 36079,
       "officialSeats": 2
     },
     {
       "letters": "דף",
-      "nameHe": "לבא אליאב לכנסת",
+      "nameHe": "לובה אליאב לכנסת",
       "gazetteVotes": 15348,
       "officialSeats": 0
     },
@@ -51,10 +52,11 @@
       "officialSeats": 3
     },
     {
-      "letters": "הם",
-      "nameHe": "הס מס, תנועה לביטול חוק מס הכנסה",
+      "letters": "הס",
+      "nameHe": "הס־מס, תנועה לביטול חוק מס־הכנסה",
       "gazetteVotes": 1472,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyIdLetters": "הם"
     },
     {
       "letters": "ו",
@@ -81,10 +83,11 @@
       "officialSeats": 3
     },
     {
-      "letters": "טן",
+      "letters": "טס",
       "nameHe": "התנועה למען המולדת",
       "gazetteVotes": 1415,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyIdLetters": "טן"
     },
     {
       "letters": "יש",
@@ -93,10 +96,11 @@
       "officialSeats": 1
     },
     {
-      "letters": "פט",
-      "nameHe": "עצמאות בראשות עזרא זהר",
+      "letters": "כט",
+      "nameHe": "עצמאות בראשות עזרה זהר",
       "gazetteVotes": 4887,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyIdLetters": "פט"
     },
     {
       "letters": "כך",
@@ -117,10 +121,11 @@
       "officialSeats": 1
     },
     {
-      "letters": "נ",
+      "letters": "ס",
       "nameHe": "תנועת עליה וצעירים",
       "gazetteVotes": 5794,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyIdLetters": "נ"
     },
     {
       "letters": "ע",
@@ -129,10 +134,11 @@
       "officialSeats": 0
     },
     {
-      "letters": "עי",
+      "letters": "עד",
       "nameHe": "מורשה מצ״ד – פא״י",
       "gazetteVotes": 33287,
-      "officialSeats": 2
+      "officialSeats": 2,
+      "legacyIdLetters": "עי"
     },
     {
       "letters": "פ",
@@ -142,7 +148,7 @@
     },
     {
       "letters": "פז",
-      "nameHe": "א.נ.י. – ארגון נכים",
+      "nameHe": "א. נ. – ארגון נכים",
       "gazetteVotes": 12329,
       "officialSeats": 0
     },
@@ -160,7 +166,7 @@
     },
     {
       "letters": "ש",
-      "nameHe": "שילוב רשימה עצמאית של עולי ההר לכנסת",
+      "nameHe": "שילוב רשימה עצמאית של עולי הודו לכנסת",
       "gazetteVotes": 5499,
       "officialSeats": 0
     },
@@ -325,7 +331,7 @@
         "scope": "Ranks1–1 transcribed; elected names cross-checked: 1. See candidates.reviewed.json."
       },
       {
-        "letters": "עי",
+        "letters": "עד",
         "publishedCount": 116,
         "first": {
           "rank": 1,

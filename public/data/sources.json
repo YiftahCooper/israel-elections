@@ -1232,8 +1232,8 @@
   "description": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
   "method": "reviewed-transcription",
   "retrievedAt": "2026-11-03T16:14:46.283817+00:00",
-  "bytes": 10445,
-  "sha256": "c3d8a566c32c19558eecd93b43b7418f2fe1c4158af7abe70dada7265ea50c99"
+  "bytes": 10626,
+  "sha256": "97f9b7f786b62f146c2e23ce8b85f702907fa8668953ea30bfd5594f18ba279a"
  },
  {
   "id": "k11-candidates-reviewed",
@@ -1244,8 +1244,8 @@
   "description": "Official winning-list leading ranks and name-by-name elected comparisons; page references, spelling variants and incomplete checks explicitly retained.",
   "method": "reviewed-transcription",
   "retrievedAt": "2026-11-03T16:34:27.797495+00:00",
-  "bytes": 38758,
-  "sha256": "2a881fef88dd088e7b91adc93a750c61527323716de4f9ebd0352c94d969a1e7"
+  "bytes": 38749,
+  "sha256": "aedcea95c0d3b6f1e8fe2da48cba22d6e48573e8fc01daece9bf32ce4065d9e2"
  },
  {
   "id": "k12-results-gazette",
