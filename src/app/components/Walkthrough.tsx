@@ -39,15 +39,9 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
     { kind: 'final' },
   ], [r, divisor, hasAgreements]);
   const [i, setI] = useState(0);
-  const [playing, setPlaying] = useState(false);
   const [allBelow, setAllBelow] = useState(false);
   useEffect(() => { if (i >= steps.length) setI(steps.length - 1); }, [steps.length, i]);
-  useEffect(() => {
-    if (!playing) return;
-    const t = setInterval(() => setI((x) => { if (x >= steps.length - 1) { setPlaying(false); return x; } return x + 1; }), 1400);
-    return () => clearInterval(t);
-  }, [playing, steps.length]);
-  const go = (k: number) => { setPlaying(false); setI(k); };
+  const go = (k: number) => setI(k);
 
   const listOf = (id: string) => s.lists.find((x) => x.id === id);
   const unitMembers = (id: string, res: AllocationResult = r) => res.units.find((u) => u.id === id)?.memberIds ?? [id];
@@ -158,7 +152,6 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
       <GraphicChanges s={s} r={r} />
       <div className="row walk-controls">
         <button className="btn small" onClick={() => go(Math.max(0, i - 1))} disabled={i === 0}>{L('Previous', 'הקודם')}</button>
-        <button className="btn small primary" onClick={() => { if (i >= steps.length - 1) setI(0); setPlaying((p) => !p); }}>{playing ? L('Pause', 'השהיה') : L('Play', 'הפעלה')}</button>
         <button className="btn small" onClick={() => go(Math.min(steps.length - 1, i + 1))} disabled={i >= steps.length - 1}>{L('Next', 'הבא')}</button>
         <span className="muted small" aria-live="polite">{L(`Step ${i + 1} of ${steps.length}`, `צעד ${i + 1} מתוך ${steps.length}`)}</span>
       </div>

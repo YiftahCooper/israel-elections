@@ -20,15 +20,9 @@ test('a merger that moves no seat shows the joint list as the sum of its parts',
   await expect(page.getByRole('tooltip')).toContainText('Their surplus agreements end: Together (Bennett) with Yisrael Beiteinu; Yashar! with The Democrats.');
 });
 
-test('turnout that keeps every share explains the unchanged seats and details the rest once', async ({ page }) => {
+test('the unhelpful uniform-turnout question is absent', async ({ page }) => {
   await start(page);
-  const r = row(page, 'Turnout of 80%');
-  await expect(r).toContainText('148,188 more voters, same shares');
-  await expect(r.locator('.wi-a')).toContainText('Threshold 184,972 → 189,766 votes');
-  await r.locator('.wi-q').click();
-  // the threshold is not repeated in the details
-  await expect(r.locator('.wi-facts')).not.toContainText('Threshold');
-  await expect(r.locator('.wi-facts')).toContainText('Votes per seat 44,874 → 46,037');
+  await expect(row(page, 'Turnout of 80%')).toHaveCount(0);
 });
 
 test('the questions’ data sources are one click away', async ({ page }) => {
