@@ -427,7 +427,7 @@
  },
  {
   "id": "k20-ballots-datagov",
-  "file": "../../.backup-scratch/raw/k20/ballots.datagov.json",
+  "file": "k20/ballots.datagov.json",
   "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=c3db5581-f48d-45fc-b221-e7635e940c41",
   "publisher": "Central Elections Committee via data.gov.il",
   "official": true,
@@ -6063,5 +6063,29 @@
   "retrievedAt": "2026-11-06",
   "bytes": 3652,
   "sha256": "b129f0bf362a01fcd4ea40372d0bc4323036edf9dec9113d5c6f199d015abbed"
+ },
+ {
+  "id": "k20-shohat-globes",
+  "file": "k20/shohat-globes-excerpt.txt",
+  "url": "https://www.globes.co.il/news/article.aspx?did=1001021770",
+  "publisher": "Globes",
+  "official": false,
+  "description": "Selected literal excerpt only; independently read through web retrieval on 6 November 2026. Not the complete source document.",
+  "method": "manual-transcription",
+  "retrievedAt": "2026-11-06",
+  "bytes": 66,
+  "sha256": "dfa584cf60e4a26fe25162ac02fe1db66bd0411fe2a90c478a13929b7ad91b57"
+ },
+ {
+  "id": "k20-withdrawal-comptroller",
+  "file": "k20/withdrawal-comptroller-excerpt.txt",
+  "url": "https://www.mevaker.gov.il/sites/DigitalLibrary/Documents/2016-66C-314-Veadaa.pdf",
+  "publisher": "State Comptroller, 66C p.1862",
+  "official": true,
+  "description": "Selected literal excerpt only; independently read through web retrieval on 6 November 2026. Not the complete source document.",
+  "method": "manual-transcription",
+  "retrievedAt": "2026-11-06",
+  "bytes": 105,
+  "sha256": "5586ec977297dadcbb62fc92deeb44823ace962745f66c58c44c299be791660a"
  }
 ]

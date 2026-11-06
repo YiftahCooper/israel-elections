@@ -2,6 +2,10 @@
 // punctuation, CEC link titles, three withdrawal flags and distinct modern Gesher
 // IDs (also k23). Withdrawal flags affect hypothetical corpus allocations; model
 // snapshots also carry roster/party fields. No engine implementation changed.
+// k20 audit 6 Nov 2026: field diff permits only יך withdrawal/note, Saadi displayNameHe/notes,
+// status count-definition notes and builtAt. Votes, seats, raw names/ranks and all src unchanged.
+// Allocation changes because scenarios carry withdrawn; model also carries display notes.
+  // merged with k20 audit fixes: combined digest = union of the separately reviewed changes.
 // 5 Nov 2026: re-recorded allocation/analysis/model for refreshed official k26 CSVs only.
 // Engine/model implementation unchanged; qualifying votes 5,384,948, threshold 184,972,
 // quota 44,874; all list seat counts unchanged. Validation/rules digests unchanged.
@@ -48,7 +52,8 @@ const EXPECTED: Record<Family, string> = {
   // or deactivated every surplus agreement; 298 allocation and 19 analysis cases differ, all of that kind. The old
   // engine on the same tree reproduces 8260bc46… and af4237ef…; model, validation and rules digests are unchanged.
   // merged with the k24 audit fixes: combined digest = union of the separately reviewed changes.
-  allocation: 'bf733b00ce93274543bae3cb31fc44765be0a3c707342820eabeb90a2c8ca8e1',
+  // merged with k20 audit fixes: combined digest = union of the separately reviewed changes.
+  allocation: 'bf50217e327445c12941453eb13b84cb7badc51dce3d0ac173136068075e71ab',
   analysis: 'b682af4570daf5cd7967e77afda56c8a9bcb2b5de4850f4d8ebc1652228269e0',
   // Model digest re-recorded for the 1973 party ranks, then for candidate biography links (Candidate.bio): with
   // the build timestamps held fixed and bio not carried, the new code gives the previous digest. Then for three
@@ -107,7 +112,8 @@ const EXPECTED: Record<Family, string> = {
   // completed recommendation scheme and buildInfo differ; all other datasets equal HEAD (field diff 6 Nov).
   // Allocation, analysis, validation and rules digests are unchanged.
   // merged with the k26 audit fixes: combined digest = union of the separately reviewed changes.
-  model: 'ffb2cc3a20ea8f1c7307b5387fb23974c70e0934b6f7c852fea73b6f3bffd569',
+  // merged with k20 audit fixes: combined digest = union of the separately reviewed changes.
+  model: 'cb62e21929e5306427c5fa8c42f55733d21776c44ad395dacea7a7d6391da95f',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

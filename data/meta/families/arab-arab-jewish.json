@@ -425,7 +425,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k20.json",
-      "sha256": "1015da784773f2cdb6529741fcf94eef23b1a72071688ce6b8d3209df2c8a157",
+      "sha256": "bbc08582796ff220a15d9975f7e1d501afd60e0a81dd829b11643c5b088af12f",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k21": {
@@ -3599,12 +3599,12 @@
       "electionId": "k20",
       "electionDate": "2015-03-17",
       "datasetPath": "public/data/k20.json",
-      "datasetSha256": "1015da784773f2cdb6529741fcf94eef23b1a72071688ce6b8d3209df2c8a157",
+      "datasetSha256": "24e2fd14825fba2dd589476eed9930d72fad12224940167e83f56a034017d696",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2015-03-25",
-        "noteHe": "תוצאות רשמיות סופיות. המועמדים לפי סדר הרישום בילקוט הפרסומים; הודעות התפטרות ידועות בהערות. לא מוצגת השתייכות לגושים.",
-        "noteEn": "Official final results. Candidates follow the gazetted registration order; known resignation notices are labelled. No default blocs assigned."
+        "noteHe": "תוצאות רשמיות סופיות. המועמדים לפי סדר הרישום בילקוט הפרסומים; הודעות התפטרות ידועות בהערות. מספרי הקלפיות והיישובים הם ספירת שורות בטבלאות התוצאות, ולא כלל אתרי ההצבעה; ראו k20-resolution.md.",
+        "noteEn": "Official final results. Candidates follow the gazetted registration order; known resignation notices are labelled. Polling/locality counts describe retained results-table rows, not all physical polling places; see k20-resolution.md."
       },
       "validVotes": 4210884,
       "voteSourceIds": [

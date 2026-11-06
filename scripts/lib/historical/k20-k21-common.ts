@@ -137,7 +137,7 @@ export function geographical(n: 20 | 21, national: National) {
   check(hash(JSON.stringify(loc)) === evidence.localitySha256, `k${n}: derived locality SHA-256 differs from retained reconciliation evidence`);
   check(evidence.ballotSha256 === sourceRecord(`k${n}-ballots-datagov`)?.sha256, `k${n}: retained polling evidence differs from source provenance`);
   check(Number.isSafeInteger(evidence.ballotRows) && evidence.ballotRows > 0, `k${n}: invalid retained polling row count`);
-  const polling = join(ROOT, `.backup-scratch/raw/k${n}/ballots.datagov.json`);
+  const polling = n === 20 ? join(RAW, 'k20/ballots.datagov.json') : join(ROOT, `.backup-scratch/raw/k${n}/ballots.datagov.json`);
   if (existsSync(polling)) {
     check(fileSha256(polling) === evidence.ballotSha256, `k${n}: polling source hash changed; reconciliation evidence must be reviewed`);
     const bal = rows(polling, letters);
@@ -186,7 +186,9 @@ export async function build(n: 20 | 21, national: National, expectedCounts: Reco
     const notesHe: string[] = [];
     if (n === 20 && l.letters === 'מחל') notesHe.push('ילקוט הפרסומים 7001: המועמדת נטליה ילינסון התפטרה ביום 26.2.2015. הרשימה כאן מציגה את סדר הרישום בילקוט 7000.');
     if (n === 20 && l.letters === 'יץ') notesHe.push('ילקוט הפרסומים 7001: סעיד בדראן ואבו עאבד ראאף התפטרו ביום 2.3.2015. הרשימה כאן מציגה את סדר הרישום בילקוט 7000.');
-    return listRecord(n, i, { letters: l.letters, nameHe: g.nameHe, votes: l.votes,
+    // State Comptroller 66C p1862: יך withdrew; instruction issued 11 March 2015.
+    if (n === 20 && l.letters === 'יך') notesHe.push('הרשימה פרשה לפני הבחירות; הנחיה להסרת פתקיה נמסרה ב־11.3.2015. מבקר המדינה, דוח 66ג, עמ׳ 1862–1863: https://www.mevaker.gov.il/sites/DigitalLibrary/Documents/2016-66C-314-Veadaa.pdf');
+    return listRecord(n, i, { letters: l.letters, nameHe: g.nameHe, votes: l.votes, withdrawn: n === 20 && l.letters === 'יך',
       sponsorsHe: g.sponsorsHe, partiesHe: g.sponsorsHe.includes(';') ? null : [g.sponsorsHe],
       candidates: g.candidates.map(c => ({ id: candidateId(id, c.rank), ...c })), candidatesSource: `k${n}-candidates-gazette`, notesHe });
   });
@@ -204,6 +206,10 @@ export async function build(n: 20 | 21, national: National, expectedCounts: Reco
     lists, agreements: agreementRecords(n, pairs, `k${n}-surplus-gazette`), blocs: [], officialSeats: officialSeatsOf(n, national.lists), officialSeatsSourceId: nationalSource,
     sourceIds: [...ids, 'law-elections'], buildInfo: { builtAt: new Date().toISOString(), rawSha256 },
   };
+  if (n === 20) {
+    ds.status.noteEn += ' Polling/locality counts describe retained results-table rows, not all physical polling places; see k20-resolution.md.';
+    ds.status.noteHe += ' מספרי הקלפיות והיישובים הם ספירת שורות בטבלאות התוצאות, ולא כלל אתרי ההצבעה; ראו k20-resolution.md.';
+  }
   checkReproducesOfficialSeats(check, ds);
   return { ds, loc: localityDataset(`k${n}`, geo.rows, lists) };
 }

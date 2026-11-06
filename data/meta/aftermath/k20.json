@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "electionId": "k20",
   "status": "pilot",
-  "reviewedAt": "2026-11-05",
+  "reviewedAt": "2026-11-06",
   "notes": [
     "Research record following docs/design/after-the-election.md; not wired into the app. Gaps remain explicit."
   ],
@@ -90,10 +90,23 @@
       "publisher": "Knesset News, special sitting marking Jerusalem Day and US embassy inauguration, 14 May 2018",
       "kind": "official",
       "accessed": "2026-11-05"
+    },
+    "cec-results": {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset20-results.pdf",
+      "publisher": "CEC / Reshumot, YP 7010",
+      "kind": "official",
+      "accessed": "2026-11-06"
     }
   },
   "results": {
-    "electionDate": "2015-03-17"
+    "electionDate": "2015-03-17",
+    "publicationDate": "2015-03-25",
+    "cites": [
+      {
+        "source": "cec-results",
+        "quote": "25 במרס 2015"
+      }
+    ]
   },
   "reaction": {
     "policy": "Only dated institutional steps; leader reactions require all seated lists or none.",
@@ -364,12 +377,10 @@
     "note": "No qualifying published most-important-problem topline retrieved; see docs/research/issue-polling-sources.md. No microdata calculations."
   },
   "gaps": [
-    "Certification and inauguration dates not independently sourced here.",
     "Presidential original notices and final investiture protocol not retrieved.",
     "Official English Knesset News investiture tally conflicts with the 120-seat total; 61–59 is supported independently by EPRS.",
     "Coalition membership changes are not yet fully researched.",
-    "The term card spans the government tenure, but only events before the next election should be promoted without an explicit caretaker-period label.",
-    "No included term event meets the two-chronology rule."
+    "The term card spans the government tenure, but only events before the next election should be promoted without an explicit caretaker-period label."
   ],
   "government": {
     "number": 34,

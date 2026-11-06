@@ -79,6 +79,17 @@
       "sources": [
         "YP 9478 p.4284; data/raw/k24/surplus.pdf; https://olaw.org.il/yalkut/yalkut-9478.pdf"
       ]
+    },
+    {
+      "candidateId": "20-ודעם#12",
+      "displayNameHe": "סעדי אוסאמה",
+      "en": "The candidate notice prints סעדיה אוסאמה; the results notice and Knesset record identify him as סעדי אוסאמה (Osama Saadi).",
+      "he": "בהודעת המועמדים נדפס סעדיה אוסאמה; בהודעת התוצאות וברישום הכנסת מופיע סעדי אוסאמה.",
+      "sources": [
+        "YP 7000 p. 3941: סעדיה אוסאמה",
+        "YP 7010 p. 4372: סעדי אוסאמה",
+        "Knesset OData PersonID 30070 (data/raw/k20/knesset-odata-members.json)"
+      ]
     }
   ]
 }
