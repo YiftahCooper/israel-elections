@@ -2,8 +2,9 @@
 import { spawnSync } from 'node:child_process';
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { decodeCBSGrid, itmToWgs84, type LocalityLocation } from '../src/data/locality-coordinates.ts';
+import { localityLocationKey } from '../src/data/locality-location-key.ts';
 import { isEnvelopeRow, type LocalityDataset } from '../src/data/schema.ts';
-import { hebrewNameKey, resolveLocalityEnglish, type LocalityNames } from '../src/data/locality-names.ts';
+import { hebrewNameKey, resolveLocalityEnglish, resolveLocalityCode, type LocalityNames } from '../src/data/locality-names.ts';
 // Results spellings that CBS writes differently; the English name is still CBS's.
 const HEBREW_SPELLING: Record<string, string> = { 'עופרה': 'עפרה' };
 // Rows in no retained CBS list. Written here in CBS transliteration style, from the CBS English of the locality they
@@ -31,19 +32,21 @@ for (const file of readdirSync('public/data').filter(f => /^k\d+-localities.json
   const election = JSON.parse(readFileSync(`public/data/${data.id}.json`, 'utf8'));
   const year = Number(election.electionDate.slice(0,4));
   const locations: Record<string, LocalityLocation> = {};
-  for (const row of data.rows) {
-    if (isEnvelopeRow(row) || row.code === null) continue;
-    const candidates = records.filter(r => r.code === row.code).sort((a,b) => Math.abs(a.year-year)-Math.abs(b.year-year) || a.year-b.year);
+  for (const [index, row] of data.rows.entries()) {
+    if (isEnvelopeRow(row)) continue;
+    const code = row.code ?? (data.id === 'k17' ? resolveLocalityCode(HEBREW_SPELLING[row.nameHe.trim()] ?? row.nameHe, records) : null);
+    if (code === null) continue;
+    const candidates = records.filter(r => r.code === code).sort((a,b) => Math.abs(a.year-year)-Math.abs(b.year-year) || a.year-b.year);
     for (const r of candidates) {
       const grid = decodeCBSGrid(r.grid); if (!grid) continue;
       try {
         const p = itmToWgs84(...grid);
-        locations[String(row.code)] = {...p, code:r.code, nameHe:r.nameHe.trim(), nameEn:r.nameEn.trim(), aliases:[...new Set(candidates.flatMap(x=>[x.nameHe,...x.aliases]).map(x=>x.trim()))], year:r.year};
+        locations[localityLocationKey(row, index)] = {...p, code:r.code, nameHe:r.nameHe.trim(), nameEn:r.nameEn.trim(), aliases:[...new Set(candidates.flatMap(x=>[x.nameHe,...x.aliases]).map(x=>x.trim()))], year:r.year};
         break;
       } catch { /* No plausible source coordinate; never invent a position. */ }
     }
   }
-  coverage[data.id] = {placed:data.rows.filter(r=>!isEnvelopeRow(r)&&r.code!==null&&locations[String(r.code)]).length,localities:data.rows.filter(r=>!isEnvelopeRow(r)).length,envelopes:data.rows.filter(isEnvelopeRow).length};
+  coverage[data.id] = {placed:data.rows.filter((r,i)=>!isEnvelopeRow(r)&&locations[localityLocationKey(r,i)]).length,localities:data.rows.filter(r=>!isEnvelopeRow(r)).length,envelopes:data.rows.filter(isEnvelopeRow).length};
   writeFileSync(`public/data/${data.id}-locations.json`, JSON.stringify(locations)+'\n');
   const names: LocalityNames = { names: [], project: [] };
   data.rows.forEach((row, i) => {

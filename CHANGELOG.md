@@ -14,6 +14,7 @@
 - Personal settings open from every page and level; per-list and bloc vote-source answers persist by election in this browser, with individual and bulk clearing.
 - Header controls share comfortable targets and picker affordances; About fits its clickable summary. Edited fields use underlined text annotations with reference details and section restore.
 - Keep sourced groupings, faction display and coalition inspection official; preserve view choices in saves and links without edit markers or scenario tint.
+- Place 2006 localities through unique normalized CBS Hebrew-name matches; keep ambiguous rows unplaced and explain the method in both languages.
 
 - Compare opens unchanged results against the previous election, including when saved scenarios exist; explicit comparison choices stay selected, edits use the usual official result/reference, and the earliest election keeps its chooser.
 

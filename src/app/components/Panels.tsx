@@ -7,7 +7,7 @@ import { PartEdits } from './PartEdits.tsx';
 import { describe } from '../actionDescription.ts';
 import { EditMarker } from './EditMarker.tsx';
 import { ruleEraLabel } from '../changeValue.tsx';
-import { LocalityMap, LocalityName, localityName, useLocalityLocations, useLocalityNames } from './LocalityMap.tsx';
+import { LocalityMap, Locality2006Note, LocalityName, localityName, useLocalityLocations, useLocalityNames } from './LocalityMap.tsx';
 import { matchesLocality } from '../locality-map-model.ts';
 import { Fragment, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { isEnvelopeRow, type ElectionDataset } from '../../data/schema.ts';
@@ -178,7 +178,7 @@ export function Localities({ s }: { s: Scenario }) {
       </span>
       {view === 'map' ? <LocalityMap key={s.electionId} s={s} data={data} historicalLists={histLists} locations={locations} names={names} locationError={locationError} /> : <>
       <p className="small ink2">{L('Historical locality results', 'תוצאות היסטוריות לפי יישוב')} <Info title={L('Locality results', 'תוצאות לפי יישוב')}>{L(`Official CEC results for ${localityCount} localities plus double-envelope votes. These are the historical figures; your scenario changes are national and are not distributed to localities.`, `תוצאות רשמיות של ועדת הבחירות ל-${localityCount} יישובים ולמעטפות החיצוניות. אלה הנתונים ההיסטוריים; שינויי התרחיש הם ארציים ואינם מחולקים ליישובים.`)}</Info></p>
-      {(data.noteEn || data.noteHe) && <p className="small callout">{lang === 'he' ? data.noteHe ?? data.noteEn : data.noteEn ?? data.noteHe}</p>}
+      {data.id === 'k17' ? <Locality2006Note /> : (data.noteEn || data.noteHe) && <p className="small callout">{lang === 'he' ? data.noteHe ?? data.noteEn : data.noteEn ?? data.noteHe}</p>}
       <div className="row" style={{ marginBottom: 8 }}>
         <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder={L('Locality name or code', 'שם יישוב או סמל')} aria-label={L('Search localities', 'חיפוש יישוב')} />
         <select value={sort} onChange={(e) => setSort(e.target.value as typeof sort)} aria-label={L('Sort', 'מיון')}>
