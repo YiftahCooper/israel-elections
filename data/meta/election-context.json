@@ -251,8 +251,8 @@
       "effectiveDate": "1992-06-23",
       "contestType": "knesset",
       "type": "disqualification",
-      "textEn": "Election-day eligibility: Kach and Kahane Chai. The list was excluded; the Supreme Court rejected the appeal. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
-      "textHe": "מעמד ביום הבחירות: כך וכהנא חי. הרשימה נפסלה ובית המשפט העליון דחה את הערעור. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
+      "textEn": "Election-day eligibility: Kach and Kahane Chai. Both lists were excluded; the Supreme Court rejected the appeals. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
+      "textHe": "מעמד ביום הבחירות: כך וכהנא חי. שתי הרשימות נפסלו ובית המשפט העליון דחה את הערעורים. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
       "source": {
         "url": "https://www.idi.org.il/articles/65951",
         "publisher": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
@@ -893,11 +893,11 @@
       "listId": "13-מחל",
       "relatedSources": [
         {
-          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset13-cand.pdf",
-          "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+          "url": "https://www.idi.org.il/media/6891/%D7%9B%D7%A0%D7%A1%D7%AA-13-%D7%94%D7%9C%D7%99%D7%9B%D7%95%D7%93.pdf",
+          "publisher": "Reshumot / IDI-hosted facsimile, YP 4017 p. 3636",
           "publisherHe": "Central Elections Committee / Reshumot (gov.il host)",
           "evidence": "official",
-          "sourceId": "k13-candidates-gazette"
+          "sourceId": "k13-candidates-yp4017-idi-6891"
         },
         {
           "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2013%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",

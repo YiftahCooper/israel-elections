@@ -25,7 +25,11 @@ export function applyBios(ds: ElectionDataset): ElectionDataset {
   // official English names from the Knesset website, keyed by member site id; only certain Knesset identities take one
   const namesFile = join(ROOT, 'data', 'raw', 'bios', 'knesset-site-mk-names-en.json');
   const namesEn = new Map(existsSync(namesFile) ? (JSON.parse(readFileSync(namesFile, 'utf8')) as { siteId: number; nameEn: string | null }[]).filter((x) => x.nameEn).map((x) => [x.siteId, x.nameEn!]) : []);
-  const nameEnOf = (e: Entry) => (knessetIdentitySure(e) && e.knesset?.siteId ? namesEn.get(e.knesset.siteId) : undefined);
+  const nameEnOf = (e: Entry) => {
+    const name = knessetIdentitySure(e) && e.knesset?.siteId ? namesEn.get(e.knesset.siteId) : undefined;
+    // k13 audit: siteId 67 returns a backtick; preserve raw evidence and normalize display punctuation.
+    return ds.id === 'k13' && e.knesset?.siteId === 67 ? name?.replace('`', "'") : name;
+  };
   const ids = new Set(ds.lists.flatMap((l) => l.candidates.map((c) => c.id)));
   const unknown = Object.keys(bios).filter((id) => !ids.has(id));
   if (unknown.length) throw new Error(`data/meta/bios/${ds.id}.json: not in the roster: ${unknown.slice(0, 5).join(', ')}`);

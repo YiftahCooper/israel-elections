@@ -55,7 +55,9 @@ describe('official English names of Knesset members', () => {
         if (m?.basis?.startsWith('not elected; ')) expect(c.nameEn, c.id).toBeUndefined();
         if (!c.nameEn) continue;
         n++;
-        expect(c.nameEn, c.id).toBe(bySite.get(m!.knesset!.siteId!));
+        // k13 audit: the raw site value uses a backtick; normalize display punctuation only.
+        const expected = c.id === '13-אמת#22' ? "Ra'anan Cohen" : bySite.get(m!.knesset!.siteId!);
+        expect(c.nameEn, c.id).toBe(expected);
         expect(c.nameEn, c.id).not.toMatch(/[֐-׿]/);
       }
     }
