@@ -24,6 +24,7 @@
 - k3: corrected ballot letters and official list names while preserving IDs, retained the official יז withdrawal notice, and repaired anachronistic labels, provenance and copied aftermath caveats.
 - k4: corrected three ballot letters, official list names and four elected-member spellings, added the third surplus agreement (תו–שת) and the government chronology; IDs, votes and seats unchanged.
 - k5: corrected three ballot letters and list names, added the withdrawn list שו with its six candidates, corrected mandate dates and member spellings; IDs, votes and seats unchanged.
+- k1: corrected eight gazette-name transcriptions, first-government support grouping, anachronistic bloc title and aftermath dates; strengthened constituent sourcing and removed copied gaps.
 
 ## 5 November 2026 — release review
 

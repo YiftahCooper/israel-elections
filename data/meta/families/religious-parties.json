@@ -292,7 +292,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k1.json",
-      "sha256": "11ae6547993e3607a659a89e318084f41d0345bc47cd22d1af5525648cf4f230",
+      "sha256": "6ad0947d663918f1f9f6920aadb19df4c04017d28cbe68ae5be2059348672fa3",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k2": {
@@ -483,7 +483,7 @@
       "electionId": "k1",
       "electionDate": "1949-01-25",
       "datasetPath": "public/data/k1.json",
-      "datasetSha256": "a95f3a42a550ce4817df5d1c3772ed21a5f9e6cd8024ee8e7aa9b33c751b3b00",
+      "datasetSha256": "cb6d2c80d7b99082ae1c2549aa051951c44346a775ceea8e15ffc16653fab616",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",

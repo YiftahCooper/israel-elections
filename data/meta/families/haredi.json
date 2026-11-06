@@ -146,7 +146,7 @@
       "electionId": "k1",
       "electionDate": "1949-01-25",
       "datasetPath": "public/data/k1.json",
-      "datasetSha256": "a95f3a42a550ce4817df5d1c3772ed21a5f9e6cd8024ee8e7aa9b33c751b3b00",
+      "datasetSha256": "cb6d2c80d7b99082ae1c2549aa051951c44346a775ceea8e15ffc16653fab616",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",

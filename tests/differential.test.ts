@@ -229,7 +229,11 @@ const EXPECTED: Record<Family, string> = {
   // k2 audit: corrected displayed letters/names, 50 losing-list candidates, status and provenance only.
   // Stable IDs, votes, seats and agreements unchanged; substituting HEAD k2 reproduces all five old digests.
   // merged with k2 audit fixes: combined digest = union of the separately reviewed changes.
-  model: '1e17559c5939049fb00a067231ef2cd15baf58272575b5a07861a5edfc0dec79',
+  // k1 audit: only eight gazette names, two exclusion-note names, support grouping,
+  // affiliated-list scheme title and build provenance differ. IDs/votes/seats/agreements unchanged.
+  // Substituting HEAD k1 in memory reproduces 7f24609e…; four non-model digests unchanged.
+  // merged with k1 audit fixes: combined digest = union of the separately reviewed changes.
+  model: '7a7c40fc8abab100a24851631c2f24de9cd9bc58d99c243270f1fdcb0a53b4dc',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

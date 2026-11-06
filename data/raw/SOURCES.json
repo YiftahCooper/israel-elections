@@ -2910,8 +2910,8 @@
     "description": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
     "method": "visual-primary-review",
     "retrievedAt": "2026-11-03",
-    "bytes": 24592,
-    "sha256": "e8be759bebce7fcb8a5dc953fd5f8010dae74362ece48b584415e114bfef29ce",
+    "bytes": 28705,
+    "sha256": "6bc720805fee3266fa5c90e38847cf816aa11405d0e539f3e87e379e3ed74706",
     "lastModified": null
   },
   {
