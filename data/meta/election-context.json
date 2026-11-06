@@ -741,8 +741,8 @@
       "effectiveDate": "2015-03-31",
       "contestType": "knesset",
       "type": "membership-snapshot",
-      "textEn": "Opening-day snapshot: Ilan Shohat (#4) is declared elected in the results notice; Robert Ilatov (#7) served at opening. Registered rank, declaration and opening membership are different snapshots; list seats do not change. The records do not establish the exact replacement date.",
-      "textHe": "תמונת מצב ביום הפתיחה: אילן שוחט (4) מופיע כנבחר בהודעת התוצאות; רוברט אילטוב (7) כיהן בפתיחה. הדירוג הרשום, הכרזת הבחירה והכהונה בפתיחה הם מצבים נפרדים; מספר המנדטים של הרשימה אינו משתנה. הרשומות אינן קובעות את מועד ההחלפה המדויק.",
+      "textEn": "Opening-day snapshot: Ilan Shohat (#4) is declared elected in the results notice; Robert Ilatov (#7) served at opening. Registered rank, declaration and opening membership are different snapshots; list seats do not change. Shohat announced on 24 March 2015 that he would remain mayor of Safed; this announcement does not date the formal replacement instrument.",
+      "textHe": "תמונת מצב ביום הפתיחה: אילן שוחט (4) מופיע כנבחר בהודעת התוצאות; רוברט אילטוב (7) כיהן בפתיחה. הדירוג הרשום, הכרזת הבחירה והכהונה בפתיחה הם מצבים נפרדים; מספר המנדטים של הרשימה אינו משתנה. ב־24 במרס 2015 הודיע שוחט שיישאר ראש עיריית צפת; ההודעה אינה קובעת את מועד מסמך ההחלפה הרשמי.",
       "source": {
         "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2020%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
         "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
@@ -765,6 +765,14 @@
           "publisherHe": "Central Elections Committee / Reshumot",
           "evidence": "official",
           "sourceId": "k20-results-gazette"
+        },
+        {
+          "url": "https://www.globes.co.il/news/article.aspx?did=1001021770",
+          "publisher": "Globes, 24 March 2015",
+          "publisherHe": "גלובס, 24 במרס 2015",
+          "evidence": "secondary",
+          "quote": "הודיע היום על התפטרותו מהכנסת",
+          "sourceId": "k20-shohat-globes"
         }
       ]
     },
@@ -1340,6 +1348,24 @@
         "publisherHe": "ועדת הבחירות המרכזית",
         "evidence": "official",
         "sourceId": "k26-list-pages"
+      }
+    },
+    {
+      "id": "withdrawal-k20-yekh",
+      "electionId": "k20",
+      "effectiveDate": "2015-03-11",
+      "contestType": "knesset",
+      "type": "withdrawal",
+      "listId": "20-יך",
+      "textEn": "Meginim Al Yeladenu (יך) withdrew before polling day. Its registered candidate is retained; final valid votes are zero.",
+      "textHe": "מגינים על ילדינו (יך) פרשה לפני יום הבחירות. המועמד הרשום נשמר; מספר הקולות הכשרים הסופי הוא אפס.",
+      "source": {
+        "url": "https://www.mevaker.gov.il/sites/DigitalLibrary/Documents/2016-66C-314-Veadaa.pdf",
+        "publisher": "State Comptroller, report 66C, p. 1862",
+        "publisherHe": "מבקר המדינה, דוח 66ג, עמ׳ 1862",
+        "evidence": "official",
+        "quote": "רשימת \"יך - מגינים על ילדינו\" הודיעה על הסרת מועמדותה",
+        "sourceId": "k20-withdrawal-comptroller"
       }
     }
   ],

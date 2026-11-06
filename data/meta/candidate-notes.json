@@ -6,37 +6,64 @@
       "displayNameHe": "שפייזר אליהו",
       "en": "The candidate notice misprints his name as שפירא אליהו; the results notice prints שפייזר אליהו (Eliyahu Speiser).",
       "he": "בהודעת המועמדים נדפס שמו בטעות „שפירא אליהו”; בהודעת התוצאות נדפס „שפייזר אליהו”.",
-      "sources": ["YP 3073 p. 2826 (candidates)", "YP 3081 p. 3007 (results)"]
+      "sources": [
+        "YP 3073 p. 2826 (candidates)",
+        "YP 3081 p. 3007 (results)"
+      ]
     },
     {
       "candidateId": "3-פ#2",
       "en": "Named as elected in the results notice, but replaced before the Knesset's first sitting by Idov Cohen (#6).",
       "he": "נבחר לפי הודעת התוצאות, אך הוחלף לפני הישיבה הראשונה של הכנסת על ידי אידוב כהן (מס׳ 6).",
-      "sources": ["results notice p. 1139", "Knesset OData opening membership (data/raw/k3/knesset-odata-members.json)"]
+      "sources": [
+        "results notice p. 1139",
+        "Knesset OData opening membership (data/raw/k3/knesset-odata-members.json)"
+      ]
     },
     {
       "candidateId": "16-כן#1",
       "en": "Named as elected in the results notice, but withdrew; Marina Solodkin (#3) took the seat at the Knesset's first sitting.",
       "he": "נבחר לפי הודעת התוצאות, אך פרש; מרינה סולודקין (מס׳ 3) כיהנה במקומו מהישיבה הראשונה של הכנסת.",
-      "sources": ["decision 0053", "Knesset OData opening membership (data/raw/k16/knesset-odata-members.json)"]
+      "sources": [
+        "decision 0053",
+        "Knesset OData opening membership (data/raw/k16/knesset-odata-members.json)"
+      ]
     },
     {
       "candidateId": "20-ל#4",
       "en": "Named as elected in the results notice, but replaced before the Knesset's first sitting by Robert Ilatov (#7).",
       "he": "נבחר לפי הודעת התוצאות, אך הוחלף לפני הישיבה הראשונה של הכנסת על ידי רוברט אילטוב (מס׳ 7).",
-      "sources": ["YP 7010 p. 4372", "Knesset OData opening membership (data/raw/k20/knesset-odata-members.json)"]
+      "sources": [
+        "YP 7010 p. 4372",
+        "Knesset OData opening membership (data/raw/k20/knesset-odata-members.json)"
+      ]
     },
     {
       "candidateId": "23-פה#13",
       "en": "Did not take up the seat: Idan Roll (#34) sat from the Knesset's first sitting (Knesset records).",
       "he": "לא נכנסה לכנסת: עידן רול (מס׳ 34) כיהן מהישיבה הראשונה (רישומי הכנסת).",
-      "sources": ["Knesset OData opening membership (data/raw/k23/knesset-odata-members.json)"]
+      "sources": [
+        "Knesset OData opening membership (data/raw/k23/knesset-odata-members.json)"
+      ]
     },
     {
       "candidateId": "24-ב#3",
       "en": "Did not take up the seat: Idit Silman (#8) sat from the Knesset's first sitting (Knesset records).",
       "he": "לא נכנס לכנסת: עידית סילמן (מס׳ 8) כיהנה מהישיבה הראשונה (רישומי הכנסת).",
-      "sources": ["Knesset OData opening membership (data/raw/k24/knesset-odata-members.json)"]
+      "sources": [
+        "Knesset OData opening membership (data/raw/k24/knesset-odata-members.json)"
+      ]
+    },
+    {
+      "candidateId": "20-ודעם#12",
+      "displayNameHe": "סעדי אוסאמה",
+      "en": "The candidate notice prints סעדיה אוסאמה; the results notice and Knesset record identify him as סעדי אוסאמה (Osama Saadi).",
+      "he": "בהודעת המועמדים נדפס סעדיה אוסאמה; בהודעת התוצאות וברישום הכנסת מופיע סעדי אוסאמה.",
+      "sources": [
+        "YP 7000 p. 3941: סעדיה אוסאמה",
+        "YP 7010 p. 4372: סעדי אוסאמה",
+        "Knesset OData PersonID 30070 (data/raw/k20/knesset-odata-members.json)"
+      ]
     }
   ]
 }

@@ -65,3 +65,15 @@ describe('k20: gazetted final result and complete registered rosters', () => {
     for (const r of loc.rows) expect(r.votes.reduce((a, b) => a + b, 0)).toBe(r.valid);
   });
 });
+
+// Independent rank-1 observations: Comptroller 66C p1862; YP7010 p4372.
+it('preserves the registered roster while labelling withdrawal and the corrected elected name', () => {
+  const withdrawn = ds.lists.find(l => l.id === '20-יך')!;
+  expect(withdrawn.withdrawn).toBe(true);
+  expect(withdrawn.votes).toBe(0);
+  expect(withdrawn.candidates).toHaveLength(1);
+  const saadi = ds.lists.find(l => l.id === '20-ודעם')!.candidates[11];
+  expect(saadi.nameHe).toBe('סעדיה אוסאמה');
+  expect(saadi.displayNameHe).toBe('סעדי אוסאמה');
+  expect(ds.officialSeats!['20-ודעם']).toBe(13);
+});
