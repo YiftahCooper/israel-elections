@@ -71,3 +71,5 @@ Knesset link; they appear only if another link exists.
   given-name difference. An entry is medium if any of its links rests on such a rule.
 
 `basis` states the rule that produced the entry, in English, for audit.
+
+K25 audit correction (6 November 2026): repeated spaces in the 21 English names emitted for k25 were collapsed in the shared English-header input. Each changed row preserves the exact retrieved string in `nameEnRaw`; `nameEn` is its whitespace-normalized display form. The site id and API route above identify the rank-1 source for each name. This also corrects the same people wherever that shared input is reused; no spelling or identity changed.
