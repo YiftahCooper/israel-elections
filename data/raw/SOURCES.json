@@ -6002,5 +6002,17 @@
     "bytes": 15178,
     "sha256": "45b1acddc2eb7d803103db26f1871bcd456c56f51d46a9d6941b272dd8cd4956",
     "captureTimestamp": "20141219042241"
+  },
+  {
+    "id": "k22-results-gazette",
+    "file": "k22/results-gazette.pdf",
+    "url": "https://free-justice.openapi.gov.il/free/moj/portal/rest/searchpredefinedapi/v1/SearchPredefinedApi/Documents/OZqqMinV~LFxfTj7LC7UkojANzy747BQrZqHtwBxR30=",
+    "publisher": "Reshumot / Central Elections Committee",
+    "official": true,
+    "description": "YP 8454 (25 September 2019), pp.15079–15082: statutory results notice. Invalid-vote line misprints 126,704; retain CEC 28,362, independently reconciled to locality totals.",
+    "method": "http",
+    "retrievedAt": "2026-11-06",
+    "bytes": 763003,
+    "sha256": "5b06f095f40a6fce7fdd249aa27ed85b98ec28f20347f124d71aa52220443fe5"
   }
 ]

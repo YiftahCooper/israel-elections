@@ -1020,7 +1020,7 @@
      "confidence": "high"
     },
     {
-     "id": "gesher",
+     "id": "gesher-2019",
      "nameHe": "גשר",
      "nameEn": "Gesher",
      "candidateRanks": [
@@ -1513,22 +1513,22 @@
    ],
    "sources": [
     {
-     "url": "https://www.jpost.com/Israel-Elections/Netanyahu-to-have-more-support-than-Gantz-after-Balad-revocation-602566",
-     "publisher": "The Jerusalem Post",
+     "url": "https://www.mako.co.il/news-israel-elections/elections_2019-q3_2019/Article-4618f0558ac5d61027.htm",
+     "publisher": "N12",
      "kind": "secondary",
-     "quote": "President Reuven Rivlin subtracted Balad, one of the parties making up the Joint List, from the recommendations for Blue and White leader Benny Gantz to be prime minister. This put Prime Minister Benjamin Netanyahu in the lead, with 55 recommendations to Gantz's 54 ... The remaining Knesset seats belong to Yisrael Beytenu, which chose to recommend no one ... \"the recommendation is by 10 MKs of Hadash, UAL and Ta'al, and not 13,\" Tibi wrote to Rivlin.",
-     "accessed": "2026-11-05"
+     "quote": "55 המליצו על נתניהו, 54 על גנץ - 11 לא המליצו על אף מועמד",
+     "accessed": "2026-11-06"
     },
     {
-     "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%9C%D7%95%D7%A9",
-     "publisher": "Wikipedia (he)",
+     "url": "https://www.timesofisrael.com/joint-list-tells-president-only-10-of-its-13-members-are-backing-gantz-for-pm/",
+     "publisher": "The Times of Israel",
      "kind": "secondary",
-     "quote": "המפלגות: הליכוד (32), ש\"ס (9), יהדות התורה (7) וימינה (7) המליצו על נתניהו (ס\"ה 55), והמפלגות: כחול לבן (33), העבודה-גשר (6), המחנה הדמוקרטי (5) וחלק מחברי הרשימה המשותפת (10 מתוך 13) המליצו על גנץ (ס\"ה 54), מפלגת ישראל ביתנו (8) וחברי סיעת בל\"ד (3) לא המליצו על אף מועמד (ס\"ה 11)",
-     "accessed": "2026-11-04"
+     "quote": "the recommendation is in the name of ten MKs and not 13",
+     "accessed": "2026-11-06"
     }
    ],
    "notes": [
-    "Consultations were held on 22–23 September 2019. The Joint List recommended Gantz in the name of its 13 MKs; Balad's 3 MKs then withdrew from the recommendation by letter, and the President counted 10. Replaced the headline-only Jerusalem Post citation with the body of its 24 September 2019 report (5 November 2026)."
+    "Consultations were held on 22–23 September 2019. Ahmad Tibi wrote at the Balad MKs' request that the recommendation excluded them; the President counted ten Joint List MKs."
    ]
   }
  ],
@@ -1729,7 +1729,7 @@
    "confidence": "low"
   },
   {
-   "party": "gesher",
+   "party": "gesher-2019",
    "color": "#101E6D",
    "basis": "Infobox header colour of the Hebrew Wikipedia page \"מפלגת גשר (2018)\"; the infobox states official colours: כחול, ורוד. Not an official party specification.",
    "sources": [

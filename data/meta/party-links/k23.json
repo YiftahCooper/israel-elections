@@ -460,7 +460,7 @@
         "confidence": "high"
       }
     ],
-    "gesher": [],
+    "gesher-2019": [],
     "meretz": [
       {
         "kind": "neutral",
@@ -620,7 +620,7 @@
     "labor": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
-    "gesher": {
+    "gesher-2019": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
       "neutral": "No verified identity-specific neutral article acquired; dictionary articles and joint-list sources excluded; further research required."
     },

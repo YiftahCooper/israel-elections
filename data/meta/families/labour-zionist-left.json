@@ -439,14 +439,14 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k22.json",
-      "sha256": "cce32ede126dbc00a461a502074526cc65b27ef119537c7c99871f2295f4ee7b",
+      "sha256": "00420e39b10fbfabf960ed95dce157ea72b18e5d506d7c5432620ae985bc3e10",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k23": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k23.json",
-      "sha256": "1922b7def5684d6c80e75d69039a52ec314561a6cb3272f4fae3b5db3be729f0",
+      "sha256": "a8ee22f1513cc91e0a394ba722cfb5f15d46c213440a3c2749d8904a4a86511c",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k24": {
@@ -469,6 +469,11 @@
       "locator": "public/data/k26.json",
       "sha256": "b01461907ae1fe09bf84e8e52fae9025a65bdd4036d33cb6139619da59092e37",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
+    },
+    "k22-constituents": {
+      "locator": "data/raw/k22/candidates.pdf",
+      "support": "YP 8420 submitting parties and candidate affiliation columns; 3 Meretz, 1 Green Movement, 1 Independence elected.",
+      "quote": "מרצ; מפלגת התנועה הירוקה; מפלגת העצמאות"
     }
   },
   "elections": [
@@ -3447,12 +3452,12 @@
       "electionId": "k22",
       "electionDate": "2019-09-17",
       "datasetPath": "public/data/k22.json",
-      "datasetSha256": "cce32ede126dbc00a461a502074526cc65b27ef119537c7c99871f2295f4ee7b",
+      "datasetSha256": "00420e39b10fbfabf960ed95dce157ea72b18e5d506d7c5432620ae985bc3e10",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
-        "noteEn": "Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. No default blocs assigned. National electorate 6,394,030; locality/polling electorate 6,391,218 (difference 2,812). National total takes precedence; cause unverified. See ADR 0020.",
-        "noteHe": "תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות. ללא שיוך לגושים. מספר בעלי זכות הבחירה הארצי הוא 6,394,030, לעומת 6,391,218 בקובצי היישובים והקלפיות. הפער 2,812; סיבתו לא אומתה. ראו החלטה 0020."
+        "noteEn": "Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. National electorate 6,394,030; locality/polling electorate 6,391,218 (difference 2,812). National total takes precedence; cause unverified. See ADR 0020. YP 8454 prints 126,704 invalid votes in error (the below-threshold valid-vote total); CEC national and locality totals reconcile at 28,362.",
+        "noteHe": "תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות. מספר בעלי זכות הבחירה הארצי הוא 6,394,030, לעומת 6,391,218 בקובצי היישובים והקלפיות. הפער 2,812; סיבתו לא אומתה. ראו החלטה 0020. בילקוט הפרסומים 8454 נדפסו בטעות 126,704 קולות פסולים (סך הקולות הכשרים מתחת לאחוז החסימה); נתוני ועדת הבחירות הארציים והיישוביים מתיישבים על 28,362."
       },
       "validVotes": 4436806,
       "voteSourceIds": [
@@ -3474,7 +3479,7 @@
           ],
           "datasetPartyIds": [
             "labor",
-            "gesher"
+            "gesher-2019"
           ],
           "proposedPartyIds": [],
           "scope": "mixed",
@@ -3511,8 +3516,8 @@
             "independence"
           ],
           "proposedPartyIds": [],
-          "scope": "mixed",
-          "treatment": "separate-segment",
+          "scope": "extension",
+          "treatment": "include",
           "identityEvidence": {
             "status": "observed-local-dataset",
             "locator": "public/data/k22.json#/lists/8"
@@ -3523,9 +3528,10 @@
               "proposal",
               "k22",
               "labour",
-              "mergers"
+              "mergers",
+              "k22-constituents"
             ],
-            "claim": "Original editorial selection under Labour and broader Zionist left; proposal §2 records election-specific qualifiers. Some partners fall outside this definition; all list votes stay in mixed segment."
+            "claim": "All three gazetted constituents (Meretz, Green Movement, Independence) are selected under this family definition; no outside or unresolved partner. YP 8420 p.14481 (submitting heading and opening candidates)."
           },
           "constituentVotes": null
         }
@@ -3541,20 +3547,20 @@
           "displayPct": 0.0
         },
         "includedUnmixed": {
-          "votes": 0,
+          "votes": 192495,
           "percent": {
-            "numerator": 0,
+            "numerator": 19249500,
             "denominator": 4436806
           },
-          "displayPct": 0.0
+          "displayPct": 4.338594
         },
         "mixedWholeLists": {
-          "votes": 405277,
+          "votes": 212782,
           "percent": {
-            "numerator": 40527700,
+            "numerator": 21278200,
             "denominator": 4436806
           },
-          "displayPct": 9.134431
+          "displayPct": 4.795837
         },
         "wholeListInclusionAlternative": {
           "votes": 405277,
@@ -3572,12 +3578,12 @@
       "electionId": "k23",
       "electionDate": "2020-03-02",
       "datasetPath": "public/data/k23.json",
-      "datasetSha256": "1922b7def5684d6c80e75d69039a52ec314561a6cb3272f4fae3b5db3be729f0",
+      "datasetSha256": "a8ee22f1513cc91e0a394ba722cfb5f15d46c213440a3c2749d8904a4a86511c",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
-        "noteEn": "Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. No default blocs assigned.",
-        "noteHe": "תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות. ללא שיוך לגושים."
+        "noteEn": "Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations.",
+        "noteHe": "תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות."
       },
       "validVotes": 4590062,
       "voteSourceIds": [
@@ -3600,7 +3606,7 @@
           ],
           "datasetPartyIds": [
             "labor",
-            "gesher",
+            "gesher-2019",
             "meretz"
           ],
           "proposedPartyIds": [],

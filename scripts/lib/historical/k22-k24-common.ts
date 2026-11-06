@@ -171,9 +171,11 @@ export function reconciliationRecord(n:number){
 export interface BuildConfig {
   n:22|23|24;date:string;counts:Record<string,number>;leaders:Record<string,string>;
   noteEn?:string;noteHe?:string;notes?:Record<string,string[]>;
+  textReplacements?:Record<string,string>;withdrawn?:string[];
 }
 export async function buildHistorical(config:BuildConfig){
   const {n}=config;
+  const normalize = (s:string) => Object.entries(config.textReplacements ?? {}).reduce((s,[from,to])=>s.replaceAll(from,to),s);
   const ids=[`k${n}-national-html`,`k${n}-localities-datagov`,`k${n}-ballots-datagov`,`k${n}-candidates-gazette`,`k${n}-surplus-gazette`];
   const rawSha256=verifySources(ids.filter(id=>!id.includes('-ballots-')),check);
   const national=nationalResults(n),letters=national.lists.map(l=>l.letters);
@@ -200,15 +202,18 @@ export async function buildHistorical(config:BuildConfig){
   const noteText = n === 22 ? candidatePages.flat().map(l=>l.text).join(' ') : surplus.join(' ');
   const withoutSpaces = (s:string) => s.replace(/\s+/g,'');
   for(const [letters,notes] of Object.entries(config.notes??{})) for(const note of notes)
-    check(withoutSpaces(noteText).includes(withoutSpaces(note)),`k${n} ${letters}: note not found verbatim in official notice`);
+    check(withoutSpaces(normalize(noteText)).includes(withoutSpaces(note)),`k${n} ${letters}: note not found verbatim in official notice`);
   const rosters=await candidateRosters(n,candidatePages);
   check(rosters.length===letters.length && letters.every(L=>rosters.some(r=>r.letters===L)),`k${n}: gazette and national lists differ`);
   const lists:ListRecord[]=national.lists.map((list,i)=>{
     const r=rosters.find(r=>r.letters===list.letters)!;const id=`${n}-${list.letters}`;
     check(r.candidates.length===config.counts[list.letters],`k${n} ${list.letters}: candidate count ${r.candidates.length} differs from reviewed last rank ${config.counts[list.letters]}`);
-    const candidates=r.candidates.map(c=>({...c,id:candidateId(id,c.rank),nameHe:`${c.familyHe} ${c.givenHe}`}));
+    const candidates=r.candidates.map(c=>{
+      const givenHe=normalize(c.givenHe),familyHe=normalize(c.familyHe);
+      return {...c,givenHe,familyHe,id:candidateId(id,c.rank),nameHe:`${familyHe} ${givenHe}`};
+    });
     if(config.leaders[list.letters])check(candidates[0].nameHe===config.leaders[list.letters],`k${n} ${list.letters}: unexpected party leader ${candidates[0].nameHe}`);
-    return listRecord(n,i,{letters:list.letters,nameHe:r.nameHe,votes:list.votes,sponsorsHe:r.sponsorsHe,withdrawn:n===23&&list.letters==='זץ',
+    return listRecord(n,i,{letters:list.letters,nameHe:r.nameHe,votes:list.votes,sponsorsHe:normalize(r.sponsorsHe),withdrawn:config.withdrawn?.includes(list.letters) ?? (n===23&&list.letters==='זץ'),
       candidates,candidatesSource:`k${n}-candidates-gazette`,notesHe:config.notes?.[list.letters]??[]});
   });
   const pairs=await agreementPairs(n,surplus);

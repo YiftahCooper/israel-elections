@@ -678,7 +678,7 @@
      "note": "Ranks [78] carry a transcription artefact in public/data partyHe (hyphen or surname spill-over); normalised here."
     },
     {
-     "id": "gesher",
+     "id": "gesher-2019",
      "nameHe": "גשר",
      "nameEn": "Gesher",
      "candidateRanks": [
@@ -1507,7 +1507,7 @@
       {
        "letters": "אמת",
        "parties": [
-        "gesher"
+        "gesher-2019"
        ]
       }
      ],
@@ -1725,7 +1725,7 @@
    "confidence": "low"
   },
   {
-   "party": "gesher",
+   "party": "gesher-2019",
    "color": "#101E6D",
    "basis": "Infobox header colour of the Hebrew Wikipedia page \"מפלגת גשר (2018)\"; the infobox states official colours: כחול, ורוד. Not an official party specification.",
    "sources": [
