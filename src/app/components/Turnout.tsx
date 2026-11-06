@@ -93,7 +93,7 @@ export function Turnout({ s }: { s: Scenario }) {
     shares: p.vote.type === 'shares' ? Object.fromEntries(Object.entries(p.vote.shares).map(([k, v]) => [k, String(v)])) : {}, sharesFor: p.vote.type === 'shares' ? p.vote.electionId : undefined,
   });
   const choose = (v: string) => {
-    if (v === 'manual') return load({ ...base(), name: L('My group', 'הקבוצה שלי'), members: { type: 'manual', electorate: 100_000, turnoutPct: 50, invalidPct: 1 }, vote: { type: 'shares', electionId: s.electionId, shares: {} } });
+    if (v === 'manual') return load({ ...base(), name: L('Custom group', 'קבוצה מותאמת אישית'), members: { type: 'manual', electorate: 100_000, turnoutPct: 50, invalidPct: 1 }, vote: { type: 'shares', electionId: s.electionId, shares: {} } });
     if (v === 'share') return load({ ...base(), name: L('Localities by vote', 'יישובים לפי הצבעה'), members: { type: 'voteShare', electionId: s.electionId, listIds: [], minPct: 50 } });
     if (v.startsWith('src:')) { const g = data?.groups?.find((x) => x.id === v.slice(4)); if (g) load({ ...base(), name: groupName(g), members: { type: 'sourced', groupId: g.id } }, true); return; }
     const p = saved.find((x) => x.id === v.slice(6)); if (p) load(p);
@@ -114,7 +114,7 @@ export function Turnout({ s }: { s: Scenario }) {
     ...(!hasLocalities ? [{ value: 'none', label: L('Groups from locality results', 'קבוצות מתוצאות היישובים'), group: L('Official locality data', 'נתונים רשמיים לפי יישובים'), disabled: true, detail: problemText('needs-localities') }] : []),
     ...(data ? [{ value: 'share', label: L('Localities where chosen lists got ≥ X%', 'יישובים שבהם רשימות נבחרות קיבלו ≥ X%'), group: L('Official locality data', 'נתונים רשמיים לפי יישובים'), disabled: data.rows.every((r) => r.registered === null), detail: data.rows.every((r) => r.registered === null) ? problemText('no-registered') : undefined }] : []),
     ...saved.map((p) => { const r = resolveGroup(s, data, p.members); return { value: `saved:${p.id}`, label: p.name, group: L('Saved in this browser', 'שמורות בדפדפן זה'), detail: isFacts(r) ? `${signed(Math.round(p.turnoutChange * 10) / 10)} ${L('pp', 'נק׳')}` : problemText(r) }; }),
-    { value: 'manual', label: L('Type the numbers', 'הזנת מספרים'), group: L('Your own', 'משלכם') },
+    { value: 'manual', label: L('Custom group…', 'קבוצה מותאמת אישית…'), group: L('Your own', 'משלכם') },
   ];
 
   const sg = d.members?.type === 'sourced' ? data?.groups?.find((g) => g.id === (d.members as { groupId: string }).groupId) : undefined;
@@ -152,15 +152,20 @@ export function Turnout({ s }: { s: Scenario }) {
 
         {!d.members && <p className="small ink2">{data?.groups?.length
           ? L('Pick a group, move its turnout, and add or remove its voters.', 'בחרו קבוצה, שנו את שיעור ההצבעה שלה והוסיפו או הסירו מצביעים.')
-          : L('Pick a saved group or type the numbers.', 'בחרו קבוצה שמורה או הזינו מספרים.')}</p>}
+          : L('Choose a saved or custom group.', 'בחרו קבוצה שמורה או מותאמת אישית.')}</p>}
 
         {d.members && <div className="vg-body">
           <div className="vg-who">
-            {d.members.type === 'manual' && <div className="vg-fields">
-              <label className="field">{L('Registered voters', 'בעלי זכות בחירה')}<NumberInput value={d.members.electorate} label={L('Registered voters', 'בעלי זכות בחירה')} onCommit={(n) => n > 0 && set({ members: { ...(d.members as Extract<VoterGroupMembers, { type: 'manual' }>), electorate: n } })} /></label>
-              <PctField label={L('Turnout now %', 'הצבעה כיום %')} value={d.members.turnoutPct} max={100} onCommit={(n) => set({ members: { ...(d.members as Extract<VoterGroupMembers, { type: 'manual' }>), turnoutPct: n } })} />
-              <PctField label={L('Invalid %', 'פסולים %')} value={d.members.invalidPct} max={99.9} onCommit={(n) => set({ members: { ...(d.members as Extract<VoterGroupMembers, { type: 'manual' }>), invalidPct: n } })} />
-            </div>}
+            {d.members.type === 'manual' && <>
+              <h4>{L('Custom group', 'קבוצה מותאמת אישית')} <Info title={L('Define your group', 'הגדרת הקבוצה שלכם')}>
+                {L('Enter the number of eligible voters in your group, its current turnout and its share of invalid ballots. Then choose how its voters divide among lists. These are your assumptions, not measured results.', 'הזינו את מספר בעלי זכות הבחירה בקבוצה, את שיעור ההצבעה הנוכחי שלה ואת שיעור הפתקים הפסולים. לאחר מכן הגדירו כיצד מצביעיה מתחלקים בין הרשימות. אלו הנחות שלכם, לא תוצאות שנמדדו.')}
+              </Info></h4>
+              <div className="vg-fields">
+                <label className="field">{L('Group size', 'גודל הקבוצה')}<NumberInput value={d.members.electorate} label={L('Group size', 'גודל הקבוצה')} onCommit={(n) => n > 0 && set({ members: { ...(d.members as Extract<VoterGroupMembers, { type: 'manual' }>), electorate: n } })} /></label>
+                <PctField label={L('Current turnout %', 'שיעור הצבעה נוכחי %')} value={d.members.turnoutPct} max={100} onCommit={(n) => set({ members: { ...(d.members as Extract<VoterGroupMembers, { type: 'manual' }>), turnoutPct: n } })} />
+                <PctField label={L('Invalid ballots %', 'פתקים פסולים %')} value={d.members.invalidPct} max={99.9} onCommit={(n) => set({ members: { ...(d.members as Extract<VoterGroupMembers, { type: 'manual' }>), invalidPct: n } })} />
+              </div>
+            </>}
             {d.members.type === 'voteShare' && (() => {
               const m = d.members;
               const shown = showAll ? lists : lists.slice(0, 10);

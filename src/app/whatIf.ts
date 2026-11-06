@@ -8,7 +8,7 @@ import { allocate } from '../engine/allocate.ts';
 import { goals, minimalChange } from '../engine/analysis.ts';
 import type { AllocationResult } from '../engine/types.ts';
 import { applyAction } from '../model/actions.ts';
-import { scenarioFromDataset, toEngineInput, votesCast, type Action, type Scenario } from '../model/scenario.ts';
+import { scenarioFromDataset, toEngineInput, type Action, type Scenario } from '../model/scenario.ts';
 import { listLabel } from './derive.ts';
 import type { Lang } from './i18n.ts';
 import { fmtInt } from './format.ts';
@@ -19,7 +19,6 @@ export interface WhatIfPreset { id: string; titleEn: string; titleHe: string; ex
 
 const t = (lang: Lang, en: string, he: string) => (lang === 'he' ? he : en);
 const fixed = (en: string, he: string): Text => (_s, lang) => t(lang, en, he);
-const turnoutOf = (s: Scenario) => (s.registered ? (100 * votesCast(s)) / s.registered : 0);
 const has = (s: Scenario, ...ids: string[]) => ids.every((id) => s.lists.some((l) => l.id === id));
 const agreementWith = (s: Scenario, id: string) => s.agreements.find((a) => a.members.includes(id));
 const nameOf = (s: Scenario, id: string, lang: Lang) => { const l = s.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : id; };
@@ -69,10 +68,6 @@ const COMMON: WhatIfPreset[] = [
   { id: 'threshold-2', experimental: true, titleEn: 'A 2% threshold', titleHe: 'אחוז חסימה של 2%', body: fixed('Only the threshold changes, to 2%: the law in 2006–2013. Experimental rules, not a legally possible result for this election.', 'רק אחוז החסימה משתנה, ל-2%: החוק ב-2006–2013. כללים ניסיוניים, לא תוצאה אפשרית על פי החוק בבחירות אלה.'), actions: (s) => Number(s.rules.thresholdPct) === 2 ? null : [{ type: 'setMode', mode: 'experimental' }, { type: 'setRules', patch: { thresholdPct: '2' } }] },
   { id: 'pure-pr', experimental: true, titleEn: 'Pure proportional representation', titleHe: 'ייצוג יחסי טהור', body: fixed('No threshold, Sainte-Laguë for all 120 seats, no agreements; every vote stays as cast. Experimental rules.', 'ללא אחוז חסימה, סנט-לגה לכל 120 המושבים, ללא הסכמים; כל הקולות נשארים כפי שהוצבעו. כללים ניסיוניים.'), // 1949's "only lists with a whole quota" rule has no meaning without a quota stage and would leave every seat empty
     actions: (s) => [{ type: 'setMode', mode: 'experimental' }, { type: 'setRules', patch: { thresholdPct: '0', remainderMethod: 'sainte-lague', ...(s.rules.remainderRequiresInitialSeat || s.rules.agreementRequiresInitialSeat ? { remainderRequiresInitialSeat: false, agreementRequiresInitialSeat: false } : {}) } }, ...s.agreements.map((a) => ({ type: 'removeAgreement', id: a.id }) as Action)] },
-  // the wording follows the direction: several early elections had turnout above 80%
-  { id: 'turnout-80', titleEn: 'Turnout of 80%', titleHe: 'שיעור הצבעה של 80%',
-    body: (s, lang) => t(lang, `Votes cast become 80% of registered voters (actually ${turnoutOf(s).toFixed(1)}%). Every list and the invalid ballots ${turnoutOf(s) < 80 ? 'grow' : 'shrink'} in proportion, so every share stays the same.`, `מספר המצביעים הופך ל-80% מבעלי זכות הבחירה (בפועל ${turnoutOf(s).toFixed(1)}%). כל הרשימות והפתקים הפסולים ${turnoutOf(s) < 80 ? 'גדלים' : 'קטנים'} באופן יחסי, כך שחלקה של כל רשימה נשאר זהה.`),
-    actions: (s) => Math.abs(turnoutOf(s) - 80) < 0.5 ? null : [{ type: 'setTurnout', pct: 80 }] },
 ];
 
 const K25: WhatIfPreset[] = [
@@ -148,11 +143,10 @@ export function computeWhatIf(ds: ElectionDataset, lang: Lang): WhatIfResult[] {
     const q0 = quotaOf(r0), q1 = quotaOf(r);
     if (q0 && q1 && q0 !== q1) facts.push({ kind: 'quota', before: q0, after: q1 });
     if (seatless && r.unrepresentedVotes !== 0n) facts.push(seatless);
-    const moved = actions.find((a) => a.type === 'transfer' || a.type === 'setVotes' || a.type === 'setTurnout');
+    const moved = actions.find((a) => a.type === 'transfer' || a.type === 'setVotes');
     const added = (listId: string, v: number) => v - base.lists.find((x) => x.id === listId)!.votes;
     const votes = moved?.type === 'transfer' ? t(lang, `${fmtInt(moved.votes)} voters switch from ${nameOf(base, moved.from, lang)}`, `${fmtInt(moved.votes)} מצביעים עוברים מ${nameOf(base, moved.from, lang)}`)
       : moved?.type === 'setVotes' ? t(lang, `${fmtInt(added(moved.listId, moved.votes))} additional voters`, `${fmtInt(added(moved.listId, moved.votes))} מצביעים נוספים`)
-      : moved?.type === 'setTurnout' ? (() => { const d = votesCast(s) - votesCast(base); return d >= 0 ? t(lang, `${fmtInt(d)} more voters, same shares`, `${fmtInt(d)} מצביעים נוספים, באותם יחסים`) : t(lang, `${fmtInt(-d)} fewer voters, same shares`, `${fmtInt(-d)} מצביעים פחות, באותם יחסים`); })()
       : '';
     return { p, actions, title, body, votes, changes, facts };
   });
