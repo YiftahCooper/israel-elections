@@ -31,7 +31,11 @@ test('locality map supports bilingual search, address lookup and table fallback'
   await expect(page.getByRole('region', {name:'Scrollable table'}).getByRole('table')).toContainText('Tel Aviv-Yafo');
   await choose(page.getByRole('button', {name:'Election',exact:true}), 'k17');
   await page.getByRole('button', {name:'Map',exact:true}).click();
-  await expect(page.getByText(/The 2006 locality results lack CBS locality codes/)).toBeVisible();
+  await expect(page.getByText('1144 of 1149 localities placed.')).toBeVisible();
+  await expect(page.getByText(/because no official locality table exists/)).toHaveCount(0);
+  await expect(page.locator('.locality-map-label').filter({hasText:'Jerusalem'})).toHaveCount(1);
+  await page.getByRole('button', {name:'2006 location matching',exact:true}).click();
+  await expect(page.getByText('2006 locations are matched by Hebrew name to a single CBS locality code. Ambiguous or unmatched rows remain unplaced.')).toBeVisible();
 });
 
 test('locality map explains a result, speaks English and fits the dark theme', async ({ page }) => {
@@ -81,4 +85,25 @@ test('zooming the locality map never scrolls the page', async ({ page }) => {
   await page.getByRole('button', {name:'Zoom out'}).click();
   expect(await page.evaluate(() => window.scrollY)).toBe(0);
   await expect(page.locator('.locality-map-canvas')).toBeFocused();
+});
+
+
+test('2006 Hebrew map explains name placement and lists only the five unplaced localities', async ({page}) => {
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({lang:'he',level:'expert',hintDismissed:true})));
+  await page.route('https://tile.openstreetmap.org/**', route => route.abort());
+  await page.goto('/');
+  await choose(page.getByRole('button', {name:'בחירות',exact:true}), 'k17');
+  await page.getByRole('tab', {name:'יישובים',exact:true}).click();
+  await expect(page.getByText('1144 מתוך 1149 יישובים ממופים.')).toBeVisible();
+  await expect(page.locator('.locality-map-label').first()).toBeVisible();
+  await page.getByRole('button', {name:'התאמת מיקומים ב־2006',exact:true}).click();
+  await expect(page.getByText('מיקומי 2006 הותאמו לפי השם העברי לסמל יישוב יחיד של הלמ״ס. שורות ללא התאמה או עם התאמה עמומה אינן ממוקמות.')).toBeVisible();
+  await page.keyboard.press('Escape');
+  const missing = page.locator('.locality-map-tool details');
+  await missing.locator('summary').click();
+  await expect(missing.locator('li')).toHaveCount(5);
+  for(const name of ['דלתון','חברון','נווה אילן','סנסנה','שושנת העמקים']) await expect(missing).toContainText(name);
+  await expect(missing).not.toContainText('מעטפות');
+  await page.getByRole('button', {name:'טבלה',exact:true}).click();
+  await expect(page.getByRole('button', {name:'התאמת מיקומים ב־2006',exact:true})).toBeVisible();
 });

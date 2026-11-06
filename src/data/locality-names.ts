@@ -48,3 +48,14 @@ export function resolveLocalityEnglish(row: { code: number | null; nameHe: strin
   const prefix = key.length >= 8 ? unique(named.filter(r => hebrewNameKey(r.nameHe).startsWith(key))) : null;
   return prefix ? pick(prefix, year) : null;
 }
+
+/** A location requires one code, never merely one English spelling. An ambiguous exact name must not fall
+ * through to prefix matching. Uses the same normalization and minimum truncated stem as English labels. */
+export function resolveLocalityCode(nameHe: string, records: CbsNameRecord[]): number | null {
+  const key = hebrewNameKey(nameHe);
+  if (!key) return null;
+  const exact = records.filter(r => hebrewNameKey(r.nameHe) === key);
+  const candidates = exact.length ? exact : key.length >= 8 ? records.filter(r => hebrewNameKey(r.nameHe).startsWith(key)) : [];
+  const codes = new Set(candidates.map(r => r.code));
+  return codes.size === 1 ? [...codes][0] : null;
+}

@@ -74,13 +74,13 @@ it('published coordinates place only rows with retained, plausible source positi
     const locations: Locations = JSON.parse(readFileSync(`public/data/${file}`,'utf8'));
     const data: Dataset = JSON.parse(readFileSync(`public/data/${file.replace('-locations','-localities')}`,'utf8'));
     for (const [code,p] of Object.entries(locations)) {
-      expect(data.rows.some(r=>!isEnvelopeRow(r)&&String(r.code)===code)).toBe(true);
+      expect(data.rows.some((r,i)=>!isEnvelopeRow(r)&&(r.code === null ? `row:${i}` : String(r.code))===code)).toBe(true);
       expect(p.lat).toBeGreaterThan(29); expect(p.lat).toBeLessThan(34);
       expect(p.lon).toBeGreaterThan(33); expect(p.lon).toBeLessThan(37);
       expect(p.year).toBeGreaterThanOrEqual(2003);
     }
   }
-});
+}, 30_000);
 
 it('keys Hebrew names spelling-insensitively without merging separate words', async () => {
   const { hebrewNameKey, tidyCbsEnglish } = await import('../src/data/locality-names.ts');
@@ -142,4 +142,35 @@ it('explains a locality result: ranked group totals and the lead over the runner
   const totals = localityTotals(s, [a.id, b.id], [70, 30], 'list');
   expect(totals.map(t => t.key)).toEqual([a.id, b.id]);
   expect(localityWinner(s, [a.id, b.id], [70, 30], 'list')).toMatchObject({ key: a.id, runnerUp: b.id, margin: 40 });
+});
+
+it('places uncoded names only when exactly one CBS code matches, even if English names agree', async () => {
+  const { resolveLocalityCode } = await import('../src/data/locality-names.ts');
+  const records = [
+    { code: 1, year: 2006, nameHe: 'סנסנה', nameEn: 'Sansana' },
+    { code: 2, year: 2024, nameHe: 'סנסנה', nameEn: 'Sansana' },
+    { code: 3, year: 2006, nameHe: 'מודיעין-מכבים-רעות*', nameEn: 'Modiin' },
+    { code: 3, year: 2024, nameHe: 'מודיעין מכבים רעות', nameEn: 'Modiin' },
+  ];
+  expect(resolveLocalityCode('סנסנה', records)).toBeNull();
+  expect(resolveLocalityCode('מודיעין-מכבים-רעו', records)).toBe(3);
+  expect(resolveLocalityCode('מוֹדִיעִין מכבים רעות', records)).toBe(3);
+  expect(resolveLocalityCode('מודיעין', records)).toBeNull(); // too short for a prefix
+  expect(resolveLocalityCode('לא קיים', records)).toBeNull();
+  expect(resolveLocalityCode('מודיעין-מכבים-רעו', [...records, {code:4,year:2024,nameHe:'מודיעין מכבים רעות אחר',nameEn:'Other'}])).toBeNull();
+});
+
+it('publishes 2006 name placements while preserving official null codes and unmapped ambiguity', async () => {
+  const {readFileSync} = await import('node:fs');
+  const data = JSON.parse(readFileSync('public/data/k17-localities.json','utf8')) as import('../src/data/schema.ts').LocalityDataset;
+  const locations = JSON.parse(readFileSync('public/data/k17-locations.json','utf8'));
+  expect(Object.keys(locations)).toHaveLength(1144);
+  const coverage = JSON.parse(readFileSync('public/data/locality-map-coverage.json','utf8'));
+  expect(coverage.k17).toEqual({placed:1144,localities:1149,envelopes:1});
+  expect(data.rows.every(r => r.code === null)).toBe(true);
+  for (const nameHe of ['דלתון', 'נווה אילן', 'סנסנה', 'חברון', 'שושנת העמקים (רסק', 'מעטפות כפולות']) {
+    const index = data.rows.findIndex(r => r.nameHe === nameHe);
+    expect(index).toBeGreaterThanOrEqual(0);
+    expect(locations[`row:${index}`]).toBeUndefined();
+  }
 });

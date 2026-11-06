@@ -7,6 +7,7 @@ import 'leaflet/dist/leaflet.css';
 import './locality-map.css';
 import { isEnvelopeRow, type LocalityDataset, type LocalityRow } from '../../data/schema.ts';
 import type { LocalityLocations } from '../../data/locality-coordinates.ts';
+import { localityLocationKey } from '../../data/locality-location-key.ts';
 import type { LocalityNames } from '../../data/locality-names.ts';
 import type { SimList, Scenario } from '../../model/scenario.ts';
 import { allocationOf, listLabel, seatBlocsOf } from '../derive.ts';
@@ -50,6 +51,15 @@ export function LocalityName({ names, row, index }: { names: LocalityNames; row:
   return <span dir="auto">{text}</span>;
 }
 
+/** Shared by the map and table: the source omits codes; this does not establish absence in every official edition. */
+export function Locality2006Note() {
+  const L = useL();
+  return <p className="small">{L('2006 locations', 'מיקומי 2006')} <Info title={L('2006 location matching', 'התאמת מיקומים ב־2006')}>
+      <p>{L('2006 locations are matched by Hebrew name to a single CBS locality code. Ambiguous or unmatched rows remain unplaced.', 'מיקומי 2006 הותאמו לפי השם העברי לסמל יישוב יחיד של הלמ״ס. שורות ללא התאמה או עם התאמה עמומה אינן ממוקמות.')}</p>
+      <p>{L('Rows are summed from the retained official polling-station export, which omits locality codes. Missing metadata is unknown. National totals follow the gazette; the polling-station cast total is nine lower, with no known authoritative explanation.', 'השורות סוכמו מקובץ הקלפיות הרשמי השמור, שאינו כולל סמלי יישובים. נתונים חסרים מוצגים כלא ידועים. הסיכומים הארציים לפי הרשומות; סך המצביעים בקלפיות נמוך בתשעה, ללא הסבר מוסמך ידוע.')}</p>
+    </Info></p>;
+}
+
 // Leaflet's zoom buttons refocus the map with a plain focus(), which scrolls a partly visible map into view: the
 // page jumped by up to 54px on each zoom click. Same control, refocusing without scrolling.
 const ZoomInPlace = Leaflet.Control.Zoom.extend({
@@ -83,10 +93,10 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
   useEffect(() => { mounted.current = true; return () => { mounted.current = false; }; }, []);
   const nameOf = (i: number) => localityName(names, data.rows[i], i, lang);
   const placed = useMemo(() => data.rows.flatMap((row, index) => {
-    const p = row.code === null ? null : locations[String(row.code)];
+    const p = locations[localityLocationKey(row, index)];
     return !isEnvelopeRow(row) && p ? [{ ...p, row, index }] : [];
   }), [data, locations]);
-  const searchNames = (r: LocalityRow, i: number) => ({ ...locations[String(r.code)], nameHe: r.nameHe, code: r.code, aliases: [...(locations[String(r.code)]?.aliases ?? []), names.names[i] ?? ''] });
+  const searchNames = (r: LocalityRow, i: number) => ({ ...locations[localityLocationKey(r, i)], nameHe: r.nameHe, code: r.code, aliases: [...(locations[localityLocationKey(r, i)]?.aliases ?? []), names.names[i] ?? ''] });
   const matches = useMemo(() => data.rows.flatMap((r, i) => matchesLocality(q, searchNames(r, i)) ? [i] : []), [data, locations, names, q]);
   const winners = useMemo(() => placed.map(p => localityWinner(s, data.listIds, p.row.votes, mode)), [placed,s,data.listIds,mode]);
   const groupName = (key: string | null) => key === null ? (mode === 'bloc' ? L('No bloc', 'ללא גוש') : L('Unassigned', 'ללא שיוך')) : mode === 'bloc'
@@ -178,7 +188,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
   }, [selectedIndex, placed]);
   const choose = (index: number) => {
     setSelectedIndex(index);
-    const row = data.rows[index], p = locations[String(row.code)];
+    const row = data.rows[index], p = locations[localityLocationKey(row, index)];
     if (p && !isEnvelopeRow(row)) map.current?.setView([p.lat,p.lon],12);
   };
   async function searchAddress() {
@@ -209,13 +219,13 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
   const groups = selected ? localityTotals(s, data.listIds, selected.votes, mode).filter(g => g.votes > 0) : [];
   const selectedWinner = selected ? localityWinner(s, data.listIds, selected.votes, mode) : null;
   const localities = data.rows.filter(r => !isEnvelopeRow(r)).length;
-  const unplaced = data.rows.flatMap((r, i) => isEnvelopeRow(r) || r.code === null || !locations[String(r.code)] ? [i] : []);
+  const unplaced = data.rows.flatMap((r, i) => !isEnvelopeRow(r) && !locations[localityLocationKey(r, i)] ? [i] : []);
   const legend = mode === 'bloc' ? s.blocs.map(b => ({ id: b.id, color: b.color, label: lang === 'he' ? b.nameHe : b.nameEn }))
     : s.lists.filter(l => winners.some(w => w.key === l.id)).map(l => ({ id: l.id, color: l.color, label: listLabel(l, lang) }));
   const shareBar = (v: number, top: number, color: string) => <span className="locality-share"><span><i style={{ width: `${v / (top || 1) * 100}%`, background: color }} /></span><span className="tabnum">{share(v, selected!.valid)}</span></span>;
   return <div className="locality-map-tool">
     <p className="small ink2">{L('Historical votes · current grouping', 'קולות היסטוריים · חלוקה נוכחית')} <Info title={L('Map assumptions', 'הנחות המפה')}>{L('Historical local votes; colours follow your current scenario grouping. National vote edits are not distributed geographically. Split lists use national vote proportions; split blocs use elected-seat proportions, an estimate rather than measured party votes. English place names are CBS locality names; a few localities missing from CBS lists have this project’s transliteration (dotted underline).', 'קולות היסטוריים ביישובים; הצבעים לפי חלוקת הגושים הנוכחית. שינויי קולות ארציים אינם מחולקים גאוגרפית. רשימות שפוצלו מחולקות לפי יחס הקולות הארצי; גושים בתוך רשימה לפי יחס המושבים הנבחרים — אומדן ולא קולות מפלגתיים שנמדדו.')}</Info></p>
-    {(data.noteEn || data.noteHe) && <p className="small callout">{lang === 'he' ? data.noteHe ?? data.noteEn : data.noteEn ?? data.noteHe}</p>}
+    {data.id !== 'k17' && (data.noteEn || data.noteHe) && <p className="small callout">{lang === 'he' ? data.noteHe ?? data.noteEn : data.noteEn ?? data.noteHe}</p>}
     {split && mode === 'bloc' && <p className="callout small">{L('A list spans several blocs: its locality votes are apportioned by its current elected members’ blocs.', 'רשימה משויכת לכמה גושים: קולותיה ביישוב מחולקים לפי שיוך חבריה הנבחרים כיום.')}</p>}
     <div className="row">
       <ChoicePicker label={L('Colour by', 'צביעה לפי')} value={mode} options={[{ value: 'bloc', label: L('Winning bloc', 'הגוש המוביל'), preview: <ResultPreview s={s} /> }, { value: 'list', label: L('Winning list', 'הרשימה המובילה'), preview: <ResultPreview s={s} blocs={false} /> }]} onChange={v => setMode(v as typeof mode)} />
@@ -235,7 +245,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
       const [lon,lat]=f.geometry.coordinates; const near=nearestLocality(placed,{lat,lon});
       if (near) {choose(near.item.index);setMessage(L(`Nearest mapped locality: ${nameOf(near.item.index)}, ${near.km.toFixed(1)} km (straight line).`, `היישוב הממופה הקרוב: ${near.item.row.nameHe}, ${near.km.toFixed(1)} ק״מ בקו אווירי.`));}
     }}>{[f.properties.name,f.properties.street,f.properties.housenumber,f.properties.city,f.properties.country].filter(Boolean).join(', ')}</button>)}</div>}
-    {data.id === 'k17' && <p className="callout">{L('The 2006 locality results lack CBS locality codes, so no map locations can be joined reliably. Use the Table view for the retained results.', 'בתוצאות היישובים מ־2006 חסרים סמלי יישובים של הלמ״ס, ולכן אין אפשרות לשייך מיקומים באופן אמין. הנתונים זמינים בתצוגת טבלה.')}</p>}
+    {data.id === 'k17' && <Locality2006Note />}
     <div className="locality-map-legend">{legend.map(x=><span key={x.id}><i style={{background:x.color}} />{x.label}</span>)}<span><i style={{background:GREY}}/>{L('Tie / unassigned / no votes','שוויון / ללא שיוך / ללא קולות')}</span></div>
     <div ref={container} className="locality-map-canvas" role="region" aria-label={L('Locality results map; use search or table for keyboard selection','מפת תוצאות ביישובים; לבחירה במקלדת השתמשו בחיפוש או בטבלה')} />
     {tilesFailed && <p className="small bad">{L('The background map could not load; the locality dots still work.', 'מפת הרקע לא נטענה; נקודות היישובים עדיין פעילות.')}</p>}
