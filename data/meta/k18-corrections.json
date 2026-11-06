@@ -1,0 +1,21 @@
+{
+  "electionId": "k18",
+  "textReplacements": {
+    ")סוניה(": "(סוניה)",
+    ")שמלקי(": "(שמלקי)",
+    ")המפלגה הקומוניסטית הישראלית וחוגי ציבור ערבים ויהודים(": "(המפלגה הקומוניסטית הישראלית וחוגי ציבור ערבים ויהודים)"
+  },
+  "withdrawn": [
+    {
+      "letters": "פח",
+      "sourceId": "k18-surplus-gazette",
+      "quote": "מרשימת מהפך בחינוך",
+      "noteHe": "כל 12 המועמדים התפטרו ב־28 בינואר וב־1 בפברואר 2009 (ילקוט הפרסומים 5912, עמ׳ 2254); הרשימה פרשה ולא השתתפה בהצבעה.",
+      "noteEn": "All 12 candidates resigned on 28 January and 1 February 2009 (YP 5912 p. 2254); the list withdrew before voting."
+    }
+  ],
+  "textEvidence": {
+    "sourceId": "k18-candidates-gazette",
+    "note": "Logical parentheses restored from YP 5909 and YP 5917."
+  }
+}

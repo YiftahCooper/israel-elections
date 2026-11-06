@@ -96,6 +96,18 @@
       "publisher": "International Institute for Counter-Terrorism, IDC Herzliya (now Reichman University), ICT Incidents Database Periodical Report, October 2011",
       "kind": "academic",
       "accessed": "2026-11-05"
+    },
+    "utj-accession": {
+      "url": "https://www.ynet.co.il/articles/0,7340,L-3695524,00.html",
+      "publisher": "Ynet",
+      "kind": "secondary",
+      "accessed": "2026-11-06"
+    },
+    "dissolution-law": {
+      "url": "https://fs.knesset.gov.il/18/law/18_lsr_301510.pdf",
+      "publisher": "Reshumot SH 2383 / Knesset",
+      "kind": "official",
+      "accessed": "2026-11-06"
     }
   },
   "results": {
@@ -225,7 +237,7 @@
         }
       ],
       "notes": [
-        "Consultations were held on 18–19 February 2009; the date is the last consultation day. President Peres tasked Netanyahu on 20 February 2009. Party-by-party positions are from the Jerusalem Post report of 19 February 2009; Hebrew Wikipedia is kept as a secondary source."
+        "Consultations were held on 18–19 February 2009; date and endDate mark the start and end of the consultations. President Peres tasked Netanyahu on 20 February 2009. Party-by-party positions are from the Jerusalem Post report of 19 February 2009; Hebrew Wikipedia is kept as a secondary source."
       ]
     }
   ],
@@ -407,7 +419,7 @@
     "end": "2013-03-18",
     "endedBy": {
       "type": "knesset-dissolved",
-      "date": "2012-10-15",
+      "date": "2012-10-16",
       "nextElection": "k19",
       "textEn": "The Knesset voted to dissolve itself, 100–0, and set an election for 22 January 2013.",
       "textHe": "הכנסת הצביעה על התפזרותה ברוב של 100 ללא מתנגדים וקבעה בחירות ל־22 בינואר 2013.",
@@ -419,10 +431,14 @@
         {
           "source": "toi-dissolution",
           "quote": "One hundred MKs voted in favor, with no opposing votes and zero abstentions"
+        },
+        {
+          "source": "dissolution-law",
+          "quote": "התקבל בכנסת ביום ל׳ בתשרי התשע״ג (16 באוקטובר 2012) ונכנס לתוקף ביום כ״ט בתשרי התשע״ג (15 באוקטובר 2012)"
         }
       ],
       "notes": [
-        "15 October is the IPU/sitting date and the date on the ToI report. Reports published after midnight on 16 October describe the same vote; exact civil-time/Gazette date not verified."
+        "Passage was after midnight on 16 October 2012; the law took effect on 15 October. IPU records the effective dissolution date, while this event describes the vote. Official law text verified in the search index; direct Knesset access was geographically unavailable."
       ]
     }
   },
@@ -433,10 +449,7 @@
   "gaps": [
     "CEC certification date not retrieved.",
     "Formal successful-formation notification date and original presidential letters not retrieved; not inferred from the investiture.",
-    "UTJ accession date reuses the established scheme’s note; a direct contemporary source is still needed before adding a government-change event.",
-    "IPU coalition-membership error is explicitly flagged; it is not used for the cabinet composition.",
-    "Exact civil-time/Gazette dissolution date needs verification against the late 15/early 16 October sitting.",
-    "No included term event meets the two-chronology rule."
+    "IPU coalition-membership error is explicitly flagged; it is not used for the cabinet composition."
   ],
   "government": {
     "number": 32,
@@ -485,7 +498,7 @@
       }
     ],
     "notes": [
-      "Formation-day coalition is 69. The established first-government scheme also includes UTJ’s five seats marked joined 1 April 2009 (74 after accession). These are different dated snapshots, not competing formation-day totals.",
+      "Formation-day coalition is 69, matching the first-government scheme dated 31 March. UTJ signed on 1 April 2009 (74 seats after accession).",
       "Seat weights checked against public/data/k18.json. The 69-seat coalition weight is not a reconstructed individual roll-call vote: the JTA report separately records 69–45–5."
     ]
   }

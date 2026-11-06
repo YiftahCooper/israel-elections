@@ -50,6 +50,11 @@ import { FAMILIES, families, type Family, type Modules } from './differential.ca
 // resignation/source notes, CEC link labels and builtAt only. Replacing k21 at
 // scenarioFromDataset with merged HEAD reproduces ALL five old digests exactly.
 // Only allocation (cancelled lists excluded) and model (display fields) change.
+// k18 audit: added the approved withdrawn zero-vote list; corrected names/notes,
+// Meretz affiliation, formation-day blocs, and two unproved logo claims. Only k18
+// dataset/localities change. Substituting HEAD k18 at scenarioFromDataset reproduces
+// bf733b00… allocation and ffb2cc3a… model exactly; engine/model source is unchanged.
+  // merged with k18 audit fixes: combined digest = union of the separately reviewed changes.
 const EXPECTED: Record<Family, string> = {
   // Allocation and analysis re-recorded 2026-11-04 for one reviewed engine fix: under a pure divisor method (no quota
   // stage, so no initial seats) the 1949 initial-seat conditions no longer apply. Before, those cases allocated 0 seats
@@ -58,7 +63,8 @@ const EXPECTED: Record<Family, string> = {
   // merged with the k24 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k20 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k21 audit fixes: combined digest = union of the separately reviewed changes.
-  allocation: 'c53220a4d94b2a6c0d2bfa99fc71c58f974fa88d1282be2272b062706df258c8',
+  // merged with k18 audit fixes: combined digest = union of the separately reviewed changes.
+  allocation: '4b309c6137ce0a85fa25240ea3c399e96e6e9a394ecc545f83f2c69863b57bb3',
   analysis: 'b682af4570daf5cd7967e77afda56c8a9bcb2b5de4850f4d8ebc1652228269e0',
   // Model digest re-recorded for the 1973 party ranks, then for candidate biography links (Candidate.bio): with
   // the build timestamps held fixed and bio not carried, the new code gives the previous digest. Then for three
@@ -123,7 +129,8 @@ const EXPECTED: Record<Family, string> = {
   // All four non-model digests unchanged. See docs/research/data-audit/k19-resolution.md.
   // merged with k19 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k21 audit fixes: combined digest = union of the separately reviewed changes.
-  model: 'c61b71455d4b9523ba031ae09e7ee79c68c2c402573d5541aec456939ebaaf08',
+  // merged with k18 audit fixes: combined digest = union of the separately reviewed changes.
+  model: '3ed5010780d36f1a88c1c8f5563ae669f2d5d3eaf1e659d922c0640559aa1c39',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

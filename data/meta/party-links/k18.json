@@ -118,7 +118,7 @@
       {
         "kind": "partisan",
         "url": "https://www.idi.org.il/media/6525/hadash-2009org.pdf",
-        "titleHe": "חד\"ש — מצע 2009",
+        "titleHe": "חד\"ש — מצע מהאתר (הודפס בנובמבר 2012; שנת הבחירות לא אומתה)",
         "publisher": "חד\"ש (עותק באירוח המכון הישראלי לדמוקרטיה)",
         "sourceType": "platform",
         "confidence": "medium"
@@ -404,7 +404,8 @@
         "sourceType": "cec",
         "confidence": "high"
       }
-    ]
+    ],
+    "18-פח": []
   },
   "parties": {
     "ahi": [],
@@ -637,7 +638,7 @@
       "neutral": "No verified identity-specific neutral article acquired; dictionary articles and joint-list sources excluded; further research required."
     },
     "taal": {
-      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "partisan": "Campaign-period homepage and logo evidence retained in data/meta/logos/k18.json; an identity-specific profile/platform has not been verified.",
       "neutral": "No verified identity-specific neutral article acquired; dictionary articles and joint-list sources excluded; further research required."
     },
     "tkuma": {
@@ -651,7 +652,7 @@
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
     "moledet": {
-      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+      "partisan": "Campaign-period homepage and logo evidence retained in data/meta/logos/k18.json; an identity-specific profile/platform has not been verified."
     },
     "new-movement": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
@@ -661,6 +662,10 @@
     },
     "green-movement": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "18-פח": {
+      "partisan": "No verified campaign-period profile/platform acquired for the withdrawn list.",
+      "neutral": "Approved roster and withdrawal established by YP 5909 and YP 5912; no identity-specific neutral profile acquired."
     }
   }
 }

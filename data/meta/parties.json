@@ -385,7 +385,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k18.json",
-      "sha256": "1960389cb042036aaa4a8743c4f869cecebb261eed345a42e2636a1658068645",
+      "sha256": "8f014955a071800d56cd243e3ff3c4c9e6da2f8dcb64b211eb7b5a2484378059",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k19": {
@@ -4411,7 +4411,8 @@
             "k18",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name (כינוי הרשימה), not a registered party-name claim; YP 5909."
         },
         {
           "date": "2013-01-22",
@@ -7393,7 +7394,8 @@
             "k18",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name (כינוי הרשימה), not a registered party-name claim; YP 5909."
         },
         {
           "date": "2013-01-22",
@@ -9540,7 +9542,7 @@
         {
           "date": "2009-02-10",
           "datePrecision": "day",
-          "nameHe": "חד\"ש החזית הדמוקרטית לשלום ושיוויון )המפלגה הקומוניסטית הישראלית וחוגי ציבור ערבים ויהודים(",
+          "nameHe": "חד\"ש החזית הדמוקרטית לשלום ושיוויון (המפלגה הקומוניסטית הישראלית וחוגי ציבור ערבים ויהודים)",
           "nameEn": "Hadash",
           "sources": [
             "k18",
@@ -11029,7 +11031,8 @@
             "k18",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name (כינוי הרשימה), not a registered party-name claim; YP 5909."
         },
         {
           "date": "2013-01-22",
@@ -11671,7 +11674,8 @@
             "k18",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name (כינוי הרשימה), not a registered party-name claim; YP 5909."
         },
         {
           "date": "2013-01-22",
@@ -13161,7 +13165,8 @@
             "k18",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name (כינוי הרשימה), not a registered party-name claim; YP 5909."
         },
         {
           "date": "2013-01-22",
@@ -23450,6 +23455,38 @@
         "k23",
         "proposal",
         "gesher-distinct-2018"
+      ],
+      "status": "observed-local-dataset",
+      "externalIds": {}
+    },
+    {
+      "id": "vehicle-18-פח",
+      "entityType": "electoral-vehicle",
+      "nameHe": "מהפך בחינוך",
+      "nameEn": null,
+      "names": [
+        {
+          "date": "2009-02-10",
+          "datePrecision": "day",
+          "nameHe": "מהפך בחינוך",
+          "nameEn": null,
+          "sources": [
+            "k18",
+            "proposal"
+          ],
+          "status": "observed-local-dataset"
+        }
+      ],
+      "aliases": [],
+      "activePeriod": {
+        "from": "2009-02-10",
+        "to": "2009-02-10",
+        "datePrecision": "day",
+        "basis": "observed-election-appearances-not-lifetime"
+      },
+      "sources": [
+        "k18",
+        "proposal"
       ],
       "status": "observed-local-dataset",
       "externalIds": {}
@@ -35716,6 +35753,19 @@
       ],
       "status": "observed-local-dataset",
       "locator": "public/data/k26.json#/lists/37",
+      "continuity": "unresolved"
+    },
+    {
+      "electionId": "k18",
+      "listId": "18-פח",
+      "partyId": "vehicle-18-פח",
+      "role": "singleton",
+      "sources": [
+        "k18",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "locator": "public/data/k18.json#/lists/33",
       "continuity": "unresolved"
     }
   ],

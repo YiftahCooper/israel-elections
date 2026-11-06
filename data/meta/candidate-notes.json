@@ -90,6 +90,47 @@
         "YP 7010 p. 4372: סעדי אוסאמה",
         "Knesset OData PersonID 30070 (data/raw/k20/knesset-odata-members.json)"
       ]
+    },
+    {
+      "candidateId": "18-אמת#48",
+      "en": "Resigned on 2009-01-26; retained in the original approved roster.",
+      "he": "התפטרות בתאריך 2009-01-26; נשמר ברשימת המועמדים המקורית.",
+      "sources": [
+        "YP 5912 p. 2254 (data/raw/k18/surplus.pdf)"
+      ]
+    },
+    {
+      "candidateId": "18-ט#12",
+      "en": "Resigned on 2009-01-26; retained in the original approved roster.",
+      "he": "התפטרות בתאריך 2009-01-26; נשמר ברשימת המועמדים המקורית.",
+      "sources": [
+        "YP 5912 p. 2254 (data/raw/k18/surplus.pdf)"
+      ]
+    },
+    {
+      "candidateId": "18-מרצ#12",
+      "en": "Resigned on 2009-01-26; retained in the original approved roster.",
+      "he": "התפטרות בתאריך 2009-01-26; נשמר ברשימת המועמדים המקורית.",
+      "sources": [
+        "YP 5912 p. 2254 (data/raw/k18/surplus.pdf)"
+      ]
+    },
+    {
+      "candidateId": "18-צי#11",
+      "en": "Resigned on 2009-01-28; retained in the original approved roster.",
+      "he": "התפטרות בתאריך 2009-01-28; נשמר ברשימת המועמדים המקורית.",
+      "sources": [
+        "YP 5912 p. 2254 (data/raw/k18/surplus.pdf)"
+      ]
+    },
+    {
+      "candidateId": "18-ל#9",
+      "en": "Approved roster: סאמואלסון מיכלבסקי אנסטסיה; elected-name notice: מיכאלי סאמואלסון אנסטסיה. Original roster spelling retained.",
+      "he": "ברשימה המקורית: סאמואלסון מיכלבסקי אנסטסיה; בהודעת הנבחרים: מיכאלי סאמואלסון אנסטסיה. נשמר הכתיב ברשימה המקורית.",
+      "sources": [
+        "YP 5909 (candidates)",
+        "YP 5917 p. 2403 (results)"
+      ]
     }
   ]
 }
