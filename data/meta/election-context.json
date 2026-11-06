@@ -641,14 +641,14 @@
       "effectiveDate": "2020-03-02",
       "contestType": "knesset",
       "type": "withdrawal",
-      "textEn": "Election-day status: Tzomet did not participate after all its candidates resigned, as stated in the candidate gazette. This is a withdrawal, not a valid list falling below the threshold; the individual resignation dates are not established here.",
-      "textHe": "מעמד ביום הבחירות: צומת לא השתתפה לאחר שכל מועמדיה התפטרו, לפי הודעת המועמדים ברשומות. זו פרישה ולא רשימה כשרה שלא עברה את אחוז החסימה; מועדי ההתפטרות הפרטניים לא אומתו כאן.",
+      "textEn": "Tzomet did not participate after all ten candidates resigned: nine on 19 February 2020 and Avi-Chen Shashua on 20 February (YP 8708, p.4468).",
+      "textHe": "צומת לא השתתפה לאחר התפטרות כל עשרת מועמדיה: תשעה ב־19 בפברואר 2020 ואבי-חן שעשוע ב־20 בפברואר (י״פ 8708, עמ׳ 4468).",
       "source": {
-        "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-8698.pdf",
+        "url": "https://olaw.org.il/yalkut/yalkut-8708.pdf",
         "publisher": "Central Elections Committee / Reshumot",
         "publisherHe": "Central Elections Committee / Reshumot",
         "evidence": "official",
-        "sourceId": "k23-candidates-gazette"
+        "sourceId": "k23-surplus-gazette"
       },
       "listId": "23-זץ"
     },

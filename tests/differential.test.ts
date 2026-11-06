@@ -89,7 +89,11 @@ const EXPECTED: Record<Family, string> = {
   // U6 synthetic artwork: 212 of 520 model cases differ only in the new synthetic field;
   // recursively omitting it exactly reproduces HEAD in every case (allocation/analysis unchanged).
   // merged with the k22 audit fixes (data only); the combined digest is the union of the two reviewed changes.
-  model: 'dffd69f2ba0fd1179b791e5aec0d826b1effe8d1c3fbd93070b5d2b223bdba61',
+  // k23 audit: five gazette name/party-cell corrections and two Hebrew link labels (17 leaves).
+  // Substituting merged HEAD's k23 dataset at scenarioFromDataset reproduces 2694440f…;
+  // all other 25 datasets and the other four digests are unchanged.
+  // merged with the k23 audit fixes: combined digest = union of the separately reviewed changes.
+  model: 'f05c16c1c7a2b2d84029a6353f6507734f808cee87b8e47692a4bf4abebc475c',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

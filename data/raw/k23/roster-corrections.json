@@ -1,0 +1,75 @@
+{
+  "note": "YP 8698 retained candidate PDF: reviewed glyph positions correct parser column/line-boundary errors; no change to the gazette roster or rank. Accessed 2026-11-06.",
+  "corrections": [
+    {
+      "letters": "ודעם",
+      "rank": 23,
+      "before": {
+        "familyHe": "אבו דבאי נערה",
+        "partyHe": "-חד\"ש"
+      },
+      "after": {
+        "familyHe": "אבו דבאי-נערה",
+        "partyHe": "חד\"ש"
+      },
+      "source": "k23-candidates-gazette",
+      "quote": "23 פידא אבו דבאי- חד\"ש; נערה (wrapped family cell)"
+    },
+    {
+      "letters": "אמת",
+      "rank": 17,
+      "before": {
+        "familyHe": "אלמקייס עמוס",
+        "partyHe": "-גשר"
+      },
+      "after": {
+        "familyHe": "אלמקייס-עמוס",
+        "partyHe": "גשר"
+      },
+      "source": "k23-candidates-gazette",
+      "quote": "17 כרמן אלמקייס- גשר; עמוס (wrapped family cell)"
+    },
+    {
+      "letters": "אמת",
+      "rank": 43,
+      "before": {
+        "familyHe": "אלמוג-",
+        "partyHe": "בר מרצ"
+      },
+      "after": {
+        "familyHe": "אלמוג-בר",
+        "partyHe": "מרצ"
+      },
+      "source": "k23-candidates-gazette",
+      "quote": "43 איתי אלמוג-בר מרצ"
+    },
+    {
+      "letters": "אמת",
+      "rank": 78,
+      "before": {
+        "familyHe": "אבידור הופמן",
+        "partyHe": "-העבודה"
+      },
+      "after": {
+        "familyHe": "אבידור-הופמן",
+        "partyHe": "העבודה"
+      },
+      "source": "k23-candidates-gazette",
+      "quote": "78 גלית פסיה אבידור- העבודה; הופמן (wrapped family cell)"
+    },
+    {
+      "letters": "שס",
+      "rank": 86,
+      "before": {
+        "givenHe": "דוד",
+        "familyHe": "-משה אזולאי"
+      },
+      "after": {
+        "givenHe": "דוד-משה",
+        "familyHe": "אזולאי"
+      },
+      "source": "k23-candidates-gazette",
+      "quote": "86 דוד-משה אזולאי"
+    }
+  ]
+}

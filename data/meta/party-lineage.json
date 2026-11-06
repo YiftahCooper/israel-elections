@@ -266,147 +266,147 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k1.json",
-      "sha256": "b14a976b23503fd665236fbd488c44f61edf04823ccff56badc25e91b5c52a90",
+      "sha256": "11ae6547993e3607a659a89e318084f41d0345bc47cd22d1af5525648cf4f230",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k2": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k2.json",
-      "sha256": "a35aeb0bc7749263767031127a6201bd9665832bf6bc8ab3976023c89318589b",
+      "sha256": "3783c82e3ab6288208e95f997185b69764d7edfd5f84a5b610069f4dc8639f03",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k3": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k3.json",
-      "sha256": "1b582dc9a81abda168eff2f3be0b02fcb9d88ebcab4a5569714b02ce15dc9c41",
+      "sha256": "3392fbc308144fdfa875e07a089e8abe392225c3625b59d8bd908c8fb0a2b8ba",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k4": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k4.json",
-      "sha256": "39e8521d2a6c50c808b9fd1bf7298e93101e0e938e79554e581240034d8216a5",
+      "sha256": "df29d0dbe866b9f51b00af619e4babb647043d20a98bf63010acf063ab85c924",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k5": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k5.json",
-      "sha256": "2fc051bfe72bb7e31a5f9225da63a8a8a58f47bcafd79571f951595c11906706",
+      "sha256": "c2d2f084abbcea943f29594dd70815bdf2be2e8133659570a4a6979ef56d3bdb",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k6": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k6.json",
-      "sha256": "750331fe44623aa8110be28421634c622d7ff6a2ff9aeab8086dc4d514c9fee0",
+      "sha256": "ad32bb4902bc523b3b15bff896a87c2c7b949f9724ed0e06fb13b34f07020aae",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k7": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k7.json",
-      "sha256": "721fd2414c967a189c18f246f49f28cf43917b335c46c500bcf617f1e8033ab7",
+      "sha256": "ce3a599c2d26f605523e4eb50058674c556646960028531d1a527347bb470ca5",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k8": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k8.json",
-      "sha256": "203d3d4b5e6d55c8b3a09035e478ce821965c562aa0001548fa3b8691a6fe35e",
+      "sha256": "445fd7f3961667bd2ec84347337b6ca2f529fd5745714f695e5e64e12d60da6d",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k9": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k9.json",
-      "sha256": "3435309ed5ef70b846f4979660a8e907bf3c579ef6a8fed01ff849180cf79dda",
+      "sha256": "5094bf60cffe87363d9b979c3fbad315631690dc5cd0b1ac3d64722d52ad6fd8",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k10": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k10.json",
-      "sha256": "87d0bc1a4ed989f706f4052855d5e8cb8c30c4d562d31f4cf285ce712dcaae8b",
+      "sha256": "ea60c8a9519f147b6ba123b7ae14b0693da535453e2b849d67dc3fb6fe38eb4d",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k11": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k11.json",
-      "sha256": "2b54ce215796bedbf46eb10fa56543969db30ed67ca2df4962ad80f7f58a5423",
+      "sha256": "3822036aa3f24bc7d6b95565f6fd7140d156ecd16964f32007b5d028562b3984",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k12": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k12.json",
-      "sha256": "ff601254033ae24bb99b084fac5253ee7f9be0a08634956c169a047773c901a8",
+      "sha256": "dcb3854c1a3a54ac025e7daa0e0604fb3b8ace440f5fb4818139af6db67e1615",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k13": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k13.json",
-      "sha256": "92643f881b9e43ed4e3e55ddae9558c649c4193f9bfaa9ac91e54a70d70ae9fe",
+      "sha256": "ae0dfff042e9eadf515a5787f1eea5186034dfe1f72afafd32043a336de5e68d",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k14": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k14.json",
-      "sha256": "3938db2f3d61463bf1d99deaa3473657be1fab46f2354adaf8a20adebb58959a",
+      "sha256": "4d53f49c582c546aa8dd8df0180a0a4238f065939f3028791aab42a3f9a37006",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k15": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k15.json",
-      "sha256": "87e7add2a362ad72c7ce6bab9fff8f41a0b00c07ffc32089a6cc04216d2fe9fe",
+      "sha256": "84cfed841ca367e1d6049d6f762e718dc7c1d2bd8ad78f2ea2b7e27cd3edffe1",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k16": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k16.json",
-      "sha256": "d2a7f1e7c85c1d37a04e7fc7fdaa00c31586004e3db1251a3deed3fa3ad200d5",
+      "sha256": "5e9d450ee110d06dbfccdba77d8f652e2e1de7f3e794a107035a55014546c974",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k17": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k17.json",
-      "sha256": "f63ef83e3e208aec18fb69da1590832ee68fc931fcc6083137afeab421220e91",
+      "sha256": "d61fed68d1a10f88c5e0dde7d0cb9da06c48779572fdb015c944eeb5bbd9617a",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k18": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k18.json",
-      "sha256": "1960389cb042036aaa4a8743c4f869cecebb261eed345a42e2636a1658068645",
+      "sha256": "7cafc93de3ca850cfa3d627d16bb649a076b76522985eab4c4dbe1d2b52c9c0f",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k19": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k19.json",
-      "sha256": "e8d534c2aec90e417abc2ee77b04716a85cfc130652a200d23f407cc3ec2866c",
+      "sha256": "6b6373abc2c7a3947cbe000f7b8804848d634a2f5a48383b4bf5b6adbed347b0",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k20": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k20.json",
-      "sha256": "833d0c0fed196204102bea653ca679b791d376ad2cf545bf031317c4533bceac",
+      "sha256": "50f85087b7325dcc109143ad820b91dd6383e7172ad9107f5dd048fad6e3e839",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k21": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k21.json",
-      "sha256": "e5d1dd8eac1e3bab0be09972cb0155674eedff6c5762240c89f792f9fe1f6d73",
+      "sha256": "b8acc325c519567c05212f97e4bab539956dd50a787e9e5bddcd37473c780a8b",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k22": {
@@ -420,28 +420,28 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k23.json",
-      "sha256": "a8ee22f1513cc91e0a394ba722cfb5f15d46c213440a3c2749d8904a4a86511c",
+      "sha256": "cbedec0c5ef7254c6dd485c1e6eb2c91c9638c170601f0589390a3f540533b24",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k24": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k24.json",
-      "sha256": "fe584720b45481441be0f7a52bb2b10a95d768e53fc6fde256c4e95b68a2c48f",
+      "sha256": "773cd0de309fa2d9691034381fe44f16f55e470ab0d7c4901a19b034dc6a0498",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k25": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k25.json",
-      "sha256": "a8b8b667a8e4b6fd9dd104b4dad5cd839b415640efa431cc62c35e6264efc180",
+      "sha256": "92990c84fc94b94878672a894b8ff7ba2aa050b1a2d0253b4f5d5365e2699fc3",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k26": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k26.json",
-      "sha256": "80231de6d9b3a12214496b8ff240a3adbfff1967d5a801b2b905503d38b4d57e",
+      "sha256": "b01461907ae1fe09bf84e8e52fae9025a65bdd4036d33cb6139619da59092e37",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "religious-islamist": {

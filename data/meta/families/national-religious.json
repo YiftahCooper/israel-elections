@@ -2998,7 +2998,7 @@
       "electionId": "k23",
       "electionDate": "2020-03-02",
       "datasetPath": "public/data/k23.json",
-      "datasetSha256": "a8ee22f1513cc91e0a394ba722cfb5f15d46c213440a3c2749d8904a4a86511c",
+      "datasetSha256": "cbedec0c5ef7254c6dd485c1e6eb2c91c9638c170601f0589390a3f540533b24",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
