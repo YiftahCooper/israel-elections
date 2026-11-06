@@ -16,7 +16,8 @@ import type { Scenario } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
 import { csvEscape, download } from '../format.ts';
 import { deleteSaved, dispatch, duplicateCurrent, getState, importScenarioJson, openElection, openImported, openSaved, redo, resetAll, saveCurrent, setState, shareLink, toast, undo, useStore } from '../store.ts';
-import { ChevronDown, Copy, Download, FolderOpen, Link2, Moon, Redo2, RotateCcw, Save, Share2, Sun, Table2, Trash2, Undo2, Upload } from 'lucide-react';
+import { Settings, ChevronDown, Copy, Download, FolderOpen, Link2, Moon, Redo2, RotateCcw, Save, Share2, Sun, Table2, Trash2, Undo2, Upload } from 'lucide-react';
+import { PersonalSettings } from './PersonalSettings.tsx';
 import { Seg } from './ui.tsx';
 import { LEVEL_LABELS } from '../features.ts';
 
@@ -133,6 +134,8 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
         }} />
       </div>
       </>}
+      <button className="tool" aria-haspopup="dialog" title={L('Your settings', 'ההגדרות שלכם')} aria-label={L('Your settings', 'ההגדרות שלכם')} onClick={() => setState({ settingsOpen: true })}><Settings className="icon" aria-hidden /></button>
+      <PersonalSettings />
       <Seg label={L('Language', 'שפה')} value={lang} onChange={(v) => setState({ lang: v })} options={[{ v: 'he', label: 'עב' }, { v: 'en', label: 'EN' }]} />
       <button className="tool" title={theme === 'dark' ? L('Light theme', 'מצב בהיר') : L('Dark theme', 'מצב כהה')} aria-label={theme === 'dark' ? L('Light theme', 'מצב בהיר') : L('Dark theme', 'מצב כהה')} onClick={() => setState({ theme: theme === 'dark' ? 'light' : 'dark' })}>
         {theme === 'dark' ? <Sun className="icon" aria-hidden /> : <Moon className="icon" aria-hidden />}</button>

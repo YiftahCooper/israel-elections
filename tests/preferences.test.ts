@@ -1,6 +1,6 @@
 import { beforeEach, expect, test, vi } from 'vitest';
 import { answerPreference, askPreference, chooseSource, getState, setPreference, setState, withSource } from '../src/app/store.ts';
-import { validAnswers } from '../src/app/preferences.ts';
+import { validItemAnswers, validAnswers } from '../src/app/preferences.ts';
 beforeEach(() => setState({ preferences: {}, preferenceAsk: null, preferenceFor: null }));
 test('storage accepts only supported answers', () => {
   expect(validAnswers({ comparison: 'invalid', voteSource: 'new', surprise: 'yes' })).toEqual({ voteSource: 'new' });
@@ -67,4 +67,37 @@ test('item scope survives visiting another item and returning', () => {
   withSource('list:a', 'A', [], run);
   expect(getState().preferenceAsk).toBeNull();
   expect(run).toHaveBeenLastCalledWith({ kind: 'new' });
+});
+
+test('stored item answers accept only known questions, elections, scopes and values', () => {
+  expect(validItemAnswers({
+    'voteSource:k25:list:a': 'new', 'voteSource:k26:list:a': 'proportional',
+    'voteSource:k27:list:a': 'new', 'voteSource:k1:list:': 'new',
+    'voteSource:k1:list:a': 'invalid', 'comparison::saved': 'official',
+  })).toEqual({ 'voteSource:k25:list:a': 'new', 'voteSource:k26:list:a': 'proportional' });
+});
+test('item answers are isolated per election and stale list targets are ignored', () => {
+  const run = vi.fn();
+  setState({ electionId: 'k25', scenario: null });
+  withSource('list:a', 'A', [], run); answerPreference('new', 'item');
+  setState({ electionId: 'k26' });
+  withSource('list:a', 'A', [], run);
+  expect(getState().preferenceAsk).not.toBeNull();
+  setState({ preferenceAsk: null, electionId: 'k25' });
+  withSource('list:a', 'A', [], run);
+  expect(run).toHaveBeenLastCalledWith({ kind: 'new' });
+  setState({ scenario: { lists: [], blocs: [] } as unknown as NonNullable<ReturnType<typeof getState>['scenario']> });
+  withSource('list:a', 'A', [], run);
+  expect(getState().preferenceAsk).not.toBeNull();
+  setState({ scenario: null, electionId: 'k26' });
+});
+
+test('the unassigned group keeps its remembered source without a named bloc', () => {
+  setState({ scenario: { lists: [], blocs: [] } as unknown as NonNullable<ReturnType<typeof getState>['scenario']> });
+  const run = vi.fn();
+  withSource('bloc:null', 'No bloc', [], run); answerPreference('new', 'item');
+  withSource('bloc:null', 'No bloc', [], run);
+  expect(run).toHaveBeenCalledTimes(2);
+  expect(getState().preferenceAsk).toBeNull();
+  setState({ scenario: null });
 });

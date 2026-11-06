@@ -45,7 +45,9 @@ test('save moves the reference, official setting restores markers, colour surviv
   await expect(panel.locator('.edit-marker')).not.toHaveCount(0);
   await page.getByRole('tab', { name: 'Scenarios', exact: true }).click();
   if (!await page.locator('.scn-options').evaluate(el => el.hasAttribute('open'))) await page.locator('.scn-options summary').click();
+    await page.locator('.scn-options').getByRole('button', { name: 'Your settings…', exact: true }).click();
   await choose(page.getByRole('button', { name: 'Mark differences from', exact: true }), 'official');
+    await page.keyboard.press('Escape');
   await page.getByRole('tab', { name: 'Overview', exact: true }).click();
   expect(await panel.locator('.edit-marker').count()).toBeGreaterThan(2);
   // Workspace writes are debounced; reload only once this scenario is durable.
