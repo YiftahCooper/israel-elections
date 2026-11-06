@@ -11,12 +11,14 @@ describe('k14 — 1996 released gazetted results and elected-prefix rosters', ()
     pairs: [['אמת', 'מרצ'], ['ב', 'ג'], ['הד', 'כן'], ['ו', 'ע'], ['ט', 'ת'], ['מחל', 'שס']],
     rosterSizes: { אמת: 35, ב: 9, ג: 4, הד: 12, ו: 5, ט: 2, כן: 7, מחל: 32, מרצ: 9, ע: 4, שס: 10 },
   });
-  it('retains the full Third Way roster, Namir at registered rank 18, and the correct Likud vote count', () => {
+  it('retains the explicitly partial Third Way roster, Namir at registered rank 18, and the correct Likud vote count', () => {
     expect(buildK14({ log: false })).toHaveLength(1);
     const a = verifyK14({ log: false });
     expect(a.review.lists.find(l => l.letters === 'מחל')!.votes).toBe(767401);
     const thirdWay = a.rosters.lists.find(l => l.letters === 'הד')!;
-    expect(thirdWay).toMatchObject({ complete: true, publishedCount: 12 });
+    expect(thirdWay).toMatchObject({ complete: false, publishedCount: 52 });
+    expect(a.rosters.lists.find(l => l.letters === 'שס')!.publishedCount).toBe(118);
+    expect(a.review.lists.find(l => l.letters === 'זך')).toMatchObject({ withdrawn: true, votes: 0, officialSeats: 0 });
     expect(thirdWay.candidates.at(-1)?.nameHe).toBe('קרלבסקי אברהם');
     expect(a.rosters.lists.find(l => l.letters === 'אמת')!.candidates[17].nameHe).toBe('נמיר אורה');
     expect(a.elected.lists.find(l => l.letters === 'אמת')!.candidateRanks).toEqual([...Array.from({ length: 17 }, (_, i) => i + 1), ...Array.from({ length: 17 }, (_, i) => i + 19)]);

@@ -12,7 +12,7 @@ export interface Review {
   id: ElectionId; reviewedOn: string; resultsSourceId: string; resultsPages: number[];
   gazetteTotals: { valid: number; invalid: number };
   supplementalTotals: { sourceId: string; registered: number; votesCast: number };
-  lists: { letters: string; nameHe: string; votes: number; officialSeats: number }[];
+  lists: { letters: string; nameHe: string; votes: number; officialSeats: number; withdrawn?: boolean }[];
   agreements: { sourceId: string | null; complete: boolean; pages: number[]; pairs: [string, string][] };
   discrepancies: unknown[]; releaseBlockers: string[]; hasLocalities: false; localityNote: string;
 }
@@ -114,11 +114,11 @@ export function historicalDataset({ review, rosters, rawSha256 }: Audit): Electi
       const roster = rosters.lists.find(r => r.letters === l.letters);
       // candidates ranked above the last elected member but absent from the notice's elected names
       const notSeated = notSeatedRanks(elected.lists.find(x => x.letters === l.letters)?.candidateRanks ?? [], (roster?.candidates ?? []).map(c => c.rank));
-      return listRecord(n, i, { letters: l.letters, nameHe: l.nameHe, votes: l.votes,
+      return listRecord(n, i, { letters: l.letters, nameHe: l.nameHe, votes: l.votes, withdrawn: n === 14 && l.withdrawn === true,
         candidates: roster?.candidates.map(c => ({ id: candidateId(id, c.rank), rank: c.rank, nameHe: c.nameHe, ...(notSeated.has(c.rank) ? { notSeated: true } : {}) })) ?? [],
         candidatesSource: roster ? (roster.sourceId ?? rosters.sourceId) : '',
         ...rosterFlags(!roster ? 'unavailable' : roster.complete ? 'complete' : 'truncated', 'explicit'),
-        notesHe: (roster?.candidates ?? []).filter(c => notSeated.has(c.rank)).map(notSeatedNoteHe) }, LIST_KEYS);
+        notesHe: (roster?.candidates ?? []).filter(c => notSeated.has(c.rank)).map(c => n === 14 && l.letters === 'אמת' && c.rank === 18 ? 'נמיר אורה (מקום 18) התפטרה ב־21 במאי 1996 (י״פ 4411 עמ׳ 3398); אינה מופיעה בין הנבחרים והדירוג המקורי נשמר.' : notSeatedNoteHe(c)) }, LIST_KEYS);
     })),
     agreements: agreementRecords(n, review.agreements.pairs, review.agreements.sourceId!),
     blocs: [], officialSeats: officialSeatsOf(n, review.lists.map(l => ({ letters: l.letters, seats: l.officialSeats }))),

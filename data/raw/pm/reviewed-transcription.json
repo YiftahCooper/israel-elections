@@ -1,6 +1,6 @@
 {
   "reviewedAt": "2026-11-04",
-  "method": "Visual review of retained gazettes k14 PDF p.3, k15 PDF p.2, YP4960 PDF p.2 and IDI 1999 PDF p.7; all match the era-specific-rules report. MFA totals inherited from that report; fresh direct retrieval returned HTTP 403. No raw MFA page is claimed.",
+  "method": "Visual review of retained gazettes k14 PDF p.3, k15 PDF p.2, YP4960 PDF p.2 and IDI 1999 PDF p.7; all match the era-specific-rules report. MFA totals inherited from that report; fresh direct retrieval returned HTTP 403. No raw MFA page is claimed. k14 audit 2026-11-06: PM published percentages read from YP 4414 p.3483; invalid/cast corroborated in Torgovnik (2000), p.97 table 1 note f: “The number of voters was 3,121,270. 148,681 votes were not valid”.",
   "report": "docs/research/era-specific-rules.md",
   "contests": [
     {
@@ -18,7 +18,18 @@
             "value": 1501023,
             "source": {
               "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
-              "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+              "publisher": "Central Elections Committee / Official Gazette",
+              "publisherHe": "ועדת הבחירות המרכזית / רשומות",
+              "evidence": "official",
+              "sourceId": "k14-results-gazette"
+            }
+          },
+          "publishedPercent": {
+            "value": 50.49,
+            "source": {
+              "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
+              "publisher": "Central Elections Committee / Official Gazette",
+              "publisherHe": "ועדת הבחירות המרכזית / רשומות",
               "evidence": "official",
               "sourceId": "k14-results-gazette"
             }
@@ -33,7 +44,18 @@
             "value": 1471566,
             "source": {
               "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
-              "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+              "publisher": "Central Elections Committee / Official Gazette",
+              "publisherHe": "ועדת הבחירות המרכזית / רשומות",
+              "evidence": "official",
+              "sourceId": "k14-results-gazette"
+            }
+          },
+          "publishedPercent": {
+            "value": 49.51,
+            "source": {
+              "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
+              "publisher": "Central Elections Committee / Official Gazette",
+              "publisherHe": "ועדת הבחירות המרכזית / רשומות",
               "evidence": "official",
               "sourceId": "k14-results-gazette"
             }
@@ -45,7 +67,8 @@
           "value": 2972589,
           "source": {
             "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
-            "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+            "publisher": "Central Elections Committee / Official Gazette",
+            "publisherHe": "ועדת הבחירות המרכזית / רשומות",
             "evidence": "official",
             "sourceId": "k14-results-gazette"
           }
@@ -53,30 +76,31 @@
         "invalid": {
           "value": 148681,
           "source": {
-            "url": "https://www.gov.il/en/pages/israeli-election-results-may-1996",
-            "publisher": "Ministry of Foreign Affairs",
-            "evidence": "official",
-            "verification": "report-only",
-            "sourceId": "pm-reviewed-transcription"
+            "url": "https://library.fes.de/libalt/journals/swetsfulltext/7116597.pdf",
+            "publisher": "Efraim Torgovnik, Party Politics 6(1), 2000, p.97, table 1 note f",
+            "publisherHe": "אפרים טורגובניק, Party Politics כרך 6(1), עמ׳ 97, הערה f",
+            "evidence": "secondary"
           }
         },
         "cast": {
           "value": 3121270,
           "source": {
-            "url": "https://www.gov.il/en/pages/israeli-election-results-may-1996",
-            "publisher": "Ministry of Foreign Affairs",
-            "evidence": "official",
-            "verification": "report-only",
-            "sourceId": "pm-reviewed-transcription"
+            "url": "https://library.fes.de/libalt/journals/swetsfulltext/7116597.pdf",
+            "publisher": "Efraim Torgovnik, Party Politics 6(1), 2000, p.97, table 1 note f",
+            "publisherHe": "אפרים טורגובניק, Party Politics כרך 6(1), עמ׳ 97, הערה f",
+            "evidence": "secondary"
           }
         }
       },
       "source": {
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
-        "publisher": "Central Elections Committee / Reshumot (gov.il host)",
+        "publisher": "Central Elections Committee / Official Gazette",
+        "publisherHe": "ועדת הבחירות המרכזית / רשומות",
         "evidence": "official",
         "sourceId": "k14-results-gazette"
-      }
+      },
+      "noteEn": "Shares are printed as 50.49% / 49.51% in YP 4414 p.3483; rounding the vote ratios gives 50.50% / 49.50%. A winner needed more than half the valid PM votes. Cast and invalid totals are corroborated by Torgovnik (2000), p.97 note f; the earlier MFA citation was not retrieved.",
+      "noteHe": "בי״פ 4414 עמ׳ 3483 נדפסו 50.49% / 49.51%; עיגול היחס בין הקולות נותן 50.50% / 49.50%. לניצחון נדרשו יותר ממחצית הקולות הכשרים לראש הממשלה. מספר המצביעים והקולות הפסולים אושר אצל טורגובניק (2000), עמ׳ 97 הערה f; מקור משרד החוץ הקודם לא אוחזר."
     },
     {
       "id": "pm1999",

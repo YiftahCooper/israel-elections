@@ -2,6 +2,8 @@
 
 ## 6 November 2026 — data audit
 
+- k14: corrected ballot names, retained withdrawn Moreshet Avot, repaired roster coverage and resignation notes, and displayed the Gazette’s published PM percentages with corroborated ballot totals.
+
 - k24: corrected Demokratit’s withdrawal, retained official final notices, clarified opening membership and polling-station scope, added candidate resignation notes, and corrected overstated source and logo verification claims.
 - k19: retained the formal Gazette total correction, repaired list identity, context and stale research notes, strengthened constituent sourcing and withheld three unproven campaign logos.
 

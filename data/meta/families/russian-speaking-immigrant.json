@@ -383,7 +383,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k14.json",
-      "sha256": "4d53f49c582c546aa8dd8df0180a0a4238f065939f3028791aab42a3f9a37006",
+      "sha256": "d5261fca18ef313f05a3afdbf62b89c09bf9fe6522b5d5d183e13e97f2bbe470",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k15": {
@@ -1274,11 +1274,11 @@
       "electionId": "k14",
       "electionDate": "1996-05-29",
       "datasetPath": "public/data/k14.json",
-      "datasetSha256": "4d53f49c582c546aa8dd8df0180a0a4238f065939f3028791aab42a3f9a37006",
+      "datasetSha256": "d5261fca18ef313f05a3afdbf62b89c09bf9fe6522b5d5d183e13e97f2bbe470",
       "datasetStatus": {
         "stage": "official-final",
-        "noteEn": "Rosters: everyone elected is included and cross-checked; full roster for Third Way; later ranks of other winning lists not transcribed. Zero-seat rosters unavailable. Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. Complete 6-pair agreement notice verified; every published seat reproduced.",
-        "noteHe": "מועמדים: כל הנבחרים נכללו ונבדקו מול הודעת התוצאות; הרשימה המלאה של הדרך השלישית תועתקה; מקומות מאוחרים בשאר הרשימות הזוכות לא תועתקו. רשימות ללא מנדטים אינן מתועתקות. סדר המועמדים הרשום נשמר וההשמטות בהודעת הנבחרים תועדו. אין נתוני יישובים. הודעת ההתקשרויות המלאה (6 זוגות) אומתה וכל המנדטים שוחזרו.",
+        "noteEn": "Rosters: everyone elected is included and cross-checked; no full rosters; Third Way retains 12 of 52 registered candidates; later ranks of winning lists not transcribed. Zero-seat rosters unavailable; registered Moreshet Avot withdrew before polling (21 registered lists, 20 contested). Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. Complete 6-pair agreement notice verified; every published seat reproduced.",
+        "noteHe": "מועמדים: כל הנבחרים נכללו ונבדקו מול הודעת התוצאות; אין רשימות מלאות; בדרך השלישית תועתקו 12 מתוך 52 מועמדים רשומים; מקומות מאוחרים ברשימות הזוכות לא תועתקו. רשימות ללא מנדטים אינן מתועתקות; מורשת-אבות פרשה לפני ההצבעה (21 רשימות רשומות, 20 התמודדו). סדר המועמדים הרשום נשמר וההשמטות בהודעת הנבחרים תועדו. אין נתוני יישובים. הודעת ההתקשרויות המלאה (6 זוגות) אומתה וכל המנדטים שוחזרו.",
         "asOf": "2026-11-03"
       },
       "validVotes": 3052130,
@@ -1297,7 +1297,7 @@
         {
           "listId": "14-כן",
           "letters": "כן",
-          "nameHe": "ישראל בעליה בראשותו של נתן שרנסקי",
+          "nameHe": "ישראל בעלייה בראשותו של נתן שרנסקי",
           "votes": 174994,
           "partyIds": [
             "yisrael-baaliyah"

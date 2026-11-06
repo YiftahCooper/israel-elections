@@ -46,3 +46,13 @@ describe('independent PM ballot totals', () => {
     expect(electionContext.pmContests[2]).toMatchObject({ electionId: 'k15', contestType: 'prime-minister-only' });
   });
 });
+
+// Gazette YP 4414 p.3483 reports shares differently from two-decimal arithmetic rounding.
+it('retains sourced published 1996 PM shares independently of vote-ratio rounding', () => {
+  const c = electionContext.pmContests.find(c => c.id === 'pm1996')!;
+  expect(c.candidates.map(p => p.publishedPercent?.value)).toEqual([50.49, 49.51]);
+  expect(c.candidates.map(p => p.publishedPercent?.source.sourceId)).toEqual(['k14-results-gazette', 'k14-results-gazette']);
+  const copy = structuredClone(electionContext);
+  copy.pmContests[0].candidates[0].publishedPercent!.value = 101;
+  expect(() => validateElectionContext(copy)).toThrow('invalid published percentage');
+});
