@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "electionId": "k16",
   "status": "pilot",
-  "reviewedAt": "2026-11-05",
+  "reviewedAt": "2026-11-06",
   "notes": [
     "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
     "The term window runs from this election to the next Knesset election. Government tenure may extend past that window. Mid-term institutional succession is recorded in formation.events; it is not a new post-election recommendation round.",
@@ -17,8 +17,8 @@
     },
     "knesset-history": {
       "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-sixteenth-knesset-2003-2006",
-      "publisher": "Knesset, history of the 16th Knesset (credited text)",
-      "kind": "official",
+      "publisher": "Knesset-credited history via Jewish Virtual Library (mirror, not official host)",
+      "kind": "secondary",
       "accessed": "2026-11-05",
       "via": "Jewish Virtual Library mirror; original https://main.knesset.gov.il/EN/About/History/pages/knessethistory.aspx?kns=16"
     },
@@ -89,6 +89,24 @@
       "kind": "official",
       "accessed": "2026-11-05",
       "via": "EveryCRSReport reproduction of the CRS report; independently authored retrospective, especially Government and Politics, pp. 6–10."
+    },
+    "government-official": {
+      "url": "https://main.knesset.gov.il/mk/government/pages/governments.aspx?govid=30",
+      "publisher": "Knesset, Government 30 (Hebrew; search-index extract, direct access denied)",
+      "kind": "official",
+      "accessed": "2026-11-06"
+    },
+    "coalition-official": {
+      "url": "https://main.knesset.gov.il/About/Lexicon/pages/unitygovt.aspx",
+      "publisher": "Knesset lexicon (Hebrew; search-index extract)",
+      "kind": "official",
+      "accessed": "2026-11-06"
+    },
+    "dissolution-gazette": {
+      "url": "https://olaw.org.il/yalkut/yalkut-5467.pdf",
+      "publisher": "Reshumot YP 5467, 8 December 2005, p.728 (official document via mirror)",
+      "kind": "official",
+      "accessed": "2026-11-06"
     }
   },
   "results": {
@@ -278,7 +296,7 @@
             "source": "government-research-1"
           }
         ],
-        "resolution": "Use 27 February for the investiture; the newspaper report was published on 28 February. Existing meta scheme is not modified by this overlay."
+        "resolution": "Use official 27 February in both the overlay and first-government scheme; retain the superseded secondary disagreement."
       }
     ]
   },
@@ -374,15 +392,18 @@
     ],
     "endedBy": {
       "type": "early-dissolution",
-      "date": "2005-11-24",
+      "date": "2005-12-08",
       "nextElection": "2006-03-28",
-      "textEn": "The Knesset was dissolved early; the next election was held on 28 March 2006.",
-      "textHe": "הכנסת פוזרה לפני תום כהונתה; הבחירות הבאות נערכו ב־28 במרץ 2006.",
+      "textEn": "The dissolution order dated 27 November 2005 was published on 8 December; the next election was held on 28 March 2006.",
+      "textHe": "צו פיזור הכנסת מ־27 בנובמבר 2005 פורסם ב־8 בדצמבר; הבחירות הבאות נערכו ב־28 במרץ 2006.",
       "cites": [
         {
-          "source": "ipu2006",
-          "quote": "early dissolution on 24 November 2005"
+          "source": "dissolution-gazette",
+          "quote": "אני מצווה על פיזור הכנסת השש עשרה. כ״ה בחשון התשס״ו (27 בנובמבר 2005)"
         }
+      ],
+      "notes": [
+        "Date identifies publication in YP 5467, not immediate termination of the Knesset’s tenure. The IPU’s 24 November date is superseded by the official order."
       ]
     }
   },
@@ -394,9 +415,9 @@
   "gaps": [
     "Certification date and official first-sitting record not retrieved; election date comes from the existing verified result dataset.",
     "Formation timeline is a sourced subset; missing steps must not be inferred from statutory maximum periods.",
-    "First-government coalition membership is reused from the existing first-government scheme, whose party membership evidence includes labelled Hebrew Wikipedia; a complete independent primary coalition agreement cross-check remains pending.",
+    "The official Knesset lexicon confirms the four initial coalition factions; a complete agreement-by-agreement cross-check remains pending.",
     "Recommendation evidence and caveats are inherited from docs/research/pm-recommendations-1977-2006.md; a source quoting the President is not an original presidential record.",
-    "Sharon’s January 2006 incapacity and Olmert’s acting premiership need a direct dated record; IPU’s December 2005 chronology wording is erroneous. NRP and Sharansky ministerial entry on 3 March differs from formation-day support; existing scheme notes are preserved."
+    "IPU’s December 2005 incapacity wording is erroneous; the official Hebrew government record confirms 4 January and 14 April 2006. NRP and Sharansky ministerial entry on 3 March differs from formation-day support."
   ],
   "government": {
     "number": 30,
@@ -408,8 +429,43 @@
       {
         "nameEn": "Ariel Sharon",
         "nameHe": "אריאל שרון",
+        "from": "2003-02-27",
+        "to": "2006-01-04",
+        "notes": [
+          "Active service interval follows the official table; formal tenure ended 14 April 2006 after temporary incapacity."
+        ],
+        "cites": [
+          {
+            "source": "government-official",
+            "quote": "ב-4 בינואר 2006 לקה ראש הממשלה אריאל שרון באירוע מוחי וחדל לתפקד כראש הממשלה. סמכויותיו הועברו לממלא מקומו אהוד אולמרט. בתום מאה ימים לאשפוזו, ב-14 באפריל 2006, הסתיימה כהונתו כראש הממשלה."
+          }
+        ]
+      },
+      {
+        "nameEn": "Ehud Olmert",
+        "nameHe": "אהוד אולמרט",
+        "from": "2006-01-04",
+        "to": "2006-04-14",
+        "role": "acting",
+        "cites": [
+          {
+            "source": "government-official",
+            "quote": "ב-4 בינואר 2006 לקה ראש הממשלה אריאל שרון באירוע מוחי וחדל לתפקד כראש הממשלה. סמכויותיו הועברו לממלא מקומו אהוד אולמרט. בתום מאה ימים לאשפוזו, ב-14 באפריל 2006, הסתיימה כהונתו כראש הממשלה."
+          }
+        ]
+      },
+      {
+        "nameEn": "Ehud Olmert",
+        "nameHe": "אהוד אולמרט",
+        "from": "2006-04-14",
         "to": "2006-05-04",
-        "from": "2003-02-27"
+        "role": "interim",
+        "cites": [
+          {
+            "source": "government-official",
+            "quote": "ב-4 בינואר 2006 לקה ראש הממשלה אריאל שרון באירוע מוחי וחדל לתפקד כראש הממשלה. סמכויותיו הועברו לממלא מקומו אהוד אולמרט. בתום מאה ימים לאשפוזו, ב-14 באפריל 2006, הסתיימה כהונתו כראש הממשלה."
+          }
+        ]
       }
     ],
     "firstGovernmentSchemeRef": "first-government",
@@ -429,7 +485,7 @@
       {
         "letters": "ב",
         "seats": 6,
-        "note": "NRP ministers took office on 2003-03-03 (OData); Hebrew Wikipedia lists the NRP among the coalition factions on the day of formation"
+        "note": "NRP ministers took office on 2003-03-03; the Knesset lexicon includes NRP in the initial coalition."
       },
       {
         "letters": "כן",
@@ -441,12 +497,12 @@
     "coalitionSeatsNote": "Election-list seat envelope, checked against officialSeats; not the confidence-vote tally or a reconstruction of later faction membership.",
     "cites": [
       {
-        "source": "government-research-1",
-        "quote": "שהוקמה לאחר הבחירות לכנסת ה-16 ואושרה בכנסת ב-28 בפברואר 2003"
+        "source": "government-official",
+        "quote": "27.2.2003"
       },
       {
-        "source": "government-research-2",
-        "quote": "סיעות הקואליציה=="
+        "source": "coalition-official",
+        "quote": "בהשתתפות הליכוד, שינוי, המפד״ל והאיחוד הלאומי"
       },
       {
         "source": "government-research-3",
@@ -455,6 +511,32 @@
       {
         "source": "vote2006",
         "quote": "has been sworn in after parliamentary approval"
+      }
+    ],
+    "changes": [
+      {
+        "date": "2006-01-04",
+        "formalStep": true,
+        "textEn": "Olmert assumed the prime minister’s powers during Sharon’s temporary incapacity.",
+        "textHe": "אולמרט קיבל את סמכויות ראש הממשלה עקב נבצרותו הזמנית של שרון.",
+        "cites": [
+          {
+            "source": "government-official",
+            "quote": "ב-4 בינואר 2006 לקה ראש הממשלה אריאל שרון באירוע מוחי וחדל לתפקד כראש הממשלה. סמכויותיו הועברו לממלא מקומו אהוד אולמרט. בתום מאה ימים לאשפוזו, ב-14 באפריל 2006, הסתיימה כהונתו כראש הממשלה."
+          }
+        ]
+      },
+      {
+        "date": "2006-04-14",
+        "formalStep": true,
+        "textEn": "Sharon’s formal tenure ended after 100 days of incapacity; Olmert became interim prime minister.",
+        "textHe": "כהונתו של שרון הסתיימה בתום מאה ימי נבצרות; אולמרט נעשה ראש הממשלה בפועל.",
+        "cites": [
+          {
+            "source": "government-official",
+            "quote": "ב-4 בינואר 2006 לקה ראש הממשלה אריאל שרון באירוע מוחי וחדל לתפקד כראש הממשלה. סמכויותיו הועברו לממלא מקומו אהוד אולמרט. בתום מאה ימים לאשפוזו, ב-14 באפריל 2006, הסתיימה כהונתו כראש הממשלה."
+          }
+        ]
       }
     ]
   }

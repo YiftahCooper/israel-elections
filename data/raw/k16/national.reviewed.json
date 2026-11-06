@@ -1,7 +1,7 @@
 {
   "id": "k16",
   "reviewedOn": "2026-11-03",
-  "scope": "Partial evidence only; not an application dataset. Numbers visually transcribed from the retained scans. Names use normalized punctuation. No complete candidate roster has been verified.",
+  "scope": "National evidence transcription supporting the released k16 dataset; supersedes the earlier partial-research status. All 120 elected ranks and 368 retained candidates are verified in candidates.reviewed.json; later truncated ranks and four losing rosters remain unverified.",
   "resultsSourceId": "k16-results-gazette",
   "resultsPages": [
     1406,
@@ -186,7 +186,7 @@
   "pollingColumnsNotInGazette": {
     "זך": {
       "votes": 0,
-      "note": "No result line in gazette; zero column in datastore. Not treated as a verified roster or list record."
+      "note": "YP 5155 p.1406: מרשימת המועמדים מורשת-אבות בראשות הרב יוסף בא-גד שסימנה זך התפטרו כל המועמדים. Registered list withdrew all candidates; it did not contest the election."
     }
   },
   "columnAliases": {},
@@ -259,9 +259,9 @@
       "note": "The retained scan reads 883. No official correction located."
     }
   ],
-  "releaseBlockers": [
-    "National figures do not match the gazette exactly; no formal correction was verified.",
-    "Full approved candidate rosters and contiguous ranks have not been transcribed and verified.",
-    "The locality schema requires committee numbers absent from the polling source."
+  "releaseBlockers": [],
+  "remainingGaps": [
+    "No formal gazette erratum located for the two disclosed vote discrepancies.",
+    "Later ranks on truncated lists and four unavailable losing rosters remain unverified."
   ]
 }

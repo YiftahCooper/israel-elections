@@ -1,0 +1,25 @@
+{
+  "letters": "זך",
+  "nameHe": "מורשת-אבות בראשות הרב יוסף בא-גד",
+  "withdrawn": true,
+  "votes": 0,
+  "candidatesSource": "k16-candidates-gazette",
+  "candidatesPage": 1196,
+  "candidates": [
+    "בא-גד יוסף",
+    "גרוס שלמה",
+    "בא-גד עמנואל",
+    "בא-גד משה"
+  ],
+  "notesHe": [
+    "בילקוט הפרסומים 5155, עמ׳ 1406: מרשימת המועמדים מורשת-אבות בראשות הרב יוסף בא-גד שסימנה זך התפטרו כל המועמדים."
+  ],
+  "source": {
+    "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset16-results.pdf",
+    "rank": 1,
+    "quote": "מרשימת המועמדים מורשת-אבות בראשות הרב יוסף בא-גד שסימנה זך התפטרו כל המועמדים.",
+    "accessed": "2026-11-06"
+  },
+  "shortEn": "Moreshet Avot",
+  "shortHe": "מורשת אבות"
+}

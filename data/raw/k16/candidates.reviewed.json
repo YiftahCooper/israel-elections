@@ -675,7 +675,7 @@
     },
     {
       "letters": "ו",
-      "publishedCount": 118,
+      "publishedCount": 119,
       "pages": [
         1195
       ],
@@ -700,7 +700,8 @@
       "unresolvedRanks": [
         33,
         46,
-        81
+        81,
+        119
       ],
       "electedCrossCheck": {
         "sourceId": "k16-results-gazette",
@@ -960,7 +961,7 @@
         },
         {
           "rank": 3,
-          "nameHe": "תותחי אברהם",
+          "nameHe": "תורתי אברהם",
           "page": 1196
         },
         {
@@ -3330,7 +3331,7 @@
         },
         {
           "rank": 10,
-          "nameHe": "משקוף ארקדי",
+          "nameHe": "משקוץ ארקדי",
           "page": 1202
         }
       ]
@@ -3696,6 +3697,22 @@
       "candidatePage": 1196,
       "resultsPage": 1407,
       "note": "Re-read at high zoom on 4 November 2026: both official scans print חמי (Hemi Doron, Knesset PersonID 1053)."
+    },
+    {
+      "letters": "ט",
+      "rank": 3,
+      "before": "תותחי אברהם",
+      "after": "תורתי אברהם",
+      "candidatePage": 1196,
+      "note": "Fixer visual re-reading of retained YP 5148 scan, 6 November 2026."
+    },
+    {
+      "letters": "קך",
+      "rank": 10,
+      "before": "משקוף ארקדי",
+      "after": "משקוץ ארקדי",
+      "candidatePage": 1202,
+      "note": "Fixer visual re-reading of retained YP 5148 scan, 6 November 2026."
     }
   ]
 }

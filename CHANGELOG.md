@@ -1,5 +1,9 @@
 # Changelog
 
+## 6 November 2026 — k16 data audit
+
+- Corrected government/succession and dissolution chronology, two candidate names and roster extent; retained withdrawn Moreshet Avot and clarified source and envelope-voter claims.
+
 ## 6 November 2026 — k24 data audit
 
 - Corrected Demokratit’s withdrawal, retained official final notices, clarified opening membership and polling-station scope, added candidate resignation notes, and corrected overstated source and logo verification claims.
