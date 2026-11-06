@@ -39,9 +39,9 @@ test('2022: merge, add voters, drop agreement, push Balad over, find Ra’am’s
   await page.getByRole('tab', { name: 'Turnout', exact: true }).click();
   await choose(page.getByRole('button', { name: 'Voter group', exact: true }), 'manual');
   const enter = async (label: string, value: string) => { const f = page.getByLabel(label, { exact: true }); await f.fill(value); await f.press('Enter'); };
-  await enter('Registered voters', '400000');
-  await enter('Turnout now %', '50');
-  await enter('Invalid %', '0');
+  await enter('Group size', '400000');
+  await enter('Current turnout %', '50');
+  await enter('Invalid ballots %', '0');
   await enter('New turnout %', '100');
   for (const [list, pct] of [["Ra'am", '40'], ["Hadash–Ta'al", '30'], ['Balad', '30']] as const) await page.getByLabel(`${list} %`, { exact: true }).fill(pct);
   await page.getByRole('button', { name: 'Add 200,000 voters', exact: true }).click();
