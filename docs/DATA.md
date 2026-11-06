@@ -339,7 +339,7 @@ locality source. Every gazetted seat is reproduced through the scenario model, w
 threshold 67,470 and quota 27,246. Every roster's final rank and contiguous sequence
 are checked; Kadima #1 is לבני ציפי צפורה, alongside the other main-list leaders.
 The original approved roster snapshot is retained; later resignations are not applied.
-The approved פח roster has no final votes and is not included among participating lists.
+The approved פח roster is retained with zero votes and withdrawn status: all 12 candidates resigned (YP 5912 p. 2254). Locality zero columns are appended after the original source fingerprint is validated.
 
 Decision 0040 documents the national exception: YP 5917 prints 49,684 invalid votes,
 but the CEC allocation memorandum and polling table agree on 43,097. National totals

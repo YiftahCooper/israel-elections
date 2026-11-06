@@ -39,5 +39,5 @@ export function applyBios(ds: ElectionDataset): ElectionDataset {
     if (/en\.wikipedia/.test(JSON.stringify(b))) throw new Error(`data/meta/bios/${ds.id}.json: English Wikipedia is never linked`);
     return b.knesset || b.hewiki || b.party ? b : null;
   };
-  return { ...ds, lists: ds.lists.map((l) => ({ ...l, candidates: l.candidates.map((c) => { const e = bios[c.id]; const b = e ? bioOf(e) : null; const en = e ? nameEnOf(e) : undefined; return b || en ? { ...c, ...(en ? { nameEn: en } : {}), ...(b ? { bio: b } : {}) } : c; }) })) };
+  return { ...ds, lists: ds.lists.map((l) => ({ ...l, candidates: l.candidates.map((c) => { const e = bios[c.id]; const b = e ? bioOf(e) : null; const en = e ? nameEnOf(e) : undefined; const displayEn = ds.id === 'k18' ? en?.replaceAll('`', "'").replace(/\s+/g, ' ').trim() : en; return b || displayEn ? { ...c, ...(displayEn ? { nameEn: displayEn } : {}), ...(b ? { bio: b } : {}) } : c; }) })) };
 }

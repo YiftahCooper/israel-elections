@@ -1,5 +1,7 @@
 # Changelog
 
+- 6 November 2026 — k18 audit: retain withdrawn Mahapach BeHinuch; correct formation-day coalition, Meretz affiliation, names and dated source claims.
+
 ## 6 November 2026 — k24 data audit
 
 - Corrected Demokratit’s withdrawal, retained official final notices, clarified opening membership and polling-station scope, added candidate resignation notes, and corrected overstated source and logo verification claims.

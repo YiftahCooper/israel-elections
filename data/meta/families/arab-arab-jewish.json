@@ -411,7 +411,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k18.json",
-      "sha256": "688913a8a2519db55f92797eecf3dce7e440ebed0bac637ca21757ed12a31594",
+      "sha256": "8f014955a071800d56cd243e3ff3c4c9e6da2f8dcb64b211eb7b5a2484378059",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k19": {
@@ -3240,7 +3240,7 @@
       "electionId": "k18",
       "electionDate": "2009-02-10",
       "datasetPath": "public/data/k18.json",
-      "datasetSha256": "688913a8a2519db55f92797eecf3dce7e440ebed0bac637ca21757ed12a31594",
+      "datasetSha256": "8f014955a071800d56cd243e3ff3c4c9e6da2f8dcb64b211eb7b5a2484378059",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2009-02-17",
@@ -3290,7 +3290,7 @@
         {
           "listId": "18-ו",
           "letters": "ו",
-          "nameHe": "חד\"ש החזית הדמוקרטית לשלום ושיוויון )המפלגה הקומוניסטית הישראלית וחוגי ציבור ערבים ויהודים(",
+          "nameHe": "חד\"ש החזית הדמוקרטית לשלום ושיוויון (המפלגה הקומוניסטית הישראלית וחוגי ציבור ערבים ויהודים)",
           "votes": 112130,
           "partyIds": [
             "hadash"

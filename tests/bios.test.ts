@@ -55,7 +55,9 @@ describe('official English names of Knesset members', () => {
         if (m?.basis?.startsWith('not elected; ')) expect(c.nameEn, c.id).toBeUndefined();
         if (!c.nameEn) continue;
         n++;
-        expect(c.nameEn, c.id).toBe(bySite.get(m!.knesset!.siteId!));
+        const sourceName = bySite.get(m!.knesset!.siteId!);
+        // k18 audit: retain spelling, normalize source backticks and repeated whitespace.
+        expect(c.nameEn, c.id).toBe(e.id === 'k18' ? sourceName?.replaceAll('`', "'").replace(/\s+/g, ' ').trim() : sourceName);
         expect(c.nameEn, c.id).not.toMatch(/[֐-׿]/);
       }
     }
