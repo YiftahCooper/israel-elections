@@ -2,11 +2,12 @@
   "schemaVersion": 1,
   "electionId": "k8",
   "status": "pilot",
-  "reviewedAt": "2026-11-05",
+  "reviewedAt": "2026-11-06",
   "notes": [
     "Research draft; not wired into the application. Official session records anchor all government approvals. Reused recommendation and first-coalition evidence retains the earlier research limitations.",
     "The government card describes the first cabinet. Each replacement cabinet has a full-session confidence step and a numbered government.changes entry; available replacement coalition snapshots are attached to that entry.",
-    "New PDF quotations preserve the extracted text order (including OCR errors); whitespace is collapsed. Full-session sources identify the sitting; source excerpts are recoverable from the public PDF. Existing coalition OData quotes are labelled project tabulations in the source text, not purported verbatim minister lists."
+    "New PDF quotations preserve the extracted text order (including OCR errors); whitespace is collapsed. Full-session sources identify the sitting; source excerpts are recoverable from the public PDF. Existing coalition OData quotes are labelled project tabulations in the source text, not purported verbatim minister lists.",
+    "Disengagement signing quotations added on 6 November are reading-order transcriptions from sitting 21 p.3 and sitting 53 p.1, with ellipsis and normalized punctuation; older PDF-extraction quotations remain explicitly labelled as extracted text."
   ],
   "sources": {
     "plenum-gov16": {
@@ -26,7 +27,7 @@
       "publisher": "Jewish Telegraphic Agency (JTA) Daily News Bulletin archive",
       "kind": "secondary",
       "accessed": "2026-11-05",
-      "note": "Bulletin dated 1974-01-17 (first day of consultations)."
+      "note": "Archive heading 17 January 1974; original bulletin p.3 dateline explicitly 16 January. Rechecked 6 November 2026."
     },
     "recommendations-2": {
       "url": "https://www.jta.org/archive/mrs-meir-accepts-task-of-forming-new-govt-efforts-so-far-deadlocked",
@@ -55,10 +56,10 @@
       "via": "Jewish Virtual Library mirror; original https://main.knesset.gov.il/EN/About/History/pages/knessethistory.aspx?kns=8"
     },
     "idi-next": {
-      "url": "https://en.idi.org.il/israeli-elections-and-parties/elections/1977/",
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1977/",
       "publisher": "Israel Democracy Institute, election chronology",
       "kind": "academic",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-06"
     },
     "ipu-next": {
       "url": "https://data.ipu.org/election-summary/PDF/ISRAEL_1977_E.PDF",
@@ -97,6 +98,18 @@
       "publisher": "Ministry of Defense, IDF and Defense Establishment Archives, Operation Entebbe / Jonathan",
       "kind": "official",
       "accessed": "2026-11-05"
+    },
+    "idi-1973": {
+      "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1973/",
+      "publisher": "Israel Democracy Institute, בחירות 1973",
+      "kind": "academic",
+      "accessed": "2026-11-06"
+    },
+    "recommendations-bulletin": {
+      "url": "http://pdfs.jta.org/1974/1974-01-17_012.pdf",
+      "publisher": "JTA Daily News Bulletin, 17 January 1974, p.3 (dateline 16 January)",
+      "kind": "secondary",
+      "accessed": "2026-11-06"
     }
   },
   "results": {
@@ -201,11 +214,16 @@
         {
           "source": "recommendations-2",
           "quote": "Katzir charged Mrs. Meir with the task of forming a new government after two weeks of consultations with the representatives of the various parties represented in the new Knesset."
+        },
+        {
+          "source": "recommendations-bulletin",
+          "quote": "JERUSALEM, Jan. 16 (JTA)--President Ephraim Katzir met separately today with delegations from the Labor Party and Likud in the first official moves toward the formation of a new government."
         }
       ],
       "notes": [
         "Reuses docs/research/pm-recommendations-1949-1973.md; consultation conditions are not personal recommendations. Unknown does not mean no recommendation.",
-        "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved."
+        "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved.",
+        "Consultation day confirmed as 16 January by the original JTA bulletin (17 January 1974, p.3), whose dateline is JERUSALEM, Jan. 16 and says met separately today. This is reported contemporary press evidence, not an official consultation transcript."
       ],
       "endDate": "1974-01-30",
       "blocSchemeRef": "pm-recommendations"
@@ -227,6 +245,10 @@
           {
             "source": "recommendations-2",
             "quote": "Katzir charged Mrs. Meir with the task of forming a new government after two weeks of consultations with the representatives of the various parties represented in the new Knesset."
+          },
+          {
+            "source": "recommendations-bulletin",
+            "quote": "JERUSALEM, Jan. 16 (JTA)--President Ephraim Katzir met separately today with delegations from the Labor Party and Likud in the first official moves toward the formation of a new government."
           }
         ],
         "endDate": "1974-01-30"
@@ -348,6 +370,10 @@
       {
         "source": "coalition-2",
         "quote": "קואליציה: המערך, מפד\"ל, ליברלים עצמאיים, קידמה ופיתוח, רשימה ערבית{{ש}} לבדואים וכפריים | אופוזיציה: הליכוד, חזית דתית תורתית, רק\"ח, רצ, מוקד"
+      },
+      {
+        "source": "idi-1973",
+        "quote": "ועם רשימות המיעוטים מנתה 68 חברי כנסת"
       }
     ],
     "changes": [
@@ -431,11 +457,19 @@
           {
             "source": "mfa-timeline",
             "quote": "Disengagement agreement is signed with Syria"
+          },
+          {
+            "source": "plenum-gov16",
+            "quote": "חתמה על הסכם … הפרדת הכוחות עם מצרים ב־18 בינואר 1974"
+          },
+          {
+            "source": "plenum-gov17",
+            "quote": "ביום ו׳, י׳ בסיון תשל״ד — 31 במאי 1974, נחתם בז׳נבה הסכם הפרדת הכוחות בין סוריה לישראל"
           }
         ],
         "confidence": "high",
         "notes": [
-          "A combined year-level row; separate signing days are not asserted. Both agreements fall in the eighth Knesset, across the Meir and Rabin cabinets."
+          "Both agreements were signed under Golda Meir: Egypt on 18 January 1974 (before the eighth Knesset opened on 21 January), Syria on 31 May 1974 (before Rabin’s government took office on 3 June). The row remains year-level."
         ]
       },
       {
@@ -548,8 +582,8 @@
         "id": "nrp-departure",
         "date": "1976-12",
         "category": "governance",
-        "textEn": "The National Religious Party ministers left Rabin’s government.",
-        "textHe": "שרי המפד״ל עזבו את ממשלת רבין.",
+        "textEn": "Rabin removed the National Religious Party ministers from his government following abstentions in a no-confidence vote.",
+        "textHe": "רבין הוציא את שרי המפד״ל מממשלתו בעקבות הימנעות בהצבעת אי־אמון.",
         "cites": [
           {
             "source": "term-history",
@@ -558,6 +592,10 @@
           {
             "source": "ipu-next",
             "quote": "excluded the three National Religious Party (NRP) members"
+          },
+          {
+            "source": "idi-next",
+            "quote": "פיטוריהם של שרי המפד\"ל בעקבות הימנעותם בהצבעת אי-אמון"
           }
         ],
         "confidence": "high"
@@ -594,7 +632,7 @@
     "Reaction statements are not collected.",
     "Mid-term consultation positions, mandate deadlines and extensions are incomplete unless an explicit step below records them.",
     "The closing entry uses the IPU account; the original election-date/dissolution law is not transcribed.",
-    "Replacement-coalition snapshots are partial: government 14’s faction splits and current seat counts require a separate audit. Other replacement snapshots use election-list seats with stated support-list limitations.",
+    "Replacement-coalition snapshots cover only the formation of governments 16 and 17, using election-list seats with stated support-list limitations. Later coalition changes within government 17 are not transcribed.",
     "Meir’s 1974 extensions, Rabin’s April assignment and May extensions, and the January 1977 uncompleted formation round still need full formal session evidence. Their absence here does not imply they did not occur.",
     "Presentation dates can precede approval dates; confidence steps use the full protocol. The exact assignment days not transcribed here remain unknown."
   ]

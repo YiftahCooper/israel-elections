@@ -203,7 +203,7 @@ export const META: Record<string, Meta> = {
   "8-יא": {"he": "שיתוף ואחוה", "en": null, "color": "#78808a", "order": 106},
   "8-כך": {"he": "כך", "en": "Kach", "color": "#d7a91f", "order": 107},
   "8-לע": {"he": "ליברלים עצמאיים", "en": "Independent Liberals", "color": "#917332", "order": 19},
-  "8-מס": {"he": "התנועה לשוויון חברתי", "en": null, "color": "#78808a", "order": 109},
+  "8-מס": {"he": "תנועה לשויון חברתי", "en": null, "color": "#78808a", "order": 109},
   "8-סנ": {"he": "תנועה עממית", "en": null, "color": "#78808a", "order": 110},
   "8-עא": {"he": "ערבית לבדווים וכפריים", "en": "Arab List for Bedouin and Villagers", "color": "#3aa66a", "order": 25},
   "8-ענ": {"he": "תנועה לאחוה", "en": null, "color": "#78808a", "order": 112},

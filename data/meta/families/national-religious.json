@@ -341,7 +341,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k8.json",
-      "sha256": "445fd7f3961667bd2ec84347337b6ca2f529fd5745714f695e5e64e12d60da6d",
+      "sha256": "3e66a5a31ca113c1f5bb7364140f966636d4cfdd2420e550192b2be4fd74df55",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k9": {
@@ -1160,7 +1160,7 @@
       "electionId": "k8",
       "electionDate": "1973-12-31",
       "datasetPath": "public/data/k8.json",
-      "datasetSha256": "6179a547a17530f483e0aff6c1564b8418e00684d360f8edb3373460fcc706a5",
+      "datasetSha256": "7fb8ba1b13468d2c62c107c9606bbf58a181ecc7e233c07b1e0ffeb4d56edd63",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "National results; every published seat reproduced with the six official list connections from the Central Elections Committee’s calculation record (Form 30 appendix; three had no effect). All 120 elected names transcribed from the official candidate notice (YP 1954) and cross-checked against the results notice (YP 1979) and the committee record. Later ranks truncated (Ratz complete); nonwinning rosters untranscribed. Three ballot letters and four list names corrected from the notices. Full amendment chain unverified; no localities.",

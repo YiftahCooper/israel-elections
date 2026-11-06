@@ -315,7 +315,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k8.json",
-      "sha256": "203d3d4b5e6d55c8b3a09035e478ce821965c562aa0001548fa3b8691a6fe35e",
+      "sha256": "3e66a5a31ca113c1f5bb7364140f966636d4cfdd2420e550192b2be4fd74df55",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k9": {
@@ -5369,13 +5369,13 @@
     {
       "id": "vehicle-8-מס",
       "entityType": "electoral-vehicle",
-      "nameHe": "התנועה לשוויון חברתי",
+      "nameHe": "תנועה לשויון חברתי",
       "nameEn": null,
       "names": [
         {
           "date": "1973-12-31",
           "datePrecision": "day",
-          "nameHe": "התנועה לשוויון חברתי",
+          "nameHe": "תנועה לשויון חברתי",
           "nameEn": null,
           "sources": [
             "k8",
@@ -36042,6 +36042,7 @@
   "limitations": [
     "Election-scoped electoral vehicles cover every list, including unresolved continuity. They must not be treated as established distinct legal parties.",
     "Active periods bound observed appearances only. English null means no verified local English name; no invented translation.",
-    "No external crosswalk imported. Canonical singleton continuity inherits the cited local research; a complete legal-shell audit remains pending."
+    "No external crosswalk imported. Canonical singleton continuity inherits the cited local research; a complete legal-shell audit remains pending.",
+    "k8 (1973-12-31): names observed in the dataset for nrp, rakah and kach are ballot-list names from YP 1979 p.608, not independently verified registered party names. In particular the independent-candidate and League parentheticals describe the electoral lists."
   ]
 }

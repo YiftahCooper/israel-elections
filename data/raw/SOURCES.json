@@ -1112,8 +1112,8 @@
     "description": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-04",
-    "bytes": 5673,
-    "sha256": "04719f6ac790900500690171919098fd3206d0cf4ebc2b6dc975139de6262cc0"
+    "bytes": 5979,
+    "sha256": "cbb6ffcc0d386340b16f32cc751c257e83872542732b64f93153a62f6382d6bb"
   },
   {
     "id": "k9-results-gazette",
@@ -3018,7 +3018,7 @@
   {
     "id": "k8-candidates-reviewed",
     "file": "k8/candidates.reviewed.json",
-    "url": "project:data/raw/k8/rosters.reviewed.json",
+    "url": "project:data/raw/k8/candidates.reviewed.json",
     "publisher": "Project reviewed derivative (not an official publication)",
     "official": false,
     "description": "Official winning-list leading ranks from YP1954 (printed pp.88–97) for all 10 seat-winning lists (Ratz complete 8/8), with name-by-name elected cross-check against YP1979 section 4 (pp.609–610), printed page references and 8 explicit spelling variants. No notSeated cases. Uses corrected letters (לע).",

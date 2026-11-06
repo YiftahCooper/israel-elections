@@ -231,6 +231,17 @@
       "sources": [
         "Knesset OData, KNS_PersonToPosition, PositionID 43/61, KnessetNum 14; data/raw/k14/knesset-odata-members.json"
       ]
+    },
+    {
+      "candidateId": "8-חל טעם#38",
+      "displayNameHe": "שכטרמן אברהם",
+      "en": "The candidate notice misprints his name as שחטרמן אברהם; the results notice prints שכטרמן אברהם (Abraham Shechterman). The registered spelling and candidate ID are preserved.",
+      "he": "בהודעת המועמדים נדפס שמו בטעות „שחטרמן אברהם”; בהודעת התוצאות נדפס „שכטרמן אברהם”. הכתיב הרשום ומזהה המועמד נשמרים.",
+      "sources": [
+        "YP 1954 p.91: 38. שחטרמן אברהם (data/raw/research/k08-candidates.pdf)",
+        "YP 1979 p.609 §4(ה): 38. שכטרמן אברהם (data/raw/research/k08-results.pdf)",
+        "Knesset OData KNS_Person 2645: שכטרמן אברהם (data/raw/k8/knesset-odata-members.json)"
+      ]
     }
   ]
 }
