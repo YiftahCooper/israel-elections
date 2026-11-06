@@ -1,5 +1,7 @@
 # Changelog
 
+- K19 audit: retain the formal Gazette total correction, repair list identity/context and stale research notes, strengthen constituent sourcing, and withhold three unproven campaign logos.
+
 ## 5 November 2026 — release review
 
 - Compare opens unchanged results against the previous election, including when saved scenarios exist; explicit comparison choices stay selected, edits use the usual official result/reference, and the earliest election keeps its chooser.

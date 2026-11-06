@@ -1109,8 +1109,8 @@
       "effectiveDate": "2026-11-04",
       "contestType": "knesset",
       "type": "correction",
-      "textEn": "Source comparison reviewed 4 November 2026 (not a historical correction date): The gazette prints 3,792,472 valid votes, but its list counts sum to 3,792,742, matching the final CEC total. Final versus gazetted list totals differ by +109 Likud–Yisrael Beiteinu, −107 Kadima and −2 Hayisraelim; seats are unchanged. The cause and formal correction history remain unresolved.",
-      "textHe": "השוואת מקורות שנבדקה ב־4 בנובמבר 2026 (לא מועד תיקון היסטורי): ברשומות מודפסים 3,792,472 קולות כשרים אך סכום הרשימות הוא 3,792,742, כסך הסופי של הוועדה. ההפרשים בין התוצאה הסופית לרשומות הם 109+ לליכוד ביתנו, 107− לקדימה ו־2− לישראלים; המנדטים זהים. הסיבה והליך התיקון הרשמי טרם הובררו.",
+      "textEn": "Source comparison reviewed 4 November 2026 (not a historical correction date): The gazette prints 3,792,472 valid votes, but its list counts sum to 3,792,742, matching the final CEC total. Final versus gazetted list totals differ by +109 Likud–Yisrael Beiteinu, −107 Kadima and −2 Hayisraelim; seats are unchanged. YP 6546 (12 February 2013, p.2874) formally corrected only the grand total to 3,792,742. The three list differences remain unresolved.",
+      "textHe": "השוואת מקורות שנבדקה ב־4 בנובמבר 2026 (לא מועד תיקון היסטורי): ברשומות מודפסים 3,792,472 קולות כשרים אך סכום הרשימות הוא 3,792,742, כסך הסופי של הוועדה. ההפרשים בין התוצאה הסופית לרשומות הם 109+ לליכוד ביתנו, 107− לקדימה ו־2− לישראלים; המנדטים זהים. בי\"פ 6546 (12 בפברואר 2013, עמ׳ 2874) תוקן רשמית רק הסך ל־3,792,742. שלושת ההפרשים ברמת הרשימות טרם הובררו.",
       "source": {
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset19-results.pdf",
         "publisher": "Central Elections Committee / Reshumot",
@@ -1125,6 +1125,13 @@
           "publisherHe": "Central Elections Committee",
           "evidence": "official",
           "sourceId": "k19-final-results-capture"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-6546.pdf",
+          "publisher": "Reshumot — YP 6546 p.2874",
+          "publisherHe": "רשומות — י״פ 6546 עמ׳ 2874",
+          "evidence": "official",
+          "sourceId": "k19-results-correction"
         }
       ],
       "listId": "19-מחל"
@@ -1211,8 +1218,8 @@
       "effectiveDate": "2026-11-04",
       "contestType": "knesset",
       "type": "correction",
-      "textEn": "Source comparison reviewed 4 November 2026 (not a historical correction date): The gazette prints 3,792,472 valid votes, but its list counts sum to 3,792,742, matching the final CEC total. Final versus gazetted list totals differ by +109 Likud–Yisrael Beiteinu, −107 Kadima and −2 Hayisraelim; seats are unchanged. The cause and formal correction history remain unresolved.",
-      "textHe": "השוואת מקורות שנבדקה ב־4 בנובמבר 2026 (לא מועד תיקון היסטורי): ברשומות מודפסים 3,792,472 קולות כשרים אך סכום הרשימות הוא 3,792,742, כסך הסופי של הוועדה. ההפרשים בין התוצאה הסופית לרשומות הם 109+ לליכוד ביתנו, 107− לקדימה ו־2− לישראלים; המנדטים זהים. הסיבה והליך התיקון הרשמי טרם הובררו.",
+      "textEn": "Source comparison reviewed 4 November 2026 (not a historical correction date): The gazette prints 3,792,472 valid votes, but its list counts sum to 3,792,742, matching the final CEC total. Final versus gazetted list totals differ by +109 Likud–Yisrael Beiteinu, −107 Kadima and −2 Hayisraelim; seats are unchanged. YP 6546 (12 February 2013, p.2874) formally corrected only the grand total to 3,792,742. The three list differences remain unresolved.",
+      "textHe": "השוואת מקורות שנבדקה ב־4 בנובמבר 2026 (לא מועד תיקון היסטורי): ברשומות מודפסים 3,792,472 קולות כשרים אך סכום הרשימות הוא 3,792,742, כסך הסופי של הוועדה. ההפרשים בין התוצאה הסופית לרשומות הם 109+ לליכוד ביתנו, 107− לקדימה ו־2− לישראלים; המנדטים זהים. בי\"פ 6546 (12 בפברואר 2013, עמ׳ 2874) תוקן רשמית רק הסך ל־3,792,742. שלושת ההפרשים ברמת הרשימות טרם הובררו.",
       "source": {
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset19-results.pdf",
         "publisher": "Central Elections Committee / Reshumot",
@@ -1227,18 +1234,25 @@
           "publisherHe": "Central Elections Committee",
           "evidence": "official",
           "sourceId": "k19-final-results-capture"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-6546.pdf",
+          "publisher": "Reshumot — YP 6546 p.2874",
+          "publisherHe": "רשומות — י״פ 6546 עמ׳ 2874",
+          "evidence": "official",
+          "sourceId": "k19-results-correction"
         }
       ],
       "listId": "19-כן"
     },
     {
-      "id": "result-source-comparison-k19-הי",
+      "id": "result-source-comparison-k19-יק",
       "electionId": "k19",
       "effectiveDate": "2026-11-04",
       "contestType": "knesset",
       "type": "correction",
-      "textEn": "Source comparison reviewed 4 November 2026 (not a historical correction date): The gazette prints 3,792,472 valid votes, but its list counts sum to 3,792,742, matching the final CEC total. Final versus gazetted list totals differ by +109 Likud–Yisrael Beiteinu, −107 Kadima and −2 Hayisraelim; seats are unchanged. The cause and formal correction history remain unresolved.",
-      "textHe": "השוואת מקורות שנבדקה ב־4 בנובמבר 2026 (לא מועד תיקון היסטורי): ברשומות מודפסים 3,792,472 קולות כשרים אך סכום הרשימות הוא 3,792,742, כסך הסופי של הוועדה. ההפרשים בין התוצאה הסופית לרשומות הם 109+ לליכוד ביתנו, 107− לקדימה ו־2− לישראלים; המנדטים זהים. הסיבה והליך התיקון הרשמי טרם הובררו.",
+      "textEn": "Source comparison reviewed 4 November 2026 (not a historical correction date): The gazette prints 3,792,472 valid votes, but its list counts sum to 3,792,742, matching the final CEC total. Final versus gazetted list totals differ by +109 Likud–Yisrael Beiteinu, −107 Kadima and −2 Hayisraelim; seats are unchanged. YP 6546 (12 February 2013, p.2874) formally corrected only the grand total to 3,792,742. The three list differences remain unresolved.",
+      "textHe": "השוואת מקורות שנבדקה ב־4 בנובמבר 2026 (לא מועד תיקון היסטורי): ברשומות מודפסים 3,792,472 קולות כשרים אך סכום הרשימות הוא 3,792,742, כסך הסופי של הוועדה. ההפרשים בין התוצאה הסופית לרשומות הם 109+ לליכוד ביתנו, 107− לקדימה ו־2− לישראלים; המנדטים זהים. בי\"פ 6546 (12 בפברואר 2013, עמ׳ 2874) תוקן רשמית רק הסך ל־3,792,742. שלושת ההפרשים ברמת הרשימות טרם הובררו.",
       "source": {
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset19-results.pdf",
         "publisher": "Central Elections Committee / Reshumot",
@@ -1253,9 +1267,16 @@
           "publisherHe": "Central Elections Committee",
           "evidence": "official",
           "sourceId": "k19-final-results-capture"
+        },
+        {
+          "url": "https://olaw.org.il/yalkut/yalkut-6546.pdf",
+          "publisher": "Reshumot — YP 6546 p.2874",
+          "publisherHe": "רשומות — י״פ 6546 עמ׳ 2874",
+          "evidence": "official",
+          "sourceId": "k19-results-correction"
         }
       ],
-      "listId": "19-הי"
+      "listId": "19-יק"
     },
     {
       "id": "candidate-eligibility-k26-די",

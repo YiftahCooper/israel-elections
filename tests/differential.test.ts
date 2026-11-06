@@ -82,7 +82,10 @@ const EXPECTED: Record<Family, string> = {
   // 212 removed list/party logo refs and 23 builtAt changes; other four digests unchanged.
   // merged with logos run 4 (year-only print evidence; only 6 logo fields and builtAt differ; path walk 5 Nov).
   // merged with logos run 4b (k18–k26 same-election logos; only 17 logo fields and builtAt differ; path walk 5 Nov).
-  model: '2694440f0600e00473d166da8e25e28d3a37d73b717ebe4aa10d93778a23d7f1',
+  // K19 audit: only status notes, corrected Balad name/note, three withheld logos, sourceIds/rawSha256
+  // and builtAt changed (recursive field diff); HEAD k19 with current src reproduces 2694440f….
+  // All four non-model digests unchanged. See docs/research/data-audit/k19-resolution.md.
+  model: '2f01010a17d73e3dce793db03baa5b0523af88e98693c16c8651ad88f7fb4600',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

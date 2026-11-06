@@ -470,7 +470,7 @@
       "sourceType": "community metadata; not independent of the credited source",
       "accessed": "2026-11-04",
       "accessMethod": "MediaWiki API imageinfo/extmetadata and revisions",
-      "inspectionDepth": "description, date, credit and licence wikitext inspected; original artefact not independently inspected unless noted",
+      "inspectionDepth": "description, date, credit and licence wikitext inspected; original artefact not independently inspected unless noted; 6 November 2026 audit: Withheld: Commons image history dates the hosted revision to 13 March 2019 (Clean up), following the 26 January 2019 update. The 2012 original-upload date does not date these bytes to the 2013 campaign.",
       "date": "27 November 2012 (original upload date)",
       "description": "Logo of Israeli political party Hatnuah.",
       "credit": "יצירה עצמית על סמך תמונה רשמית. original svg file of the logo can be found here",
@@ -482,7 +482,7 @@
       "licenceUrl": "",
       "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/8/83/Hatnuah_logo.svg",
       "evidenceFamily": "commons-file-39065631",
-      "selected": true
+      "selected": false
     },
     {
       "id": "commons-90489719",
@@ -1201,7 +1201,7 @@
       "sourceType": "community metadata; not independent of the credited source",
       "accessed": "2026-11-04",
       "accessMethod": "MediaWiki API imageinfo/extmetadata and revisions",
-      "inspectionDepth": "description, date, credit and licence wikitext inspected; original artefact not independently inspected unless noted",
+      "inspectionDepth": "description, date, credit and licence wikitext inspected; original artefact not independently inspected unless noted; 6 November 2026 audit: Withheld: Commons gives an uploader-supplied December 2012 date, but its file history starts in July 2016 and the hosted revision is from August 2022. No independently inspected 2013 usage supports these bytes.",
       "date": "2012-12",
       "description": "Logo of Meretz.",
       "credit": "http://www.meretz.org.il/",
@@ -1213,7 +1213,7 @@
       "licenceUrl": "",
       "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/6/67/Meretz_Logo.svg",
       "evidenceFamily": "commons-file-98922399",
-      "selected": true
+      "selected": false
     },
     {
       "id": "commons-82622689",
@@ -3533,7 +3533,7 @@
       "sourceType": "official party campaign website",
       "accessed": "2026-11-05",
       "accessMethod": "Direct HTTPS Wayback id_ and CDX; israel-elections-explorer/0.1 (+https://github.com/YiftahCooper/israel-elections); serial requests at least 3 seconds apart",
-      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; no pre-election CDX digest available",
+      "inspectionDepth": "Archived HTML header reference inspected; original artwork rendered locally and inspected; no pre-election CDX digest available; 6 November 2026 audit: Withheld: the retained 10 January 2013 party homepage references the asset path, but the retained asset bytes date to 27 January, five days after polling. No pre-poll digest proves these exact bytes were served during the campaign.",
       "date": "2013-01-10",
       "description": "Inspected official Hadash homepage capture 20130110074848 references http://hadash.org.il/wp-content/themes/hadash-mamp/images/logo-tag.png as its header logo. No pre-election CDX row exists for this asset; the earliest capture, 20130127072156 (five days after polling), is used. Its artwork carries the campaign ballot letter ו and the 2013 slogan, so it is the campaign design; medium confidence only. Cropped to box [154, 0, 337, 189] of the 337x189 original (crop only, removing the adjacent slogan text; the emblem and its ballot-letter tile are kept); no redraw or recolouring. Hadash ran alone as list ו in 2013. Separate evidence for this election; no assignment by analogy.",
       "archiveUrl": "https://web.archive.org/web/20130110074848/http://hadash.org.il/",
@@ -3542,7 +3542,7 @@
       "licence": "Copyright retained by rights holder",
       "licenceTemplates": [],
       "evidenceFamily": "hadash-official-site",
-      "selected": true,
+      "selected": false,
       "rawEvidence": {
         "page": "logo-k19-hadash-page",
         "asset": "logo-k19-hadash-asset"

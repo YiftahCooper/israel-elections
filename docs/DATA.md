@@ -366,7 +366,12 @@ occluded repeated Labor template objects; one corrupt PDF-text rank (`551`) is
 explicitly decoded as the visibly printed `117` (Balad, PDF p. 7). It fails on
 unattached name fragments, conflicting duplicates, missing names or rank gaps. Names
 follow the original candidate gazette; later resignations are not applied. Approved
-zero-vote rosters זה and פך are absent from the final participating-list table.
+zero-vote rosters זה and פך are absent from the final participating-list table. The CEC
+[20 January notice](https://www.gov.il/apps/elections/elections-knesset-19/heb/cec/NoticeList49f6.html?NoticeType=ann)
+confirms עתיד אחד (זה) withdrew; its
+[17 January notice](https://www.gov.il/apps/elections/elections-knesset-19/heb/cec/NoticeListc4dc.html?NoticeId=242)
+confirms נצח (פך) withdrew. These approved rosters remain recoverable from YP 6524;
+they are not represented as participating lists or as zero-vote electoral failures.
 
 All 1,184 independent locality rows agree exactly with their polling sums. Code 875
 (external envelopes) is absent from that file: its row is derived from 228 polling
@@ -377,13 +382,12 @@ registered. Regional committee is unavailable (0); sponsors are empty/null and n
 blocs are inferred. Dataset status labels the derived envelope row through this
 source decision and the outstanding discrepancy; all rosters use official evidence.
 
-Decision 0041 distinguishes the 270 grand-total inconsistency from the net-zero
-three-list differences. No earlier station snapshot or official explanation was
-located. The CEC decisions book names several disqualified/investigated stations,
-but does not connect them to these differences; attributing the deltas to them would
-be speculation. Thus **k19 remains `available: false`**, despite passing numerical,
-roster and agreement checks. Its status and affected lists' notes disclose the gap.
-No UI code or schema change was made.
+Decision 0041 distinguishes the printed grand-total inconsistency from the net-zero
+three-list differences. YP 6546 (12 February 2013), p.2874 formally corrects the
+total to 3,792,742; the retained correction does not amend list votes. Decision
+0042 released k19 (`available: true`) on the disclosed final CEC figures. The
+remaining rank-1 list-vote conflict is recorded in the k19 audit resolution.
+The decisions book does not establish station origins for the three differences.
 
 ### K18/K19 reproducibility without committed polling JSON
 
