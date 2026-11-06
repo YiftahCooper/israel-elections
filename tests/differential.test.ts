@@ -1,3 +1,7 @@
+// 6 Nov 2026 k22 audit: reviewed scalar diff changes only status, logical Hebrew
+// punctuation, CEC link titles, three withdrawal flags and distinct modern Gesher
+// IDs (also k23). Withdrawal flags affect hypothetical corpus allocations; model
+// snapshots also carry roster/party fields. No engine implementation changed.
 // 5 Nov 2026: re-recorded allocation/analysis/model for refreshed official k26 CSVs only.
 // Engine/model implementation unchanged; qualifying votes 5,384,948, threshold 184,972,
 // quota 44,874; all list seat counts unchanged. Validation/rules digests unchanged.
@@ -39,7 +43,7 @@ const EXPECTED: Record<Family, string> = {
   // stage, so no initial seats) the 1949 initial-seat conditions no longer apply. Before, those cases allocated 0 seats
   // or deactivated every surplus agreement; 298 allocation and 19 analysis cases differ, all of that kind. The old
   // engine on the same tree reproduces 8260bc46… and af4237ef…; model, validation and rules digests are unchanged.
-  allocation: '5ef9e5f92adbc9c3a25da6553ed8f36a10a1bac990f27c53dd2fe4fc5619c6f6',
+  allocation: 'ff0c004fc63da9fa7e65194960ef2960e24634f933996e9c01623633564d1a68',
   analysis: 'b682af4570daf5cd7967e77afda56c8a9bcb2b5de4850f4d8ebc1652228269e0',
   // Model digest re-recorded for the 1973 party ranks, then for candidate biography links (Candidate.bio): with
   // the build timestamps held fixed and bio not carried, the new code gives the previous digest. Then for three
@@ -82,7 +86,7 @@ const EXPECTED: Record<Family, string> = {
   // 212 removed list/party logo refs and 23 builtAt changes; other four digests unchanged.
   // merged with logos run 4 (year-only print evidence; only 6 logo fields and builtAt differ; path walk 5 Nov).
   // merged with logos run 4b (k18–k26 same-election logos; only 17 logo fields and builtAt differ; path walk 5 Nov).
-  model: '2694440f0600e00473d166da8e25e28d3a37d73b717ebe4aa10d93778a23d7f1',
+  model: '185d21d1e542fbce28ab6fc4cd6f9755a444a4006fb83edd2c92e929487a8127',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

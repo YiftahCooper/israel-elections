@@ -52,6 +52,19 @@ describe('k22: official final result and release gates', () => {
     expect(ds.lists.find(l=>l.letters==="מחל")!.candidates[118].nameHe).toBe("נסים משה בנימין");
     expect(ds.lists.find(l=>l.letters==="פה")!.candidates[119].nameHe).toBe("סומק רוני");
   });
+  it('distinguishes the three withdrawn lists from contestants while retaining their approved rosters', () => {
+    expect(ds.lists.filter(l=>l.withdrawn).map(l=>l.letters).sort()).toEqual(['זן','כ','נץ'].sort());
+    for (const l of ds.lists.filter(l=>l.withdrawn)) {
+      expect(l.votes).toBe(0);
+      expect(l.candidates.length).toBeGreaterThan(0);
+    }
+  });
+  it('restores logical Hebrew parentheses from the printed gazette', () => {
+    expect(ds.lists.find(l=>l.letters==='פה')!.candidates[23].nameHe).toBe('תמנו פנינה (פנחש)');
+    expect(ds.lists.find(l=>l.letters==='אמת')!.candidates[73].familyHe).toBe('ביטי (שלוח)');
+    expect(ds.lists.find(l=>l.letters==='מרצ')!.candidates[22].familyHe).toBe('כהן (כהנא)');
+    expect(ds.lists.some(l=>(l.sponsorsHe ?? '').includes(')להלן'))).toBe(false);
+  });
   it('records every pair in the complete statutory agreement notice', () => {
     expect(ds.agreements.map(a=>a.members.map(id=>id.slice(3)))).toEqual(pairs);
   });

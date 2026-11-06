@@ -413,14 +413,14 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k22.json",
-      "sha256": "06f12173958383755fc85fe4d156e61957f1c27f10f14ed78071269c416dc4e9",
+      "sha256": "00420e39b10fbfabf960ed95dce157ea72b18e5d506d7c5432620ae985bc3e10",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k23": {
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k23.json",
-      "sha256": "a7dacef1f60c2e29c2851a53e1ec02b20aab54b9bb6a777a1f2f9e9e01f2f7cf",
+      "sha256": "a8ee22f1513cc91e0a394ba722cfb5f15d46c213440a3c2749d8904a4a86511c",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k24": {
@@ -461,6 +461,14 @@
         "status": 200,
         "sha256": "4cd05f42cc6aed5f388953ff1b923891a114d54746423a1fedccabb8dcadc793"
       }
+    },
+    "gesher-distinct-2018": {
+      "url": "https://www.idi.org.il/media/20997/המפלגות-בישראל-2021-1992.pdf",
+      "publisher": "Israel Democracy Institute",
+      "kind": "secondary",
+      "accessed": "2026-11-06",
+      "support": "Printed p.534 (PDF p.536): new party registered December 2018; reused the old name, not organisational continuity.",
+      "quote": "המפלגה החדשה (עם השם הישן) כדין אצל רשם המפלגות."
     }
   },
   "edges": [
@@ -2566,7 +2574,7 @@
       "id": "partners-22-אמת",
       "from": [
         "labor",
-        "gesher"
+        "gesher-2019"
       ],
       "to": [
         "vehicle-22-אמת"
@@ -2714,7 +2722,7 @@
       "id": "partners-23-אמת",
       "from": [
         "labor",
-        "gesher",
+        "gesher-2019",
         "meretz"
       ],
       "to": [
