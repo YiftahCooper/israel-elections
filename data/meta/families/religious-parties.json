@@ -453,7 +453,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k24.json",
-      "sha256": "773cd0de309fa2d9691034381fe44f16f55e470ab0d7c4901a19b034dc6a0498",
+      "sha256": "1a24c9449f00b3b4b9d77011c34fc88efdd08138c4d8333d0129a13c76f680c3",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k25": {
@@ -5024,12 +5024,12 @@
       "electionId": "k24",
       "electionDate": "2021-03-23",
       "datasetPath": "public/data/k24.json",
-      "datasetSha256": "773cd0de309fa2d9691034381fe44f16f55e470ab0d7c4901a19b034dc6a0498",
+      "datasetSha256": "1a24c9449f00b3b4b9d77011c34fc88efdd08138c4d8333d0129a13c76f680c3",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
-        "noteEn": "Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. No default blocs assigned.",
-        "noteHe": "תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות. ללא שיוך לגושים."
+        "noteEn": "Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. 38 lists contested; Demokratit withdrew (CEC protocol, 30 March 2021, p.4). The polling-station figure counts 12,926 result rows, not all physical stations; CEC history reports 13,685 stations with an unreconciled scope difference.",
+        "noteHe": "תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות. 38 רשימות התמודדו; דמוקרטית פרשה (זכרון דברים של ועדת הבחירות, 30 במרס 2021, עמ׳ 4). נתון הקלפיות מונה 12,926 רשומות תוצאות ולא את כלל הקלפיות הפיזיות; בסקירת ועדת הבחירות נמנו 13,685 קלפיות והבדל ההיקף טרם יושב."
       },
       "validVotes": 4410052,
       "voteSourceIds": [

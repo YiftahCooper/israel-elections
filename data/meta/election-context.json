@@ -471,15 +471,15 @@
       "effectiveDate": "2021-03-23",
       "contestType": "knesset",
       "type": "disqualification",
-      "textEn": "Election-day eligibility: Ibtisam Mara’ana (candidate). The Supreme Court reversed the CEC exclusion; participation was allowed. Reported by IDI (secondary); this date is the election-day status, not the judgment date.",
-      "textHe": "מעמד ביום הבחירות: אבתיסאם מראענה (מועמדת). בית המשפט העליון ביטל את פסילת ועדת הבחירות וההשתתפות הותרה. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
+      "textEn": "Election-day eligibility: Ibtisam Mara’ana was allowed to participate. The approved-list gazette cites the Supreme Court decision in election-approval proceeding 1156/21 (28 February 2021). This date is the election-day status, not the judgment date.",
+      "textHe": "מעמד ביום הבחירות: אבתיסאם מראענה הורשתה להשתתף. הודעת הרשימות המאושרות מפנה להחלטת בית המשפט העליון בא״ב 1156/21 מ־28 בפברואר 2021. התאריך הוא יום הבחירות ולא מועד פסק הדין.",
       "source": {
-        "url": "https://www.idi.org.il/articles/65951",
-        "publisher": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
-        "publisherHe": "Israel Democracy Institute / המכון הישראלי לדמוקרטיה",
-        "evidence": "secondary",
-        "sourceId": "context-idi-disqualifications"
-      },
+  "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-9476.pdf",
+  "publisher": "CEC / Reshumot YP 9476 p.4248, case 1156/21 (28 February 2021)",
+  "publisherHe": "ועדת הבחירות / רשומות",
+  "evidence": "official",
+  "sourceId": "k24-candidates-gazette"
+},
       "listId": "24-אמת"
     },
     {
@@ -800,8 +800,8 @@
       "effectiveDate": "2021-04-06",
       "contestType": "knesset",
       "type": "membership-snapshot",
-      "textEn": "Opening-day snapshot: Alon Davidi was registered at #3; Idit Silman (#8) served at opening. No retained CEC notice names the elected members for this election. Registered rank, declaration and opening membership are different snapshots; list seats do not change. The records do not establish the exact replacement date.",
-      "textHe": "תמונת מצב ביום הפתיחה: אלון דוידי נרשם במקום 3; עידית סילמן (8) כיהנה בפתיחה. אין במקורות השמורים הודעת ועדה עם שמות הנבחרים בבחירות אלה. הדירוג הרשום, הכרזת הבחירה והכהונה בפתיחה הם מצבים נפרדים; מספר המנדטים של הרשימה אינו משתנה. הרשומות אינן קובעות את מועד ההחלפה המדויק.",
+      "textEn": "Alon Davidi (#3) was declared elected in YP 9511 (31 March 2021, §4). He announced on 5 April that he would remain mayor of Sderot and not take the seat (Davar). Idit Silman (#8) served from the opening on 6 April (Knesset OData). Registered rank, declaration and opening membership are distinct; list seats do not change.",
+      "textHe": "אלון דוידי (3) הוכרז כנבחר בילקוט הפרסומים 9511 (31 במרס 2021, סעיף 4). ב־5 באפריל הודיע שיישאר ראש עיריית שדרות ולא ייכנס לכנסת (דבר). עידית סילמן (8) כיהנה מהפתיחה ב־6 באפריל (נתוני הכנסת). הדירוג הרשום, הכרזת הבחירה והכהונה בפתיחה הם מצבים נפרדים; מספר המנדטים אינו משתנה.",
       "source": {
         "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2024%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
         "publisher": "Knesset (official OData API, ParliamentInfo.svc)",
@@ -811,14 +811,28 @@
       },
       "listId": "24-ב",
       "relatedSources": [
-        {
-          "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-9476.pdf",
-          "publisher": "Central Elections Committee / Reshumot",
-          "publisherHe": "Central Elections Committee / Reshumot",
-          "evidence": "official",
-          "sourceId": "k24-candidates-gazette"
-        }
-      ]
+  {
+    "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/%D7%99%D7%9C%D7%A7%D7%95%D7%98%20%D7%94%D7%A4%D7%A8%D7%A1%D7%95%D7%9E%D7%99%D7%9D-9476.pdf",
+    "publisher": "Central Elections Committee / Reshumot",
+    "publisherHe": "Central Elections Committee / Reshumot",
+    "evidence": "official",
+    "sourceId": "k24-candidates-gazette"
+  },
+  {
+    "url": "https://olaw.org.il/yalkut/yalkut-9511.pdf",
+    "publisher": "CEC / Reshumot YP 9511 §4",
+    "publisherHe": "ועדת הבחירות / רשומות",
+    "evidence": "official",
+    "sourceId": "k24-results-gazette"
+  },
+  {
+    "url": "https://www.davar1.co.il/294946/",
+    "publisher": "Davar, 5 April 2021",
+    "publisherHe": "דבר",
+    "evidence": "secondary",
+  "sourceId": "k24-davidi-resignation-press"
+  }
+]
     },
     {
       "id": "registered-not-declared-k12-מחל",

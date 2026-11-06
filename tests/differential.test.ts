@@ -38,12 +38,17 @@ import { applyAction } from '../src/model/actions.ts';
 import { electionRuleSetId, historicalRules, scenarioFromDataset, toEngineInput, toRuleSet, validateScenario } from '../src/model/scenario.ts';
 import { FAMILIES, families, type Family, type Modules } from './differential.cases.ts';
 
+// k24 audit (6 Nov): recursive field diff confirms only k24 status/source metadata,
+// project-grouping labels, four candidate notes, withdrawn Demokratit and New Hope logo removal change.
+// Allocation changes because the cancelled zero-vote list is excluded; model also carries display fields.
+// All 25 other datasets and engine/model source are unchanged; analysis/validation/rules retain their digests.
 const EXPECTED: Record<Family, string> = {
   // Allocation and analysis re-recorded 2026-11-04 for one reviewed engine fix: under a pure divisor method (no quota
   // stage, so no initial seats) the 1949 initial-seat conditions no longer apply. Before, those cases allocated 0 seats
   // or deactivated every surplus agreement; 298 allocation and 19 analysis cases differ, all of that kind. The old
   // engine on the same tree reproduces 8260bc46… and af4237ef…; model, validation and rules digests are unchanged.
-  allocation: 'ff0c004fc63da9fa7e65194960ef2960e24634f933996e9c01623633564d1a68',
+  // merged with the k24 audit fixes: combined digest = union of the separately reviewed changes.
+  allocation: 'bf733b00ce93274543bae3cb31fc44765be0a3c707342820eabeb90a2c8ca8e1',
   analysis: 'b682af4570daf5cd7967e77afda56c8a9bcb2b5de4850f4d8ebc1652228269e0',
   // Model digest re-recorded for the 1973 party ranks, then for candidate biography links (Candidate.bio): with
   // the build timestamps held fixed and bio not carried, the new code gives the previous digest. Then for three
@@ -93,7 +98,8 @@ const EXPECTED: Record<Family, string> = {
   // Substituting merged HEAD's k23 dataset at scenarioFromDataset reproduces 2694440f…;
   // all other 25 datasets and the other four digests are unchanged.
   // merged with the k23 audit fixes: combined digest = union of the separately reviewed changes.
-  model: 'f05c16c1c7a2b2d84029a6353f6507734f808cee87b8e47692a4bf4abebc475c',
+  // merged with the k24 audit fixes: combined digest = union of the separately reviewed changes.
+  model: 'e1f6016a3f41d14e60bf67409ad7aa0f215c31c5acd925b3378470f211668c16',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

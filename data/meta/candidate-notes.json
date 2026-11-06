@@ -6,37 +6,79 @@
       "displayNameHe": "שפייזר אליהו",
       "en": "The candidate notice misprints his name as שפירא אליהו; the results notice prints שפייזר אליהו (Eliyahu Speiser).",
       "he": "בהודעת המועמדים נדפס שמו בטעות „שפירא אליהו”; בהודעת התוצאות נדפס „שפייזר אליהו”.",
-      "sources": ["YP 3073 p. 2826 (candidates)", "YP 3081 p. 3007 (results)"]
+      "sources": [
+        "YP 3073 p. 2826 (candidates)",
+        "YP 3081 p. 3007 (results)"
+      ]
     },
     {
       "candidateId": "3-פ#2",
       "en": "Named as elected in the results notice, but replaced before the Knesset's first sitting by Idov Cohen (#6).",
       "he": "נבחר לפי הודעת התוצאות, אך הוחלף לפני הישיבה הראשונה של הכנסת על ידי אידוב כהן (מס׳ 6).",
-      "sources": ["results notice p. 1139", "Knesset OData opening membership (data/raw/k3/knesset-odata-members.json)"]
+      "sources": [
+        "results notice p. 1139",
+        "Knesset OData opening membership (data/raw/k3/knesset-odata-members.json)"
+      ]
     },
     {
       "candidateId": "16-כן#1",
       "en": "Named as elected in the results notice, but withdrew; Marina Solodkin (#3) took the seat at the Knesset's first sitting.",
       "he": "נבחר לפי הודעת התוצאות, אך פרש; מרינה סולודקין (מס׳ 3) כיהנה במקומו מהישיבה הראשונה של הכנסת.",
-      "sources": ["decision 0053", "Knesset OData opening membership (data/raw/k16/knesset-odata-members.json)"]
+      "sources": [
+        "decision 0053",
+        "Knesset OData opening membership (data/raw/k16/knesset-odata-members.json)"
+      ]
     },
     {
       "candidateId": "20-ל#4",
       "en": "Named as elected in the results notice, but replaced before the Knesset's first sitting by Robert Ilatov (#7).",
       "he": "נבחר לפי הודעת התוצאות, אך הוחלף לפני הישיבה הראשונה של הכנסת על ידי רוברט אילטוב (מס׳ 7).",
-      "sources": ["YP 7010 p. 4372", "Knesset OData opening membership (data/raw/k20/knesset-odata-members.json)"]
+      "sources": [
+        "YP 7010 p. 4372",
+        "Knesset OData opening membership (data/raw/k20/knesset-odata-members.json)"
+      ]
     },
     {
       "candidateId": "23-פה#13",
       "en": "Did not take up the seat: Idan Roll (#34) sat from the Knesset's first sitting (Knesset records).",
       "he": "לא נכנסה לכנסת: עידן רול (מס׳ 34) כיהן מהישיבה הראשונה (רישומי הכנסת).",
-      "sources": ["Knesset OData opening membership (data/raw/k23/knesset-odata-members.json)"]
+      "sources": [
+        "Knesset OData opening membership (data/raw/k23/knesset-odata-members.json)"
+      ]
     },
     {
       "candidateId": "24-ב#3",
-      "en": "Did not take up the seat: Idit Silman (#8) sat from the Knesset's first sitting (Knesset records).",
-      "he": "לא נכנס לכנסת: עידית סילמן (מס׳ 8) כיהנה מהישיבה הראשונה (רישומי הכנסת).",
-      "sources": ["Knesset OData opening membership (data/raw/k24/knesset-odata-members.json)"]
+      "en": "Declared elected in YP 9511 §4; announced on 5 April 2021 that he would not take the seat. Idit Silman (#8) sat from the first sitting on 6 April.",
+      "he": "הוכרז כנבחר בילקוט הפרסומים 9511 סעיף 4; ב־5 באפריל 2021 הודיע שלא ייכנס לכנסת. עידית סילמן (8) כיהנה מהישיבה הראשונה ב־6 באפריל.",
+      "sources": [
+        "Knesset OData opening membership (data/raw/k24/knesset-odata-members.json)",
+        "https://olaw.org.il/yalkut/yalkut-9511.pdf",
+        "https://www.davar1.co.il/294946/"
+      ]
+    },
+    {
+      "candidateId": "24-צכ#15",
+      "en": "Resigned from the candidate list on 2021-03-03, before polling day; the registered roster is preserved.",
+      "he": "התפטר מרשימת המועמדים ב־2021-03-03, לפני יום הבחירות; הרשימה הרשומה נשמרת.",
+      "sources": [
+        "YP 9478 p.4284; data/raw/k24/surplus.pdf; https://olaw.org.il/yalkut/yalkut-9478.pdf"
+      ]
+    },
+    {
+      "candidateId": "24-זץ#2",
+      "en": "Resigned from the candidate list on 2021-03-10, before polling day; the registered roster is preserved.",
+      "he": "התפטר מרשימת המועמדים ב־2021-03-10, לפני יום הבחירות; הרשימה הרשומה נשמרת.",
+      "sources": [
+        "YP 9478 p.4284; data/raw/k24/surplus.pdf; https://olaw.org.il/yalkut/yalkut-9478.pdf"
+      ]
+    },
+    {
+      "candidateId": "24-ת#48",
+      "en": "Resigned from the candidate list on 2021-03-10, before polling day; the registered roster is preserved.",
+      "he": "התפטר מרשימת המועמדים ב־2021-03-10, לפני יום הבחירות; הרשימה הרשומה נשמרת.",
+      "sources": [
+        "YP 9478 p.4284; data/raw/k24/surplus.pdf; https://olaw.org.il/yalkut/yalkut-9478.pdf"
+      ]
     }
   ]
 }

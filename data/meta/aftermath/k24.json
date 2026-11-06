@@ -16,11 +16,12 @@
       "accessed": "2026-11-05"
     },
     "knesset-news-2022-06-30": {
-      "url": "https://main.knesset.gov.il/News/PressReleases/Pages/press30062022D.aspx",
+      "url": "https://main.knesset.gov.il/News/PressReleases/pages/press30062022b.aspx",
       "publisher": "Knesset News",
       "publisherHe": "חדשות הכנסת",
       "kind": "official",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-05",
+      "accessNote": "Replacement official URL independently located by auditor; fixer received location-denial page on 6 November 2026. Dissolution also corroborated by the retained law report and contemporary press."
     },
     "reshumot-sh-2933": {
       "url": "https://fs.knesset.gov.il/24/law/24_lsr_611801.pdf",
@@ -162,17 +163,53 @@
       "kind": "academic",
       "accessed": "2026-11-05"
     },
-    "ipf-election-timeline": {
-      "url": "https://israelpolicyforum.org/wp-content/uploads/2022/09/The-Elections-Era-Timeline-2018-2022.pdf",
-      "publisher": "Israel Policy Forum, The Elections Era 2018–2022, p.2",
-      "kind": "secondary",
-      "accessed": "2026-11-05"
-    },
     "ejpr-2022-yearbook": {
       "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/271F195CECC2ECC092F9D69AA96CC54F/S2047884400703685a.pdf/israel-political-developments-and-data-in-2022-the-return-of-netanyahu-all-right-wing-government.pdf",
       "publisher": "European Journal of Political Research Political Data Yearbook 62 (2023), Yosi Ganel, Israel: Political Developments and Data in 2022, pp.249,251",
       "kind": "academic",
       "accessed": "2026-11-05"
+    },
+    "globes-joint-letter-2021-05-05": {
+      "url": "https://www.globes.co.il/news/article.aspx?did=1001369956",
+      "title": "Joint List letter to President, 5 May 2021",
+      "accessed": "2026-11-06",
+      "kind": "secondary"
+    },
+    "inn-president-2021-04-06": {
+      "url": "https://www.inn.co.il/news/472940",
+      "title": "President Rivlin statement reproduced in Hebrew, 6 April 2021",
+      "accessed": "2026-11-06",
+      "kind": "secondary"
+    },
+    "zman-2022-04-06": {
+      "url": "https://www.zman.co.il/302851/",
+      "title": "Contemporaneous report of Silman departure",
+      "accessed": "2026-11-06",
+      "kind": "secondary"
+    },
+    "ynet-term-2022": {
+      "url": "https://www.ynet.co.il/news/article/s1jfqs0y9",
+      "title": "Chronology of the 36th government",
+      "accessed": "2026-11-06",
+      "kind": "secondary"
+    },
+    "calcalist-2022-10-27": {
+      "url": "https://www.calcalist.co.il/local_news/article/by0uwtwes",
+      "title": "Separate signing of maritime agreement, 27 October 2022",
+      "accessed": "2026-11-06",
+      "kind": "secondary"
+    },
+    "k24-cec-protocol": {
+      "url": "https://www.emess.co.il/wp-content/uploads/2021/03/%D7%96%D7%9B%D7%A8%D7%95%D7%9F-%D7%93%D7%91%D7%A8%D7%99%D7%9D-24.pdf",
+      "title": "CEC statutory determination, 30 March 2021; retained data/raw/k24/protocol.pdf",
+      "kind": "official",
+      "accessed": "2026-11-06"
+    },
+    "k24-results-gazette": {
+      "url": "https://olaw.org.il/yalkut/yalkut-9511.pdf",
+      "title": "YP 9511, 31 March 2021, pp.4620–4629; retained data/raw/k24/results.pdf",
+      "kind": "official",
+      "accessed": "2026-11-06"
     }
   },
   "results": {
@@ -311,6 +348,10 @@
         {
           "source": "globes-2021-04-06",
           "quote": "Yamina recommended its own party leader Naftali Bennett and Gideon Sa'ar's New Hope and the two Arab parties did not recommend anybody."
+        },
+        {
+          "source": "inn-president-2021-04-06",
+          "quote": "52 ממליצים ביקשו ממני להטיל את התפקיד על חבר הכנסת בנימין נתניהו"
         }
       ],
       "notes": [
@@ -445,11 +486,15 @@
         {
           "source": "hewiki-mandate",
           "quote": "לפיד - 56, בנט - 7 ... פירוט: ליאיר לפיד - יש עתיד 17, כחול לבן 8, העבודה 7, ישראל ביתנו 7, תקווה חדשה 6, מרצ 6 וחמישה מחברי הרשימה המשותפת. לבנט - ימינה 7."
+        },
+        {
+          "source": "globes-joint-letter-2021-05-05",
+          "quote": "חד״ש ותע״ל תמכו בהחלטה זו ואילו בל״ד התנגדה"
         }
       ],
       "notes": [
         "Not a full new consultation round: the President described updated positions conveyed to him after the first mandate lapsed.",
-        "The one Joint List MK who did not recommend Lapid is not named in the retrieved sources (gap). Ra'am (4) is counted as no recommendation per the President's description of a letter, not a named nominee."
+        "The five Joint List recommendations came from Hadash and Taal; Balad opposed the decision (Joint List letter quoted by Globes). Balad held one seat, Sami Abu Shehadeh. Raam (4) made no recommendation."
       ]
     }
   ],
@@ -658,7 +703,7 @@
     "start": "2021-06-13",
     "end": "2022-12-29",
     "inclusionRule": "interim-2src",
-    "inclusionRuleNote": "No retrospective chronology of 2021–22 by the Knesset, ISA or an encyclopaedia was retrieved. Interim rule: at least two independent sources, at least one official, each reporting the event at the time. Replace with the chronology rule when one is available.",
+    "inclusionRuleNote": "No retrospective chronology of 2021–22 by the Knesset, ISA or an encyclopaedia was retrieved. Interim rule: at least two independent sources, at least one official, each reporting the event at the time. Replace with the chronology rule when one is available. Audit correction: majority-lost-2022 and lebanon-maritime-2022 are explicit exceptions to the official-contemporary-source requirement: their event dates are corroborated by independent reporting, but no readable official contemporary departure/signing record was recovered. The 12 October government statement concerns tabling the agreement, not the 27 October signing. Advocacy organisations are excluded as chronology evidence.",
     "events": [
       {
         "id": "budget-2021",
@@ -682,10 +727,6 @@
           {
             "source": "idi-2022-retrospective",
             "quote": "העבירה תקציב מדינה"
-          },
-          {
-            "source": "ipf-election-timeline",
-            "quote": "NOVEMBER 4, 2021"
           }
         ],
         "notes": [
@@ -704,17 +745,21 @@
             "quote": "אובדן הרוב הפרלמנטרי"
           },
           {
-            "source": "ipf-election-timeline",
-            "quote": "Coalition Chair Idit Silman of Yamina"
-          },
-          {
             "source": "ejpr-2022-yearbook",
             "quote": "6 April 2022, the Member of the Knesset (MK) Idit Silman"
+          },
+          {
+            "source": "zman-2022-04-06",
+            "quote": "דיווח: קארה דן עם סילמן ושיקלי בהקמת סיעה"
+          },
+          {
+            "source": "ynet-term-2022",
+            "quote": "6 באפריל 2022: איבדו את הרוב"
           }
         ],
         "confidence": "high",
         "notes": [
-          "The EJPR annual political chronology and independent IPF timeline both name Silman and date her departure to 6 April. IDI independently selects the spring loss of majority. The yearbook’s June 20 dissolution wording conflates the announcement with the later law and is not used to date dissolution."
+          "Exception to the official-contemporary-source rule: contemporary Zman reporting, Ynet chronology and academic chronology corroborate the departure; no official contemporary record was readable. IDI independently selects the loss of majority. IPF advocacy timeline excluded."
         ]
       },
       {
@@ -750,17 +795,20 @@
         "textHe": "ישראל ולבנון חתמו, כל אחת בנפרד, על הסכם גבול ימי בתיווך ארה\"ב.",
         "cites": [
           {
-            "source": "gov-pmo-2022-10-12",
-            "quote": "הצלחנו להגיע להסכם מדיני-כלכלי עם לבנון על הגבול הימי בין המדינות ... הממשלה אישרה להניח את ההסכם על שולחן הכנסת למשך 14 יום"
-          },
-          {
             "source": "reuters-2022-10-27",
             "quote": "Lebanese and Israeli leaders finalised a U.S.-brokered maritime demarcation deal on Thursday ... there was no joint signing ceremony"
           },
           {
             "source": "jpost-2022-10-27",
             "quote": "Earlier, Prime Minister Yair Lapid signed the deal in Jerusalem and Lebanese President Michel Aoun signed it in Beirut."
+          },
+          {
+            "source": "calcalist-2022-10-27",
+            "quote": "ראש הממשלה יאיר לפיד ונשיא לבנון מישל עאון חתמו היום, בנפרד, על הסכם הגבול הימי בין המדינות."
           }
+        ],
+        "notes": [
+          "Exception to the official-contemporary-source rule: independent contemporary reports support separate signing on 27 October; the 12 October official statement supports tabling only."
         ]
       }
     ],
@@ -810,7 +858,6 @@
     },
     "chronologies": [
       "idi-2022-retrospective",
-      "ipf-election-timeline",
       "ejpr-2022-yearbook"
     ]
   },
@@ -879,7 +926,7 @@
   },
   "gaps": [
     "President's Residence press releases (gov.il) for 5–6 April, 5 May and 2 June 2021 not retrieved directly; the President's words are cited through news reports that quote them.",
-    "CEC certification date of the final results (presented to the President) not retrieved.",
+    "CEC determined the final results on 30 March 2021 (retained protocol p.2); statutory notice published 31 March (YP 9511). Date of presentation to the President not established here.",
     "Reaction items not collected (all-or-none rule).",
     "Term events rely on an interim two-source rule; several candidate events are listed but not included."
   ]

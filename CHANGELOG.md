@@ -1,5 +1,9 @@
 # Changelog
 
+## 6 November 2026 — k24 data audit
+
+- Corrected Demokratit’s withdrawal, retained official final notices, clarified opening membership and polling-station scope, added candidate resignation notes, and corrected overstated source and logo verification claims.
+
 ## 5 November 2026 — release review
 
 - Scenarios mark unsaved changes, reopen saved versions while keeping drafts, and resolve duplicate names with overwrite, numbered copy or a custom name.

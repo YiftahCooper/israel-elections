@@ -6014,5 +6014,41 @@
     "retrievedAt": "2026-11-06",
     "bytes": 763003,
     "sha256": "5b06f095f40a6fce7fdd249aa27ed85b98ec28f20347f124d71aa52220443fe5"
+  },
+  {
+    "id": "k24-results-gazette",
+    "file": "k24/results.pdf",
+    "url": "https://olaw.org.il/yalkut/yalkut-9511.pdf",
+    "publisher": "Central Elections Committee / Reshumot (public mirror)",
+    "official": true,
+    "description": "Reshumot YP 9511, 31 March 2021, pp. 4620–4629: final results and elected members",
+    "method": "http",
+    "retrievedAt": "2026-11-06",
+    "bytes": 257990,
+    "sha256": "a961842ae86030a591274516acebc96030743d4e84e7989719e5715b23873a50"
+  },
+  {
+    "id": "k24-cec-protocol",
+    "file": "k24/protocol.pdf",
+    "url": "https://www.emess.co.il/wp-content/uploads/2021/03/%D7%96%D7%9B%D7%A8%D7%95%D7%9F-%D7%93%D7%91%D7%A8%D7%99%D7%9D-24.pdf",
+    "publisher": "Central Elections Committee / Reshumot (public mirror)",
+    "official": true,
+    "description": "CEC statutory determination, 30 March 2021; p.4 records cancellation of Demokratit after all candidates resigned",
+    "method": "http",
+    "retrievedAt": "2026-11-06",
+    "bytes": 63005,
+    "sha256": "014168de56d61251c086a4025631255fd4e1ca42d88f128b98c14219d0954d1c"
+  },
+  {
+    "id": "k24-davidi-resignation-press",
+    "file": "k24/davidi-resignation.txt",
+    "url": "https://www.davar1.co.il/294946/",
+    "publisher": "Davar",
+    "official": false,
+    "description": "Short excerpt and date from the 5 April 2021 Davidi resignation report, retained from normal web text retrieval; not original HTML.",
+    "method": "web-text-excerpt",
+    "retrievedAt": "2026-11-06",
+    "bytes": 513,
+    "sha256": "7fa6d7fccac7dda9bf4b6f603f695f341a0a4144166140ef804c114059d84a34"
   }
 ]

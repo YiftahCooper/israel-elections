@@ -56,7 +56,8 @@ for n in range(1, 27):
             assert item['status'] in ('download-unavailable', 'unresolved')
             counts[item['status']] += 1
             continue
-        assert item['status'] == 'verified'
+        # Retained unresolved assets are integrity-checked but never applied by applyLogos.
+        assert item['status'] in ('verified', 'unresolved')
         assert item['assetSourceUrl'].startswith('https://')
         if item['rights'] == 'fair-use-identification':
             assert source['sourceType'] in ('official party campaign website', 'official party social publication', 'official CEC publication', 'official party campaign publication')
