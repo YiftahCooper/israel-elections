@@ -1,5 +1,9 @@
 # Changelog
 
+## 6 November 2026 — k21 data audit
+
+- Corrected three withdrawn lists, gazette name/sponsor transcriptions and resignation notes; retained official results and replaced recommendation inference with explicit reports.
+
 ## 6 November 2026 — k24 data audit
 
 - Corrected Demokratit’s withdrawal, retained official final notices, clarified opening membership and polling-station scope, added candidate resignation notes, and corrected overstated source and logo verification claims.

@@ -42,13 +42,17 @@ import { FAMILIES, families, type Family, type Modules } from './differential.ca
 // project-grouping labels, four candidate notes, withdrawn Demokratit and New Hope logo removal change.
 // Allocation changes because the cancelled zero-vote list is excluded; model also carries display fields.
 // All 25 other datasets and engine/model source are unchanged; analysis/validation/rules retain their digests.
+// k21 audit (6 Nov): 60 reviewed dataset leaves: withdrawal flags, gazette corrections,
+// resignation/source notes, CEC link labels and builtAt only. Replacing k21 at
+// scenarioFromDataset with merged HEAD reproduces ALL five old digests exactly.
+// Only allocation (cancelled lists excluded) and model (display fields) change.
 const EXPECTED: Record<Family, string> = {
   // Allocation and analysis re-recorded 2026-11-04 for one reviewed engine fix: under a pure divisor method (no quota
   // stage, so no initial seats) the 1949 initial-seat conditions no longer apply. Before, those cases allocated 0 seats
   // or deactivated every surplus agreement; 298 allocation and 19 analysis cases differ, all of that kind. The old
   // engine on the same tree reproduces 8260bc46… and af4237ef…; model, validation and rules digests are unchanged.
   // merged with the k24 audit fixes: combined digest = union of the separately reviewed changes.
-  allocation: 'bf733b00ce93274543bae3cb31fc44765be0a3c707342820eabeb90a2c8ca8e1',
+  allocation: '8d094c35085fa224e9da28ff2f0b63d3614a975a484d59f42a52eca7495d80f0',
   analysis: 'b682af4570daf5cd7967e77afda56c8a9bcb2b5de4850f4d8ebc1652228269e0',
   // Model digest re-recorded for the 1973 party ranks, then for candidate biography links (Candidate.bio): with
   // the build timestamps held fixed and bio not carried, the new code gives the previous digest. Then for three
@@ -107,7 +111,7 @@ const EXPECTED: Record<Family, string> = {
   // completed recommendation scheme and buildInfo differ; all other datasets equal HEAD (field diff 6 Nov).
   // Allocation, analysis, validation and rules digests are unchanged.
   // merged with the k26 audit fixes: combined digest = union of the separately reviewed changes.
-  model: 'ffb2cc3a20ea8f1c7307b5387fb23974c70e0934b6f7c852fea73b6f3bffd569',
+  model: '30648445659d762f674cd9cb1988c3915ffa84e05a484cec8344b6d95cc3053d',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

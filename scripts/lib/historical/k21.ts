@@ -1,8 +1,9 @@
+import { readFileSync } from 'node:fs';
 import { build, nationalHtml } from './k20-k21-common.ts';
 
 // End ranks checked against each list's final printed row, YP8168 pp9022–9046.
 const COUNTS = { אמת:120, ג:119, דעם:115, ום:118, ז:111, זי:16, זך:1, זנ:18, זץ:14, טב:48, י:17, יז:5, ין:7, יץ:23, כ:33, ךק:8, ל:20, מחל:118, מרצ:120, נ:24, נז:10, נך:11, נץ:25, נר:18, ן:12, ןך:10, ןנ:5, פה:120, ףז:11, ףי:9, ףך:18, ףנ:6, ףץ:34, צק:10, ץ:19, ץז:12, ץי:23, ק:6, קי:7, קן:9, קף:17, ר:16, שס:117 };
 const LEADERS = { מחל:'נתניהו בנימין', פה:'גנץ בנימין', שס:'דרעי אריה מכלוף', ג:'ליצמן יעקב', ום:'עודה איימן', אמת:'גבאי אברהם', ל:'ליברמן אביגדור', טב:'פרץ רפאל', מרצ:'זנדברג תמר', כ:'כחלון משה', דעם:'עבאס מנסור', נ:'בנט נפתלי' };
 export async function buildK21() {
-  return build(21, nationalHtml(21), COUNTS, LEADERS, '2019-04-09', '2026-11-03', 'k21-national-html');
+  return build(21, nationalHtml(21), COUNTS, LEADERS, '2019-04-09', '2026-11-03', 'k21-national-html', JSON.parse(readFileSync(new URL('../../../data/meta/k21-corrections.json', import.meta.url), 'utf8')));
 }

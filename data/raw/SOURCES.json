@@ -6063,5 +6063,57 @@
     "retrievedAt": "2026-11-06",
     "bytes": 3652,
     "sha256": "b129f0bf362a01fcd4ea40372d0bc4323036edf9dec9113d5c6f199d015abbed"
+  },
+  {
+    "id": "k21-resignations-8172",
+    "file": "k21/yp-8172.pdf",
+    "url": "https://olaw.org.il/yalkut/yalkut-8172.pdf",
+    "publisher": "רשומות — ילקוט הפרסומים 8172 (2019-03-26), עמ׳ 9194–9195",
+    "publisherEn": "Reshumot — YP 8172, 2019-03-26, pp. 9194–9195; olaw.org.il mirror",
+    "official": true,
+    "description": "21st Knesset candidate resignation notices; registered rosters preserved",
+    "method": "http",
+    "retrievedAt": "2026-11-06",
+    "bytes": 431337,
+    "sha256": "588c0bd7295b28e22d69b228d3a54c929aecf2b0b0dbf4cbe5c61345d3581538"
+  },
+  {
+    "id": "k21-resignations-8186",
+    "file": "k21/yp-8186.pdf",
+    "url": "https://olaw.org.il/yalkut/yalkut-8186.pdf",
+    "publisher": "רשומות — ילקוט הפרסומים 8186 (2019-04-04), עמ׳ 9542",
+    "publisherEn": "Reshumot — YP 8186, 2019-04-04, pp. 9542; olaw.org.il mirror",
+    "official": true,
+    "description": "21st Knesset candidate resignation notices; registered rosters preserved",
+    "method": "http",
+    "retrievedAt": "2026-11-06",
+    "bytes": 362557,
+    "sha256": "fd4d59182a1b89b64d58e2ffbb54a9c37a7203d277e5f21809e3614a2b22231f"
+  },
+  {
+    "id": "k21-resignations-8196",
+    "file": "k21/yp-8196.pdf",
+    "url": "https://olaw.org.il/yalkut/yalkut-8196.pdf",
+    "publisher": "רשומות — ילקוט הפרסומים 8196 (2019-04-10), עמ׳ 9858",
+    "publisherEn": "Reshumot — YP 8196, 2019-04-10, pp. 9858; olaw.org.il mirror",
+    "official": true,
+    "description": "21st Knesset candidate resignation notices; registered rosters preserved",
+    "method": "http",
+    "retrievedAt": "2026-11-06",
+    "bytes": 426096,
+    "sha256": "78050c0b8b696a53226b479ef0068d2b0508ed1c9cbe57fae2dba28fc91a9cf4"
+  },
+  {
+    "id": "k21-results-gazette",
+    "file": "k21/yp-8208.pdf",
+    "url": "https://olaw.org.il/yalkut/yalkut-8208.pdf",
+    "publisher": "רשומות — ילקוט הפרסומים 8208 (2019-04-17), עמ׳ 10062–10066",
+    "publisherEn": "Reshumot — YP 8208, 2019-04-17, pp. 10062–10066; olaw.org.il mirror",
+    "official": true,
+    "description": "21st Knesset final results and elected members",
+    "method": "http",
+    "retrievedAt": "2026-11-06",
+    "bytes": 378817,
+    "sha256": "1c55879fd58cacdd1398ac41a6b9382e95d539b0744ea4f03dab6531680b9b09"
   }
 ]
