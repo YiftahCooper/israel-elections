@@ -432,7 +432,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k21.json",
-      "sha256": "cb579f2268b444f68f998a91e5de4f815d3c87b40f1a62dd02fc790c9cb5e50d",
+      "sha256": "c5eedbfbd1c299ffba819af168b47bf80a74603ad75eb8621dc221fc46d19bd5",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k22": {
@@ -2785,12 +2785,12 @@
       "electionId": "k21",
       "electionDate": "2019-04-09",
       "datasetPath": "public/data/k21.json",
-      "datasetSha256": "cb579f2268b444f68f998a91e5de4f815d3c87b40f1a62dd02fc790c9cb5e50d",
+      "datasetSha256": "c5eedbfbd1c299ffba819af168b47bf80a74603ad75eb8621dc221fc46d19bd5",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
-        "noteHe": "תוצאות רשמיות סופיות. המועמדים לפי סדר הרישום בילקוט הפרסומים; הודעות התפטרות ידועות בהערות. לא מוצגת השתייכות לגושים.",
-        "noteEn": "Official final results. Candidates follow the gazetted registration order; known resignation notices are labelled. No default blocs assigned."
+        "noteHe": "תוצאות רשמיות סופיות. המועמדים לפי סדר הרישום בילקוט הפרסומים; הודעות התפטרות ידועות בהערות.",
+        "noteEn": "Official final results. Candidates follow the gazetted registration order; known resignation notices are labelled."
       },
       "validVotes": 4309270,
       "voteSourceIds": [

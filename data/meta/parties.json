@@ -406,7 +406,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k21.json",
-      "sha256": "e5d1dd8eac1e3bab0be09972cb0155674eedff6c5762240c89f792f9fe1f6d73",
+      "sha256": "c5eedbfbd1c299ffba819af168b47bf80a74603ad75eb8621dc221fc46d19bd5",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k22": {
@@ -4444,7 +4444,8 @@
             "k21",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name in k21; not a claim about the registered submitting party name."
         },
         {
           "date": "2019-09-17",
@@ -7425,7 +7426,8 @@
             "k21",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name in k21; not a claim about the registered submitting party name."
         },
         {
           "date": "2019-09-17",
@@ -7594,7 +7596,8 @@
             "k21",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name in k21; not a claim about the registered submitting party name."
         },
         {
           "date": "2019-09-17",
@@ -11048,7 +11051,8 @@
             "k21",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name in k21; not a claim about the registered submitting party name."
         },
         {
           "date": "2019-09-17",
@@ -11217,7 +11221,8 @@
             "k21",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name in k21; not a claim about the registered submitting party name."
         },
         {
           "date": "2019-09-17",
@@ -11699,7 +11704,8 @@
             "k21",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name in k21; not a claim about the registered submitting party name."
         },
         {
           "date": "2019-09-17",
@@ -16108,7 +16114,8 @@
             "k21",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name in k21; not a claim about the registered submitting party name."
         },
         {
           "date": "2019-09-17",
@@ -18199,7 +18206,7 @@
         {
           "date": "2019-04-09",
           "datePrecision": "day",
-          "nameHe": "יחד בראשית אלי ישי",
+          "nameHe": "יחד בראשות אלי ישי",
           "nameEn": "Yachad",
           "sources": [
             "k21",

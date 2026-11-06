@@ -173,9 +173,20 @@ export async function surplus(n: 20 | 21): Promise<[string, string][]> {
   return pairs;
 }
 
-export async function build(n: 20 | 21, national: National, expectedCounts: Record<string, number>, leaders: Record<string, string>, date: string, asOf: string, nationalSource: string) {
+interface Corrections {
+  withdrawn: string[];
+  listOverrides: Record<string, { nameHe?: string; sponsorsHe?: string; notesHe: string[] }>;
+  candidateCorrections: { letters: string; rank: number; familyHe: string }[];
+}
+
+export async function build(n: 20 | 21, national: National, expectedCounts: Record<string, number>, leaders: Record<string, string>, date: string, asOf: string, nationalSource: string, corrections?: Corrections) {
   const gaz = await candidates(n);
   check(gaz.length === national.lists.length, `k${n}: candidate/result list count differs`);
+  for (const correction of corrections?.candidateCorrections ?? []) {
+    const c = gaz.find(g => g.letters === correction.letters)?.candidates.find(c => c.rank === correction.rank);
+    check(c, `k${n}: correction names missing candidate`);
+    c.familyHe = correction.familyHe; c.nameHe = `${c.familyHe} ${c.givenHe}`;
+  }
   const geo = geographical(n, national);
   const lists: ListRecord[] = national.lists.map((l, i) => {
     const g = gaz.find(g => g.letters === l.letters);
@@ -188,13 +199,17 @@ export async function build(n: 20 | 21, national: National, expectedCounts: Reco
     if (n === 20 && l.letters === 'יץ') notesHe.push('ילקוט הפרסומים 7001: סעיד בדראן ואבו עאבד ראאף התפטרו ביום 2.3.2015. הרשימה כאן מציגה את סדר הרישום בילקוט 7000.');
     // State Comptroller 66C p1862: יך withdrew; instruction issued 11 March 2015.
     if (n === 20 && l.letters === 'יך') notesHe.push('הרשימה פרשה לפני הבחירות; הנחיה להסרת פתקיה נמסרה ב־11.3.2015. מבקר המדינה, דוח 66ג, עמ׳ 1862–1863: https://www.mevaker.gov.il/sites/DigitalLibrary/Documents/2016-66C-314-Veadaa.pdf');
-    return listRecord(n, i, { letters: l.letters, nameHe: g.nameHe, votes: l.votes, withdrawn: n === 20 && l.letters === 'יך',
-      sponsorsHe: g.sponsorsHe, partiesHe: g.sponsorsHe.includes(';') ? null : [g.sponsorsHe],
+    const override = corrections?.listOverrides[l.letters];
+    notesHe.push(...(override?.notesHe ?? []));
+    const sponsorsHe = override?.sponsorsHe ?? g.sponsorsHe;
+    return listRecord(n, i, { withdrawn: (n === 20 && l.letters === 'יך') || (corrections?.withdrawn.includes(l.letters) ?? false), letters: l.letters, nameHe: override?.nameHe ?? g.nameHe, votes: l.votes,
+      sponsorsHe, partiesHe: sponsorsHe.includes(';') ? null : [sponsorsHe],
       candidates: g.candidates.map(c => ({ id: candidateId(id, c.rank), ...c })), candidatesSource: `k${n}-candidates-gazette`, notesHe });
   });
   const pairs = await surplus(n);
   checkAgreementPairs(check, `k${n}`, pairs, lists.map(l => l.letters));
   const ids = [nationalSource, `k${n}-localities-datagov`, `k${n}-ballots-datagov`, `k${n}-candidates-gazette`, `k${n}-surplus-gazette`];
+  if (n === 21) ids.push('k21-results-gazette', 'k21-resignations-8172', 'k21-resignations-8186', 'k21-resignations-8196');
   // the polling-station copy lives in ignored scratch; its hash is checked when present
   const rawSha256 = verifySources(ids, check, { allowMissingFile: true });
   const ds: ElectionDataset = {
@@ -203,7 +218,7 @@ export async function build(n: 20 | 21, national: National, expectedCounts: Reco
       noteHe: 'תוצאות רשמיות סופיות. המועמדים לפי סדר הרישום בילקוט הפרסומים; הודעות התפטרות ידועות בהערות.',
       noteEn: 'Official final results. Candidates follow the gazetted registration order; known resignation notices are labelled.' },
     ruleSetId: 'il-2014-bader-ofer-3.25', totals: { registered: national.registered, votesCast: national.votesCast, invalid: national.invalid, valid: national.valid, ballotBoxes: geo.ballotRows, ...geographyTotals(geo.rows) },
-    lists, agreements: agreementRecords(n, pairs, `k${n}-surplus-gazette`), blocs: [], officialSeats: officialSeatsOf(n, national.lists), officialSeatsSourceId: nationalSource,
+    lists, agreements: agreementRecords(n, pairs, `k${n}-surplus-gazette`), blocs: [], officialSeats: officialSeatsOf(n, national.lists), officialSeatsSourceId: n === 21 ? 'k21-results-gazette' : nationalSource,
     sourceIds: [...ids, 'law-elections'], buildInfo: { builtAt: new Date().toISOString(), rawSha256 },
   };
   if (n === 20) {

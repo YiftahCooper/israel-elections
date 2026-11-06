@@ -54,6 +54,18 @@
       "publisher": "SIPRI Yearbook 2020, Ian Davis, Annex C: Chronology 2019",
       "kind": "academic",
       "accessed": "2026-11-05"
+    },
+    "walla-recommendations": {
+      "url": "https://www.walla.co.il/news/politics/3230871",
+      "publisher": "וואלה חדשות",
+      "kind": "secondary",
+      "accessed": "2026-11-06"
+    },
+    "toi-hadash-taal": {
+      "url": "https://www.timesofisrael.com/hadash-taal-abstains-from-recommending-a-prime-minister/",
+      "publisher": "The Times of Israel",
+      "kind": "secondary",
+      "accessed": "2026-11-06"
     }
   },
   "results": {
@@ -155,13 +167,13 @@
           "letters": "ום",
           "seats": 6,
           "status": "none",
-          "noteEn": "No recommendation inferred from the published 65/45 totals, not a retrieved direct statement by this list."
+          "noteEn": "Explicitly declined to recommend any candidate during the consultation; see the round’s direct reporting citations."
         },
         {
           "letters": "דעם",
           "seats": 4,
           "status": "none",
-          "noteEn": "No recommendation inferred from the published 65/45 totals, not a retrieved direct statement by this list."
+          "noteEn": "Explicitly declined to recommend any candidate during the consultation; see the round’s direct reporting citations."
         }
       ],
       "totals": {
@@ -173,10 +185,18 @@
         {
           "source": "recommendations-1",
           "quote": "Netanyahu has the backing of 65 MKs, a majority of the 120-seat Knesset. ... Blue and White leader Benny Gantz, in contrast, has just 45. ... Yisrael Beytenu, the Union of Right-Wing Parties and Kulanu recommended him ... the ultra-Orthodox Shas and United Torah Judaism parties also recommended Netanyahu ... The left-wing Meretz party also recommended Gantz"
+        },
+        {
+          "source": "walla-recommendations",
+          "quote": "סיעת רע\"מ-בל\"ד לא המליצה על אף מועמד"
+        },
+        {
+          "source": "toi-hadash-taal",
+          "quote": "We are not recommending anyone"
         }
       ],
       "notes": [
-        "Party-by-party split is the only one consistent with the published totals (65/45/10) and the seat counts; Labor's recommendation of Gantz is reported in the same article; the two Arab lists (10 seats) are the remainder and were not quoted."
+        "Hadash–Ta’al and Ra’am–Balad explicitly declined to recommend a candidate, as reported after their respective consultations on 15 and 16 April 2019."
       ]
     }
   ],
@@ -295,7 +315,6 @@
     "note": "No qualifying published most-important-problem topline retrieved; see docs/research/issue-polling-sources.md. No microdata calculations."
   },
   "gaps": [
-    "Direct positions of Hadash–Ta’al and Ra’am–Balad not quoted in the existing recommendation research; their ten seats are an explicitly labelled remainder inference.",
     "Presidential tasking and extension originals not retrieved directly; news reports describe the formal acts.",
     "First sitting and Gazette copy of the dissolution law not retrieved.",
     "No mandate return to the President or tasking of Gantz is invented; the dissolution law ended the formation proceedings.",

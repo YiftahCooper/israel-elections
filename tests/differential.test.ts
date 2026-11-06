@@ -46,6 +46,10 @@ import { FAMILIES, families, type Family, type Modules } from './differential.ca
 // project-grouping labels, four candidate notes, withdrawn Demokratit and New Hope logo removal change.
 // Allocation changes because the cancelled zero-vote list is excluded; model also carries display fields.
 // All 25 other datasets and engine/model source are unchanged; analysis/validation/rules retain their digests.
+// k21 audit (6 Nov): 60 reviewed dataset leaves: withdrawal flags, gazette corrections,
+// resignation/source notes, CEC link labels and builtAt only. Replacing k21 at
+// scenarioFromDataset with merged HEAD reproduces ALL five old digests exactly.
+// Only allocation (cancelled lists excluded) and model (display fields) change.
 const EXPECTED: Record<Family, string> = {
   // Allocation and analysis re-recorded 2026-11-04 for one reviewed engine fix: under a pure divisor method (no quota
   // stage, so no initial seats) the 1949 initial-seat conditions no longer apply. Before, those cases allocated 0 seats
@@ -53,7 +57,8 @@ const EXPECTED: Record<Family, string> = {
   // engine on the same tree reproduces 8260bc46… and af4237ef…; model, validation and rules digests are unchanged.
   // merged with the k24 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k20 audit fixes: combined digest = union of the separately reviewed changes.
-  allocation: 'bf50217e327445c12941453eb13b84cb7badc51dce3d0ac173136068075e71ab',
+  // merged with k21 audit fixes: combined digest = union of the separately reviewed changes.
+  allocation: 'c53220a4d94b2a6c0d2bfa99fc71c58f974fa88d1282be2272b062706df258c8',
   analysis: 'b682af4570daf5cd7967e77afda56c8a9bcb2b5de4850f4d8ebc1652228269e0',
   // Model digest re-recorded for the 1973 party ranks, then for candidate biography links (Candidate.bio): with
   // the build timestamps held fixed and bio not carried, the new code gives the previous digest. Then for three
@@ -117,7 +122,8 @@ const EXPECTED: Record<Family, string> = {
   // and builtAt changed (recursive field diff); HEAD k19 with current src reproduces 2694440f….
   // All four non-model digests unchanged. See docs/research/data-audit/k19-resolution.md.
   // merged with k19 audit fixes: combined digest = union of the separately reviewed changes.
-  model: '4faa7f17ce364956de29269c7575a52a553ca40ea4da216f29fcc9620d9c21e5',
+  // merged with k21 audit fixes: combined digest = union of the separately reviewed changes.
+  model: 'c61b71455d4b9523ba031ae09e7ee79c68c2c402573d5541aec456939ebaaf08',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

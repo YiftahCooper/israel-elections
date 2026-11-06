@@ -17,7 +17,7 @@ const COUNTS = { אמת:120, ג:119, דעם:115, ום:118, ז:111, זי:16, זך
 
 describe('k21: CEC official final result and complete registered rosters', () => {
   it('reproduces every list’s published seats through the application scenario pipeline', () => {
-    expect(ds.officialSeatsSourceId).toBe('k21-national-html');
+    expect(ds.officialSeatsSourceId).toBe('k21-results-gazette');
     expect(res.seatsAllocated).toBe(120);
     expect(res.warnings).toEqual([]);
     expect(res.lists).toHaveLength(43);
@@ -25,6 +25,20 @@ describe('k21: CEC official final result and complete registered rosters', () =>
       expect(l.seats, l.id).toBe(SEATS[l.id.slice(3)] ?? 0);
       expect(ds.officialSeats![l.id], l.id).toBe(SEATS[l.id.slice(3)] ?? 0);
     }
+  });
+  it('marks the three cancelled registrations while retaining all registered candidates', () => {
+    expect(ds.lists.filter(l => l.withdrawn).map(l => l.letters).sort()).toEqual(['זנ', 'נך', 'ץז'].sort());
+    for (const letters of ['זנ', 'נך', 'ץז', 'טב', 'זי', 'זץ']) {
+      expect(ds.lists.find(l => l.letters === letters)!.notesHe.join(' ')).toMatch(/התפטר/);
+    }
+  });
+  it('corrects gazette transcription and sponsor misprints from the final notice', () => {
+    const list = (letters: string) => ds.lists.find(l => l.letters === letters)!;
+    expect(list('זנ').nameHe).toBe('יחד בראשות אלי ישי');
+    expect(list('זץ').sponsorsHe).toBe('צומת - התנועה לציונות מתחדשת');
+    expect(list('נץ').sponsorsHe).toBe('מגן - בראשות גל הירש');
+    expect(list('נז').sponsorsHe).toBe('זכויותינו בקולנו');
+    expect(list('ן').candidates[1].familyHe).toBe('שוורצברג (אמסלם)');
   });
   it('uses official totals, exact threshold 140,052 and quota 32,860', () => {
     expect(ds.totals).toMatchObject({ registered:6339729, votesCast:4340253, invalid:30983, valid:4309270, ballotBoxes:10765, localities:1213, envelopeVotes:240783 });
