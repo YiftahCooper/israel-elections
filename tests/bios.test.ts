@@ -56,7 +56,7 @@ describe('official English names of Knesset members', () => {
         if (!c.nameEn) continue;
         n++;
         const sourceName = bySite.get(m!.knesset!.siteId!);
-        // k18 and k13 audits: retain spelling, normalize source backticks and repeated whitespace (k13: Ra'anan Cohen only).
+        // display form: backticks become apostrophes and repeated whitespace collapses; spelling is never changed.
         const normalized = sourceName?.replaceAll('`', "'").replace(/\s+/g, ' ').trim();
         const reviewed: Record<string, [string, string]> = {'12-ג#1': ['Moshe Zeev Feldman', 'Moseh  Zeev Feldman'], '12-מחל#41': ['Yehoshua Sagi', 'Yeushua Sagi']};
         if (m?.displayNameEn) {
@@ -64,7 +64,7 @@ describe('official English names of Knesset members', () => {
           expect(bySite.get(m.knesset!.siteId!), c.id).toBe(reviewed[c.id]?.[1]);
           expect(m.displayNameEnNote).toContain('YP 3588/3591');
         }
-        expect(c.nameEn, c.id).toBe(m?.displayNameEn ?? (e.id === 'k18' || c.id === '13-אמת#22' ? normalized : sourceName));
+        expect(c.nameEn, c.id).toBe(m?.displayNameEn ?? normalized);
         expect(c.nameEn, c.id).not.toMatch(/[֐-׿]/);
       }
     }

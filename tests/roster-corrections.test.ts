@@ -45,7 +45,7 @@ const FIXES: Fix[] = [
   { id: 'k14', letters: 'מחל', rank: 15, name: 'דיין חיים', was: 'ריבלין חיים', personId: 2276, surname: 'דיין' },
   { id: 'k14', letters: 'מחל', rank: 30, name: 'לנקרי יהודה', was: 'ליבני יהודה', personId: 2444, surname: 'לנקרי' },
   { id: 'k14', letters: 'ע', rank: 3, name: 'אלסאנע טלב', was: 'אלצאנע טלב', personId: 549, surname: 'אלסאנע' },
-  { id: 'k9', letters: 'ים', rank: 1, name: 'סייף אלאדין מוחמד סעיד חוסיין זועבי', was: 'סייף אלדין מוחמד סעיד מחמוד זועבי', personId: 2144, surname: 'אלזועבי' },
+  { id: 'k9', letters: 'ימ', rank: 1, name: 'סייף אלאדין מוחמד סעיד חוסיין זועבי', was: 'סייף אלדין מוחמד סעיד מחמוד זועבי', personId: 2144, surname: 'אלזועבי' },
   { id: 'k12', letters: 'מחל', rank: 32, name: 'גולדברג יוסף', was: '', personId: 2237, surname: 'גולדברג' },
   { id: 'k12', letters: 'הן', rank: 2, name: 'פורז-פוזמנטיר אברהם', was: 'פורזומנסקי אברהם', personId: 519, surname: 'פורז' },
   { id: 'k13', letters: 'אמת', rank: 14, name: 'אור אורי', was: 'אור אריה', personId: 2132, surname: 'אור' },

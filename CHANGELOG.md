@@ -12,6 +12,8 @@
 - k12: corrected seven ballot-letter readings and list names while retaining stable IDs, settled the opening coalition at 95–25, documented Reiser’s death, and qualified unsupported recommendations and campaign logos.
 - k11: corrected ballot labels and small-list identities with stable IDs, removed Shiluv from Sheli’s family/lineage, corrected candidate #61 and the 97-MK coalition, and refreshed sourced aftermath gaps.
 - k10: corrected printed ballot letters while preserving stable IDs, repaired One Israel/pensioners/Aliyah identities and family classification, corrected a candidate spelling and tenure dates, and strengthened coalition and logo evidence.
+- k9: corrected official ballot letters/names without renaming stable IDs, repaired elected-name and biography displays, sourced the historical candidate cap and first-government support, and reconciled primary-evidence gaps.
+- All elections: official English member names now display with apostrophes instead of backticks and single spaces; the raw Knesset values stay as evidence.
 
 ## 5 November 2026 — release review
 

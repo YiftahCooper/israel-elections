@@ -21,6 +21,7 @@ export interface ReviewedRoster {
 export interface Review {
   id: HistoricalId;
   reviewedOn: string;
+  /** Reviewed opaque keys where a ballot-letter transcription was corrected (k9). */
   resultsSourceId: string;
   resultsIssue: number;
   resultsPages: number[];

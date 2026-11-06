@@ -1,7 +1,7 @@
 {
   "id": "k9",
-  "reviewedOn": "2026-11-03",
-  "scope": "Released national results; all winning ranks checked. Ratz uses official opening-date Knesset OData; candidate capacity procedure remains an explicitly accepted inference.",
+  "reviewedOn": "2026-11-06",
+  "scope": "Released national results; all winning ranks checked. Ratz uses official opening-date Knesset OData; the cap procedure is documented in the Knesset appeal determination of 1 November 1977.",
   "resultsSourceId": "k9-results-gazette",
   "resultsIssue": 2326,
   "resultsPages": [
@@ -45,10 +45,11 @@
       "officialSeats": 1
     },
     {
-      "letters": "הם",
-      "nameHe": "דמוקרטים בצדק",
+      "letters": "הפ",
+      "nameHe": "דו קיום בצדק",
       "gazetteVotes": 1085,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyId": "9-הם"
     },
     {
       "letters": "ו",
@@ -58,21 +59,23 @@
     },
     {
       "letters": "זה",
-      "nameHe": "התנועה להתחדשות חברתית בראשותו של מרדכי בן־פורת",
+      "nameHe": "התנועה להתחדשות ציונית חברתית בראשותו של מרדכי בן־פורת",
       "gazetteVotes": 14516,
       "officialSeats": 0
     },
     {
-      "letters": "חך",
-      "nameHe": "בית ישראל, ברית נאמני תימן ועדות ישראל",
+      "letters": "זך",
+      "nameHe": "בית ישראל, ברית יוצאי תימן ועדות ישראל",
       "gazetteVotes": 9505,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyId": "9-חך"
     },
     {
-      "letters": "ים",
+      "letters": "ימ",
       "nameHe": "הרשימה הערבית המאוחדת",
       "gazetteVotes": 24185,
-      "officialSeats": 1
+      "officialSeats": 1,
+      "legacyId": "9-ים"
     },
     {
       "letters": "יש",
@@ -117,22 +120,25 @@
       "officialSeats": 0
     },
     {
-      "letters": "סם",
+      "letters": "ספ",
       "nameHe": "תנועת הרפורמה הערבית",
       "gazetteVotes": 5695,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyId": "9-סם"
+    },
+    {
+      "letters": "פ",
+      "nameHe": "הפנתרים הציוניים, רשימת עובדי ייצור וועדי עובדים",
+      "gazetteVotes": 1798,
+      "officialSeats": 0,
+      "legacyId": "9-פז"
     },
     {
       "letters": "פז",
-      "nameHe": "הפנתרים הציוניים, רשימת ציבור ודורשי עבודה",
-      "gazetteVotes": 1798,
-      "officialSeats": 0
-    },
-    {
-      "letters": "פח",
-      "nameHe": "חופש, חזית פועלים, פנתרים שחורים, ישראל הצעירה, יוצאי עדות, ועדי שכונות עוני ובלתי מפלגתיים",
+      "nameHe": "חופש, חזית פועלים, פנתרים שחורים, ישראל הצעירה, יוצאי עודד, ועדי שכונות עוני ובלתי מפלגתיים",
       "gazetteVotes": 2498,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyId": "9-פח"
     },
     {
       "letters": "פש",
@@ -160,7 +166,7 @@
     "pairs": [
       [
         "אמת",
-        "ים"
+        "ימ"
       ],
       [
         "לע",
@@ -180,7 +186,7 @@
       ],
       [
         "רצ",
-        "סם"
+        "ספ"
       ]
     ]
   },
@@ -260,7 +266,7 @@
         "scope": "Ranks1–5 transcribed; elected names cross-checked: 5. See candidates.reviewed.json."
       },
       {
-        "letters": "ים",
+        "letters": "ימ",
         "publishedCount": 120,
         "first": {
           "rank": 1,
@@ -356,11 +362,12 @@
     "k9-candidates-reviewed",
     "k9-search-reviewed",
     "k9-ratz-odata",
-    "k9-odata-positions"
+    "k9-odata-positions",
+    "k9-cap-appeal-protocol"
   ],
   "allocationCheck": {
     "exact": true,
     "differences": [],
-    "note": "Candidate-cap hypothesis reproduces every seat. Procedure inferred from official results; contemporaneous statutory text/CEC decision not located. Uncapped: פש 2, ש 1; capped/official: פש 1, ש 2."
+    "note": "Knesset 1 November 1977, p.237: CEC capped the one-candidate list at one seat in the initial distribution (114 seats), then distributed six surplus seats under section 81(d); appeal rejected. Uncapped counterfactual: פש 2, ש 1; capped/official: פש 1, ש 2."
   }
 }

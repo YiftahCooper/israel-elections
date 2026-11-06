@@ -38,8 +38,8 @@
       "effectiveDate": "1977-05-17",
       "contestType": "knesset",
       "type": "candidate-capacity",
-      "textEn": "Flatto-Sharon had one candidate, 35,049 votes and one published seat. The app’s capacity cap reproduces the result; the precise historical redistribution authority remains unresolved.",
-      "textHe": "לרשימת פלאטו־שרון היה מועמד יחיד, 35,049 קולות ומנדט אחד בתוצאות שפורסמו. הגבלת הקיבולת באפליקציה משחזרת את התוצאה; הסמכות ההיסטורית המדויקת לחלוקה מחדש טרם הובררה.",
+      "textEn": "Flatto-Sharon had one candidate, 35,049 votes and one published seat. The Knesset’s 1 November 1977 appeal determination confirms the CEC’s one-seat initial cap, 114 initial seats and six surplus seats under section 81(d).",
+      "textHe": "לרשימת פלאטו־שרון היה מועמד יחיד, 35,049 קולות ומנדט אחד. הכרעת הכנסת בערעור מיום 1 בנובמבר 1977 מאשרת שהוועדה הגבילה את הרשימה למנדט אחד בחלוקה הראשונה, שבה חולקו 114 מנדטים, וחילקה שישה מנדטים עודפים לפי סעיף 81(ד).",
       "source": {
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset9-results.pdf",
         "publisher": "Central Elections Committee / Official Gazette",
@@ -55,6 +55,13 @@
           "publisherHe": "ועדת הבחירות המרכזית / רשומות",
           "evidence": "official",
           "sourceId": "k9-candidates-gazette"
+        },
+        {
+          "url": "https://fs.knesset.gov.il/9/Plenum/9_ptm_253927.pdf",
+          "publisher": "Knesset, 1 November 1977, p.237",
+          "publisherHe": "הכנסת, 1 בנובמבר 1977, עמ׳ 237",
+          "evidence": "official",
+          "sourceId": "k9-cap-appeal-protocol"
         }
       ]
     },

@@ -29,6 +29,11 @@
 // asOf and build provenance change. All 25 other datasets, IDs, votes, seats and
 // agreements are preserved. Only the model digest changes; no engine/src changes.
   // merged with k11 audit fixes: combined digest = union of the separately reviewed changes.
+// k9 audit 6 Nov: 51 recursive dataset paths (identity/display, bios, supporter grouping,
+// untranscribed-roster notes, status and provenance); all keys/votes/seats/agreements unchanged.
+// Allocation/analysis change only because the candidate-cap warning now distinguishes documented
+// 1977 procedure from counterfactual inference. No allocation logic changed; other 25 datasets equal HEAD.
+  // merged with k9 audit fixes: combined digest = union of the separately reviewed changes.
 // 6 Nov 2026 k22 audit: reviewed scalar diff changes only status, logical Hebrew
 // punctuation, CEC link titles, three withdrawal flags and distinct modern Gesher
 // IDs (also k23). Withdrawal flags affect hypothetical corpus allocations; model
@@ -99,8 +104,9 @@ const EXPECTED: Record<Family, string> = {
   // merged with k13 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k13 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k15 audit fixes: combined digest = union of the separately reviewed changes.
-  allocation: 'bd974ae0615cdf6913ab9146fb626c4a1539aa1fa7efe0f7fc82138230be26a6',
-  analysis: 'b682af4570daf5cd7967e77afda56c8a9bcb2b5de4850f4d8ebc1652228269e0',
+  // merged with k9 audit fixes: combined digest = union of the separately reviewed changes.
+  allocation: 'acc630c6ed305511f0a3eb5f98517b66be520904afc25bffad778fc0f3e613be',
+  analysis: '0b41ade19f938f415b693825f3600693a9e5f17e81ec7d12a6d16fb82177f30b',
   // Model digest re-recorded for the 1973 party ranks, then for candidate biography links (Candidate.bio): with
   // the build timestamps held fixed and bio not carried, the new code gives the previous digest. Then for three
   // corrected names (0088 addendum: 1955 #24, 1959 #47, 2003 Shinui #14); src unchanged, other digests unchanged.
@@ -176,7 +182,8 @@ const EXPECTED: Record<Family, string> = {
   // Unity source URL and build provenance. All IDs/votes/seats and 25 other datasets equal HEAD.
   // Only model output changes; the four engine/validation/rules digests stay unchanged.
   // merged with k10 audit fixes: combined digest = union of the separately reviewed changes.
-  model: 'e06ae7b9650654500048038e0fb89008d98cd3e262ede1ef9e8714ba077bffcc',
+  // merged with k9 audit fixes: combined digest = union of the separately reviewed changes.
+  model: 'e82e083a9865be67c1a6b392b2fbe2414c4e18d837d3d2ccac70e542e8e5c584',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

@@ -404,7 +404,7 @@ export function prepareAllocation(input: AllocationInput): PreparedAllocation {
       const changed = listResults.filter((l, i) => l.seats !== uncapped.lists[i].seats);
       if (changed.length) warnings!.push({
         code: 'inferred-candidate-cap',
-        message: 'Candidate capacity changed the allocation. This method matches the official 1977 table, but its legal rule was not located; this outcome is an inference.',
+        message: 'Candidate capacity changed the allocation. The historical 1977 cap is documented; applying it to this changed scenario is an app inference.',
         data: { ids: changed.map(l => l.id), cappedIds: changed.filter(l => lists[indexOf.get(l.id)!].candidateCount !== undefined && l.seats < uncapped.lists[indexOf.get(l.id)!].seats).map(l => l.id) },
       });
     }

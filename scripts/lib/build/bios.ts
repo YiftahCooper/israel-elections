@@ -31,8 +31,7 @@ export function applyBios(ds: ElectionDataset): ElectionDataset {
     // k12 audit: a reviewed displayNameEn overrides a misspelt site value; the raw site value stays as evidence.
     if (e.displayNameEn) return e.displayNameEn;
     const name = namesEn.get(e.knesset.siteId);
-    // k13 audit: siteId 67 returns a backtick; preserve raw evidence and normalize display punctuation.
-    return ds.id === 'k13' && e.knesset.siteId === 67 ? name?.replace('`', "'") : name;
+    return name;
   };
   const ids = new Set(ds.lists.flatMap((l) => l.candidates.map((c) => c.id)));
   const unknown = Object.keys(bios).filter((id) => !ids.has(id));
@@ -47,5 +46,7 @@ export function applyBios(ds: ElectionDataset): ElectionDataset {
     if (/en\.wikipedia/.test(JSON.stringify(b))) throw new Error(`data/meta/bios/${ds.id}.json: English Wikipedia is never linked`);
     return b.knesset || b.hewiki || b.party ? b : null;
   };
-  return { ...ds, lists: ds.lists.map((l) => ({ ...l, candidates: l.candidates.map((c) => { const e = bios[c.id]; const b = e ? bioOf(e) : null; const en = e ? nameEnOf(e) : undefined; const displayEn = ds.id === 'k18' ? en?.replaceAll('`', "'").replace(/\s+/g, ' ').trim() : en; return b || displayEn ? { ...c, ...(displayEn ? { nameEn: displayEn } : {}), ...(b ? { bio: b } : {}) } : c; }) })) };
+  // Display form of official site names: backticks become apostrophes and repeated whitespace collapses (audits k7, k9, k13, k18).
+  // The raw site value stays in data/raw/bios as evidence; spelling is never changed here.
+  return { ...ds, lists: ds.lists.map((l) => ({ ...l, candidates: l.candidates.map((c) => { const e = bios[c.id]; const b = e ? bioOf(e) : null; const en = e ? nameEnOf(e) : undefined; const displayEn = en?.replaceAll('`', "'").replace(/\s+/g, ' ').trim(); return b || displayEn ? { ...c, ...(displayEn ? { nameEn: displayEn } : {}), ...(b ? { bio: b } : {}) } : c; }) })) };
 }
