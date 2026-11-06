@@ -16,6 +16,14 @@
 // affect model only. All numeric inputs/seats unchanged. The scratch baseline with
 // pre-audit k13 reproduces 4faa7f17…; allocation and three other digests unchanged.
   // merged with k13 audit fixes: combined digest = union of the separately reviewed changes.
+// k15 stable-ID follow-up: restore opaque IDs 15-ט / 15-קף without changing letters.
+// Recursive dataset diff is exactly those ID/reference reversions and builtAt; all
+// other 25 datasets unchanged. HEAD k15 substitution reproduces all prior digests.
+// k15 audit (6 Nov): only k15 changes: ballot-ID migrations, gazetted names,
+// two withdrawn registration records, roster status, Gagula note, two withheld logos and provenance.
+// Field diff recorded in k15-resolution.md. Restoring HEAD k15 at scenarioFromDataset
+// reproduces all five old digests; src and the other 25 datasets are unchanged.
+  // merged with k15 audit fixes: combined digest = union of the separately reviewed changes.
 // 6 Nov 2026 k22 audit: reviewed scalar diff changes only status, logical Hebrew
 // punctuation, CEC link titles, three withdrawal flags and distinct modern Gesher
 // IDs (also k23). Withdrawal flags affect hypothetical corpus allocations; model
@@ -85,7 +93,8 @@ const EXPECTED: Record<Family, string> = {
   // merged with k16 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k13 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k13 audit fixes: combined digest = union of the separately reviewed changes.
-  allocation: '5ff5865b64d9e790ae25b4fd33c57fde556ede3e3eefe2cf6c0da4861e81a7c2',
+  // merged with k15 audit fixes: combined digest = union of the separately reviewed changes.
+  allocation: 'bd974ae0615cdf6913ab9146fb626c4a1539aa1fa7efe0f7fc82138230be26a6',
   analysis: 'b682af4570daf5cd7967e77afda56c8a9bcb2b5de4850f4d8ebc1652228269e0',
   // Model digest re-recorded for the 1973 party ranks, then for candidate biography links (Candidate.bio): with
   // the build timestamps held fixed and bio not carried, the new code gives the previous digest. Then for three
@@ -155,7 +164,8 @@ const EXPECTED: Record<Family, string> = {
   // merged with k13 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k12 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k13 audit fixes: combined digest = union of the separately reviewed changes.
-  model: '5cc4b9a10888695e4cbfe5563227225637ed17c688466f5a26a77c4388477291',
+  // merged with k15 audit fixes: combined digest = union of the separately reviewed changes.
+  model: '130f90a9ce9abec40ce4235f98c3eed329e3e08b315b73589ccbfe0952475461',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

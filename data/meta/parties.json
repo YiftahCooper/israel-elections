@@ -364,7 +364,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k15.json",
-      "sha256": "87e7add2a362ad72c7ce6bab9fff8f41a0b00c07ffc32089a6cc04216d2fe9fe",
+      "sha256": "8669c994eaffe4342f03353bfa166c7270e701d4eabb321030b02b493b46ffb0",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k16": {
@@ -11117,13 +11117,13 @@
       "id": "vehicle-15-אמת",
       "entityType": "alliance",
       "nameHe": "ישראל אחת בראשות אהוד ברק - העבודה גשר מימד",
-      "nameEn": "Labor–Meimad",
+      "nameEn": "One Israel",
       "names": [
         {
           "date": "1999-05-17",
           "datePrecision": "day",
           "nameHe": "ישראל אחת בראשות אהוד ברק - העבודה גשר מימד",
-          "nameEn": "Labor–Meimad",
+          "nameEn": "One Israel",
           "sources": [
             "k15"
           ],
@@ -11960,13 +11960,13 @@
     {
       "id": "vehicle-15-ד",
       "entityType": "alliance",
-      "nameHe": "אלתג׳מע אלוטני אלדימוקרטי (בל״ד)",
+      "nameHe": "אלתג׳מע אלוחדוי אלדמוקרטי (בל״ד)",
       "nameEn": "Balad",
       "names": [
         {
           "date": "1999-05-17",
           "datePrecision": "day",
-          "nameHe": "אלתג׳מע אלוטני אלדימוקרטי (בל״ד)",
+          "nameHe": "אלתג׳מע אלוחדוי אלדמוקרטי (בל״ד)",
           "nameEn": "Balad",
           "sources": [
             "k15"
@@ -12194,13 +12194,13 @@
     {
       "id": "vehicle-15-קז",
       "entityType": "electoral-vehicle",
-      "nameHe": "מפלגת הקזינו - עזרא טיסונה מוסד ההימורים הישראלי",
+      "nameHe": "מפלגת הקזינו - עזרא טיסונה מיסוד ההימורים בישראל",
       "nameEn": "Casino Party",
       "names": [
         {
           "date": "1999-05-17",
           "datePrecision": "day",
-          "nameHe": "מפלגת הקזינו - עזרא טיסונה מוסד ההימורים הישראלי",
+          "nameHe": "מפלגת הקזינו - עזרא טיסונה מיסוד ההימורים בישראל",
           "nameEn": "Casino Party",
           "sources": [
             "k15",
@@ -12258,13 +12258,13 @@
     {
       "id": "vehicle-15-נץ",
       "entityType": "electoral-vehicle",
-      "nameHe": "מפלגת הנגב",
+      "nameHe": "מפלגת נגב",
       "nameEn": "Negev Party",
       "names": [
         {
           "date": "1999-05-17",
           "datePrecision": "day",
-          "nameHe": "מפלגת הנגב",
+          "nameHe": "מפלגת נגב",
           "nameEn": "Negev Party",
           "sources": [
             "k15",
@@ -12354,13 +12354,13 @@
     {
       "id": "vehicle-15-קף",
       "entityType": "electoral-vehicle",
-      "nameHe": "ערבי חדש",
+      "nameHe": "הערבי החדש",
       "nameEn": "New Arab",
       "names": [
         {
           "date": "1999-05-17",
           "datePrecision": "day",
-          "nameHe": "ערבי חדש",
+          "nameHe": "הערבי החדש",
           "nameEn": "New Arab",
           "sources": [
             "k15",
@@ -12418,13 +12418,13 @@
     {
       "id": "vehicle-15-זך",
       "entityType": "electoral-vehicle",
-      "nameHe": "מורשת אבות בראשות הרב בא-גד",
+      "nameHe": "מורשת־אבות בראשות הרב בא־גד",
       "nameEn": "Moreshet Avot",
       "names": [
         {
           "date": "1999-05-17",
           "datePrecision": "day",
-          "nameHe": "מורשת אבות בראשות הרב בא-גד",
+          "nameHe": "מורשת־אבות בראשות הרב בא־גד",
           "nameEn": "Moreshet Avot",
           "sources": [
             "k15",
@@ -23522,6 +23522,70 @@
       ],
       "status": "observed-local-dataset",
       "externalIds": {}
+    },
+    {
+      "id": "vehicle-15-ני",
+      "entityType": "electoral-vehicle",
+      "nameHe": "מנהיגות יהודית לישראל",
+      "nameEn": "Jewish Leadership for Israel",
+      "names": [
+        {
+          "date": "1999-05-17",
+          "datePrecision": "day",
+          "nameHe": "מנהיגות יהודית לישראל",
+          "nameEn": "Jewish Leadership for Israel",
+          "sources": [
+            "k15",
+            "proposal"
+          ],
+          "status": "observed-local-dataset"
+        }
+      ],
+      "aliases": [],
+      "activePeriod": {
+        "from": "1999-05-17",
+        "to": "1999-05-17",
+        "datePrecision": "day",
+        "basis": "observed-election-appearances-not-lifetime"
+      },
+      "sources": [
+        "k15",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "externalIds": {}
+    },
+    {
+      "id": "vehicle-15-ק",
+      "entityType": "electoral-vehicle",
+      "nameHe": "קול הסביבה",
+      "nameEn": "Voice of the Environment",
+      "names": [
+        {
+          "date": "1999-05-17",
+          "datePrecision": "day",
+          "nameHe": "קול הסביבה",
+          "nameEn": "Voice of the Environment",
+          "sources": [
+            "k15",
+            "proposal"
+          ],
+          "status": "observed-local-dataset"
+        }
+      ],
+      "aliases": [],
+      "activePeriod": {
+        "from": "1999-05-17",
+        "to": "1999-05-17",
+        "datePrecision": "day",
+        "basis": "observed-election-appearances-not-lifetime"
+      },
+      "sources": [
+        "k15",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "externalIds": {}
     }
   ],
   "partyAppearances": [
@@ -28433,7 +28497,8 @@
       "sources": [
         "k15"
       ],
-      "status": "observed-local-dataset"
+      "status": "observed-local-dataset",
+      "locator": "public/data/k15.json#/lists/0"
     },
     {
       "electionId": "k15",
@@ -28573,7 +28638,8 @@
       "sources": [
         "k15"
       ],
-      "status": "observed-local-dataset"
+      "status": "observed-local-dataset",
+      "locator": "public/data/k15.json#/lists/8"
     },
     {
       "electionId": "k15",
@@ -28609,7 +28675,8 @@
       "sources": [
         "k15"
       ],
-      "status": "observed-local-dataset"
+      "status": "observed-local-dataset",
+      "locator": "public/data/k15.json#/lists/9"
     },
     {
       "electionId": "k15",
@@ -28645,7 +28712,8 @@
       "sources": [
         "k15"
       ],
-      "status": "observed-local-dataset"
+      "status": "observed-local-dataset",
+      "locator": "public/data/k15.json#/lists/10"
     },
     {
       "electionId": "k15",
@@ -28720,7 +28788,8 @@
       "sources": [
         "k15"
       ],
-      "status": "observed-local-dataset"
+      "status": "observed-local-dataset",
+      "locator": "public/data/k15.json#/lists/13"
     },
     {
       "electionId": "k15",
@@ -35812,6 +35881,32 @@
       "status": "observed-local-dataset",
       "locator": "public/data/k16.json#/lists/27",
       "continuity": "no-cross-election-continuity-inferred"
+    },
+    {
+      "electionId": "k15",
+      "listId": "15-ני",
+      "partyId": "vehicle-15-ני",
+      "role": "singleton",
+      "sources": [
+        "k15",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "locator": "public/data/k15.json#/lists/31",
+      "continuity": "unresolved"
+    },
+    {
+      "electionId": "k15",
+      "listId": "15-ק",
+      "partyId": "vehicle-15-ק",
+      "role": "singleton",
+      "sources": [
+        "k15",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "locator": "public/data/k15.json#/lists/32",
+      "continuity": "unresolved"
     }
   ],
   "conflicts": [

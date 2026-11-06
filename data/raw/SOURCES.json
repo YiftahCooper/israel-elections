@@ -869,7 +869,7 @@
     "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-results.pdf",
     "publisher": "Central Elections Committee / Reshumot (gov.il host)",
     "official": true,
-    "description": "Knesset national votes, invalid votes, seats and elected members; Knesset ballot only",
+    "description": "Prime Minister and Knesset final results, elected members, and separate Deri resignation notice; YP 4757 pp.3376–3378.",
     "method": "http",
     "retrievedAt": "2026-11-03T15:27:21.833266+00:00",
     "bytes": 175416,
@@ -2706,8 +2706,8 @@
     "description": "Reviewed national transcription; source and printed page references retained in JSON.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
-    "bytes": 6428,
-    "sha256": "dc312dab1d7ad020e9cb0705985f528672916f81546492bab018941a195e9853"
+    "bytes": 8378,
+    "sha256": "d58607aa09b30ee425b5a7026fc4163f1d718e1d042e07a05d0d60c7da3deb4b"
   },
   {
     "id": "k15-rosters-reviewed",
@@ -2718,8 +2718,8 @@
     "description": "Reviewed rosters transcription; source and printed page references retained in JSON.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
-    "bytes": 22377,
-    "sha256": "ed832424d917cd498dfeeaa3252bcc22a88762acff9200a2ca0725179298b482"
+    "bytes": 24129,
+    "sha256": "62c9026acc769fc8ad87e9ea08a8320ea505b0e9d95d77ff4a3fecaaf2e8c203"
   },
   {
     "id": "k15-elected-reviewed",
@@ -2730,8 +2730,8 @@
     "description": "Reviewed elected transcription; source and printed page references retained in JSON.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
-    "bytes": 8055,
-    "sha256": "7efe298f8577952161853ca3689d63fdbd92ee1ffac011a5275d8b331decdb33"
+    "bytes": 8057,
+    "sha256": "c2ae25c2a3e6909acf8dab9e1703da9dd8e03ad5803c73858bd7a3812ae7e01c"
   },
   {
     "id": "k10-candidates-reviewed",
@@ -6174,5 +6174,53 @@
     "sha256": "d30fbfa1d852e270288491c36686f023662b6738b573793a059c1bbaa32dd2dc",
     "bytes": 253,
     "description": "Retained exact personal-details excerpt confirming Michael Reiser death date."
+  },
+  {
+    "id": "k15-withdrawals-yp4751",
+    "file": "research/yp4751-candidate-changes-1999.pdf",
+    "url": "https://olaw.org.il/yalkut/yalkut-4751.pdf",
+    "publisher": "State of Israel / CEC (olaw.org.il mirror)",
+    "official": true,
+    "description": "Statutory resignation notice; YP 4751 p.3184 קול הסביבה",
+    "method": "http",
+    "retrievedAt": "2026-11-06",
+    "bytes": 1475197,
+    "sha256": "94b7df52b2ed4eaaba4fbc50b60009778e2ad134442a37ca6a2d407870956caf"
+  },
+  {
+    "id": "k15-withdrawals-yp4754",
+    "file": "research/yp4754-candidate-changes-1999.pdf",
+    "url": "https://olaw.org.il/yalkut/yalkut-4754.pdf",
+    "publisher": "State of Israel / CEC (olaw.org.il mirror)",
+    "official": true,
+    "description": "Statutory resignation notice; YP 4754 p.3269 מנהיגות יהודית לישראל",
+    "method": "http",
+    "retrievedAt": "2026-11-06",
+    "bytes": 1491677,
+    "sha256": "ff922eeb33c59ef8524a34f943bdbcd25d387c95e230df488051b07720fd71c9"
+  },
+  {
+    "id": "k15-gov28-tenure",
+    "file": "k15/gov28-tenure.pdf",
+    "url": "https://www.gov.il/BlobFolder/generalpage/gov28/he/gov28.pdf",
+    "publisher": "State of Israel (disclosed host in URL)",
+    "official": true,
+    "description": "Official government 28 tenure, p.120; 6.7.1999–7.3.2001",
+    "method": "http",
+    "retrievedAt": "2026-11-06",
+    "bytes": 342336,
+    "sha256": "22afd8c08cc5f35a6077ec280910ff0b7f1cc382ef0ab5629908bc3902c36ac9"
+  },
+  {
+    "id": "k15-cec-dissolution",
+    "file": "k15/cec-dissolution.pdf",
+    "url": "https://lacuna.co.il/posts/election_date/04-1.pdf",
+    "publisher": "State of Israel (disclosed host in URL)",
+    "official": true,
+    "description": "CEC chair decision 1/04, 3 March 2004, pp.26–27, historical dissolution act on 5 November 2002; third-party mirror",
+    "method": "http",
+    "retrievedAt": "2026-11-06",
+    "bytes": 196518,
+    "sha256": "21d6d4777f072e7d461d5ba93fca06b33ab9d7af9075113ac4d31df0cc3d382f"
   }
 ]

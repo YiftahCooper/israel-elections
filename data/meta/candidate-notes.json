@@ -158,6 +158,15 @@
         "Knesset English member header (retained siteId extract)",
         "YP 3591 pp.243–244"
       ]
+    },
+    {
+      "candidateId": "15-שס#18",
+      "en": "The 1999 candidate and elected notices print איסק גאגולה (surname first). Knesset OData PersonID 485 uses יצחק גאגולה. The gazetted form is retained.",
+      "he": "בהודעות המועמדים והנבחרים מ־1999 נדפס „גאגולה איסק”; במאגר הכנסת (485) מופיע „יצחק גאגולה”. נשמר השם כפי שנדפס ברשומות.",
+      "sources": [
+        "YP 4748 p.3048; YP 4757 p.3378",
+        "data/raw/k15/knesset-odata-members.json, PersonID 485"
+      ]
     }
   ]
 }

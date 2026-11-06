@@ -40,7 +40,7 @@ describe('independent PM ballot totals', () => {
     expect(c.totals.invalid.source.evidence).toBe('secondary');
     expect(c.totals.cast.source.evidence).toBe('secondary');
     expect(c.candidates.filter(p => p.status === 'withdrawn')).toHaveLength(3);
-    expect(c.candidates.filter(p => p.status === 'withdrawn').every(p => !p.votes && p.source?.evidence === 'secondary')).toBe(true);
+    expect(c.candidates.filter(p => p.status === 'withdrawn').every(p => !p.votes && p.source?.evidence === 'official' && p.source.sourceId === 'k15-agreements-gazette')).toBe(true);
   });
   it('links 2001 to k15 without a new Knesset', () => {
     expect(electionContext.pmContests[2]).toMatchObject({ electionId: 'k15', contestType: 'prime-minister-only' });
