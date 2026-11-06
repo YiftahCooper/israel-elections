@@ -467,7 +467,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k26.json",
-      "sha256": "26e04b71d0b8d1baf6e343e8afda442f1e16b11becf192bff5680052711a92ab",
+      "sha256": "16c3ede3769197d08c94c3241a537317028cb35aca33705fb2cd25d661a0f64f",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     }
   },
@@ -3009,12 +3009,12 @@
       "electionId": "k26",
       "electionDate": "2026-10-27",
       "datasetPath": "public/data/k26.json",
-      "datasetSha256": "26e04b71d0b8d1baf6e343e8afda442f1e16b11becf192bff5680052711a92ab",
+      "datasetSha256": "4a692fd86d2eeab5ef315f76dfc42dec4d9a9cd12c9da466c346d7f96678c4ea",
       "datasetStatus": {
-        "stage": "final-count-pending-publication",
-        "asOf": "2026-11-04",
-        "noteHe": "ספירת הוועדה עודכנה ב־4.11.2026. הפרסום ברשומות לא אומת נכון ל־5.11.",
-        "noteEn": "CEC count updated 4 Nov 2026. Gazette publication unverified as of 5 Nov."
+        "stage": "official-final",
+        "asOf": "2026-11-06",
+        "noteHe": "תוצאות סופיות רשמיות של הוועדה; המליאה אישרה את התוצאות והמנדטים ב־4.11.2026. הפרסום ברשומות לא אומת נכון ל־6.11.",
+        "noteEn": "CEC official final results; plenary approved results and seats on 4 Nov 2026. Gazette publication unverified as of 6 Nov."
       },
       "validVotes": 5691426,
       "voteSourceIds": [

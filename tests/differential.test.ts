@@ -103,7 +103,11 @@ const EXPECTED: Record<Family, string> = {
   // k25 app-defined grouping labels, its New Economic Party link, one unproved logo removal and build timestamps.
   // All numeric inputs and the other four differential digests are unchanged.
   // merged with the k25 audit fixes: combined digest = union of the separately reviewed changes.
-  model: 'b079ba2688077a132e73bede1752793eefe8b9ca4f636f6b77267352802fee05',
+  // k26 audit: only official results status/seat provenance, two name-variant notes, bloc evidence,
+  // completed recommendation scheme and buildInfo differ; all other datasets equal HEAD (field diff 6 Nov).
+  // Allocation, analysis, validation and rules digests are unchanged.
+  // merged with the k26 audit fixes: combined digest = union of the separately reviewed changes.
+  model: 'ffb2cc3a20ea8f1c7307b5387fb23974c70e0934b6f7c852fea73b6f3bffd569',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

@@ -1,0 +1,208 @@
+{
+  "url": "https://votes26.bechirot.gov.il/nationalresults?lang=he",
+  "accessed": "2026-11-06",
+  "retrieval": "CEC page text read through Jina Reader; direct web reader showed a JavaScript challenge, which was not bypassed. Manually transcribed results table.",
+  "quote": "תוצאות סופיות רשמיות",
+  "totals": {
+    "registered": 7331981,
+    "votesCast": 5717397,
+    "invalid": 25971,
+    "valid": 5691426,
+    "ballotBoxes": 12929,
+    "localities": 1224,
+    "envelopeVotes": 452687
+  },
+  "lists": [
+    {
+      "letters": "מחל",
+      "votes": 1167591,
+      "seats": 27
+    },
+    {
+      "letters": "ב",
+      "votes": 326793,
+      "seats": 7
+    },
+    {
+      "letters": "שס",
+      "votes": 299533,
+      "seats": 6
+    },
+    {
+      "letters": "ג",
+      "votes": 312632,
+      "seats": 7
+    },
+    {
+      "letters": "ט",
+      "votes": 290549,
+      "seats": 6
+    },
+    {
+      "letters": "דרך",
+      "votes": 913629,
+      "seats": 21
+    },
+    {
+      "letters": "אמת",
+      "votes": 366278,
+      "seats": 8
+    },
+    {
+      "letters": "רק",
+      "votes": 532018,
+      "seats": 12
+    },
+    {
+      "letters": "ל",
+      "votes": 337450,
+      "seats": 7
+    },
+    {
+      "letters": "עם",
+      "votes": 337720,
+      "seats": 8
+    },
+    {
+      "letters": "ודם",
+      "votes": 500755,
+      "seats": 11
+    },
+    {
+      "letters": "די",
+      "votes": 155199,
+      "seats": 0
+    },
+    {
+      "letters": "ך",
+      "votes": 95764,
+      "seats": 0
+    },
+    {
+      "letters": "נר",
+      "votes": 11271,
+      "seats": 0
+    },
+    {
+      "letters": "זך",
+      "votes": 10604,
+      "seats": 0
+    },
+    {
+      "letters": "ני",
+      "votes": 9928,
+      "seats": 0
+    },
+    {
+      "letters": "בי",
+      "votes": 5713,
+      "seats": 0
+    },
+    {
+      "letters": "ד",
+      "votes": 4077,
+      "seats": 0
+    },
+    {
+      "letters": "צדק",
+      "votes": 2086,
+      "seats": 0
+    },
+    {
+      "letters": "בד",
+      "votes": 1438,
+      "seats": 0
+    },
+    {
+      "letters": "צף",
+      "votes": 1049,
+      "seats": 0
+    },
+    {
+      "letters": "י",
+      "votes": 933,
+      "seats": 0
+    },
+    {
+      "letters": "קך",
+      "votes": 918,
+      "seats": 0
+    },
+    {
+      "letters": "פה",
+      "votes": 871,
+      "seats": 0
+    },
+    {
+      "letters": "קץ",
+      "votes": 778,
+      "seats": 0
+    },
+    {
+      "letters": "נקי",
+      "votes": 761,
+      "seats": 0
+    },
+    {
+      "letters": "בקר",
+      "votes": 747,
+      "seats": 0
+    },
+    {
+      "letters": "קה",
+      "votes": 712,
+      "seats": 0
+    },
+    {
+      "letters": "רץ",
+      "votes": 580,
+      "seats": 0
+    },
+    {
+      "letters": "ק",
+      "votes": 569,
+      "seats": 0
+    },
+    {
+      "letters": "נף",
+      "votes": 524,
+      "seats": 0
+    },
+    {
+      "letters": "ז",
+      "votes": 501,
+      "seats": 0
+    },
+    {
+      "letters": "נץ",
+      "votes": 482,
+      "seats": 0
+    },
+    {
+      "letters": "יק",
+      "votes": 399,
+      "seats": 0
+    },
+    {
+      "letters": "ה",
+      "votes": 322,
+      "seats": 0
+    },
+    {
+      "letters": "זץ",
+      "votes": 252,
+      "seats": 0
+    },
+    {
+      "letters": "כן",
+      "votes": 0,
+      "seats": 0
+    },
+    {
+      "letters": "צבי",
+      "votes": 0,
+      "seats": 0
+    }
+  ],
+  "note": "CEC official final allocation; Gazette notice not located as of 6 November. Knesset English summary independently agrees on seats but has older valid votes 5,691,396 (CEC 5,691,426); latest primary CEC count wins."
+}

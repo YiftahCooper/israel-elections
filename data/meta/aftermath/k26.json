@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "electionId": "k26",
   "status": "pilot",
-  "reviewedAt": "2026-11-05",
+  "reviewedAt": "2026-11-06",
   "notes": [
     "Research record following docs/design/after-the-election.md; not wired into the app. Gaps remain explicit.",
-    "Formation is in progress. no-government means no new government recorded as of the dated check, not a completed failed formation. Pending Likud seats use unknown, not none.",
+    "Formation is in progress; no-government means no new government recorded as of the dated check, not a completed failed formation.",
     "The schema has no in-progress outcome; outcomeNote distinguishes an ongoing process. No government or term-end event is predicted."
   ],
   "sources": {
@@ -86,6 +86,30 @@
       "publisher": "Maariv",
       "kind": "secondary",
       "accessed": "2026-11-05"
+    },
+    "president-round-complete": {
+      "url": "https://www.president.gov.il/תם-סבב-ההתייעצויות-עם-כלל-סיעות-הכנסת-ב/",
+      "publisher": "President's Residence",
+      "kind": "official",
+      "accessed": "2026-11-06"
+    },
+    "president-likud": {
+      "url": "https://www.president.gov.il/סיעת-הליכוד-המליצה-על-ח״כ-בנימין-נתניהו/",
+      "publisher": "President's Residence",
+      "kind": "official",
+      "accessed": "2026-11-06"
+    },
+    "cec-plenary-approval": {
+      "url": "https://www.israelhayom.co.il/news/law/article/21776989",
+      "publisher": "Israel Hayom",
+      "kind": "secondary",
+      "accessed": "2026-11-06"
+    },
+    "president-otzma": {
+      "url": "https://www.president.gov.il/סיעת-עוצמה-יהודית-המליצה-על-ח״כ-בנימין/",
+      "publisher": "President's Residence",
+      "kind": "official",
+      "accessed": "2026-11-06"
     }
   },
   "results": {
@@ -98,10 +122,14 @@
         {
           "source": "president-results",
           "quote": "נשיא המדינה יצחק הרצוג קיבל לידיו היום, יום רביעי, כ״ד בחשוון, 4 בנובמבר, את תוצאות הבחירות הרשמיות לכנסת ה-26"
+        },
+        {
+          "source": "cec-plenary-approval",
+          "quote": "מליאת ועדת הבחירות המרכזית אישרה היום (רביעי) את תוצאות הבחירות לכנסת ה־26 ואת חלוקת המנדטים בין הרשימות"
         }
       ],
       "notes": [
-        "This establishes receipt of official results, not the Gazette number or an independently retrieved official seat allocation. Existing dataset publication-status caveat remains applicable."
+        "Receipt of official results; CEC official final allocation independently retrieved on 6 November. Gazette number/publication remains unverified."
       ]
     }
   },
@@ -208,7 +236,13 @@
           "letters": "ב",
           "seats": 7,
           "status": "recommended",
-          "nominee": "netanyahu"
+          "nominee": "netanyahu",
+          "cites": [
+            {
+              "source": "president-otzma",
+              "quote": "והמליצה לנשיא המדינה יצחק הרצוג על ח\"כ בנימין נתניהו להרכבת הממשלה"
+            }
+          ]
         },
         {
           "letters": "שס",
@@ -243,15 +277,20 @@
         {
           "letters": "מחל",
           "seats": 27,
-          "status": "unknown",
-          "noteEn": "Not yet confirmed at the last check; not an explicit non-recommendation."
+          "status": "recommended",
+          "nominee": "netanyahu",
+          "cites": [
+            {
+              "source": "president-likud",
+              "quote": "והמליצה לנשיא המדינה יצחק הרצוג על ח\"כ בנימין נתניהו להרכבת הממשלה"
+            }
+          ]
         }
       ],
       "totals": {
         "eisenkot": 67,
-        "netanyahu": 19,
-        "none": 7,
-        "unknown": 27
+        "netanyahu": 46,
+        "none": 7
       },
       "cites": [
         {
@@ -277,18 +316,17 @@
         {
           "source": "recommendations-6",
           "quote": "Later, Yashar's delegation called on the president to award Herzog the mandate ... After Herzog met with every party except the largest two, Eisenkot had secured the support of Yisrael Beytenu, the Democrats, Ra'am, the Joint List, and B'Yachad."
+        },
+        {
+          "source": "president-round-complete",
+          "quote": "סיעות המונות 46 חברי כנסת"
         }
       ],
       "notes": [
-        "Partial: checked on 5 November 2026 at about 20:10 Israel time, while the last consultation (Likud, scheduled 20:30) was still to come. Eleven of the twelve factions had been consulted (4 November: Religious Zionism, Shas, Yisrael Beiteinu, Zehut; 5 November: UTJ, Otzma Yehudit, the Democrats, Ra'am, the Joint List, B'Yachad, Yashar). Likud's recommendation is left pending, not inferred. No mandate had been given at the time of checking. JPost's report of the Yashar meeting says 'award Herzog the mandate' (an evident slip for Eisenkot); Maariv states the recommendation of Eisenkot directly. See docs/research/pm-recommendations-2009-2026.md.",
-        "Seats are calculated by the app from the CEC count of 4 November 2026; an official (gazetted) seat allocation is not yet verified. The same per-list seats (Yashar 21, B'Yachad 12, Democrats 8, Yisrael Beiteinu 7, Ra'am 8, Joint List 11, Likud 27, Otzma Yehudit 7, Shas 6, Religious Zionism–Zehut 6) are reported by Maariv on 5 November.",
-        "The President's Residence statements on gov.il could not be retrieved (HTTP 403 to the project client); its statements are cited as reported by JNS. The date is the second consultation day.",
-        "Totals are sums of confirmed faction recommendations weighted by the app-calculated seats, not a final presidential tally. Official seat allocation still not independently retrieved.",
-        "Recommendation dates: Religious Zionism–Zehut, Shas and Yisrael Beiteinu on 4 November; remaining confirmed recommendations on 5 November.",
-        "President notices were retrieved directly in this pass, upgrading the earlier report of inaccessible official originals.",
-        "Likud remains unknown at this check; its projected support for its leader is not recorded as fact.",
-        "Rechecked at 20:36 Israel time after the scheduled 20:30 Likud meeting. The retrieved President’s Residence homepage/archive and targeted searches did not confirm the formal Likud recommendation; the Maariv reader still exposed the 20:00 update. This is a retrieval gap, not proof the meeting or recommendation had not occurred.",
-        "Rechecked on 5 November 2026 at 20:51 Israel time: the President’s Residence homepage and news archive, plus targeted official/reputable-news searches, still did not supply a formal Likud recommendation or mandate decision. Retrieval remains incomplete; the scheduled meeting time is not evidence of its outcome."
+        "Consultations completed on 5 November 2026. The President confirmed 67 recommendations for Eisenkot and 46 for Netanyahu; UTJ (7 seats) recommended nobody. Checked 6 November.",
+        "Seats match the CEC official final results. Gazette publication remains unverified as of 6 November.",
+        "Official President notices supersede the earlier 5 November 20:51 retrieval gap. No tasking is recorded: Herzog announced his intention to assign the mandate on Sunday 8 November.",
+        "Recommendation dates: Religious Zionism–Zehut, Shas and Yisrael Beiteinu on 4 November; remaining factions on 5 November."
       ]
     }
   ],
@@ -310,17 +348,17 @@
       {
         "date": "2026-11-05",
         "type": "consultations",
-        "textEn": "Herzog continued faction consultations; Likud’s meeting was scheduled for 20:30.",
-        "textHe": "הרצוג המשיך בהתייעצויות עם הסיעות; פגישת הליכוד נקבעה ל־20:30.",
+        "textEn": "Herzog completed consultations and announced 67 recommendations for Eisenkot and 46 for Netanyahu. He intends to assign the mandate on Sunday 8 November.",
+        "textHe": "הרצוג סיים את ההתייעצויות: 67 המליצו על איזנקוט ו־46 על נתניהו. הודיע שבכוונתו להטיל את המנדט ביום ראשון, 8 בנובמבר.",
         "cites": [
           {
-            "source": "maariv-consultations",
-            "quote": "20:30 הליכוד"
+            "source": "president-round-complete",
+            "quote": "בכוונתי להטיל את המנדט להרכבת ממשלה ביום ראשון הקרוב"
           }
         ]
       }
     ],
-    "outcomeNote": "Formation in progress; at the 5 November 2026, 20:51 Israel-time retrieval check no tasking or completed new government was verified."
+    "outcomeNote": "Formation in progress as of 6 November 2026; consultations completed 5 November, with tasking announced for 8 November. No completed tasking or new government is recorded."
   },
   "term": {
     "inclusionRule": "two-independent-chronologies-one-official-or-academic",
@@ -334,10 +372,9 @@
     "note": "IDI August 2026 Q7 is vote influence, a separate construct. No most-important-problem card is populated; see issue-polling-sources.md."
   },
   "gaps": [
-    "Likud’s formal recommendation and the final presidential tally remain unconfirmed in the 20:51 retrieval check (previous cutoff 20:36). No conclusion about actual non-occurrence follows from unchanged retrieved pages.",
     "No mandate, new government, Knesset inauguration or term end verified; future scheduled steps are not completed events.",
-    "Gazette publication and official seat allocation not independently retrieved.",
+    "Gazette publication not independently verified as of 6 November; official CEC seats verified.",
     "No qualifying general-problem survey topline; vote-influence percentages are not substituted."
   ],
-  "asOf": "2026-11-05T20:51:00+02:00"
+  "asOf": "2026-11-06"
 }

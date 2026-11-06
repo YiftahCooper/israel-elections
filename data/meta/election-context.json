@@ -166,17 +166,17 @@
     {
       "id": "pending-gazette",
       "electionId": "k26",
-      "effectiveDate": "2026-11-04",
+      "effectiveDate": "2026-11-06",
       "contestType": "knesset",
       "type": "publication-status",
-      "textEn": "CEC count updated 4 Nov 2026. Gazette publication unverified as of 5 Nov.",
-      "textHe": "ספירת הוועדה עודכנה ב־4.11.2026. הפרסום ברשומות לא אומת נכון ל־5.11.",
+      "textEn": "CEC official final results; plenary approved results and seats on 4 Nov 2026. Gazette publication unverified as of 6 Nov.",
+      "textHe": "תוצאות סופיות רשמיות של הוועדה; המליאה אישרה את התוצאות והמנדטים ב־4.11.2026. הפרסום ברשומות לא אומת נכון ל־6.11.",
       "source": {
-        "url": "https://media26.bechirot.gov.il/files/expb.csv",
+        "url": "https://votes26.bechirot.gov.il/nationalresults?lang=he",
         "publisher": "Central Elections Committee for the 26th Knesset",
         "publisherHe": "ועדת הבחירות המרכזית לכנסת ה-26",
         "evidence": "official",
-        "sourceId": "k26-ballots-csv"
+        "sourceId": "k26-official-results"
       }
     },
     {
@@ -610,13 +610,13 @@
       "textEn": "CEC excluded this list under Basic Law: The Knesset §7A; an appeal followed.",
       "textHe": "ועדת הבחירות פסלה את הרשימה לפי סעיף 7א לחוק־יסוד: הכנסת; לאחר מכן הוגש ערעור.",
       "source": {
-        "url": "https://www.gov.il/he/pages/hashutafut-lekulam_iist",
+        "url": "https://www.gov.il/he/pages/raam_list18",
         "publisher": "Central Elections Committee for the 26th Knesset (gov.il)",
         "publisherHe": "ועדת הבחירות המרכזית לכנסת ה-26 (gov.il)",
         "evidence": "official",
         "sourceId": "k26-list-pages"
       },
-      "listId": "26-ד"
+      "listId": "26-עם"
     },
     {
       "id": "list-restored-k26-עם",
@@ -627,13 +627,13 @@
       "textEn": "The Supreme Court allowed the appeal and reversed the list exclusion; the list could compete.",
       "textHe": "בית המשפט העליון קיבל את הערעור וביטל את פסילת הרשימה; הרשימה הורשתה להתמודד.",
       "source": {
-        "url": "https://www.gov.il/he/pages/hashutafut-lekulam_iist",
+        "url": "https://www.gov.il/he/pages/raam_list18",
         "publisher": "Central Elections Committee for the 26th Knesset (gov.il)",
         "publisherHe": "ועדת הבחירות המרכזית לכנסת ה-26 (gov.il)",
         "evidence": "official",
         "sourceId": "k26-list-pages"
       },
-      "listId": "26-ד"
+      "listId": "26-עם"
     },
     {
       "id": "withdrawn-list-k23-זץ",
@@ -1289,16 +1289,16 @@
       }
     },
     {
-      "id": "candidate-eligibility-k26-ד",
+      "id": "candidate-eligibility-k26-עם",
       "electionId": "k26",
-      "listId": "26-ד",
+      "listId": "26-עם",
       "effectiveDate": "2026-09-27",
       "contestType": "knesset",
       "type": "disqualification",
-      "textEn": "The CEC page records that Ahmad Hassan (#34) was not included in the list approved on 27 September 2026 following candidate eligibility checks under Elections Law §§62B/63 (as specified on that page). This is separate from ideological exclusion under Basic Law §7A and does not exclude the entire list.",
-      "textHe": "בעמוד הוועדה מתועד כי אחמד חסן (34) לא נכלל ברשימה שאושרה ב־27 בספטמבר 2026 לאחר בדיקת כשירות לפי סעיפים 62ב/63 לחוק הבחירות (כמפורט בעמוד). זו אינה פסילה אידאולוגית לפי סעיף 7א לחוק־היסוד ואינה פסילה של הרשימה כולה.",
+      "textEn": "The CEC page records that Ahmad Hassan (#34) was not included in the list approved on 27 September 2026 following candidate eligibility checks under Elections Law §63. This is separate from ideological exclusion under Basic Law §7A and does not exclude the entire list.",
+      "textHe": "בעמוד הוועדה מתועד כי אחמד חסן (34) לא נכלל ברשימה שאושרה ב־27 בספטמבר 2026 לאחר בדיקת כשירות לפי סעיף 63 לחוק הבחירות. זו אינה פסילה אידאולוגית לפי סעיף 7א לחוק־היסוד ואינה פסילה של הרשימה כולה.",
       "source": {
-        "url": "https://www.gov.il/he/pages/hashutafut-lekulam_iist",
+        "url": "https://www.gov.il/he/pages/raam_list18",
         "publisher": "Central Elections Committee",
         "publisherHe": "ועדת הבחירות המרכזית",
         "evidence": "official",

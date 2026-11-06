@@ -117,7 +117,7 @@ async function agreementPairs(letters: string[]): Promise<[string, string][]> {
   return pairs;
 }
 
-const SOURCE_IDS = ['k26-localities-csv', 'k26-ballots-csv', 'k26-list-pages', 'k26-surplus-gazette'];
+const SOURCE_IDS = ['k26-localities-csv', 'k26-ballots-csv', 'k26-list-pages', 'k26-surplus-gazette', 'k26-official-results'];
 
 export async function buildK26() {
   const rawSha256 = verifySources(SOURCE_IDS, check);
@@ -162,6 +162,8 @@ export async function buildK26() {
       nameHe = f.nameHe; sponsors = f.sponsors; cands = f.candidates; secondary = true;
       notes = [`רשימת המועמדים נלקחה ממקור משני (bechirot.fyi, עדכון ${f.updated}) משום שעמוד ועדת הבחירות לא נטען.`];
     }
+    if (L === 'ק') notes.push('שם הרשימה בעמוד המועמדים: דרך חזון ותקומה; בטבלת התוצאות הסופיות של הוועדה: תקומה (k26-official-results).');
+    if (L === 'קך') notes.push('בעמוד המועמדים: ולבחירות אישיות; בטבלת התוצאות הסופיות של הוועדה: ובחירות אישיות (k26-official-results).');
     const withdrawn = L === 'כן' || L === 'צבי';
     if (L === 'כן') notes.push('ועדת הבחירות המרכזית: "הרשימה אינה מתמודדת בבחירות לכנסת ה-26".');
     check(!cands.some(c => /מטעם|\|/.test(c.name)), `k26 ${L}: a candidate name still contains party text or table syntax`);
@@ -174,19 +176,28 @@ export async function buildK26() {
     });
   });
 
+  const official = JSON.parse(readFileSync(join(RAW, 'k26/official-results.json'), 'utf8')) as {
+    lists: { letters: string; votes: number; seats: number }[];
+  };
+  check(official.lists.length === lists.length, 'k26 official results: list count mismatch');
+  for (const l of lists) {
+    const row = official.lists.find(r => r.letters === l.letters);
+    check(row && row.votes === l.votes, `k26 official results: vote mismatch for ${l.letters}`);
+  }
+  check(official.lists.reduce((sum, l) => sum + l.seats, 0) === 120, 'k26 official results: seats do not sum to 120');
   const ds: ElectionDataset = {
     schemaVersion: DATASET_SCHEMA_VERSION, id: 'k26', knesset: 26, electionDate: '2026-10-27',
     nameHe: 'הבחירות לכנסת ה-26', nameEn: 'Election to the 26th Knesset',
     status: {
-      stage: 'final-count-pending-publication', asOf: '2026-11-04',
-      noteHe: 'ספירת הוועדה עודכנה ב־4.11.2026. הפרסום ברשומות לא אומת נכון ל־5.11.',
-      noteEn: 'CEC count updated 4 Nov 2026. Gazette publication unverified as of 5 Nov.',
+      stage: 'official-final', asOf: '2026-11-06',
+      noteHe: 'תוצאות סופיות רשמיות של הוועדה; המליאה אישרה את התוצאות והמנדטים ב־4.11.2026. הפרסום ברשומות לא אומת נכון ל־6.11.',
+      noteEn: 'CEC official final results; plenary approved results and seats on 4 Nov 2026. Gazette publication unverified as of 6 Nov.',
     },
     ruleSetId: 'il-2014-bader-ofer-3.25',
     totals: { registered: locTot.registered, votesCast: locTot.votesCast, invalid: locTot.invalid, valid: locTot.valid, ballotBoxes: ballotRows.length, ...geographyTotals(locRows) },
     lists, agreements: agreementRecords(26, await agreementPairs(letters), 'k26-surplus-gazette'), blocs: BLOCS.k26,
-    officialSeats: null, officialSeatsSourceId: null,
-    sourceIds: ['k26-localities-csv', 'k26-ballots-csv', 'k26-list-pages', 'k26-secondary-fyi', 'k26-surplus-gazette', 'k26-national-snapshot', 'law-elections'],
+    officialSeats: Object.fromEntries(official.lists.map(l => [`26-${l.letters}`, l.seats])), officialSeatsSourceId: 'k26-official-results',
+    sourceIds: ['k26-localities-csv', 'k26-ballots-csv', 'k26-list-pages', 'k26-secondary-fyi', 'k26-surplus-gazette', 'k26-national-snapshot', 'k26-official-results', 'law-elections'],
     buildInfo: { builtAt: new Date().toISOString(), rawSha256 },
   };
   const warnings = unrecognised.length ? [`k26: ${unrecognised.length} unrecognised line(s) on list pages were not published as notes:\n  ${unrecognised.join('\n  ')}`] : [];

@@ -6050,5 +6050,18 @@
   "retrievedAt": "2026-11-06",
   "bytes": 513,
   "sha256": "7fa6d7fccac7dda9bf4b6f603f695f341a0a4144166140ef804c114059d84a34"
+ },
+ {
+  "id": "k26-official-results",
+  "file": "k26/official-results.json",
+  "url": "https://votes26.bechirot.gov.il/nationalresults?lang=he",
+  "publisher": "ועדת הבחירות המרכזית לכנסת ה-26",
+  "publisherEn": "Central Elections Committee for the 26th Knesset",
+  "official": true,
+  "description": "CEC official final allocation; Gazette notice not located as of 6 November. Knesset English summary independently agrees on seats but has older valid votes 5,691,396 (CEC 5,691,426); latest primary CEC count wins.",
+  "method": "manual-capture",
+  "retrievedAt": "2026-11-06",
+  "bytes": 3652,
+  "sha256": "b129f0bf362a01fcd4ea40372d0bc4323036edf9dec9113d5c6f199d015abbed"
  }
 ]

@@ -72,7 +72,7 @@ export interface State {
 const LS = 'israel-elections:v1';
 /** used until (or if) the election index cannot be loaded: the two elections the app has always had */
 const FALLBACK_INDEX: ElectionIndexEntry[] = [
-  { id: 'k26', knesset: 26, date: '2026-10-27', nameHe: 'הבחירות לכנסת ה-26', nameEn: 'Election to the 26th Knesset', available: true, status: { stage: 'final-count-pending-publication' } },
+  { id: 'k26', knesset: 26, date: '2026-10-27', nameHe: 'הבחירות לכנסת ה-26', nameEn: 'Election to the 26th Knesset', available: true, status: { stage: 'official-final' } },
   { id: 'k25', knesset: 25, date: '2022-11-01', nameHe: 'הבחירות לכנסת ה-25', nameEn: 'Election to the 25th Knesset', available: true, status: { stage: 'official-final' } },
 ];
 

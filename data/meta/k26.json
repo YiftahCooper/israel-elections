@@ -1821,35 +1821,28 @@
    ],
    "sources": [
     {
-     "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%A9",
-     "publisher": "Wikipedia (he)",
+     "url": "https://www.mako.co.il/news-israel-elections/2026/liveblog-415cd45878581a1027.htm",
+     "publisher": "N12",
      "kind": "secondary",
-     "quote": "בכלי התקשורת בישראל הוצגו תוצאות הסקרים בדרך כלל בחלוקה לגושים: \"גוש הקואליציה\" או \"גוש נתניהו\", הכולל את הליכוד, עוצמה יהודית, הציונות הדתית–זהות, ש\"ס ויהדות התורה, מול \"האופוזיציה הציונית\" או \"גוש השינוי\", הכולל את \"ישר!\", \"ביחד\", הדמוקרטים וישראל ביתנו. הרשימה המשותפת והרשימה הערבית המאוחדת (רע\"ם), שקיבלו יחד בדרך כלל 12–14 מנדטים, לא שויכו לאף אחד מהגושים והוצגו בנפרד",
-     "accessed": "2026-11-04"
-    },
-    {
-     "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%A9",
-     "publisher": "Wikipedia (he)",
-     "kind": "secondary",
-     "quote": "גוש הקואליציה היוצאת זכה ב־53 מנדטים לעומת 68 בכנסת היוצאת, וגוש האופוזיציה ב־67, כשהמפלגות היהודיות באופוזיציה זכו ב־48 מנדטים, והערביות ב־19",
-     "accessed": "2026-11-04"
+     "accessed": "2026-11-06",
+     "quote": "53 לגוש נתניהו ו-48 לגוש השינוי"
     }
    ],
    "notes": [
-    "Same membership as the app's existing k26 blocs. Seat totals use the reported CEC final count (gazettement pending)."
+    "Electoral bloc grouping used in contemporary results reporting; not a claim of formal government membership on election day. Seat totals match the CEC official final allocation."
    ]
   },
   {
    "id": "outgoing-government",
-   "nameHe": "קואליציית הממשלה היוצאת (ה-37)",
-   "nameEn": "Outgoing government coalition (37th)",
-   "kind": "government",
+   "nameHe": "גוש נתניהו בבחירות",
+   "nameEn": "Netanyahu electoral bloc",
+   "kind": "pre-election",
    "date": "2026-10-27",
    "blocs": [
     {
      "id": "outgoing-coalition",
-     "nameHe": "מפלגות הקואליציה היוצאת",
-     "nameEn": "Outgoing coalition parties",
+     "nameHe": "גוש נתניהו",
+     "nameEn": "Netanyahu bloc",
      "color": "#1f5aa5",
      "members": [
       {
@@ -1873,22 +1866,15 @@
    ],
    "sources": [
     {
-     "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%A9",
-     "publisher": "Wikipedia (he)",
+     "url": "https://www.mako.co.il/news-israel-elections/2026/liveblog-415cd45878581a1027.htm",
+     "publisher": "N12",
      "kind": "secondary",
-     "quote": "גוש הקואליציה היוצאת זכה ב־53 מנדטים לעומת 68 בכנסת היוצאת",
-     "accessed": "2026-11-04"
-    },
-    {
-     "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%97%D7%99%D7%A8%D7%95%D7%AA_%D7%9C%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A2%D7%A9%D7%A8%D7%99%D7%9D_%D7%95%D7%A9%D7%A9",
-     "publisher": "Wikipedia (he)",
-     "kind": "secondary",
-     "quote": "\"גוש הקואליציה\" או \"גוש נתניהו\", הכולל את הליכוד, עוצמה יהודית, הציונות הדתית–זהות, ש\"ס ויהדות התורה",
-     "accessed": "2026-11-04"
+     "accessed": "2026-11-06",
+     "quote": "53 לגוש נתניהו ו-48 לגוש השינוי"
     }
    ],
    "notes": [
-    "Hebrew Wikipedia equates the outgoing coalition bloc with these five lists; party composition of the 37th government changed during its term (e.g. UTJ and Otzma Yehudit left and returned)."
+    "Electoral bloc grouping used in contemporary results reporting; not a claim of formal government membership on election day. Seat totals match the CEC official final allocation."
    ]
   },
   {
@@ -1932,6 +1918,9 @@
      "color": "#1f5aa5",
      "members": [
       {
+       "letters": "מחל"
+      },
+      {
        "letters": "ב"
       },
       {
@@ -1942,7 +1931,7 @@
        "note": "Consulted as two factions, Religious Zionism and Zehut; both recommended Netanyahu."
       }
      ],
-     "seats": 19
+     "seats": 46
     },
     {
      "id": "none",
@@ -1955,18 +1944,6 @@
       }
      ],
      "seats": 7
-    },
-    {
-     "id": "pending",
-     "nameHe": "טרם אומת (ההתייעצויות נמשכות)",
-     "nameEn": "Not yet confirmed (consultations under way)",
-     "color": "#cccccc",
-     "members": [
-      {
-       "letters": "מחל"
-      }
-     ],
-     "seats": 27
     }
    ],
    "sources": [
@@ -2011,12 +1988,27 @@
      "kind": "secondary",
      "quote": "Later, Yashar's delegation called on the president to award Herzog the mandate ... After Herzog met with every party except the largest two, Eisenkot had secured the support of Yisrael Beytenu, the Democrats, Ra'am, the Joint List, and B'Yachad.",
      "accessed": "2026-11-05"
+    },
+    {
+     "url": "https://www.president.gov.il/תם-סבב-ההתייעצויות-עם-כלל-סיעות-הכנסת-ב/",
+     "publisher": "President's Residence",
+     "kind": "official",
+     "accessed": "2026-11-06",
+     "quote": "סיעות המונות 46 חברי כנסת"
+    },
+    {
+     "url": "https://www.president.gov.il/סיעת-הליכוד-המליצה-על-ח״כ-בנימין-נתניהו/",
+     "publisher": "President's Residence",
+     "kind": "official",
+     "accessed": "2026-11-06",
+     "quote": "והמליצה לנשיא המדינה יצחק הרצוג על ח\"כ בנימין נתניהו להרכבת הממשלה"
     }
    ],
    "notes": [
-    "Partial: checked on 5 November 2026 at about 20:10 Israel time, while the last consultation (Likud, scheduled 20:30) was still to come. Eleven of the twelve factions had been consulted (4 November: Religious Zionism, Shas, Yisrael Beiteinu, Zehut; 5 November: UTJ, Otzma Yehudit, the Democrats, Ra'am, the Joint List, B'Yachad, Yashar). Likud's recommendation is left pending, not inferred. No mandate had been given at the time of checking. JPost's report of the Yashar meeting says 'award Herzog the mandate' (an evident slip for Eisenkot); Maariv states the recommendation of Eisenkot directly. See docs/research/pm-recommendations-2009-2026.md.",
-    "Seats are calculated by the app from the CEC count of 4 November 2026; an official (gazetted) seat allocation is not yet verified. The same per-list seats (Yashar 21, B'Yachad 12, Democrats 8, Yisrael Beiteinu 7, Ra'am 8, Joint List 11, Likud 27, Otzma Yehudit 7, Shas 6, Religious Zionism–Zehut 6) are reported by Maariv on 5 November.",
-    "The President's Residence statements on gov.il could not be retrieved (HTTP 403 to the project client); its statements are cited as reported by JNS. The date is the second consultation day."
+    "Consultations completed on 5 November 2026. The President confirmed 67 recommendations for Eisenkot and 46 for Netanyahu; UTJ (7 seats) recommended nobody. Checked 6 November.",
+    "Seats match the CEC official final results. Gazette publication remains unverified as of 6 November.",
+    "Official President notices supersede the earlier 5 November 20:51 retrieval gap. No tasking is recorded: Herzog announced his intention to assign the mandate on Sunday 8 November.",
+    "Recommendation dates: Religious Zionism–Zehut, Shas and Yisrael Beiteinu on 4 November; remaining factions on 5 November."
    ]
   }
  ],
@@ -2427,5 +2419,5 @@
    "confidence": "low"
   }
  ],
- "governmentNote": "As of 5 November 2026 no government has been formed. President Herzog held consultations with the 26th Knesset factions on 4–5 November 2026; the pm-recommendations scheme records the recommendations confirmed while they were still under way. The pre-election blocs and the outgoing (37th) government are also given."
+ "governmentNote": "As of 6 November 2026 no new government is recorded. Consultations ended 5 November: Eisenkot 67, Netanyahu 46, no recommendation 7. Herzog announced tasking for Sunday 8 November; that future step is not recorded as completed."
 }
