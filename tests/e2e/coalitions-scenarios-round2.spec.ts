@@ -68,18 +68,18 @@ test('scenarios: Save shows state — nothing to save, unsaved, saved', async ({
   await page.getByRole('textbox', { name: 'Name', exact: true }).press('Enter');
   await expect(current.locator('h3')).toContainText('This scenario');
   const save = current.locator('.scn-save');
-  const x = (await page.locator('.scn-current .row .btn').nth(1).boundingBox())!.x;
+  const x = (await page.locator('.scn-current > .row > .btn').nth(1).boundingBox())!.x;
   await save.click();
   await expect(save).toHaveText('Saved');
   await expect(save).toBeDisabled();
-  expect((await page.locator('.scn-current .row .btn').nth(1).boundingBox())!.x).toBe(x);
+  expect((await page.locator('.scn-current > .row > .btn').nth(1).boundingBox())!.x).toBe(x);
   await page.getByRole('textbox', { name: 'Description', exact: true }).fill('More');
   await page.getByRole('textbox', { name: 'Description', exact: true }).press('Tab');
-  await expect(save).toHaveText('Save changes');
+  await expect(save).toHaveText('Save');
   await expect(save).toBeEnabled();
   // the saved card names the scenario beside its colour, on one line of actions
   const card = page.locator('.scn-cards .scn-card').first();
-  await expect(card.locator('.scn-title b')).toHaveText('Trial');
+  await expect(card.locator('.scn-title b')).toHaveText('Trial *');
   const tops = await card.locator('.row > .btn').evaluateAll((b) => new Set(b.map((x) => Math.round(x.getBoundingClientRect().top))).size);
   expect(tops).toBe(1);
 });

@@ -4,8 +4,8 @@ import { useL } from '../i18n.ts';
 export interface Choice { value: string; label: string; detail?: string; group?: string; preview?: ReactNode; disabled?: boolean }
 /** Native dialog supplies modal focus containment and Escape; buttons retain native activation.
  *  Choosing the option already in force only closes the picker: it is never an edit. */
-export function ChoicePicker({ label, value, options, onChange, className = '', placeholder, children }: {
-  label: string; value: string; options: Choice[]; onChange: (value: string) => void; className?: string; placeholder?: string; children?: ReactNode;
+export function ChoicePicker({ label, value, options, onChange, className = '', placeholder, children, description }: {
+  label: string; value: string; options: Choice[]; onChange: (value: string) => void; className?: string; placeholder?: string; children?: ReactNode; description?: string;
 }) {
   const L = useL(), dialogId = useId();
   const dialog = useRef<HTMLDialogElement>(null), trigger = useRef<HTMLButtonElement>(null);
@@ -17,7 +17,7 @@ export function ChoicePicker({ label, value, options, onChange, className = '', 
   const focusStart = () => (searchable ? dialog.current?.querySelector<HTMLElement>('input[type="search"]')
     : dialog.current?.querySelector<HTMLElement>('.choice-option[aria-pressed="true"]:not(:disabled)') ?? dialog.current?.querySelector<HTMLElement>('.choice-option:not(:disabled)'))?.focus();
   return <span className={`choice-picker ${className}`}>
-    <button ref={trigger} type="button" className="btn choice-trigger" aria-label={label} data-value={value} aria-haspopup="dialog" aria-controls={dialogId} onClick={() => { setQuery(''); dialog.current?.showModal(); focusStart(); }}>{options.find(o => o.value === value)?.preview}<span className="choice-current">{options.find(o => o.value === value)?.label ?? placeholder ?? label}</span><span aria-hidden>▾</span></button>
+    <button ref={trigger} type="button" className="btn choice-trigger" aria-label={label} aria-description={description} data-value={value} aria-haspopup="dialog" aria-controls={dialogId} onClick={() => { setQuery(''); dialog.current?.showModal(); focusStart(); }}>{options.find(o => o.value === value)?.preview}<span className="choice-current">{options.find(o => o.value === value)?.label ?? placeholder ?? label}</span><span aria-hidden>▾</span></button>
     <dialog id={dialogId} ref={dialog} className="choice-dialog" aria-label={label} onKeyDown={e => { if (e.key === 'Escape') e.stopPropagation(); }} onCancel={e => { e.preventDefault(); e.stopPropagation(); close(); }} onClick={e => { if (e.target === e.currentTarget) close(); }}>
       <div className="choice-head"><b>{label}</b><button className="btn" aria-label={L('Close', 'סגירה')} onClick={close}>×</button></div>
       {searchable && <input autoFocus type="search" value={query} aria-label={L('Search choices', 'חיפוש אפשרויות')} placeholder={L('Search…', 'חיפוש…')} onChange={e => setQuery(e.target.value)} onKeyDown={e => { if (e.key === 'ArrowDown') { e.preventDefault(); dialog.current?.querySelector<HTMLButtonElement>('.choice-option:not(:disabled)')?.focus(); } }} />}

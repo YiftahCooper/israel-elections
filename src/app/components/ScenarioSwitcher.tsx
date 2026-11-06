@@ -20,7 +20,7 @@ export function ScenarioSwitcher({ s, ds }: { s: Scenario; ds: ElectionDataset }
   const official = baselineOf(ds);
   const entries = useMemo(() => saved.filter(x => x.electionId === s.electionId).map(x => { const result = replay(ds, x.name, x.log, x.factionSplitBaseline ?? false); return { ...x, failed: result.failed, scenario: { ...result.scenario, ...(x.description ? { description: x.description } : {}), id: x.id } }; }), [saved, ds, s.electionId]);
   // 'official', a saved id, or unsaved work: changed since loading, or never saved (an opened share link)
-  const current = scenarioKey({ scenario: s, reference: checkpointReference }) ?? 'official';
+  const current = scenarioKey({ scenario: s, reference: checkpointReference, saved, datasets: { [ds.id]: ds } }) ?? 'official';
   const preview = (x: Scenario, neutral = false) => <><span className="swatch" style={{ background: neutral ? 'var(--muted)' : liveScenarioColor(x, saved) }} /><ResultPreview s={x} /></>;
   // rows describe each scenario against the official result, so counts mean the same thing in every row
   const markerBase = official;
@@ -37,9 +37,9 @@ export function ScenarioSwitcher({ s, ds }: { s: Scenario; ds: ElectionDataset }
     return [date.slice(0, 10), count ? `${count} ${L(count === 1 ? 'edit' : 'edits', count === 1 ? 'עריכה' : 'עריכות')}` : '', status.includes('could not') || status.includes('לא הוחלו') ? status : '', exceptional ? source : '', ...rules].filter(Boolean).join(' · ');
   };
   const options: Choice[] = [{ value: 'official', label: L('Official result', 'התוצאה הרשמית'), detail: details(official, ds.electionDate, L('Official', 'רשמי')), preview: preview(official, true) }, ...entries.map(x => ({ value: x.id, label: x.name, detail: details(x.scenario, x.savedAt, x.failed ? L(`Saved · ${x.failed} changes could not be replayed`, `שמור · ${x.failed} שינויים לא הוחלו מחדש`) : L('Saved', 'שמור')), preview: preview(x.scenario) })),
-    ...Object.entries(drafts).filter(([, x]) => x.scenario?.electionId === s.electionId).map(([key, x]) => ({ value: key, label: `${x.scenario!.name || L('Untitled scenario', 'תרחיש ללא שם')} · ${L('unsaved', 'לא נשמר')}`, detail: details(x.scenario!, x.scenario!.log.at(-1)?.at ?? ds.electionDate, L('Session draft · undo kept', 'טיוטת מפגש · הביטול נשמר')), preview: preview(x.scenario!) }))];
-  if (!options.some(x => x.value === current)) options.push({ value: current, label: `${s.name || L('Untitled scenario', 'תרחיש ללא שם')} · ${L('unsaved', 'לא נשמר')}`, detail: details(s, s.log.at(-1)?.at ?? ds.electionDate, L('Session draft · undo kept', 'טיוטת מפגש · הביטול נשמר')), preview: preview(s) });
-  return <ChoicePicker className="scenario-switcher election-status" label={L('Switch scenario', 'החלפת תרחיש')} value={current} options={options} onChange={key => {
+    ...Object.entries(drafts).filter(([, x]) => x.scenario?.electionId === s.electionId).map(([key, x]) => ({ value: key, label: `${x.scenario!.name || L('Untitled scenario', 'תרחיש ללא שם')} *`, detail: details(x.scenario!, x.scenario!.log.at(-1)?.at ?? ds.electionDate, L('Session draft · undo kept', 'טיוטת מפגש · הביטול נשמר')), preview: preview(x.scenario!) }))];
+  if (!options.some(x => x.value === current)) options.push({ value: current, label: `${s.name || L('Untitled scenario', 'תרחיש ללא שם')} *`, detail: details(s, s.log.at(-1)?.at ?? ds.electionDate, L('Session draft · undo kept', 'טיוטת מפגש · הביטול נשמר')), preview: preview(s) });
+  return <ChoicePicker description={current !== 'official' && current !== s.id ? L('unsaved changes', 'שינויים שלא נשמרו') : undefined} className="scenario-switcher election-status" label={L('Switch scenario', 'החלפת תרחיש')} value={current} options={options} onChange={key => {
     if (key === current) return;
     requestAnimationFrame(() => document.querySelector<HTMLButtonElement>('.band .scenario-switcher .choice-trigger')?.focus());
     // every path keeps unsaved work as a session draft before replacing it (store.stashCurrent)

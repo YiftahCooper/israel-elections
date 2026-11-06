@@ -1,3 +1,4 @@
+import { nextCopyName, scenarioDirty } from './scenarioDocument.ts';
 import { baselineOf, freshScenario, factionDefault, setFactionDefault } from './factionDefaults.ts';
 import { validAnswers, sourceChoice, sourceValue, type PreferenceAnswers, type PreferenceAsk, type PreferenceId } from './preferences.ts';
 import type { Family } from '../families/model.ts';
@@ -239,11 +240,14 @@ export async function openElection(id: ElectionId, from?: { id?: string; name: s
 
 /** The scenario switcher's key for the current scenario: 'official', a saved scenario's id, or a key for
  *  unsaved work (changed since it was loaded, or never saved, such as an opened share link). */
-export function scenarioKey(st: Pick<State, 'scenario' | 'reference'> = state): string | null {
+export function scenarioKey(st: Pick<State, 'scenario' | 'reference'> & Partial<Pick<State, 'saved' | 'datasets'>> = state): string | null {
   const s = st.scenario;
   if (!s) return null;
   if (!st.reference && s.log.length === 0) return 'official';
-  const dirty = !st.reference || JSON.stringify(s.log) !== JSON.stringify(st.reference.log);
+  const entry = st.saved?.find(x => x.id === s.id);
+  const ds = st.datasets?.[s.electionId];
+  const checkpoint = entry && ds ? { ...replay(ds, entry.name, entry.log, entry.factionSplitBaseline ?? false).scenario, name: entry.name, description: entry.description } : st.reference;
+  const dirty = !checkpoint || scenarioDirty(s, checkpoint);
   return dirty ? `draft:${s.id}:${s.log.at(-1)?.at ?? s.log.length}` : s.id;
 }
 const isUnsavedKey = (key: string | null, st: Pick<State, 'saved'> = state) => !!key && key !== 'official' && !st.saved.some((x) => x.id === key);
@@ -319,17 +323,29 @@ export function resetAll() {
   setState({ scenario: fresh, past: [...state.past, state.scenario], future: [] });
 }
 
-export function saveCurrent(name?: string): boolean {
+export function saveCurrent(name?: string, options?: { newIdentity?: boolean; overwriteId?: string }): boolean {
   const original = state.scenario;
-  const s = original && !original.identityColor ? applyAction(original, { type: 'setIdentityColor', color: nextScenarioColor(state.saved.filter(x => x.id !== original.id), original.electionId) }) : original;
+  if (!original) return false;
+  const wanted = name?.trim() || original.name || (state.lang === 'he' ? 'תרחיש' : 'Scenario');
+  const targetId = options?.overwriteId ?? (options?.newIdentity ? crypto.randomUUID() : original.id);
+  if (state.saved.some(x => x.id !== targetId && x.name === wanted)) {
+    toast('error', state.lang === 'he' ? 'השם כבר קיים. בחרו שמירה בשם…' : 'Name already exists. Choose Save as…');
+    return false;
+  }
+  // Save-as is a new document; rename is encoded so replay cannot restore an older name.
+  let prepared = { ...original, id: targetId };
+  const lastRename = [...prepared.log].reverse().map(e => e.action).find(a => a.type === 'rename');
+  if (prepared.name !== wanted || lastRename?.name !== wanted) prepared = applyAction(prepared, { type: 'rename', name: wanted });
+  const s = prepared && !prepared.identityColor ? applyAction(prepared, { type: 'setIdentityColor', color: nextScenarioColor(state.saved.filter(x => x.id !== original.id), original.electionId) }) : prepared;
   if (!s) return false;
   const he = state.lang === 'he';
-  const entry: SavedScenario = { id: s.id, name: name || s.name || (he ? 'תרחיש' : 'Scenario'), ...(s.description ? { description: s.description } : {}), electionId: s.electionId, savedAt: new Date().toISOString(), baseBuiltAt: s.baseBuiltAt, factionSplitBaseline: s.factionSplitBaseline ?? false, log: s.log.map((e) => e.action) };
+  const entry: SavedScenario = { id: s.id, name: wanted || s.name || (he ? 'תרחיש' : 'Scenario'), ...(s.description ? { description: s.description } : {}), electionId: s.electionId, savedAt: new Date().toISOString(), baseBuiltAt: s.baseBuiltAt, factionSplitBaseline: s.factionSplitBaseline ?? false, log: s.log.map((e) => e.action) };
   const before = state.saved;
   const oldReference = state.reference;
-  setState((st) => ({ reference: { ...s, name: entry.name }, saved: [entry, ...st.saved.filter((x) => x.id !== s.id)], scenario: { ...s, name: entry.name } }));
+  const history = { past: state.past, future: state.future };
+  setState((st) => ({ reference: { ...s, name: entry.name }, saved: [entry, ...st.saved.filter((x) => x.id !== s.id)], scenario: { ...s, name: entry.name }, ...(targetId !== original.id ? { past: [], future: [] } : {}) }));
   if (!persist()) {
-    setState({ saved: before, reference: oldReference, scenario: original });
+    setState({ saved: before, reference: oldReference, scenario: original, ...history });
     toast('error', he ? 'הדפדפן סירב לשמור (האחסון מלא או חסום). ייצאו את התרחיש כקובץ JSON במקום.' : 'The browser refused to save (storage full or blocked). Export the scenario as a JSON file instead.');
     return false;
   }
@@ -344,7 +360,7 @@ export function duplicateCurrent() {
   const he = state.lang === 'he';
   let id = `${s.electionId}-${Date.now().toString(36)}`;
   while (id === s.id || state.saved.some((x) => x.id === id)) id += 'x';
-  const named: Scenario = { ...s, id, name: `${s.name || (he ? 'תרחיש' : 'Scenario')} (${he ? 'עותק' : 'copy'})` };
+  const named: Scenario = { ...s, id, name: nextCopyName(s.name || (he ? 'תרחיש' : 'Scenario'), state.saved.map(x => x.name)) };
   const copy = applyAction(named, { type: 'setIdentityColor', color: nextScenarioColor(state.saved, s.electionId) });
   setState({ scenario: copy, past: [], future: [] });
   saveCurrent(copy.name);

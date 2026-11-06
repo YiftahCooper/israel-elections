@@ -9,7 +9,7 @@ test('a reload restores unsaved edits and their undo', async ({ page }) => {
   await expect(votes).toHaveValue('1,200,000');
   await page.waitForTimeout(400); // the workspace is written a moment after the last change
   await page.reload();
-  await expect(page.locator('.band .election-status')).toContainText('unsaved');
+  await expect(page.locator('.band .election-status')).toContainText('*');
   await page.getByRole('region', { name: 'Lists', exact: true }).getByRole('button', { name: 'Likud', exact: true }).click();
   await expect(page.locator('.side-panel').getByRole('textbox', { name: 'Votes', exact: true })).toHaveValue('1,200,000');
   await page.getByRole('button', { name: /^Undo:/ }).click();
