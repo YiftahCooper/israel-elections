@@ -25,5 +25,5 @@ it('keeps secondary history qualified and attaches the k26 withdrawal notice to 
   // the notice is on Ahi's own CEC page and names Ahi's candidates; Brit Olam contested (252 votes)
   expect(electionContext.events.find(e => e.id === 'withdrawal-k26-צבי')).toMatchObject({ listId: '26-צבי', source: { evidence: 'official', url: 'https://www.gov.il/he/pages/chozrim-leshorashim_list32' } });
   expect(electionContext.events.some(e => e.listId === '26-זץ' && e.type === 'withdrawal')).toBe(false);
-  expect(electionContext.events.filter(e => e.id.startsWith('list-') && e.electionId === 'k26').map(e => e.listId)).toEqual(['26-ודם','26-ודם','26-ד','26-ד']);
+  expect(electionContext.events.filter(e => e.id.startsWith('list-') && e.electionId === 'k26').map(e => e.listId)).toEqual(['26-ודם','26-ודם','26-עם','26-עם']);
 });

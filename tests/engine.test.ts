@@ -48,7 +48,7 @@ describe('25th Knesset (2022) — reproduces the official CEC result exactly', (
 
 describe('26th Knesset (2026) — final count', () => {
   const { res } = allocateDataset('k26');
-  it('matches the seat totals reported from the CEC final count (secondary: press reports of 30.10.2026)', () => {
+  it('matches the CEC official final seat totals retrieved 6.11.2026', () => {
     expect(seatsOf(res)).toEqual({
       '26-מחל': 27, '26-דרך': 21, '26-רק': 12, '26-ודם': 11, '26-אמת': 8, '26-עם': 8,
       '26-ב': 7, '26-ג': 7, '26-ל': 7, '26-ט': 6, '26-שס': 6,

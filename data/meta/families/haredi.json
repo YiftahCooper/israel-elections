@@ -3406,12 +3406,12 @@
       "electionId": "k26",
       "electionDate": "2026-10-27",
       "datasetPath": "public/data/k26.json",
-      "datasetSha256": "b01461907ae1fe09bf84e8e52fae9025a65bdd4036d33cb6139619da59092e37",
+      "datasetSha256": "16c3ede3769197d08c94c3241a537317028cb35aca33705fb2cd25d661a0f64f",
       "datasetStatus": {
-        "stage": "final-count-pending-publication",
-        "asOf": "2026-11-04",
-        "noteHe": "ספירת הוועדה עודכנה ב־4.11.2026. הפרסום ברשומות לא אומת נכון ל־5.11.",
-        "noteEn": "CEC count updated 4 Nov 2026. Gazette publication unverified as of 5 Nov."
+        "stage": "official-final",
+        "asOf": "2026-11-06",
+        "noteHe": "תוצאות סופיות רשמיות של הוועדה; המליאה אישרה את התוצאות והמנדטים ב־4.11.2026. הפרסום ברשומות לא אומת נכון ל־6.11.",
+        "noteEn": "CEC official final results; plenary approved results and seats on 4 Nov 2026. Gazette publication unverified as of 6 Nov."
       },
       "validVotes": 5691426,
       "voteSourceIds": [
@@ -3619,7 +3619,7 @@
   "limitations": [
     "All k1–k26 files inspected; no assertion of exhaustive ideological classification of every minor list. Candidates requiring more evidence are explicitly recorded, not silently included.",
     "1949 has no separable vote total for Aguda/Poalei Aguda; core-only votes are null, not zero.",
-    "k26 inherits final-count-pending-publication status from the local dataset; no fresh independent certification of the 2026 count.",
+    "k26 uses CEC official final results; Gazette publication remains unverified as of 6 November 2026.",
     "Existing constituent ids are preserved even where roster completeness is uncertain. Proposed singleton ids do not yet exist in public datasets.",
     "proposedPartyIds means ids requiring a list appearance mapping, including existing canonical ids missing from this singleton list; it does not mean every id is new to the project."
   ],
