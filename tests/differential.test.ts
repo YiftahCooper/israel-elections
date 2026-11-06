@@ -117,7 +117,11 @@ const EXPECTED: Record<Family, string> = {
   // and builtAt changed (recursive field diff); HEAD k19 with current src reproduces 2694440f….
   // All four non-model digests unchanged. See docs/research/data-audit/k19-resolution.md.
   // merged with k19 audit fixes: combined digest = union of the separately reviewed changes.
-  model: '4faa7f17ce364956de29269c7575a52a553ca40ea4da216f29fcc9620d9c21e5',
+  // k10 audit (6 Nov): reviewed recursive field diff contains only ten printed letters,
+  // three list labels/three link titles, Abu Hatzeira spelling, withheld Telem logo,
+  // Unity source URL and build provenance. All IDs/votes/seats and 25 other datasets equal HEAD.
+  // Only model output changes; the four engine/validation/rules digests stay unchanged.
+  model: 'f4ac40a57389a5e772cad3d0a4a44ac97c5d7cc9e654049c7da4dd75696a1ea2',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

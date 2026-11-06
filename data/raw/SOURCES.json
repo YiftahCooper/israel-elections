@@ -1197,7 +1197,7 @@
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-03T16:14:46.283817+00:00",
     "bytes": 9654,
-    "sha256": "cde3ee5aff994788866a5c60f093e05a39d660cbcd87a7abc8bfa7608be704d7"
+    "sha256": "1f317382137bf1c0e0e7a65fdc37150e779f881646b094d5c115d62d41f5cdcd"
   },
   {
     "id": "k11-results-gazette",
@@ -2743,7 +2743,7 @@
     "description": "Official winning-list leading ranks and name-by-name elected comparisons; page references, spelling variants and incomplete checks explicitly retained.",
     "retrievedAt": "2026-11-03T16:34:27.797461+00:00",
     "bytes": 30436,
-    "sha256": "fe5cfaf28d2a09ce8d76ca41d4a290139922aa939534b7d7b6e834f3d2b619b3"
+    "sha256": "3aebef1efd39d0bc06776dc11b7ab7938e16945a80e85930007dd10d3a34a618"
   },
   {
     "id": "k12-candidates-reviewed",

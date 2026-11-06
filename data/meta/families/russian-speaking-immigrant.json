@@ -355,7 +355,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k10.json",
-      "sha256": "ea60c8a9519f147b6ba123b7ae14b0693da535453e2b849d67dc3fb6fe38eb4d",
+      "sha256": "ac710dff899b176e8b5152bc3afe1257a0a1022eb7cc65d61ea49fc66f5c6119",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k11": {
@@ -1025,7 +1025,7 @@
       "electionId": "k10",
       "electionDate": "1981-06-30",
       "datasetPath": "public/data/k10.json",
-      "datasetSha256": "ea60c8a9519f147b6ba123b7ae14b0693da535453e2b849d67dc3fb6fe38eb4d",
+      "datasetSha256": "ac710dff899b176e8b5152bc3afe1257a0a1022eb7cc65d61ea49fc66f5c6119",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 120 transcribed ranks across all 10 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",

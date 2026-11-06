@@ -329,7 +329,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k10.json",
-      "sha256": "87d0bc1a4ed989f706f4052855d5e8cb8c30c4d562d31f4cf285ce712dcaae8b",
+      "sha256": "ac710dff899b176e8b5152bc3afe1257a0a1022eb7cc65d61ea49fc66f5c6119",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k11": {
@@ -965,7 +965,7 @@
         {
           "date": "1981-06-30",
           "datePrecision": "day",
-          "nameHe": "המחנה התורתי, פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
+          "nameHe": "המחנה התורתי – פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
           "nameEn": "Poalei Agudat Yisrael",
           "sources": [
             "k10",
@@ -5894,28 +5894,16 @@
             "proposal"
           ],
           "status": "observed-local-dataset"
-        },
-        {
-          "date": "1981-06-30",
-          "datePrecision": "day",
-          "nameHe": "רשימת הגימלאים והקשישים בישראל",
-          "nameEn": "Moked",
-          "sources": [
-            "k10",
-            "proposal"
-          ],
-          "status": "observed-local-dataset"
         }
       ],
       "aliases": [],
       "activePeriod": {
         "from": "1977-05-17",
-        "to": "1981-06-30",
+        "to": "1977-05-17",
         "datePrecision": "day",
         "basis": "observed-election-appearances-not-lifetime"
       },
       "sources": [
-        "k10",
         "k9",
         "proposal"
       ],
@@ -6594,13 +6582,13 @@
       "id": "vehicle-10-ט",
       "entityType": "electoral-vehicle",
       "nameHe": "ישראל אחת",
-      "nameEn": "Yahad",
+      "nameEn": "One Israel",
       "names": [
         {
           "date": "1981-06-30",
           "datePrecision": "day",
           "nameHe": "ישראל אחת",
-          "nameEn": "Yahad",
+          "nameEn": "One Israel",
           "sources": [
             "k10",
             "proposal"
@@ -7053,13 +7041,13 @@
     {
       "id": "vehicle-10-נכ",
       "entityType": "electoral-vehicle",
-      "nameHe": "התנועה למען עליה",
+      "nameHe": "הרשימה למען עליה",
       "nameEn": null,
       "names": [
         {
           "date": "1981-06-30",
           "datePrecision": "day",
-          "nameHe": "התנועה למען עליה",
+          "nameHe": "הרשימה למען עליה",
           "nameEn": null,
           "sources": [
             "k10",
@@ -23446,6 +23434,38 @@
       ],
       "status": "observed-local-dataset",
       "externalIds": {}
+    },
+    {
+      "id": "vehicle-10-קנ",
+      "entityType": "electoral-vehicle",
+      "nameHe": "רשימת הגימלאים והקשישים בישראל",
+      "nameEn": "Pensioners and Elderly List",
+      "names": [
+        {
+          "date": "1981-06-30",
+          "datePrecision": "day",
+          "nameHe": "רשימת הגימלאים והקשישים בישראל",
+          "nameEn": "Pensioners and Elderly List",
+          "sources": [
+            "k10",
+            "proposal"
+          ],
+          "status": "observed-local-dataset"
+        }
+      ],
+      "aliases": [],
+      "activePeriod": {
+        "from": "1981-06-30",
+        "to": "1981-06-30",
+        "datePrecision": "day",
+        "basis": "observed-election-appearances-not-lifetime"
+      },
+      "sources": [
+        "k10",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "externalIds": {}
     }
   ],
   "partyAppearances": [
@@ -26473,7 +26493,7 @@
     {
       "electionId": "k10",
       "listId": "10-קנ",
-      "partyId": "moked",
+      "partyId": "vehicle-10-קנ",
       "role": "singleton",
       "sources": [
         "k10",
@@ -26481,7 +26501,7 @@
       ],
       "status": "observed-local-dataset",
       "locator": "public/data/k10.json#/lists/16",
-      "continuity": "inherited-local-research"
+      "continuity": "unresolved"
     },
     {
       "electionId": "k10",

@@ -5,7 +5,7 @@
   "reviewedAt": "2026-11-05",
   "notes": [
     "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
-    "The term window runs from this election to the next Knesset election. Government tenure may extend past that window. Mid-term institutional succession is recorded in formation.events; it is not a new post-election recommendation round.",
+    "The institutional Knesset term runs from the first sitting on 20 July 1981 to 13 August 1984. Election dates are recorded separately. Mid-term government succession is recorded in formation.events.",
     "Additional dated mid-term acts that do not fit the proposal’s closed formation type vocabulary are kept as formalStep=true entries in government.changes (Dated-compatible). No new formation enum values are introduced."
   ],
   "sources": {
@@ -107,6 +107,24 @@
       "kind": "official",
       "accessed": "2026-11-05",
       "via": "Jina read_url extraction of the official page; ordinary HTTP returned 403. Not independent of other MFA chronologies."
+    },
+    "knesset-tenure": {
+      "url": "https://main.knesset.gov.il/About/History/pages/knessethistory.aspx?kns=10",
+      "publisher": "Knesset",
+      "kind": "official",
+      "accessed": "2026-11-06"
+    },
+    "plenum1981acting": {
+      "url": "https://fs.knesset.gov.il/10/Plenum/10_ptm_529659.pdf",
+      "publisher": "Knesset plenum, 7 December 1981, printed p. 6 (PDF p. 1)",
+      "kind": "official",
+      "accessed": "2026-11-06"
+    },
+    "plenum1981": {
+      "url": "https://fs.knesset.gov.il/10/Plenum/10_ptm_529613.pdf",
+      "publisher": "Knesset plenum, 5 August 1981, printed p. 82 (PDF p. 1)",
+      "kind": "official",
+      "accessed": "2026-11-06"
     }
   },
   "results": {
@@ -340,13 +358,13 @@
             "source": "recommendations-research-4"
           }
         ],
-        "resolution": "Use 15 July for the tasking per the existing contemporary JTA/UPI research. The JTA bulletin dated 16 July reports the preceding day’s event; the State Archives dates the presidential letter to 16 July. The letter scan has not been inspected."
+        "resolution": "Unresolved: retain 15 July as the inherited press-based date, explicitly disputed against the State Archives account of a letter dated 16 July. Neither the original presidential letter nor original wire bulletin was inspected; the report-date offset is not established."
       }
     ]
   },
   "term": {
-    "start": "1981-06-30",
-    "end": "1984-07-23",
+    "start": "1981-07-20",
+    "end": "1984-08-13",
     "inclusionRule": "At least two independently authored qualifying chronologies, including one official or academic, plus direct support for the date. The Knesset and MFA histories count separately; the JVL mirror is not another independent source. Formal government succession steps are recorded separately in formation.events.",
     "chronologies": [
       "mfa-timeline",
@@ -448,7 +466,13 @@
           "quote": "dissolution law on 4 April 1984"
         }
       ]
-    }
+    },
+    "cites": [
+      {
+        "source": "knesset-tenure",
+        "quote": "20 ביולי 1981 – 13 באוגוסט 1984"
+      }
+    ]
   },
   "issuePolling": {
     "status": "pending",
@@ -456,9 +480,9 @@
     "gap": "INES instrument exists; no qualifying published topline verified for this election. No microdata analysis performed."
   },
   "gaps": [
-    "Certification date and official first-sitting record not retrieved; election date comes from the existing verified result dataset.",
+    "Results notice YP 2727 signed 9 July 1981 is retained; the official OData snapshot has 120 opening members starting 20 July 1981.",
     "Formation timeline is a sourced subset; missing steps must not be inferred from statutory maximum periods.",
-    "First-government coalition membership is reused from the existing first-government scheme, whose party membership evidence includes labelled Hebrew Wikipedia; a complete independent primary coalition agreement cross-check remains pending.",
+    "First-government coalition membership is confirmed by the four-faction agreement announced in the 5 August 1981 plenum, PDF p. 1; Agudat Yisrael was a coalition party without ministers.",
     "Recommendation evidence and caveats are inherited from docs/research/pm-recommendations-1977-2006.md; a source quoting the President is not an original presidential record.",
     "Original 1981 presidential letter remains uninspected; the tasking-day versus letter-date discrepancy is preserved. Government 19 ended when government 20 was invested on 10 October 1983, verified in the plenum record."
   ],
@@ -500,6 +524,10 @@
     "coalitionSeatsNote": "Election-list seat envelope, checked against officialSeats; not the confidence-vote tally or a reconstruction of later faction membership.",
     "cites": [
       {
+        "source": "plenum1981",
+        "quote": "ההסכם הקואליציוני לכנסת העשירית בין הסיעות: הליכוד, המפלגה הדתית לאומית, יהדות התורה — אגודת ישראל והתנועה למסורת ישראל"
+      },
+      {
         "source": "government-research-1",
         "quote": "בגין הצליח להקים קואליציה מבוססת על רוב דחוק של 61 ח\"כים, והממשלה יצאה לדרכה ב-5 באוגוסט 1981"
       },
@@ -517,6 +545,21 @@
       }
     ],
     "changes": [
+      {
+        "date": "1981-12-06",
+        "type": "acting-duties",
+        "textEn": "The government appointed Deputy Prime Minister Simha Erlich to perform the prime minister’s duties until Begin returned to his duties. Begin remained the legal prime minister; the return date has not been verified.",
+        "textHe": "הממשלה קבעה כי סגן ראש הממשלה שמחה ארליך יכהן כממלא מקומו של ראש הממשלה עד שבגין יחזור למלא את תפקידו. בגין נותר ראש הממשלה; מועד חזרתו לתפקיד טרם אומת.",
+        "cites": [
+          {
+            "source": "plenum1981acting",
+            "quote": "שמחה ארליך יכהן כממלא מקומו של ראש הממשלה מיום י׳ בכסלו התשמ״ב, 6 בדצמבר 1981, עד שראש הממשלה יחזור למלא את תפקידו"
+          }
+        ],
+        "person": "erlich",
+        "scope": "mid-term",
+        "formalStep": true
+      },
       {
         "date": "1983-09-15",
         "type": "resignation",
