@@ -1,5 +1,6 @@
 import { Slip } from './ui.tsx';
 import { syntheticIconSvg } from '../syntheticIcon.ts';
+import { factLog } from '../../model/actionClassification.ts';
 import { CandidateName } from './CandidateName.tsx';
 import memberNames from '../../data/candidate-display-names.json';
 import { Floating, useHoverBridge } from '../floating.tsx';
@@ -197,7 +198,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
     });
     const entry = elections.find(e=>e.id===s.electionId);
     const captionY = rowsY + Math.ceil(exportRows.length/2)*32 + 8;
-    clone.appendChild(svgText(colStart(0), captionY, 13, `${entry ? electionLabel(entry, elections, lang) : ''}${entry ? ' · ' : ''}${s.log.length ? s.name || L('Scenario', 'תרחיש') : L('Official result', 'התוצאה הרשמית')}`));
+    clone.appendChild(svgText(colStart(0), captionY, 13, `${entry ? electionLabel(entry, elections, lang) : ''}${entry ? ' · ' : ''}${factLog(s).length ? s.name || L('Scenario', 'תרחיש') : L('Official result', 'התוצאה הרשמית')}`));
     clone.setAttribute('viewBox', `${vb.x} ${vb.y} ${vb.width} ${captionY - vb.y + 14}`);
     const xml = new XMLSerializer().serializeToString(clone);
     if (kind === 'svg') return download('knesset.svg', xml, 'image/svg+xml');

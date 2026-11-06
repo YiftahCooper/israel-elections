@@ -69,7 +69,9 @@ for(const c of [...Array.from({length:26},(_,i)=>({name:`k${i+1}`,n:i+1,actions:
 test('one active reference policy and middle unassigned order preserve declared blocs',()=>{
   const {base}=graphicScenario(25,[]);
   expect(activeReferenceOf({markOfficial:true,reference:base})).toBeNull();
-  expect(activeReferenceOf({markOfficial:false,reference:base})).toBe(base);
+  expect(activeReferenceOf({markOfficial:false,reference:base})).toBeNull();
+  const edited={...base,log:[{at:'now',action:{type:'setTotals' as const,invalid:base.invalid+1}}]};
+  expect(activeReferenceOf({markOfficial:false,reference:edited})).toBe(edited);
   for (let n=0;n<=5;n++) {
     const blocs=Array.from({length:n},(_,i)=>({id:String(i),nameHe:'',nameEn:'',color:'#888888'}));
     const order=blocDisplayOrder({blocs});

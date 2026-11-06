@@ -22,7 +22,7 @@ test('personal baseline is unedited, counts parties, preserves all 120 seats and
   setState({ scenario: on });
   expect(inputDiffs(on, baselineOf(ds))).toEqual([]);
   dispatch({ type: 'setFactionSplit', listId: joint.id, split: false });
-  expect(inputDiffs(getState().scenario!, on).some(d => d[0] === 'factionSplits')).toBe(true);
+  expect(inputDiffs(getState().scenario!, on)).toEqual([]);
   dispatch({ type: 'setFactionSplit', listId: joint.id, split: true });
   expect(inputDiffs(getState().scenario!, on)).toEqual([]);
   undo(); expect(getState().scenario!.factionSplits).not.toContain(joint.id);

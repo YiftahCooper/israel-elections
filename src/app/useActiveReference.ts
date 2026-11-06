@@ -1,9 +1,10 @@
+import { factLog } from '../model/actionClassification.ts';
 import type { Scenario } from '../model/scenario.ts';
 import { referenceLabel } from './derive.ts';
 import { useLang } from './i18n.ts';
 import { useStore } from './store.ts';
 
-export const activeReferenceOf = (st: {markOfficial:boolean;reference:Scenario|null}) => st.markOfficial ? null : st.reference;
+export const activeReferenceOf = (st: {markOfficial:boolean;reference:Scenario|null}) => st.markOfficial || st.reference && !factLog(st.reference).length ? null : st.reference;
 
 /** One reference policy for summaries, comparisons, edits and graphics. Null means official. */
 export function useActiveReference() {

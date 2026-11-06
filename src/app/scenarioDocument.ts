@@ -1,9 +1,12 @@
+import { inputDiffs } from '../model/editScopes.ts';
 import type { Scenario } from '../model/scenario.ts';
 
-/** Replay timestamps and transient ids do not constitute a document edit. */
+/** Compare effective facts and author metadata, ignoring view choices, replay times and ids. */
 export function scenarioDirty(s: Scenario, reference: Scenario): boolean {
-  const content = ({ id: _id, version: _version, log: _log, ...document }: Scenario) => document;
-  return JSON.stringify(content(s)) !== JSON.stringify(content(reference));
+  // Compare values rather than saveLog history: restoring an authored value is clean again.
+  return inputDiffs(s, reference).length > 0 || s.electionId !== reference.electionId ||
+    s.name !== reference.name || (s.description ?? '') !== (reference.description ?? '') ||
+    s.identityColor !== reference.identityColor;
 }
 
 export function nextCopyName(name: string, names: readonly string[]): string {

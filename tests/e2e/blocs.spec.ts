@@ -21,8 +21,8 @@ test('an election opens on its first government, and other sourced groupings can
   const grouping = page.getByRole('button', { name: 'Grouping', exact: true });
   await expect(grouping).toHaveText(/37th government/);
   await expect(blocCount(page, 'Coalition')).toHaveText('64');
-  await choose(grouping, { label: 'Pre-election blocs' });
-  await expect(grouping).toContainText('Pre-election blocs');
+  await choose(grouping, 'pre-election-blocs');
+  await expect(grouping).toContainText('Comparison groups (app-defined)');
   // a band opens the bloc editor beside the chamber, at every level
   await band(page, 'Netanyahu bloc').click();
   await expect(editor(page).getByRole('textbox', { name: 'Bloc name' }).first()).toHaveValue('Netanyahu bloc');
@@ -71,7 +71,7 @@ test('a joint list’s faction can split after the election, keeping votes and s
   // each party now has its own row of seats under the list, and its own place in the chamber
   await expect(page.getByRole('region', { name: 'Lists' }).getByRole('list', { name: /factions after the split/ }).getByText('New Hope')).toBeVisible();
   await expect(listRow(page, 'National Unity')).toContainText('12');
-  await expect(page.getByRole('status').filter({ hasText: 'Since official result' })).toContainText('No seats changed');
+  await expect(page.getByRole('status').filter({ hasText: 'Since official result' })).toContainText('No changes yet');
 });
 
 test('a joint list can run as separate lists, with the vote shares stated as an assumption', async ({ page }) => {

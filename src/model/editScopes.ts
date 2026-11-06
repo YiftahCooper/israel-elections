@@ -1,4 +1,4 @@
-import type {Action,Scenario} from './scenario.ts';
+import { blocSchemeState, type Action, type Scenario } from './scenario.ts';
 import type {Part} from './parts.ts';
 export type InputPath=readonly string[];
 export interface ReplacementScope {part:Part;listId?:string;checkpoint:Scenario;changed:InputPath[];at:number}
@@ -18,6 +18,17 @@ export const inputPart=(p:InputPath):Part|undefined=>{
 };
 export const overlaps=(a:InputPath,b:InputPath)=>a.every((k,i)=>b[i]===k)||b.every((k,i)=>a[i]===k);
 export function inputDiffs(a:Scenario,b:Scenario):InputPath[]{
+ // Compare sourced views using the same sourced scheme. A detached/custom grouping is
+ // compared to the last sourced choice before its membership edit, never erased.
+ if (b.blocSchemeId && a.electionId === b.electionId) {
+  const choice = a.blocSchemeId ?? [...a.log].reverse().map(e=>e.action).find(x=>x.type==='applyBlocScheme'||x.type==='startPart'&&x.part==='blocs'&&(x.source==='preset'||!!x.snapshot?.blocSchemeId));
+  const id = typeof choice === 'string' ? choice : choice?.type==='applyBlocScheme' ? choice.schemeId : choice?.type==='startPart' ? choice.presetId??choice.snapshot?.blocSchemeId : undefined;
+  const scheme = b.blocSchemes?.find(g=>g.id===id);
+  if (scheme) {
+   const st=blocSchemeState(scheme,b.lists);
+   b={...b,blocSchemeId:scheme.id,blocs:st.blocs,partyBlocs:st.partyBlocs,candidateBlocs:st.candidateBlocs,customGroupingName:undefined,lists:b.lists.map(l=>({...l,bloc:st.listBloc[l.id]}))};
+  }
+ }
  const out:string[][]=[];
  const walk=(x:any,y:any,p:string[])=>{
   if(equal(x,y))return;
@@ -28,8 +39,8 @@ export function inputDiffs(a:Scenario,b:Scenario):InputPath[]{
    for(const k of new Set([...Object.keys(x),...Object.keys(y)]))walk(x[k],y[k],[...p,k]);
   }else out.push(p);
  };
- for(const k of ['description','lists','rules','registered','invalid','agreements','blocs','blocSchemeId','customGroupingName','partyBlocs','candidateBlocs','factionSplits','lotteryWinners','mode','coalition'] as const){
-  const normal=(v:unknown)=>k==='factionSplits'?[...((v??[]) as string[])].sort():v??(k==='coalition'?{in:[],out:[]}:k==='partyBlocs'||k==='candidateBlocs'?{}:undefined);
+ for(const k of ['lists','rules','registered','invalid','agreements','blocs','blocSchemeId','customGroupingName','partyBlocs','candidateBlocs','lotteryWinners','mode'] as const){
+  const normal=(v:unknown)=>v??(k==='partyBlocs'||k==='candidateBlocs'?{}:undefined);
   walk(normal(a[k]),normal(b[k]),[k]);
  }
  return out;

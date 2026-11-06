@@ -256,7 +256,7 @@ export function nonSeatChanges(s: Scenario, base: Scenario, lang: Lang): string[
   const changes: string[] = [];
   if (JSON.stringify(s.lists.map(l => [l.id,l.votes,l.withdrawn])) !== JSON.stringify(base.lists.map(l => [l.id,l.votes,l.withdrawn]))) changes.push(he ? 'הקולות השתנו' : 'votes changed');
   if (JSON.stringify(s.agreements) !== JSON.stringify(base.agreements)) changes.push(he ? 'הסכמי העודפים השתנו' : 'agreements changed');
-  if (s.blocSchemeId !== base.blocSchemeId || JSON.stringify([s.blocs,s.partyBlocs,s.candidateBlocs,s.lists.map(l=>l.bloc)]) !== JSON.stringify([base.blocs,base.partyBlocs,base.candidateBlocs,base.lists.map(l=>l.bloc)])) changes.push(he ? 'החלוקה לגושים השתנתה' : 'grouping changed');
+  if (inputDiffs(s, base).some(p => inputPart(p) === 'blocs')) changes.push(he ? 'החלוקה לגושים השתנתה' : 'grouping changed');
   return changes;
 }
 
@@ -290,7 +290,7 @@ const activeScopes=(s:Scenario,reference:Scenario)=>{
  return replacementScopes(s).filter(x=>x.at>=common);
 };
 /** Detachment from a sourced scheme is bookkeeping accompanying a manual bloc edit,
- * rather than a second edit to a second item. Keep standalone source changes visible. */
+ * rather than a second edit to a second item. Sourced view choices are already excluded. */
 const markerDiffs=(s:Scenario,reference:Scenario)=>{
  const paths=inputDiffs(s,reference);
  return s.blocSchemeId===null&&paths.some(p=>p[0]!=='blocSchemeId'&&inputPart(p)==='blocs')

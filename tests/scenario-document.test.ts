@@ -48,3 +48,21 @@ it('refuses silent name collisions and saves numbered copies under independent i
   expect(replay(ds, copy.name, copy.log).scenario.name).toBe('Trial (1)');
   vi.unstubAllGlobals();
 });
+
+it('compares fact-aware changes with the replayed saved checkpoint, even when the loaded reference differs', async () => {
+  const { scenarioKey, replay } = await import('../src/app/store.ts');
+  const ds = JSON.parse(readFileSync('public/data/k25.json', 'utf8'));
+  const group = { type: 'applyBlocScheme', schemeId: base.blocSchemes!.at(-1)!.id } as const;
+  const officialView = applyAction(base, group);
+  expect(scenarioKey({ scenario: officialView, reference: null })).toBe('official');
+  const saved = applyAction(applyAction(base, { type: 'setVotes', listId: base.lists[0].id, votes: base.lists[0].votes + 100 }), { type: 'rename', name: 'Trial' });
+  const entry = { id: saved.id, name: saved.name, electionId: saved.electionId, log: saved.log.map(e => e.action), savedAt: '2026-11-06', baseBuiltAt: saved.baseBuiltAt };
+  const checkpoint = replay(ds, entry.name, entry.log).scenario;
+  const view = { ...applyAction(checkpoint, group), id: entry.id };
+  const state = { saved: [entry], datasets: { k25: ds }, reference: base };
+  expect(scenarioKey({ ...state, scenario: view })).toBe(entry.id);
+  expect(scenarioDirty(view, checkpoint)).toBe(false);
+  const edited = applyAction(view, { type: 'setVotes', listId: base.lists[0].id, votes: base.lists[0].votes + 200 });
+  expect(scenarioKey({ ...state, scenario: edited })).toMatch(/^draft:/);
+  expect(scenarioDirty(edited, checkpoint)).toBe(true);
+});

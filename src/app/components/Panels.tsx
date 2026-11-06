@@ -1,3 +1,4 @@
+import { factLog, isFactAction } from '../../model/actionClassification.ts';
 import { Download } from 'lucide-react';
 import { NumericStepper } from './NumericStepper.tsx';
 import { TurnoutSteps } from './TurnoutSteps.tsx';
@@ -377,11 +378,11 @@ export function History({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
       <div className="row" style={{ marginBottom: 8 }}>
         <button className="btn small" onClick={undo} disabled={!past}>{undoName}</button>
         <button className="btn small" onClick={redo} disabled={!future.length}>{redoName}</button>
-        <span className="muted small">{L(`${s.log.length} changes from the historical result`, `${s.log.length} שינויים מהתוצאה ההיסטורית`)}</span>
+        <span className="muted small">{L(`${factLog(s).length} changes from the historical result`, `${factLog(s).length} שינויים מהתוצאה ההיסטורית`)}</span>
       </div>
-      {s.log.length === 0 ? <p className="muted">{L('No changes yet — this is the historical result.', 'אין שינויים — זו התוצאה ההיסטורית.')}</p> : (
+      {factLog(s).length === 0 ? <p className="muted">{L('No changes yet — this is the historical result.', 'אין שינויים — זו התוצאה ההיסטורית.')}</p> : (
         <ol className="small" style={{ paddingInlineStart: 22 }}>
-          {s.log.map((e, i) => (
+          {s.log.map((e, i) => !isFactAction(e.action) ? null : (
             <li key={i} style={{ marginBottom: 3 }}>
               <span className="muted tiny">{new Date(e.at).toLocaleTimeString()}</span> {describe(e.action, s, lang)}{' '}
               <button className="btn small ghost" onClick={() => revertTo(i + 1)}>{L('revert to here', 'חזרה לכאן')}</button>

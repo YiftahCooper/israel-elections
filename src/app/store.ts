@@ -1,4 +1,5 @@
 import { nextCopyName, scenarioDirty } from './scenarioDocument.ts';
+import { factLog } from '../model/actionClassification.ts';
 import { baselineOf, freshScenario, factionDefault, setFactionDefault } from './factionDefaults.ts';
 import { validItemAnswers, validAnswers, sourceChoice, sourceValue, type PreferenceAnswers, type PreferenceAsk, type PreferenceId } from './preferences.ts';
 import type { Family } from '../families/model.ts';
@@ -247,7 +248,8 @@ export async function openElection(id: ElectionId, from?: { id?: string; name: s
 export function scenarioKey(st: Pick<State, 'scenario' | 'reference'> & Partial<Pick<State, 'saved' | 'datasets'>> = state): string | null {
   const s = st.scenario;
   if (!s) return null;
-  if (!st.reference && s.log.length === 0) return 'official';
+  const authored = s.log.some(e => e.action.type === 'rename' || e.action.type === 'setDescription');
+  if (!st.saved?.some(x => x.id === s.id) && !factLog(s).length && !authored) return 'official';
   const entry = st.saved?.find(x => x.id === s.id);
   const ds = st.datasets?.[s.electionId];
   const checkpoint = entry && ds ? { ...replay(ds, entry.name, entry.log, entry.factionSplitBaseline ?? false).scenario, name: entry.name, description: entry.description } : st.reference;
