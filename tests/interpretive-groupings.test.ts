@@ -25,3 +25,13 @@ it('marks names in both languages without changing sourced names', () => {
   expect(appGroupingExplanation('en')).toContain('not an official or contemporaneous');
   expect(appGroupingExplanation('he')).toContain('אינה חלוקה רשמית');
 });
+
+it('marks a bloc only when no marked app-defined scheme covers its display', () => {
+  const b = { nameEn: 'Change grouping', nameHe: 'קבוצת שינוי', appDefined: true };
+  for (const lang of ['en', 'he']) {
+    const plain = lang === 'en' ? b.nameEn : b.nameHe;
+    expect(groupingName(b, lang, { appDefined: true })).toBe(plain);
+    expect(groupingName(b, lang, { appDefined: false })).toBe(groupingName(b, lang));
+    expect(groupingName(b, lang)).not.toBe(plain);
+  }
+});

@@ -164,7 +164,7 @@ function ScenarioCompare({ s, r, base, ds }: { s: Scenario; r: AllocationResult;
             const before=id===null ? total-Object.values(ba).reduce((n,v)=>n+v,0) : ba[id]??0;
             const now=id===null ? total-Object.values(bb).reduce((n,v)=>n+v,0) : bb[id]??0;
             if(!now&&!before)return null;
-            return <span key={id??'__none'} className="row" title={bloc?.appDefined ? appGroupingExplanation(lang) : undefined} style={{gap:5}}><span className="swatch" style={{background:`color-mix(in srgb, ${color} 24%, var(--surface))`,border:`1px ${id===null?'dotted':'solid'} ${color}`}} />{bloc?groupingName(bloc, lang):L('No bloc','ללא גוש')} <b><bdi dir="ltr">{groupedA?`${before} → `:''}{now}</bdi></b></span>;
+            return <span key={id??'__none'} className="row" title={bloc?.appDefined ? appGroupingExplanation(lang) : undefined} style={{gap:5}}><span className="swatch" style={{background:`color-mix(in srgb, ${color} 24%, var(--surface))`,border:`1px ${id===null?'dotted':'solid'} ${color}`}} />{bloc?groupingName(bloc, lang, !groupedA ? s.blocSchemes?.find(g => g.id === s.blocSchemeId) : undefined):L('No bloc','ללא גוש')} <b><bdi dir="ltr">{groupedA?`${before} → `:''}{now}</bdi></b></span>;
           })}</div>
           {!groupedA && <p className="small muted" style={{ margin: '4px 0 0' }}>{L(`${groupingLabel(s, lang)}: no counterpart in ${nameA}`, `${groupingLabel(s, lang)}: אין מקבילה ב${nameA}`)}</p>}
         </section>
@@ -314,7 +314,7 @@ function ElectionCompare({ s, r, base, ds, otherId }: { s: Scenario; r: Allocati
         {[left, right].filter((x) => x.sc.blocs.length).map((x) => { const sums = blocSums(x.sc, x.rr); return <div key={x.sc.electionId}>
           <BlocBarRow sums={sums} title={x.election} sc={x.sc} />
           <div className="legend small cmp-bloclegend"><span className="muted">{groupingLabel(x.sc, lang)}:</span>{blocDisplayOrder(x.sc).map((id) => { const bloc = x.sc.blocs.find((b) => b.id === id), n = id === null ? x.sc.rules.seats - Object.values(sums).reduce((t, v) => t + v, 0) : sums[id] ?? 0; if (!n) return null; const color = bloc?.color ?? 'var(--muted)';
-            return <span key={id ?? '__none'} className="row" title={bloc?.appDefined ? appGroupingExplanation(lang) : undefined} style={{ gap: 5 }}><span className="swatch" style={{ background: `color-mix(in srgb, ${color} 24%, var(--surface))`, border: `1px ${id === null ? 'dotted' : 'solid'} ${color}` }} />{bloc ? groupingName(bloc, lang) : L('No bloc', 'ללא גוש')} <b>{n}</b></span>; })}</div>
+            return <span key={id ?? '__none'} className="row" title={bloc?.appDefined ? appGroupingExplanation(lang) : undefined} style={{ gap: 5 }}><span className="swatch" style={{ background: `color-mix(in srgb, ${color} 24%, var(--surface))`, border: `1px ${id === null ? 'dotted' : 'solid'} ${color}` }} />{bloc ? groupingName(bloc, lang, x.sc.blocSchemes?.find(g => g.id === x.sc.blocSchemeId)) : L('No bloc', 'ללא גוש')} <b>{n}</b></span>; })}</div>
         </div>; })}
       </section>}
 

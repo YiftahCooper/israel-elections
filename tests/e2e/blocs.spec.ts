@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { choose } from './choices.ts';
 // Blocs per election and constituent parties (decision 0087).
 import { expect, test, type Page } from '@playwright/test';
@@ -116,18 +117,42 @@ for (const lang of ['en', 'he'] as const) for (const election of ['k24', 'k25'])
     expect(svg).toContain(`· ${tag}`);
     expect(svg).toContain('<desc>');
     expect(svg).toMatch(/not an official|אינה חלוקה רשמית/);
-    // Every named, app-defined bloc must remain marked even when detached from the picker.
+    // The visible scheme marker covers every band and legend row in this panel.
+    const panel = page.getByRole('region', { name: lang === 'en' ? 'Seats by bloc' : 'מנדטים לפי גוש' });
+    await expect(panel.locator('.majority-context')).toContainText(`· ${tag}`);
+    expect((await panel.innerText()).split(`· ${tag}`).length - 1).toBe(1);
+    expect(svg.split(`· ${tag}`).length - 1).toBe(1);
     const bands = page.locator('.corridor:not(.no-bloc)');
     expect(await bands.count()).toBeGreaterThan(0);
     for (const band of await bands.all()) {
-      await expect(band.locator('.label')).toContainText(`· ${tag}`);
-      const marker = await band.locator('.app-grouping-tag').boundingBox(), box = await band.boundingBox();
-      expect(marker!.x).toBeGreaterThanOrEqual(box!.x);
-      expect(marker!.x + marker!.width).toBeLessThanOrEqual(box!.x + box!.width);
+      await expect(band.locator('.label')).not.toContainText(`· ${tag}`);
+      await expect(band.locator('.app-grouping-tag')).toHaveCount(0);
+      // Tooltips name the bloc alone, so they retain their own provenance.
+      await expect(band).toHaveAttribute('title', new RegExp(`· ${tag}`));
       await expect(band).toHaveAttribute('title', /not an official|אינה חלוקה רשמית/);
     }
     for (const label of await page.locator('.strip-legend > span').all()) {
-      if (!(await label.textContent())?.includes(lang === 'en' ? 'No bloc' : 'ללא גוש')) await expect(label).toContainText(`· ${tag}`);
+      await expect(label).not.toContainText(`· ${tag}`);
     }
+    await page.getByRole('tab', {name: lang === 'en' ? 'Compare' : 'השוואה', exact:true}).click();
+    await choose(page.getByRole('button', {name: lang === 'en' ? 'Compare with' : 'השוואה עם', exact:true}), `election:${election === 'k24' ? 'k23' : 'k24'}`);
+    const legend = page.locator('.cmp-bloclegend').filter({hasText:`· ${tag}`});
+    await expect(legend).toHaveCount(1);
+    expect((await legend.innerText()).split(`· ${tag}`).length - 1).toBe(1);
+    for (const row of await legend.locator('.row').all()) await expect(row).not.toContainText(`· ${tag}`);
   });
 }
+
+
+test('a bloc in a sourced scheme keeps its own marker', async ({ page }) => {
+  await page.route('**/data/k25.json', async route => {
+    const ds = JSON.parse(readFileSync('public/data/k25.json', 'utf8'));
+    ds.blocSchemes.find((g: {id:string}) => g.id === 'first-government').blocs[0].appDefined = true;
+    await route.fulfill({json:ds});
+  });
+  await start(page, 'standard');
+  const panel = blocs(page);
+  await expect(panel.locator('.majority-context')).not.toContainText('· App');
+  await expect(band(page, 'Coalition').locator('.app-grouping-tag')).toHaveText('· App');
+  await expect(band(page, 'Opposition').locator('.app-grouping-tag')).toHaveCount(0);
+});

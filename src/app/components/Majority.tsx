@@ -11,5 +11,5 @@ export function Majority({ n, total }: { n: number; total: number }) {
 export function BlocMajorities({ s, r }: { s: Scenario; r: AllocationResult }) {
   const lang = useLang();
   const pieces = blocPieces(s, r);
-  return <div className="majority-context small"><span className="muted" title={s.blocSchemes?.find(g => g.id === s.blocSchemeId)?.appDefined ? appGroupingExplanation(lang) : undefined}>{groupingLabel(s, lang)}</span>{s.blocs.map(b => <span key={b.id} title={b.appDefined ? appGroupingExplanation(lang) : undefined}>{groupingName(b, lang)}: <Majority n={pieces.filter(p => p.bloc === b.id).reduce((n,p) => n+p.n,0)} total={s.rules.seats} /></span>)}</div>;
+  return <div className="majority-context small"><span className="muted" title={s.blocSchemes?.find(g => g.id === s.blocSchemeId)?.appDefined ? appGroupingExplanation(lang) : undefined}>{groupingLabel(s, lang)}</span>{s.blocs.map(b => <span key={b.id} title={b.appDefined ? appGroupingExplanation(lang) : undefined}>{groupingName(b, lang, s.blocSchemes?.find(g => g.id === s.blocSchemeId))}: <Majority n={pieces.filter(p => p.bloc === b.id).reduce((n,p) => n+p.n,0)} total={s.rules.seats} /></span>)}</div>;
 }

@@ -4,6 +4,7 @@ export const appGroupingTag = (lang: string) => lang === 'he' ? 'יישומון'
 export const appGroupingExplanation = (lang: string) => lang === 'he'
   ? 'היישומון הגדיר חלוקה זו לצורך השוואה; זו אינה חלוקה רשמית או חלוקה שהייתה מוכרת בזמן הבחירות.'
   : 'The app defined this grouping for comparison; it is not an official or contemporaneous grouping.';
-export function groupingName(g: GroupingName, lang: string): string {
-  return `${lang === 'he' ? g.nameHe : g.nameEn}${g.appDefined ? ` · ${appGroupingTag(lang)}` : ''}`;
+/** Pass a scheme only when its own marked label is visible in the same display context. */
+export function groupingName(g: GroupingName, lang: string, markedScheme?: { appDefined?: boolean }): string {
+  return `${lang === 'he' ? g.nameHe : g.nameEn}${g.appDefined && !markedScheme?.appDefined ? ` · ${appGroupingTag(lang)}` : ''}`;
 }

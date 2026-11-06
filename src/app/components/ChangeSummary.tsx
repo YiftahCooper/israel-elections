@@ -80,7 +80,7 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
   const familyGrouping = isFamilyGrouping(s);
   const majority = Math.floor(s.rules.seats / 2) + 1;
   const holder = blocs?.find((x) => x.n >= majority);
-  const name = (b: { nameHe: string; nameEn: string; appDefined?: boolean }) => groupingName(b, lang);
+  const name = (b: { nameHe: string; nameEn: string; appDefined?: boolean }) => groupingName(b, lang, s.blocSchemes?.find(g => g.id === s.blocSchemeId));
   const shown = moves.slice(0, MAX_MOVES);
 
   return (

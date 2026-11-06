@@ -2,6 +2,8 @@
 
 ## 6 November 2026 — data audit
 
+- Show app-defined provenance once per marked scheme context; keep individual markers for standalone blocs and tooltips.
+
 - Keep app-defined grouping names concise, with a bilingual App marker and provenance help across views and exports.
 
 - k2: corrected ballot letters with stable IDs, registered names and five elected spellings; transcribed both losing rosters, strengthened satellite-list sources and repaired aftermath dates/gaps.

@@ -167,7 +167,7 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
                   {b ? <>
                     <button className="bp-swatch" style={{ background: color }} aria-label={L(`Colour of ${name(b)}`, `הצבע של ${name(b)}`)} aria-expanded={paletteFor === k} onClick={() => setPaletteFor(paletteFor === k ? null : k)} />
                     <EditMarker s={s} path={['blocs', k, 'color']} /><EditMarker s={s} path={['blocs', k, lang === 'he' ? 'nameHe' : 'nameEn']} />
-                    <BlocName key={`${k}-${lang}-${name(b)}`} value={name(b)} autoFocus={fresh === k} label={L('Bloc name', 'שם הגוש')} onCommit={(v) => { setFresh(null); if (v && v !== name(b)) rename(k, v); }} />{b.appDefined && <small title={appGroupingExplanation(lang)}>· {appGroupingTag(lang)}</small>}
+                    <BlocName key={`${k}-${lang}-${name(b)}`} value={name(b)} autoFocus={fresh === k} label={L('Bloc name', 'שם הגוש')} onCommit={(v) => { setFresh(null); if (v && v !== name(b)) rename(k, v); }} />{b.appDefined && !s.blocSchemes?.find(g => g.id === s.blocSchemeId)?.appDefined && <small title={appGroupingExplanation(lang)}>· {appGroupingTag(lang)}</small>}
                   </> : <><span className="bp-swatch none" aria-hidden /><b className="bp-name-static">{L('No bloc', 'ללא גוש')}</b></>}
                   <span className="bp-seats"><b>{n}</b><small>{n >= majority ? L('majority', 'רוב') : L(`${majority - n} short`, `חסרים ${majority - n}`)}</small></span>
                   {b && <button className="btn small ghost danger icon-only" aria-label={L(`Delete the bloc ${name(b)} (its members move to no bloc)`, `מחיקת הגוש ${name(b)} (חבריו יעברו ל"ללא גוש")`)} onClick={() => remove(k)}><Trash2 className="icon sm" aria-hidden /></button>}
