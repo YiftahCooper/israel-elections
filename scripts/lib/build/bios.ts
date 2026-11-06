@@ -8,6 +8,7 @@ import type { CandidateBio, ElectionDataset } from '../../../src/data/schema.ts'
 
 const ROOT = join(import.meta.dirname, '..', '..', '..');
 interface Entry {
+  displayNameEn?: string; // Reviewed display transliteration; original official extract stays intact.
   knesset?: { url: string; siteId?: number } | null; hewiki?: { title: string; url: string } | null;
   party?: { url: string; publisher?: string; archivedAt?: string | null; kind?: string } | null; confidence: 'high' | 'medium'; basis?: string;
 }
@@ -25,7 +26,7 @@ export function applyBios(ds: ElectionDataset): ElectionDataset {
   // official English names from the Knesset website, keyed by member site id; only certain Knesset identities take one
   const namesFile = join(ROOT, 'data', 'raw', 'bios', 'knesset-site-mk-names-en.json');
   const namesEn = new Map(existsSync(namesFile) ? (JSON.parse(readFileSync(namesFile, 'utf8')) as { siteId: number; nameEn: string | null }[]).filter((x) => x.nameEn).map((x) => [x.siteId, x.nameEn!]) : []);
-  const nameEnOf = (e: Entry) => (knessetIdentitySure(e) && e.knesset?.siteId ? namesEn.get(e.knesset.siteId) : undefined);
+  const nameEnOf = (e: Entry) => (knessetIdentitySure(e) && e.knesset?.siteId ? (e.displayNameEn ?? namesEn.get(e.knesset.siteId)) : undefined);
   const ids = new Set(ds.lists.flatMap((l) => l.candidates.map((c) => c.id)));
   const unknown = Object.keys(bios).filter((id) => !ids.has(id));
   if (unknown.length) throw new Error(`data/meta/bios/${ds.id}.json: not in the roster: ${unknown.slice(0, 5).join(', ')}`);

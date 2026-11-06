@@ -1,3 +1,6 @@
+// k12 audit (6 Nov): reviewed recursive diff changes only k12 letter/name labels,
+// candidate display notes/names, two withheld logos, party link, blocs and status/source metadata.
+// Every list/candidate ID, vote, seat, colour and agreement reference is unchanged; only model digest changes.
 // 6 Nov 2026 k22 audit: reviewed scalar diff changes only status, logical Hebrew
 // punctuation, CEC link titles, three withdrawal flags and distinct modern Gesher
 // IDs (also k23). Withdrawal flags affect hypothetical corpus allocations; model
@@ -117,7 +120,7 @@ const EXPECTED: Record<Family, string> = {
   // and builtAt changed (recursive field diff); HEAD k19 with current src reproduces 2694440f….
   // All four non-model digests unchanged. See docs/research/data-audit/k19-resolution.md.
   // merged with k19 audit fixes: combined digest = union of the separately reviewed changes.
-  model: '4faa7f17ce364956de29269c7575a52a553ca40ea4da216f29fcc9620d9c21e5',
+  model: '69dd044dc9d0e04edd52fb0cb91b3fd2df6e0d7dd281e6c369bb6d03b09b1bd7',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

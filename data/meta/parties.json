@@ -8493,13 +8493,13 @@
     {
       "id": "vehicle-12-הן",
       "entityType": "alliance",
-      "nameHe": "תנועת המרכז – שינוי (שינוי־לע״מ־המרכז הליברלי)",
+      "nameHe": "תנועת המרכז – שינוי (שינוי – ל״ע – המרכז הליברלי)",
       "nameEn": "Shinui",
       "names": [
         {
           "date": "1988-11-01",
           "datePrecision": "day",
-          "nameHe": "תנועת המרכז – שינוי (שינוי־לע״מ־המרכז הליברלי)",
+          "nameHe": "תנועת המרכז – שינוי (שינוי – ל״ע – המרכז הליברלי)",
           "nameEn": "Shinui",
           "sources": [
             "k12"
@@ -8984,13 +8984,13 @@
     {
       "id": "vehicle-12-זב",
       "entityType": "electoral-vehicle",
-      "nameHe": "אחדות – למען ישועה וחיים לכנסת",
+      "nameHe": "אחדות – למען ויקטור תייר לכנסת",
       "nameEn": null,
       "names": [
         {
           "date": "1988-11-01",
           "datePrecision": "day",
-          "nameHe": "אחדות – למען ישועה וחיים לכנסת",
+          "nameHe": "אחדות – למען ויקטור תייר לכנסת",
           "nameEn": null,
           "sources": [
             "k12",
@@ -9016,13 +9016,13 @@
     {
       "id": "vehicle-12-זפ",
       "entityType": "electoral-vehicle",
-      "nameHe": "זעם ורעש",
+      "nameHe": "תרשיש",
       "nameEn": null,
       "names": [
         {
           "date": "1988-11-01",
           "datePrecision": "day",
-          "nameHe": "זעם ורעש",
+          "nameHe": "תרשיש",
           "nameEn": null,
           "sources": [
             "k12",
@@ -9224,13 +9224,13 @@
     {
       "id": "vehicle-12-מעם",
       "entityType": "electoral-vehicle",
-      "nameHe": "תנועה למען מועמדים־ערי פיתוח ושכונות",
+      "nameHe": "תנועה למען מושבים, ערי פיתוח ושכונות",
       "nameEn": null,
       "names": [
         {
           "date": "1988-11-01",
           "datePrecision": "day",
-          "nameHe": "תנועה למען מועמדים־ערי פיתוח ושכונות",
+          "nameHe": "תנועה למען מושבים, ערי פיתוח ושכונות",
           "nameEn": null,
           "sources": [
             "k12",

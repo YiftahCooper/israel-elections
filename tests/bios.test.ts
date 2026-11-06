@@ -49,13 +49,19 @@ describe('official English names of Knesset members', () => {
     const bySite = new Map(names.map((x) => [x.siteId, x.nameEn]));
     let n = 0;
     for (const e of index.filter((x) => x.available)) {
-      const meta = JSON.parse(readFileSync(`data/meta/bios/${e.id}.json`, 'utf8')).candidates as Record<string, { knesset?: { siteId?: number } | null; basis?: string }>;
+      const meta = JSON.parse(readFileSync(`data/meta/bios/${e.id}.json`, 'utf8')).candidates as Record<string, { knesset?: { siteId?: number } | null; basis?: string; displayNameEn?: string; displayNameEnNote?: string }>;
       for (const l of load(e.id).lists) for (const c of l.candidates) {
         const m = meta[c.id];
         if (m?.basis?.startsWith('not elected; ')) expect(c.nameEn, c.id).toBeUndefined();
         if (!c.nameEn) continue;
         n++;
-        expect(c.nameEn, c.id).toBe(bySite.get(m!.knesset!.siteId!));
+        const reviewed: Record<string, [string, string]> = {'12-ג#1': ['Moshe Zeev Feldman', 'Moseh  Zeev Feldman'], '12-מחל#41': ['Yehoshua Sagi', 'Yeushua Sagi']};
+        if (m?.displayNameEn) {
+          expect(m.displayNameEn, c.id).toBe(reviewed[c.id]?.[0]);
+          expect(bySite.get(m.knesset!.siteId!), c.id).toBe(reviewed[c.id]?.[1]);
+          expect(m.displayNameEnNote).toContain('YP 3588/3591');
+        }
+        expect(c.nameEn, c.id).toBe(m?.displayNameEn ?? bySite.get(m!.knesset!.siteId!));
         expect(c.nameEn, c.id).not.toMatch(/[֐-׿]/);
       }
     }

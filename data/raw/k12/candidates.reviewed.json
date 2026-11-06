@@ -870,7 +870,7 @@
         },
         {
           "rank": 3,
-          "nameHe": "פארס חסין",
+          "nameHe": "פארס חסיין",
           "page": 157
         }
       ],
@@ -887,7 +887,7 @@
         "namesHe": [
           "צבן יאיר",
           "אורון חיים",
-          "פארס חסין"
+          "פארס חסיין"
         ],
         "note": "Visually compared name by name; namesHe uses surname/given order also when results print given/surname order. Punctuation normalized; explicit variants retain other differences.",
         "spellingVariants": []

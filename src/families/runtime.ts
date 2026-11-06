@@ -8,7 +8,7 @@ export const builtins: Family[] = packed.families.map(f=>({
  elections:f.elections.map(e=>({electionId:e.id,members:e.members.map(([listId,scope,outcome,headsList,composition])=>({listId,headsList,partyIds:[],...(composition?{composition}:{}),scope:scope===3?'led':scope===2?'mixed':scope===1?'extension':'core',treatment:['include','separate-segment','exclude','unresolved'][outcome],classificationEvidence:{status:'inferred',sourceIds:[],claim:''}})),reviewCandidates:e.reviews.map(listId=>({listId,reason:'',sourceIds:[]}))}))
 }));
 /** A list's short name at a historical election, without loading the election dataset. */
-export function historyListName(electionId:string,listId:string,lang:'he'|'en'){const n=packed.elections.find(d=>d.id===electionId)?.names[listId];return n?(lang==='en'?englishLabel(n[1],n[0]):n[0]):listId.replace(/^\d+-/,'');}
+export function historyListName(electionId:string,listId:string,lang:'he'|'en'){const n=packed.elections.find(d=>d.id===electionId)?.names[listId];return n?(lang==='en'?englishLabel(n[1],n[0]):n[0]):(lang==='he'?'רשימה לא ידועה':'Unknown list');}
 type Part=readonly [string,string,string,string|null,number];
 const partsOf=(x:Family|undefined,electionId:string,listId:string)=>x?.elections.find(e=>e.electionId===electionId)?.members.find(m=>m.listId===listId)?.composition as readonly Part[]|undefined;
 /** Constituent parties of a mixed list with the family's own flagged; a personal copy flags by its own member party ids. */

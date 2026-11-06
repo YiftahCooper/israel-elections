@@ -369,7 +369,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k12.json",
-      "sha256": "dcb3854c1a3a54ac025e7daa0e0604fb3b8ace440f5fb4818139af6db67e1615",
+      "sha256": "003fa1f934da959a4f80d587fb2a787b6ca3201769f16f87552bc1f6587b3c19",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k13": {
@@ -1758,12 +1758,12 @@
       "electionId": "k12",
       "electionDate": "1988-11-01",
       "datasetPath": "public/data/k12.json",
-      "datasetSha256": "dcb3854c1a3a54ac025e7daa0e0604fb3b8ace440f5fb4818139af6db67e1615",
+      "datasetSha256": "003fa1f934da959a4f80d587fb2a787b6ca3201769f16f87552bc1f6587b3c19",
       "datasetStatus": {
         "stage": "official-final",
-        "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 120 transcribed ranks across all 15 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
-        "noteHe": "תוצאות ארציות בלבד; כל המנדטים הרשמיים שוחזרו. 120 מועמדים תומללו מפרסום הרשימות הרשמי בכל 15 הרשימות הזוכות; שמות כל 120 הנבחרים הוצלבו עם הודעת התוצאות. דרגות מאוחרות לא תומללו; רשימות חלקיות ורשימות לא זוכות שלא תומללו מסומנות במפורש. אין נתוני יישובים. שרשרת התיקונים המלאה למועד הבחירות ושינויים מאוחרים ברשימות טרם אומתו; אלה מגבלות מתועדות.",
-        "asOf": "2026-11-03"
+        "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 121 retained candidate entries (120 declared elected) across all 15 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
+        "noteHe": "תוצאות ארציות בלבד; כל המנדטים הרשמיים שוחזרו. 121 מועמדים נשמרו (120 הוכרזו נבחרים) מפרסום הרשימות הרשמי בכל 15 הרשימות הזוכות; שמות כל 120 הנבחרים הוצלבו עם הודעת התוצאות. דרגות מאוחרות לא תומללו; רשימות חלקיות ורשימות לא זוכות שלא תומללו מסומנות במפורש. אין נתוני יישובים. שרשרת התיקונים המלאה למועד הבחירות ושינויים מאוחרים ברשימות טרם אומתו; אלה מגבלות מתועדות.",
+        "asOf": "2026-11-06"
       },
       "validVotes": 2283123,
       "voteSourceIds": [
@@ -1779,7 +1779,7 @@
         {
           "listId": "12-הן",
           "letters": "הן",
-          "nameHe": "תנועת המרכז – שינוי (שינוי־לע״מ־המרכז הליברלי)",
+          "nameHe": "תנועת המרכז – שינוי (שינוי – ל״ע – המרכז הליברלי)",
           "votes": 39538,
           "partyIds": [
             "shinui",

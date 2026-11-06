@@ -1280,8 +1280,8 @@
     "description": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-03T16:14:46.283817+00:00",
-    "bytes": 10757,
-    "sha256": "c89f4b27b1be27db617d6eaef8b35230f2c8951901b6838c8d7259a941adcd05"
+    "bytes": 11334,
+    "sha256": "b2ff182c67843419bc8d0af86ab89de98410b1602f8f96fee432cd9567528453"
   },
   {
     "id": "k8-k12-cbs-national-totals",
@@ -2754,8 +2754,8 @@
     "method": "manual-review",
     "description": "Official winning-list leading ranks and name-by-name elected comparisons; page references, spelling variants and incomplete checks explicitly retained.",
     "retrievedAt": "2026-11-03T16:34:27.797524+00:00",
-    "bytes": 29588,
-    "sha256": "1d91248bcc31070d99cc91cf776527b89b719c8f581ab5f147af925771dc4aac"
+    "bytes": 29592,
+    "sha256": "5b3628e54715aa92c0591824b7571b241e53ae4cbd74b25e897c4428b0d24b2a"
   },
   {
     "id": "k8-search-reviewed",
@@ -6100,5 +6100,15 @@
     "retrievedAt": "2026-11-06",
     "bytes": 466905,
     "sha256": "997628f9f5b6d556b62e2547489cbc9b6fbd64fa721c6eff687577ae1074cc24"
+  },
+  {
+    "id": "k12-reiser-personal-details",
+    "file": "context/k12-reiser-knesset.txt",
+    "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/623",
+    "publisher": "Knesset",
+    "retrievedAt": "2026-11-06",
+    "sha256": "d30fbfa1d852e270288491c36686f023662b6738b573793a059c1bbaa32dd2dc",
+    "bytes": 253,
+    "description": "Retained exact personal-details excerpt confirming Michael Reiser death date."
   }
 ]

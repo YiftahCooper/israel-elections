@@ -54,7 +54,7 @@ export interface Candidate {
 }
 
 export interface ListRecord {
-  id: string; // `${knesset}-${letters}`
+  id: string; // Opaque stable key; historical ballot-letter corrections do not rename it.
   letters: string; // ballot letters (אותיות הרשימה)
   nameHe: string; // full approved list name (כינוי הרשימה)
   shortHe: string;

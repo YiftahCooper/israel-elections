@@ -110,7 +110,7 @@ function ScenarioCompare({ s, r, base, ds }: { s: Scenario; r: AllocationResult;
   const groups = useMemo(() => comparisonGroups(s, r, a, ar), [ar, a, r, s]);
 
   const groupIcons = (g: { bIds: string[]; aIds: string[] }) => (g.bIds.length ? g.bIds.map(id => s.lists.find(l => l.id === id)) : g.aIds.map(id => a.lists.find(l => l.id === id))).filter(l => !!l).map(l => <span key={l.id} aria-hidden="true"><Slip {...l} name={listLabel(l, lang)} size="sm" /></span>);
-  const gName = (ids: string[], sc: Scenario) => ids.map((id) => { const l = sc.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : id; }).join(' + ') || '—';
+  const gName = (ids: string[], sc: Scenario) => ids.map((id) => { const l = sc.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : (lang === 'he' ? 'רשימה לא ידועה' : 'Unknown list'); }).join(' + ') || '—';
   const changed = groups.filter((g) => g.seatsA !== g.seatsB).sort((x, y) => (y.seatsB - y.seatsA) - (x.seatsB - x.seatsA));
   const gainers = changed.filter((g) => g.seatsB > g.seatsA);
   // direct vs indirect

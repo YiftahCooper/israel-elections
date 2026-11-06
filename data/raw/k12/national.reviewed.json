@@ -1,7 +1,7 @@
 {
   "id": "k12",
-  "reviewedOn": "2026-11-03",
-  "scope": "National votes and seats visually transcribed from the official scanned results gazette. Partial research evidence; not a released application dataset.",
+  "reviewedOn": "2026-11-06",
+  "scope": "National votes and seats visually checked against YP 3591 p.242; corrected list letters/names checked against YP 3588 headings (pp.153–164). Legacy IDs retained for saved-scenario compatibility; see k12-resolution.md.",
   "resultsSourceId": "k12-results-gazette",
   "resultsIssue": 3591,
   "resultsPages": [
@@ -39,9 +39,10 @@
     },
     {
       "letters": "הן",
-      "nameHe": "תנועת המרכז – שינוי (שינוי־לע״מ־המרכז הליברלי)",
+      "nameHe": "תנועת המרכז – שינוי (שינוי – ל״ע – המרכז הליברלי)",
       "gazetteVotes": 39538,
-      "officialSeats": 2
+      "officialSeats": 2,
+      "sourceNote": "YP 3588 p.150: שינוי – ל״ע – המרכז הליברלי; YP 3591 row 4 abbreviates the title."
     },
     {
       "letters": "ו",
@@ -56,16 +57,18 @@
       "officialSeats": 0
     },
     {
-      "letters": "זב",
-      "nameHe": "אחדות – למען ישועה וחיים לכנסת",
+      "letters": "זכ",
+      "nameHe": "אחדות – למען ויקטור תייר לכנסת",
       "gazetteVotes": 446,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyId": "12-זב"
     },
     {
-      "letters": "זפ",
-      "nameHe": "זעם ורעש",
+      "letters": "זעמ",
+      "nameHe": "תרשיש",
       "gazetteVotes": 1654,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyId": "12-זפ"
     },
     {
       "letters": "ט",
@@ -74,10 +77,11 @@
       "officialSeats": 2
     },
     {
-      "letters": "טף",
+      "letters": "טיף",
       "nameHe": "ישי – יחד שבטי ישראל",
       "gazetteVotes": 2947,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyId": "12-טף"
     },
     {
       "letters": "טע",
@@ -86,10 +90,11 @@
       "officialSeats": 0
     },
     {
-      "letters": "יע",
+      "letters": "יענ",
       "nameHe": "התאחדות התימנים בישראל",
       "gazetteVotes": 909,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyId": "12-יע"
     },
     {
       "letters": "מחל",
@@ -104,10 +109,11 @@
       "officialSeats": 0
     },
     {
-      "letters": "מעם",
-      "nameHe": "תנועה למען מועמדים־ערי פיתוח ושכונות",
+      "letters": "מעש",
+      "nameHe": "תנועה למען מושבים, ערי פיתוח ושכונות",
       "gazetteVotes": 2838,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyId": "12-מעם"
     },
     {
       "letters": "מפם",
@@ -152,16 +158,18 @@
       "officialSeats": 0
     },
     {
-      "letters": "קק",
+      "letters": "קם",
       "nameHe": "התנועה למען חיילים משוחררים",
       "gazetteVotes": 1018,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyId": "12-קק"
     },
     {
-      "letters": "קצץ",
-      "nameHe": "הגימלאים",
+      "letters": "קמע",
+      "nameHe": "גימלאים",
       "gazetteVotes": 16674,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyId": "12-קצץ"
     },
     {
       "letters": "רצ",
@@ -201,13 +209,14 @@
       ],
       [
         "קז",
-        "יע"
+        "יענ"
       ],
       [
         "שס",
         "עץ"
       ]
-    ]
+    ],
+    "quote": "התנועה למען חברה צודקת – קז עם התאחדות התימנים בישראל – יענ"
   },
   "candidateChecks": {
     "completeWinningRostersVerified": true,
@@ -295,7 +304,7 @@
         "pages": [
           155
         ],
-        "scope": "Ranks1–40 transcribed; elected names cross-checked: 40. See candidates.reviewed.json."
+        "scope": "Ranks 1–41 retained; 120 elected members overall, excluding deceased Likud rank 25. YP 3588 pp.155–156 and YP 3591 pp.243–244."
       },
       {
         "letters": "מפם",

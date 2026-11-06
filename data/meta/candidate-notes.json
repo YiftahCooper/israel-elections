@@ -90,6 +90,33 @@
         "YP 7010 p. 4372: סעדי אוסאמה",
         "Knesset OData PersonID 30070 (data/raw/k20/knesset-odata-members.json)"
       ]
+    },
+    {
+      "candidateId": "12-אמת#21",
+      "en": "The candidate notice prints אברהם בורג; the later results notice prints אברם בורג. Registered spelling retained.",
+      "he": "בהודעת המועמדים: אברהם בורג; בהודעת התוצאות המאוחרת: אברם בורג. כתיב הרשימה הרשומה נשמר.",
+      "sources": [
+        "YP 3588 p.146 rank 21",
+        "YP 3591 p.243 §4(א) rank 21"
+      ]
+    },
+    {
+      "candidateId": "12-ג#1",
+      "en": "The Knesset English header spells his name “Moseh  Zeev Feldman”; Hebrew: משה זאב פלדמן (Moshe Zeev Feldman).",
+      "he": "בכותרת האנגלית באתר הכנסת נדפס “Moseh  Zeev Feldman”; ברשומות: משה זאב פלדמן.",
+      "sources": [
+        "Knesset English member header (retained siteId extract)",
+        "YP 3591 pp.243–244"
+      ]
+    },
+    {
+      "candidateId": "12-מחל#41",
+      "en": "The Knesset English header spells his name “Yeushua Sagi”; Hebrew: יהושע שגיא (Yehoshua Sagi).",
+      "he": "בכותרת האנגלית באתר הכנסת נדפס “Yeushua Sagi”; ברשומות: יהושע שגיא.",
+      "sources": [
+        "Knesset English member header (retained siteId extract)",
+        "YP 3591 pp.243–244"
+      ]
     }
   ]
 }
