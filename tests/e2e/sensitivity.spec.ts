@@ -18,7 +18,7 @@ test('opening the page shows all three answers with defaults, without pressing a
   await expect(panel(page).getByRole('img', { name: 'Seats against votes' })).toBeVisible({ timeout: 60_000 });
   await expect(panel(page).getByRole('img', { name: 'Highest threshold each list passes' })).toBeVisible();
   await expect(panel(page).locator('.callout')).toContainText(/votes? moving from .+ give the bloc a majority/, { timeout: 120_000 });
-  await expect(panel(page).locator('.callout bdi')).toHaveText('53 → 61 / 61');
+  await expect(panel(page).locator('.callout > .row > bdi')).toHaveText('53 → 61 / 61');
   await expect(panel(page).getByRole('button', { name: /^(Run|Search)$/ })).toHaveCount(0);
 });
 
@@ -59,8 +59,8 @@ test('a bloc whose members count apart from their lists is searched against the 
   // the 2020 coalition holds 73 seats in the chamber, counting the members who joined it from Blue and White
   await expect(blocRow(page)).toHaveText('73 / 61');
   await expect(panel(page).locator('.callout')).toContainText('end the majority', { timeout: 150_000 });
-  await expect(panel(page).locator('.callout bdi')).toHaveText(/^73 → (\d+) \/ 61$/);
-  const after = Number((await panel(page).locator('.callout bdi').textContent())!.match(/→ (\d+)/)![1]);
+  await expect(panel(page).locator('.callout > .row > bdi')).toHaveText(/^73 → (\d+) \/ 61$/);
+  const after = Number((await panel(page).locator('.callout > .row > bdi').textContent())!.match(/→ (\d+)/)![1]);
   expect(after).toBeLessThan(61);
 });
 

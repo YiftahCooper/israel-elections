@@ -1,3 +1,5 @@
+import { SeatDelta } from './SeatDelta.tsx';
+import { factLog } from '../../model/actionClassification.ts';
 import {isFamilyGrouping} from '../../families/labels.ts';
 import { useActiveReference } from '../useActiveReference.ts';
 import { referenceLabel } from '../derive.ts';
@@ -72,12 +74,12 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
     if (b) was = blocTotals(b, allocationOf(b));
     return s.blocs.map((b) => ({ b, n: now.get(b.id) ?? 0, d: was ? (now.get(b.id) ?? 0) - (was.get(b.id) ?? 0) : null }));
   }, [s, r, base, baseR]);
-  const edited = s.log.length > 0;
+  const edits = factLog(s).length;
+  const edited = edits > 0;
   const familyGrouping = isFamilyGrouping(s);
   const majority = Math.floor(s.rules.seats / 2) + 1;
   const holder = blocs?.find((x) => x.n >= majority);
   const name = (b: { nameHe: string; nameEn: string }) => (lang === 'he' ? b.nameHe : b.nameEn);
-  const sign = (d: number) => (d > 0 ? `+${d}` : `−${-d}`);
   const shown = moves.slice(0, MAX_MOVES);
 
   return (
@@ -88,20 +90,20 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
           {moves.length === 0
             ? <span className="muted">{L('No seats changed', 'המנדטים לא השתנו')}</span>
             : <span className="moves">
-                {shown.map((m) => <span key={m.id}><bdi>{m.label(lang)}</bdi> {m.n} <span dir="ltr">({sign(m.d)})</span></span>)}
+                {shown.map((m) => <span key={m.id}><bdi>{m.label(lang)}</bdi> {m.n} <span dir="ltr">(<SeatDelta value={m.d} />)</span></span>)}
                 {moves.length > MAX_MOVES && <span className="muted">{L(`+${moves.length - MAX_MOVES} more`, `ועוד ${moves.length - MAX_MOVES}`)}</span>}
               </span>}
           {nonSeatChanges(s, base, lang).length > 0 && <span>{nonSeatChanges(s, base, lang).join(' · ')}</span>}
           {blocs && <span className="moves" style={{ color: 'var(--ink-2)' }}>
             {!familyGrouping && <span>{groupingLabel(s, lang)}</span>}
-            {blocs.filter((x) => x.n > 0 || x.d).map(({ b, n, d }) => <span key={b.id}><bdi>{name(b)}</bdi> {n}{d ? <span dir="ltr"> ({sign(d)})</span> : null}</span>)}
+            {blocs.filter((x) => x.n > 0 || x.d).map(({ b, n, d }) => <span key={b.id}><bdi>{name(b)}</bdi> {n}{d ? <span dir="ltr"> (<SeatDelta value={d} />)</span> : null}</span>)}
             {!familyGrouping && <span>{holder ? L(`${name(holder.b)} holds a majority`, `ל${name(holder.b)} יש רוב`) : L('no bloc has a majority', 'לאף גוש אין רוב')}</span>}
           </span>}
           {s.mode === 'experimental' && <span className="chip exp">{L('Experimental rules', 'כללים ניסיוניים')}</span>}
         </>}
       </span>
       {edited && <button ref={trigger} className="btn small ghost" aria-expanded={open} aria-controls={historyId} popoverTarget={historyId}>
-        {L(`History · ${s.log.length} edit${s.log.length === 1 ? '' : 's'}`, `היסטוריה · ${s.log.length} שינויים`)}
+        {L(`History · ${edits} edit${edits === 1 ? '' : 's'}`, `היסטוריה · ${edits} שינויים`)}
         {open ? <ChevronUp className="icon sm" aria-hidden /> : <ChevronDown className="icon sm" aria-hidden />}
       </button>}
       <div id={historyId} ref={pop} className="history" popover="auto" onToggle={(e) => setOpen(e.newState === 'open')}>

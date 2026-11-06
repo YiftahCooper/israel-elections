@@ -47,6 +47,7 @@ test('opening a saved scenario asks about its comparison, persists Always, and S
   await expect(switcher).toHaveAttribute('data-value', saved!);
   await page.reload();
   await page.getByRole('tab', { name: 'Rules & settings', exact: true }).click();
+  await page.locator('.band').getByRole('button', { name: 'Your settings', exact: true }).click();
   const setting = page.getByRole('button', { name: 'Mark differences from', exact: true });
   await expect(setting).toHaveAttribute('data-value', 'official'); await choose(setting, 'ask');
   await expect(setting).toHaveAttribute('data-value', 'ask');

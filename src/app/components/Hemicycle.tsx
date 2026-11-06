@@ -1,5 +1,6 @@
 import { Slip } from './ui.tsx';
 import { syntheticIconSvg } from '../syntheticIcon.ts';
+import { factLog } from '../../model/actionClassification.ts';
 import { CandidateName } from './CandidateName.tsx';
 import memberNames from '../../data/candidate-display-names.json';
 import { Floating, useHoverBridge } from '../floating.tsx';
@@ -14,7 +15,7 @@ import type { Scenario, SimList } from '../../model/scenario.ts';
 import { allocationOf, listLabel, methodOf, seatBlocsOf, seatedOrder, candidateName, referenceLabel, comparisonGroups } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { arcLayout, annularRegions } from '../layout.ts';
-import { download, isolate, signed } from '../format.ts';
+import { download, isolate, seatDeltaText } from '../format.ts';
 import { electionLabel } from '../electionLabel.ts';
 import { setState, useStore } from '../store.ts';
 import { Info, Seg } from './ui.tsx';
@@ -184,12 +185,20 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
         tile.setAttribute('width', '44'); tile.setAttribute('height', '24'); clone.appendChild(tile);
       }
       const g = groupsNow.find(g=>g.bIds.includes(l.id));
-      const numbers = !componentRows.some(row=>row.l.id===l.id) && g?.bIds.length===1 && g.seatsA!==g.seatsB ? `${g.seatsA} → ${g.seatsB} (${signed(g.seatsB-g.seatsA)})` : String(n);
-      clone.appendChild(svgText(x+dir*(artwork ? 50 : 8+colors.length*16),y,16,`${label.length>42?label.slice(0,41)+'…':label} \u2066${numbers}\u2069`));
+      const delta = !componentRows.some(row=>row.l.id===l.id) && g?.bIds.length===1 ? g.seatsB-g.seatsA : 0;
+      const numbers = delta && g ? `${g.seatsA} → ${g.seatsB}` : String(n);
+      const legend = svgText(x+dir*(artwork ? 50 : 8+colors.length*16),y,16,`${label.length>42?label.slice(0,41)+'…':label} \u2066${numbers}\u2069`);
+      if (delta) {
+        const change = document.createElementNS(NS, 'tspan');
+        change.textContent = ` \u2066(${seatDeltaText(delta)})\u2069`;
+        change.setAttribute('fill', css.getPropertyValue(delta > 0 ? '--seat-gain' : '--seat-loss').trim());
+        legend.appendChild(change);
+      }
+      clone.appendChild(legend);
     });
     const entry = elections.find(e=>e.id===s.electionId);
     const captionY = rowsY + Math.ceil(exportRows.length/2)*32 + 8;
-    clone.appendChild(svgText(colStart(0), captionY, 13, `${entry ? electionLabel(entry, elections, lang) : ''}${entry ? ' · ' : ''}${s.log.length ? s.name || L('Scenario', 'תרחיש') : L('Official result', 'התוצאה הרשמית')}`));
+    clone.appendChild(svgText(colStart(0), captionY, 13, `${entry ? electionLabel(entry, elections, lang) : ''}${entry ? ' · ' : ''}${factLog(s).length ? s.name || L('Scenario', 'תרחיש') : L('Official result', 'התוצאה הרשמית')}`));
     clone.setAttribute('viewBox', `${vb.x} ${vb.y} ${vb.width} ${captionY - vb.y + 14}`);
     const xml = new XMLSerializer().serializeToString(clone);
     if (kind === 'svg') return download('knesset.svg', xml, 'image/svg+xml');

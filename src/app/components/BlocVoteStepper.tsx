@@ -1,3 +1,4 @@
+import { SeatDelta, SeatEffects } from './SeatDelta.tsx';
 import { useState } from 'react';
 import { allocate } from '../../engine/allocate.ts';
 import type { AllocationResult } from '../../engine/types.ts';
@@ -6,12 +7,12 @@ import { toEngineInput, type Action, type Scenario } from '../../model/scenario.
 import { dispatchMany, useVoteSource, withSource } from '../store.ts';
 import { stayingHome, type SourceChoice } from '../voteEdit.ts';
 import { listLabel } from '../derive.ts';
-import { fmtInt, signed } from '../format.ts';
+import { fmtInt } from '../format.ts';
 import { useL, useLang } from '../i18n.ts';
 import { NumericStepper } from './NumericStepper.tsx';
 export function BlocVoteStepper({ s, r, bloc }: { s: Scenario; r: AllocationResult; bloc: string | null }) {
   const L = useL(), lang = useLang(), src = useVoteSource();
-  const [effect, setEffect] = useState('');
+  const [effect, setEffect] = useState<import('react').ReactNode>('');
   const members = s.lists.filter(l => !l.withdrawn && l.bloc === bloc), ids = new Set(members.map(l => l.id));
   const total = members.reduce((t, l) => t + l.votes, 0);
   // the plan for a target under a vote source: the dialog may answer a different source than the one shown
@@ -42,6 +43,6 @@ export function BlocVoteStepper({ s, r, bloc }: { s: Scenario; r: AllocationResu
     targetForStep={(step, dir) => Math.max(0, Math.round(total + dir * step.amount))}
     onCommit={target => withSource(`bloc:${bloc}`, L('Lists’ votes', 'קולות הרשימות'), [...ids], (from) => { const p = plan(from); const why = refusal(target, p, from); if (why) { setEffect(why); return; } dispatchMany(p.actionsFor(target)); setEffect(''); })} onPreview={target => {
       const next = allocate(toEngineInput(actionsFor(target).reduce((cur, a) => applyAction(cur, a), s)));
-      setEffect(next.lists.map(x => ({ id: x.id, d: x.seats - (r.lists.find(y => y.id === x.id)?.seats ?? 0) })).filter(x => x.d).map(x => `${listLabel(s.lists.find(l => l.id === x.id)!, lang)} ${signed(x.d)}`).join(' · ') || L('Seats unchanged', 'המנדטים ללא שינוי'));
+      setEffect(<SeatEffects>{next.lists.map(x => ({ id: x.id, d: x.seats - (r.lists.find(y => y.id === x.id)?.seats ?? 0) })).filter(x => x.d).map(x => <span key={x.id}>{listLabel(s.lists.find(l => l.id === x.id)!, lang)} <SeatDelta value={x.d} /> </span>)}</SeatEffects>);
     }} /><p className="tiny" aria-live="polite">{effect}</p></div>;
 }

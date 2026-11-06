@@ -47,7 +47,9 @@ for(const lang of ['en','he']) for(const theme of ['light','dark']) for(const wi
     }
    }
    await page.getByRole('tab',{name:lang==='en'?'Rules & settings':'כללים והגדרות',exact:true}).click();
+   await page.locator('.band').getByRole('button', { name: lang === 'en' ? 'Your settings' : 'ההגדרות שלכם', exact: true }).click();
    await page.getByRole('checkbox',{name:lang==='en'?'Party colours in split joint lists':'צבעי מפלגות ברשימות משותפות שפוצלו',exact:true}).uncheck();
+  await page.keyboard.press('Escape');
    await page.getByRole('tab',{name:lang==='en'?'Overview':'תמונת מצב',exact:true}).click();
    await expect(page.locator('.chamber [data-component-seat]')).toHaveCount(0);
    await page.reload();await expect(page.locator('.chamber [data-component-seat]')).toHaveCount(0);

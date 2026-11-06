@@ -95,13 +95,13 @@ test('an edited scenario is explained against the official result at every stage
   await expect(panel(page).locator('tr', { hasText: 'Labor' })).toContainText('compete as one');
   await expect(panel(page).locator('tr', { hasText: 'Labor' })).toContainText('had no effect');
   await stage(page, 'Result');
-  await expect(panel(page).locator('tr', { hasText: 'Meretz' }).locator('.walk-delta')).toHaveText('0 → 4');
+  await expect(panel(page).locator('tr', { hasText: 'Meretz' }).locator('.walk-delta')).toHaveText('0 → 4 (▲ +4)');
 });
 
 test('Hebrew: formulas read left to right and no table scrolls sideways on a phone', async ({ page }) => {
   await start(page, 'k7', 'he', 390);
   await walk(page);
-  const next = panel(page).locator('.walk-controls button').nth(2);
+  const next = panel(page).getByRole('button', { name: 'הבא', exact: true });
   while (await next.isEnabled()) {
     for (const w of await panel(page).locator('.tablewrap').all()) expect(await w.evaluate((e) => e.scrollWidth - e.clientWidth)).toBeLessThanOrEqual(1);
     for (const f of await panel(page).locator('.formula:has(bdi)').all()) {
@@ -111,4 +111,20 @@ test('Hebrew: formulas read left to right and no table scrolls sideways on a pho
     }
     await next.click();
   }
+});
+
+for (const lang of ['en', 'he'] as const) test(`manual walkthrough navigation only: ${lang}`, async ({ page }) => {
+  await start(page, 'k26', lang);
+  await walk(page);
+  const controls = panel(page).locator('.walk-controls');
+  await expect(controls.getByRole('button')).toHaveCount(2);
+  const previous = controls.getByRole('button', { name: lang === 'en' ? 'Previous' : 'הקודם', exact: true });
+  const next = controls.getByRole('button', { name: lang === 'en' ? 'Next' : 'הבא', exact: true });
+  await expect(previous).toBeDisabled();
+  await next.focus(); await page.keyboard.press('Enter');
+  await expect(controls.locator('[aria-live]')).toContainText(lang === 'en' ? 'Step 2 of' : 'צעד 2 מתוך');
+  await previous.focus(); await page.keyboard.press('Space');
+  await expect(previous).toBeDisabled();
+  await stage(page, lang === 'en' ? 'Result' : 'התוצאה');
+  await expect(next).toBeDisabled();
 });

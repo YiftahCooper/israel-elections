@@ -46,10 +46,10 @@ export function useFloating(ref: RefObject<HTMLElement | null>, anchor: () => Fl
   });
 }
 
-export function Floating({ anchor, className, id, children, preferAbove = false, onPointerEnter, onPointerLeave }: { anchor: () => FloatingAnchor | null | undefined; className: string; id?: string; children: ReactNode; preferAbove?: boolean; onPointerEnter?: () => void; onPointerLeave?: () => void }) {
+export function Floating({ anchor, className, id, children, preferAbove = false, onPointerEnter, onPointerLeave, role = 'tooltip', label }: { anchor: () => FloatingAnchor | null | undefined; className: string; id?: string; children: ReactNode; preferAbove?: boolean; onPointerEnter?: () => void; onPointerLeave?: () => void; role?: 'tooltip' | 'dialog'; label?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   useFloating(ref, anchor, true, true, preferAbove);
-  return <span ref={ref} id={id} onPointerEnter={onPointerEnter} onPointerLeave={onPointerLeave} role="tooltip" className={className}>{children}</span>;
+  return <span ref={ref} id={id} onPointerEnter={onPointerEnter} onPointerLeave={onPointerLeave} role={role} aria-label={label} className={className}>{children}</span>;
 }
 
 /** Let a pointer cross the small gap from its trigger into scrollable floating content. */

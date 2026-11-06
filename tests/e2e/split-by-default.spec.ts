@@ -28,14 +28,15 @@ for (const lang of ['en', 'he'] as const) test(`${lang}: joint-list default is p
   await expect(toggle).toBeChecked();
   await expect(page.locator('.session')).toHaveClass(/idle/);
   await toggle.uncheck();
-  await expect(page.locator('.session')).not.toHaveClass(/idle/);
-  await expect(panel.locator('[data-marker-path="factionSplits"] .edit-marker')).toHaveCount(1);
+  await expect(page.locator('.session')).toHaveClass(/idle/);
+  await expect(panel.locator('[data-marker-path="factionSplits"] .edit-marker')).toHaveCount(0);
   await page.waitForTimeout(350); // workspace debounce
   await page.reload();
   await row.click();
   await expect(toggle).not.toBeChecked();
   await expect(panel.getByRole('checkbox', { name: lang === 'en' ? 'Use by default for joint lists' : 'ברירת מחדל לרשימות משותפות' })).toBeChecked();
   await page.getByRole('tab', { name: lang === 'en' ? 'Rules & settings' : 'כללים והגדרות', exact: true }).click();
+   await page.locator('.band').getByRole('button', { name: lang === 'en' ? 'Your settings' : 'ההגדרות שלכם', exact: true }).click();
   const setting = page.getByRole('button', { name: lang === 'en' ? 'Count joint lists’ seats by party' : 'ספירת מנדטים ברשימות משותפות לפי מפלגה', exact: true });
   await expect(setting).toHaveAttribute('data-value', 'on');
   await choose(setting, 'off');

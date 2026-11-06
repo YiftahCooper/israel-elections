@@ -1,3 +1,4 @@
+import { SeatDelta } from './SeatDelta.tsx';
 import { seatOrder } from './Hemicycle.tsx';
 import {familyLabel} from '../../families/labels.ts';
 import { FamilyListTreatment } from './FamilyTreatment.tsx';
@@ -18,8 +19,7 @@ import { fmtInt, fmtPct } from '../format.ts';
 import { setState, useDigits, useLevel, useStore } from '../store.ts';
 import { DisclosureToggle, Slip } from './ui.tsx';
 
-/** A drawn up/down mark in neutral ink (change is never coloured by camp). */
-export const Mark = ({ up }: { up: boolean }) => <svg className="mark" viewBox="0 0 10 10" width={8} height={8} aria-hidden><path d={up ? 'M5 1 9.5 9H.5z' : 'M5 9 .5 1h9z'} fill="currentColor" /></svg>;
+
 
 export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResult; base: Scenario; baseR: AllocationResult }) {
   const { reference } = useActiveReference();
@@ -114,7 +114,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
           <span className="sr-only" id={`lbd-${l.id}`}>{L(`${lr.seats} seats`, `${lr.seats} מנדטים`)}, {fmtPct(l.votes, total, digits)}{familyDefinition && family && family!=='other' && <> · {familyLabel(familyDefinition,lang)}{family==='mixed'?` · ${L('Mixed lists','רשימות מעורבות')}`:''}</>}{d !== 0 && <>, {Math.abs(d)}{d > 0 ? baseLabel.more : baseLabel.fewer}</>}{l.withdrawn && <>, {L('withdrew', 'פרשה')}</>}{partner && <>, {L(`surplus-vote agreement with ${listLabel(partner, lang)}`, `הסכם עודפים עם ${listLabel(partner, lang)}`)}</>}</span>
           <span className="lb-seats">
             <b key={`s${lr.seats}`} className={previousSeats.current.election === s.electionId && previousSeats.current.seats.has(l.id) && previousSeats.current.seats.get(l.id) !== lr.seats ? 'tick' : ''}>{lr.seats}</b>
-            {d !== 0 && <small dir="ltr"><Mark up={d > 0} />{Math.abs(d)}</small>}
+            {d !== 0 && <small dir="ltr"><SeatDelta value={d} /></small>}
           </span>
         </button>
         {splitIds.has(l.id) && (l.parties?.length ?? 0) > 1 && (

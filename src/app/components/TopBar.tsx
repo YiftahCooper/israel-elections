@@ -1,4 +1,5 @@
 import { ScenarioSave, UnsavedMark } from './ScenarioSave.tsx';
+import { isFactAction } from '../../model/actionClassification.ts';
 import { listLabel } from '../derive.ts';
 import { useFloating } from '../floating.tsx';
 import { ScenarioSwitcher } from './ScenarioSwitcher.tsx';
@@ -17,7 +18,8 @@ import type { Scenario } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
 import { csvEscape, download } from '../format.ts';
 import { deleteSaved, dispatch, duplicateCurrent, importScenarioJson, openElection, openImported, openSaved, redo, resetAll, scenarioKey, setState, shareLink, toast, undo, useStore } from '../store.ts';
-import { ChevronDown, Copy, Download, FolderOpen, Link2, Moon, Redo2, RotateCcw, Save, Share2, Sun, Table2, Trash2, Undo2, Upload } from 'lucide-react';
+import { ChevronDown, Copy, Download, FolderOpen, Link2, Moon, Redo2, RotateCcw, Save, Share2, Sun, Table2, Trash2, Undo2, Upload, Settings } from 'lucide-react';
+import { PersonalSettings } from './PersonalSettings.tsx';
 import { Seg } from './ui.tsx';
 import { LEVEL_LABELS } from '../features.ts';
 
@@ -85,6 +87,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
 
       <span className="band-levels"><Seg<'simple' | 'standard' | 'expert' | 'custom'> label={L('Detail level', 'רמת פירוט')} value={custom ? 'custom' : level} onChange={(v) => { if (v === 'custom') return; setState({ level: v, customFeatures: null, ...(v === 'simple' ? { voteSource: { kind: 'proportional' as const } } : {}) }); }} options={(['simple', 'standard', 'expert'] as const).map(v => ({ v, label: L(...LEVEL_LABELS[v]) }))} /><button className="btn small band-custom" aria-label={custom ? L('Custom', 'מותאם') + ' · ' + L('based on ', 'על בסיס ') + L(...LEVEL_LABELS[level]) : L('Custom', 'מותאם')} aria-pressed={custom !== null} title={custom ? L('Custom · based on ', 'מותאם · על בסיס ') + L(...LEVEL_LABELS[level]) : L('Custom', 'מותאם')} onClick={() => setState({ tool: 'custom' })}>{L('Custom', 'מותאם')}{custom && <span className="band-custom-base"> · {L('based on ', 'על בסיס ')}{L(...LEVEL_LABELS[level])}</span>}</button></span>
       <span className="spacer" />
+      <div className="band-actions">
       {/* scenario tools need a scenario: hidden while an election loads or after it failed to load */}
       {!pmContestId && s && <>
       <button className="tool" onClick={undo} disabled={!canUndo} title={undoName + ' (Ctrl+Z)'} aria-label={undoName}><Undo2 className="icon rtl-mirror" aria-hidden /></button>
@@ -115,7 +118,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
             {saved.map((x) => (
               <div key={x.id} className="row small" style={{ justifyContent: 'space-between', flexWrap: 'nowrap' }}>
                 <button className="btn small ghost" style={{ justifyContent: 'flex-start', minWidth: 0 }} aria-current={x.id === s?.id ? 'true' : undefined} disabled={x.id === s?.id && !dirty} onClick={() => { void openSaved(x); setMenu(false); }}>
-                  <span className="swatch" style={{ background: savedColor(x.log) }} /><span className="clip" style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{x.name}{x.id === s?.id && dirty && <UnsavedMark />}</span> <span className="muted">({elections.find((e) => e.id === x.electionId)?.date.slice(0, 4) ?? x.electionId})</span>{x.id === s?.id && <span aria-hidden>✓</span>}</button>
+                  <span className="swatch" style={{ background: x.log.some(isFactAction) ? savedColor(x.log) : 'var(--muted)' }} /><span className="clip" style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{x.name}{x.id === s?.id && dirty && <UnsavedMark />}</span> <span className="muted">({elections.find((e) => e.id === x.electionId)?.date.slice(0, 4) ?? x.electionId})</span>{x.id === s?.id && <span aria-hidden>✓</span>}</button>
                 <span className="row" style={{ flexWrap: 'nowrap', gap: 2 }}>
                   <button className="btn small ghost" onClick={() => { setState({ compareWith: x.id, tool: 'compare' }); setMenu(false); }} disabled={x.electionId !== electionId || x.id === s?.id}>{L('Compare', 'השוואה')}</button>
                   <button className="btn small ghost danger icon-only" aria-label={L(`Delete ${x.name}`, `מחיקת ${x.name}`)} onClick={() => { if (confirm(L(`Delete “${x.name}” from this browser?`, `למחוק את "${x.name}" מהדפדפן?`))) deleteSaved(x.id); }}><Trash2 className="icon sm" aria-hidden /></button>
@@ -136,9 +139,12 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
         }} />
       </div>
       </>}
+      <button className="tool" aria-haspopup="dialog" title={L('Your settings', 'ההגדרות שלכם')} aria-label={L('Your settings', 'ההגדרות שלכם')} onClick={() => setState({ settingsOpen: true })}><Settings className="icon" aria-hidden /></button>
+      <PersonalSettings />
       <Seg label={L('Language', 'שפה')} value={lang} onChange={(v) => setState({ lang: v })} options={[{ v: 'he', label: 'עב' }, { v: 'en', label: 'EN' }]} />
       <button className="tool" title={theme === 'dark' ? L('Light theme', 'מצב בהיר') : L('Dark theme', 'מצב כהה')} aria-label={theme === 'dark' ? L('Light theme', 'מצב בהיר') : L('Dark theme', 'מצב כהה')} onClick={() => setState({ theme: theme === 'dark' ? 'light' : 'dark' })}>
         {theme === 'dark' ? <Sun className="icon" aria-hidden /> : <Moon className="icon" aria-hidden />}</button>
+      </div>
     </header>
   );
 }

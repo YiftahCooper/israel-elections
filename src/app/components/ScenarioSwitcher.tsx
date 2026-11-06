@@ -1,3 +1,4 @@
+import { factLog } from '../../model/actionClassification.ts';
 import { useActiveReference } from '../useActiveReference.ts';
 import { describe } from '../actionDescription.ts';
 import { voteSourceLabel } from '../voteEdit.ts';
@@ -21,7 +22,7 @@ export function ScenarioSwitcher({ s, ds }: { s: Scenario; ds: ElectionDataset }
   const entries = useMemo(() => saved.filter(x => x.electionId === s.electionId).map(x => { const result = replay(ds, x.name, x.log, x.factionSplitBaseline ?? false); return { ...x, failed: result.failed, scenario: { ...result.scenario, ...(x.description ? { description: x.description } : {}), id: x.id } }; }), [saved, ds, s.electionId]);
   // 'official', a saved id, or unsaved work: changed since loading, or never saved (an opened share link)
   const current = scenarioKey({ scenario: s, reference: checkpointReference, saved, datasets: { [ds.id]: ds } }) ?? 'official';
-  const preview = (x: Scenario, neutral = false) => <><span className="swatch" style={{ background: neutral ? 'var(--muted)' : liveScenarioColor(x, saved) }} /><ResultPreview s={x} /></>;
+  const preview = (x: Scenario, neutral = false) => <><span className="swatch" style={{ background: neutral || !referenceChanges(x, official).length ? 'var(--muted)' : liveScenarioColor(x, saved) }} /><ResultPreview s={x} /></>;
   // rows describe each scenario against the official result, so counts mean the same thing in every row
   const markerBase = official;
   const details = (x: Scenario, date: string, status: string) => {
@@ -29,7 +30,7 @@ export function ScenarioSwitcher({ s, ds }: { s: Scenario; ds: ElectionDataset }
     const source = !action ? L('Official votes', 'קולות רשמיים') : action.type === 'setVotes' || action.type === 'addVoters' ? voteSourceLabel({ kind: 'new' }, x, lang) : action.type === 'redistribute' ? L('Lists balanced proportionally', 'איזון יחסי בין הרשימות') : describe(action, x, lang);
     const rules = referenceChanges(x, markerBase).filter(p => p[0] === 'rules'||p[0]==='parts'&&p[1]==='rules').map(p => `${editPathLabel(x, p, lang, markerBase)}: ${changeText(x, p, lang)}`);
     // count the user's edits, not the fields they touched: one balanced vote edit is one edit, not dozens of lists
-    const count = x.log.length;
+    const count = factLog(x).length;
     const changedVotes = x.lists.some(l => l.votes !== markerBase.lists.find(y => y.id === l.id)?.votes);
     const referenceAction = [...markerBase.log].reverse().map(e => e.action).find(a => ['setVotes', 'redistribute', 'transfer', 'addVoters', 'scaleAll', 'setTurnout'].includes(a.type));
     const sourceKey = (a: typeof action) => !a || a.type === 'redistribute' ? 'proportional' : a.type === 'setVotes' || a.type === 'addVoters' ? 'new' : a.type === 'transfer' ? `transfer:${a.from}:${a.to}` : a.type;

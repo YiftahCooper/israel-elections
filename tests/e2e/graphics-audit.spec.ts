@@ -97,8 +97,8 @@ test('chamber export retains labels and standalone comparison ink',async({page})
   // the per-list seat changes are said once, in the change line, not again under the chamber
   await expect(page.locator('.chamber .graphic-changes')).toHaveCount(0);
   const readout=(await page.locator('.session').innerText()).replace(/[\u2066-\u2069]/g,'');
-  expect(readout).toContain('Meretz 4 (+4)');
-  expect(readout).toContain('Balad 5 (+5)');
+  expect(readout).toContain('Meretz 4 (▲ +4)');
+  expect(readout).toContain('Balad 5 (▲ +5)');
 });
 
 
@@ -109,7 +109,9 @@ test('summary, graphics and Compare default follow the same reference setting',a
   for(const [setting,name,changed] of [['official','Official result',true],['reference','Graphics audit',false],['official','Official result',true]] as const) {
     await page.getByRole('tab',{name:'Scenarios',exact:true}).click();
     if (!await page.locator('.scn-options').evaluate(el => el.hasAttribute('open'))) await page.locator('.scn-options summary').click();
+    await page.locator('.scn-options').getByRole('button', { name: 'Your settings…', exact: true }).click();
     await choose(page.getByRole('button',{name:'Mark differences from'}), setting);
+    await page.keyboard.press('Escape');
     await page.getByRole('tab',{name:'Overview',exact:true}).click();
     await expect(page.locator('.session > b')).toHaveText(`Since ${name==='Official result'?'official result':name}`);
     // the key names the reference once when seats differ; with nothing to mark the session line already says so

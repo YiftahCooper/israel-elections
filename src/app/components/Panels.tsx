@@ -1,6 +1,5 @@
-import { ChoicePicker } from './ChoicePicker.tsx';
+import { factLog, isFactAction } from '../../model/actionClassification.ts';
 import { Download } from 'lucide-react';
-import { PreferenceSettings } from './SourcePicker.tsx';
 import { NumericStepper } from './NumericStepper.tsx';
 import { TurnoutSteps } from './TurnoutSteps.tsx';
 import { StartFrom } from './StartFrom.tsx';
@@ -137,33 +136,8 @@ export function Rules({ s, base }: { s: Scenario; base: Scenario }) {
           <button className="btn small" onClick={() => { setState({ tool: 'board', blocPanel: s.blocs[0]?.id ?? '__none', selectedListId: null }); window.scrollTo({ top: 0 }); }}>{L('Edit blocs', 'עריכת גושים')}</button>
         </div>
       </div>
-      <Settings />
+      <button className="btn" onClick={() => setState({ settingsOpen: true })}>{L('Your settings…', 'ההגדרות שלכם…')}</button>
     </div>
-  );
-}
-
-/** App settings, not part of any scenario: a separate card so they are never mistaken for rules. */
-function Settings() {
-  const L = useL();
-  const level = useStore(st => st.level);
-  const digits = useDigits();
-  const showComponentSeats = useStore(st => st.showComponentSeats);
-  // precision is an Expert control (useDigits): other levels show it, fixed, rather than a select that does nothing
-  const precision = level === 'expert';
-  return (
-    <section className="settings-card" aria-labelledby="settings-title">
-      <h3 id="settings-title">{L('Settings', 'הגדרות')}</h3>
-      <p className="small ink2" style={{ margin: '0 0 4px' }}>{L('Every election · this browser', 'לכל הבחירות · בדפדפן זה')} <Info title={L('Settings', 'הגדרות')}>{L('Settings are kept in this browser and apply to every election. They are not part of a scenario: not undone, saved or shared with it.', 'ההגדרות נשמרות בדפדפן זה וחלות על כל הבחירות. הן אינן חלק מתרחיש: אינן מבוטלות, נשמרות או משותפות איתו.')}</Info></p>
-      <h4>{L('Display', 'תצוגה')}</h4>
-      <div className="row" style={{ gap: 4 }}><label className="switch small"><input type="checkbox" checked={showComponentSeats} onChange={e => setState({ showComponentSeats: e.target.checked })} />{L('Party colours in split joint lists', 'צבעי מפלגות ברשימות משותפות שפוצלו')}</label>
-      <Info title={L('Party colours', 'צבעי מפלגות')}>{L('When a joint list is split into its parties after the election, the seats and bars of its parties show the party colour inside the list colour. Off: the list colour only.', 'כשרשימה משותפת מפוצלת למפלגותיה אחרי הבחירות, המושבים והעמודות של מפלגותיה מציגים את צבע המפלגה בתוך צבע הרשימה. כבוי: צבע הרשימה בלבד.')}</Info></div>
-      <label className="field" style={{ maxWidth: 260, marginBlockStart: 8 }}>{L('Decimal places for percentages', 'ספרות אחרי הנקודה באחוזים')}
-        {precision ? <ChoicePicker label={L('Decimal places for percentages', 'ספרות אחרי הנקודה באחוזים')} value={String(digits)} onChange={v => setState({ digits: Number(v) })} options={[0, 1, 2, 3, 4, 6, 8].map(d => ({ value: String(d), label: String(d) }))} /> : <span>{digits}</span>}
-        {!precision && <span className="tiny muted">{L('Expert level', 'ברמת מומחה')}</span>}
-      </label>
-      <h4>{L('Editing', 'עריכה')} <Info title={L('Questions while editing', 'שאלות בזמן עריכה')}>{L('Some edits ask how to apply them. Just this once: asked again next time. For this list, bloc or scenario: kept for that item until the page is reloaded. Always: used everywhere; change it here.', 'חלק מהעריכות שואלות איך להחיל אותן. רק הפעם: תישאלו שוב בפעם הבאה. לרשימה, לגוש או לתרחיש זה: נשמר לאותו פריט עד לטעינה מחדש של הדף. תמיד: חל בכל מקום; ניתן לשנות כאן.')}</Info></h4>
-      <PreferenceSettings />
-    </section>
   );
 }
 
@@ -404,11 +378,11 @@ export function History({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
       <div className="row" style={{ marginBottom: 8 }}>
         <button className="btn small" onClick={undo} disabled={!past}>{undoName}</button>
         <button className="btn small" onClick={redo} disabled={!future.length}>{redoName}</button>
-        <span className="muted small">{L(`${s.log.length} changes from the historical result`, `${s.log.length} שינויים מהתוצאה ההיסטורית`)}</span>
+        <span className="muted small">{L(`${factLog(s).length} changes from the historical result`, `${factLog(s).length} שינויים מהתוצאה ההיסטורית`)}</span>
       </div>
-      {s.log.length === 0 ? <p className="muted">{L('No changes yet — this is the historical result.', 'אין שינויים — זו התוצאה ההיסטורית.')}</p> : (
+      {factLog(s).length === 0 ? <p className="muted">{L('No changes yet — this is the historical result.', 'אין שינויים — זו התוצאה ההיסטורית.')}</p> : (
         <ol className="small" style={{ paddingInlineStart: 22 }}>
-          {s.log.map((e, i) => (
+          {s.log.map((e, i) => !isFactAction(e.action) ? null : (
             <li key={i} style={{ marginBottom: 3 }}>
               <span className="muted tiny">{new Date(e.at).toLocaleTimeString()}</span> {describe(e.action, s, lang)}{' '}
               <button className="btn small ghost" onClick={() => revertTo(i + 1)}>{L('revert to here', 'חזרה לכאן')}</button>

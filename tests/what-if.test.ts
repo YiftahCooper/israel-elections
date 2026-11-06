@@ -63,14 +63,13 @@ describe('every election', () => {
   for (const id of ALL) it(`${id}: unchanged answers are explained, assumptions are stated in both languages`, () => {
     const ds = load(id);
     const en = computeWhatIf(ds, 'en'), he = computeWhatIf(ds, 'he');
+    expect(en.some((r) => r.actions?.some((a) => a.type === 'setTurnout'))).toBe(false);
     for (const [i, r] of en.entries()) {
       if (!r.actions) continue;
       // a bare "No seat changes" is never the whole answer
       if (!r.changes.length) expect(r.facts.length, `${id} ${r.p.id}`).toBeGreaterThan(0);
       for (const body of [r.body, he[i].body]) { expect(body.length).toBeGreaterThan(20); expect(body).not.toMatch(/undefined|NaN|—/); }
       expect(he[i].body).not.toMatch(/[A-Za-z]/);
-      // proportional turnout keeps every share, and so (here, always) every seat
-      if (r.p.id === 'turnout-80') { expect(r.changes).toEqual([]); expect(r.votes).toMatch(/same shares$/); }
     }
   });
 });

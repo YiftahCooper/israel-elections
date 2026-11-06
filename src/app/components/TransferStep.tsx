@@ -1,10 +1,11 @@
+import { SeatDelta, SeatEffects } from './SeatDelta.tsx';
 import { useMemo, useState } from 'react';
 import { applyAction } from '../../model/actions.ts';
 import { allocate } from '../../engine/allocate.ts';
 import { toEngineInput, type Scenario, type SimList } from '../../model/scenario.ts';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, signed } from '../format.ts';
+import { fmtInt } from '../format.ts';
 import { dispatchMany, useVoteSource } from '../store.ts';
 import { ChoicePicker } from './ChoicePicker.tsx';
 /** An explicit paired transfer is independent of the general balancing assumption. No clipping. */
@@ -18,7 +19,7 @@ export function TransferStep({ s, l }: { s: Scenario; l: SimList }) {
   const consequence = useMemo(() => {
     if (!action) return L('The source cannot supply a whole percentage point; no votes are clipped.', 'המקור אינו יכול לספק נקודת אחוז שלמה; אין קיטום קולות.');
     const before = allocate(toEngineInput(s)), after = allocate(toEngineInput(applyAction(s, action)));
-    return after.lists.map(x => ({ id: x.id, d: x.seats - (before.lists.find(y => y.id === x.id)?.seats ?? 0) })).filter(x => x.d).map(x => `${listLabel(s.lists.find(y => y.id === x.id)!, lang)} ${signed(x.d)}`).join(' · ') || L('Seats unchanged', 'המנדטים ללא שינוי');
+    return <SeatEffects>{after.lists.map(x => ({ id: x.id, d: x.seats - (before.lists.find(y => y.id === x.id)?.seats ?? 0) })).filter(x => x.d).map(x => <span key={x.id}>{listLabel(s.lists.find(y => y.id === x.id)!, lang)} <SeatDelta value={x.d} /> </span>)}</SeatEffects>;
   }, [s, l.id, donor?.id, votes, lang]);
   return <div className="transfer-step">
     <ChoicePicker label={L('Transfer from', 'העברה מתוך')} value={donor?.id ?? ''} options={donors.map(x => ({ value: x.id, label: listLabel(x, lang), detail: `${fmtInt(x.votes)} ${L('votes', 'קולות')}`, preview: <span className="swatch" style={{ background: x.color }} /> }))} onChange={setSelected} />

@@ -81,3 +81,22 @@ test('Hebrew keeps turnout numbers left to right', async ({ page }) => {
   await expect(range).toHaveText('53.2% → 63.2%');
   await expect(panel.getByRole('button', { name: /^הוספת [\d,]+ מצביעים$/ })).toBeEnabled();
 });
+
+for (const lang of ['en', 'he'] as const) test(`groups start unchanged and a custom group is editable: ${lang}`, async ({ page }) => {
+  const panel = await open(page, lang);
+  const picker = panel.getByRole('button', { name: lang === 'en' ? 'Voter group' : 'קבוצת מצביעים', exact: true });
+  await choose(picker, 'src:arab');
+  await expect(panel.locator('#vg-change')).toHaveValue('0');
+  await panel.getByLabel(lang === 'en' ? 'New turnout %' : 'שיעור הצבעה חדש %', { exact: true }).fill('63.2');
+  await panel.getByLabel(lang === 'en' ? 'New turnout %' : 'שיעור הצבעה חדש %', { exact: true }).press('Enter');
+  await picker.click();
+  await page.getByRole('button', { name: lang === 'en' ? 'Custom group…' : 'קבוצה מותאמת אישית…', exact: true }).click();
+  await expect(panel.locator('#vg-change')).toHaveValue('0');
+  await expect(panel.getByRole('heading', { name: lang === 'en' ? 'Custom group' : 'קבוצה מותאמת אישית' })).toBeVisible();
+  const voters = panel.getByRole('textbox', { name: lang === 'en' ? 'Group size' : 'גודל הקבוצה', exact: true });
+  await voters.fill('200000'); await voters.press('Enter');
+  await expect(voters).toHaveValue('200,000');
+  await expect(panel.locator('#vg-change')).toHaveValue('0');
+  await choose(picker, 'src:arab');
+  await expect(panel.locator('#vg-change')).toHaveValue('0');
+});

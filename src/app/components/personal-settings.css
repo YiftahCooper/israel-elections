@@ -1,0 +1,8 @@
+.personal-settings { inline-size: min(36rem, calc(100vw - 24px)); max-block-size: calc(100dvh - 32px); box-sizing: border-box; overflow: auto; overscroll-behavior: contain; padding: 16px; border: 1px solid var(--rule-2); border-radius: 8px; background: var(--surface); color: var(--ink); }
+.personal-settings::backdrop { background: rgb(0 0 0 / .3); }
+.personal-settings > .row { justify-content: space-between; margin-block-end: 8px; }
+.personal-settings h2 { margin: 0; }
+.personal-settings .settings-card { border: 0; padding: 0; background: transparent; }
+.personal-settings .settings-card > h3 { display: none; }
+.personal-settings .pref-items { max-width: none; }
+.personal-settings .pref-items li { flex-wrap: wrap; }

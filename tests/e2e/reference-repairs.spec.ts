@@ -50,7 +50,7 @@ for (const separate of [false, true]) test(`B2 saved custom grouping draws paire
   await page.getByRole('button', { name: 'Likud', exact: true }).click();
   const votes = page.getByRole('region', { name: 'List details' }).getByLabel('Votes', { exact: true });
   await votes.fill('1300000'); await votes.press('Enter'); await page.keyboard.press('Escape');
-  await expect(page.locator('.session')).toContainText(separate ? '(+2)' : '(+4)');
+  await expect(page.locator('.session')).toContainText(separate ? '(▲ +2)' : '(▲ +4)');
   await page.getByRole('tab', { name: 'Compare', exact: true }).click();
   await expect(page.locator('.cmp')).not.toContainText('no counterpart in');
   await expect(page.locator('.cmp-blocrow')).toHaveCount(2);
