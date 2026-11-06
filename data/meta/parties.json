@@ -301,7 +301,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k6.json",
-      "sha256": "750331fe44623aa8110be28421634c622d7ff6a2ff9aeab8086dc4d514c9fee0",
+      "sha256": "c14817a6015bbd3183ffc9e11c3fdbfcfdeffa6c4d0baa70e07db7e0d0deff82",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k7": {
@@ -3164,7 +3164,7 @@
         {
           "date": "1965-11-02",
           "datePrecision": "day",
-          "nameHe": "קידמה ופתוח",
+          "nameHe": "קדמה ופיתוח",
           "nameEn": "Progress and Development",
           "sources": [
             "k6",
@@ -3244,7 +3244,7 @@
         {
           "date": "1965-11-02",
           "datePrecision": "day",
-          "nameHe": "שיתוף ואחווה",
+          "nameHe": "השיתוף והאחוה",
           "nameEn": "Cooperation and Brotherhood",
           "sources": [
             "k6",
@@ -3804,13 +3804,13 @@
     {
       "id": "vehicle-6-את",
       "entityType": "alliance",
-      "nameHe": "רשימת המערך לאחדות פועלי ישראל, מפלגת פועלי ארץ-ישראל, מפלגת אחדות העבודה פועלי ציון ובלתי מפלגתיים",
+      "nameHe": "רשימת המערך לאחדות פועלי ארץ-ישראל, מפלגת פועלי ארץ-ישראל, מפלגת אחדות העבודה—פועלי ציון ובלתי מפלגתיים",
       "nameEn": "Alignment",
       "names": [
         {
           "date": "1965-11-02",
           "datePrecision": "day",
-          "nameHe": "רשימת המערך לאחדות פועלי ישראל, מפלגת פועלי ארץ-ישראל, מפלגת אחדות העבודה פועלי ציון ובלתי מפלגתיים",
+          "nameHe": "רשימת המערך לאחדות פועלי ארץ-ישראל, מפלגת פועלי ארץ-ישראל, מפלגת אחדות העבודה—פועלי ציון ובלתי מפלגתיים",
           "nameEn": "Alignment",
           "sources": [
             "k6"
@@ -4158,13 +4158,13 @@
     {
       "id": "vehicle-6-עס",
       "entityType": "electoral-vehicle",
-      "nameHe": "רשימת תנועת לאורה",
+      "nameHe": "רשימת התנועה לאחוה",
       "nameEn": null,
       "names": [
         {
           "date": "1965-11-02",
           "datePrecision": "day",
-          "nameHe": "רשימת תנועת לאורה",
+          "nameHe": "רשימת התנועה לאחוה",
           "nameEn": null,
           "sources": [
             "k6",
@@ -4190,13 +4190,13 @@
     {
       "id": "vehicle-6-כס",
       "entityType": "electoral-vehicle",
-      "nameHe": "רשימת שלום",
+      "nameHe": "רשימת השלום",
       "nameEn": null,
       "names": [
         {
           "date": "1965-11-02",
           "datePrecision": "day",
-          "nameHe": "רשימת שלום",
+          "nameHe": "רשימת השלום",
           "nameEn": null,
           "sources": [
             "k6",

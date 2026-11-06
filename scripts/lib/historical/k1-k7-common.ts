@@ -33,6 +33,10 @@ export interface EarlyRosterReview {
 export function earlyReview(n:number):EarlyReview { assert(n>=1&&n<=7);return rawJson(`k${n}/national.reviewed.json`); }
 export function earlyRosterReview(n:number):EarlyRosterReview { return rawJson(`k${n}/rosters.reviewed.json`); }
 
+// k6 audit: corrected ballot letters must not rename saved scenario/list keys.
+const stableLetters = (n:number, letters:string) => n===6
+  ? ({כנ:'כס',ענ:'עס',פש:'סס'} as Record<string,string>)[letters] ?? letters : letters;
+
 /** k1–k7 serialize color/votes earlier and sponsors/parties later than other eras; roster flags last. */
 const EARLY_LIST_KEYS = ['id', 'letters', 'nameHe', 'shortHe', 'shortEn', 'color', 'votes', 'withdrawn', 'bloc', 'candidates', 'candidatesSource',
   'candidatesSecondary', 'sponsorsHe', 'partiesHe', 'notesHe', 'candidatesUnavailable', 'candidatesTruncated'];
@@ -47,10 +51,10 @@ export function earlyResearchDataset(n:number):ElectionDataset {
     status:{stage:'official-final',asOf:r.reviewedOn,noteHe:'נתוני מחקר בלבד; רשימות המועמדים לא תומללו.',noteEn:'RESEARCH ONLY. No-connections diagnostic when notice missing; candidate rosters unverified.'},
     ruleSetId:n===1?ISRAEL_1949.id:ISRAEL_1951.id,
     totals:{...r.nationalTotals,ballotBoxes:0,localities:0},
-    lists:r.lists.map((l,i)=>listRecord(n,i,{letters:l.letters,nameHe:l.nameHe,votes:l.votes,candidatesSource:r.candidateSourceId,candidatesUnavailable:true,
-      notesHe:['RESEARCH ONLY — full candidate roster unverified.']},EARLY_LIST_KEYS)),
-    agreements:agreementRecords(n,r.agreements.pairs??[],r.agreements.sourceId!),
-    blocs:[],hasLocalities:false,officialSeats:officialSeatsOf(n,r.lists.map(l=>({letters:l.letters,seats:l.officialSeats}))),officialSeatsSourceId:r.resultsSourceId,
+    lists:r.lists.map((l,i)=>({...listRecord(n,i,{letters:stableLetters(n,l.letters),nameHe:l.nameHe,votes:l.votes,candidatesSource:r.candidateSourceId,candidatesUnavailable:true,
+      notesHe:['RESEARCH ONLY — full candidate roster unverified.']},EARLY_LIST_KEYS),letters:l.letters})),
+    agreements:agreementRecords(n,(r.agreements.pairs??[]).map(([a,b])=>[stableLetters(n,a),stableLetters(n,b)]),r.agreements.sourceId!),
+    blocs:[],hasLocalities:false,officialSeats:officialSeatsOf(n,r.lists.map(l=>({letters:stableLetters(n,l.letters),seats:l.officialSeats}))),officialSeatsSourceId:r.resultsSourceId,
     sourceIds:[r.resultsSourceId,r.candidateSourceId,'k1-k7-cbs-national-totals'],buildInfo:{builtAt:r.reviewedOn,rawSha256:{}},
   };
 }

@@ -10,7 +10,7 @@ const connections: Record<number,string[][]> = {
   1:[['ב','ל'],['ט','יג'],['יא','יד'],['מ','ת'],['ס','צ']],
   2:[['צ','סצ']],3:[['א','יד'],['פ','ש'],['צ','צח'],['סא','ל'],['נ','ע']],
   4:[['א','רא'],['יא','ע']],5:[['ב','ד'],['מ','תו'],['יא','רא']],
-  6:[['את','רא'],['כא','כס']],7:[['יא','רא']],
+  6:[['את','רא'],['כא','כנ']],7:[['יא','רא']],
 };
 const quotas:Record<number,number>={1:3592,2:5692,3:6938,4:7800,5:8332,6:9881,7:11274};
 const coverage:Record<number,Record<string,number>>={
@@ -37,11 +37,11 @@ describe.each([1,2,3,4,5,6,7])('k%i built national release',n=>{
     expect(ds.lists.reduce((s,l)=>s+l.votes,0)).toBe(ds.totals.valid);
     expect(ds.totals.valid+ds.totals.invalid).toBe(ds.totals.votesCast);
     expect(Object.fromEntries(ds.lists.map(l=>[l.letters,l.votes]))).toEqual(Object.fromEntries(reviewed.lists.map(l=>[l.letters,l.votes])));
-    expect(ds.officialSeats).toEqual(Object.fromEntries(reviewed.lists.map(l=>[`${n}-${l.letters}`,l.officialSeats])));
+    expect(ds.officialSeats).toEqual(Object.fromEntries(reviewed.lists.map(l=>[ds.lists.find(x=>x.letters===l.letters)!.id,l.officialSeats])));
     expect(Object.fromEntries(result.lists.map(l=>[l.id,l.seats]))).toEqual(ds.officialSeats);
     expect(result.seatsAllocated).toBe(120);expect(result.quota).toEqual({num:BigInt(quotas[n]),den:1n});
     expect(validateScenario(scenarioFromDataset(ds))).toEqual([]);
-    expect(ds.agreements.map(a=>a.members.map(id=>id.slice(id.indexOf('-')+1)))).toEqual(connections[n]);
+    expect(ds.agreements.map(a=>a.members.map(id=>ds.lists.find(l=>l.id===id)!.letters))).toEqual(connections[n]);
     expect(ds.sourceIds).toContain(`k${n}-rosters-reviewed`);
     expect(Object.keys(ds.buildInfo.rawSha256)).toEqual(ds.sourceIds);
     expect(Object.values(ds.buildInfo.rawSha256).every(h=>/^[a-f0-9]{64}$/.test(h))).toBe(true);

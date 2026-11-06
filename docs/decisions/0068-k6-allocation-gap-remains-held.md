@@ -47,3 +47,8 @@ reproduces every seat under the existing `ISRAEL_1951` rules, including Alignmen
 All 120 elected identities are now cross-checked against the gazette, winning
 prefixes retained, and k6 released nationally without localities. The original
 failed diagnostic above remains historical evidence of the transcription error.
+
+
+## Addendum, 6 November 2026: ballot transcription correction
+
+Fresh inspection of YP 1230 p.311 and YP 1222 p.131 confirms that the Peace List is **כנ**, not כס. The premise in 0069a that no list bore כנ was false; the signed YP 1225 connection is **כא–כנ**. The correct effective pair remains את–רא. ענ (Brotherhood) and פש (Young Israel) replace the other misread letters. Internal IDs stay unchanged as opaque keys by coordinator decision; displayed/exported letters come from the corrected field. See [k06 resolution](../research/data-audit/k06-resolution.md). Historical text above is superseded on these points.

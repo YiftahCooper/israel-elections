@@ -2046,8 +2046,8 @@
     "description": "Visually reviewed national votes and published seats; YP 1225 first partner corrected to רא after fresh primary-scan inspection (0069a). Winning-prefix and elected-name release requirements met; no inferred agreements.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T18:20:00Z",
-    "bytes": 4416,
-    "sha256": "b9cfabe346ec1a7a51c1d5e27996af8bab25b1e2da28f2e4eb3c98c371b7b0eb"
+    "bytes": 5196,
+    "sha256": "bc7ce308f04d017eaaf4319e55f2cdfbb57632a01f9bf807af12e2d3b24a0a32"
   },
   {
     "id": "k7-results-gazette",
@@ -2989,7 +2989,7 @@
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T17:32:47.908295+00:00",
     "bytes": 22567,
-    "sha256": "f6d4ed7fb9b5a156738698cbcd151c4325d8541c78b43cae1f13f3414af5be01"
+    "sha256": "3a86e6034639ca79d669ae18fcd7233128837e79cd6cde28c33b46677617b511"
   },
   {
     "id": "k8-cec-memorandum-appendix",
@@ -6244,5 +6244,23 @@
     "retrievedAt": "2026-11-06",
     "bytes": 42266,
     "sha256": "ff512e978110b10b2f3ebfdec85cf9d0a430be588bb90062e87e02c0e086a49b"
+  },
+  {
+    "id": "k6-alignment-idi-annotated",
+    "file": "research/k06-alignment-idi.pdf",
+    "url": "https://www.idi.org.il/media/7012/כנסת-6-מערך.pdf",
+    "sha256": "ed3f47c608aa1f19f7ee77e787f19b97fc9153174b9b6f95b1a58f9a1558a2a2",
+    "bytes": 1139175,
+    "retrievedAt": "2026-11-06",
+    "note": "IDI-hosted annotated copy of YP 1222; handwritten party marks are academic evidence, not part of the official printed notice."
+  },
+  {
+    "id": "k6-gahal-idi-annotated",
+    "file": "research/k06-gahal-idi.pdf",
+    "url": "https://www.idi.org.il/media/6442/כנסת-6-גחל.pdf",
+    "sha256": "847af30bc4d0c3d70f327e8f4cacdac4ffadfb7c7916c6e462eea2e4708bfe57",
+    "bytes": 1211675,
+    "retrievedAt": "2026-11-06",
+    "note": "IDI-hosted annotated copy of YP 1222; handwritten party marks are academic evidence, not part of the official printed notice."
   }
 ]

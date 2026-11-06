@@ -39,6 +39,10 @@
 // Other 25 datasets are byte-identical. Allocation changes with the extra withdrawn list;
 // model carries the corrected labels/notes. Analysis, validation and rules unchanged.
   // merged with k14 audit fixes: combined digest = union of the separately reviewed changes.
+// k6 audit: reviewed field diff changes only official list labels/letters, Don-Yihya,
+// Rafi logo removal, source provenance and government notes. Stable IDs, votes,
+// seats and engine output remain identical; only the model digest changes.
+  // merged with k6 audit fixes: combined digest = union of the separately reviewed changes.
 // 6 Nov 2026 k22 audit: reviewed scalar diff changes only status, logical Hebrew
 // punctuation, CEC link titles, three withdrawal flags and distinct modern Gesher
 // IDs (also k23). Withdrawal flags affect hypothetical corpus allocations; model
@@ -197,7 +201,8 @@ const EXPECTED: Record<Family, string> = {
   // k7 audit: only Tamir nameEn whitespace, Reshimat Shalom sourceId and builtAt differ.
   // Restoring HEAD k7 at scenarioFromDataset reproduces 4faa7f17… exactly; numeric inputs unchanged.
   // merged with k7 audit fixes: combined digest = union of the separately reviewed changes.
-  model: '263d8aa506f8992e8fdd6917138323f15dada0f659ccd873c79a30575cacbdb6',
+  // merged with k6 audit fixes: combined digest = union of the separately reviewed changes.
+  model: 'ae244c413b2dfa8bbea9e58b5987abb8eeb680d08a8c590fe1dfedb2667f67b9',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

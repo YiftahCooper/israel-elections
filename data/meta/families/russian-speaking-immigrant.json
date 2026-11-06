@@ -327,7 +327,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k6.json",
-      "sha256": "ad32bb4902bc523b3b15bff896a87c2c7b949f9724ed0e06fb13b34f07020aae",
+      "sha256": "c14817a6015bbd3183ffc9e11c3fdbfcfdeffa6c4d0baa70e07db7e0d0deff82",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k7": {
@@ -778,7 +778,7 @@
       "electionId": "k6",
       "electionDate": "1965-11-02",
       "datasetPath": "public/data/k6.json",
-      "datasetSha256": "ea209b7390aa56af49bc8900126dc2eb46cc71f5148a6de11c8e5c1ff7ee13d8",
+      "datasetSha256": "8e4eb8ecb31b72922a6d8af6281770b86602ea7755963f7fe63889ccf383ca5e",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
