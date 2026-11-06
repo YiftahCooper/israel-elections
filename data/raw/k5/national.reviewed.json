@@ -29,7 +29,7 @@
     },
     {
       "letters": "ב",
-      "nameHe": "חזית דתית לאומית המזרחי הפועל המזרחי ובלתי מפלגתיים",
+      "nameHe": "חזית דתית לאומית, המזרחי והפועל המזרחי ובלתי מפלגתיים",
       "votes": 98786,
       "officialSeats": 12
     },
@@ -76,16 +76,18 @@
       "officialSeats": 0
     },
     {
-      "letters": "סס",
+      "letters": "סש",
       "nameHe": "למען הצדק והאחווה, רשימה ספרדית דתית",
       "votes": 3181,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "stableLetters": "סס"
     },
     {
-      "letters": "עע",
-      "nameHe": "הגוש העממי",
+      "letters": "עט",
+      "nameHe": "שוחרי הדימוקרטיה",
       "votes": 335,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "stableLetters": "עע"
     },
     {
       "letters": "ק",
@@ -104,6 +106,13 @@
       "nameHe": "אחדות העבודה פועלי-ציון ובלתי מפלגתיים",
       "votes": 66170,
       "officialSeats": 8
+    },
+    {
+      "letters": "שו",
+      "nameHe": "רשימת יוצאי תימן",
+      "votes": 0,
+      "officialSeats": 0,
+      "withdrawn": true
     }
   ],
   "agreements": {
@@ -144,5 +153,17 @@
     "sourceId": "k5-rosters-reviewed",
     "note": "Contiguous prefixes cover every elected member, with results-notice exclusions explicitly mapped. Later ranks omitted, not complete registered lists."
   },
-  "releaseBlockers": []
+  "releaseBlockers": [],
+  "corrections": [
+    {
+      "sourceId": "k5-results-gazette",
+      "quote": "עט שוחרי הדימוקרטיה 335; סש למען הצדק והאחווה, רשימה ספרדית דתית 3,181; חזית דתית לאומית, המזרחי והפועל המזרחי ובלתי מפלגתיים",
+      "locator": "YP 869 p.1937"
+    },
+    {
+      "sourceId": "k5-withdrawals-gazette",
+      "quote": "עמיר חיים, מועמד מס׳ 1 התפטר מרשימת המועמדים הנושאת את הכינוי רשימת יוצאי תימן — האות שו, שהיה היחיד ברשימה זו.",
+      "locator": "YP 866 p.1847; notices signed 8 August 1961"
+    }
+  ]
 }

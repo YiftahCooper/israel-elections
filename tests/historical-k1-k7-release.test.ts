@@ -37,7 +37,7 @@ describe.each([1,2,3,4,5,6,7])('k%i built national release',n=>{
     expect(ds.lists.reduce((s,l)=>s+l.votes,0)).toBe(ds.totals.valid);
     expect(ds.totals.valid+ds.totals.invalid).toBe(ds.totals.votesCast);
     expect(Object.fromEntries(ds.lists.map(l=>[l.letters,l.votes]))).toEqual(Object.fromEntries(reviewed.lists.map(l=>[l.letters,l.votes])));
-    expect(ds.officialSeats).toEqual(Object.fromEntries(reviewed.lists.map(l=>[`${n}-${l.letters}`,l.officialSeats])));
+    expect(ds.officialSeats).toEqual(Object.fromEntries(reviewed.lists.map(l=>[`${n}-${l.stableLetters??l.letters}`,l.officialSeats])));
     expect(Object.fromEntries(result.lists.map(l=>[l.id,l.seats]))).toEqual(ds.officialSeats);
     expect(result.seatsAllocated).toBe(120);expect(result.quota).toEqual({num:BigInt(quotas[n]),den:1n});
     expect(validateScenario(scenarioFromDataset(ds))).toEqual([]);
@@ -52,6 +52,7 @@ describe.each([1,2,3,4,5,6,7])('k%i built national release',n=>{
     expect(roster.lists.reduce((s,l)=>s+l.electedNames.length,0)).toBe(120);
     for(const list of ds.lists){
       const rr=roster.lists.find(l=>l.letters===list.letters);
+      if(n===5 && list.letters==='שו'){expect(list.withdrawn).toBe(true);expect(list.candidates).toHaveLength(6);continue;}
       if(ds.officialSeats![list.id]===0){expect(list.candidates).toEqual([]);expect(list.candidatesUnavailable).toBe(true);continue;}
       expect(rr).toBeDefined();expect(list.candidatesTruncated).toBe(true);expect(list.candidatesUnavailable).toBeUndefined();
       expect(list.candidatesSecondary).toBe(false);expect(list.candidatesSource).toBe(reviewed.candidateSourceId);

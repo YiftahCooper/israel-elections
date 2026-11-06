@@ -431,7 +431,7 @@ investigation records, not current release status.
 | k2 | 687,492 | 17 | 5,692 | YP 177 p.1177: צ–סצ | All seats match | 15 / 120 / 120 |
 | k3 | 853,219 | 18 | 6,938 | YP 427 p.1053: א–יד, פ–ש, צ–צח, סא–ל, נ–ע | All seats match | 12 / 120 / 120 |
 | k4 | 969,337 | 24 | 7,800 | YP 709 p.125: א–רא, יא–ע | All seats match; resolves former Mapai/Cooperation gap | 12 / 120 / 120 |
-| k5 | 1,006,964 | 14 | 8,332 | YP 865 p.1843: ב–ד, מ–תו, יא–רא | All seats match | 11 / 122 / 120 |
+| k5 | 1,006,964 | 15 (14 contested) | 8,332 | YP 865 p.1843: ב–ד, מ–תו, יא–רא | All seats match | 11 / 122 / 120 |
 | k6 | 1,206,728 | 17 | 9,881 | YP 1225 p.189: את–רא, כא–כס | All seats match; corrected misread partner רא (Progress and Development), formerly יא | 13 / 120 / 120 |
 | k7 | 1,367,743 | 16 | 11,274 | YP 1565 p.246: יא–רא | All seats match | 13 / 120 / 120 |
 
@@ -463,7 +463,7 @@ The record is not a modern membership list or a diplomatic results transcription
 For 1949, Mapai registered ranks 10,12,13,29, Herut 10,15,16 and Progressive 3 were
 excluded in the official results; prefixes extend to ranks **50,17,6** respectively.
 The 1961 Liberal notice excludes ranks **9,11** and declares replacements through
-**19** elected. It is not used to infer deaths or another biographical reason.
+**19** elected. YP 869 p.1939 explicitly states that both excluded candidates had died.
 The current UI still labels the first N registered candidates as elected; it needs
 the retained mappings to describe those historical elected identities accurately.
 No registered rank is deleted or moved to make that UI assumption appear true.

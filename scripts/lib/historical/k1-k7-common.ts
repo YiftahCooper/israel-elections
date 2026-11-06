@@ -16,7 +16,7 @@ export interface EarlyReview {
   id: ElectionId; reviewedOn: string; resultsSourceId: string; candidateSourceId: string;
   pages: { votes: number; seats: number; invalid: number };
   nationalTotals: { registered: number; votesCast: number; valid: number; invalid: number };
-  lists: { letters: string; nameHe: string; votes: number; officialSeats: number }[];
+  lists: { letters: string; nameHe: string; votes: number; officialSeats: number; stableLetters?: string; withdrawn?: boolean }[];
   agreements: { complete: boolean; pairs: [string,string][] | null; note: string; sourceId?: string };
   rosters: { completeWinningRosters: boolean; meetsReleaseStandard?: boolean; reviewedLists: string[]; sourceId?: string };
   releaseBlockers: string[];
@@ -47,10 +47,10 @@ export function earlyResearchDataset(n:number):ElectionDataset {
     status:{stage:'official-final',asOf:r.reviewedOn,noteHe:'נתוני מחקר בלבד; רשימות המועמדים לא תומללו.',noteEn:'RESEARCH ONLY. No-connections diagnostic when notice missing; candidate rosters unverified.'},
     ruleSetId:n===1?ISRAEL_1949.id:ISRAEL_1951.id,
     totals:{...r.nationalTotals,ballotBoxes:0,localities:0},
-    lists:r.lists.map((l,i)=>listRecord(n,i,{letters:l.letters,nameHe:l.nameHe,votes:l.votes,candidatesSource:r.candidateSourceId,candidatesUnavailable:true,
-      notesHe:['RESEARCH ONLY — full candidate roster unverified.']},EARLY_LIST_KEYS)),
+    lists:r.lists.map((l,i)=>listRecord(n,i,{letters:l.stableLetters??l.letters,nameHe:l.nameHe,votes:l.votes,withdrawn:l.withdrawn,candidatesSource:r.candidateSourceId,candidatesUnavailable:true,
+      notesHe:['RESEARCH ONLY — full candidate roster unverified.']},EARLY_LIST_KEYS)).map((l,i)=>({...l,letters:r.lists[i].letters})),
     agreements:agreementRecords(n,r.agreements.pairs??[],r.agreements.sourceId!),
-    blocs:[],hasLocalities:false,officialSeats:officialSeatsOf(n,r.lists.map(l=>({letters:l.letters,seats:l.officialSeats}))),officialSeatsSourceId:r.resultsSourceId,
+    blocs:[],hasLocalities:false,officialSeats:officialSeatsOf(n,r.lists.map(l=>({letters:l.stableLetters??l.letters,seats:l.officialSeats}))),officialSeatsSourceId:r.resultsSourceId,
     sourceIds:[r.resultsSourceId,r.candidateSourceId,'k1-k7-cbs-national-totals'],buildInfo:{builtAt:r.reviewedOn,rawSha256:{}},
   };
 }
