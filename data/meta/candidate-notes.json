@@ -242,6 +242,15 @@
         "YP 1979 p.609 §4(ה): 38. שכטרמן אברהם (data/raw/research/k08-results.pdf)",
         "Knesset OData KNS_Person 2645: שכטרמן אברהם (data/raw/k8/knesset-odata-members.json)"
       ]
+    },
+    {
+      "candidateId": "4-מ#1",
+      "en": "The results notice misprints Meir Ya’ari as יערי יעקב. YP 724 p.501 formally corrects it to יערי מאיר.",
+      "he": "בהודעת התוצאות נדפס בטעות „יערי יעקב”. בתיקון הרשמי בילקוט הפרסומים 724 עמ׳ 501 תוקן ל„יערי מאיר”.",
+      "sources": [
+        "YP 717 p.265 (results)",
+        "YP 724 p.501 (correction), https://olaw.org.il/yalkut/yalkut-0724.pdf"
+      ]
     }
   ]
 }

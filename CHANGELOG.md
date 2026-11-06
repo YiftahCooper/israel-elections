@@ -20,6 +20,7 @@
 - k6: corrected three ballot letters, official list names and Don-Yihya, preserved stable IDs, documented coalition/appointment distinctions, restored Allon’s acting tenure and withheld the unproven Rafi logo.
 - k8: corrected sourced list display names and historical wording, resolved recommendation evidence and withheld an undated logo; stable keys and all counts unchanged.
 - k3: corrected ballot letters and official list names while preserving IDs, retained the official יז withdrawal notice, and repaired anachronistic labels, provenance and copied aftermath caveats.
+- k4: corrected three ballot letters, official list names and four elected-member spellings, added the third surplus agreement (תו–שת) and the government chronology; IDs, votes and seats unchanged.
 
 ## 5 November 2026 — release review
 

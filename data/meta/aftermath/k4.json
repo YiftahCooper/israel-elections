@@ -76,11 +76,60 @@
       "publisher": "T.M.C. Asser Institute, International Crimes Database, Attorney General v. Adolf Eichmann, procedural history",
       "kind": "academic",
       "accessed": "2026-11-05"
+    },
+    "plenum-july": {
+      "url": "https://fs.knesset.gov.il/4/Plenum/4_ptm_255878.doc",
+      "publisher": "Knesset, sitting 136, 18 July 1960",
+      "kind": "official",
+      "accessed": "2026-11-06"
+    },
+    "plenum-resignation": {
+      "url": "https://fs.knesset.gov.il/4/Plenum/4_ptm_255804.doc",
+      "publisher": "Knesset, sitting 223, 1 February 1961",
+      "kind": "official",
+      "accessed": "2026-11-06"
+    },
+    "plenum-dissolution": {
+      "url": "https://fs.knesset.gov.il/4/Plenum/4_ptm_255927.doc",
+      "publisher": "Knesset, sitting 265, 28 March 1961",
+      "kind": "official",
+      "accessed": "2026-11-06"
+    },
+    "faction-split": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%204%20and%20PositionID%20eq%2054&$format=json",
+      "publisher": "Knesset OData faction membership",
+      "kind": "official",
+      "accessed": "2026-11-06"
+    },
+    "results-gazette": {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset4-results.pdf",
+      "publisher": "Reshumot YP 717 pp.263–265",
+      "kind": "official",
+      "accessed": "2026-11-06"
+    },
+    "opening-sitting": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PlenumSession(490220)?$format=json",
+      "publisher": "Knesset OData plenum sessions",
+      "kind": "official",
+      "accessed": "2026-11-06"
     }
   },
   "results": {
     "electionDate": "1959-11-03",
-    "officialResultsSourceId": "k4-results-gazette"
+    "officialResultsSourceId": "k4-results-gazette",
+    "certificationDate": "1959-11-12",
+    "publicationDate": "1959-11-15",
+    "cites": [
+      {
+        "source": "results-gazette",
+        "quote": "י״א בחשון תש״ך (12 בנובמבר 1959)"
+      },
+      {
+        "source": "opening-sitting",
+        "quote": "ישיבת מליאה בתאריך 30/11/1959 בשעה 16:02"
+      }
+    ],
+    "firstSittingDate": "1959-11-30"
   },
   "reaction": {
     "policy": "Only dated institutional steps and attributed statements, all lists or none.",
@@ -372,7 +421,7 @@
       }
     ],
     "coalitionSeats": 86,
-    "coalitionSeatsNote": "Election-list seat totals, including support-only lists; not the confidence-vote tally. Reuses the existing overlay: ministerial factions are official; support-only membership is labelled secondary. Later government changes are listed separately.",
+    "coalitionSeatsNote": "Initial election-list seats, including affiliated minority lists: Ben-Gurion explicitly described five factions with 86 members on 16 December 1959. Not the confidence-vote tally or a later coalition snapshot. Poalei Agudat Yisrael joined later; the whole גד list is not reassigned.",
     "cites": [
       {
         "source": "coalition-1",
@@ -381,9 +430,60 @@
       {
         "source": "coalition-2",
         "quote": "קואליציה: מפא\"י, מפד\"ל, מפ\"ם, אחדות העבודה-פועלי ציון, המפלגה הפרוגרסיבית, קידמה ופיתוח, שיתוף ואחווה, חקלאות ופיתוח | אופוזיציה: חרות, הציונים הכלליים, חזית דתית תורתית, מק\"י"
+      },
+      {
+        "source": "presentation-gov9",
+        "quote": "ממשלה של חמש סיעות המונות יחד 86 חברי כנסת: המפלגה הפרוגרסיבית, אחדות העבודה פועלי ציון, מפלגת הפועלים המאוחדת, המפלגה הדתית-לאומית, מפלגת פועלי ארץ ישראל והמיעוטים."
       }
     ],
-    "changes": [],
+    "changes": [
+      {
+        "date": "1960-07-18",
+        "type": "coalition-change",
+        "textEn": "Poalei Agudat Yisrael joined the government; Binyamin Mintz was approved as Minister of Posts. His ministerial service ended on 30 May 1961. The formal Torah Religious Front faction split followed on 9 August 1960.",
+        "textHe": "פועלי אגודת ישראל הצטרפו לממשלה ובנימין מינץ אושר לשר הדואר. כהונתו הסתיימה ב־30 במאי 1961. הפיצול הרשמי של סיעת החזית הדתית התורתית חל לאחר מכן, ב־9 באוגוסט 1960.",
+        "cites": [
+          {
+            "source": "plenum-july",
+            "quote": "הממשלה החליטה על צירוף חבר-הכנסת בנימין מינץ כחבר הממשלה בתפקיד שר הדואר."
+          },
+          {
+            "source": "coalition-1",
+            "quote": "PersonID 2462, GovernmentNum 9, DutyDesc שר הדואר, StartDate 1960-07-18, FinishDate 1961-05-30 (project transcription of official API fields)."
+          },
+          {
+            "source": "faction-split",
+            "quote": "Faction 215 / 233: StartDate 1960-08-09; opening constituents 3 Agudat Yisrael and 3 Poalei Agudat Yisrael."
+          }
+        ],
+        "governmentNumber": 9,
+        "scope": "mid-term",
+        "formalStep": true
+      },
+      {
+        "date": "1961-01-31",
+        "type": "government-resignation",
+        "textEn": "Ben-Gurion resigned; the government continued as a caretaker until the next government took office on 2 November 1961. Eshkol announced the resignation to the Knesset on 1 February, referring to the previous evening.",
+        "textHe": "בן־גוריון התפטר והממשלה המשיכה לכהן כממשלת מעבר עד כינון הממשלה הבאה ב־2 בנובמבר 1961. אשכול הודיע על ההתפטרות בכנסת ב־1 בפברואר והתייחס לערב הקודם.",
+        "cites": [
+          {
+            "source": "plenum-resignation",
+            "quote": "בישיבת הממשלה אמש הודיע ראש הממשלה על התפטרותו. דין התפטרות ראש הממשלה, כידוע, כדין התפטרות הממשלה כולה."
+          },
+          {
+            "source": "plenum-resignation",
+            "quote": "תישאר ממשלה זאת על כנה, וחבריה יוסיפו למלא את תפקידיהם"
+          },
+          {
+            "source": "plenum-gov10",
+            "quote": "אנו עוברים להצבעה על הבעת אמון לממשלה שהתייצבה לפני הכנסת. הצבעה 63 בעד הבעת אמון לממשלה 46 נגד לוז: ק. היו\"ר ושישה הביעה נגר ארבעים של שישים ושלושה ברוב הכנסת אמון לממשלה, בראשותו של דוד בןגוריון. אני מברך את הממשלה להתכוננותה, ומאחל לה הצלחה בניהול עניני המדינה."
+          }
+        ],
+        "scope": "mid-term",
+        "governmentNumber": 9,
+        "formalStep": true
+      }
+    ],
     "endDateCites": [
       {
         "source": "plenum-gov10",
@@ -448,15 +548,19 @@
     ],
     "candidatesPending": [],
     "endedBy": {
-      "type": "election",
-      "date": "1961-08-15",
-      "nextElection": "k5",
-      "textEn": "The next Knesset election was held on 1961-08-15.",
-      "textHe": "הבחירות לכנסת הבאה נערכו ב־1961-08-15.",
+      "type": "dissolution-law",
+      "date": "1961-03-28",
+      "nextElection": "1961-08-15",
+      "textEn": "The Knesset passed the Fourth Knesset Dissolution Law on 28 March 1961, setting the next election for 15 August 1961. The selection window ends on election day.",
+      "textHe": "הכנסת קיבלה את חוק התפזרות הכנסת הרביעית ב־28 במרץ 1961 וקבעה את הבחירות הבאות ל־15 באוגוסט 1961. חלון האירועים מסתיים ביום הבחירות.",
       "cites": [
         {
-          "source": "idi-next",
-          "quote": "15.8.1961"
+          "source": "plenum-dissolution",
+          "quote": "נצביע עתה על החוק בקריאה שלישית. הצבעה חוק התפזרות הכנסת הרביעית, תשכ״א—1961, נתקבל."
+        },
+        {
+          "source": "plenum-dissolution",
+          "quote": "יום ג׳, ג׳ באלול תשכ״א, 15 באוגוסט 1961."
         }
       ]
     }
@@ -469,11 +573,11 @@
     ]
   },
   "gaps": [
-    "Official result-certification date and the first sitting are not transcribed; election dates and seat counts reuse the verified national dataset.",
+    "Official result notice signed 12 November and published 15 November 1959 (YP 717 pp.263–265). Opening sitting: 30 November 1959 (Knesset OData PlenumSession 490220). Election dates and counts reuse the verified national dataset.",
     "Reaction statements are not collected.",
     "Mid-term consultation positions, mandate deadlines and extensions are incomplete unless an explicit step below records them.",
-    "Closing date is the next election, not dissolution day. The governing dissolution/election-date law has not been retrieved; regular versus early termination is not inferred from term length.",
-    "Replacement-coalition snapshots are partial: government 14’s faction splits and current seat counts require a separate audit. Other replacement snapshots use election-list seats with stated support-list limitations.",
+    "Term start/end delimit the election-to-election selection window; endedBy separately records the dissolution law passed on 28 March 1961.",
+    "Government 9 changes record Poalei Agudat Yisrael joining and Mintz’s appointment, followed by resignation/caretaker status. Later coalition seat snapshots and mid-term member replacements are not modelled.",
     "Presentation dates can precede approval dates; confidence steps use the full protocol. The exact assignment days not transcribed here remain unknown."
   ]
 }

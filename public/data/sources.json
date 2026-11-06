@@ -1974,8 +1974,8 @@
   "description": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
   "method": "manual-transcription",
   "retrievedAt": "2026-11-03T18:20:00Z",
-  "bytes": 5150,
-  "sha256": "ef7105025722195b6b4162c558dea7ff4b7d7b321cb3dc5e56700a9c6829ee9a"
+  "bytes": 6066,
+  "sha256": "1312ae5d27e1c95ae559cd6c5e3d5bd16e6f56a31f22108186840ac8e90aaa78"
  },
  {
   "id": "k5-results-gazette",
@@ -2863,10 +2863,10 @@
   "id": "k4-agreements-gazette",
   "file": "k4/agreements.pdf",
   "url": "https://olaw.org.il/yalkut/yalkut-0709.pdf",
-  "publisher": "רשומות — ילקוט הפרסומים 709, עמ׳ 125",
-  "publisherEn": "Reshumot — Yalkut HaPirsumim 709, p. 125",
+  "publisher": "רשומות — ילקוט הפרסומים 709, עמ׳ 125–126",
+  "publisherEn": "Reshumot — Yalkut HaPirsumim 709, pp. 125–126",
   "official": true,
-  "description": "Both signed connected-list notices on PDF p.1, two pairs in total. Official issue reproduced by olaw.org.il.",
+  "description": "Three signed connected-list notices, YP 709 pp. 125–126 (PDF pp.1–2): א–רא, יא–ע, תו–שת. The third pair is inactive below threshold. Official issue reproduced by olaw.org.il.",
   "method": "http",
   "retrievedAt": "2026-11-03",
   "bytes": 138468,
@@ -2949,8 +2949,8 @@
   "description": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
   "method": "visual-primary-review",
   "retrievedAt": "2026-11-03",
-  "bytes": 23123,
-  "sha256": "c44a4598f023be405e83ab78006dc2057bcaf62b687fc0a6647fc29399365329",
+  "bytes": 23317,
+  "sha256": "1df3ffa7f0f32fd237f82b8d585ad6fbe2dccbd8e55ea6d477f33af1c7c668a7",
   "lastModified": null
  },
  {
@@ -6275,5 +6275,17 @@
   "bytes": 106573,
   "sha256": "ac285b71c7cffdee37e3321b36f39ed7d8a3c186688498c86ae61df18ddc22ac",
   "publisherEn": "Reshumot — Yalkut HaPirsumim 429 (24 July 1955), pp.1087–1088"
+ },
+ {
+  "id": "k4-results-correction-0724",
+  "file": "k4/correction-0724.pdf",
+  "url": "https://olaw.org.il/yalkut/yalkut-0724.pdf",
+  "publisher": "Reshumot — Yalkut HaPirsumim 724, 10 December 1959, p.501",
+  "official": true,
+  "description": "Formal correction to YP 717: במקום יערי יעקב צ״ל יערי מאיר. Primary Gazette reproduced by olaw.org.il.",
+  "method": "http",
+  "retrievedAt": "2026-11-06",
+  "bytes": 1803336,
+  "sha256": "1c47743293a95775aec55a441e19c00d363a439d53e71686dfac22829c2b0f15"
  }
 ]

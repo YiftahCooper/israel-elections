@@ -70,6 +70,7 @@ function evidenceIds(n:number,r:EarlyReview) {
   return [r.resultsSourceId,r.candidateSourceId,'k1-k7-cbs-national-totals',`k${n}-national-reviewed`,
     ...(r.agreements.sourceId?[r.agreements.sourceId]:[]),...(r.rosters.sourceId?[r.rosters.sourceId]:[]),
     ...(n===3?['k3-candidates-mirror','k3-withdrawals-gazette']:[]),
+    ...(n===4?['k4-results-correction-0724']:[]),
     `k1-k7-law-${n===1?'1948':n===2?'1951':n===3?'1955':n===7?'1969':'1959'}`,
     ...(n===1?['k1-k7-law-1948-312737']:[])];
 }

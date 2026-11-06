@@ -31,7 +31,7 @@
         },
         {
           "rank": 5,
-          "nameHe": "שיטרית בכור שלום"
+          "nameHe": "שטרית בכור שלום"
         },
         {
           "rank": 6,
@@ -119,7 +119,7 @@
         },
         {
           "rank": 27,
-          "nameHe": "אוזניה ברוך"
+          "nameHe": "אזניה ברוך"
         },
         {
           "rank": 28,
@@ -207,7 +207,7 @@
         "שרת משה",
         "מאיר גולדה",
         "אשכול לוי",
-        "שיטרית בכור שלום",
+        "שטרית בכור שלום",
         "לבון פנחס",
         "ארן זלמן",
         "נמיר מרדכי",
@@ -229,7 +229,7 @@
         "פרס שמעון",
         "בקר אהרן",
         "סמילנסקי יזהר",
-        "אוזניה ברוך",
+        "אזניה ברוך",
         "סרדינס משה",
         "חסין אשר",
         "ברגר הרצל",
@@ -488,7 +488,7 @@
         },
         {
           "rank": 9,
-          "nameHe": "ד״ר יוניצמן שמשון"
+          "nameHe": "ד״ר יוניצ׳מן שמשון"
         },
         {
           "rank": 10,
@@ -532,7 +532,7 @@
         "בן-אליעזר אריה",
         "לנדאו חיים",
         "שוסטק אליעזר",
-        "ד״ר יוניצמן שמשון",
+        "ד״ר יוניצ׳מן שמשון",
         "רזיאל-נאור אסתר",
         "כהן-מגורי חיים",
         "לוין נחום",
@@ -650,7 +650,7 @@
         "ריפתין יעקב",
         "כמיס יוסף"
       ],
-      "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted.",
+      "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted. YP 717 p.265 misprints rank 1 as יערי יעקב; formal correction YP 724 p.501 (10 Dec 1959) says במקום יערי יעקב צ״ל יערי מאיר. Candidate notice and corrected result agree.",
       "electedCandidateRanks": [
         1,
         2,
@@ -675,11 +675,11 @@
       "candidates": [
         {
           "rank": 1,
-          "nameHe": "אי-נאשף מחמוד"
+          "nameHe": "א-נאשף מחמוד"
         }
       ],
       "electedNames": [
-        "אי-נאשף מחמוד"
+        "א-נאשף מחמוד"
       ],
       "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted.",
       "electedCandidateRanks": [

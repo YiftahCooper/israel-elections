@@ -313,7 +313,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k4.json",
-      "sha256": "df29d0dbe866b9f51b00af619e4babb647043d20a98bf63010acf063ab85c924",
+      "sha256": "2ab1ab893bf019952529e6eee137221f94fff8718b38603acf2922da65cc81aa",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k5": {
@@ -980,7 +980,7 @@
       "electionId": "k4",
       "electionDate": "1959-11-03",
       "datasetPath": "public/data/k4.json",
-      "datasetSha256": "df29d0dbe866b9f51b00af619e4babb647043d20a98bf63010acf063ab85c924",
+      "datasetSha256": "ed10ecd0ab537b8044580eba5768c8eedc1b847b5ecb6841e3227d84515be4c1",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -1059,7 +1059,7 @@
         {
           "listId": "4-יא",
           "letters": "יא",
-          "nameHe": "שיתוף ואחווה",
+          "nameHe": "השיתוף והאחוה",
           "votes": 11104,
           "partyIds": [
             "cooperation-and-brotherhood"
@@ -1088,7 +1088,7 @@
         {
           "listId": "4-ע",
           "letters": "ע",
-          "nameHe": "החקלאות ופתוח",
+          "nameHe": "חקלאות ופתוח",
           "votes": 10902,
           "partyIds": [
             "agriculture-and-development"
@@ -1144,7 +1144,30 @@
           "constituentVotes": null
         }
       ],
-      "reviewCandidates": [],
+      "reviewCandidates": [
+        {
+          "listId": "4-יד",
+          "partyIds": [
+            "vehicle-4-יד"
+          ],
+          "sourceIds": [
+            "k4"
+          ],
+          "treatment": "review",
+          "reason": "YP 717 p.263 explicitly identifies an Arab list; omitted from the original editorial selection. Review candidate, not a verified ideological continuity claim."
+        },
+        {
+          "listId": "4-שת",
+          "partyIds": [
+            "vehicle-4-שת"
+          ],
+          "sourceIds": [
+            "k4"
+          ],
+          "treatment": "review",
+          "reason": "YP 717 p.263 explicitly identifies an Arab list; omitted from the original editorial selection. Review candidate, not a verified ideological continuity claim."
+        }
+      ],
       "computed": {
         "coreOnly": {
           "votes": 66378,
