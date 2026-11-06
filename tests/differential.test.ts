@@ -212,7 +212,9 @@ const EXPECTED: Record<Family, string> = {
   // and build metadata. Every other election and all engine/model source are unchanged.
   // merged with k8 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k3 audit fixes: combined digest = union of the separately reviewed changes.
-  model: '052cf2a29ed78ca136a2d21965ca17a2837d1a0f9b894516e2a660852fb649ff',
+  // k2 audit: corrected displayed letters/names, 50 losing-list candidates, status and provenance only.
+  // Stable IDs, votes, seats and agreements unchanged; substituting HEAD k2 reproduces all five old digests.
+  model: '9cbecdab034db3a1952b54a446ae38c95972da5e542482e05775139d278b0665',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

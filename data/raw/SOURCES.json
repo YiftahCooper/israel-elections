@@ -1902,8 +1902,8 @@
     "description": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T18:20:00Z",
-    "bytes": 4076,
-    "sha256": "37e63f1e79082ae3887684530f1a521368253d19cfb92705aa8f9abb22c79a61"
+    "bytes": 4812,
+    "sha256": "8d8ae959d640b944be86a0428e8557612345952d14a46384488af9180e741842"
   },
   {
     "id": "k3-results-gazette",
@@ -2923,8 +2923,8 @@
     "description": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
     "method": "visual-primary-review",
     "retrievedAt": "2026-11-03",
-    "bytes": 26997,
-    "sha256": "43170d91d25c791fc722a27ee7e604c35fa6b8bb682c85a4186fb8ec5cf85080",
+    "bytes": 34291,
+    "sha256": "371cc4bcb3220b3a98c999f4fb915958eeb499d6ae3f70e8d2ee150dd0826efd",
     "lastModified": null
   },
   {

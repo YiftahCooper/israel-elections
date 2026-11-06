@@ -2,12 +2,14 @@
   "schemaVersion": 1,
   "electionId": "k2",
   "status": "pilot",
-  "reviewedAt": "2026-11-05",
+  "reviewedAt": "2026-11-06",
   "notes": [
     "Research draft; not wired into the application. Official session records anchor all government approvals. Reused recommendation and first-coalition evidence retains the earlier research limitations.",
     "The government card describes the first cabinet. Each replacement cabinet has a full-session confidence step and a numbered government.changes entry; available replacement coalition snapshots are attached to that entry.",
     "Government 4: confidence on 23 December 1952, declarations on 24 December. Government numbers and steps distinguish each replacement cabinet from a change of prime minister within one cabinet.",
-    "New PDF quotations preserve the extracted text order (including OCR errors); whitespace is collapsed. Full-session sources identify the sitting; source excerpts are recoverable from the public PDF. Existing coalition OData quotes are labelled project tabulations in the source text, not purported verbatim minister lists."
+    "New PDF quotations preserve the extracted text order (including OCR errors); whitespace is collapsed. Full-session sources identify the sitting; source excerpts are recoverable from the public PDF. Existing coalition OData quotes are labelled project tabulations in the source text, not purported verbatim minister lists.",
+    "term.start/end are the election-to-election research window, not the institutional term; the first sitting was 20 August 1951.",
+    "Source upgrade: IDI Hebrew party profiles independently describe יד, נ and ע as Mapai satellite lists. Plenum sitting 13 describes approximately 65 supporters; this is not the confidence tally or a personal recommendation roll call."
   ],
   "sources": {
     "plenum-gov3": {
@@ -108,11 +110,29 @@
       "kind": "official",
       "accessed": "2026-11-05",
       "via": "Full document read with Jina; ordinary web fetch returned 403. Used for incident date and observations, not national-event selection."
+    },
+    "results-gazette": {
+      "url": "https://www.gov.il/BlobFolder/dynamiccollectorresultitem/records-results2/he/archive_knesset2_records-results2.pdf",
+      "publisher": "Reshumot, YP 181, 10 August 1951",
+      "kind": "official",
+      "accessed": "2026-11-06"
+    },
+    "opening-members": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%202%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)&$format=json",
+      "publisher": "Knesset OData; retained data/raw/k2/knesset-odata-members.json",
+      "kind": "official",
+      "accessed": "2026-11-06"
     }
   },
   "results": {
     "electionDate": "1951-07-30",
-    "officialResultsSourceId": "k2-results-gazette"
+    "officialResultsSourceId": "k2-results-gazette",
+    "certificationDate": "1951-08-09",
+    "publicationDate": "1951-08-10",
+    "firstSittingDate": "1951-08-20",
+    "notes": [
+      "YP 181 p.1242 signed \"ד׳ באב תשי״א (9 באוגוסט 1951)\"; cover dated 10 August. Retained Knesset OData has 120 opening members with StartDate 1951-08-20T00:00:00. Certification means signature of the official results notice, distinct from publication."
+    ]
   },
   "reaction": {
     "policy": "Only dated institutional steps and attributed statements, all lists or none.",
@@ -151,7 +171,7 @@
           "status": "unknown"
         },
         {
-          "letters": "ה",
+          "letters": "ו",
           "seats": 8,
           "status": "unknown"
         },
@@ -223,9 +243,9 @@
       "notes": [
         "Reuses docs/research/pm-recommendations-1949-1973.md; consultation conditions are not personal recommendations. Unknown does not mean no recommendation.",
         "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved.",
-        "The opening day is not established: the report refers to meetings during the weekend. Only the month is displayed."
-      ],
-      "endDate": "1951-08-15"
+        "The opening day is not established: the report refers to meetings during the weekend. Only the month is displayed.",
+        "Actual consultation end unresolved (14 or 15 August): JTA 14 August predicts \"will conclude tomorrow\", not completed meetings. No precise actual end date is asserted."
+      ]
     }
   ],
   "formation": {
@@ -241,8 +261,7 @@
             "source": "recommendations-jta",
             "quote": "His consultations will conclude tomorrow"
           }
-        ],
-        "endDate": "1951-08-15"
+        ]
       },
       {
         "date": "1951-08-20",
@@ -398,7 +417,7 @@
         "seats": 45
       },
       {
-        "letters": "ה",
+        "letters": "ו",
         "seats": 8
       },
       {
@@ -481,7 +500,7 @@
             "seats": 20
           },
           {
-            "letters": "ה",
+            "letters": "ו",
             "seats": 8
           },
           {
@@ -539,7 +558,7 @@
             "seats": 20
           },
           {
-            "letters": "ה",
+            "letters": "ו",
             "seats": 8
           },
           {
@@ -589,7 +608,7 @@
             "seats": 45
           },
           {
-            "letters": "ה",
+            "letters": "ו",
             "seats": 8
           },
           {
@@ -730,11 +749,10 @@
     ]
   },
   "gaps": [
-    "Official result-certification date and the first sitting are not transcribed; election dates and seat counts reuse the verified national dataset.",
     "Reaction statements are not collected.",
     "Mid-term consultation positions, mandate deadlines and extensions are incomplete unless an explicit step below records them.",
     "Closing date is the next election, not dissolution day. The governing dissolution/election-date law has not been retrieved; regular versus early termination is not inferred from term length.",
-    "Replacement-coalition snapshots are partial: government 14’s faction splits and current seat counts require a separate audit. Other replacement snapshots use election-list seats with stated support-list limitations.",
+    "Replacement-coalition snapshots for governments 4–6 use election-list seat weights, not reconstructed current faction sizes after splits and defections.",
     "Presentation dates can precede approval dates; confidence steps use the full protocol. The exact assignment days not transcribed here remain unknown."
   ]
 }
