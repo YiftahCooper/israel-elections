@@ -19,6 +19,7 @@ export interface EarlyReview {
   lists: { letters: string; nameHe: string; votes: number; officialSeats: number }[];
   agreements: { complete: boolean; pairs: [string,string][] | null; note: string; sourceId?: string };
   rosters: { completeWinningRosters: boolean; meetsReleaseStandard?: boolean; reviewedLists: string[]; sourceId?: string };
+  withdrawnLists?: { letters: string; nameHe: string; votes: number; withdrawn: boolean; sourceId: string; notesHe: string[] }[];
   releaseBlockers: string[];
 }
 export interface EarlyRosterReview {
@@ -37,6 +38,9 @@ export function earlyRosterReview(n:number):EarlyRosterReview { return rawJson(`
 const EARLY_LIST_KEYS = ['id', 'letters', 'nameHe', 'shortHe', 'shortEn', 'color', 'votes', 'withdrawn', 'bloc', 'candidates', 'candidatesSource',
   'candidatesSecondary', 'sponsorsHe', 'partiesHe', 'notesHe', 'candidatesUnavailable', 'candidatesTruncated'];
 
+// k3's mistaken historical ID is an opaque stable key; the ballot field is corrected.
+const earlyKeyLetters = (n:number, letters:string) => n===3 && letters==='סצ' ? 'סא' : letters;
+
 /** Research only: [] means the no-connections counterfactual when notice is missing.
  * Untranscribed rosters have unknown capacity even though the source scans exist.
  * This fixture is never returned as a build job or written under public/data/. */
@@ -47,10 +51,10 @@ export function earlyResearchDataset(n:number):ElectionDataset {
     status:{stage:'official-final',asOf:r.reviewedOn,noteHe:'נתוני מחקר בלבד; רשימות המועמדים לא תומללו.',noteEn:'RESEARCH ONLY. No-connections diagnostic when notice missing; candidate rosters unverified.'},
     ruleSetId:n===1?ISRAEL_1949.id:ISRAEL_1951.id,
     totals:{...r.nationalTotals,ballotBoxes:0,localities:0},
-    lists:r.lists.map((l,i)=>listRecord(n,i,{letters:l.letters,nameHe:l.nameHe,votes:l.votes,candidatesSource:r.candidateSourceId,candidatesUnavailable:true,
-      notesHe:['RESEARCH ONLY — full candidate roster unverified.']},EARLY_LIST_KEYS)),
-    agreements:agreementRecords(n,r.agreements.pairs??[],r.agreements.sourceId!),
-    blocs:[],hasLocalities:false,officialSeats:officialSeatsOf(n,r.lists.map(l=>({letters:l.letters,seats:l.officialSeats}))),officialSeatsSourceId:r.resultsSourceId,
+    lists:r.lists.map((l,i)=>({...listRecord(n,i,{letters:earlyKeyLetters(n,l.letters),nameHe:l.nameHe,votes:l.votes,candidatesSource:r.candidateSourceId,candidatesUnavailable:true,
+      notesHe:['RESEARCH ONLY — full candidate roster unverified.']},EARLY_LIST_KEYS),letters:l.letters})),
+    agreements:agreementRecords(n,(r.agreements.pairs??[]).map(([a,b])=>[earlyKeyLetters(n,a),earlyKeyLetters(n,b)] as [string,string]),r.agreements.sourceId!),
+    blocs:[],hasLocalities:false,officialSeats:officialSeatsOf(n,r.lists.map(l=>({letters:earlyKeyLetters(n,l.letters),seats:l.officialSeats}))),officialSeatsSourceId:r.resultsSourceId,
     sourceIds:[r.resultsSourceId,r.candidateSourceId,'k1-k7-cbs-national-totals'],buildInfo:{builtAt:r.reviewedOn,rawSha256:{}},
   };
 }
@@ -61,7 +65,7 @@ export function earlyDiagnostic(n:number) {
 function evidenceIds(n:number,r:EarlyReview) {
   return [r.resultsSourceId,r.candidateSourceId,'k1-k7-cbs-national-totals',`k${n}-national-reviewed`,
     ...(r.agreements.sourceId?[r.agreements.sourceId]:[]),...(r.rosters.sourceId?[r.rosters.sourceId]:[]),
-    ...(n===3?['k3-candidates-mirror']:[]),
+    ...(n===3?['k3-candidates-mirror','k3-withdrawals-gazette']:[]),
     `k1-k7-law-${n===1?'1948':n===2?'1951':n===3?'1955':n===7?'1969':'1959'}`,
     ...(n===1?['k1-k7-law-1948-312737']:[])];
 }
@@ -135,6 +139,8 @@ export function earlyReleasedDataset(n:number,audit:EarlyAudit=verifyEarlyProgre
       ...rosterFlags(!reviewed?'unavailable':reviewed.truncated?'truncated':'complete','explicit'),
     },EARLY_LIST_KEYS) as unknown as ElectionDataset['lists'][number];
   }));
+  // Withdrawals have source-backed zero placeholders, not participating results.
+  for(const l of r.withdrawnLists??[]) ds.lists.push(listRecord(n,ds.lists.length,{...l,candidatesSource:r.candidateSourceId,candidatesUnavailable:true},EARLY_LIST_KEYS));
   ds.sourceIds=evidenceIds(n,r);
   ds.buildInfo={builtAt:new Date().toISOString(),rawSha256:audit.rawSha256};
   return ds;

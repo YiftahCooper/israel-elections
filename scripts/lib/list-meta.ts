@@ -48,7 +48,7 @@ export const META: Record<string, Meta> = {
   '2-צ': { he: "הציונים הכלליים", en: "General Zionists", color: '#17a2b8', order: 2 },
   '2-ק': { he: "מק״י", en: "Maki", color: '#e34948', order: 6 },
   '3-א': { he: "מפא״י", en: "Mapai", color: '#eb6834', order: 1 },
-  '3-ב': { he: "מפד״ל", en: "National Religious Party", color: '#7d9fc4', order: 4 },
+  '3-ב': { he: "חזית דתית לאומית", en: "National Religious Front", color: '#7d9fc4', order: 4 },
   '3-גד': { he: "חזית דתית תורתית", en: "Religious Torah Front", color: '#a0601e', order: 7 },
   '3-ח': { he: "חרות", en: "Herut", color: '#2a78d6', order: 2 },
   '3-יד': { he: "דמוקרטית לערביי ישראל", en: "Democratic List for Israeli Arabs", color: '#008300', order: 8 },

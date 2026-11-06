@@ -839,10 +839,10 @@
       "electionId": "k3",
       "electionDate": "1955-07-26",
       "datasetPath": "public/data/k3.json",
-      "datasetSha256": "3392fbc308144fdfa875e07a089e8abe392225c3625b59d8bd908c8fb0a2b8ba",
+      "datasetSha256": "6580ca2470e8b255c8c56373eef4a021191b3777fc942fdcf3f442394483b4d2",
       "datasetStatus": {
         "stage": "official-final",
-        "asOf": "2026-11-03",
+        "asOf": "2026-11-06",
         "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. ראו החלטה 0065.",
         "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. See decision 0065."
       },

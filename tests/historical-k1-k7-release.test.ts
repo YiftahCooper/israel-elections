@@ -36,9 +36,9 @@ describe.each([1,2,3,4,5,6,7])('k%i built national release',n=>{
     expect(ds.totals).toEqual({...reviewed.nationalTotals,ballotBoxes:0,localities:0});
     expect(ds.lists.reduce((s,l)=>s+l.votes,0)).toBe(ds.totals.valid);
     expect(ds.totals.valid+ds.totals.invalid).toBe(ds.totals.votesCast);
-    expect(Object.fromEntries(ds.lists.map(l=>[l.letters,l.votes]))).toEqual(Object.fromEntries(reviewed.lists.map(l=>[l.letters,l.votes])));
-    expect(ds.officialSeats).toEqual(Object.fromEntries(reviewed.lists.map(l=>[`${n}-${l.letters}`,l.officialSeats])));
-    expect(Object.fromEntries(result.lists.map(l=>[l.id,l.seats]))).toEqual(ds.officialSeats);
+    expect(Object.fromEntries(ds.lists.filter(l=>!l.withdrawn).map(l=>[l.letters,l.votes]))).toEqual(Object.fromEntries(reviewed.lists.map(l=>[l.letters,l.votes])));
+    expect(ds.officialSeats).toEqual(Object.fromEntries(reviewed.lists.map(l=>[`${n}-${n===3&&l.letters==='סצ'?'סא':l.letters}`,l.officialSeats])));
+    expect(Object.fromEntries(result.lists.filter(l=>!l.withdrawn).map(l=>[l.id,l.seats]))).toEqual(ds.officialSeats);
     expect(result.seatsAllocated).toBe(120);expect(result.quota).toEqual({num:BigInt(quotas[n]),den:1n});
     expect(validateScenario(scenarioFromDataset(ds))).toEqual([]);
     expect(ds.agreements.map(a=>a.members.map(id=>id.slice(id.indexOf('-')+1)))).toEqual(connections[n]);
@@ -52,7 +52,7 @@ describe.each([1,2,3,4,5,6,7])('k%i built national release',n=>{
     expect(roster.lists.reduce((s,l)=>s+l.electedNames.length,0)).toBe(120);
     for(const list of ds.lists){
       const rr=roster.lists.find(l=>l.letters===list.letters);
-      if(ds.officialSeats![list.id]===0){expect(list.candidates).toEqual([]);expect(list.candidatesUnavailable).toBe(true);continue;}
+      if(list.withdrawn||ds.officialSeats![list.id]===0){expect(list.candidates).toEqual([]);expect(list.candidatesUnavailable).toBe(true);continue;}
       expect(rr).toBeDefined();expect(list.candidatesTruncated).toBe(true);expect(list.candidatesUnavailable).toBeUndefined();
       expect(list.candidatesSecondary).toBe(false);expect(list.candidatesSource).toBe(reviewed.candidateSourceId);
       expect(list.candidates.map(({id,notSeated,notes,displayNameHe,partyId,bio,nameEn,...c})=>{expect(id).toBe(`${list.id}#${c.rank}`);return c;})).toEqual(rr!.candidates);

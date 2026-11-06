@@ -280,7 +280,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k3.json",
-      "sha256": "1b582dc9a81abda168eff2f3be0b02fcb9d88ebcab4a5569714b02ce15dc9c41",
+      "sha256": "6580ca2470e8b255c8c56373eef4a021191b3777fc942fdcf3f442394483b4d2",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k4": {
@@ -2489,7 +2489,7 @@
         {
           "date": "1955-07-26",
           "datePrecision": "day",
-          "nameHe": "החקלאות ופיתוח",
+          "nameHe": "חקלאות ופיתוח",
           "nameEn": "Agriculture and Development",
           "sources": [
             "k3",
@@ -2784,13 +2784,13 @@
     {
       "id": "vehicle-3-ש",
       "entityType": "electoral-vehicle",
-      "nameHe": "ליכוד — תנועה כללית עממית",
+      "nameHe": "ליכוד — תנועה כלכלית עממית",
       "nameEn": null,
       "names": [
         {
           "date": "1955-07-26",
           "datePrecision": "day",
-          "nameHe": "ליכוד — תנועה כללית עממית",
+          "nameHe": "ליכוד — תנועה כלכלית עממית",
           "nameEn": null,
           "sources": [
             "k3",
@@ -2848,13 +2848,13 @@
     {
       "id": "vehicle-3-יט",
       "entityType": "electoral-vehicle",
-      "nameHe": "רשימה דתית מקורית, נציגה בני תימן ודתיים בלתי מפלגתיים",
+      "nameHe": "רשימה דתית מקורית, תנועת בני תימן ודתיים בלתי מפלגתיים",
       "nameEn": null,
       "names": [
         {
           "date": "1955-07-26",
           "datePrecision": "day",
-          "nameHe": "רשימה דתית מקורית, נציגה בני תימן ודתיים בלתי מפלגתיים",
+          "nameHe": "רשימה דתית מקורית, תנועת בני תימן ודתיים בלתי מפלגתיים",
           "nameEn": null,
           "sources": [
             "k3",
@@ -23446,6 +23446,38 @@
       ],
       "status": "observed-local-dataset",
       "externalIds": {}
+    },
+    {
+      "id": "vehicle-3-יז",
+      "entityType": "electoral-vehicle",
+      "nameHe": "איגוד העובד הקשיש בלתי מפלגתי",
+      "nameEn": null,
+      "names": [
+        {
+          "date": "1955-07-26",
+          "datePrecision": "day",
+          "nameHe": "איגוד העובד הקשיש בלתי מפלגתי",
+          "nameEn": null,
+          "sources": [
+            "k3",
+            "proposal"
+          ],
+          "status": "observed-local-dataset"
+        }
+      ],
+      "aliases": [],
+      "activePeriod": {
+        "from": "1955-07-26",
+        "to": "1955-07-26",
+        "datePrecision": "day",
+        "basis": "observed-election-appearances-not-lifetime"
+      },
+      "sources": [
+        "k3",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "externalIds": {}
     }
   ],
   "partyAppearances": [
@@ -24075,7 +24107,8 @@
       "sources": [
         "k3"
       ],
-      "status": "observed-local-dataset"
+      "status": "observed-local-dataset",
+      "locator": "public/data/k3.json#/lists/3"
     },
     {
       "electionId": "k3",
@@ -24137,7 +24170,8 @@
       "sources": [
         "k3"
       ],
-      "status": "observed-local-dataset"
+      "status": "observed-local-dataset",
+      "locator": "public/data/k3.json#/lists/6"
     },
     {
       "electionId": "k3",
@@ -35709,6 +35743,19 @@
       ],
       "status": "observed-local-dataset",
       "locator": "public/data/k26.json#/lists/37",
+      "continuity": "unresolved"
+    },
+    {
+      "electionId": "k3",
+      "listId": "3-יז",
+      "partyId": "vehicle-3-יז",
+      "role": "singleton",
+      "sources": [
+        "k3",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "locator": "public/data/k3.json#/lists/18",
       "continuity": "unresolved"
     }
   ],

@@ -2,6 +2,7 @@
 
 ## 6 November 2026 — data audit
 
+- k3: corrected ballot letters and official list names while preserving IDs, retained the official יז withdrawal notice, and repaired anachronistic labels, provenance and copied aftermath caveats.
 - k24: corrected Demokratit’s withdrawal, retained official final notices, clarified opening membership and polling-station scope, added candidate resignation notes, and corrected overstated source and logo verification claims.
 - k19: retained the formal Gazette total correction, repaired list identity, context and stale research notes, strengthened constituent sourcing and withheld three unproven campaign logos.
 
