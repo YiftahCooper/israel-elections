@@ -2176,7 +2176,7 @@
       "electionId": "k17",
       "electionDate": "2006-03-28",
       "datasetPath": "public/data/k17.json",
-      "datasetSha256": "d61fed68d1a10f88c5e0dde7d0cb9da06c48779572fdb015c944eeb5bbd9617a",
+      "datasetSha256": "0aebe35a52aad424fd80d82c3b84a8eea2b1c48e0db8e4fc7617f0b43c887dd2",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",

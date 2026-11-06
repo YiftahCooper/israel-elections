@@ -2,11 +2,12 @@
   "schemaVersion": 1,
   "electionId": "k17",
   "status": "pilot",
-  "reviewedAt": "2026-11-05",
+  "reviewedAt": "2026-11-06",
   "notes": [
     "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
     "The term window runs from this election to the next Knesset election. Government tenure may extend past that window. Mid-term institutional succession is recorded in formation.events; it is not a new post-election recommendation round.",
-    "Additional dated mid-term acts that do not fit the proposal’s closed formation type vocabulary are kept as formalStep=true entries in government.changes (Dated-compatible). No new formation enum values are introduced."
+    "Additional dated mid-term acts that do not fit the proposal’s closed formation type vocabulary are kept as formalStep=true entries in government.changes (Dated-compatible). No new formation enum values are introduced.",
+    "The endedBy date anchors the President’s 27 October notice, not the later statutory dissolution. IPU’s 10 November dissolution claim is rejected: the Basic Law route follows the 21-day period under sections 10–11, not a dissolution law. No exact later notice date is inferred from statutory arithmetic."
   ],
   "sources": {
     "mfa-history": {
@@ -83,10 +84,10 @@
       "accessed": "2026-11-05"
     },
     "vote2006": {
-      "url": "https://www.rediff.com/news/interview/israel/20060505.htm",
-      "publisher": "Press Trust of India / Rediff, Harinder Mishra, 5 May 2006",
+      "url": "https://www.ynet.co.il/articles/0,7340,L-3247196,00.html",
+      "publisher": "Ynet, אילן מרסיאנו, 5 May 2006",
       "kind": "secondary",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-06"
     },
     "crs2009": {
       "url": "https://www.everycrsreport.com/files/20090814_RL33476_e8cc0693598c855ba52b077cada7639dff51fa56.html",
@@ -100,11 +101,31 @@
       "publisher": "Israel Democracy Institute, 2009 election retrospective",
       "kind": "academic",
       "accessed": "2026-11-05"
+    },
+    "basic-law-government": {
+      "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/law/BasicLawGovt.html",
+      "publisher": "ועדת הבחירות המרכזית — חוק יסוד: הממשלה, סעיפים 9–11",
+      "kind": "official",
+      "accessed": "2026-11-06"
+    },
+    "idi-end-term": {
+      "url": "https://www.idi.org.il/parliaments/3467/8203",
+      "publisher": "המכון הישראלי לדמוקרטיה — עשור של בחירות",
+      "kind": "academic",
+      "accessed": "2026-11-06"
+    },
+    "lieberman-official": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2031%20and%20PersonID%20eq%20427&$format=json",
+      "publisher": "Knesset OData, PersonToPositionID 3385 / 4613 / 4622",
+      "kind": "official",
+      "accessed": "2026-11-06"
     }
   },
   "results": {
     "electionDate": "2006-03-28",
-    "officialResultsSourceId": "k17-results-gazette"
+    "officialResultsSourceId": "k17-results-gazette",
+    "certificationDate": "2006-04-04",
+    "publicationDate": "2006-04-05"
   },
   "reaction": {
     "policy": "Only dated institutional steps and statements attributed to their speaker, applied to every list or to none.",
@@ -257,26 +278,13 @@
         "cites": [
           {
             "source": "vote2006",
-            "quote": "Lawmakers at the Knesset voted 65-49 in favour of the government on Thursday"
+            "quote": "ברוב של 65 ח״כים מול 49 נגד ו-4 נעדרים אישרה אמש (יום ה׳) הכנסת את הממשלה ה-31"
           }
         ],
         "votes": {
           "for": 65,
           "against": 49
         }
-      },
-      {
-        "date": "2008-11-10",
-        "type": "knesset-dissolved",
-        "textEn": "The Knesset dissolved before the election set for 10 February 2009.",
-        "textHe": "הכנסת התפזרה לקראת הבחירות שנקבעו ל־10 בפברואר 2009.",
-        "cites": [
-          {
-            "source": "ipu2009",
-            "quote": "The Knesset was dissolved on 10 November"
-          }
-        ],
-        "scope": "mid-term"
       }
     ]
   },
@@ -400,14 +408,19 @@
     ],
     "endedBy": {
       "type": "no-government",
-      "date": "2008-11-10",
+      "date": "2008-10-27",
       "nextElection": "2009-02-10",
-      "textEn": "After the attempt to form a replacement government failed, the Knesset dissolved; the next election was held on 10 February 2009.",
-      "textHe": "לאחר שנכשל הניסיון להקים ממשלה חלופית, הכנסת התפזרה; הבחירות הבאות נערכו ב־10 בפברואר 2009.",
+      "textEn": "Following Livni’s failed formation attempt and the President’s 27 October notice, the Basic Law procedure led to early elections on 10 February 2009.",
+      "textHe": "לאחר כישלון לבני והודעת הנשיא ב־27 באוקטובר, הליך לפי חוק יסוד: הממשלה הוביל לבחירות מוקדמות ב־10 בפברואר 2009.",
       "cites": [
         {
-          "source": "ipu2009",
-          "quote": "early dissolution on 10 November 2008"
+          "source": "idi-end-term",
+          "quote": "ב-27 באוקטובר הודיע נשיא המדינה כי כשלו המאמצים להרכיב ממשלה חדשה"
+        },
+        {
+          "source": "basic-law-government",
+          "quote": "רשאים רוב חברי הכנסת לבקש מנשיא המדינה, בכתב, להטיל את התפקיד על חבר הכנסת פלוני",
+          "note": "Section 10(a): a 21-day request window; section 11 provides early elections when no government is formed."
         }
       ]
     }
@@ -418,7 +431,7 @@
     "gap": "INES instrument exists; no qualifying published topline verified for this election. No microdata analysis performed."
   },
   "gaps": [
-    "Certification date and official first-sitting record not retrieved; election date comes from the existing verified result dataset.",
+    "Results notice signed 4 April and published 5 April 2006 (YP 5514 p. 2468). Opening membership starts 17 April in retained Knesset OData; the first-sitting protocol itself has not been retrieved.",
     "Formation timeline is a sourced subset; missing steps must not be inferred from statutory maximum periods.",
     "First-government coalition membership is reused from the existing first-government scheme, whose party membership evidence includes labelled Hebrew Wikipedia; a complete independent primary coalition agreement cross-check remains pending.",
     "Recommendation evidence and caveats are inherited from docs/research/pm-recommendations-1977-2006.md; a source quoting the President is not an original presidential record.",
@@ -483,6 +496,36 @@
     ],
     "changes": [
       {
+        "date": "2006-10-30",
+        "type": "coalition-change",
+        "textEn": "Yisrael Beiteinu joined the government; Lieberman became Deputy Prime Minister.",
+        "textHe": "ישראל ביתנו הצטרפה לממשלה; ליברמן מונה לסגן ראש הממשלה.",
+        "cites": [
+          {
+            "source": "lieberman-official",
+            "quote": "\"PersonToPositionID\":4613,\"PersonID\":427,\"PositionID\":50,\"StartDate\":\"2006-10-30T00:00:00\",\"FinishDate\":\"2008-01-18T00:00:00\",\"DutyDesc\":\"סגן ראש הממשלה\",\"GovernmentNum\":31",
+            "note": "Selected fields transcribed from the live official record."
+          }
+        ],
+        "scope": "mid-term",
+        "formalStep": true
+      },
+      {
+        "date": "2008-01-18",
+        "type": "coalition-change",
+        "textEn": "Lieberman’s government service ended following Yisrael Beiteinu’s withdrawal.",
+        "textHe": "כהונת ליברמן בממשלה הסתיימה בעקבות פרישת ישראל ביתנו.",
+        "cites": [
+          {
+            "source": "lieberman-official",
+            "quote": "\"PersonToPositionID\":4613,\"PersonID\":427,\"PositionID\":50,\"StartDate\":\"2006-10-30T00:00:00\",\"FinishDate\":\"2008-01-18T00:00:00\",\"DutyDesc\":\"סגן ראש הממשלה\",\"GovernmentNum\":31",
+            "note": "Selected fields transcribed from the live official record."
+          }
+        ],
+        "scope": "mid-term",
+        "formalStep": true
+      },
+      {
         "date": "2008-10-26",
         "type": "no-replacement-government",
         "textEn": "Livni’s attempt to form a replacement government ended without a coalition agreement.",
@@ -494,6 +537,25 @@
           }
         ],
         "person": "livni",
+        "scope": "mid-term",
+        "formalStep": true
+      },
+      {
+        "date": "2008-10-27",
+        "type": "presidential-notice",
+        "textEn": "After Livni failed to form a government, President Peres notified the Speaker that no government could be formed, opening the 21-day period for a majority of MKs to request another candidate.",
+        "textHe": "לאחר שלבני נכשלה בהרכבת ממשלה, הודיע הנשיא פרס ליושבת ראש הכנסת שאין אפשרות להרכיב ממשלה; נפתחה תקופה של 21 ימים שבה רוב חברי הכנסת רשאים לבקש הטלת התפקיד על מועמד אחר.",
+        "cites": [
+          {
+            "source": "idi-end-term",
+            "quote": "ב-27 באוקטובר הודיע נשיא המדינה כי כשלו המאמצים להרכיב ממשלה חדשה"
+          },
+          {
+            "source": "basic-law-government",
+            "quote": "רשאים רוב חברי הכנסת לבקש מנשיא המדינה, בכתב, להטיל את התפקיד על חבר הכנסת פלוני",
+            "note": "Section 10(a): a 21-day request window; section 11 provides early elections when no government is formed."
+          }
+        ],
         "scope": "mid-term",
         "formalStep": true
       }

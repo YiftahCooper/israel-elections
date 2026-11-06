@@ -107,7 +107,10 @@ const EXPECTED: Record<Family, string> = {
   // completed recommendation scheme and buildInfo differ; all other datasets equal HEAD (field diff 6 Nov).
   // Allocation, analysis, validation and rules digests are unchanged.
   // merged with the k26 audit fixes: combined digest = union of the separately reviewed changes.
-  model: 'ffb2cc3a20ea8f1c7307b5387fb23974c70e0934b6f7c852fea73b6f3bffd569',
+  // k17 audit (6 Nov): field walk of every public election dataset confirms only k17 changes:
+  // five gazette names, three list names, election-period constituent label, three platform links
+  // and buildInfo source hashes/timestamp. Numeric inputs and all four other digests are unchanged.
+  model: '747d30aaa5c81d0051e95443e2325ff0db6764e9e3f3214b0dba5b154df6ece4',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

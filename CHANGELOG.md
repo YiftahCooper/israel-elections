@@ -1,5 +1,9 @@
 # Changelog
 
+## 6 November 2026 — k17 data audit
+
+- Corrected five elected names and three list names against both gazettes, the election-period constituent label, the 2008 constitutional election route, platform gaps and evidence attribution.
+
 ## 6 November 2026 — k24 data audit
 
 - Corrected Demokratit’s withdrawal, retained official final notices, clarified opening membership and polling-station scope, added candidate resignation notes, and corrected overstated source and logo verification claims.

@@ -378,7 +378,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k17.json",
-      "sha256": "f63ef83e3e208aec18fb69da1590832ee68fc931fcc6083137afeab421220e91",
+      "sha256": "0aebe35a52aad424fd80d82c3b84a8eea2b1c48e0db8e4fc7617f0b43c887dd2",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k18": {
@@ -10280,7 +10280,7 @@
         {
           "date": "2006-03-28",
           "datePrecision": "day",
-          "nameHe": "אלתג׳מוע אלווטני אל דמוקרטי - בל״ד",
+          "nameHe": "אלתג׳מוע אלווטני אל דימוקרטי - בל״ד",
           "nameEn": "Balad",
           "sources": [
             "k17",
@@ -11167,7 +11167,7 @@
         {
           "date": "2006-03-28",
           "datePrecision": "day",
-          "nameHe": "מרצ - ישראל החברתית דמוקרטית",
+          "nameHe": "מרצ - ישראל חברתית דמוקרטית",
           "nameEn": "Meretz",
           "sources": [
             "k17",
@@ -13218,14 +13218,14 @@
     {
       "id": "ahi",
       "entityType": "party",
-      "nameHe": "אח\"י – ציונות דתית לאומית מתחדשת",
-      "nameEn": "Ahi (Renewed Religious National Zionism)",
+      "nameHe": "ציונות דתית לאומית מתחדשת",
+      "nameEn": "Renewed Religious National Zionism",
       "names": [
         {
           "date": "2006-03-28",
           "datePrecision": "day",
-          "nameHe": "אח\"י – ציונות דתית לאומית מתחדשת",
-          "nameEn": "Ahi (Renewed Religious National Zionism)",
+          "nameHe": "ציונות דתית לאומית מתחדשת",
+          "nameEn": "Renewed Religious National Zionism",
           "sources": [
             "k17",
             "proposal"
@@ -13378,13 +13378,13 @@
     {
       "id": "vehicle-17-עם",
       "entityType": "alliance",
-      "nameHe": "הרשימה הערבית המאוחדת והתנועה הערבית להתחדשות",
+      "nameHe": "הרשימה הערבית המאוחדת התנועה הערבית להתחדשות",
       "nameEn": "Ra’am–Ta’al",
       "names": [
         {
           "date": "2006-03-28",
           "datePrecision": "day",
-          "nameHe": "הרשימה הערבית המאוחדת והתנועה הערבית להתחדשות",
+          "nameHe": "הרשימה הערבית המאוחדת התנועה הערבית להתחדשות",
           "nameEn": "Ra’am–Ta’al",
           "sources": [
             "k17"
