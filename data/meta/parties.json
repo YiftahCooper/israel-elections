@@ -371,7 +371,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k16.json",
-      "sha256": "d2a7f1e7c85c1d37a04e7fc7fdaa00c31586004e3db1251a3deed3fa3ad200d5",
+      "sha256": "06f494841743daa22a23b34acdd003fb7874751ae5c5c840eaf46d9a29cf1415",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k17": {
@@ -23490,6 +23490,38 @@
       ],
       "status": "observed-local-dataset",
       "externalIds": {}
+    },
+    {
+      "id": "vehicle-16-זך",
+      "entityType": "electoral-vehicle",
+      "nameHe": "מורשת-אבות בראשות הרב יוסף בא-גד",
+      "nameEn": "Moreshet Avot",
+      "names": [
+        {
+          "date": "2003-01-28",
+          "datePrecision": "day",
+          "nameHe": "מורשת-אבות בראשות הרב יוסף בא-גד",
+          "sources": [
+            "k16",
+            "proposal"
+          ],
+          "status": "observed-local-dataset",
+          "nameEn": "Moreshet Avot"
+        }
+      ],
+      "aliases": [],
+      "activePeriod": {
+        "from": "2003-01-28",
+        "to": "2003-01-28",
+        "datePrecision": "day",
+        "basis": "observed-election-appearances-not-lifetime"
+      },
+      "sources": [
+        "k16",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "externalIds": {}
     }
   ],
   "partyAppearances": [
@@ -35767,6 +35799,19 @@
       "status": "observed-local-dataset",
       "locator": "public/data/k18.json#/lists/33",
       "continuity": "unresolved"
+    },
+    {
+      "electionId": "k16",
+      "listId": "16-זך",
+      "partyId": "vehicle-16-זך",
+      "role": "singleton",
+      "sources": [
+        "k16",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "locator": "public/data/k16.json#/lists/27",
+      "continuity": "no-cross-election-continuity-inferred"
     }
   ],
   "conflicts": [

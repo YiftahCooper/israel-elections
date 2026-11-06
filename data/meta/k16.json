@@ -205,7 +205,7 @@
       "seats": 6,
       "rosterRanks": 6,
       "candidatesTruncated": true,
-      "notes": "Meretz with Democratic Choice (Bronfman) and Shahar (Beilin) — all three named in the official list title. No Shahar candidate within the transcribed ranks.",
+      "notes": "Meretz with Democratic Choice (Bronfman) and Shahar (Beilin) — all three named in the official list title. No Shahar candidate within the transcribed ranks. Campaign grouping only: Meretz here groups Ratz/Mapam; it does not assert a single legally registered submitting party. IDI’s joint-list table names Mapam, Ratz and Democratic Choice separately.",
       "parties": [
         {
           "id": "meretz",
@@ -272,7 +272,16 @@
           "notes": "Named in the official list title; Yossi Beilin (Shahar) was not elected and is beyond the transcribed roster."
         }
       ],
-      "unassignedRanks": []
+      "unassignedRanks": [],
+      "sources": [
+        {
+          "url": "https://www.idi.org.il/articles/32955",
+          "publisher": "Israel Democracy Institute, joint-list table",
+          "kind": "academic",
+          "quote": "מפ״ם",
+          "accessed": "2026-11-06"
+        }
+      ]
     },
     {
       "letters": "ג",
@@ -588,7 +597,7 @@
       "nameHe": "הממשלה הראשונה של הכנסת ה-16 (ממשלה 30) והאופוזיציה",
       "nameEn": "First government of the 16th Knesset (government 30) and opposition",
       "kind": "government",
-      "date": "2003-02-28",
+      "date": "2003-02-27",
       "blocs": [
         {
           "id": "coalition",
@@ -608,7 +617,7 @@
             },
             {
               "letters": "ב",
-              "note": "NRP ministers took office on 2003-03-03 (OData); Hebrew Wikipedia lists the NRP among the coalition factions on the day of formation"
+              "note": "NRP ministers took office on 2003-03-03; the Knesset lexicon includes NRP in the initial coalition."
             },
             {
               "letters": "כן",
@@ -650,21 +659,21 @@
           ]
         }
       ],
-      "notes": "Membership by list at the swearing-in of the first government after the election, from the coalition table of the Hebrew Wikipedia government article (faction, seats, start/end dates), cross-checked against Knesset OData ministerial records for that GovernmentNum. Bloc colours are neutral display suggestions, not party colours. Knesset OData records the government's first ministerial appointments on 2003-02-27; Hebrew Wikipedia gives Knesset approval on 2003-02-28.",
+      "notes": "Coalition membership follows the Knesset Hebrew lexicon and official ministerial records. The 68-seat election-list envelope includes Yisrael BaAliyah, subsequently merged into Likud. Official formation date: 27 February 2003; the earlier Hebrew-Wikipedia attribution gave 28 February (the press publication date). Colours are display conventions.",
       "sources": [
         {
-          "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D",
-          "publisher": "Hebrew Wikipedia",
-          "kind": "secondary",
-          "quote": "שהוקמה לאחר הבחירות לכנסת ה-16 ואושרה בכנסת ב-28 בפברואר 2003",
-          "accessed": "2026-11-04"
+          "url": "https://main.knesset.gov.il/mk/government/pages/governments.aspx?govid=30",
+          "publisher": "Knesset, Government 30 (Hebrew; search-index extract, direct access denied)",
+          "kind": "official",
+          "quote": "27.2.2003",
+          "accessed": "2026-11-06"
         },
         {
-          "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D",
-          "publisher": "Hebrew Wikipedia",
-          "kind": "secondary",
-          "quote": "סיעות הקואליציה==",
-          "accessed": "2026-11-04"
+          "url": "https://main.knesset.gov.il/About/Lexicon/pages/unitygovt.aspx",
+          "publisher": "Knesset lexicon (Hebrew; search-index extract)",
+          "kind": "official",
+          "quote": "בהשתתפות הליכוד, שינוי, המפד״ל והאיחוד הלאומי",
+          "accessed": "2026-11-06"
         },
         {
           "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition()?$filter=GovernmentNum%20eq%2030",
@@ -1012,17 +1021,9 @@
     {
       "party": "moledet",
       "color": "#083D7B",
-      "basis": "Hebrew Wikipedia; the same navy is also used for Telem and Ometz.",
+      "basis": "Arbitrary project display colour; no verified party-colour attribution. The previous citation described another party and has been removed.",
       "colourId": "moledet",
-      "sources": [
-        {
-          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%90%D7%97%D7%AA_%D7%A2%D7%A9%D7%A8%D7%94",
-          "publisher": "Hebrew Wikipedia",
-          "kind": "secondary",
-          "quote": "*{{מקרא2|#083D7B|גבול=1px solid #A9A9A9}}[[אומץ (מפלגה)|אומץ]] (1)",
-          "accessed": "2026-11-04"
-        }
-      ],
+      "sources": [],
       "confidence": "low"
     },
     {
@@ -1060,17 +1061,9 @@
     {
       "party": "degel-hatorah",
       "color": "#03428F",
-      "basis": "Hebrew Wikipedia 12th Knesset infobox only; the same blue is used for other parties.",
+      "basis": "Arbitrary project display colour; no verified party-colour attribution. The previous citation described another party and has been removed.",
       "colourId": "degel-hatorah",
-      "sources": [
-        {
-          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%A9%D7%A9_%D7%A2%D7%A9%D7%A8%D7%94",
-          "publisher": "Hebrew Wikipedia",
-          "kind": "secondary",
-          "quote": "*{{מקרא2|#03428F|גבול=1px solid #A9A9A9}}[[מפלגת שינוי|שינוי]] (15)",
-          "accessed": "2026-11-04"
-        }
-      ],
+      "sources": [],
       "confidence": "low"
     },
     {

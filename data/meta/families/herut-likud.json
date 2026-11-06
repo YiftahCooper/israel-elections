@@ -397,7 +397,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k16.json",
-      "sha256": "5e9d450ee110d06dbfccdba77d8f652e2e1de7f3e794a107035a55014546c974",
+      "sha256": "06f494841743daa22a23b34acdd003fb7874751ae5c5c840eaf46d9a29cf1415",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k17": {
@@ -1889,7 +1889,7 @@
       "electionId": "k16",
       "electionDate": "2003-01-28",
       "datasetPath": "public/data/k16.json",
-      "datasetSha256": "5e9d450ee110d06dbfccdba77d8f652e2e1de7f3e794a107035a55014546c974",
+      "datasetSha256": "06f494841743daa22a23b34acdd003fb7874751ae5c5c840eaf46d9a29cf1415",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",

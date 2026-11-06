@@ -9,7 +9,7 @@ const ds: ElectionDataset = JSON.parse(readFileSync(new URL('../public/data/k16.
 const loc: LocalityDataset = JSON.parse(readFileSync(new URL('../public/data/k16-localities.json', import.meta.url), 'utf8'));
 
 
-const publishedCounts = {"אמת": 120, "ב": 120, "ג": 120, "ד": 118, "ו": 118, "ז": 17, "זנ": 10, "ט": 7, "יש": 120, "כן": 24, "ל": 35, "מחל": 114, "מרצ": 120, "ם": 119, "נ": 17, "נץ": 25, "עם": 119, "פה": 18, "ף": 11, "צ": 11, "צף": 77, "ק": 7, "קך": 10, "קנ": 18, "קץ": 12, "רק": 7, "שס": 111};
+const publishedCounts = {"אמת": 120, "ב": 120, "ג": 120, "ד": 118, "ו": 119, "ז": 17, "זנ": 10, "ט": 7, "יש": 120, "כן": 24, "ל": 35, "מחל": 114, "מרצ": 120, "ם": 119, "נ": 17, "נץ": 25, "עם": 119, "פה": 18, "ף": 11, "צ": 11, "צף": 77, "ק": 7, "קך": 10, "קנ": 18, "קץ": 12, "רק": 7, "שס": 111};
 const counts = {"אמת": 19, "ב": 6, "ג": 5, "ד": 3, "ו": 3, "ז": 17, "זנ": 10, "ט": 7, "יש": 15, "כן": 24, "ל": 35, "מחל": 114, "מרצ": 6, "ם": 3, "נ": 17, "נץ": 0, "עם": 2, "פה": 18, "ף": 0, "צ": 11, "צף": 0, "ק": 7, "קך": 10, "קנ": 18, "קץ": 0, "רק": 7, "שס": 11};
 
 describe('k16 — released national and locality datasets; explicit roster limitations', () => {
@@ -26,7 +26,7 @@ describe('k16 — released national and locality datasets; explicit roster limit
   it('reproduces the same seats with the inconsistent printed vote figures, while changing threshold and quota', () => {
     const printed = structuredClone(ds);
     const review = verifyK16({ log: false }).review;
-    printed.lists.forEach(l => { l.votes = review.lists.find(r => r.letters === l.letters)!.gazetteVotes; });
+    printed.lists.forEach(l => { l.votes = review.lists.find(r => r.letters === l.letters)?.gazetteVotes ?? 0; });
     printed.totals.valid = 3_148_774;
     printed.totals.votesCast = printed.totals.valid + printed.totals.invalid;
     const r = allocate(toEngineInput(scenarioFromDataset(printed)));
@@ -76,7 +76,7 @@ describe('k16 — released national and locality datasets; explicit roster limit
     expect(buildK16({ log: false })).toHaveLength(1);
     expect(verifyK16({ log: false, available: true }).releaseReady).toBe(true);
     const reviewed = JSON.parse(readFileSync(new URL('../data/raw/k16/candidates.reviewed.json', import.meta.url), 'utf8'));
-    for (const l of ds.lists) {
+    for (const l of ds.lists.filter(l => !l.withdrawn)) {
       const r = reviewed.lists.find((r: { letters: string }) => r.letters === l.letters);
       expect(r.publishedCount, l.id).toBe(publishedCounts[l.letters as keyof typeof publishedCounts]);
       expect(l.candidates.length, l.id).toBe(counts[l.letters as keyof typeof counts]);
@@ -134,6 +134,16 @@ describe('k16 — released national and locality datasets; explicit roster limit
     }
     expect(ds.status.noteEn).toContain('Every winning list includes all elected ranks');
     expect(ds.status.noteHe).toContain('סעיף 4');
+  });
+  it('retains the approved withdrawn list without treating it as a contestant', () => {
+    const l = ds.lists.find(l => l.letters === 'זך')!;
+    expect(l.withdrawn).toBe(true);
+    expect(l.votes).toBe(0);
+    expect(l.candidates.map(c => c.nameHe)).toEqual(['בא-גד יוסף', 'גרוס שלמה', 'בא-גד עמנואל', 'בא-גד משה']);
+    expect(l.notesHe.join(' ')).toContain('התפטרו כל המועמדים');
+    expect(ds.lists.filter(l => !l.withdrawn)).toHaveLength(27);
+    expect(ds.lists.find(l => l.letters === 'ט')!.candidates[2].nameHe).toBe('תורתי אברהם');
+    expect(ds.lists.find(l => l.letters === 'קך')!.candidates[9].nameHe).toBe('משקוץ ארקדי');
   });
   it('distinguishes the gazetted election of Sharansky from his later withdrawal', () => {
     const list = ds.lists.find(l => l.letters === 'כן')!;

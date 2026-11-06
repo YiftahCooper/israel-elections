@@ -6,6 +6,7 @@
 - k19: retained the formal Gazette total correction, repaired list identity, context and stale research notes, strengthened constituent sourcing and withheld three unproven campaign logos.
 - k21: corrected three withdrawn lists, gazette name/sponsor transcriptions and resignation notes; retained official results and replaced recommendation inference with explicit reports.
 - k18: retain withdrawn Mahapach BeHinuch; correct formation-day coalition, Meretz affiliation, names and dated source claims.
+- k16: corrected government/succession and dissolution chronology, two candidate names and roster extent; retained withdrawn Moreshet Avot and clarified source and envelope-voter claims.
 
 ## 5 November 2026 — release review
 

@@ -295,7 +295,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
             ? <><span>{L('Polling stations and localities', 'קלפיות ויישובים')}</span><span className="muted">{L('Not in the data', 'אין בנתונים')}</span></>
             : <><span>{L('Polling stations', 'קלפיות')} <Info term="polling-station" /></span><span>{fmtInt(ds.totals.ballotBoxes)}</span>
               <span>{L('Localities', 'יישובים')}</span><span>{fmtInt(ds.totals.localities)}</span></>}
-          {ds.totals.envelopeVotes !== undefined && <><span>{L('Double-envelope votes', 'מעטפות חיצוניות')} <Info term="envelopes" /></span><span>{fmtInt(ds.totals.envelopeVotes)}</span></>}
+          {ds.totals.envelopeVotes !== undefined && <><span>{(ds.id === 'k16' ? L('Double-envelope voters (including invalid ballots)', 'מצביעים במעטפות חיצוניות (כולל פסולים)') : L('Double-envelope votes', 'מעטפות חיצוניות'))} <Info term="envelopes" /></span><span>{fmtInt(ds.totals.envelopeVotes)}</span></>}
           <span>{L('Lists', 'רשימות')}</span><span>{ds.lists.length}</span>
           <span>{L('Candidates in the data', 'מועמדים בנתונים')}</span><span>{fmtInt(ds.lists.reduce((t, l) => t + l.candidates.length, 0))}</span>
           <span>{L('Dataset built', 'נבנה')}</span><span><bdi dir="ltr">{ds.buildInfo.builtAt.slice(0, 10)}</bdi></span>

@@ -1,3 +1,7 @@
+// k16 audit (6 Nov): only k16 dataset changes: two candidate spellings, first-government
+// date, logo URL, withdrawn Moreshet Avot with its approved roster and official link,
+// plus source hashes/timestamp. Zero-vote withdrawn list changes corpus allocation shape.
+// Baseline datasets with current engine reproduce every previous digest exactly.
 // 6 Nov 2026 k22 audit: reviewed scalar diff changes only status, logical Hebrew
 // punctuation, CEC link titles, three withdrawal flags and distinct modern Gesher
 // IDs (also k23). Withdrawal flags affect hypothetical corpus allocations; model
@@ -64,7 +68,8 @@ const EXPECTED: Record<Family, string> = {
   // merged with k20 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k21 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k18 audit fixes: combined digest = union of the separately reviewed changes.
-  allocation: '4b309c6137ce0a85fa25240ea3c399e96e6e9a394ecc545f83f2c69863b57bb3',
+  // merged with k16 audit fixes: combined digest = union of the separately reviewed changes.
+  allocation: '5ff5865b64d9e790ae25b4fd33c57fde556ede3e3eefe2cf6c0da4861e81a7c2',
   analysis: 'b682af4570daf5cd7967e77afda56c8a9bcb2b5de4850f4d8ebc1652228269e0',
   // Model digest re-recorded for the 1973 party ranks, then for candidate biography links (Candidate.bio): with
   // the build timestamps held fixed and bio not carried, the new code gives the previous digest. Then for three
@@ -130,7 +135,8 @@ const EXPECTED: Record<Family, string> = {
   // merged with k19 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k21 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k18 audit fixes: combined digest = union of the separately reviewed changes.
-  model: '3ed5010780d36f1a88c1c8f5563ae669f2d5d3eaf1e659d922c0640559aa1c39',
+  // merged with k16 audit fixes: combined digest = union of the separately reviewed changes.
+  model: '8e6c310f3e53fc94ffe7ba810139176b0b1f9293bbb0a91c239fa5cfebab15e6',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

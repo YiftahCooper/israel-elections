@@ -661,7 +661,7 @@
     "url": "https://olaw.org.il/yalkut/yalkut-5151.pdf",
     "publisher": "Reshumot / Yalkut HaPirsumim 5151 (olaw.org.il mirror)",
     "official": true,
-    "description": "Complete official surplus-agreement notice, visually verified from the scan; six pairs for 2003, four for 2006.",
+    "description": "Complete official surplus-agreement notice, visually verified from the scan; six pairs for 2003.",
     "method": "http",
     "retrievedAt": "2026-11-03T15:31:36.320940+00:00",
     "bytes": 221023,
@@ -686,11 +686,11 @@
     "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset16-results.pdf",
     "publisher": "Project transcription of official CEC / Reshumot scans",
     "official": false,
-    "description": "Partial reviewed national and agreement transcription. Not a released dataset; preserves unresolved source discrepancies.",
+    "description": "Reviewed national evidence for the released k16 dataset; remaining roster gaps and gazette vote discrepancies are explicitly disclosed.",
     "method": "manual-capture",
     "retrievedAt": "2026-11-03T15:31:36.321195+00:00",
-    "bytes": 7213,
-    "sha256": "18763593e4136eee06605f76e3b09e948ce8c132b8b7f165ebf12c7ad77c5c30"
+    "bytes": 7351,
+    "sha256": "fb7381ffe56a49c8d982a8c4cbc24b147a5413d9be4a70ce8521be3ac964f7c1"
   },
   {
     "id": "k17-surplus-gazette",
@@ -1340,8 +1340,8 @@
     "description": "Reviewed manual candidate-scan transcription with complete or elected-prefix coverage, page references, independent section 4 results-notice names and explicit printed-name variants; non-winning unavailable rosters and prior membership/reserve checks retained",
     "method": "manual-capture",
     "retrievedAt": "2026-11-03",
-    "bytes": 101714,
-    "sha256": "92411133ab746a6a01a048b37caec77e251b0ceb6588c3e8176e89d6d6cce428"
+    "bytes": 102222,
+    "sha256": "5c963df363b538b89f4614bbe295315a11167d5fd5b8abfd7a4d6373630054d0"
   },
   {
     "id": "k16-localities-reviewed",
@@ -6152,5 +6152,17 @@
     "retrievedAt": "2026-11-06",
     "bytes": 378817,
     "sha256": "1c55879fd58cacdd1398ac41a6b9382e95d539b0744ea4f03dab6531680b9b09"
+  },
+  {
+    "id": "k16-dissolution-gazette",
+    "file": "k16/yp5467-dissolution.pdf",
+    "url": "https://olaw.org.il/yalkut/yalkut-5467.pdf",
+    "publisher": "Reshumot (official document via olaw.org.il mirror)",
+    "official": true,
+    "description": "YP 5467, 8 December 2005, p.728: order dated 27 November dissolving Knesset 16; publication and order dates distinguished.",
+    "method": "http",
+    "retrievedAt": "2026-11-06",
+    "bytes": 318617,
+    "sha256": "f55311ec3f3a36b02b16a2774a7668fb9bcae176edb7bde535e0f518dbee0047"
   }
 ]
