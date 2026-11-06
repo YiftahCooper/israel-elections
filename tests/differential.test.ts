@@ -82,7 +82,10 @@ const EXPECTED: Record<Family, string> = {
   // 212 removed list/party logo refs and 23 builtAt changes; other four digests unchanged.
   // merged with logos run 4 (year-only print evidence; only 6 logo fields and builtAt differ; path walk 5 Nov).
   // merged with logos run 4b (k18–k26 same-election logos; only 17 logo fields and builtAt differ; path walk 5 Nov).
-  model: '2694440f0600e00473d166da8e25e28d3a37d73b717ebe4aa10d93778a23d7f1',
+  // k23 audit: five gazette name/party-cell corrections and two Hebrew link labels (17 leaves).
+  // Substituting merged HEAD's k23 dataset at scenarioFromDataset reproduces 2694440f…;
+  // all other 25 datasets and the other four digests are unchanged.
+  model: 'ba52136edbeddc469bccd3e464bcd5845a70674af9c598738507dbc3664bac51',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

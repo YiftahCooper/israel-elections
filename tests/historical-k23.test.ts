@@ -49,6 +49,15 @@ describe('k23: official final result and release gates', () => {
     expect(ds.lists.find(l=>l.letters==="טב")!.candidates[1].partyHe).toBe("הבית היהודי");
     expect(ds.lists.find(l=>l.letters==="זץ")).toMatchObject({ withdrawn: true, votes: 0 });
   });
+  it('preserves compound names and their party cells from YP 8698', () => {
+    // Independent gazette readings, pp.3912–3913, 3917 and 3932 (k23 audit).
+    const candidate = (letters: string, rank: number) => ds.lists.find(l => l.letters === letters)!.candidates[rank - 1];
+    expect(candidate('ודעם', 23)).toMatchObject({ familyHe: 'אבו דבאי-נערה', partyHe: 'חד"ש', partyId: 'hadash' });
+    expect(candidate('אמת', 17)).toMatchObject({ familyHe: 'אלמקייס-עמוס', partyHe: 'גשר', partyId: 'gesher' });
+    expect(candidate('אמת', 43)).toMatchObject({ familyHe: 'אלמוג-בר', partyHe: 'מרצ', partyId: 'meretz' });
+    expect(candidate('אמת', 78)).toMatchObject({ familyHe: 'אבידור-הופמן', partyHe: 'העבודה', partyId: 'labor' });
+    expect(candidate('שס', 86)).toMatchObject({ givenHe: 'דוד-משה', familyHe: 'אזולאי', nameHe: 'אזולאי דוד-משה' });
+  });
   it('records every pair in the complete statutory agreement notice', () => {
     expect(ds.agreements.map(a=>a.members.map(id=>id.slice(3)))).toEqual(pairs);
   });

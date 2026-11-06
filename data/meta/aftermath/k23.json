@@ -8,10 +8,10 @@
   ],
   "sources": {
     "recommendations-1": {
-      "url": "https://www.jns.org/israel-news/netanyahu-rival-gantz-to-get-first-chance-to-form-a-government",
-      "publisher": "JNS",
+      "url": "https://www.ynet.co.il/articles/0,7340,L-5695357,00.html",
+      "publisher": "Ynet, 15 March 2020",
       "kind": "secondary",
-      "accessed": "2026-11-04"
+      "accessed": "2026-11-06"
     },
     "toi-tasking": {
       "url": "https://www.timesofisrael.com/accepting-task-of-forming-government-gantz-says-hell-work-to-form-one-in-days/amp/",
@@ -55,24 +55,6 @@
       "kind": "official",
       "accessed": "2026-11-05"
     },
-    "coalition-0": {
-      "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D_%D7%95%D7%97%D7%9E%D7%A9",
-      "publisher": "Wikipedia (he)",
-      "kind": "secondary",
-      "accessed": "2026-11-04"
-    },
-    "coalition-1": {
-      "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D_%D7%95%D7%97%D7%9E%D7%A9",
-      "publisher": "Wikipedia (he)",
-      "kind": "secondary",
-      "accessed": "2026-11-04"
-    },
-    "coalition-2": {
-      "url": "https://he.wikipedia.org/wiki/%D7%9E%D7%9E%D7%A9%D7%9C%D7%AA_%D7%99%D7%A9%D7%A8%D7%90%D7%9C_%D7%94%D7%A9%D7%9C%D7%95%D7%A9%D7%99%D7%9D_%D7%95%D7%97%D7%9E%D7%A9",
-      "publisher": "Wikipedia (he)",
-      "kind": "secondary",
-      "accessed": "2026-11-04"
-    },
     "coalition-3": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum eq 35",
       "publisher": "Knesset OData (KNS_PersonToPosition, GovernmentNum)",
@@ -88,7 +70,7 @@
     "commons-2021": {
       "url": "https://researchbriefings.files.parliament.uk/documents/CBP-9189/CBP-9189.pdf",
       "publisher": "UK House of Commons Library, CBP-9189 (14 June 2021), p.5",
-      "kind": "official",
+      "kind": "academic",
       "accessed": "2026-11-05"
     },
     "sipri-2020": {
@@ -109,12 +91,6 @@
       "kind": "academic",
       "accessed": "2026-11-05"
     },
-    "ipf-election-timeline": {
-      "url": "https://israelpolicyforum.org/wp-content/uploads/2022/09/The-Elections-Era-Timeline-2018-2022.pdf",
-      "publisher": "Israel Policy Forum, The Elections Era 2018–2022, p.2",
-      "kind": "secondary",
-      "accessed": "2026-11-05"
-    },
     "reuters-confrontation-2021": {
       "url": "https://uk.investing.com/news/world-news/timeline--hamas-and-israel-a-history-of-confrontation-2378704?ampMode=1",
       "publisher": "Reuters, Hamas and Israel: a history of confrontation (20 May 2021), via Investing.com",
@@ -126,6 +102,24 @@
       "publisher": "IDF, Operation Guardian of the Walls, 14 June 2021",
       "kind": "official",
       "accessed": "2026-11-05"
+    },
+    "inn-extension-letter": {
+      "url": "https://www.israelnationalnews.com/news/278730",
+      "publisher": "Israel National News, reproducing the President’s 16 April letter in English",
+      "kind": "secondary",
+      "accessed": "2026-11-06"
+    },
+    "idi-government": {
+      "url": "https://en.idi.org.il/articles/31613",
+      "publisher": "Israel Democracy Institute, Ofer Kenig, 17 May 2020",
+      "kind": "academic",
+      "accessed": "2026-11-06"
+    },
+    "walla-tasking": {
+      "url": "https://news.walla.co.il/item/3355611",
+      "publisher": "Walla, 7 May 2020",
+      "kind": "secondary",
+      "accessed": "2026-11-06"
     }
   },
   "results": {
@@ -214,7 +208,7 @@
               "seats": 1
             }
           ],
-          "noteEn": "Labor and Meretz recommended Gantz; Gesher’s one remaining seat is inferred as no recommendation from the totals, not directly quoted."
+          "noteEn": "Labor and Meretz recommended Gantz; Gesher’s Orly Levy-Abekasis recommended neither candidate (Ynet, 15 March 2020)."
         }
       ],
       "totals": {
@@ -225,11 +219,19 @@
       "cites": [
         {
           "source": "recommendations-1",
-          "quote": "heard 61 recommendations for Gantz as prime minister—33 from his own Blue and White Party, six from Labor/Meretz ... seven from Avigdor Lieberman's Yisrael Beiteinu and an unprecedented 15 from the Joint Arab List ... received the support of 58 MKs—36 from his Likud Party, nine from Shas, seven from United Torah Judaism ... six from Yamina"
+          "quote": "61 חברי כנסת על יו\"ר סיעת כחול לבן"
+        },
+        {
+          "source": "recommendations-1",
+          "quote": "58 חברי כנסת המליצו על ראש הממשלה"
+        },
+        {
+          "source": "recommendations-1",
+          "quote": "חברת כנסת אחת בחרה שלא להמליץ"
         }
       ],
       "notes": [
-        "Gesher's Orly Levy-Abekasis is the one remaining MK (120 − 61 − 58); \"six from Labor/Meretz\" excludes her. Her abstention is inferred from the totals, not quoted."
+        "Gesher’s non-recommendation is directly reported by Ynet, not merely inferred from 120 − 61 − 58."
       ]
     }
   ],
@@ -268,13 +270,13 @@
         ]
       },
       {
-        "date": "2020-04-14",
+        "date": "2020-04-13",
         "type": "extension",
         "person": "gantz",
         "days": 2,
         "endDate": "2020-04-15",
         "notes": [
-          "Report published 14 April at 01:44 describes approval overnight Monday–Tuesday; exact before/after-midnight approval time not verified."
+          "Approval before midnight on 13 April, as dated in the President’s 16 April letter reproduced in English by Israel National News (secondary delivery; presidential original not inspected). The 14 April timestamp is the earlier report’s publication time."
         ],
         "textEn": "Rivlin approved a 48-hour extension of Gantz’s mandate, until Wednesday midnight.",
         "textHe": "ריבלין אישר הארכה של 48 שעות למנדט של גנץ, עד חצות ביום רביעי.",
@@ -282,6 +284,10 @@
           {
             "source": "toi-extension-granted",
             "quote": "the president approved a last-minute joint request by the two to extend Gantz’s mandate to form a government by 48 hours"
+          },
+          {
+            "source": "inn-extension-letter",
+            "quote": "On 13 April 2020, before midnight, I acceded to the request of MK Gantz"
           }
         ]
       },
@@ -326,6 +332,10 @@
           {
             "source": "inn-tasking",
             "quote": "you have a period of 14 days to form a government"
+          },
+          {
+            "source": "walla-tasking",
+            "quote": "מסרו למנכ\"ל בית הנשיא הראל טובי את חתימותיהם של 72 חברי כנסת"
           }
         ]
       },
@@ -367,8 +377,8 @@
       "sipri-2020",
       "cfr-conflict-timeline",
       "idi-2021-retrospective",
-      "ipf-election-timeline",
-      "reuters-confrontation-2021"
+      "reuters-confrontation-2021",
+      "commons-2021"
     ],
     "events": [
       {
@@ -401,10 +411,6 @@
             "quote": "automatic dissolution of the Knesset due to non-transfer of budget"
           },
           {
-            "source": "ipf-election-timeline",
-            "quote": "Knesset fails to pass a budget"
-          },
-          {
             "source": "commons-2021",
             "quote": "a deadline to approve a 2020 budget expired on 23 December 2020"
           },
@@ -415,7 +421,7 @@
         ],
         "confidence": "high",
         "notes": [
-          "IPF labels the event 22 December (the deadline-night sitting); the Commons Library dates expiry to 23 December. Preserve the midnight distinction; do not change the existing endedBy date."
+          "The Commons Library dates budget expiry to 23 December; the deadline-night sitting was on 22 December. IDI independently confirms automatic dissolution for failure to pass the budget."
         ]
       },
       {
@@ -500,7 +506,6 @@
     "Official results certification and first Knesset sitting records not retrieved.",
     "Presidential letters for the Gantz mandate and its extension were not retrieved directly; contemporary reports quote or describe them.",
     "The 7 May written request is recorded as a formal step; a complete 120-seat updated recommendation round (including non-signatories) was not reconstructed.",
-    "No term event satisfies the two-chronology inclusion rule in this pass.",
     "The coalition rank split reuses established research rather than equating the entire Blue and White, Labor–Gesher–Meretz or Yamina lists with coalition membership."
   ],
   "government": {
@@ -555,16 +560,8 @@
     "coalitionSeats": 73,
     "cites": [
       {
-        "source": "coalition-0",
-        "quote": "שקיבלה ב-17 במאי 2020 את אמון הכנסת העשרים ושלוש"
-      },
-      {
-        "source": "coalition-1",
-        "quote": "סיעות הקבינט=הליכוד ... כחול לבן ... ש\"ס ... יהדות התורה ... העבודה ... דרך ארץ ... גשר ... הבית היהודי"
-      },
-      {
-        "source": "coalition-2",
-        "quote": "בעת הקמת הממשלה הסיעה מנתה 15 ח\"כים"
+        "source": "idi-government",
+        "quote": "a coalition of seven factions, which together hold 73 Knesset seats"
       },
       {
         "source": "coalition-3",
