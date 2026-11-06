@@ -29,13 +29,13 @@
     },
     {
       "letters": "ב",
-      "nameHe": "חזית דתית לאומית הפועל המזרחי המזרחי ובלתי מפלגתיים",
+      "nameHe": "חזית לאומית דתית הפועל המזרחי, המזרחי ובלתי מפלגתיים",
       "votes": 95581,
       "officialSeats": 12
     },
     {
       "letters": "גד",
-      "nameHe": "חזית דתית תורתית אגודת ישראל פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
+      "nameHe": "חזית דתית תורתית אגודת ישראל, פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
       "votes": 45569,
       "officialSeats": 6
     },
@@ -46,14 +46,15 @@
       "officialSeats": 17
     },
     {
-      "letters": "טט",
-      "nameHe": "כוח לעלות",
+      "letters": "טש",
+      "nameHe": "כוח שלישי",
       "votes": 594,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "id": "4-טט"
     },
     {
       "letters": "יא",
-      "nameHe": "שיתוף ואחווה",
+      "nameHe": "השיתוף והאחוה",
       "votes": 11104,
       "officialSeats": 2
     },
@@ -71,7 +72,7 @@
     },
     {
       "letters": "לש",
-      "nameHe": "סיעת התימנים",
+      "nameHe": "סיעת תימנים",
       "votes": 1711,
       "officialSeats": 0
     },
@@ -94,14 +95,15 @@
       "officialSeats": 0
     },
     {
-      "letters": "סט",
+      "letters": "סש",
       "nameHe": "מפלגה לאומית ספרדית, עדות מזרח ובלתי מפלגתיים",
       "votes": 3133,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "id": "4-סט"
     },
     {
       "letters": "ע",
-      "nameHe": "החקלאות ופתוח",
+      "nameHe": "חקלאות ופתוח",
       "votes": 10902,
       "officialSeats": 1
     },
@@ -142,14 +144,15 @@
       "officialSeats": 0
     },
     {
-      "letters": "רו",
+      "letters": "רנ",
       "nameHe": "איגוד סוציאליסטי \"בונד\" ובלתי מפלגתיים",
       "votes": 1322,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "id": "4-רו"
     },
     {
       "letters": "ש",
-      "nameHe": "סיעת נכים נפגעי נאצים",
+      "nameHe": "סיעת נכים ונפגעי השואה",
       "votes": 1765,
       "officialSeats": 0
     },
@@ -176,10 +179,14 @@
       [
         "יא",
         "ע"
+      ],
+      [
+        "תו",
+        "שת"
       ]
     ],
     "sourceId": "k4-agreements-gazette",
-    "note": "Entire contemporary official connection set transcribed before allocation comparison; includes inactive pairs. See decision 0066."
+    "note": "YP 709 pp.125–126 (PDF pp.1–2): א–רא, יא–ע, תו–שת. The last pair is inactive because שת did not reach 1%; published seat totals are unchanged. Corrects the incomplete two-pair transcription in decision 0066."
   },
   "rosters": {
     "completeWinningRosters": false,
@@ -201,5 +208,17 @@
     "sourceId": "k4-rosters-reviewed",
     "note": "Contiguous prefixes cover every elected member, with results-notice exclusions explicitly mapped. Later ranks omitted, not complete registered lists."
   },
-  "releaseBlockers": []
+  "releaseBlockers": [],
+  "reviewNotes": [
+    {
+      "sourceId": "k4-results-gazette",
+      "quote": "טש כוח שלישי; סש מפלגה לאומית ספרדית, עדות מזרח ובלתי מפלגתיים; רנ איגוד סוציאליסטי בונד ובלתי מפלגתיים",
+      "note": "YP 717 p.263; YP 704 headings corroborate. Internal IDs remain stable opaque keys."
+    },
+    {
+      "sourceId": "k4-agreements-gazette",
+      "quote": "מפלגת אחדות העבודה — פועלי ציון ובלתי מפלגתיים — האות תו; מפלגת עבודה ערבית ישראלית — האות שת",
+      "note": "YP 709 p.126, signed 20 October 1959."
+    }
+  ]
 }

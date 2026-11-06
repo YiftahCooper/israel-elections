@@ -287,7 +287,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k4.json",
-      "sha256": "39e8521d2a6c50c808b9fd1bf7298e93101e0e938e79554e581240034d8216a5",
+      "sha256": "2ab1ab893bf019952529e6eee137221f94fff8718b38603acf2922da65cc81aa",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k5": {
@@ -2500,7 +2500,7 @@
         {
           "date": "1959-11-03",
           "datePrecision": "day",
-          "nameHe": "החקלאות ופתוח",
+          "nameHe": "חקלאות ופתוח",
           "nameEn": "Agriculture and Development",
           "sources": [
             "k4",
@@ -3100,13 +3100,13 @@
     {
       "id": "vehicle-4-גד",
       "entityType": "alliance",
-      "nameHe": "חזית דתית תורתית אגודת ישראל פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
+      "nameHe": "חזית דתית תורתית אגודת ישראל, פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
       "nameEn": "Religious Torah Front",
       "names": [
         {
           "date": "1959-11-03",
           "datePrecision": "day",
-          "nameHe": "חזית דתית תורתית אגודת ישראל פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
+          "nameHe": "חזית דתית תורתית אגודת ישראל, פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
           "nameEn": "Religious Torah Front",
           "sources": [
             "k4"
@@ -3216,7 +3216,7 @@
         {
           "date": "1959-11-03",
           "datePrecision": "day",
-          "nameHe": "שיתוף ואחווה",
+          "nameHe": "השיתוף והאחוה",
           "nameEn": "Cooperation and Brotherhood",
           "sources": [
             "k4",
@@ -3438,13 +3438,13 @@
     {
       "id": "vehicle-4-ש",
       "entityType": "electoral-vehicle",
-      "nameHe": "סיעת נכים נפגעי נאצים",
+      "nameHe": "סיעת נכים ונפגעי השואה",
       "nameEn": null,
       "names": [
         {
           "date": "1959-11-03",
           "datePrecision": "day",
-          "nameHe": "סיעת נכים נפגעי נאצים",
+          "nameHe": "סיעת נכים ונפגעי השואה",
           "nameEn": null,
           "sources": [
             "k4",
@@ -3470,13 +3470,13 @@
     {
       "id": "vehicle-4-לש",
       "entityType": "electoral-vehicle",
-      "nameHe": "סיעת התימנים",
+      "nameHe": "סיעת תימנים",
       "nameEn": null,
       "names": [
         {
           "date": "1959-11-03",
           "datePrecision": "day",
-          "nameHe": "סיעת התימנים",
+          "nameHe": "סיעת תימנים",
           "nameEn": null,
           "sources": [
             "k4",
@@ -3598,13 +3598,13 @@
     {
       "id": "vehicle-4-טט",
       "entityType": "electoral-vehicle",
-      "nameHe": "כוח לעלות",
+      "nameHe": "כוח שלישי",
       "nameEn": null,
       "names": [
         {
           "date": "1959-11-03",
           "datePrecision": "day",
-          "nameHe": "כוח לעלות",
+          "nameHe": "כוח שלישי",
           "nameEn": null,
           "sources": [
             "k4",

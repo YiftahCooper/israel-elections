@@ -6,7 +6,7 @@
   "lists": [
     {
       "letters": "גד",
-      "nameHe": "חזית דתית תורתית אגודת ישראל פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
+      "nameHe": "חזית דתית תורתית אגודת ישראל, פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
       "parties": [
         {
           "id": "agudat-yisrael",
@@ -275,7 +275,7 @@
       }
     },
     {
-      "letters": "סט",
+      "letters": "סש",
       "nameHe": "מפלגה לאומית ספרדית, עדות מזרח ובלתי מפלגתיים",
       "englishName": {
         "label": "Miflaga Leumit Sfaradit",
@@ -296,9 +296,9 @@
     },
     {
       "letters": "ש",
-      "nameHe": "סיעת נכים נפגעי נאצים",
+      "nameHe": "סיעת נכים ונפגעי השואה",
       "englishName": {
-        "label": "Siat Nekhim Nifgeei Natzim",
+        "label": "Siat Nekhim VeNifgeei HaShoah",
         "kind": "transliteration",
         "sourceId": "k4-candidates-gazette",
         "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
@@ -306,9 +306,9 @@
     },
     {
       "letters": "לש",
-      "nameHe": "סיעת התימנים",
+      "nameHe": "סיעת תימנים",
       "englishName": {
-        "label": "Siat HaTeimanim",
+        "label": "Siat Teimanim",
         "kind": "transliteration",
         "sourceId": "k4-candidates-gazette",
         "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
@@ -325,7 +325,7 @@
       }
     },
     {
-      "letters": "רו",
+      "letters": "רנ",
       "nameHe": "איגוד סוציאליסטי \"בונד\" ובלתי מפלגתיים",
       "englishName": {
         "label": "Igud Sotzialisti Bund",
@@ -345,10 +345,10 @@
       }
     },
     {
-      "letters": "טט",
-      "nameHe": "כוח לעלות",
+      "letters": "טש",
+      "nameHe": "כוח שלישי",
       "englishName": {
-        "label": "Koah Laalot",
+        "label": "Koah Shlishi",
         "kind": "transliteration",
         "sourceId": "k4-candidates-gazette",
         "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
@@ -438,11 +438,17 @@
           "kind": "secondary",
           "quote": "קואליציה: מפא\"י, מפד\"ל, מפ\"ם, אחדות העבודה-פועלי ציון, המפלגה הפרוגרסיבית, קידמה ופיתוח, שיתוף ואחווה, חקלאות ופיתוח | אופוזיציה: חרות, הציונים הכלליים, חזית דתית תורתית, מק\"י",
           "accessed": "2026-11-04"
+        },
+        {
+          "url": "https://fs.knesset.gov.il/4/Plenum/4_ptm_255963.doc",
+          "publisher": "Knesset, government presentation, 16 December 1959",
+          "kind": "official",
+          "accessed": "2026-11-06",
+          "quote": "ממשלה של חמש סיעות המונות יחד 86 חברי כנסת: המפלגה הפרוגרסיבית, אחדות העבודה פועלי ציון, מפלגת הפועלים המאוחדת, המפלגה הדתית-לאומית, מפלגת פועלי ארץ ישראל והמיעוטים."
         }
       ],
       "notes": [
-        "Coalition = lists that joined or supported the government at its formation. Official records give ministers only; support-only lists (e.g. Mapai-affiliated Arab lists) rest on Hebrew Wikipedia.",
-        "Hebrew Wikipedia marks the Torah Religious Front as opposition at formation, part of it joining the coalition later."
+        "Coalition at formation: five government factions and affiliated minority lists, 86 seats, as stated by Ben-Gurion in the Knesset on 16 December 1959. Later Poalei Agudat Yisrael entry is recorded separately."
       ],
       "confidence": "high"
     },
@@ -524,8 +530,8 @@
     },
     {
       "id": "labour-affiliated-arab-lists",
-      "nameHe": "מפא\"י/המערך והרשימות הערביות המסונפות אליה (רשימות לוויין)",
-      "nameEn": "Mapai/Alignment and its affiliated Arab (satellite) lists",
+      "nameHe": "מפא״י והרשימות הערביות המסונפות אליה (רשימות לוויין)",
+      "nameEn": "Mapai and its affiliated Arab (satellite) lists",
       "kind": "parliamentary",
       "date": "1959-11-03",
       "blocs": [
@@ -819,6 +825,7 @@
     }
   ],
   "notes": [
-    "List ב (חזית דתית לאומית) is not split: Mizrachi and Hapoel HaMizrachi merged into the National Religious Party in 1956-57 (OData faction 981; Hebrew Wikipedia). The same applies to ב in 1961-1977."
+    "List ב (חזית דתית לאומית) is not split: Mizrachi and Hapoel HaMizrachi merged into the National Religious Party in 1956-57 (OData faction 981; Hebrew Wikipedia). The same applies to ב in 1961-1977.",
+    "Ballot letters טש, סש and רנ follow YP 704/717. Opaque stable IDs 4-טט, 4-סט and 4-רו are retained for saved scenarios; never interpret their suffixes as ballot letters."
   ]
 }

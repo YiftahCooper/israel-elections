@@ -515,7 +515,7 @@
       "electionId": "k4",
       "electionDate": "1959-11-03",
       "datasetPath": "public/data/k4.json",
-      "datasetSha256": "df29d0dbe866b9f51b00af619e4babb647043d20a98bf63010acf063ab85c924",
+      "datasetSha256": "2ab1ab893bf019952529e6eee137221f94fff8718b38603acf2922da65cc81aa",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -536,7 +536,7 @@
         {
           "listId": "4-גד",
           "letters": "גד",
-          "nameHe": "חזית דתית תורתית אגודת ישראל פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
+          "nameHe": "חזית דתית תורתית אגודת ישראל, פועלי אגודת ישראל ודתיים בלתי מפלגתיים",
           "votes": 45569,
           "partyIds": [
             "agudat-yisrael",

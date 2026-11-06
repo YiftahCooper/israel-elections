@@ -8,7 +8,7 @@
       "licence": "Copyright retained; fair-use identification",
       "attribution": "Mapam; Shmuel Katz (poster designer); Central Zionist Archives KRA/3225. Crop from a dated official campaign publication, not a recreated emblem.",
       "hosted": true,
-      "inUseEvidence": "CZA KRA/3225: exact catalogue year 1959 (not estimated), official Mapam campaign poster with issuer name and מ ballot roundel. 1959 had one Knesset election, 3 November. Year precision under decision 0089; the 22 November accession stamp is not a campaign date. Crop preserves original colours and the scan edge without redrawing.",
+      "inUseEvidence": "CZA KRA/3225: exact catalogue year 1959 (not estimated), official Mapam campaign poster with issuer name and מ ballot roundel. 1959 had one Knesset election, 3 November. Year precision under decision 0089; the Jerusalem municipal advertising-tax stamp valid until 22 December 1959 is not a campaign date. Crop preserves original colours and the scan edge without redrawing.",
       "inUseDate": "1959",
       "inUseDatePrecision": "year",
       "confidence": "medium",
@@ -29,9 +29,9 @@
       "dateBasis": "year-single-election",
       "dateEvidence": {
         "yearSource": "exact-catalogue-year",
-        "yearEvidence": "CZA exhibition caption KRA/3225 explicitly gives 1959 without an estimate marker. The accession stamp is not used to date campaign use.",
+        "yearEvidence": "CZA exhibition caption KRA/3225 explicitly gives 1959 without an estimate marker. The municipal advertising-tax stamp is not used to date campaign use.",
         "campaignIdentity": "ballot-letter",
-        "campaignEvidence": "Party-issued election poster: printed issuer מפלגת הפועלים המאוחדת (מפ״ם), Haifa; white מ ballot roundel; caption describes Mapam warning against voting Herut in 1959."
+        "campaignEvidence": "Party-issued election poster: printed issuer בהוצאת מפלגת הפועלים המאוחדת (מפ״ם) — האחראי: א. שריד; white מ ballot roundel; CZA caption describes the 1959 campaign. Stamp: עיריית ירושלים / מס פרסום מודעות / עד יום 22.XII.1959 / שולם. No Haifa imprint."
       },
       "publicationEvidence": {
         "page": "run4-mapam-page",
