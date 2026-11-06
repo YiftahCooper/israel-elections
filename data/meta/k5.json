@@ -5,7 +5,7 @@
   "generated": "2026-11-04",
   "lists": [
     {
-      "letters": "סס",
+      "letters": "סש",
       "nameHe": "למען הצדק והאחווה, רשימה ספרדית דתית",
       "englishName": {
         "label": "Lemaan HaTzedek VeHaAhva",
@@ -15,13 +15,23 @@
       }
     },
     {
-      "letters": "עע",
-      "nameHe": "הגוש העממי",
+      "letters": "עט",
+      "nameHe": "שוחרי הדימוקרטיה",
       "englishName": {
-        "label": "HaGush HaAmami",
+        "label": "Shoharei HaDemokratya",
         "kind": "transliteration",
         "sourceId": "k5-candidates-gazette",
         "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
+      }
+    },
+    {
+      "letters": "שו",
+      "nameHe": "רשימת יוצאי תימן",
+      "englishName": {
+        "label": "Reshimat Yotzei Teiman",
+        "kind": "transliteration",
+        "sourceId": "k5-candidates-gazette",
+        "note": "Unofficial app transliteration; withdrawn list, YP 863 p.1815 and YP 866 p.1847."
       }
     }
   ],
@@ -103,15 +113,15 @@
           "accessed": "2026-11-04"
         },
         {
-          "url": "https://he.wikipedia.org/wiki/ממשלת_ישראל_העשירית",
-          "publisher": "Hebrew Wikipedia",
-          "kind": "secondary",
-          "quote": "קואליציה: מפא\"י, מפד\"ל, אחדות העבודה-פועלי ציון, פא\"י, שיתוף ואחווה, קידמה ופיתוח | אופוזיציה: חרות, המפלגה הליברלית, מפ\"ם, מק\"י, אגודת ישראל",
-          "accessed": "2026-11-04"
+          "url": "https://main.knesset.gov.il/mk/government/documents/gov11.pdf",
+          "publisher": "Knesset, government 11 presentation, 24 June 1963",
+          "kind": "official",
+          "quote": "כל סיעות הקואליציה הקודמת: מפלגת פועלי ארץ ישראל, המפלגה הדתית-לאומית, מפלגת אחדות העבודה – פועלי ציון, פועלי אגודת ישראל, השיתוף והאחווה, הקדמה והפיתוח",
+          "accessed": "2026-11-06"
         }
       ],
       "notes": [
-        "Coalition = lists that joined or supported the government at its formation. Official records give ministers only; support-only lists (e.g. Mapai-affiliated Arab lists) rest on Hebrew Wikipedia."
+        "Coalition includes support-only lists, explicitly named as the previous coalition in the official government 11 presentation; 68 election seats, not the confidence vote."
       ],
       "confidence": "high"
     },
@@ -150,18 +160,11 @@
       ],
       "sources": [
         {
-          "url": "https://he.wikipedia.org/wiki/שיתוף_ואחווה",
-          "publisher": "Hebrew Wikipedia",
-          "kind": "secondary",
-          "quote": "הייתה מפלגת מיעוטים שהייתה קשורה למפא\"י ומפלגת העבודה, והיוותה ... מפלגת לוויין",
-          "accessed": "2026-11-04"
-        },
-        {
-          "url": "https://he.wikipedia.org/wiki/קידמה_ופיתוח",
-          "publisher": "Hebrew Wikipedia",
-          "kind": "secondary",
-          "quote": "הייתה מפלגת מיעוטים ששימשה כמפלגת לוויין של מפא\"י והמערך",
-          "accessed": "2026-11-04"
+          "url": "https://www.jta.org/archive/israel-president-entrusts-ben-gurion-with-formation-of-new-cabinet",
+          "publisher": "Jewish Telegraphic Agency, 7 September 1961",
+          "kind": "archival",
+          "quote": "four seats from Mapai’s Arab affiliates",
+          "accessed": "2026-11-06"
         }
       ],
       "notes": [
@@ -175,7 +178,7 @@
       "letters": "א",
       "colorKey": "mapai",
       "color": "#AD0101",
-      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears. Exact hex values are app presentation choices; the earlier CSS attribution has not been independently reverified in this audit.",
       "sources": [
         {
           "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_החמישית",
@@ -191,7 +194,7 @@
       "letters": "ח",
       "colorKey": "herut",
       "color": "#0078BA",
-      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears. Exact hex values are app presentation choices; the earlier CSS attribution has not been independently reverified in this audit.",
       "sources": [
         {
           "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_החמישית",
@@ -207,7 +210,7 @@
       "letters": "ל",
       "colorKey": "liberal-party",
       "color": "#FECA0A",
-      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded).",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Exact hex values are app presentation choices; the earlier CSS attribution has not been independently reverified in this audit.",
       "sources": [
         {
           "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_החמישית",
@@ -224,7 +227,7 @@
       "letters": "ב",
       "colorKey": "national-religious",
       "color": "#4D1552",
-      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears. Exact hex values are app presentation choices; the earlier CSS attribution has not been independently reverified in this audit.",
       "sources": [
         {
           "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_החמישית",
@@ -241,7 +244,7 @@
       "letters": "מ",
       "colorKey": "mapam",
       "color": "#96342E",
-      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears. Exact hex values are app presentation choices; the earlier CSS attribution has not been independently reverified in this audit.",
       "sources": [
         {
           "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_החמישית",
@@ -257,7 +260,7 @@
       "letters": "תו",
       "colorKey": "ahdut-haavoda",
       "color": "#CE2029",
-      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears. Exact hex values are app presentation choices; the earlier CSS attribution has not been independently reverified in this audit.",
       "sources": [
         {
           "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_החמישית",
@@ -273,7 +276,7 @@
       "letters": "ק",
       "colorKey": "maki",
       "color": "#FF0000",
-      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears. Exact hex values are app presentation choices; the earlier CSS attribution has not been independently reverified in this audit.",
       "sources": [
         {
           "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_החמישית",
@@ -289,7 +292,7 @@
       "letters": "ג",
       "colorKey": "agudat-yisrael",
       "color": "#C5AE6D",
-      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears. Exact hex values are app presentation choices; the earlier CSS attribution has not been independently reverified in this audit.",
       "sources": [
         {
           "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_החמישית",
@@ -306,7 +309,7 @@
       "letters": "ד",
       "colorKey": "poalei-agudat-yisrael",
       "color": "#DF561D",
-      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears.",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Hebrew Wikipedia uses the same colour for this party in every results table of 1949-1977 where it appears. Exact hex values are app presentation choices; the earlier CSS attribution has not been independently reverified in this audit.",
       "sources": [
         {
           "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_החמישית",
@@ -322,7 +325,7 @@
       "letters": "יא",
       "colorKey": "satellite",
       "color": "#AF2F2F",
-      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded).",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Exact hex values are app presentation choices; the earlier CSS attribution has not been independently reverified in this audit.",
       "sources": [
         {
           "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_החמישית",
@@ -339,7 +342,7 @@
       "letters": "רא",
       "colorKey": "satellite",
       "color": "#AF0000",
-      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded).",
+      "basis": "Conventional colour in the Hebrew Wikipedia results table for this election. No official, ballot or campaign colour source was found for 1949-1977 (ballots were letter-coded). Exact hex values are app presentation choices; the earlier CSS attribution has not been independently reverified in this audit.",
       "sources": [
         {
           "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_החמישית",
@@ -354,6 +357,8 @@
     }
   ],
   "notes": [
-    "No list in this election was an alliance of separate parties (Mizrachi, Hapoel HaMizrachi, Agudat Yisrael and Poalei Agudat Yisrael ran separately in 1951 and 1961; the 1961 Liberal Party and the NRP were already merged parties)."
+    "No list in this election was an alliance of separate parties. Mizrachi and Hapoel HaMizrachi ran separately in 1951; in 1961 the NRP and Liberal Party were already merged parties, while Agudat Yisrael and Poalei Agudat Yisrael ran separately.",
+    "Stable opaque IDs 5-סס and 5-עע are preserved for saved scenarios; their displayed ballot letters are סש and עט respectively (YP 869 p.1937).",
+    "Electorate: CBS table 27.2 (CEC source) gives 1,271,285; the Knesset English history summary gives 1,274,280. CBS retained pending resolution; see k05-resolution.md owner question."
   ]
 }

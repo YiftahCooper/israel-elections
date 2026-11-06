@@ -2010,8 +2010,8 @@
   "description": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
   "method": "manual-transcription",
   "retrievedAt": "2026-11-03T18:20:00Z",
-  "bytes": 3656,
-  "sha256": "76d043f12517c25c3fed74c434ecc3b20bd43f5f16e160c11e9f4d2facd33c68"
+  "bytes": 4568,
+  "sha256": "4f1522f9c384043b2342794b1af6de21b1bb4d357970d3b0189bd16c1eb1e6dc"
  },
  {
   "id": "k6-results-gazette",
@@ -2962,8 +2962,8 @@
   "description": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
   "method": "visual-primary-review",
   "retrievedAt": "2026-11-03",
-  "bytes": 21941,
-  "sha256": "3c2b64243be4c89c5d506c07bf7d9ac73ec959e3e2d00d4cc95c737f289cfb1e",
+  "bytes": 21945,
+  "sha256": "5d84a43f11cae78271e5dc9f5b222fa34600c0b94d43fd900ffe31336300251d",
   "lastModified": null
  },
  {
@@ -6287,5 +6287,17 @@
   "retrievedAt": "2026-11-06",
   "bytes": 1803336,
   "sha256": "1c47743293a95775aec55a441e19c00d363a439d53e71686dfac22829c2b0f15"
+ },
+ {
+  "id": "k5-withdrawals-gazette",
+  "file": "k5/withdrawals.pdf",
+  "url": "https://olaw.org.il/yalkut/yalkut-0866.pdf",
+  "publisher": "Reshumot — YP 866, 10 August 1961, p.1847 (olaw mirror)",
+  "official": true,
+  "description": "All six candidates of שו resigned; notices signed 8 August 1961.",
+  "method": "http",
+  "retrievedAt": "2026-11-06",
+  "sha256": "73da772795c054c9c3a25407256ad0e6b0a62746cb391f5c95075d5556afe31e",
+  "bytes": 1751291
  }
 ]

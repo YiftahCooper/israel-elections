@@ -52,6 +52,7 @@ describe.each([1,2,3,4,5,6,7])('k%i built national release',n=>{
     expect(roster.lists.reduce((s,l)=>s+l.electedNames.length,0)).toBe(120);
     for(const list of ds.lists){
       const rr=roster.lists.find(l=>l.letters===list.letters);
+      if(n===5&&list.letters==='שו')expect(list.candidates).toHaveLength(6); // k5 audit: the withdrawn list's six candidates are gazetted
       if(list.withdrawn){expect(list.votes).toBe(0);expect(list.notesHe?.length).toBeGreaterThan(0);continue;}
       if(ds.officialSeats![list.id]===0){expect(list.candidates).toEqual([]);expect(list.candidatesUnavailable).toBe(true);continue;}
       expect(rr).toBeDefined();expect(list.candidatesTruncated).toBe(true);expect(list.candidatesUnavailable).toBeUndefined();

@@ -294,7 +294,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k5.json",
-      "sha256": "c2d2f084abbcea943f29594dd70815bdf2be2e8133659570a4a6979ef56d3bdb",
+      "sha256": "181d9a29be29a5f45cf4e658102bfd458bb812aa7e6add9ca839fef6a08a83ee",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k6": {
@@ -3772,13 +3772,13 @@
     {
       "id": "vehicle-5-עע",
       "entityType": "electoral-vehicle",
-      "nameHe": "הגוש העממי",
+      "nameHe": "שוחרי הדימוקרטיה",
       "nameEn": null,
       "names": [
         {
           "date": "1961-08-15",
           "datePrecision": "day",
-          "nameHe": "הגוש העממי",
+          "nameHe": "שוחרי הדימוקרטיה",
           "nameEn": null,
           "sources": [
             "k5",
@@ -23698,6 +23698,38 @@
       ],
       "status": "observed-local-dataset",
       "externalIds": {}
+    },
+    {
+      "id": "vehicle-5-שו",
+      "entityType": "electoral-vehicle",
+      "nameHe": "רשימת יוצאי תימן",
+      "nameEn": null,
+      "names": [
+        {
+          "date": "1961-08-15",
+          "datePrecision": "day",
+          "nameHe": "רשימת יוצאי תימן",
+          "nameEn": null,
+          "sources": [
+            "k5",
+            "proposal"
+          ],
+          "status": "observed-local-dataset"
+        }
+      ],
+      "aliases": [],
+      "activePeriod": {
+        "from": "1961-08-15",
+        "to": "1961-08-15",
+        "datePrecision": "day",
+        "basis": "observed-election-appearances-not-lifetime"
+      },
+      "sources": [
+        "k5",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "externalIds": {}
     }
   ],
   "partyAppearances": [
@@ -36046,6 +36078,19 @@
       ],
       "status": "observed-local-dataset",
       "locator": "public/data/k3.json#/lists/18",
+      "continuity": "unresolved"
+    },
+    {
+      "electionId": "k5",
+      "listId": "5-שו",
+      "partyId": "vehicle-5-שו",
+      "role": "singleton",
+      "sources": [
+        "k5",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "locator": "public/data/k5.json#/lists/14",
       "continuity": "unresolved"
     }
   ],

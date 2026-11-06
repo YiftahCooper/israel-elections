@@ -55,7 +55,8 @@
       "url": "https://catalog.archives.gov.il/site/chapter/eshkol-moadon-haarba/",
       "publisher": "Israel State Archives, מעשה מרכבה – מועדון הארבע והקמת הממשלה ב-1961",
       "kind": "archival",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-05",
+      "via": "Fixer access returned HTTP 403. Quotes retained from prior research and Opus audit; not claimed freshly read."
     },
     "jta-eshkol-1961": {
       "url": "https://www.jta.org/archive/mapai-wants-eshkol-to-be-entrusted-with-formation-of-new-cabinet",
@@ -70,10 +71,10 @@
       "accessed": "2026-11-04"
     },
     "coalition-2": {
-      "url": "https://he.wikipedia.org/wiki/ממשלת_ישראל_העשירית",
-      "publisher": "Hebrew Wikipedia",
-      "kind": "secondary",
-      "accessed": "2026-11-04"
+      "url": "https://main.knesset.gov.il/mk/government/documents/gov11.pdf",
+      "publisher": "Knesset, government 11 presentation (extract from plenum record)",
+      "kind": "official",
+      "accessed": "2026-11-05"
     },
     "term-history": {
       "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-fifth-knesset-1961-1965",
@@ -106,6 +107,12 @@
       "publisher": "German Federal Foreign Office, 60 years of diplomatic relations, 11 April 2025",
       "kind": "official",
       "accessed": "2026-11-05"
+    },
+    "lamfrom-2008": {
+      "url": "https://levi-eshkol.org.il/wp-content/uploads/2022/04/דוקטורט-למפרום.pdf",
+      "publisher": "Arnon Lamfrom, University of Haifa doctoral dissertation, 2008, pp.249–250",
+      "kind": "academic",
+      "accessed": "2026-11-06"
     }
   },
   "results": {
@@ -204,6 +211,10 @@
         {
           "source": "recommendations-jta",
           "quote": "that Premier David Ben-Gurion be given the task"
+        },
+        {
+          "source": "isa-1961",
+          "quote": "ב-5 בספטמבר, החל הנשיא יצחק בן-צבי את מפגשיו … ב-6 בספטמבר התייעץ הנשיא עם נציגי מפ״ם"
         }
       ],
       "notes": [
@@ -236,6 +247,10 @@
             {
               "source": "jta-eshkol-1961",
               "quote": "he should entrust Finance Minister Levi Eshkol with the formation of a new government since Mr. Ben-Gurion has refused to undertake this task."
+            },
+            {
+              "source": "lamfrom-2008",
+              "quote": "למחרת ביקשה משלחת מטעם מפא״י מהנשיא בן־צבי להטיל את הרכבת הממשלה על אשכול והנשיא עשה זאת באותו יום."
             }
           ]
         },
@@ -298,6 +313,10 @@
         {
           "source": "jta-eshkol-1961",
           "quote": "he should entrust Finance Minister Levi Eshkol with the formation of a new government since Mr. Ben-Gurion has refused to undertake this task."
+        },
+        {
+          "source": "lamfrom-2008",
+          "quote": "למחרת ביקשה משלחת מטעם מפא״י מהנשיא בן־צבי להטיל את הרכבת הממשלה על אשכול והנשיא עשה זאת באותו יום."
         }
       ],
       "notes": [
@@ -318,28 +337,32 @@
           {
             "source": "recommendations-jta",
             "quote": "that Premier David Ben-Gurion be given the task"
+          },
+          {
+            "source": "isa-1961",
+            "quote": "ב-5 בספטמבר, החל הנשיא יצחק בן-צבי את מפגשיו … ב-6 בספטמבר התייעץ הנשיא עם נציגי מפ״ם"
           }
         ],
         "endDate": "1961-09-06"
       },
       {
-        "date": "1961-09-07",
+        "date": "1961-09-06",
         "type": "mandate-given",
         "textEn": "Ben-Zvi asked Ben-Gurion to form a government.",
         "textHe": "בן־צבי ביקש מבן־גוריון להרכיב ממשלה.",
         "cites": [
           {
-            "source": "jta-ben-gurion-1961",
-            "quote": "asked Prime Minister David Ben-Gurion to undertake the task of forming a new Government."
+            "source": "isa-1961",
+            "quote": "לאחר סיום ההתייעצויות בבית הנשיא, ביקש בן-צבי להטיל את תפקיד הקמת הממשלה על בן-גוריון"
           }
         ],
         "person": "ben-gurion",
         "notes": [
-          "Date follows the reused archival research. JTA bulletin dates and datelines can differ by one day."
+          "Primary ISA chronology (quoted by the Opus auditor) prevails over JTA publication dates. Fixer could not reopen ISA (403); Lamfrom independently confirms refusal on 7 September."
         ]
       },
       {
-        "date": "1961-09-08",
+        "date": "1961-09-07",
         "type": "mandate-returned",
         "textEn": "Ben-Gurion declined to undertake government formation under the existing conditions.",
         "textHe": "בן־גוריון סירב לקבל על עצמו את הרכבת הממשלה בתנאים הקיימים.",
@@ -347,11 +370,28 @@
           {
             "source": "isa-1961",
             "quote": "לצערי הרב איני מוכן לקבל על עצמי בתנאים הקיימים הרכבת הממשלה"
+          },
+          {
+            "source": "lamfrom-2008",
+            "quote": "ב־7 בספטמבר, שלושה שבועות לאחר הבחירות, נאלץ בן־גוריון להודיע לנשיא כי הוא דוחה את בקשתו להקים ממשלה."
           }
         ],
         "person": "ben-gurion",
         "notes": [
           "Refusal of the assignment, not expiry of a statutory mandate. Reused from the ISA text inspected in the earlier recommendation research."
+        ]
+      },
+      {
+        "date": "1961-09-14",
+        "type": "mandate-given",
+        "person": "eshkol",
+        "textEn": "Ben-Zvi tasked Levi Eshkol with forming a government.",
+        "textHe": "בן־צבי הטיל על לוי אשכול להרכיב ממשלה.",
+        "cites": [
+          {
+            "source": "lamfrom-2008",
+            "quote": "למחרת ביקשה משלחת מטעם מפא״י מהנשיא בן־צבי להטיל את הרכבת הממשלה על אשכול והנשיא עשה זאת באותו יום."
+          }
         ]
       },
       {
@@ -493,7 +533,7 @@
       }
     ],
     "coalitionSeats": 68,
-    "coalitionSeatsNote": "Election-list seat totals, including support-only lists; not the confidence-vote tally. Reuses the existing overlay: ministerial factions are official; support-only membership is labelled secondary. Later government changes are listed separately.",
+    "coalitionSeatsNote": "Election-list seat totals, including support-only lists named in the official government 11 presentation; not the confidence-vote tally.",
     "cites": [
       {
         "source": "coalition-1",
@@ -501,7 +541,7 @@
       },
       {
         "source": "coalition-2",
-        "quote": "קואליציה: מפא\"י, מפד\"ל, אחדות העבודה-פועלי ציון, פא\"י, שיתוף ואחווה, קידמה ופיתוח | אופוזיציה: חרות, המפלגה הליברלית, מפ\"ם, מק\"י, אגודת ישראל"
+        "quote": "כל סיעות הקואליציה הקודמת: מפלגת פועלי ארץ ישראל, המפלגה הדתית-לאומית, מפלגת אחדות העבודה – פועלי ציון, פועלי אגודת ישראל, השיתוף והאחווה, הקדמה והפיתוח"
       }
     ],
     "changes": [
@@ -553,7 +593,7 @@
           }
         ],
         "coalitionSeats": 68,
-        "coalitionSeatsNote": "Seats won by the component lists at this election; not the confidence-vote count. Affiliated Arab support lists retain the first-government overlay’s labelled secondary evidence unless named in the protocol."
+        "coalitionSeatsNote": "Election-list seat totals, not contemporary faction totals or the confidence vote; the official government 11 presentation names all six previous coalition factions."
       },
       {
         "date": "1964-12-14",
@@ -610,7 +650,7 @@
           }
         ],
         "coalitionSeats": 68,
-        "coalitionSeatsNote": "Seats won by the component lists at this election; not the confidence-vote count. Affiliated Arab support lists retain the first-government overlay’s labelled secondary evidence unless named in the protocol."
+        "coalitionSeatsNote": "Election-list seat totals, not contemporary faction totals or the confidence vote; the official government 11 presentation names all six previous coalition factions."
       }
     ],
     "endDateCites": [
@@ -700,12 +740,12 @@
     ]
   },
   "gaps": [
-    "Official result-certification date and the first sitting are not transcribed; election dates and seat counts reuse the verified national dataset.",
+    "Results notice signed 23 August 1961, published 24 August (YP 869 p.1939). Opening sitting 4 September 1961 (retained official OData opening-member StartDate).",
     "Reaction statements are not collected.",
     "Mid-term consultation positions, mandate deadlines and extensions are incomplete unless an explicit step below records them.",
     "Closing date is the next election, not dissolution day. The governing dissolution/election-date law has not been retrieved; regular versus early termination is not inferred from term length.",
-    "Eshkol’s reported return of the mandate on 2 November 1961 still needs a direct excerpt; Ben-Gurion’s reassignment that morning is explicit in the official presentation. The 14 September assignment needs a fuller excerpt.",
-    "Replacement-coalition snapshots are partial: government 14’s faction splits and current seat counts require a separate audit. Other replacement snapshots use election-list seats with stated support-list limitations.",
+    "Eshkol’s reported return of the mandate on 2 November 1961 still needs a direct excerpt; Ben-Gurion’s reassignment that morning is explicit in the official presentation.",
+    "Replacement snapshots use election-list seats; current faction seat counts during governments 11 and 12 are not reconstructed.",
     "Presentation dates can precede approval dates; confidence steps use the full protocol. The exact assignment days not transcribed here remain unknown."
   ]
 }

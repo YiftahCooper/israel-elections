@@ -47,6 +47,11 @@
 // withdrawn יז and source metadata; existing IDs, votes/seats and agreements stay fixed.
 // Restoring only baseline k3 reproduces all five previous digests; no src changed.
   // merged with k3 audit fixes: combined digest = union of the separately reviewed changes.
+// k5 audit: reviewed 19-path diff changes only gazette identities, one name, Liberal notes/logo,
+// new withdrawn שו roster/zero-seat entry and provenance. Stable IDs and all existing votes/seats
+// stay fixed. Substituting merged HEAD k5 reproduces both old allocation/model digests exactly.
+// Other datasets and engine/model source unchanged; other three digests unchanged.
+  // merged with k5 audit fixes: combined digest = union of the separately reviewed changes.
 // 6 Nov 2026 k22 audit: reviewed scalar diff changes only status, logical Hebrew
 // punctuation, CEC link titles, three withdrawal flags and distinct modern Gesher
 // IDs (also k23). Withdrawal flags affect hypothetical corpus allocations; model
@@ -126,7 +131,8 @@ const EXPECTED: Record<Family, string> = {
   // merged with k14 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k3 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k4 audit fixes: combined digest = union of the separately reviewed changes.
-  allocation: 'e26759506335a766a28f868672d082c1d6af1ec661122b1329e3a3b109b89a96',
+  // merged with k5 audit fixes: combined digest = union of the separately reviewed changes.
+  allocation: '5832e3f84f7407dd38bc280e0e5c8513022db6e48566e464b44bcbc365357133',
   analysis: '0b41ade19f938f415b693825f3600693a9e5f17e81ec7d12a6d16fb82177f30b',
   // Model digest re-recorded for the 1973 party ranks, then for candidate biography links (Candidate.bio): with
   // the build timestamps held fixed and bio not carried, the new code gives the previous digest. Then for three
@@ -219,7 +225,8 @@ const EXPECTED: Record<Family, string> = {
   // merged with k8 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k3 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k4 audit fixes: combined digest = union of the separately reviewed changes.
-  model: '1d93bd6908c2322c476468153f9ad40bbac02e7c744b3dfb7260d43ea9f082da',
+  // merged with k5 audit fixes: combined digest = union of the separately reviewed changes.
+  model: '2de9105f4082cadd8da7ec2e4a1afd0caa3bb6251337dc208e93b7eb4e4f96ba',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

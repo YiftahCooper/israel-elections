@@ -320,7 +320,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k5.json",
-      "sha256": "c2d2f084abbcea943f29594dd70815bdf2be2e8133659570a4a6979ef56d3bdb",
+      "sha256": "3c1d4eeb25548f78cdd06d35318adb304b4ba6fb8585999983570796a794c8ab",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k6": {
@@ -884,7 +884,7 @@
       "electionId": "k5",
       "electionDate": "1961-08-15",
       "datasetPath": "public/data/k5.json",
-      "datasetSha256": "c2d2f084abbcea943f29594dd70815bdf2be2e8133659570a4a6979ef56d3bdb",
+      "datasetSha256": "181d9a29be29a5f45cf4e658102bfd458bb812aa7e6add9ca839fef6a08a83ee",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -905,7 +905,7 @@
         {
           "listId": "5-ב",
           "letters": "ב",
-          "nameHe": "חזית דתית לאומית המזרחי הפועל המזרחי ובלתי מפלגתיים",
+          "nameHe": "חזית דתית לאומית, המזרחי והפועל המזרחי ובלתי מפלגתיים",
           "votes": 98786,
           "partyIds": [
             "nrp"

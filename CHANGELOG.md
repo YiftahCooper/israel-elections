@@ -21,6 +21,7 @@
 - k8: corrected sourced list display names and historical wording, resolved recommendation evidence and withheld an undated logo; stable keys and all counts unchanged.
 - k3: corrected ballot letters and official list names while preserving IDs, retained the official יז withdrawal notice, and repaired anachronistic labels, provenance and copied aftermath caveats.
 - k4: corrected three ballot letters, official list names and four elected-member spellings, added the third surplus agreement (תו–שת) and the government chronology; IDs, votes and seats unchanged.
+- k5: corrected three ballot letters and list names, added the withdrawn list שו with its six candidates, corrected mandate dates and member spellings; IDs, votes and seats unchanged.
 
 ## 5 November 2026 — release review
 

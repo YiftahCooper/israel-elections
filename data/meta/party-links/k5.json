@@ -189,9 +189,20 @@
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset5-results.pdf",
-        "titleHe": "הגוש העממי — הודעת התוצאות לכנסת 5",
+        "titleHe": "שוחרי הדימוקרטיה — הודעת התוצאות לכנסת 5",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-5",
+        "sourceType": "cec",
+        "confidence": "high"
+      }
+    ],
+    "5-שו": [
+      {
+        "kind": "neutral",
+        "url": "https://olaw.org.il/yalkut/yalkut-0866.pdf",
+        "titleHe": "רשימת יוצאי תימן — הודעות התפטרות",
+        "titleEn": "Official withdrawal notices",
+        "publisher": "רשומות, ילקוט הפרסומים 866 עמ׳ 1847",
         "sourceType": "cec",
         "confidence": "high"
       }
@@ -225,6 +236,9 @@
     },
     "5-עע": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+    },
+    "5-שו": {
+      "partisan": "No retained campaign platform."
     }
   }
 }
