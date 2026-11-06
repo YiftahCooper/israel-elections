@@ -50,7 +50,7 @@ function useCompareChoices(s: Scenario, ds: ElectionDataset) {
     ...elections.filter((e) => e.available && e.id !== s.electionId).map((e) => ({ value: ELECTION + e.id, label: electionLabel(e, elections, lang), detail: L('Official result', 'התוצאה הרשמית'), group: others })),
   ], [reference, saved, ds, elections, lang, s.electionId, s.id]); // eslint-disable-line react-hooks/exhaustive-deps -- L and the filtered lists follow lang, saved and s
   const at = elections.findIndex((e) => e.id === s.electionId);
-  const previous = elections.slice(at + 1).find((e) => e.available) ?? elections.slice(0, Math.max(0, at)).reverse().find((e) => e.available);
+  const previous = elections.slice(at + 1).find((e) => e.available);
   return { choices, previous, label: L('Compare with', 'השוואה עם'), electionName: (id: string) => { const e = elections.find((x) => x.id === id); return e ? electionLabel(e, elections, lang) : id; } };
 }
 
@@ -94,6 +94,7 @@ function ScenarioCompare({ s, r, base, ds }: { s: Scenario; r: AllocationResult;
   const lang = useLang();
   const { reference } = useActiveReference();
   const compareWithRaw = useStore((st) => st.compareWith);
+  const { previous } = useCompareChoices(s, ds);
   const saved = useStore((st) => st.saved);
   const compareWith = compareWithRaw === 'official' ? 'official' : saved.some((x) => x.id === compareWithRaw && x.electionId === s.electionId && x.id !== s.id) ? compareWithRaw : 'historical';
   const digits = useDigits();
@@ -134,6 +135,8 @@ function ScenarioCompare({ s, r, base, ds }: { s: Scenario; r: AllocationResult;
   const same = changed.length === 0 && referenceChanges(s, a).length === 0;
   const otherNow = nonSeatChanges(s, a, lang);
 
+  // Derive the automatic target without changing the session choice or undo history.
+  if (same && compareWithRaw === 'auto' && previous) return <ElectionCompare s={s} r={r} base={base} ds={ds} otherId={previous.id} />;
   if (same) return <EmptyCompare s={s} ds={ds} base={base} compareWith={compareWith} nameA={nameA} nameB={nameB} />;
 
   return (
@@ -260,6 +263,7 @@ function EmptyCompare({ s, ds, base, compareWith, nameA, nameB }: { s: Scenario;
   </button>;
   return (
     <div className="cmp">
+      <ComparePicker s={s} ds={ds} name={nameB} value={compareWith} />
       <section className="cmp-empty" aria-labelledby="cmp-empty-title">
         <h3 id="cmp-empty-title">{L('Compare ', 'השוואת ')}<bdi>{nameB}</bdi>{L(' with…', ' עם…')}</h3>
         <div className="cmp-picks">

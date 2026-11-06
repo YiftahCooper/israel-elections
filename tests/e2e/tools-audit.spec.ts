@@ -92,7 +92,7 @@ test('Hebrew charts keep the English left-to-right geometry', async ({ page }) =
   expect(Number(await svg.locator('.bar').first().getAttribute('x'))).toBeCloseTo(mid, 0);
   expect(Number(await svg.locator('.bar').last().getAttribute('x'))).toBeLessThan(mid);
   await tool(page, 'compare');
-  await panel(page).locator('.cmp-pick').filter({ hasText: '2022' }).click();
+  await expect(panel(page).locator('.cmp-head .choice-trigger')).toHaveAttribute('data-value', 'election:k25');
   const figs = panel(page).locator('.cmp-chambers figure');
   await expect(figs.nth(0)).toContainText('2022'); // the earlier result is on the left, as before → after
   expect((await figs.nth(0).boundingBox())!.x).toBeLessThan((await figs.nth(1).boundingBox())!.x);

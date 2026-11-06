@@ -41,7 +41,7 @@ export interface State {
   blocPanel: string | null;
   /** the open tool beside the chamber (null: the level's first tool) */
   tool: string | null;
-  compareWith: string; // 'historical' or a saved scenario id
+  compareWith: string; // session-only: 'auto', 'historical', 'official', saved id or 'election:<id>'
   lang: Lang;
   theme: 'light' | 'dark';
   level: Level;
@@ -94,7 +94,7 @@ setFactionDefault(rememberedPreferences.jointSeats === 'on');
 const persisted = (() => { try { return JSON.parse(globalThis.localStorage?.getItem(LS) ?? '{}'); } catch { return {}; } })();
 
 let state: State = {
-  datasets: {}, elections: FALLBACK_INDEX, electionId: 'k26', scenario: null, preview: null, reference: null, markOfficial: persisted.markOfficial === true, past: [], future: [], selectedListId: null, blocPanel: null, tool: null, compareWith: 'historical',
+  datasets: {}, elections: FALLBACK_INDEX, electionId: 'k26', scenario: null, preview: null, reference: null, markOfficial: persisted.markOfficial === true, past: [], future: [], selectedListId: null, blocPanel: null, tool: null, compareWith: 'auto',
   lang: persisted.lang ?? 'he', theme: persisted.theme ?? (globalThis.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
   level: migrateLevel(persisted.level), customFeatures: persisted.customFeatures ?? null, hintDismissed: persisted.hintDismissed === true, digits: persisted.digits ?? 2, layout: 'hemicycle', colorBy: 'list', showComponentSeats: persisted.showComponentSeats !== false,
   saved: migrateSavedColors(persisted.saved ?? []), toast: null, loadError: null, notice: null, voteSource: sourceChoice(rememberedPreferences.voteSource ?? 'proportional'), preferences: rememberedPreferences, preferenceAsk: null, preferenceFor: null, sessions: {}, scenarioDrafts: {},
@@ -229,7 +229,7 @@ export async function openElection(id: ElectionId, from?: { id?: string; name: s
       ({ scenario, past, future, reference } = sessions[id]!);
     }
     delete sessions[id];
-    setState({ electionId: id, scenario, reference, past, future, sessions, selectedListId: null, blocPanel: null, compareWith: 'historical', loadError: null, notice });
+    setState({ electionId: id, scenario, reference, past, future, sessions, selectedListId: null, blocPanel: null, compareWith: 'auto', loadError: null, notice });
     return true;
   } catch (e) {
     if (seq === openSeq) setState({ loadError: { id, message: e instanceof Error ? e.message : String(e) } });

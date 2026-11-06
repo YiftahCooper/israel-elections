@@ -15,7 +15,7 @@ test('grouping-only switches show no invented seat gains in Compare and name his
     await expect(page.getByRole('button', {name:/^History ·/})).toBeVisible();
     await page.getByRole('tab', {name:'Compare',exact:true}).click();
     // switching back to the official grouping leaves nothing to compare
-    if (scheme === 'first-government') { await expect(page.locator('#cmp-empty-title')).toHaveText('Compare Official result with…'); await expect(page.locator('.cmp-diff, .cmp .legend')).toHaveCount(0); await page.getByRole('tab', {name:'Overview',exact:true}).click(); continue; }
+    if (scheme === 'first-government') { await expect(page.locator('.cmp-head .choice-trigger')).toHaveAttribute('data-value', 'election:k24'); await expect(page.locator('.cmp-diff')).toHaveCount(0); await page.getByRole('tab', {name:'Overview',exact:true}).click(); continue; }
     await expect(page.locator('.cmp-head .choice-trigger')).toHaveText(/Official result/);
     await expect(page.locator('.cmp .legend')).not.toContainText('0 → 64');
     await expect(page.locator('.cmp-diff')).toHaveCount(0);

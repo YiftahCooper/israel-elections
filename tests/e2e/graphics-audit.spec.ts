@@ -127,9 +127,9 @@ test('summary, graphics and Compare default follow the same reference setting',a
       expect(Math.max(...x)).toBeLessThan(650);
     }
     await page.getByRole('tab',{name:'Compare',exact:true}).click();
-    // with nothing to compare, Compare names the result and offers other comparisons instead
+    // With nothing to compare, the automatic target is the previous election.
     if(changed) await expect(page.locator('.cmp-head .choice-trigger')).toHaveText(new RegExp(name));
-    else await expect(page.locator('#cmp-empty-title')).toHaveText(`Compare ${name} with…`);
+    else await expect(page.locator('.cmp-head .choice-trigger')).toHaveAttribute('data-value', 'election:k24');
     if(changed) expect(await page.locator('.cmp-blocrow').last().locator('i').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('data-bloc')))).toEqual(expect.arrayContaining(['__none']));
   }
 });

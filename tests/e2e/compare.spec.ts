@@ -1,4 +1,4 @@
-// Compare screen (5 Nov 2026 screen audit): an empty state instead of identical pictures, another election as a
+// Compare screen: previous-election defaults, explicit targets, another election as a
 // comparison, a dumbbell that keeps tied lists readable, and left-to-right graphics and signs in Hebrew.
 import { expect, test, type Page } from '@playwright/test';
 import { choose } from './choices.ts';
@@ -22,17 +22,11 @@ async function editFirstList(page: Page, votes: string) {
 }
 const compare = (page: Page) => page.locator('#tab-compare').click();
 
-test('with nothing to compare, Compare offers comparisons instead of two identical results', async ({ page }) => {
+test('an unchanged scenario opens directly on the previous election and respects an explicit official target', async ({ page }) => {
   await start(page);
   await compare(page);
-  const empty = page.locator('.cmp-empty');
-  await expect(empty.getByRole('heading')).toHaveText('Compare Official result with…');
-  await expect(page.locator('.cmp-chambers, .cmp table, .cmp-dumbbell')).toHaveCount(0);
-  await expect(empty.getByRole('button', { name: 'A What-if question…' })).toBeVisible();
-  // the previous election is one click away, with a strip of its seats
-  const previous = empty.locator('.cmp-pick').filter({ hasText: '2022 · 25th Knesset' });
-  await expect(previous.locator('.result-preview i').first()).toBeVisible();
-  await previous.click();
+  await expect(page.locator('.cmp-empty')).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Compare with', exact: true })).toHaveAttribute('data-value', 'election:k25');
   const figs = page.locator('.cmp-chambers figure');
   await expect(figs).toHaveCount(2);
   await expect(figs.nth(0).locator('figcaption')).toContainText('2022 · 25th Knesset');
@@ -47,6 +41,41 @@ test('with nothing to compare, Compare offers comparisons instead of two identic
   await page.locator('.cmp-head').getByRole('button', { name: 'Compare with' }).click();
   await page.locator('dialog[open] [data-choice-value="historical"]').click();
   await expect(page.locator('.cmp-empty')).toBeVisible();
+  await page.getByRole('tab', { name: 'Overview', exact: true }).click();
+  await compare(page);
+  await expect(page.locator('.cmp-empty')).toBeVisible();
+});
+
+test('the automatic comparison follows an edit and undo without storing an election target', async ({ page }) => {
+  await start(page, 'en', 'k25');
+  await compare(page);
+  await expect(page.getByRole('button', { name: 'Compare with', exact: true })).toHaveAttribute('data-value', 'election:k24');
+  await page.getByRole('tab', { name: 'Overview', exact: true }).click();
+  await editFirstList(page, '1300000');
+  await compare(page);
+  await expect(page.locator('.cmp-head .choice-trigger')).toHaveAttribute('data-value', 'historical');
+  await expect(page.locator('.cmp-key')).toContainText('Outlined: seats gained since Official result');
+  await page.getByRole('button', { name: /^Undo:/ }).click();
+  await expect(page.locator('.cmp-head .choice-trigger')).toHaveAttribute('data-value', 'election:k24');
+});
+
+test('another election chosen in Compare with sticks across tabs and edits', async ({ page }) => {
+  await start(page);
+  await compare(page);
+  await choose(page.getByRole('button', { name: 'Compare with', exact: true }), 'election:k24');
+  await page.getByRole('tab', { name: 'Overview', exact: true }).click();
+  await editFirstList(page, '1300000');
+  await compare(page);
+  await expect(page.locator('.cmp-head .choice-trigger')).toHaveAttribute('data-value', 'election:k24');
+  await expect(page.locator('.cmp-chambers figure').first()).toContainText('2021 · 24th Knesset');
+});
+
+for (const lang of ['en', 'he'] as const) test(`the earliest election keeps the chooser (${lang})`, async ({ page }) => {
+  await start(page, lang, 'k1');
+  await compare(page);
+  await expect(page.locator('.cmp-empty')).toBeVisible();
+  await expect(page.locator('.cmp-chambers')).toHaveCount(0);
+  await expect(page.locator('.cmp-empty').getByRole('button', { name: lang === 'he' ? 'שאלת "מה אם"…' : 'A What-if question…' })).toBeVisible();
 });
 
 test('the seats-by-list chart keeps tied lists apart and the chamber pair adds no third chamber', async ({ page }) => {
