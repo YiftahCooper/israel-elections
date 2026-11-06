@@ -226,7 +226,7 @@ const EXPECTED: Record<Family, string> = {
   // merged with k3 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k4 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k5 audit fixes: combined digest = union of the separately reviewed changes.
-  model: '2de9105f4082cadd8da7ec2e4a1afd0caa3bb6251337dc208e93b7eb4e4f96ba',
+  model: '710384a82dfcf94f4d198bc5382177fe2ad7b4eefa766b36c82b76e7fd304f89',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

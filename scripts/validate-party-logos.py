@@ -2,6 +2,7 @@
 """Validate the research overlays and committed logo assets (standard library only)."""
 from logo_dates import valid_campaign_date
 import hashlib
+import re
 import json
 from pathlib import Path
 import struct
@@ -9,6 +10,10 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = {s['id']: s for s in json.loads((ROOT / 'data/meta/logos/sources.json').read_text())['sources']}
+# A Commons page link without its namespace (e.g. File:) is a 404 (k1 audit).
+COMMONS_BARE = re.compile(r'https://commons\.wikimedia\.org/wiki/(?![A-Za-z]+:)')
+for s in SOURCES.values():
+    assert not COMMONS_BARE.match(s.get('sourceUrl') or ''), s['sourceUrl']
 RAW_SOURCES = {s['id']: s for s in json.loads((ROOT / 'data/raw/SOURCES.json').read_text())}
 ELECTIONS = json.loads((ROOT / 'public/data/elections.json').read_text())
 seen_files = set()
