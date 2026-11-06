@@ -60,7 +60,7 @@ export function PMResult({ contest, onKnesset }: { contest: PMContest; onKnesset
         {contest.candidates.filter(c => c.status === 'final').map(c => {
           const share = c.votes!.value / contest.totals.valid.value * 100;
           return <div className="pm-candidate" key={c.id}>
-            <div>{lang === 'he' ? c.nameHe : c.nameEn} <strong>{num(c.votes!.value)}</strong> · {share.toFixed(2)}%</div>
+            <div>{lang === 'he' ? c.nameHe : c.nameEn} <strong>{num(c.votes!.value)}</strong> · {(c.publishedPercent?.value ?? share).toFixed(2)}%</div>
             <div className="pm-track" aria-hidden="true"><span style={{ width: `${share}%` }} /><i /></div>
           </div>;
         })}

@@ -917,7 +917,7 @@
     "url": "https://olaw.org.il/yalkut/yalkut-4411.pdf",
     "publisher": "State of Israel / Central Elections Committee (olaw.org.il mirror)",
     "official": true,
-    "description": "Complete six-pair statutory agreement notice, YP 4411 p.3398; official publication on disclosed olaw.org.il mirror",
+    "description": "Complete six-pair statutory agreement notice, YP 4411 p.3398; official publication on disclosed olaw.org.il mirror; candidate resignations and whole-list Moreshet Avot withdrawal, p.3398",
     "method": "http",
     "retrievedAt": "2026-11-03T15:32:59.650817+00:00",
     "bytes": 176289,
@@ -2670,8 +2670,8 @@
     "description": "Reviewed national transcription; source and printed page references retained in JSON.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
-    "bytes": 4556,
-    "sha256": "c58c0cc097e21582b067f9bd681c3c0663e7f8227dfb11c4a8aa9d25ae8e5240"
+    "bytes": 5455,
+    "sha256": "5ebf49a32267d7b23575f71cf43ffdc43494adb53f588a46c98c97ff44425eaa"
   },
   {
     "id": "k14-rosters-reviewed",
@@ -2682,8 +2682,8 @@
     "description": "Reviewed rosters transcription; source and printed page references retained in JSON.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
-    "bytes": 23180,
-    "sha256": "06ea04f9a4e76622130c119ab11db6a8c0eb4114da74aa4b387120074aee658e"
+    "bytes": 23246,
+    "sha256": "711387e420681f4821855598ee1d85e16d3071a0a0d306eda5131502be0ef1fd"
   },
   {
     "id": "k14-elected-reviewed",
@@ -4481,11 +4481,11 @@
     "url": "https://www.gov.il/en/pages/israeli-election-results-may-1996",
     "publisher": "Project reviewed transcription; MFA retrieval blocked",
     "official": false,
-    "description": "Visual review of retained gazettes k14 PDF p.3, k15 PDF p.2, YP4960 PDF p.2 and IDI 1999 PDF p.7; all match the era-specific-rules report. MFA totals inherited from that report; fresh direct retrieval returned HTTP 403. No raw MFA page is claimed.",
+    "description": "Visual review of retained gazettes k14 PDF p.3, k15 PDF p.2, YP4960 PDF p.2 and IDI 1999 PDF p.7; all match the era-specific-rules report. MFA totals inherited from that report; fresh direct retrieval returned HTTP 403. No raw MFA page is claimed. k14 2026-11-06: invalid/cast corroborated in Torgovnik, Party Politics 6(1), p.97 table 1 note f (https://library.fes.de/libalt/journals/swetsfulltext/7116597.pdf); printed shares read from Gazette.",
     "method": "manual-capture",
     "retrievedAt": "2026-11-04T11:12:12.081501+00:00",
-    "bytes": 9191,
-    "sha256": "d7effb92cdc0712f8d95d868afaeae42b0cc8418c1e27546b5a2293e765341c7"
+    "bytes": 11480,
+    "sha256": "4c8b9104ad8183a670854e1d198dd00924e3da8fe5fd658eca2ab79b75b847b7"
   },
   {
     "id": "context-double-envelopes-2019",

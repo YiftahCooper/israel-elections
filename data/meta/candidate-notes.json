@@ -167,6 +167,70 @@
         "YP 4748 p.3048; YP 4757 p.3378",
         "data/raw/k15/knesset-odata-members.json, PersonID 485"
       ]
+    },
+    {
+      "candidateId": "14-מחל#23",
+      "en": "Membership ended 1996-09-01; ריבלין ראובן began serving on that date (retained Knesset OData, Knesset 14). The election-day roster is preserved.",
+      "he": "הכהונה הסתיימה ב־1996-09-01; ריבלין ראובן החל לכהן בתאריך זה (נתוני הכנסת הרשמיים, הכנסת ה־14). רשימת הנבחרים המקורית נשמרת.",
+      "sources": [
+        "Knesset OData, KNS_PersonToPosition, PositionID 43/61, KnessetNum 14; data/raw/k14/knesset-odata-members.json"
+      ]
+    },
+    {
+      "candidateId": "14-אמת#21",
+      "en": "Membership ended 1996-10-15; כבל איתן began serving on that date (retained Knesset OData, Knesset 14). The election-day roster is preserved.",
+      "he": "הכהונה הסתיימה ב־1996-10-15; כבל איתן החל לכהן בתאריך זה (נתוני הכנסת הרשמיים, הכנסת ה־14). רשימת הנבחרים המקורית נשמרת.",
+      "sources": [
+        "Knesset OData, KNS_PersonToPosition, PositionID 43/61, KnessetNum 14; data/raw/k14/knesset-odata-members.json"
+      ]
+    },
+    {
+      "candidateId": "14-ב#8",
+      "en": "Membership ended 1997-05-12; סלומינסקי ניסן began serving on that date (retained Knesset OData, Knesset 14). The election-day roster is preserved.",
+      "he": "הכהונה הסתיימה ב־1997-05-12; סלומינסקי ניסן החל לכהן בתאריך זה (נתוני הכנסת הרשמיים, הכנסת ה־14). רשימת הנבחרים המקורית נשמרת.",
+      "sources": [
+        "Knesset OData, KNS_PersonToPosition, PositionID 43/61, KnessetNum 14; data/raw/k14/knesset-odata-members.json"
+      ]
+    },
+    {
+      "candidateId": "14-ב#1",
+      "en": "Membership ended 1998-01-20; גבאי אליהו began serving on that date (retained Knesset OData, Knesset 14). The election-day roster is preserved.",
+      "he": "הכהונה הסתיימה ב־1998-01-20; גבאי אליהו החל לכהן בתאריך זה (נתוני הכנסת הרשמיים, הכנסת ה־14). רשימת הנבחרים המקורית נשמרת.",
+      "sources": [
+        "Knesset OData, KNS_PersonToPosition, PositionID 43/61, KnessetNum 14; data/raw/k14/knesset-odata-members.json"
+      ]
+    },
+    {
+      "candidateId": "14-אמת#24",
+      "en": "Membership ended 1998-03-20; חג' יחיא רפיק began serving on that date (retained Knesset OData, Knesset 14). The election-day roster is preserved.",
+      "he": "הכהונה הסתיימה ב־1998-03-20; חג' יחיא רפיק החל לכהן בתאריך זה (נתוני הכנסת הרשמיים, הכנסת ה־14). רשימת הנבחרים המקורית נשמרת.",
+      "sources": [
+        "Knesset OData, KNS_PersonToPosition, PositionID 43/61, KnessetNum 14; data/raw/k14/knesset-odata-members.json"
+      ]
+    },
+    {
+      "candidateId": "14-ג#4",
+      "en": "Membership ended 1998-10-23; לייזרזון אברהם יוסף began serving on that date (retained Knesset OData, Knesset 14). The election-day roster is preserved.",
+      "he": "הכהונה הסתיימה ב־1998-10-23; לייזרזון אברהם יוסף החל לכהן בתאריך זה (נתוני הכנסת הרשמיים, הכנסת ה־14). רשימת הנבחרים המקורית נשמרת.",
+      "sources": [
+        "Knesset OData, KNS_PersonToPosition, PositionID 43/61, KnessetNum 14; data/raw/k14/knesset-odata-members.json"
+      ]
+    },
+    {
+      "candidateId": "14-מחל#10",
+      "en": "Membership ended 1998-11-18; כץ ישראל began serving on that date (retained Knesset OData, Knesset 14). The election-day roster is preserved.",
+      "he": "הכהונה הסתיימה ב־1998-11-18; כץ ישראל החל לכהן בתאריך זה (נתוני הכנסת הרשמיים, הכנסת ה־14). רשימת הנבחרים המקורית נשמרת.",
+      "sources": [
+        "Knesset OData, KNS_PersonToPosition, PositionID 43/61, KnessetNum 14; data/raw/k14/knesset-odata-members.json"
+      ]
+    },
+    {
+      "candidateId": "14-מחל#31",
+      "en": "Membership ended 1998-11-30; שמואלי דורון began serving on that date (retained Knesset OData, Knesset 14). The election-day roster is preserved.",
+      "he": "הכהונה הסתיימה ב־1998-11-30; שמואלי דורון החל לכהן בתאריך זה (נתוני הכנסת הרשמיים, הכנסת ה־14). רשימת הנבחרים המקורית נשמרת.",
+      "sources": [
+        "Knesset OData, KNS_PersonToPosition, PositionID 43/61, KnessetNum 14; data/raw/k14/knesset-odata-members.json"
+      ]
     }
   ]
 }

@@ -357,7 +357,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k14.json",
-      "sha256": "10fe17c46564b0ec6f8e6fd26118fdcf60f60788d029eaf975a9fc4b4f45bb40",
+      "sha256": "cc7161b30919dd969ad22f1895e2585c0e1adcd77fc9f10e9a6f727e7d38d8bb",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k15": {

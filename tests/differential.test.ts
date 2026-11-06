@@ -34,6 +34,11 @@
 // Allocation/analysis change only because the candidate-cap warning now distinguishes documented
 // 1977 procedure from counterfactual inference. No allocation logic changed; other 25 datasets equal HEAD.
   // merged with k9 audit fixes: combined digest = union of the separately reviewed changes.
+// k14 audit (6 Nov): reviewed field diff changes only k14 names/links, roster status,
+// eight membership notes, Namir note, logo URL, source hashes and withdrawn zero-vote זך.
+// Other 25 datasets are byte-identical. Allocation changes with the extra withdrawn list;
+// model carries the corrected labels/notes. Analysis, validation and rules unchanged.
+  // merged with k14 audit fixes: combined digest = union of the separately reviewed changes.
 // 6 Nov 2026 k22 audit: reviewed scalar diff changes only status, logical Hebrew
 // punctuation, CEC link titles, three withdrawal flags and distinct modern Gesher
 // IDs (also k23). Withdrawal flags affect hypothetical corpus allocations; model
@@ -105,7 +110,8 @@ const EXPECTED: Record<Family, string> = {
   // merged with k13 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k15 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k9 audit fixes: combined digest = union of the separately reviewed changes.
-  allocation: 'acc630c6ed305511f0a3eb5f98517b66be520904afc25bffad778fc0f3e613be',
+  // merged with k14 audit fixes: combined digest = union of the separately reviewed changes.
+  allocation: 'da03e53f61fe4bb573de00163d4c20f4df10f8224a72109fc69aae1b11a9adb6',
   analysis: '0b41ade19f938f415b693825f3600693a9e5f17e81ec7d12a6d16fb82177f30b',
   // Model digest re-recorded for the 1973 party ranks, then for candidate biography links (Candidate.bio): with
   // the build timestamps held fixed and bio not carried, the new code gives the previous digest. Then for three
@@ -187,7 +193,8 @@ const EXPECTED: Record<Family, string> = {
   // five gazette names, three list names, election-period constituent label, three platform links
   // and buildInfo source hashes/timestamp. Numeric inputs and all four other digests are unchanged.
   // merged with k17 audit fixes: combined digest = union of the separately reviewed changes.
-  model: 'fda0715724a7342ebff93ecabde3770f20dca8a0cd0eed49b06d171fbad4aeda',
+  // merged with k14 audit fixes: combined digest = union of the separately reviewed changes.
+  model: '0bf86c1d90fdf22aabffb2f44c952f5b46bd168a98c1efd96f52b91e271b3b9f',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

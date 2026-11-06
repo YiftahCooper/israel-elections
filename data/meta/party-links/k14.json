@@ -183,7 +183,7 @@
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
-        "titleHe": "אחדות למען השלום — הודעת התוצאות לכנסת 14",
+        "titleHe": "אחדות למען העליה — הודעת התוצאות לכנסת 14",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-14",
         "sourceType": "cec",
@@ -205,7 +205,7 @@
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
-        "titleHe": "הברית הדמוקרטית — הודעת התוצאות לכנסת 14",
+        "titleHe": "הברית המתקדמת — הודעת התוצאות לכנסת 14",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-14",
         "sourceType": "cec",
@@ -227,7 +227,7 @@
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
-        "titleHe": "מפלגת ההתפתחות — הודעת התוצאות לכנסת 14",
+        "titleHe": "מפלגת ההתישבות — הודעת התוצאות לכנסת 14",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-14",
         "sourceType": "cec",
@@ -277,7 +277,8 @@
         "sourceType": "hewiki",
         "confidence": "high"
       }
-    ]
+    ],
+    "14-זך": []
   },
   "parties": {
     "likud": [
@@ -446,6 +447,10 @@
     "ram": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
       "neutral": "No verified identity-specific neutral article acquired; dictionary articles and joint-list sources excluded; further research required."
+    },
+    "14-זך": {
+      "partisan": "No verified campaign-period source retained for the withdrawn Moreshet Avot list.",
+      "neutral": "Registered identity and withdrawal are documented in YP 4408 p.3289 and YP 4411 p.3398; no separate party profile verified."
     }
   }
 }

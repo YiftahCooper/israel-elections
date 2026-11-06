@@ -357,7 +357,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k14.json",
-      "sha256": "3938db2f3d61463bf1d99deaa3473657be1fab46f2354adaf8a20adebb58959a",
+      "sha256": "d5261fca18ef313f05a3afdbf62b89c09bf9fe6522b5d5d183e13e97f2bbe470",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k15": {
@@ -10139,13 +10139,13 @@
     {
       "id": "vehicle-14-מרצ",
       "entityType": "alliance",
-      "nameHe": "מרצ - ישראל הדמוקרטית רצ מפם שינוי",
+      "nameHe": "מרצ - ישראל הדמוקרטית רצ, מפ\"ם, שינוי",
       "nameEn": "Meretz",
       "names": [
         {
           "date": "1996-05-29",
           "datePrecision": "day",
-          "nameHe": "מרצ - ישראל הדמוקרטית רצ מפם שינוי",
+          "nameHe": "מרצ - ישראל הדמוקרטית רצ, מפ\"ם, שינוי",
           "nameEn": "Meretz",
           "sources": [
             "k14"
@@ -10169,13 +10169,13 @@
     {
       "id": "yisrael-baaliyah",
       "entityType": "party",
-      "nameHe": "ישראל בעליה בראשותו של נתן שרנסקי",
+      "nameHe": "ישראל בעלייה בראשותו של נתן שרנסקי",
       "nameEn": "Yisrael BaAliyah",
       "names": [
         {
           "date": "1996-05-29",
           "datePrecision": "day",
-          "nameHe": "ישראל בעליה בראשותו של נתן שרנסקי",
+          "nameHe": "ישראל בעלייה בראשותו של נתן שרנסקי",
           "nameEn": "Yisrael BaAliyah",
           "sources": [
             "k14",
@@ -10720,14 +10720,14 @@
     {
       "id": "vehicle-14-ק",
       "entityType": "electoral-vehicle",
-      "nameHe": "אחדות למען השלום בראשות אפרים גור",
-      "nameEn": "Unity for Peace",
+      "nameHe": "אחדות למען העליה בראשות אפרים גור",
+      "nameEn": "Unity for Aliyah",
       "names": [
         {
           "date": "1996-05-29",
           "datePrecision": "day",
-          "nameHe": "אחדות למען השלום בראשות אפרים גור",
-          "nameEn": "Unity for Peace",
+          "nameHe": "אחדות למען העליה בראשות אפרים גור",
+          "nameEn": "Unity for Aliyah",
           "sources": [
             "k14",
             "proposal"
@@ -10784,14 +10784,14 @@
     {
       "id": "vehicle-14-פא",
       "entityType": "electoral-vehicle",
-      "nameHe": "הברית הדמוקרטית",
-      "nameEn": "Democratic Alliance",
+      "nameHe": "הברית המתקדמת",
+      "nameEn": "Progressive Alliance",
       "names": [
         {
           "date": "1996-05-29",
           "datePrecision": "day",
-          "nameHe": "הברית הדמוקרטית",
-          "nameEn": "Democratic Alliance",
+          "nameHe": "הברית המתקדמת",
+          "nameEn": "Progressive Alliance",
           "sources": [
             "k14",
             "proposal"
@@ -10816,13 +10816,13 @@
     {
       "id": "telem-emuna",
       "entityType": "party",
-      "nameHe": "תלם אמונה תימן בדרכי נועם בראשות הרב יוסף עזרן",
+      "nameHe": "תלם אמונה יהדות בדרכי נועם בראשות הרב יוסף עזרן",
       "nameEn": "Telem Emuna",
       "names": [
         {
           "date": "1996-05-29",
           "datePrecision": "day",
-          "nameHe": "תלם אמונה תימן בדרכי נועם בראשות הרב יוסף עזרן",
+          "nameHe": "תלם אמונה יהדות בדרכי נועם בראשות הרב יוסף עזרן",
           "nameEn": "Telem Emuna",
           "sources": [
             "k14",
@@ -10848,14 +10848,14 @@
     {
       "id": "vehicle-14-דן",
       "entityType": "electoral-vehicle",
-      "nameHe": "מפלגת ההתפתחות",
-      "nameEn": "Development Party",
+      "nameHe": "מפלגת ההתישבות",
+      "nameEn": "Settlement Party",
       "names": [
         {
           "date": "1996-05-29",
           "datePrecision": "day",
-          "nameHe": "מפלגת ההתפתחות",
-          "nameEn": "Development Party",
+          "nameHe": "מפלגת ההתישבות",
+          "nameEn": "Settlement Party",
           "sources": [
             "k14",
             "proposal"
@@ -23629,6 +23629,38 @@
       ],
       "status": "observed-local-dataset",
       "externalIds": {}
+    },
+    {
+      "id": "vehicle-14-זך",
+      "entityType": "electoral-vehicle",
+      "nameHe": "מורשת-אבות",
+      "nameEn": "Moreshet Avot",
+      "names": [
+        {
+          "date": "1996-05-29",
+          "datePrecision": "day",
+          "nameHe": "מורשת-אבות",
+          "nameEn": "Moreshet Avot",
+          "sources": [
+            "k14",
+            "proposal"
+          ],
+          "status": "observed-local-dataset"
+        }
+      ],
+      "aliases": [],
+      "activePeriod": {
+        "from": "1996-05-29",
+        "to": "1996-05-29",
+        "datePrecision": "day",
+        "basis": "observed-election-appearances-not-lifetime"
+      },
+      "sources": [
+        "k14",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "externalIds": {}
     }
   ],
   "partyAppearances": [
@@ -35949,6 +35981,19 @@
       ],
       "status": "observed-local-dataset",
       "locator": "public/data/k10.json#/lists/16",
+      "continuity": "unresolved"
+    },
+    {
+      "electionId": "k14",
+      "listId": "14-זך",
+      "partyId": "vehicle-14-זך",
+      "role": "singleton",
+      "sources": [
+        "k14",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "locator": "public/data/k14.json#/lists/20",
       "continuity": "unresolved"
     }
   ],

@@ -154,7 +154,7 @@
     },
     {
       "letters": "מרצ",
-      "nameHe": "מרצ - ישראל הדמוקרטית רצ מפם שינוי",
+      "nameHe": "מרצ - ישראל הדמוקרטית רצ, מפ\"ם, שינוי",
       "seats": 9,
       "rosterRanks": 9,
       "candidatesTruncated": true,
@@ -839,17 +839,9 @@
     {
       "party": "balad",
       "color": "#F07D00",
-      "basis": "Colour used for this list/party in Hebrew Wikipedia Knesset and party articles (a convention of that encyclopedia, not an official party colour).",
+      "basis": "Editorial display choice; not an official colour specification or a verified 1996 convention. Previous citation referred to a different party and has been removed. Confidence describes the editorial display choice, not historical authentication.",
       "colourId": "balad",
-      "sources": [
-        {
-          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%90%D7%97%D7%AA_%D7%A2%D7%A9%D7%A8%D7%94",
-          "publisher": "Hebrew Wikipedia",
-          "kind": "secondary",
-          "quote": "*{{מקרא2|#F07D00|גבול=1px solid #A9A9A9}}[[הרשימה המתקדמת לשלום]] (2)",
-          "accessed": "2026-11-04"
-        }
-      ],
+      "sources": [],
       "confidence": "medium"
     },
     {
@@ -871,17 +863,9 @@
     {
       "party": "degel-hatorah",
       "color": "#03428F",
-      "basis": "Hebrew Wikipedia 12th Knesset infobox only; the same blue is used for other parties.",
+      "basis": "Editorial display choice; not an official colour specification or a verified 1996 convention. Previous citation referred to a different party and has been removed.",
       "colourId": "degel-hatorah",
-      "sources": [
-        {
-          "url": "https://he.wikipedia.org/wiki/%D7%94%D7%9B%D7%A0%D7%A1%D7%AA_%D7%94%D7%90%D7%97%D7%AA_%D7%A2%D7%A9%D7%A8%D7%94",
-          "publisher": "Hebrew Wikipedia",
-          "kind": "secondary",
-          "quote": "*{{מקרא2|#03428F|גבול=1px solid #A9A9A9}}[[סיעת מורשה|מורשה]] (2)",
-          "accessed": "2026-11-04"
-        }
-      ],
+      "sources": [],
       "confidence": "low"
     },
     {

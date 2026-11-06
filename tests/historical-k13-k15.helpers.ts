@@ -101,6 +101,6 @@ export function releasedElection(id: 'k13' | 'k14' | 'k15', expected: {
         } else expect(normalize(candidate.nameHe), `${list.id}, elected ${i + 1}`).toBe(normalize(name));
       }
     }
-    expect(a.rosters.lists.filter(l => l.complete).map(l => l.letters)).toEqual(id === 'k14' ? ['הד'] : id === 'k15' ? ['ני', 'ק'] : []);
+    expect(a.rosters.lists.filter(l => l.complete).map(l => l.letters)).toEqual(id === 'k15' ? ['ני', 'ק'] : []);
   });
 }
