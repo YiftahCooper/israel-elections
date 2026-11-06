@@ -1,6 +1,6 @@
 {
   "id": "k1",
-  "reviewedOn": "2026-11-03",
+  "reviewedOn": "2026-11-06",
   "candidateSourceId": "k1-candidates-gazette",
   "resultsSourceId": "k1-results-gazette",
   "method": "Visual transcription of official candidate gazette; name-by-name comparison to elected names in official results. PDF pages are 1-based. No secondary candidate names.",
@@ -14,7 +14,7 @@
       "candidates": [
         {
           "rank": 1,
-          "nameHe": "בןגוריון דוד"
+          "nameHe": "בן-גוריון דוד"
         },
         {
           "rank": 2,
@@ -214,7 +214,7 @@
         }
       ],
       "electedNames": [
-        "בןגוריון דוד",
+        "בן-גוריון דוד",
         "שרתוק משה",
         "קפלן אליעזר",
         "רמז דוד",
@@ -456,7 +456,7 @@
         },
         {
           "rank": 4,
-          "nameHe": "בןאליעזר (רובובסקי) אריה"
+          "nameHe": "בן-אליעזר (זברובסקי) אריה"
         },
         {
           "rank": 5,
@@ -472,7 +472,7 @@
         },
         {
           "rank": 8,
-          "nameHe": "לנדאו (הנריך) חיים"
+          "nameHe": "לנדאו חיים (הנריך)"
         },
         {
           "rank": 9,
@@ -480,7 +480,7 @@
         },
         {
           "rank": 10,
-          "nameHe": "שוינשל ד״ר אברהם"
+          "nameHe": "ווינשל ד״ר אברהם"
         },
         {
           "rank": 11,
@@ -504,7 +504,7 @@
         },
         {
           "rank": 16,
-          "nameHe": "כהן מ׳ משה"
+          "nameHe": "דאהן מ׳ משה"
         },
         {
           "rank": 17,
@@ -515,11 +515,11 @@
         "בגין מנחם",
         "גרינברג אורי צבי",
         "מרידור יעקב",
-        "בןאליעזר (רובובסקי) אריה",
+        "בן-אליעזר (זברובסקי) אריה",
         "רקנטי אברהם",
         "באדר ד״ר יוחנן (יאן)",
         "קוק הלל",
-        "לנדאו (הנריך) חיים",
+        "לנדאו חיים (הנריך)",
         "מרלין שמואל",
         "כהן מגורי חיים",
         "לנקין אליהו",
@@ -562,7 +562,7 @@
       "candidates": [
         {
           "rank": 1,
-          "nameHe": "אלזועבי סיף-אלדין-מחמד סעיד"
+          "nameHe": "אלזועבי סיף-אלדין-מחמד סעיד אלזועבי"
         },
         {
           "rank": 2,
@@ -570,7 +570,7 @@
         }
       ],
       "electedNames": [
-        "אלזועבי סיף-אלדין-מחמד סעיד",
+        "אלזועבי סיף-אלדין-מחמד סעיד אלזועבי",
         "ג׳רג׳ורה אמין סלים ג׳רג׳ורה"
       ],
       "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted.",
@@ -791,7 +791,7 @@
       "candidates": [
         {
           "rank": 1,
-          "nameHe": "שיטרית בכור שלום"
+          "nameHe": "שטרית בכור שלום"
         },
         {
           "rank": 2,
@@ -807,7 +807,7 @@
         }
       ],
       "electedNames": [
-        "שיטרית בכור שלום",
+        "שטרית בכור שלום",
         "אלישר אליהו",
         "אלמאליח אברהם",
         "בן-עמי משה"
@@ -906,7 +906,7 @@
         },
         {
           "rank": 6,
-          "nameHe": "קסטן גיל (ליפשיץ) יעקב"
+          "nameHe": "קפטן גיל (ליפשיץ) יעקב"
         },
         {
           "rank": 7,
@@ -919,7 +919,7 @@
         "פרסיץ שושנה",
         "ספיר יוסף",
         "קליבנוב יעקב",
-        "קסטן גיל (ליפשיץ) יעקב",
+        "קפטן גיל (ליפשיץ) יעקב",
         "סרלין יוסף"
       ],
       "crossCheck": "Verified name by name against the elected members in the results notice, using the explicit candidate-rank mapping. Candidate spelling retained; no modern names substituted.",
@@ -995,6 +995,70 @@
       "from": "צנובר אברהם חיים",
       "to": "צוובנר אברהם חיים",
       "evidence": "Re-read at high zoom; both notices print \"צוובנר אברהם חיים\": k1-candidates-gazette PDF page 3 (printed p. 317); k1-results-gazette PDF page 3 (printed p. 401). The MK is recorded by the Knesset as שאג אברהם חיים (PersonID 2619), his later surname."
+    },
+    {
+      "reviewedOn": "2026-11-06",
+      "letters": "ח",
+      "rank": 4,
+      "from": "בןאליעזר (רובובסקי) אריה",
+      "to": "בן-אליעזר (זברובסקי) אריה",
+      "evidence": "Independently rendered both retained gazettes: k1-candidates-gazette PDF p. 5; k1-results-gazette PDF p. 3. Candidate notice: \"בן־אליעזר (זברובסקי), אריה\". Results agree; for excluded ranks 10/16 the results resignation clause supplies the name (לאחר שווינשל … ודאהן)."
+    },
+    {
+      "reviewedOn": "2026-11-06",
+      "letters": "ח",
+      "rank": 10,
+      "from": "שוינשל ד״ר אברהם",
+      "to": "ווינשל ד״ר אברהם",
+      "evidence": "Independently rendered both retained gazettes: k1-candidates-gazette PDF p. 5; k1-results-gazette PDF p. 3. Candidate notice: \"ווינשל ד״ר, אברהם\". Results agree; for excluded ranks 10/16 the results resignation clause supplies the name (לאחר שווינשל … ודאהן)."
+    },
+    {
+      "reviewedOn": "2026-11-06",
+      "letters": "ח",
+      "rank": 16,
+      "from": "כהן מ׳ משה",
+      "to": "דאהן מ׳ משה",
+      "evidence": "Independently rendered both retained gazettes: k1-candidates-gazette PDF p. 5; k1-results-gazette PDF p. 3. Candidate notice: \"דאהן, מ. משה\". Results agree; for excluded ranks 10/16 the results resignation clause supplies the name (לאחר שווינשל … ודאהן)."
+    },
+    {
+      "reviewedOn": "2026-11-06",
+      "letters": "ס",
+      "rank": 1,
+      "from": "שיטרית בכור שלום",
+      "to": "שטרית בכור שלום",
+      "evidence": "Independently rendered both retained gazettes: k1-candidates-gazette PDF p. 10; k1-results-gazette PDF p. 4. Candidate notice: \"שטרית, בכור שלום\". Results agree; for excluded ranks 10/16 the results resignation clause supplies the name (לאחר שווינשל … ודאהן)."
+    },
+    {
+      "reviewedOn": "2026-11-06",
+      "letters": "צ",
+      "rank": 6,
+      "from": "קסטן גיל (ליפשיץ) יעקב",
+      "to": "קפטן גיל (ליפשיץ) יעקב",
+      "evidence": "Independently rendered both retained gazettes: k1-candidates-gazette PDF p. 13; k1-results-gazette PDF p. 4. Candidate notice: \"קפטן גיל (ליפשיץ), יעקב\". Results agree; for excluded ranks 10/16 the results resignation clause supplies the name (לאחר שווינשל … ודאהן)."
+    },
+    {
+      "reviewedOn": "2026-11-06",
+      "letters": "א",
+      "rank": 1,
+      "from": "בןגוריון דוד",
+      "to": "בן-גוריון דוד",
+      "evidence": "Independently rendered both retained gazettes: k1-candidates-gazette PDF p. 2; k1-results-gazette PDF p. 2. Candidate notice: \"בן־גוריון, דוד\". Results agree; for excluded ranks 10/16 the results resignation clause supplies the name (לאחר שווינשל … ודאהן)."
+    },
+    {
+      "reviewedOn": "2026-11-06",
+      "letters": "ח",
+      "rank": 8,
+      "from": "לנדאו (הנריך) חיים",
+      "to": "לנדאו חיים (הנריך)",
+      "evidence": "Independently rendered both retained gazettes: k1-candidates-gazette PDF p. 5; k1-results-gazette PDF p. 3. Candidate notice: \"לנדאו, חיים (הנריך)\". Results agree; for excluded ranks 10/16 the results resignation clause supplies the name (לאחר שווינשל … ודאהן)."
+    },
+    {
+      "reviewedOn": "2026-11-06",
+      "letters": "יד",
+      "rank": 1,
+      "from": "אלזועבי סיף-אלדין-מחמד סעיד",
+      "to": "אלזועבי סיף-אלדין-מחמד סעיד אלזועבי",
+      "evidence": "Independently rendered both retained gazettes: k1-candidates-gazette PDF p. 7; k1-results-gazette PDF p. 3. Candidate notice: \"אלזועבי, סיף־אלדין־מחמד סעיד אלזועבי\". Results agree; for excluded ranks 10/16 the results resignation clause supplies the name (לאחר שווינשל … ודאהן)."
     }
   ]
 }

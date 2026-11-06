@@ -461,12 +461,12 @@
           "candidateRanks": [],
           "sources": [
             {
-              "url": "https://he.wikipedia.org/wiki/החזית_הדתית_המאוחדת",
-              "publisher": "Hebrew Wikipedia",
-              "kind": "secondary",
-              "quote": "הפועל המזרחי: חיים משה שפירא, משה אונא, זרח ורהפטיג, אליהו-משה גנחובסקי, יוסף בורג, אהרן-יעקב גרינברג, משה קלמר / המזרחי: יהודה לייב פישמן מימון, דוד צבי פנקס, מרדכי נורוק, אברהם-חיים שאג / פועלי אגודת ישראל: בנימין מינץ, קלמן כהנא, אברהם יהודה גולדראט / אגודת ישראל: יצחק מאיר לוין, מאיר דוד לוונשטיין, אליהו מזור",
-              "accessed": "2026-11-04",
-              "quoteNote": "Condensed transcription of a member list in the source; \"/\" separates its party headings, \"...\" marks omitted names and [ ] marks editorial notes."
+              "url": "https://in.bgu.ac.il/bgi/iyunim/32/Lilach-Rosenberg-Friedman.pdf",
+              "publisher": "Lilach Rosenberg-Friedman, Iyunim 32 (2019), p. 48, note 58",
+              "kind": "academic",
+              "quote": "וכן האיחוד הדתי הבלתי מפלגתי",
+              "quoteNote": "Indexed PDF passage explicitly names this component in the November 1948 agreement; direct PDF now redirects/challenges. Note 58 cites Zeev Bauer’s Hebrew University dissertation (2017), pp. 273–306. IDI’s four-party summary counts parties; this additional component was a non-party organisation.",
+              "accessed": "2026-11-06"
             }
           ],
           "confidence": "medium"
@@ -474,7 +474,7 @@
       ],
       "unassignedRanks": [],
       "notes": [
-        "The fifth component, the non-party religious union (האיחוד הדתי הבלתי-מפלגתי), had no elected member per Hebrew Wikipedia.",
+        "Four parties and the non-party religious union participated; Iyunim 32 (2019), p. 48 explicitly names the latter. All 16 opening MKs are assigned to the four parties (7+4+3+2); no elected rank is assigned to the non-party component.",
         "Rank 16 Moshe Kelmer resigned; his replacement Eliyahu Mazor (Agudat Yisrael) is not on the dataset roster."
       ]
     },
@@ -645,7 +645,7 @@
           "nameHe": "קואליציה",
           "nameEn": "Coalition",
           "color": "#3A6EA5",
-          "seats": 73,
+          "seats": 75,
           "members": [
             {
               "letters": "א"
@@ -661,6 +661,12 @@
             },
             {
               "letters": "יד"
+            },
+            {
+              "letters": "נ"
+            },
+            {
+              "letters": "ל"
             }
           ]
         },
@@ -669,7 +675,7 @@
           "nameHe": "אופוזיציה",
           "nameEn": "Opposition",
           "color": "#8C8C8C",
-          "seats": 47,
+          "seats": 45,
           "members": [
             {
               "letters": "מ"
@@ -685,12 +691,6 @@
             },
             {
               "letters": "טו"
-            },
-            {
-              "letters": "נ"
-            },
-            {
-              "letters": "ל"
             }
           ],
           "mainOpposition": [
@@ -709,22 +709,22 @@
           "accessed": "2026-11-04"
         },
         {
-          "url": "https://he.wikipedia.org/wiki/ממשלת_ישראל_הראשונה",
-          "publisher": "Hebrew Wikipedia",
-          "kind": "secondary",
-          "quote": "קואליציה: מפא\"י, החזית הדתית המאוחדת, המפלגה הפרוגרסיבית, ספרדים ועדות מזרח, הרשימה הדמוקרטית של נצרת | אופוזיציה: מפ\"ם, תנועת החרות, הציונים הכלליים, מק\"י, רשימת לוחמים, ויצו, התאחדות התימנים בישראל",
-          "accessed": "2026-11-04"
+          "url": "https://fs.knesset.gov.il/1/Plenum/1_ptm_250182.pdf",
+          "publisher": "Knesset, sitting 12, 10 March 1949, roll call (printed pp. 143–144)",
+          "kind": "official",
+          "quote": "גלוסקא זכריה (התימנים) בעד; כהן רחל (ויצ״ו) בעד; ג׳רגורה אמין סלים (הרשימה הדמוקראטית של נצרת) בעד. Project tabulation: 73 for, 45 against; Ben-Zvi and Granovsky absent.",
+          "accessed": "2026-11-06"
         }
       ],
       "notes": [
-        "Coalition = lists that joined or supported the government at its formation. Official records give ministers only; support-only lists (e.g. Mapai-affiliated Arab lists) rest on Hebrew Wikipedia."
+        "Coalition = lists that joined or supported the government at formation, including WIZO and the Yemenite Association, whose MKs voted for it. Their election-list seats total 75; the 73–45 confidence vote excludes two absent supporters (Ben-Zvi and Granovsky). This grouping does not imply ministerial participation by every supporting list."
       ],
       "confidence": "high"
     },
     {
       "id": "labour-affiliated-arab-lists",
-      "nameHe": "מפא\"י/המערך והרשימות הערביות המסונפות אליה (רשימות לוויין)",
-      "nameEn": "Mapai/Alignment and its affiliated Arab (satellite) lists",
+      "nameHe": "מפא\"י והרשימות הערביות המסונפות אליה (רשימות לוויין)",
+      "nameEn": "Mapai and its affiliated Arab (satellite) lists",
       "kind": "parliamentary",
       "date": "1949-01-25",
       "blocs": [
@@ -750,18 +750,11 @@
       ],
       "sources": [
         {
-          "url": "https://he.wikipedia.org/wiki/הרשימה_הדמוקרטית_של_נצרת",
-          "publisher": "Hebrew Wikipedia",
-          "kind": "secondary",
-          "quote": "בדומה לשאר המפלגות הערביות בזמנה שימשה המפלגה מפלגת לוויין של מפא\"י",
-          "accessed": "2026-11-04"
-        },
-        {
-          "url": "https://he.wikipedia.org/wiki/רשימה_דמוקרטית_לערביי_ישראל",
-          "publisher": "Hebrew Wikipedia",
-          "kind": "secondary",
-          "quote": "הייתה מפלגת מיעוטים ששימשה כמפלגת לווין של מפא\"י",
-          "accessed": "2026-11-04"
+          "url": "https://en.idi.org.il/israeli-elections-and-parties/elections/1949/",
+          "publisher": "Israel Democracy Institute",
+          "kind": "academic",
+          "quote": "the Democratic List of Nazareth, an Arab minority party affiliated with Mapai.",
+          "accessed": "2026-11-06"
         }
       ],
       "notes": [
@@ -1039,5 +1032,8 @@
       ],
       "confidence": "low"
     }
+  ],
+  "notes": [
+    "The official gazette gives Workers Bloc 3,214 and Traditional Judaism 239 votes; IDI gives 3,205 and 241. The rank-1 gazette wins: its list totals sum to the official 434,684 valid votes."
   ]
 }

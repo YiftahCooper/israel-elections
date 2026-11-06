@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "electionId": "k1",
   "status": "pilot",
-  "reviewedAt": "2026-11-05",
+  "reviewedAt": "2026-11-06",
   "notes": [
     "Research draft; not wired into the application. Official session records anchor all government approvals. Reused recommendation and first-coalition evidence retains the earlier research limitations.",
     "The government card describes the first cabinet. Each replacement cabinet has a full-session confidence step and a numbered government.changes entry; available replacement coalition snapshots are attached to that entry.",
@@ -46,10 +46,10 @@
       "accessed": "2026-11-04"
     },
     "coalition-2": {
-      "url": "https://he.wikipedia.org/wiki/ממשלת_ישראל_הראשונה",
-      "publisher": "Hebrew Wikipedia",
-      "kind": "secondary",
-      "accessed": "2026-11-04"
+      "url": "https://fs.knesset.gov.il/1/Plenum/1_ptm_250182.pdf",
+      "publisher": "Knesset, sitting 12, 10 March 1949, roll call (printed pp. 143–144)",
+      "kind": "official",
+      "accessed": "2026-11-06"
     },
     "term-history": {
       "url": "https://www.jewishvirtuallibrary.org/highlights-of-the-first-knesset-1949-1951",
@@ -87,11 +87,34 @@
       "publisher": "United Nations General Assembly, 207th plenary meeting, 11 May 1949",
       "kind": "official",
       "accessed": "2026-11-05"
+    },
+    "results-gazette": {
+      "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/history_election-dates_knesset1-results.pdf",
+      "publisher": "Official Gazette 49, 7 February 1949, p. 402",
+      "kind": "official",
+      "accessed": "2026-11-06"
+    },
+    "recommendations-followup": {
+      "url": "https://www.jta.org/archive/weizmann-sees-party-lesders-on-new-govt-mapam-outlines-conditions-for-participation",
+      "publisher": "JTA, 23 February 1949 follow-up",
+      "kind": "secondary",
+      "accessed": "2026-11-06"
     }
   },
   "results": {
     "electionDate": "1949-01-25",
-    "officialResultsSourceId": "k1-results-gazette"
+    "officialResultsSourceId": "k1-results-gazette",
+    "certificationDate": "1949-02-07",
+    "cites": [
+      {
+        "source": "results-gazette",
+        "quote": "ח׳ בשבט תש״ט (7 בפברואר 1949)"
+      }
+    ],
+    "firstSittingDate": "1949-02-14",
+    "notes": [
+      "Gazette 49 p. 402 is signed 7 February 1949. The retained official KNS_PersonToPosition snapshot data/raw/k1/knesset-odata-members.json has 120 opening members starting 14 February 1949; this is separate from the election-to-election term interval."
+    ]
   },
   "reaction": {
     "policy": "Only dated institutional steps and attributed statements, all lists or none.",
@@ -101,7 +124,7 @@
   "recommendationRounds": [
     {
       "id": "r1",
-      "date": "1949-02-22",
+      "date": "1949-02",
       "kind": "consultations",
       "president": {
         "nameEn": "Chaim Weizmann",
@@ -182,11 +205,15 @@
         {
           "source": "recommendations-jta",
           "quote": "President Weitzman today invited leaders of the various parties in the Israeli Constituent Assembly to consult with him tomorrow on composition of the new government."
+        },
+        {
+          "source": "recommendations-followup",
+          "quote": "President Weizmann today began negotiations with the various Israeli parties represented in the Constituent Assembly on the formation of a Cabinet."
         }
       ],
       "notes": [
         "Reuses docs/research/pm-recommendations-1949-1973.md; consultation conditions are not personal recommendations. Unknown does not mean no recommendation.",
-        "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved."
+        "Month precision: the 21 February bulletin schedules meetings for tomorrow; the 23 February follow-up reports meetings today. The original bulletin dateline was not retrieved, so no exact held date or per-faction schedule is inferred."
       ]
     }
   ],
@@ -194,14 +221,14 @@
     "outcome": "government-formed",
     "events": [
       {
-        "date": "1949-02-22",
+        "date": "1949-02",
         "type": "consultations",
         "textEn": "President Chaim Weizmann held consultations on government formation.",
         "textHe": "הנשיא חיים ויצמן קיים התייעצויות על הרכבת הממשלה.",
         "cites": [
           {
-            "source": "recommendations-jta",
-            "quote": "President Weitzman today invited leaders of the various parties in the Israeli Constituent Assembly to consult with him tomorrow on composition of the new government."
+            "source": "recommendations-followup",
+            "quote": "President Weizmann today began negotiations with the various Israeli parties represented in the Constituent Assembly on the formation of a Cabinet."
           }
         ]
       },
@@ -357,10 +384,18 @@
       {
         "letters": "יד",
         "seats": 2
+      },
+      {
+        "letters": "נ",
+        "seats": 1
+      },
+      {
+        "letters": "ל",
+        "seats": 1
       }
     ],
-    "coalitionSeats": 73,
-    "coalitionSeatsNote": "Election-list seat totals, including support-only lists; not the confidence-vote tally. Reuses the existing overlay: ministerial factions are official; support-only membership is labelled secondary. Later government changes are listed separately.",
+    "coalitionSeats": 75,
+    "coalitionSeatsNote": "Election-list seats of lists joining or supporting the government at formation: 75. The roll call was 73–45, with Ben-Zvi (Mapai) and Granovsky (Progressives) absent. WIZO, Yemenites and Nazareth supported without ministers; later cabinets are listed separately.",
     "cites": [
       {
         "source": "coalition-1",
@@ -368,7 +403,7 @@
       },
       {
         "source": "coalition-2",
-        "quote": "קואליציה: מפא\"י, החזית הדתית המאוחדת, המפלגה הפרוגרסיבית, ספרדים ועדות מזרח, הרשימה הדמוקרטית של נצרת | אופוזיציה: מפ\"ם, תנועת החרות, הציונים הכלליים, מק\"י, רשימת לוחמים, ויצו, התאחדות התימנים בישראל"
+        "quote": "גלוסקא זכריה (התימנים) בעד; כהן רחל (ויצ״ו) בעד; ג׳רגורה אמין סלים (הרשימה הדמוקראטית של נצרת) בעד. Project tabulation: 73 for, 45 against; Ben-Zvi and Granovsky absent."
       }
     ],
     "changes": [
@@ -529,13 +564,10 @@
     ]
   },
   "gaps": [
-    "Official result-certification date and the first sitting are not transcribed; election dates and seat counts reuse the verified national dataset.",
     "Reaction statements are not collected.",
     "Mid-term consultation positions, mandate deadlines and extensions are incomplete unless an explicit step below records them.",
     "Closing date is the next election, not dissolution day. The governing dissolution/election-date law has not been retrieved; regular versus early termination is not inferred from term length.",
     "Individual days of the October 1950 Ben-Gurion–Rosen–Ben-Gurion tasking sequence have not been recovered.",
-    "Replacement-coalition snapshots are partial: government 14’s faction splits and current seat counts require a separate audit. Other replacement snapshots use election-list seats with stated support-list limitations.",
-    "Presentation dates can precede approval dates; confidence steps use the full protocol. The exact assignment days not transcribed here remain unknown.",
-    "Termination: early election is described by IDI; the original dissolution act and its passage date remain untranscribed."
+    "Presentation dates can precede approval dates; confidence steps use the full protocol. The exact assignment days not transcribed here remain unknown."
   ]
 }
