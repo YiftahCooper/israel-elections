@@ -21,8 +21,8 @@ test('an election opens on its first government, and other sourced groupings can
   const grouping = page.getByRole('button', { name: 'Grouping', exact: true });
   await expect(grouping).toHaveText(/37th government/);
   await expect(blocCount(page, 'Coalition')).toHaveText('64');
-  await choose(grouping, { label: 'Pre-election blocs' });
-  await expect(grouping).toContainText('Pre-election blocs');
+  await choose(grouping, { label: 'Comparison groups (app-defined)' });
+  await expect(grouping).toContainText('Comparison groups (app-defined)');
   // a band opens the bloc editor beside the chamber, at every level
   await band(page, 'Netanyahu bloc').click();
   await expect(editor(page).getByRole('textbox', { name: 'Bloc name' }).first()).toHaveValue('Netanyahu bloc');

@@ -36,7 +36,7 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
     await page.locator('#tab-sources').click();
     const info = page.getByRole('button', { name: lang === 'en' ? 'Data status details' : 'פירוט מצב הנתונים', exact: true });
     await expect(info).toBeVisible();
-    await expect(info.locator('..').locator('..')).toHaveText(lang === 'en' ? 'Gazette not yet verified i' : 'הפרסום ברשומות טרם אומת i');
+    await expect(info.locator('..').locator('..')).toHaveText(lang === 'en' ? 'Official final results i' : 'תוצאות סופיות רשמיות i');
     await info.hover();
     await expect(page.locator('.pop')).toContainText(dataset('k26').status[lang === 'en' ? 'noteEn' : 'noteHe'].replace('Gazette publication unverified', 'Gazette publication not yet verified').replace('הפרסום ברשומות לא אומת', 'הפרסום ברשומות טרם אומת'));
     await info.click();

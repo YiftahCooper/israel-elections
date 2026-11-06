@@ -7,10 +7,11 @@ async function start(page:Page,lang='en',theme='light') {
 }
 const editor=(page:Page)=>page.getByRole('dialog',{name:'Edit membership',exact:true});
 async function edit(page:Page){await page.getByRole('button',{name:'Edit membership',exact:true}).click();await expect(editor(page).locator('.family-picker label').first()).toBeVisible();}
-test('hero charts, collapsed table, policy view, exact pending tooltip',async({page})=>{
+test('hero charts, collapsed table, policy view, k26 tooltip is official',async({page})=>{
  await start(page);await expect(page.locator('.family-exact')).not.toHaveAttribute('open');
  await expect(page.locator('.family-plots svg').first()).toHaveJSProperty('clientHeight',300);
- await page.locator('.family-plots [role=button]').filter({hasText:'Gazette not yet verified'}).first().focus();await expect(page.getByRole('tooltip')).toContainText('Gazette not yet verified');
+ // k26 is CEC official final (plenary approved 4 Nov 2026): no point is drawn as pending any more.
+ await expect(page.locator('.family-plots [role=button]').filter({hasText:'Gazette not yet verified'})).toHaveCount(0);await page.locator('.family-plots section').first().locator('g[role=button]').last().focus();await expect(page.getByRole('tooltip')).toBeVisible();await expect(page.getByRole('tooltip')).not.toContainText('Gazette not yet verified');
  await page.getByText('Exact figures (26 elections)',{exact:true}).click();await expect(page.locator('.family-table tbody tr')).toHaveCount(26);await expect(page.locator('.family-table')).toContainText('52,982');
  await page.getByRole('group',{name:'Mixed-list policy',exact:true}).getByRole('button',{name:'Count all',exact:true}).click();
  await expect(page.locator('.family-table')).toContainText('55,817');await expect(page.locator('.family-profile')).toContainText('Sourced draft interpretation');await expect(page.locator('.family-chip')).toHaveCount(9);
@@ -119,11 +120,11 @@ test('family aggregates open details without navigating; hover never moves plots
  await detail.getByRole('button',{name:'Open this election',exact:true}).click();await expect(page.locator('.family-treatment')).toContainText('Likud lineage');
 });
 
-for(const lang of ['he','en'])test(`family detail sheet keyboard and calculation caveats at 390: ${lang}`,async({page})=>{
+for(const lang of ['he','en'])test(`family detail sheet keyboard and official seats at 390: ${lang}`,async({page})=>{
  await page.setViewportSize({width:390,height:844});await start(page,lang,'dark');
  const marks=page.locator('.family-plots section').first().locator('g[role=button]');await marks.last().focus();await page.keyboard.press('Home');await expect(marks.first()).toBeFocused();
  await page.keyboard.press('ArrowRight');await expect(marks.nth(1)).toBeFocused();await page.keyboard.press('End');await expect(marks.last()).toBeFocused();await page.keyboard.press('Space');
- const d=page.getByRole('dialog');await expect(d.locator('.family-point')).toBeVisible({timeout:15000});await expect(d).toContainText(lang==='en'?'Calculated seats':'מנדטים מחושבים');
+ const d=page.getByRole('dialog');await expect(d.locator('.family-point')).toBeVisible({timeout:15000});await expect(d).not.toContainText(lang==='en'?'Calculated seats':'מנדטים מחושבים');
  expect(await d.evaluate(e=>e.scrollWidth<=e.clientWidth)).toBe(true);await d.evaluate(e=>{e.scrollTop=e.scrollHeight;});await expect(d.getByRole('button',{name:lang==='en'?'Close':'סגירה',exact:true})).toBeInViewport();
  await page.keyboard.press('Escape');await expect(d).not.toBeVisible();await expect(marks.last()).toBeFocused();
 });
