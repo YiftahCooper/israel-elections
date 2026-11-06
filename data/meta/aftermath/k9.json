@@ -138,6 +138,24 @@
       "publisher": "Ministry of Defense, IDF and Defense Establishment Archives, The Coastal road Massacre",
       "kind": "official",
       "accessed": "2026-11-05"
+    },
+    "opening-odata": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_KnessetDates?$filter=KnessetNum%20eq%209&$format=json",
+      "publisher": "Knesset OData",
+      "kind": "official",
+      "accessed": "2026-11-06"
+    },
+    "dmc-odata": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2018%20and%20StartDate%20eq%20datetime'1977-10-24T00:00:00'&$format=json",
+      "publisher": "Knesset OData",
+      "kind": "official",
+      "accessed": "2026-11-06"
+    },
+    "camp-plenum": {
+      "url": "https://fs.knesset.gov.il/9/Plenum/9_ptm_253754.pdf",
+      "publisher": "Knesset, 27 September 1978 sitting, p.4194",
+      "kind": "official",
+      "accessed": "2026-11-06"
     }
   },
   "results": {
@@ -145,15 +163,15 @@
     "officialResultsSourceId": "k9-results-gazette",
     "knessetSwornIn": {
       "date": "1977-06-13",
-      "confidence": "medium",
+      "confidence": "high",
       "cites": [
         {
-          "source": "hewiki-knesset9",
-          "quote": "כהונתה של הכנסת התשיעית החלה ב- 13 ביוני 1977"
+          "source": "opening-odata",
+          "quote": "PlenumStart: 1977-06-13T00:00:00"
         }
       ],
       "notes": [
-        "Only a labelled secondary source retrieved; the Knesset's own record of the first sitting is the target."
+        "Official opening-date membership independently agrees: all 120 elected members start 13 June 1977 in retained k9-membership-odata."
       ]
     }
   },
@@ -303,7 +321,7 @@
           "status": "unknown"
         },
         {
-          "letters": "ים",
+          "letters": "ימ",
           "seats": 1,
           "status": "unknown"
         }
@@ -449,10 +467,15 @@
         "letters": "ג",
         "seats": 4,
         "note": "Supported the coalition; held no ministry."
+      },
+      {
+        "letters": "פש",
+        "seats": 1,
+        "note": "Supported the formation confidence vote; included under the project support-inclusive coalition definition."
       }
     ],
-    "coalitionSeats": 61,
-    "coalitionSeatsNote": "Sum of list seats at the election (43+2+12+4). With Moshe Dayan (elected on the Alignment list) the government's supporters numbered 62; Flatto-Sharon also voted for it (63).",
+    "coalitionSeats": 62,
+    "coalitionSeatsNote": "Whole-list support at formation: 43+2+12+4+1=62; Dayan individually, elected on the opposition Alignment list, brings the confidence supporters to 63. Flatto-Sharon’s opposition label in Hebrew Wikipedia loses to the contemporary formation record under this support-inclusive definition.",
     "ministers": "Listed in knesset-plenum-1977-06-20 (13 ministers; the Prime Minister held Welfare, Justice, Transport and Communications pending the DMC).",
     "cites": [
       {
@@ -470,18 +493,18 @@
     ],
     "changes": [
       {
-        "date": "1977-10",
+        "date": "1977-10-24",
         "textEn": "The Democratic Movement for Change joined the government.",
         "textHe": "התנועה הדמוקרטית לשינוי (ד\"ש) הצטרפה לממשלה.",
-        "confidence": "medium",
+        "confidence": "high",
         "cites": [
           {
-            "source": "hewiki-knesset9",
-            "quote": "ב- 25 באוקטובר הצטרפה לקואליציה סיעת ד\"ש, והיא התרחבה ל-77 חברי כנסת."
+            "source": "dmc-odata",
+            "quote": "StartDate: 1977-10-24T00:00:00; PersonID 2676 (Justice), 3260 (Welfare), 2527 (Transport and Communications)."
           }
         ],
         "notes": [
-          "Exact day not confirmed by a primary source (secondary gives 25 October; other secondary references give 24 October). Shown at month precision."
+          "Official ministerial accession date wins over Hebrew Wikipedia’s 25 October; the disagreement is retained here."
         ]
       }
     ]
@@ -619,10 +642,14 @@
           {
             "source": "mfa-history",
             "quote": "Camp David Accords (September 1978)"
+          },
+          {
+            "source": "camp-plenum",
+            "quote": "בעד – 84; נגד – 19; נמנעו – 17. הצעת הסיכום נתקבלה."
           }
         ],
         "notes": [
-          "Vote 84–19–17 from a labelled secondary source; the plenum record is the target. Day shown at month precision (27 or 28 September in different references; the sitting ran overnight).",
+          "The official plenum record confirms 84–19–17. Month precision retained: the sitting dated 27 September ran overnight and ended at 03:32.",
           "MFA independently selects the accords/treaty as a national event; the Knesset history supplies the parliamentary approval act. MFA is not evidence for the approval vote or its tally."
         ]
       },
@@ -722,7 +749,6 @@
     "Positions of four one-seat lists in the 1977 consultations not found (ISA file נ-571/13 is the primary target).",
     "No official tally of 1977 recommendations; totals are computed from per-list reports.",
     "Hebrew press (Davar, Maariv, Haaretz on NLI JPress) not used: browser challenge; not circumvented.",
-    "Knesset first-sitting date, DMC accession date and Camp David vote use a labelled secondary source.",
     "Reaction items and issue polling not filled."
   ]
 }

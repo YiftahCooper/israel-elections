@@ -2,6 +2,7 @@
 // cross-checked against the Knesset's official OData membership record instead of the results
 // gazette. Every other list, and every other election, keeps the gazette-only contract.
 import { releasedDataset, verifyHistoricalProgress, type Audit, type EvidenceExtension, type VerifyOptions } from './k8-k12-common.ts';
+import { META } from '../list-meta.ts';
 import { rawJson } from '../build/sources.ts';
 import type { Check } from '../build/validate.ts';
 
@@ -46,6 +47,17 @@ export function buildK9(options: VerifyOptions = {}) {
   const audit = verifyK9(options);
   return audit.releaseReady ? [() => {
     const ds = releasedDataset(audit);
+    // Stale-letter IDs stay opaque stable keys; display uses corrected letters/names.
+    const stable = (rawJson('k9/national.reviewed.json') as { stableListIds: Record<string, string> }).stableListIds;
+    ds.lists.forEach(l => {
+      if (stable[l.letters]) {
+        const old = META[l.id];
+        if (old) { l.shortEn = old.en ?? null; l.color = old.color; l.bloc = old.bloc ?? null; }
+        l.shortHe = ['הפ', 'זך', 'פ', 'פז'].includes(l.letters) ? l.nameHe : (old?.he ?? l.nameHe);
+      }
+      if (l.letters === 'זה') l.shortHe = l.nameHe;
+      if (l.candidatesUnavailable) l.notesHe = ['רשימת המועמדים פורסמה בילקוט הפרסומים 2319, אך טרם תומללה באפליקציה.'];
+    });
     // Darken this k9-only brown so its adjacent Poalei Agudat Yisrael seat
     // stays distinguishable; keep shared metadata and other elections unchanged.
     ds.lists.find(l => l.letters === 'פש')!.color = '#79502e';

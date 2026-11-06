@@ -28,7 +28,7 @@ export const ISRAEL_1949: RuleSet = { ...ISRAEL_2014, id: 'il-1949-highest-avera
  * K2–K7 reproduce with primary connections; K6's transcription correction is recorded in 0069a. */
 export const ISRAEL_1951: RuleSet = { ...ISRAEL_2014, id: 'il-1951-largest-remainder-1', threshold: rat(1,100),
   remainderMethod: 'largest-remainder', majorityCap: false, largestRemainderRepeat: false, tiePolicy: 'unspecified' };
-/** K9 candidate-cap procedure inferred from the published result; see decision 0073. */
+/** K9 candidate cap documented in the Knesset appeal determination, 1 Nov 1977 p.237; see k09-resolution. */
 export const ISRAEL_1977: RuleSet = { ...ISRAEL_1973, id: 'il-1977-bader-ofer-1-candidate-cap', seatsCappedAtCandidates: true };
 export const RULESETS: Record<string, RuleSet> = Object.fromEntries(
   [ISRAEL_1949, ISRAEL_1951, ISRAEL_1973, ISRAEL_1977, ISRAEL_1992, ISRAEL_2004, ISRAEL_2014].map((r) => [r.id, r]),

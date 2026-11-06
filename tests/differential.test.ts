@@ -1,3 +1,7 @@
+// k9 audit 6 Nov: 51 recursive dataset paths (identity/display, bios, supporter grouping,
+// untranscribed-roster notes, status and provenance); all keys/votes/seats/agreements unchanged.
+// Allocation/analysis change only because the candidate-cap warning now distinguishes documented
+// 1977 procedure from counterfactual inference. No allocation logic changed; other 25 datasets equal HEAD.
 // 6 Nov 2026 k22 audit: reviewed scalar diff changes only status, logical Hebrew
 // punctuation, CEC link titles, three withdrawal flags and distinct modern Gesher
 // IDs (also k23). Withdrawal flags affect hypothetical corpus allocations; model
@@ -53,8 +57,8 @@ const EXPECTED: Record<Family, string> = {
   // engine on the same tree reproduces 8260bc46… and af4237ef…; model, validation and rules digests are unchanged.
   // merged with the k24 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k20 audit fixes: combined digest = union of the separately reviewed changes.
-  allocation: 'bf50217e327445c12941453eb13b84cb7badc51dce3d0ac173136068075e71ab',
-  analysis: 'b682af4570daf5cd7967e77afda56c8a9bcb2b5de4850f4d8ebc1652228269e0',
+  allocation: '6ac9f872f7eb16b512aaf6a95319fddb460ba3fb2ae6e6f63b1cb903479559f1',
+  analysis: '0b41ade19f938f415b693825f3600693a9e5f17e81ec7d12a6d16fb82177f30b',
   // Model digest re-recorded for the 1973 party ranks, then for candidate biography links (Candidate.bio): with
   // the build timestamps held fixed and bio not carried, the new code gives the previous digest. Then for three
   // corrected names (0088 addendum: 1955 #24, 1959 #47, 2003 Shinui #14); src unchanged, other digests unchanged.
@@ -117,7 +121,7 @@ const EXPECTED: Record<Family, string> = {
   // and builtAt changed (recursive field diff); HEAD k19 with current src reproduces 2694440f….
   // All four non-model digests unchanged. See docs/research/data-audit/k19-resolution.md.
   // merged with k19 audit fixes: combined digest = union of the separately reviewed changes.
-  model: '4faa7f17ce364956de29269c7575a52a553ca40ea4da216f29fcc9620d9c21e5',
+  model: 'e363a633768b71970d4053612cd99cbe0f060f4965f2a8870c6ac4035885c1b2',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

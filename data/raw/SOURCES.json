@@ -1148,8 +1148,8 @@
     "description": "Released national evidence: six official agreements, exact inferred-cap reproduction, all 120 elected names checked; Ratz supplemented by official opening-date Knesset OData.",
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-03T16:58:39.222721+00:00",
-    "bytes": 9874,
-    "sha256": "86d77cfb51327acdaaf12548414c8edf1a81992b845b3986368a5655f42fd323"
+    "bytes": 10155,
+    "sha256": "e15433ce5abafd13889aff6deb86884fdab6d6666299333b957fb81f586c15e1"
   },
   {
     "id": "k9-candidates-reviewed",
@@ -1161,7 +1161,7 @@
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-03T17:01:30.664880+00:00",
     "bytes": 27482,
-    "sha256": "bad96a6f64a27b4913edc3a0a88aca98f4518080c6d3a7650465d83121ad9c9e"
+    "sha256": "0a5828e19e32b97c7596eef1e8d349567f28d7b4c3f83a1c4a061f0f7463d9f4"
   },
   {
     "id": "k10-results-gazette",
@@ -2778,8 +2778,8 @@
     "description": "Legal basis of the 1977 unfillable seat and missing Ratz elected-member paragraph — bounded search scope, retrieval hashes and evidence gaps.",
     "method": "manual-review",
     "retrievedAt": "2026-11-03T16:58:39.222721+00:00",
-    "bytes": 8333,
-    "sha256": "fbcd855efe1223cb48b576a2c99ddab2a8e7405e2f6bd2634a5bc6d13bc86ee1"
+    "bytes": 8754,
+    "sha256": "83a6f424c1c33f80e22d6b04d6938fccd68e181ec54222e3c4740c5ddfc73403"
   },
   {
     "id": "k9-ratz-odata",
@@ -6100,5 +6100,15 @@
     "retrievedAt": "2026-11-06",
     "bytes": 466905,
     "sha256": "997628f9f5b6d556b62e2547489cbc9b6fbd64fa721c6eff687577ae1074cc24"
+  },
+  {
+    "id": "k9-cap-appeal-protocol",
+    "file": "k9/cap-appeal-protocol.pdf",
+    "url": "https://fs.knesset.gov.il/9/Plenum/9_ptm_253927.pdf",
+    "publisher": "Knesset",
+    "description": "1 November 1977, p.237: accepted determination rejecting Gross appeal; initial one-seat cap, 114 initial seats and six surplus seats under section 81(d).",
+    "retrievedAt": "2026-11-06",
+    "sha256": "1cf2999f7a715175d5d722a910a8fefd637361ac2de00d844d93a84d45bb110c",
+    "bytes": 2971615
   }
 ]

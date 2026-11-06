@@ -322,7 +322,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k9.json",
-      "sha256": "3435309ed5ef70b846f4979660a8e907bf3c579ef6a8fed01ff849180cf79dda",
+      "sha256": "9f3ff9e738ebc11912f80ab71a30cc52f510923471f361c792faf09137b2238d",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k10": {
@@ -960,7 +960,8 @@
             "k9",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name in YP 2326; not a claim about the registered party name."
         },
         {
           "date": "1981-06-30",
@@ -1124,7 +1125,8 @@
             "k9",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name in YP 2326; not a claim about the registered party name."
         },
         {
           "date": "1981-06-30",
@@ -2979,7 +2981,8 @@
             "k9",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed ballot-list display name in YP 2326; not a claim about the registered party name."
         },
         {
           "date": "1981-06-30",
@@ -6025,7 +6028,7 @@
         {
           "date": "1977-05-17",
           "datePrecision": "day",
-          "nameHe": "דמוקרטים בצדק",
+          "nameHe": "דו קיום בצדק",
           "nameEn": null,
           "sources": [
             "k9",
@@ -6057,7 +6060,7 @@
         {
           "date": "1977-05-17",
           "datePrecision": "day",
-          "nameHe": "התנועה להתחדשות חברתית בראשותו של מרדכי בן־פורת",
+          "nameHe": "התנועה להתחדשות ציונית חברתית בראשותו של מרדכי בן־פורת",
           "nameEn": null,
           "sources": [
             "k9",
@@ -6089,7 +6092,7 @@
         {
           "date": "1977-05-17",
           "datePrecision": "day",
-          "nameHe": "בית ישראל, ברית נאמני תימן ועדות ישראל",
+          "nameHe": "בית ישראל, ברית יוצאי תימן ועדות ישראל",
           "nameEn": null,
           "sources": [
             "k9",
@@ -6217,7 +6220,7 @@
         {
           "date": "1977-05-17",
           "datePrecision": "day",
-          "nameHe": "הפנתרים הציוניים, רשימת ציבור ודורשי עבודה",
+          "nameHe": "הפנתרים הציוניים, רשימת עובדי ייצור וועדי עובדים",
           "nameEn": null,
           "sources": [
             "k9",
@@ -6249,7 +6252,7 @@
         {
           "date": "1977-05-17",
           "datePrecision": "day",
-          "nameHe": "חופש, חזית פועלים, פנתרים שחורים, ישראל הצעירה, יוצאי עדות, ועדי שכונות עוני ובלתי מפלגתיים",
+          "nameHe": "חופש, חזית פועלים, פנתרים שחורים, ישראל הצעירה, יוצאי עודד, ועדי שכונות עוני ובלתי מפלגתיים",
           "nameEn": null,
           "sources": [
             "k9",
