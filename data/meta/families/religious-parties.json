@@ -839,10 +839,10 @@
       "electionId": "k3",
       "electionDate": "1955-07-26",
       "datasetPath": "public/data/k3.json",
-      "datasetSha256": "3392fbc308144fdfa875e07a089e8abe392225c3625b59d8bd908c8fb0a2b8ba",
+      "datasetSha256": "6c08cf6b8f4a0014be61e331ff1b31bb5a7ab35409ce6cf892072961737a2155",
       "datasetStatus": {
         "stage": "official-final",
-        "asOf": "2026-11-03",
+        "asOf": "2026-11-06",
         "noteHe": "הקולות הארציים, הקשרים בין הרשימות וכל 120 המושבים אומתו. בכל רשימה זוכה תומללו דרגות רציפות המכסות את כל הנבחרים ונבדקו מול התוצאות הרשמיות; דרגות מאוחרות ורשימות מועמדים ללא מושבים לא תומללו. ללא נתוני יישובים. ראו החלטה 0065.",
         "noteEn": "Official national votes, agreements and all 120 seats verified. Every winning list has a contiguous candidate prefix covering all elected members, cross-checked against the official results; later ranks and losing-list rosters are untranscribed. No locality dataset. See decision 0065."
       },
@@ -1239,7 +1239,7 @@
       "electionId": "k6",
       "electionDate": "1965-11-02",
       "datasetPath": "public/data/k6.json",
-      "datasetSha256": "8e4eb8ecb31b72922a6d8af6281770b86602ea7755963f7fe63889ccf383ca5e",
+      "datasetSha256": "5875106a28e106650120507a1634f2fc1c6ab081e715b9fabda44ac1e235a561",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",

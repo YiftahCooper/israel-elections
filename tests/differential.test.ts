@@ -43,6 +43,10 @@
 // Rafi logo removal, source provenance and government notes. Stable IDs, votes,
 // seats and engine output remain identical; only the model digest changes.
   // merged with k6 audit fixes: combined digest = union of the separately reviewed changes.
+// k3 audit 6 Nov 2026: reviewed 24-path dataset diff corrects labels/letters, adds
+// withdrawn יז and source metadata; existing IDs, votes/seats and agreements stay fixed.
+// Restoring only baseline k3 reproduces all five previous digests; no src changed.
+  // merged with k3 audit fixes: combined digest = union of the separately reviewed changes.
 // 6 Nov 2026 k22 audit: reviewed scalar diff changes only status, logical Hebrew
 // punctuation, CEC link titles, three withdrawal flags and distinct modern Gesher
 // IDs (also k23). Withdrawal flags affect hypothetical corpus allocations; model
@@ -115,7 +119,8 @@ const EXPECTED: Record<Family, string> = {
   // merged with k15 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k9 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k14 audit fixes: combined digest = union of the separately reviewed changes.
-  allocation: 'da03e53f61fe4bb573de00163d4c20f4df10f8224a72109fc69aae1b11a9adb6',
+  // merged with k3 audit fixes: combined digest = union of the separately reviewed changes.
+  allocation: '86cb225bbaa71ab1227601828c4bc8b20d10da0a1d635873960d36e0bafdef64',
   analysis: '0b41ade19f938f415b693825f3600693a9e5f17e81ec7d12a6d16fb82177f30b',
   // Model digest re-recorded for the 1973 party ranks, then for candidate biography links (Candidate.bio): with
   // the build timestamps held fixed and bio not carried, the new code gives the previous digest. Then for three
@@ -206,7 +211,8 @@ const EXPECTED: Record<Family, string> = {
   // Shechterman display name/note, affiliated-list scheme title, unresolved logo removal,
   // and build metadata. Every other election and all engine/model source are unchanged.
   // merged with k8 audit fixes: combined digest = union of the separately reviewed changes.
-  model: '7f24609e7af980c96bcc58780afe6f6bf2d902fd4c593464a4da67b3956c0a8f',
+  // merged with k3 audit fixes: combined digest = union of the separately reviewed changes.
+  model: '052cf2a29ed78ca136a2d21965ca17a2837d1a0f9b894516e2a660852fb649ff',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

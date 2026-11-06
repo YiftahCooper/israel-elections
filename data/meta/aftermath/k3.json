@@ -37,7 +37,9 @@
       "url": "https://www.jta.org/archive/ben-zvi-ends-talks-on-cabinet-formation-will-summon-ben-gurion",
       "publisher": "Jewish Telegraphic Agency, Daily News Bulletin (reused recommendation research)",
       "kind": "secondary",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-05",
+      "originalBulletinUrl": "https://pdfs.jta.org/1955/1955-08-18_160.pdf",
+      "datelineNote": "Original PDF inspected by fixer: Jerusalem, Aug. 17. Publication date is the following day."
     },
     "coalition-1": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%207&$format=json",
@@ -68,7 +70,9 @@
       "url": "https://www.jta.org/archive/israel-president-starts-consultations-on-formation-of-cabinet",
       "publisher": "Jewish Telegraphic Agency, Daily Bulletin, 17 August 1955",
       "kind": "secondary",
-      "accessed": "2026-11-05"
+      "accessed": "2026-11-05",
+      "originalBulletinUrl": "https://pdfs.jta.org/1955/1955-08-17_159.pdf",
+      "datelineNote": "Original PDF inspected by fixer: Jerusalem, Aug. 16. Publication date is the following day."
     },
     "mfa-timeline": {
       "url": "https://www.gov.il/en/pages/timeline-of-events-half-a-century-of-independence",
@@ -186,7 +190,8 @@
       "notes": [
         "Reuses docs/research/pm-recommendations-1949-1973.md; consultation conditions are not personal recommendations. Unknown does not mean no recommendation.",
         "Dates bracket the meetings evidenced by the earlier research; a complete per-faction diary was not retrieved.",
-        "Herut refused to attend; the National Religious Front asked that the largest party be tasked without naming a person. Neither is converted into a personal recommendation."
+        "Herut refused to attend; the National Religious Front asked that the largest party be tasked without naming a person. Neither is converted into a personal recommendation.",
+        "Original JTA bulletin dated 17 August is datelined Jerusalem, Aug.16; the 18 August bulletin is datelined Aug.17 and says virtually completed. The 18 August bracket is the independently sourced mandate day, not proof of a consultation held that day."
       ],
       "endDate": "1955-08-18"
     }
@@ -513,8 +518,8 @@
     "Reaction statements are not collected.",
     "Mid-term consultation positions, mandate deadlines and extensions are incomplete unless an explicit step below records them.",
     "Closing date is the next election, not dissolution day. The governing dissolution/election-date law has not been retrieved; regular versus early termination is not inferred from term length.",
-    "The mirrored term history misdates Wadi Salib and includes an aircraft incident before this election. Those dates were not promoted to included events.",
-    "Replacement-coalition snapshots are partial: government 14’s faction splits and current seat counts require a separate audit. Other replacement snapshots use election-list seats with stated support-list limitations.",
+    "The mirrored term history misdates Wadi Salib and includes an aircraft incident between the election and the first sitting (27 July 1955, the day after polling). Those dates were not promoted to included events.",
+    "Replacement snapshots use election-list seats with stated support-list limitations; the term covers governments 7 and 8.",
     "Presentation dates can precede approval dates; confidence steps use the full protocol. The exact assignment days not transcribed here remain unknown."
   ]
 }

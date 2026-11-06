@@ -1,6 +1,6 @@
 {
   "id": "k3",
-  "reviewedOn": "2026-11-03",
+  "reviewedOn": "2026-11-06",
   "resultsSourceId": "k3-results-gazette",
   "candidateSourceId": "k3-candidates-gazette",
   "pages": {
@@ -47,13 +47,13 @@
     },
     {
       "letters": "יד",
-      "nameHe": "הרשימה הדמוקרטית לערביי ארץ-ישראל",
+      "nameHe": "הרשימה הדימוקרטית לערביי ארץ-ישראל",
       "votes": 15475,
       "officialSeats": 2
     },
     {
       "letters": "יט",
-      "nameHe": "רשימה דתית מקורית, נציגה בני תימן ודתיים בלתי מפלגתיים",
+      "nameHe": "רשימה דתית מקורית, תנועת בני תימן ודתיים בלתי מפלגתיים",
       "votes": 2448,
       "officialSeats": 0
     },
@@ -76,14 +76,15 @@
       "officialSeats": 2
     },
     {
-      "letters": "סא",
+      "letters": "סצ",
       "nameHe": "רשימת ספרדים ועדות המזרח, עולים, ותיקים ובלתי מפלגתיים",
       "votes": 6994,
-      "officialSeats": 0
+      "officialSeats": 0,
+      "legacyId": "3-סא"
     },
     {
       "letters": "ע",
-      "nameHe": "החקלאות ופיתוח",
+      "nameHe": "חקלאות ופיתוח",
       "votes": 9791,
       "officialSeats": 1
     },
@@ -119,7 +120,7 @@
     },
     {
       "letters": "ש",
-      "nameHe": "ליכוד — תנועה כללית עממית",
+      "nameHe": "ליכוד — תנועה כלכלית עממית",
       "votes": 3044,
       "officialSeats": 0
     },
@@ -128,6 +129,16 @@
       "nameHe": "מפלגת אחדות העבודה — פועלי ציון ובלתי מפלגתיים",
       "votes": 69475,
       "officialSeats": 10
+    },
+    {
+      "letters": "יז",
+      "nameHe": "איגוד העובד הקשיש בלתי מפלגתי",
+      "votes": 0,
+      "officialSeats": 0,
+      "withdrawn": true,
+      "notesHe": [
+        "כל מועמדי הרשימה התפטרו לפני הבחירות: ילקוט הפרסומים 429, עמ׳ 1087, הודעה מ־20.7.1955 שפורסמה ב־24.7.1955. אין לרשימה שורת תוצאות בילקוט 432; אפס אינו ספירת קולות משתתפת."
+      ]
     }
   ],
   "agreements": {
@@ -146,7 +157,7 @@
         "צח"
       ],
       [
-        "סא",
+        "סצ",
         "ל"
       ],
       [
@@ -177,5 +188,18 @@
     "sourceId": "k3-rosters-reviewed",
     "note": "Contiguous prefixes cover every elected member, with results-notice exclusions explicitly mapped. Later ranks omitted, not complete registered lists."
   },
-  "releaseBlockers": []
+  "releaseBlockers": [],
+  "auditNotes": [
+    {
+      "sourceId": "k3-results-gazette",
+      "quote": "סצ; רשימה דתית מקורית, תנועת בני תימן ודתיים בלתי מפלגתיים; ליכוד — תנועה כלכלית עממית; חקלאות ופיתוח; הרשימה הדימוקרטית לערביי ארץ-ישראל",
+      "locator": "YP 432 pp.1137–1139; YP 425 pp.1013,1017,1025; YP 427 p.1053",
+      "note": "Opaque list ID 3-סא remains stable; displayed letters are סצ."
+    },
+    {
+      "sourceId": "k3-withdrawals-gazette",
+      "quote": "כל המועמדים ברשימת המועמדים הנושאת את הכינוי \"איגוד העובד הקשיש בלתי מפלגתי\" ואת האותיות \"יז\" התפטרו ממועמדותם",
+      "locator": "YP 429 p.1087 item 6"
+    }
+  ]
 }
