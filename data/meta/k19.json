@@ -105,6 +105,13 @@
          "kind": "secondary",
          "quote": "ב-10 ביוני 2014 נבחר ראובן ריבלין מהליכוד על ידי הכנסת התשע עשרה לתפקיד נשיא מדינת ישראל",
          "accessed": "2026-11-04"
+        },
+        {
+         "url": "https://main.knesset.gov.il/About/Lexicon/pages/rivlin.aspx",
+         "publisher": "Knesset lexicon (indexed text; live page location-denied)",
+         "kind": "official",
+         "quote": "השתייכות מפלגתית: הליכוד, הליכוד-גשר-צומת, הליכוד-צומת, הליכוד – ישראל ביתנו.",
+         "accessed": "2026-11-06"
         }
        ],
        "confidence": "medium",
@@ -274,11 +281,25 @@
      ],
      "sources": [
       {
-       "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%99%D7%AA_%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99",
-       "publisher": "Wikipedia (he)",
+       "url": "https://news.walla.co.il/item/2591767",
+       "publisher": "Walla! News (29 November 2012)",
        "kind": "secondary",
-       "quote": "מפד\"ל: נפתלי בנט, ניסן סלומינסקי, איילת שקד, אורי אורבך ... אבי וורצמן, מוטי יוגב, יוני שטבון, שולי מועלם (8)",
-       "accessed": "2026-11-04"
+       "quote": "במקום הרביעי יועמד הרב אלי בן דהן מתקומה ובמקום החמישי איילת שקד",
+       "accessed": "2026-11-06"
+      },
+      {
+       "url": "https://www.kipa.co.il/חדשות/חברי-מרכז-תקומה-קבעו-את-רשימת-המפלגה/",
+       "publisher": "Kipa (18 November 2012)",
+       "kind": "secondary",
+       "quote": "הרב אלי בן דהן, זבולון כלפא, אורית סטרוק, הלל הורוביץ ונחי אייל",
+       "accessed": "2026-11-06"
+      },
+      {
+       "url": "https://www.israelnationalnews.com/news/162803",
+       "publisher": "Israel National News (3 December 2012)",
+       "kind": "secondary",
+       "quote": "There will be nine members of the Bayit Yehudi and six members of Tekuma in the first 15 spots of the joint list.",
+       "accessed": "2026-11-06"
       }
      ],
      "confidence": "medium"
@@ -296,18 +317,25 @@
      ],
      "sources": [
       {
-       "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%99%D7%AA_%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99",
-       "publisher": "Wikipedia (he)",
+       "url": "https://news.walla.co.il/item/2591767",
+       "publisher": "Walla! News (29 November 2012)",
        "kind": "secondary",
-       "quote": "האיחוד הלאומי–תקומה: אורי אריאל, אלי בן-דהן, זבולון כלפא, אורית סטרוק, הלל הורוביץ ... (4)",
-       "accessed": "2026-11-04"
+       "quote": "במקום הרביעי יועמד הרב אלי בן דהן מתקומה ובמקום החמישי איילת שקד",
+       "accessed": "2026-11-06"
       },
       {
-       "url": "https://he.wikipedia.org/wiki/%D7%94%D7%91%D7%99%D7%AA_%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99",
-       "publisher": "Wikipedia (he)",
+       "url": "https://www.kipa.co.il/חדשות/חברי-מרכז-תקומה-קבעו-את-רשימת-המפלגה/",
+       "publisher": "Kipa (18 November 2012)",
        "kind": "secondary",
-       "quote": "ב-16 בפברואר 2015 נפטר אורי אורבך, הוא הוחלף על ידי הרב הלל הורוביץ, נציג \"האיחוד הלאומי-תקומה\"",
-       "accessed": "2026-11-04"
+       "quote": "הרב אלי בן דהן, זבולון כלפא, אורית סטרוק, הלל הורוביץ ונחי אייל",
+       "accessed": "2026-11-06"
+      },
+      {
+       "url": "https://www.israelnationalnews.com/news/162803",
+       "publisher": "Israel National News (3 December 2012)",
+       "kind": "secondary",
+       "quote": "There will be nine members of the Bayit Yehudi and six members of Tekuma in the first 15 spots of the joint list.",
+       "accessed": "2026-11-06"
       }
      ],
      "confidence": "medium"
@@ -390,7 +418,7 @@
   },
   {
    "letters": "ג",
-   "nameHe": " יהדות התורה והשבת, אגודת ישראל - דגל התורה",
+   "nameHe": "יהדות התורה והשבת, אגודת ישראל - דגל התורה",
    "seats": 7,
    "sources": [
     {
@@ -414,11 +442,11 @@
      ],
      "sources": [
       {
-       "url": "https://he.wikipedia.org/wiki/%D7%99%D7%94%D7%93%D7%95%D7%AA_%D7%94%D7%AA%D7%95%D7%A8%D7%94",
-       "publisher": "Wikipedia (he)",
-       "kind": "secondary",
-       "quote": "הכנסת ה-19 (2013) ... אגודת ישראל: יעקב ליצמן, מאיר פרוש, מנחם אליעזר מוזס, ישראל אייכלר ... דגל התורה: משה גפני, אורי מקלב, יעקב אשר",
-       "accessed": "2026-11-04"
+       "url": "https://www.idi.org.il/media/20997/המפלגות-בישראל-2021-1992.pdf",
+       "publisher": "Israel Democracy Institute — Rahat and Kenig, המפלגות בישראל 1992–2021, table 8.5, p.442, 2013 column",
+       "kind": "academic",
+       "quote": "יעקב ליצמן (אגודת ישראל–גור); משה גפני (דגל התורה); מאיר פרוש (אגודת ישראל–ש״א); אורי מקלב (דגל התורה); מנחם מוזס (אגודת ישראל–ויז׳ניץ); ישראל אייכלר (אגודת ישראל–בעלז); יעקב אשר (דגל התורה)",
+       "accessed": "2026-11-06"
       }
      ],
      "confidence": "medium"
@@ -434,11 +462,11 @@
      ],
      "sources": [
       {
-       "url": "https://he.wikipedia.org/wiki/%D7%99%D7%94%D7%93%D7%95%D7%AA_%D7%94%D7%AA%D7%95%D7%A8%D7%94",
-       "publisher": "Wikipedia (he)",
-       "kind": "secondary",
-       "quote": "דגל התורה: משה גפני, אורי מקלב, יעקב אשר",
-       "accessed": "2026-11-04"
+       "url": "https://www.idi.org.il/media/20997/המפלגות-בישראל-2021-1992.pdf",
+       "publisher": "Israel Democracy Institute — Rahat and Kenig, המפלגות בישראל 1992–2021, table 8.5, p.442, 2013 column",
+       "kind": "academic",
+       "quote": "יעקב ליצמן (אגודת ישראל–גור); משה גפני (דגל התורה); מאיר פרוש (אגודת ישראל–ש״א); אורי מקלב (דגל התורה); מנחם מוזס (אגודת ישראל–ויז׳ניץ); ישראל אייכלר (אגודת ישראל–בעלז); יעקב אשר (דגל התורה)",
+       "accessed": "2026-11-06"
       }
      ],
      "confidence": "medium"
@@ -572,11 +600,11 @@
    "seats": 4,
    "sources": [
     {
-     "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset19-cand.pdf",
-     "publisher": "Central Elections Committee / Reshumot (candidate-list gazette)",
+     "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset19-results.pdf",
+     "publisher": "CEC / Reshumot YP 6540 p.2492",
      "kind": "official",
-     "quote": "כינוי הרשימה : הרשימה הערבית המאוחדת - התנועה הערבית להתחדשות - המפלגה הערבית הדמוקרטית",
-     "accessed": "2026-11-04"
+     "quote": "הרשימה הערבית המאוחדת - התנועה הערבית להתחדשות - המפלגה הערבית הדמוקרטית",
+     "accessed": "2026-11-06"
     }
    ],
    "parties": [
@@ -627,11 +655,18 @@
      ],
      "sources": [
       {
-       "url": "https://he.wikipedia.org/wiki/%D7%A8%D7%A2%22%D7%9E-%D7%AA%D7%A2%22%D7%9C",
-       "publisher": "Wikipedia (he)",
+       "url": "https://www.idi.org.il/media/20997/המפלגות-בישראל-2021-1992.pdf",
+       "publisher": "Israel Democracy Institute — Rahat and Kenig, p.364",
+       "kind": "academic",
+       "quote": "בין הכנסות ה־16 ו־18 (2013-2003) היא יוצגה על ידי חבר כנסת אחד בלבד (טלב א־סאנע)",
+       "accessed": "2026-11-06"
+      },
+      {
+       "url": "https://www.ynet.co.il/articles/mobile/0,7340,L-4336803,00.html",
+       "publisher": "ynet",
        "kind": "secondary",
-       "quote": "ברשימה המשותפת של רע\"ם-תע\"ל-מד\"ע בבחירות לכנסת התשע עשרה הוצב נציג מד\"ע, א-סאנע, במקום החמישי",
-       "accessed": "2026-11-04"
+       "quote": "טאלב א-סאנע, מקום 5 ברשימת רע\"מ- תע\"ל",
+       "accessed": "2026-11-06"
       }
      ],
      "confidence": "medium"
@@ -752,6 +787,19 @@
     "elected": 4,
     "electedAssigned": 4
    }
+  },
+  {
+   "letters": "ד",
+   "nameHe": "בל\"ד - אלתג'מוע אלווטני אלדמוקרטי",
+   "sources": [
+    {
+     "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset19-cand.pdf",
+     "publisher": "CEC / Reshumot YP 6524",
+     "kind": "official",
+     "quote": "בל\"ד - אלתג'מוע אלווטני אלדמוקרטי",
+     "accessed": "2026-11-06"
+    }
+   ]
   }
  ],
  "blocSchemes": [
@@ -899,7 +947,7 @@
       },
       {
        "letters": "ד",
-       "note": "Balad's delegation is quoted giving its reasons; the 82 total, and Walla's statement that the left-bloc parties other than Kadima recommended no one, place it here. No source retrieved uses the words 'did not recommend' for Balad specifically."
+       "note": "Ynet (2 February 2013) explicitly includes Balad among the lists that recommended no candidate."
       }
      ],
      "seats": 38
@@ -926,6 +974,13 @@
      "kind": "secondary",
      "quote": "הבית היהודי, ש\"ס ויהדות התורה הצטרפו כצפוי ליש עתיד והמליצו לנשיא על רה\"מ להקים את הקואליציה ... באין מועמד שיכול להוביל, מפלגת העבודה לא המליצה על איש ... יו\"ר התנועה ציפי לבני בחרה שלא להמליץ לנשיא על מועמד להרכבת הממשלה ... גם סיעת מרצ בחרה שלא להמליץ ... גם סיעת רע\"מ-תע\"ל בחרה שלא להמליץ על מועמד לראשות הממשלה ... לא מצאנו אישיות שתענה על הפרמטרים שלנו לתפקיד ראש הממשלה ולכן לא המלצנו על אף נציג (חד\"ש)",
      "accessed": "2026-11-04"
+    },
+    {
+     "url": "https://www.ynet.co.il/articles/0,7340,L-4340075,00.html",
+     "publisher": "ynet",
+     "kind": "secondary",
+     "quote": "וכך נהגו גם נציגי מרצ, התנועה, רע\"מ-תע\"ל, חד\"ש ובל\"ד",
+     "accessed": "2026-11-06"
     }
    ],
    "notes": [

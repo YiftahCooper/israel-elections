@@ -3417,7 +3417,7 @@
       "electionId": "k19",
       "electionDate": "2013-01-22",
       "datasetPath": "public/data/k19.json",
-      "datasetSha256": "3d2d9769d4db53fc6bfeb1c25fc4d980d1fcb4c38f15dd7b150695befc1e53b3",
+      "datasetSha256": "da2498ebc1e1fed7a02637ddfe62b24a49216d2cd38bcae07e2a3106b522d9ec",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2013-01-30",
@@ -3501,7 +3501,7 @@
         {
           "listId": "19-ד",
           "letters": "ד",
-          "nameHe": "בל\"ד - אלתג'אלווטני אלדמוקרטי",
+          "nameHe": "בל\"ד - אלתג'מוע אלווטני אלדמוקרטי",
           "votes": 97030,
           "partyIds": [
             "balad"

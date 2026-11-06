@@ -102,6 +102,18 @@
       "publisher": "IDF, Operation Protective Edge, 8 July–26 August 2014",
       "kind": "official",
       "accessed": "2026-11-05"
+    },
+    "recommendations-4": {
+      "url": "https://www.ynet.co.il/articles/0,7340,L-4340075,00.html",
+      "publisher": "ynet",
+      "kind": "secondary",
+      "accessed": "2026-11-06"
+    },
+    "ynet-investiture": {
+      "url": "https://www.ynet.co.il/articles/0,7340,L-4358012,00.html",
+      "publisher": "ynet",
+      "kind": "secondary",
+      "accessed": "2026-11-06"
     }
   },
   "results": {
@@ -204,7 +216,13 @@
           "letters": "ד",
           "seats": 3,
           "status": "none",
-          "noteEn": "Balad's delegation is quoted giving its reasons; the 82 total, and Walla's statement that the left-bloc parties other than Kadima recommended no one, place it here. No source retrieved uses the words 'did not recommend' for Balad specifically."
+          "noteEn": "Ynet (2 February 2013) explicitly names Balad among the non-recommenders.",
+          "cites": [
+            {
+              "source": "recommendations-4",
+              "quote": "וכך נהגו גם נציגי מרצ, התנועה, רע\"מ-תע\"ל, חד\"ש ובל\"ד"
+            }
+          ]
         }
       ],
       "totals": {
@@ -289,6 +307,10 @@
           {
             "source": "jta-investiture",
             "quote": "by a vote of 68 to 48, with four absent."
+          },
+          {
+            "source": "ynet-investiture",
+            "quote": "ברוב של 68 תומכים מול 48 מתנגדים וארבעה חברי כנסת שנעדרו"
           }
         ]
       }
@@ -413,10 +435,8 @@
     "note": "No qualifying published most-important-problem topline retrieved; see docs/research/issue-polling-sources.md. No microdata calculations."
   },
   "gaps": [
-    "CEC certification date not retrieved.",
-    "Presidential originals not retrieved; tasking and extension use contemporary reporting.",
-    "The Balad recommendation remains qualified as in the existing research; no source directly quotes its non-recommendation.",
-    "No included term event meets the two-chronology rule; candidate list is not a factual chronology."
+    "YP 6540 is signed י\"ז בשבט התשע\"ג (28 January 2013), but its parenthesized Gregorian date reads 18 January 2013, before polling. Certification date remains qualified because the notice contradicts itself.",
+    "Presidential originals not retrieved; tasking and extension use contemporary reporting."
   ],
   "government": {
     "number": 33,

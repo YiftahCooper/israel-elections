@@ -199,7 +199,7 @@ export async function buildHistorical(o: BuildOptions): Promise<{ ds: ElectionDa
   for (const [letters, leader] of Object.entries(o.candidateLeaders)) check(lists.find(l => l.letters === letters)?.candidates[0].nameHe === leader, `k${n} ${letters}: unexpected first candidate`);
   const letters = lists.map(l => l.letters);
   checkAgreementPairs(check, `k${n}`, o.pairs, letters);
-  const sourceIds = [`k${n}-results-gazette`, `k${n}-candidates-gazette`, `k${n}-surplus-gazette`, `k${n}-ballots-datagov`, ...(n === 18 ? ['k18-allocation-memorandum'] : ['k19-localities-datagov', 'k19-final-results-capture'])];
+  const sourceIds = [`k${n}-results-gazette`, `k${n}-candidates-gazette`, `k${n}-surplus-gazette`, `k${n}-ballots-datagov`, ...(n === 18 ? ['k18-allocation-memorandum'] : ['k19-localities-datagov', 'k19-final-results-capture', 'k19-results-correction'])];
   // the polling-station copy lives in ignored scratch; its hash is checked when present
   const rawSha256 = verifySources(sourceIds, check, { allowMissingFile: true });
   // The retained fingerprint covers the original election evidence, before additive demographic metadata.

@@ -90,3 +90,14 @@ polling snapshot is still needed to satisfy the outstanding request.
 * Localities: https://data.gov.il/api/3/action/datastore_search?resource_id=c20cdcef-4d42-4241-a41b-6ca7ae51002d
 * Polling: https://data.gov.il/api/3/action/datastore_search?resource_id=432d3185-545a-41d9-8c72-d10ee515919c
 * Retained sources, hashes and retrieval details: data/raw/SOURCES.json.
+
+## 6 November 2026 evidence addendum
+
+YP 6546 (12 February 2013), p.2874, formally corrects the grand total:
+במקום "3,792,472" צריך להיות "3,792,742". Retained as
+`data/raw/k19/results-correction.pdf` with manifest ID `k19-results-correction`,
+retrieved from https://olaw.org.il/yalkut/yalkut-6546.pdf. This supersedes the
+research-state statement above that no official typo correction was found. It
+does not amend any of the three list totals or establish their station origins.
+Release state was already superseded by decision 0042. The same-rank list-vote
+dispute is recorded for the owner in `docs/research/data-audit/k19-resolution.md`.

@@ -1,8 +1,9 @@
 # Changelog
 
-## 6 November 2026 — k24 data audit
+## 6 November 2026 — data audit
 
-- Corrected Demokratit’s withdrawal, retained official final notices, clarified opening membership and polling-station scope, added candidate resignation notes, and corrected overstated source and logo verification claims.
+- k24: corrected Demokratit’s withdrawal, retained official final notices, clarified opening membership and polling-station scope, added candidate resignation notes, and corrected overstated source and logo verification claims.
+- k19: retained the formal Gazette total correction, repaired list identity, context and stale research notes, strengthened constituent sourcing and withheld three unproven campaign logos.
 
 ## 5 November 2026 — release review
 

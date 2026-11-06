@@ -6087,5 +6087,18 @@
     "retrievedAt": "2026-11-06",
     "bytes": 105,
     "sha256": "5586ec977297dadcbb62fc92deeb44823ace962745f66c58c44c299be791660a"
+  },
+  {
+    "id": "k19-results-correction",
+    "file": "k19/results-correction.pdf",
+    "url": "https://olaw.org.il/yalkut/yalkut-6546.pdf",
+    "publisher": "Reshumot — YP 6546, 12 February 2013, p.2874 (via olaw.org.il mirror)",
+    "official": true,
+    "description": "Formal correction of the valid-vote grand total only; no list totals amended.",
+    "quote": "במקום \"3,792,472\" צריך להיות \"3,792,742\"",
+    "method": "http",
+    "retrievedAt": "2026-11-06",
+    "bytes": 466905,
+    "sha256": "997628f9f5b6d556b62e2547489cbc9b6fbd64fa721c6eff687577ae1074cc24"
   }
 ]
