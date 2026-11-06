@@ -308,7 +308,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k7.json",
-      "sha256": "721fd2414c967a189c18f246f49f28cf43917b335c46c500bcf617f1e8033ab7",
+      "sha256": "6aeaff3a56bf928795b1d29948cd2132ea61158f1d5508f8fe48c28c80912359",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k8": {
@@ -938,7 +938,8 @@
             "k7",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed 1969 ballot-list display name (YP 1573, כינוי הרשימה); not a claim about the registered party name."
         },
         {
           "date": "1973-12-31",
@@ -1103,7 +1104,8 @@
             "k7",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed 1969 ballot-list display name (YP 1573, כינוי הרשימה); not a claim about the registered party name."
         },
         {
           "date": "1973-12-31",
@@ -2959,7 +2961,8 @@
             "k7",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed 1969 ballot-list display name (YP 1573, כינוי הרשימה); not a claim about the registered party name."
         },
         {
           "date": "1973-12-31",
@@ -4020,7 +4023,8 @@
             "k7",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed 1969 ballot-list display name (YP 1573, כינוי הרשימה); not a claim about the registered party name."
         },
         {
           "date": "1973-12-31",
@@ -4120,7 +4124,8 @@
             "k7",
             "proposal"
           ],
-          "status": "observed-local-dataset"
+          "status": "observed-local-dataset",
+          "note": "Observed 1969 ballot-list display name (YP 1573, כינוי הרשימה); not a claim about the registered party name."
         },
         {
           "date": "1973-12-31",

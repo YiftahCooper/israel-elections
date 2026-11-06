@@ -16,6 +16,7 @@
 - All elections: official English member names now display with apostrophes instead of backticks and single spaces; the raw Knesset values stay as evidence.
 - k17: corrected five elected names and three list names against both gazettes, the election-period constituent label, the 2008 constitutional election route, platform gaps and evidence attribution.
 - k14: corrected ballot names, retained withdrawn Moreshet Avot, repaired roster coverage and resignation notes, and displayed the Gazette’s published PM percentages with corroborated ballot totals.
+- k7: recorded Gahal’s six-minister withdrawal on 6 August 1970 (102→76 coalition seats), corrected source/quote metadata and Tamir’s English spacing, and removed the unsupported consultation end date.
 
 ## 5 November 2026 — release review
 

@@ -836,7 +836,7 @@
       "electionId": "k7",
       "electionDate": "1969-10-28",
       "datasetPath": "public/data/k7.json",
-      "datasetSha256": "d585a8947d07f24e651ddefb2c71631dbd37ffbdd5d986ce5179677dc4acaf23",
+      "datasetSha256": "6aeaff3a56bf928795b1d29948cd2132ea61158f1d5508f8fe48c28c80912359",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",

@@ -1576,9 +1576,12 @@
       "englishName": {
         "label": "Reshimat Shalom",
         "kind": "transliteration",
-        "sourceId": "k7-candidates-gazette",
+        "sourceId": "k7-results-gazette",
         "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
-      }
+      },
+      "notes": [
+        "Results-notice display name retained (YP 1573, p. 433); candidate notice YP 1563 uses רשימת השלום. These are variant ballot-list names, not different lists."
+      ]
     },
     {
       "letters": "פז",
@@ -1589,6 +1592,13 @@
         "sourceId": "k7-candidates-gazette",
         "note": "Unofficial app transliteration of the retained Hebrew list name (shortened for display); not a verified official English name."
       }
+    },
+    {
+      "letters": "עמ",
+      "nameHe": "רשימה ממלכתית",
+      "notes": [
+        "Results-notice display name retained (YP 1573, p. 433); candidate notice YP 1563 p. 232 uses הרשימה הממלכתית. These are variant ballot-list names, not different lists."
+      ]
     }
   ],
   "blocSchemes": [
@@ -1675,16 +1685,16 @@
           "accessed": "2026-11-04"
         },
         {
-          "url": "https://he.wikipedia.org/wiki/ממשלת_ישראל_החמש_עשרה",
-          "publisher": "Hebrew Wikipedia",
-          "kind": "secondary",
-          "quote": "קואליציה: המערך, מפד\"ל, ליברלים עצמאיים, קידמה ופיתוח, שיתוף ואחווה | אופוזיציה: אגודת ישראל, הרשימה הממלכתית, רק\"ח, פועלי אגודת ישראל, העולם הזה-כוח חדש, המרכז החופשי, מק\"י",
-          "accessed": "2026-11-04"
+          "url": "https://fs.knesset.gov.il/7/Plenum/7_ptm_253121.pdf",
+          "publisher": "Knesset, plenum record, 15 December 1969, pp. 2, 9",
+          "kind": "official",
+          "quote": "הממשלה המוצעת תכלול שש סיעות, המייצגות ביחד 102 חברי כנסת",
+          "accessed": "2026-11-06"
         }
       ],
       "notes": [
-        "Coalition = lists that joined or supported the government at its formation. Official records give ministers only; support-only lists (e.g. Mapai-affiliated Arab lists) rest on Hebrew Wikipedia.",
-        "National unity government: Gahal was in the coalition at formation (four ministers per Knesset OData)."
+        "Formation snapshot: six factions and 102 members confirmed by the official formation speech (15 December 1969). Election-list seats include the two supporting Arab lists.",
+        "Gahal had six ministers: four MKs (Begin, Yosef Sapir, Haim Landau, Elimelech Rimalt) and two non-MKs (Ezer Weizman, Aryeh Dulzin). All six left office on 6 August 1970; the remaining coalition represented 76 election-list seats."
       ],
       "confidence": "high"
     },
@@ -1769,12 +1779,19 @@
           "quote": "דיווחתי לנשיא על הרכבת הממשלה החדשה, הכוללת את סיעת המערך (מפלגת העבודה הישראלית – מפ\"ם), גוש חירות – ליברלים, המפלגה הדתית-לאומית, המפלגה הליברלית העצמאית, מפלגת פועלי אגודת ישראל, סיעת הקידמה והפיתוח, סיעת השיתוף והאחווה, הסיעה הדרוזית הישראלית וסיעת האחווה הערבית-יהודית.",
           "accessed": "2026-11-05",
           "note": "Identifies the factions of the outgoing government; the Druze and Arab-Jewish Brotherhood factions did not win seats as such in 1969."
+        },
+        {
+          "url": "https://fs.knesset.gov.il/7/Plenum/7_ptm_253121.pdf",
+          "publisher": "Knesset, plenum record, 15 December 1969, pp. 2, 9",
+          "kind": "official",
+          "quote": "ביום 10 בנובמבר 1969 הטיל עלי כבוד נשיא המדינה את התפקיד להרכיב ממשלה",
+          "accessed": "2026-11-06"
         }
       ],
       "notes": [
         "'Recommended Golda Meir' = the lists of the outgoing government's factions, as reported by JTA ('reportedly'). The six other lists (Agudat Yisrael, State List, Rakah, HaOlam HaZeh, Free Centre, Maki; 16 seats) are not documented in any source inspected and are shown as 'Not stated in source', not as 'no recommendation'.",
         "Hebrew Wikipedia (secondary), citing Davar 11 Nov 1969, says most factions recommended Meir and the State List (4) did not express consent; that Davar page could not be inspected (JPress bot challenge), so the State List stays 'Not stated in source'.",
-        "Date: the President gave Meir the task on 10 November 1969 per Hebrew Wikipedia/Davar; the JTA bulletin of 10 November says consultations ended 'today' and the mandate was expected 'tomorrow'. One-day uncertainty.",
+        "Mandate given on 10 November 1969, confirmed by Meir’s letter read in the official plenum protocol. JTA’s expectation of a mandate tomorrow was a preliminary forecast, not uncertainty about the completed act.",
         "Confidence: medium."
       ]
     },
@@ -2094,16 +2111,8 @@
     {
       "party": "mapam",
       "color": "#96342E",
-      "basis": "Hebrew Wikipedia convention (results tables 1949-1965). No official colour source found.",
-      "sources": [
-        {
-          "url": "https://he.wikipedia.org/wiki/הבחירות_לכנסת_השביעית",
-          "publisher": "Hebrew Wikipedia",
-          "kind": "secondary",
-          "quote": "colour #96342E",
-          "accessed": "2026-11-04"
-        }
-      ],
+      "basis": "App display choice; not an official or verified historical Mapam colour.",
+      "sources": [],
       "confidence": "medium"
     }
   ],

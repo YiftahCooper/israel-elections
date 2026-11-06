@@ -6232,5 +6232,17 @@
     "retrievedAt": "2026-11-06",
     "sha256": "1cf2999f7a715175d5d722a910a8fefd637361ac2de00d844d93a84d45bb110c",
     "bytes": 2971615
+  },
+  {
+    "id": "k7-government-15-positions",
+    "file": "k7/government-15-positions.json",
+    "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2015&$format=json",
+    "publisher": "Knesset OData (ParliamentInfo)",
+    "official": true,
+    "description": "Government 15 ministerial positions; six Gahal ministers end office on 6 August 1970.",
+    "method": "http",
+    "retrievedAt": "2026-11-06",
+    "bytes": 42266,
+    "sha256": "ff512e978110b10b2f3ebfdec85cf9d0a430be588bb90062e87e02c0e086a49b"
   }
 ]
