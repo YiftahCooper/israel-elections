@@ -376,7 +376,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k13.json",
-      "sha256": "e78587d81946a60b7b0d7e596b2c1e84c6b004520197c7cc4f41f6f849fcf282",
+      "sha256": "6075f9aba1d51098c5a8c65c0b7b889264112d681e1baaeaeb575e1ce6738268",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k14": {
@@ -1868,7 +1868,7 @@
       "electionId": "k13",
       "electionDate": "1992-06-23",
       "datasetPath": "public/data/k13.json",
-      "datasetSha256": "e78587d81946a60b7b0d7e596b2c1e84c6b004520197c7cc4f41f6f849fcf282",
+      "datasetSha256": "6075f9aba1d51098c5a8c65c0b7b889264112d681e1baaeaeb575e1ce6738268",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "Rosters: everyone elected is included and cross-checked; no full rosters; later ranks of winning lists not transcribed. Zero-seat rosters unavailable. Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. The 1992 agreement notice was not found; agreements that did not affect seats may be missing. Empty agreements reproduce every published seat.",
@@ -1896,11 +1896,11 @@
       "members": [],
       "reviewCandidates": [
         {
-          "listId": "13-קן",
+          "listId": "13-קנ",
           "nameHe": "המפלגה הליברלית החדשה בראשות יצחק מודעי",
           "votes": 16669,
           "partyIds": [
-            "vehicle-13-קן"
+            "vehicle-13-קנ"
           ],
           "treatment": "exclude-pending-or-contested",
           "evidenceStatus": "unresolved",
