@@ -39,5 +39,5 @@ test('rules preset has one marker, then an individual threshold edit adds one',a
  await page.getByRole('textbox',{name:'Threshold %',exact:true}).fill('2');
  await page.getByRole('textbox',{name:'Threshold %',exact:true}).press('Tab');
  await expect(part(page)).toHaveCount(1);await expect(items(page)).toHaveCount(1);
- await items(page).focus();await expect(page.getByRole('tooltip')).toContainText('1.5%');
+ await items(page).focus();await expect(page.getByRole('dialog', { name: /Edited/ })).toContainText('1.5%');
 });
