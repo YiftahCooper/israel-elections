@@ -1,5 +1,6 @@
+import { inputDiffs } from '../model/editScopes.ts';
 import { nextCopyName, scenarioDirty } from './scenarioDocument.ts';
-import { factLog } from '../model/actionClassification.ts';
+import { ACTION_CLASSIFICATION, isFactAction, hasAppearance, factLog } from '../model/actionClassification.ts';
 import { baselineOf, freshScenario, factionDefault, setFactionDefault } from './factionDefaults.ts';
 import { validItemAnswers, validAnswers, sourceChoice, sourceValue, type PreferenceAnswers, type PreferenceAsk, type PreferenceId } from './preferences.ts';
 import type { Family } from '../families/model.ts';
@@ -9,7 +10,7 @@ import { PRESETS, type FeatureId, type Visibility } from './features.ts';
 import { useSyncExternalStore } from 'react';
 import type { ElectionDataset, ElectionId, ElectionIndexEntry } from '../data/schema.ts';
 import { ActionError, applyAction } from '../model/actions.ts';
-import { scenarioFromDataset, validateScenario, type Action, type ActionContext, type ChangeEntry, type Scenario } from '../model/scenario.ts';
+import { validAction, scenarioFromDataset, validateScenario, type Action, type ActionContext, type ChangeEntry, type Scenario } from '../model/scenario.ts';
 import type { Lang } from './i18n.ts';
 import type { SourceChoice } from './voteEdit.ts';
 
@@ -121,6 +122,10 @@ export function setState(patch: Partial<State> | ((s: State) => Partial<State>))
   // any committed change to the scenario ends a live preview
   state = { ...state, ...p, ...('scenario' in p && !('preview' in p) ? { preview: null } : {}) };
   if ('preview' in p && Object.keys(p).length === 1) { emit(); return; } // previews are never persisted
+  // Keep the official palette independently of whichever scenario is currently open.
+  if(p.scenario && Array.isArray(p.scenario.log) && !factLog(p.scenario).length) {
+    try { localStorage.setItem(`israel-elections:appearance:${p.scenario.electionId}`,JSON.stringify(p.scenario.log.map(e=>e.action).filter(a=>ACTION_CLASSIFICATION[a.type]!=='metadata'))); } catch { /* workspace/save can still retain it */ }
+  }
   persist();
   emit();
 }
@@ -219,7 +224,7 @@ export async function openElection(id: ElectionId, from?: { id?: string; name: s
     // keep the work of the election we are leaving, so switching back restores it (with undo)
     const leaving = state.scenario ? { [state.scenario.electionId]: { scenario: state.scenario, past: state.past, future: state.future, reference: state.reference } } : {};
     const sessions = { ...state.sessions, ...leaving };
-    let scenario = freshScenario(ds);
+    let scenario = officialAppearance(ds);
     let past: Scenario[] = []; let future: Scenario[] = [];
     let reference: Scenario | null = null;
     let notice: string | null = null;
@@ -248,6 +253,7 @@ export async function openElection(id: ElectionId, from?: { id?: string; name: s
 export function scenarioKey(st: Pick<State, 'scenario' | 'reference'> & Partial<Pick<State, 'saved' | 'datasets'>> = state): string | null {
   const s = st.scenario;
   if (!s) return null;
+  if(hasAppearance(s)&&(!factLog(s).length||st.datasets?.[s.electionId]&&!inputDiffs(s,baselineOf(st.datasets[s.electionId]!)).length)) return 'official';
   const authored = s.log.some(e => e.action.type === 'rename' || e.action.type === 'setDescription');
   if (!st.saved?.some(x => x.id === s.id) && !factLog(s).length && !authored) return 'official';
   const entry = st.saved?.find(x => x.id === s.id);
@@ -275,12 +281,23 @@ export async function openSaved(x: SavedScenario): Promise<boolean> {
   } }));
 }
 
+/** Official presentation is a browser preference as well as portable scenario data. */
+function officialAppearance(ds:ElectionDataset):Scenario {
+  let s=freshScenario(ds);
+  try {
+    const actions:unknown=JSON.parse(localStorage.getItem(`israel-elections:appearance:${ds.id}`)??'[]');
+    if(Array.isArray(actions))for(const a of actions)if(validAction(a)&&!isFactAction(a as Action)&&ACTION_CLASSIFICATION[(a as Action).type]!=='metadata') {
+      try{s=applyAction(s,a as Action,undefined,{base:baselineOf(ds)});}catch{/* obsolete palette entity */}
+    }
+  }catch{/* invalid browser preference */}
+  return s;
+}
 /** Returns to the official result of the open election. */
 export function openOfficial() {
   const ds = state.scenario && state.datasets[state.scenario.electionId];
   if (!ds || scenarioKey() === 'official') return;
   stashCurrent();
-  setState({ scenario: freshScenario(ds), reference: null, past: [], future: [], selectedListId: null, blocPanel: null, notice: null });
+  setState({ scenario: officialAppearance(ds), reference: null, past: [], future: [], selectedListId: null, blocPanel: null, notice: null });
 }
 
 /** Resumes a session draft; it leaves the draft store while it is the current scenario. */
@@ -325,7 +342,13 @@ export async function openSharedFromHash(): Promise<boolean> {
 export function resetAll() {
   const ds = state.datasets[state.electionId];
   if (!ds || !state.scenario) return;
-  const fresh = freshScenario(ds, '');
+  let fresh = freshScenario(ds, '');
+  const old=state.scenario;
+  for(const l of fresh.lists){const from=old.lists.find(x=>x.id===l.id);if(!from)continue;
+    if(from.color!==l.color)fresh=applyAction(fresh,{type:'setListMeta',listId:l.id,patch:{color:from.color}});
+    for(const p of from.parties??[])if(p.color&&l.parties?.some(x=>x.id===p.id))fresh=applyAction(fresh,{type:'setPartyColor',listId:l.id,partyId:p.id,color:p.color});
+  }
+  fresh=applyAction(fresh,{type:'setBlocAppearance',blocs:fresh.blocs.map(b=>({...b,color:old.blocs.find(x=>x.id===b.id)?.color??b.color}))});
   setState({ scenario: fresh, past: [...state.past, state.scenario], future: [] });
 }
 

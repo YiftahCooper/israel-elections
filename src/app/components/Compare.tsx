@@ -48,7 +48,7 @@ function useCompareChoices(s: Scenario, ds: ElectionDataset) {
   const choices: Choice[] = useMemo(() => [
     ...(reference ? [{ value: 'official', label: L('Official result', 'התוצאה הרשמית'), group: here }] : []),
     { value: 'historical', label: referenceLabel(reference, lang).name, group: here },
-    ...savedHere.map((x) => ({ value: x.id, label: x.name, group: here, preview: <span className="swatch" style={{ background: scenarioColor(replay(ds, x.name, x.log, x.factionSplitBaseline ?? false).scenario) }} /> })),
+    ...savedHere.map((x) => ({ value: x.id, label: x.name, group: here, preview: <span className="swatch" style={{ background: (()=>{const sc=replay(ds,x.name,x.log,x.factionSplitBaseline??false).scenario;return referenceChanges(sc,baselineOf(ds)).length?scenarioColor(sc):'var(--muted)';})() }} /> })),
     ...elections.filter((e) => e.available && e.id !== s.electionId).map((e) => ({ value: ELECTION + e.id, label: electionLabel(e, elections, lang), detail: L('Official result', 'התוצאה הרשמית'), group: others })),
   ], [reference, saved, ds, elections, lang, s.electionId, s.id]); // eslint-disable-line react-hooks/exhaustive-deps -- L and the filtered lists follow lang, saved and s
   const at = elections.findIndex((e) => e.id === s.electionId);
@@ -149,8 +149,8 @@ function ScenarioCompare({ s, r, base, ds }: { s: Scenario; r: AllocationResult;
       </ComparePicker>
 
       <div className="cmp-chambers">
-        <figure style={{ border: `2px solid ${compareWith !== 'official' && (reference || compareWith !== 'historical') ? scenarioColor(a) : 'var(--rule)'}` }}><figcaption>{nameA}</figcaption><Hemicycle reference={groupedA ?? a} s={groupedA ?? a} r={ar} compact paired title={nameA} /></figure>
-        <figure style={{ border: `2px solid ${reference || referenceChanges(s, base).length || s.identityColor ? scenarioColor(s) : 'var(--rule)'}` }}><figcaption>{nameB}</figcaption><Hemicycle reference={groupedA ?? a} s={s} r={r} compact paired title={nameB} /></figure>
+        <figure style={{ border: `2px solid ${referenceChanges(a,base).length ? scenarioColor(a) : 'var(--rule)'}` }}><figcaption>{nameA}</figcaption><Hemicycle reference={groupedA ?? a} s={groupedA ?? a} r={ar} compact paired title={nameA} /></figure>
+        <figure style={{ border: `2px solid ${referenceChanges(s, base).length ? scenarioColor(s) : 'var(--rule)'}` }}><figcaption>{nameB}</figcaption><Hemicycle reference={groupedA ?? a} s={s} r={r} compact paired title={nameB} /></figure>
       </div>
       {gainers.length > 0 && <p className="small muted cmp-key">{L(`Outlined: seats gained since ${nameA}`, `מתאר: מנדטים שנוספו מאז ${nameA}`)} <Info title={L('About these outlines', 'על המתארים')}>{L('Outlines compare list seat counts, not individual seats or voters moving between lists.', 'המתארים משווים את מספר המנדטים של הרשימות; אין משמעות של מנדט או בוחר שעבר בין רשימות.')}</Info></p>}
 
@@ -290,7 +290,7 @@ function ElectionCompare({ s, r, base, ds, otherId }: { s: Scenario; r: Allocati
   useEffect(() => { if (!ods) loadDataset(otherId).catch(() => { toast('error', L('Could not load this election.', 'לא ניתן לטעון את הבחירות האלה.')); setState({ compareWith: 'historical' }); }); }, [ods, otherId]); // eslint-disable-line react-hooks/exhaustive-deps
   const o = ods ? baselineOf(ods) : null;
   const or = useMemo(() => o ? allocationOf(o) : null, [o]);
-  const current = { sc: s, rr: r, election: electionName(s.electionId), name: s.name || (referenceChanges(s, base).length ? L('Your scenario', 'התרחיש שלכם') : L('Official result', 'התוצאה הרשמית')), color: referenceChanges(s, base).length || s.identityColor ? scenarioColor(s) : 'var(--rule)' };
+  const current = { sc: s, rr: r, election: electionName(s.electionId), name: s.name || (referenceChanges(s, base).length ? L('Your scenario', 'התרחיש שלכם') : L('Official result', 'התוצאה הרשמית')), color: referenceChanges(s, base).length ? scenarioColor(s) : 'var(--rule)' };
   if (!o || !or || !ods) return <div className="cmp"><ComparePicker s={s} ds={ds} name={current.name} value={ELECTION + otherId} /><p className="small muted">{L('Loading…', 'טוען…')}</p></div>;
   const otherSide = { sc: o, rr: or, election: electionName(otherId), name: L('Official result', 'התוצאה הרשמית'), color: 'var(--rule)' };
   // the earlier election is drawn first, so time reads left to right in either language

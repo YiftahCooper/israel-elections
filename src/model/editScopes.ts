@@ -1,3 +1,5 @@
+/** Appearance is saved separately from factual marker comparisons. */
+export const appearancePath=(p:readonly string[])=>p.includes('color')||p[0]==='customGroupingName'||p[0]==='blocs'&&p.length>2&&['nameHe','nameEn'].includes(p[2]);
 import { blocSchemeState, type Action, type Scenario } from './scenario.ts';
 import type {Part} from './parts.ts';
 export type InputPath=readonly string[];
@@ -37,7 +39,7 @@ export function inputDiffs(a:Scenario,b:Scenario):InputPath[]{
    for(const id of new Set([...x,...y].map(z=>z.id)))walk(x.find(z=>z.id===id),y.find(z=>z.id===id),[...p,id]);
   }else if(x&&y&&!Array.isArray(x)&&!Array.isArray(y)&&typeof x==='object'&&typeof y==='object'){
    for(const k of new Set([...Object.keys(x),...Object.keys(y)]))walk(x[k],y[k],[...p,k]);
-  }else out.push(p);
+  }else if(!appearancePath(p)) out.push(p);
  };
  for(const k of ['lists','rules','registered','invalid','agreements','blocs','blocSchemeId','customGroupingName','partyBlocs','candidateBlocs','lotteryWinners','mode'] as const){
   const normal=(v:unknown)=>v??(k==='partyBlocs'||k==='candidateBlocs'?{}:undefined);

@@ -2,6 +2,8 @@
 
 ## 6 November 2026 — data audit
 
+- Keep custom list, party and bloc colours and grouping display names separate from result identity; save/share appearance and reset colours independently of result edits.
+
 - Show app-defined provenance once per marked scheme context; keep individual markers for standalone blocs and tooltips.
 
 - Keep app-defined grouping names concise, with a bilingual App marker and provenance help across views and exports.

@@ -13,12 +13,12 @@ describe('scenario references', () => {
     const id = base.lists[0].id;
     let s = applyAction(base, { type: 'setListMeta', listId: id, patch: { color: '#abcdef', nameHe: 'Test' } });
     s = applyAction(s, { type: 'setVotes', listId: id, votes: base.lists[0].votes + 100 });
-    expect(referenceChanges(s, base)).toHaveLength(3);
+    expect(referenceChanges(s, base)).toHaveLength(2);
     expect(differsFromReference(s, base, ['lists', id, 'color'])).toBe(true);
     expect(referenceChanges(s, s)).toEqual([]);
     const next = applyAction(s, { type: 'setVotes', listId: id, votes: s.lists[0].votes + 1 });
     expect(referenceChanges(next, s)).toEqual([['lists', id, 'votes']]);
-    expect(referenceChanges(next, base)).toHaveLength(3);
+    expect(referenceChanges(next, base)).toHaveLength(2);
   });
   it('detects removals, candidates, totals, rules and agreements', () => {
     for (const key of ['registered', 'invalid'] as const) expect(differsFromReference({ ...base, [key]: base[key] + 1 }, base, [key])).toBe(true);

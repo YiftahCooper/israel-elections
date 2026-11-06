@@ -131,6 +131,9 @@ export interface Scenario {
 export type Action =
   | { type: 'familyOperation'; definition: Family; operation: 'group'; name?: string; placements: Record<string, string> }
   | { type: 'familyOperation'; definition: Family; operation: 'scale'; allocations: {listId:string; before:number; votes:number}[]; source: SourceChoice; target:number; registeredDelta:number }
+  | { type: 'setBlocAppearance'; blocs: BlocDef[]; name?: string }
+  | { type: 'setPartyColor'; listId: string; partyId: string; color: string }
+  | { type: 'resetColors' }
   | { type: 'setIdentityColor'; color: string }
   | { type: 'setCoalition'; coalition: { in: string[]; out: string[] } }
   | { type: 'startPart'; part: Part; source: 'official' | 'saved' | 'blank' | 'preset'; snapshot?: PartSnapshot; name?: string; presetId?: string; listId?: string }
@@ -355,6 +358,9 @@ const coalition = shape({ in: uniqueStrings, out: uniqueStrings });
 const partSnapshotCheck = shape({ familyDefinition: optional(validFamily), validVotes: optional(whole), lists: optional(array(list)), registered: optional(whole), invalid: optional(whole), factionSplits: optional(uniqueStrings), blocs: optional(array(bloc)), blocSchemeId: optional(nullable(string)), customGroupingName: optional(string), partyBlocs: optional(stringMap(nullable(string))), candidateBlocs: optional(stringMap(nullable(string))), listBlocs: optional(stringMap(nullable(string))), agreements: optional(array(agreement)), rules: optional(rules), mode: optional(oneOf('historical', 'experimental')), coalition: optional(coalition) });
 const actionFields: Record<Action['type'], Check> = {
   familyOperation: (x) => record(x) && validFamily(x.definition) && (x.operation === 'group' ? optional(string)(x.name) && record(x.placements) && Object.values(x.placements).every(v => ['selected','mixed','other'].includes(String(v))) : x.operation === 'scale' && array(shape({listId:string,before:whole,votes:whole}))(x.allocations) && signedWhole(x.registeredDelta) && whole(x.target) && shape({kind:oneOf('new','proportional','transfer'),listId:optional(string)})(x.source)),
+  setBlocAppearance: shape({ blocs: array(bloc), name: optional(string) }),
+  setPartyColor: shape({ listId: string, partyId: string, color: string }),
+  resetColors: shape({}),
   setIdentityColor: shape({ color: oneOf(...SCENARIO_COLOURS) }),
   setCoalition: shape({ coalition }),
   startPart: shape({ part: oneOf('votes', 'identity', 'structure', 'agreements', 'blocs', 'coalitions', 'candidates', 'rules', 'totals'), source: oneOf('official', 'saved', 'blank', 'preset'), snapshot: optional(partSnapshotCheck), name: optional(string), presetId: optional(string), listId: optional(string) }),

@@ -98,6 +98,9 @@ function interleave<T>(arrays: T[][]): T[] {
 }
 
 export function applyAction(s0: Scenario, action: Action, now = new Date().toISOString(), ctx: ActionContext = {}): Scenario {
+  // Old logs used setBlocs for palette/name edits. Normalize on replay as well as live edits.
+  if(action.type==='setBlocs'&&!action.unassignAll&&action.blocs.length===s0.blocs.length&&action.blocs.every((b,i)=>s0.blocs[i]?.id===b.id))
+    action={type:'setBlocAppearance',blocs:action.blocs,...(action.name!==undefined?{name:action.name}:{})};
   let s: Scenario = s0;
   const baseList = (id: string) => ctx.base?.lists.find((l) => l.id === id) ?? null;
   switch (action.type) {
@@ -130,6 +133,18 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
         s={...s,familyDefinition:definition,registered:s.registered+action.registeredDelta,lists:s.lists.map(l=>({...l,votes:action.allocations.find(a=>a.listId===l.id)?.votes??l.votes}))};
       }
       break;
+    }
+    case 'setBlocAppearance':
+      need(action.blocs.length===s.blocs.length&&action.blocs.every(b=>s.blocs.some(x=>x.id===b.id)), 'blocs', 'Appearance cannot change bloc membership.');
+      s={...s,blocs:s.blocs.map(b=>{const v=action.blocs.find(x=>x.id===b.id)!;return {...b,color:v.color,nameHe:v.nameHe,nameEn:v.nameEn};}),customGroupingName:action.name??s.customGroupingName};break;
+    case 'setPartyColor':
+      need(listById(s,action.listId).parties?.some(p=>p.id===action.partyId),'party','Unknown party.');
+      s=replaceList(s,action.listId,l=>({...l,parties:l.parties?.map(p=>p.id===action.partyId?{...p,color:action.color}:p)}));break;
+    case 'resetColors': {
+      const base=ctx.base;
+      need(base,'no-base','Historical colours are unavailable.');
+      const scheme=s.blocSchemes?.find(g=>g.id===s.blocSchemeId);
+      s={...s,lists:s.lists.map(l=>{const b=base!.lists.find(x=>x.id===l.id);return {...l,color:b?.color??'#7d8791',parties:l.parties?.map(p=>({...p,color:base!.lists.flatMap(x=>x.parties??[]).find(x=>x.id===p.id)?.color}))};}),blocs:s.blocs.map(b=>({...b,color:(scheme?.blocs??base!.blocs).find(x=>x.id===b.id)?.color??'#7d8791'}))};break;
     }
     case 'setIdentityColor':
       need(/^#[0-9a-f]{6}$/i.test(action.color) && (SCENARIO_COLOURS as readonly string[]).includes(action.color), 'colour', 'Choose a scenario palette colour.');
@@ -505,6 +520,9 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       } else s = { ...s, lotteryWinners: {} };
       break;
     }
+  }
+  if(action.type==='resetList'||action.type==='restore'||action.type==='startPart') {
+    s={...s,lists:s.lists.map(l=>{const old=s0.lists.find(x=>x.id===l.id);return old?{...l,color:old.color,...(l.parties?{parties:l.parties.map(p=>{const color=old.parties?.find(x=>x.id===p.id)?.color;return color?{...p,color}:p;})}:{})}:l;}),blocs:s.blocs.map(b=>({...b,color:s0.blocs.find(x=>x.id===b.id)?.color??b.color}))};
   }
   // All transitions, including resets/restores, must keep both counts and derived totals exact.
   need(isWhole(s.registered) && isWhole(s.invalid), 'votes', 'Totals must be safe integers ≥ 0.');

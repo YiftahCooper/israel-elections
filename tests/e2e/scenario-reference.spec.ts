@@ -29,7 +29,7 @@ test('save moves the reference, official setting restores markers, colour surviv
   const name = panel.getByRole('textbox', { name: 'Full name', exact: true });
   // TextField is labelled by its containing label.
   await name.fill('Edited list'); await name.press('Enter');
-  await panel.locator('input[type=color]').fill('#123456');
+  await panel.locator('input[type=color]').first().fill('#123456');
   const votes = panel.getByRole('textbox', { name: 'Votes', exact: true });
   await votes.fill('1150000'); await votes.press('Enter');
   await expect(panel.locator('.edit-marker')).not.toHaveCount(0);
@@ -49,7 +49,7 @@ test('save moves the reference, official setting restores markers, colour surviv
   await choose(page.getByRole('button', { name: 'Mark differences from', exact: true }), 'official');
     await page.keyboard.press('Escape');
   await page.getByRole('tab', { name: 'Overview', exact: true }).click();
-  expect(await panel.locator('.edit-marker').count()).toBeGreaterThan(2);
+  expect(await panel.locator('.edit-marker').count()).toBe(2); // name and votes; colour is appearance
   // Workspace writes are debounced; reload only once this scenario is durable.
   await expect.poll(() => page.evaluate(() => {
     const current = JSON.parse(localStorage.getItem('israel-elections:workspace:v1') ?? 'null')?.current;

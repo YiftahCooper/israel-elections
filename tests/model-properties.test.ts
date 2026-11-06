@@ -47,7 +47,8 @@ describe('random action sequences', () => {
           continue;
         }
         expect(s, `${msg}: input mutated`).toEqual(snapshot);
-        expect(next.log, msg).toEqual([...s.log, { at: `T${i}`, action: a }]);
+        const logged = a.type==='setBlocs'&&!a.unassignAll&&a.blocs.length===s.blocs.length&&a.blocs.every((b,j)=>s.blocs[j]?.id===b.id)?{type:'setBlocAppearance',blocs:a.blocs,...(a.name!==undefined?{name:a.name}:{})}:a;
+        expect(next.log, msg).toEqual([...s.log, { at: `T${i}`, action: logged }]);
         checkConservation(a, s, next, msg);
         const exported = JSON.parse(JSON.stringify(next));
         expect(validateScenario(exported), `${msg}: export does not re-import`).toEqual([]);

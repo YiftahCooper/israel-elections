@@ -29,7 +29,7 @@ describe('view-only choices', () => {
     const edited = applyAction(s, { type: 'setListMeta', listId: s.lists[0].id, patch: { bloc: null } });
     expect(referenceChanges(edited, base).length).toBeGreaterThan(0);
     expect(scenarioKey({ scenario: edited, reference: null })).toMatch(/^draft:/);
-    expect(referenceChanges(applyAction(s, { type: 'setBlocs', blocs: s.blocs, name: 'Mine' }), base).length).toBeGreaterThan(0);
+    expect(referenceChanges(applyAction(s, { type: 'setBlocs', blocs: s.blocs, name: 'Mine' }), base)).toEqual([]);
   });
   it('legacy saved logs with view choices and assigned identity remain official, clean and intact', () => {
     const s = applyAction(applyAction(base, { type: 'applyBlocScheme', schemeId: base.blocSchemes!.at(-1)!.id }), { type: 'setIdentityColor', color: '#486b78' });

@@ -57,7 +57,7 @@ it('detaching a sourced grouping for one list move or one bloc rename gives just
  const moved=applyAction(s,{type:'setListMeta',listId:list.id,patch:{bloc:null}});
  expect(referenceChanges(moved,base).filter(p=>p[0]!=='parts')).toEqual([['lists',list.id,'bloc']]);
  const bloc=s.blocs[0],renamed=applyAction(s,{type:'setBlocs',blocs:s.blocs.map(b=>b.id===bloc.id?{...b,nameEn:'Renamed'}:b)});
- expect(referenceChanges(renamed,base).filter(p=>p[0]!=='parts')).toEqual([['blocs',bloc.id,'nameEn']]);
+ expect(referenceChanges(renamed,base)).toEqual([]);
 });
 it('a list-scoped replacement retains unrelated edits and has one scoped marker',()=>{
  const other=base.lists[1].id;

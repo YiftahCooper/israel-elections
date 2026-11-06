@@ -142,6 +142,7 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
       <div className="sp-body">
         <FamilyGroupingLink />
         <StartFrom s={s} part="blocs" />
+        <button className="btn small" onClick={()=>dispatch({type:'resetColors'})}>{L('Reset colours','איפוס צבעים')}</button>
         <p className="tiny muted">{L(`Vote changes here are balanced by: ${voteSourceLabel(src, s, lang)}`, `שינויי קולות כאן מתקזזים מול: ${voteSourceLabel(src, s, lang)}`)}</p>
         <p className="small">{groupingLabel(s, lang)} <EditMarker s={s} path={['customGroupingName']} /></p>
         {picked && (

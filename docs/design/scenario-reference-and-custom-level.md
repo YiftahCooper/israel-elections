@@ -50,6 +50,8 @@ Details:
 
 ## 2. Mark every edit; the reference decides what counts as an edit
 
+**Owner revision, 6 November:** arbitrary colours and grouping display names are saved appearance, not factual edits. They never receive edit markers or change official result identity. See [appearance and result identity](appearance-and-result-identity.md) for the exhaustive classification and independent reset behavior. This supersedes the older colour-marker wording below.
+
 Principle: **anything not true of the real election is marked at a glance.** This covers votes, names, colours, groupings, agreements, rules, merges and turnout.
 
 One shared marker is used everywhere:

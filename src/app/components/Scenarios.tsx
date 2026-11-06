@@ -1,5 +1,6 @@
+import { scenarioDirty } from '../scenarioDocument.ts';
 import { ScenarioSave, UnsavedMark } from './ScenarioSave.tsx';
-import { factLog } from '../../model/actionClassification.ts';
+import { hasAppearance, factLog } from '../../model/actionClassification.ts';
 import { Info } from './ui.tsx';
 import { EditMarker } from './EditMarker.tsx';
 import { exportAnnotations } from '../scenarioExport.ts';
@@ -63,10 +64,11 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
   const fileRef = useRef<HTMLInputElement>(null);
   const [link, setLink] = useState('');
   useEffect(() => setLink(''), [s]);
+  const reference=useStore(st=>st.reference);
   const isSaved = saved.some((x) => x.id === s.id);
   // 'official' (nothing changed), the saved id (no unsaved changes) or a draft key (unsaved changes)
   const key = useStore((st) => scenarioKey(st));
-  const official = key === 'official', clean = isSaved && key === s.id;
+  const official = key === 'official', clean = isSaved && !!reference && !scenarioDirty(s, reference);
   // the result of every saved scenario of this election, replayed once
   const results = useMemo(() => new Map(saved.filter((x) => x.electionId === s.electionId).map((x) => {
     const sc = replay(ds, x.name, x.log, x.factionSplitBaseline ?? false).scenario;
@@ -93,8 +95,8 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
         </div></details>
         <ResultBar s={s} r={allocationOf(s)} />
         <div className="row" style={{ marginTop: 10 }}>
-          <ScenarioSave className="btn primary scn-save" disabled={official || clean}>{clean ? <><Check className="icon sm" aria-hidden />{L('Saved', 'נשמר')}</> : <><Save className="icon sm" aria-hidden />{L('Save', 'שמירה')}</>}</ScenarioSave>
-          <ScenarioSave as disabled={official}>{L('Save as…', 'שמירה בשם…')}</ScenarioSave>
+          <ScenarioSave className="btn primary scn-save" disabled={clean || official && !hasAppearance(s)}>{clean ? <><Check className="icon sm" aria-hidden />{L('Saved', 'נשמר')}</> : <><Save className="icon sm" aria-hidden />{L('Save', 'שמירה')}</>}</ScenarioSave>
+          <ScenarioSave as disabled={official && !hasAppearance(s)}>{L('Save as…', 'שמירה בשם…')}</ScenarioSave>
           {isSaved && !clean && <button className="btn" onClick={() => openSaved(saved.find(x => x.id === s.id)!)}>{L('Reopen saved version', 'פתיחת הגרסה השמורה')}</button>}
           <button className="btn" onClick={async () => {
             const url = await shareLink(); setLink(url);

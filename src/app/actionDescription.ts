@@ -13,6 +13,9 @@ export function describe(a: Action, s: Scenario, lang: Lang): string {
   const he = lang === 'he';
   switch (a.type) {
     case 'familyOperation': return (a.operation === 'group' ? (he ? 'קיבוץ לפי משפחה: ' : 'Family grouping: ') : (he ? 'שינוי קולות המשפחה: ' : 'Scaled family votes: ')) + familyLabel(a.definition,lang);
+    case 'resetColors': return he ? 'הצבעים אופסו' : 'Colours reset';
+    case 'setBlocAppearance': return he ? 'תצוגת הגושים השתנתה' : 'Bloc appearance changed';
+    case 'setPartyColor': return he ? 'צבע המפלגה השתנה' : 'Party colour changed';
     case 'setIdentityColor': return he ? 'צבע התרחיש השתנה' : 'Scenario colour changed';
     case 'setCoalition': return he ? 'בחירת הקואליציה השתנתה' : 'Coalition selection changed';
     case 'startPart': return `${PARTS[a.part][lang]}: ${a.name ?? (a.source === 'official' ? (he ? 'התוצאה הרשמית' : 'official result') : a.source === 'blank' ? (he ? 'ריק' : 'blank') : (a.source === 'preset' ? (a.part === 'rules' ? (a.presetId && RULESETS[a.presetId] ? ruleEraLabel(RULESETS[a.presetId], lang) : (he ? 'כללים ממקור מתועד' : 'Sourced rules')) : ((g) => g ? groupingName(g, lang) : undefined)(s.blocSchemes?.find(g => g.id === a.presetId)) ?? (he ? 'חלוקה ממקור מתועד' : 'Sourced grouping')) : (he ? 'תרחיש שמור' : 'saved scenario')))}`;

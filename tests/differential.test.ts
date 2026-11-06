@@ -235,7 +235,9 @@ const EXPECTED: Record<Family, string> = {
   // merged with k1 audit fixes: combined digest = union of the separately reviewed changes.
   // U8: concise k24/k25 grouping names, appDefined provenance and regenerated k25 builtAt.
   // Substituting pre-U8 k24/k25 datasets reproduces 7a7c40fc… exactly; other four digests unchanged.
-  model: '7403c7fe61a31967b81a861ba4509da8c8749b0e032798751ec821661db2de35',
+  // U9: baseline comparison isolates 98 model cases to normalized appearance logs and
+  // palette-preserving resets; allocation, analysis, validation and rules remain identical.
+  model: '39258ca0309ddf2702cc59f4dceb06be65e15640a41efedae3abbe8ea86d03a7',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

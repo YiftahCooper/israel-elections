@@ -155,7 +155,7 @@ it('resetting metadata preserves votes balanced from an insufficient donor', () 
   const balanced = applyAction(edited, delta);
   const reset = applyAction(balanced, { type: 'resetList', listId: id, keepVotes: true } as Action, undefined, { base });
   expect(validVotes(reset)).toBe(validVotes(edited));
-  expect(reset.lists.find(l => l.id === id)).toEqual({ ...base.lists.find(l => l.id === id), votes: 524 });
+  expect(reset.lists.find(l => l.id === id)).toEqual({ ...base.lists.find(l => l.id === id), votes: 524, color: '#000000' });
 });
 
 it('rejects malformed action patches with object-prototype field names', () => {
