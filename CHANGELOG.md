@@ -14,6 +14,7 @@
 - k10: corrected printed ballot letters while preserving stable IDs, repaired One Israel/pensioners/Aliyah identities and family classification, corrected a candidate spelling and tenure dates, and strengthened coalition and logo evidence.
 - k9: corrected official ballot letters/names without renaming stable IDs, repaired elected-name and biography displays, sourced the historical candidate cap and first-government support, and reconciled primary-evidence gaps.
 - All elections: official English member names now display with apostrophes instead of backticks and single spaces; the raw Knesset values stay as evidence.
+- k17: corrected five elected names and three list names against both gazettes, the election-period constituent label, the 2008 constitutional election route, platform gaps and evidence attribution.
 
 ## 5 November 2026 — release review
 

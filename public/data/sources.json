@@ -723,11 +723,11 @@
   "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset17-results.pdf",
   "publisher": "Project transcription of official CEC / Reshumot scans",
   "official": false,
-  "description": "Partial reviewed national and agreement transcription. Not a released dataset; preserves unresolved source discrepancies.",
+  "description": "Partial reviewed national and agreement transcription. Historical partial transcription, now an input to the released k17 dataset; preserves unresolved source discrepancies.",
   "method": "manual-capture",
   "retrievedAt": "2026-11-03T15:31:36.321449+00:00",
-  "bytes": 7360,
-  "sha256": "e827d486c89a17a4a6e644af7b60122d1493054832d26edf75de001d4bb741d5"
+  "bytes": 7653,
+  "sha256": "a42dc908024383a004466be2825b7f80481b341b1288e22c42b3c767a310c03f"
  },
  {
   "id": "k16-reconciliation-reviewed",
@@ -1377,8 +1377,8 @@
   "description": "Reviewed manual candidate-scan transcription with complete or elected-prefix coverage, page references, independent section 4 results-notice names and explicit printed-name variants; non-winning unavailable rosters and prior membership/reserve checks retained",
   "method": "manual-capture",
   "retrievedAt": "2026-11-03",
-  "bytes": 140258,
-  "sha256": "fcbcb6c2a721da9a200675141a0fc1c8bb5c5a09fd6d32a72fa3cd292c905fcb"
+  "bytes": 141433,
+  "sha256": "70848ca0256f77f7e5ef77cc0cd7b4255367a3a9b4f57c23cbd665a7c5517335"
  },
  {
   "id": "k17-localities-reviewed",

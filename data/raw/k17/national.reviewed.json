@@ -1,7 +1,7 @@
 {
   "id": "k17",
   "reviewedOn": "2026-11-03",
-  "scope": "Partial evidence only; not an application dataset. Numbers visually transcribed from the retained scans. Names use normalized punctuation. No complete candidate roster has been verified.",
+  "scope": "Partial evidence only; not an application dataset. Numbers visually transcribed from the retained scans. Names use normalized punctuation. No complete candidate roster has been verified. Historical pre-release review scope; superseded by the released dataset and elected-rank review in candidates.reviewed.json (6 November 2026).",
   "resultsSourceId": "k17-results-gazette",
   "resultsPages": [
     2464,
@@ -34,7 +34,7 @@
     },
     {
       "letters": "ד",
-      "nameHe": "אלתג׳מוע אלווטני אל דמוקרטי - בל״ד",
+      "nameHe": "אלתג׳מוע אלווטני אל דימוקרטי - בל״ד",
       "gazetteVotes": 72066,
       "officialSeats": 3
     },
@@ -118,7 +118,7 @@
     },
     {
       "letters": "מרצ",
-      "nameHe": "מרצ - ישראל החברתית דמוקרטית",
+      "nameHe": "מרצ - ישראל חברתית דמוקרטית",
       "gazetteVotes": 118302,
       "officialSeats": 5
     },
@@ -130,7 +130,7 @@
     },
     {
       "letters": "עם",
-      "nameHe": "הרשימה הערבית המאוחדת והתנועה הערבית להתחדשות",
+      "nameHe": "הרשימה הערבית המאוחדת התנועה הערבית להתחדשות",
       "gazetteVotes": 94786,
       "officialSeats": 4
     },
@@ -264,6 +264,7 @@
     }
   ],
   "releaseBlockers": [
+    "Historical pre-release blockers below are superseded by the later retained candidate/locality reviews; see released public/data/k17.json status.",
     "National figures do not match the gazette exactly; no formal correction was verified.",
     "Full approved candidate rosters and contiguous ranks have not been transcribed and verified.",
     "The locality schema requires committee numbers absent from the polling source.",
