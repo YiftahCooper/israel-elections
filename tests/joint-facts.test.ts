@@ -27,3 +27,43 @@ test('missing-faction refresh reuses all retained snapshots without network',asy
  globalThis.fetch=async()=>{throw new Error('Unexpected network request despite retained cache');};
  try{await fetchMissingFactions();}finally{globalThis.fetch=original;}
 });
+
+test('retained OData identities resolve nickname and middle-name variants before names',()=>{
+ const l={id:'25-x',parties:[{id:'a'}],candidates:[{id:'25-x#1',rank:1,partyId:'a',nameHe:'Official long name'}]};
+ const snapshot={positions:[{PersonID:8,StartDate:'2022-11-15'}],persons:[{PersonID:8,LastName:'Short',FirstName:'Name'},{PersonID:9,LastName:'Official long',FirstName:'name'}],factionMemberships:[{PersonID:8,FactionID:2,FactionName:'Opening',StartDate:'2022-11-15'}]};
+ expect(deriveJointList(l as any,1,snapshot,[],{ '25-x#1':{knessetPersonId:8,confidence:'high'} }).parties[0].unknownFaction).toBe(0);
+});
+
+test('normalization strips niqqud and punctuation but preserves word boundaries',async()=>{
+ const {normalizeMemberName}=await import('../scripts/joint-facts.ts');
+ expect(normalizeMemberName('לֵוִי־משה  ג׳')).toBe(normalizeMemberName('לוי משה ג'));
+ expect(normalizeMemberName('אב גד')).not.toBe(normalizeMemberName('אבג ד'));
+});
+
+test('ambiguous names and conflicting aliases stay unknown, never fuzzy matched',async()=>{
+ const {matchMember}=await import('../scripts/joint-facts.ts');
+ const c={id:'x#1',nameHe:'שם פרטי'} as any;
+ const snapshot={positions:[],persons:[{PersonID:1,LastName:'שם',FirstName:'פרטי'},{PersonID:2,LastName:'שם',FirstName:'פרטי'}]};
+ expect(matchMember(c,snapshot).reason).toBe('ambiguous normalized name');
+ const a={candidateId:c.id,nameHe:c.nameHe,source:'official retained snapshot',note:'reviewed',personId:1};
+ expect(matchMember(c,{...snapshot,persons:[{PersonID:1,LastName:'כינוי',FirstName:'אחר'}]}, {}, [a]).personId).toBe(1);
+ expect(matchMember(c,snapshot,{},[a]).personId).toBeNull();
+ expect(matchMember(c,{...snapshot,persons:[{PersonID:1,LastName:'כינוי',FirstName:'אחר'},{PersonID:2,LastName:'אדם',FirstName:'נוסף'}]}, {}, [a,{...a,personId:2}]).reason).toBe('ambiguous reviewed aliases');
+ expect(matchMember({...c,nameHe:'שם פרטיי'},snapshot).personId).toBeNull();
+ expect(matchMember(c,{...snapshot,persons:[]},{[c.id]:{knessetPersonId:1,confidence:'high'}}).reason).toContain('absent');
+});
+
+test('historical residuals are limited to duplicate names and the documented pre-opening resignation',async()=>{
+ const {compileJointFacts}=await import('../scripts/joint-facts.ts');
+ const unresolved=compileJointFacts().filter(l=>!l.listId.startsWith('26-')).flatMap(l=>l.unresolved);
+ expect(unresolved.map(c=>c.candidateId)).toEqual(['9-מחל#24','9-מחל#21','23-פה#13']);
+});
+
+
+test('two elected candidates cannot count the same OData person twice',()=>{
+ const l={id:'x',parties:[{id:'a'}],candidates:[{id:'x#1',rank:1,partyId:'a',nameHe:'Same Person'},{id:'x#2',rank:2,partyId:'a',nameHe:'Same Person'}]};
+ const snapshot={positions:[{PersonID:1,StartDate:'2000-01-01'}],persons:[{PersonID:1,LastName:'Same',FirstName:'Person'}],factionMemberships:[{PersonID:1,FactionID:1,FactionName:'A',StartDate:'2000-01-01'}]};
+ const facts=deriveJointList(l as any,2,snapshot,[]);
+ expect(facts.parties[0].unknownFaction).toBe(2);
+ expect(facts.unresolved.every(c=>c.reason==='multiple elected candidates resolve to the same OData person')).toBe(true);
+});
