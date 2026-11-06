@@ -289,6 +289,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       const merged: SimList = {
         id: action.newId, originIds: [...new Set(parts.flatMap((p) => p.originIds))], letters: action.letters, nameHe: action.nameHe,
         shortHe: action.nameHe, shortEn: null, color: action.color, bloc: blocs.size === 1 ? parts[0].bloc : null,
+        synthetic: { kind: 'merge', parts: parts.flatMap(p => p.synthetic?.kind === 'merge' ? p.synthetic.parts : [{ letters: p.letters, color: p.color }]) },
         votes: kept, withdrawn: false, candidates, sponsorsHe: parts.map((p) => p.sponsorsHe).filter(Boolean).join('; '),
         ...rosterFlags(parts), ...partiesOf(parts.flatMap((p) => p.parties ?? []), candidates),
       };
@@ -316,7 +317,8 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
         need(!used.has(cid), 'split-candidate', 'A candidate can appear on only one of the new lists.');
         used.add(cid);
       }
-      const newLists: SimList[] = action.parts.map((p) => ({
+      const newLists: SimList[] = action.parts.map((p, i) => ({
+        synthetic: { kind: 'split', parts: [{ letters: orig.letters, color: orig.color }], part: i + 1, total: action.parts.length },
         id: p.newId, originIds: orig.originIds, letters: p.letters, nameHe: p.nameHe, shortHe: p.nameHe, shortEn: orig.parties?.find(q => q.nameHe === p.nameHe)?.nameEn ?? null, color: p.color,
         ...(orig.parties?.find(q => q.nameHe === p.nameHe)?.logo ? {logo: orig.parties.find(q => q.nameHe === p.nameHe)!.logo} : {}),
         bloc: orig.bloc, votes: p.votes, withdrawn: false, sponsorsHe: orig.sponsorsHe,
@@ -332,7 +334,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       need(isWhole(action.votes), 'votes', 'Votes must be a whole number ≥ 0.');
       need(!s.lists.some((l) => l.id === action.newId), 'duplicate-id', 'List id already exists.');
       // a new list is its own lineage, so comparisons and later merges/splits can follow it
-      s = { ...s, lists: [...s.lists, { id: action.newId, originIds: [action.newId], letters: action.letters, nameHe: action.nameHe, shortHe: action.nameHe, shortEn: null, color: action.color, bloc: null, votes: action.votes, withdrawn: false, candidates: [], sponsorsHe: '' }] };
+      s = { ...s, lists: [...s.lists, { id: action.newId, synthetic: { kind: 'new', parts: [] }, originIds: [action.newId], letters: action.letters, nameHe: action.nameHe, shortHe: action.nameHe, shortEn: null, color: action.color, bloc: null, votes: action.votes, withdrawn: false, candidates: [], sponsorsHe: '' }] };
       break;
     case 'removeList':
       listById(s, action.listId);

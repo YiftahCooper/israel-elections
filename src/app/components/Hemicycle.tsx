@@ -1,3 +1,5 @@
+import { Slip } from './ui.tsx';
+import { syntheticIconSvg } from '../syntheticIcon.ts';
 import { CandidateName } from './CandidateName.tsx';
 import memberNames from '../../data/candidate-display-names.json';
 import { Floating, useHoverBridge } from '../floating.tsx';
@@ -168,18 +170,25 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
         : [{l,n,colors,label:listLabel(l,lang),inner:undefined}];
     });
     exportRows.forEach(({l,n,colors,label,inner},i) => {
-      const x = colStart(i % 2), y = rowsY + Math.floor(i/2)*28, dir = rtlText ? -1 : 1;
+      const x = colStart(i % 2), y = rowsY + Math.floor(i/2)*32, dir = rtlText ? -1 : 1;
       colors.forEach((c,k)=>{
         const dot = document.createElementNS(NS,'circle');
         dot.setAttribute('cx',String(x+dir*(7+k*16))); dot.setAttribute('cy',String(y-5)); dot.setAttribute('r','7'); dot.setAttribute('fill',c); clone.appendChild(dot);
         if(inner) { const fill=dot.cloneNode() as SVGCircleElement; fill.setAttribute('r','4.5'); fill.setAttribute('fill',inner); clone.appendChild(fill); }
       });
+      const artwork = syntheticIconSvg(l);
+      if (artwork && !componentRows.some(row => row.l.id === l.id)) {
+        const tile = new DOMParser().parseFromString(artwork, 'image/svg+xml').documentElement;
+        tile.innerHTML = tile.innerHTML.replaceAll('id="tile"', `id="tile-${i}"`).replaceAll('url(#tile)', `url(#tile-${i})`);
+        tile.setAttribute('x', String(rtlText ? x - 44 : x)); tile.setAttribute('y', String(y - 19));
+        tile.setAttribute('width', '44'); tile.setAttribute('height', '24'); clone.appendChild(tile);
+      }
       const g = groupsNow.find(g=>g.bIds.includes(l.id));
       const numbers = !componentRows.some(row=>row.l.id===l.id) && g?.bIds.length===1 && g.seatsA!==g.seatsB ? `${g.seatsA} → ${g.seatsB} (${signed(g.seatsB-g.seatsA)})` : String(n);
-      clone.appendChild(svgText(x+dir*(8+colors.length*16),y,16,`${label.length>42?label.slice(0,41)+'…':label} \u2066${numbers}\u2069`));
+      clone.appendChild(svgText(x+dir*(artwork ? 50 : 8+colors.length*16),y,16,`${label.length>42?label.slice(0,41)+'…':label} \u2066${numbers}\u2069`));
     });
     const entry = elections.find(e=>e.id===s.electionId);
-    const captionY = rowsY + Math.ceil(exportRows.length/2)*28 + 8;
+    const captionY = rowsY + Math.ceil(exportRows.length/2)*32 + 8;
     clone.appendChild(svgText(colStart(0), captionY, 13, `${entry ? electionLabel(entry, elections, lang) : ''}${entry ? ' · ' : ''}${s.log.length ? s.name || L('Scenario', 'תרחיש') : L('Official result', 'התוצאה הרשמית')}`));
     clone.setAttribute('viewBox', `${vb.x} ${vb.y} ${vb.width} ${captionY - vb.y + 14}`);
     const xml = new XMLSerializer().serializeToString(clone);
@@ -309,7 +318,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       {/* the per-list seat changes are said once, in the change line under the tools strip */}
       {hover && hv && (
         <Floating onPointerEnter={hoverBridge.cancel} onPointerLeave={hoverBridge.leave} className="tip" preferAbove anchor={() => hover.anchor.getBoundingClientRect()}>
-          <div className="row"><span className="swatch" style={{ background: hover.seat.color }} /><b>{listLabel(hv, lang)}</b> <span className="muted">({hv.letters})</span></div>
+          <div className="row"><Slip {...hv} name={listLabel(hv, lang)} size="sm" /><b>{listLabel(hv, lang)}</b> <span className="muted">({hv.letters})</span></div>
           {cand ? <div><b><CandidateName candidate={cand} text={hoverCandidateName} /></b> · {L('rank', 'מקום')} {hover.seat.idx + 1}{cand.notes?.map((n, k) => <div key={k} className="muted small">{lang === 'he' ? n.he : n.en}</div>)}</div>
             : hv.rosterUnavailable || hv.rosterTruncated ? <div className="muted">{L(`Seat ${hover.seat.idx + 1} of the list; candidate names are not available for this election`, `מושב ${hover.seat.idx + 1} של הרשימה; שמות המועמדים אינם זמינים לבחירות אלה`)}</div>
             : <div className="bad">{L('Vacant — the list has too few candidates', 'מושב ריק — אין די מועמדים ברשימה')}</div>}
@@ -321,9 +330,9 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
         <div className="legend" role="group" aria-label={L('Lists in the Knesset', 'הרשימות בכנסת')} style={{ marginTop: 6 }}>
           {seats.some(st=>st.bloc===null) && <span className="row no-bloc-legend"><span className="swatch" style={{background:'color-mix(in srgb, var(--muted) 30%, var(--surface))',border:'1px dotted var(--muted)'}} />{L('No bloc','ללא גוש')}</span>}
           {componentRows.map(({l,p,n}) => <button key={`${l.id}:${p.id}`} aria-pressed={selected === l.id} onClick={()=>setState({selectedListId:selected === l.id ? null : l.id})}><span className="component-key" style={{background:p.color ?? l.color,borderColor:l.color}} />{componentName(l,p)} <b>{n}</b></button>)}
-          {legendRows.filter(({l})=>!componentRows.some(row=>row.l.id===l.id)).map(({ l, n, colors }) => (
+          {legendRows.filter(({l})=>!componentRows.some(row=>row.l.id===l.id)).map(({ l, n }) => (
             <button key={l.id} aria-pressed={selected === l.id} onClick={() => setState({ selectedListId: selected === l.id ? null : l.id })}>
-              <span className="swatch" style={{ background: colors.length > 1 ? `linear-gradient(90deg, ${colors.map((c, i) => `${c} ${i / colors.length * 100}% ${(i + 1) / colors.length * 100}%`).join(', ')})` : colors[0] }} />{listLabel(l, lang)} <b className="tabnum">{n}</b>
+              <span aria-hidden="true"><Slip {...l} name={listLabel(l, lang)} size="sm" /></span>{listLabel(l, lang)} <b className="tabnum">{n}</b>
             </button>
           ))}
         </div>

@@ -82,7 +82,9 @@ const EXPECTED: Record<Family, string> = {
   // 212 removed list/party logo refs and 23 builtAt changes; other four digests unchanged.
   // merged with logos run 4 (year-only print evidence; only 6 logo fields and builtAt differ; path walk 5 Nov).
   // merged with logos run 4b (k18–k26 same-election logos; only 17 logo fields and builtAt differ; path walk 5 Nov).
-  model: '2694440f0600e00473d166da8e25e28d3a37d73b717ebe4aa10d93778a23d7f1',
+  // U6 synthetic artwork: 212 of 520 model cases differ only in the new synthetic field;
+  // recursively omitting it exactly reproduces HEAD in every case (allocation/analysis unchanged).
+  model: '4bb509b4ca8b84bfd589478e9db4222b0792d12b6802d5857553acb3092a2a33',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

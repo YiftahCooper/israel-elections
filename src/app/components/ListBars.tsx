@@ -90,8 +90,8 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
         <button type="button" data-family={familyRows.find(x => x.id === l.id)?.family} ref={open ? selRef : undefined} className={`lb-row ${out ? 'out' : ''} ${selected && !open ? 'dim' : ''}`} aria-pressed={open}
           aria-label={listLabel(l, lang)} aria-describedby={`lbd-${l.id}`}
           onClick={() => setState({ selectedListId: open ? null : l.id })}
-          title={l.logo ? listLabel(l, lang) : `${listLabel(l, lang)} — ${L('Logo unavailable — name monogram', 'אותיות הפתק (טרם נמצא סמל ממקור לבחירות אלה)')}`}>
-          <Slip name={listLabel(l, lang)} letters={l.letters} color={l.color} logo={l.logo} />
+          title={l.logo || l.synthetic ? listLabel(l, lang) : `${listLabel(l, lang)} — ${L('Ballot letters (no verified election logo)', 'אותיות הפתק (טרם נמצא סמל ממקור לבחירות אלה)')}`}>
+          <Slip name={listLabel(l, lang)} letters={l.letters} color={l.color} logo={l.logo} synthetic={l.synthetic} />
           <span className="lb-main">
             <span className="lb-name">{listLabel(l, lang)}<PartEdits single s={s} prefix={['lists', l.id]} /></span>
             {familyDefinition && family && family!=='other' && <small className="family-row-label">{familyLabel(familyDefinition,lang)}{family==='mixed'?` · ${L('Mixed lists','רשימות מעורבות')}`:''}</small>}

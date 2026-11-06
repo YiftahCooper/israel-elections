@@ -90,14 +90,14 @@ test('E9 Escape reverts a draft first, then closes the panel', async ({page}) =>
   await details.getByLabel('Votes',{exact:true}).press('Escape');
   await expect(details).toHaveCount(0);
 });
-test('E10 Compare change bars use neutral ink with an identity swatch', async ({page}) => {
+test('E10 Compare change bars use neutral ink with a list identity tile', async ({page}) => {
   await start(page); await page.getByRole('button',{name:'Likud',exact:true}).click();
   const votes=page.getByRole('region',{name:'List details'}).getByLabel('Votes',{exact:true});
   await votes.fill('1300000'); await votes.press('Enter'); await page.keyboard.press('Escape');
   await page.getByRole('tab',{name:'Compare',exact:true}).click();
   const bar=page.locator('.cmp-pos i').first();
   await expect(bar).toHaveCSS('background-color', await page.locator('.cmp').evaluate(el=>getComputedStyle(el).color));
-  await expect(page.locator('.cmp-label .swatch').first()).toBeVisible();
+  await expect(page.locator('.cmp-label .slip').first()).toBeVisible();
 });
 
 test('E9 bloc Escape cancels a pending move before closing', async ({page}) => {
