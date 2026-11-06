@@ -65,6 +65,13 @@ export function releasedElection(id: 'k13' | 'k14' | 'k15', expected: {
       expect(list.candidates.map(c => c.rank)).toEqual(list.candidates.map((_, i) => i + 1));
       expect(list.candidates.map(c => c.id)).toEqual(list.candidates.map(c => `${list.id}#${c.rank}`));
       const won = expected.seats[list.letters] ?? 0;
+      if (list.withdrawn && id === 'k15') {
+        expect(list.votes).toBe(0);
+        expect(list.candidates).toHaveLength(list.letters === 'ני' ? 1 : 4);
+        expect(list.candidatesTruncated).not.toBe(true);
+        expect(list.candidatesUnavailable).not.toBe(true);
+        continue;
+      }
       if (won === 0) {
         expect(list.candidates).toEqual([]);
         expect(list.candidatesUnavailable).toBe(true);
@@ -95,6 +102,6 @@ export function releasedElection(id: 'k13' | 'k14' | 'k15', expected: {
         } else expect(normalize(candidate.nameHe), `${list.id}, elected ${i + 1}`).toBe(normalize(name));
       }
     }
-    expect(a.rosters.lists.filter(l => l.complete).map(l => l.letters)).toEqual(id === 'k14' ? ['הד'] : []);
+    expect(a.rosters.lists.filter(l => l.complete).map(l => l.letters)).toEqual(id === 'k14' ? ['הד'] : id === 'k15' ? ['ני', 'ק'] : []);
   });
 }

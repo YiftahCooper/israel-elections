@@ -301,7 +301,7 @@
       }
     },
     {
-      "letters": "ט",
+      "letters": "יט",
       "complete": false,
       "publishedCount": 119,
       "gazettePages": [
@@ -872,7 +872,7 @@
         },
         {
           "rank": 18,
-          "nameHe": "גאגולה יצחק",
+          "nameHe": "גאגולה איסק",
           "page": 3048
         }
       ],
@@ -882,6 +882,63 @@
         ],
         "checkedThroughRank": 18,
         "note": "All elected names independently transcribed from results section 4. Explicit candidateRanks maps elected positions to registered ranks; no roster rank is silently shifted. YP 4757 p. 3378 explicitly records registered rank 1, דרעי אריה מכלוף, resigning on 19 May 1999 after the election; all 17 elected names match registered ranks 2–18. Preserve the original registered head.",
+        "differences": []
+      }
+    },
+    {
+      "letters": "ני",
+      "complete": true,
+      "publishedCount": 1,
+      "gazettePages": [
+        3044
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "קרפל מרדכי",
+          "page": 3044
+        }
+      ],
+      "electedCrossCheck": {
+        "resultsPages": [],
+        "checkedThroughRank": 0,
+        "note": "All candidates resigned; list absent from final results. See national.reviewed.json for the statutory resignation notice.",
+        "differences": []
+      }
+    },
+    {
+      "letters": "ק",
+      "complete": true,
+      "publishedCount": 4,
+      "gazettePages": [
+        3046
+      ],
+      "candidates": [
+        {
+          "rank": 1,
+          "nameHe": "קרמר רוני",
+          "page": 3046
+        },
+        {
+          "rank": 2,
+          "nameHe": "קליין דוד",
+          "page": 3046
+        },
+        {
+          "rank": 3,
+          "nameHe": "שוגרמן דוד",
+          "page": 3046
+        },
+        {
+          "rank": 4,
+          "nameHe": "בסעוד שחל",
+          "page": 3046
+        }
+      ],
+      "electedCrossCheck": {
+        "resultsPages": [],
+        "checkedThroughRank": 0,
+        "note": "All candidates resigned; list absent from final results. See national.reviewed.json for the statutory resignation notice.",
         "differences": []
       }
     }
@@ -895,6 +952,14 @@
       "from": "צאנע טלב",
       "to": "סאנע טלב",
       "evidence": "Both notices print \"סאנע טלב\" with a clear ס: candidate notice p. 3044 (k15-candidates-gazette PDF page 10); results notice p. 3378 (PDF page 4)."
+    },
+    {
+      "reviewedOn": "2026-11-06",
+      "letters": "שס",
+      "rank": 18,
+      "fromName": "גאגולה יצחק",
+      "to": "גאגולה איסק",
+      "evidence": "YP 4748 p.3048: 18. גאגולה איסק; YP 4757 p.3378: 17. גאגולה איסק. OData PersonID 485 uses יצחק גאגולה; the gazetted historical form wins."
     }
   ]
 }

@@ -1,3 +1,7 @@
+// k15 audit (6 Nov): only k15 changes: ballot-ID migrations, gazetted names,
+// two withdrawn registration records, roster status, Gagula note, two withheld logos and provenance.
+// Field diff recorded in k15-resolution.md. Restoring HEAD k15 at scenarioFromDataset
+// reproduces all five old digests; src and the other 25 datasets are unchanged.
 // 6 Nov 2026 k22 audit: reviewed scalar diff changes only status, logical Hebrew
 // punctuation, CEC link titles, three withdrawal flags and distinct modern Gesher
 // IDs (also k23). Withdrawal flags affect hypothetical corpus allocations; model
@@ -53,7 +57,7 @@ const EXPECTED: Record<Family, string> = {
   // engine on the same tree reproduces 8260bc46… and af4237ef…; model, validation and rules digests are unchanged.
   // merged with the k24 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k20 audit fixes: combined digest = union of the separately reviewed changes.
-  allocation: 'bf50217e327445c12941453eb13b84cb7badc51dce3d0ac173136068075e71ab',
+  allocation: '52d8f62f4a87cffa94424b7a1eed596fd865f770391fed886d71d793b0164ca5',
   analysis: 'b682af4570daf5cd7967e77afda56c8a9bcb2b5de4850f4d8ebc1652228269e0',
   // Model digest re-recorded for the 1973 party ranks, then for candidate biography links (Candidate.bio): with
   // the build timestamps held fixed and bio not carried, the new code gives the previous digest. Then for three
@@ -117,7 +121,7 @@ const EXPECTED: Record<Family, string> = {
   // and builtAt changed (recursive field diff); HEAD k19 with current src reproduces 2694440f….
   // All four non-model digests unchanged. See docs/research/data-audit/k19-resolution.md.
   // merged with k19 audit fixes: combined digest = union of the separately reviewed changes.
-  model: '4faa7f17ce364956de29269c7575a52a553ca40ea4da216f29fcc9620d9c21e5',
+  model: '99089dfd6022c2573501e101a96752a6212f2b2c87861eeebcdc46349f5a8244',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

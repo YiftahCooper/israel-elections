@@ -117,7 +117,7 @@
       "unassignedRanks": []
     },
     {
-      "letters": "ט",
+      "letters": "יט",
       "nameHe": "האיחוד הלאומי - מולדת חרות תקומה",
       "seats": 4,
       "rosterRanks": 5,
@@ -451,7 +451,7 @@
             },
             {
               "letters": "ג",
-              "note": "in the coalition without cabinet ministers; left on 1999-09-05"
+              "note": "in the coalition without cabinet ministers; left in September 1999 (IDI; exact day not independently established)"
             }
           ]
         },
@@ -472,7 +472,7 @@
               "letters": "עם"
             },
             {
-              "letters": "ט"
+              "letters": "יט"
             },
             {
               "letters": "ו"
@@ -511,6 +511,13 @@
           "kind": "official",
           "quote": "KNS_PersonToPosition, GovernmentNum 28: ministers (PositionID 39/45/50/51/57) appointed on the government's first day, first StartDate 1999-07-06: איציק דליה, ביילין יוסי, מרדכי יצחק, סויסה אליהו, פרס שמעון, בן-עמי שלמה, ברק אהוד, בן-אליעזר בנימין, בניזרי שלמה, ישי אליהו, כהן יצחק, כהן רן, לוי דוד, לוי יצחק, שריד יוסי, שרנסקי נתן, רמון חיים, שוחט אברהם-בייגה",
           "accessed": "2026-11-04"
+        },
+        {
+          "url": "https://www.idi.org.il/articles/8082",
+          "publisher": "Israel Democracy Institute",
+          "kind": "academic",
+          "quote": "כללה הקואליציה שבע סיעות ונסמכה על רוב של 75 חברי כנסת",
+          "accessed": "2026-11-06"
         }
       ]
     }
@@ -677,7 +684,7 @@
       "confidence": "medium"
     },
     {
-      "letters": "ט",
+      "letters": "יט",
       "color": "#F26039",
       "basis": "Colour used for this list/party in Hebrew Wikipedia Knesset and party articles (a convention of that encyclopedia, not an official party colour).",
       "colourId": "national-union",

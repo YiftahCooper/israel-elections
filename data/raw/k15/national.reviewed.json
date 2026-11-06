@@ -26,7 +26,7 @@
     },
     {
       "letters": "ב",
-      "nameHe": "המפד״ל - המפלגה הדתית לאומית המזרחי - הפועל המזרחי",
+      "nameHe": "המפד״ל - המפלגה הדתית לאומית, המזרחי - הפועל המזרחי",
       "votes": 140307,
       "officialSeats": 5
     },
@@ -38,7 +38,7 @@
     },
     {
       "letters": "ד",
-      "nameHe": "אלתג׳מע אלוטני אלדימוקרטי (בל״ד)",
+      "nameHe": "אלתג׳מע אלוחדוי אלדמוקרטי (בל״ד)",
       "votes": 66103,
       "officialSeats": 2
     },
@@ -62,12 +62,12 @@
     },
     {
       "letters": "זך",
-      "nameHe": "מורשת אבות בראשות הרב בא-גד",
+      "nameHe": "מורשת־אבות בראשות הרב בא־גד",
       "votes": 1164,
       "officialSeats": 0
     },
     {
-      "letters": "ט",
+      "letters": "יט",
       "nameHe": "האיחוד הלאומי - מולדת חרות תקומה",
       "votes": 100181,
       "officialSeats": 4
@@ -122,7 +122,7 @@
     },
     {
       "letters": "נץ",
-      "nameHe": "מפלגת הנגב",
+      "nameHe": "מפלגת נגב",
       "votes": 4324,
       "officialSeats": 0
     },
@@ -158,13 +158,13 @@
     },
     {
       "letters": "קז",
-      "nameHe": "מפלגת הקזינו - עזרא טיסונה מוסד ההימורים הישראלי",
+      "nameHe": "מפלגת הקזינו - עזרא טיסונה מיסוד ההימורים בישראל",
       "votes": 6540,
       "officialSeats": 0
     },
     {
       "letters": "קם",
-      "nameHe": "אירגון הפעולה הדמוקרטי דע״ם",
+      "nameHe": "ארגון הפעולה הדמוקרטי דע״ם",
       "votes": 2151,
       "officialSeats": 0
     },
@@ -175,8 +175,8 @@
       "officialSeats": 0
     },
     {
-      "letters": "קף",
-      "nameHe": "ערבי חדש",
+      "letters": "קפ",
+      "nameHe": "הערבי החדש",
       "votes": 2042,
       "officialSeats": 0
     },
@@ -200,9 +200,33 @@
     },
     {
       "letters": "שס",
-      "nameHe": "ש״ס התאחדות הספרדים העולמית שומרי תורה",
+      "nameHe": "ש״ס - התאחדות הספרדים העולמית שומרי תורה",
       "votes": 430676,
       "officialSeats": 17
+    },
+    {
+      "letters": "ני",
+      "nameHe": "מנהיגות יהודית לישראל",
+      "votes": 0,
+      "officialSeats": 0,
+      "withdrawn": true,
+      "withdrawalSourceId": "k15-withdrawals-yp4754",
+      "withdrawalQuote": "בכך התפטרו כל המועמדים ברשימה זו.",
+      "notesHe": [
+        "המועמד היחיד, מרדכי קרפל, התפטר ב־14 במאי 1999 (י״פ 4754, עמ׳ 3269). הרשימה אינה מופיעה בתוצאות הסופיות; אפס הקולות הוא ערך תצוגה לרשימה שפרשה."
+      ]
+    },
+    {
+      "letters": "ק",
+      "nameHe": "קול הסביבה",
+      "votes": 0,
+      "officialSeats": 0,
+      "withdrawn": true,
+      "withdrawalSourceId": "k15-withdrawals-yp4751",
+      "withdrawalQuote": "בכך התפטרו כל המועמדים ברשימה זו.",
+      "notesHe": [
+        "מועמדים 1, 3 ו־4 התפטרו ב־29 באפריל 1999; מועמד 2 התפטר ב־5 במאי 1999 (י״פ 4751, עמ׳ 3184). הרשימה אינה מופיעה בתוצאות הסופיות; אפס הקולות הוא ערך תצוגה לרשימה שפרשה."
+      ]
     }
   ],
   "agreements": {
@@ -217,7 +241,7 @@
         "מרצ"
       ],
       [
-        "ט",
+        "יט",
         "כן"
       ],
       [
@@ -250,12 +274,21 @@
       ]
     ]
   },
-  "discrepancies": [],
+  "discrepancies": [
+    {
+      "field": "pm1999.barak.votes",
+      "retained": 1791020,
+      "otherValue": 1791021,
+      "source": "https://main.knesset.gov.il/About/History/pages/knessethistory.aspx?kns=15",
+      "note": "Knesset historical summary indexed value differs by one; contemporary statutory notice YP 4757 p.3376 prints 1,791,020 and wins. Historical HTML is not independently readable; index-only discrepancy, not an additional verified result."
+    }
+  ],
   "releaseBlockers": [],
   "hasLocalities": false,
   "localityNote": "No reconciled locality dataset is released. Secondary polling spreadsheets are not treated as reconciled national evidence.",
   "sourceNotes": [
     "PM-ballot valid 3,193,494 is excluded; Knesset valid is 3,309,416.",
-    "YP 4757 p.3378 records Shas leader Aryeh Deri resigning on 19 May 1999, after the election. Gazette candidate snapshots are not later membership."
+    "YP 4757 p.3378 records Shas leader Aryeh Deri resigning on 19 May 1999, after the election. Gazette candidate snapshots are not later membership.",
+    "Audit 2026-11-06: YP 4757 p.3376 transcribed names and ballot letters: יט; קפ הערבי החדש; מפלגת נגב; מפלגת הקזינו - עזרא טיסונה מיסוד ההימורים בישראל. Withdrawn zero rows are registration records, not entries in the final vote table."
   ]
 }

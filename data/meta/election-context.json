@@ -975,7 +975,7 @@
       ]
     },
     {
-      "id": "registered-not-declared-k15-ט",
+      "id": "registered-not-declared-k15-יט",
       "electionId": "k15",
       "effectiveDate": "1999-06-07",
       "contestType": "knesset",
@@ -989,7 +989,7 @@
         "evidence": "official",
         "sourceId": "k15-results-gazette"
       },
-      "listId": "15-ט",
+      "listId": "15-יט",
       "relatedSources": [
         {
           "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-cand.pdf",
@@ -1530,10 +1530,11 @@
           "nameHe": "יצחק מרדכי",
           "status": "withdrawn",
           "source": {
-            "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1999/",
-            "publisher": "Israel Democracy Institute",
-            "publisherHe": "המכון הישראלי לדמוקרטיה",
-            "evidence": "secondary"
+            "url": "https://olaw.org.il/yalkut/yalkut-4755.pdf",
+            "publisher": "CEC / Reshumot, YP 4755 p.3305: PM withdrawals 16 May 1999 (mirror)",
+            "publisherHe": "ועדת הבחירות המרכזית / רשומות; התפטרו ביום 16.5.1999",
+            "evidence": "official",
+            "sourceId": "k15-agreements-gazette"
           }
         },
         {
@@ -1542,10 +1543,11 @@
           "nameHe": "בני בגין",
           "status": "withdrawn",
           "source": {
-            "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1999/",
-            "publisher": "Israel Democracy Institute",
-            "publisherHe": "המכון הישראלי לדמוקרטיה",
-            "evidence": "secondary"
+            "url": "https://olaw.org.il/yalkut/yalkut-4755.pdf",
+            "publisher": "CEC / Reshumot, YP 4755 p.3305: PM withdrawals 16 May 1999 (mirror)",
+            "publisherHe": "ועדת הבחירות המרכזית / רשומות; התפטרו ביום 16.5.1999",
+            "evidence": "official",
+            "sourceId": "k15-agreements-gazette"
           }
         },
         {
@@ -1554,10 +1556,11 @@
           "nameHe": "עזמי בשארה",
           "status": "withdrawn",
           "source": {
-            "url": "https://www.idi.org.il/policy/parties-and-elections/elections/1999/",
-            "publisher": "Israel Democracy Institute",
-            "publisherHe": "המכון הישראלי לדמוקרטיה",
-            "evidence": "secondary"
+            "url": "https://olaw.org.il/yalkut/yalkut-4755.pdf",
+            "publisher": "CEC / Reshumot, YP 4755 p.3305: PM withdrawals 16 May 1999 (mirror)",
+            "publisherHe": "ועדת הבחירות המרכזית / רשומות; התפטרו ביום 16.5.1999",
+            "evidence": "official",
+            "sourceId": "k15-agreements-gazette"
           }
         }
       ],

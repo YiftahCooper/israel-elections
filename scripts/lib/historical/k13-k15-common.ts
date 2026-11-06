@@ -12,7 +12,7 @@ export interface Review {
   id: ElectionId; reviewedOn: string; resultsSourceId: string; resultsPages: number[];
   gazetteTotals: { valid: number; invalid: number };
   supplementalTotals: { sourceId: string; registered: number; votesCast: number };
-  lists: { letters: string; nameHe: string; votes: number; officialSeats: number }[];
+  lists: { letters: string; nameHe: string; votes: number; officialSeats: number; withdrawn?: boolean; withdrawalSourceId?: string; notesHe?: string[] }[];
   agreements: { sourceId: string | null; complete: boolean; pages: number[]; pairs: [string, string][] };
   discrepancies: unknown[]; releaseBlockers: string[]; hasLocalities: false; localityNote: string;
 }
@@ -40,6 +40,7 @@ export function verifyHistoricalProgress(id: 'k13' | 'k14' | 'k15', options: Ver
   const rawSha256 = verifySources([review.resultsSourceId, review.supplementalTotals.sourceId, rosters.sourceId,
     `${id}-national-reviewed`, `${id}-rosters-reviewed`, `${id}-elected-reviewed`,
     ...rosters.lists.flatMap(l => l.sourceId ? [l.sourceId] : []),
+    ...review.lists.flatMap(l => l.withdrawalSourceId ? [l.withdrawalSourceId] : []),
     'k13-k15-bader-ofer-amendment', 'k13-k15-threshold-amendment', ...(review.agreements.sourceId ? [review.agreements.sourceId] : [])], assert, { checkBytes: true });
   checkNationalTable(assert, id, review.lists.map(l => ({ letters: l.letters, nameHe: l.nameHe, votes: l.votes, seats: l.officialSeats })),
     { valid: review.gazetteTotals.valid, invalid: review.gazetteTotals.invalid, votesCast: review.supplementalTotals.votesCast, registered: review.supplementalTotals.registered });
@@ -53,6 +54,10 @@ export function verifyHistoricalProgress(id: 'k13' | 'k14' | 'k15', options: Ver
     assert(list.candidates.every((c, i) => c.rank === i + 1 && c.nameHe.trim() && list.gazettePages.includes(c.page)), `${id}: missing name, rank or page`);
     const won = review.lists.find(l => l.letters === list.letters)!.officialSeats;
     const members = elected.lists.find(e => e.letters === list.letters);
+    if (id === 'k15' && review.lists.find(l => l.letters === list.letters)?.withdrawn) {
+      assert(won === 0 && !members && list.complete && list.electedCrossCheck.checkedThroughRank === 0, `${id}: invalid withdrawn roster`);
+      continue;
+    }
     assert(members && members.names.length === won && members.candidateRanks.length === won, `${id}: incomplete elected names ${list.letters}`);
     assert(members.resultsPages.length > 0 && members.resultsPages.every(p => review.resultsPages.includes(p)), `${id}: invalid results page`);
     assert(JSON.stringify(members.resultsPages) === JSON.stringify(list.electedCrossCheck.resultsPages), `${id}: cross-check pages differ`);
@@ -114,11 +119,11 @@ export function historicalDataset({ review, rosters, rawSha256 }: Audit): Electi
       const roster = rosters.lists.find(r => r.letters === l.letters);
       // candidates ranked above the last elected member but absent from the notice's elected names
       const notSeated = notSeatedRanks(elected.lists.find(x => x.letters === l.letters)?.candidateRanks ?? [], (roster?.candidates ?? []).map(c => c.rank));
-      return listRecord(n, i, { letters: l.letters, nameHe: l.nameHe, votes: l.votes,
+      return listRecord(n, i, { letters: l.letters, nameHe: l.nameHe, votes: l.votes, withdrawn: l.withdrawn,
         candidates: roster?.candidates.map(c => ({ id: candidateId(id, c.rank), rank: c.rank, nameHe: c.nameHe, ...(notSeated.has(c.rank) ? { notSeated: true } : {}) })) ?? [],
         candidatesSource: roster ? (roster.sourceId ?? rosters.sourceId) : '',
         ...rosterFlags(!roster ? 'unavailable' : roster.complete ? 'complete' : 'truncated', 'explicit'),
-        notesHe: (roster?.candidates ?? []).filter(c => notSeated.has(c.rank)).map(notSeatedNoteHe) }, LIST_KEYS);
+        notesHe: [...(l.notesHe ?? []), ...(roster?.candidates ?? []).filter(c => notSeated.has(c.rank)).map(notSeatedNoteHe)] }, LIST_KEYS);
     })),
     agreements: agreementRecords(n, review.agreements.pairs, review.agreements.sourceId!),
     blocs: [], officialSeats: officialSeatsOf(n, review.lists.map(l => ({ letters: l.letters, seats: l.officialSeats }))),
