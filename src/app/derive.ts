@@ -116,7 +116,7 @@ export function tieAffectsSeats(s: Scenario, w: EngineWarning): boolean {
 /** Engine warnings in the interface language (the engine's own messages are English diagnostics). */
 export function warningText(w: EngineWarning, s: Scenario, lang: Lang): string {
   const he = lang === 'he';
-  const nm = (id: string) => { const l = s.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : id; };
+  const nm = (id: string) => { const l = s.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : (lang === 'he' ? 'רשימה לא ידועה' : 'Unknown list'); };
   const d = (w.data ?? {}) as Record<string, unknown>;
   switch (w.code) {
     case 'inferred-candidate-cap': {

@@ -49,7 +49,7 @@ describe('official English names of Knesset members', () => {
     const bySite = new Map(names.map((x) => [x.siteId, x.nameEn]));
     let n = 0;
     for (const e of index.filter((x) => x.available)) {
-      const meta = JSON.parse(readFileSync(`data/meta/bios/${e.id}.json`, 'utf8')).candidates as Record<string, { knesset?: { siteId?: number } | null; basis?: string }>;
+      const meta = JSON.parse(readFileSync(`data/meta/bios/${e.id}.json`, 'utf8')).candidates as Record<string, { knesset?: { siteId?: number } | null; basis?: string; displayNameEn?: string; displayNameEnNote?: string }>;
       for (const l of load(e.id).lists) for (const c of l.candidates) {
         const m = meta[c.id];
         if (m?.basis?.startsWith('not elected; ')) expect(c.nameEn, c.id).toBeUndefined();
@@ -58,7 +58,13 @@ describe('official English names of Knesset members', () => {
         const sourceName = bySite.get(m!.knesset!.siteId!);
         // k18 and k13 audits: retain spelling, normalize source backticks and repeated whitespace (k13: Ra'anan Cohen only).
         const normalized = sourceName?.replaceAll('`', "'").replace(/\s+/g, ' ').trim();
-        expect(c.nameEn, c.id).toBe(e.id === 'k18' || c.id === '13-אמת#22' ? normalized : sourceName);
+        const reviewed: Record<string, [string, string]> = {'12-ג#1': ['Moshe Zeev Feldman', 'Moseh  Zeev Feldman'], '12-מחל#41': ['Yehoshua Sagi', 'Yeushua Sagi']};
+        if (m?.displayNameEn) {
+          expect(m.displayNameEn, c.id).toBe(reviewed[c.id]?.[0]);
+          expect(bySite.get(m.knesset!.siteId!), c.id).toBe(reviewed[c.id]?.[1]);
+          expect(m.displayNameEnNote).toContain('YP 3588/3591');
+        }
+        expect(c.nameEn, c.id).toBe(m?.displayNameEn ?? (e.id === 'k18' || c.id === '13-אמת#22' ? normalized : sourceName));
         expect(c.nameEn, c.id).not.toMatch(/[֐-׿]/);
       }
     }

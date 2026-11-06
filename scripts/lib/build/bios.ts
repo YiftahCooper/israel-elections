@@ -8,6 +8,7 @@ import type { CandidateBio, ElectionDataset } from '../../../src/data/schema.ts'
 
 const ROOT = join(import.meta.dirname, '..', '..', '..');
 interface Entry {
+  displayNameEn?: string; // Reviewed display transliteration; original official extract stays intact.
   knesset?: { url: string; siteId?: number } | null; hewiki?: { title: string; url: string } | null;
   party?: { url: string; publisher?: string; archivedAt?: string | null; kind?: string } | null; confidence: 'high' | 'medium'; basis?: string;
 }
@@ -26,9 +27,12 @@ export function applyBios(ds: ElectionDataset): ElectionDataset {
   const namesFile = join(ROOT, 'data', 'raw', 'bios', 'knesset-site-mk-names-en.json');
   const namesEn = new Map(existsSync(namesFile) ? (JSON.parse(readFileSync(namesFile, 'utf8')) as { siteId: number; nameEn: string | null }[]).filter((x) => x.nameEn).map((x) => [x.siteId, x.nameEn!]) : []);
   const nameEnOf = (e: Entry) => {
-    const name = knessetIdentitySure(e) && e.knesset?.siteId ? namesEn.get(e.knesset.siteId) : undefined;
+    if (!knessetIdentitySure(e) || !e.knesset?.siteId) return undefined;
+    // k12 audit: a reviewed displayNameEn overrides a misspelt site value; the raw site value stays as evidence.
+    if (e.displayNameEn) return e.displayNameEn;
+    const name = namesEn.get(e.knesset.siteId);
     // k13 audit: siteId 67 returns a backtick; preserve raw evidence and normalize display punctuation.
-    return ds.id === 'k13' && e.knesset?.siteId === 67 ? name?.replace('`', "'") : name;
+    return ds.id === 'k13' && e.knesset.siteId === 67 ? name?.replace('`', "'") : name;
   };
   const ids = new Set(ds.lists.flatMap((l) => l.candidates.map((c) => c.id)));
   const unknown = Object.keys(bios).filter((id) => !ids.has(id));

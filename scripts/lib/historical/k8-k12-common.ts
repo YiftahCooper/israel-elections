@@ -4,7 +4,7 @@ import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import type { ElectionDataset } from '../../../src/data/schema.ts';
 import { ISRAEL_1973, ISRAEL_1977 } from '../../../src/engine/rules.ts';
-import { agreementRecords, listRecord, officialSeatsOf } from '../build/records.ts';
+import { agreementRecords, listRecord } from '../build/records.ts';
 import { candidateId, notSeatedNoteHe, notSeatedRanks, rosterFlags } from '../build/roster.ts';
 import { indexEntry, manifest, OUT, RAW, rawJson, verifySources } from '../build/sources.ts';
 import { allocateDataset, checkAgreementPairs, checker, checkNationalTable, type Check } from '../build/validate.ts';
@@ -26,7 +26,7 @@ export interface Review {
   resultsPages: number[];
   gazetteTotals: { valid: number; invalid: number; registered: null; votesCast: null };
   supplementalTotals: { registered: number; votesCast: number; sourceId: string };
-  lists: { letters: string; nameHe: string; gazetteVotes: number; officialSeats: number }[];
+  lists: { letters: string; legacyId?: string; nameHe: string; gazetteVotes: number; officialSeats: number }[];
   agreements: { sourceId: string; issue?: number; page: number | null; complete: boolean; pairs: [string, string][] };
   candidateChecks: { completeWinningRostersVerified: boolean; lists: { letters: string; publishedCount: number; first: { rank: number; nameHe: string }; pages: number[]; scope: string }[] };
   sourceIds: string[];
@@ -55,6 +55,8 @@ const LIST_KEYS = ['id', 'letters', 'nameHe', 'shortHe', 'shortEn', 'sponsorsHe'
  * as untranscribed in notes, not falsely declared unavailable from the archives. */
 export function researchDataset({ review: r, rosters }: Audit): ElectionDataset {
   const n = Number(r.id.slice(1));
+  // Corrected k12 ballot letters retain published IDs used by saved scenarios/share actions.
+  const stableId = (letters: string) => r.lists.find(l => l.letters === letters)?.legacyId ?? `${n}-${letters}`;
   return {
     schemaVersion: 1, id: r.id, knesset: n, electionDate: dates[r.id],
     nameHe: `בדיקת מחקר בלבד — הכנסת ה-${n}`, nameEn: 'RESEARCH ONLY — not a release dataset',
@@ -65,14 +67,14 @@ export function researchDataset({ review: r, rosters }: Audit): ElectionDataset 
       const roster = rosters.find(c => c.letters === l.letters);
       // registered candidates ranked above the last elected member whom the results notice omits
       const notSeated = notSeatedRanks(roster?.electedCrossCheck?.ranks ?? [], (roster?.candidates ?? []).map(c => c.rank));
-      return listRecord(n, i, { letters: l.letters, nameHe: l.nameHe, votes: l.gazetteVotes,
-        candidates: (roster?.candidates ?? []).map(c => ({ id: candidateId(`${n}-${l.letters}`, c.rank), rank: c.rank, nameHe: c.nameHe, ...(notSeated.has(c.rank) ? { notSeated: true as const } : {}) })),
+      return listRecord(n, i, { id: stableId(l.letters), letters: l.letters, nameHe: l.nameHe, votes: l.gazetteVotes,
+        candidates: (roster?.candidates ?? []).map(c => ({ id: candidateId(stableId(l.letters), c.rank), rank: c.rank, nameHe: c.nameHe, ...(notSeated.has(c.rank) ? { notSeated: true as const } : {}) })),
         ...rosterFlags(!roster ? 'unavailable' : roster.complete ? 'complete' : 'truncated', 'when-set'),
         candidatesSource: `${r.id}-candidates-gazette`,
         notesHe: roster ? roster.candidates.filter(c => notSeated.has(c.rank)).map(notSeatedNoteHe) : ['RESEARCH ONLY: official roster exists but has not been transcribed.'] }, LIST_KEYS);
     }),
-    agreements: agreementRecords(n, r.agreements.pairs, r.agreements.sourceId),
-    blocs: [], officialSeats: officialSeatsOf(n, r.lists.map(l => ({ letters: l.letters, seats: l.officialSeats }))),
+    agreements: agreementRecords(n, r.agreements.pairs, r.agreements.sourceId).map(a => ({ ...a, members: [stableId(a.members[0].slice(String(n).length + 1)), stableId(a.members[1].slice(String(n).length + 1))] })),
+    blocs: [], officialSeats: Object.fromEntries(r.lists.map(l => [stableId(l.letters), l.officialSeats])),
     officialSeatsSourceId: r.resultsSourceId, sourceIds: [...r.sourceIds, `${r.id}-national-reviewed`], hasLocalities: false,
     buildInfo: { builtAt: r.reviewedOn, rawSha256: {} },
   };
@@ -126,7 +128,7 @@ export function verifyHistoricalProgress(id: HistoricalId, opts: VerifyOptions =
   check(allocation.seatsAllocated === 120 && allocation.warnings.length === 0, `${id}: incomplete/ambiguous allocation`);
   // Recorded as evidence: an inexact reproduction is a release blocker, never adjusted to match.
   const differences = r.lists.flatMap(l => {
-    const computed = allocation.lists.find(x => x.id === `${id.slice(1)}-${l.letters}`)!.seats;
+    const computed = allocation.lists.find(x => x.id === (l.legacyId ?? `${id.slice(1)}-${l.letters}`))!.seats;
     return computed === l.officialSeats ? [] : [{ letters: l.letters, computed, official: l.officialSeats }];
   });
   check(JSON.stringify(differences) === JSON.stringify(r.allocationCheck.differences), `${id}: allocation diagnostic changed`);

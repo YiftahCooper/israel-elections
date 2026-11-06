@@ -8,6 +8,7 @@
 - k18: retain withdrawn Mahapach BeHinuch; correct formation-day coalition, Meretz affiliation, names and dated source claims.
 - k16: corrected government/succession and dissolution chronology, two candidate names and roster extent; retained withdrawn Moreshet Avot and clarified source and envelope-voter claims.
 - k13: corrected official list names and ballot letters, four candidate spellings, and Government 25’s end (22 November 1995, with Peres as acting prime minister).
+- k12: corrected seven ballot-letter readings and list names while retaining stable IDs, settled the opening coalition at 95–25, documented Reiser’s death, and qualified unsupported recommendations and campaign logos.
 
 ## 5 November 2026 — release review
 

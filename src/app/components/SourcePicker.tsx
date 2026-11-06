@@ -104,7 +104,7 @@ export function PreferenceSettings() {
   const saved = useStore(st => st.saved);
   const elections = useStore(st => st.elections);
   const listsOf = (election: string) => s?.electionId === election ? s.lists : datasets[election as ElectionId] ? baselineOf(datasets[election as ElectionId]!).lists : [];
-  const listName = (election: string, id: string) => { const l = listsOf(election).find(x => x.id === id); return l ? listLabel(l, lang) : id; };
+  const listName = (election: string, id: string) => { const l = listsOf(election).find(x => x.id === id); return l ? listLabel(l, lang) : (lang === 'he' ? 'רשימה לא ידועה' : 'Unknown list'); };
   const answerLabel = (id: PreferenceId, v: string, election: string) => {
     const o = PREFERENCES[id].options.find(x => x.value === v);
     return o ? L(o.label[0], o.label[1]) : v.startsWith('t:') ? listName(election, v.slice(2)) : v;

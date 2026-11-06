@@ -7,6 +7,10 @@
 // and build provenance. Numeric inputs/seats unchanged. HEAD k13 in scratch reproduces
 // prior allocation/model digests; other 25 datasets and three other digests unchanged.
   // merged with k13 audit fixes: combined digest = union of the separately reviewed changes.
+// k12 audit (6 Nov): reviewed recursive diff changes only k12 letter/name labels,
+// candidate display notes/names, two withheld logos, party link, blocs and status/source metadata.
+// Every list/candidate ID, vote, seat, colour and agreement reference is unchanged; only model digest changes.
+  // merged with k12 audit fixes: combined digest = union of the separately reviewed changes.
 // 6 Nov 2026 k22 audit: reviewed scalar diff changes only status, logical Hebrew
 // punctuation, CEC link titles, three withdrawal flags and distinct modern Gesher
 // IDs (also k23). Withdrawal flags affect hypothetical corpus allocations; model
@@ -143,7 +147,8 @@ const EXPECTED: Record<Family, string> = {
   // merged with k18 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k16 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k13 audit fixes: combined digest = union of the separately reviewed changes.
-  model: '60223bc557b4d3bfedcc82b79143f709ed6348c944ee76d10fc146e1f538ae2f',
+  // merged with k12 audit fixes: combined digest = union of the separately reviewed changes.
+  model: '0b24f5e9fc5cdf762e9b6a705bdacb7e2aa65c438bc6b66b9ac12b6568e84005',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

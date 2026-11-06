@@ -4,7 +4,7 @@ import type { AgreementRecord, ListRecord } from '../../../src/data/schema.ts';
 import { META, neutralColor } from '../list-meta.ts';
 
 export interface ListFields {
-  letters: string; nameHe: string; votes: number;
+  id?: string; letters: string; nameHe: string; votes: number;
   /** Short Hebrew name when list-meta.ts has none (defaults to nameHe). */
   fallbackShortHe?: string;
   sponsorsHe?: string; partiesHe?: string[] | null; withdrawn?: boolean;
@@ -22,7 +22,7 @@ export const LIST_KEYS = ['id', 'letters', 'nameHe', 'shortHe', 'shortEn', 'spon
 /** A list record for Knesset `n`, list index `index` (for the neutral fallback colour). Short names,
  *  colours and blocs come from list-meta.ts (app-assigned, not official data). */
 export function listRecord(n: number, index: number, f: ListFields, keys: readonly string[] = LIST_KEYS): ListRecord {
-  const id = `${n}-${f.letters}`;
+  const id = f.id ?? `${n}-${f.letters}`;
   const m = META[id];
   const all: Record<string, unknown> = {
     id, letters: f.letters, nameHe: f.nameHe, shortHe: m?.he ?? f.fallbackShortHe ?? f.nameHe, shortEn: m?.en ?? null,

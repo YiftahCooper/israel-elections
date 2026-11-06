@@ -254,7 +254,7 @@
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset12-results.pdf",
-        "titleHe": "אחדות – למען ישועה וחיים לכנסת — הודעת התוצאות לכנסת 12",
+        "titleHe": "אחדות – למען ויקטור תייר לכנסת — הודעת התוצאות לכנסת 12",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-12",
         "sourceType": "cec",
@@ -265,7 +265,7 @@
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset12-results.pdf",
-        "titleHe": "זעם ורעש — הודעת התוצאות לכנסת 12",
+        "titleHe": "תרשיש — הודעת התוצאות לכנסת 12",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-12",
         "sourceType": "cec",
@@ -283,17 +283,7 @@
         "confidence": "high"
       }
     ],
-    "12-טע": [
-      {
-        "kind": "neutral",
-        "url": "https://he.wikipedia.org/wiki/%D7%93%D7%A8%D7%9A_%D7%90%D7%A8%D7%A5_(%D7%9E%D7%A4%D7%9C%D7%92%D7%94)",
-        "titleHe": "דרך ארץ (מפלגה)",
-        "titleEn": "Hebrew Wikipedia (secondary)",
-        "publisher": "ויקיפדיה העברית (מקור משני)",
-        "sourceType": "hewiki",
-        "confidence": "high"
-      }
-    ],
+    "12-טע": [],
     "12-יע": [
       {
         "kind": "neutral",
@@ -320,7 +310,7 @@
       {
         "kind": "neutral",
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset12-results.pdf",
-        "titleHe": "תנועה למען מועמדים־ערי פיתוח ושכונות — הודעת התוצאות לכנסת 12",
+        "titleHe": "תנועה למען מושבים, ערי פיתוח ושכונות — הודעת התוצאות לכנסת 12",
         "titleEn": "Official election results record (whole-election document)",
         "publisher": "ועדת הבחירות המרכזית לכנסת ה-12",
         "sourceType": "cec",
@@ -476,7 +466,8 @@
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
     },
     "12-טע": {
-      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."
+      "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open.",
+      "neutral": "1988 list is unrelated to the 2020 party of the same name. No verified neutral history link retained."
     },
     "12-יע": {
       "partisan": "No verified campaign-period party source acquired in this pass. IDI row matching and reviewed live/archive sources did not supply this identity; NLI ephemera/newspaper research remains open."

@@ -657,7 +657,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 12 member, name identical (3)"
+   "basis": "elected; Knesset 12 member, name identical (3)",
+   "displayNameEn": "Yehoshua Sagi",
+   "displayNameEnNote": "Reviewed app transliteration of יהושע שגיא (YP 3588/3591); corrects the Knesset English header typo. Not claimed as a new official English spelling; original header remains in data/raw/bios/knesset-site-mk-names-en.json."
   },
   "12-אמת#1": {
    "knessetPersonId": 456,
@@ -1297,7 +1299,9 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; Knesset 12 member, name identical (3)"
+   "basis": "elected; Knesset 12 member, name identical (3)",
+   "displayNameEn": "Moshe Zeev Feldman",
+   "displayNameEnNote": "Reviewed app transliteration of משה זאב פלדמן (YP 3588/3591); corrects the Knesset English header typo. Not claimed as a new official English spelling; original header remains in data/raw/bios/knesset-site-mk-names-en.json."
   },
   "12-ג#2": {
    "knessetPersonId": 2549,

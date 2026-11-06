@@ -845,11 +845,11 @@
     {
       "id": "registered-not-declared-k12-מחל",
       "electionId": "k12",
-      "effectiveDate": "1988-11-21",
+      "effectiveDate": "1988-10-27",
       "contestType": "knesset",
       "type": "membership-snapshot",
-      "textEn": "By opening day: Michael Reiser (#25) appears in the registered list but is omitted from the gazetted elected names. Original ranks are preserved; the dataset skips this rank, following the results notice. No resignation date or cause is inferred from the omission.",
-      "textHe": "עד יום הפתיחה: מיכאל רייסר (25) מופיע ברשימה הרשומה אך אינו מופיע בשמות הנבחרים ברשומות. הדירוג המקורי נשמר ובנתונים מדלגים על מקום זה בהתאם להודעת התוצאות. אין מסיקים מההשמטה מועד התפטרות או סיבה.",
+      "textEn": "Michael Reiser (Likud #25) died on 27 October 1988, before polling day. The results notice omits him; original registered ranks are preserved.",
+      "textHe": "מיכאל רייסר (הליכוד, מקום 25) נפטר ב־27 באוקטובר 1988, לפני יום הבחירות. הוא אינו מופיע בשמות הנבחרים בהודעת התוצאות; דירוג הרשימה הרשומה נשמר.",
       "source": {
         "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset12-results.pdf",
         "publisher": "Central Elections Committee / Reshumot (gov.il host)",
@@ -872,6 +872,14 @@
           "publisherHe": "Knesset (official OData API, ParliamentInfo.svc)",
           "evidence": "official",
           "sourceId": "k12-membership-odata"
+        },
+        {
+          "url": "https://main.knesset.gov.il/mk/apps/mk/mk-personal-details/623",
+          "publisher": "Knesset — Michael Reiser, personal details",
+          "publisherHe": "הכנסת — מיכאל רייסר, פרטים אישיים",
+          "evidence": "official",
+          "quote": "תאריך פטירה: ט״ז בחשוון תשמ״ט, 27/10/1988",
+          "sourceId": "k12-reiser-personal-details"
         }
       ]
     },
