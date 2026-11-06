@@ -12,7 +12,7 @@ async function editLikud(page: Page, votes: string) {
   await page.getByRole('region', { name: 'Lists', exact: true }).getByRole('button', { name: 'Likud', exact: true }).click();
   const field = page.locator('.side-panel').getByRole('textbox', { name: 'Votes', exact: true });
   await field.fill(votes); await field.press('Enter');
-  await expect(chip(page)).toContainText('unsaved');
+  await expect(chip(page)).toContainText('*');
 }
 async function switcherOptions(page: Page) {
   await page.locator('.band .scenario-switcher .choice-trigger').click();
@@ -26,11 +26,11 @@ test('a duplicate gets its own colour and its own history; a draft already shows
   const draftColour = await appColor(page);
   await page.getByRole('button', { name: 'Save & share' }).click();
   await page.getByRole('button', { name: 'Save in this browser' }).click();
-  await expect(chip(page)).not.toContainText('unsaved');
+  await expect(chip(page)).not.toContainText('*');
   expect(await appColor(page)).toBe(draftColour);
   await page.getByRole('button', { name: 'Save & share' }).click();
   await page.getByRole('button', { name: 'Duplicate scenario' }).click();
-  await expect(chip(page)).toContainText('(copy)');
+  await expect(chip(page)).toContainText('(1)');
   expect(await appColor(page)).not.toBe(draftColour);
   // undo can never turn the copy back into the original (a later save would overwrite it)
   await expect(page.getByRole('button', { name: /^Undo/ }).first()).toBeDisabled();
@@ -55,7 +55,7 @@ test('deleting the open saved scenario keeps it open as unsaved work', async ({ 
   await expect(chip(page)).toHaveText('Doomed');
   await page.getByRole('button', { name: 'Save & share' }).click();
   await page.locator('#scenarios-menu').getByRole('button', { name: 'Delete Doomed', exact: true }).click();
-  await expect(chip(page)).toHaveText('Doomed · unsaved');
+  await expect(chip(page)).toHaveText('Doomed *');
   // switching away keeps it in the switcher
   await page.keyboard.press('Escape');
   await page.locator('.band .scenario-switcher .choice-trigger').click();
@@ -74,7 +74,7 @@ test('a share link pasted into an open tab opens; switching away keeps it; resum
   await page.locator('dialog[open] [data-choice-value="official"]').click();
   await expect(chip(page)).toHaveText('Official result');
   await page.evaluate(u => { location.hash = new URL(u).hash; }, url);
-  await expect(chip(page)).toHaveText('Shared scenario · unsaved');
+  await expect(chip(page)).toHaveText('Shared scenario *');
   await expect(page.locator('.lb-row').first().locator('.lb-seats b')).toHaveText('29');
   expect(await page.evaluate(() => location.hash)).toBe('');
   await page.locator('.band .scenario-switcher .choice-trigger').click();
@@ -82,7 +82,7 @@ test('a share link pasted into an open tab opens; switching away keeps it; resum
   const values = await switcherOptions(page);
   expect(values).toHaveLength(3); // official, the first draft, the shared scenario
   await page.locator(`dialog[open] [data-choice-value="${values[2]}"]`).click();
-  await expect(chip(page)).toHaveText('Shared scenario · unsaved');
+  await expect(chip(page)).toHaveText('Shared scenario *');
   expect(await switcherOptions(page)).toHaveLength(3);
   await page.keyboard.press('Escape');
   // a damaged link says so instead of doing nothing

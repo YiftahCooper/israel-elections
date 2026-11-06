@@ -1,3 +1,4 @@
+import { ScenarioSave, UnsavedMark } from './ScenarioSave.tsx';
 import { listLabel } from '../derive.ts';
 import { useFloating } from '../floating.tsx';
 import { ScenarioSwitcher } from './ScenarioSwitcher.tsx';
@@ -15,7 +16,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
 import { csvEscape, download } from '../format.ts';
-import { deleteSaved, dispatch, duplicateCurrent, getState, importScenarioJson, openElection, openImported, openSaved, redo, resetAll, saveCurrent, setState, shareLink, toast, undo, useStore } from '../store.ts';
+import { deleteSaved, dispatch, duplicateCurrent, importScenarioJson, openElection, openImported, openSaved, redo, resetAll, scenarioKey, setState, shareLink, toast, undo, useStore } from '../store.ts';
 import { ChevronDown, Copy, Download, FolderOpen, Link2, Moon, Redo2, RotateCcw, Save, Share2, Sun, Table2, Trash2, Undo2, Upload } from 'lucide-react';
 import { Seg } from './ui.tsx';
 import { LEVEL_LABELS } from '../features.ts';
@@ -46,6 +47,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
   const undoName = last && s ? L('Undo: ', 'ביטול: ') + describe(last.action, s, lang) : L('Undo', 'ביטול');
   const redoName = next && s ? L('Redo: ', 'חזרה: ') + describe(next.action, future.at(-1)!, lang) : L('Redo', 'חזרה');
   const saved = useStore((st) => st.saved);
+  const dirty = useStore(st => { const key = scenarioKey(st); return !!key && key !== 'official' && !st.saved.some(x => x.id === key); });
   const fileRef = useRef<HTMLInputElement>(null);
   const [menu, setMenu] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -94,8 +96,9 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
           <Share2 className="icon" aria-hidden /><span className="label">{L('Save & share', 'שמירה ושיתוף')}</span><ChevronDown className="icon sm" aria-hidden /></button>
         {menu && (
           <div ref={popupRef} className="menu-pop" id="scenarios-menu">
-            {s && <ScenarioName key={`${s.id}-${s.name}`} name={s.name} placeholder={L('Untitled scenario', 'תרחיש ללא שם')} label={L('Scenario name', 'שם התרחיש')} />}
-            <button className="btn small" onClick={() => { if (saveCurrent(getState().scenario?.name || undefined)) toast('info', L('Saved in this browser.', 'נשמר בדפדפן זה.')); setMenu(false); }} disabled={!s}><Save className="icon sm" aria-hidden />{L('Save in this browser', 'שמירה בדפדפן')}</button>
+            {s && <ScenarioName key={`${s.id}-${s.name}`} name={s.name} placeholder={L('Untitled scenario', 'תרחיש ללא שם')} label={L('Scenario name', 'שם התרחיש')} />}{dirty && <UnsavedMark />}
+            <ScenarioSave onSaved={() => setMenu(false)} className="btn small" disabled={!s}><Save className="icon sm" aria-hidden />{L('Save in this browser', 'שמירה בדפדפן')}</ScenarioSave>
+            <ScenarioSave as onSaved={() => setMenu(false)} className="btn small" disabled={!s}>{L('Save as…', 'שמירה בשם…')}</ScenarioSave>
             <button className="btn small" onClick={async () => {
               const url = await shareLink(); setShareUrl(url);
               try { await navigator.clipboard.writeText(url); toast('info', L('Share link copied', 'קישור השיתוף הועתק')); }
@@ -111,8 +114,8 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
             {saved.length === 0 && <p className="small muted" style={{ margin: 0 }}>{L('Nothing saved yet.', 'אין עדיין.')}</p>}
             {saved.map((x) => (
               <div key={x.id} className="row small" style={{ justifyContent: 'space-between', flexWrap: 'nowrap' }}>
-                <button className="btn small ghost" style={{ justifyContent: 'flex-start', minWidth: 0 }} aria-current={x.id === s?.id ? 'true' : undefined} disabled={x.id === s?.id} onClick={() => { void openSaved(x); setMenu(false); }}>
-                  <span className="swatch" style={{ background: savedColor(x.log) }} /><span className="clip" style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{x.name}</span> <span className="muted">({elections.find((e) => e.id === x.electionId)?.date.slice(0, 4) ?? x.electionId})</span>{x.id === s?.id && <span aria-hidden>✓</span>}</button>
+                <button className="btn small ghost" style={{ justifyContent: 'flex-start', minWidth: 0 }} aria-current={x.id === s?.id ? 'true' : undefined} disabled={x.id === s?.id && !dirty} onClick={() => { void openSaved(x); setMenu(false); }}>
+                  <span className="swatch" style={{ background: savedColor(x.log) }} /><span className="clip" style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>{x.name}{x.id === s?.id && dirty && <UnsavedMark />}</span> <span className="muted">({elections.find((e) => e.id === x.electionId)?.date.slice(0, 4) ?? x.electionId})</span>{x.id === s?.id && <span aria-hidden>✓</span>}</button>
                 <span className="row" style={{ flexWrap: 'nowrap', gap: 2 }}>
                   <button className="btn small ghost" onClick={() => { setState({ compareWith: x.id, tool: 'compare' }); setMenu(false); }} disabled={x.electionId !== electionId || x.id === s?.id}>{L('Compare', 'השוואה')}</button>
                   <button className="btn small ghost danger icon-only" aria-label={L(`Delete ${x.name}`, `מחיקת ${x.name}`)} onClick={() => { if (confirm(L(`Delete “${x.name}” from this browser?`, `למחוק את "${x.name}" מהדפדפן?`))) deleteSaved(x.id); }}><Trash2 className="icon sm" aria-hidden /></button>

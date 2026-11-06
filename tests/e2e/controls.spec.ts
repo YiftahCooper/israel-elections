@@ -36,7 +36,7 @@ for (const phone of [false, true]) test(`Official → A → B → Official retai
   await page.getByRole('button', { name: 'Increase Votes', exact: true }).click();
   await switcher.click(); await page.getByRole('dialog').getByRole('button', { name: 'B', exact: true }).click();
   await choose(switcher, 'official'); await expect(switcher).toContainText('Official result');
-  await switcher.click(); await page.getByRole('dialog').getByRole('button', { name: 'A · unsaved', exact: true }).click();
+  await switcher.click(); await page.getByRole('dialog').getByRole('button', { name: 'A *', exact: true }).click();
   votes = await detail(page); await expect(votes).toHaveValue('1,130,000');
   if (phone) await page.locator('.side-panel').getByRole('button', { name: 'Close', exact: true }).click();
   await page.getByRole('button', { name: /^Undo:/ }).click();

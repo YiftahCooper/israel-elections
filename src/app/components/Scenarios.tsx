@@ -1,3 +1,4 @@
+import { ScenarioSave, UnsavedMark } from './ScenarioSave.tsx';
 import { ChoicePicker } from './ChoicePicker.tsx';
 import { Info } from './ui.tsx';
 import { EditMarker } from './EditMarker.tsx';
@@ -15,7 +16,7 @@ import type { Scenario } from '../../model/scenario.ts';
 import { allocationOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { download } from '../format.ts';
-import { deleteSaved, duplicateCurrent, importScenarioJson, openImported, openSaved, replay, resetAll, saveCurrent, scenarioKey, setPreference, setState, shareLink, toast, useStore, type SavedScenario } from '../store.ts';
+import { deleteSaved, duplicateCurrent, importScenarioJson, openImported, openSaved, replay, resetAll, scenarioKey, setPreference, setState, shareLink, toast, useStore, type SavedScenario } from '../store.ts';
 import { ScenarioGallery } from './ScenarioGallery.tsx';
 import { electionLabel } from './TopBar.tsx';
 
@@ -81,7 +82,7 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
       <section className="scn-current">
         <h3>{official ? L('Official result', 'התוצאה הרשמית') : L('This scenario', 'התרחיש הנוכחי')} <span className="muted" style={{ fontWeight: 400 }}>· {electionName(s.electionId)} · {official ? L('no changes yet', 'ללא שינויים עדיין') : L(`${s.log.length} edits`, `${s.log.length} שינויים`)}</span></h3>
         <div className="scn-form">
-          <label className="field"><span>{L('Name', 'שם')}</span>
+          <label className="field"><span>{L('Name', 'שם')}{!official && !clean && <UnsavedMark />}</span>
             <ScenarioText value={s.name} label={L('Name', 'שם')} placeholder={L('e.g. “Arab turnout returns to 2015 levels”', 'למשל "שיעור ההצבעה בחברה הערבית חוזר לרמת 2015"')} onCommit={(name) => dispatch({ type: 'rename', name })} /></label>
           <label className="field"><span>{L('Description', 'תיאור')}<EditMarker s={s} path={['description']} /></span>
             <ScenarioText multiline value={s.description ?? ''} label={L('Description', 'תיאור')} placeholder={L('What does this scenario explore, and why?', 'מה התרחיש בודק, ולמה?')} onCommit={(description) => dispatch({ type: 'setDescription', description })} /></label>
@@ -92,7 +93,9 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
         </div></details>
         <ResultBar s={s} r={allocationOf(s)} />
         <div className="row" style={{ marginTop: 10 }}>
-          <button className="btn primary scn-save" disabled={official || clean} title={official ? L('Change something first', 'תחילה שנו משהו') : undefined} onClick={() => { if (saveCurrent(s.name || undefined)) toast('info', L('Saved in this browser.', 'נשמר בדפדפן זה.')); }}>{clean ? <><Check className="icon sm" aria-hidden />{L('Saved', 'נשמר')}</> : <><Save className="icon sm" aria-hidden />{isSaved ? L('Save changes', 'שמירת השינויים') : L('Save', 'שמירה')}</>}</button>
+          <ScenarioSave className="btn primary scn-save" disabled={official || clean}>{clean ? <><Check className="icon sm" aria-hidden />{L('Saved', 'נשמר')}</> : <><Save className="icon sm" aria-hidden />{L('Save', 'שמירה')}</>}</ScenarioSave>
+          <ScenarioSave as disabled={official}>{L('Save as…', 'שמירה בשם…')}</ScenarioSave>
+          {isSaved && !clean && <button className="btn" onClick={() => openSaved(saved.find(x => x.id === s.id)!)}>{L('Reopen saved version', 'פתיחת הגרסה השמורה')}</button>}
           <button className="btn" onClick={async () => {
             const url = await shareLink(); setLink(url);
             try { await navigator.clipboard.writeText(url); toast('info', L('Share link copied.', 'קישור השיתוף הועתק.')); } catch { /* the field below shows it */ }
@@ -120,11 +123,11 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
             const res = results.get(x.id);
             return (
               <li key={x.id} className={`scn-card ${x.id === s.id ? 'current' : ''}`}>
-                <div className="scn-title"><b><span className="swatch" style={{ background: scenarioColor(res?.sc ?? {}) }} />{x.name}</b><span className="small muted">{electionName(x.electionId)} · {new Date(x.savedAt).toLocaleDateString(lang === 'he' ? 'he-IL' : 'en-GB', { dateStyle: 'medium' })}</span></div>
+                <div className="scn-title"><b><span className="swatch" style={{ background: scenarioColor(res?.sc ?? {}) }} />{x.name}{x.id === s.id && !clean && <UnsavedMark />}</b><span className="small muted">{electionName(x.electionId)} · {new Date(x.savedAt).toLocaleDateString(lang === 'he' ? 'he-IL' : 'en-GB', { dateStyle: 'medium' })}</span></div>
                 {x.description && <p className="small ink2" style={{ margin: 0 }}>{x.description}</p>}
                 {res ? <ResultBar s={res.sc} r={res.r} /> : <p className="tiny muted" style={{ margin: 0 }}>{L('Open it to see its result.', 'פתחו כדי לראות את התוצאה.')}</p>}
                 <div className="row" style={{ gap: 4 }}>
-                  <button className="btn small" onClick={() => open(x)} disabled={x.id === s.id}><FolderOpen className="icon sm" aria-hidden />{x.id === s.id ? L('Open now', 'פתוח עכשיו') : L('Open', 'פתיחה')}</button>
+                  <button className="btn small" aria-label={x.id === s.id && !clean ? L('Reopen saved version', 'פתיחת הגרסה השמורה') : undefined} onClick={() => open(x)} disabled={x.id === s.id && clean}><FolderOpen className="icon sm" aria-hidden />{x.id === s.id ? clean ? L('Open now', 'פתוח עכשיו') : L('Reopen', 'פתיחה מחדש') : L('Open', 'פתיחה')}</button>
                   <button className="btn small" disabled={x.electionId !== s.electionId || x.id === s.id} onClick={() => setState({ compareWith: x.id, tool: 'compare' })}><GitCompare className="icon sm" aria-hidden />{L('Compare', 'השוואה')}</button>
                   {res && <button className="btn small ghost" onClick={() => exportJson(res.sc)}><Download className="icon sm" aria-hidden />{L('Export', 'ייצוא')}</button>}
                   <span className="spacer" />

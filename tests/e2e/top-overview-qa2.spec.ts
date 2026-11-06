@@ -110,7 +110,7 @@ test('unsaved status stays readable without growing the band after an edit', asy
   await page.getByRole('button', { name: 'Increase Votes', exact: true }).click();
   await page.locator('.side-panel').getByRole('button', { name: 'Close', exact: true }).click();
   const label = page.locator('.band .scenario-switcher .choice-current');
-  await expect(label).toContainText('unsaved');
+  await expect(label).toContainText('*');
   expect(await label.evaluate(e => e.scrollWidth <= e.clientWidth + 1)).toBeTruthy();
   expect((await page.locator('.band').boundingBox())!.height).toBe(height);
 });
