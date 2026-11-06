@@ -7,6 +7,8 @@
 
 ## 5 November 2026 — release review
 
+- UI integration: restore the compact desktop band and readable scenario slots, fit phone actions on one row while retaining 44px targets, and align scenario metadata/grouping tests with view-only semantics.
+
 - Scenarios mark unsaved changes, reopen saved versions while keeping drafts, and resolve duplicate names with overwrite, numbered copy or a custom name.
 - Synthetic lists use divided constituent ballot tiles, marked split parts and clean new-list letters through the shared logo path, comparison records, chamber legends and image exports.
 - Make allocation walkthrough navigation manual, drop the 80% turnout What-if preset, and name self-defined voter groups “Custom group” in English and Hebrew; new groups still start with no turnout change.

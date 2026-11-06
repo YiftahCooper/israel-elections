@@ -38,9 +38,15 @@ test('one vote stepper, three goals, overflow for rarer operations', async ({ pa
   await panel.getByRole('button', { name: 'Scale, share & transfer', exact: true }).click();
   await expect(panel.getByRole('button', { name: 'Transfer 1pp', exact: true })).toBeVisible();
 });
-test('saving three unnamed-colour scenarios assigns three distinct identities', async ({ page }) => {
+test('saved official snapshots stay neutral; edited scenarios get distinct identities', async ({ page }) => {
   const picker = page.getByRole('button', { name: 'Switch scenario', exact: true });
-  for (const name of ['A', 'B', 'C']) {
+  for (const name of ['A', 'B', 'C', 'D']) {
+    // U7: names alone are metadata; only factual edits receive scenario tint.
+    if (name !== 'A') {
+      await page.locator('.lb-row').first().click();
+      await page.getByRole('button', { name: 'Increase Votes', exact: true }).click();
+      await page.keyboard.press('Escape');
+    }
     await page.getByRole('button', { name: 'Save & share', exact: true }).click();
     const input = page.getByRole('textbox', { name: 'Scenario name', exact: true });
     await input.fill(name); await input.press('Enter');
@@ -49,8 +55,10 @@ test('saving three unnamed-colour scenarios assigns three distinct identities', 
   }
   await picker.click();
   const dialog = page.getByRole('dialog');
-  const colours = await Promise.all(['A', 'B', 'C'].map(name => dialog.getByRole('button', { name, exact: true }).locator('.swatch').evaluate(el => getComputedStyle(el).backgroundColor)));
+  const colours = await Promise.all(['B', 'C', 'D'].map(name => dialog.getByRole('button', { name, exact: true }).locator('.swatch').evaluate(el => getComputedStyle(el).backgroundColor)));
   expect(new Set(colours).size).toBe(3);
+  const neutral = await dialog.getByRole('button', { name: 'A', exact: true }).locator('.swatch').evaluate(el => getComputedStyle(el).backgroundColor);
+  expect(colours).not.toContain(neutral);
   await expect(dialog).not.toContainText('Historical rules unchanged');
   await expect(dialog).not.toContainText('Latest vote source');
 });

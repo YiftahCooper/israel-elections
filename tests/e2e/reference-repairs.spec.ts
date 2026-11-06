@@ -67,11 +67,12 @@ test('B5 prose commits are individually undoable and leave coalition selection a
   const description = page.getByRole('textbox', { name: 'Description', exact: true });
   await description.fill('Review description');
   await description.press('Tab'); // blur commits once, regardless of keystrokes
-  await expect(page.locator('.scn-form .edit-marker')).toHaveCount(1);
+  // U7: author metadata is saveable and undoable, without factual markers/history.
+  await expect(page.locator('.scn-form .edit-marker')).toHaveCount(0);
+  await expect(page.locator('.scn-save')).toBeEnabled();
   await expect(page.getByRole('button', { name: 'Undo: Scenario description changed', exact: true })).toBeVisible();
-  await page.locator('.session').getByRole('button', { name: /^History/ }).click();
-  await expect(page.locator('.history')).toContainText('Scenario description changed');
-  await page.locator('.history').getByRole('button', { name: 'Undo: Scenario description changed', exact: true }).click();
+  await expect(page.locator('.session')).toContainText('No changes yet');
+  await page.locator('.band').getByRole('button', { name: 'Undo: Scenario description changed', exact: true }).click();
   await expect(description).toHaveValue('');
   await page.getByRole('tab', { name: 'Coalitions', exact: true }).click();
   await expect(choice.getByRole('button', { name: 'In', exact: true })).toHaveAttribute('aria-pressed', 'true');

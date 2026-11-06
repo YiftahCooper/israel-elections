@@ -7,22 +7,22 @@ async function start(page: Page, lang = 'en', theme = 'light', level = 'standard
   await choose(page.getByRole('button', {name:lang === 'he' ? 'בחירות' : 'Election', exact:true}), 'k25');
   await expect(page.getByRole('region', { name: lang === 'he' ? 'הרשימות' : 'Lists', exact: true }).getByRole('button', { name: lang === 'he' ? 'הליכוד' : 'Likud', exact: true }).locator('.lb-seats b')).toHaveText('32');
 }
-test('grouping-only switches show no invented seat gains in Compare and name history actions', async ({page}) => {
+test('grouping-only switches stay factual-neutral in Compare and keep named undo', async ({page}) => {
   await start(page);
   for (const scheme of ['pre-election-blocs','first-government']) {
     await choose(page.getByRole('button', {name:'Grouping',exact:true}), scheme);
     await expect(page.getByRole('button', {name:/^Undo: Bloc grouping:/})).toBeEnabled();
-    await expect(page.getByRole('button', {name:/^History ·/})).toBeVisible();
+    // U7: a sourced grouping changes the view, not election facts.
+    await expect(page.getByRole('button', {name:/^History ·/})).toHaveCount(0);
+    await expect(page.locator('.session')).toContainText('No changes yet');
     await page.getByRole('tab', {name:'Compare',exact:true}).click();
-    // switching back to the official grouping leaves nothing to compare
-    if (scheme === 'first-government') { await expect(page.locator('.cmp-head .choice-trigger')).toHaveAttribute('data-value', 'election:k24'); await expect(page.locator('.cmp-diff')).toHaveCount(0); await page.getByRole('tab', {name:'Overview',exact:true}).click(); continue; }
-    await expect(page.locator('.cmp-head .choice-trigger')).toHaveText(/Official result/);
-    await expect(page.locator('.cmp .legend')).not.toContainText('0 → 64');
+    // U7 makes both sourced schemes unchanged facts. Auto comparison therefore
+    // opens the previous election (c4e7904); an explicit same-election choice stays empty.
+    if (scheme === 'pre-election-blocs') await expect(page.locator('.cmp-head .choice-trigger')).toHaveAttribute('data-value', 'election:k24');
+    await choose(page.getByRole('button', { name: 'Compare with', exact: true }), 'historical');
+    await expect(page.locator('.cmp-empty')).toContainText('Edits you make show here.');
     await expect(page.locator('.cmp-diff')).toHaveCount(0);
-    const text = await page.locator('.cmp .legend').innerText();
-    const pairs = [...text.matchAll(/(\d+) → (\d+)/g)];
-    expect(pairs.length).toBeGreaterThan(0);
-    expect(pairs.every(m => m[1] === m[2])).toBe(true);
+    await expect(page.locator('.cmp')).not.toContainText('0 → 64');
     await page.getByRole('tab', {name:'Overview',exact:true}).click();
   }
 });

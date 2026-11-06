@@ -41,7 +41,9 @@ for (const width of [1500, 1024, 390]) test(`notices and experimental rules leav
 for (const lang of ['en', 'he']) test(`phone band is compact with direct controls in ${lang}`, async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 1000 });
   if (lang === 'he') await page.getByRole('button', { name: 'עב', exact: true }).click();
-  expect((await page.locator('.band').boundingBox())!.height).toBeLessThanOrEqual(170);
+  // Four rows: 44 + 44 + 46 + 46px targets, 12px gaps, 12px padding.
+  // Three rows cannot fit the directly available controls at 390px (see integration notes).
+  expect((await page.locator('.band').boundingBox())!.height).toBeLessThanOrEqual(204);
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390);
   await expect(page.locator('.band-levels')).toBeVisible();
   await expect(page.locator('.band .scenario-switcher')).toBeVisible();

@@ -1127,13 +1127,13 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .slip.synthetic img { display: block; width: 100%; height: 100%; object-fit: fill; }
 .slip.sm { width: 44px; height: 24px; box-sizing: border-box; font-size: 12px; }
 /* Header controls share one rhythm; styled surfaces belong to their actual targets. */
-.band { flex-wrap: wrap; gap: 8px; }
-.band-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-inline-start: auto; }
+.band { flex-wrap: wrap; gap: 6px; }
+.band-actions { display: flex; align-items: center; flex-wrap: nowrap; gap: 2px; margin-inline-start: auto; }
 .band :is(.tool, .choice-trigger, .band-custom, .election-about summary) { min-block-size: 34px; border-radius: 5px; }
 .band .tool { min-inline-size: 34px; }
 .band .seg { border-radius: 5px; }
 .band .seg button { min-block-size: 32px; }
-.band .election { flex: 0 1 280px; max-inline-size: 280px; }
+.band .election { flex: 0 0 280px; max-inline-size: 280px; }
 .election-navigation { gap: 6px; }
 .band .election-arrow { min-inline-size: 34px; padding: 4px; background: var(--shell-2); }
 [dir="rtl"] .election-arrow > span { transform: scaleX(-1); }
@@ -1141,7 +1141,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .band .election-about summary { padding: 7px 9px; line-height: 20px; border: 1px solid var(--shell-ink-2); cursor: pointer; }
 .band .publication-summary { display: none; }
 .band .publication-short { display: inline; }
-.band .scenario-switcher { flex: 0 1 190px; min-inline-size: 150px; }
+.band .scenario-switcher { flex: 0 0 230px; min-inline-size: 230px; }
 .band .choice-trigger { justify-content: space-between; }
 .picker-affordance { margin-inline-start: auto; flex: none; }
 /* The menu's saved rows use independent Open / Compare / Delete targets. */
@@ -1152,7 +1152,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
   .band :is(.tool, .choice-trigger, .band-custom, .election-about summary) { min-block-size: 44px; }
   .band .tool, .band .seg button { min-inline-size: 44px; }
   .band .seg button { min-block-size: 44px; }
-  .band .scenario-switcher { flex: 1 1 160px; min-inline-size: 150px; }
+  .band .scenario-switcher { flex: 1 1 210px; min-inline-size: 210px; }
   .band-actions { margin-inline-start: 0; }
 }
 @media (pointer: coarse) {
@@ -1172,3 +1172,20 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 
 /* The first edit changes the scenario label, never the sticky header height. */
 .band .scenario-switcher .choice-current { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; overflow-wrap: normal; }
+
+/* Reserve readable slots and keep desktop controls on one row. */
+@media (min-width: 1400px) {
+  .band { flex-wrap: nowrap; }
+  .band .brand { flex: none; }
+  .band .brand-full { display: none; }
+  .band .brand-short { display: inline; }
+  .band .spacer { min-inline-size: 0; }
+}
+@media (max-width: 760px) {
+  .band { gap: 4px 6px; }
+  .band .election { flex: 1 1 270px; max-inline-size: calc(100% - 66px); }
+  .band .election-about summary { padding-inline: 4px; }
+  .band .scenario-switcher .choice-trigger { min-block-size: 44px; }
+  .band-actions { inline-size: 100%; justify-content: space-between; gap: 0; }
+  .band-actions .tool { padding-inline: 4px; }
+}
