@@ -336,7 +336,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k11.json",
-      "sha256": "3822036aa3f24bc7d6b95565f6fd7140d156ecd16964f32007b5d028562b3984",
+      "sha256": "82a6f50f46002118f529624fc457a49f4d70bc886535fa377fbc4efe0498c380",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k12": {
@@ -3482,7 +3482,6 @@
       ],
       "sources": [
         "k10",
-        "k11",
         "proposal"
       ],
       "evidence": {

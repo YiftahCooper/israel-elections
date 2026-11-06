@@ -336,7 +336,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k11.json",
-      "sha256": "2b54ce215796bedbf46eb10fa56543969db30ed67ca2df4962ad80f7f58a5423",
+      "sha256": "f42b6a28991a34acc8bdb896b0699b74de0b2e5e4618fec42fdd79461c8543e0",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k12": {
@@ -1140,7 +1140,7 @@
         {
           "date": "1984-07-23",
           "datePrecision": "day",
-          "nameHe": "יהדות התורה אגודת ישראל",
+          "nameHe": "יהדות התורה – אגודת ישראל",
           "nameEn": "Agudat Yisrael",
           "sources": [
             "k11",
@@ -6736,29 +6736,17 @@
             "proposal"
           ],
           "status": "observed-local-dataset"
-        },
-        {
-          "date": "1984-07-23",
-          "datePrecision": "day",
-          "nameHe": "שילוב רשימה עצמאית של עולי ההר לכנסת",
-          "nameEn": "Sheli",
-          "sources": [
-            "k11",
-            "proposal"
-          ],
-          "status": "observed-local-dataset"
         }
       ],
       "aliases": [],
       "activePeriod": {
         "from": "1981-06-30",
-        "to": "1984-07-23",
+        "to": "1981-06-30",
         "datePrecision": "day",
         "basis": "observed-election-appearances-not-lifetime"
       },
       "sources": [
         "k10",
-        "k11",
         "proposal"
       ],
       "status": "observed-local-dataset",
@@ -7919,13 +7907,13 @@
       "id": "vehicle-11-ע",
       "entityType": "electoral-vehicle",
       "nameHe": "ארגון ארצי להגנת הדייר",
-      "nameEn": "Arab Democratic Party",
+      "nameEn": "National Tenants’ Protection Organisation",
       "names": [
         {
           "date": "1984-07-23",
           "datePrecision": "day",
           "nameHe": "ארגון ארצי להגנת הדייר",
-          "nameEn": "Arab Democratic Party",
+          "nameEn": "National Tenants’ Protection Organisation",
           "sources": [
             "k11",
             "proposal"
@@ -7982,13 +7970,13 @@
     {
       "id": "vehicle-11-דף",
       "entityType": "electoral-vehicle",
-      "nameHe": "לבא אליאב לכנסת",
+      "nameHe": "לובה אליאב לכנסת",
       "nameEn": null,
       "names": [
         {
           "date": "1984-07-23",
           "datePrecision": "day",
-          "nameHe": "לבא אליאב לכנסת",
+          "nameHe": "לובה אליאב לכנסת",
           "nameEn": null,
           "sources": [
             "k11",
@@ -8014,13 +8002,13 @@
     {
       "id": "vehicle-11-הם",
       "entityType": "electoral-vehicle",
-      "nameHe": "הס מס, תנועה לביטול חוק מס הכנסה",
+      "nameHe": "הס־מס, תנועה לביטול חוק מס־הכנסה",
       "nameEn": null,
       "names": [
         {
           "date": "1984-07-23",
           "datePrecision": "day",
-          "nameHe": "הס מס, תנועה לביטול חוק מס הכנסה",
+          "nameHe": "הס־מס, תנועה לביטול חוק מס־הכנסה",
           "nameEn": null,
           "sources": [
             "k11",
@@ -8142,13 +8130,13 @@
     {
       "id": "vehicle-11-פט",
       "entityType": "electoral-vehicle",
-      "nameHe": "עצמאות בראשות עזרא זהר",
+      "nameHe": "עצמאות בראשות עזרה זהר",
       "nameEn": null,
       "names": [
         {
           "date": "1984-07-23",
           "datePrecision": "day",
-          "nameHe": "עצמאות בראשות עזרא זהר",
+          "nameHe": "עצמאות בראשות עזרה זהר",
           "nameEn": null,
           "sources": [
             "k11",
@@ -8206,13 +8194,13 @@
     {
       "id": "vehicle-11-פז",
       "entityType": "electoral-vehicle",
-      "nameHe": "א.נ.י. – ארגון נכים",
+      "nameHe": "א. נ. – ארגון נכים",
       "nameEn": null,
       "names": [
         {
           "date": "1984-07-23",
           "datePrecision": "day",
-          "nameHe": "א.נ.י. – ארגון נכים",
+          "nameHe": "א. נ. – ארגון נכים",
           "nameEn": null,
           "sources": [
             "k11",
@@ -23586,6 +23574,38 @@
       ],
       "status": "observed-local-dataset",
       "externalIds": {}
+    },
+    {
+      "id": "vehicle-11-ש",
+      "entityType": "electoral-vehicle",
+      "nameHe": "שילוב רשימה עצמאית של עולי הודו לכנסת",
+      "nameEn": "Shiluv",
+      "names": [
+        {
+          "date": "1984-07-23",
+          "datePrecision": "day",
+          "nameHe": "שילוב רשימה עצמאית של עולי הודו לכנסת",
+          "nameEn": "Shiluv",
+          "sources": [
+            "k11",
+            "proposal"
+          ],
+          "status": "observed-local-dataset"
+        }
+      ],
+      "aliases": [],
+      "activePeriod": {
+        "from": "1984-07-23",
+        "to": "1984-07-23",
+        "datePrecision": "day",
+        "basis": "observed-election-appearances-not-lifetime"
+      },
+      "sources": [
+        "k11",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "externalIds": {}
     }
   ],
   "partyAppearances": [
@@ -27127,19 +27147,6 @@
       "status": "observed-local-dataset",
       "locator": "public/data/k11.json#/lists/14",
       "continuity": "unresolved"
-    },
-    {
-      "electionId": "k11",
-      "listId": "11-ש",
-      "partyId": "sheli",
-      "role": "singleton",
-      "sources": [
-        "k11",
-        "proposal"
-      ],
-      "status": "observed-local-dataset",
-      "locator": "public/data/k11.json#/lists/15",
-      "continuity": "inherited-local-research"
     },
     {
       "electionId": "k11",
@@ -35907,6 +35914,19 @@
       "status": "observed-local-dataset",
       "locator": "public/data/k15.json#/lists/32",
       "continuity": "unresolved"
+    },
+    {
+      "electionId": "k11",
+      "listId": "11-ש",
+      "partyId": "vehicle-11-ש",
+      "role": "singleton",
+      "sources": [
+        "k11",
+        "proposal"
+      ],
+      "status": "observed-local-dataset",
+      "locator": "public/data/k11.json#/lists/15",
+      "continuity": "inherited-local-research"
     }
   ],
   "conflicts": [
@@ -35934,7 +35954,7 @@
         "proposal",
         "k11"
       ],
-      "interpretation": "11-ע English short label says Arab Democratic Party; Hebrew name is a tenants organisation. Not mapped to Mada."
+      "interpretation": "Corrected after official YP 3073 p.2834 review: list ע is the tenants organisation. Display no longer names the Arab Democratic Party."
     },
     {
       "id": "koach-and-achi",

@@ -24,6 +24,11 @@
 // Field diff recorded in k15-resolution.md. Restoring HEAD k15 at scenarioFromDataset
 // reproduces all five old digests; src and the other 25 datasets are unchanged.
   // merged with k15 audit fixes: combined digest = union of the separately reviewed changes.
+// k11 audit 6 Nov 2026: recursive field diff confirms only corrected ballot letters,
+// list/candidate names, neutral identity colours, links, Sarid opposition override,
+// asOf and build provenance change. All 25 other datasets, IDs, votes, seats and
+// agreements are preserved. Only the model digest changes; no engine/src changes.
+  // merged with k11 audit fixes: combined digest = union of the separately reviewed changes.
 // 6 Nov 2026 k22 audit: reviewed scalar diff changes only status, logical Hebrew
 // punctuation, CEC link titles, three withdrawal flags and distinct modern Gesher
 // IDs (also k23). Withdrawal flags affect hypothetical corpus allocations; model
@@ -165,7 +170,8 @@ const EXPECTED: Record<Family, string> = {
   // merged with k12 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k13 audit fixes: combined digest = union of the separately reviewed changes.
   // merged with k15 audit fixes: combined digest = union of the separately reviewed changes.
-  model: '130f90a9ce9abec40ce4235f98c3eed329e3e08b315b73589ccbfe0952475461',
+  // merged with k11 audit fixes: combined digest = union of the separately reviewed changes.
+  model: 'c9b7689adb52baf0891d36c6a8919eae311ed99b5067acee4cb13abb8d17debc',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

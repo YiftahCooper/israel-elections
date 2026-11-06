@@ -1418,7 +1418,7 @@
       "electionId": "k11",
       "electionDate": "1984-07-23",
       "datasetPath": "public/data/k11.json",
-      "datasetSha256": "3822036aa3f24bc7d6b95565f6fd7140d156ecd16964f32007b5d028562b3984",
+      "datasetSha256": "82a6f50f46002118f529624fc457a49f4d70bc886535fa377fbc4efe0498c380",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 196 transcribed ranks across all 15 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted except the complete 120-name K11 Alignment roster; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
