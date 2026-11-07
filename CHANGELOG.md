@@ -2,6 +2,7 @@
 
 ## 6 November 2026 — data audit
 
+- Sources: an enforced evidence policy (tiers, independence, certainty confirmed/probable/provisional/disputed/unknown); the gaps register now ranks gaps by importance and certainty.
 - Families: count Otzma Yehudit only in Radical right in 2015, as in 2019–2022; the national-religious family keeps Yachad.
 - Research: separate government membership, outside support, investiture votes and individual exceptions; validate explicit uncertainty across recorded governments and document unresolved historical authentication.
 

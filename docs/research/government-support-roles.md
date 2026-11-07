@@ -29,7 +29,7 @@ All role entries below map directly to `data/meta/aftermath/kN.json`, `governmen
 
 | Election | Government | Faction role and seats | Member/support totals; recorded vote |
 |---|---:|---|---|
-| k1 | 1 | Mapai 46 M; United Religious Front 16 M; Progressive Party 5 M; Sephardim and Oriental Communities 4 M; Democratic List of Nazareth 2 V†; WIZO 1 V†; Yemenite Association 1 V† | 71 members / 0 outside; 73–45 |
+| k1 | 1 | Mapai 46 M; United Religious Front 16 M; Progressive Party 5 M; Sephardim and Oriental Communities 4 M; Democratic List of Nazareth 2 N (probable, 7 Nov); WIZO 1 V†; Yemenite Association 1 V (disputed, 7 Nov) | 73 members / 0 outside; 73–45 |
 | k1 | 2 | Mapai 46 M; United Religious Front 16 M; Progressive Party 5 M; Sephardim and Oriental Communities 4 M; Democratic List of Nazareth 2 U | ? members / ? outside; 69–42; 2 abstain |
 | k2 | 3 | Mapai 45 M; Hapoel HaMizrahi 8 M; Mizrahi 2 M; Agudat Yisrael 3 M; Poalei Agudat Yisrael 2 U; Democratic List for Israeli Arabs 3 U; Progress and Work 1 U; Agriculture and Development 1 U | ? members / ? outside; 56–40; 4 abstain |
 | k2 | 4 | Mapai 45 M; General Zionists 20 M; Hapoel HaMizrahi 8 M; Mizrahi 2 U; Progressive Party 4 M; Democratic List for Israeli Arabs 3 U; Progress and Work 1 U; Agriculture and Development 1 U | ? members / ? outside; 63–24 |
@@ -93,6 +93,8 @@ The discrepancy was **not settled by a newly inspected primary document**. Do no
 The decisive records are the original Navon-to-Begin tasking letter in **Israel State Archives נ-571/13, pp.5–7**, and Navon’s diary/consultation material in **נ-224/4**, already located by the earlier research. Their date, delivery notation and diary appointment would distinguish an announcement/meeting from the formal written act. The catalogue returned HTTP 403 in this pass; original JTA PDF requests failed at transport, and UPI returned 403. No access control was bypassed. The inherited press date remains explicitly disputed in k10; it is not presented as settled historical fact.
 
 ## 1988 recommendations: zero newly authenticated entries
+
+**Update 7 November:** under the new [source policy](../source-policy.md), Degel is none (probable) and the three Arab lists recommended Peres conditionally (provisional); see [evidence-policy-pass-1107.md](evidence-policy-pass-1107.md). The same pass made Nazareth (1949) a probable member without ministries, recorded the Yemenite role as disputed and kept the 1981 tasking date disputed.
 
 The 63/55/2 → 63/49/8 change is **k12 (1988)**. Still unconfirmed: Hadash (4), Progressive List for Peace (1), Arab Democratic Party (1), Degel HaTorah (2). No entries were filled by subtraction from an aggregate.
 

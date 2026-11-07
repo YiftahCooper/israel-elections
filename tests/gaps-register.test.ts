@@ -1,28 +1,77 @@
 import { readFileSync, mkdirSync, mkdtempSync, writeFileSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
 import { expect, it } from 'vitest';
-import { scanDocument, generateRegister, renderMarkdown, checkRegister, importantOpenGaps, generateFullRegister, summarizeRegister, writeRegister, serializeSummary } from '../scripts/gaps-register.ts';
+import { scanDocument, generateRegister, renderMarkdown, checkRegister, generateFullRegister, summarizeRegister, writeRegister, serializeSummary, importanceOf, isOpen, areaOf, type GapKind } from '../scripts/gaps-register.ts';
 
 it('the committed register and prose cannot drift from their inputs', () => {
   const register = generateRegister();
   expect(JSON.parse(readFileSync('docs/data-gaps.json', 'utf8'))).toEqual(register);
   expect(readFileSync('docs/data-gaps.md', 'utf8')).toBe(renderMarkdown(register));
-  expect(importantOpenGaps(register).length).toBeLessThanOrEqual(15);
-  expect(importantOpenGaps(register)[0]).toContain('k13');
   const md = renderMarkdown(register);
-  expect(md.split('\n').length).toBeLessThanOrEqual(300);
+  expect(md.split('\n').length).toBeLessThanOrEqual(400);
   expect(Buffer.byteLength(md)).toBeLessThanOrEqual(100_000);
+  expect(Buffer.byteLength(readFileSync('docs/data-gaps.json'))).toBeLessThanOrEqual(100_000);
   expect(register).not.toHaveProperty('inventory');
   expect(register).not.toHaveProperty('inputDigest');
+  // Leads with high-importance open items, then medium, then low counts only.
+  const order = ['## High importance', '## Medium importance', '## Low importance'].map(h => md.indexOf(h));
+  expect(order.every((n, i) => n > 0 && (i === 0 || n > order[i - 1]))).toBe(true);
   const full = generateFullRegister();
-  const selected = full.gaps.filter(g => g.kind === 'conflict' || g.kind === 'low-confidence' || (g.kind === 'unknown' && /recommendationRounds.*entries/.test(g.item)));
-  expect(register.items).toHaveLength(selected.length);
-  for (const g of selected) expect(register.items).toContainEqual(expect.objectContaining({ election: g.election, kind: g.kind, item: g.item, letters: g.letters, name: g.name }));
+  const highOpen = full.gaps.filter(g => g.importance === 'high' && isOpen(g));
+  expect(register.high.reduce((n, g) => n + g.count, 0)).toBe(highOpen.length);
+  for (const g of highOpen) {
+    const election = /^k\d+$/.test(g.election) ? `k${Number(g.election.slice(1))}` : g.election;
+    const groupRow = register.high.find(r => r.election === election && r.file === g.file && r.area === areaOf(g, 2));
+    expect(groupRow, `${g.election} ${g.item}`).toBeTruthy();
+    if (g.letters) expect(groupRow!.labels).toContain(g.letters);
+  }
+  expect(register.medium.reduce((n, g) => n + g.count, 0)).toBe(full.gaps.filter(g => g.importance === 'medium' && isOpen(g)).length);
+  expect(register.low.reduce((n, g) => n + g.count, 0)).toBe(full.gaps.filter(g => g.importance === 'low').length);
+  expect(Object.values(register.countsByImportance).reduce((n, c) => n + c.total, 0)).toBe(register.total);
   expect(Object.values(register.countsByStatus).reduce((a, b) => a + b, 0)).toBe(register.total);
   expect(register.elections.reduce((n, e) => n + e.total, 0)).toBe(register.total);
   expect(register.elections.some(e => /^k0/.test(e.election))).toBe(false);
   expect(register.elections.find(e => e.election === 'k1')?.total).toBe(full.gaps.filter(g => g.election === 'k1' || g.election === 'k01').length);
-}, 30000);
+  // Unknown recommendations stay visible as high-importance, unknown-certainty work.
+  const recommendations = full.gaps.filter(g => g.kind === 'unknown' && /recommendationRounds.*entries/.test(g.item));
+  expect(recommendations.length).toBeGreaterThan(0);
+  for (const g of recommendations) expect([g.importance, g.certainty]).toEqual(['high', 'unknown']);
+  for (const g of full.gaps.filter(g => g.kind === 'conflict')) expect(g.certainty).toBe('disputed');
+  expect(Object.keys(register.claimCertainty)).toEqual(expect.arrayContaining(['Recommendations', 'Government roles', 'Formation events', 'Family classifications', 'Candidate identity links']));
+  expect(register.claimCertainty['Family classifications'].confirmed).toBe(0);
+}, 60000);
+it('ranks importance by code rules, not hand tags', () => {
+  const at = (file: string, item: string, kind: GapKind = 'unknown') => importanceOf({ file, item, kind });
+  expect(at('data/meta/aftermath/k13.json', 'r1 / $.recommendationRounds[*].entries[*].status')).toBe('high');
+  expect(at('data/meta/aftermath/k9.json', '$.government.coalition[*].certainty')).toBe('high');
+  expect(at('data/meta/aftermath/k10.json', 'mandate-given 1981-07-16 / $.formation.events[*]', 'single-source')).toBe('high');
+  expect(at('public/data/k5.json', '$.agreements', 'single-source')).toBe('high');
+  expect(at('docs/decisions/0001.md', 'Editorial evidence review, line 3', 'release-hold')).toBe('high');
+  expect(at('data/meta/aftermath/k10.json', '$.term.events[*]', 'single-source')).toBe('medium');
+  expect(at('data/meta/families/haredi.json', '$.elections[*].members[*].classificationEvidence', 'inferred')).toBe('medium');
+  expect(at('data/meta/aftermath/k13.json', 'r1 / $.recommendationRounds[*].notes[*]', 'pending')).toBe('medium');
+  expect(at('data/meta/k1.json', '$.colours[*].confidence', 'low-confidence')).toBe('low');
+  expect(at('data/meta/bios/k1.json', '$.candidates.x.hewiki')).toBe('low');
+  expect(at('data/raw/SOURCES.json', '$[*].sha256', 'missing-field')).toBe('low');
+});
+it('derives each gap’s certainty from the record’s own sources', () => {
+  const rows = scanDocument('data/meta/aftermath/k13.json', { electionId: 'k13',
+    sources: { gazette: { url: 'https://www.gov.il/x.pdf', kind: 'official' }, paper: { url: 'https://www.jta.org/a', kind: 'archival' }, wiki: { url: 'https://he.wikipedia.org/wiki/x', kind: 'secondary' } },
+    formation: { events: [
+      { type: 'mandate-given', date: '1992-07-02', cites: [{ source: 'gazette' }] },
+      { type: 'consultations', date: '1992-06-28', cites: [{ source: 'paper' }] },
+      { type: 'confidence-vote', date: '1992-07-13', cites: [{ source: 'wiki' }] },
+    ], conflicts: [{ about: 'date', values: [] }] },
+    recommendationRounds: [{ id: 'r1', entries: [{ letters: 'ג', seats: 4, status: 'unconfirmed' }] }],
+  });
+  const of = (text: string) => rows.find(r => r.item.includes(text))!;
+  expect(of('mandate-given').certainty).toBe('confirmed');
+  expect(isOpen(of('mandate-given'))).toBe(false);
+  expect(of('consultations').certainty).toBe('provisional');
+  expect(of('confidence-vote').certainty).toBe('unknown');
+  expect(rows.find(r => r.kind === 'conflict')!.certainty).toBe('disputed');
+  expect(rows.find(r => r.letters === 'ג' && r.kind === 'unknown')).toMatchObject({ importance: 'high', certainty: 'unknown' });
+});
 it('finds uncertainty, missing recommendations, conflicts and duplicate source families', () => {
   const rows = scanDocument('data/meta/aftermath/k13.json', {
     electionId: 'k13', sources: { a: { url: 'https://example.org/a' }, b: { url: 'https://example.org/a' } },
@@ -105,7 +154,7 @@ it('bulk details do not stale the summary when counts and selected items are unc
   bulk.uncertainty = 'Changed bulk-only wording';
   bulk.sources = ['https://example.org/new-source'];
   expect(summarizeRegister(full)).toEqual(before);
-  const selected = full.gaps.find(g => g.kind === 'low-confidence')!;
-  selected.uncertainty = 'Changed summary-level confidence explanation';
+  const selected = full.gaps.find(g => g.kind === 'conflict' && g.importance === 'high')!;
+  selected.uncertainty = 'Changed summary-level description of what is disputed';
   expect(summarizeRegister(full)).not.toEqual(before);
 });
