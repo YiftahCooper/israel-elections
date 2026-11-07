@@ -4,7 +4,7 @@ import { choose } from './choices.ts';
 test.describe.configure({ mode: 'parallel' });
 
 test.beforeEach(async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', level: 'expert', hintDismissed: true, saved: [{ id: 'qa2-old', name: 'Older scenario', electionId: 'k26', savedAt: '2026-01-01', baseBuiltAt: 'old-build', log: [] }] })));
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', level: 'expert', hintDismissed: true, saved: [{ id: 'qa2-old', name: 'Older scenario', electionId: 'k26', savedAt: '2026-01-01', baseBuiltAt: 'old-build', log: [] }] })));
   await page.goto('/');
   await expect(page.locator('.lb-row').first()).toBeVisible();
   await page.evaluate(() => document.fonts.ready);
@@ -15,13 +15,14 @@ test('X1 analysis choices and settings use the shared picker', async ({ page }) 
   await choose(page.getByRole('button', { name: 'List', exact: true }), { label: 'Likud' });
   await expect(page.getByRole('button', { name: 'Bloc', exact: true })).toBeVisible();
   await page.locator('#tab-families').click();
-  await choose(page.getByRole('button', { name: 'Votes from', exact: true }), 'new');
-  await expect(page.getByRole('button', { name: 'Votes from', exact: true })).toContainText('New voters');
+  await choose(page.getByRole('button', { name: 'Votes come from', exact: true }), 'new');
+  await expect(page.getByRole('button', { name: 'Votes come from', exact: true })).toContainText('New voters');
   await page.locator('#tab-rules').click();
-  await page.locator('.band').getByRole('button', { name: 'Your settings', exact: true }).click();
-  await choose(page.getByRole('button', { name: 'Decimal places for percentages', exact: true }), '6');
-  await choose(page.getByRole('button', { name: 'Mark differences from', exact: true }), 'official');
-  await expect(page.getByRole('button', { name: 'Mark differences from', exact: true })).toContainText('Official');
+  await page.locator('.band').getByRole('button', { name: 'Settings', exact: true }).click();
+  // Settings answers sit in segmented buttons (2–4 options), not the picker
+  const marks = page.getByRole('group', { name: 'Mark changes since', exact: true });
+  await marks.getByRole('button', { name: 'Official result', exact: true }).click();
+  await expect(marks.getByRole('button', { name: 'Official result', exact: true })).toHaveAttribute('aria-pressed', 'true');
 });
 
 for (const width of [1500, 1024, 390]) test(`notices and experimental rules leave the board fixed at ${width}`, async ({ page }) => {

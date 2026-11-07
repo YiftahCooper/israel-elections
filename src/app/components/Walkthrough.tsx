@@ -7,7 +7,7 @@ import type { Rational } from '../../engine/rational.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { listLabel, methodOf } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtFrac, fmtInt, fmtPct, fmtRat } from '../format.ts';
+import { fmtFrac, fmtInt, fmtPct, fmtRat, pctExactNote } from '../format.ts';
 import { dispatch, setState, useStore, useDigits } from '../store.ts';
 import { useGraphicReference } from '../useGraphicReference.ts';
 import { Info } from './ui.tsx';
@@ -199,7 +199,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
           <tr key={l.id} className={passes(l) ? '' : 'below'}>
             <td><ListName id={l.id} s={s} /> {statusChange(l)}{l.withdrawn ? <span className="chip">{L('withdrew', 'פרשה')}</span> : null}</td>
             <td className="n"><EditMarker s={s} path={['lists', sl.id, 'votes']} />{fmtInt(l.votes)}</td>
-            <td className="n">{fmtPct(l.votes, r.totalValid, digits)}</td>
+            <td className="n" title={pctExactNote(l.votes, r.totalValid, digits, s.rules.thresholdPct, lang)}>{fmtPct(l.votes, r.totalValid, digits, s.rules.thresholdPct)}</td>
           </tr>
         ); };
         return (

@@ -10,8 +10,8 @@ import { allocationOf, editPathLabel, electedOf, listLabel, markerReference, MET
 import { baselineOf } from '../factionDefaults.ts';
 import { changeText } from '../changeValue.tsx';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, fmtPct, fmtRat } from '../format.ts';
-import { setState, toast, useDigits, useLevel, useStore } from '../store.ts';
+import { fmtInt, fmtPct, fmtPp, fmtRat, pctExactNote } from '../format.ts';
+import { setState, toast, useDigits, useLevel, useSetting, useStore } from '../store.ts';
 import { Floating } from '../floating.tsx';
 import { Hemicycle } from '../components/Hemicycle.tsx';
 import { SeatDelta } from '../components/SeatDelta.tsx';
@@ -26,12 +26,12 @@ import { CopyVotesDialog, MatchingPanel, RowSheet, SaveDialog, VotesEditor, Whol
 import { markerLead } from './copyText.ts';
 import { ChoicePicker } from '../components/ChoicePicker.tsx';
 import { partyLabel as partyName } from '../../families/registry.ts';
+import { narrowerThan } from '../textScale.ts';
 import './compare.css';
 
 type Dir = 'toRight' | 'toLeft';
 type Filter = 'all' | 'different' | 'edited' | 'unmatched';
-const signedDecimal = (t: string) => (t.startsWith('-') ? `−${t.slice(1)}` : /^0(\.0*)?$/.test(t) ? t : `+${t}`);
-const narrow = () => typeof matchMedia === 'function' && matchMedia('(max-width: 760px)').matches;
+const narrow = () => narrowerThan(760);
 
 export function Workbench({ main, other, picker }: { main: SideModel; other: SideModel; picker: ReactNode }) {
   const L = useL(), lang = useLang(), digits = useDigits();
@@ -66,7 +66,11 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
   const [filter, setFilter] = useState<Filter>('all');
   const [kept, setKept] = useState<Set<string>>(new Set());
   const [query, setQuery] = useState('');
-  const [zero, setZero] = useState(false);
+  // Settings → Lists with no seats sets where the table starts (All: shown; Over 0.5%: those with at least 0.5% on
+  // either side; Folded: none); the switch here shows or hides all of them for this visit
+  const seatlessLists = useSetting('seatlessLists');
+  const [zeroPick, setZero] = useState<boolean | null>(null);
+  const zero = zeroPick ?? seatlessLists === 'all';
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [menu, setMenu] = useState<{ row: MatchRow; anchor: HTMLElement } | null>(null);
   const [copyReq, setCopyReq] = useState<CopyRequest | null>(null);
@@ -86,7 +90,8 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
     if (f === 'different') return marked || (l?.seats ?? 0) !== (r?.seats ?? 0) || !cross && (l?.votes ?? 0) !== (r?.votes ?? 0) || !!row.group;
     return true;
   };
-  const hasSeats = (row: MatchRow) => { const { l, r } = view(row); const inGroup = row.group && order.some((x) => x.group === row.group && ((cellsOf(left, x.left)?.seats ?? 0) > 0 || (cellsOf(right, x.right)?.seats ?? 0) > 0)); return (l?.seats ?? 0) > 0 || (r?.seats ?? 0) > 0 || !!inGroup || row.right.some((id) => listMarks(right, id).length) || row.left.some((id) => listMarks(left, id).length); };
+  const hasSeats = (row: MatchRow) => { const { l, r } = view(row); const inGroup = row.group && order.some((x) => x.group === row.group && ((cellsOf(left, x.left)?.seats ?? 0) > 0 || (cellsOf(right, x.right)?.seats ?? 0) > 0)); const notable = !zeroPick && seatlessLists === 'over' && [l, r].some((c) => c && c.total > 0 && c.votes * 200 >= c.total);
+    return (l?.seats ?? 0) > 0 || (r?.seats ?? 0) > 0 || !!inGroup || notable || row.right.some((id) => listMarks(right, id).length) || row.left.some((id) => listMarks(left, id).length); };
   const matchesQuery = (row: MatchRow) => !query.trim() || [...row.left.map((id) => left.sc.lists.find((l) => l.id === id)), ...row.right.map((id) => right.sc.lists.find((l) => l.id === id))]
     .some((l) => l && `${l.nameHe} ${l.shortHe} ${l.shortEn ?? ''}`.toLowerCase().includes(query.trim().toLowerCase()));
   const counts = Object.fromEntries((['all', 'different', 'edited', 'unmatched'] as Filter[]).map((f) => [f, order.filter((r) => qualifies(r, f) && (f === 'unmatched' || zero || hasSeats(r))).length])) as Record<Filter, number>;
@@ -260,21 +265,21 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
               {!simple && <td className="cmp-tick"><input type="checkbox" checked={isSel} onChange={() => toggle(row)} aria-label={L(`Select ${what}`, `בחירת ${what}`)} /></td>}
               <NameCell x={left} c={l} row={row} side="left" lang={lang} />
               <td className="n cmp-v">{l ? <VotesCell x={left} c={l} onEdit={(id) => setEditing({ side: left, listId: id })} /> : null}</td>
-              <td className="n cmp-s">{l && <bdi dir="ltr">{fmtPct(l.votes, l.total, digits)}</bdi>}</td>
+              <td className="n cmp-s" title={l ? pctExactNote(l.votes, l.total, digits, left.sc.rules.thresholdPct, lang) : undefined}>{l && <bdi dir="ltr">{fmtPct(l.votes, l.total, digits, left.sc.rules.thresholdPct)}</bdi>}</td>
               <td className="n cmp-seats cmp-ls">{l ? <b>{l.seats}</b> : null}</td>
               <td className="cmp-mid">
                 <span className="cmp-mid-in">
                   {arrow(row, toL && !grouped ? [toL] : null, 'toLeft', what)}
                   <span className="cmp-delta">
                     {grouped ? <span className="tiny muted">{L('see group', 'ראו קבוצה')}</span> : d !== null ? <SeatDelta value={d} /> : <span className="muted">—</span>}
-                    {!simple && shareD && shareD.num !== 0n && <span className="tiny muted cmp-pp" dir={lang === 'he' ? 'rtl' : 'ltr'}><bdi dir="ltr">{signedDecimal(fmtRat(shareD, 2))}</bdi> {L('pp', 'נק׳ אחוז')}</span>}
+                    {!simple && shareD && shareD.num !== 0n && <span className="tiny muted cmp-pp" dir={lang === 'he' ? 'rtl' : 'ltr'}><bdi dir="ltr">{fmtPp(shareD, digits)}</bdi> {L('pp', 'נק׳ אחוז')}</span>}
                     <span className={`cmp-tag tag-${row.tag}`} title={L(...TAG_INFO[row.tag])}>{tagText(row.tag, L)}</span>
                   </span>
                   {arrow(row, toR && !grouped ? [toR] : null, 'toRight', what)}
                 </span>
               </td>
               <td className="n cmp-seats cmp-rs">{r ? <b>{r.seats}</b> : null}</td>
-              <td className="n cmp-s">{r && <bdi dir="ltr">{fmtPct(r.votes, r.total, digits)}</bdi>}</td>
+              <td className="n cmp-s" title={r ? pctExactNote(r.votes, r.total, digits, right.sc.rules.thresholdPct, lang) : undefined}>{r && <bdi dir="ltr">{fmtPct(r.votes, r.total, digits, right.sc.rules.thresholdPct)}</bdi>}</td>
               <td className="n cmp-v">{r ? <VotesCell x={right} c={r} onEdit={(id) => setEditing({ side: right, listId: id })} /> : null}</td>
               <NameCell x={right} c={r} row={row} side="right" lang={lang} />
               <td className="cmp-more"><button type="button" className="btn small ghost cmp-more-btn" aria-label={L(`More for ${what}`, `עוד עבור ${what}`)} aria-haspopup="dialog" aria-expanded={menu?.row.key === row.key}

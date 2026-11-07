@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 test('a share link is cleared when its scenario changes', async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', level: 'simple', hintDismissed: true })));
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', level: 'simple', hintDismissed: true })));
   await page.goto('/');
   await page.getByRole('button', { name: 'Save & share', exact: true }).click();
   await page.getByRole('button', { name: 'Copy a share link', exact: true }).click();
@@ -12,7 +12,7 @@ test('a share link is cleared when its scenario changes', async ({ page }) => {
 });
 
 test('first visit keeps instructions available behind a concise label', async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', level: 'simple', hintDismissed: false })));
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', level: 'simple', hintDismissed: false })));
   await page.goto('/');
   const guidance = page.getByRole('button', { name: 'Explore the board', exact: true });
   await expect(guidance).toBeVisible();
@@ -23,7 +23,7 @@ test('first visit keeps instructions available behind a concise label', async ({
 for (const lang of ['he', 'en']) for (const width of [390, 1024, 1500]) {
   test(`save menu stays within the viewport: ${lang} ${width}`, async ({ page }) => {
     await page.setViewportSize({ width, height: 850 });
-    await page.addInitScript(v => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: v, level: 'expert', hintDismissed: true })), lang);
+    await page.addInitScript(v => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: v, level: 'expert', hintDismissed: true })), lang);
     await page.goto('/');
     await page.getByRole('button', { name: lang === 'he' ? 'שמירה ושיתוף' : 'Save & share', exact: true }).click();
     const menu = page.locator('#scenarios-menu');

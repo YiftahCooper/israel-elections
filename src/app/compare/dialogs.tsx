@@ -6,7 +6,7 @@ import type { Scenario, SimList } from '../../model/scenario.ts';
 import { allocationOf, electedOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct } from '../format.ts';
-import { useLevel, useStore } from '../store.ts';
+import { setState, useDigits, useLevel, useStore } from '../store.ts';
 import { deltaAction, voteSourceLabel, type SourceChoice } from '../voteEdit.ts';
 import { sourceChoice, sourceValue } from '../preferences.ts';
 import { Info, Slip } from '../components/ui.tsx';
@@ -78,7 +78,8 @@ export function CopyVotesDialog({ req, onClose, onDone }: { req: CopyRequest; on
   const voteSource = useStore((st) => st.voteSource);
   const one = req.units.length === 1 && req.units[0].dst.length === 1 ? req.units[0].dst[0] : null;
   const dst = req.units.flatMap((u) => u.dst);
-  const [mode, setMode] = useState<CopyMode>(req.cross ? COPY_MODE_DEFAULT : 'count');
+  const savedMode = useStore((st) => st.preferences.copyMode);
+  const [mode, setMode] = useState<CopyMode>(req.cross ? (savedMode === 'share' || savedMode === 'count' ? savedMode : COPY_MODE_DEFAULT) : 'count');
   const [source, setSource] = useState<SourceChoice>(voteSource.kind === 'transfer' && dst.includes(voteSource.listId) ? { kind: 'proportional' } : voteSource);
   const [scope, setScope] = useState<'once' | 'item' | 'always'>('once');
   const changed = req.units.some((u) => u.src.some((id) => JSON.stringify(req.from.sc.lists.find((l) => l.id === id)?.votes) !== JSON.stringify(req.from.start.lists.find((l) => l.id === id)?.votes)));
@@ -102,7 +103,7 @@ export function CopyVotesDialog({ req, onClose, onDone }: { req: CopyRequest; on
         {([['once', L('Just this once', 'רק הפעם')], ...(one ? [['item', L('For this list', 'לרשימה זו')]] : []), ['always', L('Always', 'תמיד')]] as [typeof scope, string][]).map(([v, t]) =>
           <label key={v}><input type="radio" name="cmp-scope" value={v} checked={scope === v} onChange={() => setScope(v)} />{t}</label>)}
       </fieldset>
-      <p className="tiny muted">{L('Manage answers in Your settings.', 'ניהול התשובות בהגדרות שלכם.')}</p>
+      <p className="tiny muted"><button type="button" className="link-btn" onClick={() => { onClose(); setState({ settingsOpen: true, settingsFocus: req.cross ? 'copyMode' : 'voteSource' }); }}>{L('Change in Settings', 'שינוי בהגדרות')}</button></p>
       <div className="row"><button type="submit" className="btn small primary" disabled={!plan?.ok}>{L(`Copy to ${req.to.year}`, `העתקה ל־${req.to.year}`)}</button><button type="button" className="btn small ghost" onClick={onClose}>{L('Cancel', 'ביטול')}</button></div>
     </form>
   </Modal>;
@@ -117,7 +118,8 @@ export function WholeListDialog({ req, onClose, onDone }: { req: WholeRequest; o
   const only = !!req.candidatesOnly;
   const [opts, setOpts] = useState({ votes: !only, candidates: true, identity: false, appearance: false });
   const [remove, setRemove] = useState<Removal[]>([]);
-  const [mode, setMode] = useState<CopyMode>(req.cross ? COPY_MODE_DEFAULT : 'count');
+  const savedMode = useStore((st) => st.preferences.copyMode);
+  const [mode, setMode] = useState<CopyMode>(req.cross ? (savedMode === 'share' || savedMode === 'count' ? savedMode : COPY_MODE_DEFAULT) : 'count');
   const [source, setSource] = useState<SourceChoice>(voteSource.kind === 'transfer' && voteSource.listId === req.dstId ? { kind: 'proportional' } : voteSource);
   const [adding, setAdding] = useState(req.dstId === null);
   const src = req.from.sc.lists.find((l) => l.id === req.srcId)!, dst = req.dstId ? req.to.sc.lists.find((l) => l.id === req.dstId) : undefined;
@@ -249,11 +251,11 @@ function MapTo({ row, early, late, earlyIds, lateIds, onPick }: { row: MatchRow;
 
 /** Phone: one row's figures on both sides and big copy buttons with their outcomes. */
 export function RowSheet({ row, left, right, onClose, actions }: { row: MatchRow; left: SideModel; right: SideModel; onClose: () => void; actions: ReactNode }) {
-  const L = useL(), lang = useLang();
+  const L = useL(), lang = useLang(), digits = useDigits();
   const side = (x: SideModel, ids: string[]) => { const c = cellsOf(x, ids), inside = inOf(row, x === left ? 'left' : 'right'); return <div className="cmp-sheet-side">
     <span className="muted small">{x.year} · {x.name}</span>
     <b><bdi>{c ? listName(x, ids, lang) : inside ? L(`in ${listName(x, [inside], 'en')}`, `בתוך ${listName(x, [inside], 'he')}`) : '—'}</bdi></b>
-    {c && <span className="small"><bdi dir="ltr">{fmtInt(c.votes)}</bdi> {L('votes', 'קולות')} · <bdi dir="ltr">{fmtPct(c.votes, c.total)}</bdi> · <b>{c.seats}</b> {L('seats', 'מנדטים')}</span>}
+    {c && <span className="small"><bdi dir="ltr">{fmtInt(c.votes)}</bdi> {L('votes', 'קולות')} · <bdi dir="ltr">{fmtPct(c.votes, c.total, digits, x.sc.rules.thresholdPct)}</bdi> · <b>{c.seats}</b> {L('seats', 'מנדטים')}</span>}
   </div>; };
   return <Modal label={L('List details', 'פרטי הרשימה')} onClose={onClose} className="cmp-sheet">
     <div className="choice-head"><span className={`cmp-tag tag-${row.tag}`}>{tagText(row.tag, L)}</span><button className="btn" aria-label={L('Close', 'סגירה')} onClick={onClose}>×</button></div>

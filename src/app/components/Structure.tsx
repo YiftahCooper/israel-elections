@@ -15,9 +15,9 @@ import { applyAction, apportion } from '../../model/actions.ts';
 import { toEngineInput, type Action, type Scenario, type SimList, type SimRules } from '../../model/scenario.ts';
 import { allocationOf, listLabel, referenceLabel } from '../derive.ts';
 import { useL, useLang, type Lang } from '../i18n.ts';
-import { fmtInt } from '../format.ts';
+import { fmtInt, fmtPct, fmtPctNum } from '../format.ts';
 import { partColours, distinctColour } from '../newListColour.ts';
-import { dispatch, dispatchMany, setState } from '../store.ts';
+import { dispatch, dispatchMany, setState, useDigits } from '../store.ts';
 import { useActiveReference } from '../useActiveReference.ts';
 import { Info, NumberInput, Seg } from './ui.tsx';
 
@@ -320,10 +320,10 @@ function ShareBar({ parts }: { parts: { key: string; color: string; votes: numbe
   const total = parts.reduce((t, p) => t + p.votes, 0) || 1;
   return <div className="st-sharebar" aria-hidden>{parts.map((p) => <i key={p.key} style={{ width: `${(p.votes / total) * 100}%`, background: p.color }} />)}</div>;
 }
-const pctOf = (votes: number, total: number) => (total ? Math.round((votes / total) * 1000) / 10 : 0);
 
 function Split({ s, r }: { s: Scenario; r: AllocationResult }) {
   const L = useL();
+  const digits = useDigits();
   const lang = useLang();
   const [id, setIdState] = useState('');
   const l = s.lists.find((x) => x.id === id);
@@ -398,7 +398,7 @@ function Split({ s, r }: { s: Scenario; r: AllocationResult }) {
             </div>
           ))}
           {sumPct === 0 ? <p className="small st-full" style={{ margin: 0, color: 'var(--warn-ink)' }}>{L('Give at least one party a share.', 'תנו לפחות למפלגה אחת חלק מהקולות.')}</p>
-            : Math.abs(sumPct - 100) > 0.05 && <p className="small st-full" style={{ margin: 0, color: 'var(--warn-ink)' }}>{L(`The shares add up to ${sumPct}%; the votes are divided in these proportions.`, `החלקים מסתכמים ב־${sumPct}%; הקולות יחולקו ביחס הזה.`)}</p>}
+            : Math.abs(sumPct - 100) > 0.05 && <p className="small st-full" style={{ margin: 0, color: 'var(--warn-ink)' }}>{L(`The shares add up to ${fmtPctNum(sumPct, digits)}; the votes are divided in these proportions.`, `החלקים מסתכמים ב־${fmtPctNum(sumPct, digits)}; הקולות יחולקו ביחס הזה.`)}</p>}
           {(shares || unassigned > 0) && <div className="row st-full" style={{ gap: 8 }}>
             {shares && <button type="button" className="btn small ghost" onClick={() => setShares(null)}>{L('Reset shares', 'איפוס החלוקה')}</button>}
             {unassigned > 0 && <span className="tiny muted">{L(`${unassigned} candidates go with the lead party`, `${unassigned} מועמדים עם מפלגת הראש`)} <Info title={L('Candidate assignment', 'שיוך מועמדים')}>{L(`${unassigned} candidate(s) without a recorded party go with ${name(parties.find((p) => p.id === lead) ?? parties[0])} (the party of the list’s leader).`, `${unassigned} מועמדים שמפלגתם לא תועדה מצורפים ${hebrewPrefix('ל', name(parties.find((p) => p.id === lead) ?? parties[0]))} (מפלגת העומד בראש הרשימה).`)}</Info></span>}
@@ -417,7 +417,7 @@ function Split({ s, r }: { s: Scenario; r: AllocationResult }) {
             <input type="range" min={0} max={100} value={shareA} aria-label={L(`Vote share of ${plainNames[0][1]} (%)`, `חלק הקולות של ${plainNames[0][0]} (%)`)} onChange={(e) => setShareA(Number(e.target.value))} /></label>
           <div className="st-full"><ShareBar parts={[{ key: 'a', color: colours[0], votes: plainVotes }, { key: 'b', color: colours[1], votes: l.votes - plainVotes }]} /></div>
           {[plainVotes, l.votes - plainVotes].map((v, i) => (
-            <span key={i} className="small st-eff"><span className="swatch" style={{ background: colours[i] }} /><bdi>{plainNames[i][lang === 'he' ? 0 : 1]}</bdi> <b className="tabnum">{pctOf(v, l.votes)}%</b> <span className="muted tabnum">{L(`${fmtInt(v)} votes`, `${fmtInt(v)} קולות`)}</span></span>
+            <span key={i} className="small st-eff"><span className="swatch" style={{ background: colours[i] }} /><bdi>{plainNames[i][lang === 'he' ? 0 : 1]}</bdi> <b className="tabnum">{fmtPct(v, l.votes, digits)}</b> <span className="muted tabnum">{L(`${fmtInt(v)} votes`, `${fmtInt(v)} קולות`)}</span></span>
           ))}
         </div>
       )}

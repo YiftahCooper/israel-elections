@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test';
 for (const lang of ['he', 'en']) for (const theme of ['light', 'dark']) {
   test(`long edited names stay on the one-line change summary without widening the page (${lang}, ${theme})`, async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.addInitScript(s => localStorage.setItem('israel-elections:v1', JSON.stringify(s)), { lang, theme, level: 'standard', hintDismissed: true });
+    await page.addInitScript(s => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })(s)), { lang, theme, level: 'standard', hintDismissed: true });
     await page.goto('/');
     await page.locator('.blocs').getByRole('button', { name: lang === 'he' ? 'עריכת גושים' : 'Edit blocs', exact: true }).click();
     const input = page.getByRole('textbox', { name: lang === 'he' ? 'שם הגוש' : 'Bloc name' }).first();
@@ -25,7 +25,7 @@ for (const lang of ['he', 'en']) for (const theme of ['light', 'dark']) {
 }
 
 test('comparison seat counts have readable contrast', async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', level: 'expert' })));
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', level: 'expert' })));
   await page.goto('/'); await page.locator('#tab-compare').click();
   await expect(page.getByRole('button', { name: 'Compare with', exact: true })).toHaveAttribute('data-value', 'election:k25'); // unchanged result compares with 2022 automatically
   const number = page.locator('.cmp-table .cmp-seats b').first();
@@ -47,7 +47,7 @@ test('locality map survives navigation during a zoom animation', async ({ page }
   const errors: string[] = [];
   page.on('pageerror', e => errors.push(e.message));
   await page.route('https://tile.openstreetmap.org/**', route => route.fulfill({ status: 204 }));
-  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', level: 'expert' })));
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', level: 'expert' })));
   await page.goto('/');
   const { choose } = await import('./choices.ts');
   await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
@@ -61,7 +61,7 @@ test('locality map survives navigation during a zoom animation', async ({ page }
 
 for (const lang of ['he', 'en']) test(`long official list names fit the merge picker (${lang})`, async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.addInitScript(lang => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang, level: 'expert' })), lang);
+  await page.addInitScript(lang => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang, level: 'expert' })), lang);
   await page.goto('/');
   const { choose } = await import('./choices.ts');
   await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k22');
@@ -71,7 +71,7 @@ for (const lang of ['he', 'en']) test(`long official list names fit the merge pi
 });
 
 test('family counts appear once beside the strip, never as low-contrast duplicate labels', async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', level: 'expert' })));
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', level: 'expert' })));
   await page.goto('/'); await page.locator('#tab-families').click();
   await expect(page.locator('.family-seat-count').first()).toContainText(/\d/);
   await expect(page.locator('.family-seat-strip').first()).toHaveText('');

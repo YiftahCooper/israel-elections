@@ -4,7 +4,7 @@ import { choose } from './choices.ts';
 
 async function start(page: Page, lang: 'en' | 'he' = 'en', width = 1500) {
   await page.setViewportSize({ width, height: 1000 });
-  await page.addInitScript((lang) => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang, level: 'expert', hintDismissed: true })), lang);
+  await page.addInitScript((lang) => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang, level: 'expert', hintDismissed: true })), lang);
   await page.goto('/');
   await page.locator('#tab-security').click();
 }
@@ -75,8 +75,8 @@ test('lists below the threshold show how far each is from it; smaller ones open 
 
 test('the vote source is named before use and switches the figures', async ({ page }) => {
   await start(page);
-  await expect(panel(page).getByText('Votes from', { exact: true })).toBeVisible();
-  const source = panel(page).getByRole('group', { name: 'Votes from' });
+  await expect(panel(page).getByText('Votes come from', { exact: true })).toBeVisible();
+  const source = panel(page).getByRole('group', { name: 'Votes come from' });
   await done(page);
   const likud = panel(page).locator('.sec-row').filter({ hasText: 'Likud' }).locator('.sec-r');
   const before = await likud.innerText();

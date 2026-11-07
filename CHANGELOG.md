@@ -1,5 +1,9 @@
 # Changelog
 
+## 7 November 2026 — Settings
+
+- Rebuilt Settings as one searchable bilingual popup (phone: full screen) with levels, group resets and Undo; every setting now applies wherever it is relevant, with new defaults (Device theme, joint lists by party, parties with no seats hidden) and accessibility options at every level; every percentage now shows at most 0–3 decimals (1 by default, 2 at Expert), never shown on the wrong side of the threshold (one more digit there, the exact share in the tooltip); Compare's shares, percentage-point changes and seatless rows follow Settings, its copy mode is a Settings row, and large text now takes the layout of the narrower page instead of wrapping.
+
 ## 6 November 2026 — data audit
 
 - After the election: distinguish government members, support roles and individual votes; show unknown totals honestly, explain vote reconciliation behind help, and keep localised date ranges in reading order.

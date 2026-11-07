@@ -2,7 +2,8 @@ import { expect, test, type Page } from '@playwright/test';
 import { choose } from './choices.ts';
 
 async function open(page: Page, lang: 'en' | 'he', election = 'k25') {
-  await page.addInitScript(lang => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang, level: 'expert', hintDismissed: true })), lang);
+  // the figures below were drawn at one decimal place (Settings → Decimal places)
+  await page.addInitScript(lang => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 1 } })); return JSON.stringify(o); })({ lang, level: 'expert', hintDismissed: true })), lang);
   await page.goto('/');
   await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), election);
   await page.locator('#tab-turnout').click();

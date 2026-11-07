@@ -1,8 +1,9 @@
 import { choose } from './choices.ts';
+// the figures below were drawn at one decimal place (Settings → Max decimal places)
 import { expect, test } from '@playwright/test';
 
 test('locality map supports bilingual search, address lookup and table fallback', async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({lang:'en',level:'expert',hintDismissed:true})));
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 1 } })); return JSON.stringify(o); })({lang:'en',level:'expert',hintDismissed:true})));
   // Keep this test independent of public tile/geocoding services and their traffic budgets.
   await page.route('https://tile.openstreetmap.org/**', route => route.abort());
   await page.route('https://photon.komoot.io/**', route => route.fulfill({json:{features:[{geometry:{coordinates:[34.78,32.08]},properties:{name:'Test address',city:'Tel Aviv'}}]}}));
@@ -39,7 +40,7 @@ test('locality map supports bilingual search, address lookup and table fallback'
 });
 
 test('locality map explains a result, speaks English and fits the dark theme', async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({lang:'en',theme:'dark',level:'expert',hintDismissed:true})));
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 1 } })); return JSON.stringify(o); })({lang:'en',theme:'dark',level:'expert',hintDismissed:true})));
   // tiles blocked: the frame says the background map failed instead of staying silently blank
   await page.route('https://tile.openstreetmap.org/**', route => route.abort());
   await page.goto('/');
@@ -69,7 +70,7 @@ test('locality map explains a result, speaks English and fits the dark theme', a
 });
 
 test('zooming the locality map never scrolls the page', async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({lang:'en',level:'expert',hintDismissed:true})));
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 1 } })); return JSON.stringify(o); })({lang:'en',level:'expert',hintDismissed:true})));
   await page.route('https://tile.openstreetmap.org/**', route => route.abort());
   await page.goto('/');
   await page.getByRole('tab', {name:'Localities',exact:true}).click();
@@ -89,7 +90,7 @@ test('zooming the locality map never scrolls the page', async ({ page }) => {
 
 
 test('2006 Hebrew map explains name placement and lists only the five unplaced localities', async ({page}) => {
-  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({lang:'he',level:'expert',hintDismissed:true})));
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 1 } })); return JSON.stringify(o); })({lang:'he',level:'expert',hintDismissed:true})));
   await page.route('https://tile.openstreetmap.org/**', route => route.abort());
   await page.goto('/');
   await choose(page.getByRole('button', {name:'בחירות',exact:true}), 'k17');

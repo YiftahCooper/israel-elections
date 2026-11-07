@@ -1,6 +1,7 @@
 import { ChevronsUpDown } from 'lucide-react';
 import { useId, useMemo, useRef, useState, type ReactNode } from 'react';
 import { useL } from '../i18n.ts';
+import { useSetting } from '../store.ts';
 
 export interface Choice { value: string; label: string; detail?: string; title?: string; group?: string; preview?: ReactNode; disabled?: boolean }
 /** Native dialog supplies modal focus containment and Escape; buttons retain native activation.
@@ -8,6 +9,9 @@ export interface Choice { value: string; label: string; detail?: string; title?:
 export function ChoicePicker({ label, value, options, onChange, className = '', placeholder, children, description }: {
   label: string; value: string; options: Choice[]; onChange: (value: string) => void; className?: string; placeholder?: string; children?: ReactNode; description?: string;
 }) {
+  // Settings → Option previews: off, choices show names only (lighter on slow phones)
+  const previews = useSetting('optionPreviews');
+  if (!previews) options = options.map(o => o.preview ? { ...o, preview: undefined } : o);
   const L = useL(), dialogId = useId();
   const dialog = useRef<HTMLDialogElement>(null), trigger = useRef<HTMLButtonElement>(null);
   const [query, setQuery] = useState('');

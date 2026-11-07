@@ -1,7 +1,7 @@
 import { expect, test, type Page } from '@playwright/test';
 import { choose } from './choices.ts';
 async function start(page: Page, lang = 'en', theme = 'light') {
-  await page.addInitScript(v => localStorage.setItem('israel-elections:v1', JSON.stringify(v)), { lang, theme, level: 'expert', hintDismissed: true });
+  await page.addInitScript(v => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })(v)), { lang, theme, level: 'expert', hintDismissed: true });
   await page.goto('/');
   await expect(page.locator('.lb-row').first()).toBeVisible();
   await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k25');

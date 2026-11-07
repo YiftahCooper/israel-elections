@@ -585,10 +585,10 @@ Built in v1 except for these. Each stays in the spec above; none blocks v1.
 ### Decided after v1 (coordinator defaults, 7 Nov; the owner may veto)
 
 - **The main scenario always sits on the right** (`COMPARE_MAIN_SIDE`), whatever the years; the side labels carry the year order. This supersedes "the earlier election on the left" (consistent siblings, no jumps).
-- **"Lists with no seats"** follows the global Settings preference once it exists; until then it is off. Members of a merged or split group always show, including those with no seats (Balad 2022 in the Joint List row; Noam in the Religious Zionism group).
+- **"Lists with no seats"** starts from Settings → Lists with no seats (All: every seatless row; Over 0.5%: those with at least 0.5% on either side; Folded: none); the switch then shows or hides all of them for the visit (docs/design/settings.md). Members of a merged or split group always show, including those with no seats (Balad 2022 in the Joint List row; Noam in the Religious Zionism group).
 - **A person on two lists after an import** (Whole list or Candidates) gets an inline warning naming the person and the other list, with a one-tap "Remove from *list*". It never blocks and never removes on its own. People are matched by Knesset member record, never by name.
 - **Saved comparisons are listed on the Scenarios page** too, with Open, Copy link and Delete.
-- **Share change** in the Change column carries its unit ("pp" / "נק׳ אחוז"), explained in the column header's (i). Its digits move to the shared percentage formatter and max-decimals setting with the Settings lane (V2c).
+- **Share change** in the Change column carries its unit ("pp" / "נק׳ אחוז"), explained in the column header's (i). Its digits follow Settings → Max decimal places through the shared formatter (`fmtPp`: signed, and a non-zero change is never shown as 0, "+<0.1"); both sides' shares use the threshold-safe `fmtPct`.
 - **Matching runs from the earlier side to the later one** and is mirrored when the later side is drawn on the left, so a merger or split reads the same whichever side the main scenario sits on. Your pairings are stored in that earlier → later order.
 
 ## 15. Test plan

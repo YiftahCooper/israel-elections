@@ -9,7 +9,7 @@ import {fullDefinition} from '../../families/catalogue.ts';
 import {familyColor,historyElections,shortFamilyName} from '../../families/runtime.ts';
 import {appearances,canonicalParty,partyLabel} from '../../families/registry.ts';
 import lineage from '../../../data/meta/party-lineage.json';
-import {loadDataset} from '../store.ts';
+import {loadDataset,useDigits} from '../store.ts';
 import {allocationOf,baselineOf,listLabel} from '../derive.ts';
 import {useL,useLang} from '../i18n.ts';
 import {Info,Slip} from './ui.tsx';
@@ -18,6 +18,7 @@ import {familyDate,familyStatus,openFamilyElection} from './FamilyCharts.tsx';
 
 /** Official ballots and sourced organisation changes; never infer voter transfers from a trend. */
 export function FamilyPoint({family:f,electionId}:{family:Family;electionId:ElectionId}) {
+ const digits=useDigits();
  const L=useL(),lang=useLang(),[loaded,setLoaded]=useState<{ds:ElectionDataset;previous:ElectionDataset|null;full:Family}|null>(null),[error,setError]=useState(false);
  const at=historyElections.findIndex(d=>d.id===electionId),before=historyElections[at-1];
  useEffect(()=>{let live=true;setLoaded(null);setError(false);Promise.all([loadDataset(electionId),before?loadDataset(before.id):null,fullDefinition(f)]).then(([ds,previous,full])=>{if(live)setLoaded({ds,previous,full});}).catch(()=>{if(live)setError(true);});return()=>{live=false;};},[f,electionId,before]);
@@ -47,8 +48,8 @@ export function FamilyPoint({family:f,electionId}:{family:Family;electionId:Elec
  const lists=ds.lists.filter(l=>ids.has(l.id)).sort((x,y)=>rank(x.id)-rank(y.id)||y.votes-x.votes);
  return <div className="family-point" style={{['--family-color' as string]:familyColor(f)}}>
   <h3>{shortFamilyName(f,lang)} · {familyDate(historyElections[at],lang)}</h3>
-  <div className="family-point-total">{status&&<span>{status}</span>}{counted&&<span><b>{Number(a.votes).toLocaleString('en-US')} {L('votes','קולות')}</b> · <bdi dir="ltr">{share(a.votes!,ds).toFixed(2)}%</bdi> · {familySeats(ds,m.selected)} {L('seats','מנדטים')}</span>}{!!a.mixed&&<span className="family-point-mixed"><i className="family-key-mixed" aria-hidden/><span>{L('Mixed lists','רשימות מעורבות')}: {Number(a.mixed).toLocaleString('en-US')} · <bdi dir="ltr">{share(a.mixed,ds).toFixed(2)}%</bdi></span></span>}</div>
-  {before&&previous&&prev&&(counted&&prevCounted||mixedDelta!==null&&(!!a.mixed||!!prev.mixed))&&<p className="family-point-delta">{L('Since','מאז')} {familyDate(before,lang)}: {counted&&prevCounted&&<>{signed(a.votes!-prev.votes!)} {L('votes','קולות')} · {signed(share(a.votes!,ds)-share(prev.votes!,previous),2)} {L('points','נקודות אחוז')} · <SeatDelta value={familySeats(ds,m.selected)-familySeats(previous,membership(f,previous.id).selected)} /> {L('seats','מנדטים')}</>}{!!(a.mixed||prev.mixed)&&mixedDelta!==null&&<>{counted&&prevCounted?' · ':''}{L('mixed lists','רשימות מעורבות')} {signed(mixedDelta)}</>}</p>}
+  <div className="family-point-total">{status&&<span>{status}</span>}{counted&&<span><b>{Number(a.votes).toLocaleString('en-US')} {L('votes','קולות')}</b> · <bdi dir="ltr">{share(a.votes!,ds).toFixed(digits)}%</bdi> · {familySeats(ds,m.selected)} {L('seats','מנדטים')}</span>}{!!a.mixed&&<span className="family-point-mixed"><i className="family-key-mixed" aria-hidden/><span>{L('Mixed lists','רשימות מעורבות')}: {Number(a.mixed).toLocaleString('en-US')} · <bdi dir="ltr">{share(a.mixed,ds).toFixed(digits)}%</bdi></span></span>}</div>
+  {before&&previous&&prev&&(counted&&prevCounted||mixedDelta!==null&&(!!a.mixed||!!prev.mixed))&&<p className="family-point-delta">{L('Since','מאז')} {familyDate(before,lang)}: {counted&&prevCounted&&<>{signed(a.votes!-prev.votes!)} {L('votes','קולות')} · {signed(share(a.votes!,ds)-share(prev.votes!,previous),digits)} {L('points','נקודות אחוז')} · <SeatDelta value={familySeats(ds,m.selected)-familySeats(previous,membership(f,previous.id).selected)} /> {L('seats','מנדטים')}</>}{!!(a.mixed||prev.mixed)&&mixedDelta!==null&&<>{counted&&prevCounted?' · ':''}{L('mixed lists','רשימות מעורבות')} {signed(mixedDelta)}</>}</p>}
   {!ds.officialSeats&&<p className="small muted">{L('Calculated seats · Gazette not yet verified','מנדטים מחושבים · הפרסום ברשומות טרם אומת')} <Info title={L('Seat counts','ספירת מנדטים')}>{L('Calculated from the published vote counts under this election’s rules. Gazetted seat counts are unavailable.','חושב מספירת הקולות שפורסמה לפי כללי הבחירות האלה. ספירת מנדטים שפורסמה ברשומות אינה זמינה.')}</Info></p>}
   <div className="family-point-lists">{lists.map(l=>{const member=row?.members.find(x=>x.listId===l.id),review=row?.reviewCandidates.find(x=>x.listId===l.id),mixed=member?.scope==='mixed',isCounted=m.selected.has(l.id),separate=m.mixed.has(l.id);
    const ownParty=(id:string)=>!!member?.partyIds.some(x=>canonicalParty(x)===canonicalParty(id));
