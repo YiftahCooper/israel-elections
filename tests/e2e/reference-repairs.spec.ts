@@ -26,7 +26,7 @@ test('B1 saved separate-run reference is named everywhere; B6 identity is not re
   await save(page);
   await expect(page.locator('.lb-group-comparison')).toContainText('together 4, in Review A 4');
   await expect(page.locator('.lb-group-comparison')).not.toContainText('official');
-  await expect(page.locator('.session')).toContainText('0 changes from Review A');
+  await expect(page.locator('.session')).toContainText('No changes from Review A');
   await expect(page.locator('.session .scn-name')).toHaveCount(0);
   await page.getByRole('button', { name: 'Likud', exact: true }).click();
   const votes = page.getByRole('region', { name: 'List details' }).getByLabel('Votes', { exact: true });

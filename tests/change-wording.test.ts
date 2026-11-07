@@ -47,7 +47,7 @@ it('History explains differing reference counts and retains the active count', (
   expect(historyChangesLabels(s,saved,'en')).toEqual({active:'3 changes from Unity',official:'4 from the official result'});
   expect(historyChangesLabels(s,saved,'he')).toEqual({active:'3 שינויים מ־Unity',official:'4 מהתוצאה הרשמית'});
   expect(historyChangesLabels(s,null,'en')).toEqual({active:'4 changes from the official result',official:null});
-  expect(historyChangesLabels(saved,saved,'en')).toEqual({active:'0 changes from Unity',official:'1 from the official result'});
+  expect(historyChangesLabels(saved,saved,'en')).toEqual({active:'No changes from Unity',official:'1 from the official result'});
   const later=applyAction(saved,{type:'setVotes',listId:base.lists[0].id,votes:1100100});
   expect(historyChangesLabels(saved,later,'en')).toEqual({active:'1 change from Unity',official:null});
 });

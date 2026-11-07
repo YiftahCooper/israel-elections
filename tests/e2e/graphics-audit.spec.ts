@@ -113,7 +113,7 @@ test('summary, graphics and Compare default follow the same reference setting',a
     await choose(page.getByRole('button',{name:'Mark differences from'}), setting);
     await page.keyboard.press('Escape');
     await page.getByRole('tab',{name:'Overview',exact:true}).click();
-    await expect(page.locator('.session > b')).toHaveText(changed ? /\d+ changes? from the official result/ : 'No changes');
+    await expect(page.locator('.session > b .fit-label-text')).toHaveText(changed ? /\d+ changes? from the official result/ : /^No changes/);
     // the key names the reference once when seats differ; with nothing to mark the session line already says so
     if(changed) await expect(page.locator('.chamber .graphic-key')).toContainText(name);
     else await expect(page.locator('.chamber .graphic-key')).toHaveCount(0);

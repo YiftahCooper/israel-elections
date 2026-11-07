@@ -85,7 +85,8 @@ export function changeCount(s: Scenario, reference: Scenario | null): number {
 }
 export function changesLabel(count: number, reference: Pick<Scenario, 'name'> | null, lang: Lang, compact = false): string {
   if (!count && !reference) return lang === 'he' ? 'אין שינויים' : 'No changes';
-  const short = `${count} ${lang === 'he' ? 'שינויים' : count === 1 ? 'change' : 'changes'}`;
+  if (!count && !compact) return `${lang === 'he' ? 'אין שינויים' : 'No changes'} ${referenceLabel(reference, lang).since}`;
+  const short = lang === 'he' ? (count === 1 ? 'שינוי אחד' : `${count} שינויים`) : `${count} ${count === 1 ? 'change' : 'changes'}`;
   if (compact && reference) return `${count} ${referenceLabel(reference, lang).since}`;
   return compact ? short : `${short} ${referenceLabel(reference, lang).since}`;
 }
