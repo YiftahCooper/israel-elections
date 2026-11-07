@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "electionId": "k13",
-  "status": "pilot",
+  "status": "reviewed",
   "reviewedAt": "2026-11-07",
   "notes": [
-    "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
+    "Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
     "The term window runs from this election to the next Knesset election. Government tenure may extend past that window. Mid-term institutional succession is recorded in formation.events; it is not a new post-election recommendation round.",
     "Additional dated mid-term acts that do not fit the proposal’s closed formation type vocabulary are kept as formalStep=true entries in government.changes (Dated-compatible). No new formation enum values are introduced."
   ],
@@ -154,13 +154,23 @@
       "url": "https://www.972mag.com/palestinian-citizens-israel-coalition-elections/",
       "publisher": "Wadea Awawdy, +972 / Local Call, 27 October 2022",
       "kind": "secondary",
-      "accessed": "2026-11-07"
+      "accessed": "2026-11-07",
+      "tier": "retrospective"
     },
     "role-roster-26": {
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2026%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
       "publisher": "Knesset OData, formation-day cabinet appointments",
       "kind": "official",
       "accessed": "2026-11-07"
+    },
+    "local-call-2022": {
+      "url": "https://www.mekomit.co.il/המפלגות-הערביות-ממליצות-על-מועמדים-כב/",
+      "publisher": "ודיע עואודה / שיחה מקומית, המפלגות הערביות ממליצות על מועמדים כבר משנות ה-80, ללא הישגים, 11 October 2022 (English translation: +972 Magazine, 27 October 2022)",
+      "kind": "secondary",
+      "tier": "retrospective",
+      "evidenceFamily": "local-call-awawdy-2022",
+      "accessed": "2026-11-07",
+      "via": "Read by the 7 November research helper; a direct request on 7 November met a bot-verification page, which was not bypassed. One retrospective account in two languages, not two sources."
     }
   },
   "results": {
@@ -206,7 +216,18 @@
         {
           "letters": "ו",
           "seats": 3,
-          "status": "unknown"
+          "status": "recommended",
+          "nominee": "rabin",
+          "cites": [
+            {
+              "source": "local-call-2022",
+              "quote": "שתי המפלגות המליצו בפני הנשיא על רבין",
+              "locator": "paragraph beginning בסופו של דבר, הרשימה המתקדמת",
+              "note": "Names the Arab Democratic Party (2) and Hadash (3)."
+            }
+          ],
+          "noteEn": "Recommended Rabin, from one later account; no contemporary or scholarly corroboration recovered.",
+          "noteHe": "המליצה על רבין, לפי חשבון מאוחר אחד; לא נמצא אישור בן הזמן או מחקרי."
         },
         {
           "letters": "ט",
@@ -221,12 +242,33 @@
         {
           "letters": "מרצ",
           "seats": 12,
-          "status": "unknown"
+          "status": "recommended",
+          "nominee": "rabin",
+          "cites": [
+            {
+              "source": "amigoe-19920630",
+              "quote": "Zowel de rechtsradicale Tsomet-partij als de joods-orthodoxe Shas-partij en de linkse Meretz-alliantie",
+              "note": "The report continues that these parties told Herzog on Monday they approved a Rabin-led government; approval in the consultations, not a quoted recommendation formula."
+            }
+          ],
+          "noteEn": "Backed Rabin in the consultations, from one contemporary report.",
+          "noteHe": "תמכה ברבין בהתייעצויות, לפי דיווח בן הזמן אחד."
         },
         {
           "letters": "ע",
           "seats": 2,
-          "status": "unknown"
+          "status": "recommended",
+          "nominee": "rabin",
+          "cites": [
+            {
+              "source": "local-call-2022",
+              "quote": "שתי המפלגות המליצו בפני הנשיא על רבין",
+              "locator": "paragraph beginning בסופו של דבר, הרשימה המתקדמת",
+              "note": "Names the Arab Democratic Party (2) and Hadash (3)."
+            }
+          ],
+          "noteEn": "Recommended Rabin, from one later account; no contemporary or scholarly corroboration recovered.",
+          "noteHe": "המליצה על רבין, לפי חשבון מאוחר אחד; לא נמצא אישור בן הזמן או מחקרי."
         },
         {
           "letters": "ץ",
@@ -252,8 +294,8 @@
         }
       ],
       "totals": {
-        "rabin": 8,
-        "unknown": 112
+        "rabin": 25,
+        "unknown": 95
       },
       "cites": [
         {
@@ -263,7 +305,8 @@
       ],
       "notes": [
         "No complete per-faction recommendation record was recovered by the existing research. A 61-seat blocking bloc is not a recommendation tally. Unknown is not an explicit decision to recommend nobody.",
-        "2026-11-07: Tsomet is now independently corroborated by IDI p.599 and a contemporary Amigoe scan. The other nine entries remain unknown; aggregate tally arithmetic is not per-faction evidence. Amigoe also reports Shas approval, while the later Walla account attributes discretion to the religious parties: Shas requires the original consultation record, not promotion from either alone."
+        "2026-11-07: Tsomet is now independently corroborated by IDI p.599 and a contemporary Amigoe scan. The other nine entries remain unknown; aggregate tally arithmetic is not per-faction evidence. Amigoe also reports Shas approval, while the later Walla account attributes discretion to the religious parties: Shas requires the original consultation record, not promotion from either alone.",
+        "7 November policy pass: Meretz (Amigoe, contemporary) and Hadash and ADP (Local Call 2022, retrospective) are provisional Rabin recommendations. Shas stays unknown: Amigoe reports its approval of Rabin, but Herzog’s memorandum as quoted by Amir Oren (Walla, October 2019) says the religious movements left the decision to him. Labor, Likud, NRP, UTJ and Moledet stay unknown; the memorandum’s aggregate (69 Rabin, 32 Shamir, three none) is not per-faction evidence."
       ]
     }
   ],

@@ -1,3 +1,4 @@
+import type { Certainty } from './evidence.ts';
 /** Research overlay only; never infer coalition membership from a confidence vote. */
 export const GOVERNMENT_SUPPORT_ROLES = ['member-with-ministries', 'member-without-ministries', 'outside-support', 'confidence-vote-only', 'abstained-by-arrangement', 'other'] as const;
 export type GovernmentSupportRole = typeof GOVERNMENT_SUPPORT_ROLES[number];
@@ -9,7 +10,8 @@ export interface GovernmentParticipant {
   electionListSeats?: number;
   factionNameHe?: string;
   role: GovernmentSupportRole;
-  certainty: 'confirmed' | 'provisional' | 'unknown';
+  /** docs/source-policy.md; never above the ceiling its cites support (src/data/evidence.ts). */
+  certainty: Certainty;
   cites: SupportCitation[];
   note?: string;
 }
@@ -28,6 +30,7 @@ export interface GovernmentSupport {
   /** null when unresolved roles or incomplete coverage prevent a total. */
   coalitionSeats: number | null;
   supportSeats: number | null;
+  knownMemberSeats?: number | null;
   confidenceVote: { for: number; against: number; abstain?: number } | null;
   confidenceVoteCites?: SupportCitation[];
   membershipCoverage: 'complete' | 'partial';

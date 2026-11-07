@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "electionId": "k12",
-  "status": "pilot",
+  "status": "reviewed",
   "reviewedAt": "2026-11-07",
   "notes": [
-    "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
+    "Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
     "The term window runs from this election to the next Knesset election. Government tenure may extend past that window. Mid-term institutional succession is recorded in formation.events; it is not a new post-election recommendation round.",
     "Additional dated mid-term acts that do not fit the proposal’s closed formation type vocabulary are kept as formalStep=true entries in government.changes (Dated-compatible). No new formation enum values are introduced."
   ],
@@ -131,6 +131,22 @@
       "publisher": "Knesset OData, formation-day cabinet appointments",
       "kind": "official",
       "accessed": "2026-11-07"
+    },
+    "local-call-2022": {
+      "url": "https://www.mekomit.co.il/המפלגות-הערביות-ממליצות-על-מועמדים-כב/",
+      "publisher": "ודיע עואודה / שיחה מקומית, המפלגות הערביות ממליצות על מועמדים כבר משנות ה-80, ללא הישגים, 11 October 2022 (English translation: +972 Magazine, 27 October 2022)",
+      "kind": "secondary",
+      "tier": "retrospective",
+      "evidenceFamily": "local-call-awawdy-2022",
+      "accessed": "2026-11-07",
+      "via": "Read by the 7 November research helper; a direct request on 7 November met a bot-verification page, which was not bypassed. One retrospective account in two languages, not two sources."
+    },
+    "unita-19881114": {
+      "url": "https://archivio.unita.news/assets/main/1988/11/14/page_004.pdf",
+      "publisher": "Giancarlo Lannutti / l’Unità, 14 November 1988, p.4, Il coprifuoco non soffoca «l’intifada»",
+      "kind": "archival",
+      "accessed": "2026-11-07",
+      "via": "Bylined Jerusalem dispatch (dal nostro inviato); PDF text layer read 7 November. Independent of UPI."
     }
   },
   "results": {
@@ -220,9 +236,18 @@
         {
           "letters": "ו",
           "seats": 4,
-          "status": "unconfirmed",
-          "noteEn": "Formal consultation position not authenticated. Retrieve the President’s House delegation minutes or received recommendation letter for Hadash in the November 1988 formation-consultation file (meetings 7–13 November; President Chaim Herzog records, Israel State Archives/President’s House). No catalogue shelfmark recovered.",
-          "noteHe": "העמדה הרשמית בהתייעצות טרם אומתה. נדרש פרוטוקול פגישת המשלחת או מכתב המלצתה בתיק התייעצויות נשיא המדינה חיים הרצוג, 7–13 בנובמבר 1988. מספר תיק לא אותר."
+          "status": "recommended",
+          "nominee": "peres",
+          "cites": [
+            {
+              "source": "local-call-2022",
+              "quote": "כולן המליצו בפני הנשיא על פרס כמועמד לראשות הממשלה",
+              "locator": "paragraph beginning בבחירות לכנסת ה-12",
+              "note": "Names Hadash (4), the Progressive List (1) and the Arab Democratic Party (1); the English translation describes the recommendation as conditional on narrowing social and economic gaps."
+            }
+          ],
+          "noteEn": "Conditional recommendation of Peres, from one later account. Contemporary reports of 55 seats for Peres are consistent but are not used as evidence for this list.",
+          "noteHe": "המלצה מותנית על פרס, לפי חשבון מאוחר אחד. הדיווחים בני הזמן על 55 תומכים בפרס תואמים, אך אינם משמשים ראיה לרשימה זו."
         },
         {
           "letters": "מפם",
@@ -239,29 +264,57 @@
         {
           "letters": "פ",
           "seats": 1,
-          "status": "unconfirmed",
-          "noteEn": "Formal consultation position not authenticated. Retrieve the President’s House delegation minutes or received recommendation letter for Progressive List for Peace in the November 1988 formation-consultation file (meetings 7–13 November; President Chaim Herzog records, Israel State Archives/President’s House). No catalogue shelfmark recovered.",
-          "noteHe": "העמדה הרשמית בהתייעצות טרם אומתה. נדרש פרוטוקול פגישת המשלחת או מכתב המלצתה בתיק התייעצויות נשיא המדינה חיים הרצוג, 7–13 בנובמבר 1988. מספר תיק לא אותר."
+          "status": "recommended",
+          "nominee": "peres",
+          "cites": [
+            {
+              "source": "local-call-2022",
+              "quote": "כולן המליצו בפני הנשיא על פרס כמועמד לראשות הממשלה",
+              "locator": "paragraph beginning בבחירות לכנסת ה-12",
+              "note": "Names Hadash (4), the Progressive List (1) and the Arab Democratic Party (1); the English translation describes the recommendation as conditional on narrowing social and economic gaps."
+            }
+          ],
+          "noteEn": "Conditional recommendation of Peres, from one later account. Contemporary reports of 55 seats for Peres are consistent but are not used as evidence for this list.",
+          "noteHe": "המלצה מותנית על פרס, לפי חשבון מאוחר אחד. הדיווחים בני הזמן על 55 תומכים בפרס תואמים, אך אינם משמשים ראיה לרשימה זו."
         },
         {
           "letters": "ע",
           "seats": 1,
-          "status": "unconfirmed",
-          "noteEn": "Formal consultation position not authenticated. Retrieve the President’s House delegation minutes or received recommendation letter for Arab Democratic Party in the November 1988 formation-consultation file (meetings 7–13 November; President Chaim Herzog records, Israel State Archives/President’s House). No catalogue shelfmark recovered.",
-          "noteHe": "העמדה הרשמית בהתייעצות טרם אומתה. נדרש פרוטוקול פגישת המשלחת או מכתב המלצתה בתיק התייעצויות נשיא המדינה חיים הרצוג, 7–13 בנובמבר 1988. מספר תיק לא אותר."
+          "status": "recommended",
+          "nominee": "peres",
+          "cites": [
+            {
+              "source": "local-call-2022",
+              "quote": "כולן המליצו בפני הנשיא על פרס כמועמד לראשות הממשלה",
+              "locator": "paragraph beginning בבחירות לכנסת ה-12",
+              "note": "Names Hadash (4), the Progressive List (1) and the Arab Democratic Party (1); the English translation describes the recommendation as conditional on narrowing social and economic gaps."
+            }
+          ],
+          "noteEn": "Conditional recommendation of Peres, from one later account. Contemporary reports of 55 seats for Peres are consistent but are not used as evidence for this list.",
+          "noteHe": "המלצה מותנית על פרס, לפי חשבון מאוחר אחד. הדיווחים בני הזמן על 55 תומכים בפרס תואמים, אך אינם משמשים ראיה לרשימה זו."
         },
         {
           "letters": "עץ",
           "seats": 2,
-          "status": "unconfirmed",
-          "noteEn": "Formal consultation position not authenticated. Retrieve the President’s House delegation minutes or received recommendation letter for Degel HaTorah in the November 1988 formation-consultation file (meetings 7–13 November; President Chaim Herzog records, Israel State Archives/President’s House). No catalogue shelfmark recovered.",
-          "noteHe": "העמדה הרשמית בהתייעצות טרם אומתה. נדרש פרוטוקול פגישת המשלחת או מכתב המלצתה בתיק התייעצויות נשיא המדינה חיים הרצוג, 7–13 בנובמבר 1988. מספר תיק לא אותר."
+          "status": "none",
+          "cites": [
+            {
+              "source": "unita-19881114",
+              "quote": "il Degel Hatorah dal canto suo ha deciso di non indicare per l'incarico di premier né Shamir né Peres."
+            },
+            {
+              "source": "recommendations-research-2",
+              "quote": "Degel Hatorah, pledged its two Knesset seats to a broad-based coalition of Labor and Likud."
+            }
+          ],
+          "noteEn": "Recommended neither candidate; preferred a broad Labor–Likud government. Two independent contemporary reports; the President’s House minute was not recovered.",
+          "noteHe": "לא המליצה על אף מועמד; העדיפה ממשלה רחבה של העבודה והליכוד. שני דיווחים בני הזמן בלתי תלויים; פרוטוקול בית הנשיא לא אותר."
         }
       ],
       "totals": {
         "shamir": 63,
-        "peres": 49,
-        "unconfirmed": 8
+        "peres": 55,
+        "none": 2
       },
       "cites": [
         {
@@ -283,7 +336,8 @@
       ],
       "notes": [
         "Contemporary reporting gives aggregate support of 63 for Shamir and 55 for Peres. Only 49 Peres seats are assigned here from named-party reporting; Hadash, PLP and ADP (6 seats) are unconfirmed. Degel (2 seats) supported a broad government, but a formal presidential recommendation is unconfirmed. Arithmetic is not evidence of a per-list recommendation.",
-        "R4 recheck 7 November: JTA 9 November names non-Arab parties but does not authenticate these four final positions. +972/Local Call (27 October 2022) explicitly attributes conditional Peres recommendations to Hadash, PLP and ADP; this retrospective account is not a newly recovered President’s House record and does not close the existing authentication gap. Degel’s reported preference for unity does not by itself prove a formal recommendation. All four remain unconfirmed; no arithmetic reconstruction."
+        "R4 recheck 7 November: JTA 9 November names non-Arab parties but does not authenticate these four final positions. +972/Local Call (27 October 2022) explicitly attributes conditional Peres recommendations to Hadash, PLP and ADP; this retrospective account is not a newly recovered President’s House record and does not close the existing authentication gap. Degel’s reported preference for unity does not by itself prove a formal recommendation. All four remain unconfirmed; no arithmetic reconstruction.",
+        "7 November policy pass (docs/source-policy.md): Degel is none (probable: l’Unità 14 November 1988 and UPI, independent contemporary reports). Hadash, PLP and ADP recommended Peres conditionally (provisional: one retrospective, Local Call 2022). The President’s House consultation file for 7–13 November 1988 remains the deciding record. The totals now match the contemporary 63–55 report; that agreement is a consistency check, not evidence."
       ]
     }
   ],
@@ -752,7 +806,7 @@
             "fromLetters": "ג",
             "countedInFactionSeats": false,
             "role": "other",
-            "certainty": "confirmed",
+            "certainty": "provisional",
             "vote": "abstain",
             "cites": [
               {
@@ -760,7 +814,7 @@
                 "quote": "Avraham Verdiger of the Agudat Yisrael party abstained from voting"
               }
             ],
-            "note": "Individual abstention established; no supporting arrangement inferred."
+            "note": "Individual abstention established; no supporting arrangement inferred. Provisional under the source policy: one contemporary JTA report; the 1990 plenum roll call is the deciding record."
           }
         ],
         "knownMemberSeats": 0

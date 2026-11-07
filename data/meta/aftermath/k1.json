@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "electionId": "k1",
-  "status": "pilot",
+  "status": "reviewed",
   "reviewedAt": "2026-11-07",
   "notes": [
-    "Research draft; not wired into the application. Official session records anchor all government approvals. Reused recommendation and first-coalition evidence retains the earlier research limitations.",
+    "Official session records anchor all government approvals. Reused recommendation and first-coalition evidence retains the earlier research limitations.",
     "The government card describes the first cabinet. Each replacement cabinet has a full-session confidence step and a numbered government.changes entry; available replacement coalition snapshots are attached to that entry.",
     "New PDF quotations preserve the extracted text order (including OCR errors); whitespace is collapsed. Full-session sources identify the sitting; source excerpts are recoverable from the public PDF. Existing coalition OData quotes are labelled project tabulations in the source text, not purported verbatim minister lists."
   ],
@@ -110,6 +110,19 @@
       "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%202%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
       "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
       "kind": "official",
+      "accessed": "2026-11-07"
+    },
+    "galnoor-blander-2018": {
+      "url": "https://api.pageplace.de/preview/DT0400.9781108548151_A34238872/preview-9781108548151_A34238872.pdf",
+      "publisher": "Itzhak Galnoor and Dana Blander, The Handbook of Israel’s Political System (Cambridge University Press, 2018), pp.24–25 and Figure 1.1",
+      "kind": "academic",
+      "accessed": "2026-11-07",
+      "via": "Publisher preview PDF, page 53; DOI 10.1017/9781316160978."
+    },
+    "idi-1949": {
+      "url": "https://en.idi.org.il/israeli-elections-and-parties/elections/1949/",
+      "publisher": "Israel Democracy Institute, The Elections for the Constituent Assembly 1949",
+      "kind": "academic",
       "accessed": "2026-11-07"
     }
   },
@@ -432,15 +445,25 @@
       {
         "letters": "יד",
         "seats": 2,
-        "role": "confidence-vote-only",
-        "certainty": "provisional",
+        "role": "member-without-ministries",
+        "certainty": "probable",
         "cites": [
           {
             "source": "coalition-2",
             "quote": "גלוסקא זכריה (התימנים) בעד; כהן רחל (ויצ״ו) בעד; ג׳רגורה אמין סלים (הרשימה הדמוקראטית של נצרת) בעד. Project tabulation: 73 for, 45 against; Ben-Zvi and Granovsky absent."
+          },
+          {
+            "source": "idi-1949",
+            "quote": "The coalition enjoyed the support of 73 Members of Knesset (MKs) from five parties: Mapai, the United Religious Front, the Progressives, the Sepharadim and Oriental Communities list (Sepharadim Ve’Edot HaMizrah), and the Democratic List of Nazareth, an Arab minority party affiliated with Mapai."
+          },
+          {
+            "source": "galnoor-blander-2018",
+            "quote": "Arab List … Sephardic + Yemenite … Mapai … Progressives … Religious … Coalition (74 mandates) … Gen’l Zion. + WIZO",
+            "locator": "p.25, Figure 1.1",
+            "note": "The text (p.25) adds: “together with the affiliated parties, it incorporated two-thirds of the Knesset members”."
           }
         ],
-        "note": "Investiture support is documented; no signed coalition membership or continuing support arrangement recovered. This category records the established vote, not proof that no arrangement ever existed."
+        "note": "Probable coalition member without a ministry: two independent scholarly accounts count the Mapai-affiliated Nazareth list in the first coalition. No accession instrument was recovered; the government presentation names only the ministry-holding factions. Deciding record: the 1949 coalition agreement or Mapai–Nazareth affiliation papers."
       },
       {
         "letters": "נ",
@@ -451,25 +474,42 @@
           {
             "source": "coalition-2",
             "quote": "גלוסקא זכריה (התימנים) בעד; כהן רחל (ויצ״ו) בעד; ג׳רגורה אמין סלים (הרשימה הדמוקראטית של נצרת) בעד. Project tabulation: 73 for, 45 against; Ben-Zvi and Granovsky absent."
+          },
+          {
+            "source": "galnoor-blander-2018",
+            "quote": "Arab List … Sephardic + Yemenite … Mapai … Progressives … Religious … Coalition (74 mandates) … Gen’l Zion. + WIZO",
+            "locator": "p.25, Figure 1.1",
+            "note": "WIZO is grouped with the General Zionists, outside the coalition arrow."
           }
         ],
-        "note": "Investiture support is documented; no signed coalition membership or continuing support arrangement recovered. This category records the established vote, not proof that no arrangement ever existed."
+        "note": "Investiture support is documented; no signed coalition membership or continuing support arrangement recovered. This category records the established vote, not proof that no arrangement ever existed. Galnoor and Blander place WIZO outside the coalition; whether it supported by arrangement or only voted remains unresolved. Best next source: Gruweis Kovalsky, Israel Affairs (2021), DOI 10.1080/13537121.2021.1940567, and Herut 11 March 1949."
       },
       {
         "letters": "ל",
         "seats": 1,
         "role": "confidence-vote-only",
-        "certainty": "provisional",
+        "certainty": "disputed",
         "cites": [
           {
             "source": "coalition-2",
             "quote": "גלוסקא זכריה (התימנים) בעד; כהן רחל (ויצ״ו) בעד; ג׳רגורה אמין סלים (הרשימה הדמוקראטית של נצרת) בעד. Project tabulation: 73 for, 45 against; Ben-Zvi and Granovsky absent."
+          },
+          {
+            "source": "galnoor-blander-2018",
+            "quote": "Arab List … Sephardic + Yemenite … Mapai … Progressives … Religious … Coalition (74 mandates) … Gen’l Zion. + WIZO",
+            "locator": "p.25, Figure 1.1",
+            "note": "Includes the Yemenites with the Sephardim inside the coalition (74)."
+          },
+          {
+            "source": "idi-1949",
+            "quote": "The coalition enjoyed the support of 73 Members of Knesset (MKs) from five parties",
+            "note": "The five named parties exclude the Yemenite Association."
           }
         ],
-        "note": "Investiture support is documented; no signed coalition membership or continuing support arrangement recovered. This category records the established vote, not proof that no arrangement ever existed."
+        "note": "Disputed: Galnoor and Blander place the Yemenite Association inside the coalition; IDI’s five-party, 73-seat account leaves it out. Its vote for the government is established by the roll call. No agreement or continuing pledge recovered."
       }
     ],
-    "coalitionSeats": 71,
+    "coalitionSeats": 73,
     "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
     "cites": [
       {
@@ -626,7 +666,7 @@
     "reconciliation": {
       "status": "explained",
       "expectedFor": 73,
-      "note": "71 member seats + 4 confidence-vote-only seats (Nazareth 2, WIZO 1, Yemenites 1) − absent Ben-Zvi (Mapai) and Granovsky (Progressives) = 73 for; 45 against. No continuing support agreement is inferred."
+      "note": "73 member seats (Nazareth 2 probable) + 2 confidence-vote-only seats (WIZO 1; Yemenites 1, disputed) − absent Ben-Zvi (Mapai) and Granovsky (Progressives) = 73 for; 45 against. No continuing support agreement is inferred."
     },
     "individuals": [
       {
@@ -664,7 +704,7 @@
         "note": "Absent, as recorded in the retained roll-call tabulation; role describes faction participation."
       }
     ],
-    "knownMemberSeats": 71
+    "knownMemberSeats": 73
   },
   "term": {
     "start": "1949-01-25",

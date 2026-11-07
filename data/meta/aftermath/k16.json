@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "electionId": "k16",
-  "status": "pilot",
+  "status": "reviewed",
   "reviewedAt": "2026-11-07",
   "notes": [
-    "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
+    "Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
     "The term window runs from this election to the next Knesset election. Government tenure may extend past that window. Mid-term institutional succession is recorded in formation.events; it is not a new post-election recommendation round.",
     "Additional dated mid-term acts that do not fit the proposal’s closed formation type vocabulary are kept as formalStep=true entries in government.changes (Dated-compatible). No new formation enum values are introduced."
   ],
@@ -518,9 +518,9 @@
       {
         "letters": "ב",
         "seats": 6,
-        "note": "Formation snapshot 27 February: the NRP ministers took office 3 March, as already documented in this record.",
+        "note": "Formation snapshot 27 February: the NRP ministers took office 3 March, as already documented in this record. Probable under the source policy: the Knesset lexicon is an institutional account; the government-30 investiture record is the deciding primary source.",
         "role": "member-without-ministries",
-        "certainty": "confirmed",
+        "certainty": "probable",
         "cites": [
           {
             "source": "coalition-official",

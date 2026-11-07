@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "electionId": "k11",
-  "status": "pilot",
+  "status": "reviewed",
   "reviewedAt": "2026-11-07",
   "notes": [
-    "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
+    "Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
     "The term window runs from this election to the next Knesset election. Government tenure may extend past that window. Mid-term institutional succession is recorded in formation.events; it is not a new post-election recommendation round.",
     "Additional dated mid-term acts that do not fit the proposal’s closed formation type vocabulary are kept as formalStep=true entries in government.changes (Dated-compatible). No new formation enum values are introduced."
   ],
@@ -876,7 +876,7 @@
         "fromLetters": "אמת",
         "countedInFactionSeats": false,
         "role": "other",
-        "certainty": "confirmed",
+        "certainty": "provisional",
         "vote": "unknown",
         "cites": [
           {
@@ -884,7 +884,7 @@
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
           }
         ],
-        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again."
+        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record."
       },
       {
         "id": "elazar-granot",
@@ -893,7 +893,7 @@
         "fromLetters": "אמת",
         "countedInFactionSeats": false,
         "role": "other",
-        "certainty": "confirmed",
+        "certainty": "provisional",
         "vote": "unknown",
         "cites": [
           {
@@ -901,7 +901,7 @@
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
           }
         ],
-        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again."
+        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record."
       },
       {
         "id": "yair-tsaban",
@@ -910,7 +910,7 @@
         "fromLetters": "אמת",
         "countedInFactionSeats": false,
         "role": "other",
-        "certainty": "confirmed",
+        "certainty": "provisional",
         "vote": "unknown",
         "cites": [
           {
@@ -918,7 +918,7 @@
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
           }
         ],
-        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again."
+        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record."
       },
       {
         "id": "amira-sartani",
@@ -927,7 +927,7 @@
         "fromLetters": "אמת",
         "countedInFactionSeats": false,
         "role": "other",
-        "certainty": "confirmed",
+        "certainty": "provisional",
         "vote": "unknown",
         "cites": [
           {
@@ -935,7 +935,7 @@
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
           }
         ],
-        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again."
+        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record."
       },
       {
         "id": "muhammad-wattad",
@@ -944,7 +944,7 @@
         "fromLetters": "אמת",
         "countedInFactionSeats": false,
         "role": "other",
-        "certainty": "confirmed",
+        "certainty": "provisional",
         "vote": "unknown",
         "cites": [
           {
@@ -952,7 +952,7 @@
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
           }
         ],
-        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again."
+        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record."
       },
       {
         "id": "haika-grossman",
@@ -961,7 +961,7 @@
         "fromLetters": "אמת",
         "countedInFactionSeats": false,
         "role": "other",
-        "certainty": "confirmed",
+        "certainty": "provisional",
         "vote": "unknown",
         "cites": [
           {
@@ -969,7 +969,7 @@
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
           }
         ],
-        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again."
+        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record."
       },
       {
         "id": "yossi-sarid",
@@ -978,7 +978,7 @@
         "fromLetters": "אמת",
         "countedInFactionSeats": false,
         "role": "other",
-        "certainty": "confirmed",
+        "certainty": "provisional",
         "vote": "unknown",
         "cites": [
           {
@@ -986,7 +986,7 @@
             "quote": "The dissenters on the left were Mapam, the Civil Rights Movement (CRM), the Hadash (Communist) Party and the Progressive List for Peace."
           }
         ],
-        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again."
+        "note": "Elected on Alignment but excluded from the 37 coalition participants (Mapam six and Sarid). Party-level opposition is established; individual investiture vote is not transcribed. This person is already excluded from faction seats and is not counted again. Provisional under the source policy: one contemporary JTA report; the 1984 plenum roll call is the deciding record."
       }
     ],
     "knownMemberSeats": 97

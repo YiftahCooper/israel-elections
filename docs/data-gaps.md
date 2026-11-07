@@ -1,290 +1,371 @@
 # Data gaps register
 
-11312 review flags; categories may overlap and are not counts of historical errors. Bulk rows are grouped by field; these counts use grouped records, not occurrences.
+11404 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
 
-## Most important open gaps
+- High importance: 827 (confirmed 377, probable 32, provisional 165, disputed 13, unknown 240).
+- Medium importance: 3569 (confirmed 561, probable 201, provisional 548, disputed 5, unknown 2254).
+- Low importance: 7008 (confirmed 570, provisional 802, unknown 5636).
 
-- k13: 9 unknown party recommendations; recover named consultation records.
-- k10: 6 unknown party recommendations; recover named consultation records.
-- k9: 4 unknown party recommendations; recover named consultation records.
-- k8: 8 unknown party recommendations; recover named consultation records.
-- Earlier elections: k7, k6, k5, k3, k2, k1 also have unknown recommendations.
-- 15 conflict flags need primary-record review, starting with elected identities.
-- Missing or shortened candidate rosters affect what users can inspect; elected ranks come first.
-- Unverified logos and low-confidence colours still need dated originals; placeholders are preferable to guesses.
-- Family and lineage labels remain editorial; they must not imply verified organisational continuity.
+## High importance: open, by election
+
+Could change seats, votes, a government’s composition, recommendation totals or a Simple-level headline. One line per record area with counts by certainty; labels are ballot letters, people or events.
+
+### k1
+
+- [Recommendations](../data/meta/aftermath/k1.json) ×12: unknown 12. א, מ, ב, ח, צ, פ, ס, ק, יד, טו, נ, ל
+- [Later governments](../data/meta/aftermath/k1.json) ×4: unknown 4. יד
+- [Government roles](../data/meta/aftermath/k1.json) ×3: probable 1, provisional 1, disputed 1. ל, יד, נ. Disputed: Galnoor and Blander place the Yemenite Association inside the coalition; IDI’s five-party, 73-seat account leaves it out
+- [Bloc schemes](../data/meta/k1.json) ×1: probable 1. labour-affiliated-arab-lists
+- [Formation events](../data/meta/aftermath/k1.json) ×1: provisional 1. consultations 1949-02
+- [Recommendation rounds](../data/meta/aftermath/k1.json) ×1: provisional 1. r1
+
+### k2
+
+- [Recommendations](../data/meta/aftermath/k2.json) ×15: unknown 15. א, צ, מ, ו, ח, ק, פ, יד, ג, סצ, ב, ד, נ, ל +1
+- [Later governments](../data/meta/aftermath/k2.json) ×8: unknown 8. ב, יד, נ, ע, ל
+- [Government roles](../data/meta/aftermath/k2.json) ×4: unknown 4. ד, יד, נ, ע
+- [Coalition seat total](../data/meta/aftermath/k2.json) ×1: unknown 1
+- [Formation conflicts](../data/meta/aftermath/k2.json) ×1: disputed 1. Disputed: Fourth government confidence vote and declarations
+- [Formation events](../data/meta/aftermath/k2.json) ×1: provisional 1. consultations 1951-08
+- [Investiture reconciliation](../data/meta/aftermath/k2.json) ×1: unknown 1
+- [Outside-support seat total](../data/meta/aftermath/k2.json) ×1: unknown 1
+- [Recommendation rounds](../data/meta/aftermath/k2.json) ×1: provisional 1. r1
+
+### k3
+
+- [Recommendations](../data/meta/aftermath/k3.json) ×12: unknown 12. א, ח, צ, ב, תו, מ, גד, יד, ק, נ, פ, ע
+- [Later governments](../data/meta/aftermath/k3.json) ×6: unknown 6. יד, נ, ע
+- [Government roles](../data/meta/aftermath/k3.json) ×3: unknown 3. יד, נ, ע
+- [Coalition seat total](../data/meta/aftermath/k3.json) ×1: unknown 1
+- [Formation events](../data/meta/aftermath/k3.json) ×1: provisional 1. consultations 1955-08-16
+- [Investiture reconciliation](../data/meta/aftermath/k3.json) ×1: unknown 1
+- [Outside-support seat total](../data/meta/aftermath/k3.json) ×1: unknown 1
+- [Recommendation rounds](../data/meta/aftermath/k3.json) ×1: provisional 1. r1
+
+### k4
+
+- [Recommendations](../data/meta/aftermath/k4.json) ×12: provisional 12. א, ח, ב, מ, צ, תו, גד, רא, פ, יא, ק, ע
+- [Government roles](../data/meta/aftermath/k4.json) ×3: unknown 3. רא, יא, ע
+- [Coalition seat total](../data/meta/aftermath/k4.json) ×1: unknown 1
+- [Investiture reconciliation](../data/meta/aftermath/k4.json) ×1: unknown 1
+- [Outside-support seat total](../data/meta/aftermath/k4.json) ×1: unknown 1
+
+### k5
+
+- [Recommendations](../data/meta/aftermath/k5.json) ×21: provisional 1, unknown 20. א, ח, ל, ב, מ, תו, ק, ג, יא, ד, רא
+- [Later governments](../data/meta/aftermath/k5.json) ×6: unknown 6. ד, יא, רא
+- [Government roles](../data/meta/aftermath/k5.json) ×3: unknown 3. ד, יא, רא
+- [Formation events](../data/meta/aftermath/k5.json) ×2: probable 2. mandate-given 1961-09-06, mandate-given 1961-09-14
+- [Bloc schemes](../data/meta/k5.json) ×1: provisional 1. labour-affiliated-arab-lists
+- [Coalition seat total](../data/meta/aftermath/k5.json) ×1: unknown 1
+- [Investiture reconciliation](../data/meta/aftermath/k5.json) ×1: unknown 1
+- [Outside-support seat total](../data/meta/aftermath/k5.json) ×1: unknown 1
+
+### k6
+
+- [Recommendations](../data/meta/aftermath/k6.json) ×13: provisional 2, unknown 11. חל, כא, את, ב, מ, לע, ג, ו, רא, ד, יא, ש, ק
+- [Government roles](../data/meta/aftermath/k6.json) ×4: provisional 2, unknown 2. מ, לע, רא, יא
+- [Later governments](../data/meta/aftermath/k6.json) ×4: unknown 4
+- [Coalition seat total](../data/meta/aftermath/k6.json) ×1: unknown 1
+- [Formation events](../data/meta/aftermath/k6.json) ×1: provisional 1. consultations 1965-11
+- [Investiture reconciliation](../data/meta/aftermath/k6.json) ×1: unknown 1
+- [Outside-support seat total](../data/meta/aftermath/k6.json) ×1: unknown 1
+- [Recommendation rounds](../data/meta/aftermath/k6.json) ×1: provisional 1. r1
+
+### k7
+
+- [Recommendations](../data/meta/aftermath/k7.json) ×13: provisional 7, unknown 6. אמת, חל, ב, לע, רא, ד, יא, ג, עמ, ו, ש, ק, ט
+- [Investiture reconciliation](../data/meta/aftermath/k7.json) ×1: unknown 1
+- [Later governments](../data/meta/aftermath/k7.json) ×1: unknown 1. coalition-withdrawal 1970-08-06
+
+### k8
+
+- [Recommendations](../data/meta/aftermath/k8.json) ×10: provisional 2, unknown 8. חל טעם, אמת, גד, רצ, ב, ו, לע, עא, רא, קנ
+- [data/raw/kN/agreements.proposed.json agreementsEvidence.transcription](../data/raw/k8/agreements.proposed.json) ×3: unknown 3
+- [Government roles](../data/meta/aftermath/k8.json) ×2: unknown 2. רא, עא
+- [Coalition seat total](../data/meta/aftermath/k8.json) ×1: unknown 1
+- [data/raw/kN/national.reviewed.json gazetteTotals.registered](../data/raw/k8/national.reviewed.json) ×1: unknown 1
+- [data/raw/kN/national.reviewed.json gazetteTotals.votesCast](../data/raw/k8/national.reviewed.json) ×1: unknown 1
+- [Formation conflicts](../data/meta/aftermath/k8.json) ×1: disputed 1. Disputed: Abstentions in the 17th government confidence vote
+- [Formation events](../data/meta/aftermath/k8.json) ×1: provisional 1. consultations 1974-01-16
+- [Investiture reconciliation](../data/meta/aftermath/k8.json) ×1: unknown 1
+- [Later governments](../data/meta/aftermath/k8.json) ×1: provisional 1. לע
+- [Outside-support seat total](../data/meta/aftermath/k8.json) ×1: unknown 1
+- [Recommendation rounds](../data/meta/aftermath/k8.json) ×1: provisional 1. r1
+
+### k9
+
+- [Recommendations](../data/meta/aftermath/k9.json) ×13: provisional 9, unknown 4. מחל, אמת, יש, ב, ו, ג, כנ, ש, פש, ד, לע, רצ, ימ
+- [Formation conflicts](../data/meta/aftermath/k9.json) ×2: provisional 1, disputed 1. Disputed: Date of the ministers' oath
+- [Bloc schemes](../data/meta/k9.json) ×1: unknown 1. labour-affiliated-arab-lists
+- [data/raw/kN/national.reviewed.json gazetteTotals.registered](../data/raw/k9/national.reviewed.json) ×1: unknown 1
+- [data/raw/kN/national.reviewed.json gazetteTotals.votesCast](../data/raw/k9/national.reviewed.json) ×1: unknown 1
+- [Formation events](../data/meta/aftermath/k9.json) ×1: provisional 1. consultations 1977-05-30
+- [Government roles](../data/meta/aftermath/k9.json) ×1: provisional 1. פש
+- [Investiture vote](../data/meta/aftermath/k9.json) ×1: provisional 1
+
+### k10
+
+- [Recommendations](../data/meta/aftermath/k10.json) ×6: unknown 6. אמת, ו, ת, כן, הן, רצ
+- [Later governments](../data/meta/aftermath/k10.json) ×4: unknown 4
+- [Formation conflicts](../data/meta/aftermath/k10.json) ×2: provisional 1, disputed 1. Disputed: Begin tasking date
+- [Formation events](../data/meta/aftermath/k10.json) ×2: probable 1, disputed 1. consultations 1981-07-13, mandate-given 1981-07-15. Disputed: Disputed date: JTA and UPI (contemporary, independent) give 15 July; the State Archives account dates the presidential l
+- [data/raw/kN/national.reviewed.json gazetteTotals.registered](../data/raw/k10/national.reviewed.json) ×1: unknown 1
+- [data/raw/kN/national.reviewed.json gazetteTotals.votesCast](../data/raw/k10/national.reviewed.json) ×1: unknown 1
+
+### k11
+
+- [Recommendations](../data/meta/aftermath/k11.json) ×15: provisional 15. אמת, ו, רצ, ט, הן, פ, יש, מחל, ת, שס, ג, עד, ב, ני +1
+- [Individual MKs](../data/meta/aftermath/k11.json) ×14: provisional 7, unknown 7. amira-sartani, elazar-granot, haika-grossman, muhammad-wattad, victor-shemtov, yair-tsaban, yossi-sarid
+- [Later governments](../data/meta/aftermath/k11.json) ×5: unknown 5. government-succession 1986-10-20
+- [Formation conflicts](../data/meta/aftermath/k11.json) ×2: provisional 1, disputed 1. Disputed: Investiture sitting versus oath after midnight
+- [Formation events](../data/meta/aftermath/k11.json) ×2: provisional 2. confidence-vote 1984-09-13, mandate-given 1984-08-05
+- [data/raw/kN/national.reviewed.json gazetteTotals.registered](../data/raw/k11/national.reviewed.json) ×1: unknown 1
+- [data/raw/kN/national.reviewed.json gazetteTotals.votesCast](../data/raw/k11/national.reviewed.json) ×1: unknown 1
+- [Investiture reconciliation](../data/meta/aftermath/k11.json) ×1: unknown 1
+- [Investiture vote](../data/meta/aftermath/k11.json) ×1: provisional 1
+- [Recommendation rounds](../data/meta/aftermath/k11.json) ×1: probable 1. r1
+
+### k12
+
+- [Later governments](../data/meta/aftermath/k12.json) ×9: provisional 5, unknown 4. avraham-verdiger, eliezer-mizrachi, no-confidence-vote 1990-03-15
+- [Recommendations](../data/meta/aftermath/k12.json) ×4: probable 1, provisional 3. ו, פ, ע, עץ
+- [Formation events](../data/meta/aftermath/k12.json) ×3: provisional 3. confidence-vote 1988-12-22, confidence-vote 1990-06-11, mandate-given 1988-11-14
+- [Government roles](../data/meta/aftermath/k12.json) ×2: unknown 2. ג, ב
+- [Coalition seat total](../data/meta/aftermath/k12.json) ×1: unknown 1
+- [data/raw/kN/national.reviewed.json gazetteTotals.registered](../data/raw/k12/national.reviewed.json) ×1: unknown 1
+- [data/raw/kN/national.reviewed.json gazetteTotals.votesCast](../data/raw/k12/national.reviewed.json) ×1: unknown 1
+- [Investiture reconciliation](../data/meta/aftermath/k12.json) ×1: unknown 1
+- [Investiture vote](../data/meta/aftermath/k12.json) ×1: provisional 1
+- [Outside-support seat total](../data/meta/aftermath/k12.json) ×1: unknown 1
+
+### k13
+
+- [Recommendations](../data/meta/aftermath/k13.json) ×9: provisional 3, unknown 6. ו, מרצ, ע, אמת, ב, ג, ט, מחל, שס
+- [Later governments](../data/meta/aftermath/k13.json) ×6: provisional 2, unknown 4
+- [Formation events](../data/meta/aftermath/k13.json) ×3: probable 1, provisional 2. confidence-vote 1995-11-22, consultations 1992-06-28, mandate-given 1992-07-02
+- [Government roles](../data/meta/aftermath/k13.json) ×2: provisional 2. ו, ע
+- [data/raw/kN/national.reviewed.json agreements.sourceId](../data/raw/k13/national.reviewed.json) ×1: unknown 1
+- [Investiture vote](../data/meta/aftermath/k13.json) ×1: provisional 1
+- [Recommendation rounds](../data/meta/aftermath/k13.json) ×1: provisional 1. r1
+
+### k14
+
+- [data/meta/election-context.json pmContests.candidates](../data/meta/election-context.json) ×4: provisional 4. netanyahu, peres
+- [data/meta/election-context.json pmContests.totals](../data/meta/election-context.json) ×3: provisional 3. pm1996
+- [Coalition seat total](../data/meta/aftermath/k14.json) ×1: unknown 1
+- [data/meta/election-context.json pmContests](../data/meta/election-context.json) ×1: provisional 1. pm1996
+- [Formation events](../data/meta/aftermath/k14.json) ×1: probable 1. confidence-vote 1996-06-18
+- [Government roles](../data/meta/aftermath/k14.json) ×1: unknown 1. ג
+- [Investiture reconciliation](../data/meta/aftermath/k14.json) ×1: unknown 1
+- [Investiture vote](../data/meta/aftermath/k14.json) ×1: provisional 1
+- [Outside-support seat total](../data/meta/aftermath/k14.json) ×1: unknown 1
+
+### k15
+
+- [data/meta/election-context.json pmContests.candidates](../data/meta/election-context.json) ×6: provisional 6. barak, begin, bishara, mordechai, netanyahu, sharon
+- [data/meta/election-context.json pmContests.totals](../data/meta/election-context.json) ×6: probable 2, provisional 4. pm1999, pm2001
+- [Later governments](../data/meta/aftermath/k15.json) ×6: provisional 2, unknown 4
+- [data/meta/election-context.json pmContests](../data/meta/election-context.json) ×2: provisional 2. pm1999, pm2001
+- [Formation conflicts](../data/meta/aftermath/k15.json) ×2: provisional 1, disputed 1. Disputed: Coalition seats at formation versus later snapshot
+- [aftermath government.confidenceVote](../data/meta/aftermath/k15.json) ×1: unknown 1
+- [data/raw/kN/national.reviewed.json discrepancies](../data/raw/k15/national.reviewed.json) ×1: provisional 1
+- [Formation events](../data/meta/aftermath/k15.json) ×1: probable 1. confidence-vote 1999-07-06
+- [Government roles](../data/meta/aftermath/k15.json) ×1: provisional 1. ג
+- [Investiture reconciliation](../data/meta/aftermath/k15.json) ×1: unknown 1
+- [Investiture vote](../data/meta/aftermath/k15.json) ×1: provisional 1
+
+### k16
+
+- [Formation conflicts](../data/meta/aftermath/k16.json) ×2: disputed 1, unknown 1. Disputed: Tasking date
+- [Government roles](../data/meta/aftermath/k16.json) ×2: probable 1, unknown 1. ב, כן
+- [Coalition seat total](../data/meta/aftermath/k16.json) ×1: unknown 1
+- [data/raw/kN/national.reviewed.json discrepancies.status](../data/raw/k16/national.reviewed.json) ×1: unknown 1
+- [data/raw/kN/national.reviewed.json gazetteTotals.registered](../data/raw/k16/national.reviewed.json) ×1: unknown 1
+- [data/raw/kN/national.reviewed.json gazetteTotals.votesCast](../data/raw/k16/national.reviewed.json) ×1: unknown 1
+- [Formation events](../data/meta/aftermath/k16.json) ×1: provisional 1. mandate-given 2003-02-09
+- [Investiture reconciliation](../data/meta/aftermath/k16.json) ×1: unknown 1
+- [Investiture vote](../data/meta/aftermath/k16.json) ×1: provisional 1
+- [Outside-support seat total](../data/meta/aftermath/k16.json) ×1: unknown 1
+
+### k17
+
+- [data/raw/kN/national.reviewed.json discrepancies.status](../data/raw/k17/national.reviewed.json) ×1: unknown 1
+- [data/raw/kN/national.reviewed.json gazetteTotals.registered](../data/raw/k17/national.reviewed.json) ×1: unknown 1
+- [data/raw/kN/national.reviewed.json gazetteTotals.votesCast](../data/raw/k17/national.reviewed.json) ×1: unknown 1
+- [Formation events](../data/meta/aftermath/k17.json) ×1: probable 1. confidence-vote 2006-05-04
+- [Investiture reconciliation](../data/meta/aftermath/k17.json) ×1: unknown 1
+- [Investiture vote](../data/meta/aftermath/k17.json) ×1: provisional 1
+- [Later governments](../data/meta/aftermath/k17.json) ×1: probable 1. no-replacement-government 2008-10-26
+
+### k18
+
+- [Formation conflicts](../data/meta/aftermath/k18.json) ×2: probable 1, disputed 1. Disputed: Coalition membership in the IPU summary
+- [Formation events](../data/meta/aftermath/k18.json) ×2: provisional 2. confidence-vote 2009-03-31, mandate-given 2009-02-20
+- [Government](../data/meta/aftermath/k18.json) ×1: probable 1
+- [Investiture vote](../data/meta/aftermath/k18.json) ×1: provisional 1
+- [Recommendation rounds](../data/meta/aftermath/k18.json) ×1: probable 1. r1
+
+### k19
+
+- [Formation events](../data/meta/aftermath/k19.json) ×2: probable 1, provisional 1. confidence-vote 2013-03-18, mandate-given 2013-02-02
+- [Government](../data/meta/aftermath/k19.json) ×1: probable 1
+- [Investiture vote](../data/meta/aftermath/k19.json) ×1: provisional 1
+- [Recommendations](../data/meta/aftermath/k19.json) ×1: provisional 1. ד
+
+### k20
+
+- [Formation conflicts](../data/meta/aftermath/k20.json) ×2: probable 1, disputed 1. Disputed: Investiture vote tally
+- [Formation events](../data/meta/aftermath/k20.json) ×2: probable 1, provisional 1. confidence-vote 2015-05-14, mandate-given 2015-03-25
+- [Coalition seat total](../data/meta/aftermath/k20.json) ×1: unknown 1
+- [Government](../data/meta/aftermath/k20.json) ×1: probable 1
+- [Government roles](../data/meta/aftermath/k20.json) ×1: unknown 1. ג
+- [Investiture reconciliation](../data/meta/aftermath/k20.json) ×1: unknown 1
+- [Investiture vote](../data/meta/aftermath/k20.json) ×1: probable 1
+- [Outside-support seat total](../data/meta/aftermath/k20.json) ×1: unknown 1
+- [Recommendation rounds](../data/meta/aftermath/k20.json) ×1: probable 1. r1
+
+### k21
+
+- [Formation events](../data/meta/aftermath/k21.json) ×1: provisional 1. mandate-given 2019-04-17
+- [Recommendation rounds](../data/meta/aftermath/k21.json) ×1: probable 1. r1
+
+### k22
+
+- [Formation conflicts](../data/meta/aftermath/k22.json) ×2: provisional 1, disputed 1. Disputed: Formal dissolution mechanism after the 21-day period
+- [Formation events](../data/meta/aftermath/k22.json) ×2: provisional 2. mandate-given 2019-09-25, mandate-given 2019-10-23
+- [Recommendation rounds](../data/meta/aftermath/k22.json) ×1: probable 1. r1
+
+### k23
+
+- [Formation events](../data/meta/aftermath/k23.json) ×2: probable 1, provisional 1. mandate-given 2020-03-16, mandate-given 2020-05-07
+- [Bloc schemes](../data/meta/k23.json) ×1: provisional 1. pm-recommendations
+- [Recommendation rounds](../data/meta/aftermath/k23.json) ×1: provisional 1. r1
+
+### k24
+
+- [Formation events](../data/meta/aftermath/k24.json) ×3: probable 2, provisional 1. consultations 2021-04-05, mandate-given 2021-04-06, mandate-given 2021-05-05
+- [Bloc schemes](../data/meta/k24.json) ×2: provisional 1, unknown 1. knesset-blocs-2021, pm-recommendations
+- [Formation conflicts](../data/meta/aftermath/k24.json) ×2: provisional 1, disputed 1. Disputed: Time Lapid informed the President on 2 June 2021
+- [Individual MKs](../data/meta/aftermath/k24.json) ×2: provisional 2. amichai-chikli, said-al-harumi
+- [Government](../data/meta/aftermath/k24.json) ×1: probable 1
+- [Investiture vote](../data/meta/aftermath/k24.json) ×1: provisional 1
+- [Recommendation rounds](../data/meta/aftermath/k24.json) ×1: probable 1. r2
+
+### k25
+
+- [Formation events](../data/meta/aftermath/k25.json) ×3: provisional 3. confidence-vote 2022-12-29, consultations 2022-11-09, mandate-given 2022-11-13
+- [Bloc schemes](../data/meta/k25.json) ×2: provisional 2. pm-recommendations, pre-election-blocs
+- [Investiture reconciliation](../data/meta/aftermath/k25.json) ×1: unknown 1
+- [Investiture vote](../data/meta/aftermath/k25.json) ×1: provisional 1
+- [Recommendation rounds](../data/meta/aftermath/k25.json) ×1: provisional 1. r1
+
+### k26
+
+- [Recommendations](../data/meta/aftermath/k26.json) ×3: provisional 3. דרך, רק, ודם
+- [Bloc schemes](../data/meta/k26.json) ×2: provisional 2. outgoing-government, pre-election-blocs
+
+### cross-election
+
+- [data/meta/joint-facts.json openingDate](../data/meta/joint-facts.json) ×1: unknown 1
+- [data/meta/joint-facts.json record](../data/meta/joint-facts.json) ×1: provisional 1
+- [data/meta/joint-facts.json unresolved.personId](../data/meta/joint-facts.json) ×1: unknown 1
+
+## Medium importance: open, by election
+
+Shown in Standard/Expert views or the After-the-election tab. Grouped by record area; counts by certainty.
+
+- **k1**: Family classifications 52 (probable 2, provisional 11, unknown 39); Published lists 21 (unknown 21); Party appearances 11 (unknown 11); List metadata 6 (probable 1, unknown 5); Government 2 (provisional 1, unknown 1); Term events 2 (probable 2); data/meta/election-context.json events 1 (provisional 1); data/raw/kN/national.reviewed.json rosters 1 (provisional 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1).
+- **k2**: Family classifications 45 (probable 4, provisional 15, unknown 26); Published lists 15 (unknown 15); Party appearances 4 (unknown 4); Government 2 (unknown 2); Term events 2 (probable 2); data/raw/kN/national.reviewed.json rosters 1 (provisional 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1).
+- **k3**: Family classifications 37 (probable 1, provisional 13, unknown 23); Published lists 19 (unknown 19); Party appearances 7 (unknown 7); List metadata 4 (unknown 4); Government 2 (unknown 2); Term events 2 (probable 2); data/meta/election-context.json events 1 (provisional 1); data/raw/kN/national.reviewed.json rosters 1 (provisional 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1).
+- **k4**: Family classifications 41 (probable 1, provisional 14, unknown 26); Published lists 24 (unknown 24); Party appearances 11 (unknown 11); Term events 2 (probable 2); data/raw/kN/national.reviewed.json rosters 1 (provisional 1); Government 1 (unknown 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1).
+- **k5**: Family classifications 41 (probable 4, provisional 13, unknown 24); Published lists 14 (unknown 14); Party appearances 3 (unknown 3); Term events 3 (probable 3); Government 2 (unknown 2); Recommendation rounds 2 (unknown 2); data/meta/election-context.json events 1 (provisional 1); data/raw/kN/national.reviewed.json rosters 1 (provisional 1); Formation 1 (probable 1); Reactions 1 (unknown 1).
+- **k6**: Family classifications 42 (probable 4, provisional 12, unknown 26); Published lists 17 (unknown 17); Party appearances 5 (unknown 5); Government 2 (unknown 2); Term events 2 (probable 2); data/meta/election-context.json events 1 (probable 1); data/raw/kN/national.reviewed.json rosters 1 (provisional 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1).
+- **k7**: Family classifications 40 (probable 4, provisional 11, unknown 25); Published lists 16 (unknown 16); Party appearances 5 (unknown 5); List metadata 3 (unknown 3); Government 2 (unknown 2); Term events 2 (probable 2); data/raw/kN/national.reviewed.json rosters 1 (provisional 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1).
+- **k8**: Family classifications 38 (probable 1, provisional 12, unknown 25); Published lists 20 (unknown 20); Party appearances 10 (unknown 10); List metadata 6 (unknown 6); Term events 5 (probable 5); data/meta/election-context.json events 1 (provisional 1); Government 1 (unknown 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1).
+- **k9**: Family classifications 43 (probable 4, provisional 14, unknown 25); Published lists 21 (unknown 21); Party appearances 11 (unknown 11); List metadata 9 (unknown 9); Term events 7 (probable 7); data/meta/election-context.json events 2 (provisional 2); data/raw/kN/search.reviewed.json capResolution 1 (provisional 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1).
+- **k10**: Family classifications 46 (probable 4, provisional 14, unknown 28); Published lists 31 (unknown 31); Party appearances 19 (unknown 19); List metadata 6 (unknown 6); Term events 5 (probable 5); Government 2 (unknown 2); Issue polling 2 (unknown 2); Formation 1 (disputed 1); Reactions 1 (unknown 1).
+- **k11**: Family classifications 51 (probable 4, provisional 16, unknown 31); Published lists 25 (unknown 25); Party appearances 12 (unknown 12); List metadata 11 (probable 2, unknown 9); Government 8 (provisional 7, unknown 1); data/meta/election-context.json events 3 (probable 2, provisional 1); Term events 3 (probable 3); Issue polling 2 (unknown 2); data/meta/kN.json record 1 (probable 1); Formation 1 (provisional 1); Reactions 1 (unknown 1).
+- **k12**: Family classifications 59 (probable 4, provisional 20, unknown 35); Published lists 27 (unknown 27); Party appearances 10 (unknown 10); Term events 5 (probable 5); List metadata 4 (unknown 4); data/meta/election-context.json events 3 (probable 1, provisional 2); Formation 2 (provisional 2); Government 2 (unknown 2); Issue polling 2 (unknown 2); data/raw/kN/candidates.reviewed.json corrections 1 (unknown 1); Reactions 1 (unknown 1).
+- **k13**: Family classifications 55 (probable 2, provisional 15, unknown 38); Published lists 25 (unknown 25); Party appearances 12 (unknown 12); Term events 6 (probable 5, unknown 1); List metadata 3 (unknown 3); data/meta/election-context.json events 2 (probable 1, provisional 1); Issue polling 2 (unknown 2); data/raw/kN/candidates.reviewed.json note 1 (unknown 1); Government 1 (unknown 1); Reactions 1 (unknown 1); Recommendation rounds 1 (unknown 1).
+- **k14**: Family classifications 57 (probable 4, provisional 16, unknown 37); Published lists 21 (unknown 21); data/raw/pm/reviewed-transcription.json contests 8 (provisional 8); Party appearances 8 (unknown 8); List metadata 7 (unknown 7); data/meta/election-context.json events 6 (provisional 6); Term events 3 (probable 3); Government 1 (unknown 1); Issue polling 1 (probable 1); Reactions 1 (unknown 1).
+- **k15**: Family classifications 65 (probable 2, provisional 23, unknown 40); Published lists 31 (unknown 31); Party appearances 15 (unknown 15); data/raw/pm/reviewed-transcription.json contests 14 (probable 5, provisional 9); List metadata 9 (unknown 9); Term events 6 (probable 6); data/meta/election-context.json events 2 (provisional 2); Issue polling 2 (unknown 2); data/raw/kN/candidates.reviewed.json note 1 (unknown 1); Formation 1 (probable 1); Government 1 (unknown 1); Reactions 1 (unknown 1).
+- **k16**: Family classifications 58 (probable 4, provisional 21, unknown 33); data/raw/kN/candidates.reviewed.json lists 27 (unknown 27); Published lists 14 (unknown 14); List metadata 13 (probable 2, unknown 11); Party appearances 13 (unknown 13); data/meta/election-context.json events 9 (probable 2, provisional 5, unknown 2); Term events 4 (probable 4); data/raw/kN/localities.reviewed.json rows 2 (unknown 2); Issue polling 2 (unknown 2); data/meta/kN-withdrawn.json record 1 (provisional 1); Government 1 (unknown 1); Reactions 1 (unknown 1).
+- **k17**: Family classifications 45 (probable 2, provisional 16, unknown 27); data/raw/kN/candidates.reviewed.json lists 33 (provisional 8, unknown 25); Party appearances 20 (unknown 20); Published lists 13 (unknown 13); List metadata 4 (unknown 4); Term events 4 (probable 4); data/meta/election-context.json events 3 (provisional 2, unknown 1); data/raw/kN/localities.reviewed.json rows 3 (unknown 3); Issue polling 2 (unknown 2); data/raw/kN/reconciliation.reviewed.json rawEnvelopeRegistered 1 (unknown 1); data/raw/kN/reconciliation.reviewed.json totals 1 (unknown 1); Government 1 (unknown 1); Reactions 1 (unknown 1).
+- **k18**: Family classifications 55 (probable 2, provisional 21, unknown 32); Party appearances 19 (unknown 19); List metadata 15 (unknown 15); data/meta/election-context.json events 4 (probable 2, provisional 1, unknown 1); Term events 2 (probable 1, unknown 1); aftermath results 1 (probable 1); Formation 1 (provisional 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1).
+- **k19**: Family classifications 61 (probable 6, provisional 18, unknown 37); Party appearances 17 (unknown 17); data/meta/election-context.json events 9 (probable 1, provisional 5, unknown 3); List metadata 6 (probable 2, unknown 4); Formation 2 (provisional 2); aftermath results 1 (probable 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1); Term events 1 (probable 1).
+- **k20**: Family classifications 66 (probable 5, provisional 18, unknown 43); List metadata 15 (unknown 15); Party appearances 13 (unknown 13); data/meta/election-context.json events 5 (probable 2, provisional 3); Formation 2 (provisional 2); data/raw/kN/localities.datagov.json records 1 (unknown 1); Government 1 (unknown 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1).
+- **k21**: Family classifications 78 (probable 2, provisional 17, unknown 59); Party appearances 27 (unknown 27); data/meta/election-context.json events 6 (probable 4, provisional 2); Formation 2 (provisional 2); aftermath results 1 (provisional 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1); Term events 1 (probable 1).
+- **k22**: Family classifications 52 (probable 2, provisional 15, unknown 35); Party appearances 20 (unknown 20); Formation 4 (provisional 4); data/meta/election-context.json events 3 (probable 2, provisional 1); data/meta/kN-corrections.json withdrawn 3 (provisional 3); Term events 3 (probable 3); Issue polling 1 (unknown 1); List metadata 1 (unknown 1); Reactions 1 (unknown 1).
+- **k23**: Family classifications 41 (probable 2, provisional 14, unknown 25); Party appearances 19 (unknown 19); data/meta/election-context.json events 5 (probable 2, provisional 3); Formation 5 (probable 1, provisional 4); Term events 3 (probable 3); Issue polling 1 (unknown 1); Reactions 1 (unknown 1).
+- **k24**: Family classifications 56 (probable 4, provisional 15, unknown 37); Party appearances 23 (unknown 23); data/meta/election-context.json events 4 (provisional 4); Formation 2 (probable 2); aftermath results 1 (provisional 1); Issue polling 1 (probable 1); Reactions 1 (unknown 1).
+- **k25**: data/raw/polls/kN/polls.json polls 159 (unknown 159); Family classifications 47 (probable 2, provisional 17, unknown 28); Party appearances 26 (unknown 26); List metadata 11 (probable 2, provisional 3, unknown 6); Term events 3 (probable 1, unknown 2); data/meta/election-context.json events 2 (probable 1, provisional 1); Formation 2 (provisional 2); aftermath results 1 (provisional 1); data/raw/polls/kN/cec-13-final-supplement.json record 1 (unknown 1); data/raw/polls/kN/cec-13-final-supplement.json undecidedOnlyPct 1 (unknown 1); Government 1 (unknown 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1).
+- **k26**: Family classifications 93 (probable 1, provisional 20, unknown 72); Party appearances 21 (unknown 21); data/meta/election-context.json events 8 (provisional 8); List metadata 3 (provisional 3); data/meta/README.md 1 (unknown 1); Issue polling 1 (unknown 1); Reactions 1 (unknown 1).
+- **[object Object]**: data/raw/polls/kN/schema.draft.json properties 1 (unknown 1).
+- **cross-election**: data/meta/party-lineage.json pending 88 (provisional 1, unknown 87); data/raw/demographics/cbs-2018.json result 15 (unknown 15); data/raw/demographics/cbs-2019.json result 15 (unknown 15); data/raw/demographics/cbs-2020.json result 15 (unknown 15); data/raw/demographics/cbs-2021.json result 15 (unknown 15); data/raw/demographics/cbs-2022.json result 15 (unknown 15); data/raw/demographics/cbs-2023.json result 15 (unknown 15); data/raw/demographics/cbs-2017.json result 14 (unknown 14); data/meta/parties.json conflicts 7 (provisional 1, disputed 4, unknown 2); data/meta/party-lineage.json edges 7 (probable 7); families 7 (provisional 3, unknown 4); data/meta/government-support-evidence.json government36Deputies 4 (unknown 4); data/meta/parties.json parties 3 (provisional 3); data/meta/README.md 2 (unknown 2); data/meta/candidate-notes.json notes 1 (unknown 1); data/meta/election-context.json ballotIndependence 1 (provisional 1); data/meta/joint-facts-name-aliases.json aliases 1 (provisional 1); data/raw/demographics/cbs-2003-normalized.json form 1 (unknown 1); data/raw/demographics/cbs-2003-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2006-normalized.json form 1 (unknown 1); data/raw/demographics/cbs-2006-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2009-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2013-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2015-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2017-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2018-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2019-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2020-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2021-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2022-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2023-normalized.json religion 1 (unknown 1); data/raw/demographics/cbs-2024-normalized.json religion 1 (unknown 1).
+
+## Low importance: counts only
+
+Display metadata, candidate trivia, raw-dump fields and provenance housekeeping.
+
+data/meta/bios/kN.json candidates 4050; Published lists 798 (567 open); data/meta/parties.json parties 567 (459 open); data/meta/kN.json colours 442; docs (prose) 299; List metadata 232 (1 open); data/raw/research/ckan-election-search.json result 164; data/raw/research/ckan-votes-knesset.json result 102; data/raw/votes-knesset.catalogue.json result 102; data/raw/kN/knesset-odata-members.json positions 51; data/raw/research/odata-elections-catalog.json result 41; data/meta/logos/kN.json logos 29; data/raw/kN/knesset-odata-members.json record 26; data/raw/polls/kN/coverage.json candidates 18; data/raw/SOURCES.json sha256 17; data/raw/SOURCES.json file 16; data/raw/kN/knesset-odata-factions.json factionMemberships 12; data/raw/kN/ratz-odata.json value 9; data/raw/bios/party-sources.reviewed.json sources 5; data/raw/kN/government-15-positions.json value 4; data/meta/logos/README.md 3; data/raw/bios/identity-decisions.reviewed.json decisions 2; data/raw/kN/knesset-odata-factions.json record 2; data/raw/kN/knesset-odata-members.json factionMemberships 2; data/raw/SOURCES.json url 2; data/raw/bios/knesset-odata-faction-positions.json FinishDate 1; data/raw/bios/knesset-odata-mk-positions.json FactionID 1; data/raw/bios/knesset-odata-mk-positions.json FactionName 1; data/raw/bios/knesset-odata-mk-positions.json FinishDate 1; data/raw/bios/knesset-odata-mk-positions.json KnessetNum 1; data/raw/bios/party-sources.reviewed.json links 1; data/raw/bios/party-sources.reviewed.json spotChecks 1; data/raw/bios/wikidata-israeli-parties.json dissolved 1; data/raw/bios/wikidata-israeli-parties.json inception 1; data/raw/bios/wikidata-israeli-parties.json labelHe 1; data/raw/bios/wikidata-israeli-party-members.json birth 1; data/raw/bios/wikidata-israeli-party-members.json knessetSiteId 1; data/raw/research/MANIFEST.json note 1.
+
+## Certainty of recorded claims
+
+Every claim in these families, not only gaps. Derived from each claim’s own sources; explicit values never exceed that ceiling (validated by `npm run data:build`).
+
+| Claims | confirmed | probable | provisional | disputed | unknown | Total |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Recommendations | 74 | 56 | 76 | 0 | 100 | 306 |
+| Government roles | 173 | 2 | 19 | 1 | 41 | 236 |
+| Formation events | 58 | 17 | 46 | 1 | 0 | 122 |
+| Term events | 29 | 54 | 0 | 0 | 0 | 83 |
+| Family classifications | 0 | 55 | 409 | 0 | 0 | 464 |
+| Candidate identity links | 3217 | 27 | 532 | 0 | 0 | 3776 |
 
 ## Counts
 
-By kind: unknown: 6952; missing-field: 283; conflict: 15; single-source: 2376; low-confidence: 101; release-hold: 0; inferred: 1164; pending: 421.
+By kind: unknown: 6949; missing-field: 283; conflict: 17; single-source: 2378; low-confidence: 101; release-hold: 0; inferred: 1164; pending: 422; unconfirmed: 90.
 
-By status: inferred-not-verified: 1030; needs-current-status-review: 312; open: 9970.
+By status: inferred-not-verified: 1030; needs-current-status-review: 312; open: 10062.
 
-## Per election
-
-| Election | Unknown | Missing field | Conflict | Single source | Low confidence | Release hold | Inferred | Pending | Total |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| k1 | 192 | 12 | 0 | 82 | 4 | 0 | 22 | 18 | 330 |
-| k2 | 183 | 15 | 1 | 49 | 3 | 0 | 19 | 8 | 278 |
-| k3 | 184 | 12 | 0 | 59 | 4 | 0 | 19 | 8 | 286 |
-| k4 | 176 | 12 | 0 | 67 | 4 | 0 | 20 | 7 | 286 |
-| k5 | 186 | 11 | 0 | 51 | 2 | 0 | 19 | 9 | 278 |
-| k6 | 177 | 13 | 0 | 50 | 5 | 0 | 18 | 11 | 274 |
-| k7 | 166 | 13 | 0 | 55 | 4 | 0 | 19 | 9 | 266 |
-| k8 | 186 | 9 | 1 | 80 | 7 | 0 | 20 | 14 | 317 |
-| k9 | 184 | 12 | 1 | 87 | 9 | 0 | 35 | 11 | 339 |
-| k10 | 203 | 13 | 1 | 81 | 3 | 0 | 18 | 13 | 332 |
-| k11 | 211 | 18 | 1 | 111 | 6 | 0 | 40 | 15 | 402 |
-| k12 | 194 | 18 | 0 | 85 | 3 | 0 | 31 | 15 | 346 |
-| k13 | 196 | 12 | 0 | 40 | 2 | 0 | 25 | 14 | 289 |
-| k14 | 177 | 16 | 0 | 63 | 2 | 0 | 22 | 14 | 294 |
-| k15 | 202 | 20 | 1 | 85 | 4 | 0 | 31 | 15 | 358 |
-| k16 | 215 | 25 | 1 | 110 | 2 | 0 | 40 | 11 | 404 |
-| k17 | 227 | 17 | 0 | 104 | 2 | 0 | 31 | 11 | 392 |
-| k18 | 302 | 0 | 1 | 66 | 5 | 0 | 87 | 10 | 471 |
-| k19 | 296 | 0 | 0 | 62 | 4 | 0 | 98 | 16 | 476 |
-| k20 | 289 | 0 | 1 | 69 | 3 | 0 | 69 | 14 | 445 |
-| k21 | 292 | 0 | 0 | 89 | 3 | 0 | 100 | 24 | 508 |
-| k22 | 273 | 0 | 1 | 103 | 3 | 0 | 88 | 12 | 480 |
-| k23 | 222 | 0 | 0 | 111 | 3 | 0 | 54 | 1 | 391 |
-| k24 | 251 | 0 | 1 | 113 | 4 | 0 | 51 | 12 | 432 |
-| k25 | 456 | 0 | 0 | 131 | 4 | 0 | 84 | 10 | 685 |
-| k26 | 271 | 0 | 0 | 138 | 6 | 0 | 100 | 44 | 559 |
-| cross-election | 1041 | 35 | 4 | 234 | 0 | 0 | 4 | 75 | 1393 |
-| [object Object] | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 1 |
-
-## Individually listed priorities
-
-Every conflict, low-confidence item and unknown recommendation is listed below. The record link contains its provenance and context; full field locations, source locators, next-source suggestions and bulk rows are available in the optional full export.
-
-| Election / kind | Ballot / party / item | Uncertainty | Status / record |
-| --- | --- | --- | --- |
-| k1 / unknown | א / מפלגת פועלי ארץ-ישראל ובלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k1.json) |
-| k1 / unknown | מ / מפלגת הפועלים המאוחדת / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k1.json) |
-| k1 / unknown | ב / החזית הדתית המאוחדת / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k1.json) |
-| k1 / unknown | ח / תנועת החרות — מיסודו של הארגון הצבאי הלאומי / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k1.json) |
-| k1 / unknown | צ / הסתדרות הציונים הכלליים — מפלגת המרכז / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k1.json) |
-| k1 / unknown | פ / המפלגה הפרוגרסיבית / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k1.json) |
-| k1 / unknown | ס / רשימת האיחוד הארצי של הספרדים ובני עדות המזרח / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k1.json) |
-| k1 / unknown | ק / רשימת הקומוניסטים ובלתי מפלגתיים למען עצמאות דמוקרטיה ושלום / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k1.json) |
-| k1 / unknown | יד / הרשימה הדמוקרטית של נצרת ומחוזה / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k1.json) |
-| k1 / unknown | טו / רשימת לוחמים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k1.json) |
-| k1 / unknown | נ / הסתדרות נשים ציוניות "ויצו" והתאחדות נשים לשווי זכויות בישראל / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k1.json) |
-| k1 / unknown | ל / התאחדות התימנים בישראל / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k1.json) |
-| k1 / low-confidence | יד / הרשימה הדמוקרטית של נצרת ומחוזה / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k1.json) |
-| k1 / low-confidence | טו / רשימת לוחמים / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k1.json) |
-| k1 / low-confidence | נ / הסתדרות נשים ציוניות "ויצו" והתאחדות נשים לשווי זכויות בישראל / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k1.json) |
-| k1 / low-confidence | $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k1.json) |
-| k2 / conflict | $.formation.conflicts[*] | {"about":"Fourth government confidence vote and declarations","values":[{"value":"23 December 1952: confidence vote, sitting 158","source":"plenum-gov4"},{"value":"24 December 1952: ministerial declarations, sitting 159","source":"oath-gov4"}],"resolution":"Both dates describe separate procedural steps; the change entry uses the conventional government start (declarations), while formation records the confidence vote."} | open / [record](../data/meta/aftermath/k2.json) |
-| k2 / unknown | א / מפלגת פועלי ארץ ישראל ובלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k2.json) |
-| k2 / unknown | צ / הסתדרות הציונים הכלליים — מפלגת המרכז / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k2.json) |
-| k2 / unknown | מ / מפלגת הפועלים המאוחדת (מפ"ם) / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k2.json) |
-| k2 / unknown | ו / רשימת תורה ועבודה הפועל המזרחי ודתיים בלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k2.json) |
-| k2 / unknown | ח / תנועת החרות / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k2.json) |
-| k2 / unknown | ק / רשימת המפלגה הקומוניסטית הישראלית ובלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k2.json) |
-| k2 / unknown | פ / המפלגה הפרוגרסיבית / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k2.json) |
-| k2 / unknown | יד / הרשימה הדמוקרטית לערביי ישראל / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k2.json) |
-| k2 / unknown | ג / רשימת עם התורה אגודת ישראל / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k2.json) |
-| k2 / unknown | סצ / רשימת ספרדים ועדות המזרח ותיקים ועולים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k2.json) |
-| k2 / unknown | ב / המזרחי ודתיים בלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k2.json) |
-| k2 / unknown | ד / פועלי אגודת ישראל / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k2.json) |
-| k2 / unknown | נ / רשימת הקידמה והעבודה / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k2.json) |
-| k2 / unknown | ל / התאחדות התימנים בישראל / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k2.json) |
-| k2 / unknown | ע / רשימת החקלאות והפתוח / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k2.json) |
-| k2 / low-confidence | יד / הרשימה הדמוקרטית לערביי ישראל / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k2.json) |
-| k2 / low-confidence | נ / רשימת הקידמה והעבודה / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k2.json) |
-| k2 / low-confidence | ע / רשימת החקלאות והפתוח / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k2.json) |
-| k3 / unknown | א / מפלגת פועלי ארץ-ישראל ובלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k3.json) |
-| k3 / unknown | ח / תנועת החרות / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k3.json) |
-| k3 / unknown | צ / הסתדרות הציונים הכלליים, מפלגת המרכז / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k3.json) |
-| k3 / unknown | ב / חזית דתית לאומית (הפועל המזרחי, המזרחי ודתיים בלתי מפלגתיים) / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k3.json) |
-| k3 / unknown | תו / מפלגת אחדות העבודה — פועלי ציון ובלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k3.json) |
-| k3 / unknown | מ / מפלגת הפועלים המאוחדת ובלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k3.json) |
-| k3 / unknown | גד / חזית דתית תורתית (אגודת ישראל, פועלי אגודת ישראל ודתיים בלתי מפלגתיים) / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k3.json) |
-| k3 / unknown | יד / הרשימה הדימוקרטית לערביי ארץ-ישראל / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k3.json) |
-| k3 / unknown | ק / המפלגה הקומוניסטית הישראלית ובלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k3.json) |
-| k3 / unknown | נ / הקידמה והעבודה / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k3.json) |
-| k3 / unknown | פ / המפלגה הפרוגרסיבית / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k3.json) |
-| k3 / unknown | ע / חקלאות ופיתוח / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k3.json) |
-| k3 / low-confidence | גד / חזית דתית תורתית (אגודת ישראל, פועלי אגודת ישראל ודתיים בלתי מפלגתיים) / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k3.json) |
-| k3 / low-confidence | יד / הרשימה הדימוקרטית לערביי ארץ-ישראל / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k3.json) |
-| k3 / low-confidence | נ / הקידמה והעבודה / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k3.json) |
-| k3 / low-confidence | ע / חקלאות ופיתוח / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k3.json) |
-| k4 / low-confidence | גד / חזית דתית תורתית אגודת ישראל, פועלי אגודת ישראל ודתיים בלתי מפלגתיים / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k4.json) |
-| k4 / low-confidence | רא / קידמה ופתוח / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k4.json) |
-| k4 / low-confidence | יא / השיתוף והאחוה / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k4.json) |
-| k4 / low-confidence | ע / חקלאות ופתוח / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k4.json) |
-| k5 / unknown | ח / תנועת החרות / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k5.json) |
-| k5 / unknown | ל / המפלגה הליברלית / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k5.json) |
-| k5 / unknown | ב / חזית דתית לאומית, המזרחי והפועל המזרחי ובלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k5.json) |
-| k5 / unknown | מ / מפלגת הפועלים המאוחדת ובלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k5.json) |
-| k5 / unknown | תו / אחדות העבודה פועלי-ציון ובלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k5.json) |
-| k5 / unknown | ק / המפלגה הקומוניסטית הישראלית ובלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k5.json) |
-| k5 / unknown | ג / יהדות התורה — אגודת ישראל ודתיים בלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k5.json) |
-| k5 / unknown | יא / שיתוף ואחווה / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k5.json) |
-| k5 / unknown | ד / המחנה התורתי פועלי אגודת ישראל ודתיים בלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k5.json) |
-| k5 / unknown | רא / קידמה ופיתוח / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k5.json) |
-| k5 / unknown | ח / תנועת החרות / r2 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k5.json) |
-| k5 / unknown | ל / המפלגה הליברלית / r2 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k5.json) |
-| k5 / unknown | ב / חזית דתית לאומית, המזרחי והפועל המזרחי ובלתי מפלגתיים / r2 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k5.json) |
-| k5 / unknown | מ / מפלגת הפועלים המאוחדת ובלתי מפלגתיים / r2 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k5.json) |
-| k5 / unknown | תו / אחדות העבודה פועלי-ציון ובלתי מפלגתיים / r2 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k5.json) |
-| k5 / unknown | ק / המפלגה הקומוניסטית הישראלית ובלתי מפלגתיים / r2 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k5.json) |
-| k5 / unknown | ג / יהדות התורה — אגודת ישראל ודתיים בלתי מפלגתיים / r2 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k5.json) |
-| k5 / unknown | יא / שיתוף ואחווה / r2 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k5.json) |
-| k5 / unknown | ד / המחנה התורתי פועלי אגודת ישראל ודתיים בלתי מפלגתיים / r2 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k5.json) |
-| k5 / unknown | רא / קידמה ופיתוח / r2 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k5.json) |
-| k5 / low-confidence | יא / שיתוף ואחווה / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k5.json) |
-| k5 / low-confidence | רא / קידמה ופיתוח / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k5.json) |
-| k6 / unknown | את / רשימת המערך לאחדות פועלי ארץ-ישראל, מפלגת פועלי ארץ-ישראל, מפלגת אחדות העבודה—פועלי ציון ובלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k6.json) |
-| k6 / unknown | ב / חזית דתית לאומית, המזרחי-הפועל המזרחי ובלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k6.json) |
-| k6 / unknown | מ / מפלגת הפועלים המאוחדת (מפ"ם) ובלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k6.json) |
-| k6 / unknown | לע / המפלגה הליברלית העצמאית / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k6.json) |
-| k6 / unknown | ג / יהדות התורה—אגודת ישראל ודתיים בלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k6.json) |
-| k6 / unknown | ו / הרשימה הקומוניסטית החדשה בישראל / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k6.json) |
-| k6 / unknown | רא / קדמה ופיתוח / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k6.json) |
-| k6 / unknown | ד / המחנה התורתי פועלי אגודת ישראל ודתיים בלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k6.json) |
-| k6 / unknown | יא / השיתוף והאחוה / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k6.json) |
-| k6 / unknown | ש / רשימת העולם הזה—כוח חדש / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k6.json) |
-| k6 / unknown | ק / רשימת המפלגה הקומוניסטית הישראלית ובלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k6.json) |
-| k6 / low-confidence | כא / רשימת פועלי ישראל (רפ"י) ובלתי מפלגתיים / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k6.json) |
-| k6 / low-confidence | לע / המפלגה הליברלית העצמאית / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k6.json) |
-| k6 / low-confidence | רא / קדמה ופיתוח / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k6.json) |
-| k6 / low-confidence | יא / השיתוף והאחוה / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k6.json) |
-| k6 / low-confidence | ש / רשימת העולם הזה—כוח חדש / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k6.json) |
-| k7 / unknown | ג / יהדות התורה — אגודת ישראל ודתיים בלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k7.json) |
-| k7 / unknown | עמ / רשימה ממלכתית / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k7.json) |
-| k7 / unknown | ו / הרשימה הקומוניסטית החדשה בישראל (רק"ח) ובלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k7.json) |
-| k7 / unknown | ש / תנועת העולם הזה — כוח חדש / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k7.json) |
-| k7 / unknown | ק / רשימת מק"י — המפלגה הקומוניסטית הישראלית ובלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k7.json) |
-| k7 / unknown | ט / המרכז החופשי / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k7.json) |
-| k7 / low-confidence | לע / המפלגה הליברלית העצמאית / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k7.json) |
-| k7 / low-confidence | רא / קידמה ופיתוח / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k7.json) |
-| k7 / low-confidence | יא / שיתוף ואחוה / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k7.json) |
-| k7 / low-confidence | ש / תנועת העולם הזה — כוח חדש / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k7.json) |
-| k8 / conflict | $.formation.conflicts[*] | {"about":"Abstentions in the 17th government confidence vote","values":[{"value":"4 in the initial tally","source":"plenum-gov17"},{"value":"5 after the Speaker’s correction","source":"plenum-gov17"}],"resolution":"Use the Speaker’s expressly corrected tally: 61 for, 51 against, 5 abstentions."} | open / [record](../data/meta/aftermath/k8.json) |
-| k8 / unknown | גד / חזית דתית תורתית – אגודת ישראל, פועלי אגודת ישראל ודתיים בלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k8.json) |
-| k8 / unknown | רצ / תנועה לזכויות האזרח / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k8.json) |
-| k8 / unknown | ב / חזית דתית לאומית – המזרחי, הפועל המזרחי ובלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k8.json) |
-| k8 / unknown | ו / הרשימה הקומוניסטית החדשה בישראל (רק״ח) ובלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k8.json) |
-| k8 / unknown | לע / המפלגה הליברלית העצמאית / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k8.json) |
-| k8 / unknown | עא / רשימה ערבית לבדוים וכפרים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k8.json) |
-| k8 / unknown | רא / קידמה ופיתוח / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k8.json) |
-| k8 / unknown | קנ / מוקד – מק״י ותכלת אדום / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k8.json) |
-| k8 / low-confidence | גד / חזית דתית תורתית – אגודת ישראל, פועלי אגודת ישראל ודתיים בלתי מפלגתיים / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k8.json) |
-| k8 / low-confidence | לע / המפלגה הליברלית העצמאית / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k8.json) |
-| k8 / low-confidence | רצ / תנועה לזכויות האזרח / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k8.json) |
-| k8 / low-confidence | רא / קידמה ופיתוח / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k8.json) |
-| k8 / low-confidence | קנ / מוקד – מק״י ותכלת אדום / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k8.json) |
-| k8 / low-confidence | עא / רשימה ערבית לבדוים וכפרים / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k8.json) |
-| k8 / low-confidence | $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k8.json) |
-| k9 / conflict | $.formation.conflicts[*] | {"about":"Date of the ministers' oath","values":[{"value":"Sitting dated 20 June 1977 (declarations follow the vote in the same record)","source":"knesset-plenum-1977-06-20"},{"value":"\"in the early hours of this morning\" (i.e. after midnight, 21 June)","source":"jta-1977-06-21"}],"resolution":"Both are consistent with a sitting that began on 20 June and ended after midnight. UI uses 20 June (the sitting date) with an (i) note."} | open / [record](../data/meta/aftermath/k9.json) |
-| k9 / unknown | ד / המחנה התורתי, פועלי אגודת ישראל ודתיים בלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k9.json) |
-| k9 / unknown | לע / המפלגה הליברלית העצמאית / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k9.json) |
-| k9 / unknown | רצ / התנועה לזכויות האזרח / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k9.json) |
-| k9 / unknown | ימ / הרשימה הערבית המאוחדת / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k9.json) |
-| k9 / low-confidence | יש / התנועה הדמוקרטית לשינוי / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k9.json) |
-| k9 / low-confidence | ו / חזית דמוקרטית לשלום ולשוויון – המפלגה הקומוניסטית הישראלית (רק״ח); פנתרים שחורים וחוגי ציבור יהודים וערבים / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k9.json) |
-| k9 / low-confidence | פש / פלאטו שרון / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k9.json) |
-| k9 / low-confidence | כנ / שלומציון, תנועה להגשמת הציונות / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k9.json) |
-| k9 / low-confidence | ש / מחנה שלי / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k9.json) |
-| k9 / low-confidence | ימ / הרשימה הערבית המאוחדת / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k9.json) |
-| k9 / low-confidence | רצ / התנועה לזכויות האזרח / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k9.json) |
-| k9 / low-confidence | לע / המפלגה הליברלית העצמאית / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k9.json) |
-| k9 / low-confidence | $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k9.json) |
-| k10 / conflict | $.formation.conflicts[*] | {"about":"Begin tasking date","values":[{"value":"15 July 1981 in the existing JTA/UPI research","source":"jta1981task"},{"value":"16 July 1981 presidential letter in the State Archives account","source":"recommendations-research-4"}],"resolution":"Unresolved after targeted primary-source retrieval. Contemporary press identifies 15 July, while the State Archives describes a letter of 16 July; the JTA 16 July publication date cannot determine its dispatch dateline. The original letter and Preside | open / [record](../data/meta/aftermath/k10.json) |
-| k10 / unknown | אמת / המערך – מפלגת העבודה הישראלית, מפלגת הפועלים המאוחדת ובלתי מפלגתיים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k10.json) |
-| k10 / unknown | ו / חזית דמוקרטית לשלום ולשוויון, המפלגה הקומוניסטית הישראלית (רק״ח), פנתרים שחורים וחוגי ציבור יהודים וערבים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k10.json) |
-| k10 / unknown | ת / התחיה / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k10.json) |
-| k10 / unknown | כן / תלם – תנועה להתחדשות ממלכתית / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k10.json) |
-| k10 / unknown | הן / שינוי – מפלגת המרכז / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k10.json) |
-| k10 / unknown | רצ / התנועה לזכויות האזרח ולשלום / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k10.json) |
-| k10 / low-confidence | ני / תמ״י – תנועת מסורת ישראל / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k10.json) |
-| k10 / low-confidence | כן / תלם – תנועה להתחדשות ממלכתית / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k10.json) |
-| k10 / low-confidence | $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k10.json) |
-| k11 / conflict | $.formation.conflicts[*] | {"about":"Investiture sitting versus oath after midnight","values":[{"value":"13 September confidence sitting","source":"ipu1984"},{"value":"early Friday morning (14 September)","source":"jta1984vote"}],"resolution":"Use 13 September for the sitting and official government start; JTA reports completion after midnight."} | open / [record](../data/meta/aftermath/k11.json) |
-| k11 / low-confidence | עד / מורשה מצ״ד – פא״י / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k11.json) |
-| k11 / low-confidence | פ / הרשימה המתקדמת לשלום / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k11.json) |
-| k11 / low-confidence | יש / אומץ – להבראת המשק / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k11.json) |
-| k11 / low-confidence | ני / תמ״י – תנועת מסורת ישראל / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k11.json) |
-| k11 / low-confidence | כך / תנועת כך מיסודו של הרב מאיר כהנא / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k11.json) |
-| k11 / low-confidence | $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k11.json) |
-| k12 / low-confidence | פ / הרשימה המתקדמת לשלום / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k12.json) |
-| k12 / low-confidence | ט / מולדת / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k12.json) |
-| k12 / low-confidence | עץ / אגודת החרדים – דגל התורה / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k12.json) |
-| k13 / unknown | אמת / העבודה בראשות רבין / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k13.json) |
-| k13 / unknown | ב / מפד״ל, חזית דתית לאומית - המזרחי, הפועל המזרחי / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k13.json) |
-| k13 / unknown | ג / יהדות התורה המאוחדת - אגודת ישראל - דגל התורה - הרב יצחק פרץ / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k13.json) |
-| k13 / unknown | ו / חזית דמוקרטית לשלום ולשוויון - המפלגה הקומוניסטית הישראלית וחוגי ציבור יהודים וערבים / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k13.json) |
-| k13 / unknown | ט / מולדת / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k13.json) |
-| k13 / unknown | מחל / הליכוד / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k13.json) |
-| k13 / unknown | מרצ / מרצ - ישראל הדמוקרטית - רצ, מפם, שינוי / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k13.json) |
-| k13 / unknown | ע / המפלגה הדמוקרטית הערבית / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k13.json) |
-| k13 / unknown | שס / ש״ס - התאחדות הספרדים שומרי תורה / r1 / $.recommendationRounds[*].entries[*].status | Status: unknown | open / [record](../data/meta/aftermath/k13.json) |
-| k13 / low-confidence | ט / מולדת / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k13.json) |
-| k13 / low-confidence | $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k13.json) |
-| k14 / low-confidence | ט / מולדת / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k14.json) |
-| k14 / low-confidence | $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k14.json) |
-| k15 / conflict | $.formation.conflicts[*] | {"about":"Coalition seats at formation versus later snapshot","values":[{"value":"75 (JTA formation report, matching the seven ballot lists)","source":"jta1999vote"},{"value":"73 after two Yisrael BaAliyah members broke away","source":"ipu1999"}],"resolution":"Use 75 for the formation ballot-list card. Retain IPU’s later 73-seat snapshot as a different point in time; do not change the official election seats."} | open / [record](../data/meta/aftermath/k15.json) |
-| k15 / low-confidence | אמת / ישראל אחת בראשות אהוד ברק - העבודה גשר מימד / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k15.json) |
-| k15 / low-confidence | פה / מפלגת המרכז בראשות יצחק מרדכי / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k15.json) |
-| k15 / low-confidence | ם / עם אחד בראשות עמיר פרץ - סיעת העובדים והגימלאים בישראל / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k15.json) |
-| k15 / low-confidence | $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k15.json) |
-| k16 / conflict | $.formation.conflicts[*] | {"about":"Tasking date","values":[{"value":"9 February (existing contemporary Haaretz/INN recommendation research)","source":"recommendations-research-3"},{"value":"10 February (IPU narrative)","source":"ipu2003"}],"resolution":"Use 9 February as in the contemporary research; retain IPU’s one-day disagreement."} | open / [record](../data/meta/aftermath/k16.json) |
-| k16 / low-confidence | ם / עם אחד בראשות עמיר פרץ / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k16.json) |
-| k16 / low-confidence | $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k16.json) |
-| k17 / low-confidence | זך / גיל - גימלאי ישראל לכנסת / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k17.json) |
-| k17 / low-confidence | $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k17.json) |
-| k18 / conflict | $.formation.conflicts[*] | {"about":"Coalition membership in the IPU summary","values":[{"value":"IPU names National Union and UTJ as coalition members","source":"ipu-2009"},{"value":"IDI lists Jewish Home in the five-party, 69-seat formation coalition, with UTJ still prospective","source":"idi-coalition"}],"resolution":"Use the election-specific IDI composition, consistent with the established first-government scheme and seats. IPU is used only for first sitting and date chronology, not coalition membership."} | open / [record](../data/meta/aftermath/k18.json) |
-| k18 / low-confidence | ג / יהדות התורה והשבת אגודת ישראל - דגל התורה / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k18.json) |
-| k18 / low-confidence | עם / הרשימה הערבית המאוחדת - התנועה הערבית להתחדשות / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k18.json) |
-| k18 / low-confidence | ט / האיחוד הלאומי - תקומה, התקווה, ארץ ישראל שלנו, מולדת / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k18.json) |
-| k18 / low-confidence | ה / התנועה הירוקה מימד בראשות הרב מלכיאור וערן בן–ימיני / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k18.json) |
-| k18 / low-confidence | $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k18.json) |
-| k19 / low-confidence | מחל / הליכוד - ישראל ביתנו בהנהגת בנימין נתניהו לראשות הממשלה / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k19.json) |
-| k19 / low-confidence | ג /  יהדות התורה והשבת, אגודת ישראל - דגל התורה / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k19.json) |
-| k19 / low-confidence | עם / הרשימה הערבית המאוחדת - התנועה הערבית להתחדשות - המפלגה הערבית הדמוקרטית / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k19.json) |
-| k19 / low-confidence | $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k19.json) |
-| k20 / conflict | $.formation.conflicts[*] | {"about":"Investiture vote tally","values":[{"value":"69 for / 59 against in the English Knesset News item (128 in total)","source":"knesset-investiture"},{"value":"61 for / 59 against in the EPRS report","source":"eprs-investiture"}],"resolution":"Use 61–59, consistent with the 120-seat chamber and independent contemporaneous reports. Preserve the Knesset wording as a source error; plenum protocol remains the target."} | open / [record](../data/meta/aftermath/k20.json) |
-| k20 / low-confidence | ג / יהדות התורה והשבת אגודת ישראל - דגל התורה / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k20.json) |
-| k20 / low-confidence | קץ / יחד - העם איתנו בראשות אלי ישי / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k20.json) |
-| k20 / low-confidence | $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k20.json) |
-| k21 / low-confidence | ג / יהדות התורה והשבת אגודת ישראל-דגל התורה / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k21.json) |
-| k21 / low-confidence | ז / זהות - תנועה ישראלית יהודית בהנהגת משה פייגלין / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k21.json) |
-| k21 / low-confidence | $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k21.json) |
-| k22 / conflict | $.formation.conflicts[*] | {"about":"Formal dissolution mechanism after the 21-day period","values":[{"value":"Automatically dispersed at midnight (news shorthand)","source":"toi-end"},{"value":"The dissolution law passed before presidential notification, advancing the election by eight days.","source":"idi-dissolution"}],"resolution":"Use the academic legal account for the formal mechanism; separately record the failed parliamentary nomination period. Do not describe it solely as automatic dissolution."} | open / [record](../data/meta/aftermath/k22.json) |
-| k22 / low-confidence | ג / יהדות התורה והשבת אגודת ישראל - דגל התורה / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k22.json) |
-| k22 / low-confidence | כף / עוצמה יהודית בראשות איתמר בן גביר / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k22.json) |
-| k22 / low-confidence | $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k22.json) |
-| k23 / low-confidence | ג / יהדות התורה והשבת אגודת ישראל – דגל התורה / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k23.json) |
-| k23 / low-confidence | נץ / עוצמה יהודית בראשות איתמר בן גביר / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k23.json) |
-| k23 / low-confidence | $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k23.json) |
-| k24 / conflict | $.formation.conflicts[*] | {"about":"Time Lapid informed the President on 2 June 2021","values":[{"value":"11:22 p.m.","source":"inn-2021-06-02"},{"value":"about 35 minutes before midnight","source":"toi-2021-06-02"},{"value":"11:35 p.m.","source":"jpost-2021-06-03"}],"resolution":"Not resolved; UI shows the date only."} | open / [record](../data/meta/aftermath/k24.json) |
-| k24 / low-confidence | ג / יהדות התורה והשבת אגודת ישראל – דגל התורה / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k24.json) |
-| k24 / low-confidence | ת / תקווה חדשה בהנהגת גדעון סער לראשות הממשלה / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k24.json) |
-| k24 / low-confidence | עם / הרשימה הערבית המאוחדת / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k24.json) |
-| k24 / low-confidence | $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k24.json) |
-| k25 / low-confidence | ג / יהדות התורה והשבת אגודת ישראל - דגל התורה / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k25.json) |
-| k25 / low-confidence | עם / הרשימה הערבית המאוחדת / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k25.json) |
-| k25 / low-confidence | ב / הבית היהודי בראשות איילת שקד / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k25.json) |
-| k25 / low-confidence | $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k25.json) |
-| k26 / low-confidence | דרך / ישר! עם איזנקוט לראשות הממשלה מאחדים את ישראל / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k26.json) |
-| k26 / low-confidence | עם / רע"ם – הרשימה הערבית המאוחדת / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k26.json) |
-| k26 / low-confidence | ב / עוצמה יהודית בראשות איתמר בן גביר / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k26.json) |
-| k26 / low-confidence | ג / יהדות התורה והשבת אגודת ישראל – דגל התורה / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k26.json) |
-| k26 / low-confidence | ט / הציונות הדתית בראשות בצלאל סמוטריץ' וזהות בראשות משה פייגלין / $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k26.json) |
-| k26 / low-confidence | $.colours[*].confidence | Evidence confidence is low | open / [record](../data/meta/k26.json) |
-| cross-election / conflict | communist-identities / $.conflicts[*] | {"id":"communist-identities","status":"unresolved","sources":["proposal","arab"],"interpretation":"pre-split-maki (through 1961), Jewish Maki and Rakah after 1965 remain distinct. israeli-communist-party is preserved as a local constituent id; a precise legal-name crosswalk to Rakah/Hadash remains pending."} | open / [record](../data/meta/parties.json) |
-| cross-election / conflict | gesher-generations / $.conflicts[*] | {"id":"gesher-generations","status":"unresolved","sources":["proposal"],"interpretation":"Existing gesher constituent id spans David Levy and Orly Levy eras. Preserve references, do not assert unreviewed legal continuity."} | open / [record](../data/meta/parties.json) |
-| cross-election / conflict | koach-and-achi / $.conflicts[*] | {"id":"koach-and-achi","status":"documented","sources":["proposal","power2009"],"interpretation":"2009 and 2013 Koach Lehashpia remain separate; 2026 Achi is not national-religious ahi."} | open / [record](../data/meta/parties.json) |
-| cross-election / conflict | misleading-11-ay / $.conflicts[*] | {"id":"misleading-11-ay","status":"documented","sources":["proposal","k11"],"interpretation":"Corrected after official YP 3073 p.2834 review: list ע is the tenants organisation. Display no longer names the Arab Democratic Party."} | open / [record](../data/meta/parties.json) |
+| Election | High open | Medium open | Low | Total |
+| --- | ---: | ---: | ---: | ---: |
+| k1 | 22 | 98 | 177 | 333 |
+| k2 | 33 | 71 | 152 | 279 |
+| k3 | 26 | 75 | 160 | 289 |
+| k4 | 18 | 82 | 170 | 288 |
+| k5 | 36 | 69 | 152 | 281 |
+| k6 | 26 | 72 | 161 | 278 |
+| k7 | 15 | 72 | 160 | 268 |
+| k8 | 24 | 84 | 174 | 323 |
+| k9 | 21 | 96 | 196 | 347 |
+| k10 | 16 | 113 | 171 | 335 |
+| k11 | 43 | 118 | 204 | 405 |
+| k12 | 24 | 116 | 183 | 354 |
+| k13 | 23 | 109 | 146 | 297 |
+| k14 | 14 | 113 | 148 | 297 |
+| k15 | 28 | 148 | 161 | 365 |
+| k16 | 12 | 145 | 214 | 407 |
+| k17 | 7 | 131 | 228 | 397 |
+| k18 | 7 | 99 | 342 | 473 |
+| k19 | 5 | 99 | 344 | 478 |
+| k20 | 11 | 105 | 307 | 446 |
+| k21 | 2 | 117 | 338 | 509 |
+| k22 | 5 | 88 | 351 | 483 |
+| k23 | 4 | 75 | 269 | 395 |
+| k24 | 12 | 88 | 303 | 438 |
+| k25 | 8 | 256 | 392 | 686 |
+| k26 | 5 | 128 | 363 | 559 |
+| [object Object] | 0 | 1 | 0 | 1 |
+| cross-election | 3 | 240 | 1042 | 1393 |
 
 ## Maintenance and scope
 
-Regenerate this summary: `npm run data:gaps`. Verify: `npm run data:gaps:check` (also checked by Vitest). Production builds and deployments do not enforce register freshness. Only summary-level counts and individually listed facts affect staleness; raw file bytes and bulk-only descriptions do not.
+Regenerate this summary: `npm run data:gaps`. Verify: `npm run data:gaps:check` (also checked by Vitest). Production builds and deployments do not enforce register freshness. Only summary-level counts and grouped facts affect staleness; raw file bytes and bulk-only descriptions do not.
 
-Full export: `npm run data:gaps -- --full` writes `.backup-scratch/data-gaps/full.json` and `full.md` (gitignored). The full export is optional and is not required by tests. It is regenerated from retained inputs, not committed.
+Importance and certainty are code rules (`importanceOf` in scripts/gaps-register.ts; src/data/evidence.ts), not hand tags. Full export: `npm run data:gaps -- --full` writes `.backup-scratch/data-gaps/full.json` and `full.md` (gitignored), with every row, its sources and the best next source.
 
-Retained JSON under data/raw and data/meta is scanned for declared uncertainty; published national datasets are checked against required schema fields. Decision/audit prose needs current-status review. Binary sources are not interpreted; unrecorded contradictions need human review. Nulls can be inapplicable. Single-source flags do not prove independence. Family classification remains editorial.
+Retained JSON under data/raw and data/meta is scanned for declared uncertainty; published national datasets are checked against required schema fields. Decision/audit prose needs current-status review. Binary sources are not interpreted; unrecorded contradictions need human review. Nulls can be inapplicable. Family classification is editorial and never confirmed.
 
-Research and blockers: [initial round](research/data-gaps-1992-followup.md), [closure batches](research/data-gaps-closure-batches.md). Machine-readable summary: [data-gaps.json](data-gaps.json).
+Research and blockers: [initial round](research/data-gaps-1992-followup.md), [closure batches](research/data-gaps-closure-batches.md), [7 November policy pass](research/evidence-policy-pass-1107.md). Machine-readable summary: [data-gaps.json](data-gaps.json).

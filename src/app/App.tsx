@@ -39,6 +39,7 @@ const Figures = memo(FiguresView);
 // other tab panel is a separate chunk, fetched once the page is idle (or when its tab is pointed at),
 // so the first render does not wait for code most visits never open.
 const loaders = {
+  after: () => import('./components/AfterElection.tsx'),
   families: () => import('./components/Families.tsx'),
   seats: () => import('./components/SeatSecurity.tsx'),
   panels: () => import('./components/Panels.tsx'),
@@ -62,6 +63,7 @@ function lazyPanel<M extends Record<K, (props: any) => ReactNode>, K extends key
   };
   return Object.assign(Panel, { preload });
 }
+const AfterElection = lazyPanel(loaders.after, 'AfterElection');
 const Families = lazyPanel(loaders.families, 'Families');
 const Coalitions = lazyPanel(loaders.seats, 'Coalitions');
 const SeatSecurity = lazyPanel(loaders.seats, 'SeatSecurity');
@@ -74,7 +76,7 @@ const Rules = lazyPanel(loaders.panels, 'Rules');
 const Localities = lazyPanel(loaders.panels, 'Localities');
 const Sources = lazyPanel(loaders.panels, 'Sources');
 const TAB_PANEL: Partial<Record<Tab, { preload: () => Promise<void> }>> = {
-  families: Families, coal: Coalitions, security: SeatSecurity, compare: Compare, charts: Charts, structure: Structure,
+  after: AfterElection, families: Families, coal: Coalitions, security: SeatSecurity, compare: Compare, charts: Charts, structure: Structure,
   turnout: Turnout, sens: Sensitivity, rules: Rules, loc: Localities, sources: Sources,
 };
 /** Starts fetching a tab's code ahead of its first use (a no-op once loaded). */
@@ -181,10 +183,10 @@ function Shell() {
   const openTool = (id: Tab) => { setState({ tool: id }); window.scrollTo({ top: 0 }); };
   const selected = selectedListId && s.lists.some((l) => l.id === selectedListId) ? selectedListId : null;
   // on a tool page the list drawer opens only for a list chosen there (a selection made on the board waits for it)
-  const drawerOpen = tool !== 'board' && !!selected && drawerFor === selected;
+  const drawerOpen = tool !== 'after' && tool !== 'board' && !!selected && drawerFor === selected;
 
   return (
-    <div className={`app ${preview ? 'board-preview' : ''}`} style={{ ['--scenario-color' as string]: resultChanges(committed, base).length ? liveScenarioColor(committed, saved) : undefined }}>
+    <div className={`app ${preview ? 'board-preview' : ''}`} style={{ ['--scenario-color' as string]: tool !== 'after' && resultChanges(committed, base).length ? liveScenarioColor(committed, saved) : undefined }}>
       <TopBar s={pmOnly ? null : committed} r={cr} ds={ds} baseR={baseR} pmContestId={pmContestId} onContestChange={setPMContestId} />
       {pmOnly ? <main className="work"><PMResult contest={pmOnly} onKnesset={() => setPMContestId(null)} /></main> : <>
       <nav className="toolbar" aria-label={L('Tools', 'כלים')}><div ref={trackTabOverflow} className="tabs" role="tablist" aria-label={L('Tools', 'כלים')}>
@@ -204,7 +206,7 @@ function Shell() {
                   }}>{label(t.id)}{RANK[t.level] > RANK[level] && <span className="sr-only"> ({L(...LEVEL_LABELS[t.level])})</span>}</button>,
                 ])}
               </div></nav>
-      <ChangeSummary s={committed} r={cr} base={base} baseR={baseR} ds={ds} />
+      {tool !== 'after' && <ChangeSummary s={committed} r={cr} base={base} baseR={baseR} ds={ds} />}
       <main className="work">
         {customPage ? <CustomPage /> : tool === 'board' ? (
           <div className={`board ${selected || blocPanel ? 'with-panel' : ''}`}>
@@ -230,6 +232,7 @@ function Shell() {
             <div className="body" role="tabpanel" id="analysis-panel" aria-labelledby={`tab-${tool}`}>
               {/* opening a tool's tab is the choice to see it: no second disclosure inside the page */}
               {<ErrorBoundary label={label(tool)} resetKey={`${tool}|${committed.id}|${committed.log.length}`}><Suspense fallback={<p className="muted" role="status">{L('Loading…', 'טוען…')}</p>}>
+                {tool === 'after' && <AfterElection ds={ds} />}
                 {tool === 'families' && <Families s={committed} />}
                 {tool === 'scenarios' && <Scenarios s={committed} ds={ds} />}
                 {tool === 'whatif' && <WhatIf ds={ds} />}
@@ -250,10 +253,10 @@ function Shell() {
         )}
         {drawerOpen && <div className="drawer"><ErrorBoundary label={L('List details', 'פרטי רשימה')} resetKey={selected}><ListSidePanel s={committed} r={cr} ds={ds} base={base} baseR={baseR} listId={selected} /></ErrorBoundary></div>}
 
-        {s.mode === 'experimental' && <div className="banner note" role="status">{L('Alternative electoral system', 'שיטת בחירות חלופית')} <Info title={L('Experimental rules', 'כללים ניסיוניים')}>{L('Experimental rules: this is an alternative electoral system, not a legally possible Israeli result.', 'כללים ניסיוניים: זוהי שיטת בחירות חלופית ולא תוצאה אפשרית לפי החוק בישראל.')}</Info>{(() => { const c = ruleChanges(s, lang); return c.length ? <> {L('Changed: ', 'שינויים: ')}<b>{c.join(' · ')}</b>.</> : null; })()} <button className="btn small" onClick={() => dispatch({ type: 'setMode', mode: 'historical' })}>{L('Back to the real rules', 'חזרה לכללים האמיתיים')}</button></div>}
+        {tool !== 'after' && s.mode === 'experimental' && <div className="banner note" role="status">{L('Alternative electoral system', 'שיטת בחירות חלופית')} <Info title={L('Experimental rules', 'כללים ניסיוניים')}>{L('Experimental rules: this is an alternative electoral system, not a legally possible Israeli result.', 'כללים ניסיוניים: זוהי שיטת בחירות חלופית ולא תוצאה אפשרית לפי החוק בישראל.')}</Info>{(() => { const c = ruleChanges(s, lang); return c.length ? <> {L('Changed: ', 'שינויים: ')}<b>{c.join(' · ')}</b>.</> : null; })()} <button className="btn small" onClick={() => dispatch({ type: 'setMode', mode: 'historical' })}>{L('Back to the real rules', 'חזרה לכללים האמיתיים')}</button></div>}
       </main>
       <div className="app-notices">
-        {level === 'simple' && !hintDismissed && <div className="banner note" role="status"><span className="banner-text">{L('Pick a list. Try a change.', 'בחרו רשימה. נסו לשנות.')} <Info title={L('Explore the board', 'מגלים את תמונת המצב')}>{L('Click any list, seat, bloc or figure to see and change what is behind it. Every tool is named in the strip under the header.', 'לחצו על כל רשימה, מושב, גוש או נתון כדי לראות ולשנות את מה שמאחוריו. כל הכלים מופיעים בשורה שמתחת לכותרת.')}</Info></span> <button className="btn small ghost icon-only" onClick={() => setState({ hintDismissed: true })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}
+        {tool !== 'after' && level === 'simple' && !hintDismissed && <div className="banner note" role="status"><span className="banner-text">{L('Pick a list. Try a change.', 'בחרו רשימה. נסו לשנות.')} <Info title={L('Explore the board', 'מגלים את תמונת המצב')}>{L('Click any list, seat, bloc or figure to see and change what is behind it. Every tool is named in the strip under the header.', 'לחצו על כל רשימה, מושב, גוש או נתון כדי לראות ולשנות את מה שמאחוריו. כל הכלים מופיעים בשורה שמתחת לכותרת.')}</Info></span> <button className="btn small ghost icon-only" onClick={() => setState({ hintDismissed: true })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}
         {loadBanner}
 
         {notice && <div className="banner note" role="status"><span className="banner-text">{notice}</span> <button className="btn small ghost icon-only" onClick={() => setState({ notice: null })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}

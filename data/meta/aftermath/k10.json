@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "electionId": "k10",
-  "status": "pilot",
+  "status": "reviewed",
   "reviewedAt": "2026-11-07",
   "notes": [
-    "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
+    "Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
     "The institutional Knesset term runs from the first sitting on 20 July 1981 to 13 August 1984. Election dates are recorded separately. Mid-term government succession is recorded in formation.events.",
     "Additional dated mid-term acts that do not fit the proposal’s closed formation type vocabulary are kept as formalStep=true entries in government.changes (Dated-compatible). No new formation enum values are introduced."
   ],
@@ -167,6 +167,13 @@
       "publisher": "JTA Daily Bulletin, 15 July 1981",
       "kind": "archival",
       "accessed": "2026-11-07"
+    },
+    "upi-19810804": {
+      "url": "https://cdn.manchesterhistory.org/News/Manchester%20Evening%20Hearld_1981-08-04.pdf",
+      "publisher": "UPI, Begin on schedule, in Manchester Herald, 4 August 1981, p.2",
+      "kind": "archival",
+      "accessed": "2026-11-07",
+      "via": "Read by the 7 November research helper; a direct re-fetch returned HTTP 403 and was not retried. UPI wire: not independent of other UPI copies."
     }
   },
   "results": {
@@ -303,12 +310,23 @@
           {
             "source": "jta1981task",
             "quote": "formally summoned by President Yitzhak Navon today to form a new government"
+          },
+          {
+            "source": "upi-19810804",
+            "quote": "from July 15, when President Yitzhak Navon called on him to form a government."
+          },
+          {
+            "source": "recommendations-research-4",
+            "quote": "ב-16 ביולי שלח נבון לבגין מכתב",
+            "note": "Inherited extract; the catalogue page returned 403."
           }
         ],
         "person": "begin",
         "notes": [
           "Press-based event date 15 July retained with dispute. The JTA item is published 16 July and says today; its original dateline was not recovered. The State Archives describes the formal presidential letter as dated 16 July. Do not infer separate appointment events."
-        ]
+        ],
+        "certainty": "disputed",
+        "note": "Disputed date: JTA and UPI (contemporary, independent) give 15 July; the State Archives account dates the presidential letter 16 July. Deciding records: ISA file נ-571/13 pp.5–7 (letter) and נ-224/4 (diary)."
       },
       {
         "date": "1981-08-04",
@@ -413,9 +431,13 @@
           {
             "value": "16 July 1981 presidential letter in the State Archives account",
             "source": "recommendations-research-4"
+          },
+          {
+            "value": "15 July 1981: the 21-day period ran from July 15 (UPI, 4 August 1981)",
+            "source": "upi-19810804"
           }
         ],
-        "resolution": "Unresolved after targeted primary-source retrieval. Contemporary press identifies 15 July, while the State Archives describes a letter of 16 July; the JTA 16 July publication date cannot determine its dispatch dateline. The original letter and President’s diary are the deciding records: Israel State Archives file נ-571/13 pp.5–7 (letter), and נ-224/4 (diary/consultations). Archive catalogue returned HTTP 403 and original JTA PDF transport failed; no second mandate event is invented."
+        "resolution": "Unresolved after targeted primary-source retrieval. Contemporary press identifies 15 July, while the State Archives describes a letter of 16 July; the JTA 16 July publication date cannot determine its dispatch dateline. The original letter and President’s diary are the deciding records: Israel State Archives file נ-571/13 pp.5–7 (letter), and נ-224/4 (diary/consultations). Archive catalogue returned HTTP 403 and original JTA PDF transport failed; no second mandate event is invented. 7 November: a second, independent contemporary report (UPI, 4 August 1981) also gives 15 July; the archival letter date still conflicts, so the date stays disputed rather than settled by count."
       }
     ]
   },

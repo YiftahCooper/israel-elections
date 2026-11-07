@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "electionId": "k9",
-  "status": "pilot",
+  "status": "reviewed",
   "reviewedAt": "2026-11-07",
   "notes": [
     "Pilot for docs/design/after-the-election.md. Not wired into the app.",
@@ -513,7 +513,7 @@
       {
         "letters": "פש",
         "seats": 1,
-        "note": "Vote documented. No contemporary agreement, continuing pledge or promised office was recovered; not evidence that no arrangement existed. Extradition-law votes do not establish a formation agreement.",
+        "note": "Vote documented. No contemporary agreement, continuing pledge or promised office was recovered; not evidence that no arrangement existed. Extradition-law votes do not establish a formation agreement. 7 November: a 2018 obituary (Israel National News) says he joined Begin’s coalition, but gives no agreement or date; recorded as a lead only.",
         "role": "confidence-vote-only",
         "certainty": "provisional",
         "cites": [
