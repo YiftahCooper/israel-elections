@@ -1,6 +1,6 @@
 // Deterministic inventory of declared evidence gaps. Never resolves evidence by inference.
 import { createHash } from 'node:crypto';
-import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -128,9 +128,8 @@ function schemaGaps(root: string, file: string, doc: any): Gap[] {
   return rows;
 }
 
-export function generateRegister(root = ROOT) {
+export function generateFullRegister(root = ROOT) {
   const inputs = [...filesUnder(root, 'data/raw'), ...filesUnder(root, 'data/meta'), ...filesUnder(root, 'docs/decisions'), ...filesUnder(root, 'docs/research/data-audit'), 'src/data/schema.ts', 'public/data/elections.json', ...filesUnder(root, 'public/data').filter(f => /\/k\d+\.json$/.test(f))].sort();
-  const inventory = inputs.map(file => ({ file, sha256: hash(readFileSync(join(root, file))) }));
   const listLookup: Record<string, Obj> = {};
   for (const f of inputs.filter(f => /^public\/data\/k\d+\.json$/.test(f))) { const d = read(root, f); for (const l of d.lists) { listLookup[`${d.id}:${l.id}`] = l; listLookup[`${d.id}:${l.letters}`] = l; } }
   const gaps: Gap[] = [];
@@ -156,11 +155,38 @@ export function generateRegister(root = ROOT) {
     }
   }
   gaps.sort((a, b) => (Number(a.election.slice(1)) || 999) - (Number(b.election.slice(1)) || 999) || a.file.localeCompare(b.file, 'en') || a.item.localeCompare(b.item, 'en') || a.kind.localeCompare(b.kind, 'en'));
-  return { schemaVersion: 1, inputDigest: hash(JSON.stringify(inventory)), inventory, counts: Object.fromEntries(kinds.map(k => [k, gaps.filter(g => g.kind === k).length])), gaps };
+  return { schemaVersion: 1, counts: Object.fromEntries(kinds.map(k => [k, gaps.filter(g => g.kind === k).length])), gaps };
 }
+type FullRegister = ReturnType<typeof generateFullRegister>;
+export type SummaryItem = Pick<Gap, 'election' | 'letters' | 'name' | 'item' | 'kind' | 'uncertainty' | 'status' | 'file'>;
+const isRecommendationUnknown = (g: { kind: GapKind; item: string }) => g.kind === 'unknown' && /recommendationRounds.*entries/.test(g.item);
+const electionKey = (id: string) => /^k\d+$/.test(id) ? `k${Number(id.slice(1))}` : id;
+const countKinds = (gaps: Gap[]) => Object.fromEntries(kinds.map(k => [k, gaps.filter(g => g.kind === k).length]));
+const countStatuses = (gaps: Gap[]): Record<string, number> => Object.fromEntries([...new Set(gaps.map(g => g.status))].sort().map(status => [status, gaps.filter(g => g.status === status).length]));
+
+/** Only these facts participate in committed output and staleness checks. No file hashes. */
+export function summarizeRegister(full: FullRegister) {
+  return {
+    schemaVersion: 2,
+    total: full.gaps.length,
+    counts: full.counts,
+    countsByStatus: countStatuses(full.gaps),
+    elections: [...new Set(full.gaps.map(g => electionKey(g.election)))].map(election => {
+      const gaps = full.gaps.filter(g => electionKey(g.election) === election);
+      return { election, total: gaps.length, counts: countKinds(gaps) };
+    }),
+    items: full.gaps.filter(g => g.kind === 'conflict' || g.kind === 'low-confidence' || isRecommendationUnknown(g)).map(g => ({
+      election: electionKey(g.election), letters: g.letters, name: g.name, item: g.item, kind: g.kind,
+      uncertainty: g.uncertainty, status: g.status, file: g.file,
+    } satisfies SummaryItem)),
+  };
+}
+export function generateRegister(root = ROOT) { return summarizeRegister(generateFullRegister(root)); }
+type Summary = ReturnType<typeof generateRegister>;
+
 /** A bounded human queue derived from current records, so closures remove themselves. */
-export function importantOpenGaps(register: ReturnType<typeof generateRegister>): string[] {
-  const recommendations = register.gaps.filter(g => g.kind === 'unknown' && /recommendationRounds.*entries/.test(g.item));
+export function importantOpenGaps(register: Summary): string[] {
+  const recommendations = register.items.filter(isRecommendationUnknown);
   const counts = new Map<string, number>();
   for (const g of recommendations) counts.set(g.election, (counts.get(g.election) ?? 0) + 1);
   const elections = [...counts.keys()].sort((a, b) => (a === 'k13' ? -1 : b === 'k13' ? 1 : Number(b.slice(1)) - Number(a.slice(1))));
@@ -173,27 +199,65 @@ export function importantOpenGaps(register: ReturnType<typeof generateRegister>)
     '- Family and lineage labels remain editorial; they must not imply verified organisational continuity.',
   ];
 }
-export function renderMarkdown(register: ReturnType<typeof generateRegister>): string {
-  const esc = (s: string) => s.replaceAll('|', '\\|').replaceAll('\n', ' ');
-  const lines = ['# Data gaps register', '', `There are ${register.gaps.length} flagged records: ${Object.entries(register.counts).map(([k, n]) => `${n} ${k}`).join(', ')}. Counts overlap by evidence issue; they are not a count of historical errors. Repeated raw-record fields are grouped, with exact occurrence counts in JSON.`, '',
-    'Most important open gaps', '', ...importantOpenGaps(register), '',
-    'Research progress and blockers: [initial round](research/data-gaps-1992-followup.md), [closure batches](research/data-gaps-closure-batches.md). Counts reflect current declarations; research closures and newly discovered issues are logged separately.', '',
-    'Regenerate with `npm run data:gaps`; check with `npm run data:gaps:check`. Both Vite build and Vitest reject stale committed output. This checks local evidence declarations on each run; it does not continuously browse or verify remote pages.', '',
-    'Scope: every retained file under data/raw and data/meta is fingerprinted; JSON is recursively scanned, source manifests included. Published national datasets are checked against required fields extracted from src/data/schema.ts. PDFs, images, HTML and CSV are inventoried, not semantically interpreted. Optional nullable display/HTTP metadata is excluded; other nulls are review flags, including inapplicable values. Single-source means one recorded URL/family, not proof of independence; unknown shared provenance still needs human review. Decision/audit prose flags need current-status review; holds for elections now marked available are suppressed. Unrecorded contradictions and absent fields in formats without a declared schema require human review. Family classification remains editorial even with documented identity.', '',
-    `Input digest: \`${register.inputDigest}\`. Full file hashes, occurrence counts, locations and stable ballot identities are in [JSON](data-gaps.json).`, ''];
+const escapeCell = (s: string) => s.replaceAll('|', '\\|').replaceAll('\n', ' ');
+
+export function renderMarkdown(register: Summary): string {
+  const lines = ['# Data gaps register', '',
+    `${register.total} review flags; categories may overlap and are not counts of historical errors. Bulk rows are grouped by field; these counts use grouped records, not occurrences.`, '',
+    '## Most important open gaps', '', ...importantOpenGaps(register), '',
+    '## Counts', '',
+    `By kind: ${kinds.map(k => `${k}: ${register.counts[k]}`).join('; ')}.`, '',
+    `By status: ${Object.entries(register.countsByStatus).map(([status, n]) => `${status}: ${n}`).join('; ')}.`, '',
+    '## Per election', '',
+    '| Election | Unknown | Missing field | Conflict | Single source | Low confidence | Release hold | Inferred | Pending | Total |',
+    '| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |',
+    ...register.elections.map(e => `| ${e.election} | ${kinds.map(k => e.counts[k]).join(' | ')} | ${e.total} |`), '',
+    '## Individually listed priorities', '',
+    'Every conflict, low-confidence item and unknown recommendation is listed below. The record link contains its provenance and context; full field locations, source locators, next-source suggestions and bulk rows are available in the optional full export.', '',
+    '| Election / kind | Ballot / party / item | Uncertainty | Status / record |', '| --- | --- | --- | --- |',
+    ...register.items.map(g => `| ${g.election} / ${g.kind} | ${escapeCell([g.letters, g.name, g.item].filter(Boolean).join(' / '))} | ${escapeCell(g.uncertainty)} | ${g.status} / [record](../${g.file}) |`), '',
+    '## Maintenance and scope', '',
+    'Regenerate this summary: `npm run data:gaps`. Verify: `npm run data:gaps:check` (also checked by Vitest). Production builds and deployments do not enforce register freshness. Only summary-level counts and individually listed facts affect staleness; raw file bytes and bulk-only descriptions do not.', '',
+    'Full export: `npm run data:gaps -- --full` writes `.backup-scratch/data-gaps/full.json` and `full.md` (gitignored). The full export is optional and is not required by tests. It is regenerated from retained inputs, not committed.', '',
+    'Retained JSON under data/raw and data/meta is scanned for declared uncertainty; published national datasets are checked against required schema fields. Decision/audit prose needs current-status review. Binary sources are not interpreted; unrecorded contradictions need human review. Nulls can be inapplicable. Single-source flags do not prove independence. Family classification remains editorial.', '',
+    'Research and blockers: [initial round](research/data-gaps-1992-followup.md), [closure batches](research/data-gaps-closure-batches.md). Machine-readable summary: [data-gaps.json](data-gaps.json).', ''];
+  return lines.join('\n');
+}
+export function renderFullMarkdown(register: FullRegister): string {
+  const lines = ['# Full data gaps register', '',
+    'Generated with `npm run data:gaps -- --full`; disposable detail export. Counts and the selected human queue are committed in docs/data-gaps.md. Source paths below are relative to the repository root.', '',
+    `${register.gaps.length} grouped records: ${Object.entries(register.counts).map(([k, n]) => `${n} ${k}`).join(', ')}.`, ''];
   let election = '';
   for (const g of register.gaps) {
-    if (g.election !== election) { election = g.election; lines.push(`## ${election}`, '', '| Item (letters / name where known) | Kind / uncertainty | Current sources | Best next source | Status |', '| --- | --- | --- | --- | --- |'); }
-    lines.push(`| ${esc([g.letters, g.name, g.item].filter(Boolean).join(' / '))} ([record](../${g.file})) | ${esc(g.kind + ': ' + g.uncertainty)} | ${esc(g.sources.join('; ') || 'None recorded at this scope')} | ${esc(g.nextSource)} | ${g.status} |`);
+    if (g.election !== election) { election = g.election; lines.push(`## ${election}`, '', '| Item | Kind / uncertainty | Current sources | Best next source | Status / record |', '| --- | --- | --- | --- | --- |'); }
+    lines.push(`| ${escapeCell([g.letters, g.name, g.item].filter(Boolean).join(' / '))} | ${escapeCell(g.kind + ': ' + g.uncertainty)} | ${escapeCell(g.sources.join('; ') || 'None recorded at this scope')} | ${escapeCell(g.nextSource)} | ${g.status} / ${g.file} |`);
   }
   return lines.join('\n') + '\n';
 }
+/** Keep JSON readable without thousands of repeated property lines. */
+export function serializeSummary(summary: Summary): string {
+  const { items, ...totals } = summary;
+  return JSON.stringify(totals, null, 2).slice(0, -2) + ',\n  "items": [\n' + items.map(item => '    ' + JSON.stringify(item)).join(',\n') + '\n  ]\n}\n';
+}
+export function writeRegister(root = ROOT, full = false) {
+  const register = generateFullRegister(root);
+  const summary = summarizeRegister(register);
+  writeFileSync(join(root, 'docs/data-gaps.json'), serializeSummary(summary));
+  writeFileSync(join(root, 'docs/data-gaps.md'), renderMarkdown(summary));
+  if (full) {
+    const directory = join(root, '.backup-scratch/data-gaps');
+    mkdirSync(directory, { recursive: true });
+    writeFileSync(join(directory, 'full.json'), JSON.stringify(register, null, 2) + '\n');
+    writeFileSync(join(directory, 'full.md'), renderFullMarkdown(register));
+  }
+  return summary;
+}
 export function checkRegister(root = ROOT) {
   const register = generateRegister(root);
-  for (const [file, expected] of [['docs/data-gaps.json', JSON.stringify(register, null, 2) + '\n'], ['docs/data-gaps.md', renderMarkdown(register)]])
+  for (const [file, expected] of [['docs/data-gaps.json', serializeSummary(register)], ['docs/data-gaps.md', renderMarkdown(register)]])
     if (!existsSync(join(root, file)) || readFileSync(join(root, file), 'utf8') !== expected) throw new Error(`${file} is stale. Run npm run data:gaps and commit both outputs.`);
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   if (process.argv.includes('--check')) checkRegister();
-  else { const register = generateRegister(); writeFileSync(join(ROOT, 'docs/data-gaps.json'), JSON.stringify(register, null, 2) + '\n'); writeFileSync(join(ROOT, 'docs/data-gaps.md'), renderMarkdown(register)); console.log(register.counts); }
+  else console.log(writeRegister(ROOT, process.argv.includes('--full')).counts);
 }
