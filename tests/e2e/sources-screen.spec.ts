@@ -26,7 +26,8 @@ test('k1: no zero counts for missing localities, no dead project links, secondar
   expect(kinds.indexOf('secondary')).toBeGreaterThan(-1);
   expect(kinds.slice(kinds.indexOf('secondary')).every(k => k === 'secondary')).toBe(true);
   // the locality download is offered only where locality data exists
-  await expect(panel.getByRole('link', { name: 'localities', exact: true })).toHaveCount(0);
+  await expect(panel.getByRole('button', { name: 'localities', exact: true })).toHaveCount(0);
+  await expect(panel.getByRole('link', { name: 'original CEC names', exact: true })).toHaveCount(0);
 });
 
 test('k26 in English: English publishers, one credit per logo, downloads served, no English Wikipedia', async ({ page }) => {
@@ -45,10 +46,19 @@ test('k26 in English: English publishers, one credit per logo, downloads served,
   expect(credits.length).toBeGreaterThan(10);
   for (const c of credits) expect(c, c).toMatch(/^[^\u0590-\u05FF\u0600-\u06FF]*[A-Za-z]/);
   await expect(page.locator('a[href*="en.wikipedia.org"], a[href*="en.m.wikipedia.org"]')).toHaveCount(0);
-  for (const name of ['election data', 'localities', 'all sources']) {
+  for (const name of ['election data', 'original CEC names', 'all sources']) {
     const href = await panel.getByRole('link', { name, exact: true }).getAttribute('href');
     expect((await page.request.get(href!)).ok(), href!).toBe(true);
   }
+  const pending = page.waitForEvent('download');
+  await panel.getByRole('button', { name: 'localities', exact: true }).click();
+  const downloaded = await pending;
+  expect(downloaded.suggestedFilename()).toBe('k26-localities-display.json');
+  const { readFile } = await import('node:fs/promises');
+  const exported = JSON.parse(await readFile((await downloaded.path())!, 'utf8'));
+  const locality = exported.rows.find((r: {code:number}) => r.code === 964);
+  expect(locality.nameHe).toBe('קודייראת א-צאנע (שבט)');
+  expect(locality.cecNameHe).toBe('קודייראת א-צאנע(שבט)');
 });
 
 test('Hebrew counts keep their order and About reads as a timeline', async ({ page }) => {

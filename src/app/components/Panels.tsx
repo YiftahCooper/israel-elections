@@ -9,16 +9,17 @@ import { PartEdits } from './PartEdits.tsx';
 import { describe } from '../actionDescription.ts';
 import { EditMarker } from './EditMarker.tsx';
 import { ruleEraLabel } from '../changeValue.tsx';
-import { LocalityMap, Locality2006Note, LocalityName, localityName, useLocalityLocations, useLocalityNames } from './LocalityMap.tsx';
+import { LocalityMap, Locality2006Note, LocalityName, localityName, localityNameSource, useLocalityLocations, useLocalityNames } from './LocalityMap.tsx';
+import { localityHebrewName, type LocalityNames } from '../../data/locality-names.ts';
 import { matchesLocality } from '../locality-map-model.ts';
 import { Fragment, useEffect, useMemo, useState, type ReactNode } from 'react';
-import { isEnvelopeRow, type ElectionDataset } from '../../data/schema.ts';
+import { isEnvelopeRow, type ElectionDataset, type LocalityDataset } from '../../data/schema.ts';
 import { RULESETS } from '../../engine/rules.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import { electionRuleSetId, historicalRules, type Scenario } from '../../model/scenario.ts';
 import { historyChangesLabels, baselineOf, listLabel, methodOf } from '../derive.ts';
 import { GLOSSARY, useL, useLang } from '../i18n.ts';
-import { fmtInt, fmtPct } from '../format.ts';
+import { download, fmtInt, fmtPct } from '../format.ts';
 import { dispatch, getState, redo, replay, setState, undo, useStore, useDigits, useSetting } from '../store.ts';
 import { useLocalities } from './Turnout.tsx';
 import { GlossaryLink, Info, TextField } from './ui.tsx';
@@ -167,7 +168,7 @@ export function Localities({ s }: { s: Scenario }) {
   const keyed = data.rows.map((r, i) => ({ r, key: String(i) }));
   const hasRegistered = data.rows.some((r) => r.registered !== null);
   const nameAt = (key: string) => localityName(names, data.rows[Number(key)], Number(key), lang);
-  const rows = keyed.filter(({ r, key }) => matchesLocality(q, { ...locations[String(r.code)], nameHe: r.nameHe, code: r.code, aliases: [...(locations[String(r.code)]?.aliases ?? []), names.names[Number(key)] ?? ''] }))
+  const rows = keyed.filter(({ r, key }) => matchesLocality(q, { ...locations[String(r.code)], nameHe: localityHebrewName(names, r, Number(key)), code: r.code, aliases: [...(locations[String(r.code)]?.aliases ?? []), names.names[Number(key)] ?? '', r.nameHe] }))
     .sort(({ r: a, key: ka }, { r: b, key: kb }) => sort === 'name' || (!hasRegistered && sort !== 'turnout') ? nameAt(ka).localeCompare(nameAt(kb), lang)
       : sort === 'turnout' ? (b.registered ? b.votesCast / b.registered : -1) - (a.registered ? a.votesCast / a.registered : -1)
       : (b.registered ?? 0) - (a.registered ?? 0)).slice(0, 300);
@@ -196,7 +197,7 @@ export function Localities({ s }: { s: Scenario }) {
             return (
               <Fragment key={key}>
                 <tr className={open === key ? 'sel' : ''}>
-                  <td><button className="table-action" aria-expanded={open === key} onClick={() => setOpen(open === key ? null : key)} title={lang === 'en' ? r.nameHe : undefined}><LocalityName names={names} row={r} index={Number(key)} /></button> <span className="muted tiny">{r.code}</span></td>
+                  <td><button className="table-action" aria-expanded={open === key} onClick={() => setOpen(open === key ? null : key)} title={localityNameSource(names, r, Number(key), lang)}><LocalityName names={names} row={r} index={Number(key)} showCbs /></button> <span className="muted tiny">{r.code}</span></td>
                   <td className="n">{r.registered ? fmtInt(r.registered) : '—'}</td><td className="n">{fmtInt(r.votesCast)}</td>
                   <td className="n">{r.registered ? fmtPct(r.votesCast, r.registered, digits) : '—'}</td><td className="n">{fmtInt(r.valid)}</td>
                   <td className="small">{top.slice(0, 3).filter((x) => x.v > 0).map((x) => `${nameOf(x.k)} ${fmtPct(x.v, r.valid, 0)}`).join(' · ')}</td>
@@ -244,6 +245,18 @@ const loadSources = () => sourcesLoad ??= fetch('data/sources.json')
 export function Sources({ ds }: { ds: ElectionDataset }) {
   const L = useL();
   const lang = useLang();
+  const [exportError, setExportError] = useState(false);
+  async function exportLocalities() {
+    try {
+      const [data, names] = await Promise.all(['localities', 'locality-names'].map(async suffix => {
+        const r = await fetch(`${import.meta.env.BASE_URL}data/${ds.id}-${suffix}.json`);
+        if (!r.ok) throw new Error(String(r.status));
+        return r.json();
+      })) as [LocalityDataset, LocalityNames];
+      download(`${ds.id}-localities-display.json`, JSON.stringify({ ...data, rows: data.rows.map((row, i) => ({ ...row, nameHe: localityHebrewName(names, row, i), cecNameHe: row.nameHe, nameSource: names.hebrew?.[i] })) }, null, 2), 'application/json');
+      setExportError(false);
+    } catch { setExportError(true); }
+  }
   // A failed load says so rather than showing an empty list.
   const [src, setSrc] = useState<Src[] | null>(sourcesCache ?? null);
   const [failed, setFailed] = useState(false);
@@ -280,8 +293,9 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
         </div>
         <p className="small"><Download className="icon sm" aria-hidden style={{ verticalAlign: '-2px', marginInlineEnd: 4 }} />{L('Download', 'הורדה')}:{' '}
           <a href={`data/${ds.id}.json`} download>{L('election data', 'נתוני הבחירות')}</a>
-          {!noLocalities && <> · <a href={`data/${ds.id}-localities.json`} download>{L('localities', 'יישובים')}</a></>}
+          {!noLocalities && <> · <button className="table-action" onClick={exportLocalities}>{L('localities', 'יישובים')}</button> · <a href={`data/${ds.id}-localities.json`} download>{L('original CEC names', 'שמות מקוריים מוועדת הבחירות')}</a></>}
           {' · '}<a href="data/sources.json" download>{L('all sources', 'כל המקורות')}</a> <span className="muted">(JSON)</span></p>
+        {exportError && <p className="bad" role="status">{L('Could not export localities.', 'לא ניתן לייצא יישובים.')}</p>}
         <h3 style={{ marginTop: 14 }}>{L('Sources', 'מקורות')}</h3>
         <p className="small ink2">{L('Official sources first', 'מקורות רשמיים תחילה')} <Info title={L('Source policy', 'מדיניות המקורות')}>{L('Official sources come first; secondary sources are labelled. English-language Wikipedia is never used or linked: it is unreliable on Israel-related information.', 'מקורות רשמיים קודמים לכול; מקורות משניים מסומנים. ויקיפדיה באנגלית אינה משמשת כמקור ואין אליה קישורים: היא אינה אמינה במידע הנוגע לישראל.')}</Info></p>
         {failed ? <p className="small" role="alert">{L('The source list could not be loaded. Reload to try again.', 'לא ניתן לטעון את רשימת המקורות. טענו מחדש כדי לנסות שוב.')}</p>
