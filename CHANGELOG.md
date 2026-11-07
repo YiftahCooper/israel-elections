@@ -2,6 +2,7 @@
 
 ## 6 November 2026 — data audit
 
+- Families: count Otzma Yehudit only in Radical right in 2015, as in 2019–2022; the national-religious family keeps Yachad.
 - Label the Sources polling count as polling-station results and explain that it counts results-table rows, not physical stations.
 - Research: refresh the Learn/Play information-architecture brief with current map behaviour, every tab and post-election scope.
 - 7 November: replace 44 stale ballot-letter IDs and all references with corrected IDs; remove pre-release saved-format migrations. This supersedes the stable-ID wording in the audit entries below.
