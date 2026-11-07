@@ -1,3 +1,5 @@
+import {assignColour,MARK_BACKGROUNDS,isHexColour} from '../data/colourGuard.ts';
+import {FAMILY_COLOURS,familyColor} from './colors.ts';
 import {familyLabel} from './labels.ts';
 import type { ElectionDataset, ElectionId } from '../data/schema.ts';
 import type { Action, Scenario } from '../model/scenario.ts';
@@ -6,7 +8,7 @@ export type MixedPolicy = 'separate-segment' | 'include-whole-list' | 'include-h
 export interface Member { listId: string; partyIds: string[]; scope: string; headsList?: boolean; treatment: string; classificationEvidence: { status: string; sourceIds: string[]; claim: string }; [key: string]: unknown }
 export interface Family {
   schemaVersion: 1; id: string; revision: string; status: string; nameHe: string; nameEn: string;
-  labelEn?: string; labelHe?: string;
+  labelEn?: string; labelHe?: string; displayColor?: string;
   definition: string; definitionHe?: string; defaultMixedPolicy: MixedPolicy;
   sources: Record<string, { url?: string; publisher?: string; [key: string]: unknown }>;
   elections: { electionId: ElectionId; members: Member[]; reviewCandidates: { listId: string; nameHe?: string; reason: string; sourceIds: string[] }[]; [key: string]: unknown }[];
@@ -17,6 +19,7 @@ const obj = (x: unknown): x is Record<string, any> => !!x && typeof x === 'objec
 const strings = (x: unknown): x is string[] => Array.isArray(x) && x.every(y => typeof y === 'string') && new Set(x).size === x.length;
 export function validFamily(x: unknown): x is Family {
   if (!obj(x) || x.schemaVersion !== 1 || !['id','revision','status','nameHe','nameEn','definition'].every(k => typeof x[k] === 'string' && x[k].length > 0) || !['separate-segment','include-whole-list','include-headed-list','exclude'].includes(x.defaultMixedPolicy) || !obj(x.sources) || !Array.isArray(x.elections)) return false;
+  if(x.displayColor!==undefined&&!isHexColour(x.displayColor))return false;
   for (const k of ['labelHe','labelEn']) if (x[k]!==undefined && (typeof x[k]!=='string'||!x[k].trim())) return false;
   for (const s of Object.values(x.sources)) { if (!obj(s)) return false; if (s.url) { try { const u = new URL(s.url); if (u.protocol !== 'https:' || /(^|\.)en\.(m\.)?wikipedia\.org$/i.test(u.hostname)) return false; } catch { return false; } } }
   if (new Set(x.elections.map((e: any) => e.electionId)).size !== x.elections.length) return false;
@@ -90,5 +93,5 @@ export function groupingAction(f: Family,s: Scenario,lang: 'he'|'en' = 'he'): Ac
 }
 export interface Catalogue { version:1; users:Family[]; hidden:string[] }
 export const emptyCatalogue = ():Catalogue=>({version:1,users:[],hidden:[]});
-export function fork(f:Family):Family { return {...structuredClone(f),id:`personal-${crypto.randomUUID()}`, revision:new Date().toISOString(),status:'personal',forkedFrom:{id:f.id,revision:f.revision}}; }
+export function fork(f:Family,used:readonly string[]=Object.values(FAMILY_COLOURS)):Family { return {...structuredClone(f),displayColor:assignColour(Object.values(FAMILY_COLOURS),[...used,familyColor(f)],{minDeltaE:20,minChroma:.06,backgrounds:MARK_BACKGROUNDS}),id:`personal-${crypto.randomUUID()}`, revision:new Date().toISOString(),status:'personal',forkedFrom:{id:f.id,revision:f.revision}}; }
 export function visibility(c:Catalogue,id:string,hide:boolean):Catalogue { return {...c,hidden:hide?[...new Set([...c.hidden,id])]:c.hidden.filter(x=>x!==id)}; }

@@ -50,7 +50,7 @@ export const clip = (t: string, px: number) => {
 /** The label column for a set of names: as wide as the longest name needs, up to `cap`. */
 const labelColumn = (names: string[], cap: number) => Math.min(cap, Math.ceil(Math.max(40, ...names.map(textWidth))) + 16);
 /** Bar outlines mixed toward the ink, so pale and dark list colours both keep an edge against the page. */
-const edge = (c: string) => `color-mix(in srgb, ${c} 65%, var(--ink))`;
+const edge = (_c: string) => 'var(--ink-2)';
 
 export function Charts({ s, r }: { s: Scenario; r: AllocationResult }) {
   const L = useL();

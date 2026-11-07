@@ -1,3 +1,4 @@
+import{deltaE2000}from'../../src/data/colour.ts';
 import { expect, test, type Page } from '@playwright/test';
 import { choose } from './choices.ts';
 // Round-2 audit of the list side panel and the shared controls it uses (5 Nov 2026).
@@ -92,13 +93,13 @@ test('joint-list parties without a colour of their own are told apart on candida
   expect(displayColours).toContain(partyColour);
   await panel.getByRole('button', { name: 'Split into separate lists', exact: true }).click();
   await panel.getByRole('button', { name: 'Run as 2 separate lists', exact: true }).click();
-  // New ballot lists retain the existing standalone palette policy; their fills are
-  // not dots backed by a list-colour ring. Both resulting parties remain distinct.
+  // New ballot lists start from recorded party colours or stable party-id bases.
+  // Their variants must remain distinct from one another and the remaining lists.
   const parts = page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: /^(Agudat Yisrael|Degel HaTorah)$/, exact: true });
   await expect(parts).toHaveCount(2);
   const colours = await parts.evaluateAll(rows => rows.map(r => getComputedStyle(r.querySelector('.slip')!).getPropertyValue('--c').trim()));
   expect(new Set(colours).size).toBe(2);
-  expect(colours).toContain(listColour);
+  colours.forEach((a,i)=>colours.slice(i+1).forEach(b=>expect(deltaE2000(a,b)).toBeGreaterThanOrEqual(20)));
 });
 
 test('a short picker has no search box; choosing the option in force is not an edit', async ({ page }) => {

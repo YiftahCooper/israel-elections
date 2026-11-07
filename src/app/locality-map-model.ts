@@ -1,3 +1,4 @@
+export const MAP_UNASSIGNED_COLOUR='#000000';
 import type { Scenario } from '../model/scenario.ts';
 import type { Coordinate } from '../data/locality-coordinates.ts';
 import { allocationOf, seatBlocsOf } from './derive.ts';
@@ -41,7 +42,7 @@ export function localityWinner(s: Scenario, listIds: string[], votes: number[], 
   const { key, votes: count } = sorted[0] ?? { key: null, votes: 0 };
   const tied = sorted.length > 1 && Math.abs(count - sorted[1].votes) < 1e-8;
   return { key: count > 0 && !tied ? key : null, votes: count, tied, runnerUp: sorted[1]?.key ?? null, margin: count - (sorted[1]?.votes ?? 0),
-    color: tied || count <= 0 ? '#78838c' : (mode === 'bloc' ? s.blocs.find(b => b.id === key)?.color : s.lists.find(l => l.id === key)?.color) ?? '#78838c' };
+    color: tied || count <= 0 ? MAP_UNASSIGNED_COLOUR : (mode === 'bloc' ? s.blocs.find(b => b.id === key)?.color : s.lists.find(l => l.id === key)?.color) ?? MAP_UNASSIGNED_COLOUR };
 }
 export function nearestLocality<T extends Coordinate>(items: T[], point: Coordinate): {item: T; km: number} | null {
   const rad = Math.PI / 180;

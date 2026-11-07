@@ -299,7 +299,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k2.json",
-      "sha256": "eafd3ffcc1c022cfd9c76fe2f04d6306be643e05c873062aa54a9aa942f2af9f",
+      "sha256": "e10df1a3ec940c55366a81ae6d1c0d7293e1d1884970034bef184621562a6280",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k3": {
@@ -334,7 +334,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k7.json",
-      "sha256": "6aeaff3a56bf928795b1d29948cd2132ea61158f1d5508f8fe48c28c80912359",
+      "sha256": "90492f23c2d87c45c65f728ca054f97b0cac9d5f0a9fbb43aebe5f0ce49b70cd",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k8": {
@@ -376,7 +376,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k13.json",
-      "sha256": "6075f9aba1d51098c5a8c65c0b7b889264112d681e1baaeaeb575e1ce6738268",
+      "sha256": "a59730d1471fc3aaf031f9ab9e748bb594148a2fba52ff76c23061c7d05b8040",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k14": {
@@ -411,7 +411,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k18.json",
-      "sha256": "8f014955a071800d56cd243e3ff3c4c9e6da2f8dcb64b211eb7b5a2484378059",
+      "sha256": "e5374daa8994478968f43183dd055fa4bb97db67183cb627f8bb8b9cbb9bc6b3",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k19": {
@@ -483,7 +483,7 @@
       "electionId": "k1",
       "electionDate": "1949-01-25",
       "datasetPath": "public/data/k1.json",
-      "datasetSha256": "cb6d2c80d7b99082ae1c2549aa051951c44346a775ceea8e15ffc16653fab616",
+      "datasetSha256": "2eacb3b416bc7cf057e7f334fd51ec7c48cbdd4020eb2b0307e84bc7b7d4ea17",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -658,7 +658,7 @@
       "electionId": "k2",
       "electionDate": "1951-07-30",
       "datasetPath": "public/data/k2.json",
-      "datasetSha256": "eafd3ffcc1c022cfd9c76fe2f04d6306be643e05c873062aa54a9aa942f2af9f",
+      "datasetSha256": "e10df1a3ec940c55366a81ae6d1c0d7293e1d1884970034bef184621562a6280",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-06",
@@ -839,7 +839,7 @@
       "electionId": "k3",
       "electionDate": "1955-07-26",
       "datasetPath": "public/data/k3.json",
-      "datasetSha256": "6c08cf6b8f4a0014be61e331ff1b31bb5a7ab35409ce6cf892072961737a2155",
+      "datasetSha256": "c6c3f6ec270f6f0ec34a779b396a03cb8a588f835fd82d678c826124022b8bd0",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-06",
@@ -965,7 +965,7 @@
       "electionId": "k4",
       "electionDate": "1959-11-03",
       "datasetPath": "public/data/k4.json",
-      "datasetSha256": "ed10ecd0ab537b8044580eba5768c8eedc1b847b5ecb6841e3227d84515be4c1",
+      "datasetSha256": "7b9753e22cc303a657c4f0c7103669ea39fe4a071e44fb238a9968d9c72a6d3c",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -1088,7 +1088,7 @@
       "electionId": "k5",
       "electionDate": "1961-08-15",
       "datasetPath": "public/data/k5.json",
-      "datasetSha256": "181d9a29be29a5f45cf4e658102bfd458bb812aa7e6add9ca839fef6a08a83ee",
+      "datasetSha256": "dd93fe6f780343bf7a318df40865fe4f45f399d3abe4df6da38fe8202c68db5f",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -1239,7 +1239,7 @@
       "electionId": "k6",
       "electionDate": "1965-11-02",
       "datasetPath": "public/data/k6.json",
-      "datasetSha256": "5875106a28e106650120507a1634f2fc1c6ab081e715b9fabda44ac1e235a561",
+      "datasetSha256": "68b8d2cd51c2d3fd74e8a060b26bdb84d323be52c5674c42e1a049d000271c20",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -1390,7 +1390,7 @@
       "electionId": "k7",
       "electionDate": "1969-10-28",
       "datasetPath": "public/data/k7.json",
-      "datasetSha256": "6aeaff3a56bf928795b1d29948cd2132ea61158f1d5508f8fe48c28c80912359",
+      "datasetSha256": "90492f23c2d87c45c65f728ca054f97b0cac9d5f0a9fbb43aebe5f0ce49b70cd",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -1541,7 +1541,7 @@
       "electionId": "k8",
       "electionDate": "1973-12-31",
       "datasetPath": "public/data/k8.json",
-      "datasetSha256": "7fb8ba1b13468d2c62c107c9606bbf58a181ecc7e233c07b1e0ffeb4d56edd63",
+      "datasetSha256": "3bc2e91333e206b6b09db955f228906a7d20e85a1b6f7e0f6a1f17aaad492b19",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "National results; every published seat reproduced with the six official list connections from the Central Elections Committee’s calculation record (Form 30 appendix; three had no effect). All 120 elected names transcribed from the official candidate notice (YP 1954) and cross-checked against the results notice (YP 1979) and the committee record. Later ranks truncated (Ratz complete); nonwinning rosters untranscribed. Three ballot letters and four list names corrected from the notices. Full amendment chain unverified; no localities.",
@@ -1668,7 +1668,7 @@
       "electionId": "k9",
       "electionDate": "1977-05-17",
       "datasetPath": "public/data/k9.json",
-      "datasetSha256": "763714c80da72c1ad7f34c853ee41c85d400b2f9451522b0a01be34c51837244",
+      "datasetSha256": "091db590372c1e957c96aae6d5b495b0d26eceb8ab5c10d4055441e47f60366b",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "National results; all seats reproduce with six official agreements and the k9-only candidate cap (Flatto-Sharon 1, Sheli 2). The Knesset’s 1 November 1977 appeal determination confirms the initial cap and six surplus seats under section 81(d). All 120 winning ranks are cross-checked: 119 names in YP 2326; Ratz’s rank 1 Shulamit Aloni confirmed by official Knesset OData membership and faction records from the first session, 13 June 1977 (the notice omits her paragraph). Later ranks truncated; nonwinning rosters untranscribed. Full amendment chain and unknown full-roster counterfactual capacities unverified; no localities.",
@@ -1822,7 +1822,7 @@
       "electionId": "k10",
       "electionDate": "1981-06-30",
       "datasetPath": "public/data/k10.json",
-      "datasetSha256": "a44dd69a8253518f234fca2e2447d0bde27d3ea2757e2c4fc82ffca886757074",
+      "datasetSha256": "8ec89ebc93e78d18b093e6d9fd2d9f79a12517354800f0eb993fb41ce43f0456",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 120 transcribed ranks across all 10 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
@@ -1974,7 +1974,7 @@
       "electionId": "k11",
       "electionDate": "1984-07-23",
       "datasetPath": "public/data/k11.json",
-      "datasetSha256": "82a6f50f46002118f529624fc457a49f4d70bc886535fa377fbc4efe0498c380",
+      "datasetSha256": "d9851795bedc7ad2aac820ba550eddac8d3048d2b32bae7a3b9b42228d475d7b",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 196 transcribed ranks across all 15 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted except the complete 120-name K11 Alignment roster; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
@@ -2157,7 +2157,7 @@
       "electionId": "k12",
       "electionDate": "1988-11-01",
       "datasetPath": "public/data/k12.json",
-      "datasetSha256": "8ccca36dcfdec41ba3287fb0e2b7dde469613fc3da133bbbac292ff1af6d8586",
+      "datasetSha256": "11f1b38b5f6824e4a21614564ad0b239077774e09c4f42113b69d4a7cd442236",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "National results only; every published seat reproduced. Official candidate gazette: 121 retained candidate entries (120 declared elected) across all 15 winning lists; all 120 elected names cross-checked against the results notice. Later ranks omitted; truncated winning rosters and untranscribed nonwinning rosters explicitly flagged. No localities. The complete point-in-time amendment chain and subsequent roster changes remain unverified; these are documented limitations.",
@@ -2400,7 +2400,7 @@
       "electionId": "k13",
       "electionDate": "1992-06-23",
       "datasetPath": "public/data/k13.json",
-      "datasetSha256": "6075f9aba1d51098c5a8c65c0b7b889264112d681e1baaeaeb575e1ce6738268",
+      "datasetSha256": "a59730d1471fc3aaf031f9ab9e748bb594148a2fba52ff76c23061c7d05b8040",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "Rosters: everyone elected is included and cross-checked; no full rosters; later ranks of winning lists not transcribed. Zero-seat rosters unavailable. Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. The 1992 agreement notice was not found; agreements that did not affect seats may be missing. Empty agreements reproduce every published seat.",
@@ -2612,7 +2612,7 @@
       "electionId": "k14",
       "electionDate": "1996-05-29",
       "datasetPath": "public/data/k14.json",
-      "datasetSha256": "cc7161b30919dd969ad22f1895e2585c0e1adcd77fc9f10e9a6f727e7d38d8bb",
+      "datasetSha256": "670384c1ab40448f7c0723d50734c323b4e2f66f3f4cbb6675235207132e175f",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "Rosters: everyone elected is included and cross-checked; no full rosters; Third Way retains 12 of 52 registered candidates; later ranks of winning lists not transcribed. Zero-seat rosters unavailable; registered Moreshet Avot withdrew before polling (21 registered lists, 20 contested). Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. Complete 6-pair agreement notice verified; every published seat reproduced.",
@@ -2850,7 +2850,7 @@
       "electionId": "k15",
       "electionDate": "1999-05-17",
       "datasetPath": "public/data/k15.json",
-      "datasetSha256": "59a79a367d3ad07a4ddb8cd7f70651b6a2525adcb4960b5ad16dc21592118f7c",
+      "datasetSha256": "448f85e3415e264ca28772a44172f5b6eba831a2bc9b01d67680fd83051646f3",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "Rosters: everyone elected is included and cross-checked; no full winning-list rosters; later ranks of winning lists not transcribed. Contesting zero-seat rosters unavailable; two withdrawn registrations retained. Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. Complete 9-pair agreement notice verified; every published seat reproduced.",
@@ -3102,7 +3102,7 @@
       "electionId": "k16",
       "electionDate": "2003-01-28",
       "datasetPath": "public/data/k16.json",
-      "datasetSha256": "8d62b91f76b5d44e3434992843cc571b22f781a7e68dd1897250072021de7dd2",
+      "datasetSha256": "ef183c02240973b324b3063a34a77cade5c1c3c079d290a7471f1ba2d191e067",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -3387,7 +3387,7 @@
       "electionId": "k17",
       "electionDate": "2006-03-28",
       "datasetPath": "public/data/k17.json",
-      "datasetSha256": "cc026b8fa93306e28fafa746dc6a8100772be8f9830a9c23097d0ad7b7da01fa",
+      "datasetSha256": "9788f53708d40902cc3a6a4f727cdb258249dd82581815db5e20a68c5148e844",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -3615,7 +3615,7 @@
       "electionId": "k18",
       "electionDate": "2009-02-10",
       "datasetPath": "public/data/k18.json",
-      "datasetSha256": "8f014955a071800d56cd243e3ff3c4c9e6da2f8dcb64b211eb7b5a2484378059",
+      "datasetSha256": "e5374daa8994478968f43183dd055fa4bb97db67183cb627f8bb8b9cbb9bc6b3",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2009-02-17",
@@ -3873,7 +3873,7 @@
       "electionId": "k19",
       "electionDate": "2013-01-22",
       "datasetPath": "public/data/k19.json",
-      "datasetSha256": "8219f1b09b7cd103bb109bfdd1c072dfc5b6f159ec264f6be54d5c73290f0331",
+      "datasetSha256": "aff243b0ff0321a4bf09ada55e83f2419effcc28a33dfc538ad54f1e6adea537",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2013-01-30",
@@ -4115,7 +4115,7 @@
       "electionId": "k20",
       "electionDate": "2015-03-17",
       "datasetPath": "public/data/k20.json",
-      "datasetSha256": "12649ae6dc0136205a17d6981781f1c57769a0130260e6b19c79e2ae3f0868ae",
+      "datasetSha256": "6ef4d67337c2080b888d8454a4e1a48f098ec47828712144709f591371a69648",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2015-03-25",
@@ -4377,7 +4377,7 @@
       "electionId": "k21",
       "electionDate": "2019-04-09",
       "datasetPath": "public/data/k21.json",
-      "datasetSha256": "48ba271e94b400e9434ec4c1adfa434f674213ad0854b3f10f8b092062712403",
+      "datasetSha256": "a4f107fe5dabcd12a68202f31ee4bd96bc1ceefa689f1b22088b58c75ee155f1",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -4624,7 +4624,7 @@
       "electionId": "k22",
       "electionDate": "2019-09-17",
       "datasetPath": "public/data/k22.json",
-      "datasetSha256": "c7d197640595b51470fff30af4fb3b6cf9306e2606f9f9da0188547be2fcbe41",
+      "datasetSha256": "fbee906b5de0bb8f7ad8ff56796c127079fbbc4040ed8be9fc64ce3aa2e37a62",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -4832,7 +4832,7 @@
       "electionId": "k23",
       "electionDate": "2020-03-02",
       "datasetPath": "public/data/k23.json",
-      "datasetSha256": "2448b52ee906189c58b6e3318fba00b005051c2307e8a2d7fc32e04177a36361",
+      "datasetSha256": "2df226e66d826e10704ae78cfffba6eb008aa13aa22fcc807db6cc766f054b3f",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -5023,7 +5023,7 @@
       "electionId": "k24",
       "electionDate": "2021-03-23",
       "datasetPath": "public/data/k24.json",
-      "datasetSha256": "d53a91d1a7aaa05b93e362299c0bee14154f14a9091dd2ef4ed6160edeb27002",
+      "datasetSha256": "4949c949f9cddb82ddd681eb4a8375683c2f30cdc56e5c3aa921d8c441630a8e",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
@@ -5239,7 +5239,7 @@
       "electionId": "k25",
       "electionDate": "2022-11-01",
       "datasetPath": "public/data/k25.json",
-      "datasetSha256": "935259cb6406b03c57de4aa9a155e1d22b74018b9c6cf1953333f41e67670418",
+      "datasetSha256": "bbf8166476287faeb61e429867b3effcaeca7bdfd748e1d492149e0a96c4a0ad",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2022-11-10",
@@ -5460,7 +5460,7 @@
       "electionId": "k26",
       "electionDate": "2026-10-27",
       "datasetPath": "public/data/k26.json",
-      "datasetSha256": "67e86f0e82f8d0635ca992fd632b723a96833fb81a16d40ffe0cadb2f2f6a978",
+      "datasetSha256": "9f823484a214e67e27d0c8654690f7ee5135033386a16db8268cd6be6f3e800e",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-06",

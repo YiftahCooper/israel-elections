@@ -15,7 +15,7 @@ async function split(page: Page, he = false) {
 }
 async function save(page: Page, he = false) {
   await page.getByRole('tab', { name: he ? 'תרחישים' : 'Scenarios', exact: true }).click();
-  const name = page.locator('.scn-form input');
+  const name = page.locator('.scn-form input:not([type=color])');
   await name.fill('Review A'); await name.press('Enter');
   await page.getByRole('button', { name: he ? 'שמירה' : 'Save', exact: true }).click();
   await page.getByRole('tab', { name: he ? 'תמונת מצב' : 'Overview', exact: true }).click();

@@ -1,0 +1,3802 @@
+[
+  {
+    "election": "k1",
+    "list": "1-ב",
+    "party": "hapoel-hamizrachi",
+    "name": "Hapoel HaMizrachi",
+    "base": "#007b8e",
+    "color": "#055461",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k1.json",
+    "custom": false,
+    "deltaE": 13.423
+  },
+  {
+    "election": "k1",
+    "list": "1-ב",
+    "party": "poalei-agudat-yisrael",
+    "name": "Poalei Agudat Yisrael",
+    "base": "#df561d",
+    "color": "#8d2f02",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k1.json",
+    "custom": false,
+    "deltaE": 20.189
+  },
+  {
+    "election": "k1",
+    "list": "1-ב",
+    "party": "agudat-yisrael",
+    "name": "Agudat Yisrael",
+    "base": "#c5ae6d",
+    "color": "#5e4b08",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k1.json",
+    "custom": false,
+    "deltaE": 38.408
+  },
+  {
+    "election": "k1",
+    "list": "1-ב",
+    "party": "non-party-religious-union",
+    "name": "Non-party religious union",
+    "base": "#23aa54",
+    "color": "#095a28",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 28.624
+  },
+  {
+    "election": "k1",
+    "list": "1-נ",
+    "party": "wizo",
+    "name": "WIZO",
+    "base": "#ef158d",
+    "color": "#fdc6d9",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k1.json",
+    "custom": false,
+    "deltaE": 30.855
+  },
+  {
+    "election": "k1",
+    "list": "1-נ",
+    "party": "womens-equal-rights-association",
+    "name": "Women's Equal Rights Association",
+    "base": "#a170eb",
+    "color": "#430379",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 33.225
+  },
+  {
+    "election": "k3",
+    "list": "3-ב",
+    "party": "hapoel-hamizrachi",
+    "name": "Hapoel HaMizrachi",
+    "base": "#007b8e",
+    "color": "#0a5764",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k3.json",
+    "custom": false,
+    "deltaE": 12.467
+  },
+  {
+    "election": "k3",
+    "list": "3-גד",
+    "party": "agudat-yisrael",
+    "name": "Agudat Yisrael",
+    "base": "#c5ae6d",
+    "color": "#e0c987",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k3.json",
+    "custom": false,
+    "deltaE": 7.025
+  },
+  {
+    "election": "k3",
+    "list": "3-גד",
+    "party": "poalei-agudat-yisrael",
+    "name": "Poalei Agudat Yisrael",
+    "base": "#df561d",
+    "color": "#febca5",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k3.json",
+    "custom": false,
+    "deltaE": 25.648
+  },
+  {
+    "election": "k4",
+    "list": "4-גד",
+    "party": "agudat-yisrael",
+    "name": "Agudat Yisrael",
+    "base": "#c5ae6d",
+    "color": "#e0c987",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k4.json",
+    "custom": false,
+    "deltaE": 7.025
+  },
+  {
+    "election": "k4",
+    "list": "4-גד",
+    "party": "poalei-agudat-yisrael",
+    "name": "Poalei Agudat Yisrael",
+    "base": "#df561d",
+    "color": "#febca5",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k4.json",
+    "custom": false,
+    "deltaE": 25.648
+  },
+  {
+    "election": "k6",
+    "list": "6-את",
+    "party": "mapai",
+    "name": "Mapai",
+    "base": "#ad0101",
+    "color": "#0a0000",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k6.json",
+    "custom": false,
+    "deltaE": 36.027
+  },
+  {
+    "election": "k6",
+    "list": "6-את",
+    "party": "ahdut-haavoda",
+    "name": "Ahdut HaAvoda–Poalei Zion",
+    "base": "#ce2029",
+    "color": "#460105",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k6.json",
+    "custom": false,
+    "deltaE": 27.867
+  },
+  {
+    "election": "k6",
+    "list": "6-חל",
+    "party": "herut",
+    "name": "Herut",
+    "base": "#0078ba",
+    "color": "#3293d7",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k6.json",
+    "custom": false,
+    "deltaE": 9.997
+  },
+  {
+    "election": "k7",
+    "list": "7-אמת",
+    "party": "israeli-labor-party",
+    "name": "Israeli Labor Party",
+    "base": "#ee1c25",
+    "color": "#63080a",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k7.json",
+    "custom": false,
+    "deltaE": 28.08
+  },
+  {
+    "election": "k7",
+    "list": "7-אמת",
+    "party": "mapam",
+    "name": "Mapam",
+    "base": "#96342e",
+    "color": "#1b0001",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation",
+      "sibling separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k7.json",
+    "custom": false,
+    "deltaE": 29.127
+  },
+  {
+    "election": "k7",
+    "list": "7-חל",
+    "party": "herut",
+    "name": "Herut",
+    "base": "#0078ba",
+    "color": "#3293d7",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k7.json",
+    "custom": false,
+    "deltaE": 9.997
+  },
+  {
+    "election": "k8",
+    "list": "8-חל טעם",
+    "party": "herut",
+    "name": "Herut",
+    "base": "#0078ba",
+    "color": "#e1f1ff",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k8.json",
+    "custom": false,
+    "deltaE": 37.954
+  },
+  {
+    "election": "k8",
+    "list": "8-חל טעם",
+    "party": "state-list",
+    "name": "State List",
+    "base": "#45964a",
+    "color": "#6dbe70",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k8.json",
+    "custom": false,
+    "deltaE": 12.408
+  },
+  {
+    "election": "k8",
+    "list": "8-חל טעם",
+    "party": "free-centre",
+    "name": "Free Centre",
+    "base": "#0058d5",
+    "color": "#7faefc",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k8.json",
+    "custom": false,
+    "deltaE": 28.76
+  },
+  {
+    "election": "k8",
+    "list": "8-חל טעם",
+    "party": "greater-israel-movement",
+    "name": "Movement for Greater Israel",
+    "base": "#213864",
+    "color": "#00001b",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k8.json",
+    "custom": false,
+    "deltaE": 17.264
+  },
+  {
+    "election": "k8",
+    "list": "8-אמת",
+    "party": "israeli-labor-party",
+    "name": "Israeli Labor Party",
+    "base": "#ee1c25",
+    "color": "#63080a",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k8.json",
+    "custom": false,
+    "deltaE": 28.08
+  },
+  {
+    "election": "k8",
+    "list": "8-אמת",
+    "party": "mapam",
+    "name": "Mapam",
+    "base": "#96342e",
+    "color": "#1b0001",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation",
+      "sibling separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k8.json",
+    "custom": false,
+    "deltaE": 29.127
+  },
+  {
+    "election": "k8",
+    "list": "8-גד",
+    "party": "agudat-yisrael",
+    "name": "Agudat Yisrael",
+    "base": "#c5ae6d",
+    "color": "#e0c987",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k8.json",
+    "custom": false,
+    "deltaE": 7.025
+  },
+  {
+    "election": "k8",
+    "list": "8-גד",
+    "party": "poalei-agudat-yisrael",
+    "name": "Poalei Agudat Yisrael",
+    "base": "#df561d",
+    "color": "#febca5",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k8.json",
+    "custom": false,
+    "deltaE": 25.648
+  },
+  {
+    "election": "k8",
+    "list": "8-קנ",
+    "party": "blue-red-movement",
+    "name": "Blue-Red Movement",
+    "base": "#4f8afb",
+    "color": "#bad2fd",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 21.043
+  },
+  {
+    "election": "k8",
+    "list": "8-קנ",
+    "party": "maki",
+    "name": "Maki",
+    "base": "#ff0000",
+    "color": "#fcc5bc",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k8.json",
+    "custom": false,
+    "deltaE": 32.58
+  },
+  {
+    "election": "k9",
+    "list": "9-מחל",
+    "party": "herut",
+    "name": "Herut",
+    "base": "#0078ba",
+    "color": "#55b3f9",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k9.json",
+    "custom": false,
+    "deltaE": 19.653
+  },
+  {
+    "election": "k9",
+    "list": "9-מחל",
+    "party": "laam",
+    "name": "La'am",
+    "base": "#3b916a",
+    "color": "#68bc93",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k9.json",
+    "custom": false,
+    "deltaE": 13.588
+  },
+  {
+    "election": "k9",
+    "list": "9-מחל",
+    "party": "ahdut-seidel-1977",
+    "name": "Ahdut faction (Hillel Seidel)",
+    "base": "#e75669",
+    "color": "#fe8f97",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 13.145
+  },
+  {
+    "election": "k9",
+    "list": "9-אמת",
+    "party": "israeli-labor-party",
+    "name": "Israeli Labor Party",
+    "base": "#ee1c25",
+    "color": "#63080a",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k9.json",
+    "custom": false,
+    "deltaE": 28.08
+  },
+  {
+    "election": "k9",
+    "list": "9-אמת",
+    "party": "mapam",
+    "name": "Mapam",
+    "base": "#96342e",
+    "color": "#1b0001",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation",
+      "sibling separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k9.json",
+    "custom": false,
+    "deltaE": 29.127
+  },
+  {
+    "election": "k9",
+    "list": "9-ו",
+    "party": "rakah",
+    "name": "Rakah",
+    "base": "#ab0e1a",
+    "color": "#8a0411",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k9.json",
+    "custom": false,
+    "deltaE": 6.664
+  },
+  {
+    "election": "k9",
+    "list": "9-ו",
+    "party": "black-panthers",
+    "name": "Black Panthers",
+    "base": "#4ca82d",
+    "color": "#e4fedd",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 30.301
+  },
+  {
+    "election": "k9",
+    "list": "9-ש",
+    "party": "independent-socialists",
+    "name": "Independent Socialist (Social-Democratic) Faction",
+    "base": "#239bcf",
+    "color": "#45b4ea",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 7.6
+  },
+  {
+    "election": "k9",
+    "list": "9-ש",
+    "party": "moked",
+    "name": "Moked",
+    "base": "#ff2a24",
+    "color": "#fd8778",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k9.json",
+    "custom": false,
+    "deltaE": 15.782
+  },
+  {
+    "election": "k9",
+    "list": "9-ש",
+    "party": "meri",
+    "name": "Meri (Israeli Radical Camp)",
+    "base": "#7b7ef9",
+    "color": "#b0b7fe",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 16.447
+  },
+  {
+    "election": "k9",
+    "list": "9-ש",
+    "party": "black-panthers",
+    "name": "Black Panthers",
+    "base": "#4ca82d",
+    "color": "#62be46",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 6.527
+  },
+  {
+    "election": "k10",
+    "list": "10-מחל",
+    "party": "herut",
+    "name": "Herut",
+    "base": "#0078ba",
+    "color": "#55b3f9",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k10.json",
+    "custom": false,
+    "deltaE": 19.653
+  },
+  {
+    "election": "k10",
+    "list": "10-מחל",
+    "party": "laam",
+    "name": "La'am",
+    "base": "#3b916a",
+    "color": "#68bc93",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k10.json",
+    "custom": false,
+    "deltaE": 13.588
+  },
+  {
+    "election": "k10",
+    "list": "10-אמת",
+    "party": "labor",
+    "name": "Israeli Labor Party",
+    "base": "#ee161f",
+    "color": "#630608",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k10.json",
+    "custom": false,
+    "deltaE": 27.974
+  },
+  {
+    "election": "k10",
+    "list": "10-אמת",
+    "party": "mapam",
+    "name": "Mapam",
+    "base": "#ab0e1a",
+    "color": "#1b0001",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation",
+      "sibling separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k10.json",
+    "custom": false,
+    "deltaE": 32.009
+  },
+  {
+    "election": "k10",
+    "list": "10-ו",
+    "party": "israeli-communist-party",
+    "name": "Israeli Communist Party (Rakah)",
+    "base": "#089bd4",
+    "color": "#35b1eb",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 6.722
+  },
+  {
+    "election": "k10",
+    "list": "10-ו",
+    "party": "black-panthers",
+    "name": "Black Panthers",
+    "base": "#4ca82d",
+    "color": "#5fbb43",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 5.686
+  },
+  {
+    "election": "k11",
+    "list": "11-מחל",
+    "party": "herut",
+    "name": "Herut",
+    "base": "#0078ba",
+    "color": "#55b3f9",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k11.json",
+    "custom": false,
+    "deltaE": 19.653
+  },
+  {
+    "election": "k11",
+    "list": "11-אמת",
+    "party": "labor",
+    "name": "Israeli Labor Party",
+    "base": "#ee161f",
+    "color": "#630608",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k11.json",
+    "custom": false,
+    "deltaE": 27.974
+  },
+  {
+    "election": "k11",
+    "list": "11-אמת",
+    "party": "mapam",
+    "name": "Mapam",
+    "base": "#ab0e1a",
+    "color": "#1b0001",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation",
+      "sibling separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k11.json",
+    "custom": false,
+    "deltaE": 32.009
+  },
+  {
+    "election": "k11",
+    "list": "11-אמת",
+    "party": "independent-liberals",
+    "name": "Independent Liberals",
+    "base": "#e25689",
+    "color": "#fecbd8",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 26.55
+  },
+  {
+    "election": "k11",
+    "list": "11-ו",
+    "party": "israeli-communist-party",
+    "name": "Israeli Communist Party (Rakah)",
+    "base": "#089bd4",
+    "color": "#35b1eb",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 6.722
+  },
+  {
+    "election": "k11",
+    "list": "11-ו",
+    "party": "black-panthers",
+    "name": "Black Panthers",
+    "base": "#4ca82d",
+    "color": "#5fbb43",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 5.686
+  },
+  {
+    "election": "k11",
+    "list": "11-ת",
+    "party": "tehiya",
+    "name": "Tehiya",
+    "base": "#007fff",
+    "color": "#003d81",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k11.json",
+    "custom": false,
+    "deltaE": 25.996
+  },
+  {
+    "election": "k11",
+    "list": "11-ת",
+    "party": "tzomet",
+    "name": "Tzomet",
+    "base": "#00a4c0",
+    "color": "#ddf7ff",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k11.json",
+    "custom": false,
+    "deltaE": 27.181
+  },
+  {
+    "election": "k11",
+    "list": "11-עי",
+    "party": "matzad",
+    "name": "Matzad",
+    "base": "#d45baf",
+    "color": "#ec71c5",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 7.009
+  },
+  {
+    "election": "k11",
+    "list": "11-עי",
+    "party": "poalei-agudat-yisrael",
+    "name": "Poalei Agudat Yisrael",
+    "base": "#df561d",
+    "color": "#fb794a",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k1.json",
+    "custom": false,
+    "deltaE": 10.027
+  },
+  {
+    "election": "k12",
+    "list": "12-ג",
+    "party": "agudat-yisrael",
+    "name": "Agudat Yisrael",
+    "base": "#122d70",
+    "color": "#061e60",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k12.json",
+    "custom": false,
+    "deltaE": 4.743
+  },
+  {
+    "election": "k12",
+    "list": "12-ג",
+    "party": "poalei-agudat-yisrael",
+    "name": "Poalei Agudat Yisrael",
+    "base": "#df561d",
+    "color": "#febca5",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k1.json",
+    "custom": false,
+    "deltaE": 25.648
+  },
+  {
+    "election": "k12",
+    "list": "12-ו",
+    "party": "israeli-communist-party",
+    "name": "Israeli Communist Party (Rakah)",
+    "base": "#089bd4",
+    "color": "#b4e2fd",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 22.012
+  },
+  {
+    "election": "k12",
+    "list": "12-ו",
+    "party": "black-panthers",
+    "name": "Black Panthers",
+    "base": "#4ca82d",
+    "color": "#92f078",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 18.814
+  },
+  {
+    "election": "k12",
+    "list": "12-הן",
+    "party": "shinui",
+    "name": "Shinui",
+    "base": "#2d4277",
+    "color": "#6e88c2",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k12.json",
+    "custom": false,
+    "deltaE": 25.862
+  },
+  {
+    "election": "k13",
+    "list": "13-מרצ",
+    "party": "ratz",
+    "name": "Ratz",
+    "base": "#c80004",
+    "color": "#3a0000",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "sibling separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k13.json",
+    "custom": false,
+    "deltaE": 29.868
+  },
+  {
+    "election": "k13",
+    "list": "13-מרצ",
+    "party": "mapam",
+    "name": "Mapam",
+    "base": "#ab0e1a",
+    "color": "#9b0d17",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k13.json",
+    "custom": false,
+    "deltaE": 3.167
+  },
+  {
+    "election": "k13",
+    "list": "13-ג",
+    "party": "agudat-yisrael",
+    "name": "Agudat Yisrael",
+    "base": "#122d70",
+    "color": "#061e60",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k13.json",
+    "custom": false,
+    "deltaE": 4.743
+  },
+  {
+    "election": "k13",
+    "list": "13-ג",
+    "party": "moria",
+    "name": "Moria (Rabbi Yitzhak Peretz)",
+    "base": "#008ee0",
+    "color": "#97cefe",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k13.json",
+    "custom": false,
+    "deltaE": 19.444
+  },
+  {
+    "election": "k13",
+    "list": "13-ג",
+    "party": "degel-hatorah",
+    "name": "Degel HaTorah",
+    "base": "#03428f",
+    "color": "#00020d",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "sibling separation"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k13.json",
+    "custom": false,
+    "deltaE": 27.279
+  },
+  {
+    "election": "k14",
+    "list": "14-מחל",
+    "party": "likud",
+    "name": "Likud",
+    "base": "#1f5aa5",
+    "color": "#78b0fc",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k14.json",
+    "custom": false,
+    "deltaE": 31.169
+  },
+  {
+    "election": "k14",
+    "list": "14-מחל",
+    "party": "gesher",
+    "name": "Gesher",
+    "base": "#0000ff",
+    "color": "#00001f",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k14.json",
+    "custom": false,
+    "deltaE": 31.87
+  },
+  {
+    "election": "k14",
+    "list": "14-מחל",
+    "party": "tzomet",
+    "name": "Tzomet",
+    "base": "#00a4c0",
+    "color": "#64e1fe",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "sibling separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k14.json",
+    "custom": false,
+    "deltaE": 16.355
+  },
+  {
+    "election": "k14",
+    "list": "14-מרצ",
+    "party": "ratz",
+    "name": "Ratz",
+    "base": "#c80004",
+    "color": "#3a0000",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "sibling separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k14.json",
+    "custom": false,
+    "deltaE": 29.868
+  },
+  {
+    "election": "k14",
+    "list": "14-מרצ",
+    "party": "mapam",
+    "name": "Mapam",
+    "base": "#ab0e1a",
+    "color": "#9b0d17",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k14.json",
+    "custom": false,
+    "deltaE": 3.167
+  },
+  {
+    "election": "k14",
+    "list": "14-ו",
+    "party": "hadash",
+    "name": "Hadash",
+    "base": "#c81f28",
+    "color": "#fb8179",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k14.json",
+    "custom": false,
+    "deltaE": 23.643
+  },
+  {
+    "election": "k14",
+    "list": "14-ו",
+    "party": "balad",
+    "name": "Balad",
+    "base": "#f07d00",
+    "color": "#fc881e",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k14.json",
+    "custom": false,
+    "deltaE": 3.291
+  },
+  {
+    "election": "k14",
+    "list": "14-ג",
+    "party": "agudat-yisrael",
+    "name": "Agudat Yisrael",
+    "base": "#122d70",
+    "color": "#061e60",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k14.json",
+    "custom": false,
+    "deltaE": 4.743
+  },
+  {
+    "election": "k14",
+    "list": "14-ג",
+    "party": "degel-hatorah",
+    "name": "Degel HaTorah",
+    "base": "#03428f",
+    "color": "#00020d",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "sibling separation"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k14.json",
+    "custom": false,
+    "deltaE": 27.279
+  },
+  {
+    "election": "k14",
+    "list": "14-ע",
+    "party": "arab-democratic-party",
+    "name": "Arab Democratic Party",
+    "base": "#15793d",
+    "color": "#00250d",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k14.json",
+    "custom": false,
+    "deltaE": 26.711
+  },
+  {
+    "election": "k14",
+    "list": "14-ע",
+    "party": "ram",
+    "name": "Ra'am – United Arab List (Islamic Movement, southern branch)",
+    "base": "#15793d",
+    "color": "#7bd593",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k14.json",
+    "custom": false,
+    "deltaE": 29.255
+  },
+  {
+    "election": "k15",
+    "list": "15-אמת",
+    "party": "labor",
+    "name": "Israeli Labor Party",
+    "base": "#ee161f",
+    "color": "#8f030b",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k15.json",
+    "custom": false,
+    "deltaE": 19.66
+  },
+  {
+    "election": "k15",
+    "list": "15-אמת",
+    "party": "gesher",
+    "name": "Gesher",
+    "base": "#0000ff",
+    "color": "#012cc6",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k15.json",
+    "custom": false,
+    "deltaE": 7.205
+  },
+  {
+    "election": "k15",
+    "list": "15-אמת",
+    "party": "meimad",
+    "name": "Meimad",
+    "base": "#93961c",
+    "color": "#faffba",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 28.041
+  },
+  {
+    "election": "k15",
+    "list": "15-ג",
+    "party": "agudat-yisrael",
+    "name": "Agudat Yisrael",
+    "base": "#122d70",
+    "color": "#061e60",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k15.json",
+    "custom": false,
+    "deltaE": 4.743
+  },
+  {
+    "election": "k15",
+    "list": "15-ג",
+    "party": "degel-hatorah",
+    "name": "Degel HaTorah",
+    "base": "#03428f",
+    "color": "#00020d",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "sibling separation"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k15.json",
+    "custom": false,
+    "deltaE": 27.279
+  },
+  {
+    "election": "k15",
+    "list": "15-עם",
+    "party": "ram",
+    "name": "Ra'am – United Arab List (Islamic Movement, southern branch)",
+    "base": "#15793d",
+    "color": "#7bd593",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k15.json",
+    "custom": false,
+    "deltaE": 29.255
+  },
+  {
+    "election": "k15",
+    "list": "15-עם",
+    "party": "arab-democratic-party",
+    "name": "Arab Democratic Party",
+    "base": "#15793d",
+    "color": "#00250d",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k15.json",
+    "custom": false,
+    "deltaE": 26.711
+  },
+  {
+    "election": "k15",
+    "list": "15-ט",
+    "party": "herut-national-movement",
+    "name": "Herut – The National Movement",
+    "base": "#239bcf",
+    "color": "#74cdfc",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 14.518
+  },
+  {
+    "election": "k15",
+    "list": "15-ט",
+    "party": "moledet",
+    "name": "Moledet",
+    "base": "#083d7b",
+    "color": "#001e45",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k15.json",
+    "custom": false,
+    "deltaE": 11.24
+  },
+  {
+    "election": "k15",
+    "list": "15-ט",
+    "party": "tkuma",
+    "name": "Tkuma",
+    "base": "#f47e49",
+    "color": "#fdae8d",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k18.json",
+    "custom": false,
+    "deltaE": 12.262
+  },
+  {
+    "election": "k15",
+    "list": "15-ד",
+    "party": "balad",
+    "name": "Balad",
+    "base": "#f07d00",
+    "color": "#80430c",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k15.json",
+    "custom": false,
+    "deltaE": 30.353
+  },
+  {
+    "election": "k15",
+    "list": "15-ד",
+    "party": "taal",
+    "name": "Ta'al",
+    "base": "#f2cb06",
+    "color": "#372d03",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k18.json",
+    "custom": false,
+    "deltaE": 65.946
+  },
+  {
+    "election": "k16",
+    "list": "16-אמת",
+    "party": "labor",
+    "name": "Israeli Labor Party",
+    "base": "#ee161f",
+    "color": "#630608",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k16.json",
+    "custom": false,
+    "deltaE": 27.974
+  },
+  {
+    "election": "k16",
+    "list": "16-אמת",
+    "party": "meimad",
+    "name": "Meimad",
+    "base": "#93961c",
+    "color": "#d8dd6e",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 19.369
+  },
+  {
+    "election": "k16",
+    "list": "16-ל",
+    "party": "yisrael-beiteinu",
+    "name": "Yisrael Beiteinu",
+    "base": "#0096b1",
+    "color": "#0a5666",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k16.json",
+    "custom": false,
+    "deltaE": 23.184
+  },
+  {
+    "election": "k16",
+    "list": "16-ל",
+    "party": "tkuma",
+    "name": "Tkuma",
+    "base": "#f47e49",
+    "color": "#893401",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k18.json",
+    "custom": false,
+    "deltaE": 32.046
+  },
+  {
+    "election": "k16",
+    "list": "16-ל",
+    "party": "moledet",
+    "name": "Moledet",
+    "base": "#083d7b",
+    "color": "#012c5f",
+    "forced": true,
+    "reasons": [
+      "sibling separation"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k16.json",
+    "custom": false,
+    "deltaE": 6.011
+  },
+  {
+    "election": "k16",
+    "list": "16-מרצ",
+    "party": "meretz",
+    "name": "Meretz",
+    "base": "#40b339",
+    "color": "#0b5b08",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k16.json",
+    "custom": false,
+    "deltaE": 31.958
+  },
+  {
+    "election": "k16",
+    "list": "16-מרצ",
+    "party": "democratic-choice",
+    "name": "Democratic Choice",
+    "base": "#e5557c",
+    "color": "#9f0044",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 21.969
+  },
+  {
+    "election": "k16",
+    "list": "16-מרצ",
+    "party": "shahar",
+    "name": "Shahar",
+    "base": "#05a693",
+    "color": "#01423a",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 34.695
+  },
+  {
+    "election": "k16",
+    "list": "16-ג",
+    "party": "agudat-yisrael",
+    "name": "Agudat Yisrael",
+    "base": "#122d70",
+    "color": "#061e60",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k16.json",
+    "custom": false,
+    "deltaE": 4.743
+  },
+  {
+    "election": "k16",
+    "list": "16-ג",
+    "party": "degel-hatorah",
+    "name": "Degel HaTorah",
+    "base": "#03428f",
+    "color": "#00020d",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "sibling separation"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k16.json",
+    "custom": false,
+    "deltaE": 27.279
+  },
+  {
+    "election": "k16",
+    "list": "16-ו",
+    "party": "hadash",
+    "name": "Hadash",
+    "base": "#c81f28",
+    "color": "#fb8179",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k16.json",
+    "custom": false,
+    "deltaE": 23.643
+  },
+  {
+    "election": "k16",
+    "list": "16-עם",
+    "party": "ram",
+    "name": "Ra'am – United Arab List (Islamic Movement, southern branch)",
+    "base": "#15793d",
+    "color": "#7bd593",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k16.json",
+    "custom": false,
+    "deltaE": 29.255
+  },
+  {
+    "election": "k16",
+    "list": "16-עם",
+    "party": "arab-democratic-party",
+    "name": "Arab Democratic Party",
+    "base": "#15793d",
+    "color": "#00250d",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k16.json",
+    "custom": false,
+    "deltaE": 26.711
+  },
+  {
+    "election": "k17",
+    "list": "17-אמת",
+    "party": "labor",
+    "name": "Israeli Labor Party",
+    "base": "#ee161f",
+    "color": "#630608",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k17.json",
+    "custom": false,
+    "deltaE": 27.974
+  },
+  {
+    "election": "k17",
+    "list": "17-אמת",
+    "party": "meimad",
+    "name": "Meimad",
+    "base": "#93961c",
+    "color": "#d8dd6e",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 19.369
+  },
+  {
+    "election": "k17",
+    "list": "17-טב",
+    "party": "moledet",
+    "name": "Moledet",
+    "base": "#083d7b",
+    "color": "#00193d",
+    "forced": true,
+    "reasons": [
+      "sibling separation"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k17.json",
+    "custom": false,
+    "deltaE": 13.097
+  },
+  {
+    "election": "k17",
+    "list": "17-טב",
+    "party": "tkuma",
+    "name": "Tkuma",
+    "base": "#f47e49",
+    "color": "#893401",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k18.json",
+    "custom": false,
+    "deltaE": 32.046
+  },
+  {
+    "election": "k17",
+    "list": "17-טב",
+    "party": "ahi",
+    "name": "Renewed Religious National Zionism",
+    "base": "#008bd3",
+    "color": "#035582",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k18.json",
+    "custom": false,
+    "deltaE": 20.409
+  },
+  {
+    "election": "k17",
+    "list": "17-ג",
+    "party": "agudat-yisrael",
+    "name": "Agudat Yisrael",
+    "base": "#122d70",
+    "color": "#061e60",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k17.json",
+    "custom": false,
+    "deltaE": 4.743
+  },
+  {
+    "election": "k17",
+    "list": "17-ג",
+    "party": "degel-hatorah",
+    "name": "Degel HaTorah",
+    "base": "#03428f",
+    "color": "#00020d",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "sibling separation"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k17.json",
+    "custom": false,
+    "deltaE": 27.279
+  },
+  {
+    "election": "k17",
+    "list": "17-עם",
+    "party": "ram",
+    "name": "Ra'am – United Arab List (Islamic Movement, southern branch)",
+    "base": "#15793d",
+    "color": "#7bd593",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k17.json",
+    "custom": false,
+    "deltaE": 29.255
+  },
+  {
+    "election": "k17",
+    "list": "17-עם",
+    "party": "arab-democratic-party",
+    "name": "Arab Democratic Party",
+    "base": "#15793d",
+    "color": "#00250d",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k17.json",
+    "custom": false,
+    "deltaE": 26.711
+  },
+  {
+    "election": "k18",
+    "list": "18-מחל",
+    "party": "ahi",
+    "name": "Ahi",
+    "base": "#008bd3",
+    "color": "#a2d4fc",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k18.json",
+    "custom": false,
+    "deltaE": 22.442
+  },
+  {
+    "election": "k18",
+    "list": "18-מחל",
+    "party": "likud",
+    "name": "Likud",
+    "base": "#1f5aa5",
+    "color": "#042a59",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k18.json",
+    "custom": false,
+    "deltaE": 16.972
+  },
+  {
+    "election": "k18",
+    "list": "18-ג",
+    "party": "agudat-yisrael",
+    "name": "Agudat Yisrael",
+    "base": "#c5ae6d",
+    "color": "#e0c987",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k18.json",
+    "custom": false,
+    "deltaE": 7.025
+  },
+  {
+    "election": "k18",
+    "list": "18-עם",
+    "party": "raam",
+    "name": "Ra'am (United Arab List)",
+    "base": "#297c32",
+    "color": "#002d06",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k18.json",
+    "custom": false,
+    "deltaE": 25.14
+  },
+  {
+    "election": "k18",
+    "list": "18-ט",
+    "party": "tkuma",
+    "name": "Tkuma (National Union–Tkuma)",
+    "base": "#f47e49",
+    "color": "#803105",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k18.json",
+    "custom": false,
+    "deltaE": 34.037
+  },
+  {
+    "election": "k18",
+    "list": "18-ט",
+    "party": "hatikva",
+    "name": "Hatikva",
+    "base": "#11ab59",
+    "color": "#001c09",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 47.394
+  },
+  {
+    "election": "k18",
+    "list": "18-ט",
+    "party": "eretz-yisrael-shelanu",
+    "name": "Eretz Yisrael Shelanu",
+    "base": "#31aa40",
+    "color": "#095416",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 30.49
+  },
+  {
+    "election": "k18",
+    "list": "18-מרצ",
+    "party": "new-movement",
+    "name": "HaTnua HaHadasha (New Movement)",
+    "base": "#e8594d",
+    "color": "#9e0009",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 23.236
+  },
+  {
+    "election": "k18",
+    "list": "18-מרצ",
+    "party": "meretz",
+    "name": "Meretz",
+    "base": "#42b23c",
+    "color": "#0e5b0c",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k18.json",
+    "custom": false,
+    "deltaE": 31.629
+  },
+  {
+    "election": "k18",
+    "list": "18-ה",
+    "party": "meimad",
+    "name": "Meimad",
+    "base": "#93961c",
+    "color": "#373803",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 34.925
+  },
+  {
+    "election": "k18",
+    "list": "18-ה",
+    "party": "green-movement",
+    "name": "Green Movement",
+    "base": "#54ef5f",
+    "color": "#74fe7a",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k18.json",
+    "custom": false,
+    "deltaE": 3.943
+  },
+  {
+    "election": "k19",
+    "list": "19-מחל",
+    "party": "likud",
+    "name": "Likud",
+    "base": "#1f5aa5",
+    "color": "#022c5f",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k19.json",
+    "custom": false,
+    "deltaE": 16.121
+  },
+  {
+    "election": "k19",
+    "list": "19-מחל",
+    "party": "yisrael-beiteinu",
+    "name": "Yisrael Beiteinu",
+    "base": "#99c3e1",
+    "color": "#b0dbf9",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k19.json",
+    "custom": false,
+    "deltaE": 5.857
+  },
+  {
+    "election": "k19",
+    "list": "19-טב",
+    "party": "jewish-home",
+    "name": "The Jewish Home",
+    "base": "#8dc63f",
+    "color": "#476a0f",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k19.json",
+    "custom": false,
+    "deltaE": 30.799
+  },
+  {
+    "election": "k19",
+    "list": "19-טב",
+    "party": "tkuma",
+    "name": "Tkuma (National Union–Tkuma)",
+    "base": "#f47e49",
+    "color": "#a84102",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k19.json",
+    "custom": false,
+    "deltaE": 23.418
+  },
+  {
+    "election": "k19",
+    "list": "19-ג",
+    "party": "agudat-yisrael",
+    "name": "Agudat Yisrael",
+    "base": "#c5ae6d",
+    "color": "#e0c987",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k19.json",
+    "custom": false,
+    "deltaE": 7.025
+  },
+  {
+    "election": "k19",
+    "list": "19-עם",
+    "party": "raam",
+    "name": "Ra'am (United Arab List)",
+    "base": "#297c32",
+    "color": "#6abb6e",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k19.json",
+    "custom": false,
+    "deltaE": 21.409
+  },
+  {
+    "election": "k19",
+    "list": "19-עם",
+    "party": "mada",
+    "name": "Arab Democratic Party (Mada)",
+    "base": "#b568dc",
+    "color": "#d68efc",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 10.966
+  },
+  {
+    "election": "k20",
+    "list": "20-אמת",
+    "party": "labor",
+    "name": "Labor",
+    "base": "#ee161f",
+    "color": "#8f030b",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k20.json",
+    "custom": false,
+    "deltaE": 19.66
+  },
+  {
+    "election": "k20",
+    "list": "20-אמת",
+    "party": "green-movement",
+    "name": "Green Movement",
+    "base": "#54ef5f",
+    "color": "#ecffeb",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k20.json",
+    "custom": false,
+    "deltaE": 24.919
+  },
+  {
+    "election": "k20",
+    "list": "20-ודעם",
+    "party": "hadash",
+    "name": "Hadash (Israeli Communist Party)",
+    "base": "#ea1f26",
+    "color": "#4e0406",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "sibling separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k20.json",
+    "custom": false,
+    "deltaE": 31.688
+  },
+  {
+    "election": "k20",
+    "list": "20-ודעם",
+    "party": "raam",
+    "name": "Ra'am (United Arab List)",
+    "base": "#297c32",
+    "color": "#0f611d",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k20.json",
+    "custom": false,
+    "deltaE": 9.203
+  },
+  {
+    "election": "k20",
+    "list": "20-ודעם",
+    "party": "balad",
+    "name": "Balad",
+    "base": "#f65f0c",
+    "color": "#943500",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k20.json",
+    "custom": false,
+    "deltaE": 24.416
+  },
+  {
+    "election": "k20",
+    "list": "20-ודעם",
+    "party": "taal",
+    "name": "Ta'al",
+    "base": "#f2cb06",
+    "color": "#61510e",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k20.json",
+    "custom": false,
+    "deltaE": 44.377
+  },
+  {
+    "election": "k20",
+    "list": "20-טב",
+    "party": "jewish-home",
+    "name": "The Jewish Home",
+    "base": "#8dc63f",
+    "color": "#476a0f",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k20.json",
+    "custom": false,
+    "deltaE": 30.799
+  },
+  {
+    "election": "k20",
+    "list": "20-טב",
+    "party": "tkuma",
+    "name": "Tkuma (National Union–Tkuma)",
+    "base": "#f47e49",
+    "color": "#a84102",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k20.json",
+    "custom": false,
+    "deltaE": 23.418
+  },
+  {
+    "election": "k20",
+    "list": "20-ג",
+    "party": "agudat-yisrael",
+    "name": "Agudat Yisrael",
+    "base": "#c5ae6d",
+    "color": "#d6bf7e",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k20.json",
+    "custom": false,
+    "deltaE": 4.541
+  },
+  {
+    "election": "k20",
+    "list": "20-קץ",
+    "party": "yachad",
+    "name": "Yachad",
+    "base": "#004d8f",
+    "color": "#01386a",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k20.json",
+    "custom": false,
+    "deltaE": 7.565
+  },
+  {
+    "election": "k20",
+    "list": "20-קץ",
+    "party": "otzma-yehudit",
+    "name": "Otzma Yehudit (Jewish National Front)",
+    "base": "#f0491c",
+    "color": "#711800",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k20.json",
+    "custom": false,
+    "deltaE": 28.643
+  },
+  {
+    "election": "k20",
+    "list": "20-ע",
+    "party": "mada",
+    "name": "Arab Democratic Party (Mada)",
+    "base": "#b568dc",
+    "color": "#651087",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 27.559
+  },
+  {
+    "election": "k20",
+    "list": "20-ע",
+    "party": "national-arab-party",
+    "name": "National Arab Party",
+    "base": "#e75e31",
+    "color": "#732408",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 28.553
+  },
+  {
+    "election": "k21",
+    "list": "21-מחל",
+    "party": "likud",
+    "name": "Likud",
+    "base": "#1f5aa5",
+    "color": "#000310",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k21.json",
+    "custom": false,
+    "deltaE": 32.028
+  },
+  {
+    "election": "k21",
+    "list": "21-מחל",
+    "party": "ahi",
+    "name": "Ahi",
+    "base": "#008bd3",
+    "color": "#46b4ff",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k21.json",
+    "custom": false,
+    "deltaE": 12.835
+  },
+  {
+    "election": "k21",
+    "list": "21-פה",
+    "party": "israel-resilience",
+    "name": "Israel Resilience",
+    "base": "#00c4f3",
+    "color": "#0e6881",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k21.json",
+    "custom": false,
+    "deltaE": 30.991
+  },
+  {
+    "election": "k21",
+    "list": "21-פה",
+    "party": "telem",
+    "name": "Telem",
+    "base": "#093566",
+    "color": "#00112b",
+    "forced": true,
+    "reasons": [
+      "sibling separation"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k21.json",
+    "custom": false,
+    "deltaE": 12.714
+  },
+  {
+    "election": "k21",
+    "list": "21-ג",
+    "party": "agudat-yisrael",
+    "name": "Agudat Yisrael",
+    "base": "#c5ae6d",
+    "color": "#e0c987",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k21.json",
+    "custom": false,
+    "deltaE": 7.025
+  },
+  {
+    "election": "k21",
+    "list": "21-ום",
+    "party": "hadash",
+    "name": "Hadash (Israeli Communist Party)",
+    "base": "#ea1f26",
+    "color": "#fdaca3",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k21.json",
+    "custom": false,
+    "deltaE": 27.425
+  },
+  {
+    "election": "k21",
+    "list": "21-טב",
+    "party": "jewish-home",
+    "name": "The Jewish Home",
+    "base": "#8dc63f",
+    "color": "#476a0f",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k21.json",
+    "custom": false,
+    "deltaE": 30.799
+  },
+  {
+    "election": "k21",
+    "list": "21-טב",
+    "party": "tkuma",
+    "name": "National Union–Tkuma",
+    "base": "#f47e49",
+    "color": "#a84102",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k21.json",
+    "custom": false,
+    "deltaE": 23.418
+  },
+  {
+    "election": "k21",
+    "list": "21-טב",
+    "party": "otzma-yehudit",
+    "name": "Otzma Yehudit (Jewish National Front)",
+    "base": "#f0491c",
+    "color": "#5b1100",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "sibling separation"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k21.json",
+    "custom": false,
+    "deltaE": 33.139
+  },
+  {
+    "election": "k21",
+    "list": "21-דעם",
+    "party": "raam",
+    "name": "Ra'am (United Arab List)",
+    "base": "#297c32",
+    "color": "#045b16",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k21.json",
+    "custom": false,
+    "deltaE": 11.145
+  },
+  {
+    "election": "k21",
+    "list": "21-דעם",
+    "party": "balad",
+    "name": "Balad",
+    "base": "#f65f0c",
+    "color": "#8a3305",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k21.json",
+    "custom": false,
+    "deltaE": 26.46
+  },
+  {
+    "election": "k21",
+    "list": "21-ז",
+    "party": "zehut",
+    "name": "Zehut",
+    "base": "#51c8e6",
+    "color": "#e6f9ff",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k21.json",
+    "custom": false,
+    "deltaE": 20.557
+  },
+  {
+    "election": "k21",
+    "list": "21-ז",
+    "party": "achiezer",
+    "name": "Achiezer",
+    "base": "#4c8bfb",
+    "color": "#013b9c",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 29.489
+  },
+  {
+    "election": "k21",
+    "list": "21-קף",
+    "party": "kol-yisrael-ahim",
+    "name": "Kol Yisrael Ahim",
+    "base": "#1397e6",
+    "color": "#dbeefe",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 28.189
+  },
+  {
+    "election": "k21",
+    "list": "21-קף",
+    "party": "peula-leyisrael",
+    "name": "Peula LeYisrael",
+    "base": "#e85856",
+    "color": "#7a0714",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 28.759
+  },
+  {
+    "election": "k22",
+    "list": "22-פה",
+    "party": "israel-resilience",
+    "name": "Israel Resilience",
+    "base": "#00c4f3",
+    "color": "#0e6881",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k22.json",
+    "custom": false,
+    "deltaE": 30.991
+  },
+  {
+    "election": "k22",
+    "list": "22-פה",
+    "party": "telem",
+    "name": "Telem",
+    "base": "#093566",
+    "color": "#00112b",
+    "forced": true,
+    "reasons": [
+      "sibling separation"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k22.json",
+    "custom": false,
+    "deltaE": 12.714
+  },
+  {
+    "election": "k22",
+    "list": "22-מחל",
+    "party": "likud",
+    "name": "Likud",
+    "base": "#1f5aa5",
+    "color": "#000310",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k22.json",
+    "custom": false,
+    "deltaE": 32.028
+  },
+  {
+    "election": "k22",
+    "list": "22-מחל",
+    "party": "kulanu",
+    "name": "Kulanu",
+    "base": "#00aff0",
+    "color": "#20b8fa",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k22.json",
+    "custom": false,
+    "deltaE": 2.572
+  },
+  {
+    "election": "k22",
+    "list": "22-ודעם",
+    "party": "hadash",
+    "name": "Hadash (Israeli Communist Party)",
+    "base": "#ea1f26",
+    "color": "#4b0104",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "sibling separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k22.json",
+    "custom": false,
+    "deltaE": 32.444
+  },
+  {
+    "election": "k22",
+    "list": "22-ודעם",
+    "party": "balad",
+    "name": "Balad",
+    "base": "#f65f0c",
+    "color": "#8d360a",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k22.json",
+    "custom": false,
+    "deltaE": 25.66
+  },
+  {
+    "election": "k22",
+    "list": "22-ודעם",
+    "party": "taal",
+    "name": "Ta'al",
+    "base": "#f2cb06",
+    "color": "#61510e",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k22.json",
+    "custom": false,
+    "deltaE": 44.377
+  },
+  {
+    "election": "k22",
+    "list": "22-ודעם",
+    "party": "raam",
+    "name": "Ra'am (United Arab List)",
+    "base": "#297c32",
+    "color": "#0f611d",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k22.json",
+    "custom": false,
+    "deltaE": 9.203
+  },
+  {
+    "election": "k22",
+    "list": "22-ג",
+    "party": "agudat-yisrael",
+    "name": "Agudat Yisrael",
+    "base": "#c5ae6d",
+    "color": "#e0c987",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k22.json",
+    "custom": false,
+    "deltaE": 7.025
+  },
+  {
+    "election": "k22",
+    "list": "22-טב",
+    "party": "new-right",
+    "name": "New Right (registered as Tzalash)",
+    "base": "#25abe4",
+    "color": "#a9e0ff",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k22.json",
+    "custom": false,
+    "deltaE": 16.509
+  },
+  {
+    "election": "k22",
+    "list": "22-טב",
+    "party": "jewish-home",
+    "name": "The Jewish Home",
+    "base": "#8dc63f",
+    "color": "#afea66",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k22.json",
+    "custom": false,
+    "deltaE": 8.772
+  },
+  {
+    "election": "k22",
+    "list": "22-טב",
+    "party": "tkuma",
+    "name": "National Union–Tkuma",
+    "base": "#f47e49",
+    "color": "#fdcfbc",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k22.json",
+    "custom": false,
+    "deltaE": 21.339
+  },
+  {
+    "election": "k22",
+    "list": "22-אמת",
+    "party": "labor",
+    "name": "Labor",
+    "base": "#ee161f",
+    "color": "#630608",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k22.json",
+    "custom": false,
+    "deltaE": 27.974
+  },
+  {
+    "election": "k22",
+    "list": "22-מרצ",
+    "party": "meretz",
+    "name": "Meretz",
+    "base": "#42b23c",
+    "color": "#001d00",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k22.json",
+    "custom": false,
+    "deltaE": 50.289
+  },
+  {
+    "election": "k22",
+    "list": "22-מרצ",
+    "party": "green-movement",
+    "name": "Green Movement",
+    "base": "#54ef5f",
+    "color": "#025810",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k22.json",
+    "custom": false,
+    "deltaE": 48.226
+  },
+  {
+    "election": "k22",
+    "list": "22-מרצ",
+    "party": "independence",
+    "name": "Israel Democratic Party (registered as Independence)",
+    "base": "#05a786",
+    "color": "#255353",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 31.721
+  },
+  {
+    "election": "k23",
+    "list": "23-מחל",
+    "party": "likud",
+    "name": "Likud",
+    "base": "#1f5aa5",
+    "color": "#000310",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k23.json",
+    "custom": false,
+    "deltaE": 32.028
+  },
+  {
+    "election": "k23",
+    "list": "23-מחל",
+    "party": "kulanu",
+    "name": "Kulanu",
+    "base": "#00aff0",
+    "color": "#20b8fa",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k23.json",
+    "custom": false,
+    "deltaE": 2.572
+  },
+  {
+    "election": "k23",
+    "list": "23-פה",
+    "party": "israel-resilience",
+    "name": "Israel Resilience",
+    "base": "#00c4f3",
+    "color": "#0e6881",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k23.json",
+    "custom": false,
+    "deltaE": 30.991
+  },
+  {
+    "election": "k23",
+    "list": "23-פה",
+    "party": "telem",
+    "name": "Telem",
+    "base": "#093566",
+    "color": "#00112b",
+    "forced": true,
+    "reasons": [
+      "sibling separation"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k23.json",
+    "custom": false,
+    "deltaE": 12.714
+  },
+  {
+    "election": "k23",
+    "list": "23-ודעם",
+    "party": "hadash",
+    "name": "Hadash (Israeli Communist Party)",
+    "base": "#ea1f26",
+    "color": "#4b0104",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "sibling separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k23.json",
+    "custom": false,
+    "deltaE": 32.444
+  },
+  {
+    "election": "k23",
+    "list": "23-ודעם",
+    "party": "balad",
+    "name": "Balad",
+    "base": "#f65f0c",
+    "color": "#8d360a",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k23.json",
+    "custom": false,
+    "deltaE": 25.66
+  },
+  {
+    "election": "k23",
+    "list": "23-ודעם",
+    "party": "taal",
+    "name": "Ta'al",
+    "base": "#f2cb06",
+    "color": "#61510e",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k23.json",
+    "custom": false,
+    "deltaE": 44.377
+  },
+  {
+    "election": "k23",
+    "list": "23-ודעם",
+    "party": "raam",
+    "name": "Ra'am (United Arab List)",
+    "base": "#297c32",
+    "color": "#0f611d",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k23.json",
+    "custom": false,
+    "deltaE": 9.203
+  },
+  {
+    "election": "k23",
+    "list": "23-ג",
+    "party": "agudat-yisrael",
+    "name": "Agudat Yisrael",
+    "base": "#c5ae6d",
+    "color": "#e0c987",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k23.json",
+    "custom": false,
+    "deltaE": 7.025
+  },
+  {
+    "election": "k23",
+    "list": "23-אמת",
+    "party": "labor",
+    "name": "Labor",
+    "base": "#ee161f",
+    "color": "#630608",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k23.json",
+    "custom": false,
+    "deltaE": 27.974
+  },
+  {
+    "election": "k23",
+    "list": "23-אמת",
+    "party": "meretz",
+    "name": "Meretz",
+    "base": "#42b23c",
+    "color": "#81ef79",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k23.json",
+    "custom": false,
+    "deltaE": 15.672
+  },
+  {
+    "election": "k23",
+    "list": "23-טב",
+    "party": "new-right",
+    "name": "New Right (registered as Tzalash)",
+    "base": "#25abe4",
+    "color": "#04354a",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation",
+      "sibling separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k23.json",
+    "custom": false,
+    "deltaE": 42.991
+  },
+  {
+    "election": "k23",
+    "list": "23-טב",
+    "party": "jewish-home",
+    "name": "The Jewish Home",
+    "base": "#8dc63f",
+    "color": "#afea66",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k23.json",
+    "custom": false,
+    "deltaE": 8.772
+  },
+  {
+    "election": "k23",
+    "list": "23-טב",
+    "party": "tkuma",
+    "name": "National Union–Tkuma",
+    "base": "#f47e49",
+    "color": "#fdcfbc",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k23.json",
+    "custom": false,
+    "deltaE": 21.339
+  },
+  {
+    "election": "k23",
+    "list": "23-טב",
+    "party": "ahi",
+    "name": "Ahi",
+    "base": "#008bd3",
+    "color": "#b5ddfd",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k23.json",
+    "custom": false,
+    "deltaE": 25.263
+  },
+  {
+    "election": "k24",
+    "list": "24-מחל",
+    "party": "likud",
+    "name": "Likud",
+    "base": "#1f5aa5",
+    "color": "#78b0fc",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k24.json",
+    "custom": false,
+    "deltaE": 31.169
+  },
+  {
+    "election": "k24",
+    "list": "24-מחל",
+    "party": "atid-ehad",
+    "name": "Atid Ehad",
+    "base": "#d66f1b",
+    "color": "#fc9247",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 10.762
+  },
+  {
+    "election": "k24",
+    "list": "24-ג",
+    "party": "agudat-yisrael",
+    "name": "Agudat Yisrael",
+    "base": "#c5ae6d",
+    "color": "#e0c987",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k24.json",
+    "custom": false,
+    "deltaE": 7.025
+  },
+  {
+    "election": "k24",
+    "list": "24-ט",
+    "party": "otzma-yehudit",
+    "name": "Otzma Yehudit (Jewish National Front)",
+    "base": "#f0491c",
+    "color": "#fdcabd",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "sibling separation"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k24.json",
+    "custom": false,
+    "deltaE": 29.953
+  },
+  {
+    "election": "k24",
+    "list": "24-ט",
+    "party": "noam",
+    "name": "Noam (registered as Lazuz)",
+    "base": "#3f7b8d",
+    "color": "#5793a6",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k24.json",
+    "custom": false,
+    "deltaE": 9.024
+  },
+  {
+    "election": "k24",
+    "list": "24-ודעם",
+    "party": "hadash",
+    "name": "Hadash (Israeli Communist Party)",
+    "base": "#ea1f26",
+    "color": "#4e0406",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "sibling separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k24.json",
+    "custom": false,
+    "deltaE": 31.688
+  },
+  {
+    "election": "k24",
+    "list": "24-ודעם",
+    "party": "taal",
+    "name": "Ta'al",
+    "base": "#f2cb06",
+    "color": "#61510e",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k24.json",
+    "custom": false,
+    "deltaE": 44.377
+  },
+  {
+    "election": "k24",
+    "list": "24-ודעם",
+    "party": "balad",
+    "name": "Balad",
+    "base": "#f65f0c",
+    "color": "#943500",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k24.json",
+    "custom": false,
+    "deltaE": 24.416
+  },
+  {
+    "election": "k24",
+    "list": "24-ת",
+    "party": "new-hope",
+    "name": "New Hope",
+    "base": "#01448b",
+    "color": "#013167",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k24.json",
+    "custom": false,
+    "deltaE": 7.045
+  },
+  {
+    "election": "k24",
+    "list": "24-ת",
+    "party": "derech-eretz",
+    "name": "Derech Eretz",
+    "base": "#007fff",
+    "color": "#c4ddfe",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k24.json",
+    "custom": false,
+    "deltaE": 27.485
+  },
+  {
+    "election": "k25",
+    "list": "25-ט",
+    "party": "tkuma",
+    "name": "Religious Zionist Party (National Union–Tkuma)",
+    "base": "#f47e49",
+    "color": "#ffeee7",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k25.json",
+    "custom": false,
+    "deltaE": 30.022
+  },
+  {
+    "election": "k25",
+    "list": "25-ט",
+    "party": "otzma-yehudit",
+    "name": "Otzma Yehudit (Jewish National Front)",
+    "base": "#f0491c",
+    "color": "#771e06",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k25.json",
+    "custom": false,
+    "deltaE": 27.228
+  },
+  {
+    "election": "k25",
+    "list": "25-ט",
+    "party": "noam",
+    "name": "Noam (registered as Lazuz)",
+    "base": "#3f7b8d",
+    "color": "#044554",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k25.json",
+    "custom": false,
+    "deltaE": 18.673
+  },
+  {
+    "election": "k25",
+    "list": "25-ט",
+    "party": "atid-ehad",
+    "name": "Atid Ehad",
+    "base": "#d66f1b",
+    "color": "#240c00",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 46.03
+  },
+  {
+    "election": "k25",
+    "list": "25-ט",
+    "party": "eretz-yisrael-shelanu",
+    "name": "Eretz Yisrael Shelanu",
+    "base": "#31aa40",
+    "color": "#cbffcb",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 26.448
+  },
+  {
+    "election": "k25",
+    "list": "25-ג",
+    "party": "agudat-yisrael",
+    "name": "Agudat Yisrael",
+    "base": "#c5ae6d",
+    "color": "#e0c987",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k25.json",
+    "custom": false,
+    "deltaE": 7.025
+  },
+  {
+    "election": "k25",
+    "list": "25-כן",
+    "party": "israel-resilience",
+    "name": "Blue and White (Israel Resilience)",
+    "base": "#00c4f3",
+    "color": "#01627b",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k25.json",
+    "custom": false,
+    "deltaE": 33.735
+  },
+  {
+    "election": "k25",
+    "list": "25-כן",
+    "party": "new-hope",
+    "name": "New Hope",
+    "base": "#01448b",
+    "color": "#013167",
+    "forced": true,
+    "reasons": [
+      "sibling separation"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k25.json",
+    "custom": false,
+    "deltaE": 7.045
+  },
+  {
+    "election": "k25",
+    "list": "25-ום",
+    "party": "hadash",
+    "name": "Hadash (Israeli Communist Party)",
+    "base": "#ea1f26",
+    "color": "#fdaca3",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k25.json",
+    "custom": false,
+    "deltaE": 27.425
+  },
+  {
+    "election": "k25",
+    "list": "25-ב",
+    "party": "new-right",
+    "name": "Yamina / New Right (registered as Tzalash)",
+    "base": "#25abe4",
+    "color": "#92d8fe",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k25.json",
+    "custom": false,
+    "deltaE": 13.588
+  },
+  {
+    "election": "k25",
+    "list": "25-ב",
+    "party": "jewish-home",
+    "name": "The Jewish Home",
+    "base": "#8dc63f",
+    "color": "#a5e05c",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k25.json",
+    "custom": false,
+    "deltaE": 6.472
+  },
+  {
+    "election": "k25",
+    "list": "25-ב",
+    "party": "religious-national-israeli",
+    "name": "Religious National Israeli for All Israel",
+    "base": "#a68e1e",
+    "color": "#fff2c1",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 27.998
+  },
+  {
+    "election": "k26",
+    "list": "26-מחל",
+    "party": "likud",
+    "name": "Likud",
+    "base": "#1f5aa5",
+    "color": "#78b0fc",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k26.json",
+    "custom": false,
+    "deltaE": 31.169
+  },
+  {
+    "election": "k26",
+    "list": "26-מחל",
+    "party": "new-hope",
+    "name": "New Hope – the National Right",
+    "base": "#01448b",
+    "color": "#00030f",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k26.json",
+    "custom": false,
+    "deltaE": 26.403
+  },
+  {
+    "election": "k26",
+    "list": "26-ב",
+    "party": "otzma-yehudit",
+    "name": "Otzma Yehudit (Jewish National Front)",
+    "base": "#f0491c",
+    "color": "#ae2f0a",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k26.json",
+    "custom": false,
+    "deltaE": 15.923
+  },
+  {
+    "election": "k26",
+    "list": "26-ב",
+    "party": "eretz-yisrael-shelanu",
+    "name": "Eretz Yisrael Shelanu",
+    "base": "#31aa40",
+    "color": "#006b19",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 22.838
+  },
+  {
+    "election": "k26",
+    "list": "26-ג",
+    "party": "agudat-yisrael",
+    "name": "Agudat Yisrael",
+    "base": "#c5ae6d",
+    "color": "#e0c987",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k26.json",
+    "custom": false,
+    "deltaE": 7.025
+  },
+  {
+    "election": "k26",
+    "list": "26-ג",
+    "party": "homat-torat-yisrael",
+    "name": "Homat Torat Yisrael",
+    "base": "#0f92f7",
+    "color": "#a3cffe",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 18.437
+  },
+  {
+    "election": "k26",
+    "list": "26-ט",
+    "party": "tkuma",
+    "name": "Religious Zionist Party (National Union–Tkuma)",
+    "base": "#f47e49",
+    "color": "#903a0a",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k26.json",
+    "custom": false,
+    "deltaE": 29.601
+  },
+  {
+    "election": "k26",
+    "list": "26-ט",
+    "party": "zehut",
+    "name": "Zehut",
+    "base": "#51c8e6",
+    "color": "#015d6f",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k26.json",
+    "custom": false,
+    "deltaE": 37.235
+  },
+  {
+    "election": "k26",
+    "list": "26-ט",
+    "party": "atid-ehad",
+    "name": "Atid Ehad",
+    "base": "#d66f1b",
+    "color": "#371802",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 40.484
+  },
+  {
+    "election": "k26",
+    "list": "26-דרך",
+    "party": "yashar",
+    "name": "Yashar! (with Eisenkot)",
+    "base": "#63baf4",
+    "color": "#0b5075",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k26.json",
+    "custom": false,
+    "deltaE": 40.129
+  },
+  {
+    "election": "k26",
+    "list": "26-דרך",
+    "party": "yesodot-yisrael",
+    "name": "Yesodot Yisrael",
+    "base": "#8a9a14",
+    "color": "#475001",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 28.165
+  },
+  {
+    "election": "k26",
+    "list": "26-אמת",
+    "party": "democrats",
+    "name": "The Democrats",
+    "base": "#2535d8",
+    "color": "#7295fb",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "ring separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k26.json",
+    "custom": false,
+    "deltaE": 31.657
+  },
+  {
+    "election": "k26",
+    "list": "26-רק",
+    "party": "together-bennett",
+    "name": "Together (Bennett)",
+    "base": "#2a2a78",
+    "color": "#020014",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "sibling separation"
+    ],
+    "confidence": "low",
+    "source": "data/meta/k26.json",
+    "custom": false,
+    "deltaE": 21.932
+  },
+  {
+    "election": "k26",
+    "list": "26-רק",
+    "party": "yesh-atid",
+    "name": "Yesh Atid",
+    "base": "#003aa7",
+    "color": "#022874",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k26.json",
+    "custom": false,
+    "deltaE": 8.331
+  },
+  {
+    "election": "k26",
+    "list": "26-ודם",
+    "party": "hadash",
+    "name": "Hadash (Israeli Communist Party)",
+    "base": "#ea1f26",
+    "color": "#4b0104",
+    "forced": true,
+    "reasons": [
+      "ring contrast",
+      "sibling separation"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k26.json",
+    "custom": false,
+    "deltaE": 32.444
+  },
+  {
+    "election": "k26",
+    "list": "26-ודם",
+    "party": "taal",
+    "name": "Ta'al",
+    "base": "#f2cb06",
+    "color": "#61510e",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k26.json",
+    "custom": false,
+    "deltaE": 44.377
+  },
+  {
+    "election": "k26",
+    "list": "26-ודם",
+    "party": "balad",
+    "name": "Balad",
+    "base": "#f65f0c",
+    "color": "#8d360a",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k26.json",
+    "custom": false,
+    "deltaE": 25.66
+  },
+  {
+    "election": "k26",
+    "list": "26-די",
+    "party": "reservists",
+    "name": "The Reservists",
+    "base": "#1ea499",
+    "color": "#d7fff9",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 27.705
+  },
+  {
+    "election": "k26",
+    "list": "26-די",
+    "party": "new-economic",
+    "name": "New Economic Party",
+    "base": "#b5861e",
+    "color": "#563e05",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 29.592
+  },
+  {
+    "election": "k26",
+    "list": "26-ני",
+    "party": "noam",
+    "name": "Noam (registered as Lazuz)",
+    "base": "#3f7b8d",
+    "color": "#296778",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k26.json",
+    "custom": false,
+    "deltaE": 7.504
+  },
+  {
+    "election": "k26",
+    "list": "26-ני",
+    "party": "national-responsibility",
+    "name": "National Responsibility",
+    "base": "#19a782",
+    "color": "#024f3b",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 31.117
+  },
+  {
+    "election": "k26",
+    "list": "26-בי",
+    "party": "beit-yemini",
+    "name": "Beit Yemini",
+    "base": "#809d08",
+    "color": "#3f4f05",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "derived",
+    "source": "party id",
+    "custom": false,
+    "deltaE": 29.374
+  },
+  {
+    "election": "k26",
+    "list": "26-בי",
+    "party": "tzomet",
+    "name": "Tzomet",
+    "base": "#00a4c0",
+    "color": "#015160",
+    "forced": true,
+    "reasons": [
+      "ring contrast"
+    ],
+    "confidence": "medium",
+    "source": "data/meta/k11.json",
+    "custom": false,
+    "deltaE": 30.486
+  }
+]

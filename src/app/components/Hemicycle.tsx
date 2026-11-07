@@ -260,7 +260,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
           const dim = selected && selected !== st.listId;
           return (
             <g key={i}><circle className={`seat ${dim ? 'dim' : ''}`} cx={cx + p.x * R} cy={cy + p.y * R} r={rad * R} fill={st.color}
-              data-seat="" data-bloc={st.bloc ?? "__none"} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? "var(--ink)" : "var(--surface)"} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`) ? 4 : 2}
+              data-seat="" data-bloc={st.bloc ?? "__none"} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? "var(--ink)" : "var(--ink-2)"} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`) ? 4 : 1}
               onMouseEnter={(e) => onSeat(st, e)} onMouseLeave={hoverBridge.leave} onFocus={(e) => onSeat(st, e)} onBlur={() => setHover(null)}
               onClick={() => setState({ selectedListId: selected === st.listId ? null : st.listId })}><title>{seatLabel(st)}</title></circle>
             {st.innerColor && <circle data-component-seat={st.partyId} pointerEvents="none" cx={cx + p.x * R} cy={cy + p.y * R} r={rad * R * .64} fill={st.innerColor} className={dim ? 'seat dim' : 'seat'} />}
@@ -279,7 +279,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
         const x = 24 + (rtl ? 19-i%20 : i%20)*48, y = 16+Math.floor(i/20)*48;
         const bc = s.blocs.find(b => b.id === st.bloc)?.color ?? 'var(--muted)';
         return <g key={i}><rect data-bloc-region={st.bloc ?? '__none'} x={x-5} y={y-5} width={48} height={48} className="bloc-cell" style={{ ['--bc' as string]: bc }} />
-          <rect data-seat="" className="seat" x={x} y={y} width={36} height={36} rx={4} fill={st.color} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? 'var(--ink)' : 'var(--surface)'} strokeWidth={3}
+          <rect data-seat="" className="seat" x={x} y={y} width={36} height={36} rx={4} fill={st.color} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? 'var(--ink)' : 'var(--ink-2)'} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`)?4:1}
             onMouseEnter={e => onSeat(st,e)} onMouseLeave={hoverBridge.leave} onClick={() => setState({selectedListId: st.listId})}><title>{seatLabel(st)}</title></rect>
           {st.innerColor && <circle data-component-seat={st.partyId} pointerEvents="none" cx={x+18} cy={y+18} r={12} fill={st.innerColor} />}
         </g>;
@@ -330,7 +330,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
           })}
           {baselineSeats.map((st,i)=> <g key={i}><circle data-reference-seat="" data-lost={changes.lost.has(`${st.listId}:${st.idx}`) ? '' : undefined}
             cx={500+pos[i].x*400} cy={470+pos[i].y*400} r={rad*400} fill={st.color}
-            stroke={changes.lost.has(`${st.listId}:${st.idx}`)?'var(--ink)':'var(--surface)'} strokeWidth={changes.lost.has(`${st.listId}:${st.idx}`)?5:2} strokeDasharray={changes.lost.has(`${st.listId}:${st.idx}`)?'4 3':undefined} />{st.innerColor && <circle cx={500+pos[i].x*400} cy={470+pos[i].y*400} r={rad*400*.64} fill={st.innerColor} />}</g>)}
+            stroke={changes.lost.has(`${st.listId}:${st.idx}`)?'var(--ink)':'var(--ink-2)'} strokeWidth={changes.lost.has(`${st.listId}:${st.idx}`)?5:1} strokeDasharray={changes.lost.has(`${st.listId}:${st.idx}`)?'4 3':undefined} />{st.innerColor && <circle cx={500+pos[i].x*400} cy={470+pos[i].y*400} r={rad*400*.64} fill={st.innerColor} />}</g>)}
           <text x={500} y={440} textAnchor="middle" fontSize={44} fill="var(--ink)">{br.seatsAllocated}</text>
         </svg>
       </div>}

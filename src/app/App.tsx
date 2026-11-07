@@ -1,3 +1,4 @@
+import {inkOn} from '../data/colourGuard.ts';
 import { Info } from './components/ui.tsx';
 import { BoardChoices } from './components/BoardChoices.tsx';
 import { CustomPage } from './components/Feature.tsx';
@@ -183,7 +184,7 @@ function Shell() {
   const drawerOpen = tool !== 'board' && !!selected && drawerFor === selected;
 
   return (
-    <div className={`app ${preview ? 'board-preview' : ''}`} style={{ ['--scenario-color' as string]: resultChanges(committed, base).length ? liveScenarioColor(committed, saved) : undefined }}>
+    <div className={`app ${preview ? 'board-preview' : ''}`} data-coloured={resultChanges(committed, base).length ? '' : undefined} style={{ ['--scenario-color' as string]: resultChanges(committed, base).length ? liveScenarioColor(committed, saved) : undefined, ['--scenario-ink' as string]:inkOn(liveScenarioColor(committed,saved)) }}>
       <TopBar s={pmOnly ? null : committed} r={cr} ds={ds} baseR={baseR} pmContestId={pmContestId} onContestChange={setPMContestId} />
       {pmOnly ? <main className="work"><PMResult contest={pmOnly} onKnesset={() => setPMContestId(null)} /></main> : <>
       <nav className="toolbar" aria-label={L('Tools', 'כלים')}><div ref={trackTabOverflow} className="tabs" role="tablist" aria-label={L('Tools', 'כלים')}>

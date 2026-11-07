@@ -1,8 +1,9 @@
+import {assignColour,MARK_BACKGROUNDS,isHexColour} from '../data/colourGuard.ts';
 import type { Action, Scenario } from '../model/scenario.ts';
-import { SCENARIO_PALETTE, SCENARIO_COLOURS } from '../model/scenarioColors.ts';
+import { SCENARIO_PALETTE } from '../model/scenarioColors.ts';
 export { SCENARIO_PALETTE };
 export function scenarioColor(s: Pick<Scenario, 'identityColor'>): string {
-  return SCENARIO_COLOURS.includes(s.identityColor as typeof SCENARIO_COLOURS[number]) ? s.identityColor! : SCENARIO_PALETTE[0];
+  return isHexColour(s.identityColor) ? s.identityColor! : SCENARIO_PALETTE[0];
 }
 
 export function savedColor(log: Action[]): string {
@@ -11,14 +12,14 @@ export function savedColor(log: Action[]): string {
 }
 
 interface SavedIdentity { id: string; electionId: string; savedAt: string; log: Action[] }
-export function nextScenarioColor(saved: SavedIdentity[], electionId: string): typeof SCENARIO_PALETTE[number] {
-  const counts = SCENARIO_PALETTE.map(c => saved.filter(x => x.electionId === electionId && savedColor(x.log) === c).length);
-  return SCENARIO_PALETTE[counts.indexOf(Math.min(...counts))];
+export function nextScenarioColor(saved: SavedIdentity[], _electionId: string): string {
+  // The saved-scenario list co-displays elections. Reserve colours across the whole list.
+  return assignColour(SCENARIO_PALETTE,saved.filter(x=>x.log.some(a=>a.type==='setIdentityColor')).map(x=>savedColor(x.log)),{minDeltaE:20,backgrounds:MARK_BACKGROUNDS});
 }
 /** The colour a scenario shows. An unsaved one without its own colour already shows the colour saving
  *  will give it, so its identity does not change on save. */
 export function liveScenarioColor(s: Pick<Scenario, 'identityColor' | 'id' | 'electionId'>, saved: SavedIdentity[]): string {
-  return SCENARIO_COLOURS.includes(s.identityColor as typeof SCENARIO_COLOURS[number]) ? s.identityColor! : nextScenarioColor(saved.filter(x => x.id !== s.id), s.electionId);
+  return isHexColour(s.identityColor) ? s.identityColor! : nextScenarioColor(saved.filter(x => x.id !== s.id), s.electionId);
 }
 /** Explicit colours win; missing identities are assigned oldest first, independent of storage order. */
 export function migrateSavedColors<T extends SavedIdentity>(saved: T[]): T[] {

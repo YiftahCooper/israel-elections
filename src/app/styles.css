@@ -293,7 +293,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
    editor still give the shortfall) */
 .corridor { container-type: inline-size; }
 @container (max-width: 300px) { .corridor .label .consequence { display: none; } }
-.corridor .label .consequence, .strip-legend .consequence { color: var(--ink-2); font-size: 12px; white-space: nowrap; }
+.corridor .label .consequence, .strip-legend .consequence { color: var(--ink); font-size: 12px; white-space: nowrap; }
 /* the line crosses the tag and the member pieces only, never a bloc's name beneath them */
 .milestone { position: absolute; top: 0; height: 38px; width: 0; border-inline-start: 2px dashed var(--ink); pointer-events: none; }
 .milestone span { position: absolute; top: -2px; inset-inline-start: -15px; background: var(--shell); color: var(--shell-ink); font-size: 11px; font-weight: 700; padding: 0 5px; border-radius: 3px; line-height: 15px; }
@@ -1201,3 +1201,16 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
   .band-actions { inline-size: 100%; justify-content: space-between; gap: 0; }
   .band-actions .tool { padding-inline: 4px; }
 }
+
+/* Identity fills keep their hue; ink and boundaries adapt to the actual background. */
+.app[data-coloured] .band { --shell-ink: var(--scenario-ink); --shell-ink-2: var(--scenario-ink); }
+.app[data-coloured] .band :is(select.election, .seg button[aria-pressed="true"], .band-custom[aria-pressed="true"]) { color: var(--scenario-color); }
+.app[data-coloured] .band .election-arrow { background: transparent; }
+.app[data-coloured] .band :is(.tool, .band-custom, .seg button):hover:not(:disabled) { background: var(--scenario-ink); color: var(--scenario-color); }
+.swatch { box-shadow: inset 0 0 0 1px var(--ink-2); }
+.lb-bar > i { box-shadow: inset 0 0 0 1px var(--ink-2); }
+
+.app[data-coloured] .band .menu-pop { --shell-ink: #ffffff; --shell-ink-2: #c9d6e6; }
+
+/* Quantitative marks retain their sourced fill; a thin neutral edge survives either theme. */
+:is(.sec-bar, .sec-gauge > i, .majority-bar > div, .corridor .pieces i, .coal-bar > i, .walk-tray > span:not(.empty), .family-seat-strip i) { box-shadow: inset 0 0 0 1px var(--ink-2); }

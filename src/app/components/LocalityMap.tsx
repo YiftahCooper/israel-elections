@@ -1,3 +1,4 @@
+import {MAP_UNASSIGNED_COLOUR} from '../locality-map-model.ts';
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
 import { Info } from './ui.tsx';
 import { ChoicePicker } from './ChoicePicker.tsx';
@@ -72,7 +73,7 @@ const ZoomInPlace = Leaflet.Control.Zoom.extend({
 const photonCache = new Map<string, PhotonFeature[]>();
 let lastRequest = 0;
 interface PhotonFeature { geometry: { coordinates: [number, number] }; properties: Record<string, string> }
-const GREY = '#78838c';
+const GREY = MAP_UNASSIGNED_COLOUR;
 const share = (v: number, whole: number) => whole > 0 ? `${(v / whole * 100).toFixed(1)}%` : '—';
 let measure: CanvasRenderingContext2D | null = null;
 const textWidth = (text: string) => {
@@ -138,7 +139,8 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
         : `${groupName(w.key)} \u2066+${(w.margin / Math.max(1, p.row.valid) * 100).toFixed(1)}\u2069${L(' pp', ' נק׳')}`;
       tip.append(title, why);
       // a thin white outline separates neighbouring dots; a dark ring would darken every colour alike
-      Leaflet.circleMarker([p.lat,p.lon], {radius:5, color:'#ffffff',weight:1,fillColor:w.color,fillOpacity:0.95}).bindTooltip(tip).on('click',()=>setSelectedIndex(p.index)).addTo(group);
+      Leaflet.circleMarker([p.lat,p.lon], {radius:5, color:'#ffffff',weight:4,fill:false,interactive:false}).addTo(group);
+      Leaflet.circleMarker([p.lat,p.lon], {radius:5, color:'#111418',weight:1,fillColor:w.color,fillOpacity:1}).bindTooltip(tip).on('click',()=>setSelectedIndex(p.index)).addTo(group);
     });
     // open fitted to this election's localities (once per election, so a user's own zoom is kept while editing)
     if (placed.length && fittedFor.current !== data) {

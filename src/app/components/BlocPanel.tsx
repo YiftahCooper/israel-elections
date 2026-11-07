@@ -1,3 +1,5 @@
+import {ColourPicker, ColourAdvice} from './ColourPicker.tsx';
+import {assignColour,blocColourRules} from '../../data/colourGuard.ts';
 import { partyDisplayColor } from '../partyDisplayColor.ts';
 import { AnalysisEdits } from './AnalysisEdits.tsx';
 import { appGroupingTag, appGroupingExplanation } from '../groupingName.ts';
@@ -24,7 +26,8 @@ import { dispatch, setState } from '../store.ts';
 
 /** colours that read both as a seat and as a pale region behind the seats; none is a grey, which is reserved for No bloc
  *  (tests/party-colours.test.ts) */
-export const BLOC_PALETTE = ['#1f5aa5', '#1f9d73', '#c0392b', '#d98c1f', '#7b4fb0', '#1b8a9a', '#9a5b1e', '#c2477d', '#5d7a2e', '#e0b400'];
+export {BLOC_PALETTE} from '../../model/blocColors.ts';
+import {BLOC_PALETTE} from '../../model/blocColors.ts';
 const PALETTE = BLOC_PALETTE;
 const NONE = '__none';
 
@@ -100,8 +103,8 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
   const remove = (id: string) => setBlocs(s.blocs.filter((b) => b.id !== id));
   const addBloc = () => {
     const id = `b-${Date.now().toString(36)}`;
-    const used = new Set(s.blocs.map((b) => b.color.toLowerCase()));
-    setBlocs([...s.blocs, { id, nameHe: 'גוש חדש', nameEn: 'New bloc', color: PALETTE.find((c) => !used.has(c)) ?? PALETTE[s.blocs.length % PALETTE.length] }]);
+    const used = s.blocs.map(b=>b.color);
+    setBlocs([...s.blocs, { id, nameHe: 'גוש חדש', nameEn: 'New bloc', color: assignColour(PALETTE,used,blocColourRules(used)) }]);
     setFresh(id);
   };
   /** moves a chip to a bloc (NONE for no bloc) */
@@ -175,10 +178,11 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
                   <span className="bp-seats"><b>{n}</b><small>{n >= majority ? L('majority', 'רוב') : L(`${majority - n} short`, `חסרים ${majority - n}`)}</small></span>
                   {b && <button className="btn small ghost danger icon-only" aria-label={L(`Delete the bloc ${name(b)} (its members move to no bloc)`, `מחיקת הגוש ${name(b)} (חבריו יעברו ל"ללא גוש")`)} onClick={() => remove(k)}><Trash2 className="icon sm" aria-hidden /></button>}
                 </div>
+                {b && paletteFor !== k && <ColourAdvice value={color} others={s.blocs.filter(x=>x.id!==k).map(x=>({color:x.color,name:name(x)}))} onChange={c=>recolour(k,c)} rules={blocColourRules(s.blocs.filter(x=>x.id!==k).map(x=>x.color))}/>}
                 {b && paletteFor === k && (
                   <div className="bp-palette" role="group" aria-label={L('Colours', 'צבעים')}>
                     {PALETTE.map((c) => <button key={c} style={{ background: c }} aria-label={c} aria-pressed={c.toLowerCase() === color.toLowerCase()} onClick={() => { recolour(k, c); setPaletteFor(null); }} />)}
-                    <label className="bp-custom">{L('Other…', 'אחר…')}<input type="color" value={color} onChange={(e) => recolour(k, e.target.value)} /></label>
+                    <ColourPicker rules={blocColourRules(s.blocs.filter(x=>x.id!==k).map(x=>x.color))} label={L('Other…','אחר…')} value={color} onChange={c=>recolour(k,c)} minDeltaE={20} others={s.blocs.filter(x=>x.id!==k).map(x=>({color:x.color,name:name(x)}))}/>
                   </div>
                 )}
                 <div className="bp-meter" aria-hidden><i style={{ width: `${Math.min(100, (n / total) * 100)}%` }} /><span style={{ insetInlineStart: `${((majority - 0.5) / total) * 100}%` }} /></div>

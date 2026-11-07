@@ -1,9 +1,10 @@
+import {separateColours} from '../src/data/colourGuard.ts';
 // Party colours must tell lists apart wherever they are drawn (decision 0087, revised 2026-11-04): any two lists
 // sharing the chamber differ by at least MIN_LIST_DELTA_E (CIEDE2000), and lists drawn side by side — in the chamber
 // and its legend, the bloc strip, and the list column — by at least MIN_NEIGHBOUR_DELTA_E. Seat fills stay readable on
 // both themes' surfaces.
 import { expect, test } from 'vitest';
-import { deltaE2000, hexToLab, MIN_LIST_DELTA_E, MIN_NEIGHBOUR_DELTA_E, SEAT_LIGHTNESS, separateColours } from '../src/data/colour.ts';
+import { deltaE2000, hexToLab, MIN_LIST_DELTA_E, MIN_NEIGHBOUR_DELTA_E, SEAT_LIGHTNESS } from '../src/data/colour.ts';
 import { seatOrder } from '../src/app/components/Hemicycle.tsx';
 import { graphicScenario } from './graphics-cases.ts';
 

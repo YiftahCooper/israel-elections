@@ -2,6 +2,8 @@
 
 ## 6 November 2026 — data audit
 
+- Guard automatic colours and custom picker advice across the app; preserve researched party hues and test preset distinctness and contrast in both themes.
+
 - Give every joint-list party a visible seat dot and consistent, contrast-checked display colours across charts, keys, details and exports.
 
 - Give bloc regions clean shared edges and contrast-checked borders in Arc, Blocks, reference chambers, legend keys and exports.

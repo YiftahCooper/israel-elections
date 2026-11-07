@@ -16,7 +16,7 @@
 .family-policy .seg button {min-block-size:32px;display:inline-flex;align-items:center;gap:6px;}
 .family-policy-label small {color:var(--muted);font-size:inherit;}
 /* Each counting choice carries the mark it produces on the chart: hatched, solid if the family heads the list, solid, or nothing. */
-.family-policy-icon {display:inline-grid;place-items:center;inline-size:11px;block-size:13px;flex-shrink:0;border:1px solid var(--family-color);border-radius:2px;font-size:9px;font-style:normal;font-weight:700;line-height:1;color:#fff;}
+.family-policy-icon {display:inline-grid;place-items:center;inline-size:11px;block-size:13px;flex-shrink:0;border:1px solid var(--family-color);border-radius:2px;font-size:9px;font-style:normal;font-weight:700;line-height:1;color:var(--family-ink);}
 .family-policy-icon[data-policy=separate-segment] {background:repeating-linear-gradient(45deg,var(--family-color) 0 1.2px,transparent 1.2px 3.5px);}
 .family-policy-icon[data-policy=include-headed-list],.family-policy-icon[data-policy=include-whole-list] {background:var(--family-color);}
 .family-policy-icon[data-policy=exclude] {border:1.5px dashed var(--ink-2);}
@@ -33,7 +33,7 @@
 .family-cursor {stroke:var(--muted);stroke-dasharray:3 4;opacity:.55;}
 .family-end-label {font-size:11px;font-weight:600;fill:var(--ink-2);}
 .family-empty {fill:var(--muted);font-size:13px;paint-order:stroke;stroke:var(--surface-2);stroke-width:6px;}
-.family-mixed {stroke-opacity:.55;opacity:.85;}
+.family-mixed {stroke-opacity:1;opacity:1;}
 .family-plot-head {display:flex;justify-content:space-between;align-items:center;min-block-size:22px;gap:4px 12px;flex-wrap:wrap;}
 .family-legend {display:flex;gap:12px;font-size:12px;color:var(--ink-2);}
 .family-legend span {display:inline-flex;align-items:center;gap:5px;}

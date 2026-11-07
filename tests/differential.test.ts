@@ -237,7 +237,9 @@ const EXPECTED: Record<Family, string> = {
   // Substituting pre-U8 k24/k25 datasets reproduces 7a7c40fc… exactly; other four digests unchanged.
   // U9: baseline comparison isolates 98 model cases to normalized appearance logs and
   // palette-preserving resets; allocation, analysis, validation and rules remain identical.
-  model: '39258ca0309ddf2702cc59f4dceb06be65e15640a41efedae3abbe8ea86d03a7',
+  // V1c: 383/520 model cases differ only at list/bloc color fields (including appearance logs).
+  // Frozen V1b reproduces the previous digest; all non-model families remain unchanged.
+  model: '1db51113dfd4ecd283d8f539284a29109492567ecf2770025fa2c0e6d104cd79',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

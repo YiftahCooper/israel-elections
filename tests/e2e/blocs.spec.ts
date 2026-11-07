@@ -40,8 +40,8 @@ test('a bloc is renamed and recoloured where it is shown, and Undo restores it',
   await expect(band(page, 'Government')).toBeVisible();
   await expect(page.locator('.band .scenario-switcher .choice-trigger')).toHaveAttribute('data-value', 'official');
   await editor(page).getByRole('button', { name: 'Colour of Government' }).click();
-  await editor(page).getByRole('button', { name: '#c0392b' }).click();
-  await expect(band(page, 'Government')).toHaveCSS('--bc', '#c0392b');
+  await editor(page).getByRole('button', { name: '#c23b2d' }).click();
+  await expect(band(page, 'Government')).toHaveCSS('--bc', '#c23b2d');
   await page.getByRole('button', { name: /^Undo:/ }).click();
   await page.getByRole('button', { name: /^Undo:/ }).click();
   await expect(band(page, 'Coalition')).toBeVisible();
