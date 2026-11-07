@@ -8,3 +8,7 @@ test-results/
 playwright-report/
 .impeccable/mocks/
 .impeccable/review/
+
+# Python bytecode caches
+__pycache__/
+*.pyc
