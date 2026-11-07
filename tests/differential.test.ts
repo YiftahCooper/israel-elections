@@ -237,7 +237,11 @@ const EXPECTED: Record<Family, string> = {
   // Substituting pre-U8 k24/k25 datasets reproduces 7a7c40fc… exactly; other four digests unchanged.
   // U9: baseline comparison isolates 98 model cases to normalized appearance logs and
   // palette-preserving resets; allocation, analysis, validation and rules remain identical.
-  model: '39258ca0309ddf2702cc59f4dceb06be65e15640a41efedae3abbe8ea86d03a7',
+  // D2 (7 Nov): k15 candidate note now quotes the actual surname-first form.
+  // Recursive diff: that note/builtAt only in k15; k20/k24 status and provenance only.
+  // Substituting HEAD k15/k20/k24 with current code reproduces 39258ca0… exactly;
+  // allocation, analysis, validation and rules digests remain unchanged.
+  model: '47c9fd52cfbc763d4347c4b17594c9099dc0fb4fe7b51a205aef7c8c477bf1eb',
   validation: '8f1bc0c8c6c951d68b0d926e6acbc30a7aeff235a18166e9df14f13b2fc85ac8',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

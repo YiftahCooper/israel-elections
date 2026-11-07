@@ -390,7 +390,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k15.json",
-      "sha256": "8669c994eaffe4342f03353bfa166c7270e701d4eabb321030b02b493b46ffb0",
+      "sha256": "682c654219589208e7ef2ec42916c56e5cfefd27cd8320773740d4f77843b7c0",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k16": {
@@ -425,7 +425,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k20.json",
-      "sha256": "bbc08582796ff220a15d9975f7e1d501afd60e0a81dd829b11643c5b088af12f",
+      "sha256": "ede9e0b3a10796880b9ecbc6bbef70e190065053126bbd2498542e3b7a0e02d5",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k21": {
@@ -453,7 +453,7 @@
       "kind": "repository-dataset",
       "publisher": "CEC/Reshumot inputs; local compilation",
       "locator": "public/data/k24.json",
-      "sha256": "95902dc10db627cbfa425d4c36233728a02a6130b02bf9850b829a994a65c8de",
+      "sha256": "0502bfe9c40c7d932cb4c107f8fb3b9441d63d90c28a26e19bace6b8c26aa01c",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred."
     },
     "k25": {
@@ -2744,11 +2744,12 @@
       "electionId": "k15",
       "electionDate": "1999-05-17",
       "datasetPath": "public/data/k15.json",
-      "datasetSha256": "59a79a367d3ad07a4ddb8cd7f70651b6a2525adcb4960b5ad16dc21592118f7c",
+      "datasetSha256": "682c654219589208e7ef2ec42916c56e5cfefd27cd8320773740d4f77843b7c0",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "Rosters: everyone elected is included and cross-checked; no full winning-list rosters; later ranks of winning lists not transcribed. Contesting zero-seat rosters unavailable; two withdrawn registrations retained. Registered rank order retained, with omissions in the elected notice explicitly reconciled. No locality data. Complete 9-pair agreement notice verified; every published seat reproduced.",
-        "noteHe": "מועמדים: כל הנבחרים נכללו ונבדקו מול הודעת התוצאות; אין רשימות זוכות מלאות; מקומות מאוחרים בשאר הרשימות הזוכות לא תועתקו. רשימות שהתמודדו ולא זכו במנדטים אינן מתועתקות; נשמרו שתי רשימות שפרשו. סדר המועמדים הרשום נשמר וההשמטות בהודעת הנבחרים תועדו. אין נתוני יישובים. הודעת ההתקשרויות המלאה (9 זוגות) אומתה וכל המנדטים שוחזרו."
+        "noteHe": "מועמדים: כל הנבחרים נכללו ונבדקו מול הודעת התוצאות; אין רשימות זוכות מלאות; מקומות מאוחרים בשאר הרשימות הזוכות לא תועתקו. רשימות שהתמודדו ולא זכו במנדטים אינן מתועתקות; נשמרו שתי רשימות שפרשו. סדר המועמדים הרשום נשמר וההשמטות בהודעת הנבחרים תועדו. אין נתוני יישובים. הודעת ההתקשרויות המלאה (9 זוגות) אומתה וכל המנדטים שוחזרו.",
+        "asOf": "2026-11-03"
       },
       "validVotes": 3309416,
       "voteSourceIds": [
@@ -3621,12 +3622,12 @@
       "electionId": "k20",
       "electionDate": "2015-03-17",
       "datasetPath": "public/data/k20.json",
-      "datasetSha256": "12649ae6dc0136205a17d6981781f1c57769a0130260e6b19c79e2ae3f0868ae",
+      "datasetSha256": "ede9e0b3a10796880b9ecbc6bbef70e190065053126bbd2498542e3b7a0e02d5",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2015-03-25",
-        "noteHe": "תוצאות רשמיות סופיות. המועמדים לפי סדר הרישום בילקוט הפרסומים; הודעות התפטרות ידועות בהערות. מספרי הקלפיות והיישובים הם ספירת שורות בטבלאות התוצאות, ולא כלל אתרי ההצבעה; ראו k20-resolution.md.",
-        "noteEn": "Official final results. Candidates follow the gazetted registration order; known resignation notices are labelled. Polling/locality counts describe retained results-table rows, not all physical polling places; see k20-resolution.md."
+        "noteHe": "תוצאות רשמיות סופיות. המועמדים לפי סדר הרישום בילקוט הפרסומים; הודעות התפטרות ידועות בהערות. 10,414 רשומות התוצאות כוללות 10,119 קלפיות רגילות ו־295 רשומות ספירה מרכזית של מעטפות חיצוניות. במידע לבוחר של ועדת הבחירות נמנו 10,372 קלפיות בארץ (10,119 רגילות, 196 בבתי חולים, 57 בבתי סוהר), ועוד 98 בנציגויות בחו״ל. מספר היישובים מונה שורות תוצאות. ראו data-puzzles-1107.md.",
+        "noteEn": "Official final results. Candidates follow the gazetted registration order; known resignation notices are labelled. The 10,414 polling-result rows comprise 10,119 ordinary stations and 295 central double-envelope counting rows. CEC voter information lists 10,372 domestic voting stations (10,119 ordinary, 196 hospital, 57 prison), plus 98 overseas stations. Locality counts describe results-table rows. See data-puzzles-1107.md."
       },
       "validVotes": 4210884,
       "voteSourceIds": [
@@ -4211,12 +4212,12 @@
       "electionId": "k24",
       "electionDate": "2021-03-23",
       "datasetPath": "public/data/k24.json",
-      "datasetSha256": "d53a91d1a7aaa05b93e362299c0bee14154f14a9091dd2ef4ed6160edeb27002",
+      "datasetSha256": "0502bfe9c40c7d932cb4c107f8fb3b9441d63d90c28a26e19bace6b8c26aa01c",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",
-        "noteEn": "Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. 38 lists contested; Demokratit withdrew (CEC protocol, 30 March 2021, p.4). The polling-station figure counts 12,926 result rows, not all physical stations; CEC history reports 13,685 stations with an unreconciled scope difference.",
-        "noteHe": "תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות. 38 רשימות התמודדו; דמוקרטית פרשה (זכרון דברים של ועדת הבחירות, 30 במרס 2021, עמ׳ 4). נתון הקלפיות מונה 12,926 רשומות תוצאות ולא את כלל הקלפיות הפיזיות; בסקירת ועדת הבחירות נמנו 13,685 קלפיות והבדל ההיקף טרם יושב."
+        "noteEn": "Official final CEC votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. 38 lists contested; Demokratit withdrew (CEC protocol, 30 March 2021, p.4). The 12,926 polling-result rows comprise 12,127 ordinary stations and 799 central double-envelope counting rows. They are not a physical-station total. The CEC 2021 annual report counts 13,756 voting stations including overseas and excluding army bases; its history summary gives 13,685. See data-puzzles-1107.md.",
+        "noteHe": "תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות. 38 רשימות התמודדו; דמוקרטית פרשה (זכרון דברים של ועדת הבחירות, 30 במרס 2021, עמ׳ 4). 12,926 רשומות התוצאות כוללות 12,127 קלפיות רגילות ו־799 רשומות ספירה מרכזית של מעטפות חיצוניות; זה אינו מספר הקלפיות הפיזיות. בדוח השנתי של ועדת הבחירות לשנת 2021 נמנו 13,756 קלפיות, כולל נציגויות בחו״ל וללא מחנות צה״ל; בסקירה ההיסטורית מופיע 13,685. ראו data-puzzles-1107.md."
       },
       "validVotes": 4410052,
       "voteSourceIds": [
