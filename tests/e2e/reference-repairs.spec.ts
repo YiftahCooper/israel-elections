@@ -54,10 +54,10 @@ for (const separate of [false, true]) test(`B2 saved custom grouping draws paire
   if(!separate){await expect(page.locator('.session')).toContainText('Since official result');await expect(page.locator('.session')).not.toContainText('Review coalition');}
   await page.getByRole('tab', { name: 'Compare', exact: true }).click();
   await expect(page.locator('.cmp')).not.toContainText('no counterpart in');
-  await expect(page.locator('.cmp-blocrow')).toHaveCount(2);
-  await expect(page.locator('.cmp-blocrow').first()).toContainText(separate ? '66' : '68');
-  await expect(page.locator('.cmp-blocrow').last()).toContainText(separate ? '68' : '72');
-  await expect(page.locator('.cmp .legend')).toContainText(separate ? '66 → 68' : '68 → 72');
+  // the reference and the scenario side by side, each with its blocs
+  await expect(page.locator('.cmp-card .majority-context')).toHaveCount(2);
+  await expect(page.locator('.cmp-card[data-role="other"] .majority-context')).toContainText(`${separate ? 66 : 68} / 120`);
+  await expect(page.locator('.cmp-card[data-role="main"] .majority-context')).toContainText(`${separate ? 68 : 72} / 120`);
 });
 test('B5 prose commits are individually undoable and leave coalition selection alone', async ({ page }) => {
   await start(page);

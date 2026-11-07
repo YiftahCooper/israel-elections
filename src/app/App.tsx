@@ -24,6 +24,7 @@ import { Walkthrough } from './components/Walkthrough.tsx';
 import { ErrorBoundary } from './components/ErrorBoundary.tsx';
 import { WhatIf } from './components/WhatIf.tsx';
 import { SourceDialog } from './components/SourcePicker.tsx';
+import { openComparisonFromHash } from './compare/sides.ts';
 
 // The main area's props (scenario, its cached allocation, the dataset) only change with the
 // scenario, so a tab switch, toast or notice does not re-render the cards, chamber and details.
@@ -94,9 +95,9 @@ export function App() {
   useEffect(() => {
     loadElectionIndex();
     // the last visit's work first (so a share link opened now keeps it as a draft), then the link, then 2026
-    void restoreWorkspace().then(() => openSharedFromHash()).then((opened) => { if (!opened && !getState().scenario) openElection('k26'); });
+    void restoreWorkspace().then(async () => (await openComparisonFromHash()) || openSharedFromHash()).then((opened) => { if (!opened && !getState().scenario) openElection('k26'); });
     // a share link pasted into the address bar of an open tab only changes the hash
-    const onHash = () => { void openSharedFromHash(); };
+    const onHash = () => { void openComparisonFromHash().then((opened) => opened || openSharedFromHash()); };
     addEventListener('hashchange', onHash);
     const onKey = (e: KeyboardEvent) => {
       const t = e.target as HTMLElement;

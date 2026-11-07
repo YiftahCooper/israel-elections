@@ -2,6 +2,8 @@
 
 ## 6 November 2026 — data audit
 
+- Compare becomes a two-sided workbench: lists paired from party records, values copied either way with exact share/count/change rules and marked with their origin, per-side undo, swap, saved comparisons and share links.
+
 - Mark custom bloc, coalition and family groupings locally as analysis while preserving official result identity and factual summaries.
 
 - Keep custom list, party and bloc colours and grouping display names separate from result identity; save/share appearance and reset colours independently of result edits.

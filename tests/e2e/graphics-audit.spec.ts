@@ -130,9 +130,11 @@ test('summary, graphics and Compare default follow the same reference setting',a
     }
     await page.getByRole('tab',{name:'Compare',exact:true}).click();
     // With nothing to compare, the automatic target is the previous election.
-    if(changed) await expect(page.locator('.cmp-head .choice-trigger')).toHaveText(new RegExp(name));
-    else await expect(page.locator('.cmp-head .choice-trigger')).toHaveAttribute('data-value', 'election:k24');
-    if(changed) expect(await page.locator('.cmp-blocrow').last().locator('i').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('data-bloc')))).toEqual(expect.arrayContaining(['__none']));
+    const target=page.getByRole('button',{name:'Compare with',exact:true});
+    if(changed) await expect(target).toHaveText(new RegExp(name));
+    else await expect(target).toHaveAttribute('data-value', 'election:k24');
+    // the open scenario's chamber keeps the No bloc seats
+    if(changed) expect(await page.locator('.cmp-card[data-role="main"] [data-seat][data-bloc="__none"]').count()).toBeGreaterThan(0);
   }
 });
 

@@ -1,6 +1,6 @@
 /** Appearance is saved separately from factual marker comparisons. */
 export const appearancePath=(p:readonly string[])=>p.includes('color')||p[0]==='blocs'&&p.length>2&&['nameHe','nameEn'].includes(p[2]);
-import { blocSchemeState, type Action, type Scenario } from './scenario.ts';
+import { blocSchemeState, type Action, type CopyProvenance, type Scenario } from './scenario.ts';
 import type {Part} from './parts.ts';
 export type InputPath=readonly string[];
 export interface ReplacementScope {part:Part;listId?:string;checkpoint:Scenario;changed:InputPath[];at:number}
@@ -48,11 +48,33 @@ export function inputDiffs(a:Scenario,b:Scenario):InputPath[]{
  return out;
 }
 export function replacementFor(a:Action):{part:Part;listId?:string}|undefined {
+ if(a.type==='copyFrom'){for(const x of a.actions){const r=replacementFor(x);if(r)return r;}return undefined;}
  if(a.type==='startPart')return {part:a.part,...(a.listId?{listId:a.listId}:{})};
  if(a.type==='familyOperation'&&a.operation==='group'||a.type==='applyBlocScheme')return {part:'blocs'};
  if(a.type==='restore')return {part:a.what==='totals'?'totals':a.what==='lottery'?'rules':a.what};
 }
+/** Compare copies: each copied input path remembers where it came from ("From 2022") until it is edited again.
+ * Keyed by log like the replacement scopes, so replay reconstructs it. */
+export interface CopyOrigin {path:InputPath;provenance:CopyProvenance;at:number}
+const origins=new WeakMap<Scenario['log'],CopyOrigin[]>();
+function recordCopyOrigin(before:Scenario,after:Scenario,action:Action){
+ const inherited=origins.get(before.log)??[];
+ const added=action.type==='copyFrom'?action.provenance.paths.map(path=>({path,provenance:action.provenance,at:after.log.length-1})):[];
+ if(!inherited.length&&!added.length)return;
+ // a later change to a copied input (an edit, or the balance of another copy) makes it no longer "from" there
+ const changed=inherited.length?inputDiffs(before,after):[];
+ origins.set(after.log,[...inherited.filter(o=>!changed.some(p=>overlaps(p,o.path))&&!added.some(a=>overlaps(a.path,o.path))),...added]);
+}
+export const copyOrigins=(s:Pick<Scenario,'log'>)=>origins.get(s.log)??[];
+/** The copy that set this input, if it has not been edited since. */
+export const copyOriginOf=(s:Pick<Scenario,'log'>,path:InputPath)=>copyOrigins(s).findLast(o=>o.path.length===path.length&&o.path.every((k,i)=>path[i]===k));
+/** Keeps derived provenance when a log array is rebuilt entry for entry (workspace restore). */
+export function carryEditScopes(from:Scenario['log'],to:Scenario['log']){
+ const sc=scopes.get(from),or=origins.get(from);
+ if(sc)scopes.set(to,sc);if(or)origins.set(to,or);
+}
 export function recordEditScope(before:Scenario,after:Scenario,action:Action){
+ recordCopyOrigin(before,after,action);
  const inherited=scopes.get(before.log)??[],scope=replacementFor(action);
  if(!scope){if(inherited.length)scopes.set(after.log,inherited);return;}
  const retained=inherited.filter(x=>x.part!==scope.part||!!scope.listId&&x.listId!==scope.listId);

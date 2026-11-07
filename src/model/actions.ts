@@ -390,7 +390,18 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       need(Array.isArray(action.candidates), 'candidates', 'Invalid candidate list.');
       const ids = new Set<string>();
       for (const c of action.candidates) { need(c.nameHe.trim().length > 0, 'candidate-name', 'Every candidate needs a name.'); need(!ids.has(c.id), 'candidate-dup', 'Duplicate candidate.'); ids.add(c.id); }
-      s = replaceList(s, action.listId, (l) => ({ ...l, candidates: action.candidates as SimCandidate[] }));
+      s = replaceList(s, action.listId, (l) => ({ ...l, candidates: action.candidates as SimCandidate[],
+        // an imported roster brings its constituent parties and completeness flags with it
+        ...(action.parties !== undefined ? { parties: action.parties.length ? action.parties.map((p) => ({ ...p })) : undefined } : {}),
+        ...(action.rosterUnavailable !== undefined ? { rosterUnavailable: action.rosterUnavailable || undefined } : {}),
+        ...(action.rosterTruncated !== undefined ? { rosterTruncated: action.rosterTruncated || undefined } : {}) }));
+      break;
+    }
+    case 'copyFrom': {
+      // concrete inner steps, already computed from the source: replay never needs the other side
+      need(validAction(action), 'copy', 'Invalid copy.');
+      for (const a of action.actions) s = applyAction(s, a, now, ctx);
+      s = { ...s, log: s0.log };
       break;
     }
     case 'setRules':
