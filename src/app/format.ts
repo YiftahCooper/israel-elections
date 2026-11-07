@@ -5,6 +5,7 @@ import { pct, rat, toDecimal, type Rational } from '../engine/rational.ts';
 const EN = new Intl.NumberFormat('en-US');
 export const fmtInt = (n: number | bigint) => (typeof n === 'bigint' ? EN.format(n) : EN.format(Math.round(n)));
 export const fmtSigned = (n: number | bigint) => (Number(n) > 0 ? '+' : Number(n) < 0 ? '−' : '±') + fmtInt(typeof n === 'bigint' ? (n < 0n ? -n : n) : Math.abs(n));
+export const trimDecimal = (s: string) => s.includes('.') ? s.replace(/0+$/, '').replace(/\.$/, '') : s;
 /** A decimal string ("3.25") as an exact fraction, for comparisons without floating point. */
 const decimalParts = (t: string) => { const [a, b = ''] = t.split('.'); return { num: BigInt(a + b), den: 10n ** BigInt(b.length) }; };
 /** P/W as a percentage with exactly `d` decimals, rounded down (dir -1) or up (dir 1). P, W ≥ 0, W > 0. */
@@ -37,15 +38,28 @@ export function fmtPct(part: number | bigint, whole: number | bigint, digits = 2
     if (crosses(shown)) { shown = pct(P, W, digits + 1); if (crosses(shown)) shown = directed(P, W, digits + 1, below ? -1 : 1); }
   }
   if (P !== 0n && /^-?0(\.0*)?$/.test(shown)) return `<${digits === 0 ? '1' : `0.${'0'.repeat(digits - 1)}1`}%`;
-  return `${shown}%`;
+  return `${trimDecimal(shown)}%`;
 }
-/** The tooltip for a share that fmtPct showed with an extra decimal to keep it on its side of the threshold
- *  (undefined otherwise): the exact share, so the precise figure is one hover away. */
+/** An exact ratio as a decimal: in full when it ends within `max` decimals ("10.84"), else cut there with an
+ *  ellipsis ("33.333333…"). Never rounded, so it is never a rounded figure presented as exact. */
+export function exactDecimal(num: bigint, den: bigint, max = 6): string {
+  const neg = (num < 0n) !== (den < 0n) && num !== 0n, n = num < 0n ? -num : num, d = den < 0n ? -den : den;
+  const scaled = n * 10n ** BigInt(max), q = scaled / d, more = scaled % d !== 0n;
+  const t = q.toString().padStart(max + 1, '0');
+  const whole = EN.format(BigInt(t.slice(0, -max))), frac = t.slice(-max).replace(/0+$/, '');
+  return `${neg ? '−' : ''}${whole}${frac || more ? '.' : ''}${more ? t.slice(-max) : frac}${more ? '…' : ''}`;
+}
+/** The exact-value disclosure for a share fmtPct rounded (undefined when it is already shown in full): the exact
+ *  share, and, where fmtPct added a digit to keep it on its side of the threshold, why. */
 export function pctExactNote(part: number | bigint, whole: number | bigint, digits: number, threshold: string | undefined, lang: 'he' | 'en'): string | undefined {
   const { P, W } = exactParts(part, whole);
-  if (!threshold || W <= 0n || P <= 0n || fmtPct(part, whole, digits, threshold) === `${pct(P, W, digits)}%`) return undefined;
-  const below = P * 100n * decimalParts(threshold).den < decimalParts(threshold).num * W;
-  const exact = `${pct(P, W, 4)}%`;
+  if (W <= 0n) return undefined;
+  const shown = fmtPct(part, whole, digits, threshold);
+  const exact = `${exactDecimal(P * 100n, W)}%`;
+  if (exact === shown) return undefined;
+  const extra = !!threshold && P > 0n && !shown.startsWith('<') && shown !== `${trimDecimal(pct(P, W, digits))}%`;
+  if (!extra) return lang === 'he' ? `${exact}: השיעור המדויק` : `${exact}: the exact share`;
+  const below = P * 100n * decimalParts(threshold!).den < decimalParts(threshold!).num * W;
   return lang === 'he'
     ? `${exact}: השיעור המדויק. מוצגת ספרה נוספת כדי שלא ייראה ${below ? 'מעל ' : 'מתחת ל'}אחוז החסימה (${threshold}%)`
     : `${exact}: the exact share. One more decimal is shown so it doesn’t look ${below ? 'above' : 'below'} the ${threshold}% threshold`;
@@ -53,7 +67,7 @@ export function pctExactNote(part: number | bigint, whole: number | bigint, digi
 /** A change between two shares in percentage points: signed (a true minus), at most `digits` decimals, and a
  *  non-zero change is never shown as zero ("+<0.1"). */
 export function fmtPp(r: Rational, digits = 2): string {
-  const t = fmtRat(r, digits);
+  const t = trimDecimal(fmtRat(r, digits));
   if (r.num === 0n) return t;
   if (/^-?0(\.0*)?$/.test(t)) return `${r.num < 0n ? '−' : '+'}<${digits === 0 ? '1' : `0.${'0'.repeat(digits - 1)}1`}`;
   return t.startsWith('-') ? `−${t.slice(1)}` : `+${t}`;

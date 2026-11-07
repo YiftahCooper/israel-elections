@@ -35,7 +35,7 @@ test('a sourced voter group adds measured voters, saves, exports and imports', a
   expect(n).toBe(Math.round(938401 * 0.1)); // 10 points of the group's registered voters
   await add.click();
   await page.getByRole('button', { name: /^History/ }).click();
-  await expect(page.getByText(/Added 93,840 voters \(Arab localities \+10\.0 pp\)/).first()).toBeVisible();
+  await expect(page.getByText(/Added 93,840 voters \(Arab localities \+10 pp\)/).first()).toBeVisible();
   await page.keyboard.press('Escape');
 
   page.once('dialog', d => d.accept('Arab turnout +10'));

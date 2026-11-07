@@ -1,3 +1,4 @@
+import { percent } from './Percentage.tsx';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { useFloating } from '../floating.tsx';
 import { useDisclosure } from './Feature.tsx';
@@ -10,7 +11,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import { votesCast, type Scenario } from '../../model/scenario.ts';
 import { listLabel, methodOf, referenceLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtFrac, fmtInt, fmtPct, fmtRat, pctExactNote } from '../format.ts';
+import { fmtFrac, fmtInt, fmtPct, fmtRat } from '../format.ts';
 import { dispatch, setState, useDigits } from '../store.ts';
 import { DecimalInput, Info } from './ui.tsx';
 
@@ -72,14 +73,14 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
         </Fig>
       )}
 
-      <Fig k={L('Votes with no seat', 'קולות ללא מנדט')} term="unrepresented" v={fmtPct(seatlessVotes, r.totalValid, digits)} d={`${fmtInt(seatlessVotes)} ${L('votes', 'קולות')}`}>
+      <Fig k={L('Votes with no seat', 'קולות ללא מנדט')} term="unrepresented" v={percent(seatlessVotes, r.totalValid, digits)} d={`${fmtInt(seatlessVotes)} ${L('votes', 'קולות')}`}>
         {seatless.length ? <div className="tablewrap" style={{ maxHeight: 300 }}><table className="tbl"><thead><tr><th>{L('List', 'רשימה')}</th><th className="n">{L('Votes', 'קולות')}</th><th className="n">{L('% of valid', '% מהכשרים')}</th></tr></thead>
-          <tbody>{seatless.map(({ l }) => <tr key={l.id} ><td><button className="table-action" onClick={() => select(l.id)}>{listLabel(l, lang)}</button></td><td className="n">{fmtInt(l.votes)}</td><td className="n" title={pctExactNote(l.votes, r.totalValid, digits, s.rules.thresholdPct, lang)}>{fmtPct(l.votes, r.totalValid, digits, s.rules.thresholdPct)}</td></tr>)}
-            <tr><td><b>{L('Total', 'סה״כ')}</b></td><td className="n"><b>{fmtInt(seatlessVotes)}</b></td><td className="n"><b>{fmtPct(seatlessVotes, r.totalValid, digits)}</b></td></tr></tbody></table></div>
+          <tbody>{seatless.map(({ l }) => <tr key={l.id} ><td><button className="table-action" onClick={() => select(l.id)}>{listLabel(l, lang)}</button></td><td className="n">{fmtInt(l.votes)}</td><td className="n">{percent(l.votes, r.totalValid, digits, s.rules.thresholdPct, { pad: digits })}</td></tr>)}
+            <tr><td><b>{L('Total', 'סה״כ')}</b></td><td className="n"><b>{fmtInt(seatlessVotes)}</b></td><td className="n"><b>{percent(seatlessVotes, r.totalValid, digits, undefined, { pad: digits })}</b></td></tr></tbody></table></div>
           : <p className="small muted" style={{ margin: 0 }}>{L('Every list that ran won a seat.', 'כל הרשימות זכו במנדט.')}</p>}
       </Fig>
 
-      <Fig k={L('Turnout', 'שיעור ההצבעה')} term="turnout" v={fmtPct(cast, s.registered, digits)} d={fmtPct(cast, s.registered, digits) === fmtPct(ds.totals.votesCast, ds.totals.registered, digits) ? `${fmtInt(cast)} ${L('ballots cast', 'מצביעים')}` : `${referenceLabel(null, lang).name} ${fmtPct(ds.totals.votesCast, ds.totals.registered, digits)}`}>
+      <Fig k={L('Turnout', 'שיעור ההצבעה')} term="turnout" v={percent(cast, s.registered, digits)} d={fmtPct(cast, s.registered, digits) === fmtPct(ds.totals.votesCast, ds.totals.registered, digits) ? `${fmtInt(cast)} ${L('ballots cast', 'מצביעים')}` : <>{referenceLabel(null, lang).name} {percent(ds.totals.votesCast, ds.totals.registered, digits)}</>}>
         <div className="row">
           <label className="row small">{L('Set turnout to', 'קביעת שיעור ההצבעה ל-')}
             <DecimalInput value={s.registered ? (cast / s.registered) * 100 : 0} digits={2} width={86} label={L('Turnout %', 'שיעור הצבעה %')} onCommit={(p) => dispatch({ type: 'setTurnout', pct: p })} />% <Info title={L('Proportional turnout', 'הצבעה יחסית')}>{L('Every list, and the invalid ballots, grows or shrinks in proportion.', 'כל הרשימות, והקולות הפסולים, גדלים או קטנים באופן יחסי.')}</Info></label>
@@ -88,12 +89,12 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
         <div className="kv small"><span>{L('Registered voters', 'בעלי זכות בחירה')}</span><span>{fmtInt(s.registered)}</span><span>{L('Ballots cast', 'מצביעים')}</span><span>{fmtInt(cast)}</span><span>{L('Invalid ballots', 'קולות פסולים')}</span><span>{fmtInt(s.invalid)}</span></div>
       </Fig>
 
-      {standard && <Fig k={L('Invalid ballots', 'קולות פסולים')} term="invalid-votes" v={<>{fmtInt(s.invalid)}<EditMarker s={s} path={['invalid']} /></>} d={`${fmtPct(s.invalid, cast, digits)} ${L('of ballots cast', 'מהמצביעים')}`}>
+      {standard && <Fig k={L('Invalid ballots', 'קולות פסולים')} term="invalid-votes" v={<>{fmtInt(s.invalid)}<EditMarker s={s} path={['invalid']} /></>} d={<>{percent(s.invalid, cast, digits)} {L('of ballots cast', 'מהמצביעים')}</>}>
         {/* the valid votes are the complement of this card, so they are its breakdown rather than a card beside it */}
         <p className="small" style={{ margin: 0 }}><Info title={L('Invalid ballots', 'קולות פסולים')}>{L('Ballots the polling committees disqualified. They count towards turnout but not towards the threshold or the seats.', 'פתקים שוועדות הקלפי פסלו. הם נספרים בשיעור ההצבעה אך לא באחוז החסימה ובמנדטים.')}</Info>{s.invalid !== ds.totals.invalid && ` ${referenceLabel(null, lang).name}: ${fmtInt(ds.totals.invalid)}.`}</p>
         <div className="kv small"><span>{L('Ballots cast', 'מצביעים')}</span><span>{fmtInt(cast)}</span><span>{L('Invalid ballots', 'קולות פסולים')}</span><span>{fmtInt(s.invalid)}</span><span><b>{L('Valid votes', 'קולות כשרים')}</b></span><span><b>{fmtInt(r.totalValid)}</b></span></div>
       </Fig>}
-      {expert && <Fig k={L('Qualifying votes', 'קולות משתתפים')} term="qualifying" v={fmtInt(r.qualifyingVotes)} d={`${fmtPct(Number(r.qualifyingVotes), Number(r.totalValid), digits)} ${L('of valid', 'מהכשרים')}`}>
+      {expert && <Fig k={L('Qualifying votes', 'קולות משתתפים')} term="qualifying" v={fmtInt(r.qualifyingVotes)} d={<>{percent(r.qualifyingVotes, r.totalValid, digits)} {L('of valid', 'מהכשרים')}</>}>
         <p className="small" style={{ margin: 0 }}>{L(`${r.lists.filter(x => x.qualified).length} qualifying lists`, `${r.lists.filter(x => x.qualified).length} רשימות משתתפות`)} <Info title={L('Qualifying votes', 'קולות משתתפים')}>{L(`The votes of the ${r.lists.filter((x) => x.qualified).length} lists that passed the threshold; only these share the seats. ${fmtInt(r.unrepresentedVotes)} valid votes went to lists that did not.`, `הקולות של ${r.lists.filter((x) => x.qualified).length} הרשימות שעברו את החסימה; רק הן מתחלקות במנדטים. ${fmtInt(r.unrepresentedVotes)} קולות כשרים ניתנו לרשימות שלא עברו.`)}</Info></p>
       </Fig>}
       {expert && (

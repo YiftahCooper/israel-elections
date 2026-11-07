@@ -2,6 +2,8 @@
 
 ## 7 November 2026 — Settings
 
+- Numbers: Max decimal places defaults to 1/2/3 by level and drops trailing zeros; every rounded percentage and percentage-point change shows its exact value on hover, focus or tap. The joint-list split reminder has “Don’t show again” (back in Settings → Editing), and 2013’s declared versus detailed totals are noted behind (i).
+
 - Map: keep Hebrew sentence punctuation outside Latin-reference isolation, join the Ramadin source splice exactly, and name OpenStreetMap in full.
 
 

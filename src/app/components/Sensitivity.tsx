@@ -1,3 +1,4 @@
+import { percent } from './Percentage.tsx';
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
 import { cachedAnalysis } from '../analysisCache.ts';
 import { SeatDelta } from './SeatDelta.tsx';
@@ -14,7 +15,7 @@ import { runTasks } from '../analysisPool.ts';
 import type { AnalysisTask, TransferOutcome } from '../analysisTasks.ts';
 import { blocPieces, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, fmtRat } from '../format.ts';
+import { fmtInt } from '../format.ts';
 import { dispatch, useDigits } from '../store.ts';
 import { Info, NumberInput } from './ui.tsx';
 import { useChartWidth } from './Charts.tsx';
@@ -186,8 +187,8 @@ function PctInput({ value, onCommit, label }: { value: string; onCommit: (v: str
     onKeyDown={(e) => { if (e.key === 'Enter') onCommit(text); }} style={{ width: 60 }} aria-label={label} />;
 }
 
-/** up to four decimals, without trailing zeros (1%, 3.25%, 3.1648%) */
-const pctText = (r: Rational, digits: number) => { const t = fmtRat({ num: r.num * 100n, den: r.den }, digits); return `${t.includes('.') ? t.replace(/0+$/, '').replace(/\.$/, '') : t}%`; };
+/** a threshold as a capped percentage; chart labels pass svg */
+const pctText = (r: Rational, digits: number, svg = false) => percent(r.num, r.den, digits, undefined, { svg });
 
 function ThresholdSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
   const L = useL();
@@ -233,7 +234,7 @@ function ThresholdSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
             <thead><tr><th className="n">{L('Threshold above', 'אחוז חסימה מעל')}</th><th className="n">{L('up to', 'עד')}</th><th className="n">{L('Lists in', 'רשימות')}</th><th>{L('Seats vs now', 'מנדטים לעומת עכשיו')}</th></tr></thead>
             <tbody ref={table}>{out.segs.map((sg, k) => (
               <tr key={k} className={k === curRow ? 'sel' : undefined} aria-current={k === curRow || undefined}>
-                <td className="n" title={`${sg.fromPct.num * 100n}/${sg.fromPct.den}%`}>{pctText(sg.fromPct, digits)}</td><td className="n" title={`${sg.toPct.num * 100n}/${sg.toPct.den}%`}>{pctText(sg.toPct, digits)}</td>
+                <td className="n">{pctText(sg.fromPct, digits)}</td><td className="n">{pctText(sg.toPct, digits)}</td>
                 <td className="n">{sg.qualified.length}</td>
                 <td className="small">{Object.keys({ ...now, ...sg.seats }).some(id => (sg.seats[id] ?? 0) !== (now[id] ?? 0)) ? <SeatChanges seats={sg.seats} now={now} s={s} /> : (k === curRow ? L('now', 'עכשיו') : L('same as now', 'כמו עכשיו'))}</td>
               </tr>
@@ -267,14 +268,14 @@ function ThresholdLadder({ s, r, lo, hi }: { s: Scenario; r: AllocationResult; l
   return (
     <div ref={box} style={{ marginTop: 8 }}>
       <svg className="chart" viewBox={`0 0 ${W} ${H}`} width="100%" role="img" aria-label={L('Highest threshold each list passes', 'אחוז החסימה הגבוה ביותר שכל רשימה עוברת')}>
-        {ticks.map((t) => <g key={t}><line className="gridl" x1={x(t)} x2={x(t)} y1={top - 4} y2={H - 20} /><text x={x(t)} y={H - 6} textAnchor="middle">{Number.isInteger(t) ? `${t}%` : pctText(t === a ? lo : hi, digits)}</text></g>)}
+        {ticks.map((t) => <g key={t}><line className="gridl" x1={x(t)} x2={x(t)} y1={top - 4} y2={H - 20} /><text x={x(t)} y={H - 6} textAnchor="middle">{Number.isInteger(t) ? `${t}%` : pctText(t === a ? lo : hi, digits, true)}</text></g>)}
         {cur >= a && cur <= b && <g><line x1={x(cur)} x2={x(cur)} y1={top - 12} y2={H - 20} stroke="var(--ink)" strokeDasharray="3 3" /><text x={x(cur)} y={12} textAnchor="middle" fill="var(--ink)">{L('now', 'עכשיו')}</text></g>}
         {rows.map(({ l, share }, i) => {
           const yy = top + i * rowH, p = toNumber(share) * 100, label = listLabel(l, lang);
           return <g key={l.id}>
             <text x={lang === 'he' ? W - 4 : 4} y={yy - 2} textAnchor={lang === 'he' ? 'end' : 'start'}><title>{label}</title>{label}</text>
             <rect x={x(a)} y={yy + 3} width={Math.max(1, x(p) - x(a))} height={12} fill={l.color} rx={2} stroke="var(--rule-2)" strokeWidth={0.5} />
-            <text className="halo" x={W - 2} y={yy + 12} textAnchor="end"><title>{`${share.num * 100n}/${share.den}%`}</title>{pctText(share, digits)}</text>
+            <text className="halo" x={W - 2} y={yy + 12} textAnchor="end">{pctText(share, digits, true)}</text>
           </g>;
         })}
       </svg>

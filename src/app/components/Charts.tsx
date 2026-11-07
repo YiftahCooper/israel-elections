@@ -1,3 +1,4 @@
+import { percent, rationalPoints } from './Percentage.tsx';
 import{PartyDot}from'./PartyDot.tsx';
 import{partySeparator}from'../../data/colourGuard.ts';
 import { seatOrder } from './Hemicycle.tsx';
@@ -8,7 +9,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, fmtPct, isolate, pctExactNote } from '../format.ts';
+import { fmtInt, isolate } from '../format.ts';
 import { setState, useDigits, useSetting } from '../store.ts';
 import { apportion } from '../../model/actions.ts';
 import { Info, Seg } from './ui.tsx';
@@ -132,15 +133,15 @@ function VotesVsSeats({ s, r }: { s: Scenario; r: AllocationResult }) {
           // start in English; stacked above the bars (phone), they start where the bars start
           const lx = stacked ? (he ? W - 4 : x0) : he ? labelW - 8 : 4;
           return (
-            <g key={row.id} onMouseMove={(e) => { if (!hoverPopups) return; bridge.cancel(); setTip({ x: e.clientX, y: e.clientY, html: <><b>{row.name}</b><div>{L('Votes', 'קולות')}: {fmtInt(row.v)} ({fmtPct(row.v, total, digits, s.rules.thresholdPct)})</div>{list && <div>{L('Seats', 'מנדטים')}: {row.seats} ({fmtPct(row.seats, seats, digits)})</div>}</> }); }}
-              onMouseLeave={bridge.leave} onClick={(e) => { if (!hoverPopups) { bridge.cancel(); setTip({ x: e.clientX, y: e.clientY, html: <><b>{row.name}</b><div>{L('Votes', 'קולות')}: {fmtInt(row.v)} ({fmtPct(row.v, total, digits, s.rules.thresholdPct)})</div>{list && <div>{L('Seats', 'מנדטים')}: {row.seats} ({fmtPct(row.seats, seats, digits)})</div>}</> }); } if (list) setState({ selectedListId: row.id }); }} style={{ cursor: list ? 'pointer' : 'default' }}>
+            <g key={row.id} onMouseMove={(e) => { if (!hoverPopups) return; bridge.cancel(); setTip({ x: e.clientX, y: e.clientY, html: <><b>{row.name}</b><div>{L('Votes', 'קולות')}: {fmtInt(row.v)} ({percent(row.v, total, digits, s.rules.thresholdPct)})</div>{list && <div>{L('Seats', 'מנדטים')}: {row.seats} ({percent(row.seats, seats, digits)})</div>}</> }); }}
+              onMouseLeave={bridge.leave} onClick={(e) => { if (!hoverPopups) { bridge.cancel(); setTip({ x: e.clientX, y: e.clientY, html: <><b>{row.name}</b><div>{L('Votes', 'קולות')}: {fmtInt(row.v)} ({percent(row.v, total, digits, s.rules.thresholdPct)})</div>{list && <div>{L('Seats', 'מנדטים')}: {row.seats} ({percent(row.seats, seats, digits)})</div>}</> }); } if (list) setState({ selectedListId: row.id }); }} style={{ cursor: list ? 'pointer' : 'default' }}>
               <rect x={0} y={y - 2} width={W} height={rowH - 4} fill="transparent" />
               <text x={lx} y={stacked ? y + 9 : yb + barH + 3} textAnchor={he ? 'end' : 'start'} fill="var(--ink)" data-chart-label=""><title>{row.name}</title>{isolate(clip(row.name, stacked ? W - 8 : labelW - 12))}</text>
               <rect className="bar" x={x0} y={yb + 0.5} width={vw} height={barH - 1} rx={2} fill={row.color} fillOpacity={0.28} stroke={edge(row.color)} strokeWidth={1} />
               {list && <rect className="bar" x={x0} y={yb + barH + gap} width={sw} height={barH} rx={2} fill={row.color} />}
               {componentSeats.filter(st=>st.listId===row.id).map((st,k)=>st.innerColor && <rect key={k} data-component-seat={st.partyId} x={x0+sw*k/row.seats} y={yb+barH+gap+2} width={sw/row.seats} height={barH-4} fill={st.innerColor} stroke={partySeparator(st.innerColor,row.color).inner} strokeWidth={.75} paintOrder="stroke fill"><title>{(lang==='he' ? s.lists.find(l=>l.id===row.id)?.parties?.find(p=>p.id===st.partyId)?.nameHe : s.lists.find(l=>l.id===row.id)?.parties?.find(p=>p.id===st.partyId)?.nameEn) ?? ''} · {row.name}</title></rect>)}
               <text x={x0 + Math.max(vw, sw) + 4} y={yb + barH + 3} textAnchor="start" className="tabnum">
-                {fmtPct(row.v, total, digits)}{list ? ` → ${fmtPct(row.seats, seats, digits)}` : ''}
+                {percent(row.v, total, digits, undefined, { svg: true })}{list && <> → {percent(row.seats, seats, digits, undefined, { svg: true })}</>}
               </text>
             </g>
           );
@@ -212,13 +213,13 @@ function ShareTable({ s, r, height }: { s: Scenario; r: AllocationResult; height
           {s.lists.filter((l) => !l.withdrawn).sort((a, b) => b.votes - a.votes).map((l) => { const lr = r.lists.find((x) => x.id === l.id)!; return (
             <tr key={l.id}>
               <td><button type="button" className="table-action row" style={{ gap: 6, flexWrap: 'nowrap' }} onClick={() => setState({ selectedListId: l.id })}><span className="swatch" style={{ background: l.color }} />{listLabel(l, lang)}</button></td>
-              <td className="n">{fmtInt(l.votes)}</td><td className="n" title={pctExactNote(l.votes, total, digits, s.rules.thresholdPct, lang)}>{fmtPct(l.votes, total, digits, s.rules.thresholdPct)}</td>
-              <td className="n">{lr.qualified ? fmtPct(l.votes, r.qualifyingVotes, digits) : '—'}</td>
-              <td className="n">{lr.seats}</td><td className="n">{fmtPct(lr.seats, s.rules.seats, digits)}</td>
-              <td className="n"><bdi dir="ltr">{(() => { const v = (lr.seats / s.rules.seats - l.votes / Number(total)) * 100; return `${v < 0 ? '−' : v > 0 ? '+' : ''}${Math.abs(v).toFixed(digits)}`; })()}</bdi></td>
+              <td className="n">{fmtInt(l.votes)}</td><td className="n">{percent(l.votes, total, digits, s.rules.thresholdPct, { pad: digits })}</td>
+              <td className="n">{lr.qualified ? percent(l.votes, r.qualifyingVotes, digits, undefined, { pad: digits }) : '—'}</td>
+              <td className="n">{lr.seats}</td><td className="n">{percent(lr.seats, s.rules.seats, digits, undefined, { pad: digits })}</td>
+              <td className="n"><bdi dir="ltr">{rationalPoints({ num: (BigInt(lr.seats) * BigInt(total) - BigInt(l.votes) * BigInt(s.rules.seats)) * 100n, den: BigInt(s.rules.seats) * BigInt(total) }, digits)}</bdi></td>
             </tr>
           ); })}
-          <tr><td><b>{L('Votes with no seat', 'קולות ללא מנדט')}</b> <Info term="unrepresented" /></td><td className="n"><b>{fmtInt(noSeat)}</b></td><td className="n"><b>{fmtPct(noSeat, total, digits)}</b></td><td /><td className="n">0</td><td /><td /></tr>
+          <tr><td><b>{L('Votes with no seat', 'קולות ללא מנדט')}</b> <Info term="unrepresented" /></td><td className="n"><b>{fmtInt(noSeat)}</b></td><td className="n"><b>{percent(noSeat, total, digits, undefined, { pad: digits })}</b></td><td /><td className="n">0</td><td /><td /></tr>
         </tbody>
       </table>
     </div>
@@ -273,7 +274,7 @@ export function Waffles({ s, r }: { s: Scenario; r: AllocationResult }) {
       </div>
       <div className="legend" style={{ marginTop: 8 }}>
         {[...seated].sort((a, b) => b.l.votes - a.l.votes).map(({ l, lr }) => <span key={l.id} className="row" style={{ gap: 5 }}><span className="swatch" style={{ background: l.color }} />{listLabel(l, lang)} <span className="muted tabnum">{lr.seats}</span></span>)}
-        {wasted > 0 && <span className="row" style={{ gap: 5 }}><svg width="10" height="10" aria-hidden><rect width="10" height="10" rx="2" fill={`url(#${hatch})`} /></svg>{L(`No seat: ${fmtPct(wasted, r.totalValid, digits)} of votes`, `ללא מנדט: ${fmtPct(wasted, r.totalValid, digits)} מהקולות`)}<Info term="unrepresented" /></span>}
+        {wasted > 0 && <span className="row" style={{ gap: 5 }}><svg width="10" height="10" aria-hidden><rect width="10" height="10" rx="2" fill={`url(#${hatch})`} /></svg>{(lang === 'he' ? <>{"ללא מנדט: "}{percent(wasted, r.totalValid, digits)}{" מהקולות"}</> : <>{"No seat: "}{percent(wasted, r.totalValid, digits)}{" of votes"}</>)}<Info term="unrepresented" /></span>}
       </div>
     </div>
   );

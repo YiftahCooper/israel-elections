@@ -1,3 +1,5 @@
+import { fmtPct } from '../format.ts';
+import { percent, points } from './Percentage.tsx';
 import { Floating } from '../floating.tsx';
 import {Fragment,useEffect,useId,useRef,useState} from 'react';
 import {aggregate,membership,type Family} from '../../families/model.ts';
@@ -45,12 +47,22 @@ function Plot({family:f,metric,scale,cursor,onCursor,onInspect}:{family:Family;m
  const data=historyElections.map(d=>aggregate(f,d));let path='';let connected=false;
  data.forEach((a,i)=>{if(!drawn(a)){connected=false;return;}path+=`${connected?'L':'M'}${x(historyElections[i])},${y(a.votes!,historyElections[i])} `;connected=true;});
  const at=historyElections.findIndex(d=>d.id===cursor),color=familyColor(f);
- const num=(v:bigint,e:HistoryElection)=>metric==='share'?`${value(v,e).toFixed(digits)}% · ${Number(v).toLocaleString('en-US')} ${L('votes','קולות')}`:`${Number(v).toLocaleString('en-US')} ${L('votes','קולות')}`;
- const describe=(a:Agg,e:HistoryElection)=>{const status=familyStatus(a,L);const parts=[familyDate(e,lang)];
+ const num=(v:bigint,e:HistoryElection)=>metric==='share'?<>{percent(v,e.totals.valid,digits)} · {Number(v).toLocaleString('en-US')} {L('votes','קולות')}</>:`${Number(v).toLocaleString('en-US')} ${L('votes','קולות')}`;
+ const describeRich=(a:Agg,e:HistoryElection)=>{const status=familyStatus(a,L);const parts: React.ReactNode[]=[familyDate(e,lang)];
   if(status)parts.push(status);if(a.votes!==null&&a.status==='observed'&&!onlyMixed(a))parts.push(num(a.votes,e));
-  if(a.mixed)parts.push(`${onlyMixed(a)?'':L('Mixed lists','רשימות מעורבות')+': '}${num(a.mixed,e)}`);
+  if(a.mixed)parts.push(<>{onlyMixed(a)?'':L('Mixed lists','רשימות מעורבות')+': '}{num(a.mixed,e)}</>);
   if(a.excluded&&a.status==='observed')parts.push(`${L('Mixed lists left out','רשימות מעורבות שהושמטו')}: ${Number(a.excluded).toLocaleString('en-US')}`);
-  if(e.pending)parts.push(L('Gazette not yet verified','הפרסום ברשומות טרם אומת'));return parts.join(' · ');};
+  if(e.pending)parts.push(L('Gazette not yet verified','הפרסום ברשומות טרם אומת'));return <>{parts.map((part,i)=><span key={i}>{i ? ' · ' : ''}{part}</span>)}</>;};
+ const describe=(a:Agg,e:HistoryElection)=>{
+  const num=(v:bigint)=>`${metric==='share'?fmtPct(v,e.totals.valid,digits)+' · ':''}${Number(v).toLocaleString('en-US')} ${L('votes','קולות')}`;
+  const parts=[familyDate(e,lang)],status=familyStatus(a,L);
+  if(status)parts.push(status);
+  if(a.votes!==null&&a.status==='observed'&&!onlyMixed(a))parts.push(num(a.votes));
+  if(a.mixed)parts.push(`${onlyMixed(a)?'':L('Mixed lists','רשימות מעורבות')+': '}${num(a.mixed)}`);
+  if(a.excluded&&a.status==='observed')parts.push(`${L('Mixed lists left out','רשימות מעורבות שהושמטו')}: ${Number(a.excluded).toLocaleString('en-US')}`);
+  if(e.pending)parts.push(L('Gazette not yet verified','הפרסום ברשומות טרם אומת'));
+  return parts.join(' · ');
+ };
  const years=historyElections.map(d=>+d.electionDate.slice(0,4)),every=narrow?20:10;
  const ticks:number[]=[];for(let yr=Math.ceil(years[0]/every)*every;yr<=years[25];yr+=every)ticks.push(yr);
  const label=shortFamilyName(f,lang);
@@ -78,13 +90,13 @@ function Plot({family:f,metric,scale,cursor,onCursor,onInspect}:{family:Family;m
    {!path&&!data.some(a=>a.mixed)&&<text className="family-empty" x={(left+width-right)/2} y={(top+bottom)/2} textAnchor="middle">{L('No lists counted in any election','לא נספרו רשימות באף מערכת בחירות')}</text>}
    {lastAt!==undefined&&<text className="family-end-label" x={width-right+12} y={endY} textAnchor="start">{labelLines.slice(0,3).map((line,i)=><tspan key={i} x={width-right+12} dy={i?13:0}>{line.length>(narrow?11:17)?line.slice(0,narrow?10:16)+'…':line}{i===2&&labelLines.length>3?'…':''}</tspan>)}</text>}
   </svg>
-  {hover&&at>=0&&<Floating className="family-tooltip" anchor={() => ref.current?.querySelector(`[aria-label="${CSS.escape(describe(data[at],historyElections[at]))}"]`)?.getBoundingClientRect() ?? ref.current?.getBoundingClientRect()}><PointFacts f={f} at={at} metric={metric} text={describe(data[at],historyElections[at])}/></Floating>}
+  {hover&&at>=0&&<Floating className="family-tooltip" anchor={() => ref.current?.querySelector(`[aria-label="${CSS.escape(describe(data[at],historyElections[at]))}"]`)?.getBoundingClientRect() ?? ref.current?.getBoundingClientRect()}><PointFacts f={f} at={at} metric={metric} text={describeRich(data[at],historyElections[at])}/></Floating>}
  </div>;
 }
 
 /** What one point is made of, from the packed runtime (no loading, so the box never grows under the pointer):
  * the change since the previous election, the counted lists, and each hatched mixed list with the family's own parties in bold. */
-function PointFacts({f,at,metric,text}:{f:Family;at:number;metric:'share'|'votes';text:string}) {
+function PointFacts({f,at,metric,text}:{f:Family;at:number;metric:'share'|'votes';text:React.ReactNode}) {
  const digits=useDigits();
  const L=useL(),lang=useLang(),e=historyElections[at],prev=historyElections[at-1],a=aggregate(f,e),pa=prev?aggregate(f,prev):null,m=membership(f,e.id);
  const votes=new Map(e.lists.map(l=>[l.id,l.votes])),byVotes=(ids:Set<string>)=>[...ids].filter(id=>votes.has(id)).sort((x,y)=>votes.get(y)!-votes.get(x)!);
@@ -94,7 +106,7 @@ function PointFacts({f,at,metric,text}:{f:Family;at:number;metric:'share'|'votes
  const sign=(n:number)=>n>0?'+':n<0?'−':'±';
  return <>
   <span>{text}</span>
-  {delta!==null&&<span className="ft-delta">{L('Since','מאז')} {familyDate(prev!,lang)}: <bdi dir="ltr">{sign(delta)}{metric==='share'?`${Math.abs(delta).toFixed(digits)} ${L('points','נקודות אחוז')}`:Math.abs(delta).toLocaleString('en-US')}</bdi></span>}
+  {delta!==null&&<span className="ft-delta">{L('Since','מאז')} {familyDate(prev!,lang)}: <bdi dir="ltr">{metric==='share'?<>{points(delta,digits)} {L('points','נקודות אחוז')}</>:<>{sign(delta)}{Math.abs(delta).toLocaleString('en-US')}</>}</bdi></span>}
   {m.selected.size>0&&<span className="ft-row"><i className="family-key-line" aria-hidden/>{byVotes(m.selected).map(name).join(' · ')}</span>}
   {byVotes(m.mixed).map(id=>{const parts=mixedComposition(f,e.id,id,lang);return <span key={id} className="ft-row"><i className="family-key-mixed" aria-hidden/><span>{name(id)}{parts.length>1&&<>: {parts.map((p,i)=><Fragment key={i}>{i>0&&' + '}{p.own?<b>{p.name}</b>:p.name}</Fragment>)}</>}</span></span>;})}
   {m.excluded.size>0&&<span className="ft-row muted">{L('Left out','לא נספרו')}: {byVotes(m.excluded).map(name).join(' · ')}</span>}

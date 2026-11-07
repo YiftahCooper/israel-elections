@@ -1,0 +1,2 @@
+.split-warning { display: grid; gap: 4px; margin: 0 0 6px; }
+.split-warning-again { display: inline-flex; align-items: center; gap: 6px; justify-self: start; min-height: 32px; cursor: pointer; }

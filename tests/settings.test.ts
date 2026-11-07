@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest';
 import { GROUPS, SETTINGS, SETTING_IDS, DECIMAL_CHOICES, rowMatches, rowVisible, settingDefault, settingValue, validSettings } from '../src/app/settings.ts';
 import { PREFERENCES } from '../src/app/preferences.ts';
-import { fmtPct, fmtPp, pctExactNote } from '../src/app/format.ts';
+import { exactDecimal, fmtPct, fmtPp, pctExactNote } from '../src/app/format.ts';
 import { FEATURES } from '../src/app/features.ts';
 
 const he = /[֐-׿]/;
@@ -36,8 +36,8 @@ describe('the settings registry', () => {
     expect(settingDefault('seatlessParties', 'simple')).toBe(false);
     expect(settingDefault('hoverPopups', 'simple')).toBe(true);
     expect(settingDefault('decimals', 'simple')).toBe(1);
-    expect(settingDefault('decimals', 'standard')).toBe(1);
-    expect(settingDefault('decimals', 'expert')).toBe(2);
+    expect(settingDefault('decimals', 'standard')).toBe(2);
+    expect(settingDefault('decimals', 'expert')).toBe(3);
     expect(settingDefault('voteCounts', 'simple')).toBe(false);
     expect(settingDefault('voteCounts', 'standard')).toBe(true);
   });
@@ -137,7 +137,7 @@ describe('threshold-safe rounding', () => {
   });
   test('away from the threshold nothing changes', () => {
     expect(fmtPct(votes(10.84), W, 1, '3.25')).toBe('10.8%');
-    expect(fmtPct(votes(0.2), W, 2, '3.25')).toBe('0.20%');
+    expect(fmtPct(votes(0.2), W, 2, '3.25')).toBe('0.2%');
     expect(fmtPct(votes(3.24), W, 1, '3.25')).toBe('3.2%');
   });
   test('fractional estimates are shown, not refused', () => {
@@ -148,27 +148,42 @@ describe('threshold-safe rounding', () => {
     expect(fmtPct(3, W, 1)).toBe('<0.1%');
     expect(fmtPct(3, W, 0)).toBe('<1%');
     expect(fmtPct(3, W, 2)).toBe('<0.01%');
-    expect(fmtPct(0, W, 1)).toBe('0.0%');
+    expect(fmtPct(0, W, 1)).toBe('0%');
     expect(fmtPct(5, 0, 1)).toBe('—%');
   });
 });
 
 describe('the exact share and percentage-point changes', () => {
   const W = 1_000_000, votes = (p: number) => Math.round(p * W / 100);
-  test('a share shown with an extra digit near the threshold carries the exact share for its tooltip', () => {
-    expect(pctExactNote(votes(1.46), W, 1, '1.5', 'en')).toBe('1.4600%: the exact share. One more decimal is shown so it doesn’t look above the 1.5% threshold');
-    expect(pctExactNote(votes(3.4), W, 0, '3.25', 'en')).toMatch(/^3\.4000%: .*doesn’t look below the 3\.25% threshold/);
-    expect(pctExactNote(votes(1.46), W, 1, '1.5', 'he')).toMatch(/^1\.4600%: השיעור המדויק/);
-    // ordinary rounding: nothing to explain
-    expect(pctExactNote(votes(10.84), W, 1, '3.25', 'en')).toBeUndefined();
-    expect(pctExactNote(votes(1.46), W, 2, '1.5', 'en')).toBeUndefined();
+  test('every rounded share has an exact note, at every cap; a value shown in full has none', () => {
+    for (const d of DECIMAL_CHOICES) {
+      expect(pctExactNote(1, 3, d, undefined, 'en')).toBe('33.333333…%: the exact share');
+      expect(pctExactNote(0, W, d, undefined, 'en')).toBeUndefined();
+      expect(pctExactNote(1, 8, d, undefined, 'en')).toBe(d === 0 ? '12.5%: the exact share' : undefined);
+    }
+    expect(pctExactNote(votes(10.84), W, 1, '3.25', 'en')).toBe('10.84%: the exact share');
+    expect(pctExactNote(votes(10.84), W, 2, '3.25', 'en')).toBeUndefined();
+    expect(pctExactNote(1, 3, 3, undefined, 'he')).toBe('33.333333…%: השיעור המדויק');
+    // a share shown with an extra digit near the threshold also says why
+    expect(pctExactNote(votes(1.4567), W, 1, '1.5', 'en')).toBe('1.4567%: the exact share. One more decimal is shown so it doesn’t look above the 1.5% threshold');
+    expect(pctExactNote(votes(1.46), W, 1, '1.5', 'en')).toBeUndefined();
+    expect(pctExactNote(votes(3.4), W, 0, '3.25', 'he')).toBeUndefined();
+    expect(pctExactNote(votes(3.41), W, 0, '3.25', 'he')).toMatch(/^3\.41%: השיעור המדויק\. .*מתחת לאחוז החסימה \(3\.25%\)$/);
+  });
+  test('exact decimals are never rounded: in full when they end, else six decimals and an ellipsis', () => {
+    expect(exactDecimal(1n, 3n)).toBe('0.333333…');
+    expect(exactDecimal(2n, 3n)).toBe('0.666666…');
+    expect(exactDecimal(271n, 25n)).toBe('10.84');
+    expect(exactDecimal(5n, 1n)).toBe('5');
+    expect(exactDecimal(-1n, 8n)).toBe('−0.125');
+    expect(exactDecimal(123456789n, 1n)).toBe('123,456,789');
   });
   test('percentage points: signed, capped, never a non-zero change shown as zero', () => {
     expect(fmtPp({ num: 1234n, den: 1000n }, 1)).toBe('+1.2');
     expect(fmtPp({ num: -1234n, den: 1000n }, 0)).toBe('−1');
     expect(fmtPp({ num: 3n, den: 1000n }, 1)).toBe('+<0.1');
     expect(fmtPp({ num: -3n, den: 1000n }, 2)).toBe('−<0.01');
-    expect(fmtPp({ num: 0n, den: 1n }, 1)).toBe('0.0');
+    expect(fmtPp({ num: 0n, den: 1n }, 1)).toBe('0');
     expect(fmtPp({ num: 123456789n, den: 1000000n }, 3)).toBe('+123.457');
   });
 });

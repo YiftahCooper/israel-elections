@@ -1,3 +1,5 @@
+import { percent } from './Percentage.tsx';
+import { k19ListNote } from '../k19Note.ts';
 import {ColourPicker} from './ColourPicker.tsx';
 import { partyDisplayColor } from '../partyDisplayColor.ts';
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
@@ -24,7 +26,7 @@ import { runTasks } from '../analysisPool.ts';
 import type { AnalysisTask } from '../analysisTasks.ts';
 import { listLabel, referenceLabel, warningText } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtFrac, fmtInt, fmtPct, fmtRat, fmtSigned } from '../format.ts';
+import { fmtFrac, fmtInt, fmtRat, fmtSigned } from '../format.ts';
 import { dispatch, dispatchMany, getState, useStore, previewAction, setState, toast, useFeature, useLevel, useVoteSource, useDigits, useSetting, withSource } from '../store.ts';
 import { clampTarget, deltaAction, stayingHome, toVoteSource, type SourceChoice, votesForShare, voteSourceLabel } from '../voteEdit.ts';
 import { Candidates } from './Candidates.tsx';
@@ -245,7 +247,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
               steps={[{ id: '1', label: '1', amount: 1 }]} onPreview={(n) => { const t = seatVotes(n); if (t !== null) explainTarget(t); }} />
             <Info title={L('Seats', 'מנדטים')}>{L('Type a seat count: the fewest votes that give it are moved.', 'הקלידו מספר מנדטים: יועברו הכי מעט קולות שמביאים אותו.')}</Info>
         </div>}
-        <h3>{L('Votes', 'קולות')} <EditMarker s={s} path={['lists', l.id, 'votes']} /></h3>
+        <h3>{L('Votes', 'קולות')} <EditMarker s={s} path={['lists', l.id, 'votes']} />{k19ListNote(l.id, lang) && <Info title={L('Declared and detailed results', 'התוצאה המוכרזת והמפורטת')}>{k19ListNote(l.id, lang)}</Info>}</h3>
         {!lr.qualified && !l.withdrawn && Number(s.rules.thresholdPct) > 0 && <p className="small ink2">{L('Below the threshold', 'מתחת לאחוז החסימה')}</p>}
         {l.withdrawn && <p className="small callout" style={{ marginTop: 0 }}>{L(`This list has withdrawn: its ${fmtInt(l.heldVotes ?? 0)} ballots count as invalid.`, `הרשימה פרשה: ${fmtInt(l.heldVotes ?? 0)} הפתקים שלה נחשבים פסולים.`)}</p>}
         <fieldset disabled={l.withdrawn} style={{ border: 0, padding: 0, margin: 0, minWidth: 0, display: 'grid', gap: 8 }}>
@@ -333,9 +335,9 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
         <section>
           <h3>{L('Allocation detail', 'פירוט החלוקה')}</h3>
           <div className="kv small">
-            {lr.qualified && <><span>{L('Share of qualifying votes', 'מהקולות המשתתפים')}</span><span>{fmtPct(l.votes, r.qualifyingVotes, digits)}</span></>}
-            <span>{L('Share of ballots cast', 'מכלל המצביעים')}</span><span>{fmtPct(l.votes, votesCast(s), digits)}</span>
-            <span>{L('Share of registered voters', 'מבעלי זכות הבחירה')}</span><span>{fmtPct(l.votes, s.registered, digits)}</span>
+            {lr.qualified && <><span>{L('Share of qualifying votes', 'מהקולות המשתתפים')}</span><span>{percent(l.votes, r.qualifyingVotes, digits)}</span></>}
+            <span>{L('Share of ballots cast', 'מכלל המצביעים')}</span><span>{percent(l.votes, votesCast(s), digits)}</span>
+            <span>{L('Share of registered voters', 'מבעלי זכות הבחירה')}</span><span>{percent(l.votes, s.registered, digits)}</span>
             {lr.qualified && <>
               <span>{L('Whole-quota seats', 'מנדטים במודד')}</span><span><bdi dir="ltr"><span className="muted">⌊{fmtInt(l.votes)} ÷ {fmtRat(r.quota, 0)}⌋ =</span> {lr.initialSeats}</bdi></span>
               <span>{L('Remainder-stage seats', 'מנדטים מעודפים')}</span><span>{lr.seats - lr.initialSeats}</span>

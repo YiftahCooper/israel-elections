@@ -1,3 +1,5 @@
+import { percent, percentNum } from './Percentage.tsx';
+import { SplitWarning } from './SplitWarning.tsx';
 import {ColourPicker} from './ColourPicker.tsx';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { SeatDelta } from './SeatDelta.tsx';
@@ -16,7 +18,7 @@ import { applyAction, apportion } from '../../model/actions.ts';
 import { toEngineInput, type Action, type Scenario, type SimList, type SimRules } from '../../model/scenario.ts';
 import { allocationOf, listLabel, referenceLabel } from '../derive.ts';
 import { useL, useLang, type Lang } from '../i18n.ts';
-import { fmtInt, fmtPct, fmtPctNum } from '../format.ts';
+import { fmtInt } from '../format.ts';
 import { partColours, distinctColour } from '../newListColour.ts';
 import { dispatch, dispatchMany, setState, useDigits } from '../store.ts';
 import { useActiveReference } from '../useActiveReference.ts';
@@ -386,6 +388,7 @@ function Split({ s, r }: { s: Scenario; r: AllocationResult }) {
       <ListPicker s={s} picked={id ? [id] : []} single onToggle={(x) => setId(id === x ? '' : x)} />
       {l && byParty && (
         <div className="st-options">
+          <SplitWarning />
           <p className="small ink2 st-full" style={{ margin: 0 }}>{L('Assumed vote shares', 'חלוקת קולות משוערת')} <Info title={L('Vote shares', 'חלוקת הקולות')}>{L('Nobody knows how the joint list’s votes would have divided. By default each party gets its share of the list’s elected members (of its candidates if none was elected). Change the shares to try other assumptions.', 'איש אינו יודע כיצד היו מתחלקים קולות הרשימה המשותפת. כברירת מחדל כל מפלגה מקבלת את חלקה בנבחרי הרשימה (או במועמדיה, אם לא נבחר איש). שנו את החלוקה כדי לבדוק הנחות אחרות.')}</Info></p>
           <div className="st-full"><ShareBar parts={parties.map((p, i) => ({ key: p.id, color: colours[i], votes: partyVotes[i] ?? 0 }))} /></div>
           {parties.map((p, i) => (
@@ -399,7 +402,7 @@ function Split({ s, r }: { s: Scenario; r: AllocationResult }) {
             </div>
           ))}
           {sumPct === 0 ? <p className="small st-full" style={{ margin: 0, color: 'var(--warn-ink)' }}>{L('Give at least one party a share.', 'תנו לפחות למפלגה אחת חלק מהקולות.')}</p>
-            : Math.abs(sumPct - 100) > 0.05 && <p className="small st-full" style={{ margin: 0, color: 'var(--warn-ink)' }}>{L(`The shares add up to ${fmtPctNum(sumPct, digits)}; the votes are divided in these proportions.`, `החלקים מסתכמים ב־${fmtPctNum(sumPct, digits)}; הקולות יחולקו ביחס הזה.`)}</p>}
+            : Math.abs(sumPct - 100) > 0.05 && <p className="small st-full" style={{ margin: 0, color: 'var(--warn-ink)' }}>{(lang === 'he' ? <>{"החלקים מסתכמים ב־"}{percentNum(sumPct, digits)}{"; הקולות יחולקו ביחס הזה."}</> : <>{"The shares add up to "}{percentNum(sumPct, digits)}{"; the votes are divided in these proportions."}</>)}</p>}
           {(shares || unassigned > 0) && <div className="row st-full" style={{ gap: 8 }}>
             {shares && <button type="button" className="btn small ghost" onClick={() => setShares(null)}>{L('Reset shares', 'איפוס החלוקה')}</button>}
             {unassigned > 0 && <span className="tiny muted">{L(`${unassigned} candidates go with the lead party`, `${unassigned} מועמדים עם מפלגת הראש`)} <Info title={L('Candidate assignment', 'שיוך מועמדים')}>{L(`${unassigned} candidate(s) without a recorded party go with ${name(parties.find((p) => p.id === lead) ?? parties[0])} (the party of the list’s leader).`, `${unassigned} מועמדים שמפלגתם לא תועדה מצורפים ${hebrewPrefix('ל', name(parties.find((p) => p.id === lead) ?? parties[0]))} (מפלגת העומד בראש הרשימה).`)}</Info></span>}
@@ -418,7 +421,7 @@ function Split({ s, r }: { s: Scenario; r: AllocationResult }) {
             <input type="range" min={0} max={100} value={shareA} aria-label={L(`Vote share of ${plainNames[0][1]} (%)`, `חלק הקולות של ${plainNames[0][0]} (%)`)} onChange={(e) => setShareA(Number(e.target.value))} /></label>
           <div className="st-full"><ShareBar parts={[{ key: 'a', color: colours[0], votes: plainVotes }, { key: 'b', color: colours[1], votes: l.votes - plainVotes }]} /></div>
           {[plainVotes, l.votes - plainVotes].map((v, i) => (
-            <span key={i} className="small st-eff"><span className="swatch" style={{ background: colours[i] }} /><bdi>{plainNames[i][lang === 'he' ? 0 : 1]}</bdi> <b className="tabnum">{fmtPct(v, l.votes, digits)}</b> <span className="muted tabnum">{L(`${fmtInt(v)} votes`, `${fmtInt(v)} קולות`)}</span></span>
+            <span key={i} className="small st-eff"><span className="swatch" style={{ background: colours[i] }} /><bdi>{plainNames[i][lang === 'he' ? 0 : 1]}</bdi> <b className="tabnum">{percent(v, l.votes, digits)}</b> <span className="muted tabnum">{L(`${fmtInt(v)} votes`, `${fmtInt(v)} קולות`)}</span></span>
           ))}
         </div>
       )}

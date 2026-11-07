@@ -37,6 +37,7 @@ export interface SettingValues {
   chamberKey: boolean;
   dimUnselected: boolean;
   decimals: number;
+  splitWarning: boolean;
   confirmStartOver: boolean;
   hoverPreviews: boolean;
   communityScenarios: boolean;
@@ -125,9 +126,10 @@ export const SETTINGS: readonly SettingRow[] = [
     info: ['When a list is chosen, the other seats and rows fade.', 'כשבוחרים רשימה, שאר המושבים והשורות מתעמעמים.'], synonyms: 'dim fade highlight selection עמעום הדגשה בחירה' },
 
   { id: 'decimals', group: 'numbers', control: 'decimals', min: 'simple', label: ['Max decimal places', 'ספרות אחרי הנקודה (מרבי)'],
-    info: ['Percentages everywhere show at most this many. Results are still computed exactly. Next to the threshold a share gets one more digit, so it never looks like it is on the other side.', 'אחוזים בכל מקום מוצגים עם לכל היותר כמה ספרות. התוצאות עדיין מחושבות במדויק. ליד אחוז החסימה מוצגת ספרה נוספת, כדי שהאחוז לא ייראה בצד השני שלו.'],
+    info: ['Percentages show at most this many, without trailing zeros. Tap, hover or focus one for its exact value. Next to the threshold a share gets one more digit, so it never looks like it is on the other side.', 'אחוזים מוצגים עם לכל היותר כמה ספרות, בלי אפסים בסוף. נגיעה, ריחוף או מיקוד מציגים את הערך המדויק. ליד אחוז החסימה מוצגת ספרה נוספת, כדי שהאחוז לא ייראה בצד השני שלו.'],
     synonyms: 'decimal precision percent % digits rounding דיוק אחוז עשרוניות עיגול' },
 
+  { id: 'splitWarning', group: 'editing', control: 'toggle', min: 'standard', label: ['Joint-list split warning', 'אזהרה בפיצול רשימה משותפת'], info: ['Show the scenario-assumption reminder when splitting a joint list. Turn on to see it again.', 'הצגת תזכורת על הנחת התרחיש בפיצול רשימה משותפת. הפעילו כדי לראות אותה שוב.'], synonyms: 'split warning remember assumption פיצול אזהרה הנחה' },
   { id: 'voteSource', group: 'editing', control: 'choice', min: 'standard', feature: 'voteSource', label: ['Votes come from', 'הקולות מגיעים מ־'],
     info: ['Other lists: from all, in proportion; turnout stays. New voters: turnout changes. Ask: you choose at each edit.', 'שאר הרשימות: מכולן, באופן יחסי; ההצבעה לא משתנה. מצביעים חדשים: ההצבעה משתנה. לשאול: בוחרים בכל עריכה.'],
     synonyms: 'source donor ask default remember balance מקור תורם לשאול ברירת מחדל זכירה' },
@@ -170,7 +172,7 @@ export function settingDefault<K extends SettingId>(id: K, level: Preset): Setti
     listSymbol: 'logo', partyColourInSeats: true, seatlessParties: false, partiesInSeatlessLists: false, seatlessLists: 'over', withdrawnLists: true,
     listOrder: 'seats', voteCounts: level !== 'simple', allCandidates: false,
     chamberLayout: 'hemicycle', seatColour: 'list', blocShading: true, referenceChamber: true, chamberKey: true, dimUnselected: true,
-    decimals: level === 'expert' ? 2 : 1,
+    decimals: level === 'expert' ? 3 : level === 'standard' ? 2 : 1, splitWarning: true,
     confirmStartOver: true, hoverPreviews: true, communityScenarios: true, compareWith: 'previous', optionPreviews: true,
     textSize: 'normal', reduceMotion: false, hoverPopups: true, preferTables: false, keepMessages: false,
   };
