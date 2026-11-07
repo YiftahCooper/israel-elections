@@ -9,7 +9,7 @@ test('sourced groupings stay official; moving a member is marked analysis; share
   const panel = page.locator('.bloc-panel');
   const picker = panel.locator('.start-from .choice-trigger');
   await choose(picker, 'preset:pm-recommendations');
-  await expect(page.locator('.session')).toContainText('No changes yet');
+  await expect(page.locator('.session')).toContainText('No changes');
   expect(await page.locator('.app').evaluate(el => (el as HTMLElement).style.getPropertyValue('--scenario-color'))).toBe('');
   await expect(page.locator('.edit-marker')).toHaveCount(0);
   await expect(page.locator('.band .scenario-switcher .choice-trigger')).toHaveAttribute('data-value', 'official');
@@ -17,7 +17,7 @@ test('sourced groupings stay official; moving a member is marked analysis; share
   await page.getByRole('button', { name: 'Copy a share link', exact: true }).click();
   const link = await page.getByRole('textbox', { name: 'Share link', exact: true }).inputValue();
   await page.goto(link);
-  await expect(page.locator('.session')).toContainText('No changes yet');
+  await expect(page.locator('.session')).toContainText('No changes');
   expect(await page.locator('.app').evaluate(el => (el as HTMLElement).style.getPropertyValue('--scenario-color'))).toBe('');
   await page.getByRole('tab', { name: 'Overview', exact: true }).click();
   await page.getByRole('button', { name: 'Edit blocs', exact: true }).click();
@@ -25,7 +25,7 @@ test('sourced groupings stay official; moving a member is marked analysis; share
   await cards.first().locator('.bp-chip-main:not([disabled])').first().click();
   await cards.nth(1).getByRole('button', { name: /Move here/ }).click();
   expect(await page.locator('.app').evaluate(el => (el as HTMLElement).style.getPropertyValue('--scenario-color'))).toBe('');
-  await expect(page.locator('.session')).toContainText('No changes yet');
+  await expect(page.locator('.session')).toContainText('No changes');
   await expect(page.locator('.edit-marker').first()).toBeVisible();
   await page.screenshot({ path: '.backup-scratch/u7/membership-edited.png' });
 });
@@ -76,7 +76,7 @@ test('k26: a bloc move is locally marked analysis; only a vote changes result id
  await expect(page.locator('.blocs-head .analysis-edits .edit-marker')).toBeVisible();
  await expect(page.locator('.band .scenario-switcher .choice-trigger')).toHaveAttribute('data-value','official');
  expect(await page.locator('.app').evaluate(el=>(el as HTMLElement).style.getPropertyValue('--scenario-color'))).toBe('');
- await expect(page.locator('.session')).toContainText('No changes yet');
+ await expect(page.locator('.session')).toContainText('No changes');
  await page.getByRole('tab',{name:'Compare',exact:true}).click();
  await expect(page.locator('.cmp .analysis-edits .edit-marker')).toBeVisible();
  await page.getByRole('tab',{name:'Overview',exact:true}).click();
@@ -87,7 +87,7 @@ test('k26: a bloc move is locally marked analysis; only a vote changes result id
  const link=await page.getByRole('textbox',{name:'Share link',exact:true}).inputValue();
  await page.goto(link);
  await expect(page.locator('.band .scenario-switcher .choice-trigger')).toHaveAttribute('data-value','official');
- await expect(page.locator('.session')).toContainText('No changes yet');
+ await expect(page.locator('.session')).toContainText('No changes');
  await page.getByRole('tab',{name:'Overview',exact:true}).click();
  await page.getByRole('region',{name:'Lists',exact:true}).getByRole('button',{name:'Likud',exact:true}).click();
  const votes=page.locator('.side-panel').getByRole('textbox',{name:'Votes',exact:true});

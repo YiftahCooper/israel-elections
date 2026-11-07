@@ -72,7 +72,7 @@ test('a joint list’s faction can split after the election, keeping votes and s
   // each party now has its own row of seats under the list, and its own place in the chamber
   await expect(page.getByRole('region', { name: 'Lists' }).getByRole('list', { name: /factions after the split/ }).getByText('New Hope')).toBeVisible();
   await expect(listRow(page, 'National Unity')).toContainText('12');
-  await expect(page.getByRole('status').filter({ hasText: 'Since official result' })).toContainText('No changes yet');
+  await expect(page.getByRole('status').filter({ hasText: 'No changes' })).toContainText('No changes');
 });
 
 test('a joint list can run as separate lists, with the vote shares stated as an assumption', async ({ page }) => {

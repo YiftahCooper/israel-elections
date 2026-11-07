@@ -1,3 +1,4 @@
+import { hebrewPrefix } from '../hebrewPrefix.ts';
 // The Compare workbench (docs/design/compare-workbench.md): two live sides pinned left → right in both languages,
 // their chambers and blocs, one head-to-head table of paired lists, and copies between the sides.
 import { useMemo, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
@@ -109,7 +110,7 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
   };
   const votesTitle = (units: CopyUnit[], from: SideModel, to: SideModel) => {
     const names = units.map((u) => u.src.map((id) => { const l = from.sc.lists.find((x) => x.id === id); return l ? listLabel(l, lang) : id; }).join(' + '));
-    return names.length === 1 ? L(`Copy ${names[0]}’s votes to ${nameOf(to)}`, `העתקת הקולות של ${names[0]} ל${cross ? '־' : ''}${nameOf(to)}`) : L(`Copy the votes of ${names.length} rows to ${nameOf(to)}`, `העתקת הקולות של ${names.length} שורות ל${cross ? '־' : ''}${nameOf(to)}`);
+    return names.length === 1 ? L(`Copy ${names[0]}’s votes to ${nameOf(to)}`, `העתקת הקולות של ${names[0]} ${hebrewPrefix('ל', nameOf(to))}`) : L(`Copy the votes of ${names.length} rows to ${nameOf(to)}`, `העתקת הקולות של ${names.length} שורות ${hebrewPrefix('ל', nameOf(to))}`);
   };
   const copyVotes = (units: CopyUnit[], d: Dir, ask = false) => {
     const { from, to } = sideOf(d);
@@ -119,7 +120,7 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
     if (!ask && rem.mode && rem.source) {
       const plan = planVotes({ from: sourceOf(from), to: to.sc, ctx: { base: to.start }, units, mode: rem.mode, policy: rem.source });
       if (!plan.ok) { toast('error', lang === 'he' ? plan.reason.he : plan.reason.en); return; }
-      commit(plan, to, L(`Votes copied to ${nameOf(to)}.`, `הקולות הועתקו ל${cross ? '־' : ''}${nameOf(to)}.`));
+      commit(plan, to, L(`Votes copied to ${nameOf(to)}.`, `הקולות הועתקו ${hebrewPrefix('ל', nameOf(to))}.`));
       return;
     }
     setCopyReq({ from, to, units, title, cross });
@@ -130,7 +131,7 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
   };
   const copyField = (field: 'turnout' | 'registered' | 'invalid' | 'threshold' | 'rules' | 'agreements', d: Dir) => {
     const { from, to } = sideOf(d);
-    const done = L(`Copied to ${nameOf(to)}.`, `הועתק ל${cross ? '־' : ''}${nameOf(to)}.`);
+    const done = L(`Copied to ${nameOf(to)}.`, `הועתק ${hebrewPrefix('ל', nameOf(to))}.`);
     if (field === 'threshold' || field === 'rules') return direct(planRules({ from: sourceOf(from), to: to.sc, ctx: { base: to.start }, what: field }), to, done);
     if (field === 'agreements') {
       const plan = planAgreements({ from: sourceOf(from), to: to.sc, ctx: { base: to.start }, rows, direction: d });
@@ -143,7 +144,7 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
 
   const arrow = (row: MatchRow | null, units: CopyUnit[] | null, d: Dir, what: string) => {
     const { to } = sideOf(d);
-    const label = units ? L(`Copy ${what}’s votes to ${nameOf(to)}`, `העתקת הקולות של ${what} ל${cross ? '־' : ''}${nameOf(to)}`) : row?.tag === 'check' ? L('Accept or reject this match first', 'אשרו או דחו קודם את ההתאמה') : row?.group ? L('Votes of a split list can’t be divided by list: copy the group', 'אין לחלק קולות של רשימה מפוצלת לפי רשימה: העתיקו את הקבוצה') : L('No counterpart to copy', 'אין מקבילה להעתקה');
+    const label = units ? L(`Copy ${what}’s votes to ${nameOf(to)}`, `העתקת הקולות של ${what} ${hebrewPrefix('ל', nameOf(to))}`) : row?.tag === 'check' ? L('Accept or reject this match first', 'אשרו או דחו קודם את ההתאמה') : row?.group ? L('Votes of a split list can’t be divided by list: copy the group', 'אין לחלק קולות של רשימה מפוצלת לפי רשימה: העתיקו את הקבוצה') : L('No counterpart to copy', 'אין מקבילה להעתקה');
     return <button type="button" className="cmp-arrow" aria-label={label} title={label} disabled={!units} onClick={(e) => { e.stopPropagation(); if (units) copyVotes(units, d); }}>{d === 'toRight' ? <ArrowRight size={16} /> : <ArrowLeft size={16} />}</button>;
   };
 
@@ -162,8 +163,8 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
       }
       if (one && !simple) {
         items.push(btn(`w${d}`, L('Whole list…', 'הרשימה כולה…'), () => setWholeReq({ from, to, srcId: one.src[0], dstId: one.dst[0], cross })));
-        items.push(btn(`c${d}`, L('Candidates', 'מועמדים'), () => direct(planRoster({ from: sourceOf(from), to: to.sc, ctx: { base: to.start }, srcId: one.src[0], dstId: one.dst[0] }), to, L(`Candidates copied to ${nameOf(to)}.`, `המועמדים הועתקו ל${cross ? '־' : ''}${nameOf(to)}.`))));
-        items.push(btn(`k${d}`, L('Colour', 'צבע'), () => direct(planColour({ from: sourceOf(from), to: to.sc, ctx: { base: to.start }, srcId: one.src[0], dstId: one.dst[0] }), to, L(`Colour copied to ${nameOf(to)}.`, `הצבע הועתק ל${cross ? '־' : ''}${nameOf(to)}.`))));
+        items.push(btn(`c${d}`, L('Candidates', 'מועמדים'), () => direct(planRoster({ from: sourceOf(from), to: to.sc, ctx: { base: to.start }, srcId: one.src[0], dstId: one.dst[0] }), to, L(`Candidates copied to ${nameOf(to)}.`, `המועמדים הועתקו ${hebrewPrefix('ל', nameOf(to))}.`))));
+        items.push(btn(`k${d}`, L('Colour', 'צבע'), () => direct(planColour({ from: sourceOf(from), to: to.sc, ctx: { base: to.start }, srcId: one.src[0], dstId: one.dst[0] }), to, L(`Colour copied to ${nameOf(to)}.`, `הצבע הועתק ${hebrewPrefix('ל', nameOf(to))}.`))));
       }
       if (srcOnly && !simple) for (const id of d === 'toRight' ? row.left : row.right) items.push(btn(`a${d}${id}`, L('Add as a new list…', 'הוספה כרשימה חדשה…'), () => setWholeReq({ from, to, srcId: id, dstId: null, cross })));
       if (!u && !srcOnly) items.push(<p key={`n${d}`} className="tiny muted cmp-menu-note">{row.tag === 'check' ? L('Accept or reject the match first.', 'אשרו או דחו קודם את ההתאמה.') : L('No counterpart.', 'אין מקבילה.')}</p>);
@@ -299,7 +300,7 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
         <button type="button" className="btn small ghost cmp-menu-item" onClick={() => setMenu(null)}>{L('Close', 'סגירה')}</button>
       </span>
     </Floating>, document.body)}
-    {copyReq && <CopyVotesDialog req={copyReq} onClose={() => setCopyReq(null)} onDone={(plan, req) => { if (commit(plan, req.to, L(`Votes copied to ${nameOf(req.to)}.`, `הקולות הועתקו ל${cross ? '־' : ''}${nameOf(req.to)}.`))) setCopyReq(null); }} />}
+    {copyReq && <CopyVotesDialog req={copyReq} onClose={() => setCopyReq(null)} onDone={(plan, req) => { if (commit(plan, req.to, L(`Votes copied to ${nameOf(req.to)}.`, `הקולות הועתקו ${hebrewPrefix('ל', nameOf(req.to))}.`))) setCopyReq(null); }} />}
     {wholeReq && <WholeListDialog req={wholeReq} onClose={() => setWholeReq(null)} onDone={(plan, text) => { if (commit(plan, wholeReq.to, text + '.')) setWholeReq(null); }} />}
     {editing && <VotesEditor side={editing.side} listId={editing.listId} onClose={() => setEditing(null)} />}
     {matching && <MatchingPanel rows={order} left={left} right={right} overrides={overrides} setOverrides={(o) => setOverrides(pair, o)} onClose={() => setMatching(false)} />}
@@ -336,7 +337,7 @@ function SideCard({ x, picker, focused, onFocus, align }: { x: SideModel; picker
     </div>
     {/* the other side's seats open no list: its lists are not the open scenario */}
     <div className="cmp-chamber" onClickCapture={x.role === 'other' ? (ev) => ev.stopPropagation() : undefined}><Hemicycle s={x.sc} r={x.r} reference={x.start} compact paired title={title} /></div>
-    {x.edited && <p className="tiny muted cmp-outline-key">{L(`Outlined: seats gained since ${x.role === 'main' ? 'its starting point' : 'the official result'}`, `מתאר: מנדטים שנוספו מאז נקודת ההתחלה`)}</p>}
+    {x.edited && <p className="tiny muted cmp-outline-key">{(x.role === 'main' ? L('Outlined: seats gained compared with its starting point', 'מתאר: מנדטים שנוספו לעומת נקודת ההתחלה') : L('Outlined: seats gained compared with the official result', 'מתאר: מנדטים שנוספו לעומת התוצאה הרשמית'))}</p>}
   </section>;
 }
 
@@ -407,7 +408,7 @@ function GroupLine({ group, rows, left, right, simple, copy, nameOf }: { group: 
   const l = cellsOf(left, lIds)!, r = cellsOf(right, rIds)!;
   const name = lIds.map((id) => listLabel(left.sc.lists.find((x) => x.id === id)!, lang)).join(' + ');
   const toR = copyUnit(g[0], rows, 'toRight')!, toL = copyUnit(g[0], rows, 'toLeft')!;
-  const label = (d: Dir) => L(`Copy the group’s votes to ${nameOf(d === 'toRight' ? right : left)}`, `העתקת קולות הקבוצה ל${nameOf(d === 'toRight' ? right : left)}`);
+  const label = (d: Dir) => L(`Copy the group’s votes to ${nameOf(d === 'toRight' ? right : left)}`, `העתקת קולות הקבוצה ${hebrewPrefix('ל', nameOf(d === 'toRight' ? right : left))}`);
   return <tr className="cmp-groupline">
     {!simple && <td />}
     <td colSpan={4} dir={lang === 'he' ? 'rtl' : 'ltr'} className="small"><b><bdi>{name}</bdi></b> <span className="muted">{L(`${left.year} → ${rIds.length} lists`, `${left.year} ← ${rIds.length} רשימות`)}</span> <Info title={L('A split list', 'רשימה שהתפצלה')}>{L('Its voters can’t be divided among the new lists, so only the group is compared and copied. A group copy keeps the destination lists’ own balance.', 'אי אפשר לחלק את בוחריה בין הרשימות החדשות, ולכן רק הקבוצה כולה מושווית ומועתקת. העתקת קבוצה שומרת על האיזון בין רשימות היעד.')}</Info></td>
@@ -440,7 +441,7 @@ function KeyBand({ left, right, simple, expert, copy, nameOf }: { left: SideMode
     { k: 'elected', label: L('Lists elected', 'רשימות שנבחרו'), l: String(left.r.lists.filter((x) => x.seats > 0).length), r: String(right.r.lists.filter((x) => x.seats > 0).length), show: true },
     { k: 'unrep', label: L('Votes with no seat', 'קולות ללא מנדט'), l: fmtPct(left.r.unrepresentedVotes, left.r.totalValid, digits), r: fmtPct(right.r.unrepresentedVotes, right.r.totalValid, digits), show: true },
   ];
-  const btn = (row: Row, d: Dir) => { const to = d === 'toRight' ? right : left; const label = L(`Copy ${row.label.toLowerCase()} to ${nameOf(to)}`, `העתקת ${row.label} ל${nameOf(to)}`);
+  const btn = (row: Row, d: Dir) => { const to = d === 'toRight' ? right : left; const label = L(`Copy ${row.label.toLowerCase()} to ${nameOf(to)}`, `העתקת ${row.label} ${hebrewPrefix('ל', nameOf(to))}`);
     return <button type="button" className="cmp-arrow" aria-label={label} title={label} disabled={row.l === row.r} onClick={() => copy(row.field!, d)}>{d === 'toRight' ? <ArrowRight size={16} /> : <ArrowLeft size={16} />}</button>; };
   return <section className="cmp-section cmp-band" aria-label={L('Key numbers and rules', 'מספרי מפתח וכללים')}>
     <h3>{L('Key numbers and rules', 'מספרי מפתח וכללים')}</h3>

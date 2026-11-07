@@ -1,3 +1,4 @@
+import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { useFloating } from '../floating.tsx';
 import { useDisclosure } from './Feature.tsx';
 import { EditMarker } from './EditMarker.tsx';
@@ -96,8 +97,8 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
         <p className="small" style={{ margin: 0 }}>{L(`${r.lists.filter(x => x.qualified).length} qualifying lists`, `${r.lists.filter(x => x.qualified).length} רשימות משתתפות`)} <Info title={L('Qualifying votes', 'קולות משתתפים')}>{L(`The votes of the ${r.lists.filter((x) => x.qualified).length} lists that passed the threshold; only these share the seats. ${fmtInt(r.unrepresentedVotes)} valid votes went to lists that did not.`, `הקולות של ${r.lists.filter((x) => x.qualified).length} הרשימות שעברו את החסימה; רק הן מתחלקות במנדטים. ${fmtInt(r.unrepresentedVotes)} קולות כשרים ניתנו לרשימות שלא עברו.`)}</Info></p>
       </Fig>}
       {expert && (
-        <Fig k={L('Seats: quota + remainder', 'מנדטים: מודד + עודפים')} term={method.term} v={`${r.initialSeatsTotal} + ${r.remainderSeatsTotal}`} d={L(`${r.remainderSeatsTotal} by ${method.en}`, `${r.remainderSeatsTotal} ב${method.he}`)}>
-          <p className="small" style={{ margin: '0 0 6px' }}>{L(`${r.initialSeatsTotal} seats went by whole quotas; the remaining ${r.remainderSeatsTotal} by ${method.en}.`, `${r.initialSeatsTotal} מנדטים חולקו במודדים שלמים; ${r.remainderSeatsTotal} הנותרים ב${method.he}.`)}</p>
+        <Fig k={L('Seats: quota + remainder', 'מנדטים: מודד + עודפים')} term={method.term} v={`${r.initialSeatsTotal} + ${r.remainderSeatsTotal}`} d={L(`${r.remainderSeatsTotal} by ${method.en}`, `${r.remainderSeatsTotal} ${hebrewPrefix('ב', method.he)}`)}>
+          <p className="small" style={{ margin: '0 0 6px' }}>{L(`${r.initialSeatsTotal} seats went by whole quotas; the remaining ${r.remainderSeatsTotal} by ${method.en}.`, `${r.initialSeatsTotal} מנדטים חולקו במודדים שלמים; ${r.remainderSeatsTotal} הנותרים ${hebrewPrefix('ב', method.he)}.`)}</p>
           <button className="btn small" onClick={() => setState({ tool: 'walk' })}>{L('Allocation steps', 'שלבי החלוקה')}</button>
         </Fig>
       )}

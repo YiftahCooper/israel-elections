@@ -1,4 +1,7 @@
 import { partyDisplayColor } from './partyDisplayColor.ts';
+import { hebrewPrefix } from './hebrewPrefix.ts';
+import { formatDate } from './dateFormat.ts';
+import { factLog } from '../model/actionClassification.ts';
 import { groupingName } from './groupingName.ts';
 import { englishLabel } from '../data/names.ts';
 import {inputDiffs,analysisPart,inputPart,replacementScopes,scopeCovers} from '../model/editScopes.ts';
@@ -64,11 +67,36 @@ export function referenceLabel(reference: Pick<Scenario, 'name'> | null, lang: L
   const name = reference ? reference.name || (he ? 'תרחיש שמור' : 'Saved scenario') : he ? 'התוצאה הרשמית' : 'Official result';
   return {
     name,
-    since: reference ? (he ? `מאז ${name}` : `Since ${name}`) : he ? 'מאז התוצאה הרשמית' : 'Since official result',
+    since: he ? hebrewPrefix('מ', name) : `from ${reference ? name : 'the official result'}`,
     at: reference ? (he ? `בתרחיש ${name}` : `in ${name}`) : he ? 'בפועל' : 'officially',
-    more: he ? ` יותר מאשר ב${name}` : ` more than ${reference ? name : 'the official result'}`,
-    fewer: he ? ` פחות מאשר ב${name}` : ` fewer than ${reference ? name : 'the official result'}`,
-    seats: reference ? (he ? `מנדטים בתרחיש ${name}` : `Seats in ${name}`) : he ? 'מנדטים בפועל' : 'Historical seats',
+    more: he ? ` יותר מאשר ${hebrewPrefix('ב', name)}` : ` more than ${reference ? name : 'the official result'}`,
+    fewer: he ? ` פחות מאשר ${hebrewPrefix('ב', name)}` : ` fewer than ${reference ? name : 'the official result'}`,
+    seats: reference ? (he ? `מנדטים בתרחיש ${name}` : `Seats in ${name}`) : he ? 'מנדטים בתוצאה הרשמית' : 'Official seats',
+  };
+}
+
+/** Changes count result-changing actions, not touched fields; exclude the shared saved history.
+ * A divergent/earlier draft also counts reference actions it no longer contains. */
+export function changeCount(s: Scenario, reference: Scenario | null): number {
+  const now = factLog(s), before = reference ? factLog(reference) : [];
+  let common = 0;
+  while (common < Math.min(now.length, before.length) && canonical(now[common].action) === canonical(before[common].action)) common++;
+  return now.length + before.length - 2 * common;
+}
+export function changesLabel(count: number, reference: Pick<Scenario, 'name'> | null, lang: Lang, compact = false): string {
+  if (!count && !reference) return lang === 'he' ? 'אין שינויים' : 'No changes';
+  if (!count && !compact) return `${lang === 'he' ? 'אין שינויים' : 'No changes'} ${referenceLabel(reference, lang).since}`;
+  const short = lang === 'he' ? (count === 1 ? 'שינוי אחד' : `${count} שינויים`) : `${count} ${count === 1 ? 'change' : 'changes'}`;
+  if (compact && reference) return `${count} ${referenceLabel(reference, lang).since}`;
+  return compact ? short : `${short} ${referenceLabel(reference, lang).since}`;
+}
+
+/** History keeps the bar's reference first, then explains its full official-result record. */
+export function historyChangesLabels(s: Scenario, reference: Scenario | null, lang: Lang) {
+  const count = changeCount(s, reference), official = factLog(s).length;
+  return {
+    active: changesLabel(count, reference, lang),
+    official: reference && count !== official ? `${official} ${referenceLabel(null, lang).since}` : null,
   };
 }
 
@@ -78,7 +106,7 @@ export interface ScenarioIssue { level: 'error' | 'warning'; en: string; he: str
 export function scenarioIssues(s: Scenario, r: AllocationResult): ScenarioIssue[] {
   const out: ScenarioIssue[] = [];
   const cast = votesCast(s);
-  if (cast > s.registered) out.push({ level: 'warning', en: `Votes cast (${cast.toLocaleString()}) exceed registered voters (${s.registered.toLocaleString()}); turnout would be above 100%. Raise the electorate or reduce votes.`, he: `מספר המצביעים (${cast.toLocaleString()}) עולה על מספר בעלי זכות הבחירה (${s.registered.toLocaleString()}); שיעור ההצבעה עולה על 100%. הגדילו את מספר בעלי זכות הבחירה או הפחיתו קולות.` });
+  if (cast > s.registered) out.push({ level: 'warning', en: `Votes cast (${cast.toLocaleString('en-US')}) exceed registered voters (${s.registered.toLocaleString('en-US')}); turnout would be above 100%. Raise the electorate or reduce votes.`, he: `מספר המצביעים (${cast.toLocaleString('en-US')}) עולה על מספר בעלי זכות הבחירה (${s.registered.toLocaleString('en-US')}); שיעור ההצבעה עולה על 100%. הגדילו את מספר בעלי זכות הבחירה או הפחיתו קולות.` });
   for (const l of r.lists) {
     const sl = s.lists.find((x) => x.id === l.id)!;
     // an unavailable or truncated roster is unknown beyond what is listed, not short of candidates
@@ -245,7 +273,7 @@ export function groupingBaseline(s: Scenario, base: Scenario): Scenario | null {
 export function groupingLabel(s: Scenario, lang: Lang): string {
   if(isFamilyGrouping(s)) {const b=s.blocs.find(b=>b.id==='selected')!;return lang==='he'?b.nameHe:b.nameEn;}
   const g = s.blocSchemes?.find(g => g.id === s.blocSchemeId);
-  return g ? `${groupingName(g, lang)}${g.appDefined ? '' : ` · ${g.date ?? (lang === 'he' ? 'חלוקה מוכרת בבחירות אלה' : 'recognised grouping of this election')}`}` : s.customGroupingName ?? (lang === 'he' ? 'החלוקה שלכם' : 'Your grouping');
+  return g ? `${groupingName(g, lang)}${g.appDefined ? '' : ` · ${g.date ? formatDate(g.date, lang) : (lang === 'he' ? 'חלוקה מוכרת בבחירות אלה' : 'recognised grouping of this election')}`}` : s.customGroupingName ?? (lang === 'he' ? 'החלוקה שלכם' : 'Your grouping');
 }
 export function majorityText(n: number, total: number, lang: Lang): string {
   const m = Math.floor(total / 2) + 1;

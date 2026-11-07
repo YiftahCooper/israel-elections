@@ -1,3 +1,4 @@
+import { hebrewPrefix } from '../hebrewPrefix.ts';
 // Compare's dialogs: the copy question, whole-list replacement, list matching, a side's vote editor, the phone row sheet
 // and saving a comparison. Every figure shown before committing is the engine's, computed on a scratch copy.
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
@@ -84,7 +85,7 @@ export function CopyVotesDialog({ req, onClose, onDone }: { req: CopyRequest; on
   const modes: CopyMode[] = req.cross ? ['share', 'count', ...(expert && changed ? ['change' as const] : [])] : ['count', ...(expert && changed ? ['change' as const] : [])];
   const plans = useMemo(() => Object.fromEntries(modes.map((m) => [m, planVotes({ from: sourceOf(req.from), to: req.to.sc, ctx: { base: req.to.start }, units: req.units, mode: m, policy: source })])) as Record<CopyMode, Plan>, [mode, source, req]); // eslint-disable-line react-hooks/exhaustive-deps
   const plan = plans[mode];
-  const modeText: Record<CopyMode, [string, string]> = { share: ['Share of the vote', 'שיעור מהקולות'], count: ['Number of votes', 'מספר הקולות'], change: ['Change since its start', 'השינוי מאז נקודת ההתחלה'] };
+  const modeText: Record<CopyMode, [string, string]> = { share: ['Share of the vote', 'שיעור מהקולות'], count: ['Number of votes', 'מספר הקולות'], change: ['Change from its starting point', 'השינוי מנקודת ההתחלה'] };
   const target = (p: Plan) => p.ok ? p.targets.reduce((t, x) => t + x.after, 0) : null;
   return <Modal label={req.title} onClose={onClose} className="cmp-ask">
     <form onSubmit={(e) => { e.preventDefault(); if (!plan?.ok) return; remember(req.to.sc, one, req.cross, mode, source, scope); onDone(plan, req); }}>
@@ -154,7 +155,7 @@ export function VotesEditor({ side, listId, onClose }: { side: SideModel; listId
   const [source, setSource] = useState<SourceChoice>(voteSource.kind === 'transfer' && voteSource.listId === listId ? { kind: 'proportional' } : voteSource);
   const n = /^\d+$/.test(text.replace(/[,\s]/g, '')) ? Number(text.replace(/[,\s]/g, '')) : null;
   const action = n === null ? null : deltaAction(side.sc, l, n - l.votes, source);
-  const label = L(`Votes for ${listLabel(l, 'en')} (${side.year})`, `קולות ל${listLabel(l, 'he')} (${side.year})`);
+  const label = L(`Votes for ${listLabel(l, 'en')} (${side.year})`, `קולות ${hebrewPrefix('ל', listLabel(l, 'he'))} (${side.year})`);
   return <Modal label={label} onClose={onClose} className="cmp-ask">
     <form onSubmit={(e) => { e.preventDefault(); if (action && side.apply(action)) onClose(); }}>
       <p className="cmp-ask-title"><b>{label}</b></p>

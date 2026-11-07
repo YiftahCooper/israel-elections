@@ -6,7 +6,7 @@ for(const election of ['k26','k25']) test(`${election}: cosmetic colours stay of
  const official=async()=>{
   await expect(page.locator('.band .scenario-switcher .choice-trigger')).toHaveAttribute('data-value','official');
   expect(await page.locator('.app').evaluate(el=>(el as HTMLElement).style.getPropertyValue('--scenario-color'))).toBe('');
-  await expect(page.locator('.session')).toContainText('No changes yet');await expect(page.locator('.edit-marker')).toHaveCount(0);
+  await expect(page.locator('.session')).toContainText('No changes');await expect(page.locator('.edit-marker')).toHaveCount(0);
  };
  await page.getByRole('button',{name:'Edit blocs',exact:true}).click();
  const panel=page.locator('.bloc-panel');

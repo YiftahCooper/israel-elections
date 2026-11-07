@@ -1,3 +1,4 @@
+import { hebrewPrefix } from './hebrewPrefix.ts';
 import type { ElectionIndexEntry } from '../data/schema.ts';
 const MONTHS_EN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const MONTHS_HE = ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר'];
@@ -7,5 +8,5 @@ export function electionLabel(e: ElectionIndexEntry, all: ElectionIndexEntry[], 
   const year = e.date.slice(0, 4);
   const month = Number(e.date.slice(5, 7)) - 1;
   const when = all.filter((x) => x.date.slice(0, 4) === year).length > 1 ? `${(lang === 'he' ? MONTHS_HE : MONTHS_EN)[month]} ${year}` : year;
-  return lang === 'he' ? `${when} · הכנסת ה-${e.knesset}` : `${when} · ${ordinalEn(e.knesset)} Knesset`;
+  return lang === 'he' ? `${when} · הכנסת ${hebrewPrefix('ה', e.knesset)}` : `${when} · ${ordinalEn(e.knesset)} Knesset`;
 }

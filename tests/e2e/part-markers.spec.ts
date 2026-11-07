@@ -14,7 +14,7 @@ test('1988 family grouping has one shared part marker per grouping surface, unch
  await expect(page.locator('.blocs-head .edit-marker')).toHaveCount(1);
  await expect(page.locator('.lb-seats .tick')).toHaveCount(0);
  await expect(page.locator('.bp-chip .edit-marker')).toHaveCount(0);
- await expect(page.locator('.session')).toContainText('No changes yet');
+ await expect(page.locator('.session')).toContainText('No changes');
  await expect(page.locator('.band .scenario-switcher .choice-trigger')).toHaveAttribute('data-value','official');
  expect(await page.locator('.app').evaluate(el=>(el as HTMLElement).style.getPropertyValue('--scenario-color'))).toBe('');
  const colors=await page.locator('.bp-card').evaluateAll(es=>es.map(e=>(e as HTMLElement).style.getPropertyValue('--bc')));

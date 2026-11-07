@@ -1,3 +1,4 @@
+import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { SeatDelta, SeatEffects } from './SeatDelta.tsx';
 import { useState } from 'react';
 import { allocate } from '../../engine/allocate.ts';
@@ -36,7 +37,7 @@ export function BlocVoteStepper({ s, r, bloc }: { s: Scenario; r: AllocationResu
   const refusal = (target: number, { outside, pool, possible, max } = plan(src), from = src) => !total ? L('No list in this bloc has votes to change', 'לאף רשימה בגוש אין קולות לשנות')
     : !possible ? L('No other list has votes to move here', 'לאף רשימה אחרת אין קולות להעביר לכאן')
     : target > max ? (from.kind === 'new' ? L(`At most ${fmtInt(max)}: ${fmtInt(max - total)} voters stayed home`, `לכל היותר ${fmtInt(max)}: ${fmtInt(max - total)} בעלי זכות לא הצביעו`)
-      : from.kind === 'transfer' && outside[0] ? L(`At most ${fmtInt(max)}: ${listLabel(outside[0], lang)} holds ${fmtInt(pool)} votes`, `לכל היותר ${fmtInt(max)}: ל${listLabel(outside[0], lang)} ${fmtInt(pool)} קולות`)
+      : from.kind === 'transfer' && outside[0] ? L(`At most ${fmtInt(max)}: ${listLabel(outside[0], lang)} holds ${fmtInt(pool)} votes`, `לכל היותר ${fmtInt(max)}: ${hebrewPrefix('ל', listLabel(outside[0], lang))} ${fmtInt(pool)} קולות`)
       : L(`At most ${fmtInt(max)}: the other lists hold ${fmtInt(pool)} votes`, `לכל היותר ${fmtInt(max)}: לשאר הרשימות ${fmtInt(pool)} קולות`)) : '';
   return <div className="bloc-vote-stepper"><NumericStepper showLabel label={L('Lists’ votes', 'קולות הרשימות')} value={total} min={possible ? 0 : total} max={max}
     steps={[{ id: '1k', label: '1k', amount: 1000 }, { id: '1%', label: '1%', amount: total / 100 }, { id: '10%', label: '10%', amount: total / 10 }]}

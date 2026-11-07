@@ -1,3 +1,4 @@
+import { formatDate } from '../dateFormat.ts';
 import { ChevronsUpDown } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { electionContext } from '../../data/electionContext.ts';
@@ -46,8 +47,8 @@ export function ElectionPicker({ elections, value, onChange }: { elections: Elec
       }}>
         {matches.map((o, i) => <div key={o.value} className={`election-row ${o.pm ? 'pm-only' : ''}`}>
           {o.group !== matches[i - 1]?.group && <h3 className="choice-era">{o.group}</h3>}
-          <button className="choice-option" data-choice-value={o.value} aria-label={o.label} aria-description={o.date} aria-current={o.value === value ? 'true' : undefined} disabled={o.disabled} onClick={() => commit(o.value)}>
-            <span className="choice-copy"><b>{o.label}</b><small><time>{o.date}</time>{o.disabled ? L(' · unavailable', ' · לא זמין') : ''}</small></span>
+          <button className="choice-option" data-choice-value={o.value} aria-label={o.label} aria-description={formatDate(o.date, lang)} aria-current={o.value === value ? 'true' : undefined} disabled={o.disabled} onClick={() => commit(o.value)}>
+            <span className="choice-copy"><b>{o.label}</b><small><time dateTime={o.date}>{formatDate(o.date, lang)}</time>{o.disabled ? L(' · unavailable', ' · לא זמין') : ''}</small></span>
             {o.pm ? <span className="pm-marker">{L('PM ballot', 'פתק לראש הממשלה')}</span> : datasets[o.electionId] ? <OfficialPreview ds={datasets[o.electionId]!} /> : <span className="preview-loading" aria-label={L('Loading result preview', 'טעינת תצוגת התוצאה')} />}
             <span className="election-current-mark" aria-hidden>{o.value === value ? '✓' : ''}</span>
           </button>
