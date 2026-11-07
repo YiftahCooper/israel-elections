@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "electionId": "k14",
   "status": "pilot",
-  "reviewedAt": "2026-11-05",
+  "reviewedAt": "2026-11-07",
   "notes": [
     "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
     "The term window runs from this election to the next Knesset election. Government tenure may extend past that window. Mid-term institutional succession is recorded in formation.events; it is not a new post-election recommendation round.",
@@ -84,6 +84,12 @@
       "publisher": "Jewish Telegraphic Agency, Daily Bulletin archive",
       "kind": "archival",
       "accessed": "2026-11-05"
+    },
+    "role-roster-27": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2027%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
     }
   },
   "results": {
@@ -309,31 +315,80 @@
     "coalition": [
       {
         "letters": "מחל",
-        "seats": 32
+        "seats": 32,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-27",
+            "quote": "PersonToPositionID 3900; PersonID 470; PositionID 57; StartDate 1996-06-18T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. לימור לבנת; faction join: ליכוד - גשר - צומת"
+          }
+        ]
       },
       {
         "letters": "שס",
-        "seats": 10
+        "seats": 10,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-27",
+            "quote": "PersonToPositionID 3762; PersonID 494; PositionID 39; StartDate 1996-06-18T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. אליהו ישי; faction join: התאחדות הספרדים שומרי תורה - תנועת ש\"ס"
+          }
+        ]
       },
       {
         "letters": "ב",
-        "seats": 9
+        "seats": 9,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-27",
+            "quote": "PersonToPositionID 4063; PersonID 765; PositionID 39; StartDate 1996-06-18T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. יצחק לוי; faction join: מפלגה דתית לאומית"
+          }
+        ]
       },
       {
         "letters": "כן",
-        "seats": 7
+        "seats": 7,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-27",
+            "quote": "PersonToPositionID 3761; PersonID 532; PositionID 39; StartDate 1996-06-18T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. יולי יואל אדלשטיין; faction join: ישראל בעלייה"
+          }
+        ]
       },
       {
         "letters": "ג",
-        "seats": 4
+        "seats": 4,
+        "role": "other",
+        "certainty": "unknown",
+        "cites": [],
+        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
       },
       {
         "letters": "הד",
-        "seats": 4
+        "seats": 4,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-27",
+            "quote": "PersonToPositionID 3766; PersonID 2574; PositionID 39; StartDate 1996-06-18T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. אביגדור קהלני; faction join: הדרך השלישית"
+          }
+        ]
       }
     ],
-    "coalitionSeats": 66,
-    "coalitionSeatsNote": "Election-list seat envelope, checked against officialSeats; not the confidence-vote tally or a reconstruction of later faction membership.",
+    "coalitionSeats": null,
+    "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
     "cites": [
       {
         "source": "government-research-1",
@@ -355,7 +410,24 @@
         "source": "jta1999vote",
         "quote": "JERUSALEM, July 6 (JTA)"
       }
-    ]
+    ],
+    "confidenceVote": {
+      "for": 62,
+      "against": 50
+    },
+    "confidenceVoteCites": [
+      {
+        "source": "vote1996",
+        "quote": "The new government was endorsed by a vote of 62-50"
+      }
+    ],
+    "membershipCoverage": "partial",
+    "supportSeats": null,
+    "reconciliation": {
+      "status": "unresolved",
+      "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 62; full membership remains unknown. Investiture: 62 for, 50 against, not recorded abstaining."
+    },
+    "knownMemberSeats": 62
   },
   "recommendationsNotApplicable": {
     "reason": "direct-pm-election",
@@ -367,5 +439,6 @@
         "quote": "ראש הממשלה מכהן מכוח היבחרו בבחירות כלליות, ארציות, ישירות, שוות וחשאיות"
       }
     ]
-  }
+  },
+  "supportSchemaVersion": 1
 }

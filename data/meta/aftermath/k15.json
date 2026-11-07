@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "electionId": "k15",
   "status": "pilot",
-  "reviewedAt": "2026-11-05",
+  "reviewedAt": "2026-11-07",
   "notes": [
     "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
     "The term window runs from this election to the next Knesset election. Government tenure may extend past that window. Mid-term institutional succession is recorded in formation.events; it is not a new post-election recommendation round.",
@@ -114,6 +114,18 @@
       "publisher": "Government of Israel, government 28, p.120",
       "kind": "official",
       "accessed": "2026-11-06"
+    },
+    "role-roster-28": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2028%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
+    },
+    "role-roster-29": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2029%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, formation-day cabinet appointments",
+      "kind": "official",
+      "accessed": "2026-11-07"
     }
   },
   "results": {
@@ -425,36 +437,98 @@
     "coalition": [
       {
         "letters": "אמת",
-        "seats": 26
+        "seats": 26,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-28",
+            "quote": "PersonToPositionID 3448; PersonID 433; PositionID 57; StartDate 1999-07-06T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. דליה איציק; faction join: ישראל אחת"
+          }
+        ]
       },
       {
         "letters": "שס",
-        "seats": 17
+        "seats": 17,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-28",
+            "quote": "PersonToPositionID 3533; PersonID 500; PositionID 39; StartDate 1999-07-06T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. אליהו סויסה; faction join: ש\"ס"
+          }
+        ]
       },
       {
         "letters": "מרצ",
-        "seats": 10
+        "seats": 10,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-28",
+            "quote": "PersonToPositionID 4490; PersonID 507; PositionID 39; StartDate 1999-07-06T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. רן כהן; faction join: מרצ"
+          }
+        ]
       },
       {
         "letters": "כן",
-        "seats": 6
+        "seats": 6,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-28",
+            "quote": "PersonToPositionID 4500; PersonID 535; PositionID 39; StartDate 1999-07-06T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. נתן שרנסקי; faction join: ישראל בעלייה"
+          }
+        ]
       },
       {
         "letters": "פה",
-        "seats": 6
+        "seats": 6,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-28",
+            "quote": "PersonToPositionID 3532; PersonID 2468; PositionID 39; StartDate 1999-07-06T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. יצחק מרדכי; faction join: מפלגת המרכז"
+          }
+        ]
       },
       {
         "letters": "ב",
-        "seats": 5
+        "seats": 5,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-28",
+            "quote": "PersonToPositionID 4493; PersonID 765; PositionID 39; StartDate 1999-07-06T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. יצחק לוי; faction join: מפלגה דתית לאומית"
+          }
+        ]
       },
       {
         "letters": "ג",
         "seats": 5,
-        "note": "in the coalition without cabinet ministers; left in September 1999 (IDI; exact day not independently established)"
+        "note": "IDI names the seven-member coalition in the retained research; six factions have ministers in the official roster, UTJ does not. Deposit of UTJ’s original agreement not inspected.",
+        "role": "member-without-ministries",
+        "certainty": "provisional",
+        "cites": [
+          {
+            "source": "idi-coalition",
+            "quote": "כללה הקואליציה שבע סיעות ונסמכה על רוב של 75 חברי כנסת"
+          }
+        ]
       }
     ],
     "coalitionSeats": 75,
-    "coalitionSeatsNote": "Election-list seat envelope, checked against officialSeats; not the confidence-vote tally or a reconstruction of later faction membership.",
+    "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
     "cites": [
       {
         "source": "government-research-1",
@@ -488,7 +562,127 @@
     ],
     "notes": [
       "IDI independently confirms seven founding factions / 75 seats and UTJ leaving in September 1999; exact day not independently established. Quote: היא עזבה את הקואליציה כבר בספטמבר 1999. https://www.idi.org.il/articles/8082"
-    ]
+    ],
+    "changes": [
+      {
+        "date": "2001-03-07",
+        "number": 29,
+        "textEn": "The Knesset approved Sharon’s 29th government, 72–21.",
+        "textHe": "הכנסת הביעה אמון בממשלה ה־29 בראשות שרון, ברוב של 72 מול 21.",
+        "coalition": [
+          {
+            "factionNameHe": "ש\"ס",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 2054; PersonID 494; PositionID 50; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment linked to retained faction-membership record 28162. אליהו ישי"
+              }
+            ],
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+          },
+          {
+            "factionNameHe": "ישראל אחת",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 3624; PersonID 435; PositionID 39; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment linked to retained faction-membership record 28108. בנימין בן-אליעזר"
+              }
+            ],
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+          },
+          {
+            "factionNameHe": "הליכוד",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 3641; PersonID 469; PositionID 57; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment linked to retained faction-membership record 28179. ציפי לבני"
+              }
+            ],
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+          },
+          {
+            "factionNameHe": "האיחוד הלאומי - ישראל ביתנו",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 3646; PersonID 427; PositionID 39; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment linked to retained faction-membership record 28187. אביגדור ליברמן"
+              }
+            ],
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+          },
+          {
+            "factionNameHe": "ישראל בעלייה",
+            "seats": null,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-29",
+                "quote": "PersonToPositionID 3681; PersonID 535; PositionID 39; StartDate 2001-03-07T00:00:00",
+                "note": "Official appointment linked to retained faction-membership record 28277. נתן שרנסקי"
+              }
+            ],
+            "note": "Cabinet representation established. Current faction seat count and complete membership (including factions without ministers) are not established; no election-list total substituted."
+          }
+        ],
+        "cites": [
+          {
+            "source": "vote2001",
+            "quote": "by a vote of 72-21, with 27 members absent"
+          }
+        ],
+        "membershipCoverage": "partial",
+        "roleGap": "Only positively identified cabinet factions are recorded here. Factions without ministers, individual crossings, effective faction sizes and the complete roll call still need the investiture record and deposited agreements. An empty or incomplete row set is not zero support.",
+        "confidenceVote": {
+          "for": 72,
+          "against": 21
+        },
+        "confidenceVoteCites": [
+          {
+            "source": "vote2001",
+            "quote": "by a vote of 72-21, with 27 members absent"
+          }
+        ],
+        "coalitionSeats": null,
+        "supportSeats": null,
+        "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
+        "reconciliation": {
+          "status": "unresolved",
+          "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 0; full membership remains unknown. Investiture: 72 for, 21 against, not recorded abstaining."
+        },
+        "knownMemberSeats": 0
+      }
+    ],
+    "confidenceVote": null,
+    "confidenceVoteCites": [
+      {
+        "source": "jta1999vote",
+        "quote": "the new Israeli government and policy guidelines were approved by the Knesset"
+      }
+    ],
+    "membershipCoverage": "complete",
+    "supportSeats": 0,
+    "reconciliation": {
+      "status": "vote-unavailable",
+      "note": "No sourced investiture tally retained for this snapshot; do not substitute membership seats."
+    },
+    "knownMemberSeats": 75
   },
   "recommendationsNotApplicable": {
     "reason": "direct-pm-election",
@@ -500,5 +694,6 @@
         "quote": "ראש הממשלה מכהן מכוח היבחרו בבחירות כלליות, ארציות, ישירות, שוות וחשאיות"
       }
     ]
-  }
+  },
+  "supportSchemaVersion": 1
 }

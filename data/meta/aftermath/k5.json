@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "electionId": "k5",
   "status": "pilot",
-  "reviewedAt": "2026-11-05",
+  "reviewedAt": "2026-11-07",
   "notes": [
     "Research draft; not wired into the application. Official session records anchor all government approvals. Reused recommendation and first-coalition evidence retains the earlier research limitations.",
     "The government card describes the first cabinet. Each replacement cabinet has a full-session confidence step and a numbered government.changes entry; available replacement coalition snapshots are attached to that entry.",
@@ -113,6 +113,24 @@
       "publisher": "Arnon Lamfrom, University of Haifa doctoral dissertation, 2008, pp.249–250",
       "kind": "academic",
       "accessed": "2026-11-06"
+    },
+    "role-roster-10": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2010%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
+    },
+    "role-roster-11": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2011%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
+    },
+    "role-roster-12": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=GovernmentNum%20eq%2012%20and%20(PositionID%20eq%2039%20or%20PositionID%20eq%2045%20or%20PositionID%20eq%2050%20or%20PositionID%20eq%2051%20or%20PositionID%20eq%2057)&$format=json",
+      "publisher": "Knesset OData, ministerial appointments; tabulation retained in data/meta/government-support-evidence.json",
+      "kind": "official",
+      "accessed": "2026-11-07"
     }
   },
   "results": {
@@ -509,31 +527,70 @@
     "coalition": [
       {
         "letters": "א",
-        "seats": 42
+        "seats": 42,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-10",
+            "quote": "PersonToPositionID 3821; PersonID 2639; PositionID 39; StartDate 1961-11-02T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. בכור-שלום שיטרית; faction join: מפלגת פועלי ארץ-ישראל"
+          }
+        ]
       },
       {
         "letters": "ב",
-        "seats": 12
+        "seats": 12,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-10",
+            "quote": "PersonToPositionID 3792; PersonID 2661; PositionID 39; StartDate 1961-11-02T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. חיים משה שפירא; faction join: מפלגה דתית לאומית"
+          }
+        ]
       },
       {
         "letters": "תו",
-        "seats": 8
+        "seats": 8,
+        "role": "member-with-ministries",
+        "certainty": "confirmed",
+        "cites": [
+          {
+            "source": "role-roster-10",
+            "quote": "PersonToPositionID 4085; PersonID 2142; PositionID 39; StartDate 1961-11-02T00:00:00",
+            "note": "Project extraction of official fields, not prose quotation. יגאל אלון; faction join: אחדות העבודה - פועלי ציון"
+          }
+        ]
       },
       {
         "letters": "ד",
-        "seats": 2
+        "seats": 2,
+        "role": "other",
+        "certainty": "unknown",
+        "cites": [],
+        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
       },
       {
         "letters": "יא",
-        "seats": 2
+        "seats": 2,
+        "role": "other",
+        "certainty": "unknown",
+        "cites": [],
+        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
       },
       {
         "letters": "רא",
-        "seats": 2
+        "seats": 2,
+        "role": "other",
+        "certainty": "unknown",
+        "cites": [],
+        "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
       }
     ],
-    "coalitionSeats": 68,
-    "coalitionSeatsNote": "Election-list seat totals, including support-only lists named in the official government 11 presentation; not the confidence-vote tally.",
+    "coalitionSeats": null,
+    "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
     "cites": [
       {
         "source": "coalition-1",
@@ -569,31 +626,102 @@
         "coalition": [
           {
             "letters": "א",
-            "seats": 42
+            "seats": 42,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-11",
+                "quote": "PersonToPositionID 3822; PersonID 2639; PositionID 39; StartDate 1963-06-26T00:00:00",
+                "note": "Project extraction of official fields, not prose quotation. בכור-שלום שיטרית; faction join: מפלגת פועלי ארץ-ישראל"
+              }
+            ]
           },
           {
             "letters": "ב",
-            "seats": 12
+            "seats": 12,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-11",
+                "quote": "PersonToPositionID 3786; PersonID 2661; PositionID 39; StartDate 1963-06-26T00:00:00",
+                "note": "Project extraction of official fields, not prose quotation. חיים משה שפירא; faction join: מפלגה דתית לאומית"
+              }
+            ]
           },
           {
             "letters": "תו",
-            "seats": 8
+            "seats": 8,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-11",
+                "quote": "PersonToPositionID 3999; PersonID 2215; PositionID 39; StartDate 1963-06-26T00:00:00",
+                "note": "Project extraction of official fields, not prose quotation. ישראל בר-יהודה; faction join: אחדות העבודה - פועלי ציון"
+              }
+            ]
           },
           {
             "letters": "ד",
-            "seats": 2
+            "seats": 2,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "presentation-gov11",
+                "quote": "מפלגת פועלי ארץ ישראל, המפלגה הדתית-לאומית, מפלגת אחדות העבודה–פועלי ציון, פועלי אגודת ישראל, השיתוף והאחווה, הקדמה והפיתוח."
+              }
+            ],
+            "note": "Named in the governing presentation; no cabinet minister from this faction in the official formation-day roster. Deputy ministry is not a cabinet ministry."
           },
           {
             "letters": "יא",
-            "seats": 2
+            "seats": 2,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "presentation-gov11",
+                "quote": "מפלגת פועלי ארץ ישראל, המפלגה הדתית-לאומית, מפלגת אחדות העבודה–פועלי ציון, פועלי אגודת ישראל, השיתוף והאחווה, הקדמה והפיתוח."
+              }
+            ],
+            "note": "Named in the governing presentation; no cabinet minister from this faction in the official formation-day roster. Deputy ministry is not a cabinet ministry."
           },
           {
             "letters": "רא",
-            "seats": 2
+            "seats": 2,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "presentation-gov11",
+                "quote": "מפלגת פועלי ארץ ישראל, המפלגה הדתית-לאומית, מפלגת אחדות העבודה–פועלי ציון, פועלי אגודת ישראל, השיתוף והאחווה, הקדמה והפיתוח."
+              }
+            ],
+            "note": "Named in the governing presentation; no cabinet minister from this faction in the official formation-day roster. Deputy ministry is not a cabinet ministry."
           }
         ],
         "coalitionSeats": 68,
-        "coalitionSeatsNote": "Election-list seat totals, not contemporary faction totals or the confidence vote; the official government 11 presentation names all six previous coalition factions."
+        "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
+        "confidenceVote": {
+          "for": 64,
+          "against": 43
+        },
+        "confidenceVoteCites": [
+          {
+            "source": "plenum-gov11",
+            "quote": "אמון לממשלה. להצבעה על הבעת הצבעה 64 בעד הבעת אמון לממשלה 43 נגד היו\"ר ק. לוז: החדשה אמון לממשלה הכנסת הביעה לה ומאחל ישראל להתכוננותה ממשלת את מברך אני בניהול עניני המדינה. הצלחה הצהרת אמונים של חברי הממשלה ב,"
+          }
+        ],
+        "membershipCoverage": "complete",
+        "supportSeats": 0,
+        "reconciliation": {
+          "status": "unresolved",
+          "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Quantified gap: 68 identified member/support seats versus 64 votes for (+4); the named abstainers, absentees or dissenters needed to explain this gap have not been recovered. Do not infer that each member voted for."
+        },
+        "knownMemberSeats": 68
       },
       {
         "date": "1964-12-14",
@@ -626,31 +754,88 @@
         "coalition": [
           {
             "letters": "א",
-            "seats": 42
+            "seats": 42,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-12",
+                "quote": "PersonToPositionID 3593; PersonID 2513; PositionID 39; StartDate 1964-12-22T00:00:00",
+                "note": "Project extraction of official fields, not prose quotation. פנחס ספיר; faction join: מפלגת פועלי ארץ-ישראל"
+              }
+            ]
           },
           {
             "letters": "ב",
-            "seats": 12
+            "seats": 12,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-12",
+                "quote": "PersonToPositionID 3787; PersonID 2661; PositionID 39; StartDate 1964-12-22T00:00:00",
+                "note": "Project extraction of official fields, not prose quotation. חיים משה שפירא; faction join: מפלגה דתית לאומית"
+              }
+            ]
           },
           {
             "letters": "תו",
-            "seats": 8
+            "seats": 8,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-12",
+                "quote": "PersonToPositionID 4000; PersonID 2215; PositionID 39; StartDate 1964-12-22T00:00:00",
+                "note": "Project extraction of official fields, not prose quotation. ישראל בר-יהודה; faction join: אחדות העבודה - פועלי ציון"
+              }
+            ]
           },
           {
             "letters": "ד",
-            "seats": 2
+            "seats": 2,
+            "role": "other",
+            "certainty": "unknown",
+            "cites": [],
+            "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
           },
           {
             "letters": "יא",
-            "seats": 2
+            "seats": 2,
+            "role": "other",
+            "certainty": "unknown",
+            "cites": [],
+            "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
           },
           {
             "letters": "רא",
-            "seats": 2
+            "seats": 2,
+            "role": "other",
+            "certainty": "unknown",
+            "cites": [],
+            "note": "Existing support-inclusive grouping does not establish formal coalition membership or an outside-support arrangement; agreement or investiture declaration still required."
           }
         ],
-        "coalitionSeats": 68,
-        "coalitionSeatsNote": "Election-list seat totals, not contemporary faction totals or the confidence vote; the official government 11 presentation names all six previous coalition factions."
+        "coalitionSeats": null,
+        "coalitionSeatsNote": "Formal member seats only; null means unresolved membership. Election-list groupings and the investiture roll call are separate quantities. See each role citation and reconciliation.",
+        "confidenceVote": {
+          "for": 59,
+          "against": 36,
+          "abstain": 9
+        },
+        "confidenceVoteCites": [
+          {
+            "source": "plenum-gov12",
+            "quote": "אנחנו עוברים להצבעה. הצבעה 59 בעד הבעת אמון לממשלה 36 נגד 9 נמנעים היו\"ר ק. לוז: הממשלה בראשותו של לוי אשכול זכתה באמון הכנסת. אני מברך את הממשלה בהתכוננותה ומאחל לה הצלחה"
+          }
+        ],
+        "membershipCoverage": "partial",
+        "supportSeats": null,
+        "reconciliation": {
+          "status": "unresolved",
+          "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 62; full membership remains unknown. Investiture: 59 for, 36 against, 9 abstaining."
+        },
+        "knownMemberSeats": 62
       }
     ],
     "endDateCites": [
@@ -658,7 +843,24 @@
         "source": "plenum-gov11",
         "quote": "אמון לממשלה. להצבעה על הבעת הצבעה 64 בעד הבעת אמון לממשלה 43 נגד היו\"ר ק. לוז: החדשה אמון לממשלה הכנסת הביעה לה ומאחל ישראל להתכוננותה ממשלת את מברך אני בניהול עניני המדינה. הצלחה הצהרת אמונים של חברי הממשלה ב,"
       }
-    ]
+    ],
+    "confidenceVote": {
+      "for": 63,
+      "against": 46
+    },
+    "confidenceVoteCites": [
+      {
+        "source": "plenum-gov10",
+        "quote": "אנו עוברים להצבעה על הבעת אמון לממשלה שהתייצבה לפני הכנסת. הצבעה 63 בעד הבעת אמון לממשלה 46 נגד לוז: ק. היו\"ר ושישה הביעה נגר ארבעים של שישים ושלושה ברוב הכנסת אמון לממשלה, בראשותו של דוד בןגוריון. אני מברך את הממשלה להתכוננותה, ומאחל לה הצלחה בניהול עניני המדינה."
+      }
+    ],
+    "membershipCoverage": "partial",
+    "supportSeats": null,
+    "reconciliation": {
+      "status": "unresolved",
+      "note": "Individual voting/absence detail and unresolved membership prevent an exact bridge to the recorded investiture tally. Established member-seat subtotal: 62; full membership remains unknown. Investiture: 63 for, 46 against, not recorded abstaining."
+    },
+    "knownMemberSeats": 62
   },
   "term": {
     "start": "1961-08-15",
@@ -747,5 +949,6 @@
     "Eshkol’s reported return of the mandate on 2 November 1961 still needs a direct excerpt; Ben-Gurion’s reassignment that morning is explicit in the official presentation.",
     "Replacement snapshots use election-list seats; current faction seat counts during governments 11 and 12 are not reconstructed.",
     "Presentation dates can precede approval dates; confidence steps use the full protocol. The exact assignment days not transcribed here remain unknown."
-  ]
+  ],
+  "supportSchemaVersion": 1
 }
