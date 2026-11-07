@@ -1,3 +1,4 @@
+import { hebrewPrefix } from './hebrewPrefix.ts';
 import { formatDate } from './dateFormat.ts';
 import { factLog } from '../model/actionClassification.ts';
 import { groupingName } from './groupingName.ts';
@@ -65,10 +66,10 @@ export function referenceLabel(reference: Pick<Scenario, 'name'> | null, lang: L
   const name = reference ? reference.name || (he ? 'תרחיש שמור' : 'Saved scenario') : he ? 'התוצאה הרשמית' : 'Official result';
   return {
     name,
-    since: he ? `מ${name}` : `from ${reference ? name : 'the official result'}`,
+    since: he ? hebrewPrefix('מ', name) : `from ${reference ? name : 'the official result'}`,
     at: reference ? (he ? `בתרחיש ${name}` : `in ${name}`) : he ? 'בפועל' : 'officially',
-    more: he ? ` יותר מאשר ב${name}` : ` more than ${reference ? name : 'the official result'}`,
-    fewer: he ? ` פחות מאשר ב${name}` : ` fewer than ${reference ? name : 'the official result'}`,
+    more: he ? ` יותר מאשר ${hebrewPrefix('ב', name)}` : ` more than ${reference ? name : 'the official result'}`,
+    fewer: he ? ` פחות מאשר ${hebrewPrefix('ב', name)}` : ` fewer than ${reference ? name : 'the official result'}`,
     seats: reference ? (he ? `מנדטים בתרחיש ${name}` : `Seats in ${name}`) : he ? 'מנדטים בתוצאה הרשמית' : 'Official seats',
   };
 }
@@ -81,9 +82,10 @@ export function changeCount(s: Scenario, reference: Scenario | null): number {
   while (common < Math.min(now.length, before.length) && canonical(now[common].action) === canonical(before[common].action)) common++;
   return now.length + before.length - 2 * common;
 }
-export function changesLabel(count: number, reference: Pick<Scenario, 'name'> | null, lang: Lang): string {
+export function changesLabel(count: number, reference: Pick<Scenario, 'name'> | null, lang: Lang, compact = false): string {
   if (!count) return lang === 'he' ? 'אין שינויים' : 'No changes';
-  return `${count} ${lang === 'he' ? 'שינויים' : count === 1 ? 'change' : 'changes'} ${referenceLabel(reference, lang).since}`;
+  const short = `${count} ${lang === 'he' ? 'שינויים' : count === 1 ? 'change' : 'changes'}`;
+  return compact ? short : `${short} ${referenceLabel(reference, lang).since}`;
 }
 
 export interface ScenarioIssue { level: 'error' | 'warning'; en: string; he: string }

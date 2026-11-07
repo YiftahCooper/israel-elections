@@ -1,3 +1,4 @@
+import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { useFloating } from '../floating.tsx';
 import { electionContext, type ContextSource, type PMContest } from '../../data/electionContext.ts';
 import type { ElectionId } from '../../data/schema.ts';
@@ -53,7 +54,7 @@ export function PMResult({ contest, onKnesset }: { contest: PMContest; onKnesset
   return <section className="panel pm-result" aria-label={L('Prime Minister result', 'תוצאות הבחירות לראש הממשלה')}>
     <header><h2>{L('Prime Minister', 'ראש הממשלה')} · {contest.effectiveDate}</h2></header>
     <div className="body">
-      {contest.contestType === 'prime-minister-only' && <p>{L(`No Knesset was elected in this election. Knesset ${contest.electionId.slice(1)} continued serving, with its seats unchanged.`, `בבחירות אלה לא נבחרה כנסת. הכנסת ה־${contest.electionId.slice(1)} המשיכה לכהן, ללא שינוי במנדטים.`)} <button className="btn small" onClick={onKnesset}>{L(`The ${ordinal(Number(contest.electionId.slice(1)))} Knesset`, `לכנסת ה־${contest.electionId.slice(1)}`)}</button></p>}
+      {contest.contestType === 'prime-minister-only' && <p>{L(`No Knesset was elected in this election. Knesset ${contest.electionId.slice(1)} continued serving, with its seats unchanged.`, `בבחירות אלה לא נבחרה כנסת. הכנסת ${hebrewPrefix('ה', contest.electionId.slice(1))} המשיכה לכהן, ללא שינוי במנדטים.`)} <button className="btn small" onClick={onKnesset}>{L(`The ${ordinal(Number(contest.electionId.slice(1)))} Knesset`, `לכנסת ${hebrewPrefix('ה', contest.electionId.slice(1))}`)}</button></p>}
       <p className="small muted">{L('Historical result · separate PM ballot · read only', 'תוצאה היסטורית · פתק נפרד לראש הממשלה · לקריאה בלבד')}</p>
       <div className="pm-bars">
         <div className="pm-majority-label">{L('50% of valid PM votes', '50% מהקולות הכשרים לראש הממשלה')}</div>

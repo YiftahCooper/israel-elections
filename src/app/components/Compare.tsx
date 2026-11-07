@@ -1,3 +1,4 @@
+import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { AnalysisEdits } from './AnalysisEdits.tsx';
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
 import { SeatDelta } from './SeatDelta.tsx';
@@ -167,7 +168,7 @@ function ScenarioCompare({ s, r, base, ds }: { s: Scenario; r: AllocationResult;
             if(!now&&!before)return null;
             return <span key={id??'__none'} className="row" title={bloc?.appDefined ? appGroupingExplanation(lang) : undefined} style={{gap:5}}><span className="swatch" style={{background:`color-mix(in srgb, ${color} 24%, var(--surface))`,border:`1px ${id===null?'dotted':'solid'} ${color}`}} />{bloc?groupingName(bloc, lang, !groupedA ? s.blocSchemes?.find(g => g.id === s.blocSchemeId) : undefined):L('No bloc','ללא גוש')} <b><bdi dir="ltr">{groupedA?`${before} → `:''}{now}</bdi></b></span>;
           })}</div>
-          {!groupedA && <p className="small muted" style={{ margin: '4px 0 0' }}>{L(`${groupingLabel(s, lang)}: no counterpart in ${nameA}`, `${groupingLabel(s, lang)}: אין מקבילה ב${nameA}`)}</p>}
+          {!groupedA && <p className="small muted" style={{ margin: '4px 0 0' }}>{L(`${groupingLabel(s, lang)}: no counterpart in ${nameA}`, `${groupingLabel(s, lang)}: אין מקבילה ${hebrewPrefix('ב', nameA)}`)}</p>}
         </section>
       )}
 
@@ -276,7 +277,7 @@ function EmptyCompare({ s, ds, base, compareWith, nameA, nameB }: { s: Scenario;
           <ChoicePicker className="cmp-other" label={L('Another election', 'בחירות אחרות')} placeholder={L('Another election…', 'בחירות אחרות…')} value="" options={choices.filter((c) => c.value.startsWith(ELECTION))} onChange={(v) => setState({ compareWith: v })} />
           <button type="button" className="btn" onClick={() => setState({ tool: 'whatif' })}>{L('A What-if question…', 'שאלת "מה אם"…')}</button>
         </div>
-        <p className="small muted">{nameA !== nameB && <>{L(`Same as ${nameA}. `, `זהה ל${nameA}. `)}</>}{L('Your changes show here.', 'השינויים שלכם יוצגו כאן.')}</p>
+        <p className="small muted">{nameA !== nameB && <>{L(`Same as ${nameA}. `, `זהה ${hebrewPrefix('ל', nameA)}. `)}</>}{L('Your changes show here.', 'השינויים שלכם יוצגו כאן.')}</p>
       </section>
     </div>
   );
@@ -326,7 +327,7 @@ function ElectionCompare({ s, r, base, ds, otherId }: { s: Scenario; r: Allocati
         [L('Votes per seat', 'קולות למנדט'), fmtRat(left.rr.quota, 0), fmtRat(right.rr.quota, 0)],
         [L('Lists elected', 'רשימות שנבחרו'), elected(left.rr), elected(right.rr)],
         [L('Votes with no seat', 'קולות ללא מנדט'), fmtPct(left.rr.unrepresentedVotes, left.rr.totalValid, digits), fmtPct(right.rr.unrepresentedVotes, right.rr.totalValid, digits)],
-      ]} was={L(`${when}:`, /^\d/.test(when) ? `ב-${when}:` : `ב${when}:`)} always />
+      ]} was={L(`${when}:`, `${hebrewPrefix('ב', when)}:`)} always />
     </div>
   );
 }

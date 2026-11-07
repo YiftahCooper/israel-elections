@@ -1,3 +1,4 @@
+import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { useDigits } from '../store.ts';
 import { SeatDelta } from './SeatDelta.tsx';
 import {ChoicePicker} from './ChoicePicker.tsx';
@@ -71,7 +72,7 @@ export function Families({s}:{s:Scenario}) {
  const stepValue=(by:number)=>{const n=Number(value);setValue(String(Math.round(((Number.isFinite(n)?n:0)+by)*100)/100));};
  const percent=(n:number)=><bdi dir="ltr">{n>0?'+':'−'}{Math.abs(n)}%</bdi>;
  const onlyMixedNow=!!f&&members===0&&resolve(f,s).some(l=>l.family==='mixed'||membership(f,s.electionId).excluded.has(l.id));
- const unavailable=!f?'':members===0?(onlyMixedNow?L(`${name(f)} has only mixed lists in this election. Choose “Count all” under Mixed lists to scale them.`,`ל${name(f)} יש רק רשימות מעורבות בבחירות אלה. בחרו "ספירת כולן" ברשימות מעורבות כדי לשנות אותן.`):L(`${name(f)} has no list in this election.`,`ל${name(f)} אין רשימה בבחירות אלה.`))
+ const unavailable=!f?'':members===0?(onlyMixedNow?L(`${name(f)} has only mixed lists in this election. Choose “Count all” under Mixed lists to scale them.`,`${hebrewPrefix('ל', name(f))} יש רק רשימות מעורבות בבחירות אלה. בחרו "ספירת כולן" ברשימות מעורבות כדי לשנות אותן.`):L(`${name(f)} has no list in this election.`,`${hebrewPrefix('ל', name(f))} אין רשימה בבחירות אלה.`))
   :mode==='multiplier'&&Number(value)<-100?L('A family cannot lose more than all its votes (−100%).','משפחה אינה יכולה לאבד יותר מכל קולותיה (‎−100%).')
   :L('Enter a number. There must be enough other votes to move.','הזינו מספר. דרושים מספיק קולות אחרים להעברה.');
  return <div className="families">

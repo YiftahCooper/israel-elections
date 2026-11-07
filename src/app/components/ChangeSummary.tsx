@@ -1,9 +1,11 @@
+import { FittingLabel } from './FittingLabel.tsx';
+import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
 import { SeatDelta } from './SeatDelta.tsx';
 import { Info } from './ui.tsx';
 import {isFamilyGrouping} from '../../families/labels.ts';
 import { useActiveReference } from '../useActiveReference.ts';
-import { changeCount, changesLabel, resultChanges } from '../derive.ts';
+import { changeCount, changesLabel, referenceLabel, resultChanges } from '../derive.ts';
 import { allocationOf } from '../derive.ts';
 // "What changed": the session's net effect against the official result, kept to one line however many edits
 // were made (seats that moved, the blocs, the majority), with the full undoable history one click away.
@@ -42,7 +44,8 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
   if (reference) { base = reference; baseR = allocationOf(reference); }
   const L = useL();
   const lang = useLang();
-  const label = changesLabel(changeCount(s, reference), reference, lang);
+  const count = changeCount(s, reference);
+  const label = changesLabel(count, reference, lang);
   const [open, setOpen] = useState(false);
   const historyId = useId();
   const pop = useRef<HTMLDivElement>(null);
@@ -76,7 +79,6 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
     if (b) was = blocTotals(b, allocationOf(b));
     return s.blocs.map((b) => ({ b, n: now.get(b.id) ?? 0, d: was ? (now.get(b.id) ?? 0) - (was.get(b.id) ?? 0) : null }));
   }, [s, r, base, baseR]);
-  const edits = changeCount(s, null);
   const edited = resultChanges(s,base).length > 0;
   const familyGrouping = isFamilyGrouping(s);
   const majority = Math.floor(s.rules.seats / 2) + 1;
@@ -86,9 +88,9 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
 
   return (
     <div ref={line} className={`session ${edited ? '' : 'idle'}`} role="status" aria-live="polite">
-      <b title={label}>{label}</b>
+      <FittingLabel full={label} short={changesLabel(count, reference, lang, true)} />
       <span ref={changes} className="session-changes">
-        <Info title={L('Your changes', 'השינויים שלכם')}>{L('Counts result-changing actions from the named reference, not individual fields. Colours and bloc groupings do not count. History shows all changes from the official result; undo, redo or return to an earlier change there.', 'סופר פעולות שמשנות את התוצאה ביחס לנקודת ההשוואה הנקובה, ולא שדות בודדים. צבעים וחלוקות לגושים אינם נספרים. בהיסטוריה מוצגים כל השינויים מהתוצאה הרשמית; אפשר לבטל, לבצע שוב או לחזור לשינוי קודם.')}</Info>
+        <Info title={L('Your changes', 'השינויים שלכם')}>{L('Reference: ', 'נקודת השוואה: ')}<bdi>{referenceLabel(reference, lang).name}</bdi>. {L('Counts result-changing actions from the named reference, not individual fields. Colours and bloc groupings do not count. History shows all changes from the official result; undo, redo or return to an earlier change there.', 'סופר פעולות שמשנות את התוצאה ביחס לנקודת ההשוואה הנקובה, ולא שדות בודדים. צבעים וחלוקות לגושים אינם נספרים. בהיסטוריה מוצגים כל השינויים מהתוצאה הרשמית; אפשר לבטל, לבצע שוב או לחזור לשינוי קודם.')}</Info>
         {edited && <>
           {moves.length === 0
             ? <span className="muted">{L('No seats changed', 'המנדטים לא השתנו')}</span>
@@ -100,13 +102,13 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
           {blocs && <span className="moves" style={{ color: 'var(--ink-2)' }}>
             {!familyGrouping && <span>{groupingLabel(s, lang)}</span>}
             {blocs.filter((x) => x.n > 0 || x.d).map(({ b, n, d }) => <span key={b.id} title={b.appDefined ? appGroupingExplanation(lang) : undefined}><bdi>{name(b)}</bdi> {n}{d ? <span dir="ltr"> (<SeatDelta value={d} />)</span> : null}</span>)}
-            {!familyGrouping && <span>{holder ? L(`${name(holder.b)} holds a majority`, `ל${name(holder.b)} יש רוב`) : L('no bloc has a majority', 'לאף גוש אין רוב')}</span>}
+            {!familyGrouping && <span>{holder ? L(`${name(holder.b)} holds a majority`, `${hebrewPrefix('ל', name(holder.b))} יש רוב`) : L('no bloc has a majority', 'לאף גוש אין רוב')}</span>}
           </span>}
           {s.mode === 'experimental' && <span className="chip exp">{L('Experimental rules', 'כללים ניסיוניים')}</span>}
         </>}
       </span>
       {edited && <button ref={trigger} className="btn small ghost" aria-expanded={open} aria-controls={historyId} popoverTarget={historyId}>
-        {L(`History · ${edits} change${edits === 1 ? '' : 's'}`, `היסטוריה · ${edits} שינויים`)}
+        {L('History', 'היסטוריה')}
         {open ? <ChevronUp className="icon sm" aria-hidden /> : <ChevronDown className="icon sm" aria-hidden />}
       </button>}
       <div id={historyId} ref={pop} className="history" popover="auto" onToggle={(e) => setOpen(e.newState === 'open')}>

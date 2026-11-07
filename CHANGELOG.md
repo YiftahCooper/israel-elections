@@ -2,6 +2,8 @@
 
 ## 6 November 2026 — data audit
 
+- Show change counts once beside History, shorten whole labels by measured fit, and apply Hebrew maqaf prefixes consistently to foreign names.
+
 - Unify changes/שינויים against the official result or saved reference, explain action counts, and localise History times and calendar dates.
 
 - Mark custom bloc, coalition and family groupings locally as analysis while preserving official result identity and factual summaries.

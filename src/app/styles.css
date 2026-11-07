@@ -121,7 +121,11 @@ input, textarea { caret-color: var(--focus); }
 /* One fixed line, present from the start: edits never change its height (no page jump); overflow scrolls sideways
    behind a trailing fade, and History is a popover. Sticky under the tools strip on desktops (beside the sticky lists and panel). */
 .session { background: var(--surface); border-block-end: 1px solid var(--rule); padding: 0 16px; display: flex; align-items: center; flex-wrap: nowrap; gap: 14px; font-size: 13.5px; block-size: 41px; box-sizing: border-box; white-space: nowrap; }
-.session > b { font-weight: 700; flex: none; max-inline-size: 40%; overflow: hidden; text-overflow: ellipsis; }
+.session > b { font-weight: 700; flex: none; max-inline-size: 30%; overflow: hidden; }
+.fit-label { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); }
+.fit-label > span { grid-area: 1 / 1; min-inline-size: 0; }
+.fit-label-short-measure { position: absolute; inline-size: max-content; visibility: hidden; pointer-events: none; }
+.fit-label-measure { inline-size: max-content; visibility: hidden; pointer-events: none; }
 .session > .btn { flex: none; margin-inline-start: auto; }
 .session-changes { flex: 1 1 auto; min-width: 0; display: flex; align-items: center; gap: 14px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; overscroll-behavior-x: contain; }
 .session-changes::-webkit-scrollbar { display: none; }
@@ -134,7 +138,7 @@ input, textarea { caret-color: var(--focus); }
 /* phones: two fixed lines, the reference and History above, the changes across the full width beneath */
 @media (max-width: 600px) {
   .session { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: 28px 20px; align-content: center; column-gap: 10px; row-gap: 0; block-size: 50px; }
-  .session > b { grid-area: 1 / 1; max-inline-size: none; }
+  .session > b { grid-area: 1 / 1; }
   .session > .btn { grid-area: 1 / 2; }
   .session-changes { grid-area: 2 / 1 / 3 / -1; }
 }

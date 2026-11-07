@@ -31,9 +31,11 @@ test('B1 saved separate-run reference is named everywhere; B6 identity is not re
   await page.getByRole('button', { name: 'Likud', exact: true }).click();
   const votes = page.getByRole('region', { name: 'List details' }).getByLabel('Votes', { exact: true });
   await votes.fill('1300000'); await votes.press('Enter');
-  await expect(page.locator('.session > b')).toHaveText('1 change from Review A');
+  await expect(page.locator('.session > b')).toHaveText('1 change from Review A', {useInnerText:true});
+  await page.locator('.session').getByRole('button', { name: 'History', exact: true }).click();
   // The split recorded three result-changing actions; History retains them after saving.
-  await expect(page.locator('.session')).toContainText('History · 4 changes');
+  await expect(page.locator('.session .history')).toContainText('4 changes from the official result');
+  await page.keyboard.press('Escape');
   await expect(page.getByRole('button', { name: 'Likud', exact: true })).toHaveAccessibleDescription(/more than Review A/);
   await expect(page.locator('.phone-result-strip')).toContainText('from Review A');
   await page.getByRole('button', { name: 'Expert', exact: true }).click();

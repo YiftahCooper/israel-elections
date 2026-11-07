@@ -16,7 +16,7 @@ it('counts actions, not balanced vote fields, colours or bloc choices', () => {
   expect(changeCount(saved, saved)).toBe(0);
   expect(changeCount(base, saved)).toBe(1);
   expect(changesLabel(2, saved, 'en')).toBe('2 changes from Unity');
-  expect(changesLabel(2, saved, 'he')).toBe('2 שינויים מUnity');
+  expect(changesLabel(2, saved, 'he')).toBe('2 שינויים מ־Unity');
 });
 it('uses the same concise vocabulary with singular, plural and zero', () => {
   expect(changesLabel(0, null, 'en')).toBe('No changes');
@@ -32,4 +32,10 @@ it('formats date-only and timestamp values in the app language without timezone 
     expect(formatDate('2026-11-07', lang)).toBe(expected);
     expect(formatDate('2026-11-07T23:30:00Z', lang)).toBe(expected);
   }
+});
+
+it('short copy omits the reference without truncating either language', () => {
+  expect(changesLabel(3, {name:'Unity'}, 'en', true)).toBe('3 changes');
+  expect(changesLabel(3, {name:'Unity'}, 'he', true)).toBe('3 שינויים');
+  expect(changesLabel(0, null, 'en', true)).toBe('No changes');
 });

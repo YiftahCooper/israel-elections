@@ -11,7 +11,7 @@ it('labels official and saved bases in both languages, including unnamed saves',
   for (const lang of ['en', 'he'] as const) {
     const label = referenceLabel({ ...base, name: 'Review A' }, lang);
     expect(label.name).toBe('Review A');
-    expect(label.since).toBe(lang === 'en' ? 'from Review A' : 'מReview A');
+    expect(label.since).toBe(lang === 'en' ? 'from Review A' : 'מ־Review A');
     expect(label.at).toBe(lang === 'en' ? 'in Review A' : 'בתרחיש Review A');
     expect(JSON.stringify(label)).not.toMatch(/official|historical|בפועל|רשמי/);
     expect(referenceLabel(base, lang).name).toBe(lang === 'en' ? 'Saved scenario' : 'תרחיש שמור');

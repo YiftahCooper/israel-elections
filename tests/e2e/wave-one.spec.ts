@@ -13,7 +13,7 @@ test('grouping-only switches stay factual-neutral in Compare and keep named undo
     await choose(page.getByRole('button', {name:'Grouping',exact:true}), scheme);
     await expect(page.getByRole('button', {name:/^Undo: Bloc grouping:/})).toBeEnabled();
     // U7: a sourced grouping changes the view, not election facts.
-    await expect(page.getByRole('button', {name:/^History ·/})).toHaveCount(0);
+    await expect(page.getByRole('button', {name:/^History$/})).toHaveCount(0);
     await expect(page.locator('.session')).toContainText('No changes');
     await page.getByRole('tab', {name:'Compare',exact:true}).click();
     // U7 makes both sourced schemes unchanged facts. Auto comparison therefore

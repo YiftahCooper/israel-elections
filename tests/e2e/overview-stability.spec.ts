@@ -23,7 +23,7 @@ for (const [lang, width] of [['en', 1500], ['he', 1024], ['he', 390]] as const) 
     const plus = increase(page, lang);
     const before = { chamber: await top(page, '.chamber-panel'), lists: await top(page, '.lbars'), band: await page.locator('header.band').evaluate(e => Math.round(e.getBoundingClientRect().height)) };
     await plus.click();
-    await expect(page.locator('.session')).toContainText(lang === 'he' ? 'היסטוריה · 1' : 'History · 1 change');
+    await expect(page.locator('.session')).toContainText(lang === 'he' ? 'היסטוריה' : 'History');
     expect({ chamber: await top(page, '.chamber-panel'), lists: await top(page, '.lbars'), band: await page.locator('header.band').evaluate(e => Math.round(e.getBoundingClientRect().height)) }).toEqual(before);
     // further edits that add more to say do not grow the line either
     for (let i = 0; i < 10; i++) await plus.click();

@@ -379,7 +379,7 @@ export function History({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
       <div className="row" style={{ marginBottom: 8 }}>
         <button className="btn small" onClick={undo} disabled={!past}>{undoName}</button>
         <button className="btn small" onClick={redo} disabled={!future.length}>{redoName}</button>
-        <span className="muted small">{changesLabel(factLog(s).length, null, lang)}</span>
+        {factLog(s).length > 0 && <span className="muted small">{changesLabel(factLog(s).length, null, lang)}</span>}
       </div>
       {factLog(s).length === 0 ? <p className="muted">{L('No changes — this is the official result.', 'אין שינויים — זו התוצאה הרשמית.')}</p> : (
         <ol className="small" style={{ paddingInlineStart: 22 }}>
