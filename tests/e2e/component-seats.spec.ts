@@ -35,7 +35,7 @@ for(const lang of ['en','he']) for(const theme of ['light','dark']) for(const wi
    for(const layout of ['Arc','Blocks']){
     await page.getByRole('button',{name:lang==='en'?layout:layout==='Arc'?'קשת':'גושים',exact:true}).click();
     const chamber=page.locator('.chamber').first();
-    await expect(chamber.locator('[data-component-seat]')).toHaveCount(1);
+    await expect(chamber.locator('[data-component-seat]')).toHaveCount(8);
     await expect(chamber.locator('[data-seat]')).toHaveCount(120);
     await expect(chamber.locator('.legend')).toContainText(lang==='en'?'Meretz':'מרצ');
     await chamber.screenshot({path:`.backup-scratch/components/${layout}-${lang}-${theme}-${width}.png`});

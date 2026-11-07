@@ -84,7 +84,7 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
       </div>
       {/* on narrow screens the bands are too short for their names: they are listed in full beneath */}
       <div className="strip-legend" aria-hidden>
-        {groups.map((g) => <span key={g.key} title={g.appDefined ? appGroupingExplanation(lang) : undefined}><span className="swatch" style={{ background: g.color }} />{g.contextLabel} <b key={g.n >= majority ? 'majority' : 'minority'} className={g.id !== null && previous.current.election === s.electionId && previous.current.scheme === s.blocSchemeId && previous.current.seats.has(g.id) && ((previous.current.seats.get(g.id)! >= majority) !== (g.n >= majority)) ? 'tick' : ''}>{g.n}</b>{g.id !== null && <> <bdi className="consequence">{consequence(g.n)}</bdi></>}</span>)}
+        {groups.map((g) => <span key={g.key} title={g.appDefined ? appGroupingExplanation(lang) : undefined}><span className={`swatch bloc-swatch ${g.id === null ? 'unassigned' : ''}`} style={{ ['--bc' as string]: g.color }} />{g.contextLabel} <b key={g.n >= majority ? 'majority' : 'minority'} className={g.id !== null && previous.current.election === s.electionId && previous.current.scheme === s.blocSchemeId && previous.current.seats.has(g.id) && ((previous.current.seats.get(g.id)! >= majority) !== (g.n >= majority)) ? 'tick' : ''}>{g.n}</b>{g.id !== null && <> <bdi className="consequence">{consequence(g.n)}</bdi></>}</span>)}
       </div>
     </section>
   );

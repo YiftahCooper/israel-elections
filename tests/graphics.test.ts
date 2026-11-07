@@ -8,6 +8,10 @@ const inside=(pt:[number,number],poly:[number,number][])=>{let c=false;for(let i
 /** Every seat's whole disc (24 perimeter samples) lies inside its own region and outside every other region. */
 function regionContainmentErrors(seats:SeatPos[],bands:number[],rad:number){
   const regions=annularRegions(seats,bands,rad), errors:string[]=[];
+  regions.forEach((region, i) => {
+    if (i > 0 && JSON.stringify(regions[i-1].rightAngles) !== JSON.stringify(region.leftAngles)) errors.push('gap between sectors');
+    if (region.leftAngles.some((a, row) => a < region.rightAngles[row])) errors.push('overlapping sectors');
+  });
   seats.forEach((p,i)=>{
     for(let k=0;k<24;k++){
       const a=(k*Math.PI)/12, pt:[number,number]=[500+(p.x+Math.cos(a)*rad)*400,470+(p.y+Math.sin(a)*rad)*400];
@@ -78,4 +82,16 @@ test('one active reference policy and middle unassigned order preserve declared 
     expect(order.indexOf(null)).toBe(Math.floor(n/2));
     expect(order.filter(x=>x!==null)).toEqual(blocs.map(b=>b.id));
   }
+});
+
+test('bloc sectors share exact row cuts and use at most one deliberate step per row', () => {
+  const arc = arcLayout(120);
+  const regions = annularRegions(arc.seats, arc.seats.map((_, i) => i < 56 ? 0 : i < 64 ? 1 : 2), arc.r);
+  for (let i = 1; i < regions.length; i++) {
+    expect(regions[i - 1].rightAngles).toEqual(regions[i].leftAngles);
+    expect(regions[i].leftAngles.every((a, row) => a >= regions[i].rightAngles[row])).toBe(true);
+  }
+  expect(regions[0].leftAngles.every(a => a > Math.PI)).toBe(true);
+  expect(regions.at(-1)!.rightAngles.every(a => a < 0)).toBe(true);
+  expect(regions.every(r => (r.fill.match(/ L/g) ?? []).length < 40)).toBe(true);
 });

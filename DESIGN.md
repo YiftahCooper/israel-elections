@@ -488,10 +488,13 @@ and bloc-member strips. Expert's explicitly named constituent-party/bloc modes
 are categorical overrides; they never encode change. Pale regions identify bloc
 membership. Blocs retain their declared physical left-to-right order with No bloc
 between its two halves, consistently in the chamber, BlocBar and Compare. The
-61 marker counts from the physical left in either language. Regions are bounded
-by smooth taut curves threaded between neighbouring blocs' seats (never per-row steps), each enclosing exactly its own
-seats, filled without any border strokes or cut-out seams. Pale tints distinguish
-adjacent regions while seat positions remain fixed.
+61 marker counts from the physical left in either language. Regions use exact shared annular edges with a neutral, theme-aware border and quiet
+14% / 22% tints. Angular seat order follows the standard parliament-chart approach
+([d3-parliament](https://github.com/geoffreybr/d3-parliament)); seat positions and bloc
+order remain fixed. Use a radial boundary across every consecutive run of rows that
+admits it; where seat discs at different radii conflict, step only halfway between
+rows, never around seat circles. Opaque borders cover shared antialiasing edges.
+Arc, Blocks, reference chambers, legend keys and standalone exports share this rule.
 A neutral tinted “No bloc” region with a dotted legend key is retained even in a blank
 grouping. Blocks use a fixed 20 × 6 tray; arc and blocks retain the full chamber
 capacity independent of the number of lists. Experimental totals stay explicit.
@@ -583,9 +586,8 @@ hidden duplicate selectors or rely on CSS to conceal them.
 Family chips are selection and comparison. Full-width 300px charts (240px on phones) lead; the exact table is disclosed. Mixed lists (family + other parties) has four named options — Show hatched, Count if family heads it, Count all, Leave out — each with an icon of its chart mark; 2026 points are hollow with pending-publication tooltips. Edit membership is an independent-election sheet; scaling previews before/after seat strips. Overview adds labelled brackets to family list runs without changing seat ordering. See [the built design](docs/design/party-families.md) for runtime/evidence loading and the explicit exact-figures preference.
 
 
-Small blocs at either end of the arc use the same fill-only region rule as all
-other blocs. Radial row steps are never stroked, in the main or reference chamber;
-pale fills provide grouping without stray lines crossing seat rows.
+Small blocs at either end use the same bordered regions as all other blocs;
+no-bloc regions and keys use dotted borders. No boundary crosses a seat disc.
 
 ### Floating content (5 November owner feedback)
 All custom tooltips, info marks, chart hovers, menus, About and figure popovers use the shared viewport placement helper. They flip above when needed, clamp to an 8px viewport gutter, and scroll internally when tall. Native top-layer placement escapes scroll-panel clipping and never increases the document height. Pointer users can cross the small gap into long info text without losing it. Native select menus and modal choice dialogs retain browser viewport handling.
@@ -607,3 +609,17 @@ encode their starting faction-counting choice separately from their action logs;
 opening them preserves that choice regardless of the viewer's preference. Legacy
 links/saves without it retain the previous off baseline. Workspace restore retains
 the same metadata. The preference itself never enters History.
+
+
+### Constituent display colours (7 November)
+
+With party colours enabled for a joint list counted by party, every seat with a recorded
+constituent identity has an inner dot, including the lead party. The outer ring retains
+the list colour. `partyDisplayColor` resolves the whole list deterministically, retaining
+supplied colours when distinguishable and deriving missing or colliding display colours.
+Opaque dots have at least 3:1 contrast and ΔE00 20 against their ring; sibling dots have
+ΔE00 20 separation. The same per-list colours appear in both themes, legends, hover keys,
+reference/Compare chambers, chart cells, list/party bars, candidate tints, family details,
+bloc-member pieces and exports. Colour research and confidence metadata remain unchanged;
+the display-colour explanation stays behind the existing settings (i) and in SVG descriptions.
+Creating separate ballot lists retains the existing whole-chamber colour policy.

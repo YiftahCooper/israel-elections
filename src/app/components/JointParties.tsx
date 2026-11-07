@@ -1,3 +1,4 @@
+import { partyDisplayColor } from '../partyDisplayColor.ts';
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
 import { EditMarker } from './EditMarker.tsx';
 import { useDisclosure } from './Feature.tsx';
@@ -40,9 +41,11 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
     const total = base.reduce((a, b) => a + b, 0) || 1;
     return base.map((x) => Math.round((x / total) * 1000) / 10);
   }, [l, seats]);
-  // each party's colour here, on its candidates and when split: its own, else a distinguishable variant of the list's
-  const colourOf = useMemo(() => componentColours(parties, l.candidates.find((c) => c.partyId)?.partyId, l.color,
+  // Creating separate ballot lists retains their existing chamber-wide colour separation policy.
+  // Party displays within this joint list share the dot/legend resolver.
+  const separateListColours = useMemo(() => componentColours(parties, l.candidates.find((c) => c.partyId)?.partyId, l.color,
     s.lists.filter((x) => x.id !== l.id && !x.withdrawn).map((x) => x.color)), [parties, l, s.lists]);
+  const colourOf = useMemo(() => Object.fromEntries(parties.map(p => [p.id, partyDisplayColor(l, p.id)])), [l, parties]);
   const [shares, setShares] = useState<number[] | null>(null);
   const [open, setOpen] = useState(false);
   if (parties.length < 2) return null;
@@ -55,7 +58,7 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
 
   const run = () => {
     const parts = parties.map((p, i) => ({
-      newId: newId(i), nameHe: p.nameHe, letters: i === 0 ? l.letters : `${l.letters}${i + 1}`, color: colourOf[p.id], votes: votes[i],
+      newId: newId(i), nameHe: p.nameHe, letters: i === 0 ? l.letters : `${l.letters}${i + 1}`, color: separateListColours[p.id], votes: votes[i],
       candidateIds: l.candidates.filter((c) => (c.partyId && parties.some((x) => x.id === c.partyId) ? c.partyId : lead) === p.id).map((c) => c.id),
     }));
     const actions: Action[] = [{ type: 'split', id: l.id, parts },

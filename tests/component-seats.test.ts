@@ -2,6 +2,7 @@ import { applyAction } from '../src/model/actions.ts';
 import { allocationOf } from '../src/app/derive.ts';
 import { expect, test } from 'vitest';
 import { graphicScenario } from './graphics-cases.ts';
+import { partyDisplayColor } from '../src/app/partyDisplayColor.ts';
 import { seatOrder } from '../src/app/components/Hemicycle.tsx';
 test('counting component parties preserves list rings, grouped component seats and candidate rank', () => {
  const {s,r}=graphicScenario(26,[]);
@@ -9,9 +10,10 @@ test('counting component parties preserves list rings, grouped component seats a
  s.factionSplits=[l.id];
  const seats=seatOrder(s,r,'list').filter(st=>st.listId===l.id);
  const meretz=l.parties!.find(p=>p.nameEn==='Meretz')!;
- expect(seats.filter(st=>st.innerColor===meretz.color)).toHaveLength(1);
+ expect(seats.filter(st=>st.innerColor===partyDisplayColor(l,meretz.id))).toHaveLength(1);
  expect(seats.every(st=>st.color===l.color)).toBe(true);
- expect(seats.find(st=>st.innerColor===meretz.color)?.idx).toBe(5);
+ expect(seats.every(st=>st.innerColor)).toBe(true);
+ expect(seats.find(st=>st.innerColor===partyDisplayColor(l,meretz.id))?.idx).toBe(5);
  expect(seatOrder(s,r,'list',false).every(st=>!st.innerColor)).toBe(true);
  s.factionSplits=[];
  expect(seatOrder(s,r,'list').every(st=>!st.innerColor)).toBe(true);

@@ -80,104 +80,82 @@ export function placeLabels(items: { id: string; n: number; a: number; text: str
   return placed;
 }
 
-/** Shortest (taut) path through a corridor lo[k] ≤ t ≤ hi[k] sampled at equal steps: straight wherever it can be,
- *  bending only at a corridor corner. It starts with the constant value that fits longest, so a cut that can be one
- *  radial line is one. */
-export function tautPath(lo: number[], hi: number[]): number[] {
-  const n = lo.length, out = new Array<number>(n);
-  let maxLo = -Infinity, minHi = Infinity;
-  for (let k = 0; k < n && Math.max(maxLo, lo[k]) <= Math.min(minHi, hi[k]); k++) { maxLo = Math.max(maxLo, lo[k]); minHi = Math.min(minHi, hi[k]); }
-  let x0 = 0, v0 = (maxLo + minHi) / 2;
-  out[0] = v0;
-  while (x0 < n - 1) {
-    let smin = -Infinity, smax = Infinity, kmin = x0, kmax = x0, bend = -1, bendV = 0;
-    for (let k = x0 + 1; k < n; k++) {
-      const sl = (lo[k] - v0) / (k - x0), sh = (hi[k] - v0) / (k - x0);
-      if (sl > smax + 1e-12) { bend = kmax; bendV = hi[kmax]; break; }
-      if (sh < smin - 1e-12) { bend = kmin; bendV = lo[kmin]; break; }
-      if (sl > smin) { smin = sl; kmin = k; }
-      if (sh < smax) { smax = sh; kmax = k; }
-    }
-    if (bend < 0) { const sl = Math.min(Math.max(0, smin), smax); for (let i = x0 + 1; i < n; i++) out[i] = v0 + sl * (i - x0); break; }
-    const sl = (bendV - v0) / (bend - x0);
-    for (let i = x0 + 1; i <= bend; i++) out[i] = v0 + sl * (i - x0);
-    x0 = bend; v0 = bendV;
-  }
-  return out;
-}
-
-/** Bloc regions behind the arc, fill only. `bands[i]` is seat i's region index (non-decreasing in seat order, which runs
- *  from angle π to 0). Each boundary between neighbouring regions is the taut path through the free space between the
- *  two sides' seats (with a small margin), so edges are smooth lines rather than one step per row, every seat lies
- *  wholly inside its own region and no region reaches another's seat. End seats sit on the baseline; below it the
- *  regions continue straight down to one shared floor, so the chamber's bottom edge is a single straight line.
- *  `polygon` is the outline in SVG coordinates (for tests); `fill` the path. */
+/** Shared annular row sectors. Prefer a radial cut when the whole seat discs allow it;
+ * otherwise step only in the empty space halfway between rows. Never trace seat circles.
+ * Angle sorting follows the standard parliament-chart approach (d3-parliament); retaining
+ * fixed seat positions also handles one-seat blocs and ties at the baseline honestly.
+ * Adjacent regions reuse exactly the same cuts, including the extensions below the baseline. */
 export function annularRegions(seats: SeatPos[], bands: number[], seatRadius: number, cx = 500, cy = 470, scale = 400) {
   const ids = [...new Set(bands)];
-  if (!seats.length) return [] as { band: number; fill: string; polygon: [number, number][] }[];
-  const radii = [...new Set(seats.map(p => Number(Math.hypot(p.x, p.y).toFixed(8))))].sort((a, b) => a - b);
+  if (!seats.length) return [] as { band: number; fill: string; polygon: [number, number][]; leftAngles: number[]; rightAngles: number[] }[];
+  const { radii, cuts } = bandCuts(seats, bands.map(b => ids.indexOf(b)), ids.length, true);
   const inner = radii[0] - seatRadius - 0.015, outer = radii.at(-1)! + seatRadius + 0.015;
   const floor = (seatRadius + 0.015) * scale;
   const phi = floor / (inner * scale) + 0.02;
-  const N = 24 * radii.length, rho = Array.from({ length: N + 1 }, (_, k) => inner + ((outer - inner) * k) / N);
-  // at radius ρ, a circle of radius c centred at distance d covers angles a ± w (law of cosines)
-  const halfWidth = (q: number, d: number, c: number) => {
-    if (Math.abs(q - d) >= c) return null;
-    return Math.acos(Math.max(-1, Math.min(1, (q * q + d * d - c * c) / (2 * q * d))));
-  };
-  const seatRows = seats.map(p => ({ a: p.a, d: Math.hypot(p.x, p.y) }));
-  const margin = Math.min(0.012, seatRadius * 0.35);
-  const corridor = (j: number, prev: number[] | null) => {
-    const lo: number[] = [], hi: number[] = [];
-    rho.forEach((q, k) => {
-      const bound = (c: number) => {
-        let l = -phi, h = Math.PI + phi;
-        seatRows.forEach((p, i) => {
-          const w = halfWidth(q, p.d, c); if (w === null) return;
-          if (bands[i] <= ids[j]) h = Math.min(h, p.a - w); else l = Math.max(l, p.a + w);
-        });
-        return [l, h];
-      };
-      let [l, h] = bound(seatRadius + margin);
-      if (l > h) [l, h] = bound(seatRadius);
-      if (prev) h = Math.min(h, prev[k]);
-      if (l > h) l = h = (l + h) / 2;
-      lo.push(l); hi.push(h);
+  const edges = [inner, ...radii.slice(1).map((r, i) => (r + radii[i]) / 2), outer];
+  cuts.forEach((cut, j) => {
+    let lo = -phi, hi = Math.PI + phi;
+    seats.forEach((p, i) => {
+      const width = Math.asin((seatRadius + 0.003) / Math.hypot(p.x, p.y));
+      if (ids.indexOf(bands[i]) <= j) hi = Math.min(hi, p.a - width);
+      else lo = Math.max(lo, p.a + width);
     });
-    return { lo, hi };
-  };
-  const cuts: number[][] = [];
-  for (let j = 0; j < ids.length - 1; j++) { const { lo, hi } = corridor(j, cuts[j - 1] ?? null); cuts.push(tautPath(lo, hi)); }
-  // polar inside [0, π]; beyond either end the region runs straight down beneath the baseline, to the floor
+    if (j > 0) hi = Math.min(hi, ...cuts[j-1]);
+    if (lo <= hi) cut.fill((lo + hi) / 2);
+    else {
+      // Merge the longest consecutive run of rows that admits one radial cut. A
+      // step is necessary only when the next row's seat envelopes truly conflict.
+      const intervals = radii.map((radius, ri) => {
+        let low = -phi, high = Math.PI + phi;
+        seats.forEach((p, i) => {
+          if (Math.abs(Math.hypot(p.x, p.y) - radius) > 1e-6) return;
+          const width = Math.asin((seatRadius + 0.003) / radius);
+          if (ids.indexOf(bands[i]) <= j) high = Math.min(high, p.a - width);
+          else low = Math.max(low, p.a + width);
+        });
+        if (j > 0) high = Math.min(high, cuts[j-1][ri]);
+        return [low, high];
+      });
+      let start = 0;
+      while (start < radii.length) {
+        let end = start + 1, low = intervals[start][0], high = intervals[start][1];
+        while (end < radii.length && Math.max(low, intervals[end][0]) <= Math.min(high, intervals[end][1])) {
+          low = Math.max(low, intervals[end][0]); high = Math.min(high, intervals[end][1]); end++;
+        }
+        cut.fill((low + high) / 2, start, end);
+        start = end;
+      }
+    }
+  });
   const at = (a: number, q: number): [number, number] => {
     if (a > Math.PI) return [cx - q * scale, cy + Math.min((a - Math.PI) * q * scale, floor)];
     if (a < 0) return [cx + q * scale, cy + Math.min(-a * q * scale, floor)];
     return [cx + Math.cos(a) * q * scale, cy - Math.sin(a) * q * scale];
   };
-  const f = (v: number) => Number(v.toFixed(2));
+  const f = (v: number) => Number(v.toFixed(6));
   return ids.map((band, j) => {
-    const left = j === 0 ? rho.map(() => Math.PI + phi) : cuts[j - 1];
-    const right = j === ids.length - 1 ? rho.map(() => -phi) : cuts[j];
+    const left = j === 0 ? radii.map(() => Math.PI + phi) : cuts[j - 1];
+    const right = j === ids.length - 1 ? radii.map(() => -phi) : cuts[j];
     const polygon: [number, number][] = [];
     let d = '';
-    const move = (p: [number, number]) => { polygon.push(p); d += `${d ? ' L' : 'M'} ${f(p[0])} ${f(p[1])}`; };
-    // along a row edge (constant ρ) from angle a to b: straight below the baseline, an arc above it
+    const move = (a: number, q: number) => { const p = at(a, q); polygon.push(p); d += `${d ? ' L' : 'M'} ${f(p[0])} ${f(p[1])}`; };
     const edge = (a: number, b: number, q: number) => {
-      const stops = [a, ...[Math.PI, 0].filter(t => (a - t) * (b - t) < 0), b];
+      if (a === b) return;
+      const stops = [a, ...[Math.PI, 0].filter(t => (a - t) * (b - t) < 0).sort((x,y) => a > b ? y-x : x-y), b];
       for (let i = 1; i < stops.length; i++) {
-        const s0 = stops[i - 1], s1 = stops[i];
-        const mid = (s0 + s1) / 2;
-        if (mid > Math.PI || mid < 0) { move(at(s1, q)); continue; }
-        const steps = Math.max(1, Math.ceil(Math.abs(s1 - s0) / 0.02));
+        const s0 = stops[i - 1], s1 = stops[i], mid = (s0 + s1) / 2;
+        if (mid > Math.PI || mid < 0) { move(s1, q); continue; }
+        const steps = Math.max(1, Math.ceil(Math.abs(s1 - s0) / 0.01));
         for (let t = 1; t <= steps; t++) polygon.push(at(s0 + ((s1 - s0) * t) / steps, q));
         const p = at(s1, q);
         d += ` A ${f(q * scale)} ${f(q * scale)} 0 0 ${s1 < s0 ? 1 : 0} ${f(p[0])} ${f(p[1])}`;
       }
     };
-    rho.forEach((q, k) => move(at(left[k], q)));
-    edge(left[N], right[N], outer);
-    for (let k = N; k >= 0; k--) move(at(right[k], rho[k]));
+    move(left[0], inner);
+    radii.forEach((_, i) => { move(left[i], edges[i+1]); if (i+1 < radii.length) edge(left[i], left[i+1], edges[i+1]); });
+    edge(left.at(-1)!, right.at(-1)!, outer);
+    for (let i = radii.length-1; i >= 0; i--) { move(right[i], edges[i]); if (i > 0) edge(right[i], right[i-1], edges[i]); }
     edge(right[0], left[0], inner);
-    return { band, fill: d + ' Z', polygon };
+    return { band, fill: d + ' Z', polygon, leftAngles: left, rightAngles: right };
   });
 }
