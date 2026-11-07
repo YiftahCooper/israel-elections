@@ -19,7 +19,7 @@ describe('view-only choices', () => {
   });
   it('faction counting and coalition inspection do not change facts or allocation', () => {
     const joint = base.lists.find(l => (l.parties?.length ?? 0) > 1)!;
-    const s = applyAction(applyAction(base, { type: 'setFactionSplit', listId: joint.id, split: true }), { type: 'setCoalition', coalition: { in: [joint.id], out: [] } });
+    const s = applyAction(applyAction(base, { type: 'setFactionSplit', listId: joint.id, split: true }), { type: 'setCoalition', coalition: { in: [joint.id], support: [], abstain: [], out: [] } });
     expect(toEngineInput(s)).toEqual(toEngineInput(base));
     expect(resultChanges(s, base)).toEqual([]);
     expect(referenceChanges(s, base)).toEqual([['coalition','in']]);

@@ -16,11 +16,11 @@ const change:Record<Part,Action>={
  candidates:{type:'candidates',listId:id,candidates:[...base.lists[0].candidates].reverse(),note:'test'},
  agreements:{type:'removeAgreement',id:base.agreements[0].id},
  blocs:{type:'setListMeta',listId:id,patch:{bloc:null}},
- coalitions:{type:'setCoalition',coalition:{in:[id],out:[]}},
+ coalitions:{type:'setCoalition',coalition:{in:[id],support:[],abstain:[],out:[]}},
  rules:{type:'setRules',patch:{thresholdPct:'2'}},
  totals:{type:'setTotals',invalid:base.invalid+10},
 };
-const editAgain=(s:Scenario,p:Part):Action=>p==='votes'?{type:'setVotes',listId:id,votes:s.lists[0].votes+1}:p==='identity'?{type:'setListMeta',listId:id,patch:{nameHe:'Individual'}}:p==='structure'?{type:'setWithdrawn',listId:base.lists[1].id,withdrawn:true}:p==='candidates'?{type:'candidates',listId:id,candidates:[...s.lists[0].candidates].reverse(),note:'individual'}:p==='agreements'?{type:'setAgreement',agreement:{...s.agreements[0],enabled:false}}:p==='blocs'?{type:'setListMeta',listId:base.lists[1].id,patch:{bloc:null}}:p==='coalitions'?{type:'setCoalition',coalition:{in:[id,base.lists[1].id],out:[]}}:p==='rules'?{type:'setRules',patch:{thresholdPct:'1'}}:{type:'setTotals',invalid:s.invalid+1};
+const editAgain=(s:Scenario,p:Part):Action=>p==='votes'?{type:'setVotes',listId:id,votes:s.lists[0].votes+1}:p==='identity'?{type:'setListMeta',listId:id,patch:{nameHe:'Individual'}}:p==='structure'?{type:'setWithdrawn',listId:base.lists[1].id,withdrawn:true}:p==='candidates'?{type:'candidates',listId:id,candidates:[...s.lists[0].candidates].reverse(),note:'individual'}:p==='agreements'?{type:'setAgreement',agreement:{...s.agreements[0],enabled:false}}:p==='blocs'?{type:'setListMeta',listId:base.lists[1].id,patch:{bloc:null}}:p==='coalitions'?{type:'setCoalition',coalition:{in:[id,base.lists[1].id],support:[],abstain:[],out:[]}}:p==='rules'?{type:'setRules',patch:{thresholdPct:'1'}}:{type:'setTotals',invalid:s.invalid+1};
 for(const part of Object.keys(PARTS) as Part[])it(`${part}: whole replacement gives one part marker, then one item edit gives one item marker`,()=>{
  const source=applyAction(base,change[part]);
  const whole=applyAction(base,{type:'startPart',part,source:'saved',snapshot:partSnapshot(source,part),name:'Source'});

@@ -1,4 +1,4 @@
-import type { Scenario } from './scenario.ts';
+import { NO_COALITION, type Scenario } from './scenario.ts';
 export const PARTS = {
   votes: { en: 'Votes', he: 'קולות', blank: false },
   identity: { en: 'List identity', he: 'זהות הרשימות', blank: false },
@@ -17,7 +17,7 @@ export function partSnapshot(s: Scenario, part: Part): PartSnapshot {
     case 'blocs': return { familyDefinition:s.familyDefinition, blocs: s.blocs, blocSchemeId: s.blocSchemeId, customGroupingName: s.customGroupingName, partyBlocs: s.partyBlocs ?? {}, candidateBlocs: s.candidateBlocs ?? {}, listBlocs: Object.fromEntries(s.lists.map(l => [l.id, l.bloc])) };
     case 'agreements': return { agreements: s.agreements };
     case 'rules': return { rules: s.rules, mode: s.mode };
-    case 'coalitions': return { coalition: s.coalition ?? { in: [], out: [] } };
+    case 'coalitions': return { coalition: s.coalition ?? NO_COALITION };
     case 'votes': case 'identity': case 'candidates': return { lists: s.lists };
     case 'structure': return { lists: s.lists, agreements: s.agreements, factionSplits: s.factionSplits ?? [] };
     case 'totals': return { registered: s.registered, invalid: s.invalid, validVotes: s.lists.reduce((sum,l) => sum + l.votes, 0) };

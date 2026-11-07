@@ -373,6 +373,15 @@ grouping and date, or its description when no date is recorded. Coalition member
 explicit In / Out / Any segmented choices, with constraints and minimal winning results
 preserved.
 
+Coalition roles (7 November): each unit takes In / Support / Abstain / Out / Any. Outside
+support counts toward the confidence vote but not membership; an arranged abstention is not
+counted among those voting. The totals line reads “56 members + 5 outside support = 61”, then
+two tests with ✓/✗ and words: more for than against (investiture, Basic Law: The Government
+§13(d) with Basic Law: The Knesset §25) and the usual 61 readout. Bars draw members solid,
+outside support as the list colour hatched with the surface, and abstentions hollow at the far
+end; a dotted line marks a confidence-vote bar below 61. The same marks key the totals line and
+partner lists. On phones the five roles sit on their own line under every name.
+
 Session changes say “Since official result”; vote, agreement and grouping changes remain
 visible even without seat changes. Compare names its baseline and measures share changes
 in percentage points. Different sourced groupings are compared under the active scheme;

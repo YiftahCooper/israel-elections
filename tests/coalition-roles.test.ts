@@ -1,0 +1,112 @@
+// Coalition roles in Play: members, outside support, arranged abstention and out; the confidence-vote
+// arithmetic (more for than against) beside the 61 majority; and the roles' life as a scenario change.
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { readFileSync } from 'node:fs';
+import type { ElectionDataset } from '../src/data/schema.ts';
+import { allocate } from '../src/engine/allocate.ts';
+import { applyAction } from '../src/model/actions.ts';
+import { NO_COALITION, scenarioFromDataset, toEngineInput, validateScenario, withCoalitionRole, type Scenario } from '../src/model/scenario.ts';
+import { ACTION_CLASSIFICATION, isAnalysisAction, isFactAction } from '../src/model/actionClassification.ts';
+import { coalitionPieces, referenceChanges, resultChanges } from '../src/app/derive.ts';
+import { governmentVote, minimalWinning } from '../src/app/coalitions.ts';
+import { describe as describeAction } from '../src/app/actionDescription.ts';
+import { computeWhatIf } from '../src/app/whatIf.ts';
+
+const load = (id: string) => JSON.parse(readFileSync(`public/data/${id}.json`, 'utf8')) as ElectionDataset;
+
+describe('confidence-vote arithmetic', () => {
+  it('counts outside support for, not as members: 56 members + 5 outside support = 61', () => {
+    const v = governmentVote({ members: 56, support: 5, abstain: 0, total: 120 });
+    expect(v).toMatchObject({ members: 56, support: 5, votesFor: 61, against: 59, majority: 61, passes: true, stable: true, forNeeded: 61 });
+  });
+  it('investiture needs more for than against, not 61: arranged abstentions lower the bar', () => {
+    // 56 for, 10 abstain, 54 against: formed (Basic Law: The Knesset §25), but short of 61
+    expect(governmentVote({ members: 56, support: 0, abstain: 10, total: 120 })).toMatchObject({ votesFor: 56, against: 54, passes: true, stable: false, forNeeded: 56 });
+    // a tie fails: more for than against is strict
+    expect(governmentVote({ members: 55, support: 0, abstain: 10, total: 120 })).toMatchObject({ votesFor: 55, against: 55, passes: false });
+    // with no abstentions the two tests coincide at 61 of 120
+    expect(governmentVote({ members: 60, support: 0, abstain: 0, total: 120 })).toMatchObject({ passes: false, stable: false, forNeeded: 61 });
+  });
+  it('the smallest winning search takes outside support as given votes for', () => {
+    const items = [{ id: 'A', n: 44 }, { id: 'B', n: 12 }, { id: 'C', n: 6 }, { id: 'D', n: 32 }];
+    // 5 outside support: members need 61 - 5 = 56, so A+B is minimal; without it, A+B+C
+    expect(minimalWinning(items, 61 - 5).coalitions.map((c) => c.ids)).toContainEqual(['A', 'B']);
+    expect(minimalWinning(items, 61).coalitions.map((c) => c.ids)).not.toContainEqual(['A', 'B']);
+  });
+});
+
+describe('roles in the model', () => {
+  const k13 = load('k13');
+  const base = scenarioFromDataset(k13);
+  const pieces = coalitionPieces(base, allocate(toEngineInput(base)));
+  const unit = (letters: string) => pieces.find((p) => p.listId === `13-${letters}`)!.id;
+  // 1992, Government 25: Labor, Meretz and Shas members; Hadash and the Arab Democratic Party outside support
+  const rabin = { in: ['אמת', 'מרצ', 'שס'].map(unit), support: ['ו', 'ע'].map(unit), abstain: [], out: [] };
+
+  it('recreates 1992: 62 members + 5 outside support = 67, the recorded 67–53', () => {
+    const s = applyAction(base, { type: 'setCoalition', coalition: rabin });
+    const seats = (ids: string[]) => pieces.filter((p) => ids.includes(p.id)).reduce((n, p) => n + p.n, 0);
+    const v = governmentVote({ members: seats(s.coalition!.in), support: seats(s.coalition!.support), abstain: 0, total: 120 });
+    expect(v).toMatchObject({ members: 62, support: 5, votesFor: 67, against: 53, passes: true, stable: true });
+  });
+  it('a role is one unit, one role; moving it keeps every other choice', () => {
+    let c = withCoalitionRole(NO_COALITION, 'a', 'in');
+    c = withCoalitionRole(c, 'b', 'support');
+    c = withCoalitionRole(c, 'a', 'abstain');
+    expect(c).toEqual({ in: [], support: ['b'], abstain: ['a'], out: [] });
+    expect(withCoalitionRole(c, 'b', 'any')).toEqual({ in: [], support: [], abstain: ['a'], out: [] });
+  });
+  it('rejects overlapping roles and the former two-role shape (pre-release: no migration)', () => {
+    expect(() => applyAction(base, { type: 'setCoalition', coalition: { ...rabin, out: [rabin.in[0]] } })).toThrow();
+    expect(() => applyAction(base, { type: 'setCoalition', coalition: { in: rabin.in, out: [] } as never })).toThrow();
+    const s = applyAction(base, { type: 'setCoalition', coalition: rabin });
+    expect(validateScenario(s)).toEqual([]);
+    expect(validateScenario({ ...s, coalition: { in: [], out: [] } })).toContain('invalid coalition choices');
+  });
+  it('a role change is the same class as coalition membership today (analysis), with a named undo', () => {
+    const action = { type: 'setCoalition', coalition: rabin } as const;
+    expect(ACTION_CLASSIFICATION.setCoalition).toBe('analysis');
+    expect(isAnalysisAction(action)).toBe(true);
+    expect(isFactAction(action)).toBe(false);
+    const s = applyAction(base, action);
+    expect(toEngineInput(s)).toEqual(toEngineInput(base));
+    expect(resultChanges(s, base)).toEqual([]);
+    expect(referenceChanges(s, base)).toEqual([['coalition', 'in'], ['coalition', 'support']]);
+    expect(describeAction(action, s, 'en')).toBe('Coalition: 3 in · 2 outside support');
+    expect(describeAction(action, s, 'he')).toBe('קואליציה: 3 בפנים · 2 תמיכה מבחוץ');
+    expect(describeAction({ type: 'setCoalition', coalition: NO_COALITION }, s, 'en')).toBe('Coalition choices cleared');
+  });
+});
+
+describe('links and saves carry the roles', () => {
+  const ds = load('k25');
+  beforeEach(() => { vi.stubGlobal('localStorage', { setItem: vi.fn(), getItem: () => null }); vi.stubGlobal('location', { origin: 'https://example.test', pathname: '/', hash: '' }); });
+  it('share link and saved scenario replay to the same four roles', async () => {
+    const { setState, getState, dispatch, shareLink, readSharedFromHash, saveCurrent, replay } = await import('../src/app/store.ts');
+    const s0: Scenario = { ...scenarioFromDataset(ds), id: 'roles' };
+    const ids = coalitionPieces(s0, allocate(toEngineInput(s0))).map((p) => p.id);
+    setState({ scenario: s0, reference: null, past: [], future: [], saved: [], datasets: { k25: ds }, electionId: 'k25' });
+    const roles = { in: [ids[0]], support: [ids[1]], abstain: [ids[2]], out: [ids[3]] };
+    dispatch({ type: 'setCoalition', coalition: roles });
+    const url = await shareLink();
+    saveCurrent('Roles');
+    location.hash = new URL(url).hash;
+    const shared = (await readSharedFromHash())!;
+    for (const x of [shared, getState().saved[0]]) expect(replay(ds, x.name, x.log).scenario.coalition).toEqual(roles);
+  });
+});
+
+describe('What if…: a minority government with outside support', () => {
+  it('k26: the opposition bloc governs with the Arab lists’ outside support, seats computed by the engine', () => {
+    const q = computeWhatIf(load('k26'), 'en').find((x) => x.p.id === 'minority-outside-support')!;
+    expect(q.actions).toHaveLength(1);
+    expect(q.changes).toEqual([]);
+    expect(q.facts[0]).toMatchObject({ kind: 'government', vote: { members: 48, support: 19, votesFor: 67, against: 53, passes: true, stable: true } });
+    expect(q.body).toContain('support it from outside with 19');
+    const he = computeWhatIf(load('k26'), 'he').find((x) => x.p.id === 'minority-outside-support')!;
+    expect(he.body).not.toMatch(/[A-Za-z]{3}/);
+  });
+  it('is offered only where its sourced grouping exists', () => {
+    expect(computeWhatIf(load('k25'), 'en').some((x) => x.p.id === 'minority-outside-support')).toBe(false);
+  });
+});

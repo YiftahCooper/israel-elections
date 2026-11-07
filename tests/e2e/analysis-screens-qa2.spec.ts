@@ -97,6 +97,7 @@ for (const lang of ['en', 'he'] as const) for (const width of [390, 1500]) {
     const row = page.locator('.coal-list > li > button').first();
     const [count, track] = [(await row.locator('.coal-n').boundingBox())!, (await row.locator('.coal-bar').boundingBox())!];
     expect(Math.abs(count.y + count.height / 2 - track.y - track.height / 2)).toBeLessThan(1);
-    if (width === 390) expect((await page.locator('.coal-chips').boundingBox())!.height).toBeLessThan(550);
+    // phone cards stay compact: the name on one line, the five roles (In/Support/Abstain/Out/Any) on the next
+    if (width === 390) expect(Math.max(...await page.locator('.coal-choice').evaluateAll(cs => cs.map(c => c.getBoundingClientRect().height)))).toBeLessThanOrEqual(72);
   });
 }

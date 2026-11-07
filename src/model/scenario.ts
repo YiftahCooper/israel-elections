@@ -13,6 +13,19 @@ import { ISRAEL_1949, ISRAEL_1951, ISRAEL_1973, ISRAEL_1977, ISRAEL_1992, ISRAEL
 export const SCENARIO_SCHEMA = 'israel-elections-scenario';
 export const SCENARIO_VERSION = 1;
 
+/** Coalitions tool choices, one role per seated unit (list, or a joint list's party when split);
+ *  a unit in none of the four is "Any", free for the search to include. Roles follow
+ *  docs/research/government-support-roles.md: `in` = government member (with or without ministries);
+ *  `support` = outside support, voting for the government without joining it; `abstain` = abstains by
+ *  arrangement, so it is not counted among those voting; `out` = never a member, assumed to vote against. */
+export interface CoalitionChoices { in: string[]; support: string[]; abstain: string[]; out: string[] }
+export type CoalitionRole = keyof CoalitionChoices;
+export const COALITION_ROLES = ['in', 'support', 'abstain', 'out'] as const satisfies readonly CoalitionRole[];
+export const NO_COALITION: CoalitionChoices = { in: [], support: [], abstain: [], out: [] };
+/** The choices with `id` moved to `role` ('any' clears it), keeping every other unit's role. */
+export const withCoalitionRole = (c: CoalitionChoices, id: string, role: CoalitionRole | 'any'): CoalitionChoices =>
+  ({ in: [], support: [], abstain: [], out: [], ...Object.fromEntries(COALITION_ROLES.map((k) => [k, k === role ? [...c[k].filter((x) => x !== id), id] : c[k].filter((x) => x !== id)])) });
+
 export interface SimCandidate {
   id: string; // stable: original candidate id, or `new-…` for inserted candidates
   nameHe: string;
@@ -100,7 +113,7 @@ export interface Scenario {
   /** what the scenario explores, in the author's words (optional) */
   description?: string;
   identityColor?: string;
-  coalition?: { in: string[]; out: string[] };
+  coalition?: CoalitionChoices;
   electionId: ElectionId;
   /** sha of the dataset build the scenario was created from (detects later data corrections) */
   baseBuiltAt: string;
@@ -157,7 +170,7 @@ export type Action =
   | { type: 'setPartyColor'; listId: string; partyId: string; color: string }
   | { type: 'resetColors' }
   | { type: 'setIdentityColor'; color: string }
-  | { type: 'setCoalition'; coalition: { in: string[]; out: string[] } }
+  | { type: 'setCoalition'; coalition: CoalitionChoices }
   | { type: 'startPart'; part: Part; source: 'official' | 'saved' | 'blank' | 'preset'; snapshot?: PartSnapshot; name?: string; presetId?: string; listId?: string }
   | { type: 'setVotes'; listId: string; votes: number }
   | { type: 'transfer'; from: string; to: string; votes: number }
@@ -378,7 +391,9 @@ const stringMap = (value: Check): Check => (x) => record(x) && Object.values(x).
 const strings = array(string);
 const blocScheme = shape({ appDefined: optional(boolean), id: string, kind: oneOf('government', 'parliamentary', 'pre-election'), nameHe: string, nameEn: string, date: optional(string),
   blocs: array(shape({ id: string, nameHe: string, nameEn: string, appDefined: optional(boolean), color: string, lists: strings, parties: strings, candidates: strings })) });
-const coalition = shape({ in: uniqueStrings, out: uniqueStrings });
+// every role is required, and a unit holds at most one role
+const coalition: Check = (x) => shape({ in: uniqueStrings, support: uniqueStrings, abstain: uniqueStrings, out: uniqueStrings })(x)
+  && new Set(COALITION_ROLES.flatMap((k) => (x as CoalitionChoices)[k])).size === COALITION_ROLES.reduce((n, k) => n + (x as CoalitionChoices)[k].length, 0);
 const partSnapshotCheck = shape({ familyDefinition: optional(validFamily), validVotes: optional(whole), lists: optional(array(list)), registered: optional(whole), invalid: optional(whole), factionSplits: optional(uniqueStrings), blocs: optional(array(bloc)), blocSchemeId: optional(nullable(string)), customGroupingName: optional(string), partyBlocs: optional(stringMap(nullable(string))), candidateBlocs: optional(stringMap(nullable(string))), listBlocs: optional(stringMap(nullable(string))), agreements: optional(array(agreement)), rules: optional(rules), mode: optional(oneOf('historical', 'experimental')), coalition: optional(coalition) });
 const copyProvenance = shape({ electionId: oneOf(...ELECTION_IDS), sourceName: string, official: boolean,
   field: oneOf('votes', 'list', 'candidates', 'turnout', 'registered', 'invalid', 'threshold', 'rules', 'agreements', 'colour'),

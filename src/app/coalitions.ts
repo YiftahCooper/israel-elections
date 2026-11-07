@@ -34,3 +34,24 @@ export function minimalWinning<T extends { id: string; n: number }>(items: reado
   out.sort((a, b) => a.ids.length - b.ids.length || a.n - b.n || (a.key < b.key ? -1 : a.key > b.key ? 1 : 0));
   return { coalitions: out.map(({ ids, n }) => ({ ids, n })), truncated };
 }
+
+/** The confidence vote that forms a government, from the seats of each coalition role. Members and outside
+ *  supporters vote for; lists abstaining by arrangement abstain; every other seat is assumed to vote against
+ *  (absences are not modelled). Basic Law: The Government §13(d) requires the Knesset's expression of
+ *  confidence, and with no special majority there, Basic Law: The Knesset §25 applies: a majority of those
+ *  voting, abstainers not counted, so investiture needs more for than against, not 61. `majority` (61 of
+ *  120) is a majority of all members, which a constructive no-confidence vote needs (The Government §28(b)):
+ *  a government with that many votes cannot be replaced while they hold. */
+export function governmentVote({ members, support, abstain, total }: { members: number; support: number; abstain: number; total: number }) {
+  const votesFor = members + support;
+  const against = total - votesFor - abstain;
+  const majority = Math.floor(total / 2) + 1;
+  return {
+    members, support, abstain, votesFor, against, majority,
+    /** fewest votes for that are more than the votes against */
+    forNeeded: Math.floor((total - abstain) / 2) + 1,
+    passes: votesFor > against,
+    stable: votesFor >= majority,
+  };
+}
+export type GovernmentVote = ReturnType<typeof governmentVote>;

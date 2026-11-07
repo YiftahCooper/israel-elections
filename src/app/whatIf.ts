@@ -10,7 +10,9 @@ import { goals, minimalChange } from '../engine/analysis.ts';
 import type { AllocationResult } from '../engine/types.ts';
 import { applyAction } from '../model/actions.ts';
 import { scenarioFromDataset, toEngineInput, type Action, type Scenario } from '../model/scenario.ts';
-import { listLabel } from './derive.ts';
+import { coalitionPieces, listLabel } from './derive.ts';
+import { governmentVote, type GovernmentVote } from './coalitions.ts';
+import { groupingName } from './groupingName.ts';
 import type { Lang } from './i18n.ts';
 import { fmtInt } from './format.ts';
 import { toVoteSource } from './voteEdit.ts';
@@ -63,6 +65,28 @@ const removeAgreementBody = (id: string): Text => (s, lang) => {
   return t(lang, `Only the surplus agreement between ${nameOf(s, id, lang)} and ${partner ? nameOf(s, partner, lang) : '—'} is removed; every vote stays as cast.`, `רק הסכם העודפים בין ${nameOf(s, id, lang)} ובין ${partner ? nameOf(s, partner, lang) : '—'} מוסר; כל הקולות נשארים כפי שהוצבעו.`);
 };
 
+/** A minority government: one sourced bloc's lists as members, another's as outside support (Coalitions
+ *  tool roles), on the dataset's own grouping. The seats come from the engine; no seat moves. */
+const minorityPieces = (s: Scenario, schemeId: string, members: string, supporters: string) => {
+  if (s.blocSchemeId !== schemeId) return null;
+  const pieces = coalitionPieces(s, allocate(toEngineInput(s))).filter((p) => p.n > 0);
+  const m = pieces.filter((p) => p.bloc === members), o = pieces.filter((p) => p.bloc === supporters);
+  return m.length && o.length ? { m, o } : null;
+};
+const minority = (schemeId: string, members: string, supporters: string): Pick<WhatIfPreset, 'body' | 'actions'> => ({
+  actions: (s) => { const x = minorityPieces(s, schemeId, members, supporters); return x && [{ type: 'setCoalition', coalition: { in: x.m.map((p) => p.id), support: x.o.map((p) => p.id), abstain: [], out: [] } }]; },
+  body: (s, lang) => {
+    const x = minorityPieces(s, schemeId, members, supporters);
+    const bloc = (id: string) => { const b = s.blocs.find((b) => b.id === id); return b ? groupingName(b, lang) : id; };
+    const names = (ps: { listId: string }[]) => joinNames(ps.map((p) => nameOf(s, p.listId, lang)), lang);
+    if (!x) return '';
+    const seats = (ps: { n: number }[]) => ps.reduce((n, p) => n + p.n, 0);
+    return t(lang,
+      `${bloc(members)}: ${names(x.m)} form the government with ${seats(x.m)} seats. ${bloc(supporters)}: ${names(x.o)} support it from outside with ${seats(x.o)}, without joining, as Hadash and the Arab Democratic Party supported Rabin’s government in 1992. Every other list votes against. Seat arithmetic only, not a forecast.`,
+      `${bloc(members)}: ${names(x.m)} מקימות ממשלה עם ${seats(x.m)} מנדטים. ${bloc(supporters)}: ${names(x.o)} תומכות בה מבחוץ עם ${seats(x.o)}, בלי להצטרף, כפי שחד״ש והמפלגה הדמוקרטית הערבית תמכו בממשלת רבין ב־1992. כל שאר הרשימות מצביעות נגד. חשבון מנדטים בלבד, לא תחזית.`);
+  },
+});
+
 const COMMON: WhatIfPreset[] = [
   { id: 'no-agreements', titleEn: 'No surplus agreements at all', titleHe: 'בלי הסכמי עודפים בכלל', body: fixed('Every list competes alone for the remainder seats; every vote stays as cast.', 'כל רשימה מתחרה לבדה על המנדטים העודפים; כל הקולות נשארים כפי שהוצבעו.'), actions: (s) => s.agreements.map((a) => ({ type: 'removeAgreement', id: a.id })) },
   // offered only where 2% is not already the law (2006–2013)
@@ -88,6 +112,8 @@ const K26: WhatIfPreset[] = [
   { id: 'otzma-rz', titleEn: 'Religious Zionism–Zehut and Otzma Yehudit on one list', titleHe: 'הציונות הדתית–זהות ועוצמה יהודית ברשימה אחת', body: (s, lang) => `${t(lang, 'As in 2022.', 'כמו ב-2022.')} ${mergeBody(['26-ט', '26-ב'])(s, lang)}`, actions: (s) => merge(s, ['26-ט', '26-ב']) },
   { id: 'bennett-yashar', titleEn: 'Together (Bennett) and Yashar! on one list', titleHe: 'ביחד וישר! ברשימה אחת', body: mergeBody(['26-רק', '26-דרך']), actions: (s) => merge(s, ['26-רק', '26-דרך']) },
   { id: 'arab-joint', titleEn: 'Ra\'am and Joint List on one list', titleHe: 'רע״ם והרשימה המשותפת ברשימה אחת', body: mergeBody(['26-עם', '26-ודם']), actions: (s) => merge(s, ['26-עם', '26-ודם']) },
+  // the owner's example (7 Nov): a minority government with the Arab lists' outside support, on the pre-election blocs
+  { id: 'minority-outside-support', titleEn: 'A minority government with outside support', titleHe: 'ממשלת מיעוט בתמיכה מבחוץ', ...minority('pre-election-blocs', 'opposition', 'arab') },
   { id: 'amcha-in', titleEn: 'Amcha Yisrael passes', titleHe: 'עמך ישראל עוברת', body: newVotersBody('26-ך'), actions: (s) => (has(s, '26-ך') ? toPass(s, '26-ך') : null) },
 ];
 
@@ -103,7 +129,9 @@ export type WhatIfFact =
   | { kind: 'agreements'; count: number }
   | { kind: 'threshold'; before: bigint; after: bigint }
   | { kind: 'quota'; before: number; after: number }
-  | { kind: 'seatless'; before: bigint; after: bigint };
+  | { kind: 'seatless'; before: bigint; after: bigint }
+  /** a coalition-role question: members, outside support and the confidence vote */
+  | { kind: 'government'; vote: GovernmentVote };
 /** `facts` lead with the one that best explains an unchanged result: the answer row shows facts[0] when no seat moves */
 export type WhatIfResult = { p: WhatIfPreset; actions: Action[] | null; title: string; body: string; votes: string; changes: WhatIfChange[]; facts: WhatIfFact[] };
 
@@ -135,6 +163,11 @@ export function computeWhatIf(ds: ElectionDataset, lang: Lang): WhatIfResult[] {
     const qualified = (res: AllocationResult) => res.lists.filter((x) => x.qualified).map((x) => x.id).sort().join();
     const [t0, t1] = [base.rules.thresholdPct, s.rules.thresholdPct];
     if (Number(t0) !== Number(t1) && Number(t0) > 0 && Number(t1) > 0 && !changes.length && qualified(r0) === qualified(r)) facts.push({ kind: 'band', from: Number(t0) < Number(t1) ? t0 : t1, to: Number(t0) < Number(t1) ? t1 : t0 });
+    const roles = actions.find((a) => a.type === 'setCoalition');
+    if (roles?.type === 'setCoalition') {
+      const pieces = coalitionPieces(s, r), seatsOf = (ids: string[]) => pieces.filter((p) => ids.includes(p.id)).reduce((n, p) => n + p.n, 0);
+      facts.push({ kind: 'government', vote: governmentVote({ members: seatsOf(roles.coalition.in), support: seatsOf(roles.coalition.support), abstain: seatsOf(roles.coalition.abstain), total: s.rules.seats }) });
+    }
     const removed = actions.filter((a) => a.type === 'removeAgreement').length;
     if (removed && !changes.length && !actions.some((a) => a.type === 'setRules')) facts.push({ kind: 'agreements', count: removed });
     const seatless: WhatIfFact | null = r0.unrepresentedVotes !== r.unrepresentedVotes ? { kind: 'seatless', before: r0.unrepresentedVotes, after: r.unrepresentedVotes } : null;

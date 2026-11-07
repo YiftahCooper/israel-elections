@@ -7,7 +7,7 @@ import { RULESETS } from "../engine/rules.ts";
 import { PARTS, partSnapshot } from './parts.ts';
 // Pure scenario transitions. Each returns a new Scenario and never mutates its input.
 // Vote counts stay non-negative integers; every integer split uses exact largest-remainder rounding.
-import { validAction, blocSchemeState, electionRuleSetId, historicalRules, type Action, type ActionContext, type Scenario, type SimCandidate, type SimList } from './scenario.ts';
+import { validAction, NO_COALITION, blocSchemeState, electionRuleSetId, historicalRules, type Action, type ActionContext, type Scenario, type SimCandidate, type SimList } from './scenario.ts';
 import type { PartyDef } from '../data/schema.ts';
 
 export class ActionError extends Error {
@@ -150,7 +150,9 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
       need(/^#[0-9a-f]{6}$/i.test(action.color) && (SCENARIO_COLOURS as readonly string[]).includes(action.color), 'colour', 'Choose a scenario palette colour.');
       s = { ...s, identityColor: action.color }; break;
     case 'setCoalition':
-      s = { ...s, coalition: { in: [...new Set(action.coalition.in)], out: [...new Set(action.coalition.out)].filter(id => !action.coalition.in.includes(id)) } }; break;
+      // every role present, each unit in at most one (validated): an older two-role log fails here
+      need(validAction(action), 'coalition', 'Invalid coalition choices.');
+      s = { ...s, coalition: action.coalition }; break;
     case 'startPart': {
       need(validAction(action), 'part', 'Invalid starting point.');
       let snapshot = action.snapshot;
@@ -162,7 +164,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
         need(PARTS[action.part]?.blank, 'part', 'This part cannot be blank.');
         if (action.part === 'candidates') snapshot = { lists: s.lists.map(l => ({ ...l, candidates: [], rosterUnavailable: false, rosterTruncated: false })) };
         else if (action.part === 'agreements') snapshot = { agreements: [] };
-        else if (action.part === 'coalitions') snapshot = { coalition: { in: [], out: [] } };
+        else if (action.part === 'coalitions') snapshot = { coalition: NO_COALITION };
         else if (action.part === 'blocs') {
           need(action.name?.trim(), 'name', 'Name the grouping.');
           // two clearly different colours from the bloc palette: grey is reserved for No bloc

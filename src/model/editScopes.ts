@@ -1,6 +1,6 @@
 /** Appearance is saved separately from factual marker comparisons. */
 export const appearancePath=(p:readonly string[])=>p.includes('color')||p[0]==='blocs'&&p.length>2&&['nameHe','nameEn'].includes(p[2]);
-import { blocSchemeState, type Action, type CopyProvenance, type Scenario } from './scenario.ts';
+import { blocSchemeState, NO_COALITION, type Action, type CopyProvenance, type Scenario } from './scenario.ts';
 import type {Part} from './parts.ts';
 export type InputPath=readonly string[];
 export interface ReplacementScope {part:Part;listId?:string;checkpoint:Scenario;changed:InputPath[];at:number}
@@ -42,7 +42,7 @@ export function inputDiffs(a:Scenario,b:Scenario):InputPath[]{
   }else if(!appearancePath(p)) out.push(p);
  };
  for(const k of ['lists','rules','registered','invalid','agreements','blocs','blocSchemeId','customGroupingName','partyBlocs','candidateBlocs','lotteryWinners','mode','coalition','familyDefinition'] as const){
-  const normal=(v:unknown)=>v??(k==='coalition'?{in:[],out:[]}:k==='partyBlocs'||k==='candidateBlocs'?{}:undefined);
+  const normal=(v:unknown)=>v??(k==='coalition'?NO_COALITION:k==='partyBlocs'||k==='candidateBlocs'?{}:undefined);
   walk(normal(a[k]),normal(b[k]),[k]);
  }
  return out;
