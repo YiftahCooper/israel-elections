@@ -110,23 +110,30 @@ describe('threshold-safe rounding', () => {
   const votes = (p: number) => Math.round(p * W / 100);
   test.each([
     ['1', 0.96], ['1', 1.04], ['1.5', 1.46], ['1.5', 1.54], ['2', 1.96], ['2', 2.04], ['3.25', 3.249], ['3.25', 3.251], ['3.25', 3.2], ['3.25', 3.4],
-  ])('threshold %s%%, share %f%%: never on the wrong side, never more digits than the maximum', (t, share) => {
+  ])('threshold %s%%, share %f%%: never on the wrong side, at most one digit past the maximum', (t, share) => {
     for (const d of DECIMAL_CHOICES) {
       const shown = fmtPct(votes(share), W, d, t);
       const n = Number(shown.replace(/[<%]/g, '')) - (shown.startsWith('<') ? 1e-9 : 0); // "<1%" reads as below 1
       expect(n < Number(t), `${shown} at ${d} decimals`).toBe(share < Number(t));
-      expect((shown.split('.')[1] ?? '%').length - 1, shown).toBeLessThanOrEqual(d);
+      expect((shown.split('.')[1] ?? '%').length - 1, shown).toBeLessThanOrEqual(d + 1);
+      // the extra digit only where ordinary rounding would cross
+      const plain = fmtPct(votes(share), W, d);
+      if ((Number(plain.replace(/[<%]/g, '')) < Number(t)) === (share < Number(t))) expect(shown).toBe(plain);
     }
   });
-  test('the owner’s example: 1.46% at 1 decimal against 1.5% is rounded down, not to "1.5%"', () => {
-    expect(fmtPct(votes(1.46), W, 1, '1.5')).toBe('1.4%');
+  test('the owner’s example: 1.46% at 1 decimal against 1.5% shows "1.46%", not "1.5%"', () => {
+    expect(fmtPct(votes(1.46), W, 1, '1.5')).toBe('1.46%');
     expect(fmtPct(votes(1.46), W, 1)).toBe('1.5%');
   });
-  test('a list above the threshold is rounded up, not below it', () => {
+  test('one more digit, not rounding away: 3.4% at 0 decimals against 3.25% shows "3.4%"', () => {
+    expect(fmtPct(votes(3.4), W, 0, '3.25')).toBe('3.4%');
     expect(fmtPct(votes(3.251), W, 1, '3.25')).toBe('3.3%');
-    expect(fmtPct(votes(3.4), W, 0, '3.25')).toBe('4%');
     expect(fmtPct(votes(3.25), W, 1, '3.25')).toBe('3.3%');
-    expect(fmtPct(votes(0.6), W, 0, '1')).toBe('<1%');
+    expect(fmtPct(votes(0.6), W, 0, '1')).toBe('0.6%');
+  });
+  test('if the extra digit would still cross, it is rounded toward the true side', () => {
+    expect(fmtPct(votes(1.4996), W, 1, '1.5')).toBe('1.49%');
+    expect(fmtPct(votes(3.2496), W, 2, '3.25')).toBe('3.249%');
   });
   test('away from the threshold nothing changes', () => {
     expect(fmtPct(votes(10.84), W, 1, '3.25')).toBe('10.8%');
@@ -148,9 +155,9 @@ describe('threshold-safe rounding', () => {
 
 describe('the exact share and percentage-point changes', () => {
   const W = 1_000_000, votes = (p: number) => Math.round(p * W / 100);
-  test('a share rounded toward its side of the threshold carries the exact share for its tooltip', () => {
-    expect(pctExactNote(votes(1.46), W, 1, '1.5', 'en')).toBe('1.4600%: the exact share, rounded down to stay below the 1.5% threshold');
-    expect(pctExactNote(votes(3.4), W, 0, '3.25', 'en')).toMatch(/^3\.4000%: .*rounded up to stay above/);
+  test('a share shown with an extra digit near the threshold carries the exact share for its tooltip', () => {
+    expect(pctExactNote(votes(1.46), W, 1, '1.5', 'en')).toBe('1.4600%: the exact share. One more decimal is shown so it doesn’t look above the 1.5% threshold');
+    expect(pctExactNote(votes(3.4), W, 0, '3.25', 'en')).toMatch(/^3\.4000%: .*doesn’t look below the 3\.25% threshold/);
     expect(pctExactNote(votes(1.46), W, 1, '1.5', 'he')).toMatch(/^1\.4600%: השיעור המדויק/);
     // ordinary rounding: nothing to explain
     expect(pctExactNote(votes(10.84), W, 1, '3.25', 'en')).toBeUndefined();

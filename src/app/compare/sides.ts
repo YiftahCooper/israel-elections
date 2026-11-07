@@ -1,5 +1,6 @@
 // Compare's two sides. The right side IS the main scenario (an edit there is an Overview edit, with the same undo);
 // the other side is a separate draft per comparator, kept for the session with its own undo, redo and Start over.
+import { useSyncExternalStore } from 'react';
 import type { ElectionDataset, ElectionId } from '../../data/schema.ts';
 import { ActionError, applyAction } from '../../model/actions.ts';
 import { validAction, type Action, type Scenario } from '../../model/scenario.ts';
@@ -64,6 +65,12 @@ export async function comparisonLink(c: ComparisonLink): Promise<string> {
   const z = await pipe(new TextEncoder().encode(JSON.stringify(c)), new CompressionStream('deflate-raw'));
   return `${location.origin}${location.pathname}#c=${b64url(z)}`;
 }
+/** Copies a comparison's link and says so (Compare's head and the Scenarios page). */
+export async function copyComparisonLink(c: ComparisonLink) {
+  const he = getState().lang === 'he';
+  try { await navigator.clipboard.writeText(await comparisonLink(c)); toast('info', he ? 'הקישור הועתק. הוא פותח את שני הצדדים ואת ההתאמות שלכם.' : 'Link copied. It opens both sides and your pairings.'); }
+  catch { toast('error', he ? 'הדפדפן סירב להעתיק את הקישור.' : 'The browser refused to copy the link.'); }
+}
 const validSide = (x: unknown): x is SideLink => !!x && typeof x === 'object' && typeof (x as SideLink).e === 'string' && typeof (x as SideLink).n === 'string' && Array.isArray((x as SideLink).l) && (x as SideLink).l.every(validAction);
 export async function readComparison(hash: string): Promise<ComparisonLink | null> {
   const m = hash.match(/#c=([A-Za-z0-9_-]+)/);
@@ -109,12 +116,17 @@ export async function openComparisonFromHash(): Promise<boolean> {
 // ---- saved comparisons (this browser): both sides and the pairings, reopened from Compare's head
 const SAVED = 'israel-elections:comparisons';
 export interface SavedComparison { id: string; name: string; savedAt: string; link: ComparisonLink }
-export function savedComparisons(): SavedComparison[] {
+const read = (): SavedComparison[] => {
   try { const x = JSON.parse(localStorage.getItem(SAVED) ?? '[]'); return Array.isArray(x) ? x.filter((c) => c && typeof c.name === 'string' && c.link?.v === 1) : []; } catch { return []; }
-}
+};
+// one snapshot, refreshed on every change here, so Compare's picker and the Scenarios page stay in step
+let cache: SavedComparison[] | null = null;
+const listeners = new Set<() => void>();
+const changed = () => { cache = null; listeners.forEach((f) => f()); };
+export const savedComparisons = (): SavedComparison[] => (cache ??= read());
+export const useSavedComparisons = () => useSyncExternalStore((f) => { listeners.add(f); return () => { listeners.delete(f); }; }, savedComparisons, savedComparisons);
 export function saveComparison(name: string, link: ComparisonLink): boolean {
   const list = savedComparisons().filter((c) => c.name !== name);
-  try { localStorage.setItem(SAVED, JSON.stringify([{ id: crypto.randomUUID(), name, savedAt: new Date().toISOString(), link }, ...list])); return true; } catch { return false; }
+  try { localStorage.setItem(SAVED, JSON.stringify([{ id: crypto.randomUUID(), name, savedAt: new Date().toISOString(), link }, ...list])); changed(); return true; } catch { return false; }
 }
-export function deleteComparison(id: string) { try { localStorage.setItem(SAVED, JSON.stringify(savedComparisons().filter((c) => c.id !== id))); } catch { /* storage refused */ } }
-
+export function deleteComparison(id: string) { try { localStorage.setItem(SAVED, JSON.stringify(savedComparisons().filter((c) => c.id !== id))); changed(); } catch { /* storage refused */ } }

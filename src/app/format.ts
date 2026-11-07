@@ -14,38 +14,41 @@ const directed = (P: bigint, W: bigint, d: number, dir: -1 | 1) => {
   const t = q.toString().padStart(d + 1, '0');
   return d ? `${t.slice(0, -d)}.${t.slice(-d)}` : t;
 };
-/** A percentage of part in whole, for display, with at most `digits` decimals (Settings → Max decimal places).
- *  Two rules keep a rounded share honest without ever adding digits:
- *  - a non-zero share is never shown as zero ("<0.1%"), and
- *  - with a threshold (an exact decimal string such as "3.25"), a share whose ordinary rounding would land on the
- *    other side of it is rounded toward its true side instead: 1.46% against 1.5% at one decimal shows "1.4%". */
 // estimates (a locality's share of a split list) are fractional: scaled to whole millionths, exact enough to show
 const exactParts = (part: number | bigint, whole: number | bigint) => {
   const fractional = typeof part === 'number' && !Number.isInteger(part) || typeof whole === 'number' && !Number.isInteger(whole);
   return fractional ? { P: BigInt(Math.round(Number(part) * 1e6)), W: BigInt(Math.round(Number(whole) * 1e6)) } : { P: BigInt(part), W: BigInt(whole) };
 };
+/** A percentage of part in whole, for display, with at most `digits` decimals (Settings → Max decimal places).
+ *  Two rules keep a rounded share honest:
+ *  - a non-zero share is never shown as zero ("<0.1%"), and
+ *  - with a threshold (an exact decimal string such as "3.25"), a share whose ordinary rounding would land on the
+ *    other side of it gets one more decimal instead: 1.46% against 1.5% at one decimal shows "1.46%", and 3.4%
+ *    against 3.25% at none shows "3.4%". This is the only time the maximum is exceeded, by one digit. If even that
+ *    digit would cross (1.4996%), it is rounded toward the true side: "1.49%" (docs/design/settings.md, 9.7a). */
 export function fmtPct(part: number | bigint, whole: number | bigint, digits = 2, threshold?: string): string {
   const { P, W } = exactParts(part, whole);
   if (W === 0n) return '—%';
   let shown = pct(P, W, digits);
   if (threshold && P >= 0n && W > 0n && Number(threshold) > 0) {
-    const t = decimalParts(threshold), r = decimalParts(shown);
+    const t = decimalParts(threshold);
     const below = P * 100n * t.den < t.num * W; // exact share < threshold
-    if ((r.num * t.den < t.num * r.den) !== below) shown = directed(P, W, digits, below ? -1 : 1);
+    const crosses = (x: string) => { const r = decimalParts(x); return (r.num * t.den < t.num * r.den) !== below; };
+    if (crosses(shown)) { shown = pct(P, W, digits + 1); if (crosses(shown)) shown = directed(P, W, digits + 1, below ? -1 : 1); }
   }
   if (P !== 0n && /^-?0(\.0*)?$/.test(shown)) return `<${digits === 0 ? '1' : `0.${'0'.repeat(digits - 1)}1`}%`;
   return `${shown}%`;
 }
-/** The tooltip for a share that fmtPct rounded toward its side of the threshold (undefined otherwise): the exact
- *  share, so the precise figure is one hover away. "1.4637%: exact share, rounded down to stay below the 1.5% threshold". */
+/** The tooltip for a share that fmtPct showed with an extra decimal to keep it on its side of the threshold
+ *  (undefined otherwise): the exact share, so the precise figure is one hover away. */
 export function pctExactNote(part: number | bigint, whole: number | bigint, digits: number, threshold: string | undefined, lang: 'he' | 'en'): string | undefined {
   const { P, W } = exactParts(part, whole);
   if (!threshold || W <= 0n || P <= 0n || fmtPct(part, whole, digits, threshold) === `${pct(P, W, digits)}%`) return undefined;
   const below = P * 100n * decimalParts(threshold).den < decimalParts(threshold).num * W;
   const exact = `${pct(P, W, 4)}%`;
   return lang === 'he'
-    ? `${exact}: השיעור המדויק, מעוגל ${below ? 'כלפי מטה כדי להישאר מתחת' : 'כלפי מעלה כדי להישאר מעל'} לאחוז החסימה (${threshold}%)`
-    : `${exact}: the exact share, rounded ${below ? 'down to stay below' : 'up to stay above'} the ${threshold}% threshold`;
+    ? `${exact}: השיעור המדויק. מוצגת ספרה נוספת כדי שלא ייראה ${below ? 'מעל ' : 'מתחת ל'}אחוז החסימה (${threshold}%)`
+    : `${exact}: the exact share. One more decimal is shown so it doesn’t look ${below ? 'above' : 'below'} the ${threshold}% threshold`;
 }
 /** A change between two shares in percentage points: signed (a true minus), at most `digits` decimals, and a
  *  non-zero change is never shown as zero ("+<0.1"). */

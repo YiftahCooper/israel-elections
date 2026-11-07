@@ -28,6 +28,7 @@ export interface GovernmentSupport {
   /** null when unresolved roles or incomplete coverage prevent a total. */
   coalitionSeats: number | null;
   supportSeats: number | null;
+  knownMemberSeats?: number | null;
   confidenceVote: { for: number; against: number; abstain?: number } | null;
   confidenceVoteCites?: SupportCitation[];
   membershipCoverage: 'complete' | 'partial';

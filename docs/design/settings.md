@@ -269,23 +269,27 @@ before were lost on reload.
 
 - Control: G, 0 · 1 · 2 · 3, at every level.
 - Default by level: **1 at Simple and Standard, 2 at Expert (owner)**. Levels: All.
-- (i) EN: "Percentages everywhere show at most this many. Results are still computed exactly. Near the threshold a
-  share is rounded toward its true side, never past it."
-- (i) HE: "אחוזים בכל מקום מוצגים עם לכל היותר כמה ספרות. התוצאות עדיין מחושבות במדויק. ליד אחוז החסימה האחוז מעוגל
-  לכיוון הצד האמיתי שלו, לעולם לא אל מעבר לו."
+- (i) EN: "Percentages everywhere show at most this many. Results are still computed exactly. Next to the threshold
+  a share gets one more digit, so it never looks like it is on the other side."
+- (i) HE: "אחוזים בכל מקום מוצגים עם לכל היותר כמה ספרות. התוצאות עדיין מחושבות במדויק. ליד אחוז החסימה מוצגת ספרה
+  נוספת, כדי שהאחוז לא ייראה בצד השני שלו."
 
 Rules for `decimals`:
 
 - **It is a maximum.** No percentage or percentage-point figure on any screen has more decimals; no number anywhere
   has five or more (an unbounded float). An e2e audit (tests/e2e/decimals-audit.spec.ts) scans the overview and list
   page of k26, k25 and k1, Compare, Seat safety, Merge & split, Charts and a split's share form at several maximums.
-- **Rounding never crosses the threshold, and never adds digits.** When ordinary rounding would land on the other
-  side of the threshold, the share is rounded toward its true side instead. Against the 1.5 % threshold, 1.46 % at
-  one decimal shows "1.4%", never "1.5%"; against 3.25 %, a list on 3.251 % shows "3.3%" at one decimal and a list on
-  3.4 % shows "4%" at none. (The earlier rule added digits, "1.46%", which a maximum cannot allow.) The owner kept
-  this on 7 November: one number style everywhere, on the correct side. Where a share was rounded this way, its
-  tooltip gives the exact share ("1.4600%: the exact share, rounded down to stay below the 1.5% threshold"): the
-  list column, the list page, the figures, the charts table, the walkthrough and both sides of Compare.
+- **Next to a threshold, one more digit rather than the wrong side (owner, 7 November; 9.7a).** When ordinary
+  rounding would put a share on the other side of the threshold, it is shown with one more decimal: against the
+  1.5 % threshold, 1.46 % at one decimal shows "1.46%", not "1.5%"; against 3.25 %, 3.4 % at no decimals shows
+  "3.4%", not "3%". This is the only case in which the maximum is exceeded, and only by one digit. If even that digit
+  would cross (1.4996 % shows "1.50%"), it is rounded toward the true side ("1.49%"). Where a share was shown this
+  way, its tooltip gives the exact share ("1.4600%: the exact share. One more decimal is shown so it doesn’t look
+  above the 1.5% threshold"): the list column, the list page, the figures, the charts table, the walkthrough and both
+  sides of Compare. The decimals audit allows that one extra digit only for a share within one last-digit step of a
+  threshold (1, 1.5, 2, 3.25).
+  - *Owner choice:* 9.7a (this, recommended) or 9.7b (keep the maximum strictly and round toward the true side:
+    "1.4%", "4%"). 9.7b is one line in `fmtPct` (src/app/format.ts) and was the rule until this change.
 - **Exact on purpose:** a threshold set in law (3.25 %, 1.5 %), a step size (0.1pp) and the waffle's "each square
   is 0.5%" are fixed values, not results, and are shown exactly (marked `data-exact`); so are the allocation
   quotients in How seats were allocated, and fractions in tooltips where a screen is about precision.

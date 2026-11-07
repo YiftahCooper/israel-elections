@@ -1,3 +1,4 @@
+import { TOOL_FEATURES } from '../../src/app/features.ts';
 // The three interface levels: Simple (minimal), Standard (common, consequential edits) and Expert
 // (every tool). A level changes what is shown, never what is computed.
 import { readFileSync } from 'node:fs';
@@ -15,7 +16,7 @@ const listCard = (page: Page, name: string) => page.getByRole('region', { name: 
 // a list's row is the button itself (its numbers are its description)
 const listRow = (page: Page, name: string) => listCard(page, name);
 const analysisTabs = (page: Page) => page.getByRole('tablist', { name: 'Tools' }).getByRole('tab');
-const TOOL_COUNT = 15; // the Overview, Scenarios and every tool, listed at every level
+const TOOL_COUNT = TOOL_FEATURES.length; // the Overview, Scenarios and every tool, listed at every level
 const details = (page: Page) => page.getByRole('region', { name: 'List details' });
 
 test('a first visit opens in Simple with only the essential controls', async ({ page }) => {

@@ -3,7 +3,7 @@ import { useFloating } from '../floating.tsx';
 import { electionContext, type ContextSource, type PMContest } from '../../data/electionContext.ts';
 import type { ElectionId } from '../../data/schema.ts';
 import { useL, useLang } from '../i18n.ts';
-import { useDigits, useStore } from '../store.ts';
+import { setState, useDigits, useStore } from '../store.ts';
 import { useEffect, useRef, useState } from 'react';
 import { listLabel } from '../derive.ts';
 
@@ -40,7 +40,7 @@ export function ElectionAbout({ electionId, listId }: { electionId: ElectionId; 
   const listName = (id?: string) => { const l = !listId && id ? lists?.find(x => x.id === id) : undefined; return l ? <b><bdi>{listLabel(l, lang)}</bdi>: </b> : null; };
   return <details ref={ref} onToggle={e => setOpen(e.currentTarget.open)} className={`election-about ${pending ? 'publication-pending' : ''}`}>
     <summary>{L('About', 'אודות')}{pending && <><span className="publication-summary"> · {L('Gazette not yet verified', 'רשומות: טרם אומת')}</span><span className="publication-short" title={L('Gazette publication not yet verified', 'הפרסום ברשומות טרם אומת')}> · {L('Not yet verified', 'טרם אומת')}</span></>}</summary>
-    <ul ref={popup}>{events.map(e => <li key={e.id}>
+    <ul ref={popup}>{!listId && <li><button className="table-action" onClick={() => { setState({ tool: 'after' }); window.scrollTo({ top: 0 }); if (ref.current) ref.current.open = false; }}>{L('Government & term →', 'הממשלה והכהונה ←')}</button></li>}{events.map(e => <li key={e.id}>
       <time dateTime={e.effectiveDate}>{e.effectiveDate}</time> · {listName(e.listId)}{e.source.evidence === 'unresolved' && <strong>{L('Unresolved: ', 'טרם הוברר: ')}</strong>}{lang === 'he' ? e.textHe : e.textEn}{' '}
       <EvidenceLink source={e.source} />{e.relatedSources?.map(s => <span key={s.url}> · <EvidenceLink source={s} /></span>)}
     </li>)}{!listId && <li className="independence-note"><b>{L('Independent election simulator', 'סימולטור בחירות עצמאי')}</b><br />{L('Seats are computed by deterministic code from the official results (Central Elections Committee, Reshumot); secondary sources are labelled under Sources. Not affiliated with the CEC or any party.', 'המנדטים מחושבים בקוד דטרמיניסטי מהתוצאות הרשמיות (ועדת הבחירות המרכזית, רשומות); מקורות משניים מסומנים בלשונית מקורות. אין קשר לוועדת הבחירות או לאף מפלגה.')}</li>}</ul>

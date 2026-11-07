@@ -1,7 +1,7 @@
-# After the election: design proposal
+# After the election: design
 
-Status: proposal, 5 November 2026. Research and sourcing rules: [docs/research/after-the-election.md](../research/after-the-election.md).
-Pilot data (not wired into the app): [`data/meta/aftermath/k24.json`](../../data/meta/aftermath/k24.json) (2021) and
+Status: implemented, 7 November 2026 (design approved through the V5 task brief). Research and sourcing rules: [docs/research/after-the-election.md](../research/after-the-election.md).
+Reviewed data is wired for k1–k26 after the completed election audits; examples: [`data/meta/aftermath/k24.json`](../../data/meta/aftermath/k24.json) (2021) and
 [`data/meta/aftermath/k9.json`](../../data/meta/aftermath/k9.json) (1977).
 
 ## What it is
@@ -186,7 +186,37 @@ preferred anchor, and multiple publications from the same institution do not bec
   `EvidenceLink`.
 - Hebrew and English are written separately, not machine-translated; both are reviewed against the quote.
 
-## Open decisions for the owner
+## Implementation notes (7 November 2026)
+
+- `AfterElection.tsx` accepts only the immutable election dataset. Tab registration, About navigation and
+  Sources integration are the shell connections. Scenario tint, change summary, editing hints and drawers
+  are suppressed on this page.
+- `aftermath-model.ts` validates reviewed records during Vite builds and unit tests; `aftermath-runtime.ts` loads
+  the separate history files. `aftermath.ts` retains the shared, runtime-independent support types.
+  The audit tracker records all 26 audits completed; durable reconciliations
+  are in `docs/research/data-audit/kNN-resolution.md`.
+- Government participation follows `docs/research/government-support-roles.md`: group members with ministries,
+  members without ministries, outside support, confidence-only votes, arranged abstentions and other roles
+  separately. Unknown classifications have their own group. Preserve provisional badges and unknown totals;
+  never infer a role or membership from an investiture vote. The summary puts membership beside the vote,
+  with reconciliation and original research qualifications behind (i). Individual exceptions also appear,
+  without double-counting people included in faction seats. Changes use the same renderer and R4 validator.
+- Participant `seats` records only the participating portion; `electionListSeats` preserves its election
+  envelope. In 1984, the Alignment portion is 37 of 44. Neither figure is a confidence-vote tally.
+- Every displayed date uses shared `formatDate`, preserving available precision. Date endpoints are
+  individually isolated with explicit locale direction; range containers follow reading direction, so
+  Hebrew starts on the right. Chronological graphics remain LTR; their labels use the locale direction.
+  Attached Hebrew prefixes use shared `hebrewPrefix`, including numbered government headings.
+- Pending events and any single-source term entries are confined to Sources. Research notes remain in
+  their original language behind labelled disclosures. The existing audit establishes independent
+  chronology support; the runtime additionally rejects term entries with fewer than two distinct sources.
+- Polls require bilingual questions and answers, population and field dates; incomplete surveys stay
+  hidden. The complete 1996 card is shown. The 2021 record lacks the required bilingual metadata and
+  is withheld. Empty reaction and polling sections render nothing; future records slot into them.
+- Next-election references accept either an election ID or the older date form. The 2001 direct PM
+  election is a dated event within k15, since it did not elect a new Knesset.
+
+## Original design questions (superseded where answered in the V5 brief)
 
 1. Tab now vs. wait for the Learn/Play split. (Recommendation: tab now; moving it later is cheap.)
 2. Whether to show the *reaction* block at all. The neutral version is thin (dates, all-or-none statements).

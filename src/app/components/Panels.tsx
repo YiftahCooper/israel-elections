@@ -1,4 +1,5 @@
 import { formatDate } from '../dateFormat.ts';
+import { AfterElectionSources } from './AfterElection.tsx';
 import { factLog, isFactAction } from '../../model/actionClassification.ts';
 import { Download } from 'lucide-react';
 import { NumericStepper } from './NumericStepper.tsx';
@@ -258,6 +259,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
   const noLocalities = !ds.totals.ballotBoxes && !ds.totals.localities;
   return (
     <div className="grid2 stack-sm" style={{ alignItems: 'start', gap: 18 }}>
+      <AfterElectionSources ds={ds} />
       <div>
         <h3>{L('Data status', 'מצב הנתונים')}</h3>
         <p className="small" style={ds.status.stage === 'official-final' ? undefined : { color: 'var(--warn-ink)' }}>{ds.status.stage === 'official-final' ? L('Official final results', 'תוצאות סופיות רשמיות') : L('Gazette not yet verified', 'הפרסום ברשומות טרם אומת')} <Info title={L('Data status details', 'פירוט מצב הנתונים')}>{lang === 'he' ? ds.status.noteHe.replaceAll('הפרסום ברשומות לא אומת', 'הפרסום ברשומות טרם אומת') : ds.status.noteEn.replaceAll('Gazette publication unverified', 'Gazette publication not yet verified')}</Info></p>

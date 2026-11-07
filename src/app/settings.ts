@@ -125,7 +125,7 @@ export const SETTINGS: readonly SettingRow[] = [
     info: ['When a list is chosen, the other seats and rows fade.', 'כשבוחרים רשימה, שאר המושבים והשורות מתעמעמים.'], synonyms: 'dim fade highlight selection עמעום הדגשה בחירה' },
 
   { id: 'decimals', group: 'numbers', control: 'decimals', min: 'simple', label: ['Max decimal places', 'ספרות אחרי הנקודה (מרבי)'],
-    info: ['Percentages everywhere show at most this many. Results are still computed exactly. Near the threshold a share is rounded toward its true side, never past it.', 'אחוזים בכל מקום מוצגים עם לכל היותר כמה ספרות. התוצאות עדיין מחושבות במדויק. ליד אחוז החסימה האחוז מעוגל לכיוון הצד האמיתי שלו, לעולם לא אל מעבר לו.'],
+    info: ['Percentages everywhere show at most this many. Results are still computed exactly. Next to the threshold a share gets one more digit, so it never looks like it is on the other side.', 'אחוזים בכל מקום מוצגים עם לכל היותר כמה ספרות. התוצאות עדיין מחושבות במדויק. ליד אחוז החסימה מוצגת ספרה נוספת, כדי שהאחוז לא ייראה בצד השני שלו.'],
     synonyms: 'decimal precision percent % digits rounding דיוק אחוז עשרוניות עיגול' },
 
   { id: 'voteSource', group: 'editing', control: 'choice', min: 'standard', feature: 'voteSource', label: ['Votes come from', 'הקולות מגיעים מ־'],

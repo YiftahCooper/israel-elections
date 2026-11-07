@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "electionId": "k10",
-  "status": "pilot",
+  "status": "reviewed",
   "reviewedAt": "2026-11-07",
   "notes": [
-    "Research draft, not wired into the app. Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
+    "Sources inherited from the recommendation and first-government research retain their original access dates; newly retrieved sources were read on 2026-11-05.",
     "The institutional Knesset term runs from the first sitting on 20 July 1981 to 13 August 1984. Election dates are recorded separately. Mid-term government succession is recorded in formation.events.",
     "Additional dated mid-term acts that do not fit the proposal’s closed formation type vocabulary are kept as formalStep=true entries in government.changes (Dated-compatible). No new formation enum values are introduced."
   ],

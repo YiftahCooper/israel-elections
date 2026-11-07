@@ -2,6 +2,7 @@ export type Preset = 'simple' | 'standard' | 'expert';
 export type Visibility = 'show' | 'collapsed' | 'hidden';
 export const TOOL_FEATURES = [
   ['board', 'Explore', 'Overview', 'תמונת מצב', 'simple'],
+  ['after', 'Explore', 'After the election', 'אחרי הבחירות', 'simple'],
   ['families', 'Explore', 'Party families', 'משפחות מפלגות', 'simple'],
   ['scenarios', 'Explore', 'Scenarios', 'תרחישים', 'simple'],
   ['whatif', 'Explore', 'What if…', 'מה אם…', 'simple'],
@@ -51,6 +52,7 @@ export const FEATURE_PREVIEWS: Record<FeatureId, readonly [string, string]> = {
   familyEdit: ['Select lists, link partners and save a personal preset', 'בחירת רשימות, קישור שותפים ושמירת תבנית אישית'],
   familyScale: ['Proportional vote changes in one election', 'שינוי יחסי בקולות בבחירות אחת'],
   familyGrouping: ['Family, mixed lists and everyone else', 'משפחה, רשימות מעורבות וכל השאר'],
+  after: ['Recommendations, government and dated history', 'המלצות, ממשלה והיסטוריה מתוארכת'],
   board: ['Seats, lists and blocs', 'מנדטים, רשימות וגושים'],
   scenarios: ['Save and reuse your experiments', 'שמירה ושימוש חוזר בתרחישים'],
   whatif: ['Try a change and see who gains', 'שינוי קולות ובדיקת הנהנים'],
