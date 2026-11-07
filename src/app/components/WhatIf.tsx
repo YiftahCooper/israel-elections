@@ -10,7 +10,7 @@ import { applyAction } from '../../model/actions.ts';
 import { type Action, type Scenario } from '../../model/scenario.ts';
 import { useL, useLang, type Lang } from '../i18n.ts';
 import { fmtInt, signed } from '../format.ts';
-import { getState, setState, useLevel } from '../store.ts';
+import { getState, motionReduced, setState, useLevel } from '../store.ts';
 import { computeWhatIf, type WhatIfFact, type WhatIfResult } from '../whatIf.ts';
 
 // The cards depend only on the dataset and the language (never on the edited scenario), so their
@@ -55,7 +55,7 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
     let s: Scenario = { ...freshScenario(ds, title), description };
     for (const a of actions) s = applyAction(s, a);
     setState({ scenario: s, past: st.scenario ? [...st.past, st.scenario] : st.past, future: [], selectedListId: null, compareWith: 'historical', tool: 'board' });
-    window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+    window.scrollTo({ top: 0, behavior: motionReduced() ? 'instant' : 'smooth' });
   };
 
   // cards that do not apply to this election are left out, and those that move seats come first;

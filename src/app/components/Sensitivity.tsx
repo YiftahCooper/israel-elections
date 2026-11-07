@@ -267,7 +267,7 @@ function ThresholdLadder({ s, r, lo, hi }: { s: Scenario; r: AllocationResult; l
   return (
     <div ref={box} style={{ marginTop: 8 }}>
       <svg className="chart" viewBox={`0 0 ${W} ${H}`} width="100%" role="img" aria-label={L('Highest threshold each list passes', 'אחוז החסימה הגבוה ביותר שכל רשימה עוברת')}>
-        {ticks.map((t) => <g key={t}><line className="gridl" x1={x(t)} x2={x(t)} y1={top - 4} y2={H - 20} /><text x={x(t)} y={H - 6} textAnchor="middle">{`${t}%`}</text></g>)}
+        {ticks.map((t) => <g key={t}><line className="gridl" x1={x(t)} x2={x(t)} y1={top - 4} y2={H - 20} /><text x={x(t)} y={H - 6} textAnchor="middle">{Number.isInteger(t) ? `${t}%` : pctText(t === a ? lo : hi, digits)}</text></g>)}
         {cur >= a && cur <= b && <g><line x1={x(cur)} x2={x(cur)} y1={top - 12} y2={H - 20} stroke="var(--ink)" strokeDasharray="3 3" /><text x={x(cur)} y={12} textAnchor="middle" fill="var(--ink)">{L('now', 'עכשיו')}</text></g>}
         {rows.map(({ l, share }, i) => {
           const yy = top + i * rowH, p = toNumber(share) * 100, label = listLabel(l, lang);

@@ -5,7 +5,7 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
   test(`controls copy and ranges ${lang} ${theme} ${width}`, async ({ page }) => {
     test.setTimeout(120_000);
     await page.setViewportSize({ width, height: 1000 });
-    await page.addInitScript(v => localStorage.setItem('israel-elections:v1', JSON.stringify(v)), { lang, theme, level: 'expert', hintDismissed: true });
+    await page.addInitScript(v => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })(v)), { lang, theme, level: 'expert', hintDismissed: true });
     await page.addInitScript(() => localStorage.setItem('israel-elections:preferences', '{}'));
     await page.goto('/');
     for (const election of ['k26', 'k25', 'k12', 'k1']) {
@@ -55,7 +55,7 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
 
 for (const scope of ['Just this once', 'For this list']) test(`source scope: ${scope}`, async ({ page }) => {
   await page.addInitScript(() => {
-    localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', theme: 'dark', level: 'expert', hintDismissed: true }));
+    localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', theme: 'dark', level: 'expert', hintDismissed: true }));
     localStorage.setItem('israel-elections:preferences', '{}');
   });
   await page.goto('/'); await page.locator('.lb-row').first().click();

@@ -1,23 +1,23 @@
 /** One registry for action-time questions and their Settings controls. Values are stable storage IDs. */
 export const PREFERENCES = {
   voteSource: {
-    label: ['Votes come from', 'הקולות מגיעים מ'],
+    label: ['Votes come from', 'הקולות מגיעים מ־'],
     options: [
       { value: 'proportional', label: ['Other lists', 'שאר הרשימות'] },
       { value: 'new', label: ['New voters', 'מצביעים חדשים'] },
     ],
   },
   jointSeats: {
-    label: ["Count joint lists’ seats by party", 'ספירת מנדטים ברשימות משותפות לפי מפלגה'],
+    label: ['Joint lists by party', 'רשימות משותפות לפי מפלגה'],
     options: [
       { value: 'off', label: ['Off', 'כבוי'] },
       { value: 'on', label: ['On', 'פעיל'] },
     ],
   },
   comparison: {
-    label: ['Mark differences from', 'סימון הבדלים לעומת'],
+    label: ['Mark changes since', 'סימון שינויים מאז'],
     options: [
-      { value: 'reference', label: ['Loaded scenario', 'התרחיש הטעון'] },
+      { value: 'reference', label: ['Opened scenario', 'התרחיש שנפתח'] },
       { value: 'official', label: ['Official result', 'התוצאה הרשמית'] },
     ],
   },

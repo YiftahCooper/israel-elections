@@ -4,7 +4,7 @@ import { expect, test } from '@playwright/test';
 const validVotes = (page: import('@playwright/test').Page) => page.locator('.figures');
 
 const start = async (page: import('@playwright/test').Page) => {
-  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', level: 'expert' })));
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', level: 'expert' })));
   await page.goto('/');
   await page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: 'Likud', exact: true }).click();
   return page.getByRole('region', { name: 'List details' });
@@ -12,7 +12,7 @@ const start = async (page: import('@playwright/test').Page) => {
 
 test('reset everything keeps votes supplied by the selected donor', async ({ page }) => {
   const details = await start(page);
-  const source = details.getByRole('combobox', { name: /Take votes from \/ return votes to/ });
+  const source = details.getByRole('combobox', { name: 'Votes come from' });
   await source.selectOption('new');
   await details.getByLabel('Votes', { exact: true }).fill('0');
   await details.getByLabel('Votes', { exact: true }).press('Enter');
@@ -26,7 +26,7 @@ test('reset everything keeps votes supplied by the selected donor', async ({ pag
 
 test('clamped and refused numeric edits display the authoritative value', async ({ page }) => {
   const details = await start(page);
-  const source = details.getByRole('combobox', { name: /Take votes from \/ return votes to/ });
+  const source = details.getByRole('combobox', { name: 'Votes come from' });
   await source.selectOption('t:26-נף');
   const votes = details.getByLabel('Votes', { exact: true });
   await votes.fill('9999999'); await votes.press('Enter');

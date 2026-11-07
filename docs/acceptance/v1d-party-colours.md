@@ -37,3 +37,13 @@ Screenshots and capture scripts are in `.backup-scratch/v1d/`. The `party-dots-3
 Integrated main through `fc6e7f7` (After the election and the latest Compare refinements). TypeScript and the production build pass. All **1,158 unit tests in 118 files** pass with two workers and a 30-second test timeout; the unchanged demographic source-rebuild fixture took 5.25 seconds under host load on the first run, exceeding Vitest's default five-second timeout. The merged build also passes **43 targeted e2e checks** covering constituent dots, component seats, appearance, Compare and After the election.
 
 The final full e2e run passes **600 / 600 tests** with two workers (18.2 minutes). Visual inspection covered Hebrew/English, light/dark, widths 1500/1024/390 and the original-size light/dark 3× crop sheets, including all eight requested parties across k16–k26. Reproducible capture scripts and the concise verification logs are under `.backup-scratch/v1d/`.
+
+## Settings integration — `7043fc3`
+
+Merged origin/main's evidence policy and rebuilt Settings into the accepted `afa3cf5` branch. The five overlapping files retain Settings' shared decimal formatter, level/setting controls and large-text breakpoints, alongside the global party palette, neutral separators, adaptive ink and advisory colour pickers. Family table preference now uses Settings; family imports still receive a distinct colour. Scenario Settings links retain the focused row in the new popup.
+
+TypeScript, the production build, **1,208 unit tests** (121 files, default timeout, two workers) and **111 targeted e2e tests** pass. The first sandboxed unit attempt could not spawn the gallery builder (`EPERM`); the unchanged suite passes with subprocess access. The colour e2e seeds use Settings v2 and assert the actual theme. They also exercise party-dot off/on without fill changes and opening Settings/enabling large text without losing the user's custom colour or its advice.
+
+Fresh captures and their script are in `.backup-scratch/v1e/`: `party-dots-3x-{light,dark}.png` and `party-history-3x-{light,dark}.png` remain **1800×1200**, and `k25-{he,en}-{light,dark}-Arc-{1500,390}.png` cover the requested chamber views (Blocks were captured too). All sheets and eight Arc views were inspected. The captured party-fill index matches the accepted pre-merge index exactly in both themes across k16–k26.
+
+The final full e2e run passes **668 / 668 tests** with two workers (12.7 minutes). Verification logs are under `.backup-scratch/v1e/`. No push was made.

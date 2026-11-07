@@ -7,6 +7,7 @@ import { percentToRational } from '../../engine/rational.ts';
 import { sourceValue } from '../preferences.ts';
 import { stayingHome, type SourceChoice } from '../voteEdit.ts';
 import { fmtInt, fmtPct } from '../format.ts';
+import { getSetting } from '../store.ts';
 import { personKey, type MatchRow } from './match.ts';
 
 export type Msg = { en: string; he: string };
@@ -139,7 +140,7 @@ export function planVotes(o: { from: CopySource; to: Scenario; ctx?: { base?: Sc
     u.dst.forEach((id, k) => votes.set(id, BigInt(split[k])));
   });
   for (const l of w.lists) { const n = Number(votes.get(l.id)!); if (n !== l.votes) inner.push({ type: 'setVotes', listId: l.id, votes: n }); }
-  const value = mode === 'count' ? fmtInt(X.reduce((a, b) => a + b, 0n)) : mode === 'share' && units.length === 1 ? fmtPct(shares[0].num, shares[0].den) : undefined;
+  const value = mode === 'count' ? fmtInt(X.reduce((a, b) => a + b, 0n)) : mode === 'share' && units.length === 1 ? fmtPct(shares[0].num, shares[0].den, getSetting('decimals')) : undefined;
   const provenance = provenanceOf(from, o.fieldOverride ?? 'votes', {
     mode, policy: sourceValue(policy), sourceListIds: srcAll, targetListIds: dstAll, ...(value ? { value } : {}),
     paths: dstAll.map((id) => ['lists', id, 'votes']),
@@ -167,7 +168,7 @@ export function planTotals(o: { from: CopySource; to: Scenario; ctx?: { base?: S
   let pct = (votesCast(from.sc) / from.sc.registered) * 100;
   for (let i = 0; i < 4 && Math.round(to.registered * (pct / 100)) !== target; i++) pct += (target - to.registered * (pct / 100)) / to.registered * 100;
   if (Math.round(to.registered * (pct / 100)) !== target) return refuse('Turnout could not be copied exactly.', 'לא ניתן להעתיק את שיעור ההצבעה במדויק.');
-  return finish(to, o.ctx ?? {}, provenanceOf(from, 'turnout', { value: fmtPct(votesCast(from.sc), from.sc.registered), paths: [['invalid']] }), [{ type: 'setTurnout', pct }]);
+  return finish(to, o.ctx ?? {}, provenanceOf(from, 'turnout', { value: fmtPct(votesCast(from.sc), from.sc.registered, getSetting('decimals')), paths: [['invalid']] }), [{ type: 'setTurnout', pct }]);
 }
 
 /** The threshold (exact decimal string), or the whole rule set. Rules that differ from the destination's law switch it to
@@ -219,9 +220,11 @@ export function planAgreements(o: { from: CopySource; to: Scenario; ctx?: { base
 export function rosterActions(from: CopySource, src: SimList, to: Scenario, dstId: string): Action[] {
   const dst = to.lists.find((l) => l.id === dstId)!;
   const candidates = src.candidates.map((c) => ({ ...c, originListId: dstId, importedFrom: c.importedFrom ?? { electionId: from.sc.electionId, listId: src.id } }));
-  const out: Action[] = [{ type: 'candidates', listId: dstId, candidates, note: 'copy', parties: src.parties ?? [], rosterUnavailable: !!src.rosterUnavailable, rosterTruncated: !!src.rosterTruncated }];
-  // a faction split belongs to the old parties
+  const out: Action[] = [];
+  // a faction split belongs to the old parties: undone first, while the list still has them (counted by party is the
+  // default, so a joint list usually starts split)
   if (to.factionSplits?.includes(dstId) && JSON.stringify(dst.parties?.map((p) => p.id)) !== JSON.stringify(src.parties?.map((p) => p.id))) out.push({ type: 'setFactionSplit', listId: dstId, split: false });
+  out.push({ type: 'candidates', listId: dstId, candidates, note: 'copy', parties: src.parties ?? [], rosterUnavailable: !!src.rosterUnavailable, rosterTruncated: !!src.rosterTruncated });
   return out;
 }
 /** A candidate on `listId` who also stands on another list. */

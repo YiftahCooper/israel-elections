@@ -8,13 +8,23 @@ import { deltaE2000 } from '../../src/data/colour.ts';
 for (const lang of ['he', 'en']) for (const theme of ['light', 'dark']) test(`all constituent dots, keys, hovers and exports: ${lang} ${theme}`, async ({page}) => {
   test.setTimeout(120000);
   await page.emulateMedia({reducedMotion:'reduce'});
-  await page.addInitScript(v => localStorage.setItem('israel-elections:v1', JSON.stringify(v)), {lang, theme, level:'expert', hintDismissed:true});
+  await page.addInitScript(v => {localStorage.setItem('israel-elections:v1',JSON.stringify({lang:v.lang,level:'expert'}));localStorage.setItem('israel-elections:settings',JSON.stringify({v:2,values:{theme:v.theme,decimals:2,starterTip:false}}));}, {lang, theme});
   for (const n of [25,24,19,16]) {
     const ds=dataset(n), joint=ds.lists.filter((l: {parties?: unknown[]})=>(l.parties?.length??0)>1);
     const payload={e:`k${n}`,n:'Party dots',b:ds.buildInfo.builtAt,l:joint.map((l:{id:string})=>({type:'setFactionSplit',listId:l.id,split:true}))};
     await page.goto('about:blank');
     await page.goto('/#s='+deflateRawSync(JSON.stringify(payload)).toString('base64url'));
     await expect(page.locator('.chamber [data-seat]')).toHaveCount(120, {timeout:30000});
+    await expect(page.locator('html')).toHaveAttribute('data-theme',theme);
+    if(n===25){
+      const fills=()=>page.locator('.chamber > svg [data-component-seat]').evaluateAll(nodes=>nodes.map(dot=>dot.getAttribute('fill')));
+      const before=await fills();expect(before.length).toBeGreaterThan(0);
+      await page.locator('.band').getByRole('button',{name:lang==='he'?'הגדרות':'Settings',exact:true}).click();
+      const toggle=page.locator('.personal-settings [data-setting="partyColourInSeats"]').getByRole('checkbox');
+      await toggle.uncheck();await expect(page.locator('.chamber > svg [data-component-seat]')).toHaveCount(0);
+      await toggle.check();await expect.poll(fills).toEqual(before);
+      await page.keyboard.press('Escape');
+    }
     for (const layout of ['hemicycle','blocks']) {
       await page.getByRole('group',{name:lang==='he'?'פריסה':'Chamber layout'}).getByRole('button',{name:layout==='hemicycle'?(lang==='he'?'קשת':'Arc'):(lang==='he'?'גושים':'Blocks'),exact:true}).click();
       const dots=page.locator('.chamber > svg [data-component-seat]');

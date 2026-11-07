@@ -18,7 +18,7 @@ import type { Scenario } from '../../model/scenario.ts';
 import { allocationOf, listLabel, baselineOf, resultChanges } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { download } from '../format.ts';
-import { deleteSaved, duplicateCurrent, importScenarioJson, openImported, openSaved, replay, resetAll, scenarioKey, setState, shareLink, toast, useStore, type SavedScenario } from '../store.ts';
+import { deleteSaved, duplicateCurrent, getSetting, useSetting, importScenarioJson, openImported, openSaved, replay, resetAll, scenarioKey, setState, shareLink, toast, useStore, type SavedScenario } from '../store.ts';
 import { ScenarioGallery } from './ScenarioGallery.tsx';
 import { SavedComparisons } from '../compare/SavedComparisons.tsx';
 import { electionLabel } from './TopBar.tsx';
@@ -62,6 +62,7 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
   const L = useL();
   const lang = useLang();
   const saved = useStore((st) => st.saved);
+  const community = useSetting('communityScenarios');
   const elections = useStore((st) => st.elections);
   const fileRef = useRef<HTMLInputElement>(null);
   const [link, setLink] = useState('');
@@ -93,7 +94,7 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
         </div>
         <details className="scn-options"><summary>{L('Colour & comparison', 'צבע והשוואה')}</summary><div className="scn-form">
           <ColourPicker label={L('Scenario colour','צבע התרחיש')} value={liveScenarioColor(s,saved)} onChange={color=>dispatch({type:'setIdentityColor',color})} minDeltaE={20} others={saved.filter(x=>x.id!==s.id).map(x=>({color:savedColor(x.log),name:x.name}))} options={SCENARIO_PALETTE.map((color,i)=>({color,label:L(['Violet','Slate','Ochre','Mauve','Sage','Blue','Clay','Olive'][i],['סגול','כחלחל','אוכרה','סגלגל','מרווה','כחול','חרס','זית'][i])}))}/>
-        <button className="btn small" onClick={() => setState({ settingsOpen: true })}>{L('Your settings…', 'ההגדרות שלכם…')}</button>
+        <button className="btn small" onClick={() => setState({ settingsOpen: true, settingsFocus: 'markChanges' })}>{L('Settings…', 'הגדרות…')}</button>
         </div></details>
         <ResultBar s={s} r={allocationOf(s)} />
         <div className="row" style={{ marginTop: 10 }}>
@@ -107,7 +108,7 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
           <button className="btn" disabled={official} title={official ? L('Change something first', 'תחילה שנו משהו') : undefined} onClick={() => { duplicateCurrent(); toast('info', L('Saved as a copy in this browser.', 'נשמר עותק בדפדפן זה.')); }}><Copy className="icon sm" aria-hidden />{L('Duplicate', 'שכפול')}</button>
           <button className="btn" onClick={() => exportJson(s)}><Download className="icon sm" aria-hidden />{L('Export', 'ייצוא')}</button>
           <button className="btn" onClick={() => fileRef.current?.click()}><Upload className="icon sm" aria-hidden />{L('Import', 'ייבוא')}</button>
-          <button className="btn ghost" disabled={!s.log.length} title={!s.log.length ? L('Already at the official result', 'כבר בתוצאה הרשמית') : undefined} onClick={() => { if (confirm(L('Start over from the official result? (Undo can restore it.)', 'להתחיל מחדש מהתוצאה הרשמית? (ניתן לבטל)'))) resetAll(); }}><RotateCcw className="icon sm" aria-hidden />{L('Start over', 'התחלה מחדש')}</button>
+          <button className="btn ghost" disabled={!s.log.length} title={!s.log.length ? L('Already at the official result', 'כבר בתוצאה הרשמית') : undefined} onClick={() => { if (!getSetting('confirmStartOver') || confirm(L('Start over from the official result? (Undo can restore it.)', 'להתחיל מחדש מהתוצאה הרשמית? (ניתן לבטל)'))) resetAll(); }}><RotateCcw className="icon sm" aria-hidden />{L('Start over', 'התחלה מחדש')}</button>
         </div>
         {link && <input type="text" readOnly value={link} aria-label={L('Share link', 'קישור שיתוף')} onFocus={(e) => e.target.select()} style={{ width: '100%', marginTop: 8 }} />}
         <input ref={fileRef} type="file" accept="application/json,.json" hidden onChange={async (e) => {
@@ -146,7 +147,8 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
       <SavedComparisons />
 
       <section style={{ marginTop: 22 }}>
-        <ScenarioGallery />
+        {/* Settings → Community scenarios: off loads nothing from the network; the switch stays one press away */}
+        {community ? <ScenarioGallery /> : <p className="small muted">{L('Community scenarios are off.', 'תרחישי הקהילה כבויים.')} <button type="button" className="link-btn" onClick={() => setState({ settingsOpen: true, settingsFocus: 'communityScenarios' })}>{L('Settings', 'הגדרות')}</button></p>}
       </section>
     </div>
   );

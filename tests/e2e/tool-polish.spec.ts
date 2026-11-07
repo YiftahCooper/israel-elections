@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 for (const lang of ['en', 'he']) test(`tools keep concise labels and reveal assumptions on demand: ${lang}`, async ({ page }) => {
-  await page.addInitScript(lang => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang, level: 'expert', hintDismissed: true })), lang);
+  await page.addInitScript(lang => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang, level: 'expert', hintDismissed: true })), lang);
   await page.goto('/');
   const panel = page.locator('#analysis-panel');
   await page.locator('#tab-structure').click();
@@ -19,7 +19,7 @@ for (const lang of ['en', 'he']) test(`tools keep concise labels and reveal assu
 });
 
 for (const lang of ['en', 'he']) test(`what-if separates explanation from the expandable result: ${lang}`, async ({ page }) => {
-  await page.addInitScript(lang => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang, level: 'expert', hintDismissed: true })), lang);
+  await page.addInitScript(lang => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang, level: 'expert', hintDismissed: true })), lang);
   await page.goto('/'); await page.locator('#tab-whatif').click();
   const row = page.locator('.wi-row').filter({ hasText: lang === 'en' ? 'Pure proportional representation' : 'ייצוג יחסי טהור' });
   await row.getByRole('button', { name: lang === 'en' ? 'Assumptions: Pure proportional representation' : 'הנחות: ייצוג יחסי טהור', exact: true }).click();
@@ -32,7 +32,7 @@ for (const lang of ['en', 'he']) test(`what-if separates explanation from the ex
 });
 
 test('Hebrew sensitivity ranges and majority counts read left to right', async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'he', level: 'expert', hintDismissed: true })));
+  await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'he', level: 'expert', hintDismissed: true })));
   await page.goto('/'); await page.locator('#tab-sens').click();
   const panel = page.locator('#analysis-panel');
   const from = await panel.getByRole('textbox', { name: 'מ', exact: true }).boundingBox();

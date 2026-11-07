@@ -8,8 +8,8 @@ import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, fmtPct, isolate } from '../format.ts';
-import { setState, useDigits, useStore } from '../store.ts';
+import { fmtInt, fmtPct, isolate, pctExactNote } from '../format.ts';
+import { setState, useDigits, useSetting } from '../store.ts';
 import { apportion } from '../../model/actions.ts';
 import { Info, Seg } from './ui.tsx';
 import { noSeatVotes, regionEdges } from '../chartGeometry.ts';
@@ -56,7 +56,8 @@ const edge = (_c: string) => 'var(--ink-2)';
 
 export function Charts({ s, r }: { s: Scenario; r: AllocationResult }) {
   const L = useL();
-  const [view, setView] = useState<'chart' | 'table'>('chart');
+  const preferTables = useSetting('preferTables');
+  const [view, setView] = useState<'chart' | 'table'>(preferTables ? 'table' : 'chart');
   // switching views keeps the height the last view took, so a shorter view never shrinks the page and
   // scrolls it away from the switch under the pointer; the table uses that room for more rows
   const [area, setArea] = useState<HTMLDivElement | null>(null);
@@ -93,12 +94,13 @@ function rowsFor(s: Scenario, r: AllocationResult) {
 const NO_SEAT = '__noseat';
 
 function VotesVsSeats({ s, r }: { s: Scenario; r: AllocationResult }) {
-  const showComponents = useStore(st=>st.showComponentSeats);
+  const showComponents = useSetting('partyColourInSeats');
   const componentSeats = seatOrder(s,r,'list',showComponents);
   const L = useL();
   const lang = useLang();
   const digits = useDigits();
   const [tip, setTip] = useState<Tip>(null);
+  const hoverPopups = useSetting('hoverPopups');
   const bridge = useHoverBridge(() => setTip(null));
   const [box, W] = useChartWidth(600);
   const rows = rowsFor(s, r);
@@ -130,15 +132,15 @@ function VotesVsSeats({ s, r }: { s: Scenario; r: AllocationResult }) {
           // start in English; stacked above the bars (phone), they start where the bars start
           const lx = stacked ? (he ? W - 4 : x0) : he ? labelW - 8 : 4;
           return (
-            <g key={row.id} onMouseMove={(e) => { bridge.cancel(); setTip({ x: e.clientX, y: e.clientY, html: <><b>{row.name}</b><div>{L('Votes', 'קולות')}: {fmtInt(row.v)} ({fmtPct(row.v, total, digits)})</div>{list && <div>{L('Seats', 'מנדטים')}: {row.seats} ({fmtPct(row.seats, seats, digits)})</div>}</> }); }}
-              onMouseLeave={bridge.leave} onClick={() => list && setState({ selectedListId: row.id })} style={{ cursor: list ? 'pointer' : 'default' }}>
+            <g key={row.id} onMouseMove={(e) => { if (!hoverPopups) return; bridge.cancel(); setTip({ x: e.clientX, y: e.clientY, html: <><b>{row.name}</b><div>{L('Votes', 'קולות')}: {fmtInt(row.v)} ({fmtPct(row.v, total, digits, s.rules.thresholdPct)})</div>{list && <div>{L('Seats', 'מנדטים')}: {row.seats} ({fmtPct(row.seats, seats, digits)})</div>}</> }); }}
+              onMouseLeave={bridge.leave} onClick={(e) => { if (!hoverPopups) { bridge.cancel(); setTip({ x: e.clientX, y: e.clientY, html: <><b>{row.name}</b><div>{L('Votes', 'קולות')}: {fmtInt(row.v)} ({fmtPct(row.v, total, digits, s.rules.thresholdPct)})</div>{list && <div>{L('Seats', 'מנדטים')}: {row.seats} ({fmtPct(row.seats, seats, digits)})</div>}</> }); } if (list) setState({ selectedListId: row.id }); }} style={{ cursor: list ? 'pointer' : 'default' }}>
               <rect x={0} y={y - 2} width={W} height={rowH - 4} fill="transparent" />
               <text x={lx} y={stacked ? y + 9 : yb + barH + 3} textAnchor={he ? 'end' : 'start'} fill="var(--ink)" data-chart-label=""><title>{row.name}</title>{isolate(clip(row.name, stacked ? W - 8 : labelW - 12))}</text>
               <rect className="bar" x={x0} y={yb + 0.5} width={vw} height={barH - 1} rx={2} fill={row.color} fillOpacity={0.28} stroke={edge(row.color)} strokeWidth={1} />
               {list && <rect className="bar" x={x0} y={yb + barH + gap} width={sw} height={barH} rx={2} fill={row.color} />}
               {componentSeats.filter(st=>st.listId===row.id).map((st,k)=>st.innerColor && <rect key={k} data-component-seat={st.partyId} x={x0+sw*k/row.seats} y={yb+barH+gap+2} width={sw/row.seats} height={barH-4} fill={st.innerColor} stroke={partySeparator(st.innerColor,row.color).inner} strokeWidth={.75} paintOrder="stroke fill"><title>{(lang==='he' ? s.lists.find(l=>l.id===row.id)?.parties?.find(p=>p.id===st.partyId)?.nameHe : s.lists.find(l=>l.id===row.id)?.parties?.find(p=>p.id===st.partyId)?.nameEn) ?? ''} · {row.name}</title></rect>)}
               <text x={x0 + Math.max(vw, sw) + 4} y={yb + barH + 3} textAnchor="start" className="tabnum">
-                {fmtPct(row.v, total, 1)}{list ? ` → ${fmtPct(row.seats, seats, 1)}` : ''}
+                {fmtPct(row.v, total, digits)}{list ? ` → ${fmtPct(row.seats, seats, digits)}` : ''}
               </text>
             </g>
           );
@@ -154,6 +156,7 @@ function ThresholdDistance({ s, r }: { s: Scenario; r: AllocationResult }) {
   const L = useL();
   const lang = useLang();
   const [tip, setTip] = useState<Tip>(null);
+  const hoverPopups = useSetting('hoverPopups');
   const bridge = useHoverBridge(() => setTip(null));
   const [box, W] = useChartWidth(600);
   const thr = Number(r.thresholdVotes);
@@ -178,8 +181,8 @@ function ThresholdDistance({ s, r }: { s: Scenario; r: AllocationResult }) {
           const x = d >= 0 ? mid : mid - w;
           const lx = stacked ? (he ? W - 4 : 4) : mid + (d >= 0 ? 4 : -4);
           return (
-            <g key={l.id} onMouseMove={(e) => { bridge.cancel(); setTip({ x: e.clientX, y: e.clientY, html: <><b>{name}</b><div>{fmtInt(l.votes)} {L('votes', 'קולות')}</div><div>{d >= 0 ? '+' : '−'}{fmtInt(Math.abs(d))} {L('vs threshold', 'מול החסימה')}</div></> }); }}
-              onMouseLeave={bridge.leave} onClick={() => setState({ selectedListId: l.id })} style={{ cursor: 'pointer' }}>
+            <g key={l.id} onMouseMove={(e) => { if (!hoverPopups) return; bridge.cancel(); setTip({ x: e.clientX, y: e.clientY, html: <><b>{name}</b><div>{fmtInt(l.votes)} {L('votes', 'קולות')}</div><div>{d >= 0 ? '+' : '−'}{fmtInt(Math.abs(d))} {L('vs threshold', 'מול החסימה')}</div></> }); }}
+              onMouseLeave={bridge.leave} onClick={(e) => { if (!hoverPopups) { bridge.cancel(); setTip({ x: e.clientX, y: e.clientY, html: <><b>{name}</b><div>{fmtInt(l.votes)} {L('votes', 'קולות')}</div><div>{d >= 0 ? '+' : '−'}{fmtInt(Math.abs(d))} {L('vs threshold', 'מול החסימה')}</div></> }); } setState({ selectedListId: l.id }); }} style={{ cursor: 'pointer' }}>
               <rect x={0} y={y - 3} width={W} height={rowH - 2} fill="transparent" />
               <text x={lx} y={y + 9} textAnchor={stacked ? (he ? 'end' : 'start') : (d >= 0 ? 'start' : 'end')} fill="var(--ink)" data-chart-label=""><title>{name}</title>{isolate(name)}</text>
               <rect className="bar" x={x} y={yb + 2} width={Math.max(1, w)} height={12} rx={2} fill={l.color} stroke={edge(l.color)} strokeWidth={1} />
@@ -209,7 +212,7 @@ function ShareTable({ s, r, height }: { s: Scenario; r: AllocationResult; height
           {s.lists.filter((l) => !l.withdrawn).sort((a, b) => b.votes - a.votes).map((l) => { const lr = r.lists.find((x) => x.id === l.id)!; return (
             <tr key={l.id}>
               <td><button type="button" className="table-action row" style={{ gap: 6, flexWrap: 'nowrap' }} onClick={() => setState({ selectedListId: l.id })}><span className="swatch" style={{ background: l.color }} />{listLabel(l, lang)}</button></td>
-              <td className="n">{fmtInt(l.votes)}</td><td className="n">{fmtPct(l.votes, total, digits)}</td>
+              <td className="n">{fmtInt(l.votes)}</td><td className="n" title={pctExactNote(l.votes, total, digits, s.rules.thresholdPct, lang)}>{fmtPct(l.votes, total, digits, s.rules.thresholdPct)}</td>
               <td className="n">{lr.qualified ? fmtPct(l.votes, r.qualifyingVotes, digits) : '—'}</td>
               <td className="n">{lr.seats}</td><td className="n">{fmtPct(lr.seats, s.rules.seats, digits)}</td>
               <td className="n"><bdi dir="ltr">{(() => { const v = (lr.seats / s.rules.seats - l.votes / Number(total)) * 100; return `${v < 0 ? '−' : v > 0 ? '+' : ''}${Math.abs(v).toFixed(digits)}`; })()}</bdi></td>
@@ -226,7 +229,8 @@ function ShareTable({ s, r, height }: { s: Scenario; r: AllocationResult; height
  *  Votes for lists that won no seat are drawn hatched grey, so wasted votes stay visible; a line runs
  *  between every two lists, so neighbours of similar colour stay apart. */
 export function Waffles({ s, r }: { s: Scenario; r: AllocationResult }) {
-  const showComponents = useStore(st=>st.showComponentSeats);
+  const showComponents = useSetting('partyColourInSeats');
+  const digits = useDigits();
   const L = useL();
   const lang = useLang();
   const hatch = useId();
@@ -248,7 +252,7 @@ export function Waffles({ s, r }: { s: Scenario; r: AllocationResult }) {
     // squares fill left to right in Hebrew too (owner, 2026-11-04)
     return (
       <figure style={{ margin: 0, maxWidth: cols * pitch }} data-waffle="">
-        <figcaption className="small ink2" dir={lang === 'he' ? 'rtl' : 'ltr'} style={{ marginBottom: 4 }}>{title}</figcaption>
+        <figcaption className="small ink2" dir={lang === 'he' ? 'rtl' : 'ltr'} style={{ marginBottom: 4 }} data-exact>{title}</figcaption>
         <svg viewBox={`0 0 ${cols * pitch} ${rows * pitch}`} width="100%" style={{ maxWidth: cols * pitch }} role="img" aria-label={title}>
           <defs><pattern id={hatch} width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="4" height="4" fill="var(--grid)" /><line x1="0" y1="0" x2="0" y2="4" stroke="var(--muted)" strokeWidth="1.6" /></pattern></defs>
           {items.map((c, i) => <g key={i}><rect x={(i % cols) * pitch} y={Math.floor(i / cols) * pitch} width={size} height={size} rx={3} fill={c.color} style={{ cursor: c.id ? 'pointer' : 'default' }} onClick={() => c.id && setState({ selectedListId: c.id })}><title>{c.partyId && (s.factionSplits ?? []).includes(c.id ?? '') ? ((lang==='he' ? s.lists.find(l=>l.id===c.id)?.parties?.find(p=>p.id===c.partyId)?.nameHe : s.lists.find(l=>l.id===c.id)?.parties?.find(p=>p.id===c.partyId)?.nameEn) ?? '') + ' · ' : ''}{c.id ? listLabel(s.lists.find((l) => l.id === c.id)!, lang) : L('Votes for lists that won no seat', 'קולות לרשימות שלא זכו במנדט')}</title></rect>{c.innerColor && <PartyDot partyId={c.partyId} x={(i%cols)*pitch+size/2} y={Math.floor(i/cols)*pitch+size/2} r={size*.31} color={c.innerColor} ring={c.color}/>}</g>)}
@@ -269,7 +273,7 @@ export function Waffles({ s, r }: { s: Scenario; r: AllocationResult }) {
       </div>
       <div className="legend" style={{ marginTop: 8 }}>
         {[...seated].sort((a, b) => b.l.votes - a.l.votes).map(({ l, lr }) => <span key={l.id} className="row" style={{ gap: 5 }}><span className="swatch" style={{ background: l.color }} />{listLabel(l, lang)} <span className="muted tabnum">{lr.seats}</span></span>)}
-        {wasted > 0 && <span className="row" style={{ gap: 5 }}><svg width="10" height="10" aria-hidden><rect width="10" height="10" rx="2" fill={`url(#${hatch})`} /></svg>{L(`No seat: ${fmtPct(wasted, r.totalValid, 1)} of votes`, `ללא מנדט: ${fmtPct(wasted, r.totalValid, 1)} מהקולות`)}<Info term="unrepresented" /></span>}
+        {wasted > 0 && <span className="row" style={{ gap: 5 }}><svg width="10" height="10" aria-hidden><rect width="10" height="10" rx="2" fill={`url(#${hatch})`} /></svg>{L(`No seat: ${fmtPct(wasted, r.totalValid, digits)} of votes`, `ללא מנדט: ${fmtPct(wasted, r.totalValid, digits)} מהקולות`)}<Info term="unrepresented" /></span>}
       </div>
     </div>
   );

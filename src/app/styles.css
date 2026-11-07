@@ -1206,7 +1206,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
   .band .election { flex: 1 1 270px; max-inline-size: calc(100% - 66px); }
   .band .election-about summary { padding-inline: 4px; }
   .band .scenario-switcher .choice-trigger { min-block-size: 44px; }
-  .band-actions { inline-size: 100%; justify-content: space-between; gap: 0; }
+  /* a very narrow page (a 340px phone, or a phone with large text) puts the last actions on a second row */
+  .band-actions { inline-size: 100%; justify-content: space-between; gap: 4px 0; flex-wrap: wrap; }
   .band-actions .tool { padding-inline: 4px; }
 }
 
@@ -1222,3 +1223,17 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 
 /* Quantitative marks retain their sourced fill; a thin neutral edge survives either theme. */
 :is(.sec-bar, .sec-gauge > i, .majority-bar > div, .corridor .pieces i, .coal-bar > i, .walk-tray > span:not(.empty), .family-seat-strip i) { box-shadow: inset 0 0 0 1px var(--ink-2); }
+
+/* Personal settings that act on the whole page (docs/design/settings.md). Reduce motion only adds to the device's own
+   request; Large text zooms the root, and floating popups divide their coordinates by it (floating.tsx). */
+:root[data-motion="reduce"] *, :root[data-motion="reduce"] *::before, :root[data-motion="reduce"] *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+:root[data-text="large"] { zoom: 1.15; --text-zoom: 1.15; } /* viewport-sized boxes divide by --text-zoom */
+/* width breakpoints follow the zoomed page, not the real screen: the build scales every width @media under large text
+   (scripts/scale-aware-media.ts; the same 1.15 there and in textScale.ts) */
+:root[data-density="comfortable"] .lb-row { padding-block: 11px; }
+:root[data-density="comfortable"] .panel .body { padding: 14px 16px; }
+:root[data-density="comfortable"] .kv { row-gap: 8px; }
+:root[data-density="comfortable"] td, :root[data-density="comfortable"] th { padding-block: 7px; }
+:root[data-density="comfortable"] .legend { gap: 8px 14px; }
+/* List key off: hidden where the seats carry the names; on a phone the key is the only naming, so it stays */
+@media (min-width: 601px) { .chamber .legend[data-key-off] { display: none; } }

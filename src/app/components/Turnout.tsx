@@ -13,8 +13,8 @@ import {
 } from '../../model/voterGroups.ts';
 import { allocationOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, signed } from '../format.ts';
-import { dispatch, toast, useStore } from '../store.ts';
+import { fmtInt, fmtPctNum, signed } from '../format.ts';
+import { dispatch, toast, useDigits, useStore } from '../store.ts';
 import { deleteVoterGroup, exportVoterGroup, newGroupId, saveVoterGroup, useVoterGroups } from '../voterGroupStore.ts';
 import { ChoicePicker, type Choice } from './ChoicePicker.tsx';
 import { Info, NumberInput } from './ui.tsx';
@@ -50,9 +50,11 @@ const EMPTY: Draft = { members: null, name: '', change: 0, vote: 'observed', sha
 // the group being edited outlives election switches, so a sourced group can be tried on each election
 let lastDraft: Draft = EMPTY;
 const isFacts = (f: GroupFacts | GroupProblem | null): f is GroupFacts => !!f && typeof f === 'object';
-const pct1 = (n: number) => `${n.toFixed(1)}%`;
+const pctAt = (n: number, digits: number) => `${n.toFixed(digits)}%`;
 
 export function Turnout({ s }: { s: Scenario }) {
+  const digits = useDigits();
+  const pct1 = (n: number) => pctAt(n, digits);
   const L = useL(), lang = useLang();
   const hasLocalities = useStore((st) => st.datasets[s.electionId]?.hasLocalities !== false);
   const { data } = useLocalities(s.electionId, hasLocalities);
@@ -74,7 +76,7 @@ export function Turnout({ s }: { s: Scenario }) {
   const weights = vote === 'observed' ? f!.mix! : s.lists.map((l) => shareOf(l.id));
   const shareSum = s.lists.reduce((t, l) => t + shareOf(l.id), 0);
   const change = useMemo(() => (f ? groupChange(s, f, d.change, weights) : null), [s, f, d.change, weights.join(',')]); // eslint-disable-line react-hooks/exhaustive-deps
-  const label = `${d.name || L('Voter group', 'קבוצת מצביעים')} ${d.change >= 0 ? '+' : '−'}${Math.abs(d.change).toFixed(1)} ${L('pp', 'נק׳')}`;
+  const label = `${d.name || L('Voter group', 'קבוצת מצביעים')} ${d.change >= 0 ? '+' : '−'}${Math.abs(d.change).toFixed(digits)} ${L('pp', 'נק׳')}`;
   const seatDiff = useMemo(() => {
     if (!change || change.error || !change.delta) return null;
     try {
@@ -221,7 +223,7 @@ export function Turnout({ s }: { s: Scenario }) {
                     onChange={(e) => set({ shares: { ...(d.sharesFor && d.sharesFor !== s.electionId ? {} : d.shares), [l.id]: e.target.value }, sharesFor: s.electionId })} />%
                 </label>)}</div>
                 <p className="small ink2">{lists.length > 12 && <button type="button" className="btn small ghost" onClick={() => setShowAll(!showAll)}>{showAll ? L('Fewer lists', 'פחות רשימות') : L(`All ${lists.length} lists`, `כל ${lists.length} הרשימות`)}</button>}
-                  {shareSum > 0 && Math.abs(shareSum - 100) > 0.01 && L(` Total ${shareSum}%, scaled to 100%.`, ` סך הכול ${shareSum}%, מותאם ל-100%.`)}</p>
+                  {shareSum > 0 && Math.abs(shareSum - 100) > 0.01 && L(` Total ${fmtPctNum(shareSum, digits)}, scaled to 100%.`, ` סך הכול ${fmtPctNum(shareSum, digits)}, מותאם ל-100%.`)}</p>
               </>}
             </div>
 

@@ -25,7 +25,7 @@ import type { AnalysisTask } from '../analysisTasks.ts';
 import { listLabel, referenceLabel, warningText } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtFrac, fmtInt, fmtPct, fmtRat, fmtSigned } from '../format.ts';
-import { dispatch, dispatchMany, getState, useStore, previewAction, setState, toast, useFeature, useLevel, useVoteSource, useDigits, withSource } from '../store.ts';
+import { dispatch, dispatchMany, getState, useStore, previewAction, setState, toast, useFeature, useLevel, useVoteSource, useDigits, useSetting, withSource } from '../store.ts';
 import { clampTarget, deltaAction, stayingHome, toVoteSource, type SourceChoice, votesForShare, voteSourceLabel } from '../voteEdit.ts';
 import { Candidates } from './Candidates.tsx';
 import { JointParties } from './JointParties.tsx';
@@ -113,6 +113,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
   const { reference } = useActiveReference();
   const baseLabel = referenceLabel(base === reference ? reference : null, lang);
   const digits = useDigits();
+  const hoverPreviews = useSetting('hoverPreviews');
   const { simple } = useLevel();
   const src = useVoteSource();
   const lr = r.lists.find((x) => x.id === l.id)!;
@@ -209,7 +210,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
   const quick = (label: string, target: number | null, showDelta = true, go?: (from: SourceChoice) => void) => {
     const t = target === null ? null : clampTarget(s, l, target, src);
     const delta = showDelta && t !== null && t !== l.votes ? `(${fmtSigned(t - l.votes)})` : null;
-    return <button key={label} className="btn small" disabled={t === null || t === l.votes} aria-description={delta ? `${delta} · ${sourceName}` : sourceName} onMouseEnter={() => { if (t !== null) explainTarget(t); }} onFocus={() => { if (t !== null) explainTarget(t); }} onClick={() => { if (t !== null) commit(go ?? ((from) => editTo(target!, from))); }}><span dir={/^[×÷]/.test(label) ? 'ltr' : undefined}>{label}</span>{delta && <bdi dir="ltr" aria-hidden>{delta}</bdi>}</button>;
+    return <button key={label} className="btn small" disabled={t === null || t === l.votes} aria-description={delta ? `${delta} · ${sourceName}` : sourceName} onMouseEnter={() => { if (t !== null && hoverPreviews) explainTarget(t); }} onFocus={() => { if (t !== null) explainTarget(t); }} onClick={() => { if (t !== null) commit(go ?? ((from) => editTo(target!, from))); }}><span dir={/^[×÷]/.test(label) ? 'ltr' : undefined}>{label}</span>{delta && <bdi dir="ltr" aria-hidden>{delta}</bdi>}</button>;
   };
   const transferShown = useFeature('voteSource') === 'show';
   const total = Number(r.totalValid);

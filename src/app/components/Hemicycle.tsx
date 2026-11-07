@@ -21,7 +21,7 @@ import { useL, useLang } from '../i18n.ts';
 import { arcLayout, annularRegions } from '../layout.ts';
 import { download, isolate, seatDeltaText } from '../format.ts';
 import { electionLabel } from '../electionLabel.ts';
-import { setState, useStore } from '../store.ts';
+import { setSetting, setState, useSetting, useStore } from '../store.ts';
 import { Info, Seg } from './ui.tsx';
 import { ChoicePicker } from './ChoicePicker.tsx';
 import { ResultPreview } from './ResultPreview.tsx';
@@ -78,10 +78,13 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   const { shown: expert, control: expertControl } = useDisclosure('chamberOptions');
   const lang = useLang();
 
-  // layout and colouring are Expert settings: below Expert the chamber always uses the defaults
-  const layout = useStore((st) => (expert ? st.layout : 'hemicycle'));
-  const colorBy = useStore((st) => (expert ? st.colorBy : 'list'));
-  const showComponents = useStore(st => st.showComponentSeats);
+  // personal settings (Settings → Seat chart); the inline controls below are the same values, at their point of use.
+  // A hidden setting keeps working, so they apply at every level.
+  const layout = useSetting('chamberLayout');
+  const colorBy = useSetting('seatColour');
+  const showComponents = useSetting('partyColourInSeats');
+  const blocShading = useSetting('blocShading'), referenceChamber = useSetting('referenceChamber'), chamberKey = useSetting('chamberKey');
+  const dimOthers = useSetting('dimUnselected'), hoverPopups = useSetting('hoverPopups');
   const previewing = useStore(st => st.preview) === s;
   const committed = useStore(st => st.scenario);
   const evidenceScenario = previewing && committed ? committed : s;
@@ -256,19 +259,19 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
     body = (
       <svg ref={svgRef} viewBox={`40 30 920 ${H - 30}`} role="img" aria-label={`${title ?? L('Knesset seat diagram', 'תרשים מושבי הכנסת')}: ${summary}`}>
         {seats.some(st => st.innerColor) && <desc>{componentDescription}</desc>}
-        {wedges.map(w => <g key={w.band}>
+        {blocShading && wedges.map(w => <g key={w.band}>
           {/* Shared edges are covered by an opaque border, avoiding antialiasing seams. */}
           <path data-bloc-region={bands[w.band].bloc} className={`wedge solid ${bands[w.band].bloc === '__none' ? 'unassigned' : ''}`} d={w.fill}
             style={{ ['--bc' as string]: bands[w.band].color }} />
         </g>)}
         {seats.map((st, i) => {
           const p = pos[rtl ? pos.length - 1 - i : i]; if (!p) return null;
-          const dim = selected && selected !== st.listId;
+          const dim = dimOthers && selected && selected !== st.listId;
           return (
             <g key={i}><circle className={`seat ${dim ? 'dim' : ''}`} cx={cx + p.x * R} cy={cy + p.y * R} r={rad * R} fill={st.color}
               data-seat="" data-bloc={st.bloc ?? "__none"} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? "var(--ink)" : "var(--ink-2)"} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`) ? 4 : 1}
-              onMouseEnter={(e) => onSeat(st, e)} onMouseLeave={hoverBridge.leave} onFocus={(e) => onSeat(st, e)} onBlur={() => setHover(null)}
-              onClick={() => setState({ selectedListId: selected === st.listId ? null : st.listId })}><title>{seatLabel(st)}</title></circle>
+              onMouseEnter={(e) => { if (hoverPopups) onSeat(st, e); }} onMouseLeave={hoverBridge.leave} onFocus={(e) => onSeat(st, e)} onBlur={() => setHover(null)}
+              onClick={(e) => { if (!hoverPopups) onSeat(st, e); setState({ selectedListId: selected === st.listId ? null : st.listId }); }}><title>{seatLabel(st)}</title></circle>
             {st.innerColor && <PartyDot partyId={st.partyId} x={cx+p.x*R} y={cy+p.y*R} r={rad*R*.64} color={st.innerColor} ring={st.color} className={dim?'seat dim':'seat'}/>}
             </g>
           );
@@ -284,14 +287,14 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       {seats.map((st, i) => {
         const x = 24 + (rtl ? 19-i%20 : i%20)*48, y = 16+Math.floor(i/20)*48;
         const bc = s.blocs.find(b => b.id === st.bloc)?.color ?? 'var(--muted)';
-        return <g key={i}><rect data-bloc-region={st.bloc ?? '__none'} x={x-5} y={y-5} width={48} height={48} className="bloc-cell" style={{ ['--bc' as string]: bc }} />
+        return <g key={i}>{blocShading && <rect data-bloc-region={st.bloc ?? '__none'} x={x-5} y={y-5} width={48} height={48} className="bloc-cell" style={{ ['--bc' as string]: bc }} />}
           <rect data-seat="" className="seat" x={x} y={y} width={36} height={36} rx={4} fill={st.color} stroke={changes.gained.has(`${st.listId}:${st.idx}`) ? 'var(--ink)' : 'var(--ink-2)'} strokeWidth={changes.gained.has(`${st.listId}:${st.idx}`)?4:1}
-            onMouseEnter={e => onSeat(st,e)} onMouseLeave={hoverBridge.leave} onClick={() => setState({selectedListId: st.listId})}><title>{seatLabel(st)}</title></rect>
+            onMouseEnter={e => { if (hoverPopups) onSeat(st,e); }} onMouseLeave={hoverBridge.leave} onClick={e => { if (!hoverPopups) onSeat(st,e); setState({selectedListId: st.listId}); }}><title>{seatLabel(st)}</title></rect>
           {st.innerColor && <PartyDot partyId={st.partyId} x={x+18} y={y+18} r={12} color={st.innerColor} ring={st.color}/>}
         </g>;
       })}
       {/* Only the outside edge of each bloc is outlined; there are no per-seat frames. */}
-      {seats.map((st, i) => {
+      {blocShading && seats.map((st, i) => {
         const col = i % 20, row = Math.floor(i / 20);
         const x = 19 + col * 48, y = 11 + row * 48;
         const same = (n: number) => n >= 0 && n < seats.length && seats[n].bloc === st.bloc;
@@ -319,15 +322,15 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
     <div className="chamber">
       {head && <div className="chamber-tools">
         {expert && <>
-          <Seg label={L('Chamber layout', 'פריסה')} value={layout} onChange={(v) => setState({ layout: v })} options={[{ v: 'hemicycle', label: L('Arc', 'קשת') }, { v: 'blocks', label: L('Blocks', 'גושים') }]} />
-          <ChoicePicker label={L('Colour seats by', 'צביעת מושבים לפי')} value={colorBy} options={(['list', 'bloc', 'party'] as const).map(value => ({ value, label: value === 'list' ? L('List', 'רשימה') : value === 'bloc' ? L('Bloc', 'גוש') : L('Party', 'מפלגה'), preview: <ResultPreview s={s} blocs={value === 'bloc'} party={value === 'party'} /> }))} onChange={value => setState({ colorBy: value as typeof colorBy })} />
+          <Seg label={L('Chamber layout', 'פריסה')} value={layout} onChange={(v) => setSetting('chamberLayout', v)} options={[{ v: 'hemicycle', label: L('Arc', 'קשת') }, { v: 'blocks', label: L('Blocks', 'גושים') }]} />
+          <ChoicePicker label={L('Colour seats by', 'צביעת מושבים לפי')} value={colorBy} options={(['list', 'bloc', 'party'] as const).map(value => ({ value, label: value === 'list' ? L('List', 'רשימה') : value === 'bloc' ? L('Bloc', 'גוש') : L('Party', 'מפלגה'), preview: <ResultPreview s={s} blocs={value === 'bloc'} party={value === 'party'} /> }))} onChange={value => setSetting('seatColour', value as typeof colorBy)} />
         </>}
         {expertControl}{standardControl}
       </div>}
       {/* on the board the bloc bar directly below already carries this line; Compare's chambers stand alone */}
       {compactProp && <BlocMajorities s={s} r={r} />}
       {body}
-      {hasChanges && <div className="baseline-mini">
+      {hasChanges && referenceChamber && <div className="baseline-mini">
         <span className="small muted">{referenceLabel(labelReference,lang).name}</span>
         <svg viewBox={`40 30 920 ${H - 30}`} role="img" aria-label={referenceLabel(labelReference,lang).name}>
           {annularRegions(pos, baselineSeats.map(st=>blocDisplayOrder(base).indexOf(st.bloc)),rad).map(w=>{
@@ -354,7 +357,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
         </Floating>
       )}
       {!compactProp && (
-        <div className="legend" role="group" aria-label={L('Lists in the Knesset', 'הרשימות בכנסת')} style={{ marginTop: 6 }}>
+        <div className="legend" data-key-off={chamberKey ? undefined : ''} role="group" aria-label={L('Lists in the Knesset', 'הרשימות בכנסת')} style={{ marginTop: 6 }}>
           {seats.some(st=>st.bloc===null) && <span className="row no-bloc-legend"><span className="swatch bloc-swatch unassigned" style={{['--bc' as string]:'var(--muted)'}} />{L('No bloc','ללא גוש')}</span>}
           {componentRows.map(({l,p,n}) => <button key={`${l.id}:${p.id}`} aria-pressed={selected === l.id} onClick={()=>setState({selectedListId:selected === l.id ? null : l.id})}><PartyKey partyId={p.id} color={partyDisplayColor(l,p.id)} ring={l.color}/>{componentName(l,p)} <b>{n}</b></button>)}
           {legendRows.filter(({l})=>!componentRows.some(row=>row.l.id===l.id)).map(({ l, n }) => (

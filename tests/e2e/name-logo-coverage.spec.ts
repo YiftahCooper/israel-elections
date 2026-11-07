@@ -7,7 +7,7 @@ for(const election of ['k26','k25','k12','k1','k21']) test(`${election}: names a
  mkdirSync('.backup-scratch/feedback-data/after',{recursive:true});
  for(const lang of ['en','he'])for(const theme of ['light','dark'])for(const width of [1500,1024,390]){
   const context = await browser.newContext({viewport:{width,height:1000}});
-  await context.addInitScript(({lang,theme})=>localStorage.setItem('israel-elections:v1',JSON.stringify({lang,theme,level:'expert',hintDismissed:true})),{lang,theme});
+  await context.addInitScript(({lang,theme})=>localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang,theme,level:'expert',hintDismissed:true})),{lang,theme});
   const page = await context.newPage();page.on('pageerror',e=>errors.push(e.message));
   page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
   await page.goto('/');
@@ -38,7 +38,7 @@ for(const election of ['k26','k25','k12','k1','k21']) test(`${election}: names a
 
 test('all 26 elections expose English names in surplus partner menus',async({page})=>{
  test.setTimeout(180_000);
- await page.addInitScript(()=>localStorage.setItem('israel-elections:v1',JSON.stringify({lang:'en',theme:'light',level:'expert',hintDismissed:true})));
+ await page.addInitScript(()=>localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang:'en',theme:'light',level:'expert',hintDismissed:true})));
  await page.goto('/');
  const picker=page.getByRole('button',{name:'Election',exact:true});
  for(let n=1;n<=26;n++){

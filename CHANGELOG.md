@@ -1,5 +1,11 @@
 # Changelog
 
+## 7 November 2026 — Settings
+
+- Integrate Settings with the colour guard: preserve global party fills, dot separators and picker advice across display settings and large-text layouts.
+
+- Rebuilt Settings as one searchable bilingual popup (phone: full screen) with levels, group resets and Undo; every setting now applies wherever it is relevant, with new defaults (Device theme, joint lists by party, parties with no seats hidden) and accessibility options at every level; every percentage now shows at most 0–3 decimals (1 by default, 2 at Expert), never shown on the wrong side of the threshold (one more digit there, the exact share in the tooltip); Compare's shares, percentage-point changes and seatless rows follow Settings, its copy mode is a Settings row, and large text now takes the layout of the narrower page instead of wrapping.
+
 ## 6 November 2026 — data audit
 
 - Keep party fills stable across elections with global sibling-colour checks and neutral dot separators.
@@ -7,6 +13,7 @@
 - Guard automatic colours and custom picker advice across the app; preserve researched party hues and test preset distinctness and contrast in both themes.
 
 - After the election: distinguish government members, support roles and individual votes; show unknown totals honestly, explain vote reconciliation behind help, and keep localised date ranges in reading order.
+- Sources: an enforced evidence policy (tiers, independence, certainty confirmed/probable/provisional/disputed/unknown); the gaps register now ranks gaps by importance and certainty.
 - Families: count Otzma Yehudit only in Radical right in 2015, as in 2019–2022; the national-religious family keeps Yachad.
 - Research: separate government membership, outside support, investiture votes and individual exceptions; validate explicit uncertainty across recorded governments and document unresolved historical authentication.
 
