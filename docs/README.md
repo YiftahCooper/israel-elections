@@ -12,6 +12,7 @@ Start with the [project overview](../README.md) for the app’s purpose and loca
 | [Glossary sources](research/glossary-sources.md) | Evidence and link checks for the bilingual glossary |
 | [Membership audit](research/elected-names-odata-audit.md) | Official opening-membership cross-checks and remaining differences |
 | [Design critiques](../.impeccable/critique/) | Archived Impeccable review findings |
+| [Individual MKs design](design/individual-mks.md) | Proposed design for replacements, faction changes and members acting apart from their list |
 | [Decision records](decisions/README.md) | Evidence for the major choices already implemented |
 | [Contributing](../CONTRIBUTING.md) | Checks, source standards and commit style |
 | [Changelog](../CHANGELOG.md) | User-visible changes reconstructed from repository history |
