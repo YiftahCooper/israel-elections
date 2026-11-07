@@ -2,6 +2,7 @@
 
 ## 7 November 2026 — Settings
 
+- Grouping and coalition edits count as changes again: moving lists or parties between blocs, creating, renaming or deleting a bloc, custom groupings and coalition roles appear in “N changes”, History, markers and the scenario tint, with “Votes and seats unchanged” when nothing else changed; only colours are exempt (a bloc recolour is still no change).
 - Map: keep Hebrew sentence punctuation outside Latin-reference isolation, join the Ramadin source splice exactly, and name OpenStreetMap in full.
 
 

@@ -6,7 +6,7 @@ import { SeatDelta } from './SeatDelta.tsx';
 import { Info } from './ui.tsx';
 import {isFamilyGrouping} from '../../families/labels.ts';
 import { useActiveReference } from '../useActiveReference.ts';
-import { changeCount, changesLabel, referenceLabel, resultChanges } from '../derive.ts';
+import { changeCount, changesLabel, groupingOnly, referenceLabel, resultChanges, unchangedResultNote } from '../derive.ts';
 import { allocationOf } from '../derive.ts';
 // "What changed": the session's net effect against the official result, kept to one line however many edits
 // were made (seats that moved, the blocs, the majority), with the full undoable history one click away.
@@ -79,11 +79,12 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
     const now = blocTotals(s, r);
     let was: Map<string | null, number> | null = null;
     const b = groupingBaseline(s, base);
-    if (!b) return null; // Custom analysis has no official grouping to compare.
     if (b) was = blocTotals(b, allocationOf(b));
     return s.blocs.map((b) => ({ b, n: now.get(b.id) ?? 0, d: was ? (now.get(b.id) ?? 0) - (was.get(b.id) ?? 0) : null }));
   }, [s, r, base, baseR]);
   const edited = resultChanges(s,base).length > 0;
+  // a grouping or coalition change is a change, but the result itself is untouched: say so
+  const resultUnchanged = groupingOnly(s, base);
   const familyGrouping = isFamilyGrouping(s);
   const majority = Math.floor(s.rules.seats / 2) + 1;
   const holder = blocs?.find((x) => x.n >= majority);
@@ -94,10 +95,10 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
     <div ref={line} className={`session ${edited ? '' : 'idle'}`} role="status" aria-live="polite">
       <FittingLabel full={label} short={reference ? String(count) : compact} reference={namedReference} locale={appLocale(lang)} />
       <span ref={changes} className="session-changes">
-        <Info title={L('Your changes', 'השינויים שלכם')}>{L('Reference: ', 'נקודת השוואה: ')}<bdi>{referenceLabel(reference, lang).name}</bdi>. {L('Counts result-changing actions from the named reference, not individual fields. Colours and bloc groupings do not count. History shows all changes from the official result; undo, redo or return to an earlier change there.', 'סופר פעולות שמשנות את התוצאה ביחס לנקודת ההשוואה הנקובה, ולא שדות בודדים. צבעים וחלוקות לגושים אינם נספרים. בהיסטוריה מוצגים כל השינויים מהתוצאה הרשמית; אפשר לבטל, לבצע שוב או לחזור לשינוי קודם.')}</Info>
+        <Info title={L('Your changes', 'השינויים שלכם')}>{L('Reference: ', 'נקודת השוואה: ')}<bdi>{referenceLabel(reference, lang).name}</bdi>. {L('Counts your actions since the named reference, not individual fields: votes, rules, lists, blocs and coalition roles. Colours do not count. History shows all changes from the official result; undo, redo or return to an earlier change there.', 'סופר את הפעולות שלכם מאז נקודת ההשוואה הנקובה, ולא שדות בודדים: קולות, כללים, רשימות, גושים ותפקידים בקואליציה. צבעים אינם נספרים. בהיסטוריה מוצגים כל השינויים מהתוצאה הרשמית; אפשר לבטל, לבצע שוב או לחזור לשינוי קודם.')}</Info>
         {edited && <>
           {moves.length === 0
-            ? <span className="muted">{L('No seats changed', 'המנדטים לא השתנו')}</span>
+            ? <span className="muted">{resultUnchanged ? unchangedResultNote(lang) : L('No seats changed', 'המנדטים לא השתנו')}</span>
             : <span className="moves">
                 {shown.map((m) => <span key={m.id}><bdi>{m.label(lang)}</bdi> {m.n} <span dir="ltr">(<SeatDelta value={m.d} />)</span></span>)}
                 {moves.length > MAX_MOVES && <span className="muted">{L(`+${moves.length - MAX_MOVES} more`, `ועוד ${moves.length - MAX_MOVES}`)}</span>}

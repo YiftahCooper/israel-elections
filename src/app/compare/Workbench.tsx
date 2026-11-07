@@ -6,7 +6,7 @@ import { createPortal } from 'react-dom';
 import { ArrowLeft, ArrowRight, ArrowLeftRight, MoreHorizontal, Redo2, Undo2 } from 'lucide-react';
 import { inputPart } from '../../model/editScopes.ts';
 import { PARTS, partSnapshot } from '../../model/parts.ts';
-import { allocationOf, editPathLabel, electedOf, listLabel, markerReference, METHODS, resultChanges } from '../derive.ts';
+import { allocationOf, changeCount, editPathLabel, electedOf, listLabel, markerReference, METHODS, resultChanges } from '../derive.ts';
 import { baselineOf } from '../factionDefaults.ts';
 import { changeText } from '../changeValue.tsx';
 import { useL, useLang } from '../i18n.ts';
@@ -320,7 +320,7 @@ function SideCard({ x, picker, focused, onFocus, align }: { x: SideModel; picker
   const L = useL(), lang = useLang();
   const elections = useStore((st) => st.elections);
   const e = elections.find((y) => y.id === x.sc.electionId);
-  const changes = resultChanges(x.sc, baselineOf(x.ds)).length;
+  const changes = resultChanges(x.sc, baselineOf(x.ds)).length ? changeCount(x.sc, null) : 0; // actions, as the switcher and History count them
   const title = `${x.year} · ${x.name}`;
   return <section className={`cmp-card ${focused ? 'focused' : ''}`} data-side={align} data-role={x.role} style={{ borderColor: x.frame }} dir={lang === 'he' ? 'rtl' : 'ltr'} onPointerDown={onFocus} onFocus={onFocus} aria-label={title}>
     <div className="cmp-card-head">

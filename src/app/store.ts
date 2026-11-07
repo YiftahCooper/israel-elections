@@ -1,6 +1,6 @@
-import { carryEditScopes, resultDiffs } from '../model/editScopes.ts';
+import { carryEditScopes, inputDiffs } from '../model/editScopes.ts';
 import { nextCopyName, scenarioDirty } from './scenarioDocument.ts';
-import { ACTION_CLASSIFICATION, isFactAction, hasAppearance, hasAnalysis, factLog } from '../model/actionClassification.ts';
+import { ACTION_CLASSIFICATION, isFactAction, hasAppearance, factLog } from '../model/actionClassification.ts';
 import { baselineOf, freshScenario, factionDefault, setFactionDefault } from './factionDefaults.ts';
 import { validItemAnswers, validAnswers, sourceChoice, sourceValue, type PreferenceAnswers, type PreferenceAsk, type PreferenceId } from './preferences.ts';
 import type { Family } from '../families/model.ts';
@@ -132,7 +132,7 @@ export function setState(patch: Partial<State> | ((s: State) => Partial<State>))
   if ('preview' in p && Object.keys(p).length === 1) { emit(); return; } // previews are never persisted
   // Keep the official palette independently of whichever scenario is currently open.
   if(p.scenario && Array.isArray(p.scenario.log) && !factLog(p.scenario).length) {
-    try { localStorage.setItem(`israel-elections:appearance:${p.scenario.electionId}`,JSON.stringify(p.scenario.log.map(e=>e.action).filter(a=>ACTION_CLASSIFICATION[a.type]==='appearance'||ACTION_CLASSIFICATION[a.type]==='view'||a.type==='setListMeta'&&Object.keys(a.patch).every(k=>k==='color')).map(a=>a.type==='setBlocAppearance'?{type:a.type,blocs:a.blocs}:a))); } catch { /* workspace/save can still retain it */ }
+    try { localStorage.setItem(`israel-elections:appearance:${p.scenario.electionId}`,JSON.stringify(p.scenario.log.map(e=>e.action).filter(a=>ACTION_CLASSIFICATION[a.type]==='appearance'||ACTION_CLASSIFICATION[a.type]==='view'||a.type==='setListMeta'&&Object.keys(a.patch).every(k=>k==='color')))); } catch { /* workspace/save can still retain it */ }
   }
   persist();
   emit();
@@ -291,7 +291,7 @@ export async function openElection(id: ElectionId, from?: { id?: string; name: s
 export function scenarioKey(st: Pick<State, 'scenario' | 'reference'> & Partial<Pick<State, 'saved' | 'datasets'>> = state): string | null {
   const s = st.scenario;
   if (!s) return null;
-  if((hasAppearance(s)||hasAnalysis(s))&&(!factLog(s).length||st.datasets?.[s.electionId]&&!resultDiffs(s,baselineOf(st.datasets[s.electionId]!)).length)) return 'official';
+  if(hasAppearance(s)&&(!factLog(s).length||st.datasets?.[s.electionId]&&!inputDiffs(s,baselineOf(st.datasets[s.electionId]!)).length)) return 'official';
   const authored = s.log.some(e => e.action.type === 'rename' || e.action.type === 'setDescription');
   if (!st.saved?.some(x => x.id === s.id) && !factLog(s).length && !authored) return 'official';
   const entry = st.saved?.find(x => x.id === s.id);

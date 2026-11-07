@@ -18,7 +18,7 @@ export function describe(a: Action, s: Scenario, lang: Lang): string {
     case 'copyFrom': return describeCopy(a.provenance, (a.provenance.targetListIds ?? []).map(n), lang, s.electionId);
     case 'familyOperation': return (a.operation === 'group' ? (he ? 'קיבוץ לפי משפחה: ' : 'Family grouping: ') : (he ? 'שינוי קולות המשפחה: ' : 'Scaled family votes: ')) + familyLabel(a.definition,lang);
     case 'resetColors': return he ? 'הצבעים אופסו' : 'Colours reset';
-    case 'setBlocAppearance': return he ? 'תצוגת הגושים השתנתה' : 'Bloc appearance changed';
+    case 'setBlocAppearance': return he ? 'צבעי הגושים השתנו' : 'Bloc colours changed';
     case 'setPartyColor': return he ? 'צבע המפלגה השתנה' : 'Party colour changed';
     case 'setIdentityColor': return he ? 'צבע התרחיש השתנה' : 'Scenario colour changed';
     // named by its outcome, so Undo and History say what the roles became
@@ -46,7 +46,12 @@ export function describe(a: Action, s: Scenario, lang: Lang): string {
     case 'addList': return he ? `רשימה חדשה: ${a.nameHe}` : `New list: ${s.lists.some(l => l.id === a.newId) ? n(a.newId) : englishLabel(null,a.nameHe)}`;
     case 'removeList': return he ? `הוסרה רשימה` : `Removed a list`;
     case 'setWithdrawn': return `${n(a.listId)}: ${a.withdrawn ? (he ? 'פרשה' : 'withdrawn') : (he ? 'הוחזרה' : 'reinstated')}`;
-    case 'setListMeta': return he ? `${n(a.listId)}: עריכת פרטים` : `${n(a.listId)}: edited details`;
+    case 'setListMeta': {
+      // a bloc move names where the list went, like a party's move (setPartyBloc)
+      if (Object.keys(a.patch).length === 1 && 'bloc' in a.patch) { const b = s.blocs.find((x) => x.id === a.patch.bloc);
+        return he ? `${n(a.listId)} ← ${b ? groupingName(b, lang) : 'ללא גוש'}` : `${n(a.listId)} → ${b ? groupingName(b, lang) : 'no bloc'}`; }
+      return he ? `${n(a.listId)}: עריכת פרטים` : `${n(a.listId)}: edited details`;
+    }
     case 'setAgreement': return `${a.agreement.members.map(n).join(' ⇄ ')}: ${a.agreement.enabled ? (he ? 'הסכם פעיל' : 'agreement on') : (he ? 'הסכם כבוי' : 'agreement off')}`;
     case 'removeAgreement': return he ? 'הוסר הסכם עודפים' : 'Removed an agreement';
     case 'candidates': return he ? `${n(a.listId)}: עריכת מועמדים` : `${n(a.listId)}: candidates edited`;

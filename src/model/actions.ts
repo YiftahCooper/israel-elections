@@ -100,9 +100,9 @@ function interleave<T>(arrays: T[][]): T[] {
 }
 
 export function applyAction(s0: Scenario, action: Action, now = new Date().toISOString(), ctx: ActionContext = {}): Scenario {
-  // Old logs used setBlocs for palette/name edits. Normalize on replay as well as live edits.
-  if(action.type==='setBlocs'&&!action.unassignAll&&action.blocs.length===s0.blocs.length&&action.blocs.every((b,i)=>s0.blocs[i]?.id===b.id))
-    action={type:'setBlocAppearance',blocs:action.blocs,...(action.name!==undefined?{name:action.name}:{})};
+  // A bloc edit that only recolours is appearance; renaming, adding or removing a bloc stays a change.
+  if(action.type==='setBlocs'&&!action.unassignAll&&(action.name===undefined||action.name===s0.customGroupingName)&&action.blocs.length===s0.blocs.length&&action.blocs.every((b,i)=>s0.blocs[i]?.id===b.id&&s0.blocs[i].nameHe===b.nameHe&&s0.blocs[i].nameEn===b.nameEn))
+    action={type:'setBlocAppearance',blocs:action.blocs};
   let s: Scenario = s0;
   const baseList = (id: string) => ctx.base?.lists.find((l) => l.id === id) ?? null;
   switch (action.type) {
@@ -140,7 +140,7 @@ export function applyAction(s0: Scenario, action: Action, now = new Date().toISO
     }
     case 'setBlocAppearance':
       need(action.blocs.length===s.blocs.length&&action.blocs.every(b=>s.blocs.some(x=>x.id===b.id)), 'blocs', 'Appearance cannot change bloc membership.');
-      s={...s,blocs:s.blocs.map(b=>{const v=action.blocs.find(x=>x.id===b.id)!;return {...b,color:v.color,nameHe:v.nameHe,nameEn:v.nameEn};}),customGroupingName:action.name??s.customGroupingName,...(action.name!==undefined?{blocSchemeId:null}:{})};break;
+      s={...s,blocs:s.blocs.map(b=>({...b,color:action.blocs.find(x=>x.id===b.id)!.color}))};break;
     case 'setPartyColor':
       need(listById(s,action.listId).parties?.some(p=>p.id===action.partyId),'party','Unknown party.');
       s=replaceList(s,action.listId,l=>({...l,parties:l.parties?.map(p=>p.id===action.partyId?{...p,color:action.color,customColor:true}:p)}));break;

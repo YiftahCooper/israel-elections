@@ -166,7 +166,7 @@ export type Action =
   | { type: 'copyFrom'; provenance: CopyProvenance; actions: Action[] }
   | { type: 'familyOperation'; definition: Family; operation: 'group'; name?: string; placements: Record<string, string> }
   | { type: 'familyOperation'; definition: Family; operation: 'scale'; allocations: {listId:string; before:number; votes:number}[]; source: SourceChoice; target:number; registeredDelta:number }
-  | { type: 'setBlocAppearance'; blocs: BlocDef[]; name?: string }
+  | { type: 'setBlocAppearance'; blocs: BlocDef[] }
   | { type: 'setPartyColor'; listId: string; partyId: string; color: string }
   | { type: 'resetColors' }
   | { type: 'setIdentityColor'; color: string }
@@ -401,7 +401,7 @@ const copyProvenance = shape({ electionId: oneOf(...ELECTION_IDS), sourceName: s
   value: optional(string), paths: array(strings) });
 const actionFields: Record<Action['type'], Check> = {
   familyOperation: (x) => record(x) && validFamily(x.definition) && (x.operation === 'group' ? optional(string)(x.name) && record(x.placements) && Object.values(x.placements).every(v => ['selected','mixed','other'].includes(String(v))) : x.operation === 'scale' && array(shape({listId:string,before:whole,votes:whole}))(x.allocations) && signedWhole(x.registeredDelta) && whole(x.target) && shape({kind:oneOf('new','proportional','transfer'),listId:optional(string)})(x.source)),
-  setBlocAppearance: shape({ blocs: array(bloc), name: optional(string) }),
+  setBlocAppearance: shape({ blocs: array(bloc) }),
   setPartyColor: shape({ listId: string, partyId: string, color: string }),
   resetColors: shape({}),
   setIdentityColor: shape({ color: isHexColour }),

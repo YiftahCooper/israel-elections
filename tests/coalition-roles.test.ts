@@ -6,8 +6,8 @@ import type { ElectionDataset } from '../src/data/schema.ts';
 import { allocate } from '../src/engine/allocate.ts';
 import { applyAction } from '../src/model/actions.ts';
 import { NO_COALITION, scenarioFromDataset, toEngineInput, validateScenario, withCoalitionRole, type Scenario } from '../src/model/scenario.ts';
-import { ACTION_CLASSIFICATION, isAnalysisAction, isFactAction } from '../src/model/actionClassification.ts';
-import { coalitionPieces, referenceChanges, resultChanges } from '../src/app/derive.ts';
+import { ACTION_CLASSIFICATION, factLog, isFactAction } from '../src/model/actionClassification.ts';
+import { coalitionPieces, groupingOnly, referenceChanges, resultChanges } from '../src/app/derive.ts';
 import { governmentVote, minimalWinning, recordedRoles, recordedVoteGap } from '../src/app/coalitions.ts';
 import { aftermathRecords } from '../src/data/aftermath-runtime.ts';
 import { describe as describeAction } from '../src/app/actionDescription.ts';
@@ -64,15 +64,16 @@ describe('roles in the model', () => {
     expect(validateScenario(s)).toEqual([]);
     expect(validateScenario({ ...s, coalition: { in: [], out: [] } })).toContain('invalid coalition choices');
   });
-  it('a role change is the same class as coalition membership today (analysis), with a named undo', () => {
+  it('a role change is a counted change that leaves votes and seats unchanged, with a named undo', () => {
     const action = { type: 'setCoalition', coalition: rabin } as const;
-    expect(ACTION_CLASSIFICATION.setCoalition).toBe('analysis');
-    expect(isAnalysisAction(action)).toBe(true);
-    expect(isFactAction(action)).toBe(false);
+    expect(ACTION_CLASSIFICATION.setCoalition).toBe('edit');
+    expect(isFactAction(action)).toBe(true);
     const s = applyAction(base, action);
     expect(toEngineInput(s)).toEqual(toEngineInput(base));
-    expect(resultChanges(s, base)).toEqual([]);
+    expect(factLog(s)).toHaveLength(1);
+    expect(resultChanges(s, base)).toEqual([['coalition', 'in'], ['coalition', 'support']]);
     expect(referenceChanges(s, base)).toEqual([['coalition', 'in'], ['coalition', 'support']]);
+    expect(groupingOnly(s, base)).toBe(true);
     expect(describeAction(action, s, 'en')).toBe('Coalition: 3 in · 2 outside support');
     expect(describeAction(action, s, 'he')).toBe('קואליציה: 3 בפנים · 2 תמיכה מבחוץ');
     expect(describeAction({ type: 'setCoalition', coalition: NO_COALITION }, s, 'en')).toBe('Coalition choices cleared');

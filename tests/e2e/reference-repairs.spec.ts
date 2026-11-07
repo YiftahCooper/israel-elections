@@ -56,7 +56,8 @@ for (const separate of [false, true]) test(`B2 saved custom grouping draws paire
   const votes = page.getByRole('region', { name: 'List details' }).getByLabel('Votes', { exact: true });
   await votes.fill('1300000'); await votes.press('Enter'); await page.keyboard.press('Escape');
   await expect(page.locator('.session')).toContainText(separate ? '(▲ +2)' : '(▲ +5)');
-  if(!separate){await expect(page.locator('.session')).toContainText('1 change from the official result');await expect(page.locator('.session')).not.toContainText('Review coalition');}
+  // a saved grouping is a saved scenario: it becomes the reference, and its blocs are compared with the vote edit
+  if(!separate){await expect(page.locator('.session')).toContainText('1 change from Review A');await expect(page.locator('.session')).toContainText('Review coalition 72 (▲ +4)');}
   await page.getByRole('tab', { name: 'Compare', exact: true }).click();
   await expect(page.locator('.cmp')).not.toContainText('no counterpart in');
   // the reference and the scenario side by side, each with its blocs
@@ -77,7 +78,8 @@ test('B5 prose commits are individually undoable and leave coalition selection a
   await expect(page.locator('.scn-form .edit-marker')).toHaveCount(0);
   await expect(page.locator('.scn-save')).toBeEnabled();
   await expect(page.getByRole('button', { name: 'Undo: Scenario description changed', exact: true })).toBeVisible();
-  await expect(page.locator('.session')).toContainText('No changes');
+  // the coalition role is the one change; the description is not
+  await expect(page.locator('.session')).toContainText('1 change from the official result');
   await page.locator('.band').getByRole('button', { name: 'Undo: Scenario description changed', exact: true }).click();
   await expect(description).toHaveValue('');
   await page.getByRole('tab', { name: 'Coalitions', exact: true }).click();

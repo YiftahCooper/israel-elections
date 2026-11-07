@@ -17,20 +17,22 @@ describe('view-only choices', () => {
       expect(s.log).toHaveLength(1);
     }
   });
-  it('faction counting and coalition inspection do not change facts or allocation', () => {
+  it('faction counting is a view; a coalition role is a change that leaves the allocation alone', () => {
     const joint = base.lists.find(l => (l.parties?.length ?? 0) > 1)!;
-    const s = applyAction(applyAction(base, { type: 'setFactionSplit', listId: joint.id, split: true }), { type: 'setCoalition', coalition: { in: [joint.id], support: [], abstain: [], out: [] } });
+    const split = applyAction(base, { type: 'setFactionSplit', listId: joint.id, split: true });
+    expect(scenarioKey({ scenario: split, reference: null })).toBe('official');
+    const s = applyAction(split, { type: 'setCoalition', coalition: { in: [joint.id], support: [], abstain: [], out: [] } });
     expect(toEngineInput(s)).toEqual(toEngineInput(base));
-    expect(resultChanges(s, base)).toEqual([]);
+    expect(resultChanges(s, base)).toEqual([['coalition','in']]);
     expect(referenceChanges(s, base)).toEqual([['coalition','in']]);
-    expect(scenarioKey({ scenario: s, reference: null })).toBe('official');
+    expect(scenarioKey({ scenario: s, reference: null })).toMatch(/^draft:/);
   });
-  it('membership and custom schemes stay marked analysis after selecting another sourced scheme', () => {
+  it('membership and custom schemes stay marked changes after selecting another sourced scheme', () => {
     const s = applyAction(base, { type: 'applyBlocScheme', schemeId: base.blocSchemes!.at(-1)!.id });
     const edited = applyAction(s, { type: 'setListMeta', listId: s.lists[0].id, patch: { bloc: null } });
     expect(referenceChanges(edited, base).length).toBeGreaterThan(0);
-    expect(scenarioKey({ scenario: edited, reference: null })).toBe('official');
-    expect(resultChanges(edited,base)).toEqual([]);
+    expect(scenarioKey({ scenario: edited, reference: null })).toMatch(/^draft:/);
+    expect(resultChanges(edited,base).length).toBeGreaterThan(0);
     expect(referenceChanges(applyAction(s, { type: 'setBlocs', blocs: s.blocs, name: 'Mine' }), base).length).toBeGreaterThan(0);
   });
   it('legacy saved logs with view choices and assigned identity remain official, clean and intact', () => {
@@ -46,8 +48,11 @@ it('classifies every declared action type explicitly (including payload-dependen
   const types = [...new Set([...source.matchAll(/type: '([^']+)'/g)].map(m => m[1]))].sort();
   expect(Object.keys(ACTION_CLASSIFICATION).sort()).toEqual(types);
   expect(isFactAction({ type: 'startPart', part: 'blocs', source: 'preset', presetId: 'pm-recommendations' })).toBe(false);
-  expect(isFactAction({ type: 'startPart', part: 'blocs', source: 'blank', name: 'Mine' })).toBe(false);
-  expect(isFactAction({ type: 'startPart', part: 'coalitions', source: 'blank' })).toBe(false);
+  expect(isFactAction({ type: 'startPart', part: 'blocs', source: 'official' })).toBe(false);
+  expect(isFactAction({ type: 'startPart', part: 'blocs', source: 'blank', name: 'Mine' })).toBe(true);
+  expect(isFactAction({ type: 'startPart', part: 'coalitions', source: 'blank' })).toBe(true);
+  expect(isFactAction({ type: 'setBlocAppearance', blocs: [] })).toBe(false);
+  expect(isFactAction({ type: 'applyBlocScheme', schemeId: 'x' })).toBe(false);
 });
 
 it('changing the view of a saved factual scenario stays clean; dropping custom membership does not', () => {

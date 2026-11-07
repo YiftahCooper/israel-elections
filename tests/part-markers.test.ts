@@ -35,7 +35,7 @@ for(const part of Object.keys(PARTS) as Part[])it(`${part}: whole replacement gi
 it('family grouping is one marker; donor/list/bloc fields are not individually marked',()=>{
  const b=scenarioFromDataset(JSON.parse(readFileSync(new URL('../public/data/k12.json',import.meta.url),'utf8'))),f=parseFamily(JSON.stringify(family)),s=applyAction(b,groupingAction(f,b,'en'));
  expect(referenceChanges(s,b)).toEqual([['parts','blocs']]);
- expect(resultChanges(s,b)).toEqual([]);
+ expect(resultChanges(s,b)).toEqual([['parts','blocs']]);
  for(const l of s.lists)expect(markerPath(s,b,['lists',l.id,'bloc'])).toBe(null);
  for(const bloc of s.blocs)expect(markerPath(s,b,['blocs',bloc.id,'nameEn'])).toBe(null);
  expect(s.blocs.find(b=>b.id==='selected')!.color).toBe(familyColor(f));
@@ -58,7 +58,10 @@ it('detaching a sourced grouping for one list move or one bloc rename gives just
  const moved=applyAction(s,{type:'setListMeta',listId:list.id,patch:{bloc:null}});
  expect(referenceChanges(moved,base).filter(p=>p[0]!=='parts')).toEqual([['lists',list.id,'bloc']]);
  const bloc=s.blocs[0],renamed=applyAction(s,{type:'setBlocs',blocs:s.blocs.map(b=>b.id===bloc.id?{...b,nameEn:'Renamed'}:b)});
- expect(referenceChanges(renamed,base)).toEqual([]);
+ expect(referenceChanges(renamed,base)).toEqual([['blocs',bloc.id,'nameEn']]);
+ // a recolour of the same bloc is appearance: no marker
+ const recoloured=applyAction(s,{type:'setBlocs',blocs:s.blocs.map(b=>b.id===bloc.id?{...b,color:'#123456'}:b)});
+ expect(referenceChanges(recoloured,base)).toEqual([]);
 });
 it('a list-scoped replacement retains unrelated edits and has one scoped marker',()=>{
  const other=base.lists[1].id;

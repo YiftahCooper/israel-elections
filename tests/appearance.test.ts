@@ -20,7 +20,7 @@ it('classifies every scenario and list field; new fields require a decision',()=
 });
 for(const id of ['k26','k25','k1'] as const)it(`${id}: appearance is saved without factual edits, resets are independent`,()=>{
  const ds=id==='k1'?JSON.parse(readFileSync(new URL('../public/data/k1.json',import.meta.url),'utf8')):loadDataset(id),base=scenarioFromDataset(ds),ctx={base};
- let s=applyAction(base,{type:'setBlocs',blocs:base.blocs.map(b=>({...b,color:'#abcdef',nameEn:'Display name'}))},undefined,ctx);
+ let s=applyAction(base,{type:'setBlocs',blocs:base.blocs.map(b=>({...b,color:'#abcdef'}))},undefined,ctx);
  s=applyAction(s,{type:'setListMeta',listId:s.lists[0].id,patch:{color:'#123456'}},undefined,ctx);
  const joint=s.lists.find(l=>l.parties?.length);
  if(joint)s=applyAction(s,{type:'setPartyColor',listId:joint.id,partyId:joint.parties![0].id,color:'#654321'},undefined,ctx);

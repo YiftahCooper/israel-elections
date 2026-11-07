@@ -3,7 +3,7 @@ import { factLog } from '../../model/actionClassification.ts';
 import { useActiveReference } from '../useActiveReference.ts';
 import { describe } from '../actionDescription.ts';
 import { voteSourceLabel } from '../voteEdit.ts';
-import { baselineOf, resultChanges, editPathLabel, changeCount, changesLabel } from '../derive.ts';
+import { baselineOf, resultChanges, editPathLabel, changeCount, changesLabel, groupingOnly, unchangedResultNote } from '../derive.ts';
 import { changeText, ChangeValue } from '../changeValue.tsx';
 import { useMemo } from 'react';
 import { type Scenario } from '../../model/scenario.ts';
@@ -36,7 +36,7 @@ export function ScenarioSwitcher({ s, ds }: { s: Scenario; ds: ElectionDataset }
     const referenceAction = [...markerBase.log].reverse().map(e => e.action).find(a => ['setVotes', 'redistribute', 'transfer', 'addVoters', 'scaleAll', 'setTurnout'].includes(a.type));
     const sourceKey = (a: typeof action) => !a || a.type === 'redistribute' ? 'proportional' : a.type === 'setVotes' || a.type === 'addVoters' ? 'new' : a.type === 'transfer' ? `transfer:${a.from}:${a.to}` : a.type;
     const exceptional = action && changedVotes && sourceKey(action) !== sourceKey(referenceAction);
-    return [formatDate(date, lang), count ? `${count} ${L(count === 1 ? 'change' : 'changes', 'שינויים')}` : '', status.includes('could not') || status.includes('לא הוחלו') ? status : '', exceptional ? source : '', ...rules].filter(Boolean).join(' · ');
+    return [formatDate(date, lang), count ? changesLabel(count, null, lang, true) : '', count && groupingOnly(x, markerBase) ? unchangedResultNote(lang) : '', status.includes('could not') || status.includes('לא הוחלו') ? status : '', exceptional ? source : '', ...rules].filter(Boolean).join(' · ');
   };
   const options: Choice[] = [{ value: 'official', label: L('Official result', 'התוצאה הרשמית'), detail: details(official, ds.electionDate, L('Official', 'רשמי')), preview: preview(official, true) }, ...entries.map(x => ({ value: x.id, label: x.name, detail: details(x.scenario, x.savedAt, x.failed ? L(`Saved · ${x.failed} changes could not be replayed`, `שמור · ${x.failed} שינויים לא הוחלו מחדש`) : L('Saved', 'שמור')), preview: preview(x.scenario) })),
     ...Object.entries(drafts).filter(([, x]) => x.scenario?.electionId === s.electionId).map(([key, x]) => ({ value: key, label: `${x.scenario!.name || L('Untitled scenario', 'תרחיש ללא שם')} *`, detail: details(x.scenario!, x.scenario!.log.at(-1)?.at ?? ds.electionDate, L('Session draft · undo kept', 'טיוטת מפגש · הביטול נשמר')), preview: preview(x.scenario!) }))];
@@ -48,5 +48,5 @@ export function ScenarioSwitcher({ s, ds }: { s: Scenario; ds: ElectionDataset }
     if (key === 'official') openOfficial();
     else if (drafts[key]) restoreDraft(key);
     else { const x = saved.find(y => y.id === key); if (x) void openSaved(x); }
-  }}><details className="scenario-changes"><summary>{L('Current scenario', 'התרחיש הנוכחי')} · {changesLabel(changeCount(s, reference), reference, lang)}</summary><ul>{resultChanges(s, reference ?? baselineOf(ds)).map(p => <li key={p.join('/')}><bdi>{editPathLabel(s, p, lang, reference ?? baselineOf(ds))}</bdi>: <ChangeValue s={s} path={p} lang={lang} /></li>)}</ul></details></ChoicePicker>;
+  }}><details className="scenario-changes"><summary>{L('Current scenario', 'התרחיש הנוכחי')} · {changesLabel(changeCount(s, reference), reference, lang)}{changeCount(s, reference) > 0 && groupingOnly(s, reference ?? official) ? ` · ${unchangedResultNote(lang)}` : ''}</summary><ul>{resultChanges(s, reference ?? baselineOf(ds)).map(p => <li key={p.join('/')}><bdi>{editPathLabel(s, p, lang, reference ?? baselineOf(ds))}</bdi>: <ChangeValue s={s} path={p} lang={lang} /></li>)}</ul></details></ChoicePicker>;
 }

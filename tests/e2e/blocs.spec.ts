@@ -38,10 +38,13 @@ test('a bloc is renamed and recoloured where it is shown, and Undo restores it',
   await name.fill('Government');
   await name.press('Enter');
   await expect(band(page, 'Government')).toBeVisible();
-  await expect(page.locator('.band .scenario-switcher .choice-trigger')).toHaveAttribute('data-value', 'official');
+  // renaming changes what the screen says: a change (recolouring, below, is not)
+  await expect(page.locator('.band .scenario-switcher .choice-trigger')).not.toHaveAttribute('data-value', 'official');
+  await expect(page.locator('.session')).toContainText('1 change from the official result');
   await editor(page).getByRole('button', { name: 'Colour of Government' }).click();
   await editor(page).getByRole('button', { name: '#c23b2d' }).click();
   await expect(band(page, 'Government')).toHaveCSS('--bc', '#c23b2d');
+  await expect(page.locator('.session')).toContainText('1 change from the official result');
   await page.getByRole('button', { name: /^Undo:/ }).click();
   await page.getByRole('button', { name: /^Undo:/ }).click();
   await expect(band(page, 'Coalition')).toBeVisible();
