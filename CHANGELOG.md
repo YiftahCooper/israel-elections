@@ -2,6 +2,8 @@
 
 ## 6 November 2026 — data audit
 
+- Retain saved references in compact change labels, ellipsise only names, and explain active-reference versus official counts together in History.
+
 - Show change counts once beside History, shorten whole labels by measured fit, and apply Hebrew maqaf prefixes consistently to foreign names.
 
 - Unify changes/שינויים against the official result or saved reference, explain action counts, and localise History times and calendar dates.

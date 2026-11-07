@@ -1,3 +1,4 @@
+import { appLocale } from '../dateFormat.ts';
 import { FittingLabel } from './FittingLabel.tsx';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
@@ -46,6 +47,9 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
   const lang = useLang();
   const count = changeCount(s, reference);
   const label = changesLabel(count, reference, lang);
+  const referenceName = referenceLabel(reference, lang).name;
+  const compact = changesLabel(count, reference, lang, true);
+  const namedReference = reference ? { prefix: compact.slice(0, -referenceName.length), name: referenceName } : undefined;
   const [open, setOpen] = useState(false);
   const historyId = useId();
   const pop = useRef<HTMLDivElement>(null);
@@ -88,7 +92,7 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
 
   return (
     <div ref={line} className={`session ${edited ? '' : 'idle'}`} role="status" aria-live="polite">
-      <FittingLabel full={label} short={changesLabel(count, reference, lang, true)} />
+      <FittingLabel full={label} short={reference ? String(count) : compact} reference={namedReference} locale={appLocale(lang)} />
       <span ref={changes} className="session-changes">
         <Info title={L('Your changes', 'השינויים שלכם')}>{L('Reference: ', 'נקודת השוואה: ')}<bdi>{referenceLabel(reference, lang).name}</bdi>. {L('Counts result-changing actions from the named reference, not individual fields. Colours and bloc groupings do not count. History shows all changes from the official result; undo, redo or return to an earlier change there.', 'סופר פעולות שמשנות את התוצאה ביחס לנקודת ההשוואה הנקובה, ולא שדות בודדים. צבעים וחלוקות לגושים אינם נספרים. בהיסטוריה מוצגים כל השינויים מהתוצאה הרשמית; אפשר לבטל, לבצע שוב או לחזור לשינוי קודם.')}</Info>
         {edited && <>
@@ -112,7 +116,7 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
         {open ? <ChevronUp className="icon sm" aria-hidden /> : <ChevronDown className="icon sm" aria-hidden />}
       </button>}
       <div id={historyId} ref={pop} className="history" popover="auto" onToggle={(e) => setOpen(e.newState === 'open')}>
-        {open && <Suspense fallback={<p className="muted small">{L('Loading…', 'טוען…')}</p>}><History s={s} r={r} ds={ds} /></Suspense>}
+        {open && <Suspense fallback={<p className="muted small">{L('Loading…', 'טוען…')}</p>}><History s={s} r={r} ds={ds} reference={reference} /></Suspense>}
       </div>
     </div>
   );

@@ -26,7 +26,7 @@ test('B1 saved separate-run reference is named everywhere; B6 identity is not re
   await save(page);
   await expect(page.locator('.lb-group-comparison')).toContainText('together 4, in Review A 4');
   await expect(page.locator('.lb-group-comparison')).not.toContainText('official');
-  await expect(page.locator('.session')).toContainText('No changes');
+  await expect(page.locator('.session')).toContainText('0 changes from Review A');
   await expect(page.locator('.session .scn-name')).toHaveCount(0);
   await page.getByRole('button', { name: 'Likud', exact: true }).click();
   const votes = page.getByRole('region', { name: 'List details' }).getByLabel('Votes', { exact: true });
@@ -34,7 +34,7 @@ test('B1 saved separate-run reference is named everywhere; B6 identity is not re
   await expect(page.locator('.session > b')).toHaveText('1 change from Review A', {useInnerText:true});
   await page.locator('.session').getByRole('button', { name: 'History', exact: true }).click();
   // The split recorded three result-changing actions; History retains them after saving.
-  await expect(page.locator('.session .history')).toContainText('4 changes from the official result');
+  await expect(page.locator('.session .history .history-counts')).toHaveText('1 change from Review A · 4 from the official result');
   await page.keyboard.press('Escape');
   await expect(page.getByRole('button', { name: 'Likud', exact: true })).toHaveAccessibleDescription(/more than Review A/);
   await expect(page.locator('.phone-result-strip')).toContainText('from Review A');

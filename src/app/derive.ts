@@ -83,9 +83,19 @@ export function changeCount(s: Scenario, reference: Scenario | null): number {
   return now.length + before.length - 2 * common;
 }
 export function changesLabel(count: number, reference: Pick<Scenario, 'name'> | null, lang: Lang, compact = false): string {
-  if (!count) return lang === 'he' ? 'אין שינויים' : 'No changes';
+  if (!count && !reference) return lang === 'he' ? 'אין שינויים' : 'No changes';
   const short = `${count} ${lang === 'he' ? 'שינויים' : count === 1 ? 'change' : 'changes'}`;
+  if (compact && reference) return `${count} ${referenceLabel(reference, lang).since}`;
   return compact ? short : `${short} ${referenceLabel(reference, lang).since}`;
+}
+
+/** History keeps the bar's reference first, then explains its full official-result record. */
+export function historyChangesLabels(s: Scenario, reference: Scenario | null, lang: Lang) {
+  const count = changeCount(s, reference), official = factLog(s).length;
+  return {
+    active: changesLabel(count, reference, lang),
+    official: reference && count !== official ? `${official} ${referenceLabel(null, lang).since}` : null,
+  };
 }
 
 export interface ScenarioIssue { level: 'error' | 'warning'; en: string; he: string }

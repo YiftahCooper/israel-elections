@@ -124,7 +124,11 @@ input, textarea { caret-color: var(--focus); }
 .session > b { font-weight: 700; flex: none; max-inline-size: 30%; overflow: hidden; }
 .fit-label { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); }
 .fit-label > span { grid-area: 1 / 1; min-inline-size: 0; }
-.fit-label-short-measure { position: absolute; inline-size: max-content; visibility: hidden; pointer-events: none; }
+.fit-label-short-measure, .fit-label-reference-measure { position: absolute; inline-size: max-content; visibility: hidden; pointer-events: none; }
+.fit-label-reference-measure { white-space: pre; }
+.fit-label-text[data-reference="true"] { display: flex; align-items: baseline; }
+.fit-label-prefix { flex: none; white-space: pre; }
+.fit-label-name { min-inline-size: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .fit-label-measure { inline-size: max-content; visibility: hidden; pointer-events: none; }
 .session > .btn { flex: none; margin-inline-start: auto; }
 .session-changes { flex: 1 1 auto; min-width: 0; display: flex; align-items: center; gap: 14px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; overscroll-behavior-x: contain; }

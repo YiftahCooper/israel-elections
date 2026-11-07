@@ -1,28 +1,37 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useMemo, useRef, useState } from 'react';
 
-/** Keep complete phrases: measure the full text against its actual allocated space.
- * The invisible measuring text retains intrinsic width, so shortening cannot lock
- * the label in compact mode when its container grows again. */
-export function FittingLabel({ full, short }: { full: string; short: string }) {
-  const label = useRef<HTMLElement>(null), measure = useRef<HTMLSpanElement>(null), shortMeasure = useRef<HTMLSpanElement>(null);
-  const [compact, setCompact] = useState(false);
+/** Keep phrases whole; only a saved reference's name may ellipsise. Measuring
+ * text retains intrinsic width so expanding the container restores fuller copy. */
+export function FittingLabel({ full, short, reference, locale = 'en-GB' }: {
+  full: string; short: string; reference?: { prefix: string; name: string }; locale?: string;
+}) {
+  const label = useRef<HTMLElement>(null), measure = useRef<HTMLSpanElement>(null);
+  const shortMeasure = useRef<HTMLSpanElement>(null), referenceMeasure = useRef<HTMLSpanElement>(null);
+  const [mode, setMode] = useState<'full' | 'reference' | 'short'>('full');
+  const first = useMemo(() => reference
+    ? new Intl.Segmenter(locale, { granularity: 'grapheme' }).segment(reference.name.replace(/^[\s\p{Cf}]*/u, '')).containing(0)?.segment ?? ''
+    : '', [locale, reference?.name]);
   useLayoutEffect(() => {
-    const box = label.current, text = measure.current, shortText = shortMeasure.current;
-    if (!box || !text || !shortText) return;
+    const box = label.current, text = measure.current, shortText = shortMeasure.current, minimumReference = referenceMeasure.current;
+    if (!box || !text || !shortText || !minimumReference) return;
     const fit = () => {
-      // Even a large count stays whole if its short form exceeds the usual label share.
       box.style.minInlineSize = `${shortText.getBoundingClientRect().width}px`;
-      setCompact(text.getBoundingClientRect().width > box.getBoundingClientRect().width + 0.25);
+      const available = box.getBoundingClientRect().width;
+      setMode(text.getBoundingClientRect().width <= available ? 'full'
+        : reference && minimumReference.getBoundingClientRect().width <= available ? 'reference' : 'short');
     };
     fit();
     const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(fit);
-    observer?.observe(box); observer?.observe(text); observer?.observe(shortText);
+    for (const el of [box, text, shortText, minimumReference]) observer?.observe(el);
     addEventListener('resize', fit);
     return () => { observer?.disconnect(); removeEventListener('resize', fit); };
-  }, [full, short]);
-  return <b ref={label} className="fit-label" title={full} data-compact={compact}>
+  }, [full, short, reference?.prefix, reference?.name, first]);
+  return <b ref={label} className="fit-label" title={full} data-compact={mode !== 'full'} data-mode={mode}>
     <span ref={measure} className="fit-label-measure" aria-hidden="true">{full}</span>
     <span ref={shortMeasure} className="fit-label-short-measure" aria-hidden="true">{short}</span>
-    <span className="fit-label-text">{compact ? short : full}</span>
+    <span ref={referenceMeasure} className="fit-label-reference-measure" aria-hidden="true">{reference ? `${reference.prefix}${first}…` : ''}</span>
+    <span className="fit-label-text" data-reference={mode === 'reference'}>{mode === 'full' ? full
+      : mode === 'reference' && reference ? <><span className="fit-label-prefix">{reference.prefix}</span><bdi className="fit-label-name" dir="auto">{reference.name}</bdi></>
+      : short}</span>
   </b>;
 }

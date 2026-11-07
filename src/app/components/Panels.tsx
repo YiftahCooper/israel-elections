@@ -15,7 +15,7 @@ import { isEnvelopeRow, type ElectionDataset } from '../../data/schema.ts';
 import { RULESETS } from '../../engine/rules.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import { electionRuleSetId, historicalRules, type Scenario } from '../../model/scenario.ts';
-import { changesLabel, baselineOf, listLabel, methodOf } from '../derive.ts';
+import { historyChangesLabels, baselineOf, listLabel, methodOf } from '../derive.ts';
 import { GLOSSARY, useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct } from '../format.ts';
 import { dispatch, getState, redo, replay, setState, undo, useStore, useDigits } from '../store.ts';
@@ -361,9 +361,10 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
 
 // ------------------------------------------------------------------ history
 
-export function History({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: ElectionDataset }) {
+export function History({ s, r, ds, reference = null }: { s: Scenario; r: AllocationResult; ds: ElectionDataset; reference?: Scenario | null }) {
   const L = useL();
   const lang = useLang();
+  const counts = historyChangesLabels(s, reference, lang);
   const past = useStore((st) => st.past.length), future = useStore((st) => st.future);
   const last = s.log.at(-1);
   const next = future.at(-1)?.log.at(-1);
@@ -379,9 +380,9 @@ export function History({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
       <div className="row" style={{ marginBottom: 8 }}>
         <button className="btn small" onClick={undo} disabled={!past}>{undoName}</button>
         <button className="btn small" onClick={redo} disabled={!future.length}>{redoName}</button>
-        {factLog(s).length > 0 && <span className="muted small">{changesLabel(factLog(s).length, null, lang)}</span>}
+        {(reference || factLog(s).length > 0) && <span className="muted small history-counts"><bdi>{counts.active}</bdi>{counts.official !== null && <>{' · '}<bdi>{counts.official}</bdi></>}</span>}
       </div>
-      {factLog(s).length === 0 ? <p className="muted">{L('No changes — this is the official result.', 'אין שינויים — זו התוצאה הרשמית.')}</p> : (
+      {factLog(s).length === 0 ? <p className="muted">{reference ? L('History is empty.', 'ההיסטוריה ריקה.') : L('No changes — this is the official result.', 'אין שינויים — זו התוצאה הרשמית.')}</p> : (
         <ol className="small" style={{ paddingInlineStart: 22 }}>
           {s.log.map((e, i) => !isFactAction(e.action) ? null : (
             <li key={i} style={{ marginBottom: 3 }}>
