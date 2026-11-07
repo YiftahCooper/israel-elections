@@ -2,6 +2,8 @@
 
 ## 7 November 2026 — Settings
 
+- Research: check Ra’am’s proposed deputy post against official appointments; add a practical scholarly and newspaper reading plan for unresolved coalition history.
+
 - Map: keep Hebrew sentence punctuation outside Latin-reference isolation, join the Ramadin source splice exactly, and name OpenStreetMap in full.
 
 
